@@ -23,6 +23,7 @@ const MINIMAL_CONFIG = {
 };
 
 beforeEach(() => {
+  process.exitCode = undefined;
   testDir = mkdtempSync(join(tmpdir(), "pantoken-i18n-cli-"));
   configPath = join(testDir, "i18n.config.json");
   writeFileSync(configPath, JSON.stringify(MINIMAL_CONFIG));
@@ -53,10 +54,10 @@ describe("lint and stats commands", () => {
     expect(process.exitCode).toBe(1);
   });
 
-  test("stats remains not-yet-implemented", async () => {
+  test("stats writes a coverage report", async () => {
     await run(["stats"]);
-    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('"stats" is not implemented'));
-    expect(exitSpy).toHaveBeenCalledWith(1);
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("coverage rows"));
+    expect(process.exitCode).toBeUndefined();
   });
 });
 

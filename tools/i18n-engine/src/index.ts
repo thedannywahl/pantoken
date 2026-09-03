@@ -100,4 +100,11 @@ export { missingPluralCategories, validateMf2, type Mf2ValidationResult } from "
 export { createI18nCommand, runI18nCli } from "./cli.ts";
 export { generateMessageBundles } from "./bundles.ts";
 export { runLint, type LintResult } from "./lint.ts";
+export {
+  formatCoverageReport,
+  writeCoverageReport,
+  type CoverageOptions,
+  type CoverageReport,
+  type CoverageRow,
+} from "./coverage.ts";
 export { catalogUnitKey, resolveCatalogUnits, type CatalogUnit } from "./units.ts";

@@ -2,7 +2,8 @@
  * The `i18n` CLI skeleton — Phase 1/2 of the localization-engine plan.
  *
  * `locale promote/demote/exclude/include` are real (read-modify-write `i18n.config.json`'s
- * `locales` block). `extract`/`translate`/`render`/`check` are real for the `docs.guides` space only
+        const configPath = program.opts<{ config: string }>().config;
+        const report = writeCoverageReport(loadConfig(configPath), configPath, {
  * (see `pipeline.ts`) — every other space, and `lint`/`stats`, still just parse their selector
  * surface and report not-yet-implemented.
  *
@@ -13,6 +14,7 @@ import { dirname } from "node:path";
 import { Argument, Command, CommanderError, Option } from "commander";
 import { loadConfig, parseConfig, type I18nConfig } from "./config.ts";
 import { runLint } from "./lint.ts";
+import { formatCoverageReport, writeCoverageReport } from "./coverage.ts";
 import { excludeLocale, includeLocale, moveLocaleToTier } from "./locales.ts";
 import {
   DOCS_GUIDES,
@@ -258,7 +260,45 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
 
   const stats = program.command("stats");
   stats.addArgument(new Argument("[space]", "space id").argOptional());
-  stats.action(stubAction("stats"));
+  stats
+    .option("--policy <severity>", "filter rows by drift policy", "all")
+    .option("--format <format>", "report format: json or markdown", "json")
+    .option("--out <path>", "report path", ".i18n/coverage.json")
+    .action(
+      async (
+        space: string | undefined,
+        options: { policy: string; format: string; out: string },
+      ) => {
+        if (!["all", "block", "warn", "off"].includes(options.policy)) {
+          console.error(`Invalid policy filter: ${options.policy}`);
+          process.exitCode = 1;
+          return;
+        }
+        if (!["json", "markdown"].includes(options.format)) {
+          console.error(`Invalid report format: ${options.format}`);
+          process.exitCode = 1;
+          return;
+        }
+        try {
+          const report = writeCoverageReport(
+            program.opts<{ config: string }>().config
+              ? loadConfig(program.opts<{ config: string }>().config)
+              : loadConfig(),
+            program.opts<{ config: string }>().config,
+            {
+              space,
+              policy: options.policy as "all" | "block" | "warn" | "off",
+              output: options.out,
+            },
+          );
+          if (options.format === "markdown") console.log(formatCoverageReport(report));
+          else console.log(`Wrote ${String(report.rows.length)} coverage rows to ${options.out}.`);
+        } catch (error) {
+          console.error(error instanceof Error ? error.message : String(error));
+          process.exitCode = 1;
+        }
+      },
+    );
 
   const locale = program
     .command("locale")
