@@ -34,7 +34,7 @@
     "docs:locales:translate:copilot:force": "export DOCS_TRANSLATION_FORCE=1; vp run docs:guides:locales:copilot && vp run docs:home:locales && vp run docs:chrome:locales:copilot && vp run docs:demos:locales:copilot && vp run docs:api:locales:copilot",
     "docs:check:locales": "node scripts/check-locale-parity.ts",
     "docs:check:drift": "node scripts/check-locale-drift.ts",
-    "docs:assets": "node scripts/gen-og.ts && node scripts/site-themes.ts && node scripts/demos.ts && node scripts/cdn-manifest.ts && node scripts/cdn-icon-manifest.ts && node scripts/cdn-plugin-manifest.ts && node scripts/icon-manifest.ts && node scripts/stage-create-pantoken-app-skill.ts",
+    "docs:assets": "node scripts/stage-locale-logos.ts && node scripts/gen-og.ts && node scripts/site-themes.ts && node scripts/demos.ts && node scripts/cdn-manifest.ts && node scripts/cdn-icon-manifest.ts && node scripts/cdn-plugin-manifest.ts && node scripts/icon-manifest.ts && node scripts/stage-create-pantoken-app-skill.ts",
     "docs:og": "node scripts/gen-og.ts",
     "docs:dev": "vp run @pantoken/components#generate && vp run @pantoken/plugin-visual-debug#generate && vp run @pantoken/plugin-logos#generate && vp run @pantoken/plugin-primitives#generate && vp run @pantoken/plugin-custom-icons#generate && vp run docs:assets && vp run docs:api:en && vp run docs:api:css && vitepress dev",
     "docs:dev:all": "vp run docs:assets && vp run docs:api:locales && vp run docs:check:locales && vitepress dev",

@@ -47,6 +47,9 @@ docs/public/*
 docs/public/.well-known/*
 !docs/public/.well-known/api-catalog
 
+# Noto script faces the social-card renderer fetches on demand (docs/scripts/lib/og-fonts.ts).
+docs/assets/fonts/noto/
+
 # AI agent worktrees
 .claude/worktrees/
 .worktrees/

@@ -454,12 +454,9 @@ function localeHeadInfo(relativePath: string): {
   };
 }
 
-// `gen-og.ts` only renders localized card text for Latin-script locales (it bundles a Latin webfont);
-// non-Latin locales (see `NON_LATIN_LOCALES`) fall back to the English card. English regional variants
-// share the root card's text, so they aren't re-rendered either — see `gen-og.ts` for the exact set.
+// `gen-og.ts` writes one card per locale, so every non-root locale has its own `og-<locale>.png`.
 function ogImageUrl(localeKey: DocsLocale): string {
-  const needsOwnCard = localeKey !== "root" && !NON_LATIN_LOCALES[localeKey];
-  return `${hostname}og${needsOwnCard ? `-${localeKey}` : ""}.png`;
+  return `${hostname}og${localeKey === "root" ? "" : `-${localeKey}`}.png`;
 }
 
 /** Per-page social/canonical head tags layered on top of site defaults. */

@@ -224,12 +224,24 @@ div[class*="language-"]:has(+ .css-example-frame) > pre {
   /* VitePress sets body background-color from --vp-c-bg in a base layer.
      Override the token on home so that layered rule resolves transparent. */
   --vp-c-bg: transparent;
+  position: relative;
   min-height: 100vh;
+  background-color: transparent;
+}
+
+.is-home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   background-image: var(--vp-home-bg-image);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: right bottom;
-  background-color: transparent;
+  pointer-events: none;
+}
+
+html[dir="rtl"] .is-home::before {
+  transform: scaleX(-1);
 }
 
 .VPNavBar.home {
