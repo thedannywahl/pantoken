@@ -3,8 +3,9 @@
   "checkpoint_id": "01M1M0MWZHSM6832M5Q7SCFSV2",
   "strategy": "manual-commit",
   "branch": "i18n2",
-  "checkpoints_count": 3,
+  "checkpoints_count": 4,
   "files_touched": [
+    ".changeset/docs-og-locale-metadata.md",
     ".changeset/i18n-coverage-html-instui-progress.md",
     ".changeset/i18n-coverage-html-pantoken-components.md",
     "docs/.vitepress/config.ts",
@@ -31,6 +32,13 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": "/1/prompt.txt"
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
+      "prompt": "/2/prompt.txt"
     }
   ],
   "token_usage": {
