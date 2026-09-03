@@ -3,10 +3,17 @@
   "checkpoint_id": "01M1M02XTV19VWWQ0Y9XX4K3HC",
   "strategy": "manual-commit",
   "branch": "i18n2",
-  "checkpoints_count": 3,
+  "checkpoints_count": 5,
   "files_touched": [
     ".changeset/logos-pantoken-lang-variants.md",
     "plugins/pantoken/logos/README.md",
+    "plugins/pantoken/logos/assets/logos/pantoken/horizontal-full-color-ar.svg",
+    "plugins/pantoken/logos/assets/logos/pantoken/horizontal-reversed-jp.svg",
+    "plugins/pantoken/logos/assets/logos/pantoken/horizontal-reversed-ko.svg",
+    "plugins/pantoken/logos/assets/logos/pantoken/horizontal-reversed-ru.svg",
+    "plugins/pantoken/logos/assets/logos/pantoken/horizontal-reversed-th.svg",
+    "plugins/pantoken/logos/assets/logos/pantoken/horizontal-reversed-uk.svg",
+    "plugins/pantoken/logos/assets/logos/pantoken/horizontal-reversed-zh.svg",
     "plugins/pantoken/logos/scripts/generate.test.ts",
     "plugins/pantoken/logos/scripts/generate.ts",
     "plugins/pantoken/logos/src/index.ts",
@@ -26,6 +33,13 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": "/1/prompt.txt"
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
+      "prompt": "/2/prompt.txt"
     }
   ],
   "token_usage": {

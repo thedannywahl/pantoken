@@ -1,0 +1,76 @@
+{
+  "cli_version": "0.10.4",
+  "checkpoint_id": "01M1M02XTV19VWWQ0Y9XX4K3HC",
+  "session_id": "e5adabd6-d13c-4b22-a74e-2a8ef51aa991",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-03T16:02:02.424773Z",
+  "branch": "i18n2",
+  "checkpoints_count": 2,
+  "save_step_count": 3,
+  "files_touched": [
+    "plugins/pantoken/logos/assets/logos/pantoken/horizontal-full-color-ar.svg",
+    "plugins/pantoken/logos/assets/logos/pantoken/horizontal-reversed-jp.svg",
+    "plugins/pantoken/logos/assets/logos/pantoken/horizontal-reversed-ko.svg",
+    "plugins/pantoken/logos/assets/logos/pantoken/horizontal-reversed-ru.svg",
+    "plugins/pantoken/logos/assets/logos/pantoken/horizontal-reversed-th.svg",
+    "plugins/pantoken/logos/assets/logos/pantoken/horizontal-reversed-uk.svg",
+    "plugins/pantoken/logos/assets/logos/pantoken/horizontal-reversed-zh.svg"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "a16c2e6d3d5d",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 4
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-03T16:02:02.251318Z",
+    "agent_lines": 79,
+    "agent_removed": 0,
+    "human_added": 343,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 422,
+    "total_lines_changed": 442,
+    "agent_percentage": 17.873303167420815,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 680,
+      "agent_lines_removed": 16
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 1467,
+      "user_lines_removed": 23139,
+      "agent_lines_added": 1033,
+      "agent_lines_removed": 126,
+      "user_added_per_file": {
+        "docs/scripts/gen-og.ts": 11,
+        "l10n/docs.api.pot": 1456
+      },
+      "user_removed_per_file": {
+        "docs/scripts/gen-og.ts": 9,
+        "l10n/docs.api.pot": 23130
+      }
+    }
+  ]
+}
