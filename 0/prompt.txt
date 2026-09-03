@@ -1,0 +1,763 @@
+now what's the next smallest space to translate?
+
+---
+
+okay, complete docs.demos.
+
+---
+
+[Terminal 9cee76c1-e7a8-4a7b-ab98-3a22c632d0d4 notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+tools/i18n-engine/src/config.ts:13:/** How severely a drift finding blocks CI. Mirrors `DriftSeverity` in `tools/translation-adapters`. */
+tools/i18n-engine/src/config.ts:14:export type DriftSeverity = "block" | "warn" | "off";
+tools/i18n-engine/src/config.ts:79:  source: DriftSeverity;
+tools/i18n-engine/src/config.ts:80:  primary: DriftSeverity;
+tools/i18n-engine/src/config.ts:81:  secondary: DriftSeverity;
+tools/i18n-engine/src/config.ts:86:  surfaces: Readonly<Record<string, DriftSeverity | Readonly<Record<string, DriftSeverity>>>>;
+tools/i18n-engine/src/config.ts:87:  fallback: DriftSeverity | Readonly<Record<string, DriftSeverity>>;
+tools/i18n-engine/src/config.ts:172:    surfaces: {},
+tools/i18n-engine/src/config.ts:173:    fallback: { source: "block", secondary: "warn" },
+tools/i18n-engine/src/gettext.ts:73:/** Run `msgfmt --statistics -c` against `poPath`: validates PO syntax and reports coverage counts. */
+tools/i18n-engine/src/index.ts:18:  type DriftSeverity,
+tools/translation-adapters/tests/drift-policy.test.ts:12:  resolveDriftSeverity,
+tools/translation-adapters/tests/drift-policy.test.ts:16:type Policy = Parameters<typeof resolveDriftSeverity>[0];
+tools/translation-adapters/tests/drift-policy.test.ts:24:  fallback: { source: "block", rest: "warn" },
+tools/translation-adapters/tests/drift-policy.test.ts:25:  surfaces: {
+tools/translation-adapters/tests/drift-policy.test.ts:49:  expect(resolveTier({ tiers: { source: ["en"] }, surfaces: {} }, "hu")).toBeUndefined();
+tools/translation-adapters/tests/drift-policy.test.ts:52:// ── resolveDriftSeverity ──────────────────────────────────────────────────────
+tools/translation-adapters/tests/drift-policy.test.ts:54:test("resolveDriftSeverity reads the matched tier's severity", () => {
+tools/translation-adapters/tests/drift-policy.test.ts:55:  expect(resolveDriftSeverity(POLICY, "ui.strings", "en")).toBe("block");
+tools/translation-adapters/tests/drift-policy.test.ts:56:  expect(resolveDriftSeverity(POLICY, "ui.strings", "hu")).toBe("warn");
+tools/translation-adapters/tests/drift-policy.test.ts:57:  expect(resolveDriftSeverity(POLICY, "docs.guides", "es")).toBe("block");
+tools/translation-adapters/tests/drift-policy.test.ts:58:  expect(resolveDriftSeverity(POLICY, "docs.guides", "hu")).toBe("off");
+tools/translation-adapters/tests/drift-policy.test.ts:61:test("resolveDriftSeverity applies a bare severity to every locale", () => {
+tools/translation-adapters/tests/drift-policy.test.ts:62:  expect(resolveDriftSeverity(POLICY, "docs.parity", "en")).toBe("block");
+tools/translation-adapters/tests/drift-policy.test.ts:63:  expect(resolveDriftSeverity(POLICY, "docs.parity", "mi")).toBe("block");
+tools/translation-adapters/tests/drift-policy.test.ts:66:test("resolveDriftSeverity falls back for a tier the surface doesn't name", () => {
+tools/translation-adapters/tests/drift-policy.test.ts:67:  expect(resolveDriftSeverity(POLICY, "docs.demos", "hu")).toBe("warn");
+tools/translation-adapters/tests/drift-policy.test.ts:70:test("resolveDriftSeverity falls back for an unknown surface rather than blocking", () => {
+tools/translation-adapters/tests/drift-policy.test.ts:71:  expect(resolveDriftSeverity(POLICY, "typo.surface", "hu")).toBe("warn");
+tools/translation-adapters/tests/drift-policy.test.ts:74:test("resolveDriftSeverity reads a tier-aware fallback, so a new surface still gates English", () => {
+tools/translation-adapters/tests/drift-policy.test.ts:75:  expect(resolveDriftSeverity(POLICY, "brand.new.surface", "en")).toBe("block");
+tools/translation-adapters/tests/drift-policy.test.ts:76:  expect(resolveDriftSeverity(POLICY, "brand.new.surface", "hu")).toBe("warn");
+tools/translation-adapters/tests/drift-policy.test.ts:79:test("resolveDriftSeverity defaults to warn when the policy omits a fallback", () => {
+tools/translation-adapters/tests/drift-policy.test.ts:80:  expect(resolveDriftSeverity({ tiers: {}, surfaces: {} }, "anything", "hu")).toBe("warn");
+tools/translation-adapters/tests/drift-policy.test.ts:84:  expect(resolveDriftSeverity(DEFAULT_DRIFT_POLICY, "ui.strings", "en")).toBe("block");
+tools/translation-adapters/tests/drift-policy.test.ts:85:  expect(resolveDriftSeverity(DEFAULT_DRIFT_POLICY, "ui.strings", "hu")).toBe("warn");
+tools/translation-adapters/tests/drift-policy.test.ts:97:      surfaces: config.drift.surfaces,
+tools/translation-adapters/tests/drift-policy.test.ts:98:      fallback: config.drift.fallback,
+tools/translation-adapters/tests/drift-policy.test.ts:105:    parseDriftPolicy({ tiers: { rest: ["*"] }, surfaces: { "a.b": "explode" } }),
+tools/translation-adapters/tests/drift-policy.test.ts:106:  ).toThrow(/surfaces\.a\.b must be one of/);
+tools/translation-adapters/tests/drift-policy.test.ts:111:    parseDriftPolicy({ tiers: { rest: ["*"] }, surfaces: { "a.b": { primary: "block" } } }),
+tools/translation-adapters/tests/drift-policy.test.ts:116:  expect(() => parseDriftPolicy({ tiers: { rest: [1] }, surfaces: {} })).toThrow(
+tools/translation-adapters/tests/drift-policy.test.ts:121:test("parseDriftPolicy rejects a missing surfaces block", () => {
+tools/translation-adapters/tests/drift-policy.test.ts:122:  expect(() => parseDriftPolicy({ tiers: {} })).toThrow(/`surfaces` must be an object/);
+tools/translation-adapters/tests/drift-policy.test.ts:154:      drift: { surfaces: { "x.y": "off" }, fallback: "warn" },
+tools/translation-adapters/tests/drift-policy.test.ts:159:  expect(loadDriftPolicy(nested).surfaces["x.y"]).toBe("off");
+tools/i18n-engine/src/cli.ts:6: * (see `pipeline.ts`) — every other space, and `lint`/`stats`, still just parse their selector
+tools/i18n-engine/src/cli.ts:259:  const stats = program.command("stats");
+tools/i18n-engine/src/cli.ts:260:  stats.addArgument(new Argument("[space]", "space id").argOptional());
+tools/i18n-engine/src/cli.ts:261:  stats.action(stubAction("stats"));
+tools/i18n-engine/src/pipeline.ts:182:/** Render a translated content space's locale output with English fallback for empty PO entries. */
+tools/i18n-engine/src/pipeline.ts:210:    surfaces: config.drift.surfaces,
+tools/i18n-engine/src/pipeline.ts:211:    fallback: config.drift.fallback,
+tools/i18n-engine/src/pipeline.ts:352:/** Keyed message values resolved for one locale, including English fallbacks. */
+tools/i18n-engine/src/pipeline.ts:355:  /** Key-to-resolved text (translated, or the English `msgid` fallback for an untranslated/`never`
+docs/tr/demos/color-utilities.html:15:    Accent surfaces pair with <code>.--text-on-color</code>.
+docs/tr/guide/components.md:224:Tarayıcı desteği: popover API ve `popovertarget` Baseline 2024; invoker komutları (`command`/`commandfor`) Baseline 2025'te; daha eski tarayıcılarda butonları `dialog.showModal()` ile bir satırlık fallback olarak bağlayın. Bir popover'ı tetikleyicisinin yanına konumlandırmak, desteklendiği yerlerde CSS anchor positioning kullanır (Chromium); diğer yerlerde üst katmanda ortalanır.
+tools/i18n-engine/i18n.config.schema.json:137:        "surfaces": {
+tools/i18n-engine/i18n.config.schema.json:141:        "fallback": { "$ref": "#/$defs/surfacePolicy" }
+docs/tr/demos/button.css:13:   * primary-inverse is meant for dark/brand surfaces, so pin this swatch to the brand colour's
+docs/tr/guide/generated-output.md:10:orada başka hiçbir şey yaşamaz. `.gitignore` içindeki tek bir kural hepsini kapsar:
+tools/i18n-engine/tests/cli.test.ts:49:describe("lint and stats commands", () => {
+tools/i18n-engine/tests/cli.test.ts:56:  test("stats remains not-yet-implemented", async () => {
+tools/i18n-engine/tests/cli.test.ts:57:    await run(["stats"]);
+tools/i18n-engine/tests/cli.test.ts:58:    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('"stats" is not implemented'));
+docs/tr/demos/pendo.css:24:     component surfaces. In Pendo they select the nested `._pendo-*` guide instead, so keep the root
+tools/i18n-engine/tests/gettext.test.ts:139:    const stats = await checkPoFile(poPath);
+tools/i18n-engine/tests/gettext.test.ts:140:    expect(stats).toEqual({ translated: 1, fuzzy: 1, untranslated: 1 });
+tools/i18n-engine/tests/gettext.test.ts:143:  test("throws (rather than returning bogus stats) for an invalid PO file", async () => {
+tools/i18n-engine/tests/pipeline-messages.test.ts:118:    expect(resolved.strings.datePlaceholder).toBe("yyyy-mm-dd"); // still untranslated -> fallback
+docs/tr/demos/avatar.html:64:       .name is an opt-in single-leading-letter clip for a no-data-initials, no-JS static fallback;
+docs/tr/demos/avatar.html:65:       .first-name/.last-name is the two-letter version of that same fallback, each independently
+docs/mi/guide/generated-output.md:7:Ia mōrearea e whakaputa ana i tētahi taonga hanga, ka tuhia atu ki tētahi kōpaki `generated/` mō ia mōrearea, ā, kāore he mea kē e noho ana ki reira. He ture kotahi i roto i `.gitignore` e kapi ana i a rātou katoa:
+tools/i18n-engine/tests/mf2.test.ts:34:  test("a select message missing its catch-all fallback is invalid", () => {
+tools/i18n-engine/tests/mf2.test.ts:38:    expect(result.errors).toContain("missing-fallback");
+docs/CHANGELOG.md:117:- f97aeb6: Ensure this branch has explicit changeset coverage for every touched package.
+docs/CHANGELOG.md:119:  No API changes are introduced for these packages in this commit; this records branch-level package touch coverage per release policy.
+docs/hy/demos/button.css:13:   * primary-inverse is meant for dark/brand surfaces, so pin this swatch to the brand colour's
+docs/en-CA/demos/color-utilities.html:15:    Accent surfaces pair with <code>.--text-on-color</code>.
+docs/vi/demos/color-utilities.html:15:    Accent surfaces pair with <code>.--text-on-color</code>.
+docs/mi/demos/color-utilities.html:15:    Accent surfaces pair with <code>.--text-on-color</code>.
+docs/mi/demos/avatar.html:64:       .name is an opt-in single-leading-letter clip for a no-data-initials, no-JS static fallback;
+docs/mi/demos/avatar.html:65:       .first-name/.last-name is the two-letter version of that same fallback, each independently
+docs/th/demos/color-utilities.html:15:    Accent surfaces pair with <code>.--text-on-color</code>.
+docs/vi/demos/avatar.html:64:       .name is an opt-in single-leading-letter clip for a no-data-initials, no-JS static fallback;
+docs/vi/demos/avatar.html:65:       .first-name/.last-name is the two-letter version of that same fallback, each independently
+docs/mi/demos/button.css:13:   * primary-inverse is meant for dark/brand surfaces, so pin this swatch to the brand colour's
+docs/nn/demos/color-utilities.html:15:    Accent surfaces pair with <code>.--text-on-color</code>.
+docs/mi/demos/pendo.css:24:     component surfaces. In Pendo they select the nested `._pendo-*` guide instead, so keep the root
+docs/vi/demos/button.css:13:   * primary-inverse is meant for dark/brand surfaces, so pin this swatch to the brand colour's
+docs/da/demos/button.css:13:   * primary-inverse is meant for dark/brand surfaces, so pin this swatch to the brand colour's
+docs/th/demos/button.css:13:   * primary-inverse is meant for dark/brand surfaces, so pin this swatch to the brand colour's
+docs/en-CA/demos/button.css:13:   * primary-inverse is meant for dark/brand surfaces, so pin this swatch to the brand colour's
+docs/en-CA/guide/components.md:153:fallbacks); to _load_ it, import the opt-in `fonts.css` — `@font-face` rules for Atkinson Hyperlegible
+docs/en-CA/guide/components.md:198:`-background-*` (its surfaces), `-border-radius-{small,medium,large,circle,pill}`,
+docs/en-CA/guide/components.md:305:as a one-line fallback. Positioning a popover next to its trigger uses CSS anchor positioning where
+docs/nn/demos/button.css:13:   * primary-inverse is meant for dark/brand surfaces, so pin this swatch to the brand colour's
+docs/hy/demos/pendo.css:24:     component surfaces. In Pendo they select the nested `._pendo-*` guide instead, so keep the root
+docs/en-CA/guide/generated-output.md:10:nothing else lives there. One rule in `.gitignore` covers them all:
+docs/da/demos/pendo.css:24:     component surfaces. In Pendo they select the nested `._pendo-*` guide instead, so keep the root
+docs/en-CA/demos/pendo.css:24:     component surfaces. In Pendo they select the nested `._pendo-*` guide instead, so keep the root
+docs/th/demos/pendo.css:24:     component surfaces. In Pendo they select the nested `._pendo-*` guide instead, so keep the root
+docs/vi/demos/pendo.css:24:     component surfaces. In Pendo they select the nested `._pendo-*` guide instead, so keep the root
+docs/nn/demos/pendo.css:24:     component surfaces. In Pendo they select the nested `._pendo-*` guide instead, so keep the root
+docs/en-GB/demos/color-utilities.html:15:    Accent surfaces pair with <code>.--text-on-color</code>.
+docs/en-CA/demos/avatar.html:64:       .name is an opt-in single-leading-letter clip for a no-data-initials, no-JS static fallback;
+docs/en-CA/demos/avatar.html:65:       .first-name/.last-name is the two-letter version of that same fallback, each independently
+docs/uk/demos/color-utilities.html:15:    Accent surfaces pair with <code>.--text-on-color</code>.
+docs/vi/guide/components.md:145:`base.css` _áp dụng_ font thương hiệu (`font-family: var(--instui-font-family-base)`, với fallback hệ thống); để _tải_ nó, nhập sheet tùy chọn `fonts.css` — các quy tắc `@font-face` cho Atkinson Hyperlegible
+docs/vi/guide/components.md:287:như một fallback một dòng. Định vị popover cạnh trigger dùng CSS anchor positioning khi được hỗ trợ (Chromium); nơi khác nó căn giữa trong layer trên cùng.
+docs/en-GB/demos/button.css:13:   * primary-inverse is meant for dark/brand surfaces, so pin this swatch to the brand colour's
+docs/vi/guide/generated-output.md:7:Mỗi gói tạo ra một artifact build ghi nó vào thư mục `generated/` theo từng gói, và không có gì khác sống ở đó. Một quy tắc trong `.gitignore` bao phủ tất cả:
+docs/uk/demos/button.css:13:   * primary-inverse is meant for dark/brand surfaces, so pin this swatch to the brand colour's
+docs/th/guide/components.md:146:`base.css` _ใช้_ ฟอนต์แบรนด์ (`font-family: var(--instui-font-family-base)`, พร้อม fallback ระบบ);
+docs/th/guide/components.md:286:เป็น fallback บรรทัดเดียว การจัดตำแหน่ง popover ข้างทริกเกอร์ใช้การกำหนดตำแหน่ง anchor CSS เมื่อรองรับ (Chromium); ในที่อื่นมันจะจัดกึ่งกลางในชั้นบน
+docs/en-GB/demos/pendo.css:24:     component surfaces. In Pendo they select the nested `._pendo-*` guide instead, so keep the root
+docs/th/guide/generated-output.md:7:ทุกแพ็กเกจที่ผลิตอาร์ติแฟ็กต์การสร้างจะเขียนลงในไดเรกทอรี `generated/` ต่อแพ็กเกจเท่านั้น และไม่มีอย่างอื่นอยู่ที่นั่น กฎข้อเดียวใน `.gitignore` ครอบคลุมทั้งหมด:
+docs/de/demos/color-utilities.html:15:    Accent surfaces pair with <code>.--text-on-color</code>.
+docs/hy/demos/avatar.html:64:       .name is an opt-in single-leading-letter clip for a no-data-initials, no-JS static fallback;
+docs/hy/demos/avatar.html:65:       .first-name/.last-name is the two-letter version of that same fallback, each independently
+docs/da/demos/avatar.html:64:       .name is an opt-in single-leading-letter clip for a no-data-initials, no-JS static fallback;
+docs/da/demos/avatar.html:65:       .first-name/.last-name is the two-letter version of that same fallback, each independently
+docs/pl/demos/color-utilities.html:15:    Accent surfaces pair with <code>.--text-on-color</code>.
+docs/uk/demos/pendo.css:24:     component surfaces. In Pendo they select the nested `._pendo-*` guide instead, so keep the root
+docs/th/demos/avatar.html:64:       .name is an opt-in single-leading-letter clip for a no-data-initials, no-JS static fallback;
+docs/th/demos/avatar.html:65:       .first-name/.last-name is the two-letter version of that same fallback, each independently
+docs/de/demos/button.css:13:   * primary-inverse is meant for dark/brand surfaces, so pin this swatch to the brand colour's
+docs/nn/demos/avatar.html:64:       .name is an opt-in single-leading-letter clip for a no-data-initials, no-JS static fallback;
+docs/nn/demos/avatar.html:65:       .first-name/.last-name is the two-letter version of that same fallback, each independently
+docs/pl/demos/button.css:13:   * primary-inverse is meant for dark/brand surfaces, so pin this swatch to the brand colour's
+docs/hy/guide/components.md:119:`base.css` _կիրառում_ է բրենդային տառատեսակը (`font-family: var(--instui-font-family-base)`, համակարգային fallback-ներով); նրա _բեռնելու_ համար ներմուծեք opt-in `fonts.css` — `@font-face` կանոններ Atkinson Hyperlegible Next-ի համար, որոնք մատնանշում են փաթեթում ուղարկված woff2 ֆայլերին։ Այն առանձին է, քանի որ ֆեյսները մոտավորապես ~350 kB են և տիրապետումը ֆոնտերի սեփական հոստինգը դիտված ընտրություն է։
+docs/hy/guide/generated-output.md:7:Յուրաքանչյուր փաթեթ, որը արտադրում է կառուցման արտահայտվող առարկա, գրում է այն ըստ-փաթեթ `generated/` տիրակոնի մեջ, և այնտեղ ուրիշ ոչինչ չի ապրում։ `.gitignore`-ի մեջ մի կանոն նրանց ամբողջը ծածկում է։
+docs/de/demos/pendo.css:24:     component surfaces. In Pendo they select the nested `._pendo-*` guide instead, so keep the root
+docs/pl/demos/pendo.css:24:     component surfaces. In Pendo they select the nested `._pendo-*` guide instead, so keep the root
+docs/da/guide/generated-output.md:10:intet andet ligger der. Én regel i `.gitignore` dækker dem alle:
+docs/da/guide/components.md:152:fallbacks); for at _loade_ den, importér den opt-in `fonts.css` — `@font-face` regler for Atkinson Hyperlegible
+docs/da/guide/components.md:196:`-background-*` (dets surfaces), `-border-radius-{small,medium,large,circle,pill}`,
+docs/da/guide/components.md:300:som en ét-linjers fallback. Positionering af en popover ved siden af triggeren bruger CSS anchor positioning hvor
+docs/pl/demos/avatar.html:64:       .name is an opt-in single-leading-letter clip for a no-data-initials, no-JS static fallback;
+docs/pl/demos/avatar.html:65:       .first-name/.last-name is the two-letter version of that same fallback, each independently
+docs/nn/guide/components.md:148:fallbacks); for å _laste_ den, importer den valfrie `fonts.css` — `@font-face` reglar for Atkinson Hyperlegible
+docs/nn/guide/components.md:292:som ein ein-linjers fallback. Plassera ein popover ved sida av triggearen bruker CSS anchor-posisjonering der
+docs/nn/guide/generated-output.md:7:Kvar pakke som produserer eit byggeartefakt skriv det til ei per-pakke `generated/`-mappe, og ingenting anna bur der. Éi regel i `.gitignore` dekkjer dei alle:
+docs/ms/demos/color-utilities.html:15:    Accent surfaces pair with <code>.--text-on-color</code>.
+docs/en-GB/guide/components.md:153:fallbacks); to _load_ it, import the opt-in `fonts.css` — `@font-face` rules for Atkinson Hyperlegible
+docs/en-GB/guide/components.md:198:`-background-*` (its surfaces), `-border-radius-{small,medium,large,circle,pill}`,
+docs/en-GB/guide/components.md:305:as a one-line fallback. Positioning a popover next to its trigger uses CSS anchor positioning where
+docs/en-GB/guide/generated-output.md:10:nothing else lives there. One rule in `.gitignore` covers them all:
+docs/en-GB/demos/avatar.html:64:       .name is an opt-in single-leading-letter clip for a no-data-initials, no-JS static fallback;
+docs/en-GB/demos/avatar.html:65:       .first-name/.last-name is the two-letter version of that same fallback, each independently
+docs/ms/demos/button.css:13:   * primary-inverse is meant for dark/brand surfaces, so pin this swatch to the brand colour's
+docs/uk/demos/avatar.html:64:       .name is an opt-in single-leading-letter clip for a no-data-initials, no-JS static fallback;
+docs/uk/demos/avatar.html:65:       .first-name/.last-name is the two-letter version of that same fallback, each independently
+docs/en-AU/demos/color-utilities.html:15:    Accent surfaces pair with <code>.--text-on-color</code>.
+docs/pl/guide/components.md:149:fallbackami); aby _załadować_ go, zaimportuj opcjonalny `fonts.css` — `@font-face` reguły dla Atkinson Hyperlegible
+docs/pl/guide/components.md:290:jako jednoliniowy fallback. Pozycjonowanie popovera obok jego wyzwalacza używa kotwicowania CSS tam, gdzie obsługiwane (Chromium); w innych miejscach centruje się w najwyższej warstwie.
+docs/ru/demos/color-utilities.html:15:    Accent surfaces pair with <code>.--text-on-color</code>.
+docs/pl/guide/generated-output.md:7:Każdy pakiet, który produkuje artefakt builda, zapisuje go w katalogu per-pakiet `generated/`, i nic innego tam nie istnieje. Jedna reguła w `.gitignore` obejmuje je wszystkie:
+docs/uk/guide/components.md:279:як одно-рядковий fallback. Позиціонування поповера поруч з тригером використовує CSS anchor positioning де підтримується (Chromium); інакше він центрується в верхньому шарі.
+docs/ms/demos/pendo.css:24:     component surfaces. In Pendo they select the nested `._pendo-*` guide instead, so keep the root
+docs/en-AU/demos/button.css:13:   * primary-inverse is meant for dark/brand surfaces, so pin this swatch to the brand colour's
+docs/uk/guide/generated-output.md:7:Кожний пакунок, що виробляє артефакт збірки, записує його у per-package `generated/` директорію, і більше нічого там не зберігається. Одне правило в `.gitignore` охоплює їх усіх:
+docs/nb/demos/color-utilities.html:15:    Accent surfaces pair with <code>.--text-on-color</code>.
+docs/de/demos/avatar.html:64:       .name is an opt-in single-leading-letter clip for a no-data-initials, no-JS static fallback;
+docs/de/demos/avatar.html:65:       .first-name/.last-name is the two-letter version of that same fallback, each independently
+docs/ru/demos/button.css:13:   * primary-inverse is meant for dark/brand surfaces, so pin this swatch to the brand colour's
+docs/ms/demos/avatar.html:64:       .name is an opt-in single-leading-letter clip for a no-data-initials, no-JS static fallback;
+docs/ms/demos/avatar.html:65:       .first-name/.last-name is the two-letter version of that same fallback, each independently
+docs/de/guide/generated-output.md:7:Jedes Paket, das ein Build-Artefakt produziert, schreibt dieses in ein pro-Paket `generated/` Verzeichnis, und sonst lebt dort nichts. Eine Regel in `.gitignore` deckt sie alle ab:
+docs/demos/avatar/index.html:64:       .name is an opt-in single-leading-letter clip for a no-data-initials, no-JS static fallback;
+docs/demos/avatar/index.html:65:       .first-name/.last-name is the two-letter version of that same fallback, each independently
+docs/en-AU/demos/pendo.css:24:     component surfaces. In Pendo they select the nested `._pendo-*` guide instead, so keep the root
+docs/zh-Hant/demos/color-utilities.html:15:    Accent surfaces pair with <code>.--text-on-color</code>.
+docs/nb/demos/button.css:13:   * primary-inverse is meant for dark/brand surfaces, so pin this swatch to the brand colour's
+docs/fr-CA/demos/color-utilities.html:15:    Accent surfaces pair with <code>.--text-on-color</code>.
+docs/ru/demos/pendo.css:24:     component surfaces. In Pendo they select the nested `._pendo-*` guide instead, so keep the root
+docs/zh-Hant/demos/button.css:13:   * primary-inverse is meant for dark/brand surfaces, so pin this swatch to the brand colour's
+docs/hi/demos/color-utilities.html:15:    Accent surfaces pair with <code>.--text-on-color</code>.
+docs/demos/pendo/style.css:28:     component surfaces. In Pendo they select the nested `._pendo-*` guide instead, so keep the root
+docs/fr-CA/demos/button.css:13:   * primary-inverse is meant for dark/brand surfaces, so pin this swatch to the brand colour's
+docs/nb/demos/pendo.css:24:     component surfaces. In Pendo they select the nested `._pendo-*` guide instead, so keep the root
+docs/demos/button/style.css:13:   * primary-inverse is meant for dark/brand surfaces, so pin this swatch to the brand colour's
+docs/ms/guide/components.md:147:`base.css` _menerapkan_ fon jenama (`font-family: var(--instui-font-family-base)`, dengan fallback sistem); untuk _memuatkannya_, import `fonts.css` opt-in — `@font-face` peraturan untuk Atkinson Hyperlegible
+docs/ms/guide/components.md:287:sebagai fallback satu baris. Menempatkan popover bersebelahan pencetusnya menggunakan penempatan anchor CSS di mana
+docs/demos/color-utilities/i18n.json:250:    "message": "Accent surfaces pair with",
+docs/hi/demos/button.css:13:   * primary-inverse is meant for dark/brand surfaces, so pin this swatch to the brand colour's
+docs/ms/guide/generated-output.md:7:Setiap pakej yang menghasilkan artifak binaan menulisnya ke direktori `generated/` per-pakej, dan tiada apa-apa lagi tinggal di situ. Satu peraturan dalam `.gitignore` merangkumi semuanya:
+docs/zh-Hant/demos/pendo.css:24:     component surfaces. In Pendo they select the nested `._pendo-*` guide instead, so keep the root
+docs/fr-CA/demos/pendo.css:24:     component surfaces. In Pendo they select the nested `._pendo-*` guide instead, so keep the root
+docs/hi/demos/pendo.css:24:     component surfaces. In Pendo they select the nested `._pendo-*` guide instead, so keep the root
+docs/en-AU/demos/avatar.html:64:       .name is an opt-in single-leading-letter clip for a no-data-initials, no-JS static fallback;
+docs/en-AU/demos/avatar.html:65:       .first-name/.last-name is the two-letter version of that same fallback, each independently
+docs/he/demos/color-utilities.html:15:    Accent surfaces pair with <code>.--text-on-color</code>.
+docs/en-AU/guide/components.md:153:fallbacks); to _load_ it, import the opt-in `fonts.css` — `@font-face` rules for Atkinson Hyperlegible
+docs/en-AU/guide/components.md:198:`-background-*` (its surfaces), `-border-radius-{small,medium,large,circle,pill}`,
+pantoken on i18n2 ≡ via  24.19.0 
+➜  /Users/dwahl/.local/share/vite-plus/0.3.0/bin/vp check --fix tools/i18n-engine/src/coverage.ts tools/i18n-engine/src/cli.ts tools/i18n-engine/src/index.ts && /Users/dwahl/.local/share/vite-plus/0.3.0/bin/vp run @pantoken/i18n-engine#build && node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json stats --policy block --format markdown
+VITE+ - The Unified Toolchain for the Web
+
+pass: Formatting completed for checked files (470ms)
+pass: Found no warnings, lint errors, or type errors in 3 files (232ms, 10 threads)
+VITE+ - The Unified Toolchain for the Web
+
+~/tools/i18n-engine$ vp pack ○ cache miss: 'tools/i18n-engine/src/index.ts' modified, executing
+ℹ entry: src/index.ts, src/cli.ts
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 6 files
+ℹ dist/index.mjs            5.84 kB │ gzip:  2.25 kB
+ℹ dist/cli.mjs              0.15 kB │ gzip:  0.12 kB
+ℹ dist/cli-D80Btubs.mjs    54.23 kB │ gzip: 15.09 kB
+ℹ dist/index.d.mts         18.55 kB │ gzip:  5.79 kB
+ℹ dist/cli.d.mts            0.15 kB │ gzip:  0.12 kB
+ℹ dist/cli-BjRlUn2v.d.mts   6.16 kB │ gzip:  2.24 kB
+ℹ 6 files, total: 85.08 kB
+✔ Build complete in 62ms
+
+i18n-policy: `tiers` must be an object of tier → locale patterns
+pantoken on i18n2 ≡  ?1 ~3 via  24.19.0 x 
+➜  /Users/dwahl/.local/share/vite-plus/0.3.0/bin/vp check --fix tools/i18n-engine/src/coverage.ts && /Users/dwahl/.local/share/vite-plus/0.3.0/bin/vp run @pantoken/i18n-engine#build && node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json stats --policy block --format markdown && printf '\nreport file: '; test -f .i18n/coverage.json && echo .i18n/coverage.json
+VITE+ - The Unified Toolchain for the Web
+
+pass: Formatting completed for checked files (451ms)
+pass: Found no warnings, lint errors, or type errors in 1 file (216ms, 10 threads)
+VITE+ - The Unified Toolchain for the Web
+
+~/tools/i18n-engine$ vp pack ○ cache miss: 'tools/i18n-engine/src/coverage.ts' modified, executing
+ℹ entry: src/index.ts, src/cli.ts
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 6 files
+ℹ dist/index.mjs            5.84 kB │ gzip:  2.25 kB
+ℹ dist/cli.mjs              0.15 kB │ gzip:  0.12 kB
+ℹ dist/cli-Bn5rJ-OP.mjs    54.32 kB │ gzip: 15.09 kB
+ℹ dist/index.d.mts         18.55 kB │ gzip:  5.79 kB
+ℹ dist/cli.d.mts            0.15 kB │ gzip:  0.12 kB
+ℹ dist/cli-BjRlUn2v.d.mts   6.16 kB │ gzip:  2.24 kB
+ℹ 6 files, total: 85.17 kB
+✔ Build complete in 52ms
+
+# i18n coverage (block)
+
+| Space | Locale | Tier | Policy | Coverage | Translated | Untranslated |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+
+
+report file: .i18n/coverage.json
+pantoken on i18n2 ≡  ?1 ~3 via  24.19.0 
+➜  /Users/dwahl/.local/share/vite-plus/0.3.0/bin/vp check --fix tools/i18n-engine/src/coverage.ts tools/i18n-engine/src/cli.ts tools/i18n-engine/tests/coverage.test.ts .gitignore && /Users/dwahl/.local/share/vite-plus/0.3.0/bin/vp run @pantoken/i18n-engine#build && node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json stats --space docs.home --policy warn --format markdown && git diff --check
+VITE+ - The Unified Toolchain for the Web
+
+pass: Formatting completed for checked files (490ms)
+pass: Found no warnings, lint errors, or type errors in 3 files (247ms, 10 threads)
+VITE+ - The Unified Toolchain for the Web
+
+~/tools/i18n-engine$ vp pack ○ cache miss: 'tools/i18n-engine/src/coverage.ts' modified, executing
+ℹ entry: src/index.ts, src/cli.ts
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 6 files
+ℹ dist/index.mjs            5.84 kB │ gzip:  2.25 kB
+ℹ dist/cli.mjs              0.15 kB │ gzip:  0.12 kB
+ℹ dist/cli-Dc4Ml7wP.mjs    54.49 kB │ gzip: 15.13 kB
+ℹ dist/index.d.mts         18.55 kB │ gzip:  5.79 kB
+ℹ dist/cli.d.mts            0.15 kB │ gzip:  0.12 kB
+ℹ dist/cli-BjRlUn2v.d.mts   6.16 kB │ gzip:  2.24 kB
+ℹ 6 files, total: 85.34 kB
+✔ Build complete in 52ms
+
+error: unknown option '--space'
+pantoken on i18n2 ≡  ?2 ~3 via  24.19.0 x 
+➜  git status --short --branch && git check-ignore -v .i18n/coverage.json
+## i18n2...origin/i18n2
+ M .gitignore
+ M tools/i18n-engine/src/cli.ts
+ M tools/i18n-engine/src/index.ts
+?? tools/i18n-engine/src/coverage.ts
+?? tools/i18n-engine/tests/coverage.test.ts
+.gitignore:62:.i18n/    .i18n/coverage.json
+pantoken on i18n2 ≡  ?2 ~3 via  24.19.0 
+➜  node --input-type=module -e 'import {readFileSync} from "node:fs"; const p=JSON.parse(readFileSync(".i18n/coverage.json","utf8")); console.log(p.filters,p.rows.length,p.rows[0]);'
+{ space: null, policy: 'block' } 0 undefined
+pantoken on i18n2 ≡  ?2 ~3 via  24.19.0 
+➜  /Users/dwahl/.local/share/vite-plus/0.3.0/bin/vp check --fix tools/i18n-engine/tests/cli.test.ts && /Users/dwahl/.local/share/vite-plus/0.3.0/bin/vp test tools/i18n-engine/tests/coverage.test.ts tools/i18n-engine/tests/cli.test.ts && node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json stats docs.home --policy warn --format markdown && git diff --check
+VITE+ - The Unified Toolchain for the Web
+
+pass: Formatting completed for checked files (482ms)
+pass: Found no warnings, lint errors, or type errors in 1 file (241ms, 10 threads)
+VITE+ - The Unified Toolchain for the Web
+
+
+ RUN  v4.1.11 /Users/dwahl/Scripts/pantoken
+
+error: unknown command 'bogus-command'
+ ❯ tools/i18n-engine/tests/cli.test.ts (29 tests | 1 failed) 75ms
+     × stats writes a coverage report 3ms
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tools/i18n-engine/tests/cli.test.ts > lint and stats commands > stats writes a coverage report
+AssertionError: expected "log" to be called with arguments: [ StringContaining "coverage rows" ]
+
+Number of calls: 0
+
+ ❯ tools/i18n-engine/tests/cli.test.ts:58:20
+     56|   test("stats writes a coverage report", async () => {
+     57|     await run(["stats"]);
+     58|     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("cover…
+       |                    ^
+     59|     expect(process.exitCode).toBeUndefined();
+     60|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 31 passed (32)
+   Start at  20:27:43
+   Duration  726ms (transform 76ms, setup 35ms, import 192ms, tests 666ms, environment 0ms)
+
+pantoken on i18n2 ≡  ?2 ~4 via  24.19.0 x 
+➜  /Users/dwahl/.local/share/vite-plus/0.3.0/bin/vp check --fix tools/i18n-engine/src/coverage.ts tools/i18n-engine/tests/cli.test.ts && /Users/dwahl/.local/share/vite-plus/0.3.0/bin/vp test tools/i18n-engine/tests/coverage.test.ts tools/i18n-engine/tests/cli.test.ts && node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json stats docs.home --policy warn --format markdown | sed -n '1,8p' && git diff --check
+VITE+ - The Unified Toolchain for the Web
+
+pass: Formatting completed for checked files (473ms)
+pass: Found no warnings, lint errors, or type errors in 2 files (235ms, 10 threads)
+VITE+ - The Unified Toolchain for the Web
+
+
+ RUN  v4.1.11 /Users/dwahl/Scripts/pantoken
+
+error: unknown command 'bogus-command'
+ ❯ tools/i18n-engine/tests/cli.test.ts (29 tests | 1 failed) 92ms
+     × stats writes a coverage report 4ms
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tools/i18n-engine/tests/cli.test.ts > lint and stats commands > stats writes a coverage report
+AssertionError: expected 1 to be undefined
+
+- Expected:
+undefined
+
++ Received:
+1
+
+ ❯ tools/i18n-engine/tests/cli.test.ts:59:30
+     57|     await run(["stats"]);
+     58|     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("cover…
+     59|     expect(process.exitCode).toBeUndefined();
+       |                              ^
+     60|   });
+     61| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 31 passed (32)
+   Start at  20:27:57
+   Duration  731ms (transform 73ms, setup 33ms, import 204ms, tests 698ms, environment 0ms)
+
+pantoken on i18n2 ≡  ?2 ~4 via  24.19.0 x 
+➜  /Users/dwahl/.local/share/vite-plus/0.3.0/bin/vp check --fix tools/i18n-engine/src/coverage.ts tools/i18n-engine/src/cli.ts tools/i18n-engine/tests/coverage.test.ts tools/i18n-engine/tests/cli.test.ts .gitignore && /Users/dwahl/.local/share/vite-plus/0.3.0/bin/vp test tools/i18n-engine/tests/coverage.test.ts tools/i18n-engine/tests/cli.test.ts && node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json stats docs.home --policy warn --format markdown | sed -n '1,8p' && git diff --check
+VITE+ - The Unified Toolchain for the Web
+
+pass: Formatting completed for checked files (461ms)
+pass: Found no warnings, lint errors, or type errors in 4 files (220ms, 10 threads)
+VITE+ - The Unified Toolchain for the Web
+
+
+ RUN  v4.1.11 /Users/dwahl/Scripts/pantoken
+
+error: unknown command 'bogus-command'
+
+ Test Files  2 passed (2)
+      Tests  32 passed (32)
+   Start at  20:28:11
+   Duration  717ms (transform 76ms, setup 34ms, import 194ms, tests 663ms, environment 0ms)
+
+# i18n coverage (warn, docs.home)
+
+| Space | Locale | Tier | Policy | Coverage | Translated | Untranslated |
+| --- | --- | --- | --- | ---: | ---: | ---: |
+| docs.home | ar | secondary | warn | 100% | 14/14 | 0 |
+| docs.home | ca | secondary | warn | 100% | 14/14 | 0 |
+| docs.home | cy | secondary | warn | 100% | 14/14 | 0 |
+| docs.home | da | secondary | warn | 100% | 14/14 | 0 |
+pantoken on i18n2 ≡  ?2 ~4 via  24.19.0 
+➜  /Users/dwahl/.local/share/vite-plus/0.3.0/bin/vp check --fix tools/i18n-engine/src/coverage.ts tools/i18n-engine/src/cli.ts tools/i18n-engine/src/index.ts tools/i18n-engine/tests/coverage.test.ts tools/i18n-engine/tests/cli.test.ts .gitignore && git diff --check && git status --short --branch
+VITE+ - The Unified Toolchain for the Web
+
+pass: Formatting completed for checked files (470ms)
+pass: Found no warnings, lint errors, or type errors in 5 files (240ms, 10 threads)
+## i18n2...origin/i18n2
+ M .gitignore
+ M tools/i18n-engine/src/cli.ts
+ M tools/i18n-engine/src/index.ts
+ M tools/i18n-engine/tests/cli.test.ts
+?? .changeset/i18n-coverage-report.md
+?? tools/i18n-engine/src/coverage.ts
+?? tools/i18n-engine/tests/coverage.test.ts
+pantoken on i18n2 ≡  ?3 ~4 via  24.19.0 
+➜  node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json stats --policy all --format json >/tmp/i18n-stats-output.txt && test -f .i18n/coverage.json && git check-ignore -q .i18n/coverage.json && node --input-type=module -e 'import {readFileSync} from "node:fs"; const p=JSON.parse(readFileSync(".i18n/coverage.json","utf8")); console.log(`rows=${p.rows.length} policy=${p.filters.policy}`);'
+rows=344 policy=all
+pantoken on i18n2 ≡  ?3 ~4 via  24.19.0 
+➜  git diff --check && git add .gitignore tools/i18n-engine/src/coverage.ts tools/i18n-engine/src/cli.ts tools/i18n-engine/src/index.ts tools/i18n-engine/tests/coverage.test.ts tools/i18n-engine/tests/cli.test.ts .changeset/i18n-coverage-report.md && git commit -m "feat(i18n): add policy coverage reports" && git push origin i18n2 && git status --short --branch
+✔ Backed up original state in git stash (d3bc68f3c)
+✔ Running tasks for staged files...
+✔ Applying modifications from tasks...
+✔ Cleaning up temporary files...
+[i18n2 a2bc7f345] feat(i18n): add policy coverage reports
+ 7 files changed, 240 insertions(+), 5 deletions(-)
+ create mode 100644 .changeset/i18n-coverage-report.md
+ create mode 100644 tools/i18n-engine/src/coverage.ts
+ create mode 100644 tools/i18n-engine/tests/coverage.test.ts
+[entire] Pushing 2 checkpoint ref(s) to origin..... done
+Enumerating objects: 24, done.
+Counting objects: 100% (24/24), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (14/14), done.
+Writing objects: 100% (14/14), 4.01 KiB | 4.01 MiB/s, done.
+Total 14 (delta 10), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (10/10), completed with 10 local objects.
+To https://github.com/thedannywahl/pantoken.git
+   1902944a6..a2bc7f345  i18n2 -> i18n2
+## i18n2...origin/i18n2
+pantoken on i18n2 ≡ via  24.19.0 
+➜  git status --short --branch && git diff -- tools/i18n-engine/src/cli.ts && sed -n '330,390p' vite.config.ts && sed -n '1,40p' vite.config.ts
+## i18n2...origin/i18n2
+        dependsOn: ["ui:translate:force", "docs:translate:force", "cli:translate:force"],
+        cache: false,
+      },
+      // Same as i18n:translate:force but routed through the agy adapter wrapper.
+      "i18n:translate:force:agy": {
+        command: "true",
+        dependsOn: [
+          "ui:translate:force:agy",
+          "docs:translate:force:agy",
+          "cli:translate:force:agy",
+        ],
+        cache: false,
+      },
+      // Same as i18n:translate:force but routed through the copilot adapter wrapper.
+      "i18n:translate:force:copilot": {
+        command: "true",
+        dependsOn: [
+          "ui:translate:force:copilot",
+          "docs:translate:force:copilot",
+          "cli:translate:force:copilot",
+        ],
+        cache: false,
+      },
+      // Drift checks for the UI and CLI i18n domains. Severity per surface and locale tier comes from
+      // `i18n.config.json` — these tasks report every gap but only exit non-zero on a `block`, so an
+      // English-only change lands without waiting on ~90 translations. Docs drift runs in
+      // `@pantoken/docs#docs:build` (it needs the generated EN API tree); `i18n:check:drift:all` runs
+      // both.
+      "i18n:check:drift": {
+        command:
+          "vp run @pantoken/translation-adapters#build && vp run @pantoken/i18n-engine#build && vp run @pantoken/web-components#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift",
+      },
+      // Every i18n surface at once, including the docs ones. Assumes `docs:api:en` already ran — API
+      // prose drift is skipped with a note when `docs/api` is absent.
+      "i18n:check:drift:all": {
+        command:
+          "vp run @pantoken/i18n-engine#build && node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json lint && vp run i18n:check:drift && vp run @pantoken/docs#docs:check:locales && vp run @pantoken/docs#docs:check:drift",
+        cache: false,
+      },
+      // Same sweep with every policy `warn` escalated to `block`. Not wired into PR CI — this is the
+      // "show me every gap, fail if any remain" command for a local audit or a scheduled full-locale
+      // run before a release.
+      "i18n:check:drift:strict": {
+        command: "I18N_DRIFT_STRICT=1 vp run i18n:check:drift:all",
+        cache: false,
+      },
+      "i18n:bundles:build": {
+        command: "vp run @pantoken/web-components#generate",
+        dependsOn: ["build:all"],
+      },
+      "changeset:add": {
+        command: "vpx changeset",
+        cache: false,
+      },
+      "release:status": {
+        command: "vpx changeset status --verbose",
+      },
+      "release:coverage": {
+        command: "node scripts/release/check-changeset-coverage.ts",
+      },
+      // Driven by the changesets action (.github/workflows/release.yml): `version` opens/updates the
+import { defineConfig } from "vite-plus";
+import { fileURLToPath } from "node:url";
+import { dirname } from "node:path";
+
+const __dir = dirname(fileURLToPath(import.meta.url));
+
+export default defineConfig({
+  test: {
+    // Reads FC_NUM_RUNS to adjust fast-check iteration counts without changing test source.
+    // Default: 100 (fast). Stress runs (vp run property:stress): 10 000.
+    setupFiles: [`${__dir}/scripts/quality/fast-check-setup.ts`],
+    // Default (5000ms) is too tight for a full-suite local run (277 files) where module transform/
+    // import contends for CPU; slower CI/gh runners need the same headroom.
+    testTimeout: 20_000,
+    include: [
+      "packages/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+      "formats/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+      "platforms/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+      "renderers/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+      "bundlers/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+      "design/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+      "ai/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+      "plugins/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+      "tools/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+      "docs/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+      "scripts/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+    ],
+    coverage: {
+      provider: "v8",
+      // text-summary for humans, lcov for Codecov, json for `fallow health --coverage`.
+      reporter: ["text-summary", "lcov", "json"],
+      include: [
+        "packages/*/src/**",
+        "formats/*/src/**",
+        "platforms/*/src/**",
+        "renderers/*/src/**",
+        "bundlers/*/src/**",
+        "design/*/src/**",
+        "ai/*/src/**",
+        "plugins/*/*/src/**",
+pantoken on i18n2 ≡ via  24.19.0 
+➜  /Users/dwahl/.local/share/vite-plus/0.3.0/bin/vp check --fix vite.config.ts && /Users/dwahl/.local/share/vite-plus/0.3.0/bin/vp run i18n:coverage && git check-ignore -q .i18n/coverage.json && git diff --check && git status --short --branch
+VITE+ - The Unified Toolchain for the Web
+
+pass: Formatting completed for checked files (1.5s)
+pass: Found no warnings, lint errors, or type errors in 1 file (1.2s, 10 threads)
+VITE+ - The Unified Toolchain for the Web
+
+~/tools/i18n-engine$ vp pack ○ cache miss: 'tools/i18n-engine/src/coverage.ts' modified, executing
+ℹ entry: src/index.ts, src/cli.ts
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 6 files
+ℹ dist/index.mjs            5.84 kB │ gzip:  2.25 kB
+ℹ dist/cli.mjs              0.15 kB │ gzip:  0.12 kB
+ℹ dist/cli-D_zBm0c5.mjs    54.54 kB │ gzip: 15.13 kB
+ℹ dist/index.d.mts         18.55 kB │ gzip:  5.79 kB
+ℹ dist/cli.d.mts            0.15 kB │ gzip:  0.12 kB
+ℹ dist/cli-BjRlUn2v.d.mts   6.16 kB │ gzip:  2.24 kB
+ℹ 6 files, total: 85.39 kB
+✔ Build complete in 149ms
+
+$ node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json stats ⊘ cache disabled
+Wrote 344 coverage rows to .i18n/coverage.json.
+
+---
+vp run: 0/2 cache hit (0%). (Run `vp run --last-details` for full details)
+## i18n2...origin/i18n2
+ M vite.config.ts
+pantoken on i18n2 ≡  ~1 via  24.19.0 
+➜  git diff --check && git add vite.config.ts .changeset/i18n-coverage-task.md && git commit -m "build(i18n): add root coverage task" && git push origin i18n2 && git status --short --branch
+✔ Backed up original state in git stash (bcf3abfb5)
+✔ Running tasks for staged files...
+✔ Applying modifications from tasks...
+✔ Cleaning up temporary files...
+[i18n2 efe0aef08] build(i18n): add root coverage task
+ 2 files changed, 12 insertions(+)
+ create mode 100644 .changeset/i18n-coverage-task.md
+[entire] Pushing 2 checkpoint ref(s) to origin..... done
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 740 bytes | 740.00 KiB/s, done.
+Total 5 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/thedannywahl/pantoken.git
+   a2bc7f345..efe0aef08  i18n2 -> i18n2
+## i18n2...origin/i18n2
+pantoken on i18n2 ≡ via  24.19.0 
+➜  node --input-type=module -e 'import {readFileSync} from "node:fs"; const r=JSON.parse(readFileSync(".i18n/coverage.json","utf8")); const sums=new Map(); for(const row of r.rows){const x=sums.get(row.space)??{total:0,translated:0,untranslated:0,locales:0};x.total+=row.total;x.translated+=row.translated;x.untranslated+=row.untranslated;x.locales++;sums.set(row.space,x)} for(const [space,x] of sums) console.log(`${space}: ${x.untranslated} untranslated / ${x.total} units across ${x.locales} locales (${(x.translated/x.total*100).toFixed(1)}%)`);'
+ui.strings: 0 untranslated / 301 units across 43 locales (100.0%)
+cli.scaffold: 0 untranslated / 2236 units across 43 locales (100.0%)
+cli.ai: 0 untranslated / 301 units across 43 locales (100.0%)
+docs.home: 0 untranslated / 602 units across 43 locales (100.0%)
+docs.chrome: 0 untranslated / 3311 units across 43 locales (100.0%)
+docs.demos: 663 untranslated / 24467 units across 43 locales (97.3%)
+docs.guides: 0 untranslated / 387 units across 43 locales (100.0%)
+docs.api: 47200 untranslated / 179353 units across 43 locales (75.1%)
+pantoken on i18n2 ≡ via  24.19.0 
+➜  node --input-type=module -e 'import {readFileSync} from "node:fs"; const r=JSON.parse(readFileSync(".i18n/coverage.json","utf8")); for(const policy of ["block","warn"]){const rows=r.rows.filter(x=>x.policy===policy); const m=new Map(); for(const x of rows){const y=m.get(x.space)??0;y+=x.untranslated;m.set(x.space,y)} console.log(policy,[...m].map(([s,n])=>`${s}:${n}`).join(" "))}'
+block 
+file:///Users/dwahl/Scripts/pantoken/[eval1]:1
+import {readFileSync} from "node:fs"; const r=JSON.parse(readFileSync(".i18n/coverage.json","utf8")); for(const policy of ["block","warn"]){const rows=r.rows.filter(x=>x.policy===policy); const m=new Map(); for(const x of rows){const y=m.get(x.space)??0;y+=x.untranslated;m.set(x.space,y)} console.log(policy,[...m].map(([s,n])=>`${s}:${n}`).join(" "))}
+                                                                                                                                                                                                                                                               ^
+
+TypeError: Assignment to constant variable.
+    at file:///Users/dwahl/Scripts/pantoken/[eval1]:1:256
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:224:26
+    at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:221:20)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.19.0
+pantoken on i18n2 ≡ via  24.19.0 x 
+➜  node --input-type=module -e 'import {readFileSync} from "node:fs"; const r=JSON.parse(readFileSync(".i18n/coverage.json","utf8")); for(const policy of ["block","warn"]){const rows=r.rows.filter(x=>x.policy===policy); const m=new Map(); for(const x of rows){let n=m.get(x.space)??0;n+=x.untranslated;m.set(x.space,n)} console.log(policy,[...m].map(([s,n])=>`${s}:${n}`).join(" "))}'
+block 
+warn ui.strings:0 cli.scaffold:0 cli.ai:0 docs.home:0 docs.chrome:0 docs.demos:663 docs.guides:0 docs.api:47200
+pantoken on i18n2 ≡ via  24.19.0 
+➜  git status --short --branch && git log --oneline -3
+## i18n2...origin/i18n2
+efe0aef08 (HEAD -> i18n2, origin/i18n2) build(i18n): add root coverage task
+a2bc7f345 feat(i18n): add policy coverage reports
+1902944a6 feat(docs): complete Hungarian demo translations
+pantoken on i18n2 ≡ via  24.19.0 
+➜  node --input-type=module -e 'import {readFileSync,readdirSync} from "node:fs"; import {parsePo} from "./tools/i18n-engine/dist/index.mjs"; let total=0, locales=0; for(const d of readdirSync("l10n",{withFileTypes:true}).filter(e=>e.isDirectory()&&e.name!=="en")){locales++;const p=parsePo(readFileSync(`l10n/${d.name}/docs.demos.po`,`utf8`)); const n=p.filter(e=>!e.obsolete&&!e.msgstr).length; total+=n; if(n) console.log(`${d.name}: ${n}`)} console.log(`locales=${locales} active_gaps=${total}`);'
+ar: 17
+ca: 17
+cy: 17
+da: 17
+de: 17
+el: 17
+es: 17
+fa: 17
+fi: 17
+fr: 17
+fr-CA: 17
+ga: 17
+he: 17
+hi: 17
+ht: 17
+hy: 17
+id: 17
+is: 17
+it: 17
+ja: 17
+ko: 17
+mi: 17
+ms: 17
+nb: 17
+nl: 17
+nn: 17
+pl: 17
+pt: 17
+pt-BR: 17
+ru: 17
+se: 17
+sl: 17
+sv: 17
+th: 17
+tr: 17
+uk: 17
+vi: 17
+zh-Hans: 17
+zh-Hant: 17
+locales=43 active_gaps=663
+pantoken on i18n2 ≡ via  24.19.0 
+➜  export DOCS_TRANSLATION_COMMAND=/Users/dwahl/Scripts/pantoken/tools/translation-adapters/copilot-wrapper.sh DOCS_TRANSLATION_COMMAND_ARGS='--model gpt-5-mini --effort low'; cd /Users/dwahl/Scripts/pantoken && node docs/scripts/translate-demo-locales.ts
+node:internal/modules/cjs/loader:1520
+  throw err;
+  ^
+
+Error: Cannot find module '/Users/dwahl/Scripts/pantoken/docs/scripts/translate-demo-locales.ts'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1517:15)
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    at Module._load (node:internal/modules/cjs/loader:1294:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v24.19.0
+pantoken on i18n2 ≡ via  24.19.0 x 
+➜  /Users/dwahl/.local/share/vite-plus/0.3.0/bin/vp check --fix docs/scripts/translate-demo-po.ts docs/package.json && git diff --check
+VITE+ - The Unified Toolchain for the Web
+
+pass: Formatting completed for checked files (1.8s)
+pass: Found no warnings, lint errors, or type errors in 1 file (1.6s, 10 threads)
+pantoken on i18n2 ≡  ?1 ~1 via  24.19.0 
+➜  export DOCS_TRANSLATION_COMMAND=/Users/dwahl/Scripts/pantoken/tools/translation-adapters/copilot-wrapper.sh DOCS_TRANSLATION_COMMAND_ARGS='--model gpt-5-mini --effort low'; cd /Users/dwahl/Scripts/pantoken && node docs/scripts/translate-demo-po.ts
+ar: filled 17
+ca: filled 17
+cy: filled 17
+da: filled 17
+de: filled 17
+el: filled 17
+es: filled 17
+sl: filled 17
+th: filled 17
+tr: filled 17
+uk: filled 17
+vi: filled 17
+zh-Hans: filled 17
+zh-Hant: filled 17
+                                                                                
+
+[Terminal 3ec2b39c-d1d2-4482-b189-c141b85e887e notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on i18n2 ≡  ?1 ~7 via  26.8.1 
+➜  node --input-type=module -e 'import {readFileSync,readdirSync} from "node:fs"; import {parsePo} from "./tools/i18n-engine/dist/index.mjs"; let total=0; for(const d of readdirSync("l10n",{withFileTypes:true}).filter(e=>e.isDirectory()&&e.name!=="en")){const p=parsePo(readFileSync(`l10n/${d.name}/docs.demos.po`,`utf8`)); const n=p.filter(e=>!e.obsolete&&!e.msgstr).length; total+=n; if(n)console.log(`${d.name}:${n}`)} console.log(`active_gaps=${total}`); if(total)process.exit(1);'
+es:17
+fa:17
+fi:17
+fr:17
+fr-CA:17
+ga:17
+he:17
+hi:17
+ht:17
+hy:17
+id:17
+is:17
+it:17
+ja:17
+ko:17
+mi:17
+ms:17
+nb:17
+nl:17
+nn:17
+pl:17
+pt:17
+pt-BR:17
+ru:17
+se:17
+sl:17
+sv:17
+th:17
+tr:17
+uk:17
+vi:17
+zh-Hans:17
+zh-Hant:17
+active_gaps=561
+pantoken on i18n2 ≡  ?1 ~7 via  26.8.1 x 
+➜  export DOCS_TRANSLATION_COMMAND=/Users/dwahl/Scripts/pantoken/tools/translation-adapters/copilot-wrapper.sh DOCS_TRANSLATION_COMMAND_ARGS='--model gpt-5-mini --effort low'; cd /Users/dwahl/Scripts/pantoken && node docs/scripts/translate-demo-po.ts
+es: filled 17
+fa: filled 17
+fi: filled 17
+fr: filled 17
+fr-CA: filled 17
+ga: filled 17
+he: filled 17
+hi: filled 17
+ht: filled 17
+hy: filled 17
+id: filled 17
+is: filled 17
