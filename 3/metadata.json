@@ -1,0 +1,49 @@
+{
+  "cli_version": "0.10.4",
+  "checkpoint_id": "01M1M0MWZHSM6832M5Q7SCFSV2",
+  "session_id": "e5adabd6-d13c-4b22-a74e-2a8ef51aa991",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-03T16:11:51.589628Z",
+  "branch": "i18n2",
+  "checkpoints_count": 2,
+  "files_touched": [
+    ".changeset/i18n-coverage-html-instui-progress.md",
+    "docs/.vitepress/config.ts",
+    "docs/.vitepress/i18n.json",
+    "docs/.vitepress/i18n.ts",
+    "docs/scripts/gen-og.ts",
+    "tools/i18n-engine/src/cli.ts",
+    "tools/i18n-engine/src/coverage.ts",
+    "tools/i18n-engine/src/index.ts",
+    "tools/i18n-engine/tests/cli.test.ts",
+    "tools/i18n-engine/tests/coverage.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "dae71b37990c",
+  "checkpoint_transcript_start": 11591,
+  "transcript_lines_at_start": 11591,
+  "compact_transcript_start": 2259,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 6
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-03T16:11:51.294731Z",
+    "agent_lines": 595,
+    "agent_removed": 106,
+    "human_added": 15,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 610,
+    "total_lines_changed": 716,
+    "agent_percentage": 97.90502793296089,
+    "metric_version": 2
+  }
+}
