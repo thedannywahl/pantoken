@@ -359,6 +359,13 @@ export default defineConfig({
         command:
           "vp run @pantoken/translation-adapters#build && vp run @pantoken/i18n-engine#build && vp run @pantoken/web-components#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift",
       },
+      // Generate the local, git-ignored language coverage report. Keep this uncached so the report
+      // always reflects the current PO catalogs and policy configuration.
+      "i18n:coverage": {
+        command:
+          "vp run @pantoken/i18n-engine#build && node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json stats",
+        cache: false,
+      },
       // Every i18n surface at once, including the docs ones. Assumes `docs:api:en` already ran — API
       // prose drift is skipped with a note when `docs/api` is absent.
       "i18n:check:drift:all": {
