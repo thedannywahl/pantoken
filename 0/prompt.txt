@@ -1,0 +1,27 @@
+[Terminal 1e67d5c9-402b-4a88-9c09-6dcc40448a3c notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on i18n2 ≡  ?1 ~13 via  26.8.1 
+➜  node --input-type=module -e 'import {readFileSync,readdirSync} from "node:fs"; import {parsePo} from "./tools/i18n-engine/dist/index.mjs"; let total=0, locales=[]; for(const d of readdirSync("l10n",{withFileTypes:true}).filter(e=>e.isDirectory()&&e.name!=="en")){const n=parsePo(readFileSync(`l10n/${d.name}/docs.demos.po`,"utf8")).filter(e=>!e.obsolete&&!e.msgstr).length;total+=n;if(n)locales.push(`${d.name}:${n}`)} console.log(`active_gaps=${total} ${locales.join(" ")}`);' 
+active_gaps=459 he:17 hi:17 ht:17 hy:17 id:17 is:17 it:17 ja:17 ko:17 mi:17 ms:17 nb:17 nl:17 nn:17 pl:17 pt:17 pt-BR:17 ru:17 se:17 sl:17 sv:17 th:17 tr:17 uk:17 vi:17 zh-Hans:17 zh-Hant:17
+pantoken on i18n2 ≡  ?1 ~13 via  26.8.1 
+➜  export DOCS_TRANSLATION_COMMAND=/Users/dwahl/Scripts/pantoken/tools/translation-adapters/copilot-wrapper.sh DOCS_TRANSLATION_COMMAND_ARGS='--model gpt-5-mini --effort low'; cd /Users/dwahl/Scripts/pantoken && node docs/scripts/translate-demo-po.ts
+hi: filled 17
+hy: filled 17
+id: filled 17
+is: filled 17
+it: filled 17
+ja: filled 17
+ko: filled 17
+mi: filled 17
+ms: filled 17
+nb: filled 17
+nl: filled 17
+nn: filled 17
+pl: filled 17
+pt: filled 17
+pt-BR: filled 17
+ru: filled 17
+se: filled 17
+sl: filled 17
+sv: filled 17
+th: filled 17
