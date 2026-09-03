@@ -1,0 +1,88 @@
+{
+  "cli_version": "0.10.4",
+  "checkpoint_id": "01M1KXM96P9S73BWS850QPZTBP",
+  "session_id": "31704b01-5686-4341-95b9-a7ddf9c80be9",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-03T15:19:04.972345Z",
+  "branch": "i18n2",
+  "checkpoints_count": 3,
+  "save_step_count": 3,
+  "files_touched": [
+    "tools/i18n-engine/src/coverage.ts",
+    "tools/i18n-engine/tests/coverage.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "0d3c78ef5808",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 3
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-03T15:19:04.956537Z",
+    "agent_lines": 44,
+    "agent_removed": 10,
+    "human_added": 11,
+    "human_modified": 9,
+    "human_removed": 0,
+    "total_committed": 56,
+    "total_lines_changed": 74,
+    "agent_percentage": 72.97297297297297,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 2410,
+      "user_lines_removed": 2135,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "l10n/fr/docs.api.po": 2130,
+        "tools/i18n-engine/src/cli.ts": 17,
+        "tools/i18n-engine/src/coverage.ts": 229,
+        "tools/i18n-engine/src/index.ts": 1,
+        "tools/i18n-engine/tests/cli.test.ts": 15,
+        "tools/i18n-engine/tests/coverage.test.ts": 18
+      },
+      "user_removed_per_file": {
+        "l10n/fr/docs.api.po": 2130,
+        "tools/i18n-engine/src/cli.ts": 4,
+        "tools/i18n-engine/tests/coverage.test.ts": 1
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 6,
+      "user_lines_removed": 6,
+      "agent_lines_added": 2418,
+      "agent_lines_removed": 2138,
+      "user_added_per_file": {
+        "l10n/fr/docs.api.po": 6
+      },
+      "user_removed_per_file": {
+        "l10n/fr/docs.api.po": 6
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 39,
+      "user_lines_removed": 39,
+      "agent_lines_added": 2426,
+      "agent_lines_removed": 2146,
+      "user_added_per_file": {
+        "l10n/fr/docs.api.po": 39
+      },
+      "user_removed_per_file": {
+        "l10n/fr/docs.api.po": 39
+      }
+    }
+  ]
+}
