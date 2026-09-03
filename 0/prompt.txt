@@ -1,0 +1,31 @@
+```
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  docs/scripts/build-api-locales.test.ts > build localizes markdown headings, prose, and sidebars, then logs the summary
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ docs/scripts/build-api-locales.test.ts:120:95
+    118|   await import("./build-api-locales.ts");
+    119|   await vi.waitFor(() =>
+    120|     expect(logSpy.mock.calls.some((c: unknown[]) => String(c[0]).inclu…
+       |                                                                                               ^
+    121|       true,
+    122|     ),
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 296 passed (297)
+      Tests  1 failed | 2039 passed (2040)
+   Start at  17:35:43
+   Duration  110.73s (transform 17.90s, setup 8.00s, import 146.83s, tests 74.27s, environment 11.95s)
+
+JUNIT report written to /home/runner/work/pantoken/pantoken/junit.xml
+Error: Process completed with exit code 1.
+```
