@@ -1,0 +1,55 @@
+do it
+
+---
+
+[Terminal 2d251af8-23db-4d32-8b63-8fe7a5e50fcd notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on i18n2 ≡ via  26.8.1 
+➜  entire graph search --repo . --profile full --query "Fix docs.api extraction producing guide content and losing existing catalog identities" >/tmp/pantoken-api-extract-graph.txt && git diff -- tools/i18n-engine/src/pipeline.ts tools/i18n-engine/src/cli.ts tools/i18n-engine/src/index.ts tools/i18n-engine/src/coverage.ts vite.config.ts docs/.vitepress/config.ts docs/.vitepress/i18n.ts | sed -n '1,420p'
+pantoken on i18n2 ≡ via  26.8.1 
+➜  git status --short --branch && git log --oneline -12 -- tools/i18n-engine/src/pipeline.ts l10n/docs.api.pot docs/scripts/build-api-en.ts
+## i18n2...origin/i18n2
+b4227e20b fix(i18n): normalize rendered guide whitespace
+a9951336b fix(ci): provision localization test prerequisites
+b0336c094 refactor(docs): migrate API localization to PO
+db653d6a3 refactor(docs): migrate guides localization to PO
+61a2371fa refactor(docs): migrate demos localization to PO
+50a0502f5 feat(i18n-engine): support frontmatter content spaces
+7bbcc4cfb refactor(web-components): own localization runtime
+f44ffad7d fix(i18n-engine): handle policy maps in POT flags
+a33584d68 refactor(i18n): embed drift policy in config
+2bf080786 refactor(i18n): namespace message catalog contexts
+4dc9b5442 refactor(i18n-engine): normalize catalog units and rendering
+cd6da48d4 fix(i18n): satisfy CI documentation and exit-code checks
+pantoken on i18n2 ≡ via  26.8.1 
+➜  /Users/dwahl/.local/share/vite-plus/0.3.0/bin/vp check tools/i18n-engine/src/pipeline.ts tools/i18n-engine/tests/pipeline-messages.test.ts
+VITE+ - The Unified Toolchain for the Web
+
+pass: All 2 files are correctly formatted (111ms, 10 threads)
+pass: Found no warnings, lint errors, or type errors in 2 files (472ms, 10 threads)
+pantoken on i18n2 ≡  ~2 via  26.8.1 
+➜  git diff --check && git diff --stat -- tools/i18n-engine/src/pipeline.ts tools/i18n-engine/tests/pipeline-messages.test.ts
+ tools/i18n-engine/src/pipeline.ts                 | 16 +++++++++-----
+ tools/i18n-engine/tests/pipeline-messages.test.ts | 27 +++++++++++++++++++++++
+ 2 files changed, 37 insertions(+), 6 deletions(-)
+pantoken on i18n2 ≡  ~2 via  26.8.1 
+➜  vpr docs:api:en
+Selected task: @pantoken/docs#docs:api:en
+~/docs$ node scripts/build-api-en.ts
+[info] Loaded plugin typedoc-plugin-markdown
+[info] Loaded plugin typedoc-vitepress-theme
+[info] Loaded plugin /Users/dwahl/Scripts/pantoken/plugins/typedoc/demo/dist/index.mjs
+[info] markdown generated at ./api
+✓ API badges: styled 707 markdown file(s)
+✓ API overview: wrote docs/api/index.md
+
+---
+vp run: @pantoken/docs#docs:api:en not cached because it modified its input. (Run `vp run --last-details` for full details)
+
+---
+
+so generating a coverage report will now show the most accurate and up-to-date version?
+
+---
+
+okay, now that we've translated every space except docs.api, it's time to update the i18n config to require all the languages in all the other spaces to prevent future drift.
