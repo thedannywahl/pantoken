@@ -1,0 +1,1 @@
+I'm trying to convert this to an svg for a favicon, it visually appears correct, but make sure it's a square with a transparent background and the `P.` characters centered, maintaining the existing spacing.
