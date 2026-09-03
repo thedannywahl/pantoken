@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-03 17:30+0000\n"
+"PO-Revision-Date: 2026-09-03 18:14+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -1176,7 +1176,7 @@ msgstr "A custom `-icon-<name>` kicseréli a státuszigazolót, de megtartja a v
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [alert.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/alert/alert.css)"
-msgstr "**Forrás:** [alert.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/alert/alert.css)"
+msgstr "**Source:** [alert.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/alert/alert.css)"
 
 #: css/alert.md
 #, no-c-format
@@ -1452,7 +1452,7 @@ msgstr "Alapértelmezés szerint a paletta színe tónusosítja a kezdőbetűket
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/avatar/avatar.css)"
-msgstr "**Forrás:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/avatar/avatar.css)"
+msgstr "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/avatar/avatar.css)"
 
 #: css/avatar.md
 #, no-c-format
@@ -1692,7 +1692,7 @@ msgstr "Opcionális (párosul .first-name-nel): becsomagolja a családnevet, az 
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Optional: wrap the full name to clip it to a single leading letter without data-initials or JS."
-msgstr "Opcionális: csomagold be a teljes nevet, hogy egyetlen vezető betűre vágja levágás nélkül data-initials vagy JS nélkül."
+msgstr "Optional: wrap the full name to clip it to a single leading letter without data-initials or JS."
 
 #: css/avatar.md
 #, no-c-format
@@ -1722,7 +1722,7 @@ msgstr "Ahhoz, hogy egy badget egy cél fölé helyezz, csomagold mindkettőt eg
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [badge.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/badge/badge.css)"
-msgstr "**Forrás:** [badge.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/badge/badge.css)"
+msgstr "**Source:** [badge.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/badge/badge.css)"
 
 #: css/badge.md
 #, no-c-format
@@ -1746,7 +1746,7 @@ msgstr "Figyelem/hiba számláló."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "On-dark: a light chip with dark text."
-msgstr "Sötét felületen: világos chip sötét szöveggel."
+msgstr "On-dark: a light chip with dark text."
 
 #: css/badge.md
 #, no-c-format
@@ -1962,7 +1962,7 @@ msgstr "`*` — Az opt-in globális reset: `box-sizing`, az oldal felülete, ala
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [base.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/rules/base/base.css)"
-msgstr "**Forrás:** [base.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/rules/base/base.css)"
+msgstr "**Source:** [base.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/rules/base/base.css)"
 
 #: css/base.md
 #, no-c-format
@@ -1998,7 +1998,7 @@ msgstr "A `.hero`/`.heading`/`.message` részeket a fogyasztó markupja alkotja,
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [billboard.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/billboard/billboard.css)"
-msgstr "**Forrás:** [billboard.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/billboard/billboard.css)"
+msgstr "**Source:** [billboard.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/billboard/billboard.css)"
 
 #: css/billboard.md
 #, no-c-format
@@ -2022,7 +2022,7 @@ msgstr "Hosszú forma alias a {@link -size-lg}-nek."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Large: roomier spacing with larger heading, message, and hero icon."
-msgstr "Nagy: tágasabb elrendezés nagyobb fejlécel, üzenettel és hero ikonral."
+msgstr "Large: roomier spacing with larger heading, message, and hero icon."
 
 #: css/billboard.md
 #, no-c-format
@@ -2040,7 +2040,7 @@ msgstr "Hosszú forma alias a {@link -size-md}-nek."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Small: tighter spacing with smaller heading, message, and hero icon."
-msgstr "Kicsi: szorosabb térköz kisebb fejlécel, üzenettel és hero ikonral."
+msgstr "Small: tighter spacing with smaller heading, message, and hero icon."
 
 #: css/billboard.md
 #, no-c-format
@@ -2172,7 +2172,7 @@ msgstr "Kis képernyőkön automatikusan vissza nyílra csukódik. Használd `br
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [breadcrumb.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/breadcrumb/breadcrumb.css)"
-msgstr "**Forrás:** [breadcrumb.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/breadcrumb/breadcrumb.css)"
+msgstr "**Source:** [breadcrumb.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/breadcrumb/breadcrumb.css)"
 
 #: css/breadcrumb.md
 #, no-c-format
@@ -2238,7 +2238,7 @@ msgstr "Az AI variánsok a keretükhöz két gradienst rétegeznek — egy paddi
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [button.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/button/button.css)"
-msgstr "Fetching the file contents from the provided GitHub URL to translate the UI text.\n\n✗ Fetching web content https://raw.githubusercontent.com/thedannywahl/pantoken/main/formats/compone…\n  └ Permission denied and could not request permission from user\n\n**Forrás:** [button.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/button/button.css)"
+msgstr "**Source:** [button.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/button/button.css)"
 
 #: css/button.md
 #, no-c-format
@@ -2412,7 +2412,7 @@ msgstr "Beállítja a maga `gap` értékét a figura és a szövegtömb között
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [byline.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/byline/byline.css)"
-msgstr "**Forrás:** [byline.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/byline/byline.css)"
+msgstr "**Source:** [byline.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/byline/byline.css)"
 
 #: css/byline.md
 #, no-c-format
@@ -2508,7 +2508,7 @@ msgstr "Az egyes napcellákhoz lásd a `calendar.day` tagot."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [calendar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/calendar/calendar.css)"
-msgstr "Reading the source CSS file to translate its UI text from English to Hungarian. Viewing the file at formats/components/src/components/calendar/calendar.css.\n\n● Read calendar.css\n  │ formats/components/src/components/calendar/calendar.css\n  └ 100 lines read\n\n/**\n * @component calendar\n * @summary Statikus havi rács navigációval, hét napjait jelző fejlécsorral és napcellaelemekkel.\n * @part .nav — A hónap navigációs sora.\n * @part .grid — A hétoszlopos naprács.\n * @part .weekday — Egy hét napját jelző oszlopfejléc.\n * @remarks Lásd a `calendar.day` tagot az egyes napcellaelemekhez.\n * @a11y Tegye elérhetővé a rácsot `role=\"table\"`-lal és egy leíró `aria-label`-lel, és adjon minden navigációs gombnak külön `aria-label`-t.\n * @example\n * <div class=\"pfx-calendar\" role=\"table\" aria-label=\"2026. március\">\n *   <div class=\"nav\">\n *     <button class=\"pfx-button -color-tertiary -shape-square -without-border -icon-chevron-left\" aria-label=\"Előző hónap\"></button>\n *     <strong>2026. március</strong>\n *     <button class=\"pfx-button -color-tertiary -shape-square -without-border -icon-chevron-right\" aria-label=\"Következő hónap\"></button>\n *   </div>\n *   <div class=\"grid\">\n *     <span class=\"weekday\">V</span>\n *     <span class=\"weekday\">H</span>\n *     <span class=\"weekday\">K</span>\n *     <span class=\"weekday\">Sze</span>\n *     <span class=\"weekday\">Cs</span>\n *     <span class=\"weekday\">P</span>\n *     <span class=\"weekday\">Szo</span>\n *     <span class=\"day -outside-month\">23</span>\n *     <span class=\"day -outside-month\">24</span>\n *     <span class=\"day -outside-month\">25</span>\n *     <span class=\"day -outside-month\">26</span>\n *     <span class=\"day -outside-month\">27</span>\n *     <span class=\"day -outside-month\">28</span>\n *     <span class=\"day\">1</span>\n *     <span class=\"day\">2</span>\n *     <span class=\"day\">3</span>\n *     <span class=\"day\">4</span>\n *     <span class=\"day\">5</span>\n *     <span class=\"day\">6</span>\n *     <span class=\"day -today\">7</span>\n *     <span class=\"day\">8</span>\n *     <span class=\"day\">9</span>\n *     <span class=\"day\">10</span>\n *     <span class=\"day\">11</span>\n *     <span class=\"day -selected\">12</span>\n *     <span class=\"day\">13</span>\n *     <span class=\"day\">14</span>\n *     <span class=\"day\">15</span>\n *   </div>\n * </div>\n * @structure\n * .pfx-calendar {\n *   .nav {\n *     .pfx-button {}\n *     strong {}\n *   }\n *   .grid {\n *     .weekday {}\n *     .day:many {}\n *   }\n * }\n */\n.pfx-calendar {\n  display: inline-block;\n  text-align: center;\n  background: var(--instui-component-calendar-background);\n  color: var(--instui-component-calendar-color);\n  font-family: var(--instui-component-calendar-font-family);\n  font-size: var(--instui-component-calendar-font-size);\n  font-weight: var(--instui-component-calendar-font-weight);\n  line-height: var(--instui-component-calendar-line-height);\n}\n\n@scope (.pfx-calendar) {\n  :scope {\n    /* Teljes szélességű navigáció: az előző/következő gombok a naptár szélén helyezkednek el, a hónapcím közöttük középre igazodik (az InstUI csak a sor alatti távolságot kezeli, így csak block-end margó van — nincs inline beállítás). */\n    > .nav {\n      display: flex;\n      align-items: center;\n      justify-content: space-between;\n      margin-block-end: var(--instui-component-calendar-nav-margin);\n    }\n\n    /* Fix négyzet alakú napcellák, blokk-középre igazítva (az 1fr oszlopok egyenetlenül nyújtanák a cellákat és eltolnák őket az inline-block naptáron belül). A távolság mindkét tengelyen szimmetrikus az InstUI-hoz illeszkedve, amely a napok között a böngésző alapértelmezett border-spacing-jét használja mindkét irányban. */\n    > .grid {\n      display: grid;\n      grid-template-columns: repeat(7, var(--instui-component-calendar-day-min-width));\n      justify-content: center;\n      gap: var(--instui-spacing-space2xs);\n    }\n\n    .weekday {\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      inline-size: var(--instui-component-calendar-day-min-width);\n      block-size: var(--instui-component-calendar-day-height);\n      font-weight: var(--instui-font-weight-interactive);\n    }\n  }\n}"
+msgstr "**Source:** [calendar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/calendar/calendar.css)"
 
 #: css/calendar.md
 #, no-c-format
@@ -2652,7 +2652,7 @@ msgstr "- [heading](/api/css/heading.md) — Helyezze közvetlenül a kártyába
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- https://drafts.csswg.org/css-cascade-6/#scoping"
-msgstr "Fetching the referenced spec page to extract the scoping section for translation.\n\n✗ Fetching web content https://drafts.csswg.org/css-cascade-6/#scoping · url: \"https://drafts.csswg…\n  └ Permission denied and could not request permission from user\n\nNem fértem hozzá a megadott weboldal tartalmához. Kérlek, illeszd be a lefordítandó szöveget ide, vagy engedélyezd a hozzáférést az oldalhoz."
+msgstr "- https://drafts.csswg.org/css-cascade-6/#scoping"
 
 #: css/checkbox.md
 #, no-c-format
@@ -2676,7 +2676,7 @@ msgstr "Állítsd be az el.indeterminate = true értéket JavaScriptben a részl
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [checkbox.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/checkbox/checkbox.css)"
-msgstr "Reading the referenced file to extract the English UI text that needs translation. Fetching the file contents at the given repository path.\n\n● Read checkbox.css\n  │ formats/components/src/components/checkbox/checkbox.css\n  └ 252 lines read\n\n@component checkbox\n@summary Natív jelölőnégyzet és címkéje, vagy kapcsoló a `-variant-toggle` használatával.\n@remarks Állítsa be `el.indeterminate = true` JavaScriptben a vegyes állapot (dash) megjelenítéséhez; a bejelölt pipa automatikusan kontrasztos a kitöltéssel — fehér sötét kitöltésen, közel-fekete világoson. Beállítja a vezérlő és a címke közötti saját `gap` értékét is; egy `-gap-*` spacing utility módosító láncolása felülírja ezt a beépített értéket.\n@modifier -invalid — Érvénytelen (hiba) állapot.\n@modifier -label-placement-end — A címke a vezérlő után legyen.\n@modifier -label-placement-start — A címke a vezérlő előtt legyen.\n@modifier -label-placement-top — A címke a vezérlő fölött legyen.\n@modifier -readonly — Csak olvasható állapot.\n@modifier -required — Kötelező mező csillagának megjelenítése a címke mellett.\n@modifier -variant-toggle — Kapcsolóként megjelenítés doboz helyett.\n@modifier -size-sm — Kicsi.\n@modifier -size-lg — Nagy.\n@part .asterisk — A kötelező mező csillag.\n@pseudo ::before — A maszkolt pipa vagy kötőjel glifa középre igazítva a dobozban; `-variant-toggle`-on ez lesz a csúszó fogantyú.\n@pseudo ::after — `-variant-toggle`-on a fogantyún elhelyezett állapotszimbólum: X kioltott állapotban, pipa bekapcsolt állapotban.\n@cssproperty --pantoken-cb-glyph <url> — A doboz maszkolt glifája: pipa bejelölve, kötőjel vegyes állapotban.\n@cssproperty --pantoken-toggle-h <length> — A toggle kapcsoló magassága.\n@cssproperty --pantoken-toggle-w <length> — A toggle sín szélessége.\n@cssproperty --pantoken-toggle-bw <length> — A toggle keretvastagsága.\n@cssproperty --pantoken-toggle-inset <length> — A fogantyú bemélyítése a sín minden élétől.\n@cssproperty --pantoken-toggle-handle <length> — A számított fogantyú átmérője.\n@cssstate checked\n@cssstate indeterminate\n@cssstate disabled\n@accessibility Egy natív `<input type=\"checkbox\">` vezérli a `:checked`, `:indeterminate` és `:disabled` állapotokat; állítsa be `el.indeterminate = true` JavaScriptben a vegyes állapothoz, és vegye figyelembe, hogy a `-readonly` csak stílus, mivel a jelölőnégyzeteknek nincs natív readonly attribútuma.\n@example\n```html\n<label class=\"pfx-checkbox --display-block --mb-sm\">\n  <input type=\"checkbox\" checked>Checkbox\n</label>\n<label class=\"pfx-checkbox -variant-toggle\">\n  <input type=\"checkbox\">Toggle\n</label>\n```\n@related radio — Az egypipás (single-select) megfelelője.\n\nlabelPlacement: a vezérlő van előbb a markupban, ezért flex-sel rendezve kerül sor. Az alapértelmezett \"end\" (címke a vezérlő után); a \"start\" a címkét elé helyezi, a \"top\" fölé sorolja.\nAlap vezérlő: natív jelölőnégyzet átszabatolva az appearance:none használatával, így az InstUI keret-/háttér-/bejelölt tokenek mind érvényesülnek, a pipa pedig ::before segítségével van maszkolva. Elkülönítve a --toggle kapcsolótól.\nIndeterminate (vegyes) állapot: a pipa helyett kötőjel. Állítsa be `el.indeterminate = true` JS-ben.\nA rebrand téma a toggle-background-off értékét ugyanarra a zöldre oldja fel, mint a bekapcsolt állapot, ezért a kikapcsolt sín a semleges tompított háttérszínt használja; az állapotot a fogantyú pozíciója és a bekapcsolt szín jelzi.\nÁllapotszimbólum a fogantyún: X kikapcsolt állapotban, pipa bekapcsolt állapotban, a sín színében."
+msgstr "**Source:** [checkbox.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/checkbox/checkbox.css)"
 
 #: css/checkbox.md
 #, no-c-format
@@ -2808,7 +2808,7 @@ msgstr "Mindig csak ikonként renderelődik látható felirat nélkül, ezért a
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [close-button.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/close-button/close-button.css)"
-msgstr "Reading the source file to extract the English text to translate. I'll open the specified CSS file.\n\n● Read close-button.css\n  │ formats/components/src/components/close-button/close-button.css\n  └ 89 lines read\n\n/**\n * @component close-button\n * @selector .pfx-close-button\n * @summary Egy átlátszó ikon gomb, amely a saját × jelét rajzolja meg, három méretben, valamint egy -on-color variánssal.\n * @remarks Mindig csak ikonként jelenik meg, látható felirat nélkül, ezért `aria-label` kötelező, nem opcionális; hasonlítsd össze a `button` `-without-background` szellemvariánsával, amely megtartja a szöveges címkét.\n * @modifier -color-inverse — @deprecated {@link -on-color}\n * @modifier -on-color — Olyan bezáró gombhoz, amely színes (nem semleges) felületen helyezkedik el.\n * @modifier -size-sm — Kicsi.\n * @modifier -size-md — (alapértelmezett) közepes méret.\n * @modifier -size-lg — Nagy.\n * @cssstate disabled\n * @pseudo ::before — A × glyph, `currentColor` maszkolással.\n * @a11y Add meg az ikon-only gombnak az `aria-label` attribútumot (pl. \"Close\"), és jelöld a letiltott gombot `aria-disabled`-dal (vagy a natív `disabled`-dal).\n * @example\n * <button class=\"pfx-close-button -size-sm\" aria-label=\"Close\"></button>\n * @related button — Az általános célú műveletgomb.\n */"
+msgstr "**Source:** [close-button.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/close-button/close-button.css)"
 
 #: css/close-button.md
 #, no-c-format
@@ -2850,7 +2850,7 @@ msgstr ".--text-danger — Szemantikus szín segédosztályok: `.--bg-<name>`, `
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [generate.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/scripts/generate.ts)"
-msgstr "Forrás: [generate.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/scripts/generate.ts)"
+msgstr "**Source:** [generate.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/scripts/generate.ts)"
 
 #: css/color.md
 #, no-c-format
@@ -2904,7 +2904,7 @@ msgstr "Az indikátor két egymásra helyezett `::before`/`::after` háromszög 
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [context-view.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/context-view/context-view.css)"
-msgstr "Fetching the referenced CSS file so its UI text can be translated to Hungarian.\n\n✗ Fetching web content https://raw.githubusercontent.com/thedannywahl/pantoken/main/formats/compone…\n  └ Permission denied and could not request permission from user\n\nNem tudom letölteni a fájlt a megadott URL-ről (engedély megtagadva). Kérlek, másold ide a lefordítandó angol szöveget (vagy a fájl tartalmát), és átküldöm magyarra."
+msgstr "**Source:** [context-view.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/context-view/context-view.css)"
 
 #: css/context-view.md
 #, no-c-format
@@ -2976,7 +2976,7 @@ msgstr ".--cursor-pointer — a `cursor` mint összetehető, globális osztály 
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/cursor/index.ts)"
-msgstr "Fetching the source file to translate.\n\n● Get file or directory contents (MCP: github-mcp-server) · formats/components/src/utilities/cursor…\n  └ successfully downloaded text file (SHA: fa1170b58563ea98afe2092eb000ec5331826...\n\nA kurzor segéd — a CSS `cursor` összetett, globálisan elérhető osztályokként (önállóan vagy bármely komponensre láncolva) — a `view` korábbi `-cursor-*` módosítóiból átmásolva.\n\nModul\n\nÉpít CSS-szabályokat egy tulajdonság/érték térképhez. Segédfunkció a kurzor/pozíció segédhez.\n\nA kurzor segéd — a `cursor` mint összetett, globális osztályok.\n- @utility cursor\n- @selector .--cursor-pointer\n- @global\n- @summary A `cursor` összetett, globális osztályként — `.--cursor-<value>` — önállóan vagy bármely komponensre láncolva használható (`.instui-button.--cursor-pointer`).\n- @modifier --cursor-auto — cursor: auto.\n- @modifier --cursor-default — cursor: default.\n- @modifier --cursor-pointer — cursor: pointer.\n- @modifier --cursor-not-allowed — cursor: not-allowed.\n- @modifier --cursor-text — cursor: text.\n- @modifier --cursor-move — cursor: move.\n- @modifier --cursor-grab — cursor: grab.\n- @modifier --cursor-wait — cursor: wait.\n- @example\n- <div class=\"--cursor-pointer\">…</div>\n\nA kurzor segéd önálló, fejléc-csomagolt stíluslapként."
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/cursor/index.ts)"
 
 #: css/cursor.md
 #, no-c-format
@@ -2988,43 +2988,43 @@ msgstr "cursor: auto."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "cursor: default."
-msgstr "kurzor: alapértelmezett."
+msgstr "cursor: default."
 
 #: css/cursor.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "cursor: grab."
-msgstr "kurzor: fogás."
+msgstr "cursor: grab."
 
 #: css/cursor.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "cursor: move."
-msgstr "kurzor: mozgatás."
+msgstr "cursor: move."
 
 #: css/cursor.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "cursor: not-allowed."
-msgstr "kurzor: nem engedélyezett."
+msgstr "cursor: not-allowed."
 
 #: css/cursor.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "cursor: pointer."
-msgstr "kurzor: mutató."
+msgstr "cursor: pointer."
 
 #: css/cursor.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "cursor: text."
-msgstr "kurzor: szöveg."
+msgstr "cursor: text."
 
 #: css/cursor.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "cursor: wait."
-msgstr "kurzor: várakozás."
+msgstr "cursor: wait."
 
 #: css/drawer-layout.content.md
 #, no-c-format
@@ -3078,7 +3078,7 @@ msgstr "`-placement-end` és az alapértelmezett (start) egyaránt a `flex-direc
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [drawer-layout.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/drawer-layout/drawer-layout.css)"
-msgstr "Fetching the referenced file to extract the UI text to translate.\n\n✗ Fetching web content https://raw.githubusercontent.com/thedannywahl/pantoken/main/formats/compone…\n  └ Permission denied and could not request permission from user\n\n● Read drawer-layout.css\n  │ formats/components/src/components/drawer-layout/drawer-layout.css\n  └ 61 lines read\n\n/**\n * @component drawer-layout\n * @selector .pfx-drawer-layout\n * @summary Egy osztott elrendezés összecsukható oldalsó fiókkal és elsődleges görgethető tartalmi panellel.\n * @modifier -placement-start — Rögzíti a fiókot az inline-start oldalon (alapértelmezett; expliciten beállítja).\n * @modifier -placement-end — Rögzíti a fiókot az inline-end oldalon.\n * @modifier -should-overlay-tray — @interaction A fiókot fedő rétegként jeleníti meg ahelyett, hogy a tartalmat inline módon összehúzná.\n * @modifier -open — Megjeleníti a fiókot még akkor is, ha az `open` attribútum hiányzik.\n * @part .tray — Az oldalsó panel.\n * @part .content — A fő panel.\n * @cssproperty --pantoken-bp-md — Szélességküszöb az overlay módhoz (`30em`, tematikusan a responsive segédeszközökkel).\n * @remarks Ez a rekord az elrendezést, elhelyezést és a nyitott állapot kapuit definiálja; a fiók felülete és a tartalom görgetése a `drawer-layout.tray` és `drawer-layout.content` tagokban található.\n * @remarks A fiók rejtett marad, amíg az `open` (attribútum) vagy a `-open` (osztály) jelen nem lesz.\n * @remarks Egy `container-type: inline-size` konténer (név: `pantoken-drawer-layout`) lehetővé teszi, hogy a `drawer-layout.tray`/`drawer-layout.content` tagok automatikusan észleljék az overlay módot az elem saját számított inline-size értéke alapján — a vizuális váltáshoz nincs szükség JS-re.\n * @remarks A `-placement-end` és az alapértelmezett (start) is logikai tulajdonságokat használ (`flex-direction`/`inset-inline-*`), nem `left`/`right`-ot, így a fiók oldala automatikusan követi a `direction`/`dir=\"rtl\"` beállítást — külön RTL-szabályok nem szükségesek.\n * @accessibility Amikor a fiók navigációs szerepet tölt be, jelöljük meg hozzáférhető címsorral vagy `aria-label`-lel. Adjunk a `.content`-nek `role=\"region\"` attribútumot (az InstUI DrawerLayout konvenciója), és nevezzük meg `aria-label`/`aria-labelledby` segítségével, ha a kontextus önmagában nem azonosítja.\n * @compat A `drawer-layout.tray`/`drawer-layout.content` elemek automatikusan váltanak overlay módra egy `@container` lekérdezés révén, ha ennek az elemnek az inline-size-a a tálca szélessége + `--pantoken-bp-md` alá esik. Az `@pantoken/interactions` viselkedés továbbá váltja a `[should-overlay-tray]`/`.-should-overlay-tray` (kézi felülbírálat) állapotot és kibocsátja az `overlaytraychange` eseményt azoknak az alkalmazásoknak, amelyeknek szükségük van erre a változásra eseményként.\n * @example\n * ```html\n * <div class=\"pfx-drawer-layout\" id=\"drawer\" open>\n *   <aside class=\"tray\">Navigation</aside>\n *   <main class=\"content\" role=\"region\">Main content</main>\n * </div>\n * ```\n * @structure\n * .pfx-drawer-layout {\n *   @member tray {}\n *   @member content {}\n * }\n * @related tray — Egy önálló él-fedő; ez az elrendezés a tray-t és a content-et ugyanabban a folyamban tartja.\n * @related context-view — Egy kisebb, rögzített felület kontextuális műveletekhez és részletekhez.\n */"
+msgstr "**Source:** [drawer-layout.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/drawer-layout/drawer-layout.css)"
 
 #: css/drawer-layout.md
 #, no-c-format
@@ -3210,7 +3210,7 @@ msgstr "A `-hover`/`-accepted`/`-rejected` osztályok kizárólag vizuálisak �
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [file-drop.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/file-drop/file-drop.css)"
-msgstr "Reading the CSS source to extract the text to translate.\n\n● Read file-drop.css\n  │ formats/components/src/components/file-drop/file-drop.css\n  └ 56 lines read\n\n/**\n * @component file-drop\n * @selector .pfx-file-drop\n * @summary Fájl eldobó zóna lebegési, elfogadott és elutasított állapotokkal.\n * @remarks A `-hover`/`-accepted`/`-rejected` osztályok kizárólag vizuálisak — a tényleges drag-and-drop érzékelés és a fájlok érvényesítése a fogyasztó JS-ére tartozik, amely a beágyazott natív input köré kapcsolódik.\n * @modifier -icon-* — Megjeleníti a vezető eldobó zóna glyph ikont.\n * @modifier -accepted — Drag állapot elfogadható fájl esetén.\n * @modifier -hover — Hover vagy drag-over állapot.\n * @modifier -rejected — Drag állapot elutasított fájl esetén.\n * @accessibility Csomagoljon egy natív `<input type=\"file\">` elemet a `<label>` eldobó zónába, így az valós, feliratozott fájlvezérlő marad, amelyet a billentyűzet és a segédeszközök is kezelni tudnak.\n * @example\n * <label class=\"pfx-file-drop\" id=\"fd\">\n *   <span class=\"pfx-icon -icon-cloud-upload\"></span>\n *   <div class=\"pfx-text\"><strong>Húzz ide egy képet</strong>, vagy kattints a tallózáshoz.</div>\n *   <div class=\"pfx-text -size-sm pfx-fg-muted\" id=\"fd-msg\">PNG vagy JPG, legfeljebb 5&nbsp;MB.</div>\n *   <input type=\"file\" id=\"fd-input\">\n * </label>\n * @structure\n * .pfx-file-drop {\n *   [class*=\"-icon-\"]:optional {}\n *   .pfx-text {\n *     strong {}\n *   }\n *   .pfx-text {}\n *   input {}\n * }\n */"
+msgstr "**Source:** [file-drop.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/file-drop/file-drop.css)"
 
 #: css/file-drop.md
 #, no-c-format
@@ -3264,7 +3264,7 @@ msgstr "Beállítja a mezők közötti saját `gap`-et, amely a lenti `-col-spac
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [form-field-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field-group/form-field-group.css)"
-msgstr "Reading the referenced CSS file to extract the UI text that needs translation. Using view to open the file at the repository path.\n\n● Read form-field-group.css\n  │ formats/components/src/components/form-field-group/form-field-group.css\n  └ 156 lines read\n\n@Component: form-field-group\n@selector: .pfx-form-field-group\nÖsszefoglaló: Egy `<fieldset>` csoport legendával, oszlop- vagy soros elrendezéssel és konfigurálható távolsággal.\nMegjegyzés: A mezők közötti `gap` értéket maga állítja be, mely a lenti `-col-spacing-*`/`-row-spacing-*` módosítókkal hangolható — ezeket részesítsd előnyben a generikus `-gap-*` hasznosító módosító láncolása helyett, mert az felülírná a beépített értéket.\n@módosítók:\n- -col-spacing-none — Nincs oszloptávolság.\n- -col-spacing-small — Kis oszloptávolság.\n- -col-spacing-medium — Közepes oszloptávolság.\n- -col-spacing-large — Nagy oszloptávolság.\n- -row-spacing-none — Nincs sortávolság.\n- -row-spacing-small — Kis sortávolság.\n- -row-spacing-medium — Közepes sortávolság.\n- -row-spacing-large — Nagy sortávolság.\n- -layout-aligned — A gyermekmezőket közös rácshoz igazítja.\n- -layout-columns — A gyermekmezőket oszlopokba rendezi.\n- -layout-inline — A gyermekmezőket sorban, egymás mellett rendezi.\n- -required — A csoport kötelezőként jelölése.\n- -v-align-top — A mezők felső igazítása.\n- -v-align-middle — A mezők középre igazítása.\n- -v-align-bottom — A mezők alsó igazítása.\n@pseudo ::after — Díszítő csillagot (kötelező mező jelzés) jelenít meg a legendaszöveg után, ha a csoport kötelező.\n@accessibility: Natív `<fieldset>`-et és `<legend>`-et renderel, így a legendaszöveg a segédeszközök számára nevezi meg az egész csoportot.\n@compat: A `-layout-aligned` mód CSS subgrid-et használ `@supports` ellenőrzéssel; ahol a subgrid nem támogatott, a mezők visszaesnek saját egymásra rakott elrendezésükre.\n@példa:\n<fieldset class=\"pfx-form-field-group -layout-columns -col-spacing-medium\">\n  <legend>Szállítási cím</legend>\n  <label class=\"pfx-form-field\">\n    <span class=\"label\">Keresztnév</span>\n    <span class=\"controls\"><input class=\"pfx-text-input\"></span>\n  </label>\n  <label class=\"pfx-form-field\">\n    <span class=\"label\">Vezetéknév</span>\n    <span class=\"controls\"><input class=\"pfx-text-input\"></span>\n  </label>\n  <label class=\"pfx-form-field\">\n    <span class=\"label\">Város</span>\n    <span class=\"controls\"><input class=\"pfx-text-input\"></span>\n  </label>\n  <label class=\"pfx-form-field\">\n    <span class=\"label\">Állam</span>\n    <span class=\"controls\">\n      <select class=\"pfx-simple-select\">\n        <option>CA</option>\n        <option>NY</option>\n        <option>TX</option>\n      </select>\n    </span>\n  </label>\n  <div class=\"pfx-form-field-messages\">\n    <span class=\"pfx-form-field-message -type-hint\">Minden mezőt csak a szállításhoz használunk.</span>\n  </div>\n</fieldset>\n@structure:\n.pfx-form-field-group.-layout-columns.-col-spacing-medium {\n  legend {}\n  .pfx-form-field {}\n  .pfx-form-field-messages {}\n}\n@related: form-field — Az az egyes mező, amelyből a csoport ismétlődik.\n@related: radio-input-group — Rádiógombokat csoportosít legend alatt."
+msgstr "**Source:** [form-field-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field-group/form-field-group.css)"
 
 #: css/form-field-group.md
 #, no-c-format
@@ -3402,7 +3402,7 @@ msgstr "Beállítja a saját `gap` értékét az egymásra helyezett üzenetek k
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [form-field-messages.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field-messages/form-field-messages.css)"
-msgstr "Reading the source CSS file to extract the UI strings that need translation. Fetching the file contents now.\n\n● Read form-field-messages.css\n  │ formats/components/src/components/form-field-messages/form-field-messages.css\n  └ 85 lines read\n\n/ **\n * @component form-field-messages\n * @selector .pfx-form-field-messages\n * @summary Mező segítő és érvényesítési üzenetek — súgó, hiba, siker és csak képernyőolvasónak szánt üzenet — ikonmegjelöléssel hiba és siker esetén.\n * @remarks Saját `gap` értékét állítja be a egymás alatti üzenetek között; egy `-gap-*` távolság módosító láncolása felülírja ezt a beépített értéket.\n * @modifier -type-new-error — @alias {@link -type-error}\n * @part .pfx-form-field-message — Egy egyedi üzenet; ennek `-type-*` osztálya választja ki a súgó, hiba, siker vagy csak képernyőolvasó változatot.\n * @pseudo ::before — A vezető státuszikon megjelenítése hiba és siker üzeneteknél: figyelmeztető kör a hibáknál és pipa-kör a sikernél.\n * @accessibility A `-type-screenreader-only` üzenet vizuálisan el van rejtve, de megmarad a hozzáférhetőségi fában, így továbbra is felolvasásra kerül; társítsa a hiba- és sikerüzeneteket a mezőhöz aria-describedby segítségével, hogy a segítő technológiák a vezérlővel együtt olvassák fel őket.\n * @example\n * <div class=\"pfx-form-field-messages\">\n *   <span class=\"pfx-form-field-message -type-hint\">Sohasem osztjuk meg.</span>\n *   <span class=\"pfx-form-field-message -type-error\">Adjon meg egy érvényes e-mail címet.</span>\n * </div>\n * @structure\n * .pfx-form-field-messages {\n *   .pfx-form-field-message {}\n * }\n * @related form-field — Címkét, vezérlőket és ezeket az üzeneteket foglalja magába.\n */"
+msgstr "**Source:** [form-field-messages.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field-messages/form-field-messages.css)"
 
 #: css/form-field-messages.md
 #, no-c-format
@@ -3456,7 +3456,7 @@ msgstr "Egy hibaüzenet rejtve marad, amíg a mező vezérlője nem lesz `:user-
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [form-field.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field/form-field.css)"
-msgstr "Viewing the source file to extract the UI text to translate.\n\n● Read form-field.css\n  │ formats/components/src/components/form-field/form-field.css\n  └ 127 lines read\n\n/********************************************************************************\n * @component form-field\n * @summary Egy form-field wrapper: egy címke, annak vezérlői és inline, required vagy readonly elrendezések.\n * @remarks Egy hibaüzenet rejtve marad, amíg a mező vezérlője nem lesz `:user-invalid` (miután a felhasználó interakcióba lépett), vagy amíg hozzá nem adod a `-invalid` osztályt. Használd a `-layout-inline`-t, hogy a címkét a vezérlők mellé tedd, illetve a `-layout-stacked`-et, hogy fölé helyezd. A komponens beállítja a saját `gap` értékét a címke, a vezérlők és az üzenetek között; egy `-gap-*` spacing utility módosító láncolása felülírja ezt a beépített értéket.\n * @modifier -inline — Inline elrendezés (rövidítés a `-layout-inline`-hez).\n * @modifier -layout-inline — Inline elrendezés: a címke a vezérlők mellett.\n * @modifier -layout-stacked — Stacked elrendezés: a címke a vezérlők fölött.\n * @modifier -label-align-start — A címkeszöveg kezdőpont szerinti igazítása.\n * @modifier -label-align-end — A címkeszöveg végpont szerinti igazítása.\n * @modifier -invalid — Érvénytelen (hiba) állapot.\n * @modifier -readonly — Csak olvasható állapot.\n * @modifier -v-align-top — A címke tetejéhez igazítás a vezérlőkkel.\n * @modifier -v-align-bottom — A címke aljához igazítás a vezérlőkkel.\n * @part .label — A mező címkéje.\n * @part .controls — A vezérlők területe a címke mellett vagy alatt.\n * @pseudo ::after — Megjeleníti a dekoratív, kötelező mezőt jelző csillagot a címke szövege után, ha a mező required.\n * @accessibility A `<label>` elem körbefogja a vezérlőt, így a címke szövege natívan nevezi meg azt; a kötelező csillag dekoratív és el kell rejteni a segítő technológiák elől (aria-hidden), a hibaüzenet pedig csak akkor kerül láthatóvá, ha a vezérlő `:user-invalid` állapotban van, vagy hozzáadod a `-invalid` osztályt.\n * @compat Tartalmazza az elemi stílusokat a CSS `@scope` at-rule segítségével; friss Chromium-, Firefox- vagy Safari-verzió szükséges.\n * @example\n * <label class=\"pfx-form-field\">\n *   <span class=\"label\">Email cím</span>\n *   <span class=\"controls\"><input class=\"pfx-text-input\" type=\"email\" placeholder=\"you@example.com\"></span>\n *   <div class=\"pfx-form-field-messages\">\n *     <span class=\"pfx-form-field-message -type-hint\">Sosem osztjuk meg.</span>\n *     <span class=\"pfx-form-field-message -type-error\">Adj meg érvényes email címet.</span>\n *   </div>\n * </label>\n * @structure\n * .pfx-form-field {\n *   .label {}\n *   .controls {\n *     .pfx-text-input {}\n *   }\n *   .pfx-form-field-messages {}\n * }\n * @related form-field-messages — Megjeleníti a mező hint, hiba és siker üzeneteit.\n * @related form-field-group — Kapcsolódó mezők csoportosítása megosztott legend alatt.\n ********************************************************************************/\n\n/* Üzenetek területe — KÜLSŐLEG tartva @scope-tól: az messages osztály megosztja a form-field előtagot. */\n\n/* Kliens-oldali validáció: egy hibaüzenet rejtve marad, amíg a mező vezérlője nem lesz :user-invalid\n   (miután a felhasználó interakcióba lépett), az MDN iránymutatása szerint; ezután megjelenik. Az explicit -invalid osztály a vezérlőn (és egy önálló .instui-form-field-messages egy mezőn kívül) nincs hatással. */\n\n/* Kötelező indikátor: natív [required] vezérlő VAGY a -required osztály; dekoratív (aria-hidden). */"
+msgstr "**Source:** [form-field.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field/form-field.css)"
 
 #: css/form-field.md
 #, no-c-format
@@ -3546,7 +3546,7 @@ msgstr "`.--gap-md` — Flex/grid `gap` segédosztályok a spacing skálán, rö
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/gap/index.ts)"
-msgstr "Reading the source file to extract the UI text that needs translating. Will open formats/components/src/utilities/gap/index.ts and extract the strings.\n\n● Read index.ts\n  │ formats/components/src/utilities/gap/index.ts\n  └ 52 lines read\n\n/**\n * A gap segédosztály — a pantoken távolság-skála `gap` osztályai, rövid (`-gap-sm`) és hosszú\n * (`-gap-small`) írásmódok ugyanazon szabályhoz.\n *\n * @module\n */\n\n/** `[key, value]` párok minden lépés rövid és hosszú kulcsára, duplikációk eltávolítva (pl. `\"0\"` és `\"none\"` egyaránt jelen vannak). */\n\n/** A gap segédosztály — `gap` osztályok a távolság skálán. Nincsenek oldalak: a `gap` nem logikai tulajdonság. */\n\n/**\n * @utility gap\n * @selector .--gap-md\n * @global\n * @summary Flex/grid `gap` segédosztályok a távolság-skálán, rövid (`--gap-sm`) vagy hosszú (`--gap-small`) írásmóddal. Használható önmagában vagy láncolva bármely komponensre (`.instui-view.--gap-sm`) — azok a komponensek, amelyek már komponens-specifikus tokenből állítják a saját `gap`-jüket, felülíródhatnak.\n * @modifier --gap-md — A közepes távolság-token alkalmazása gapként.\n * @modifier --gap-* — Gap segédosztályok a rövid és hosszú spacing-step írásmódokban.\n * @demo self:gap\n * @example\n * <div class=\"--display-flex --gap-sm\">\n *   <span>One</span>\n *   <span>Two</span>\n * </div>\n */"
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/gap/index.ts)"
 
 #: css/gap.md
 #, no-c-format
@@ -3582,7 +3582,7 @@ msgstr "A `-variant-*` előbeállítások felülírják egy `-level-*` font-size
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [heading.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/heading/heading.css)"
-msgstr "Fetching the specified file from the repository to translate its UI text.\n\n● Get file or directory contents (MCP: github-mcp-server) · formats/components/src/components/headi…\n  └ successfully downloaded text file (SHA: 71bbf22feceaef614a1bd31ecf2129da3b611...\n\n**Komponens:** heading\n**Összefoglaló:** Fejléc tipográfia `-level-h1`-től `-level-h6`-ig.\n**Megjegyzés:** A `-variant-*` előre beállítások felülírják egy `-level-*` fontméretét és betűsúlyát, ezért elemenként csak egy-egy családot használjon együtt.\n**Szelektor:** .pfx-heading\n**Módosítók:**\n- -level-h1 — Renderelés h1 típusú skálán.\n- -level-h2 — Renderelés h2 típusú skálán.\n- -level-h3 — Renderelés h3 típusú skálán.\n- -level-h4 — Renderelés h4 típusú skálán.\n- -level-h5 — Renderelés h5 típusú skálán.\n- -level-h6 — Renderelés h6 típusú skálán.\n- -color-primary — (alapértelmezett) Primer szín.\n- -color-secondary — Másodlagos (elhalványult) szín.\n- -color-ai — AI-accent szín.\n- -color-primary-inverse — Sötét háttéren használatos (primer inverz) szín.\n- -border-top — Felső vonal hozzáadása.\n- -border-bottom — Alsó vonal hozzáadása.\n- -variant-label — Label típus előbeállítás.\n- -variant-title-page — Oldalcím előbeállítás.\n- -variant-title-section — Szakaszcím előbeállítás.\n- -variant-title-card-mini — Mini kártyacím előbeállítás.\n- -variant-title-card-regular — Normál kártyacím előbeállítás.\n- -variant-title-card-section — Kártya szakaszcím előbeállítás.\n**Elérhetőség:** Ezek a klasszok csak a vizuális szintet állítják be; a cím szintjének közléséhez használjon valódi `<h1>`–`<h6>` elemet (vagy `role=\"heading\"`-et `aria-level`-lel).\n**Példa**\n<div class=\"pfx-heading -level-h1\">Fejléc h1</div>\n**Kapcsolódó:** text — Törzsszöveg tipográfiája nem-fejléc szövegekhez."
+msgstr "**Source:** [heading.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/heading/heading.css)"
 
 #: css/heading.md
 #, no-c-format
@@ -3804,7 +3804,7 @@ msgstr ".instui-icon — Az ikonrendszer: a `.instui-icon` méretezése és a k�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [icon.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/icon/icon.css)"
-msgstr "Reading the specified file to translate its text. I'll fetch the file content.\n\n● Read icon.css\n  │ formats/components/src/utilities/icon/icon.css\n  └ 27 lines read\n\n/**\n * @utility icon\n * @selector .pfx-icon\n * @summary Az ikon rendszer: `.instui-icon` méretezés és a megosztott `-icon-<name>` festő, amely egy jelképet maszkol (a `currentColor`-ral töltve) bármely elem előtt.\n * @modifier -icon-* — Beállítja a glyphe-token-t (`--pantoken-glyph`) és a megosztott festővel rendereli (például `-icon-search`).\n * @pseudo ::before — Maga a glyphe: egy 1em-es doboz, amelyet a `--pantoken-glyph` maszkol, és `currentColor`-ral töltődik.\n * @accessibility A glyphe dekoratív, ezért jelöld `aria-hidden=\"true\"`-val; csak akkor adj szerepet (`role`) vagy címkét, ha az ikon önmagában jelentést közvetít.\n * @example\n * <span class=\"instui-icon -icon-megaphone\" aria-hidden=\"true\"></span>\n */"
+msgstr "**Source:** [icon.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/icon/icon.css)"
 
 #: css/icon.md
 #, no-c-format
@@ -3846,7 +3846,7 @@ msgstr "A hatások a közös `--pantoken-img-filter` egyéni tulajdonságon kere
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [img.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/img/img.css)"
-msgstr "**Forrás:** [img.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/img/img.css)"
+msgstr "**Source:** [img.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/img/img.css)"
 
 #: css/img.md
 #, no-c-format
@@ -3912,7 +3912,7 @@ msgstr "Az input chrome csak fókusz esetén jelenik meg; a `-readonly` elnyomja
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [in-place-edit.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/in-place-edit/in-place-edit.css)"
-msgstr "Fetching the source file to translate.\n\n✗ Get file or directory contents (MCP: github-mcp-server) · formats/components/src/components/in-pl…\n  └ MCP server 'github-mcp-server': McpError: MCP error -32020: header mismatch: missing\n    Mcp-Param-owner header for parameter \"owner\"\n\n✗ Fetching web content https://raw.githubusercontent.com/thedannywahl/pantoken/main/formats/compone…\n  └ Permission denied and could not request permission from user\n\nForrás: [in-place-edit.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/in-place-edit/in-place-edit.css)"
+msgstr "**Source:** [in-place-edit.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/in-place-edit/in-place-edit.css)"
 
 #: css/in-place-edit.md
 #, no-c-format
@@ -4620,7 +4620,7 @@ msgstr "A `text-input`-tel azonos mezőkeretet foglal magába, ikonslotokkal min
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [input-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/input-group/input-group.css)"
-msgstr "Reading the referenced file to extract the UI text that needs translation. I'll open the CSS file and extract visible user-facing text.\n\n● Read input-group.css\n  │ formats/components/src/components/input-group/input-group.css\n  └ 134 lines read\n\n/ **\n * @component input-group\n * @summary Egy álhéj szövegmező köré vezető és követő ikonhelyekkel.\n * @remarks Ugyanazt a mező-keretet biztosítja, mint a `text-input`, ikonhelyekkel mindkét oldalon; a `-should-not-wrap` csak akkor szükséges, ha a csoport tartalma egy második sorba törne.\n * @selector .pfx-input-group\n * @modifier -disabled — Letiltott állapot.\n * @modifier -invalid — Érvénytelen (hiba) állapot.\n * @modifier -readonly — Csak olvasható állapot.\n * @modifier -success — Sikeres (érvényes) állapot.\n * @modifier -size-sm — Kicsi.\n * @modifier -size-md — Közepes.\n * @modifier -size-lg — Nagy.\n * @modifier -should-not-wrap — A csoport egy sorban tartása (nincs törés).\n * @part .before — A vezető tartalom helye.\n * @part .after — A követő tartalom helye.\n * @pseudo ::placeholder — A belső input helykitöltő szövege, tompított színnel.\n * @cssstate disabled\n * @example\n * <span class=\"pfx-input-group\">\n *   <span class=\"before\">@</span>\n *   <input type=\"text\" placeholder=\"felhasználónév\">\n * </span>\n * @related text-input — Burkol egy szövegmezőt, vezető és követő ikonhelyekkel kiegészítve.\n */"
+msgstr "**Source:** [input-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/input-group/input-group.css)"
 
 #: css/input-group.md
 #, no-c-format
@@ -4680,7 +4680,7 @@ msgstr ".--display-flex — Megjelenítési és szövegigazítási segédosztál
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/layout/index.ts)"
-msgstr "Fetching the referenced file to extract UI text for translation.\n\n● Get file or directory contents (MCP: github-mcp-server) · formats/components/src/utilities/layout…\n  └ successfully downloaded text file (SHA: 8c73eb00b4905082b3e93bd9cf95eca5b881d...\n\nA layout segédosztályok — a `display` és a `text-align` összefűzhető, globálisan elérhető osztályokként (egyedül vagy bármely komponenshez láncolva).\n\n/**\n * @utility layout\n * @selector .--display-flex\n * @global\n * @summary Display és text-align segédosztályok — `.--display-<value>` és `.--text-align-<value>` — összefűzhető, globális osztályokként, önállóan vagy bármely komponenshez láncolva használhatók.\n * @modifier --display-flex — Beállítja a `display: flex` értéket.\n * @modifier --display-* — Display segédosztályok: `block`, `inline-block`, `inline`, `flex`, `inline-flex` és `none`.\n * @modifier --text-align-* — Szövegigazítási segédosztályok: `start`, `center`, `end` és `justify`.\n * @example\n * <div class=\"--display-flex --text-align-center\">\n *   <span>Egy</span>\n *   <span>Kettő</span>\n * </div>\n */\n\nA layout segédosztályok önálló, fejlécbe csomagolt stíluslapként."
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/layout/index.ts)"
 
 #: css/layout.md
 #, no-c-format
@@ -4722,7 +4722,7 @@ msgstr "Saját, reszponzív `gap`-et állít be az ikon és a szöveg között (
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [link.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/link/link.css)"
-msgstr "Reading the specified file to extract the UI text that needs translation. I'll open the file around the component content.\n\n● Read link.css\n  │ formats/components/src/components/link/link.css\n  └ 92 lines read\n\n**Komponens:** link\n**Szelektor:** .pfx-link\n**Összefoglaló:** Egy stílusozott hivatkozás méretekkel, sötét háttérhez való inverz variánssal, valamint inline vagy stílustlan formákkal.\n**Megjegyzés:** Beállítja a saját responsív gap értékét az ikon és a szöveg között (`-size-sm`/`-size-lg` skálázhatja azt); egy `-gap-*` spacing utility módosító láncolása felülírja ezt a beépített értéket.\n**Módosítók:** \n- -color-inverse — sötét háttérhez.\n- -inline — inline link, aláhúzott a folyó szövegben.\n- -sm — kis inline link (a `-inline`-nel használatos).\n- -lg — nagy inline link (a `-inline`-nel használatos).\n- -unstyled — eltávolítja a link stílusát: örököl színt, nincs aláhúzás.\n- -size-sm — kicsi.\n- -size-lg — nagy.\n**CSS állapot:** disabled\n**A11y:** A tiltott linket jelöld `aria-disabled=\"true\"` attribútummal.\n**Példa**\n<a class=\"pfx-link\" href=\"#\">Egy stílusozott hivatkozás</a>\n**Kapcsolódó:** breadcrumb — A breadcrumb útvonal linkekből épül; valamint annak kicsi képernyős visszaesése (párosítsd a `responsive` utility-vel, hogy ~768px alatt Breadcrumb helyett Link jelenjen meg).\n\n/* Egy inline link, a szövegfolyamon belül díszített. */"
+msgstr "**Source:** [link.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/link/link.css)"
 
 #: css/link.md
 #, no-c-format
@@ -4830,7 +4830,7 @@ msgstr "A lista behúzásához beállítja a saját `padding-inline-start` ért�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [list.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/list/list.css)"
-msgstr "Reading the specified file to extract the UI text for translation.\n\n● Read list.css\n  │ formats/components/src/components/list/list.css\n  └ 63 lines read\n\n/**\n * @component list\n * @selector .pfx-list\n * @summary Egy lista, amely a tokenek által vezérelt elemtávolsítást használ.\n * @remarks Beállítja saját `padding-inline-start` értékét a lista behúzásához; egy `-p*`/`-padding*` térköz utility módosító láncolása felülírja ezt a beépített értéket. Az egyes elemekhez lásd a `list.item` tagot.\n * @modifier -inline — Az elemek sorban (vízszintesen) rendezése.\n * @modifier -unstyled — Jelölők és padding eltávolítása.\n * @modifier -size-sm — Kicsi. @affects list.item — Az elemközöket arányosan kicsinyíti.\n * @modifier -size-md — Közepes (alapértelmezett). @affects list.item — Az elemközöket ehhez igazítja.\n * @modifier -size-lg — Nagy. @affects list.item — Az elemközöket arányosan nagyítja.\n * @structure\n * .pfx-list {\n *   li:many {}\n * }\n * @example\n * <ul class=\"pfx-list\">\n *   <li>Első elem</li>\n *   <li>Második elem</li>\n *   <li>Harmadik elem</li>\n * </ul>\n */\n@scope (.pfx-list) {\n  & {\n    color: var(--instui-component-list-item-color);\n    font-family: var(--instui-component-list-item-font-family);\n    font-size: var(--instui-component-list-item-font-size-medium);\n    font-weight: var(--instui-component-list-item-font-weight);\n    line-height: var(--instui-component-list-item-line-height);\n    padding-inline-start: var(--instui-component-list-list-padding);\n  }\n\n  &.-size-sm {\n    font-size: var(--instui-component-list-item-font-size-small);\n  }\n\n  &.-size-md {\n    font-size: var(--instui-component-list-item-font-size-medium);\n  }\n\n  &.-size-lg {\n    font-size: var(--instui-component-list-item-font-size-large);\n  }\n\n  /* isUnstyled: eltávolítja a jelölőket és a behúzást. */\n  &.-unstyled {\n    list-style: none;\n    padding-inline-start: 0;\n  }\n\n  /* InlineList: az elemek töréssel sorban helyezkednek el (`.pfx-list.-inline`). */\n  &.-inline {\n    display: flex;\n    flex-wrap: wrap;\n    align-items: center;\n    gap: var(--instui-component-list-item-spacing-medium);\n    list-style: none;\n    padding-inline-start: 0;\n  }\n\n  &.-inline > li {\n    margin: 0;\n  }\n}"
+msgstr "**Source:** [list.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/list/list.css)"
 
 #: css/list.md
 #, no-c-format
@@ -5316,7 +5316,7 @@ msgstr ".instui-mask — Egy beágyazott átfedés, amely kitölti a pozícioná
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [mask.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/mask/mask.css)"
-msgstr "Reading the source file to extract the English text to translate. I'll open the referenced mask.css file.\n\n● Read mask.css\n  │ formats/components/src/components/mask/mask.css\n  └ 35 lines read\n\n/ **\n * @component mask\n * @selector .pfx-mask\n * @summary Egy beágyazott réteg (overlay), amely kitölti a pozícionált szülőt és középre igazítja a tartalmát — pl. egy spinner egy kártya fölött. Modal esetén előnyösebb a natív `<dialog>` használata (`::backdrop`-ja a mask). Mindegyik modifier elérhető globálisan is (egyszerűen, vagy láncolva bármely más komponensre) — lásd a `mask` globális segédosztályt.\n * @modifier -fullscreen — Rögzített a viewport-hoz, azt nagy z-index-szel lefedve.\n * @modifier -blur — Elmosódást (blur) alkalmaz a maszkon keresztül a háttérre backdrop-filter-rel.\n * @example\n * <div style=\"position: relative\">\n *   <div class=\"instui-mask\">\n *     <span class=\"instui-spinner\"></span>\n *   </div>\n * </div>\n * /\n/* Beágyazott overlay nem-modal esetekhez (pl. spinner egy kártya fölött). Modalnál előnyösebb a natív\n   <dialog> használata: annak ::backdrop-ja a mask, és újrahasználja ugyanazt a `--instui-component-mask-background-color`\n   tokent (lásd modalRules). */\n@scope (.pfx-mask) {\n  & {\n    position: absolute;\n    inset: 0;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    background: var(--instui-component-mask-background-color);\n  }\n\n  &.-fullscreen {\n    position: fixed;\n    z-index: 999;\n  }\n\n  &.-blur {\n    backdrop-filter: blur(0.5rem);\n  }\n}"
+msgstr "**Source:** [mask.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/mask/mask.css)"
 
 #: css/mask.md
 #, no-c-format
@@ -5346,7 +5346,7 @@ msgstr "\".--mask-overlay\" — A `mask` komponens overlay-módosítóinak (`--m
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/mask/index.ts)"
-msgstr "Reading the source file to extract the UI strings to translate.\n\n● Read index.ts\n  │ formats/components/src/utilities/mask/index.ts\n  └ 39 lines read\n\n**Forrás:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/mask/index.ts)\n\nA mask segéd — a `mask` komponens saját módosítóinak globális, kettős másolata (önállóként vagy bármely komponenshez láncolva), így az átfedés hatásához nem szükséges .instui-mask elembe csomagolni. \n\n@utility maskglobal\n@selector .--mask-overlay\n@global\n@summary A `mask` komponens overlay módosítóinak globális, kettős másolata — `--mask-overlay`, `--mask-fullscreen`, `--mask-blur` — használható önállóan vagy bármely komponenshez láncolva, .instui-mask elembe csomagolás nélkül.\n@modifier --mask-overlay — Teljes maszkoló réteg (pozíció, középre igazítás, háttér).\n@modifier --mask-fullscreen — Rögzített a nézetablakhoz, azt teljesen lefedi magas z-index-szel.\n@modifier --mask-blur — Elmos minden mögötte levő elemet backdrop-filterrel.\n@example\n<button class=\"instui-button --mask-overlay\">…</button>"
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/mask/index.ts)"
 
 #: css/maskglobal.md
 #, no-c-format
@@ -5430,7 +5430,7 @@ msgstr "Állítsa össze a bejegyzéseket `.item` formájában (lásd a(z) `menu
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/menu/members/group/group.css)"
-msgstr "**Forrás:** [group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/menu/members/group/group.css)"
+msgstr "**Source:** [group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/menu/members/group/group.css)"
 
 #: css/menu.md
 #, no-c-format
@@ -5472,7 +5472,7 @@ msgstr "Beállítja a saját `gap`-jét az érték és a címke között, valami
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [metric.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/metric/metric.css)"
-msgstr "Fetching the source file metric.css to translate its UI text.\n\n● Get file or directory contents (MCP: github-mcp-server) · formats/components/src/components/metri…\n  └ successfully downloaded text file (SHA: 96736d45bcf9a12ffff733759ad2f9160ccfb...\n\n/**\n * @component metric\n * @selector .pfx-metric\n * @summary Egy feliratozott statisztika — egy nagy érték fölötte egy felirattal.\n * @remarks Meghatározza a saját `gap` értékét az érték és a felirat között, valamint a saját vízszintes `padding`-ját; egy `-gap-*`/`-p-*`/`-padding-*` térköz-utility módosító láncolása felülírja ezeket a beépített értékeket.\n * @modifier -text-align-start — Balra igazítja az értéket és a feliratot.\n * @modifier -text-align-center — Középre igazítja az értéket és a feliratot.\n * @modifier -text-align-end — Jobbra igazítja az értéket és a feliratot.\n * @part .value — A nagy metrikus szám.\n * @part .label — Az érték alatti felirat.\n * @example\n * ```html\n * <div class=\"pfx-metric\">\n *   <span class=\"value\">1,284</span>\n *   <span class=\"label\">Aktív felhasználók</span>\n * </div>\n * ```\n * @structure\n * .pfx-metric {\n *   .value {}\n *   .label {}\n * }\n */"
+msgstr "**Source:** [metric.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/metric/metric.css)"
 
 #: css/metric.md
 #, no-c-format
@@ -5574,7 +5574,7 @@ msgstr "Az egyes részekért tekintse meg a `modal.header`, `modal.body` és `mo
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [body.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/modal/members/body/body.css)"
-msgstr "Reading the CSS source file to extract the UI text that needs translation. Using view to open the referenced file path.\n\n● Read body.css\n  │ formats/components/src/components/modal/members/body/body.css\n  └ 43 lines read\n\n/**\n * @component modal.body\n * @memberOf modal\n * @selector .body\n * @summary A tartalmi terület (InstUI `Modal.Body`); egyetlen `<img>` teljes szélességben jelenik meg.\n * @remarks A szülő `modal` `-overflow-fit`, `-density-compact` és `-color-inverse` módosítói átszabják ezt a komponenst — lásd a `modal` dokumentációját ezekről a módosítókról.\n * @structure\n * @component modal {\n *   .body {\n *     code {}\n *   }\n * }\n */\n\n /* Média modal: ha a body egy képet tartalmaz, az teljes szélességben jelenik meg (nincs padding), így a média a modal éléig ér. Párosítsd a -color-inverse módosítóval az InstUI által média köré használt sötét kerethez. */"
+msgstr "**Source:** [body.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/modal/members/body/body.css)"
 
 #: css/modal.md
 #, no-c-format
@@ -5682,7 +5682,7 @@ msgstr "`.arrows` gombok `aria-hidden` státusszal rendelkeznek és kizárólag 
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [number-input.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/number-input/number-input.css)"
-msgstr "Reading the source CSS file to extract the UI text that needs translation. I'll open the file.\n\n● Read number-input.css\n  │ formats/components/src/components/number-input/number-input.css\n  └ 206 lines read\n\n@component number-input\n@summary Egy számbeviteli felület +/- forgatóoszloppal.\n@remarks A `.arrows` gombok `aria-hidden`-ek és kizárólag prezentációs célúak — az érték növelése/csökkentése kattintásra a fogyasztó JS-ének feladata.\n@selector .pfx-number-input\n@modifier -disabled — Letiltott állapot.\n@modifier -invalid — Érvénytelen (hiba) állapot.\n@modifier -readonly — Csak-olvasási állapot.\n@modifier -success — Sikeres (érvényes) állapot.\n@modifier -size-sm — Kicsi.\n@modifier -size-md — (alapértelmezett) Közepes.\n@modifier -size-lg — Nagy.\n@part .arrows — A +/- forgatóoszlop az inline végén.\n@part .down — A csökkentő gomb; az osztály nélküli gomb növeli az értéket.\n@pseudo ::before — A maszkolt csigaikon minden forgatógombon: fel a növeléshez, le a `.down`-on.\n@pseudo ::placeholder — A belső input helykitöltő szövege, tompított színben.\n@cssstate disabled\n@accessibility Helyezze az elérhető nevet az `<input>`-ra (pl. `aria-label`), így a mező birtokolja az értéket; a +/- forgatógombok dekoratívak és `aria-hidden=\"true\"` címkével vannak jelölve.\n@example\n<span class=\"pfx-number-input\">\n  <input id=\"qty\" type=\"number\" value=\"1\" aria-label=\"Mennyiség\">\n  <span class=\"arrows\">\n    <button type=\"button\" id=\"up\" aria-hidden=\"true\"></button>\n    <button class=\"down\" type=\"button\" id=\"down\" aria-hidden=\"true\"></button>\n  </span>\n</span>\n@structure\n.pfx-number-input {\n  input {}\n  .arrows {\n    button {}\n    .down {}\n  }\n}\n@related text-input — Ugyanazt a bemeneti felület-keretet használja.\n@related range-input — Másik numerikus bemeneti vezérlő."
+msgstr "**Source:** [number-input.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/number-input/number-input.css)"
 
 #: css/number-input.md
 #, no-c-format
@@ -5742,7 +5742,7 @@ msgstr "`.--overflow-x-hidden` — az `overflow-x`/`overflow-y` összetételre a
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/overflow/index.ts)"
-msgstr "Fetching the referenced source file to extract the UI text to translate.\n\n● Get file or directory contents (MCP: github-mcp-server) · formats/components/src/utilities/overfl…\n  └ successfully downloaded text file (SHA: 5298575e64b548f61e65c7e60b3d442216224...\n\n/**\n * @utility overflow\n * @selector .--overflow-x-hidden\n * @global\n * @summary `overflow-x`/`overflow-y` kompozitív, globális osztályokként — `.--overflow-x-<value>` / `.--overflow-y-<value>` — önmagukban vagy bármely komponensre láncolva is használhatók.\n * @modifier --overflow-x-visible — overflow-x: visible.\n * @modifier --overflow-x-hidden — overflow-x: hidden.\n * @modifier --overflow-x-auto — overflow-x: auto.\n * @modifier --overflow-x-scroll — overflow-x: scroll.\n * @modifier --overflow-x-clip — overflow-x: clip.\n * @modifier --overflow-y-visible — overflow-y: visible.\n * @modifier --overflow-y-hidden — overflow-y: hidden.\n * @modifier --overflow-y-auto — overflow-y: auto.\n * @modifier --overflow-y-scroll — overflow-y: scroll.\n * @modifier --overflow-y-clip — overflow-y: clip.\n * @example\n * <div class=\"--overflow-y-auto\">…</div>\n */"
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/overflow/index.ts)"
 
 #: css/overflow.md
 #, no-c-format
@@ -5760,7 +5760,7 @@ msgstr "overflow-x: clip."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "overflow-x: hidden."
-msgstr "overflow-x: rejtett."
+msgstr "overflow-x: hidden."
 
 #: css/overflow.md
 #, no-c-format
@@ -5772,7 +5772,7 @@ msgstr "overflow-x: scroll."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "overflow-x: visible."
-msgstr "overflow-x: látható."
+msgstr "overflow-x: visible."
 
 #: css/overflow.md
 #, no-c-format
@@ -5790,19 +5790,19 @@ msgstr "overflow-y: clip."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "overflow-y: hidden."
-msgstr "overflow-y: rejtve."
+msgstr "overflow-y: hidden."
 
 #: css/overflow.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "overflow-y: scroll."
-msgstr "overflow-y: görgetés."
+msgstr "overflow-y: scroll."
 
 #: css/overflow.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "overflow-y: visible."
-msgstr "overflow-y: látható."
+msgstr "overflow-y: visible."
 
 #: css/page-layout.md
 #, no-c-format
@@ -5892,7 +5892,7 @@ msgstr "Az egyes oldalak vezérlőiért lásd a `pagination.page` tagot."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [page.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/pagination/members/page/page.css)"
-msgstr "Reading the referenced CSS file to extract the UI text to translate. I'll open the file.\n\n● Read page.css\n  │ formats/components/src/components/pagination/members/page/page.css\n  └ 53 lines read\n\n/**\n * @component pagination.page\n * @memberOf pagination\n * @selector .page\n * @summary Oldallink vagy gomb (InstUI `Pagination.Page`); az aktuális oldal rendelkezik `[aria-current]`-rel.\n * @modifier -current — Az aktuális oldal; ugyanaz a stílus, mint `[aria-current]`.\n * @cssstate current\n * @structure\n * @component pagination {\n *   .page {}\n * }\n */\n\n/* Egy oldalszám — egy <a> vagy <button>. Szövegstílusú primer gomb: márkaszínű szöveg, kitöltés nélkül. */\n\n/* Az aktuális oldal — kitöltött primer gomb (InstUI: color=\"primary\" withBackground withBorder). */"
+msgstr "**Source:** [page.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/pagination/members/page/page.css)"
 
 #: css/pagination.md
 #, no-c-format
@@ -5970,7 +5970,7 @@ msgstr "Ellentétben a `badge`-del, amely számlálót mutat, vagy a `tag`-gel, 
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [pill.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/pill/pill.css)"
-msgstr "Reading the source file pill.css to extract the UI text to translate.\n\n● Read pill.css\n  │ formats/components/src/components/pill/pill.css\n  └ 78 lines read\n\n@component pill\n@selector .pfx-pill\n@summary Kompakt állapotcímke; adj hozzá vezető glypht a megosztott `-icon-<name>` formával.\n@remarks Ellentétben a `badge`-del, amely számot jelenít meg, vagy a `tag`-gel, amely eltávolítható, a pill egy statikus állapotcímke; a vezető glyph egy maszkolt `::before`, nem egy `<img>`.\n@modifier -color-info — Információs állapot.\n@modifier -color-success — Pozitív állapot.\n@modifier -color-warning — Figyelmeztető állapot.\n@modifier -color-danger — Hibás állapot.\n@modifier -icon-* — Vezető glyph az ikonkészletből (például `-icon-check`), amely a címke elé kerül.\n@modifier -render-icon-<name> — @deprecated A korábbi `renderIcon` prop; aliasként továbbra is működik, de használja helyette a `-icon-<name>`-et.\n@pseudo ::before — A vezető ikon glyph, a pill méretéhez igazítva és távolsággal ellátva.\n@example\n```html\n<div class=\"pfx-pill --display-flex\" style=\"gap: 12px;\">\n  <span class=\"instui-pill -color-success -icon-check\">Published</span>\n  <span class=\"instui-pill\">Draft</span>\n  <span class=\"instui-pill -color-info\">In review</span>\n  <span class=\"instui-pill -color-warning\">Stale</span>\n  <span class=\"instui-pill -color-danger\">Blocked</span>\n</div>\n```\n@related badge — A badge a számlálás vagy értesítés megfelelője.\n@related tag — A tag az eltávolítható, űrlap-orientált megfelelője."
+msgstr "**Source:** [pill.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/pill/pill.css)"
 
 #: css/pill.md
 #, no-c-format
@@ -6042,7 +6042,7 @@ msgstr "A horgonypozícionálás csak Chromiumon működik; az `@supports` őrz�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [popover.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/popover/popover.css)"
-msgstr "Reading the source file to extract the English UI text that needs translation. Then will translate only those strings to Hungarian, preserving identifiers and placeholder tokens.\n\n● Read popover.css\n  │ formats/components/src/components/popover/popover.css\n  └ 91 lines read\n\n@komponens popover\n@selector .pfx-popover\n@összegzés Emelt felület natív `[popover]` számára, CSS anchor pozícionálással elhelyezve.\n@megjegyzés Az anchor pozícionálás csak Chromiumon támogatott; az `@supports` védelem miatt a `-placement-*` módosítók máshol néma hatástalanok lesznek, és a böngésző a popovert a felső réteg közepére helyezi ahelyett, hogy hibát okozna.\n@módosító -placement-top — A horgonynál felül helyezkedik el.\n@módosító -placement-bottom — A horgonynál alul helyezkedik el.\n@módosító -placement-start — A horgony elejéhez (inline-start) illeszkedik.\n@módosító -placement-end — A horgony végéhez (inline-end) illeszkedik.\n@kompatibilitás CSS anchor pozícionálást (`position-anchor`/`position-area`) és a natív `[popover]` API-t használ; mindkettő jelenleg Chromium-specifikus; egy `@supports` őrzi a placement-et máshol inaktívnak, ahol a böngésző a popovert a felső réteg közepére rendezi.\n@példa\n<div class=\"pfx-popover -placement-bottom\" id=\"pop-1\">\n  <div class=\"pfx-heading -level-h4\">Megosztás ezen az oldalon</div>\n  <p class=\"pfx-text -size-sm\">A popover egy könnyű felület, ami egy vezérlőhöz rögzített. Ez a példa a natív <code>popover</code> attribútumot használja.</p>\n</div>\n@szerkezet\n.pfx-popover {\n  .pfx-heading {}\n  .pfx-text {\n    code {}\n  }\n}\n@kapcsolódó tooltip — A tooltip kisebb, lebegéssel vagy fókuszra megnyíló rögzített felület.\n@kapcsolódó context-view — A context view egy kapcsolódó rögzített felület, amely mutatót tartalmaz.\n\nCSS anchor pozícionálás (Chromium): ha a trigger deklarálja az `anchor-name: --pantoken-anchor`-t (vagy a popovert egy popovertarget invoker nyitja meg, ami implicit anchor-t ad), a -placement-* módosító a vezérlő mellé helyezi és szükség esetén megfordul, hogy a képernyőn maradjon. Támogatás nélkül inaktív — ilyenkor a böngésző a popovert a felső réteg közepére rendezi.\n\nEnyhe megnyitási animáció (natív popover + @starting-style, JS nélkül). Támogatás nélkül inaktív."
+msgstr "**Source:** [popover.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/popover/popover.css)"
 
 #: css/popover.md
 #, no-c-format
@@ -6072,37 +6072,37 @@ msgstr "`.--position-relative` — a `position` komponálható, globális osztá
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/position/index.ts)"
-msgstr "Fetching the referenced file to read the source text for translation.\n\n● Get file or directory contents (MCP: github-mcp-server) · formats/components/src/utilities/positi…\n  └ successfully downloaded text file (SHA: 5223a40bc020bdcd887f3e30e02be36488820...\n\nA pozíció segéd — a CSS `position` összefűzhető, globálisan elérhető osztályai (egyedülállóan, vagy bármely komponensre láncolva) — átemelve a `view` korábbi `-position-*` módosítóiból.\n\n@module\n\n@utility position\n@selector .--position-relative\n@global\n@summary a `position` összefűzhető, globális osztályként — `.--position-<value>` — használható önállóan vagy bármely komponensre láncolva (`.instui-button.--position-relative`).\n@modifier --position-static — position: static.\n@modifier --position-relative — position: relative.\n@modifier --position-absolute — position: absolute.\n@modifier --position-fixed — position: fixed.\n@modifier --position-sticky — position: sticky.\n@example\n<div class=\"--position-relative\">…</div>"
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/position/index.ts)"
 
 #: css/position.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "position: absolute."
-msgstr "pozíció: abszolút."
+msgstr "position: absolute."
 
 #: css/position.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "position: fixed."
-msgstr "pozíció: rögzített."
+msgstr "position: fixed."
 
 #: css/position.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "position: relative."
-msgstr "pozíció: relatív."
+msgstr "position: relative."
 
 #: css/position.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "position: static."
-msgstr "pozíció: statikus."
+msgstr "position: static."
 
 #: css/position.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "position: sticky."
-msgstr "pozíció: ragadós."
+msgstr "position: sticky."
 
 #: css/primitives.md
 #, no-c-format
@@ -6414,7 +6414,7 @@ msgstr "`:where(body)` — Tipográfiai alapértelmezések nyers HTML-hez — c�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/rules/prose/index.ts)"
-msgstr "**Forrás:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/rules/prose/index.ts)"
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/rules/prose/index.ts)"
 
 #: css/radio-input-group.md
 #, no-c-format
@@ -7542,7 +7542,7 @@ msgstr "`.instui-screen-reader-content` — Vizuálisan elrejti a tartalmakat, m
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [screen-reader-content.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/screen-reader-content/screen-reader-content.css)"
-msgstr "**Forrás:** [screen-reader-content.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/screen-reader-content/screen-reader-content.css)"
+msgstr "**Source:** [screen-reader-content.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/screen-reader-content/screen-reader-content.css)"
 
 #: css/screen-reader-content.md
 #, no-c-format
@@ -7602,7 +7602,7 @@ msgstr "Beállítja a saját `gap`-ját a navigációs elemek között és a saj
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [item.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/side-nav-bar/members/item/item.css)"
-msgstr "Fetching the source file to extract the English UI text for translation.\n\n● Get file or directory contents (MCP: github-mcp-server) · formats/components/src/components/side-…\n  └ successfully downloaded text file (SHA: 5cc11244af168101adcc1e4f9673a8a205642...\n\n* @component side-nav-bar.item\n* @memberOf side-nav-bar\n* @selector .item\n* @summary Egy navigációs bejegyzés (InstUI `SideNavBar.Item`); a `-selected` az aktív elemet jelöli.\n* @modifier -selected — Az aktív navigációs elem.\n* @part .label — Az elem szöveges címkéje; el van rejtve, amikor a sáv össze van csukva.\n* @remarks A szülő `side-nav-bar` `-minimized` módosítója elrejti ennek a tagnek a `.label`-jét — lásd a `side-nav-bar` saját dokumentációját az adott módosítóról.\n* @structure\n* @component side-nav-bar {\n*   .item {\n*     [class*=\"-icon-\"]:optional {}\n*     .label {}\n*   }\n* }"
+msgstr "**Source:** [item.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/side-nav-bar/members/item/item.css)"
 
 #: css/side-nav-bar.md
 #, no-c-format
@@ -7650,7 +7650,7 @@ msgstr "Befog egy egyszerű natív `<select>` elemet egyedi legördülő/menü m
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [select.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/select/select.css)"
-msgstr "Reading the source file select.css to extract the text to translate.\n\n● Read select.css\n  │ formats/components/src/components/select/select.css\n  └ 64 lines read\n\n/**\n * @component simple-select\n * @selector .pfx-simple-select\n * @summary Kísérleti, CSS-sel testreszabható Select (`appearance: base-select`, Chrome 135+, még nem Baseline). Kiterjeszti a .pfx-simple-select-et; ahol nem támogatott, egyszerű vezérlőre esik vissza.\n */"
+msgstr "**Source:** [select.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/select/select.css)"
 
 #: css/simple-select.md
 #, no-c-format
@@ -7680,7 +7680,7 @@ msgstr "`.--p-md` — Margó- és padding-segédosztályok — `.--m<side>-<step
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/spacing/index.ts)"
-msgstr "Fetching the source file to extract the UI text for accurate translation.\n\n● Get file or directory contents (MCP: github-mcp-server) · formats/components/src/utilities/spacin…\n  └ successfully downloaded text file (SHA: d923fe367e7109a128b353abc7b787d50bfc0...\n\nA spacing segédletek — margó/padding osztályok a pantoken spacing skálán, logikai oldalakkal, rövid írásmóddal (`-mb-sm`) és teljes, szavakkal leírt írással (`-margin-bottom-small`).\n\nMinden szabály a `globalModifierSelector` (`@pantoken/utils`) alapján illeszkedik — a módosító osztály háromszori ismétlése determinisztikus specificitás-növelés céljából, bármely regisztrált komponensre (core vagy plugin által készített) vagy önálló használatra alkalmazva, egyetlen fix-méretű szelektorral szabályonként, komponensenkénti elágazás nélkül. Ez felváltotta a korábbi bare-only visszaesést, amely elkerülte a régi mechanizmus ~3s/940KB generálási időbeli regresszióját, ami szabályonként ~70 komponens felsorolásából adódott.\n\nA boxed (dobozolt) tulajdonságok lépései — a margin emellett `auto` értéket is kap.\n\nRövid/legacy `[key, value]` párok a rövid/legacy ciklushoz: egy a lépés rövid kulcsához, plusz egy `none` pár a nulla lépéshez (mind `-m-0`, mind `-m-none` a hosszú írásmód előtt is szállítva volt).\n\nRövid írásmódok (`-m-sm`) és a legacy, hosszú-tulajdonság-szó pár (`-margin-sm`) — oldal és rövid lépés összefűzve. Az alak változatlan a hosszú írásmód bevezetése előtt.\n\nTeljesen hosszú, kötőjeles írásmódok — tulajdonság szó, oldal szó és lépés szó mind kiírva (`-margin-bottom-small`). Néhány ezek közül ütközik egy \"nincs oldal\" legacy hosszú szelektorral fent (pl. `-margin-none`, `-margin-auto`) — ártalmatlan duplikált szabályok, nem érdemes külön kezelni.\n\nA spacing segédlet — margó és padding osztályok a spacing skálán, logikai oldalakkal.\n\n@utility spacing\n@selector .--p-md\n@global\n@summary Margó- és padding-segédek — `.--m<side>-<step>` / `.--margin-<side>-<step>` és `.--p<side>-<step>` / `.--padding-<side>-<step>` a spacing skálán (oldalak `t`/`b`/`s`/`e`/`x`/`y` vagy nincs, rövid vagy teljes írással — például `--mb-sm` és `--margin-bottom-small` ugyanaz a szabály; a margin emellett `auto` értéket is fogad). Használható önmagában vagy bármely komponensre láncolva (például `class=\"instui-view --mb-sm\"`).\n@modifier --p-md — Közepes padding minden oldalon.\n@modifier --m* — Margó segédletek rövid, legacy-hosszú és teljesen hosszú írásmódokban.\n@modifier --p* — Padding segédletek rövid, legacy-hosszú és teljesen hosszú írásmódokban.\n@demo self:spacing\n@example\n<div class=\"--p-md --mt-lg\">Kitöltött doboz nagy felső margóval.</div>\n\nA spacing segédletek önálló, header-rel ellátott stíluslapként."
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/spacing/index.ts)"
 
 #: css/spacing.md
 #, no-c-format
@@ -8670,7 +8670,7 @@ msgstr "Minden gyűjtemény egy natív `<details>`; egymásba ágyazva épül fe
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [tree-browser.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tree-browser/tree-browser.css)"
-msgstr "**Forrás:** [tree-browser.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tree-browser/tree-browser.css)"
+msgstr "**Source:** [tree-browser.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tree-browser/tree-browser.css)"
 
 #: css/tree-browser.md
 #, no-c-format
@@ -8724,7 +8724,7 @@ msgstr "Az alap osztály `display: -webkit-box`-t használ és a `--lines` egyé
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/truncate/index.ts)"
-msgstr "**Forrás:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/truncate/index.ts)"
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/truncate/index.ts)"
 
 #: css/truncate.md
 #, no-c-format
@@ -8904,7 +8904,7 @@ msgstr "`.instui-view` — A View primitív: egy neutrális doboz kulcs-érték 
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [view.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/view/view.css)"
-msgstr "**Forrás:** [view.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/view/view.css)"
+msgstr "**Source:** [view.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/view/view.css)"
 
 #: css/view.md
 #, no-c-format
@@ -13398,7 +13398,7 @@ msgstr "### noScope?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Pendo: skip `@scope` wrapping (`--no-scope`)."
-msgstr "Pendo: hagyja ki az `@scope` becsomagolást (`--no-scope`)."
+msgstr "Pendo: skip `@scope` wrapping (`--no-scope`)."
 
 #: packages/cli/src/interfaces/CliArgs.md
 #, no-c-format
@@ -13410,7 +13410,7 @@ msgstr "### noImportant?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Pendo: skip `!important` (`--no-important`)."
-msgstr "Pendo: kihagyás `!important` (`--no-important`)."
+msgstr "Pendo: skip `!important` (`--no-important`)."
 
 #: packages/cli/src/interfaces/CliArgs.md
 #, no-c-format
@@ -13422,7 +13422,7 @@ msgstr "### noPrune?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Pendo: skip token pruning (`--no-prune`)."
-msgstr "Pendo: token nyesésének kihagyása (`--no-prune`)."
+msgstr "Pendo: skip token pruning (`--no-prune`)."
 
 #: packages/core/src/functions/applyModify.md
 #, no-c-format
@@ -14940,7 +14940,7 @@ msgstr "Szűrje meg a bővítménylista azokat, amelyek részt vesznek a `stage`
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]"
-msgstr "readonly [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]"
+msgstr "csak olvasható [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]"
 
 #: packages/plugin-kit/src/functions/checkPlugins.md
 #, no-c-format
@@ -15084,7 +15084,7 @@ msgstr "Hozzon létre egy feloldót, amely kibővíti a `var(--x)` referenciáka
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`Token`](../../../core/src/interfaces/Token.md)[]"
-msgstr "readonly [`Token`](../../../core/src/interfaces/Token.md)[]"
+msgstr "csak olvasható [`Token`](../../../core/src/interfaces/Token.md)[]"
 
 #: packages/plugin-kit/src/functions/makeResolver.md
 #, no-c-format
@@ -16050,7 +16050,7 @@ msgstr "### supportsCombine"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Whether [CdnProvider.buildCombineUrl](#buildcombineurl) is implemented."
-msgstr "Whether [CdnProvider.buildCombineUrl](#buildcombineurl) is implemented."
+msgstr "Hogy a [CdnProvider.buildCombineUrl](#buildcombineurl) meg van-e valósítva."
 
 #: platforms/canvas-theme-editor/src/interfaces/CdnProvider.md
 #, no-c-format
@@ -16062,7 +16062,7 @@ msgstr "### buildUrl()"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Builds the URL for a single file."
-msgstr "Builds the URL for a single file."
+msgstr "Egyetlen fájl URL-jét állítja elő."
 
 #: platforms/canvas-theme-editor/src/interfaces/CdnProvider.md
 #, no-c-format
@@ -16080,7 +16080,7 @@ msgstr "### buildCombineUrl()?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Builds one URL that serves multiple files concatenated together. Required iff `supportsCombine`."
-msgstr "Builds one URL that serves multiple files concatenated together. Required iff `supportsCombine`."
+msgstr "Egy olyan URL-t hoz létre, amely több fájlt összefűzve szolgál ki. Szükséges, ha és csak ha `supportsCombine`."
 
 #: platforms/canvas-theme-editor/src/interfaces/CdnProvider.md
 #, no-c-format
@@ -16098,7 +16098,7 @@ msgstr "# Interfész: ThemeStrings"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The translatable strings baked into theme.css/theme.js's comments."
-msgstr "The translatable strings baked into theme.css/theme.js's comments."
+msgstr "A theme.css/theme.js megjegyzéseibe ágyazott, fordítható szövegek."
 
 #: platforms/canvas-theme-editor/src/interfaces/ThemeStrings.md
 #, no-c-format
@@ -16212,7 +16212,7 @@ msgstr "# Típusalias: ThemeMode"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Rebrand token mode — ignored for the `canvas`/`canvasHighContrast` variants."
-msgstr "Rebrand token mode — ignored for the `canvas`/`canvasHighContrast` variants."
+msgstr "Rebrand token mód — az `canvas`/`canvasHighContrast` variánsoknál figyelmen kívül hagyva."
 
 #: platforms/canvas-theme-editor/src/type-aliases/ThemeVariant.md
 #, no-c-format
@@ -16224,7 +16224,7 @@ msgstr "# Típusalias: ThemeVariant"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A pantoken token theme variant."
-msgstr "A pantoken token theme variant."
+msgstr "Egy pantoken token téma variáns."
 
 #: platforms/canvas-theme-editor/src/variables/CDN_PROVIDERS.md
 #, no-c-format
@@ -16236,7 +16236,7 @@ msgstr "# Változó: CDN\\_PROVIDERS"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Providers available out of the box, keyed by [CdnProvider.id](../interfaces/CdnProvider.md#id)."
-msgstr "Providers available out of the box, keyed by [CdnProvider.id](../interfaces/CdnProvider.md#id)."
+msgstr "Azonnal használható (beépített) szolgáltatók, kulcsként a [CdnProvider.id](../interfaces/CdnProvider.md#id) szerint."
 
 #: platforms/canvas-theme-editor/src/variables/DEFAULT_CDN_PROVIDER_ID.md
 #, no-c-format
@@ -16248,7 +16248,7 @@ msgstr "# Változó: DEFAULT\\_CDN\\_PROVIDER\\_ID"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The provider used when none is specified."
-msgstr "The provider used when none is specified."
+msgstr "A szolgáltató, amelyet akkor használnak, ha nincs megadva."
 
 #: platforms/canvas-theme-editor/src/variables/DEFAULT_THEME_CSS_ASSETS.md
 #, no-c-format
@@ -16260,7 +16260,7 @@ msgstr "# Változó: DEFAULT\\_THEME\\_CSS\\_ASSETS"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Component-style sheets, combined into theme.css's first `@import` where the provider allows it."
-msgstr "Component-style sheets, combined into theme.css's first `@import` where the provider allows it."
+msgstr "Komponens-stíluslapok, összevonva a theme.css első `@import`-jába ott, ahol a szolgáltató megengedi."
 
 #: platforms/canvas-theme-editor/src/variables/DEFAULT_THEME_FONT_ASSETS.md
 #, no-c-format
@@ -16272,7 +16272,7 @@ msgstr "# Változó: DEFAULT\\_THEME\\_FONT\\_ASSETS"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Font sheet(s) — always loaded as their own `@import`(s), separate from the component styles."
-msgstr "Font sheet(s) — always loaded as their own `@import`(s), separate from the component styles."
+msgstr "Betűkészlet-lap(ok) — mindig saját `@import`(s) formájában töltődnek be, külön a komponensstílusoktól."
 
 #: platforms/canvas-theme-editor/src/variables/DEFAULT_THEME_JS_ASSETS.md
 #, no-c-format
@@ -16296,7 +16296,7 @@ msgstr "# Változó: ENGLISH\\_THEME\\_STRINGS"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "English defaults, used for any key a caller's `strings` override doesn't supply."
-msgstr "English defaults, used for any key a caller's `strings` override doesn't supply."
+msgstr "Angol alapértelmezések, amelyeket minden olyan kulcshoz használnak, amelyet a hívó `strings` felülírása nem ad meg."
 
 #: platforms/canvas-theme-editor/src/variables/THEME_CSS.md
 #, no-c-format
@@ -19014,7 +19014,7 @@ msgstr "Alkalmazza a [pruneCustomProps](../variables/pruneCustomProps.md) transz
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Only safe for self-contained bundles that contain both token definitions and the component\nrules that reference them. Pruning a token-only sheet removes everything."
-msgstr "Only safe for self-contained bundles that contain both token definitions and the component\nrules that reference them. Pruning a token-only sheet removes everything."
+msgstr "Csak önálló csomagok esetén biztonságos, amelyek mind a token-definíciókat, mind az azokat hivatkozó komponens\nszabályokat tartalmazzák. Egy csak tokeneket tartalmazó lap megnyesése mindent eltávolít."
 
 #: plugins/postcss/props-minify/src/interfaces/PropsMinifyOptions.md
 #, no-c-format
@@ -20808,7 +20808,7 @@ msgstr "`@pantoken/pendo` — egy Instructure-stílusú globális stíluskészle
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Pendo injects guide HTML into a host page; this renders that guide DOM (`._pendo-*`) to match\nInstructure UI, using pantoken's `--instui-*` token layer for alignment. It includes responsive\nviolet and sea banner guide treatments alongside alerts, popovers, surveys, and controls. The\ncomponent CSS is ported from `@instructure/pendo-global-css`; pantoken supplies the tokens and the\nassembly. A single theme class containing `instui` activates the scoped stylesheet; compact\nsuffixes on that class select banner colors and glyphs."
-msgstr "Pendo injects guide HTML into a host page; this renders that guide DOM (`._pendo-*`) to match\nInstructure UI, using pantoken's `--instui-*` token layer for alignment. It includes responsive\nviolet and sea banner guide treatments alongside alerts, popovers, surveys, and controls. The\ncomponent CSS is ported from `@instructure/pendo-global-css`; pantoken supplies the tokens and the\nassembly. A single theme class containing `instui` activates the scoped stylesheet; compact\nsuffixes on that class select banner colors and glyphs."
+msgstr "A Pendo beágyazza az útmutató HTML-jét egy host oldalba; ez rendereli azt az útmutató DOM-ot (`._pendo-*`), hogy illeszkedjen\naz Instructure UI-hoz, a pantoken `--instui-*` tokenrétegének használatával az igazításhoz. Tartalmaz reszponzív\nlila és tenger témájú banner útmutatókezeléseket, továbbá riasztásokat, felugró ablakokat, felméréseket és vezérlőket. A\nkomponens CSS-e át lett portolva innen: `@instructure/pendo-global-css`; a pantoken biztosítja a tokeneket és az\nösszeállítást. Egyetlen témaosztály, amely tartalmazza `instui`, aktiválja a scope-olt stíluslapot; annak az osztálynak a kompakt\nutótagjai választják ki a banner színeit és ikonográfiáját."
 
 #: renderers/pendo/src/index.md
 #, no-c-format
@@ -20838,7 +20838,7 @@ msgstr "Opciók a(z) [addScope](../variables/addScope.md) számára."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The scope root selector (default `[class*=\"instui\"]._pendo-step-container`)."
-msgstr "The scope root selector (default `[class*=\"instui\"]._pendo-step-container`)."
+msgstr "A scope gyökérszelektora (alapértelmezett: `[class*=\"instui\"]._pendo-step-container`)."
 
 #: renderers/pendo/src/interfaces/BuildPendoCssOptions.md
 #, no-c-format
@@ -20868,7 +20868,7 @@ msgstr "### scopeSelector?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The `@scope` root selector (default `[class*=\"instui\"]._pendo-step-container`)."
-msgstr "The `@scope` root selector (default `[class*=\"instui\"]._pendo-step-container`)."
+msgstr "A `@scope` gyökérválasztó (alapértelmezett `[class*=\"instui\"]._pendo-step-container`)."
 
 #: renderers/pendo/src/interfaces/BuildPendoCssOptions.md
 #, no-c-format
@@ -20988,7 +20988,7 @@ msgstr "### props"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Basic**"
-msgstr "**Alapvető**"
+msgstr "**Basic**"
 
 #: renderers/react-markdown/src/functions/InstuiMarkdown.md
 #, no-c-format
@@ -21750,7 +21750,7 @@ msgstr "# Függvény: registerLocalized()"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Register custom elements with locale-specific strings and direction."
-msgstr "Register custom elements with locale-specific strings and direction."
+msgstr "Regisztrálja az egyéni elemeket helyi (locale) szövegekkel és írásiránnyal."
 
 #: renderers/svelte/src/functions/registerLocalized.md
 #, no-c-format
@@ -22044,7 +22044,7 @@ msgstr "### assets"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[]"
-msgstr "readonly [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[]"
+msgstr "csak olvasható [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[]"
 
 #: renderers/tinymce/src/functions/pantokenHtmlCompletion.md
 #, no-c-format
@@ -22860,13 +22860,13 @@ msgstr "# Függvény: createLocaleSet()"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Define the locale subset your app supports. Pass the imported bundle objects as an object\nwhose keys are the locale tags (JavaScript shorthand makes this natural). TypeScript narrows\nthe accepted locale tags to only the keys you provide."
-msgstr "Define the locale subset your app supports. Pass the imported bundle objects as an object\nwhose keys are the locale tags (JavaScript shorthand makes this natural). TypeScript narrows\nthe accepted locale tags to only the keys you provide."
+msgstr "Határozd meg az alkalmazásod által támogatott locale-részhalmazt. Add át az importált bundle-objektumokat egy objektumként\namelynek kulcsai a locale-címkék (a JavaScript rövidített szintaxisa ezt természetessé teszi). A TypeScript leszűkíti\naz elfogadott locale-címkéket kizárólag azokra a kulcsokra, amelyeket megadsz."
 
 #: renderers/web-components/src/functions/createLocaleSet.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Not calling `createLocaleSet` at all gives the full 44-locale barrel — use this factory only\nwhen you need compile-time validation or explicit tree-shaking signals."
-msgstr "Not calling `createLocaleSet` at all gives the full 44-locale barrel — use this factory only\nwhen you need compile-time validation or explicit tree-shaking signals."
+msgstr "Ha egyáltalán nem hívod meg a `createLocaleSet`-t, a teljes, 44 locale-t tartalmazó csomagot kapod — ezt a factory-t csak akkor használd,\nha fordításidejű érvényesítésre vagy explicit tree-shaking jelzésekre van szükséged."
 
 #: renderers/web-components/src/functions/createLocaleSet.md
 #, no-c-format
@@ -22884,7 +22884,7 @@ msgstr "### K"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`K` *extends* `string`"
-msgstr "`K` *extends* `string`"
+msgstr "`K` *kiterjeszti* `string`"
 
 #: renderers/web-components/src/functions/createLocaleSet.md
 #, no-c-format
@@ -22902,7 +22902,7 @@ msgstr "# Függvény: defineBundle()"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Create and validate a [LocaleBundle](../interfaces/LocaleBundle.md). Throws when required fields are missing or `locale`\nis not a non-empty string."
-msgstr "Create and validate a [LocaleBundle](../interfaces/LocaleBundle.md). Throws when required fields are missing or `locale`\nis not a non-empty string."
+msgstr "Hozzon létre és érvényesítsen egy [LocaleBundle](../interfaces/LocaleBundle.md)-t. Hibát dob, ha a kötelező mezők hiányoznak, vagy a `locale`\nnem egy nem üres string."
 
 #: renderers/web-components/src/functions/formatDate.md
 #, no-c-format
@@ -22914,7 +22914,7 @@ msgstr "# Függvény: formatDate()"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A locale-bound date/time formatter."
-msgstr "A locale-bound date/time formatter."
+msgstr "Helyi beállításhoz kötött dátum-/időformázó."
 
 #: renderers/web-components/src/functions/formatDate.md
 #, no-c-format
@@ -22932,7 +22932,7 @@ msgstr "# Függvény: formatList()"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A locale-bound list formatter (e.g. `\"a, b, and c\"` in English, with correct conjunctions elsewhere)."
-msgstr "A locale-bound list formatter (e.g. `\"a, b, and c\"` in English, with correct conjunctions elsewhere)."
+msgstr "Egy helyi nyelvhez kötött listaformázó (pl. `\"a, b, and c\"` angolul, máshol a megfelelő kötőszókkal)."
 
 #: renderers/web-components/src/functions/formatList.md
 #, no-c-format
@@ -22950,13 +22950,13 @@ msgstr "# Függvény: formatMessage()"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Format an MF2 `source` message for `locale`, substituting `params`. Throws on invalid MF2 syntax\n— validate with `@pantoken/i18n-engine`'s `validateMf2` at build time, not at format time."
-msgstr "Format an MF2 `source` message for `locale`, substituting `params`. Throws on invalid MF2 syntax\n— validate with `@pantoken/i18n-engine`'s `validateMf2` at build time, not at format time."
+msgstr "Formáz egy MF2 `source` üzenetet `locale` számára, helyettesítve `params`-t. Érvénytelen MF2 szintaxis esetén kivételt dob\n— ellenőrizze build időben a `@pantoken/i18n-engine` `validateMf2` értékét, ne a formázáskor."
 
 #: renderers/web-components/src/functions/formatMessage.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`messageformat` already isolates each placeholder's formatted value in FSI/PDI bidi marks by\ndefault (its `bidiIsolation: \"default\"` option) — [isolate](isolate.md) is for interpolation done\nOUTSIDE of MF2 formatting, not needed here."
-msgstr "`messageformat` already isolates each placeholder's formatted value in FSI/PDI bidi marks by\ndefault (its `bidiIsolation: \"default\"` option) — [isolate](isolate.md) is for interpolation done\nOUTSIDE of MF2 formatting, not needed here."
+msgstr "`messageformat` már alapértelmezés szerint elkülöníti minden helyőrző formázott értékét FSI/PDI bidi-jelekkel\n(az `bidiIsolation: \"default\"` opciójával) — az [isolate](isolate.md) az MF2 formázáson KÍVÜL végzett interpolációhoz van, itt nincs rá szükség."
 
 #: renderers/web-components/src/functions/formatMessage.md
 #, no-c-format
@@ -22974,7 +22974,7 @@ msgstr "# Függvény: formatNumber()"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A locale-bound number formatter (thousands separators, currency, percent, etc.)."
-msgstr "A locale-bound number formatter (thousands separators, currency, percent, etc.)."
+msgstr "Helyi beállításokhoz kötött számformázó (ezres elválasztók, pénznem, százalék, stb.)."
 
 #: renderers/web-components/src/functions/formatRelativeTime.md
 #, no-c-format
@@ -22986,7 +22986,7 @@ msgstr "# Függvény: formatRelativeTime()"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A locale-bound relative-time formatter (e.g. `\"3 days ago\"`)."
-msgstr "A locale-bound relative-time formatter (e.g. `\"3 days ago\"`)."
+msgstr "Helyi beállításhoz kötött relatív idő-formázó (pl. `\"3 days ago\"`)."
 
 #: renderers/web-components/src/functions/formatRelativeTime.md
 #, no-c-format
@@ -23004,7 +23004,7 @@ msgstr "# Függvény: getDir()"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Return the text direction for a locale — using the [LOCALES](../variables/LOCALES.md) registry for known\nlocales, falling back to `\"ltr\"` for unknown tags."
-msgstr "Return the text direction for a locale — using the [LOCALES](../variables/LOCALES.md) registry for known\nlocales, falling back to `\"ltr\"` for unknown tags."
+msgstr "Adja vissza egy locale szövegirányát — ismert locale-ok esetén a [LOCALES](../variables/LOCALES.md) nyilvántartást használva\nismeretlen tagek esetén az `\"ltr\"` értékre tér vissza."
 
 #: renderers/web-components/src/functions/getDir.md
 #, no-c-format
@@ -23022,7 +23022,7 @@ msgstr "# Függvény: isolate()"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Wrap `value` in Unicode bidi isolates (FSI/PDI) so it doesn't scramble the surrounding text's\ndirection — e.g. a Latin filename embedded in an Arabic sentence built with plain string\nconcatenation. `formatMessage` already does this for MF2 placeholders; use `isolate` only when\ninterpolating outside MF2."
-msgstr "Wrap `value` in Unicode bidi isolates (FSI/PDI) so it doesn't scramble the surrounding text's\ndirection — e.g. a Latin filename embedded in an Arabic sentence built with plain string\nconcatenation. `formatMessage` already does this for MF2 placeholders; use `isolate` only when\ninterpolating outside MF2."
+msgstr "Tegye `value` Unicode bidirekciós izolátorokba (FSI/PDI), hogy ne kavarja össze a környező szöveg irányát — pl. egy latin fájlnév arab mondatba ágyazva, amely egyszerű karakterlánc\nösszefűzéssel készült. `formatMessage` ezt már megteszi az MF2 helyőrzők számára; `isolate`-t csak akkor használja,\nha MF2-n kívül interpolál."
 
 #: renderers/web-components/src/functions/makeStrings.md
 #, no-c-format
@@ -23052,13 +23052,13 @@ msgstr "Egy [iconSvg](iconSvg.md) formájú feloldó, amely soha nem old fel sem
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Accepts a fully resolved [LocaleBundle](../interfaces/LocaleBundle.md) *or* a raw BCP47 tag string. When a string is\npassed, [makeStrings](makeStrings.md) derives weekday names via `Intl.DateTimeFormat` and all other strings\nfall back to English; pass a bundle for full translations."
-msgstr "Accepts a fully resolved [LocaleBundle](../interfaces/LocaleBundle.md) *or* a raw BCP47 tag string. When a string is\npassed, [makeStrings](makeStrings.md) derives weekday names via `Intl.DateTimeFormat` and all other strings\nfall back to English; pass a bundle for full translations."
+msgstr "Elfogad egy teljesen feloldott [LocaleBundle](../interfaces/LocaleBundle.md) objektumot *vagy* egy nyers BCP47 címke stringet. Ha stringet adnak meg, a [makeStrings](makeStrings.md) a hét napjainak neveit a `Intl.DateTimeFormat` segítségével származtatja, és minden egyéb szöveg angolra esik vissza; teljes fordításokhoz adj meg egy bundle-t."
 
 #: renderers/web-components/src/functions/registerLocalized.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A [LocaleBundle](../interfaces/LocaleBundle.md) object, or a BCP47 tag (`\"hu\"`, `\"ar\"`, …)."
-msgstr "A [LocaleBundle](../interfaces/LocaleBundle.md) object, or a BCP47 tag (`\"hu\"`, `\"ar\"`, …)."
+msgstr "Egy [LocaleBundle](../interfaces/LocaleBundle.md) objektum, vagy egy BCP47 címke (`\"hu\"`, `\"ar\"`, …)."
 
 #: renderers/web-components/src/functions/resolveFirstDay.md
 #, no-c-format
@@ -23094,7 +23094,7 @@ msgstr "A [register](functions/register.md) (a böngészőben automatikusan megh
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "For localized UI strings (calendar nav labels, date-input placeholder, drilldown Back text) pass\n`locale`, `strings`, or `dir` options to [register](functions/register.md). The full Canvas-parity bundle set and\nthe [registerLocalized](functions/registerLocalized.md) helper are exported from this package as well."
-msgstr "For localized UI strings (calendar nav labels, date-input placeholder, drilldown Back text) pass\n`locale`, `strings`, or `dir` options to [register](functions/register.md). The full Canvas-parity bundle set and\nthe [registerLocalized](functions/registerLocalized.md) helper are exported from this package as well."
+msgstr "Az lokalizált felhasználói felület sztringjeihez (naptár navigációs címkék, dátumbeviteli helyőrző, drilldown Vissza szöveg) add át\n`locale`, `strings`, vagy `dir` opciókat a [register](functions/register.md)-nek. A teljes Canvas-paritás csomagkészlet és\na [registerLocalized](functions/registerLocalized.md) segédfüggvény szintén exportálva van ebből a csomagból."
 
 #: renderers/web-components/src/index.md
 #, no-c-format
@@ -23166,25 +23166,25 @@ msgstr "# Interfész: LocaleBundle"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A fully resolved locale bundle: BCP47 tag, direction, display label, and translated strings."
-msgstr "A fully resolved locale bundle: BCP47 tag, direction, display label, and translated strings."
+msgstr "Teljesen feloldott lokalizációs csomag: BCP47 címke, irány, megjelenítési címke és lefordított szövegek."
 
 #: renderers/web-components/src/interfaces/LocaleBundle.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "BCP47 locale tag (e.g. `\"hu\"`, `\"ar\"`, `\"zh-Hans\"`)."
-msgstr "BCP47 locale tag (e.g. `\"hu\"`, `\"ar\"`, `\"zh-Hans\"`)."
+msgstr "BCP47 lokalizációs címke (pl. `\"hu\"`, `\"ar\"`, `\"zh-Hans\"`)."
 
 #: renderers/web-components/src/interfaces/LocaleBundle.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Text direction."
-msgstr "Text direction."
+msgstr "Szövegirány."
 
 #: renderers/web-components/src/interfaces/LocaleBundle.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Human-readable display label."
-msgstr "Human-readable display label."
+msgstr "Ember által olvasható megjelenítési címke."
 
 #: renderers/web-components/src/interfaces/LocaleBundle.md
 #, no-c-format
@@ -23196,7 +23196,7 @@ msgstr "### strings"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Translated UI strings for the web-component element set."
-msgstr "Translated UI strings for the web-component element set."
+msgstr "A webkomponens elemkészletének lefordított felhasználói felületi szövegei."
 
 #: renderers/web-components/src/interfaces/LocaleInfo.md
 #, no-c-format
@@ -23208,13 +23208,13 @@ msgstr "# Interfész: LocaleInfo"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Display label and text-direction metadata for a single locale."
-msgstr "Display label and text-direction metadata for a single locale."
+msgstr "Megjeleníti egyetlen locale címkéjét és a szövegirányra vonatkozó metaadatokat."
 
 #: renderers/web-components/src/interfaces/LocaleInfo.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Human-readable label (English + native name where applicable)."
-msgstr "Human-readable label (English + native name where applicable)."
+msgstr "Ember számára olvasható címke (angol + az érintett nyelv megnevezése, ahol alkalmazható)."
 
 #: renderers/web-components/src/interfaces/LocaleSet.md
 #, no-c-format
@@ -23226,7 +23226,7 @@ msgstr "# Interfész: LocaleSet\\<K\\>"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A typed subset of [LocaleBundle](LocaleBundle.md)s. Created by [createLocaleSet](../functions/createLocaleSet.md) to constrain an\napp's supported locales at compile time — registering or retrieving a locale not in the set is a\nTypeScript error."
-msgstr "A typed subset of [LocaleBundle](LocaleBundle.md)s. Created by [createLocaleSet](../functions/createLocaleSet.md) to constrain an\napp's supported locales at compile time — registering or retrieving a locale not in the set is a\nTypeScript error."
+msgstr "A [LocaleBundle](LocaleBundle.md)-ek típusosított részhalmaza. A [createLocaleSet](../functions/createLocaleSet.md) hozza létre, hogy egy\nalkalmazás támogatott locale-jait fordítási időben korlátozza — egy, a halmazban nem szereplő locale regisztrálása vagy lekérése\nTypeScript hibát eredményez."
 
 #: renderers/web-components/src/interfaces/LocaleSet.md
 #, no-c-format
@@ -23238,7 +23238,7 @@ msgstr "### locales"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The locale tags included in this set."
-msgstr "The locale tags included in this set."
+msgstr "A halmazba tartozó locale-címkék."
 
 #: renderers/web-components/src/interfaces/LocaleSet.md
 #, no-c-format
@@ -23250,7 +23250,7 @@ msgstr "### has()"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Type guard — true when `locale` is in this set."
-msgstr "Type guard — true when `locale` is in this set."
+msgstr "Típusvédő — igaz, ha `locale` szerepel ebben a halmazban."
 
 #: renderers/web-components/src/interfaces/LocaleSet.md
 #, no-c-format
@@ -23262,7 +23262,7 @@ msgstr "##### locale"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Return the bundle for `locale`. Throws at runtime when called with an unknown locale."
-msgstr "Return the bundle for `locale`. Throws at runtime when called with an unknown locale."
+msgstr "Visszaadja a `locale`-hoz tartozó bundle-t. Futásidőben kivételt dob, ha ismeretlen locale-dal hívják."
 
 #: renderers/web-components/src/interfaces/LocaleSet.md
 #, no-c-format
@@ -23274,7 +23274,7 @@ msgstr "### register()"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Register `@pantoken/web-components` elements with the given locale from this set."
-msgstr "Register `@pantoken/web-components` elements with the given locale from this set."
+msgstr "Regisztrálja a halmazból az adott locale-hoz a `@pantoken/web-components` elemeket."
 
 #: renderers/web-components/src/interfaces/LocaleSet.md
 #, no-c-format
@@ -23640,7 +23640,7 @@ msgstr "# Változó: LOCALES"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "All 44 supported locales keyed by BCP47 tag, with direction and display label."
-msgstr "All 44 supported locales keyed by BCP47 tag, with direction and display label."
+msgstr "A 44 támogatott helyi beállítást BCP47-címkékkel kulcsként, iránnyal és megjelenítési címkével."
 
 #: renderers/web-components/src/variables/NESTED_DEPS.md
 #, no-c-format
@@ -23676,7 +23676,7 @@ msgstr "# Változó: ar"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Arabic (العربية) locale bundle."
-msgstr "Arabic (العربية) locale bundle."
+msgstr "Arab (العربية) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/avatar.md
 #, no-c-format
@@ -23730,7 +23730,7 @@ msgstr "# Változó: ca"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Catalan (Catalá) locale bundle."
-msgstr "Catalan (Catalá) locale bundle."
+msgstr "Katalán (Catalá) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/calendar.md
 #, no-c-format
@@ -23766,7 +23766,7 @@ msgstr "# Változó: cy"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Welsh (Cymraeg) locale bundle."
-msgstr "Welsh (Cymraeg) locale bundle."
+msgstr "Walesi (Cymraeg) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/da.md
 #, no-c-format
@@ -23778,7 +23778,7 @@ msgstr "# Változó: da"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Danish (Dansk) locale bundle."
-msgstr "Danish (Dansk) locale bundle."
+msgstr "Dán (Dansk) nyelvi csomag."
 
 #: renderers/web-components/src/variables/dateInput.md
 #, no-c-format
@@ -23814,7 +23814,7 @@ msgstr "# Változó: de"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "German (Deutsch) locale bundle."
-msgstr "German (Deutsch) locale bundle."
+msgstr "Német (Deutsch) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/drawerLayout.md
 #, no-c-format
@@ -23856,7 +23856,7 @@ msgstr "# Változó: el"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Greek (Ελληνικά) locale bundle."
-msgstr "Greek (Ελληνικά) locale bundle."
+msgstr "Görög (Ελληνικά) nyelvi csomag."
 
 #: renderers/web-components/src/variables/en.md
 #, no-c-format
@@ -23868,7 +23868,7 @@ msgstr "# Változó: en"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "English (United States) locale bundle."
-msgstr "English (United States) locale bundle."
+msgstr "Angol (Egyesült Államok) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/enAU.md
 #, no-c-format
@@ -23880,7 +23880,7 @@ msgstr "# Változó: enAU"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "English (Australia) locale bundle."
-msgstr "English (Australia) locale bundle."
+msgstr "Angol (Ausztrália) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/enCA.md
 #, no-c-format
@@ -23892,7 +23892,7 @@ msgstr "# Változó: enCA"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "English (Canada) locale bundle."
-msgstr "English (Canada) locale bundle."
+msgstr "Angol (Kanada) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/enGB.md
 #, no-c-format
@@ -23904,7 +23904,7 @@ msgstr "# Változó: enGB"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "English (United Kingdom) locale bundle."
-msgstr "English (United Kingdom) locale bundle."
+msgstr "Angol (Egyesült Királyság) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/es.md
 #, no-c-format
@@ -23916,7 +23916,7 @@ msgstr "# Változó: es"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Spanish (Español) locale bundle."
-msgstr "Spanish (Español) locale bundle."
+msgstr "Spanyol (Español) nyelvi csomag."
 
 #: renderers/web-components/src/variables/fa.md
 #, no-c-format
@@ -23928,7 +23928,7 @@ msgstr "# Változó: fa"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Persian / Farsi (فارسی) locale bundle."
-msgstr "Persian / Farsi (فارسی) locale bundle."
+msgstr "Perzsa / Fárszi (فارسی) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/fi.md
 #, no-c-format
@@ -23940,7 +23940,7 @@ msgstr "# Változó: fi"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Finnish (Suomi) locale bundle."
-msgstr "Finnish (Suomi) locale bundle."
+msgstr "Finn (Suomi) nyelvi csomag."
 
 #: renderers/web-components/src/variables/fr.md
 #, no-c-format
@@ -23952,7 +23952,7 @@ msgstr "# Változó: fr"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "French (Français) locale bundle."
-msgstr "French (Français) locale bundle."
+msgstr "Francia (Français) nyelvi csomag."
 
 #: renderers/web-components/src/variables/frCA.md
 #, no-c-format
@@ -23964,7 +23964,7 @@ msgstr "# Változó: frCA"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "French Canadian (Français Canada) locale bundle."
-msgstr "French Canadian (Français Canada) locale bundle."
+msgstr "Kanadai francia (Français Canada) helyi csomag."
 
 #: renderers/web-components/src/variables/ga.md
 #, no-c-format
@@ -23976,7 +23976,7 @@ msgstr "# Változó: ga"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Irish Gaelic locale bundle."
-msgstr "Irish Gaelic locale bundle."
+msgstr "Ír gael lokalizációs csomag."
 
 #: renderers/web-components/src/variables/he.md
 #, no-c-format
@@ -23988,7 +23988,7 @@ msgstr "# Változó: he"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hebrew (עִברִית) locale bundle."
-msgstr "Hebrew (עִברִית) locale bundle."
+msgstr "Héber (עִברִית) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/hi.md
 #, no-c-format
@@ -24000,7 +24000,7 @@ msgstr "# Változó: hi"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hindi (हिन्दी) locale bundle."
-msgstr "Hindi (हिन्दी) locale bundle."
+msgstr "Hindi (हिन्दी) nyelvi csomag."
 
 #: renderers/web-components/src/variables/ht.md
 #, no-c-format
@@ -24012,7 +24012,7 @@ msgstr "# Változó: ht"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Haitian Creole (Kreyòl Ayisyen) locale bundle."
-msgstr "Haitian Creole (Kreyòl Ayisyen) locale bundle."
+msgstr "Haiti kreol (Kreyòl Ayisyen) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/hu.md
 #, no-c-format
@@ -24024,7 +24024,7 @@ msgstr "# Változó: hu"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hungarian (Magyar) locale bundle."
-msgstr "Hungarian (Magyar) locale bundle."
+msgstr "Magyar (Magyar) nyelvi csomag."
 
 #: renderers/web-components/src/variables/hy.md
 #, no-c-format
@@ -24036,7 +24036,7 @@ msgstr "# Változó: hy"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Armenian (Հայերեն) locale bundle."
-msgstr "Armenian (Հայերեն) locale bundle."
+msgstr "Örmény (Հայերեն) nyelvi csomag."
 
 #: renderers/web-components/src/variables/icon.md
 #, no-c-format
@@ -24072,7 +24072,7 @@ msgstr "# Változó: id"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Indonesian locale bundle."
-msgstr "Indonesian locale bundle."
+msgstr "Indonéz nyelvi csomag."
 
 #: renderers/web-components/src/variables/img.md
 #, no-c-format
@@ -24108,7 +24108,7 @@ msgstr "# Változó: is"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Icelandic (Íslenska) locale bundle."
-msgstr "Icelandic (Íslenska) locale bundle."
+msgstr "Izlandi (Íslenska) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/it.md
 #, no-c-format
@@ -24120,7 +24120,7 @@ msgstr "# Változó: it"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Italian (Italiano) locale bundle."
-msgstr "Italian (Italiano) locale bundle."
+msgstr "Olasz (Italiano) nyelvi csomag."
 
 #: renderers/web-components/src/variables/ja.md
 #, no-c-format
@@ -24132,7 +24132,7 @@ msgstr "# Változó: ja"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Japanese (日本語) locale bundle."
-msgstr "Japanese (日本語) locale bundle."
+msgstr "Japán (日本語) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/ko.md
 #, no-c-format
@@ -24144,7 +24144,7 @@ msgstr "# Változó: ko"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Korean (한국말) locale bundle."
-msgstr "Korean (한국말) locale bundle."
+msgstr "Koreai (한국말) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/metric.md
 #, no-c-format
@@ -24168,7 +24168,7 @@ msgstr "# Változó: mi"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Maori (Reo Māori) locale bundle."
-msgstr "Maori (Reo Māori) locale bundle."
+msgstr "Maori (Reo Māori) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/modal.md
 #, no-c-format
@@ -24192,7 +24192,7 @@ msgstr "# Változó: ms"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Malaysian (Bahasa Melayu) locale bundle."
-msgstr "Malaysian (Bahasa Melayu) locale bundle."
+msgstr "Malajziai (Bahasa Melayu) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/nb.md
 #, no-c-format
@@ -24204,7 +24204,7 @@ msgstr "# Változó: nb"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Norwegian Bokmål (Norsk Bokmål) locale bundle."
-msgstr "Norwegian Bokmål (Norsk Bokmål) locale bundle."
+msgstr "Norvég bokmål (Norsk Bokmål) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/nl.md
 #, no-c-format
@@ -24216,7 +24216,7 @@ msgstr "# Változó: nl"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Dutch (Nederlands) locale bundle."
-msgstr "Dutch (Nederlands) locale bundle."
+msgstr "Holland (Nederlands) nyelvi csomag."
 
 #: renderers/web-components/src/variables/nn.md
 #, no-c-format
@@ -24228,7 +24228,7 @@ msgstr "# Változó: nn"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Norwegian Nynorsk (Norsk Nynorsk) locale bundle."
-msgstr "Norwegian Nynorsk (Norsk Nynorsk) locale bundle."
+msgstr "Norvég Nynorsk (Norsk Nynorsk) nyelvi csomag."
 
 #: renderers/web-components/src/variables/pages.md
 #, no-c-format
@@ -24264,7 +24264,7 @@ msgstr "# Változó: pl"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Polish (Polski) locale bundle."
-msgstr "Polish (Polski) locale bundle."
+msgstr "Lengyel (Polski) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/popover.md
 #, no-c-format
@@ -24324,7 +24324,7 @@ msgstr "# Változó: pt"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Portuguese (Português) locale bundle."
-msgstr "Portuguese (Português) locale bundle."
+msgstr "Portugál (Português) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/ptBR.md
 #, no-c-format
@@ -24336,7 +24336,7 @@ msgstr "# Változó: ptBR"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Portuguese Brazil (Português do Brasil) locale bundle."
-msgstr "Portuguese Brazil (Português do Brasil) locale bundle."
+msgstr "braziliai portugál (Português do Brasil) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/rating.md
 #, no-c-format
@@ -24360,7 +24360,7 @@ msgstr "# Változó: ru"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Russian (Русский) locale bundle."
-msgstr "Russian (Русский) locale bundle."
+msgstr "Orosz (Русский) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/se.md
 #, no-c-format
@@ -24372,7 +24372,7 @@ msgstr "# Változó: se"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Northern Sami locale bundle."
-msgstr "Northern Sami locale bundle."
+msgstr "Északi számi lokalizációs csomag."
 
 #: renderers/web-components/src/variables/sideNavBar.md
 #, no-c-format
@@ -24396,7 +24396,7 @@ msgstr "# Változó: sl"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Slovenian (Slovenščina) locale bundle."
-msgstr "Slovenian (Slovenščina) locale bundle."
+msgstr "Szlovén (Slovenščina) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/spinner.md
 #, no-c-format
@@ -24420,7 +24420,7 @@ msgstr "# Változó: sv"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Swedish (Svenska) locale bundle."
-msgstr "Swedish (Svenska) locale bundle."
+msgstr "Svéd (Svenska) nyelvi csomag."
 
 #: renderers/web-components/src/variables/tag.md
 #, no-c-format
@@ -24444,7 +24444,7 @@ msgstr "# Változó: th"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Thai (ไทย) locale bundle."
-msgstr "Thai (ไทย) locale bundle."
+msgstr "Thai (ไทย) nyelvi csomag."
 
 #: renderers/web-components/src/variables/toggleButton.md
 #, no-c-format
@@ -24480,7 +24480,7 @@ msgstr "# Változó: tr"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Turkish (Türkçe) locale bundle."
-msgstr "Turkish (Türkçe) locale bundle."
+msgstr "Török (Türkçe) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/tray.md
 #, no-c-format
@@ -24528,7 +24528,7 @@ msgstr "# Változó: uk"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Ukrainian (Українська) locale bundle."
-msgstr "Ukrainian (Українська) locale bundle."
+msgstr "Ukrán (Українська) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/vi.md
 #, no-c-format
@@ -24540,7 +24540,7 @@ msgstr "# Változó: vi"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Vietnamese locale bundle."
-msgstr "Vietnamese locale bundle."
+msgstr "Vietnámi lokalizációs csomag."
 
 #: renderers/web-components/src/variables/zhHans.md
 #, no-c-format
@@ -24552,7 +24552,7 @@ msgstr "# Változó: zhHans"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Simplified Chinese (简体中文) locale bundle."
-msgstr "Simplified Chinese (简体中文) locale bundle."
+msgstr "Egyszerűsített kínai (简体中文) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/zhHant.md
 #, no-c-format
@@ -24564,7 +24564,7 @@ msgstr "# Változó: zhHant"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Traditional Chinese (繁體中文) locale bundle."
-msgstr "Traditional Chinese (繁體中文) locale bundle."
+msgstr "Hagyományos kínai (繁體中文) lokalizációs csomag."
 
 #: tools/aggregate/src/functions/aggregate.md
 #, no-c-format
@@ -24954,7 +24954,7 @@ msgstr "### wrap"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build the preview block appended after each non-overlay `html` fence, from its markup, any `-flag` tokens parsed from the fence info string, and the page's `env.relativePath` (for locale/direction lookups)."
-msgstr "Build the preview block appended after each non-overlay `html` fence, from its markup, any `-flag` tokens parsed from the fence info string, and the page's `env.relativePath` (for locale/direction lookups)."
+msgstr "Építsd fel az előnézeti blokkot, amely minden nem-átfedő `html` kerítés után kerül hozzáfűzésre, a blokk jelöléséből, a kerítés info stringjéből elemzett bármely `-flag` tokenből, valamint az oldal `env.relativePath`-jából (helyi beállítás/irány kereséshez)."
 
 #: tools/demo/src/interfaces/LiveExampleOptions.md
 #, no-c-format
@@ -25037,12 +25037,12 @@ msgstr "Egy rámutatáskor megjelenő \"teljes képernyős nézet\" gomb, amely 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tools"
-msgstr "eszközök"
+msgstr "tools"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "aggregate"
-msgstr "összesítés"
+msgstr "aggregate"
 
 #: glossary.ts
 msgctxt "docs.api:text"
@@ -25052,7 +25052,7 @@ msgstr "Interfészek"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "Target"
-msgstr "Cél"
+msgstr "Target"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -25072,7 +25072,7 @@ msgstr "discoverTargets"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "demo"
-msgstr "bemutató"
+msgstr "demo"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -25207,7 +25207,7 @@ msgstr "scaffoldProject"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "platforms"
-msgstr "platformok"
+msgstr "platforms"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -25372,17 +25372,17 @@ msgstr "toDrupalTheme"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "email"
-msgstr "e-mail"
+msgstr "email"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "light"
-msgstr "világos"
+msgstr "light"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "dark"
-msgstr "sötét"
+msgstr "dark"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -25497,12 +25497,12 @@ msgstr "ToVanillaOptions"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "Mode"
-msgstr "Mód"
+msgstr "Mode"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "variables"
-msgstr "változók"
+msgstr "variables"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -25542,7 +25542,7 @@ msgstr "toThemeJson"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "renderers"
-msgstr "renderelők"
+msgstr "renderers"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -25562,7 +25562,7 @@ msgstr "readToken"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "register"
-msgstr "regisztrálás"
+msgstr "register"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -26012,7 +26012,7 @@ msgstr "ActionResult"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "icon"
-msgstr "ikon"
+msgstr "icon"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -26707,7 +26707,7 @@ msgstr "defineBundle"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "packages"
-msgstr "csomagok"
+msgstr "packages"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -26727,12 +26727,12 @@ msgstr "parseArgs"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "run"
-msgstr "futtatás"
+msgstr "run"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "core"
-msgstr "mag"
+msgstr "core"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -26827,7 +26827,7 @@ msgstr "PantokenPlugin"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "Theme"
-msgstr "Téma"
+msgstr "Theme"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -26947,17 +26947,17 @@ msgstr "isContextual"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "model"
-msgstr "modell"
+msgstr "model"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "DeprecationEntry"
-msgstr "Elavulási bejegyzés"
+msgstr "DeprecationEntry"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "DeprecationLedger"
-msgstr "Elavulási főkönyv"
+msgstr "DeprecationLedger"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -26967,7 +26967,7 @@ msgstr "PropertyRule"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "UpstreamRef"
-msgstr "Felső forrás referencia"
+msgstr "UpstreamRef"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -26977,7 +26977,7 @@ msgstr "plugin-kit"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "Stage"
-msgstr "Fázis"
+msgstr "Stage"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -27027,7 +27027,7 @@ msgstr "resolveTokens"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "utils"
-msgstr "segédprogramok"
+msgstr "utils"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -27157,12 +27157,12 @@ msgstr "tokenUtilitiesCss"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "formats"
-msgstr "formátumok"
+msgstr "formats"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "components"
-msgstr "összetevők"
+msgstr "components"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -27767,7 +27767,7 @@ msgstr "buildIconResolverChain"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "interactions"
-msgstr "interakciók"
+msgstr "interactions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -28272,62 +28272,62 @@ msgstr "customIcons"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "deprecations"
-msgstr "elavulások"
+msgstr "deprecations"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "UpstreamVersions"
-msgstr "Felső forrás verziói"
+msgstr "UpstreamVersions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ParsedRef"
-msgstr "Elemzett referencia"
+msgstr "ParsedRef"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "shimValue"
-msgstr "shim érték"
+msgstr "shimValue"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "shimEntries"
-msgstr "shim bejegyzések"
+msgstr "shimEntries"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ledgerCovers"
-msgstr "főkönyv fedezete"
+msgstr "ledgerCovers"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "parseUpstreamRef"
-msgstr "felső forrás referenciáját elemzi"
+msgstr "parseUpstreamRef"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "compareVersions"
-msgstr "verziókat összehasonlítja"
+msgstr "compareVersions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "dueForRemoval"
-msgstr "eltávolításra esedékes"
+msgstr "dueForRemoval"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "describeLifecycle"
-msgstr "életciklust leír"
+msgstr "describeLifecycle"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "deprecationShims"
-msgstr "elavulási shimek"
+msgstr "deprecationShims"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "layouts"
-msgstr "elrendezések"
+msgstr "layouts"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -28662,12 +28662,12 @@ msgstr "byline"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "day"
-msgstr "nap"
+msgstr "day"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "card"
-msgstr "kártya"
+msgstr "card"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -28692,7 +28692,7 @@ msgstr "drawer-layout"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "content"
-msgstr "tartalom"
+msgstr "content"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -28737,7 +28737,7 @@ msgstr "list"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "item"
-msgstr "elem"
+msgstr "item"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -28752,27 +28752,27 @@ msgstr "menu"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "group"
-msgstr "csoport"
+msgstr "group"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "separator"
-msgstr "elválasztó"
+msgstr "separator"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "body"
-msgstr "törzs"
+msgstr "body"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "footer"
-msgstr "lábléc"
+msgstr "footer"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "header"
-msgstr "fejléc"
+msgstr "header"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -28787,7 +28787,7 @@ msgstr "pagination"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "page"
-msgstr "oldal"
+msgstr "page"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -28827,27 +28827,27 @@ msgstr "table"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "cell"
-msgstr "cella"
+msgstr "cell"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "col-header"
-msgstr "oszlopfejléc"
+msgstr "col-header"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "head"
-msgstr "fej"
+msgstr "head"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "row"
-msgstr "sor"
+msgstr "row"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "row-header"
-msgstr "sorfejléc"
+msgstr "row-header"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -28862,7 +28862,7 @@ msgstr "panel"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tab"
-msgstr "fül"
+msgstr "tab"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -28912,7 +28912,7 @@ msgstr "color"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "cursor"
-msgstr "kurzor"
+msgstr "cursor"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -28932,12 +28932,12 @@ msgstr "maskglobal"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "overflow"
-msgstr "túlcsordulás"
+msgstr "overflow"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "position"
-msgstr "pozíció"
+msgstr "position"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -28972,7 +28972,7 @@ msgstr "prose"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "Plugins"
-msgstr "Beépülők"
+msgstr "Plugins"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
@@ -29007,7 +29007,7 @@ msgstr "two-column"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "wrapper"
-msgstr "csomagoló"
+msgstr "wrapper"
 
 #: glossary.ts
 msgctxt "docs.api:text"
@@ -29367,3 +29367,31 @@ msgstr "pantoken ikon logó (sötét)."
 msgctxt "docs.api:prose"
 msgid "pantoken icon logo (reversed)."
 msgstr "pantoken ikon logó (inverz)."
+
+msgctxt "docs.api:prose"
+msgid "The localized wordmark's language, if a translated variant is wanted."
+msgstr "A lokalizált wordmark nyelve, ha egy lefordított változat kívánatos."
+
+msgctxt "docs.api:prose"
+msgid "The localized wordmark's language, absent for the default (English) variant."
+msgstr "A lokalizált wordmark nyelve, hiányzik az alapértelmezett (angol) változatnál."
+
+msgctxt "docs.api:prose"
+msgid "A trailing language code on a localized wordmark variant, e.g. `\"horizontal-full-color-ar\"`."
+msgstr "Egy lokalizált wordmark változat végén álló nyelvkód, pl. `\"horizontal-full-color-ar\"`."
+
+msgctxt "docs.api:prose"
+msgid "BCP47 locale tag or a pre-built [LocaleBundle](#). When set, uses `registerLocalized`."
+msgstr "BCP47 nyelvterület-címke vagy egy előre elkészített [LocaleBundle](#). Ha be van állítva, `registerLocalized` használatos."
+
+msgctxt "docs.api:prose"
+msgid "Accepts a fully resolved [LocaleBundle](#) *or* a raw BCP47 tag string. When a string is\npassed, [makeStrings](#) derives weekday names via `Intl.DateTimeFormat` and all other strings\nfall back to English; pass a bundle for full translations."
+msgstr "Elfogad egy teljesen feloldott [LocaleBundle](#)-t *vagy* egy nyers BCP47 címke sztringet. Ha sztringet adnak meg, a [makeStrings](#) a hét napjainak neveit `Intl.DateTimeFormat` segítségével származtatja, és minden más szöveg angolra esik vissza; teljes fordításokhoz adj át egy bundle-t."
+
+msgctxt "docs.api:prose"
+msgid "A [LocaleBundle](#) object, or a BCP47 tag (`\"hu\"`, `\"ar\"`, …)."
+msgstr "Egy [LocaleBundle](#) objektum, vagy egy BCP47 címke (`\"hu\"`, `\"ar\"`, …)."
+
+msgctxt "docs.api:text"
+msgid "LogoLang"
+msgstr "LogoLang"
