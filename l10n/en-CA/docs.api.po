@@ -1,6 +1,13 @@
 msgid ""
 msgstr ""
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-03 19:01+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
 
 #: ai/pantoken-ai/src/functions/installAgentAssets.md
 #, no-c-format
@@ -28549,3 +28556,55 @@ msgstr "Beta"
 msgctxt "docs.api:text"
 msgid "Experimental"
 msgstr "Experimental"
+
+msgctxt "docs.api:prose"
+msgid "pantoken horizontal logo (full-color)."
+msgstr "pantoken horizontal logo (full-colour)."
+
+msgctxt "docs.api:prose"
+msgid "pantoken horizontal logo (reversed)."
+msgstr "pantoken horizontal logo (reversed)."
+
+msgctxt "docs.api:prose"
+msgid "pantoken icon logo (color)."
+msgstr "pantoken icon logo (colour)."
+
+msgctxt "docs.api:prose"
+msgid "pantoken icon logo (current-color)."
+msgstr "pantoken icon logo (current-colour)."
+
+msgctxt "docs.api:prose"
+msgid "pantoken icon logo (dark)."
+msgstr "pantoken icon logo (dark)."
+
+msgctxt "docs.api:prose"
+msgid "pantoken icon logo (reversed)."
+msgstr "pantoken icon logo (reversed)."
+
+msgctxt "docs.api:prose"
+msgid "The localized wordmark's language, if a translated variant is wanted."
+msgstr "The localized wordmark's language, if a translated variant is desired."
+
+msgctxt "docs.api:prose"
+msgid "The localized wordmark's language, absent for the default (English) variant."
+msgstr "The localised wordmark's language, absent for the default (English) variant."
+
+msgctxt "docs.api:prose"
+msgid "A trailing language code on a localized wordmark variant, e.g. `\"horizontal-full-color-ar\"`."
+msgstr "A trailing language code on a localised wordmark variant, e.g. `\"horizontal-full-color-ar\"`."
+
+msgctxt "docs.api:prose"
+msgid "BCP47 locale tag or a pre-built [LocaleBundle](#). When set, uses `registerLocalized`."
+msgstr "BCP47 locale tag or a prebuilt [LocaleBundle](#). When set, it uses `registerLocalized`."
+
+msgctxt "docs.api:prose"
+msgid "Accepts a fully resolved [LocaleBundle](#) *or* a raw BCP47 tag string. When a string is\npassed, [makeStrings](#) derives weekday names via `Intl.DateTimeFormat` and all other strings\nfall back to English; pass a bundle for full translations."
+msgstr "Accepts a fully resolved [LocaleBundle](#) *or* a raw BCP47 tag string. When a string is\npassed, [makeStrings](#) derives weekday names via `Intl.DateTimeFormat` and all other strings\nfall back to Canadian English; pass a bundle for full translations."
+
+msgctxt "docs.api:prose"
+msgid "A [LocaleBundle](#) object, or a BCP47 tag (`\"hu\"`, `\"ar\"`, …)."
+msgstr "A [LocaleBundle](#) object, or a BCP47 tag (`\"hu\"`, `\"ar\"`, …)."
+
+msgctxt "docs.api:text"
+msgid "LogoLang"
+msgstr "LogoLang"
