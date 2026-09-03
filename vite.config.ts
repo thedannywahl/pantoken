@@ -363,7 +363,7 @@ export default defineConfig({
       // always reflects the current PO catalogs and policy configuration.
       "i18n:coverage": {
         command:
-          "vp run @pantoken/i18n-engine#build && node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json stats",
+          "vp run @pantoken/i18n-engine#build && node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json stats --html",
         cache: false,
       },
       // Every i18n surface at once, including the docs ones. Assumes `docs:api:en` already ran — API
