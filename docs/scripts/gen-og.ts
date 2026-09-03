@@ -11,11 +11,10 @@
  * `loadSystemFonts` OFF, so the card renders identically on CI's `ubuntu-latest`, which ships none of
  * the fonts a `loadSystemFonts` build would otherwise fall back to.
  *
- * Regenerated on every build as part of `docs:assets` (like the nav logos), so `docs/public/og.png`
- * is git-ignored, not committed. Run `vp run docs:og` to refresh it on its own while iterating on the
- * card design.
+ * Regenerated on every build as part of `docs:assets`, so `docs/public/og.png` is git-ignored, not
+ * committed. Run `vp run docs:og` to refresh it on its own while iterating on the card design.
  */
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { Resvg } from "@resvg/resvg-js";
 
@@ -33,6 +32,7 @@ const fontFile = (weight: string): string =>
     ),
   );
 const FONT_FILES = ["Regular", "Medium", "SemiBold", "Bold"].map(fontFile);
+const LOGO_SVG = readFileSync(new URL("../public/logo-dark.svg", import.meta.url), "utf8");
 
 // Palette lifted from the docs theme's home background SVG (pantoken.css `--vp-home-bg-image`)
 const HEADER = "#7fb4f1";
@@ -61,10 +61,10 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${
   <rect x="0" y="0" width="${WIDTH}" height="10" fill="${RING_3}" />
 
   <!-- Wordmark. -->
-  <text x="96" y="266" font-family="${FONT}" font-size="132" font-weight="700" letter-spacing="-4" fill="${HEADER}">pantoken</text>
+  ${LOGO_SVG.replace("<svg ", '<svg x="96" y="180" transform="translate(19.2 26) scale(0.8)" ')}
 
   <!-- Tagline (the home hero line). -->
-  <text x="100" y="388" font-family="${FONT}" font-size="48" font-weight="700" fill="${WHITE}">Instructure design tokens, everywhere</text>
+  <text x="100" y="388" font-family="${FONT}" font-size="48" font-weight="700" fill="${HEADER}">InstUI, everywhere</text>
 
   <!-- Supporting line. -->
   <text x="100" y="444" font-family="${FONT}" font-size="29" font-weight="500" fill="${MUTED}">One resolved token model, reshaped into stylesheets,</text>

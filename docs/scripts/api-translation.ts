@@ -28,6 +28,16 @@ const LOCALE_LABELS: Record<string, string> = Object.fromEntries(
   ]),
 );
 
+/** Remove the markdown envelope when a CLI model echoes the delimiters from the translation prompt. */
+const stripMarkdownEnvelope = (output: string): string => {
+  const begin = "--- BEGIN MARKDOWN ---";
+  const end = "--- END MARKDOWN ---";
+  const start = output.indexOf(begin);
+  const finish = output.lastIndexOf(end);
+  if (start === -1 || finish <= start) return output;
+  return output.slice(start + begin.length, finish).trim();
+};
+
 /** A pluggable translation engine: named, with markdown/text/batch translate methods. */
 export interface TranslationAdapter {
   readonly name: string;
@@ -331,7 +341,9 @@ export class AiTranslationAdapter implements TranslationAdapter {
       "--- END MARKDOWN ---",
     ].join("\n");
 
-    const translated = await this.runClaude(prompt, `markdown file ${filePath}`);
+    const translated = stripMarkdownEnvelope(
+      await this.runClaude(prompt, `markdown file ${filePath}`),
+    );
     const restoredBrackets = restoreEscapedAngleBrackets(translated, preservedBrackets.brackets);
     const restoredPackages = restorePackageNames(restoredBrackets, preservedPackages.packageNames);
     return restoreMarkdownSensitiveBlocks(
