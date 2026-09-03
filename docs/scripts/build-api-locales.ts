@@ -64,6 +64,7 @@ export const isRequiredVerbatimApiUnit = (source: string): boolean => {
   const text = source.trim();
   const withoutListMarker = text.replace(/^(?:-|\*)\s+/u, "");
   const unwrapped = withoutListMarker.replace(/^\*\*(.+)\*\*$/u, "$1");
+  if (unwrapped === "Token") return true;
   if (/^(?:https?:\/\/|www\.)\S+$/iu.test(unwrapped)) return true;
   if (/^\*\*Source:\*\*\s+\[[^\]]+\]\(https?:\/\//u.test(text)) return true;
   if (/^@(?:import|supports|media|scope)\b/u.test(unwrapped)) return true;

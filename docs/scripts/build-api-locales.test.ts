@@ -180,6 +180,7 @@ test("keeps API identifiers and code-shaped prose verbatim", async () => {
     "AggregateOptions",
     "buildThemeCss",
     "canvas-theme-editor",
+    "Token",
     "**panda.config.ts**",
     "- https://www.figma.com/design/EmUrCpRWx",
     "cursor: auto.",
