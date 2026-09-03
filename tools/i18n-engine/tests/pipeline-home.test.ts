@@ -12,7 +12,7 @@ describe("docs.home PO migration", () => {
     const source = readFileSync(join(docsRoot, "index.md"), "utf8");
     const units = extractFrontmatterUnits(source, "index.md");
     const locales = readdirSync(join(root, "l10n"), { withFileTypes: true })
-      .filter((entry) => entry.isDirectory() && entry.name !== "en")
+      .filter((entry) => entry.isDirectory())
       .filter((entry) => readdirSync(join(root, "l10n", entry.name)).includes("docs.home.po"))
       .map((entry) => entry.name);
 
@@ -24,9 +24,11 @@ describe("docs.home PO migration", () => {
       const rendered = renderFrontmatterFile(
         source,
         (text) => translations.get(text) ?? text,
-        locale,
+        locale === "en" ? undefined : locale,
       );
-      expect(rendered).toBe(readFileSync(join(docsRoot, locale, "index.md"), "utf8"));
+      const pagePath =
+        locale === "en" ? join(docsRoot, "index.md") : join(docsRoot, locale, "index.md");
+      expect(rendered).toBe(readFileSync(pagePath, "utf8"));
       expect(entries.filter((entry) => entry.msgstr !== "")).toHaveLength(units.length);
     }
   });
