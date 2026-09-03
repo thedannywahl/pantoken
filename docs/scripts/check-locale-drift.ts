@@ -16,7 +16,7 @@
  * (`docs/api/**`), so run it after `docs:api:en`; if `docs/api` is absent it is skipped with a note.
  *
  * Whether a given miss blocks the merge or only warns is decided by `i18n.config.json`, per surface
- * (`docs.guides`, `docs.api`, `docs.home`, `docs.chrome`, `docs.glossary`, `docs.demos`) and per
+ * (`docs.guides`, `docs.api`, `docs.home`, `docs.chrome`, `docs.demos`) and per
  * locale tier — so adding an English guide doesn't have to wait on ~90 translations. See
  * `tools/translation-adapters/src/drift-policy.ts`.
  *
@@ -95,6 +95,11 @@ export const apiDrift = (locale: string): Missing[] => {
       }
     }
   }
+  for (const { id, term } of GLOSSARY_TERMS) {
+    if (!cached.has(keyFor("text", term))) {
+      missing.push({ file: `glossary.ts#${id}`, kind: "text", sample: preview(term) });
+    }
+  }
   return missing;
 };
 
@@ -108,19 +113,6 @@ const chromeDrift = (locale: string): Missing[] => {
   for (const { path, text } of chromeLeaves) {
     if (!cached.has(keyFor("text", text))) {
       missing.push({ file: `.vitepress/i18n.ts#${path}`, kind: "text", sample: preview(text) });
-    }
-  }
-  return missing;
-};
-
-/** Glossary drift: every structural term (headings/badges/table labels) needs a cached translation. */
-const glossaryDrift = (locale: string): Missing[] => {
-  if (GLOSSARY_TERMS.length === 0) return [];
-  const cached = loadCacheKeys(locale, "glossary");
-  const missing: Missing[] = [];
-  for (const { id, term } of GLOSSARY_TERMS) {
-    if (!cached.has(keyFor("text", term))) {
-      missing.push({ file: `glossary.ts#${id}`, kind: "text", sample: preview(term) });
     }
   }
   return missing;
@@ -194,7 +186,6 @@ for (const locale of targets) {
   record("docs.guides", locale, guideDrift(locale));
   record("docs.home", locale, homeDrift(locale));
   record("docs.chrome", locale, chromeDrift(locale));
-  record("docs.glossary", locale, glossaryDrift(locale));
   record("docs.demos", locale, demosDrift(locale));
   if (apiGenerated) record("docs.api", locale, apiDrift(locale));
 }

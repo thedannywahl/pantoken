@@ -85,8 +85,8 @@ const replacementFor = (kind: GlossaryKind, translated: string): string => {
 
 /**
  * Deterministic adapter: substitutes known structural terms only (headings, badges, table labels),
- * looked up from the `<locale>.glossary.json` translation-memory cache (see `glossary.ts` for the term
- * list and `translate-glossary.ts` for how the cache is filled). It can't translate prose, so
+ * looked up from the `<locale>.api.json` translation-memory cache (see `glossary.ts` for the term
+ * list and the API translation workflow for how the cache is filled). It can't translate prose, so
  * `translatesProse` is `false`. Safe to run in CI — it never spawns an adapter or hits the network.
  */
 export class GlossaryTranslationAdapter implements TranslationAdapter {
@@ -97,7 +97,7 @@ export class GlossaryTranslationAdapter implements TranslationAdapter {
   private readonly replacements: Array<[RegExp, string]>;
 
   constructor(locale = "hu") {
-    const memory = TranslationMemory.load(locale, "glossary");
+    const memory = TranslationMemory.load(locale, "api");
     // Untranslated terms are skipped (identity passthrough) rather than matched against an empty
     // string, so an in-progress locale still renders every OTHER already-translated term correctly.
     this.replacements = GLOSSARY_TERMS.flatMap(({ kind, term }) => {

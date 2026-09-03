@@ -71,12 +71,12 @@ beforeEach(() => {
   vi.clearAllMocks();
   delete process.env.DOCS_TRANSLATION_ADAPTER; // default glossary adapter (no real spawns)
 
-  // Cache files are absent → empty memory; every other path (the HU tree) exists.
-  existsSync.mockImplementation((path) => !path.endsWith("hu.api.json"));
+  // The merged API cache contains the glossary entries used by this fixture.
+  existsSync.mockReturnValue(true);
   readdirSync.mockReturnValue(["index.md", "typedoc-sidebar.json"]);
   statSync.mockReturnValue({ isDirectory: () => false });
   readFileSync.mockImplementation((path) => {
-    if (path.endsWith("hu.glossary.json")) return GLOSSARY_JSON;
+    if (path.endsWith("hu.api.json")) return GLOSSARY_JSON;
     return path.endsWith("typedoc-sidebar.json") ? SIDEBAR : MARKDOWN;
   });
   spawnSync.mockReturnValue({ status: 0 });

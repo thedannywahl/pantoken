@@ -28,7 +28,6 @@
       "cli.ai": { "source": "block", "primary": "warn", "secondary": "warn" },
       "docs.guides": { "source": "block", "primary": "warn", "secondary": "warn" },
       "docs.api": { "source": "block", "primary": "warn", "secondary": "warn" },
-      "docs.glossary": { "source": "block", "primary": "warn", "secondary": "warn" },
       "docs.demos": { "source": "block", "primary": "warn", "secondary": "warn" },
       "docs.home": { "source": "block", "primary": "warn", "secondary": "warn" },
       "docs.chrome": { "source": "block", "primary": "warn", "secondary": "warn" },
@@ -74,11 +73,6 @@
       "kind": "structural",
       "drift": "block",
       "source": "docs/.vitepress/i18n.ts"
-    },
-    "docs.glossary": {
-      "kind": "structural",
-      "drift": "block",
-      "source": "docs/scripts/glossary.ts"
     },
     "docs.demos": {
       "kind": "structural",

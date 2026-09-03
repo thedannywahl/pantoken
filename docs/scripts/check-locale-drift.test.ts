@@ -30,7 +30,7 @@ vi.mock("../.vitepress/i18n.ts", () => ({
   ENGLISH_UI_STRINGS: {},
   flattenStrings: () => [],
 }));
-// Empty so glossaryDrift contributes no items to these fixtures, same rationale as ENGLISH_UI_STRINGS.
+// Empty so API glossary terms contribute no items to these fixtures, same rationale as ENGLISH_UI_STRINGS.
 vi.mock("./glossary.ts", () => ({ GLOSSARY_TERMS: [] }));
 
 const GUIDE_MD = "# Guide\n\nA whole guide file, translated as one markdown unit.\n";

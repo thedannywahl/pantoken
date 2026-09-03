@@ -59,7 +59,9 @@ export class TranslationMemory {
   /** Load (or start) the memory for `<locale>.<namespace>.json`. */
   static load(locale: string, namespace: string): TranslationMemory {
     const path = join(cacheDir, `${locale}.${namespace}.json`);
-    return new TranslationMemory(SharedTranslationMemory.open(path, { prune: true }));
+    return new TranslationMemory(
+      SharedTranslationMemory.open(path, { prune: namespace !== "api" }),
+    );
   }
 
   get(kind: string, source: string): string | undefined {
@@ -96,7 +98,7 @@ export interface TranslateOptions {
    * when an unchanged cache hit already exists. Use this to force a fresh pass over already-cached
    * content (e.g. after fixing an adapter bug that produced bad translations). Defaults to the
    * `DOCS_TRANSLATION_FORCE` environment variable (`"1"` → `true`), so every caller —
-   * `translate-guides.ts`, `translate-chrome.ts`, `translate-glossary.ts`, `translate-demos.ts`,
+   * `translate-guides.ts`, `translate-chrome.ts`, `translate-demos.ts`,
    * `build-api-locales.ts` — honors it without a code change.
    */
   force?: boolean;
