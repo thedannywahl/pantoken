@@ -2034,73 +2034,73 @@ msgstr "of 12"
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverLabel"
 msgid "Popover"
-msgstr ""
+msgstr "پاپ‌آور"
 
 #: pendo/i18n.json#popoverTitle
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverTitle"
 msgid "A quick orientation"
-msgstr ""
+msgstr "معرفی سریع"
 
 #: pendo/i18n.json#popoverSubtitle
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverSubtitle"
 msgid "Feature tour"
-msgstr ""
+msgstr "معرفی ویژگی"
 
 #: pendo/i18n.json#popoverBody
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverBody"
 msgid "This anchored guide keeps the next action close to the feature it describes."
-msgstr ""
+msgstr "این راهنمای متصل، عمل بعدی را نزدیک به ویژگی‌ای که توضیح می‌دهد نگه می‌دارد."
 
 #: pendo/i18n.json#alertLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:alertLabel"
 msgid "Alert"
-msgstr ""
+msgstr "هشدار"
 
 #: pendo/i18n.json#alertTitle
 #, no-c-format
 msgctxt "docs.demos:pendo:alertTitle"
 msgid "Maintenance tonight"
-msgstr ""
+msgstr "نگهداریِ امشب"
 
 #: pendo/i18n.json#alertSubtitle
 #, no-c-format
 msgctxt "docs.demos:pendo:alertSubtitle"
 msgid "Starts at 11:00 PM"
-msgstr ""
+msgstr "از ساعت ۱۱:۰۰ شب شروع می‌شود"
 
 #: pendo/i18n.json#alertBody
 #, no-c-format
 msgctxt "docs.demos:pendo:alertBody"
 msgid "Course tools will be unavailable briefly tonight while maintenance is completed."
-msgstr ""
+msgstr "ابزارهای دوره امشب برای مدت کوتاهی در حین انجام نگهداری در دسترس نخواهند بود."
 
 #: pendo/i18n.json#bannerLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerLabel"
 msgid "Banner"
-msgstr ""
+msgstr "بنر"
 
 #: pendo/i18n.json#bannerTitle
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerTitle"
 msgid "New analytics are ready"
-msgstr ""
+msgstr "تحلیل‌های جدید آماده‌اند"
 
 #: pendo/i18n.json#bannerSubtitle
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerSubtitle"
 msgid "Participation insights"
-msgstr ""
+msgstr "بینش‌های مشارکت"
 
 #: pendo/i18n.json#bannerBody
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerBody"
 msgid "Review participation trends and identify where learners may need support."
-msgstr ""
+msgstr "روندهای مشارکت را بررسی کنید و محل‌هایی را که یادگیرندگان ممکن است به پشتیبانی نیاز داشته باشند شناسایی کنید."
 
 #: pendo/i18n.json#closeLabel
 #, no-c-format
@@ -2118,31 +2118,31 @@ msgstr "Continue"
 #, no-c-format
 msgctxt "docs.demos:pendo:laterLabel"
 msgid "Later"
-msgstr ""
+msgstr "بعداً"
 
 #: pendo/i18n.json#alertPrimaryLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:alertPrimaryLabel"
 msgid "View details"
-msgstr ""
+msgstr "مشاهده جزئیات"
 
 #: pendo/i18n.json#alertSecondaryLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:alertSecondaryLabel"
 msgid "Dismiss"
-msgstr ""
+msgstr "بستن"
 
 #: pendo/i18n.json#primaryLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:primaryLabel"
 msgid "View analytics"
-msgstr ""
+msgstr "مشاهده تحلیل‌ها"
 
 #: pendo/i18n.json#secondaryLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:secondaryLabel"
 msgid "Not now"
-msgstr ""
+msgstr "الآن نه"
 
 #: pill/i18n.json#text1
 #, no-c-format

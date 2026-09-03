@@ -2034,73 +2034,73 @@ msgstr "de 12"
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverLabel"
 msgid "Popover"
-msgstr ""
+msgstr "Finestra emergent"
 
 #: pendo/i18n.json#popoverTitle
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverTitle"
 msgid "A quick orientation"
-msgstr ""
+msgstr "Una orientació ràpida"
 
 #: pendo/i18n.json#popoverSubtitle
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverSubtitle"
 msgid "Feature tour"
-msgstr ""
+msgstr "Visita de la funció"
 
 #: pendo/i18n.json#popoverBody
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverBody"
 msgid "This anchored guide keeps the next action close to the feature it describes."
-msgstr ""
+msgstr "Aquesta guia ancorada manté l'acció següent a prop de la funció que descriu."
 
 #: pendo/i18n.json#alertLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:alertLabel"
 msgid "Alert"
-msgstr ""
+msgstr "Alerta"
 
 #: pendo/i18n.json#alertTitle
 #, no-c-format
 msgctxt "docs.demos:pendo:alertTitle"
 msgid "Maintenance tonight"
-msgstr ""
+msgstr "Manteniment aquesta nit"
 
 #: pendo/i18n.json#alertSubtitle
 #, no-c-format
 msgctxt "docs.demos:pendo:alertSubtitle"
 msgid "Starts at 11:00 PM"
-msgstr ""
+msgstr "Comença a les 23:00"
 
 #: pendo/i18n.json#alertBody
 #, no-c-format
 msgctxt "docs.demos:pendo:alertBody"
 msgid "Course tools will be unavailable briefly tonight while maintenance is completed."
-msgstr ""
+msgstr "Les eines del curs estaran breument no disponibles aquesta nit mentre es realitza el manteniment."
 
 #: pendo/i18n.json#bannerLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerLabel"
 msgid "Banner"
-msgstr ""
+msgstr "Bàner"
 
 #: pendo/i18n.json#bannerTitle
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerTitle"
 msgid "New analytics are ready"
-msgstr ""
+msgstr "Les noves analítiques estan disponibles"
 
 #: pendo/i18n.json#bannerSubtitle
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerSubtitle"
 msgid "Participation insights"
-msgstr ""
+msgstr "Informació sobre la participació"
 
 #: pendo/i18n.json#bannerBody
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerBody"
 msgid "Review participation trends and identify where learners may need support."
-msgstr ""
+msgstr "Revisa les tendències de participació i identifica on els estudiants poden necessitar suport."
 
 #: pendo/i18n.json#closeLabel
 #, no-c-format
@@ -2118,31 +2118,31 @@ msgstr "Continuar"
 #, no-c-format
 msgctxt "docs.demos:pendo:laterLabel"
 msgid "Later"
-msgstr ""
+msgstr "Més tard"
 
 #: pendo/i18n.json#alertPrimaryLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:alertPrimaryLabel"
 msgid "View details"
-msgstr ""
+msgstr "Veure detalls"
 
 #: pendo/i18n.json#alertSecondaryLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:alertSecondaryLabel"
 msgid "Dismiss"
-msgstr ""
+msgstr "Descarta"
 
 #: pendo/i18n.json#primaryLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:primaryLabel"
 msgid "View analytics"
-msgstr ""
+msgstr "Veure analítiques"
 
 #: pendo/i18n.json#secondaryLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:secondaryLabel"
 msgid "Not now"
-msgstr ""
+msgstr "Ara no"
 
 #: pill/i18n.json#text1
 #, no-c-format

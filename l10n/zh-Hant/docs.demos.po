@@ -2034,73 +2034,73 @@ msgstr "of 12"
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverLabel"
 msgid "Popover"
-msgstr ""
+msgstr "彈出提示"
 
 #: pendo/i18n.json#popoverTitle
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverTitle"
 msgid "A quick orientation"
-msgstr ""
+msgstr "快速導覽"
 
 #: pendo/i18n.json#popoverSubtitle
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverSubtitle"
 msgid "Feature tour"
-msgstr ""
+msgstr "功能導覽"
 
 #: pendo/i18n.json#popoverBody
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverBody"
 msgid "This anchored guide keeps the next action close to the feature it describes."
-msgstr ""
+msgstr "此固定導覽會將下一個操作置於其所描述功能的附近。"
 
 #: pendo/i18n.json#alertLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:alertLabel"
 msgid "Alert"
-msgstr ""
+msgstr "警示"
 
 #: pendo/i18n.json#alertTitle
 #, no-c-format
 msgctxt "docs.demos:pendo:alertTitle"
 msgid "Maintenance tonight"
-msgstr ""
+msgstr "今晚維護"
 
 #: pendo/i18n.json#alertSubtitle
 #, no-c-format
 msgctxt "docs.demos:pendo:alertSubtitle"
 msgid "Starts at 11:00 PM"
-msgstr ""
+msgstr "晚上11:00開始"
 
 #: pendo/i18n.json#alertBody
 #, no-c-format
 msgctxt "docs.demos:pendo:alertBody"
 msgid "Course tools will be unavailable briefly tonight while maintenance is completed."
-msgstr ""
+msgstr "課程工具於今晚維護期間將暫時無法使用。"
 
 #: pendo/i18n.json#bannerLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerLabel"
 msgid "Banner"
-msgstr ""
+msgstr "橫幅"
 
 #: pendo/i18n.json#bannerTitle
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerTitle"
 msgid "New analytics are ready"
-msgstr ""
+msgstr "新分析已就緒"
 
 #: pendo/i18n.json#bannerSubtitle
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerSubtitle"
 msgid "Participation insights"
-msgstr ""
+msgstr "參與洞察"
 
 #: pendo/i18n.json#bannerBody
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerBody"
 msgid "Review participation trends and identify where learners may need support."
-msgstr ""
+msgstr "檢視參與趨勢並找出學習者可能需要支援的地方。"
 
 #: pendo/i18n.json#closeLabel
 #, no-c-format
@@ -2118,31 +2118,31 @@ msgstr "Continue"
 #, no-c-format
 msgctxt "docs.demos:pendo:laterLabel"
 msgid "Later"
-msgstr ""
+msgstr "稍後"
 
 #: pendo/i18n.json#alertPrimaryLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:alertPrimaryLabel"
 msgid "View details"
-msgstr ""
+msgstr "查看詳情"
 
 #: pendo/i18n.json#alertSecondaryLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:alertSecondaryLabel"
 msgid "Dismiss"
-msgstr ""
+msgstr "關閉"
 
 #: pendo/i18n.json#primaryLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:primaryLabel"
 msgid "View analytics"
-msgstr ""
+msgstr "查看分析"
 
 #: pendo/i18n.json#secondaryLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:secondaryLabel"
 msgid "Not now"
-msgstr ""
+msgstr "稍後再說"
 
 #: pill/i18n.json#text1
 #, no-c-format

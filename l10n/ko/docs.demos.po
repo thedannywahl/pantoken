@@ -2034,73 +2034,73 @@ msgstr "of 12"
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverLabel"
 msgid "Popover"
-msgstr ""
+msgstr "팝오버"
 
 #: pendo/i18n.json#popoverTitle
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverTitle"
 msgid "A quick orientation"
-msgstr ""
+msgstr "빠른 안내"
 
 #: pendo/i18n.json#popoverSubtitle
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverSubtitle"
 msgid "Feature tour"
-msgstr ""
+msgstr "기능 소개"
 
 #: pendo/i18n.json#popoverBody
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverBody"
 msgid "This anchored guide keeps the next action close to the feature it describes."
-msgstr ""
+msgstr "이 고정 가이드는 다음 조치를 해당 기능 옆에 가깝게 배치합니다."
 
 #: pendo/i18n.json#alertLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:alertLabel"
 msgid "Alert"
-msgstr ""
+msgstr "알림"
 
 #: pendo/i18n.json#alertTitle
 #, no-c-format
 msgctxt "docs.demos:pendo:alertTitle"
 msgid "Maintenance tonight"
-msgstr ""
+msgstr "오늘 밤 유지보수"
 
 #: pendo/i18n.json#alertSubtitle
 #, no-c-format
 msgctxt "docs.demos:pendo:alertSubtitle"
 msgid "Starts at 11:00 PM"
-msgstr ""
+msgstr "오후 11시에 시작합니다"
 
 #: pendo/i18n.json#alertBody
 #, no-c-format
 msgctxt "docs.demos:pendo:alertBody"
 msgid "Course tools will be unavailable briefly tonight while maintenance is completed."
-msgstr ""
+msgstr "유지보수가 완료되는 동안 강좌 도구를 잠시 이용할 수 없습니다."
 
 #: pendo/i18n.json#bannerLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerLabel"
 msgid "Banner"
-msgstr ""
+msgstr "배너"
 
 #: pendo/i18n.json#bannerTitle
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerTitle"
 msgid "New analytics are ready"
-msgstr ""
+msgstr "새로운 분석이 준비되었습니다"
 
 #: pendo/i18n.json#bannerSubtitle
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerSubtitle"
 msgid "Participation insights"
-msgstr ""
+msgstr "참여 인사이트"
 
 #: pendo/i18n.json#bannerBody
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerBody"
 msgid "Review participation trends and identify where learners may need support."
-msgstr ""
+msgstr "참여 추세를 검토하고 학습자가 지원이 필요할 수 있는 부분을 식별하세요."
 
 #: pendo/i18n.json#closeLabel
 #, no-c-format
@@ -2118,31 +2118,31 @@ msgstr "Continue"
 #, no-c-format
 msgctxt "docs.demos:pendo:laterLabel"
 msgid "Later"
-msgstr ""
+msgstr "나중에"
 
 #: pendo/i18n.json#alertPrimaryLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:alertPrimaryLabel"
 msgid "View details"
-msgstr ""
+msgstr "세부정보 보기"
 
 #: pendo/i18n.json#alertSecondaryLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:alertSecondaryLabel"
 msgid "Dismiss"
-msgstr ""
+msgstr "닫기"
 
 #: pendo/i18n.json#primaryLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:primaryLabel"
 msgid "View analytics"
-msgstr ""
+msgstr "분석 보기"
 
 #: pendo/i18n.json#secondaryLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:secondaryLabel"
 msgid "Not now"
-msgstr ""
+msgstr "지금은 아님"
 
 #: pill/i18n.json#text1
 #, no-c-format

@@ -2034,73 +2034,73 @@ msgstr "of 12"
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverLabel"
 msgid "Popover"
-msgstr ""
+msgstr "Ponnahdusikkuna"
 
 #: pendo/i18n.json#popoverTitle
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverTitle"
 msgid "A quick orientation"
-msgstr ""
+msgstr "Nopea perehdytys"
 
 #: pendo/i18n.json#popoverSubtitle
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverSubtitle"
 msgid "Feature tour"
-msgstr ""
+msgstr "Ominaisuuskierros"
 
 #: pendo/i18n.json#popoverBody
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverBody"
 msgid "This anchored guide keeps the next action close to the feature it describes."
-msgstr ""
+msgstr "Tämä ankkuroitu opas pitää seuraavan toimenpiteen lähellä sitä kuvailevaa ominaisuutta."
 
 #: pendo/i18n.json#alertLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:alertLabel"
 msgid "Alert"
-msgstr ""
+msgstr "Ilmoitus"
 
 #: pendo/i18n.json#alertTitle
 #, no-c-format
 msgctxt "docs.demos:pendo:alertTitle"
 msgid "Maintenance tonight"
-msgstr ""
+msgstr "Huolto tänä iltana"
 
 #: pendo/i18n.json#alertSubtitle
 #, no-c-format
 msgctxt "docs.demos:pendo:alertSubtitle"
 msgid "Starts at 11:00 PM"
-msgstr ""
+msgstr "Alkaa klo 23:00"
 
 #: pendo/i18n.json#alertBody
 #, no-c-format
 msgctxt "docs.demos:pendo:alertBody"
 msgid "Course tools will be unavailable briefly tonight while maintenance is completed."
-msgstr ""
+msgstr "Kurssityökalut ovat hetken poissa käytöstä tänä iltana huollon aikana."
 
 #: pendo/i18n.json#bannerLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerLabel"
 msgid "Banner"
-msgstr ""
+msgstr "Banneri"
 
 #: pendo/i18n.json#bannerTitle
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerTitle"
 msgid "New analytics are ready"
-msgstr ""
+msgstr "Uudet analytiikat ovat valmiit"
 
 #: pendo/i18n.json#bannerSubtitle
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerSubtitle"
 msgid "Participation insights"
-msgstr ""
+msgstr "Tietoa osallistumisesta"
 
 #: pendo/i18n.json#bannerBody
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerBody"
 msgid "Review participation trends and identify where learners may need support."
-msgstr ""
+msgstr "Tarkastele osallistumisen trendejä ja tunnista, missä oppijat saattavat tarvita tukea."
 
 #: pendo/i18n.json#closeLabel
 #, no-c-format
@@ -2118,31 +2118,31 @@ msgstr "Continue"
 #, no-c-format
 msgctxt "docs.demos:pendo:laterLabel"
 msgid "Later"
-msgstr ""
+msgstr "Myöhemmin"
 
 #: pendo/i18n.json#alertPrimaryLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:alertPrimaryLabel"
 msgid "View details"
-msgstr ""
+msgstr "Näytä tiedot"
 
 #: pendo/i18n.json#alertSecondaryLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:alertSecondaryLabel"
 msgid "Dismiss"
-msgstr ""
+msgstr "Sulje"
 
 #: pendo/i18n.json#primaryLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:primaryLabel"
 msgid "View analytics"
-msgstr ""
+msgstr "Näytä analytiikka"
 
 #: pendo/i18n.json#secondaryLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:secondaryLabel"
 msgid "Not now"
-msgstr ""
+msgstr "Ei nyt"
 
 #: pill/i18n.json#text1
 #, no-c-format
