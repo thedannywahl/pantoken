@@ -74,8 +74,7 @@
       "source": "docs/.vitepress/i18n.json"
     },
     "docs.demos": {
-      "kind": "structural",
-      "drift": "block",
+      "kind": "messages",
       "source": "docs/demos"
     },
     "docs.parity": {
