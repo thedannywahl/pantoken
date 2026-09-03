@@ -1,0 +1,9 @@
+what's next?
+
+---
+
+do that
+
+---
+
+the previous translation engine wrote entries in batches so that in case of an error we didn't lose much in-flight work. are we waiting for the whole 500 entries to be returned?
