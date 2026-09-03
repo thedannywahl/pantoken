@@ -25,8 +25,7 @@
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import { DriftReporter } from "@pantoken/translation-adapters";
-import { extractFrontmatterUnits } from "@pantoken/i18n-engine";
-import { parsePo } from "@pantoken/i18n-engine";
+import { extractFrontmatterUnits, parsePo } from "@pantoken/i18n-engine";
 import { ENGLISH_UI_STRINGS, NON_ROOT_LOCALES, flattenStrings } from "../.vitepress/i18n.ts";
 import { GLOSSARY_TERMS } from "./glossary.ts";
 import { listDemoNames, loadDemoI18n } from "./demo-i18n.ts";
@@ -110,14 +109,29 @@ const chromeLeaves = flattenStrings(ENGLISH_UI_STRINGS);
 /** Chrome drift: every UI-string leaf (nav/sidebar/CDN picker/etc.) needs a cached translation. */
 const chromeDrift = (locale: string): Missing[] => {
   if (chromeLeaves.length === 0) return [];
-  const cached = loadCacheKeys(locale, "chrome");
-  const missing: Missing[] = [];
-  for (const { path, text } of chromeLeaves) {
-    if (!cached.has(keyFor("text", text))) {
-      missing.push({ file: `.vitepress/i18n.ts#${path}`, kind: "text", sample: preview(text) });
-    }
+  const poPath = join(l10nDir, locale, "docs.chrome.po");
+  if (existsSync(poPath)) {
+    const translated = new Set(
+      parsePo(readFileSync(poPath, "utf8"))
+        .filter((entry) => entry.msgstr !== "")
+        .map((entry) => entry.msgctxt),
+    );
+    return chromeLeaves
+      .filter(({ path }) => !translated.has(`docs.chrome:${path}`))
+      .map(({ path, text }) => ({
+        file: `.vitepress/i18n.json#${path}`,
+        kind: "text",
+        sample: preview(text),
+      }));
   }
-  return missing;
+  const cached = loadCacheKeys(locale, "chrome");
+  return chromeLeaves
+    .filter(({ text }) => !cached.has(keyFor("text", text)))
+    .map(({ path, text }) => ({
+      file: `.vitepress/i18n.ts#${path}`,
+      kind: "text",
+      sample: preview(text),
+    }));
 };
 
 const homeUnits = existsSync(homeIndex)

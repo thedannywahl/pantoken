@@ -1,7 +1,8 @@
 import { LOCALES } from "@pantoken/web-components";
-import { CDN_PICKER_DEFAULTS, type CdnPickerStrings } from "./theme/cdn.ts";
+import chromeSource from "./i18n.json" with { type: "json" };
+import type { CdnPickerStrings } from "./theme/cdn.ts";
 import type { GetStartedTabsStrings } from "./theme/get-started.ts";
-import { TranslationMemory } from "../scripts/translation-memory.ts";
+import { loadConfig, resolveMessagesForLocale } from "@pantoken/i18n-engine";
 
 /**
  * Every locale the docs site builds: `root` (English) plus every non-`en` locale from
@@ -22,8 +23,8 @@ export const NON_ROOT_LOCALES = Object.keys(LOCALES).filter((key) => key !== "en
 const ALL_DOCS_LOCALES: readonly DocsLocale[] = ["root", ...NON_ROOT_LOCALES];
 
 /**
- * Translatable UI chrome — everything that gets machine-translated into the per-locale cache (see
- * `docs/scripts/translate-chrome.ts`). Structural, non-translated metadata (route prefixes, the
+ * Translatable UI chrome — everything that gets translated into the `docs.chrome` PO catalog (see
+ * `docs/.vitepress/i18n.json`). Structural, non-translated metadata (route prefixes, the
  * TypeDoc sidebar path, the BCP47 tag, text direction) lives in {@link LocaleStructure} instead.
  */
 export interface UiStrings {
@@ -95,74 +96,27 @@ export interface UiStrings {
 }
 
 /** The English source of truth for every translatable UI string in {@link UiStrings}. */
-export const ENGLISH_UI_STRINGS: UiStrings = {
-  description: "Instructure design tokens and icons, reshaped for every platform and framework.",
-  nav: { guide: "Guide", packages: "Packages", css: "CSS", api: "API reference" },
-  sidebar: {
-    intro: "Introduction",
-    guides: "Guides",
-    gettingStarted: "Getting started",
-    packageMap: "The package map",
-    architecture: "Architecture",
-    components: "Components",
-    cdn: "CDN & distribution",
-    cdnPicker: "CDN picker",
-    cli: "The pantoken CLI",
-    plugins: "Plugins",
-    generated: "Generated output",
-    api: "API reference",
-    apiOverview: "Overview",
-  },
-  editText: "Edit this page on GitHub",
-  themeSelector: {
-    label: "Select theme",
-    rebrand: "Rebrand",
-    canvas: "Canvas",
-    canvasHighContrast: "Canvas high contrast",
-  },
-  // Identical to CDN_PICKER_DEFAULTS by design — this *is* the component's fallback (see
-  // theme/cdn.ts's docblock) — imported rather than re-typed so the two can't drift apart.
-  cdnPicker: CDN_PICKER_DEFAULTS,
-  getStartedTabs: {
-    copied: "Copied",
-    cliInstall: "CLI install",
-    aiInstall: "AI install",
-    pauseAnimation: "Pause animation",
-    playAnimation: "Resume animation",
-    agentPrompt:
-      '"Set up pantoken (github.com/thedannywahl/pantoken) in this project using create.pantoken.app/SKILL.md."',
-  },
-  chrome: {
-    outlineLabel: "On this page",
-    docFooterPrev: "Previous page",
-    docFooterNext: "Next page",
-    darkModeSwitchLabel: "Appearance",
-    lightModeSwitchTitle: "Switch to light theme",
-    darkModeSwitchTitle: "Switch to dark theme",
-    sidebarMenuLabel: "Menu",
-    returnToTopLabel: "Return to top",
-    langMenuLabel: "Change language",
-    lastUpdatedText: "Last updated",
-    notFound: {
-      code: "404",
-      title: "PAGE NOT FOUND",
-      quote:
-        "But if you don't change your direction, and if you keep looking, you may end up where you are heading.",
-      linkLabel: "go to home",
-      linkText: "Take me home",
-    },
-  },
-  search: {
-    buttonText: "Search",
-    displayDetails: "Display detailed list",
-    resetButtonTitle: "Reset search",
-    backButtonTitle: "Close search",
-    noResultsText: "No results for",
-    footerSelect: "to select",
-    footerNavigate: "to navigate",
-    footerClose: "to close",
-  },
-};
+const sourceUiStrings = Object.fromEntries(
+  Object.entries(chromeSource)
+    .filter(([key]) => key !== "$schema")
+    .map(([key, entry]) => [key, (entry as { message: string }).message]),
+);
+
+function unflattenStrings(flat: Record<string, string>): UiStrings {
+  const result: Record<string, unknown> = {};
+  for (const [path, value] of Object.entries(flat)) {
+    const parts = path.split(".");
+    let target = result;
+    for (const part of parts.slice(0, -1)) {
+      target[part] ??= {};
+      target = target[part] as Record<string, unknown>;
+    }
+    target[parts.at(-1)!] = value;
+  }
+  return result as unknown as UiStrings;
+}
+
+export const ENGLISH_UI_STRINGS: UiStrings = unflattenStrings(sourceUiStrings);
 
 /** Structural, non-translated per-locale metadata: route prefixes, BCP47 tag, direction, sidebar path. */
 export interface LocaleStructure {
@@ -223,22 +177,23 @@ function applyOverrides<T>(base: T, overrides: ReadonlyMap<string, string>, pref
   return base;
 }
 
-// Every UI leaf, computed once — reused for both the cache lookup below and `translate-chrome.ts`.
+// Every UI leaf, computed once — reused by the docs chrome renderer and drift checker.
 const ENGLISH_UI_LEAVES = flattenStrings(ENGLISH_UI_STRINGS);
 
 /**
- * Merge the committed `<locale>.chrome.json` translation memory (content-addressed by English text,
- * same convention as the guides/API caches — see `docs/scripts/translate-chrome.ts`) over the English
- * defaults, so an untranslated string renders in English rather than as a missing key.
+ * Resolve the locale's `docs.chrome` PO catalog over the English defaults, so untranslated strings
+ * fall back to English rather than disappearing.
  */
 const uiStringsFor = (locale: DocsLocale): UiStrings => {
   if (locale === "root") return ENGLISH_UI_STRINGS;
-  const memory = TranslationMemory.load(locale, "chrome");
-  const overrides = new Map<string, string>();
-  for (const { path, text } of ENGLISH_UI_LEAVES) {
-    const cached = memory.get("text", text);
-    if (cached !== undefined) overrides.set(path, cached);
-  }
+  const config = loadConfig(new URL("../../i18n.config.json", import.meta.url).pathname);
+  const resolved = resolveMessagesForLocale(
+    config,
+    new URL("../../", import.meta.url).pathname,
+    "docs.chrome",
+    locale,
+  );
+  const overrides = new Map(ENGLISH_UI_LEAVES.map(({ path }) => [path, resolved.strings[path]]));
   return applyOverrides(ENGLISH_UI_STRINGS, overrides);
 };
 
@@ -246,10 +201,8 @@ const uiStringsFor = (locale: DocsLocale): UiStrings => {
 export type LocaleTheme = LocaleStructure & UiStrings;
 
 // Computed lazily (and memoized) behind a Proxy: merely importing this module — e.g. for
-// `NON_ROOT_LOCALES`/`ENGLISH_UI_STRINGS`/`flattenStrings` — must stay I/O-free (several scripts and
-// their tests only need those). `uiStringsFor` reads a `<locale>.chrome.json` translation-memory file
-// per locale, so it only runs once something actually reads a `LOCALE_THEMES` property (the real docs
-// build).
+// `NON_ROOT_LOCALES`/`ENGLISH_UI_STRINGS`/`flattenStrings` stay cheap to import; PO resolution only
+// runs once something actually reads a `LOCALE_THEMES` property (the real docs build).
 let computedLocales: Record<DocsLocale, LocaleTheme> | undefined;
 const computeLocales = (): Record<DocsLocale, LocaleTheme> => {
   computedLocales ??= Object.fromEntries(
