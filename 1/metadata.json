@@ -1,0 +1,43 @@
+{
+  "cli_version": "0.10.4",
+  "checkpoint_id": "01M1KM9CMHSVEGXX38YHEW7ENE",
+  "session_id": "e5adabd6-d13c-4b22-a74e-2a8ef51aa991",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-03T12:35:51.138593Z",
+  "branch": "i18n2",
+  "checkpoints_count": 3,
+  "save_step_count": 1,
+  "files_touched": [
+    "docs/.vitepress/config.ts",
+    "docs/package.json",
+    "docs/scripts/api-translation.test.ts",
+    "docs/scripts/api-translation.ts",
+    "docs/scripts/gen-og.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "d5231fbb217e",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 56
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-03T12:35:50.977572Z",
+    "agent_lines": 31,
+    "agent_removed": 10,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 31,
+    "total_lines_changed": 81,
+    "agent_percentage": 50.617283950617285,
+    "metric_version": 2
+  }
+}

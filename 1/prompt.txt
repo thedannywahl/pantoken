@@ -1,0 +1,155 @@
+yes, I made some changes to the 'getting started' guide, including changing the language of one of the code blocks to `prompt` as specified by `.language-prompt` class.  we previously skipped implmeneting parsing of code blocks for complexity, now let's go in and set prompts to be translated and then run the guide update translation script.
+
+---
+
+vitepress throws a lot of warnings now about the prompt:
+```
+The language 'prompt' is not loaded, falling back to 'txt' for syntax highlighting.
+
+The language 'prompt' is not loaded, falling back to 'txt' for syntax highlighting.
+5:42:32 AM [vitepress] (client) hmr update /guide/getting-started.md
+```
+it should use txt but how do we register prompt as a language to use to reduce he noise?
+
+---
+
+`vpr docs:dev` now throws:
+```
+~/formats/tokens$ node scripts/generate.ts ○ cache miss: 'Select.json' removed from 'node_modules/.pnpm/@instructure+instructure-design-tokens@https+++codeload.github.com+instructure+instruct_e17ab86ded937f13ac8c4dd8acb33eb0/node_modules/@instructure/instructure-design-tokens/tokensStudio/canvas/component', executing
+ℹ entry: src/index.ts
+ℹ entry: src/index.ts, src/token-syntax.ts
+ℹ target: node22.18.0
+ℹ target: node22.18.0
+ℹ tsconfig: ../../tsconfig.json
+ℹ tsconfig: ../../../tsconfig.json
+ℹ Build start
+ℹ Build start
+ℹ Cleaning 2 files
+ℹ Cleaning 4 files
+node:internal/modules/esm/resolve:272
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/dwahl/Scripts/pantoken/formats/tokens/node_modules/@pantoken/utils/dist/token-syntax.mjs' imported from /Users/dwahl/Scripts/pantoken/formats/tokens/scripts/generate.ts
+    at finalizeResolution (node:internal/modules/esm/resolve:272:11)
+    at moduleResolve (node:internal/modules/esm/resolve:879:10)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:708:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:728:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:766:56)
+    at #resolve (node:internal/modules/esm/loader:690:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:610:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:277:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:389:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///Users/dwahl/Scripts/pantoken/formats/tokens/node_modules/@pantoken/utils/dist/token-syntax.mjs'
+}
+
+Node.js v26.8.1
+```
+
+---
+
+is the translation still running in the background?
+
+---
+
+it seems to have been hung after `nl` for a while.
+
+---
+
+I'm seeing this warning in vitepress logs:
+```
+Failed to index th/guide/getting-started.md for search: gray-matter engine "BEGIN MARKDOWN ---" is not registered
+```
+
+---
+
+[Terminal 393a998f-f276-4fea-83de-0c31a2b1f57c notification: command completed with exit code 143. The terminal has been cleaned up.]
+Terminal output:
+pantoken on i18n2 ≡  ?1 ~7 via  26.8.1 
+➜  export DOCS_TRANSLATION_COMMAND=/Users/dwahl/Scripts/pantoken/tools/translation-adapters/copilot-wrapper.sh DOCS_TRANSLATION_COMMAND_ARGS='--model gpt-5-mini --effort low'; cd /Users/dwahl/Scripts/pantoken && node docs/scripts/translate-guide-po.ts
+ar: translated guide/getting-started.md
+ar: guide PO update complete
+hy: translated guide/getting-started.md
+hy: guide PO update complete
+ca: translated guide/getting-started.md
+ca: guide PO update complete
+da: translated guide/getting-started.md
+da: guide PO update complete
+nl: translated guide/getting-started.md
+nl: guide PO update complete
+en-AU: translated guide/getting-started.md
+en-AU: guide PO update complete
+en-CA: translated guide/getting-started.md
+en-CA: guide PO update complete
+en-GB: translated guide/getting-started.md
+en-GB: guide PO update complete
+fi: translated guide/getting-started.md
+fi: guide PO update complete
+fr: translated guide/getting-started.md
+fr: guide PO update complete
+fr-CA: translated guide/getting-started.md
+fr-CA: guide PO update complete
+ga: translated guide/getting-started.md
+ga: guide PO update complete
+de: translated guide/getting-started.md
+de: guide PO update complete
+el: translated guide/getting-started.md
+el: guide PO update complete
+ht: translated guide/getting-started.md
+ht: guide PO update complete
+he: translated guide/getting-started.md
+he: guide PO update complete
+hi: translated guide/getting-started.md
+hi: guide PO update complete
+hu: guide PO update complete
+is: translated guide/getting-started.md
+is: guide PO update complete
+id: translated guide/getting-started.md
+id: guide PO update complete
+it: translated guide/getting-started.md
+it: guide PO update complete
+ja: translated guide/getting-started.md
+ja: guide PO update complete
+ko: translated guide/getting-started.md
+ko: guide PO update complete
+mi: translated guide/getting-started.md
+mi: guide PO update complete
+ms: translated guide/getting-started.md
+ms: guide PO update complete
+se: translated guide/getting-started.md
+se: guide PO update complete
+nb: translated guide/getting-started.md
+nb: guide PO update complete
+nn: translated guide/getting-started.md
+nn: guide PO update complete
+fa: translated guide/getting-started.md
+fa: guide PO update complete
+pl: translated guide/getting-started.md
+pl: guide PO update complete
+pt: translated guide/getting-started.md
+pt: guide PO update complete
+pt-BR: translated guide/getting-started.md
+pt-BR: guide PO update complete
+ru: translated guide/getting-started.md
+ru: guide PO update complete
+zh-Hans: translated guide/getting-started.md
+zh-Hans: guide PO update complete
+sl: translated guide/getting-started.md
+sl: guide PO update complete
+es: translated guide/getting-started.md
+es: guide PO update complete
+sv: translated guide/getting-started.md
+sv: guide PO update complete
+th: translated guide/getting-started.md
+th: guide PO update complete
+zh-Hant: translated guide/getting-started.md
+zh-Hant: guide PO update complete
+tr: translated guide/getting-started.md
+tr: guide PO update complete
+[1]    38010 terminated  node docs/scripts/translate-guide-po.ts
+
+---
+
+you should continue doing incremental conventional commits and pushing and moving to the next translation phase.
