@@ -1,0 +1,50 @@
+{
+  "cli_version": "0.10.3",
+  "checkpoint_id": "01M1JHKZVGQ7H0ZJ4H4JKKQ10Y",
+  "session_id": "e5adabd6-d13c-4b22-a74e-2a8ef51aa991",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-03T02:29:58.284936Z",
+  "branch": "i18n2",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/i18n-coverage-task.md",
+    "vite.config.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "85d4b3c7bb3a",
+  "checkpoint_transcript_start": 9883,
+  "transcript_lines_at_start": 9883,
+  "compact_transcript_start": 1925,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 43
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-03T02:29:58.136844Z",
+    "agent_lines": 12,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 12,
+    "total_lines_changed": 12,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
+}

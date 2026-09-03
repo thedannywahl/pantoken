@@ -1,0 +1,1 @@
+add it as a root task in the vite config.
