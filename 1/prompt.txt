@@ -1,0 +1,62 @@
+we are using vitepress multilingual with a root lang code added to the url so:
+```
+http://localhost:5173/guide/generated-output
+```
+becomes:
+```
+http://localhost:5173/ja/guide/generated-output
+```
+
+and sub-headings are translated so:
+```
+http://localhost:5173/guide/getting-started#the-token-model
+```
+becomes:
+```
+http://localhost:5173/ja/guide/getting-started#%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%83%A2%E3%83%86%E3%82%99%E3%83%AB
+```
+which is the properly url-encoded utf-8 characters (トークンモデル). this is good, and the behavior we want.  I'm wondering about translating the paths as well, is this a common practice or best practice is this an anti-pattern, technically possible?  does it increase UX for bookmarking?  Do most browsers display the proper characters in the URL, or allow input of utf-8 characters?
+should:
+```
+https://pantoken.app/jp/guide/getting-started
+```
+be 
+```
+https://pantoken.app/jp/ガイド/入门
+```
+or even:
+```
+https://pantoken.app/日语/ガイド/入门
+```
+
+---
+
+yes, we're trying to optimize for local search / discovery and bookmarking.
+
+---
+
+In the pantoken repo (VitePress docs site under docs/), I need context to plan adding localized URL slug aliases (e.g. translating path segments like /ja/guide/getting-started to /ja/ガイド/入門 or similar) with redirects/canonicalization back to the English slug paths, for SEO/local-search/bookmarking optimization purposes.
+
+Investigate and report back (thorough):
+1. docs/.vitepress/config.ts (or config.mts) - how VitePress config is structured, how locales are registered (look for `locales:` config using NON_ROOT_LOCALES / DocsLocale from docs/.vitepress/i18n.ts), how rewrites/routing work currently.
+2. Whether there is any existing `rewrites` config, custom `Head` config for hreflang tags, or sitemap generation (search for "sitemap", "hreflang", "rewrites" in docs/.vitepress/**).
+3. How pages are discovered - is docs/ structured with locale subfolders (docs/ja/, docs/hu/, etc. per the top-level listing) or is content in one place with VitePress locale-based rewriting? Look at docs/ja/guide/ or similar to see actual file layout for a translated locale.
+4. Read docs/.vitepress/i18n.ts fully (it's already partially read, ~200+ lines) to understand LocaleStructure type, route prefix config, and how routes per locale are built.
+5. Search for any localeStructure or per-locale route prefix definitions (grep for "routePrefix" or "LocaleStructure" or "link:" configuration for locales).
+6. Check if there's a sitemap plugin or SEO plugin already configured for the docs site (search docs/package.json for sitemap-related deps, and docs/.vitepress/config.ts for sitemap config).
+7. Check docs/scripts/ for any script that generates translated slugs already or that builds routes/rewrites per locale.
+8. Report the VitePress version in use (check docs/package.json).
+
+Report back: file paths and relevant code snippets/summaries for each of the above, plus your assessment of how large/invasive a change would be to add a `slug` translation system (mapping English file-based routes to localized alternate URLs) - specifically whether VitePress's `rewrites` config (a flat map of srcPath -> outputPath, doesn't currently support per-locale, needs verification) could support this, or whether a custom build step / redirect page generation would be needed.
+
+---
+
+Start implementation
+
+---
+
+you're in an interactive shell.
+
+---
+
+i will create the changeset.
