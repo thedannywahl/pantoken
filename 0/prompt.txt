@@ -1,0 +1,2 @@
+why does doing `vpr docs:dev` and then switching to an untranslated language on a page throw a 404, I thought itwas supposed to fall back to the english strings.
+http://localhost:5173/da/api/
