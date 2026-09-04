@@ -1,0 +1,44 @@
+~/formats/tokens$ vp test
+ ❯ tests/lint.test.ts (2 tests | 1 failed) 12247ms
+     × accepts the repository localization contract 12194ms
+     ✓ rejects a required space missing from the config 45ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/lint.test.ts > runLint > accepts the repository localization contract
+Error: i18n lint failed:
+- /home/runner/work/pantoken/pantoken/l10n/fi/docs.api.po: msgfmt exited 1: /home/runner/work/pantoken/pantoken/l10n/fi/docs.api.po:346: 'msgid' and 'msgstr' entries do not both end with '\n'
+/home/runner/work/pantoken/pantoken/l10n/fi/docs.api.po:14985: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 2 fatal errors
+4873 translated messages, 173 untranslated messages.
+ ❯ runLint src/lint.ts:142:11
+    140|   errors.push(...(await checkPoFiles(poPathsToCheck)));
+    141|   if (errors.length > 0)
+    142|     throw new Error(`i18n lint failed:\n${errors.map((error) => `- ${e…
+       |           ^
+    143|   return { checkedSpaces: requiredSpaces.length, checkedLocales: local…
+    144| }
+ ❯ tests/lint.test.ts:16:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 13 passed (14)
+      Tests  1 failed | 132 passed (133)
+   Start at  15:24:39
+   Duration  17.87s (transform 893ms, setup 0ms, import 5.39s, tests 23.48s, environment 2ms)
+
+
+Error: Error: i18n lint failed:
+- /home/runner/work/pantoken/pantoken/l10n/fi/docs.api.po: msgfmt exited 1: /home/runner/work/pantoken/pantoken/l10n/fi/docs.api.po:346: 'msgid' and 'msgstr' entries do not both end with '\n'
+/home/runner/work/pantoken/pantoken/l10n/fi/docs.api.po:14985: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 2 fatal errors
+4873 translated messages, 173 untranslated messages.
+ ❯ runLint src/lint.ts:142:11
+ ❯ tests/lint.test.ts:16:20
+
+
+
+
+---
+vp run: 5/39 cache hit (12%), 884ms saved, 2 failed. @pantoken/plugin-kit#test (and 1 more) not cached because they modified their inputs. (Run `vp run --last-details` for full details)
