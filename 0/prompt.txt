@@ -1,0 +1,33 @@
+every run I get a lot of these, but the translation is the same spelling as english:
+```
+  ! [fr-CA] text unit looks untranslated (identical to source), not cached: "Interfaces"
+  ! [fr-CA] text unit looks untranslated (identical to source), not cached: "Variables"
+  ! [fr-CA] text unit looks untranslated (identical to source), not cached: "Classes"
+    fr-CA/api/typedoc-sidebar.json: 1104 labels (1104 cached, 0 translated)
+...
+  ! [fr] text unit looks untranslated (identical to source), not cached: "Interfaces"
+  ! [fr] text unit looks untranslated (identical to source), not cached: "Variables"
+  ! [fr] text unit looks untranslated (identical to source), not cached: "Classes"
+    fr/api/typedoc-sidebar.json: 1104 labels (1104 cached, 0 translated)
+...
+  ! [ca] text unit looks untranslated (identical to source), not cached: "Interfaces"
+  ! [ca] text unit looks untranslated (identical to source), not cached: "Variables"
+  ! [ca] text unit looks untranslated (identical to source), not cached: "Classes"
+    ca/api/typedoc-sidebar.json: 1104 labels (1104 cached, 0 translated)
+```
+
+---
+
+can I pass an array of locales in this call?
+```
+DOCS_TRANSLATION_LOCALE=en-AU DOCS_TRANSLATION_ADAPTER=ai DOCS_TRANSLATION_COMMAND="$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh" DOCS_TRANSLATION_COMMAND_ARGS="--model gpt-5-mini --effort low" DOCS_TRANSLATION_CONCURRENCY=4 node scripts/build-api-locales.ts
+```
+?
+
+---
+
+let's also have it accept 'primary' or 'secondary' as specified in i18n.config.json to get the list of locales.
+
+---
+
+also also and exclusion list, like if I want to translate everything except 'ga'

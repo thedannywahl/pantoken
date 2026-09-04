@@ -1,0 +1,95 @@
+{
+  "cli_version": "0.10.5",
+  "checkpoint_id": "01M1PJABT6ATDEPD66X70XW2J7",
+  "session_id": "ab2d3c09-c446-4c03-adf7-5919c64e0324",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-04T15:59:08.933744Z",
+  "branch": "i18n2",
+  "checkpoints_count": 3,
+  "save_step_count": 4,
+  "files_touched": [
+    ".changeset/translation-cli-timeout.md",
+    "docs/.vitepress/i18n.test.ts",
+    "docs/.vitepress/i18n.ts",
+    "docs/conventions/build-and-docs.md",
+    "docs/scripts/build-api-locales.test.ts",
+    "docs/scripts/build-api-locales.ts",
+    "docs/scripts/translate-guide-po.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "2cf3ddcddd0b",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 6
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-04T15:59:08.918694Z",
+    "agent_lines": 17,
+    "agent_removed": 10,
+    "human_added": 123,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 140,
+    "total_lines_changed": 150,
+    "agent_percentage": 18,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 59,
+      "agent_lines_removed": 59
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 4,
+      "user_lines_removed": 4,
+      "agent_lines_added": 127,
+      "agent_lines_removed": 85,
+      "user_added_per_file": {
+        "l10n/he/docs.api.po": 4
+      },
+      "user_removed_per_file": {
+        "l10n/he/docs.api.po": 4
+      }
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 49,
+      "user_lines_removed": 24,
+      "agent_lines_added": 174,
+      "agent_lines_removed": 109,
+      "user_added_per_file": {
+        "docs/.vitepress/i18n.test.ts": 25,
+        "l10n/he/docs.api.po": 24
+      },
+      "user_removed_per_file": {
+        "l10n/he/docs.api.po": 24
+      }
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 52,
+      "user_lines_removed": 3,
+      "agent_lines_added": 275,
+      "agent_lines_removed": 194,
+      "user_added_per_file": {
+        "docs/.vitepress/i18n.test.ts": 49,
+        "l10n/he/docs.api.po": 3
+      },
+      "user_removed_per_file": {
+        "l10n/he/docs.api.po": 3
+      }
+    }
+  ]
+}
