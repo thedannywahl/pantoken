@@ -1,6 +1,13 @@
 msgid ""
 msgstr ""
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-04 15:14+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
 
 #: ai/pantoken-ai/src/functions/installAgentAssets.md
 #, no-c-format
@@ -18,7 +25,7 @@ msgstr "<span class=\"instui-pill -color-warning pantoken-doc-tag\">Ailfha</span
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Write pantoken's agent assets for a tool into a consumer repo."
-msgstr "Write pantoken's agent assets for a tool into a consumer repo."
+msgstr "Scríobh sócmhainní gníomhaire pantoken do uirlis isteach i repo tomhaltóra."
 
 #: ai/pantoken-ai/src/functions/installAgentAssets.md
 #, no-c-format
@@ -36,7 +43,7 @@ msgstr "### tool"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A specific [AgentTool](../type-aliases/AgentTool.md), or `\"all\"` for every asset."
-msgstr "A specific [AgentTool](../type-aliases/AgentTool.md), or `\"all\"` for every asset."
+msgstr "Uirlis shonrach [AgentTool](../type-aliases/AgentTool.md), nó `\"all\"` do gach sócmhainn."
 
 #: ai/pantoken-ai/src/functions/installAgentAssets.md
 #, no-c-format
@@ -48,7 +55,7 @@ msgstr "### dir?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The target directory (default `\".\"`)."
-msgstr "The target directory (default `\".\"`)."
+msgstr "An eolaire sprioc (réamhshocraithe `\".\"`)."
 
 #: ai/pantoken-ai/src/functions/installAgentAssets.md
 #, no-c-format
@@ -60,7 +67,7 @@ msgstr "## Tuairisceáin"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The paths written."
-msgstr "The paths written."
+msgstr "Na cosáin a scríobhadh."
 
 #: ai/pantoken-ai/src/functions/installAgentAssets.md
 #, no-c-format
@@ -72,13 +79,13 @@ msgstr "## Samplaí"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Install one tool's assets into a repo**"
-msgstr "**Install one tool's assets into a repo**"
+msgstr "Suiteáil sócmhainní uirlis amháin i repo"
 
 #: ai/pantoken-ai/src/functions/installAgentAssets.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Install every asset into the current directory**"
-msgstr "**Install every asset into the current directory**"
+msgstr "Suiteáil gach sócmhainn sa eolaire reatha"
 
 #: ai/pantoken-ai/src/functions/isScaffoldPlatform.md
 #, no-c-format
@@ -90,7 +97,7 @@ msgstr "# Feidhm: isScaffoldPlatform()"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Whether `platform` is a known [ScaffoldPlatform](../type-aliases/ScaffoldPlatform.md) or one of its aliases (e.g. `html`)."
-msgstr "Whether `platform` is a known [ScaffoldPlatform](../type-aliases/ScaffoldPlatform.md) or one of its aliases (e.g. `html`)."
+msgstr "An bhfuil `platform` ar eolas mar [ScaffoldPlatform](../type-aliases/ScaffoldPlatform.md) nó an bhfuil sé ar cheann dá ailtéarnacha (m.sh. `html`)."
 
 #: ai/pantoken-ai/src/functions/isScaffoldPlatform.md
 #, no-c-format
@@ -108,19 +115,19 @@ msgstr "# Feidhm: scaffoldAndInit()"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Scaffold a starter project for a platform (via `@pantoken/scaffold`), and install pantoken's\nagent assets (via [installAgentAssets](installAgentAssets.md)) into the same directory."
-msgstr "Scaffold a starter project for a platform (via `@pantoken/scaffold`), and install pantoken's\nagent assets (via [installAgentAssets](installAgentAssets.md)) into the same directory."
+msgstr "Cruthaigh tionscadal tosaigh do ardán (trí `@pantoken/scaffold`), agus suiteáil sócmhainní ghníomhaire pantoken (trí [installAgentAssets](installAgentAssets.md)) sa fhillteán céanna."
 
 #: ai/pantoken-ai/src/functions/scaffoldAndInit.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A [ScaffoldPlatform](../type-aliases/ScaffoldPlatform.md)."
-msgstr "A [ScaffoldPlatform](../type-aliases/ScaffoldPlatform.md)."
+msgstr "Cineál: [ScaffoldPlatform](../type-aliases/ScaffoldPlatform.md)."
 
 #: ai/pantoken-ai/src/functions/scaffoldAndInit.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The target directory (default `\".\"`). Its basename (or `\"pantoken-app\"` for `\".\"`)\n  is substituted for `{{projectName}}` in the scaffold's template files."
-msgstr "The target directory (default `\".\"`). Its basename (or `\"pantoken-app\"` for `\".\"`)\n  is substituted for `{{projectName}}` in the scaffold's template files."
+msgstr "An fillteán sprioc (réamhshocraithe `\".\"`). Is ionadaítear a ainm bhun (nó `\"pantoken-app\"` do `\".\"`) le `{{projectName}}` i gcomhaid teimpléid an scaffold."
 
 #: ai/pantoken-ai/src/functions/scaffoldAndInit.md
 #, no-c-format
@@ -132,13 +139,13 @@ msgstr "### tool?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Which agent tool's assets to install alongside the scaffold (default `\"all\"`)."
-msgstr "Which agent tool's assets to install alongside the scaffold (default `\"all\"`)."
+msgstr "Cén sócmhainn uirlis ghníomhaire atá le suiteáil in aice leis an scaffold (réamhshocraithe `\"all\"`)."
 
 #: ai/pantoken-ai/src/functions/scaffoldAndInit.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The paths written, scaffold files first."
-msgstr "The paths written, scaffold files first."
+msgstr "Na cosáin a scríobhtar, comhaid scaffold ar dtús."
 
 #: ai/pantoken-ai/src/functions/scaffoldAndInit.md
 #, no-c-format
@@ -150,7 +157,7 @@ msgstr "## Sampla"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Scaffold a React starter with every agent asset installed**"
-msgstr "**Scaffold a React starter with every agent asset installed**"
+msgstr "**Scafaigh tionscadal tosaigh React le gach sócmhainn ghníomhaire suiteáilte**"
 
 #: ai/pantoken-ai/src/functions/scaffoldProject.md
 #, no-c-format
@@ -162,13 +169,13 @@ msgstr "# Feidhm: scaffoldProject()"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Scaffold a starter project for a platform, with pantoken already installed and wired in."
-msgstr "Scaffold a starter project for a platform, with pantoken already installed and wired in."
+msgstr "Struchtúr tosaigh don tionscadal ar ardán a bhunú, le pantoken suiteáilte agus ceangailte cheana."
 
 #: ai/pantoken-ai/src/functions/scaffoldProject.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The target directory (default `\".\"`). Its basename (or `\"pantoken-app\"` for `\".\"`)\n  is substituted for `{{projectName}}` in the template files."
-msgstr "The target directory (default `\".\"`). Its basename (or `\"pantoken-app\"` for `\".\"`)\n  is substituted for `{{projectName}}` in the template files."
+msgstr "An eolaire sprioc (réamhshocraithe `\".\"`). Is ionadófar a bhun-ainm (nó `\"pantoken-app\"` do `\".\"`)\n  le `{{projectName}}` i gcomhaid teimpléid."
 
 #: ai/pantoken-ai/src/functions/scaffoldProject.md
 #, no-c-format
@@ -180,7 +187,7 @@ msgstr "### options?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`theme`/`mode` select which `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), applied across every platform. `cdn` selects the CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);\n  ignored by every other platform."
-msgstr "`theme`/`mode` select which `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), applied across every platform. `cdn` selects the CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);\n  ignored by every other platform."
+msgstr "`theme`/`mode` roghnaíonn cé na comhaid scátháin bileog chomhartha `@pantoken/css` a iompófar (réamhshocraithe `\"rebrand\"`/`\"light\"`), curtha i bhfeidhm ar gach ardán. Roghnaíonn `cdn` an t‑soláthraí CDN; `canvas-theme-editor`'s `theme.css`/`theme.js` a tógadh dó (réamhshocraithe jsDelivr);\n  neamhairdítear iad ag gach ardán eile."
 
 #: ai/pantoken-ai/src/functions/scaffoldProject.md
 #, no-c-format
@@ -204,7 +211,7 @@ msgstr "#### cdn?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Scaffold a React starter**"
-msgstr "**Scaffold a React starter**"
+msgstr "**Cruthaigh tionscadal tosaigh React**"
 
 #: ai/pantoken-ai/src/index.md
 #, no-c-format
@@ -216,13 +223,13 @@ msgstr "# pantoken-ai"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/ai` — consumer-facing agent assets for projects that *use* pantoken (not for\ndeveloping pantoken itself)."
-msgstr "`@pantoken/ai` — consumer-facing agent assets for projects that *use* pantoken (not for\ndeveloping pantoken itself)."
+msgstr "`@pantoken/ai` — sócmhainní gníomhaire atá dírithe ar thomhaltóirí do thionscadail a *úsáideann* pantoken (ní le haghaidh\nforbairt pantoken féin)."
 
 #: ai/pantoken-ai/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "It ships an `AGENTS.md`, an `llms.txt`, editor/agent rule files (Cursor, Copilot, Windsurf), and\nClaude Code skills (`init-pantoken`, `create-pantoken-app`), plus [installAgentAssets](functions/installAgentAssets.md) /\n[scaffoldAndInit](functions/scaffoldAndInit.md) / the `pantoken-ai` CLI to drop them into a consumer repo at the\nconventional paths."
-msgstr "It ships an `AGENTS.md`, an `llms.txt`, editor/agent rule files (Cursor, Copilot, Windsurf), and\nClaude Code skills (`init-pantoken`, `create-pantoken-app`), plus [installAgentAssets](functions/installAgentAssets.md) /\n[scaffoldAndInit](functions/scaffoldAndInit.md) / the `pantoken-ai` CLI to drop them into a consumer repo at the\nconventional paths."
+msgstr "Seolann sé `AGENTS.md`, `llms.txt`, comhaid rialacha eagarthóra/ghníomhaire (Cursor, Copilot, Windsurf), agus\nscileanna Claude Code (`init-pantoken`, `create-pantoken-app`), chomh maith le [installAgentAssets](functions/installAgentAssets.md) /\n[scaffoldAndInit](functions/scaffoldAndInit.md) / an CLI `pantoken-ai` chun iad a chur isteach i repo tomhaltóra sna\ncosáin choitianta."
 
 #: ai/pantoken-ai/src/index.md
 #, no-c-format
@@ -252,7 +259,7 @@ msgstr "# Alias Cineál: AgentTool"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "An agent/editor tool pantoken can install assets for."
-msgstr "An agent/editor tool pantoken can install assets for."
+msgstr "Uirlis gníomhaire/eagarthóra ar féidir le pantoken sócmhainní a shuiteáil dó."
 
 #: ai/pantoken-ai/src/type-aliases/ScaffoldPlatform.md
 #, no-c-format
@@ -264,7 +271,7 @@ msgstr "# Alias Cineál: ScaffoldPlatform"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A platform pantoken can scaffold a starter project for — either preset-ledger-backed (Bingo)\nor a legacy template-only entry (e.g. `canvas-theme-editor`) with no preset yet."
-msgstr "A platform pantoken can scaffold a starter project for — either preset-ledger-backed (Bingo)\nor a legacy template-only entry (e.g. `canvas-theme-editor`) with no preset yet."
+msgstr "Is féidir le pantoken ardáin struchtúr tionscadail tosaigh a sholáthar — cibé an bhfuil sé tacaithe le leabhar réamhshocraithe (Bingo)\n nó mar iontráil shean-teimpléid amháin (m.sh. `canvas-theme-editor`) nach bhfuil réamhshocrú uirthi fós."
 
 #: ai/pantoken-ai/src/variables/AGENTS_MD.md
 #, no-c-format
@@ -276,13 +283,13 @@ msgstr "# Athróg: AGENTS\\_MD"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The `AGENTS.md` content (consumer usage guide)."
-msgstr "The `AGENTS.md` content (consumer usage guide)."
+msgstr "An t-ábhar `AGENTS.md` (treoir úsáide do thomhaltóra)."
 
 #: ai/pantoken-ai/src/variables/AGENTS_MD.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Serve the guide from an app route**"
-msgstr "**Serve the guide from an app route**"
+msgstr "**Seirbheáil an treoir ón rian aip**"
 
 #: ai/pantoken-ai/src/variables/AGENT_TOOLS.md
 #, no-c-format
@@ -294,13 +301,13 @@ msgstr "# Athróg: AGENT\\_TOOLS"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Every installable tool key."
-msgstr "Every installable tool key."
+msgstr "Gach eochair uirlis is féidir a shuiteáil."
 
 #: ai/pantoken-ai/src/variables/AGENT_TOOLS.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Install each tool individually**"
-msgstr "**Install each tool individually**"
+msgstr "**Suiteáil gach uirlis ina haonar**"
 
 #: ai/pantoken-ai/src/variables/ASSETS.md
 #, no-c-format
@@ -318,13 +325,13 @@ msgstr "# Athróg: LLMS\\_TXT"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The `llms.txt` content."
-msgstr "The `llms.txt` content."
+msgstr "An t-ábhar `llms.txt`."
 
 #: ai/pantoken-ai/src/variables/LLMS_TXT.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Write it to disk yourself**"
-msgstr "**Write it to disk yourself**"
+msgstr "**Scríobh é ar an diosca tú féin**"
 
 #: ai/pantoken-ai/src/variables/SCAFFOLD_PLATFORMS.md
 #, no-c-format
@@ -336,13 +343,13 @@ msgstr "# Athróg: SCAFFOLD\\_PLATFORMS"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Every scaffoldable platform key (discovered from available presets, plus any legacy\ntemplate-only platforms not yet backed by a preset)."
-msgstr "Every scaffoldable platform key (discovered from available presets, plus any legacy\ntemplate-only platforms not yet backed by a preset)."
+msgstr "Gach eochair ardáin inar féidir í a fhoirmiú (a fuarthas ó na réamhshocruithe atá ar fáil, agus aon ardáin shamhail-aonaracha ó shin nach bhfuil réamhshocrú acu fós)."
 
 #: ai/pantoken-ai/src/variables/SCAFFOLD_PLATFORMS.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**List available platforms**"
-msgstr "**List available platforms**"
+msgstr "**Liostáil na hardáin atá ar fáil**"
 
 #: bundlers/next/src/functions/withPantoken.md
 #, no-c-format
@@ -360,7 +367,7 @@ msgstr "<span class=\"instui-pill -color-danger pantoken-doc-tag\">Turgnamhach</
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Wrap a Next.js config so the Instructure UI packages are transpiled."
-msgstr "Wrap a Next.js config so the Instructure UI packages are transpiled."
+msgstr "Pacáil cumraíocht Next.js ionas go ndéantar pacáistí Instructure UI a thrasfhoinseáil."
 
 #: bundlers/next/src/functions/withPantoken.md
 #, no-c-format
@@ -372,25 +379,25 @@ msgstr "### nextConfig?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The existing Next config (default `{}`)."
-msgstr "The existing Next config (default `{}`)."
+msgstr "An chumraíocht Next reatha (réamhshocrú `{}`)."
 
 #: bundlers/next/src/functions/withPantoken.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The augmented config."
-msgstr "The augmented config."
+msgstr "An chumraíocht mhéadaithe."
 
 #: bundlers/next/src/functions/withPantoken.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Wrap your next.config.mjs**"
-msgstr "**Wrap your next.config.mjs**"
+msgstr "**Pacáil do next.config.mjs**"
 
 #: bundlers/next/src/functions/withPantoken.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Transpile extra InstUI packages**"
-msgstr "**Transpile extra InstUI packages**"
+msgstr "**Trasfhoinseáil pacáistí InstUI breise**"
 
 #: bundlers/next/src/index.md
 #, no-c-format
@@ -402,13 +409,13 @@ msgstr "# next"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/next` — a Next.js config adapter."
-msgstr "`@pantoken/next` — a Next.js config adapter."
+msgstr "`@pantoken/next` — oiriúnóir cumraíochta Next.js."
 
 #: bundlers/next/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Instructure UI ships ESM packages that Next must transpile (`transpilePackages`), the #1 papercut\nwhen running InstUI on Next. `withPantoken` merges the InstUI packages into that list. Wrap your\n`next.config`, then import `@pantoken/css` in your root layout for the tokens."
-msgstr "Instructure UI ships ESM packages that Next must transpile (`transpilePackages`), the #1 papercut\nwhen running InstUI on Next. `withPantoken` merges the InstUI packages into that list. Wrap your\n`next.config`, then import `@pantoken/css` in your root layout for the tokens."
+msgstr "Seolann Instructure UI pacáistí ESM a gcaithfidh Next a thrasfhoilsiú (`transpilePackages`), an fhadhb bheag is mó nuair a rithtear InstUI ar Next. Déanann `withPantoken` comhiomlán ar phacáistí InstUI isteach sa liosta sin. Timpeall do `next.config`, ansin allmhairigh `@pantoken/css` i do leagan fréime chun na tóicíní."
 
 #: bundlers/next/src/index.md
 #, no-c-format
@@ -432,7 +439,7 @@ msgstr "### default"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Renames and re-exports [withPantoken](functions/withPantoken.md)"
-msgstr "Renames and re-exports [withPantoken](functions/withPantoken.md)"
+msgstr "Ainmníonn agus ath-easpórtálann [withPantoken](functions/withPantoken.md)"
 
 #: bundlers/next/src/interfaces/NextConfigLike.md
 #, no-c-format
@@ -444,7 +451,7 @@ msgstr "# Comhéadan: NextConfigLike"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A minimal Next config shape (only the field this adapter touches)."
-msgstr "A minimal Next config shape (only the field this adapter touches)."
+msgstr "An struchtúr cumraíochta Next íosta (an réimse amháin a bhfuil tionchar ag an oiriúnóir seo air)."
 
 #: bundlers/next/src/interfaces/NextConfigLike.md
 #, no-c-format
@@ -474,7 +481,7 @@ msgstr "# Comhéadan: WithPantokenOptions"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Options for [withPantoken](../functions/withPantoken.md)."
-msgstr "Options for [withPantoken](../functions/withPantoken.md)."
+msgstr "Roghanna do [withPantoken](../functions/withPantoken.md)."
 
 #: bundlers/next/src/interfaces/WithPantokenOptions.md
 #, no-c-format
@@ -486,7 +493,7 @@ msgstr "### transpile?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Extra package names to add to `transpilePackages`."
-msgstr "Extra package names to add to `transpilePackages`."
+msgstr "Ainmneacha pacáistí breise le cur chuig `transpilePackages`."
 
 #: bundlers/next/src/variables/INSTUI_TRANSPILE_PACKAGES.md
 #, no-c-format
@@ -498,13 +505,13 @@ msgstr "# Athróg: INSTUI\\_TRANSPILE\\_PACKAGES"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The Instructure UI packages Next needs to transpile. Extend via [WithPantokenOptions](../interfaces/WithPantokenOptions.md)."
-msgstr "The Instructure UI packages Next needs to transpile. Extend via [WithPantokenOptions](../interfaces/WithPantokenOptions.md)."
+msgstr "Na pacaí Instructure UI a gcaithfidh Next a thrasghluaisteáil. Síne tríd an [WithPantokenOptions](../interfaces/WithPantokenOptions.md)."
 
 #: bundlers/next/src/variables/INSTUI_TRANSPILE_PACKAGES.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Feed the list into a manual transpilePackages**"
-msgstr "**Feed the list into a manual transpilePackages**"
+msgstr "**Cuir an liosta isteach i transpilePackages láimhe**"
 
 #: bundlers/panda/src/functions/toPandaPreset.md
 #, no-c-format
@@ -516,7 +523,7 @@ msgstr "# Feidhm: toPandaPreset()"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build a Panda preset from a token IR."
-msgstr "Build a Panda preset from a token IR."
+msgstr "Tóg réamhshocrú Panda ó IR token."
 
 #: bundlers/panda/src/functions/toPandaPreset.md
 #, no-c-format
@@ -528,25 +535,25 @@ msgstr "### tokens"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
-msgstr "readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
+msgstr "neamh-inathraitheach [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
 
 #: bundlers/panda/src/functions/toPandaPreset.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The IR (e.g. from `@pantoken/tokens`)."
-msgstr "The IR (e.g. from `@pantoken/tokens`)."
+msgstr "An IR (m.sh. ó `@pantoken/tokens`)."
 
 #: bundlers/panda/src/functions/toPandaPreset.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A preset object for Panda's `definePreset`."
-msgstr "A preset object for Panda's `definePreset`."
+msgstr "Réad réamhshocraithe do `definePreset` Panda."
 
 #: bundlers/panda/src/functions/toPandaPreset.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Build a preset from a custom IR**"
-msgstr "**Build a preset from a custom IR**"
+msgstr "**Tóg réamhshocrú ó IR saincheaptha**"
 
 #: bundlers/panda/src/index.md
 #, no-c-format
@@ -558,13 +565,13 @@ msgstr "# panda"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/panda` — an Instructure design-token preset for Panda CSS."
-msgstr "`@pantoken/panda` — an Instructure design-token preset for Panda CSS."
+msgstr "`@pantoken/panda` — réamhshocrú siombailí dearaidh Instructure do Panda CSS."
 
 #: bundlers/panda/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "[toPandaPreset](functions/toPandaPreset.md) converts any IR; [pantokenPreset](variables/pantokenPreset.md) is the ready-made `rebrand` preset.\nSpread it into your `panda.config.ts` `presets`, and the `_dark` condition tracks pantoken's\n`light-dark()` tokens automatically."
-msgstr "[toPandaPreset](functions/toPandaPreset.md) converts any IR; [pantokenPreset](variables/pantokenPreset.md) is the ready-made `rebrand` preset.\nSpread it into your `panda.config.ts` `presets`, and the `_dark` condition tracks pantoken's\n`light-dark()` tokens automatically."
+msgstr "[toPandaPreset](functions/toPandaPreset.md) tiontaíonn aon IR; [pantokenPreset](variables/pantokenPreset.md) is é an réamhshocrú `rebrand` réidh.\nScaip é isteach i do `panda.config.ts` `presets`, agus déanann an coinníoll `_dark` rianú ar `light-dark()` siombailí pantoken go huathoibríoch."
 
 #: bundlers/panda/src/index.md
 #, no-c-format
@@ -576,7 +583,7 @@ msgstr "**panda.config.ts**"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Renames and re-exports [pantokenPreset](variables/pantokenPreset.md)"
-msgstr "Renames and re-exports [pantokenPreset](variables/pantokenPreset.md)"
+msgstr "Ath-ainmníonn agus ath-onnmhairíonn [pantokenPreset](variables/pantokenPreset.md)"
 
 #: bundlers/panda/src/interfaces/PandaPreset.md
 #, no-c-format
@@ -588,7 +595,7 @@ msgstr "# Comhéadan: PandaPreset"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A Panda preset (shaped for `definePreset`)."
-msgstr "A Panda preset (shaped for `definePreset`)."
+msgstr "Réamhshocrú Panda (múnlaithe do `definePreset`)."
 
 #: bundlers/panda/src/interfaces/PandaPreset.md
 #, no-c-format
@@ -624,7 +631,7 @@ msgstr "# Comhéadan: PandaSemanticToken"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A Panda semantic token: a flat value, or one that varies by the `_dark` condition."
-msgstr "A Panda semantic token: a flat value, or one that varies by the `_dark` condition."
+msgstr "Token shéamanta Panda: luach réidh, nó ceann a éagsúlann de réir na coinníoll `_dark`."
 
 #: bundlers/panda/src/interfaces/PandaSemanticToken.md
 #, no-c-format
@@ -642,7 +649,7 @@ msgstr "# Comhéadan: PandaToken"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A raw Panda token: `{ value }`."
-msgstr "A raw Panda token: `{ value }`."
+msgstr "Tóicín Panda amh: `{ value }`."
 
 #: bundlers/panda/src/type-aliases/PandaCategory.md
 #, no-c-format
@@ -654,7 +661,7 @@ msgstr "# Alias Cineál: PandaCategory"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The Panda token categories this preset populates."
-msgstr "The Panda token categories this preset populates."
+msgstr "Na catagóirí token Panda a líonann an réamhshocrú seo."
 
 #: bundlers/panda/src/variables/pantokenPreset.md
 #, no-c-format
@@ -666,13 +673,13 @@ msgstr "# Athróg: pantokenPreset"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The ready-made `rebrand` Panda preset."
-msgstr "The ready-made `rebrand` Panda preset."
+msgstr "An réamhshocrú Panda `rebrand` réamhullmhaithe."
 
 #: bundlers/panda/src/variables/pantokenPreset.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Spread it into panda.config.ts**"
-msgstr "**Spread it into panda.config.ts**"
+msgstr "**Scaipe é isteach i panda.config.ts**"
 
 #: bundlers/postcss/src/index.md
 #, no-c-format
@@ -684,13 +691,13 @@ msgstr "# postcss"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/postcss` — a PostCSS plugin that expands an `@pantoken;` at-rule into the full\nInstructure token stylesheet (`@property` registrations + declarations). Write `@pantoken;` where\nyou want the tokens defined, and the plugin replaces it at build time."
-msgstr "`@pantoken/postcss` — a PostCSS plugin that expands an `@pantoken;` at-rule into the full\nInstructure token stylesheet (`@property` registrations + declarations). Write `@pantoken;` where\nyou want the tokens defined, and the plugin replaces it at build time."
+msgstr "`@pantoken/postcss` — breiseán PostCSS a leathnaíonn rialachán at-`@pantoken;` go dtí an bhileog stíle iomlán do tháirgí Instructure (`@property` clárúcháin + foirmlithe). Scríobh `@pantoken;` áit ar mhaith leat na tóicíní a shainiú, agus cuireann an breiseán é sin in áit ag am an tógáil."
 
 #: bundlers/postcss/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Renames and re-exports [pantoken](variables/pantoken.md)"
-msgstr "Renames and re-exports [pantoken](variables/pantoken.md)"
+msgstr "Athainmníonn agus easpórtálann arís [pantoken](variables/pantoken.md)"
 
 #: bundlers/postcss/src/interfaces/PantokenPostcssOptions.md
 #, no-c-format
@@ -702,7 +709,7 @@ msgstr "# Comhéadan: PantokenPostcssOptions"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Options for the plugin."
-msgstr "Options for the plugin."
+msgstr "Roghanna don bhreiseán."
 
 #: bundlers/postcss/src/interfaces/PantokenPostcssOptions.md
 #, no-c-format
@@ -714,7 +721,7 @@ msgstr "### atRule?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The at-rule name to expand (default `\"pantoken\"`, i.e. `@pantoken;`)."
-msgstr "The at-rule name to expand (default `\"pantoken\"`, i.e. `@pantoken;`)."
+msgstr "An t-ainm at-riadhais le leathnú (réamhshocrú `\"pantoken\"`, is é sin `@pantoken;`)."
 
 #: bundlers/postcss/src/variables/pantoken.md
 #, no-c-format
@@ -726,7 +733,7 @@ msgstr "# Athróg: pantoken"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The pantoken PostCSS plugin."
-msgstr "The pantoken PostCSS plugin."
+msgstr "An breiseán PostCSS pantoken."
 
 #: bundlers/postcss/src/variables/pantoken.md
 #, no-c-format
@@ -738,7 +745,7 @@ msgstr "## Type Declaration"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A PostCSS [Plugin](https://postcss.org/api/#plugin)."
-msgstr "A PostCSS [Plugin](https://postcss.org/api/#plugin)."
+msgstr "Breiseán PostCSS [Plugin](https://postcss.org/api/#plugin)."
 
 #: bundlers/postcss/src/variables/pantoken.md
 #, no-c-format
@@ -750,19 +757,19 @@ msgstr "### postcss"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Required PostCSS plugin marker."
-msgstr "Required PostCSS plugin marker."
+msgstr "Marcóir riachtanach do bhreiseán PostCSS."
 
 #: bundlers/postcss/src/variables/pantoken.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Register the plugin in postcss.config.js**"
-msgstr "**Register the plugin in postcss.config.js**"
+msgstr "**Cláraigh an breiseán i postcss.config.js**"
 
 #: bundlers/postcss/src/variables/pantoken.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Expand a custom at-rule (atRule: \"instui\" instead of the default)**"
-msgstr "**Expand a custom at-rule (atRule: \"instui\" instead of the default)**"
+msgstr "**Leathnaigh at-riail shaincheaptha (atRule: \"instui\" in áit an réamhshocraithe)**"
 
 #: bundlers/tailwind/src/functions/pantokenPreset.md
 #, no-c-format
@@ -774,25 +781,25 @@ msgstr "# Feidhm: pantokenPreset()"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build the pantoken Tailwind preset."
-msgstr "Build the pantoken Tailwind preset."
+msgstr "Tóg an réamhshocrú Tailwind pantoken."
 
 #: bundlers/tailwind/src/functions/pantokenPreset.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A Tailwind preset contributing `colors`, `spacing`, and `fontFamily`."
-msgstr "A Tailwind preset contributing `colors`, `spacing`, and `fontFamily`."
+msgstr "Réamhshocrú Tailwind a chuireann le `colors`, `spacing`, agus `fontFamily`."
 
 #: bundlers/tailwind/src/functions/pantokenPreset.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Register the preset in tailwind.config.ts**"
-msgstr "**Register the preset in tailwind.config.ts**"
+msgstr "**Cláraigh an réamhshocrú i tailwind.config.ts**"
 
 #: bundlers/tailwind/src/functions/pantokenPreset.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Also expose the primitive palette under a primitive- prefix**"
-msgstr "**Also expose the primitive palette under a primitive- prefix**"
+msgstr "**Nocht freisin an pailéad primitive faoi réamhtheideal primitive-**"
 
 #: bundlers/tailwind/src/index.md
 #, no-c-format
@@ -804,19 +811,19 @@ msgstr "# tailwind"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/tailwind` — a Tailwind CSS preset that maps Instructure design tokens into the theme."
-msgstr "`@pantoken/tailwind` — a Tailwind CSS preset that maps Instructure design tokens into the theme."
+msgstr "`@pantoken/tailwind` — réamhshocrú Tailwind CSS a mhapálann tónna dearaidh Instructure isteach sa théama."
 
 #: bundlers/tailwind/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-color-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
-msgstr "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-color-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
+msgstr "Tá gach tón le feiceáil mar thagairt `var(--instui-*)` (ní luach concrétach), mar sin déanann uirlisí Tailwind cosúil le `bg-color-background-base` téama tríd na h-airíonna saincheaptha CSS céanna a astaíonn `@pantoken/css` — leanann solas/dorcha agus ard-íogaireacht ag feidhmiú."
 
 #: bundlers/tailwind/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Renames and re-exports [pantokenPreset](functions/pantokenPreset.md)"
-msgstr "Renames and re-exports [pantokenPreset](functions/pantokenPreset.md)"
+msgstr "Athainmníonn agus easpórtálann arís [pantokenPreset](functions/pantokenPreset.md)"
 
 #: bundlers/tailwind/src/interfaces/PantokenPresetOptions.md
 #, no-c-format
@@ -828,7 +835,7 @@ msgstr "# Comhéadan: PantokenPresetOptions"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Options for [pantokenPreset](../functions/pantokenPreset.md)."
-msgstr "Options for [pantokenPreset](../functions/pantokenPreset.md)."
+msgstr "Roghanna do [pantokenPreset](../functions/pantokenPreset.md)."
 
 #: bundlers/tailwind/src/interfaces/PantokenPresetOptions.md
 #, no-c-format
@@ -840,7 +847,7 @@ msgstr "### includePrimitives?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Also expose the primitive colour palette under a `primitive-` prefix (default: false)."
-msgstr "Also expose the primitive colour palette under a `primitive-` prefix (default: false)."
+msgstr "Nocht freisin an pailead dathanna primitiúla faoi réamhtheideal `primitive-` (réamhshocrú: false)."
 
 #: bundlers/tailwind/src/interfaces/TailwindPreset.md
 #, no-c-format
@@ -852,7 +859,7 @@ msgstr "# Comhéadan: TailwindPreset"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A minimal shape for the slice of Tailwind config this preset contributes."
-msgstr "A minimal shape for the slice of Tailwind config this preset contributes."
+msgstr "Cruth íosta don mhír den chumraíocht Tailwind a chuireann an réamhshocrú seo leis."
 
 #: bundlers/tailwind/src/interfaces/TailwindPreset.md
 #, no-c-format
@@ -888,31 +895,31 @@ msgstr "# Feidhm: pantoken()"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The pantoken Vite plugin."
-msgstr "The pantoken Vite plugin."
+msgstr "An breiseán Vite pantoken."
 
 #: bundlers/vite/src/functions/pantoken.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A Vite [Plugin](https://vite.dev/guide/api-plugin)."
-msgstr "A Vite [Plugin](https://vite.dev/guide/api-plugin)."
+msgstr "Breiseán Vite [breiseán](https://vite.dev/guide/api-plugin)."
 
 #: bundlers/vite/src/functions/pantoken.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Register the plugin in vite.config.ts**"
-msgstr "**Register the plugin in vite.config.ts**"
+msgstr "**Cláraigh an breiseán i vite.config.ts**"
 
 #: bundlers/vite/src/functions/pantoken.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Auto-inject the stylesheet into the HTML \\<head\\>**"
-msgstr "**Auto-inject the stylesheet into the HTML \\<head\\>**"
+msgstr "**Ionchuirtear an bhileog stíle go huathoibríoch isteach i \\<head\\> an HTML**"
 
 #: bundlers/vite/src/functions/pantoken.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Consume the virtual modules in app code**"
-msgstr "**Consume the virtual modules in app code**"
+msgstr "**Úsáid na modúil fhíorúla i gcód an aip**"
 
 #: bundlers/vite/src/index.md
 #, no-c-format
@@ -924,25 +931,25 @@ msgstr "# vite"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/vite` — a Vite plugin for pantoken."
-msgstr "`@pantoken/vite` — a Vite plugin for pantoken."
+msgstr "`@pantoken/vite` — breiseán Vite do pantoken."
 
 #: bundlers/vite/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "It exposes two virtual modules so apps consume tokens without importing the large packages\ndirectly, and can auto-inject the stylesheet into the HTML entry:"
-msgstr "It exposes two virtual modules so apps consume tokens without importing the large packages\ndirectly, and can auto-inject the stylesheet into the HTML entry:"
+msgstr "Nochtann sé dhá mhodúl fíorúla ionas gur féidir le feidhmchláir na comharthaí a úsáid gan na pacáistí móra a iompórtáil go díreach, agus is féidir leis an stíleáil a instealladh go huathoibríoch isteach san iontráil HTML:"
 
 #: bundlers/vite/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- `virtual:pantoken/css` — the stylesheet string (default export).\n- `virtual:pantoken/tokens` — the resolved token IR (`tokens` named + default export)."
-msgstr "- `virtual:pantoken/css` — the stylesheet string (default export).\n- `virtual:pantoken/tokens` — the resolved token IR (`tokens` named + default export)."
+msgstr "- `virtual:pantoken/css` — sreang stíleála (easpórtáil réamhshocraithe).\n- `virtual:pantoken/tokens` — an IR réitithe de na comharthaí (`tokens` ainmniúil + easpórtáil réamhshocraithe)."
 
 #: bundlers/vite/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Renames and re-exports [pantoken](functions/pantoken.md)"
-msgstr "Renames and re-exports [pantoken](functions/pantoken.md)"
+msgstr "Athainmníonn agus ath-easpórtálann [pantoken](functions/pantoken.md)"
 
 #: bundlers/vite/src/interfaces/PantokenViteOptions.md
 #, no-c-format
@@ -954,7 +961,7 @@ msgstr "# Comhéadan: PantokenViteOptions"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Options for the [pantoken](../functions/pantoken.md) Vite plugin."
-msgstr "Options for the [pantoken](../functions/pantoken.md) Vite plugin."
+msgstr "Roghanna don phlugín Vite [pantoken](../functions/pantoken.md)."
 
 #: bundlers/vite/src/interfaces/PantokenViteOptions.md
 #, no-c-format
@@ -978,19 +985,19 @@ msgstr "# Rang: PantokenWebpackPlugin"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Webpack plugin that emits the pantoken stylesheet as an output asset."
-msgstr "Webpack plugin that emits the pantoken stylesheet as an output asset."
+msgstr "Breiseán Webpack a astaíonn stíleanna pantoken mar shócmhainn aschuir."
 
 #: bundlers/webpack/src/classes/PantokenWebpackPlugin.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Emit pantoken.css from your webpack.config.js**"
-msgstr "**Emit pantoken.css from your webpack.config.js**"
+msgstr "Astaigh pantoken.css ó do webpack.config.js"
 
 #: bundlers/webpack/src/classes/PantokenWebpackPlugin.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Rename the emitted asset**"
-msgstr "**Rename the emitted asset**"
+msgstr "Athainmníigh an tsócmhainn a astaíodh"
 
 #: bundlers/webpack/src/classes/PantokenWebpackPlugin.md
 #, no-c-format
@@ -1050,7 +1057,7 @@ msgstr "# webpack"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/webpack` — a Webpack plugin that emits the Instructure token stylesheet as a build\nasset (default `pantoken.css`), so you can reference it from your HTML without importing the large\npackage into a bundle."
-msgstr "`@pantoken/webpack` — a Webpack plugin that emits the Instructure token stylesheet as a build\nasset (default `pantoken.css`), so you can reference it from your HTML without importing the large\npackage into a bundle."
+msgstr "`@pantoken/webpack` — breiseán Webpack a astaíonn bileog stíleanna token Instructure mar acmhainn tógála (réamhshocraithe `pantoken.css`), ionas gur féidir leat tagairt a dhéanamh dó ó do HTML gan an pacáiste mór a iompórtáil isteach i mbundle."
 
 #: bundlers/webpack/src/index.md
 #, no-c-format
@@ -1062,7 +1069,7 @@ msgstr "## Rangaí"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Renames and re-exports [PantokenWebpackPlugin](classes/PantokenWebpackPlugin.md)"
-msgstr "Renames and re-exports [PantokenWebpackPlugin](classes/PantokenWebpackPlugin.md)"
+msgstr "Athainmníonn agus ath-easpórtálann [PantokenWebpackPlugin](classes/PantokenWebpackPlugin.md)"
 
 #: bundlers/webpack/src/interfaces/PantokenWebpackOptions.md
 #, no-c-format
@@ -1074,7 +1081,7 @@ msgstr "# Comhéadan: PantokenWebpackOptions"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Options for [PantokenWebpackPlugin](../classes/PantokenWebpackPlugin.md)."
-msgstr "Options for [PantokenWebpackPlugin](../classes/PantokenWebpackPlugin.md)."
+msgstr "Roghanna do [PantokenWebpackPlugin](../classes/PantokenWebpackPlugin.md)."
 
 #: bundlers/webpack/src/interfaces/PantokenWebpackOptions.md
 #, no-c-format
@@ -1086,7 +1093,7 @@ msgstr "### filename?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The emitted asset filename (default `\"pantoken.css\"`)."
-msgstr "The emitted asset filename (default `\"pantoken.css\"`)."
+msgstr "An t-ainm comhad sócmhainne a astaítear (réamhshocraithe `\"pantoken.css\"`)."
 
 #: css/agent-shell.md
 #, no-c-format
@@ -1098,7 +1105,7 @@ msgstr "# CSS: agent-shell"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`.instui-agent-shell` — A surface container for AI agents."
-msgstr "`.instui-agent-shell` — A surface container for AI agents."
+msgstr "`.instui-agent-shell` — Coimeádán dromchla do ghníomhairí AI."
 
 #: css/agent-shell.md
 #, no-c-format
@@ -1121,7 +1128,7 @@ msgstr "## Tóicíní a úsáideadh"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "Token"
-msgstr "Tóicín"
+msgstr "Token"
 
 #: css/agent-shell.md
 #, no-c-format
@@ -1157,19 +1164,19 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`.instui-alert` · <span class=\"instui-pill -color-success pantoken-doc-tag\">stable</span> — An inline message with a status colour bar and a masked status glyph from the shared icon set."
-msgstr ""
+msgstr "`.instui-alert` · <span class=\"instui-pill -color-success pantoken-doc-tag\">stable</span> — Teachtaireacht inline le barra dath stádais agus glyph stádais maite ón tsraith íocón roinnte."
 
 #: css/alert.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A custom `-icon-<name>` swaps the status glyph but keeps the variant's coloured bar; the bar fill is re-asserted at higher specificity so the shared icon painter doesn't consume it. A direct close button defaults to small; add a size modifier to override it."
-msgstr ""
+msgstr "Cuireann `-icon-<name>` saincheaptha an glyph stádais in áit ach coinníonn sé barra daththa an chineáil; tá líonadh an bharra athfheidhmeach le sainiúlacht níos airde ionas nach n-úsáideann péintéir íocón roinnte é. Bíonn cnaipe dhíreach dúnála de réir réamhshocraithe beag; cuir modifaire méid leis chun é a shárú."
 
 #: css/alert.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [alert.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/alert/alert.css)"
-msgstr ""
+msgstr "**Source:** [alert.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/alert/alert.css)"
 
 #: css/alert.md
 #, no-c-format
@@ -1181,7 +1188,7 @@ msgstr "Feabhsú JS"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "This component's CSS renders and works on its own; pair it with `@pantoken/interactions` to add the interactive behavior. Its `-timeout` modifier is driven by that behavior. See the [modifier table below](#modifiers)."
-msgstr ""
+msgstr "Rindreálann agus oibríonn CSS an chomhpháirteáin seo ina haonar; péireáil é le `@pantoken/interactions` chun an iompar idirghníomhaíoch a chur leis. Tiomáineann modifaire `-timeout` é sin leis an iompar sin. Féach an [tábla modifearach thíos](#modifiers)."
 
 #: css/alert.md
 #, no-c-format
@@ -1193,7 +1200,7 @@ msgstr "## Inrochtaineacht"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "For an important message, add `role=\"alert\"` or an `aria-live` region so assistive tech announces it; the dismiss control is a labelled close button (the `.instui-close-button` in the example carries `aria-label=\"Close\"`)."
-msgstr ""
+msgstr "Chun teachtaireacht thábhachtach, cuir `role=\"alert\"` nó réigiún `aria-live` ionas go bhfógraíonn teicneolaíocht chabhrach é; is cnaipe dúnála lipéadaithe é an rialtán diúltaithe (tugann an `.instui-close-button` sa shampla `aria-label=\"Close\"`)."
 
 #: css/alert.md
 #, no-c-format
@@ -1217,7 +1224,7 @@ msgstr "Cur síos"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The alert's message content; may include a dismiss button."
-msgstr ""
+msgstr "Ábhar teachtaireachta an rabhair; d’fhéadfadh cnaipe diúltaithe a bheith inti."
 
 #: css/alert.md
 #, no-c-format
@@ -1235,25 +1242,25 @@ msgstr "Modhnóir"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "An error message."
-msgstr ""
+msgstr "Teachtaireacht earráide."
 
 #: css/alert.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Informational (default)."
-msgstr ""
+msgstr "Eolasach (réamhshocrú)."
 
 #: css/alert.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A positive/confirmation message."
-msgstr ""
+msgstr "Teachtaireacht dhearfach/daingnithe."
 
 #: css/alert.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A cautionary message."
-msgstr ""
+msgstr "Teachtaireacht rabhrach."
 
 #: css/alert.md
 #, no-c-format
@@ -1265,7 +1272,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Swap the status glyph for a custom icon (e.g. `-icon-megaphone`), kept white on the variant's coloured bar."
-msgstr ""
+msgstr "Athraigh an glyph stádais le hionón saincheaptha (m.sh. `-icon-megaphone`), coinnithe bán ar bharra daththa an chineáil."
 
 #: css/alert.md
 #, no-c-format
@@ -1277,7 +1284,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Visually hidden but announced."
-msgstr ""
+msgstr "Folaite go físúil ach fógraithe."
 
 #: css/alert.md
 #, no-c-format
@@ -1289,31 +1296,31 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "One second before automatic dismissal."
-msgstr ""
+msgstr "Soicind amháin roimh díchealbhú uathoibríoch."
 
 #: css/alert.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Two seconds before automatic dismissal."
-msgstr ""
+msgstr "Dhá shoicind roimh díchealbhú uathoibríoch."
 
 #: css/alert.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Three seconds before automatic dismissal."
-msgstr ""
+msgstr "Trí shoicind roimh díchealbhú uathoibríoch."
 
 #: css/alert.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Four seconds before automatic dismissal."
-msgstr ""
+msgstr "Ceithre shoicind roimh díchealbhú uathoibríoch."
 
 #: css/alert.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Five seconds before automatic dismissal."
-msgstr ""
+msgstr "Cúig shoicind roimh díchealbhú uathoibríoch."
 
 #: css/alert.md
 #, no-c-format
@@ -1343,7 +1350,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Remove the default elevation shadow (InstUI `hasShadow={false}`)."
-msgstr ""
+msgstr "Bain an scáth ardaithe réamhshocraithe (InstUI `hasShadow={false}`)."
 
 #: css/alert.md
 #, no-c-format
@@ -1361,13 +1368,13 @@ msgstr "Fo-eilimint"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The white status glyph, masked and centred over the bar."
-msgstr ""
+msgstr "An glyph stádais bán, maite agus lárnaithe os cionn an bharra."
 
 #: css/alert.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The solid variant-coloured status bar, flush to the rounded start edge."
-msgstr ""
+msgstr "An barra stádais daite soladach den chineál, teannadh go dtí an imeall tosaigh chothromáin."
 
 #: css/alert.md
 #, no-c-format
@@ -1391,19 +1398,19 @@ msgstr "Réamhshocraithe"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The low-level status-glyph source; `-icon-<name>` sets it for you. Override for a custom icon (a url-encoded SVG)."
-msgstr ""
+msgstr "Foinse ísealleibhéil an glyph stádais; socraíonn `-icon-<name>` é duit. Sárú le haghaidh íocón saincheaptha (SVG códaithe URL)."
 
 #: css/alert.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The coloured status-bar fill behind the glyph; each `-color-*` variant sets its own."
-msgstr ""
+msgstr "Líonadh barra stádais daite taobh thiar den glyph; socraíonn gach cineál `-color-*` a chuid féin."
 
 #: css/alert.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Milliseconds before automatic dismissal; `0` disables it. Requires the alert interaction bundle."
-msgstr ""
+msgstr "Millisecúin roimh díchealbhú uathoibríoch; cuireann `0` é as feidhm. Éilíonn sé an bundle idirghníomhaíochta rabhair."
 
 #: css/alert.md
 #, no-c-format
@@ -1421,7 +1428,7 @@ msgstr "## Gaolmhar"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [close-button](/api/css/close-button.md) — The dismiss control an alert may include."
-msgstr ""
+msgstr "- [close-button](/api/css/close-button.md) — An rialtán diúltaithe is féidir le rabhair a bheith inti."
 
 #: css/avatar.md
 #, no-c-format
@@ -1433,37 +1440,37 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`.instui-avatar` · <span class=\"instui-pill -color-success pantoken-doc-tag\">stable</span> — A user avatar showing initials or an image, circular by default."
-msgstr ""
+msgstr "`.instui-avatar` · <span class=\"instui-pill -color-success pantoken-doc-tag\">stable</span> — Avatar úsáideora ag taispeáint tosaíochtaí nó íomhá, ciorclach de réir réamhshocraithe."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "By default the palette colour tints the initials on a transparent surface; `-has-inverse-color` fills the surface with the colour and puts the initials on-colour. The `-color-ai` variant always fills with the violet→sea gradient. For a full display name, put it in the content (so it stays in the accessibility tree) and add `data-initials=\"XX\"` for the compact visual — the real text is what a screen reader announces. Without `data-initials`, overflowing content just hard-clips (no ellipsis); wrap it in `.name` for a precise single-leading-letter clip instead, or split it into `.first-name`/`.last-name` for two clipped letters (either half can be omitted and the other stays centred)."
-msgstr ""
+msgstr "De ghnáth cuireann dath an phailéad scáth ar na tosaíochtaí ar dhromchla trédhearcach; líonann `-has-inverse-color` an dromchla leis an dath agus cuireann sé na tosaíochtaí ar-dath. Tá an éagsúlacht `-color-ai` i gcónaí lán-líonaithe leis an gcaidreamh violete→farraige. Chun ainm taispeána iomlán, cuir é sa chontúirteacht (ionas go fanfaidh sé i gcrann inacmhainneachta) agus cuir `data-initials=\"XX\"` don amharc dlúth — is é an téacs fíor an rud a fhógraíonn léitheoir scáileáin. Gan `data-initials`, ghearrtar ábhar róshaothrach go géar (gan luachan); corraigh é i `.name` le haghaidh gearradh aonlitreach beacht ar an litir thosaigh, nó roinnt é i `.first-name`/`.last-name` le haghaidh beirt litreacha gearrtha (is féidir leath ar bith a chur as feidhm agus fanann an ceann eile lárnach)."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/avatar/avatar.css)"
-msgstr ""
+msgstr "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/avatar/avatar.css)"
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "This component's CSS renders and works on its own; pair it with `@pantoken/interactions` to add the interactive behavior. See the [modifier table below](#modifiers)."
-msgstr ""
+msgstr "Cuireann CSS an chomhpháirte seo léiriú agus oibríocht air dá chuid féin; comhcheangail é le `@pantoken/interactions` chun an iompar idirghníomhach a chur leis. Féach an [tábla modhnóirí thíos](#modifiers)."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Give an image avatar a meaningful `alt` (the person's name), not a generic \"avatar\"; for initials-only avatars, prefer real name content (bare text, data-initials, .name, or .first-name/.last-name) over pre-abbreviated letters, so assistive tech announces the real name."
-msgstr ""
+msgstr "Tabhair `alt` bríúil (ainm an duine) ar avatar íomhá, ní \"avatar\" ghinearálta; do avatars le tosaíochtaí amháin, is fearr ábhar ainm fíor (téacs lom, data-initials, .name, nó .first-name/.last-name) thar litreacha réamhbhríoma, ionas go bhfógraíonn teicneolaíocht chabhrach an ainm fíor."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The avatar shows one of: an <img>, bare/data-initials text, a .name wrap, or a .first-name/.last-name pair."
-msgstr ""
+msgstr "Taispeánann an avatar ceann amháin de: <img>, téacs lom/data-initials, .name wrap, nó péire .first-name/.last-name."
 
 #: css/avatar.md
 #, no-c-format
@@ -1505,55 +1512,55 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "AI-accent palette colour."
-msgstr ""
+msgstr "Dath phailéad béim AI."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Ash palette colour."
-msgstr ""
+msgstr "Dath phailéad liath-adharcach (ash)."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Blue palette colour."
-msgstr ""
+msgstr "Dath phailéad gorm."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Green palette colour."
-msgstr ""
+msgstr "Dath phailéad glas."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Grey palette colour."
-msgstr ""
+msgstr "Dath phailéad liath."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Orange palette colour."
-msgstr ""
+msgstr "Dath phailéad oráiste."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Red palette colour."
-msgstr ""
+msgstr "Dath phailéad dearg."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Use the inverse (on-dark) text colour."
-msgstr ""
+msgstr "Úsáid an dath téacs idirdhealaithigh (ar-dorcha)."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Square (rectangular) shape instead of a circle."
-msgstr ""
+msgstr "Cruth cearnach (réitigh) in áit ciorclach."
 
 #: css/avatar.md
 #, no-c-format
@@ -1565,97 +1572,97 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Force the border ring on, even over an image or an inverse fill."
-msgstr ""
+msgstr "Déan an fáinne teorann a neartú, fiú thar íomhá nó líonadh idirdhealaithigh."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Force the border ring off."
-msgstr ""
+msgstr "Cas an fáinne teorann as."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Two sizes larger."
-msgstr ""
+msgstr "Dhá mhéide níos mó."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Two sizes smaller."
-msgstr ""
+msgstr "Dhá mhéide níos lú."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Large. Long-form alias of `-size-lg`."
-msgstr ""
+msgstr "Mór. Ainm fhadaaistear de `-size-lg`."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Large."
-msgstr ""
+msgstr "Mór."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Medium (the default)."
-msgstr ""
+msgstr "Meán (an réamhshocrú)."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Medium (the default). Long-form alias of `-size-md`."
-msgstr ""
+msgstr "Meán (an réamhshocrú). Ainm fhadaaistear de `-size-md`."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Small."
-msgstr ""
+msgstr "Beag."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Small. Long-form alias of `-size-sm`."
-msgstr ""
+msgstr "Beag. Ainm fhadaaistear de `-size-sm`."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Extra large. Long-form alias of `-size-xl`."
-msgstr ""
+msgstr "Breise-mhór. Ainm fhadaaistear de `-size-xl`."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Extra small. Long-form alias of `-size-xs`."
-msgstr ""
+msgstr "Breise-beag. Ainm fhadaaistear de `-size-xs`."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Extra large."
-msgstr ""
+msgstr "Breise-mhór."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Extra small."
-msgstr ""
+msgstr "Breise-beag."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Two sizes larger. Long-form alias of `-size-2xl`."
-msgstr ""
+msgstr "Dhá mhéide níos mó. Ainm fhadaaistear de `-size-2xl`."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Two sizes smaller. Long-form alias of `-size-2xs`."
-msgstr ""
+msgstr "Dhá mhéide níos lú. Ainm fhadaaistear de `-size-2xs`."
 
 #: css/avatar.md
 #, no-c-format
@@ -1673,25 +1680,25 @@ msgstr "Cuid"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Optional (pairs with .last-name): wraps the given name, clipped to its leading letter."
-msgstr ""
+msgstr "Roghnach (péire le .last-name): fill isteach an t-ainm tugtha, gearrtha go dtí a litir thosaigh."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Optional (pairs with .first-name): wraps the family name, clipped to its leading letter."
-msgstr ""
+msgstr "Roghnach (péire le .first-name): fill isteach an sloinne, gearrtha go dtí a litir thosaigh."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Optional: wrap the full name to clip it to a single leading letter without data-initials or JS."
-msgstr ""
+msgstr "Optional: wrap the full name to clip it to a single leading letter without data-initials or JS."
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [byline](/api/css/byline.md) — Can host an avatar as its leading hero figure."
-msgstr ""
+msgstr "- [byline](/api/css/byline.md) — Is féidir a bheith mar óstach ar avatar mar a fhigiúr laoch tosaigh."
 
 #: css/badge.md
 #, no-c-format
@@ -1703,19 +1710,19 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`.instui-badge` — A small count or status dot placed over a target's corner."
-msgstr ""
+msgstr "`.instui-badge` — comhaireamh beag nó ponc stádais a chuirtear thar choirnéal sprioc."
 
 #: css/badge.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "To place a badge over a target, wrap both in a `.instui-badge-wrapper` (the position anchor) and pin the badge with a `-placement-*` modifier."
-msgstr ""
+msgstr "Chun lógó a chur thar sprioc, cuimligh an dá chuid i `.instui-badge-wrapper` (an t-áitcheanglóir) agus ceangail an lógó le modhnóir `-placement-*`."
 
 #: css/badge.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [badge.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/badge/badge.css)"
-msgstr ""
+msgstr "**Source:** [badge.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/badge/badge.css)"
 
 #: css/badge.md
 #, no-c-format
@@ -1727,97 +1734,97 @@ msgstr "## Taispeántas"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The badge renders inline on its own, or inside an optional `instui-badge-wrapper` that anchors it over a target."
-msgstr ""
+msgstr "Tá an lógó le feiceáil isteach sa sruth féin, nó laistigh de `instui-badge-wrapper` roghnach a cheanglaíonn é thar sprioc."
 
 #: css/badge.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "An attention/error count."
-msgstr ""
+msgstr "Comhaireamh aire/earráide."
 
 #: css/badge.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "On-dark: a light chip with dark text."
-msgstr ""
+msgstr "On-dark: a light chip with dark text."
 
 #: css/badge.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A positive/complete count."
-msgstr ""
+msgstr "Comhaireamh dearfach/críochnaithe."
 
 #: css/badge.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Position at the bottom-end corner."
-msgstr ""
+msgstr "Suíomh ag an gcoirnéal íochtarach-deiridh."
 
 #: css/badge.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Position at the bottom-start corner."
-msgstr ""
+msgstr "Suíomh ag an gcoirnéal íochtarach-tosaigh."
 
 #: css/badge.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Position centred on the end edge."
-msgstr ""
+msgstr "Lárnaithe ar imeall an deiridh."
 
 #: css/badge.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Position centred on the start edge."
-msgstr ""
+msgstr "Lárnaithe ar imeall an tosaigh."
 
 #: css/badge.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Position at the top-end corner."
-msgstr ""
+msgstr "Suíomh ag an gcoirnéal uachtarach-deiridh."
 
 #: css/badge.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Position at the top-start corner."
-msgstr ""
+msgstr "Suíomh ag an gcoirnéal uachtarach-tosaigh."
 
 #: css/badge.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A pulsing attention ring."
-msgstr ""
+msgstr "Fáinne aire ag bualadh."
 
 #: css/badge.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Render inline, not positioned over a target's corner."
-msgstr ""
+msgstr "Taispeáin isteach sa sruth, ní suiteáilte thar choirnéal sprioc."
 
 #: css/badge.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A dot only, no count."
-msgstr ""
+msgstr "Ponc amháin, gan comhaireamh."
 
 #: css/badge.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The pulsing attention ring drawn in the badge's accent colour (the `-pulse` variant)."
-msgstr ""
+msgstr "An fáinne aire ag bualadh tarraingthe i ndath aicéad an lógó (an éagsúlacht `-pulse`)."
 
 #: css/badge.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The chip fill; each `-color-*` variant and the pulse ring read from it."
-msgstr ""
+msgstr "Líonadh an chipa; léitear gach éagsúlacht `-color-*` agus an fáinne bualadh uaidh."
 
 #: css/badge.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The text colour, paired to the accent so it stays legible."
-msgstr ""
+msgstr "Dath an téacs, péireáilte leis an aicéad ionas go bhfanann sé inléite."
 
 #: css/badge.md
 #, no-c-format
@@ -1835,13 +1842,13 @@ msgstr "Beochan"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The pulse ring animation."
-msgstr ""
+msgstr "An beochan fáinne bualadh."
 
 #: css/badge.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [pill](/api/css/pill.md) — The inline label-chip counterpart."
-msgstr ""
+msgstr "- [pill](/api/css/pill.md) — An comh-chomhpháirt lipéad-chíop isteach sa sruth."
 
 #: css/banner.md
 #, no-c-format
@@ -1853,25 +1860,25 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`.instui-banner` · `alpha` — A dismissible, iconed message surface for page-level or in-context announcements."
-msgstr ""
+msgstr "`.instui-banner` · `alpha` — Dromchla teachtaireachta le híomhá is féidir a dhúnadh do fhógraí ar leibhéal an leathanach nó fógraí i gcomhthéacs."
 
 #: css/banner.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both.\n  **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet`\n  and `-color-sea` add a tinted background plus a matching icon swatch."
-msgstr ""
+msgstr "**Méid** rialíonn an spás inmheánach agus an bhearna: `relaxed` (réamhshocraithe) tá níos leithne; cuireann `compact` an dá cheann níos dlúithe.  **Dath** leagann an líonadh: bare (gan modhnóir) níl sé líonta — teorainn agus íocón amháin; cuireann `-color-violet` agus `-color-sea` cúlra le tint agus sampla íocóin mheaitseála."
 
 #: css/banner.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Add `role=\"status\"` (or `role=\"alert\"` for urgent messages) so assistive tech announces the\n  banner; mark a decorative icon `aria-hidden=\"true\"` and give the close button an `aria-label`."
-msgstr ""
+msgstr "Cuir `role=\"status\"` leis (nó `role=\"alert\"` do theachtaireachtaí práinneacha) ionas go bhfógraíonn teicneolaíocht chabhrach an bhainéara; marcáil íocón maisiúcháin mar `aria-hidden=\"true\"` agus tabhair `aria-label` don chnaipe dúnála."
 
 #: css/banner.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "@import \"@pantoken/plugin-custom-components/custom-components.css\";"
-msgstr ""
+msgstr "@import \"@pantoken/plugin-custom-components/custom-components.css\";"
 
 #: css/banner.md
 #, no-c-format
@@ -1883,25 +1890,25 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Sea-tinted background and icon swatch."
-msgstr ""
+msgstr "Cúlra le tint mara agus sampla íocóin."
 
 #: css/banner.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Violet-tinted background and icon swatch."
-msgstr ""
+msgstr "Cúlra le tint violeta agus sampla íocóin."
 
 #: css/banner.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Swap the default `info` glyph for an icon from the shared icon set (for example, `-icon-megaphone`)."
-msgstr ""
+msgstr "Malartaigh an ghiolalf `info` réamhshocraithe le h-íomhán as an tacar íomhán comhroinnte (mar shampla, `-icon-megaphone`)."
 
 #: css/banner.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Tighter padding and gap."
-msgstr ""
+msgstr "Spás inmheánach agus bearna níos dlúithe."
 
 #: css/banner.md
 #, no-c-format
@@ -1913,7 +1920,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Roomier padding and gap (default)."
-msgstr ""
+msgstr "Spás inmheánach agus bearna níos leithne (réamhshocraithe)."
 
 #: css/banner.md
 #, no-c-format
@@ -1937,7 +1944,7 @@ msgstr "Stát"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [alert](/api/css/alert.md) — A non-dismissible, status-coloured counterpart for inline messages.\n- [close-button](/api/css/close-button.md) — The dismiss control a banner may include."
-msgstr ""
+msgstr "- [alert](/api/css/alert.md) — Comhionann nach féidir a dhúnadh, daite de réir stádais, do theachtaireachtaí líneacha.\n- [close-button](/api/css/close-button.md) — An rialú dúnála a d’fhéadfadh a bheith sa bhainéar."
 
 #: css/base.md
 #, no-c-format
@@ -1949,25 +1956,25 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`*` — The opt-in global reset: `box-sizing`, the page surface, base text colour and font, `color-scheme`, and link defaults."
-msgstr ""
+msgstr "`*` — An athshocrú domhanda roghnaithe: `box-sizing`, dromchla na leathanach, dath téacs bunúsach agus cló, `color-scheme`, agus réamhshocruithe na n- nasc."
 
 #: css/base.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [base.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/rules/base/base.css)"
-msgstr ""
+msgstr "**Source:** [base.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/rules/base/base.css)"
 
 #: css/base.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Included in the universal `box-sizing: border-box` reset so its generated box sizes predictably."
-msgstr ""
+msgstr "San áireamh sa `box-sizing: border-box` uilíoch ionas go mbeidh méideanna bhosca a ghintear ann intuartha."
 
 #: css/base.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Tints highlighted text with a translucent primary navigation colour."
-msgstr ""
+msgstr "Tinteálann sé an téacs a mharcáladh le dath nascleanúna príomha atá trédhearcach."
 
 #: css/billboard.md
 #, no-c-format
@@ -1979,85 +1986,85 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`.instui-billboard` — A large empty-state or call-to-action block: a hero icon or image, a heading, and a message."
-msgstr ""
+msgstr "`.instui-billboard` — Bloc mór stát-fholamh nó glao-chunghníomh: íocón laoch nó íomhá, ceannlíne, agus teachtaireacht."
 
 #: css/billboard.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The `.hero`/`.heading`/`.message` parts are composed by the consumer's markup, not enforced structure; `-clickable` only adds hover styling, so a real click target still needs `tabindex` and a keyboard handler."
-msgstr ""
+msgstr "Is léiríonn na codanna `.hero`/`.heading`/`.message` marcáil an tomhaltóra, ní struchtúr éigeantach; cuireann `-clickable` stíliú sleamhnáin amháin leis, mar sin d’fhéadfadh go mbeadh sprioc chliceáil fíor fós ag teastáil ó `tabindex` agus lámhleabhar méarchláir."
 
 #: css/billboard.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [billboard.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/billboard/billboard.css)"
-msgstr ""
+msgstr "**Source:** [billboard.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/billboard/billboard.css)"
 
 #: css/billboard.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Interactive (clickable) styling with hover feedback."
-msgstr ""
+msgstr "Stíliú idirghníomhach (cliceáilte) le aiseolas sleamhnáin."
 
 #: css/billboard.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Render a leading icon glyph on `.hero` (e.g. `<span class=\"hero -icon-inbox\"></span>`)."
-msgstr ""
+msgstr "Léirigh gleamhán íocóin cheannasach ar `.hero` (m.sh. `<span class=\"hero -icon-inbox\"></span>`)."
 
 #: css/billboard.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Long-form alias of {@link -size-lg}."
-msgstr ""
+msgstr "Ailias fhada de {@link -size-lg}."
 
 #: css/billboard.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Large: roomier spacing with larger heading, message, and hero icon."
-msgstr ""
+msgstr "Large: roomier spacing with larger heading, message, and hero icon."
 
 #: css/billboard.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Medium (default): standard spacing with medium heading, message, and hero icon."
-msgstr ""
+msgstr "Meán (réamhshocraithe): eatramh caighdeánach le ceannlíne mheánmhéide, teachtaireacht, agus íocón laoch."
 
 #: css/billboard.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Long-form alias of {@link -size-md}."
-msgstr ""
+msgstr "Ailias fhada de {@link -size-md}."
 
 #: css/billboard.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Small: tighter spacing with smaller heading, message, and hero icon."
-msgstr ""
+msgstr "Small: tighter spacing with smaller heading, message, and hero icon."
 
 #: css/billboard.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Long-form alias of {@link -size-sm}."
-msgstr ""
+msgstr "Ailias fhada de {@link -size-sm}."
 
 #: css/billboard.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The billboard heading."
-msgstr ""
+msgstr "An ceannlíne billbórd."
 
 #: css/billboard.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The optional leading icon or image."
-msgstr ""
+msgstr "An íocón nó íomhá ceannasach roghnach."
 
 #: css/billboard.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The supporting message."
-msgstr ""
+msgstr "An teachtaireacht thacaíochta."
 
 #: css/billboard.md
 #, no-c-format
@@ -2069,7 +2076,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- Contains its element styles with the CSS `@scope` at-rule; needs a recent Chromium, Firefox, or Safari."
-msgstr ""
+msgstr "- Áiríonn sé stíleanna a eilimint leis an riail at-`@scope` de CSS; teastaíonn Chromium, Firefox, nó Safari nuashonraithe."
 
 #: css/breadcrumb.link.md
 #, no-c-format
@@ -2081,49 +2088,49 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`li` · <span class=\"instui-pill -color-success pantoken-doc-tag\">stable</span> — A crumb (InstUI `Breadcrumb.Link`), an `<li>` in the parent's `<ol>`; the last one is the current page."
-msgstr ""
+msgstr "`li` · <span class=\"instui-pill -color-success pantoken-doc-tag\">stable</span> — Brotán (InstUI `Breadcrumb.Link`), `<li>` i `<ol>` an thuismitheora; is é an ceann deiridh an leathanach reatha."
 
 #: css/breadcrumb.link.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The parent `breadcrumb`'s `-size-sm`/`-size-lg` modifiers adjust this member's separator spacing — see `breadcrumb`'s own doc for those modifiers."
-msgstr ""
+msgstr "Rialaíonn modhnóirí `-size-sm`/`-size-lg` an `breadcrumb` thuismitheora spásáil an scaradóra don bhall seo — féach doiciméad `breadcrumb` dóibh siúd."
 
 #: css/breadcrumb.link.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Mark the current page's crumb with `aria-current=\"page\"` — on its `<a>` if it's a link, otherwise on the `<li>` itself."
-msgstr ""
+msgstr "Marcáil brotán an leathanaigh reatha le `aria-current=\"page\"` — ar a `<a>` má tá sé ina nasc, murach sin ar an `<li>` féin."
 
 #: css/breadcrumb.link.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Long-form alias of `-size-lg`."
-msgstr ""
+msgstr "Ainm malartach fada de `-size-lg`."
 
 #: css/breadcrumb.link.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Long-form alias of `-size-md`."
-msgstr ""
+msgstr "Ainm malartach fada de `-size-md`."
 
 #: css/breadcrumb.link.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Long-form alias of `-size-sm`."
-msgstr ""
+msgstr "Ainm malartach fada de `-size-sm`."
 
 #: css/breadcrumb.link.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Renders the chevron separator after every crumb except the last; mirrors to `chevron-left` in `[dir=\"rtl\"]`."
-msgstr ""
+msgstr "Léiríonn sé an scaradóir chevrón i ndiaidh gach brotáin seachas an ceann deireanach; aistrítear é go `chevron-left` in `[dir=\"rtl\"]`."
 
 #: css/breadcrumb.link.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "In a collapsed parent draws a masked back-arrow before this crumb's second-to-last link."
-msgstr ""
+msgstr "I dtuismitheoir atá i staid chomhcheangailte (collapsed) tarraingítear saighead chúl mhascáilte roimh an dara-hiontráil nasc den bhrtán seo."
 
 #: css/breadcrumb.link.md
 #, no-c-format
@@ -2141,7 +2148,7 @@ msgstr "Ceist"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Collapses the trail, showing only the previous crumb and a back arrow."
-msgstr ""
+msgstr "Déanann sé an rian a chrapadh, ag taispeáint ach an brotán roimhe agus saighead chúl."
 
 #: css/breadcrumb.md
 #, no-c-format
@@ -2153,61 +2160,61 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`.instui-breadcrumb` · <span class=\"instui-pill -color-success pantoken-doc-tag\">stable</span> — A breadcrumb trail with separators; the last crumb is the current page."
-msgstr ""
+msgstr "`.instui-breadcrumb` · <span class=\"instui-pill -color-success pantoken-doc-tag\">seasmhach</span> — Slí slisíní le scaradóirí; is é an slisín deireanach an leathanach reatha."
 
 #: css/breadcrumb.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Automatically collapses to a back arrow on small screens. Use `breadcrumb.link` for each crumb."
-msgstr ""
+msgstr "Titfidh sé go huathoibríoch go saighead ar ais ar scáileáin bheaga. Úsáid `breadcrumb.link` do gach slisín."
 
 #: css/breadcrumb.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [breadcrumb.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/breadcrumb/breadcrumb.css)"
-msgstr ""
+msgstr "**Source:** [breadcrumb.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/breadcrumb/breadcrumb.css)"
 
 #: css/breadcrumb.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Wrap the `<ol>` in a `<nav aria-label>` landmark; mark the current page's crumb with `aria-current=\"page\"`."
-msgstr ""
+msgstr "Fill an `<ol>` i lárionad `<nav aria-label>`; marcáil slisín an leathanaigh reatha le `aria-current=\"page\"`."
 
 #: css/breadcrumb.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Large. @affects breadcrumb.link — Scales the crumb separator's spacing to match. Long-form alias of `-size-lg`."
-msgstr ""
+msgstr "Mór. @affects breadcrumb.link — Choigeartaíonn sé spásáil scaradóra na slisíní chun comhoiriúnú. Ainm fhada malairteach de `-size-lg`."
 
 #: css/breadcrumb.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Large. @affects breadcrumb.link — Scales the crumb separator's spacing to match."
-msgstr ""
+msgstr "Mór. @affects breadcrumb.link — Choigeartaíonn sé spásáil scaradóra na slisíní chun comhoiriúnú."
 
 #: css/breadcrumb.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Medium (default). @affects breadcrumb.link — Scales the crumb separator's spacing to match."
-msgstr ""
+msgstr "Meánach (réamhshocrú). @affects breadcrumb.link — Choigeartaíonn sé spásáil scaradóra na slisíní chun comhoiriúnú."
 
 #: css/breadcrumb.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Medium (default). @affects breadcrumb.link — Scales the crumb separator's spacing to match. Long-form alias of `-size-md`."
-msgstr ""
+msgstr "Meánach (réamhshocrú). @affects breadcrumb.link — Choigeartaíonn sé spásáil scaradóra na slisíní chun comhoiriúnú. Ainm fhada malairteach de `-size-md`."
 
 #: css/breadcrumb.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Small. @affects breadcrumb.link — Scales the crumb separator's spacing to match."
-msgstr ""
+msgstr "Beag. @affects breadcrumb.link — Choigeartaíonn sé spásáil scaradóra na slisíní chun comhoiriúnú."
 
 #: css/breadcrumb.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Small. @affects breadcrumb.link — Scales the crumb separator's spacing to match. Long-form alias of `-size-sm`."
-msgstr ""
+msgstr "Beag. @affects breadcrumb.link — Choigeartaíonn sé spásáil scaradóra na slisíní chun comhoiriúnú. Ainm fhada malairteach de `-size-sm`."
 
 #: css/button.md
 #, no-c-format
@@ -2231,7 +2238,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [button.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/button/button.css)"
-msgstr ""
+msgstr "**Source:** [button.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/button/button.css)"
 
 #: css/button.md
 #, no-c-format
@@ -2405,7 +2412,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [byline.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/byline/byline.css)"
-msgstr ""
+msgstr "**Source:** [byline.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/byline/byline.css)"
 
 #: css/byline.md
 #, no-c-format
@@ -2501,7 +2508,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [calendar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/calendar/calendar.css)"
-msgstr ""
+msgstr "**Source:** [calendar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/calendar/calendar.css)"
 
 #: css/calendar.md
 #, no-c-format
@@ -2645,7 +2652,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- https://drafts.csswg.org/css-cascade-6/#scoping"
-msgstr ""
+msgstr "- https://drafts.csswg.org/css-cascade-6/#scoping"
 
 #: css/checkbox.md
 #, no-c-format
@@ -2669,7 +2676,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [checkbox.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/checkbox/checkbox.css)"
-msgstr ""
+msgstr "**Source:** [checkbox.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/checkbox/checkbox.css)"
 
 #: css/checkbox.md
 #, no-c-format
@@ -2801,7 +2808,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [close-button.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/close-button/close-button.css)"
-msgstr ""
+msgstr "**Source:** [close-button.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/close-button/close-button.css)"
 
 #: css/close-button.md
 #, no-c-format
@@ -2843,7 +2850,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [generate.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/scripts/generate.ts)"
-msgstr ""
+msgstr "**Source:** [generate.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/scripts/generate.ts)"
 
 #: css/color.md
 #, no-c-format
@@ -2897,7 +2904,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [context-view.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/context-view/context-view.css)"
-msgstr ""
+msgstr "**Source:** [context-view.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/context-view/context-view.css)"
 
 #: css/context-view.md
 #, no-c-format
@@ -2969,55 +2976,55 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/cursor/index.ts)"
-msgstr ""
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/cursor/index.ts)"
 
 #: css/cursor.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "cursor: auto."
-msgstr ""
+msgstr "cursor: auto."
 
 #: css/cursor.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "cursor: default."
-msgstr ""
+msgstr "cursor: default."
 
 #: css/cursor.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "cursor: grab."
-msgstr ""
+msgstr "cursor: grab."
 
 #: css/cursor.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "cursor: move."
-msgstr ""
+msgstr "cursor: move."
 
 #: css/cursor.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "cursor: not-allowed."
-msgstr ""
+msgstr "cursor: not-allowed."
 
 #: css/cursor.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "cursor: pointer."
-msgstr ""
+msgstr "cursor: pointer."
 
 #: css/cursor.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "cursor: text."
-msgstr ""
+msgstr "cursor: text."
 
 #: css/cursor.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "cursor: wait."
-msgstr ""
+msgstr "cursor: wait."
 
 #: css/drawer-layout.content.md
 #, no-c-format
@@ -3071,7 +3078,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [drawer-layout.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/drawer-layout/drawer-layout.css)"
-msgstr ""
+msgstr "**Source:** [drawer-layout.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/drawer-layout/drawer-layout.css)"
 
 #: css/drawer-layout.md
 #, no-c-format
@@ -3203,7 +3210,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [file-drop.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/file-drop/file-drop.css)"
-msgstr ""
+msgstr "**Source:** [file-drop.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/file-drop/file-drop.css)"
 
 #: css/file-drop.md
 #, no-c-format
@@ -3257,7 +3264,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [form-field-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field-group/form-field-group.css)"
-msgstr ""
+msgstr "**Source:** [form-field-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field-group/form-field-group.css)"
 
 #: css/form-field-group.md
 #, no-c-format
@@ -3395,7 +3402,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [form-field-messages.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field-messages/form-field-messages.css)"
-msgstr ""
+msgstr "**Source:** [form-field-messages.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field-messages/form-field-messages.css)"
 
 #: css/form-field-messages.md
 #, no-c-format
@@ -3449,7 +3456,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [form-field.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field/form-field.css)"
-msgstr ""
+msgstr "**Source:** [form-field.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field/form-field.css)"
 
 #: css/form-field.md
 #, no-c-format
@@ -3539,7 +3546,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/gap/index.ts)"
-msgstr ""
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/gap/index.ts)"
 
 #: css/gap.md
 #, no-c-format
@@ -3575,7 +3582,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [heading.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/heading/heading.css)"
-msgstr ""
+msgstr "**Source:** [heading.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/heading/heading.css)"
 
 #: css/heading.md
 #, no-c-format
@@ -3797,7 +3804,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [icon.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/icon/icon.css)"
-msgstr ""
+msgstr "**Source:** [icon.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/icon/icon.css)"
 
 #: css/icon.md
 #, no-c-format
@@ -3839,7 +3846,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [img.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/img/img.css)"
-msgstr ""
+msgstr "**Source:** [img.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/img/img.css)"
 
 #: css/img.md
 #, no-c-format
@@ -3905,7 +3912,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [in-place-edit.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/in-place-edit/in-place-edit.css)"
-msgstr ""
+msgstr "**Source:** [in-place-edit.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/in-place-edit/in-place-edit.css)"
 
 #: css/in-place-edit.md
 #, no-c-format
@@ -4613,7 +4620,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [input-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/input-group/input-group.css)"
-msgstr ""
+msgstr "**Source:** [input-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/input-group/input-group.css)"
 
 #: css/input-group.md
 #, no-c-format
@@ -4673,7 +4680,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/layout/index.ts)"
-msgstr ""
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/layout/index.ts)"
 
 #: css/layout.md
 #, no-c-format
@@ -4715,7 +4722,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [link.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/link/link.css)"
-msgstr ""
+msgstr "**Source:** [link.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/link/link.css)"
 
 #: css/link.md
 #, no-c-format
@@ -4823,7 +4830,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [list.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/list/list.css)"
-msgstr ""
+msgstr "**Source:** [list.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/list/list.css)"
 
 #: css/list.md
 #, no-c-format
@@ -5309,7 +5316,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [mask.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/mask/mask.css)"
-msgstr ""
+msgstr "**Source:** [mask.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/mask/mask.css)"
 
 #: css/mask.md
 #, no-c-format
@@ -5339,7 +5346,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/mask/index.ts)"
-msgstr ""
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/mask/index.ts)"
 
 #: css/maskglobal.md
 #, no-c-format
@@ -5465,7 +5472,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [metric.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/metric/metric.css)"
-msgstr ""
+msgstr "**Source:** [metric.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/metric/metric.css)"
 
 #: css/metric.md
 #, no-c-format
@@ -5567,7 +5574,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [body.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/modal/members/body/body.css)"
-msgstr ""
+msgstr "**Source:** [body.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/modal/members/body/body.css)"
 
 #: css/modal.md
 #, no-c-format
@@ -5675,7 +5682,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [number-input.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/number-input/number-input.css)"
-msgstr ""
+msgstr "**Source:** [number-input.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/number-input/number-input.css)"
 
 #: css/number-input.md
 #, no-c-format
@@ -5735,67 +5742,67 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/overflow/index.ts)"
-msgstr ""
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/overflow/index.ts)"
 
 #: css/overflow.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "overflow-x: auto."
-msgstr ""
+msgstr "overflow-x: auto."
 
 #: css/overflow.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "overflow-x: clip."
-msgstr ""
+msgstr "overflow-x: clip."
 
 #: css/overflow.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "overflow-x: hidden."
-msgstr ""
+msgstr "overflow-x: hidden."
 
 #: css/overflow.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "overflow-x: scroll."
-msgstr ""
+msgstr "overflow-x: scroll."
 
 #: css/overflow.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "overflow-x: visible."
-msgstr ""
+msgstr "overflow-x: visible."
 
 #: css/overflow.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "overflow-y: auto."
-msgstr ""
+msgstr "overflow-y: auto."
 
 #: css/overflow.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "overflow-y: clip."
-msgstr ""
+msgstr "overflow-y: clip."
 
 #: css/overflow.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "overflow-y: hidden."
-msgstr ""
+msgstr "overflow-y: hidden."
 
 #: css/overflow.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "overflow-y: scroll."
-msgstr ""
+msgstr "overflow-y: scroll."
 
 #: css/overflow.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "overflow-y: visible."
-msgstr ""
+msgstr "overflow-y: visible."
 
 #: css/page-layout.md
 #, no-c-format
@@ -5885,7 +5892,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [page.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/pagination/members/page/page.css)"
-msgstr ""
+msgstr "**Source:** [page.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/pagination/members/page/page.css)"
 
 #: css/pagination.md
 #, no-c-format
@@ -5963,7 +5970,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [pill.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/pill/pill.css)"
-msgstr ""
+msgstr "**Source:** [pill.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/pill/pill.css)"
 
 #: css/pill.md
 #, no-c-format
@@ -6035,7 +6042,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [popover.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/popover/popover.css)"
-msgstr ""
+msgstr "**Source:** [popover.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/popover/popover.css)"
 
 #: css/popover.md
 #, no-c-format
@@ -6065,37 +6072,37 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/position/index.ts)"
-msgstr ""
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/position/index.ts)"
 
 #: css/position.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "position: absolute."
-msgstr ""
+msgstr "position: absolute."
 
 #: css/position.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "position: fixed."
-msgstr ""
+msgstr "position: fixed."
 
 #: css/position.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "position: relative."
-msgstr ""
+msgstr "position: relative."
 
 #: css/position.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "position: static."
-msgstr ""
+msgstr "position: static."
 
 #: css/position.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "position: sticky."
-msgstr ""
+msgstr "position: sticky."
 
 #: css/primitives.md
 #, no-c-format
@@ -6137,7 +6144,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [progress-circle.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/progress-circle/progress-circle.css)"
-msgstr ""
+msgstr "**Source:** [progress-circle.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/progress-circle/progress-circle.css)"
 
 #: css/progress-circle.md
 #, no-c-format
@@ -6335,7 +6342,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [progress.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/progress/progress.css)"
-msgstr ""
+msgstr "**Source:** [progress.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/progress/progress.css)"
 
 #: css/progress.md
 #, no-c-format
@@ -6431,7 +6438,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [radio-input-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/radio-input-group/radio-input-group.css)"
-msgstr ""
+msgstr "**Source:** [radio-input-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/radio-input-group/radio-input-group.css)"
 
 #: css/radio-input-group.md
 #, no-c-format
@@ -6491,7 +6498,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [radio.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/radio/radio.css)"
-msgstr ""
+msgstr "**Source:** [radio.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/radio/radio.css)"
 
 #: css/radio.md
 #, no-c-format
@@ -6575,7 +6582,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [range-input.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/range-input/range-input.css)"
-msgstr ""
+msgstr "**Source:** [range-input.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/range-input/range-input.css)"
 
 #: css/range-input.md
 #, no-c-format
@@ -6617,7 +6624,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [rating.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/rating/rating.css)"
-msgstr ""
+msgstr "**Source:** [rating.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/rating/rating.css)"
 
 #: css/rating.md
 #, no-c-format
@@ -6659,7 +6666,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/responsive/index.ts)"
-msgstr ""
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/responsive/index.ts)"
 
 #: css/responsive.md
 #, no-c-format
@@ -7595,7 +7602,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [item.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/side-nav-bar/members/item/item.css)"
-msgstr ""
+msgstr "**Source:** [item.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/side-nav-bar/members/item/item.css)"
 
 #: css/side-nav-bar.md
 #, no-c-format
@@ -7643,7 +7650,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [select.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/select/select.css)"
-msgstr ""
+msgstr "**Source:** [select.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/select/select.css)"
 
 #: css/simple-select.md
 #, no-c-format
@@ -7673,7 +7680,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/spacing/index.ts)"
-msgstr ""
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/spacing/index.ts)"
 
 #: css/spacing.md
 #, no-c-format
@@ -7715,7 +7722,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [spinner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/spinner/spinner.css)"
-msgstr ""
+msgstr "**Source:** [spinner.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/spinner/spinner.css)"
 
 #: css/spinner.md
 #, no-c-format
@@ -7763,7 +7770,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/stacking/index.ts)"
-msgstr ""
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/stacking/index.ts)"
 
 #: css/stacking.md
 #, no-c-format
@@ -7877,7 +7884,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [body.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/table/members/body/body.css)"
-msgstr ""
+msgstr "**Source:** [body.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/table/members/body/body.css)"
 
 #: css/table.md
 #, no-c-format
@@ -7961,7 +7968,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [panel.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tabs/members/panel/panel.css)"
-msgstr ""
+msgstr "**Source:** [panel.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tabs/members/panel/panel.css)"
 
 #: css/tabs.md
 #, no-c-format
@@ -8051,7 +8058,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [tag.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tag/tag.css)"
-msgstr ""
+msgstr "**Source:** [tag.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tag/tag.css)"
 
 #: css/tag.md
 #, no-c-format
@@ -8189,7 +8196,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [text-area.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/text-area/text-area.css)"
-msgstr ""
+msgstr "**Source:** [text-area.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/text-area/text-area.css)"
 
 #: css/text-area.md
 #, no-c-format
@@ -8219,7 +8226,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [text-input.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/text-input/text-input.css)"
-msgstr ""
+msgstr "**Source:** [text-input.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/text-input/text-input.css)"
 
 #: css/text-input.md
 #, no-c-format
@@ -8249,7 +8256,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [text.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/text/text.css)"
-msgstr ""
+msgstr "**Source:** [text.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/text/text.css)"
 
 #: css/text.md
 #, no-c-format
@@ -8423,7 +8430,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [toggle-details.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/toggle-details/toggle-details.css)"
-msgstr ""
+msgstr "**Source:** [toggle-details.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/toggle-details/toggle-details.css)"
 
 #: css/toggle-details.md
 #, no-c-format
@@ -8471,7 +8478,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [toggle-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/toggle-group/toggle-group.css)"
-msgstr ""
+msgstr "**Source:** [toggle-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/toggle-group/toggle-group.css)"
 
 #: css/toggle-group.md
 #, no-c-format
@@ -8507,7 +8514,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [tooltip.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tooltip/tooltip.css)"
-msgstr ""
+msgstr "**Source:** [tooltip.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tooltip/tooltip.css)"
 
 #: css/tooltip.md
 #, no-c-format
@@ -8549,7 +8556,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [transition.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/transition/transition.css)"
-msgstr ""
+msgstr "**Source:** [transition.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/transition/transition.css)"
 
 #: css/transition.md
 #, no-c-format
@@ -8591,7 +8598,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [tray.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tray/tray.css)"
-msgstr ""
+msgstr "**Source:** [tray.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tray/tray.css)"
 
 #: css/tray.md
 #, no-c-format
@@ -8663,7 +8670,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [tree-browser.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tree-browser/tree-browser.css)"
-msgstr ""
+msgstr "**Source:** [tree-browser.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tree-browser/tree-browser.css)"
 
 #: css/tree-browser.md
 #, no-c-format
@@ -8717,7 +8724,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/truncate/index.ts)"
-msgstr ""
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/truncate/index.ts)"
 
 #: css/truncate.md
 #, no-c-format
@@ -8897,7 +8904,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [view.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/view/view.css)"
-msgstr ""
+msgstr "**Source:** [view.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/view/view.css)"
 
 #: css/view.md
 #, no-c-format
@@ -9047,37 +9054,37 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "display: block."
-msgstr ""
+msgstr "display: block."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "display: flex."
-msgstr ""
+msgstr "display: flex."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "display: inline."
-msgstr ""
+msgstr "display: inline."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "display: inline-block."
-msgstr ""
+msgstr "display: inline-block."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "display: inline-flex."
-msgstr ""
+msgstr "display: inline-flex."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "display: none."
-msgstr ""
+msgstr "display: none."
 
 #: css/view.md
 #, no-c-format
@@ -25030,12 +25037,12 @@ msgstr "A hoverable \"view fullscreen\" button, overlaid on a demo/example frame
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tools"
-msgstr ""
+msgstr "tools"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "aggregate"
-msgstr ""
+msgstr "aggregate"
 
 #: glossary.ts
 msgctxt "docs.api:text"
@@ -25045,12 +25052,12 @@ msgstr "Comhéadan"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "Target"
-msgstr ""
+msgstr "Target"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "AggregateOptions"
-msgstr ""
+msgstr "AggregateOptions"
 
 #: glossary.ts
 msgctxt "docs.api:text"
@@ -25060,37 +25067,37 @@ msgstr "Feidhmeanna"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "discoverTargets"
-msgstr ""
+msgstr "discoverTargets"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "demo"
-msgstr ""
+msgstr "demo"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ResolveOptions"
-msgstr ""
+msgstr "ResolveOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ResolvedDemo"
-msgstr ""
+msgstr "ResolvedDemo"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "LiveExampleOptions"
-msgstr ""
+msgstr "LiveExampleOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "DemoMarkdownItOptions"
-msgstr ""
+msgstr "DemoMarkdownItOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ExampleSrcdocOptions"
-msgstr ""
+msgstr "ExampleSrcdocOptions"
 
 #: glossary.ts
 msgctxt "docs.api:text"
@@ -25100,42 +25107,42 @@ msgstr "Athróga"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "FULLSCREEN_BUTTON_HTML"
-msgstr ""
+msgstr "FULLSCREEN_BUTTON_HTML"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "resolveDemo"
-msgstr ""
+msgstr "resolveDemo"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "renderDemoFigure"
-msgstr ""
+msgstr "renderDemoFigure"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "demoMarkdownIt"
-msgstr ""
+msgstr "demoMarkdownIt"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "escapeSrcdoc"
-msgstr ""
+msgstr "escapeSrcdoc"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "buildExampleSrcdoc"
-msgstr ""
+msgstr "buildExampleSrcdoc"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ai"
-msgstr ""
+msgstr "ai"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "pantoken-ai"
-msgstr ""
+msgstr "pantoken-ai"
 
 #: glossary.ts
 msgctxt "docs.api:text"
@@ -25145,3022 +25152,3022 @@ msgstr "Aliasanna Cineál"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "AgentTool"
-msgstr ""
+msgstr "AgentTool"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ScaffoldPlatform"
-msgstr ""
+msgstr "ScaffoldPlatform"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ASSETS"
-msgstr ""
+msgstr "ASSETS"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "AGENTS_MD"
-msgstr ""
+msgstr "AGENTS_MD"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "LLMS_TXT"
-msgstr ""
+msgstr "LLMS_TXT"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "AGENT_TOOLS"
-msgstr ""
+msgstr "AGENT_TOOLS"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "SCAFFOLD_PLATFORMS"
-msgstr ""
+msgstr "SCAFFOLD_PLATFORMS"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "installAgentAssets"
-msgstr ""
+msgstr "installAgentAssets"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "scaffoldAndInit"
-msgstr ""
+msgstr "scaffoldAndInit"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "isScaffoldPlatform"
-msgstr ""
+msgstr "isScaffoldPlatform"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "scaffoldProject"
-msgstr ""
+msgstr "scaffoldProject"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "platforms"
-msgstr ""
+msgstr "platforms"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "android"
-msgstr ""
+msgstr "android"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "GenerateAndroidOptions"
-msgstr ""
+msgstr "GenerateAndroidOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toAndroid"
-msgstr ""
+msgstr "toAndroid"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "generateAndroid"
-msgstr ""
+msgstr "generateAndroid"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "canvas-theme-editor"
-msgstr ""
+msgstr "canvas-theme-editor"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ThemeStrings"
-msgstr ""
+msgstr "ThemeStrings"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "BuildThemeOptions"
-msgstr ""
+msgstr "BuildThemeOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "CdnFile"
-msgstr ""
+msgstr "CdnFile"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "CdnProvider"
-msgstr ""
+msgstr "CdnProvider"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ThemeVariant"
-msgstr ""
+msgstr "ThemeVariant"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ThemeMode"
-msgstr ""
+msgstr "ThemeMode"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "THEME_CSS"
-msgstr ""
+msgstr "THEME_CSS"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "THEME_JS"
-msgstr ""
+msgstr "THEME_JS"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ENGLISH_THEME_STRINGS"
-msgstr ""
+msgstr "ENGLISH_THEME_STRINGS"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "DEFAULT_THEME_CSS_ASSETS"
-msgstr ""
+msgstr "DEFAULT_THEME_CSS_ASSETS"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "DEFAULT_THEME_FONT_ASSETS"
-msgstr ""
+msgstr "DEFAULT_THEME_FONT_ASSETS"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "DEFAULT_THEME_JS_ASSETS"
-msgstr ""
+msgstr "DEFAULT_THEME_JS_ASSETS"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "CDN_PROVIDERS"
-msgstr ""
+msgstr "CDN_PROVIDERS"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "DEFAULT_CDN_PROVIDER_ID"
-msgstr ""
+msgstr "DEFAULT_CDN_PROVIDER_ID"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "defaultThemeCssAssets"
-msgstr ""
+msgstr "defaultThemeCssAssets"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "buildThemeCss"
-msgstr ""
+msgstr "buildThemeCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "buildThemeJs"
-msgstr ""
+msgstr "buildThemeJs"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "buildTheme"
-msgstr ""
+msgstr "buildTheme"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "compose"
-msgstr ""
+msgstr "compose"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "GenerateComposeOptions"
-msgstr ""
+msgstr "GenerateComposeOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toCompose"
-msgstr ""
+msgstr "toCompose"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "generateCompose"
-msgstr ""
+msgstr "generateCompose"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "drupal"
-msgstr ""
+msgstr "drupal"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "DrupalFile"
-msgstr ""
+msgstr "DrupalFile"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ToDrupalThemeOptions"
-msgstr ""
+msgstr "ToDrupalThemeOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "machineName"
-msgstr ""
+msgstr "machineName"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toDrupalTheme"
-msgstr ""
+msgstr "toDrupalTheme"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "email"
-msgstr ""
+msgstr "email"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "light"
-msgstr ""
+msgstr "light"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "dark"
-msgstr ""
+msgstr "dark"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "emailTokens"
-msgstr ""
+msgstr "emailTokens"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "flutter"
-msgstr ""
+msgstr "flutter"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "GenerateFlutterOptions"
-msgstr ""
+msgstr "GenerateFlutterOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toFlutter"
-msgstr ""
+msgstr "toFlutter"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "generateFlutter"
-msgstr ""
+msgstr "generateFlutter"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "hugo"
-msgstr ""
+msgstr "hugo"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "HugoFile"
-msgstr ""
+msgstr "HugoFile"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toHugoAssets"
-msgstr ""
+msgstr "toHugoAssets"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "jekyll"
-msgstr ""
+msgstr "jekyll"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "JekyllFile"
-msgstr ""
+msgstr "JekyllFile"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toJekyllAssets"
-msgstr ""
+msgstr "toJekyllAssets"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "rust"
-msgstr ""
+msgstr "rust"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "RustOptions"
-msgstr ""
+msgstr "RustOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "RustFormat"
-msgstr ""
+msgstr "RustFormat"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toRust"
-msgstr ""
+msgstr "toRust"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "generateRust"
-msgstr ""
+msgstr "generateRust"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "swift"
-msgstr ""
+msgstr "swift"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "GenerateSwiftOptions"
-msgstr ""
+msgstr "GenerateSwiftOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toSwift"
-msgstr ""
+msgstr "toSwift"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "generateSwift"
-msgstr ""
+msgstr "generateSwift"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "vanilla"
-msgstr ""
+msgstr "vanilla"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ToVanillaOptions"
-msgstr ""
+msgstr "ToVanillaOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "Mode"
-msgstr ""
+msgstr "Mode"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "variables"
-msgstr ""
+msgstr "variables"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "VANILLA_TO_INSTUI"
-msgstr ""
+msgstr "VANILLA_TO_INSTUI"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toVanillaVariables"
-msgstr ""
+msgstr "toVanillaVariables"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "wordpress"
-msgstr ""
+msgstr "wordpress"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ThemeJson"
-msgstr ""
+msgstr "ThemeJson"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ToThemeJsonOptions"
-msgstr ""
+msgstr "ToThemeJsonOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "themeJson"
-msgstr ""
+msgstr "themeJson"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toThemeJson"
-msgstr ""
+msgstr "toThemeJson"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "renderers"
-msgstr ""
+msgstr "renderers"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "angular"
-msgstr ""
+msgstr "angular"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "registerPantokenElements"
-msgstr ""
+msgstr "registerPantokenElements"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "readToken"
-msgstr ""
+msgstr "readToken"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "register"
-msgstr ""
+msgstr "register"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "astro"
-msgstr ""
+msgstr "astro"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "HeadEntry"
-msgstr ""
+msgstr "HeadEntry"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "StarlightPluginLike"
-msgstr ""
+msgstr "StarlightPluginLike"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "InstUIOptions"
-msgstr ""
+msgstr "InstUIOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "pantokenCss"
-msgstr ""
+msgstr "pantokenCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "InstUI"
-msgstr ""
+msgstr "InstUI"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "bootstrap"
-msgstr ""
+msgstr "bootstrap"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ToBootstrapCssOptions"
-msgstr ""
+msgstr "ToBootstrapCssOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "BOOTSTRAP_TO_INSTUI"
-msgstr ""
+msgstr "BOOTSTRAP_TO_INSTUI"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "bootstrapCss"
-msgstr ""
+msgstr "bootstrapCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toBootstrapCss"
-msgstr ""
+msgstr "toBootstrapCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "css-in-js"
-msgstr ""
+msgstr "css-in-js"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ToStyledThemeOptions"
-msgstr ""
+msgstr "ToStyledThemeOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "StyledTheme"
-msgstr ""
+msgstr "StyledTheme"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "pantokenTheme"
-msgstr ""
+msgstr "pantokenTheme"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toThemeKey"
-msgstr ""
+msgstr "toThemeKey"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toStyledTheme"
-msgstr ""
+msgstr "toStyledTheme"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "docusaurus"
-msgstr ""
+msgstr "docusaurus"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ToDocusaurusCssOptions"
-msgstr ""
+msgstr "ToDocusaurusCssOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "INFIMA_TO_INSTUI"
-msgstr ""
+msgstr "INFIMA_TO_INSTUI"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "docusaurusCss"
-msgstr ""
+msgstr "docusaurusCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toDocusaurusCss"
-msgstr ""
+msgstr "toDocusaurusCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "foundation"
-msgstr ""
+msgstr "foundation"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ToFoundationSettingsOptions"
-msgstr ""
+msgstr "ToFoundationSettingsOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ToFoundationCssOptions"
-msgstr ""
+msgstr "ToFoundationCssOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "FOUNDATION_TO_INSTUI"
-msgstr ""
+msgstr "FOUNDATION_TO_INSTUI"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "foundationSettings"
-msgstr ""
+msgstr "foundationSettings"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "foundationCss"
-msgstr ""
+msgstr "foundationCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toFoundationSettings"
-msgstr ""
+msgstr "toFoundationSettings"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toFoundationCss"
-msgstr ""
+msgstr "toFoundationCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "markdown-it"
-msgstr ""
+msgstr "markdown-it"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "MarkdownItOptions"
-msgstr ""
+msgstr "MarkdownItOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "PROSE_CLASS"
-msgstr ""
+msgstr "PROSE_CLASS"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "pantokenMarkdownIt"
-msgstr ""
+msgstr "pantokenMarkdownIt"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "mintlify"
-msgstr ""
+msgstr "mintlify"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "MintlifyColors"
-msgstr ""
+msgstr "MintlifyColors"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "MintlifyBackground"
-msgstr ""
+msgstr "MintlifyBackground"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "MintlifyTheme"
-msgstr ""
+msgstr "MintlifyTheme"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "docsJson"
-msgstr ""
+msgstr "docsJson"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toMintlifyConfig"
-msgstr ""
+msgstr "toMintlifyConfig"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "mui"
-msgstr ""
+msgstr "mui"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "MuiPaletteColor"
-msgstr ""
+msgstr "MuiPaletteColor"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "PantokenThemeOptions"
-msgstr ""
+msgstr "PantokenThemeOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "lightTheme"
-msgstr ""
+msgstr "lightTheme"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "darkTheme"
-msgstr ""
+msgstr "darkTheme"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toMuiTheme"
-msgstr ""
+msgstr "toMuiTheme"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "pendo"
-msgstr ""
+msgstr "pendo"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "BuildPendoCssOptions"
-msgstr ""
+msgstr "BuildPendoCssOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "AddScopeOptions"
-msgstr ""
+msgstr "AddScopeOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "pendoCss"
-msgstr ""
+msgstr "pendoCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "LAYER_ORDER"
-msgstr ""
+msgstr "LAYER_ORDER"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "COMPONENTS"
-msgstr ""
+msgstr "COMPONENTS"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "addImportant"
-msgstr ""
+msgstr "addImportant"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "addScope"
-msgstr ""
+msgstr "addScope"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "buildPendoCss"
-msgstr ""
+msgstr "buildPendoCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "react"
-msgstr ""
+msgstr "react"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "IconProps"
-msgstr ""
+msgstr "IconProps"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "TokenProviderProps"
-msgstr ""
+msgstr "TokenProviderProps"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "useToken"
-msgstr ""
+msgstr "useToken"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "Icon"
-msgstr ""
+msgstr "Icon"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "TokenProvider"
-msgstr ""
+msgstr "TokenProvider"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "react-markdown"
-msgstr ""
+msgstr "react-markdown"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "InstuiMarkdownRenderOptions"
-msgstr ""
+msgstr "InstuiMarkdownRenderOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "InstuiMarkdownProps"
-msgstr ""
+msgstr "InstuiMarkdownProps"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "AlertMarker"
-msgstr ""
+msgstr "AlertMarker"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "instuiMarkdownComponents"
-msgstr ""
+msgstr "instuiMarkdownComponents"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "createInstuiMarkdownComponents"
-msgstr ""
+msgstr "createInstuiMarkdownComponents"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "buildIconResolver"
-msgstr ""
+msgstr "buildIconResolver"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "parseAlertMarker"
-msgstr ""
+msgstr "parseAlertMarker"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "isColorValue"
-msgstr ""
+msgstr "isColorValue"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "rehypeColorCodes"
-msgstr ""
+msgstr "rehypeColorCodes"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "rehypeGithubAlerts"
-msgstr ""
+msgstr "rehypeGithubAlerts"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "InstuiMarkdown"
-msgstr ""
+msgstr "InstuiMarkdown"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "react-native"
-msgstr ""
+msgstr "react-native"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "RNTokenValue"
-msgstr ""
+msgstr "RNTokenValue"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tokensForScheme"
-msgstr ""
+msgstr "tokensForScheme"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "rehype"
-msgstr ""
+msgstr "rehype"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "RehypeOptions"
-msgstr ""
+msgstr "RehypeOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "rehypePantokenIcons"
-msgstr ""
+msgstr "rehypePantokenIcons"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "shadcn"
-msgstr ""
+msgstr "shadcn"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ToShadcnCssOptions"
-msgstr ""
+msgstr "ToShadcnCssOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "shadcnCss"
-msgstr ""
+msgstr "shadcnCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "SHADCN_TO_INSTUI"
-msgstr ""
+msgstr "SHADCN_TO_INSTUI"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toShadcnCss"
-msgstr ""
+msgstr "toShadcnCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "storybook"
-msgstr ""
+msgstr "storybook"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "StorybookTheme"
-msgstr ""
+msgstr "StorybookTheme"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "pantokenStorybookTheme"
-msgstr ""
+msgstr "pantokenStorybookTheme"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "svelte"
-msgstr ""
+msgstr "svelte"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ActionResult"
-msgstr ""
+msgstr "ActionResult"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "icon"
-msgstr ""
+msgstr "icon"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "registerLocalized"
-msgstr ""
+msgstr "registerLocalized"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tinymce"
-msgstr ""
+msgstr "tinymce"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "CssDocEntry"
-msgstr ""
+msgstr "CssDocEntry"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "PageLayout"
-msgstr ""
+msgstr "PageLayout"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "LogoMeta"
-msgstr ""
+msgstr "LogoMeta"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "TaggedIcon"
-msgstr ""
+msgstr "TaggedIcon"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "LayoutsPluginOptions"
-msgstr ""
+msgstr "LayoutsPluginOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "Product"
-msgstr ""
+msgstr "Product"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "pageLayouts"
-msgstr ""
+msgstr "pageLayouts"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "logos"
-msgstr ""
+msgstr "logos"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "products"
-msgstr ""
+msgstr "products"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "LAYOUTS_PLUGIN_NAME"
-msgstr ""
+msgstr "LAYOUTS_PLUGIN_NAME"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "LAYOUTS_TOOLBAR_NAME"
-msgstr ""
+msgstr "LAYOUTS_TOOLBAR_NAME"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "pantokenHtmlCompletion"
-msgstr ""
+msgstr "pantokenHtmlCompletion"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "pantokenHtmlLinter"
-msgstr ""
+msgstr "pantokenHtmlLinter"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "pantokenContentCssUrls"
-msgstr ""
+msgstr "pantokenContentCssUrls"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "injectContentStylesheet"
-msgstr ""
+msgstr "injectContentStylesheet"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "findEntry"
-msgstr ""
+msgstr "findEntry"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "listComponents"
-msgstr ""
+msgstr "listComponents"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "listUtilities"
-msgstr ""
+msgstr "listUtilities"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "getModifierSuggestions"
-msgstr ""
+msgstr "getModifierSuggestions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "validateClassToken"
-msgstr ""
+msgstr "validateClassToken"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "loadAllIcons"
-msgstr ""
+msgstr "loadAllIcons"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "getIconCdnFile"
-msgstr ""
+msgstr "getIconCdnFile"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "createComponentsPlugin"
-msgstr ""
+msgstr "createComponentsPlugin"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "createIconsPlugin"
-msgstr ""
+msgstr "createIconsPlugin"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "createLayoutsPlugin"
-msgstr ""
+msgstr "createLayoutsPlugin"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "createLogosPlugin"
-msgstr ""
+msgstr "createLogosPlugin"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "createTemplatesPlugin"
-msgstr ""
+msgstr "createTemplatesPlugin"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "vitepress"
-msgstr ""
+msgstr "vitepress"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ToVitePressCssOptions"
-msgstr ""
+msgstr "ToVitePressCssOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "VITEPRESS_TO_INSTUI"
-msgstr ""
+msgstr "VITEPRESS_TO_INSTUI"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "vue"
-msgstr ""
+msgstr "vue"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "PantokenVue"
-msgstr ""
+msgstr "PantokenVue"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "iconSvg"
-msgstr ""
+msgstr "iconSvg"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "web-components"
-msgstr ""
+msgstr "web-components"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "CommandEventish"
-msgstr ""
+msgstr "CommandEventish"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "LocaleSet"
-msgstr ""
+msgstr "LocaleSet"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ElementRegistry"
-msgstr ""
+msgstr "ElementRegistry"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "RegisterContext"
-msgstr ""
+msgstr "RegisterContext"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ElementDefinition"
-msgstr ""
+msgstr "ElementDefinition"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "LocaleInfo"
-msgstr ""
+msgstr "LocaleInfo"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "RegisterContextOptions"
-msgstr ""
+msgstr "RegisterContextOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "WebComponentStrings"
-msgstr ""
+msgstr "WebComponentStrings"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "LocaleBundle"
-msgstr ""
+msgstr "LocaleBundle"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "alert"
-msgstr ""
+msgstr "alert"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "avatar"
-msgstr ""
+msgstr "avatar"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "badge"
-msgstr ""
+msgstr "badge"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "button"
-msgstr ""
+msgstr "button"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "calendar"
-msgstr ""
+msgstr "calendar"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "contextView"
-msgstr ""
+msgstr "contextView"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "dateInput"
-msgstr ""
+msgstr "dateInput"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "dateTimeInput"
-msgstr ""
+msgstr "dateTimeInput"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "drawerLayout"
-msgstr ""
+msgstr "drawerLayout"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "drilldown"
-msgstr ""
+msgstr "drilldown"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "iconButton"
-msgstr ""
+msgstr "iconButton"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "img"
-msgstr ""
+msgstr "img"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "inPlaceEdit"
-msgstr ""
+msgstr "inPlaceEdit"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "DEFINITIONS"
-msgstr ""
+msgstr "DEFINITIONS"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "metric"
-msgstr ""
+msgstr "metric"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "modal"
-msgstr ""
+msgstr "modal"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "pages"
-msgstr ""
+msgstr "pages"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "pill"
-msgstr ""
+msgstr "pill"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "popover"
-msgstr ""
+msgstr "popover"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "progressCircle"
-msgstr ""
+msgstr "progressCircle"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "progress"
-msgstr ""
+msgstr "progress"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "rating"
-msgstr ""
+msgstr "rating"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "sideNavBar"
-msgstr ""
+msgstr "sideNavBar"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "spinner"
-msgstr ""
+msgstr "spinner"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tag"
-msgstr ""
+msgstr "tag"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toggleButton"
-msgstr ""
+msgstr "toggleButton"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tooltip"
-msgstr ""
+msgstr "tooltip"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tray"
-msgstr ""
+msgstr "tray"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "treeBrowser"
-msgstr ""
+msgstr "treeBrowser"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "truncate"
-msgstr ""
+msgstr "truncate"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ELEMENTS"
-msgstr ""
+msgstr "ELEMENTS"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "NESTED_DEPS"
-msgstr ""
+msgstr "NESTED_DEPS"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ICON_ELEMENTS"
-msgstr ""
+msgstr "ICON_ELEMENTS"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "LOCALES"
-msgstr ""
+msgstr "LOCALES"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "DEFAULT_PREFIX"
-msgstr ""
+msgstr "DEFAULT_PREFIX"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ENGLISH_STRINGS"
-msgstr ""
+msgstr "ENGLISH_STRINGS"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ar"
-msgstr ""
+msgstr "ar"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ca"
-msgstr ""
+msgstr "ca"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "cy"
-msgstr ""
+msgstr "cy"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "da"
-msgstr ""
+msgstr "da"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "de"
-msgstr ""
+msgstr "de"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "el"
-msgstr ""
+msgstr "el"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "enAU"
-msgstr ""
+msgstr "enAU"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "enCA"
-msgstr ""
+msgstr "enCA"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "enGB"
-msgstr ""
+msgstr "enGB"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "en"
-msgstr ""
+msgstr "en"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "es"
-msgstr ""
+msgstr "es"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "fa"
-msgstr ""
+msgstr "fa"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "fi"
-msgstr ""
+msgstr "fi"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "frCA"
-msgstr ""
+msgstr "frCA"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "fr"
-msgstr ""
+msgstr "fr"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ga"
-msgstr ""
+msgstr "ga"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "he"
-msgstr ""
+msgstr "he"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "hi"
-msgstr ""
+msgstr "hi"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ht"
-msgstr ""
+msgstr "ht"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "hu"
-msgstr ""
+msgstr "hu"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "hy"
-msgstr ""
+msgstr "hy"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "id"
-msgstr ""
+msgstr "id"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "is"
-msgstr ""
+msgstr "is"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "it"
-msgstr ""
+msgstr "it"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ja"
-msgstr ""
+msgstr "ja"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ko"
-msgstr ""
+msgstr "ko"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "mi"
-msgstr ""
+msgstr "mi"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ms"
-msgstr ""
+msgstr "ms"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "nb"
-msgstr ""
+msgstr "nb"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "nl"
-msgstr ""
+msgstr "nl"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "nn"
-msgstr ""
+msgstr "nn"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "pl"
-msgstr ""
+msgstr "pl"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ptBR"
-msgstr ""
+msgstr "ptBR"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "pt"
-msgstr ""
+msgstr "pt"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ru"
-msgstr ""
+msgstr "ru"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "se"
-msgstr ""
+msgstr "se"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "sl"
-msgstr ""
+msgstr "sl"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "sv"
-msgstr ""
+msgstr "sv"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "th"
-msgstr ""
+msgstr "th"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tr"
-msgstr ""
+msgstr "tr"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "uk"
-msgstr ""
+msgstr "uk"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "vi"
-msgstr ""
+msgstr "vi"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "zhHans"
-msgstr ""
+msgstr "zhHans"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "zhHant"
-msgstr ""
+msgstr "zhHant"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "getDir"
-msgstr ""
+msgstr "getDir"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "createLocaleSet"
-msgstr ""
+msgstr "createLocaleSet"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "noopIconSvg"
-msgstr ""
+msgstr "noopIconSvg"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "buildRegisterContext"
-msgstr ""
+msgstr "buildRegisterContext"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "formatMessage"
-msgstr ""
+msgstr "formatMessage"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "isolate"
-msgstr ""
+msgstr "isolate"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "formatNumber"
-msgstr ""
+msgstr "formatNumber"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "formatDate"
-msgstr ""
+msgstr "formatDate"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "formatList"
-msgstr ""
+msgstr "formatList"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "formatRelativeTime"
-msgstr ""
+msgstr "formatRelativeTime"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "resolveFirstDay"
-msgstr ""
+msgstr "resolveFirstDay"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "makeStrings"
-msgstr ""
+msgstr "makeStrings"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "defineBundle"
-msgstr ""
+msgstr "defineBundle"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "packages"
-msgstr ""
+msgstr "packages"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "cli"
-msgstr ""
+msgstr "cli"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "CliArgs"
-msgstr ""
+msgstr "CliArgs"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "parseArgs"
-msgstr ""
+msgstr "parseArgs"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "run"
-msgstr ""
+msgstr "run"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "core"
-msgstr ""
+msgstr "core"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "BuildTokensOptions"
-msgstr ""
+msgstr "BuildTokensOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "VectorDrawableOptions"
-msgstr ""
+msgstr "VectorDrawableOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "AssetFile"
-msgstr ""
+msgstr "AssetFile"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "CollectIconsOptions"
-msgstr ""
+msgstr "CollectIconsOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "IconToken"
-msgstr ""
+msgstr "IconToken"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "IconLayer"
-msgstr ""
+msgstr "IconLayer"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "Leaf"
-msgstr ""
+msgstr "Leaf"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "SdLeaf"
-msgstr ""
+msgstr "SdLeaf"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "TokenModify"
-msgstr ""
+msgstr "TokenModify"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "TokenMeta"
-msgstr ""
+msgstr "TokenMeta"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "TokenInput"
-msgstr ""
+msgstr "TokenInput"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "IconEntry"
-msgstr ""
+msgstr "IconEntry"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "CssContribution"
-msgstr ""
+msgstr "CssContribution"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "TokenHookContext"
-msgstr ""
+msgstr "TokenHookContext"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "IconHookContext"
-msgstr ""
+msgstr "IconHookContext"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "CssHookContext"
-msgstr ""
+msgstr "CssHookContext"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "RehypeHookContext"
-msgstr ""
+msgstr "RehypeHookContext"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "PantokenPlugin"
-msgstr ""
+msgstr "PantokenPlugin"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "Theme"
-msgstr ""
+msgstr "Theme"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "IconResolver"
-msgstr ""
+msgstr "IconResolver"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ICON_COLOR_SPECIAL_VALUES"
-msgstr ""
+msgstr "ICON_COLOR_SPECIAL_VALUES"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "buildTokens"
-msgstr ""
+msgstr "buildTokens"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "applyModify"
-msgstr ""
+msgstr "applyModify"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "decodeIconSvg"
-msgstr ""
+msgstr "decodeIconSvg"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "getIconSvgs"
-msgstr ""
+msgstr "getIconSvgs"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toVectorDrawable"
-msgstr ""
+msgstr "toVectorDrawable"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toXcodeImageset"
-msgstr ""
+msgstr "toXcodeImageset"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "flutterIconManifest"
-msgstr ""
+msgstr "flutterIconManifest"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "collectIcons"
-msgstr ""
+msgstr "collectIcons"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "defineToken"
-msgstr ""
+msgstr "defineToken"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "dedupeByName"
-msgstr ""
+msgstr "dedupeByName"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "runTokenPlugins"
-msgstr ""
+msgstr "runTokenPlugins"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "runIconPlugins"
-msgstr ""
+msgstr "runIconPlugins"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "collectLeaves"
-msgstr ""
+msgstr "collectLeaves"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "referenceToVarName"
-msgstr ""
+msgstr "referenceToVarName"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "resolveValue"
-msgstr ""
+msgstr "resolveValue"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "varName"
-msgstr ""
+msgstr "varName"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "resolveReferences"
-msgstr ""
+msgstr "resolveReferences"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toStyleDictionary"
-msgstr ""
+msgstr "toStyleDictionary"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toKebab"
-msgstr ""
+msgstr "toKebab"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "cssSyntaxForValue"
-msgstr ""
+msgstr "cssSyntaxForValue"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "isContextual"
-msgstr ""
+msgstr "isContextual"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "model"
-msgstr ""
+msgstr "model"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "DeprecationEntry"
-msgstr ""
+msgstr "DeprecationEntry"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "DeprecationLedger"
-msgstr ""
+msgstr "DeprecationLedger"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "PropertyRule"
-msgstr ""
+msgstr "PropertyRule"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "UpstreamRef"
-msgstr ""
+msgstr "UpstreamRef"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "plugin-kit"
-msgstr ""
+msgstr "plugin-kit"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "Stage"
-msgstr ""
+msgstr "Stage"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "definePlugin"
-msgstr ""
+msgstr "definePlugin"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "isFactoried"
-msgstr ""
+msgstr "isFactoried"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "validatePlugin"
-msgstr ""
+msgstr "validatePlugin"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "capabilitiesOf"
-msgstr ""
+msgstr "capabilitiesOf"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "checkPlugins"
-msgstr ""
+msgstr "checkPlugins"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "extendPlugin"
-msgstr ""
+msgstr "extendPlugin"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "mergePlugin"
-msgstr ""
+msgstr "mergePlugin"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "makeResolver"
-msgstr ""
+msgstr "makeResolver"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "resolveTokens"
-msgstr ""
+msgstr "resolveTokens"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "utils"
-msgstr ""
+msgstr "utils"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "Rgba"
-msgstr ""
+msgstr "Rgba"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "SpacingStep"
-msgstr ""
+msgstr "SpacingStep"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "UtilityOptions"
-msgstr ""
+msgstr "UtilityOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ColorUtilityNames"
-msgstr ""
+msgstr "ColorUtilityNames"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "TokenUtilityGroup"
-msgstr ""
+msgstr "TokenUtilityGroup"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ColorUtilityEntry"
-msgstr ""
+msgstr "ColorUtilityEntry"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ELEVATION_NAMES"
-msgstr ""
+msgstr "ELEVATION_NAMES"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "FOCUSABLE_SELECTOR"
-msgstr ""
+msgstr "FOCUSABLE_SELECTOR"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "VAR_RE"
-msgstr ""
+msgstr "VAR_RE"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "LIGHT_DARK_RE"
-msgstr ""
+msgstr "LIGHT_DARK_RE"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "SPACING_STEPS"
-msgstr ""
+msgstr "SPACING_STEPS"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "SPACING_AUTO_STEP"
-msgstr ""
+msgstr "SPACING_AUTO_STEP"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "camelCase"
-msgstr ""
+msgstr "camelCase"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "parseHexColor"
-msgstr ""
+msgstr "parseHexColor"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "elevationDeclarations"
-msgstr ""
+msgstr "elevationDeclarations"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "focusOutlineDeclarations"
-msgstr ""
+msgstr "focusOutlineDeclarations"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "focusOutlineRules"
-msgstr ""
+msgstr "focusOutlineRules"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "extractInstuiRefs"
-msgstr ""
+msgstr "extractInstuiRefs"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tokenNames"
-msgstr ""
+msgstr "tokenNames"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "unknownReferences"
-msgstr ""
+msgstr "unknownReferences"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "danglingReferences"
-msgstr ""
+msgstr "danglingReferences"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "sanitizeSvg"
-msgstr ""
+msgstr "sanitizeSvg"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "globalModifierSelector"
-msgstr ""
+msgstr "globalModifierSelector"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "colorUtilitiesCss"
-msgstr ""
+msgstr "colorUtilitiesCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tokenUtilitiesCss"
-msgstr ""
+msgstr "tokenUtilitiesCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "formats"
-msgstr ""
+msgstr "formats"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "components"
-msgstr ""
+msgstr "components"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ComponentOptions"
-msgstr ""
+msgstr "ComponentOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ProseOptions"
-msgstr ""
+msgstr "ProseOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "IconGlyphsOptions"
-msgstr ""
+msgstr "IconGlyphsOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "alertCss"
-msgstr ""
+msgstr "alertCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "avatarCss"
-msgstr ""
+msgstr "avatarCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "badgeCss"
-msgstr ""
+msgstr "badgeCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "billboardCss"
-msgstr ""
+msgstr "billboardCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "breadcrumbCss"
-msgstr ""
+msgstr "breadcrumbCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "breadcrumbLinkCss"
-msgstr ""
+msgstr "breadcrumbLinkCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "buttonCss"
-msgstr ""
+msgstr "buttonCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "bylineCss"
-msgstr ""
+msgstr "bylineCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "calendarCss"
-msgstr ""
+msgstr "calendarCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "calendarDayCss"
-msgstr ""
+msgstr "calendarDayCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "checkboxCss"
-msgstr ""
+msgstr "checkboxCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "closeButtonCss"
-msgstr ""
+msgstr "closeButtonCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "contextViewCss"
-msgstr ""
+msgstr "contextViewCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "drawerLayoutCss"
-msgstr ""
+msgstr "drawerLayoutCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "drawerLayoutContentCss"
-msgstr ""
+msgstr "drawerLayoutContentCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "drawerLayoutTrayCss"
-msgstr ""
+msgstr "drawerLayoutTrayCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "fileDropCss"
-msgstr ""
+msgstr "fileDropCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "formFieldGroupCss"
-msgstr ""
+msgstr "formFieldGroupCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "formFieldMessagesCss"
-msgstr ""
+msgstr "formFieldMessagesCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "formFieldCss"
-msgstr ""
+msgstr "formFieldCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "headingCss"
-msgstr ""
+msgstr "headingCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "imgCss"
-msgstr ""
+msgstr "imgCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "inPlaceEditCss"
-msgstr ""
+msgstr "inPlaceEditCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "inputGroupCss"
-msgstr ""
+msgstr "inputGroupCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "linkCss"
-msgstr ""
+msgstr "linkCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "listCss"
-msgstr ""
+msgstr "listCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "listItemCss"
-msgstr ""
+msgstr "listItemCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "maskCss"
-msgstr ""
+msgstr "maskCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "menuCss"
-msgstr ""
+msgstr "menuCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "menuGroupCss"
-msgstr ""
+msgstr "menuGroupCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "menuItemCss"
-msgstr ""
+msgstr "menuItemCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "menuSeparatorCss"
-msgstr ""
+msgstr "menuSeparatorCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "metricCss"
-msgstr ""
+msgstr "metricCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "modalCss"
-msgstr ""
+msgstr "modalCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "modalBodyCss"
-msgstr ""
+msgstr "modalBodyCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "modalFooterCss"
-msgstr ""
+msgstr "modalFooterCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "modalHeaderCss"
-msgstr ""
+msgstr "modalHeaderCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "numberInputCss"
-msgstr ""
+msgstr "numberInputCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "paginationCss"
-msgstr ""
+msgstr "paginationCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "paginationPageCss"
-msgstr ""
+msgstr "paginationPageCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "pillCss"
-msgstr ""
+msgstr "pillCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "popoverCss"
-msgstr ""
+msgstr "popoverCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "progressCircleCss"
-msgstr ""
+msgstr "progressCircleCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "progressCss"
-msgstr ""
+msgstr "progressCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "radioInputGroupCss"
-msgstr ""
+msgstr "radioInputGroupCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "radioCss"
-msgstr ""
+msgstr "radioCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "rangeInputCss"
-msgstr ""
+msgstr "rangeInputCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ratingCss"
-msgstr ""
+msgstr "ratingCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "sideNavBarCss"
-msgstr ""
+msgstr "sideNavBarCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "sideNavBarItemCss"
-msgstr ""
+msgstr "sideNavBarItemCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "simpleSelectCss"
-msgstr ""
+msgstr "simpleSelectCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "spinnerCss"
-msgstr ""
+msgstr "spinnerCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tableCss"
-msgstr ""
+msgstr "tableCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tableBodyCss"
-msgstr ""
+msgstr "tableBodyCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tableCellCss"
-msgstr ""
+msgstr "tableCellCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tableColHeaderCss"
-msgstr ""
+msgstr "tableColHeaderCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tableHeadCss"
-msgstr ""
+msgstr "tableHeadCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tableRowHeaderCss"
-msgstr ""
+msgstr "tableRowHeaderCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tableRowCss"
-msgstr ""
+msgstr "tableRowCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tabsCss"
-msgstr ""
+msgstr "tabsCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tabsPanelCss"
-msgstr ""
+msgstr "tabsPanelCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tabsTabCss"
-msgstr ""
+msgstr "tabsTabCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tagCss"
-msgstr ""
+msgstr "tagCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "textAreaCss"
-msgstr ""
+msgstr "textAreaCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "textInputCss"
-msgstr ""
+msgstr "textInputCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "textCss"
-msgstr ""
+msgstr "textCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toggleDetailsCss"
-msgstr ""
+msgstr "toggleDetailsCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toggleGroupCss"
-msgstr ""
+msgstr "toggleGroupCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tooltipCss"
-msgstr ""
+msgstr "tooltipCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "trayCss"
-msgstr ""
+msgstr "trayCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "treeBrowserCss"
-msgstr ""
+msgstr "treeBrowserCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "viewCss"
-msgstr ""
+msgstr "viewCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "cursorUtilitiesCss"
-msgstr ""
+msgstr "cursorUtilitiesCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "gapCss"
-msgstr ""
+msgstr "gapCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "iconCss"
-msgstr ""
+msgstr "iconCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "layoutUtilitiesCss"
-msgstr ""
+msgstr "layoutUtilitiesCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "maskUtilityCss"
-msgstr ""
+msgstr "maskUtilityCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "overflowUtilitiesCss"
-msgstr ""
+msgstr "overflowUtilitiesCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "positionUtilitiesCss"
-msgstr ""
+msgstr "positionUtilitiesCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "responsiveUtilitiesCss"
-msgstr ""
+msgstr "responsiveUtilitiesCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "screenReaderContentCss"
-msgstr ""
+msgstr "screenReaderContentCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "spacingUtilitiesCss"
-msgstr ""
+msgstr "spacingUtilitiesCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "stackingUtilityCss"
-msgstr ""
+msgstr "stackingUtilityCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "transitionCss"
-msgstr ""
+msgstr "transitionCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "truncateCss"
-msgstr ""
+msgstr "truncateCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "visualDebugCss"
-msgstr ""
+msgstr "visualDebugCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "selectCss"
-msgstr ""
+msgstr "selectCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "elevationCss"
-msgstr ""
+msgstr "elevationCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "focusOutlineCss"
-msgstr ""
+msgstr "focusOutlineCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "baseCss"
-msgstr ""
+msgstr "baseCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "componentsCss"
-msgstr ""
+msgstr "componentsCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "proseCss"
-msgstr ""
+msgstr "proseCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "iconGlyphsCss"
-msgstr ""
+msgstr "iconGlyphsCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "css"
-msgstr ""
+msgstr "css"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "CssSection"
-msgstr ""
+msgstr "CssSection"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ToCssOptions"
-msgstr ""
+msgstr "ToCssOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "leanCss"
-msgstr ""
+msgstr "leanCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "buildCssFile"
-msgstr ""
+msgstr "buildCssFile"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toCss"
-msgstr ""
+msgstr "toCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "dtcg"
-msgstr ""
+msgstr "dtcg"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "DtcgNode"
-msgstr ""
+msgstr "DtcgNode"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "themes"
-msgstr ""
+msgstr "themes"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "byTheme"
-msgstr ""
+msgstr "byTheme"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toDtcg"
-msgstr ""
+msgstr "toDtcg"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "icon-font"
-msgstr ""
+msgstr "icon-font"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "IconFontResult"
-msgstr ""
+msgstr "IconFontResult"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "BuildIconFontOptions"
-msgstr ""
+msgstr "BuildIconFontOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "GlyphPath"
-msgstr ""
+msgstr "GlyphPath"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "buildIconFont"
-msgstr ""
+msgstr "buildIconFont"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "svgToGlyphPath"
-msgstr ""
+msgstr "svgToGlyphPath"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "icons"
-msgstr ""
+msgstr "icons"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "PantokenIcon"
-msgstr ""
+msgstr "PantokenIcon"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "IconResolverChainOptions"
-msgstr ""
+msgstr "IconResolverChainOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "iconsByName"
-msgstr ""
+msgstr "iconsByName"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "resolve"
-msgstr ""
+msgstr "resolve"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "getIcon"
-msgstr ""
+msgstr "getIcon"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "buildIconResolverChain"
-msgstr ""
+msgstr "buildIconResolverChain"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "interactions"
-msgstr ""
+msgstr "interactions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ProgressCircleOptions"
-msgstr ""
+msgstr "ProgressCircleOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ProgressCircleHandle"
-msgstr ""
+msgstr "ProgressCircleHandle"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "RemoveOptions"
-msgstr ""
+msgstr "RemoveOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "RemoveHandle"
-msgstr ""
+msgstr "RemoveHandle"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "TooltipOptions"
-msgstr ""
+msgstr "TooltipOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "TooltipHandle"
-msgstr ""
+msgstr "TooltipHandle"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "TruncateAutoOptions"
-msgstr ""
+msgstr "TruncateAutoOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "TruncateAutoHandle"
-msgstr ""
+msgstr "TruncateAutoHandle"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "CommandHandler"
-msgstr ""
+msgstr "CommandHandler"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "OnCommand"
-msgstr ""
+msgstr "OnCommand"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "SPACING_ATTRS"
-msgstr ""
+msgstr "SPACING_ATTRS"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "initCloseButton"
-msgstr ""
+msgstr "initCloseButton"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "initInPlaceEdit"
-msgstr ""
+msgstr "initInPlaceEdit"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "initModal"
-msgstr ""
+msgstr "initModal"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "initProgressCircle"
-msgstr ""
+msgstr "initProgressCircle"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "initRemove"
-msgstr ""
+msgstr "initRemove"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "initResponsiveOverlay"
-msgstr ""
+msgstr "initResponsiveOverlay"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "initTooltip"
-msgstr ""
+msgstr "initTooltip"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "syncTruncateAutoLines"
-msgstr ""
+msgstr "syncTruncateAutoLines"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "initTruncateAuto"
-msgstr ""
+msgstr "initTruncateAuto"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "makeOnCommand"
-msgstr ""
+msgstr "makeOnCommand"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "syncInvoker"
-msgstr ""
+msgstr "syncInvoker"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "resolveSpace"
-msgstr ""
+msgstr "resolveSpace"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "spacingValue"
-msgstr ""
+msgstr "spacingValue"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "applySpacing"
-msgstr ""
+msgstr "applySpacing"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "less"
-msgstr ""
+msgstr "less"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ToLessOptions"
-msgstr ""
+msgstr "ToLessOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toLess"
-msgstr ""
+msgstr "toLess"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "scss"
-msgstr ""
+msgstr "scss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ToScssOptions"
-msgstr ""
+msgstr "ToScssOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toScss"
-msgstr ""
+msgstr "toScss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "stylus"
-msgstr ""
+msgstr "stylus"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ToStylusOptions"
-msgstr ""
+msgstr "ToStylusOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toStylus"
-msgstr ""
+msgstr "toStylus"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tokens"
-msgstr ""
+msgstr "tokens"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "rebrandTokens"
-msgstr ""
+msgstr "rebrandTokens"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "canvasTokens"
-msgstr ""
+msgstr "canvasTokens"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "canvasHighContrastTokens"
-msgstr ""
+msgstr "canvasHighContrastTokens"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "design"
-msgstr ""
+msgstr "design"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "figma"
-msgstr ""
+msgstr "figma"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "FigmaColor"
-msgstr ""
+msgstr "FigmaColor"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "FigmaVariable"
-msgstr ""
+msgstr "FigmaVariable"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "FigmaVariablesPayload"
-msgstr ""
+msgstr "FigmaVariablesPayload"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ToFigmaOptions"
-msgstr ""
+msgstr "ToFigmaOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toFigmaColor"
-msgstr ""
+msgstr "toFigmaColor"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toFigmaVariables"
-msgstr ""
+msgstr "toFigmaVariables"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "swatches"
-msgstr ""
+msgstr "swatches"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ToGplOptions"
-msgstr ""
+msgstr "ToGplOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "Swatch"
-msgstr ""
+msgstr "Swatch"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "Rgb"
-msgstr ""
+msgstr "Rgb"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "SketchPalette"
-msgstr ""
+msgstr "SketchPalette"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ToSvgOptions"
-msgstr ""
+msgstr "ToSvgOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toAse"
-msgstr ""
+msgstr "toAse"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toGpl"
-msgstr ""
+msgstr "toGpl"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "hexToRgb"
-msgstr ""
+msgstr "hexToRgb"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toSwatches"
-msgstr ""
+msgstr "toSwatches"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toSketchPalette"
-msgstr ""
+msgstr "toSketchPalette"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toSvg"
-msgstr ""
+msgstr "toSvg"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "bundlers"
-msgstr ""
+msgstr "bundlers"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "next"
-msgstr ""
+msgstr "next"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "NextConfigLike"
-msgstr ""
+msgstr "NextConfigLike"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "WithPantokenOptions"
-msgstr ""
+msgstr "WithPantokenOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "INSTUI_TRANSPILE_PACKAGES"
-msgstr ""
+msgstr "INSTUI_TRANSPILE_PACKAGES"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "withPantoken"
-msgstr ""
+msgstr "withPantoken"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "panda"
-msgstr ""
+msgstr "panda"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "PandaToken"
-msgstr ""
+msgstr "PandaToken"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "PandaSemanticToken"
-msgstr ""
+msgstr "PandaSemanticToken"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "PandaPreset"
-msgstr ""
+msgstr "PandaPreset"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "PandaCategory"
-msgstr ""
+msgstr "PandaCategory"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "pantokenPreset"
-msgstr ""
+msgstr "pantokenPreset"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toPandaPreset"
-msgstr ""
+msgstr "toPandaPreset"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "postcss"
-msgstr ""
+msgstr "postcss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "PantokenPostcssOptions"
-msgstr ""
+msgstr "PantokenPostcssOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "pantoken"
-msgstr ""
+msgstr "pantoken"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tailwind"
-msgstr ""
+msgstr "tailwind"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "TailwindPreset"
-msgstr ""
+msgstr "TailwindPreset"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "PantokenPresetOptions"
-msgstr ""
+msgstr "PantokenPresetOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "vite"
-msgstr ""
+msgstr "vite"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "PantokenViteOptions"
-msgstr ""
+msgstr "PantokenViteOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "webpack"
-msgstr ""
+msgstr "webpack"
 
 #: glossary.ts
 msgctxt "docs.api:text"
@@ -28170,447 +28177,447 @@ msgstr "Rangaí"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "PantokenWebpackPlugin"
-msgstr ""
+msgstr "PantokenWebpackPlugin"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "PantokenWebpackOptions"
-msgstr ""
+msgstr "PantokenWebpackOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "plugins"
-msgstr ""
+msgstr "plugins"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "colors"
-msgstr ""
+msgstr "colors"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "CssColor"
-msgstr ""
+msgstr "CssColor"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "alpha"
-msgstr ""
+msgstr "alpha"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "darken"
-msgstr ""
+msgstr "darken"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "lighten"
-msgstr ""
+msgstr "lighten"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "overlayColors"
-msgstr ""
+msgstr "overlayColors"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "onColor"
-msgstr ""
+msgstr "onColor"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "custom-components"
-msgstr ""
+msgstr "custom-components"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "CustomComponentsOptions"
-msgstr ""
+msgstr "CustomComponentsOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "bannerRules"
-msgstr ""
+msgstr "bannerRules"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "cardRules"
-msgstr ""
+msgstr "cardRules"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "customComponents"
-msgstr ""
+msgstr "customComponents"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "custom-icons"
-msgstr ""
+msgstr "custom-icons"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "CustomIcon"
-msgstr ""
+msgstr "CustomIcon"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "CustomIconsOptions"
-msgstr ""
+msgstr "CustomIconsOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "customIcons"
-msgstr ""
+msgstr "customIcons"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "deprecations"
-msgstr ""
+msgstr "deprecations"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "UpstreamVersions"
-msgstr ""
+msgstr "UpstreamVersions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ParsedRef"
-msgstr ""
+msgstr "ParsedRef"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "shimValue"
-msgstr ""
+msgstr "shimValue"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "shimEntries"
-msgstr ""
+msgstr "shimEntries"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ledgerCovers"
-msgstr ""
+msgstr "ledgerCovers"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "parseUpstreamRef"
-msgstr ""
+msgstr "parseUpstreamRef"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "compareVersions"
-msgstr ""
+msgstr "compareVersions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "dueForRemoval"
-msgstr ""
+msgstr "dueForRemoval"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "describeLifecycle"
-msgstr ""
+msgstr "describeLifecycle"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "deprecationShims"
-msgstr ""
+msgstr "deprecationShims"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "layouts"
-msgstr ""
+msgstr "layouts"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "LayoutsOptions"
-msgstr ""
+msgstr "LayoutsOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "wrapperRules"
-msgstr ""
+msgstr "wrapperRules"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "LogosOptions"
-msgstr ""
+msgstr "LogosOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "LogoLayout"
-msgstr ""
+msgstr "LogoLayout"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "LogoColorMode"
-msgstr ""
+msgstr "LogoColorMode"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "logosCss"
-msgstr ""
+msgstr "logosCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "getLogoSvg"
-msgstr ""
+msgstr "getLogoSvg"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "getLogoDataUri"
-msgstr ""
+msgstr "getLogoDataUri"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "logosPlugin"
-msgstr ""
+msgstr "logosPlugin"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "primitives"
-msgstr ""
+msgstr "primitives"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "PrimitiveTokenNames"
-msgstr ""
+msgstr "PrimitiveTokenNames"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "PrimitivesOptions"
-msgstr ""
+msgstr "PrimitivesOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "primitivesCss"
-msgstr ""
+msgstr "primitivesCss"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "simple-icons"
-msgstr ""
+msgstr "simple-icons"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "SimpleIcon"
-msgstr ""
+msgstr "SimpleIcon"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "SimpleIconsOptions"
-msgstr ""
+msgstr "SimpleIconsOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "SimpleIconsRegistry"
-msgstr ""
+msgstr "SimpleIconsRegistry"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toExportName"
-msgstr ""
+msgstr "toExportName"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "defaultRegistry"
-msgstr ""
+msgstr "defaultRegistry"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "simpleIcons"
-msgstr ""
+msgstr "simpleIcons"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "stacking"
-msgstr ""
+msgstr "stacking"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "StackingOptions"
-msgstr ""
+msgstr "StackingOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "STACKING_LEVELS"
-msgstr ""
+msgstr "STACKING_LEVELS"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "transition"
-msgstr ""
+msgstr "transition"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "TransitionOptions"
-msgstr ""
+msgstr "TransitionOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "visual-debug"
-msgstr ""
+msgstr "visual-debug"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "VisualDebugOptions"
-msgstr ""
+msgstr "VisualDebugOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "VISUAL_DEBUG_RULES"
-msgstr ""
+msgstr "VISUAL_DEBUG_RULES"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "visualDebugRules"
-msgstr ""
+msgstr "visualDebugRules"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "visualDebug"
-msgstr ""
+msgstr "visualDebug"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "flatten-property"
-msgstr ""
+msgstr "flatten-property"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "FlattenPropertyOptions"
-msgstr ""
+msgstr "FlattenPropertyOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "flattenProperty"
-msgstr ""
+msgstr "flattenProperty"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "mangle-custom-props"
-msgstr ""
+msgstr "mangle-custom-props"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "MangleCustomPropsOptions"
-msgstr ""
+msgstr "MangleCustomPropsOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "MangleMethod"
-msgstr ""
+msgstr "MangleMethod"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "mangleCustomProps"
-msgstr ""
+msgstr "mangleCustomProps"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "props-minify"
-msgstr ""
+msgstr "props-minify"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "PropsMinifyOptions"
-msgstr ""
+msgstr "PropsMinifyOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "pruneCustomProps"
-msgstr ""
+msgstr "pruneCustomProps"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "applyMinify"
-msgstr ""
+msgstr "applyMinify"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "prune-custom-props"
-msgstr ""
+msgstr "prune-custom-props"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "theme-custom-media"
-msgstr ""
+msgstr "theme-custom-media"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "ThemeCustomMediaOptions"
-msgstr ""
+msgstr "ThemeCustomMediaOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "themeCustomMedia"
-msgstr ""
+msgstr "themeCustomMedia"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "typedoc"
-msgstr ""
+msgstr "typedoc"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "DEMO_TAG"
-msgstr ""
+msgstr "DEMO_TAG"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "DEMO_FENCE"
-msgstr ""
+msgstr "DEMO_FENCE"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toDemoFence"
-msgstr ""
+msgstr "toDemoFence"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "rewriteComment"
-msgstr ""
+msgstr "rewriteComment"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "load"
-msgstr ""
+msgstr "load"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "workspace-orchestrator"
-msgstr ""
+msgstr "workspace-orchestrator"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "UpstreamNode"
-msgstr ""
+msgstr "UpstreamNode"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "FileServerEntry"
-msgstr ""
+msgstr "FileServerEntry"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "OrchestratorOptions"
-msgstr ""
+msgstr "OrchestratorOptions"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "matchesFilters"
-msgstr ""
+msgstr "matchesFilters"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "workspaceOrchestrator"
-msgstr ""
+msgstr "workspaceOrchestrator"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "CSS"
-msgstr ""
+msgstr "CSS"
 
 #: glossary.ts
 msgctxt "docs.api:text"
@@ -28625,272 +28632,272 @@ msgstr "Comhpháirteanna"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "agent-shell"
-msgstr ""
+msgstr "agent-shell"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "banner"
-msgstr ""
+msgstr "banner"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "billboard"
-msgstr ""
+msgstr "billboard"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "breadcrumb"
-msgstr ""
+msgstr "breadcrumb"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "link"
-msgstr ""
+msgstr "link"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "byline"
-msgstr ""
+msgstr "byline"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "day"
-msgstr ""
+msgstr "day"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "card"
-msgstr ""
+msgstr "card"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "checkbox"
-msgstr ""
+msgstr "checkbox"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "close-button"
-msgstr ""
+msgstr "close-button"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "context-view"
-msgstr ""
+msgstr "context-view"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "drawer-layout"
-msgstr ""
+msgstr "drawer-layout"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "content"
-msgstr ""
+msgstr "content"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "file-drop"
-msgstr ""
+msgstr "file-drop"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "form-field"
-msgstr ""
+msgstr "form-field"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "form-field-group"
-msgstr ""
+msgstr "form-field-group"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "form-field-messages"
-msgstr ""
+msgstr "form-field-messages"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "heading"
-msgstr ""
+msgstr "heading"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "in-place-edit"
-msgstr ""
+msgstr "in-place-edit"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "input-group"
-msgstr ""
+msgstr "input-group"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "list"
-msgstr ""
+msgstr "list"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "item"
-msgstr ""
+msgstr "item"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "mask"
-msgstr ""
+msgstr "mask"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "menu"
-msgstr ""
+msgstr "menu"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "group"
-msgstr ""
+msgstr "group"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "separator"
-msgstr ""
+msgstr "separator"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "body"
-msgstr ""
+msgstr "body"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "footer"
-msgstr ""
+msgstr "footer"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "header"
-msgstr ""
+msgstr "header"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "number-input"
-msgstr ""
+msgstr "number-input"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "pagination"
-msgstr ""
+msgstr "pagination"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "page"
-msgstr ""
+msgstr "page"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "progress-circle"
-msgstr ""
+msgstr "progress-circle"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "radio"
-msgstr ""
+msgstr "radio"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "radio-input-group"
-msgstr ""
+msgstr "radio-input-group"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "range-input"
-msgstr ""
+msgstr "range-input"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "side-nav-bar"
-msgstr ""
+msgstr "side-nav-bar"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "simple-select"
-msgstr ""
+msgstr "simple-select"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "table"
-msgstr ""
+msgstr "table"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "cell"
-msgstr ""
+msgstr "cell"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "col-header"
-msgstr ""
+msgstr "col-header"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "head"
-msgstr ""
+msgstr "head"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "row"
-msgstr ""
+msgstr "row"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "row-header"
-msgstr ""
+msgstr "row-header"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tabs"
-msgstr ""
+msgstr "tabs"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "panel"
-msgstr ""
+msgstr "panel"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tab"
-msgstr ""
+msgstr "tab"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "text"
-msgstr ""
+msgstr "text"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "text-area"
-msgstr ""
+msgstr "text-area"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "text-input"
-msgstr ""
+msgstr "text-input"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toggle-details"
-msgstr ""
+msgstr "toggle-details"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "toggle-group"
-msgstr ""
+msgstr "toggle-group"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "tree-browser"
-msgstr ""
+msgstr "tree-browser"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "view"
-msgstr ""
+msgstr "view"
 
 #: glossary.ts
 msgctxt "docs.api:text"
@@ -28900,52 +28907,52 @@ msgstr "Uirlisí"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "color"
-msgstr ""
+msgstr "color"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "cursor"
-msgstr ""
+msgstr "cursor"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "gap"
-msgstr ""
+msgstr "gap"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "layout"
-msgstr ""
+msgstr "layout"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "maskglobal"
-msgstr ""
+msgstr "maskglobal"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "overflow"
-msgstr ""
+msgstr "overflow"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "position"
-msgstr ""
+msgstr "position"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "responsive"
-msgstr ""
+msgstr "responsive"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "screen-reader-content"
-msgstr ""
+msgstr "screen-reader-content"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "spacing"
-msgstr ""
+msgstr "spacing"
 
 #: glossary.ts
 msgctxt "docs.api:text"
@@ -28955,52 +28962,52 @@ msgstr "Rialacha"
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "base"
-msgstr ""
+msgstr "base"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "prose"
-msgstr ""
+msgstr "prose"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "Plugins"
-msgstr ""
+msgstr "Plugins"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "callout"
-msgstr ""
+msgstr "callout"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "hero"
-msgstr ""
+msgstr "hero"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "page-layout"
-msgstr ""
+msgstr "page-layout"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "rubric-note"
-msgstr ""
+msgstr "rubric-note"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "testimonial"
-msgstr ""
+msgstr "testimonial"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "two-column"
-msgstr ""
+msgstr "two-column"
 
 #: typedoc-sidebar.json
 msgctxt "docs.api:text"
 msgid "wrapper"
-msgstr ""
+msgstr "wrapper"
 
 #: glossary.ts
 msgctxt "docs.api:text"
@@ -29336,3 +29343,7 @@ msgstr "Béite"
 msgctxt "docs.api:text"
 msgid "Experimental"
 msgstr "Turgnamhach"
+
+msgctxt "docs.api:text"
+msgid "LogoLang"
+msgstr "LogoLang"
