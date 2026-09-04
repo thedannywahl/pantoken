@@ -38,9 +38,21 @@ export interface TranslationUnit {
 /** The cache directory (committed — it's the reusable translation memory, not a build artifact). */
 const cacheDir = join(import.meta.dirname, "..", "i18n-cache");
 
+/**
+ * Marks a stored translation that is deliberately byte-identical to its English source — a cognate
+ * the translator really did return ("Interfaces" in French). Without it the passthrough guard would
+ * reject the cached value on every later run and pay to retranslate it forever.
+ */
+const VERBATIM_FLAG = "pantoken-verbatim";
+
 /** The stable content key for a unit: `sha256(kind \0 source)`, hex. */
 export function keyFor(kind: string, source: string): string {
   return sha256(`${kind}\0${source}`);
+}
+
+/** The JSON-backend companion key recording that a unit's stored value is a deliberate passthrough. */
+function verbatimKey(kind: string, source: string): string {
+  return `${VERBATIM_FLAG}\0${keyFor(kind, source)}`;
 }
 
 /** Docs facade: `(kind, source)` API over JSON memory, or PO memory for the API surface. */
@@ -96,26 +108,47 @@ export class TranslationMemory {
     return this._mem!.get(keyFor(kind, source));
   }
 
-  set(kind: string, source: string, translation: string): void {
+  set(kind: string, source: string, translation: string, options?: { verbatim?: boolean }): void {
     if (this._poByKey && this._poEntries) {
       const key = `docs.api:${kind}\0${source}`;
       const existing = this._poByKey.get(key);
-      if (existing) existing.msgstr = translation;
-      else {
+      if (existing) {
+        existing.msgstr = translation;
+        if (options?.verbatim === true && !existing.flags.includes(VERBATIM_FLAG)) {
+          existing.flags = [...existing.flags, VERBATIM_FLAG];
+        }
+      } else {
         const entry: PoEntry = {
           msgid: source,
           msgstr: translation,
           msgctxt: `docs.api:${kind}`,
           references: [],
-          flags: [],
+          flags: options?.verbatim === true ? [VERBATIM_FLAG] : [],
           fuzzy: false,
           obsolete: false,
         };
         this._poEntries.push(entry);
         this._poByKey.set(key, entry);
       }
-    } else this._mem!.set(keyFor(kind, source), translation);
+    } else {
+      this._mem!.set(keyFor(kind, source), translation);
+      if (options?.verbatim === true) this._mem!.set(verbatimKey(kind, source), "1");
+    }
     this.misses++;
+  }
+
+  /** True when the stored translation for `source` was deliberately accepted as identical to English. */
+  isVerbatim(kind: string, source: string): boolean {
+    if (this._poByKey) {
+      return (
+        this._poByKey.get(`docs.api:${kind}\0${source}`)?.flags.includes(VERBATIM_FLAG) === true
+      );
+    }
+    const key = verbatimKey(kind, source);
+    if (!this._mem!.has(key)) return false;
+    // Re-set rather than get: marks the marker used (so pruning keeps it) without counting a hit.
+    this._mem!.set(key, "1");
+    return true;
   }
 
   save(): void {
@@ -204,7 +237,8 @@ function diffAgainstCache(
     }
     if (!force) {
       const cached = memory.get(unit.kind, unit.source);
-      const isVerbatim = allowsVerbatim(unit.source, options);
+      const isVerbatim =
+        allowsVerbatim(unit.source, options) || memory.isVerbatim(unit.kind, unit.source);
       if (cached !== undefined && (isVerbatim || !isPassthroughTranslation(unit.source, cached))) {
         result.set(key, cached);
         continue;
@@ -277,19 +311,36 @@ async function translateBatchableMisses(
   const byId = new Map(items.map((item, index) => [item.id, batchable[index]]));
   const consumed = new Set<string>();
   const persist = (partial: Record<string, string>): void => {
+    // The passthrough guard exists to catch an adapter that silently echoes its input. A chunk in
+    // which some units did change proves the adapter worked, so an identical unit in it is a real
+    // cognate ("Interfaces" in French) and is cached like any translation. The glossary adapter is
+    // excluded: it changes known terms and passes the rest through by design, so its passthroughs
+    // must stay misses for a later AI run.
+    const adapterProducedChanges =
+      adapter.translatesProse !== false &&
+      Object.entries(partial).some(([id, value]) => {
+        const unit = byId.get(id);
+        return unit !== undefined && !isPassthroughTranslation(unit.source, value);
+      });
     let added = 0;
     for (const [id, value] of Object.entries(partial)) {
       const unit = byId.get(id);
       if (unit === undefined || consumed.has(id)) continue;
       consumed.add(id);
-      if (!allowsVerbatim(unit.source, options) && isPassthroughTranslation(unit.source, value)) {
+      if (
+        !adapterProducedChanges &&
+        !allowsVerbatim(unit.source, options) &&
+        isPassthroughTranslation(unit.source, value)
+      ) {
         console.warn(
           `  !${translationContext(unit, options)} ${unit.kind} unit looks untranslated (identical to source), not cached: ${JSON.stringify(unit.source.slice(0, 40))}`,
         );
         result.set(id, unit.source);
         continue; // not cached — stays a miss, retried next run
       }
-      memory.set(unit.kind, unit.source, value);
+      memory.set(unit.kind, unit.source, value, {
+        verbatim: isPassthroughTranslation(unit.source, value),
+      });
       result.set(id, value);
       added += 1;
     }

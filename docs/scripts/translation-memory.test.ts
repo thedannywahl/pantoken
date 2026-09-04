@@ -402,6 +402,50 @@ test("translateUnits identifies the locale and source file for an untranslated b
   ).toBe(true);
 });
 
+test("translateUnits caches a cognate when other units in the same chunk were translated", async () => {
+  const memory = TranslationMemory.load("hu", "test");
+  const translateBatch = vi.fn((items: readonly { id: string; text: string }[]) =>
+    Promise.resolve(
+      Object.fromEntries(
+        items.map((item) => [item.id, item.text === "Interfaces" ? item.text : `t:${item.text}`]),
+      ),
+    ),
+  );
+
+  const result = await translateUnits(adapter({ translateBatch }), memory, [
+    { kind: "text", source: "Interfaces" },
+    { kind: "text", source: "Home" },
+  ]);
+
+  expect(result.get(keyFor("text", "Interfaces"))).toBe("Interfaces");
+  expect(memory.misses).toBe(2);
+  expect(
+    warnSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("looks untranslated")),
+  ).toBe(false);
+});
+
+test("translateUnits serves a cached verbatim entry instead of retranslating it", async () => {
+  const key = keyFor("text", "Interfaces");
+  existsSync.mockReturnValue(true);
+  readFileSync.mockReturnValue(
+    JSON.stringify({
+      version: 1,
+      entries: { [key]: "Interfaces", [`pantoken-verbatim\0${key}`]: "1" },
+    }),
+  );
+  const memory = TranslationMemory.load("fr", "test");
+  const translateBatch = vi.fn();
+
+  const result = await translateUnits(adapter({ translateBatch }), memory, [
+    { kind: "text", source: "Interfaces" },
+  ]);
+
+  expect(translateBatch).not.toHaveBeenCalled();
+  expect(result.get(key)).toBe("Interfaces");
+  expect(
+    warnSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("looks untranslated")),
+  ).toBe(false);
+});
 test("translateUnits retranslates a cached hit that matches its source instead of serving it", async () => {
   const key = keyFor("text", "Home");
   existsSync.mockReturnValue(true);

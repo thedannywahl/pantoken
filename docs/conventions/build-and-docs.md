@@ -81,6 +81,11 @@ set a custom `i18nRouting`).
   structural headings/labels. Brand-new prose that isn't cached yet passes through as English — the
   glossary **never** caches its own prose passthrough (that would permanently mask the block from a
   later claude run), so it stays a miss until claude authors it. Never wire `:claude` into CI.
+- **Cognates are cached, echoes aren't.** Some translations are legitimately identical to English
+  ("Interfaces" in French, "Classes" in Catalan). An identical value from a batch in which other
+  units _did_ change is cached and stamped `pantoken-verbatim` in the PO catalog, so it isn't
+  re-flagged and re-paid for on every run. A batch that comes back wholly unchanged still fails the
+  guard — that's the shape of a silently broken adapter.
 - **Running the cold pass.** Each `claude -p` call cold-starts a full agent, and the dominant cost is
   the per-call bootstrap — loading MCP servers, plugins, and project settings — not the translation
   itself (it dwarfs even a small model's inference). So the `:claude` tasks pass
