@@ -287,6 +287,15 @@ test("translateMarkdown preserves code fences and package names through the mode
   expect(out).toContain("const x = 1;");
 });
 
+test("translateMarkdown strips an echoed markdown envelope", async () => {
+  useSpawn(() => ({
+    stdout: "--- BEGIN MARKDOWN ---\n# เริ่มต้น\n\nเนื้อหา\n--- END MARKDOWN ---",
+  }));
+  const adapter = new AiTranslationAdapter();
+  const out = await adapter.translateMarkdown("# Getting started\n\nContent", "a.md");
+  expect(out).toBe("# เริ่มต้น\n\nเนื้อหา");
+});
+
 test("translateMarkdown masks bare escaped angle brackets a hostile model would otherwise mangle", async () => {
   // Reproduces the real corruption this guards against: a TypeDoc signature line like
   // `> \`const\` **X**: \`Readonly\`\<\`Record\`\<\`string\`, \`string\`\>\>` splits into several

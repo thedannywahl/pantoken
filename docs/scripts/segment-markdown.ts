@@ -7,7 +7,8 @@
  * carries a content key — the scaffolding around it can change without busting the cache.
  *
  * Each segment is one of:
- * - `preserve` — emitted verbatim (code fences, signatures, breadcrumbs, type/link-only lines, HTML).
+ * - `preserve` — emitted verbatim (non-prompt code fences, signatures, breadcrumbs, type/link-only lines, HTML).
+ * - `prompt` — a prompt fence whose body is translated while its fence markers stay intact.
  * - `glossary` — deterministic term substitution (section headings, stability-badge pills, table
  *   column labels). Cheap, keyless, never cached.
  * - `prose`    — real translation (descriptions, remarks, `@example` captions, table Description cells).
@@ -33,6 +34,7 @@ export const JS_CALLOUT_MARKER = "<!-- js-requirement -->";
 /** One block of split markdown, tagged by how it should be emitted or translated. */
 export type Segment =
   | { kind: "preserve"; text: string }
+  | { kind: "prompt"; opening: string; body: string; closing: string }
   | { kind: "glossary"; text: string }
   | { kind: "prose"; text: string }
   | {
@@ -77,6 +79,15 @@ const hasProseWords = (input: string): boolean => stripNonProse(input).length > 
 const isBreadcrumb = (line: string): boolean =>
   /^\[[^\]]+\]\([^)]+\)/.test(line) && line.includes(" / ");
 
+/**
+ * A block that is only `-flag` tokens (e.g. the standalone `-nocard` paragraph
+ * `build-css-api.ts` emits before an `@example` fence). Shares the flag grammar with
+ * `tools/demo/src/index.ts`'s flag-token regex — matches `hasProseWords` would otherwise wave
+ * through, since stripping the leading `-` still leaves Latin letters.
+ */
+const isFlagOnly = (text: string): boolean =>
+  /^(?:-[a-z][a-z0-9-]*)(?:\s+-[a-z][a-z0-9-]*)*$/u.test(text);
+
 /** An em-dash-only or blank table cell carries no prose. */
 const isEmptyCell = (cell: string): boolean => cell === "" || cell === "—" || cell === "-";
 
@@ -88,6 +99,7 @@ const cellKind = (cell: string): TranslationKind =>
   cell.includes("pantoken-doc-tag") ? "glossary" : "prose";
 
 const FENCE = /^\s*```/;
+const PROMPT_FENCE = /^\s*```prompt\s*$/u;
 
 /** Split a table row into trimmed cells, honoring `\|`-escaped pipes inside cells. */
 const parseRow = (line: string): string[] => {
@@ -153,6 +165,7 @@ const classifyBlock = (lines: string[]): Segment => {
   // Signatures/blockquotes, breadcrumbs, and lines that are only links/code/type expressions.
   if (first.trimStart().startsWith(">")) return { kind: "preserve", text };
   if (isBreadcrumb(first)) return { kind: "preserve", text };
+  if (isFlagOnly(text)) return { kind: "preserve", text };
   if (!hasProseWords(text)) return { kind: "preserve", text };
 
   return { kind: "prose", text };
@@ -215,7 +228,16 @@ export function segmentMarkdown(md: string): Segment[] {
       flush();
       const start = index;
       index = scanFence(lines, start);
-      segments.push({ kind: "preserve", text: lines.slice(start, index).join("\n") });
+      if (PROMPT_FENCE.test(line) && index > start + 1) {
+        segments.push({
+          kind: "prompt",
+          opening: lines[start],
+          body: lines.slice(start + 1, index - 1).join("\n"),
+          closing: lines[index - 1],
+        });
+      } else {
+        segments.push({ kind: "preserve", text: lines.slice(start, index).join("\n") });
+      }
       continue;
     }
 
@@ -261,6 +283,10 @@ export function collectUnits(segments: readonly Segment[]): TranslatableUnit[] {
       units.push({ text: segment.text, kind: segment.kind });
       continue;
     }
+    if (segment.kind === "prompt") {
+      units.push({ text: segment.body, kind: "prose" });
+      continue;
+    }
     if (segment.kind === "table") {
       units.push(...collectTableUnits(segment));
       continue;
@@ -281,6 +307,8 @@ const renderSegment = (segment: Segment, resolve: Resolve): string => {
   switch (segment.kind) {
     case "preserve":
       return segment.text;
+    case "prompt":
+      return [segment.opening, resolve(segment.body, "prose"), segment.closing].join("\n");
     case "glossary":
     case "prose":
       return resolve(segment.text, segment.kind);

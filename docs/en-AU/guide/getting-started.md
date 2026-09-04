@@ -1,18 +1,18 @@
 # Getting started
 
-pantoken takes Instructure UI's design tokens and icons, resolves them once, and reshapes that one
+Pantoken takes the [Instructure UI](https://instructure.design) design tokens and icons, resolves them once, and reshapes that one
 model into packages for many platforms: plain stylesheets, SCSS and Less, React and Vue and Svelte,
 Tailwind and Panda, native Swift and Kotlin, WordPress and Drupal, Figma, and more.
 
-You install the smallest package that fits your task. Everything is also re‑exported by the unified
+You install the smallest package that fits your task. Everything is also re-exported by the unified
 `pantoken` package, so you can start there and narrow down later.
 
 ## Scaffold a starter project
 
-The quickest way to try pantoken: scaffold a starter project with it already installed and wired in.
+The fastest way to try pantoken: scaffold a starter project with it already installed and wired in.
 
 ```sh
-npx create-pantoken-app react
+npx create-pantoken-app
 ```
 
 Platforms: `components` (plain HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. See
@@ -21,14 +21,11 @@ programmatic use.
 
 Using an AI coding agent? No install needed — point it at the skill directly:
 
-```sh
-claude "Fetch https://create.pantoken.app and follow it to set up pantoken in this project."
+```prompt
+Fetch create.pantoken.app/SKILL.md and follow it to set up pantoken in this project.
 ```
 
-Works the same way for Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, and Amazon Q
-Developer CLI — swap `claude` for `gemini`, `agent`, `codex`, `copilot -p`, or `q chat`. If you'd
-rather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy
-of this skill), run `npx @pantoken/ai init` instead.
+If you'drather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy of this skill), run `npx @pantoken/ai init` instead.
 
 ## The token model
 
@@ -106,8 +103,8 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Both exports load the full IR at module initialisation — there is no per-icon tree‑shaking at this
-level. For lean CSS‑only loading, use the [CDN picker](/guide/cdn-picker) to generate a combine URL
+Both exports load the full IR at module initialisation — there is no per-icon tree-shaking at this
+level. For lean CSS-only loading, use the [CDN picker](/guide/cdn-picker) to generate a combine URL
 for only the icons you need.
 
 ## Generate for a native platform
@@ -115,15 +112,15 @@ for only the icons you need.
 The CLI writes token source into a target repo. No install beyond the runner:
 
 ```sh
-npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
+npx @pantoken/cli generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
 See [the pantoken CLI](/guide/cli) for every target.
 
 ## VS Code authoring hints
 
-`@pantoken/pantoken` now ships VS Code custom‑data files so downstream projects can get class and
-token completion in HTML/CSS without installing a pantoken‑specific extension.
+`@pantoken/pantoken` now ships VS Code custom-data files so downstream projects can get class and
+token completion in HTML/CSS without installing a pantoken-specific extension.
 
 1. Install the unified package:
 
@@ -131,7 +128,7 @@ token completion in HTML/CSS without installing a pantoken‑specific extension.
 npm i @pantoken/pantoken
 ```
 
-1. Point VS Code at the shipped custom‑data JSON from your consumer workspace:
+1. Point VS Code at the shipped custom-data JSON from your consumer workspace:
 
 ```json
 {

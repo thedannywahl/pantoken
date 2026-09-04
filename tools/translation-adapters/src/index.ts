@@ -58,17 +58,31 @@ export function extractJsonObject(raw: string): Record<string, unknown> | null {
  * @param args    - Extra flags plus the terminal `-p` sentinel (e.g. `["--model", "x", "-p"]`).
  * @param prompt  - The prompt text; written to the child's stdin then the pipe is closed.
  * @param context - Optional label for the error message (e.g. `"locale 'hu'"` or `"foo.md"`).
+ * @param options - `timeoutMs` kills the child and rejects if it hasn't closed in time (no timeout
+ *   by default, preserving existing callers' behavior).
  */
 export function spawnPrompt(
   command: string,
   args: string[],
   prompt: string,
   context?: string,
+  options?: { timeoutMs?: number },
 ): Promise<string> {
   return new Promise((resolve, reject) => {
     const child = spawn(command, args, { stdio: ["pipe", "pipe", "pipe"] });
     let out = "";
     let err = "";
+    let settled = false;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    if (options?.timeoutMs !== undefined) {
+      timer = setTimeout(() => {
+        if (settled) return;
+        settled = true;
+        child.kill("SIGKILL");
+        const where = context ? ` for ${context}` : "";
+        reject(new Error(`AI command timed out after ${String(options.timeoutMs)}ms${where}`));
+      }, options.timeoutMs);
+    }
     child.stdout.setEncoding("utf8");
     child.stderr.setEncoding("utf8");
     child.stdout.on("data", (chunk: string) => {
@@ -82,10 +96,18 @@ export function spawnPrompt(
       on(event: "error", listener: (e: Error) => void): void;
       on(event: "close", listener: (code: number | null) => void): void;
     };
-    proc.on("error", reject);
+    proc.on("error", (e) => {
+      clearTimeout(timer);
+      if (settled) return;
+      settled = true;
+      reject(e);
+    });
     proc.on("close", (code) => {
+      clearTimeout(timer);
+      if (settled) return;
+      settled = true;
+      const where = context ? ` for ${context}` : "";
       if (code !== 0) {
-        const where = context ? ` for ${context}` : "";
         reject(new Error(`AI command exited ${String(code)}${where}: ${err.trim()}`));
       } else {
         resolve(out.trimEnd());
@@ -210,38 +232,6 @@ export type VerbatimPolicy =
       error?: readonly string[];
     };
 
-/** One `src/i18n.json` entry: a plain translatable string, or a string plus its verbatim policy. */
-export type I18nSourceEntry = string | { string: string; verbatim?: VerbatimPolicy };
-
-/** A raw `src/i18n.json`-shaped object, before {@link parseI18nSource} flattens it. */
-export type RawI18nSource = Record<string, I18nSourceEntry>;
-
-/** {@link parseI18nSource}'s result: flattened strings plus each key's declared verbatim policy. */
-export interface ParsedI18nSource {
-  strings: Record<string, string>;
-  verbatim: Record<string, VerbatimPolicy>;
-}
-
-/**
- * Flatten a `src/i18n.json` source into its plain strings and any per-key `verbatim` policy, so a
- * package can declare "this key is allowed to stay untranslated (for some/all locales)" inline with
- * its source string. `{ "datePlaceholder": { "string": "yyyy-mm-dd", "verbatim": "allow" } }` and
- * `{ "dateLabel": "Date" }` both parse cleanly — a plain string entry just has no policy.
- */
-export function parseI18nSource(raw: RawI18nSource): ParsedI18nSource {
-  const strings: Record<string, string> = {};
-  const verbatim: Record<string, VerbatimPolicy> = {};
-  for (const [key, entry] of Object.entries(raw)) {
-    if (typeof entry === "string") {
-      strings[key] = entry;
-    } else {
-      strings[key] = entry.string;
-      if (entry.verbatim !== undefined) verbatim[key] = entry.verbatim;
-    }
-  }
-  return { strings, verbatim };
-}
-
 /** True when `locale` matches a verbatim-policy pattern: an exact code, a `"prefix*"` glob, or `"*"`. */
 function localeMatchesPattern(pattern: string, locale: string): boolean {
   if (pattern === "*") return true;
@@ -250,10 +240,11 @@ function localeMatchesPattern(pattern: string, locale: string): boolean {
 
 /**
  * Derive one `"<lang>*"` glob per unique base language present in `locales` (e.g. the ~47 keys of
- * `CANVAS_LOCALES`), for building a {@link VerbatimPolicy}'s `allow`/`warn`/`error` lists without
- * hand-typing every regional variant. `"en-GB"` and `"en-AU"` both collapse to `"en*"`; a locale
- * with no region subtag (e.g. `"hu"`) becomes `"hu*"` too. Returned sorted and deduped — callers
- * pick which families go in which tier, e.g. `{ allow: localeFamilyGlobs(["en-GB", "en-AU"]) }`.
+ * `LOCALES` from `@pantoken/web-components`), for building a {@link VerbatimPolicy}'s `allow`/`warn`/`error`
+ * lists without hand-typing every regional variant. `"en-GB"` and `"en-AU"` both collapse to
+ * `"en*"`; a locale with no region subtag (e.g. `"hu"`) becomes `"hu*"` too. Returned sorted and
+ * deduped — callers pick which families go in which tier, e.g.
+ * `{ allow: localeFamilyGlobs(["en-GB", "en-AU"]) }`.
  */
 export function localeFamilyGlobs(locales: readonly string[]): string[] {
   const families = new Set(locales.map((locale) => locale.split("-")[0]));
@@ -322,7 +313,7 @@ export interface I18nTranslationOptions {
   cachedValue?: (key: string, cache: Record<string, string>) => string | undefined;
   /**
    * Per-key verbatim policies (see {@link VerbatimPolicy}), typically produced by
-   * {@link parseI18nSource} from the same `src/i18n.json` `source` came from. For a locale not
+   * the source message map came from. For a locale not
    * covered by a key's own tiers, resolution falls through to `defaultVerbatim` (if set), then the
    * strict default: identical output is treated as a likely AI failure for every locale.
    */
@@ -562,7 +553,7 @@ ${Object.entries(localeMap)
   .map(([locale, varName]) => `import { ${varName} } from "./${locale}.js";`)
   .join("\n")}
 
-export const LOCALES: Record<string, Record<string, string>> = {
+export const MESSAGES: Record<string, Record<string, string>> = {
 ${Object.entries(localeMap)
   .map(([locale, varName]) => `  ${JSON.stringify(locale)}: ${varName},`)
   .join("\n")}

@@ -4,7 +4,7 @@
 "@pantoken/components": patch
 "@pantoken/drupal": patch
 "@pantoken/hugo": patch
-"@pantoken/i18n": patch
+"@pantoken/i18n-engine": patch
 "@pantoken/jekyll": patch
 "@pantoken/pantoken": patch
 "@pantoken/pendo": patch

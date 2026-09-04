@@ -1,9 +1,0 @@
-{
-  "wroteFile": "✓ 已写入：{{path}}",
-  "helpInitDescription": "将 pantoken 的代理资产写入仓库",
-  "helpInitToolDescription": "代理工具（all|cursor|copilot|windsurf）",
-  "helpInitDirDescription": "目标目录",
-  "helpScaffoldDescription": "搭建入门项目（通过 @pantoken/scaffold）并将代理资产安装到其中",
-  "helpScaffoldToolDescription": "代理工具（all|cursor|copilot|windsurf）",
-  "helpLangDescription": "覆盖自动检测的显示语言（例如：\"hu\"）"
-}

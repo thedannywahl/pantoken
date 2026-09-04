@@ -1,0 +1,320 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:promptPlatform"
+msgid "Select a platform to scaffold:"
+msgstr "Pilih platform untuk discaffold:"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:promptDir"
+msgid "Target directory:"
+msgstr "Direktori sasaran:"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:spinnerStart"
+msgid "Scaffolding..."
+msgstr "Sedang membuat scaffold..."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:spinnerStop"
+msgid "Done scaffolding."
+msgstr "Selesai membuat scaffold."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:wroteFile"
+msgid "✓ {{path}}"
+msgstr "✓ {{path}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:nextStepsHeading"
+msgid "Next steps:"
+msgstr "Langkah seterusnya:"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:nextStepsNav"
+msgid "cd {{dir}}"
+msgstr "cd {{dir}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:nextStepsInstall"
+msgid "Install dependencies: {{command}}"
+msgstr "Pasang kebergantungan: {{command}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:nextStepsDevServer"
+msgid "Start the dev server (if your template has one)"
+msgstr "Mulakan pelayan pembangunan (jika templat anda mempunyainya)"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:notesHeading"
+msgid "Note:"
+msgstr "Nota:"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:caveatsHeading"
+msgid "Caveat:"
+msgstr "Amaran:"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:errorMissingPlatform"
+msgid "Missing required argument \"platform\". Expected one of: {{platforms}}"
+msgstr "Argumen diperlukan \"platform\" hilang. Dijangka salah satu: {{platforms}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:cancelled"
+msgid "Cancelled."
+msgstr "Dibatalkan."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:helpPlatformDescription"
+msgid "Platform to scaffold ({{platforms}}; \"html\" is an alias for \"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
+msgstr "Platform untuk discaffold ({{platforms}}; \"html\" adalah alias untuk \"components\", \"theme-editor\" adalah alias untuk \"canvas-theme-editor\")"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:helpDirDescription"
+msgid "Target directory (prompts interactively on a TTY if omitted)"
+msgstr "Direktori sasaran (akan bertanya secara interaktif pada TTY jika ditinggalkan)"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:helpYesDescription"
+msgid "Never prompt; error instead of prompting for a missing platform/directory"
+msgstr "Jangan bertanya; beri ralat jika platform/direktori yang hilang"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:helpLangDescription"
+msgid "Override the auto-detected display language (e.g. \"hu\")"
+msgstr "Timpa bahasa paparan yang dikesan automatik (contoh: \"hu\")"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.0"
+msgid "cd {{dir}}"
+msgstr "cd {{dir}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.1"
+msgid "{{install}}"
+msgstr "{{install}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.2"
+msgid "{{dev}}"
+msgstr "{{dev}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.notes"
+msgid "Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / JavaScript) so pantoken's classes are available on every page."
+msgstr "Muat naik theme.css dan theme.js ke Theme Editor Canvas (Advanced → CSS / JavaScript) supaya kelas pantoken tersedia di setiap halaman."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.caveats"
+msgid "Canvas sanitizes pasted HTML server-side — always verify content pasted from the RCE preview in Canvas."
+msgstr "Canvas menapis HTML yang ditampal di pelayan — sentiasa sahkan kandungan yang ditampal dari pratonton RCE dalam Canvas."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.pageTitle"
+msgid "RCE template authoring"
+msgstr "Penyunting templat RCE"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.pageDescription"
+msgid "Author Canvas RCE page templates styled with pantoken, with a live preview."
+msgstr "Tulis templat halaman RCE Canvas yang bergaya dengan pantoken, dengan pratonton langsung."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.editThemeLabel"
+msgid "Edit theme"
+msgstr "Edit tema"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.helpAriaLabel"
+msgid "Help"
+msgstr "Bantuan"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.copyHtmlLabel"
+msgid "Copy HTML"
+msgstr "Salin HTML"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.editorPaneLabel"
+msgid "Editor"
+msgstr "Penyunting"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.previewPaneLabel"
+msgid "Preview"
+msgstr "Pratonton"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.previewFrameTitle"
+msgid "Styled preview"
+msgstr "Pratonton berstail"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.fullscreenEditorAriaLabel"
+msgid "Fullscreen editor"
+msgstr "Penyunting skrin penuh"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.fullscreenPreviewAriaLabel"
+msgid "Fullscreen preview"
+msgstr "Pratonton skrin penuh"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.resizePanesAriaLabel"
+msgid "Resize editor and preview"
+msgstr "Ubah saiz penyunting dan pratonton"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.stackVerticallyLabel"
+msgid "Stack vertically"
+msgstr "Susun menegak"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.stackSideBySideLabel"
+msgid "Stack side by side"
+msgstr "Susun sebelah-menyebelah"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.swapPanesLabel"
+msgid "Swap panes"
+msgstr "Tukar pane"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.themeTrayAriaLabel"
+msgid "Theme settings"
+msgstr "Tetapan tema"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.tabConfigLabel"
+msgid "Config"
+msgstr "Konfigurasi"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.tabCssLabel"
+msgid "CSS"
+msgstr "CSS"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.tabJsLabel"
+msgid "JS"
+msgstr "JS"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.cdnProviderLabel"
+msgid "CDN provider"
+msgstr "Pembekal CDN"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.themeLabel"
+msgid "Theme"
+msgstr "Tema"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.modeLabel"
+msgid "Mode"
+msgstr "Mod"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.downloadCssLabel"
+msgid "Download theme.css"
+msgstr "Muat turun theme.css"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.downloadJsLabel"
+msgid "Download theme.js"
+msgstr "Muat turun theme.js"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.regenerateLabel"
+msgid "Regenerate from config"
+msgstr "Jana semula dari konfigurasi"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.helpModalTitle"
+msgid "How to use this page"
+msgstr "Cara menggunakan halaman ini"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody1"
+msgid "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas."
+msgstr "Pilih templat permulaan, sunting seperti dalam Canvas Rich Content Editor, kemudian klik <strong>Copy HTML</strong> dan tampal hasil ke halaman Canvas (alih ke paparan penyunting HTML terlebih dahulu). Canvas menapis HTML yang ditampal di pelayan — pratonton ini tidak cuba menirunya, jadi sentiasa sahkan hasil tampalan dalam Canvas."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody2"
+msgid "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them."
+msgstr "Gunakan <strong>Edit theme</strong> untuk menukar pembekal CDN, tema, atau mod, dan untuk sunting tangan <code>theme.css</code>/<code>theme.js</code> yang dijana sebelum memuat turunnya."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.closeLabel"
+msgid "Close"
+msgstr "Tutup"
+
+#: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:nextStepsDependencies"
+msgid "2. Installing dependencies (npm install, pnpm install, yarn install or bun install)"
+msgstr "2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun install)"
+
+#: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:nextStepsInstallGeneric"
+msgid "2. Installing dependencies"
+msgstr "Pasang kebergantungan: {{command}}"
+
+#, no-c-format
+#~ msgctxt "cli.scaffold:nextStepsInstallGeneric"
+#~ msgid "2. Függőségek telepítése"
+#~ msgstr "2. Függőségek telepítése"

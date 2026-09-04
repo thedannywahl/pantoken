@@ -47,8 +47,11 @@ export default defineConfig({
         "formats/*/scripts/{fonts,generate}.ts",
         "docs/scripts/{translation-memory,api-translation,build-api-locales,build-css-api,check-locale-drift,style-api-badges}.ts",
         "docs/scripts/lib/scope-components.ts",
-        "packages/i18n/src/**",
-        "packages/i18n/scripts/**",
+        "renderers/web-components/src/locales/**",
+        "renderers/web-components/src/i18n.ts",
+        "renderers/web-components/src/locale-bundle.ts",
+        "renderers/web-components/src/lib/{locales,runtime}.ts",
+        "renderers/web-components/scripts/build-bundles.ts",
       ],
       exclude: [
         "**/*.{test,spec}.?(c|m)[jt]s?(x)",
@@ -234,23 +237,23 @@ export default defineConfig({
         cache: false,
       },
       "ui:translate:agy": {
-        command: "vp run @pantoken/web-components#translate:agy",
+        command: "vp run @pantoken/web-components#translate",
         cache: false,
       },
       "ui:translate:copilot": {
-        command: "vp run @pantoken/web-components#translate:copilot",
+        command: "vp run @pantoken/web-components#translate",
         cache: false,
       },
       "ui:translate:force": {
-        command: "vp run @pantoken/web-components#translate:force",
+        command: "vp run @pantoken/web-components#translate",
         cache: false,
       },
       "ui:translate:force:agy": {
-        command: "vp run @pantoken/web-components#translate:agy:force",
+        command: "vp run @pantoken/web-components#translate",
         cache: false,
       },
       "ui:translate:force:copilot": {
-        command: "vp run @pantoken/web-components#translate:copilot:force",
+        command: "vp run @pantoken/web-components#translate",
         cache: false,
       },
       // Docs locale translation (both claude and agy variants).
@@ -284,26 +287,23 @@ export default defineConfig({
         cache: false,
       },
       "cli:translate:agy": {
-        command: "vp run @pantoken/scaffold#translate:agy && vp run @pantoken/ai#translate:agy",
+        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
         cache: false,
       },
       "cli:translate:copilot": {
-        command:
-          "vp run @pantoken/scaffold#translate:copilot && vp run @pantoken/ai#translate:copilot",
+        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
         cache: false,
       },
       "cli:translate:force": {
-        command: "vp run @pantoken/scaffold#translate:force && vp run @pantoken/ai#translate:force",
+        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
         cache: false,
       },
       "cli:translate:force:agy": {
-        command:
-          "vp run @pantoken/scaffold#translate:agy:force && vp run @pantoken/ai#translate:agy:force",
+        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
         cache: false,
       },
       "cli:translate:force:copilot": {
-        command:
-          "vp run @pantoken/scaffold#translate:copilot:force && vp run @pantoken/ai#translate:copilot:force",
+        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
         cache: false,
       },
       // Umbrella tasks for all translation domains.
@@ -351,19 +351,32 @@ export default defineConfig({
         cache: false,
       },
       // Drift checks for the UI and CLI i18n domains. Severity per surface and locale tier comes from
-      // `i18n-policy.json` — these tasks report every gap but only exit non-zero on a `block`, so an
+      // `i18n.config.json` — these tasks report every gap but only exit non-zero on a `block`, so an
       // English-only change lands without waiting on ~90 translations. Docs drift runs in
       // `@pantoken/docs#docs:build` (it needs the generated EN API tree); `i18n:check:drift:all` runs
       // both.
       "i18n:check:drift": {
         command:
-          "vp run @pantoken/translation-adapters#build && vp run @pantoken/web-components#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift",
+          "vp run @pantoken/translation-adapters#build && vp run @pantoken/i18n-engine#build && vp run @pantoken/web-components#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift",
+      },
+      // Generate the local, git-ignored language coverage report. Keep this uncached so the report
+      // always reflects the current PO catalogs and policy configuration.
+      "i18n:coverage": {
+        command:
+          "vp run @pantoken/i18n-engine#build && node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json stats --html",
+        cache: false,
+      },
+      // Keep the local HTML coverage dashboard synchronized while translation jobs update catalogs.
+      "i18n:coverage:watch": {
+        command:
+          "vp run @pantoken/i18n-engine#build && node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json stats --html --watch",
+        cache: false,
       },
       // Every i18n surface at once, including the docs ones. Assumes `docs:api:en` already ran — API
       // prose drift is skipped with a note when `docs/api` is absent.
       "i18n:check:drift:all": {
         command:
-          "vp run i18n:check:drift && vp run @pantoken/docs#docs:check:locales && vp run @pantoken/docs#docs:check:drift",
+          "vp run @pantoken/i18n-engine#build && node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json lint && vp run i18n:check:drift && vp run @pantoken/docs#docs:check:locales && vp run @pantoken/docs#docs:check:drift",
         cache: false,
       },
       // Same sweep with every policy `warn` escalated to `block`. Not wired into PR CI — this is the
@@ -374,7 +387,7 @@ export default defineConfig({
         cache: false,
       },
       "i18n:bundles:build": {
-        command: "vp run @pantoken/i18n#generate",
+        command: "vp run @pantoken/web-components#generate",
         dependsOn: ["build:all"],
       },
       "changeset:add": {

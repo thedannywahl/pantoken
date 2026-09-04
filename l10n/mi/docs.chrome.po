@@ -1,0 +1,465 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:description"
+msgid "Instructure design tokens and icons, reshaped for every platform and framework."
+msgstr "Ngā tohu hoahoa me ngā tohu ā-ata a Instructure, kua āhua hurihia mō ia papaaho me ia anga."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:nav.guide"
+msgid "Guide"
+msgstr "Aratohu"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:nav.packages"
+msgid "Packages"
+msgstr "Mōkī"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:nav.css"
+msgid "CSS"
+msgstr "CSS"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:nav.api"
+msgid "API reference"
+msgstr "Tohu API"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.intro"
+msgid "Introduction"
+msgstr "Kupu Whakataki"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.guides"
+msgid "Guides"
+msgstr "Ngā Aratohu"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.gettingStarted"
+msgid "Getting started"
+msgstr "Tīmata"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.packageMap"
+msgid "The package map"
+msgstr "Te mahere mōkī"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.architecture"
+msgid "Architecture"
+msgstr "Hanga"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.components"
+msgid "Components"
+msgstr "Rauemi"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.cdn"
+msgid "CDN & distribution"
+msgstr "CDN me te tohatoha"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.cdnPicker"
+msgid "CDN picker"
+msgstr "Kaiwhiri CDN"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.cli"
+msgid "The pantoken CLI"
+msgstr "Te CLI pantoken"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.plugins"
+msgid "Plugins"
+msgstr "Ngā mono"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.generated"
+msgid "Generated output"
+msgstr "Putanga i hangaia"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.api"
+msgid "API reference"
+msgstr "Tohu API"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiOverview"
+msgid "Overview"
+msgstr "Rāritenga"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:editText"
+msgid "Edit this page on GitHub"
+msgstr "Whakatika i tēnei whārangi i GitHub"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:themeSelector.label"
+msgid "Select theme"
+msgstr "Tīpako kaupapa tae"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:themeSelector.rebrand"
+msgid "Rebrand"
+msgstr "Whakakānga ingoa"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:themeSelector.canvas"
+msgid "Canvas"
+msgstr "Canvas"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:themeSelector.canvasHighContrast"
+msgid "Canvas high contrast"
+msgstr "Canvas pūauau teitei"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.themeLabel"
+msgid "Theme"
+msgstr "Kaupapa"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.themeRebrand"
+msgid "Rebrand"
+msgstr "Whakakānga ingoa"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.themeCanvas"
+msgid "Canvas"
+msgstr "Canvas"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.themeCanvasHighContrast"
+msgid "Canvas high contrast"
+msgstr "Canvas pūauau teitei"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.modeLabel"
+msgid "Rebrand mode"
+msgstr "Aratau whakakānga ingoa"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.modeAdaptive"
+msgid "Light + dark"
+msgstr "Mārama + pō"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.modeLightOnly"
+msgid "Light only"
+msgstr "Mārama anake"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.includeDarkMode"
+msgid "Include dark mode"
+msgstr "Tāpirihia te aratau pō"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.providerLabel"
+msgid "CDN provider"
+msgstr "Kaiwhakarato CDN"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.componentsLabel"
+msgid "Components"
+msgstr "Rauemi"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.allComponents"
+msgid "All components"
+msgstr "Ngā rauemi katoa"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.formatLabel"
+msgid "Output"
+msgstr "Putanga"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.formatLink"
+msgid "<link>"
+msgstr "<link>"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.formatImport"
+msgid "@import"
+msgstr "@import"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.includeBase"
+msgid "Base"
+msgstr "Takenga"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.baseInfoLabel"
+msgid "About the base reset"
+msgstr "Mō te whakatikatika taketake"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.baseInfo"
+msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
+msgstr "Te whakatikatika ā-ao whiriwhiri: box-sizing, te papamuri whārangi, tae tuhinga taketake me te momo momotuhi, color-scheme, me ngā tautuhi hono."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.includeUtilities"
+msgid "Utilities"
+msgstr "Āwhina"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.utilitiesInfoLabel"
+msgid "About the utility classes"
+msgstr "Mō ngā akonga āwhina"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
+msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
+msgstr "He paparanga whakauru kōwhiri: he tūemi Tirohanga, he wāhi mō te whakatakotoranga āwhina i runga i te tōra token, me ngā whakakapi tae tūtohu."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.copy"
+msgid "Copy"
+msgstr "Tārua"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.copied"
+msgid "Copied"
+msgstr "Kua tāruatia"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.empty"
+msgid "Select one or more components to build a URL."
+msgstr "Tīpakohia kotahi, kotahi atu rānei ngā rauemi hei hanga i tētahi URL."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.fontsNote"
+msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
+msgstr "Ka uta wehe ngā momotuhi — tāpirihia he <link> ki @pantoken/components/fonts.css mēnā e hiahiatia ana."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.iconsNote"
+msgid "component-icons.css is included because a selected component uses icons."
+msgstr "Kei roto te component-icons.css nā te mea e whakamahi ana tētahi waahanga kua tīpakohia i ngā āta."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.copied"
+msgid "Copied"
+msgstr "Kua tāruatia"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.cliInstall"
+msgid "CLI install"
+msgstr "Tāuta CLI"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.aiInstall"
+msgid "AI install"
+msgstr "Tāuta AI"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.pauseAnimation"
+msgid "Pause animation"
+msgstr "Whārepu animation"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.playAnimation"
+msgid "Resume animation"
+msgstr "Whakapārewahia te animation"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.agentPrompt"
+msgid "\"Set up pantoken (github.com/thedannywahl/pantoken) in this project using create.pantoken.app/SKILL.md.\""
+msgstr "\"Tautuhia pantoken (github.com/thedannywahl/pantoken) ki tēnei kaupapa mā create.pantoken.app/SKILL.md.\""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.outlineLabel"
+msgid "On this page"
+msgstr "I tēnei whārangi"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.docFooterPrev"
+msgid "Previous page"
+msgstr "Whārangi o mua"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.docFooterNext"
+msgid "Next page"
+msgstr "Whārangi e whai ake nei"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.darkModeSwitchLabel"
+msgid "Appearance"
+msgstr "Āhua"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.lightModeSwitchTitle"
+msgid "Switch to light theme"
+msgstr "Huri ki te kaupapa mārama"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.darkModeSwitchTitle"
+msgid "Switch to dark theme"
+msgstr "Huri ki te kaupapa pō"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.sidebarMenuLabel"
+msgid "Menu"
+msgstr "Tahua"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.returnToTopLabel"
+msgid "Return to top"
+msgstr "Hoki ki te tihi"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.langMenuLabel"
+msgid "Change language"
+msgstr "Huri reo"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.lastUpdatedText"
+msgid "Last updated"
+msgstr "I whakahoutia mutunga kē"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.notFound.code"
+msgid "404"
+msgstr "404"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.notFound.title"
+msgid "PAGE NOT FOUND"
+msgstr "KORE WHĀRANGI I TE KITENGA"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.notFound.quote"
+msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
+msgstr "Engari mēnā kāore koe e huri i tō aronga, ā, me noho tonu koe ki te rapu, ka mutu koe i te wahi e ū ana tō haere."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.notFound.linkLabel"
+msgid "go to home"
+msgstr "haere ki te whārangi kāinga"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.notFound.linkText"
+msgid "Take me home"
+msgstr "Hoki ki te kāinga"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.buttonText"
+msgid "Search"
+msgstr "Rapua"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.displayDetails"
+msgid "Display detailed list"
+msgstr "Whakaatu rārangi taipitopito"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.resetButtonTitle"
+msgid "Reset search"
+msgstr "Tautuhi anō rapu"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.backButtonTitle"
+msgid "Close search"
+msgstr "Katia te rapu"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.noResultsText"
+msgid "No results for"
+msgstr "Kāore he hua mō"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.footerSelect"
+msgid "to select"
+msgstr "kia tīpakohia"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.footerNavigate"
+msgid "to navigate"
+msgstr "kia whakatere"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.footerClose"
+msgid "to close"
+msgstr "kia kati"

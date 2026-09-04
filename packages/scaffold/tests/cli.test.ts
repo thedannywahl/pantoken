@@ -16,10 +16,9 @@ import {
   scaffoldWithSpinner,
   shouldPrompt,
   validateScaffoldPlatform,
-  LOCALES,
+  MESSAGES,
 } from "../src/cli.ts";
 import { select, spinner, text } from "@clack/prompts";
-import { collectI18nSource } from "../scripts/i18n-sources.ts";
 
 // clack's real cancel sentinel is a module-private `Symbol("clack:cancel")`, unreachable from
 // outside the package, so tests use their own well-known sentinel and mock `isCancel` to match it.
@@ -41,7 +40,7 @@ function mktemp(): string {
   return mkdtempSync(join(tmpdir(), "pantoken-scaffold-cli-"));
 }
 
-const { t } = createLocaleLookup(LOCALES, "en");
+const { t } = createLocaleLookup(MESSAGES, "en");
 
 const bin = new URL("../bin/pantoken-scaffold.mjs", import.meta.url).pathname;
 
@@ -220,34 +219,6 @@ test("canvas-theme-editor's scaffolded output doesn't include scaffold.json", as
   const target = join(dir, "my-theme-app");
   const written = await scaffoldWithSpinner("canvas-theme-editor", target, t);
   expect(written.some((p) => p.endsWith("scaffold.json"))).toBe(false);
-});
-
-// ---------------------------------------------------------------------------
-// collectI18nSource
-// ---------------------------------------------------------------------------
-
-test("collectI18nSource merges src/i18n.json with every template's scaffold.json without mutating either", () => {
-  const root = new URL("..", import.meta.url).pathname;
-  const { source, verbatim } = collectI18nSource(root);
-
-  // Static CLI copy is present.
-  expect(source.nextStepsHeading).toBe("Next steps:");
-  // Template-derived keys are present, namespaced by platform.
-  expect(source["scaffold.canvas-theme-editor.nextSteps.0"]).toBe("cd {{dir}}");
-  expect(verbatim["scaffold.canvas-theme-editor.nextSteps.0"]).toBe("required");
-  expect(verbatim["scaffold.canvas-theme-editor.nextSteps.1"]).toBe("required");
-  expect(verbatim["scaffold.canvas-theme-editor.nextSteps.2"]).toBe("required");
-  expect(verbatim["scaffold.canvas-theme-editor.i18n.tabCssLabel"]).toBe("required");
-  expect(verbatim["scaffold.canvas-theme-editor.i18n.tabJsLabel"]).toBe("required");
-  expect(verbatim["scaffold.canvas-theme-editor.i18n.editorPaneLabel"]).toEqual({
-    warn: ["da", "de", "es", "id", "it", "ms", "nb", "nl", "pt*", "se"],
-  });
-  expect(verbatim["scaffold.canvas-theme-editor.i18n.modeLabel"]).toEqual({
-    warn: ["fr*", "id"],
-  });
-  expect(source["scaffold.canvas-theme-editor.notes"]).toContain("Theme Editor");
-  // Platforms with no scaffold.json contribute no derived keys.
-  expect(Object.keys(source).some((k) => k.startsWith("scaffold.react."))).toBe(false);
 });
 
 // ---------------------------------------------------------------------------

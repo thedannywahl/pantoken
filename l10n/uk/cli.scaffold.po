@@ -1,0 +1,320 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:promptPlatform"
+msgid "Select a platform to scaffold:"
+msgstr "Виберіть платформу для створення каркасу:"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:promptDir"
+msgid "Target directory:"
+msgstr "Цільова директорія:"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:spinnerStart"
+msgid "Scaffolding..."
+msgstr "Створення каркасу..."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:spinnerStop"
+msgid "Done scaffolding."
+msgstr "Готово — каркас створено."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:wroteFile"
+msgid "✓ {{path}}"
+msgstr "✓ {{path}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:nextStepsHeading"
+msgid "Next steps:"
+msgstr "Наступні кроки:"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:nextStepsNav"
+msgid "cd {{dir}}"
+msgstr "cd {{dir}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:nextStepsInstall"
+msgid "Install dependencies: {{command}}"
+msgstr "Встановити залежності: {{command}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:nextStepsDevServer"
+msgid "Start the dev server (if your template has one)"
+msgstr "Запустити dev‑сервер (якщо шаблон його має)"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:notesHeading"
+msgid "Note:"
+msgstr "Примітка:"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:caveatsHeading"
+msgid "Caveat:"
+msgstr "Попередження:"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:errorMissingPlatform"
+msgid "Missing required argument \"platform\". Expected one of: {{platforms}}"
+msgstr "Відсутній обовʼязковий аргумент \"platform\". Очікується один з: {{platforms}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:cancelled"
+msgid "Cancelled."
+msgstr "Скасовано."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:helpPlatformDescription"
+msgid "Platform to scaffold ({{platforms}}; \"html\" is an alias for \"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
+msgstr "Платформа для створення каркасу ({{platforms}}; \"html\" — псевдонім для \"components\", \"theme-editor\" — псевдонім для \"canvas-theme-editor\")"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:helpDirDescription"
+msgid "Target directory (prompts interactively on a TTY if omitted)"
+msgstr "Цільова директорія (якщо пропущено — запит у TTY)"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:helpYesDescription"
+msgid "Never prompt; error instead of prompting for a missing platform/directory"
+msgstr "Ніколи не питати; в разі відсутньої платформи/директорії видавати помилку"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:helpLangDescription"
+msgid "Override the auto-detected display language (e.g. \"hu\")"
+msgstr "Перевизначити автоматично визначену мову інтерфейсу (наприклад \"hu\")"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.0"
+msgid "cd {{dir}}"
+msgstr "cd {{dir}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.1"
+msgid "{{install}}"
+msgstr "{{install}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.2"
+msgid "{{dev}}"
+msgstr "{{dev}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.notes"
+msgid "Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / JavaScript) so pantoken's classes are available on every page."
+msgstr "Завантажте theme.css та theme.js в Theme Editor Canvas (Advanced → CSS / JavaScript), щоб класи pantoken були доступні на всіх сторінках."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.caveats"
+msgid "Canvas sanitizes pasted HTML server-side — always verify content pasted from the RCE preview in Canvas."
+msgstr "Canvas очищує вставлений HTML на боці сервера — завжди перевіряйте вміст, вставлений із попереднього перегляду RCE у Canvas."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.pageTitle"
+msgid "RCE template authoring"
+msgstr "Авторинг шаблонів RCE"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.pageDescription"
+msgid "Author Canvas RCE page templates styled with pantoken, with a live preview."
+msgstr "Створюйте шаблони сторінок Canvas RCE, стилізовані за допомогою pantoken, з живим попереднім переглядом."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.editThemeLabel"
+msgid "Edit theme"
+msgstr "Редагувати тему"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.helpAriaLabel"
+msgid "Help"
+msgstr "Допомога"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.copyHtmlLabel"
+msgid "Copy HTML"
+msgstr "Копіювати HTML"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.editorPaneLabel"
+msgid "Editor"
+msgstr "Редактор"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.previewPaneLabel"
+msgid "Preview"
+msgstr "Попередній перегляд"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.previewFrameTitle"
+msgid "Styled preview"
+msgstr "Стилізований попередній перегляд"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.fullscreenEditorAriaLabel"
+msgid "Fullscreen editor"
+msgstr "Редактор на весь екран"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.fullscreenPreviewAriaLabel"
+msgid "Fullscreen preview"
+msgstr "Попередній перегляд на весь екран"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.resizePanesAriaLabel"
+msgid "Resize editor and preview"
+msgstr "Змінити розмір редактора й попереднього перегляду"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.stackVerticallyLabel"
+msgid "Stack vertically"
+msgstr "Вертикальне розташування"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.stackSideBySideLabel"
+msgid "Stack side by side"
+msgstr "Розташувати поряд"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.swapPanesLabel"
+msgid "Swap panes"
+msgstr "Поменяти панелі місцями"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.themeTrayAriaLabel"
+msgid "Theme settings"
+msgstr "Налаштування теми"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.tabConfigLabel"
+msgid "Config"
+msgstr "Конфіг"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.tabCssLabel"
+msgid "CSS"
+msgstr "CSS"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.tabJsLabel"
+msgid "JS"
+msgstr "JS"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.cdnProviderLabel"
+msgid "CDN provider"
+msgstr "Постачальник CDN"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.themeLabel"
+msgid "Theme"
+msgstr "Тема"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.modeLabel"
+msgid "Mode"
+msgstr "Режим"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.downloadCssLabel"
+msgid "Download theme.css"
+msgstr "Завантажити theme.css"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.downloadJsLabel"
+msgid "Download theme.js"
+msgstr "Завантажити theme.js"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.regenerateLabel"
+msgid "Regenerate from config"
+msgstr "Згенерувати з конфігурації"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.helpModalTitle"
+msgid "How to use this page"
+msgstr "Як користуватися цією сторінкою"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody1"
+msgid "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas."
+msgstr "Оберіть стартовий шаблон, редагуйте його як у Canvas Rich Content Editor, потім натисніть <strong>Копіювати HTML</strong> і вставте результат у сторінку Canvas (спочатку переключіться в HTML‑редактор). Canvas очищує вставлений HTML на боці сервера — цей попередній перегляд цього не імітує, тому завжди перевіряйте вставлений результат у Canvas."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody2"
+msgid "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them."
+msgstr "Використовуйте <strong>Редагувати тему</strong>, щоб змінити CDN‑провайдера, тему або режим, а також вручну відредагувати згенеровані <code>theme.css</code>/<code>theme.js</code> перед їхнім завантаженням."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.closeLabel"
+msgid "Close"
+msgstr "Закрити"
+
+#: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:nextStepsDependencies"
+msgid "2. Installing dependencies (npm install, pnpm install, yarn install or bun install)"
+msgstr "2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun install)"
+
+#: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:nextStepsInstallGeneric"
+msgid "2. Installing dependencies"
+msgstr "Встановити залежності: {{command}}"
+
+#, no-c-format
+#~ msgctxt "cli.scaffold:nextStepsInstallGeneric"
+#~ msgid "2. Függőségek telepítése"
+#~ msgstr "2. Függőségek telepítése"

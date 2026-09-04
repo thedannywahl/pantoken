@@ -1,0 +1,465 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:description"
+msgid "Instructure design tokens and icons, reshaped for every platform and framework."
+msgstr "Tokens thiết kế và biểu tượng của Instructure, được tái tạo cho mọi nền tảng và framework."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:nav.guide"
+msgid "Guide"
+msgstr "Hướng dẫn"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:nav.packages"
+msgid "Packages"
+msgstr "Gói"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:nav.css"
+msgid "CSS"
+msgstr "CSS"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:nav.api"
+msgid "API reference"
+msgstr "Tài liệu API"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.intro"
+msgid "Introduction"
+msgstr "Giới thiệu"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.guides"
+msgid "Guides"
+msgstr "Hướng dẫn"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.gettingStarted"
+msgid "Getting started"
+msgstr "Bắt đầu"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.packageMap"
+msgid "The package map"
+msgstr "Sơ đồ gói"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.architecture"
+msgid "Architecture"
+msgstr "Kiến trúc"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.components"
+msgid "Components"
+msgstr "Các thành phần"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.cdn"
+msgid "CDN & distribution"
+msgstr "CDN & phân phối"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.cdnPicker"
+msgid "CDN picker"
+msgstr "Bộ chọn CDN"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.cli"
+msgid "The pantoken CLI"
+msgstr "CLI pantoken"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.plugins"
+msgid "Plugins"
+msgstr "Plugin"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.generated"
+msgid "Generated output"
+msgstr "Đầu ra tạo ra"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.api"
+msgid "API reference"
+msgstr "Tài liệu API"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiOverview"
+msgid "Overview"
+msgstr "Tổng quan"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:editText"
+msgid "Edit this page on GitHub"
+msgstr "Chỉnh sửa trang này trên GitHub"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:themeSelector.label"
+msgid "Select theme"
+msgstr "Chọn chủ đề"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:themeSelector.rebrand"
+msgid "Rebrand"
+msgstr "Đổi thương hiệu"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:themeSelector.canvas"
+msgid "Canvas"
+msgstr "Canvas"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:themeSelector.canvasHighContrast"
+msgid "Canvas high contrast"
+msgstr "Canvas độ tương phản cao"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.themeLabel"
+msgid "Theme"
+msgstr "Chủ đề"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.themeRebrand"
+msgid "Rebrand"
+msgstr "Đổi thương hiệu"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.themeCanvas"
+msgid "Canvas"
+msgstr "Canvas"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.themeCanvasHighContrast"
+msgid "Canvas high contrast"
+msgstr "Canvas độ tương phản cao"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.modeLabel"
+msgid "Rebrand mode"
+msgstr "Chế độ đổi thương hiệu"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.modeAdaptive"
+msgid "Light + dark"
+msgstr "Sáng + tối"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.modeLightOnly"
+msgid "Light only"
+msgstr "Chỉ sáng"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.includeDarkMode"
+msgid "Include dark mode"
+msgstr "Bao gồm chế độ tối"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.providerLabel"
+msgid "CDN provider"
+msgstr "Nhà cung cấp CDN"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.componentsLabel"
+msgid "Components"
+msgstr "Các thành phần"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.allComponents"
+msgid "All components"
+msgstr "Tất cả thành phần"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.formatLabel"
+msgid "Output"
+msgstr "Đầu ra"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.formatLink"
+msgid "<link>"
+msgstr "<link>"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.formatImport"
+msgid "@import"
+msgstr "@import"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.includeBase"
+msgid "Base"
+msgstr "Cơ sở"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.baseInfoLabel"
+msgid "About the base reset"
+msgstr "Về thiết lập lại cơ sở"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.baseInfo"
+msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
+msgstr "Thiết lập lại toàn cục chọn tham gia: box-sizing, bề mặt trang, màu chữ cơ bản và font, color-scheme, và mặc định cho liên kết."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.includeUtilities"
+msgid "Utilities"
+msgstr "Tiện ích"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.utilitiesInfoLabel"
+msgid "About the utility classes"
+msgstr "Về các lớp tiện ích"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
+msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
+msgstr "Một lớp các lớp cắt ngang chọn tham gia: một primitive View, khoảng cách theo thang token, và ghi đè màu có ý nghĩa."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.copy"
+msgid "Copy"
+msgstr "Sao chép"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.copied"
+msgid "Copied"
+msgstr "Đã sao chép"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.empty"
+msgid "Select one or more components to build a URL."
+msgstr "Chọn một hoặc nhiều thành phần để tạo URL."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.fontsNote"
+msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
+msgstr "Font được tải riêng — thêm một <link> tới @pantoken/components/fonts.css khi cần."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.iconsNote"
+msgid "component-icons.css is included because a selected component uses icons."
+msgstr "component-icons.css được bao gồm vì một thành phần được chọn sử dụng biểu tượng."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.copied"
+msgid "Copied"
+msgstr "Đã sao chép"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.cliInstall"
+msgid "CLI install"
+msgstr "Cài đặt CLI"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.aiInstall"
+msgid "AI install"
+msgstr "Cài đặt AI"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.pauseAnimation"
+msgid "Pause animation"
+msgstr "Tạm dừng hoạt ảnh"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.playAnimation"
+msgid "Resume animation"
+msgstr "Tiếp tục hoạt ảnh"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.agentPrompt"
+msgid "\"Set up pantoken (github.com/thedannywahl/pantoken) in this project using create.pantoken.app/SKILL.md.\""
+msgstr "\"Thiết lập pantoken (github.com/thedannywahl/pantoken) trong dự án này bằng create.pantoken.app/SKILL.md.\""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.outlineLabel"
+msgid "On this page"
+msgstr "Trên trang này"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.docFooterPrev"
+msgid "Previous page"
+msgstr "Trang trước"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.docFooterNext"
+msgid "Next page"
+msgstr "Trang tiếp"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.darkModeSwitchLabel"
+msgid "Appearance"
+msgstr "Giao diện"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.lightModeSwitchTitle"
+msgid "Switch to light theme"
+msgstr "Chuyển sang chủ đề sáng"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.darkModeSwitchTitle"
+msgid "Switch to dark theme"
+msgstr "Chuyển sang chủ đề tối"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.sidebarMenuLabel"
+msgid "Menu"
+msgstr "Trình đơn"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.returnToTopLabel"
+msgid "Return to top"
+msgstr "Trở về đầu trang"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.langMenuLabel"
+msgid "Change language"
+msgstr "Thay đổi ngôn ngữ"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.lastUpdatedText"
+msgid "Last updated"
+msgstr "Cập nhật lần cuối"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.notFound.code"
+msgid "404"
+msgstr "404"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.notFound.title"
+msgid "PAGE NOT FOUND"
+msgstr "KHÔNG TÌM THẤY TRANG"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.notFound.quote"
+msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
+msgstr "Nhưng nếu bạn không thay đổi hướng đi của mình, và nếu bạn tiếp tục tìm kiếm, bạn có thể kết thúc ở nơi bạn đang hướng tới."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.notFound.linkLabel"
+msgid "go to home"
+msgstr "đi tới trang chủ"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.notFound.linkText"
+msgid "Take me home"
+msgstr "Đưa tôi về nhà"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.buttonText"
+msgid "Search"
+msgstr "Tìm kiếm"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.displayDetails"
+msgid "Display detailed list"
+msgstr "Hiển thị danh sách chi tiết"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.resetButtonTitle"
+msgid "Reset search"
+msgstr "Đặt lại tìm kiếm"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.backButtonTitle"
+msgid "Close search"
+msgstr "Đóng tìm kiếm"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.noResultsText"
+msgid "No results for"
+msgstr "Không có kết quả cho"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.footerSelect"
+msgid "to select"
+msgstr "để chọn"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.footerNavigate"
+msgid "to navigate"
+msgstr "để điều hướng"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.footerClose"
+msgid "to close"
+msgstr "để đóng"

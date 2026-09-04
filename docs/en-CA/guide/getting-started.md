@@ -1,6 +1,6 @@
 # Getting started
 
-pantoken takes Instructure UI's design tokens and icons, resolves them once, and reshapes that one
+Pantoken takes the [Instructure UI](https://instructure.design) design tokens and icons, resolves them once, and reshapes that one
 model into packages for many platforms: plain stylesheets, SCSS and Less, React and Vue and Svelte,
 Tailwind and Panda, native Swift and Kotlin, WordPress and Drupal, Figma, and more.
 
@@ -12,23 +12,20 @@ You install the smallest package that fits your task. Everything is also re-expo
 The fastest way to try pantoken: scaffold a starter project with it already installed and wired in.
 
 ```sh
-npx create-pantoken-app react
+npx create-pantoken-app
 ```
 
 Platforms: `components` (plain HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. See
 [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) for `--dir <path>` and
 programmatic use.
 
-Using an AI coding agent? No install needed — point it at the skill directly:
+Using an AI coding agent? No installation needed — point it at the skill directly:
 
-```sh
-claude "Fetch https://create.pantoken.app and follow it to set up pantoken in this project."
+```prompt
+Fetch create.pantoken.app/SKILL.md and follow it to set up pantoken in this project.
 ```
 
-Works the same way for Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, and Amazon Q
-Developer CLI — swap `claude` for `gemini`, `agent`, `codex`, `copilot -p`, or `q chat`. If you'd
-rather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy
-of this skill), run `npx @pantoken/ai init` instead.
+If you'd rather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy of this skill), run `npx @pantoken/ai init` instead.
 
 ## The token model
 
@@ -106,7 +103,7 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Both exports load the full IR at module initialisation — there is no per-icon tree-shaking at this
+Both exports load the full IR at module initialization — there is no per-icon tree-shaking at this
 level. For lean CSS-only loading, use the [CDN picker](/guide/cdn-picker) to generate a combine URL
 for only the icons you need.
 
@@ -115,7 +112,7 @@ for only the icons you need.
 The CLI writes token source into a target repo. No install beyond the runner:
 
 ```sh
-npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
+npx @pantoken/cli generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
 See [the pantoken CLI](/guide/cli) for every target.

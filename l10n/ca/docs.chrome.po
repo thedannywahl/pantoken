@@ -1,0 +1,465 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:description"
+msgid "Instructure design tokens and icons, reshaped for every platform and framework."
+msgstr "Tokens i icones de disseny d'Instructure, reformatats per a cada plataforma i marc."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:nav.guide"
+msgid "Guide"
+msgstr "Guia"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:nav.packages"
+msgid "Packages"
+msgstr "Paquets"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:nav.css"
+msgid "CSS"
+msgstr "CSS"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:nav.api"
+msgid "API reference"
+msgstr "Referència de l'API"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.intro"
+msgid "Introduction"
+msgstr "Introducció"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.guides"
+msgid "Guides"
+msgstr "Guies"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.gettingStarted"
+msgid "Getting started"
+msgstr "Com començar"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.packageMap"
+msgid "The package map"
+msgstr "El mapa del paquet"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.architecture"
+msgid "Architecture"
+msgstr "Arquitectura"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.components"
+msgid "Components"
+msgstr "Components"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.cdn"
+msgid "CDN & distribution"
+msgstr "CDN i distribució"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.cdnPicker"
+msgid "CDN picker"
+msgstr "Selector de CDN"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.cli"
+msgid "The pantoken CLI"
+msgstr "La CLI de pantoken"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.plugins"
+msgid "Plugins"
+msgstr "Complements"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.generated"
+msgid "Generated output"
+msgstr "Sortida generada"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.api"
+msgid "API reference"
+msgstr "Referència de l'API"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiOverview"
+msgid "Overview"
+msgstr "Visió general"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:editText"
+msgid "Edit this page on GitHub"
+msgstr "Edita aquesta pàgina a GitHub"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:themeSelector.label"
+msgid "Select theme"
+msgstr "Selecciona tema"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:themeSelector.rebrand"
+msgid "Rebrand"
+msgstr "Rebranding"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:themeSelector.canvas"
+msgid "Canvas"
+msgstr "Canvas"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:themeSelector.canvasHighContrast"
+msgid "Canvas high contrast"
+msgstr "Canvas alt contrast"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.themeLabel"
+msgid "Theme"
+msgstr "Tema"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.themeRebrand"
+msgid "Rebrand"
+msgstr "Rebranding"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.themeCanvas"
+msgid "Canvas"
+msgstr "Canvas"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.themeCanvasHighContrast"
+msgid "Canvas high contrast"
+msgstr "Canvas alt contrast"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.modeLabel"
+msgid "Rebrand mode"
+msgstr "Mode de rebranding"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.modeAdaptive"
+msgid "Light + dark"
+msgstr "Clar + fosc"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.modeLightOnly"
+msgid "Light only"
+msgstr "Només clar"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.includeDarkMode"
+msgid "Include dark mode"
+msgstr "Incloure mode fosc"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.providerLabel"
+msgid "CDN provider"
+msgstr "Proveïdor de CDN"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.componentsLabel"
+msgid "Components"
+msgstr "Components"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.allComponents"
+msgid "All components"
+msgstr "Tots els components"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.formatLabel"
+msgid "Output"
+msgstr "Sortida"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.formatLink"
+msgid "<link>"
+msgstr "<link>"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.formatImport"
+msgid "@import"
+msgstr "@import"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.includeBase"
+msgid "Base"
+msgstr "Base"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.baseInfoLabel"
+msgid "About the base reset"
+msgstr "Sobre el reset base"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.baseInfo"
+msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
+msgstr "El reset global opt-in: box-sizing, la superfície de la pàgina, el color i la font base, color-scheme i les compreses d'enllaç per defecte."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.includeUtilities"
+msgid "Utilities"
+msgstr "Utilitats"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.utilitiesInfoLabel"
+msgid "About the utility classes"
+msgstr "Sobre les classes utilitàries"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
+msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
+msgstr "Una capa opt-in de classes transversals: una primitiva View, espaiat segons l'escala de tokens i substitucions semàntiques de color."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.copy"
+msgid "Copy"
+msgstr "Copiar"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.copied"
+msgid "Copied"
+msgstr "Copiat"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.empty"
+msgid "Select one or more components to build a URL."
+msgstr "Selecciona un o més components per generar una URL."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.fontsNote"
+msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
+msgstr "Les fonts es carreguen per separat — afegeix un <link> a @pantoken/components/fonts.css quan les necessitis."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.iconsNote"
+msgid "component-icons.css is included because a selected component uses icons."
+msgstr "component-icons.css s'inclou perquè un component seleccionat fa servir icones."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.copied"
+msgid "Copied"
+msgstr "Copiat"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.cliInstall"
+msgid "CLI install"
+msgstr "Instal·lació de la CLI"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.aiInstall"
+msgid "AI install"
+msgstr "Instal·lació AI"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.pauseAnimation"
+msgid "Pause animation"
+msgstr "Pausa animació"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.playAnimation"
+msgid "Resume animation"
+msgstr "Reprendre animació"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.agentPrompt"
+msgid "\"Set up pantoken (github.com/thedannywahl/pantoken) in this project using create.pantoken.app/SKILL.md.\""
+msgstr "\"Configura pantoken (github.com/thedannywahl/pantoken) en aquest projecte utilitzant create.pantoken.app/SKILL.md.\""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.outlineLabel"
+msgid "On this page"
+msgstr "En aquesta pàgina"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.docFooterPrev"
+msgid "Previous page"
+msgstr "Pàgina anterior"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.docFooterNext"
+msgid "Next page"
+msgstr "Pàgina següent"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.darkModeSwitchLabel"
+msgid "Appearance"
+msgstr "Aparença"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.lightModeSwitchTitle"
+msgid "Switch to light theme"
+msgstr "Canvia al tema clar"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.darkModeSwitchTitle"
+msgid "Switch to dark theme"
+msgstr "Canvia al tema fosc"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.sidebarMenuLabel"
+msgid "Menu"
+msgstr "Menú"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.returnToTopLabel"
+msgid "Return to top"
+msgstr "Tornar a dalt"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.langMenuLabel"
+msgid "Change language"
+msgstr "Canviar idioma"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.lastUpdatedText"
+msgid "Last updated"
+msgstr "Última actualització"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.notFound.code"
+msgid "404"
+msgstr "404"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.notFound.title"
+msgid "PAGE NOT FOUND"
+msgstr "PÀGINA NO TROBADA"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.notFound.quote"
+msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
+msgstr "Però si no canvies de direcció, i si continues mirant, pots acabar on t'estàs dirigint."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.notFound.linkLabel"
+msgid "go to home"
+msgstr "anar a l'inici"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.notFound.linkText"
+msgid "Take me home"
+msgstr "Porta'm a casa"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.buttonText"
+msgid "Search"
+msgstr "Cerca"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.displayDetails"
+msgid "Display detailed list"
+msgstr "Mostra llista detallada"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.resetButtonTitle"
+msgid "Reset search"
+msgstr "Restableix cerca"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.backButtonTitle"
+msgid "Close search"
+msgstr "Tanca cerca"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.noResultsText"
+msgid "No results for"
+msgstr "Sense resultats per a"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.footerSelect"
+msgid "to select"
+msgstr "per seleccionar"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.footerNavigate"
+msgid "to navigate"
+msgstr "per navegar"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.footerClose"
+msgid "to close"
+msgstr "per tancar"

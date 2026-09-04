@@ -1,0 +1,48 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
+
+#: ai/pantoken-ai/src/i18n.json
+#, no-c-format
+msgctxt "cli.ai:wroteFile"
+msgid "✓ {{path}}"
+msgstr "✓ {{path}}"
+
+#: ai/pantoken-ai/src/i18n.json
+#, no-c-format
+msgctxt "cli.ai:helpInitDescription"
+msgid "Write pantoken's agent assets into a repo"
+msgstr "Ghi các tài sản agent của pantoken vào repo"
+
+#: ai/pantoken-ai/src/i18n.json
+#, no-c-format
+msgctxt "cli.ai:helpInitToolDescription"
+msgid "Agent tool (all|cursor|copilot|windsurf)"
+msgstr "Công cụ agent (all|cursor|copilot|windsurf)"
+
+#: ai/pantoken-ai/src/i18n.json
+#, no-c-format
+msgctxt "cli.ai:helpInitDirDescription"
+msgid "Target directory"
+msgstr "Thư mục đích"
+
+#: ai/pantoken-ai/src/i18n.json
+#, no-c-format
+msgctxt "cli.ai:helpScaffoldDescription"
+msgid ""
+"Scaffold a starter project (via @pantoken/scaffold) and install agent assets "
+"into it"
+msgstr ""
+"Tạo khung dự án khởi đầu (qua @pantoken/scaffold) và cài đặt các tài sản "
+"agent vào đó"
+
+#: ai/pantoken-ai/src/i18n.json
+#, no-c-format
+msgctxt "cli.ai:helpScaffoldToolDescription"
+msgid "Agent tool (all|cursor|copilot|windsurf)"
+msgstr "Công cụ agent (all|cursor|copilot|windsurf)"
+
+#: ai/pantoken-ai/src/i18n.json
+#, no-c-format
+msgctxt "cli.ai:helpLangDescription"
+msgid "Override the auto-detected display language (e.g. \"hu\")"
+msgstr "Ghi đè ngôn ngữ hiển thị được tự động nhận diện (ví dụ \"hu\")"

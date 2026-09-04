@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: InstUI, arreu
   tagline: Un model de tokens resolt, reformat en fulls d'estil, enllaços per a frameworks, codi nadiu i contingut per a eines de disseny.
   actions:

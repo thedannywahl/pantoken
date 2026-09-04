@@ -1,34 +1,34 @@
 # はじめに
 
-pantoken は Instructure UI のデザイントークンとアイコンを取り込み、一度解決してからその単一のモデルを複数プラットフォーム向けのパッケージに変換します: プレーンなスタイルシート、SCSS と Less、React・Vue・Svelte、Tailwind と Panda、ネイティブの Swift と Kotlin、WordPress と Drupal、Figma など。
+Pantoken は [Instructure UI](https://instructure.design) のデザイントークンとアイコンを取り込み、一度解決してからその単一のモデルを多くのプラットフォーム向けに再成形します：プレーンなスタイルシート、SCSS と Less、React と Vue と Svelte、Tailwind と Panda、ネイティブの Swift と Kotlin、WordPress と Drupal、Figma など。
 
-作業に必要な最小のパッケージをインストールします。すべては統一された `pantoken` パッケージから再エクスポートされているため、まずそこから始めて後で絞り込むことができます。
+作業に合う最小のパッケージをインストールします。すべては統合された `pantoken` パッケージからも再エクスポートされているので、そこから始めて後で絞り込むことができます。
 
-## スタータープロジェクトを足場構築する
+## スタータープロジェクトのスキャフォールド
 
-pantoken を試す最速の方法は、あらかじめインストールと接続がされたスタータープロジェクトをスキャフォールドすることです。
-
-```sh
-npx create-pantoken-app react
-```
-
-対応プラットフォーム: `components` (プレーン HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. `--dir <path>` やプログラム的な利用については [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) を参照してください。
-
-AI コーディングエージェントを使う場合はインストール不要 — スキルを直接指し示してください:
+pantoken を素早く試す最短ルート：あらかじめインストールと設定が済んだスタータープロジェクトをスキャフォールドします。
 
 ```sh
-claude "Fetch https://create.pantoken.app and follow it to set up pantoken in this project."
+npx create-pantoken-app
 ```
 
-Gemini CLI、Cursor CLI、OpenAI Codex CLI、GitHub Copilot CLI、Amazon Q Developer CLI に対しても同様に動作します — `claude` を `gemini`、`agent`、`codex`、`copilot -p`、または `q chat` に置き換えてください。pantoken のエージェントルールをリポジトリに恒久的に組み込みたい場合（AGENTS.md、エディタルール、このスキルのローカルコピー）、代わりに `npx @pantoken/ai init` を実行してください。
+対応プラットフォーム：`components`（プレーン HTML/CSS）、`react`、`vue`、`svelte`、`web-components`、`angular`。プログラム的な利用や `--dir <path>` については [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) を参照してください。
+
+AI コーディングエージェントを使う場合はインストール不要 — スキルを直接指し示してください：
+
+```prompt
+create.pantoken.app/SKILL.md を取得し、それに従ってこのプロジェクトに pantoken をセットアップしてください。
+```
+
+pantoken のエージェントルールをリポジトリに恒久的に組み込みたい場合（AGENTS.md、エディタルール、このスキルのローカルコピーなど）は、代わりに `npx @pantoken/ai init` を実行してください。
 
 ## トークンモデル
 
-トークンは `--instui-<group>-<name>` という名前の CSS カスタムプロパティです。例えば `--instui-color-background-brand` や `--instui-spacing-space-md` のように使います。デフォルトテーマを含む 3 つのテーマが提供されます: `rebrand`（デフォルト。ライトとダークで異なる箇所は `light-dark()`）、`canvas`、および `canvasHighContrast`。アイコンは Lucide と Instructure のカスタムグリフから派生した `<image>` トークン（`--instui-icon-<name>`）です。
+トークンは `--instui-<group>-<name>` という名前の CSS カスタムプロパティです。例えば `--instui-color-background-brand` や `--instui-spacing-space-md`。3 つのテーマが同梱されています：デフォルトの `rebrand`（ライトとダークで異なる箇所は `light-dark()`）、`canvas`、および `canvasHighContrast`。アイコンは Lucide と Instructure のカスタムグリフから派生した `<image>` トークン（`--instui-icon-<name>`）です。
 
 ## Web アプリのスタイリング
 
-スタイルシートをインストールして一度インポートします。すべての `--instui-*` プロパティを定義するため、自分の CSS から直接参照できます。
+スタイルシートをインストールして一度インポートしてください。すべての `--instui-*` プロパティを定義しているので、自分の CSS から直接参照できます。
 
 ```sh
 npm i @pantoken/css
@@ -45,9 +45,9 @@ import "@pantoken/css/inject";
 }
 ```
 
-## どこでもアイコンを使う
+## アイコンをどこでも使う
 
-Web コンポーネントはフレームワークを問いません。移植作業は不要です。
+Web コンポーネントはどのフレームワークでも動作し、移植は不要です。
 
 ```sh
 npm i @pantoken/web-components
@@ -63,7 +63,7 @@ import "@pantoken/web-components";
 
 ### CSS トークン
 
-アイコンは CSS カスタムプロパティ（`--instui-icon-<name>`）です。スタイルシートを一度読み込み、任意のアイコンを `mask-image` または `background-image` として参照できます — 個別アイコンのインポートは不要です。
+アイコンは CSS カスタムプロパティです（`--instui-icon-<name>`）。スタイルシートを一度読み込み、任意のアイコンを `mask-image` または `background-image` として参照してください — アイコンごとの個別インポートは不要です。
 
 ```css
 .my-icon {
@@ -71,9 +71,9 @@ import "@pantoken/web-components";
 }
 ```
 
-### JavaScript — 単一アイコン vs 全セット
+### JavaScript — 単一アイコン vs. フルセット
 
-`@pantoken/icons` は 2 つの名前付きエクスポートを公開します。配列全体を反復せずに単一アイコンを取り出すには `iconsByName` を使用します:
+`@pantoken/icons` は二つの名前付きエクスポートを公開します。フル配列を走査せずに単一アイコンを取得するには `iconsByName` を使います：
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -82,7 +82,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-ピッカーを構築するなど全セットが必要な場合は `icons` を使用してください:
+ピッカーを作るなど全セットが必要な場合は `icons` を使います：
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -91,29 +91,29 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-両方のエクスポートはモジュール初期化時に完全な IR を読み込みます — このレベルではアイコン単位のツリーシェイキングは行われません。軽量な CSS のみの読み込みが必要な場合、[CDN ピッカー](/guide/cdn-picker) を使って必要なアイコンだけをまとめた URL を生成してください。
+両方のエクスポートはモジュール初期化時に完全な IR を読み込みます — このレベルでのアイコン単位のツリーシェイキングはありません。軽量の CSS のみで読み込む場合は、必要なアイコンだけの結合 URL を生成する [CDN ピッカー](/guide/cdn-picker) を使用してください。
 
-## ネイティブプラットフォーム用に生成する
+## ネイティブプラットフォーム向け生成
 
-CLI はトークンソースをターゲットリポジトリへ書き込みます。ランナー以外のインストールは不要です:
+CLI はトークンソースをターゲットリポジトリに書き出します。ランナー以外のインストールは不要です：
 
 ```sh
-npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
+npx @pantoken/cli generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
 すべてのターゲットについては [the pantoken CLI](/guide/cli) を参照してください。
 
 ## VS Code の作成支援ヒント
 
-`@pantoken/pantoken` は現在、下流プロジェクトが HTML/CSS でクラスやトークンの補完を得られるように VS Code の custom-data ファイルを同梱しています（pantoken 固有の拡張をインストールする必要はありません）。
+`@pantoken/pantoken` は現在、下流プロジェクトが pantoken 固有の拡張をインストールせずに HTML/CSS でクラスとトークンの補完を得られるよう、VS Code 用の custom-data ファイルを同梱しています。
 
-1. 統一パッケージをインストールします:
+1. 統合パッケージをインストールします：
 
 ```sh
 npm i @pantoken/pantoken
 ```
 
-1. コンシューマーワークスペースから同梱の custom-data JSON を VS Code にポイントします:
+1. 消費側のワークスペースから同梱の custom-data JSON を VS Code にポイントします：
 
 ```json
 {
@@ -122,13 +122,13 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. VS Code を再読み込み（または "Developer: Reload Window" を実行）して新しいデータを適用します。
+1. 新しいデータを適用するために VS Code をリロードします（または「Developer: Reload Window」を実行）。
 
 これにより `instui-*` クラストークン（および `-modifier` クラストークン）と `--instui-*` カスタムプロパティの補完が有効になります。
 
-## 次に進む場所
+## 次に見る場所
 
-- [パッケージマップ](/guide/packages) — タスクごとにどのパッケージを使うべきか。
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — コンシューマリポジトリにエージェントアセットとルールをインストールする。
-- [アーキテクチャ](/guide/architecture) — トークンモデル、コア、出力がどのように組み合わさるか。
-- [API リファレンス](/api/) — すべてのエクスポートシンボル（ソースから生成）。
+- [パッケージマップ](/guide/packages) — タスク別にどのパッケージを選ぶべきか。
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — コンシューマリポジトリにエージェント資産とルールをインストールする。
+- [アーキテクチャ](/guide/architecture) — トークンモデル、コア、出力がどのように結びつくか。
+- [API リファレンス](/api/) — ソースから生成されたすべてのエクスポートシンボル。

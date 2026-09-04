@@ -1,0 +1,320 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:promptPlatform"
+msgid "Select a platform to scaffold:"
+msgstr "پلتفرمی برای ساخت اسکافولد انتخاب کنید:"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:promptDir"
+msgid "Target directory:"
+msgstr "دایرکتوری هدف:"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:spinnerStart"
+msgid "Scaffolding..."
+msgstr "در حال ساخت اسکافولد..."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:spinnerStop"
+msgid "Done scaffolding."
+msgstr "ساخت اسکافولد انجام شد."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:wroteFile"
+msgid "✓ {{path}}"
+msgstr "✓ {{path}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:nextStepsHeading"
+msgid "Next steps:"
+msgstr "گام‌های بعدی:"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:nextStepsNav"
+msgid "cd {{dir}}"
+msgstr "cd {{dir}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:nextStepsInstall"
+msgid "Install dependencies: {{command}}"
+msgstr "نصب وابستگی‌ها: {{command}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:nextStepsDevServer"
+msgid "Start the dev server (if your template has one)"
+msgstr "راه‌اندازی سرور توسعه (در صورت وجود در قالب شما)"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:notesHeading"
+msgid "Note:"
+msgstr "توجه:"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:caveatsHeading"
+msgid "Caveat:"
+msgstr "ملاحظات:"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:errorMissingPlatform"
+msgid "Missing required argument \"platform\". Expected one of: {{platforms}}"
+msgstr "آرگومان اجباری \"platform\" مفقود است. انتظار یکی از موارد: {{platforms}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:cancelled"
+msgid "Cancelled."
+msgstr "لغو شد."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:helpPlatformDescription"
+msgid "Platform to scaffold ({{platforms}}; \"html\" is an alias for \"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
+msgstr "پلتفرمی برای اسکافولد ({{platforms}}؛ \"html\" معادل \"components\" است، \"theme-editor\" معادل \"canvas-theme-editor\")"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:helpDirDescription"
+msgid "Target directory (prompts interactively on a TTY if omitted)"
+msgstr "دایرکتوری هدف (در یک TTY در صورت حذف شدن به‌صورت تعاملی پرسیده می‌شود)"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:helpYesDescription"
+msgid "Never prompt; error instead of prompting for a missing platform/directory"
+msgstr "هرگز پرسش نکن؛ در صورت فقدان پلتفرم/دایرکتوری خطا صادر کن"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:helpLangDescription"
+msgid "Override the auto-detected display language (e.g. \"hu\")"
+msgstr "زبان نمایش را بازنویسی کن (مثلاً \"hu\")"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.0"
+msgid "cd {{dir}}"
+msgstr "cd {{dir}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.1"
+msgid "{{install}}"
+msgstr "{{install}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.2"
+msgid "{{dev}}"
+msgstr "{{dev}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.notes"
+msgid "Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / JavaScript) so pantoken's classes are available on every page."
+msgstr "فایل‌های theme.css و theme.js را در ویرایشگر قالب Canvas (Advanced → CSS / JavaScript) آپلود کنید تا کلاس‌های pantoken در هر صفحه در دسترس باشند."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.caveats"
+msgid "Canvas sanitizes pasted HTML server-side — always verify content pasted from the RCE preview in Canvas."
+msgstr "Canvas محتوای HTML الصاق‌شده را سمت سرور پاک‌سازی می‌کند — همیشه محتوای الصاق‌شده از پیش‌نمایش RCE را در Canvas بررسی کنید."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.pageTitle"
+msgid "RCE template authoring"
+msgstr "نویسندگی قالب RCE"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.pageDescription"
+msgid "Author Canvas RCE page templates styled with pantoken, with a live preview."
+msgstr "نوشتن قالب‌های صفحه RCE برای Canvas که با pantoken استایل داده شده و پیش‌نمایش زنده دارند."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.editThemeLabel"
+msgid "Edit theme"
+msgstr "ویرایش تم"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.helpAriaLabel"
+msgid "Help"
+msgstr "راهنما"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.copyHtmlLabel"
+msgid "Copy HTML"
+msgstr "کپی HTML"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.editorPaneLabel"
+msgid "Editor"
+msgstr "ویرایشگر"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.previewPaneLabel"
+msgid "Preview"
+msgstr "پیش‌نمایش"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.previewFrameTitle"
+msgid "Styled preview"
+msgstr "پیش‌نمایش استایل‌خورده"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.fullscreenEditorAriaLabel"
+msgid "Fullscreen editor"
+msgstr "ویرایشگر تمام‌صفحه"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.fullscreenPreviewAriaLabel"
+msgid "Fullscreen preview"
+msgstr "پیش‌نمایش تمام‌صفحه"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.resizePanesAriaLabel"
+msgid "Resize editor and preview"
+msgstr "تغییر اندازه ویرایشگر و پیش‌نمایش"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.stackVerticallyLabel"
+msgid "Stack vertically"
+msgstr "چینش عمودی"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.stackSideBySideLabel"
+msgid "Stack side by side"
+msgstr "چینش کنار هم"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.swapPanesLabel"
+msgid "Swap panes"
+msgstr "جابجایی پنل‌ها"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.themeTrayAriaLabel"
+msgid "Theme settings"
+msgstr "تنظیمات تم"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.tabConfigLabel"
+msgid "Config"
+msgstr "پیکربندی"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.tabCssLabel"
+msgid "CSS"
+msgstr "CSS"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.tabJsLabel"
+msgid "JS"
+msgstr "JS"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.cdnProviderLabel"
+msgid "CDN provider"
+msgstr "ارائه‌دهنده CDN"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.themeLabel"
+msgid "Theme"
+msgstr "تم"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.modeLabel"
+msgid "Mode"
+msgstr "حالت"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.downloadCssLabel"
+msgid "Download theme.css"
+msgstr "دانلود theme.css"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.downloadJsLabel"
+msgid "Download theme.js"
+msgstr "دانلود theme.js"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.regenerateLabel"
+msgid "Regenerate from config"
+msgstr "بازتولید از پیکربندی"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.helpModalTitle"
+msgid "How to use this page"
+msgstr "نحوه استفاده از این صفحه"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody1"
+msgid "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas."
+msgstr "یک قالب شروع انتخاب کنید، آن را مانند ویرایشگر محتوای غنی Canvas ویرایش کنید، سپس روی <strong>کپی HTML</strong> کلیک کرده و نتیجه را در یک صفحه Canvas جای‌گذاری کنید (ابتدا به نمای ویرایش HTML سوئیچ کنید). Canvas محتوای HTML الصاق‌شده را سمت سرور پاک‌سازی می‌کند — این پیش‌نمایش تلاش نمی‌کند آن را شبیه‌سازی کند؛ پس همیشه نتیجه الصاق‌شده را در Canvas بررسی کنید."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody2"
+msgid "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them."
+msgstr "از <strong>ویرایش تم</strong> برای تغییر ارائه‌دهنده CDN، تم یا حالت و ویرایش دستی فایل‌های تولیدشده <code>theme.css</code>/<code>theme.js</code> قبل از دانلود استفاده کنید."
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.closeLabel"
+msgid "Close"
+msgstr "بستن"
+
+#: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:nextStepsDependencies"
+msgid "2. Installing dependencies (npm install, pnpm install, yarn install or bun install)"
+msgstr "2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun install)"
+
+#: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:nextStepsInstallGeneric"
+msgid "2. Installing dependencies"
+msgstr "نصب وابستگی‌ها: {{command}}"
+
+#, no-c-format
+#~ msgctxt "cli.scaffold:nextStepsInstallGeneric"
+#~ msgid "2. Függőségek telepítése"
+#~ msgstr "2. Függőségek telepítése"

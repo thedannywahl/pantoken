@@ -1,0 +1,45 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "ui.strings:prevMonth"
+msgid "Previous month"
+msgstr "Mese precedente"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "ui.strings:nextMonth"
+msgid "Next month"
+msgstr "Mese successivo"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "ui.strings:dateLabel"
+msgid "Date"
+msgstr "Data"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "ui.strings:datePlaceholder"
+msgid "yyyy-mm-dd"
+msgstr "aaaa-mm-gg"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "ui.strings:openCalendar"
+msgid "Open calendar"
+msgstr "Apri calendario"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "ui.strings:timeLabel"
+msgid "Time"
+msgstr "Ora"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "ui.strings:back"
+msgid "Back"
+msgstr "Indietro"

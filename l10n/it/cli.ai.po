@@ -1,0 +1,50 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
+
+#: ai/pantoken-ai/src/i18n.json
+#, no-c-format
+msgctxt "cli.ai:wroteFile"
+msgid "✓ {{path}}"
+msgstr "✓ {{path}}"
+
+#: ai/pantoken-ai/src/i18n.json
+#, no-c-format
+msgctxt "cli.ai:helpInitDescription"
+msgid "Write pantoken's agent assets into a repo"
+msgstr "Scrivere le risorse dell'agente di pantoken in un repository"
+
+#: ai/pantoken-ai/src/i18n.json
+#, no-c-format
+msgctxt "cli.ai:helpInitToolDescription"
+msgid "Agent tool (all|cursor|copilot|windsurf)"
+msgstr "Strumento agente (all|cursor|copilot|windsurf)"
+
+#: ai/pantoken-ai/src/i18n.json
+#, no-c-format
+msgctxt "cli.ai:helpInitDirDescription"
+msgid "Target directory"
+msgstr "Directory di destinazione"
+
+#: ai/pantoken-ai/src/i18n.json
+#, no-c-format
+msgctxt "cli.ai:helpScaffoldDescription"
+msgid ""
+"Scaffold a starter project (via @pantoken/scaffold) and install agent assets "
+"into it"
+msgstr ""
+"Generare un progetto iniziale (via @pantoken/scaffold) e installarvi le "
+"risorse dell'agente"
+
+#: ai/pantoken-ai/src/i18n.json
+#, no-c-format
+msgctxt "cli.ai:helpScaffoldToolDescription"
+msgid "Agent tool (all|cursor|copilot|windsurf)"
+msgstr "Strumento agente (all|cursor|copilot|windsurf)"
+
+#: ai/pantoken-ai/src/i18n.json
+#, no-c-format
+msgctxt "cli.ai:helpLangDescription"
+msgid "Override the auto-detected display language (e.g. \"hu\")"
+msgstr ""
+"Sovrascrivere la lingua di visualizzazione rilevata automaticamente (es. "
+"\"hu\")"

@@ -30,7 +30,7 @@ vi.mock("../.vitepress/i18n.ts", () => ({
   ENGLISH_UI_STRINGS: {},
   flattenStrings: () => [],
 }));
-// Empty so glossaryDrift contributes no items to these fixtures, same rationale as ENGLISH_UI_STRINGS.
+// Empty so API glossary terms contribute no items to these fixtures, same rationale as ENGLISH_UI_STRINGS.
 vi.mock("./glossary.ts", () => ({ GLOSSARY_TERMS: [] }));
 
 const GUIDE_MD = "# Guide\n\nA whole guide file, translated as one markdown unit.\n";
@@ -74,7 +74,7 @@ beforeAll(async () => {
 /**
  * The drift policy the script reads through `DriftReporter`. Served from the mocked node:fs so each
  * test controls whether a `hu` finding blocks or only warns — that severity now lives in
- * `i18n-policy.json`, not in this script.
+ * `i18n.config.json`, not in this script.
  */
 const blockingPolicy = {
   tiers: { source: ["en"], rest: ["*"] },
@@ -98,7 +98,11 @@ interface Fixtures {
   guidesCache: Record<string, string> | null;
   apiCache: Record<string, string> | null;
   apiDirExists: boolean;
-  policy: unknown;
+  policy: {
+    tiers: Record<string, string[]>;
+    surfaces: Record<string, string | Record<string, string>>;
+    fallback: string | Record<string, string>;
+  };
   homeMd: string;
   homeCache: Record<string, string> | null;
 }
@@ -117,9 +121,18 @@ const fixtures: Fixtures = {
 
 /** Resolve whether a mocked path should be treated as existing. */
 function fixtureExists(pathName: string): boolean {
-  if (pathName.endsWith(".guides.json")) return fixtures.guidesCache !== null;
-  if (pathName.endsWith(".api.json")) return fixtures.apiCache !== null;
-  if (pathName.endsWith(".home.json")) return fixtures.homeCache !== null;
+  if (pathName.endsWith(".home.po")) return false;
+  if (pathName.endsWith(".chrome.po")) return false;
+  if (pathName.endsWith(".demos.po")) return false;
+  if (pathName.endsWith(".guides.po")) return false;
+  if (pathName.endsWith(".api.po")) return false;
+  const cacheStates = [
+    [".guides.json", fixtures.guidesCache],
+    [".api.json", fixtures.apiCache],
+    [".home.json", fixtures.homeCache],
+  ] as const;
+  const cache = cacheStates.find(([suffix]) => pathName.endsWith(suffix));
+  if (cache) return cache[1] !== null;
   if (pathName.endsWith("/api")) return fixtures.apiDirExists;
   return true;
 }
@@ -133,7 +146,11 @@ function fixtureDirEntries(pathName: string): string[] {
 
 /** Mock file-content lookup for the drift policy, caches, and markdown files. */
 function fixtureFileContents(pathName: string): string {
-  if (pathName.endsWith("i18n-policy.json")) return JSON.stringify(fixtures.policy);
+  if (pathName.endsWith("i18n.config.json"))
+    return JSON.stringify({
+      locales: { tiers: fixtures.policy.tiers },
+      drift: { surfaces: fixtures.policy.surfaces, fallback: fixtures.policy.fallback },
+    });
   if (pathName.endsWith("/index.md")) return fixtures.homeMd;
   return fixtureCacheFileContents(pathName) ?? fixtureMarkdownContents(pathName);
 }

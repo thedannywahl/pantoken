@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: index.md:5
+#, no-c-format
+msgid "InstUI, everywhere"
+msgstr "어디서나 InstUI"
+
+#: index.md:6
+#, no-c-format
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "하나의 해석된 토큰 모델을 스타일시트, 프레임워크 바인딩, 네이티브 코드 및 디자인 도구용 페이로드로 변환합니다."
+
+#: index.md:9
+#, no-c-format
+msgid "Getting started"
+msgstr "시작하기"
+
+#: index.md:12
+#, no-c-format
+msgid "The package map"
+msgstr "패키지 맵"
+
+#: index.md:15
+#, no-c-format
+msgid "API reference"
+msgstr "API 참조"
+
+#: index.md:18
+#, no-c-format
+msgid "CSS reference"
+msgstr "CSS 참조"
+
+#: index.md:24
+#, no-c-format
+msgid "One source of truth"
+msgstr "하나의 신뢰할 수 있는 원천"
+
+#: index.md:25
+#, no-c-format
+msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr "모든 패키지가 동일한 해석된 토큰 IR을 읽습니다. 상위에서 토큰을 변경하면 CSS, SCSS, 네이티브 코드 및 Figma에 동일하게 반영됩니다."
+
+#: index.md:29
+#, no-c-format
+msgid "Use the smallest package"
+msgstr "가장 작은 패키지 사용"
+
+#: index.md:30
+#, no-c-format
+msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "스타일시트에는 @pantoken/css만 설치하고, 훅과 아이콘에는 @pantoken/react을 설치하거나 Tailwind, Panda, MUI용 번들러 프리셋을 사용하세요."
+
+#: index.md:34
+#, no-c-format
+msgid "Generate for any platform"
+msgstr "모든 플랫폼용 생성"
+
+#: index.md:35
+#, no-c-format
+msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr "Swift, Kotlin, Compose, Flutter, Rust, WordPress 등으로 내보내려면 `pantoken generate`을 실행하세요. 동일한 토큰을 각 생태계의 표현 방식에 맞게 제공합니다."
+
+#: index.md:39
+#, no-c-format
+msgid "No upstream coupling"
+msgstr "업스트림 결합 없음"
+
+#: index.md:40
+#, no-c-format
+msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr "토큰은 벤더된 정적 JSON으로 배포되므로 `npm i`은 GitHub 전용 소스를 참조하지 않습니다. 배포 가능하고 semver 규격을 따르며 오프라인 친화적입니다."

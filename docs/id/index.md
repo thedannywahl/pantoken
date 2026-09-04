@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: Token desain Instructure, di mana-mana
   tagline: Satu model token yang telah diselesaikan, dibentuk ulang menjadi stylesheet, pengikatan framework, kode native, dan payload alat desain.
   actions:

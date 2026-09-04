@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pantoken.app/schemas/i18n.source.schema.json",
+  "title": "pantoken message source",
+  "description": "A keyed localization source shared by package and template i18n.json files.",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string", "format": "uri-reference" }
+  },
+  "additionalProperties": { "$ref": "#/$defs/message" },
+  "$defs": {
+    "message": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["message", "translate"],
+      "properties": {
+        "message": { "type": "string" },
+        "translate": {
+          "oneOf": [
+            { "enum": ["always", "optional", "never"] },
+            {
+              "type": "object",
+              "additionalProperties": { "enum": ["always", "optional", "never"] }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: InstUI, ամենուրեք
   tagline: Մի լուծված տոկենի մոդել, վերաձևված՝ ոճաթերթիկների, ֆրեյմվորկային կապերի, բնիկ կոդի և դիզայն-սարքերի payload-ների համար։
   actions:

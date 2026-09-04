@@ -1,0 +1,46 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
+
+#: ai/pantoken-ai/src/i18n.json
+#, no-c-format
+msgctxt "cli.ai:wroteFile"
+msgid "✓ {{path}}"
+msgstr "✓ เขียนไฟล์ {{path}}"
+
+#: ai/pantoken-ai/src/i18n.json
+#, no-c-format
+msgctxt "cli.ai:helpInitDescription"
+msgid "Write pantoken's agent assets into a repo"
+msgstr "เขียนแอสเซ็ตของเอเจนต์ pantoken ลงในรีโพ"
+
+#: ai/pantoken-ai/src/i18n.json
+#, no-c-format
+msgctxt "cli.ai:helpInitToolDescription"
+msgid "Agent tool (all|cursor|copilot|windsurf)"
+msgstr "เครื่องมือเอเจนต์ (all|cursor|copilot|windsurf)"
+
+#: ai/pantoken-ai/src/i18n.json
+#, no-c-format
+msgctxt "cli.ai:helpInitDirDescription"
+msgid "Target directory"
+msgstr "ไดเรกทอรีเป้าหมาย"
+
+#: ai/pantoken-ai/src/i18n.json
+#, no-c-format
+msgctxt "cli.ai:helpScaffoldDescription"
+msgid ""
+"Scaffold a starter project (via @pantoken/scaffold) and install agent assets "
+"into it"
+msgstr "สร้างโครงงานเริ่มต้น (ผ่าน @pantoken/scaffold) และติดตั้งแอสเซ็ตเอเจนต์ลงในนั้น"
+
+#: ai/pantoken-ai/src/i18n.json
+#, no-c-format
+msgctxt "cli.ai:helpScaffoldToolDescription"
+msgid "Agent tool (all|cursor|copilot|windsurf)"
+msgstr "เครื่องมือเอเจนต์ (all|cursor|copilot|windsurf)"
+
+#: ai/pantoken-ai/src/i18n.json
+#, no-c-format
+msgctxt "cli.ai:helpLangDescription"
+msgid "Override the auto-detected display language (e.g. \"hu\")"
+msgstr "แทนที่ภาษาที่ตรวจจับอัตโนมัติสำหรับการแสดงผล (เช่น \"hu\")"

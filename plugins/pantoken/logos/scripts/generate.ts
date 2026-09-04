@@ -29,6 +29,7 @@ export const PRODUCTS: string[] = [
   "instructure",
   "learnplatform",
   "mastery",
+  "pantoken",
   "parchment",
 ];
 // Longest-first so `icon-single-dot` matches before `icon`.
@@ -52,30 +53,53 @@ export const COLOR_MODES: string[] = [
   "dark",
   "light",
 ];
+/** Recognised trailing language codes for localized wordmark variants, e.g. `horizontal-full-color-ar`. */
+export const LANGS: string[] = [
+  "ar",
+  "el",
+  "fa",
+  "he",
+  "hi",
+  "hy",
+  "jp",
+  "ko",
+  "ru",
+  "th",
+  "uk",
+  "zh",
+];
 
 /** Script-local logo metadata; mirrors {@link LogoMeta} in `src/index.ts`. */
 interface LogoMeta {
   product: string;
   layout: string;
   colorMode: string;
+  lang?: string;
   name: string;
   path: string;
 }
 
 /**
- * Parse a logo filename stem (`<layout>-<mode>`, without the `.svg` extension) into its layout and
- * color-mode components.
+ * Parse a logo filename stem (`<layout>-<mode>` or `<layout>-<mode>-<lang>`, without the `.svg`
+ * extension) into its layout, color-mode, and optional language components.
  *
- * @param stem - The filename stem to parse, e.g. `"horizontal-color"` or `"icon-current-color"`.
- * @returns The parsed `{ layout, colorMode }` pair, or `undefined` if the stem does not match any
- *   known layout + mode combination.
+ * @param stem - The filename stem to parse, e.g. `"horizontal-color"` or
+ *   `"horizontal-full-color-ar"`.
+ * @returns The parsed `{ layout, colorMode, lang? }`, or `undefined` if the stem does not match any
+ *   known layout + mode (+ lang) combination.
  */
-export function parseStem(stem: string): { layout: string; colorMode: string } | undefined {
+export function parseStem(
+  stem: string,
+): { layout: string; colorMode: string; lang?: string } | undefined {
   for (const layout of LAYOUTS) {
-    if (stem.startsWith(`${layout}-`)) {
-      const mode = stem.slice(layout.length + 1);
-      if (COLOR_MODES.includes(mode)) return { layout, colorMode: mode };
+    if (!stem.startsWith(`${layout}-`)) continue;
+    const rest = stem.slice(layout.length + 1);
+    for (const lang of LANGS) {
+      if (!rest.endsWith(`-${lang}`)) continue;
+      const mode = rest.slice(0, -(lang.length + 1));
+      if (COLOR_MODES.includes(mode)) return { layout, colorMode: mode, lang };
     }
+    if (COLOR_MODES.includes(rest)) return { layout, colorMode: rest };
   }
   return undefined;
 }
@@ -93,11 +117,12 @@ for (const product of PRODUCTS) {
     if (!file.endsWith(".svg")) continue;
     const parsed = parseStem(file.replace(/\.svg$/u, ""));
     if (!parsed) continue;
-    const name = `${product}-${parsed.layout}-${parsed.colorMode}`;
+    const name = `${product}-${parsed.layout}-${parsed.colorMode}${parsed.lang ? `-${parsed.lang}` : ""}`;
     logos.push({
       product,
       layout: parsed.layout,
       colorMode: parsed.colorMode,
+      ...(parsed.lang ? { lang: parsed.lang } : {}),
       name,
       path: `${product}/${file}`,
     });

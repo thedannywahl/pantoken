@@ -3,7 +3,7 @@
  *
  * Each checker reports its findings to a {@link DriftReporter} instead of deciding for itself whether
  * to `process.exit(1)`. The reporter resolves a severity per finding from the committed
- * `i18n-policy.json` — a `(surface, locale-tier)` matrix — so one config file decides what blocks a
+ * `i18n.config.json` — a `(surface, locale-tier)` matrix — so one config file decides what blocks a
  * merge and what only warns. That matters because the cost of a hard gate scales with locale count:
  * blocking on ~90 locales means no English string can land until every translation does.
  *
@@ -28,7 +28,7 @@ const SEVERITIES: readonly DriftSeverity[] = ["block", "warn", "off"];
  */
 export type SurfacePolicy = DriftSeverity | Readonly<Record<string, DriftSeverity>>;
 
-/** The shape of `i18n-policy.json`. */
+/** The drift-policy shape embedded in `i18n.config.json`. */
 export interface DriftPolicy {
   /** Named locale groups, matched in declaration order. Put the catch-all (`["*"]`) last. */
   tiers: Readonly<Record<string, readonly string[]>>;
@@ -122,7 +122,7 @@ function assertSeverity(value: unknown, where: string): DriftSeverity {
 }
 
 /**
- * Validate a parsed `i18n-policy.json`. Throws with the offending path on any malformed field —
+ * Validate a parsed drift-policy object. Throws with the offending path on any malformed field —
  * a policy file is a merge gate, so a silent default here would quietly disable CI.
  */
 export function parseDriftPolicy(raw: unknown): DriftPolicy {
@@ -176,7 +176,7 @@ export function parseDriftPolicy(raw: unknown): DriftPolicy {
 }
 
 /**
- * The policy used when no `i18n-policy.json` is found: English source drift blocks, every actual
+ * The policy used when no `i18n.config.json` is found: English source drift blocks, every actual
  * translation only warns. A checkout without the config still enforces the thing that breaks the
  * English build, and still can't be parked by ~90 pending translations.
  */
@@ -189,27 +189,37 @@ export const DEFAULT_DRIFT_POLICY: DriftPolicy = {
 let cached: DriftPolicy | undefined;
 
 /**
- * Load the repo's `i18n-policy.json`, cached per process.
+ * Load the repo's embedded drift policy from `i18n.config.json`, cached per process.
  *
- * `I18N_DRIFT_POLICY` overrides the path (useful for tests and for a stricter scheduled run).
+ * `I18N_CONFIG` overrides the config path (useful for tests and for a stricter scheduled run).
  * Falls back to {@link DEFAULT_DRIFT_POLICY} when no file exists, so a checker still runs — and still
  * blocks on English source drift — in a checkout without the config.
  */
 export function loadDriftPolicy(fromPath: string = process.cwd()): DriftPolicy {
   if (cached) return cached;
-  const override = process.env.I18N_DRIFT_POLICY;
-  const path = override ?? join(findWorkspaceRoot(fromPath) ?? fromPath, "i18n-policy.json");
+  const override = process.env.I18N_CONFIG;
+  const path = override ?? join(findWorkspaceRoot(fromPath) ?? fromPath, "i18n.config.json");
   if (!existsSync(path)) {
-    if (override)
-      throw new Error(`i18n-policy: I18N_DRIFT_POLICY points at a missing file: ${path}`);
+    if (override) throw new Error(`i18n.config: I18N_CONFIG points at a missing file: ${path}`);
     cached = DEFAULT_DRIFT_POLICY;
     return cached;
   }
-  cached = parseDriftPolicy(JSON.parse(readFileSync(path, "utf8")));
+  const config = JSON.parse(readFileSync(path, "utf8")) as {
+    locales?: { tiers?: DriftPolicy["tiers"] };
+    drift?: { surfaces?: DriftPolicy["surfaces"]; fallback?: DriftPolicy["fallback"] };
+  };
+  if (!config.locales?.tiers || !config.drift?.surfaces || config.drift.fallback === undefined) {
+    throw new Error(`i18n.config: missing locales.tiers or drift policy in ${path}`);
+  }
+  cached = parseDriftPolicy({
+    tiers: config.locales.tiers,
+    surfaces: config.drift.surfaces,
+    fallback: config.drift.fallback,
+  });
   return cached;
 }
 
-/** Drop the cached policy — for tests that swap `I18N_DRIFT_POLICY` between cases. */
+/** Drop the cached policy — for tests that swap `I18N_CONFIG` between cases. */
 export function resetDriftPolicyCache(): void {
   cached = undefined;
 }
@@ -370,7 +380,7 @@ export class DriftReporter {
     if (blocked.length > 0) {
       console.error(
         `\nBlocking translation drift. Run \`${this.options.fixCommand}\` locally, then commit the ` +
-          `updated translation cache. Loosen or tighten what blocks in \`i18n-policy.json\`.`,
+          `updated translation cache. Loosen or tighten what blocks in \`i18n.config.json\`.`,
       );
       return 1;
     }
@@ -490,7 +500,7 @@ export class DriftReporter {
       "",
       "</details>",
       "",
-      `Fill drift with \`${this.options.fixCommand}\`. Severity per surface and locale tier lives in \`i18n-policy.json\`.`,
+      `Fill drift with \`${this.options.fixCommand}\`. Severity per surface and locale tier lives in \`i18n.config.json\`.`,
       "",
     );
     appendFileSync(path, `${lines.join("\n")}\n`);

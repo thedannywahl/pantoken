@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: index.md:5
+#, no-c-format
+msgid "InstUI, everywhere"
+msgstr "InstUI, arreu"
+
+#: index.md:6
+#, no-c-format
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "Un model de tokens resolt, reformat en fulls d'estil, enllaços per a frameworks, codi nadiu i contingut per a eines de disseny."
+
+#: index.md:9
+#, no-c-format
+msgid "Getting started"
+msgstr "Començar"
+
+#: index.md:12
+#, no-c-format
+msgid "The package map"
+msgstr "El mapa de paquets"
+
+#: index.md:15
+#, no-c-format
+msgid "API reference"
+msgstr "Referència de l'API"
+
+#: index.md:18
+#, no-c-format
+msgid "CSS reference"
+msgstr "Referència de CSS"
+
+#: index.md:24
+#, no-c-format
+msgid "One source of truth"
+msgstr "Una única font de veritat"
+
+#: index.md:25
+#, no-c-format
+msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr "Cada paquet llegeix la mateixa IR de tokens resolta. Canvia un token a l'origen i flueix a CSS, SCSS, codi nadiu i Figma de la mateixa manera."
+
+#: index.md:29
+#, no-c-format
+msgid "Use the smallest package"
+msgstr "Fes servir el paquet més petit"
+
+#: index.md:30
+#, no-c-format
+msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "Instal·la només @pantoken/css per a un full d'estil, @pantoken/react per a hooks i icones, o un preset de bundler per a Tailwind, Panda o MUI."
+
+#: index.md:34
+#, no-c-format
+msgid "Generate for any platform"
+msgstr "Genera per a qualsevol plataforma"
+
+#: index.md:35
+#, no-c-format
+msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr "Executa `pantoken generate` per generar Swift, Kotlin, Compose, Flutter, Rust, WordPress i més. Els mateixos tokens, en l'idioma de cada ecosistema."
+
+#: index.md:39
+#, no-c-format
+msgid "No upstream coupling"
+msgstr "Sense acoblament amb l'origen"
+
+#: index.md:40
+#, no-c-format
+msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr "Els tokens s'envien empacats com JSON estàtic, així `npm i` mai no accedeix a una font exclusiva de GitHub. Publicable, amb semver i aptes per a ús fora de línia."

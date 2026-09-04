@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: InstUI, kaikkialla
   tagline: Yksi ratkaistu token-malli, muutettuna tyylitaulukoiksi, kehys-sidoksiksi, natiivikoodiksi ja suunnittelutyökalujen sisältöihin.
   actions:

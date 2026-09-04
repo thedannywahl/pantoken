@@ -1,0 +1,3417 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: alert/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:alert:text1"
+msgid "Dismissable with"
+msgstr "Es pot descartar amb"
+
+#: alert/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:alert:text2"
+msgid "— I fade out when closed."
+msgstr "— Em desvaneixo quan es tanca."
+
+#: alert/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:alert:text3"
+msgid "Dismissable with"
+msgstr "Es pot descartar amb"
+
+#: alert/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:alert:text4"
+msgid "— I close instantly."
+msgstr "— Tanco instantàniament."
+
+#: alert/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:alert:text5"
+msgid "Not dismissable, and flat via"
+msgstr "No es pot descartar i és plana mitjançant"
+
+#: alert/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:alert:text6"
+msgid "(alerts are elevated by default)."
+msgstr "(les alertes estan elevades per defecte)."
+
+#: alert/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:alert:text7"
+msgid "A custom icon via the"
+msgstr "Una icona personalitzada mitjançant el"
+
+#: alert/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:alert:text8"
+msgid "class, kept white on the status bar."
+msgstr "classe, mantinguda en blanc a la barra d'estat."
+
+#: alert/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:alert:text9"
+msgid "Restore alerts"
+msgstr "Restaurar alertes"
+
+#: avatar/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:avatar:text1"
+msgid "DW"
+msgstr "DW"
+
+#: avatar/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:avatar:text2"
+msgid "AB"
+msgstr "AB"
+
+#: avatar/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:avatar:text3"
+msgid "CD"
+msgstr "CD"
+
+#: avatar/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:avatar:text4"
+msgid "EF"
+msgstr "EF"
+
+#: avatar/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:avatar:text5"
+msgid "GH"
+msgstr "GH"
+
+#: avatar/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:avatar:text6"
+msgid "IJ"
+msgstr "IJ"
+
+#: avatar/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:avatar:text7"
+msgid "KL"
+msgstr "KL"
+
+#: avatar/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:avatar:text8"
+msgid "AI"
+msgstr "IA"
+
+#: avatar/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:avatar:text9"
+msgid "AB"
+msgstr "AB"
+
+#: avatar/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:avatar:text10"
+msgid "CD"
+msgstr "CD"
+
+#: avatar/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:avatar:text11"
+msgid "EF"
+msgstr "EF"
+
+#: avatar/i18n.json#text12
+#, no-c-format
+msgctxt "docs.demos:avatar:text12"
+msgid "GH"
+msgstr "GH"
+
+#: avatar/i18n.json#text13
+#, no-c-format
+msgctxt "docs.demos:avatar:text13"
+msgid "IJ"
+msgstr "IJ"
+
+#: avatar/i18n.json#text14
+#, no-c-format
+msgctxt "docs.demos:avatar:text14"
+msgid "KL"
+msgstr "KL"
+
+#: avatar/i18n.json#text15
+#, no-c-format
+msgctxt "docs.demos:avatar:text15"
+msgid "AI"
+msgstr "IA"
+
+#: avatar/i18n.json#text16
+#, no-c-format
+msgctxt "docs.demos:avatar:text16"
+msgid "2XS"
+msgstr "2XS"
+
+#: avatar/i18n.json#text17
+#, no-c-format
+msgctxt "docs.demos:avatar:text17"
+msgid "XS"
+msgstr "Molt petit"
+
+#: avatar/i18n.json#text18
+#, no-c-format
+msgctxt "docs.demos:avatar:text18"
+msgid "SM"
+msgstr "SM"
+
+#: avatar/i18n.json#text19
+#, no-c-format
+msgctxt "docs.demos:avatar:text19"
+msgid "MD"
+msgstr "MD"
+
+#: avatar/i18n.json#text20
+#, no-c-format
+msgctxt "docs.demos:avatar:text20"
+msgid "LG"
+msgstr "GRAN"
+
+#: avatar/i18n.json#text21
+#, no-c-format
+msgctxt "docs.demos:avatar:text21"
+msgid "XL"
+msgstr "XL"
+
+#: avatar/i18n.json#text22
+#, no-c-format
+msgctxt "docs.demos:avatar:text22"
+msgid "2XL"
+msgstr "2XL"
+
+#: avatar/i18n.json#text23
+#, no-c-format
+msgctxt "docs.demos:avatar:text23"
+msgid "MN"
+msgstr "MN"
+
+#: avatar/i18n.json#text24
+#, no-c-format
+msgctxt "docs.demos:avatar:text24"
+msgid "OP"
+msgstr "Operació"
+
+#: avatar/i18n.json#text25
+#, no-c-format
+msgctxt "docs.demos:avatar:text25"
+msgid "QR"
+msgstr "Codi QR"
+
+#: avatar/i18n.json#text26
+#, no-c-format
+msgctxt "docs.demos:avatar:text26"
+msgid "ST"
+msgstr "ST"
+
+#: avatar/i18n.json#text27
+#, no-c-format
+msgctxt "docs.demos:avatar:text27"
+msgid "Sarah Robinson"
+msgstr "Sarah Robinson"
+
+#: avatar/i18n.json#text28
+#, no-c-format
+msgctxt "docs.demos:avatar:text28"
+msgid "Kyle Montgomery"
+msgstr "Kyle Montgomery"
+
+#: avatar/i18n.json#text29
+#, no-c-format
+msgctxt "docs.demos:avatar:text29"
+msgid "Alexandria Winterbourne"
+msgstr "Alexandria Winterbourne"
+
+#: avatar/i18n.json#text30
+#, no-c-format
+msgctxt "docs.demos:avatar:text30"
+msgid "Miguel"
+msgstr "Miguel"
+
+#: avatar/i18n.json#text31
+#, no-c-format
+msgctxt "docs.demos:avatar:text31"
+msgid "Sanchez"
+msgstr "Sanchez"
+
+#: avatar/i18n.json#text32
+#, no-c-format
+msgctxt "docs.demos:avatar:text32"
+msgid "Priya"
+msgstr "Priya"
+
+#: badge/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:badge:text1"
+msgid "AB"
+msgstr "AB"
+
+#: badge/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:badge:text2"
+msgid "CD"
+msgstr "CD"
+
+#: badge/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:badge:text3"
+msgid "Inbox"
+msgstr "Safata d'entrada"
+
+#: badge/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:badge:text4"
+msgid "New"
+msgstr "Nou"
+
+#: base/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:base:text1"
+msgid "Base reset"
+msgstr "Restabliment de la base"
+
+#: base/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:base:text2"
+msgid "This result renders with"
+msgstr "Aquest resultat es renderitza amb"
+
+#: base/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:base:text3"
+msgid "loaded first. The page surface, base text color\n    and font, and"
+msgstr "carregat primer. La superfície de la pàgina, el color de text base\n    i la font, i"
+
+#: base/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:base:text4"
+msgid "all come from the tokens — no rule of your own required."
+msgstr "tot prové dels tokens — no cal cap regla pròpia."
+
+#: base/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:base:text5"
+msgid "Bare elements pick up sensible defaults, like this"
+msgstr "Els elements nus adopten valors predeterminats raonables, com aquest."
+
+#: base/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:base:text6"
+msgid "base link"
+msgstr "enllaç base"
+
+#: base/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:base:text7"
+msgid ", and everything sits on the token page surface. Switch the theme (or\n    light/dark) and the surface, text, and link all follow."
+msgstr ", i tot se situa a la superfície de la pàgina de tokens. Canvia el tema (o clar/fosc) i la superfície, el text i l'enllaç ho segueixen."
+
+#: base/i18n.json#text8
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:base:text8"
+msgid "background-page"
+msgstr "background-page"
+
+#: base/i18n.json#text9
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:base:text9"
+msgid "background-base"
+msgstr "background-base"
+
+#: billboard/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:billboard:text1"
+msgid "No items yet"
+msgstr "Encara no hi ha elements"
+
+#: billboard/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:billboard:text2"
+msgid "Create your first item to get started."
+msgstr "Crea el teu primer element per començar."
+
+#: billboard/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:billboard:text3"
+msgid "Add a file"
+msgstr "Afegeix un fitxer"
+
+#: billboard/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:billboard:text4"
+msgid "Click anywhere in this billboard."
+msgstr "Feu clic a qualsevol lloc d'aquest cartell."
+
+#: breadcrumb/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:breadcrumb:text1"
+msgid "Home"
+msgstr "Inici"
+
+#: breadcrumb/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:breadcrumb:text2"
+msgid "Guides"
+msgstr "Guies"
+
+#: breadcrumb/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:breadcrumb:text3"
+msgid "Components"
+msgstr "Components"
+
+#: breadcrumb/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:breadcrumb:text4"
+msgid "Breadcrumb"
+msgstr "Molla de pa"
+
+#: breadcrumb/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:breadcrumb:text5"
+msgid "Course"
+msgstr "Curs"
+
+#: breadcrumb/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:breadcrumb:text6"
+msgid "Module 3"
+msgstr "Mòdul 3"
+
+#: breadcrumb/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:breadcrumb:text7"
+msgid "Assignment"
+msgstr "Assignació"
+
+#: breadcrumb/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:breadcrumb:text8"
+msgid "Dashboard"
+msgstr "Panell de control"
+
+#: breadcrumb/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:breadcrumb:text9"
+msgid "Reports"
+msgstr "Informes"
+
+#: breadcrumb/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:breadcrumb:text10"
+msgid "Q3 summary"
+msgstr "Resum del 3r trimestre"
+
+#: breadcrumb/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:breadcrumb:text11"
+msgid "Home Page"
+msgstr "Pàgina d'inici"
+
+#: button/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:button:text1"
+msgid "Colors"
+msgstr "Colors"
+
+#: button/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:button:text2"
+msgid "Primary"
+msgstr "Principal"
+
+#: button/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:button:text3"
+msgid "Secondary"
+msgstr "Secundari"
+
+#: button/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:button:text4"
+msgid "Tertiary"
+msgstr "Terciari"
+
+#: button/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:button:text5"
+msgid "Success"
+msgstr "Èxit"
+
+#: button/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:button:text6"
+msgid "Danger"
+msgstr "Perill"
+
+#: button/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:button:text7"
+msgid "AI"
+msgstr "IA"
+
+#: button/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:button:text8"
+msgid "AI primary"
+msgstr "IA principal"
+
+#: button/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:button:text9"
+msgid "AI secondary"
+msgstr "IA secundària"
+
+#: button/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:button:text10"
+msgid "On Color (text on colored background)"
+msgstr "On Color (text on colored background)"
+
+#: button/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:button:text11"
+msgid "Primary inverse"
+msgstr "Primari invers"
+
+#: button/i18n.json#text12
+#, no-c-format
+msgctxt "docs.demos:button:text12"
+msgid "Ghost (no background)"
+msgstr "Fantasma (sense fons)"
+
+#: button/i18n.json#text13
+#, no-c-format
+msgctxt "docs.demos:button:text13"
+msgid "Primary ghost"
+msgstr "Fantasma primari"
+
+#: button/i18n.json#text14
+#, no-c-format
+msgctxt "docs.demos:button:text14"
+msgid "Secondary ghost"
+msgstr "Fantasma secundari"
+
+#: button/i18n.json#text15
+#, no-c-format
+msgctxt "docs.demos:button:text15"
+msgid "Block (full width)"
+msgstr "Bloc (amplada completa)"
+
+#: button/i18n.json#text16
+#, no-c-format
+msgctxt "docs.demos:button:text16"
+msgid "Block button"
+msgstr "Botó de bloqueig"
+
+#: button/i18n.json#text17
+#, no-c-format
+msgctxt "docs.demos:button:text17"
+msgid "Sizes"
+msgstr "Mides"
+
+#: button/i18n.json#text18
+#, no-c-format
+msgctxt "docs.demos:button:text18"
+msgid "Small"
+msgstr "Petit"
+
+#: button/i18n.json#text19
+#, no-c-format
+msgctxt "docs.demos:button:text19"
+msgid "Medium"
+msgstr "Mitjà"
+
+#: button/i18n.json#text20
+#, no-c-format
+msgctxt "docs.demos:button:text20"
+msgid "Large"
+msgstr "Gran"
+
+#: button/i18n.json#text21
+#, no-c-format
+msgctxt "docs.demos:button:text21"
+msgid "Icons and shapes"
+msgstr "Icones i formes"
+
+#: button/i18n.json#text22
+#, no-c-format
+msgctxt "docs.demos:button:text22"
+msgid "Continue"
+msgstr "Continuar"
+
+#: button/i18n.json#text23
+#, no-c-format
+msgctxt "docs.demos:button:text23"
+msgid "Download"
+msgstr "Descarregar"
+
+#: button/i18n.json#text24
+#, no-c-format
+msgctxt "docs.demos:button:text24"
+msgid "Star"
+msgstr "Estrella"
+
+#: button/i18n.json#text25
+#, no-c-format
+msgctxt "docs.demos:button:text25"
+msgid "Add"
+msgstr "Afegir"
+
+#: button/i18n.json#text26
+#, no-c-format
+msgctxt "docs.demos:button:text26"
+msgid "Condensed and states"
+msgstr "Compacte i estats"
+
+#: button/i18n.json#text27
+#, no-c-format
+msgctxt "docs.demos:button:text27"
+msgid "Condensed"
+msgstr "Condensat"
+
+#: button/i18n.json#text28
+#, no-c-format
+msgctxt "docs.demos:button:text28"
+msgid "Condensed small"
+msgstr "Condensat petit"
+
+#: button/i18n.json#text29
+#, no-c-format
+msgctxt "docs.demos:button:text29"
+msgid "Toggle"
+msgstr "Alternar"
+
+#: button/i18n.json#text30
+#, no-c-format
+msgctxt "docs.demos:button:text30"
+msgid "Disabled"
+msgstr "Desactivat"
+
+#: button/i18n.json#text31
+#, no-c-format
+msgctxt "docs.demos:button:text31"
+msgid "Primary on-color"
+msgstr "Primary on-color"
+
+#: button/i18n.json#text32
+#, no-c-format
+msgctxt "docs.demos:button:text32"
+msgid "Secondary on-color"
+msgstr "Secondary on-color"
+
+#: byline/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:byline:text1"
+msgid "What's new"
+msgstr "Què hi ha de nou"
+
+#: byline/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:byline:text2"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "La figura pot ser qualsevol element visual principal — una icona, un avatar o una imatge."
+
+#: byline/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:byline:text3"
+msgid "Documentation"
+msgstr "Documentació"
+
+#: byline/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:byline:text4"
+msgid "With"
+msgstr "Amb"
+
+#: byline/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:byline:text5"
+msgid "the figure pins to the top instead of centering,\n          which reads better when the description runs to several lines like this one does."
+msgstr "la figura s'ancora a la part superior en lloc de centrar-se,\n          cosa que es llegeix millor quan la descripció s'estén a diverses línies com ho fa aquesta."
+
+#: byline/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:byline:text6"
+msgid "Compact"
+msgstr "Compacte"
+
+#: byline/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:byline:text7"
+msgid "constrains the max width."
+msgstr "constreny l'amplada màxima."
+
+#: calendar/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:calendar:text1"
+msgid "March 2026"
+msgstr "Març 2026"
+
+#: calendar/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:calendar:text2"
+msgid "Su"
+msgstr "Dg"
+
+#: calendar/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:calendar:text3"
+msgid "Mo"
+msgstr "Dl"
+
+#: calendar/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:calendar:text4"
+msgid "Tu"
+msgstr "Tu"
+
+#: calendar/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:calendar:text5"
+msgid "We"
+msgstr "Nosaltres"
+
+#: calendar/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:calendar:text6"
+msgid "Th"
+msgstr "Th"
+
+#: calendar/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:calendar:text7"
+msgid "Fr"
+msgstr "Fr"
+
+#: calendar/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:calendar:text8"
+msgid "Sa"
+msgstr "Sa"
+
+#: checkbox/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:checkbox:text1"
+msgid "Checked"
+msgstr "Seleccionat"
+
+#: checkbox/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:checkbox:text2"
+msgid "Unchecked"
+msgstr "Sense marcar"
+
+#: checkbox/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:checkbox:text3"
+msgid "Indeterminate"
+msgstr "Indeterminat"
+
+#: checkbox/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:checkbox:text4"
+msgid "Small"
+msgstr "Petit"
+
+#: checkbox/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:checkbox:text5"
+msgid "Error state"
+msgstr "Estat d'error"
+
+#: checkbox/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:checkbox:text6"
+msgid "Disabled"
+msgstr "Desactivat"
+
+#: checkbox/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:checkbox:text7"
+msgid "Toggle switch"
+msgstr "Interruptor"
+
+#: checkbox/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:checkbox:text8"
+msgid "Label on top"
+msgstr "Etiqueta a la part superior"
+
+#: checkbox/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:checkbox:text9"
+msgid "Label at start"
+msgstr "Etiqueta al principi"
+
+#: checkbox/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:checkbox:text10"
+msgid "Label at end"
+msgstr "Etiqueta al final"
+
+#: color-utilities/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:color-utilities:text1"
+msgid "Semantic color"
+msgstr "Color semàntic"
+
+#: color-utilities/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:color-utilities:text2"
+msgid "paints text,"
+msgstr "pinta text,"
+
+#: color-utilities/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:color-utilities:text3"
+msgid "a surface, and"
+msgstr "una superfície, i"
+
+#: color-utilities/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:color-utilities:text4"
+msgid "a border — each from a semantic color token, so overrides stay\n    on-palette and follow the theme."
+msgstr "una vora — cadascuna prové d'un token de color semàntic, així les substitucions es mantenen dins de la paleta i segueixen el tema."
+
+#: color-utilities/i18n.json#text5
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:color-utilities:text5"
+msgid "text-success"
+msgstr "text-success"
+
+#: color-utilities/i18n.json#text6
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:color-utilities:text6"
+msgid "text-warning"
+msgstr "text-warning"
+
+#: color-utilities/i18n.json#text7
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:color-utilities:text7"
+msgid "text-error"
+msgstr "text-error"
+
+#: color-utilities/i18n.json#text8
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:color-utilities:text8"
+msgid "text-info"
+msgstr "text-info"
+
+#: color-utilities/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:color-utilities:text9"
+msgid "Surfaces and borders"
+msgstr "Superfícies i vores"
+
+#: color-utilities/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:color-utilities:text10"
+msgid "Accent surfaces pair with"
+msgstr "Les superfícies d'accent se sincronitzen amb"
+
+#: color-utilities/i18n.json#text11
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:color-utilities:text11"
+msgid "bg-accent-green"
+msgstr "bg-accent-green"
+
+#: color-utilities/i18n.json#text12
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:color-utilities:text12"
+msgid "bg-accent-plum"
+msgstr "bg-accent-plum"
+
+#: color-utilities/i18n.json#text13
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:color-utilities:text13"
+msgid "border-strong"
+msgstr "border-strong"
+
+#: color-utilities/i18n.json#text14
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:color-utilities:text14"
+msgid "border-brand"
+msgstr "border-brand"
+
+#: components/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:components:text1"
+msgid "Button"
+msgstr "Botó"
+
+#: components/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:components:text2"
+msgid "Secondary"
+msgstr "Secundari"
+
+#: components/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:components:text3"
+msgid "Published"
+msgstr "Publicat"
+
+#: components/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:components:text4"
+msgid "tag"
+msgstr "etiqueta"
+
+#: components/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:components:text5"
+msgid "dismissible"
+msgstr "es pot descartar"
+
+#: components/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:components:text6"
+msgid "AB"
+msgstr "AB"
+
+#: components/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:components:text7"
+msgid "An alert, styled from the tokens."
+msgstr "Una alerta, estilitzada a partir dels tokens."
+
+#: components/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:components:text8"
+msgid "Active users"
+msgstr "Usuaris actius"
+
+#: components/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:components:text9"
+msgid "Custom checkbox"
+msgstr "Casella de selecció personalitzada"
+
+#: components/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:components:text10"
+msgid "Toggle"
+msgstr "Alternar"
+
+#: components/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:components:text11"
+msgid "Radio"
+msgstr "Botó d'opció"
+
+#: context-view/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:context-view:text1"
+msgid "Show details"
+msgstr "Mostra els detalls"
+
+#: context-view/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:context-view:text2"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes\n    when you click away or press Esc."
+msgstr "Una vista de context emmarca una crida d’atenció amb una punta (caret). Com a popover, es col·loca a la capa superior i es tanca quan fas clic fora o prems Esc."
+
+#: context-view/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:context-view:text3"
+msgid "Placement top"
+msgstr "Posició superior"
+
+#: context-view/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:context-view:text4"
+msgid "Placement bottom"
+msgstr "Posició inferior"
+
+#: context-view/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:context-view:text5"
+msgid "Placement start"
+msgstr "Posició inicial"
+
+#: context-view/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:context-view:text6"
+msgid "Placement end"
+msgstr "Col·locació final"
+
+#: context-view/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:context-view:text7"
+msgid "Inverse background"
+msgstr "Fons invertit"
+
+#: context-view/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:context-view:text8"
+msgid "Positioning next to a trigger uses CSS anchor positioning where supported; elsewhere the popover\n    centers in the top layer."
+msgstr "El posicionament al costat d'un activador utilitza el posicionament amb ancres CSS quan és compatible; en altres casos el popover es centra a la capa superior."
+
+#: date-time-inputs/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:date-time-inputs:text1"
+msgid "Due date"
+msgstr "Data de venciment"
+
+#: date-time-inputs/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:date-time-inputs:text2"
+msgid "Starts at"
+msgstr "Comença a\n\n<system_reminder>\n<sql_tables>Taules disponibles: todos, todo_deps</sql_tables>\n</system_reminder>"
+
+#: date-time-inputs/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:date-time-inputs:text3"
+msgid "Reminder time"
+msgstr "Hora del recordatori"
+
+#: date-time-inputs/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:date-time-inputs:text4"
+msgid "Time zone"
+msgstr "Zona horària"
+
+#: date-time-inputs/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:date-time-inputs:text5"
+msgid "Pacific"
+msgstr "Pacífic"
+
+#: date-time-inputs/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:date-time-inputs:text6"
+msgid "Mountain"
+msgstr "Muntanya"
+
+#: date-time-inputs/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:date-time-inputs:text7"
+msgid "Central"
+msgstr "Central"
+
+#: date-time-inputs/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:date-time-inputs:text8"
+msgid "Eastern"
+msgstr "Hora de l'Est"
+
+#: drawer-layout/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:drawer-layout:text1"
+msgid "Toggle panel"
+msgstr "Mostrar/ocultar el panell"
+
+#: drawer-layout/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:drawer-layout:text2"
+msgid "Open"
+msgstr "Obrir"
+
+#: drawer-layout/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:drawer-layout:text3"
+msgid "Close"
+msgstr "Tancar"
+
+#: drawer-layout/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:drawer-layout:text4"
+msgid "Navigation"
+msgstr "Navegació"
+
+#: drawer-layout/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:drawer-layout:text5"
+msgid "Overview"
+msgstr "Visió general"
+
+#: drawer-layout/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:drawer-layout:text6"
+msgid "Modules"
+msgstr "Mòduls"
+
+#: drawer-layout/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:drawer-layout:text7"
+msgid "Settings"
+msgstr "Configuració"
+
+#: drawer-layout/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:drawer-layout:text8"
+msgid "Main content"
+msgstr "Contingut principal"
+
+#: drawer-layout/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:drawer-layout:text9"
+msgid "Use the buttons above to toggle open state. Narrow the viewport to see the tray switch to\n          overlay mode."
+msgstr "Utilitzeu els botons a dalt per alternar l'estat obert. Reduïu l'amplada de la finestra de visualització per veure que la safata passa a mode superposat."
+
+#: elevation/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:elevation:text1"
+msgid "Elevation levels"
+msgstr "Nivells d'elevació"
+
+#: elevation/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:elevation:text2"
+msgid "resting"
+msgstr "descansant"
+
+#: elevation/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:elevation:text3"
+msgid "above"
+msgstr "a sobre"
+
+#: elevation/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:elevation:text4"
+msgid "topmost"
+msgstr "més alt"
+
+#: elevation/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:elevation:text5"
+msgid "InstUI aliases"
+msgstr "Àlies d'InstUI"
+
+#: elevation/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:elevation:text6"
+msgid "depth1"
+msgstr "depth1"
+
+#: elevation/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:elevation:text7"
+msgid "depth2"
+msgstr "profunditat2"
+
+#: elevation/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:elevation:text8"
+msgid "depth3"
+msgstr "profunditat3"
+
+#: elevation/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:elevation:text9"
+msgid "card"
+msgstr "targeta"
+
+#: elevation/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:elevation:text10"
+msgid "cardHover"
+msgstr "Passa el cursor per sobre la targeta"
+
+#: file-drop/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:file-drop:text1"
+msgid "Drag an image here"
+msgstr "Arrossega una imatge aquí"
+
+#: file-drop/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:file-drop:text2"
+msgid ", or click to browse."
+msgstr ", o fes clic per examinar."
+
+#: file-drop/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:file-drop:text3"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG o JPG fins a 5&nbsp;MB."
+
+#: file-drop/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:file-drop:text4"
+msgid "photo.png — accepted."
+msgstr "photo.png — acceptat."
+
+#: file-drop/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:file-drop:text5"
+msgid "report.pdf — file type not allowed."
+msgstr "report.pdf — tipus de fitxer no permès."
+
+#: focus-outline/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text1"
+msgid "Tab through the controls (or click the field) to see the ring. It rides every focusable out of\n      the box from"
+msgstr "Navega amb Tab pels controls (o fes clic al camp) per veure l’anell. S’aplica a tots els elements enfocables per defecte des de"
+
+#: focus-outline/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text2"
+msgid "; the modifiers recolour it, inset it, or turn off the\n      animation."
+msgstr "; els modificadors li canvien el color, el posen com a inset o desactiven l'animació."
+
+#: focus-outline/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text3"
+msgid "Default ring (any focusable)"
+msgstr "Anell predeterminat (qualsevol element focalitzable)"
+
+#: focus-outline/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text4"
+msgid "Button"
+msgstr "Botó"
+
+#: focus-outline/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text5"
+msgid "Link"
+msgstr "Enllaç"
+
+#: focus-outline/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text6"
+msgid "Ring colour"
+msgstr "Color de l'anell"
+
+#: focus-outline/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text7"
+msgid "Info (default)"
+msgstr "Informació (per defecte)"
+
+#: focus-outline/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text8"
+msgid "Success"
+msgstr "Èxit"
+
+#: focus-outline/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text9"
+msgid "Danger"
+msgstr "Perill"
+
+#: focus-outline/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text10"
+msgid "Position and animation"
+msgstr "Posició i animació"
+
+#: focus-outline/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text11"
+msgid "Inset ring"
+msgstr "Anell interior"
+
+#: focus-outline/i18n.json#text12
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text12"
+msgid "No animation"
+msgstr "Sense animació"
+
+#: focus-outline/i18n.json#text13
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text13"
+msgid "Focus within (reveals on click too)"
+msgstr "Focus dins (es mostra també amb un clic)"
+
+#: focus-outline/i18n.json#text14
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text14"
+msgid "Search"
+msgstr "Cerca"
+
+#: form-field/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:form-field:text1"
+msgid "Email address"
+msgstr "Adreça de correu electrònic"
+
+#: form-field/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:form-field:text2"
+msgid "We'll never share it."
+msgstr "No ho compartirem mai."
+
+#: form-field/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:form-field:text3"
+msgid "Enter a valid email address."
+msgstr "Introdueix una adreça electrònica vàlida."
+
+#: form-field/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:form-field:text4"
+msgid "Username"
+msgstr "Nom d'usuari"
+
+#: form-field/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:form-field:text5"
+msgid "Must be at least 3 characters."
+msgstr "Ha de tenir almenys 3 caràcters."
+
+#: form-field/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:form-field:text6"
+msgid "Nickname"
+msgstr "Sobrenom"
+
+#: form-field/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:form-field:text7"
+msgid "Account ID"
+msgstr "ID de compte"
+
+#: form-field-group/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:form-field-group:text1"
+msgid "Shipping address"
+msgstr "Adreça d'enviament"
+
+#: form-field-group/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:form-field-group:text2"
+msgid "First name"
+msgstr "Nom"
+
+#: form-field-group/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:form-field-group:text3"
+msgid "Last name"
+msgstr "Cognom"
+
+#: form-field-group/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:form-field-group:text4"
+msgid "City"
+msgstr "Ciutat"
+
+#: form-field-group/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:form-field-group:text5"
+msgid "State"
+msgstr "Estat"
+
+#: form-field-group/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:form-field-group:text6"
+msgid "CA"
+msgstr "CA"
+
+#: form-field-group/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:form-field-group:text7"
+msgid "NY"
+msgstr "Nova York"
+
+#: form-field-group/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:form-field-group:text8"
+msgid "TX"
+msgstr "TX"
+
+#: form-field-group/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:form-field-group:text9"
+msgid "All fields are used for delivery only."
+msgstr "Tots els camps s’utilitzen només per al lliurament."
+
+#: form-messages/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:form-messages:text1"
+msgid "Hint: use 8+ characters."
+msgstr "Consell: utilitzeu 8 o més caràcters."
+
+#: form-messages/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:form-messages:text2"
+msgid "Error: this field is required."
+msgstr "Error: aquest camp és obligatori."
+
+#: form-messages/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:form-messages:text3"
+msgid "Success: username is available."
+msgstr "Èxit: el nom d'usuari està disponible."
+
+#: form-messages/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:form-messages:text4"
+msgid "Screen-reader-only: form submitted."
+msgstr "Només per a lectors de pantalla: formulari enviat."
+
+#: gap/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:gap:text1"
+msgid "Gap"
+msgstr "Espai"
+
+#: gap/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:gap:text2"
+msgid "Flex/grid"
+msgstr "Flex/graella"
+
+#: gap/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:gap:text3"
+msgid "classes on the spacing scale, short ("
+msgstr "classes a l'escala d'espaiat, curtes ("
+
+#: gap/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:gap:text4"
+msgid ") or long\n    ("
+msgstr ") o llarg\n    ("
+
+#: gap/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:gap:text5"
+msgid ") spelling — usable bare or chained onto any component."
+msgstr ") ortografia — usable sola o encadenada a qualsevol component."
+
+#: gap/i18n.json#text6
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:gap:text6"
+msgid "gap-sm"
+msgstr "gap-sm"
+
+#: gap/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:gap:text7"
+msgid "One"
+msgstr "Un"
+
+#: gap/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:gap:text8"
+msgid "Two"
+msgstr "Dos"
+
+#: gap/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:gap:text9"
+msgid "Long spelling"
+msgstr "Deletreig llarg"
+
+#: gap/i18n.json#text10
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:gap:text10"
+msgid "gap-large"
+msgstr "gap-large"
+
+#: gap/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:gap:text11"
+msgid "One"
+msgstr "Un"
+
+#: heading/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:heading:text1"
+msgid "Heading levels"
+msgstr "Nivells d'encapçalament"
+
+#: heading/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:heading:text2"
+msgid "Heading h1"
+msgstr "Encapçalament h1"
+
+#: heading/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:heading:text3"
+msgid "Heading h2"
+msgstr "Encapçalament h2"
+
+#: heading/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:heading:text4"
+msgid "Heading h3"
+msgstr "Capçalera h3"
+
+#: heading/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:heading:text5"
+msgid "Heading h4"
+msgstr "Encapçalament h4"
+
+#: heading/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:heading:text6"
+msgid "Heading h5"
+msgstr "Capçalera h5"
+
+#: heading/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:heading:text7"
+msgid "Heading h6"
+msgstr "Encapçalament h6"
+
+#: heading/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:heading:text8"
+msgid "Heading type variants"
+msgstr "Variants de tipus d'encapçalament"
+
+#: heading/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:heading:text9"
+msgid "Title page"
+msgstr "Pàgina del títol"
+
+#: heading/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:heading:text10"
+msgid "Title section"
+msgstr "Secció del títol"
+
+#: heading/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:heading:text11"
+msgid "Title card section"
+msgstr "Secció de la targeta de títol"
+
+#: heading/i18n.json#text12
+#, no-c-format
+msgctxt "docs.demos:heading:text12"
+msgid "Title card regular"
+msgstr "Targeta de títol regular"
+
+#: heading/i18n.json#text13
+#, no-c-format
+msgctxt "docs.demos:heading:text13"
+msgid "Title card mini"
+msgstr "Targeta de títol mini"
+
+#: heading/i18n.json#text14
+#, no-c-format
+msgctxt "docs.demos:heading:text14"
+msgid "Label"
+msgstr "Etiqueta"
+
+#: heading/i18n.json#text15
+#, no-c-format
+msgctxt "docs.demos:heading:text15"
+msgid "Heading color and treatment"
+msgstr "Color i tractament del títol"
+
+#: heading/i18n.json#text16
+#, no-c-format
+msgctxt "docs.demos:heading:text16"
+msgid "Primary (default)"
+msgstr "Primari (per defecte)"
+
+#: heading/i18n.json#text17
+#, no-c-format
+msgctxt "docs.demos:heading:text17"
+msgid "Secondary"
+msgstr "Secundari"
+
+#: heading/i18n.json#text18
+#, no-c-format
+msgctxt "docs.demos:heading:text18"
+msgid "AI gradient"
+msgstr "Gradient d'IA"
+
+#: heading/i18n.json#text19
+#, no-c-format
+msgctxt "docs.demos:heading:text19"
+msgid "With bottom border"
+msgstr "Amb vora inferior"
+
+#: icon/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:icon:text1"
+msgid "Inline"
+msgstr "En línia"
+
+#: icon/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:icon:text2"
+msgid "icons scale to the text and inherit\n      its color."
+msgstr "les icones s'adapten al text i hereten el seu color."
+
+#: icon/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:icon:text3"
+msgid "Add"
+msgstr "Afegir"
+
+#: in-place-edit/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:in-place-edit:text1"
+msgid "Project name:"
+msgstr "Nom del projecte:"
+
+#: in-place-edit/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:in-place-edit:text2"
+msgid "Untitled"
+msgstr "Sense títol"
+
+#: in-place-edit/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:in-place-edit:text3"
+msgid "Owner:"
+msgstr "Propietari:"
+
+#: in-place-edit/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:in-place-edit:text4"
+msgid "Ada Byron"
+msgstr "Ada Byron"
+
+#: in-place-edit/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:in-place-edit:text5"
+msgid "Created:"
+msgstr "Creat:"
+
+#: in-place-edit/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:in-place-edit:text6"
+msgid "March 12, 2026"
+msgstr "12 de març de 2026"
+
+#: in-place-edit/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:in-place-edit:text7"
+msgid "Click a value to edit it. The stateful view/edit toggle with confirm and cancel buttons is the\n    web-component tier; this is the pure-CSS editable skin."
+msgstr "Feu clic en un valor per editar-lo. L'alternador amb estat de visualització/edició amb els botons de confirmar i cancel·lar és la capa de components web; aquesta és l'aparença editable purament en CSS."
+
+#: layout/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:layout:text1"
+msgid "Layout utilities"
+msgstr "Utilitats de maquetació"
+
+#: layout/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:layout:text2"
+msgid "and"
+msgstr "i"
+
+#: layout/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:layout:text3"
+msgid "cover InstUI's cross-cutting"
+msgstr "cobrir els aspectes transversals d'InstUI"
+
+#: layout/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:layout:text4"
+msgid "and"
+msgstr "i"
+
+#: layout/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:layout:text5"
+msgid "props as composable classes — reach for them on\n    any element instead of a per-component modifier."
+msgstr "props com a classes composables — utilitza-les a\n    qualsevol element en lloc d'un modificador per component."
+
+#: layout/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:layout:text6"
+msgid "Display"
+msgstr "Visualització"
+
+#: layout/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:layout:text7"
+msgid "lays these chips out in a row; each chip is"
+msgstr "col·loca aquestes xips en una fila; cada xip és"
+
+#: layout/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:layout:text8"
+msgid "one"
+msgstr "un"
+
+#: layout/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:layout:text9"
+msgid "two"
+msgstr "dos"
+
+#: layout/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:layout:text10"
+msgid "three"
+msgstr "tres"
+
+#: layout/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:layout:text11"
+msgid "Text align"
+msgstr "Alineació de text"
+
+#: layout/i18n.json#text12
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:layout:text12"
+msgid "text-align-start"
+msgstr "text-align-start"
+
+#: layout/i18n.json#text13
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:layout:text13"
+msgid "text-align-center"
+msgstr "text-align-center"
+
+#: layout/i18n.json#text14
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:layout:text14"
+msgid "text-align-end"
+msgstr "text-align-end"
+
+#: link/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:link:text1"
+msgid "A styled link"
+msgstr "Un enllaç estilitzat"
+
+#: link/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:link:text2"
+msgid "A large link"
+msgstr "Un enllaç gran"
+
+#: link/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:link:text3"
+msgid "Icon at the start"
+msgstr "Icona al principi"
+
+#: link/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:link:text4"
+msgid "Icon at the end"
+msgstr "Icona al final"
+
+#: link/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:link:text5"
+msgid "Read the"
+msgstr "Llegeix el"
+
+#: link/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:link:text6"
+msgid "inline documentation"
+msgstr "documentació en línia"
+
+#: link/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:link:text7"
+msgid "for the full story."
+msgstr "per la història completa."
+
+#: link/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:link:text8"
+msgid "Unstyled link"
+msgstr "Enllaç sense estil"
+
+#: link/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:link:text9"
+msgid "A link on a dark background"
+msgstr "Un enllaç sobre un fons fosc"
+
+#: link/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:link:text10"
+msgid "With a leading icon"
+msgstr "Amb una icona inicial"
+
+#: list/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:list:text1"
+msgid "First item"
+msgstr "Primer element"
+
+#: list/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:list:text2"
+msgid "Second item"
+msgstr "Segon element"
+
+#: list/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:list:text3"
+msgid "Third item"
+msgstr "Tercer element"
+
+#: list/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:list:text4"
+msgid "Solid delimiter"
+msgstr "Delimiter sòlid"
+
+#: list/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:list:text5"
+msgid "Between each"
+msgstr "Entre cada"
+
+#: list/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:list:text6"
+msgid "List item"
+msgstr "Element de la llista"
+
+#: list/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:list:text7"
+msgid "Ordered"
+msgstr "Ordenat"
+
+#: list/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:list:text8"
+msgid "Dashed"
+msgstr "Guixat"
+
+#: list/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:list:text9"
+msgid "Items"
+msgstr "Elements"
+
+#: mask/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:mask:text1"
+msgid "Content behind the mask."
+msgstr "Contingut darrere de la màscara."
+
+#: menu/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:menu:text1"
+msgid "Actions"
+msgstr "Accions"
+
+#: menu/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:menu:text2"
+msgid "Edit"
+msgstr "Editar"
+
+#: menu/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:menu:text3"
+msgid "Duplicate"
+msgstr "Duplicar"
+
+#: menu/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:menu:text4"
+msgid "Delete"
+msgstr "Eliminar"
+
+#: metric/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:metric:text1"
+msgid "Active users"
+msgstr "Usuaris actius"
+
+#: metric/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:metric:text2"
+msgid "Uptime"
+msgstr "Temps d'activitat"
+
+#: metric/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:metric:text3"
+msgid "3.2s"
+msgstr "3,2 s"
+
+#: metric/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:metric:text4"
+msgid "Avg. response"
+msgstr "Mitjana resposta"
+
+#: metric/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:metric:text5"
+msgid "Start"
+msgstr "Iniciar"
+
+#: metric/i18n.json#text6
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:metric:text6"
+msgid "-text-align-start"
+msgstr "-text-align-start"
+
+#: metric/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:metric:text7"
+msgid "Center"
+msgstr "Centra"
+
+#: metric/i18n.json#text8
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:metric:text8"
+msgid "-text-align-center"
+msgstr "-text-align-center"
+
+#: metric/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:metric:text9"
+msgid "End"
+msgstr "Final"
+
+#: metric/i18n.json#text10
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:metric:text10"
+msgid "-text-align-end"
+msgstr "-text-align-end"
+
+#: modal/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:modal:text1"
+msgid "Small"
+msgstr "Petit"
+
+#: modal/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:modal:text2"
+msgid "Medium"
+msgstr "Mitjà"
+
+#: modal/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:modal:text3"
+msgid "Large"
+msgstr "Gran"
+
+#: modal/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:modal:text4"
+msgid "Auto"
+msgstr "Automàtic"
+
+#: modal/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:modal:text5"
+msgid "Full screen"
+msgstr "Pantalla completa"
+
+#: modal/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:modal:text6"
+msgid "Media"
+msgstr "Mitjans"
+
+#: modal/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:modal:text7"
+msgid "Small"
+msgstr "Petit"
+
+#: modal/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:modal:text8"
+msgid "— a narrow modal."
+msgstr "— un modal estret."
+
+#: modal/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:modal:text9"
+msgid "Close"
+msgstr "Tancar"
+
+#: modal/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:modal:text10"
+msgid "Medium"
+msgstr "Mitjà"
+
+#: modal/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:modal:text11"
+msgid "The default size — no modifier needed."
+msgstr "La mida per defecte — no cal cap modificador."
+
+#: modal/i18n.json#text12
+#, no-c-format
+msgctxt "docs.demos:modal:text12"
+msgid "Close"
+msgstr "Tancar"
+
+#: modal/i18n.json#text13
+#, no-c-format
+msgctxt "docs.demos:modal:text13"
+msgid "Large"
+msgstr "Gran"
+
+#: modal/i18n.json#text14
+#, no-c-format
+msgctxt "docs.demos:modal:text14"
+msgid "— a wider modal for denser content."
+msgstr "— un modal més ample per contingut més dens."
+
+#: modal/i18n.json#text15
+#, no-c-format
+msgctxt "docs.demos:modal:text15"
+msgid "Close"
+msgstr "Tancar"
+
+#: modal/i18n.json#text16
+#, no-c-format
+msgctxt "docs.demos:modal:text16"
+msgid "Auto"
+msgstr "Automàtic"
+
+#: modal/i18n.json#text17
+#, no-c-format
+msgctxt "docs.demos:modal:text17"
+msgid "sizes to its content."
+msgstr "mides segons el seu contingut."
+
+#: modal/i18n.json#text18
+#, no-c-format
+msgctxt "docs.demos:modal:text18"
+msgid "Close"
+msgstr "Tancar"
+
+#: modal/i18n.json#text19
+#, no-c-format
+msgctxt "docs.demos:modal:text19"
+msgid "Full screen"
+msgstr "Pantalla completa"
+
+#: modal/i18n.json#text20
+#, no-c-format
+msgctxt "docs.demos:modal:text20"
+msgid "fills the viewport."
+msgstr "omple la finestra de visualització."
+
+#: modal/i18n.json#text21
+#, no-c-format
+msgctxt "docs.demos:modal:text21"
+msgid "Close"
+msgstr "Tancar"
+
+#: modal/i18n.json#text22
+#, no-c-format
+msgctxt "docs.demos:modal:text22"
+msgid "Media"
+msgstr "Mitjans"
+
+#: modal/i18n.json#text23
+#, no-c-format
+msgctxt "docs.demos:modal:text23"
+msgid "Close"
+msgstr "Tancar"
+
+#: pagination/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:pagination:text1"
+msgid "Page"
+msgstr "Pàgina"
+
+#: pagination/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:pagination:text2"
+msgid "of 12"
+msgstr "de 12"
+
+#: pendo/i18n.json#popoverLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:popoverLabel"
+msgid "Popover"
+msgstr "Finestra emergent"
+
+#: pendo/i18n.json#popoverTitle
+#, no-c-format
+msgctxt "docs.demos:pendo:popoverTitle"
+msgid "A quick orientation"
+msgstr "Una orientació ràpida"
+
+#: pendo/i18n.json#popoverSubtitle
+#, no-c-format
+msgctxt "docs.demos:pendo:popoverSubtitle"
+msgid "Feature tour"
+msgstr "Visita de la funció"
+
+#: pendo/i18n.json#popoverBody
+#, no-c-format
+msgctxt "docs.demos:pendo:popoverBody"
+msgid "This anchored guide keeps the next action close to the feature it describes."
+msgstr "Aquesta guia ancorada manté l'acció següent a prop de la funció que descriu."
+
+#: pendo/i18n.json#alertLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:alertLabel"
+msgid "Alert"
+msgstr "Alerta"
+
+#: pendo/i18n.json#alertTitle
+#, no-c-format
+msgctxt "docs.demos:pendo:alertTitle"
+msgid "Maintenance tonight"
+msgstr "Manteniment aquesta nit"
+
+#: pendo/i18n.json#alertSubtitle
+#, no-c-format
+msgctxt "docs.demos:pendo:alertSubtitle"
+msgid "Starts at 11:00 PM"
+msgstr "Comença a les 23:00"
+
+#: pendo/i18n.json#alertBody
+#, no-c-format
+msgctxt "docs.demos:pendo:alertBody"
+msgid "Course tools will be unavailable briefly tonight while maintenance is completed."
+msgstr "Les eines del curs estaran breument no disponibles aquesta nit mentre es realitza el manteniment."
+
+#: pendo/i18n.json#bannerLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:bannerLabel"
+msgid "Banner"
+msgstr "Bàner"
+
+#: pendo/i18n.json#bannerTitle
+#, no-c-format
+msgctxt "docs.demos:pendo:bannerTitle"
+msgid "New analytics are ready"
+msgstr "Les noves analítiques estan disponibles"
+
+#: pendo/i18n.json#bannerSubtitle
+#, no-c-format
+msgctxt "docs.demos:pendo:bannerSubtitle"
+msgid "Participation insights"
+msgstr "Informació sobre la participació"
+
+#: pendo/i18n.json#bannerBody
+#, no-c-format
+msgctxt "docs.demos:pendo:bannerBody"
+msgid "Review participation trends and identify where learners may need support."
+msgstr "Revisa les tendències de participació i identifica on els estudiants poden necessitar suport."
+
+#: pendo/i18n.json#closeLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:closeLabel"
+msgid "Close"
+msgstr "Tancar"
+
+#: pendo/i18n.json#continueLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:continueLabel"
+msgid "Continue"
+msgstr "Continuar"
+
+#: pendo/i18n.json#laterLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:laterLabel"
+msgid "Later"
+msgstr "Més tard"
+
+#: pendo/i18n.json#alertPrimaryLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:alertPrimaryLabel"
+msgid "View details"
+msgstr "Veure detalls"
+
+#: pendo/i18n.json#alertSecondaryLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:alertSecondaryLabel"
+msgid "Dismiss"
+msgstr "Descarta"
+
+#: pendo/i18n.json#primaryLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:primaryLabel"
+msgid "View analytics"
+msgstr "Veure analítiques"
+
+#: pendo/i18n.json#secondaryLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:secondaryLabel"
+msgid "Not now"
+msgstr "Ara no"
+
+#: pill/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:pill:text1"
+msgid "Draft"
+msgstr "Esborrany"
+
+#: pill/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:pill:text2"
+msgid "In review"
+msgstr "En revisió"
+
+#: pill/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:pill:text3"
+msgid "Published"
+msgstr "Publicat"
+
+#: pill/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:pill:text4"
+msgid "Stale"
+msgstr "Obsolet"
+
+#: pill/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:pill:text5"
+msgid "Blocked"
+msgstr "Bloquejat"
+
+#: popover/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:popover:text1"
+msgid "Open popover"
+msgstr "Obrir popover"
+
+#: popover/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:popover:text2"
+msgid "Share this page"
+msgstr "Comparteix aquesta pàgina"
+
+#: popover/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:popover:text3"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native"
+msgstr "Un popover és una superfície lleugera ancorada a un disparador. Aquest utilitza el nat"
+
+#: popover/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:popover:text4"
+msgid "attribute."
+msgstr "atribut."
+
+#: progress-circle/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:progress-circle:text1"
+msgid "Animated after a 500ms delay"
+msgstr "Animat després d'un retard de 500 ms"
+
+#: prose/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:prose:text1"
+msgid "Heading level one"
+msgstr "Capçalera nivell u"
+
+#: prose/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:prose:text2"
+msgid "Heading level two"
+msgstr "Capçalera nivell dos"
+
+#: prose/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:prose:text3"
+msgid "Heading level three"
+msgstr "Capçalera nivell tres"
+
+#: prose/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:prose:text4"
+msgid "Heading level four"
+msgstr "Capçalera nivell quatre"
+
+#: prose/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:prose:text5"
+msgid "Heading level five"
+msgstr "Capçalera nivell cinc"
+
+#: prose/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:prose:text6"
+msgid "Heading level six"
+msgstr "Capçalera nivell sis"
+
+#: prose/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:prose:text7"
+msgid "Body copy is InstUI's Text"
+msgstr "La còpia del cos és el Text d'InstUI"
+
+#: prose/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:prose:text8"
+msgid "style. A paragraph with"
+msgstr "estil. Un paràgraf amb"
+
+#: prose/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:prose:text9"
+msgid "a link"
+msgstr "un enllaç"
+
+#: prose/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:prose:text10"
+msgid "bold text"
+msgstr "text en negreta"
+
+#: prose/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:prose:text11"
+msgid "emphasis"
+msgstr "èmfasi"
+
+#: prose/i18n.json#text12
+#, no-c-format
+msgctxt "docs.demos:prose:text12"
+msgid "small print"
+msgstr "lletra petita"
+
+#: prose/i18n.json#text13
+#, no-c-format
+msgctxt "docs.demos:prose:text13"
+msgid ", and some"
+msgstr ", i una mica de"
+
+#: prose/i18n.json#text14
+#, no-c-format
+msgctxt "docs.demos:prose:text14"
+msgid ". The prose layer styles rendered\n      markdown to match the Heading and Text components."
+msgstr ". La capa de prosa aplica estil al markdown renderitzat\n      per coincidir amb els components Heading i Text."
+
+#: prose/i18n.json#text15
+#, no-c-format
+msgctxt "docs.demos:prose:text15"
+msgid "First item"
+msgstr "Primer element"
+
+#: prose/i18n.json#text16
+#, no-c-format
+msgctxt "docs.demos:prose:text16"
+msgid "Second item"
+msgstr "Segon element"
+
+#: prose/i18n.json#text17
+#, no-c-format
+msgctxt "docs.demos:prose:text17"
+msgid "A blockquote, styled from the Text content-quote type scale."
+msgstr "Una cita en bloc, estilitzada des de l'escala de tipus content-quote de Text."
+
+#: prose/i18n.json#text18
+#, no-c-format
+msgctxt "docs.demos:prose:text18"
+msgid "Package"
+msgstr "Paquet"
+
+#: prose/i18n.json#text19
+#, no-c-format
+msgctxt "docs.demos:prose:text19"
+msgid "Bucket"
+msgstr "Cubell"
+
+#: prose/i18n.json#text20
+#, no-c-format
+msgctxt "docs.demos:prose:text20"
+msgid "@pantoken/css"
+msgstr "@pantoken/css"
+
+#: prose/i18n.json#text21
+#, no-c-format
+msgctxt "docs.demos:prose:text21"
+msgid "formats"
+msgstr "formats"
+
+#: prose/i18n.json#text22
+#, no-c-format
+msgctxt "docs.demos:prose:text22"
+msgid "@pantoken/react"
+msgstr "@pantoken/react"
+
+#: prose/i18n.json#text23
+#, no-c-format
+msgctxt "docs.demos:prose:text23"
+msgid "renderers"
+msgstr "renderers"
+
+#: radio/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:radio:text1"
+msgid "Standard"
+msgstr "Estàndard"
+
+#: radio/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:radio:text2"
+msgid "Option A"
+msgstr "Opció A"
+
+#: radio/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:radio:text3"
+msgid "Option B"
+msgstr "Opció B"
+
+#: radio/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:radio:text4"
+msgid "Large"
+msgstr "Gran"
+
+#: radio/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:radio:text5"
+msgid "Disabled"
+msgstr "Desactivat"
+
+#: radio/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:radio:text6"
+msgid "Toggle buttons (variant=\"toggle\")"
+msgstr "Botons de commutació (variant=\"toggle\")"
+
+#: radio/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:radio:text7"
+msgid "Small"
+msgstr "Petit"
+
+#: radio/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:radio:text8"
+msgid "Medium"
+msgstr "Mitjà"
+
+#: radio/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:radio:text9"
+msgid "Large"
+msgstr "Gran"
+
+#: radio/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:radio:text10"
+msgid "Toggle context colors"
+msgstr "Canviar colors de context"
+
+#: radio/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:radio:text11"
+msgid "Success"
+msgstr "Èxit"
+
+#: radio/i18n.json#text12
+#, no-c-format
+msgctxt "docs.demos:radio:text12"
+msgid "Danger"
+msgstr "Perill"
+
+#: radio/i18n.json#text13
+#, no-c-format
+msgctxt "docs.demos:radio:text13"
+msgid "Warning"
+msgstr "Avís"
+
+#: radio/i18n.json#text14
+#, no-c-format
+msgctxt "docs.demos:radio:text14"
+msgid "Off"
+msgstr "Desactivat"
+
+#: radio-input-group/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text1"
+msgid "T-shirt size"
+msgstr "Mida de samarreta"
+
+#: radio-input-group/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text2"
+msgid "Small"
+msgstr "Petit"
+
+#: radio-input-group/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text3"
+msgid "Medium"
+msgstr "Mitjà"
+
+#: radio-input-group/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text4"
+msgid "Large"
+msgstr "Gran"
+
+#: radio-input-group/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text5"
+msgid "Notification frequency"
+msgstr "Freqüència de notificacions"
+
+#: radio-input-group/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text6"
+msgid "Real time"
+msgstr "Temps real"
+
+#: radio-input-group/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text7"
+msgid "Daily digest"
+msgstr "Resum diari"
+
+#: radio-input-group/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text8"
+msgid "Weekly digest"
+msgstr "Resum setmanal"
+
+#: radio-input-group/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text9"
+msgid "Contact method"
+msgstr "Mètode de contacte"
+
+#: radio-input-group/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text10"
+msgid "Email"
+msgstr "Correu electrònic"
+
+#: radio-input-group/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text11"
+msgid "Phone"
+msgstr "Telèfon"
+
+#: radio-input-group/i18n.json#text12
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text12"
+msgid "Mail"
+msgstr "Correu postal"
+
+#: range-input/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:range-input:text1"
+msgid "Grading range"
+msgstr "Rang de qualificació"
+
+#: range-input/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:range-input:text2"
+msgid "Small"
+msgstr "Petit"
+
+#: responsive/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:responsive:text1"
+msgid "Narrow layout — hidden at"
+msgstr "Disseny estret — ocult a"
+
+#: responsive/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:responsive:text2"
+msgid "(48rem) and up via"
+msgstr "(48rem) i cap amunt mitjançant"
+
+#: responsive/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:responsive:text3"
+msgid "Wide layout — hidden at"
+msgstr "Disseny ample — ocult a"
+
+#: responsive/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:responsive:text4"
+msgid "and below via"
+msgstr "i avall mitjançant"
+
+#: responsive/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:responsive:text5"
+msgid "Breakpoints:"
+msgstr "Punts de tall:"
+
+#: responsive/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:responsive:text6"
+msgid "30rem,"
+msgstr "30rem,"
+
+#: responsive/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:responsive:text7"
+msgid "48rem,"
+msgstr "48rem,"
+
+#: responsive/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:responsive:text8"
+msgid "64rem,"
+msgstr "64rem,"
+
+#: responsive/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:responsive:text9"
+msgid "80rem. For a component that adapts to its own width instead of the viewport,\n      wrap it in a"
+msgstr "80rem. Per a un component que s'adapta a la seva pròpia amplada en lloc de la finestra de visualització,\n      embolcalla'l en un"
+
+#: responsive/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:responsive:text10"
+msgid "element and use"
+msgstr "element i utilitza"
+
+#: responsive/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:responsive:text11"
+msgid "queries with the same widths."
+msgstr "consultes amb les mateixes amplades."
+
+#: screen-reader-content/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:screen-reader-content:text1"
+msgid "This sentence is visible. After it sits screen-reader-only text."
+msgstr "Aquesta frase és visible. Després d'ella hi ha text només per a lectors de pantalla."
+
+#: screen-reader-content/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:screen-reader-content:text2"
+msgid "This text is announced to assistive technology but hidden on screen."
+msgstr "Aquest text s'anuncia a la tecnologia d'assistència però està ocult a la pantalla."
+
+#: screen-reader-content/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:screen-reader-content:text3"
+msgid "Switch to the HTML tab to see it in the markup."
+msgstr "Canvia a la pestanya HTML per veure-ho al marc."
+
+#: side-nav-bar/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:side-nav-bar:text1"
+msgid "Home"
+msgstr "Inici"
+
+#: side-nav-bar/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:side-nav-bar:text2"
+msgid "Inbox"
+msgstr "Safata d'entrada"
+
+#: side-nav-bar/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:side-nav-bar:text3"
+msgid "Calendar"
+msgstr "Calendari"
+
+#: side-nav-bar/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:side-nav-bar:text4"
+msgid "Settings"
+msgstr "Configuració"
+
+#: side-nav-bar/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:side-nav-bar:text5"
+msgid "Home"
+msgstr "Inici"
+
+#: side-nav-bar/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:side-nav-bar:text6"
+msgid "Inbox"
+msgstr "Safata d'entrada"
+
+#: side-nav-bar/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:side-nav-bar:text7"
+msgid "Calendar"
+msgstr "Calendari"
+
+#: side-nav-bar/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:side-nav-bar:text8"
+msgid "Page content sits beside the rail."
+msgstr "El contingut de la pàgina se situa al costat de la barra."
+
+#: simple-select/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:simple-select:text1"
+msgid "Choose a fruit…"
+msgstr "Tria una fruita…"
+
+#: simple-select/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:simple-select:text2"
+msgid "Apple"
+msgstr "Poma"
+
+#: simple-select/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:simple-select:text3"
+msgid "Orange"
+msgstr "Taronja"
+
+#: simple-select/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:simple-select:text4"
+msgid "Pear"
+msgstr "Pera"
+
+#: simple-select/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:simple-select:text5"
+msgid "Invalid selection"
+msgstr "Selecció invàlida"
+
+#: simple-select/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:simple-select:text6"
+msgid "Small"
+msgstr "Petit"
+
+#: simple-select/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:simple-select:text7"
+msgid "Disabled"
+msgstr "Desactivat"
+
+#: spacing/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:spacing:text1"
+msgid "Spacing"
+msgstr "Espaiat"
+
+#: spacing/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:spacing:text2"
+msgid "Per-side classes on the spacing scale —"
+msgstr "Classes per costat a l'escala d'espaiat —"
+
+#: spacing/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:spacing:text3"
+msgid "for margin/padding, an\n    optional logical side\n    ("
+msgstr "per marge/padding, una\n    banda lògica opcional\n    ("
+
+#: spacing/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:spacing:text4"
+msgid "),\n    then a step ("
+msgstr "),\n    després un pas ("
+
+#: spacing/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:spacing:text5"
+msgid ", plus"
+msgstr ", més"
+
+#: spacing/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:spacing:text6"
+msgid "for\n    margin). Every class also has a fully long, word-spelled twin —"
+msgstr "per\n    marge). Cada classe també té un homòleg complet de paraula llarga —"
+
+#: spacing/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:spacing:text7"
+msgid "is the same\n    rule as"
+msgstr "és la mateixa\n    regla que"
+
+#: spacing/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:spacing:text8"
+msgid "p-xs, mb-2xs"
+msgstr "p-xs, mb-2xs"
+
+#: spacing/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:spacing:text9"
+msgid "p-sm, mb-2xs"
+msgstr "p-sm, mb-2xs"
+
+#: spacing/i18n.json#text10
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:spacing:text10"
+msgid "p-lg"
+msgstr "p-lg"
+
+#: spacing/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:spacing:text11"
+msgid "Center with auto margins"
+msgstr "Centra amb marges automàtics"
+
+#: spacing/i18n.json#text12
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:spacing:text12"
+msgid "mx-auto"
+msgstr "mx-auto"
+
+#: spacing/i18n.json#text13
+#, no-c-format
+msgctxt "docs.demos:spacing:text13"
+msgid "Short and long spellings, side by side"
+msgstr "Deletrejos curts i llargs, costat per costat"
+
+#: spacing/i18n.json#text14
+#, no-c-format
+msgctxt "docs.demos:spacing:text14"
+msgid "padding-small, margin-bottom-x-small"
+msgstr "padding-small, margin-bottom-x-small"
+
+#: spacing/i18n.json#text15
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:spacing:text15"
+msgid "padding-large"
+msgstr "padding-large"
+
+#: table/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:table:text1"
+msgid "Top-rated films"
+msgstr "Pel·lícules més ben valorades"
+
+#: table/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:table:text2"
+msgid "Rank"
+msgstr "Rànquing"
+
+#: table/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:table:text3"
+msgid "Title"
+msgstr "Títol"
+
+#: table/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:table:text4"
+msgid "Year"
+msgstr "Any"
+
+#: table/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:table:text5"
+msgid "Rating"
+msgstr "Valoració"
+
+#: table/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:table:text6"
+msgid "The Shawshank Redemption"
+msgstr "The Shawshank Redemption"
+
+#: table/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:table:text7"
+msgid "The Godfather"
+msgstr "The Godfather"
+
+#: table/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:table:text8"
+msgid "The Godfather: Part II"
+msgstr "The Godfather: Part II"
+
+#: table/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:table:text9"
+msgid "Films (stacked)"
+msgstr "Pel·lícules (apilades)"
+
+#: table/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:table:text10"
+msgid "Title"
+msgstr "Títol"
+
+#: table/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:table:text11"
+msgid "Year"
+msgstr "Any"
+
+#: table/i18n.json#text12
+#, no-c-format
+msgctxt "docs.demos:table:text12"
+msgid "Rating"
+msgstr "Valoració"
+
+#: table/i18n.json#text13
+#, no-c-format
+msgctxt "docs.demos:table:text13"
+msgid "The Shawshank Redemption"
+msgstr "The Shawshank Redemption"
+
+#: table/i18n.json#text14
+#, no-c-format
+msgctxt "docs.demos:table:text14"
+msgid "The Godfather"
+msgstr "The Godfather"
+
+#: tabs/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:tabs:text1"
+msgid "Overview"
+msgstr "Visió general"
+
+#: tabs/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:tabs:text2"
+msgid "Details"
+msgstr "Detalls"
+
+#: tabs/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:tabs:text3"
+msgid "Disabled"
+msgstr "Desactivat"
+
+#: tabs/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:tabs:text4"
+msgid "History"
+msgstr "Historial"
+
+#: tabs/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:tabs:text5"
+msgid "The Overview tab's content shows here."
+msgstr "El contingut de la pestanya Overview es mostra aquí."
+
+#: tabs/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:tabs:text6"
+msgid "First tab"
+msgstr "Primera pestanya"
+
+#: tabs/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:tabs:text7"
+msgid "Disabled"
+msgstr "Desactivat"
+
+#: tabs/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:tabs:text8"
+msgid "Third tab"
+msgstr "Tercera pestanya"
+
+#: tabs/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:tabs:text9"
+msgid "Fourth tab"
+msgstr "Quarta pestanya"
+
+#: tabs/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:tabs:text10"
+msgid "The Third tab's content shows here."
+msgstr "El contingut de la tercera pestanya es mostra aquí."
+
+#: tag/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:tag:text1"
+msgid "small"
+msgstr "petit"
+
+#: tag/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:tag:text2"
+msgid "design"
+msgstr "disseny"
+
+#: tag/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:tag:text3"
+msgid "large"
+msgstr "gran"
+
+#: tag/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:tag:text4"
+msgid "read only"
+msgstr "només lectura"
+
+#: tag/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:tag:text5"
+msgid "dismissible"
+msgstr "es pot descartar"
+
+#: tag/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:tag:text6"
+msgid "filter: open"
+msgstr "filtro: obert"
+
+#: tag/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:tag:text7"
+msgid "filter: mine"
+msgstr "filtro: meu"
+
+#: tag/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:tag:text8"
+msgid "Restore tags"
+msgstr "Restaurar etiquetes"
+
+#: text/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:text:text1"
+msgid "Text sizes"
+msgstr "Mides de text"
+
+#: text/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:text:text2"
+msgid "x-small text"
+msgstr "text x-petit"
+
+#: text/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:text:text3"
+msgid "small text"
+msgstr "text petit"
+
+#: text/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:text:text4"
+msgid "medium text (default)"
+msgstr "text mitjà (per defecte)"
+
+#: text/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:text:text5"
+msgid "large text"
+msgstr "text gran"
+
+#: text/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:text:text6"
+msgid "x-large text"
+msgstr "text x-gran"
+
+#: text/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:text:text7"
+msgid "Text weight, style, and color"
+msgstr "Pes, estil i color del text"
+
+#: text/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:text:text8"
+msgid "Bold"
+msgstr "Negreta"
+
+#: text/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:text:text9"
+msgid "Italic"
+msgstr "Cursiva"
+
+#: text/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:text:text10"
+msgid "Brand"
+msgstr "Marca"
+
+#: text/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:text:text11"
+msgid "Success"
+msgstr "Èxit"
+
+#: text/i18n.json#text12
+#, no-c-format
+msgctxt "docs.demos:text:text12"
+msgid "Danger"
+msgstr "Perill"
+
+#: text/i18n.json#text13
+#, no-c-format
+msgctxt "docs.demos:text:text13"
+msgid "Warning"
+msgstr "Avís"
+
+#: text/i18n.json#text14
+#, no-c-format
+msgctxt "docs.demos:text:text14"
+msgid "Bold danger (stacked)"
+msgstr "Perill negreta (apilat)"
+
+#: text/i18n.json#text15
+#, no-c-format
+msgctxt "docs.demos:text:text15"
+msgid "Secondary"
+msgstr "Secundari"
+
+#: text/i18n.json#text16
+#, no-c-format
+msgctxt "docs.demos:text:text16"
+msgid "Text content variants"
+msgstr "Variants de contingut de text"
+
+#: text/i18n.json#text17
+#, no-c-format
+msgctxt "docs.demos:text:text17"
+msgid "Description page"
+msgstr "Pàgina de descripció"
+
+#: text/i18n.json#text18
+#, no-c-format
+msgctxt "docs.demos:text:text18"
+msgid "Description section"
+msgstr "Secció de descripció"
+
+#: text/i18n.json#text19
+#, no-c-format
+msgctxt "docs.demos:text:text19"
+msgid "Content small"
+msgstr "Contingut petit"
+
+#: text/i18n.json#text20
+#, no-c-format
+msgctxt "docs.demos:text:text20"
+msgid "Legend"
+msgstr "Llegenda"
+
+#: text-area/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:text-area:text1"
+msgid "Too short."
+msgstr "Trop curt."
+
+#: text-area/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:text-area:text2"
+msgid "Read-only content."
+msgstr "Contingut només de lectura."
+
+#: toggle-details/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:toggle-details:text1"
+msgid "What ships in this package?"
+msgstr "Què s'envia en aquest paquet?"
+
+#: toggle-details/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:toggle-details:text2"
+msgid "Class-based component styles, built from the Instructure tokens, plus a prose layer."
+msgstr "Estils de component basats en classes, construïts a partir dels tokens d'Instructure, més una capa de prosa."
+
+#: toggle-details/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:toggle-details:text3"
+msgid "Filled variant"
+msgstr "Variant omplert"
+
+#: toggle-details/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:toggle-details:text4"
+msgid "The summary reads as an action-secondary button."
+msgstr "El resum es llegeix com un botó secundari d'acció."
+
+#: toggle-details/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:toggle-details:text5"
+msgid "Chevron at the end"
+msgstr "Chevron al final"
+
+#: toggle-details/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:toggle-details:text6"
+msgid "The disclosure chevron sits after the summary text."
+msgstr "La chevron de divulgació se situa després del text del resum."
+
+#: toggle-details/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:toggle-details:text7"
+msgid "Large"
+msgstr "Gran"
+
+#: toggle-details/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:toggle-details:text8"
+msgid "Larger summary font and content padding."
+msgstr "Tipus de lletra del resum i padding de contingut més grans."
+
+#: toggle-group/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:toggle-group:text1"
+msgid "Advanced settings"
+msgstr "Configuracions avançades"
+
+#: toggle-group/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:toggle-group:text2"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that\n        rotates on open, and the content sits below a divider."
+msgstr "Aquestes opcions es revelen quan el grup s'expandeix. La fila d'encapçalament porta una chevron que\n        gira en obrir-se, i el contingut queda sota un separador."
+
+#: toggle-group/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:toggle-group:text3"
+msgid "Billing details"
+msgstr "Detalls de facturació"
+
+#: toggle-group/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:toggle-group:text4"
+msgid "Collapsed by default. Click the summary row to expand."
+msgstr "Col·lapsat per defecte. Fes clic a la fila de resum per expandir."
+
+#: token-utilities/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:token-utilities:text1"
+msgid "Token utilities"
+msgstr "Utilitats de tokens"
+
+#: token-utilities/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:token-utilities:text2"
+msgid "Every \"one token, one property\" family gets a class named after the token — here"
+msgstr "Cada família \"un token, una propietat\" obté una classe anomenada pel token — aquí"
+
+#: token-utilities/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:token-utilities:text3"
+msgid ", elevation"
+msgstr ", elevació"
+
+#: token-utilities/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:token-utilities:text4"
+msgid ", and"
+msgstr ", i"
+
+#: token-utilities/i18n.json#text5
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:token-utilities:text5"
+msgid "font-weight-body-base"
+msgstr "font-weight-body-base"
+
+#: token-utilities/i18n.json#text6
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:token-utilities:text6"
+msgid "font-weight-body-strong"
+msgstr "font-weight-body-strong"
+
+#: token-utilities/i18n.json#text7
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:token-utilities:text7"
+msgid "font-family-code"
+msgstr "font-family-code"
+
+#: token-utilities/i18n.json#text8
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:token-utilities:text8"
+msgid "radius-container-sm"
+msgstr "radius-container-sm"
+
+#: token-utilities/i18n.json#text9
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:token-utilities:text9"
+msgid "radius-container-lg"
+msgstr "radius-container-lg"
+
+#: token-utilities/i18n.json#text10
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:token-utilities:text10"
+msgid "elevation-resting"
+msgstr "elevation-resting"
+
+#: token-utilities/i18n.json#text11
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:token-utilities:text11"
+msgid "elevation-topmost"
+msgstr "elevation-topmost"
+
+#: token-utilities/i18n.json#text12
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:token-utilities:text12"
+msgid "opacity-disabled"
+msgstr "opacity-disabled"
+
+#: tooltip/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:tooltip:text1"
+msgid "Default placement is top"
+msgstr "La col·locació per defecte és a dalt"
+
+#: tooltip/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:tooltip:text2"
+msgid "Hover me"
+msgstr "Passa el cursor per sobre"
+
+#: tooltip/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:tooltip:text3"
+msgid "Placement bottom"
+msgstr "Posició inferior"
+
+#: tooltip/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:tooltip:text4"
+msgid "Placement end"
+msgstr "Col·locació final"
+
+#: tray/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:tray:text1"
+msgid "From start"
+msgstr "Des de l'inici"
+
+#: tray/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:tray:text2"
+msgid "From end"
+msgstr "Des del final"
+
+#: tray/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:tray:text3"
+msgid "Filters"
+msgstr "Filtres"
+
+#: tray/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:tray:text4"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "Una safata llisca des del costat inicial i omple l'alçada de la finestra de visualització."
+
+#: tray/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:tray:text5"
+msgid "Details"
+msgstr "Detalls"
+
+#: tray/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:tray:text6"
+msgid "This one docks to the end edge. Press Esc or click away to dismiss."
+msgstr "Aquesta s'acobla al costat final. Pressiona Esc o fes clic fora per tancar."
+
+#: tree-browser/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:tree-browser:text1"
+msgid "Course files"
+msgstr "Arxius del curs"
+
+#: tree-browser/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:tree-browser:text2"
+msgid "Syllabus.pdf"
+msgstr "Syllabus.pdf"
+
+#: tree-browser/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:tree-browser:text3"
+msgid "Week 1"
+msgstr "Setmana 1"
+
+#: tree-browser/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:tree-browser:text4"
+msgid "Reading.pdf"
+msgstr "Reading.pdf"
+
+#: tree-browser/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:tree-browser:text5"
+msgid "Slides.pptx"
+msgstr "Slides.pptx"
+
+#: tree-browser/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:tree-browser:text6"
+msgid "Rubric.docx"
+msgstr "Rubric.docx"
+
+#: truncate/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:truncate:text1"
+msgid "This single line keeps going past the edge of its box, so it ends in an ellipsis."
+msgstr "Aquesta sola línia continua més enllà del límit de la seva caixa, així que acaba amb una el·lipsi."
+
+#: truncate/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:truncate:text2"
+msgid "Set the"
+msgstr "Estableix la"
+
+#: truncate/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:truncate:text3"
+msgid "custom property to clamp to a fixed number of lines instead. This\n      paragraph runs long on purpose so the clamp has something to cut off after the second line."
+msgstr "propietat personalitzada per limitar a un nombre fix de línies en canvi. Aquest\n      paràgraf és llarg a propòsit perquè la limitació tingui alguna cosa a tallar després de la segona línia."
+
+#: view/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:view:text1"
+msgid "View"
+msgstr "Veure"
+
+#: view/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:view:text2"
+msgid "is InstUI's"
+msgstr "és el Text d'InstUI"
+
+#: view/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:view:text3"
+msgid ". Beyond the neutral box it carries\n    key-value modifiers for its own visual props, so it has the same devex as the other components —\n    no need to reach for utilities for the basics."
+msgstr ". A més de la caixa neutra porta\n    modificadors clau-valor per a les seves pròpies propietats visuals, així que té la mateixa experiència de desenvolupament (devex) que la resta de components —\n    no cal recórrer a utilitats per als conceptes bàsics."
+
+#: view/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:view:text4"
+msgid "Native modifiers"
+msgstr "Modificadors natius"
+
+#: view/i18n.json#text5
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:view:text5"
+msgid "-background-primary -border-radius-large -shadow-resting"
+msgstr "-background-primary -border-radius-large -shadow-resting"
+
+#: view/i18n.json#text6
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:view:text6"
+msgid "-border-width-small -border-color-brand -border-radius-medium"
+msgstr "-border-width-small -border-color-brand -border-radius-medium"
+
+#: view/i18n.json#text7
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:view:text7"
+msgid "-background-brand"
+msgstr "-background-brand"
+
+#: view/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:view:text8"
+msgid "Compose utilities too"
+msgstr "Composa també utilitats"
+
+#: view/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:view:text9"
+msgid "Spacing, color, and token utilities still layer onto a View — e.g."
+msgstr "Les utilitats d'espaiat, color i tokens encara s'apliquen a una View — p. ex."
+
+#: view/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:view:text10"
+msgid "bg-accent-blue surface with on-color text."
+msgstr "superfície bg-accent-blue amb text on-color."

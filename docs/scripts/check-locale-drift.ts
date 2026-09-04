@@ -1,13 +1,14 @@
 /**
  * Detect translation drift: English content whose translation is missing or stale.
  *
- * The committed translation memory (`docs/i18n-cache/<locale>.<namespace>.json`) is content-addressed
+ * The committed translation catalogs under `/l10n` are keyed by source identity; legacy JSON memory
+ * remains only for surfaces not yet migrated.
  * — a unit's key is `sha256(kind \0 source)`. So the key for a block of *current* English is present
  * only if that exact text was translated (and the prose poison-cache guard means a prose key is only
  * ever written by a real `:claude` run, never by the glossary passthrough). Edit the English and its
  * hash changes, so the old entry no longer matches: a missing key == untranslated or drifted.
  *
- * This check derives the keys the current English needs and asserts each is in the cache. It is
+ * This check derives the keys the current English needs and asserts each is in its catalog. It is
  * adapter-free — it never constructs an adapter or spawns `claude` — so it is safe to run in CI
  * (`docs/conventions/build-and-docs.md`: never wire the `:claude` cold pass into CI). Fill drift
  * locally with `vp run docs:locales:translate`, then commit the updated cache.
@@ -15,8 +16,8 @@
  * Guides drift is pure (the English source is committed). API drift needs the generated EN tree
  * (`docs/api/**`), so run it after `docs:api:en`; if `docs/api` is absent it is skipped with a note.
  *
- * Whether a given miss blocks the merge or only warns is decided by `i18n-policy.json`, per surface
- * (`docs.guides`, `docs.api`, `docs.home`, `docs.chrome`, `docs.glossary`, `docs.demos`) and per
+ * Whether a given miss blocks the merge or only warns is decided by `i18n.config.json`, per surface
+ * (`docs.guides`, `docs.api`, `docs.home`, `docs.chrome`, `docs.demos`) and per
  * locale tier — so adding an English guide doesn't have to wait on ~90 translations. See
  * `tools/translation-adapters/src/drift-policy.ts`.
  *
@@ -25,10 +26,10 @@
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import { DriftReporter } from "@pantoken/translation-adapters";
+import { extractFrontmatterUnits, parsePo } from "@pantoken/i18n-engine";
 import { ENGLISH_UI_STRINGS, NON_ROOT_LOCALES, flattenStrings } from "../.vitepress/i18n.ts";
 import { GLOSSARY_TERMS } from "./glossary.ts";
 import { listDemoNames, loadDemoI18n } from "./demo-i18n.ts";
-import { collectHomeUnits } from "./home-i18n.ts";
 import { collectUnits, segmentMarkdown } from "./segment-markdown.ts";
 import { keyFor } from "./translation-memory.ts";
 
@@ -38,6 +39,7 @@ const guideDir = join(docsRoot, "guide");
 const demoDir = join(docsRoot, "demos");
 const apiDir = join(docsRoot, "api");
 const homeIndex = join(docsRoot, "index.md");
+const l10nDir = join(docsRoot, "..", "l10n");
 
 const targets = NON_ROOT_LOCALES;
 
@@ -71,6 +73,21 @@ const preview = (text: string): string =>
 
 /** Guide drift: each `docs/guide/*.md` is one whole-file `markdown` unit. */
 const guideDrift = (locale: string): Missing[] => {
+  const poPath = join(l10nDir, locale, "docs.guides.po");
+  if (existsSync(poPath)) {
+    const translated = new Set(
+      parsePo(readFileSync(poPath, "utf8"))
+        .filter((entry) => entry.msgstr !== "")
+        .map((entry) => entry.msgid),
+    );
+    return walkMarkdown(guideDir)
+      .map((file) => ({
+        file: relative(docsRoot, file),
+        source: readFileSync(file, "utf8"),
+      }))
+      .filter(({ source }) => !translated.has(source))
+      .map(({ file, source }) => ({ file, kind: "markdown", sample: preview(source) }));
+  }
   const cached = loadCacheKeys(locale, "guides");
   const missing: Missing[] = [];
   for (const file of walkMarkdown(guideDir)) {
@@ -84,6 +101,27 @@ const guideDrift = (locale: string): Missing[] => {
 
 /** API drift: every `prose` block across the generated EN tree needs a cached `:claude` translation. */
 export const apiDrift = (locale: string): Missing[] => {
+  const poPath = join(l10nDir, locale, "docs.api.po");
+  if (existsSync(poPath)) {
+    const translated = new Set(
+      parsePo(readFileSync(poPath, "utf8"))
+        .filter((entry) => entry.msgstr !== "")
+        .map((entry) => `${entry.msgctxt ?? ""}\0${entry.msgid}`),
+    );
+    const missing: Missing[] = [];
+    for (const file of walkMarkdown(apiDir)) {
+      for (const unit of collectUnits(segmentMarkdown(readFileSync(file, "utf8")))) {
+        if (!translated.has(`docs.api:${unit.kind}\0${unit.text}`)) {
+          missing.push({
+            file: relative(docsRoot, file),
+            kind: unit.kind,
+            sample: preview(unit.text),
+          });
+        }
+      }
+    }
+    return missing;
+  }
   const cached = loadCacheKeys(locale, "api");
   const missing: Missing[] = [];
   for (const file of walkMarkdown(apiDir)) {
@@ -95,29 +133,6 @@ export const apiDrift = (locale: string): Missing[] => {
       }
     }
   }
-  return missing;
-};
-
-const chromeLeaves = flattenStrings(ENGLISH_UI_STRINGS);
-
-/** Chrome drift: every UI-string leaf (nav/sidebar/CDN picker/etc.) needs a cached translation. */
-const chromeDrift = (locale: string): Missing[] => {
-  if (chromeLeaves.length === 0) return [];
-  const cached = loadCacheKeys(locale, "chrome");
-  const missing: Missing[] = [];
-  for (const { path, text } of chromeLeaves) {
-    if (!cached.has(keyFor("text", text))) {
-      missing.push({ file: `.vitepress/i18n.ts#${path}`, kind: "text", sample: preview(text) });
-    }
-  }
-  return missing;
-};
-
-/** Glossary drift: every structural term (headings/badges/table labels) needs a cached translation. */
-const glossaryDrift = (locale: string): Missing[] => {
-  if (GLOSSARY_TERMS.length === 0) return [];
-  const cached = loadCacheKeys(locale, "glossary");
-  const missing: Missing[] = [];
   for (const { id, term } of GLOSSARY_TERMS) {
     if (!cached.has(keyFor("text", term))) {
       missing.push({ file: `glossary.ts#${id}`, kind: "text", sample: preview(term) });
@@ -126,7 +141,39 @@ const glossaryDrift = (locale: string): Missing[] => {
   return missing;
 };
 
-const homeUnits = existsSync(homeIndex) ? collectHomeUnits(readFileSync(homeIndex, "utf8")) : [];
+const chromeLeaves = flattenStrings(ENGLISH_UI_STRINGS);
+
+/** Chrome drift: every UI-string leaf (nav/sidebar/CDN picker/etc.) needs a cached translation. */
+const chromeDrift = (locale: string): Missing[] => {
+  if (chromeLeaves.length === 0) return [];
+  const poPath = join(l10nDir, locale, "docs.chrome.po");
+  if (existsSync(poPath)) {
+    const translated = new Set(
+      parsePo(readFileSync(poPath, "utf8"))
+        .filter((entry) => entry.msgstr !== "")
+        .map((entry) => entry.msgctxt),
+    );
+    return chromeLeaves
+      .filter(({ path }) => !translated.has(`docs.chrome:${path}`))
+      .map(({ path, text }) => ({
+        file: `.vitepress/i18n.json#${path}`,
+        kind: "text",
+        sample: preview(text),
+      }));
+  }
+  const cached = loadCacheKeys(locale, "chrome");
+  return chromeLeaves
+    .filter(({ text }) => !cached.has(keyFor("text", text)))
+    .map(({ path, text }) => ({
+      file: `.vitepress/i18n.ts#${path}`,
+      kind: "text",
+      sample: preview(text),
+    }));
+};
+
+const homeUnits = existsSync(homeIndex)
+  ? extractFrontmatterUnits(readFileSync(homeIndex, "utf8"), "index.md")
+  : [];
 
 /**
  * Home drift: every translatable `docs/index.md` frontmatter value (hero text/tagline, action labels,
@@ -135,11 +182,22 @@ const homeUnits = existsSync(homeIndex) ? collectHomeUnits(readFileSync(homeInde
  */
 const homeDrift = (locale: string): Missing[] => {
   if (homeUnits.length === 0) return [];
+  const poPath = join(l10nDir, locale, "docs.home.po");
+  if (existsSync(poPath)) {
+    const translated = new Set(
+      parsePo(readFileSync(poPath, "utf8"))
+        .filter((entry) => entry.msgstr !== "")
+        .map((entry) => entry.msgid),
+    );
+    return homeUnits
+      .filter((unit) => !translated.has(unit.msgid))
+      .map((unit) => ({ file: unit.reference, kind: "text", sample: preview(unit.msgid) }));
+  }
   const cached = loadCacheKeys(locale, "home");
   const missing: Missing[] = [];
-  for (const text of homeUnits) {
-    if (!cached.has(keyFor("text", text))) {
-      missing.push({ file: "index.md", kind: "text", sample: preview(text) });
+  for (const unit of homeUnits) {
+    if (!cached.has(keyFor("text", unit.msgid))) {
+      missing.push({ file: "index.md", kind: "text", sample: preview(unit.msgid) });
     }
   }
   return missing;
@@ -150,6 +208,28 @@ const demoNames = existsSync(demoDir) ? listDemoNames(demoDir) : [];
 /** Demos drift: every demo-local i18n string needs a cached translation. */
 const demosDrift = (locale: string): Missing[] => {
   if (demoNames.length === 0) return [];
+  const poPath = join(l10nDir, locale, "docs.demos.po");
+  if (existsSync(poPath)) {
+    const translated = new Set(
+      parsePo(readFileSync(poPath, "utf8"))
+        .filter((entry) => entry.msgstr !== "")
+        .map((entry) => entry.msgctxt),
+    );
+    const missing: Missing[] = [];
+    for (const name of demoNames) {
+      const { strings } = loadDemoI18n(join(demoDir, name));
+      for (const key of Object.keys(strings)) {
+        if (!translated.has(`docs.demos:${name}:${key}`)) {
+          missing.push({
+            file: `demos/${name}/i18n.json#${key}`,
+            kind: "text",
+            sample: preview(strings[key]),
+          });
+        }
+      }
+    }
+    return missing;
+  }
   const cached = loadCacheKeys(locale, "demos");
   const missing: Missing[] = [];
   for (const name of demoNames) {
@@ -194,7 +274,6 @@ for (const locale of targets) {
   record("docs.guides", locale, guideDrift(locale));
   record("docs.home", locale, homeDrift(locale));
   record("docs.chrome", locale, chromeDrift(locale));
-  record("docs.glossary", locale, glossaryDrift(locale));
   record("docs.demos", locale, demosDrift(locale));
   if (apiGenerated) record("docs.api", locale, apiDrift(locale));
 }

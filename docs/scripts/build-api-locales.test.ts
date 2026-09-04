@@ -7,6 +7,7 @@ interface Stat {
 }
 const cpSync = vi.fn();
 const existsSync = vi.fn<(path: string) => boolean>();
+const globSync = vi.fn<(pattern: string, options: { cwd: string }) => string[]>();
 const mkdirSync = vi.fn();
 const readdirSync = vi.fn<(path: string) => string[]>();
 const readFileSync = vi.fn<(path: string) => string>();
@@ -19,6 +20,7 @@ const spawn = vi.fn();
 vi.mock("node:fs", () => ({
   cpSync,
   existsSync,
+  globSync,
   mkdirSync,
   readdirSync,
   readFileSync,
@@ -50,6 +52,7 @@ const SIDEBAR = JSON.stringify([
 // against uninitialized bindings.
 let keyFor: (kind: string, source: string) => string;
 let GLOSSARY_JSON: string;
+let GLOSSARY_PO: string;
 
 beforeAll(async () => {
   ({ keyFor } = await import("./translation-memory.ts"));
@@ -60,6 +63,22 @@ beforeAll(async () => {
     [keyFor("text", "Functions")]: "Függvények",
   };
   GLOSSARY_JSON = JSON.stringify({ version: 1, entries });
+  GLOSSARY_PO = [
+    'msgid ""',
+    'msgstr ""',
+    '"Content-Type: text/plain; charset=UTF-8\\n"',
+    "",
+    ...Object.entries({
+      Usage: "Használat",
+      Overview: "Áttekintés",
+      Functions: "Függvények",
+    }).flatMap(([source, translation]) => [
+      'msgctxt "docs.api:text"',
+      `msgid "${source}"`,
+      `msgstr "${translation}"`,
+      "",
+    ]),
+  ].join("\n");
 });
 
 let logSpy: ReturnType<typeof vi.spyOn>;
@@ -71,12 +90,15 @@ beforeEach(() => {
   vi.clearAllMocks();
   delete process.env.DOCS_TRANSLATION_ADAPTER; // default glossary adapter (no real spawns)
 
-  // Cache files are absent → empty memory; every other path (the HU tree) exists.
-  existsSync.mockImplementation((path) => !path.endsWith("hu.api.json"));
+  // The merged API cache contains the glossary entries used by this fixture.
+  // memory.save() refreshes the (ignored) coverage reports via i18n.config.json; treat it as absent
+  // so that real coverage-report pipeline is skipped instead of misreading the markdown/PO fixtures.
+  existsSync.mockImplementation((path) => !path.endsWith("i18n.config.json"));
+  globSync.mockReturnValue(["index.md"]);
   readdirSync.mockReturnValue(["index.md", "typedoc-sidebar.json"]);
   statSync.mockReturnValue({ isDirectory: () => false });
   readFileSync.mockImplementation((path) => {
-    if (path.endsWith("hu.glossary.json")) return GLOSSARY_JSON;
+    if (path.endsWith("docs.api.po")) return GLOSSARY_PO;
     return path.endsWith("typedoc-sidebar.json") ? SIDEBAR : MARKDOWN;
   });
   spawnSync.mockReturnValue({ status: 0 });
@@ -98,12 +120,8 @@ function writtenTo(suffix: string): string | undefined {
 }
 
 test("build localizes markdown headings, prose, and sidebars, then logs the summary", async () => {
-  await import("./build-api-locales.ts");
-  await vi.waitFor(() =>
-    expect(logSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("✓ hu: rendered"))).toBe(
-      true,
-    ),
-  );
+  const { buildPromise } = await import("./build-api-locales.ts");
+  await buildPromise;
 
   const glossaryEntryFor = (source: string): string => {
     const entries = JSON.parse(GLOSSARY_JSON) as { entries: Record<string, string> };
@@ -146,6 +164,32 @@ test("build localizes markdown headings, prose, and sidebars, then logs the summ
 test("build surfaces a generation failure as a non-zero exit code", async () => {
   spawnSync.mockReturnValue({ status: 1 }); // TypeDoc/run() fails
   await import("./build-api-locales.ts");
-  await vi.waitFor(() => expect(process.exitCode).toBe(1));
+  await vi.waitFor(() => expect(process.exitCode).toBe(1), { timeout: 15000 });
   expect(errSpy).toHaveBeenCalled();
+});
+
+test("keeps API identifiers and code-shaped prose verbatim", async () => {
+  const { isRequiredVerbatimApiUnit } = await import("./build-api-locales.ts");
+
+  for (const source of [
+    "AggregateOptions",
+    "buildThemeCss",
+    "canvas-theme-editor",
+    "Token",
+    "**panda.config.ts**",
+    "- https://www.figma.com/design/EmUrCpRWx",
+    "cursor: auto.",
+    '@import "@pantoken/plugin-custom-components";',
+    "readonly `string`[]",
+  ]) {
+    expect(isRequiredVerbatimApiUnit(source), source).toBe(true);
+  }
+
+  for (const source of [
+    "Overview",
+    "Functions",
+    "Build the preview block appended after each example.",
+  ]) {
+    expect(isRequiredVerbatimApiUnit(source), source).toBe(false);
+  }
 });

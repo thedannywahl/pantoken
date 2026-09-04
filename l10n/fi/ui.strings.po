@@ -1,0 +1,45 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "ui.strings:prevMonth"
+msgid "Previous month"
+msgstr "Edellinen kuukausi"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "ui.strings:nextMonth"
+msgid "Next month"
+msgstr "Seuraava kuukausi"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "ui.strings:dateLabel"
+msgid "Date"
+msgstr "Päivämäärä"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "ui.strings:datePlaceholder"
+msgid "yyyy-mm-dd"
+msgstr "yyyy-mm-dd"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "ui.strings:openCalendar"
+msgid "Open calendar"
+msgstr "Avaa kalenteri"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "ui.strings:timeLabel"
+msgid "Time"
+msgstr "Aika"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "ui.strings:back"
+msgid "Back"
+msgstr "Takaisin"

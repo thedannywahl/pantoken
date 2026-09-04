@@ -1,0 +1,3417 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: alert/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:alert:text1"
+msgid "Dismissable with"
+msgstr "Sluitbaar met"
+
+#: alert/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:alert:text2"
+msgid "— I fade out when closed."
+msgstr "— Ik vervaag wanneer gesloten."
+
+#: alert/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:alert:text3"
+msgid "Dismissable with"
+msgstr "Sluitbaar met"
+
+#: alert/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:alert:text4"
+msgid "— I close instantly."
+msgstr "— Ik sluit direct."
+
+#: alert/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:alert:text5"
+msgid "Not dismissable, and flat via"
+msgstr "Niet sluitbaar, en vlak via"
+
+#: alert/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:alert:text6"
+msgid "(alerts are elevated by default)."
+msgstr "(waarschuwingen zijn standaard verheven)."
+
+#: alert/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:alert:text7"
+msgid "A custom icon via the"
+msgstr "Een aangepast pictogram via de"
+
+#: alert/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:alert:text8"
+msgid "class, kept white on the status bar."
+msgstr "klasse, wit gehouden op de statusbalk."
+
+#: alert/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:alert:text9"
+msgid "Restore alerts"
+msgstr "Herstel waarschuwingen"
+
+#: avatar/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:avatar:text1"
+msgid "DW"
+msgstr "DW"
+
+#: avatar/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:avatar:text2"
+msgid "AB"
+msgstr "AB"
+
+#: avatar/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:avatar:text3"
+msgid "CD"
+msgstr "CD"
+
+#: avatar/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:avatar:text4"
+msgid "EF"
+msgstr "EF"
+
+#: avatar/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:avatar:text5"
+msgid "GH"
+msgstr "GH"
+
+#: avatar/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:avatar:text6"
+msgid "IJ"
+msgstr "IJ"
+
+#: avatar/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:avatar:text7"
+msgid "KL"
+msgstr "KL"
+
+#: avatar/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:avatar:text8"
+msgid "AI"
+msgstr "AI"
+
+#: avatar/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:avatar:text9"
+msgid "AB"
+msgstr "AB"
+
+#: avatar/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:avatar:text10"
+msgid "CD"
+msgstr "CD"
+
+#: avatar/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:avatar:text11"
+msgid "EF"
+msgstr "EF"
+
+#: avatar/i18n.json#text12
+#, no-c-format
+msgctxt "docs.demos:avatar:text12"
+msgid "GH"
+msgstr "GH"
+
+#: avatar/i18n.json#text13
+#, no-c-format
+msgctxt "docs.demos:avatar:text13"
+msgid "IJ"
+msgstr "IJ"
+
+#: avatar/i18n.json#text14
+#, no-c-format
+msgctxt "docs.demos:avatar:text14"
+msgid "KL"
+msgstr "KL"
+
+#: avatar/i18n.json#text15
+#, no-c-format
+msgctxt "docs.demos:avatar:text15"
+msgid "AI"
+msgstr "AI"
+
+#: avatar/i18n.json#text16
+#, no-c-format
+msgctxt "docs.demos:avatar:text16"
+msgid "2XS"
+msgstr "2XS"
+
+#: avatar/i18n.json#text17
+#, no-c-format
+msgctxt "docs.demos:avatar:text17"
+msgid "XS"
+msgstr "XS"
+
+#: avatar/i18n.json#text18
+#, no-c-format
+msgctxt "docs.demos:avatar:text18"
+msgid "SM"
+msgstr "SM"
+
+#: avatar/i18n.json#text19
+#, no-c-format
+msgctxt "docs.demos:avatar:text19"
+msgid "MD"
+msgstr "MD"
+
+#: avatar/i18n.json#text20
+#, no-c-format
+msgctxt "docs.demos:avatar:text20"
+msgid "LG"
+msgstr "LG"
+
+#: avatar/i18n.json#text21
+#, no-c-format
+msgctxt "docs.demos:avatar:text21"
+msgid "XL"
+msgstr "XL"
+
+#: avatar/i18n.json#text22
+#, no-c-format
+msgctxt "docs.demos:avatar:text22"
+msgid "2XL"
+msgstr "2XL"
+
+#: avatar/i18n.json#text23
+#, no-c-format
+msgctxt "docs.demos:avatar:text23"
+msgid "MN"
+msgstr "MN"
+
+#: avatar/i18n.json#text24
+#, no-c-format
+msgctxt "docs.demos:avatar:text24"
+msgid "OP"
+msgstr "OP"
+
+#: avatar/i18n.json#text25
+#, no-c-format
+msgctxt "docs.demos:avatar:text25"
+msgid "QR"
+msgstr "QR"
+
+#: avatar/i18n.json#text26
+#, no-c-format
+msgctxt "docs.demos:avatar:text26"
+msgid "ST"
+msgstr "ST"
+
+#: avatar/i18n.json#text27
+#, no-c-format
+msgctxt "docs.demos:avatar:text27"
+msgid "Sarah Robinson"
+msgstr "Sarah Robinson"
+
+#: avatar/i18n.json#text28
+#, no-c-format
+msgctxt "docs.demos:avatar:text28"
+msgid "Kyle Montgomery"
+msgstr "Kyle Montgomery"
+
+#: avatar/i18n.json#text29
+#, no-c-format
+msgctxt "docs.demos:avatar:text29"
+msgid "Alexandria Winterbourne"
+msgstr "Alexandria Winterbourne"
+
+#: avatar/i18n.json#text30
+#, no-c-format
+msgctxt "docs.demos:avatar:text30"
+msgid "Miguel"
+msgstr "Miguel"
+
+#: avatar/i18n.json#text31
+#, no-c-format
+msgctxt "docs.demos:avatar:text31"
+msgid "Sanchez"
+msgstr "Sanchez"
+
+#: avatar/i18n.json#text32
+#, no-c-format
+msgctxt "docs.demos:avatar:text32"
+msgid "Priya"
+msgstr "Priya"
+
+#: badge/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:badge:text1"
+msgid "AB"
+msgstr "AB"
+
+#: badge/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:badge:text2"
+msgid "CD"
+msgstr "CD"
+
+#: badge/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:badge:text3"
+msgid "Inbox"
+msgstr "Postvak IN"
+
+#: badge/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:badge:text4"
+msgid "New"
+msgstr "Nieuw"
+
+#: base/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:base:text1"
+msgid "Base reset"
+msgstr "Basis terugzetten"
+
+#: base/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:base:text2"
+msgid "This result renders with"
+msgstr "Dit resultaat renderen met"
+
+#: base/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:base:text3"
+msgid "loaded first. The page surface, base text color\n    and font, and"
+msgstr "geladen als eerste. Het paginavlak, basistekstkleur\n    en lettertype, en"
+
+#: base/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:base:text4"
+msgid "all come from the tokens — no rule of your own required."
+msgstr "komen allemaal uit de tokens — geen eigen regel nodig."
+
+#: base/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:base:text5"
+msgid "Bare elements pick up sensible defaults, like this"
+msgstr "Onbedekte elementen krijgen verstandige standaardwaarden, zoals deze"
+
+#: base/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:base:text6"
+msgid "base link"
+msgstr "basislink"
+
+#: base/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:base:text7"
+msgid ", and everything sits on the token page surface. Switch the theme (or\n    light/dark) and the surface, text, and link all follow."
+msgstr ", en alles staat op het token-paginaoppervlak. Wissel het thema (of\n    licht/donker) en het oppervlak, de tekst en de link volgen mee."
+
+#: base/i18n.json#text8
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:base:text8"
+msgid "background-page"
+msgstr "background-page"
+
+#: base/i18n.json#text9
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:base:text9"
+msgid "background-base"
+msgstr "background-base"
+
+#: billboard/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:billboard:text1"
+msgid "No items yet"
+msgstr "Nog geen items"
+
+#: billboard/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:billboard:text2"
+msgid "Create your first item to get started."
+msgstr "Maak je eerste item aan om te beginnen."
+
+#: billboard/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:billboard:text3"
+msgid "Add a file"
+msgstr "Voeg een bestand toe"
+
+#: billboard/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:billboard:text4"
+msgid "Click anywhere in this billboard."
+msgstr "Klik ergens in dit billboard."
+
+#: breadcrumb/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:breadcrumb:text1"
+msgid "Home"
+msgstr "Startpagina"
+
+#: breadcrumb/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:breadcrumb:text2"
+msgid "Guides"
+msgstr "Gidsen"
+
+#: breadcrumb/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:breadcrumb:text3"
+msgid "Components"
+msgstr "Componenten"
+
+#: breadcrumb/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:breadcrumb:text4"
+msgid "Breadcrumb"
+msgstr "Broodkruimel"
+
+#: breadcrumb/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:breadcrumb:text5"
+msgid "Course"
+msgstr "Cursus"
+
+#: breadcrumb/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:breadcrumb:text6"
+msgid "Module 3"
+msgstr "Module 3"
+
+#: breadcrumb/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:breadcrumb:text7"
+msgid "Assignment"
+msgstr "Opdracht"
+
+#: breadcrumb/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:breadcrumb:text8"
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: breadcrumb/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:breadcrumb:text9"
+msgid "Reports"
+msgstr "Rapporten"
+
+#: breadcrumb/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:breadcrumb:text10"
+msgid "Q3 summary"
+msgstr "Q3 overzicht"
+
+#: breadcrumb/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:breadcrumb:text11"
+msgid "Home Page"
+msgstr "Startpagina"
+
+#: button/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:button:text1"
+msgid "Colors"
+msgstr "Kleuren"
+
+#: button/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:button:text2"
+msgid "Primary"
+msgstr "Primair"
+
+#: button/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:button:text3"
+msgid "Secondary"
+msgstr "Secundair"
+
+#: button/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:button:text4"
+msgid "Tertiary"
+msgstr "Tertiair"
+
+#: button/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:button:text5"
+msgid "Success"
+msgstr "Succes"
+
+#: button/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:button:text6"
+msgid "Danger"
+msgstr "Gevaar"
+
+#: button/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:button:text7"
+msgid "AI"
+msgstr "AI"
+
+#: button/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:button:text8"
+msgid "AI primary"
+msgstr "AI primair"
+
+#: button/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:button:text9"
+msgid "AI secondary"
+msgstr "AI secundair"
+
+#: button/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:button:text10"
+msgid "On Color (text on colored background)"
+msgstr "On Color (text on colored background)"
+
+#: button/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:button:text11"
+msgid "Primary inverse"
+msgstr "Primaire inverse"
+
+#: button/i18n.json#text12
+#, no-c-format
+msgctxt "docs.demos:button:text12"
+msgid "Ghost (no background)"
+msgstr "Ghost (geen achtergrond)"
+
+#: button/i18n.json#text13
+#, no-c-format
+msgctxt "docs.demos:button:text13"
+msgid "Primary ghost"
+msgstr "Primaire ghost"
+
+#: button/i18n.json#text14
+#, no-c-format
+msgctxt "docs.demos:button:text14"
+msgid "Secondary ghost"
+msgstr "Secundaire ghost"
+
+#: button/i18n.json#text15
+#, no-c-format
+msgctxt "docs.demos:button:text15"
+msgid "Block (full width)"
+msgstr "Blok (volledige breedte)"
+
+#: button/i18n.json#text16
+#, no-c-format
+msgctxt "docs.demos:button:text16"
+msgid "Block button"
+msgstr "Blokknop"
+
+#: button/i18n.json#text17
+#, no-c-format
+msgctxt "docs.demos:button:text17"
+msgid "Sizes"
+msgstr "Maten"
+
+#: button/i18n.json#text18
+#, no-c-format
+msgctxt "docs.demos:button:text18"
+msgid "Small"
+msgstr "Klein"
+
+#: button/i18n.json#text19
+#, no-c-format
+msgctxt "docs.demos:button:text19"
+msgid "Medium"
+msgstr "Medium"
+
+#: button/i18n.json#text20
+#, no-c-format
+msgctxt "docs.demos:button:text20"
+msgid "Large"
+msgstr "Groot"
+
+#: button/i18n.json#text21
+#, no-c-format
+msgctxt "docs.demos:button:text21"
+msgid "Icons and shapes"
+msgstr "Pictogrammen en vormen"
+
+#: button/i18n.json#text22
+#, no-c-format
+msgctxt "docs.demos:button:text22"
+msgid "Continue"
+msgstr "Doorgaan"
+
+#: button/i18n.json#text23
+#, no-c-format
+msgctxt "docs.demos:button:text23"
+msgid "Download"
+msgstr "Downloaden"
+
+#: button/i18n.json#text24
+#, no-c-format
+msgctxt "docs.demos:button:text24"
+msgid "Star"
+msgstr "Ster"
+
+#: button/i18n.json#text25
+#, no-c-format
+msgctxt "docs.demos:button:text25"
+msgid "Add"
+msgstr "Toevoegen"
+
+#: button/i18n.json#text26
+#, no-c-format
+msgctxt "docs.demos:button:text26"
+msgid "Condensed and states"
+msgstr "Ingeklemd en staten"
+
+#: button/i18n.json#text27
+#, no-c-format
+msgctxt "docs.demos:button:text27"
+msgid "Condensed"
+msgstr "Ingeklemd"
+
+#: button/i18n.json#text28
+#, no-c-format
+msgctxt "docs.demos:button:text28"
+msgid "Condensed small"
+msgstr "Ingeklemd klein"
+
+#: button/i18n.json#text29
+#, no-c-format
+msgctxt "docs.demos:button:text29"
+msgid "Toggle"
+msgstr "Schakelaar"
+
+#: button/i18n.json#text30
+#, no-c-format
+msgctxt "docs.demos:button:text30"
+msgid "Disabled"
+msgstr "Uitgeschakeld"
+
+#: button/i18n.json#text31
+#, no-c-format
+msgctxt "docs.demos:button:text31"
+msgid "Primary on-color"
+msgstr "Primary on-color"
+
+#: button/i18n.json#text32
+#, no-c-format
+msgctxt "docs.demos:button:text32"
+msgid "Secondary on-color"
+msgstr "Secondary on-color"
+
+#: byline/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:byline:text1"
+msgid "What's new"
+msgstr "Wat is nieuw"
+
+#: byline/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:byline:text2"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "De figuur kan elk leidend visueel element zijn — een pictogram, een avatar of een afbeelding."
+
+#: byline/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:byline:text3"
+msgid "Documentation"
+msgstr "Documentatie"
+
+#: byline/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:byline:text4"
+msgid "With"
+msgstr "Met"
+
+#: byline/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:byline:text5"
+msgid "the figure pins to the top instead of centering,\n          which reads better when the description runs to several lines like this one does."
+msgstr "de figuur vastgezet aan de bovenkant in plaats van gecentreerd,\n          wat beter leest wanneer de beschrijving over meerdere regels loopt zoals deze doet."
+
+#: byline/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:byline:text6"
+msgid "Compact"
+msgstr "Compact"
+
+#: byline/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:byline:text7"
+msgid "constrains the max width."
+msgstr "beperkt de maximale breedte."
+
+#: calendar/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:calendar:text1"
+msgid "March 2026"
+msgstr "Maart 2026"
+
+#: calendar/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:calendar:text2"
+msgid "Su"
+msgstr "Zo"
+
+#: calendar/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:calendar:text3"
+msgid "Mo"
+msgstr "Ma"
+
+#: calendar/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:calendar:text4"
+msgid "Tu"
+msgstr "Di"
+
+#: calendar/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:calendar:text5"
+msgid "We"
+msgstr "Wo"
+
+#: calendar/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:calendar:text6"
+msgid "Th"
+msgstr "Do"
+
+#: calendar/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:calendar:text7"
+msgid "Fr"
+msgstr "Vr"
+
+#: calendar/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:calendar:text8"
+msgid "Sa"
+msgstr "Za"
+
+#: checkbox/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:checkbox:text1"
+msgid "Checked"
+msgstr "Aangevinkt"
+
+#: checkbox/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:checkbox:text2"
+msgid "Unchecked"
+msgstr "Niet aangevinkt"
+
+#: checkbox/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:checkbox:text3"
+msgid "Indeterminate"
+msgstr "Onbepaald"
+
+#: checkbox/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:checkbox:text4"
+msgid "Small"
+msgstr "Klein"
+
+#: checkbox/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:checkbox:text5"
+msgid "Error state"
+msgstr "Fouttoestand"
+
+#: checkbox/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:checkbox:text6"
+msgid "Disabled"
+msgstr "Uitgeschakeld"
+
+#: checkbox/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:checkbox:text7"
+msgid "Toggle switch"
+msgstr "Toggle-schakelaar"
+
+#: checkbox/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:checkbox:text8"
+msgid "Label on top"
+msgstr "Label bovenaan"
+
+#: checkbox/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:checkbox:text9"
+msgid "Label at start"
+msgstr "Label aan het begin"
+
+#: checkbox/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:checkbox:text10"
+msgid "Label at end"
+msgstr "Label aan het einde"
+
+#: color-utilities/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:color-utilities:text1"
+msgid "Semantic color"
+msgstr "Semantische kleur"
+
+#: color-utilities/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:color-utilities:text2"
+msgid "paints text,"
+msgstr "verft tekst,"
+
+#: color-utilities/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:color-utilities:text3"
+msgid "a surface, and"
+msgstr "een oppervlak, en"
+
+#: color-utilities/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:color-utilities:text4"
+msgid "a border — each from a semantic color token, so overrides stay\n    on-palette and follow the theme."
+msgstr "een rand — elk afkomstig van een semantische kleurtoken, zodat overschrijvingen op-palet blijven en het thema volgen."
+
+#: color-utilities/i18n.json#text5
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:color-utilities:text5"
+msgid "text-success"
+msgstr "text-success"
+
+#: color-utilities/i18n.json#text6
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:color-utilities:text6"
+msgid "text-warning"
+msgstr "text-warning"
+
+#: color-utilities/i18n.json#text7
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:color-utilities:text7"
+msgid "text-error"
+msgstr "text-error"
+
+#: color-utilities/i18n.json#text8
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:color-utilities:text8"
+msgid "text-info"
+msgstr "text-info"
+
+#: color-utilities/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:color-utilities:text9"
+msgid "Surfaces and borders"
+msgstr "Oppervlakken en randen"
+
+#: color-utilities/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:color-utilities:text10"
+msgid "Accent surfaces pair with"
+msgstr "Accentoppervlakken combineren met"
+
+#: color-utilities/i18n.json#text11
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:color-utilities:text11"
+msgid "bg-accent-green"
+msgstr "bg-accent-green"
+
+#: color-utilities/i18n.json#text12
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:color-utilities:text12"
+msgid "bg-accent-plum"
+msgstr "bg-accent-plum"
+
+#: color-utilities/i18n.json#text13
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:color-utilities:text13"
+msgid "border-strong"
+msgstr "border-strong"
+
+#: color-utilities/i18n.json#text14
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:color-utilities:text14"
+msgid "border-brand"
+msgstr "border-brand"
+
+#: components/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:components:text1"
+msgid "Button"
+msgstr "Knop"
+
+#: components/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:components:text2"
+msgid "Secondary"
+msgstr "Secundair"
+
+#: components/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:components:text3"
+msgid "Published"
+msgstr "Gepubliceerd"
+
+#: components/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:components:text4"
+msgid "tag"
+msgstr "tag"
+
+#: components/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:components:text5"
+msgid "dismissible"
+msgstr "sluitbaar"
+
+#: components/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:components:text6"
+msgid "AB"
+msgstr "AB"
+
+#: components/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:components:text7"
+msgid "An alert, styled from the tokens."
+msgstr "Een waarschuwing, gestyled met de tokens."
+
+#: components/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:components:text8"
+msgid "Active users"
+msgstr "Actieve gebruikers"
+
+#: components/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:components:text9"
+msgid "Custom checkbox"
+msgstr "Aangepast selectievakje"
+
+#: components/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:components:text10"
+msgid "Toggle"
+msgstr "Schakelaar"
+
+#: components/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:components:text11"
+msgid "Radio"
+msgstr "Radio"
+
+#: context-view/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:context-view:text1"
+msgid "Show details"
+msgstr "Toon details"
+
+#: context-view/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:context-view:text2"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes\n    when you click away or press Esc."
+msgstr "Een contextweergave omlijst een callout met een pijlpunt. Als popover ligt het bovenaan en sluit het wanneer je ergens buiten klikt of Esc drukt."
+
+#: context-view/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:context-view:text3"
+msgid "Placement top"
+msgstr "Plaatsing boven"
+
+#: context-view/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:context-view:text4"
+msgid "Placement bottom"
+msgstr "Plaatsing onder"
+
+#: context-view/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:context-view:text5"
+msgid "Placement start"
+msgstr "Plaatsing begin"
+
+#: context-view/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:context-view:text6"
+msgid "Placement end"
+msgstr "Plaatsing einde"
+
+#: context-view/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:context-view:text7"
+msgid "Inverse background"
+msgstr "Inverse achtergrond"
+
+#: context-view/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:context-view:text8"
+msgid "Positioning next to a trigger uses CSS anchor positioning where supported; elsewhere the popover\n    centers in the top layer."
+msgstr "Positionering naast een trigger gebruikt CSS-ankerpositionering waar ondersteund; elders centreert de popover in de bovenste laag."
+
+#: date-time-inputs/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:date-time-inputs:text1"
+msgid "Due date"
+msgstr "Vervaldatum"
+
+#: date-time-inputs/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:date-time-inputs:text2"
+msgid "Starts at"
+msgstr "Begint om"
+
+#: date-time-inputs/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:date-time-inputs:text3"
+msgid "Reminder time"
+msgstr "Herinneringstijd"
+
+#: date-time-inputs/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:date-time-inputs:text4"
+msgid "Time zone"
+msgstr "Tijdzone"
+
+#: date-time-inputs/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:date-time-inputs:text5"
+msgid "Pacific"
+msgstr "Pacific"
+
+#: date-time-inputs/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:date-time-inputs:text6"
+msgid "Mountain"
+msgstr "Mountain"
+
+#: date-time-inputs/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:date-time-inputs:text7"
+msgid "Central"
+msgstr "Central"
+
+#: date-time-inputs/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:date-time-inputs:text8"
+msgid "Eastern"
+msgstr "Eastern"
+
+#: drawer-layout/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:drawer-layout:text1"
+msgid "Toggle panel"
+msgstr "Paneel wisselen"
+
+#: drawer-layout/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:drawer-layout:text2"
+msgid "Open"
+msgstr "Openen"
+
+#: drawer-layout/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:drawer-layout:text3"
+msgid "Close"
+msgstr "Sluiten"
+
+#: drawer-layout/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:drawer-layout:text4"
+msgid "Navigation"
+msgstr "Navigatie"
+
+#: drawer-layout/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:drawer-layout:text5"
+msgid "Overview"
+msgstr "Overzicht"
+
+#: drawer-layout/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:drawer-layout:text6"
+msgid "Modules"
+msgstr "Modules"
+
+#: drawer-layout/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:drawer-layout:text7"
+msgid "Settings"
+msgstr "Instellingen"
+
+#: drawer-layout/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:drawer-layout:text8"
+msgid "Main content"
+msgstr "Hoofdinhoud"
+
+#: drawer-layout/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:drawer-layout:text9"
+msgid "Use the buttons above to toggle open state. Narrow the viewport to see the tray switch to\n          overlay mode."
+msgstr "Gebruik de knoppen hierboven om de open/gesloten status te wisselen. Versmal het venster om te zien dat de lade overschakelt naar overlay-modus."
+
+#: elevation/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:elevation:text1"
+msgid "Elevation levels"
+msgstr "Elevatieniveaus"
+
+#: elevation/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:elevation:text2"
+msgid "resting"
+msgstr "rustend"
+
+#: elevation/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:elevation:text3"
+msgid "above"
+msgstr "boven"
+
+#: elevation/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:elevation:text4"
+msgid "topmost"
+msgstr "hoogst"
+
+#: elevation/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:elevation:text5"
+msgid "InstUI aliases"
+msgstr "InstUI aliassen"
+
+#: elevation/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:elevation:text6"
+msgid "depth1"
+msgstr "diepte1"
+
+#: elevation/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:elevation:text7"
+msgid "depth2"
+msgstr "diepte2"
+
+#: elevation/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:elevation:text8"
+msgid "depth3"
+msgstr "diepte3"
+
+#: elevation/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:elevation:text9"
+msgid "card"
+msgstr "kaart"
+
+#: elevation/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:elevation:text10"
+msgid "cardHover"
+msgstr "kaartHover"
+
+#: file-drop/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:file-drop:text1"
+msgid "Drag an image here"
+msgstr "Sleep hier een afbeelding naartoe"
+
+#: file-drop/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:file-drop:text2"
+msgid ", or click to browse."
+msgstr ", of klik om te bladeren."
+
+#: file-drop/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:file-drop:text3"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG of JPG tot 5&nbsp;MB."
+
+#: file-drop/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:file-drop:text4"
+msgid "photo.png — accepted."
+msgstr "photo.png — geaccepteerd."
+
+#: file-drop/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:file-drop:text5"
+msgid "report.pdf — file type not allowed."
+msgstr "report.pdf — bestandstype niet toegestaan."
+
+#: focus-outline/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text1"
+msgid "Tab through the controls (or click the field) to see the ring. It rides every focusable out of\n      the box from"
+msgstr "Tab door de bedieningsknoppen (of klik het veld) om de ring te zien. Het verschijnt om elk focusbaar element\n      standaard vanuit"
+
+#: focus-outline/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text2"
+msgid "; the modifiers recolour it, inset it, or turn off the\n      animation."
+msgstr "; de modifiers kleuren het opnieuw, maken het inset of schakelen de\n      animatie uit."
+
+#: focus-outline/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text3"
+msgid "Default ring (any focusable)"
+msgstr "Standaard ring (elk focusbaar)"
+
+#: focus-outline/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text4"
+msgid "Button"
+msgstr "Knop"
+
+#: focus-outline/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text5"
+msgid "Link"
+msgstr "Link"
+
+#: focus-outline/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text6"
+msgid "Ring colour"
+msgstr "Ringkleur"
+
+#: focus-outline/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text7"
+msgid "Info (default)"
+msgstr "Info (standaard)"
+
+#: focus-outline/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text8"
+msgid "Success"
+msgstr "Succes"
+
+#: focus-outline/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text9"
+msgid "Danger"
+msgstr "Gevaar"
+
+#: focus-outline/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text10"
+msgid "Position and animation"
+msgstr "Positie en animatie"
+
+#: focus-outline/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text11"
+msgid "Inset ring"
+msgstr "Inset-ring"
+
+#: focus-outline/i18n.json#text12
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text12"
+msgid "No animation"
+msgstr "Geen animatie"
+
+#: focus-outline/i18n.json#text13
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text13"
+msgid "Focus within (reveals on click too)"
+msgstr "Focus binnen (onthult ook bij klik)"
+
+#: focus-outline/i18n.json#text14
+#, no-c-format
+msgctxt "docs.demos:focus-outline:text14"
+msgid "Search"
+msgstr "Zoeken"
+
+#: form-field/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:form-field:text1"
+msgid "Email address"
+msgstr "E-mailadres"
+
+#: form-field/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:form-field:text2"
+msgid "We'll never share it."
+msgstr "We zullen het nooit delen."
+
+#: form-field/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:form-field:text3"
+msgid "Enter a valid email address."
+msgstr "Voer een geldig e-mailadres in."
+
+#: form-field/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:form-field:text4"
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+#: form-field/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:form-field:text5"
+msgid "Must be at least 3 characters."
+msgstr "Moet minstens 3 tekens lang zijn."
+
+#: form-field/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:form-field:text6"
+msgid "Nickname"
+msgstr "Bijnaam"
+
+#: form-field/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:form-field:text7"
+msgid "Account ID"
+msgstr "Account-ID"
+
+#: form-field-group/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:form-field-group:text1"
+msgid "Shipping address"
+msgstr "Bezorgadres"
+
+#: form-field-group/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:form-field-group:text2"
+msgid "First name"
+msgstr "Voornaam"
+
+#: form-field-group/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:form-field-group:text3"
+msgid "Last name"
+msgstr "Achternaam"
+
+#: form-field-group/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:form-field-group:text4"
+msgid "City"
+msgstr "Stad"
+
+#: form-field-group/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:form-field-group:text5"
+msgid "State"
+msgstr "Provincie"
+
+#: form-field-group/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:form-field-group:text6"
+msgid "CA"
+msgstr "CA"
+
+#: form-field-group/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:form-field-group:text7"
+msgid "NY"
+msgstr "NY"
+
+#: form-field-group/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:form-field-group:text8"
+msgid "TX"
+msgstr "TX"
+
+#: form-field-group/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:form-field-group:text9"
+msgid "All fields are used for delivery only."
+msgstr "Alle velden worden uitsluitend voor levering gebruikt."
+
+#: form-messages/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:form-messages:text1"
+msgid "Hint: use 8+ characters."
+msgstr "Tip: gebruik 8+ tekens."
+
+#: form-messages/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:form-messages:text2"
+msgid "Error: this field is required."
+msgstr "Fout: dit veld is verplicht."
+
+#: form-messages/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:form-messages:text3"
+msgid "Success: username is available."
+msgstr "Succes: gebruikersnaam is beschikbaar."
+
+#: form-messages/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:form-messages:text4"
+msgid "Screen-reader-only: form submitted."
+msgstr "Alleen voor schermlezers: formulier verzonden."
+
+#: gap/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:gap:text1"
+msgid "Gap"
+msgstr "Tussenruimte"
+
+#: gap/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:gap:text2"
+msgid "Flex/grid"
+msgstr "Flex/grid"
+
+#: gap/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:gap:text3"
+msgid "classes on the spacing scale, short ("
+msgstr "klassen op de spatiëringsschaal, kort ("
+
+#: gap/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:gap:text4"
+msgid ") or long\n    ("
+msgstr ") of lang\n    ("
+
+#: gap/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:gap:text5"
+msgid ") spelling — usable bare or chained onto any component."
+msgstr ") spelling — te gebruiken los of gekoppeld aan elk component."
+
+#: gap/i18n.json#text6
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:gap:text6"
+msgid "gap-sm"
+msgstr "gap-sm"
+
+#: gap/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:gap:text7"
+msgid "One"
+msgstr "Eén"
+
+#: gap/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:gap:text8"
+msgid "Two"
+msgstr "Twee"
+
+#: gap/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:gap:text9"
+msgid "Long spelling"
+msgstr "Lange schrijfwijze"
+
+#: gap/i18n.json#text10
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:gap:text10"
+msgid "gap-large"
+msgstr "gap-large"
+
+#: gap/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:gap:text11"
+msgid "One"
+msgstr "Eén"
+
+#: heading/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:heading:text1"
+msgid "Heading levels"
+msgstr "Kopniveaus"
+
+#: heading/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:heading:text2"
+msgid "Heading h1"
+msgstr "Kop h1"
+
+#: heading/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:heading:text3"
+msgid "Heading h2"
+msgstr "Kop h2"
+
+#: heading/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:heading:text4"
+msgid "Heading h3"
+msgstr "Kop h3"
+
+#: heading/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:heading:text5"
+msgid "Heading h4"
+msgstr "Kop h4"
+
+#: heading/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:heading:text6"
+msgid "Heading h5"
+msgstr "Kop h5"
+
+#: heading/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:heading:text7"
+msgid "Heading h6"
+msgstr "Kop h6"
+
+#: heading/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:heading:text8"
+msgid "Heading type variants"
+msgstr "Kop typevarianten"
+
+#: heading/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:heading:text9"
+msgid "Title page"
+msgstr "Titeldpagina"
+
+#: heading/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:heading:text10"
+msgid "Title section"
+msgstr "Titelsectie"
+
+#: heading/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:heading:text11"
+msgid "Title card section"
+msgstr "Titelfichesectie"
+
+#: heading/i18n.json#text12
+#, no-c-format
+msgctxt "docs.demos:heading:text12"
+msgid "Title card regular"
+msgstr "Titelfiche normaal"
+
+#: heading/i18n.json#text13
+#, no-c-format
+msgctxt "docs.demos:heading:text13"
+msgid "Title card mini"
+msgstr "Titelfiche mini"
+
+#: heading/i18n.json#text14
+#, no-c-format
+msgctxt "docs.demos:heading:text14"
+msgid "Label"
+msgstr "Label"
+
+#: heading/i18n.json#text15
+#, no-c-format
+msgctxt "docs.demos:heading:text15"
+msgid "Heading color and treatment"
+msgstr "Kopkleur en behandeling"
+
+#: heading/i18n.json#text16
+#, no-c-format
+msgctxt "docs.demos:heading:text16"
+msgid "Primary (default)"
+msgstr "Primair (standaard)"
+
+#: heading/i18n.json#text17
+#, no-c-format
+msgctxt "docs.demos:heading:text17"
+msgid "Secondary"
+msgstr "Secundair"
+
+#: heading/i18n.json#text18
+#, no-c-format
+msgctxt "docs.demos:heading:text18"
+msgid "AI gradient"
+msgstr "AI verloop"
+
+#: heading/i18n.json#text19
+#, no-c-format
+msgctxt "docs.demos:heading:text19"
+msgid "With bottom border"
+msgstr "Met onderste rand"
+
+#: icon/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:icon:text1"
+msgid "Inline"
+msgstr "Inline"
+
+#: icon/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:icon:text2"
+msgid "icons scale to the text and inherit\n      its color."
+msgstr "pictogrammen schalen met de tekst en erven\n      de kleur ervan."
+
+#: icon/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:icon:text3"
+msgid "Add"
+msgstr "Toevoegen"
+
+#: in-place-edit/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:in-place-edit:text1"
+msgid "Project name:"
+msgstr "Projectnaam:"
+
+#: in-place-edit/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:in-place-edit:text2"
+msgid "Untitled"
+msgstr "Zonder titel"
+
+#: in-place-edit/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:in-place-edit:text3"
+msgid "Owner:"
+msgstr "Eigenaar:"
+
+#: in-place-edit/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:in-place-edit:text4"
+msgid "Ada Byron"
+msgstr "Ada Byron"
+
+#: in-place-edit/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:in-place-edit:text5"
+msgid "Created:"
+msgstr "Aangemaakt:"
+
+#: in-place-edit/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:in-place-edit:text6"
+msgid "March 12, 2026"
+msgstr "12 maart 2026"
+
+#: in-place-edit/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:in-place-edit:text7"
+msgid "Click a value to edit it. The stateful view/edit toggle with confirm and cancel buttons is the\n    web-component tier; this is the pure-CSS editable skin."
+msgstr "Klik op een waarde om deze te bewerken. De stateful weergave/bewerk-schakelaar met bevestig- en annuleerknoppen is de web-component laag; dit is de puur-CSS bewerkbare huid."
+
+#: layout/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:layout:text1"
+msgid "Layout utilities"
+msgstr "Layout-hulpprogramma's"
+
+#: layout/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:layout:text2"
+msgid "and"
+msgstr "en"
+
+#: layout/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:layout:text3"
+msgid "cover InstUI's cross-cutting"
+msgstr "dekt InstUI's doorsnijdende"
+
+#: layout/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:layout:text4"
+msgid "and"
+msgstr "en"
+
+#: layout/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:layout:text5"
+msgid "props as composable classes — reach for them on\n    any element instead of a per-component modifier."
+msgstr "props als composeerbare klassen — gebruik ze op\n    elk element in plaats van een per-component modifier."
+
+#: layout/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:layout:text6"
+msgid "Display"
+msgstr "Weergave"
+
+#: layout/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:layout:text7"
+msgid "lays these chips out in a row; each chip is"
+msgstr "plaatst deze chips in een rij; elke chip is"
+
+#: layout/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:layout:text8"
+msgid "one"
+msgstr "één"
+
+#: layout/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:layout:text9"
+msgid "two"
+msgstr "twee"
+
+#: layout/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:layout:text10"
+msgid "three"
+msgstr "drie"
+
+#: layout/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:layout:text11"
+msgid "Text align"
+msgstr "Tekstuitlijning"
+
+#: layout/i18n.json#text12
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:layout:text12"
+msgid "text-align-start"
+msgstr "text-align-start"
+
+#: layout/i18n.json#text13
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:layout:text13"
+msgid "text-align-center"
+msgstr "text-align-center"
+
+#: layout/i18n.json#text14
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:layout:text14"
+msgid "text-align-end"
+msgstr "text-align-end"
+
+#: link/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:link:text1"
+msgid "A styled link"
+msgstr "Een gestylede link"
+
+#: link/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:link:text2"
+msgid "A large link"
+msgstr "Een grote link"
+
+#: link/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:link:text3"
+msgid "Icon at the start"
+msgstr "Pictogram aan het begin"
+
+#: link/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:link:text4"
+msgid "Icon at the end"
+msgstr "Pictogram aan het einde"
+
+#: link/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:link:text5"
+msgid "Read the"
+msgstr "Lees de"
+
+#: link/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:link:text6"
+msgid "inline documentation"
+msgstr "inline documentatie"
+
+#: link/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:link:text7"
+msgid "for the full story."
+msgstr "voor het volledige verhaal."
+
+#: link/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:link:text8"
+msgid "Unstyled link"
+msgstr "Ongestylede link"
+
+#: link/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:link:text9"
+msgid "A link on a dark background"
+msgstr "Een link op een donkere achtergrond"
+
+#: link/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:link:text10"
+msgid "With a leading icon"
+msgstr "Met een voorloop-pictogram"
+
+#: list/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:list:text1"
+msgid "First item"
+msgstr "Eerste item"
+
+#: list/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:list:text2"
+msgid "Second item"
+msgstr "Tweede item"
+
+#: list/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:list:text3"
+msgid "Third item"
+msgstr "Derde item"
+
+#: list/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:list:text4"
+msgid "Solid delimiter"
+msgstr "Solide scheidingsteken"
+
+#: list/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:list:text5"
+msgid "Between each"
+msgstr "Tussen elk"
+
+#: list/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:list:text6"
+msgid "List item"
+msgstr "Lijstitem"
+
+#: list/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:list:text7"
+msgid "Ordered"
+msgstr "Geordend"
+
+#: list/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:list:text8"
+msgid "Dashed"
+msgstr "Gestreept"
+
+#: list/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:list:text9"
+msgid "Items"
+msgstr "Items"
+
+#: mask/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:mask:text1"
+msgid "Content behind the mask."
+msgstr "Inhoud achter het masker."
+
+#: menu/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:menu:text1"
+msgid "Actions"
+msgstr "Acties"
+
+#: menu/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:menu:text2"
+msgid "Edit"
+msgstr "Bewerken"
+
+#: menu/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:menu:text3"
+msgid "Duplicate"
+msgstr "Dupliceren"
+
+#: menu/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:menu:text4"
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: metric/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:metric:text1"
+msgid "Active users"
+msgstr "Actieve gebruikers"
+
+#: metric/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:metric:text2"
+msgid "Uptime"
+msgstr "Uptime"
+
+#: metric/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:metric:text3"
+msgid "3.2s"
+msgstr "3.2s"
+
+#: metric/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:metric:text4"
+msgid "Avg. response"
+msgstr "Gem. responstijd"
+
+#: metric/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:metric:text5"
+msgid "Start"
+msgstr "Begin"
+
+#: metric/i18n.json#text6
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:metric:text6"
+msgid "-text-align-start"
+msgstr "-text-align-start"
+
+#: metric/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:metric:text7"
+msgid "Center"
+msgstr "Midden"
+
+#: metric/i18n.json#text8
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:metric:text8"
+msgid "-text-align-center"
+msgstr "-text-align-center"
+
+#: metric/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:metric:text9"
+msgid "End"
+msgstr "Einde"
+
+#: metric/i18n.json#text10
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:metric:text10"
+msgid "-text-align-end"
+msgstr "-text-align-end"
+
+#: modal/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:modal:text1"
+msgid "Small"
+msgstr "Klein"
+
+#: modal/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:modal:text2"
+msgid "Medium"
+msgstr "Medium"
+
+#: modal/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:modal:text3"
+msgid "Large"
+msgstr "Groot"
+
+#: modal/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:modal:text4"
+msgid "Auto"
+msgstr "Auto"
+
+#: modal/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:modal:text5"
+msgid "Full screen"
+msgstr "Volledig scherm"
+
+#: modal/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:modal:text6"
+msgid "Media"
+msgstr "Media"
+
+#: modal/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:modal:text7"
+msgid "Small"
+msgstr "Klein"
+
+#: modal/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:modal:text8"
+msgid "— a narrow modal."
+msgstr "— een smalle modal."
+
+#: modal/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:modal:text9"
+msgid "Close"
+msgstr "Sluiten"
+
+#: modal/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:modal:text10"
+msgid "Medium"
+msgstr "Medium"
+
+#: modal/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:modal:text11"
+msgid "The default size — no modifier needed."
+msgstr "De standaardgrootte — geen modifier nodig."
+
+#: modal/i18n.json#text12
+#, no-c-format
+msgctxt "docs.demos:modal:text12"
+msgid "Close"
+msgstr "Sluiten"
+
+#: modal/i18n.json#text13
+#, no-c-format
+msgctxt "docs.demos:modal:text13"
+msgid "Large"
+msgstr "Groot"
+
+#: modal/i18n.json#text14
+#, no-c-format
+msgctxt "docs.demos:modal:text14"
+msgid "— a wider modal for denser content."
+msgstr "— een bredere modal voor dichtere inhoud."
+
+#: modal/i18n.json#text15
+#, no-c-format
+msgctxt "docs.demos:modal:text15"
+msgid "Close"
+msgstr "Sluiten"
+
+#: modal/i18n.json#text16
+#, no-c-format
+msgctxt "docs.demos:modal:text16"
+msgid "Auto"
+msgstr "Auto"
+
+#: modal/i18n.json#text17
+#, no-c-format
+msgctxt "docs.demos:modal:text17"
+msgid "sizes to its content."
+msgstr "past zich aan op zijn inhoud."
+
+#: modal/i18n.json#text18
+#, no-c-format
+msgctxt "docs.demos:modal:text18"
+msgid "Close"
+msgstr "Sluiten"
+
+#: modal/i18n.json#text19
+#, no-c-format
+msgctxt "docs.demos:modal:text19"
+msgid "Full screen"
+msgstr "Volledig scherm"
+
+#: modal/i18n.json#text20
+#, no-c-format
+msgctxt "docs.demos:modal:text20"
+msgid "fills the viewport."
+msgstr "vult het viewport."
+
+#: modal/i18n.json#text21
+#, no-c-format
+msgctxt "docs.demos:modal:text21"
+msgid "Close"
+msgstr "Sluiten"
+
+#: modal/i18n.json#text22
+#, no-c-format
+msgctxt "docs.demos:modal:text22"
+msgid "Media"
+msgstr "Media"
+
+#: modal/i18n.json#text23
+#, no-c-format
+msgctxt "docs.demos:modal:text23"
+msgid "Close"
+msgstr "Sluiten"
+
+#: pagination/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:pagination:text1"
+msgid "Page"
+msgstr "Pagina"
+
+#: pagination/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:pagination:text2"
+msgid "of 12"
+msgstr "van 12"
+
+#: pendo/i18n.json#popoverLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:popoverLabel"
+msgid "Popover"
+msgstr "Pop-over"
+
+#: pendo/i18n.json#popoverTitle
+#, no-c-format
+msgctxt "docs.demos:pendo:popoverTitle"
+msgid "A quick orientation"
+msgstr "Een korte oriëntatie"
+
+#: pendo/i18n.json#popoverSubtitle
+#, no-c-format
+msgctxt "docs.demos:pendo:popoverSubtitle"
+msgid "Feature tour"
+msgstr "Rondleiding door functies"
+
+#: pendo/i18n.json#popoverBody
+#, no-c-format
+msgctxt "docs.demos:pendo:popoverBody"
+msgid "This anchored guide keeps the next action close to the feature it describes."
+msgstr "Deze verankerde gids houdt de volgende actie dicht bij de functie die hij beschrijft."
+
+#: pendo/i18n.json#alertLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:alertLabel"
+msgid "Alert"
+msgstr "Waarschuwing"
+
+#: pendo/i18n.json#alertTitle
+#, no-c-format
+msgctxt "docs.demos:pendo:alertTitle"
+msgid "Maintenance tonight"
+msgstr "Onderhoud vanavond"
+
+#: pendo/i18n.json#alertSubtitle
+#, no-c-format
+msgctxt "docs.demos:pendo:alertSubtitle"
+msgid "Starts at 11:00 PM"
+msgstr "Begint om 23:00"
+
+#: pendo/i18n.json#alertBody
+#, no-c-format
+msgctxt "docs.demos:pendo:alertBody"
+msgid "Course tools will be unavailable briefly tonight while maintenance is completed."
+msgstr "Cursushulpmiddelen zijn vanavond tijdelijk niet beschikbaar terwijl het onderhoud wordt uitgevoerd."
+
+#: pendo/i18n.json#bannerLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:bannerLabel"
+msgid "Banner"
+msgstr "Banner"
+
+#: pendo/i18n.json#bannerTitle
+#, no-c-format
+msgctxt "docs.demos:pendo:bannerTitle"
+msgid "New analytics are ready"
+msgstr "Nieuwe analyses zijn beschikbaar"
+
+#: pendo/i18n.json#bannerSubtitle
+#, no-c-format
+msgctxt "docs.demos:pendo:bannerSubtitle"
+msgid "Participation insights"
+msgstr "Inzichten in deelname"
+
+#: pendo/i18n.json#bannerBody
+#, no-c-format
+msgctxt "docs.demos:pendo:bannerBody"
+msgid "Review participation trends and identify where learners may need support."
+msgstr "Bekijk deelnametrends en identificeer waar leerlingen mogelijk ondersteuning nodig hebben."
+
+#: pendo/i18n.json#closeLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:closeLabel"
+msgid "Close"
+msgstr "Sluiten"
+
+#: pendo/i18n.json#continueLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:continueLabel"
+msgid "Continue"
+msgstr "Doorgaan"
+
+#: pendo/i18n.json#laterLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:laterLabel"
+msgid "Later"
+msgstr "Later"
+
+#: pendo/i18n.json#alertPrimaryLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:alertPrimaryLabel"
+msgid "View details"
+msgstr "Bekijk details"
+
+#: pendo/i18n.json#alertSecondaryLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:alertSecondaryLabel"
+msgid "Dismiss"
+msgstr "Sluiten"
+
+#: pendo/i18n.json#primaryLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:primaryLabel"
+msgid "View analytics"
+msgstr "Bekijk analyses"
+
+#: pendo/i18n.json#secondaryLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:secondaryLabel"
+msgid "Not now"
+msgstr "Niet nu"
+
+#: pill/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:pill:text1"
+msgid "Draft"
+msgstr "Concept"
+
+#: pill/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:pill:text2"
+msgid "In review"
+msgstr "In beoordeling"
+
+#: pill/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:pill:text3"
+msgid "Published"
+msgstr "Gepubliceerd"
+
+#: pill/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:pill:text4"
+msgid "Stale"
+msgstr "Verlopen"
+
+#: pill/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:pill:text5"
+msgid "Blocked"
+msgstr "Geblokkeerd"
+
+#: popover/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:popover:text1"
+msgid "Open popover"
+msgstr "Popover openen"
+
+#: popover/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:popover:text2"
+msgid "Share this page"
+msgstr "Deel deze pagina"
+
+#: popover/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:popover:text3"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native"
+msgstr "Een popover is een lichtgewicht oppervlak verankerd aan een trigger. Deze gebruikt de native"
+
+#: popover/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:popover:text4"
+msgid "attribute."
+msgstr "attribuut."
+
+#: progress-circle/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:progress-circle:text1"
+msgid "Animated after a 500ms delay"
+msgstr "Geanimeerd na een vertraging van 500ms"
+
+#: prose/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:prose:text1"
+msgid "Heading level one"
+msgstr "Kopniveau één"
+
+#: prose/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:prose:text2"
+msgid "Heading level two"
+msgstr "Kopniveau twee"
+
+#: prose/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:prose:text3"
+msgid "Heading level three"
+msgstr "Kopniveau drie"
+
+#: prose/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:prose:text4"
+msgid "Heading level four"
+msgstr "Kopniveau vier"
+
+#: prose/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:prose:text5"
+msgid "Heading level five"
+msgstr "Kopniveau vijf"
+
+#: prose/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:prose:text6"
+msgid "Heading level six"
+msgstr "Kopniveau zes"
+
+#: prose/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:prose:text7"
+msgid "Body copy is InstUI's Text"
+msgstr "Bodytekst is InstUI's Tekst"
+
+#: prose/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:prose:text8"
+msgid "style. A paragraph with"
+msgstr "stijl. Een alinea met"
+
+#: prose/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:prose:text9"
+msgid "a link"
+msgstr "een link"
+
+#: prose/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:prose:text10"
+msgid "bold text"
+msgstr "vette tekst"
+
+#: prose/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:prose:text11"
+msgid "emphasis"
+msgstr "nadruk"
+
+#: prose/i18n.json#text12
+#, no-c-format
+msgctxt "docs.demos:prose:text12"
+msgid "small print"
+msgstr "kleine lettertjes"
+
+#: prose/i18n.json#text13
+#, no-c-format
+msgctxt "docs.demos:prose:text13"
+msgid ", and some"
+msgstr ", en wat"
+
+#: prose/i18n.json#text14
+#, no-c-format
+msgctxt "docs.demos:prose:text14"
+msgid ". The prose layer styles rendered\n      markdown to match the Heading and Text components."
+msgstr ". De prozalaag styleert gerenderde\n      markdown om overeen te komen met de Kop- en Tekstcomponenten."
+
+#: prose/i18n.json#text15
+#, no-c-format
+msgctxt "docs.demos:prose:text15"
+msgid "First item"
+msgstr "Eerste item"
+
+#: prose/i18n.json#text16
+#, no-c-format
+msgctxt "docs.demos:prose:text16"
+msgid "Second item"
+msgstr "Tweede item"
+
+#: prose/i18n.json#text17
+#, no-c-format
+msgctxt "docs.demos:prose:text17"
+msgid "A blockquote, styled from the Text content-quote type scale."
+msgstr "Een blockquote, gestyled vanuit het Text content-quote type schaal."
+
+#: prose/i18n.json#text18
+#, no-c-format
+msgctxt "docs.demos:prose:text18"
+msgid "Package"
+msgstr "Pakket"
+
+#: prose/i18n.json#text19
+#, no-c-format
+msgctxt "docs.demos:prose:text19"
+msgid "Bucket"
+msgstr "Bucket"
+
+#: prose/i18n.json#text20
+#, no-c-format
+msgctxt "docs.demos:prose:text20"
+msgid "@pantoken/css"
+msgstr "@pantoken/css"
+
+#: prose/i18n.json#text21
+#, no-c-format
+msgctxt "docs.demos:prose:text21"
+msgid "formats"
+msgstr "formaten"
+
+#: prose/i18n.json#text22
+#, no-c-format
+msgctxt "docs.demos:prose:text22"
+msgid "@pantoken/react"
+msgstr "@pantoken/react"
+
+#: prose/i18n.json#text23
+#, no-c-format
+msgctxt "docs.demos:prose:text23"
+msgid "renderers"
+msgstr "renderers"
+
+#: radio/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:radio:text1"
+msgid "Standard"
+msgstr "Standaard"
+
+#: radio/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:radio:text2"
+msgid "Option A"
+msgstr "Optie A"
+
+#: radio/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:radio:text3"
+msgid "Option B"
+msgstr "Optie B"
+
+#: radio/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:radio:text4"
+msgid "Large"
+msgstr "Groot"
+
+#: radio/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:radio:text5"
+msgid "Disabled"
+msgstr "Uitgeschakeld"
+
+#: radio/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:radio:text6"
+msgid "Toggle buttons (variant=\"toggle\")"
+msgstr "Toggle-knoppen (variant=\"toggle\")"
+
+#: radio/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:radio:text7"
+msgid "Small"
+msgstr "Klein"
+
+#: radio/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:radio:text8"
+msgid "Medium"
+msgstr "Medium"
+
+#: radio/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:radio:text9"
+msgid "Large"
+msgstr "Groot"
+
+#: radio/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:radio:text10"
+msgid "Toggle context colors"
+msgstr "Toggle contextkleuren"
+
+#: radio/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:radio:text11"
+msgid "Success"
+msgstr "Succes"
+
+#: radio/i18n.json#text12
+#, no-c-format
+msgctxt "docs.demos:radio:text12"
+msgid "Danger"
+msgstr "Gevaar"
+
+#: radio/i18n.json#text13
+#, no-c-format
+msgctxt "docs.demos:radio:text13"
+msgid "Warning"
+msgstr "Waarschuwing"
+
+#: radio/i18n.json#text14
+#, no-c-format
+msgctxt "docs.demos:radio:text14"
+msgid "Off"
+msgstr "Uit"
+
+#: radio-input-group/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text1"
+msgid "T-shirt size"
+msgstr "T-shirt maat"
+
+#: radio-input-group/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text2"
+msgid "Small"
+msgstr "Klein"
+
+#: radio-input-group/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text3"
+msgid "Medium"
+msgstr "Medium"
+
+#: radio-input-group/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text4"
+msgid "Large"
+msgstr "Groot"
+
+#: radio-input-group/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text5"
+msgid "Notification frequency"
+msgstr "Frequentie van meldingen"
+
+#: radio-input-group/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text6"
+msgid "Real time"
+msgstr "Realtime"
+
+#: radio-input-group/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text7"
+msgid "Daily digest"
+msgstr "Dagelijkse samenvatting"
+
+#: radio-input-group/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text8"
+msgid "Weekly digest"
+msgstr "Wekelijkse samenvatting"
+
+#: radio-input-group/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text9"
+msgid "Contact method"
+msgstr "Contactmethode"
+
+#: radio-input-group/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text10"
+msgid "Email"
+msgstr "E-mail"
+
+#: radio-input-group/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text11"
+msgid "Phone"
+msgstr "Telefoon"
+
+#: radio-input-group/i18n.json#text12
+#, no-c-format
+msgctxt "docs.demos:radio-input-group:text12"
+msgid "Mail"
+msgstr "Post"
+
+#: range-input/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:range-input:text1"
+msgid "Grading range"
+msgstr "Beoordelingsbereik"
+
+#: range-input/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:range-input:text2"
+msgid "Small"
+msgstr "Klein"
+
+#: responsive/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:responsive:text1"
+msgid "Narrow layout — hidden at"
+msgstr "Nauwkeurige lay-out — verborgen bij"
+
+#: responsive/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:responsive:text2"
+msgid "(48rem) and up via"
+msgstr "(48rem) en groter via"
+
+#: responsive/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:responsive:text3"
+msgid "Wide layout — hidden at"
+msgstr "Brede lay-out — verborgen bij"
+
+#: responsive/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:responsive:text4"
+msgid "and below via"
+msgstr "en kleiner via"
+
+#: responsive/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:responsive:text5"
+msgid "Breakpoints:"
+msgstr "Breakpointen:"
+
+#: responsive/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:responsive:text6"
+msgid "30rem,"
+msgstr "30rem,"
+
+#: responsive/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:responsive:text7"
+msgid "48rem,"
+msgstr "48rem,"
+
+#: responsive/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:responsive:text8"
+msgid "64rem,"
+msgstr "64rem,"
+
+#: responsive/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:responsive:text9"
+msgid "80rem. For a component that adapts to its own width instead of the viewport,\n      wrap it in a"
+msgstr "80rem. Voor een component die zich aanpast aan zijn eigen breedte in plaats van het viewport,\n      wikkel het in een"
+
+#: responsive/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:responsive:text10"
+msgid "element and use"
+msgstr "element en gebruik"
+
+#: responsive/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:responsive:text11"
+msgid "queries with the same widths."
+msgstr "queries met dezelfde breedtes."
+
+#: screen-reader-content/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:screen-reader-content:text1"
+msgid "This sentence is visible. After it sits screen-reader-only text."
+msgstr "Deze zin is zichtbaar. Daarna staat tekst die alleen voor schermlezers is."
+
+#: screen-reader-content/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:screen-reader-content:text2"
+msgid "This text is announced to assistive technology but hidden on screen."
+msgstr "Deze tekst wordt aangekondigd aan assistieve technologie maar verborgen op het scherm."
+
+#: screen-reader-content/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:screen-reader-content:text3"
+msgid "Switch to the HTML tab to see it in the markup."
+msgstr "Schakel naar het HTML-tabblad om het in de markup te zien."
+
+#: side-nav-bar/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:side-nav-bar:text1"
+msgid "Home"
+msgstr "Startpagina"
+
+#: side-nav-bar/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:side-nav-bar:text2"
+msgid "Inbox"
+msgstr "Postvak IN"
+
+#: side-nav-bar/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:side-nav-bar:text3"
+msgid "Calendar"
+msgstr "Kalender"
+
+#: side-nav-bar/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:side-nav-bar:text4"
+msgid "Settings"
+msgstr "Instellingen"
+
+#: side-nav-bar/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:side-nav-bar:text5"
+msgid "Home"
+msgstr "Startpagina"
+
+#: side-nav-bar/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:side-nav-bar:text6"
+msgid "Inbox"
+msgstr "Postvak IN"
+
+#: side-nav-bar/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:side-nav-bar:text7"
+msgid "Calendar"
+msgstr "Kalender"
+
+#: side-nav-bar/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:side-nav-bar:text8"
+msgid "Page content sits beside the rail."
+msgstr "Paginainhoud staat naast de rail."
+
+#: simple-select/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:simple-select:text1"
+msgid "Choose a fruit…"
+msgstr "Kies een fruit…"
+
+#: simple-select/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:simple-select:text2"
+msgid "Apple"
+msgstr "Appel"
+
+#: simple-select/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:simple-select:text3"
+msgid "Orange"
+msgstr "Sinaasappel"
+
+#: simple-select/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:simple-select:text4"
+msgid "Pear"
+msgstr "Peer"
+
+#: simple-select/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:simple-select:text5"
+msgid "Invalid selection"
+msgstr "Ongeldige selectie"
+
+#: simple-select/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:simple-select:text6"
+msgid "Small"
+msgstr "Klein"
+
+#: simple-select/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:simple-select:text7"
+msgid "Disabled"
+msgstr "Uitgeschakeld"
+
+#: spacing/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:spacing:text1"
+msgid "Spacing"
+msgstr "Afstand"
+
+#: spacing/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:spacing:text2"
+msgid "Per-side classes on the spacing scale —"
+msgstr "Per-zijde klassen op de spacingschaal —"
+
+#: spacing/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:spacing:text3"
+msgid "for margin/padding, an\n    optional logical side\n    ("
+msgstr "voor margin/padding, een\n    optionele logische zijde\n    ("
+
+#: spacing/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:spacing:text4"
+msgid "),\n    then a step ("
+msgstr "),\n    dan een stap ("
+
+#: spacing/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:spacing:text5"
+msgid ", plus"
+msgstr ", plus"
+
+#: spacing/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:spacing:text6"
+msgid "for\n    margin). Every class also has a fully long, word-spelled twin —"
+msgstr "voor\n    margin). Elke klasse heeft ook een volledig lange, voluit gespelde tweeling —"
+
+#: spacing/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:spacing:text7"
+msgid "is the same\n    rule as"
+msgstr "is dezelfde\n    regel als"
+
+#: spacing/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:spacing:text8"
+msgid "p-xs, mb-2xs"
+msgstr "p-xs, mb-2xs"
+
+#: spacing/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:spacing:text9"
+msgid "p-sm, mb-2xs"
+msgstr "p-sm, mb-2xs"
+
+#: spacing/i18n.json#text10
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:spacing:text10"
+msgid "p-lg"
+msgstr "p-lg"
+
+#: spacing/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:spacing:text11"
+msgid "Center with auto margins"
+msgstr "Centreren met automatische marges"
+
+#: spacing/i18n.json#text12
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:spacing:text12"
+msgid "mx-auto"
+msgstr "mx-auto"
+
+#: spacing/i18n.json#text13
+#, no-c-format
+msgctxt "docs.demos:spacing:text13"
+msgid "Short and long spellings, side by side"
+msgstr "Korte en lange schrijfwijzen, naast elkaar"
+
+#: spacing/i18n.json#text14
+#, no-c-format
+msgctxt "docs.demos:spacing:text14"
+msgid "padding-small, margin-bottom-x-small"
+msgstr "padding-small, margin-bottom-x-small"
+
+#: spacing/i18n.json#text15
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:spacing:text15"
+msgid "padding-large"
+msgstr "padding-large"
+
+#: table/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:table:text1"
+msgid "Top-rated films"
+msgstr "Hoogst gewaardeerde films"
+
+#: table/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:table:text2"
+msgid "Rank"
+msgstr "Rang"
+
+#: table/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:table:text3"
+msgid "Title"
+msgstr "Titel"
+
+#: table/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:table:text4"
+msgid "Year"
+msgstr "Jaar"
+
+#: table/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:table:text5"
+msgid "Rating"
+msgstr "Beoordeling"
+
+#: table/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:table:text6"
+msgid "The Shawshank Redemption"
+msgstr "The Shawshank Redemption"
+
+#: table/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:table:text7"
+msgid "The Godfather"
+msgstr "The Godfather"
+
+#: table/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:table:text8"
+msgid "The Godfather: Part II"
+msgstr "The Godfather: Part II"
+
+#: table/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:table:text9"
+msgid "Films (stacked)"
+msgstr "Films (gestapeld)"
+
+#: table/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:table:text10"
+msgid "Title"
+msgstr "Titel"
+
+#: table/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:table:text11"
+msgid "Year"
+msgstr "Jaar"
+
+#: table/i18n.json#text12
+#, no-c-format
+msgctxt "docs.demos:table:text12"
+msgid "Rating"
+msgstr "Beoordeling"
+
+#: table/i18n.json#text13
+#, no-c-format
+msgctxt "docs.demos:table:text13"
+msgid "The Shawshank Redemption"
+msgstr "The Shawshank Redemption"
+
+#: table/i18n.json#text14
+#, no-c-format
+msgctxt "docs.demos:table:text14"
+msgid "The Godfather"
+msgstr "The Godfather"
+
+#: tabs/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:tabs:text1"
+msgid "Overview"
+msgstr "Overzicht"
+
+#: tabs/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:tabs:text2"
+msgid "Details"
+msgstr "Details"
+
+#: tabs/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:tabs:text3"
+msgid "Disabled"
+msgstr "Uitgeschakeld"
+
+#: tabs/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:tabs:text4"
+msgid "History"
+msgstr "Geschiedenis"
+
+#: tabs/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:tabs:text5"
+msgid "The Overview tab's content shows here."
+msgstr "De inhoud van het Overzicht-tabblad wordt hier getoond."
+
+#: tabs/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:tabs:text6"
+msgid "First tab"
+msgstr "Eerste tab"
+
+#: tabs/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:tabs:text7"
+msgid "Disabled"
+msgstr "Uitgeschakeld"
+
+#: tabs/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:tabs:text8"
+msgid "Third tab"
+msgstr "Derde tab"
+
+#: tabs/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:tabs:text9"
+msgid "Fourth tab"
+msgstr "Vierde tab"
+
+#: tabs/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:tabs:text10"
+msgid "The Third tab's content shows here."
+msgstr "De inhoud van het Derde tabblad wordt hier getoond."
+
+#: tag/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:tag:text1"
+msgid "small"
+msgstr "klein"
+
+#: tag/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:tag:text2"
+msgid "design"
+msgstr "ontwerp"
+
+#: tag/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:tag:text3"
+msgid "large"
+msgstr "groot"
+
+#: tag/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:tag:text4"
+msgid "read only"
+msgstr "alleen-lezen"
+
+#: tag/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:tag:text5"
+msgid "dismissible"
+msgstr "sluitbaar"
+
+#: tag/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:tag:text6"
+msgid "filter: open"
+msgstr "filter: open"
+
+#: tag/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:tag:text7"
+msgid "filter: mine"
+msgstr "filter: van mij"
+
+#: tag/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:tag:text8"
+msgid "Restore tags"
+msgstr "Herstel tags"
+
+#: text/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:text:text1"
+msgid "Text sizes"
+msgstr "Tekstgroottes"
+
+#: text/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:text:text2"
+msgid "x-small text"
+msgstr "x-kleine tekst"
+
+#: text/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:text:text3"
+msgid "small text"
+msgstr "kleine tekst"
+
+#: text/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:text:text4"
+msgid "medium text (default)"
+msgstr "middelgrote tekst (standaard)"
+
+#: text/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:text:text5"
+msgid "large text"
+msgstr "grote tekst"
+
+#: text/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:text:text6"
+msgid "x-large text"
+msgstr "x-grote tekst"
+
+#: text/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:text:text7"
+msgid "Text weight, style, and color"
+msgstr "Tekstgewicht, stijl en kleur"
+
+#: text/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:text:text8"
+msgid "Bold"
+msgstr "Vet"
+
+#: text/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:text:text9"
+msgid "Italic"
+msgstr "Cursief"
+
+#: text/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:text:text10"
+msgid "Brand"
+msgstr "Merk"
+
+#: text/i18n.json#text11
+#, no-c-format
+msgctxt "docs.demos:text:text11"
+msgid "Success"
+msgstr "Succes"
+
+#: text/i18n.json#text12
+#, no-c-format
+msgctxt "docs.demos:text:text12"
+msgid "Danger"
+msgstr "Gevaar"
+
+#: text/i18n.json#text13
+#, no-c-format
+msgctxt "docs.demos:text:text13"
+msgid "Warning"
+msgstr "Waarschuwing"
+
+#: text/i18n.json#text14
+#, no-c-format
+msgctxt "docs.demos:text:text14"
+msgid "Bold danger (stacked)"
+msgstr "Vet gevaar (gestapeld)"
+
+#: text/i18n.json#text15
+#, no-c-format
+msgctxt "docs.demos:text:text15"
+msgid "Secondary"
+msgstr "Secundair"
+
+#: text/i18n.json#text16
+#, no-c-format
+msgctxt "docs.demos:text:text16"
+msgid "Text content variants"
+msgstr "Tekstinhoud varianten"
+
+#: text/i18n.json#text17
+#, no-c-format
+msgctxt "docs.demos:text:text17"
+msgid "Description page"
+msgstr "Beschrijving pagina"
+
+#: text/i18n.json#text18
+#, no-c-format
+msgctxt "docs.demos:text:text18"
+msgid "Description section"
+msgstr "Beschrijving sectie"
+
+#: text/i18n.json#text19
+#, no-c-format
+msgctxt "docs.demos:text:text19"
+msgid "Content small"
+msgstr "Kleine inhoud"
+
+#: text/i18n.json#text20
+#, no-c-format
+msgctxt "docs.demos:text:text20"
+msgid "Legend"
+msgstr "Legenda"
+
+#: text-area/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:text-area:text1"
+msgid "Too short."
+msgstr "Te kort."
+
+#: text-area/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:text-area:text2"
+msgid "Read-only content."
+msgstr "Alleen-lezen inhoud."
+
+#: toggle-details/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:toggle-details:text1"
+msgid "What ships in this package?"
+msgstr "Wat bevat dit pakket?"
+
+#: toggle-details/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:toggle-details:text2"
+msgid "Class-based component styles, built from the Instructure tokens, plus a prose layer."
+msgstr "Klassen-gebaseerde componentstijlen, opgebouwd uit de Instructure-tokens, plus een prozalaag."
+
+#: toggle-details/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:toggle-details:text3"
+msgid "Filled variant"
+msgstr "Gevulde variant"
+
+#: toggle-details/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:toggle-details:text4"
+msgid "The summary reads as an action-secondary button."
+msgstr "De samenvatting leest als een actie-secundaire knop."
+
+#: toggle-details/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:toggle-details:text5"
+msgid "Chevron at the end"
+msgstr "Chevron aan het einde"
+
+#: toggle-details/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:toggle-details:text6"
+msgid "The disclosure chevron sits after the summary text."
+msgstr "De disclosure-chevron staat na de samenvattingstekst."
+
+#: toggle-details/i18n.json#text7
+#, no-c-format
+msgctxt "docs.demos:toggle-details:text7"
+msgid "Large"
+msgstr "Groot"
+
+#: toggle-details/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:toggle-details:text8"
+msgid "Larger summary font and content padding."
+msgstr "Grotere samenvattingsletter en inhouds-padding."
+
+#: toggle-group/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:toggle-group:text1"
+msgid "Advanced settings"
+msgstr "Geavanceerde instellingen"
+
+#: toggle-group/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:toggle-group:text2"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that\n        rotates on open, and the content sits below a divider."
+msgstr "Deze opties worden zichtbaar wanneer de groep is uitgevouwen. De koprij draagt een chevron die\n        roteert bij openen en de inhoud staat onder een scheider."
+
+#: toggle-group/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:toggle-group:text3"
+msgid "Billing details"
+msgstr "Factureringsgegevens"
+
+#: toggle-group/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:toggle-group:text4"
+msgid "Collapsed by default. Click the summary row to expand."
+msgstr "Standaard ingeklapt. Klik op de samenvattingsrij om uit te klappen."
+
+#: token-utilities/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:token-utilities:text1"
+msgid "Token utilities"
+msgstr "Token-hulpmiddelen"
+
+#: token-utilities/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:token-utilities:text2"
+msgid "Every \"one token, one property\" family gets a class named after the token — here"
+msgstr "Elke \"één token, één eigenschap\" familie krijgt een klasse vernoemd naar het token — hier"
+
+#: token-utilities/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:token-utilities:text3"
+msgid ", elevation"
+msgstr ", elevatie"
+
+#: token-utilities/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:token-utilities:text4"
+msgid ", and"
+msgstr ", en"
+
+#: token-utilities/i18n.json#text5
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:token-utilities:text5"
+msgid "font-weight-body-base"
+msgstr "font-weight-body-base"
+
+#: token-utilities/i18n.json#text6
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:token-utilities:text6"
+msgid "font-weight-body-strong"
+msgstr "font-weight-body-strong"
+
+#: token-utilities/i18n.json#text7
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:token-utilities:text7"
+msgid "font-family-code"
+msgstr "font-family-code"
+
+#: token-utilities/i18n.json#text8
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:token-utilities:text8"
+msgid "radius-container-sm"
+msgstr "radius-container-sm"
+
+#: token-utilities/i18n.json#text9
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:token-utilities:text9"
+msgid "radius-container-lg"
+msgstr "radius-container-lg"
+
+#: token-utilities/i18n.json#text10
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:token-utilities:text10"
+msgid "elevation-resting"
+msgstr "elevation-resting"
+
+#: token-utilities/i18n.json#text11
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:token-utilities:text11"
+msgid "elevation-topmost"
+msgstr "elevation-topmost"
+
+#: token-utilities/i18n.json#text12
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:token-utilities:text12"
+msgid "opacity-disabled"
+msgstr "opacity-disabled"
+
+#: tooltip/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:tooltip:text1"
+msgid "Default placement is top"
+msgstr "Standaardplaatsing is boven"
+
+#: tooltip/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:tooltip:text2"
+msgid "Hover me"
+msgstr "Hover over mij"
+
+#: tooltip/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:tooltip:text3"
+msgid "Placement bottom"
+msgstr "Plaatsing onder"
+
+#: tooltip/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:tooltip:text4"
+msgid "Placement end"
+msgstr "Plaatsing einde"
+
+#: tray/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:tray:text1"
+msgid "From start"
+msgstr "Vanaf start"
+
+#: tray/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:tray:text2"
+msgid "From end"
+msgstr "Vanaf einde"
+
+#: tray/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:tray:text3"
+msgid "Filters"
+msgstr "Filters"
+
+#: tray/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:tray:text4"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "Een lade schuift in vanaf de startkant en vult de hoogte van het viewport."
+
+#: tray/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:tray:text5"
+msgid "Details"
+msgstr "Details"
+
+#: tray/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:tray:text6"
+msgid "This one docks to the end edge. Press Esc or click away to dismiss."
+msgstr "Deze dockt aan de eindkant. Druk op Esc of klik buiten om te sluiten."
+
+#: tree-browser/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:tree-browser:text1"
+msgid "Course files"
+msgstr "Cursusbestanden"
+
+#: tree-browser/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:tree-browser:text2"
+msgid "Syllabus.pdf"
+msgstr "Syllabus.pdf"
+
+#: tree-browser/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:tree-browser:text3"
+msgid "Week 1"
+msgstr "Week 1"
+
+#: tree-browser/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:tree-browser:text4"
+msgid "Reading.pdf"
+msgstr "Lezing.pdf"
+
+#: tree-browser/i18n.json#text5
+#, no-c-format
+msgctxt "docs.demos:tree-browser:text5"
+msgid "Slides.pptx"
+msgstr "Slides.pptx"
+
+#: tree-browser/i18n.json#text6
+#, no-c-format
+msgctxt "docs.demos:tree-browser:text6"
+msgid "Rubric.docx"
+msgstr "Rubric.docx"
+
+#: truncate/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:truncate:text1"
+msgid "This single line keeps going past the edge of its box, so it ends in an ellipsis."
+msgstr "Deze enkele regel loopt voorbij de rand van zijn vak, dus eindigt hij met een ellipsis."
+
+#: truncate/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:truncate:text2"
+msgid "Set the"
+msgstr "Stel de"
+
+#: truncate/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:truncate:text3"
+msgid "custom property to clamp to a fixed number of lines instead. This\n      paragraph runs long on purpose so the clamp has something to cut off after the second line."
+msgstr "aangepaste eigenschap in om in plaats daarvan te klemmen tot een vast aantal regels. Deze\n      alinea is opzettelijk lang zodat de clamp iets heeft om af te kappen na de tweede regel."
+
+#: view/i18n.json#text1
+#, no-c-format
+msgctxt "docs.demos:view:text1"
+msgid "View"
+msgstr "Bekijken"
+
+#: view/i18n.json#text2
+#, no-c-format
+msgctxt "docs.demos:view:text2"
+msgid "is InstUI's"
+msgstr "is InstUI's"
+
+#: view/i18n.json#text3
+#, no-c-format
+msgctxt "docs.demos:view:text3"
+msgid ". Beyond the neutral box it carries\n    key-value modifiers for its own visual props, so it has the same devex as the other components —\n    no need to reach for utilities for the basics."
+msgstr ". Buiten het neutrale vak bevat het key-value-modifiers voor zijn eigen visuele props, zodat het dezelfde devex heeft als de andere componenten —\n    geen behoefte om voor de basis naar utilities te grijpen."
+
+#: view/i18n.json#text4
+#, no-c-format
+msgctxt "docs.demos:view:text4"
+msgid "Native modifiers"
+msgstr "Native-modifiers"
+
+#: view/i18n.json#text5
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:view:text5"
+msgid "-background-primary -border-radius-large -shadow-resting"
+msgstr "-background-primary -border-radius-large -shadow-resting"
+
+#: view/i18n.json#text6
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:view:text6"
+msgid "-border-width-small -border-color-brand -border-radius-medium"
+msgstr "-border-width-small -border-color-brand -border-radius-medium"
+
+#: view/i18n.json#text7
+#, no-c-format, x-translate-never
+msgctxt "docs.demos:view:text7"
+msgid "-background-brand"
+msgstr "-background-brand"
+
+#: view/i18n.json#text8
+#, no-c-format
+msgctxt "docs.demos:view:text8"
+msgid "Compose utilities too"
+msgstr "Combineer ook utilities"
+
+#: view/i18n.json#text9
+#, no-c-format
+msgctxt "docs.demos:view:text9"
+msgid "Spacing, color, and token utilities still layer onto a View — e.g."
+msgstr "Afstand-, kleur- en token-utilities kunnen nog steeds op een View worden toegepast — bijv."
+
+#: view/i18n.json#text10
+#, no-c-format
+msgctxt "docs.demos:view:text10"
+msgid "bg-accent-blue surface with on-color text."
+msgstr "bg-accent-blue surface met on-color tekst."

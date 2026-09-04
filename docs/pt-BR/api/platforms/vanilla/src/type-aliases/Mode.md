@@ -1,9 +1,0 @@
-[pantoken](../../../../index.md) / [platforms/vanilla/src](../index.md) / Mode
-
-# Alias de tipo: Mode
-
-> **Mode** = `"light"` \| `"dark"`
-
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
-
-The colour mode to resolve when flattening `light-dark()` values.

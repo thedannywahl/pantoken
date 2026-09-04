@@ -72,13 +72,13 @@ no DOM. Call `register(customElements)` manually if you need to control timing.
 - **`iconSvg(name, resolve?): string`** — resolve an icon name to inline SVG (empty string when unknown). Pure; the element renders the result.
 - **`ELEMENTS`** — the tuple of base (unprefixed) element names this package registers (e.g. `icon`, `date-input`).
 - **`DEFAULT_PREFIX`** — the default tag prefix, `"instui"`.
-- **`WebComponentStrings`**, **`ENGLISH_STRINGS`**, **`makeStrings`**, **`resolveFirstDay`** — the locale string contract; use `@pantoken/i18n` for the full 44-locale bundle set.
+- **`WebComponentStrings`**, **`ENGLISH_STRINGS`**, **`makeStrings`**, **`resolveFirstDay`** — the locale string contract, plus the full 44-locale bundle set and `registerLocalized` helper.
 
 ## Related
 
 - Styles the elements with `@pantoken/components` and reads glyphs from `@pantoken/icons`.
 - Pairs with `@pantoken/css` for the base `--instui-*` custom properties.
-- Use `@pantoken/i18n` for the full Canvas-parity locale bundle set (44 locales, 3 RTL) and the `registerLocalized` helper.
+- Locale bundles and `registerLocalized` are exported from this package; translations are generated from `src/i18n.json` and the repository `/l10n` PO catalogs.
 - Wrapped by the per-framework helpers: `@pantoken/angular`, `@pantoken/react`, `@pantoken/svelte`, and `@pantoken/vue`.
 
 ## License

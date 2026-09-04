@@ -46,13 +46,14 @@ afterEach(() => {
 // ─── constants ────────────────────────────────────────────────────────────────
 
 describe("PRODUCTS", () => {
-  test("contains exactly the six supported products", () => {
+  test("contains exactly the seven supported products", () => {
     expect(mod.PRODUCTS).toEqual([
       "canvas",
       "igniteai",
       "instructure",
       "learnplatform",
       "mastery",
+      "pantoken",
       "parchment",
     ]);
   });
@@ -145,6 +146,26 @@ describe("parseStem", () => {
 
   test("returns undefined for an empty string", () => {
     expect(mod.parseStem("")).toBeUndefined();
+  });
+
+  test("parses a trailing language code on a localized wordmark", () => {
+    expect(mod.parseStem("horizontal-full-color-ar")).toEqual({
+      layout: "horizontal",
+      colorMode: "full-color",
+      lang: "ar",
+    });
+    expect(mod.parseStem("horizontal-reversed-zh")).toEqual({
+      layout: "horizontal",
+      colorMode: "reversed",
+      lang: "zh",
+    });
+  });
+
+  test("omits lang when the stem has no recognised trailing language code", () => {
+    expect(mod.parseStem("horizontal-full-color")).toEqual({
+      layout: "horizontal",
+      colorMode: "full-color",
+    });
   });
 });
 

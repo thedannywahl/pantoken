@@ -1,0 +1,465 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:description"
+msgid "Instructure design tokens and icons, reshaped for every platform and framework."
+msgstr "Tokeny projektowe i ikony Instructure, przekształcone dla każdej platformy i frameworka."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:nav.guide"
+msgid "Guide"
+msgstr "Przewodnik"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:nav.packages"
+msgid "Packages"
+msgstr "Pakiety"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:nav.css"
+msgid "CSS"
+msgstr "CSS"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:nav.api"
+msgid "API reference"
+msgstr "Dokumentacja API"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.intro"
+msgid "Introduction"
+msgstr "Wprowadzenie"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.guides"
+msgid "Guides"
+msgstr "Poradniki"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.gettingStarted"
+msgid "Getting started"
+msgstr "Pierwsze kroki"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.packageMap"
+msgid "The package map"
+msgstr "Mapa pakietów"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.architecture"
+msgid "Architecture"
+msgstr "Architektura"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.components"
+msgid "Components"
+msgstr "Komponenty"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.cdn"
+msgid "CDN & distribution"
+msgstr "CDN i dystrybucja"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.cdnPicker"
+msgid "CDN picker"
+msgstr "Wybór CDN"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.cli"
+msgid "The pantoken CLI"
+msgstr "CLI pantoken"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.plugins"
+msgid "Plugins"
+msgstr "Wtyczki"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.generated"
+msgid "Generated output"
+msgstr "Generowany wynik"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.api"
+msgid "API reference"
+msgstr "Dokumentacja API"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiOverview"
+msgid "Overview"
+msgstr "Przegląd"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:editText"
+msgid "Edit this page on GitHub"
+msgstr "Edytuj tę stronę na GitHub"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:themeSelector.label"
+msgid "Select theme"
+msgstr "Wybierz motyw"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:themeSelector.rebrand"
+msgid "Rebrand"
+msgstr "Rebranding"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:themeSelector.canvas"
+msgid "Canvas"
+msgstr "Canvas"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:themeSelector.canvasHighContrast"
+msgid "Canvas high contrast"
+msgstr "Canvas wysoki kontrast"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.themeLabel"
+msgid "Theme"
+msgstr "Motyw"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.themeRebrand"
+msgid "Rebrand"
+msgstr "Rebranding"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.themeCanvas"
+msgid "Canvas"
+msgstr "Canvas"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.themeCanvasHighContrast"
+msgid "Canvas high contrast"
+msgstr "Canvas wysoki kontrast"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.modeLabel"
+msgid "Rebrand mode"
+msgstr "Tryb rebrandingu"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.modeAdaptive"
+msgid "Light + dark"
+msgstr "Jasny + ciemny"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.modeLightOnly"
+msgid "Light only"
+msgstr "Tylko jasny"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.includeDarkMode"
+msgid "Include dark mode"
+msgstr "Uwzględnij tryb ciemny"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.providerLabel"
+msgid "CDN provider"
+msgstr "Dostawca CDN"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.componentsLabel"
+msgid "Components"
+msgstr "Komponenty"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.allComponents"
+msgid "All components"
+msgstr "Wszystkie komponenty"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.formatLabel"
+msgid "Output"
+msgstr "Wyjście"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.formatLink"
+msgid "<link>"
+msgstr "<link>"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.formatImport"
+msgid "@import"
+msgstr "@import"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.includeBase"
+msgid "Base"
+msgstr "Podstawa"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.baseInfoLabel"
+msgid "About the base reset"
+msgstr "O resetowaniu bazowym"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.baseInfo"
+msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
+msgstr "Globalny reset opcjonalny: box-sizing, powierzchnia strony, podstawowy kolor i font tekstu, color-scheme oraz domyślne style linków."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.includeUtilities"
+msgid "Utilities"
+msgstr "Narzędzia"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.utilitiesInfoLabel"
+msgid "About the utility classes"
+msgstr "O klasach narzędziowych"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
+msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
+msgstr "Opcjonalna warstwa klas przekrojowych: prymityw View, odstępy według skali tokenów oraz semantyczne nadpisania kolorów."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.copy"
+msgid "Copy"
+msgstr "Kopiuj"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.copied"
+msgid "Copied"
+msgstr "Skopiowano"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.empty"
+msgid "Select one or more components to build a URL."
+msgstr "Wybierz jeden lub więcej komponentów, aby zbudować URL."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.fontsNote"
+msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
+msgstr "Czcionki ładowane są osobno — dodaj <link> do @pantoken/components/fonts.css, gdy będą potrzebne."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:cdnPicker.iconsNote"
+msgid "component-icons.css is included because a selected component uses icons."
+msgstr "component-icons.css jest dołączony, ponieważ wybrany komponent używa ikon."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.copied"
+msgid "Copied"
+msgstr "Skopiowano"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.cliInstall"
+msgid "CLI install"
+msgstr "Instalacja CLI"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.aiInstall"
+msgid "AI install"
+msgstr "Instalacja AI"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.pauseAnimation"
+msgid "Pause animation"
+msgstr "Wstrzymaj animację"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.playAnimation"
+msgid "Resume animation"
+msgstr "Wznów animację"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:getStartedTabs.agentPrompt"
+msgid "\"Set up pantoken (github.com/thedannywahl/pantoken) in this project using create.pantoken.app/SKILL.md.\""
+msgstr "\"Skonfiguruj pantoken (github.com/thedannywahl/pantoken) w tym projekcie używając create.pantoken.app/SKILL.md.\""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.outlineLabel"
+msgid "On this page"
+msgstr "Na tej stronie"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.docFooterPrev"
+msgid "Previous page"
+msgstr "Poprzednia strona"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.docFooterNext"
+msgid "Next page"
+msgstr "Następna strona"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.darkModeSwitchLabel"
+msgid "Appearance"
+msgstr "Wygląd"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.lightModeSwitchTitle"
+msgid "Switch to light theme"
+msgstr "Przełącz na jasny motyw"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.darkModeSwitchTitle"
+msgid "Switch to dark theme"
+msgstr "Przełącz na ciemny motyw"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.sidebarMenuLabel"
+msgid "Menu"
+msgstr "Menu"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.returnToTopLabel"
+msgid "Return to top"
+msgstr "Powrót na górę"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.langMenuLabel"
+msgid "Change language"
+msgstr "Zmień język"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.lastUpdatedText"
+msgid "Last updated"
+msgstr "Ostatnia aktualizacja"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.notFound.code"
+msgid "404"
+msgstr "404"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.notFound.title"
+msgid "PAGE NOT FOUND"
+msgstr "STRONA NIE ZNALEZIONA"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.notFound.quote"
+msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
+msgstr "Ale jeśli nie zmienisz kierunku i będziesz kontynuować w ten sposób, możesz znaleźć się tam, dokąd zmierzasz."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.notFound.linkLabel"
+msgid "go to home"
+msgstr "przejdź do strony głównej"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.notFound.linkText"
+msgid "Take me home"
+msgstr "Zabierz mnie do strony głównej"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.buttonText"
+msgid "Search"
+msgstr "Szukaj"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.displayDetails"
+msgid "Display detailed list"
+msgstr "Wyświetl szczegółową listę"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.resetButtonTitle"
+msgid "Reset search"
+msgstr "Resetuj wyszukiwanie"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.backButtonTitle"
+msgid "Close search"
+msgstr "Zamknij wyszukiwanie"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.noResultsText"
+msgid "No results for"
+msgstr "Brak wyników dla"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.footerSelect"
+msgid "to select"
+msgstr "do zaznaczenia"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.footerNavigate"
+msgid "to navigate"
+msgstr "do nawigacji"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:search.footerClose"
+msgid "to close"
+msgstr "do zamknięcia"

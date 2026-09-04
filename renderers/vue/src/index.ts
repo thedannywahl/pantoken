@@ -8,11 +8,11 @@
  * @experimental
  */
 import { register } from "@pantoken/web-components";
-import type { LocaleBundle } from "@pantoken/i18n";
-import { registerLocalized } from "@pantoken/i18n";
+import type { LocaleBundle } from "@pantoken/web-components";
+import { registerLocalized } from "@pantoken/web-components";
 
 export { register, iconSvg } from "@pantoken/web-components";
-export { registerLocalized } from "@pantoken/i18n";
+export { registerLocalized } from "@pantoken/web-components";
 
 /**
  * Read a resolved token value. Returns `fallback` on the server.

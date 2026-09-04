@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: index.md:5
+#, no-c-format
+msgid "InstUI, everywhere"
+msgstr "InstUI, wszędzie"
+
+#: index.md:6
+#, no-c-format
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "Jeden rozstrzygnięty model tokenów, przekształcony w arkusze stylów, powiązania frameworków, kod natywny i dane dla narzędzi projektowych."
+
+#: index.md:9
+#, no-c-format
+msgid "Getting started"
+msgstr "Pierwsze kroki"
+
+#: index.md:12
+#, no-c-format
+msgid "The package map"
+msgstr "Mapa pakietów"
+
+#: index.md:15
+#, no-c-format
+msgid "API reference"
+msgstr "Dokumentacja API"
+
+#: index.md:18
+#, no-c-format
+msgid "CSS reference"
+msgstr "Referencja CSS"
+
+#: index.md:24
+#, no-c-format
+msgid "One source of truth"
+msgstr "Jedno źródło prawdy"
+
+#: index.md:25
+#, no-c-format
+msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr "Każdy pakiet odczytuje ten sam rozstrzygnięty IR tokenów. Zmień token u źródła, a trafi on w ten sam sposób do CSS, SCSS, kodu natywnego i Figma."
+
+#: index.md:29
+#, no-c-format
+msgid "Use the smallest package"
+msgstr "Użyj najmniejszego pakietu"
+
+#: index.md:30
+#, no-c-format
+msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "Zainstaluj tylko @pantoken/css dla arkusza stylów, @pantoken/react dla hooków i ikon, albo preset bundlera dla Tailwind, Panda lub MUI."
+
+#: index.md:34
+#, no-c-format
+msgid "Generate for any platform"
+msgstr "Generuj dla dowolnej platformy"
+
+#: index.md:35
+#, no-c-format
+msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr "Uruchom `pantoken generate`, aby wygenerować Swift, Kotlin, Compose, Flutter, Rust, WordPress i inne. Te same tokeny, w idiomie każdego ekosystemu."
+
+#: index.md:39
+#, no-c-format
+msgid "No upstream coupling"
+msgstr "Brak powiązania z upstream"
+
+#: index.md:40
+#, no-c-format
+msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr "Tokeny są dostarczane vendorowane jako statyczne JSON, więc `npm i` nigdy nie odwołuje się do źródła dostępnego wyłącznie na GitHubie. Można je publikować, są versionowane semver i przyjazne do użytku offline."

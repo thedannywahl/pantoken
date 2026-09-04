@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: index.md:5
+#, no-c-format
+msgid "InstUI, everywhere"
+msgstr "InstUI, alls staðar"
+
+#: index.md:6
+#, no-c-format
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "Eitt leyst táknalíkan, umbreytt í stílblöð, rammabindingar, innfæddan kóða og gagnapakka fyrir hönnunarverkfæri."
+
+#: index.md:9
+#, no-c-format
+msgid "Getting started"
+msgstr "Komdu í gang"
+
+#: index.md:12
+#, no-c-format
+msgid "The package map"
+msgstr "Pakkakortið"
+
+#: index.md:15
+#, no-c-format
+msgid "API reference"
+msgstr "API tilvísun"
+
+#: index.md:18
+#, no-c-format
+msgid "CSS reference"
+msgstr "CSS tilvísun"
+
+#: index.md:24
+#, no-c-format
+msgid "One source of truth"
+msgstr "Ein uppspretta sannleikans"
+
+#: index.md:25
+#, no-c-format
+msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr "Öll pakkar lesa sama leysta tákn-IR. Breyttu tákni upstream og það berst til CSS, SCSS, innfædds kóða og Figma á sama hátt."
+
+#: index.md:29
+#, no-c-format
+msgid "Use the smallest package"
+msgstr "Notaðu minnsta pakkann"
+
+#: index.md:30
+#, no-c-format
+msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "Settu upp aðeins @pantoken/css fyrir stílblað, @pantoken/react fyrir hooks og tákn, eða bundlar-sniðmát fyrir Tailwind, Panda eða MUI."
+
+#: index.md:34
+#, no-c-format
+msgid "Generate for any platform"
+msgstr "Búðu til fyrir hvaða vettvang sem er"
+
+#: index.md:35
+#, no-c-format
+msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr "Keyrðu `pantoken generate` til að framleiða Swift, Kotlin, Compose, Flutter, Rust, WordPress og fleira. Sömu táknin, í málfari hvers vistkerfis."
+
+#: index.md:39
+#, no-c-format
+msgid "No upstream coupling"
+msgstr "Engin upstream-tenging"
+
+#: index.md:40
+#, no-c-format
+msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr "Tákna eru sendir sem meðfylgjandi föst JSON, svo `npm i` þarf aldrei að ná í GitHub-eina uppsprettu. Birtingarhæfar, með semver og hentugar fyrir offline-notkun."

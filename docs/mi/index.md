@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: InstUI, i ngā wāhi katoa
   tagline: Tētahi tauira tohu kua whakatauhia, kua hurihia hei stylesheets, here anga, waehere taketake, me ngā raraunga mō ngā taputapu hoahoa.
   actions:

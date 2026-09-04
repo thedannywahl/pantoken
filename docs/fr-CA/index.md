@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: InstUI, partout
   tagline: Un modèle de jetons résolu, reformulé en feuilles de style, liaisons de framework, code natif et charges utiles pour outils de conception.
   actions:

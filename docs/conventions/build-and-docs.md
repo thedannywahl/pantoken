@@ -60,8 +60,8 @@ Root `stylelint.config.js` runs error-only core rules plus `@cssdoc/stylelint-pl
 (Magyar, `/hu/…`) — a symmetric prefix swap that VitePress's default routing already handles (don't
 set a custom `i18nRouting`).
 
-- **Translation layer is `docs/.vitepress/i18n.ts`.** `LOCALES[locale]` holds every localizable UI
-  string (nav/sidebar labels, `editText`, the theme selector, VitePress chrome labels, and local
+- **Translation layer is `docs/.vitepress/i18n.ts`.** `LOCALE_THEMES[locale]` holds every localizable
+  UI string (nav/sidebar labels, `editText`, the theme selector, VitePress chrome labels, and local
   search). `config.ts` expands these into per-locale `themeConfig` (search is the exception — it lives
   in the global `themeConfig.search.options.locales`). Add new UI strings here, never inline.
 - **Block-level API translation.** `build-api-locales.ts` doesn't translate whole `.md` files — it
@@ -81,6 +81,11 @@ set a custom `i18nRouting`).
   structural headings/labels. Brand-new prose that isn't cached yet passes through as English — the
   glossary **never** caches its own prose passthrough (that would permanently mask the block from a
   later claude run), so it stays a miss until claude authors it. Never wire `:claude` into CI.
+- **Cognates are cached, echoes aren't.** Some translations are legitimately identical to English
+  ("Interfaces" in French, "Classes" in Catalan). An identical value from a batch in which other
+  units _did_ change is cached and stamped `pantoken-verbatim` in the PO catalog, so it isn't
+  re-flagged and re-paid for on every run. A batch that comes back wholly unchanged still fails the
+  guard — that's the shape of a silently broken adapter.
 - **Running the cold pass.** Each `claude -p` call cold-starts a full agent, and the dominant cost is
   the per-call bootstrap — loading MCP servers, plugins, and project settings — not the translation
   itself (it dwarfs even a small model's inference). So the `:claude` tasks pass
@@ -99,10 +104,14 @@ translated`) and saves the memory after **each** chunk, so it's resumable — a 
   errors is logged and skipped (its blocks stay uncached and retry next run), never sinking the whole
   run. Raise concurrency for more speed if you're not rate-limited; lower the budget if a run trips the
   per-item fallback (the model dropping a key from a large response).
+- **Every call is bounded by `DOCS_TRANSLATION_TIMEOUT_MS` (default 120000).** A CLI that wedges
+  without exiting used to stall a locale indefinitely (the run appears to stop mid-file list); the
+  timed-out chunk is now killed, logged, and skipped, and its strings retry on the next run. Raise it
+  for a slow model or big batch budget.
 
 ## Translation drift: what blocks a merge
 
-Every drift checker in the repo reports through one shared policy, `i18n-policy.json` at the repo
+Every drift checker in the repo reports through one shared policy, embedded in `i18n.config.json` at the repo
 root. A checker no longer decides its own exit code — it hands findings to a `DriftReporter`
 (`tools/translation-adapters/src/drift-policy.ts`), which resolves a severity per finding and returns
 the exit code.
@@ -118,18 +127,17 @@ order, so a specific tier must precede the `"*"` catch-all; patterns use the sam
 scales with locale count — blocking every surface across ~90 locales means no English string lands
 until every translation does.
 
-| Surface         | Checker                                | What it covers                                                     |
-| --------------- | -------------------------------------- | ------------------------------------------------------------------ |
-| `ui.strings`    | `@pantoken/web-components#check:drift` | `src/i18n.json` → `i18n-cache/<locale>.json`                       |
-| `cli.scaffold`  | `@pantoken/scaffold#check:drift`       | scaffold CLI strings                                               |
-| `cli.ai`        | `@pantoken/ai#check:drift`             | `@pantoken/ai` CLI strings                                         |
-| `docs.guides`   | `docs:check:drift`                     | whole-file `docs/guide/*.md` units                                 |
-| `docs.api`      | `docs:check:drift`                     | `prose` blocks in the generated EN API tree                        |
-| `docs.home`     | `docs:check:drift`                     | translatable `docs/index.md` frontmatter (hero, actions, features) |
-| `docs.chrome`   | `docs:check:drift`                     | UI-string leaves in `.vitepress/i18n.ts`                           |
-| `docs.glossary` | `docs:check:drift`                     | structural terms in `scripts/glossary.ts`                          |
-| `docs.demos`    | `docs:check:drift`                     | per-demo `i18n.json` strings                                       |
-| `docs.parity`   | `docs:check:locales`                   | structural locale-tree parity                                      |
+| Surface        | Checker                                | What it covers                                                      |
+| -------------- | -------------------------------------- | ------------------------------------------------------------------- |
+| `ui.strings`   | `@pantoken/web-components#check:drift` | `src/i18n.json` → `l10n/<locale>/ui.strings.po` (via `i18n-engine`) |
+| `cli.scaffold` | `@pantoken/scaffold#check:drift`       | `l10n/<locale>/cli.scaffold.po` (via `i18n-engine`)                 |
+| `cli.ai`       | `@pantoken/ai#check:drift`             | `l10n/<locale>/cli.ai.po` (via `i18n-engine`)                       |
+| `docs.guides`  | `docs:check:drift`                     | `docs/guide/*.md` → `l10n/<locale>/docs.guides.po` whole-file units |
+| `docs.api`     | `docs:check:drift`                     | generated API segments → `l10n/<locale>/docs.api.po`                |
+| `docs.home`    | `docs:check:drift`                     | translatable `docs/index.md` frontmatter (hero, actions, features)  |
+| `docs.chrome`  | `docs:check:drift`                     | `.vitepress/i18n.json` → `l10n/<locale>/docs.chrome.po`             |
+| `docs.demos`   | `docs:check:drift`                     | `demos/*/i18n.json` → `l10n/<locale>/docs.demos.po`                 |
+| `docs.parity`  | `docs:check:locales`                   | structural locale-tree parity                                       |
 
 The committed default: **English source integrity blocks, translations warn.** A key missing from an
 `en.json` cache, or a structural parity gap, fails the build — both are fixed by re-running a
@@ -145,11 +153,11 @@ Two escape hatches:
 
 - `I18N_DRIFT_STRICT=1` escalates every `warn` to `block` (it never resurrects an `off`).
   `vp run i18n:check:drift:strict` sweeps every surface that way — use it for a pre-release audit.
-- `I18N_DRIFT_POLICY=/path/to/policy.json` swaps the policy file.
+- `I18N_CONFIG=/path/to/i18n.config.json` swaps the configuration file.
 
 CI wiring: the `i18n-drift` job runs `vp run i18n:check:drift` (UI + CLI) when the i18n path filter
 matches; docs drift and parity run inside `@pantoken/docs#docs:build` in the `docs` job, because API
-prose drift needs the generated EN tree. `i18n-policy.json` and `tools/translation-adapters/**` are in
+prose drift needs the generated EN tree. `i18n.config.json` and `tools/translation-adapters/**` are in
 both path filters — editing what blocks a merge re-runs the gate that reads it. AI translation is
 never wired into CI; fill drift locally with `vp run i18n:translate`.
 
@@ -169,10 +177,12 @@ Both tasks only stage the local working tree. The submodule is a separate GitHub
 a skill update to `create.pantoken.app` needs a commit + push inside it. `.github/workflows/
 publish-create-pantoken-app.yml` automates this: on every push to `main` that touches
 `ai/pantoken-ai/skills/create-pantoken-app/**`, it re-runs the staging script, commits+pushes the
-submodule if changed, then bumps the submodule pointer in this repo. It needs a repo secret
+submodule if changed, then opens a PR that bumps the submodule pointer in this repo. It needs a repo secret
 `CREATE_PANTOKEN_APP_PAT` (a fine-grained PAT scoped to just `thedannywahl/create-pantoken-app`,
 Contents: Read and write — the default `GITHUB_TOKEN` can't push to a different repo); without it
-the workflow warns and skips the push instead of failing.
+the workflow warns and skips the push instead of failing. The pointer PR uses `RELEASE_PAT` when
+available so CI runs automatically; otherwise it uses `GITHUB_TOKEN`, and its checks must be run
+manually before merging.
 
 To do the same thing manually (e.g. testing a change before it's merged, or if the secret isn't set
 yet):

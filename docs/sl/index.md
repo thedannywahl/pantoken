@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: InstUI, povsod
   tagline: En razrešen model tokenov, preoblikovan v slogovne liste, vezave za ogrodja, nativen kodo in pakete za oblikovalska orodja.
   actions:

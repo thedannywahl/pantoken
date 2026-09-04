@@ -18,7 +18,8 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write # needed to commit the submodule pointer bump back to this repo
+  contents: write # push the submodule pointer bump branch
+  pull-requests: write # open the protected-branch PR for the pointer bump
 
 jobs:
   publish:
@@ -60,11 +61,14 @@ jobs:
             git push origin HEAD:main
           fi
 
-      # Advance the submodule pointer in the main repo to the commit just pushed above, so
-      # `git submodule status` doesn't show a permanent local-ahead drift.
-      - name: Commit submodule pointer bump
+      # Advance the submodule pointer through a PR, because main is protected. The release PAT
+      # makes the PR a user-authored event so its required checks run automatically.
+      - name: Open submodule pointer bump PR
         if: steps.check-token.outputs.configured == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.RELEASE_PAT || github.token }}
         run: |
+          branch="automation/create-pantoken-app-sync-${{ github.sha }}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add ai/create-pantoken-app-site
@@ -72,5 +76,11 @@ jobs:
             echo "Submodule pointer unchanged."
           else
             git commit -m "chore: bump create-pantoken-app-site submodule [skip ci]"
-            git push "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" HEAD:main
+            git push "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" "HEAD:refs/heads/$branch"
+            existing_pr=$(gh pr list --repo "${{ github.repository }}" --base main --head "$branch" --state open --json number --jq '.[0].number')
+            if [ -n "$existing_pr" ]; then
+              echo "Updated existing submodule pointer PR #$existing_pr."
+            else
+              gh pr create --repo "${{ github.repository }}" --base main --head "$branch" --title "chore: bump create-pantoken-app-site submodule" --body "Automated pointer update for create.pantoken.app from pantoken@${{ github.sha }}."
+            fi
           fi

@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: index.md:5
+#, no-c-format
+msgid "InstUI, everywhere"
+msgstr "InstUI, ym mhobman"
+
+#: index.md:6
+#, no-c-format
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "Un model tocyn datrysiedig, wedi'i drawsffurfio i arddulliau, rhwymiadau fframwaith, cod frodorol, a chynnig offer dylunio."
+
+#: index.md:9
+#, no-c-format
+msgid "Getting started"
+msgstr "Dechrau"
+
+#: index.md:12
+#, no-c-format
+msgid "The package map"
+msgstr "Map pecynnau"
+
+#: index.md:15
+#, no-c-format
+msgid "API reference"
+msgstr "Cyfeirlyfr API"
+
+#: index.md:18
+#, no-c-format
+msgid "CSS reference"
+msgstr "Cyfeirlyfr CSS"
+
+#: index.md:24
+#, no-c-format
+msgid "One source of truth"
+msgstr "Un ffynhonnell o wirionedd"
+
+#: index.md:25
+#, no-c-format
+msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr "Mae pob pecyn yn darllen yr un IR tocyn datrysiedig. Newidiwch docyn yn y ffynhonnell a llifo ef i CSS, SCSS, cod frodorol, a Figma yr un ffordd."
+
+#: index.md:29
+#, no-c-format
+msgid "Use the smallest package"
+msgstr "Defnyddiwch y pecyn lleiaf"
+
+#: index.md:30
+#, no-c-format
+msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "Gosodwch dim ond @pantoken/css ar gyfer dalen arddull, @pantoken/react ar gyfer hooks ac eiconau, neu ragosodwr bundler ar gyfer Tailwind, Panda, neu MUI."
+
+#: index.md:34
+#, no-c-format
+msgid "Generate for any platform"
+msgstr "Generiwch ar gyfer unrhyw lwyfan"
+
+#: index.md:35
+#, no-c-format
+msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr "Rhedwch `pantoken generate` i allforio Swift, Kotlin, Compose, Flutter, Rust, WordPress, ac eraill. Yr un tocynnau, yn idiom pob ecosystem."
+
+#: index.md:39
+#, no-c-format
+msgid "No upstream coupling"
+msgstr "Dim cysylltiad uwchlaw"
+
+#: index.md:40
+#, no-c-format
+msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr "Mae'r tocynnau'n cael eu danfon wedi'u vendorio fel JSON statig, felly nid yw `npm i` byth yn cyrraedd at ffynhonnell sydd ond ar GitHub. Gallu ei gyhoeddi, gyda semver, ac yn gyfeillgar i weithredu heb gysylltiad."

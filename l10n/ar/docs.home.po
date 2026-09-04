@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: index.md:5
+#, no-c-format
+msgid "InstUI, everywhere"
+msgstr "InstUI، في كل مكان."
+
+#: index.md:6
+#, no-c-format
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "نموذج توكن مُحلّل واحد، معاد تشكيله إلى أوراق أنماط، ربطات أطر العمل، كود أصلي، وبيانات لأدوات التصميم."
+
+#: index.md:9
+#, no-c-format
+msgid "Getting started"
+msgstr "البدء"
+
+#: index.md:12
+#, no-c-format
+msgid "The package map"
+msgstr "خريطة الحزم"
+
+#: index.md:15
+#, no-c-format
+msgid "API reference"
+msgstr "مرجع API"
+
+#: index.md:18
+#, no-c-format
+msgid "CSS reference"
+msgstr "مرجع CSS"
+
+#: index.md:24
+#, no-c-format
+msgid "One source of truth"
+msgstr "مصدر واحد للحقيقة"
+
+#: index.md:25
+#, no-c-format
+msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr "كل حزمة تقرأ نفس نموذج التوكن المحلّل. غيّر توكنًا في الأصل وسينتقل بنفس الطريقة إلى CSS وSCSS والكود الأصلي وFigma."
+
+#: index.md:29
+#, no-c-format
+msgid "Use the smallest package"
+msgstr "استخدم الحزمة الأصغر"
+
+#: index.md:30
+#, no-c-format
+msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "ثبّت فقط @pantoken/css لورقة أنماط، أو @pantoken/react للهوكس والأيقونات، أو إعداد مسبق للباندلر لـ Tailwind أو Panda أو MUI."
+
+#: index.md:34
+#, no-c-format
+msgid "Generate for any platform"
+msgstr "توليد لأي منصة"
+
+#: index.md:35
+#, no-c-format
+msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr "شغّل `pantoken generate` لإصدار Swift وKotlin وCompose وFlutter وRust وWordPress والمزيد. نفس التوكنات، بعبارات كل نظام إيكوسيستم."
+
+#: index.md:39
+#, no-c-format
+msgid "No upstream coupling"
+msgstr "بدون اقتران بالأصل"
+
+#: index.md:40
+#, no-c-format
+msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr "التوكنات تُوزّع مضمّنة كـ JSON ثابت، لذلك `npm i` لا يعتمد على مصدر حصري على GitHub. قابلة للنشر، بمعاملات semver، وصديقة للبيئة دون إنترنت."

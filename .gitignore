@@ -32,7 +32,7 @@ packages/scaffold/.dev/
 
 # Docs site build output (TypeDoc API markdown, VitePress cache, generated nav logos; reproduced by `docs:build`).
 docs/api/
-docs/hu/api/
+docs/*/api/
 docs/.vitepress/cache/
 docs/docs/.vitepress/cache/
 docs/.vitepress/.temp/
@@ -40,10 +40,15 @@ docs/docs/.vitepress/.temp/
 docs/public/
 !docs/public/
 docs/public/*
+!docs/public/logo-dark.svg
+!docs/public/logo-light.svg
 !docs/public/robots.txt
 !docs/public/.well-known/
 docs/public/.well-known/*
 !docs/public/.well-known/api-catalog
+
+# Noto script faces the social-card renderer fetches on demand (docs/scripts/lib/og-fonts.ts).
+docs/assets/fonts/noto/
 
 # AI agent worktrees
 .claude/worktrees/
@@ -57,6 +62,9 @@ docs/internal/
 
 # Test coverage output
 coverage/
+
+# Local i18n coverage reports
+.i18n/
 
 # Docs
 docs/.vitepress/.temp/

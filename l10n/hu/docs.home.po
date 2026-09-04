@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: index.md:5
+#, no-c-format
+msgid "InstUI, everywhere"
+msgstr "InstUI, mindenhol"
+
+#: index.md:6
+#, no-c-format
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "Egy feloldott token-modell, átalakítva stíluslapokká, keretrendszer-kötésekké, natív kóddá és dizájneszközöknek szánt adatcsomagokká."
+
+#: index.md:9
+#, no-c-format
+msgid "Getting started"
+msgstr "Első lépések"
+
+#: index.md:12
+#, no-c-format
+msgid "The package map"
+msgstr "A csomagtérkép"
+
+#: index.md:15
+#, no-c-format
+msgid "API reference"
+msgstr "API referencia"
+
+#: index.md:18
+#, no-c-format
+msgid "CSS reference"
+msgstr "CSS referencia"
+
+#: index.md:24
+#, no-c-format
+msgid "One source of truth"
+msgstr "Egyetlen igazságforrás"
+
+#: index.md:25
+#, no-c-format
+msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr "Minden csomag ugyanazt a feloldott token IR-t olvassa. Ha a forrásban megváltoztatod a tokent, ugyanúgy eljut a CSS‑be, SCSS‑be, natív kódba és Figma‑ba."
+
+#: index.md:29
+#, no-c-format
+msgid "Use the smallest package"
+msgstr "Használd a legkisebb csomagot"
+
+#: index.md:30
+#, no-c-format
+msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "Telepítsd csak a @pantoken/css-t stíluslaphoz, a @pantoken/react-et hookokhoz és ikonokhoz, vagy használj bundler-presetet Tailwindhez, Pandához vagy MUI-hoz."
+
+#: index.md:34
+#, no-c-format
+msgid "Generate for any platform"
+msgstr "Generálás bármely platformra"
+
+#: index.md:35
+#, no-c-format
+msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr "Futtasd a `pantoken generate`-t, hogy Swift, Kotlin, Compose, Flutter, Rust, WordPress és további platformok számára állítsd elő. Ugyanazok a tokenek, minden ökoszisztéma saját idiomájában."
+
+#: index.md:39
+#, no-c-format
+msgid "No upstream coupling"
+msgstr "Nincs upstream-függés"
+
+#: index.md:40
+#, no-c-format
+msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr "A tokenek vendorizálva, statikus JSON-ként szállnak, így a `npm i` soha nem támaszkodik kizárólag GitHub-forrásra. Publikálható, semver-szerinti, offline-barát."

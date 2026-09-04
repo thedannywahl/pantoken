@@ -106,8 +106,12 @@ jobs:
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Install gettext
+        run: sudo apt-get update && sudo apt-get install --yes gettext
       - name: Materialize generated output
         run: vp run -r build
+      - name: Generate English API documentation
+        run: vp run @pantoken/docs#docs:api:en
       - name: Test all packages
         run: vp run -r test
 
@@ -171,6 +175,12 @@ jobs:
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Install gettext
+        run: sudo apt-get update && sudo apt-get install --yes gettext
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Generate English API documentation
+        run: vp run @pantoken/docs#docs:api:en
       - name: Resolve changed packages
         id: changed
         if: github.event_name == 'pull_request'
@@ -203,7 +213,6 @@ jobs:
           PATHS: ${{ steps.changed.outputs.paths }}
         run: |
           if [[ "${EVENT}" != "pull_request" ]]; then
-            vp run -r build
             echo "ran=true" >> "$GITHUB_OUTPUT"
             vp test --coverage --reporter=verbose --reporter=junit --outputFile.junit=junit.xml
             exit 0
@@ -212,7 +221,6 @@ jobs:
             echo "No publishable packages changed; skipping coverage."
             echo "ran=false" >> "$GITHUB_OUTPUT"; exit 0
           fi
-          vp run -r build
           echo "ran=true" >> "$GITHUB_OUTPUT"
           if [[ "${SCOPE}" == "all" ]]; then
             vp test --coverage --reporter=verbose --reporter=junit --outputFile.junit=junit.xml

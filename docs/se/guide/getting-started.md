@@ -1,47 +1,40 @@
-# Ovdalastit
+# Gávcci almmuhit
 
-pantoken geavahit Instructure UI:s design-tokenat ja ikkonat, ráhkistá ovttas, ja muohttá das mátkki
-modella pakkkain buohkaid platformaid: simple stylesheets, SCSS ja Less, React ja Vue ja Svelte,
-Tailwind ja Panda, nativ Swift ja Kotlin, WordPress ja Drupal, Figma, ja muhtun.
+Pantoken geavahit [Instructure UI](https://instructure.design) design-tokenat ja ikonat, várreheapmi dahkat maid dagu, ja rohke mielde mii modellan heivehat fálaldagat daid muhtin platformaid: ferdde stylesheetat, SCSS ja Less, React ja Vue ja Svelte, Tailwind ja Panda, nativat Swift ja Kotlin, WordPress ja Drupal, Figma ja muitalit.
 
-Dasa leat girkadat álggaheapmi paketta mii máksit dutnje barggá. Buot leat sii re-exporttejuvvan dihte ráhkes
-`pantoken` paketta, de sáhtát álggahit das ja gávdnat mánusas.
+Leat galggan instala dástallat váldoheapmi pakkea mii viežžii dutnje. Buot leat maiddái sihttahttán re-exported oka vuollá `pantoken` pakkeas, niin sáhtat almmuheapmi dátin ja nubbodat hui bures maid geavahit.
 
-## Skafolde almmuheaddji projekta
+## Skavvasa álggu projektan
 
-Fasttalaš vuohti pantoken barggut: skafolde almmuheaddji projekta mii lea almmuhis installerbuvvan ja oktageavvan.
+Fastta dohkket pantoken gávdnos: skavvasa álggu projektan mii leat dáhpáhusis installeran ja veakkat.
 
 ```sh
-npx create-pantoken-app react
+npx create-pantoken-app
 ```
 
-Platformat: `components` (simple HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. Lávki
-[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) dutnje `--dir <path>` ja
-programmatálaš geavahit.
+Platformat: `components` (ferdde HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. Leage
+[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) doaimmaid `--dir <path>` ja programmatálaš geavahit.
 
-Geat leat AI-koodadaguid vuolimus? Ii ledje installašuvdna — stávvat skillii direktalaš:
+Geavahus AI coding agent? Ingea install: suodjalat skill direkttevaš osoaheapmi:
 
-```sh
-claude "Fetch https://create.pantoken.app and follow it to set up pantoken in this project."
+```prompt
+Ládde create.pantoken.app/SKILL.md ja geahččet maid dahkat pantoken dán projektas.
 ```
 
-Dát leat vejolaš samegearddi Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, ja Amazon Q
-Developer CLI — vaihda `claude` mii `gemini`, `agent`, `codex`, `copilot -p`, dahje `q chat`. Jus don
-geavahát pantoken agent-ráđđiiguin repo:ha báikkit (AGENTS.md, editor-ráđđiigaid, lokaalna copy
-dát skillii), ráhkad `npx @pantoken/ai init` ii dat.
+Jos don báhcet veahkehit pantoken agent-rugget repon bargoheapmái (AGENTS.md, editor-rugget, lokal kopiija dán skill), geahččat `npx @pantoken/ai init` mainna.
 
-## Token-modela
+## Token modellat
 
-Tokenat leat CSS čađa-properties nammat `--instui-<group>-<name>`, esimerkiksi
-`--instui-color-background-brand` dahje `--instui-spacing-space-md`. Golbma themes leat: `rebrand`
-(default, `light-dark()` mii light ja dark leat olágán), `canvas`, ja `canvasHighContrast`.
-Ikkonat leat `<image>` tokenat (`--instui-icon-<name>`) mii leat jearrat Lucide:st ja Instructure:s
-rajiid glyph:aid.
+Tokenat leat CSS custom-properties mii namahuvvot `--instui-<group>-<name>`, nuppát
+`--instui-color-background-brand` dahje `--instui-spacing-space-md`. Golbma themat leat dálbmot: `rebrand`
+(default, váttis `light-dark()` go light ja dark muhtun), `canvas`, ja `canvasHighContrast`.
+Ikonat leat `<image>` tokenat (`--instui-icon-<name>`) mii geavahan Lucide ja Instructure persoonalaš
+glyphaid.
 
-## Styla web-app
+## Styleret web-app
 
-Installera stylesheet ja importera dat ovttas. Dat dáiddá buot `--instui-*` property, vai don geavahát
-dál álget CSS:ssa.
+Instalera stylesheet ja importera se dahje. Dat definneallá buot `--instui-*` propertyt, nuin do leat
+juohkeuie addit CSS:s.
 
 ```sh
 npm i @pantoken/css
@@ -58,9 +51,9 @@ import "@pantoken/css/inject";
 }
 ```
 
-## Geavaha ikkonat guhkes
+## Geavaha ikonat juohke maid leat
 
-Web-komponentta geavahit buot framework:s, ii leat porttadhusa.
+Web-component hálddašit buot frameworkas, in leat porttutvuohta.
 
 ```sh
 npm i @pantoken/web-components
@@ -74,10 +67,10 @@ import "@pantoken/web-components";
 <instui-icon name="check-mark"></instui-icon>
 ```
 
-### CSS-tokenat
+### CSS tokenat
 
-Ikkonat leat CSS čađa-properties (`--instui-icon-<name>`). Loadera stylesheet ovttas ja geavaha
-mo buot ikkon beassat `mask-image` dahje `background-image` — ii per-ikkona import.
+Ikonat leat CSS custom-propertyt (`--instui-icon-<name>`). Loadra stylesheet okta ja referer oktii
+ikonii mainna `mask-image` dahje `background-image` — ii leat fárren ikoni-importta.
 
 ```css
 .my-icon {
@@ -85,10 +78,10 @@ mo buot ikkon beassat `mask-image` dahje `background-image` — ii per-ikkona im
 }
 ```
 
-### JavaScript — ovtta ikkon vs. buot setta
+### JavaScript — oktasaš ikona vs. buot setta
 
-`@pantoken/icons` čájeha duođaid namma exporta. Geavaha `iconsByName` ožžon ikkon mii ii
-máste čájehit buot array:
+`@pantoken/icons` ožžot kaks nammas exportta. Geavaha `iconsByName` muhto doai geavahit oktasaš
+ikonot in hukseaddjit buot array:
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -97,7 +90,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-Geavaha `icons` jus don galgá buot setta (d.e. dárkkistit picker):
+Geavaha `icons` go don leat váilebujuid setta (muhto dahkat picker):
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -106,32 +99,32 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Both exports loadera buot IR moduul boahtteáiggis — ii leat per-ikkona tree-shaking ii injuhit
-dát leiavuođa. Das lean CSS-only boares load: geavaha [CDN picker](/guide/cdn-picker) birra generera
-combina URL doarjjis dušše ikkonat mii don galgat.
+Bådat exportta loadá buot IR moduulainitialisašuvnna — ii leat ikoni-kođas tree-shaking dasa
+nivelas. Máŋgga CSS-olbmuid leanmmu heapmái, geavaha [CDN picker](/guide/cdn-picker) genererejit combine-URL
+ain ikoniid mii don fáste.
 
-## Genererá native platforma jaoks
+## Generere nativala platforma
 
-CLI ráhkistá token source target-repo:ha. Ii installerlašuvnna maid runner:in:
+CLI čársá token source target-repo:s. In leat install mii leat muhto runner:
 
 ```sh
-npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
+npx @pantoken/cli generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-Lávki [the pantoken CLI](/guide/cli) buot target:aid.
+Leage [the pantoken CLI](/guide/cli) buot targetaide.
 
-## VS Code ovddasvuođašvuođaid
+## VS Code ovdanbuktit
 
-`@pantoken/pantoken` dál ráhkistá VS Code custom-data JSON:at nugo downstream projektat sáhtá
-fáhcat class ja token completion HTML/CSS:s ii leat pantoken-specific extension:ia.
+`@pantoken/pantoken` dál leat VS Code custom-data failaid máhcet, nu ahte downstreamp rojektat sáhtat birget class- ja
+token-completion HTML/CSS:s ivnna pantoken-spesifihkka extensionid.
 
-1. Installera unifika paketta:
+1. Instalera vuollá paket:
 
 ```sh
 npm i @pantoken/pantoken
 ```
 
-1. Pointers VS Code:s mátkása custom-data JSON daddin consumer workspace:hh:
+1. Pievrrit VS Code custom-data JSON mii lea guovddáš dat dál leat consumer workspace:s:
 
 ```json
 {
@@ -140,14 +133,14 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. Reload VS Code (dahje čuovggat "Developer: Reload Window") aplikerejuvvo ovttas data.
+1. Reload VS Code (dahje geavaha "Developer: Reload Window") fitnodit ođđa data.
 
-Dát boahtaše sugestionaigu `instui-*` class token:aid (ja `-modifier` class token:aid) ovtta
-`--instui-*` custom properties.
+Dát boares sáhttá suggetiuvvat `instui-*` class-tokenaid (ja `-modifier` class-tokenaid) ja
+`--instui-*` custom-propertyid.
 
 ## Gos dál?
 
-- [Package map](/guide/packages) — mii paketta geavahát, beroštit barggá.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — installera agent-assets ja ráđđiigaid consumer repo:han.
-- [Architecture](/guide/architecture) — mo token-modela, core, ja outputs galggašuvvat ovttas.
-- [API reference](/api/) — buot exporteerat symbol, genereremehtta source:st.
+- [Package map](/guide/packages) — mida pakettta oidnet geahččat, taska mii.
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — installera agent-assets ja rugget consumer-repos.
+- [Architecture](/guide/architecture) — mo token-model, core ja outputs barggá geavahan.
+- [API reference](/api/) — buot exporteran symbolat, genererestuvvon source-birra.

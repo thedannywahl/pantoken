@@ -1,0 +1,96 @@
+{
+  "$schema": "https://pantoken.app/schemas/i18n.config.schema.json",
+  "source": "en",
+  "requiredSpaces": [
+    "ui.strings",
+    "cli.scaffold",
+    "cli.ai",
+    "docs.home",
+    "docs.chrome",
+    "docs.demos",
+    "docs.guides",
+    "docs.api"
+  ],
+  "catalogs": {
+    "template": "l10n/{space}.pot",
+    "target": "l10n/{locale}/{space}.po"
+  },
+  "poOptions": {
+    "defaultFlags": ["no-c-format"],
+    "preserveObsolete": true
+  },
+  "locales": {
+    "registry": "@pantoken/web-components#LOCALES",
+    "exclude": [],
+    "tiers": {
+      "source": ["en"],
+      "primary": ["en-*", "hu"],
+      "secondary": ["*"]
+    }
+  },
+  "defaults": {
+    "translate": "always"
+  },
+  "drift": {
+    "surfaces": {
+      "ui.strings": { "source": "block", "primary": "block", "secondary": "block" },
+      "cli.scaffold": { "source": "block", "primary": "block", "secondary": "block" },
+      "cli.ai": { "source": "block", "primary": "block", "secondary": "block" },
+      "docs.guides": { "source": "block", "primary": "block", "secondary": "block" },
+      "docs.api": { "source": "block", "primary": "warn", "secondary": "warn" },
+      "docs.demos": { "source": "block", "primary": "block", "secondary": "block" },
+      "docs.home": { "source": "block", "primary": "block", "secondary": "block" },
+      "docs.chrome": { "source": "block", "primary": "block", "secondary": "block" },
+      "docs.parity": "block"
+    },
+    "fallback": { "source": "block", "primary": "warn", "secondary": "warn" }
+  },
+  "spaces": {
+    "docs.guides": {
+      "kind": "content",
+      "include": ["docs/guide/**/*.md"],
+      "render": "docs/{locale}/guide/{path}",
+      "transientRender": false,
+      "segment": "block"
+    },
+    "ui.strings": {
+      "kind": "messages",
+      "source": "renderers/web-components/src/i18n.json"
+    },
+    "cli.scaffold": {
+      "kind": "messages",
+      "source": "packages/scaffold/src/i18n.json"
+    },
+    "cli.ai": {
+      "kind": "messages",
+      "source": "ai/pantoken-ai/src/i18n.json"
+    },
+    "docs.api": {
+      "kind": "content",
+      "include": ["docs/api/**/*.md"],
+      "render": "docs/{locale}/api/{path}",
+      "transientRender": true,
+      "segment": "block"
+    },
+    "docs.home": {
+      "kind": "content",
+      "include": ["docs/index.md"],
+      "render": "docs/{locale}/index.md",
+      "transientRender": false,
+      "segment": "frontmatter"
+    },
+    "docs.chrome": {
+      "kind": "messages",
+      "source": "docs/.vitepress/i18n.json"
+    },
+    "docs.demos": {
+      "kind": "messages",
+      "source": "docs/demos"
+    },
+    "docs.parity": {
+      "kind": "structural",
+      "drift": "block",
+      "source": "docs"
+    }
+  }
+}

@@ -12,7 +12,6 @@ const {
   generateLocaleBundles,
   isPassthroughTranslation,
   localeFamilyGlobs,
-  parseI18nSource,
   resolveVerbatimAction,
   runI18nTranslationCli,
   sha256,
@@ -78,34 +77,6 @@ test("isPassthroughTranslation is false for a genuine translation", () => {
 
 test("isPassthroughTranslation is true for two empty strings", () => {
   expect(isPassthroughTranslation("", "")).toBe(true);
-});
-
-// ── parseI18nSource ────────────────────────────────────────────────────
-
-test("parseI18nSource passes plain string entries through unchanged", () => {
-  expect(parseI18nSource({ back: "Back" })).toEqual({ strings: { back: "Back" }, verbatim: {} });
-});
-
-test("parseI18nSource flattens a rich entry's string and captures its verbatim policy", () => {
-  const result = parseI18nSource({
-    datePlaceholder: { string: "yyyy-mm-dd", verbatim: "allow" },
-  });
-  expect(result.strings).toEqual({ datePlaceholder: "yyyy-mm-dd" });
-  expect(result.verbatim).toEqual({ datePlaceholder: "allow" });
-});
-
-test("parseI18nSource omits the verbatim map entry when a rich entry has no policy", () => {
-  const result = parseI18nSource({ back: { string: "Back" } });
-  expect(result.strings).toEqual({ back: "Back" });
-  expect(result.verbatim).toEqual({});
-});
-
-test("parseI18nSource preserves a required verbatim policy", () => {
-  const result = parseI18nSource({
-    cssClass: { string: "-text-align-start", verbatim: "required" },
-  });
-  expect(result.strings).toEqual({ cssClass: "-text-align-start" });
-  expect(result.verbatim).toEqual({ cssClass: "required" });
 });
 
 // ── resolveVerbatimAction ──────────────────────────────────────────────
@@ -284,17 +255,21 @@ test("TranslationMemory exposes the file path", () => {
 
 type Responder = (prompt: string) => { stdout: string; code?: number; stderr?: string };
 
+/** Basic responder-driven mock; `kill` is a no-op spy (only `useWedgedSpawn` exercises it). */
 function useSpawn(responder: Responder): void {
+  const kill = vi.fn();
   spawn.mockImplementation(() => {
     const child = new EventEmitter() as EventEmitter & {
       stdout: EventEmitter & { setEncoding: () => void };
       stderr: EventEmitter & { setEncoding: () => void };
       stdin: { end: (s: string) => void };
+      kill: typeof kill;
     };
     const stdout = Object.assign(new EventEmitter(), { setEncoding: () => {} });
     const stderr = Object.assign(new EventEmitter(), { setEncoding: () => {} });
     child.stdout = stdout;
     child.stderr = stderr;
+    child.kill = kill;
     child.stdin = {
       end: (prompt: string) => {
         queueMicrotask(() => {
@@ -307,6 +282,25 @@ function useSpawn(responder: Responder): void {
     };
     return child;
   });
+}
+
+/** A child that never emits `close` — simulates a wedged AI agent for timeout testing. */
+function useWedgedSpawn(): { kill: ReturnType<typeof vi.fn> } {
+  const kill = vi.fn();
+  spawn.mockImplementation(() => {
+    const child = new EventEmitter() as EventEmitter & {
+      stdout: EventEmitter & { setEncoding: () => void };
+      stderr: EventEmitter & { setEncoding: () => void };
+      stdin: { end: (s: string) => void };
+      kill: typeof kill;
+    };
+    child.stdout = Object.assign(new EventEmitter(), { setEncoding: () => {} });
+    child.stderr = Object.assign(new EventEmitter(), { setEncoding: () => {} });
+    child.kill = kill;
+    child.stdin = { end: () => {} };
+    return child;
+  });
+  return { kill };
 }
 
 test("spawnPrompt resolves with trimmed stdout on exit 0", async () => {
@@ -328,6 +322,30 @@ test("spawnPrompt includes context in the error message when provided", async ()
 test("spawnPrompt omits the context clause when context is not provided", async () => {
   useSpawn(() => ({ stdout: "", code: 1, stderr: "oops" }));
   await expect(spawnPrompt("cmd", ["-p"], "p")).rejects.toThrow(/exited 1: oops/u);
+});
+
+test("spawnPrompt has no timeout by default — a wedged process hangs forever", async () => {
+  useWedgedSpawn();
+  let settled = false;
+  void spawnPrompt("cmd", ["-p"], "p").finally(() => {
+    settled = true;
+  });
+  await new Promise((r) => setTimeout(r, 10));
+  expect(settled).toBe(false);
+});
+
+test("spawnPrompt kills a wedged process and rejects at timeoutMs", async () => {
+  const { kill } = useWedgedSpawn();
+  await expect(spawnPrompt("cmd", ["-p"], "p", "locale 'hu'", { timeoutMs: 5 })).rejects.toThrow(
+    /timed out after 5ms.*locale 'hu'/u,
+  );
+  expect(kill).toHaveBeenCalledWith("SIGKILL");
+});
+
+test("spawnPrompt does not time out when the process closes before timeoutMs", async () => {
+  useSpawn(() => ({ stdout: "fast\n" }));
+  const out = await spawnPrompt("cmd", ["-p"], "p", undefined, { timeoutMs: 5000 });
+  expect(out).toBe("fast");
 });
 
 // ── runI18nTranslationCli ─────────────────────────────────────────────────────
@@ -735,7 +753,7 @@ afterEach(() => {
   rmSync(localeTestDir, { recursive: true, force: true });
 });
 
-test("generateLocaleBundles writes one module per locale plus an index re-exporting LOCALES", () => {
+test("generateLocaleBundles writes one module per locale plus an index re-exporting MESSAGES", () => {
   const root = join(localeTestDir, "root");
   const outDir = join(localeTestDir, "out");
   mkdirSync(join(root, "i18n-cache"), { recursive: true });
@@ -783,7 +801,7 @@ test("generateLocaleBundles sanitizes hyphenated locale tags into valid JS ident
   expect(indexContent).toContain('"en-AU": LOCALE_EN_AU,');
 });
 
-test("generateLocaleBundles writes an empty LOCALES index when i18n-cache doesn't exist", () => {
+test("generateLocaleBundles writes an empty MESSAGES index when i18n-cache doesn't exist", () => {
   const root = join(localeTestDir, "no-cache-root");
   const outDir = join(localeTestDir, "out");
   mkdirSync(root, { recursive: true });
@@ -792,7 +810,7 @@ test("generateLocaleBundles writes an empty LOCALES index when i18n-cache doesn'
 
   const indexContent = readFileSync(join(outDir, "locales", "index.ts"), "utf8");
   expect(indexContent).toContain(
-    "export const LOCALES: Record<string, Record<string, string>> = {",
+    "export const MESSAGES: Record<string, Record<string, string>> = {",
   );
   expect(existsSync(join(outDir, "locales", "hu.ts"))).toBe(false);
 });

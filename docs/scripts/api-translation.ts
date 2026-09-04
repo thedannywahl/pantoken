@@ -5,7 +5,7 @@
  * room for higher-quality engines later.
  */
 import { extractJsonObject, spawnPrompt } from "@pantoken/translation-adapters";
-import { CANVAS_LOCALES } from "@pantoken/i18n";
+import { LOCALES } from "@pantoken/web-components";
 import { GLOSSARY_TERMS, type GlossaryKind } from "./glossary.ts";
 import { TranslationMemory } from "./translation-memory.ts";
 
@@ -22,11 +22,21 @@ const ENGLISH_VARIANT_LABELS: Record<string, string> = {
 };
 
 const LOCALE_LABELS: Record<string, string> = Object.fromEntries(
-  Object.entries(CANVAS_LOCALES).map(([locale, meta]) => [
+  Object.entries(LOCALES).map(([locale, meta]) => [
     locale,
     ENGLISH_VARIANT_LABELS[locale] ?? meta.label.replace(/\s*\(.*\)$/, ""),
   ]),
 );
+
+/** Remove the markdown envelope when a CLI model echoes the delimiters from the translation prompt. */
+const stripMarkdownEnvelope = (output: string): string => {
+  const begin = "--- BEGIN MARKDOWN ---";
+  const end = "--- END MARKDOWN ---";
+  const start = output.indexOf(begin);
+  const finish = output.lastIndexOf(end);
+  if (start === -1 || finish <= start) return output;
+  return output.slice(start + begin.length, finish).trim();
+};
 
 /** A pluggable translation engine: named, with markdown/text/batch translate methods. */
 export interface TranslationAdapter {
@@ -85,8 +95,7 @@ const replacementFor = (kind: GlossaryKind, translated: string): string => {
 
 /**
  * Deterministic adapter: substitutes known structural terms only (headings, badges, table labels),
- * looked up from the `<locale>.glossary.json` translation-memory cache (see `glossary.ts` for the term
- * list and `translate-glossary.ts` for how the cache is filled). It can't translate prose, so
+ * looked up from the `<locale>/docs.api.po` catalog (see `glossary.ts` for the term list). It can't translate prose, so
  * `translatesProse` is `false`. Safe to run in CI — it never spawns an adapter or hits the network.
  */
 export class GlossaryTranslationAdapter implements TranslationAdapter {
@@ -97,7 +106,7 @@ export class GlossaryTranslationAdapter implements TranslationAdapter {
   private readonly replacements: Array<[RegExp, string]>;
 
   constructor(locale = "hu") {
-    const memory = TranslationMemory.load(locale, "glossary");
+    const memory = TranslationMemory.load(locale, "api");
     // Untranslated terms are skipped (identity passthrough) rather than matched against an empty
     // string, so an in-progress locale still renders every OTHER already-translated term correctly.
     this.replacements = GLOSSARY_TERMS.flatMap(({ kind, term }) => {
@@ -332,7 +341,9 @@ export class AiTranslationAdapter implements TranslationAdapter {
       "--- END MARKDOWN ---",
     ].join("\n");
 
-    const translated = await this.runClaude(prompt, `markdown file ${filePath}`);
+    const translated = stripMarkdownEnvelope(
+      await this.runClaude(prompt, `markdown file ${filePath}`),
+    );
     const restoredBrackets = restoreEscapedAngleBrackets(translated, preservedBrackets.brackets);
     const restoredPackages = restorePackageNames(restoredBrackets, preservedPackages.packageNames);
     return restoreMarkdownSensitiveBlocks(
@@ -440,7 +451,10 @@ export class AiTranslationAdapter implements TranslationAdapter {
   }
 
   private runClaude(prompt: string, scope: string): Promise<string> {
-    return spawnPrompt(this.command, [...this.args, "-p"], prompt, scope);
+    // Without a timeout a wedged CLI (no output, never exits) stalls the whole locale forever; a
+    // timed-out chunk is logged and skipped by translateBatch, so its strings retry next run.
+    const timeoutMs = Number(process.env.DOCS_TRANSLATION_TIMEOUT_MS) || 120_000;
+    return spawnPrompt(this.command, [...this.args, "-p"], prompt, scope, { timeoutMs });
   }
 }
 
