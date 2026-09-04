@@ -31,3 +31,7 @@ let's also have it accept 'primary' or 'secondary' as specified in i18n.config.j
 ---
 
 also also and exclusion list, like if I want to translate everything except 'ga'
+
+---
+
+since we're still hanging on the ga translation, presumably on the button, what file is that?
