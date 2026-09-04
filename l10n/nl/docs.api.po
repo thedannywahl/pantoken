@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-04 06:52+0000\n"
+"PO-Revision-Date: 2026-09-04 15:31+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2436,7 +2436,7 @@ msgstr "Rendeer een leidend glyph‑pictogram vóór het tekstblok."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Medium."
-msgstr ""
+msgstr "Gemiddeld."
 
 #: css/byline.md
 #, no-c-format
@@ -13812,7 +13812,7 @@ msgstr "### plugins"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`PantokenPlugin`](../interfaces/PantokenPlugin.md)[]"
-msgstr "readonly [`PantokenPlugin`](../interfaces/PantokenPlugin.md)[]"
+msgstr "alleen-lezen [`PantokenPlugin`](../interfaces/PantokenPlugin.md)[]"
 
 #: packages/core/src/functions/runIconPlugins.md
 #, no-c-format
@@ -14940,7 +14940,7 @@ msgstr "Filter een pluginlijst op plugins die deelnemen aan `stage` en waarschuw
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]"
-msgstr "readonly [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]"
+msgstr "alleen-lezen [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]"
 
 #: packages/plugin-kit/src/functions/checkPlugins.md
 #, no-c-format
@@ -15432,7 +15432,7 @@ msgstr "### groups"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`TokenUtilityGroup`](../interfaces/TokenUtilityGroup.md)[]"
-msgstr "readonly [`TokenUtilityGroup`](../interfaces/TokenUtilityGroup.md)[]"
+msgstr "alleen-lezen [`TokenUtilityGroup`](../interfaces/TokenUtilityGroup.md)[]"
 
 #: packages/utils/src/functions/tokenUtilitiesCss.md
 #, no-c-format

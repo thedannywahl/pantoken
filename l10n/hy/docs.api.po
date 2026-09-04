@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-04 00:50+0000\n"
+"PO-Revision-Date: 2026-09-04 15:30+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -12942,7 +12942,7 @@ msgstr "`@pantoken/scss` — Instructure-ի դիզայնի տոկենները ո
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "[toScss](functions/toScss.md) converts any IR; [scss](variables/scss.md) is the ready-made `rebrand` variable set. A static\nfile is published at `@pantoken/scss/tokens.scss`."
-msgstr ""
+msgstr "[toScss](functions/toScss.md) վերածում է ցանկացած IR; [scss](variables/scss.md) հանդիսանում է պատրաստի `rebrand` փոփոխականների հավաքը։ Ստատիկ\nֆայլը հրապարակված է `@pantoken/scss/tokens.scss`։"
 
 #: formats/scss/src/index.md
 #, no-c-format
@@ -17706,7 +17706,7 @@ msgstr "When an upstream release drops a `--instui-*` token, a hand-authored `De
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The retirement is enforced elsewhere (the upgrade pipeline hard-fails a bump once an entry's\n`removeIn` upstream minor is reached, forcing the entry to be retired and a consumer minor cut).\n[dueForRemoval](functions/dueForRemoval.md) is the check that powers it; [describeLifecycle](functions/describeLifecycle.md) powers the docs."
-msgstr ""
+msgstr "Հեռացումը կիրառվում է այլ տեղ (the upgrade pipeline-ը կտրուկ ձախողում է bump‑ը՝ երբ մուտքի `removeIn` upstream minor‑ին հասնեն, ստիպելով մուտքը հեռացնել և սպառողին նոր minor թողարկել): [dueForRemoval](functions/dueForRemoval.md)‑ը այն ստուգումն է, որը սա ապահովում է; [describeLifecycle](functions/describeLifecycle.md)‑ը ապահովում է փաստաթղթավորումը."
 
 #: plugins/pantoken/deprecations/src/index.md
 #, no-c-format

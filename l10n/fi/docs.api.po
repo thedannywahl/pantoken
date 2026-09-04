@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-04 11:20+0000\n"
+"PO-Revision-Date: 2026-09-04 15:32+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -343,7 +343,7 @@ msgstr "# Muuttuja: SCAFFOLD\\_PLATFORMS"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Every scaffoldable platform key (discovered from available presets, plus any legacy\ntemplate-only platforms not yet backed by a preset)."
-msgstr "Jokainen scaffoldattava alustan avain (löydetty saatavilla olevista esiasetuksista sekä kaikki perintönä säilyneet vain-mallipohjat, joita ei vielä tue esiasetus).\n"
+msgstr "Jokainen scaffoldattava alustan avain (löydetty saatavilla olevista esiasetuksista sekä kaikki perintönä säilyneet vain-mallipohjat, joita ei vielä tue esiasetus)."
 
 #: ai/pantoken-ai/src/variables/SCAFFOLD_PLATFORMS.md
 #, no-c-format
@@ -5676,7 +5676,7 @@ msgstr "`.instui-number-input` — numeron syöttöä jäljittelevä käyttölii
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The `.arrows` buttons are `aria-hidden` and purely presentational — incrementing/decrementing the value on click is the consumer's JS to wire up."
-msgstr ""
+msgstr "`.arrows`-painikkeet ovat `aria-hidden` ja pelkästään esitystarkoitukseen — arvon kasvattamisen tai vähentämisen klikkaamalla tulee kuluttajan JavaScriptin toteuttaa."
 
 #: css/number-input.md
 #, no-c-format
@@ -14940,7 +14940,7 @@ msgstr "Suodata plugin-lista niihin, jotka osallistuvat `stage`:iin, ja varo lop
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]"
-msgstr "readonly [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]"
+msgstr "vain luku [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]"
 
 #: packages/plugin-kit/src/functions/checkPlugins.md
 #, no-c-format
@@ -14982,7 +14982,7 @@ msgstr "# Funktio: definePlugin()"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Create a pantoken plugin from its hooks. The result is a normal `PantokenPlugin` branded with the\ncapabilities inferred from the hooks you provided."
-msgstr "Luo pantoken-laajennus sen hookeista. Tuloksena on normaali `PantokenPlugin`, joka on brändätty tarjoamiesi hookien perusteella pääteltyjen ominaisuuksien mukaisesti.\n"
+msgstr "Luo pantoken-laajennus sen hookeista. Tuloksena on normaali `PantokenPlugin`, joka on brändätty tarjoamiesi hookien perusteella pääteltyjen ominaisuuksien mukaisesti."
 
 #: packages/plugin-kit/src/functions/definePlugin.md
 #, no-c-format

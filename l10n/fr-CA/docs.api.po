@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-04 14:57+0000\n"
+"PO-Revision-Date: 2026-09-04 15:32+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -14940,7 +14940,7 @@ msgstr "Filtrer une liste de plugins pour ne conserver que ceux qui participent 
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]"
-msgstr "readonly [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]"
+msgstr "en lecture seule [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]"
 
 #: packages/plugin-kit/src/functions/checkPlugins.md
 #, no-c-format
