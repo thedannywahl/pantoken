@@ -1,0 +1,17 @@
+running this command hangs in the `ga` language:
+```
+ DOCS_TRANSLATION_ADAPTER=ai DOCS_TRANSLATION_COMMAND="$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh" DOCS_TRANSLATION_COMMAND_ARGS="--model gpt-5-mini --effort low" DOCS_TRANSLATION_CONCURRENCY=4 node scripts/build-api-locales.ts
+ ```
+ it has twice hung here:
+ ```
+     ga/api/bundlers/webpack/src/interfaces/PantokenWebpackOptions.md: 4 glossary, 2 prose (2 cached, 0 translated)
+    ga/api/css/agent-shell.md: 9 glossary, 2 prose (2 cached, 0 translated)
+    ga/api/css/alert.md: 29 glossary, 24 prose (24 cached, 0 translated)
+    ga/api/css/avatar.md: 25 glossary, 35 prose (35 cached, 0 translated)
+    ga/api/css/badge.md: 20 glossary, 21 prose (21 cached, 0 translated)
+    ga/api/css/banner.md: 21 glossary, 10 prose (10 cached, 0 translated)
+    ga/api/css/base.md: 10 glossary, 4 prose (5 cached, 0 translated)
+    ga/api/css/billboard.md: 15 glossary, 15 prose (15 cached, 0 translated)
+    ga/api/css/breadcrumb.link.md: 14 glossary, 9 prose (9 cached, 0 translated)
+    ga/api/css/breadcrumb.md: 13 glossary, 10 prose (10 cached, 0 translated)
+```
