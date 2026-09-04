@@ -69,16 +69,29 @@ export function spawnPrompt(
   options?: { timeoutMs?: number },
 ): Promise<string> {
   return new Promise((resolve, reject) => {
-    const child = spawn(command, args, { stdio: ["pipe", "pipe", "pipe"] });
+    // Its own process group: `command` is usually a wrapper script, so killing just the shell would
+    // orphan the CLI it spawned — still holding the stdout pipe that keeps this process alive.
+    const child = spawn(command, args, { stdio: ["pipe", "pipe", "pipe"], detached: true });
     let out = "";
     let err = "";
     let settled = false;
     let timer: ReturnType<typeof setTimeout> | undefined;
+    const killTree = (): void => {
+      if (child.pid !== undefined) {
+        try {
+          process.kill(-child.pid, "SIGKILL");
+          return;
+        } catch {
+          // The group is already gone, or the platform refused it — fall through to the direct kill.
+        }
+      }
+      child.kill("SIGKILL");
+    };
     if (options?.timeoutMs !== undefined) {
       timer = setTimeout(() => {
         if (settled) return;
         settled = true;
-        child.kill("SIGKILL");
+        killTree();
         const where = context ? ` for ${context}` : "";
         reject(new Error(`AI command timed out after ${String(options.timeoutMs)}ms${where}`));
       }, options.timeoutMs);

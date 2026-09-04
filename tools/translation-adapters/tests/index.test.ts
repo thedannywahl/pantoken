@@ -285,7 +285,7 @@ function useSpawn(responder: Responder): void {
 }
 
 /** A child that never emits `close` — simulates a wedged AI agent for timeout testing. */
-function useWedgedSpawn(): { kill: ReturnType<typeof vi.fn> } {
+function useWedgedSpawn(pid?: number): { kill: ReturnType<typeof vi.fn> } {
   const kill = vi.fn();
   spawn.mockImplementation(() => {
     const child = new EventEmitter() as EventEmitter & {
@@ -293,10 +293,12 @@ function useWedgedSpawn(): { kill: ReturnType<typeof vi.fn> } {
       stderr: EventEmitter & { setEncoding: () => void };
       stdin: { end: (s: string) => void };
       kill: typeof kill;
+      pid?: number;
     };
     child.stdout = Object.assign(new EventEmitter(), { setEncoding: () => {} });
     child.stderr = Object.assign(new EventEmitter(), { setEncoding: () => {} });
     child.kill = kill;
+    child.pid = pid;
     child.stdin = { end: () => {} };
     return child;
   });
@@ -340,6 +342,19 @@ test("spawnPrompt kills a wedged process and rejects at timeoutMs", async () => 
     /timed out after 5ms.*locale 'hu'/u,
   );
   expect(kill).toHaveBeenCalledWith("SIGKILL");
+});
+
+test("spawnPrompt signals the whole process group so a wrapper's CLI dies with it", async () => {
+  const { kill } = useWedgedSpawn(4242);
+  const killGroup = vi.spyOn(process, "kill").mockImplementation(() => true);
+
+  await expect(spawnPrompt("wrapper.sh", ["-p"], "p", undefined, { timeoutMs: 5 })).rejects.toThrow(
+    /timed out/u,
+  );
+
+  expect(killGroup).toHaveBeenCalledWith(-4242, "SIGKILL");
+  expect(kill).not.toHaveBeenCalled();
+  killGroup.mockRestore();
 });
 
 test("spawnPrompt does not time out when the process closes before timeoutMs", async () => {
