@@ -1,0 +1,17 @@
+every run I get a lot of these, but the translation is the same spelling as english:
+```
+  ! [fr-CA] text unit looks untranslated (identical to source), not cached: "Interfaces"
+  ! [fr-CA] text unit looks untranslated (identical to source), not cached: "Variables"
+  ! [fr-CA] text unit looks untranslated (identical to source), not cached: "Classes"
+    fr-CA/api/typedoc-sidebar.json: 1104 labels (1104 cached, 0 translated)
+...
+  ! [fr] text unit looks untranslated (identical to source), not cached: "Interfaces"
+  ! [fr] text unit looks untranslated (identical to source), not cached: "Variables"
+  ! [fr] text unit looks untranslated (identical to source), not cached: "Classes"
+    fr/api/typedoc-sidebar.json: 1104 labels (1104 cached, 0 translated)
+...
+  ! [ca] text unit looks untranslated (identical to source), not cached: "Interfaces"
+  ! [ca] text unit looks untranslated (identical to source), not cached: "Variables"
+  ! [ca] text unit looks untranslated (identical to source), not cached: "Classes"
+    ca/api/typedoc-sidebar.json: 1104 labels (1104 cached, 0 translated)
+```
