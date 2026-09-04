@@ -30,7 +30,11 @@ vi.mock("node:fs", () => ({
 }));
 vi.mock("node:child_process", () => ({ spawnSync, spawn }));
 // One target locale keeps the loop (and the fixtures below, which only model a HU tree) deterministic.
-vi.mock("../.vitepress/i18n.ts", () => ({ NON_ROOT_LOCALES: ["hu"] }));
+vi.mock("../.vitepress/i18n.ts", () => ({
+  NON_ROOT_LOCALES: ["hu"],
+  parseRequestedLocales: (requested: string | undefined, fallback: readonly string[]) =>
+    requested ? requested.split(",") : fallback,
+}));
 
 const MARKDOWN = [
   "# button",

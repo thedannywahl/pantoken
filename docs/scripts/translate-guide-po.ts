@@ -12,14 +12,12 @@ import {
 } from "@pantoken/i18n-engine";
 import { AiTranslationAdapter } from "./api-translation.ts";
 import { reassemble, segmentMarkdown } from "./segment-markdown.ts";
-import { NON_ROOT_LOCALES } from "../.vitepress/i18n.ts";
+import { NON_ROOT_LOCALES, parseRequestedLocales } from "../.vitepress/i18n.ts";
 
 const repoRoot = new URL("../../", import.meta.url).pathname;
 const config = loadConfig(join(repoRoot, "i18n.config.json"));
 const docsRoot = join(repoRoot, "docs");
-const locales = process.env.DOCS_TRANSLATION_LOCALE
-  ? [process.env.DOCS_TRANSLATION_LOCALE]
-  : NON_ROOT_LOCALES;
+const locales = parseRequestedLocales(process.env.DOCS_TRANSLATION_LOCALE, NON_ROOT_LOCALES);
 
 runExtractGuides(config, repoRoot);
 const files = listGuideFiles(docsRoot);

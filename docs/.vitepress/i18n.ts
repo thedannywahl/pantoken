@@ -2,7 +2,7 @@ import { LOCALES } from "@pantoken/web-components";
 import chromeSource from "./i18n.json" with { type: "json" };
 import type { CdnPickerStrings } from "./theme/cdn.ts";
 import type { GetStartedTabsStrings } from "./theme/get-started.ts";
-import { loadConfig, resolveMessagesForLocale } from "@pantoken/i18n-engine";
+import { loadConfig, resolveMessagesForLocale, resolveTier } from "@pantoken/i18n-engine";
 
 /**
  * Every locale the docs site builds: `root` (English) plus every non-`en` locale from
@@ -18,6 +18,60 @@ export type DocsLocale = string;
 
 /** The non-`root` locale keys, in `LOCALES` order. */
 export const NON_ROOT_LOCALES = Object.keys(LOCALES).filter((key) => key !== "en");
+
+/**
+ * Resolve a `DOCS_TRANSLATION_LOCALE` value — one entry or a comma/space-separated list — against
+ * `fallback` (every locale when the variable is unset). Each entry is either a locale tag or a tier
+ * name from `i18n.config.json`'s `locales.tiers` (`primary`, `secondary`, …), which expands to every
+ * docs locale in that tier; the two can be mixed. Prefix an entry with `-` to subtract it, e.g.
+ * `"-ga"` for every locale but Irish or `"primary,-hu"` for the primary tier without Hungarian; a
+ * value of only subtractions starts from `fallback`. Throws on an entry that's neither a tag nor a
+ * tier, so a typo fails loudly instead of quietly building an empty directory.
+ */
+export const parseRequestedLocales = (
+  requested: string | undefined,
+  fallback: readonly string[],
+): readonly string[] => {
+  const entries = (requested ?? "").split(/[,\s]+/).filter((entry) => entry.length > 0);
+  if (entries.length === 0) return fallback;
+
+  const tiers = loadConfig(new URL("../../i18n.config.json", import.meta.url).pathname).locales
+    .tiers;
+  const unknown: string[] = [];
+  const expand = (entry: string): readonly string[] => {
+    // resolveTier, not a raw pattern match: tiers are ordered, so `secondary`'s `"*"` must not
+    // reclaim a locale that `primary` already matched.
+    if (entry in tiers) return NON_ROOT_LOCALES.filter((l) => resolveTier(tiers, l) === entry);
+    if (NON_ROOT_LOCALES.includes(entry)) return [entry];
+    unknown.push(entry);
+    return [];
+  };
+
+  const included: string[] = [];
+  const excluded = new Set<string>();
+  let hasInclude = false;
+  for (const entry of entries) {
+    if (entry.startsWith("-")) for (const locale of expand(entry.slice(1))) excluded.add(locale);
+    else {
+      hasInclude = true;
+      included.push(...expand(entry));
+    }
+  }
+  if (unknown.length > 0) {
+    throw new Error(
+      `Unknown DOCS_TRANSLATION_LOCALE value(s): ${unknown.join(", ")}. Supported tiers: ${Object.keys(tiers).join(", ")}. Supported locales: ${NON_ROOT_LOCALES.join(", ")}`,
+    );
+  }
+
+  // Only subtractions (`"-ga"`) start from every locale; an include that expanded to nothing must not.
+  const base = hasInclude ? included : fallback;
+  const resolved = [...new Set(base)].filter((locale) => !excluded.has(locale));
+  // A tier can be valid yet empty here — `source` is `["en"]`, which no docs locale belongs to.
+  if (resolved.length === 0) {
+    throw new Error(`DOCS_TRANSLATION_LOCALE=${requested ?? ""} matched no docs locale`);
+  }
+  return resolved;
+};
 
 /** Every docs locale, `root` first. */
 const ALL_DOCS_LOCALES: readonly DocsLocale[] = ["root", ...NON_ROOT_LOCALES];

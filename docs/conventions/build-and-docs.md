@@ -108,6 +108,13 @@ translated`) and saves the memory after **each** chunk, so it's resumable — a 
   without exiting used to stall a locale indefinitely (the run appears to stop mid-file list); the
   timed-out chunk is now killed, logged, and skipped, and its strings retry on the next run. Raise it
   for a slow model or big batch budget.
+- **Scope a run with `DOCS_TRANSLATION_LOCALE`.** A locale tag (`hu`), a tier name from
+  `i18n.config.json`'s `locales.tiers` (`primary` → `en-AU en-CA en-GB hu`, `secondary` → the rest),
+  or a comma/space-separated mix of both (`DOCS_TRANSLATION_LOCALE="primary,ga"`). A `-` prefix
+  subtracts — `"-ga"` is every locale but Irish, `"primary,-hu"` is the primary tier without
+  Hungarian. Unset means every locale. An unrecognized entry, or a selection that resolves to nothing
+  (a tier with no docs locale like `source`, or `"hu,-hu"`), throws rather than building an empty
+  directory. Honored by `build-api-locales.ts` and `translate-guide-po.ts`.
 
 ## Translation drift: what blocks a merge
 

@@ -39,7 +39,7 @@ import {
 import { dirname, join, relative } from "node:path";
 import { spawnSync } from "node:child_process";
 import { refreshCoverageReports, serializePot } from "@pantoken/i18n-engine";
-import { NON_ROOT_LOCALES } from "../.vitepress/i18n.ts";
+import { NON_ROOT_LOCALES, parseRequestedLocales } from "../.vitepress/i18n.ts";
 import { GlossaryTranslationAdapter, createTranslationAdapter } from "./api-translation.ts";
 import { type Resolve, collectUnits, reassemble, segmentMarkdown } from "./segment-markdown.ts";
 import {
@@ -54,8 +54,7 @@ const docsRoot = join(import.meta.dirname, "..");
 const repoRoot = join(docsRoot, "..");
 const enApiDir = join(docsRoot, "api");
 const apiDirFor = (locale: string): string => join(docsRoot, locale, "api");
-const requestedLocale = process.env.DOCS_TRANSLATION_LOCALE;
-const locales = requestedLocale ? [requestedLocale] : NON_ROOT_LOCALES;
+const locales = parseRequestedLocales(process.env.DOCS_TRANSLATION_LOCALE, NON_ROOT_LOCALES);
 const GLOSSARY_TEXT = new Set(GLOSSARY_TERMS.map(({ term }) => term));
 
 /**
