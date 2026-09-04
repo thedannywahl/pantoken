@@ -451,7 +451,10 @@ export class AiTranslationAdapter implements TranslationAdapter {
   }
 
   private runClaude(prompt: string, scope: string): Promise<string> {
-    return spawnPrompt(this.command, [...this.args, "-p"], prompt, scope);
+    // Without a timeout a wedged CLI (no output, never exits) stalls the whole locale forever; a
+    // timed-out chunk is logged and skipped by translateBatch, so its strings retry next run.
+    const timeoutMs = Number(process.env.DOCS_TRANSLATION_TIMEOUT_MS) || 120_000;
+    return spawnPrompt(this.command, [...this.args, "-p"], prompt, scope, { timeoutMs });
   }
 }
 

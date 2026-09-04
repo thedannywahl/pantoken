@@ -99,6 +99,10 @@ translated`) and saves the memory after **each** chunk, so it's resumable — a 
   errors is logged and skipped (its blocks stay uncached and retry next run), never sinking the whole
   run. Raise concurrency for more speed if you're not rate-limited; lower the budget if a run trips the
   per-item fallback (the model dropping a key from a large response).
+- **Every call is bounded by `DOCS_TRANSLATION_TIMEOUT_MS` (default 120000).** A CLI that wedges
+  without exiting used to stall a locale indefinitely (the run appears to stop mid-file list); the
+  timed-out chunk is now killed, logged, and skipped, and its strings retry on the next run. Raise it
+  for a slow model or big batch budget.
 
 ## Translation drift: what blocks a merge
 
