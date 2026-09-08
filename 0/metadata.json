@@ -1,0 +1,49 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M21Q251DSH9DENZP8AYD8KKV",
+  "session_id": "565bcf9b-ba61-423d-be2f-599eb26a95b1",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-08T23:53:41.476439Z",
+  "branch": "fix/codecov-security-coverage",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "codecov.yml"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "a7b5d3663605",
+  "checkpoint_transcript_start": 435,
+  "transcript_lines_at_start": 435,
+  "compact_transcript_start": 78,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 7
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-08T23:53:41.463601Z",
+    "agent_lines": 3,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 3,
+    "total_lines_changed": 3,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
+}
