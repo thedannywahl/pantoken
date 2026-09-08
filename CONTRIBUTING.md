@@ -96,8 +96,8 @@ package name (e.g. `components`, `core`, `css`). The commit-msg hook enforces th
 
 Contributions must follow the project’s coding standards and pass the automated formatting, linting, type-checking, and documentation checks before being merged. The checked-in configuration files are the authoritative project style guides.
 
-- **TypeScript and TSX:** Code is formatted by Oxfmt and linted by Oxlint using the repository’s Vite+ configuration. TypeScript strict checking is required. Exported APIs must use valid TSDoc comments as configured by `eslint.config.js` and `tsdoc.json`.
-- **CSS:** CSS must comply with `stylelint.config.js`. Component and web-component CSS documentation must also satisfy the cssdoc rules configured by `cssdoc.json` and `eslint.config.js`. Project-specific component authoring conventions are documented in `docs/conventions/authoring.md`.
+- **TypeScript and TSX:** Code is formatted by Oxfmt and linted by Oxlint using the repository’s Vite+ configuration. TypeScript strict checking is required. Exported APIs must use valid TSDoc comments; the `lint.overrides` block in `vite.config.ts` and `tsdoc.json` configure that check.
+- **CSS:** CSS must comply with `stylelint.config.js`. Component and web-component CSS documentation must also satisfy the cssdoc rules configured by `cssdoc.json`. Project-specific component authoring conventions are documented in `docs/conventions/authoring.md`.
 - **Markdown:** Markdown must comply with markdownlint using `.markdownlint.json` and `.markdownlint-cli2.yaml`.
 - **Generated files:** Files under generated-output directories must be changed through their source generators rather than edited manually.
 

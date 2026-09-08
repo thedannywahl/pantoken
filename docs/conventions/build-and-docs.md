@@ -15,7 +15,7 @@
 
 - `pnpm run ready` — the pass/fail gate. It's a `vp` task DAG (`ready:all`), not a serial chain:
   `build:all` runs once, then `check:all` (`vp check`), `test:all` (`vp run -r test`), `lint:css`,
-  `lint:js`, `validate:generated:only`, and `lint:markdown` fan out concurrently. Everything that reads
+  `validate:generated:only`, and `lint:markdown` fan out concurrently. Everything that reads
   generated output depends on `build:all`, so generation happens exactly once (no concurrent codegen
   race). Must pass before you're done.
 - `pnpm run check:publish` — the publish gate (`gate:publish`): `gate:repository` (asserts every
@@ -50,9 +50,10 @@ organization governance model.
 ## Linting CSS
 
 Root `stylelint.config.js` runs error-only core rules plus `@cssdoc/stylelint-plugin`'s
-`cssdoc/valid-doc-comments`; anchor-positioning props are ignored and `@scope` is allowed. A parallel
-`eslint.config.js` runs `@cssdoc/eslint-plugin` (via `@eslint/css`) over the same `.css` (`lint:js`).
-`lint:css` targets the web-components `src/**/*.css` sources and the generated components CSS.
+`cssdoc/valid-doc-comments`; anchor-positioning props are ignored and `@scope` is allowed. It's the
+single cssdoc lint instance — oxlint has no CSS language and its JS plugins can't host custom parsers,
+so the CSS gate can't move to oxc. `lint:css` targets the web-components `src/**/*.css` sources and the
+generated components CSS.
 
 ## The docs site
 

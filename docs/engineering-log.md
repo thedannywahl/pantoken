@@ -235,18 +235,45 @@ classification, and refactoring the worst functions; the gate floors at 80.
 raise the floor to 85 when that lands. Don't try to buy points with config — `unused-*` suppressions
 and `thresholdOverrides` change what's _reported_, not the score.
 
-### TSDoc enforcement runs through ESLint, not oxlint; keep it syntax-only
+### TSDoc enforcement runs on oxlint's JS-plugin bridge, not a separate ESLint pass
 
-**Symptom** — JS/TS in this repo is linted by vite-plus's built-in oxlint (`vite.config.ts` `lint`),
-which can't host a third-party ESLint plugin like `eslint-plugin-tsdoc-require-2`.
+**Symptom** — oxlint has no native TSDoc rules, so TSDoc enforcement originally ran as a second
+linter: a root `eslint.config.js` with `tsdoc-require-2/require` + `tsdoc/syntax`, invoked by a
+`lint:tsdoc` task. That meant a whole ESLint install (plus `@typescript-eslint/parser`) for two rules.
 
-**Fix / rule** — TSDoc runs as a separate ESLint pass: the root `eslint.config.js` gained a
-`**/*.{ts,tsx}` block (`tsdoc-require-2/require` + `tsdoc/syntax`, both error), run via the `lint:tsdoc`
-task and the CI `lint` job. Configure the `@typescript-eslint/parser` **without** `parserOptions.project`
-— these rules are comment/syntax-only, so skipping type information keeps the pass fast workspace-wide.
-`tsdoc/syntax` honours the custom block tags (`@property`, `@module`) declared in `tsdoc.json`. Invoke
-it as `eslint .` (flat-config-driven discovery); passing explicit globs errors when a pattern like
-`**/*.mts` matches nothing.
+**Fix / rule** — oxlint's JS plugins implement ESLint's v9 plugin API, and both TSDoc plugins fit
+inside it: `eslint-plugin-tsdoc-require-2` is pure AST + `getCommentsBefore`, and `eslint-plugin-tsdoc`
+touches `parserServices.program` only to locate a tsconfig — a path that was already unused because the
+parser was configured without `parserOptions.project`. So they're registered as `lint.jsPlugins` in
+`vite.config.ts` and `vite.config.base.ts`, with the two rules enabled in a `lint.overrides` entry whose
+`files`/`excludeFiles` reproduce the old flat-config block. TSDoc is now part of `vp check`, so it also
+runs on pre-commit — and the whole lint pass costs ~2.2s where the ESLint task alone cost ~6.2s.
+`tsdoc/syntax` still honours the custom tags in `tsdoc.json`; it resolves that file from
+`context.filename`, which oxlint supplies. Watch out: oxlint JS plugins are alpha and not semver-stable,
+so re-diff `vp check` against the old behaviour after an oxlint bump.
+
+### The cssdoc CSS gate is Stylelint's, and can't move to oxc
+
+**Symptom** — the same `cssdoc/valid-doc-comments` rule ran twice over identical globs: once through
+`@cssdoc/stylelint-plugin` (`lint:css`) and once through `@cssdoc/eslint-plugin` + `@eslint/css`
+(`lint:js`). Two linters, one rule, one `@cssdoc/lint-core` engine, one auto-loaded `cssdoc.jsonc`.
+
+**Fix / rule** — deleted the ESLint instance after proving redundancy: both runners linted the same 205
+files and reported byte-identical diagnostics, including a seeded `missing-summary` +
+`undocumented-modifier` probe, and both honoured the scoped `formats/components/cssdoc.jsonc`
+(`name-not-in-css: off`) identically. Stylelint keeps the gate — not by preference, but because oxlint
+has no CSS language and its JS plugins explicitly do not support custom parsers or file formats, so
+`@eslint/css`-style rules are unreachable there. A future host-agnostic `cssdoc lint` CLI is the only
+thing that would let this repo drop Stylelint too.
+
+Upstream follow-ups filed against `thedannywahl/cssdoc`: a shared adapter conformance suite so the
+stylelint and eslint adapters can't drift ([#34]), docs stating the oxc constraint ([#35]), the
+`@cssdoc/cli` direction ([#36]), and verifying `valid-class-usage` under oxlint ([#37]).
+
+[#34]: https://github.com/thedannywahl/cssdoc/issues/34
+[#35]: https://github.com/thedannywahl/cssdoc/issues/35
+[#36]: https://github.com/thedannywahl/cssdoc/issues/36
+[#37]: https://github.com/thedannywahl/cssdoc/issues/37
 
 ### Codecov uploads tokenless via OIDC on the public repo
 
