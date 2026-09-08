@@ -231,7 +231,7 @@ jobs:
           fi
       - name: Upload coverage to Codecov
         if: steps.cov.outputs.ran == 'true'
-        uses: codecov/codecov-action@0fb7174895f61a3b6b78fc075e0cd60383518dac # v5
+        uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage/lcov.info
@@ -240,7 +240,7 @@ jobs:
           fail_ci_if_error: false
       - name: Upload test results to Codecov
         if: ${{ !cancelled() && steps.cov.outputs.ran == 'true' }}
-        uses: codecov/codecov-action@0fb7174895f61a3b6b78fc075e0cd60383518dac # v5
+        uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./junit.xml
@@ -503,7 +503,7 @@ jobs:
           fetch-depth: 0
       - name: Detect upstream-pin changes
         id: filter
-        uses: dorny/paths-filter@7b450fff21473bca461d4b92ce414b9d0420d706 # v4
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
         with:
           filters: |
             upstream:
@@ -563,7 +563,7 @@ jobs:
           fetch-depth: 0
       - name: Detect docs-relevant changes
         id: filter
-        uses: dorny/paths-filter@7b450fff21473bca461d4b92ce414b9d0420d706 # v4
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
         with:
           filters: |
             docs:
@@ -594,7 +594,7 @@ jobs:
           fetch-depth: 0
       - name: Detect i18n-relevant changes
         id: filter
-        uses: dorny/paths-filter@7b450fff21473bca461d4b92ce414b9d0420d706 # v4
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
         with:
           filters: |
             i18n:

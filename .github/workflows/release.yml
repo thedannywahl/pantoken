@@ -131,7 +131,7 @@ jobs:
       # `vp install` but never puts it on PATH, so install a standalone pnpm here instead of relying on
       # Vite+ to expose one. Version comes from package.json's devEngines.packageManager.
       - name: Set up pnpm
-        uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2 # v2.0.2
+        uses: pnpm/setup@703c52620218391530e48b9e8870d5c0082e1b9b # v2.1.0
         with:
           install: false
 
@@ -164,26 +164,29 @@ jobs:
         run: vp run -r build
 
       - name: Create Version PR or publish
-        uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1
+        uses: changesets/action@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
         with:
-          version: vp run release:version
+          version-script: vp run release:version
           # Publish is invoked as plain `node`, NOT `vp run`: the `vp run` launcher scrubs the
           # `ACTIONS_ID_TOKEN_REQUEST_URL/TOKEN` env vars (and `NPM_CONFIG_USERCONFIG`) from the task
           # subprocess, so npm logged "oidc Skipped because incorrect permissions for id-token" and fell
           # back to ENEEDAUTH. Running node directly under the action's env lets npm see the OIDC token
           # request vars and do the trusted-publishing exchange.
-          publish: node scripts/release/publish-npm.ts
-          commit: "chore: version packages"
-          title: "chore: version packages"
+          publish-script: node scripts/release/publish-npm.ts
+          commit-message: "chore: version packages"
+          pr-title: "chore: version packages"
           # The publish script owns tags + GitHub releases (via `gh release create`), so the action must
           # not also try (its `git push origin <tag>` needs a local tag + persisted credentials we don't
           # provide). See scripts/release/publish-npm.ts.
-          createGithubReleases: false
-        env:
+          create-github-releases: false
+          # v2 requires the token as an explicit input; it no longer reads the GITHUB_TOKEN env var.
           # RELEASE_PAT (not the built-in GITHUB_TOKEN): the action uses it to push the version branch +
           # open the PR as a real user (so CI triggers), and the publish script's `gh release create`
-          # inherits it for cutting releases (Contents: write). npm auth is separate (OIDC), so no token
-          # here touches publishing. Falls back to the built-in token when the PAT is unset.
+          # inherits it (via env below) for cutting releases (Contents: write). Falls back to the
+          # built-in token when the PAT is unset.
+          github-token: ${{ secrets.RELEASE_PAT || secrets.GITHUB_TOKEN }}
+        env:
+          # npm auth is separate (OIDC), so this token doesn't touch publishing.
           GITHUB_TOKEN: ${{ secrets.RELEASE_PAT || secrets.GITHUB_TOKEN }}
           NPM_CONFIG_PROVENANCE: "true"
 
@@ -258,7 +261,7 @@ jobs:
       - name: Generate SLSA provenance for released packages
         if: steps.mode.outputs.will_publish == 'true' && steps.packs.outputs.found == 'true'
         id: provenance
-        uses: actions/attest-build-provenance@0f67c3f4856b2e3261c31976d6725780e5e4c373 # v4.1.1
+        uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
         with:
           subject-path: ${{ runner.temp }}/pantoken-packs/*.tgz
 
