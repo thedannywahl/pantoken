@@ -446,6 +446,26 @@ test("translateUnits serves a cached verbatim entry instead of retranslating it"
     warnSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("looks untranslated")),
   ).toBe(false);
 });
+
+test("translateUnits accepts an API PO cognate without a verbatim flag", async () => {
+  existsSync.mockReturnValue(true);
+  readFileSync.mockReturnValue(
+    'msgctxt "docs.api:text"\nmsgid "Interfaces"\nmsgstr "Interfaces"\n',
+  );
+  const memory = TranslationMemory.load("fr", "api");
+  const translateBatch = vi.fn();
+
+  const result = await translateUnits(
+    adapter({ translateBatch }),
+    memory,
+    [{ kind: "text", source: "Interfaces" }],
+    { locale: "fr", verbatimSources: new Set(["Interfaces"]) },
+  );
+
+  expect(translateBatch).not.toHaveBeenCalled();
+  expect(result.get(keyFor("text", "Interfaces"))).toBe("Interfaces");
+});
+
 test("translateUnits retranslates a cached hit that matches its source instead of serving it", async () => {
   const key = keyFor("text", "Home");
   existsSync.mockReturnValue(true);

@@ -378,6 +378,7 @@ const translateSidebars = async (
       {
         locale,
         defaultVerbatim: { allow: ["en*"] },
+        verbatimSources: GLOSSARY_TEXT,
         requiredVerbatimSources: requiredVerbatimSources(
           fileLabels.map((source) => ({ kind: "text", source })),
         ),
