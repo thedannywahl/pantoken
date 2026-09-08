@@ -1,0 +1,1 @@
+we upgraded vite-plus, go through the github workflow files and make sure the vite-plus actions are pinned to the latest releases.
