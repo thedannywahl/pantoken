@@ -1,6 +1,6 @@
 # Dechrau
 
-Mae Pantoken yn cymryd tônau dylunio a symbolau Instructure UI (https://instructure.design), yn eu datrys unwaith, ac yn ailffurfio’r un model hwnnw i mewn i becynnau ar gyfer sawl llwyfan: sheats steil plaen, SCSS a Less, React a Vue a Svelte, Tailwind a Panda, Swift a Kotlin brodorol, WordPress a Drupal, Figma, a mwy.
+Mae Pantoken yn cymryd tônau dylunio a symbolau [Instructure UI](https://instructure.design), yn eu datrys unwaith, ac yn ailffurfio’r un model hwnnw i mewn i becynnau ar gyfer sawl llwyfan: sheats steil plaen, SCSS a Less, React a Vue a Svelte, Tailwind a Panda, Swift a Kotlin brodorol, WordPress a Drupal, Figma, a mwy.
 
 Rydych yn gosod y pecyn lleiaf sy’n addas ar gyfer eich tasg. Mae popeth hefyd yn cael ei ailallforio gan y pecyn unedig `pantoken`, felly gallwch ddechrau yno a chynhwysu’n fwy penodol yn nes ymlaen.
 
