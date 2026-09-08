@@ -395,11 +395,13 @@ export default defineConfig({
           "vp run @pantoken/i18n-engine#build && node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json stats --html --watch",
         cache: false,
       },
-      // Every i18n surface at once, including docs translations and structural parity. Generate the
-      // English API first because both docs checks inspect generated `docs/api/**` output.
+      // Every read-only catalog-backed i18n surface at once, including docs translations. The docs
+      // check uses an existing generated API tree when one is present; it must not regenerate the
+      // tree or rewrite `l10n/docs.api.pot`. Structural locale parity remains part of the docs build,
+      // which already generates all locale trees before checking them.
       "i18n:check:drift:all": {
         command:
-          "node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json lint && vp run i18n:check:drift && vp run @pantoken/docs#docs:api:en && vp run @pantoken/docs#docs:check:drift && vp run @pantoken/docs#docs:check:locales",
+          "node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json lint && vp run i18n:check:drift && vp run @pantoken/docs#docs:check:drift",
         cache: false,
       },
       // Same sweep with every policy `warn` escalated to `block`. Not wired into PR CI — this is the
