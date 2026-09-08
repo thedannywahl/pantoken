@@ -38,6 +38,9 @@ component_management:
         threshold: 5%
         branches:
           - "!main"
+      - type: patch
+        target: 85%
+        threshold: 1%
   individual_components:
     - component_id: core
       name: core
