@@ -628,6 +628,8 @@ jobs:
         with:
           cache: true
           run-install: true
+      - name: Install gettext
+        run: sudo apt-get update && sudo apt-get install --yes gettext
       - name: Check all translation drift
         run: vp run gate:i18n
 

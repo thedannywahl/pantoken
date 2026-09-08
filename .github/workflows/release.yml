@@ -163,6 +163,10 @@ jobs:
         if: steps.mode.outputs.will_publish == 'true'
         run: vp run -r build
 
+      - name: Install gettext
+        if: steps.mode.outputs.will_publish == 'true'
+        run: sudo apt-get update && sudo apt-get install --yes gettext
+
       - name: Check translation completeness
         if: steps.mode.outputs.will_publish == 'true'
         run: vp run gate:i18n
