@@ -1,0 +1,784 @@
+why are we getting "no AI provider authorized yet"?
+```
+vpr i18n:translate:copilot
+~/renderers/web-components$ i18n --config "$(git rev-parse --show-toplevel)/i18n.config.json" translate ui.strings ○ cache miss: env 'I18N_TRANSLATION_ADAPTER' changed, executing
+~/packages/scaffold$ i18n --config "$(git rev-parse --show-toplevel)/i18n.config.json" translate cli.scaffold
+~/docs$ DOCS_TRANSLATION_COMMAND="$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh" DOCS_TRANSLATION_COMMAND_ARGS="--model gpt-5-mini --effort low" node scripts/translate-guide-po.ts
+cli.scaffold (en): 0 translated, 52 untranslated (no AI provider authorized yet) — /Users/dwahl/Scripts/pantoken/l10n/en/cli.scaffold.po
+ui.strings (en): 0 translated, 7 untranslated (no AI provider authorized yet) — /Users/dwahl/Scripts/pantoken/l10n/en/ui.strings.po
+cli.scaffold (hu): 52 translated, 0 untranslated (no AI provider authorized yet) — /Users/dwahl/Scripts/pantoken/l10n/hu/cli.scaffold.po
+```
+
+---
+
+then we need to implement it.
+
+---
+
+Continue: "Continue to iterate?"
+
+---
+
+incremental conventional commits and push on the files you touched, ignoring changes from other agents.
+
+---
+
+[Terminal 8b439254-222f-45aa-ae03-609f56cf07f4 notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on i18n2 ≡  ?1 ~7 via  26.8.1 
+➜  cd tools/i18n-engine && vp test 2>&1 | tail -80
+note: You are running `vp test` as a Vite+ built-in command. If you meant to run the test npm script, use `vpr test` instead.
+
+ RUN  v4.1.11 /Users/dwahl/Scripts/pantoken/tools/i18n-engine
+
+error: unknown command 'bogus-command'
+ ❯ tests/lint.test.ts (2 tests | 1 failed) 1923ms
+     × accepts the repository localization contract 1906ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/lint.test.ts > runLint > accepts the repository localization contract
+Error: i18n lint failed:
+- docs.api: include path does not exist: /Users/dwahl/Scripts/pantoken/docs/api
+ ❯ runLint src/lint.ts:142:11
+    140|   errors.push(...(await checkPoFiles(poPathsToCheck)));
+    141|   if (errors.length > 0)
+    142|     throw new Error(`i18n lint failed:\n${errors.map((error) => `- ${e…
+       |           ^
+    143|   return { checkedSpaces: requiredSpaces.length, checkedLocales: local…
+    144| }
+ ❯ tests/lint.test.ts:16:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 13 passed (14)
+      Tests  1 failed | 132 passed (133)
+   Start at  11:02:19
+   Duration  2.31s (transform 431ms, setup 0ms, import 1.62s, tests 3.63s, environment 1ms)
+
+i18n-engine on i18n2 ≡  ?1 ~7 via  26.8.1 x 
+➜  cd tools/i18n-engine && vp check 2>&1 | tail -60
+cd: no such file or directory: tools/i18n-engine
+i18n-engine on i18n2 ≡  ?1 ~7 via  26.8.1 x 
+➜  vp check 2>&1 | tail -80
+note: You are running `vp check` as a Vite+ built-in command. If you meant to run the check npm script, use `vpr check` instead.
+error: Formatting issues found
+src/cli.ts (3ms)
+
+Found formatting issues in 1 file (90ms, 10 threads). Run `vp check --fix` to fix them.
+i18n-engine on i18n2 ≡  ?1 ~8 -1 via  26.8.1 x 
+➜  vp check --fix 2>&1 | tail -60
+    `----
+
+  x tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+    ,-[src/ai-translate.ts:11:4]
+ 10 |  *
+ 11 |  * @module
+    :    ^^^^^^^
+ 12 |  */
+    `----
+
+  x tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+   ,-[src/index.ts:5:4]
+ 4 |  *
+ 5 |  * @module
+   :    ^^^^^^^
+ 6 |  */
+   `----
+
+  x tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+    ,-[src/po.ts:9:4]
+  8 |  *
+  9 |  * @module
+    :    ^^^^^^^
+ 10 |  */
+    `----
+
+  x tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+    ,-[src/extract.ts:11:4]
+ 10 |  *
+ 11 |  * @module
+    :    ^^^^^^^
+ 12 |  */
+    `----
+
+  x tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+   ,-[src/cli.ts:7:4]
+ 6 |  *
+ 7 |  * @module
+   :    ^^^^^^^
+ 8 |  */
+   `----
+
+  x tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+   ,-[src/locales.ts:6:4]
+ 5 |  *
+ 6 |  * @module
+   :    ^^^^^^^
+ 7 |  */
+   `----
+
+  x tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+    ,-[src/pipeline.ts:11:4]
+ 10 |  *
+ 11 |  * @module
+    :    ^^^^^^^
+ 12 |  */
+    `----
+
+Found 11 errors and 0 warnings in 31 files (877ms, 10 threads)
+pass: Formatting completed for checked files (1.0s)
+i18n-engine on i18n2 ≡  ?1 ~8 -1 via  26.8.1 x 
+➜  git stash && vp check 2>&1 | tail -20; git stash pop
+Saved working directory and index state WIP on i18n2: ddeecd256 feat(i18n): implement buildBatchTranslationPrompt
+note: You are running `vp check` as a Vite+ built-in command. If you meant to run the check npm script, use `vpr check` instead.
+pass: All 35 files are correctly formatted (94ms, 10 threads)
+pass: Found no warnings, lint errors, or type errors in 31 files (718ms, 10 threads)
+On branch i18n2
+Your branch is up to date with 'origin/i18n2'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   ../../.github/workflows/ci.yml
+        modified:   ../../ai/pantoken-ai/package.json
+        deleted:    ../../eslint.config.js
+        modified:   ../../formats/components/vite.config.ts
+        modified:   ../../packages/scaffold/package.json
+        modified:   ../../renderers/web-components/package.json
+        modified:   src/cli.ts
+        modified:   src/pipeline.ts
+        modified:   ../../vite.config.base.ts
+        modified:   ../../vite.config.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/ai-translate.ts
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (fef0e60a10f77f47975227e7d0401044e705ae3b)
+i18n-engine on i18n2 ≡  ?1 ~9 -1 via  26.8.1 
+➜  git diff --stat -- src/cli.ts src/pipeline.ts src/ai-translate.ts
+ tools/i18n-engine/src/cli.ts      | 12 ++++++++++--
+ tools/i18n-engine/src/pipeline.ts | 12 +++++++++---
+ 2 files changed, 19 insertions(+), 5 deletions(-)
+i18n-engine on i18n2 ≡  ?1 ~9 -1 via  26.8.1 
+➜  vp test 2>&1 | tail -20
+ FAIL  tests/lint.test.ts > runLint > accepts the repository localization contract
+Error: i18n lint failed:
+- docs.api: include path does not exist: /Users/dwahl/Scripts/pantoken/docs/api
+ ❯ runLint src/lint.ts:142:11
+    140|   errors.push(...(await checkPoFiles(poPathsToCheck)));
+    141|   if (errors.length > 0)
+    142|     throw new Error(`i18n lint failed:\n${errors.map((error) => `- ${e…
+       |           ^
+    143|   return { checkedSpaces: requiredSpaces.length, checkedLocales: local…
+    144| }
+ ❯ tests/lint.test.ts:16:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 13 passed (14)
+      Tests  1 failed | 132 passed (133)
+   Start at  11:09:39
+   Duration  3.45s (transform 742ms, setup 0ms, import 2.34s, tests 5.52s, environment 5ms)
+
+i18n-engine on i18n2 ≡  ?2 ~16 -1 via  26.8.1 x 
+➜  vp test ai-translate 2>&1 | tail -60
+note: You are running `vp test` as a Vite+ built-in command. If you meant to run the test npm script, use `vpr test` instead.
+
+ RUN  v4.1.11 /Users/dwahl/Scripts/pantoken/tools/i18n-engine
+
+
+ Test Files  1 passed (1)
+      Tests  8 passed (8)
+   Start at  11:10:43
+   Duration  859ms (transform 29ms, setup 0ms, import 39ms, tests 759ms, environment 0ms)
+
+i18n-engine on i18n2 ≡  ?3 ~16 -1 via  26.8.1 
+➜  vp check --fix 2>&1 | tail -40 && vp test 2>&1 | tail -30
+    :         ^^^|^^^
+    :            `-- 'potPath' is declared here
+ 62 |   const poPath = () => join(testDir, "hu.po");
+    `----
+  help: Consider removing this declaration.
+
+  x tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+    ,-[src/pipeline.ts:11:4]
+ 10 |  *
+ 11 |  * @module
+    :    ^^^^^^^
+ 12 |  */
+    `----
+
+  x tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+    ,-[src/extract.ts:11:4]
+ 10 |  *
+ 11 |  * @module
+    :    ^^^^^^^
+ 12 |  */
+    `----
+
+  x tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+    ,-[src/po.ts:9:4]
+  8 |  *
+  9 |  * @module
+    :    ^^^^^^^
+ 10 |  */
+    `----
+
+  x typescript(TS6133): 'potPath' is declared but its value is never read.
+    ,-[tests/ai-translate.test.ts:61:9]
+ 60 | describe("fillUntranslatedEntries", () => {
+ 61 |   const potPath = () => join(testDir, "space.pot");
+    :         ^^^^^^^
+ 62 |   const poPath = () => join(testDir, "hu.po");
+    `----
+
+Found 12 errors and 1 warning in 32 files (1.3s, 10 threads)
+pass: Formatting completed for checked files (1.5s)
+note: You are running `vp test` as a Vite+ built-in command. If you meant to run the test npm script, use `vpr test` instead.
+
+ RUN  v4.1.11 /Users/dwahl/Scripts/pantoken/tools/i18n-engine
+
+error: unknown command 'bogus-command'
+ ❯ tests/lint.test.ts (2 tests | 1 failed) 2057ms
+     × accepts the repository localization contract 2043ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/lint.test.ts > runLint > accepts the repository localization contract
+Error: i18n lint failed:
+- docs.api: include path does not exist: /Users/dwahl/Scripts/pantoken/docs/api
+ ❯ runLint src/lint.ts:142:11
+    140|   errors.push(...(await checkPoFiles(poPathsToCheck)));
+    141|   if (errors.length > 0)
+    142|     throw new Error(`i18n lint failed:\n${errors.map((error) => `- ${e…
+       |           ^
+    143|   return { checkedSpaces: requiredSpaces.length, checkedLocales: local…
+    144| }
+ ❯ tests/lint.test.ts:16:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 14 passed (15)
+      Tests  1 failed | 140 passed (141)
+   Start at  11:10:49
+   Duration  2.24s (transform 373ms, setup 0ms, import 1.51s, tests 4.49s, environment 1ms)
+
+i18n-engine on i18n2 ≡  ?3 ~16 -1 via  26.8.1 x 
+➜  vp test 2>&1 | tail -20
+ FAIL  tests/lint.test.ts > runLint > accepts the repository localization contract
+Error: i18n lint failed:
+- docs.api: include path does not exist: /Users/dwahl/Scripts/pantoken/docs/api
+ ❯ runLint src/lint.ts:142:11
+    140|   errors.push(...(await checkPoFiles(poPathsToCheck)));
+    141|   if (errors.length > 0)
+    142|     throw new Error(`i18n lint failed:\n${errors.map((error) => `- ${e…
+       |           ^
+    143|   return { checkedSpaces: requiredSpaces.length, checkedLocales: local…
+    144| }
+ ❯ tests/lint.test.ts:16:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 14 passed (15)
+      Tests  1 failed | 140 passed (141)
+   Start at  11:10:59
+   Duration  2.24s (transform 411ms, setup 0ms, import 1.40s, tests 4.36s, environment 1ms)
+
+i18n-engine on i18n2 ≡  ?3 ~16 -1 via  26.8.1 x 
+➜  cd /Users/dwahl/Scripts/pantoken && cat .changeset/copilot-cli-translation-adapter.md | head -5
+---
+"@pantoken/ai": patch
+"@pantoken/scaffold": patch
+"@pantoken/web-components": patch
+---
+pantoken on i18n2 ≡  ?3 ~16 -1 via  26.8.1 
+➜  git status --short
+ M CONTRIBUTING.md
+ M ai/pantoken-ai/package.json
+ M docs/conventions/build-and-docs.md
+ M docs/engineering-log.md
+ D eslint.config.js
+ M formats/components/vite.config.ts
+ M package.json
+ M packages/scaffold/package.json
+ M plugins/pantoken/visual-debug/scripts/generate.ts
+ M pnpm-lock.yaml
+ M pnpm-workspace.yaml
+ M renderers/web-components/package.json
+ M tools/i18n-engine/src/cli.ts
+ M tools/i18n-engine/src/pipeline.ts
+ M vite.config.base.ts
+ M vite.config.ts
+?? .changeset/i18n-engine-ai-fill-in.md
+?? .changeset/oxlint-tsdoc-drop-eslint.md
+?? tools/i18n-engine/src/ai-translate.ts
+?? tools/i18n-engine/tests/ai-translate.test.ts
+pantoken on i18n2 ≡  ?4 ~15 -1 via  26.8.1 
+➜  git diff --stat vite.config.ts formats/components/vite.config.ts vite.config.base.ts package.json pnpm-workspace.yaml
+ formats/components/vite.config.ts |  2 +-
+ package.json                      |  3 --
+ pnpm-workspace.yaml               |  8 ++---
+ vite.config.base.ts               | 28 ++++++++++++++++-
+ vite.config.ts                    | 64 +++++++++++++++++++++++++--------------
+ 5 files changed, 71 insertions(+), 34 deletions(-)
+pantoken on i18n2 ≡  ?4 ~15 -1 via  26.8.1 
+➜  git diff vite.config.ts
+diff --git a/vite.config.ts b/vite.config.ts
+index 6c8a88992..7b3eb8bed 100644
+--- a/vite.config.ts
++++ b/vite.config.ts
+@@ -90,9 +90,39 @@ export default defineConfig({
+     ignorePatterns: ["docs/api/**", "docs/*/api/**", "ai/create-pantoken-app-site/**"],
+   },
+   lint: {
+-    jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],
++    jsPlugins: [
++      { name: "vite-plus", specifier: "vite-plus/oxlint-plugin" },
++      // TSDoc has no oxlint-native equivalent; these two ESLint plugins run through oxlint's
++      // ESLint-compatible JS-plugin bridge. Neither needs type information or a custom parser.
++      { name: "tsdoc", specifier: "eslint-plugin-tsdoc" },
++      { name: "tsdoc-require-2", specifier: "eslint-plugin-tsdoc-require-2" },
++    ],
+     rules: { "vite-plus/prefer-vite-plus-imports": "error" },
+     options: { typeAware: true, typeCheck: true },
++    ignorePatterns: ["**/coverage/**", "**/dist/**"],
++    overrides: [
++      {
++        // Every exported declaration needs a doc comment (tsdoc-require-2/require) and comments must
++        // be valid TSDoc (tsdoc/syntax, honouring tsdoc.json). Tests, generated output, and
++        // declaration files are exempt.
++        files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
++        excludeFiles: [
++          "**/*.test.ts",
++          "**/*.test.tsx",
++          "**/*.test.mts",
++          "**/*.test.cts",
++          "**/*.spec.ts",
++          "**/*.spec.tsx",
++          "**/*.spec.mts",
++          "**/*.spec.cts",
++          "**/tests/**",
++          "**/generated/**",
++          "**/dist/**",
++          "**/*.d.ts",
++        ],
++        rules: { "tsdoc/syntax": "error", "tsdoc-require-2/require": "error" },
++      },
++    ],
+   },
+   run: {
+     cache: true,
+@@ -147,13 +177,6 @@ export default defineConfig({
+       "snyk:code": {
+         command: "node scripts/quality/snyk-code-gate.ts",
+       },
+-      // TSDoc enforcement over source TypeScript (eslint.config.js TS block). Comment/syntax-only, so
+-      // no build dependency.
+-      "lint:tsdoc": {
+-        // `eslint .` lets the flat config drive file discovery (its TS block globs + ignores); passing
+-        // explicit globs errors when a pattern like **/*.mts matches nothing.
+-        command: "vp exec eslint .",
+-      },
+       // Fallow gate: dead-code = error, health = grade A, duplicates = advisory. Needs generated
+       // output (build:all) so the CSS-codegen sources and workspace graph resolve.
+       "health:fallow": {
+@@ -167,8 +190,6 @@ export default defineConfig({
+           // Coverage run (not the plain test run) so the 85% threshold floor is enforced in `ready`.
+           "test:coverage",
+           "lint:css",
+-          "lint:js",
+-          "lint:tsdoc",
+           "validate:generated:only",
+           "gate:compatibility",
+           "lint:markdown",
+@@ -210,11 +231,6 @@ export default defineConfig({
+           'vp exec stylelint "renderers/web-components/src/**/*.css" "formats/components/src/{components,utilities,rules}/*.css" "formats/components/generated/*.css" "plugins/pantoken/*/generated/*.css"',
+         dependsOn: ["build:all"],
+       },
+-      "lint:js": {
+-        command:
+-          'vp exec eslint --no-error-on-unmatched-pattern "formats/components/src/{components,utilities,rules}/*.css" "formats/components/generated/*.css" "plugins/pantoken/*/generated/*.css" "renderers/web-components/src/**/*.css"',
+-        dependsOn: ["build:all"],
+-      },
+       // ── Property-based testing ────────────────────────────────────────────────────────────────
+       // `vp test` already runs property tests at 100 iterations (the fast default); that is part of
+       // `test:coverage` in `ready:all`. `property:stress` runs only the property test files with
+@@ -237,11 +253,11 @@ export default defineConfig({
+         cache: false,
+       },
+       "ui:translate:agy": {
+-        command: "vp run @pantoken/web-components#translate",
++        command: "vp run @pantoken/web-components#translate:agy",
+         cache: false,
+       },
+       "ui:translate:copilot": {
+-        command: "vp run @pantoken/web-components#translate",
++        command: "vp run @pantoken/web-components#translate:copilot",
+         cache: false,
+       },
+       "ui:translate:force": {
+@@ -249,11 +265,11 @@ export default defineConfig({
+         cache: false,
+       },
+       "ui:translate:force:agy": {
+-        command: "vp run @pantoken/web-components#translate",
++        command: "vp run @pantoken/web-components#translate:agy",
+         cache: false,
+       },
+       "ui:translate:force:copilot": {
+-        command: "vp run @pantoken/web-components#translate",
++        command: "vp run @pantoken/web-components#translate:copilot",
+         cache: false,
+       },
+       // Docs locale translation (both claude and agy variants).
+@@ -287,11 +303,12 @@ export default defineConfig({
+         cache: false,
+       },
+       "cli:translate:agy": {
+-        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
++        command: "vp run @pantoken/scaffold#translate:agy && vp run @pantoken/ai#translate:agy",
+         cache: false,
+       },
+       "cli:translate:copilot": {
+-        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
++        command:
++          "vp run @pantoken/scaffold#translate:copilot && vp run @pantoken/ai#translate:copilot",
+         cache: false,
+       },
+       "cli:translate:force": {
+@@ -299,11 +316,12 @@ export default defineConfig({
+         cache: false,
+       },
+       "cli:translate:force:agy": {
+-        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
++        command: "vp run @pantoken/scaffold#translate:agy && vp run @pantoken/ai#translate:agy",
+         cache: false,
+       },
+       "cli:translate:force:copilot": {
+-        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
++        command:
++          "vp run @pantoken/scaffold#translate:copilot && vp run @pantoken/ai#translate:copilot",
+         cache: false,
+       },
+       // Umbrella tasks for all translation domains.
+pantoken on i18n2 ≡  ?4 ~15 -1 via  26.8.1 
+➜  git diff package.json pnpm-workspace.yaml formats/components/vite.config.ts vite.config.base.ts
+diff --git a/formats/components/vite.config.ts b/formats/components/vite.config.ts
+index ce33dfa5b..7479fc3bc 100644
+--- a/formats/components/vite.config.ts
++++ b/formats/components/vite.config.ts
+@@ -80,7 +80,7 @@ export default extendBase({
+       // workspace deps' `build` so the barrel it imports (`@pantoken/tokens`/`icons`/`utils`/
+       // `plugin-colors`) is present, making a standalone `vp run generate` self-sufficient. Inputs and
+       // outputs are auto-tracked, so it's cached and only reruns when a source `.css`/`.ts`, a script, or
+-      // a dependency changes. The root `lint:css`/`lint:js` tasks depend on this.
++      // a dependency changes. The root `lint:css` task depends on this.
+       generate: {
+         command: "node scripts/component-styles.ts && node scripts/generate.ts",
+         dependsOn: [{ task: "build", from: ["dependencies", "devDependencies"] }],
+diff --git a/package.json b/package.json
+index 7a08d8b18..3aeae344e 100644
+--- a/package.json
++++ b/package.json
+@@ -25,11 +25,8 @@
+     "@codspeed/vitest-plugin": "catalog:",
+     "@commitlint/cli": "catalog:",
+     "@commitlint/config-conventional": "catalog:",
+-    "@cssdoc/eslint-plugin": "catalog:",
+     "@cssdoc/stylelint-plugin": "catalog:",
+-    "@eslint/css": "catalog:",
+     "@manypkg/cli": "catalog:",
+-    "@typescript-eslint/parser": "catalog:",
+     "@vitest/coverage-v8": "catalog:",
+     "eslint-plugin-tsdoc": "catalog:",
+     "eslint-plugin-tsdoc-require-2": "catalog:",
+diff --git a/pnpm-workspace.yaml b/pnpm-workspace.yaml
+index e365f8290..c88fa1fe0 100644
+--- a/pnpm-workspace.yaml
++++ b/pnpm-workspace.yaml
+@@ -109,18 +109,14 @@ catalog:
+   "@cssdoc/config": ^0.14.2
+   "@cssdoc/typedoc": ^0.14.2
+   "@cssdoc/stylelint-plugin": ^0.14.2
+-  "@cssdoc/eslint-plugin": ^0.14.2
+-  # Transitive deps that pantoken also uses directly (stylelint/eslint configs); the rest were mirrored
++  # Transitive deps that pantoken also uses directly (the stylelint config); the rest were mirrored
+   # only for the linked cssdoc source and are now unused, kept harmless under `catalogMode: prefer`.
+   ajv: ^8.20.0
+   grammarkdown: ^3.3.2
+   stylelint: ^17.15.0
+-  eslint: ^10.9.1
+-  "@eslint/css": ^1.4.0
+-  "@typescript-eslint/parser": ^8.69.0
++  # Not ESLint deps: oxlint loads these two through its ESLint-compatible JS-plugin bridge.
+   eslint-plugin-tsdoc: ^0.5.2
+   eslint-plugin-tsdoc-require-2: ^1.2.7
+-  "@html-eslint/parser": ^0.65.0
+   postcss-value-parser: ^4.2.0
+   css-tree: ^3.2.1
+   "@types/css-tree": ^3.2.0
+diff --git a/vite.config.base.ts b/vite.config.base.ts
+index 7da82c1cc..68db8a802 100644
+--- a/vite.config.base.ts
++++ b/vite.config.base.ts
+@@ -50,9 +50,35 @@ const baseConfig = {
+       : []) as unknown[],
+   },
+   lint: {
+-    jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],
++    jsPlugins: [
++      { name: "vite-plus", specifier: "vite-plus/oxlint-plugin" },
++      { name: "tsdoc", specifier: "eslint-plugin-tsdoc" },
++      { name: "tsdoc-require-2", specifier: "eslint-plugin-tsdoc-require-2" },
++    ],
+     rules: { "vite-plus/prefer-vite-plus-imports": "error" },
+     options: { typeAware: true, typeCheck: true },
++    overrides: [
++      {
++        // TSDoc enforcement on source TypeScript: every exported declaration needs a doc comment and
++        // comments must be valid TSDoc (honouring tsdoc.json). Both rules are comment/syntax-only.
++        files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
++        excludeFiles: [
++          "**/*.test.ts",
++          "**/*.test.tsx",
++          "**/*.test.mts",
++          "**/*.test.cts",
++          "**/*.spec.ts",
++          "**/*.spec.tsx",
++          "**/*.spec.mts",
++          "**/*.spec.cts",
++          "**/tests/**",
++          "**/generated/**",
++          "**/dist/**",
++          "**/*.d.ts",
++        ],
++        rules: { "tsdoc/syntax": "error", "tsdoc-require-2/require": "error" },
++      },
++    ],
+   },
+   fmt: {},
+ };
+pantoken on i18n2 ≡  ?4 ~15 -1 via  26.8.1 
+➜  git diff ai/pantoken-ai/package.json packages/scaffold/package.json renderers/web-components/package.json
+diff --git a/ai/pantoken-ai/package.json b/ai/pantoken-ai/package.json
+index 386bc5cd4..204b9155e 100644
+--- a/ai/pantoken-ai/package.json
++++ b/ai/pantoken-ai/package.json
+@@ -32,7 +32,9 @@
+   },
+   "scripts": {
+     "generate": "node scripts/generate.ts",
+-    "translate": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.ai",
++    "translate": "I18N_TRANSLATION_COMMAND=claude I18N_TRANSLATION_COMMAND_ARGS=\"--model claude-haiku-4-5-20251001 --effort low\" i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.ai",
++    "translate:agy": "I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/agy-wrapper.sh\" I18N_TRANSLATION_COMMAND_ARGS=\"--model gemini-3.6-flash-low\" i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.ai",
++    "translate:copilot": "I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh\" I18N_TRANSLATION_COMMAND_ARGS=\"--model gpt-5-mini --effort low\" i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.ai",
+     "check:drift": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" check cli.ai",
+     "dev": "vp pack --watch",
+     "test": "vp run generate && vp test",
+diff --git a/packages/scaffold/package.json b/packages/scaffold/package.json
+index acace3d62..5bb27cdf0 100644
+--- a/packages/scaffold/package.json
++++ b/packages/scaffold/package.json
+@@ -31,7 +31,9 @@
+   "scripts": {
+     "scan": "node scripts/scan-presets.ts",
+     "generate": "node scripts/generate.ts",
+-    "translate": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.scaffold",
++    "translate": "I18N_TRANSLATION_COMMAND=claude I18N_TRANSLATION_COMMAND_ARGS=\"--model claude-haiku-4-5-20251001 --effort low\" i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.scaffold",
++    "translate:agy": "I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/agy-wrapper.sh\" I18N_TRANSLATION_COMMAND_ARGS=\"--model gemini-3.6-flash-low\" i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.scaffold",
++    "translate:copilot": "I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh\" I18N_TRANSLATION_COMMAND_ARGS=\"--model gpt-5-mini --effort low\" i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.scaffold",
+     "check:drift": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" check cli.scaffold",
+     "dev": "vp pack --watch",
+     "test": "vp run scan && vp run generate && vp test",
+diff --git a/renderers/web-components/package.json b/renderers/web-components/package.json
+index 4671decd7..a53d1a2b8 100644
+--- a/renderers/web-components/package.json
++++ b/renderers/web-components/package.json
+@@ -33,7 +33,9 @@
+   "scripts": {
+     "generate": "node scripts/generate.ts && node scripts/build-bundles.ts",
+     "dev": "node scripts/generate.ts && node scripts/build-bundles.ts && node scripts/build-entries.ts && vp pack --watch",
+-    "translate": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate ui.strings",
++    "translate": "I18N_TRANSLATION_COMMAND=claude I18N_TRANSLATION_COMMAND_ARGS=\"--model claude-haiku-4-5-20251001 --effort low\" i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate ui.strings",
++    "translate:agy": "I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/agy-wrapper.sh\" I18N_TRANSLATION_COMMAND_ARGS=\"--model gemini-3.6-flash-low\" i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate ui.strings",
++    "translate:copilot": "I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh\" I18N_TRANSLATION_COMMAND_ARGS=\"--model gpt-5-mini --effort low\" i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate ui.strings",
+     "check:drift": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" check ui.strings",
+     "test": "vp test",
+     "check": "vp check"
+pantoken on i18n2 ≡  ?4 ~15 -1 via  26.8.1 
+➜  git add ai/pantoken-ai/package.json packages/scaffold/package.json renderers/web-components/package.json tools/i18n-engine/src/cli.ts tools/i18n-engine/src/pipeline.ts tools/i18n-engine/src/ai-translate.ts tools/i18n-engine/tests/ai-translate.test.ts .changeset/i18n-engine-ai-fill-in.md && git status --short
+A  .changeset/i18n-engine-ai-fill-in.md
+ M CONTRIBUTING.md
+M  ai/pantoken-ai/package.json
+ M docs/conventions/build-and-docs.md
+ M docs/engineering-log.md
+ D eslint.config.js
+ M formats/components/vite.config.ts
+ M package.json
+M  packages/scaffold/package.json
+ M plugins/pantoken/visual-debug/scripts/generate.ts
+ M pnpm-lock.yaml
+ M pnpm-workspace.yaml
+M  renderers/web-components/package.json
+A  tools/i18n-engine/src/ai-translate.ts
+M  tools/i18n-engine/src/cli.ts
+M  tools/i18n-engine/src/pipeline.ts
+A  tools/i18n-engine/tests/ai-translate.test.ts
+ M vite.config.base.ts
+ M vite.config.ts
+?? .changeset/oxlint-tsdoc-drop-eslint.md
+pantoken on i18n2 ≡  ?1 ~10 -1 |  +3 ~5 via  26.8.1 
+➜  git add -p vite.config.ts
+diff --git a/vite.config.ts b/vite.config.ts
+index 6c8a88992..7b3eb8bed 100644
+--- a/vite.config.ts
++++ b/vite.config.ts
+@@ -90,9 +90,39 @@ export default defineConfig({
+     ignorePatterns: ["docs/api/**", "docs/*/api/**", "ai/create-pantoken-app-site/**"],
+   },
+   lint: {
+-    jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],
++    jsPlugins: [
++      { name: "vite-plus", specifier: "vite-plus/oxlint-plugin" },
++      // TSDoc has no oxlint-native equivalent; these two ESLint plugins run through oxlint's
++      // ESLint-compatible JS-plugin bridge. Neither needs type information or a custom parser.
++      { name: "tsdoc", specifier: "eslint-plugin-tsdoc" },
++      { name: "tsdoc-require-2", specifier: "eslint-plugin-tsdoc-require-2" },
++    ],
+     rules: { "vite-plus/prefer-vite-plus-imports": "error" },
+     options: { typeAware: true, typeCheck: true },
++    ignorePatterns: ["**/coverage/**", "**/dist/**"],
++    overrides: [
++      {
++        // Every exported declaration needs a doc comment (tsdoc-require-2/require) and comments must
++        // be valid TSDoc (tsdoc/syntax, honouring tsdoc.json). Tests, generated output, and
++        // declaration files are exempt.
++        files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
++        excludeFiles: [
++          "**/*.test.ts",
++          "**/*.test.tsx",
++          "**/*.test.mts",
++          "**/*.test.cts",
++          "**/*.spec.ts",
++          "**/*.spec.tsx",
++          "**/*.spec.mts",
++          "**/*.spec.cts",
++          "**/tests/**",
++          "**/generated/**",
++          "**/dist/**",
++          "**/*.d.ts",
++        ],
++        rules: { "tsdoc/syntax": "error", "tsdoc-require-2/require": "error" },
++      },
++    ],
+   },
+   run: {
+     cache: true,
+(1/8) Stage this hunk [y,n,q,a,d,j,J,g,/,s,e,p,?]? n
+@@ -147,13 +177,6 @@ export default defineConfig({
+       "snyk:code": {
+         command: "node scripts/quality/snyk-code-gate.ts",
+       },
+-      // TSDoc enforcement over source TypeScript (eslint.config.js TS block). Comment/syntax-only, so
+-      // no build dependency.
+-      "lint:tsdoc": {
+-        // `eslint .` lets the flat config drive file discovery (its TS block globs + ignores); passing
+-        // explicit globs errors when a pattern like **/*.mts matches nothing.
+-        command: "vp exec eslint .",
+-      },
+       // Fallow gate: dead-code = error, health = grade A, duplicates = advisory. Needs generated
+       // output (build:all) so the CSS-codegen sources and workspace graph resolve.
+       "health:fallow": {
+(2/8) Stage this hunk [y,n,q,a,d,K,j,J,g,/,e,p,?]? n
+@@ -167,8 +190,6 @@ export default defineConfig({
+           // Coverage run (not the plain test run) so the 85% threshold floor is enforced in `ready`.
+           "test:coverage",
+           "lint:css",
+-          "lint:js",
+-          "lint:tsdoc",
+           "validate:generated:only",
+           "gate:compatibility",
+           "lint:markdown",
+(3/8) Stage this hunk [y,n,q,a,d,K,j,J,g,/,e,p,?]? n
+@@ -210,11 +231,6 @@ export default defineConfig({
+           'vp exec stylelint "renderers/web-components/src/**/*.css" "formats/components/src/{components,utilities,rules}/*.css" "formats/components/generated/*.css" "plugins/pantoken/*/generated/*.css"',
+         dependsOn: ["build:all"],
+       },
+-      "lint:js": {
+-        command:
+-          'vp exec eslint --no-error-on-unmatched-pattern "formats/components/src/{components,utilities,rules}/*.css" "formats/components/generated/*.css" "plugins/pantoken/*/generated/*.css" "renderers/web-components/src/**/*.css"',
+-        dependsOn: ["build:all"],
+-      },
+       // ── Property-based testing ────────────────────────────────────────────────────────────────
+       // `vp test` already runs property tests at 100 iterations (the fast default); that is part of
+       // `test:coverage` in `ready:all`. `property:stress` runs only the property test files with
+(4/8) Stage this hunk [y,n,q,a,d,K,j,J,g,/,e,p,?]? n
+@@ -237,11 +253,11 @@ export default defineConfig({
+         cache: false,
+       },
+       "ui:translate:agy": {
+-        command: "vp run @pantoken/web-components#translate",
++        command: "vp run @pantoken/web-components#translate:agy",
+         cache: false,
+       },
+       "ui:translate:copilot": {
+-        command: "vp run @pantoken/web-components#translate",
++        command: "vp run @pantoken/web-components#translate:copilot",
+         cache: false,
+       },
+       "ui:translate:force": {
+(5/8) Stage this hunk [y,n,q,a,d,K,j,J,g,/,s,e,p,?]? y
+@@ -249,11 +265,11 @@ export default defineConfig({
+         cache: false,
+       },
+       "ui:translate:force:agy": {
+-        command: "vp run @pantoken/web-components#translate",
++        command: "vp run @pantoken/web-components#translate:agy",
+         cache: false,
+       },
+       "ui:translate:force:copilot": {
+-        command: "vp run @pantoken/web-components#translate",
++        command: "vp run @pantoken/web-components#translate:copilot",
+         cache: false,
+       },
+       // Docs locale translation (both claude and agy variants).
+(6/8) Stage this hunk [y,n,q,a,d,K,j,J,g,/,s,e,p,?]? y
+@@ -287,11 +303,12 @@ export default defineConfig({
+         cache: false,
+       },
+       "cli:translate:agy": {
+-        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
++        command: "vp run @pantoken/scaffold#translate:agy && vp run @pantoken/ai#translate:agy",
+         cache: false,
+       },
+       "cli:translate:copilot": {
+-        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
++        command:
++          "vp run @pantoken/scaffold#translate:copilot && vp run @pantoken/ai#translate:copilot",
+         cache: false,
+       },
+       "cli:translate:force": {
+(7/8) Stage this hunk [y,n,q,a,d,K,j,J,g,/,s,e,p,?]? y
+@@ -299,11 +316,12 @@ export default defineConfig({
+         cache: false,
+       },
+       "cli:translate:force:agy": {
+-        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
++        command: "vp run @pantoken/scaffold#translate:agy && vp run @pantoken/ai#translate:agy",
+         cache: false,
+       },
+       "cli:translate:force:copilot": {
+-        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
++        command:
++          "vp run @pantoken/scaffold#translate:copilot && vp run @pantoken/ai#translate:copilot",
+         cache: false,
+       },
+       // Umbrella tasks for all translation domains.
+(8/8) Stage this hunk [y,n,q,a,d,K,g,/,s,e,p,?]? y
