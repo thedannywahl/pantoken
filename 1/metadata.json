@@ -1,0 +1,87 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M20YNYWYV6DFBGNY1WWMVKNS",
+  "session_id": "470b14f8-9f0e-4812-8d74-426f4fb25bde",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-08T16:47:36.111163Z",
+  "branch": "i18n2",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "docs/scripts/api-translation.ts",
+    "tools/translation-adapters/package.json",
+    "tools/translation-adapters/src/index.ts",
+    "tools/translation-adapters/tests/index.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "cfcb5477334d",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "skill_events_version": 1,
+  "skill_events": [
+    {
+      "id": "prompt-skill-copilot-cli-fix-customization-evaluation-diagnostics-2026-09-08T16:46:46.923Z",
+      "event_type": "prompt_invocation",
+      "skill": {
+        "name": "fix-customization-evaluation-diagnostics"
+      },
+      "source": {
+        "agent": "copilot-cli",
+        "signal": "prompt_slash_command",
+        "confidence": "explicit"
+      },
+      "turn_id": "cfcb5477334d",
+      "timestamp": "2026-09-08T16:46:46.923Z",
+      "native": {
+        "command": "/fix-customization-evaluation-diagnostics"
+      },
+      "collapse": {
+        "target": "user_message",
+        "label": "/fix-customization-evaluation-diagnostics",
+        "default_collapsed": true
+      }
+    }
+  ],
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-08T16:47:36.107114Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 2,
+    "human_removed": 17,
+    "total_committed": 0,
+    "total_lines_changed": 19,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 49,
+      "user_lines_removed": 19,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "docs/scripts/api-translation.ts": 6,
+        "tools/translation-adapters/package.json": 1,
+        "tools/translation-adapters/prompts/batch-translation.prompt.md": 9,
+        "tools/translation-adapters/src/index.ts": 20,
+        "tools/translation-adapters/tests/index.test.ts": 13
+      },
+      "user_removed_per_file": {
+        "docs/scripts/api-translation.ts": 12,
+        "tools/translation-adapters/src/index.ts": 7
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/tools/translation-adapters/prompts/batch-translation.prompt.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 1
+ - lineText: Translate the VALUES of this JSON object from English to {{targetLanguage}}.
+ - message: Coverage gap: Behavior when a value is already in the target language or is non-translatable (e.g., pure whitespace, empty string, or only placeholder tokens). Suggestion: Add: 'If a value contains no translatable prose (empty, whitespace-only, or only placeholders/code), return it unchanged.'
+  suggestion: Add: 'If a value contains no translatable prose (empty, whitespace-only, or only placeholders/code), return it unchanged.'
+
+
+ - line: 4
+ - lineText: Do not alter placeholder tokens like __PTK_CODE_BLOCK_#**, __PTK_INLINE_CODE_#**, __PTK_PACKAGE_#**, or __PTK_ESC_#**.
+ - message: Additional diagnostic (Incorrect placeholder pattern description): The prompt describes placeholders as ending with '#**' (e.g., '__PTK_CODE_BLOCK_#**'), which is likely a documentation error — actual placeholders almost certainly use a numeric index (e.g., '__PTK_CODE_BLOCK_0'). The model may fail to recognize real placeholders and mistakenly translate them, or leave literal '#**' patterns untouched.. Suggestion: Replace with the actual pattern, e.g., 'tokens matching the regex /__PTK_(CODE_BLOCK|INLINE_CODE|PACKAGE|ESC)_\d+__/ must be preserved verbatim.'
+  suggestion: Replace with the actual pattern, e.g., 'tokens matching the regex /__PTK_(CODE_BLOCK|INLINE_CODE|PACKAGE|ESC)_\d+__/ must be preserved verbatim.'
+
+
+ - line: 9
+ - lineText: {{payload}}
+ - message: Missing error handling: Payload is not valid JSON, or targetLanguage is missing/unsupported. Suggestion: Add: 'If {{payload}} is not a valid JSON object or {{targetLanguage}} is missing/unrecognized, return the original JSON object unchanged with no additional text.'
+  suggestion: Add: 'If {{payload}} is not a valid JSON object or {{targetLanguage}} is missing/unrecognized, return the original JSON object unchanged with no additional text.'
