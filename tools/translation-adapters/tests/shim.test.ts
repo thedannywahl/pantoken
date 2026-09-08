@@ -232,4 +232,23 @@ describe("createShimServer", () => {
     const res = await fetch(`http://127.0.0.1:${String(address.port)}/other`, { method: "POST" });
     expect(res.status).toBe(404);
   });
+
+  test("does not expose internal errors", async () => {
+    const promptFn: PromptFn = async () => {
+      throw new Error("provider command included a private path");
+    };
+    const server = createShimServer({ profiles: PROFILES, breaker: breaker(), promptFn });
+    await new Promise<void>((res) => server.listen(0, res));
+    close = () => new Promise((res) => server.close(() => res()));
+    const address = server.address();
+    if (address === null || typeof address === "string") throw new Error("expected a port");
+
+    const res = await fetch(`http://127.0.0.1:${String(address.port)}/v1/chat/completions`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ messages: [{ role: "user", content: "hola" }] }),
+    });
+    expect(res.status).toBe(500);
+    expect(await res.json()).toEqual({ error: { message: "translation service unavailable" } });
+  });
 });

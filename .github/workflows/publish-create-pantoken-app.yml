@@ -5,10 +5,10 @@ name: Publish create-pantoken-app skill
 # changes on main. See docs/conventions/build-and-docs.md for the manual equivalent and the
 # rationale for index.html/404.html/SKILL.md.
 #
-# Requires a repo secret CREATE_PANTOKEN_APP_PAT: a personal access token (fine-grained, scoped to
-# just the thedannywahl/create-pantoken-app repo, Contents: Read and write) with push rights there —
-# the default GITHUB_TOKEN can't push to a different repo. If the secret isn't set, this job skips
-# the push (and warns) instead of failing, so it's safe to merge before the secret is configured.
+# Requires repo secrets CREATE_PANTOKEN_APP_PAT and RELEASE_PAT. The first is a personal access token
+# (fine-grained, scoped to just the thedannywahl/create-pantoken-app repo, Contents: Read and write)
+# with push rights there; the second pushes the protected-branch pointer PR in this repo. The default
+# GITHUB_TOKEN is read-only, so if either secret isn't set, this job skips the publish and warns.
 
 on:
   push:
@@ -18,8 +18,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write # push the submodule pointer bump branch
-  pull-requests: write # open the protected-branch PR for the pointer bump
+  contents: read # inspect the repository; RELEASE_PAT performs pointer branch writes
 
 jobs:
   publish:
@@ -34,9 +33,9 @@ jobs:
       - name: Check for publish token
         id: check-token
         run: |
-          if [ -z "${{ secrets.CREATE_PANTOKEN_APP_PAT }}" ]; then
+          if [ -z "${{ secrets.CREATE_PANTOKEN_APP_PAT }}" ] || [ -z "${{ secrets.RELEASE_PAT }}" ]; then
             echo "configured=false" >> "$GITHUB_OUTPUT"
-            echo "::warning::CREATE_PANTOKEN_APP_PAT secret is not set; skipping create.pantoken.app publish. See docs/conventions/build-and-docs.md."
+            echo "::warning::CREATE_PANTOKEN_APP_PAT and RELEASE_PAT are both required; skipping create.pantoken.app publish. See docs/conventions/build-and-docs.md."
           else
             echo "configured=true" >> "$GITHUB_OUTPUT"
           fi
@@ -66,7 +65,7 @@ jobs:
       - name: Open submodule pointer bump PR
         if: steps.check-token.outputs.configured == 'true'
         env:
-          GH_TOKEN: ${{ secrets.RELEASE_PAT || github.token }}
+          GH_TOKEN: ${{ secrets.RELEASE_PAT }}
         run: |
           branch="automation/create-pantoken-app-sync-${{ github.sha }}"
           git config user.name "github-actions[bot]"

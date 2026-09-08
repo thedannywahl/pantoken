@@ -38,6 +38,69 @@ interface MdastNode {
   position?: { start: { line?: number; offset?: number }; end: { offset?: number } };
 }
 
+const FRONTMATTER_KEYS = new Set(["text", "tagline", "title", "details"]);
+const LINK_KEY = new Set(["link"]);
+
+interface FrontmatterField {
+  prefix: string;
+  key: string;
+  separator: string;
+  value: string;
+}
+
+function parseFrontmatterField(
+  line: string,
+  allowedKeys: ReadonlySet<string> = FRONTMATTER_KEYS,
+): FrontmatterField | undefined {
+  const colon = line.indexOf(":");
+  if (colon < 0) return undefined;
+  const before = line.slice(0, colon);
+  const trimmed = before.trim();
+  const key = trimmed.startsWith("-") ? trimmed.slice(1).trim() : trimmed;
+  if (!allowedKeys.has(key)) return undefined;
+  const keyStart = before.lastIndexOf(key);
+  const afterColon = line.slice(colon + 1);
+  const value = afterColon.trimStart();
+  return {
+    prefix: before.slice(0, keyStart),
+    key,
+    separator: afterColon.slice(0, afterColon.length - value.length),
+    value,
+  };
+}
+
+function replaceDelimited(
+  source: string,
+  delimiter: string,
+  replacementDelimiter: string,
+  restrictContent?: (content: string) => boolean,
+): string {
+  let out = "";
+  let cursor = 0;
+  while (cursor < source.length) {
+    const start = source.indexOf(delimiter, cursor);
+    if (start < 0) return out + source.slice(cursor);
+    out += source.slice(cursor, start);
+    const contentStart = start + delimiter.length;
+    const end = source.indexOf(delimiter, contentStart);
+    if (end < 0) return out + source.slice(start);
+    const content = source.slice(contentStart, end);
+    if (restrictContent && !restrictContent(content)) {
+      out += delimiter;
+      cursor = contentStart;
+      continue;
+    }
+    out += `${replacementDelimiter}${content}${replacementDelimiter}`;
+    cursor = end + delimiter.length;
+  }
+  return out;
+}
+
+const normalizeGraves = (value: string): string =>
+  replaceDelimited(value, "&grave;", "`", (content) => !content.includes("&"));
+
+const escapeGraves = (value: string): string => replaceDelimited(value, "`", "&grave;");
+
 /** Collect every non-blank prose `text` node's absolute range — never a `code`/`inlineCode` leaf. */
 export function collectProseRanges(source: string): ProseRange[] {
   const tree = parser.parse(source);
@@ -86,13 +149,12 @@ export function extractFrontmatterUnits(source: string, filePath: string): Extra
   const end = lines.findIndex((line, index) => index > 0 && line.trim() === "---");
   if (end === -1) return [];
   const units: ExtractedUnit[] = [];
-  const keyPattern = /^(\s*(?:-\s+)?)(?:text|tagline|title|details):(\s*)(.*)$/u;
   for (let index = 1; index < end; index += 1) {
-    const match = keyPattern.exec(lines[index]);
-    const value = match?.[3];
+    const field = parseFrontmatterField(lines[index]);
+    const value = field?.value;
     if (!value) continue;
     units.push({
-      msgid: value.replace(/&grave;([^&]*?)&grave;/gu, "`$1`"),
+      msgid: normalizeGraves(value),
       reference: `${filePath}:${String(index + 1)}`,
       translate: "always",
     });
@@ -110,19 +172,19 @@ export function renderFrontmatterFile(
   if (lines[0]?.trim() !== "---") return source;
   const end = lines.findIndex((line, index) => index > 0 && line.trim() === "---");
   if (end === -1) return source;
-  const keyPattern = /^(\s*(?:-\s+)?)(text|tagline|title|details):(\s*)(.*)$/u;
-  const linkPattern = /^(\s*(?:-\s+)?)link:(\s+)(\/.*)$/u;
   for (let index = 1; index < end; index += 1) {
-    const link = linkPattern.exec(lines[index]);
-    if (link && locale && !link[3].startsWith(`/${locale}/`)) {
-      lines[index] = `${link[1]}link:${link[2]}/${locale}${link[3]}`;
+    const line = lines[index];
+    const colon = line.indexOf(":");
+    const before = colon < 0 ? "" : line.slice(0, colon).trim();
+    const link = before === "link" ? parseFrontmatterField(line, LINK_KEY) : undefined;
+    if (link && locale && link.value.startsWith("/") && !link.value.startsWith(`/${locale}/`)) {
+      lines[index] = `${link.prefix}link:${link.separator}/${locale}${link.value}`;
       continue;
     }
-    const match = keyPattern.exec(lines[index]);
-    if (!match?.[4]) continue;
-    const normalized = match[4].replace(/&grave;([^&]*?)&grave;/gu, "`$1`");
-    const translated = resolve(normalized).replace(/`([^`]*)`/gu, "&grave;$1&grave;");
-    lines[index] = `${match[1]}${match[2]}:${match[3]}${translated}`;
+    const field = parseFrontmatterField(line);
+    if (!field?.value) continue;
+    const translated = escapeGraves(resolve(normalizeGraves(field.value)));
+    lines[index] = `${field.prefix}${field.key}:${field.separator}${translated}`;
   }
   return lines.join("\n");
 }

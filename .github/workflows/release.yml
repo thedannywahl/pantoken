@@ -76,8 +76,7 @@ jobs:
     # On workflow_dispatch the gate job is skipped (if: push); `always()` lets release still run.
     if: always() && (needs.gate.result == 'success' || needs.gate.result == 'skipped')
     permissions:
-      contents: write # commit version bumps, push tags, create releases
-      pull-requests: write # open/update the Version Packages PR
+      contents: read # checkout and inspect repository metadata; RELEASE_PAT performs writes
       id-token: write # npm provenance (OIDC) + SLSA attestation signing
       attestations: write # store SLSA provenance attestations on the repo
     runs-on: ubuntu-latest
@@ -90,18 +89,17 @@ jobs:
           # instead of parking its checks in `action_required`. Falls back to the built-in token when
           # RELEASE_PAT is unset so the publish path still works; without the PAT the Version PR's CI just
           # needs the usual manual click. See the "Verify RELEASE_PAT" step below.
-          token: ${{ secrets.RELEASE_PAT || github.token }}
+          token: ${{ secrets.RELEASE_PAT }}
           fetch-depth: 0
 
-      # Loud heads-up when RELEASE_PAT is missing: the run still succeeds on the built-in token, but the
-      # Version PR's CI won't trigger automatically until the secret exists. Better than silently
-      # reverting to `action_required`.
+      # RELEASE_PAT is required because the built-in GITHUB_TOKEN is intentionally read-only.
       - name: Verify RELEASE_PAT
         env:
           RELEASE_PAT: ${{ secrets.RELEASE_PAT }}
         run: |
           if [ -z "$RELEASE_PAT" ]; then
-            echo "::warning title=RELEASE_PAT missing::Falling back to the built-in GITHUB_TOKEN. The Version Packages PR will open, but its CI won't run until you add a fine-grained RELEASE_PAT secret (Contents + Pull requests: read/write)."
+            echo "::error title=RELEASE_PAT missing::Add the fine-grained RELEASE_PAT secret (Contents + Pull requests: read/write) before running the release workflow."
+            exit 1
           fi
 
       - name: Set up Node.js
@@ -188,14 +186,12 @@ jobs:
           # provide). See scripts/release/publish-npm.ts.
           create-github-releases: false
           # v2 requires the token as an explicit input; it no longer reads the GITHUB_TOKEN env var.
-          # RELEASE_PAT (not the built-in GITHUB_TOKEN): the action uses it to push the version branch +
-          # open the PR as a real user (so CI triggers), and the publish script's `gh release create`
-          # inherits it (via env below) for cutting releases (Contents: write). Falls back to the
-          # built-in token when the PAT is unset.
-          github-token: ${{ secrets.RELEASE_PAT || secrets.GITHUB_TOKEN }}
+          # RELEASE_PAT is required to push the version branch, open the PR as a real user, and create
+          # releases. The job's built-in GITHUB_TOKEN is intentionally read-only.
+          github-token: ${{ secrets.RELEASE_PAT }}
         env:
           # npm auth is separate (OIDC), so this token doesn't touch publishing.
-          GITHUB_TOKEN: ${{ secrets.RELEASE_PAT || secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_PAT }}
           NPM_CONFIG_PROVENANCE: "true"
 
       # Attach SLSA provenance to each new GitHub release so Scorecard's Signed-Releases check detects
@@ -281,7 +277,7 @@ jobs:
         if: steps.mode.outputs.will_publish == 'true' && steps.packs.outputs.found == 'true'
         env:
           BUNDLE: ${{ steps.provenance.outputs.bundle-path }}
-          GITHUB_TOKEN: ${{ secrets.RELEASE_PAT || secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_PAT }}
         shell: bash
         run: |
           set -euo pipefail

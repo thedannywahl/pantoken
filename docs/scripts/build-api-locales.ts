@@ -63,6 +63,31 @@ const apiDirFor = (locale: string): string => join(docsRoot, locale, "api");
 const locales = parseRequestedLocales(process.env.DOCS_TRANSLATION_LOCALE, NON_ROOT_LOCALES);
 const GLOSSARY_TEXT = new Set(GLOSSARY_TERMS.map(({ term }) => term));
 
+const isAsciiLetter = (char: string): boolean =>
+  (char >= "A" && char <= "Z") || (char >= "a" && char <= "z");
+
+const isIdentifierChar = (char: string): boolean =>
+  isAsciiLetter(char) || (char >= "0" && char <= "9") || char === "_" || char === "$";
+
+const isIdentifierSegmentChar = (char: string): boolean => isIdentifierChar(char) || char === "-";
+
+const isCodeShapedIdentifier = (value: string): boolean => {
+  if (value.length === 0 || (!isAsciiLetter(value[0]) && value[0] !== "_" && value[0] !== "$")) {
+    return false;
+  }
+  let index = 1;
+  while (index < value.length && isIdentifierChar(value[index])) index += 1;
+  while (index < value.length && (value[index] === "." || value[index] === "-")) {
+    index += 1;
+    const segmentStart = index;
+    while (index < value.length && isIdentifierSegmentChar(value[index])) index += 1;
+    if (index === segmentStart) return false;
+  }
+  if (value.slice(index, index + 2) === "()") index += 2;
+  if (value[index] === "?") index += 1;
+  return index === value.length;
+};
+
 /**
  * API identifiers, literal URLs, declarations, and other code-shaped fragments must remain English.
  * Mark them as required verbatim so the translation memory records the deliberate passthrough instead
@@ -79,10 +104,7 @@ export const isRequiredVerbatimApiUnit = (source: string): boolean => {
   if (/^(?:--[a-z][\w-]*|[a-z-]+):\s*[^\n]+\.?$/iu.test(unwrapped)) return true;
   if (/^readonly\s+`[^`]+`(?:\[\])?$/u.test(unwrapped)) return true;
 
-  return (
-    !GLOSSARY_TEXT.has(unwrapped) &&
-    /^[A-Za-z_$][\w$]*(?:[.-][A-Za-z0-9_$-]+)*(?:\(\))?\??$/u.test(unwrapped)
-  );
+  return !GLOSSARY_TEXT.has(unwrapped) && isCodeShapedIdentifier(unwrapped);
 };
 
 const requiredVerbatimSources = (units: readonly TranslationUnit[]): ReadonlySet<string> =>
