@@ -8,7 +8,7 @@
  * @module
  */
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { spawn } from "node:child_process";
 
@@ -46,6 +46,21 @@ export function extractJsonObject(raw: string): Record<string, unknown> | null {
   } catch {
     return null;
   }
+}
+
+/** Build the shared JSON-batch translation prompt used by AI-backed adapters. */
+export function buildBatchTranslationPrompt(
+  targetLanguage: string,
+  payload: Readonly<Record<string, string>>,
+): string {
+  const template = readFileSync(
+    new URL("../prompts/batch-translation.prompt.md", import.meta.url),
+    "utf8",
+  );
+  return template
+    .replace("{{targetLanguage}}", targetLanguage)
+    .replace("{{payload}}", JSON.stringify(payload, null, 2))
+    .trimEnd();
 }
 
 /**
@@ -434,12 +449,10 @@ async function translateLocale(
 
   console.log(`🔄 ${locale}: translating ${missingKeys.length} new string(s)...`);
 
-  const stringsList = missingKeys.map((k) => `- "${k}": "${options.source[k]}"`).join("\n");
-  const prompt = `Translate these UI strings from English into ${locale} (for a CLI):
-
-${stringsList}
-
-Respond with a JSON object mapping each original key to its translation, using the exact same keys. Only the translations, nothing else.`;
+  const prompt = buildBatchTranslationPrompt(
+    locale,
+    Object.fromEntries(missingKeys.map((key) => [key, options.source[key]])),
+  );
 
   try {
     const result = await spawnPrompt(command, [...commandArgs, "-p"], prompt, `locale "${locale}"`);

@@ -8,6 +8,7 @@ const spawn = vi.fn();
 vi.mock("node:child_process", () => ({ spawn }));
 
 const {
+  buildBatchTranslationPrompt,
   extractJsonObject,
   generateLocaleBundles,
   isPassthroughTranslation,
@@ -20,6 +21,18 @@ const {
 } = await import("../src/index.ts");
 
 // ── extractJsonObject ─────────────────────────────────────────────────────────
+
+test("buildBatchTranslationPrompt preserves the shared batch contract and JSON payload", () => {
+  const prompt = buildBatchTranslationPrompt("Hungarian", {
+    heading: "### Heading\n\nUse `<li>`.",
+  });
+
+  expect(prompt).toContain("Translate the VALUES of this JSON object from English to Hungarian.");
+  expect(prompt).toContain("same keys and translated values");
+  expect(prompt).toContain("Preserve every value's Markdown structure exactly");
+  expect(prompt).toContain("preserve `<li>` inside backticks as `<li>`, not `&lt;li&gt;`");
+  expect(prompt.endsWith('{\n  "heading": "### Heading\\n\\nUse `<li>`."\n}')).toBe(true);
+});
 
 test("extractJsonObject parses a bare JSON object", () => {
   expect(extractJsonObject('{"a":"1"}')).toEqual({ a: "1" });

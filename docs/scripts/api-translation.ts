@@ -4,7 +4,11 @@
  * The default adapter is deterministic and keyless (safe for CI), while the adapter contract keeps
  * room for higher-quality engines later.
  */
-import { extractJsonObject, spawnPrompt } from "@pantoken/translation-adapters";
+import {
+  buildBatchTranslationPrompt,
+  extractJsonObject,
+  spawnPrompt,
+} from "@pantoken/translation-adapters";
 import { LOCALES } from "@pantoken/web-components";
 import { GLOSSARY_TERMS, type GlossaryKind } from "./glossary.ts";
 import { TranslationMemory } from "./translation-memory.ts";
@@ -467,17 +471,7 @@ export class AiTranslationAdapter implements TranslationAdapter {
       );
 
     const payload = Object.fromEntries(masked.map((entry) => [entry.id, entry.masked]));
-    const prompt = [
-      `Translate the VALUES of this JSON object from English to ${this.targetLanguage}.`,
-      "Return ONLY a JSON object with the same keys and translated values.",
-      "Do not translate, add, or remove keys. Keep identifiers, package names, and URLs unchanged.",
-      "Do not alter placeholder tokens like __PTK_CODE_BLOCK_#__, __PTK_INLINE_CODE_#__, __PTK_PACKAGE_#__, or __PTK_ESC_#__.",
-      "Preserve every value's Markdown structure exactly: headings, emphasis, strong text, lists, blockquotes, links, line breaks, blank lines, and all delimiters must remain unchanged.",
-      "Translate visible prose and link labels only. Do not alter Markdown syntax, link destinations, HTML tags or comments, or code contents.",
-      "Never HTML-escape code or Markdown content: for example, preserve `<li>` inside backticks as `<li>`, not `&lt;li&gt;`.",
-      "Reproduce each value's leading and trailing whitespace exactly: if a value does not end with a newline, its translation must not end with one either.",
-      JSON.stringify(payload, null, 2),
-    ].join("\n");
+    const prompt = buildBatchTranslationPrompt(this.targetLanguage, payload);
 
     const raw = await this.runClaude(prompt, `batch of ${items.length} strings`);
     const parsed = extractJsonObject(raw);
