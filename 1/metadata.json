@@ -1,0 +1,83 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M21AFFP91KXSKEDVRFNR3X5Q",
+  "session_id": "479b7726-7156-4c22-adc8-119ec49d949c",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-08T20:13:47.141735Z",
+  "branch": "i18n2",
+  "checkpoints_count": 4,
+  "save_step_count": 4,
+  "files_touched": [
+    ".changeset/cssdoc-0-15-0.md",
+    ".github/workflows/ci.yml",
+    "docs/engineering-log.md",
+    "package.json",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    "stylelint.config.js",
+    "tools/i18n-engine/src/lint.ts",
+    "vite.config.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "bed88967e864",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 4
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-08T20:13:47.113862Z",
+    "agent_lines": 116,
+    "agent_removed": 86,
+    "human_added": 7,
+    "human_modified": 5,
+    "human_removed": 0,
+    "total_committed": 128,
+    "total_lines_changed": 215,
+    "agent_percentage": 93.95348837209302,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 90,
+      "agent_lines_removed": 73
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 91,
+      "agent_lines_removed": 73
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 3,
+      "user_lines_removed": 5,
+      "agent_lines_added": 133,
+      "agent_lines_removed": 99,
+      "user_added_per_file": {
+        ".changeset/cssdoc-0-15-0.md": 3
+      },
+      "user_removed_per_file": {
+        ".changeset/cssdoc-0-15-0.md": 5
+      }
+    }
+  ]
+}

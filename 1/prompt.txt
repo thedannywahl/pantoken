@@ -1,0 +1,39 @@
+okay, we'll keep stylelint, but still migrate to a single cssdoc instance and remove eslint.
+
+---
+
+Start implementation
+
+---
+
+cssdoc v0.15.0 just landed which includes fixes for all 4 issues, continue the implementation/migration.
+
+---
+
+we don't use pnpm directly, we use `vp` so it should be `vp run ready` - don't do that now, just note it.  if cli and others are putting out different severity, that's an issue with cssdoc and an issue needs to be created.
+
+---
+
+cssdoc 0.15.2 fixed issue 40, continue implementation.
+
+---
+
+FAIL  tools/i18n-engine/tests/lint.test.ts > runLint > accepts the repository localization contract
+Error: i18n lint failed:
+- docs.api: include path does not exist: /Users/dwahl/Scripts/pantoken/docs/api
+ ❯ runLint tools/i18n-engine/src/lint.ts:142:11
+    140|   errors.push(...(await checkPoFiles(poPathsToCheck)));
+    141|   if (errors.length > 0)
+    142|     throw new Error(`i18n lint failed:\n${errors.map((error) => `- ${e…
+       |           ^
+    143|   return { checkedSpaces: requiredSpaces.length, checkedLocales: local…
+    144| }
+ ❯ tools/i18n-engine/tests/lint.test.ts:16:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 298 passed (299)
+      Tests  1 failed | 2061 passed | 3 skipped (2065)
+   Start at  13:53:26
+   Duration  43.98s (transform 76.04s, setup 11.16s, import 186.44s, tests 100.95s, environment 12.41s)
