@@ -1,5 +1,35 @@
 # CHANGELOG
 
+## 0.1.28
+
+### Patch Changes
+
+- 7d964ee: This is a no-op changeset to satisfy changeset coverage for packages with transitively modified lock files but no code changes.
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [63e06cb]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [63e06cb]
+  - @pantoken/pendo@0.3.14
+  - @pantoken/tokens@0.3.1
+  - @pantoken/model@0.3.2
+  - @pantoken/vanilla@0.1.13
+  - @pantoken/wordpress@0.1.13
+  - @pantoken/drupal@0.1.25
+  - @pantoken/hugo@0.1.25
+  - @pantoken/jekyll@0.1.25
+  - @pantoken/swatches@0.1.14
+  - @pantoken/icon-font@0.1.17
+  - @pantoken/android@0.1.18
+  - @pantoken/compose@0.1.18
+  - @pantoken/flutter@0.1.18
+  - @pantoken/rust@0.1.16
+  - @pantoken/swift@0.1.18
+  - @pantoken/mintlify@0.1.14
+
 ## 0.1.27
 
 ### Patch Changes

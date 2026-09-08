@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 0.3.0
+
+### Minor Changes
+
+- 7d964ee: Move the Node-only plugin-sandboxing API (`runPluginHook`, `isSandboxed`, `SandboxedPluginEntry`) to
+  a new `@pantoken/plugin-kit/sandbox` subpath. The main entry (`definePlugin`, `extendPlugin`,
+  `mergePlugin`, `checkPlugins`, ...) no longer pulls in `node:child_process`/`node:worker_threads`,
+  fixing a Vite "Module has been externalized for browser compatibility" failure for browser-facing
+  consumers like `@pantoken/plugin-simple-icons`. Update imports of the sandbox API to the new subpath.
+
+### Patch Changes
+
+- Updated dependencies [7d964ee]
+  - @pantoken/model@0.3.2
+  - @pantoken/utils@1.0.2
+
 ## 0.2.7
 
 ### Patch Changes

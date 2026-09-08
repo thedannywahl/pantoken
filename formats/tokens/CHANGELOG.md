@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 0.3.1
+
+### Patch Changes
+
+- 7d964ee: Align button, banner, and Pendo button styling with the BaseButton component tokens, add the button-group wrapper gap, and temporarily rewrite secondary and tertiary button light-mode tokens to the current Figma values while preserving the existing dark-mode values.
+- 7d964ee: chore: upgrade to Instructure UI 11.7.5
+
+  Bump `@instructure/ui-icons` and related `@instructure/ui-*` packages (heading, text, link, list, table, view, img, alerts) from 11.7.4 to 11.7.5. This patch release adds two new custom icons (`user-round-star`, `venetian-mask-stem`), fixes accessibility/prop-level issues in components (Checkbox toggle, TextInput/Select, InlineSVG), and includes ref-plumbing fixes for Transition-wrapped components. No token removals or deprecations; all downstream packages regenerated successfully via the upgrade pipeline.
+
+- 63e06cb: Build workspace dependencies before running token generation so the token-syntax export is available during docs and package builds.
+- Updated dependencies [7d964ee]
+  - @pantoken/model@0.3.2
+
 ## 0.3.0
 
 ### Minor Changes

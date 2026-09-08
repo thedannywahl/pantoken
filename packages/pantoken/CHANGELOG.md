@@ -1,5 +1,96 @@
 # CHANGELOG
 
+## 0.2.8
+
+### Patch Changes
+
+- 7d964ee: This is a no-op changeset to satisfy changeset coverage for packages with transitively modified lock files but no code changes.
+- Updated dependencies [63e06cb]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [63e06cb]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [63e06cb]
+- Updated dependencies [7d964ee]
+- Updated dependencies [63e06cb]
+- Updated dependencies [63e06cb]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [63e06cb]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [63e06cb]
+- Updated dependencies [63e06cb]
+- Updated dependencies [7d964ee]
+- Updated dependencies [63e06cb]
+  - @pantoken/web-components@0.6.0
+  - @pantoken/components@1.1.0
+  - @pantoken/pendo@0.3.14
+  - @pantoken/tokens@0.3.1
+  - @pantoken/bootstrap@0.1.3
+  - @pantoken/docusaurus@0.1.3
+  - @pantoken/dtcg@0.1.13
+  - @pantoken/figma@0.1.13
+  - @pantoken/foundation@0.1.4
+  - @pantoken/next@0.1.3
+  - @pantoken/plugin-colors@0.1.3
+  - @pantoken/plugin-primitives@1.0.2
+  - @pantoken/plugin-prune-custom-props@0.1.6
+  - @pantoken/shadcn@0.1.3
+  - @pantoken/vanilla@0.1.13
+  - @pantoken/vitepress@0.2.2
+  - @pantoken/wordpress@0.1.13
+  - @pantoken/react-markdown@0.1.13
+  - @pantoken/plugin-logos@0.4.0
+  - @pantoken/angular@0.1.28
+  - @pantoken/cli@0.1.28
+  - @pantoken/drupal@0.1.25
+  - @pantoken/react@0.1.29
+  - @pantoken/svelte@0.1.29
+  - @pantoken/vue@0.1.29
+  - @pantoken/plugin-visual-debug@0.1.16
+  - @pantoken/plugin-simple-icons@0.3.7
+  - @pantoken/astro@0.1.18
+  - @pantoken/css-in-js@0.1.14
+  - @pantoken/mui@0.1.14
+  - @pantoken/storybook@0.1.14
+  - @pantoken/panda@0.1.14
+  - @pantoken/tailwind@0.1.8
+  - @pantoken/vite@0.1.18
+  - @pantoken/swatches@0.1.14
+  - @pantoken/css@0.3.8
+  - @pantoken/icons@0.2.1
+  - @pantoken/less@0.1.14
+  - @pantoken/scss@0.1.14
+  - @pantoken/stylus@0.1.14
+  - @pantoken/android@0.1.18
+  - @pantoken/compose@0.1.18
+  - @pantoken/email@0.1.14
+  - @pantoken/flutter@0.1.18
+  - @pantoken/swift@0.1.18
+  - @pantoken/plugin-stacking@1.0.4
+  - @pantoken/plugin-theme-custom-media@0.2.3
+  - @pantoken/mintlify@0.1.14
+  - @pantoken/react-native@0.1.14
+  - @pantoken/plugin-transition@1.0.4
+  - @pantoken/markdown-it@0.1.11
+  - @pantoken/rehype@0.1.11
+  - @pantoken/postcss@0.1.18
+  - @pantoken/webpack@0.1.18
+
 ## 0.2.7
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 1.0.2
+
+### Patch Changes
+
+- 7d964ee: Update the `homepage` field to `https://pantoken.app` across all package manifests.
+- Updated dependencies [7d964ee]
+  - @pantoken/model@0.3.2
+
 ## 1.0.1
 
 ### Patch Changes

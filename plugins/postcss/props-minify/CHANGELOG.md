@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.1.4
+
+### Patch Changes
+
+- 7d964ee: Update the `homepage` field to `https://pantoken.app` across all package manifests.
+- Updated dependencies [7d964ee]
+  - @pantoken/plugin-flatten-property@0.1.3
+  - @pantoken/plugin-mangle-custom-props@0.1.3
+  - @pantoken/plugin-prune-custom-props@0.1.6
+
 ## 0.1.3
 
 ### Patch Changes

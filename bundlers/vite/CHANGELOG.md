@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.1.18
+
+### Patch Changes
+
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [63e06cb]
+  - @pantoken/tokens@0.3.1
+  - @pantoken/css@0.3.8
+
 ## 0.1.17
 
 ### Patch Changes

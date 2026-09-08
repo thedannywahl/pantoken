@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 0.1.25
+
+### Patch Changes
+
+- 7d964ee: This is a no-op changeset to satisfy changeset coverage for packages with transitively modified lock files but no code changes.
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+  - @pantoken/components@1.1.0
+  - @pantoken/css@0.3.8
+  - @pantoken/scss@0.1.14
+
 ## 0.1.24
 
 ### Patch Changes

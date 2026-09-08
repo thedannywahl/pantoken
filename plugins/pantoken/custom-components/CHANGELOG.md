@@ -1,5 +1,18 @@
 # @pantoken/plugin-custom-components
 
+## 0.3.1
+
+### Patch Changes
+
+- 7d964ee: Simplify banner button defaults so only unmodified direct-child buttons receive the on-color primary treatment, while unmodified sibling buttons use a transparent default background.
+- 7d964ee: Align button, banner, and Pendo button styling with the BaseButton component tokens, add the button-group wrapper gap, and temporarily rewrite secondary and tertiary button light-mode tokens to the current Figma values while preserving the existing dark-mode values.
+- 7d964ee: Complete banner styles with built-in icons, size-aware typography, alert-style dismissal, and on-color primary buttons.
+- 7d964ee: Make direct, unmodified close buttons small by default in alerts and banners.
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+  - @pantoken/model@0.3.2
+  - @pantoken/plugin-kit@0.3.0
+
 ## 0.3.0
 
 ### Minor Changes

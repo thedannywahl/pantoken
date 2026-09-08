@@ -1,5 +1,13 @@
 # @pantoken/interactions
 
+## 0.3.7
+
+### Patch Changes
+
+- 7d964ee: Regenerate component capabilities manifest to mark `number-input` as requiring icons (`needsIcons: true`).
+- Updated dependencies [7d964ee]
+  - @pantoken/utils@1.0.2
+
 ## 0.3.6
 
 ### Patch Changes

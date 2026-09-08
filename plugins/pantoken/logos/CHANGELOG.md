@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 0.4.0
+
+### Minor Changes
+
+- 63e06cb: Added the `pantoken` product logo, including localized wordmark variants keyed by a trailing
+  language code (e.g. `horizontal-full-color-ar.svg`, `horizontal-reversed-zh.svg`). `LogoMeta` gained
+  an optional `lang` field, and `getLogoSvg`/`getLogoDataUri` accept an optional `lang` argument to
+  resolve a localized variant.
+
+### Patch Changes
+
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+  - @pantoken/model@0.3.2
+  - @pantoken/plugin-kit@0.3.0
+
 ## 0.3.6
 
 ### Patch Changes

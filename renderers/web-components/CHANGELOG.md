@@ -1,5 +1,181 @@
 # CHANGELOG
 
+## 0.6.0
+
+### Minor Changes
+
+- 7d964ee: Added a force/no-cache option to both translation pipelines, so already-cached content can be
+  retranslated (and overwritten) instead of only ever filling cache misses. Set
+  `DOCS_TRANSLATION_FORCE=1` for the docs pipeline (`translateUnits`) or `I18N_TRANSLATION_FORCE=1` for
+  the shared CLI string pipeline (`runI18nTranslationCli`, used by `@pantoken/scaffold`, `@pantoken/ai`,
+  and `@pantoken/web-components`), or use the new convenience scripts: `docs:locales:translate:force`,
+  each package's `translate:force`, and the root `i18n:translate:force` umbrella task.
+- 63e06cb: Replaces `@pantoken/web-components`'s legacy `ui.strings` translation pipeline with the
+  `@pantoken/i18n-engine`-based one, preserving every existing translation.
+
+  - `renderers/web-components/src/i18n.json` now uses the `{message, translate}` schema
+    (`translate: "optional"` replaces the old `verbatim: "allow"`) instead of `{string, verbatim}`.
+  - The 44-locale `i18n-cache/*.json` translation memory is migrated, verbatim, into
+    `l10n/{locale}/ui.strings.po` (`msgctxt`-keyed by the source's own key, `msgid` the English
+    source text) — every translated string was diffed against its source cache and confirmed
+    byte-identical before the old cache was deleted.
+  - `renderers/web-components/scripts/translate.ts` and `check-drift.ts` are deleted. `pnpm
+translate`/`pnpm check:drift` now run the real `i18n` CLI (`i18n translate/check ui.strings`)
+    against the root `i18n.config.json`.
+  - `packages/i18n/scripts/build-bundles.ts` now reads resolved strings via
+    `resolveMessagesForLocale()` from `@pantoken/i18n-engine` instead of the deleted cache directory.
+    The regenerated `src/locales/*.ts` bundles are byte-identical to what they replace — no content
+    regression.
+  - Adds the root `i18n.config.json`, defining the `docs.guides` (content) and `ui.strings`
+    (messages) spaces the engine now drives.
+
+- 63e06cb: Move the web-components locale bundles and localization helpers into `@pantoken/web-components`.
+  English source strings remain in `src/i18n.json`, with translations generated from the repository
+  PO/POT catalogs in `/l10n`.
+
+### Patch Changes
+
+- 63e06cb: Renamed each package's build-script-only locale-registry copy to match `@pantoken/i18n`'s renamed
+  `LOCALES`/`LocaleInfo` (was `CANVAS_LOCALES`/`LocaleMeta`): `scripts/lib/canvas-locales.ts` →
+  `scripts/lib/locales.ts` in each package. The duplication itself is unchanged (still a deliberate
+  copy to avoid a new workspace dependency in build scripts) — only the naming is decoupled from Canvas.
+- 7d964ee: Translation drift is now gated by a configurable per-surface, per-locale policy instead of a
+  hard-coded exit code in each checker.
+
+  Every drift checker reports findings to a shared `DriftReporter`
+  (`tools/translation-adapters/src/drift-policy.ts`), which resolves a severity — `block`, `warn`, or
+  `off` — from the new root `i18n-policy.json`. Severity is a `(surface, locale-tier)` matrix, so a hard
+  gate can be kept on the surfaces and locales that matter while the long tail of locales only warns.
+  That decouples merge latency from locale count: adding an English string no longer waits on ~90
+  translations.
+
+  Ten surfaces are addressable: `ui.strings`, `cli.scaffold`, `cli.ai`, `docs.guides`, `docs.api`,
+  `docs.home`, `docs.chrome`, `docs.glossary`, `docs.demos`, and `docs.parity`. The committed default
+  blocks on English source integrity and structural locale parity, and warns on every actual translation
+  gap.
+
+  `docs.home` is new coverage, not just a new knob: the home page's frontmatter has a translation
+  pipeline and 43 committed cache files but never had a drift check, so edits to `docs/index.md` went
+  unnoticed. Its unit derivation now lives in `docs/scripts/home-i18n.ts`, shared by `translate-home.ts`
+  and the drift check so the two can't disagree about what a cache key should be.
+
+  Extracting it also fixed two latent bugs in the home-page pipeline:
+
+  - A translatable key was only found on its own indented line, so reordering a feature or action so
+    that `title`, `text`, `details`, or `link` became the YAML list item's first key silently dropped it
+    from translation — and left its `link` without the locale prefix, producing a 404 under a localized
+    route. The key patterns now accept an optional list dash and capture it, so the rebuilt line is
+    byte-identical apart from the translated value.
+  - The rewrite scanned the whole file, not just the frontmatter, so body prose shaped like frontmatter
+    (a markdown list such as `- title: Naming things`) would have been rewritten as if it were page
+    metadata and cached as a phantom unit. Matching is now scoped to the frontmatter block, and a
+    missing or unterminated frontmatter throws instead of writing 43 untranslated copies.
+
+  Neither fix changes the unit set derived from the current `docs/index.md` (14 units, same keys), so no
+  committed translation is invalidated.
+
+  Non-blocking drift is still visible: the reporter emits capped GitHub annotations on the PR diff plus
+  a job-summary table. `I18N_DRIFT_STRICT=1` escalates every warning to blocking, and
+  `vp run i18n:check:drift:strict` sweeps all surfaces that way for a pre-release audit.
+
+- 7d964ee: Added a GitHub Copilot CLI translation adapter (`tools/translation-adapters/copilot-wrapper.sh`) and
+  wired `translate:copilot` / `translate:copilot:force` scripts plus root `i18n:translate:copilot` /
+  `i18n:translate:force:copilot` umbrella tasks across the UI, docs, and CLI i18n pipelines, matching
+  the existing `agy` adapter wiring. Defaults to `--model gpt-5-mini --effort low`, the cheapest model
+  with reasoning-effort support and its minimum effort level — plenty for literal UI-string
+  translation and far cheaper than the CLI's `auto` model selection.
+
+  Pinned the same "cheapest capable tier, minimum effort" defaults for the `agy` and `claude`
+  adapters: `agy` scripts now default to `--model gemini-3.6-flash-low` (agy bakes reasoning effort
+  into the model name), and `claude`/direct-invocation scripts (`translate`, `translate:force`, and
+  the docs pipeline's `:claude` scripts) now pin `--model claude-haiku-4-5-20251001 --effort low`
+  instead of relying on unset defaults.
+
+- 63e06cb: Wired real AI translation into the `i18n translate` command for "messages"-kind spaces
+  (`ui.strings`, `cli.scaffold`, `cli.ai`). Previously `i18n translate` only ran `msgmerge` and always
+  reported `(no AI provider authorized yet)`, even when translation had already happened out of band —
+  the pipeline never actually called an AI provider for these spaces.
+
+  `runTranslateMessages` now fills empty `msgstr` entries via `I18N_TRANSLATION_COMMAND` /
+  `I18N_TRANSLATION_COMMAND_ARGS` (same convention as the legacy pipelines), batching untranslated
+  strings by `provider.batchBudget` and rotating through whichever CLI agent (`claude`/`agy`/
+  `copilot`) the command points at. It no-ops, leaving every entry untranslated, when the env var is
+  unset — unchanged behavior for CI and any script that doesn't configure a provider.
+
+  `docs.guides` is intentionally not wired through this path — it keeps its own dedicated,
+  markdown-aware AI pipeline (`docs/scripts/translate-guide-po.ts`).
+
+  Added differentiated `translate`/`translate:agy`/`translate:copilot` scripts to
+  `@pantoken/web-components`, `@pantoken/scaffold`, and `@pantoken/ai` (previously every adapter
+  variant silently ran the exact same plain script), and updated the root `ui:translate:*`/
+  `cli:translate:*` umbrella tasks to route to them.
+
+- 7d964ee: Added a combined `translate:agy:force` script (and root `i18n:translate:force:agy` umbrella task) so
+  the agy adapter can be re-run with the translation-memory cache bypassed across all i18n pipelines
+  (UI, docs, CLI), matching the existing `docs:locales:translate:agy:force` script.
+- 7d964ee: Added a "verbatim" policy to the passthrough guard, for source strings that are legitimately
+  identical to their English translation in some or all locales (e.g. `@pantoken/web-components`'s
+  `datePlaceholder: "yyyy-mm-dd"`, which most locales keep verbatim). Declare it inline in
+  `src/i18n.json` by replacing a plain string entry with `{ "string": "...", "verbatim": ... }`, where
+  `verbatim` is `"allow"` (every locale) or `{ allow?, warn?, error? }` — each a list of locale codes
+  or `"prefix*"`/`"*"` globs deciding whether an identical response is cached silently, cached with a
+  warning, or treated as a likely AI failure (the default for any locale matched by neither list). A
+  key's own tiers are checked first; for a locale none of them cover, resolution falls through to the
+  caller's `defaultVerbatim` (e.g. a blanket "these locales are close enough to English" rule) instead
+  of assuming failure — an explicit `error` tier still wins over a permissive default.
+  `@pantoken/translation-adapters` exports `parseI18nSource()` to flatten a `src/i18n.json` into its
+  plain strings plus a `verbatim` policy map, and `resolveVerbatimAction()` to resolve one key's policy
+  for a given locale; `runI18nTranslationCli`'s `verbatimKeys` option is replaced by `verbatim`.
+  `@pantoken/scaffold`'s `collectI18nSource()` now returns `{ source, verbatim }`, merging each
+  template's own inline policies the same way it merges template strings.
+- 7d964ee: This is a no-op changeset to satisfy changeset coverage for packages with transitively modified lock files but no code changes.
+- 63e06cb: Synchronize localized package surfaces and generated localization output.
+- 63e06cb: Adds a reusable `i18n.source.schema.json` and attaches it to normalized package and template message sources. All current package-owned i18n entries now use explicit `{message, translate}` objects.
+- 7d964ee: Fix test failures:
+
+  - **web-components**: Resolve i18n.json path relative to check-drift.ts script directory using `import.meta.url`, fixing module import errors in tests.
+  - **tinymce**: Defend onChange handlers against missing properties with optional chaining to prevent TypeError in test scenarios.
+
+- 7d964ee: Unify `@pantoken/web-components`'s locale-string translation pipeline with the generic
+  `src/i18n.json` + `i18n-cache/*.json` + `translate`/`check:drift` convention already used by
+  `@pantoken/scaffold` and `@pantoken/ai`, retiring `@pantoken/i18n`'s bespoke
+  `sha256("wc\0"+key+"\0"+value)`-hashed translation memory (`scripts/build-bundles.ts`,
+  `scripts/translate-bundles.ts`, `scripts/check-bundle-drift.ts`, and their `scripts/lib/*` helpers).
+
+  `@pantoken/web-components` now owns its own `i18n-cache/*.json` (plain-key, migrated from the old
+  hashed cache with no translation loss) plus `scripts/translate.ts` / `scripts/translate:agy` /
+  `scripts/check-drift.ts`. `@pantoken/i18n`'s `scripts/build-bundles.ts` reads that cache directly to
+  build its `LocaleBundle`s — it no longer runs its own translation step; `LocaleBundle`,
+  `defineBundle`, and `registerLocalized` are unchanged and stay in `@pantoken/i18n`, since they're a
+  consumption-shape concern (mapping translated strings into `register()`-compatible shapes), not a
+  translation-pipeline concern.
+
+  Root task aliases `ui:translate`/`ui:translate:agy` now point at
+  `@pantoken/web-components#translate`/`translate:agy`, and `i18n:check:drift` now runs
+  `@pantoken/web-components#check:drift` instead of `@pantoken/i18n#check:drift`. No change to any
+  public `@pantoken/i18n` export or generated `LocaleBundle` output (verified byte-identical after
+  migration).
+
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+  - @pantoken/components@1.1.0
+  - @pantoken/model@0.3.2
+  - @pantoken/interactions@0.3.7
+  - @pantoken/scaffold-base@0.2.1
+  - @pantoken/icons@0.2.1
+
 ## 0.5.8
 
 ### Patch Changes
