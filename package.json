@@ -25,7 +25,7 @@
     "@codspeed/vitest-plugin": "catalog:",
     "@commitlint/cli": "catalog:",
     "@commitlint/config-conventional": "catalog:",
-    "@cssdoc/stylelint-plugin": "catalog:",
+    "@cssdoc/cli": "catalog:",
     "@manypkg/cli": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "eslint-plugin-tsdoc": "catalog:",

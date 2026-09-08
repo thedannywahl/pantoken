@@ -244,18 +244,18 @@ catalogs:
     '@commitlint/config-conventional':
       specifier: ^21.2.2
       version: 21.2.2
+    '@cssdoc/cli':
+      specifier: ^0.15.2
+      version: 0.15.2
     '@cssdoc/config':
-      specifier: ^0.14.2
-      version: 0.14.2
+      specifier: ^0.15.2
+      version: 0.15.2
     '@cssdoc/core':
-      specifier: ^0.14.2
-      version: 0.14.2
-    '@cssdoc/stylelint-plugin':
-      specifier: ^0.14.2
-      version: 0.14.2
+      specifier: ^0.15.2
+      version: 0.15.2
     '@cssdoc/typedoc':
-      specifier: ^0.14.2
-      version: 0.14.2
+      specifier: ^0.15.2
+      version: 0.15.2
     '@instructure/instructure-design-tokens':
       specifier: github:instructure/instructure-design-tokens#v1.8.0
       version: 1.0.0
@@ -497,9 +497,9 @@ importers:
       '@commitlint/config-conventional':
         specifier: 'catalog:'
         version: 21.2.2
-      '@cssdoc/stylelint-plugin':
+      '@cssdoc/cli':
         specifier: 'catalog:'
-        version: 0.14.2(stylelint@17.15.0(supports-color@10.2.2)(typescript@5.6.1-rc))
+        version: 0.15.2(cac@7.0.0)
       '@manypkg/cli':
         specifier: 'catalog:'
         version: 0.25.1
@@ -757,13 +757,13 @@ importers:
     devDependencies:
       '@cssdoc/config':
         specifier: 'catalog:'
-        version: 0.14.2
+        version: 0.15.2
       '@cssdoc/core':
         specifier: 'catalog:'
-        version: 0.14.2
+        version: 0.15.2
       '@cssdoc/typedoc':
         specifier: 'catalog:'
-        version: 0.14.2(typedoc@0.28.20(typescript@6.0.3))
+        version: 0.15.2(typedoc@0.28.20(typescript@6.0.3))
       '@pantoken/cdn':
         specifier: workspace:*
         version: link:../packages/cdn
@@ -887,10 +887,10 @@ importers:
     devDependencies:
       '@cssdoc/config':
         specifier: 'catalog:'
-        version: 0.14.2
+        version: 0.15.2
       '@cssdoc/core':
         specifier: 'catalog:'
-        version: 0.14.2
+        version: 0.15.2
       '@pantoken/cssdoc-model':
         specifier: workspace:*
         version: link:../../tools/cssdoc-model
@@ -2919,7 +2919,7 @@ importers:
     dependencies:
       '@cssdoc/core':
         specifier: 'catalog:'
-        version: 0.14.2
+        version: 0.15.2
       '@pantoken/cdn':
         specifier: workspace:*
         version: link:../../packages/cdn
@@ -3090,7 +3090,7 @@ importers:
     dependencies:
       '@cssdoc/core':
         specifier: 'catalog:'
-        version: 0.14.2
+        version: 0.15.2
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -3543,6 +3543,11 @@ packages:
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
     engines: {node: '>=0.1.90'}
 
+  '@commander-js/extra-typings@15.0.0':
+    resolution: {integrity: sha512-yeJlba62xqmkgELUsn7356MEnzLLu/fw2x4lofFqGnXh6YysRdEs2BaLeLtg1+KU0AXvMeqQvTTp+3hBEBK+EA==}
+    peerDependencies:
+      commander: ~15.0.0
+
   '@commitlint/cli@21.2.2':
     resolution: {integrity: sha512-a+6hQxIxnpdvSvS2apvttPNbEliYsVC3PqFYDiiB2kjbwIsQsj1urvQ4Tkf70pKYozPalKAuRQmm/GHwndduqA==}
     engines: {node: '>=22.12.0'}
@@ -3628,40 +3633,39 @@ packages:
     resolution: {integrity: sha512-aalGyl7dbB5PArRebDIX43ZvBlXrYm9uWzGJ26t+4SzJVPsOuvfILGGbw5X4yX7i50YEmJ8zvbiWnqH/AAnZqg==}
     engines: {node: '>=22'}
 
-  '@cssdoc/config@0.14.2':
-    resolution: {integrity: sha512-aakQbG6lRqwoRW1bTgMb9AolXKBgi0jQmJE4wjc0YKPdWBV8/CBcgaYnScXhnlwSSzlT/0ieRL5KFYPunDcDBg==}
+  '@cssdoc/cli@0.15.2':
+    resolution: {integrity: sha512-lEInBffthVcEQef3XEEoo/qtRzrHLJvOE+fjvwi9S+yW1mZ2Y8N+RMH8de0Yt52SMzhrLmeCt1MUYLZ5j7Gd4g==}
+    hasBin: true
 
-  '@cssdoc/core@0.14.2':
-    resolution: {integrity: sha512-sVVDd6BQdlPv+CNStKKZ8se9bUcnEu0ULWqV/QAvhZK8Vnmd9YTXebbtmMd+ZPigPF9AuNi/Obl1Kq/gXFFRMw==}
+  '@cssdoc/config@0.15.2':
+    resolution: {integrity: sha512-W3EKbhQjLdWi9nd6YW8MmDRtsj+a9KOuWhcgFmTHyLXXKd2pLnEeIgNVUDtTXODI5gFm/7eO9thA88P4QxInrA==}
 
-  '@cssdoc/dialects@0.14.2':
-    resolution: {integrity: sha512-UooPd15n43BGi64LHnCYS4SQDuwGy5wabmjFOt3sJ2DKXb2AIOeU3L3w1TcP1QG1q6FJVCOC9N+q+uNGXyyjEw==}
+  '@cssdoc/core@0.15.2':
+    resolution: {integrity: sha512-b4c+WBxU/j3f8/oN1NTuPEmbIU+/rLNOvykJEtnpRStLTWg4sTYPlkkxzNYXUM4sJ/8zrp2hMQley7ZmXkRWYQ==}
 
-  '@cssdoc/embedded@0.14.2':
-    resolution: {integrity: sha512-0heZxWcpHBR0CCK1bXWKYOfU8cKTSRbvgByJBUxnbnL/GvK48PJmQH+xQC19gsm1G04zFXshjOChnMvzQpm/qQ==}
+  '@cssdoc/dialects@0.15.2':
+    resolution: {integrity: sha512-k1sQT8bY7cBNPvclAVuDynVSuc1STl3xejJoU2yvtgduBqv0HPxX1nN7n3ux8I/JUu5xDoQnNV2y08mydA+NcA==}
 
-  '@cssdoc/index@0.14.2':
-    resolution: {integrity: sha512-zvOJkdUFmVfM6DKdMniPvlMq/RMiexTr8NMe3lUt4briGBhUHEVu00Oy45WFcM3UJ+4pdON6Wj42bqqoFv12mw==}
+  '@cssdoc/embedded@0.15.2':
+    resolution: {integrity: sha512-3d/ft0u2dpkqJF0kaB7uL0pBT5Oe4z1oiM8lrsCAoU7+e3+5Jn5jGoAN952c/1UXQqhoLp5e1M0c1tEKXEMNmQ==}
 
-  '@cssdoc/lint-core@0.14.2':
-    resolution: {integrity: sha512-sk8fY/zf+yfm85kuLyXWtH11OMpKm2mwVbekvwbRBYd4qhfls2xC63f4ivkyr1G9ExYWmC99Ts7rLZ3PEvbm2g==}
+  '@cssdoc/index@0.15.2':
+    resolution: {integrity: sha512-oC21QUyAbDyT1bb9zgUZvhq9+3RP3HvIJZhSZc66PDU5o7B0U7chNmezRHJ7IKA/LQVtWiwb7lQ8TVcOQVK6ow==}
 
-  '@cssdoc/markdown@0.14.2':
-    resolution: {integrity: sha512-AP7vOlyro+5HYYawuBa26QHf289nXOCVySue90Mfd2Ab63inSiJFLQwRSxNtu8JBeX9YB8SZxTujOBGhqABNvQ==}
+  '@cssdoc/lint-core@0.15.2':
+    resolution: {integrity: sha512-KN1UI4PzM1dxifcSC/pzCxulJ1l11oTHk6VLLjMysrmb7gEnOMVOXmU5petvVs3lIemPbfuCv8ejrpjCjFVGRw==}
 
-  '@cssdoc/providers@0.14.2':
-    resolution: {integrity: sha512-kFijNPhUZKb+PnU4H9u1jeoK922kOeUocppXmNFk/gakMRVKR6Zh4kdWYmY0NszxY+S2IzC6AXoL/6cnS4uGog==}
+  '@cssdoc/markdown@0.15.2':
+    resolution: {integrity: sha512-RdUfofdrzJT4wiUXbWNrYZq+DHKU6ry4zhV8zWpy6NChSDGJQnUiFv1qoJhgbmTvVgYgPGHr/gQ9FN/Mc19+Yw==}
 
-  '@cssdoc/spec@0.14.2':
-    resolution: {integrity: sha512-N/oD3ocfjbW8A4G6Kz6rE/dbuxm/+uBXglC1l8Ontc9ti+Yf4dqZG/BQE6J91WNY1FQYBSN0FPv0jLeW6RJcLA==}
+  '@cssdoc/providers@0.15.2':
+    resolution: {integrity: sha512-uwKZRcKWib90tDcpHByvjx//Hdx76SGTrSdDCPX1moAnC5f0sr5NO85FXl6WNBLT4c+0XCdZejEZuZZACNMraQ==}
 
-  '@cssdoc/stylelint-plugin@0.14.2':
-    resolution: {integrity: sha512-wV+7BZA5FV/gwk80OZbRDpNsTi9phb4ffbFVhUaNwkpHb5LFe0sRlNok/8uEc+/0xZuWDZwtjm6mA10HjaCwDA==}
-    peerDependencies:
-      stylelint: '>=17'
+  '@cssdoc/spec@0.15.2':
+    resolution: {integrity: sha512-EYDhkKBy4PfKQWH52m0Iioeap82Qs8c4AQIdT1EUZNejOz18ZgOWVfZZJQ9PIwBV0YAltepNvJCfEOnV9g0vow==}
 
-  '@cssdoc/typedoc@0.14.2':
-    resolution: {integrity: sha512-yc9STbuHMr4qzYufisy4LVPhJ0/a/m4n6hGA5UOYlETTHosTpWr5QgFYLBkBW9JNw1WiteZnwMqfvgoajG/vNA==}
+  '@cssdoc/typedoc@0.15.2':
+    resolution: {integrity: sha512-NenufH8/Y4fijcXJYHdvbcraiY81gO/I0Kb3gqAXR4ZgnlBvFl9zRwyFSTIg18YCcoYkoZguFzz3QuVueSel8A==}
     peerDependencies:
       typedoc: '>=0.28'
 
@@ -10216,6 +10220,10 @@ snapshots:
   '@colors/colors@1.5.0':
     optional: true
 
+  '@commander-js/extra-typings@15.0.0(commander@15.0.0)':
+    dependencies:
+      commander: 15.0.0
+
   '@commitlint/cli@21.2.2(@types/node@26.5.0)(conventional-commits-parser@7.1.2)(typescript@5.6.1-rc)':
     dependencies:
       '@commitlint/config-conventional': 21.2.2
@@ -10335,67 +10343,74 @@ snapshots:
 
   '@conventional-changelog/template@1.4.0': {}
 
-  '@cssdoc/config@0.14.2':
+  '@cssdoc/cli@0.15.2(cac@7.0.0)':
     dependencies:
-      '@cssdoc/core': 0.14.2
+      '@bomb.sh/tab': 0.0.22(cac@7.0.0)(commander@15.0.0)
+      '@clack/prompts': 1.8.0
+      '@commander-js/extra-typings': 15.0.0(commander@15.0.0)
+      '@cssdoc/config': 0.15.2
+      '@cssdoc/core': 0.15.2
+      '@cssdoc/index': 0.15.2
+      '@cssdoc/lint-core': 0.15.2
+      commander: 15.0.0
+    transitivePeerDependencies:
+      - cac
+      - citty
+
+  '@cssdoc/config@0.15.2':
+    dependencies:
+      '@cssdoc/core': 0.15.2
       ajv: 8.20.0
       jsonc-parser: 3.3.1
 
-  '@cssdoc/core@0.14.2':
+  '@cssdoc/core@0.15.2':
     dependencies:
-      '@cssdoc/spec': 0.14.2
+      '@cssdoc/spec': 0.15.2
       postcss: 8.5.28
 
-  '@cssdoc/dialects@0.14.2':
+  '@cssdoc/dialects@0.15.2':
     dependencies:
       postcss: 8.5.28
       postcss-less: 6.0.0(postcss@8.5.28)
       postcss-scss: 4.0.9(postcss@8.5.28)
 
-  '@cssdoc/embedded@0.14.2':
+  '@cssdoc/embedded@0.15.2':
     dependencies:
-      '@cssdoc/core': 0.14.2
-      '@cssdoc/dialects': 0.14.2
-      '@cssdoc/lint-core': 0.14.2
+      '@cssdoc/core': 0.15.2
+      '@cssdoc/dialects': 0.15.2
+      '@cssdoc/lint-core': 0.15.2
 
-  '@cssdoc/index@0.14.2':
+  '@cssdoc/index@0.15.2':
     dependencies:
-      '@cssdoc/core': 0.14.2
+      '@cssdoc/core': 0.15.2
       postcss: 8.5.28
       postcss-value-parser: 4.2.0
 
-  '@cssdoc/lint-core@0.14.2':
+  '@cssdoc/lint-core@0.15.2':
     dependencies:
-      '@cssdoc/core': 0.14.2
-      '@cssdoc/index': 0.14.2
-      '@cssdoc/providers': 0.14.2
+      '@cssdoc/core': 0.15.2
+      '@cssdoc/index': 0.15.2
+      '@cssdoc/providers': 0.15.2
 
-  '@cssdoc/markdown@0.14.2':
+  '@cssdoc/markdown@0.15.2':
     dependencies:
-      '@cssdoc/core': 0.14.2
-      '@cssdoc/dialects': 0.14.2
-      '@cssdoc/embedded': 0.14.2
+      '@cssdoc/core': 0.15.2
+      '@cssdoc/dialects': 0.15.2
+      '@cssdoc/embedded': 0.15.2
 
-  '@cssdoc/providers@0.14.2':
+  '@cssdoc/providers@0.15.2':
     dependencies:
-      '@cssdoc/core': 0.14.2
-      '@cssdoc/index': 0.14.2
+      '@cssdoc/core': 0.15.2
+      '@cssdoc/index': 0.15.2
       css-tree: 3.2.1
 
-  '@cssdoc/spec@0.14.2': {}
+  '@cssdoc/spec@0.15.2': {}
 
-  '@cssdoc/stylelint-plugin@0.14.2(stylelint@17.15.0(supports-color@10.2.2)(typescript@5.6.1-rc))':
+  '@cssdoc/typedoc@0.15.2(typedoc@0.28.20(typescript@6.0.3))':
     dependencies:
-      '@cssdoc/config': 0.14.2
-      '@cssdoc/core': 0.14.2
-      '@cssdoc/lint-core': 0.14.2
-      stylelint: 17.15.0(supports-color@10.2.2)(typescript@5.6.1-rc)
-
-  '@cssdoc/typedoc@0.14.2(typedoc@0.28.20(typescript@6.0.3))':
-    dependencies:
-      '@cssdoc/config': 0.14.2
-      '@cssdoc/core': 0.14.2
-      '@cssdoc/markdown': 0.14.2
+      '@cssdoc/config': 0.15.2
+      '@cssdoc/core': 0.15.2
+      '@cssdoc/markdown': 0.15.2
       typedoc: 0.28.20(typescript@6.0.3)
 
   '@csstools/css-calc@3.3.0(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)':

@@ -270,10 +270,18 @@ Upstream follow-ups filed against `thedannywahl/cssdoc`: a shared adapter confor
 stylelint and eslint adapters can't drift ([#34]), docs stating the oxc constraint ([#35]), the
 `@cssdoc/cli` direction ([#36]), and verifying `valid-class-usage` under oxlint ([#37]).
 
+cssdoc 0.15.2 fixed the adapter severity divergence from [#40]. Adopted `@cssdoc/cli` as the single
+cssdoc lint instance with `--max-warnings 0`, so documentation violations fail CI as they did under
+the Stylelint adapter. Stylelint remains for the 24 core CSS correctness rules the CLI doesn't cover:
+`lint:css` handles those, while `lint:cssdoc` handles documentation comments. The staged hook runs
+both (Stylelint fixes, then cssdoc gates). The CLI still has no `--fix`, but that is non-blocking here
+because Stylelint owns the CSS fix step.
+
 [#34]: https://github.com/thedannywahl/cssdoc/issues/34
 [#35]: https://github.com/thedannywahl/cssdoc/issues/35
 [#36]: https://github.com/thedannywahl/cssdoc/issues/36
 [#37]: https://github.com/thedannywahl/cssdoc/issues/37
+[#40]: https://github.com/thedannywahl/cssdoc/issues/40
 
 ### Codecov uploads tokenless via OIDC on the public repo
 

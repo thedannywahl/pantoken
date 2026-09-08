@@ -310,6 +310,8 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Lint CSS
         run: vp run lint:css
+      - name: Lint CSSDoc
+        run: vp run lint:cssdoc
       - name: Validate generated output
         run: vp run validate:generated:only
       - name: Lint Markdown

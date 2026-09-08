@@ -5,19 +5,13 @@
  * opinions — because the CSS is either terse shadow-DOM styling or machine-generated, and it uses
  * modern features (anchor positioning, `:host`/`::slotted`, `@scope`, `light-dark()`).
  *
- * We enable a focused set of core "possible error" rules directly, plus `@cssdoc/stylelint-plugin`'s
- * `cssdoc/valid-doc-comments` — which validates the inline cssdoc doc comments against the record's
- * actual CSS, the one shareable rule this project extends. Its options (rscss modifier convention, the
- * off-list, `structureIgnore`) live in the repo's `cssdoc.json`, which the plugin auto-loads per file —
- * so the same config drives lint, docs, and the test guard, with nothing duplicated here.
+ * We enable a focused set of core "possible error" rules directly. The separate `lint:cssdoc` task
+ * runs `@cssdoc/cli` over the same files so cssdoc documentation comments remain a single lint instance.
  *
  * @type {import("stylelint").Config}
  */
 export default {
-  plugins: ["@cssdoc/stylelint-plugin"],
   rules: {
-    // Options come from cssdoc.json (auto-loaded per linted file).
-    "cssdoc/valid-doc-comments": true,
     "annotation-no-unknown": true,
     "at-rule-no-unknown": [true, { ignoreAtRules: ["scope", "component"] }],
     "block-no-empty": [true, { ignore: ["comments"] }],

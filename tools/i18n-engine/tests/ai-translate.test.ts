@@ -26,10 +26,18 @@ afterEach(() => {
   else process.env.I18N_TRANSLATION_COMMAND_ARGS = originalArgs;
 });
 
+// TEMP DIAGNOSTIC (remove after capturing the "oils I/O error" flake): dumps the child's own
+// shell-resolution env to a fixed log path every time the fake provider runs, since the flake only
+// shows up under `vp run ready`'s full parallel task graph, not an isolated `vp test` run.
+const DEBUG_LOG = join(tmpdir(), "pantoken-ai-translate-debug.log");
+
 /** A fake AI command: ignores stdin/args, always answers with one fixed JSON translation. */
 function installFakeProvider(response: string): void {
   const scriptPath = join(testDir, "fake-provider.sh");
-  writeFileSync(scriptPath, `#!/usr/bin/env bash\ncat >/dev/null\nprintf '%s' '${response}'\n`);
+  writeFileSync(
+    scriptPath,
+    `#!/usr/bin/env bash\n{ echo "--- $(date -u +%FT%TZ) pid=$$ ---"; echo "PATH=$PATH"; command -v env; command -v bash; env -- bash --version | head -1; uname -a; ulimit -u; } >>'${DEBUG_LOG}' 2>&1\ncat >/dev/null\nprintf '%s' '${response}'\n`,
+  );
   chmodSync(scriptPath, 0o755);
   process.env.I18N_TRANSLATION_COMMAND = scriptPath;
   delete process.env.I18N_TRANSLATION_COMMAND_ARGS;

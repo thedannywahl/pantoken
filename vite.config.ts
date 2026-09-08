@@ -73,8 +73,8 @@ export default defineConfig({
   },
   staged: {
     "*": "vp check --fix",
-    // stylelint owns real .css (web-component shadow styles); vp check no-ops on them.
-    "*.css": "vp exec stylelint --fix",
+    // Stylelint fixes CSS; cssdoc then gates its documentation comments.
+    "*.css": "vp exec stylelint --fix && vp exec cssdoc lint --max-warnings 0",
   },
   fmt: {
     overrides: [{ files: ["**/*.jsonc"], options: { trailingComma: "none" } }],
@@ -190,6 +190,7 @@ export default defineConfig({
           // Coverage run (not the plain test run) so the 85% threshold floor is enforced in `ready`.
           "test:coverage",
           "lint:css",
+          "lint:cssdoc",
           "validate:generated:only",
           "gate:compatibility",
           "lint:markdown",
@@ -229,6 +230,11 @@ export default defineConfig({
       "lint:css": {
         command:
           'vp exec stylelint "renderers/web-components/src/**/*.css" "formats/components/src/{components,utilities,rules}/*.css" "formats/components/generated/*.css" "plugins/pantoken/*/generated/*.css"',
+        dependsOn: ["build:all"],
+      },
+      "lint:cssdoc": {
+        command:
+          'vp exec cssdoc lint --max-warnings 0 "renderers/web-components/src/**/*.css" "formats/components/src/{components,utilities,rules}/*.css" "formats/components/generated/*.css" "plugins/pantoken/*/generated/*.css"',
         dependsOn: ["build:all"],
       },
       // ── Property-based testing ────────────────────────────────────────────────────────────────

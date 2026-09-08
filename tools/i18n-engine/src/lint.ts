@@ -104,6 +104,7 @@ export async function runLint(configPath = "i18n.config.json"): Promise<LintResu
         }
     }
     if (space.kind === "content") {
+      if (space.transientRender) continue;
       for (const pattern of space.include) {
         const sourcePath = join(configDir, pattern.replace("/**/*.md", ""));
         if (!existsSync(sourcePath))
