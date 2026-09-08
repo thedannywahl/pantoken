@@ -33,7 +33,9 @@
   "scripts": {
     "generate": "node scripts/generate.ts && node scripts/build-bundles.ts",
     "dev": "node scripts/generate.ts && node scripts/build-bundles.ts && node scripts/build-entries.ts && vp pack --watch",
-    "translate": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate ui.strings",
+    "translate": "I18N_TRANSLATION_COMMAND=claude I18N_TRANSLATION_COMMAND_ARGS=\"--model claude-haiku-4-5-20251001 --effort low\" i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate ui.strings",
+    "translate:agy": "I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/agy-wrapper.sh\" I18N_TRANSLATION_COMMAND_ARGS=\"--model gemini-3.6-flash-low\" i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate ui.strings",
+    "translate:copilot": "I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh\" I18N_TRANSLATION_COMMAND_ARGS=\"--model gpt-5-mini --effort low\" i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate ui.strings",
     "check:drift": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" check ui.strings",
     "test": "vp test",
     "check": "vp check"

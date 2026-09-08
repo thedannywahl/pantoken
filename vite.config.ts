@@ -90,9 +90,39 @@ export default defineConfig({
     ignorePatterns: ["docs/api/**", "docs/*/api/**", "ai/create-pantoken-app-site/**"],
   },
   lint: {
-    jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],
+    jsPlugins: [
+      { name: "vite-plus", specifier: "vite-plus/oxlint-plugin" },
+      // TSDoc has no oxlint-native equivalent; these two ESLint plugins run through oxlint's
+      // ESLint-compatible JS-plugin bridge. Neither needs type information or a custom parser.
+      { name: "tsdoc", specifier: "eslint-plugin-tsdoc" },
+      { name: "tsdoc-require-2", specifier: "eslint-plugin-tsdoc-require-2" },
+    ],
     rules: { "vite-plus/prefer-vite-plus-imports": "error" },
     options: { typeAware: true, typeCheck: true },
+    ignorePatterns: ["**/coverage/**", "**/dist/**"],
+    overrides: [
+      {
+        // Every exported declaration needs a doc comment (tsdoc-require-2/require) and comments must
+        // be valid TSDoc (tsdoc/syntax, honouring tsdoc.json). Tests, generated output, and
+        // declaration files are exempt.
+        files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+        excludeFiles: [
+          "**/*.test.ts",
+          "**/*.test.tsx",
+          "**/*.test.mts",
+          "**/*.test.cts",
+          "**/*.spec.ts",
+          "**/*.spec.tsx",
+          "**/*.spec.mts",
+          "**/*.spec.cts",
+          "**/tests/**",
+          "**/generated/**",
+          "**/dist/**",
+          "**/*.d.ts",
+        ],
+        rules: { "tsdoc/syntax": "error", "tsdoc-require-2/require": "error" },
+      },
+    ],
   },
   run: {
     cache: true,
@@ -147,13 +177,6 @@ export default defineConfig({
       "snyk:code": {
         command: "node scripts/quality/snyk-code-gate.ts",
       },
-      // TSDoc enforcement over source TypeScript (eslint.config.js TS block). Comment/syntax-only, so
-      // no build dependency.
-      "lint:tsdoc": {
-        // `eslint .` lets the flat config drive file discovery (its TS block globs + ignores); passing
-        // explicit globs errors when a pattern like **/*.mts matches nothing.
-        command: "vp exec eslint .",
-      },
       // Fallow gate: dead-code = error, health = grade A, duplicates = advisory. Needs generated
       // output (build:all) so the CSS-codegen sources and workspace graph resolve.
       "health:fallow": {
@@ -167,8 +190,6 @@ export default defineConfig({
           // Coverage run (not the plain test run) so the 85% threshold floor is enforced in `ready`.
           "test:coverage",
           "lint:css",
-          "lint:js",
-          "lint:tsdoc",
           "validate:generated:only",
           "gate:compatibility",
           "lint:markdown",
@@ -210,11 +231,6 @@ export default defineConfig({
           'vp exec stylelint "renderers/web-components/src/**/*.css" "formats/components/src/{components,utilities,rules}/*.css" "formats/components/generated/*.css" "plugins/pantoken/*/generated/*.css"',
         dependsOn: ["build:all"],
       },
-      "lint:js": {
-        command:
-          'vp exec eslint --no-error-on-unmatched-pattern "formats/components/src/{components,utilities,rules}/*.css" "formats/components/generated/*.css" "plugins/pantoken/*/generated/*.css" "renderers/web-components/src/**/*.css"',
-        dependsOn: ["build:all"],
-      },
       // ── Property-based testing ────────────────────────────────────────────────────────────────
       // `vp test` already runs property tests at 100 iterations (the fast default); that is part of
       // `test:coverage` in `ready:all`. `property:stress` runs only the property test files with
@@ -237,11 +253,11 @@ export default defineConfig({
         cache: false,
       },
       "ui:translate:agy": {
-        command: "vp run @pantoken/web-components#translate",
+        command: "vp run @pantoken/web-components#translate:agy",
         cache: false,
       },
       "ui:translate:copilot": {
-        command: "vp run @pantoken/web-components#translate",
+        command: "vp run @pantoken/web-components#translate:copilot",
         cache: false,
       },
       "ui:translate:force": {
@@ -249,11 +265,11 @@ export default defineConfig({
         cache: false,
       },
       "ui:translate:force:agy": {
-        command: "vp run @pantoken/web-components#translate",
+        command: "vp run @pantoken/web-components#translate:agy",
         cache: false,
       },
       "ui:translate:force:copilot": {
-        command: "vp run @pantoken/web-components#translate",
+        command: "vp run @pantoken/web-components#translate:copilot",
         cache: false,
       },
       // Docs locale translation (both claude and agy variants).
@@ -287,11 +303,12 @@ export default defineConfig({
         cache: false,
       },
       "cli:translate:agy": {
-        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
+        command: "vp run @pantoken/scaffold#translate:agy && vp run @pantoken/ai#translate:agy",
         cache: false,
       },
       "cli:translate:copilot": {
-        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
+        command:
+          "vp run @pantoken/scaffold#translate:copilot && vp run @pantoken/ai#translate:copilot",
         cache: false,
       },
       "cli:translate:force": {
@@ -299,11 +316,12 @@ export default defineConfig({
         cache: false,
       },
       "cli:translate:force:agy": {
-        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
+        command: "vp run @pantoken/scaffold#translate:agy && vp run @pantoken/ai#translate:agy",
         cache: false,
       },
       "cli:translate:force:copilot": {
-        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
+        command:
+          "vp run @pantoken/scaffold#translate:copilot && vp run @pantoken/ai#translate:copilot",
         cache: false,
       },
       // Umbrella tasks for all translation domains.
