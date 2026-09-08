@@ -1,0 +1,89 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2103FBNC6PER8HS68CE451P",
+  "session_id": "66f87b9b-399f-4c8b-b805-2828a500aa54",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-08T17:12:27.871973Z",
+  "branch": "i18n2",
+  "checkpoints_count": 2,
+  "save_step_count": 1,
+  "files_touched": [
+    ".github/workflows/changeset-check.yml",
+    ".github/workflows/ci.yml",
+    ".github/workflows/copilot-setup-steps.yml",
+    ".github/workflows/docs.yml",
+    ".github/workflows/property.yml",
+    ".github/workflows/release.yml"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "8b047be27d36",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-08T17:12:27.862831Z",
+    "agent_lines": 15,
+    "agent_removed": 19,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 4,
+    "total_committed": 15,
+    "total_lines_changed": 38,
+    "agent_percentage": 89.47368421052632,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 245,
+      "user_lines_removed": 182,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".changeset/oxlint-tsdoc-drop-eslint.md": 11,
+        "CONTRIBUTING.md": 2,
+        "ai/pantoken-ai/package.json": 3,
+        "docs/conventions/build-and-docs.md": 5,
+        "docs/engineering-log.md": 28,
+        "formats/components/vite.config.ts": 1,
+        "packages/scaffold/package.json": 3,
+        "plugins/pantoken/visual-debug/scripts/generate.ts": 1,
+        "pnpm-workspace.yaml": 2,
+        "renderers/web-components/package.json": 3,
+        "tools/i18n-engine/src/ai-translate.ts": 99,
+        "tools/i18n-engine/src/cli.ts": 10,
+        "tools/i18n-engine/src/pipeline.ts": 9,
+        "vite.config.base.ts": 27,
+        "vite.config.ts": 41
+      },
+      "user_removed_per_file": {
+        ".github/workflows/ci.yml": 4,
+        "CONTRIBUTING.md": 2,
+        "ai/pantoken-ai/package.json": 1,
+        "docs/conventions/build-and-docs.md": 4,
+        "docs/engineering-log.md": 10,
+        "eslint.config.js": 53,
+        "formats/components/vite.config.ts": 1,
+        "package.json": 3,
+        "packages/scaffold/package.json": 1,
+        "plugins/pantoken/visual-debug/scripts/generate.ts": 1,
+        "pnpm-lock.yaml": 66,
+        "pnpm-workspace.yaml": 6,
+        "renderers/web-components/package.json": 1,
+        "tools/i18n-engine/src/cli.ts": 2,
+        "tools/i18n-engine/src/pipeline.ts": 3,
+        "vite.config.base.ts": 1,
+        "vite.config.ts": 23
+      }
+    }
+  ]
+}

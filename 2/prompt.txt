@@ -1,0 +1,18 @@
+why are we getting "no AI provider authorized yet"?
+```
+vpr i18n:translate:copilot
+~/renderers/web-components$ i18n --config "$(git rev-parse --show-toplevel)/i18n.config.json" translate ui.strings ○ cache miss: env 'I18N_TRANSLATION_ADAPTER' changed, executing
+~/packages/scaffold$ i18n --config "$(git rev-parse --show-toplevel)/i18n.config.json" translate cli.scaffold
+~/docs$ DOCS_TRANSLATION_COMMAND="$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh" DOCS_TRANSLATION_COMMAND_ARGS="--model gpt-5-mini --effort low" node scripts/translate-guide-po.ts
+cli.scaffold (en): 0 translated, 52 untranslated (no AI provider authorized yet) — /Users/dwahl/Scripts/pantoken/l10n/en/cli.scaffold.po
+ui.strings (en): 0 translated, 7 untranslated (no AI provider authorized yet) — /Users/dwahl/Scripts/pantoken/l10n/en/ui.strings.po
+cli.scaffold (hu): 52 translated, 0 untranslated (no AI provider authorized yet) — /Users/dwahl/Scripts/pantoken/l10n/hu/cli.scaffold.po
+```
+
+---
+
+then we need to implement it.
+
+---
+
+Continue: "Continue to iterate?"
