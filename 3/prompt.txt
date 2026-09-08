@@ -1,0 +1,21 @@
+let's further tighten this prompt.  For exmaple it should maintain the markdown formatting:
+```
+### ABC -> ### XYZ
+```
+and it shouldn't html escape code in backticks, sometimes:
+```
+`<li>` -> `&lt;li&gt;`
+```
+happens.
+
+---
+
+In /Users/dwahl/Scripts/pantoken, inspect docs/scripts/api-translation.ts and its nearest tests/callers. Focus specifically on how AiTranslationAdapter.translateBatch/runBatch prompts the model, how markdown headings and inline code are protected/restored, and what tests already exist or should be updated for cases like `### ABC` becoming `### XYZ` and backticked `<li>` staying literal. Read only; do not edit files. Return: (1) controlling symbols/files, (2) likely root cause, (3) precise recommended prompt/code/test changes, (4) exact validation commands based on repo conventions.
+
+---
+
+not just headings, whatever markdown may exist within the json object values.
+
+---
+
+Planning-only research. In /Users/dwahl/Scripts/pantoken, inspect the batch translation path around docs/scripts/api-translation.ts, relevant tests, and package scripts. Focus on the user's requirement: JSON value translations must preserve all Markdown structure inside values (headings, emphasis, links, lists, HTML/code spans, raw HTML, etc.), and inline code such as `<li>` must not become `&lt;li&gt;`. Identify the smallest likely implementation surface, existing helpers/tests to reuse, exact files/symbols, and focused verification commands. Do not edit files. Return concise findings, risks, and a proposed test matrix.
