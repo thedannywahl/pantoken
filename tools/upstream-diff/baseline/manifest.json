@@ -13681,7 +13681,7 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F33, var(--instui-color-background-interactive-action-ghost-on-color-hover))"
       },
       "--instui-component-base-button-primary-ghost-background": {
         "inherits": true,
@@ -13692,19 +13692,19 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F66, var(--instui-primitive-color-navy-navy10))"
       },
       "--instui-component-base-button-primary-ghost-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F, var(--instui-primitive-color-navy-navy10))"
       },
       "--instui-component-base-button-primary-ghost-hover-background": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F1A, var(--instui-color-background-interactive-action-ghost-on-color-hover))"
       },
       "--instui-component-base-button-primary-hover-background": {
         "inherits": true,
@@ -13854,13 +13854,13 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "#3D658F33"
+        "value": "light-dark(#3D658F33, var(--instui-primitive-color-navy-navy60))"
       },
       "--instui-component-base-button-secondary-active-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "#44709F00"
+        "value": "light-dark(#44709F00, var(--instui-primitive-color-navy-navy60))"
       },
       "--instui-component-base-button-secondary-active-text-color": {
         "inherits": true,
@@ -13872,13 +13872,13 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "#44709F33"
+        "value": "light-dark(#44709F33, var(--instui-primitive-color-navy-navy60))"
       },
       "--instui-component-base-button-secondary-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "#44709F00"
+        "value": "light-dark(#44709F00, var(--instui-primitive-color-navy-navy60))"
       },
       "--instui-component-base-button-secondary-box-shadow": {
         "inherits": true,
@@ -13951,13 +13951,13 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "#4D7EB333"
+        "value": "light-dark(#4D7EB333, var(--instui-primitive-color-navy-navy60))"
       },
       "--instui-component-base-button-secondary-hover-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "#44709F00"
+        "value": "light-dark(#44709F00, var(--instui-primitive-color-navy-navy60))"
       },
       "--instui-component-base-button-secondary-hover-box-shadow": {
         "inherits": true,
@@ -14185,13 +14185,13 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F4D, var(--instui-primitive-color-navy-navy10))"
       },
       "--instui-component-base-button-tertiary-active-text-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F, var(--instui-primitive-color-navy-navy10))"
       },
       "--instui-component-base-button-tertiary-disabled-border-color": {
         "inherits": true,
@@ -14209,13 +14209,13 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F33, var(--instui-primitive-color-navy-navy10))"
       },
       "--instui-component-base-button-tertiary-hover-text-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F, var(--instui-primitive-color-navy-navy10))"
       },
       "--instui-component-base-button-text-transform": {
         "inherits": true,
@@ -30035,7 +30035,7 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F33, var(--instui-color-background-interactive-action-ghost-on-color-hover))"
       },
       "--instui-component-base-button-primary-ghost-background": {
         "inherits": true,
@@ -30046,19 +30046,19 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F66, var(--instui-primitive-color-navy-navy10))"
       },
       "--instui-component-base-button-primary-ghost-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F, var(--instui-primitive-color-navy-navy10))"
       },
       "--instui-component-base-button-primary-ghost-hover-background": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F1A, var(--instui-color-background-interactive-action-ghost-on-color-hover))"
       },
       "--instui-component-base-button-primary-hover-background": {
         "inherits": true,
@@ -30208,13 +30208,13 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "#3D658F33"
+        "value": "light-dark(#3D658F33, var(--instui-primitive-color-navy-navy60))"
       },
       "--instui-component-base-button-secondary-active-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "#44709F00"
+        "value": "light-dark(#44709F00, var(--instui-primitive-color-navy-navy60))"
       },
       "--instui-component-base-button-secondary-active-text-color": {
         "inherits": true,
@@ -30226,13 +30226,13 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "#44709F33"
+        "value": "light-dark(#44709F33, var(--instui-primitive-color-navy-navy60))"
       },
       "--instui-component-base-button-secondary-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "#44709F00"
+        "value": "light-dark(#44709F00, var(--instui-primitive-color-navy-navy60))"
       },
       "--instui-component-base-button-secondary-box-shadow": {
         "inherits": true,
@@ -30305,13 +30305,13 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "#4D7EB333"
+        "value": "light-dark(#4D7EB333, var(--instui-primitive-color-navy-navy60))"
       },
       "--instui-component-base-button-secondary-hover-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "#44709F00"
+        "value": "light-dark(#44709F00, var(--instui-primitive-color-navy-navy60))"
       },
       "--instui-component-base-button-secondary-hover-box-shadow": {
         "inherits": true,
@@ -30539,13 +30539,13 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F4D, var(--instui-primitive-color-navy-navy10))"
       },
       "--instui-component-base-button-tertiary-active-text-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F, var(--instui-primitive-color-navy-navy10))"
       },
       "--instui-component-base-button-tertiary-disabled-border-color": {
         "inherits": true,
@@ -30563,13 +30563,13 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F33, var(--instui-primitive-color-navy-navy10))"
       },
       "--instui-component-base-button-tertiary-hover-text-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F, var(--instui-primitive-color-navy-navy10))"
       },
       "--instui-component-base-button-text-transform": {
         "inherits": true,
@@ -46392,7 +46392,7 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F33, var(--instui-color-background-interactive-action-ghost-on-color-hover))"
       },
       "--instui-component-base-button-primary-ghost-background": {
         "inherits": true,
@@ -46403,19 +46403,19 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F66, var(--instui-primitive-color-navy-navy10))"
       },
       "--instui-component-base-button-primary-ghost-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F, var(--instui-primitive-color-navy-navy10))"
       },
       "--instui-component-base-button-primary-ghost-hover-background": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F1A, var(--instui-color-background-interactive-action-ghost-on-color-hover))"
       },
       "--instui-component-base-button-primary-hover-background": {
         "inherits": true,
@@ -46565,13 +46565,13 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "#3D658F33"
+        "value": "light-dark(#3D658F33, var(--instui-primitive-color-navy-navy60))"
       },
       "--instui-component-base-button-secondary-active-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "#44709F00"
+        "value": "light-dark(#44709F00, var(--instui-primitive-color-navy-navy60))"
       },
       "--instui-component-base-button-secondary-active-text-color": {
         "inherits": true,
@@ -46583,13 +46583,13 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "#44709F33"
+        "value": "light-dark(#44709F33, var(--instui-primitive-color-navy-navy60))"
       },
       "--instui-component-base-button-secondary-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "#44709F00"
+        "value": "light-dark(#44709F00, var(--instui-primitive-color-navy-navy60))"
       },
       "--instui-component-base-button-secondary-box-shadow": {
         "inherits": true,
@@ -46662,13 +46662,13 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "#4D7EB333"
+        "value": "light-dark(#4D7EB333, var(--instui-primitive-color-navy-navy60))"
       },
       "--instui-component-base-button-secondary-hover-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "#44709F00"
+        "value": "light-dark(#44709F00, var(--instui-primitive-color-navy-navy60))"
       },
       "--instui-component-base-button-secondary-hover-box-shadow": {
         "inherits": true,
@@ -46896,37 +46896,37 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F4D, var(--instui-primitive-color-navy-navy10))"
       },
       "--instui-component-base-button-tertiary-active-text-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F, var(--instui-primitive-color-navy-navy10))"
       },
       "--instui-component-base-button-tertiary-disabled-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-stroke-interactive-action-tertiary-disabled",
         "syntax": "*",
-        "value": "var(--instui-color-stroke-interactive-action-tertiary-disabled)"
+        "value": "light-dark(#C7CACD, var(--instui-primitive-color-grey-grey130))"
       },
       "--instui-component-base-button-tertiary-disabled-text-color": {
         "inherits": true,
         "refersTo": "--instui-color-text-interactive-action-tertiary-disabled",
         "syntax": "*",
-        "value": "var(--instui-color-text-interactive-action-tertiary-disabled)"
+        "value": "light-dark(#AAB0B5, var(--instui-primitive-color-grey-grey130))"
       },
       "--instui-component-base-button-tertiary-hover-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F33, var(--instui-primitive-color-navy-navy10))"
       },
       "--instui-component-base-button-tertiary-hover-text-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-primary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-primary-bgd)"
+        "value": "light-dark(#1D354F, var(--instui-primitive-color-navy-navy10))"
       },
       "--instui-component-base-button-text-transform": {
         "inherits": true,
