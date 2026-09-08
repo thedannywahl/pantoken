@@ -1,0 +1,1 @@
+now that we've gone through and completed all of the translations work, we need to update our i18n config and our ci/release gates.
