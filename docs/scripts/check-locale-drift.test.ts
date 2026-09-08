@@ -62,13 +62,15 @@ const HOME_MD = [
 let keyFor: (kind: string, source: string) => string;
 /** The cached keys that make API_MD fully translated (one per prose block). */
 let apiProseKeys: string[];
+let apiProseSources: string[];
 
 beforeAll(async () => {
   const { collectUnits, segmentMarkdown } = await import("./segment-markdown.ts");
   ({ keyFor } = await import("./translation-memory.ts"));
-  apiProseKeys = collectUnits(segmentMarkdown(API_MD))
+  apiProseSources = collectUnits(segmentMarkdown(API_MD))
     .filter((u) => u.kind === "prose")
-    .map((u) => keyFor("prose", u.text));
+    .map((u) => u.text);
+  apiProseKeys = apiProseSources.map((source) => keyFor("prose", source));
 });
 
 /**
@@ -97,6 +99,7 @@ interface Fixtures {
   apiMd: string;
   guidesCache: Record<string, string> | null;
   apiCache: Record<string, string> | null;
+  apiPo: string | null;
   apiDirExists: boolean;
   policy: {
     tiers: Record<string, string[]>;
@@ -113,6 +116,7 @@ const fixtures: Fixtures = {
   apiMd: API_MD,
   guidesCache: {},
   apiCache: {},
+  apiPo: null,
   apiDirExists: true,
   policy: blockingPolicy,
   homeMd: "",
@@ -125,7 +129,7 @@ function fixtureExists(pathName: string): boolean {
   if (pathName.endsWith(".chrome.po")) return false;
   if (pathName.endsWith(".demos.po")) return false;
   if (pathName.endsWith(".guides.po")) return false;
-  if (pathName.endsWith(".api.po")) return false;
+  if (pathName.endsWith(".api.po")) return fixtures.apiPo !== null;
   const cacheStates = [
     [".guides.json", fixtures.guidesCache],
     [".api.json", fixtures.apiCache],
@@ -152,6 +156,7 @@ function fixtureFileContents(pathName: string): string {
       drift: { surfaces: fixtures.policy.surfaces, fallback: fixtures.policy.fallback },
     });
   if (pathName.endsWith("/index.md")) return fixtures.homeMd;
+  if (pathName.endsWith(".api.po")) return fixtures.apiPo ?? "";
   return fixtureCacheFileContents(pathName) ?? fixtureMarkdownContents(pathName);
 }
 
@@ -202,6 +207,7 @@ beforeEach(() => {
     apiMd: API_MD,
     guidesCache: {},
     apiCache: {},
+    apiPo: null,
     apiDirExists: true,
     policy: blockingPolicy,
     homeMd: "",
@@ -249,6 +255,24 @@ describe("walkMarkdown", () => {
 });
 
 describe("apiDrift", () => {
+  test("PO-backed drift ignores glossary units outside the API catalog", async () => {
+    const { apiDrift } = await import("./check-locale-drift.ts");
+    fixtures.apiFiles = ["page.md"];
+    fixtures.apiPo = apiProseSources
+      .map((source) => `msgctxt "docs.api:prose"\nmsgid "${source}"\nmsgstr "translated"\n`)
+      .join("\n");
+    expect(apiDrift("hu")).toEqual([]);
+  });
+
+  test("PO-backed drift still reports missing prose", async () => {
+    const { apiDrift } = await import("./check-locale-drift.ts");
+    fixtures.apiFiles = ["page.md"];
+    fixtures.apiPo = `msgctxt "docs.api:prose"\nmsgid "${apiProseSources[0]}"\nmsgstr "translated"\n`;
+    const missing = apiDrift("hu");
+    expect(missing).toHaveLength(3);
+    expect(missing.every((item) => item.kind === "prose")).toBe(true);
+  });
+
   test("flags every prose block missing from the cache (skipping the glossary heading)", async () => {
     const { apiDrift } = await import("./check-locale-drift.ts");
     fixtures.apiFiles = ["page.md"];

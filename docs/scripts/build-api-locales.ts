@@ -41,7 +41,13 @@ import { spawnSync } from "node:child_process";
 import { refreshCoverageReports, serializePot } from "@pantoken/i18n-engine";
 import { NON_ROOT_LOCALES, parseRequestedLocales } from "../.vitepress/i18n.ts";
 import { GlossaryTranslationAdapter, createTranslationAdapter } from "./api-translation.ts";
-import { type Resolve, collectUnits, reassemble, segmentMarkdown } from "./segment-markdown.ts";
+import {
+  type Resolve,
+  collectUnits,
+  isCatalogedApiUnit,
+  reassemble,
+  segmentMarkdown,
+} from "./segment-markdown.ts";
 import {
   type TranslationUnit,
   TranslationMemory,
@@ -222,7 +228,7 @@ const refreshApiPot = (): void => {
       collectUnits(segmentMarkdown(readFileSync(join(enApiDir, file), "utf8")))
         // Glossary units are deterministically substituted and never written to the PO catalog
         // (see segment-markdown.ts) — including them here would make 100% coverage unreachable.
-        .filter((unit) => unit.kind === "prose")
+        .filter(isCatalogedApiUnit)
         .map((unit) => ({
           msgid: unit.text,
           msgctxt: `docs.api:${unit.kind}`,
@@ -284,7 +290,7 @@ const translateMarkdownFiles = async (
 
     // Translate prose units for this file
     const proseUnits: TranslationUnit[] = fileUnits
-      .filter((unit) => unit.kind === "prose")
+      .filter(isCatalogedApiUnit)
       .map((unit) => ({ kind: "prose", source: unit.text }));
 
     const beforeMisses = memory.misses;

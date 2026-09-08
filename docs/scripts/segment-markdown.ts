@@ -61,6 +61,9 @@ export interface TranslatableUnit {
   kind: TranslationKind;
 }
 
+/** Whether an API unit belongs in the PO catalog and translation-drift checks. */
+export const isCatalogedApiUnit = (unit: TranslatableUnit): boolean => unit.kind === "prose";
+
 /** How to resolve a translatable unit to its target text. Identity round-trips the source. */
 export type Resolve = (text: string, kind: TranslationKind) => string;
 

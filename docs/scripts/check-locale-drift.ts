@@ -30,7 +30,7 @@ import { extractFrontmatterUnits, parsePo } from "@pantoken/i18n-engine";
 import { ENGLISH_UI_STRINGS, NON_ROOT_LOCALES, flattenStrings } from "../.vitepress/i18n.ts";
 import { GLOSSARY_TERMS } from "./glossary.ts";
 import { listDemoNames, loadDemoI18n } from "./demo-i18n.ts";
-import { collectUnits, segmentMarkdown } from "./segment-markdown.ts";
+import { collectUnits, isCatalogedApiUnit, segmentMarkdown } from "./segment-markdown.ts";
 import { keyFor } from "./translation-memory.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
@@ -111,6 +111,7 @@ export const apiDrift = (locale: string): Missing[] => {
     const missing: Missing[] = [];
     for (const file of walkMarkdown(apiDir)) {
       for (const unit of collectUnits(segmentMarkdown(readFileSync(file, "utf8")))) {
+        if (!isCatalogedApiUnit(unit)) continue;
         if (!translated.has(`docs.api:${unit.kind}\0${unit.text}`)) {
           missing.push({
             file: relative(docsRoot, file),
@@ -127,7 +128,7 @@ export const apiDrift = (locale: string): Missing[] => {
   for (const file of walkMarkdown(apiDir)) {
     const units = collectUnits(segmentMarkdown(readFileSync(file, "utf8")));
     for (const unit of units) {
-      if (unit.kind !== "prose") continue; // glossary/labels are deterministic — not :claude-authored
+      if (!isCatalogedApiUnit(unit)) continue;
       if (!cached.has(keyFor("prose", unit.text))) {
         missing.push({ file: relative(docsRoot, file), kind: "prose", sample: preview(unit.text) });
       }
