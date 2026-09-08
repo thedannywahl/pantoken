@@ -1,0 +1,13 @@
+should this prompt belong in tools/i18n-engine so it can be used by all adapters?
+
+---
+
+okay, do that.
+
+---
+
+now externalize this to a <name>.prompt.md file
+
+---
+
+can't we use vite ?raw or ?inline instead ?
