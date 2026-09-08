@@ -1,0 +1,30 @@
+the last two branches merged to main, but the changeset PR didn't get created.
+
+---
+
+I thought that since we re-did all the translations workflows all of those packages should have been part of a changeset, and also pantoken/cli was totaly rewritten as well.
+
+---
+
+yes
+
+---
+
+pr 121 is failing lint because of md formatting:
+```
+Run vp run lint:markdown
+$ vp exec markdownlint-cli2 "**/*.md" ⊘ cache disabled
+markdownlint-cli2 v0.23.2 (markdownlint v0.41.1)
+Finding: **/*.md !node_modules !**/node_modules !dist !**/dist !coverage !**/coverage !**/style.css !**/generated !**/generated/** !docs/api !docs/api/** !docs/*/api !docs/*/api/** !docs/internal !docs/internal/** !.github/copilot-instructions.md !.changeset/*.md !.agents/skills !.agents/skills/** !agent/skills !agent/skills/** !.claude !.claude/**
+Linting: 647 files
+Summary: 6 issues in 2 files
+docs/CHANGELOG.md:95 error MD003/heading-style Heading style [Expected: atx; Actual: setext]
+docs/CHANGELOG.md:95 error MD022/blanks-around-headings Headings should be surrounded by blank lines [Expected: 1; Actual: 0; Above] [Context: "- 63e06cb: Migrate hand-written guide localization from JSON translation memory to unified PO catalogs."]
+docs/CHANGELOG.md:95:103 error MD026/no-trailing-punctuation Trailing punctuation in heading [Punctuation: '.']
+docs/CHANGELOG.md:98 error MD003/heading-style Heading style [Expected: atx; Actual: setext]
+plugins/pantoken/layouts/CHANGELOG.md:21 error MD022/blanks-around-headings Headings should be surrounded by blank lines [Expected: 1; Actual: 0; Below] [Context: "## Features"]
+plugins/pantoken/layouts/CHANGELOG.md:34 error MD022/blanks-around-headings Headings should be surrounded by blank lines [Expected: 1; Actual: 0; Below] [Context: "## Types Exported"]
+
+```
+
+I thought we had fixed this in the github workflows to ensure that we formatted the changelogs before checking them.  If not, we'll need to add them to the md ignore files.
