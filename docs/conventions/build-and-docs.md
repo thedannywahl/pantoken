@@ -8,14 +8,15 @@
   via `voidzero-dev/setup-vp` but **not** `pnpm` on PATH, so a `pnpm run …` inside any script breaks
   the docs deploy with `pnpm: command not found`. Local dev has pnpm, so a top-level `pnpm run X` is
   fine — but scripts it calls must stay pnpm-free internally.
-- `.css` formatting: `vp fmt` (oxc) is JS/TS/JSON only and no-ops on `.css`. Stylelint owns `.css` —
-  `lint:css` runs `stylelint --fix`, wired into `ready` and the `vite.config.ts` `staged` hook.
+- `.css` formatting: `vp fmt` (oxc) is JS/TS/JSON only and no-ops on `.css`. Stylelint owns core CSS
+  correctness; cssdoc owns documentation comments. `lint:css` and `lint:cssdoc` run in `ready`, and
+  both are wired into the `vite.config.ts` staged hook.
 
 ## The gate
 
 - `pnpm run ready` — the pass/fail gate. It's a `vp` task DAG (`ready:all`), not a serial chain:
   `build:all` runs once, then `check:all` (`vp check`), `test:all` (`vp run -r test`), `lint:css`,
-  `validate:generated:only`, and `lint:markdown` fan out concurrently. Everything that reads
+  `lint:cssdoc`, `validate:generated:only`, and `lint:markdown` fan out concurrently. Everything that reads
   generated output depends on `build:all`, so generation happens exactly once (no concurrent codegen
   race). Must pass before you're done.
 - `pnpm run check:publish` — the publish gate (`gate:publish`): `gate:repository` (asserts every
@@ -49,11 +50,10 @@ organization governance model.
 
 ## Linting CSS
 
-Root `stylelint.config.js` runs error-only core rules plus `@cssdoc/stylelint-plugin`'s
-`cssdoc/valid-doc-comments`; anchor-positioning props are ignored and `@scope` is allowed. It's the
-single cssdoc lint instance — oxlint has no CSS language and its JS plugins can't host custom parsers,
-so the CSS gate can't move to oxc. `lint:css` targets the web-components `src/**/*.css` sources and the
-generated components CSS.
+Root `stylelint.config.js` runs error-only core CSS rules; anchor-positioning props are ignored and
+`@scope` is allowed. `lint:cssdoc` runs `@cssdoc/cli` with `--max-warnings 0` over the same
+web-components sources and generated components CSS, making it the single cssdoc lint instance.
+Stylelint remains because the CLI covers doc hygiene, not the 24 core CSS correctness rules.
 
 ## The docs site
 

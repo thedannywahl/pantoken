@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-06 23:57+0000\n"
+"PO-Revision-Date: 2026-09-08 20:16+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: und"
+"Language: und\n"
 
 #: ai/pantoken-ai/src/functions/installAgentAssets.md
 #, no-c-format
@@ -4890,415 +4890,415 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`.logos` — Instructure product logos as CSS image tokens: `--instui-logo-<product>-<layout>-<mode>` holds a data-URI SVG, so a logo paints via e.g. `background-image: var(--instui-logo-canvas-horizontal-color)`."
-msgstr ""
+msgstr "`.logos` — Logotypy produktów Instructure jako tokeny obrazów CSS: `--instui-logo-<product>-<layout>-<mode>` zawiera SVG jako data-URI, więc logo renderuje się np. za pomocą `background-image: var(--instui-logo-canvas-horizontal-color)`."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Group:** Plugins · **Source:** [generate.ts](https://github.com/thedannywahl/pantoken/blob/main/plugins/pantoken/logos/scripts/generate.ts)"
-msgstr ""
+msgstr "**Grupa:** Wtyczki · **Źródło:** [generate.ts](https://github.com/thedannywahl/pantoken/blob/main/plugins/pantoken/logos/scripts/generate.ts)"
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "canvas horizontal logo (color)."
-msgstr ""
+msgstr "canvas poziome logo (kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "canvas horizontal logo (dark)."
-msgstr ""
+msgstr "canvas poziome logo (ciemne)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "canvas horizontal logo (full-color)."
-msgstr ""
+msgstr "canvas poziome logo (pełny kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "canvas horizontal logo (reversed)."
-msgstr ""
+msgstr "canvas poziome logo (odwrócone)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "canvas icon logo (color)."
-msgstr ""
+msgstr "canvas logo ikony (kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "canvas icon logo (current-color)."
-msgstr ""
+msgstr "canvas logo ikony (aktualny kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "canvas icon logo (dark)."
-msgstr ""
+msgstr "canvas logo ikony (ciemne)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "canvas icon logo (reversed)."
-msgstr ""
+msgstr "canvas logo ikony (odwrócone)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "canvas stacked logo (color)."
-msgstr ""
+msgstr "canvas pionowe logo (kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "canvas stacked logo (dark)."
-msgstr ""
+msgstr "canvas pionowe logo (ciemne)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "canvas stacked logo (full-color)."
-msgstr ""
+msgstr "canvas pionowe logo (pełny kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "canvas stacked logo (reversed)."
-msgstr ""
+msgstr "canvas pionowe logo (odwrócone)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "igniteai horizontal logo (dark)."
-msgstr ""
+msgstr "igniteai poziome logo (ciemne)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "igniteai horizontal logo (full-color)."
-msgstr ""
+msgstr "igniteai poziome logo (pełny kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "igniteai horizontal logo (reversed)."
-msgstr ""
+msgstr "igniteai poziome logo (odwrócone)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "igniteai icon logo (color)."
-msgstr ""
+msgstr "igniteai logo ikony (kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "igniteai icon logo (current-color)."
-msgstr ""
+msgstr "igniteai logo ikony (aktualny kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "igniteai icon logo (dark)."
-msgstr ""
+msgstr "igniteai logo ikony (ciemne)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "igniteai icon logo (reversed)."
-msgstr ""
+msgstr "igniteai logo ikony (odwrócone)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "instructure horizontal logo (dark)."
-msgstr ""
+msgstr "instructure poziome logo (ciemne)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "instructure horizontal logo (full-color)."
-msgstr ""
+msgstr "instructure poziome logo (pełny kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "instructure horizontal logo (full-color-reversed)."
-msgstr ""
+msgstr "instructure poziome logo (pełny kolor — odwrócony)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "instructure horizontal logo (reversed)."
-msgstr ""
+msgstr "instructure poziome logo (odwrócone)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "instructure icon-single-dot logo (current-color)."
-msgstr ""
+msgstr "instructure logo ikony — pojedyncza kropka (aktualny kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "instructure icon-single-dot logo (dark)."
-msgstr ""
+msgstr "instructure logo ikony — pojedyncza kropka (ciemne)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "instructure icon-single-dot logo (full-color)."
-msgstr ""
+msgstr "instructure logo ikony — pojedyncza kropka (pełny kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "instructure icon-single-dot logo (full-color-bg)."
-msgstr ""
+msgstr "instructure logo ikony — pojedyncza kropka (pełny kolor z tłem)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "instructure icon-single-dot logo (reversed)."
-msgstr ""
+msgstr "instructure logo ikony — pojedyncza kropka (odwrócone)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "instructure icon-single-dot logo (reversed-bg)."
-msgstr ""
+msgstr "instructure logo ikony — pojedyncza kropka (odwrócone z tłem)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "instructure icon-three-dot logo (current-color)."
-msgstr ""
+msgstr "instructure logo ikony — trzy kropki (aktualny kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "instructure icon-three-dot logo (dark)."
-msgstr ""
+msgstr "instructure logo ikony — trzy kropki (ciemne)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "instructure icon-three-dot logo (full-color)."
-msgstr ""
+msgstr "instructure logo ikony — trzy kropki (pełny kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "instructure icon-three-dot logo (full-color-bg)."
-msgstr ""
+msgstr "instructure logo ikony — trzy kropki (pełny kolor z tłem)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "instructure icon-three-dot logo (reversed)."
-msgstr ""
+msgstr "instructure logo ikony — trzy kropki (odwrócone)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "instructure icon-three-dot logo (reversed-bg)."
-msgstr ""
+msgstr "instructure logo ikony — trzy kropki (odwrócone z tłem)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "learnplatform horizontal logo (dark)."
-msgstr ""
+msgstr "learnplatform poziome logo (ciemne)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "learnplatform horizontal logo (full-color)."
-msgstr ""
+msgstr "learnplatform poziome logo (pełny kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "learnplatform horizontal logo (light)."
-msgstr ""
+msgstr "learnplatform poziome logo (jasne)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "learnplatform horizontal logo (reversed)."
-msgstr ""
+msgstr "learnplatform poziome logo (odwrócone)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "learnplatform icon logo (color)."
-msgstr ""
+msgstr "learnplatform logo ikony (kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "learnplatform icon logo (current-color)."
-msgstr ""
+msgstr "learnplatform logo ikony (aktualny kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "learnplatform icon logo (dark)."
-msgstr ""
+msgstr "learnplatform logo ikony (ciemne)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "learnplatform icon logo (reversed)."
-msgstr ""
+msgstr "learnplatform logo ikony (odwrócone)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "mastery horizontal logo (color)."
-msgstr ""
+msgstr "mastery poziome logo (kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "mastery horizontal logo (dark)."
-msgstr ""
+msgstr "mastery poziome logo (ciemne)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "mastery horizontal logo (full-color)."
-msgstr ""
+msgstr "mastery poziome logo (pełny kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "mastery horizontal logo (reversed)."
-msgstr ""
+msgstr "mastery poziome logo (odwrócone)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "mastery icon logo (color)."
-msgstr ""
+msgstr "mastery logo ikony (kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "mastery icon logo (current-color)."
-msgstr ""
+msgstr "mastery logo ikony (aktualny kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "mastery icon logo (dark)."
-msgstr ""
+msgstr "mastery logo ikony (ciemne)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "mastery icon logo (reversed)."
-msgstr ""
+msgstr "mastery logo ikony (odwrócone)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "mastery stacked logo (color)."
-msgstr ""
+msgstr "mastery pionowe logo (kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "mastery stacked logo (dark)."
-msgstr ""
+msgstr "mastery pionowe logo (ciemne)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "mastery stacked logo (full-color)."
-msgstr ""
+msgstr "mastery pionowe logo (pełny kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "mastery stacked logo (reversed)."
-msgstr ""
+msgstr "mastery pionowe logo (odwrócone)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "parchment horizontal logo (color)."
-msgstr ""
+msgstr "parchment poziome logo (kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "parchment horizontal logo (dark)."
-msgstr ""
+msgstr "parchment poziome logo (ciemne)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "parchment horizontal logo (full-color)."
-msgstr ""
+msgstr "parchment poziome logo (pełny kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "parchment horizontal logo (reversed)."
-msgstr ""
+msgstr "parchment poziome logo (odwrócone)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "parchment icon logo (color)."
-msgstr ""
+msgstr "parchment logo ikony (kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "parchment icon logo (current-color)."
-msgstr ""
+msgstr "parchment logo ikony (aktualny kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "parchment icon logo (dark)."
-msgstr ""
+msgstr "parchment logo ikony (ciemne)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "parchment icon logo (reversed)."
-msgstr ""
+msgstr "parchment logo ikony (odwrócone)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "parchment stacked logo (color)."
-msgstr ""
+msgstr "parchment pionowe logo (kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "parchment stacked logo (dark)."
-msgstr ""
+msgstr "parchment pionowe logo (ciemne)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "parchment stacked logo (full-color)."
-msgstr ""
+msgstr "parchment pionowe logo (pełny kolor)."
 
 #: css/logos.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "parchment stacked logo (reversed)."
-msgstr ""
+msgstr "parchment pionowe logo (odwrócone)."
 
 #: css/mask.md
 #, no-c-format
@@ -29371,3 +29371,27 @@ msgstr "Przyjmuje w pełni rozwiązaną [LocaleBundle](#) lub surowy ciąg znacz
 msgctxt "docs.api:prose"
 msgid "A [LocaleBundle](#) object, or a BCP47 tag (`\"hu\"`, `\"ar\"`, …)."
 msgstr "Obiekt [LocaleBundle](#) lub znacznik BCP47 (`\"hu\"`, `\"ar\"`, …)."
+
+msgctxt "docs.api:prose"
+msgid "pantoken horizontal logo (full-color)."
+msgstr "pantoken poziome logo (pełny kolor)."
+
+msgctxt "docs.api:prose"
+msgid "pantoken horizontal logo (reversed)."
+msgstr "pantoken poziome logo (odwrócone)."
+
+msgctxt "docs.api:prose"
+msgid "pantoken icon logo (color)."
+msgstr "pantoken logo ikony (kolor)."
+
+msgctxt "docs.api:prose"
+msgid "pantoken icon logo (current-color)."
+msgstr "pantoken logo ikony (aktualny kolor)."
+
+msgctxt "docs.api:prose"
+msgid "pantoken icon logo (dark)."
+msgstr "pantoken logo ikony (ciemne)."
+
+msgctxt "docs.api:prose"
+msgid "pantoken icon logo (reversed)."
+msgstr "pantoken logo ikony (odwrócone)."

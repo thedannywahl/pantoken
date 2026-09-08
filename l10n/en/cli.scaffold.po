@@ -1,32 +1,40 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-08 20:06+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:promptPlatform"
 msgid "Select a platform to scaffold:"
-msgstr "Válassz platformot a scaffoldinghez:"
+msgstr "Select a platform to scaffold:"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:promptDir"
 msgid "Target directory:"
-msgstr "Célkönyvtár:"
+msgstr "Target directory:"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:spinnerStart"
 msgid "Scaffolding..."
-msgstr "Scaffoldolás..."
+msgstr "Scaffolding..."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:spinnerStop"
 msgid "Done scaffolding."
-msgstr "Scaffold kész."
+msgstr "Done scaffolding."
 
 #: packages/scaffold/src/i18n.json
-#, no-c-format
+#, no-c-format, x-translate-never
 msgctxt "cli.scaffold:wroteFile"
 msgid "✓ {{path}}"
 msgstr "✓ {{path}}"
@@ -35,10 +43,10 @@ msgstr "✓ {{path}}"
 #, no-c-format
 msgctxt "cli.scaffold:nextStepsHeading"
 msgid "Next steps:"
-msgstr "Következő lépések:"
+msgstr "Next steps:"
 
 #: packages/scaffold/src/i18n.json
-#, no-c-format
+#, no-c-format, x-translate-never
 msgctxt "cli.scaffold:nextStepsNav"
 msgid "cd {{dir}}"
 msgstr "cd {{dir}}"
@@ -47,68 +55,61 @@ msgstr "cd {{dir}}"
 #, no-c-format
 msgctxt "cli.scaffold:nextStepsInstall"
 msgid "Install dependencies: {{command}}"
-msgstr "Függőségek telepítése: {{command}}"
+msgstr "Install dependencies: {{command}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:nextStepsDevServer"
 msgid "Start the dev server (if your template has one)"
-msgstr "Indítsd el a fejlesztői szervert (ha a sablonod tartalmaz ilyet)"
+msgstr "Start the dev server (if your template has one)"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:notesHeading"
 msgid "Note:"
-msgstr "Megjegyzés:"
+msgstr "Note:"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:caveatsHeading"
 msgid "Caveat:"
-msgstr "Figyelmeztetés:"
+msgstr "Caveat:"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:errorMissingPlatform"
 msgid "Missing required argument \"platform\". Expected one of: {{platforms}}"
-msgstr "Hiányzó kötelező argumentum \"platform\". Egyik várható: {{platforms}}"
+msgstr "Missing required argument \"platform\". Expected one of: {{platforms}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:cancelled"
 msgid "Cancelled."
-msgstr "Mégse."
+msgstr "Cancelled."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpPlatformDescription"
-msgid ""
-"Platform to scaffold ({{platforms}}; \"html\" is an alias for "
-"\"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
-msgstr ""
-"Scaffoldolandó platform ({{platforms}}; \"html\" a \"components\" aliasza, a "
-"\"theme-editor\" a \"canvas-theme-editor\" aliasza)"
+msgid "Platform to scaffold ({{platforms}}; \"html\" is an alias for \"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
+msgstr "Platform to scaffold ({{platforms}}; \"html\" is an alias for \"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpDirDescription"
 msgid "Target directory (prompts interactively on a TTY if omitted)"
-msgstr "Célkönyvtár (TTY esetén interaktívan kérdez, ha kimarad)"
+msgstr "Target directory (prompts interactively on a TTY if omitted)"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpYesDescription"
-msgid ""
-"Never prompt; error instead of prompting for a missing platform/directory"
-msgstr ""
-"Soha ne kérdezzen; hibázzon, ahelyett hogy egy hiányzó platform/könyvtár "
-"miatt promptolna"
+msgid "Never prompt; error instead of prompting for a missing platform/directory"
+msgstr "Never prompt; error instead of prompting for a missing platform/directory"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpLangDescription"
 msgid "Override the auto-detected display language (e.g. \"hu\")"
-msgstr "Felülírja az automatikusan észlelt megjelenítési nyelvet (pl. \"hu\")"
+msgstr "Override the auto-detected display language (e.g. \"hu\")"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -131,121 +132,110 @@ msgstr "{{dev}}"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.notes"
-msgid ""
-"Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / "
-"JavaScript) so pantoken's classes are available on every page."
-msgstr ""
-"Töltsd fel a theme.css és theme.js fájlokat a Canvas Theme Editorba "
-"(Advanced → CSS / JavaScript), hogy a pantoken osztályai minden oldalon "
-"elérhetők legyenek."
+msgid "Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / JavaScript) so pantoken's classes are available on every page."
+msgstr "Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / JavaScript) so pantoken's classes are available on every page."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.caveats"
-msgid ""
-"Canvas sanitizes pasted HTML server-side — always verify content pasted from "
-"the RCE preview in Canvas."
-msgstr ""
-"A Canvas szerveroldalon megtisztítja a beillesztett HTML-t — mindig "
-"ellenőrizd a RCE előnézetből Canvasba másolt tartalmat."
+msgid "Canvas sanitizes pasted HTML server-side — always verify content pasted from the RCE preview in Canvas."
+msgstr "Canvas sanitizes pasted HTML server-side — always verify content pasted from the RCE preview in Canvas."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.pageTitle"
 msgid "RCE template authoring"
-msgstr "RCE sablon szerkesztés"
+msgstr "RCE template authoring"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.pageDescription"
-msgid ""
-"Author Canvas RCE page templates styled with pantoken, with a live preview."
-msgstr ""
-"Canvas RCE oldal sablonok készítése pantoken stílussal, élő előnézettel."
+msgid "Author Canvas RCE page templates styled with pantoken, with a live preview."
+msgstr "Author Canvas RCE page templates styled with pantoken, with a live preview."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.editThemeLabel"
 msgid "Edit theme"
-msgstr "Téma szerkesztése"
+msgstr "Edit theme"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpAriaLabel"
 msgid "Help"
-msgstr "Súgó"
+msgstr "Help"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.copyHtmlLabel"
 msgid "Copy HTML"
-msgstr "HTML másolása"
+msgstr "Copy HTML"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.editorPaneLabel"
 msgid "Editor"
-msgstr "Szerkesztő"
+msgstr "Editor"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.previewPaneLabel"
 msgid "Preview"
-msgstr "Előnézet"
+msgstr "Preview"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.previewFrameTitle"
 msgid "Styled preview"
-msgstr "Stilizált előnézet"
+msgstr "Styled preview"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.fullscreenEditorAriaLabel"
 msgid "Fullscreen editor"
-msgstr "Teljes képernyős szerkesztő"
+msgstr "Fullscreen editor"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.fullscreenPreviewAriaLabel"
 msgid "Fullscreen preview"
-msgstr "Teljes képernyős előnézet"
+msgstr "Fullscreen preview"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.resizePanesAriaLabel"
 msgid "Resize editor and preview"
-msgstr "Szerkesztő és előnézet átméretezése"
+msgstr "Resize editor and preview"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.stackVerticallyLabel"
 msgid "Stack vertically"
-msgstr "Függőlegesen egymás alá rendezés"
+msgstr "Stack vertically"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.stackSideBySideLabel"
 msgid "Stack side by side"
-msgstr "Oldalanként egymás mellé rendezés"
+msgstr "Stack side by side"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.swapPanesLabel"
 msgid "Swap panes"
-msgstr "Panelek felcserélése"
+msgstr "Swap panes"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.themeTrayAriaLabel"
 msgid "Theme settings"
-msgstr "Téma beállítások"
+msgstr "Theme settings"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.tabConfigLabel"
 msgid "Config"
-msgstr "Konfiguráció"
+msgstr "Config"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -263,96 +253,70 @@ msgstr "JS"
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.cdnProviderLabel"
 msgid "CDN provider"
-msgstr "CDN szolgáltató"
+msgstr "CDN provider"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.themeLabel"
 msgid "Theme"
-msgstr "Téma"
+msgstr "Theme"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.modeLabel"
 msgid "Mode"
-msgstr "Mód"
+msgstr "Mode"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.downloadCssLabel"
 msgid "Download theme.css"
-msgstr "theme.css letöltése"
+msgstr "Download theme.css"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.downloadJsLabel"
 msgid "Download theme.js"
-msgstr "theme.js letöltése"
+msgstr "Download theme.js"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.regenerateLabel"
 msgid "Regenerate from config"
-msgstr "Újragenerálás a konfigurációból"
+msgstr "Regenerate from config"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpModalTitle"
 msgid "How to use this page"
-msgstr "Hogyan használd ezt az oldalt"
+msgstr "How to use this page"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody1"
-msgid ""
-"Pick a starter template, edit it like you would in the Canvas Rich Content "
-"Editor, then click <strong>Copy HTML</strong> and paste the result into a "
-"Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted "
-"HTML server-side — this preview doesn't attempt to replicate that, so always "
-"verify the pasted result in Canvas."
-msgstr ""
-"Válassz egy kezdősablont, szerkeszd úgy, mint a Canvas Rich Content "
-"Editorban, majd kattints a <strong>HTML másolása</strong> gombra és illeszd "
-"be az eredményt egy Canvas oldalba (előtte válts HTML szerkesztő nézetre). A "
-"Canvas szerveroldalon megtisztítja a beillesztett HTML-t — ez az előnézet "
-"nem próbálja reprodukálni ezt, ezért mindig ellenőrizd a beillesztett "
-"eredményt Canvasban."
+msgid "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas."
+msgstr "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody2"
-msgid ""
-"Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, "
-"and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> "
-"before downloading them."
-msgstr ""
-"Használd a <strong>Téma szerkesztése</strong> lehetőséget a CDN szolgáltató, "
-"téma vagy mód megváltoztatásához, illetve a generált <code>theme.css</code>/"
-"<code>theme.js</code> kézi szerkesztéséhez letöltés előtt."
+msgid "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them."
+msgstr "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.closeLabel"
 msgid "Close"
-msgstr "Bezárás"
+msgstr "Close"
 
 #: packages/scaffold/src/i18n.json
-#, fuzzy, no-c-format
+#, no-c-format
 msgctxt "cli.scaffold:nextStepsDependencies"
-msgid ""
-"2. Installing dependencies (npm install, pnpm install, yarn install or bun "
-"install)"
-msgstr ""
-"2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun "
-"install)"
+msgid "2. Installing dependencies (npm install, pnpm install, yarn install or bun install)"
+msgstr "2. Installing dependencies (npm install, pnpm install, yarn install or bun install)"
 
 #: packages/scaffold/src/i18n.json
-#, fuzzy, no-c-format
+#, no-c-format
 msgctxt "cli.scaffold:nextStepsInstallGeneric"
 msgid "2. Installing dependencies"
-msgstr "Függőségek telepítése: {{command}}"
-
-#, no-c-format
-#~ msgctxt "cli.scaffold:nextStepsInstallGeneric"
-#~ msgid "2. Függőségek telepítése"
-#~ msgstr "2. Függőségek telepítése"
+msgstr "2. Installing dependencies"

@@ -1,6 +1,5 @@
 msgid ""
-msgstr ""
-"Content-Type: text/plain; charset=UTF-8"
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
 #: index.md:5
 #, no-c-format
@@ -9,8 +8,12 @@ msgstr "InstUI, buotruoktot"
 
 #: index.md:6
 #, no-c-format
-msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
-msgstr "Okta ráddjeduvvon token-mudel, mánuheapmái rievdasašša, framework-binnttaga, nativkoda ja design-ovttasvuođa čađaheapmái."
+msgid ""
+"One resolved token model, reshaped into stylesheets, framework bindings, "
+"native code, and design-tool payloads."
+msgstr ""
+"Okta ráddjeduvvon token-mudel, mánuheapmái rievdasašša, framework-binnttaga, "
+"nativkoda ja design-ovttasvuođa čađaheapmái."
 
 #: index.md:9
 #, no-c-format
@@ -39,8 +42,12 @@ msgstr "Okta čuovgga máŋggabeaivi"
 
 #: index.md:25
 #, no-c-format
-msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
-msgstr "Buot pakki čállá das rávdna ráddjeduvvon token-IR. Vázzit token mii gávdno álgguheapmái ja son vuođđá CSS:s, SCSS:s, nativkodas ja Figma:s diŋgga."
+msgid ""
+"Every package reads the same resolved token IR. Change a token upstream and "
+"it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr ""
+"Buot pakki čállá das rávdna ráddjeduvvon token-IR. Vázzit token mii gávdno "
+"álgguheapmái ja son vuođđá CSS:s, SCSS:s, nativkodas ja Figma:s diŋgga."
 
 #: index.md:29
 #, no-c-format
@@ -49,8 +56,12 @@ msgstr "Galgá leat čoahkkán pakkea"
 
 #: index.md:30
 #, no-c-format
-msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
-msgstr "Instalere doar @pantoken/css vuođđu rievdasaššiin, @pantoken/react hooks ja ikonavuotna, vai bundler-preset Tailwind, Panda, dahje MUI."
+msgid ""
+"Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and "
+"icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr ""
+"Instalere doar @pantoken/css vuođđu rievdasaššiin, @pantoken/react hooks ja "
+"ikonavuotna, vai bundler-preset Tailwind, Panda, dahje MUI."
 
 #: index.md:34
 #, no-c-format
@@ -59,8 +70,12 @@ msgstr "Generere mihkke platvorma"
 
 #: index.md:35
 #, no-c-format
-msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
-msgstr "Rádjái `pantoken generate` emit Swift, Kotlin, Compose, Flutter, Rust, WordPress ja máŋga. Dihte sama tokenat, buot ekošystemain dihte."
+msgid ""
+"Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, "
+"WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr ""
+"Rádjái `pantoken generate` emit Swift, Kotlin, Compose, Flutter, Rust, "
+"WordPress ja máŋga. Dihte sama tokenat, buot ekošystemain dihte."
 
 #: index.md:39
 #, no-c-format
@@ -69,5 +84,9 @@ msgstr "Ii beassadálki giegđen"
 
 #: index.md:40
 #, no-c-format
-msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
-msgstr "Tokenat leat vendorejuhkát stahtalaš JSON:s, doul `npm i` ii olmmoš gávdno GitHub-olmmoš vuohtas. Publiserevdu, semver-dávjá ja offline-buorre."
+msgid ""
+"The tokens ship vendored as static JSON, so `npm i` never reaches for a "
+"GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr ""
+"Tokenat leat vendorejuhkát stahtalaš JSON:s, doul `npm i` ii olmmoš gávdno "
+"GitHub-olmmoš vuohtas. Publiserevdu, semver-dávjá ja offline-buorre."

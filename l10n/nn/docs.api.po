@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-06 17:59+0000\n"
+"PO-Revision-Date: 2026-09-08 20:15+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: und"
+"Language: und\n"
 
 #: ai/pantoken-ai/src/functions/installAgentAssets.md
 #, no-c-format
@@ -8898,7 +8898,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`.instui-view` — The View primitive: a neutral box with key-value modifiers for background, border, radius, shadow, display, position, overflow, and cursor. Every one of these modifiers is also available globally (bare, or chained onto any other component) — see the `background`/`border`/`shadow`/`display`/`position`/`overflow`/`cursor` utilities."
-msgstr ""
+msgstr "`.instui-view` — View-primitive: ein nøytral boks med nøkkel–verdi-modifikatorar for bakgrunn, kant, radius, skugge, display, posisjon, overflow, og markør. Kvar av desse modifikatorane er òg tilgjengeleg globalt (utan prefiks, eller kopla til ein annan komponent) — sjå `background`/`border`/`shadow`/`display`/`position`/`overflow`/`cursor`-verktøy."
 
 #: css/view.md
 #, no-c-format
@@ -8910,145 +8910,145 @@ msgstr "**Source:** [view.css](https://github.com/thedannywahl/pantoken/blob/mai
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Alert surface background."
-msgstr ""
+msgstr "Bakgrunn for varslingsflate."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Brand surface background."
-msgstr ""
+msgstr "Bakgrunn for merkeflate."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Danger surface background."
-msgstr ""
+msgstr "Bakgrunn for faresone."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Info surface background."
-msgstr ""
+msgstr "Bakgrunn for informasjonsflate."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Primary surface background."
-msgstr ""
+msgstr "Bakgrunn for primærflate."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Inverse primary surface background."
-msgstr ""
+msgstr "Bakgrunn for invers primærflate."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Secondary surface background."
-msgstr ""
+msgstr "Bakgrunn for sekundærflate."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Success surface background."
-msgstr ""
+msgstr "Bakgrunn for suksessflate."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Transparent background."
-msgstr ""
+msgstr "Gjennomsiktig bakgrunn."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Warning surface background."
-msgstr ""
+msgstr "Bakgrunn for varselflate."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Brand stroke border colour."
-msgstr ""
+msgstr "Farge for merke-kantlinje."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Error stroke border colour."
-msgstr ""
+msgstr "Farge for feilkantlinje."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Info stroke border colour."
-msgstr ""
+msgstr "Farge for informasjons-kantlinje."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Base stroke border colour."
-msgstr ""
+msgstr "Farge for basis-kantlinje."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Success stroke border colour."
-msgstr ""
+msgstr "Farge for suksess-kantlinje."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Warning stroke border colour."
-msgstr ""
+msgstr "Farge for varsel-kantlinje."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Fully circular (50%) radius."
-msgstr ""
+msgstr "Fullstendig sirkulær (50%) radius."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Large corner radius."
-msgstr ""
+msgstr "Stor hjørne-radius."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Medium corner radius."
-msgstr ""
+msgstr "Middels hjørne-radius."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Pill (full) radius."
-msgstr ""
+msgstr "Pille (full) radius."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Small corner radius."
-msgstr ""
+msgstr "Liten hjørne-radius."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Large solid border in the base stroke colour."
-msgstr ""
+msgstr "Stor solid kant i basis-kantfargen."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Medium solid border in the base stroke colour."
-msgstr ""
+msgstr "Middels solid kant i basis-kantfargen."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Small solid border in the base stroke colour."
-msgstr ""
+msgstr "Liten solid kant i basis-kantfargen."
 
 #: css/view.md
 #, no-c-format
@@ -9090,19 +9090,19 @@ msgstr "display: none."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Above elevation shadow."
-msgstr ""
+msgstr "Skugge for høg elevasjon."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Resting elevation shadow."
-msgstr ""
+msgstr "Skugge for kvilande elevasjon."
 
 #: css/view.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Topmost elevation shadow."
-msgstr ""
+msgstr "Skugge for øvste elevasjon."
 
 #: css/visual-debug.md
 #, no-c-format

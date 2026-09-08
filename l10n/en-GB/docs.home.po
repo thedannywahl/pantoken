@@ -1,6 +1,5 @@
 msgid ""
-msgstr ""
-"Content-Type: text/plain; charset=UTF-8"
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
 #: index.md:5
 #, no-c-format
@@ -9,8 +8,12 @@ msgstr "InstUI, everywhere"
 
 #: index.md:6
 #, no-c-format
-msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
-msgstr "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgid ""
+"One resolved token model, reshaped into stylesheets, framework bindings, "
+"native code, and design-tool payloads."
+msgstr ""
+"One resolved token model, reshaped into stylesheets, framework bindings, "
+"native code, and design-tool payloads."
 
 #: index.md:9
 #, no-c-format
@@ -39,8 +42,12 @@ msgstr "One source of truth"
 
 #: index.md:25
 #, no-c-format
-msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
-msgstr "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+msgid ""
+"Every package reads the same resolved token IR. Change a token upstream and "
+"it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr ""
+"Every package reads the same resolved token IR. Change a token upstream and "
+"it flows to CSS, SCSS, native code, and Figma the same way."
 
 #: index.md:29
 #, no-c-format
@@ -49,8 +56,12 @@ msgstr "Use the smallest package"
 
 #: index.md:30
 #, no-c-format
-msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
-msgstr "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgid ""
+"Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and "
+"icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr ""
+"Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and "
+"icons, or a bundler preset for Tailwind, Panda, or MUI."
 
 #: index.md:34
 #, no-c-format
@@ -59,8 +70,12 @@ msgstr "Generate for any platform"
 
 #: index.md:35
 #, no-c-format
-msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
-msgstr "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgid ""
+"Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, "
+"WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr ""
+"Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, "
+"WordPress, and more. The same tokens, in each ecosystem's idiom."
 
 #: index.md:39
 #, no-c-format
@@ -69,5 +84,9 @@ msgstr "No upstream coupling"
 
 #: index.md:40
 #, no-c-format
-msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
-msgstr "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+msgid ""
+"The tokens ship vendored as static JSON, so `npm i` never reaches for a "
+"GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr ""
+"The tokens ship vendored as static JSON, so `npm i` never reaches for a "
+"GitHub-only source. Publishable, semver'd, offline-friendly."

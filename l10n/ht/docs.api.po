@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-05 03:05+0000\n"
+"PO-Revision-Date: 2026-09-08 20:12+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: und"
+"Language: und\n"
 
 #: ai/pantoken-ai/src/functions/installAgentAssets.md
 #, no-c-format
@@ -22116,13 +22116,13 @@ msgstr "# Entèfas: CssDocEntry"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "One documented CSS record: its base class plus everything derived from the CSS + doc comments."
-msgstr "One documented CSS record: its base class plus everything derived from the CSS + doc comments."
+msgstr "Youn dosye CSS dokimante: klas baz li ansanm ak tout sa ki sòti nan CSS + kòmantè dokimantasyon yo."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The record name from `@component`/`@utility`/`@rule`/`@declaration`/`@name`, e.g. `button`."
-msgstr "The record name from `@component`/`@utility`/`@rule`/`@declaration`/`@name`, e.g. `button`."
+msgstr "Non dosye a soti nan `@component`/`@utility`/`@rule`/`@declaration`/`@name`, e.g. `button`."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22134,13 +22134,13 @@ msgstr "### kind"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Which kind of CSS surface this documents (defaults to `component`)."
-msgstr "Which kind of CSS surface this documents (defaults to `component`)."
+msgstr "Ki kalite sifas CSS dokimante sa a ye (default se `component`)."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The base CSS selector — a class (`.button`), attribute (`[data-layout=\"x\"]`), ID (`#foo`),\n or shadow-DOM pseudo (`:host`) — inferred from the first bare-class rule or set explicitly via\n `@selector`. Always non-empty (falls back to `.${name}` when inference fails)."
-msgstr "The base CSS selector — a class (`.button`), attribute (`[data-layout=\"x\"]`), ID (`#foo`),\n or shadow-DOM pseudo (`:host`) — inferred from the first bare-class rule or set explicitly via\n `@selector`. Always non-empty (falls back to `.${name}` when inference fails)."
+msgstr "Selektè CSS baz la — yon klas (`.button`), atribi (`[data-layout=\"x\"]`), ID (`#foo`),\n oswa pseudo shadow-DOM (`:host`) — dedwi soti nan premye règ bare-class la oswa fikse eksplisitman via\n `@selector`. Toujou pa vid (retounen sou `.${name}` lè enfèrans echwe)."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22152,7 +22152,7 @@ msgstr "### summary?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "One-line summary from `@summary`."
-msgstr "One-line summary from `@summary`."
+msgstr "Rezime yon liy soti nan `@summary`."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22164,7 +22164,7 @@ msgstr "### remarks?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Extended prose from `@remarks`."
-msgstr "Extended prose from `@remarks`."
+msgstr "Pwosè elaji soti nan `@remarks`."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22176,7 +22176,7 @@ msgstr "### privateRemarks?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Internal-only prose from `@privateRemarks` (emitters may choose to omit it from public output)."
-msgstr "Internal-only prose from `@privateRemarks` (emitters may choose to omit it from public output)."
+msgstr "Tèks pou itilizasyon entèn sèlman soti nan `@privateRemarks` (emitè yo ka chwazi pa enkli li nan rezilta piblik)."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22188,7 +22188,7 @@ msgstr "### releaseStage?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The release stage from a modifier flag tag (`@alpha`/`@beta`/`@experimental`/`@internal`/`@public`)."
-msgstr "The release stage from a modifier flag tag (`@alpha`/`@beta`/`@experimental`/`@internal`/`@public`)."
+msgstr "Nivo lage a soti nan yon tag drapo modifikatè (`@alpha`/`@beta`/`@experimental`/`@internal`/`@public`)."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22200,7 +22200,7 @@ msgstr "### since?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Version introduced, from `@since`."
-msgstr "Version introduced, from `@since`."
+msgstr "Vèsyon kote li te entwodui, soti nan `@since`."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22212,7 +22212,7 @@ msgstr "### group?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A documentation group/category, from `@group`/`@category`."
-msgstr "A documentation group/category, from `@group`/`@category`."
+msgstr "Yon gwoup/kategori dokimantasyon, soti nan `@group`/`@category`."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22224,7 +22224,7 @@ msgstr "### accessibility?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Accessibility guidance, from `@a11y`/`@accessibility`."
-msgstr "Accessibility guidance, from `@a11y`/`@accessibility`."
+msgstr "Gid aksèbilite, soti nan `@a11y`/`@accessibility`."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22236,7 +22236,7 @@ msgstr "### global?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any component/layout/rule/declaration, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
-msgstr "Set when this record carries a `@global` tag — its modifiers (and per-modifier `@global` flags)\napply to any component/layout/rule/declaration, not just this record's base class. Used during\nvalidation and consumption checks to resolve modifier matches globally."
+msgstr "Mete lè dosye sa pote yon tag `@global` — modifikatè li yo (ak drapo pou chak-modifikatè `@global`) aplike a nenpòt konpozan/konpozisyon/règ/deklare, pa sèlman klas baz dosye sa a. Itilize pandan\nvalidasyon ak chèk konsomasyon pou rezoud matche modifikatè globalman."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22248,7 +22248,7 @@ msgstr "### modifiers"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "AST-extracted modifiers, annotated with `@modifier` prose where authored."
-msgstr "AST-extracted modifiers, annotated with `@modifier` prose where authored."
+msgstr "Modifikatè ekstrè soti nan AST la, anote ak `@modifier` tèks kote yo te ekri."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22260,7 +22260,7 @@ msgstr "### parts"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "AST-extracted sub-element parts (class-based), annotated with `@part` prose where authored."
-msgstr "AST-extracted sub-element parts (class-based), annotated with `@part` prose where authored."
+msgstr "Pati sib-eleman ekstrè soti nan AST la (ki baze sou klas)), anote ak `@part` tèks kote yo te ekri."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22272,7 +22272,7 @@ msgstr "### shadowParts"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Shadow-DOM exposed parts (`::part(name)`), from `@csspart` or a `::part()` selector."
-msgstr "Shadow-DOM exposed parts (`::part(name)`), from `@csspart` or a `::part()` selector."
+msgstr "Patisyon ekspoze pa Shadow-DOM (`::part(name)`), soti nan `@csspart` oswa yon selektè `::part()`."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22284,7 +22284,7 @@ msgstr "### pseudoElements"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Native pseudo-elements the component styles (`::before`, `::marker`, …), from `@pseudo` or a selector."
-msgstr "Native pseudo-elements the component styles (`::before`, `::marker`, …), from `@pseudo` or a selector."
+msgstr "Pseudo-eleman natif-natal estil konpozan an (`::before`, `::marker`, …), soti nan `@pseudo` oswa yon selektè."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22296,7 +22296,7 @@ msgstr "### states"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "States the component reacts to, from `@cssstate`, `:state()`, pseudo-classes, or state classes."
-msgstr "States the component reacts to, from `@cssstate`, `:state()`, pseudo-classes, or state classes."
+msgstr "Eta konpozan an reponn a yo, soti nan `@cssstate`, `:state()`, pseudo-classes, oswa klas eta."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22308,7 +22308,7 @@ msgstr "### slots"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Named slots the component shell exposes, from `@slot`."
-msgstr "Named slots the component shell exposes, from `@slot`."
+msgstr "Slot ki gen non ke kich la ekspoze, soti nan `@slot`."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22320,7 +22320,7 @@ msgstr "### elements?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Allowed HTML elements from `@element` (default + optional named profiles)."
-msgstr "Allowed HTML elements from `@element` (default + optional named profiles)."
+msgstr "Eleman HTML ki pèmèt soti nan `@element` (defo + pwofil nonmen opsyonèl)."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22332,7 +22332,7 @@ msgstr "### todos"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Internal to-do notes, from `@todo` tags and `/* @todo … */` inline comments. Development notes,\nnot public API — emitters may omit them (like [CssDocEntry.privateRemarks](#privateremarks))."
-msgstr "Internal to-do notes, from `@todo` tags and `/* @todo … */` inline comments. Development notes,\nnot public API — emitters may omit them (like [CssDocEntry.privateRemarks](#privateremarks))."
+msgstr "Nòt entèns travay-a-fè, soti nan `@todo` tags ak `/* @todo … */` kòmantè inline. Nòt devlopman,\npa API piblik — emitè yo ka pa enkli yo (tankou [CssDocEntry.privateRemarks](#privateremarks))."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22344,7 +22344,7 @@ msgstr "### cssPropertiesConsumed"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Design tokens this component consumes: every `--*` custom property referenced via `var(...)` inside\nits rules, each annotated with `@tokens` prose where authored (and including any `@tokens`-declared\ntoken not literally found via `var()`)."
-msgstr "Design tokens this component consumes: every `--*` custom property referenced via `var(...)` inside\nits rules, each annotated with `@tokens` prose where authored (and including any `@tokens`-declared\ntoken not literally found via `var()`)."
+msgstr "Tokens konsepsyon konpozan sa a konsome: chak `--*` pwopriyete koutim refere atravè `var(...)` andedan\nrèg li yo, chak anote ak `@tokens` tèks kote yo te ekri (epi enkli nenpòt `@tokens`-deklae\ntoken ki pa literalman jwenn via `var()`)."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22356,7 +22356,7 @@ msgstr "### cssPropertiesDeclared"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Custom properties this component declares (`@property`) or documents (`@cssproperty`)."
-msgstr "Custom properties this component declares (`@property`) or documents (`@cssproperty`)."
+msgstr "Pwopriyete koutim konpozan sa a deklare (`@property`) oswa dokimante (`@cssproperty`)."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22368,7 +22368,7 @@ msgstr "### functions"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "CSS custom functions (`@function`) this component defines."
-msgstr "CSS custom functions (`@function`) this component defines."
+msgstr "Fonksyon koutim CSS (`@function`) ke konpozan sa a defini."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22380,7 +22380,7 @@ msgstr "### animations"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Animations (`@keyframes`) this component exposes."
-msgstr "Animations (`@keyframes`) this component exposes."
+msgstr "Animasyon (`@keyframes`) ke konpozan sa a ekspoze."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22392,7 +22392,7 @@ msgstr "### layers"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Cascade layers (`@layer`) this component participates in."
-msgstr "Cascade layers (`@layer`) this component participates in."
+msgstr "Kouch kaskad (`@layer`) ke konpozan sa a patisipe ladanl."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22404,7 +22404,7 @@ msgstr "### conditions"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Conditional-support blocks (`@container`/`@supports`/`@media`) the rules sit under."
-msgstr "Conditional-support blocks (`@container`/`@supports`/`@media`) the rules sit under."
+msgstr "Blòk sipò kondisyonèl (`@container`/`@supports`/`@media`) anba ki règ yo chita."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22416,7 +22416,7 @@ msgstr "### examples"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@example` blocks, verbatim."
-msgstr "`@example` blocks, verbatim."
+msgstr "`@example` blòk, vèbatim."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22428,7 +22428,7 @@ msgstr "### structure?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The authored `@structure` element tree (top-level nodes), when present. When the `@structure` body\nuses `@variant` blocks (see [structureVariants](#structurevariants)), this holds the first variant's nodes only,\nfor back-compat with any code that hasn't been updated to read `structureVariants`."
-msgstr "The authored `@structure` element tree (top-level nodes), when present. When the `@structure` body\nuses `@variant` blocks (see [structureVariants](#structurevariants)), this holds the first variant's nodes only,\nfor back-compat with any code that hasn't been updated to read `structureVariants`."
+msgstr "Pyebwa eleman otè a ekri a `@structure` (nœuds tèt-nivo), lè prezan. Lè kò a `@structure` itilize `@variant` blòk (gade [structureVariants](#structurevariants)), sa a kenbe nœuds premye varyant lan sèlman,\npou konpatibilite bak ak nenpòt kòd ki poko mete ajou pou li li `structureVariants`."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22440,7 +22440,7 @@ msgstr "### structureVariants?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Alternative DOM shapes for this component, when the authored `@structure` body contains one or\nmore top-level `@variant` blocks — absent for the common case of a single, non-variant structure."
-msgstr "Alternative DOM shapes for this component, when the authored `@structure` body contains one or\nmore top-level `@variant` blocks — absent for the common case of a single, non-variant structure."
+msgstr "Fòm DOM altènatif pou konpozan sa a, lè kò otè a `@structure` gen youn oswa\nplis blòk tèt-nivo `@variant` — absan pou ka komen kote gen yon sèl estrikti san varyant."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22452,7 +22452,7 @@ msgstr "### structureDescription?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "An optional prose description leading the `@structure` body, when authored."
-msgstr "An optional prose description leading the `@structure` body, when authored."
+msgstr "Yon deskripsyon pwosè opsyonèl ki mennen kò `@structure`, lè li ekri."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22470,7 +22470,7 @@ msgstr "`@demo &lt;spec&gt;` (e.g. `self:button`), when authored."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Component-level deprecation replacement text, when authored (the argument to a `@deprecated` tag)."
-msgstr "Component-level deprecation replacement text, when authored (the argument to a `@deprecated` tag)."
+msgstr "Tèks ranplasman deprekasyo nivo konpozan, lè li ekri (agiman pou yon tag `@deprecated`)."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22494,7 +22494,7 @@ msgstr "### usage?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Usage prose from `@usage` — how to include the stylesheet / use the component."
-msgstr "Usage prose from `@usage` — how to include the stylesheet / use the component."
+msgstr "Pwosè itilizasyon soti nan `@usage` — kijan pou enkli fichyè stil la / itilize konpozan an."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22506,7 +22506,7 @@ msgstr "### annotations"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Local annotation legend rows from `@annotations`, in author order."
-msgstr "Local annotation legend rows from `@annotations`, in author order."
+msgstr "Ranje lejand anotasyon lokal soti nan `@annotations`, nan lòd otè a."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22518,7 +22518,7 @@ msgstr "### refs"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Local annotation references from `@ref`, in author order."
-msgstr "Local annotation references from `@ref`, in author order."
+msgstr "Referans anotasyon lokal soti nan `@ref`, nan lòd otè a."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22530,7 +22530,7 @@ msgstr "### decorators"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Record-level object-model decorators."
-msgstr "Record-level object-model decorators."
+msgstr "Dekoratè modèl-objè nan nivo dosye a."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22542,7 +22542,7 @@ msgstr "### compat"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Browser-support / feature-compatibility notes from `@compat`."
-msgstr "Browser-support / feature-compatibility notes from `@compat`."
+msgstr "Nòt sipò navigatè / konpatibilite karakteristik soti nan `@compat`."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22554,7 +22554,7 @@ msgstr "### related"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Related components from `@related`."
-msgstr "Related components from `@related`."
+msgstr "Konpozan ki gen rapò soti nan `@related`."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22566,7 +22566,7 @@ msgstr "### memberOf?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Declared family membership from `@memberOf` — this record is a member of another named record,\noptionally `private` (must only ever appear inside that parent). Absent when not authored."
-msgstr "Declared family membership from `@memberOf` — this record is a member of another named record,\noptionally `private` (must only ever appear inside that parent). Absent when not authored."
+msgstr "Membreship fanmi deklare soti nan `@memberOf` — dosye sa a se yon manm yon lòt dosye nonmen,\nopsyonèlman `private` (dwe parèt sèlman andedan paran sa a). Absan lè pa otè."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22578,7 +22578,7 @@ msgstr "### members?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Member record names from `@members` — the inverse direction, declared on the parent."
-msgstr "Member record names from `@members` — the inverse direction, declared on the parent."
+msgstr "Non dosye manm soti nan `@members` — direksyon envès, deklare sou paran an."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -22590,13 +22590,13 @@ msgstr "### memberDeclarations?"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Structured parent-side member declarations from repeated `@member` tags."
-msgstr "Structured parent-side member declarations from repeated `@member` tags."
+msgstr "Deklarasyon manm estriktire sou bò paran an soti nan repete tag `@member`."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Where the record was authored, when position info is available (for source links)."
-msgstr "Where the record was authored, when position info is available (for source links)."
+msgstr "Kote dosye a te ekri, lè enfòmasyon pozisyon disponib (pou lyen sous))."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format

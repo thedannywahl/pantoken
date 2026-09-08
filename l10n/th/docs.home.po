@@ -1,6 +1,5 @@
 msgid ""
-msgstr ""
-"Content-Type: text/plain; charset=UTF-8"
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
 #: index.md:5
 #, no-c-format
@@ -9,8 +8,12 @@ msgstr "InstUI ในทุกที่"
 
 #: index.md:6
 #, no-c-format
-msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
-msgstr "โมเดลโทเค็นที่ถูกรวมแล้วเดียวเดียว ถูกปรับรูปร่างเป็นสไตล์ชีต ผูกกับเฟรมเวิร์ก โค้ดเนทีฟ และข้อมูลสำหรับเครื่องมือออกแบบ"
+msgid ""
+"One resolved token model, reshaped into stylesheets, framework bindings, "
+"native code, and design-tool payloads."
+msgstr ""
+"โมเดลโทเค็นที่ถูกรวมแล้วเดียวเดียว ถูกปรับรูปร่างเป็นสไตล์ชีต ผูกกับเฟรมเวิร์ก โค้ดเนทีฟ "
+"และข้อมูลสำหรับเครื่องมือออกแบบ"
 
 #: index.md:9
 #, no-c-format
@@ -39,8 +42,12 @@ msgstr "แหล่งความจริงเดียว"
 
 #: index.md:25
 #, no-c-format
-msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
-msgstr "ทุกแพ็กเกจอ่าน IR โทเค็นที่ถูกรวมเดียวกัน เปลี่ยนโทเค็นที่ต้นทางแล้วมันจะไหลไปยัง CSS, SCSS, โค้ดเนทีฟ และ Figma ในแบบเดียวกัน"
+msgid ""
+"Every package reads the same resolved token IR. Change a token upstream and "
+"it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr ""
+"ทุกแพ็กเกจอ่าน IR โทเค็นที่ถูกรวมเดียวกัน เปลี่ยนโทเค็นที่ต้นทางแล้วมันจะไหลไปยัง CSS, SCSS, "
+"โค้ดเนทีฟ และ Figma ในแบบเดียวกัน"
 
 #: index.md:29
 #, no-c-format
@@ -49,8 +56,12 @@ msgstr "ใช้แพ็กเกจที่เล็กที่สุด"
 
 #: index.md:30
 #, no-c-format
-msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
-msgstr "ติดตั้งเพียง @pantoken/css สำหรับสไตล์ชีต, @pantoken/react สำหรับฮุคและไอคอน, หรือใช้ preset ของ bundler สำหรับ Tailwind, Panda, หรือ MUI."
+msgid ""
+"Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and "
+"icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr ""
+"ติดตั้งเพียง @pantoken/css สำหรับสไตล์ชีต, @pantoken/react สำหรับฮุคและไอคอน, หรือใช้ "
+"preset ของ bundler สำหรับ Tailwind, Panda, หรือ MUI."
 
 #: index.md:34
 #, no-c-format
@@ -59,8 +70,12 @@ msgstr "สร้างสำหรับแพลตฟอร์มใดๆ"
 
 #: index.md:35
 #, no-c-format
-msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
-msgstr "รัน `pantoken generate` เพื่อสร้าง Swift, Kotlin, Compose, Flutter, Rust, WordPress และอื่นๆ โทเค็นเดียวกันในสำนวนของแต่ละระบบนิเวศ"
+msgid ""
+"Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, "
+"WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr ""
+"รัน `pantoken generate` เพื่อสร้าง Swift, Kotlin, Compose, Flutter, Rust, "
+"WordPress และอื่นๆ โทเค็นเดียวกันในสำนวนของแต่ละระบบนิเวศ"
 
 #: index.md:39
 #, no-c-format
@@ -69,5 +84,9 @@ msgstr "ไม่มีการผูกกับต้นทาง"
 
 #: index.md:40
 #, no-c-format
-msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
-msgstr "โทเค็นถูกจัดส่งเป็นไฟล์ JSON แบบ vendored ดังนั้น `npm i` จะไม่ดึงจากแหล่งที่หาได้เฉพาะบน GitHub สามารถเผยแพร่ มีเวอร์ชัน semver และใช้งานแบบออฟไลน์ได้."
+msgid ""
+"The tokens ship vendored as static JSON, so `npm i` never reaches for a "
+"GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr ""
+"โทเค็นถูกจัดส่งเป็นไฟล์ JSON แบบ vendored ดังนั้น `npm i` จะไม่ดึงจากแหล่งที่หาได้เฉพาะบน "
+"GitHub สามารถเผยแพร่ มีเวอร์ชัน semver และใช้งานแบบออฟไลน์ได้."
