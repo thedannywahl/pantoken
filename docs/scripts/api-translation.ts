@@ -4,14 +4,14 @@
  * The default adapter is deterministic and keyless (safe for CI), while the adapter contract keeps
  * room for higher-quality engines later.
  */
+import { spawn } from "node:child_process";
 import {
   buildBatchTranslationPrompt,
   extractJsonObject,
-  spawnPrompt,
-} from "@pantoken/translation-adapters";
+} from "../../tools/translation-adapters/src/index.ts";
 import { LOCALES } from "@pantoken/web-components";
 import { GLOSSARY_TERMS, type GlossaryKind } from "./glossary.ts";
-import { TranslationMemory } from "./translation-memory.ts";
+import { alignTrailingNewline, TranslationMemory } from "./translation-memory.ts";
 
 // English display name per locale (e.g. "Hungarian (Magyar)" \u2192 the adapter prompt only needs the
 // leading English name, not the native parenthetical), used to phrase the `AiTranslationAdapter`
@@ -32,6 +32,44 @@ const LOCALE_LABELS: Record<string, string> = Object.fromEntries(
   ]),
 );
 
+const spawnPrompt = (
+  command: string,
+  args: string[],
+  prompt: string,
+  context: string,
+  timeoutMs: number,
+): Promise<string> =>
+  new Promise((resolve, reject) => {
+    const child = spawn(command, args, { stdio: ["pipe", "pipe", "pipe"] });
+    let output = "";
+    let error = "";
+    const timer = setTimeout(() => {
+      child.kill("SIGKILL");
+      reject(new Error(`AI command timed out after ${String(timeoutMs)}ms for ${context}`));
+    }, timeoutMs);
+    child.stdout.setEncoding("utf8");
+    child.stderr.setEncoding("utf8");
+    child.stdout.on("data", (chunk) => {
+      output += chunk;
+    });
+    child.stderr.on("data", (chunk) => {
+      error += chunk;
+    });
+    child.on("error", (cause) => {
+      clearTimeout(timer);
+      reject(cause);
+    });
+    child.on("close", (code) => {
+      clearTimeout(timer);
+      if (code !== 0) {
+        reject(new Error(`AI command exited ${String(code)} for ${context}: ${error.trim()}`));
+      } else {
+        resolve(output.trimEnd());
+      }
+    });
+    child.stdin.end(prompt);
+  });
+
 /** Remove the markdown envelope when a CLI model echoes the delimiters from the translation prompt. */
 const stripMarkdownEnvelope = (output: string): string => {
   const begin = "--- BEGIN MARKDOWN ---";
@@ -41,15 +79,6 @@ const stripMarkdownEnvelope = (output: string): string => {
   if (start === -1 || finish <= start) return output;
   return output.slice(start + begin.length, finish).trim();
 };
-
-/**
- * `msgfmt -c` fails an entry whose `msgstr` and `msgid` disagree about a trailing newline, and models
- * routinely add or drop one. Give the translation its source's trailing-newline shape.
- */
-export function alignTrailingNewline(source: string, translation: string): string {
-  if (translation === "") return translation;
-  return translation.replace(/\n+$/u, "") + (/\n+$/u.exec(source)?.[0] ?? "");
-}
 
 /** A pluggable translation engine: named, with markdown/text/batch translate methods. */
 export interface TranslationAdapter {
@@ -498,7 +527,7 @@ export class AiTranslationAdapter implements TranslationAdapter {
     // Without a timeout a wedged CLI (no output, never exits) stalls the whole locale forever; a
     // timed-out chunk is logged and skipped by translateBatch, so its strings retry next run.
     const timeoutMs = Number(process.env.DOCS_TRANSLATION_TIMEOUT_MS) || 120_000;
-    return spawnPrompt(this.command, [...this.args, "-p"], prompt, scope, { timeoutMs });
+    return spawnPrompt(this.command, [...this.args, "-p"], prompt, scope, timeoutMs);
   }
 }
 

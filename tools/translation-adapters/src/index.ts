@@ -58,7 +58,7 @@ export function buildBatchTranslationPrompt(
     "utf8",
   );
   return template
-    .replace("{{targetLanguage}}", targetLanguage)
+    .replaceAll("{{targetLanguage}}", targetLanguage)
     .replace("{{payload}}", JSON.stringify(payload, null, 2))
     .trimEnd();
 }

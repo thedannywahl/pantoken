@@ -165,6 +165,7 @@ const collectSidebarText = (items: SidebarItem[], out: string[]): void => {
 // segments while leaving preserved HTML blocks/code fences untouched. A tag with attributes (the
 // stability-badge pill's `<span class="...">`) is real generated HTML, not a stray mention — its
 // plain closing partner (`</span>`) must stay unescaped too, or the pair goes unbalanced.
+/** Escape bare HTML tags in prose while preserving code and attributed tags. */
 export const escapeBareHtmlTags = (text: string): string => {
   const preserved: string[] = [];
   const withoutCode = text.replace(/```[\s\S]*?```|`[^`\n]+`/g, (match) => {

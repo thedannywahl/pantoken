@@ -21,8 +21,14 @@ import {
   sha256,
   type VerbatimPolicy,
 } from "@pantoken/translation-adapters";
-import { alignTrailingNewline, type TranslationAdapter } from "./api-translation.ts";
+import type { TranslationAdapter } from "./api-translation.ts";
 import { parsePo, refreshCoverageReports, serializePo, type PoEntry } from "@pantoken/i18n-engine";
+
+/** Match a translation's trailing-newline shape to its source string. */
+export function alignTrailingNewline(source: string, translation: string): string {
+  if (translation === "") return translation;
+  return translation.replace(/\n+$/u, "") + (/\n+$/u.exec(source)?.[0] ?? "");
+}
 
 /**
  * A translatable unit. `markdown` is translated per file (whole-file, e.g. guides); `text` (short

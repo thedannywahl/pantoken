@@ -2,8 +2,10 @@ import { EventEmitter } from "node:events";
 import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test";
 
 // A fake child process: a stream stub for stdout/stderr plus stdin.end that triggers the response.
-const spawn = vi.fn();
-vi.mock("node:child_process", () => ({ spawn }));
+const { spawn } = vi.hoisted(() => ({ spawn: vi.fn() }));
+vi.mock("node:child_process", () => ({
+  spawn: (...args: Parameters<typeof spawn>) => spawn(...args),
+}));
 
 const { GlossaryTranslationAdapter, AiTranslationAdapter, createTranslationAdapter } =
   await import("./api-translation.ts");
