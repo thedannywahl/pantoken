@@ -1,0 +1,24 @@
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tools/i18n-engine/tests/ai-translate.test.ts > fillUntranslatedEntries > fills empty msgstr entries via the configured AI command
+ FAIL  tools/i18n-engine/tests/ai-translate.test.ts > fillUntranslatedEntries > does not touch an already-translated entry
+Error: AI command exited 2 for locale 'hu': oils I/O error (main): No such process
+ ❯ ChildProcess.<anonymous> tools/translation-adapters/dist/index.mjs:439:43
+    437|    settled = true;
+    438|    const where = context ? ` for ${context}` : "";
+    439|    if (code !== 0) reject(/* @__PURE__ */ new Error(`AI command exited…
+       |                                           ^
+    440|    else resolve(out.trimEnd());
+    441|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+ Test Files  1 failed | 298 passed (299)
+      Tests  2 failed | 2060 passed | 3 skipped (2065)
+   Start at  13:57:39
+   Duration  42.66s (transform 76.67s, setup 10.05s, import 179.35s, tests 101.92s, environment 11.04s)
+
+---
+
+it was the result of running `vp run ready` on the local machine., give me an updated command to capture that data.
