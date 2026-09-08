@@ -1,5 +1,30 @@
 # CHANGELOG
 
+## 0.3.7
+
+### Patch Changes
+
+- 7d964ee: New package `@pantoken/tinymce` provides TinyMCE + CodeMirror integration for pantoken design
+  system. Exports five capabilities:
+
+  - **Phase 1:** Content-CSS wiring (pantokenContentCssUrls, injectContentStylesheet)
+  - **Phase 2:** TinyMCE plugins (templates, source-toggle)
+  - **Phase 3:** Three browse+insert pickers (components/icons/logos) with dynamic CSS injection
+  - **Phase 4:** CodeMirror HTML linter validating .instui-* tokens
+  - **Phase 5:** CodeMirror autocomplete for component/modifier IntelliSense
+
+  Merged model combines @pantoken/components, @pantoken/plugin-custom-components, and
+  @pantoken/plugin-simple-icons metadata for unified token validation and discovery.
+
+  Also exports model.json and manifest.json from @pantoken/components and
+  @pantoken/plugin-simple-icons respectively for programmatic access to component and icon
+  definitions.
+
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+  - @pantoken/model@0.3.2
+  - @pantoken/plugin-kit@0.3.0
+
 ## 0.3.6
 
 ### Patch Changes

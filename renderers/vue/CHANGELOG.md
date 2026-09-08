@@ -1,5 +1,32 @@
 # CHANGELOG
 
+## 0.1.29
+
+### Patch Changes
+
+- 7d964ee: This is a no-op changeset to satisfy changeset coverage for packages with transitively modified lock files but no code changes.
+- 63e06cb: Synchronize localized package surfaces and generated localization output.
+- 63e06cb: Move the web-components locale bundles and localization helpers into `@pantoken/web-components`.
+  English source strings remain in `src/i18n.json`, with translations generated from the repository
+  PO/POT catalogs in `/l10n`.
+- Updated dependencies [63e06cb]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [63e06cb]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [63e06cb]
+- Updated dependencies [63e06cb]
+- Updated dependencies [7d964ee]
+- Updated dependencies [63e06cb]
+- Updated dependencies [7d964ee]
+- Updated dependencies [63e06cb]
+  - @pantoken/web-components@0.6.0
+  - @pantoken/scaffold-base@0.2.1
+
 ## 0.1.28
 
 ### Patch Changes

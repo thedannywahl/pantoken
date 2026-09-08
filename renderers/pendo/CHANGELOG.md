@@ -1,5 +1,44 @@
 # CHANGELOG
 
+## 0.3.14
+
+### Patch Changes
+
+- 7d964ee: Align button, banner, and Pendo button styling with the BaseButton component tokens, add the button-group wrapper gap, and temporarily rewrite secondary and tertiary button light-mode tokens to the current Figma values while preserving the existing dark-mode values.
+- 7d964ee: This is a no-op changeset to satisfy changeset coverage for packages with transitively modified lock files but no code changes.
+- 63e06cb: Synchronize localized package surfaces and generated localization output.
+- 7d964ee: Add violet and sea banner guide treatments with container-responsive sizing and banner-specific
+  primary, secondary, and tertiary button states.
+- 7d964ee: Render Pendo's semantic lightbox markup from one compact theme class containing `instui`, with a
+  violet lightbulb banner by default and composable sea, built-in glyph, and reversed Canvas, Parchment,
+  Mastery, and LearnPlatform icon suffixes. Align non-primary banner buttons, standard controls, and
+  close-button interactions with the component tokens; apply layout-responsive title and subtitle
+  scales; keep banner swatches and glyphs aligned at the top; center close glyphs with the canonical
+  mask and a 2px optical offset; remove elevation from banners; retain borders and padding on every
+  popover edge; and add a live
+  popover, alert, and banner documentation demo. Stamp `global.css` with its exact
+  `@pantoken/pendo@<version>` package coordinate in a minifier-preserved CSS legal comment for
+  deployment traceability.
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [63e06cb]
+  - @pantoken/components@1.1.0
+  - @pantoken/tokens@0.3.1
+  - @pantoken/model@0.3.2
+  - @pantoken/plugin-props-minify@0.1.4
+  - @pantoken/css@0.3.8
+
 ## 0.3.13
 
 ### Patch Changes

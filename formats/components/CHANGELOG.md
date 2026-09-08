@@ -1,5 +1,64 @@
 # CHANGELOG
 
+## 1.1.0
+
+### Minor Changes
+
+- 7d964ee: Add an `-on-color` modifier to `button`, for placing a button on a coloured (non-neutral) surface.
+  Composed with `-color-primary` (default), it fills white with dark text; composed with
+  `-color-secondary`, it stays transparent with a white border and text. All states (rest, hover,
+  active, disabled) read from the on-color colour tokens.
+
+### Patch Changes
+
+- 7d964ee: Align button, banner, and Pendo button styling with the BaseButton component tokens, add the button-group wrapper gap, and temporarily rewrite secondary and tertiary button light-mode tokens to the current Figma values while preserving the existing dark-mode values.
+- 7d964ee: Rewrite close-button component: use icon color tokens for base color and disabled states, add explicit -size-md modifier, add -on-color variant with full state support (hover, active, disabled) using ghost-on-color backgrounds, and deprecate -color-inverse as a functional alias of -on-color.
+- 7d964ee: Move the `button` component's static rules to a `.css` source file (`button.css`), and switch its
+  emitted selectors from flat `.instui-button.-modifier` chains to a `@scope (.instui-button) { & }`
+  block. Classes, modifiers, and behavior are unchanged; only the emitted selector shape differs.
+- 7d964ee: Move the `text-area`, `simple-select`, `number-input`, `input-group`, and `heading` components'
+  rules to static `.css` source files, inlining the previously-shared `fieldControlBase`/
+  `inputFacadeBase`/`headingLevelRules` chrome as literal declarations. Emitted selectors switch to
+  `@scope (.instui-<component>) { & }` blocks. Classes and modifiers are unchanged; `input-group` also
+  gains documented `@part` entries for its `.before`/`.after` content slots.
+- 7d964ee: Remove dead code left behind by the form-controls CSS migration: the unused `field-controls.ts` helper module and the unused `SELECT_CHEVRON`/`CHEVRON_UP_ICON`/`CHEVRON_DOWN_ICON` constants in `helpers.ts` (superseded by the `.css` records' inlined `var(--instui-icon-*)` masks).
+- 7d964ee: Move the `text-input` component's rules to a fully static `.css` source file (`text-input.css`),
+  inlining the shared field-control chrome as literal `var(--instui-component-text-input-*)`
+  declarations instead of interpolating them at build time. Emitted selectors switch to
+  `@scope (.instui-text-input) { & }`. Also adds an explicit `-size-md` modifier as a first-class
+  twin of the (default) medium base rule. Classes and modifiers are otherwise unchanged.
+- 7d964ee: Move the `view` component's static base rule and cssdoc block to a `.css` source file (`view.css`),
+  switching its emitted selector to `@scope (.instui-view) { & }`. The programmatically-generated
+  background/border/shadow/display/position/overflow/cursor modifier rules are merged in via
+  `appendGenerated()` so they land inside the same `@scope` block. Classes and modifiers are unchanged.
+- 7d964ee: This is a no-op changeset to satisfy changeset coverage for packages with transitively modified lock files but no code changes.
+- 7d964ee: Make direct, unmodified close buttons small by default in alerts and banners.
+- 7d964ee: New package `@pantoken/tinymce` provides TinyMCE + CodeMirror integration for pantoken design
+  system. Exports five capabilities:
+
+  - **Phase 1:** Content-CSS wiring (pantokenContentCssUrls, injectContentStylesheet)
+  - **Phase 2:** TinyMCE plugins (templates, source-toggle)
+  - **Phase 3:** Three browse+insert pickers (components/icons/logos) with dynamic CSS injection
+  - **Phase 4:** CodeMirror HTML linter validating .instui-* tokens
+  - **Phase 5:** CodeMirror autocomplete for component/modifier IntelliSense
+
+  Merged model combines @pantoken/components, @pantoken/plugin-custom-components, and
+  @pantoken/plugin-simple-icons metadata for unified token validation and discovery.
+
+  Also exports model.json and manifest.json from @pantoken/components and
+  @pantoken/plugin-simple-icons respectively for programmatic access to component and icon
+  definitions.
+
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+- Updated dependencies [63e06cb]
+  - @pantoken/tokens@0.3.1
+  - @pantoken/plugin-colors@0.1.3
+  - @pantoken/utils@1.0.2
+  - @pantoken/scaffold-base@0.2.1
+
 ## 1.0.3
 
 ### Patch Changes

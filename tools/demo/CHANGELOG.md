@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## 0.3.0
+
+### Minor Changes
+
+- 7d964ee: Translated the self-hosted demo snippet prose (`docs/demos/*.html`, the live examples the `/play`
+  runner loads by iframe) into every Canvas locale — previously the last untranslated surface, invisible
+  to the markdown-based translation pipeline. `demoMarkdownIt` gains a `localePrefix` option so a
+  `demo:self:<name>` fence on a locale page resolves to its translated clone instead of the English
+  source.
+
+### Patch Changes
+
+- 7d964ee: Carry text direction into isolated demo iframes. `buildExampleSrcdoc()` gains a `dir` option (defaults
+  to `ltr`) so the docs' isolated `.css-example` srcdoc previews render `rtl` on Arabic/Persian/Hebrew
+  locale pages instead of always defaulting to `ltr` — a `srcdoc` document never inherits `dir` from its
+  embedder. The `/play` runner (same-origin with its embedding page) now also mirrors the embedding
+  page's `dir` onto its own chrome and its nested result iframe, the same way it already mirrors
+  light/dark mode.
+
 ## 0.2.1
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/android",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "description": "Emit Instructure design tokens as Android resource XML (colors.xml, dimens.xml), via Style Dictionary.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

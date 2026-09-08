@@ -1,5 +1,22 @@
 # @pantoken/plugin-custom-icons
 
+## 0.3.7
+
+### Patch Changes
+
+- 7d964ee: Add openai logo to custom icons pack.
+- 7d964ee: The `openai` custom icon now fills its box. Its source SVG carried a `0 0 716 716` viewBox around a
+  glyph that only spanned `180.5 → 535.18`, so the mask painter (`center / contain`) rendered it about
+  half-size next to every other icon. The viewBox is now the glyph's own bounds, and the redundant
+  `width`/`height` attributes are gone.
+- 7d964ee: Add an amazon-q SVG icon to the custom icons set.
+- 7d964ee: Add a vite-plus SVG icon to the custom icons set.
+- 63e06cb: add pantoken icon
+- Updated dependencies [7d964ee]
+- Updated dependencies [7d964ee]
+  - @pantoken/model@0.3.2
+  - @pantoken/plugin-kit@0.3.0
+
 ## 0.3.6
 
 ### Patch Changes
