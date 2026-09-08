@@ -93,12 +93,6 @@ it…"`) is now a translatable UI string (`GetStartedTabsStrings.agentPrompt` in
   regex table. A new `translate-glossary.ts` script (`docs:glossary:locales`/`:claude`/`:agy`) fills that
   cache for every Canvas locale, the same way `translate-chrome.ts` already does for UI chrome strings.
 - 63e06cb: Migrate hand-written guide localization from JSON translation memory to unified PO catalogs.
-  ---
-
-  "@pantoken/docs": patch
-  ---
-
-  Migrate hand-written guide localization from JSON translation memory to unified PO catalogs.
 
 - 63e06cb: Complete English and regional-English homepage catalogs and verify homepage coverage for every supported locale.
 - 63e06cb: Untangled two colliding names in `docs/.vitepress/i18n.ts`: its own `LOCALES` (the per-locale
