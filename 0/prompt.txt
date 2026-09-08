@@ -1,0 +1,13 @@
+Start implementation
+
+---
+
+Quick exploration only, no edits. In /Users/dwahl/Scripts/pantoken, inspect the active file tools/translation-adapters/prompts/batch-translation.prompt.md and the nearest related translation-adapter prompts/scripts/tests. Determine what implementation task the user could plausibly mean by "Start implementation" from this context, identify the controlling files and relevant conventions, and report concrete findings plus any ambiguity that requires user clarification. Do not modify files.
+
+---
+
+go
+
+---
+
+start
