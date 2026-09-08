@@ -4,13 +4,13 @@ msgstr ""
 "PO-Revision-Date: 2026-09-08 20:06+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
+"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: und\n"
 
 #: ai/pantoken-ai/src/i18n.json
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "cli.ai:wroteFile"
 msgid "✓ {{path}}"
 msgstr "✓ {{path}}"
@@ -36,8 +36,12 @@ msgstr "Destination directory"
 #: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpScaffoldDescription"
-msgid "Scaffold a starter project (via @pantoken/scaffold) and install agent assets into it"
-msgstr "Scaffold a starter project (via @pantoken/scaffold) and install the agent assets into it"
+msgid ""
+"Scaffold a starter project (via @pantoken/scaffold) and install agent assets "
+"into it"
+msgstr ""
+"Scaffold a starter project (via @pantoken/scaffold) and install the agent "
+"assets into it"
 
 #: ai/pantoken-ai/src/i18n.json
 #, no-c-format
