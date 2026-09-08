@@ -1,0 +1,18 @@
+docs/scripts/build-api-locales.ts:84
+Some regular expressions take a long time to match certain input strings to the point where the time it takes to match a string of length *n* is proportional to *nk* or even *2n*. Such regular expressions can negatively affect performance, or even allow a malicious user to perform a Denial of Service ("DoS") attack by crafting an expensive input string for the regular expression to match.
+
+---
+
+.github/workflows/release.yml:79
+oken-Permissions
+.github/workflows/publish-create-pantoken-app.yml:21
+  
+
+  
+    score is 0: jobLevel 'contents' permission set to 'write'
+
+Remediation tip: Visit [https://app.stepsecurity.io/secureworkflow](https://app.stepsecurity.io/secureworkflow/github.com/thedannywahl/pantoken/release.yml/main?enable=permissions).
+
+Tick the 'Restrict permissions for GITHUB_TOKEN'
+
+Untick other options
