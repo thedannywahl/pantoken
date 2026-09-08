@@ -85,3 +85,7 @@ msgfmt: found 3 fatal errors
 ---
 vp run: 41/160 cache hit (25%), 13.35s saved, 1 failed. @pantoken/interactions#build (and 7 more) not cached because they modified their inputs. (Run `vp run --last-details` for full details)
 ```
+
+---
+
+validate that the ai prompt for translation doesn't need to be updated to prevent this from happening in the future.
