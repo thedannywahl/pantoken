@@ -1,0 +1,1 @@
+now go through all actions in all workflows and make sure we're updated to the latest pins, including major versions, minor versions, and patch versions.
