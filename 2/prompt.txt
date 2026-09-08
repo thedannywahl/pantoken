@@ -1,0 +1,24 @@
+upgraded to vite plus 0.3.1 and now getting this error on vpr ready:
+```
+markdownlint-cli2 v0.23.2 (markdownlint v0.41.1)
+Finding: **/*.md !node_modules !**/node_modules !dist !**/dist !coverage !**/coverage !**/style.css !**/generated !**/generated/** !docs/api !docs/api/** !docs/*/api !docs/*/api/** !docs/internal !docs/internal/** !.github/copilot-instructions.md !.changeset/*.md !.agents/skills !.agents/skills/** !agent/skills !agent/skills/** !.claude !.claude/**
+Linting: 647 files
+
+Oops! Something went wrong! :(
+
+ESLint: 10.9.1
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@eslint/css' imported from /Users/dwahl/Scripts/pantoken/eslint.config.js
+Did you mean to import "@eslint/css/dist/index.js"?
+    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:331:9)
+    at packageResolve (node:internal/modules/esm/resolve:784:25)
+    at moduleResolve (node:internal/modules/esm/resolve:873:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:708:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:728:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:766:56)
+    at #resolve (node:internal/modules/esm/loader:690:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:610:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:277:33)
+☔️ success workspaces valid!
+```
