@@ -30,5 +30,7 @@
     "*.tsx.tmpl": "typescriptreact",
     "*.vue.tmpl": "vue",
     "*.svelte.tmpl": "svelte"
-  }
+  },
+  "oxc.disableNestedConfig": true,
+  "oxc.fmt.disableNestedConfig": true
 }
