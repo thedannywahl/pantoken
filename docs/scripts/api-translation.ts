@@ -200,6 +200,32 @@ const restoreMarkdownSensitiveBlocks = (
   return restoreBlocks(withCode, inlineCodeBlocks, "PTK_INLINE_CODE");
 };
 
+const preserveMarkdownSyntax = (input: string): { text: string; syntax: string[] } => {
+  const syntax: string[] = [];
+  let text = input;
+  const preserve = (pattern: RegExp): void => {
+    text = text.replace(pattern, (match) => {
+      const marker = `__PTK_MD_${syntax.length}__`;
+      syntax.push(match);
+      return marker;
+    });
+  };
+
+  preserve(/(?:\*\*|__|~~|\*|_)(?=\S)|(?<=\S)(?:\*\*|__|~~|\*|_)/g);
+  preserve(/<!--(?:.|\n)*?-->/g);
+  preserve(/<\/?[A-Za-z][^>]*>/g);
+  preserve(/\[/g);
+  preserve(/\]\(/g);
+  preserve(/(?<=\]\()[^)\n]+(?=\))/g);
+  preserve(/\)/g);
+  preserve(/^(\s{0,3}(?:#{1,6}|>|[-+*]|\d+[.)]))(?=\s)/gm);
+  preserve(/\n/g);
+  return { text, syntax };
+};
+
+const restoreMarkdownSyntax = (input: string, syntax: string[]): string =>
+  restoreBlocks(input, syntax, "PTK_MD");
+
 const preservePackageNames = (input: string): { text: string; packageNames: string[] } => {
   const packagePattern = /@[a-z0-9][a-z0-9.-]*\/[a-z0-9][a-z0-9.-]*/gi;
   const packageNames: string[] = [];
@@ -422,15 +448,19 @@ export class AiTranslationAdapter implements TranslationAdapter {
     // the batch path (unlike translateMarkdown) would let the model rewrite them.
     const masked = items.map((item) => {
       const markdown = preserveMarkdownSensitiveBlocks(item.text);
-      const packages = preservePackageNames(markdown.text);
+      const syntax = preserveMarkdownSyntax(markdown.text);
+      const packages = preservePackageNames(syntax.text);
       const brackets = preserveEscapedAngleBrackets(packages.text);
-      return { id: item.id, masked: brackets.text, markdown, packages, brackets };
+      return { id: item.id, masked: brackets.text, markdown, packages, brackets, syntax };
     });
     const restore = (entry: (typeof masked)[number], value: string): string =>
       restoreMarkdownSensitiveBlocks(
-        restorePackageNames(
-          restoreEscapedAngleBrackets(value, entry.brackets.brackets),
-          entry.packages.packageNames,
+        restoreMarkdownSyntax(
+          restorePackageNames(
+            restoreEscapedAngleBrackets(value, entry.brackets.brackets),
+            entry.packages.packageNames,
+          ),
+          entry.syntax.syntax,
         ),
         entry.markdown.codeBlocks,
         entry.markdown.inlineCodeBlocks,
@@ -442,6 +472,9 @@ export class AiTranslationAdapter implements TranslationAdapter {
       "Return ONLY a JSON object with the same keys and translated values.",
       "Do not translate, add, or remove keys. Keep identifiers, package names, and URLs unchanged.",
       "Do not alter placeholder tokens like __PTK_CODE_BLOCK_#__, __PTK_INLINE_CODE_#__, __PTK_PACKAGE_#__, or __PTK_ESC_#__.",
+      "Preserve every value's Markdown structure exactly: headings, emphasis, strong text, lists, blockquotes, links, line breaks, blank lines, and all delimiters must remain unchanged.",
+      "Translate visible prose and link labels only. Do not alter Markdown syntax, link destinations, HTML tags or comments, or code contents.",
+      "Never HTML-escape code or Markdown content: for example, preserve `<li>` inside backticks as `<li>`, not `&lt;li&gt;`.",
       "Reproduce each value's leading and trailing whitespace exactly: if a value does not end with a newline, its translation must not end with one either.",
       JSON.stringify(payload, null, 2),
     ].join("\n");

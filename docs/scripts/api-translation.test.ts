@@ -155,6 +155,53 @@ test("translateBatch restores masked package names and inline code around the mo
   expect(out.a).toContain("`code`");
 });
 
+test("translateBatch preserves Markdown structure inside JSON values", async () => {
+  useSpawn((prompt) => {
+    if (prompt.includes("Translate the VALUES")) {
+      const payload = objectFromPrompt(prompt) ?? {};
+      const out = Object.fromEntries(
+        Object.entries(payload).map(([id, value]) => [
+          id,
+          value
+            .replace(/[#>*()[\]]/g, "X")
+            .replace("Heading", "Translated heading")
+            .replace("list item", "Listeneintrag"),
+        ]),
+      );
+      return { stdout: JSON.stringify(out) };
+    }
+    return echoResponder(prompt);
+  });
+  const adapter = new AiTranslationAdapter();
+  const input = [
+    "### Heading",
+    "",
+    "*emphasis* and **strong** with [link label](https://example.com/docs).",
+    "",
+    "- list item",
+    "1. second item",
+    "> quoted text",
+    "",
+    'Use `<li>` and <span class="raw">raw HTML</span>.',
+  ].join("\n");
+
+  const out = await adapter.translateBatch([{ id: "a", text: input }]);
+
+  expect(out.a).toBe(
+    [
+      "### Translated heading",
+      "",
+      "*emphasis* and **strong** with [link label](https://example.com/docs).",
+      "",
+      "- Listeneintrag",
+      "1. second item",
+      "> quoted text",
+      "",
+      'Use `<li>` and <span class="raw">raw HTML</span>.',
+    ].join("\n"),
+  );
+});
+
 test("translateBatch masks bare escaped angle brackets between separately-masked code spans", async () => {
   // Simulates TypeDoc's generic-type rendering: `` `Readonly`\<`Record`\<`string`, `string`\>\> `` —
   // each backtick token is masked on its own, but the `\<`/`\>` glue between them isn't unless it's

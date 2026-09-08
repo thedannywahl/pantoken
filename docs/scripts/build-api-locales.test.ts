@@ -165,6 +165,17 @@ test("build localizes markdown headings, prose, and sidebars, then logs the summ
   expect(process.exitCode).toBeUndefined();
 }, 20000); // dynamic import of build-api-locales.ts can exceed the default 5s under full-suite load
 
+test("escapes stray prose tags without changing Markdown code or balanced HTML", async () => {
+  const { escapeBareHtmlTags } = await import("./build-api-locales.ts");
+
+  expect(escapeBareHtmlTags("Use `<li>` in prose, but escape <dialog>.")).toBe(
+    "Use `<li>` in prose, but escape &lt;dialog&gt;.",
+  );
+  expect(escapeBareHtmlTags('<span class="raw">raw HTML</span>')).toBe(
+    '<span class="raw">raw HTML</span>',
+  );
+});
+
 test("build surfaces a generation failure as a non-zero exit code", async () => {
   spawnSync.mockReturnValue({ status: 1 }); // TypeDoc/run() fails
   await import("./build-api-locales.ts");

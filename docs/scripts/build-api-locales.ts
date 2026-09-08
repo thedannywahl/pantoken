@@ -165,15 +165,28 @@ const collectSidebarText = (items: SidebarItem[], out: string[]): void => {
 // segments while leaving preserved HTML blocks/code fences untouched. A tag with attributes (the
 // stability-badge pill's `<span class="...">`) is real generated HTML, not a stray mention — its
 // plain closing partner (`</span>`) must stay unescaped too, or the pair goes unbalanced.
-const escapeBareHtmlTags = (text: string): string => {
+export const escapeBareHtmlTags = (text: string): string => {
+  const preserved: string[] = [];
+  const withoutCode = text.replace(/```[\s\S]*?```|`[^`\n]+`/g, (match) => {
+    const marker = `__PTK_HTML_SAFE_${preserved.length}__`;
+    preserved.push(match);
+    return marker;
+  });
   const attributedTagNames = new Set(
-    [...text.matchAll(/<([A-Za-z][\w-]*)\s[^>]*>/g)].map((match) => match[1]),
+    [...withoutCode.matchAll(/<([A-Za-z][\w-]*)\s[^>]*>/g)].map((match) => match[1]),
+  );
+  const pairedTagNames = new Set(
+    [...withoutCode.matchAll(/<([A-Za-z][\w-]*)>[^]*?<\/\1>/g)].map((match) => match[1]),
   );
 
-  return text.replace(/<\/?([A-Za-z][\w-]*)>/g, (match, name: string) => {
-    if (attributedTagNames.has(name)) return match;
+  let escaped = withoutCode.replace(/<\/?([A-Za-z][\w-]*)>/g, (match, name: string) => {
+    if (attributedTagNames.has(name) || pairedTagNames.has(name)) return match;
     return match.startsWith("</") ? `&lt;/${name}&gt;` : `&lt;${name}&gt;`;
   });
+  for (const [index, block] of preserved.entries()) {
+    escaped = escaped.replaceAll(`__PTK_HTML_SAFE_${index}__`, block);
+  }
+  return escaped;
 };
 
 /**
