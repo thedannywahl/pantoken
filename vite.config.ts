@@ -374,13 +374,13 @@ export default defineConfig({
         ],
         cache: false,
       },
-      // Drift checks for every surface declared in `i18n.config.json`: UI, CLI, docs translations,
-      // and structural locale parity. These tasks report every gap but only exit non-zero on a
-      // `block`, so an English-only change lands without waiting on ~90 translations. Docs drift
-      // needs the generated EN API tree, so the caller must run it after the docs API build.
+      // CI-safe drift checks for the UI and CLI i18n domains. These tasks report every gap but only
+      // exit non-zero on a `block`, so an English-only change lands without waiting on ~90
+      // translations. Docs drift needs the generated EN API tree and is included only in the
+      // explicit all-surface task below.
       "i18n:check:drift": {
         command:
-          "vp run @pantoken/translation-adapters#build && vp run @pantoken/i18n-engine#build && vp run @pantoken/web-components#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift && vp run @pantoken/docs#docs:check:drift && vp run @pantoken/docs#docs:check:locales",
+          "vp run @pantoken/translation-adapters#build && vp run @pantoken/i18n-engine#build && vp run @pantoken/web-components#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift",
       },
       // Generate the local, git-ignored language coverage report. Keep this uncached so the report
       // always reflects the current PO catalogs and policy configuration.
@@ -395,11 +395,11 @@ export default defineConfig({
           "vp run @pantoken/i18n-engine#build && node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json stats --html --watch",
         cache: false,
       },
-      // Every i18n surface at once, including the docs ones. Assumes `docs:api:en` already ran — API
-      // prose drift is skipped with a note when `docs/api` is absent.
+      // Every i18n surface at once, including docs translations and structural parity. Generate the
+      // English API first because both docs checks inspect generated `docs/api/**` output.
       "i18n:check:drift:all": {
         command:
-          "node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json lint && vp run i18n:check:drift",
+          "node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json lint && vp run i18n:check:drift && vp run @pantoken/docs#docs:api:en && vp run @pantoken/docs#docs:check:drift && vp run @pantoken/docs#docs:check:locales",
         cache: false,
       },
       // Same sweep with every policy `warn` escalated to `block`. Not wired into PR CI — this is the
