@@ -25,6 +25,7 @@ import { extractMessagesSpace, type MessageUnit } from "./extract-messages.ts";
 import { mergePoWithTemplate } from "./gettext.ts";
 import { parsePo, serializePot, type PoEntry } from "./po.ts";
 import { refreshCoverageReports } from "./coverage.ts";
+import { fillUntranslatedEntries } from "./ai-translate.ts";
 import { localesForSpace, resolveLocaleStatus } from "./locales.ts";
 import { catalogUnitKey } from "./units.ts";
 
@@ -112,14 +113,17 @@ export interface TranslateResult {
   untranslated: number;
 }
 
-/** `msgmerge` `poPath` against `potPath`, then count translated/untranslated non-obsolete entries.
- *  Shared by `runTranslateGuides` and `runTranslateMessages`. */
+/** `msgmerge` `poPath` against `potPath`, optionally run `fill` (an AI fill-in step) against the
+ *  merged catalog, then count translated/untranslated non-obsolete entries. Shared by
+ *  `runTranslateGuides`, `runTranslateContent`, and `runTranslateMessages`. */
 async function mergeAndCount(
   potPath: string,
   poPath: string,
+  fill?: (poPath: string) => Promise<void>,
 ): Promise<Pick<TranslateResult, "translated" | "untranslated">> {
   mkdirSync(dirname(poPath), { recursive: true });
   await mergePoWithTemplate(poPath, potPath);
+  if (fill) await fill(poPath);
   const entries = parsePo(readFileSync(poPath, "utf8")).filter((e) => !e.obsolete);
   return {
     translated: entries.filter((e) => e.msgstr !== "").length,
@@ -343,7 +347,9 @@ export async function runTranslateMessages(
     configDir,
     resolvePattern(config.catalogs.target, { space: spaceId, locale }),
   );
-  const result = await mergeAndCount(potPath, poPath);
+  const result = await mergeAndCount(potPath, poPath, (path) =>
+    fillUntranslatedEntries(path, locale, config.provider),
+  );
   refreshCoverageReports(join(configDir, "i18n.config.json"));
   return { space: spaceId, locale, poPath, ...result };
 }
