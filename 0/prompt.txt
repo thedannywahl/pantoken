@@ -1,0 +1,1672 @@
+upgrading to vite-plus 0.3.1 now throws a a vitest error on start:
+```
+[INFO 2:11:07 PM] [v1.50.8] Vitest extension is activated because Vitest is installed or there is a Vite/Vitest config file in the workspace.
+[INFO 2:11:07 PM] [API] Resolving configs: pantoken/vite.bench.config.ts, pantoken/vite.config.ts, pantoken/vite.config.base.ts, create-pantoken-app/vite.config.ts, react/vite.config.ts, scaffold-base/vite.config.ts, pantoken/vite.config.ts, shadcn/vite.config.ts, vue/vite.config.ts, cli/vite.config.ts, tokens/vite.config.ts, astro/vite.config.ts, scaffold/vite.config.ts, docusaurus/vite.config.ts, icon-font/vite.config.ts, utils/vite.config.ts, plugin-kit/vite.config.ts, vitepress/vite.config.ts, mui/vite.config.ts, pendo/vite.config.ts, model/vite.config.ts, core/vite.config.ts, cdn/vite.config.ts, icons/vite.config.ts, mintlify/vite.config.ts, svelte/vite.config.ts, react-markdown/vite.config.ts, markdown-it/vite.config.ts, react-native/vite.config.ts, pantoken-ai/vite.config.ts, tinymce/vite.config.ts, rehype/vite.config.ts, bootstrap/vite.config.ts, angular/vite.config.ts, storybook/vite.config.ts, swatches/vite.config.ts, figma/vite.config.ts, foundation/vite.config.ts, css-in-js/vite.config.ts, web-components/vite.config.ts, scss/vite.config.ts, vite/vite.config.ts, components/vite.config.ts, less/vite.config.ts, webpack/vite.config.ts, postcss/vite.config.ts, tailwind/vite.config.ts, interactions/vite.config.ts, dtcg/vite.config.ts, next/vite.config.ts, stylus/vite.config.ts, css/vite.config.ts, panda/vite.config.ts, cssdoc-model/vite.config.ts, i18n-engine/vite.config.ts, translation-adapters/vite.config.ts, sd-config/vite.config.ts, aggregate/vite.config.ts, demo/vite.runner.config.ts, demo/vite.config.ts, email/vite.config.ts, vanilla/vite.config.ts, upstream-diff/vite.config.ts, android/vite.config.ts, swift/vite.config.ts, flutter/vite.config.ts, compose/vite.config.ts, rust/vite.config.ts, wordpress/vite.config.ts, canvas-theme-editor/vite.config.ts, drupal/vite.config.ts, hugo/vite.config.ts, jekyll/vite.config.ts, live-example/vite.config.ts, demo/vite.config.ts, workspace-orchestrator/vite.config.ts, deprecations/vite.config.ts, visual-debug/vite.config.ts, colors/vite.config.ts, custom-icons/vite.config.ts, layouts/vite.config.ts, stacking/vite.config.ts, primitives/vite.config.ts, simple-icons/vite.config.ts, custom-components/vite.config.ts, logos/vite.config.ts, flatten-property/vite.config.ts, props-minify/vite.config.ts, transition/vite.config.ts, theme-custom-media/vite.config.ts, prune-custom-props/vite.config.ts, mangle-custom-props/vite.config.ts
+[2:11:07 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (pantoken/vite.bench.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (pantoken/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (pantoken/vite.config.base.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (create-pantoken-app/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (react/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (scaffold-base/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (pantoken/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (shadcn/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (vue/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (cli/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (tokens/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (astro/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (scaffold/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (docusaurus/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (icon-font/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (utils/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (plugin-kit/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (vitepress/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (mui/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (pendo/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (model/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (core/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (cdn/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (icons/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (mintlify/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (svelte/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (react-markdown/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (markdown-it/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (react-native/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (pantoken-ai/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (tinymce/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (rehype/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (bootstrap/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (angular/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (storybook/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (swatches/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (figma/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (foundation/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (css-in-js/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (web-components/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (scss/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (vite/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (components/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (less/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (webpack/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (postcss/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (tailwind/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (interactions/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (dtcg/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (next/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (stylus/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (css/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (panda/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (cssdoc-model/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (i18n-engine/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (translation-adapters/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (sd-config/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (aggregate/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (demo/vite.runner.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (demo/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (email/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (vanilla/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (upstream-diff/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (android/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (swift/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (flutter/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (compose/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (rust/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (wordpress/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (canvas-theme-editor/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (drupal/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (hugo/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (jekyll/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (live-example/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (demo/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (workspace-orchestrator/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (deprecations/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (visual-debug/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (colors/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (custom-icons/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (layouts/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (stacking/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (primitives/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (simple-icons/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (custom-components/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (logos/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (flatten-property/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (props-minify/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (transition/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (theme-custom-media/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (prune-custom-props/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[2:11:10 PM] [API] Spawning on-demand process...
+[INFO 2:11:10 PM] [API] Running Vitest v4.1.11 (mangle-custom-props/vite.config.ts) with "/Users/dwahl/.local/share/vite-plus/bin/node /Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/worker.js"
+[Error 2:11:10 PM] There were errors during config load.
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] [Error Error] spawn EBADF
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at Vr.r.spawn (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16250)
+    at mt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:61015)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async St (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:69001)
+    at async wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:70961)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+[Error 2:11:10 PM] Error: The extension could not load any config.
+    at wt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:1:71350)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async tr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:5119)
+    at async tr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:4437)
+    at async tr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:13144)
+    at async $n (/Users/dwahl/.vscode/extensions/vitest.explorer-1.50.8/dist/extension.js:10:3089)
+    at async Ob._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:16021)
+    at async Ob._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15963)
+    at async Ob._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:542:15330)
+```
