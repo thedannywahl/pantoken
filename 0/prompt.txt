@@ -1,0 +1,3 @@
+vpr i18n check;:drift shouldn't touch docs.api.pot and also it's failing:
+
+#attachment:Pasted text #1
