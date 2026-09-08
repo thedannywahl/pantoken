@@ -1,0 +1,2 @@
+tools/i18n-engine/src/extract-messages.ts:67
+Often it is necessary to check the state of a file before using it. These checks usually take a file name to be checked, and if the check returns positively, then the file is opened or otherwise operated upon.
