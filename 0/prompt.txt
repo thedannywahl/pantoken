@@ -1,0 +1,31 @@
+vite-plus 0.3.1 [release](https://github.com/voidzero-dev/vite-plus/releases/tag/v0.3.1) tried to migrate away from eslint to oxc. we explicitly use eslint for cssdoc via eslint/css.  create a plan to migrate from eslint to oxc.  If there are upstream needs in cssdoc, then open issues on the github repo so they can be implemented.
+
+---
+
+Research (read-only, thorough) how ESLint is wired into the pantoken workspace at /Users/dwahl/Scripts/pantoken. Report:
+1. Every place `eslint` is referenced: root and package `package.json` scripts + devDependencies, pnpm-workspace.yaml catalog entries, CI workflows (.github/workflows/*), vite.config.ts tasks, git hooks (.vite-hooks/*), docs, AGENTS.md/CLAUDE.md, and any scripts/ or tools/ code.
+2. The exact eslint-related packages and versions used (@cssdoc/eslint-plugin, @eslint/css, @typescript-eslint/parser, eslint-plugin-tsdoc, eslint-plugin-tsdoc-require-2, eslint itself).
+3. How `vp check` / `vp lint` is configured — does .oxlintrc.json exist? What oxlint config exists (root and per-package)? Does `vp check` currently also run eslint, or is eslint run separately?
+4. The stylelint setup (stylelint.config.js) and which @cssdoc/* plugin it uses — is it the same rule set as cssdoc/valid-doc-comments? Quote the config.
+5. Any tsdoc.json config and where tsdoc lint rules matter.
+Quote file paths and relevant snippets. Do not modify anything.
+
+---
+
+Read-only research at /Users/dwahl/Scripts/pantoken. Goal: determine whether `eslint-plugin-tsdoc` and `eslint-plugin-tsdoc-require-2` can run as oxlint JS plugins (oxlint's ESLint-v9-compatible plugin API; unsupported: custom parsers/languages, type-aware rules, ESLint-v8-removed APIs like context.getSourceCode/getFilename/getScope).
+
+1. Read node_modules/eslint-plugin-tsdoc/lib/*.js (and package.json) — report which context/sourceCode APIs it uses (getAllComments, context.sourceCode vs context.getSourceCode, context.filename vs getFilename, parserServices), whether it declares an ESLint peer range, and whether it needs a custom parser.
+2. Same for node_modules/eslint-plugin-tsdoc-require-2 — read its dist/lib source, report which AST node types it visits, which context APIs it uses, whether it requires type information (parserServices/program), and its ESLint peer range.
+3. Check node_modules/vite-plus (or its docs folder node_modules/vite-plus/docs) for how `lint` is configured in vite.config: does the Vite+ `lint` config object support `jsPlugins`, `overrides` (with files/excludeFiles), `plugins`, `settings`, and `ignorePatterns`? Quote the TypeScript type or docs for the lint config.
+4. Report the vite-plus version installed and whether an `oxlint.config.ts` / `.oxlintrc.json` is supported alongside vite.config lint config.
+
+Report exact quotes and file paths. Do not modify anything.
+
+---
+
+for further considerations:
+(1) we should do A
+(2) fold into vp check
+(3) open then directly when we get to that phase.
+
+let's expand the scope to remove stylelint as well, meaning we will need to open the issues first and wait for the fixes to land before continuing.
