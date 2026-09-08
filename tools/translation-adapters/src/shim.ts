@@ -178,9 +178,7 @@ export function createShimServer(options: RunShimOptions): Server {
           res.end(JSON.stringify(response));
         } catch (e) {
           res.writeHead(500, { "content-type": "application/json" });
-          res.end(
-            JSON.stringify({ error: { message: e instanceof Error ? e.message : String(e) } }),
-          );
+          res.end(JSON.stringify({ error: { message: "translation service unavailable" } }));
         }
       })();
     });
