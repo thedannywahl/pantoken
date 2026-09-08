@@ -1,0 +1,130 @@
+the drift checks and coverage for i18n should include everything identified in i18n.config.json
+
+---
+
+running `vpr i18n:check:drift:all` outputs:
+
+```
+
+@pantoken/docs — translation drift by surface:
+  docs.api: 259889 unit(s) in 877 file(s), 43 locale(s) — advisory
+
+! @pantoken/docs: 259889 advisory drift finding(s) across 877 file(s):
+  [docs.api] docs/api/css/responsive.md — 4297 in 43 locale(s)
+    locales: ar, ca, cy, da, de, el, +37 more
+    - [glossary] # CSS: responsive
+    - [glossary] ## Usage
+    - [glossary] ## Examples
+  [docs.api] docs/api/renderers/web-components/src/interfaces/CommandEventish.md — 3784 in 43 locale(s)
+    locales: ar, ca, cy, da, de, el, +37 more
+    - [glossary] # Interface: CommandEventish
+    - [glossary] <span class="instui-pill -color-warning pantoken-doc-tag">Al…
+    - [glossary] ## Extends
+  [docs.api] docs/api/formats/interactions/src/interfaces/CommandEventish.md — 2709 in 43 locale(s)
+    locales: ar, ca, cy, da, de, el, +37 more
+    - [glossary] # Interface: CommandEventish
+    - [glossary] ## Extends
+    - [glossary] ## Properties
+  [docs.api] docs/api/renderers/web-components/src/interfaces/RegisterContext.md — 1978 in 43 locale(s)
+    locales: ar, ca, cy, da, de, el, +37 more
+    - [glossary] # Interface: RegisterContext
+    - [glossary] <span class="instui-pill -color-warning pantoken-doc-tag">Al…
+    - [glossary] ## Properties
+  [docs.api] docs/api/renderers/tinymce/src/interfaces/CssDocEntry.md — 1935 in 43 locale(s)
+    locales: ar, ca, cy, da, de, el, +37 more
+    - [glossary] # Interface: CssDocEntry
+    - [glossary] ## Properties
+    - [glossary] ### name
+  [docs.api] docs/api/css/progress-circle.md — 1849 in 43 locale(s)
+    locales: ar, ca, cy, da, de, el, +37 more
+    - [glossary] # CSS: progress-circle
+    - [glossary] JS Enhancement
+    - [glossary] ## Accessibility
+  [docs.api] docs/api/css/progress.md — 1720 in 43 locale(s)
+    locales: ar, ca, cy, da, de, el, +37 more
+    - [glossary] # CSS: progress
+    - [glossary] ## Accessibility
+    - [glossary] ## Usage
+  [docs.api] docs/api/platforms/canvas-theme-editor/src/interfaces/ThemeStrings.md — 1591 in 43 locale(s)
+    locales: ar, ca, cy, da, de, el, +37 more
+    - [glossary] # Interface: ThemeStrings
+    - [glossary] <span class="instui-pill -color-warning pantoken-doc-tag">Al…
+    - [glossary] ## Properties
+  [docs.api] docs/api/css/alert.md — 1419 in 43 locale(s)
+    locales: ar, ca, cy, da, de, el, +37 more
+    - [glossary] # CSS: alert
+    - [glossary] JS Enhancement
+    - [glossary] ## Accessibility
+  [docs.api] docs/api/packages/core/src/interfaces/PantokenPlugin.md — 1333 in 43 locale(s)
+    locales: ar, ca, cy, da, de, el, +37 more
+    - [glossary] # Interface: PantokenPlugin
+    - [glossary] <span class="instui-pill -color-warning pantoken-doc-tag">Be…
+    - [glossary] ## Properties
+  [docs.api] docs/api/packages/model/src/interfaces/PantokenPlugin.md — 1333 in 43 locale(s)
+    locales: ar, ca, cy, da, de, el, +37 more
+    - [glossary] # Interface: PantokenPlugin
+    - [glossary] <span class="instui-pill -color-warning pantoken-doc-tag">Be…
+    - [glossary] ## Properties
+  [docs.api] docs/api/css/avatar.md — 1161 in 43 locale(s)
+    locales: ar, ca, cy, da, de, el, +37 more
+    - [glossary] # CSS: avatar
+    - [glossary] JS Enhancement
+    - [glossary] ## Accessibility
+  [docs.api] docs/api/renderers/web-components/src/interfaces/LocaleSet.md — 1161 in 43 locale(s)
+    locales: ar, ca, cy, da, de, el, +37 more
+    - [glossary] # Interface: LocaleSet\<K\>
+    - [glossary] <span class="instui-pill -color-warning pantoken-doc-tag">Al…
+    - [glossary] ## Type Parameters
+  [docs.api] docs/api/css/checkbox.md — 1118 in 43 locale(s)
+    locales: ar, ca, cy, da, de, el, +37 more
+    - [glossary] # CSS: checkbox
+    - [glossary] ## Accessibility
+    - [glossary] ## Usage
+  [docs.api] docs/api/renderers/react-markdown/src/interfaces/InstuiMarkdownRenderOptions.md — 1075 in 43 locale(s)
+    locales: ar, ca, cy, da, de, el, +37 more
+    - [glossary] # Interface: InstuiMarkdownRenderOptions
+    - [glossary] <span class="instui-pill -color-warning pantoken-doc-tag">Be…
+    - [glossary] ## Properties
+  [docs.api] docs/api/css/badge.md — 1032 in 43 locale(s)
+    locales: ar, ca, cy, da, de, el, +37 more
+    - [glossary] # CSS: badge
+    - [glossary] ## Usage
+    - [glossary] ## Demo
+  [docs.api] docs/api/css/form-field.md — 1032 in 43 locale(s)
+    locales: ar, ca, cy, da, de, el, +37 more
+    - [glossary] # CSS: form-field
+    - [glossary] ## Accessibility
+    - [glossary] ## Usage
+  [docs.api] docs/api/css/radio.md — 1032 in 43 locale(s)
+    locales: ar, ca, cy, da, de, el, +37 more
+    - [glossary] # CSS: radio
+    - [glossary] ## Accessibility
+    - [glossary] ## Usage
+  [docs.api] docs/api/css/banner.md — 989 in 43 locale(s)
+    locales: ar, ca, cy, da, de, el, +37 more
+    - [glossary] # CSS: banner
+    - [glossary] ## Accessibility
+    - [glossary] ## Usage
+  [docs.api] docs/api/css/tree-browser.md — 989 in 43 locale(s)
+    locales: ar, ca, cy, da, de, el, +37 more
+    - [glossary] # CSS: tree-browser
+    - [glossary] ## Accessibility
+    - [glossary] ## Usage
+  …and 857 more file(s).
+
+Advisory only — not blocking this merge. Run `vp run docs:locales:translate` when convenient.
+```
+
+but running `vpr i18n:translate:copilot` does not output any new changes,  I believe it's because these items that are marked as drifted are the words that don't get translated into other languages but they are still flagged as drifted because they are verbatim to the english.  Do some analysis and testing and come up with a thorough remediation plan.
+
+---
+
+if there are actually some gaps then why doesn't running the translation workflow translate them?
+
+---
+
+what's the plan to unify then?
+
+---
+
+implement the plan

@@ -1,0 +1,81 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M21BZEYGJ0N7TEQC32Y8HD23",
+  "session_id": "33abae3e-c8ad-417d-bb79-24eea1a40d9a",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-08T20:39:58.983186Z",
+  "branch": "i18n2",
+  "checkpoints_count": 5,
+  "save_step_count": 5,
+  "files_touched": [
+    ".changeset/api-drift-catalog-contract.md",
+    "docs/scripts/build-api-locales.ts",
+    "docs/scripts/check-locale-drift.test.ts",
+    "docs/scripts/check-locale-drift.ts",
+    "docs/scripts/segment-markdown.ts",
+    "vite.config.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "102acfaf382c",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 5
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-08T20:39:58.973356Z",
+    "agent_lines": 53,
+    "agent_removed": 15,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 53,
+    "total_lines_changed": 68,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 6,
+      "agent_lines_removed": 7
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 6,
+      "agent_lines_removed": 7
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 6,
+      "agent_lines_removed": 7
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 6,
+      "agent_lines_removed": 7
+    }
+  ]
+}
