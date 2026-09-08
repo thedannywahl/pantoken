@@ -17,6 +17,7 @@
  */
 import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 /** The `google/fonts` commit every font below is pinned to. */
@@ -139,7 +140,12 @@ const LOCALE_FONTS: Record<string, NotoKey> = {
 const FALLBACK: NotoKey = "sans";
 
 const cacheDir = fileURLToPath(new URL("../../assets/fonts/noto/", import.meta.url));
-const cachePath = (key: NotoKey): string => `${cacheDir}${key}.ttf`;
+const cachePath = (key: NotoKey): string => {
+  if (!Object.hasOwn(NOTO_FONTS, key)) {
+    throw new Error(`Unsupported Noto font cache key: ${String(key)}`);
+  }
+  return join(cacheDir, `${key}.ttf`);
+};
 
 const sha256 = (bytes: Uint8Array): string => createHash("sha256").update(bytes).digest("hex");
 
