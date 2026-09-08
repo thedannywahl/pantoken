@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: InstUI, हर जगह
   tagline: एक सुलझाया गया टोकन मॉडल, जिसे स्टाइलशीट, फ्रेमवर्क बाइंडिंग्स, नेटिव कोड और डिजाइन-टूल पेलोड्स के रूप में दोबारा आकार दिया गया।
   actions:

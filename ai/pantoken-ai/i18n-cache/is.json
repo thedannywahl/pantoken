@@ -1,9 +1,0 @@
-{
-  "wroteFile": "✓ Skrifað: {{path}}",
-  "helpInitDescription": "Skrifa pantoken agent-auðlindir í geymslu",
-  "helpInitToolDescription": "Agenttól (allt|cursor|copilot|windsurf)",
-  "helpInitDirDescription": "Áfangamappa",
-  "helpScaffoldDescription": "Búa til upphafsverkefni (með @pantoken/scaffold) og setja agent-auðlindir í það",
-  "helpScaffoldToolDescription": "Agenttól (allt|cursor|copilot|windsurf)",
-  "helpLangDescription": "Yfirskrifa sjálfvirkt greint sýnismál (t.d. \"hu\")"
-}

@@ -12,7 +12,7 @@ import { iconSvg, register } from "@pantoken/web-components";
 
 export { register } from "@pantoken/web-components";
 /** Register elements with locale-specific strings and direction. */
-export { registerLocalized } from "@pantoken/i18n";
+export { registerLocalized } from "@pantoken/web-components";
 
 /**
  * Read a resolved token value. Returns `fallback` on the server.

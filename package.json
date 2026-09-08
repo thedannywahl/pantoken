@@ -15,7 +15,8 @@
     "check:publish": "vp run gate:publish",
     "check:attw": "vp run gate:attw",
     "security:snyk": "vp run snyk:scan",
-    "security:code": "vp run snyk:code"
+    "security:code": "vp run snyk:code",
+    "prepare": "vp config"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "catalog:",
@@ -24,13 +25,9 @@
     "@codspeed/vitest-plugin": "catalog:",
     "@commitlint/cli": "catalog:",
     "@commitlint/config-conventional": "catalog:",
-    "@cssdoc/eslint-plugin": "catalog:",
-    "@cssdoc/stylelint-plugin": "catalog:",
-    "@eslint/css": "catalog:",
+    "@cssdoc/cli": "catalog:",
     "@manypkg/cli": "catalog:",
-    "@typescript-eslint/parser": "catalog:",
     "@vitest/coverage-v8": "catalog:",
-    "eslint": "catalog:",
     "eslint-plugin-tsdoc": "catalog:",
     "eslint-plugin-tsdoc-require-2": "catalog:",
     "fallow": "catalog:",
@@ -40,7 +37,8 @@
     "snyk": "catalog:",
     "stylelint": "catalog:",
     "vite": "catalog:",
-    "vite-plus": "catalog:"
+    "vite-plus": "catalog:",
+    "vitest": "catalog:"
   },
   "devEngines": {
     "packageManager": {

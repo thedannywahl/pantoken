@@ -80,7 +80,7 @@ export default extendBase({
       // workspace deps' `build` so the barrel it imports (`@pantoken/tokens`/`icons`/`utils`/
       // `plugin-colors`) is present, making a standalone `vp run generate` self-sufficient. Inputs and
       // outputs are auto-tracked, so it's cached and only reruns when a source `.css`/`.ts`, a script, or
-      // a dependency changes. The root `lint:css`/`lint:js` tasks depend on this.
+      // a dependency changes. The root `lint:css` task depends on this.
       generate: {
         command: "node scripts/component-styles.ts && node scripts/generate.ts",
         dependsOn: [{ task: "build", from: ["dependencies", "devDependencies"] }],

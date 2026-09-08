@@ -6,6 +6,7 @@
   "license": "MIT",
   "files": [
     "dist",
+    "prompts",
     "agy-wrapper.sh",
     "copilot-wrapper.sh"
   ],

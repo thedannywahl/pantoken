@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: Her yerde InstUI
   tagline: Bir çözümlenmiş token modeli; stil sayfalarına, çerçeve bağlayıcılarına, yerel koda ve tasarım aracı yüklerine dönüştürülmüş.
   actions:

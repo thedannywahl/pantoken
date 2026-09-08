@@ -2,8 +2,10 @@ import { EventEmitter } from "node:events";
 import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test";
 
 // A fake child process: a stream stub for stdout/stderr plus stdin.end that triggers the response.
-const spawn = vi.fn();
-vi.mock("node:child_process", () => ({ spawn }));
+const { spawn } = vi.hoisted(() => ({ spawn: vi.fn() }));
+vi.mock("node:child_process", () => ({
+  spawn: (...args: Parameters<typeof spawn>) => spawn(...args),
+}));
 
 const { GlossaryTranslationAdapter, AiTranslationAdapter, createTranslationAdapter } =
   await import("./api-translation.ts");
@@ -155,6 +157,53 @@ test("translateBatch restores masked package names and inline code around the mo
   expect(out.a).toContain("`code`");
 });
 
+test("translateBatch preserves Markdown structure inside JSON values", async () => {
+  useSpawn((prompt) => {
+    if (prompt.includes("Translate the VALUES")) {
+      const payload = objectFromPrompt(prompt) ?? {};
+      const out = Object.fromEntries(
+        Object.entries(payload).map(([id, value]) => [
+          id,
+          value
+            .replace(/[#>*()[\]]/g, "X")
+            .replace("Heading", "Translated heading")
+            .replace("list item", "Listeneintrag"),
+        ]),
+      );
+      return { stdout: JSON.stringify(out) };
+    }
+    return echoResponder(prompt);
+  });
+  const adapter = new AiTranslationAdapter();
+  const input = [
+    "### Heading",
+    "",
+    "*emphasis* and **strong** with [link label](https://example.com/docs).",
+    "",
+    "- list item",
+    "1. second item",
+    "> quoted text",
+    "",
+    'Use `<li>` and <span class="raw">raw HTML</span>.',
+  ].join("\n");
+
+  const out = await adapter.translateBatch([{ id: "a", text: input }]);
+
+  expect(out.a).toBe(
+    [
+      "### Translated heading",
+      "",
+      "*emphasis* and **strong** with [link label](https://example.com/docs).",
+      "",
+      "- Listeneintrag",
+      "1. second item",
+      "> quoted text",
+      "",
+      'Use `<li>` and <span class="raw">raw HTML</span>.',
+    ].join("\n"),
+  );
+});
+
 test("translateBatch masks bare escaped angle brackets between separately-masked code spans", async () => {
   // Simulates TypeDoc's generic-type rendering: `` `Readonly`\<`Record`\<`string`, `string`\>\> `` —
   // each backtick token is masked on its own, but the `\<`/`\>` glue between them isn't unless it's
@@ -185,6 +234,26 @@ test("translateBatch (batch mode) masks bare escaped angle brackets the same way
   const input = "Returns `Promise`\\<`Readonly`\\<`Record`\\<`string`, `string`\\>\\>\\>.";
   const out = await adapter.translateBatch([{ id: "a", text: input }]);
   expect(out.a).toBe(input);
+});
+
+// msgfmt -c treats a msgstr/msgid trailing-newline mismatch as fatal, so the adapter must not let a
+// model's stray trailing newline through.
+test("translateBatch gives each translation its source's trailing-newline shape", async () => {
+  useSpawn((prompt) => {
+    if (prompt.includes("Translate the VALUES")) {
+      const payload = objectFromPrompt(prompt) ?? {};
+      const out = Object.fromEntries(Object.entries(payload).map(([id, v]) => [id, `HU ${v}\n`]));
+      return { stdout: JSON.stringify(out) };
+    }
+    return echoResponder(prompt);
+  });
+  const adapter = new AiTranslationAdapter();
+  const out = await adapter.translateBatch([
+    { id: "a", text: "No trailing newline" },
+    { id: "b", text: "Trailing newline\n" },
+  ]);
+  expect(out.a).toBe("HU No trailing newline");
+  expect(out.b).toBe("HU Trailing newline\n");
 });
 
 test("translateBatch streams each chunk through onChunk", async () => {
@@ -285,6 +354,15 @@ test("translateMarkdown preserves code fences and package names through the mode
   expect(out).toContain("@pantoken/css");
   expect(out).toContain("`inline`");
   expect(out).toContain("const x = 1;");
+});
+
+test("translateMarkdown strips an echoed markdown envelope", async () => {
+  useSpawn(() => ({
+    stdout: "--- BEGIN MARKDOWN ---\n# เริ่มต้น\n\nเนื้อหา\n--- END MARKDOWN ---",
+  }));
+  const adapter = new AiTranslationAdapter();
+  const out = await adapter.translateMarkdown("# Getting started\n\nContent", "a.md");
+  expect(out).toBe("# เริ่มต้น\n\nเนื้อหา");
 });
 
 test("translateMarkdown masks bare escaped angle brackets a hostile model would otherwise mangle", async () => {

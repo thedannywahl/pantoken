@@ -1,9 +1,0 @@
-{
-  "wroteFile": "✓ {{path}}",
-  "helpInitDescription": "Zapisz zasoby agenta pantoken w repozytorium",
-  "helpInitToolDescription": "Narzędzie agenta (all|cursor|copilot|windsurf)",
-  "helpInitDirDescription": "Docelowy katalog",
-  "helpScaffoldDescription": "Wygeneruj projekt startowy (przez @pantoken/scaffold) i zainstaluj w nim zasoby agenta",
-  "helpScaffoldToolDescription": "Narzędzie agenta (all|cursor|copilot|windsurf)",
-  "helpLangDescription": "Zastąp automatycznie wykryty język wyświetlania (np. \"hu\")"
-}

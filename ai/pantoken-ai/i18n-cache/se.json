@@ -1,9 +1,0 @@
-{
-  "wroteFile": "✓ {{path}}",
-  "helpInitDescription": "Rievda pantoken agentta materiálaid reppaan",
-  "helpInitToolDescription": "Agentta cuovgga (all|cursor|copilot|windsurf)",
-  "helpInitDirDescription": "Barget direktorija",
-  "helpScaffoldDescription": "Skeaffolda starta projektu (via @pantoken/scaffold) ja rievda agentta materiálaid into",
-  "helpScaffoldToolDescription": "Agentta cuovgga (all|cursor|copilot|windsurf)",
-  "helpLangDescription": "Ovttasneaddji automahtalaš čujudit giella (d.d. \"hu\")"
-}

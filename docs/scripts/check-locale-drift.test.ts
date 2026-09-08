@@ -30,7 +30,7 @@ vi.mock("../.vitepress/i18n.ts", () => ({
   ENGLISH_UI_STRINGS: {},
   flattenStrings: () => [],
 }));
-// Empty so glossaryDrift contributes no items to these fixtures, same rationale as ENGLISH_UI_STRINGS.
+// Empty so API glossary terms contribute no items to these fixtures, same rationale as ENGLISH_UI_STRINGS.
 vi.mock("./glossary.ts", () => ({ GLOSSARY_TERMS: [] }));
 
 const GUIDE_MD = "# Guide\n\nA whole guide file, translated as one markdown unit.\n";
@@ -62,19 +62,21 @@ const HOME_MD = [
 let keyFor: (kind: string, source: string) => string;
 /** The cached keys that make API_MD fully translated (one per prose block). */
 let apiProseKeys: string[];
+let apiProseSources: string[];
 
 beforeAll(async () => {
   const { collectUnits, segmentMarkdown } = await import("./segment-markdown.ts");
   ({ keyFor } = await import("./translation-memory.ts"));
-  apiProseKeys = collectUnits(segmentMarkdown(API_MD))
+  apiProseSources = collectUnits(segmentMarkdown(API_MD))
     .filter((u) => u.kind === "prose")
-    .map((u) => keyFor("prose", u.text));
+    .map((u) => u.text);
+  apiProseKeys = apiProseSources.map((source) => keyFor("prose", source));
 });
 
 /**
  * The drift policy the script reads through `DriftReporter`. Served from the mocked node:fs so each
  * test controls whether a `hu` finding blocks or only warns — that severity now lives in
- * `i18n-policy.json`, not in this script.
+ * `i18n.config.json`, not in this script.
  */
 const blockingPolicy = {
   tiers: { source: ["en"], rest: ["*"] },
@@ -97,8 +99,13 @@ interface Fixtures {
   apiMd: string;
   guidesCache: Record<string, string> | null;
   apiCache: Record<string, string> | null;
+  apiPo: string | null;
   apiDirExists: boolean;
-  policy: unknown;
+  policy: {
+    tiers: Record<string, string[]>;
+    surfaces: Record<string, string | Record<string, string>>;
+    fallback: string | Record<string, string>;
+  };
   homeMd: string;
   homeCache: Record<string, string> | null;
 }
@@ -109,6 +116,7 @@ const fixtures: Fixtures = {
   apiMd: API_MD,
   guidesCache: {},
   apiCache: {},
+  apiPo: null,
   apiDirExists: true,
   policy: blockingPolicy,
   homeMd: "",
@@ -117,9 +125,18 @@ const fixtures: Fixtures = {
 
 /** Resolve whether a mocked path should be treated as existing. */
 function fixtureExists(pathName: string): boolean {
-  if (pathName.endsWith(".guides.json")) return fixtures.guidesCache !== null;
-  if (pathName.endsWith(".api.json")) return fixtures.apiCache !== null;
-  if (pathName.endsWith(".home.json")) return fixtures.homeCache !== null;
+  if (pathName.endsWith(".home.po")) return false;
+  if (pathName.endsWith(".chrome.po")) return false;
+  if (pathName.endsWith(".demos.po")) return false;
+  if (pathName.endsWith(".guides.po")) return false;
+  if (pathName.endsWith(".api.po")) return fixtures.apiPo !== null;
+  const cacheStates = [
+    [".guides.json", fixtures.guidesCache],
+    [".api.json", fixtures.apiCache],
+    [".home.json", fixtures.homeCache],
+  ] as const;
+  const cache = cacheStates.find(([suffix]) => pathName.endsWith(suffix));
+  if (cache) return cache[1] !== null;
   if (pathName.endsWith("/api")) return fixtures.apiDirExists;
   return true;
 }
@@ -133,8 +150,13 @@ function fixtureDirEntries(pathName: string): string[] {
 
 /** Mock file-content lookup for the drift policy, caches, and markdown files. */
 function fixtureFileContents(pathName: string): string {
-  if (pathName.endsWith("i18n-policy.json")) return JSON.stringify(fixtures.policy);
+  if (pathName.endsWith("i18n.config.json"))
+    return JSON.stringify({
+      locales: { tiers: fixtures.policy.tiers },
+      drift: { surfaces: fixtures.policy.surfaces, fallback: fixtures.policy.fallback },
+    });
   if (pathName.endsWith("/index.md")) return fixtures.homeMd;
+  if (pathName.endsWith(".api.po")) return fixtures.apiPo ?? "";
   return fixtureCacheFileContents(pathName) ?? fixtureMarkdownContents(pathName);
 }
 
@@ -185,6 +207,7 @@ beforeEach(() => {
     apiMd: API_MD,
     guidesCache: {},
     apiCache: {},
+    apiPo: null,
     apiDirExists: true,
     policy: blockingPolicy,
     homeMd: "",
@@ -232,6 +255,24 @@ describe("walkMarkdown", () => {
 });
 
 describe("apiDrift", () => {
+  test("PO-backed drift ignores glossary units outside the API catalog", async () => {
+    const { apiDrift } = await import("./check-locale-drift.ts");
+    fixtures.apiFiles = ["page.md"];
+    fixtures.apiPo = apiProseSources
+      .map((source) => `msgctxt "docs.api:prose"\nmsgid "${source}"\nmsgstr "translated"\n`)
+      .join("\n");
+    expect(apiDrift("hu")).toEqual([]);
+  });
+
+  test("PO-backed drift still reports missing prose", async () => {
+    const { apiDrift } = await import("./check-locale-drift.ts");
+    fixtures.apiFiles = ["page.md"];
+    fixtures.apiPo = `msgctxt "docs.api:prose"\nmsgid "${apiProseSources[0]}"\nmsgstr "translated"\n`;
+    const missing = apiDrift("hu");
+    expect(missing).toHaveLength(3);
+    expect(missing.every((item) => item.kind === "prose")).toBe(true);
+  });
+
   test("flags every prose block missing from the cache (skipping the glossary heading)", async () => {
     const { apiDrift } = await import("./check-locale-drift.ts");
     fixtures.apiFiles = ["page.md"];

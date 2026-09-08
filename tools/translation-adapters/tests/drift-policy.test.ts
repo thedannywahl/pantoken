@@ -88,10 +88,16 @@ test("the built-in default policy blocks English source drift and warns on trans
 // ── parseDriftPolicy ──────────────────────────────────────────────────────────
 
 test("parseDriftPolicy accepts the committed repo policy", () => {
-  const raw = JSON.parse(
-    readFileSync(join(import.meta.dirname, "../../../i18n-policy.json"), "utf8"),
+  const config = JSON.parse(
+    readFileSync(join(import.meta.dirname, "../../../i18n.config.json"), "utf8"),
   );
-  expect(() => parseDriftPolicy(raw)).not.toThrow();
+  expect(() =>
+    parseDriftPolicy({
+      tiers: config.locales.tiers,
+      surfaces: config.drift.surfaces,
+      fallback: config.drift.fallback,
+    }),
+  ).not.toThrow();
 });
 
 test("parseDriftPolicy rejects an unknown severity", () => {
@@ -123,7 +129,7 @@ let dir: string;
 beforeEach(() => {
   dir = mkdtempSync(join(tmpdir(), "drift-policy-"));
   resetDriftPolicyCache();
-  delete process.env.I18N_DRIFT_POLICY;
+  delete process.env.I18N_CONFIG;
   delete process.env.I18N_DRIFT_STRICT;
   delete process.env.GITHUB_ACTIONS;
   delete process.env.GITHUB_STEP_SUMMARY;
@@ -132,18 +138,21 @@ beforeEach(() => {
 afterEach(() => {
   rmSync(dir, { recursive: true, force: true });
   resetDriftPolicyCache();
-  delete process.env.I18N_DRIFT_POLICY;
+  delete process.env.I18N_CONFIG;
   delete process.env.I18N_DRIFT_STRICT;
   delete process.env.GITHUB_ACTIONS;
   delete process.env.GITHUB_STEP_SUMMARY;
   vi.restoreAllMocks();
 });
 
-test("loadDriftPolicy reads i18n-policy.json from the workspace root", () => {
+test("loadDriftPolicy reads i18n.config.json from the workspace root", () => {
   writeFileSync(join(dir, "pnpm-workspace.yaml"), "packages: []\n");
   writeFileSync(
-    join(dir, "i18n-policy.json"),
-    JSON.stringify({ tiers: { rest: ["*"] }, surfaces: { "x.y": "off" } }),
+    join(dir, "i18n.config.json"),
+    JSON.stringify({
+      locales: { tiers: { rest: ["*"] } },
+      drift: { surfaces: { "x.y": "off" }, fallback: "warn" },
+    }),
   );
   const nested = join(dir, "a", "b");
   mkdirSync(nested, { recursive: true });
@@ -155,8 +164,8 @@ test("loadDriftPolicy falls back to the built-in policy when no file exists", ()
   expect(loadDriftPolicy(dir)).toBe(DEFAULT_DRIFT_POLICY);
 });
 
-test("loadDriftPolicy throws when I18N_DRIFT_POLICY points at a missing file", () => {
-  process.env.I18N_DRIFT_POLICY = join(dir, "nope.json");
+test("loadDriftPolicy throws when I18N_CONFIG points at a missing file", () => {
+  process.env.I18N_CONFIG = join(dir, "nope.json");
   expect(() => loadDriftPolicy(dir)).toThrow(/points at a missing file/);
 });
 

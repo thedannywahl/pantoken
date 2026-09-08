@@ -18,7 +18,7 @@ import { readFileSync } from "node:fs";
 export { SCAFFOLD_PLATFORMS, isScaffoldPlatform, resolveScaffoldPlatform } from "./index.ts";
 export { detectLocale, createLocaleLookup, type LocaleLookup } from "./locale.ts";
 export { scaffoldProject } from "./index.ts";
-export { LOCALES } from "../generated/locales/index.ts";
+export { MESSAGES } from "../generated/locales/index.ts";
 
 import {
   SCAFFOLD_PLATFORMS,
@@ -27,7 +27,7 @@ import {
 } from "./index.ts";
 import { scaffoldProject } from "./index.ts";
 import { detectLocale, createLocaleLookup, type LocaleLookup } from "./locale.ts";
-import { LOCALES } from "../generated/locales/index.ts";
+import { MESSAGES } from "../generated/locales/index.ts";
 import { SCAFFOLD_METADATA } from "../generated/scaffold-metadata.ts";
 import { CDN_PROVIDERS } from "@pantoken/canvas-theme-editor";
 import {
@@ -422,7 +422,7 @@ export function createScaffoldCommand(options?: ScaffoldCommandOptions): Command
 
   program.action(async (platformArg: string | undefined, opts: Record<string, unknown>) => {
     const locale = detectLocale({ langFlag: opts.lang as string | undefined });
-    const { t } = createLocaleLookup(LOCALES, locale);
+    const { t } = createLocaleLookup(MESSAGES, locale);
 
     try {
       const { platform, dir } = await resolveScaffoldTarget({

@@ -22,7 +22,7 @@ jobs:
 
       - name: Detect release-impacting changes
         id: filter
-        uses: dorny/paths-filter@7b450fff21473bca461d4b92ce414b9d0420d706 # v4
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
         with:
           filters: |
             release_impact:
@@ -56,7 +56,7 @@ jobs:
         run: git fetch --no-tags origin +refs/heads/${{ github.base_ref }}:refs/heads/${{ github.base_ref }}
 
       - name: Set up Vite+
-        uses: voidzero-dev/setup-vp@1b32467adbe183473499fd9d5d372c3ed9641754 # v1.18.0
+        uses: voidzero-dev/setup-vp@49c3e4e92c52e7f8392712a9267bbe71c5ab30e5 # v1.19.0
         with:
           cache: true
           run-install: true

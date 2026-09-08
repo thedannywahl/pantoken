@@ -1,9 +1,0 @@
-[pantoken](../../../../index.md) / [formats/components/src](../index.md) / FOCUSABLE\_SELECTOR
-
-# متغير: FOCUSABLE\_SELECTOR
-
-> `const` **FOCUSABLE\_SELECTOR**: `"a, button, input, select, textarea, summary, [tabindex]"` = `"a, button, input, select, textarea, summary, [tabindex]"`
-
-<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
-
-العناصر التي تنطبق عليها الحلقة بشكل افتراضي (العناصر التفاعلية/القابلة للتركيز الشائعة).

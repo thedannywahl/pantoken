@@ -22,6 +22,12 @@
   "snyk.advanced.autoSelectOrganization": true,
   "css.lint.unknownAtRules": "ignore",
   "css.lint.emptyRules": "ignore",
+  // The Vitest extension otherwise discovers every package's own vite.config.ts (~90 files) and
+  // spawns a worker per config on activation, which exceeds macOS's launchd-imposed 256 fd soft
+  // limit for GUI apps (spawn EBADF). The root config's `test.include` already covers every
+  // package, so pin the extension to just that one config instead of workspace auto-discovery.
+  "vitest.rootConfig": "./vite.config.ts",
+  "vitest.ignoreWorkspace": true,
   // Scaffold template source files (packages/scaffold/templates/**) keep the real extension plus a
   // `.tmpl` suffix (generate.ts strips it when inlining) — associate them with their real language
   // so editor features (highlighting, IntelliSense, formatting) work as if `.tmpl` weren't there.
@@ -30,5 +36,7 @@
     "*.tsx.tmpl": "typescriptreact",
     "*.vue.tmpl": "vue",
     "*.svelte.tmpl": "svelte"
-  }
+  },
+  "oxc.disableNestedConfig": true,
+  "oxc.fmt.disableNestedConfig": true
 }

@@ -1,9 +1,11 @@
 {
-  "prevMonth": "Previous month",
-  "nextMonth": "Next month",
-  "dateLabel": { "string": "Date", "verbatim": "allow" },
-  "datePlaceholder": { "string": "yyyy-mm-dd", "verbatim": "allow" },
-  "openCalendar": "Open calendar",
-  "timeLabel": { "string": "Time", "verbatim": "allow" },
-  "back": { "string": "Back", "verbatim": "allow" }
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
+  "prevMonth": { "message": "Previous month", "translate": "always" },
+  "nextMonth": { "message": "Next month", "translate": "always" },
+  "dateLabel": { "message": "Date", "translate": "optional" },
+  "datePlaceholder": { "message": "yyyy-mm-dd", "translate": "optional" },
+  "openCalendar": { "message": "Open calendar", "translate": "always" },
+  "timeLabel": { "message": "Time", "translate": "optional" },
+  "back": { "message": "Back", "translate": "optional" }
 }

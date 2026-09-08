@@ -2,7 +2,7 @@
  * Emit `generated/visual-debug.css` — the authored cssdoc `@utility` record and the `-with-visual-debug`
  * outline rules. There are no `:root` token declarations (the outline colour is an inline-fallback custom
  * property), so the doc comment leads the sheet, immediately before the class rules (cssdoc attaches a
- * comment to the next rule). The sheet feeds the stylelint/eslint cssdoc lint and the docs CSS-API pages.
+ * comment to the next rule). The sheet feeds the stylelint cssdoc lint and the docs CSS-API pages.
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";

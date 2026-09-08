@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: رابط کاربری InstUI، همه جا
   tagline: یک مدل توکن حل‌شده که به فایل‌های استایل، بایندینگ‌های فریم‌ورک، کد بومی و داده‌های ابزار طراحی تبدیل شده‌است.
   actions:

@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: InstUI, ở mọi nơi
   tagline: Một mô hình token đã được giải quyết, chuyển thành bảng kiểu, ràng buộc framework, mã native và dữ liệu cho công cụ thiết kế.
   actions:

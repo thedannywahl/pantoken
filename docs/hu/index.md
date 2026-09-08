@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: InstUI, mindenhol
   tagline: Egy feloldott token-modell, átalakítva stíluslapokká, keretrendszer-kötésekké, natív kóddá és dizájneszközöknek szánt adatcsomagokká.
   actions:

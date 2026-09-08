@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: 어디서나 InstUI
   tagline: 하나의 해석된 토큰 모델을 스타일시트, 프레임워크 바인딩, 네이티브 코드 및 디자인 도구용 페이로드로 변환합니다.
   actions:

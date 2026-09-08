@@ -67,6 +67,10 @@ know what's in place:
   for a few days.
 - **Pinned actions.** CI workflows pin third-party GitHub Actions to commit SHAs, and Renovate keeps
   those pins current (as digests).
+- **Pinned build-time downloads.** The only asset the build fetches outside the package manager is the
+  set of Noto script fonts the documentation social cards render in. Those come from URLs pinned to a
+  single `google/fonts` commit and are checked against recorded SHA-256 digests before use; a
+  mismatched or unreachable download is discarded rather than cached.
 - **Automated scanning.** CodeQL and OpenSSF Scorecard run in CI, and GitHub security advisories are
   enabled. Snyk scans both dependencies (`snyk test`) and source code for vulnerabilities
   (`snyk code`, SAST); because Snyk has no GitHub App here, the SAST scan gates locally at push time

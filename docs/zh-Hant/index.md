@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: InstUI，無所不在
   tagline: 一個解析後的代幣模型，轉換成樣式表、框架綁定、原生程式碼與設計工具的載入資料。
   actions:

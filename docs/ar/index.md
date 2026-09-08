@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: InstUI، في كل مكان.
   tagline: نموذج توكن مُحلّل واحد، معاد تشكيله إلى أوراق أنماط، ربطات أطر العمل، كود أصلي، وبيانات لأدوات التصميم.
   actions:

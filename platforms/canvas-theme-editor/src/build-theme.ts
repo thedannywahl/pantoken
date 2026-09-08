@@ -35,7 +35,11 @@ export interface ThemeStrings {
 }
 
 /** English defaults, used for any key a caller's `strings` override doesn't supply. */
-export const ENGLISH_THEME_STRINGS: ThemeStrings = { ...englishBase };
+export const ENGLISH_THEME_STRINGS: ThemeStrings = Object.fromEntries(
+  Object.entries(englishBase)
+    .filter(([key]) => key !== "$schema")
+    .map(([key, entry]) => [key, (entry as { message: string }).message]),
+) as unknown as ThemeStrings;
 
 /** A pantoken token theme variant. */
 export type ThemeVariant = "rebrand" | "canvas" | "canvasHighContrast";

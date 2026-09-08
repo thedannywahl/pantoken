@@ -4,7 +4,8 @@
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
-import { generateLocaleBundles } from "@pantoken/translation-adapters";
+import { generateMessageBundles, loadConfig } from "@pantoken/i18n-engine";
+import { LOCALES } from "./lib/locales.ts";
 
 const root = resolve(import.meta.dirname, "..");
 const read = (path: string): string => readFileSync(join(root, path), "utf8");
@@ -31,4 +32,10 @@ writeFileSync(
 );
 console.log(`✓ inlined ${Object.keys(assets).length} agent assets`);
 
-generateLocaleBundles(root, outDir);
+generateMessageBundles(
+  loadConfig(resolve(root, "../../i18n.config.json")),
+  resolve(root, "../.."),
+  "cli.ai",
+  Object.keys(LOCALES),
+  outDir,
+);

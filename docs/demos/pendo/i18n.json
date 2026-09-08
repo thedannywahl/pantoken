@@ -1,78 +1,117 @@
 {
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
   "popoverLabel": {
-    "string": "Popover",
-    "verbatim": { "allow": ["en*"] }
+    "message": "Popover",
+    "translate": {
+      "en*": "optional"
+    }
   },
   "popoverTitle": {
-    "string": "A quick orientation",
-    "verbatim": { "allow": ["en*"] }
+    "message": "A quick orientation",
+    "translate": {
+      "en*": "optional"
+    }
   },
   "popoverSubtitle": {
-    "string": "Feature tour",
-    "verbatim": { "allow": ["en*"] }
+    "message": "Feature tour",
+    "translate": {
+      "en*": "optional"
+    }
   },
   "popoverBody": {
-    "string": "This anchored guide keeps the next action close to the feature it describes.",
-    "verbatim": { "allow": ["en*"] }
+    "message": "This anchored guide keeps the next action close to the feature it describes.",
+    "translate": {
+      "en*": "optional"
+    }
   },
   "alertLabel": {
-    "string": "Alert",
-    "verbatim": { "allow": ["en*"] }
+    "message": "Alert",
+    "translate": {
+      "en*": "optional"
+    }
   },
   "alertTitle": {
-    "string": "Maintenance tonight",
-    "verbatim": { "allow": ["en*"] }
+    "message": "Maintenance tonight",
+    "translate": {
+      "en*": "optional"
+    }
   },
   "alertSubtitle": {
-    "string": "Starts at 11:00 PM",
-    "verbatim": { "allow": ["en*"] }
+    "message": "Starts at 11:00 PM",
+    "translate": {
+      "en*": "optional"
+    }
   },
   "alertBody": {
-    "string": "Course tools will be unavailable briefly tonight while maintenance is completed.",
-    "verbatim": { "allow": ["en*"] }
+    "message": "Course tools will be unavailable briefly tonight while maintenance is completed.",
+    "translate": {
+      "en*": "optional"
+    }
   },
   "bannerLabel": {
-    "string": "Banner",
-    "verbatim": { "allow": ["en*"] }
+    "message": "Banner",
+    "translate": {
+      "en*": "optional"
+    }
   },
   "bannerTitle": {
-    "string": "New analytics are ready",
-    "verbatim": { "allow": ["en*"] }
+    "message": "New analytics are ready",
+    "translate": {
+      "en*": "optional"
+    }
   },
   "bannerSubtitle": {
-    "string": "Participation insights",
-    "verbatim": { "allow": ["en*"] }
+    "message": "Participation insights",
+    "translate": {
+      "en*": "optional"
+    }
   },
   "bannerBody": {
-    "string": "Review participation trends and identify where learners may need support.",
-    "verbatim": { "allow": ["en*"] }
+    "message": "Review participation trends and identify where learners may need support.",
+    "translate": {
+      "en*": "optional"
+    }
   },
   "closeLabel": {
-    "string": "Close",
-    "verbatim": { "allow": ["en*"] }
+    "message": "Close",
+    "translate": {
+      "en*": "optional"
+    }
   },
   "continueLabel": {
-    "string": "Continue",
-    "verbatim": { "allow": ["en*"] }
+    "message": "Continue",
+    "translate": {
+      "en*": "optional"
+    }
   },
   "laterLabel": {
-    "string": "Later",
-    "verbatim": { "allow": ["en*"] }
+    "message": "Later",
+    "translate": {
+      "en*": "optional"
+    }
   },
   "alertPrimaryLabel": {
-    "string": "View details",
-    "verbatim": { "allow": ["en*"] }
+    "message": "View details",
+    "translate": {
+      "en*": "optional"
+    }
   },
   "alertSecondaryLabel": {
-    "string": "Dismiss",
-    "verbatim": { "allow": ["en*"] }
+    "message": "Dismiss",
+    "translate": {
+      "en*": "optional"
+    }
   },
   "primaryLabel": {
-    "string": "View analytics",
-    "verbatim": { "allow": ["en*"] }
+    "message": "View analytics",
+    "translate": {
+      "en*": "optional"
+    }
   },
   "secondaryLabel": {
-    "string": "Not now",
-    "verbatim": { "allow": ["en*"] }
+    "message": "Not now",
+    "translate": {
+      "en*": "optional"
+    }
   }
 }

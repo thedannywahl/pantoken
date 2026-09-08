@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: InstUI, ym mhobman
   tagline: Un model tocyn datrysiedig, wedi'i drawsffurfio i arddulliau, rhwymiadau fframwaith, cod frodorol, a chynnig offer dylunio.
   actions:

@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: InstUI, di mana-mana
   tagline: Satu model token yang diselesaikan, dibentuk semula menjadi helaian gaya, pengikat rangka kerja, kod asli, dan muatan alat reka bentuk.
   actions:

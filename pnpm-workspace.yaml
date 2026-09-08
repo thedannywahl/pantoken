@@ -17,11 +17,11 @@ packages:
 catalogMode: prefer
 
 catalog:
-  "@types/node": ^26.4.0
+  "@types/node": ^26.5.0
   typescript: ^7.0.2
   arkregex: ^0.0.8
-  vite: npm:@voidzero-dev/vite-plus-core@0.3.0
-  vite-plus: 0.3.0
+  vite: npm:@voidzero-dev/vite-plus-core@0.3.1
+  vite-plus: 0.3.1
   # Upstream Instructure sources. The design-tokens repo is GitHub-only and versioned independently of
   # the 11.7.x line, so it's pinned to a release tag (its package.json version is unreliable — stuck at
   # 1.0.0 across tags — so the tag + resolved commit are the provenance the upgrade pipeline records).
@@ -29,22 +29,27 @@ catalog:
   "@instructure/ui-icons": ^11.7.5
   lucide: ^1.23.0
   # Native token transforms
-  style-dictionary: ^5.5.2
+  style-dictionary: ^5.5.3
   "@tokens-studio/sd-transforms": ^2.0.3
   # Rehype / unist
   unist-util-visit: ^5.1.0
+  # Localization-engine offset-splice extraction (see .claude/plans/localization-engine.md)
+  unified: ^11.0.5
+  remark-parse: ^11.0.0
+  # Localization-engine MF2 messages (Phase 3)
+  messageformat: ^4.0.0
   # markdown-it integration
   markdown-it: ^15.0.1
   # Brand icons (plugin)
-  simple-icons: ^16.29.0
+  simple-icons: ^16.30.0
   # React markdown integration
   react: ^19.2.8
   react-dom: ^19.2.8
   "@types/react": ^19.2.18
-  "@types/react-dom": ^19.2.5
+  "@types/react-dom": ^19.2.7
   react-markdown: ^10.1.0
   remark-gfm: ^4.0.1
-  postcss: ^8.5.26
+  postcss: ^8.5.28
   # Icon font chain
   points-on-path: ^0.2.1
   clipper-lib: ^6.4.2
@@ -69,49 +74,49 @@ catalog:
   # Quality gates
   "@commitlint/cli": ^21.2.2
   "@commitlint/config-conventional": ^21.2.2
-  "@changesets/cli": ^3.0.1
+  "@changesets/cli": ^3.0.2
   "@vitest/coverage-v8": 4.1.11
   markdownlint-cli2: ^0.23.2
   "@manypkg/cli": ^0.25.1
-  fallow: ^3.21.0
-  happy-dom: ^20.12.0
-  snyk: ^1.1307.0
+  fallow: ^3.23.0
+  happy-dom: ^20.14.0
+  dompurify: ^3.4.15
+  snyk: ^1.1307.1
   publint: ^0.3.24
   "@arethetypeswrong/cli": ^0.18.5
   bumpp: ^12.2.1
   vitepress-plugin-mermaid: ^2.0.17
   mermaid: ^11.17.2
   shiki: ^4.4.3
+  "@shikijs/langs": ^4.4.3
+  "@shikijs/themes": ^4.4.3
+  "@shikijs/types": ^4.4.3
   vue: ^3.5.42
   vitepress: 2.0.0-alpha.19
   oxc-minify: ^0.147.0
   typedoc: ^0.28.20
   typedoc-plugin-markdown: ^4.13.0
-  typedoc-vitepress-theme: ^1.1.3
+  typedoc-vitepress-theme: ^1.1.4
   vitepress-plugin-llms: ^1.13.5
   # CLI framework (commander-based scaffolding CLI rebuild)
   commander: ^15.0.0
   "@commander-js/extra-typings": ^15.0.0
-  "@clack/prompts": ^1.7.0
+  "@clack/prompts": ^1.8.0
   "@bomb.sh/tab": ^0.0.22
   # @cssdoc/* toolchain — @cssdoc/markdown arrives transitively
   # via @cssdoc/typedoc; the entries below are pantoken's direct dependencies.
-  "@cssdoc/core": ^0.14.2
-  "@cssdoc/config": ^0.14.2
-  "@cssdoc/typedoc": ^0.14.2
-  "@cssdoc/stylelint-plugin": ^0.14.2
-  "@cssdoc/eslint-plugin": ^0.14.2
-  # Transitive deps that pantoken also uses directly (stylelint/eslint configs); the rest were mirrored
+  "@cssdoc/cli": ^0.15.2
+  "@cssdoc/core": ^0.15.2
+  "@cssdoc/config": ^0.15.2
+  "@cssdoc/typedoc": ^0.15.2
+  # Transitive deps that pantoken also uses directly (the stylelint config); the rest were mirrored
   # only for the linked cssdoc source and are now unused, kept harmless under `catalogMode: prefer`.
   ajv: ^8.20.0
   grammarkdown: ^3.3.2
-  stylelint: ^17.14.1
-  eslint: ^10.9.1
-  "@eslint/css": ^1.4.0
-  "@typescript-eslint/parser": ^8.69.0
+  stylelint: ^17.15.0
+  # Not ESLint deps: oxlint loads these two through its ESLint-compatible JS-plugin bridge.
   eslint-plugin-tsdoc: ^0.5.2
   eslint-plugin-tsdoc-require-2: ^1.2.7
-  "@html-eslint/parser": ^0.65.0
   postcss-value-parser: ^4.2.0
   css-tree: ^3.2.1
   "@types/css-tree": ^3.2.0
@@ -136,21 +141,35 @@ catalog:
   "@codemirror/lang-javascript": ^6.2.5
   "@codemirror/lint": ^6.9.7
   "@codemirror/autocomplete": ^6.20.3
-  "@codemirror/state": ^6.7.2
-  "@codemirror/view": ^6.43.10
+  "@codemirror/state": ^6.7.4
+  "@codemirror/view": ^6.43.11
+  vitest: 4.1.11
 overrides:
   vite@*: "catalog:"
   # next 16.2.10 (auto-installed as @pantoken/next's optional peer) has 3 High CVEs; 16.2.11 patches
   # them. We can't drop the peer (pnpm auto-installs it), so pin the resolved version to the fix.
   next: "^16.2.11"
+  vitest@*: "catalog:"
 peerDependencyRules:
   allowAny:
     - vite
+    - vitest
   allowedVersions:
     vite: "*"
+    vitest: "*"
 minimumReleaseAge: 5
 minimumReleaseAgeExclude:
   - "@cssdoc/*"
+  - vite-plus
+  - "@voidzero-dev/*"
+  - oxlint
+  - "@oxlint/*"
+  - oxlint-tsgolint
+  - "@oxlint-tsgolint/*"
+  - oxfmt
+  - "@oxfmt/*"
+  - vitest
+  - "@vitest/*"
 allowBuilds:
   core-js: true
   esbuild: true

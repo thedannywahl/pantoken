@@ -82,12 +82,12 @@
      * box by its margin so it sits flush (1px overlap under the border). The
      * build adds !important, which overrides Pendo's dynamic inline offsets. */
     &.pendo-tooltip-caret--top {
-      border-top-color: var(--caret-color);
+      border-top: 16px solid var(--caret-color);
       /* sits below the box: shift up by margin-bottom */
-      bottom: calc(4px + var(--instui-component-shared-tokens-spacing-gap-cards-md) - 15px);
+      bottom: calc(4px + var(--instui-component-shared-tokens-spacing-gap-cards-md) - 14px);
 
       & + .pendo-tooltip-caret-border {
-        bottom: calc(4px + var(--instui-component-shared-tokens-spacing-gap-cards-md) - 16px);
+        bottom: calc(4px + var(--instui-component-shared-tokens-spacing-gap-cards-md) - 15px);
       }
     }
 
@@ -101,12 +101,12 @@
     }
 
     &.pendo-tooltip-caret--bottom {
-      border-bottom-color: var(--caret-color);
+      border-bottom: 16px solid var(--caret-color);
       /* sits above the box: shift down by margin-top */
-      top: calc(var(--instui-component-shared-tokens-spacing-general-space-xs) - 15px);
+      top: calc(var(--instui-component-shared-tokens-spacing-general-space-xs) - 14px);
 
       & + .pendo-tooltip-caret-border {
-        top: calc(var(--instui-component-shared-tokens-spacing-general-space-xs) - 16px);
+        top: calc(var(--instui-component-shared-tokens-spacing-general-space-xs) - 15px);
       }
     }
 

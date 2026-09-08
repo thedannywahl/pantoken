@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: InstUI, alls staðar
   tagline: Eitt leyst táknalíkan, umbreytt í stílblöð, rammabindingar, innfæddan kóða og gagnapakka fyrir hönnunarverkfæri.
   actions:

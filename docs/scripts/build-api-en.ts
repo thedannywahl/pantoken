@@ -12,7 +12,10 @@
  */
 import { spawnSync } from "node:child_process";
 import { createRequire } from "node:module";
-import { dirname, join } from "node:path";
+import { dirname, join, relative } from "node:path";
+import { globSync, readFileSync, writeFileSync } from "node:fs";
+import { refreshCoverageReports, serializePot } from "@pantoken/i18n-engine";
+import { collectUnits, segmentMarkdown } from "./segment-markdown.ts";
 
 const require = createRequire(import.meta.url);
 // TypeDoc's package `exports` don't expose `./bin/typedoc`, so resolve the package root and join the bin
@@ -30,3 +33,21 @@ if (result.status !== 0) process.exit(result.status ?? 1);
 // at import (top-level side effects).
 await import("./style-api-badges.ts");
 await import("./write-api-overview.ts");
+
+const apiRoot = join(dirname(new URL(import.meta.url).pathname), "../api");
+const units = globSync("**/*.md", { cwd: apiRoot })
+  .sort()
+  .flatMap((file) =>
+    collectUnits(segmentMarkdown(readFileSync(join(apiRoot, file), "utf8")))
+      // Glossary units are deterministically substituted and never written to the PO catalog
+      // (see segment-markdown.ts) — including them here would make 100% coverage unreachable.
+      .filter((unit) => unit.kind === "prose")
+      .map((unit) => ({
+        msgid: unit.text,
+        msgctxt: `docs.api:${unit.kind}`,
+        reference: relative(apiRoot, join(apiRoot, file)),
+        translate: "always" as const,
+      })),
+  );
+writeFileSync(join(apiRoot, "../../l10n/docs.api.pot"), serializePot(units, ["no-c-format"]));
+refreshCoverageReports(join(apiRoot, "../../i18n.config.json"));

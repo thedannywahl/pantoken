@@ -1,39 +1,44 @@
-# Byrjaðu
+# Komast af stað
 
-pantoken tekur Instructure UI hönnunarmerki og tákn, leysir þau einu sinni og umbreytir því eina líkani í pakkningar fyrir marga vettvang: venjuleg stílsnið, SCSS og Less, React og Vue og Svelte, Tailwind og Panda, innfædd Swift og Kotlin, WordPress og Drupal, Figma, og fleira.
+Pantoken tekur hönnunarstákona og tákn frá [Instructure UI](https://instructure.design), leysir þau niður einu sinni og umbreytir þeirri einu
+gerð í pakkninga fyrir marga vettvanga: hreinar stílsíður, SCSS og Less, React og Vue og Svelte,
+Tailwind og Panda, innfædd Swift og Kotlin, WordPress og Drupal, Figma og fleira.
 
-Settu upp minnsta pakkann sem hentar verkefninu þínu. Allt er einnig endurflutt í sameinaða `pantoken` pakkann, svo hægt er að byrja þar og þrengja niður síðar.
+Setjið upp minnsta pakkann sem hentar ykkar verkefni. Allt er einnig endurflutt í sameinaða
+`pantoken` pakkanum, svo hægt er að byrja þar og þrengja síðar.
 
-## Búa til byrjunarverkefni
+## Setja upp grunnverkefni
 
-Hraðasta leiðin til að prófa pantoken: búa til byrjunarverkefni þar sem það er þegar uppsett og tengt inn.
+Hraðasta leiðin til að prófa pantoken: setja upp grunnverkefni með því þegar það er uppsett og tengt inn.
 
 ```sh
-npx create-pantoken-app react
+npx create-pantoken-app
 ```
 
-Vettvangar: `components` (venjulegt HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. Sjá
+Vettvangar: `components` (hreint HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. Sjá
 [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) fyrir `--dir <path>` og
 forritunarnotkun.
 
-Nota AI kóðunaraðstoð? Engin uppsetning þarf — bendið henni á hæfileikann beint:
+Nota gervigreindarkóðaaðstoð? Engin uppsetning nauðsynleg — bendið henni beint á hæfileikann:
 
-```sh
-claude "Fetch https://create.pantoken.app and follow it to set up pantoken in this project."
+```prompt
+Sækja create.pantoken.app/SKILL.md og fylgja því til að setja upp pantoken í þessu verkefni.
 ```
 
-Virkjar á sama hátt fyrir Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, og Amazon Q Developer CLI — skiptið `claude` út fyrir `gemini`, `agent`, `codex`, `copilot -p`, eða `q chat`. Ef óskað er eftir að tengja regluverk pantoken varanlega í geymsluna (AGENTS.md, ritstjóra reglur, staðbundin afrit af þessum hæfileika), keyrið `npx @pantoken/ai init` í staðinn.
+Ef frekar á að festa reglur pantoken fyrir fulla vinnu í geymslunni (AGENTS.md, ritlar reglur, staðbundin afrit af þessum hæfileika), keyrið `npx @pantoken/ai init` í staðinn.
 
-## Líkanið fyrir táknin
+## Token-líkanið
 
-Tákn eru CSS sérsniðnar eigindir nefndar `--instui-<group>-<name>`, til dæmis
-`--instui-color-background-brand` eða `--instui-spacing-space-md`. Þrjú þemu fylgja með: `rebrand`
-(sjálfgefið, með `light-dark()` þar sem ljós og dökkt eru mismunandi), `canvas`, og `canvasHighContrast`.
-Táknin eru `<image>` tákn (`--instui-icon-<name>`) unnin úr Lucide auk sérsniðinna Instructure glyffa.
+Tokens eru CSS sérsniðnar breytur nefndar `--instui-<group>-<name>`, til dæmis
+`--instui-color-background-brand` eða `--instui-spacing-space-md`. Þrjár þemu fylgja: `rebrand`
+(staðlað, með `light-dark()` þar sem ljós og dökkur verða ólík), `canvas`, og `canvasHighContrast`.
+Táknin eru `<image>` tokens (`--instui-icon-<name>`) unnin úr Lucide auk sérsniðinna
+gílyfa Instructure.
 
 ## Stíla vefforrit
 
-Settu upp stílsnið og importaðu það einu sinni. Það skilgreinir allar `--instui-*` eigindir, þannig að þú vísað beint í þær úr þínum eigin CSS.
+Setjið upp stílsíðuna og innfluttið hana einu sinni. Hún skilgreinir hverja `--instui-*` eign, svo þið vísið
+beint í þær úr ykkar eigin CSS.
 
 ```sh
 npm i @pantoken/css
@@ -52,7 +57,7 @@ import "@pantoken/css/inject";
 
 ## Nota tákn hvar sem er
 
-Vefíhluturinn virkar í hvaða ramma sem er, án endurportunar.
+Vefþátturinn virkar í hvaða ramma sem er, án aðlögunar.
 
 ```sh
 npm i @pantoken/web-components
@@ -66,10 +71,10 @@ import "@pantoken/web-components";
 <instui-icon name="check-mark"></instui-icon>
 ```
 
-### CSS tákn
+### CSS tokens
 
-Tákn eru CSS sérsniðnar eigindir (`--instui-icon-<name>`). Hlaðið stílsniðinu einu sinni og vísið í hvaða
-tákn sem er sem `mask-image` eða `background-image` — engin innflutningur á tákni þarf.
+Táknin eru CSS sérsniðnar breytur (`--instui-icon-<name>`). Hlaðið stílsíðunni einu sinni og vísið í hvaða
+tákn sem er sem `mask-image` eða `background-image` — engin innflutningur á hverju tákni fyrir sig.
 
 ```css
 .my-icon {
@@ -77,10 +82,10 @@ tákn sem er sem `mask-image` eða `background-image` — engin innflutningur á
 }
 ```
 
-### JavaScript — eitt tákn vs. öll táknasafn
+### JavaScript — eitt tákn vs. allt sett
 
-`@pantoken/icons` býður upp á tvö nefnd útflæði. Notið `iconsByName` til að sækja eitt tákn án þess að fara í gegnum
-heila fylkið:
+`@pantoken/icons` býður upp á tvö nafngreind útflutningsatriði. Notið `iconsByName` til að ná í eitt tákn án þess að fara í
+gegnum alla fylkið:
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -89,7 +94,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-Notið `icons` þegar öll táknin þurfa að vera til staðar (t.d. til að byggja valkostavalkost):
+Notið `icons` þegar þið þurfið allt settið (t.d. til að byggja valkassa):
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -98,32 +103,32 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Bæði útflæðin hlaða fulla IR við innleiðingu modules — engin per-tákn tré-hristingur á þessum
-stigi. Fyrir létta aðeins-CSS hleðslu, notið [CDN valkosta](/guide/cdn-picker) til að búa til sameinað URL
-fyrir aðeins þau tákn sem þú þarft.
+Bæði útflutningsatriðin hlaða allan IR við upphaf modules — engin tréeyðing á einstökum táknum á þessu
+stigi. Fyrir léttan, aðeins-CSS hleðslu, notið [CDN vöruveljara](/guide/cdn-picker) til að búa til sameinaða slóð
+fyrir aðeins þau tákn sem þið þarfnist.
 
-## Útbúa fyrir innfæddan vettvang
+## Mynda fyrir innfæddan vettvang
 
-CLI skrifar táknauppsprettu inn í markmið geymslu. Engin uppsetning umfram keyranda þarf:
+CLI skrifar token-uppruna inn í markmið-geymslu. Engin uppsetning fyrir utan keyranda:
 
 ```sh
-npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
+npx @pantoken/cli generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-Sjá [pantoken CLI](/guide/cli) fyrir alla markþætti.
+Sjá [pantoken CLI](/guide/cli) fyrir alla markmiðaútfærslur.
 
-## VS Code ritunarleiðbeiningar
+## VS Code ritunarábendingar
 
-`@pantoken/pantoken` sendir nú með sér VS Code custom-data skrár svo neytendaverkefni geti fengið flokk- og
-táknfullkomnun í HTML/CSS án þess að setja upp pantoken-sértæka viðbót.
+`@pantoken/pantoken` inniheldur nú VS Code custom-data skrár svo niðurstreymisverkefni geti fengið sjálfkláru fyrir flokka og
+token í HTML/CSS án þess að setja upp sérstakt pantoken-viðbætur.
 
-1. Settu upp sameinaða pakkann:
+1. Setjið upp sameinaða pakkann:
 
 ```sh
 npm i @pantoken/pantoken
 ```
 
-1. Bentu VS Code á send JSON custom-data frá neytendaverkefninu þínu:
+1. Bendið VS Code á afhentar custom-data JSON skrár frá neytandaverkefninu ykkar:
 
 ```json
 {
@@ -132,14 +137,14 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. Endurhleðslu VS Code (eða keyrðu "Developer: Reload Window") til að virkja nýju gögnin.
+1. Endurhleðið VS Code (eða keyrið "Developer: Reload Window") til að taka nýju gögnin í gildi.
 
-Þetta gerir tillögur fyrir `instui-*` flokktákn (og `-modifier` flokktákn) auk
-`--instui-*` sérsniðinna eigna.
+Þetta gerir tillögur fyrir `instui-*` flokkatokens (og `-modifier` flokkatokens) auk
+`--instui-*` sérsniðinna eiginleika kleift.
 
-## Hvað næst
+## Hvert næst
 
-- [Pakka kortið](/guide/packages) — hvaða pakka á að nota eftir verkefni.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — settu upp hæfileika- og reglaskrár í neytendageymslu.
-- [Arkitektúr](/guide/architecture) — hvernig táknalíkan, core og úttak passa saman.
-- [API tilvísun](/api/) — hver táknaður útfluttur symbol, myndaður úr uppruna.
+- [Pakkaakortið](/guide/packages) — hvaða pakkann á að ná í, eftir verkefni.
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — setjið upp hæfileikaaðföng og reglur í neytandageymslu.
+- [Arkitektúr](/guide/architecture) — hvernig token-líkan, kjarni, og útflutningar passa saman.
+- [API tilvísun](/api/) — hvert útflutt tákn, framleitt úr upprunanum.

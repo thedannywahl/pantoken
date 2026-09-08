@@ -1,12 +1,32 @@
 {
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
   "wroteFile": {
-    "string": "✓ {{path}}",
-    "verbatim": "required"
+    "message": "✓ {{path}}",
+    "translate": "never"
   },
-  "helpInitDescription": "Write pantoken's agent assets into a repo",
-  "helpInitToolDescription": "Agent tool (all|cursor|copilot|windsurf)",
-  "helpInitDirDescription": "Target directory",
-  "helpScaffoldDescription": "Scaffold a starter project (via @pantoken/scaffold) and install agent assets into it",
-  "helpScaffoldToolDescription": "Agent tool (all|cursor|copilot|windsurf)",
-  "helpLangDescription": "Override the auto-detected display language (e.g. \"hu\")"
+  "helpInitDescription": {
+    "message": "Write pantoken's agent assets into a repo",
+    "translate": "always"
+  },
+  "helpInitToolDescription": {
+    "message": "Agent tool (all|cursor|copilot|windsurf)",
+    "translate": "always"
+  },
+  "helpInitDirDescription": {
+    "message": "Target directory",
+    "translate": "always"
+  },
+  "helpScaffoldDescription": {
+    "message": "Scaffold a starter project (via @pantoken/scaffold) and install agent assets into it",
+    "translate": "always"
+  },
+  "helpScaffoldToolDescription": {
+    "message": "Agent tool (all|cursor|copilot|windsurf)",
+    "translate": "always"
+  },
+  "helpLangDescription": {
+    "message": "Override the auto-detected display language (e.g. \"hu\")",
+    "translate": "always"
+  }
 }

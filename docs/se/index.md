@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: InstUI, buotruoktot
   tagline: Okta ráddjeduvvon token-mudel, mánuheapmái rievdasašša, framework-binnttaga, nativkoda ja design-ovttasvuođa čađaheapmái.
   actions:

@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: あらゆる場所に、InstUIを。
   tagline: 1つの解決済みトークンモデルが、スタイルシート、フレームワークバインディング、ネイティブコード、デザインツール用ペイロードに変換されます。
   actions:

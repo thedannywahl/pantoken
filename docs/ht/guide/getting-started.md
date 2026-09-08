@@ -1,43 +1,34 @@
 # Kòmanse
 
-pantoken pran token konsepsyon ak ikon Instructure UI yo, rezoud yo yon sèl fwa, epi refòme modèl sa a an pakè pou plizyè platfòm: fichye stil senp, SCSS ak Less, React ak Vue ak Svelte, Tailwind ak Panda, natif Swift ak Kotlin, WordPress ak Drupal, Figma, ak plis ankò.
+Pantoken pran tokèn konsepsyon ak ikon [Instructure UI](https://instructure.design), rezoud yo yon sèl fwa, epi re-fòme modèl sa a pou plizyè platfòm: feuille stil plenn, SCSS ak Less, React ak Vue ak Svelte, Tailwind ak Panda, natif Swift ak Kotlin, WordPress ak Drupal, Figma, ak plis ankò.
 
-Enstale pi piti pake ki adapte ak travay ou. Tout bagay tou re-ekspòte pa pake inifye `pantoken`, kidonk ou ka kòmanse la epi rafine pita.
+Enstale pake ki pi piti ki adapte ak travay ou. Tout bagay tou re-ekspòte pa pake inifye `pantoken`, kidonk ou ka kòmanse la epi reskonsantre pita.
 
 ## Kreye yon pwojè demaraj
 
-Pi rapid fason pou eseye pantoken: eskafòldyè yon pwojè demaraj ak li deja enstale ak konekte.
+Fason ki pi rapid pou eseye pantoken: eskafòld yon pwojè demaraj ki deja enstale ak konekte li.
 
 ```sh
-npx create-pantoken-app react
+npx create-pantoken-app
 ```
 
-Platfòm: `components` (HTML/CSS senp), `react`, `vue`, `svelte`, `web-components`, `angular`. Gade
-[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) pou `--dir <path>` ak
-itikilasyon pwogramatik.
+Platfòm: `components` (HTML/CSS plenn), `react`, `vue`, `svelte`, `web-components`, `angular`. Gade [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) pou `--dir <path>` ak itilizasyon pwogramatik.
 
-W ap itilize yon ajan kodaj AI? Pa bezwen enstalasyon — dirije li sou kapasite a dirèkteman:
+Ap itilize yon ajan kodaj AI? Pa gen bezwen enstale — bay li aksè dirèkteman nan abilite a:
 
-```sh
-claude "Fetch https://create.pantoken.app and follow it to set up pantoken in this project."
+```prompt
+Telechaje create.pantoken.app/SKILL.md epi swiv li pou mete pantoken nan pwojè sa a.
 ```
 
-Fonksyone menm jan pou Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, ak Amazon Q
-Developer CLI — ranplase `claude` ak `gemini`, `agent`, `codex`, `copilot -p`, oswa `q chat`. Si ou pito konekte règleman ajan pantoken yo nan depo a pèmanan (AGENTS.md, règleman editè, yon kopi lokal
-nan kapasite sa a), kouri `npx @pantoken/ai init` olye.
+Si ou pito entegre règ ajan pantoken yo nan depo a pèmanan (AGENTS.md, règ editè, yon kopi lokal nan abilite sa a), kouri `npx @pantoken/ai init` olye.
 
-## Modèl token la
+## Modèl tokèn yo
 
-Token yo se pwopriyete koutim CSS ki rele `--instui-<group>-<name>`, pa egzanp
-`--instui-color-background-brand` oswa `--instui-spacing-space-md`. Twa tèm parèt: `rebrand`
-(defo a, ak `light-dark()` kote limyè ak fènwa diferan), `canvas`, ak `canvasHighContrast`.
-Ikon yo se token `<image>` (`--instui-icon-<name>`) sòti nan Lucide plis glyf koutim
-Instructure yo.
+Tokèn yo se pwopriyete koutim CSS ki rele `--instui-<group>-<name>`, pou egzanp `--instui-color-background-brand` oswa `--instui-spacing-space-md`. Twa tèm yo pibliye: `rebrand` (default la, ak `light-dark()` kote limyè ak fènwa diferan), `canvas`, ak `canvasHighContrast`. Ikon yo se tokèn `<image>` (`--instui-icon-<name>`) sòti nan Lucide plis glyf koutim Instructure yo.
 
-## Style yon aplikasyon web
+## Stile yon aplikasyon wèb
 
-Enstale fichye stil la epi enpòte li yon sèl fwa. Li defini chak pwopriyete `--instui-*`, kidonk ou ka refere
-yo dirèkteman nan pwòp CSS ou.
+Enstale stylesheet la epi enpòte li yon sèl fwa. Li defini chak pwopriyete `--instui-*`, kidonk ou ka refere yo dirèkteman soti nan pwòp CSS ou.
 
 ```sh
 npm i @pantoken/css
@@ -56,7 +47,7 @@ import "@pantoken/css/inject";
 
 ## Itilize ikon nenpòt kote
 
-Konpozan web la mache nan nenpòt kad (framework), san okenn pòte.
+Web component la mache nan nenpòt kad, san okenn pòti.
 
 ```sh
 npm i @pantoken/web-components
@@ -70,10 +61,9 @@ import "@pantoken/web-components";
 <instui-icon name="check-mark"></instui-icon>
 ```
 
-### Token CSS
+### Tokèn CSS
 
-Ikon yo se pwopriyete koutim CSS (`--instui-icon-<name>`). Chaje fichye stil la yon sèl fwa epi refere nenpòt
-ikon kòm yon `mask-image` oswa `background-image` — pa gen bezwen enpòte pou chak ikon.
+Ikon yo se pwopriyete koutim CSS (`--instui-icon-<name>`). Chaje stylesheet la yon sèl fwa epi refere nenpòt ikon kòm yon `mask-image` oswa `background-image` — pa bezwen enpòte chak ikon separeman.
 
 ```css
 .my-icon {
@@ -81,10 +71,9 @@ ikon kòm yon `mask-image` oswa `background-image` — pa gen bezwen enpòte pou
 }
 ```
 
-### JavaScript — yon sèl ikon kont tout ansanm lan
+### JavaScript — ikon sèl vs. tout seri a
 
-`@pantoken/icons` ekspoze de ekspòt nonmen. Sèvi ak `iconsByName` pou rale yon ikon san ou pa iterate
-tout tablo a:
+`@pantoken/icons` ekspoze de ekspòtasyon nonmen. Sèvi ak `iconsByName` pou rale yon sèl ikon san iterate sou tout tablo a:
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -93,7 +82,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-Sèvi ak `icons` lè ou bezwen tout ansanm lan (egzanp pou konstwi yon selector):
+Sèvi ak `icons` lè ou bezwen tout seri a (egzanp pou konstwi yon selektè):
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -102,24 +91,21 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Tou de ekspòt yo chaje IR konplè a nan inisyalizasyon modil la — pa gen tree-shaking sou chak ikon nan
-nivèl sa a. Pou chajman ki lejè sèlman ak CSS, sèvi ak [CDN picker](/guide/cdn-picker) pou jenere yon URL konbine
-pou sèlman ikon ou bezwen yo.
+Tou de ekspòtasyon yo chaje IR konplè a nan inisyalizasyon modil la — pa gen tree-shaking pa ikon nan nivo sa a. Pou chajman ki lejè sèlman ak CSS, itilize [CDN picker](/guide/cdn-picker) pou jenere yon URL konbine pou sèlman ikon ou bezwen yo.
 
 ## Jenere pou yon platfòm natif
 
-CLI a ekri sous token nan yon depo sib. Pa gen okenn enstalasyon depase kouri a:
+CLI a ekri sous tokèn nan yon depo sib. Pa gen enstalasyon depase sa ki nesesè pou kouri li:
 
 ```sh
-npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
+npx @pantoken/cli generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-Gade [pantoken CLI a](/guide/cli) pou chak sib.
+Gade [the pantoken CLI](/guide/cli) pou chak sib.
 
 ## Konsèy otè VS Code
 
-`@pantoken/pantoken` kounye a voye dosye done koutim VS Code se konsa pwojè konsomatè ka jwenn konplesyon klas ak
-token nan HTML/CSS san yo pa enstale yon ekstansyon espesifik pantoken.
+`@pantoken/pantoken` kounye a pibliye fichye done-custom VS Code pou pwojè konsomatè yo ka jwenn konplete klas ak tokèn nan HTML/CSS san yo pa enstale yon ekstansyon espesifik pantoken.
 
 1. Enstale pake inifye a:
 
@@ -127,7 +113,7 @@ token nan HTML/CSS san yo pa enstale yon ekstansyon espesifik pantoken.
 npm i @pantoken/pantoken
 ```
 
-1. Pwen VS Code sou JSON done koutim ki voye a soti nan espas travay konsomatè ou:
+1. Pwen VS Code sou JSON done-custom ki voye a soti nan espas travay konsomatè ou:
 
 ```json
 {
@@ -136,14 +122,13 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. Reychaje VS Code (oswa kouri "Developer: Reload Window") pou aplike nouvo done yo.
+1. Rekòmanse VS Code (oswa kouri "Developer: Reload Window") pou aplike nouvo done yo.
 
-Sa pèmèt sijesyon pou token klas `instui-*` (ak token klas `-modifier`) ansanm ak
-pwopriyete koutim `--instui-*`.
+Sa pèmèt sijesyon pou tokèn klas `instui-*` (ak tokèn klas `-modifier`) plis pwopriyete koutim `--instui-*`.
 
-## Kote pou ale apre
+## Ki kote pou ale pwochen
 
-- [Kat pake yo](/guide/packages) — ki pake pou itilize, selon travay la.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — enstale resous ajan ak règleman nan yon depo konsomatè.
-- [Achitekti](/guide/architecture) — kijan modèl token, nwayo, ak rezilta yo anfòm ansanm.
+- [Kat pake a](/guide/packages) — ki pake pou chwazi selon travay la.
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — enstale byen ak règ ajan nan yon depo konsomatè.
+- [Achitekti](/guide/architecture) — kijan modèl tokèn, nwayo, ak rezilta yo anfòm ansanm.
 - [Referans API](/api/) — chak senbòl ekspòte, jenere soti nan sous la.

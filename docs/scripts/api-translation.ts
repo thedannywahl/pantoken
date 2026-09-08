@@ -4,10 +4,14 @@
  * The default adapter is deterministic and keyless (safe for CI), while the adapter contract keeps
  * room for higher-quality engines later.
  */
-import { extractJsonObject, spawnPrompt } from "@pantoken/translation-adapters";
-import { CANVAS_LOCALES } from "@pantoken/i18n";
+import { spawn } from "node:child_process";
+import {
+  buildBatchTranslationPrompt,
+  extractJsonObject,
+} from "../../tools/translation-adapters/src/index.ts";
+import { LOCALES } from "@pantoken/web-components";
 import { GLOSSARY_TERMS, type GlossaryKind } from "./glossary.ts";
-import { TranslationMemory } from "./translation-memory.ts";
+import { alignTrailingNewline, TranslationMemory } from "./translation-memory.ts";
 
 // English display name per locale (e.g. "Hungarian (Magyar)" \u2192 the adapter prompt only needs the
 // leading English name, not the native parenthetical), used to phrase the `AiTranslationAdapter`
@@ -22,11 +26,59 @@ const ENGLISH_VARIANT_LABELS: Record<string, string> = {
 };
 
 const LOCALE_LABELS: Record<string, string> = Object.fromEntries(
-  Object.entries(CANVAS_LOCALES).map(([locale, meta]) => [
+  Object.entries(LOCALES).map(([locale, meta]) => [
     locale,
     ENGLISH_VARIANT_LABELS[locale] ?? meta.label.replace(/\s*\(.*\)$/, ""),
   ]),
 );
+
+const spawnPrompt = (
+  command: string,
+  args: string[],
+  prompt: string,
+  context: string,
+  timeoutMs: number,
+): Promise<string> =>
+  new Promise((resolve, reject) => {
+    const child = spawn(command, args, { stdio: ["pipe", "pipe", "pipe"] });
+    let output = "";
+    let error = "";
+    const timer = setTimeout(() => {
+      child.kill("SIGKILL");
+      reject(new Error(`AI command timed out after ${String(timeoutMs)}ms for ${context}`));
+    }, timeoutMs);
+    child.stdout.setEncoding("utf8");
+    child.stderr.setEncoding("utf8");
+    child.stdout.on("data", (chunk) => {
+      output += chunk;
+    });
+    child.stderr.on("data", (chunk) => {
+      error += chunk;
+    });
+    child.on("error", (cause) => {
+      clearTimeout(timer);
+      reject(cause);
+    });
+    child.on("close", (code) => {
+      clearTimeout(timer);
+      if (code !== 0) {
+        reject(new Error(`AI command exited ${String(code)} for ${context}: ${error.trim()}`));
+      } else {
+        resolve(output.trimEnd());
+      }
+    });
+    child.stdin.end(prompt);
+  });
+
+/** Remove the markdown envelope when a CLI model echoes the delimiters from the translation prompt. */
+const stripMarkdownEnvelope = (output: string): string => {
+  const begin = "--- BEGIN MARKDOWN ---";
+  const end = "--- END MARKDOWN ---";
+  const start = output.indexOf(begin);
+  const finish = output.lastIndexOf(end);
+  if (start === -1 || finish <= start) return output;
+  return output.slice(start + begin.length, finish).trim();
+};
 
 /** A pluggable translation engine: named, with markdown/text/batch translate methods. */
 export interface TranslationAdapter {
@@ -85,8 +137,7 @@ const replacementFor = (kind: GlossaryKind, translated: string): string => {
 
 /**
  * Deterministic adapter: substitutes known structural terms only (headings, badges, table labels),
- * looked up from the `<locale>.glossary.json` translation-memory cache (see `glossary.ts` for the term
- * list and `translate-glossary.ts` for how the cache is filled). It can't translate prose, so
+ * looked up from the `<locale>/docs.api.po` catalog (see `glossary.ts` for the term list). It can't translate prose, so
  * `translatesProse` is `false`. Safe to run in CI — it never spawns an adapter or hits the network.
  */
 export class GlossaryTranslationAdapter implements TranslationAdapter {
@@ -97,7 +148,7 @@ export class GlossaryTranslationAdapter implements TranslationAdapter {
   private readonly replacements: Array<[RegExp, string]>;
 
   constructor(locale = "hu") {
-    const memory = TranslationMemory.load(locale, "glossary");
+    const memory = TranslationMemory.load(locale, "api");
     // Untranslated terms are skipped (identity passthrough) rather than matched against an empty
     // string, so an in-progress locale still renders every OTHER already-translated term correctly.
     this.replacements = GLOSSARY_TERMS.flatMap(({ kind, term }) => {
@@ -181,6 +232,32 @@ const restoreMarkdownSensitiveBlocks = (
   const withCode = restoreBlocks(input, codeBlocks, "PTK_CODE_BLOCK");
   return restoreBlocks(withCode, inlineCodeBlocks, "PTK_INLINE_CODE");
 };
+
+const preserveMarkdownSyntax = (input: string): { text: string; syntax: string[] } => {
+  const syntax: string[] = [];
+  let text = input;
+  const preserve = (pattern: RegExp): void => {
+    text = text.replace(pattern, (match) => {
+      const marker = `__PTK_MD_${syntax.length}__`;
+      syntax.push(match);
+      return marker;
+    });
+  };
+
+  preserve(/(?:\*\*|__|~~|\*|_)(?=\S)|(?<=\S)(?:\*\*|__|~~|\*|_)/g);
+  preserve(/<!--(?:.|\n)*?-->/g);
+  preserve(/<\/?[A-Za-z][^>]*>/g);
+  preserve(/\[/g);
+  preserve(/\]\(/g);
+  preserve(/(?<=\]\()[^)\n]+(?=\))/g);
+  preserve(/\)/g);
+  preserve(/^(\s{0,3}(?:#{1,6}|>|[-+*]|\d+[.)]))(?=\s)/gm);
+  preserve(/\n/g);
+  return { text, syntax };
+};
+
+const restoreMarkdownSyntax = (input: string, syntax: string[]): string =>
+  restoreBlocks(input, syntax, "PTK_MD");
 
 const preservePackageNames = (input: string): { text: string; packageNames: string[] } => {
   const packagePattern = /@[a-z0-9][a-z0-9.-]*\/[a-z0-9][a-z0-9.-]*/gi;
@@ -332,7 +409,9 @@ export class AiTranslationAdapter implements TranslationAdapter {
       "--- END MARKDOWN ---",
     ].join("\n");
 
-    const translated = await this.runClaude(prompt, `markdown file ${filePath}`);
+    const translated = stripMarkdownEnvelope(
+      await this.runClaude(prompt, `markdown file ${filePath}`),
+    );
     const restoredBrackets = restoreEscapedAngleBrackets(translated, preservedBrackets.brackets);
     const restoredPackages = restorePackageNames(restoredBrackets, preservedPackages.packageNames);
     return restoreMarkdownSensitiveBlocks(
@@ -356,7 +435,10 @@ export class AiTranslationAdapter implements TranslationAdapter {
 
     const translated = (await this.runClaude(prompt, "single text line")).trim();
     const restoredBrackets = restoreEscapedAngleBrackets(translated, preservedBrackets.brackets);
-    return restorePackageNames(restoredBrackets, preserved.packageNames);
+    return alignTrailingNewline(
+      input,
+      restorePackageNames(restoredBrackets, preserved.packageNames),
+    );
   }
 
   async translateBatch(
@@ -399,37 +481,39 @@ export class AiTranslationAdapter implements TranslationAdapter {
     // the batch path (unlike translateMarkdown) would let the model rewrite them.
     const masked = items.map((item) => {
       const markdown = preserveMarkdownSensitiveBlocks(item.text);
-      const packages = preservePackageNames(markdown.text);
+      const syntax = preserveMarkdownSyntax(markdown.text);
+      const packages = preservePackageNames(syntax.text);
       const brackets = preserveEscapedAngleBrackets(packages.text);
-      return { id: item.id, masked: brackets.text, markdown, packages, brackets };
+      return { id: item.id, masked: brackets.text, markdown, packages, brackets, syntax };
     });
     const restore = (entry: (typeof masked)[number], value: string): string =>
       restoreMarkdownSensitiveBlocks(
-        restorePackageNames(
-          restoreEscapedAngleBrackets(value, entry.brackets.brackets),
-          entry.packages.packageNames,
+        restoreMarkdownSyntax(
+          restorePackageNames(
+            restoreEscapedAngleBrackets(value, entry.brackets.brackets),
+            entry.packages.packageNames,
+          ),
+          entry.syntax.syntax,
         ),
         entry.markdown.codeBlocks,
         entry.markdown.inlineCodeBlocks,
       );
 
     const payload = Object.fromEntries(masked.map((entry) => [entry.id, entry.masked]));
-    const prompt = [
-      `Translate the VALUES of this JSON object from English to ${this.targetLanguage}.`,
-      "Return ONLY a JSON object with the same keys and translated values.",
-      "Do not translate, add, or remove keys. Keep identifiers, package names, and URLs unchanged.",
-      "Do not alter placeholder tokens like __PTK_CODE_BLOCK_#__, __PTK_INLINE_CODE_#__, __PTK_PACKAGE_#__, or __PTK_ESC_#__.",
-      JSON.stringify(payload, null, 2),
-    ].join("\n");
+    const prompt = buildBatchTranslationPrompt(this.targetLanguage, payload);
 
     const raw = await this.runClaude(prompt, `batch of ${items.length} strings`);
     const parsed = extractJsonObject(raw);
     if (parsed) {
       const out: Record<string, string> = {};
+      const sources = new Map(items.map((item) => [item.id, item.text]));
       for (const entry of masked) {
         const value = parsed[entry.id];
         // A missing/non-string value restores to the (masked → original) source rather than dropping it.
-        out[entry.id] = restore(entry, typeof value === "string" ? value : entry.masked);
+        out[entry.id] = alignTrailingNewline(
+          sources.get(entry.id) ?? "",
+          restore(entry, typeof value === "string" ? value : entry.masked),
+        );
       }
       return out;
     }
@@ -440,7 +524,10 @@ export class AiTranslationAdapter implements TranslationAdapter {
   }
 
   private runClaude(prompt: string, scope: string): Promise<string> {
-    return spawnPrompt(this.command, [...this.args, "-p"], prompt, scope);
+    // Without a timeout a wedged CLI (no output, never exits) stalls the whole locale forever; a
+    // timed-out chunk is logged and skipped by translateBatch, so its strings retry next run.
+    const timeoutMs = Number(process.env.DOCS_TRANSLATION_TIMEOUT_MS) || 120_000;
+    return spawnPrompt(this.command, [...this.args, "-p"], prompt, scope, timeoutMs);
   }
 }
 

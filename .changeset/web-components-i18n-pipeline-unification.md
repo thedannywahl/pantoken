@@ -1,6 +1,6 @@
 ---
 "@pantoken/web-components": patch
-"@pantoken/i18n": patch
+"@pantoken/i18n-engine": patch
 ---
 
 Unify `@pantoken/web-components`'s locale-string translation pipeline with the generic

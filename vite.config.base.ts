@@ -50,9 +50,35 @@ const baseConfig = {
       : []) as unknown[],
   },
   lint: {
-    jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],
+    jsPlugins: [
+      { name: "vite-plus", specifier: "vite-plus/oxlint-plugin" },
+      { name: "tsdoc", specifier: "eslint-plugin-tsdoc" },
+      { name: "tsdoc-require-2", specifier: "eslint-plugin-tsdoc-require-2" },
+    ],
     rules: { "vite-plus/prefer-vite-plus-imports": "error" },
     options: { typeAware: true, typeCheck: true },
+    overrides: [
+      {
+        // TSDoc enforcement on source TypeScript: every exported declaration needs a doc comment and
+        // comments must be valid TSDoc (honouring tsdoc.json). Both rules are comment/syntax-only.
+        files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+        excludeFiles: [
+          "**/*.test.ts",
+          "**/*.test.tsx",
+          "**/*.test.mts",
+          "**/*.test.cts",
+          "**/*.spec.ts",
+          "**/*.spec.tsx",
+          "**/*.spec.mts",
+          "**/*.spec.cts",
+          "**/tests/**",
+          "**/generated/**",
+          "**/dist/**",
+          "**/*.d.ts",
+        ],
+        rules: { "tsdoc/syntax": "error", "tsdoc-require-2/require": "error" },
+      },
+    ],
   },
   fmt: {},
 };

@@ -47,8 +47,11 @@ export default defineConfig({
         "formats/*/scripts/{fonts,generate}.ts",
         "docs/scripts/{translation-memory,api-translation,build-api-locales,build-css-api,check-locale-drift,style-api-badges}.ts",
         "docs/scripts/lib/scope-components.ts",
-        "packages/i18n/src/**",
-        "packages/i18n/scripts/**",
+        "renderers/web-components/src/locales/**",
+        "renderers/web-components/src/i18n.ts",
+        "renderers/web-components/src/locale-bundle.ts",
+        "renderers/web-components/src/lib/{locales,runtime}.ts",
+        "renderers/web-components/scripts/build-bundles.ts",
       ],
       exclude: [
         "**/*.{test,spec}.?(c|m)[jt]s?(x)",
@@ -70,8 +73,8 @@ export default defineConfig({
   },
   staged: {
     "*": "vp check --fix",
-    // stylelint owns real .css (web-component shadow styles); vp check no-ops on them.
-    "*.css": "vp exec stylelint --fix",
+    // Stylelint fixes CSS; cssdoc then gates its documentation comments.
+    "*.css": "vp exec stylelint --fix && vp exec cssdoc lint --max-warnings 0",
   },
   fmt: {
     overrides: [{ files: ["**/*.jsonc"], options: { trailingComma: "none" } }],
@@ -87,9 +90,39 @@ export default defineConfig({
     ignorePatterns: ["docs/api/**", "docs/*/api/**", "ai/create-pantoken-app-site/**"],
   },
   lint: {
-    jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],
+    jsPlugins: [
+      { name: "vite-plus", specifier: "vite-plus/oxlint-plugin" },
+      // TSDoc has no oxlint-native equivalent; these two ESLint plugins run through oxlint's
+      // ESLint-compatible JS-plugin bridge. Neither needs type information or a custom parser.
+      { name: "tsdoc", specifier: "eslint-plugin-tsdoc" },
+      { name: "tsdoc-require-2", specifier: "eslint-plugin-tsdoc-require-2" },
+    ],
     rules: { "vite-plus/prefer-vite-plus-imports": "error" },
     options: { typeAware: true, typeCheck: true },
+    ignorePatterns: ["**/coverage/**", "**/dist/**"],
+    overrides: [
+      {
+        // Every exported declaration needs a doc comment (tsdoc-require-2/require) and comments must
+        // be valid TSDoc (tsdoc/syntax, honouring tsdoc.json). Tests, generated output, and
+        // declaration files are exempt.
+        files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+        excludeFiles: [
+          "**/*.test.ts",
+          "**/*.test.tsx",
+          "**/*.test.mts",
+          "**/*.test.cts",
+          "**/*.spec.ts",
+          "**/*.spec.tsx",
+          "**/*.spec.mts",
+          "**/*.spec.cts",
+          "**/tests/**",
+          "**/generated/**",
+          "**/dist/**",
+          "**/*.d.ts",
+        ],
+        rules: { "tsdoc/syntax": "error", "tsdoc-require-2/require": "error" },
+      },
+    ],
   },
   run: {
     cache: true,
@@ -144,13 +177,6 @@ export default defineConfig({
       "snyk:code": {
         command: "node scripts/quality/snyk-code-gate.ts",
       },
-      // TSDoc enforcement over source TypeScript (eslint.config.js TS block). Comment/syntax-only, so
-      // no build dependency.
-      "lint:tsdoc": {
-        // `eslint .` lets the flat config drive file discovery (its TS block globs + ignores); passing
-        // explicit globs errors when a pattern like **/*.mts matches nothing.
-        command: "vp exec eslint .",
-      },
       // Fallow gate: dead-code = error, health = grade A, duplicates = advisory. Needs generated
       // output (build:all) so the CSS-codegen sources and workspace graph resolve.
       "health:fallow": {
@@ -164,8 +190,7 @@ export default defineConfig({
           // Coverage run (not the plain test run) so the 85% threshold floor is enforced in `ready`.
           "test:coverage",
           "lint:css",
-          "lint:js",
-          "lint:tsdoc",
+          "lint:cssdoc",
           "validate:generated:only",
           "gate:compatibility",
           "lint:markdown",
@@ -207,9 +232,9 @@ export default defineConfig({
           'vp exec stylelint "renderers/web-components/src/**/*.css" "formats/components/src/{components,utilities,rules}/*.css" "formats/components/generated/*.css" "plugins/pantoken/*/generated/*.css"',
         dependsOn: ["build:all"],
       },
-      "lint:js": {
+      "lint:cssdoc": {
         command:
-          'vp exec eslint --no-error-on-unmatched-pattern "formats/components/src/{components,utilities,rules}/*.css" "formats/components/generated/*.css" "plugins/pantoken/*/generated/*.css" "renderers/web-components/src/**/*.css"',
+          'vp exec cssdoc lint --max-warnings 0 "renderers/web-components/src/**/*.css" "formats/components/src/{components,utilities,rules}/*.css" "formats/components/generated/*.css" "plugins/pantoken/*/generated/*.css"',
         dependsOn: ["build:all"],
       },
       // ── Property-based testing ────────────────────────────────────────────────────────────────
@@ -242,15 +267,15 @@ export default defineConfig({
         cache: false,
       },
       "ui:translate:force": {
-        command: "vp run @pantoken/web-components#translate:force",
+        command: "vp run @pantoken/web-components#translate",
         cache: false,
       },
       "ui:translate:force:agy": {
-        command: "vp run @pantoken/web-components#translate:agy:force",
+        command: "vp run @pantoken/web-components#translate:agy",
         cache: false,
       },
       "ui:translate:force:copilot": {
-        command: "vp run @pantoken/web-components#translate:copilot:force",
+        command: "vp run @pantoken/web-components#translate:copilot",
         cache: false,
       },
       // Docs locale translation (both claude and agy variants).
@@ -293,17 +318,16 @@ export default defineConfig({
         cache: false,
       },
       "cli:translate:force": {
-        command: "vp run @pantoken/scaffold#translate:force && vp run @pantoken/ai#translate:force",
+        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
         cache: false,
       },
       "cli:translate:force:agy": {
-        command:
-          "vp run @pantoken/scaffold#translate:agy:force && vp run @pantoken/ai#translate:agy:force",
+        command: "vp run @pantoken/scaffold#translate:agy && vp run @pantoken/ai#translate:agy",
         cache: false,
       },
       "cli:translate:force:copilot": {
         command:
-          "vp run @pantoken/scaffold#translate:copilot:force && vp run @pantoken/ai#translate:copilot:force",
+          "vp run @pantoken/scaffold#translate:copilot && vp run @pantoken/ai#translate:copilot",
         cache: false,
       },
       // Umbrella tasks for all translation domains.
@@ -350,31 +374,48 @@ export default defineConfig({
         ],
         cache: false,
       },
-      // Drift checks for the UI and CLI i18n domains. Severity per surface and locale tier comes from
-      // `i18n-policy.json` — these tasks report every gap but only exit non-zero on a `block`, so an
-      // English-only change lands without waiting on ~90 translations. Docs drift runs in
-      // `@pantoken/docs#docs:build` (it needs the generated EN API tree); `i18n:check:drift:all` runs
-      // both.
+      // CI-safe drift checks for the UI and CLI i18n domains. Every configured translation gap is
+      // blocking now that the locale catalogs are complete. Docs drift needs the generated EN API
+      // tree and is included in the all-surface task below.
       "i18n:check:drift": {
         command:
-          "vp run @pantoken/translation-adapters#build && vp run @pantoken/web-components#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift",
+          "vp run @pantoken/translation-adapters#build && vp run @pantoken/i18n-engine#build && vp run @pantoken/web-components#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift",
       },
-      // Every i18n surface at once, including the docs ones. Assumes `docs:api:en` already ran — API
-      // prose drift is skipped with a note when `docs/api` is absent.
-      "i18n:check:drift:all": {
+      // Generate the local, git-ignored language coverage report. Keep this uncached so the report
+      // always reflects the current PO catalogs and policy configuration.
+      "i18n:coverage": {
         command:
-          "vp run i18n:check:drift && vp run @pantoken/docs#docs:check:locales && vp run @pantoken/docs#docs:check:drift",
+          "vp run @pantoken/i18n-engine#build && node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json stats --html",
         cache: false,
       },
-      // Same sweep with every policy `warn` escalated to `block`. Not wired into PR CI — this is the
-      // "show me every gap, fail if any remain" command for a local audit or a scheduled full-locale
-      // run before a release.
+      // Keep the local HTML coverage dashboard synchronized while translation jobs update catalogs.
+      "i18n:coverage:watch": {
+        command:
+          "vp run @pantoken/i18n-engine#build && node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json stats --html --watch",
+        cache: false,
+      },
+      // Every read-only catalog-backed i18n surface at once, including docs translations. The docs
+      // check uses an existing generated API tree when one is present; it must not regenerate the
+      // tree or rewrite `l10n/docs.api.pot`. Structural locale parity remains part of the docs build,
+      // which already generates all locale trees before checking them.
+      "i18n:check:drift:all": {
+        command:
+          "node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json lint && vp run i18n:check:drift && vp run @pantoken/docs#docs:check:drift",
+        cache: false,
+      },
+      // Backward-compatible alias for the complete blocking drift sweep.
       "i18n:check:drift:strict": {
         command: "I18N_DRIFT_STRICT=1 vp run i18n:check:drift:all",
         cache: false,
       },
+      // Publishing must also validate generated API prose, which is not present in a clean checkout
+      // until the English API build runs.
+      "gate:i18n": {
+        command: "vp run @pantoken/docs#docs:api:en && vp run i18n:check:drift:all",
+        dependsOn: ["build:all"],
+      },
       "i18n:bundles:build": {
-        command: "vp run @pantoken/i18n#generate",
+        command: "vp run @pantoken/web-components#generate",
         dependsOn: ["build:all"],
       },
       "changeset:add": {
@@ -437,7 +478,7 @@ export default defineConfig({
       },
       "gate:publish": {
         command: "true",
-        dependsOn: ["gate:repository", "gate:publint", "gate:attw"],
+        dependsOn: ["gate:repository", "gate:publint", "gate:attw", "gate:i18n"],
       },
       // Root convenience alias so `vp run scaffold:dev <platform>` works from anywhere in the repo;
       // args pass through to the underlying package task. See packages/scaffold/scripts/scaffold-dev.ts.

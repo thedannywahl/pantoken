@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: InstUI, partout
   tagline: Un modèle de token résolu, transformé en feuilles de style, liaisons de framework, code natif et payloads pour outils de design.
   actions:

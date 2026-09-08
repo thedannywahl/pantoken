@@ -9,13 +9,14 @@ import {
   products,
 } from "../src/index.ts";
 
-test("ships the six products", () => {
+test("ships the seven products", () => {
   expect(products).toEqual([
     "canvas",
     "igniteai",
     "instructure",
     "learnplatform",
     "mastery",
+    "pantoken",
     "parchment",
   ]);
   expect(logos.length).toBeGreaterThan(0);
@@ -27,6 +28,12 @@ test("getLogoSvg returns SVG markup and honors defaults", () => {
   // Default layout/mode resolve to a real asset.
   expect(getLogoSvg("mastery", "horizontal", "full-color")).toContain("<svg");
   expect(getLogoSvg("canvas", "stacked", "full-color-bg")).toBeUndefined();
+});
+
+test("getLogoSvg resolves a localized wordmark variant by lang", () => {
+  expect(getLogoSvg("pantoken", "horizontal", "full-color", "ar")).toContain("<svg");
+  expect(getLogoSvg("pantoken", "horizontal", "full-color")).toContain("<svg");
+  expect(getLogoSvg("pantoken", "horizontal", "full-color", "zh")).toContain("<svg");
 });
 
 test("getLogoDataUri encodes an SVG data URI", () => {

@@ -1,11 +1,7 @@
 /** Load a demo's adjacent i18n source and render its Handlebars-style placeholders. */
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
-import {
-  parseI18nSource,
-  type ParsedI18nSource,
-  type RawI18nSource,
-} from "@pantoken/translation-adapters";
+import { type VerbatimPolicy } from "@pantoken/translation-adapters";
 
 const PLACEHOLDER = /{{([a-z][\w-]*)}}/g;
 const ASSET_FILES = ["style.css", "script.js"] as const;
@@ -14,8 +10,47 @@ const ASSET_FILES = ["style.css", "script.js"] as const;
 export interface DemoI18nSource {
   template: string;
   assets: Partial<Record<(typeof ASSET_FILES)[number], string>>;
-  strings: ParsedI18nSource["strings"];
-  verbatim: ParsedI18nSource["verbatim"];
+  strings: Record<string, string>;
+  verbatim: Record<string, VerbatimPolicy>;
+}
+
+type DemoSourceEntry = {
+  message: string;
+  translate:
+    | "always"
+    | "optional"
+    | "never"
+    | Readonly<Record<string, "always" | "optional" | "never">>;
+};
+type DemoSource = Record<string, DemoSourceEntry>;
+
+function parseDemoSource(raw: DemoSource): {
+  strings: Record<string, string>;
+  verbatim: Record<string, VerbatimPolicy>;
+} {
+  const strings: Record<string, string> = {};
+  const verbatim: Record<string, VerbatimPolicy> = {};
+  for (const [key, entry] of Object.entries(raw)) {
+    if (key === "$schema") continue;
+    strings[key] = entry.message;
+    if (entry.translate === "never") verbatim[key] = "required";
+    else if (entry.translate === "optional") verbatim[key] = "allow";
+    else if (typeof entry.translate === "object") {
+      const required = Object.entries(entry.translate)
+        .filter(([, intent]) => intent === "never")
+        .map(([locale]) => locale);
+      const allow = Object.entries(entry.translate)
+        .filter(([, intent]) => intent === "optional")
+        .map(([locale]) => locale);
+      if (required.length > 0 || allow.length > 0) {
+        verbatim[key] = {
+          ...(required.length > 0 ? { required } : {}),
+          ...(allow.length > 0 ? { allow } : {}),
+        };
+      }
+    }
+  }
+  return { strings, verbatim };
 }
 
 /** List component names with a `demos/<component>/index.html` source. */
@@ -29,10 +64,10 @@ export function listDemoNames(demoDir: string): string[] {
 /** Validate a parsed demo i18n source against its HTML template. */
 export function validateDemoI18n(
   template: string,
-  raw: RawI18nSource,
+  raw: DemoSource,
   assets: Partial<Record<(typeof ASSET_FILES)[number], string>> = {},
 ): DemoI18nSource {
-  const { strings, verbatim } = parseI18nSource(raw);
+  const { strings, verbatim } = parseDemoSource(raw);
   const placeholders = new Set(
     [template, ...Object.values(assets)].flatMap((source) =>
       [...source.matchAll(PLACEHOLDER)].map((match) => match[1]),
@@ -58,7 +93,7 @@ export function loadDemoI18n(directory: string): DemoI18nSource {
       readFileSync(join(directory, file), "utf8"),
     ]),
   );
-  const raw = JSON.parse(readFileSync(join(directory, "i18n.json"), "utf8")) as RawI18nSource;
+  const raw = JSON.parse(readFileSync(join(directory, "i18n.json"), "utf8")) as DemoSource;
   return validateDemoI18n(template, raw, assets);
 }
 

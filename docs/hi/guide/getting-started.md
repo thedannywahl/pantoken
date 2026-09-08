@@ -1,44 +1,38 @@
-# शुरू करें
+# शुरूआत
 
-pantoken Instructure UI के डिजाइन टोकन और आइकन लेता है, उन्हें एक बार रिसॉल्व करता है, और उस एक
-मॉडल को कई प्लेटफ़ॉर्म्स के लिए पैकेजों में फिर आकार देता है: साधारण स्टाइलशीट्स, SCSS और Less, React और Vue और Svelte,
-Tailwind और Panda, नेटिव Swift और Kotlin, WordPress और Drupal, Figma, और अन्य।
+Pantoken [Instructure UI](https://instructure.design) डिज़ाइन टोकन और आइकन लेता है, उन्हें एक बार रिज़ॉल्व करता है, और उस एक मॉडल को कई प्लेटफ़ॉर्म के लिए पैकेजेस में पुनः आकार देता है: सादा स्टाइलशीट्स, SCSS और Less, React और Vue और Svelte, Tailwind और Panda, नेटिव Swift और Kotlin, WordPress और Drupal, Figma, और अन्य।
 
-अपने कार्य के अनुरूप सबसे छोटा पैकेज इंस्टॉल करें। सब कुछ एकीकृत `pantoken` पैकेज द्वारा भी री-एक्सपोर्ट किया जाता है, इसलिए आप वहीं से शुरू करके बाद में संकुचित कर सकते हैं।
+आप उस सबसे छोटे पैकेज को इंस्टॉल करते हैं जो आपके कार्य के अनुरूप हो। सबकुछ समेकित `pantoken` पैकेज द्वारा भी री‑एक्सपोर्ट किया जाता है, इसलिए आप वहां से शुरू कर सकते हैं और बाद में संकुचित कर सकते हैं।
 
-## एक स्टार्टर्स प्रोजेक्ट बनाएं
+## एक शुरुआती प्रोजेक्ट बनाएं
 
-pantoken आज़माने का सबसे तेज़ तरीका: एक स्टार्टर्स प्रोजेक्ट स्कैफ़ोल्ड करें जिसमें यह पहले से इंस्टॉल और वायर किया गया हो।
+pantoken आज़माने का सबसे तेज़ तरीका: एक स्टार्ट‑प्रोजेक्ट स्कैफ़ोल्ड करें जिसमें यह पहले से इंस्टॉल और वायर किया गया हो।
 
 ```sh
-npx create-pantoken-app react
+npx create-pantoken-app
 ```
 
-प्लेटफ़ॉर्म्स: `components` (साधारण HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. देखें
-[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) के लिए `--dir <path>` और
-प्रोग्रामेटिक उपयोग।
+प्लेटफ़ॉर्म: `components` (सादा HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. देखिए
+[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) में `--dir <path>` और प्रोग्रामैटिक उपयोग के लिए।
 
-AI कोडिंग एजेंट का उपयोग कर रहे हैं? कोई इंस्टॉल आवश्यक नहीं — सीधे स्किल की ओर पॉइंट करें:
+AI कोडिंग एजेंट का उपयोग कर रहे हैं? कोई इंस्टॉल आवश्यक नहीं — सीधे उस स्किल की ओर पॉइंट करें:
 
-```sh
-claude "Fetch https://create.pantoken.app and follow it to set up pantoken in this project."
+```prompt
+create.pantoken.app/SKILL.md को प्राप्त करें और इस परियोजना में pantoken सेट अप करने के लिए इसका पालन करें।
 ```
 
-यह Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, और Amazon Q
-Developer CLI के साथ भी समान रूप से काम करता है — `claude` को `gemini`, `agent`, `codex`, `copilot -p`, या `q chat` से बदल दें। अगर आप pantoken के एजेंट नियमों को रिपो में स्थायी रूप से वायर करना चाहते हैं (AGENTS.md, एडिटर नियम, इस स्किल की लोकल कॉपी), तो इसके बजाय `npx @pantoken/ai init` चलाएँ।
+यदि आप pantoken के एजेंट नियमों को रेपो में स्थायी रूप से जोड़ना चाहते हैं (AGENTS.md, एडिटर नियम, इस स्किल की लोकल कॉपी), तो इसके बजाय `npx @pantoken/ai init` चलाएँ।
 
 ## टोकन मॉडल
 
-टोकन CSS कस्टम प्रॉपर्टीज़ हैं जिनके नाम `--instui-<group>-<name>` हैं, उदाहरण के लिए
-`--instui-color-background-brand` या `--instui-spacing-space-md`. तीन थीम आती हैं: `rebrand`
-(डिफ़ॉल्ट, जहाँ light और dark अलग होते हैं वहां `light-dark()`), `canvas`, और `canvasHighContrast`।
-आइकन `<image>` टोकन हैं (`--instui-icon-<name>`) जो Lucide से निकले हुए और Instructure के कस्टम
-ग्लिफ़्स से व्युत्पन्न हैं।
+टोकन CSS कस्टम प्रॉपर्टीज़ हैं जिन्हें `--instui-<group>-<name>` के रूप में नामित किया गया है, उदाहरण के लिए
+`--instui-color-background-brand` या `--instui-spacing-space-md`. तीन थीम शिप होती हैं: `rebrand`
+(डिफ़ॉल्ट, जहां light और dark भिन्न होते हैं `light-dark()`), `canvas`, और `canvasHighContrast`।
+आइकन `<image>` टोकन हैं (`--instui-icon-<name>`) जो Lucide से और Instructure के कस्टम ग्लिफ़्स से व्युत्पन्न होते हैं।
 
-## एक वेब ऐप को स्टाइल करें
+## वेब ऐप को स्टाइल करें
 
-स्टाइलशीट इंस्टॉल करें और एक बार इम्पोर्ट करें। यह हर `--instui-*` प्रॉपर्टी को परिभाषित करता है, इसलिए आप
-उन्हें सीधे अपने CSS से रेफ़र कर सकते हैं।
+स्टाइलशीट इंस्टॉल करें और एक बार आयात करें। यह हर `--instui-*` प्रॉपर्टी परिभाषित करता है, इसलिए आप उन्हें सीधे अपनी CSS में संदर्भित कर सकते हैं।
 
 ```sh
 npm i @pantoken/css
@@ -55,7 +49,7 @@ import "@pantoken/css/inject";
 }
 ```
 
-## कहीं भी आइकन का उपयोग करें
+## किसी भी जगह आइकन उपयोग करें
 
 वेब कंपोनेंट किसी भी फ्रेमवर्क में काम करता है, बिना पोर्टिंग के।
 
@@ -73,8 +67,7 @@ import "@pantoken/web-components";
 
 ### CSS टोकन
 
-आइकन CSS कस्टम प्रॉपर्टीज़ हैं (`--instui-icon-<name>`)। स्टाइलशीट को एक बार लोड करें और किसी भी
-आइकन को `mask-image` या `background-image` के रूप में संदर्भित करें — किसी-एक-आइकन के लिए अलग इम्पोर्ट की ज़रूरत नहीं।
+आइकन CSS कस्टम प्रॉपर्टीज़ हैं (`--instui-icon-<name>`). स्टाइलशीट एक बार लोड करें और किसी भी आइकन को `mask-image` या `background-image` के रूप में संदर्भित करें — प्रति‑आइकन आयात की आवश्यकता नहीं।
 
 ```css
 .my-icon {
@@ -84,7 +77,7 @@ import "@pantoken/web-components";
 
 ### JavaScript — एकल आइकन बनाम पूरा सेट
 
-`@pantoken/icons` दो नामित एक्सपोर्ट प्रदान करता है। एक आइकन को बिना पूरे एरे को इतरेट किए खींचने के लिए `iconsByName` का उपयोग करें:
+`@pantoken/icons` दो नामित एक्सपोर्ट्स प्रकट करता है। पूरा एरे इटरैट किए बिना एक आइकन खींचने के लिए `iconsByName` का उपयोग करें:
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -93,7 +86,12 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-पूरा सेट (उदाहरण के लिए, एक पिकर बनाने के लिए) जब चाहिए तो `icons` का उपयोग करें:
+जब आपको पूरा सेट चाहिए (उदा. एक पिकर बनाने के लिए), तो ```ts
+import { icons } from "@pantoken/icons";
+
+icons.length; // ~1,800
+icons.filter((i) => i.source === "lucide");
+``` में `icons` का उपयोग करें:
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -102,29 +100,29 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-दोनों एक्सपोर्ट मॉड्यूल इनिशियलाईज़ेशन पर पूरा IR लोड करते हैं — इस लेयर पर प्रति-आइकन ट्री-शेकिंग नहीं होती। हल्की केवल CSS-लोडिंग के लिए, केवल उन आइकॉनों के लिए एक संयोजित URL जनरेट करने हेतु [CDN picker](/guide/cdn-picker) का उपयोग करें जो आपको चाहिए।
+दोनों एक्सपोर्ट्स मॉड्यूल इनिशियलाइज़ेशन पर पूरा IR लोड करते हैं — इस स्तर पर प्रति‑आइकन ट्री‑शेकिंग नहीं होती। हल्की CSS‑केवल लोडिंग के लिए, केवल आवश्यक आइकन के लिए संयोजित URL जनरेट करने हेतु [CDN picker](/guide/cdn-picker) का उपयोग करें।
 
 ## नेटिव प्लेटफ़ॉर्म के लिए जनरेट करें
 
-CLI टोकन स्रोत को लक्षित रिपो में लिखता है। रनर को छोड़कर कोई इंस्टॉल नहीं:
+CLI टोकन स्रोत को लक्षित रेपो में लिखता है। रनर के अलावा कोई इंस्टॉल आवश्यक नहीं:
 
 ```sh
-npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
+npx @pantoken/cli generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-हर लक्ष्य के लिए देखें [the pantoken CLI](/guide/cli)।
+हर लक्ष्य के लिए देखिए [the pantoken CLI](/guide/cli)।
 
 ## VS Code लेखन संकेत
 
-`@pantoken/pantoken` अब VS Code कस्टम-डेटा फ़ाइलें भेजता है ताकि डाउनस्ट्रीम प्रोजेक्ट बिना pantoken-विशिष्ट एक्सटेंशन इंस्टॉल किए HTML/CSS में क्लास और टोकन कम्पलीशन प्राप्त कर सकें।
+`@pantoken/pantoken` अब VS Code कस्टम‑डेटा फ़ाइलें शिप करता है ताकि डाउनस्ट्रीम प्रोजेक्ट बिना pantoken‑विशिष्ट एक्सटेंशन इंस्टॉल किए HTML/CSS में क्लास और टोकन ऑटो‑कम्प्लीशन प्राप्त कर सकें।
 
-1. एकीकृत पैकेज इंस्टॉल करें:
+1. समेकित पैकेज इंस्टॉल करें:
 
 ```sh
 npm i @pantoken/pantoken
 ```
 
-1. अपने कंज़्यूमर वर्कस्पेस से भेजी गई कस्टम-डेटा JSON की ओर VS Code को पॉइंट करें:
+1. अपने कंज्यूमर वर्कस्पेस से शिप की गई कस्टम‑डेटा JSON की ओर VS Code पॉइंट करें:
 
 ```json
 {
@@ -133,14 +131,13 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. नए डेटा को लागू करने के लिए VS Code री-लोड करें (या "Developer: Reload Window" चलाएँ)।
+1. नया डेटा लागू करने के लिए VS Code री‑लोड करें (या "Developer: Reload Window" चलाएँ)।
 
-यह `instui-*` क्लास टोकन्स (और `-modifier` क्लास टोकन्स) साथ ही
-`--instui-*` कस्टम प्रॉपर्टीज़ के लिए सुझाव सक्षम करता है।
+यह `instui-*` क्लास टोकन (और `-modifier` क्लास टोकन) के साथ-साथ `--instui-*` कस्टम प्रॉपर्टीज़ के लिए सुझाव सक्षम करता है।
 
-## आगे कहां जाएँ
+## आगे कहां
 
-- [पैकेज मैप](/guide/packages) — कार्य के हिसाब से कौन सा पैकेज चुनना है।
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — एक कंज़्यूमर रिपो में एजेंट ऐसेट्स और नियम इंस्टॉल करें।
-- [आर्किटेक्चर](/guide/architecture) — कैसे टोकन मॉडल, कोर, और आउटपुट एक साथ फिट होते हैं।
-- [API संदर्भ](/api/) — स्रोत से जनरेट किए गए हर एक्सपोर्टेड सिम्बल।
+- [पैकेज मैप](/guide/packages) — कार्य के अनुसार किस पैकेज तक पहुंचें।
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — कंज्यूमर रेपो में एजेंट एसेट्स और नियम इंस्टॉल करें।
+- [आर्किटेक्चर](/guide/architecture) — टोकन मॉडल, कोर, और आउटपुट कैसे मेल खाते हैं।
+- [API संदर्भ](/api/) — हर एक्सपोर्ट किया गया सिंबल, स्रोत से जनरेट किया गया।

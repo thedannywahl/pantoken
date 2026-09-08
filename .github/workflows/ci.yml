@@ -42,7 +42,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Set up Vite+
-        uses: voidzero-dev/setup-vp@1b32467adbe183473499fd9d5d372c3ed9641754 # v1.18.0
+        uses: voidzero-dev/setup-vp@49c3e4e92c52e7f8392712a9267bbe71c5ab30e5 # v1.19.0
         with:
           cache: true
           run-install: true
@@ -68,7 +68,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Set up Vite+
-        uses: voidzero-dev/setup-vp@1b32467adbe183473499fd9d5d372c3ed9641754 # v1.18.0
+        uses: voidzero-dev/setup-vp@49c3e4e92c52e7f8392712a9267bbe71c5ab30e5 # v1.19.0
         with:
           cache: true
           run-install: true
@@ -94,7 +94,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Set up Vite+
-        uses: voidzero-dev/setup-vp@1b32467adbe183473499fd9d5d372c3ed9641754 # v1.18.0
+        uses: voidzero-dev/setup-vp@49c3e4e92c52e7f8392712a9267bbe71c5ab30e5 # v1.19.0
         with:
           cache: true
           run-install: true
@@ -106,8 +106,12 @@ jobs:
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Install gettext
+        run: sudo apt-get update && sudo apt-get install --yes gettext
       - name: Materialize generated output
         run: vp run -r build
+      - name: Generate English API documentation
+        run: vp run @pantoken/docs#docs:api:en
       - name: Test all packages
         run: vp run -r test
 
@@ -127,7 +131,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Set up Vite+
-        uses: voidzero-dev/setup-vp@1b32467adbe183473499fd9d5d372c3ed9641754 # v1.18.0
+        uses: voidzero-dev/setup-vp@49c3e4e92c52e7f8392712a9267bbe71c5ab30e5 # v1.19.0
         with:
           cache: true
           run-install: true
@@ -159,7 +163,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Set up Vite+
-        uses: voidzero-dev/setup-vp@1b32467adbe183473499fd9d5d372c3ed9641754 # v1.18.0
+        uses: voidzero-dev/setup-vp@49c3e4e92c52e7f8392712a9267bbe71c5ab30e5 # v1.19.0
         with:
           cache: true
           run-install: true
@@ -171,6 +175,12 @@ jobs:
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Install gettext
+        run: sudo apt-get update && sudo apt-get install --yes gettext
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Generate English API documentation
+        run: vp run @pantoken/docs#docs:api:en
       - name: Resolve changed packages
         id: changed
         if: github.event_name == 'pull_request'
@@ -203,7 +213,6 @@ jobs:
           PATHS: ${{ steps.changed.outputs.paths }}
         run: |
           if [[ "${EVENT}" != "pull_request" ]]; then
-            vp run -r build
             echo "ran=true" >> "$GITHUB_OUTPUT"
             vp test --coverage --reporter=verbose --reporter=junit --outputFile.junit=junit.xml
             exit 0
@@ -212,7 +221,6 @@ jobs:
             echo "No publishable packages changed; skipping coverage."
             echo "ran=false" >> "$GITHUB_OUTPUT"; exit 0
           fi
-          vp run -r build
           echo "ran=true" >> "$GITHUB_OUTPUT"
           if [[ "${SCOPE}" == "all" ]]; then
             vp test --coverage --reporter=verbose --reporter=junit --outputFile.junit=junit.xml
@@ -223,7 +231,7 @@ jobs:
           fi
       - name: Upload coverage to Codecov
         if: steps.cov.outputs.ran == 'true'
-        uses: codecov/codecov-action@0fb7174895f61a3b6b78fc075e0cd60383518dac # v5
+        uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage/lcov.info
@@ -232,7 +240,7 @@ jobs:
           fail_ci_if_error: false
       - name: Upload test results to Codecov
         if: ${{ !cancelled() && steps.cov.outputs.ran == 'true' }}
-        uses: codecov/codecov-action@0fb7174895f61a3b6b78fc075e0cd60383518dac # v5
+        uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./junit.xml
@@ -253,7 +261,7 @@ jobs:
           # Full history so hotspot churn (git log) and the audit base ref are available.
           fetch-depth: 0
       - name: Set up Vite+
-        uses: voidzero-dev/setup-vp@1b32467adbe183473499fd9d5d372c3ed9641754 # v1.18.0
+        uses: voidzero-dev/setup-vp@49c3e4e92c52e7f8392712a9267bbe71c5ab30e5 # v1.19.0
         with:
           cache: true
           run-install: true
@@ -288,7 +296,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Set up Vite+
-        uses: voidzero-dev/setup-vp@1b32467adbe183473499fd9d5d372c3ed9641754 # v1.18.0
+        uses: voidzero-dev/setup-vp@49c3e4e92c52e7f8392712a9267bbe71c5ab30e5 # v1.19.0
         with:
           cache: true
           run-install: true
@@ -302,10 +310,8 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Lint CSS
         run: vp run lint:css
-      - name: Lint JS
-        run: vp run lint:js
-      - name: Lint TSDoc
-        run: vp run lint:tsdoc
+      - name: Lint CSSDoc
+        run: vp run lint:cssdoc
       - name: Validate generated output
         run: vp run validate:generated:only
       - name: Lint Markdown
@@ -322,7 +328,7 @@ jobs:
           # Full history so the changed-packages diff can reach the PR base / previous push.
           fetch-depth: 0
       - name: Set up Vite+
-        uses: voidzero-dev/setup-vp@1b32467adbe183473499fd9d5d372c3ed9641754 # v1.18.0
+        uses: voidzero-dev/setup-vp@49c3e4e92c52e7f8392712a9267bbe71c5ab30e5 # v1.19.0
         with:
           cache: true
           run-install: true
@@ -377,7 +383,7 @@ jobs:
           # Full history so the changed-packages diff can reach the PR base / previous push.
           fetch-depth: 0
       - name: Set up Vite+
-        uses: voidzero-dev/setup-vp@1b32467adbe183473499fd9d5d372c3ed9641754 # v1.18.0
+        uses: voidzero-dev/setup-vp@49c3e4e92c52e7f8392712a9267bbe71c5ab30e5 # v1.19.0
         with:
           cache: true
           run-install: true
@@ -431,7 +437,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Set up Vite+
-        uses: voidzero-dev/setup-vp@1b32467adbe183473499fd9d5d372c3ed9641754 # v1.18.0
+        uses: voidzero-dev/setup-vp@49c3e4e92c52e7f8392712a9267bbe71c5ab30e5 # v1.19.0
         with:
           cache: true
           run-install: true
@@ -448,7 +454,7 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
       - name: Set up Vite+
-        uses: voidzero-dev/setup-vp@1b32467adbe183473499fd9d5d372c3ed9641754 # v1.18.0
+        uses: voidzero-dev/setup-vp@49c3e4e92c52e7f8392712a9267bbe71c5ab30e5 # v1.19.0
         with:
           cache: true
           run-install: true
@@ -499,7 +505,7 @@ jobs:
           fetch-depth: 0
       - name: Detect upstream-pin changes
         id: filter
-        uses: dorny/paths-filter@7b450fff21473bca461d4b92ce414b9d0420d706 # v4
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
         with:
           filters: |
             upstream:
@@ -521,7 +527,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Set up Vite+
-        uses: voidzero-dev/setup-vp@1b32467adbe183473499fd9d5d372c3ed9641754 # v1.18.0
+        uses: voidzero-dev/setup-vp@49c3e4e92c52e7f8392712a9267bbe71c5ab30e5 # v1.19.0
         with:
           cache: true
           run-install: true
@@ -559,7 +565,7 @@ jobs:
           fetch-depth: 0
       - name: Detect docs-relevant changes
         id: filter
-        uses: dorny/paths-filter@7b450fff21473bca461d4b92ce414b9d0420d706 # v4
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
         with:
           filters: |
             docs:
@@ -571,11 +577,12 @@ jobs:
               - 'plugins/**'
               - 'design/**'
               - 'tools/translation-adapters/**'
-              - 'i18n-policy.json'
+              - 'i18n.config.json'
+              - 'l10n/**'
               - 'pnpm-lock.yaml'
               - 'pnpm-workspace.yaml'
 
-  # Detect changes that could introduce translation drift in the i18n bundle caches. `i18n-policy.json`
+  # Detect changes that could introduce translation drift in the catalogs. `i18n.config.json`
   # and the shared policy module are in the path set too — editing what blocks a merge has to re-run
   # the gate that reads it.
   i18n-changes:
@@ -590,25 +597,21 @@ jobs:
           fetch-depth: 0
       - name: Detect i18n-relevant changes
         id: filter
-        uses: dorny/paths-filter@7b450fff21473bca461d4b92ce414b9d0420d706 # v4
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
         with:
           filters: |
             i18n:
-              - 'packages/i18n/**'
-              - 'renderers/web-components/src/lib/strings.ts'
+              - 'renderers/web-components/src/i18n.json'
               - 'packages/scaffold/src/i18n.json'
-              - 'packages/scaffold/i18n-cache/**'
               - 'ai/pantoken-ai/src/i18n.json'
-              - 'ai/pantoken-ai/i18n-cache/**'
+              - 'l10n/**'
               - 'tools/translation-adapters/**'
-              - 'i18n-policy.json'
+              - 'tools/i18n-engine/**'
+              - 'i18n.config.json'
 
   # Verify all Canvas locale caches are current relative to the English source strings.
   #
-  # `i18n-policy.json` decides, per surface and per locale tier, which gaps block the merge and which
-  # only warn — so this job fails on English source drift but reports the translation long tail as
-  # GitHub annotations plus a job-summary table without parking the PR. Escalate everything locally
-  # with `vp run i18n:check:drift:strict`.
+  # `i18n.config.json` requires complete catalogs for every locale, including generated API prose.
   #
   # AI translation is never wired here — fill drift locally with `vp run i18n:translate`.
   i18n-drift:
@@ -621,12 +624,14 @@ jobs:
         with:
           persist-credentials: false
       - name: Set up Vite+
-        uses: voidzero-dev/setup-vp@1b32467adbe183473499fd9d5d372c3ed9641754 # v1.18.0
+        uses: voidzero-dev/setup-vp@49c3e4e92c52e7f8392712a9267bbe71c5ab30e5 # v1.19.0
         with:
           cache: true
           run-install: true
-      - name: Check i18n bundle drift
-        run: vp run i18n:check:drift
+      - name: Install gettext
+        run: sudo apt-get update && sudo apt-get install --yes gettext
+      - name: Check all translation drift
+        run: vp run gate:i18n
 
   # Build the site as part of CI, so:
   #  - PRs get the deploy build without regenerating or checking every localized API tree. Those
@@ -645,7 +650,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Set up Vite+
-        uses: voidzero-dev/setup-vp@1b32467adbe183473499fd9d5d372c3ed9641754 # v1.18.0
+        uses: voidzero-dev/setup-vp@49c3e4e92c52e7f8392712a9267bbe71c5ab30e5 # v1.19.0
         with:
           cache: true
           run-install: true

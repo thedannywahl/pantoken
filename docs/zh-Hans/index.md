@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: InstUI，无处不在
   tagline: 一个解析后的令牌模型，重塑为样式表、框架绑定、本地代码和设计工具的载荷。
   actions:
