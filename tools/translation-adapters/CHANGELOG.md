@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.0.1
+
+### Patch Changes
+
+- cc319ee: Harden documentation and localization tooling against unsafe filesystem paths, diagnostic leakage, and expensive input parsing.
+
 ## 1.0.0
 
 ### Major Changes

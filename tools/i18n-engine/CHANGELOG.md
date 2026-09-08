@@ -1,5 +1,13 @@
 # @pantoken/i18n-engine
 
+## 0.1.1
+
+### Patch Changes
+
+- cc319ee: Harden documentation and localization tooling against unsafe filesystem paths, diagnostic leakage, and expensive input parsing.
+- Updated dependencies [cc319ee]
+  - @pantoken/translation-adapters@1.0.1
+
 ## 0.1.0
 
 ### Minor Changes
