@@ -1,0 +1,87 @@
+translations are still in-flight for some locales but the existing lint is failing:
+```
+tools/i18n-engine/tests/lint.test.ts > runLint > accepts the repository localization contract
+Error: i18n lint failed:
+- /Users/dwahl/Scripts/pantoken/l10n/fa/docs.api.po: msgfmt exited 1: /Users/dwahl/Scripts/pantoken/l10n/fa/docs.api.po:14985: 'msgid' and 'msgstr' entries do not both end with '\n'
+/Users/dwahl/Scripts/pantoken/l10n/fa/docs.api.po:18675: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 2 fatal errors
+4874 translated messages, 172 untranslated messages.
+- /Users/dwahl/Scripts/pantoken/l10n/ga/docs.api.po: msgfmt exited 1: /Users/dwahl/Scripts/pantoken/l10n/ga/docs.api.po:18675: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 1 fatal error
+4877 translated messages, 169 untranslated messages.
+- /Users/dwahl/Scripts/pantoken/l10n/he/docs.api.po: msgfmt exited 1: /Users/dwahl/Scripts/pantoken/l10n/he/docs.api.po:14985: 'msgid' and 'msgstr' entries do not both end with '\n'
+/Users/dwahl/Scripts/pantoken/l10n/he/docs.api.po:17979: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 2 fatal errors
+4874 translated messages, 172 untranslated messages.
+- /Users/dwahl/Scripts/pantoken/l10n/id/docs.api.po: msgfmt exited 1: /Users/dwahl/Scripts/pantoken/l10n/id/docs.api.po:18675: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 1 fatal error
+4874 translated messages, 172 untranslated messages.
+- /Users/dwahl/Scripts/pantoken/l10n/is/docs.api.po: msgfmt exited 1: /Users/dwahl/Scripts/pantoken/l10n/is/docs.api.po:18675: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 1 fatal error
+4874 translated messages, 172 untranslated messages.
+- /Users/dwahl/Scripts/pantoken/l10n/it/docs.api.po: msgfmt exited 1: /Users/dwahl/Scripts/pantoken/l10n/it/docs.api.po:18777: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 1 fatal error
+4874 translated messages, 172 untranslated messages.
+- /Users/dwahl/Scripts/pantoken/l10n/ja/docs.api.po: msgfmt exited 1: /Users/dwahl/Scripts/pantoken/l10n/ja/docs.api.po:14985: 'msgid' and 'msgstr' entries do not both end with '\n'
+/Users/dwahl/Scripts/pantoken/l10n/ja/docs.api.po:22869: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 2 fatal errors
+4874 translated messages, 172 untranslated messages.
+- /Users/dwahl/Scripts/pantoken/l10n/ko/docs.api.po: msgfmt exited 1: /Users/dwahl/Scripts/pantoken/l10n/ko/docs.api.po:13653: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 1 fatal error
+4874 translated messages, 172 untranslated messages.
+- /Users/dwahl/Scripts/pantoken/l10n/mi/docs.api.po: msgfmt exited 1: /Users/dwahl/Scripts/pantoken/l10n/mi/docs.api.po:14985: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 1 fatal error
+4874 translated messages, 172 untranslated messages.
+- /Users/dwahl/Scripts/pantoken/l10n/ms/docs.api.po: msgfmt exited 1: /Users/dwahl/Scripts/pantoken/l10n/ms/docs.api.po:18675: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 1 fatal error
+4874 translated messages, 172 untranslated messages.
+- /Users/dwahl/Scripts/pantoken/l10n/pl/docs.api.po: msgfmt exited 1: /Users/dwahl/Scripts/pantoken/l10n/pl/docs.api.po:18675: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 1 fatal error
+4799 translated messages, 241 untranslated messages.
+- /Users/dwahl/Scripts/pantoken/l10n/pt/docs.api.po: msgfmt exited 1: /Users/dwahl/Scripts/pantoken/l10n/pt/docs.api.po:18675: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 1 fatal error
+4874 translated messages, 172 untranslated messages.
+- /Users/dwahl/Scripts/pantoken/l10n/pt-BR/docs.api.po: msgfmt exited 1: /Users/dwahl/Scripts/pantoken/l10n/pt-BR/docs.api.po:18675: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 1 fatal error
+4874 translated messages, 172 untranslated messages.
+- /Users/dwahl/Scripts/pantoken/l10n/ru/docs.api.po: msgfmt exited 1: /Users/dwahl/Scripts/pantoken/l10n/ru/docs.api.po:14985: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 1 fatal error
+4874 translated messages, 172 untranslated messages.
+- /Users/dwahl/Scripts/pantoken/l10n/th/docs.api.po: msgfmt exited 1: /Users/dwahl/Scripts/pantoken/l10n/th/docs.api.po:14985: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 1 fatal error
+4874 translated messages, 172 untranslated messages.
+- /Users/dwahl/Scripts/pantoken/l10n/uk/docs.api.po: msgfmt exited 1: /Users/dwahl/Scripts/pantoken/l10n/uk/docs.api.po:14985: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 1 fatal error
+4874 translated messages, 172 untranslated messages.
+- /Users/dwahl/Scripts/pantoken/l10n/vi/docs.api.po: msgfmt exited 1: /Users/dwahl/Scripts/pantoken/l10n/vi/docs.api.po:14985: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 1 fatal error
+4874 translated messages, 172 untranslated messages.
+- /Users/dwahl/Scripts/pantoken/l10n/zh-Hans/docs.api.po: msgfmt exited 1: /Users/dwahl/Scripts/pantoken/l10n/zh-Hans/docs.api.po:18777: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 1 fatal error
+4874 translated messages, 172 untranslated messages.
+- /Users/dwahl/Scripts/pantoken/l10n/zh-Hant/docs.api.po: msgfmt exited 1: /Users/dwahl/Scripts/pantoken/l10n/zh-Hant/docs.api.po:13653: 'msgid' and 'msgstr' entries do not both end with '\n'
+/Users/dwahl/Scripts/pantoken/l10n/zh-Hant/docs.api.po:14985: 'msgid' and 'msgstr' entries do not both end with '\n'
+/Users/dwahl/Scripts/pantoken/l10n/zh-Hant/docs.api.po:18777: 'msgid' and 'msgstr' entries do not both end with '\n'
+msgfmt: found 3 fatal errors
+4874 translated messages, 172 untranslated messages.
+ ❯ runLint tools/i18n-engine/src/lint.ts:142:11
+    140|   errors.push(...(await checkPoFiles(poPathsToCheck)));
+    141|   if (errors.length > 0)
+    142|     throw new Error(`i18n lint failed:\n${errors.map((error) => `- ${e…
+       |           ^
+    143|   return { checkedSpaces: requiredSpaces.length, checkedLocales: local…
+    144| }
+ ❯ tools/i18n-engine/tests/lint.test.ts:16:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 297 passed (298)
+      Tests  1 failed | 2052 passed (2053)
+   Start at  10:11:10
+   Duration  57.38s (transform 88.59s, setup 12.42s, import 256.62s, tests 137.82s, environment 14.33s)
+
+
+---
+vp run: 41/160 cache hit (25%), 13.35s saved, 1 failed. @pantoken/interactions#build (and 7 more) not cached because they modified their inputs. (Run `vp run --last-details` for full details)
+```
