@@ -163,6 +163,10 @@ jobs:
         if: steps.mode.outputs.will_publish == 'true'
         run: vp run -r build
 
+      - name: Check translation completeness
+        if: steps.mode.outputs.will_publish == 'true'
+        run: vp run gate:i18n
+
       - name: Create Version PR or publish
         uses: changesets/action@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
         with:

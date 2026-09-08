@@ -37,13 +37,13 @@
       "cli.scaffold": { "source": "block", "primary": "block", "secondary": "block" },
       "cli.ai": { "source": "block", "primary": "block", "secondary": "block" },
       "docs.guides": { "source": "block", "primary": "block", "secondary": "block" },
-      "docs.api": { "source": "block", "primary": "warn", "secondary": "warn" },
+      "docs.api": { "source": "block", "primary": "block", "secondary": "block" },
       "docs.demos": { "source": "block", "primary": "block", "secondary": "block" },
       "docs.home": { "source": "block", "primary": "block", "secondary": "block" },
       "docs.chrome": { "source": "block", "primary": "block", "secondary": "block" },
       "docs.parity": "block"
     },
-    "fallback": { "source": "block", "primary": "warn", "secondary": "warn" }
+    "fallback": { "source": "block", "primary": "block", "secondary": "block" }
   },
   "spaces": {
     "docs.guides": {

@@ -374,10 +374,9 @@ export default defineConfig({
         ],
         cache: false,
       },
-      // CI-safe drift checks for the UI and CLI i18n domains. These tasks report every gap but only
-      // exit non-zero on a `block`, so an English-only change lands without waiting on ~90
-      // translations. Docs drift needs the generated EN API tree and is included only in the
-      // explicit all-surface task below.
+      // CI-safe drift checks for the UI and CLI i18n domains. Every configured translation gap is
+      // blocking now that the locale catalogs are complete. Docs drift needs the generated EN API
+      // tree and is included in the all-surface task below.
       "i18n:check:drift": {
         command:
           "vp run @pantoken/translation-adapters#build && vp run @pantoken/i18n-engine#build && vp run @pantoken/web-components#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift",
@@ -404,12 +403,16 @@ export default defineConfig({
           "node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json lint && vp run i18n:check:drift && vp run @pantoken/docs#docs:check:drift",
         cache: false,
       },
-      // Same sweep with every policy `warn` escalated to `block`. Not wired into PR CI — this is the
-      // "show me every gap, fail if any remain" command for a local audit or a scheduled full-locale
-      // run before a release.
+      // Backward-compatible alias for the complete blocking drift sweep.
       "i18n:check:drift:strict": {
         command: "I18N_DRIFT_STRICT=1 vp run i18n:check:drift:all",
         cache: false,
+      },
+      // Publishing must also validate generated API prose, which is not present in a clean checkout
+      // until the English API build runs.
+      "gate:i18n": {
+        command: "vp run @pantoken/docs#docs:api:en && vp run i18n:check:drift:all",
+        dependsOn: ["build:all"],
       },
       "i18n:bundles:build": {
         command: "vp run @pantoken/web-components#generate",
@@ -475,7 +478,7 @@ export default defineConfig({
       },
       "gate:publish": {
         command: "true",
-        dependsOn: ["gate:repository", "gate:publint", "gate:attw"],
+        dependsOn: ["gate:repository", "gate:publint", "gate:attw", "gate:i18n"],
       },
       // Root convenience alias so `vp run scaffold:dev <platform>` works from anywhere in the repo;
       // args pass through to the underlying package task. See packages/scaffold/scripts/scaffold-dev.ts.

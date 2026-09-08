@@ -147,27 +147,24 @@ until every translation does.
 | `docs.demos`   | `docs:check:drift`                     | `demos/*/i18n.json` → `l10n/<locale>/docs.demos.po`                 |
 | `docs.parity`  | `docs:check:locales`                   | structural locale-tree parity                                       |
 
-The committed default: **English source integrity blocks, translations warn.** A key missing from an
-`en.json` cache, or a structural parity gap, fails the build — both are fixed by re-running a
-generator, no AI pass needed. Every actual translation gap warns, because a missing translation falls
-back to English at runtime rather than breaking anything. `docs.parity` blocks for every locale for
-the same reason: `docs:build` runs `docs:api:locales` before it, so a gap there means a generator
 didn't run, not that a translator is behind.
+The committed default: **every configured locale blocks on translation drift.** A missing source key,
+translation, or structural parity gap fails the build. `docs.parity` blocks for every locale because
+`docs:build` runs `docs:api:locales` before it, so a gap there means a generator didn't run.
 
 A surface the config doesn't name inherits `fallback`, which is tier-aware — so a checker's brand-new
 surface id still blocks on English before anyone edits the policy.
 
 Two escape hatches:
 
-- `I18N_DRIFT_STRICT=1` escalates every `warn` to `block` (it never resurrects an `off`).
-  `vp run i18n:check:drift:strict` sweeps every surface that way — use it for a pre-release audit.
+- `I18N_DRIFT_STRICT=1` still escalates an explicitly configured `warn` to `block` (it never
+  resurrects an `off`). `vp run i18n:check:drift:strict` remains a compatibility alias for the
+  complete blocking audit.
 - `I18N_CONFIG=/path/to/i18n.config.json` swaps the configuration file.
 
-CI wiring: the `i18n-drift` job runs `vp run i18n:check:drift` (UI + CLI) when the i18n path filter
-matches; docs drift and parity run inside `@pantoken/docs#docs:build` in the `docs` job, because API
-prose drift needs the generated EN tree. `i18n.config.json` and `tools/translation-adapters/**` are in
-both path filters — editing what blocks a merge re-runs the gate that reads it. AI translation is
-never wired into CI; fill drift locally with `vp run i18n:translate`.
+CI wiring: the `i18n-drift` job runs `vp run gate:i18n` when catalog, source, or policy paths change;
+that gate generates the English API tree and checks every surface. `gate:i18n` also runs before npm
+publishing. AI translation is never wired into CI; fill drift locally with `vp run i18n:translate`.
 
 ## Publishing the create-pantoken-app skill
 

@@ -577,11 +577,12 @@ jobs:
               - 'plugins/**'
               - 'design/**'
               - 'tools/translation-adapters/**'
-              - 'i18n-policy.json'
+              - 'i18n.config.json'
+              - 'l10n/**'
               - 'pnpm-lock.yaml'
               - 'pnpm-workspace.yaml'
 
-  # Detect changes that could introduce translation drift in the i18n bundle caches. `i18n-policy.json`
+  # Detect changes that could introduce translation drift in the catalogs. `i18n.config.json`
   # and the shared policy module are in the path set too — editing what blocks a merge has to re-run
   # the gate that reads it.
   i18n-changes:
@@ -600,21 +601,17 @@ jobs:
         with:
           filters: |
             i18n:
-              - 'packages/i18n/**'
-              - 'renderers/web-components/src/lib/strings.ts'
+              - 'renderers/web-components/src/i18n.json'
               - 'packages/scaffold/src/i18n.json'
-              - 'packages/scaffold/i18n-cache/**'
               - 'ai/pantoken-ai/src/i18n.json'
-              - 'ai/pantoken-ai/i18n-cache/**'
+              - 'l10n/**'
               - 'tools/translation-adapters/**'
-              - 'i18n-policy.json'
+              - 'tools/i18n-engine/**'
+              - 'i18n.config.json'
 
   # Verify all Canvas locale caches are current relative to the English source strings.
   #
-  # `i18n-policy.json` decides, per surface and per locale tier, which gaps block the merge and which
-  # only warn — so this job fails on English source drift but reports the translation long tail as
-  # GitHub annotations plus a job-summary table without parking the PR. Escalate everything locally
-  # with `vp run i18n:check:drift:strict`.
+  # `i18n.config.json` requires complete catalogs for every locale, including generated API prose.
   #
   # AI translation is never wired here — fill drift locally with `vp run i18n:translate`.
   i18n-drift:
@@ -631,8 +628,8 @@ jobs:
         with:
           cache: true
           run-install: true
-      - name: Check i18n bundle drift
-        run: vp run i18n:check:drift
+      - name: Check all translation drift
+        run: vp run gate:i18n
 
   # Build the site as part of CI, so:
   #  - PRs get the deploy build without regenerating or checking every localized API tree. Those
