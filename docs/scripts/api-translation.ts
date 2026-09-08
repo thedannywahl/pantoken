@@ -38,6 +38,15 @@ const stripMarkdownEnvelope = (output: string): string => {
   return output.slice(start + begin.length, finish).trim();
 };
 
+/**
+ * `msgfmt -c` fails an entry whose `msgstr` and `msgid` disagree about a trailing newline, and models
+ * routinely add or drop one. Give the translation its source's trailing-newline shape.
+ */
+export function alignTrailingNewline(source: string, translation: string): string {
+  if (translation === "") return translation;
+  return translation.replace(/\n+$/u, "") + (/\n+$/u.exec(source)?.[0] ?? "");
+}
+
 /** A pluggable translation engine: named, with markdown/text/batch translate methods. */
 export interface TranslationAdapter {
   readonly name: string;
@@ -367,7 +376,10 @@ export class AiTranslationAdapter implements TranslationAdapter {
 
     const translated = (await this.runClaude(prompt, "single text line")).trim();
     const restoredBrackets = restoreEscapedAngleBrackets(translated, preservedBrackets.brackets);
-    return restorePackageNames(restoredBrackets, preserved.packageNames);
+    return alignTrailingNewline(
+      input,
+      restorePackageNames(restoredBrackets, preserved.packageNames),
+    );
   }
 
   async translateBatch(
@@ -430,6 +442,7 @@ export class AiTranslationAdapter implements TranslationAdapter {
       "Return ONLY a JSON object with the same keys and translated values.",
       "Do not translate, add, or remove keys. Keep identifiers, package names, and URLs unchanged.",
       "Do not alter placeholder tokens like __PTK_CODE_BLOCK_#__, __PTK_INLINE_CODE_#__, __PTK_PACKAGE_#__, or __PTK_ESC_#__.",
+      "Reproduce each value's leading and trailing whitespace exactly: if a value does not end with a newline, its translation must not end with one either.",
       JSON.stringify(payload, null, 2),
     ].join("\n");
 
@@ -437,10 +450,14 @@ export class AiTranslationAdapter implements TranslationAdapter {
     const parsed = extractJsonObject(raw);
     if (parsed) {
       const out: Record<string, string> = {};
+      const sources = new Map(items.map((item) => [item.id, item.text]));
       for (const entry of masked) {
         const value = parsed[entry.id];
         // A missing/non-string value restores to the (masked → original) source rather than dropping it.
-        out[entry.id] = restore(entry, typeof value === "string" ? value : entry.masked);
+        out[entry.id] = alignTrailingNewline(
+          sources.get(entry.id) ?? "",
+          restore(entry, typeof value === "string" ? value : entry.masked),
+        );
       }
       return out;
     }

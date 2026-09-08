@@ -21,7 +21,7 @@ import {
   sha256,
   type VerbatimPolicy,
 } from "@pantoken/translation-adapters";
-import type { TranslationAdapter } from "./api-translation.ts";
+import { alignTrailingNewline, type TranslationAdapter } from "./api-translation.ts";
 import { parsePo, refreshCoverageReports, serializePo, type PoEntry } from "@pantoken/i18n-engine";
 
 /**
@@ -110,17 +110,18 @@ export class TranslationMemory {
 
   set(kind: string, source: string, translation: string, options?: { verbatim?: boolean }): void {
     if (this._poByKey && this._poEntries) {
+      const aligned = alignTrailingNewline(source, translation);
       const key = `docs.api:${kind}\0${source}`;
       const existing = this._poByKey.get(key);
       if (existing) {
-        existing.msgstr = translation;
+        existing.msgstr = aligned;
         if (options?.verbatim === true && !existing.flags.includes(VERBATIM_FLAG)) {
           existing.flags = [...existing.flags, VERBATIM_FLAG];
         }
       } else {
         const entry: PoEntry = {
           msgid: source,
-          msgstr: translation,
+          msgstr: aligned,
           msgctxt: `docs.api:${kind}`,
           references: [],
           flags: options?.verbatim === true ? [VERBATIM_FLAG] : [],
