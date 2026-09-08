@@ -13,6 +13,7 @@ import { loadConfig, parseConfig, type I18nConfig } from "./config.ts";
 import { runLint } from "./lint.ts";
 import { formatCoverageReport, formatCoverageReportHtml, writeCoverageReport } from "./coverage.ts";
 import { excludeLocale, includeLocale, moveLocaleToTier } from "./locales.ts";
+import { aiProviderConfigured } from "./ai-translate.ts";
 import {
   DOCS_GUIDES,
   contentLocales,
@@ -64,6 +65,13 @@ function stubAction(command: string): () => void {
     console.log(`"${command}" is not implemented yet — see .claude/plans/localization-engine.md.`);
     process.exit(1);
   };
+}
+
+/** Suffix explaining a lingering untranslated count for a "messages"-kind space's translate output. */
+function translateNote(): string {
+  return aiProviderConfigured()
+    ? ""
+    : " (no AI provider configured — set I18N_TRANSLATION_COMMAND)";
 }
 
 /** Build the `i18n` commander program (exported for tests; `runI18nCli` is the process entry point). */
@@ -155,7 +163,7 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
             const result = await runTranslateGuides(config, configDirOf(), locale);
             console.log(
               `${DOCS_GUIDES} (${locale}): ${String(result.translated)} translated, ` +
-                `${String(result.untranslated)} untranslated (no AI provider authorized yet) — ${result.poPath}`,
+                `${String(result.untranslated)} untranslated (translate via docs:guides:locales:translate, not this CLI) — ${result.poPath}`,
             );
           }
         },
@@ -165,7 +173,7 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
             const result = await runTranslateMessages(config, configDirOf(), spaceId, locale);
             console.log(
               `${spaceId} (${locale}): ${String(result.translated)} translated, ` +
-                `${String(result.untranslated)} untranslated (no AI provider authorized yet) — ${result.poPath}`,
+                `${String(result.untranslated)} untranslated${translateNote()} — ${result.poPath}`,
             );
           }
         },
