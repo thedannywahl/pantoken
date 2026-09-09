@@ -59,6 +59,8 @@ export interface CircuitBreakerConfig {
 
 /** Command/model settings for one translation provider profile. */
 export interface ProviderProfileConfig {
+  /** Binary name, or a path resolved against the config directory when it contains a separator. */
+  command: string;
   model: string;
   effort?: string;
   concurrency: number;
@@ -161,9 +163,23 @@ export const CONFIG_DEFAULTS: Omit<I18nConfig, "source" | "spaces"> = {
       resetTimeoutMs: 300_000,
     },
     profiles: {
-      copilot: { model: "gpt-5-mini", effort: "low", concurrency: 4 },
-      agy: { model: "gemini-3.6-flash-low", concurrency: 4 },
-      claude: { model: "claude-haiku-4-5-20251001", effort: "low", concurrency: 8 },
+      copilot: {
+        command: "tools/translation-adapters/copilot-wrapper.sh",
+        model: "gpt-5-mini",
+        effort: "low",
+        concurrency: 4,
+      },
+      agy: {
+        command: "tools/translation-adapters/agy-wrapper.sh",
+        model: "gemini-3.6-flash-low",
+        concurrency: 4,
+      },
+      claude: {
+        command: "claude",
+        model: "claude-haiku-4-5-20251001",
+        effort: "low",
+        concurrency: 8,
+      },
     },
   },
   defaults: { translate: "always" },

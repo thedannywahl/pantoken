@@ -6,6 +6,7 @@ import { CONFIG_DEFAULTS } from "../src/config.ts";
 import {
   aiProviderConfigured,
   fillUntranslatedEntries,
+  resolveProviderInvocation,
   targetLanguageLabel,
 } from "../src/ai-translate.ts";
 import { parsePo } from "../src/po.ts";
@@ -41,6 +42,39 @@ function installFakeProvider(response: string): void {
   chmodSync(scriptPath, 0o755);
   process.env.I18N_TRANSLATION_COMMAND = scriptPath;
   delete process.env.I18N_TRANSLATION_COMMAND_ARGS;
+}
+
+/** A fake provider that brackets each call with `+`/`-` markers so overlap is observable. */
+function installConcurrencyProbe(): void {
+  const scriptPath = join(testDir, "probe-provider.sh");
+  const log = join(testDir, "concurrency.log");
+  writeFileSync(
+    scriptPath,
+    [
+      "#!/usr/bin/env bash",
+      "cat >/dev/null",
+      `echo + >>'${log}'`,
+      "sleep 0.2",
+      `echo - >>'${log}'`,
+      "printf '%s' '{}'",
+      "",
+    ].join("\n"),
+  );
+  chmodSync(scriptPath, 0o755);
+  process.env.I18N_TRANSLATION_COMMAND = scriptPath;
+  delete process.env.I18N_TRANSLATION_COMMAND_ARGS;
+}
+
+/** The highest number of probe calls that were ever in flight at once. */
+function peakConcurrency(): number {
+  const markers = readFileSync(join(testDir, "concurrency.log"), "utf8").trim().split("\n");
+  let inFlight = 0;
+  let peak = 0;
+  for (const marker of markers) {
+    inFlight += marker === "+" ? 1 : -1;
+    peak = Math.max(peak, inFlight);
+  }
+  return peak;
 }
 
 describe("aiProviderConfigured", () => {
@@ -114,5 +148,83 @@ describe("fillUntranslatedEntries", () => {
     await fillUntranslatedEntries(poPath(), "hu", CONFIG_DEFAULTS.provider);
     const entries = parsePo(readFileSync(poPath(), "utf8"));
     expect(entries.find((e) => e.msgid === "Cancel")?.msgstr).toBe("Mégse");
+  });
+
+  test("force retranslates an entry that already has a msgstr", async () => {
+    installFakeProvider('{"0":"Vissza","1":"Új"}');
+    writePo();
+    await fillUntranslatedEntries(poPath(), "hu", CONFIG_DEFAULTS.provider, { force: true });
+    const entries = parsePo(readFileSync(poPath(), "utf8"));
+    expect(entries.find((e) => e.msgid === "Cancel")?.msgstr).toBe("Új");
+  });
+
+  test("keeps at most `concurrency` provider calls in flight", async () => {
+    installConcurrencyProbe();
+    writeFileSync(
+      poPath(),
+      Array.from({ length: 6 }, (_, i) =>
+        ["#, no-c-format", `msgid "Message ${String(i)}"`, 'msgstr ""'].join("\n"),
+      ).join("\n\n"),
+    );
+    // A tiny budget forces one chunk per entry, so concurrency is what bounds the calls.
+    await fillUntranslatedEntries(
+      poPath(),
+      "hu",
+      { ...CONFIG_DEFAULTS.provider, batchBudget: 1 },
+      { concurrency: 2 },
+    );
+    expect(peakConcurrency()).toBe(2);
+  });
+});
+
+describe("resolveProviderInvocation", () => {
+  test("returns undefined when neither an env command nor a profile is available", () => {
+    delete process.env.I18N_TRANSLATION_COMMAND;
+    expect(resolveProviderInvocation(CONFIG_DEFAULTS.provider)).toBeUndefined();
+  });
+
+  test("resolves a profile's command, model, effort, and concurrency", () => {
+    delete process.env.I18N_TRANSLATION_COMMAND;
+    const invocation = resolveProviderInvocation(CONFIG_DEFAULTS.provider, {
+      profile: "claude",
+    });
+    expect(invocation).toEqual({
+      command: "claude",
+      args: ["--model", "claude-haiku-4-5-20251001", "--effort", "low"],
+      concurrency: 8,
+    });
+  });
+
+  test("resolves a profile's relative command path against the config directory", () => {
+    delete process.env.I18N_TRANSLATION_COMMAND;
+    const invocation = resolveProviderInvocation(CONFIG_DEFAULTS.provider, {
+      profile: "copilot",
+      configDir: "/repo",
+    });
+    expect(invocation?.command).toBe("/repo/tools/translation-adapters/copilot-wrapper.sh");
+  });
+
+  test("the env command still wins over a requested profile", () => {
+    process.env.I18N_TRANSLATION_COMMAND = "my-command";
+    delete process.env.I18N_TRANSLATION_COMMAND_ARGS;
+    expect(resolveProviderInvocation(CONFIG_DEFAULTS.provider, { profile: "claude" })).toEqual({
+      command: "my-command",
+      args: [],
+      concurrency: 8,
+    });
+  });
+
+  test("an explicit concurrency overrides the profile's", () => {
+    delete process.env.I18N_TRANSLATION_COMMAND;
+    expect(
+      resolveProviderInvocation(CONFIG_DEFAULTS.provider, { profile: "claude", concurrency: 2 })
+        ?.concurrency,
+    ).toBe(2);
+  });
+
+  test("throws on an unknown profile name", () => {
+    expect(() => resolveProviderInvocation(CONFIG_DEFAULTS.provider, { profile: "nope" })).toThrow(
+      /Unknown provider profile "nope"/u,
+    );
   });
 });
