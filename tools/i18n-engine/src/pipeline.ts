@@ -10,7 +10,7 @@
  *
  * @module
  */
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { DriftReporter, type DriftPolicy } from "@pantoken/translation-adapters";
 import type { I18nConfig, MessagesSpaceConfig } from "./config.ts";
@@ -23,7 +23,7 @@ import {
 } from "./extract.ts";
 import { extractMessagesSpace, type MessageUnit } from "./extract-messages.ts";
 import { mergePoWithTemplate } from "./gettext.ts";
-import { parsePo, serializePot, writeCatalog, type PoEntry } from "./po.ts";
+import { parsePo, readCatalog, serializePot, writeCatalog, type PoEntry } from "./po.ts";
 import { refreshCoverageReports } from "./coverage.ts";
 import { fillUntranslatedEntries, type FillOptions } from "./ai-translate.ts";
 import { localesForSpace, resolveLocaleStatus } from "./locales.ts";
@@ -77,7 +77,7 @@ function reportPotStaleness(
 ): void {
   const relativePotPath = potPathForSpace(config, spaceId);
   const potPath = join(configDir, relativePotPath);
-  const committed = existsSync(potPath) ? parsePo(readFileSync(potPath, "utf8")) : [];
+  const committed = parsePo(readCatalog(potPath) ?? "");
   const committedKeys = new Set(
     committed.filter((e) => !e.obsolete && e.msgid !== "").map((e) => catalogUnitKey(e)),
   );
@@ -293,7 +293,7 @@ function loadPoEntries(config: I18nConfig, configDir: string, locale: string): P
     configDir,
     resolvePattern(config.catalogs.target, { space: DOCS_GUIDES, locale }),
   );
-  return existsSync(poPath) ? parsePo(readFileSync(poPath, "utf8")) : [];
+  return parsePo(readCatalog(poPath) ?? "");
 }
 
 function loadPoEntriesForSpace(
@@ -306,7 +306,7 @@ function loadPoEntriesForSpace(
     configDir,
     resolvePattern(config.catalogs.target, { space: spaceId, locale }),
   );
-  return existsSync(poPath) ? parsePo(readFileSync(poPath, "utf8")) : [];
+  return parsePo(readCatalog(poPath) ?? "");
 }
 
 /** Drift reporter and exit code returned by a space check. */
@@ -422,7 +422,7 @@ function loadMessagesPoEntries(
     configDir,
     resolvePattern(config.catalogs.target, { space: spaceId, locale }),
   );
-  return existsSync(poPath) ? parsePo(readFileSync(poPath, "utf8")) : [];
+  return parsePo(readCatalog(poPath) ?? "");
 }
 
 /** Keyed message values resolved for one locale, including English fallbacks. */

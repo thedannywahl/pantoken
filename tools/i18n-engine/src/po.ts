@@ -8,7 +8,7 @@
  *
  * @module
  */
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { catalogUnitKey } from "./units.ts";
 
 /** One translatable entry. `msgstr` is `""` for an untranslated/obsolete-pending entry. */
@@ -262,14 +262,28 @@ export function serializePo(entries: readonly PoEntry[]): string {
 const REVISION_DATE_LINE = /^"PO-Revision-Date:[^"]*"$/mu;
 
 /**
+ * `path`'s contents, or `undefined` when it doesn't exist. Deliberately reads and handles `ENOENT`
+ * rather than asking `existsSync` first: a separate existence check leaves a window in which the
+ * file can be created or removed before the read (CWE-367).
+ */
+export function readCatalog(path: string): string | undefined {
+  try {
+    return readFileSync(path, "utf8");
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") return undefined;
+    throw error;
+  }
+}
+
+/**
  * Write a serialized catalog to `path`, but leave the file alone when `content` differs from it only
  * by the `PO-Revision-Date` {@link header} stamps on every serialization. Re-extracting a catalog is
  * idempotent, so an unconditional write would churn the timestamp — dirtying git and busting the
  * build cache — on every run that changed nothing. Returns whether it wrote.
  */
 export function writeCatalog(path: string, content: string): boolean {
-  if (existsSync(path)) {
-    const existing = readFileSync(path, "utf8");
+  const existing = readCatalog(path);
+  if (existing !== undefined) {
     const existingDate = REVISION_DATE_LINE.exec(existing)?.[0];
     if (
       existingDate !== undefined &&

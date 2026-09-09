@@ -5,6 +5,7 @@ import { afterEach, beforeEach, describe, expect, test } from "vite-plus/test";
 import {
   escapePoString,
   parsePo,
+  readCatalog,
   serializePo,
   serializePot,
   unescapePoString,
@@ -240,6 +241,19 @@ describe("writeCatalog", () => {
 
   afterEach(() => {
     rmSync(testDir, { recursive: true, force: true });
+  });
+
+  test("readCatalog returns undefined for a file that does not exist", () => {
+    expect(readCatalog(join(testDir, "absent.pot"))).toBeUndefined();
+  });
+
+  test("readCatalog returns the contents of a file that does exist", () => {
+    writeFileSync(path(), "hello");
+    expect(readCatalog(path())).toBe("hello");
+  });
+
+  test("readCatalog rethrows an error that is not a missing file", () => {
+    expect(() => readCatalog(testDir)).toThrow();
   });
 
   test("writes a catalog that does not exist yet", () => {

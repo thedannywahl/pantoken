@@ -12,7 +12,7 @@
  *
  * @module
  */
-import { existsSync, mkdirSync, readFileSync } from "node:fs";
+import { mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import {
   isPassthroughTranslation,
@@ -24,6 +24,7 @@ import {
 import type { TranslationAdapter } from "./api-translation.ts";
 import {
   parsePo,
+  readCatalog,
   refreshCoverageReports,
   serializePo,
   writeCatalog,
@@ -99,11 +100,7 @@ export class TranslationMemory {
   static load(locale: string, namespace: string): TranslationMemory {
     if (namespace === "api") {
       const poPath = join(import.meta.dirname, "..", "..", "l10n", locale, "docs.api.po");
-      return new TranslationMemory(
-        undefined,
-        poPath,
-        existsSync(poPath) ? parsePo(readFileSync(poPath, "utf8")) : [],
-      );
+      return new TranslationMemory(undefined, poPath, parsePo(readCatalog(poPath) ?? ""));
     }
     const path = join(cacheDir, `${locale}.${namespace}.json`);
     return new TranslationMemory(

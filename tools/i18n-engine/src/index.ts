@@ -42,6 +42,7 @@ export {
 export {
   escapePoString,
   parsePo,
+  readCatalog,
   serializePo,
   serializePot,
   unescapePoString,
