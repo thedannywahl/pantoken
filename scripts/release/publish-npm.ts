@@ -94,6 +94,18 @@ export interface ReleaseManifestEntry {
   notes: string;
 }
 
+/** Write the NDJSON event stream consumed by `changesets/action` for tags and GitHub releases. */
+export function writeChangesetsOutput(entries: readonly ReleaseManifestEntry[]): void {
+  const outputPath = process.env.CHANGESETS_OUTPUT;
+  if (!outputPath) return;
+  const content = entries
+    .map(({ tag }) =>
+      JSON.stringify({ type: "git-tag", tag, packageName: tag.slice(0, tag.lastIndexOf("@")) }),
+    )
+    .join("\n");
+  writeFileSync(outputPath, content ? `${content}\n` : "", { encoding: "utf8" });
+}
+
 /** The publish split: packages to publish now, and those already on the registry (skipped). */
 export interface PublishPlan {
   toPublish: WorkspacePackage[];
@@ -495,6 +507,7 @@ async function main(): Promise<void> {
   //    so all assets are present before the immutable release locks in).
   const { entries, failedRelease } = prepareReleaseManifest([...skipped, ...published], ctx);
   if (entries.length > 0) writeReleaseManifest(entries);
+  writeChangesetsOutput(entries);
   finishRun(published, skipped, entries.length, failedPublish, failedRelease);
 }
 
