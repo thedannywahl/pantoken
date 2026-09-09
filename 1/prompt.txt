@@ -1,0 +1,3 @@
+the test1 folder is the result of `npx create-pantoken-app` and selecting components/html.
+
+overall this is the right approach, but a single giant typescript file is not a very dev-ex friendly experience for somebody that wants to build a standarding html + css + js(ts) web page.  what's the modern dev-friendly approach that we can reengineer this scaffold toward?
