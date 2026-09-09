@@ -25,7 +25,7 @@ dtcg; // the rebrand DTCG document
 byTheme("canvasHighContrast"); // another theme
 
 // Convert your own IR (e.g. with plugins applied):
-import { buildTokens } from "@pantoken/core";
+import { buildTokens } from "@pantoken/core/build";
 toDtcg(buildTokens({ theme: "rebrand" }), "dark");
 ```
 

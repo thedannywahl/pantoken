@@ -19,7 +19,7 @@ Also available as `pantoken/customIcons`.
 Emit vendored icons as `<image>` tokens (they then flow to CSS and native too):
 
 ```ts
-import { buildTokens } from "@pantoken/core";
+import { buildTokens } from "@pantoken/core/build";
 import { customIcons } from "@pantoken/plugin-custom-icons";
 
 buildTokens({

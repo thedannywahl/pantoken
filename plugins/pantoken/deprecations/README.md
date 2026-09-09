@@ -5,7 +5,7 @@ for every `"alias"` entry, appends a `var()` forwarder so consumers keep resolvi
 `--instui-*` name against its canonical replacement.
 
 ```ts
-import { buildTokens } from "@pantoken/core";
+import { buildTokens } from "@pantoken/core/build";
 import { deprecationShims } from "@pantoken/plugin-deprecations";
 import ledger from "@pantoken/tokens/deprecations.json" with { type: "json" };
 

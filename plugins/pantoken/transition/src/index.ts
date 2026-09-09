@@ -9,7 +9,7 @@
  *
  * @example
  * ```ts
- * import { buildTokens } from "@pantoken/core";
+ * import { buildTokens } from "@pantoken/core/build";
  * import { transition } from "@pantoken/plugin-transition";
  *
  * const tokens = buildTokens({ theme: "rebrand", plugins: [transition()] });

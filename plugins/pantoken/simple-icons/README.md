@@ -17,7 +17,7 @@ Also available as `pantoken/simpleIcons`. `simple-icons` is a peer dependency (>
 Emit brand glyphs as `<image>` tokens (they then flow to CSS and native too):
 
 ```ts
-import { buildTokens } from "@pantoken/core";
+import { buildTokens } from "@pantoken/core/build";
 import { simpleIcons } from "@pantoken/plugin-simple-icons";
 import * as registry from "simple-icons";
 
