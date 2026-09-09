@@ -3,3 +3,6 @@
 allowBuilds:
   core-js: true
   ttf2woff2: true
+# @pantoken/tokens pulls in a git-resolved upstream dependency several levels deep; pnpm's default
+# blockExoticSubdeps gate otherwise fails the install with ERR_PNPM_EXOTIC_SUBDEP.
+blockExoticSubdeps: false
