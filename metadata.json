@@ -3,7 +3,7 @@
   "checkpoint_id": "01M23K8YN92F8N38PGFDMCX0BK",
   "strategy": "manual-commit",
   "branch": "components-app-improvements",
-  "checkpoints_count": 3,
+  "checkpoints_count": 4,
   "files_touched": [
     ".changeset/scaffold-readme-overlay-codegen.md",
     "packages/scaffold/scripts/generate.ts",
@@ -30,6 +30,13 @@
       "compact_transcript": "/2/transcript.jsonl",
       "content_hash": "/2/content_hash.txt",
       "prompt": "/2/prompt.txt"
+    },
+    {
+      "metadata": "/3/metadata.json",
+      "transcript": "/3/full.jsonl",
+      "compact_transcript": "/3/transcript.jsonl",
+      "content_hash": "/3/content_hash.txt",
+      "prompt": ""
     }
   ],
   "token_usage": {
