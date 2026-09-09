@@ -1,0 +1,10 @@
+#### [codecov/patch/cli](https://github.com/thedannywahl/pantoken/pull/130/checks?check_run_id=102320492703)
+ — 66.66% of diff hit (target 85.00%)
+
+ [Files with missing lines](https://app.codecov.io/gh/thedannywahl/pantoken/pull/130?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
+ Patch %
+ Lines
+ 
+ [packages/cli/src/index.ts](https://app.codecov.io/gh/thedannywahl/pantoken/pull/130?src=pr&el=tree&filepath=packages%2Fcli%2Fsrc%2Findex.ts&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl#REDACTED)
+ 66.66%
+ [1 Missing ⚠️](https://app.codecov.io/gh/thedannywahl/pantoken/pull/130?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
