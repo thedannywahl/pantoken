@@ -1,0 +1,96 @@
+Translate this technical markdown from English to Hungarian.
+Return only the translated markdown.
+Rules:
+- Keep markdown structure unchanged.
+- Translate heading text too (the words after the leading # symbols) — do not leave headings in English.
+- Do not alter placeholder tokens like __PTK_CODE_BLOCK_#__ or __PTK_INLINE_CODE_#__.
+- Do not alter placeholder tokens like __PTK_PACKAGE_#__, __PTK_ESC_#__, or __PTK_VAR_#__.
+- Preserve whitespace and line breaks.
+- Keep import paths, package names, URLs, and identifiers intact.
+File: canvas-theme-editor/README.md
+--- BEGIN MARKDOWN ---
+# __PTK_VAR_0__
+
+Upload-ready assets for Canvas LMS's **Theme Editor**, plus a local preview for authoring Rich
+Content Editor (RCE) page templates styled with
+[__PTK_INLINE_CODE_0__](https://www.npmjs.com/package/__PTK_PACKAGE_0__).
+
+## What's here
+
+- __PTK_INLINE_CODE_1__ / __PTK_INLINE_CODE_2__ — upload these two files under **Theme Editor → Advanced** in Canvas.
+  They're built for the CDN provider/theme/mode you chose when scaffolding (__PTK_INLINE_CODE_3__/__PTK_INLINE_CODE_4__/
+  __PTK_INLINE_CODE_5__; jsDelivr/rebrand/light by default) and include a loader for
+  __PTK_INLINE_CODE_6__ (wires up component behaviors like modal, tooltip, and drilldown).
+- __PTK_INLINE_CODE_7__ / __PTK_INLINE_CODE_8__ — a local, TinyMCE-based editor (__PTK_INLINE_CODE_9__) that mirrors Canvas's
+  RCE so you can author page templates against pantoken's classes before copying them into Canvas.
+  The page itself is built with pantoken's __PTK_INLINE_CODE_10__ layout: click **Edit theme** to open a tray
+  with **Config** / **CSS** / **JS** tabs (CDN provider/theme/mode selects, and syntax-highlighted,
+  hand-editable copies of __PTK_INLINE_CODE_11__/__PTK_INLINE_CODE_12__ that feed the live preview), and the **?** button
+  for full instructions. Use the **Layouts** toolbar button to start from one of pantoken's bundled
+  starter page layouts (hero, callout, two-column, rubric note, testimonial), sourced from
+  [__PTK_INLINE_CODE_13__](https://www.npmjs.com/package/__PTK_PACKAGE_1__).
+
+## Develop
+
+__PTK_CODE_BLOCK_0__
+
+This opens a Vite dev server with:
+
+- An **editor** pane (TinyMCE, matching the version/config
+  [instructure/canvas-lms](https://github.com/instructure/canvas-lms) itself uses — see below).
+  Use the **Layouts** button to load one of the bundled starter layouts (this replaces the whole
+  document, after a confirm, rather than inserting at the cursor), and the **Source code** toggle
+  to hand-edit the raw HTML in a syntax-highlighted (CodeMirror) view alongside the editor, with
+  the preview pane updating live as you type — unlike TinyMCE's stock __PTK_INLINE_CODE_14__ plugin, which edits in
+  a one-shot modal dialog with no live preview.
+- A **preview** pane showing the editor's content with the current CSS/JS tab's stylesheet/script
+  applied (not just the resolved CDN URLs), wrapped to match Canvas's own content-area background
+  and max width — a faithful "what this will look like once uploaded to Canvas" check, updated
+  live as you type or edit the theme.
+- The editor and preview panes sit in a split view you can resize by dragging the divider, stack
+  vertically instead of side by side, and swap the order of (drag a pane's toolbar onto the other,
+  or use the **Swap panes** button). Each pane has its own fullscreen button.
+- The **Edit theme** tray's **Config** tab holds the CDN provider/theme/mode selects and
+  **Download theme.css** / **Download theme.js** links; its **CSS**/**JS** tabs are editable copies
+  of the generated files — hand-edit them and the preview picks up your changes directly. Changing
+  a Config select re-generates the CSS/JS tabs unless you've already edited them, in which case a
+  **Regenerate from config** button appears instead of silently overwriting your edit.
+
+## Workflow
+
+1. Upload __PTK_INLINE_CODE_15__ and __PTK_INLINE_CODE_16__ to Canvas's Theme Editor (**Advanced → CSS / JavaScript**) so
+   pantoken's classes are available on every page.
+2. Run __PTK_INLINE_CODE_17__, use **Layouts** to start from a bundled starter, and edit it like you
+   would in Canvas's own RCE.
+3. Click **Copy HTML** and paste the result into a Canvas page's RCE (switch to the HTML editor
+   view first). Canvas sanitizes pasted HTML server-side — this scaffold doesn't attempt to
+   replicate that, so always verify the pasted result in Canvas (see "Notes on Canvas's RCE"
+   below).
+
+## Notes on Canvas's RCE
+
+The Canvas Rich Content Editor runs TinyMCE and sanitizes submitted HTML on the server against an
+allowlist (__PTK_INLINE_CODE_18__ in canvas-lms, kept in sync with TinyMCE's own
+__PTK_INLINE_CODE_19__/__PTK_INLINE_CODE_20__). What that allowlist means for templates built here:
+
+- __PTK_INLINE_CODE_21__, __PTK_INLINE_CODE_22__, __PTK_INLINE_CODE_23__, __PTK_INLINE_CODE_24__, __PTK_INLINE_CODE_25__, and __PTK_INLINE_CODE_26__ attributes are allowed on every element —
+  pantoken's __PTK_INLINE_CODE_27__ styling hooks (and inline __PTK_INLINE_CODE_28__, e.g. for CSS anchor positioning)
+  **do** survive being pasted and saved, contrary to older guidance in this file. __PTK_INLINE_CODE_29__ tags
+  are always stripped.
+- **RCE-safe pantoken components**: static/display components — alert, view, heading, text, table,
+  a button-as-__PTK_INLINE_CODE_30__ (not a real __PTK_INLINE_CODE_31__), blockquote. Stick to semantic HTML pantoken already
+  supports (__PTK_INLINE_CODE_32__, __PTK_INLINE_CODE_33__, __PTK_INLINE_CODE_34__, __PTK_INLINE_CODE_35__, __PTK_INLINE_CODE_36__, headings, lists, tables).
+- **RCE-unsafe**: anything from __PTK_INLINE_CODE_37__'s behavior set — modal, tooltip,
+  drilldown, close-button, or any other component driven by the native __PTK_INLINE_CODE_38__/__PTK_INLINE_CODE_39__/
+  __PTK_INLINE_CODE_40__/__PTK_INLINE_CODE_41__ attributes. Those attributes aren't in Canvas's sanitizer allowlist, so
+  the markup survives but the interactive behavior silently breaks the first time the page is
+  saved in Canvas, even with __PTK_INLINE_CODE_42__'s __PTK_INLINE_CODE_43__ loader present. Real form
+  elements (__PTK_INLINE_CODE_44__, __PTK_INLINE_CODE_45__, __PTK_INLINE_CODE_46__, __PTK_INLINE_CODE_47__, __PTK_INLINE_CODE_48__, __PTK_INLINE_CODE_49__) and inline __PTK_INLINE_CODE_50__ are
+  stripped outright — none of the bundled starter templates use them.
+
+__PTK_INLINE_CODE_51__ loads __PTK_INLINE_CODE_52__ from the CDN, which runs in Canvas's global page scope —
+useful for interactions on pages you build directly in Canvas's RCE with raw HTML edits, but (per
+above) any __PTK_INLINE_CODE_53__/__PTK_INLINE_CODE_54__-attribute-driven markup pasted from the RCE preview here won't stay
+interactive once saved.
+
+--- END MARKDOWN ---
