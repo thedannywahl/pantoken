@@ -76,9 +76,9 @@ supports them (`pt_BR.UTF-8` resolves to `pt-BR`) and narrow to the base languag
 (`es_MX` resolves to `es`).
 
 The resolved locale also shapes the generated project: entry markup gets a matching `lang`/`dir`
-pair, so `--lang ar` scaffolds `<html lang="ar" dir="rtl">`. An explicit `--lang` must name a
-supported locale — it errors rather than silently falling back, since the value is written into the
-scaffolded files.
+pair (so `--lang ar` scaffolds `<html lang="ar" dir="rtl">`), and the project README is written in
+that language where a translation exists. An explicit `--lang` must name a supported locale — it
+errors rather than silently falling back, since the value is written into the scaffolded files.
 
 ## Architecture
 

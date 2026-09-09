@@ -13,6 +13,7 @@ import { dirname, join } from "node:path";
 import { producePreset } from "bingo-stratum";
 import { buildTheme } from "@pantoken/canvas-theme-editor";
 import { SCAFFOLDS } from "../generated/scaffolds.ts";
+import { SCAFFOLD_OVERLAYS } from "../generated/scaffold-overlays.ts";
 import { PRESET_LEDGER } from "../generated/preset-ledger.ts";
 import { localeDirection } from "./locale.ts";
 import { themeStylesheetImport, type ThemeMode, type ThemeVariant } from "./theme.ts";
@@ -102,12 +103,14 @@ function writePresetFiles(resolvedPlatform: string, dir: string, projectName: st
 function writeLegacyTemplateFiles(
   resolvedPlatform: string,
   dir: string,
+  locale: string,
   substitutions: Readonly<Record<string, string>>,
 ): string[] {
   const templates = SCAFFOLDS[resolvedPlatform as keyof typeof SCAFFOLDS];
   if (!templates) return [];
+  const localized = { ...templates, ...SCAFFOLD_OVERLAYS[locale]?.[resolvedPlatform] };
 
-  return Object.entries(templates).map(([file, content]) => {
+  return Object.entries(localized).map(([file, content]) => {
     const substituted = Object.entries(substitutions).reduce(
       (text, [token, value]) => text.replaceAll(`{{${token}}}`, value),
       content,
@@ -182,7 +185,7 @@ export async function scaffoldProject(
   // legacy scaffold template system so every platform still scaffolds something.
   const written = writePresetFiles(resolvedPlatform, dir, projectName);
   if (written.length === 0) {
-    written.push(...writeLegacyTemplateFiles(resolvedPlatform, dir, substitutions));
+    written.push(...writeLegacyTemplateFiles(resolvedPlatform, dir, locale, substitutions));
   }
   written.push(...writeCanvasThemeEditorAssets(resolvedPlatform, dir, options));
 

@@ -14,9 +14,9 @@ afterEach(() => {
 describe("runLint", () => {
   test("accepts the repository localization contract", async () => {
     const result = await runLint(join(root, "i18n.config.json"));
-    expect(result.checkedSpaces).toBe(8);
+    expect(result.checkedSpaces).toBe(9);
     expect(result.checkedLocales).toBe(44);
-    expect(result.checkedCatalogs).toBe(352);
+    expect(result.checkedCatalogs).toBe(396);
   }, 20_000);
 
   test("rejects a required space missing from the config", async () => {

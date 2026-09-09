@@ -260,15 +260,17 @@ export default defineConfig({
         cache: false,
       },
       "cli:extract": {
-        command: "vp run @pantoken/scaffold#extract && vp run @pantoken/ai#extract",
+        command:
+          "vp run @pantoken/scaffold#extract && vp run @pantoken/scaffold#extract:readme && vp run @pantoken/ai#extract",
         cache: false,
       },
-      // docs.api and docs.guides are extracted by their own build scripts, not the generic CLI.
+      // docs.api is extracted by its own build script (it needs the TypeDoc tree built first).
       "docs:extract": {
         command: [
           "node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json extract docs.home",
           "node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json extract docs.chrome",
           "node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json extract docs.demos",
+          "node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json extract docs.guides",
         ].join(" && "),
         cache: false,
       },

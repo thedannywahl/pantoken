@@ -38,10 +38,12 @@
     "translate:force": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.scaffold --provider claude --force",
     "translate:force:agy": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.scaffold --provider agy --force",
     "translate:force:copilot": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.scaffold --provider copilot --force",
-    "check:drift": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" check cli.scaffold",
+    "check:drift": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" check cli.scaffold && i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" check scaffold.readme",
+    "extract:readme": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" extract scaffold.readme",
+    "sync:readme": "node scripts/sync-readme-locales.ts",
     "dev": "vp pack --watch",
     "test": "vp run scan && vp run generate && vp test",
-    "check": "vp run scan && vp check && i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" check cli.scaffold"
+    "check": "vp run scan && vp check && vp run check:drift"
   },
   "dependencies": {
     "@bomb.sh/tab": "catalog:",
