@@ -1,0 +1,75 @@
+the scaffold cli should be detecting the locale of the invoking terminal session and setting the language of the commander/bomb interface.  this should be existing functionality. Validate this, and then here's where we need to extend:
+* add an optional locale flag that allows the user to generate the scaffold in a different locale, using the detected lang as the default when not provided, and falling back to 'en' when not detected.
+* scaffold files should use the appropriate locale, so for example when writing the html file in index.html the lang attribute should be set correctly.
+* scaffold prose should be moved to the i18n file and localized - including the READMEs and anything else that makes sense.
+
+---
+
+Explore the pantoken workspace (/Users/dwahl/Scripts/pantoken) and find the "scaffold CLI" — likely `create-pantoken-app` or similar (there is `ai/create-pantoken-app-site/`). I need a thorough report on:
+
+1. Where the scaffold CLI source lives (full paths). What CLI framework it uses (commander? clack? prompts?).
+2. Whether it already detects the locale of the invoking terminal session (look for LANG, LC_ALL, LC_MESSAGES, Intl.DateTimeFormat().resolvedOptions().locale, osLocale, navigator.language, process.env.LANG). Report exactly which file/function does this and how it's used.
+3. How its i18n / message strings are organized — is there an i18n file? What locales are supported? Show the shape of the translation module(s) (keys, nesting, how a string is looked up, fallback behavior). Include full path(s) and a representative excerpt.
+4. What files the scaffold generates (templates): list template files and where the template content lives (inline strings? template dir?). Specifically find where index.html is generated and whether a `lang` attribute is set. Also find READMEs it generates and any other prose (comments, package.json description, console output after scaffolding).
+5. Existing tests for the scaffold CLI (paths, framework, how they invoke it).
+6. The repo's broader l10n setup: there is an `l10n/` folder and `i18n.config.json` and docs locales. Report how repo-wide locale lists/translations are managed and whether the scaffold could reuse them.
+
+Report is research only — do NOT edit any files. Give concrete file paths, function names, and short excerpts.
+
+---
+
+Research only, no edits. In /Users/dwahl/Scripts/pantoken, focus on packages/scaffold and its Bingo presets. I need:
+
+1. Full listing of `packages/scaffold/templates/` — every platform dir and every file inside (use file_search/list_dir recursively). Note which platforms have `src/i18n.json` and `scaffold.json`.
+2. For EVERY template file that contains an HTML `lang=` attribute (grep for `lang="` and `<html`), list the file path and the line.
+3. Content of one representative platform's README.md template (e.g. templates/react/README.md) and a list of all README template paths. Also note any other prose-bearing template files (package.json "description", src/i18n.json contents, comments in main.ts.tmpl).
+4. The Bingo preset system: `packages/scaffold/generated/preset-ledger.ts` — what does it contain, and where do the source presets/blocks live (search for `bingo-stratum`, `createBase`, `createPreset`, `createBlock` across the repo)? Which platforms actually have working presets that produce files, vs falling back to legacy SCAFFOLDS templates? Look at `packages/scaffold/scripts/scan-presets.ts` too.
+5. The `@pantoken/i18n-engine` package (tools/i18n-engine): its public API — especially `generateMessageBundles`, `loadConfig`, and any extraction (POT generation) entry points. How does a "space" (like `cli.scaffold`) get its .pot file generated/updated? Is there a script/task that extracts source strings into l10n/*.pot? Show the relevant scripts and package.json task names.
+6. `packages/scaffold/src/i18n.json` — its shape and roughly how many keys, plus a few example entries. And `packages/scaffold/scripts/i18n-sources.ts` (flattenSource).
+7. `packages/scaffold/templates/*/src/i18n.json` — full contents of one, and how `src/strings.ts` is consumed by the scaffolded app (look at main.ts.tmpl render()).
+8. package.json scripts of packages/scaffold, and any repo root tasks related to i18n (vite.config.ts tasks, i18n:extract etc.).
+
+Give concrete paths, excerpts, and function signatures.
+
+---
+
+Research only, no edits. In /Users/dwahl/Scripts/pantoken, study how the `content` kind i18n space works in tools/i18n-engine (as used by `docs.guides` and `docs.api` in i18n.config.json). I need precise mechanics so I can plan adding a NEW content space for `packages/scaffold/templates/*/README.md`.
+
+Report:
+1. The exact `ContentSpaceConfig` type/schema fields (`include`, `render`, `transientRender`, `segment`) and their semantics — file: tools/i18n-engine/src/config.ts (or wherever parseConfig lives). What placeholders does `render` support ({locale}, {path})? How is `{path}` computed relative to the include glob?
+2. The extract path for content spaces: which function (runExtractContent? runExtractMessages?) in tools/i18n-engine/src/pipeline.ts handles kind==="content", how it segments markdown into units ("block" segmentation), what msgctxt/reference it produces, and which .pot file it writes.
+3. The render/emit path: which function writes translated markdown back out to the `render` pattern, when it runs (which package.json script / vite task), and what `transientRender: true` vs `false` means (is transient output gitignored?).
+4. The drift/check path for content spaces (`runCheckContent`?) and how `drift.surfaces` tiers apply.
+5. The i18n CLI (tools/i18n-engine/src/cli.ts): full list of subcommands and their args/flags (extract, translate, check, render?, others). Show the command definitions.
+6. How docs consumes rendered content — e.g. docs/hu/guide/*.md: are those files committed to git or generated? Check .gitignore for docs/{locale} patterns.
+7. Any existing content space whose source is NOT under docs/ — i.e. is the engine hard-coded to docs paths anywhere? Grep for "docs/" inside tools/i18n-engine/src.
+8. Whether `requiredSpaces` in i18n.config.json is validated anywhere (would adding a new space require registering it in requiredSpaces + drift.surfaces?).
+9. What the `translate` command does for content spaces and which providers exist (claude/agy/copilot) — file paths of providers.
+
+Give concrete file paths, function signatures, and short excerpts.
+
+---
+
+1 do option b
+2. we should translate the content space as part of the scaffold as well.
+
+---
+
+Research only, no edits. In /Users/dwahl/Scripts/pantoken, I need to quantify the cost of removing the `docs.guides` and `docs.home` special-cases from tools/i18n-engine/src/pipeline.ts so all content spaces use one generic glob+segment path.
+
+Report:
+1. Read tools/i18n-engine/src/pipeline.ts fully (or at least lines 1-360) and list EVERY place `DOCS_GUIDES` or `DOCS_HOME` is special-cased, with line numbers and what the special case does differently from the generic path. Include the exported wrapper functions (runExtractGuides, runTranslateGuides, runRenderGuides, runCheckGuides, guidesLocales) and who calls them (grep across repo including tools/i18n-engine/src/cli.ts, index.ts, docs/ scripts, vite.config.ts).
+2. `listGuideFiles` — where is it defined (tools/i18n-engine/src/extract.ts?), what does it return, does it include docs/index.md? Show the implementation.
+3. How many files match `docs/guide/**/*.md`? Count them. How many locale dirs exist under docs/ (e.g. docs/hu/guide)? Count files in one locale dir.
+4. Byte size / entry count of l10n/docs.guides.pot and l10n/docs.home.pot, and of one locale's l10n/hu/docs.guides.po. Roughly how many msgid entries in each (count `msgid "` occurrences).
+5. CRITICAL: confirm whether docs.guides POT entries are WHOLE-FILE msgids (one entry per file) vs per-block. Show the first 30 lines of l10n/docs.guides.pot and l10n/docs.home.pot.
+6. `renderFile` and `normalizeWholeFileMarkdown` and `collectProseRanges` / `renderFrontmatterFile` in tools/i18n-engine/src/extract.ts (or render.ts) — show signatures and what they do, so I understand what generic block rendering would produce for guides.
+7. Existing tests for the pipeline: list test files in tools/i18n-engine/tests/ and which ones assert on guides-specific behavior.
+8. Any docs-side consumer that assumes whole-file guide translation (docs/scripts/*, docs/.vitepress/*). Grep for "docs.guides" and "render" across docs/.
+9. `fillUntranslatedEntries` signature in tools/i18n-engine/src/ai-translate.ts and exactly how runTranslateMessages passes it (show the call site with surrounding context, ~pipeline.ts:390-420), including the FillOptions type.
+
+Give concrete file paths, line numbers, counts, and short excerpts.
+
+---
+
+Start implementation
