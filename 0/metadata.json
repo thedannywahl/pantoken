@@ -1,0 +1,60 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M237F5CH1BB1QJ5C8SCWDFND",
+  "session_id": "81bb1a2e-77bc-46f5-be7d-17c5778baacc",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-09T13:59:39.568413Z",
+  "branch": "components-app-improvements",
+  "checkpoints_count": 3,
+  "save_step_count": 1,
+  "files_touched": [
+    "packages/scaffold/templates/angular/package.json",
+    "packages/scaffold/templates/angular/src/main.ts.tmpl",
+    "packages/scaffold/templates/angular/tsconfig.json",
+    "packages/scaffold/templates/components/package.json",
+    "packages/scaffold/templates/components/src/main.ts.tmpl",
+    "packages/scaffold/templates/components/tsconfig.json",
+    "packages/scaffold/templates/next/app/layout.tsx.tmpl",
+    "packages/scaffold/templates/next/app/pantoken-interactions.tsx.tmpl",
+    "packages/scaffold/templates/next/package.json",
+    "packages/scaffold/templates/react/package.json",
+    "packages/scaffold/templates/react/src/App.tsx.tmpl",
+    "packages/scaffold/templates/react/src/main.tsx.tmpl",
+    "packages/scaffold/templates/react/tsconfig.json",
+    "packages/scaffold/templates/svelte/package.json",
+    "packages/scaffold/templates/svelte/src/main.ts.tmpl",
+    "packages/scaffold/templates/svelte/tsconfig.json",
+    "packages/scaffold/templates/vue/package.json",
+    "packages/scaffold/templates/vue/src/main.ts.tmpl",
+    "packages/scaffold/templates/vue/tsconfig.json",
+    "packages/scaffold/templates/web-components/package.json",
+    "packages/scaffold/templates/web-components/src/main.ts.tmpl",
+    "packages/scaffold/templates/web-components/tsconfig.json"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "1d6ff9ed515b",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 3
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-09T13:59:39.545037Z",
+    "agent_lines": 42,
+    "agent_removed": 17,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 42,
+    "total_lines_changed": 59,
+    "agent_percentage": 100,
+    "metric_version": 2
+  }
+}

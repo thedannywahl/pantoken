@@ -1,0 +1,47 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M237F5CH1BB1QJ5C8SCWDFND",
+  "strategy": "manual-commit",
+  "branch": "components-app-improvements",
+  "checkpoints_count": 3,
+  "files_touched": [
+    "packages/scaffold/templates/angular/package.json",
+    "packages/scaffold/templates/angular/src/main.ts.tmpl",
+    "packages/scaffold/templates/angular/tsconfig.json",
+    "packages/scaffold/templates/components/package.json",
+    "packages/scaffold/templates/components/src/main.ts.tmpl",
+    "packages/scaffold/templates/components/tsconfig.json",
+    "packages/scaffold/templates/next/app/layout.tsx.tmpl",
+    "packages/scaffold/templates/next/app/pantoken-interactions.tsx.tmpl",
+    "packages/scaffold/templates/next/package.json",
+    "packages/scaffold/templates/react/package.json",
+    "packages/scaffold/templates/react/src/App.tsx.tmpl",
+    "packages/scaffold/templates/react/src/main.tsx.tmpl",
+    "packages/scaffold/templates/react/tsconfig.json",
+    "packages/scaffold/templates/svelte/package.json",
+    "packages/scaffold/templates/svelte/src/main.ts.tmpl",
+    "packages/scaffold/templates/svelte/tsconfig.json",
+    "packages/scaffold/templates/vue/package.json",
+    "packages/scaffold/templates/vue/src/main.ts.tmpl",
+    "packages/scaffold/templates/vue/tsconfig.json",
+    "packages/scaffold/templates/web-components/package.json",
+    "packages/scaffold/templates/web-components/src/main.ts.tmpl",
+    "packages/scaffold/templates/web-components/tsconfig.json"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
