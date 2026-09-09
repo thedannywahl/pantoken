@@ -260,8 +260,7 @@ export default defineConfig({
         cache: false,
       },
       "cli:extract": {
-        command:
-          "vp run @pantoken/scaffold#extract && vp run @pantoken/scaffold#extract:readme && vp run @pantoken/ai#extract",
+        command: "vp run @pantoken/scaffold#extract && vp run @pantoken/ai#extract",
         cache: false,
       },
       // docs.api is extracted by its own build script (it needs the TypeDoc tree built first).
