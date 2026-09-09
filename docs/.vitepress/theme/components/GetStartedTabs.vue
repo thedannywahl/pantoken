@@ -232,7 +232,7 @@ const highlightColor = computed(() =>
     <div class="gs-started__mode" role="tablist" aria-label="Getting started mode">
       <button
         type="button"
-        class="instui-button -shape-circle -icon-terminal -without-background -without-border gs-started__mode-btn"
+        class="instui-button -on-color -shape-circle -icon-terminal -without-background -without-border gs-started__mode-btn"
         :class="{ 'is-active': activeSurface === 'terminal' }"
         :aria-selected="activeSurface === 'terminal'"
         aria-label="Terminal mode"
@@ -242,7 +242,7 @@ const highlightColor = computed(() =>
       </button>
       <button
         type="button"
-        class="instui-button -shape-circle -icon-igniteai-logo -without-background -without-border gs-started__mode-btn"
+        class="instui-button -on-color -shape-circle -icon-igniteai-logo -without-background -without-border gs-started__mode-btn"
         :class="{ 'is-active': activeSurface === 'agent' }"
         :aria-selected="activeSurface === 'agent'"
         aria-label="Agent shell mode"
@@ -391,6 +391,7 @@ const highlightColor = computed(() =>
 
 .gs-started__mode-btn.on-color {
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--vp-c-text-1) 18%, transparent);
+  color: var(--instui-primitive-color-white);
 }
 
 .gs-started__mode-btn:hover,
