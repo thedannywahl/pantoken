@@ -38,7 +38,7 @@ import {
 } from "node:fs";
 import { dirname, join, relative } from "node:path";
 import { spawnSync } from "node:child_process";
-import { refreshCoverageReports, serializePot } from "@pantoken/i18n-engine";
+import { refreshCoverageReports, serializePot, writeCatalog } from "@pantoken/i18n-engine";
 import { NON_ROOT_LOCALES, parseRequestedLocales } from "../.vitepress/i18n.ts";
 import { GlossaryTranslationAdapter, createTranslationAdapter } from "./api-translation.ts";
 import {
@@ -258,7 +258,7 @@ const refreshApiPot = (): void => {
           translate: "always" as const,
         })),
     );
-  writeFileSync(join(repoRoot, "l10n", "docs.api.pot"), serializePot(units, ["no-c-format"]));
+  writeCatalog(join(repoRoot, "l10n", "docs.api.pot"), serializePot(units, ["no-c-format"]));
   refreshCoverageReports(join(repoRoot, "i18n.config.json"));
 };
 

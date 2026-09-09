@@ -1,5 +1,5 @@
 /** Fill missing docs.chrome PO entries with the configured translation provider. */
-import { readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { AiTranslationAdapter } from "./api-translation.ts";
 import {
@@ -9,6 +9,7 @@ import {
   refreshCoverageReports,
   runExtractMessages,
   serializePo,
+  writeCatalog,
 } from "@pantoken/i18n-engine";
 
 const repoRoot = new URL("../../", import.meta.url).pathname;
@@ -42,7 +43,7 @@ for (const entry of readdirSync(join(repoRoot, "l10n"), { withFileTypes: true })
       ? item.msgid
       : (translations[item.msgctxt ?? item.msgid] ?? "");
   }
-  writeFileSync(path, serializePo(entries));
+  writeCatalog(path, serializePo(entries));
   refreshCoverageReports(join(repoRoot, "i18n.config.json"));
   console.log(
     `${entry.name}: filled ${missing.length - translatable.length} protected + ${translatable.length} translated`,

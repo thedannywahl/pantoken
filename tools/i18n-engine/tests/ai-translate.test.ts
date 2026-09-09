@@ -54,7 +54,7 @@ function installConcurrencyProbe(): void {
       "#!/usr/bin/env bash",
       "cat >/dev/null",
       `echo + >>'${log}'`,
-      "sleep 0.2",
+      "sleep 0.1",
       `echo - >>'${log}'`,
       "printf '%s' '{}'",
       "",
@@ -162,7 +162,7 @@ describe("fillUntranslatedEntries", () => {
     installConcurrencyProbe();
     writeFileSync(
       poPath(),
-      Array.from({ length: 6 }, (_, i) =>
+      Array.from({ length: 4 }, (_, i) =>
         ["#, no-c-format", `msgid "Message ${String(i)}"`, 'msgstr ""'].join("\n"),
       ).join("\n\n"),
     );

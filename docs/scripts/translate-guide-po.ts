@@ -9,6 +9,7 @@ import {
   serializePo,
   runExtractGuides,
   runTranslateGuides,
+  writeCatalog,
 } from "@pantoken/i18n-engine";
 import { AiTranslationAdapter } from "./api-translation.ts";
 import { reassemble, segmentMarkdown } from "./segment-markdown.ts";
@@ -52,7 +53,7 @@ for (const locale of locales) {
     entry.msgstr = `${localized.trimEnd()}\n`;
     entry.fuzzy = false;
     entry.flags = entry.flags.filter((flag) => flag !== "fuzzy");
-    writeFileSync(poPath, serializePo(entries));
+    writeCatalog(poPath, serializePo(entries));
     refreshCoverageReports(join(repoRoot, "i18n.config.json"));
     writeFileSync(join(docsRoot, locale, file), entry.msgstr);
     console.log(`${locale}: translated ${file}`);

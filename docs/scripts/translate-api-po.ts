@@ -1,8 +1,8 @@
 /** Fill missing docs.api PO entries for one locale with the configured translation provider. */
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { AiTranslationAdapter } from "./api-translation.ts";
-import { parsePo, refreshCoverageReports, serializePo } from "@pantoken/i18n-engine";
+import { parsePo, refreshCoverageReports, serializePo, writeCatalog } from "@pantoken/i18n-engine";
 
 const repoRoot = new URL("../../", import.meta.url).pathname;
 const locale = process.env.DOCS_TRANSLATION_LOCALE ?? "hu";
@@ -18,7 +18,7 @@ if (missing.length > 0) {
       const entry = byId.get(id);
       if (entry !== undefined) entry.msgstr = translation;
     }
-    writeFileSync(path, serializePo(entries));
+    writeCatalog(path, serializePo(entries));
     refreshCoverageReports(join(repoRoot, "i18n.config.json"));
   };
   await adapter.translateBatch(

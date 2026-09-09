@@ -12,7 +12,7 @@
  *
  * @module
  */
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import {
   isPassthroughTranslation,
@@ -22,7 +22,13 @@ import {
   type VerbatimPolicy,
 } from "@pantoken/translation-adapters";
 import type { TranslationAdapter } from "./api-translation.ts";
-import { parsePo, refreshCoverageReports, serializePo, type PoEntry } from "@pantoken/i18n-engine";
+import {
+  parsePo,
+  refreshCoverageReports,
+  serializePo,
+  writeCatalog,
+  type PoEntry,
+} from "@pantoken/i18n-engine";
 
 /** Match a translation's trailing-newline shape to its source string. */
 export function alignTrailingNewline(source: string, translation: string): string {
@@ -163,7 +169,7 @@ export class TranslationMemory {
   save(): void {
     if (this._poEntries && this._poPath) {
       mkdirSync(dirname(this._poPath), { recursive: true });
-      writeFileSync(this._poPath, serializePo(this._poEntries));
+      writeCatalog(this._poPath, serializePo(this._poEntries));
       refreshCoverageReports(join(import.meta.dirname, "..", "..", "i18n.config.json"));
     } else this._mem!.save();
   }
