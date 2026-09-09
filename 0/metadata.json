@@ -1,0 +1,42 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M22ZNDVB56WWEVBV21CG3YH1",
+  "session_id": "13266371-26dc-421c-841d-226526cc6f0b",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-09T11:43:16.229611Z",
+  "branch": "exotic-subdeps",
+  "checkpoints_count": 3,
+  "save_step_count": 1,
+  "files_touched": [
+    "ai/pantoken-ai/package.json",
+    "packages/scaffold/package.json",
+    "renderers/web-components/package.json",
+    "vite.config.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "bd5f1214e416",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 3
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-09T11:43:16.20085Z",
+    "agent_lines": 52,
+    "agent_removed": 15,
+    "human_added": 21,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 73,
+    "total_lines_changed": 88,
+    "agent_percentage": 76.13636363636364,
+    "metric_version": 2
+  }
+}
