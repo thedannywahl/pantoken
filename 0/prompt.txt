@@ -1,0 +1,11 @@
+Continue: "Continue to iterate?"
+
+---
+
+Continue: "Continue to iterate?"
+
+---
+
+what does this fix mean:
+> - `fix(docs): serve the English API tree from locale routes in root-only builds`
+we should have all locale routes and translations available, so falling back to English is a nice-to-have, but the main issue is why aren't we serving the actual api translations?
