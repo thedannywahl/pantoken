@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 1.0.1
+
+### Patch Changes
+
+- Updated dependencies [2b408c4]
+  - @pantoken/scaffold@1.0.1
+
 ## 1.0.0
 
 ### Major Changes
