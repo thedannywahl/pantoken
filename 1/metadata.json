@@ -1,0 +1,83 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2207EKENANCP452NHND2XT8",
+  "session_id": "b28c1728-0802-4202-9d00-8534ba1ee42b",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-09T02:33:52.356053Z",
+  "branch": "exotic-subdeps",
+  "checkpoints_count": 2,
+  "save_step_count": 2,
+  "files_touched": [
+    "tools/translation-adapters/src/shim.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "3c764c95acd6",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-09T02:33:52.352331Z",
+    "agent_lines": 3,
+    "agent_removed": 3,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 3,
+    "total_lines_changed": 6,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 198,
+      "user_lines_removed": 132,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".changeset/fix-bundled-token-assets.md": 8,
+        "ai/pantoken-ai/src/cli.ts": 7,
+        "formats/tokens/known-syntax-issues.json": 4,
+        "packages/core/package.json": 1,
+        "packages/core/vite.config.ts": 1,
+        "packages/scaffold/src/cli.ts": 55,
+        "packages/scaffold/src/i18n.json": 16,
+        "packages/scaffold/tests/cli.test.ts": 100,
+        "pnpm-lock.yaml": 6
+      },
+      "user_removed_per_file": {
+        "ai/pantoken-ai/src/cli.ts": 1,
+        "formats/tokens/known-syntax-issues.json": 112,
+        "packages/core/package.json": 1,
+        "packages/scaffold/src/cli.ts": 10,
+        "packages/scaffold/tests/cli.test.ts": 2,
+        "pnpm-lock.yaml": 6
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 41,
+      "user_lines_removed": 6,
+      "agent_lines_added": 199,
+      "agent_lines_removed": 133,
+      "user_added_per_file": {
+        "ai/pantoken-ai/tests/cli.test.ts": 38,
+        "docs/package.json": 1,
+        "packages/scaffold/tests/cli.test.ts": 2
+      },
+      "user_removed_per_file": {
+        "ai/pantoken-ai/tests/cli.test.ts": 4,
+        "packages/scaffold/tests/cli.test.ts": 2
+      }
+    }
+  ]
+}

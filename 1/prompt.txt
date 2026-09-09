@@ -1,0 +1,14 @@
+⚠ eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
+     ╭─[tools/translation-adapters/src/shim.ts:179:18]
+ 178 │           res.end(JSON.stringify(response));
+ 179 │         } catch (e) {
+     ·                  ┬
+     ·                  ╰── 'e' is declared here
+ 180 │           res.writeHead(500, { "content-type": "application/json" });
+     ╰────
+  help: Consider handling this error.
+
+---
+
+Parameter must have an explicit type annotation with --isolatedDeclarations.
+shim.ts(42, 24): Add a type annotation to the parameter now.
