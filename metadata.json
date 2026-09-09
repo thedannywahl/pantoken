@@ -3,7 +3,7 @@
   "checkpoint_id": "01M23J008FJ8VQ53QBTF50CFD8",
   "strategy": "manual-commit",
   "branch": "components-app-improvements",
-  "checkpoints_count": 11,
+  "checkpoints_count": 12,
   "files_touched": [
     "tools/i18n-engine/src/cli.ts",
     "tools/i18n-engine/src/index.ts",
@@ -66,13 +66,20 @@
       "compact_transcript": "/7/transcript.jsonl",
       "content_hash": "/7/content_hash.txt",
       "prompt": "/7/prompt.txt"
+    },
+    {
+      "metadata": "/8/metadata.json",
+      "transcript": "/8/full.jsonl",
+      "compact_transcript": "/8/transcript.jsonl",
+      "content_hash": "/8/content_hash.txt",
+      "prompt": "/8/prompt.txt"
     }
   ],
   "token_usage": {
-    "input_tokens": 70,
-    "cache_creation_tokens": 97006,
-    "cache_read_tokens": 117360,
-    "output_tokens": 33505,
-    "api_call_count": 7
+    "input_tokens": 80,
+    "cache_creation_tokens": 103877,
+    "cache_read_tokens": 140832,
+    "output_tokens": 35411,
+    "api_call_count": 8
   }
 }
