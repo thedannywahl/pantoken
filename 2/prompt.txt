@@ -26,3 +26,15 @@ do (2).  it should just be registered in our i18n.config.json and then the trans
 ---
 
 incremental conventional commits, changesets, and push - ignoring the inflight translations of .po and .pot files.
+
+---
+
+[Terminal 0c3b229a-b3d4-4538-b55e-70b0c33e6810 notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on components-app-improvements ≡  ?3 ~10 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken/packages/scaffold && I18N_TRANSLATION_PROFILE=claude node scripts/sync-readme-locales.ts 2>&1 | tee /tmp/readme-l10n.log | tail -5
+  zh-Hant: 8 translated, 0 untranslated
+  tr: 8 translated, 0 untranslated
+  uk: 8 translated, 0 untranslated
+  vi: 8 translated, 0 untranslated
+  cy: 8 translated, 0 untranslated
