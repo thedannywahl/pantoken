@@ -1551,6 +1551,10 @@ importers:
       '@clack/prompts':
         specifier: 'catalog:'
         version: 1.8.0
+      commander:
+        specifier: 'catalog:'
+        version: 15.0.0
+    devDependencies:
       '@pantoken/angular':
         specifier: workspace:*
         version: link:../../renderers/angular
@@ -1560,6 +1564,12 @@ importers:
       '@pantoken/components':
         specifier: workspace:*
         version: link:../../formats/components
+      '@pantoken/i18n-engine':
+        specifier: workspace:*
+        version: link:../../tools/i18n-engine
+      '@pantoken/plugin-layouts':
+        specifier: workspace:*
+        version: link:../../plugins/pantoken/layouts
       '@pantoken/react':
         specifier: workspace:*
         version: link:../../renderers/react
@@ -1575,22 +1585,12 @@ importers:
       '@pantoken/web-components':
         specifier: workspace:*
         version: link:../../renderers/web-components
-      bingo-stratum:
-        specifier: 'catalog:'
-        version: 0.5.13(bingo-fs@0.5.6)(bingo-systems@0.5.5)(bingo@0.9.3)(zod@3.25.76)
-      commander:
-        specifier: 'catalog:'
-        version: 15.0.0
-    devDependencies:
-      '@pantoken/i18n-engine':
-        specifier: workspace:*
-        version: link:../../tools/i18n-engine
-      '@pantoken/plugin-layouts':
-        specifier: workspace:*
-        version: link:../../plugins/pantoken/layouts
       '@types/node':
         specifier: 'catalog:'
         version: 26.5.0
+      bingo-stratum:
+        specifier: 'catalog:'
+        version: 0.5.13(bingo-fs@0.5.6)(bingo-systems@0.5.5)(bingo@0.9.3)(zod@3.25.76)
       typescript:
         specifier: 'catalog:'
         version: 7.0.2

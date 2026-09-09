@@ -3,18 +3,15 @@
  * installed and wired in. Standalone; usable via `npx @pantoken/scaffold <platform>` without
  * `@pantoken/ai`.
  *
- * Powered by Bingo presets: each platform exports a preset that defines its scaffold structure.
+ * Powered by generated template strings so the published CLI stays lean and package-manager-safe.
  *
  * @module
  * @alpha
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
-import { producePreset } from "bingo-stratum";
-import { buildTheme } from "@pantoken/canvas-theme-editor";
 import { SCAFFOLDS } from "../generated/scaffolds.ts";
 import { SCAFFOLD_OVERLAYS } from "../generated/scaffold-overlays.ts";
-import { PRESET_LEDGER } from "../generated/preset-ledger.ts";
 import { localeDirection } from "./locale.ts";
 import { themeStylesheetImport, type ThemeMode, type ThemeVariant } from "./theme.ts";
 
@@ -38,6 +35,23 @@ const SCAFFOLD_PM_COMMANDS: Record<ScaffoldPackageManager, { install: string; de
   vp: { install: "vp install", dev: "vp run dev" },
 };
 
+type CdnProviderId = "jsdelivr" | "unpkg" | "esmsh";
+
+interface CdnFile {
+  package: string;
+  path: string;
+}
+
+const CDN_PROVIDER_IDS: readonly CdnProviderId[] = ["jsdelivr", "unpkg", "esmsh"];
+
+const THEME_FONT_ASSETS: readonly CdnFile[] = [
+  { package: "@pantoken/components", path: "dist/fonts.css" },
+];
+
+const THEME_JS_ASSETS: readonly CdnFile[] = [
+  { package: "@pantoken/interactions", path: "dist/interactions.iife.js" },
+];
+
 export {
   themeStylesheetImport,
   validateThemeMode,
@@ -47,10 +61,9 @@ export {
 } from "./theme.ts";
 
 /**
- * A platform pantoken can scaffold a starter project for — either preset-ledger-backed (Bingo)
- * or a legacy template-only entry (e.g. `canvas-theme-editor`) with no preset yet.
+ * A platform pantoken can scaffold a starter project for.
  */
-export type ScaffoldPlatform = keyof typeof PRESET_LEDGER;
+export type ScaffoldPlatform = keyof typeof SCAFFOLDS;
 
 /**
  * Every scaffoldable platform key (discovered from available presets, plus any legacy
@@ -64,8 +77,8 @@ export type ScaffoldPlatform = keyof typeof PRESET_LEDGER;
  * ```
  */
 export const SCAFFOLD_PLATFORMS: readonly ScaffoldPlatform[] = Array.from(
-  new Set([...Object.keys(PRESET_LEDGER), ...Object.keys(SCAFFOLDS)]),
-) as readonly ScaffoldPlatform[];
+  new Set(Object.keys(SCAFFOLDS)),
+).sort() as readonly ScaffoldPlatform[];
 
 const SCAFFOLD_PLATFORM_SET = new Set<string>(SCAFFOLD_PLATFORMS);
 
@@ -125,35 +138,6 @@ function applyPackageManagerCommands(
     .replaceAll("npm run dev", commands.dev);
 }
 
-/** Renders `resolvedPlatform`'s Bingo preset (if any) into `dir`; `[]` if there's no preset or it throws. */
-function writePresetFiles(
-  resolvedPlatform: string,
-  dir: string,
-  projectName: string,
-  packageManager: ScaffoldPackageManager | undefined,
-): string[] {
-  const preset = PRESET_LEDGER[resolvedPlatform as keyof typeof PRESET_LEDGER];
-  if (!preset) return [];
-
-  try {
-    const creation = producePreset(preset, { offline: true, options: { name: projectName } });
-    return Object.entries(creation.files ?? {}).flatMap(([file, rawContent]) => {
-      if (!shouldWriteScaffoldFile(file, packageManager)) return [];
-      const path = join(dir, file);
-      const baseContent = rawContent instanceof ArrayBuffer ? Buffer.from(rawContent) : rawContent;
-      const content = applyPackageManagerCommands(
-        file,
-        baseContent as string | Buffer,
-        packageManager,
-      );
-      writeScaffoldFile(path, content as string | Buffer);
-      return [path];
-    });
-  } catch {
-    return []; // Preset threw — the caller falls back to the legacy template system.
-  }
-}
-
 /** Writes `resolvedPlatform`'s legacy `SCAFFOLDS` templates (for platforms with no preset yet). */
 function writeLegacyTemplateFiles(
   resolvedPlatform: string,
@@ -179,6 +163,94 @@ function writeLegacyTemplateFiles(
   });
 }
 
+function themeCssAssets(theme: ThemeVariant = "rebrand", mode: ThemeMode = "light"): CdnFile[] {
+  const tokenSheet =
+    theme === "canvas"
+      ? "style.canvas.lean.css"
+      : theme === "canvasHighContrast"
+        ? "style.canvas-high-contrast.lean.css"
+        : mode === "light"
+          ? "style.rebrand.light.lean.css"
+          : "style.lean.css";
+
+  return [
+    { package: "@pantoken/css", path: `dist/${tokenSheet}` },
+    { package: "@pantoken/components", path: "dist/base.css" },
+    { package: "@pantoken/components", path: "dist/component-icons.css" },
+    { package: "@pantoken/components", path: "dist/components.css" },
+    { package: "@pantoken/components", path: "dist/utilities.css" },
+  ];
+}
+
+function fileSpecifier(file: CdnFile): string {
+  return `${file.package}/${file.path}`;
+}
+
+function cdnUrl(file: CdnFile, provider: CdnProviderId): string {
+  const specifier = fileSpecifier(file);
+  if (provider === "unpkg") return `https://unpkg.com/${specifier}`;
+  if (provider === "esmsh") return `https://esm.sh/${specifier}?raw`;
+  return `https://cdn.jsdelivr.net/npm/${specifier}`;
+}
+
+function cdnImportLines(files: readonly CdnFile[], provider: CdnProviderId): string {
+  if (provider === "jsdelivr" && files.length > 1) {
+    const combined = files.map((file) => `npm/${fileSpecifier(file)}`).join(",");
+    return `@import url("https://cdn.jsdelivr.net/combine/${combined}");`;
+  }
+  return files.map((file) => `@import url("${cdnUrl(file, provider)}");`).join("\n");
+}
+
+function cdnScriptTags(files: readonly CdnFile[], provider: CdnProviderId): string {
+  return files
+    .map(
+      (file) =>
+        `  var script = document.createElement("script");\n` +
+        `  script.src = "${cdnUrl(file, provider)}";\n` +
+        `  document.head.appendChild(script);`,
+    )
+    .join("\n");
+}
+
+function resolveCdnProviderId(id: string | undefined): CdnProviderId {
+  if (!id) return "jsdelivr";
+  if ((CDN_PROVIDER_IDS as readonly string[]).includes(id)) return id as CdnProviderId;
+  throw new Error(`Unknown CDN provider id "${id}". Valid ids: ${CDN_PROVIDER_IDS.join(", ")}.`);
+}
+
+function buildTheme(options: { theme?: ThemeVariant; mode?: ThemeMode; cdn?: string } = {}): {
+  css: string;
+  js: string;
+} {
+  const provider = resolveCdnProviderId(options.cdn);
+  return {
+    css: `/**
+ * Pantoken Canvas Theme Editor CSS.
+ * Upload this file in Canvas Theme Editor > Advanced > CSS.
+ */
+
+/* Component styles */
+${cdnImportLines(themeCssAssets(options.theme, options.mode), provider)}
+/* Fonts */
+${cdnImportLines(THEME_FONT_ASSETS, provider)}
+
+/* Add custom CSS overrides below. */
+`,
+    js: `/**
+ * Pantoken Canvas Theme Editor JavaScript.
+ * Upload this file in Canvas Theme Editor > Advanced > JavaScript.
+ */
+(function pantokenTheme() {
+  "use strict";
+
+${cdnScriptTags(THEME_JS_ASSETS, provider)}
+})();
+
+/* Add custom JavaScript overrides below. */
+`,
+  };
+}
+
 /**
  * Builds canvas-theme-editor's `theme.css`/`theme.js` for the chosen CDN provider/theme/mode at
  * scaffold time (rather than shipping a pre-baked jsDelivr/rebrand default); `[]` for every other
@@ -192,7 +264,7 @@ function writeCanvasThemeEditorAssets(
   if (resolvedPlatform !== "canvas-theme-editor") return [];
 
   const { css, js } = buildTheme({
-    provider: options?.cdn,
+    cdn: options?.cdn,
     theme: options?.theme,
     mode: options?.mode,
   });
@@ -239,20 +311,13 @@ export async function scaffoldProject(
     dir: localeDirection(locale),
   };
 
-  // Bingo presets with no blocks yet (or a failed render) produce no files — fall back to the
-  // legacy scaffold template system so every platform still scaffolds something.
-  const written = writePresetFiles(resolvedPlatform, dir, projectName, options?.packageManager);
-  if (written.length === 0) {
-    written.push(
-      ...writeLegacyTemplateFiles(
-        resolvedPlatform,
-        dir,
-        locale,
-        substitutions,
-        options?.packageManager,
-      ),
-    );
-  }
+  const written = writeLegacyTemplateFiles(
+    resolvedPlatform,
+    dir,
+    locale,
+    substitutions,
+    options?.packageManager,
+  );
   written.push(...writeCanvasThemeEditorAssets(resolvedPlatform, dir, options));
 
   return written;

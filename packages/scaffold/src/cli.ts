@@ -42,7 +42,6 @@ import {
 } from "./locale.ts";
 import { MESSAGES } from "../generated/locales/index.ts";
 import { SCAFFOLD_METADATA } from "../generated/scaffold-metadata.ts";
-import { CDN_PROVIDERS } from "@pantoken/canvas-theme-editor";
 import {
   validateThemeMode,
   validateThemeVariant,
@@ -463,9 +462,10 @@ export function validateScaffoldPlatform(value: string): string {
  * @throws InvalidArgumentError if the value isn't a known CDN provider id
  */
 export function validateCdnProviderId(value: string): string {
-  if (value in CDN_PROVIDERS) return value;
+  const providers = ["jsdelivr", "unpkg", "esmsh"];
+  if (providers.includes(value)) return value;
   throw new InvalidArgumentError(
-    `CDN provider "${value}" is not valid. Expected one of: ${Object.keys(CDN_PROVIDERS).join(", ")}.`,
+    `CDN provider "${value}" is not valid. Expected one of: ${providers.join(", ")}.`,
   );
 }
 

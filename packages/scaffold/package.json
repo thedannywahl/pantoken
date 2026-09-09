@@ -46,21 +46,21 @@
   "dependencies": {
     "@bomb.sh/tab": "catalog:",
     "@clack/prompts": "catalog:",
+    "commander": "catalog:"
+  },
+  "devDependencies": {
     "@pantoken/angular": "workspace:*",
     "@pantoken/canvas-theme-editor": "workspace:*",
     "@pantoken/components": "workspace:*",
+    "@pantoken/i18n-engine": "workspace:*",
+    "@pantoken/plugin-layouts": "workspace:*",
     "@pantoken/react": "workspace:*",
     "@pantoken/scaffold-base": "workspace:*",
     "@pantoken/svelte": "workspace:*",
     "@pantoken/vue": "workspace:*",
     "@pantoken/web-components": "workspace:*",
-    "bingo-stratum": "catalog:",
-    "commander": "catalog:"
-  },
-  "devDependencies": {
-    "@pantoken/i18n-engine": "workspace:*",
-    "@pantoken/plugin-layouts": "workspace:*",
     "@types/node": "catalog:",
+    "bingo-stratum": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"
