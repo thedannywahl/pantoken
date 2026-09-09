@@ -1,0 +1,36 @@
+Translate this technical markdown from English to Hungarian.
+Return only the translated markdown.
+Rules:
+- Keep markdown structure unchanged.
+- Translate heading text too (the words after the leading # symbols) — do not leave headings in English.
+- Do not alter placeholder tokens like __PTK_CODE_BLOCK_#__ or __PTK_INLINE_CODE_#__.
+- Do not alter placeholder tokens like __PTK_PACKAGE_#__, __PTK_ESC_#__, or __PTK_VAR_#__.
+- Preserve whitespace and line breaks.
+- Keep import paths, package names, URLs, and identifiers intact.
+File: next/README.md
+--- BEGIN MARKDOWN ---
+# __PTK_VAR_0__
+
+A Next.js (App Router) app styled with [__PTK_INLINE_CODE_0__](https://www.npmjs.com/package/__PTK_PACKAGE_0__),
+Instructure's design tokens and icons.
+
+## Develop
+
+__PTK_CODE_BLOCK_0__
+
+## What's here
+
+- __PTK_INLINE_CODE_1__ wraps the config with __PTK_INLINE_CODE_2__ (adds pantoken to
+  __PTK_INLINE_CODE_3__).
+- __PTK_INLINE_CODE_4__ imports __PTK_INLINE_CODE_5__, which defines every __PTK_INLINE_CODE_6__ custom
+  property, at the root so it's available on every page, plus the __PTK_INLINE_CODE_7__ layout's root class on
+  __PTK_INLINE_CODE_8__ and __PTK_INLINE_CODE_9__ (a client component that loads __PTK_INLINE_CODE_10__ —
+  wires up modal, tooltip, and other component behaviors out of the box).
+- __PTK_INLINE_CODE_11__ renders markup styled with __PTK_INLINE_CODE_12__ classes; optional insertion points (header,
+  filters, content, trailing) are marked with __PTK_INLINE_CODE_13__.
+
+## Learn more
+
+See the [getting started guide](https://pantoken.app/guide/getting-started) to learn more.
+
+--- END MARKDOWN ---
