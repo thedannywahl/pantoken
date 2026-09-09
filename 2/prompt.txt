@@ -1,0 +1,13 @@
+as we're expanding both localization and the number of scaffold templates the size of the create-pantoken-app package is increasing, decreasing the efficiency of `npx create-pantoken-app` is it possible to add additional exports without having to pull the whole package? so for example could somebody do `npx create-pantoken-app/ja` just for japanese or `npx create-pantoken-app/html` to just get the html scaffold?
+
+---
+
+Quick, read-only exploration in /Users/dwahl/Scripts/pantoken. Inspect packages/scaffold: package.json exports/bin/files, template imports/loading, build config, and any tests/docs. Assess whether `npx create-pantoken-app/ja` or `/html` is valid npm/npx syntax and what practical implementation options exist for selectively downloading templates/locales. Read .entire/graph-agent.md first per repo instructions. Return concise findings with exact paths/symbols, existing patterns, constraints, and recommended plan steps. Do not edit.
+
+---
+
+Medium, read-only investigation in /Users/dwahl/Scripts/pantoken focused on create-pantoken-app and scaffold package distribution. Read .entire/graph-agent.md first. Inspect package.json files, build/publish scripts, workspace catalogs, tests, and similar small companion/template packages if any. Determine minimal feasible architecture to let users invoke platform or language-specific scaffolds while actually avoiding installation/download of unrelated templates. Distinguish command ergonomics from npm tarball size. Suggest concrete package naming/bin/optional runtime-fetch alternatives consistent with repository release practices. Include exact files to modify and validation commands; no edits.
+
+---
+
+Quick, read-only exploration /Users/dwahl/Scripts/pantoken: investigate scaffold localization beyond CLI messages. Inspect packages/scaffold templates with src/i18n.json, scripts/i18n-sources.ts, locale generation config, any test scaffolds/demos. Determine existing Japanese availability, how scaffolded app strings get localized, and a concrete approach to publish locale-specific scaffold artifacts without unrelated locales/platforms. Also inspect likely relevant package test/docs files. Return exact paths/symbols, gaps, test plan, and any i18n constraints. No edits.

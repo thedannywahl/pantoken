@@ -3,7 +3,7 @@
   "checkpoint_id": "01M23FS0DYFH2HH9BAH318XFFP",
   "strategy": "manual-commit",
   "branch": "components-app-improvements",
-  "checkpoints_count": 2,
+  "checkpoints_count": 3,
   "files_touched": [
     "ASSURANCE.md",
     "ai/pantoken-ai/src/cli.ts",
@@ -38,6 +38,13 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": "/1/prompt.txt"
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
+      "prompt": "/2/prompt.txt"
     }
   ],
   "token_usage": {
