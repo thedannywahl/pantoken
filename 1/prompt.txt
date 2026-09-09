@@ -1,0 +1,15 @@
+Continue: "Continue to iterate?"
+
+---
+
+Continue: "Continue to iterate?"
+
+---
+
+what does this fix mean:
+> - `fix(docs): serve the English API tree from locale routes in root-only builds`
+we should have all locale routes and translations available, so falling back to English is a nice-to-have, but the main issue is why aren't we serving the actual api translations?
+
+---
+
+let's refactor to make this a smart approach.  first we should only be deploying the docs site on the release workflow when it actually does the release.  second, should we move the docs build/bundle locally or?  It's the initial publish seed that is likely to be expensive, and then after that when we make changes to an API or a guide it will be ~45 file updates per change which is more manageable. come up with a durable plan and then implement it continuing to use incremental conventional commits, change sets, and pushes ignoring work from other agents.
