@@ -242,7 +242,7 @@ test("printNextSteps uses the generic fallback (with detected dev script) for pl
   expect(printed).toContain("pnpm run dev");
 });
 
-test("printNextSteps collapses to a single 'Get started' dev step when installed", async () => {
+test("printNextSteps collapses to a single dev step when installed", async () => {
   const dir = mktemp();
   const target = join(dir, "my-react-app");
   const written = await scaffoldWithSpinner("react", target, t);
@@ -258,7 +258,7 @@ test("printNextSteps collapses to a single 'Get started' dev step when installed
     logSpy.mockRestore();
   }
 
-  expect(printed).toContain("Get started:");
+  expect(printed).toContain("Next steps:");
   expect(printed).toContain(`1. cd ${target} && pnpm run dev`);
   expect(printed).not.toContain("pnpm install");
 });
@@ -279,7 +279,7 @@ test("printNextSteps collapses canvas-theme-editor's authored steps to the dev s
     logSpy.mockRestore();
   }
 
-  expect(printed).toContain("Get started:");
+  expect(printed).toContain("Next steps:");
   expect(printed).toContain(`1. cd ${target} && pnpm run dev`);
   expect(printed).not.toContain("pnpm install");
   expect(printed).toContain("Theme Editor");
@@ -496,7 +496,7 @@ test("no args on a TTY prompts for platform and directory, then scaffolds", asyn
   expect(existsSync(join(target, "package.json"))).toBe(true);
 });
 
-test("scaffolds, installs dependencies automatically, and prints a single 'Get started' step", async () => {
+test("scaffolds, installs dependencies automatically, and prints a single dev step", async () => {
   const dir = mktemp();
   const target = join(dir, "my-app");
   await runScaffoldCli(["react", "--dir", target, "--yes"], { usageCommand: "pantoken-scaffold" });
@@ -506,7 +506,7 @@ test("scaffolds, installs dependencies automatically, and prints a single 'Get s
     ["install"],
     expect.objectContaining({ cwd: target }),
   );
-  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Get started"));
+  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Next steps"));
 });
 
 test("chdirs into a non-'.' target dir so the printed next step never needs a separate cd", async () => {
