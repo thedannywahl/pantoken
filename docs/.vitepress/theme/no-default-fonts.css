@@ -1,0 +1,9 @@
+/*
+ * Replaces VitePress's default-theme `fonts.css` (aliased in `.vitepress/config.ts`).
+ *
+ * That sheet ships the subset Inter woff2 faces and a Google Fonts `@import`, and the VitePress
+ * build injects a `<link rel="preload">` for `inter-roman-latin.*.woff2` on every page. The docs
+ * site never renders Inter — `@pantoken/vitepress/custom.css` maps `--vp-font-family-base` onto
+ * `var(--instui-font-family-base)` and the theme loads `@pantoken/components/fonts.css` — so the
+ * faces are dead weight and the preload warns in the console. Keeping this file empty drops both.
+ */

@@ -690,6 +690,14 @@ export default defineConfig({
           ),
         },
         {
+          // Drop the default theme's Inter faces (and their build-injected `preload` link) — the
+          // site renders `--instui-font-family-base` instead. See theme/no-default-fonts.css.
+          // The default theme imports this relatively (`./styles/fonts.css`), and Vite's alias
+          // plugin matches the specifier as written, so anchor on the trailing segments only.
+          find: /^\.{0,2}[/\\]?styles[/\\]fonts\.css$/,
+          replacement: fileURLToPath(new URL("theme/no-default-fonts.css", import.meta.url)),
+        },
+        {
           // Override the default home hero so GetStartedTabs can mount as a sibling right after
           // `.main` inside the hero `.container`.
           find: /^.*[/\\]VPHomeHero\.vue$/,
