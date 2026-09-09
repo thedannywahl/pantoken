@@ -1,0 +1,24 @@
+[Terminal 77b2cd0b-c23b-440a-9b64-6e016eba38df notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on components-app-improvements ≡  ?1 ~5 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken/packages/scaffold && I18N_TRANSLATION_PROFILE=claude node scripts/sync-readme-locales.ts 2>&1 | tail -60
+✓ extracted 8 README unit(s)
+  ar: 8 translated, 0 untranslated
+file:///Users/dwahl/Scripts/pantoken/tools/translation-adapters/dist/index.mjs:488
+                        reject(/* @__PURE__ */ new Error(`AI command timed out after ${String(options.timeoutMs)}ms${where}`));
+                                               ^
+
+Error: AI command timed out after 120000ms for locale 'hy' (components/README.md)
+    at Timeout._onTimeout (file:///Users/dwahl/Scripts/pantoken/tools/translation-adapters/dist/index.mjs:488:27)
+    at listOnTimeout (node:internal/timers:685:17)
+    at process.processTimers (node:internal/timers:618:7)
+
+Node.js v24.21.0
+
+---
+
+will `vpr i18n:translate:copilot` now include these additional spaces?
+
+---
+
+do (2).  it should just be registered in our i18n.config.json and then the translate scripts should take it from there.

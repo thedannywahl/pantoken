@@ -1,0 +1,201 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M23J008FJ8VQ53QBTF50CFD8",
+  "session_id": "4f185f71-c2db-4a24-9ddb-e54269c1fa04",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-09T17:03:37.068782Z",
+  "branch": "components-app-improvements",
+  "checkpoints_count": 4,
+  "save_step_count": 4,
+  "files_touched": [
+    "tools/i18n-engine/src/cli.ts",
+    "tools/i18n-engine/src/index.ts",
+    "tools/i18n-engine/src/locales.ts",
+    "tools/i18n-engine/src/pipeline.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "197013e88d1e",
+  "checkpoint_transcript_start": 1613,
+  "transcript_lines_at_start": 1613,
+  "compact_transcript_start": 269,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 6
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-09T17:03:37.024272Z",
+    "agent_lines": 56,
+    "agent_removed": 15,
+    "human_added": 12,
+    "human_modified": 8,
+    "human_removed": 0,
+    "total_committed": 76,
+    "total_lines_changed": 91,
+    "agent_percentage": 78.02197802197803,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 20,
+      "user_lines_removed": 407,
+      "agent_lines_added": 304,
+      "agent_lines_removed": 852,
+      "user_added_per_file": {
+        "l10n/ar/scaffold.readme.po": 4,
+        "l10n/hy/scaffold.readme.po": 16
+      },
+      "user_removed_per_file": {
+        "l10n/ar/scaffold.readme.po": 4,
+        "l10n/hy/scaffold.readme.po": 403
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 89,
+      "user_lines_removed": 2337,
+      "agent_lines_added": 997,
+      "agent_lines_removed": 463,
+      "user_added_per_file": {
+        "l10n/ca/scaffold.readme.po": 18,
+        "l10n/da/scaffold.readme.po": 18,
+        "l10n/en-AU/scaffold.readme.po": 17,
+        "l10n/hy/scaffold.readme.po": 18,
+        "l10n/nl/scaffold.readme.po": 18
+      },
+      "user_removed_per_file": {
+        "l10n/ca/scaffold.readme.po": 405,
+        "l10n/da/scaffold.readme.po": 405,
+        "l10n/en-AU/scaffold.readme.po": 404,
+        "l10n/hy/scaffold.readme.po": 718,
+        "l10n/nl/scaffold.readme.po": 405
+      }
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 54,
+      "user_lines_removed": 1215,
+      "agent_lines_added": 773,
+      "agent_lines_removed": 2487,
+      "user_added_per_file": {
+        "l10n/en-CA/scaffold.readme.po": 18,
+        "l10n/en-GB/scaffold.readme.po": 18,
+        "l10n/fi/scaffold.readme.po": 18
+      },
+      "user_removed_per_file": {
+        "l10n/en-CA/scaffold.readme.po": 405,
+        "l10n/en-GB/scaffold.readme.po": 405,
+        "l10n/fi/scaffold.readme.po": 405
+      }
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 264,
+      "user_lines_removed": 1308,
+      "agent_lines_added": 939,
+      "agent_lines_removed": 4938,
+      "user_added_per_file": {
+        "l10n/ar/cli.scaffold.po": 32,
+        "l10n/ar/ui.strings.po": 1,
+        "l10n/ca/cli.scaffold.po": 32,
+        "l10n/ca/ui.strings.po": 1,
+        "l10n/cy/cli.scaffold.po": 32,
+        "l10n/cy/ui.strings.po": 1,
+        "l10n/da/cli.scaffold.po": 75,
+        "l10n/da/ui.strings.po": 1,
+        "l10n/de/scaffold.readme.po": 18,
+        "l10n/de/ui.strings.po": 1,
+        "l10n/el/scaffold.readme.po": 18,
+        "l10n/el/ui.strings.po": 1,
+        "l10n/en-AU/ui.strings.po": 1,
+        "l10n/en-CA/ui.strings.po": 1,
+        "l10n/en-GB/ui.strings.po": 1,
+        "l10n/es/ui.strings.po": 1,
+        "l10n/fa/ui.strings.po": 1,
+        "l10n/fi/ui.strings.po": 1,
+        "l10n/fr-CA/ui.strings.po": 1,
+        "l10n/fr/ui.strings.po": 1,
+        "l10n/ga/scaffold.readme.po": 6,
+        "l10n/ga/ui.strings.po": 1,
+        "l10n/he/ui.strings.po": 1,
+        "l10n/hi/ui.strings.po": 1,
+        "l10n/ht/scaffold.readme.po": 17,
+        "l10n/ht/ui.strings.po": 1,
+        "l10n/hy/ui.strings.po": 1,
+        "l10n/id/ui.strings.po": 1,
+        "l10n/is/ui.strings.po": 1,
+        "l10n/it/ui.strings.po": 1,
+        "l10n/ja/ui.strings.po": 1,
+        "l10n/ko/ui.strings.po": 1,
+        "l10n/mi/ui.strings.po": 1,
+        "l10n/ms/ui.strings.po": 1,
+        "l10n/nb/ui.strings.po": 1,
+        "l10n/nl/ui.strings.po": 1,
+        "l10n/nn/ui.strings.po": 1,
+        "l10n/pl/ui.strings.po": 1,
+        "l10n/pt-BR/ui.strings.po": 1,
+        "l10n/pt/ui.strings.po": 1,
+        "l10n/ru/ui.strings.po": 1,
+        "l10n/se/ui.strings.po": 1
+      },
+      "user_removed_per_file": {
+        "l10n/ar/cli.scaffold.po": 1,
+        "l10n/ar/ui.strings.po": 2,
+        "l10n/ca/cli.scaffold.po": 1,
+        "l10n/ca/ui.strings.po": 2,
+        "l10n/cy/cli.scaffold.po": 1,
+        "l10n/cy/ui.strings.po": 2,
+        "l10n/da/cli.scaffold.po": 17,
+        "l10n/da/ui.strings.po": 2,
+        "l10n/de/scaffold.readme.po": 405,
+        "l10n/de/ui.strings.po": 2,
+        "l10n/el/scaffold.readme.po": 405,
+        "l10n/el/ui.strings.po": 2,
+        "l10n/en-AU/ui.strings.po": 2,
+        "l10n/en-CA/ui.strings.po": 2,
+        "l10n/en-GB/ui.strings.po": 2,
+        "l10n/es/ui.strings.po": 2,
+        "l10n/fa/ui.strings.po": 2,
+        "l10n/fi/ui.strings.po": 2,
+        "l10n/fr-CA/ui.strings.po": 2,
+        "l10n/fr/ui.strings.po": 2,
+        "l10n/ga/scaffold.readme.po": 6,
+        "l10n/ga/ui.strings.po": 2,
+        "l10n/he/ui.strings.po": 2,
+        "l10n/hi/ui.strings.po": 2,
+        "l10n/ht/scaffold.readme.po": 404,
+        "l10n/ht/ui.strings.po": 2,
+        "l10n/hy/ui.strings.po": 2,
+        "l10n/id/ui.strings.po": 2,
+        "l10n/is/ui.strings.po": 2,
+        "l10n/it/ui.strings.po": 2,
+        "l10n/ja/ui.strings.po": 2,
+        "l10n/ko/ui.strings.po": 2,
+        "l10n/mi/ui.strings.po": 2,
+        "l10n/ms/ui.strings.po": 2,
+        "l10n/nb/ui.strings.po": 2,
+        "l10n/nl/ui.strings.po": 2,
+        "l10n/nn/ui.strings.po": 2,
+        "l10n/pl/ui.strings.po": 2,
+        "l10n/pt-BR/ui.strings.po": 2,
+        "l10n/pt/ui.strings.po": 2,
+        "l10n/ru/ui.strings.po": 2,
+        "l10n/se/ui.strings.po": 2
+      }
+    }
+  ]
+}
