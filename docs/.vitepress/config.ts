@@ -558,6 +558,8 @@ export default defineConfig({
       {},
       `(function(){try{var t=localStorage.getItem("pantoken-theme")||"rebrand";var d=document.documentElement;d.dataset.pantokenTheme=t;if(t!=="rebrand")d.classList.remove("dark");}catch(e){}})();`,
     ],
+    // `favicon.ico` is also requested at the site root by browsers that ignore the declared icon.
+    ["link", { rel: "icon", type: "image/x-icon", sizes: "any", href: `${base}favicon.ico` }],
     ["link", { rel: "icon", type: "image/png", href: `${base}favicon.png` }],
     ["link", { rel: "stylesheet", href: `${base}demos-assets/focus-outline.css` }],
     ["link", { rel: "stylesheet", href: `${base}demos-assets/visual-debug.css` }],
