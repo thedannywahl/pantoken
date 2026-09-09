@@ -1,0 +1,6 @@
+use the browser with http://localhost:5173/
+the getting started button styles aren't applying correctly when one is active or when we're hovering.  either way it should always be on white text color regardless of color mode.
+
+---
+
+Continue: "Continue to iterate?"
