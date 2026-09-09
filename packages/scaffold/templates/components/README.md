@@ -13,12 +13,15 @@ npm run dev
 
 ## What's here
 
+- `index.html` holds the actual page markup — a `wrapper`-layout shell from
+  [`@pantoken/plugin-layouts`](https://www.npmjs.com/package/@pantoken/plugin-layouts). View source
+  and edit it directly; nothing is injected by JavaScript.
 - `src/main.ts` imports `@pantoken/css` (defines every `--instui-*` custom property),
   `@pantoken/components/base.css` (document defaults + focus ring), `components.css`
-  (`.instui-*` classes), and `@pantoken/interactions` (wires up modal, tooltip, and other
-  component behaviors out of the box), then renders markup into `#app`.
+  (`.instui-*` classes), `@pantoken/interactions` (wires up modal, tooltip, and other component
+  behaviors out of the box), and your own `src/style.css` — add interactive behavior here.
 - Optional insertion points (header, filters, content, trailing) are marked with
-  `<div data-slot="...">` — replace their contents with your own markup.
+  `<div data-slot="...">` in `index.html` — replace their contents with your own markup.
 - Apply classes like `class="instui-button"` to markup; see the
   [component reference](https://pantoken.app/api/css) for the full class list.
 
