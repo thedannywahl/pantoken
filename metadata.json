@@ -1,0 +1,33 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M21Z5W8G80XQ646HXGE9YWXA",
+  "strategy": "manual-commit",
+  "branch": "exotic-subdeps",
+  "checkpoints_count": 2,
+  "files_touched": [
+    "packages/scaffold/templates/angular/pnpm-workspace.yaml",
+    "packages/scaffold/templates/canvas-theme-editor/pnpm-workspace.yaml",
+    "packages/scaffold/templates/components/pnpm-workspace.yaml",
+    "packages/scaffold/templates/next/pnpm-workspace.yaml",
+    "packages/scaffold/templates/react/pnpm-workspace.yaml",
+    "packages/scaffold/templates/svelte/pnpm-workspace.yaml",
+    "packages/scaffold/templates/vue/pnpm-workspace.yaml",
+    "packages/scaffold/templates/web-components/pnpm-workspace.yaml"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": ""
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
