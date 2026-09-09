@@ -3,17 +3,19 @@
 // pantoken-app`) works the way npm's create-* convention expects. Same argv contract as
 // `pantoken-scaffold` — see that package's bin for the canonical implementation.
 //
-// `generate <target>` is a second, unrelated entry point delegating to @pantoken/cli — it emits
-// native/non-npm design-token source (Swift, Android, Compose, ...) rather than scaffolding a
-// starter project. Routed here too so a native-target consumer never needs a separate install.
-import { run as runGenerate } from "@pantoken/cli";
+// Native/non-npm design-token source (Swift, Android, Compose, ...) lives in @pantoken/cli. Keep
+// this package scaffold-only so package managers such as Deno don't have to resolve @pantoken/core's
+// GitHub-only upstream dependency before the scaffolder can start.
 import { buildCreateUsageCommand, runScaffoldCli } from "@pantoken/scaffold/cli";
 import pkg from "../package.json" with { type: "json" };
 
 const argv = process.argv.slice(2);
 
 if (argv[0] === "generate") {
-  await runGenerate(argv);
+  console.error(
+    "create-pantoken-app is scaffold-only. Use @pantoken/cli for native output: npx @pantoken/cli generate <target>",
+  );
+  process.exitCode = 1;
 } else {
   await runScaffoldCli(argv, {
     usageCommand: buildCreateUsageCommand(),

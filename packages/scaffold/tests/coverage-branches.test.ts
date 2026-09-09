@@ -8,15 +8,7 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-test("falls back to legacy templates when preset rendering throws", async () => {
-  vi.doMock("bingo-stratum", () => ({
-    producePreset() {
-      throw new Error("boom");
-    },
-  }));
-  vi.doMock("../generated/preset-ledger.ts", () => ({
-    PRESET_LEDGER: { react: {} },
-  }));
+test("writes generated templates with substitutions", async () => {
   vi.doMock("../generated/scaffolds.ts", () => ({
     SCAFFOLDS: {
       react: {
@@ -35,28 +27,23 @@ test("falls back to legacy templates when preset rendering throws", async () => 
   expect(readFileSync(join(target, "package.json"), "utf8")).toContain('"name":"my-fallback-app"');
 });
 
-test("writes ArrayBuffer preset files as Buffers", async () => {
-  vi.doMock("bingo-stratum", () => ({
-    producePreset() {
-      return {
-        files: {
-          "notes.txt": new TextEncoder().encode("hello").buffer,
-        },
-      };
-    },
-  }));
-  vi.doMock("../generated/preset-ledger.ts", () => ({
-    PRESET_LEDGER: { react: {} },
-  }));
+test("filters pnpm workspace config for non-pnpm package managers", async () => {
   vi.doMock("../generated/scaffolds.ts", () => ({
-    SCAFFOLDS: {},
+    SCAFFOLDS: {
+      react: {
+        "package.json": '{"name":"{{projectName}}"}',
+        "pnpm-workspace.yaml": "blockExoticSubdeps: false\n",
+      },
+    },
   }));
 
   const { scaffoldProject } = await import("../src/index.ts");
-  const root = mkdtempSync(join(tmpdir(), "pantoken-scaffold-arraybuffer-"));
-  const target = join(root, "my-arraybuffer-app");
+  const root = mkdtempSync(join(tmpdir(), "pantoken-scaffold-filter-"));
+  const target = join(root, "my-filtered-app");
 
-  const written = await scaffoldProject("react", target);
-  expect(written.some((file) => file.endsWith("notes.txt"))).toBe(true);
-  expect(readFileSync(join(target, "notes.txt"), "utf8")).toBe("hello");
+  const written = await scaffoldProject("react", target, { packageManager: "bun" });
+  expect(written.some((file) => file.endsWith("package.json"))).toBe(true);
+  expect(written.some((file) => file.endsWith("pnpm-workspace.yaml"))).toBe(false);
+  expect(existsSync(join(target, "package.json"))).toBe(true);
+  expect(existsSync(join(target, "pnpm-workspace.yaml"))).toBe(false);
 });

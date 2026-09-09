@@ -31,6 +31,7 @@ import {
   SCAFFOLD_PLATFORMS,
   isScaffoldPlatform as checkScaffoldPlatform,
   resolveScaffoldPlatform,
+  type ScaffoldPackageManager,
 } from "./index.ts";
 import { scaffoldProject } from "./index.ts";
 import {
@@ -41,7 +42,6 @@ import {
 } from "./locale.ts";
 import { MESSAGES } from "../generated/locales/index.ts";
 import { SCAFFOLD_METADATA } from "../generated/scaffold-metadata.ts";
-import { CDN_PROVIDERS } from "@pantoken/canvas-theme-editor";
 import {
   validateThemeMode,
   validateThemeVariant,
@@ -239,7 +239,13 @@ export async function scaffoldWithSpinner(
   platform: string,
   dir: string,
   t: LocaleLookup["t"],
-  options?: { theme?: ThemeVariant; mode?: ThemeMode; cdn?: string; locale?: string },
+  options?: {
+    theme?: ThemeVariant;
+    mode?: ThemeMode;
+    cdn?: string;
+    locale?: string;
+    packageManager?: ScaffoldPackageManager;
+  },
 ): Promise<string[]> {
   const s = spinner();
   s.start(t("spinnerStart"));
@@ -277,6 +283,7 @@ export function detectPackageManager(
   if (userAgent.includes("bun")) return "bun";
   if (userAgent.includes("deno")) return "deno";
   if (userAgent.includes("npm")) return "npm";
+  if ("Deno" in globalThis) return "deno";
   if ((execPath ?? process.execPath).includes("vite-plus")) return "vp";
   return undefined;
 }
@@ -334,7 +341,10 @@ export function installWithSpinner(
   pm: PackageManager | undefined,
   t: LocaleLookup["t"],
 ): boolean {
-  const [command, ...args] = pmCommands(pm).install.split(" ");
+  const npmExecPath = pm === "npm" ? process.env.npm_execpath : undefined;
+  const [command, ...args] = npmExecPath
+    ? [process.execPath, npmExecPath, "install"]
+    : pmCommands(pm).install.split(" ");
   const s = spinner();
   s.start(t("installSpinnerStart"));
 
@@ -384,7 +394,8 @@ function buildDevStep(dir: string, dev: string): string {
  * needed — regardless of platform. Otherwise, when `platform` has a `scaffold.json`-derived entry in
  * `SCAFFOLD_METADATA`, next steps/notes/caveats are rendered from its (localized, `{{var}}`-
  * substituted) authored strings; failing that, a generic cd/install/run-script fallback is used,
- * with the run script itself detected from the scaffolded `package.json` (`dev`, else `preview`).
+ * with the run script itself detected from the scaffolded `package.json` (`dev`, else `preview`)
+ * or defaulted to `dev` for scaffolded app templates.
  *
  * @param dir - The scaffold directory
  * @param written - The paths written by scaffoldProject
@@ -402,7 +413,7 @@ export function printNextSteps(
   const pm = detectPackageManager();
   const { install, run } = pmCommands(pm);
   const script = detectRunScript(written);
-  const dev = script ? `${run} ${script}` : t("nextStepsDevServer");
+  const dev = `${run} ${script ?? "dev"}`;
   const vars: Record<string, string> = {
     dir,
     pm: pm ?? "npm",
@@ -451,9 +462,10 @@ export function validateScaffoldPlatform(value: string): string {
  * @throws InvalidArgumentError if the value isn't a known CDN provider id
  */
 export function validateCdnProviderId(value: string): string {
-  if (value in CDN_PROVIDERS) return value;
+  const providers = ["jsdelivr", "unpkg", "esmsh"];
+  if (providers.includes(value)) return value;
   throw new InvalidArgumentError(
-    `CDN provider "${value}" is not valid. Expected one of: ${Object.keys(CDN_PROVIDERS).join(", ")}.`,
+    `CDN provider "${value}" is not valid. Expected one of: ${providers.join(", ")}.`,
   );
 }
 
@@ -530,18 +542,25 @@ export function createScaffoldCommand(options?: ScaffoldCommandOptions): Command
         t,
       });
       const expandedDir = expandHome(dir);
+      const packageManager = detectPackageManager();
       const written = await scaffoldWithSpinner(platform, expandedDir, t, {
         theme: opts.theme as ThemeVariant | undefined,
         mode: opts.themeMode as ThemeMode | undefined,
         cdn: opts.cdn as string | undefined,
         locale,
+        packageManager,
       });
       for (const path of written) {
         console.log(t("wroteFile", { path }));
       }
-      // cwd into the scaffolded dir so the printed next step never needs a separate `cd`.
+      const installed =
+        (opts.install as boolean | undefined) !== false &&
+        installWithSpinner(expandedDir, packageManager, t);
+      // Once dependencies are installed, cwd into the scaffolded dir so the single remaining
+      // printed next step can be just the dev command. If install failed or was skipped, keep the
+      // original target path visible in the full recovery steps.
       let printDir = expandedDir;
-      if (expandedDir !== ".") {
+      if (installed && expandedDir !== ".") {
         try {
           process.chdir(expandedDir);
           printDir = ".";
@@ -549,9 +568,6 @@ export function createScaffoldCommand(options?: ScaffoldCommandOptions): Command
           // Leave printDir as expandedDir; next-steps falls back to an explicit cd.
         }
       }
-      const installed =
-        (opts.install as boolean | undefined) !== false &&
-        installWithSpinner(expandedDir, detectPackageManager(), t);
       printNextSteps(printDir, written, t, resolveScaffoldPlatform(platform), installed);
     } catch (err) {
       if (err instanceof ScaffoldCliError) {

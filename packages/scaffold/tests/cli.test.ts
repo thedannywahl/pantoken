@@ -111,6 +111,17 @@ test("detectPackageManager falls back to vp when running under a vite-plus-manag
   ).toBe("vp");
 });
 
+test("detectPackageManager detects a Deno runtime before the vp fallback", () => {
+  Object.defineProperty(globalThis, "Deno", { value: {}, configurable: true });
+  try {
+    expect(
+      detectPackageManager({}, "/Users/x/.local/share/vite-plus/js_runtime/node/26.8.1/bin/node"),
+    ).toBe("deno");
+  } finally {
+    Reflect.deleteProperty(globalThis, "Deno");
+  }
+});
+
 test("detectPackageManager prefers npm_config_user_agent over the vite-plus execPath fallback", () => {
   expect(
     detectPackageManager(
@@ -188,6 +199,8 @@ test("printNextSteps falls back to npm install when no package manager is detect
     logSpy.mockRestore();
   }
   expect(printed).toContain("npm install");
+  expect(printed).toContain("npm run dev");
+  expect(printed).not.toContain("Start the dev server");
 });
 
 test("printNextSteps renders scaffold.json-authored next steps/notes/caveats for canvas-theme-editor under vp", async () => {
@@ -240,6 +253,27 @@ test("printNextSteps uses the generic fallback (with detected dev script) for pl
 
   expect(printed).toContain("pnpm install");
   expect(printed).toContain("pnpm run dev");
+});
+
+test("printNextSteps uses deno commands in a Deno runtime", async () => {
+  const dir = mktemp();
+  const target = join(dir, "my-react-app");
+  const written = await scaffoldWithSpinner("react", target, t);
+
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  Object.defineProperty(globalThis, "Deno", { value: {}, configurable: true });
+  let printed: string;
+  try {
+    printNextSteps(target, written, t, "react");
+    printed = logSpy.mock.calls.map((call: unknown[]) => call.join(" ")).join("\n");
+  } finally {
+    Reflect.deleteProperty(globalThis, "Deno");
+    logSpy.mockRestore();
+  }
+
+  expect(printed).toContain("deno install");
+  expect(printed).toContain("deno task dev");
+  expect(printed).not.toContain("npm run dev");
 });
 
 test("printNextSteps collapses to a single dev step when installed", async () => {
@@ -300,6 +334,23 @@ test("installWithSpinner returns true and starts/stops the spinner on success", 
   const dir = mktemp();
   expect(installWithSpinner(dir, "npm", t)).toBe(true);
   expect(spinner).toHaveBeenCalled();
+});
+
+test("installWithSpinner runs npm through npm_execpath when npm launched the CLI", () => {
+  const dir = mktemp();
+  const originalNpmExecPath = process.env.npm_execpath;
+  process.env.npm_execpath = "/opt/npm/lib/node_modules/npm/bin/npm-cli.js";
+  try {
+    expect(installWithSpinner(dir, "npm", t)).toBe(true);
+  } finally {
+    if (originalNpmExecPath === undefined) delete process.env.npm_execpath;
+    else process.env.npm_execpath = originalNpmExecPath;
+  }
+  expect(vi.mocked(execFileSync)).toHaveBeenCalledWith(
+    process.execPath,
+    ["/opt/npm/lib/node_modules/npm/bin/npm-cli.js", "install"],
+    expect.objectContaining({ cwd: dir }),
+  );
 });
 
 test("installWithSpinner returns false when the install command fails", () => {
@@ -500,13 +551,16 @@ test("scaffolds, installs dependencies automatically, and prints a single dev st
   const dir = mktemp();
   const target = join(dir, "my-app");
   await runScaffoldCli(["react", "--dir", target, "--yes"], { usageCommand: "pantoken-scaffold" });
+  const printed = logSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("\n");
   expect(existsSync(join(target, "package.json"))).toBe(true);
   expect(vi.mocked(execFileSync)).toHaveBeenCalledWith(
     expect.any(String),
     ["install"],
     expect.objectContaining({ cwd: target }),
   );
-  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Next steps"));
+  expect(printed).toContain("Next steps:");
+  expect(printed).toContain("vp run dev");
+  expect(printed).not.toContain("Install dependencies");
 });
 
 test("chdirs into a non-'.' target dir so the printed next step never needs a separate cd", async () => {
@@ -520,19 +574,71 @@ test("chdirs into a non-'.' target dir so the printed next step never needs a se
   expect(devStep).not.toContain("cd ");
 });
 
+test("bun-created apps omit pnpm workspace config and print bun next steps", async () => {
+  const dir = mktemp();
+  const target = join(dir, "my-app");
+  const originalUserAgent = process.env.npm_config_user_agent;
+  process.env.npm_config_user_agent = "bun/1.2.0 npm/? node/22";
+  try {
+    await runScaffoldCli(["react", "--dir", target, "--yes"], {
+      usageCommand: "pantoken-scaffold",
+    });
+    const printed = logSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("\n");
+    const readme = readFileSync(join(target, "README.md"), "utf8");
+
+    expect(existsSync(join(target, "package.json"))).toBe(true);
+    expect(existsSync(join(target, "pnpm-workspace.yaml"))).toBe(false);
+    expect(printed).toContain("bun run dev");
+    expect(printed).not.toContain("npm run dev");
+    expect(readme).toContain("bun install");
+    expect(readme).toContain("bun run dev");
+    expect(readme).not.toContain("npm run dev");
+  } finally {
+    if (originalUserAgent === undefined) delete process.env.npm_config_user_agent;
+    else process.env.npm_config_user_agent = originalUserAgent;
+  }
+});
+
+test("keeps the target directory in next steps when automatic install fails", async () => {
+  const dir = mktemp();
+  const target = join(dir, "my-app");
+  const originalUserAgent = process.env.npm_config_user_agent;
+  process.env.npm_config_user_agent = "npm/10.0.0 node/22";
+  vi.mocked(execFileSync).mockImplementationOnce(() => {
+    throw new Error("spawnSync npm ENOENT");
+  });
+  try {
+    await runScaffoldCli(["react", "--dir", target, "--yes"], {
+      usageCommand: "pantoken-scaffold",
+    });
+    const printed = logSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("\n");
+    expect(realpathSync(process.cwd())).toBe(realpathSync(originalCwd));
+    expect(printed).toContain(`cd ${target}`);
+    expect(printed).toContain("install");
+    expect(printed).toContain("npm run dev");
+    expect(printed).not.toContain("Start the dev server");
+  } finally {
+    if (originalUserAgent === undefined) delete process.env.npm_config_user_agent;
+    else process.env.npm_config_user_agent = originalUserAgent;
+  }
+});
+
 test("--no-install skips the automatic install and keeps the full 'Next steps' block", async () => {
   const dir = mktemp();
   const target = join(dir, "my-app");
   await runScaffoldCli(["react", "--dir", target, "--yes", "--no-install"], {
     usageCommand: "pantoken-scaffold",
   });
+  const printed = logSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("\n");
   expect(existsSync(join(target, "package.json"))).toBe(true);
   expect(vi.mocked(execFileSync)).not.toHaveBeenCalledWith(
     expect.any(String),
     ["install"],
     expect.anything(),
   );
-  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Next steps"));
+  expect(printed).toContain("Next steps:");
+  expect(printed).toContain("Install dependencies");
+  expect(printed).toContain("vp run dev");
 });
 
 test("--theme selects which @pantoken/css sheet the scaffolded project imports", async () => {
