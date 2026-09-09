@@ -38,3 +38,9 @@ pantoken on components-app-improvements ≡  ?3 ~10 via  26.8.1
   uk: 8 translated, 0 untranslated
   vi: 8 translated, 0 untranslated
   cy: 8 translated, 0 untranslated
+
+---
+
+from `vpr i18n:translate:copilot`:
+~/packages/scaffold$ i18n --config "$(git rev-parse --show-toplevel)/i18n.config.json" render scaffold.readme
+✗ Failed to spawn process: underlying os error: Invalid argument (os error 22)
