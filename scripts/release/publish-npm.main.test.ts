@@ -145,6 +145,25 @@ test("normal run publishes pending versions and prepares the release manifest", 
   expect(process.exitCode).toBeUndefined();
 });
 
+test("writes Changesets tag events for the action", async () => {
+  spawnSync.mockImplementation(router());
+  process.env.CHANGESETS_OUTPUT = "/tmp/changesets-output.ndjson";
+  process.argv = ["node", MODULE_PATH];
+
+  await import("./publish-npm.ts");
+  await vi.waitFor(() =>
+    expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("done:"))).toBe(true),
+  );
+
+  const outputCall = writeFileSync.mock.calls.find(
+    (c: unknown[]) => c[0] === "/tmp/changesets-output.ndjson",
+  );
+  expect(outputCall?.[1]).toBe(
+    '{"type":"git-tag","tag":"@pantoken/css@0.2.0","packageName":"@pantoken/css"}\n' +
+      '{"type":"git-tag","tag":"@pantoken/utils@0.2.0","packageName":"@pantoken/utils"}\n',
+  );
+});
+
 test("a failed publish continues past the failure and exits non-zero", async () => {
   spawnSync.mockImplementation(
     router({ "npm publish": { status: 1, stdout: "", stderr: "boom" } }),
