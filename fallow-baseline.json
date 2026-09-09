@@ -3,6 +3,7 @@
   "fallow_version": "3.23.0",
   "timestamp": "2026-09-09T00:06:28Z",
   "git_sha": "39c9b3fbb47393933ad9966dcc9b120ed0720ea0",
+
   "analysis_identity": {
     "mode": "syntactic",
     "semantic_schema_version": 1,
