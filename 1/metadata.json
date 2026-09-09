@@ -1,9 +1,12 @@
 {
   "cli_version": "0.10.6",
   "checkpoint_id": "01M23FS0DYFH2HH9BAH318XFFP",
+  "session_id": "4f185f71-c2db-4a24-9ddb-e54269c1fa04",
   "strategy": "manual-commit",
+  "created_at": "2026-09-09T16:24:50.891573Z",
   "branch": "components-app-improvements",
-  "checkpoints_count": 2,
+  "checkpoints_count": 1,
+  "save_step_count": 1,
   "files_touched": [
     "ASSURANCE.md",
     "ai/pantoken-ai/src/cli.ts",
@@ -24,27 +27,30 @@
     "packages/scaffold/tests/index.test.ts",
     "packages/scaffold/tests/locale.test.ts"
   ],
-  "sessions": [
-    {
-      "metadata": "/0/metadata.json",
-      "transcript": "/0/full.jsonl",
-      "compact_transcript": "/0/transcript.jsonl",
-      "content_hash": "/0/content_hash.txt",
-      "prompt": "/0/prompt.txt"
-    },
-    {
-      "metadata": "/1/metadata.json",
-      "transcript": "/1/full.jsonl",
-      "compact_transcript": "/1/transcript.jsonl",
-      "content_hash": "/1/content_hash.txt",
-      "prompt": "/1/prompt.txt"
-    }
-  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "5f371c40bf1f",
+  "compact_transcript_start": 0,
   "token_usage": {
     "input_tokens": 0,
     "cache_creation_tokens": 0,
     "cache_read_tokens": 0,
     "output_tokens": 0,
     "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-09T16:24:50.861272Z",
+    "agent_lines": 263,
+    "agent_removed": 78,
+    "human_added": 0,
+    "human_modified": 21,
+    "human_removed": 10,
+    "total_committed": 284,
+    "total_lines_changed": 372,
+    "agent_percentage": 91.66666666666666,
+    "metric_version": 2
   }
 }
