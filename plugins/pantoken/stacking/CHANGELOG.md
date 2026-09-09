@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 1.0.5
+
+### Patch Changes
+
+- db34dec: docs: fix `buildTokens` example imports to use `@pantoken/core/build`
+
+  `buildTokens` moved off `@pantoken/core`'s main entry onto `@pantoken/core/build`; update the
+  README/doc-comment usage examples that showed `import { buildTokens } from "@pantoken/core"` to match.
+
+- Updated dependencies [db34dec]
+- Updated dependencies [db34dec]
+  - @pantoken/tokens@0.3.2
+
 ## 1.0.4
 
 ### Patch Changes

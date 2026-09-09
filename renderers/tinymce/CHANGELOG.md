@@ -1,5 +1,14 @@
 # @pantoken/tinymce
 
+## 0.2.1
+
+### Patch Changes
+
+- Updated dependencies [db34dec]
+  - @pantoken/plugin-simple-icons@0.3.8
+  - @pantoken/components@1.1.1
+  - @pantoken/plugin-custom-components@0.3.1
+
 ## 0.2.0
 
 ### Minor Changes

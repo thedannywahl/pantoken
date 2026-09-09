@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/react",
-  "version": "0.1.29",
+  "version": "0.1.30",
   "description": "React helpers for pantoken: <Icon>, useToken, and TokenProvider over the web components + token CSS.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

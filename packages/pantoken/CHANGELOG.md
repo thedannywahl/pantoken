@@ -1,5 +1,65 @@
 # CHANGELOG
 
+## 0.2.9
+
+### Patch Changes
+
+- Updated dependencies [db34dec]
+- Updated dependencies [db34dec]
+- Updated dependencies [db34dec]
+- Updated dependencies [db34dec]
+- Updated dependencies [db34dec]
+- Updated dependencies [db34dec]
+- Updated dependencies [db34dec]
+  - @pantoken/dtcg@0.1.14
+  - @pantoken/plugin-simple-icons@0.3.8
+  - @pantoken/plugin-stacking@1.0.5
+  - @pantoken/plugin-transition@1.0.5
+  - @pantoken/tokens@0.3.2
+  - @pantoken/web-components@0.6.1
+  - @pantoken/cli@0.1.29
+  - @pantoken/markdown-it@0.1.12
+  - @pantoken/react-markdown@0.1.14
+  - @pantoken/rehype@0.1.12
+  - @pantoken/android@0.1.19
+  - @pantoken/compose@0.1.19
+  - @pantoken/flutter@0.1.19
+  - @pantoken/swift@0.1.19
+  - @pantoken/panda@0.1.15
+  - @pantoken/tailwind@0.1.9
+  - @pantoken/vite@0.1.19
+  - @pantoken/swatches@0.1.15
+  - @pantoken/components@1.1.1
+  - @pantoken/css@0.3.9
+  - @pantoken/icons@0.2.2
+  - @pantoken/less@0.1.15
+  - @pantoken/scss@0.1.15
+  - @pantoken/stylus@0.1.15
+  - @pantoken/email@0.1.15
+  - @pantoken/vanilla@0.1.13
+  - @pantoken/wordpress@0.1.13
+  - @pantoken/plugin-primitives@1.0.2
+  - @pantoken/plugin-theme-custom-media@0.2.4
+  - @pantoken/astro@0.1.19
+  - @pantoken/bootstrap@0.1.3
+  - @pantoken/css-in-js@0.1.15
+  - @pantoken/docusaurus@0.1.3
+  - @pantoken/foundation@0.1.4
+  - @pantoken/mintlify@0.1.15
+  - @pantoken/mui@0.1.15
+  - @pantoken/pendo@0.3.15
+  - @pantoken/react-native@0.1.15
+  - @pantoken/shadcn@0.1.3
+  - @pantoken/storybook@0.1.15
+  - @pantoken/vitepress@0.2.2
+  - @pantoken/angular@0.1.29
+  - @pantoken/react@0.1.30
+  - @pantoken/svelte@0.1.30
+  - @pantoken/vue@0.1.30
+  - @pantoken/drupal@0.1.26
+  - @pantoken/postcss@0.1.19
+  - @pantoken/webpack@0.1.19
+
 ## 0.2.8
 
 ### Patch Changes

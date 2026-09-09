@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 1.1.1
+
+### Patch Changes
+
+- Updated dependencies [db34dec]
+- Updated dependencies [db34dec]
+  - @pantoken/tokens@0.3.2
+
 ## 1.1.0
 
 ### Minor Changes

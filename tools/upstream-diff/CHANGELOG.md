@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.1.14
+
+### Patch Changes
+
+- Updated dependencies [db34dec]
+- Updated dependencies [db34dec]
+- Updated dependencies [db34dec]
+  - @pantoken/plugin-deprecations@0.3.9
+  - @pantoken/tokens@0.3.2
+
 ## 0.1.13
 
 ### Patch Changes

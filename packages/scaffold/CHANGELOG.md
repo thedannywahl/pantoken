@@ -1,5 +1,92 @@
 # @pantoken/scaffold
 
+## 1.1.0
+
+### Minor Changes
+
+- db34dec: feat: scaffold CLIs install dependencies automatically
+
+  `pantoken-scaffold`, `create-pantoken-app`, and `pantoken-ai scaffold` now run the detected package
+  manager's install command right after writing the project, so the printed "Next steps" collapse to
+  the one remaining manual action — starting the dev server (`cd <dir> && <pm> run dev`) — instead of
+  also asking the user to `cd` and install by hand.
+
+  Pass `--no-install` to skip the automatic install and keep the previous cd/install/dev-server
+  breakdown (e.g. for scripted/offline use).
+
+### Patch Changes
+
+- db34dec: fix: the `:force` translation tasks now actually force, and docs chrome/demo catalogs merge
+
+  `ui:translate:force` and `cli:translate:force` (and their `:agy` / `:copilot` variants) ran commands
+  byte-identical to their non-force twins. `docs:locales:translate:force` exported
+  `DOCS_TRANSLATION_FORCE=1`, which no script read. Both paths now retranslate for real — the CLI
+  tasks through `i18n translate --force`, and the docs scripts through a translation-memory lookup that
+  misses on purpose while the environment variable is set.
+
+  `docs:chrome:locales` and `docs:demos:locales` parsed each locale's PO file directly and never merged
+  it against a template, so a new key in `docs/.vitepress/i18n.json` or a `demos/*/i18n.json` could not
+  reach them. They now extract and `msgmerge` first.
+
+  New `ui:extract`, `cli:extract`, `docs:extract`, and `i18n:extract` tasks refresh a catalog template
+  from its source without spending translation credits.
+
+- db34dec: feat: implement the four declared-but-dead `i18n translate` options
+
+  `--locale` was the only option the `translate` action ever read. The rest were parsed and discarded:
+
+  - `--force` retranslates entries that already have a `msgstr`.
+  - `--tier <tier>` narrows the run to one `locales.tiers` entry, and rejects an unknown tier name
+    rather than silently translating nothing.
+  - `--provider <profile>` selects a `provider.profiles` entry for the command, model, and effort.
+    Profiles gained a `command` field (a path with a separator resolves against the config directory),
+    so the per-package `I18N_TRANSLATION_COMMAND` plumbing is no longer needed —
+    `--provider copilot` is enough. `I18N_TRANSLATION_COMMAND` and `I18N_TRANSLATION_COMMAND_ARGS`
+    still override a resolved profile when set.
+  - `--concurrency <n>` bounds how many provider calls run at once. Batches were previously awaited
+    strictly one at a time, so the `concurrency` already declared on every provider profile did
+    nothing.
+
+- db34dec: fix: `i18n translate` re-extracts the POT, so new source strings actually get translated
+
+  `runTranslateMessages` and `runTranslateContent` only ran `msgmerge` against the committed
+  `l10n/<space>.pot`. Nothing in the repository ever ran `i18n extract`, so a key added to a space's
+  source (`src/i18n.json`, a guide, a demo) never reached the POT — and therefore never reached the PO
+  catalogs the AI fill step reads. `i18n check` re-extracted from source, so it reported those keys as
+  permanently "untranslated" and blocked CI no matter how many times `translate` was run. Every
+  messages-space POT in the repository had silently drifted.
+
+  Both translate paths now re-extract before merging, and `i18n check` reports a stale POT as its own
+  drift finding instead of leaving it to surface as phantom untranslated units. The drift fix hint no
+  longer recommends `i18n render`, which is a no-op for messages spaces — their locale bundles are
+  rebuilt by the owning package's `generate` script.
+
+  A single-file messages source now leaves each unit's `reference` empty so the POT records the
+  space's source path, rather than emitting a bare message key as the file reference.
+
+- db34dec: fix: pre-approve `core-js`/`ttf2woff2` install scripts in scaffold templates
+
+  Every scaffolded project depends on `@pantoken/pantoken`, which transitively pulls in `core-js` and
+  `ttf2woff2` as subdependencies with install/postinstall scripts. Newer npm versions block those
+  scripts by default (`allowScripts`) and bun's default-secure install does the same
+  (`trustedDependencies`), both printing a warning after `npm create pantoken-app`/`create-pantoken-app`
+  finishes installing. pnpm's equivalent gate (`allowBuilds`) only lives in `pnpm-workspace.yaml`, not
+  `package.json`.
+
+  Each scaffold template now ships pre-approved entries for both packages — `allowScripts` and
+  `trustedDependencies` in `package.json`, and a minimal `pnpm-workspace.yaml` — so a fresh install
+  under npm, pnpm, or bun completes without install-script warnings.
+
+- Updated dependencies [db34dec]
+- Updated dependencies [db34dec]
+- Updated dependencies [db34dec]
+  - @pantoken/web-components@0.6.1
+  - @pantoken/components@1.1.1
+  - @pantoken/angular@0.1.29
+  - @pantoken/react@0.1.30
+  - @pantoken/svelte@0.1.30
+  - @pantoken/vue@0.1.30
+
 ## 1.0.1
 
 ### Patch Changes
