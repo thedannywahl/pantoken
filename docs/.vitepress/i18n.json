@@ -85,6 +85,10 @@
   "chrome.returnToTopLabel": { "message": "Return to top", "translate": "always" },
   "chrome.langMenuLabel": { "message": "Change language", "translate": "always" },
   "chrome.lastUpdatedText": { "message": "Last updated", "translate": "always" },
+  "chrome.agentShellPrompt": {
+    "message": "What would you like to build today?",
+    "translate": "always"
+  },
   "chrome.notFound.code": { "message": "404", "translate": "always" },
   "chrome.notFound.title": { "message": "PAGE NOT FOUND", "translate": "always" },
   "chrome.notFound.quote": {

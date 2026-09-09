@@ -150,6 +150,7 @@ export interface UiStrings {
     returnToTopLabel: string;
     langMenuLabel: string;
     lastUpdatedText: string;
+    agentShellPrompt: string;
     notFound: {
       code: string;
       title: string;
