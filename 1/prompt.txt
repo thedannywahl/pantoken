@@ -1,0 +1,899 @@
+➜ pnpm dlx create-pantoken-app@1.0.1
+Downloading @pantoken/web-components@0.6.0: 7.09 MB/7.09 MB, done
+.../mttfgq6i-1k54                        | Progress: resolved 0, reused 369, downloaded 43, added 0
+Error: ERR_PNPM_EXOTIC_SUBDEP
+
+  × adding a new package
+  ╰─▶ Failed to resolve dependency tree: Exotic dependency "@instructure/
+      instructure-design-tokens" (resolved via git-repository) is not allowed
+      in subdependencies when blockExoticSubdeps is enabled
+
+---
+
+Continue: "Continue to iterate?"
+
+---
+
+manually creae changesets, conventional commits, and push for the files you toched - ignoring other files.
+
+---
+
+[Terminal 693ad4c2-cfca-4ed2-941b-05e6630869e2 notification: command completed with exit code 1. The terminal has been cleaned up.]
+Terminal output:
+pantoken on exotic-subdeps ≢  ~21 via  26.8.1 
+➜  wc -l formats/tokens/generated/rebrand.json && grep -c "instui-color-background-base" formats/tokens/generated/rebrand.json
+       1 formats/tokens/generated/rebrand.json
+0
+pantoken on exotic-subdeps ≢  ~21 via  26.8.1 x 
+➜  ls -la formats/tokens/generated/ && head -c 500 formats/tokens/generated/rebrand.json
+total 11816
+drwxr-xr-x@  7 dwahl  staff      224 Aug 20 18:42 .
+drwxr-xr-x@ 17 dwahl  staff      544 Sep  8 19:46 ..
+-rw-r--r--@  1 dwahl  staff  1487533 Sep  8 19:45 canvas.json
+-rw-r--r--@  1 dwahl  staff  1487533 Sep  8 19:45 canvasHighContrast.json
+-rw-r--r--@  1 dwahl  staff      203 Sep  8 19:45 meta.json
+-rw-r--r--@  1 dwahl  staff  1571081 Sep  8 19:45 raw.json
+-rw-r--r--@  1 dwahl  staff  1487533 Sep  8 19:45 rebrand.json
+[{"name":"--instui-icon-a-arrow-down","syntax":"<image>","inherits":true,"value":"url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22currentColor%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m14%2012%204%204%204-4%22%2F%3E%3Cpath%20d%3D%22M18%2016V7%22%2F%3E%3Cpath%20d%3D%22m2%2016%204.039%                                                           
+pantoken on exotic-subdeps ≢  ~21 via  26.8.1 
+➜  grep -o "instui-color-background-base" formats/tokens/generated/rebrand.json | wc -l
+       0
+pantoken on exotic-subdeps ≢  ~21 via  26.8.1 x 
+➜  git stash && vp run --filter @pantoken/tokens generate 2>&1 | tail -5 && grep -o "instui-color-background-base" formats/tokens/generated/rebrand.json | wc -l; git stash pop
+Saved working directory and index state WIP on exotic-subdeps: 0cc9a9fd0 chore: version packages (#129)
+    at async node:internal/modules/esm/loader:650:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v26.8.1
+
+       0
+On branch exotic-subdeps
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   formats/dtcg/README.md
+        modified:   formats/tokens/scripts/generate.test.ts
+        modified:   formats/tokens/scripts/generate.ts
+        modified:   packages/cli/package.json
+        modified:   packages/cli/src/index.ts
+        modified:   packages/core/README.md
+        modified:   packages/core/package.json
+        modified:   packages/core/src/icon-assets.ts
+        modified:   packages/core/src/index.ts
+        modified:   packages/core/src/style-dictionary.ts
+        modified:   packages/core/vite.config.ts
+        modified:   plugins/pantoken/custom-icons/README.md
+        modified:   plugins/pantoken/deprecations/README.md
+        modified:   plugins/pantoken/deprecations/src/index.ts
+        modified:   plugins/pantoken/simple-icons/README.md
+        modified:   plugins/pantoken/simple-icons/src/index.ts
+        modified:   plugins/pantoken/stacking/README.md
+        modified:   plugins/pantoken/stacking/src/index.ts
+        modified:   plugins/pantoken/transition/README.md
+        modified:   plugins/pantoken/transition/src/index.ts
+        modified:   pnpm-lock.yaml
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (cf3926e248757f7dfeae27929c64fe5733c19ade)
+pantoken on exotic-subdeps ≢  ~21 via  26.8.1 
+➜  git diff packages/cli/package.json packages/cli/src/index.ts | head -100
+pantoken on exotic-subdeps ≢ via  26.8.1 
+➜  git status --short
+ M formats/dtcg/README.md
+ M formats/tokens/scripts/generate.test.ts
+ M formats/tokens/scripts/generate.ts
+ M packages/cli/package.json
+ M packages/cli/src/index.ts
+ M packages/core/README.md
+ M packages/core/package.json
+ M packages/core/src/icon-assets.ts
+ M packages/core/src/index.ts
+ M packages/core/src/style-dictionary.ts
+ M packages/core/vite.config.ts
+ M plugins/pantoken/custom-icons/README.md
+ M plugins/pantoken/deprecations/README.md
+ M plugins/pantoken/deprecations/src/index.ts
+ M plugins/pantoken/simple-icons/README.md
+ M plugins/pantoken/simple-icons/src/index.ts
+ M plugins/pantoken/stacking/README.md
+ M plugins/pantoken/stacking/src/index.ts
+ M plugins/pantoken/transition/README.md
+ M plugins/pantoken/transition/src/index.ts
+ M pnpm-lock.yaml
+pantoken on exotic-subdeps ≢  ~21 via  26.8.1 
+➜  git diff --stat packages/cli/package.json packages/cli/src/index.ts; git diff packages/cli/package.json | cat
+ packages/cli/package.json | 10 +++++++++-
+ packages/cli/src/index.ts | 16 ++++++++++++++--
+ 2 files changed, 23 insertions(+), 3 deletions(-)
+diff --git a/packages/cli/package.json b/packages/cli/package.json
+index 2917cf9de..a5acee2ec 100644
+--- a/packages/cli/package.json
++++ b/packages/cli/package.json
+@@ -38,7 +38,6 @@
+     "@pantoken/drupal": "workspace:*",
+     "@pantoken/flutter": "workspace:*",
+     "@pantoken/hugo": "workspace:*",
+-    "@pantoken/icon-font": "workspace:*",
+     "@pantoken/jekyll": "workspace:*",
+     "@pantoken/mintlify": "workspace:*",
+     "@pantoken/model": "workspace:*",
+@@ -51,11 +50,20 @@
+     "@pantoken/wordpress": "workspace:*"
+   },
+   "devDependencies": {
++    "@pantoken/icon-font": "workspace:*",
+     "@types/node": "catalog:",
+     "typescript": "catalog:",
+     "vite": "catalog:",
+     "vite-plus": "catalog:"
+   },
++  "peerDependencies": {
++    "@pantoken/icon-font": "workspace:*"
++  },
++  "peerDependenciesMeta": {
++    "@pantoken/icon-font": {
++      "optional": true
++    }
++  },
+   "engines": {
+     "node": ">=22.18.0"
+   },
+pantoken on exotic-subdeps ≢  ~21 via  26.8.1 
+➜  git log --oneline -10 && echo --- && git diff --stat HEAD -- '**/package.json' | head -60
+0cc9a9fd0 (HEAD -> exotic-subdeps, tag: create-pantoken-app@1.0.1, tag: @pantoken/scaffold@1.0.1, tag: @pantoken/ai@1.0.1, origin/main, origin/HEAD, main) chore: version packages (#129)
+2b408c4c7 fix(release): stop excluding create-pantoken-app from the publish set (#128)
+349f715f6 fix(release): emit Changesets tag output (#127)
+306b4de8f chore: version packages (#126)
+ae9418898 chore: version packages (#124)
+39c9b3fbb fix(ci): align component coverage thresholds (#125)
+cc319ee42 Codeql fixes (#123)
+6e5bf68b3 (tag: @pantoken/wordpress@0.1.13, tag: @pantoken/webpack@0.1.18, tag: @pantoken/web-components@0.6.0, tag: @pantoken/vue@0.1.29, tag: @pantoken/vitepress@0.2.2, tag: @pantoken/vite@0.1.18, tag: @pantoken/vite-workspace-orchestrator@0.1.4, tag: @pantoken/vanilla@0.1.13, tag: @pantoken/utils@1.0.2, tag: @pantoken/typedoc-plugin-live-example@0.1.5, tag: @pantoken/typedoc-plugin-demo@0.1.5, tag: @pantoken/tokens@0.3.1, tag: @pantoken/tinymce@0.2.0, tag: @pantoken/tailwind@0.1.8, tag: @pantoken/swift@0.1.18, tag: @pantoken/swatches@0.1.14, tag: @pantoken/svelte@0.1.29, tag: @pantoken/stylus@0.1.14, tag: @pantoken/storybook@0.1.14, tag: @pantoken/shadcn@0.1.3, tag: @pantoken/sd-config@0.1.6, tag: @pantoken/scss@0.1.14, tag: @pantoken/scaffold@1.0.0, tag: @pantoken/scaffold-base@0.2.1, tag: @pantoken/rust@0.1.16, tag: @pantoken/rehype@0.1.11, tag: @pantoken/react@0.1.29, tag: @pantoken/react-native@0.1.14, tag: @pantoken/react-markdown@0.1.13, tag: @pantoken/postcss@0.1.18, tag: @pantoken/plugin-visual-debug@0.1.16, tag: @pantoken/plugin-transition@1.0.4, tag: @pantoken/plugin-theme-custom-media@0.2.3, tag: @pantoken/plugin-stacking@1.0.4, tag: @pantoken/plugin-simple-icons@0.3.7, tag: @pantoken/plugin-prune-custom-props@0.1.6, tag: @pantoken/plugin-props-minify@0.1.4, tag: @pantoken/plugin-primitives@1.0.2, tag: @pantoken/plugin-mangle-custom-props@0.1.3, tag: @pantoken/plugin-logos@0.4.0, tag: @pantoken/plugin-layouts@0.3.0, tag: @pantoken/plugin-kit@0.3.0, tag: @pantoken/plugin-flatten-property@0.1.3, tag: @pantoken/plugin-custom-icons@0.3.7, tag: @pantoken/plugin-custom-components@0.3.1, tag: @pantoken/plugin-colors@0.1.3, tag: @pantoken/pendo@0.3.14, tag: @pantoken/pantoken@0.2.8, tag: @pantoken/panda@0.1.14, tag: @pantoken/next@0.1.3, tag: @pantoken/mui@0.1.14, tag: @pantoken/model@0.3.2, tag: @pantoken/mintlify@0.1.14, tag: @pantoken/markdown-it@0.1.11, tag: @pantoken/less@0.1.14, tag: @pantoken/jekyll@0.1.25, tag: @pantoken/interactions@0.3.7, tag: @pantoken/icons@0.2.1, tag: @pantoken/icon-font@0.1.17, tag: @pantoken/hugo@0.1.25, tag: @pantoken/foundation@0.1.4, tag: @pantoken/flutter@0.1.18, tag: @pantoken/figma@0.1.13, tag: @pantoken/email@0.1.14, tag: @pantoken/dtcg@0.1.13, tag: @pantoken/drupal@0.1.25, tag: @pantoken/docusaurus@0.1.3, tag: @pantoken/demo@0.3.0, tag: @pantoken/css@0.3.8, tag: @pantoken/css-in-js@0.1.14, tag: @pantoken/core@0.2.9, tag: @pantoken/compose@0.1.18, tag: @pantoken/components@1.1.0, tag: @pantoken/cli@0.1.28, tag: @pantoken/cdn@0.2.0, tag: @pantoken/canvas-theme-editor@0.2.0, tag: @pantoken/bootstrap@0.1.3, tag: @pantoken/astro@0.1.18, tag: @pantoken/angular@0.1.28, tag: @pantoken/android@0.1.18, tag: @pantoken/ai@1.0.0) chore: version packages (#121)
+a7ab57bbf feat: update button color values to use light-dark function for improved theming (#120)
+63e06cbd6 feat: automate submodule pointer updates via PR for create-pantoken-app (#119)
+---
+ packages/cli/package.json  | 10 +++++++++-
+ packages/core/package.json |  3 ++-
+ 2 files changed, 11 insertions(+), 2 deletions(-)
+pantoken on exotic-subdeps ≢  ~21 via  26.8.1 
+➜  git diff packages/cli/package.json | cat
+diff --git a/packages/cli/package.json b/packages/cli/package.json
+index 2917cf9de..a5acee2ec 100644
+--- a/packages/cli/package.json
++++ b/packages/cli/package.json
+@@ -38,7 +38,6 @@
+     "@pantoken/drupal": "workspace:*",
+     "@pantoken/flutter": "workspace:*",
+     "@pantoken/hugo": "workspace:*",
+-    "@pantoken/icon-font": "workspace:*",
+     "@pantoken/jekyll": "workspace:*",
+     "@pantoken/mintlify": "workspace:*",
+     "@pantoken/model": "workspace:*",
+@@ -51,11 +50,20 @@
+     "@pantoken/wordpress": "workspace:*"
+   },
+   "devDependencies": {
++    "@pantoken/icon-font": "workspace:*",
+     "@types/node": "catalog:",
+     "typescript": "catalog:",
+     "vite": "catalog:",
+     "vite-plus": "catalog:"
+   },
++  "peerDependencies": {
++    "@pantoken/icon-font": "workspace:*"
++  },
++  "peerDependenciesMeta": {
++    "@pantoken/icon-font": {
++      "optional": true
++    }
++  },
+   "engines": {
+     "node": ">=22.18.0"
+   },
+pantoken on exotic-subdeps ≢  ~21 via  26.8.1 
+➜  git diff packages/cli/src/index.ts | cat
+diff --git a/packages/cli/src/index.ts b/packages/cli/src/index.ts
+index 2d50f537b..f49ccc114 100644
+--- a/packages/cli/src/index.ts
++++ b/packages/cli/src/index.ts
+@@ -14,7 +14,6 @@ import { dirname, join, relative, resolve } from "node:path";
+ import { generateAndroid } from "@pantoken/android";
+ import { generateCompose } from "@pantoken/compose";
+ import { generateFlutter } from "@pantoken/flutter";
+-import { buildIconFont } from "@pantoken/icon-font";
+ import { buildPendoCss } from "@pantoken/pendo";
+ import { toDrupalTheme } from "@pantoken/drupal";
+ import { toHugoAssets } from "@pantoken/hugo";
+@@ -287,8 +286,21 @@ function runSwatches(args: CliArgs): void {
+   console.log(`✓ pantoken: wrote ${file}`);
+ }
+ 
+-/** Build and write the icon font (TTF, WOFF2, CSS, and codepoints). */
++/**
++ * Build and write the icon font (TTF, WOFF2, CSS, and codepoints).
++ *
++ * `@pantoken/icon-font` is an optional peer — it pulls native build tooling (ttf2woff2 → node-gyp)
++ * that most `generate` targets never need, so it's loaded lazily and only on this path.
++ */
+ async function runIconFont(args: CliArgs): Promise<void> {
++  let buildIconFont: typeof import("@pantoken/icon-font").buildIconFont;
++  try {
++    ({ buildIconFont } = await import("@pantoken/icon-font"));
++  } catch {
++    throw new Error(
++      'The "icon-font" target requires @pantoken/icon-font. Install it with: npm install @pantoken/icon-font',
++    );
++  }
+   const font = await buildIconFont({
+     theme: args.theme,
+     icons: args.icons,
+pantoken on exotic-subdeps ≢  ~21 via  26.8.1 
+➜  git status --short formats/tokens/generated/ ; git check-ignore -v formats/tokens/generated/rebrand.json
+.gitignore:28:**/generated/     formats/tokens/generated/rebrand.json
+pantoken on exotic-subdeps ≢  ~21 via  26.8.1 
+➜  vp run --filter @pantoken/core build 2>&1 | tail -20 && vp run --filter @pantoken/tokens generate 2>&1 | tail -10
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+ℹ Hint: consider adding deps.onlyBundle option to avoid unintended bundling of dependencies, or set deps.onlyBundle: false to disable this hint.
+See more at https://tsdown.dev/options/dependencies#deps-onlybundle
+Detected dependencies in bundle:
+- glob
+- @instructure/instructure-design-tokens
+ℹ dist/build.mjs             111.97 kB │ gzip: 30.62 kB
+ℹ dist/index.mjs              11.44 kB │ gzip:  4.15 kB
+ℹ dist/color-CSo3eYD0.mjs     24.43 kB │ gzip:  8.42 kB
+ℹ dist/index.d.mts            14.76 kB │ gzip:  4.59 kB
+ℹ dist/build.d.mts             1.89 kB │ gzip:  0.81 kB
+ℹ dist/model-Cv8zrNsl.d.mts    3.77 kB │ gzip:  1.21 kB
+ℹ 6 files, total: 168.26 kB
+✔ Build complete in 52ms
+
+---
+vp run: cache hit, 559ms saved.
+[pantoken] known-syntax-issues.json: removed "--instui-component-base-button-tertiary-hover-text-color" — no longer reproduces (resolved upstream)
+[pantoken] known-syntax-issues.json: removed "--instui-component-base-button-tertiary-hover-border-color" — no longer reproduces (resolved upstream)
+[pantoken] known-syntax-issues.json: removed "--instui-component-base-button-tertiary-active-text-color" — no longer reproduces (resolved upstream)
+[pantoken] known-syntax-issues.json: removed "--instui-component-base-button-tertiary-active-border-color" — no longer reproduces (resolved upstream)
+[pantoken] known-syntax-issues.json: removed "--instui-component-base-button-tertiary-disabled-text-color" — no longer reproduces (resolved upstream)
+[pantoken] known-syntax-issues.json: removed "--instui-component-base-button-tertiary-disabled-border-color" — no longer reproduces (resolved upstream)
+✓ raw.json + meta.json (design-tokens v1.8.0@b85c964, ui-icons 11.7.5)
+
+---
+vp run: @pantoken/tokens#generate not cached because it modified its input. (Run `vp run --last-details` for full details)
+pantoken on exotic-subdeps ≢  ~22 via  26.8.1 
+➜  git checkout -- formats/tokens/known-syntax-issues.json
+pantoken on exotic-subdeps ≢  ~21 via  26.8.1 
+➜  vp run --filter @pantoken/android --filter @pantoken/compose --filter @pantoken/flutter --filter @pantoken/rust --filter @pantoken/swift --filter @pantoken/icon-font build 2>&1 | tail -80
+~/platforms/flutter$ vp pack ○ cache miss: 'platforms/flutter/package.json' modified, executing
+~/platforms/android$ vp pack ○ cache miss: 'platforms/android/package.json' modified, executing
+~/platforms/swift$ vp pack ○ cache miss: 'platforms/swift/package.json' modified, executing
+~/formats/icon-font$ vp pack ○ cache miss: 'formats/icon-font/package.json' modified, executing
+ℹ entry: src/index.ts
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+ℹ entry: src/index.ts
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+ℹ entry: src/index.ts
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+ℹ entry: src/index.ts
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+ℹ dist/index.mjs    2.91 kB │ gzip: 1.19 kB
+ℹ dist/index.d.mts  1.75 kB │ gzip: 0.69 kB
+ℹ 2 files, total: 4.66 kB
+✔ Build complete in 46ms
+ℹ dist/index.mjs    3.33 kB │ gzip: 1.25 kB
+ℹ dist/index.d.mts  2.04 kB │ gzip: 0.78 kB
+ℹ 2 files, total: 5.37 kB
+✔ Build complete in 39ms
+
+~/platforms/compose$ vp pack ○ cache miss: 'platforms/compose/package.json' modified, executing
+ℹ dist/index.mjs    3.37 kB │ gzip: 1.40 kB
+ℹ dist/index.d.mts  2.04 kB │ gzip: 0.77 kB
+ℹ 2 files, total: 5.41 kB
+✔ Build complete in 40ms
+ℹ dist/index.mjs    7.76 kB │ gzip: 3.14 kB
+ℹ dist/index.d.mts  2.49 kB │ gzip: 1.01 kB
+ℹ 2 files, total: 10.26 kB
+✔ Build complete in 45ms
+
+
+~/platforms/rust$ vp pack ○ cache miss: 'platforms/rust/package.json' modified, executing
+
+ℹ entry: src/index.ts
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+ℹ dist/index.mjs    2.06 kB │ gzip: 0.86 kB
+ℹ dist/index.d.mts  1.57 kB │ gzip: 0.59 kB
+ℹ 2 files, total: 3.64 kB
+✔ Build complete in 24ms
+ℹ entry: src/index.ts
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+
+ℹ dist/index.mjs    3.66 kB │ gzip: 1.58 kB
+ℹ dist/index.d.mts  1.80 kB │ gzip: 0.74 kB
+ℹ 2 files, total: 5.46 kB
+✔ Build complete in 28ms
+
+---
+vp run: 0/6 cache hit (0%). (Run `vp run --last-details` for full details)
+pantoken on exotic-subdeps ≢  ~21 via  26.8.1 
+➜  grep -l "instructure-design-tokens" platforms/*/dist/*.mjs formats/icon-font/dist/*.mjs 2>/dev/null; echo "done"
+done
+pantoken on exotic-subdeps ≢  ~21 via  26.8.1 
+➜  vp run --filter @pantoken/core check 2>&1 | tail -60
+
+  × tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+   ╭─[src/resolve.ts:6:4]
+ 5 │  *
+ 6 │  * @module
+   ·    ───────
+ 7 │  */
+   ╰────
+
+  × tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+   ╭─[src/icons.ts:6:4]
+ 5 │  *
+ 6 │  * @module
+   ·    ───────
+ 7 │  */
+   ╰────
+
+  × tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+   ╭─[src/plugin.ts:6:4]
+ 5 │  *
+ 6 │  * @module
+   ·    ───────
+ 7 │  */
+   ╰────
+
+  × tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+   ╭─[src/icon-assets.ts:7:4]
+ 6 │  *
+ 7 │  * @module
+   ·    ───────
+ 8 │  */
+   ╰────
+
+  × tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+    ╭─[src/index.ts:9:4]
+  8 │  *
+  9 │  * @module
+    ·    ───────
+ 10 │  * @beta
+    ╰────
+
+  × tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+   ╭─[src/model.ts:5:4]
+ 4 │  *
+ 5 │  * @module
+   ·    ───────
+ 6 │  */
+   ╰────
+
+  × tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+   ╭─[src/utils.ts:6:4]
+ 5 │  *
+ 6 │  * @module
+   ·    ───────
+ 7 │  */
+   ╰────
+
+Found 10 errors and 0 warnings in 19 files (1.4s, 10 threads)
+error: Lint or type issues found
+
+pantoken on exotic-subdeps ≢  ~21 via  26.8.1 x 
+➜  vp run --filter @pantoken/core check 2>&1 | head -60
+~/packages/core$ vp check
+pass: All 23 files are correctly formatted (278ms, 10 threads)
+error: Lint or type issues found
+× tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+   ╭─[src/build.ts:6:4]
+ 5 │  *
+ 6 │  * @module
+   ·    ───────
+ 7 │  */
+   ╰────
+
+  × tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+   ╭─[src/color.ts:6:4]
+ 5 │  *
+ 6 │  * @module
+   ·    ───────
+ 7 │  */
+   ╰────
+
+  × tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+   ╭─[src/icon-assets.ts:7:4]
+ 6 │  *
+ 7 │  * @module
+   ·    ───────
+ 8 │  */
+   ╰────
+
+  × tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+   ╭─[src/resolve.ts:6:4]
+ 5 │  *
+ 6 │  * @module
+   ·    ───────
+ 7 │  */
+   ╰────
+
+  × tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+   ╭─[src/plugin.ts:6:4]
+ 5 │  *
+ 6 │  * @module
+   ·    ───────
+ 7 │  */
+   ╰────
+
+  × tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+   ╭─[src/icons.ts:6:4]
+ 5 │  *
+ 6 │  * @module
+   ·    ───────
+ 7 │  */
+   ╰────
+
+  × tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+   ╭─[src/model.ts:5:4]
+ 4 │  *
+ 5 │  * @module
+   ·    ───────
+ 6 │  */
+   ╰────
+
+  × tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+pantoken on exotic-subdeps ≢  ~21 via  26.8.1 x 
+➜  grep -n "module" tsdoc.json
+6:    { "tagName": "@module", "syntaxKind": "block" },
+pantoken on exotic-subdeps ≢  ~21 via  26.8.1 
+➜  cd packages/core && vp check 2>&1 | head -20; cd ../..
+note: You are running `vp check` as a Vite+ built-in command. If you meant to run the check npm script, use `vpr check` instead.
+pass: All 23 files are correctly formatted (231ms, 10 threads)
+error: Lint or type issues found
+x tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+   ,-[src/build.ts:6:4]
+ 5 |  *
+ 6 |  * @module
+   :    ^^^^^^^
+ 7 |  */
+   `----
+
+  x tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+    ,-[src/index.ts:9:4]
+  8 |  *
+  9 |  * @module
+    :    ^^^^^^^
+ 10 |  * @beta
+    `----
+
+  x tsdoc(syntax): tsdoc-undefined-tag: The TSDoc tag "@module" is not defined in this configuration
+pantoken on exotic-subdeps ≢  ~21 via  26.8.1 
+➜  git diff --stat
+ formats/dtcg/README.md                     |  2 +-
+ formats/tokens/scripts/generate.test.ts    |  3 +--
+ formats/tokens/scripts/generate.ts         |  2 +-
+ packages/cli/package.json                  | 10 +++++++++-
+ packages/cli/src/index.ts                  | 16 ++++++++++++++--
+ packages/core/README.md                    |  6 ++++--
+ packages/core/package.json                 |  3 ++-
+ packages/core/src/icon-assets.ts           |  3 ++-
+ packages/core/src/index.ts                 |  9 ++++-----
+ packages/core/src/style-dictionary.ts      |  6 ++++--
+ packages/core/vite.config.ts               |  9 ++++++++-
+ plugins/pantoken/custom-icons/README.md    |  2 +-
+ plugins/pantoken/deprecations/README.md    |  2 +-
+ plugins/pantoken/deprecations/src/index.ts |  2 +-
+ plugins/pantoken/simple-icons/README.md    |  2 +-
+ plugins/pantoken/simple-icons/src/index.ts |  2 +-
+ plugins/pantoken/stacking/README.md        |  2 +-
+ plugins/pantoken/stacking/src/index.ts     |  2 +-
+ plugins/pantoken/transition/README.md      |  2 +-
+ plugins/pantoken/transition/src/index.ts   |  2 +-
+ pnpm-lock.yaml                             | 12 ++++++------
+ 21 files changed, 65 insertions(+), 34 deletions(-)
+pantoken on exotic-subdeps ≢  ~21 via  26.8.1 
+➜  git status --short
+ M formats/dtcg/README.md
+ M formats/tokens/scripts/generate.test.ts
+ M formats/tokens/scripts/generate.ts
+ M packages/cli/package.json
+ M packages/cli/src/index.ts
+ M packages/core/README.md
+ M packages/core/package.json
+ M packages/core/src/icon-assets.ts
+ M packages/core/src/index.ts
+ M packages/core/src/style-dictionary.ts
+ M packages/core/vite.config.ts
+ M plugins/pantoken/custom-icons/README.md
+ M plugins/pantoken/deprecations/README.md
+ M plugins/pantoken/deprecations/src/index.ts
+ M plugins/pantoken/simple-icons/README.md
+ M plugins/pantoken/simple-icons/src/index.ts
+ M plugins/pantoken/stacking/README.md
+ M plugins/pantoken/stacking/src/index.ts
+ M plugins/pantoken/transition/README.md
+ M plugins/pantoken/transition/src/index.ts
+ M pnpm-lock.yaml
+ M pnpm-workspace.yaml
+pantoken on exotic-subdeps ≢  ~22 via  26.8.1 
+➜  git diff pnpm-workspace.yaml | cat
+diff --git a/pnpm-workspace.yaml b/pnpm-workspace.yaml
+index 9640eaa05..5b27ef54d 100644
+--- a/pnpm-workspace.yaml
++++ b/pnpm-workspace.yaml
+@@ -150,6 +150,12 @@ overrides:
+   # them. We can't drop the peer (pnpm auto-installs it), so pin the resolved version to the fix.
+   next: "^16.2.11"
+   vitest@*: "catalog:"
++  # ttf2woff2 (formats/icon-font) pins node-gyp@^11, whose make-fetch-happen→cacache chain resolves
++  # to deprecated glob@10.5.0. node-gyp 13 dropped that chain (fetches via undici instead), so
++  # override just cleans our own install; it only reaches this monorepo's tree, not downstream
++  # consumers who install @pantoken/icon-font directly — overrides aren't inherited from a
++  # published dependency's package.json.
++  node-gyp: "^13.0.2"
+ peerDependencyRules:
+   allowAny:
+     - vite
+pantoken on exotic-subdeps ≢  ~22 via  26.8.1 
+➜  git diff --stat pnpm-lock.yaml
+ pnpm-lock.yaml | 468 ++++++---------------------------------------------------
+ 1 file changed, 44 insertions(+), 424 deletions(-)
+pantoken on exotic-subdeps ≢  ~22 via  26.8.1 
+➜  git stash push --keep-index -- packages/cli/package.json packages/cli/src/index.ts pnpm-workspace.yaml
+Saved working directory and index state WIP on exotic-subdeps: 0cc9a9fd0 chore: version packages (#129)
+pantoken on exotic-subdeps ≢  ~19 via  26.8.1 
+➜  git status --short
+ M formats/dtcg/README.md
+ M formats/tokens/scripts/generate.test.ts
+ M formats/tokens/scripts/generate.ts
+ M packages/core/README.md
+ M packages/core/package.json
+ M packages/core/src/icon-assets.ts
+ M packages/core/src/index.ts
+ M packages/core/src/style-dictionary.ts
+ M packages/core/vite.config.ts
+ M plugins/pantoken/custom-icons/README.md
+ M plugins/pantoken/deprecations/README.md
+ M plugins/pantoken/deprecations/src/index.ts
+ M plugins/pantoken/simple-icons/README.md
+ M plugins/pantoken/simple-icons/src/index.ts
+ M plugins/pantoken/stacking/README.md
+ M plugins/pantoken/stacking/src/index.ts
+ M plugins/pantoken/transition/README.md
+ M plugins/pantoken/transition/src/index.ts
+ M pnpm-lock.yaml
+pantoken on exotic-subdeps ≢  ~19 via  26.8.1 
+➜  git checkout -- pnpm-lock.yaml && vp install 2>&1 | tail -20
+Scope: all 91 workspace projects
+✓ Lockfile passes supply-chain policies (verified 6h ago)
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 63, reused 63, downloaded 0, added 0
+Progress: resolved 96, reused 96, downloaded 0, added 0
+Progress: resolved 522, reused 453, downloaded 0, added 0
+Progress: resolved 1507, reused 1317, downloaded 0, added 0
+[WARN] 2 deprecated subdependencies found: @types/parse-path@7.1.0, glob@10.5.0
+Packages: +51 -7
++++++++++++++++++++++++++++++++++++++++++++++++++++-------
+Progress: resolved 1507, reused 1317, downloaded 0, added 0, done
+. prepare$ vp config
+. prepare: Done
+[WARN] Issues with peer dependencies found. Run "pnpm peers check" to list them.
+
+Done in 6.3s using pnpm v11.23.0
+pantoken on exotic-subdeps ≢  ~19 via  26.8.1 
+➜  git diff --stat pnpm-lock.yaml
+ pnpm-lock.yaml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+pantoken on exotic-subdeps ≢  ~19 via  26.8.1 
+➜  git diff pnpm-lock.yaml | cat
+diff --git a/pnpm-lock.yaml b/pnpm-lock.yaml
+index 25b6d8dc0..998e3487b 100644
+--- a/pnpm-lock.yaml
++++ b/pnpm-lock.yaml
+@@ -1258,9 +1258,6 @@ importers:
+ 
+   packages/core:
+     dependencies:
+-      '@instructure/instructure-design-tokens':
+-        specifier: 'catalog:'
+-        version: https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/b85c96436131df6a23174a54bcbd3b03a5da1b8a
+       '@instructure/ui-icons':
+         specifier: 'catalog:'
+         version: 11.7.5(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@10.2.2)
+@@ -1274,6 +1271,9 @@ importers:
+         specifier: workspace:*
+         version: link:../utils
+     devDependencies:
++      '@instructure/instructure-design-tokens':
++        specifier: 'catalog:'
++        version: https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/b85c96436131df6a23174a54bcbd3b03a5da1b8a
+       '@types/node':
+         specifier: 'catalog:'
+         version: 26.5.0
+pantoken on exotic-subdeps ≢  ~19 via  26.8.1 
+➜  git check-ignore -v packages/core/dist/index.mjs
+.gitignore:11:dist      packages/core/dist/index.mjs
+pantoken on exotic-subdeps ≢  ?2 ~20 via  26.8.1 
+➜  git add packages/core/vite.config.ts packages/core/package.json packages/core/src/index.ts packages/core/src/icon-assets.ts packages/core/src/style-dictionary.ts packages/core/README.md formats/tokens/scripts/generate.ts formats/tokens/scripts/generate.test.ts pnpm-lock.yaml .changeset/split-core-build-entry.md && git status --short
+A  .changeset/split-core-build-entry.md
+ M formats/dtcg/README.md
+M  formats/tokens/scripts/generate.test.ts
+M  formats/tokens/scripts/generate.ts
+M  packages/core/README.md
+M  packages/core/package.json
+M  packages/core/src/icon-assets.ts
+M  packages/core/src/index.ts
+M  packages/core/src/style-dictionary.ts
+M  packages/core/vite.config.ts
+ M plugins/pantoken/custom-icons/README.md
+ M plugins/pantoken/deprecations/README.md
+ M plugins/pantoken/deprecations/src/index.ts
+ M plugins/pantoken/simple-icons/README.md
+ M plugins/pantoken/simple-icons/src/index.ts
+ M plugins/pantoken/stacking/README.md
+ M plugins/pantoken/stacking/src/index.ts
+ M plugins/pantoken/transition/README.md
+ M plugins/pantoken/transition/src/index.ts
+M  pnpm-lock.yaml
+ M pnpm-workspace.yaml
+?? .changeset/fix-buildtokens-doc-examples.md
+pantoken on exotic-subdeps ≢  ?1 ~11 |  +1 ~9 via  26.8.1 
+➜  git diff pnpm-workspace.yaml | cat; echo ---; git stash list
+diff --git a/pnpm-workspace.yaml b/pnpm-workspace.yaml
+index 9640eaa05..636c0eb75 100644
+--- a/pnpm-workspace.yaml
++++ b/pnpm-workspace.yaml
+@@ -150,6 +150,13 @@ overrides:
+   # them. We can't drop the peer (pnpm auto-installs it), so pin the resolved version to the fix.
+   next: "^16.2.11"
+   vitest@*: "catalog:"
++  # ttf2woff2 (formats/icon-font) pins node-gyp@^11, whose make-fetch-happen→cacache chain resolves
++  # to deprecated glob@10.5.0. node-gyp 13 dropped that chain (fetches via undici instead), so
++  # override just cleans our own install; it only reaches this monorepo's tree, not downstream
++  # consumers who install @pantoken/icon-font directly — overrides aren't inherited from a
++  # published dependency's package.json. Upstream tracked at
++  # https://github.com/nfroidure/ttf2woff2/issues/107.
++  node-gyp: "^13.0.2"
+ peerDependencyRules:
+   allowAny:
+     - vite
+---
+stash@{0}: WIP on exotic-subdeps: 0cc9a9fd0 chore: version packages (#129)
+stash@{1}: lint-staged automatic backup
+stash@{2}: lint-staged automatic backup
+stash@{3}: lint-staged automatic backup
+stash@{4}: lint-staged automatic backup
+stash@{5}: lint-staged automatic backup
+stash@{6}: lint-staged automatic backup
+stash@{7}: lint-staged automatic backup
+stash@{8}: lint-staged automatic backup
+stash@{9}: lint-staged automatic backup
+stash@{10}: lint-staged automatic backup
+stash@{11}: lint-staged automatic backup
+stash@{12}: lint-staged automatic backup
+stash@{13}: lint-staged automatic backup
+stash@{14}: WIP on optimize-ci-release-hooks: 07a126e fix(docs): localize hu/api sidebar links, overview, and add a drift check
+pantoken on exotic-subdeps ≢  ?1 ~11 |  +1 ~9 via  26.8.1 
+➜  git checkout -- pnpm-workspace.yaml && git status --short
+A  .changeset/split-core-build-entry.md
+ M formats/dtcg/README.md
+M  formats/tokens/scripts/generate.test.ts
+M  formats/tokens/scripts/generate.ts
+M  packages/core/README.md
+M  packages/core/package.json
+M  packages/core/src/icon-assets.ts
+M  packages/core/src/index.ts
+M  packages/core/src/style-dictionary.ts
+M  packages/core/vite.config.ts
+ M plugins/pantoken/custom-icons/README.md
+ M plugins/pantoken/deprecations/README.md
+ M plugins/pantoken/deprecations/src/index.ts
+ M plugins/pantoken/simple-icons/README.md
+ M plugins/pantoken/simple-icons/src/index.ts
+ M plugins/pantoken/stacking/README.md
+ M plugins/pantoken/stacking/src/index.ts
+ M plugins/pantoken/transition/README.md
+ M plugins/pantoken/transition/src/index.ts
+M  pnpm-lock.yaml
+?? .changeset/fix-buildtokens-doc-examples.md
+pantoken on exotic-subdeps ≢  ?1 ~10 |  +1 ~9 via  26.8.1 
+➜  git commit -m "fix(core): keep exotic design-tokens dependency out of downstream consumers
+
+Move buildTokens (the only export needing the GitHub-only, exotic
+@instructure/instructure-design-tokens dependency) off @pantoken/core's main
+entry onto a new @pantoken/core/build subpath, and move that dependency to
+devDependencies. Previously every consumer of the main entry -- including the
+native platform packages aggregated by @pantoken/pantoken -- transitively
+pulled in the exotic dependency, which pnpm's blockExoticSubdeps policy
+rejects for non-direct consumers (ERR_PNPM_EXOTIC_SUBDEP when installing
+create-pantoken-app).
+
+Update the one in-repo consumer of buildTokens (@pantoken/tokens's generator)
+to import from the new subpath."
+✔ Backed up original state in git stash (5c53066d3)
+✔ Running tasks for staged files...
+✔ Applying modifications from tasks...
+✔ Cleaning up temporary files...
+[exotic-subdeps edd8c4141] fix(core): keep exotic design-tokens dependency out of downstream consumers
+ 10 files changed, 88 insertions(+), 436 deletions(-)
+ create mode 100644 .changeset/split-core-build-entry.md
+pantoken on exotic-subdeps ≢  ?1 ~10 via  26.8.1 
+➜  git status --short
+ M formats/dtcg/README.md
+ M plugins/pantoken/custom-icons/README.md
+ M plugins/pantoken/deprecations/README.md
+ M plugins/pantoken/deprecations/src/index.ts
+ M plugins/pantoken/simple-icons/README.md
+ M plugins/pantoken/simple-icons/src/index.ts
+ M plugins/pantoken/stacking/README.md
+ M plugins/pantoken/stacking/src/index.ts
+ M plugins/pantoken/transition/README.md
+ M plugins/pantoken/transition/src/index.ts
+?? .changeset/fix-buildtokens-doc-examples.md
+pantoken on exotic-subdeps ≢  ?1 ~10 via  26.8.1 
+➜  git add formats/dtcg/README.md plugins/pantoken/custom-icons/README.md plugins/pantoken/deprecations/README.md plugins/pantoken/deprecations/src/index.ts plugins/pantoken/simple-icons/README.md plugins/pantoken/simple-icons/src/index.ts plugins/pantoken/stacking/README.md plugins/pantoken/stacking/src/index.ts plugins/pantoken/transition/README.md plugins/pantoken/transition/src/index.ts .changeset/fix-buildtokens-doc-examples.md
+git commit -m "docs: fix buildTokens example imports after the core/build split
+
+Update README and doc-comment usage examples in @pantoken/dtcg and the
+plugins/pantoken/* packages that showed \`import { buildTokens } from
+\"@pantoken/core\"\` -- that export moved to \`@pantoken/core/build\`."
+✔ Backed up original state in git stash (ef4dfaae9)
+✔ Running tasks for staged files...
+✔ Applying modifications from tasks...
+✔ Cleaning up temporary files...
+[exotic-subdeps 29ba287e6] docs: fix buildTokens example imports after the core/build split
+ 11 files changed, 23 insertions(+), 10 deletions(-)
+ create mode 100644 .changeset/fix-buildtokens-doc-examples.md
+pantoken on exotic-subdeps ≢ via  26.8.1 
+➜  git status --short && echo --- && git log --oneline -5
+---
+29ba287e6 (HEAD -> exotic-subdeps) docs: fix buildTokens example imports after the core/build split
+edd8c4141 fix(core): keep exotic design-tokens dependency out of downstream consumers
+0cc9a9fd0 (tag: create-pantoken-app@1.0.1, tag: @pantoken/scaffold@1.0.1, tag: @pantoken/ai@1.0.1, origin/main, origin/HEAD, main) chore: version packages (#129)
+2b408c4c7 fix(release): stop excluding create-pantoken-app from the publish set (#128)
+349f715f6 fix(release): emit Changesets tag output (#127)
+pantoken on exotic-subdeps ≢ via  26.8.1 
+➜  git stash pop
+On branch exotic-subdeps
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   packages/cli/package.json
+        modified:   packages/cli/src/index.ts
+        modified:   pnpm-workspace.yaml
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (488b4621fa84ea9be18424b26fc01f5332761ad2)
+pantoken on exotic-subdeps ≢  ~3 via  26.8.1 
+➜  git push origin exotic-subdeps
+$ node scripts/release/check-changeset-coverage.ts ○ cache miss: 'pnpm-workspace.yaml' modified, executing
+✓ changeset coverage: @pantoken/core, @pantoken/plugin-simple-icons, @pantoken/plugin-stacking, @pantoken/plugin-transition, @pantoken/tokens covered by pending changesets.
+
+loaded config: /Users/dwahl/Scripts/pantoken/.fallowrc.jsonc
+
+Audit scope: 24 changed files vs origin/main (29ba287e6..HEAD)
+Tip: run `fallow explain <issue label>`; spaces and hyphens both work, e.g. `fallow explain unused files`.
+
+■ Metrics: dead code 1 · complexity 0 · duplication 2
+
+── Dead Code ──────────────────────────────────────
+
+── Dependencies ─────────────────────────────────────
+
+● Unused dependency overrides (1)
+  node-gyp  pnpm-workspace.yaml  pnpm-workspace.yaml:158
+    forces node-gyp to ^13.0.2
+    may target a transitive dependency; pnpm install --frozen-lockfile is the ground truth
+  package-manager override entries whose target package is not declared by any workspace package or resolved in the lockfile — https://docs.fallow.tools/explanations/dead-code#unused-dependency-overrides
+
+✗  (0.51s)
+  1 issue · 32 suppressed · 0 stale suppressions
+
+── Duplication ────────────────────────────────────
+note: skipped 299 files matching default duplicates ignores (use --explain-skipped for the list)
+note: module wiring excluded from clone detection (--no-ignore-imports to include it)
+
+● Duplicates (2 clone groups)
+
+      5 lines  2 instances  spread 6  dup:398c6a68
+    formats/icon-font/src/outline.ts:60-64
+    packages/core/src/icon-assets.ts:108-112
+
+      5 lines  2 instances  spread 6  dup:ec0a0b8c
+    formats/icon-font/src/outline.ts:52-56
+    packages/core/src/icon-assets.ts:99-103
+
+  Duplicate code blocks - https://docs.fallow.tools/explanations/duplication#clone-groups
+
+● Clone families (1 with multiple groups)
+
+  2 groups, 10 lines across formats/icon-font/src/outline.ts, packages/core/src/icon-assets.ts
+    → Extract shared function (5 lines) from outline.ts, icon-assets.ts
+    → Extract shared function (5 lines) from outline.ts, icon-assets.ts
+
+  Groups of related clones across the same files — https://docs.fallow.tools/explanations/duplication#clone-families
+
+✗ 20 lines (0.0%) duplicated across 2 files (0.03s)
+
+── Styling ────────────────────────────────────────
+  132 styling candidates (run `fallow health --css` for detail)
+✓ dead code: 1 issue · duplication: 2 clone groups (warn) · 24 changed files (1.42s)
+  audit gate excluded 2 inherited findings (run with --gate all to enforce)
+$ node scripts/quality/snyk-code-gate.ts ◉ cache hit, replaying
+
+ ERROR   Authentication error (SNYK-0005)
+         Authentication credentials not recognized, or user access is not provisioned.  
+         Revise credentials and try again, or request access from your Snyk             
+         administrator.                                                                 
+                                                                                        
+           Use `snyk auth` to authenticate.                                             
+
+Status:  401 Unauthorized 
+Docs:    https://docs.snyk.io/scan-with-snyk/error-catalog#snyk-0005 
+Tip:     Try snyk doctor: `snyk <command> -d 2>&1 | snyk doctor --stdin` 
+                                                                         
+ID:      urn:snyk:interaction:859cd4c9-c696-4cda-8115-d32cbed7d7fb 
+⚠ snyk code could not run (auth/network?) — run `snyk auth`; skipping SAST gate
+
+---
+vp run: cache hit, 6.90s saved.
+$ vp exec markdownlint-cli2 "**/*.md" ⊘ cache disabled
+markdownlint-cli2 v0.23.2 (markdownlint v0.41.1)
+Finding: **/*.md !node_modules !**/node_modules !dist !**/dist !coverage !**/coverage !**/style.css !**/generated !**/generated/** !docs/api !docs/api/** !docs/*/api !docs/*/api/** !docs/internal !docs/internal/** !.github/copilot-instructions.md !.changeset/*.md !**/CHANGELOG.md !.agents/skills !.agents/skills/** !agent/skills !agent/skills/** !.claude !.claude/**
+Linting: 561 files
+Summary: 0 issues in 0 files
+
+✓ Metadata branches: OK (no remote-tracking metadata ref found)
+
+Git hooks: NOT INSTALLED
+  Commits in this repository are not captured as checkpoints.
+  Fix: reinstall the managed git hooks (any non-Entire hook is backed up).
+┃ Reinstall Entire git hooks?
+┃
+┃         Yes     No  
+
+  -> Skipped
+✓ Claude Code hook config: OK
+Found 1 stuck session(s):
+
+  Session: 565bcf9b-ba61-423d-be2f-599eb26a95b1
+  Phase:   active
+  Reason:  active, last interaction 1h28m0s ago
+  Agent:   Copilot CLI
+  Last interaction: 2026-09-08T18:30:11-06:00
+  Shadow branch: not found
+  Checkpoints: 0, Files touched: 0
+┃ Fix session 565bcf9b-ba61-423d-be2f-599eb26a95b1?
+┃ > Discard (remove session data)
+┃   Skip (leave as-is)
+
+  -> Skipped
+
+Enumerating objects: 82, done.
+Counting objects: 100% (82/82), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (42/42), done.
+Writing objects: 100% (46/46), 10.61 KiB | 2.12 MiB/s, done.
+Total 46 (delta 30), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (30/30), completed with 27 local objects.
+To https://github.com/thedannywahl/pantoken.git
+ ! [remote rejected]     exotic-subdeps -> exotic-subdeps (cannot lock ref 'refs/heads/exotic-subdeps': reference already exists)
+error: failed to push some refs to 'https://github.com/thedannywahl/pantoken.git'

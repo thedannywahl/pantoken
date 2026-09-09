@@ -1,0 +1,110 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M21YH0YDCA2CWEJXC087QSV6",
+  "session_id": "a9b2e99c-df91-43a4-a5c7-3df32eb3ca14",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-09T02:04:08.957864Z",
+  "branch": "exotic-subdeps",
+  "checkpoints_count": 2,
+  "save_step_count": 2,
+  "files_touched": [
+    "packages/cli/package.json",
+    "packages/cli/src/index.ts",
+    "pnpm-workspace.yaml"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "fd2d86854e71",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-09T02:04:08.928922Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 13,
+    "human_modified": 5,
+    "human_removed": 0,
+    "total_committed": 18,
+    "total_lines_changed": 18,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 65,
+      "user_lines_removed": 34,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "formats/dtcg/README.md": 1,
+        "formats/tokens/scripts/generate.test.ts": 1,
+        "formats/tokens/scripts/generate.ts": 1,
+        "packages/cli/package.json": 9,
+        "packages/cli/src/index.ts": 14,
+        "packages/core/README.md": 4,
+        "packages/core/package.json": 2,
+        "packages/core/src/icon-assets.ts": 2,
+        "packages/core/src/index.ts": 4,
+        "packages/core/src/style-dictionary.ts": 4,
+        "packages/core/vite.config.ts": 8,
+        "plugins/pantoken/custom-icons/README.md": 1,
+        "plugins/pantoken/deprecations/README.md": 1,
+        "plugins/pantoken/deprecations/src/index.ts": 1,
+        "plugins/pantoken/simple-icons/README.md": 1,
+        "plugins/pantoken/simple-icons/src/index.ts": 1,
+        "plugins/pantoken/stacking/README.md": 1,
+        "plugins/pantoken/stacking/src/index.ts": 1,
+        "plugins/pantoken/transition/README.md": 1,
+        "plugins/pantoken/transition/src/index.ts": 1,
+        "pnpm-lock.yaml": 6
+      },
+      "user_removed_per_file": {
+        "formats/dtcg/README.md": 1,
+        "formats/tokens/scripts/generate.test.ts": 2,
+        "formats/tokens/scripts/generate.ts": 1,
+        "packages/cli/package.json": 1,
+        "packages/cli/src/index.ts": 2,
+        "packages/core/README.md": 2,
+        "packages/core/package.json": 1,
+        "packages/core/src/icon-assets.ts": 1,
+        "packages/core/src/index.ts": 5,
+        "packages/core/src/style-dictionary.ts": 2,
+        "packages/core/vite.config.ts": 1,
+        "plugins/pantoken/custom-icons/README.md": 1,
+        "plugins/pantoken/deprecations/README.md": 1,
+        "plugins/pantoken/deprecations/src/index.ts": 1,
+        "plugins/pantoken/simple-icons/README.md": 1,
+        "plugins/pantoken/simple-icons/src/index.ts": 1,
+        "plugins/pantoken/stacking/README.md": 1,
+        "plugins/pantoken/stacking/src/index.ts": 1,
+        "plugins/pantoken/transition/README.md": 1,
+        "plugins/pantoken/transition/src/index.ts": 1,
+        "pnpm-lock.yaml": 6
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 1,
+      "user_lines_removed": 5,
+      "agent_lines_added": 30,
+      "agent_lines_removed": 3,
+      "user_added_per_file": {
+        "pnpm-workspace.yaml": 1
+      },
+      "user_removed_per_file": {
+        ".claude/settings.json": 3,
+        "pnpm-workspace.yaml": 2
+      }
+    }
+  ]
+}
