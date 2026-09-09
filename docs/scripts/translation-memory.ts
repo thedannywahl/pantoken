@@ -106,6 +106,8 @@ export class TranslationMemory {
   }
 
   get(kind: string, source: string): string | undefined {
+    // DOCS_TRANSLATION_FORCE turns every lookup into a miss, so `:force` really does retranslate.
+    if (process.env.DOCS_TRANSLATION_FORCE === "1") return undefined;
     if (this._poByKey) {
       const translation = this._poByKey.get(`docs.api:${kind}\0${source}`)?.msgstr;
       if (translation) this._poHits++;
