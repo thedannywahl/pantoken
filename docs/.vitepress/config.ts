@@ -270,6 +270,12 @@ const typedocSidebarByLocale = Object.fromEntries(
   localeEntries.map(([localeKey, locale]) => [localeKey, loadSidebar(locale.typedocSidebarPath)]),
 ) as Record<DocsLocale, DefaultTheme.SidebarItem[]>;
 
+// `DOCS_ROOT_LOCALE_ONLY=1` builds skip every `<locale>/api/**` page (see `srcExclude` below), so a
+// non-root locale's own API routes would 404. Serve the English API tree from those locales instead:
+// the reference exists, just untranslated.
+const apiPrefixFor = (localeKey: DocsLocale): string =>
+  rootLocaleOnly ? LOCALE_THEMES.root.apiPrefix : LOCALE_THEMES[localeKey].apiPrefix;
+
 // A script-specific wordmark, when one exists (see `NON_LATIN_LOCALES` in i18n.ts); every other
 // locale falls back to the default Latin logo set below.
 const localesConfig = Object.fromEntries(
@@ -285,8 +291,8 @@ const localesConfig = Object.fromEntries(
         nav: [
           { text: locale.nav.guide, link: `${locale.guidePrefix}getting-started` },
           { text: locale.nav.packages, link: `${locale.guidePrefix}packages` },
-          { text: locale.nav.css, link: `${locale.apiPrefix}css` },
-          { text: locale.nav.api, link: locale.apiPrefix },
+          { text: locale.nav.css, link: `${apiPrefixFor(localeKey)}css` },
+          { text: locale.nav.api, link: apiPrefixFor(localeKey) },
         ],
         sidebar: {
           [locale.guidePrefix]: [
@@ -333,7 +339,7 @@ const localesConfig = Object.fromEntries(
           ...partitionApiSidebar(
             typedocSidebarByLocale[localeKey],
             locale.sidebar.api,
-            locale.apiPrefix,
+            apiPrefixFor(localeKey),
             locale.sidebar.apiOverview,
           ),
         },
@@ -584,6 +590,20 @@ export default defineConfig({
     ["meta", { name: "twitter:site", content: "@thedannywahl" }],
     ["meta", { name: "twitter:creator", content: "@thedannywahl" }],
   ],
+  // The localized home hero links at that locale's own API routes, which `DOCS_ROOT_LOCALE_ONLY=1`
+  // doesn't build (see `srcExclude` below). Retarget those actions at the English API tree so the
+  // hero buttons resolve instead of 404ing; the full-locale build leaves them alone.
+  transformPageData: (pageData) => {
+    if (!rootLocaleOnly || pageData.frontmatter.layout !== "home") return;
+    const localeKey = NON_ROOT_LOCALES.find((key) => pageData.relativePath.startsWith(`${key}/`));
+    if (!localeKey) return;
+    const actions = (pageData.frontmatter.hero?.actions ?? []) as { link?: string }[];
+    for (const action of actions) {
+      if (action.link?.startsWith(`/${localeKey}/api`)) {
+        action.link = action.link.slice(`/${localeKey}`.length);
+      }
+    }
+  },
   // Layer per-page Open Graph / Twitter tags, a canonical link, the page locale, and translated
   // structured data on top of the head defaults, so each shared URL previews with its own title,
   // description, social-card image, address, and language rather than the site-wide English default.
