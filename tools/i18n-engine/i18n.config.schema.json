@@ -118,6 +118,7 @@
         "endpoint": { "type": "string", "format": "uri" },
         "batchBudget": { "type": "integer", "minimum": 1 },
         "timeoutMs": { "type": "integer", "minimum": 0 },
+        "documentTimeoutMs": { "type": "integer", "minimum": 0 },
         "circuitBreaker": { "$ref": "#/$defs/circuitBreaker" },
         "profiles": {
           "type": "object",

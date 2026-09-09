@@ -7,7 +7,11 @@
 import { spawn } from "node:child_process";
 import {
   buildBatchTranslationPrompt,
+  buildMarkdownTranslationPrompt,
   extractJsonObject,
+  preserveMarkdown,
+  restoreMarkdown,
+  stripMarkdownEnvelope,
 } from "../../tools/translation-adapters/src/index.ts";
 import { LOCALES } from "@pantoken/web-components";
 import { GLOSSARY_TERMS, type GlossaryKind } from "./glossary.ts";
@@ -69,16 +73,6 @@ const spawnPrompt = (
     });
     child.stdin.end(prompt);
   });
-
-/** Remove the markdown envelope when a CLI model echoes the delimiters from the translation prompt. */
-const stripMarkdownEnvelope = (output: string): string => {
-  const begin = "--- BEGIN MARKDOWN ---";
-  const end = "--- END MARKDOWN ---";
-  const start = output.indexOf(begin);
-  const finish = output.lastIndexOf(end);
-  if (start === -1 || finish <= start) return output;
-  return output.slice(start + begin.length, finish).trim();
-};
 
 /** A pluggable translation engine: named, with markdown/text/batch translate methods. */
 export interface TranslationAdapter {
@@ -390,35 +384,12 @@ export class AiTranslationAdapter implements TranslationAdapter {
   }
 
   async translateMarkdown(input: string, filePath: string): Promise<string> {
-    const preservedMarkdown = preserveMarkdownSensitiveBlocks(input);
-    const preservedPackages = preservePackageNames(preservedMarkdown.text);
-    const preservedBrackets = preserveEscapedAngleBrackets(preservedPackages.text);
-    const prompt = [
-      `Translate this technical markdown from English to ${this.targetLanguage}.`,
-      "Return only the translated markdown.",
-      "Rules:",
-      "- Keep markdown structure unchanged.",
-      "- Translate heading text too (the words after the leading # symbols) — do not leave headings in English.",
-      "- Do not alter placeholder tokens like __PTK_CODE_BLOCK_#__ or __PTK_INLINE_CODE_#__.",
-      "- Do not alter placeholder tokens like __PTK_PACKAGE_#__ or __PTK_ESC_#__.",
-      "- Preserve whitespace and line breaks.",
-      "- Keep import paths, package names, URLs, and identifiers intact.",
-      `File: ${filePath}`,
-      "--- BEGIN MARKDOWN ---",
-      preservedBrackets.text,
-      "--- END MARKDOWN ---",
-    ].join("\n");
-
+    const preserved = preserveMarkdown(input);
+    const prompt = buildMarkdownTranslationPrompt(preserved.text, this.targetLanguage, filePath);
     const translated = stripMarkdownEnvelope(
       await this.runClaude(prompt, `markdown file ${filePath}`),
     );
-    const restoredBrackets = restoreEscapedAngleBrackets(translated, preservedBrackets.brackets);
-    const restoredPackages = restorePackageNames(restoredBrackets, preservedPackages.packageNames);
-    return restoreMarkdownSensitiveBlocks(
-      restoredPackages,
-      preservedMarkdown.codeBlocks,
-      preservedMarkdown.inlineCodeBlocks,
-    );
+    return restoreMarkdown(translated, preserved);
   }
 
   async translateText(input: string): Promise<string> {

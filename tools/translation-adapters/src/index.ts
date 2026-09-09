@@ -30,6 +30,16 @@ export {
   type SurfacePolicy,
 } from "./drift-policy.ts";
 
+// Whole-document Markdown masking/prompting, shared by the docs pipeline and the i18n engine's
+// `segment: "file"` content spaces.
+export {
+  buildMarkdownTranslationPrompt,
+  preserveMarkdown,
+  restoreMarkdown,
+  stripMarkdownEnvelope,
+  type PreservedMarkdown,
+} from "./markdown.ts";
+
 /**
  * Pull the first `{…}` JSON object out of a model response, tolerating surrounding prose or code
  * fences. Returns `null` when no valid object is found.

@@ -22,7 +22,11 @@ import { extractMessagesSpace, type MessageUnit } from "./extract-messages.ts";
 import { mergePoWithTemplate } from "./gettext.ts";
 import { parsePo, readCatalog, serializePot, writeCatalog, type PoEntry } from "./po.ts";
 import { refreshCoverageReports } from "./coverage.ts";
-import { fillUntranslatedEntries, type FillOptions } from "./ai-translate.ts";
+import {
+  fillUntranslatedEntries,
+  fillUntranslatedMarkdownEntries,
+  type FillOptions,
+} from "./ai-translate.ts";
 import { knownLocales, localesForSpace, resolveLocaleStatus } from "./locales.ts";
 import { catalogUnitKey } from "./units.ts";
 
@@ -223,8 +227,10 @@ export async function runTranslateContent(
     configDir,
     resolvePattern(config.catalogs.target, { space: spaceId, locale }),
   );
+  // Whole-file units are documents, not short strings — they need the Markdown-aware prompt.
+  const fill = space.segment === "file" ? fillUntranslatedMarkdownEntries : fillUntranslatedEntries;
   const result = await mergeAndCount(potPath, poPath, (path) =>
-    fillUntranslatedEntries(path, locale, config.provider, { configDir, ...options }),
+    fill(path, locale, config.provider, { configDir, ...options }),
   );
   refreshCoverageReports(join(configDir, "i18n.config.json"));
   return { space: spaceId, locale, poPath, ...result };
