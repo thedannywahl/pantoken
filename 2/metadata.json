@@ -1,0 +1,54 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2207EKENANCP452NHND2XT8",
+  "session_id": "bb3fcd9d-6508-484d-a445-dca87269f6de",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-09T02:33:52.468925Z",
+  "branch": "exotic-subdeps",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "8ab797365a43",
+  "checkpoint_transcript_start": 271,
+  "transcript_lines_at_start": 271,
+  "compact_transcript_start": 45,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 10,
+      "user_lines_removed": 121,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "formats/tokens/known-syntax-issues.json": 2,
+        "packages/core/package.json": 1,
+        "packages/core/vite.config.ts": 1,
+        "pnpm-lock.yaml": 6
+      },
+      "user_removed_per_file": {
+        "formats/tokens/known-syntax-issues.json": 114,
+        "packages/core/package.json": 1,
+        "pnpm-lock.yaml": 6
+      }
+    }
+  ]
+}
