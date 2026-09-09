@@ -1,0 +1,8 @@
+[tools/translation-adapters/src/markdown.ts](https://github.com/thedannywahl/pantoken/pull/132/files/b55eaa0c1692b439c65f8ccd99f3337d0936a501#diff-6f694e71cd88a44c6c7dc8973a2b97eaadc9e2bf62fc5f6921d4a48b2409965a)
+  const text = input.replace(pattern, (match) => {
+    const marker = `__${prefix}_${blocks.length}__`;
+    blocks.push(match);
+    return marker;
+  });
+  ### CodeQL / Polynomial regular expression used on uncontrolled data
+  This [regular expression](https://github.com/thedannywahl/pantoken/pull/1) that depends on [library input](https://github.com/thedannywahl/pantoken/pull/2) may run slow on strings starting with '{{{{' and with many repetitions of '{{{{'.
