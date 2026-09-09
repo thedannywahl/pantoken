@@ -1,0 +1,52 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M23FS0DYFH2HH9BAH318XFFP",
+  "session_id": "0c5ca432-3627-43d3-8037-33b5d36c011b",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-09T16:24:50.632992Z",
+  "branch": "components-app-improvements",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "ai/pantoken-ai/src/cli.ts",
+    "packages/scaffold/scripts/generate.ts",
+    "packages/scaffold/scripts/lib/locales.ts",
+    "packages/scaffold/src/cli.ts",
+    "packages/scaffold/src/index.ts",
+    "packages/scaffold/src/locale.ts",
+    "packages/scaffold/templates/angular/index.html",
+    "packages/scaffold/templates/canvas-theme-editor/index.html",
+    "packages/scaffold/templates/components/index.html",
+    "packages/scaffold/templates/next/app/layout.tsx.tmpl",
+    "packages/scaffold/templates/react/index.html",
+    "packages/scaffold/templates/svelte/index.html",
+    "packages/scaffold/templates/vue/index.html",
+    "packages/scaffold/templates/web-components/index.html"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "8dd01bb9ef5a",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-09T16:24:50.623322Z",
+    "agent_lines": 168,
+    "agent_removed": 74,
+    "human_added": 87,
+    "human_modified": 28,
+    "human_removed": 0,
+    "total_committed": 283,
+    "total_lines_changed": 361,
+    "agent_percentage": 67.03601108033241,
+    "metric_version": 2
+  }
+}
