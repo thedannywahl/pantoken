@@ -92,6 +92,16 @@ test("locale drives the generated markup's lang attribute", async () => {
   expect(html).not.toContain("{{locale}}");
 });
 
+test("uses the localized README overlay for the requested locale", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-readme-hu-"));
+  const target = join(dir, "my-app");
+  await scaffoldProject("react", target, { locale: "hu" });
+  const readme = readFileSync(join(target, "README.md"), "utf8");
+  expect(readme).toContain("# my-app");
+  expect(readme).toContain("Egy Vite + React alkalmazás");
+  expect(readme).not.toContain("{{projectName}}");
+});
+
 test("a right-to-left locale sets dir=rtl on generated markup", async () => {
   const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-locale-ar-"));
   const target = join(dir, "my-app");

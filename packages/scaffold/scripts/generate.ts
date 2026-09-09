@@ -4,13 +4,14 @@
  */
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
-import { generateMessageBundles, loadConfig } from "@pantoken/i18n-engine";
+import { generateMessageBundles, loadConfig, parsePo, readCatalog } from "@pantoken/i18n-engine";
 import { renderWrapperContainer, wrapperRootClassName } from "@pantoken/scaffold-base";
 import type { CompiledScaffoldMetadata, ScaffoldMetadata } from "../src/scaffold-metadata.ts";
 import { flattenSource, type SourceEntry } from "./i18n-sources.ts";
 import { LOCALES } from "./lib/locales.ts";
 
 const root = resolve(import.meta.dirname, "..");
+const repoRoot = resolve(root, "../..");
 const templatesRoot = join(root, "templates");
 // Read the shared cssdoc template from scaffold-base (JSONC with comments)
 const scaffoldBaseTemplates = resolve(root, "../scaffold-base/templates");
@@ -73,22 +74,24 @@ writeFileSync(
 );
 console.log(`✓ inlined scaffold templates for ${Object.keys(scaffolds).length} platforms`);
 
-// Per-locale overrides layered over SCAFFOLDS at scaffold time. Only files that actually differ
-// from English are inlined, so an untranslated locale costs nothing.
-const l10nRoot = join(outDir, "l10n");
+// Per-locale overrides layered over SCAFFOLDS at scaffold time. Read the committed PO catalogs
+// directly so a clean checkout produces the same package without a separate render step.
 const overlays: Record<string, Record<string, Record<string, string>>> = {};
-for (const locale of existsSync(l10nRoot)
-  ? readdirSync(l10nRoot, { withFileTypes: true }).filter((entry) => entry.isDirectory())
-  : []) {
+for (const locale of Object.keys(LOCALES)) {
+  const catalog = parsePo(readCatalog(join(repoRoot, "l10n", locale, "scaffold.readme.po")) ?? "");
+  const translations = new Map(
+    catalog
+      .filter((entry) => !entry.obsolete && !entry.fuzzy && entry.msgstr !== "")
+      .map((entry) => [entry.msgid, entry.msgstr]),
+  );
   const byPlatform: Record<string, Record<string, string>> = {};
   for (const [platform, files] of Object.entries(scaffolds)) {
-    const readmePath = join(l10nRoot, locale.name, platform, "README.md");
-    if (!existsSync(readmePath)) continue;
-    const localized = readFileSync(readmePath, "utf8");
+    const localized = translations.get(files["README.md"]);
+    if (!localized) continue;
     if (localized === files["README.md"]) continue;
     byPlatform[platform] = { "README.md": localized };
   }
-  if (Object.keys(byPlatform).length > 0) overlays[locale.name] = byPlatform;
+  if (Object.keys(byPlatform).length > 0) overlays[locale] = byPlatform;
 }
 writeFileSync(
   join(outDir, "scaffold-overlays.ts"),
