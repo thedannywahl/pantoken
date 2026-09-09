@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/scaffold",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "npx @pantoken/scaffold <platform> — scaffold a starter project (html, react, next, angular, web-components, ...) with pantoken already installed and wired in.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

@@ -1,5 +1,12 @@
 # @pantoken/scaffold
 
+## 1.0.1
+
+### Patch Changes
+
+- 2b408c4: Add regression coverage for `runScaffoldCli()` invoked with no arguments: the non-TTY path reports the
+  missing-platform error, and the TTY path prompts via `select()`/`text()` before scaffolding.
+
 ## 1.0.0
 
 ### Major Changes
