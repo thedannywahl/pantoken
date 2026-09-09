@@ -3,7 +3,7 @@
   "checkpoint_id": "01M21Z6EDAGR2B4C997B75JR2X",
   "strategy": "manual-commit",
   "branch": "exotic-subdeps",
-  "checkpoints_count": 3,
+  "checkpoints_count": 4,
   "files_touched": [
     ".changeset/pre-approve-install-scripts.md"
   ],
@@ -20,6 +20,13 @@
       "transcript": "/1/full.jsonl",
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
+      "prompt": ""
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
       "prompt": ""
     }
   ],
