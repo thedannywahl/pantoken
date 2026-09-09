@@ -38,7 +38,6 @@
     "@pantoken/drupal": "workspace:*",
     "@pantoken/flutter": "workspace:*",
     "@pantoken/hugo": "workspace:*",
-    "@pantoken/icon-font": "workspace:*",
     "@pantoken/jekyll": "workspace:*",
     "@pantoken/mintlify": "workspace:*",
     "@pantoken/model": "workspace:*",
@@ -51,10 +50,19 @@
     "@pantoken/wordpress": "workspace:*"
   },
   "devDependencies": {
+    "@pantoken/icon-font": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "@pantoken/icon-font": "workspace:*"
+  },
+  "peerDependenciesMeta": {
+    "@pantoken/icon-font": {
+      "optional": true
+    }
   },
   "engines": {
     "node": ">=22.18.0"
