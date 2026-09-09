@@ -364,6 +364,29 @@ test("requires a platform argument under --yes", async () => {
   expect(exitSpy).toHaveBeenCalledWith(1);
 });
 
+test("no args on a non-TTY reports the missing-platform error (dlx/npx piped, not interactive)", async () => {
+  await runScaffoldCli([], { usageCommand: "pantoken-scaffold" });
+  expect(errSpy).toHaveBeenCalledWith(expect.stringContaining("Missing required argument"));
+  expect(exitSpy).toHaveBeenCalledWith(1);
+});
+
+test("no args on a TTY prompts for platform and directory, then scaffolds", async () => {
+  const dir = mktemp();
+  const target = join(dir, "my-app");
+  vi.mocked(select).mockResolvedValueOnce("react");
+  vi.mocked(text).mockResolvedValueOnce(target);
+  const originalIsTTY = process.stdin.isTTY;
+  Object.defineProperty(process.stdin, "isTTY", { value: true, configurable: true });
+  try {
+    await runScaffoldCli([], { usageCommand: "pantoken-scaffold" });
+  } finally {
+    Object.defineProperty(process.stdin, "isTTY", { value: originalIsTTY, configurable: true });
+  }
+  expect(select).toHaveBeenCalled();
+  expect(text).toHaveBeenCalled();
+  expect(existsSync(join(target, "package.json"))).toBe(true);
+});
+
 test("scaffolds and prints next steps when --dir is given", async () => {
   const dir = mktemp();
   const target = join(dir, "my-app");
