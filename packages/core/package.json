@@ -17,6 +17,7 @@
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
+    "./build": "./dist/build.mjs",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -29,13 +30,13 @@
     "check": "vp check"
   },
   "dependencies": {
-    "@instructure/instructure-design-tokens": "catalog:",
     "@instructure/ui-icons": "catalog:",
     "@pantoken/model": "workspace:*",
     "@pantoken/plugin-kit": "workspace:*",
     "@pantoken/utils": "workspace:*"
   },
   "devDependencies": {
+    "@instructure/instructure-design-tokens": "catalog:",
     "@types/node": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "typescript": "catalog:",

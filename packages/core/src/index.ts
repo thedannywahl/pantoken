@@ -1,15 +1,14 @@
 /**
  * `@pantoken/core` — the pantoken transformer.
  *
- * Resolves `@instructure/instructure-design-tokens` + `@instructure/ui-icons` into the canonical
- * `@property`-aligned token IR ({@link buildTokens}), defines the uniform plugin contract
- * ({@link PantokenPlugin}), and adapts the IR for the native lineage ({@link toStyleDictionary}).
+ * Defines the uniform plugin contract ({@link PantokenPlugin}) and adapts the resolved token IR for
+ * the native lineage ({@link toStyleDictionary}). The upstream-resolving transform (`buildTokens`,
+ * which needs the GitHub-only `@instructure/instructure-design-tokens`) lives on the separate
+ * `@pantoken/core/build` entry so this main entry stays free of that exotic dependency.
  *
  * @module
  * @beta
  */
-export { buildTokens } from "./build.ts";
-export type { BuildTokensOptions } from "./build.ts";
 export type { Theme, Token, TokenInput, TokenMeta, TokenModify } from "./model.ts";
 export { defineToken, dedupeByName, runIconPlugins, runTokenPlugins } from "./plugin.ts";
 export type {

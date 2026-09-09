@@ -23,7 +23,8 @@ export type { Mode } from "@pantoken/utils";
  *
  * @example Resolve the built IR to concrete dark-mode values
  * ```ts
- * import { buildTokens, resolveReferences } from "@pantoken/core";
+ * import { buildTokens } from "@pantoken/core/build";
+ * import { resolveReferences } from "@pantoken/core";
  *
  * const resolved = resolveReferences(buildTokens(), "dark");
  * resolved.get("--instui-color-background-base"); // → a concrete "#…" value
@@ -69,7 +70,8 @@ export interface SdLeaf {
  *
  * @example Shape the IR for the native lineage
  * ```ts
- * import { buildTokens, toStyleDictionary } from "@pantoken/core";
+ * import { buildTokens } from "@pantoken/core/build";
+ * import { toStyleDictionary } from "@pantoken/core";
  *
  * const dictionary = toStyleDictionary(buildTokens(), "light");
  * // → { "instui-color-background-base": { value: "#…", type: "color" }, … }
