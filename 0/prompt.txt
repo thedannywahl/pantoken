@@ -1,0 +1,37 @@
+two additional errors:
+```
+➜ npx create-pantoken-app@latest
+Need to install the following packages:
+create-pantoken-app@1.1.0
+Ok to proceed? (y) y
+│
+◇  Select a platform to scaffold:
+│  HTML
+│
+◇  Target directory:
+│  test1
+│
+◇  Done scaffolding.
+✓ test1/.gitignore
+✓ test1/README.md
+✓ test1/index.html
+✓ test1/package.json
+✓ test1/pnpm-workspace.yaml
+✓ test1/tsconfig.json
+✓ test1/vite.config.ts
+✓ test1/.vscode/extensions.json
+✓ test1/.vscode/settings.json
+✓ test1/src/main.ts
+✓ test1/src/style.css
+✓ test1/cssdoc.json
+│
+◇  2. Installing dependencies spawnSync npm ENOENT
+
+Next steps:
+1. cd .
+2. Install dependencies: npm install
+3. Start the dev server (if your template has one)
+```
+
+1. the `cd` step doesn't have the correct directors.
+2. the installing dependencies step failed
