@@ -96,3 +96,7 @@ but do we need to override glob in icon-font to prevent warnings for users of th
 ---
 
 issue 107 is exactly this, let's leave a comment in our change: https://github.com/nfroidure/ttf2woff2/issues/107
+
+---
+
+create a changeset, and incremental conventional commit and push.
