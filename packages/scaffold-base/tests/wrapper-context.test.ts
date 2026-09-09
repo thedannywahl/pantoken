@@ -27,10 +27,27 @@ test("parseSelector reads a class attribute selector as a className", () => {
   });
 });
 
-test("parseSelector reads a non-class attribute selector as attrs", () => {
-  expect(parseSelector("slot[name='content']")).toEqual({
-    tag: "slot",
-    attrs: { name: "content" },
+test("parseSelector reads a non-class, non-slot attribute selector as attrs", () => {
+  expect(parseSelector('img[src="foo"]')).toEqual({
+    tag: "img",
+    attrs: { src: "foo" },
+    optional: false,
+  });
+});
+
+test("parseSelector rewrites a slot[name=...] selector into a div with data-slot", () => {
+  expect(parseSelector('slot[name="content"]')).toEqual({
+    tag: "div",
+    attrs: { "data-slot": "content" },
+    optional: false,
+  });
+});
+
+test("parseSelector captures a trailing class on a slot[name=...] selector", () => {
+  expect(parseSelector('slot[name="content"].main')).toEqual({
+    tag: "div",
+    attrs: { "data-slot": "content" },
+    className: "main",
     optional: false,
   });
 });
@@ -78,17 +95,17 @@ test("renderNode marks an optional node with a trailing comment", () => {
 
 test("renderNode renders attrs and nests children with indentation", () => {
   const node = {
-    tag: "slot",
-    attrs: { name: "header" },
+    tag: "div",
+    attrs: { "data-slot": "header" },
     children: [{ tag: "div", className: "child", children: [] }],
   };
   expect(renderNode(node, "html", 1)).toBe(
-    '  <slot name="header">\n    <div class="child"></div>\n  </slot>',
+    '  <div data-slot="header">\n    <div class="child"></div>\n  </div>',
   );
 });
 
 test("renderNode injects the main content slot text per format", () => {
-  const node = { tag: "slot", attrs: { name: "content" }, children: [] };
+  const node = { tag: "div", attrs: { "data-slot": "content" }, children: [] };
   expect(renderNode(node, "html", 0)).toContain('class="instui-button -color-primary"');
   expect(renderNode(node, "jsx", 0)).toContain('className="instui-button -color-primary"');
 });
