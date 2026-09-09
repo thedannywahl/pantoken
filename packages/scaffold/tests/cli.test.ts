@@ -111,6 +111,17 @@ test("detectPackageManager falls back to vp when running under a vite-plus-manag
   ).toBe("vp");
 });
 
+test("detectPackageManager detects a Deno runtime before the vp fallback", () => {
+  Object.defineProperty(globalThis, "Deno", { value: {}, configurable: true });
+  try {
+    expect(
+      detectPackageManager({}, "/Users/x/.local/share/vite-plus/js_runtime/node/26.8.1/bin/node"),
+    ).toBe("deno");
+  } finally {
+    Reflect.deleteProperty(globalThis, "Deno");
+  }
+});
+
 test("detectPackageManager prefers npm_config_user_agent over the vite-plus execPath fallback", () => {
   expect(
     detectPackageManager(
@@ -242,6 +253,27 @@ test("printNextSteps uses the generic fallback (with detected dev script) for pl
 
   expect(printed).toContain("pnpm install");
   expect(printed).toContain("pnpm run dev");
+});
+
+test("printNextSteps uses deno commands in a Deno runtime", async () => {
+  const dir = mktemp();
+  const target = join(dir, "my-react-app");
+  const written = await scaffoldWithSpinner("react", target, t);
+
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  Object.defineProperty(globalThis, "Deno", { value: {}, configurable: true });
+  let printed: string;
+  try {
+    printNextSteps(target, written, t, "react");
+    printed = logSpy.mock.calls.map((call: unknown[]) => call.join(" ")).join("\n");
+  } finally {
+    Reflect.deleteProperty(globalThis, "Deno");
+    logSpy.mockRestore();
+  }
+
+  expect(printed).toContain("deno install");
+  expect(printed).toContain("deno task dev");
+  expect(printed).not.toContain("npm run dev");
 });
 
 test("printNextSteps collapses to a single dev step when installed", async () => {

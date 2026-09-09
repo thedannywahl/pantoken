@@ -74,9 +74,10 @@ test("bun-created apps use bun commands and omit pnpm workspace config", () => {
   expect(readme).toContain("bun run dev");
 });
 
-test("generate <target> delegates to @pantoken/cli instead of scaffolding", () => {
+test("generate <target> points users to @pantoken/cli instead of scaffolding", () => {
   const dir = mkdtempSync(join(tmpdir(), "create-pantoken-app-generate-"));
-  execFileSync("node", [bin, "generate", "vanilla", "--out", dir], { encoding: "utf8" });
-  expect(existsSync(join(dir, "variables.json"))).toBe(true);
+  expect(() =>
+    execFileSync("node", [bin, "generate", "vanilla", "--out", dir], { encoding: "utf8" }),
+  ).toThrow(/@pantoken\/cli/);
   expect(existsSync(join(dir, "package.json"))).toBe(false);
 });

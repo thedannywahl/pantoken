@@ -100,6 +100,21 @@ test("bun-scaffolded projects use bun README commands and omit pnpm workspace co
   expect(readme).not.toContain("npm run dev");
 });
 
+test("deno-scaffolded projects use deno README commands and omit pnpm workspace config", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-deno-"));
+  const target = join(dir, "my-app");
+  await scaffoldProject("components", target, { packageManager: "deno" });
+
+  const readme = readFileSync(join(target, "README.md"), "utf8");
+
+  expect(existsSync(join(target, "package.json"))).toBe(true);
+  expect(existsSync(join(target, "pnpm-workspace.yaml"))).toBe(false);
+  expect(readme).toContain("deno install");
+  expect(readme).toContain("deno task dev");
+  expect(readme).not.toContain("npm install");
+  expect(readme).not.toContain("npm run dev");
+});
+
 test("defaults every scaffold's pantoken CSS import to the rebrand/light theme", async () => {
   const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-theme-default-"));
   const target = join(dir, "my-app");

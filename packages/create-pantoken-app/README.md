@@ -28,11 +28,10 @@ Run `npx create-pantoken-app --help` for the full flag reference.
 
 ## Native design-token output
 
-`generate <target>` is a separate entry point (flat-name alias for `@pantoken/cli`) that emits
-native/non-npm design-token source instead of scaffolding a starter project:
+Use `@pantoken/cli` directly for native/non-npm design-token source:
 
 ```sh
-npx create-pantoken-app generate swift --out ./ios/DesignTokens
+npx @pantoken/cli generate swift --out ./ios/DesignTokens
 ```
 
 See [`@pantoken/cli`](https://www.npmjs.com/package/@pantoken/cli) for the full target list.

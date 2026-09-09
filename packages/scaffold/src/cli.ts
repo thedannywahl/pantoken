@@ -284,6 +284,7 @@ export function detectPackageManager(
   if (userAgent.includes("bun")) return "bun";
   if (userAgent.includes("deno")) return "deno";
   if (userAgent.includes("npm")) return "npm";
+  if ("Deno" in globalThis) return "deno";
   if ((execPath ?? process.execPath).includes("vite-plus")) return "vp";
   return undefined;
 }
