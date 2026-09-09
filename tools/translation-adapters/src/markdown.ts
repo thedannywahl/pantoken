@@ -44,7 +44,9 @@ export interface PreservedMarkdown {
 // punctuation and has come back duplicated or mangled. Masking removes the ambiguity.
 const ESCAPED_ANGLE_BRACKET = /\\[<>]/g;
 // Scaffold templates carry `{{projectName}}`-style tokens that are substituted after translation.
-const TEMPLATE_TOKEN = /\{\{[^}\n]+\}\}/g;
+// Excluding "{" from the body (not just "}") keeps this linear on adversarial input like "{{{{...":
+// without it, each "{{" start re-scans the same run of braces looking for a close, which is quadratic.
+const TEMPLATE_TOKEN = /\{\{[^{}\n]+\}\}/g;
 
 /** Mask fenced/inline code, package names, escaped angle brackets, and `{{template}}` tokens. */
 export function preserveMarkdown(input: string): PreservedMarkdown {
