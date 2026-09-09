@@ -25,7 +25,7 @@ import { extractMessagesSpace, type MessageUnit } from "./extract-messages.ts";
 import { mergePoWithTemplate } from "./gettext.ts";
 import { parsePo, serializePot, type PoEntry } from "./po.ts";
 import { refreshCoverageReports } from "./coverage.ts";
-import { fillUntranslatedEntries } from "./ai-translate.ts";
+import { fillUntranslatedEntries, type FillOptions } from "./ai-translate.ts";
 import { localesForSpace, resolveLocaleStatus } from "./locales.ts";
 import { catalogUnitKey } from "./units.ts";
 
@@ -39,27 +39,86 @@ function resolvePattern(pattern: string, vars: Readonly<Record<string, string>>)
   return pattern.replace(/\{(\w+)\}/gu, (match, key: string) => vars[key] ?? match);
 }
 
+/** `spaceId`'s POT path, relative to the repository root. */
+function potPathForSpace(config: I18nConfig, spaceId: string): string {
+  return resolvePattern(config.catalogs.template, { space: spaceId });
+}
+
+/** One entry as {@link serializePot} consumes it. */
+interface PotUnit {
+  msgid: string;
+  reference: string;
+  msgctxt?: string;
+  flags?: readonly string[];
+}
+
+/** POT units for a messages space: every source unit, with a non-`always` intent kept as a flag. */
+function messagesPotUnits(units: readonly MessageUnit[], space: MessagesSpaceConfig): PotUnit[] {
+  return units.map((unit) => ({
+    msgid: unit.msgid,
+    msgctxt: unit.msgctxt,
+    reference: unit.reference || space.source,
+    flags:
+      typeof unit.translate === "string" && unit.translate !== "always"
+        ? [`x-translate-${unit.translate}`]
+        : [],
+  }));
+}
+
+/** Report a finding when the committed POT no longer covers the same units its source extracts to —
+ *  the desync that used to surface only indirectly, as permanently "untranslated" new keys.
+ *  Compares units rather than bytes: the POT header carries a regenerated timestamp. */
+function reportPotStaleness(
+  reporter: DriftReporter,
+  config: I18nConfig,
+  configDir: string,
+  spaceId: string,
+  freshUnits: readonly PotUnit[],
+): void {
+  const relativePotPath = potPathForSpace(config, spaceId);
+  const potPath = join(configDir, relativePotPath);
+  const committed = existsSync(potPath) ? parsePo(readFileSync(potPath, "utf8")) : [];
+  const committedKeys = new Set(
+    committed.filter((e) => !e.obsolete && e.msgid !== "").map((e) => catalogUnitKey(e)),
+  );
+  const freshKeys = new Set(freshUnits.map((unit) => catalogUnitKey(unit)));
+  const missing = [...freshKeys].filter((key) => !committedKeys.has(key)).length;
+  const extra = [...committedKeys].filter((key) => !freshKeys.has(key)).length;
+  if (missing === 0 && extra === 0) return;
+  reporter.add({
+    surface: spaceId,
+    locale: config.source,
+    file: relativePotPath,
+    detail:
+      `Stale catalog template: ${relativePotPath} is missing ${String(missing)} and carries ` +
+      `${String(extra)} stale unit(s). Re-extract it.`,
+  });
+}
+
 /** Normalize whole-file Markdown translations to the formatter's stable paragraph indentation. */
 export function normalizeWholeFileMarkdown(content: string): string {
   return content.trim().replace(/^ (?=\S)/gmu, "");
 }
 
 /** Every known, non-excluded locale across every tier (before a space narrows it further). */
-function nonExcludedKnownLocales(config: I18nConfig): string[] {
+function nonExcludedKnownLocales(config: I18nConfig, tier?: string): string[] {
   const allTiered = Object.values(config.locales.tiers).flat();
   const known = [...new Set(allTiered)].filter((locale) => locale !== "*" && !locale.endsWith("*"));
-  return known.filter((locale) => !resolveLocaleStatus(config.locales, locale).excluded);
+  return known.filter((locale) => {
+    const status = resolveLocaleStatus(config.locales, locale);
+    return !status.excluded && (tier === undefined || status.tier === tier);
+  });
 }
 
 /** Every non-excluded, in-scope locale for `docs.guides`, per `locales.exclude` + the space's own scope. */
-function guidesLocales(config: I18nConfig): string[] {
-  return contentLocales(config, DOCS_GUIDES);
+function guidesLocales(config: I18nConfig, tier?: string): string[] {
+  return contentLocales(config, DOCS_GUIDES, tier);
 }
 
 /** Resolve configured locales that are eligible for a content localization space. */
-function contentLocales(config: I18nConfig, spaceId: string): string[] {
+function contentLocales(config: I18nConfig, spaceId: string, tier?: string): string[] {
   const space = config.spaces[spaceId];
-  const nonExcluded = nonExcludedKnownLocales(config);
+  const nonExcluded = nonExcludedKnownLocales(config, tier);
   return [...localesForSpace(nonExcluded, space?.kind === "content" ? space.locales : undefined)];
 }
 
@@ -97,7 +156,7 @@ export function runExtractContent(
   spaceId: string,
 ): ExtractResult {
   const units = contentSpaceUnits(config, configDir, spaceId);
-  const potPath = join(configDir, resolvePattern(config.catalogs.template, { space: spaceId }));
+  const potPath = join(configDir, potPathForSpace(config, spaceId));
   mkdirSync(dirname(potPath), { recursive: true });
   writeFileSync(potPath, serializePot(units, config.poOptions.defaultFlags));
   refreshCoverageReports(join(configDir, "i18n.config.json"));
@@ -147,7 +206,8 @@ export async function runTranslateContent(
   spaceId: string,
   locale: string,
 ): Promise<TranslateResult> {
-  const potPath = join(configDir, resolvePattern(config.catalogs.template, { space: spaceId }));
+  // Re-extract first: msgmerge can only propagate units the POT already knows about.
+  const { potPath } = runExtractContent(config, configDir, spaceId);
   const poPath = join(
     configDir,
     resolvePattern(config.catalogs.target, { space: spaceId, locale }),
@@ -269,9 +329,10 @@ export function runCheckContent(
   const units = contentSpaceUnits(config, configDir, spaceId);
   const reporter = new DriftReporter({
     label: spaceId,
-    fixCommand: `i18n translate ${spaceId} && i18n render ${spaceId}`,
+    fixCommand: `i18n extract ${spaceId} && i18n translate ${spaceId} && i18n render ${spaceId}`,
     policy: buildDriftPolicy(config),
   });
+  reportPotStaleness(reporter, config, configDir, spaceId, units);
   for (const locale of contentLocales(config, spaceId)) {
     if (locale === config.source) continue;
     const entries = loadPoEntriesForSpace(config, configDir, spaceId, locale);
@@ -296,9 +357,9 @@ export { DOCS_HOME, contentLocales };
 
 /** Every non-excluded, in-scope locale for a given messages space, per `locales.exclude` + the
  *  space's own scope. */
-export function messagesLocales(config: I18nConfig, spaceId: string): string[] {
+export function messagesLocales(config: I18nConfig, spaceId: string, tier?: string): string[] {
   const space = config.spaces[spaceId];
-  const nonExcluded = nonExcludedKnownLocales(config);
+  const nonExcluded = nonExcludedKnownLocales(config, tier);
   return [...localesForSpace(nonExcluded, space?.kind === "messages" ? space.locales : undefined)];
 }
 
@@ -319,18 +380,12 @@ export function runExtractMessages(
 ): ExtractResult {
   const space = messagesSpaceConfig(config, spaceId);
   const units = extractMessagesSpace(join(configDir, space.source), spaceId);
-  const potPath = join(configDir, resolvePattern(config.catalogs.template, { space: spaceId }));
+  const potPath = join(configDir, potPathForSpace(config, spaceId));
   mkdirSync(dirname(potPath), { recursive: true });
-  const potUnits = units.map((unit) => ({
-    msgid: unit.msgid,
-    msgctxt: unit.msgctxt,
-    reference: unit.reference || space.source,
-    flags:
-      typeof unit.translate === "string" && unit.translate !== "always"
-        ? [`x-translate-${unit.translate}`]
-        : [],
-  }));
-  writeFileSync(potPath, serializePot(potUnits, config.poOptions.defaultFlags));
+  writeFileSync(
+    potPath,
+    serializePot(messagesPotUnits(units, space), config.poOptions.defaultFlags),
+  );
   return { space: spaceId, unitCount: units.length, potPath };
 }
 
@@ -341,14 +396,16 @@ export async function runTranslateMessages(
   configDir: string,
   spaceId: string,
   locale: string,
+  options: FillOptions = {},
 ): Promise<TranslateResult> {
-  const potPath = join(configDir, resolvePattern(config.catalogs.template, { space: spaceId }));
+  // Re-extract first: msgmerge can only propagate units the POT already knows about.
+  const { potPath } = runExtractMessages(config, configDir, spaceId);
   const poPath = join(
     configDir,
     resolvePattern(config.catalogs.target, { space: spaceId, locale }),
   );
   const result = await mergeAndCount(potPath, poPath, (path) =>
-    fillUntranslatedEntries(path, locale, config.provider),
+    fillUntranslatedEntries(path, locale, config.provider, { configDir, ...options }),
   );
   refreshCoverageReports(join(configDir, "i18n.config.json"));
   return { space: spaceId, locale, poPath, ...result };
@@ -404,14 +461,16 @@ export function runCheckMessages(
   spaceId: string,
 ): CheckResult {
   const space = messagesSpaceConfig(config, spaceId);
-  const units: MessageUnit[] = extractMessagesSpace(join(configDir, space.source), spaceId).filter(
-    (u) => u.translate !== "never",
-  );
+  const sourceUnits = extractMessagesSpace(join(configDir, space.source), spaceId);
+  const units: MessageUnit[] = sourceUnits.filter((u) => u.translate !== "never");
   const reporter = new DriftReporter({
     label: spaceId,
-    fixCommand: `i18n translate ${spaceId} && i18n render ${spaceId}`,
+    // A messages space has no generic render step — its own package owns codegen.
+    fixCommand: `i18n extract ${spaceId} && i18n translate ${spaceId}`,
     policy: buildDriftPolicy(config),
   });
+
+  reportPotStaleness(reporter, config, configDir, spaceId, messagesPotUnits(sourceUnits, space));
 
   for (const locale of messagesLocales(config, spaceId)) {
     if (locale === config.source) continue;
