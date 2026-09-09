@@ -1,11 +1,12 @@
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, realpathSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test";
 import { InvalidArgumentError } from "commander";
 import {
   ScaffoldCliError,
+  buildCreateUsageCommand,
   createLocaleLookup,
   createScaffoldCommand,
   detectPackageManager,
@@ -121,6 +122,19 @@ test("detectPackageManager prefers npm_config_user_agent over the vite-plus exec
 
 test("detectPackageManager returns undefined for a plain system node with no user agent", () => {
   expect(detectPackageManager({}, "/usr/local/bin/node")).toBeUndefined();
+});
+
+// ---------------------------------------------------------------------------
+// buildCreateUsageCommand
+// ---------------------------------------------------------------------------
+
+test("buildCreateUsageCommand maps each package manager to its own create invocation", () => {
+  expect(buildCreateUsageCommand("npm")).toBe("npm create pantoken-app --");
+  expect(buildCreateUsageCommand("pnpm")).toBe("pnpm create pantoken-app --");
+  expect(buildCreateUsageCommand("yarn")).toBe("yarn create pantoken-app --");
+  expect(buildCreateUsageCommand("bun")).toBe("bunx create-pantoken-app --");
+  expect(buildCreateUsageCommand("deno")).toBe("deno run -A npm:create-pantoken-app --");
+  expect(buildCreateUsageCommand("vp")).toBe("vpx create-pantoken-app --");
 });
 
 // ---------------------------------------------------------------------------
@@ -328,6 +342,21 @@ test("resolveScaffoldTarget prompts for a missing platform and directory on a TT
   expect(result).toEqual({ platform: "vue", dir: "./prompted-app" });
 });
 
+test("resolveScaffoldTarget's platform prompt shows alphabetized, display-cased labels", async () => {
+  vi.mocked(select).mockResolvedValueOnce("react");
+  vi.mocked(text).mockResolvedValueOnce(".");
+  await resolveScaffoldTarget({ isTTY: true, t });
+
+  const call = vi.mocked(select).mock.calls[0]?.[0] as {
+    options: { value: string; label: string }[];
+  };
+  const labels = call.options.map((o) => o.label);
+  expect(labels).toEqual([...labels].sort((a, b) => a.localeCompare(b)));
+  expect(call.options).toContainEqual({ value: "components", label: "HTML" });
+  expect(call.options).toContainEqual({ value: "web-components", label: "Web components" });
+  expect(call.options).toContainEqual({ value: "react", label: "React" });
+});
+
 test("resolveScaffoldTarget throws ScaffoldCliError when the platform prompt is cancelled", async () => {
   vi.mocked(select).mockResolvedValueOnce(CANCEL_SYMBOL as never);
   await expect(resolveScaffoldTarget({ isTTY: true, t })).rejects.toThrow(ScaffoldCliError);
@@ -376,6 +405,9 @@ let errSpy: ReturnType<typeof vi.spyOn>;
 let exitSpy: ReturnType<typeof vi.spyOn>;
 let stdoutSpy: ReturnType<typeof vi.spyOn>;
 let stderrSpy: ReturnType<typeof vi.spyOn>;
+// `runScaffoldCli` may chdir the real process (into a scratch dir) — restore it so later tests
+// aren't affected.
+const originalCwd = process.cwd();
 
 beforeEach(() => {
   logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
@@ -394,6 +426,7 @@ afterEach(() => {
   vi.mocked(select).mockReset();
   vi.mocked(text).mockReset();
   vi.mocked(execFileSync).mockClear();
+  process.chdir(originalCwd);
 });
 
 test("createScaffoldCommand builds a command named after the given name", () => {
@@ -474,6 +507,17 @@ test("scaffolds, installs dependencies automatically, and prints a single 'Get s
     expect.objectContaining({ cwd: target }),
   );
   expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Get started"));
+});
+
+test("chdirs into a non-'.' target dir so the printed next step never needs a separate cd", async () => {
+  const dir = mktemp();
+  const target = join(dir, "my-app");
+  await runScaffoldCli(["react", "--dir", target, "--yes"], { usageCommand: "pantoken-scaffold" });
+  expect(realpathSync(process.cwd())).toBe(realpathSync(target));
+  const devStep = logSpy.mock.calls
+    .map((call: unknown[]) => String(call[0]))
+    .find((s: string) => /\d\. /.test(s));
+  expect(devStep).not.toContain("cd ");
 });
 
 test("--no-install skips the automatic install and keeps the full 'Next steps' block", async () => {

@@ -7,8 +7,19 @@ import { expect, test } from "vite-plus/test";
 const bin = new URL("../bin/create-pantoken-app.mjs", import.meta.url).pathname;
 
 test("--help prints usage without scaffolding anything", () => {
-  const output = execFileSync("node", [bin, "--help"], { encoding: "utf8" });
+  const output = execFileSync("node", [bin, "--help"], {
+    encoding: "utf8",
+    env: { ...process.env, npm_config_user_agent: "npm/10.0.0 node/22" },
+  });
   expect(output).toContain("npm create pantoken-app");
+});
+
+test("--help shows the invoking package manager's own create invocation", () => {
+  const output = execFileSync("node", [bin, "--help"], {
+    encoding: "utf8",
+    env: { ...process.env, npm_config_user_agent: "pnpm/9.0.0 node/22" },
+  });
+  expect(output).toContain("pnpm create pantoken-app");
 });
 
 test("--version prints this package's own version", () => {
