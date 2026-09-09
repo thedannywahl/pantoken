@@ -786,12 +786,18 @@ importers:
       '@pantoken/pendo':
         specifier: workspace:*
         version: link:../renderers/pendo
+      '@pantoken/plugin-custom-components':
+        specifier: workspace:*
+        version: link:../plugins/pantoken/custom-components
       '@pantoken/plugin-custom-icons':
         specifier: workspace:*
         version: link:../plugins/pantoken/custom-icons
       '@pantoken/plugin-logos':
         specifier: workspace:*
         version: link:../plugins/pantoken/logos
+      '@pantoken/plugin-primitives':
+        specifier: workspace:*
+        version: link:../plugins/pantoken/primitives
       '@pantoken/plugin-simple-icons':
         specifier: workspace:*
         version: link:../plugins/pantoken/simple-icons
@@ -1299,9 +1305,6 @@ importers:
 
   packages/create-pantoken-app:
     dependencies:
-      '@pantoken/cli':
-        specifier: workspace:*
-        version: link:../cli
       '@pantoken/scaffold':
         specifier: workspace:*
         version: link:../scaffold
