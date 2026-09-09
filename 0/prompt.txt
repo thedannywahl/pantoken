@@ -22,3 +22,7 @@ will `vpr i18n:translate:copilot` now include these additional spaces?
 ---
 
 do (2).  it should just be registered in our i18n.config.json and then the translate scripts should take it from there.
+
+---
+
+incremental conventional commits, changesets, and push - ignoring the inflight translations of .po and .pot files.
