@@ -3,7 +3,7 @@
   "checkpoint_id": "01M23FPE24KQ0BX75HCAR05SBJ",
   "strategy": "manual-commit",
   "branch": "components-app-improvements",
-  "checkpoints_count": 2,
+  "checkpoints_count": 3,
   "files_touched": [
     "docs/scripts/sync-guide-locales.ts",
     "docs/scripts/translate-guide-po.ts",
@@ -30,6 +30,13 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": "/1/prompt.txt"
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
+      "prompt": "/2/prompt.txt"
     }
   ],
   "token_usage": {
