@@ -1,0 +1,26 @@
+the test1 folder is the result of `npx create-pantoken-app@latest` and selecting 'components'. There are a few things we need to improve:
+1. after install the script should cwd to the target folder so that the next step is just `<pm> <dev command>` without having to `cd`
+2. the 'components' platform should be displayed as 'HTML' and include it as an alias of components.
+3. the select list should be alphabetized.
+4. the options should be properly cased and spelled, i.e. "Web components" over "web-components"
+5. the package manager detection should apply to usage as well. for example running `pnpm dlx create-pantoken-app@latest --help` should show usage using pnpm, not npm.
+6. the html/components scaffold is broken, none of the styles load and none of the instui vars are defined.
+7. validate that we still need core-js or ttf2woff2 as trusted dependencies after the last re-architecture.
+8. the README should be a short useful utility of how to get started with this scaffold, and a link to the appropriate documentation page to learn more.  The inro of how it was created is unnecessary.
+9. all of the css sideeffect imports have typescript errors `Cannot find module or type declarations for side-effect import`
+
+---
+
+additions:
+
+1. plugin-layouts css is not actually declarative styles, it's just the reference DOM to generate this html, so it doesn't need to be included at all here.
+2. `<slot>` is for web components, not standard html so we shouldn't be putting it here, we could possibly use spans or divs to indicate the placeholders.
+3. the interactions should be included out-of-the-box.
+
+---
+
+Start implementation
+
+---
+
+for the files you touched - ignoring others, create changesets, incremental conventional commits, and push and create a PR.
