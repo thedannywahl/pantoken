@@ -1,6 +1,6 @@
 {
   "name": "create-pantoken-app",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "npm create pantoken-app -- <platform> — flat-name alias for @pantoken/scaffold, so `npm create pantoken-app` works the way npm's create-* convention expects. Also `generate <target>` — flat-name alias for @pantoken/cli's native/non-npm token output.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

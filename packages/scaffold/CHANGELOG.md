@@ -1,5 +1,118 @@
 # @pantoken/scaffold
 
+## 1.2.0
+
+### Minor Changes
+
+- 28e42c9: The `components` (plain HTML) scaffold now puts the app shell markup directly in `index.html`
+  instead of injecting it via a `main.ts` `innerHTML` template literal. `src/main.ts` is now just
+  imports plus a place to add your own behavior, and a new `src/style.css` holds your own
+  app-specific styles.
+- 28e42c9: feat: alphabetize the platform picker, detect the invoking package manager's usage text, and cwd into the scaffolded dir
+
+  The interactive platform picker showed raw keys (`components`, `web-components`,
+  ...) in `PRESET_LEDGER` order. It now shows alphabetized, properly-cased labels
+  (`HTML`, `Web components`, `React`, ...).
+
+  `create-pantoken-app`'s `--help` always showed `npm create pantoken-app --` as
+  the usage command, regardless of how it was actually invoked. A new
+  `buildCreateUsageCommand()` maps the detected package manager to its own create
+  invocation (`pnpm create`, `yarn create`, `bunx create-`, `deno run -A npm:create-`,
+  `vpx create-`), matching the same `detectPackageManager()` logic already used for
+  install/next-steps.
+
+  After scaffolding and installing, the CLI now `chdir`s into the target directory
+  (when it isn't already `"."`) so the printed next step is just the dev command,
+  never a separate `cd`.
+
+- 28e42c9: fix: fix broken scaffold styling and wire in `@pantoken/interactions` out of the box
+
+  The `components` (HTML), `web-components`, and `angular` scaffold templates
+  imported `@pantoken/components/base.css` and `components.css` but never
+  `@pantoken/css`, so no `--instui-*` custom property was ever defined and every
+  component rendered unstyled. All three now import the theme stylesheet first
+  and depend on `@pantoken/css`.
+
+  Every template's `tsconfig.json` now sets `"types": ["vite/client"]` so
+  TypeScript resolves `.css` side-effect imports (previously "Cannot find module
+  or type declarations for side-effect import" in every scaffolded project).
+
+  `@pantoken/plugin-layouts/layouts.css` was only ever needed at scaffold-generate
+  time (to derive the wrapper markup), never at the scaffolded app's runtime —
+  dropped from every template's entry file and dependencies.
+
+  `@pantoken/interactions` (modal, tooltip, alert dismiss, and other component
+  behaviors) is now wired into every template out of the box via its full IIFE
+  bundle. The Next.js template gained a small client component
+  (`PantokenInteractions`) since the bundle touches `document` at import time,
+  which the App Router's default server-rendered layout can't do.
+
+- 28e42c9: Scaffold generated projects in the detected (or requested) locale.
+
+  `-l, --lang` now shapes the scaffolded project as well as the CLI interface: entry markup gets a
+  matching `lang`/`dir` pair, so `--lang ar` scaffolds `<html lang="ar" dir="rtl">`.
+
+  Detection now keeps region and script subtags pantoken actually supports (`pt_BR.UTF-8` resolves to
+  `pt-BR`, `zh-Hant-TW` to `zh-Hant`) and narrows unsupported ones to their base language (`es_MX` to
+  `es`) rather than emitting a tag with no bundle behind it. An explicit `--lang` errors on an
+  unsupported value, listing the supported tags, instead of silently falling back to English — the
+  resolved tag is written into generated files, so it stays constrained to the registry.
+
+- 28e42c9: Localize scaffolded project READMEs.
+
+  Adds a `scaffold.readme` content space covering `packages/scaffold/templates/*/README.md`, so each
+  platform's README is translated as one whole-Markdown unit and rendered per locale. The scaffolder
+  layers those renderings over the English templates at scaffold time, and only files that actually
+  differ from English are inlined — an untranslated locale costs nothing.
+
+### Patch Changes
+
+- 28e42c9: fix: allow pnpm's exotic-subdep gate for scaffolded projects
+
+  `@pantoken/tokens` pulls in a git-resolved upstream dependency several levels
+  deep, which pnpm's default `blockExoticSubdeps` policy rejects for non-direct
+  consumers — a fresh `pnpm install` in any scaffolded project failed with
+  `ERR_PNPM_EXOTIC_SUBDEP`. Every template's `pnpm-workspace.yaml` now also sets
+  `blockExoticSubdeps: false`, alongside the existing `core-js`/`ttf2woff2`
+  `allowBuilds` entries.
+
+- 28e42c9: Generate localized scaffold README overlays directly from their committed PO catalogs.
+
+  The overlay generator previously read an ignored render tree, so a clean checkout had the catalogs
+  but built an empty overlay unless someone first ran a separate render command. Builds now read each
+  locale's `scaffold.readme.po` directly and select non-fuzzy translations by their English README
+  `msgid`, making release output reproducible from tracked files.
+
+- 28e42c9: docs: shorten scaffold template READMEs and link to the docs guide
+
+  Each scaffold template's README opened with "Scaffolded with
+  `pantoken-scaffold X`...", which is trivia the reader already knows. Replaced
+  with a one-line description, the same Develop/What's here sections (updated for
+  the `plugin-layouts`/`interactions`/`data-slot` changes), and a single "Learn
+  more" link to the relevant pantoken.app guide page.
+
+- 28e42c9: Cover `scaffold.readme` in the standard extract and translate scripts.
+
+  Registering the space in `i18n.config.json` was not enough: `extract` and the six `translate*`
+  variants each named `cli.scaffold` explicitly, so `vpr i18n:translate:copilot` never reached the
+  scaffolded-project READMEs even though `check:drift` already gated them. Each script now covers
+  both spaces and renders the result.
+
+- 28e42c9: Remove the redundant README render step from scaffold translation scripts.
+
+  The package generator now reads committed `scaffold.readme` catalogs directly, so each `translate*`
+  script no longer launches `vp run render:readme`. This avoids a Vite+ process-spawn failure after a
+  successful translation run and leaves the resulting published overlay unchanged.
+
+- Updated dependencies [28e42c9]
+  - @pantoken/scaffold-base@0.3.0
+  - @pantoken/web-components@0.6.2
+  - @pantoken/components@1.1.2
+  - @pantoken/angular@0.1.30
+  - @pantoken/react@0.1.31
+  - @pantoken/svelte@0.1.31
+  - @pantoken/vue@0.1.31
+
 ## 1.1.0
 
 ### Minor Changes

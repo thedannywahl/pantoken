@@ -1,5 +1,63 @@
 # create-pantoken-app
 
+## 1.1.0
+
+### Minor Changes
+
+- 28e42c9: Scaffold generated projects in the detected (or requested) locale.
+
+  `-l, --lang` now shapes the scaffolded project as well as the CLI interface: entry markup gets a
+  matching `lang`/`dir` pair, so `--lang ar` scaffolds `<html lang="ar" dir="rtl">`.
+
+  Detection now keeps region and script subtags pantoken actually supports (`pt_BR.UTF-8` resolves to
+  `pt-BR`, `zh-Hant-TW` to `zh-Hant`) and narrows unsupported ones to their base language (`es_MX` to
+  `es`) rather than emitting a tag with no bundle behind it. An explicit `--lang` errors on an
+  unsupported value, listing the supported tags, instead of silently falling back to English — the
+  resolved tag is written into generated files, so it stays constrained to the registry.
+
+- 28e42c9: Localize scaffolded project READMEs.
+
+  Adds a `scaffold.readme` content space covering `packages/scaffold/templates/*/README.md`, so each
+  platform's README is translated as one whole-Markdown unit and rendered per locale. The scaffolder
+  layers those renderings over the English templates at scaffold time, and only files that actually
+  differ from English are inlined — an untranslated locale costs nothing.
+
+### Patch Changes
+
+- 28e42c9: The `components` (plain HTML) scaffold now puts the app shell markup directly in `index.html`
+  instead of injecting it via a `main.ts` `innerHTML` template literal. `src/main.ts` is now just
+  imports plus a place to add your own behavior, and a new `src/style.css` holds your own
+  app-specific styles.
+- 28e42c9: feat: alphabetize the platform picker, detect the invoking package manager's usage text, and cwd into the scaffolded dir
+
+  The interactive platform picker showed raw keys (`components`, `web-components`,
+  ...) in `PRESET_LEDGER` order. It now shows alphabetized, properly-cased labels
+  (`HTML`, `Web components`, `React`, ...).
+
+  `create-pantoken-app`'s `--help` always showed `npm create pantoken-app --` as
+  the usage command, regardless of how it was actually invoked. A new
+  `buildCreateUsageCommand()` maps the detected package manager to its own create
+  invocation (`pnpm create`, `yarn create`, `bunx create-`, `deno run -A npm:create-`,
+  `vpx create-`), matching the same `detectPackageManager()` logic already used for
+  install/next-steps.
+
+  After scaffolding and installing, the CLI now `chdir`s into the target directory
+  (when it isn't already `"."`) so the printed next step is just the dev command,
+  never a separate `cd`.
+
+- Updated dependencies [28e42c9]
+- Updated dependencies [28e42c9]
+- Updated dependencies [28e42c9]
+- Updated dependencies [28e42c9]
+- Updated dependencies [28e42c9]
+- Updated dependencies [28e42c9]
+- Updated dependencies [28e42c9]
+- Updated dependencies [28e42c9]
+- Updated dependencies [28e42c9]
+- Updated dependencies [28e42c9]
+  - @pantoken/scaffold@1.2.0
+  - @pantoken/cli@0.1.30
+
 ## 1.0.2
 
 ### Patch Changes
