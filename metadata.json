@@ -1,0 +1,43 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M23XGPRPVEXDYA0KYB8K4NFB",
+  "strategy": "manual-commit",
+  "branch": "spawn-error",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/smart-pants-smile.md",
+    "packages/scaffold/templates/angular/package.json",
+    "packages/scaffold/templates/angular/pnpm-workspace.yaml",
+    "packages/scaffold/templates/canvas-theme-editor/package.json",
+    "packages/scaffold/templates/canvas-theme-editor/pnpm-workspace.yaml",
+    "packages/scaffold/templates/components/package.json",
+    "packages/scaffold/templates/components/pnpm-workspace.yaml",
+    "packages/scaffold/templates/next/package.json",
+    "packages/scaffold/templates/next/pnpm-workspace.yaml",
+    "packages/scaffold/templates/react/package.json",
+    "packages/scaffold/templates/react/pnpm-workspace.yaml",
+    "packages/scaffold/templates/svelte/package.json",
+    "packages/scaffold/templates/svelte/pnpm-workspace.yaml",
+    "packages/scaffold/templates/vue/package.json",
+    "packages/scaffold/templates/vue/pnpm-workspace.yaml",
+    "packages/scaffold/templates/web-components/package.json",
+    "packages/scaffold/templates/web-components/pnpm-workspace.yaml",
+    "packages/scaffold/tests/index.test.ts"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}

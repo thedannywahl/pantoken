@@ -1,0 +1,95 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M23XGPRPVEXDYA0KYB8K4NFB",
+  "session_id": "7784ceea-c142-43a0-aac0-00ccff1ddd54",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-09T20:24:58.647779Z",
+  "branch": "spawn-error",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    ".changeset/smart-pants-smile.md",
+    "packages/scaffold/templates/angular/package.json",
+    "packages/scaffold/templates/angular/pnpm-workspace.yaml",
+    "packages/scaffold/templates/canvas-theme-editor/package.json",
+    "packages/scaffold/templates/canvas-theme-editor/pnpm-workspace.yaml",
+    "packages/scaffold/templates/components/package.json",
+    "packages/scaffold/templates/components/pnpm-workspace.yaml",
+    "packages/scaffold/templates/next/package.json",
+    "packages/scaffold/templates/next/pnpm-workspace.yaml",
+    "packages/scaffold/templates/react/package.json",
+    "packages/scaffold/templates/react/pnpm-workspace.yaml",
+    "packages/scaffold/templates/svelte/package.json",
+    "packages/scaffold/templates/svelte/pnpm-workspace.yaml",
+    "packages/scaffold/templates/vue/package.json",
+    "packages/scaffold/templates/vue/pnpm-workspace.yaml",
+    "packages/scaffold/templates/web-components/package.json",
+    "packages/scaffold/templates/web-components/pnpm-workspace.yaml",
+    "packages/scaffold/tests/index.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "f9eeb852bd51",
+  "checkpoint_transcript_start": 251,
+  "transcript_lines_at_start": 251,
+  "compact_transcript_start": 46,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 4
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-09T20:24:58.638176Z",
+    "agent_lines": 11,
+    "agent_removed": 1,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 8,
+    "total_committed": 11,
+    "total_lines_changed": 20,
+    "agent_percentage": 60,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 32,
+      "user_lines_removed": 8,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "packages/scaffold/templates/angular/package.json": 2,
+        "packages/scaffold/templates/angular/pnpm-workspace.yaml": 2,
+        "packages/scaffold/templates/canvas-theme-editor/package.json": 2,
+        "packages/scaffold/templates/canvas-theme-editor/pnpm-workspace.yaml": 2,
+        "packages/scaffold/templates/components/package.json": 2,
+        "packages/scaffold/templates/components/pnpm-workspace.yaml": 2,
+        "packages/scaffold/templates/next/package.json": 2,
+        "packages/scaffold/templates/next/pnpm-workspace.yaml": 2,
+        "packages/scaffold/templates/react/package.json": 2,
+        "packages/scaffold/templates/react/pnpm-workspace.yaml": 2,
+        "packages/scaffold/templates/svelte/package.json": 2,
+        "packages/scaffold/templates/svelte/pnpm-workspace.yaml": 2,
+        "packages/scaffold/templates/vue/package.json": 2,
+        "packages/scaffold/templates/vue/pnpm-workspace.yaml": 2,
+        "packages/scaffold/templates/web-components/package.json": 2,
+        "packages/scaffold/templates/web-components/pnpm-workspace.yaml": 2
+      },
+      "user_removed_per_file": {
+        "packages/scaffold/templates/angular/pnpm-workspace.yaml": 1,
+        "packages/scaffold/templates/canvas-theme-editor/pnpm-workspace.yaml": 1,
+        "packages/scaffold/templates/components/pnpm-workspace.yaml": 1,
+        "packages/scaffold/templates/next/pnpm-workspace.yaml": 1,
+        "packages/scaffold/templates/react/pnpm-workspace.yaml": 1,
+        "packages/scaffold/templates/svelte/pnpm-workspace.yaml": 1,
+        "packages/scaffold/templates/vue/pnpm-workspace.yaml": 1,
+        "packages/scaffold/templates/web-components/pnpm-workspace.yaml": 1
+      }
+    }
+  ]
+}
