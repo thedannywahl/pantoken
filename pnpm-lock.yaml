@@ -1210,9 +1210,6 @@ importers:
       '@pantoken/hugo':
         specifier: workspace:*
         version: link:../../platforms/hugo
-      '@pantoken/icon-font':
-        specifier: workspace:*
-        version: link:../../formats/icon-font
       '@pantoken/jekyll':
         specifier: workspace:*
         version: link:../../platforms/jekyll
@@ -1244,6 +1241,9 @@ importers:
         specifier: workspace:*
         version: link:../../platforms/wordpress
     devDependencies:
+      '@pantoken/icon-font':
+        specifier: workspace:*
+        version: link:../../formats/icon-font
       '@types/node':
         specifier: 'catalog:'
         version: 26.5.0
@@ -1259,6 +1259,9 @@ importers:
 
   packages/core:
     dependencies:
+      '@instructure/instructure-design-tokens':
+        specifier: 'catalog:'
+        version: https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/b85c96436131df6a23174a54bcbd3b03a5da1b8a
       '@instructure/ui-icons':
         specifier: 'catalog:'
         version: 11.7.5(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@10.2.2)
@@ -1272,9 +1275,6 @@ importers:
         specifier: workspace:*
         version: link:../utils
     devDependencies:
-      '@instructure/instructure-design-tokens':
-        specifier: 'catalog:'
-        version: https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/b85c96436131df6a23174a54bcbd3b03a5da1b8a
       '@types/node':
         specifier: 'catalog:'
         version: 26.5.0
