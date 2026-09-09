@@ -1,0 +1,106 @@
+the create-pantoken-app process is not working correctly:
+```
+➜ pnpm dlx create-pantoken-app
+Packages are cloned from the content-addressable store to the virtual store.
+  Content-addressable store is at: /Users/dwahl/Library/pnpm/store/v11
+  Virtual store is at:             ../../Library/Caches/pnpm/dlx/4554cb712cef8dbb19521981b3064b4d/mttd70xp-128a/node_modules/.pacquet
+.../mttd70xp-128a                        | Progress: resolved 2, reused 0, downloaded 2, added 2, done
+
+dependencies:
++ create-pantoken-app 0.1.0
+Unknown platform "".
+Usage: npm create pantoken-app -- <angular|html|next|react|web-components> [--dir .]
+test x
+➜ npx create-pantoken-app
+Unknown platform "".
+Usage: npm create pantoken-app -- <angular|html|next|react|web-components> [--dir .]
+test x
+```
+
+---
+
+In the pantoken monorepo, look at packages/create-pantoken-app/. This is the CLI invoked via `pnpm dlx create-pantoken-app` or `npx create-pantoken-app` or `npm create pantoken-app -- <platform>`.
+
+The bug report: when running `pnpm dlx create-pantoken-app` (with no args) or `npx create-pantoken-app` (with no args), the CLI prints:
+```
+Unknown platform "".
+Usage: npm create pantoken-app -- <angular|html|next|react|web-components> [--dir .]
+```
+It seems like the platform argument is being read incorrectly (empty string) instead of showing a proper "missing argument" message or an interactive prompt, and it also seems like extra positional args like "test" and "x" (from `pnpm dlx create-pantoken-app` with no additional args??) are appearing as "test x" in the output - actually re-read: the output shows "test x" as a separate line after the usage message. This might be unrelated leftover terminal output, or could be part of the CLI's own erroneous output.
+
+Please:
+1. Read the main CLI entry file(s) for packages/create-pantoken-app (find via file listing) - likely src/index.ts, src/cli.ts, or bin file referenced in package.json.
+2. Show me exactly how the platform argument is parsed from process.argv (look for argv slicing, indexing logic).
+3. Check package.json bin field and how the bin script invokes the main module.
+4. Determine why running with zero args parses platform as "" instead of undefined, and why there might be a discrepancy between direct `node bin.js react` usage vs `npm create pantoken-app -- react` vs `pnpm dlx create-pantoken-app` (no args, expects prompt fallback?).
+5. Check if there's supposed to be an interactive prompt fallback when no platform is given (search for inquirer/prompts/enquirer or similar), and whether that logic exists but is broken, or was never implemented.
+6. Look for any existing tests for the CLI arg parsing (packages/create-pantoken-app/**/*.test.ts) to understand intended behavior.
+7. Check git history / recent changes to this package if easily visible (not required, skip if slow).
+
+Report back:
+- Full file paths and relevant line ranges of the arg-parsing code
+- The exact logic that produces `Unknown platform ""` including how it derives the empty string
+- Whether there is dead/broken interactive-prompt code
+- Package.json bin/scripts relevant details
+- Any test files and what they assert about arg parsing
+- Your assessment of root cause and where the fix should go
+
+---
+
+it should be using the full commander/bombshell in interactive mode when no arguments are passed.
+
+---
+
+In the pantoken repo at /Users/dwahl/Scripts/pantoken, run git commands (via terminal, read-only) to determine:
+
+1. What is the current checked-out branch (`git branch --show-current`)?
+2. Is the current branch `main`, or a feature/PR branch? Show `git log --oneline -5`.
+3. Is the working tree clean or are there uncommitted changes (`git status --short`)?
+4. Does `main` (check via `git log origin/main --oneline -5` or `git fetch && git log origin/main -5 --oneline`) already contain the commit `7d964ee` (the scaffold CLI rewrite mentioned in packages/scaffold/CHANGELOG.md and packages/create-pantoken-app/CHANGELOG.md)? Use `git log --all --oneline | grep 7d964ee` or `git show 7d964ee --stat` to confirm it exists, and `git merge-base --is-ancestor 7d964ee origin/main && echo yes || echo no` to check if it's merged into origin/main.
+5. Check packages/create-pantoken-app/package.json and packages/scaffold/package.json current `version` field (already know create-pantoken-app is 1.0.0; confirm scaffold's version).
+6. Check .github/workflows/release.yml for exactly what triggers publish (push to main with no pending changesets → publish job) - just summarize briefly, don't need full re-read if already summarized.
+7. Check if there is an open PR or the current branch is already pushed to a remote, via `git branch -vv` and `git log --oneline origin/main..HEAD` (commits ahead of origin/main).
+
+This is purely a read-only research task — do not modify any files or run any destructive git commands. Report back concisely: current branch name, whether commit 7d964ee is merged into origin/main, working tree cleanliness, scaffold package.json version, and how many commits (if any) the current branch is ahead of origin/main.
+
+---
+
+before we decide there's no code fix needed - let's make sure that it works with no args passed.
+
+---
+
+Start implementation
+
+---
+
+[Terminal 71d458e9-d009-4be6-b948-39e1a95b5ba0 notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on create-pantoken-app-fix ≢  ~1 via  26.8.1 
+➜  node packages/create-pantoken-app/bin/create-pantoken-app.mjs
+│
+◇  Select a platform to scaffold:
+│  components
+│
+◇  Target directory:
+│  /tmp/pantoken-smoke-test
+│
+◇  Done scaffolding.
+✓ /tmp/pantoken-smoke-test/.gitignore
+✓ /tmp/pantoken-smoke-test/README.md
+✓ /tmp/pantoken-smoke-test/index.html
+✓ /tmp/pantoken-smoke-test/package.json
+✓ /tmp/pantoken-smoke-test/tsconfig.json
+✓ /tmp/pantoken-smoke-test/vite.config.ts
+✓ /tmp/pantoken-smoke-test/.vscode/extensions.json
+✓ /tmp/pantoken-smoke-test/.vscode/settings.json
+✓ /tmp/pantoken-smoke-test/src/main.ts
+✓ /tmp/pantoken-smoke-test/cssdoc.json
+
+Next steps:
+1. cd /tmp/pantoken-smoke-test
+2. Install dependencies: vp install
+3. vp run dev
+
+---
+
+changesets, incremental conventional commits, push and create a PR.
