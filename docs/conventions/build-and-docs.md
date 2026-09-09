@@ -193,6 +193,18 @@ CI wiring: the `i18n-drift` job runs `vp run gate:i18n` when catalog, source, or
 that gate generates the English API tree and checks every surface. `gate:i18n` also runs before npm
 publishing. AI translation is never wired into CI; fill drift locally with `vp run i18n:translate`.
 
+`translate` re-extracts a space's `l10n/<space>.pot` from its source before merging, so a newly added
+key reaches the PO catalogs without a separate step, and `check` reports a stale template as drift in
+its own right. Run `vp run i18n:extract` when you want to refresh a template without spending
+translation credits. A messages space has no generic render step — the owning package's `generate`
+script rebuilds its locale bundles from the PO catalogs.
+
+`i18n translate` takes four narrowing options: `--locale <tag>` and `--tier <tier>` limit which
+locales run, `--provider <profile>` picks a `provider.profiles` entry (`copilot`, `agy`, `claude`)
+for the command, model, and effort, `--concurrency <n>` bounds parallel provider calls, and `--force`
+retranslates entries that already have a translation. `I18N_TRANSLATION_COMMAND` and
+`I18N_TRANSLATION_COMMAND_ARGS` still override whatever `--provider` resolves.
+
 ## Publishing the create-pantoken-app skill
 
 `ai/pantoken-ai/skills/create-pantoken-app/SKILL.md` is the one canonical source, staged into two
