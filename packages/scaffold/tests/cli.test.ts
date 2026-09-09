@@ -519,13 +519,16 @@ test("scaffolds, installs dependencies automatically, and prints a single dev st
   const dir = mktemp();
   const target = join(dir, "my-app");
   await runScaffoldCli(["react", "--dir", target, "--yes"], { usageCommand: "pantoken-scaffold" });
+  const printed = logSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("\n");
   expect(existsSync(join(target, "package.json"))).toBe(true);
   expect(vi.mocked(execFileSync)).toHaveBeenCalledWith(
     expect.any(String),
     ["install"],
     expect.objectContaining({ cwd: target }),
   );
-  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Next steps"));
+  expect(printed).toContain("Next steps:");
+  expect(printed).toContain("vp run dev");
+  expect(printed).not.toContain("Install dependencies");
 });
 
 test("chdirs into a non-'.' target dir so the printed next step never needs a separate cd", async () => {
@@ -569,13 +572,16 @@ test("--no-install skips the automatic install and keeps the full 'Next steps' b
   await runScaffoldCli(["react", "--dir", target, "--yes", "--no-install"], {
     usageCommand: "pantoken-scaffold",
   });
+  const printed = logSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("\n");
   expect(existsSync(join(target, "package.json"))).toBe(true);
   expect(vi.mocked(execFileSync)).not.toHaveBeenCalledWith(
     expect.any(String),
     ["install"],
     expect.anything(),
   );
-  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Next steps"));
+  expect(printed).toContain("Next steps:");
+  expect(printed).toContain("Install dependencies");
+  expect(printed).toContain("vp run dev");
 });
 
 test("--theme selects which @pantoken/css sheet the scaffolded project imports", async () => {
