@@ -37,6 +37,22 @@
     "message": "Start the dev server (if your template has one)",
     "translate": "always"
   },
+  "getStartedHeading": {
+    "message": "Get started:",
+    "translate": "always"
+  },
+  "installSpinnerStart": {
+    "message": "Installing dependencies...",
+    "translate": "always"
+  },
+  "installSpinnerStop": {
+    "message": "Dependencies installed.",
+    "translate": "always"
+  },
+  "installSpinnerFailed": {
+    "message": "Failed to install dependencies:",
+    "translate": "always"
+  },
   "notesHeading": {
     "message": "Note:",
     "translate": "always"
