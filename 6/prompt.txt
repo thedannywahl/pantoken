@@ -1,0 +1,40 @@
+Translate this technical markdown from English to Hungarian.
+Return only the translated markdown.
+Rules:
+- Keep markdown structure unchanged.
+- Translate heading text too (the words after the leading # symbols) — do not leave headings in English.
+- Do not alter placeholder tokens like __PTK_CODE_BLOCK_#__ or __PTK_INLINE_CODE_#__.
+- Do not alter placeholder tokens like __PTK_PACKAGE_#__, __PTK_ESC_#__, or __PTK_VAR_#__.
+- Preserve whitespace and line breaks.
+- Keep import paths, package names, URLs, and identifiers intact.
+File: web-components/README.md
+--- BEGIN MARKDOWN ---
+# __PTK_VAR_0__
+
+A plain TypeScript app (via Vite) styled with
+[__PTK_INLINE_CODE_0__](https://www.npmjs.com/package/__PTK_PACKAGE_0__) and using
+framework-agnostic custom elements from
+[__PTK_INLINE_CODE_1__](https://www.npmjs.com/package/__PTK_PACKAGE_1__).
+
+## Develop
+
+__PTK_CODE_BLOCK_0__
+
+## What's here
+
+- __PTK_INLINE_CODE_2__ imports __PTK_INLINE_CODE_3__ (defines every __PTK_INLINE_CODE_4__ custom property),
+  __PTK_INLINE_CODE_5__ + __PTK_INLINE_CODE_6__ (__PTK_INLINE_CODE_7__ classes),
+  __PTK_INLINE_CODE_8__ (wires up modal, tooltip, and other component behaviors out of the
+  box), and __PTK_INLINE_CODE_9__ (auto-registers elements like __PTK_INLINE_CODE_10__), then
+  renders markup into __PTK_INLINE_CODE_11__.
+- Optional insertion points (header, filters, content, trailing) are marked with
+  __PTK_INLINE_CODE_12__ — replace their contents with your own markup.
+- Use custom elements directly in markup, e.g. __PTK_INLINE_CODE_13__, __PTK_INLINE_CODE_14__ —
+  see the [__PTK_INLINE_CODE_15__ README](https://www.npmjs.com/package/__PTK_PACKAGE_2__)
+  for the full element list.
+
+## Learn more
+
+See the [HTML guide](https://pantoken.app/guide/components) to learn more.
+
+--- END MARKDOWN ---
