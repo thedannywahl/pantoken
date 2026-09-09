@@ -34,6 +34,7 @@ export {
   includeLocale,
   localeMatchesPattern,
   localesForSpace,
+  knownLocales,
   moveLocaleToTier,
   resolveLocaleStatus,
   resolveTier,

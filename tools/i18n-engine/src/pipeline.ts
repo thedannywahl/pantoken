@@ -23,7 +23,7 @@ import { mergePoWithTemplate } from "./gettext.ts";
 import { parsePo, readCatalog, serializePot, writeCatalog, type PoEntry } from "./po.ts";
 import { refreshCoverageReports } from "./coverage.ts";
 import { fillUntranslatedEntries, type FillOptions } from "./ai-translate.ts";
-import { localesForSpace, resolveLocaleStatus } from "./locales.ts";
+import { knownLocales, localesForSpace, resolveLocaleStatus } from "./locales.ts";
 import { catalogUnitKey } from "./units.ts";
 
 /** Substitute `{space}`/`{locale}` placeholders in a catalog path pattern. */
@@ -93,19 +93,22 @@ export function normalizeWholeFileMarkdown(content: string): string {
 }
 
 /** Every known, non-excluded locale across every tier (before a space narrows it further). */
-function nonExcludedKnownLocales(config: I18nConfig, tier?: string): string[] {
-  const allTiered = Object.values(config.locales.tiers).flat();
-  const known = [...new Set(allTiered)].filter((locale) => locale !== "*" && !locale.endsWith("*"));
-  return known.filter((locale) => {
+function nonExcludedKnownLocales(config: I18nConfig, configDir: string, tier?: string): string[] {
+  return knownLocales(config, configDir).filter((locale) => {
     const status = resolveLocaleStatus(config.locales, locale);
     return !status.excluded && (tier === undefined || status.tier === tier);
   });
 }
 
 /** Resolve configured locales that are eligible for a content localization space. */
-function contentLocales(config: I18nConfig, spaceId: string, tier?: string): string[] {
+function contentLocales(
+  config: I18nConfig,
+  configDir: string,
+  spaceId: string,
+  tier?: string,
+): string[] {
   const space = config.spaces[spaceId];
-  const nonExcluded = nonExcludedKnownLocales(config, tier);
+  const nonExcluded = nonExcludedKnownLocales(config, configDir, tier);
   return [...localesForSpace(nonExcluded, space?.kind === "content" ? space.locales : undefined)];
 }
 
@@ -212,6 +215,8 @@ export async function runTranslateContent(
   locale: string,
   options: FillOptions = {},
 ): Promise<TranslateResult> {
+  const space = config.spaces[spaceId];
+  if (!space || space.kind !== "content") throw new Error(`"${spaceId}" is not a content space.`);
   // Re-extract first: msgmerge can only propagate units the POT already knows about.
   const { potPath } = runExtractContent(config, configDir, spaceId);
   const poPath = join(
@@ -313,7 +318,7 @@ export function runCheckContent(
     policy: buildDriftPolicy(config),
   });
   reportPotStaleness(reporter, config, configDir, spaceId, units);
-  for (const locale of contentLocales(config, spaceId)) {
+  for (const locale of contentLocales(config, configDir, spaceId)) {
     if (locale === config.source) continue;
     const entries = loadPoEntriesForSpace(config, configDir, spaceId, locale);
     const translated = new Set(entries.filter((e) => e.msgstr !== "").map((e) => e.msgid));
@@ -336,9 +341,14 @@ export { contentLocales };
 
 /** Every non-excluded, in-scope locale for a given messages space, per `locales.exclude` + the
  *  space's own scope. */
-export function messagesLocales(config: I18nConfig, spaceId: string, tier?: string): string[] {
+export function messagesLocales(
+  config: I18nConfig,
+  configDir: string,
+  spaceId: string,
+  tier?: string,
+): string[] {
   const space = config.spaces[spaceId];
-  const nonExcluded = nonExcludedKnownLocales(config, tier);
+  const nonExcluded = nonExcludedKnownLocales(config, configDir, tier);
   return [...localesForSpace(nonExcluded, space?.kind === "messages" ? space.locales : undefined)];
 }
 
@@ -451,7 +461,7 @@ export function runCheckMessages(
 
   reportPotStaleness(reporter, config, configDir, spaceId, messagesPotUnits(sourceUnits, space));
 
-  for (const locale of messagesLocales(config, spaceId)) {
+  for (const locale of messagesLocales(config, configDir, spaceId)) {
     if (locale === config.source) continue;
     const entries = loadMessagesPoEntries(config, configDir, spaceId, locale);
     const translated = new Set(

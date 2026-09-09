@@ -172,7 +172,9 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
           space,
           async (config, spaceId) => {
             assertKnownTier(config, opts.tier);
-            for (const locale of localesFor(messagesLocales(config, spaceId, opts.tier))) {
+            for (const locale of localesFor(
+              messagesLocales(config, configDirOf(), spaceId, opts.tier),
+            )) {
               const result = await runTranslateMessages(
                 config,
                 configDirOf(),
@@ -188,7 +190,9 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
           },
           async (config, spaceId) => {
             assertKnownTier(config, opts.tier);
-            for (const locale of localesFor(contentLocales(config, spaceId, opts.tier))) {
+            for (const locale of localesFor(
+              contentLocales(config, configDirOf(), spaceId, opts.tier),
+            )) {
               const result = await runTranslateContent(
                 config,
                 configDirOf(),
@@ -221,7 +225,9 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
           console.log(`"render" for a messages space is a no-op — its package owns codegen.`);
         },
         (config, spaceId) => {
-          const locales = opts.locale ? [opts.locale] : contentLocales(config, spaceId);
+          const locales = opts.locale
+            ? [opts.locale]
+            : contentLocales(config, configDirOf(), spaceId);
           for (const locale of locales) {
             const result = runRenderContent(config, configDirOf(), spaceId, locale);
             console.log(
