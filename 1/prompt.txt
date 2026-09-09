@@ -1,0 +1,36 @@
+the latest version of the docs site has the following issues:
+* /favicon.ico is 404
+* console warnings and errors:
+```
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495. (Reason: CORS request did not succeed). Status code: (null). 
+None of the “sha512” hashes in the integrity attribute match the content of the subresource at “https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495”. The computed hash is “REDACTED/REDACTED”. pantoken.app
+The resource at “https://pantoken.app/assets/inter-roman-latin.BOE8-mWI.woff2” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly. pantoken.app
+```
+404s for all the icons:
+```
+GET
+	https://pantoken.app/package-dark.svg
+```
+that are in the public folder
+
+404 for all languages in /<lang>/api/*
+
+investigate and evaluate, creating incremental conventional commits and pushing. ignoring changes to other files that aren't part of your changes as there are other agents working.
+
+---
+
+Research task (read-only, thorough) in the /Users/dwahl/Scripts/pantoken workspace. This is a VitePress docs site in `docs/`.
+
+Investigate these production issues on https://pantoken.app and report findings with exact file paths + line numbers:
+
+1. `/favicon.ico` returns 404. Find where favicon is referenced (head config in docs/.vitepress/config*.ts or similar), and list what actually exists in `docs/public/` (full file listing of docs/public, including subfolders).
+
+2. Icon 404s: e.g. `https://pantoken.app/package-dark.svg` 404s but files "are in the public folder". Determine: (a) does `docs/public/package-dark.svg` exist? (b) Where are these svg URLs referenced from (search for `-dark.svg` and `package-dark` across docs/)? (c) Is there a `base` config set in vitepress config? (d) Is there anything that copies/generates these svgs at build time, and could they be gitignored/generated-only? Check .gitignore entries covering docs/public.
+
+3. Preload warning for `assets/inter-roman-latin.*.woff2` not used — find the font preload/`@font-face` setup in docs (search for `inter-roman-latin`, `preload`, `font-face` in docs/).
+
+4. 404 for all languages at `/<lang>/api/*` — the site has many locales (docs/hu, docs/es, ...). Find how the API docs are generated (docs/scripts/build-css-api.ts, typedoc config docs/typedoc.json, docs/scripts/*), whether API pages are generated per-locale, and where locale link/sidebar entries for `/<lang>/api/` come from (docs/.vitepress/*, i18n.ts). Determine whether generated api directories exist only for root/English. List which docs/<lang>/api directories exist on disk.
+
+5. Report the deploy setup: find the GitHub Actions workflow that builds/deploys the docs (in .github/workflows/), note the build command and whether `docs/public` or generated api output is produced in CI. Also note whether Cloudflare Pages is used (the beacon.min.js is Cloudflare's — likely injected by Cloudflare, note if there's a wrangler config or _headers/_routes file).
+
+Do NOT write code. Return a detailed findings report with file paths, line numbers, and concrete evidence.
