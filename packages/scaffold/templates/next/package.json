@@ -18,5 +18,13 @@
   "devDependencies": {
     "@pantoken/pantoken": "latest",
     "typescript": "^7.0.2"
-  }
+  },
+  "allowScripts": {
+    "core-js": true,
+    "ttf2woff2": true
+  },
+  "trustedDependencies": [
+    "core-js",
+    "ttf2woff2"
+  ]
 }
