@@ -1,0 +1,5 @@
+ci fails on repository check:
+Run vp run gate:repository
+$ node scripts/release/check-repository-metadata.ts
+Repository metadata check failed for publishable packages:
+- create-pantoken-app (packages/create-pantoken-app/package.json): engines is null, expected {"node":">=22.18.0"}
