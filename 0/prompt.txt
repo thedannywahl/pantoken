@@ -1,0 +1,2 @@
+the step "3. Start the dev server (if your template has one)"
+we know the package manager and we know the template, we can give a deterministic next step.
