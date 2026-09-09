@@ -3,7 +3,7 @@
   "checkpoint_id": "01M220QQ037CST0W7STQPQZ11K",
   "strategy": "manual-commit",
   "branch": "exotic-subdeps",
-  "checkpoints_count": 2,
+  "checkpoints_count": 3,
   "files_touched": [
     ".changeset/fix-bundled-token-assets.md",
     "formats/tokens/known-syntax-issues.json",
@@ -25,6 +25,13 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": "/1/prompt.txt"
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
+      "prompt": "/2/prompt.txt"
     }
   ],
   "token_usage": {
