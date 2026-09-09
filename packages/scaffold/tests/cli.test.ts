@@ -188,6 +188,8 @@ test("printNextSteps falls back to npm install when no package manager is detect
     logSpy.mockRestore();
   }
   expect(printed).toContain("npm install");
+  expect(printed).toContain("npm run dev");
+  expect(printed).not.toContain("Start the dev server");
 });
 
 test("printNextSteps renders scaffold.json-authored next steps/notes/caveats for canvas-theme-editor under vp", async () => {
@@ -540,14 +542,25 @@ test("chdirs into a non-'.' target dir so the printed next step never needs a se
 test("keeps the target directory in next steps when automatic install fails", async () => {
   const dir = mktemp();
   const target = join(dir, "my-app");
+  const originalUserAgent = process.env.npm_config_user_agent;
+  process.env.npm_config_user_agent = "npm/10.0.0 node/22";
   vi.mocked(execFileSync).mockImplementationOnce(() => {
     throw new Error("spawnSync npm ENOENT");
   });
-  await runScaffoldCli(["react", "--dir", target, "--yes"], { usageCommand: "pantoken-scaffold" });
-  const printed = logSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("\n");
-  expect(realpathSync(process.cwd())).toBe(realpathSync(originalCwd));
-  expect(printed).toContain(`cd ${target}`);
-  expect(printed).toContain("install");
+  try {
+    await runScaffoldCli(["react", "--dir", target, "--yes"], {
+      usageCommand: "pantoken-scaffold",
+    });
+    const printed = logSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("\n");
+    expect(realpathSync(process.cwd())).toBe(realpathSync(originalCwd));
+    expect(printed).toContain(`cd ${target}`);
+    expect(printed).toContain("install");
+    expect(printed).toContain("npm run dev");
+    expect(printed).not.toContain("Start the dev server");
+  } finally {
+    if (originalUserAgent === undefined) delete process.env.npm_config_user_agent;
+    else process.env.npm_config_user_agent = originalUserAgent;
+  }
 });
 
 test("--no-install skips the automatic install and keeps the full 'Next steps' block", async () => {

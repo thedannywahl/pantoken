@@ -387,7 +387,8 @@ function buildDevStep(dir: string, dev: string): string {
  * needed — regardless of platform. Otherwise, when `platform` has a `scaffold.json`-derived entry in
  * `SCAFFOLD_METADATA`, next steps/notes/caveats are rendered from its (localized, `{{var}}`-
  * substituted) authored strings; failing that, a generic cd/install/run-script fallback is used,
- * with the run script itself detected from the scaffolded `package.json` (`dev`, else `preview`).
+ * with the run script itself detected from the scaffolded `package.json` (`dev`, else `preview`)
+ * or defaulted to `dev` for scaffolded app templates.
  *
  * @param dir - The scaffold directory
  * @param written - The paths written by scaffoldProject
@@ -405,7 +406,7 @@ export function printNextSteps(
   const pm = detectPackageManager();
   const { install, run } = pmCommands(pm);
   const script = detectRunScript(written);
-  const dev = script ? `${run} ${script}` : t("nextStepsDevServer");
+  const dev = `${run} ${script ?? "dev"}`;
   const vars: Record<string, string> = {
     dir,
     pm: pm ?? "npm",
