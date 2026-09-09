@@ -39,7 +39,7 @@ export class ProfileBreaker {
 
   constructor(private readonly options: CircuitBreakerOptions) {}
 
-  isOpen(name: string, now = Date.now()): boolean {
+  isOpen(name: string, now: number = Date.now()): boolean {
     const opened = this.openedAt.get(name);
     if (opened === undefined) return false;
     if (now - opened >= this.options.resetTimeoutMs) {
@@ -55,7 +55,7 @@ export class ProfileBreaker {
     this.openedAt.delete(name);
   }
 
-  recordFailure(name: string, now = Date.now()): void {
+  recordFailure(name: string, now: number = Date.now()): void {
     const count = (this.failures.get(name) ?? 0) + 1;
     this.failures.set(name, count);
     if (count >= this.options.maxConsecutiveFailures) this.openedAt.set(name, now);
@@ -176,7 +176,7 @@ export function createShimServer(options: RunShimOptions): Server {
           const response = await handleChatCompletions(request);
           res.writeHead(200, { "content-type": "application/json" });
           res.end(JSON.stringify(response));
-        } catch (e) {
+        } catch {
           res.writeHead(500, { "content-type": "application/json" });
           res.end(JSON.stringify({ error: { message: "translation service unavailable" } }));
         }
