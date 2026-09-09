@@ -1,0 +1,19 @@
+── Unused Code ─────────────────────────────────────
+
+● Unused files (1)
+  docs/.vitepress/theme/no-default-fonts.css
+  Files not reachable from any entry point — https://docs.fallow.tools/explanations/dead-code#unused-files
+
+── Dependencies ─────────────────────────────────────
+
+● Unused dependency overrides (1)
+  node-gyp  pnpm-workspace.yaml  pnpm-workspace.yaml:158
+    forces node-gyp to ^13.0.2
+    may target a transitive dependency; pnpm install --frozen-lockfile is the ground truth
+  package-manager override entries whose target package is not declared by any workspace package or resolved in the lockfile — https://docs.fallow.tools/explanations/dead-code#unused-dependency-overrides
+
+✗ fallow regression gate: findings grew beyond fallow-baseline.json
+
+---
+
+the node-gyp override resolves a warning of deprecated glob, we have to keep it for pantoken/icon-font
