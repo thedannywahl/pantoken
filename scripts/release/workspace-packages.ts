@@ -286,7 +286,12 @@ export function parseRequestedPackageSpec(spec: string): ParsedRequestedPackageS
   };
 }
 
-/** Whether a package is publishable: present, not private, and under the `@pantoken/` scope. */
+// npm's `create-*` convention (so `npm create pantoken-app` works) requires an unscoped package name,
+// so this is the one publishable package that can't carry the `@pantoken/` scope. Allow-listed here
+// rather than relaxing the scope check generally, since every other workspace package IS scoped.
+const UNSCOPED_PUBLISHABLE_PACKAGES = new Set(["create-pantoken-app"]);
+
+/** Whether a package is publishable: present, not private, and under the `@pantoken/` scope (or allow-listed). */
 export function isPublishablePackage(pkg: WorkspacePackage | undefined | null): boolean {
   if (!pkg) {
     return false;
@@ -294,5 +299,8 @@ export function isPublishablePackage(pkg: WorkspacePackage | undefined | null): 
 
   const candidate = pkg as WorkspacePackage;
 
-  return !candidate.private && candidate.name.startsWith("@pantoken/");
+  return (
+    !candidate.private &&
+    (candidate.name.startsWith("@pantoken/") || UNSCOPED_PUBLISHABLE_PACKAGES.has(candidate.name))
+  );
 }

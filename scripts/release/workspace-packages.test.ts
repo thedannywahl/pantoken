@@ -158,3 +158,8 @@ test("isPublishablePackage: nullish, private, and non-@pantoken packages are exc
   expect(isPublishablePackage(pkg("@pantoken/docs", [], true))).toBe(false);
   expect(isPublishablePackage(pkg("some-tool"))).toBe(false);
 });
+
+test("isPublishablePackage: create-pantoken-app is allow-listed despite its unscoped name", () => {
+  expect(isPublishablePackage(pkg("create-pantoken-app"))).toBe(true);
+  expect(isPublishablePackage(pkg("create-pantoken-app", [], true))).toBe(false);
+});
