@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.1.30
+
+### Patch Changes
+
+- Updated dependencies [db34dec]
+- Updated dependencies [db34dec]
+- Updated dependencies [db34dec]
+  - @pantoken/web-components@0.6.1
+
 ## 0.1.29
 
 ### Patch Changes

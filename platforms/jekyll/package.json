@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/jekyll",
-  "version": "0.1.25",
+  "version": "0.1.26",
   "description": "Emit the Instructure token stylesheet for a Jekyll site (a _sass partial + a plain CSS asset).",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

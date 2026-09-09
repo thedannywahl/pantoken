@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.3.15
+
+### Patch Changes
+
+- Updated dependencies [db34dec]
+- Updated dependencies [db34dec]
+  - @pantoken/tokens@0.3.2
+  - @pantoken/components@1.1.1
+  - @pantoken/css@0.3.9
+
 ## 0.3.14
 
 ### Patch Changes

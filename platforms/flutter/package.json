@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/flutter",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "description": "Emit Instructure design tokens as Flutter (Dart) via Style Dictionary.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/rehype",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "Rehype plugin: render :icon: codes as inline SVG using the pantoken icon set (and plugin resolvers).",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

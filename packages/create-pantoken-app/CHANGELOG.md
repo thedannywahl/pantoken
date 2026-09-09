@@ -1,5 +1,28 @@
 # create-pantoken-app
 
+## 1.0.2
+
+### Patch Changes
+
+- db34dec: feat: scaffold CLIs install dependencies automatically
+
+  `pantoken-scaffold`, `create-pantoken-app`, and `pantoken-ai scaffold` now run the detected package
+  manager's install command right after writing the project, so the printed "Next steps" collapse to
+  the one remaining manual action — starting the dev server (`cd <dir> && <pm> run dev`) — instead of
+  also asking the user to `cd` and install by hand.
+
+  Pass `--no-install` to skip the automatic install and keep the previous cd/install/dev-server
+  breakdown (e.g. for scripted/offline use).
+
+- Updated dependencies [db34dec]
+- Updated dependencies [db34dec]
+- Updated dependencies [db34dec]
+- Updated dependencies [db34dec]
+- Updated dependencies [db34dec]
+- Updated dependencies [db34dec]
+  - @pantoken/scaffold@1.1.0
+  - @pantoken/cli@0.1.29
+
 ## 1.0.1
 
 ### Patch Changes
