@@ -1,0 +1,3 @@
+{"type":"session.start","data":{"sessionId":"eb505a3b-f5ae-42e8-b9f6-00e24850376c","version":1,"producer":"copilot-agent","copilotVersion":"0.64.1","vscodeVersion":"1.136.1","startTime":"2026-09-09T14:55:50.483Z"},"id":"09eca99a-67b4-4743-ad14-f2ff66364b4c","timestamp":"2026-09-09T14:55:50.483Z","parentId":null}
+{"type":"user.message","data":{"content":"Start implementation","attachments":[]},"id":"c11c1d48-85a8-4a38-aad7-556aeb034e09","timestamp":"2026-09-09T14:55:50.592Z","parentId":"09eca99a-67b4-4743-ad14-f2ff66364b4c"}
+{"type":"assistant.turn_start","data":{"turnId":"0"},"id":"e8212d55-33de-422b-8145-9bf3c41aea5c","timestamp":"2026-09-09T14:55:51.032Z","parentId":"c11c1d48-85a8-4a38-aad7-556aeb034e09"}
