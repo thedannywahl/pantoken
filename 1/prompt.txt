@@ -1,0 +1,2 @@
+in the last release the deploy docs workflow failed, use gh cli to investigate and remediate. if further changes are needed, create changesets adn incremental conventional commits on this branch and push so it can hit the next deploy.
+https://github.com/thedannywahl/pantoken/actions/runs/34354290485/job/102474984390
