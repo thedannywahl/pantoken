@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-08 21:14+0000\n"
+"PO-Revision-Date: 2026-09-09 03:29+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29395,3 +29395,7 @@ msgstr "Tek imot eit ferdig løyst [LocaleBundle](#) *eller* ein rå BCP47-tag-s
 msgctxt "docs.api:prose"
 msgid "A [LocaleBundle](#) object, or a BCP47 tag (`\"hu\"`, `\"ar\"`, …)."
 msgstr "Eit [LocaleBundle](#)-objekt, eller ein BCP47-tag (`\"hu\"`, `\"ar\"`, …)."
+
+msgctxt "docs.api:prose"
+msgid "Defines the uniform plugin contract ([PantokenPlugin](interfaces/PantokenPlugin.md)) and adapts the resolved token IR for\nthe native lineage ([toStyleDictionary](functions/toStyleDictionary.md)). The upstream-resolving transform (`buildTokens`,\nwhich needs the GitHub-only `@instructure/instructure-design-tokens`) lives on the separate\n`@pantoken/core/build` entry so this main entry stays free of that exotic dependency."
+msgstr "Definerer den einskaplege plugin-kontrakten ([PantokenPlugin](interfaces/PantokenPlugin.md))) og tilpassar den løyste token-IR-en for\nden native lineage ([toStyleDictionary](functions/toStyleDictionary.md))). Den oppstrøms-løysande transformasjonen (`buildTokens`,\nsom treng den GitHub-only `@instructure/instructure-design-tokens`)) ligg på den separate\n`@pantoken/core/build`-oppføringa, slik at denne hovudoppføringa held seg fri for den eksotiske avhengigheita."

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-08 21:14+0000\n"
+"PO-Revision-Date: 2026-09-09 03:34+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29395,3 +29395,7 @@ msgstr "Derbynnir [LocaleBundle](#) wedi'i ddatrys yn llawn *neu* llinyn tag BCP
 msgctxt "docs.api:prose"
 msgid "A [LocaleBundle](#) object, or a BCP47 tag (`\"hu\"`, `\"ar\"`, …)."
 msgstr "Gwrthrych [LocaleBundle](#), neu dag BCP47 (`\"hu\"`, `\"ar\"`, …)."
+
+msgctxt "docs.api:prose"
+msgid "Defines the uniform plugin contract ([PantokenPlugin](interfaces/PantokenPlugin.md)) and adapts the resolved token IR for\nthe native lineage ([toStyleDictionary](functions/toStyleDictionary.md)). The upstream-resolving transform (`buildTokens`,\nwhich needs the GitHub-only `@instructure/instructure-design-tokens`) lives on the separate\n`@pantoken/core/build` entry so this main entry stays free of that exotic dependency."
+msgstr "Yn diffinio contract ategyn unfrydol ([PantokenPlugin](interfaces/PantokenPlugin.md))) ac yn addasu IR y tocyn a ddatryswyd ar gyfer\ny llinach wreiddiol ([toStyleDictionary](functions/toStyleDictionary.md))). Mae'r trawsnewid sy'n datrys yr upstream (`buildTokens`,\nsy'n gofyn am y `@instructure/instructure-design-tokens`) sy'n unig i GitHub) yn byw ar y \n`@pantoken/core/build` eitem ar wahân fel bod yr eitem brif hon yn parhau i fod yn rhydd o'r dibyniaeth rhyfedd hon."

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-08 21:12+0000\n"
+"PO-Revision-Date: 2026-09-09 03:26+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29395,3 +29395,7 @@ msgstr "Ka tango i tētahi [LocaleBundle](#) kua whakatau katoa *rānei* tētahi
 msgctxt "docs.api:prose"
 msgid "A [LocaleBundle](#) object, or a BCP47 tag (`\"hu\"`, `\"ar\"`, …)."
 msgstr "He tūāpapa [LocaleBundle](#), rānei he tapanga BCP47 (`\"hu\"`, `\"ar\"`, …)."
+
+msgctxt "docs.api:prose"
+msgid "Defines the uniform plugin contract ([PantokenPlugin](interfaces/PantokenPlugin.md)) and adapts the resolved token IR for\nthe native lineage ([toStyleDictionary](functions/toStyleDictionary.md)). The upstream-resolving transform (`buildTokens`,\nwhich needs the GitHub-only `@instructure/instructure-design-tokens`) lives on the separate\n`@pantoken/core/build` entry so this main entry stays free of that exotic dependency."
+msgstr "Whakamāramahia te kirimana mono kotahi ([PantokenPlugin](interfaces/PantokenPlugin.md))) me te whakarite i te IR token kua whakatau kia hāngai mō\nte rārangi taketake ([toStyleDictionary](functions/toStyleDictionary.md))). Ko te hurihanga e whakatau ana i te puna tōmua (`buildTokens`,\nwhich needs the GitHub-only `@instructure/instructure-design-tokens`)) e noho ana i runga i te tomokanga motuhake\n`@pantoken/core/build`, nō reira ka noho wātea tēnei tomokanga matua i taua whakawhirinaki tauhou."

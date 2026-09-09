@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-08 21:14+0000\n"
+"PO-Revision-Date: 2026-09-09 03:28+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29395,3 +29395,7 @@ msgstr "Gávnná buot dássahit [LocaleBundle](#) *váldit* dahje njuolggad BCP4
 msgctxt "docs.api:prose"
 msgid "A [LocaleBundle](#) object, or a BCP47 tag (`\"hu\"`, `\"ar\"`, …)."
 msgstr "A [LocaleBundle](#) objekta, dahje BCP47-tag (`\"hu\"`, `\"ar\"`, …)."
+
+msgctxt "docs.api:prose"
+msgid "Defines the uniform plugin contract ([PantokenPlugin](interfaces/PantokenPlugin.md)) and adapts the resolved token IR for\nthe native lineage ([toStyleDictionary](functions/toStyleDictionary.md)). The upstream-resolving transform (`buildTokens`,\nwhich needs the GitHub-only `@instructure/instructure-design-tokens`) lives on the separate\n`@pantoken/core/build` entry so this main entry stays free of that exotic dependency."
+msgstr "Geavahit sama plugin-kontrakta ([PantokenPlugin](interfaces/PantokenPlugin.md))) ja adaptteerib ráhkadan token IR:ii \nbuhtetlaš luovdagiid ([toStyleDictionary](functions/toStyleDictionary.md))). Upstreami-rávdnodat transformaasii (`buildTokens`,\nmii ferte GitHub-máksihkkaš `@instructure/instructure-design-tokens`)) lei bures eret \n`@pantoken/core/build`-sávdda, das main-entry sáhttá geavahuvvat frii dat-devihta dependensas."
