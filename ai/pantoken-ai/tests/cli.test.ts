@@ -16,6 +16,19 @@ vi.mock("@clack/prompts", async (importOriginal) => {
   };
 });
 
+// Real installs would hit the network; only pass through to spawn the "bin" black-box subprocess.
+vi.mock("node:child_process", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("node:child_process")>();
+  return {
+    ...actual,
+    execFileSync: vi.fn((command: string, args?: readonly string[], options?: object) =>
+      command === "node"
+        ? actual.execFileSync(command, args as string[], options as never)
+        : Buffer.from(""),
+    ),
+  };
+});
+
 function mktemp(): string {
   return mkdtempSync(join(tmpdir(), "pantoken-ai-cli-"));
 }
@@ -44,6 +57,7 @@ afterEach(() => {
   stderrSpy.mockRestore();
   vi.mocked(select).mockReset();
   vi.mocked(text).mockReset();
+  vi.mocked(execFileSync).mockClear();
 });
 
 test("createAiCommand builds a command named after the given name", () => {
@@ -119,12 +133,39 @@ test("scaffold requires a platform argument under --yes", async () => {
   expect(exitSpy).toHaveBeenCalledWith(1);
 });
 
-test("scaffold writes both the scaffold and the agent assets", async () => {
+test("scaffold writes both the scaffold and the agent assets, installing dependencies automatically", async () => {
   const dir = mktemp();
   const target = join(dir, "my-app");
   await runAiCli(["scaffold", "react", "--dir", target, "--yes", "--tool", "cursor"]);
   expect(existsSync(join(target, "package.json"))).toBe(true);
   expect(existsSync(join(target, ".cursor/rules/pantoken.mdc"))).toBe(true);
+  expect(vi.mocked(execFileSync)).toHaveBeenCalledWith(
+    expect.any(String),
+    ["install"],
+    expect.objectContaining({ cwd: target }),
+  );
+  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Get started"));
+});
+
+test("scaffold --no-install skips the automatic install", async () => {
+  const dir = mktemp();
+  const target = join(dir, "my-app");
+  await runAiCli([
+    "scaffold",
+    "react",
+    "--dir",
+    target,
+    "--yes",
+    "--tool",
+    "cursor",
+    "--no-install",
+  ]);
+  expect(existsSync(join(target, "package.json"))).toBe(true);
+  expect(vi.mocked(execFileSync)).not.toHaveBeenCalledWith(
+    expect.any(String),
+    ["install"],
+    expect.anything(),
+  );
   expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Next steps"));
 });
 
@@ -174,9 +215,11 @@ test("bin --help lists init and scaffold", () => {
 test("bin scaffold installs assets alongside the scaffold", () => {
   const dir = mktemp();
   const target = join(dir, "my-app");
-  execFileSync("node", [bin, "scaffold", "react", "--dir", target, "--tool", "cursor"], {
-    encoding: "utf8",
-  });
+  execFileSync(
+    "node",
+    [bin, "scaffold", "react", "--dir", target, "--tool", "cursor", "--no-install"],
+    { encoding: "utf8" },
+  );
   expect(existsSync(join(target, "package.json"))).toBe(true);
   expect(existsSync(join(target, ".cursor/rules/pantoken.mdc"))).toBe(true);
 });

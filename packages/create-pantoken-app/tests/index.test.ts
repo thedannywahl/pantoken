@@ -30,7 +30,9 @@ test("requires a platform argument under --yes", () => {
 test("scaffolds the same output as @pantoken/scaffold for a known platform", () => {
   const dir = mkdtempSync(join(tmpdir(), "create-pantoken-app-"));
   const target = join(dir, "my-app");
-  const output = execFileSync("node", [bin, "react", "--dir", target], { encoding: "utf8" });
+  const output = execFileSync("node", [bin, "react", "--dir", target, "--no-install"], {
+    encoding: "utf8",
+  });
   expect(existsSync(join(target, "package.json"))).toBe(true);
   expect(readFileSync(join(target, "package.json"), "utf8")).toContain('"name": "my-app"');
   expect(output).toContain("install");
@@ -39,7 +41,7 @@ test("scaffolds the same output as @pantoken/scaffold for a known platform", () 
 test("accepts the html alias for components", () => {
   const dir = mkdtempSync(join(tmpdir(), "create-pantoken-app-html-"));
   const target = join(dir, "my-app");
-  execFileSync("node", [bin, "html", "--dir", target], { encoding: "utf8" });
+  execFileSync("node", [bin, "html", "--dir", target, "--no-install"], { encoding: "utf8" });
   expect(existsSync(join(target, "package.json"))).toBe(true);
 });
 
