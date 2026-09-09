@@ -302,6 +302,23 @@ test("installWithSpinner returns true and starts/stops the spinner on success", 
   expect(spinner).toHaveBeenCalled();
 });
 
+test("installWithSpinner runs npm through npm_execpath when npm launched the CLI", () => {
+  const dir = mktemp();
+  const originalNpmExecPath = process.env.npm_execpath;
+  process.env.npm_execpath = "/opt/npm/lib/node_modules/npm/bin/npm-cli.js";
+  try {
+    expect(installWithSpinner(dir, "npm", t)).toBe(true);
+  } finally {
+    if (originalNpmExecPath === undefined) delete process.env.npm_execpath;
+    else process.env.npm_execpath = originalNpmExecPath;
+  }
+  expect(vi.mocked(execFileSync)).toHaveBeenCalledWith(
+    process.execPath,
+    ["/opt/npm/lib/node_modules/npm/bin/npm-cli.js", "install"],
+    expect.objectContaining({ cwd: dir }),
+  );
+});
+
 test("installWithSpinner returns false when the install command fails", () => {
   const dir = mktemp();
   vi.mocked(execFileSync).mockImplementationOnce(() => {
@@ -518,6 +535,19 @@ test("chdirs into a non-'.' target dir so the printed next step never needs a se
     .map((call: unknown[]) => String(call[0]))
     .find((s: string) => /\d\. /.test(s));
   expect(devStep).not.toContain("cd ");
+});
+
+test("keeps the target directory in next steps when automatic install fails", async () => {
+  const dir = mktemp();
+  const target = join(dir, "my-app");
+  vi.mocked(execFileSync).mockImplementationOnce(() => {
+    throw new Error("spawnSync npm ENOENT");
+  });
+  await runScaffoldCli(["react", "--dir", target, "--yes"], { usageCommand: "pantoken-scaffold" });
+  const printed = logSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("\n");
+  expect(realpathSync(process.cwd())).toBe(realpathSync(originalCwd));
+  expect(printed).toContain(`cd ${target}`);
+  expect(printed).toContain("install");
 });
 
 test("--no-install skips the automatic install and keeps the full 'Next steps' block", async () => {

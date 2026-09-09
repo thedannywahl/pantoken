@@ -334,7 +334,10 @@ export function installWithSpinner(
   pm: PackageManager | undefined,
   t: LocaleLookup["t"],
 ): boolean {
-  const [command, ...args] = pmCommands(pm).install.split(" ");
+  const npmExecPath = pm === "npm" ? process.env.npm_execpath : undefined;
+  const [command, ...args] = npmExecPath
+    ? [process.execPath, npmExecPath, "install"]
+    : pmCommands(pm).install.split(" ");
   const s = spinner();
   s.start(t("installSpinnerStart"));
 
@@ -539,9 +542,14 @@ export function createScaffoldCommand(options?: ScaffoldCommandOptions): Command
       for (const path of written) {
         console.log(t("wroteFile", { path }));
       }
-      // cwd into the scaffolded dir so the printed next step never needs a separate `cd`.
+      const installed =
+        (opts.install as boolean | undefined) !== false &&
+        installWithSpinner(expandedDir, detectPackageManager(), t);
+      // Once dependencies are installed, cwd into the scaffolded dir so the single remaining
+      // printed next step can be just the dev command. If install failed or was skipped, keep the
+      // original target path visible in the full recovery steps.
       let printDir = expandedDir;
-      if (expandedDir !== ".") {
+      if (installed && expandedDir !== ".") {
         try {
           process.chdir(expandedDir);
           printDir = ".";
@@ -549,9 +557,6 @@ export function createScaffoldCommand(options?: ScaffoldCommandOptions): Command
           // Leave printDir as expandedDir; next-steps falls back to an explicit cd.
         }
       }
-      const installed =
-        (opts.install as boolean | undefined) !== false &&
-        installWithSpinner(expandedDir, detectPackageManager(), t);
       printNextSteps(printDir, written, t, resolveScaffoldPlatform(platform), installed);
     } catch (err) {
       if (err instanceof ScaffoldCliError) {
