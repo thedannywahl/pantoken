@@ -29,8 +29,9 @@ npx @pantoken/scaffold --lang hu
 ```
 
 `npx` works regardless of which package manager you use. Substitute `pnpm dlx`, `yarn dlx`,
-`bunx`, or `deno run npm:` for `npx` if you prefer — the printed "Next steps" install command
-matches whichever one invoked the CLI (detected from `npm_config_user_agent`).
+`bunx`, or `deno run npm:` for `npx` if you prefer — dependencies are installed automatically with
+whichever one invoked the CLI (detected from `npm_config_user_agent`), leaving "start the dev
+server" as the only manual step. Pass `--no-install` to skip the automatic install.
 
 Run `npx @pantoken/scaffold --help` for the full flag reference, or `npx @pantoken/scaffold
 completion <shell>` to generate a bash/zsh/fish/PowerShell completion script.
@@ -61,6 +62,7 @@ await scaffoldProject("react", "./my-app");
 | `[platform]`          | Platform to scaffold (prompted interactively if omitted on a TTY)         |
 | `-d, --dir <path>`    | Target directory (prompted interactively if omitted on a TTY)             |
 | `-y, --yes`           | Never prompt; error instead of prompting for a missing platform/directory |
+| `--no-install`        | Skip automatically installing dependencies after scaffolding              |
 | `-l, --lang <tag>`    | Override the auto-detected display language (e.g. `"hu"`)                 |
 | `--theme <name>`      | Token theme: `rebrand` (default), `canvas`, `canvasHighContrast`          |
 | `--theme-mode <mode>` | Rebrand token mode: `light` (default) or `adaptive`                       |

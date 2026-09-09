@@ -54,6 +54,9 @@ npx pantoken-ai scaffold react --dir ./my-app --yes --tool cursor
 npx pantoken-ai --lang hu scaffold react
 ```
 
+Dependencies are installed automatically after scaffolding, leaving "start the dev server" as the
+only manual step. Pass `--no-install` to skip the automatic install.
+
 If you only want the starter project without the agent assets, run
 [`npx @pantoken/scaffold <platform>`](https://www.npmjs.com/package/@pantoken/scaffold) directly.
 
