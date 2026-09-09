@@ -783,6 +783,9 @@ importers:
       '@pantoken/interactions':
         specifier: workspace:*
         version: link:../formats/interactions
+      '@pantoken/pendo':
+        specifier: workspace:*
+        version: link:../renderers/pendo
       '@pantoken/plugin-custom-icons':
         specifier: workspace:*
         version: link:../plugins/pantoken/custom-icons
