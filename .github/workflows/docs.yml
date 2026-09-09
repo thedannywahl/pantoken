@@ -1,23 +1,27 @@
 name: Deploy docs
 
 # Publish the VitePress + TypeDoc site to GitHub Pages.
-# Enable Pages first: repo Settings → Pages → Build and deployment → Source = GitHub Actions.
+# Enable Pages first: repo Settings -> Pages -> Build and deployment -> Source = GitHub Actions.
 #
-# Gated behind CI: this runs after the CI workflow finishes on main and only deploys when CI passed.
-# CI's `docs` job already builds the site on main and uploads it as `docs-site`, so this workflow just
-# downloads that artifact and publishes it — no rebuild. `workflow_dispatch` is the manual escape hatch
-# (a `[skip ci]` commit, or re-running a failed deploy): the CI artifact won't exist, so it builds fresh.
+# Release-gated: this runs after the Release workflow and deploys only when that run actually
+# published packages, which it signals with a `docs-deploy-request` artifact. So the live site tracks
+# released versions rather than every green commit on main, and the full-locale build (~35k rendered
+# pages) is paid once per release instead of once per push. `workflow_dispatch` is the manual escape
+# hatch - a docs-only fix, or re-running a failed deploy - and skips the artifact check.
+#
+# This workflow builds the site itself: CI's `docs` job is an English-only breakage check that
+# uploads nothing.
 
 on:
   workflow_run:
-    workflows: ["CI"]
+    workflows: ["Release"]
     types: [completed]
     branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
-  actions: read # download the build-output artifact from the triggering CI run
+  actions: read # inspect the triggering Release run's artifacts
   pages: write
   id-token: write
 
@@ -26,43 +30,48 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
+env:
+  VP_TASK_CACHE: node_modules/.vite/task-cache
+  VP_CACHE_KEY_PREFIX: vp-taskcache-
+
 jobs:
-  # Deploy only after a successful CI run (or a manual dispatch), and — for a CI-triggered run — only
-  # when the pushed commit actually changed something the site renders.
-  changes:
+  # A Release run reaches `completed` on both of its paths: opening/updating the Version PR, and
+  # publishing. Only the publish path uploads `docs-deploy-request` (see release.yml), so its presence
+  # is the "a release actually happened" signal.
+  released:
     if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     outputs:
       should_deploy: ${{ steps.decide.outputs.should_deploy }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-        with:
-          persist-credentials: false
-          ref: main
-          fetch-depth: 2
       - name: Decide whether to deploy
         id: decide
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT_NAME: ${{ github.event_name }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
         shell: bash
         run: |
-          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-            echo "should_deploy=true" >> "${GITHUB_OUTPUT}"
+          set -euo pipefail
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            echo "should_deploy=true" >> "$GITHUB_OUTPUT"
+            echo "Manual dispatch; deploying."
             exit 0
           fi
-          # The site is themed by generated token/CSS output from many packages, so treat those as
-          # deploy-worthy too (broad but correct). Keep this path set in lockstep with CI's `docs-changes`
-          # filter, so CI uploads the `docs-site` artifact exactly when this decides to deploy. Compare
-          # the pushed commit to its parent.
-          if git diff --name-only HEAD~1 HEAD | grep -qE '^(docs/|packages/|formats/|platforms/|renderers/|plugins/|design/|pnpm-lock\.yaml|pnpm-workspace\.yaml)'; then
-            echo "should_deploy=true" >> "${GITHUB_OUTPUT}"
+          requested=$(gh api "repos/$REPO/actions/runs/$RUN_ID/artifacts" \
+            --jq '[.artifacts[] | select(.name == "docs-deploy-request")] | length')
+          if [ "$requested" -gt 0 ]; then
+            echo "should_deploy=true" >> "$GITHUB_OUTPUT"
+            echo "Release run $RUN_ID published; deploying."
           else
-            echo "should_deploy=false" >> "${GITHUB_OUTPUT}"
-            echo "No docs-relevant changes in this push; skipping deploy."
+            echo "should_deploy=false" >> "$GITHUB_OUTPUT"
+            echo "Release run $RUN_ID published nothing (Version PR path); skipping deploy."
           fi
 
   build:
-    needs: changes
-    if: needs.changes.outputs.should_deploy == 'true'
+    needs: released
+    if: needs.released.outputs.should_deploy == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -74,36 +83,36 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
 
-      # Post-CI (the common path): CI already built the site on main and uploaded it as `docs-site`
-      # (CNAME baked in). Just fetch it — no vp, no rebuild.
-      - name: Download prebuilt docs site from CI
-        if: github.event_name == 'workflow_run'
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
-        with:
-          name: docs-site
-          path: docs/.vitepress/dist
-          run-id: ${{ github.event.workflow_run.id }}
-          github-token: ${{ github.token }}
-
-      # Manual escape hatch (workflow_dispatch, e.g. a `[skip ci]` commit or re-running a failed
-      # deploy): no CI artifact exists, so build the site fresh here.
       - name: Set up Vite+
-        if: github.event_name == 'workflow_dispatch'
         uses: voidzero-dev/setup-vp@49c3e4e92c52e7f8392712a9267bbe71c5ab30e5 # v1.19.0
         with:
           cache: true
           run-install: true
-      - name: Build docs
-        if: github.event_name == 'workflow_dispatch'
-        run: vp run -F "@pantoken/docs..." build && vp run @pantoken/docs#docs:build
+
+      # Restore whatever CI already computed for this lockfile, so the package builds below are mostly
+      # cache hits and only the docs generation plus the VitePress render are unavoidable work.
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-deploy-${{ github.run_id }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+
+      # The full-locale build. `docs:api:locales` defaults to the deterministic `glossary` adapter, so
+      # every locale's API tree is rendered from the committed `l10n/<locale>/docs.api.po` catalogs -
+      # no AI adapter, no network, no secrets. An untranslated string falls back to English on its own.
+      - name: Build docs (all locales)
+        run: vp run -F "@pantoken/docs..." build && vp run @pantoken/docs#docs:build:deploy
         env:
           DOCS_BASE: /
           DOCS_HOSTNAME: https://pantoken.app/
           # vitepress-plugin-llms walks every locale's rendered pages; V8's auto-detected heap
           # ceiling isn't enough once all ~44 locales carry full content, so raise it explicitly.
           NODE_OPTIONS: --max-old-space-size=8192
+
       - name: Write custom domain file
-        if: github.event_name == 'workflow_dispatch'
         run: echo "pantoken.app" > docs/.vitepress/dist/CNAME
 
       - name: Upload Pages artifact
