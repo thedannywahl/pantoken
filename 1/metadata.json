@@ -1,0 +1,37 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M21Z6EDAGR2B4C997B75JR2X",
+  "session_id": "5cceb19e-d388-4a5d-b286-4b019001d499",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-09T02:15:50.879188Z",
+  "branch": "exotic-subdeps",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/pre-approve-install-scripts.md"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "aacd641ecc7b",
+  "checkpoint_transcript_start": 329,
+  "transcript_lines_at_start": 329,
+  "compact_transcript_start": 50,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-09T02:15:50.869559Z",
+    "agent_lines": 16,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 16,
+    "total_lines_changed": 16,
+    "agent_percentage": 100,
+    "metric_version": 2
+  }
+}
