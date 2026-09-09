@@ -1,0 +1,5 @@
+this string got missed in our i18n work. it needs to be moved to the homepage or chrome translations.
+
+---
+
+make sure that it also gets the rtl treatment- including the proceeding icon when in an rtl locale.
