@@ -18,6 +18,8 @@ import {
   resolveScaffoldTarget,
   resolveScaffoldPlatform,
   scaffoldWithSpinner,
+  installWithSpinner,
+  detectPackageManager,
   printNextSteps,
   SCAFFOLD_PLATFORMS,
   MESSAGES as SCAFFOLD_MESSAGES,
@@ -102,6 +104,7 @@ export function createAiCommand(options?: AiCommandOptions): Command {
     )
     .option("-d, --dir <path>", "Target directory (prompts interactively on a TTY if omitted)")
     .option("-y, --yes", "Never prompt", false)
+    .option("--no-install", "Skip automatically installing dependencies after scaffolding")
     .action(async (platformArg, opts) => {
       const rootOpts = program.opts();
       const locale = detectLocale({ langFlag: rootOpts.lang });
@@ -127,8 +130,11 @@ export function createAiCommand(options?: AiCommandOptions): Command {
         console.log(aiT("wroteFile", { path: p }));
       }
 
+      const installed =
+        opts.install !== false && installWithSpinner(dir, detectPackageManager(), scaffoldT);
+
       // Print next steps (using scaffold's shared formatting, but with ai's locale lookup)
-      printNextSteps(dir, scaffoldFiles, scaffoldT, resolveScaffoldPlatform(platform));
+      printNextSteps(dir, scaffoldFiles, scaffoldT, resolveScaffoldPlatform(platform), installed);
     });
 
   // Enable completions

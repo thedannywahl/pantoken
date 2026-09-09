@@ -1,0 +1,5 @@
+# core-js/ttf2woff2 arrive transitively via @pantoken/pantoken; pre-approve their install scripts
+# so `pnpm install` doesn't fail/warn under pnpm's default strictDepBuilds gate.
+allowBuilds:
+  core-js: true
+  ttf2woff2: true

@@ -42,9 +42,11 @@ export {
 export {
   escapePoString,
   parsePo,
+  readCatalog,
   serializePo,
   serializePot,
   unescapePoString,
+  writeCatalog,
   type PoEntry,
 } from "./po.ts";
 export {

@@ -101,7 +101,7 @@ async function defaultRegistry(): Promise<SimpleIconsRegistry> {
  *
  * @example Emit brand glyphs as <image> tokens
  * ```ts
- * import { buildTokens } from "@pantoken/core";
+ * import { buildTokens } from "@pantoken/core/build";
  * import { simpleIcons } from "@pantoken/plugin-simple-icons";
  * import * as registry from "simple-icons";
  *

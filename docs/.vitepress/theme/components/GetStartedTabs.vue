@@ -387,10 +387,14 @@ const highlightColor = computed(() =>
   cursor: pointer;
   transition: transform 180ms ease;
   color-scheme: dark;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--vp-c-text-1) 18%, transparent);
 }
 
-.gs-started__mode-btn.on-color {
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--vp-c-text-1) 18%, transparent);
+/* The stage behind these buttons is always the same dark navy gradient regardless of light/dark
+   mode, so the icon must stay white in every state — beat `.instui-button.-without-background`'s
+   own (theme-dependent) color with the extra `.instui-button` class match. */
+.instui-button.gs-started__mode-btn {
+  color: var(--instui-primitive-color-white);
 }
 
 .gs-started__mode-btn:hover,

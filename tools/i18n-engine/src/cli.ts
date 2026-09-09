@@ -13,7 +13,7 @@ import { loadConfig, parseConfig, type I18nConfig } from "./config.ts";
 import { runLint } from "./lint.ts";
 import { formatCoverageReport, formatCoverageReportHtml, writeCoverageReport } from "./coverage.ts";
 import { excludeLocale, includeLocale, moveLocaleToTier } from "./locales.ts";
-import { aiProviderConfigured } from "./ai-translate.ts";
+import { aiProviderConfigured, type FillOptions } from "./ai-translate.ts";
 import {
   DOCS_GUIDES,
   contentLocales,
@@ -68,10 +68,20 @@ function stubAction(command: string): () => void {
 }
 
 /** Suffix explaining a lingering untranslated count for a "messages"-kind space's translate output. */
-function translateNote(): string {
-  return aiProviderConfigured()
+function translateNote(provider: string | undefined): string {
+  return aiProviderConfigured() || provider
     ? ""
-    : " (no AI provider configured — set I18N_TRANSLATION_COMMAND)";
+    : " (no AI provider configured — pass --provider or set I18N_TRANSLATION_COMMAND)";
+}
+
+/** Reject a `--tier` that names no tier in `locales.tiers`, rather than silently translating none. */
+function assertKnownTier(config: I18nConfig, tier: string | undefined): void {
+  if (tier === undefined || tier in config.locales.tiers) return;
+  throw new CommanderError(
+    1,
+    "i18n.unknownTier",
+    `Unknown tier "${tier}" — known: ${Object.keys(config.locales.tiers).join(", ")}`,
+  );
 }
 
 /** Build the `i18n` commander program (exported for tests; `runI18nCli` is the process entry point). */
@@ -153,41 +163,64 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
     .option("--provider <provider>", "override the default provider profile")
     .option("--concurrency <n>", "override provider concurrency", Number)
     .option("--force", "retranslate even when the cache/PO entry is up to date", false)
-    .action((space: string | undefined, opts: { locale?: string }) =>
-      withSpace(
-        "translate",
-        space,
-        async (config) => {
-          const locales = opts.locale ? [opts.locale] : guidesLocales(config);
-          for (const locale of locales) {
-            const result = await runTranslateGuides(config, configDirOf(), locale);
-            console.log(
-              `${DOCS_GUIDES} (${locale}): ${String(result.translated)} translated, ` +
-                `${String(result.untranslated)} untranslated (translate via docs:guides:locales:translate, not this CLI) — ${result.poPath}`,
-            );
-          }
+    .action(
+      (
+        space: string | undefined,
+        opts: {
+          locale?: string;
+          tier?: string;
+          provider?: string;
+          concurrency?: number;
+          force: boolean;
         },
-        async (config, spaceId) => {
-          const locales = opts.locale ? [opts.locale] : messagesLocales(config, spaceId);
-          for (const locale of locales) {
-            const result = await runTranslateMessages(config, configDirOf(), spaceId, locale);
-            console.log(
-              `${spaceId} (${locale}): ${String(result.translated)} translated, ` +
-                `${String(result.untranslated)} untranslated${translateNote()} — ${result.poPath}`,
-            );
-          }
-        },
-        async (config, spaceId) => {
-          const locales = opts.locale ? [opts.locale] : contentLocales(config, spaceId);
-          for (const locale of locales) {
-            const result = await runTranslateContent(config, configDirOf(), spaceId, locale);
-            console.log(
-              `${spaceId} (${locale}): ${String(result.translated)} translated, ` +
-                `${String(result.untranslated)} untranslated (no AI provider authorized yet) — ${result.poPath}`,
-            );
-          }
-        },
-      ),
+      ) => {
+        const fillOptions: FillOptions = {
+          ...(opts.provider ? { profile: opts.provider } : {}),
+          ...(opts.concurrency ? { concurrency: opts.concurrency } : {}),
+          force: opts.force,
+        };
+        const localesFor = (all: string[]): string[] => (opts.locale ? [opts.locale] : all);
+        return withSpace(
+          "translate",
+          space,
+          async (config) => {
+            assertKnownTier(config, opts.tier);
+            for (const locale of localesFor(guidesLocales(config, opts.tier))) {
+              const result = await runTranslateGuides(config, configDirOf(), locale);
+              console.log(
+                `${DOCS_GUIDES} (${locale}): ${String(result.translated)} translated, ` +
+                  `${String(result.untranslated)} untranslated (translate via docs:guides:locales:translate, not this CLI) — ${result.poPath}`,
+              );
+            }
+          },
+          async (config, spaceId) => {
+            assertKnownTier(config, opts.tier);
+            for (const locale of localesFor(messagesLocales(config, spaceId, opts.tier))) {
+              const result = await runTranslateMessages(
+                config,
+                configDirOf(),
+                spaceId,
+                locale,
+                fillOptions,
+              );
+              console.log(
+                `${spaceId} (${locale}): ${String(result.translated)} translated, ` +
+                  `${String(result.untranslated)} untranslated${translateNote(opts.provider)} — ${result.poPath}`,
+              );
+            }
+          },
+          async (config, spaceId) => {
+            assertKnownTier(config, opts.tier);
+            for (const locale of localesFor(contentLocales(config, spaceId, opts.tier))) {
+              const result = await runTranslateContent(config, configDirOf(), spaceId, locale);
+              console.log(
+                `${spaceId} (${locale}): ${String(result.translated)} translated, ` +
+                  `${String(result.untranslated)} untranslated (translated by the docs scripts, not this CLI) — ${result.poPath}`,
+              );
+            }
+          },
+        );
+      },
     );
 
   program

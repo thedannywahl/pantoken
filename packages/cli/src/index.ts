@@ -14,7 +14,6 @@ import { dirname, join, relative, resolve } from "node:path";
 import { generateAndroid } from "@pantoken/android";
 import { generateCompose } from "@pantoken/compose";
 import { generateFlutter } from "@pantoken/flutter";
-import { buildIconFont } from "@pantoken/icon-font";
 import { buildPendoCss } from "@pantoken/pendo";
 import { toDrupalTheme } from "@pantoken/drupal";
 import { toHugoAssets } from "@pantoken/hugo";
@@ -287,8 +286,21 @@ function runSwatches(args: CliArgs): void {
   console.log(`✓ pantoken: wrote ${file}`);
 }
 
-/** Build and write the icon font (TTF, WOFF2, CSS, and codepoints). */
+/**
+ * Build and write the icon font (TTF, WOFF2, CSS, and codepoints).
+ *
+ * `@pantoken/icon-font` is an optional peer — it pulls native build tooling (ttf2woff2 → node-gyp)
+ * that most `generate` targets never need, so it's loaded lazily and only on this path.
+ */
 async function runIconFont(args: CliArgs): Promise<void> {
+  let buildIconFont: typeof import("@pantoken/icon-font").buildIconFont;
+  try {
+    ({ buildIconFont } = await import("@pantoken/icon-font"));
+  } catch {
+    throw new Error(
+      'The "icon-font" target requires @pantoken/icon-font. Install it with: npm install @pantoken/icon-font',
+    );
+  }
   const font = await buildIconFont({
     theme: args.theme,
     icons: args.icons,

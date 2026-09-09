@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-08 21:14+0000\n"
+"PO-Revision-Date: 2026-09-09 03:33+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29395,3 +29395,7 @@ msgstr "接受已完全解析的 [LocaleBundle](#) *或* 原始的 BCP47 標籤�
 msgctxt "docs.api:prose"
 msgid "A [LocaleBundle](#) object, or a BCP47 tag (`\"hu\"`, `\"ar\"`, …)."
 msgstr "一個 [LocaleBundle](#) 物件，或一個 BCP47 標籤（`\"hu\"`、`\"ar\"`、…）。"
+
+msgctxt "docs.api:prose"
+msgid "Defines the uniform plugin contract ([PantokenPlugin](interfaces/PantokenPlugin.md)) and adapts the resolved token IR for\nthe native lineage ([toStyleDictionary](functions/toStyleDictionary.md)). The upstream-resolving transform (`buildTokens`,\nwhich needs the GitHub-only `@instructure/instructure-design-tokens`) lives on the separate\n`@pantoken/core/build` entry so this main entry stays free of that exotic dependency."
+msgstr "定義統一的外掛合約 ([PantokenPlugin](interfaces/PantokenPlugin.md)))，並將解析後的 token IR 適配為原生 lineage ([toStyleDictionary](functions/toStyleDictionary.md)))。負責上游解析的轉換器 (`buildTokens`,\nwhich needs the GitHub-only `@instructure/instructure-design-tokens`)) 被放在單獨的\n`@pantoken/core/build` 條目中，因而本主要條目得以免於那個特殊的相依。"

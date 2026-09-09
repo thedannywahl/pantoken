@@ -14,7 +14,8 @@ npm i @pantoken/core
 ## Usage
 
 ```ts
-import { buildTokens, toStyleDictionary } from "@pantoken/core";
+import { buildTokens } from "@pantoken/core/build";
+import { toStyleDictionary } from "@pantoken/core";
 
 const tokens = buildTokens({ theme: "rebrand" });
 // → Token[] : { name, syntax, inherits, value, themed?, refersTo?, meta? }
@@ -29,7 +30,8 @@ Every producer accepts `{ plugins }`. A plugin's `tokens` hook receives the curr
 the full replacement list:
 
 ```ts
-import { buildTokens, type PantokenPlugin } from "@pantoken/core";
+import { buildTokens } from "@pantoken/core/build";
+import type { PantokenPlugin } from "@pantoken/core";
 
 const focus: PantokenPlugin = {
   name: "focus",

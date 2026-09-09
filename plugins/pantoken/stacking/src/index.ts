@@ -10,7 +10,7 @@
  *
  * @example
  * ```ts
- * import { buildTokens } from "@pantoken/core";
+ * import { buildTokens } from "@pantoken/core/build";
  * import { stacking } from "@pantoken/plugin-stacking";
  *
  * const tokens = buildTokens({ theme: "rebrand", plugins: [stacking()] });

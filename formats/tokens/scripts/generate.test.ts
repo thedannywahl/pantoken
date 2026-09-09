@@ -12,9 +12,8 @@ const buildTokens = vi.fn<(...args: unknown[]) => unknown[]>();
 
 vi.mock("node:fs", () => ({ readFileSync, writeFileSync, mkdirSync, existsSync }));
 vi.mock("node:module", () => ({ createRequire: () => ({ resolve: requireResolve }) }));
-vi.mock("@pantoken/core", () => ({
+vi.mock("@pantoken/core/build", () => ({
   buildTokens: (...args: unknown[]) => buildTokens(...args),
-  defineToken: (t: unknown) => t,
 }));
 vi.mock("@instructure/instructure-design-tokens", () => ({ themeTokens: {} }));
 vi.mock("@pantoken/plugin-deprecations", () => ({ deprecationShims: () => ({}) }));

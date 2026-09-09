@@ -1,5 +1,13 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-09 11:31+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"Language: und\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -54,6 +62,30 @@ msgstr "Függőségek telepítése: {{command}}"
 msgctxt "cli.scaffold:nextStepsDevServer"
 msgid "Start the dev server (if your template has one)"
 msgstr "Indítsd el a fejlesztői szervert (ha a sablonod tartalmaz ilyet)"
+
+#: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:getStartedHeading"
+msgid "Get started:"
+msgstr "Következő lépések:"
+
+#: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:installSpinnerStart"
+msgid "Installing dependencies..."
+msgstr "Függőségek telepítése: {{command}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:installSpinnerStop"
+msgid "Dependencies installed."
+msgstr "Függőségek telepítve."
+
+#: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:installSpinnerFailed"
+msgid "Failed to install dependencies:"
+msgstr "Függőségek telepítése: {{command}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format

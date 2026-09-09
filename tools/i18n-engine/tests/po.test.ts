@@ -1,10 +1,15 @@
-import { describe, expect, test } from "vite-plus/test";
+import { mkdtempSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { afterEach, beforeEach, describe, expect, test } from "vite-plus/test";
 import {
   escapePoString,
   parsePo,
+  readCatalog,
   serializePo,
   serializePot,
   unescapePoString,
+  writeCatalog,
   type PoEntry,
 } from "../src/po.ts";
 
@@ -222,5 +227,63 @@ describe("serializePot with msgctxt", () => {
       },
     ];
     expect(parsePo(serializePo(entries))).toEqual(entries);
+  });
+});
+
+describe("writeCatalog", () => {
+  let testDir: string;
+  const path = (): string => join(testDir, "ui.strings.pot");
+  const unit = (msgid: string) => ({ msgid, reference: "src/i18n.json" });
+
+  beforeEach(() => {
+    testDir = mkdtempSync(join(tmpdir(), "pantoken-i18n-write-catalog-"));
+  });
+
+  afterEach(() => {
+    rmSync(testDir, { recursive: true, force: true });
+  });
+
+  test("readCatalog returns undefined for a file that does not exist", () => {
+    expect(readCatalog(join(testDir, "absent.pot"))).toBeUndefined();
+  });
+
+  test("readCatalog returns the contents of a file that does exist", () => {
+    writeFileSync(path(), "hello");
+    expect(readCatalog(path())).toBe("hello");
+  });
+
+  test("readCatalog rethrows an error that is not a missing file", () => {
+    expect(() => readCatalog(testDir)).toThrow();
+  });
+
+  test("writes a catalog that does not exist yet", () => {
+    expect(writeCatalog(path(), serializePot([unit("Back")]))).toBe(true);
+    expect(readFileSync(path(), "utf8")).toContain('msgid "Back"');
+  });
+
+  test("leaves the file untouched when only the revision date would change", () => {
+    writeCatalog(path(), serializePot([unit("Back")]));
+    const before = readFileSync(path(), "utf8");
+    const mtimeBefore = statSync(path()).mtimeMs;
+
+    expect(writeCatalog(path(), serializePot([unit("Back")]))).toBe(false);
+    expect(readFileSync(path(), "utf8")).toBe(before);
+    expect(statSync(path()).mtimeMs).toBe(mtimeBefore);
+  });
+
+  test("writes, and restamps the revision date, when a unit actually changed", () => {
+    writeCatalog(path(), serializePot([unit("Back")]));
+    const before = readFileSync(path(), "utf8");
+
+    expect(writeCatalog(path(), serializePot([unit("Back"), unit("Cancel")]))).toBe(true);
+    const after = readFileSync(path(), "utf8");
+    expect(after).toContain('msgid "Cancel"');
+    expect(after).not.toBe(before);
+  });
+
+  test("writes when the existing file carries no revision date to preserve", () => {
+    writeFileSync(path(), 'msgid ""\nmsgstr ""\n"Content-Type: text/plain; charset=UTF-8\\n"\n');
+    expect(writeCatalog(path(), serializePot([unit("Back")]))).toBe(true);
+    expect(readFileSync(path(), "utf8")).toContain("PO-Revision-Date:");
   });
 });

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-08 21:14+0000\n"
+"PO-Revision-Date: 2026-09-09 03:30+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29395,3 +29395,7 @@ msgstr "Aceita um [LocaleBundle](#) totalmente resolvido *ou* uma string de tag 
 msgctxt "docs.api:prose"
 msgid "A [LocaleBundle](#) object, or a BCP47 tag (`\"hu\"`, `\"ar\"`, …)."
 msgstr "Um objeto [LocaleBundle](#), ou uma tag BCP47 (`\"hu\"`, `\"ar\"`, …)."
+
+msgctxt "docs.api:prose"
+msgid "Defines the uniform plugin contract ([PantokenPlugin](interfaces/PantokenPlugin.md)) and adapts the resolved token IR for\nthe native lineage ([toStyleDictionary](functions/toStyleDictionary.md)). The upstream-resolving transform (`buildTokens`,\nwhich needs the GitHub-only `@instructure/instructure-design-tokens`) lives on the separate\n`@pantoken/core/build` entry so this main entry stays free of that exotic dependency."
+msgstr "Define o contrato uniforme do plugin ([PantokenPlugin](interfaces/PantokenPlugin.md))) e adapta o IR de tokens resolvido para\na linhagem nativa ([toStyleDictionary](functions/toStyleDictionary.md))). O transformador que resolve o upstream (`buildTokens`,\n que necessita do exclusivo do GitHub `@instructure/instructure-design-tokens`)) vive na entrada separada\n`@pantoken/core/build` para que esta entrada principal permaneça livre dessa dependência exótica."

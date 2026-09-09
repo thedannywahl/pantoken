@@ -48,7 +48,8 @@ export function decodeIconSvg(value: string): string {
  *
  * @example
  * ```ts
- * import { buildTokens, getIconSvgs } from "@pantoken/core";
+ * import { buildTokens } from "@pantoken/core/build";
+ * import { getIconSvgs } from "@pantoken/core";
  *
  * const svgs = getIconSvgs(buildTokens());
  * svgs.get("arrow-left"); // → inline SVG markup for the arrow-left glyph (non-icon tokens skipped)

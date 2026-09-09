@@ -44,7 +44,9 @@ export function parseMessageSource(
         key,
         msgctxt,
         msgid: entry.message,
-        reference: `${referencePrefix ?? ""}${key}`,
+        // No prefix means a single-file source: leave the reference empty so the POT writer can
+        // fall back to the space's own source path rather than emitting a bare key.
+        reference: referencePrefix ? `${referencePrefix}${key}` : "",
         translate: entry.translate ?? "always",
       };
     });

@@ -57,6 +57,32 @@ Stylelint remains because the CLI covers doc hygiene, not the 24 core CSS correc
 
 ## The docs site
 
+There are three site builds, and they exist for different jobs:
+
+| Script              | Locale API | Where it runs                   | Why                                                                                      |
+| ------------------- | ---------- | ------------------------------- | ---------------------------------------------------------------------------------------- |
+| `docs:build`        | English    | CI, every PR and main push      | A fast breakage check. Sets `DOCS_ROOT_LOCALE_ONLY=1`, so `<locale>/api/**` is excluded. |
+| `docs:build:deploy` | All        | The `Deploy docs` workflow only | What ships. Deterministic `glossary` adapter — no AI, no network.                        |
+| `docs:build:all`    | All        | Local                           | `docs:build:deploy` plus `docs:check:locales` (the parity gate).                         |
+
+`docs:build` renders a site whose non-root locales have no API tree, so under
+`DOCS_ROOT_LOCALE_ONLY=1` `config.ts` points every localized API nav link, sidebar route, and home-hero
+action at the English `/api/` tree instead of a route it didn't build. Don't remove that fallback —
+it's what keeps the English-only build internally consistent.
+
+**Deploys are release-gated.** `Deploy docs` no longer follows every green CI run on main. The
+`Release` workflow's publish path uploads a `docs-deploy-request` marker artifact, and `docs.yml`
+(triggered by `workflow_run` on `Release`) deploys only when that marker is present — so the site
+tracks published versions, not intermediate main commits. `workflow_dispatch` remains the manual
+escape hatch. The deploy workflow builds the site itself; CI no longer uploads a `docs-site` artifact.
+
+**Why the full build stays in CI.** The localized API tree is ~875 pages per locale across 44
+locales — roughly 35k generated files. Those are gitignored on purpose (they were committed once and
+removed), so building locally would mean either re-committing them or hand-pushing `dist`. Paying for
+one full render per release in CI keeps the generated output out of git and off your machine. The
+translation half is already incremental: `TranslationMemory` serves unchanged strings from
+`l10n/<locale>/docs.api.po`, so a guide or API edit only re-translates what actually changed.
+
 `docs/` is a VitePress site (`@pantoken/docs`) with two locales — `root` (English, `/…`) and `hu`
 (Magyar, `/hu/…`) — a symmetric prefix swap that VitePress's default routing already handles (don't
 set a custom `i18nRouting`).
@@ -77,8 +103,9 @@ set a custom `i18nRouting`).
   (`docs/i18n-cache/hu.api.json`) is content-addressed and adapter-agnostic, so a claude-authored
   prose entry is served to a `glossary` build as a plain cache hit. The workflow: run
   `pnpm run docs:api:locales:claude` **locally** to author prose (a cold run is bounded to ~30–40
-  batched `claude -p` calls, resumable via the memory's autosave), then commit `hu.api.json`. CI's
-  `docs:build` runs the `glossary` adapter, which serves that prose from cache and only ever fills
+  batched `claude -p` calls, resumable via the memory's autosave), then commit `hu.api.json`. The
+  deploy build (`docs:build:deploy`) runs the `glossary` adapter, which serves that prose from cache
+  and only ever fills
   structural headings/labels. Brand-new prose that isn't cached yet passes through as English — the
   glossary **never** caches its own prose passthrough (that would permanently mask the block from a
   later claude run), so it stays a miss until claude authors it. Never wire `:claude` into CI.
@@ -150,7 +177,7 @@ until every translation does.
 didn't run, not that a translator is behind.
 The committed default: **every configured locale blocks on translation drift.** A missing source key,
 translation, or structural parity gap fails the build. `docs.parity` blocks for every locale because
-`docs:build` runs `docs:api:locales` before it, so a gap there means a generator didn't run.
+`docs:build:all` runs `docs:api:locales` before it, so a gap there means a generator didn't run.
 
 A surface the config doesn't name inherits `fallback`, which is tier-aware — so a checker's brand-new
 surface id still blocks on English before anyone edits the policy.
@@ -165,6 +192,18 @@ Two escape hatches:
 CI wiring: the `i18n-drift` job runs `vp run gate:i18n` when catalog, source, or policy paths change;
 that gate generates the English API tree and checks every surface. `gate:i18n` also runs before npm
 publishing. AI translation is never wired into CI; fill drift locally with `vp run i18n:translate`.
+
+`translate` re-extracts a space's `l10n/<space>.pot` from its source before merging, so a newly added
+key reaches the PO catalogs without a separate step, and `check` reports a stale template as drift in
+its own right. Run `vp run i18n:extract` when you want to refresh a template without spending
+translation credits. A messages space has no generic render step — the owning package's `generate`
+script rebuilds its locale bundles from the PO catalogs.
+
+`i18n translate` takes four narrowing options: `--locale <tag>` and `--tier <tier>` limit which
+locales run, `--provider <profile>` picks a `provider.profiles` entry (`copilot`, `agy`, `claude`)
+for the command, model, and effort, `--concurrency <n>` bounds parallel provider calls, and `--force`
+retranslates entries that already have a translation. `I18N_TRANSLATION_COMMAND` and
+`I18N_TRANSLATION_COMMAND_ARGS` still override whatever `--provider` resolves.
 
 ## Publishing the create-pantoken-app skill
 

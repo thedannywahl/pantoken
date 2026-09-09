@@ -253,6 +253,30 @@ export default defineConfig({
       },
       // i18n locale bundle management. translate is local-only (AI credentials required);
       // check:drift asserts committed caches are current (CI-safe, no network).
+      // Catalog extraction: rewrites each l10n/*.pot from its source. `translate` does this on its
+      // own now; these tasks exist to refresh a POT without spending translation credits.
+      "ui:extract": {
+        command: "vp run @pantoken/web-components#extract",
+        cache: false,
+      },
+      "cli:extract": {
+        command: "vp run @pantoken/scaffold#extract && vp run @pantoken/ai#extract",
+        cache: false,
+      },
+      // docs.api and docs.guides are extracted by their own build scripts, not the generic CLI.
+      "docs:extract": {
+        command: [
+          "node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json extract docs.home",
+          "node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json extract docs.chrome",
+          "node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json extract docs.demos",
+        ].join(" && "),
+        cache: false,
+      },
+      "i18n:extract": {
+        command: "true",
+        dependsOn: ["ui:extract", "cli:extract", "docs:extract"],
+        cache: false,
+      },
       // UI (web-components) string localization.
       "ui:translate": {
         command: "vp run @pantoken/web-components#translate",
@@ -267,15 +291,15 @@ export default defineConfig({
         cache: false,
       },
       "ui:translate:force": {
-        command: "vp run @pantoken/web-components#translate",
+        command: "vp run @pantoken/web-components#translate:force",
         cache: false,
       },
       "ui:translate:force:agy": {
-        command: "vp run @pantoken/web-components#translate:agy",
+        command: "vp run @pantoken/web-components#translate:force:agy",
         cache: false,
       },
       "ui:translate:force:copilot": {
-        command: "vp run @pantoken/web-components#translate:copilot",
+        command: "vp run @pantoken/web-components#translate:force:copilot",
         cache: false,
       },
       // Docs locale translation (both claude and agy variants).
@@ -318,16 +342,17 @@ export default defineConfig({
         cache: false,
       },
       "cli:translate:force": {
-        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
+        command: "vp run @pantoken/scaffold#translate:force && vp run @pantoken/ai#translate:force",
         cache: false,
       },
       "cli:translate:force:agy": {
-        command: "vp run @pantoken/scaffold#translate:agy && vp run @pantoken/ai#translate:agy",
+        command:
+          "vp run @pantoken/scaffold#translate:force:agy && vp run @pantoken/ai#translate:force:agy",
         cache: false,
       },
       "cli:translate:force:copilot": {
         command:
-          "vp run @pantoken/scaffold#translate:copilot && vp run @pantoken/ai#translate:copilot",
+          "vp run @pantoken/scaffold#translate:force:copilot && vp run @pantoken/ai#translate:force:copilot",
         cache: false,
       },
       // Umbrella tasks for all translation domains.

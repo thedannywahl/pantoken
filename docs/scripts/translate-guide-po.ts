@@ -9,6 +9,7 @@ import {
   serializePo,
   runExtractGuides,
   runTranslateGuides,
+  writeCatalog,
 } from "@pantoken/i18n-engine";
 import { AiTranslationAdapter } from "./api-translation.ts";
 import { reassemble, segmentMarkdown } from "./segment-markdown.ts";
@@ -18,6 +19,7 @@ const repoRoot = new URL("../../", import.meta.url).pathname;
 const config = loadConfig(join(repoRoot, "i18n.config.json"));
 const docsRoot = join(repoRoot, "docs");
 const locales = parseRequestedLocales(process.env.DOCS_TRANSLATION_LOCALE, NON_ROOT_LOCALES);
+const force = process.env.DOCS_TRANSLATION_FORCE === "1";
 
 runExtractGuides(config, repoRoot);
 const files = listGuideFiles(docsRoot);
@@ -31,7 +33,7 @@ for (const locale of locales) {
   for (const file of files) {
     const source = readFileSync(join(docsRoot, file), "utf8");
     const entry = entries.find((item) => !item.obsolete && item.msgid === source);
-    if (!entry || (entry.msgstr !== "" && !entry.fuzzy)) continue;
+    if (!entry || (!force && entry.msgstr !== "" && !entry.fuzzy)) continue;
 
     const translated = await adapter.translateMarkdown(source, file);
     const promptBodies = collectPromptBodies(source);
@@ -51,7 +53,7 @@ for (const locale of locales) {
     entry.msgstr = `${localized.trimEnd()}\n`;
     entry.fuzzy = false;
     entry.flags = entry.flags.filter((flag) => flag !== "fuzzy");
-    writeFileSync(poPath, serializePo(entries));
+    writeCatalog(poPath, serializePo(entries));
     refreshCoverageReports(join(repoRoot, "i18n.config.json"));
     writeFileSync(join(docsRoot, locale, file), entry.msgstr);
     console.log(`${locale}: translated ${file}`);

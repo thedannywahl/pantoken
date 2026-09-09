@@ -42,6 +42,18 @@ docs/public/
 docs/public/*
 !docs/public/logo-dark.svg
 !docs/public/logo-light.svg
+# Static (non-generated) site assets: favicons and the home-page feature icons. Nothing regenerates
+# these, so they have to be committed or the deployed site 404s on them.
+!docs/public/favicon.ico
+!docs/public/favicon.png
+!docs/public/book-check-dark.svg
+!docs/public/book-check-light.svg
+!docs/public/package-dark.svg
+!docs/public/package-light.svg
+!docs/public/unlink-dark.svg
+!docs/public/unlink-light.svg
+!docs/public/workflow-dark.svg
+!docs/public/workflow-light.svg
 !docs/public/robots.txt
 !docs/public/.well-known/
 docs/public/.well-known/*

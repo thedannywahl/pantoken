@@ -73,7 +73,10 @@
     "plugins/pantoken/layouts/src/**/*.css",
     // Only imported from src/main.ts.tmpl, which fallow doesn't trace as a real entry point (the
     // scaffold strips the .tmpl suffix at scaffold-time, same as the /src/main.ts convention below).
-    "packages/scaffold/templates/canvas-theme-editor/src/app.css"
+    "packages/scaffold/templates/canvas-theme-editor/src/app.css",
+    // Only referenced through docs/.vitepress/config.ts's resolve.alias, built from a regex `find`
+    // and a `fileURLToPath(new URL(...))` replacement fallow can't trace back to this path.
+    "docs/.vitepress/theme/no-default-fonts.css"
   ],
 
   // Runtime-provided or type-only deps fallow can't observe being used: @pantoken/model is imported
@@ -131,6 +134,11 @@
     "/src/main.tsx",
     "/src/main.ts"
   ],
+
+  // ttf2woff2 (formats/icon-font) pins node-gyp@^11, whose make-fetch-happen→cacache chain resolves
+  // to deprecated glob@10.5.0; the pnpm-workspace.yaml override to node-gyp@^13 fixes that and is
+  // read directly by pnpm, not by any source import fallow's static graph can trace.
+  "ignoreDependencyOverrides": [{ "package": "node-gyp", "source": "pnpm-workspace.yaml" }],
 
   "duplicates": {
     // Duplication is gated (not advisory): `health:fallow` fails when the duplicated-line ratio

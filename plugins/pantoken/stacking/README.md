@@ -6,7 +6,7 @@ Named z-index depths from InstUI's view stacking scale — `deepest`, `below`, `
 using the lower-level `@pantoken/css`/`@pantoken/tokens` pipeline directly.
 
 ```ts
-import { buildTokens } from "@pantoken/core";
+import { buildTokens } from "@pantoken/core/build";
 import { stacking } from "@pantoken/plugin-stacking";
 
 const tokens = buildTokens({ theme: "rebrand", plugins: [stacking()] });

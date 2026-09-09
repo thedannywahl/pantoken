@@ -633,13 +633,10 @@ jobs:
       - name: Check all translation drift
         run: vp run gate:i18n
 
-  # Build the site as part of CI, so:
-  #  - PRs get the deploy build without regenerating or checking every localized API tree. Those
-  #    full-locale operations remain available locally through `docs:build:all`.
-  #  - main pushes upload the built site as `docs-site`, which the Deploy docs workflow publishes
-  #    directly (no rebuild).
-  # Gated on docs-relevant changes with the same path set the Deploy docs `changes` job uses, so the
-  # artifact is uploaded exactly when a deploy will look for it.
+  # Build the site as a breakage check: English API + VitePress, no localized API trees. The deploy
+  # build is a separate, release-gated thing (see docs.yml), so nothing here is published — this job
+  # exists to catch a broken config, a bad generator, or a dead link before it reaches a release.
+  # Gated on docs-relevant changes.
   docs:
     needs: [build, docs-changes]
     if: needs.docs-changes.outputs.docs == 'true'
@@ -672,19 +669,6 @@ jobs:
           # vitepress-plugin-llms walks every locale's rendered pages; V8's auto-detected heap
           # ceiling isn't enough once all ~44 locales carry full content, so raise it explicitly.
           NODE_OPTIONS: --max-old-space-size=8192
-      # On main, hand the built site to the Deploy docs workflow (workflow_run) so it publishes without
-      # rebuilding. The CNAME is baked in here so the downloaded artifact is deploy-ready as-is.
-      - name: Add custom domain file
-        if: github.ref == 'refs/heads/main'
-        run: echo "pantoken.app" > docs/.vitepress/dist/CNAME
-      - name: Upload built docs site
-        if: github.ref == 'refs/heads/main'
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
-        with:
-          name: docs-site
-          path: docs/.vitepress/dist
-          include-hidden-files: true
-          retention-days: 1
 
   # The single required status check for branch protection. It `needs` every other job here and runs
   # `if: always()`, so it resolves only once they all do — and it fails if any of them failed or was

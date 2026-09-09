@@ -14,6 +14,7 @@ import tab from "@bomb.sh/tab/commander";
 import { homedir } from "node:os";
 import { join, basename } from "node:path";
 import { readFileSync } from "node:fs";
+import { execFileSync } from "node:child_process";
 
 export { SCAFFOLD_PLATFORMS, isScaffoldPlatform, resolveScaffoldPlatform } from "./index.ts";
 export { detectLocale, createLocaleLookup, type LocaleLookup } from "./locale.ts";
@@ -267,6 +268,35 @@ function pmCommands(pm: PackageManager | undefined): {
 }
 
 /**
+ * Runs the detected package manager's install command in `dir`, wrapped in a clack spinner.
+ * Failures are reported but non-fatal — the project is still usable, just not installed — so the
+ * caller decides how `printNextSteps` should reflect the outcome via the returned boolean.
+ *
+ * @param dir - The scaffold directory to install into
+ * @param pm - The detected package manager (defaults to npm's command when undefined)
+ * @param t - Localized string lookup
+ * @returns Whether the install command exited successfully
+ */
+export function installWithSpinner(
+  dir: string,
+  pm: PackageManager | undefined,
+  t: LocaleLookup["t"],
+): boolean {
+  const [command, ...args] = pmCommands(pm).install.split(" ");
+  const s = spinner();
+  s.start(t("installSpinnerStart"));
+
+  try {
+    execFileSync(command!, args, { cwd: dir, stdio: "ignore" });
+    s.stop(t("installSpinnerStop"));
+    return true;
+  } catch (err) {
+    s.stop(`${t("installSpinnerFailed")} ${err instanceof Error ? err.message : String(err)}`);
+    return false;
+  }
+}
+
+/**
  * Finds the scaffolded `package.json` among `written` and returns its preferred run script name
  * (`dev`, else `preview`), or `undefined` if no such file/script exists (or can't be read).
  */
@@ -289,24 +319,33 @@ function substituteVars(text: string, vars: Record<string, string>): string {
   return text.replace(/\{\{(\w+)\}\}/g, (match, name: string) => vars[name] ?? match);
 }
 
+/** The one remaining manual step after an automatic install: `cd <dir> && <dev>`, or just `<dev>` when `dir` is `.`. */
+function buildDevStep(dir: string, dev: string): string {
+  return dir === "." ? dev : `cd ${dir} && ${dev}`;
+}
+
 /**
  * Prints the post-scaffold "Next steps" block (plus any template-authored notes/caveats).
  *
- * When `platform` has a `scaffold.json`-derived entry in `SCAFFOLD_METADATA`, next steps/notes/
- * caveats are rendered from its (localized, `{{var}}`-substituted) authored strings. Otherwise a
- * generic cd/install/run-script fallback is used, with the run script itself detected from the
- * scaffolded `package.json` (`dev`, else `preview`).
+ * When `installed` is true (dependencies were already installed automatically), the block collapses
+ * to the single remaining manual action — starting the dev server, prefixed with `cd <dir>` when
+ * needed — regardless of platform. Otherwise, when `platform` has a `scaffold.json`-derived entry in
+ * `SCAFFOLD_METADATA`, next steps/notes/caveats are rendered from its (localized, `{{var}}`-
+ * substituted) authored strings; failing that, a generic cd/install/run-script fallback is used,
+ * with the run script itself detected from the scaffolded `package.json` (`dev`, else `preview`).
  *
  * @param dir - The scaffold directory
  * @param written - The paths written by scaffoldProject
  * @param t - Localized string lookup
  * @param platform - The resolved (alias-free) scaffold platform, used to look up `scaffold.json` metadata
+ * @param installed - Whether dependencies were already installed automatically
  */
 export function printNextSteps(
   dir: string,
   written: string[],
   t: LocaleLookup["t"],
   platform?: string,
+  installed?: boolean,
 ): void {
   const pm = detectPackageManager();
   const { install, run } = pmCommands(pm);
@@ -322,12 +361,14 @@ export function printNextSteps(
   };
 
   const meta = platform ? SCAFFOLD_METADATA[platform] : undefined;
-  const steps = meta?.nextStepsKeys.length
-    ? meta.nextStepsKeys.map((key) => substituteVars(t(key), vars))
-    : [t("nextStepsNav", { dir }), t("nextStepsInstall", { command: install }), dev];
+  const steps = installed
+    ? [buildDevStep(dir, dev)]
+    : meta?.nextStepsKeys.length
+      ? meta.nextStepsKeys.map((key) => substituteVars(t(key), vars))
+      : [t("nextStepsNav", { dir }), t("nextStepsInstall", { command: install }), dev];
 
   console.log();
-  console.log(t("nextStepsHeading"));
+  console.log(installed ? t("getStartedHeading") : t("nextStepsHeading"));
   steps.forEach((step, i) => console.log(`${i + 1}. ${step}`));
 
   if (meta?.notesKey)
@@ -414,7 +455,8 @@ export function createScaffoldCommand(options?: ScaffoldCommandOptions): Command
       "--cdn <provider>",
       "CDN provider for canvas-theme-editor's theme.css/theme.js: jsdelivr (default), unpkg, esmsh",
       validateCdnProviderId,
-    );
+    )
+    .option("--no-install", "Skip automatically installing dependencies after scaffolding");
 
   if (options?.version) {
     program.version(options.version, "-v, --version");
@@ -440,7 +482,10 @@ export function createScaffoldCommand(options?: ScaffoldCommandOptions): Command
       for (const path of written) {
         console.log(t("wroteFile", { path }));
       }
-      printNextSteps(expandedDir, written, t, resolveScaffoldPlatform(platform));
+      const installed =
+        (opts.install as boolean | undefined) !== false &&
+        installWithSpinner(expandedDir, detectPackageManager(), t);
+      printNextSteps(expandedDir, written, t, resolveScaffoldPlatform(platform), installed);
     } catch (err) {
       if (err instanceof ScaffoldCliError) {
         throw err; // Let runScaffoldCli handle it

@@ -1,13 +1,14 @@
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { afterEach, beforeEach, describe, expect, test } from "vite-plus/test";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vite-plus/test";
 import { parseConfig } from "../src/config.ts";
 import {
   runExtractContent,
   runRenderContent,
   runTranslateContent,
   resolveMessagesForLocale,
+  runCheckMessages,
   runExtractMessages,
   runTranslateMessages,
 } from "../src/pipeline.ts";
@@ -53,6 +54,55 @@ describe("runExtractMessages", () => {
   });
 });
 
+describe("POT freshness", () => {
+  /** Add a key to the source after the POT was last written, i.e. the drift CI kept catching. */
+  function addSourceKeyAfterExtract(): void {
+    runExtractMessages(CONFIG, testDir, "ui.strings");
+    writeFileSync(
+      join(testDir, "i18n.json"),
+      JSON.stringify({
+        back: { message: "Back", translate: "always" },
+        datePlaceholder: { message: "yyyy-mm-dd", translate: "optional" },
+        openCalendar: { message: "Open calendar", translate: "always" },
+      }),
+    );
+  }
+
+  /** Everything `runCheckMessages` printed as an error, joined for substring assertions. */
+  function checkErrorOutput(): string {
+    const errors: string[] = [];
+    const spy = vi.spyOn(console, "error").mockImplementation((...args: unknown[]) => {
+      errors.push(args.map(String).join(" "));
+    });
+    try {
+      runCheckMessages(CONFIG, testDir, "ui.strings");
+    } finally {
+      spy.mockRestore();
+    }
+    return errors.join("\n");
+  }
+
+  test("translate re-extracts the POT so a new source key reaches the PO catalog", async () => {
+    addSourceKeyAfterExtract();
+    const result = await runTranslateMessages(CONFIG, testDir, "ui.strings", "hu");
+    expect(readFileSync(join(testDir, "l10n/ui.strings.pot"), "utf8")).toContain(
+      'msgctxt "ui.strings:openCalendar"',
+    );
+    expect(readFileSync(result.poPath, "utf8")).toContain('msgid "Open calendar"');
+  });
+
+  test("check reports a stale POT as drift", () => {
+    addSourceKeyAfterExtract();
+    expect(checkErrorOutput()).toContain("Stale catalog template");
+  });
+
+  test("check finds no staleness once the POT matches its source", () => {
+    addSourceKeyAfterExtract();
+    runExtractMessages(CONFIG, testDir, "ui.strings");
+    expect(checkErrorOutput()).not.toContain("Stale catalog template");
+  });
+});
+
 describe("frontmatter content pipeline", () => {
   const config = parseConfig({
     source: "en",
@@ -92,6 +142,21 @@ describe("frontmatter content pipeline", () => {
     const rendered = runRenderContent(config, testDir, "docs.home", "hu");
     expect(rendered.filesWritten).toHaveLength(1);
     expect(readFileSync(join(testDir, "docs/hu/index.md"), "utf8")).toContain("text: Szia otthon");
+  });
+
+  test("translate re-extracts the POT so new source prose reaches the PO catalog", async () => {
+    mkdirSync(join(testDir, "docs"), { recursive: true });
+    writeFileSync(
+      join(testDir, "docs/index.md"),
+      ["---", "hero:", "  text: One", "---"].join("\n"),
+    );
+    runExtractContent(config, testDir, "docs.home");
+    writeFileSync(
+      join(testDir, "docs/index.md"),
+      ["---", "hero:", "  text: Two", "---"].join("\n"),
+    );
+    const result = await runTranslateContent(config, testDir, "docs.home", "hu");
+    expect(readFileSync(result.poPath, "utf8")).toContain('msgid "Two"');
   });
 });
 

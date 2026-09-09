@@ -150,6 +150,12 @@ overrides:
   # them. We can't drop the peer (pnpm auto-installs it), so pin the resolved version to the fix.
   next: "^16.2.11"
   vitest@*: "catalog:"
+  # ttf2woff2 (formats/icon-font) pins node-gyp@^11, whose make-fetch-happen→cacache chain resolves
+  # to deprecated glob@10.5.0. node-gyp 13 dropped that chain (fetches via undici instead), so
+  # override just cleans our own install; it only reaches this monorepo's tree, not downstream
+  # consumers who install @pantoken/icon-font directly — overrides aren't inherited from a
+  # published dependency's package.json.
+  node-gyp: "^13.0.2"
 peerDependencyRules:
   allowAny:
     - vite

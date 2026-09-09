@@ -11,7 +11,7 @@
 import { createRequire } from "node:module";
 import { dirname, join, resolve } from "node:path";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { buildTokens } from "@pantoken/core";
+import { buildTokens } from "@pantoken/core/build";
 import { themeTokens } from "@instructure/instructure-design-tokens";
 import { deprecationShims } from "@pantoken/plugin-deprecations";
 import { syntaxMismatches } from "@pantoken/utils/token-syntax";

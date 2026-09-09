@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-08 21:12+0000\n"
+"PO-Revision-Date: 2026-09-09 03:21+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29395,3 +29395,7 @@ msgstr "La langue du logotype localisé, absente pour la variante par défaut (a
 msgctxt "docs.api:prose"
 msgid "A trailing language code on a localized wordmark variant, e.g. `\"horizontal-full-color-ar\"`."
 msgstr "Un code de langue en fin de chaîne sur une variante de logotype localisée, par ex. `\"horizontal-full-color-ar\"`."
+
+msgctxt "docs.api:prose"
+msgid "Defines the uniform plugin contract ([PantokenPlugin](interfaces/PantokenPlugin.md)) and adapts the resolved token IR for\nthe native lineage ([toStyleDictionary](functions/toStyleDictionary.md)). The upstream-resolving transform (`buildTokens`,\nwhich needs the GitHub-only `@instructure/instructure-design-tokens`) lives on the separate\n`@pantoken/core/build` entry so this main entry stays free of that exotic dependency."
+msgstr "Définit le contrat uniforme du plugin ([PantokenPlugin](interfaces/PantokenPlugin.md))) et adapte l'IR des tokens résolu pour\nla lignée native ([toStyleDictionary](functions/toStyleDictionary.md))). La transformation de résolution en amont (`buildTokens`,\nqui nécessite le `@instructure/instructure-design-tokens`) spécifique à GitHub) vit dans l'entrée séparée\n`@pantoken/core/build` afin que cette entrée principale reste exempte de cette dépendance exotique."

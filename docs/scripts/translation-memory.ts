@@ -12,7 +12,7 @@
  *
  * @module
  */
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import {
   isPassthroughTranslation,
@@ -22,7 +22,14 @@ import {
   type VerbatimPolicy,
 } from "@pantoken/translation-adapters";
 import type { TranslationAdapter } from "./api-translation.ts";
-import { parsePo, refreshCoverageReports, serializePo, type PoEntry } from "@pantoken/i18n-engine";
+import {
+  parsePo,
+  readCatalog,
+  refreshCoverageReports,
+  serializePo,
+  writeCatalog,
+  type PoEntry,
+} from "@pantoken/i18n-engine";
 
 /** Match a translation's trailing-newline shape to its source string. */
 export function alignTrailingNewline(source: string, translation: string): string {
@@ -93,11 +100,7 @@ export class TranslationMemory {
   static load(locale: string, namespace: string): TranslationMemory {
     if (namespace === "api") {
       const poPath = join(import.meta.dirname, "..", "..", "l10n", locale, "docs.api.po");
-      return new TranslationMemory(
-        undefined,
-        poPath,
-        existsSync(poPath) ? parsePo(readFileSync(poPath, "utf8")) : [],
-      );
+      return new TranslationMemory(undefined, poPath, parsePo(readCatalog(poPath) ?? ""));
     }
     const path = join(cacheDir, `${locale}.${namespace}.json`);
     return new TranslationMemory(
@@ -106,6 +109,8 @@ export class TranslationMemory {
   }
 
   get(kind: string, source: string): string | undefined {
+    // DOCS_TRANSLATION_FORCE turns every lookup into a miss, so `:force` really does retranslate.
+    if (process.env.DOCS_TRANSLATION_FORCE === "1") return undefined;
     if (this._poByKey) {
       const translation = this._poByKey.get(`docs.api:${kind}\0${source}`)?.msgstr;
       if (translation) this._poHits++;
@@ -161,7 +166,7 @@ export class TranslationMemory {
   save(): void {
     if (this._poEntries && this._poPath) {
       mkdirSync(dirname(this._poPath), { recursive: true });
-      writeFileSync(this._poPath, serializePo(this._poEntries));
+      writeCatalog(this._poPath, serializePo(this._poEntries));
       refreshCoverageReports(join(import.meta.dirname, "..", "..", "i18n.config.json"));
     } else this._mem!.save();
   }

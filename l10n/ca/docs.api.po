@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-08 21:12+0000\n"
+"PO-Revision-Date: 2026-09-09 03:18+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29395,3 +29395,7 @@ msgstr "Accepta un [LocaleBundle](#) completament resolt *o* una cadena d'etique
 msgctxt "docs.api:prose"
 msgid "A [LocaleBundle](#) object, or a BCP47 tag (`\"hu\"`, `\"ar\"`, …)."
 msgstr "Un objecte [LocaleBundle](#), o una etiqueta BCP47 (`\"hu\"`, `\"ar\"`, …)."
+
+msgctxt "docs.api:prose"
+msgid "Defines the uniform plugin contract ([PantokenPlugin](interfaces/PantokenPlugin.md)) and adapts the resolved token IR for\nthe native lineage ([toStyleDictionary](functions/toStyleDictionary.md)). The upstream-resolving transform (`buildTokens`,\nwhich needs the GitHub-only `@instructure/instructure-design-tokens`) lives on the separate\n`@pantoken/core/build` entry so this main entry stays free of that exotic dependency."
+msgstr "Defineix el contracte uniforme del plugin ([PantokenPlugin](interfaces/PantokenPlugin.md))) i adapta l'IR de tokens resolt per\nla línia nativa ([toStyleDictionary](functions/toStyleDictionary.md))). La transformació que resol l'upstream (`buildTokens`,\nque necessita l'únic a GitHub `@instructure/instructure-design-tokens`)) viu a l'entrada separada\n`@pantoken/core/build` perquè aquesta entrada principal es mantingui lliure d'aquesta dependència exòtica."
