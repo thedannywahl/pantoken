@@ -5,7 +5,31 @@
  *
  * @module
  */
-import type { LocalesConfig, SpaceLocaleScope } from "./config.ts";
+import { existsSync, readdirSync } from "node:fs";
+import { join } from "node:path";
+import type { I18nConfig, LocalesConfig, SpaceLocaleScope } from "./config.ts";
+
+/**
+ * Every locale the pipeline knows about: one per committed catalog directory, plus any exact tag
+ * named in a tier.
+ *
+ * Tier patterns classify a locale; they can't enumerate the set. A `"*"` catch-all tier names no
+ * locale at all, so reading the universe out of the tier lists would silently reduce a
+ * `secondary: ["*"]` config to the handful of tags spelled out elsewhere.
+ */
+export function knownLocales(config: I18nConfig, configDir: string): string[] {
+  const catalogRoot = config.catalogs.target.split("{locale}")[0];
+  const dir = join(configDir, catalogRoot);
+  const fromCatalogs = existsSync(dir)
+    ? readdirSync(dir, { withFileTypes: true })
+        .filter((entry) => entry.isDirectory())
+        .map((entry) => entry.name)
+    : [];
+  const fromTiers = Object.values(config.locales.tiers)
+    .flat()
+    .filter((pattern) => !pattern.includes("*"));
+  return [...new Set([...fromCatalogs, ...fromTiers])].sort();
+}
 
 /**
  * True when `locale` matches a tier pattern: an exact BCP47 tag, a `"prefix*"` glob, or `"*"`.

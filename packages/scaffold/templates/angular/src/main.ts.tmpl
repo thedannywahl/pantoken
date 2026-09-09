@@ -2,9 +2,10 @@ import "zone.js";
 import { registerPantokenElements } from "@pantoken/angular";
 import { bootstrapApplication } from "@angular/platform-browser";
 // Defines every --instui-* custom property this app can reference.
+{{pantokenCssImport}}
 import "@pantoken/components/base.css";
 import "@pantoken/components/components.css";
-import "@pantoken/plugin-layouts/layouts.css";
+import "@pantoken/interactions/interactions.iife.js"; // wires up modal, tooltip, and other component behaviors
 import { AppComponent } from "./app.component.ts";
 
 registerPantokenElements(); // registers <instui-icon> and friends for use in templates

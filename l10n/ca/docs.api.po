@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 03:18+0000\n"
+"PO-Revision-Date: 2026-09-09 17:13+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29399,3 +29399,7 @@ msgstr "Un objecte [LocaleBundle](#), o una etiqueta BCP47 (`\"hu\"`, `\"ar\"`, 
 msgctxt "docs.api:prose"
 msgid "Defines the uniform plugin contract ([PantokenPlugin](interfaces/PantokenPlugin.md)) and adapts the resolved token IR for\nthe native lineage ([toStyleDictionary](functions/toStyleDictionary.md)). The upstream-resolving transform (`buildTokens`,\nwhich needs the GitHub-only `@instructure/instructure-design-tokens`) lives on the separate\n`@pantoken/core/build` entry so this main entry stays free of that exotic dependency."
 msgstr "Defineix el contracte uniforme del plugin ([PantokenPlugin](interfaces/PantokenPlugin.md))) i adapta l'IR de tokens resolt per\nla línia nativa ([toStyleDictionary](functions/toStyleDictionary.md))). La transformació que resol l'upstream (`buildTokens`,\nque necessita l'únic a GitHub `@instructure/instructure-design-tokens`)) viu a l'entrada separada\n`@pantoken/core/build` perquè aquesta entrada principal es mantingui lliure d'aquesta dependència exòtica."
+
+msgctxt "docs.api:prose"
+msgid "`theme`/`mode` select which `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), applied across every platform. `cdn` selects the CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);\n  ignored by every other platform. `locale` (default `\"en\"`) sets the generated markup's\n  `lang`/`dir` attributes."
+msgstr "`theme`/`mode` selecciona quins `@pantoken/css` fitxers generats del full de tokens\n  import (per defecte `\"rebrand\"`/`\"light\"`), aplicat a totes les plataformes. `cdn` selecciona el proveïdor CDN\n  `canvas-theme-editor`'s `theme.css`/`theme.js` estan destinats a (per defecte jsDelivr);\n  ignorats per totes les altres plataformes. `locale` (per defecte `\"en\"`) estableix els atributs del marcatge generat\n  `lang`/`dir` attributes."

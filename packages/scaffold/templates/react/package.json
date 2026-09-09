@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@pantoken/css": "latest",
-    "@pantoken/plugin-layouts": "latest",
+    "@pantoken/interactions": "latest",
     "@pantoken/react": "latest",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"

@@ -6,6 +6,7 @@
     "moduleResolution": "Bundler",
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
+    "types": ["vite/client"],
     "strict": true,
     "skipLibCheck": true
   },

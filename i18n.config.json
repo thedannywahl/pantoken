@@ -5,6 +5,7 @@
     "ui.strings",
     "cli.scaffold",
     "cli.ai",
+    "scaffold.readme",
     "docs.home",
     "docs.chrome",
     "docs.demos",
@@ -36,6 +37,7 @@
       "ui.strings": { "source": "block", "primary": "block", "secondary": "block" },
       "cli.scaffold": { "source": "block", "primary": "block", "secondary": "block" },
       "cli.ai": { "source": "block", "primary": "block", "secondary": "block" },
+      "scaffold.readme": { "source": "block", "primary": "block", "secondary": "warn" },
       "docs.guides": { "source": "block", "primary": "block", "secondary": "block" },
       "docs.api": { "source": "block", "primary": "block", "secondary": "block" },
       "docs.demos": { "source": "block", "primary": "block", "secondary": "block" },
@@ -49,9 +51,10 @@
     "docs.guides": {
       "kind": "content",
       "include": ["docs/guide/**/*.md"],
+      "root": "docs",
       "render": "docs/{locale}/guide/{path}",
       "transientRender": false,
-      "segment": "block"
+      "segment": "file"
     },
     "ui.strings": {
       "kind": "messages",
@@ -65,9 +68,18 @@
       "kind": "messages",
       "source": "ai/pantoken-ai/src/i18n.json"
     },
+    "scaffold.readme": {
+      "kind": "content",
+      "include": ["packages/scaffold/templates/*/README.md"],
+      "root": "packages/scaffold/templates",
+      "render": "packages/scaffold/generated/l10n/{locale}/{path}",
+      "transientRender": true,
+      "segment": "file"
+    },
     "docs.api": {
       "kind": "content",
       "include": ["docs/api/**/*.md"],
+      "root": "docs",
       "render": "docs/{locale}/api/{path}",
       "transientRender": true,
       "segment": "block"
@@ -75,6 +87,7 @@
     "docs.home": {
       "kind": "content",
       "include": ["docs/index.md"],
+      "root": "docs",
       "render": "docs/{locale}/index.md",
       "transientRender": false,
       "segment": "frontmatter"

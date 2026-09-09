@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 03:33+0000\n"
+"PO-Revision-Date: 2026-09-09 17:44+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29399,3 +29399,7 @@ msgstr "Bir [LocaleBundle](#) nesnesi veya bir BCP47 etiketi (`\"hu\"`, `\"ar\"`
 msgctxt "docs.api:prose"
 msgid "Defines the uniform plugin contract ([PantokenPlugin](interfaces/PantokenPlugin.md)) and adapts the resolved token IR for\nthe native lineage ([toStyleDictionary](functions/toStyleDictionary.md)). The upstream-resolving transform (`buildTokens`,\nwhich needs the GitHub-only `@instructure/instructure-design-tokens`) lives on the separate\n`@pantoken/core/build` entry so this main entry stays free of that exotic dependency."
 msgstr "Tek tip eklenti sözleşmesini tanımlar ([PantokenPlugin](interfaces/PantokenPlugin.md))) ve çözümlenmiş token IR'ini yerel soy hattına uyarlamak için düzenler\n ([toStyleDictionary](functions/toStyleDictionary.md))). Yukarı akışı çözen dönüşüm (`buildTokens`,\nki bu dönüşüm GitHub'a özel olan `@instructure/instructure-design-tokens`) gerektirir) ayrı bir\n`@pantoken/core/build` girdisinde yer alır; böylece bu ana giriş o egzotik bağımlılıktan arınmış olur."
+
+msgctxt "docs.api:prose"
+msgid "`theme`/`mode` select which `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), applied across every platform. `cdn` selects the CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);\n  ignored by every other platform. `locale` (default `\"en\"`) sets the generated markup's\n  `lang`/`dir` attributes."
+msgstr "`theme`/`mode` hangi `@pantoken/css` token sayfası iskeletlenmiş dosyalarının seçileceğini belirler\n  import (varsayılan `\"rebrand\"`/`\"light\"`), her platformda uygulanır. `cdn` CDN sağlayıcısını seçer\n  sağlayıcı `canvas-theme-editor`'s `theme.css`/`theme.js` için oluşturulur (varsayılan jsDelivr);\n  diğer tüm platformlar tarafından yoksayılır). `locale` (varsayılan `\"en\"`) üretilen işaretlemenin\n  `lang`/`dir` özniteliklerini ayarlar."

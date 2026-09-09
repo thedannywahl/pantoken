@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 03:30+0000\n"
+"PO-Revision-Date: 2026-09-09 17:41+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29399,3 +29399,7 @@ msgstr "Um objeto [LocaleBundle](#), ou uma tag BCP47 (`\"hu\"`, `\"ar\"`, …).
 msgctxt "docs.api:prose"
 msgid "Defines the uniform plugin contract ([PantokenPlugin](interfaces/PantokenPlugin.md)) and adapts the resolved token IR for\nthe native lineage ([toStyleDictionary](functions/toStyleDictionary.md)). The upstream-resolving transform (`buildTokens`,\nwhich needs the GitHub-only `@instructure/instructure-design-tokens`) lives on the separate\n`@pantoken/core/build` entry so this main entry stays free of that exotic dependency."
 msgstr "Define o contrato uniforme do plugin ([PantokenPlugin](interfaces/PantokenPlugin.md))) e adapta o IR de tokens resolvido para\na linhagem nativa ([toStyleDictionary](functions/toStyleDictionary.md))). O transformador que resolve o upstream (`buildTokens`,\n que necessita do exclusivo do GitHub `@instructure/instructure-design-tokens`)) vive na entrada separada\n`@pantoken/core/build` para que esta entrada principal permaneça livre dessa dependência exótica."
+
+msgctxt "docs.api:prose"
+msgid "`theme`/`mode` select which `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), applied across every platform. `cdn` selects the CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);\n  ignored by every other platform. `locale` (default `\"en\"`) sets the generated markup's\n  `lang`/`dir` attributes."
+msgstr "`theme`/`mode` selecione quais `@pantoken/css` arquivos scaffolded da planilha de tokens\n  importar (padrão `\"rebrand\"`/`\"light\"`), aplicado em todas as plataformas. `cdn` seleciona o provedor de CDN\n  `canvas-theme-editor`'s `theme.css`/`theme.js` são construídos para (padrão jsDelivr);\n  ignorados por todas as outras plataformas. `locale` (padrão `\"en\"`) define os atributos do markup gerado\n  `lang`/`dir` attributes."

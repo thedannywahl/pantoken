@@ -1,0 +1,11 @@
+"use client";
+
+import { useEffect } from "react";
+
+// Client-only: the interactions bundle touches `document` at import time, unavailable during SSR.
+export function PantokenInteractions() {
+  useEffect(() => {
+    void import("@pantoken/interactions/interactions.iife.js");
+  }, []);
+  return null;
+}

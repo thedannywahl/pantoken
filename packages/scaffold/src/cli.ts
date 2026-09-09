@@ -17,7 +17,13 @@ import { readFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 
 export { SCAFFOLD_PLATFORMS, isScaffoldPlatform, resolveScaffoldPlatform } from "./index.ts";
-export { detectLocale, createLocaleLookup, type LocaleLookup } from "./locale.ts";
+export {
+  detectLocale,
+  createLocaleLookup,
+  validateLocaleTag,
+  SUPPORTED_LOCALES,
+  type LocaleLookup,
+} from "./locale.ts";
 export { scaffoldProject } from "./index.ts";
 export { MESSAGES } from "../generated/locales/index.ts";
 
@@ -27,7 +33,12 @@ import {
   resolveScaffoldPlatform,
 } from "./index.ts";
 import { scaffoldProject } from "./index.ts";
-import { detectLocale, createLocaleLookup, type LocaleLookup } from "./locale.ts";
+import {
+  detectLocale,
+  createLocaleLookup,
+  validateLocaleTag,
+  type LocaleLookup,
+} from "./locale.ts";
 import { MESSAGES } from "../generated/locales/index.ts";
 import { SCAFFOLD_METADATA } from "../generated/scaffold-metadata.ts";
 import { CDN_PROVIDERS } from "@pantoken/canvas-theme-editor";
@@ -98,6 +109,25 @@ export interface ResolveScaffoldTargetOptions {
 }
 
 /**
+ * Human-readable labels for the interactive platform picker — canonical `SCAFFOLD_PLATFORMS` keys
+ * are lowercase/hyphenated for CLI-arg use, not meant for display as-is.
+ */
+const PLATFORM_DISPLAY_LABELS: Record<string, string> = {
+  components: "HTML",
+  "web-components": "Web components",
+  react: "React",
+  vue: "Vue",
+  angular: "Angular",
+  svelte: "Svelte",
+  "canvas-theme-editor": "Canvas theme editor",
+};
+
+/** Display label for a platform key, falling back to the raw key if unmapped. */
+function platformDisplayLabel(platform: string): string {
+  return PLATFORM_DISPLAY_LABELS[platform] ?? platform;
+}
+
+/**
  * Resolves the platform: uses `platformArg` when given, otherwise prompts via clack `select()`
  * on a TTY (not --yes), otherwise throws a localized `ScaffoldCliError`.
  *
@@ -119,7 +149,9 @@ async function resolvePlatform(
 
     const result = await select({
       message: t("promptPlatform"),
-      options: SCAFFOLD_PLATFORMS.map((p) => ({ value: p, label: p })),
+      options: [...SCAFFOLD_PLATFORMS]
+        .map((p) => ({ value: p, label: platformDisplayLabel(p) }))
+        .sort((a, b) => a.label.localeCompare(b.label)),
     });
 
     if (isCancel(result)) {
@@ -200,14 +232,14 @@ export async function resolveScaffoldTarget(
  * @param platform - The scaffold platform
  * @param dir - The target directory
  * @param t - Localized string lookup
- * @param options - `theme`/`mode`/`cdn` forwarded to {@link scaffoldProject}
+ * @param options - `theme`/`mode`/`cdn`/`locale` forwarded to {@link scaffoldProject}
  * @returns The paths written by scaffoldProject
  */
 export async function scaffoldWithSpinner(
   platform: string,
   dir: string,
   t: LocaleLookup["t"],
-  options?: { theme?: ThemeVariant; mode?: ThemeMode; cdn?: string },
+  options?: { theme?: ThemeVariant; mode?: ThemeMode; cdn?: string; locale?: string },
 ): Promise<string[]> {
   const s = spinner();
   s.start(t("spinnerStart"));
@@ -265,6 +297,26 @@ function pmCommands(pm: PackageManager | undefined): {
   execute: string;
 } {
   return PM_COMMANDS[pm ?? "npm"];
+}
+
+/** Per-package-manager invocation for `create-pantoken-app`'s own usage/help text. */
+const CREATE_USAGE_COMMANDS: Record<PackageManager, string> = {
+  npm: "npm create pantoken-app --",
+  pnpm: "pnpm create pantoken-app --",
+  yarn: "yarn create pantoken-app --",
+  bun: "bunx create-pantoken-app --",
+  deno: "deno run -A npm:create-pantoken-app --",
+  vp: "vpx create-pantoken-app --",
+};
+
+/**
+ * The invocation string `create-pantoken-app`'s bin shim shows in `--help`/usage, matching
+ * whichever package manager actually invoked it (falls back to the npm form when undetected).
+ *
+ * @param pm - The detected package manager (defaults to `detectPackageManager()`'s result)
+ */
+export function buildCreateUsageCommand(pm?: PackageManager): string {
+  return CREATE_USAGE_COMMANDS[pm ?? detectPackageManager() ?? "npm"];
 }
 
 /**
@@ -440,7 +492,11 @@ export function createScaffoldCommand(options?: ScaffoldCommandOptions): Command
       "Never prompt; error instead of prompting for a missing platform/directory",
       false,
     )
-    .option("-l, --lang <tag>", 'Override the auto-detected display language (e.g. "hu")')
+    .option(
+      "-l, --lang <tag>",
+      'Language for the CLI and the scaffolded project (e.g. "hu"); auto-detected by default',
+      validateLocaleTag,
+    )
     .option(
       "--theme <name>",
       "Token theme: rebrand (default), canvas, canvasHighContrast",
@@ -478,14 +534,25 @@ export function createScaffoldCommand(options?: ScaffoldCommandOptions): Command
         theme: opts.theme as ThemeVariant | undefined,
         mode: opts.themeMode as ThemeMode | undefined,
         cdn: opts.cdn as string | undefined,
+        locale,
       });
       for (const path of written) {
         console.log(t("wroteFile", { path }));
       }
+      // cwd into the scaffolded dir so the printed next step never needs a separate `cd`.
+      let printDir = expandedDir;
+      if (expandedDir !== ".") {
+        try {
+          process.chdir(expandedDir);
+          printDir = ".";
+        } catch {
+          // Leave printDir as expandedDir; next-steps falls back to an explicit cd.
+        }
+      }
       const installed =
         (opts.install as boolean | undefined) !== false &&
         installWithSpinner(expandedDir, detectPackageManager(), t);
-      printNextSteps(expandedDir, written, t, resolveScaffoldPlatform(platform), installed);
+      printNextSteps(printDir, written, t, resolveScaffoldPlatform(platform), installed);
     } catch (err) {
       if (err instanceof ScaffoldCliError) {
         throw err; // Let runScaffoldCli handle it

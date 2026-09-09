@@ -1,6 +1,13 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8"
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-09 17:08+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"Language: und\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -57,6 +64,30 @@ msgid "Start the dev server (if your template has one)"
 msgstr "Zaženite razvojni strežnik (če ga ima predloga)"
 
 #: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:getStartedHeading"
+msgid "Get started:"
+msgstr "Naslednji koraki:"
+
+#: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:installSpinnerStart"
+msgid "Installing dependencies..."
+msgstr "Namestite odvisnosti: {{command}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:installSpinnerStop"
+msgid "Dependencies installed."
+msgstr "Odvisnosti nameščene."
+
+#: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:installSpinnerFailed"
+msgid "Failed to install dependencies:"
+msgstr "Namestite odvisnosti: {{command}}"
+
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:notesHeading"
 msgid "Note:"
@@ -72,7 +103,8 @@ msgstr "Opozorilo:"
 #, no-c-format
 msgctxt "cli.scaffold:errorMissingPlatform"
 msgid "Missing required argument \"platform\". Expected one of: {{platforms}}"
-msgstr "Manjka zahtevan argument \"platform\". Pričakovana ena od: {{platforms}}"
+msgstr ""
+"Manjka zahtevan argument \"platform\". Pričakovana ena od: {{platforms}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -83,8 +115,13 @@ msgstr "Preklicano."
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpPlatformDescription"
-msgid "Platform to scaffold ({{platforms}}; \"html\" is an alias for \"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
-msgstr "Platforma za ogrodje ({{platforms}}; \"html\" je nadomestno ime za \"components\", \"theme-editor\" je nadomestno ime za \"canvas-theme-editor\")"
+msgid ""
+"Platform to scaffold ({{platforms}}; \"html\" is an alias for "
+"\"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
+msgstr ""
+"Platforma za ogrodje ({{platforms}}; \"html\" je nadomestno ime za "
+"\"components\", \"theme-editor\" je nadomestno ime za \"canvas-theme-"
+"editor\")"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -95,8 +132,10 @@ msgstr "Ciljna mapa (če ni navedena, se interaktivno vpraša na TTY)"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpYesDescription"
-msgid "Never prompt; error instead of prompting for a missing platform/directory"
-msgstr "Nikoli ne pozivaj; pri manjkajoči platformi/mapi sproži napako namesto poziva"
+msgid ""
+"Never prompt; error instead of prompting for a missing platform/directory"
+msgstr ""
+"Nikoli ne pozivaj; pri manjkajoči platformi/mapi sproži napako namesto poziva"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -125,14 +164,22 @@ msgstr "{{dev}}"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.notes"
-msgid "Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / JavaScript) so pantoken's classes are available on every page."
-msgstr "Naložite theme.css in theme.js v Canvasov urejevalnik tem (Advanced → CSS / JavaScript), da bodo pantokenove razrede na voljo na vsaki strani."
+msgid ""
+"Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / "
+"JavaScript) so pantoken's classes are available on every page."
+msgstr ""
+"Naložite theme.css in theme.js v Canvasov urejevalnik tem (Advanced → CSS / "
+"JavaScript), da bodo pantokenove razrede na voljo na vsaki strani."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.caveats"
-msgid "Canvas sanitizes pasted HTML server-side — always verify content pasted from the RCE preview in Canvas."
-msgstr "Canvas obdeluje prilepljen HTML na strežniku — vedno preverite vsebino, prilepljeno iz predogleda RCE v Canvasu."
+msgid ""
+"Canvas sanitizes pasted HTML server-side — always verify content pasted from "
+"the RCE preview in Canvas."
+msgstr ""
+"Canvas obdeluje prilepljen HTML na strežniku — vedno preverite vsebino, "
+"prilepljeno iz predogleda RCE v Canvasu."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -143,8 +190,11 @@ msgstr "Ustvarjanje RCE predlog"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.pageDescription"
-msgid "Author Canvas RCE page templates styled with pantoken, with a live preview."
-msgstr "Ustvarjajte Canvas RCE predloge strani, oblikovane s pantokenom, z živim predogledom."
+msgid ""
+"Author Canvas RCE page templates styled with pantoken, with a live preview."
+msgstr ""
+"Ustvarjajte Canvas RCE predloge strani, oblikovane s pantokenom, z živim "
+"predogledom."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -287,14 +337,30 @@ msgstr "Kako uporabljati to stran"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody1"
-msgid "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas."
-msgstr "Izberite začetno predlogo, jo uredite, kot bi v Canvas Rich Content Editorju, nato kliknite <strong>Copy HTML</strong> in prilepite rezultat na Canvas stran (pred tem preklopite v pogled urejevalnika HTML). Canvas obdeluje prilepljen HTML na strežniku — ta predogled tega ne poskuša posnemati, zato vedno preverite prilepljen rezultat v Canvasu."
+msgid ""
+"Pick a starter template, edit it like you would in the Canvas Rich Content "
+"Editor, then click <strong>Copy HTML</strong> and paste the result into a "
+"Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted "
+"HTML server-side — this preview doesn't attempt to replicate that, so always "
+"verify the pasted result in Canvas."
+msgstr ""
+"Izberite začetno predlogo, jo uredite, kot bi v Canvas Rich Content "
+"Editorju, nato kliknite <strong>Copy HTML</strong> in prilepite rezultat na "
+"Canvas stran (pred tem preklopite v pogled urejevalnika HTML). Canvas "
+"obdeluje prilepljen HTML na strežniku — ta predogled tega ne poskuša "
+"posnemati, zato vedno preverite prilepljen rezultat v Canvasu."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody2"
-msgid "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them."
-msgstr "Uporabite <strong>Edit theme</strong> za spreminjanje ponudnika CDN, teme ali načina ter za ročno urejanje generiranih <code>theme.css</code>/<code>theme.js</code> pred prenosom."
+msgid ""
+"Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, "
+"and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> "
+"before downloading them."
+msgstr ""
+"Uporabite <strong>Edit theme</strong> za spreminjanje ponudnika CDN, teme "
+"ali načina ter za ročno urejanje generiranih <code>theme.css</code>/"
+"<code>theme.js</code> pred prenosom."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -305,8 +371,12 @@ msgstr "Zapri"
 #: packages/scaffold/src/i18n.json
 #, fuzzy, no-c-format
 msgctxt "cli.scaffold:nextStepsDependencies"
-msgid "2. Installing dependencies (npm install, pnpm install, yarn install or bun install)"
-msgstr "2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun install)"
+msgid ""
+"2. Installing dependencies (npm install, pnpm install, yarn install or bun "
+"install)"
+msgstr ""
+"2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun "
+"install)"
 
 #: packages/scaffold/src/i18n.json
 #, fuzzy, no-c-format

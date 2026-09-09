@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 03:33+0000\n"
+"PO-Revision-Date: 2026-09-09 17:44+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29399,3 +29399,7 @@ msgstr "วัตถุ [LocaleBundle](#) หรือแท็ก BCP47 (`\"hu\
 msgctxt "docs.api:prose"
 msgid "Defines the uniform plugin contract ([PantokenPlugin](interfaces/PantokenPlugin.md)) and adapts the resolved token IR for\nthe native lineage ([toStyleDictionary](functions/toStyleDictionary.md)). The upstream-resolving transform (`buildTokens`,\nwhich needs the GitHub-only `@instructure/instructure-design-tokens`) lives on the separate\n`@pantoken/core/build` entry so this main entry stays free of that exotic dependency."
 msgstr "กำหนดสัญญาปลั๊กอินแบบเดียวกัน ([PantokenPlugin](interfaces/PantokenPlugin.md))) และปรับ IR ของโทเค็นที่ถูกแก้ให้เข้ากับ\nthe native lineage ([toStyleDictionary](functions/toStyleDictionary.md))). The upstream-resolving transform (`buildTokens`,\nwhich needs the GitHub-only `@instructure/instructure-design-tokens`)) อยู่บนรายการแยกต่างหาก\n`@pantoken/core/build` ดังนั้นรายการหลักนี้จึงยังคงปลอดจากการพึ่งพาที่แปลกประหลาดนั้น."
+
+msgctxt "docs.api:prose"
+msgid "`theme`/`mode` select which `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), applied across every platform. `cdn` selects the CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);\n  ignored by every other platform. `locale` (default `\"en\"`) sets the generated markup's\n  `lang`/`dir` attributes."
+msgstr "`theme`/`mode` เลือกว่า `@pantoken/css` ไฟล์เทมเพลตของแผ่นโทเค็น\n  นำเข้า (ค่าเริ่มต้น `\"rebrand\"`/`\"light\"`), ใช้กับทุกแพลตฟอร์ม. `cdn` เลือกผู้ให้บริการ CDN\n  ผู้ให้บริการ `canvas-theme-editor`'s `theme.css`/`theme.js` ถูกสร้างขึ้นสำหรับ (ค่าเริ่มต้น jsDelivr);\n  ถูกละเว้นโดยแพลตฟอร์มอื่นทั้งหมด. `locale` (ค่าเริ่มต้น `\"en\"`) กำหนด\n  `lang`/`dir` แอตทริบิวต์ของมาร์กอัปที่สร้างขึ้น."

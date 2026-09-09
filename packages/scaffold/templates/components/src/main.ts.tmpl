@@ -1,8 +1,8 @@
 // Defines every --instui-* custom property this app can reference.
+{{pantokenCssImport}}
 import "@pantoken/components/base.css";
 import "@pantoken/components/components.css";
-import "@pantoken/plugin-layouts/layouts.css";
+import "@pantoken/interactions/interactions.iife.js"; // wires up modal, tooltip, and other component behaviors
+import "./style.css";
 
-document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
-{{wrapperContainer:html:1}}
-`;
+// Your markup lives in index.html — add interactive behavior here.

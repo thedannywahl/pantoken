@@ -2,6 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 // Defines every --instui-* custom property this app can reference.
 {{pantokenCssImport}}
+import "@pantoken/interactions/interactions.iife.js"; // wires up modal, tooltip, and other component behaviors
 import { App } from "./App.tsx";
 
 createRoot(document.getElementById("root")!).render(

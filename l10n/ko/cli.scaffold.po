@@ -1,6 +1,13 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8"
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-09 17:06+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"Language: und\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -57,6 +64,30 @@ msgid "Start the dev server (if your template has one)"
 msgstr "개발 서버 시작 (템플릿에 해당 기능이 있는 경우)"
 
 #: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:getStartedHeading"
+msgid "Get started:"
+msgstr "다음 단계:"
+
+#: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:installSpinnerStart"
+msgid "Installing dependencies..."
+msgstr "의존성 설치: {{command}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:installSpinnerStop"
+msgid "Dependencies installed."
+msgstr "종속성이 설치되었습니다."
+
+#: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:installSpinnerFailed"
+msgid "Failed to install dependencies:"
+msgstr "의존성 설치: {{command}}"
+
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:notesHeading"
 msgid "Note:"
@@ -83,8 +114,12 @@ msgstr "취소됨."
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpPlatformDescription"
-msgid "Platform to scaffold ({{platforms}}; \"html\" is an alias for \"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
-msgstr "스캐폴딩할 플랫폼 ({{platforms}}; \"html\"은 \"components\"의 별칭, \"theme-editor\"는 \"canvas-theme-editor\"의 별칭)"
+msgid ""
+"Platform to scaffold ({{platforms}}; \"html\" is an alias for "
+"\"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
+msgstr ""
+"스캐폴딩할 플랫폼 ({{platforms}}; \"html\"은 \"components\"의 별칭, \"theme-"
+"editor\"는 \"canvas-theme-editor\"의 별칭)"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -95,8 +130,10 @@ msgstr "대상 디렉터리 (TTY에서 생략하면 대화형으로 묻습니다
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpYesDescription"
-msgid "Never prompt; error instead of prompting for a missing platform/directory"
-msgstr "절대 프롬프트하지 않음; 플랫폼/디렉터리가 없으면 프롬프트 대신 오류 발생"
+msgid ""
+"Never prompt; error instead of prompting for a missing platform/directory"
+msgstr ""
+"절대 프롬프트하지 않음; 플랫폼/디렉터리가 없으면 프롬프트 대신 오류 발생"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -125,14 +162,22 @@ msgstr "{{dev}}"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.notes"
-msgid "Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / JavaScript) so pantoken's classes are available on every page."
-msgstr "theme.css와 theme.js를 Canvas의 테마 편집기(고급 → CSS / JavaScript)에 업로드하여 pantoken의 클래스가 모든 페이지에서 사용 가능하도록 하세요."
+msgid ""
+"Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / "
+"JavaScript) so pantoken's classes are available on every page."
+msgstr ""
+"theme.css와 theme.js를 Canvas의 테마 편집기(고급 → CSS / JavaScript)에 업로드"
+"하여 pantoken의 클래스가 모든 페이지에서 사용 가능하도록 하세요."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.caveats"
-msgid "Canvas sanitizes pasted HTML server-side — always verify content pasted from the RCE preview in Canvas."
-msgstr "Canvas는 서버 측에서 붙여넣은 HTML을 정리(사전 처리)합니다 — RCE 미리보기에서 복사한 내용을 Canvas에서 항상 확인하세요."
+msgid ""
+"Canvas sanitizes pasted HTML server-side — always verify content pasted from "
+"the RCE preview in Canvas."
+msgstr ""
+"Canvas는 서버 측에서 붙여넣은 HTML을 정리(사전 처리)합니다 — RCE 미리보기에"
+"서 복사한 내용을 Canvas에서 항상 확인하세요."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -143,8 +188,11 @@ msgstr "RCE 템플릿 작성"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.pageDescription"
-msgid "Author Canvas RCE page templates styled with pantoken, with a live preview."
-msgstr "pantoken으로 스타일된 Canvas RCE 페이지 템플릿을 작성하고 실시간 미리보기를 확인합니다."
+msgid ""
+"Author Canvas RCE page templates styled with pantoken, with a live preview."
+msgstr ""
+"pantoken으로 스타일된 Canvas RCE 페이지 템플릿을 작성하고 실시간 미리보기를 "
+"확인합니다."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -287,14 +335,30 @@ msgstr "이 페이지 사용 방법"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody1"
-msgid "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas."
-msgstr "시작 템플릿을 선택하고 Canvas의 리치 콘텐츠 편집기에서 편집하듯 템플릿을 수정한 다음 <strong>HTML 복사</strong>를 클릭하여 결과를 Canvas 페이지에 붙여넣으세요 (먼저 HTML 편집기 보기로 전환). Canvas는 서버 측에서 붙여넣은 HTML을 정리하므로 이 미리보기와 동작이 다를 수 있으니 Canvas에서 붙여넣은 결과를 항상 확인하세요."
+msgid ""
+"Pick a starter template, edit it like you would in the Canvas Rich Content "
+"Editor, then click <strong>Copy HTML</strong> and paste the result into a "
+"Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted "
+"HTML server-side — this preview doesn't attempt to replicate that, so always "
+"verify the pasted result in Canvas."
+msgstr ""
+"시작 템플릿을 선택하고 Canvas의 리치 콘텐츠 편집기에서 편집하듯 템플릿을 수정"
+"한 다음 <strong>HTML 복사</strong>를 클릭하여 결과를 Canvas 페이지에 붙여넣으"
+"세요 (먼저 HTML 편집기 보기로 전환). Canvas는 서버 측에서 붙여넣은 HTML을 정"
+"리하므로 이 미리보기와 동작이 다를 수 있으니 Canvas에서 붙여넣은 결과를 항상 "
+"확인하세요."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody2"
-msgid "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them."
-msgstr "<strong>테마 편집</strong>을 사용해 CDN 제공자, 테마 또는 모드를 변경하고, 다운로드하기 전에 생성된 <code>theme.css</code>/<code>theme.js</code>를 수동으로 편집할 수 있습니다."
+msgid ""
+"Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, "
+"and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> "
+"before downloading them."
+msgstr ""
+"<strong>테마 편집</strong>을 사용해 CDN 제공자, 테마 또는 모드를 변경하고, 다"
+"운로드하기 전에 생성된 <code>theme.css</code>/<code>theme.js</code>를 수동으"
+"로 편집할 수 있습니다."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -305,8 +369,12 @@ msgstr "닫기"
 #: packages/scaffold/src/i18n.json
 #, fuzzy, no-c-format
 msgctxt "cli.scaffold:nextStepsDependencies"
-msgid "2. Installing dependencies (npm install, pnpm install, yarn install or bun install)"
-msgstr "2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun install)"
+msgid ""
+"2. Installing dependencies (npm install, pnpm install, yarn install or bun "
+"install)"
+msgstr ""
+"2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun "
+"install)"
 
 #: packages/scaffold/src/i18n.json
 #, fuzzy, no-c-format

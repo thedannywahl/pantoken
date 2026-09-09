@@ -1,6 +1,13 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8"
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-09 17:05+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"Language: und\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -57,6 +64,30 @@ msgid "Start the dev server (if your template has one)"
 msgstr "Avvia il server di sviluppo (se il template ne prevede uno)"
 
 #: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:getStartedHeading"
+msgid "Get started:"
+msgstr "Prossimi passi:"
+
+#: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:installSpinnerStart"
+msgid "Installing dependencies..."
+msgstr "Installa le dipendenze: {{command}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:installSpinnerStop"
+msgid "Dependencies installed."
+msgstr "Dipendenze installate."
+
+#: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:installSpinnerFailed"
+msgid "Failed to install dependencies:"
+msgstr "Installa le dipendenze: {{command}}"
+
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:notesHeading"
 msgid "Note:"
@@ -72,7 +103,9 @@ msgstr "Avvertenza:"
 #, no-c-format
 msgctxt "cli.scaffold:errorMissingPlatform"
 msgid "Missing required argument \"platform\". Expected one of: {{platforms}}"
-msgstr "Argomento obbligatorio mancante \"platform\". Atteso uno dei seguenti: {{platforms}}"
+msgstr ""
+"Argomento obbligatorio mancante \"platform\". Atteso uno dei seguenti: "
+"{{platforms}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -83,26 +116,37 @@ msgstr "Annullato."
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpPlatformDescription"
-msgid "Platform to scaffold ({{platforms}}; \"html\" is an alias for \"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
-msgstr "Piattaforma da scaffoldare ({{platforms}}; \"html\" è un alias per \"components\", \"theme-editor\" è un alias per \"canvas-theme-editor\")"
+msgid ""
+"Platform to scaffold ({{platforms}}; \"html\" is an alias for "
+"\"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
+msgstr ""
+"Piattaforma da scaffoldare ({{platforms}}; \"html\" è un alias per "
+"\"components\", \"theme-editor\" è un alias per \"canvas-theme-editor\")"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpDirDescription"
 msgid "Target directory (prompts interactively on a TTY if omitted)"
-msgstr "Directory di destinazione (se omessa, verrà richiesto in modo interattivo su una TTY)"
+msgstr ""
+"Directory di destinazione (se omessa, verrà richiesto in modo interattivo su "
+"una TTY)"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpYesDescription"
-msgid "Never prompt; error instead of prompting for a missing platform/directory"
-msgstr "Non chiedere mai conferma; genera un errore invece di richiedere la piattaforma/directory mancante"
+msgid ""
+"Never prompt; error instead of prompting for a missing platform/directory"
+msgstr ""
+"Non chiedere mai conferma; genera un errore invece di richiedere la "
+"piattaforma/directory mancante"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpLangDescription"
 msgid "Override the auto-detected display language (e.g. \"hu\")"
-msgstr "Sovrascrivi la lingua di visualizzazione rilevata automaticamente (es. \"hu\")"
+msgstr ""
+"Sovrascrivi la lingua di visualizzazione rilevata automaticamente (es. "
+"\"hu\")"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -125,14 +169,23 @@ msgstr "{{dev}}"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.notes"
-msgid "Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / JavaScript) so pantoken's classes are available on every page."
-msgstr "Carica theme.css e theme.js nell'Editor temi di Canvas (Avanzate → CSS / JavaScript) in modo che le classi di pantoken siano disponibili in tutte le pagine."
+msgid ""
+"Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / "
+"JavaScript) so pantoken's classes are available on every page."
+msgstr ""
+"Carica theme.css e theme.js nell'Editor temi di Canvas (Avanzate → CSS / "
+"JavaScript) in modo che le classi di pantoken siano disponibili in tutte le "
+"pagine."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.caveats"
-msgid "Canvas sanitizes pasted HTML server-side — always verify content pasted from the RCE preview in Canvas."
-msgstr "Canvas sanitizza l'HTML incollato lato server — verifica sempre il contenuto incollato dall'anteprima RCE all'interno di Canvas."
+msgid ""
+"Canvas sanitizes pasted HTML server-side — always verify content pasted from "
+"the RCE preview in Canvas."
+msgstr ""
+"Canvas sanitizza l'HTML incollato lato server — verifica sempre il contenuto "
+"incollato dall'anteprima RCE all'interno di Canvas."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -143,8 +196,11 @@ msgstr "Autore di template RCE"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.pageDescription"
-msgid "Author Canvas RCE page templates styled with pantoken, with a live preview."
-msgstr "Crea template di pagina RCE per Canvas stilizzati con pantoken, con anteprima live."
+msgid ""
+"Author Canvas RCE page templates styled with pantoken, with a live preview."
+msgstr ""
+"Crea template di pagina RCE per Canvas stilizzati con pantoken, con "
+"anteprima live."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -287,14 +343,31 @@ msgstr "Come usare questa pagina"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody1"
-msgid "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas."
-msgstr "Scegli un template di partenza, modificalo come faresti nell'Editor di contenuti ricchi di Canvas, poi clicca <strong>Copia HTML</strong> e incolla il risultato in una pagina di Canvas (passa prima alla vista editor HTML). Canvas sanitizza l'HTML incollato lato server — questa anteprima non tenta di replicare quel comportamento, quindi verifica sempre il risultato incollato in Canvas."
+msgid ""
+"Pick a starter template, edit it like you would in the Canvas Rich Content "
+"Editor, then click <strong>Copy HTML</strong> and paste the result into a "
+"Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted "
+"HTML server-side — this preview doesn't attempt to replicate that, so always "
+"verify the pasted result in Canvas."
+msgstr ""
+"Scegli un template di partenza, modificalo come faresti nell'Editor di "
+"contenuti ricchi di Canvas, poi clicca <strong>Copia HTML</strong> e incolla "
+"il risultato in una pagina di Canvas (passa prima alla vista editor HTML). "
+"Canvas sanitizza l'HTML incollato lato server — questa anteprima non tenta "
+"di replicare quel comportamento, quindi verifica sempre il risultato "
+"incollato in Canvas."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody2"
-msgid "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them."
-msgstr "Usa <strong>Modifica tema</strong> per cambiare il provider CDN, il tema o la modalità, e per modificare manualmente i file generati <code>theme.css</code>/<code>theme.js</code> prima di scaricarli."
+msgid ""
+"Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, "
+"and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> "
+"before downloading them."
+msgstr ""
+"Usa <strong>Modifica tema</strong> per cambiare il provider CDN, il tema o "
+"la modalità, e per modificare manualmente i file generati <code>theme.css</"
+"code>/<code>theme.js</code> prima di scaricarli."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -305,8 +378,12 @@ msgstr "Chiudi"
 #: packages/scaffold/src/i18n.json
 #, fuzzy, no-c-format
 msgctxt "cli.scaffold:nextStepsDependencies"
-msgid "2. Installing dependencies (npm install, pnpm install, yarn install or bun install)"
-msgstr "2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun install)"
+msgid ""
+"2. Installing dependencies (npm install, pnpm install, yarn install or bun "
+"install)"
+msgstr ""
+"2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun "
+"install)"
 
 #: packages/scaffold/src/i18n.json
 #, fuzzy, no-c-format

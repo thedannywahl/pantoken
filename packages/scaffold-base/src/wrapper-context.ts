@@ -11,7 +11,7 @@ import { wrapperRules } from "@pantoken/plugin-layouts";
 
 /** A parsed wrapper-layout element, ready to render as HTML/JSX markup. */
 export interface WrapperNode {
-  /** Real element tag, e.g. "div", "slot", "button". "body" is remapped by the caller. */
+  /** Real element tag, e.g. "div", "button". "body" is remapped by the caller. */
   tag: string;
   className?: string;
   attrs?: Record<string, string>;
@@ -68,12 +68,24 @@ export function parseSelector(selector: string): Omit<WrapperNode, "children"> |
   if (selector.startsWith("&")) return null;
 
   const optional = selector.includes(":optional");
-  const attrMatch = /^([a-z]*)\[([\w-]+)(?:~|)=(?:"([^"]*)"|'([^']*)')\]/i.exec(selector);
+  const attrMatch = /^([a-z]*)\[([\w-]+)(?:~|)=(?:"([^"]*)"|'([^']*)')\](?:\.([\w-]+))?/i.exec(
+    selector,
+  );
   if (attrMatch) {
-    const [, tag, attrName, dq, sq] = attrMatch;
+    const [, tag, attrName, dq, sq, trailingClass] = attrMatch;
     const value = dq ?? sq ?? "";
+    // `slot[name=...]` is a plain-HTML/JSX insertion-point marker, not a real (shadow-DOM) <slot> —
+    // render it as `<div data-slot="...">` so it behaves the same outside custom elements.
+    if (tag === "slot") {
+      return { tag: "div", attrs: { "data-slot": value }, className: trailingClass, optional };
+    }
     if (attrName === "class") return { tag: tag || "div", className: value, optional };
-    return { tag: tag || "div", attrs: { [attrName]: value }, optional };
+    return {
+      tag: tag || "div",
+      attrs: { [attrName]: value },
+      className: trailingClass,
+      optional,
+    };
   }
 
   const tagMatch = /^[a-z][a-z0-9]*/i.exec(selector);
@@ -112,8 +124,7 @@ function parseWrapperLayout(): { rootClassName: string; container: WrapperNode }
 /** Placeholder text injected at specific parts, keyed by class name. */
 const PART_TEXT: Record<string, string> = {
   title: "{{projectName}}",
-  description:
-    "Styled with <code>@pantoken/components</code> and laid out with the <code>wrapper</code> layout from <code>@pantoken/plugin-layouts</code>.",
+  description: "Styled with <code>@pantoken/components</code>.",
 };
 
 /** The `slot[name="content"]` part gets the platform's actual getting-started content, per format. */
@@ -142,7 +153,7 @@ export function renderNode(node: WrapperNode, format: "html" | "jsx", depth: num
   const closeTag = `</${node.tag}>`;
   const optionalNote = node.optional ? ` ${comment(format, "optional")}` : "";
 
-  const isMainSlot = node.tag === "slot" && node.attrs?.name === "content";
+  const isMainSlot = node.attrs?.["data-slot"] === "content";
   const text = PART_TEXT[node.className ?? ""] ?? (isMainSlot ? MAIN_CONTENT[format] : undefined);
   const childLines = node.children.map((child) => renderNode(child, format, depth + 1));
   const bodyPad = "  ".repeat(depth + 1);

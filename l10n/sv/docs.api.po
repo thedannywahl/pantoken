@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 03:32+0000\n"
+"PO-Revision-Date: 2026-09-09 17:43+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29399,3 +29399,7 @@ msgstr "Ett [LocaleBundle](#)-objekt eller en BCP47-tag (`\"hu\"`, `\"ar\"`, …
 msgctxt "docs.api:prose"
 msgid "Defines the uniform plugin contract ([PantokenPlugin](interfaces/PantokenPlugin.md)) and adapts the resolved token IR for\nthe native lineage ([toStyleDictionary](functions/toStyleDictionary.md)). The upstream-resolving transform (`buildTokens`,\nwhich needs the GitHub-only `@instructure/instructure-design-tokens`) lives on the separate\n`@pantoken/core/build` entry so this main entry stays free of that exotic dependency."
 msgstr "Definierar det enhetliga plugin-kontraktet ([PantokenPlugin](interfaces/PantokenPlugin.md))) och anpassar den lösta token-IR:en för\nden native-linjen ([toStyleDictionary](functions/toStyleDictionary.md))). Den upstream-resolverande transformen (`buildTokens`,\nsom behöver den GitHub-enda `@instructure/instructure-design-tokens`)) ligger i den separata\n`@pantoken/core/build`-inträdet så att denna huvudentré förblir fri från det exotiska beroendet."
+
+msgctxt "docs.api:prose"
+msgid "`theme`/`mode` select which `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), applied across every platform. `cdn` selects the CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);\n  ignored by every other platform. `locale` (default `\"en\"`) sets the generated markup's\n  `lang`/`dir` attributes."
+msgstr "`theme`/`mode` välj vilka `@pantoken/css` token sheet scaffolded files\n  import (standard `\"rebrand\"`/`\"light\"`), tillämpas över alla plattformar. `cdn` väljer CDN\n  leverantör `canvas-theme-editor`'s `theme.css`/`theme.js` är byggda för (standard jsDelivr);\n  ignoreras av alla andra plattformar. `locale` (standard `\"en\"`) sätter den genererade markupens\n  `lang`/`dir` attribut."

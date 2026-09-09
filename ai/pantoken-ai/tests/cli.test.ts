@@ -144,7 +144,7 @@ test("scaffold writes both the scaffold and the agent assets, installing depende
     ["install"],
     expect.objectContaining({ cwd: target }),
   );
-  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Get started"));
+  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Next steps"));
 });
 
 test("scaffold --no-install skips the automatic install", async () => {

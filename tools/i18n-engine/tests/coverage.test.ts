@@ -64,8 +64,8 @@ describe("writeCoverageReport", () => {
   test("reports every configured surface and locale", () => {
     const output = outputPath();
     const report = writeCoverageReport(config, join(root, "i18n.config.json"), { output });
-    expect(report.rows).toHaveLength(344);
-    expect(JSON.parse(readFileSync(output, "utf8")).rows).toHaveLength(344);
+    expect(report.rows).toHaveLength(387);
+    expect(JSON.parse(readFileSync(output, "utf8")).rows).toHaveLength(387);
   }, 20_000);
 
   test("filters rows by policy and surface", () => {

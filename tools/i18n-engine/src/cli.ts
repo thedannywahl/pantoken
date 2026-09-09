@@ -15,21 +15,15 @@ import { formatCoverageReport, formatCoverageReportHtml, writeCoverageReport } f
 import { excludeLocale, includeLocale, moveLocaleToTier } from "./locales.ts";
 import { aiProviderConfigured, type FillOptions } from "./ai-translate.ts";
 import {
-  DOCS_GUIDES,
   contentLocales,
-  guidesLocales,
   messagesLocales,
   runCheckContent,
-  runCheckGuides,
   runCheckMessages,
   runExtractContent,
-  runExtractGuides,
   runExtractMessages,
   runRenderContent,
-  runRenderGuides,
   runTranslateContent,
   runTranslateMessages,
-  runTranslateGuides,
 } from "./pipeline.ts";
 
 /** `undefined` when loading failed — the caller must bail without crashing (`process.exit` is
@@ -102,21 +96,20 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
 
   const configDirOf = (): string => dirname(program.opts<{ config: string }>().config);
 
-  /** Runs `guidesFn` for `docs.guides` (or an omitted space, which defaults to it), `messagesFn`
-   *  for any space configured with `kind: "messages"`, or falls back to `command`'s stub message
-   *  for anything else (e.g. an unconfigured or `"content"`/`"structural"` space with no handler). */
+  /** Runs `messagesFn` for any space configured with `kind: "messages"`, `contentFn` for any
+   *  `kind: "content"` space, or falls back to `command`'s stub message for anything else (e.g. an
+   *  unconfigured or `"structural"` space with no handler). An omitted space defaults to
+   *  `docs.guides`. */
   function withSpace(
     command: string,
     space: string | undefined,
-    guidesFn: (config: I18nConfig) => void | Promise<void>,
     messagesFn: (config: I18nConfig, spaceId: string) => void | Promise<void>,
     contentFn: (config: I18nConfig, spaceId: string) => void | Promise<void>,
   ): void | Promise<void> {
     const configPath = program.opts<{ config: string }>().config;
     const loaded = loadConfigOrExit(configPath);
     if (!loaded) return;
-    const spaceId = space ?? DOCS_GUIDES;
-    if (spaceId === DOCS_GUIDES) return guidesFn(loaded.config);
+    const spaceId = space ?? "docs.guides";
     if (loaded.config.spaces[spaceId]?.kind === "messages") {
       return messagesFn(loaded.config, spaceId);
     }
@@ -134,12 +127,6 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
       withSpace(
         "extract",
         space,
-        (config) => {
-          const result = runExtractGuides(config, configDirOf());
-          console.log(
-            `Extracted ${String(result.unitCount)} unit(s) from ${DOCS_GUIDES} to ${result.potPath}.`,
-          );
-        },
         (config, spaceId) => {
           const result = runExtractMessages(config, configDirOf(), spaceId);
           console.log(
@@ -183,19 +170,11 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
         return withSpace(
           "translate",
           space,
-          async (config) => {
-            assertKnownTier(config, opts.tier);
-            for (const locale of localesFor(guidesLocales(config, opts.tier))) {
-              const result = await runTranslateGuides(config, configDirOf(), locale);
-              console.log(
-                `${DOCS_GUIDES} (${locale}): ${String(result.translated)} translated, ` +
-                  `${String(result.untranslated)} untranslated (translate via docs:guides:locales:translate, not this CLI) — ${result.poPath}`,
-              );
-            }
-          },
           async (config, spaceId) => {
             assertKnownTier(config, opts.tier);
-            for (const locale of localesFor(messagesLocales(config, spaceId, opts.tier))) {
+            for (const locale of localesFor(
+              messagesLocales(config, configDirOf(), spaceId, opts.tier),
+            )) {
               const result = await runTranslateMessages(
                 config,
                 configDirOf(),
@@ -211,11 +190,19 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
           },
           async (config, spaceId) => {
             assertKnownTier(config, opts.tier);
-            for (const locale of localesFor(contentLocales(config, spaceId, opts.tier))) {
-              const result = await runTranslateContent(config, configDirOf(), spaceId, locale);
+            for (const locale of localesFor(
+              contentLocales(config, configDirOf(), spaceId, opts.tier),
+            )) {
+              const result = await runTranslateContent(
+                config,
+                configDirOf(),
+                spaceId,
+                locale,
+                fillOptions,
+              );
               console.log(
                 `${spaceId} (${locale}): ${String(result.translated)} translated, ` +
-                  `${String(result.untranslated)} untranslated (translated by the docs scripts, not this CLI) — ${result.poPath}`,
+                  `${String(result.untranslated)} untranslated${translateNote(opts.provider)} — ${result.poPath}`,
               );
             }
           },
@@ -231,15 +218,6 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
       withSpace(
         "render",
         space,
-        (config) => {
-          const locales = opts.locale ? [opts.locale] : guidesLocales(config);
-          for (const locale of locales) {
-            const result = runRenderGuides(config, configDirOf(), locale);
-            console.log(
-              `${DOCS_GUIDES} (${locale}): wrote ${String(result.filesWritten.length)} file(s).`,
-            );
-          }
-        },
         () => {
           // Messages spaces don't have a generic file-render step — a space's own codegen
           // (e.g. `renderers/web-components/scripts/build-bundles.ts`) reads its PO catalogs directly via
@@ -247,7 +225,9 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
           console.log(`"render" for a messages space is a no-op — its package owns codegen.`);
         },
         (config, spaceId) => {
-          const locales = opts.locale ? [opts.locale] : contentLocales(config, spaceId);
+          const locales = opts.locale
+            ? [opts.locale]
+            : contentLocales(config, configDirOf(), spaceId);
           for (const locale of locales) {
             const result = runRenderContent(config, configDirOf(), spaceId, locale);
             console.log(
@@ -266,11 +246,6 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
       withSpace(
         "check",
         space,
-        (config) => {
-          if (opts.strict) process.env.I18N_DRIFT_STRICT = "1";
-          const { exitCode } = runCheckGuides(config, configDirOf());
-          process.exitCode = exitCode;
-        },
         (config, spaceId) => {
           if (opts.strict) process.env.I18N_DRIFT_STRICT = "1";
           const { exitCode } = runCheckMessages(config, configDirOf(), spaceId);

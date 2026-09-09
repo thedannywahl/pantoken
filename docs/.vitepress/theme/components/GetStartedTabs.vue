@@ -81,10 +81,14 @@ const BASE_COMMAND = "create-pantoken-app";
 
 type DocsThemeWithGetStartedTabs = {
   getStartedTabs?: GetStartedTabsStrings;
+  chrome?: { agentShellPrompt?: string };
 };
 const { theme } = useData<DocsThemeWithGetStartedTabs>();
 const getStartedTabs = computed<GetStartedTabsStrings>(
   () => theme.value.getStartedTabs ?? GET_STARTED_TABS_DEFAULTS,
+);
+const agentShellPrompt = computed(
+  () => theme.value.chrome?.agentShellPrompt ?? "What would you like to build today?",
 );
 
 const isPaused = ref(false);
@@ -316,7 +320,7 @@ const highlightColor = computed(() =>
               <div class="instui-agent-shell gs-agent-shell">
                 <div class="gs-agent-shell__prompt-muted" aria-hidden="true">
                   <span class="instui-icon -icon-sparkles" aria-hidden="true"></span>
-                  <span>What would you like to build today?</span>
+                  <span>{{ agentShellPrompt }}</span>
                 </div>
                 <div class="gs-agent">
                   <div class="gs-agent__body" aria-hidden="true"></div>
@@ -570,6 +574,7 @@ const highlightColor = computed(() =>
   inset-block-start: 42%;
   inset-inline-start: 50%;
   display: inline-flex;
+  flex-direction: row;
   align-items: center;
   gap: 0.45rem;
   transform: translate(-50%, -50%);
@@ -577,9 +582,14 @@ const highlightColor = computed(() =>
   font-size: 0.78rem;
   letter-spacing: 0.01em;
   white-space: nowrap;
+  direction: inherit;
   opacity: 0.85;
   pointer-events: none;
   z-index: 0;
+}
+
+:dir(rtl) .gs-agent-shell__prompt-muted {
+  flex-direction: row-reverse;
 }
 
 .gs-agent-shell__prompt-muted > .instui-icon.-icon-sparkles {

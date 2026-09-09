@@ -1,5 +1,5 @@
 {{pantokenCssImport}}
-import "@pantoken/plugin-layouts/layouts.css";
+import { PantokenInteractions } from "./pantoken-interactions.tsx";
 
 export const metadata = {
   title: "{{projectName}}",
@@ -7,8 +7,11 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="{{wrapperRootClass}}">{children}</body>
+    <html lang="{{locale}}" dir="{{dir}}">
+      <body className="{{wrapperRootClass}}">
+        <PantokenInteractions />
+        {children}
+      </body>
     </html>
   );
 }

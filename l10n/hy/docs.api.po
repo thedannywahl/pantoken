@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 03:18+0000\n"
+"PO-Revision-Date: 2026-09-09 17:12+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29399,3 +29399,7 @@ msgstr "Մեկ [LocaleBundle](#) օբյեկտ, կամ BCP47 պիտակ (`\"hu\"`
 msgctxt "docs.api:prose"
 msgid "Defines the uniform plugin contract ([PantokenPlugin](interfaces/PantokenPlugin.md)) and adapts the resolved token IR for\nthe native lineage ([toStyleDictionary](functions/toStyleDictionary.md)). The upstream-resolving transform (`buildTokens`,\nwhich needs the GitHub-only `@instructure/instructure-design-tokens`) lives on the separate\n`@pantoken/core/build` entry so this main entry stays free of that exotic dependency."
 msgstr "Սահմանում է միատեսակ plugin-ի պայմանագիրը ([PantokenPlugin](interfaces/PantokenPlugin.md))) և հարմարեցնում է լուծված token IR-ը \n the native lineage ([toStyleDictionary](functions/toStyleDictionary.md))). Վերադաս upstream-լուծող տրանսֆորմը (`buildTokens`,\n որը պահանջում է GitHub-միայն `@instructure/instructure-design-tokens`)) տեղակայված է առանձին \n`@pantoken/core/build` գրանցման մեջ, որպեսզի այս հիմնական գրանցումը մնա ազատ այդ արտասովոր կախվածությունից."
+
+msgctxt "docs.api:prose"
+msgid "`theme`/`mode` select which `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), applied across every platform. `cdn` selects the CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);\n  ignored by every other platform. `locale` (default `\"en\"`) sets the generated markup's\n  `lang`/`dir` attributes."
+msgstr "`theme`/`mode` ընտրեք, թե որ `@pantoken/css` token sheet-ի նախապատրաստված ֆայլերը\n  ներմուծում (դեֆոլտ `\"rebrand\"`/`\"light\"`), կիրառվում են բոլոր հարթակներում։ `cdn` ընտրում է CDN\n  մատակարարին `canvas-theme-editor`'s `theme.css`/`theme.js` կառուցված են (դեֆոլտ jsDelivr);\n  անտեսվում են բոլոր մյուս հարթակների կողմից). `locale` (դեֆոլտ `\"en\"`) սահմանում է գեներացված նշագրման\n  `lang`/`dir` հատկանիշները."

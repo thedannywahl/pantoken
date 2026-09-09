@@ -1,12 +1,23 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8"
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-09 17:08+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"Language: und\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:description"
-msgid "Instructure design tokens and icons, reshaped for every platform and framework."
-msgstr "Ngā tohu hoahoa me ngā tohu ā-ata a Instructure, kua āhua hurihia mō ia papaaho me ia anga."
+msgid ""
+"Instructure design tokens and icons, reshaped for every platform and "
+"framework."
+msgstr ""
+"Ngā tohu hoahoa me ngā tohu ā-ata a Instructure, kua āhua hurihia mō ia "
+"papaaho me ia anga."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -239,8 +250,12 @@ msgstr "Mō te whakatikatika taketake"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfo"
-msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
-msgstr "Te whakatikatika ā-ao whiriwhiri: box-sizing, te papamuri whārangi, tae tuhinga taketake me te momo momotuhi, color-scheme, me ngā tautuhi hono."
+msgid ""
+"The opt-in global reset: box-sizing, the page surface, base text colour and "
+"font, color-scheme, and link defaults."
+msgstr ""
+"Te whakatikatika ā-ao whiriwhiri: box-sizing, te papamuri whārangi, tae "
+"tuhinga taketake me te momo momotuhi, color-scheme, me ngā tautuhi hono."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -257,8 +272,12 @@ msgstr "Mō ngā akonga āwhina"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
-msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
-msgstr "He paparanga whakauru kōwhiri: he tūemi Tirohanga, he wāhi mō te whakatakotoranga āwhina i runga i te tōra token, me ngā whakakapi tae tūtohu."
+msgid ""
+"An opt-in layer of cross-cutting classes: a View primitive, spacing on the "
+"token scale, and semantic color overrides."
+msgstr ""
+"He paparanga whakauru kōwhiri: he tūemi Tirohanga, he wāhi mō te "
+"whakatakotoranga āwhina i runga i te tōra token, me ngā whakakapi tae tūtohu."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -281,14 +300,21 @@ msgstr "Tīpakohia kotahi, kotahi atu rānei ngā rauemi hei hanga i tētahi URL
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.fontsNote"
-msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
-msgstr "Ka uta wehe ngā momotuhi — tāpirihia he <link> ki @pantoken/components/fonts.css mēnā e hiahiatia ana."
+msgid ""
+"Fonts load separately — add a <link> to @pantoken/components/fonts.css when "
+"you need them."
+msgstr ""
+"Ka uta wehe ngā momotuhi — tāpirihia he <link> ki @pantoken/components/"
+"fonts.css mēnā e hiahiatia ana."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.iconsNote"
-msgid "component-icons.css is included because a selected component uses icons."
-msgstr "Kei roto te component-icons.css nā te mea e whakamahi ana tētahi waahanga kua tīpakohia i ngā āta."
+msgid ""
+"component-icons.css is included because a selected component uses icons."
+msgstr ""
+"Kei roto te component-icons.css nā te mea e whakamahi ana tētahi waahanga "
+"kua tīpakohia i ngā āta."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -323,8 +349,12 @@ msgstr "Whakapārewahia te animation"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
-msgid "\"Set up pantoken (github.com/thedannywahl/pantoken) in this project using create.pantoken.app/SKILL.md.\""
-msgstr "\"Tautuhia pantoken (github.com/thedannywahl/pantoken) ki tēnei kaupapa mā create.pantoken.app/SKILL.md.\""
+msgid ""
+"\"Set up pantoken (github.com/thedannywahl/pantoken) in this project using "
+"create.pantoken.app/SKILL.md.\""
+msgstr ""
+"\"Tautuhia pantoken (github.com/thedannywahl/pantoken) ki tēnei kaupapa mā "
+"create.pantoken.app/SKILL.md.\""
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -388,6 +418,12 @@ msgstr "I whakahoutia mutunga kē"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
+msgctxt "docs.chrome:chrome.agentShellPrompt"
+msgid "What would you like to build today?"
+msgstr "He aha tāu e hiahia ana ki te hanga i tēnei rā?"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
 msgctxt "docs.chrome:chrome.notFound.code"
 msgid "404"
 msgstr "404"
@@ -401,8 +437,12 @@ msgstr "KORE WHĀRANGI I TE KITENGA"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.quote"
-msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
-msgstr "Engari mēnā kāore koe e huri i tō aronga, ā, me noho tonu koe ki te rapu, ka mutu koe i te wahi e ū ana tō haere."
+msgid ""
+"But if you don't change your direction, and if you keep looking, you may end "
+"up where you are heading."
+msgstr ""
+"Engari mēnā kāore koe e huri i tō aronga, ā, me noho tonu koe ki te rapu, ka "
+"mutu koe i te wahi e ū ana tō haere."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

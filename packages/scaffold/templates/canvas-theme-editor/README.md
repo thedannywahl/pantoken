@@ -1,7 +1,6 @@
 # {{projectName}}
 
-Scaffolded with `pantoken-scaffold canvas-theme-editor` (or `pantoken-ai scaffold canvas-theme-editor`)
-— upload-ready assets for Canvas LMS's **Theme Editor**, plus a local preview for authoring Rich
+Upload-ready assets for Canvas LMS's **Theme Editor**, plus a local preview for authoring Rich
 Content Editor (RCE) page templates styled with
 [`@pantoken/components`](https://www.npmjs.com/package/@pantoken/components).
 

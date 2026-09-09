@@ -1,12 +1,12 @@
 /**
- * AI-backed fill-in for untranslated entries in a "messages"-kind space's PO catalog — Phase 3 of
- * the localization-engine plan. Runs only when `I18N_TRANSLATION_COMMAND` is configured (same
- * convention `tools/translation-adapters/README.md` documents for the legacy pipelines); otherwise
- * every entry stays untranslated, exactly as before this module existed.
+ * AI-backed fill-in for untranslated entries in a PO catalog — Phase 3 of the localization-engine
+ * plan. Runs only when a provider resolves (an explicit profile or `I18N_TRANSLATION_COMMAND`, the
+ * convention `tools/translation-adapters/README.md` documents); otherwise every entry stays
+ * untranslated, exactly as before this module existed.
  *
- * `docs.guides` is deliberately not wired through here — it already has its own dedicated,
- * markdown-aware AI pipeline (`docs/scripts/translate-guide-po.ts`), and its `msgid`s are whole
- * files, too large for this module's short-string batch prompt.
+ * Short keyed strings go through a batched JSON prompt. Whole-file units (a content space with
+ * `segment: "file"`) are too large for that and would lose their Markdown structure, so they get a
+ * document-at-a-time prompt with code, package names, and `{{template}}` tokens masked out.
  *
  * @module
  */
@@ -14,8 +14,12 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import {
   buildBatchTranslationPrompt,
+  buildMarkdownTranslationPrompt,
   extractJsonObject,
+  preserveMarkdown,
+  restoreMarkdown,
   spawnPrompt,
+  stripMarkdownEnvelope,
 } from "@pantoken/translation-adapters";
 import type { ProviderConfig, ProviderProfileConfig } from "./config.ts";
 import { parsePo, serializePo, writeCatalog, type PoEntry } from "./po.ts";
@@ -160,6 +164,59 @@ export async function fillUntranslatedEntries(
   };
 
   await runWithConcurrency(chunks, invocation.concurrency, translateChunk);
+  writeCatalog(poPath, serializePo(entries));
+}
+
+/**
+ * Fill empty, non-obsolete `msgstr`s in `poPath` where each `msgid` is a whole Markdown document,
+ * translating one document per request. Writes the catalog after each completed document so a long
+ * multi-locale run keeps its progress if it's interrupted. No-ops when no provider resolves.
+ *
+ * A document that fails or times out is reported and left untranslated rather than aborting the
+ * run — the next pass retries only what's still empty.
+ */
+export async function fillUntranslatedMarkdownEntries(
+  poPath: string,
+  locale: string,
+  provider: ProviderConfig,
+  options: FillOptions = {},
+): Promise<void> {
+  const invocation = resolveProviderInvocation(provider, options);
+  if (!invocation) return;
+  const entries = parsePo(readFileSync(poPath, "utf8"));
+  const pending = entries.filter(
+    (entry) => !entry.obsolete && (options.force === true || entry.msgstr === ""),
+  );
+  if (pending.length === 0) return;
+
+  const targetLanguage = targetLanguageLabel(locale);
+
+  const translateEntry = async (entry: PoEntry): Promise<void> => {
+    const reference = entry.references[0] ?? "document";
+    const preserved = preserveMarkdown(entry.msgid);
+    const prompt = buildMarkdownTranslationPrompt(preserved.text, targetLanguage, reference);
+    try {
+      const response = await spawnPrompt(
+        invocation.command,
+        [...invocation.args, "-p"],
+        prompt,
+        `locale '${locale}' (${reference})`,
+        { timeoutMs: provider.documentTimeoutMs },
+      );
+      const translated = restoreMarkdown(stripMarkdownEnvelope(response), preserved);
+      if (translated.trim().length === 0) return;
+      entry.msgstr = `${translated.trimEnd()}\n`;
+      entry.fuzzy = false;
+      entry.flags = entry.flags.filter((flag) => flag !== "fuzzy");
+      writeCatalog(poPath, serializePo(entries));
+    } catch (error) {
+      console.warn(
+        `  ! ${locale} ${reference}: ${error instanceof Error ? error.message : String(error)}`,
+      );
+    }
+  };
+
+  await runWithConcurrency(pending, invocation.concurrency, translateEntry);
   writeCatalog(poPath, serializePo(entries));
 }
 

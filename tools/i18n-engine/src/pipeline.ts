@@ -1,23 +1,20 @@
 /**
- * Wires `extract`/`translate`/`render` to the real `docs.guides` space — Phase 2 of the
- * localization-engine plan. Every other space still reports not-yet-implemented (see `cli.ts`).
+ * `extract`/`translate`/`render`/`check` for every localization space.
  *
- * `translate` here is deliberately a no-op beyond keeping the PO catalog current (`msgmerge`): there
- * is no authorized real AI backend wired up yet (driving a subscription CLI programmatically for
- * bulk work is a product/legal decision the plan itself leaves unresolved — see `shim.ts`'s
- * docblock). An untranslated entry's `msgstr` stays empty; `render` falls back to the English source
- * for those, same as the legacy pipeline's translation-memory cache miss behavior.
+ * Content spaces are driven entirely by their config: `include` globs pick the sources, `root`
+ * anchors catalog references, and `segment` picks the unit shape (`file` translates a whole
+ * Markdown document as one unit, `block` splits it into prose leaves, `frontmatter` takes only
+ * YAML frontmatter values). No space id is special-cased here.
  *
  * @module
  */
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { globSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, join, relative, sep } from "node:path";
 import { DriftReporter, type DriftPolicy } from "@pantoken/translation-adapters";
-import type { I18nConfig, MessagesSpaceConfig } from "./config.ts";
+import type { ContentSpaceConfig, I18nConfig, MessagesSpaceConfig } from "./config.ts";
 import {
   extractFileUnits,
   extractFrontmatterUnits,
-  listGuideFiles,
   renderFile,
   renderFrontmatterFile,
 } from "./extract.ts";
@@ -25,14 +22,13 @@ import { extractMessagesSpace, type MessageUnit } from "./extract-messages.ts";
 import { mergePoWithTemplate } from "./gettext.ts";
 import { parsePo, readCatalog, serializePot, writeCatalog, type PoEntry } from "./po.ts";
 import { refreshCoverageReports } from "./coverage.ts";
-import { fillUntranslatedEntries, type FillOptions } from "./ai-translate.ts";
-import { localesForSpace, resolveLocaleStatus } from "./locales.ts";
+import {
+  fillUntranslatedEntries,
+  fillUntranslatedMarkdownEntries,
+  type FillOptions,
+} from "./ai-translate.ts";
+import { knownLocales, localesForSpace, resolveLocaleStatus } from "./locales.ts";
 import { catalogUnitKey } from "./units.ts";
-
-/** Canonical content-space id for the repository's Markdown guides. */
-const DOCS_GUIDES = "docs.guides";
-/** Canonical content-space id for the documentation home page. */
-const DOCS_HOME = "docs.home";
 
 /** Substitute `{space}`/`{locale}` placeholders in a catalog path pattern. */
 function resolvePattern(pattern: string, vars: Readonly<Record<string, string>>): string {
@@ -101,39 +97,69 @@ export function normalizeWholeFileMarkdown(content: string): string {
 }
 
 /** Every known, non-excluded locale across every tier (before a space narrows it further). */
-function nonExcludedKnownLocales(config: I18nConfig, tier?: string): string[] {
-  const allTiered = Object.values(config.locales.tiers).flat();
-  const known = [...new Set(allTiered)].filter((locale) => locale !== "*" && !locale.endsWith("*"));
-  return known.filter((locale) => {
+function nonExcludedKnownLocales(config: I18nConfig, configDir: string, tier?: string): string[] {
+  return knownLocales(config, configDir).filter((locale) => {
     const status = resolveLocaleStatus(config.locales, locale);
     return !status.excluded && (tier === undefined || status.tier === tier);
   });
 }
 
-/** Every non-excluded, in-scope locale for `docs.guides`, per `locales.exclude` + the space's own scope. */
-function guidesLocales(config: I18nConfig, tier?: string): string[] {
-  return contentLocales(config, DOCS_GUIDES, tier);
+/** Resolve configured locales that are eligible for a content localization space. */
+function contentLocales(
+  config: I18nConfig,
+  configDir: string,
+  spaceId: string,
+  tier?: string,
+): string[] {
+  const space = config.spaces[spaceId];
+  const nonExcluded = nonExcludedKnownLocales(config, configDir, tier);
+  return [...localesForSpace(nonExcluded, space?.kind === "content" ? space.locales : undefined)];
 }
 
-/** Resolve configured locales that are eligible for a content localization space. */
-function contentLocales(config: I18nConfig, spaceId: string, tier?: string): string[] {
-  const space = config.spaces[spaceId];
-  const nonExcluded = nonExcludedKnownLocales(config, tier);
-  return [...localesForSpace(nonExcluded, space?.kind === "content" ? space.locales : undefined)];
+/** The glob-free leading directory of `pattern` — what a matched file's `{path}` is relative to. */
+function staticPrefix(pattern: string): string {
+  const segments = pattern.split("/");
+  const firstGlob = segments.findIndex((segment) => /[*?[{]/u.test(segment));
+  return (firstGlob === -1 ? segments.slice(0, -1) : segments.slice(0, firstGlob)).join("/");
+}
+
+/** One source file in a content space, with both path forms the pipeline needs. */
+interface ContentFile {
+  /** Catalog `#:` reference, relative to the space's `root`. */
+  reference: string;
+  /** `{path}` for the space's `render` pattern, relative to the include glob's static prefix. */
+  renderPath: string;
+  source: string;
+}
+
+/** Every file a content space's `include` globs match, resolved against the repository root. */
+function contentSpaceFiles(space: ContentSpaceConfig, configDir: string): ContentFile[] {
+  const root = join(configDir, space.root ?? ".");
+  const posix = (path: string): string => path.split(sep).join("/");
+  return space.include.flatMap((pattern) =>
+    globSync(pattern, { cwd: configDir })
+      .sort()
+      .map((file) => {
+        const absolute = join(configDir, file);
+        return {
+          reference: posix(relative(root, absolute)),
+          renderPath: posix(relative(join(configDir, staticPrefix(pattern)), absolute)),
+          source: readFileSync(absolute, "utf8"),
+        };
+      }),
+  );
 }
 
 function contentSpaceUnits(config: I18nConfig, configDir: string, spaceId: string) {
   const space = config.spaces[spaceId];
   if (!space || space.kind !== "content") throw new Error(`"${spaceId}" is not a content space.`);
-  const files = spaceId === DOCS_HOME ? ["index.md"] : listGuideFiles(join(configDir, "docs"));
-  return files.flatMap((file) => {
-    const source = readFileSync(join(configDir, "docs", file), "utf8");
-    if (spaceId === DOCS_GUIDES) {
-      return [{ msgid: source, reference: file, translate: "always" as const }];
+  return contentSpaceFiles(space, configDir).flatMap((file) => {
+    if (space.segment === "file") {
+      return [{ msgid: file.source, reference: file.reference, translate: "always" as const }];
     }
     return space.segment === "frontmatter"
-      ? extractFrontmatterUnits(source, file)
-      : extractFileUnits(source, file);
+      ? extractFrontmatterUnits(file.source, file.reference)
+      : extractFileUnits(file.source, file.reference);
   });
 }
 
@@ -144,12 +170,7 @@ export interface ExtractResult {
   potPath: string;
 }
 
-/** `i18n extract docs.guides`: write `l10n/docs.guides.pot` from the real `docs/guide/**` corpus. */
-export function runExtractGuides(config: I18nConfig, configDir: string): ExtractResult {
-  return runExtractContent(config, configDir, DOCS_GUIDES);
-}
-
-/** Extract a content space, including frontmatter-only spaces such as `docs.home`. */
+/** Extract a content space into its POT template. */
 export function runExtractContent(
   config: I18nConfig,
   configDir: string,
@@ -174,7 +195,7 @@ export interface TranslateResult {
 
 /** `msgmerge` `poPath` against `potPath`, optionally run `fill` (an AI fill-in step) against the
  *  merged catalog, then count translated/untranslated non-obsolete entries. Shared by
- *  `runTranslateGuides`, `runTranslateContent`, and `runTranslateMessages`. */
+ *  `runTranslateContent` and `runTranslateMessages`. */
 async function mergeAndCount(
   potPath: string,
   poPath: string,
@@ -190,29 +211,27 @@ async function mergeAndCount(
   };
 }
 
-/** `i18n translate docs.guides --locale <x>`: keep `<locale>`'s PO current against the POT. */
-export async function runTranslateGuides(
-  config: I18nConfig,
-  configDir: string,
-  locale: string,
-): Promise<TranslateResult> {
-  return runTranslateContent(config, configDir, DOCS_GUIDES, locale);
-}
-
-/** Synchronize one locale's PO catalog for a content space. */
+/** Synchronize one locale's PO catalog for a content space, AI-filling any untranslated entries. */
 export async function runTranslateContent(
   config: I18nConfig,
   configDir: string,
   spaceId: string,
   locale: string,
+  options: FillOptions = {},
 ): Promise<TranslateResult> {
+  const space = config.spaces[spaceId];
+  if (!space || space.kind !== "content") throw new Error(`"${spaceId}" is not a content space.`);
   // Re-extract first: msgmerge can only propagate units the POT already knows about.
   const { potPath } = runExtractContent(config, configDir, spaceId);
   const poPath = join(
     configDir,
     resolvePattern(config.catalogs.target, { space: spaceId, locale }),
   );
-  const result = await mergeAndCount(potPath, poPath);
+  // Whole-file units are documents, not short strings — they need the Markdown-aware prompt.
+  const fill = space.segment === "file" ? fillUntranslatedMarkdownEntries : fillUntranslatedEntries;
+  const result = await mergeAndCount(potPath, poPath, (path) =>
+    fill(path, locale, config.provider, { configDir, ...options }),
+  );
   refreshCoverageReports(join(configDir, "i18n.config.json"));
   return { space: spaceId, locale, poPath, ...result };
 }
@@ -222,36 +241,6 @@ export interface RenderResult {
   space: string;
   locale: string;
   filesWritten: string[];
-}
-
-/** `i18n render docs.guides [--locale <x>]`: splice each locale's PO back into `docs/{locale}/guide/**`. */
-export function runRenderGuides(
-  config: I18nConfig,
-  configDir: string,
-  locale: string,
-): RenderResult {
-  const docsRoot = join(configDir, "docs");
-  const entries = loadPoEntries(config, configDir, locale);
-  const byMsgid = new Map(entries.filter((e) => e.msgstr !== "").map((e) => [e.msgid, e.msgstr]));
-
-  const space = config.spaces[DOCS_GUIDES];
-  const renderPattern =
-    space?.kind === "content"
-      ? (space.render ?? "docs/{locale}/guide/{path}")
-      : "docs/{locale}/guide/{path}";
-  const filesWritten: string[] = [];
-  for (const file of listGuideFiles(docsRoot)) {
-    const source = readFileSync(join(docsRoot, file), "utf8");
-    const rendered = byMsgid.get(source) ?? source;
-    const outPath = join(
-      configDir,
-      resolvePattern(renderPattern, { locale, path: file.replace(/^guide\//u, "") }),
-    );
-    mkdirSync(dirname(outPath), { recursive: true });
-    writeFileSync(outPath, `${normalizeWholeFileMarkdown(rendered)}\n`);
-    filesWritten.push(outPath);
-  }
-  return { space: DOCS_GUIDES, locale, filesWritten };
 }
 
 /** Render a translated content space's locale output with English fallback for empty PO entries. */
@@ -265,17 +254,33 @@ export function runRenderContent(
   if (!space || space.kind !== "content") throw new Error(`"${spaceId}" is not a content space.`);
   const entries = loadPoEntriesForSpace(config, configDir, spaceId, locale);
   const byMsgid = new Map(entries.filter((e) => e.msgstr !== "").map((e) => [e.msgid, e.msgstr]));
-  const sourcePath = spaceId === DOCS_HOME ? "index.md" : undefined;
-  if (!sourcePath) throw new Error(`No generic renderer is configured for "${spaceId}".`);
-  const source = readFileSync(join(configDir, "docs", sourcePath), "utf8");
-  const rendered =
-    space.segment === "frontmatter"
-      ? renderFrontmatterFile(source, (text) => byMsgid.get(text) ?? text, locale)
-      : renderFile(source, (text) => byMsgid.get(text) ?? text);
-  const outPath = join(configDir, resolvePattern(space.render, { locale, path: sourcePath }));
-  mkdirSync(dirname(outPath), { recursive: true });
-  writeFileSync(outPath, rendered);
-  return { space: spaceId, locale, filesWritten: [outPath] };
+  const resolve = (text: string): string => byMsgid.get(text) ?? text;
+
+  const filesWritten: string[] = [];
+  for (const file of contentSpaceFiles(space, configDir)) {
+    const rendered = renderContentFile(space.segment, file.source, resolve, locale);
+    const outPath = join(
+      configDir,
+      resolvePattern(space.render, { locale, path: file.renderPath }),
+    );
+    mkdirSync(dirname(outPath), { recursive: true });
+    writeFileSync(outPath, rendered);
+    filesWritten.push(outPath);
+  }
+  return { space: spaceId, locale, filesWritten };
+}
+
+/** Splice `resolve`d translations back into one source file, per the space's segmentation. */
+function renderContentFile(
+  segment: ContentSpaceConfig["segment"],
+  source: string,
+  resolve: (text: string) => string,
+  locale: string,
+): string {
+  if (segment === "file") return `${normalizeWholeFileMarkdown(resolve(source))}\n`;
+  return segment === "frontmatter"
+    ? renderFrontmatterFile(source, resolve, locale)
+    : renderFile(source, resolve);
 }
 
 /** `config.locales.tiers` + `config.drift` shaped as a `DriftPolicy` for {@link DriftReporter}. */
@@ -285,15 +290,6 @@ function buildDriftPolicy(config: I18nConfig): DriftPolicy {
     surfaces: config.drift.surfaces,
     fallback: config.drift.fallback,
   };
-}
-
-/** `locale`'s `docs.guides` PO entries, or `[]` if no PO has been generated for it yet. */
-function loadPoEntries(config: I18nConfig, configDir: string, locale: string): PoEntry[] {
-  const poPath = join(
-    configDir,
-    resolvePattern(config.catalogs.target, { space: DOCS_GUIDES, locale }),
-  );
-  return parsePo(readCatalog(poPath) ?? "");
 }
 
 function loadPoEntriesForSpace(
@@ -315,12 +311,7 @@ export interface CheckResult {
   exitCode: number;
 }
 
-/** `i18n check docs.guides`: reports untranslated units per locale via {@link DriftReporter}. */
-export function runCheckGuides(config: I18nConfig, configDir: string): CheckResult {
-  return runCheckContent(config, configDir, DOCS_GUIDES);
-}
-
-/** Check translated entries for a frontmatter content space such as `docs.home`. */
+/** Check translated entries for a content space against every in-scope locale. */
 export function runCheckContent(
   config: I18nConfig,
   configDir: string,
@@ -333,7 +324,7 @@ export function runCheckContent(
     policy: buildDriftPolicy(config),
   });
   reportPotStaleness(reporter, config, configDir, spaceId, units);
-  for (const locale of contentLocales(config, spaceId)) {
+  for (const locale of contentLocales(config, configDir, spaceId)) {
     if (locale === config.source) continue;
     const entries = loadPoEntriesForSpace(config, configDir, spaceId, locale);
     const translated = new Set(entries.filter((e) => e.msgstr !== "").map((e) => e.msgid));
@@ -352,14 +343,18 @@ export function runCheckContent(
   return { reporter, exitCode: reporter.report() };
 }
 
-export { DOCS_GUIDES, guidesLocales };
-export { DOCS_HOME, contentLocales };
+export { contentLocales };
 
 /** Every non-excluded, in-scope locale for a given messages space, per `locales.exclude` + the
  *  space's own scope. */
-export function messagesLocales(config: I18nConfig, spaceId: string, tier?: string): string[] {
+export function messagesLocales(
+  config: I18nConfig,
+  configDir: string,
+  spaceId: string,
+  tier?: string,
+): string[] {
   const space = config.spaces[spaceId];
-  const nonExcluded = nonExcludedKnownLocales(config, tier);
+  const nonExcluded = nonExcludedKnownLocales(config, configDir, tier);
   return [...localesForSpace(nonExcluded, space?.kind === "messages" ? space.locales : undefined)];
 }
 
@@ -472,7 +467,7 @@ export function runCheckMessages(
 
   reportPotStaleness(reporter, config, configDir, spaceId, messagesPotUnits(sourceUnits, space));
 
-  for (const locale of messagesLocales(config, spaceId)) {
+  for (const locale of messagesLocales(config, configDir, spaceId)) {
     if (locale === config.source) continue;
     const entries = loadMessagesPoEntries(config, configDir, spaceId, locale);
     const translated = new Set(

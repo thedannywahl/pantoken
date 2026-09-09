@@ -31,17 +31,17 @@
   "scripts": {
     "scan": "node scripts/scan-presets.ts",
     "generate": "node scripts/generate.ts",
-    "extract": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" extract cli.scaffold",
-    "translate": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.scaffold --provider claude",
-    "translate:agy": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.scaffold --provider agy",
-    "translate:copilot": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.scaffold --provider copilot",
-    "translate:force": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.scaffold --provider claude --force",
-    "translate:force:agy": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.scaffold --provider agy --force",
-    "translate:force:copilot": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.scaffold --provider copilot --force",
-    "check:drift": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" check cli.scaffold",
+    "extract": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" extract cli.scaffold && i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" extract scaffold.readme",
+    "translate": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.scaffold --provider claude && i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate scaffold.readme --provider claude",
+    "translate:agy": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.scaffold --provider agy && i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate scaffold.readme --provider agy",
+    "translate:copilot": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.scaffold --provider copilot && i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate scaffold.readme --provider copilot",
+    "translate:force": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.scaffold --provider claude --force && i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate scaffold.readme --provider claude --force",
+    "translate:force:agy": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.scaffold --provider agy --force && i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate scaffold.readme --provider agy --force",
+    "translate:force:copilot": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate cli.scaffold --provider copilot --force && i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate scaffold.readme --provider copilot --force",
+    "check:drift": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" check cli.scaffold && i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" check scaffold.readme",
     "dev": "vp pack --watch",
     "test": "vp run scan && vp run generate && vp test",
-    "check": "vp run scan && vp check && i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" check cli.scaffold"
+    "check": "vp run scan && vp check && vp run check:drift"
   },
   "dependencies": {
     "@bomb.sh/tab": "catalog:",

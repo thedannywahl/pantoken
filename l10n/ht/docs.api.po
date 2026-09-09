@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 03:23+0000\n"
+"PO-Revision-Date: 2026-09-09 17:17+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29399,3 +29399,7 @@ msgstr "Yon objè [LocaleBundle](#), oswa yon tag BCP47 (`\"hu\"`, `\"ar\"`, …
 msgctxt "docs.api:prose"
 msgid "Defines the uniform plugin contract ([PantokenPlugin](interfaces/PantokenPlugin.md)) and adapts the resolved token IR for\nthe native lineage ([toStyleDictionary](functions/toStyleDictionary.md)). The upstream-resolving transform (`buildTokens`,\nwhich needs the GitHub-only `@instructure/instructure-design-tokens`) lives on the separate\n`@pantoken/core/build` entry so this main entry stays free of that exotic dependency."
 msgstr "Defini kontra inifòm plugin la ([PantokenPlugin](interfaces/PantokenPlugin.md))) epi adapte IR token rezoud la pou\nthe native lineage ([toStyleDictionary](functions/toStyleDictionary.md))). Transfòmasyon ki rezoud sous la (`buildTokens`,\nki bezwen `@instructure/instructure-design-tokens`)) ap rezide sou antre separe\n`@pantoken/core/build`, konsa antre prensipal sa a rete lib de depandans ekzotik sa a."
+
+msgctxt "docs.api:prose"
+msgid "`theme`/`mode` select which `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), applied across every platform. `cdn` selects the CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);\n  ignored by every other platform. `locale` (default `\"en\"`) sets the generated markup's\n  `lang`/`dir` attributes."
+msgstr "`theme`/`mode` chwazi ki `@pantoken/css` fichye echèl fèy token yo\n  enpòte (default `\"rebrand\"`/`\"light\"`), aplike atravè chak platfòm. `cdn` chwazi founisè CDN\n  founisè `canvas-theme-editor` pa `theme.css`/`theme.js` yo bati pou (default jsDelivr);\n  inyore pa tout lòt platfòm yo. `locale` (default `\"en\"`) mete atribit markup jenere a\n  `lang`/`dir` attributes."

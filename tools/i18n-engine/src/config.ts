@@ -72,6 +72,9 @@ export interface ProviderConfig {
   endpoint: string;
   batchBudget: number;
   timeoutMs: number;
+  /** Timeout for a whole-document (`segment: "file"`) translation, which runs far longer than a
+   *  batch of short strings. */
+  documentTimeoutMs: number;
   circuitBreaker: CircuitBreakerConfig;
   profiles: Readonly<Record<string, ProviderProfileConfig>>;
 }
@@ -101,9 +104,12 @@ export type SpaceLocaleScope = { only: readonly string[] } | { exclude: readonly
 export interface ContentSpaceConfig {
   kind: "content";
   include: readonly string[];
+  /** Directory catalog `#:` references are relative to (repo-root-relative). Defaults to `"."`. */
+  root?: string;
   render: string;
   transientRender: boolean;
-  segment: "block" | "frontmatter";
+  /** `file` translates each source as one whole-Markdown unit; the others split it into leaves. */
+  segment: "file" | "block" | "frontmatter";
   rules?: string;
   locales?: SpaceLocaleScope;
 }
@@ -156,6 +162,7 @@ export const CONFIG_DEFAULTS: Omit<I18nConfig, "source" | "spaces"> = {
     endpoint: "http://127.0.0.1:8787/v1",
     batchBudget: 4000,
     timeoutMs: 120_000,
+    documentTimeoutMs: 600_000,
     circuitBreaker: {
       maxConsecutiveFailures: 3,
       rotation: ["copilot", "agy", "claude"],

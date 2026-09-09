@@ -1,6 +1,5 @@
 msgid ""
-msgstr ""
-"Content-Type: text/plain; charset=UTF-8"
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
 #: alert/i18n.json#text1
 #, no-c-format
@@ -287,8 +286,12 @@ msgstr "Aquest resultat es renderitza amb"
 #: base/i18n.json#text3
 #, no-c-format
 msgctxt "docs.demos:base:text3"
-msgid "loaded first. The page surface, base text color\n    and font, and"
-msgstr "carregat primer. La superfície de la pàgina, el color de text base\n    i la font, i"
+msgid ""
+"loaded first. The page surface, base text color\n"
+"    and font, and"
+msgstr ""
+"carregat primer. La superfície de la pàgina, el color de text base\n"
+"    i la font, i"
 
 #: base/i18n.json#text4
 #, no-c-format
@@ -311,17 +314,21 @@ msgstr "enllaç base"
 #: base/i18n.json#text7
 #, no-c-format
 msgctxt "docs.demos:base:text7"
-msgid ", and everything sits on the token page surface. Switch the theme (or\n    light/dark) and the surface, text, and link all follow."
-msgstr ", i tot se situa a la superfície de la pàgina de tokens. Canvia el tema (o clar/fosc) i la superfície, el text i l'enllaç ho segueixen."
+msgid ""
+", and everything sits on the token page surface. Switch the theme (or\n"
+"    light/dark) and the surface, text, and link all follow."
+msgstr ""
+", i tot se situa a la superfície de la pàgina de tokens. Canvia el tema (o "
+"clar/fosc) i la superfície, el text i l'enllaç ho segueixen."
 
 #: base/i18n.json#text8
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:base:text8"
 msgid "background-page"
 msgstr "background-page"
 
 #: base/i18n.json#text9
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:base:text9"
 msgid "background-base"
 msgstr "background-base"
@@ -618,7 +625,9 @@ msgstr "Què hi ha de nou"
 #, no-c-format
 msgctxt "docs.demos:byline:text2"
 msgid "The figure can be any leading visual — an icon, an avatar, or an image."
-msgstr "La figura pot ser qualsevol element visual principal — una icona, un avatar o una imatge."
+msgstr ""
+"La figura pot ser qualsevol element visual principal — una icona, un avatar "
+"o una imatge."
 
 #: byline/i18n.json#text3
 #, no-c-format
@@ -635,8 +644,14 @@ msgstr "Amb"
 #: byline/i18n.json#text5
 #, no-c-format
 msgctxt "docs.demos:byline:text5"
-msgid "the figure pins to the top instead of centering,\n          which reads better when the description runs to several lines like this one does."
-msgstr "la figura s'ancora a la part superior en lloc de centrar-se,\n          cosa que es llegeix millor quan la descripció s'estén a diverses línies com ho fa aquesta."
+msgid ""
+"the figure pins to the top instead of centering,\n"
+"          which reads better when the description runs to several lines like "
+"this one does."
+msgstr ""
+"la figura s'ancora a la part superior en lloc de centrar-se,\n"
+"          cosa que es llegeix millor quan la descripció s'estén a diverses "
+"línies com ho fa aquesta."
 
 #: byline/i18n.json#text6
 #, no-c-format
@@ -779,29 +794,33 @@ msgstr "una superfície, i"
 #: color-utilities/i18n.json#text4
 #, no-c-format
 msgctxt "docs.demos:color-utilities:text4"
-msgid "a border — each from a semantic color token, so overrides stay\n    on-palette and follow the theme."
-msgstr "una vora — cadascuna prové d'un token de color semàntic, així les substitucions es mantenen dins de la paleta i segueixen el tema."
+msgid ""
+"a border — each from a semantic color token, so overrides stay\n"
+"    on-palette and follow the theme."
+msgstr ""
+"una vora — cadascuna prové d'un token de color semàntic, així les "
+"substitucions es mantenen dins de la paleta i segueixen el tema."
 
 #: color-utilities/i18n.json#text5
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:color-utilities:text5"
 msgid "text-success"
 msgstr "text-success"
 
 #: color-utilities/i18n.json#text6
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:color-utilities:text6"
 msgid "text-warning"
 msgstr "text-warning"
 
 #: color-utilities/i18n.json#text7
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:color-utilities:text7"
 msgid "text-error"
 msgstr "text-error"
 
 #: color-utilities/i18n.json#text8
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:color-utilities:text8"
 msgid "text-info"
 msgstr "text-info"
@@ -819,25 +838,25 @@ msgid "Accent surfaces pair with"
 msgstr "Les superfícies d'accent se sincronitzen amb"
 
 #: color-utilities/i18n.json#text11
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:color-utilities:text11"
 msgid "bg-accent-green"
 msgstr "bg-accent-green"
 
 #: color-utilities/i18n.json#text12
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:color-utilities:text12"
 msgid "bg-accent-plum"
 msgstr "bg-accent-plum"
 
 #: color-utilities/i18n.json#text13
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:color-utilities:text13"
 msgid "border-strong"
 msgstr "border-strong"
 
 #: color-utilities/i18n.json#text14
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:color-utilities:text14"
 msgid "border-brand"
 msgstr "border-brand"
@@ -917,8 +936,14 @@ msgstr "Mostra els detalls"
 #: context-view/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:context-view:text2"
-msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes\n    when you click away or press Esc."
-msgstr "Una vista de context emmarca una crida d’atenció amb una punta (caret). Com a popover, es col·loca a la capa superior i es tanca quan fas clic fora o prems Esc."
+msgid ""
+"A context view frames a callout with a caret. As a popover it rides the top "
+"layer and closes\n"
+"    when you click away or press Esc."
+msgstr ""
+"Una vista de context emmarca una crida d’atenció amb una punta (caret). Com "
+"a popover, es col·loca a la capa superior i es tanca quan fas clic fora o "
+"prems Esc."
 
 #: context-view/i18n.json#text3
 #, no-c-format
@@ -953,8 +978,14 @@ msgstr "Fons invertit"
 #: context-view/i18n.json#text8
 #, no-c-format
 msgctxt "docs.demos:context-view:text8"
-msgid "Positioning next to a trigger uses CSS anchor positioning where supported; elsewhere the popover\n    centers in the top layer."
-msgstr "El posicionament al costat d'un activador utilitza el posicionament amb ancres CSS quan és compatible; en altres casos el popover es centra a la capa superior."
+msgid ""
+"Positioning next to a trigger uses CSS anchor positioning where supported; "
+"elsewhere the popover\n"
+"    centers in the top layer."
+msgstr ""
+"El posicionament al costat d'un activador utilitza el posicionament amb "
+"ancres CSS quan és compatible; en altres casos el popover es centra a la "
+"capa superior."
 
 #: date-time-inputs/i18n.json#text1
 #, no-c-format
@@ -966,7 +997,12 @@ msgstr "Data de venciment"
 #, no-c-format
 msgctxt "docs.demos:date-time-inputs:text2"
 msgid "Starts at"
-msgstr "Comença a\n\n<system_reminder>\n<sql_tables>Taules disponibles: todos, todo_deps</sql_tables>\n</system_reminder>"
+msgstr ""
+"Comença a\n"
+"\n"
+"<system_reminder>\n"
+"<sql_tables>Taules disponibles: todos, todo_deps</sql_tables>\n"
+"</system_reminder>"
 
 #: date-time-inputs/i18n.json#text3
 #, no-c-format
@@ -1055,8 +1091,13 @@ msgstr "Contingut principal"
 #: drawer-layout/i18n.json#text9
 #, no-c-format
 msgctxt "docs.demos:drawer-layout:text9"
-msgid "Use the buttons above to toggle open state. Narrow the viewport to see the tray switch to\n          overlay mode."
-msgstr "Utilitzeu els botons a dalt per alternar l'estat obert. Reduïu l'amplada de la finestra de visualització per veure que la safata passa a mode superposat."
+msgid ""
+"Use the buttons above to toggle open state. Narrow the viewport to see the "
+"tray switch to\n"
+"          overlay mode."
+msgstr ""
+"Utilitzeu els botons a dalt per alternar l'estat obert. Reduïu l'amplada de "
+"la finestra de visualització per veure que la safata passa a mode superposat."
 
 #: elevation/i18n.json#text1
 #, no-c-format
@@ -1151,14 +1192,23 @@ msgstr "report.pdf — tipus de fitxer no permès."
 #: focus-outline/i18n.json#text1
 #, no-c-format
 msgctxt "docs.demos:focus-outline:text1"
-msgid "Tab through the controls (or click the field) to see the ring. It rides every focusable out of\n      the box from"
-msgstr "Navega amb Tab pels controls (o fes clic al camp) per veure l’anell. S’aplica a tots els elements enfocables per defecte des de"
+msgid ""
+"Tab through the controls (or click the field) to see the ring. It rides "
+"every focusable out of\n"
+"      the box from"
+msgstr ""
+"Navega amb Tab pels controls (o fes clic al camp) per veure l’anell. "
+"S’aplica a tots els elements enfocables per defecte des de"
 
 #: focus-outline/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:focus-outline:text2"
-msgid "; the modifiers recolour it, inset it, or turn off the\n      animation."
-msgstr "; els modificadors li canvien el color, el posen com a inset o desactiven l'animació."
+msgid ""
+"; the modifiers recolour it, inset it, or turn off the\n"
+"      animation."
+msgstr ""
+"; els modificadors li canvien el color, el posen com a inset o desactiven "
+"l'animació."
 
 #: focus-outline/i18n.json#text3
 #, no-c-format
@@ -1373,8 +1423,12 @@ msgstr "classes a l'escala d'espaiat, curtes ("
 #: gap/i18n.json#text4
 #, no-c-format
 msgctxt "docs.demos:gap:text4"
-msgid ") or long\n    ("
-msgstr ") o llarg\n    ("
+msgid ""
+") or long\n"
+"    ("
+msgstr ""
+") o llarg\n"
+"    ("
 
 #: gap/i18n.json#text5
 #, no-c-format
@@ -1383,7 +1437,7 @@ msgid ") spelling — usable bare or chained onto any component."
 msgstr ") ortografia — usable sola o encadenada a qualsevol component."
 
 #: gap/i18n.json#text6
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:gap:text6"
 msgid "gap-sm"
 msgstr "gap-sm"
@@ -1407,7 +1461,7 @@ msgid "Long spelling"
 msgstr "Deletreig llarg"
 
 #: gap/i18n.json#text10
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:gap:text10"
 msgid "gap-large"
 msgstr "gap-large"
@@ -1541,7 +1595,9 @@ msgstr "En línia"
 #: icon/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:icon:text2"
-msgid "icons scale to the text and inherit\n      its color."
+msgid ""
+"icons scale to the text and inherit\n"
+"      its color."
 msgstr "les icones s'adapten al text i hereten el seu color."
 
 #: icon/i18n.json#text3
@@ -1589,8 +1645,14 @@ msgstr "12 de març de 2026"
 #: in-place-edit/i18n.json#text7
 #, no-c-format
 msgctxt "docs.demos:in-place-edit:text7"
-msgid "Click a value to edit it. The stateful view/edit toggle with confirm and cancel buttons is the\n    web-component tier; this is the pure-CSS editable skin."
-msgstr "Feu clic en un valor per editar-lo. L'alternador amb estat de visualització/edició amb els botons de confirmar i cancel·lar és la capa de components web; aquesta és l'aparença editable purament en CSS."
+msgid ""
+"Click a value to edit it. The stateful view/edit toggle with confirm and "
+"cancel buttons is the\n"
+"    web-component tier; this is the pure-CSS editable skin."
+msgstr ""
+"Feu clic en un valor per editar-lo. L'alternador amb estat de visualització/"
+"edició amb els botons de confirmar i cancel·lar és la capa de components "
+"web; aquesta és l'aparença editable purament en CSS."
 
 #: layout/i18n.json#text1
 #, no-c-format
@@ -1619,8 +1681,12 @@ msgstr "i"
 #: layout/i18n.json#text5
 #, no-c-format
 msgctxt "docs.demos:layout:text5"
-msgid "props as composable classes — reach for them on\n    any element instead of a per-component modifier."
-msgstr "props com a classes composables — utilitza-les a\n    qualsevol element en lloc d'un modificador per component."
+msgid ""
+"props as composable classes — reach for them on\n"
+"    any element instead of a per-component modifier."
+msgstr ""
+"props com a classes composables — utilitza-les a\n"
+"    qualsevol element en lloc d'un modificador per component."
 
 #: layout/i18n.json#text6
 #, no-c-format
@@ -1659,19 +1725,19 @@ msgid "Text align"
 msgstr "Alineació de text"
 
 #: layout/i18n.json#text12
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:layout:text12"
 msgid "text-align-start"
 msgstr "text-align-start"
 
 #: layout/i18n.json#text13
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:layout:text13"
 msgid "text-align-center"
 msgstr "text-align-center"
 
 #: layout/i18n.json#text14
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:layout:text14"
 msgid "text-align-end"
 msgstr "text-align-end"
@@ -1851,7 +1917,7 @@ msgid "Start"
 msgstr "Iniciar"
 
 #: metric/i18n.json#text6
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:metric:text6"
 msgid "-text-align-start"
 msgstr "-text-align-start"
@@ -1863,7 +1929,7 @@ msgid "Center"
 msgstr "Centra"
 
 #: metric/i18n.json#text8
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:metric:text8"
 msgid "-text-align-center"
 msgstr "-text-align-center"
@@ -1875,7 +1941,7 @@ msgid "End"
 msgstr "Final"
 
 #: metric/i18n.json#text10
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:metric:text10"
 msgid "-text-align-end"
 msgstr "-text-align-end"
@@ -2051,8 +2117,10 @@ msgstr "Visita de la funció"
 #: pendo/i18n.json#popoverBody
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverBody"
-msgid "This anchored guide keeps the next action close to the feature it describes."
-msgstr "Aquesta guia ancorada manté l'acció següent a prop de la funció que descriu."
+msgid ""
+"This anchored guide keeps the next action close to the feature it describes."
+msgstr ""
+"Aquesta guia ancorada manté l'acció següent a prop de la funció que descriu."
 
 #: pendo/i18n.json#alertLabel
 #, no-c-format
@@ -2075,8 +2143,12 @@ msgstr "Comença a les 23:00"
 #: pendo/i18n.json#alertBody
 #, no-c-format
 msgctxt "docs.demos:pendo:alertBody"
-msgid "Course tools will be unavailable briefly tonight while maintenance is completed."
-msgstr "Les eines del curs estaran breument no disponibles aquesta nit mentre es realitza el manteniment."
+msgid ""
+"Course tools will be unavailable briefly tonight while maintenance is "
+"completed."
+msgstr ""
+"Les eines del curs estaran breument no disponibles aquesta nit mentre es "
+"realitza el manteniment."
 
 #: pendo/i18n.json#bannerLabel
 #, no-c-format
@@ -2099,8 +2171,11 @@ msgstr "Informació sobre la participació"
 #: pendo/i18n.json#bannerBody
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerBody"
-msgid "Review participation trends and identify where learners may need support."
-msgstr "Revisa les tendències de participació i identifica on els estudiants poden necessitar suport."
+msgid ""
+"Review participation trends and identify where learners may need support."
+msgstr ""
+"Revisa les tendències de participació i identifica on els estudiants poden "
+"necessitar suport."
 
 #: pendo/i18n.json#closeLabel
 #, no-c-format
@@ -2189,8 +2264,12 @@ msgstr "Comparteix aquesta pàgina"
 #: popover/i18n.json#text3
 #, no-c-format
 msgctxt "docs.demos:popover:text3"
-msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native"
-msgstr "Un popover és una superfície lleugera ancorada a un disparador. Aquest utilitza el nat"
+msgid ""
+"A popover is a lightweight surface anchored to a trigger. This one uses the "
+"native"
+msgstr ""
+"Un popover és una superfície lleugera ancorada a un disparador. Aquest "
+"utilitza el nat"
 
 #: popover/i18n.json#text4
 #, no-c-format
@@ -2285,8 +2364,12 @@ msgstr ", i una mica de"
 #: prose/i18n.json#text14
 #, no-c-format
 msgctxt "docs.demos:prose:text14"
-msgid ". The prose layer styles rendered\n      markdown to match the Heading and Text components."
-msgstr ". La capa de prosa aplica estil al markdown renderitzat\n      per coincidir amb els components Heading i Text."
+msgid ""
+". The prose layer styles rendered\n"
+"      markdown to match the Heading and Text components."
+msgstr ""
+". La capa de prosa aplica estil al markdown renderitzat\n"
+"      per coincidir amb els components Heading i Text."
 
 #: prose/i18n.json#text15
 #, no-c-format
@@ -2304,7 +2387,8 @@ msgstr "Segon element"
 #, no-c-format
 msgctxt "docs.demos:prose:text17"
 msgid "A blockquote, styled from the Text content-quote type scale."
-msgstr "Una cita en bloc, estilitzada des de l'escala de tipus content-quote de Text."
+msgstr ""
+"Una cita en bloc, estilitzada des de l'escala de tipus content-quote de Text."
 
 #: prose/i18n.json#text18
 #, no-c-format
@@ -2561,8 +2645,14 @@ msgstr "64rem,"
 #: responsive/i18n.json#text9
 #, no-c-format
 msgctxt "docs.demos:responsive:text9"
-msgid "80rem. For a component that adapts to its own width instead of the viewport,\n      wrap it in a"
-msgstr "80rem. Per a un component que s'adapta a la seva pròpia amplada en lloc de la finestra de visualització,\n      embolcalla'l en un"
+msgid ""
+"80rem. For a component that adapts to its own width instead of the "
+"viewport,\n"
+"      wrap it in a"
+msgstr ""
+"80rem. Per a un component que s'adapta a la seva pròpia amplada en lloc de "
+"la finestra de visualització,\n"
+"      embolcalla'l en un"
 
 #: responsive/i18n.json#text10
 #, no-c-format
@@ -2580,13 +2670,17 @@ msgstr "consultes amb les mateixes amplades."
 #, no-c-format
 msgctxt "docs.demos:screen-reader-content:text1"
 msgid "This sentence is visible. After it sits screen-reader-only text."
-msgstr "Aquesta frase és visible. Després d'ella hi ha text només per a lectors de pantalla."
+msgstr ""
+"Aquesta frase és visible. Després d'ella hi ha text només per a lectors de "
+"pantalla."
 
 #: screen-reader-content/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:screen-reader-content:text2"
 msgid "This text is announced to assistive technology but hidden on screen."
-msgstr "Aquest text s'anuncia a la tecnologia d'assistència però està ocult a la pantalla."
+msgstr ""
+"Aquest text s'anuncia a la tecnologia d'assistència però està ocult a la "
+"pantalla."
 
 #: screen-reader-content/i18n.json#text3
 #, no-c-format
@@ -2699,14 +2793,24 @@ msgstr "Classes per costat a l'escala d'espaiat —"
 #: spacing/i18n.json#text3
 #, no-c-format
 msgctxt "docs.demos:spacing:text3"
-msgid "for margin/padding, an\n    optional logical side\n    ("
-msgstr "per marge/padding, una\n    banda lògica opcional\n    ("
+msgid ""
+"for margin/padding, an\n"
+"    optional logical side\n"
+"    ("
+msgstr ""
+"per marge/padding, una\n"
+"    banda lògica opcional\n"
+"    ("
 
 #: spacing/i18n.json#text4
 #, no-c-format
 msgctxt "docs.demos:spacing:text4"
-msgid "),\n    then a step ("
-msgstr "),\n    després un pas ("
+msgid ""
+"),\n"
+"    then a step ("
+msgstr ""
+"),\n"
+"    després un pas ("
 
 #: spacing/i18n.json#text5
 #, no-c-format
@@ -2717,14 +2821,22 @@ msgstr ", més"
 #: spacing/i18n.json#text6
 #, no-c-format
 msgctxt "docs.demos:spacing:text6"
-msgid "for\n    margin). Every class also has a fully long, word-spelled twin —"
-msgstr "per\n    marge). Cada classe també té un homòleg complet de paraula llarga —"
+msgid ""
+"for\n"
+"    margin). Every class also has a fully long, word-spelled twin —"
+msgstr ""
+"per\n"
+"    marge). Cada classe també té un homòleg complet de paraula llarga —"
 
 #: spacing/i18n.json#text7
 #, no-c-format
 msgctxt "docs.demos:spacing:text7"
-msgid "is the same\n    rule as"
-msgstr "és la mateixa\n    regla que"
+msgid ""
+"is the same\n"
+"    rule as"
+msgstr ""
+"és la mateixa\n"
+"    regla que"
 
 #: spacing/i18n.json#text8
 #, no-c-format
@@ -2739,7 +2851,7 @@ msgid "p-sm, mb-2xs"
 msgstr "p-sm, mb-2xs"
 
 #: spacing/i18n.json#text10
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:spacing:text10"
 msgid "p-lg"
 msgstr "p-lg"
@@ -2751,7 +2863,7 @@ msgid "Center with auto margins"
 msgstr "Centra amb marges automàtics"
 
 #: spacing/i18n.json#text12
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:spacing:text12"
 msgid "mx-auto"
 msgstr "mx-auto"
@@ -2769,7 +2881,7 @@ msgid "padding-small, margin-bottom-x-small"
 msgstr "padding-small, margin-bottom-x-small"
 
 #: spacing/i18n.json#text15
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:spacing:text15"
 msgid "padding-large"
 msgstr "padding-large"
@@ -3107,8 +3219,12 @@ msgstr "Què s'envia en aquest paquet?"
 #: toggle-details/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:toggle-details:text2"
-msgid "Class-based component styles, built from the Instructure tokens, plus a prose layer."
-msgstr "Estils de component basats en classes, construïts a partir dels tokens d'Instructure, més una capa de prosa."
+msgid ""
+"Class-based component styles, built from the Instructure tokens, plus a "
+"prose layer."
+msgstr ""
+"Estils de component basats en classes, construïts a partir dels tokens "
+"d'Instructure, més una capa de prosa."
 
 #: toggle-details/i18n.json#text3
 #, no-c-format
@@ -3155,8 +3271,14 @@ msgstr "Configuracions avançades"
 #: toggle-group/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:toggle-group:text2"
-msgid "These options are revealed when the group is expanded. The header row carries a chevron that\n        rotates on open, and the content sits below a divider."
-msgstr "Aquestes opcions es revelen quan el grup s'expandeix. La fila d'encapçalament porta una chevron que\n        gira en obrir-se, i el contingut queda sota un separador."
+msgid ""
+"These options are revealed when the group is expanded. The header row "
+"carries a chevron that\n"
+"        rotates on open, and the content sits below a divider."
+msgstr ""
+"Aquestes opcions es revelen quan el grup s'expandeix. La fila "
+"d'encapçalament porta una chevron que\n"
+"        gira en obrir-se, i el contingut queda sota un separador."
 
 #: toggle-group/i18n.json#text3
 #, no-c-format
@@ -3179,8 +3301,12 @@ msgstr "Utilitats de tokens"
 #: token-utilities/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:token-utilities:text2"
-msgid "Every \"one token, one property\" family gets a class named after the token — here"
-msgstr "Cada família \"un token, una propietat\" obté una classe anomenada pel token — aquí"
+msgid ""
+"Every \"one token, one property\" family gets a class named after the token "
+"— here"
+msgstr ""
+"Cada família \"un token, una propietat\" obté una classe anomenada pel token "
+"— aquí"
 
 #: token-utilities/i18n.json#text3
 #, no-c-format
@@ -3195,49 +3321,49 @@ msgid ", and"
 msgstr ", i"
 
 #: token-utilities/i18n.json#text5
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:token-utilities:text5"
 msgid "font-weight-body-base"
 msgstr "font-weight-body-base"
 
 #: token-utilities/i18n.json#text6
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:token-utilities:text6"
 msgid "font-weight-body-strong"
 msgstr "font-weight-body-strong"
 
 #: token-utilities/i18n.json#text7
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:token-utilities:text7"
 msgid "font-family-code"
 msgstr "font-family-code"
 
 #: token-utilities/i18n.json#text8
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:token-utilities:text8"
 msgid "radius-container-sm"
 msgstr "radius-container-sm"
 
 #: token-utilities/i18n.json#text9
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:token-utilities:text9"
 msgid "radius-container-lg"
 msgstr "radius-container-lg"
 
 #: token-utilities/i18n.json#text10
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:token-utilities:text10"
 msgid "elevation-resting"
 msgstr "elevation-resting"
 
 #: token-utilities/i18n.json#text11
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:token-utilities:text11"
 msgid "elevation-topmost"
 msgstr "elevation-topmost"
 
 #: token-utilities/i18n.json#text12
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:token-utilities:text12"
 msgid "opacity-disabled"
 msgstr "opacity-disabled"
@@ -3288,7 +3414,9 @@ msgstr "Filtres"
 #, no-c-format
 msgctxt "docs.demos:tray:text4"
 msgid "A tray slides in from the start edge and fills the viewport height."
-msgstr "Una safata llisca des del costat inicial i omple l'alçada de la finestra de visualització."
+msgstr ""
+"Una safata llisca des del costat inicial i omple l'alçada de la finestra de "
+"visualització."
 
 #: tray/i18n.json#text5
 #, no-c-format
@@ -3300,7 +3428,8 @@ msgstr "Detalls"
 #, no-c-format
 msgctxt "docs.demos:tray:text6"
 msgid "This one docks to the end edge. Press Esc or click away to dismiss."
-msgstr "Aquesta s'acobla al costat final. Pressiona Esc o fes clic fora per tancar."
+msgstr ""
+"Aquesta s'acobla al costat final. Pressiona Esc o fes clic fora per tancar."
 
 #: tree-browser/i18n.json#text1
 #, no-c-format
@@ -3341,8 +3470,12 @@ msgstr "Rubric.docx"
 #: truncate/i18n.json#text1
 #, no-c-format
 msgctxt "docs.demos:truncate:text1"
-msgid "This single line keeps going past the edge of its box, so it ends in an ellipsis."
-msgstr "Aquesta sola línia continua més enllà del límit de la seva caixa, així que acaba amb una el·lipsi."
+msgid ""
+"This single line keeps going past the edge of its box, so it ends in an "
+"ellipsis."
+msgstr ""
+"Aquesta sola línia continua més enllà del límit de la seva caixa, així que "
+"acaba amb una el·lipsi."
 
 #: truncate/i18n.json#text2
 #, no-c-format
@@ -3353,8 +3486,15 @@ msgstr "Estableix la"
 #: truncate/i18n.json#text3
 #, no-c-format
 msgctxt "docs.demos:truncate:text3"
-msgid "custom property to clamp to a fixed number of lines instead. This\n      paragraph runs long on purpose so the clamp has something to cut off after the second line."
-msgstr "propietat personalitzada per limitar a un nombre fix de línies en canvi. Aquest\n      paràgraf és llarg a propòsit perquè la limitació tingui alguna cosa a tallar després de la segona línia."
+msgid ""
+"custom property to clamp to a fixed number of lines instead. This\n"
+"      paragraph runs long on purpose so the clamp has something to cut off "
+"after the second line."
+msgstr ""
+"propietat personalitzada per limitar a un nombre fix de línies en canvi. "
+"Aquest\n"
+"      paràgraf és llarg a propòsit perquè la limitació tingui alguna cosa a "
+"tallar després de la segona línia."
 
 #: view/i18n.json#text1
 #, no-c-format
@@ -3371,8 +3511,17 @@ msgstr "és el Text d'InstUI"
 #: view/i18n.json#text3
 #, no-c-format
 msgctxt "docs.demos:view:text3"
-msgid ". Beyond the neutral box it carries\n    key-value modifiers for its own visual props, so it has the same devex as the other components —\n    no need to reach for utilities for the basics."
-msgstr ". A més de la caixa neutra porta\n    modificadors clau-valor per a les seves pròpies propietats visuals, així que té la mateixa experiència de desenvolupament (devex) que la resta de components —\n    no cal recórrer a utilitats per als conceptes bàsics."
+msgid ""
+". Beyond the neutral box it carries\n"
+"    key-value modifiers for its own visual props, so it has the same devex "
+"as the other components —\n"
+"    no need to reach for utilities for the basics."
+msgstr ""
+". A més de la caixa neutra porta\n"
+"    modificadors clau-valor per a les seves pròpies propietats visuals, així "
+"que té la mateixa experiència de desenvolupament (devex) que la resta de "
+"components —\n"
+"    no cal recórrer a utilitats per als conceptes bàsics."
 
 #: view/i18n.json#text4
 #, no-c-format
@@ -3381,19 +3530,19 @@ msgid "Native modifiers"
 msgstr "Modificadors natius"
 
 #: view/i18n.json#text5
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:view:text5"
 msgid "-background-primary -border-radius-large -shadow-resting"
 msgstr "-background-primary -border-radius-large -shadow-resting"
 
 #: view/i18n.json#text6
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:view:text6"
 msgid "-border-width-small -border-color-brand -border-radius-medium"
 msgstr "-border-width-small -border-color-brand -border-radius-medium"
 
 #: view/i18n.json#text7
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:view:text7"
 msgid "-background-brand"
 msgstr "-background-brand"
@@ -3408,7 +3557,8 @@ msgstr "Composa també utilitats"
 #, no-c-format
 msgctxt "docs.demos:view:text9"
 msgid "Spacing, color, and token utilities still layer onto a View — e.g."
-msgstr "Les utilitats d'espaiat, color i tokens encara s'apliquen a una View — p. ex."
+msgstr ""
+"Les utilitats d'espaiat, color i tokens encara s'apliquen a una View — p. ex."
 
 #: view/i18n.json#text10
 #, no-c-format

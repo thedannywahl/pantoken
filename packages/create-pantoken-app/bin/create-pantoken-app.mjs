@@ -7,7 +7,7 @@
 // native/non-npm design-token source (Swift, Android, Compose, ...) rather than scaffolding a
 // starter project. Routed here too so a native-target consumer never needs a separate install.
 import { run as runGenerate } from "@pantoken/cli";
-import { runScaffoldCli } from "@pantoken/scaffold/cli";
+import { buildCreateUsageCommand, runScaffoldCli } from "@pantoken/scaffold/cli";
 import pkg from "../package.json" with { type: "json" };
 
 const argv = process.argv.slice(2);
@@ -16,7 +16,7 @@ if (argv[0] === "generate") {
   await runGenerate(argv);
 } else {
   await runScaffoldCli(argv, {
-    usageCommand: "npm create pantoken-app --",
+    usageCommand: buildCreateUsageCommand(),
     version: pkg.version,
   });
 }

@@ -14,6 +14,7 @@ import tab from "@bomb.sh/tab/commander";
 import {
   detectLocale,
   createLocaleLookup,
+  validateLocaleTag,
   validateScaffoldPlatform,
   resolveScaffoldTarget,
   resolveScaffoldPlatform,
@@ -53,7 +54,11 @@ export function createAiCommand(options?: AiCommandOptions): Command {
       writeOut: (s) => process.stdout.write(s),
       writeErr: (s) => process.stderr.write(s),
     })
-    .option("-l, --lang <tag>", 'Override the auto-detected display language (e.g. "hu")');
+    .option(
+      "-l, --lang <tag>",
+      'Language for the CLI and the scaffolded project (e.g. "hu"); auto-detected by default',
+      validateLocaleTag,
+    );
 
   if (options?.version) {
     program.version(options.version, "-v, --version");
@@ -120,7 +125,7 @@ export function createAiCommand(options?: AiCommandOptions): Command {
       });
 
       // Scaffold the project
-      const scaffoldFiles = await scaffoldWithSpinner(platform, dir, scaffoldT);
+      const scaffoldFiles = await scaffoldWithSpinner(platform, dir, scaffoldT, { locale });
 
       // Install agent assets
       const assetFiles = installAgentAssets(opts.tool, dir);

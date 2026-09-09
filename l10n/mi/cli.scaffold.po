@@ -1,6 +1,13 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8"
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-09 17:06+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"Language: und\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -57,6 +64,30 @@ msgid "Start the dev server (if your template has one)"
 msgstr "Tīmatahia te tūmau whakawhanake (mēnā kei tō tauira)"
 
 #: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:getStartedHeading"
+msgid "Get started:"
+msgstr "Hipanga e whai ake:"
+
+#: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:installSpinnerStart"
+msgid "Installing dependencies..."
+msgstr "Tāuta ngā whakawhirinaki: {{command}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:installSpinnerStop"
+msgid "Dependencies installed."
+msgstr "Kua tāuta ngā whakawhirinaki."
+
+#: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:installSpinnerFailed"
+msgid "Failed to install dependencies:"
+msgstr "Tāuta ngā whakawhirinaki: {{command}}"
+
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:notesHeading"
 msgid "Note:"
@@ -72,7 +103,9 @@ msgstr "Whakatūpato:"
 #, no-c-format
 msgctxt "cli.scaffold:errorMissingPlatform"
 msgid "Missing required argument \"platform\". Expected one of: {{platforms}}"
-msgstr "Kua ngaro te kupu whakahau hiahia \"platform\". Me kotahi o ēnei: {{platforms}}"
+msgstr ""
+"Kua ngaro te kupu whakahau hiahia \"platform\". Me kotahi o ēnei: "
+"{{platforms}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -83,19 +116,26 @@ msgstr "Kua whakakorea."
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpPlatformDescription"
-msgid "Platform to scaffold ({{platforms}}; \"html\" is an alias for \"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
-msgstr "Te papanga hei hanga ({{platforms}}; ko \"html\" he ingoa taurima mō \"components\", ko \"theme-editor\" he ingoa taurima mō \"canvas-theme-editor\")"
+msgid ""
+"Platform to scaffold ({{platforms}}; \"html\" is an alias for "
+"\"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
+msgstr ""
+"Te papanga hei hanga ({{platforms}}; ko \"html\" he ingoa taurima mō "
+"\"components\", ko \"theme-editor\" he ingoa taurima mō \"canvas-theme-"
+"editor\")"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpDirDescription"
 msgid "Target directory (prompts interactively on a TTY if omitted)"
-msgstr "Kōpaki ūkaipō (ka uiui ā-āheinga i runga i te TTY mēnā kāore i whakakīa)"
+msgstr ""
+"Kōpaki ūkaipō (ka uiui ā-āheinga i runga i te TTY mēnā kāore i whakakīa)"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpYesDescription"
-msgid "Never prompt; error instead of prompting for a missing platform/directory"
+msgid ""
+"Never prompt; error instead of prompting for a missing platform/directory"
 msgstr "Kāore he pātai; ka hapa ina kore te papanga/kōpaki"
 
 #: packages/scaffold/src/i18n.json
@@ -125,14 +165,23 @@ msgstr "{{dev}}"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.notes"
-msgid "Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / JavaScript) so pantoken's classes are available on every page."
-msgstr "Tukuake te theme.css me te theme.js ki te Kaiwhakatika Kaupapa o Canvas (Advanced → CSS / JavaScript) kia wātea ai ngā kara o pantoken ki ia whārangi."
+msgid ""
+"Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / "
+"JavaScript) so pantoken's classes are available on every page."
+msgstr ""
+"Tukuake te theme.css me te theme.js ki te Kaiwhakatika Kaupapa o Canvas "
+"(Advanced → CSS / JavaScript) kia wātea ai ngā kara o pantoken ki ia "
+"whārangi."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.caveats"
-msgid "Canvas sanitizes pasted HTML server-side — always verify content pasted from the RCE preview in Canvas."
-msgstr "Ka ārai a Canvas i te HTML i whakapirihia i te taha tūmau — tirohia tonu te ihirangi i whakapirihia mai i te rōpū matapaki RCE i roto i Canvas."
+msgid ""
+"Canvas sanitizes pasted HTML server-side — always verify content pasted from "
+"the RCE preview in Canvas."
+msgstr ""
+"Ka ārai a Canvas i te HTML i whakapirihia i te taha tūmau — tirohia tonu te "
+"ihirangi i whakapirihia mai i te rōpū matapaki RCE i roto i Canvas."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -143,8 +192,11 @@ msgstr "Te tuhi tauira RCE"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.pageDescription"
-msgid "Author Canvas RCE page templates styled with pantoken, with a live preview."
-msgstr "Tuhia ngā tauira whārangi RCE o Canvas kua āta hoahoa ki te pantoken, me tētahi matakitaki ora."
+msgid ""
+"Author Canvas RCE page templates styled with pantoken, with a live preview."
+msgstr ""
+"Tuhia ngā tauira whārangi RCE o Canvas kua āta hoahoa ki te pantoken, me "
+"tētahi matakitaki ora."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -287,14 +339,31 @@ msgstr "Me pēhea te whakamahi i tēnei whārangi"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody1"
-msgid "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas."
-msgstr "Tīpakohia he tauira tīmatanga, whakatikahia pēnei i roto i te Kaiwhakatika Ihirangi Rawa o Canvas, katahi ka pāwhiri <strong>Copy HTML</strong> ka whakapiri te hua ki tētahi whārangi Canvas (hurihia ki te tirohanga kaiwhakatika HTML i te tuatahi). Ka ārai a Canvas i te HTML i whakapirihia i te taha tūmau — kāore tēnei matakitaki e kopa i tērā, nō reira me whakamātau tonu i te hua kua whakapirihia i roto i Canvas."
+msgid ""
+"Pick a starter template, edit it like you would in the Canvas Rich Content "
+"Editor, then click <strong>Copy HTML</strong> and paste the result into a "
+"Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted "
+"HTML server-side — this preview doesn't attempt to replicate that, so always "
+"verify the pasted result in Canvas."
+msgstr ""
+"Tīpakohia he tauira tīmatanga, whakatikahia pēnei i roto i te Kaiwhakatika "
+"Ihirangi Rawa o Canvas, katahi ka pāwhiri <strong>Copy HTML</strong> ka "
+"whakapiri te hua ki tētahi whārangi Canvas (hurihia ki te tirohanga "
+"kaiwhakatika HTML i te tuatahi). Ka ārai a Canvas i te HTML i whakapirihia i "
+"te taha tūmau — kāore tēnei matakitaki e kopa i tērā, nō reira me whakamātau "
+"tonu i te hua kua whakapirihia i roto i Canvas."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody2"
-msgid "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them."
-msgstr "Whakamahia te <strong>Edit theme</strong> ki te huri i te kaiwhakarato CDN, te kaupapa, te aratau, me te āta whakatika i ngā kōnae whakauru <code>theme.css</code>/<code>theme.js</code> i mua i te tikiake."
+msgid ""
+"Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, "
+"and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> "
+"before downloading them."
+msgstr ""
+"Whakamahia te <strong>Edit theme</strong> ki te huri i te kaiwhakarato CDN, "
+"te kaupapa, te aratau, me te āta whakatika i ngā kōnae whakauru "
+"<code>theme.css</code>/<code>theme.js</code> i mua i te tikiake."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -305,8 +374,12 @@ msgstr "Katia"
 #: packages/scaffold/src/i18n.json
 #, fuzzy, no-c-format
 msgctxt "cli.scaffold:nextStepsDependencies"
-msgid "2. Installing dependencies (npm install, pnpm install, yarn install or bun install)"
-msgstr "2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun install)"
+msgid ""
+"2. Installing dependencies (npm install, pnpm install, yarn install or bun "
+"install)"
+msgstr ""
+"2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun "
+"install)"
 
 #: packages/scaffold/src/i18n.json
 #, fuzzy, no-c-format
