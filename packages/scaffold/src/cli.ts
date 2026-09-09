@@ -17,7 +17,13 @@ import { readFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 
 export { SCAFFOLD_PLATFORMS, isScaffoldPlatform, resolveScaffoldPlatform } from "./index.ts";
-export { detectLocale, createLocaleLookup, type LocaleLookup } from "./locale.ts";
+export {
+  detectLocale,
+  createLocaleLookup,
+  validateLocaleTag,
+  SUPPORTED_LOCALES,
+  type LocaleLookup,
+} from "./locale.ts";
 export { scaffoldProject } from "./index.ts";
 export { MESSAGES } from "../generated/locales/index.ts";
 
@@ -27,7 +33,12 @@ import {
   resolveScaffoldPlatform,
 } from "./index.ts";
 import { scaffoldProject } from "./index.ts";
-import { detectLocale, createLocaleLookup, type LocaleLookup } from "./locale.ts";
+import {
+  detectLocale,
+  createLocaleLookup,
+  validateLocaleTag,
+  type LocaleLookup,
+} from "./locale.ts";
 import { MESSAGES } from "../generated/locales/index.ts";
 import { SCAFFOLD_METADATA } from "../generated/scaffold-metadata.ts";
 import { CDN_PROVIDERS } from "@pantoken/canvas-theme-editor";
@@ -221,14 +232,14 @@ export async function resolveScaffoldTarget(
  * @param platform - The scaffold platform
  * @param dir - The target directory
  * @param t - Localized string lookup
- * @param options - `theme`/`mode`/`cdn` forwarded to {@link scaffoldProject}
+ * @param options - `theme`/`mode`/`cdn`/`locale` forwarded to {@link scaffoldProject}
  * @returns The paths written by scaffoldProject
  */
 export async function scaffoldWithSpinner(
   platform: string,
   dir: string,
   t: LocaleLookup["t"],
-  options?: { theme?: ThemeVariant; mode?: ThemeMode; cdn?: string },
+  options?: { theme?: ThemeVariant; mode?: ThemeMode; cdn?: string; locale?: string },
 ): Promise<string[]> {
   const s = spinner();
   s.start(t("spinnerStart"));
@@ -481,7 +492,11 @@ export function createScaffoldCommand(options?: ScaffoldCommandOptions): Command
       "Never prompt; error instead of prompting for a missing platform/directory",
       false,
     )
-    .option("-l, --lang <tag>", 'Override the auto-detected display language (e.g. "hu")')
+    .option(
+      "-l, --lang <tag>",
+      'Language for the CLI and the scaffolded project (e.g. "hu"); auto-detected by default',
+      validateLocaleTag,
+    )
     .option(
       "--theme <name>",
       "Token theme: rebrand (default), canvas, canvasHighContrast",
@@ -519,6 +534,7 @@ export function createScaffoldCommand(options?: ScaffoldCommandOptions): Command
         theme: opts.theme as ThemeVariant | undefined,
         mode: opts.themeMode as ThemeMode | undefined,
         cdn: opts.cdn as string | undefined,
+        locale,
       });
       for (const path of written) {
         console.log(t("wroteFile", { path }));

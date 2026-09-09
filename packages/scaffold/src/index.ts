@@ -14,6 +14,7 @@ import { producePreset } from "bingo-stratum";
 import { buildTheme } from "@pantoken/canvas-theme-editor";
 import { SCAFFOLDS } from "../generated/scaffolds.ts";
 import { PRESET_LEDGER } from "../generated/preset-ledger.ts";
+import { localeDirection } from "./locale.ts";
 import { themeStylesheetImport, type ThemeMode, type ThemeVariant } from "./theme.ts";
 
 export {
@@ -101,16 +102,16 @@ function writePresetFiles(resolvedPlatform: string, dir: string, projectName: st
 function writeLegacyTemplateFiles(
   resolvedPlatform: string,
   dir: string,
-  projectName: string,
-  cssImport: string,
+  substitutions: Readonly<Record<string, string>>,
 ): string[] {
   const templates = SCAFFOLDS[resolvedPlatform as keyof typeof SCAFFOLDS];
   if (!templates) return [];
 
   return Object.entries(templates).map(([file, content]) => {
-    const substituted = content
-      .replaceAll("{{projectName}}", projectName)
-      .replaceAll("{{pantokenCssImport}}", cssImport);
+    const substituted = Object.entries(substitutions).reduce(
+      (text, [token, value]) => text.replaceAll(`{{${token}}}`, value),
+      content,
+    );
     const path = join(dir, file);
     writeScaffoldFile(path, substituted);
     return path;
@@ -150,7 +151,8 @@ function writeCanvasThemeEditorAssets(
  * @param options - `theme`/`mode` select which `@pantoken/css` token sheet scaffolded files
  *   import (default `"rebrand"`/`"light"`), applied across every platform. `cdn` selects the CDN
  *   provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);
- *   ignored by every other platform.
+ *   ignored by every other platform. `locale` (default `"en"`) sets the generated markup's
+ *   `lang`/`dir` attributes.
  * @returns The paths written.
  *
  * @example Scaffold a React starter
@@ -158,23 +160,29 @@ function writeCanvasThemeEditorAssets(
  * import { scaffoldProject } from "@pantoken/scaffold";
  *
  * scaffoldProject("react", "./my-app");
- * scaffoldProject("vue", "./my-vue-app", { theme: "canvas" });
+ * scaffoldProject("vue", "./my-vue-app", { theme: "canvas", locale: "hu" });
  * ```
  */
 export async function scaffoldProject(
   platform: string,
   dir = ".",
-  options?: { theme?: ThemeVariant; mode?: ThemeMode; cdn?: string },
+  options?: { theme?: ThemeVariant; mode?: ThemeMode; cdn?: string; locale?: string },
 ): Promise<string[]> {
   const resolvedPlatform = resolveScaffoldPlatform(platform);
   const projectName = dir === "." ? "pantoken-app" : (dir.split("/").pop() ?? "pantoken-app");
-  const cssImport = themeStylesheetImport(options?.theme, options?.mode);
+  const locale = options?.locale ?? "en";
+  const substitutions = {
+    projectName,
+    pantokenCssImport: themeStylesheetImport(options?.theme, options?.mode),
+    locale,
+    dir: localeDirection(locale),
+  };
 
   // Bingo presets with no blocks yet (or a failed render) produce no files — fall back to the
   // legacy scaffold template system so every platform still scaffolds something.
   const written = writePresetFiles(resolvedPlatform, dir, projectName);
   if (written.length === 0) {
-    written.push(...writeLegacyTemplateFiles(resolvedPlatform, dir, projectName, cssImport));
+    written.push(...writeLegacyTemplateFiles(resolvedPlatform, dir, substitutions));
   }
   written.push(...writeCanvasThemeEditorAssets(resolvedPlatform, dir, options));
 

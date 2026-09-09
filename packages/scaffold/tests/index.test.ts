@@ -76,6 +76,44 @@ test("defaults every scaffold's pantoken CSS import to the rebrand/light theme",
   expect(main).not.toContain("{{pantokenCssImport}}");
 });
 
+test("defaults generated markup to English, left-to-right", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-locale-default-"));
+  const target = join(dir, "my-app");
+  await scaffoldProject("react", target);
+  expect(readFileSync(join(target, "index.html"), "utf8")).toContain('<html lang="en" dir="ltr">');
+});
+
+test("locale drives the generated markup's lang attribute", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-locale-hu-"));
+  const target = join(dir, "my-app");
+  await scaffoldProject("react", target, { locale: "hu" });
+  const html = readFileSync(join(target, "index.html"), "utf8");
+  expect(html).toContain('<html lang="hu" dir="ltr">');
+  expect(html).not.toContain("{{locale}}");
+});
+
+test("a right-to-left locale sets dir=rtl on generated markup", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-locale-ar-"));
+  const target = join(dir, "my-app");
+  await scaffoldProject("components", target, { locale: "ar" });
+  expect(readFileSync(join(target, "index.html"), "utf8")).toContain('<html lang="ar" dir="rtl">');
+});
+
+test("every platform's entry markup carries a resolved lang/dir pair", async () => {
+  for (const platform of SCAFFOLD_PLATFORMS) {
+    const dir = mkdtempSync(join(tmpdir(), `pantoken-scaffold-lang-${platform}-`));
+    const written = await scaffoldProject(platform, join(dir, "app"), { locale: "he" });
+    const markup = written.filter(
+      (path) => path.endsWith("index.html") || path.endsWith("layout.tsx"),
+    );
+    for (const path of markup) {
+      const source = readFileSync(path, "utf8");
+      if (!source.includes("<html")) continue;
+      expect(source, `${platform} ${path}`).toContain('lang="he" dir="rtl"');
+    }
+  }
+});
+
 test("--theme/--theme-mode select which @pantoken/css sheet a scaffold imports", async () => {
   const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-theme-"));
   const canvasTarget = join(dir, "canvas-app");

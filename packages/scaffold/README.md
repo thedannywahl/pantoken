@@ -63,15 +63,22 @@ await scaffoldProject("react", "./my-app");
 | `-d, --dir <path>`    | Target directory (prompted interactively if omitted on a TTY)             |
 | `-y, --yes`           | Never prompt; error instead of prompting for a missing platform/directory |
 | `--no-install`        | Skip automatically installing dependencies after scaffolding              |
-| `-l, --lang <tag>`    | Override the auto-detected display language (e.g. `"hu"`)                 |
+| `-l, --lang <tag>`    | Language for the CLI and the scaffolded project (e.g. `"hu"`)             |
 | `--theme <name>`      | Token theme: `rebrand` (default), `canvas`, `canvasHighContrast`          |
 | `--theme-mode <mode>` | Rebrand token mode: `light` (default) or `adaptive`                       |
 | `-v, --version`       | Print the installed version                                               |
 | `-h, --help`          | Print usage                                                               |
 | `completion <shell>`  | Generate a bash/zsh/fish/PowerShell completion script                     |
 
-The CLI auto-detects its display language from `--lang` > `LC_ALL`/`LANG` > the runtime's `Intl`
-locale > English, falling back to English for any untranslated string.
+The CLI auto-detects its language from `--lang` > `LC_ALL`/`LANG` > the runtime's `Intl` locale >
+English, falling back to English for any untranslated string. Region subtags survive when pantoken
+supports them (`pt_BR.UTF-8` resolves to `pt-BR`) and narrow to the base language when it doesn't
+(`es_MX` resolves to `es`).
+
+The resolved locale also shapes the generated project: entry markup gets a matching `lang`/`dir`
+pair, so `--lang ar` scaffolds `<html lang="ar" dir="rtl">`. An explicit `--lang` must name a
+supported locale — it errors rather than silently falling back, since the value is written into the
+scaffolded files.
 
 ## Architecture
 

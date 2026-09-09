@@ -1,5 +1,11 @@
 import { expect, test } from "vite-plus/test";
-import { createLocaleLookup, detectLocale } from "../src/locale.ts";
+import {
+  createLocaleLookup,
+  detectLocale,
+  localeDirection,
+  resolveSupportedLocale,
+  validateLocaleTag,
+} from "../src/locale.ts";
 
 // ---------------------------------------------------------------------------
 // detectLocale
@@ -52,6 +58,48 @@ test("detectLocale uses the real Intl API when no env locale and no intl overrid
   const result = detectLocale({ env: {} });
   expect(typeof result).toBe("string");
   expect(result.length).toBeGreaterThan(0);
+});
+
+test("detectLocale keeps a region subtag the registry actually supports", () => {
+  expect(detectLocale({ env: { LANG: "pt_BR.UTF-8" } })).toBe("pt-BR");
+  expect(detectLocale({ env: {}, intl: () => "zh-Hant-TW" })).toBe("zh-Hant");
+});
+
+test("detectLocale narrows an unsupported region to its supported base language", () => {
+  expect(detectLocale({ env: { LANG: "es_MX.UTF-8" } })).toBe("es");
+});
+
+test("detectLocale ignores an unsupported ambient locale rather than emitting it", () => {
+  expect(detectLocale({ env: { LANG: "zz_ZZ.UTF-8" }, intl: () => "" })).toBe("en");
+});
+
+// ---------------------------------------------------------------------------
+// resolveSupportedLocale / validateLocaleTag / localeDirection
+// ---------------------------------------------------------------------------
+
+test("resolveSupportedLocale canonicalizes case and separators", () => {
+  expect(resolveSupportedLocale("PT_br")).toBe("pt-BR");
+  expect(resolveSupportedLocale("hu")).toBe("hu");
+});
+
+test("resolveSupportedLocale returns undefined for an unknown tag", () => {
+  expect(resolveSupportedLocale("zz")).toBeUndefined();
+});
+
+test("validateLocaleTag rejects an unsupported --lang instead of silently using English", () => {
+  expect(() => validateLocaleTag("zz")).toThrow(/is not supported/u);
+});
+
+test("validateLocaleTag returns the registry's canonical spelling", () => {
+  expect(validateLocaleTag("pt_br")).toBe("pt-BR");
+});
+
+test("localeDirection reports rtl for right-to-left locales and ltr otherwise", () => {
+  expect(localeDirection("ar")).toBe("rtl");
+  expect(localeDirection("he")).toBe("rtl");
+  expect(localeDirection("fa")).toBe("rtl");
+  expect(localeDirection("hu")).toBe("ltr");
+  expect(localeDirection("nonsense")).toBe("ltr");
 });
 
 // ---------------------------------------------------------------------------
