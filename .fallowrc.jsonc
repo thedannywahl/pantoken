@@ -71,9 +71,13 @@
     "tools/demo/runner/*.css",
     "plugins/pantoken/custom-components/src/**/*.css",
     "plugins/pantoken/layouts/src/**/*.css",
-    // Only imported from src/main.ts.tmpl, which fallow doesn't trace as a real entry point (the
-    // scaffold strips the .tmpl suffix at scaffold-time, same as the /src/main.ts convention below).
-    "packages/scaffold/templates/canvas-theme-editor/src/app.css",
+    // Every scaffold template's CSS is only ever imported from a sibling *.ts/*.tmpl entry that
+    // itself lives under templates/ — fallow doesn't trace those as real entry points (the scaffold
+    // strips the .tmpl suffix at scaffold-time, same as the /src/main.ts convention below), and the
+    // whole templates/ tree is inert source text until it's copied into a consumer's own project.
+    // Covers every current and future platform template (e.g. canvas-theme-editor's app.css,
+    // components' style.css) with one glob instead of listing each file as it's added.
+    "packages/scaffold/templates/**/*.css",
     // Only referenced through docs/.vitepress/config.ts's resolve.alias, built from a regex `find`
     // and a `fileURLToPath(new URL(...))` replacement fallow can't trace back to this path.
     "docs/.vitepress/theme/no-default-fonts.css"
