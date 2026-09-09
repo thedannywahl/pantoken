@@ -1,0 +1,1 @@
+materializing the pot files touches the timestamps and causes lots of noise for various tasks, can we change it so that if there's no new translation changes the timestamp doesn't get bumped?
