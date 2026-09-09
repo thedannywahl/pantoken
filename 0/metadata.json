@@ -1,0 +1,42 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M23FV778QQQFSXNBMNWGG6T2",
+  "session_id": "0c5ca432-3627-43d3-8037-33b5d36c011b",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-09T16:26:03.159078Z",
+  "branch": "components-app-improvements",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "l10n/en/scaffold.readme.po",
+    "l10n/hu/scaffold.readme.po",
+    "l10n/scaffold.readme.pot",
+    "packages/scaffold/scripts/sync-readme-locales.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "8dd01bb9ef5a",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-09T16:26:03.148815Z",
+    "agent_lines": 574,
+    "agent_removed": 0,
+    "human_added": 17981,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 18555,
+    "total_lines_changed": 18568,
+    "agent_percentage": 3.091339939681172,
+    "metric_version": 2
+  }
+}
