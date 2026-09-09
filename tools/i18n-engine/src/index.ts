@@ -45,6 +45,7 @@ export {
   serializePo,
   serializePot,
   unescapePoString,
+  writeCatalog,
   type PoEntry,
 } from "./po.ts";
 export {

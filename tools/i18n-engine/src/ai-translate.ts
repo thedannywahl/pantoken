@@ -10,7 +10,7 @@
  *
  * @module
  */
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import {
   buildBatchTranslationPrompt,
@@ -18,7 +18,7 @@ import {
   spawnPrompt,
 } from "@pantoken/translation-adapters";
 import type { ProviderConfig, ProviderProfileConfig } from "./config.ts";
-import { parsePo, serializePo, type PoEntry } from "./po.ts";
+import { parsePo, serializePo, writeCatalog, type PoEntry } from "./po.ts";
 
 /** True when an AI translation command is configured via `I18N_TRANSLATION_COMMAND`. */
 export function aiProviderConfigured(): boolean {
@@ -160,7 +160,7 @@ export async function fillUntranslatedEntries(
   };
 
   await runWithConcurrency(chunks, invocation.concurrency, translateChunk);
-  writeFileSync(poPath, serializePo(entries));
+  writeCatalog(poPath, serializePo(entries));
 }
 
 /** Run `task` over `items`, keeping at most `limit` calls in flight. */

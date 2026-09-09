@@ -8,6 +8,7 @@
  *
  * @module
  */
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { catalogUnitKey } from "./units.ts";
 
 /** One translatable entry. `msgstr` is `""` for an untranslated/obsolete-pending entry. */
@@ -256,4 +257,26 @@ export function serializePot(
 /** Serialize a full PO (translations + any preserved obsolete entries), non-header entries only. */
 export function serializePo(entries: readonly PoEntry[]): string {
   return [header(), ...entries.map(serializeEntry)].join("\n\n") + "\n";
+}
+
+const REVISION_DATE_LINE = /^"PO-Revision-Date:[^"]*"$/mu;
+
+/**
+ * Write a serialized catalog to `path`, but leave the file alone when `content` differs from it only
+ * by the `PO-Revision-Date` {@link header} stamps on every serialization. Re-extracting a catalog is
+ * idempotent, so an unconditional write would churn the timestamp — dirtying git and busting the
+ * build cache — on every run that changed nothing. Returns whether it wrote.
+ */
+export function writeCatalog(path: string, content: string): boolean {
+  if (existsSync(path)) {
+    const existing = readFileSync(path, "utf8");
+    const existingDate = REVISION_DATE_LINE.exec(existing)?.[0];
+    if (
+      existingDate !== undefined &&
+      content.replace(REVISION_DATE_LINE, existingDate) === existing
+    )
+      return false;
+  }
+  writeFileSync(path, content);
+  return true;
 }

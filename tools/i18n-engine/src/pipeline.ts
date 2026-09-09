@@ -23,7 +23,7 @@ import {
 } from "./extract.ts";
 import { extractMessagesSpace, type MessageUnit } from "./extract-messages.ts";
 import { mergePoWithTemplate } from "./gettext.ts";
-import { parsePo, serializePot, type PoEntry } from "./po.ts";
+import { parsePo, serializePot, writeCatalog, type PoEntry } from "./po.ts";
 import { refreshCoverageReports } from "./coverage.ts";
 import { fillUntranslatedEntries, type FillOptions } from "./ai-translate.ts";
 import { localesForSpace, resolveLocaleStatus } from "./locales.ts";
@@ -158,7 +158,7 @@ export function runExtractContent(
   const units = contentSpaceUnits(config, configDir, spaceId);
   const potPath = join(configDir, potPathForSpace(config, spaceId));
   mkdirSync(dirname(potPath), { recursive: true });
-  writeFileSync(potPath, serializePot(units, config.poOptions.defaultFlags));
+  writeCatalog(potPath, serializePot(units, config.poOptions.defaultFlags));
   refreshCoverageReports(join(configDir, "i18n.config.json"));
   return { space: spaceId, unitCount: units.length, potPath };
 }
@@ -382,7 +382,7 @@ export function runExtractMessages(
   const units = extractMessagesSpace(join(configDir, space.source), spaceId);
   const potPath = join(configDir, potPathForSpace(config, spaceId));
   mkdirSync(dirname(potPath), { recursive: true });
-  writeFileSync(
+  writeCatalog(
     potPath,
     serializePot(messagesPotUnits(units, space), config.poOptions.defaultFlags),
   );
