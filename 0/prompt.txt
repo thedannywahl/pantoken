@@ -1,0 +1,2 @@
+`bunx create-pantoken-app@latest`
+creates a package.json and a pnpm-workspace.yaml and the readme/next steps are `npm run dev`
