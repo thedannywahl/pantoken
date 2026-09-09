@@ -1,0 +1,60 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M23J008FJ8VQ53QBTF50CFD8",
+  "session_id": "61cf4ce1-2a38-4777-b8b5-d0680ddc39ec",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-09T17:03:37.246677Z",
+  "branch": "components-app-improvements",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "tools/i18n-engine/src/pipeline.ts"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-haiku-4-5-20251001",
+  "turn_id": "f219d318cd70",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 10,
+    "cache_creation_tokens": 6868,
+    "cache_read_tokens": 23472,
+    "output_tokens": 2748,
+    "api_call_count": 1
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-09T17:03:37.241244Z",
+    "agent_lines": 17,
+    "agent_removed": 9,
+    "human_added": 36,
+    "human_modified": 10,
+    "human_removed": 0,
+    "total_committed": 55,
+    "total_lines_changed": 73,
+    "agent_percentage": 35.61643835616438,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 189,
+      "user_lines_removed": 45,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "docs/scripts/api-translation.ts": 7,
+        "tools/i18n-engine/src/ai-translate.ts": 55,
+        "tools/i18n-engine/src/pipeline.ts": 10,
+        "tools/translation-adapters/src/index.ts": 10,
+        "tools/translation-adapters/src/markdown.ts": 107
+      },
+      "user_removed_per_file": {
+        "docs/scripts/api-translation.ts": 36,
+        "tools/i18n-engine/src/ai-translate.ts": 7,
+        "tools/i18n-engine/src/pipeline.ts": 2
+      }
+    }
+  ]
+}
