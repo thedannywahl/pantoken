@@ -1,12 +1,23 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8"
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-09 17:10+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"Language: und\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:description"
-msgid "Instructure design tokens and icons, reshaped for every platform and framework."
-msgstr "Instructure design tokenat ja ikonavuođđa, čažžošuvvon buohkat almmuheapmiin ja framworkaiguin."
+msgid ""
+"Instructure design tokens and icons, reshaped for every platform and "
+"framework."
+msgstr ""
+"Instructure design tokenat ja ikonavuođđa, čažžošuvvon buohkat almmuheapmiin "
+"ja framworkaiguin."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -239,8 +250,12 @@ msgstr "Oaidnán basses reset-meahttun"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfo"
-msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
-msgstr "Opt-in globála reset: box-sizing, beaivvi vuođa, basses textavuođad ja fontta, color-scheme ja linka dihtegeaset."
+msgid ""
+"The opt-in global reset: box-sizing, the page surface, base text colour and "
+"font, color-scheme, and link defaults."
+msgstr ""
+"Opt-in globála reset: box-sizing, beaivvi vuođa, basses textavuođad ja "
+"fontta, color-scheme ja linka dihtegeaset."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -257,8 +272,12 @@ msgstr "Dušše utilitehta klassat"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
-msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
-msgstr "Opt-in layer nuppiin: View-primitiiva, girjjálaš spávnja token-skálas, ja semantalaš fargu dohkket."
+msgid ""
+"An opt-in layer of cross-cutting classes: a View primitive, spacing on the "
+"token scale, and semantic color overrides."
+msgstr ""
+"Opt-in layer nuppiin: View-primitiiva, girjjálaš spávnja token-skálas, ja "
+"semantalaš fargu dohkket."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -281,13 +300,18 @@ msgstr "Válgget okta dahje muhto komponentta 'suvvat URL vuođđaid' ."
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.fontsNote"
-msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
-msgstr "Fonteat báhkad erenoamáš — addat <link> @pantoken/components/fonts.css gaskavuođas ge leat váilit."
+msgid ""
+"Fonts load separately — add a <link> to @pantoken/components/fonts.css when "
+"you need them."
+msgstr ""
+"Fonteat báhkad erenoamáš — addat <link> @pantoken/components/fonts.css "
+"gaskavuođas ge leat váilit."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.iconsNote"
-msgid "component-icons.css is included because a selected component uses icons."
+msgid ""
+"component-icons.css is included because a selected component uses icons."
 msgstr "component-icons.css lea vuođđud go valjeda komponentta dahká ikonaid."
 
 #: docs/.vitepress/i18n.json
@@ -323,8 +347,12 @@ msgstr "Oaidne animasjona"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
-msgid "\"Set up pantoken (github.com/thedannywahl/pantoken) in this project using create.pantoken.app/SKILL.md.\""
-msgstr "\"Gevvi pantoken (github.com/thedannywahl/pantoken) dan projektas use create.pantoken.app/SKILL.md.\""
+msgid ""
+"\"Set up pantoken (github.com/thedannywahl/pantoken) in this project using "
+"create.pantoken.app/SKILL.md.\""
+msgstr ""
+"\"Gevvi pantoken (github.com/thedannywahl/pantoken) dan projektas use "
+"create.pantoken.app/SKILL.md.\""
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -388,6 +416,12 @@ msgstr "Oiŋŋas válddán"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
+msgctxt "docs.chrome:chrome.agentShellPrompt"
+msgid "What would you like to build today?"
+msgstr "Mii don háliidit ráhkadit dán beaivvi?"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
 msgctxt "docs.chrome:chrome.notFound.code"
 msgid "404"
 msgstr "404"
@@ -401,8 +435,12 @@ msgstr "SIHU LEAIKKA"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.quote"
-msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
-msgstr "Muhto jos leat čuovvut dihtii, ja gávnnat čilgehit, de sáhttá leat gaskkalit ahte don boahtit nu buresvuođas."
+msgid ""
+"But if you don't change your direction, and if you keep looking, you may end "
+"up where you are heading."
+msgstr ""
+"Muhto jos leat čuovvut dihtii, ja gávnnat čilgehit, de sáhttá leat gaskkalit "
+"ahte don boahtit nu buresvuođas."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

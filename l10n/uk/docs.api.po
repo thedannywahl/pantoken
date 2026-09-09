@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 03:34+0000\n"
+"PO-Revision-Date: 2026-09-09 17:45+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29399,3 +29399,7 @@ msgstr "Об'єкт [LocaleBundle](#) або BCP47-тег (`\"hu\"`, `\"ar\"`, �
 msgctxt "docs.api:prose"
 msgid "Defines the uniform plugin contract ([PantokenPlugin](interfaces/PantokenPlugin.md)) and adapts the resolved token IR for\nthe native lineage ([toStyleDictionary](functions/toStyleDictionary.md)). The upstream-resolving transform (`buildTokens`,\nwhich needs the GitHub-only `@instructure/instructure-design-tokens`) lives on the separate\n`@pantoken/core/build` entry so this main entry stays free of that exotic dependency."
 msgstr "Визначає уніфікований контракт плагіна ([PantokenPlugin](interfaces/PantokenPlugin.md))) і адаптує розв'язаний IR токенів для\nнативного походження ([toStyleDictionary](functions/toStyleDictionary.md))). Трансформ для вирішення upstream (`buildTokens`,\nякий потребує GitHub-only `@instructure/instructure-design-tokens`)) знаходиться в окремому\n`@pantoken/core/build` записі, тож цей основний запис залишається вільним від тієї екзотичної залежності."
+
+msgctxt "docs.api:prose"
+msgid "`theme`/`mode` select which `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), applied across every platform. `cdn` selects the CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);\n  ignored by every other platform. `locale` (default `\"en\"`) sets the generated markup's\n  `lang`/`dir` attributes."
+msgstr "`theme`/`mode` виберіть, які `@pantoken/css` файли, згенеровані шаблоном token sheet\n  імпортувати (за замовчуванням `\"rebrand\"`/`\"light\"`)), застосовуються на всіх платформах. `cdn` вибирає провайдера CDN\n  `canvas-theme-editor`'s `theme.css`/`theme.js` для яких будуються файли (за замовчуванням jsDelivr);\n  ігнорується всіма іншими платформами). `locale` (за замовчуванням `\"en\"`)) встановлює \n  `lang`/`dir` атрибути згенерованої розмітки."

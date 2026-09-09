@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 03:19+0000\n"
+"PO-Revision-Date: 2026-09-09 17:13+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29399,3 +29399,7 @@ msgstr "Een [LocaleBundle](#)-object, of een BCP47-tag (`\"hu\"`, `\"ar\"`, …)
 msgctxt "docs.api:prose"
 msgid "Defines the uniform plugin contract ([PantokenPlugin](interfaces/PantokenPlugin.md)) and adapts the resolved token IR for\nthe native lineage ([toStyleDictionary](functions/toStyleDictionary.md)). The upstream-resolving transform (`buildTokens`,\nwhich needs the GitHub-only `@instructure/instructure-design-tokens`) lives on the separate\n`@pantoken/core/build` entry so this main entry stays free of that exotic dependency."
 msgstr "Definieert het uniforme plugincontract ([PantokenPlugin](interfaces/PantokenPlugin.md))) en past de opgeloste token IR aan voor\nde native lineage ([toStyleDictionary](functions/toStyleDictionary.md))). De upstream-resolving transform (`buildTokens`,\ndie de GitHub-only `@instructure/instructure-design-tokens`) nodig heeft) woont op de aparte\n`@pantoken/core/build`-vermelding zodat deze hoofdvermelding vrij blijft van die exotische afhankelijkheid."
+
+msgctxt "docs.api:prose"
+msgid "`theme`/`mode` select which `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), applied across every platform. `cdn` selects the CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);\n  ignored by every other platform. `locale` (default `\"en\"`) sets the generated markup's\n  `lang`/`dir` attributes."
+msgstr "`theme`/`mode` selecteer welke `@pantoken/css` token sheet gescaffoldde bestanden\n  importeren (standaard `\"rebrand\"`/`\"light\"`), toegepast op elk platform. `cdn` selecteert de CDN\n  provider `canvas-theme-editor` van `theme.css`/`theme.js` zijn gebouwd voor (standaard jsDelivr);\n  genegeerd door elk ander platform. `locale` (standaard `\"en\"`) stelt de gegenereerde markup\n  `lang`/`dir` attributen."

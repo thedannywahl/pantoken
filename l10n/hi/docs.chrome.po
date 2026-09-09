@@ -1,12 +1,23 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8"
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-09 17:07+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"Language: und\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:description"
-msgid "Instructure design tokens and icons, reshaped for every platform and framework."
-msgstr "Instructure डिज़ाइन टोकन और आइकन, प्रत्येक प्लेटफ़ॉर्म और फ़्रेमवर्क के लिए पुन:आकार दिए गए।"
+msgid ""
+"Instructure design tokens and icons, reshaped for every platform and "
+"framework."
+msgstr ""
+"Instructure डिज़ाइन टोकन और आइकन, प्रत्येक प्लेटफ़ॉर्म और फ़्रेमवर्क के लिए पुन:आकार दिए "
+"गए।"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -239,8 +250,12 @@ msgstr "बेस रिसेट के बारे में"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfo"
-msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
-msgstr "ऑप्ट-इन ग्लोबल रिसेट: box-sizing, पेज सतह, मूल टेक्स्ट रंग और फ़ॉन्ट, color-scheme, और लिंक डिफॉल्ट्स।"
+msgid ""
+"The opt-in global reset: box-sizing, the page surface, base text colour and "
+"font, color-scheme, and link defaults."
+msgstr ""
+"ऑप्ट-इन ग्लोबल रिसेट: box-sizing, पेज सतह, मूल टेक्स्ट रंग और फ़ॉन्ट, color-scheme, और "
+"लिंक डिफॉल्ट्स।"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -257,8 +272,12 @@ msgstr "यूटिलिटी क्लासेस के बारे म�
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
-msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
-msgstr "एक ऑप्ट-इन पार-कटिंग क्लासेस परत: एक View प्रिमिटिव, टोकन स्केल पर स्पेसिंग, और सेमैटिक कलर ओवरराइड्स।"
+msgid ""
+"An opt-in layer of cross-cutting classes: a View primitive, spacing on the "
+"token scale, and semantic color overrides."
+msgstr ""
+"एक ऑप्ट-इन पार-कटिंग क्लासेस परत: एक View प्रिमिटिव, टोकन स्केल पर स्पेसिंग, और सेमैटिक "
+"कलर ओवरराइड्स।"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -281,14 +300,21 @@ msgstr "URL बनाने के लिए एक या अधिक कॉ�
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.fontsNote"
-msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
-msgstr "फ़ॉन्ट अलग से लोड होते हैं — जब आवश्यकता हो तो @pantoken/components/fonts.css में एक <link> जोड़ें।"
+msgid ""
+"Fonts load separately — add a <link> to @pantoken/components/fonts.css when "
+"you need them."
+msgstr ""
+"फ़ॉन्ट अलग से लोड होते हैं — जब आवश्यकता हो तो @pantoken/components/fonts.css में एक "
+"<link> जोड़ें।"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.iconsNote"
-msgid "component-icons.css is included because a selected component uses icons."
-msgstr "component-icons.css शामिल है क्योंकि किसी चयनित कॉम्पोनेंट द्वारा आइकनों का उपयोग किया गया है।"
+msgid ""
+"component-icons.css is included because a selected component uses icons."
+msgstr ""
+"component-icons.css शामिल है क्योंकि किसी चयनित कॉम्पोनेंट द्वारा आइकनों का उपयोग "
+"किया गया है।"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -323,8 +349,12 @@ msgstr "एनिमेशन फिर से शुरू करें"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
-msgid "\"Set up pantoken (github.com/thedannywahl/pantoken) in this project using create.pantoken.app/SKILL.md.\""
-msgstr "\"इस परियोजना में pantoken (github.com/thedannywahl/pantoken) सेट अप करें create.pantoken.app/SKILL.md का उपयोग करके.\""
+msgid ""
+"\"Set up pantoken (github.com/thedannywahl/pantoken) in this project using "
+"create.pantoken.app/SKILL.md.\""
+msgstr ""
+"\"इस परियोजना में pantoken (github.com/thedannywahl/pantoken) सेट अप करें "
+"create.pantoken.app/SKILL.md का उपयोग करके.\""
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -388,6 +418,12 @@ msgstr "अंतिम अपडेट"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
+msgctxt "docs.chrome:chrome.agentShellPrompt"
+msgid "What would you like to build today?"
+msgstr "आज आप क्या बनाना चाहेंगे?"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
 msgctxt "docs.chrome:chrome.notFound.code"
 msgid "404"
 msgstr "404"
@@ -401,8 +437,12 @@ msgstr "पृष्ठ नहीं मिला"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.quote"
-msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
-msgstr "लेकिन अगर आप अपना मार्ग नहीं बदलते हैं, और अगर आप देखते रहते हैं, तो आप संभवतः वहीं पहुँच जाएंगे जहाँ आप जा रहे हैं।"
+msgid ""
+"But if you don't change your direction, and if you keep looking, you may end "
+"up where you are heading."
+msgstr ""
+"लेकिन अगर आप अपना मार्ग नहीं बदलते हैं, और अगर आप देखते रहते हैं, तो आप संभवतः वहीं पहुँच "
+"जाएंगे जहाँ आप जा रहे हैं।"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

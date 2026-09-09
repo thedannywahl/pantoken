@@ -1,6 +1,13 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8"
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-09 17:04+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"Language: und\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -57,6 +64,30 @@ msgid "Start the dev server (if your template has one)"
 msgstr "Käynnistä kehityspalvelin (jos mallissasi on)"
 
 #: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:getStartedHeading"
+msgid "Get started:"
+msgstr "Seuraavat vaiheet:"
+
+#: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:installSpinnerStart"
+msgid "Installing dependencies..."
+msgstr "Asenna riippuvuudet: {{command}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:installSpinnerStop"
+msgid "Dependencies installed."
+msgstr "Riippuvuudet asennettu."
+
+#: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:installSpinnerFailed"
+msgid "Failed to install dependencies:"
+msgstr "Asenna riippuvuudet: {{command}}"
+
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:notesHeading"
 msgid "Note:"
@@ -72,7 +103,9 @@ msgstr "Varoitus:"
 #, no-c-format
 msgctxt "cli.scaffold:errorMissingPlatform"
 msgid "Missing required argument \"platform\". Expected one of: {{platforms}}"
-msgstr "Puuttuu vaadittu argumentti \"platform\". Odotettu yksi seuraavista: {{platforms}}"
+msgstr ""
+"Puuttuu vaadittu argumentti \"platform\". Odotettu yksi seuraavista: "
+"{{platforms}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -83,8 +116,13 @@ msgstr "Peruutettu."
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpPlatformDescription"
-msgid "Platform to scaffold ({{platforms}}; \"html\" is an alias for \"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
-msgstr "Scaffoldattava alusta ({{platforms}}; \"html\" on alias \"components\"-vaihtoehdolle, \"theme-editor\" on alias \"canvas-theme-editor\"-vaihtoehdolle)"
+msgid ""
+"Platform to scaffold ({{platforms}}; \"html\" is an alias for "
+"\"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
+msgstr ""
+"Scaffoldattava alusta ({{platforms}}; \"html\" on alias \"components\"-"
+"vaihtoehdolle, \"theme-editor\" on alias \"canvas-theme-editor\"-"
+"vaihtoehdolle)"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -95,8 +133,10 @@ msgstr "Kohdekansio (kysytään interaktiivisesti TTY:ssä, jos jätetty pois)"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpYesDescription"
-msgid "Never prompt; error instead of prompting for a missing platform/directory"
-msgstr "Älä koskaan kysy; virhe, jos puuttuva platform- tai directory-argumentti"
+msgid ""
+"Never prompt; error instead of prompting for a missing platform/directory"
+msgstr ""
+"Älä koskaan kysy; virhe, jos puuttuva platform- tai directory-argumentti"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -125,14 +165,22 @@ msgstr "{{dev}}"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.notes"
-msgid "Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / JavaScript) so pantoken's classes are available on every page."
-msgstr "Lataa theme.css ja theme.js Canvasin Theme Editoriin (Advanced → CSS / JavaScript), jotta pantokenin luokat ovat käytettävissä kaikilla sivuilla."
+msgid ""
+"Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / "
+"JavaScript) so pantoken's classes are available on every page."
+msgstr ""
+"Lataa theme.css ja theme.js Canvasin Theme Editoriin (Advanced → CSS / "
+"JavaScript), jotta pantokenin luokat ovat käytettävissä kaikilla sivuilla."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.caveats"
-msgid "Canvas sanitizes pasted HTML server-side — always verify content pasted from the RCE preview in Canvas."
-msgstr "Canvas puhdistaa liitetyn HTML:n palvelinpuolella — tarkista aina Canvasissa, että RCE-esikatselusta liitetty sisältö toimii oikein."
+msgid ""
+"Canvas sanitizes pasted HTML server-side — always verify content pasted from "
+"the RCE preview in Canvas."
+msgstr ""
+"Canvas puhdistaa liitetyn HTML:n palvelinpuolella — tarkista aina "
+"Canvasissa, että RCE-esikatselusta liitetty sisältö toimii oikein."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -143,8 +191,11 @@ msgstr "RCE-mallien luominen"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.pageDescription"
-msgid "Author Canvas RCE page templates styled with pantoken, with a live preview."
-msgstr "Laadi Canvas RCE -sivupohjia, jotka on tyylitelty pantokenilla, ja esikatsele muutoksia reaaliajassa."
+msgid ""
+"Author Canvas RCE page templates styled with pantoken, with a live preview."
+msgstr ""
+"Laadi Canvas RCE -sivupohjia, jotka on tyylitelty pantokenilla, ja "
+"esikatsele muutoksia reaaliajassa."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -287,14 +338,30 @@ msgstr "Kuinka tätä sivua käytetään"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody1"
-msgid "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas."
-msgstr "Valitse aloituspohja, muokkaa sitä kuten Canvas Rich Content Editorissa, napsauta sitten <strong>Copy HTML</strong> ja liitä tulos Canvas-sivulle (siirry ensin HTML-muokkaustilaan). Canvas puhdistaa liitetyn HTML:n palvelinpuolella — tämä esikatselu ei yritä jäljitellä sitä, joten varmista aina liitetty lopputulos Canvasissa."
+msgid ""
+"Pick a starter template, edit it like you would in the Canvas Rich Content "
+"Editor, then click <strong>Copy HTML</strong> and paste the result into a "
+"Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted "
+"HTML server-side — this preview doesn't attempt to replicate that, so always "
+"verify the pasted result in Canvas."
+msgstr ""
+"Valitse aloituspohja, muokkaa sitä kuten Canvas Rich Content Editorissa, "
+"napsauta sitten <strong>Copy HTML</strong> ja liitä tulos Canvas-sivulle "
+"(siirry ensin HTML-muokkaustilaan). Canvas puhdistaa liitetyn HTML:n "
+"palvelinpuolella — tämä esikatselu ei yritä jäljitellä sitä, joten varmista "
+"aina liitetty lopputulos Canvasissa."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody2"
-msgid "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them."
-msgstr "Käytä <strong>Edit theme</strong> -toimintoa muuttaaksesi CDN-palvelua, teemaa tai tilaa sekä muokataksesi generoituja <code>theme.css</code>/<code>theme.js</code>-tiedostoja ennen latausta."
+msgid ""
+"Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, "
+"and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> "
+"before downloading them."
+msgstr ""
+"Käytä <strong>Edit theme</strong> -toimintoa muuttaaksesi CDN-palvelua, "
+"teemaa tai tilaa sekä muokataksesi generoituja <code>theme.css</code>/"
+"<code>theme.js</code>-tiedostoja ennen latausta."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -305,8 +372,12 @@ msgstr "Sulje"
 #: packages/scaffold/src/i18n.json
 #, fuzzy, no-c-format
 msgctxt "cli.scaffold:nextStepsDependencies"
-msgid "2. Installing dependencies (npm install, pnpm install, yarn install or bun install)"
-msgstr "2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun install)"
+msgid ""
+"2. Installing dependencies (npm install, pnpm install, yarn install or bun "
+"install)"
+msgstr ""
+"2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun "
+"install)"
 
 #: packages/scaffold/src/i18n.json
 #, fuzzy, no-c-format

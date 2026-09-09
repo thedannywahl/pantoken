@@ -1,6 +1,5 @@
 msgid ""
-msgstr ""
-"Content-Type: text/plain; charset=UTF-8"
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
 #: alert/i18n.json#text1
 #, no-c-format
@@ -287,8 +286,12 @@ msgstr "Այս արդյունքը արտապատկերվում է՝"
 #: base/i18n.json#text3
 #, no-c-format
 msgctxt "docs.demos:base:text3"
-msgid "loaded first. The page surface, base text color\n    and font, and"
-msgstr "առաջին բեռնելով։ Էջի մակերեսը, հիմնական տեքստի գույնը\n    և տառատեսակը, և"
+msgid ""
+"loaded first. The page surface, base text color\n"
+"    and font, and"
+msgstr ""
+"առաջին բեռնելով։ Էջի մակերեսը, հիմնական տեքստի գույնը\n"
+"    և տառատեսակը, և"
 
 #: base/i18n.json#text4
 #, no-c-format
@@ -311,17 +314,21 @@ msgstr "միջին հղում"
 #: base/i18n.json#text7
 #, no-c-format
 msgctxt "docs.demos:base:text7"
-msgid ", and everything sits on the token page surface. Switch the theme (or\n    light/dark) and the surface, text, and link all follow."
-msgstr ", և ամեն ինչ նստած է տոկենի էջի մակերեսի վրա։ Փոխանցեք թեման (կամ\n    լույս/մութ) և մակերեսը, տեքստը ու հղումը հետևում են։"
+msgid ""
+", and everything sits on the token page surface. Switch the theme (or\n"
+"    light/dark) and the surface, text, and link all follow."
+msgstr ""
+", և ամեն ինչ նստած է տոկենի էջի մակերեսի վրա։ Փոխանցեք թեման (կամ\n"
+"    լույս/մութ) և մակերեսը, տեքստը ու հղումը հետևում են։"
 
 #: base/i18n.json#text8
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:base:text8"
 msgid "background-page"
 msgstr "background-page"
 
 #: base/i18n.json#text9
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:base:text9"
 msgid "background-base"
 msgstr "background-base"
@@ -618,7 +625,9 @@ msgstr "Ինչն է նոր"
 #, no-c-format
 msgctxt "docs.demos:byline:text2"
 msgid "The figure can be any leading visual — an icon, an avatar, or an image."
-msgstr "Ընդունելի պատկերակը կարող է լինել ցանկացած առաջնորդող գրավիչ՝ պատկերակ, ավատար կամ պատկեր։"
+msgstr ""
+"Ընդունելի պատկերակը կարող է լինել ցանկացած առաջնորդող գրավիչ՝ պատկերակ, "
+"ավատար կամ պատկեր։"
 
 #: byline/i18n.json#text3
 #, no-c-format
@@ -635,8 +644,14 @@ msgstr "Հետ"
 #: byline/i18n.json#text5
 #, no-c-format
 msgctxt "docs.demos:byline:text5"
-msgid "the figure pins to the top instead of centering,\n          which reads better when the description runs to several lines like this one does."
-msgstr "տվյալ պատկերակը կպցվում է վեր՝ ոչ թե կենտրոնացվում,\n          ինչը ավելի ընթեռնելի է երբ նկարագրությունը մեկից ավելի տողեր է, ինչպես այս օրինակում։"
+msgid ""
+"the figure pins to the top instead of centering,\n"
+"          which reads better when the description runs to several lines like "
+"this one does."
+msgstr ""
+"տվյալ պատկերակը կպցվում է վեր՝ ոչ թե կենտրոնացվում,\n"
+"          ինչը ավելի ընթեռնելի է երբ նկարագրությունը մեկից ավելի տողեր է, "
+"ինչպես այս օրինակում։"
 
 #: byline/i18n.json#text6
 #, no-c-format
@@ -779,29 +794,34 @@ msgstr "մակերեսը, և"
 #: color-utilities/i18n.json#text4
 #, no-c-format
 msgctxt "docs.demos:color-utilities:text4"
-msgid "a border — each from a semantic color token, so overrides stay\n    on-palette and follow the theme."
-msgstr "սահմանի — ամեն մեկը սեմանտիկ գույնի տոկենից է, այնպես որ վերօրինակումը մնում է\n    պալետայի ներսում և հետևում թեմային։"
+msgid ""
+"a border — each from a semantic color token, so overrides stay\n"
+"    on-palette and follow the theme."
+msgstr ""
+"սահմանի — ամեն մեկը սեմանտիկ գույնի տոկենից է, այնպես որ վերօրինակումը մնում "
+"է\n"
+"    պալետայի ներսում և հետևում թեմային։"
 
 #: color-utilities/i18n.json#text5
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:color-utilities:text5"
 msgid "text-success"
 msgstr "text-success"
 
 #: color-utilities/i18n.json#text6
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:color-utilities:text6"
 msgid "text-warning"
 msgstr "text-warning"
 
 #: color-utilities/i18n.json#text7
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:color-utilities:text7"
 msgid "text-error"
 msgstr "text-error"
 
 #: color-utilities/i18n.json#text8
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:color-utilities:text8"
 msgid "text-info"
 msgstr "text-info"
@@ -819,25 +839,25 @@ msgid "Accent surfaces pair with"
 msgstr "Ակցենտ մակերեսները միասին են"
 
 #: color-utilities/i18n.json#text11
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:color-utilities:text11"
 msgid "bg-accent-green"
 msgstr "bg-accent-green"
 
 #: color-utilities/i18n.json#text12
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:color-utilities:text12"
 msgid "bg-accent-plum"
 msgstr "bg-accent-plum"
 
 #: color-utilities/i18n.json#text13
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:color-utilities:text13"
 msgid "border-strong"
 msgstr "border-strong"
 
 #: color-utilities/i18n.json#text14
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:color-utilities:text14"
 msgid "border-brand"
 msgstr "border-brand"
@@ -917,8 +937,14 @@ msgstr "Ցուցադրել մանրամասները"
 #: context-view/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:context-view:text2"
-msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes\n    when you click away or press Esc."
-msgstr "Կոնտեքստային տեսքը շրջանակի մեջ է դնում կանաչուկը՝ ցուցիչով։ Որպես պոպовер այն գտնվում է վերին շերտում և փակվում\n    երբ կտտացնում եք դրսում կամ սեղմում Esc։"
+msgid ""
+"A context view frames a callout with a caret. As a popover it rides the top "
+"layer and closes\n"
+"    when you click away or press Esc."
+msgstr ""
+"Կոնտեքստային տեսքը շրջանակի մեջ է դնում կանաչուկը՝ ցուցիչով։ Որպես պոպовер "
+"այն գտնվում է վերին շերտում և փակվում\n"
+"    երբ կտտացնում եք դրսում կամ սեղմում Esc։"
 
 #: context-view/i18n.json#text3
 #, no-c-format
@@ -953,8 +979,14 @@ msgstr "Հակադարձ ֆոն"
 #: context-view/i18n.json#text8
 #, no-c-format
 msgctxt "docs.demos:context-view:text8"
-msgid "Positioning next to a trigger uses CSS anchor positioning where supported; elsewhere the popover\n    centers in the top layer."
-msgstr "Նորաձև դիրքավորում տրիգերի կողքին օգտագործում է CSS anchor դիրքավորում երբ աջակցվում է; այլապես պոպովերը\n    կենտրոնացվում է վերին շերտում։"
+msgid ""
+"Positioning next to a trigger uses CSS anchor positioning where supported; "
+"elsewhere the popover\n"
+"    centers in the top layer."
+msgstr ""
+"Նորաձև դիրքավորում տրիգերի կողքին օգտագործում է CSS anchor դիրքավորում երբ "
+"աջակցվում է; այլապես պոպովերը\n"
+"    կենտրոնացվում է վերին շերտում։"
 
 #: date-time-inputs/i18n.json#text1
 #, no-c-format
@@ -1055,8 +1087,14 @@ msgstr "Հիմնական բովանդակություն"
 #: drawer-layout/i18n.json#text9
 #, no-c-format
 msgctxt "docs.demos:drawer-layout:text9"
-msgid "Use the buttons above to toggle open state. Narrow the viewport to see the tray switch to\n          overlay mode."
-msgstr "Օգտվեք վերևի կոճակներից՝ բաց/փակ վիճակը փոխելու համար։ Թափանցիկ դիտասահման է արագանում՝ նեղացրեք պատուհանը՝ տեսնելու համար թե ինչպես տուփը անցնում է վերապատասխանի ռեժիմ։"
+msgid ""
+"Use the buttons above to toggle open state. Narrow the viewport to see the "
+"tray switch to\n"
+"          overlay mode."
+msgstr ""
+"Օգտվեք վերևի կոճակներից՝ բաց/փակ վիճակը փոխելու համար։ Թափանցիկ դիտասահման է "
+"արագանում՝ նեղացրեք պատուհանը՝ տեսնելու համար թե ինչպես տուփը անցնում է "
+"վերապատասխանի ռեժիմ։"
 
 #: elevation/i18n.json#text1
 #, no-c-format
@@ -1151,14 +1189,24 @@ msgstr "report.pdf — ֆայլի տեսակը թույլատրված չէ։"
 #: focus-outline/i18n.json#text1
 #, no-c-format
 msgctxt "docs.demos:focus-outline:text1"
-msgid "Tab through the controls (or click the field) to see the ring. It rides every focusable out of\n      the box from"
-msgstr "Փոխանցեք վերահսկիչներով (կամ սեղմեք դաշտը) որպեսզի տեսնեք օղակը։ Այն բացվում է յուրաքանչյուր ֆոկուսվող տարրի վրա\n      սկզբնականից"
+msgid ""
+"Tab through the controls (or click the field) to see the ring. It rides "
+"every focusable out of\n"
+"      the box from"
+msgstr ""
+"Փոխանցեք վերահսկիչներով (կամ սեղմեք դաշտը) որպեսզի տեսնեք օղակը։ Այն բացվում "
+"է յուրաքանչյուր ֆոկուսվող տարրի վրա\n"
+"      սկզբնականից"
 
 #: focus-outline/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:focus-outline:text2"
-msgid "; the modifiers recolour it, inset it, or turn off the\n      animation."
-msgstr "; մոդիֆիկատորները գունափոխում են այն, ներսացնում կամ անջատում\n      անիմացիան։"
+msgid ""
+"; the modifiers recolour it, inset it, or turn off the\n"
+"      animation."
+msgstr ""
+"; մոդիֆիկատորները գունափոխում են այն, ներսացնում կամ անջատում\n"
+"      անիմացիան։"
 
 #: focus-outline/i18n.json#text3
 #, no-c-format
@@ -1373,17 +1421,23 @@ msgstr "դաշտեր տարածության սանդղակի վրա, կարճ ("
 #: gap/i18n.json#text4
 #, no-c-format
 msgctxt "docs.demos:gap:text4"
-msgid ") or long\n    ("
-msgstr ") կամ երկար\n    ("
+msgid ""
+") or long\n"
+"    ("
+msgstr ""
+") կամ երկար\n"
+"    ("
 
 #: gap/i18n.json#text5
 #, no-c-format
 msgctxt "docs.demos:gap:text5"
 msgid ") spelling — usable bare or chained onto any component."
-msgstr ") ձեռնարկային գրելակերպ — օգտագործելի մերկ կամ շարակցված ցանկացած կոմպոնենտի վրա։"
+msgstr ""
+") ձեռնարկային գրելակերպ — օգտագործելի մերկ կամ շարակցված ցանկացած կոմպոնենտի "
+"վրա։"
 
 #: gap/i18n.json#text6
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:gap:text6"
 msgid "gap-sm"
 msgstr "gap-sm"
@@ -1407,7 +1461,7 @@ msgid "Long spelling"
 msgstr "Երկար գրելակերպ"
 
 #: gap/i18n.json#text10
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:gap:text10"
 msgid "gap-large"
 msgstr "gap-large"
@@ -1541,8 +1595,12 @@ msgstr "Անտեղ"
 #: icon/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:icon:text2"
-msgid "icons scale to the text and inherit\n      its color."
-msgstr "պատկերակները չափավորվում են տեքստին և ժառանգում\n      դրա գույնը։"
+msgid ""
+"icons scale to the text and inherit\n"
+"      its color."
+msgstr ""
+"պատկերակները չափավորվում են տեքստին և ժառանգում\n"
+"      դրա գույնը։"
 
 #: icon/i18n.json#text3
 #, no-c-format
@@ -1589,8 +1647,14 @@ msgstr "Մարտի 12, 2026"
 #: in-place-edit/i18n.json#text7
 #, no-c-format
 msgctxt "docs.demos:in-place-edit:text7"
-msgid "Click a value to edit it. The stateful view/edit toggle with confirm and cancel buttons is the\n    web-component tier; this is the pure-CSS editable skin."
-msgstr "Սեղմեք արժեքի վրա՝ խմբելու համար։ Ստատեֆուլ դիտման/խմբագրության փոխարկիչը՝ հաստատման և չեղարկման կոճակներով, գտնվում է վեբ-կոմպոնենտ շերտում; սա մաքուր-CSS խմբագրելի տեսքն է։"
+msgid ""
+"Click a value to edit it. The stateful view/edit toggle with confirm and "
+"cancel buttons is the\n"
+"    web-component tier; this is the pure-CSS editable skin."
+msgstr ""
+"Սեղմեք արժեքի վրա՝ խմբելու համար։ Ստատեֆուլ դիտման/խմբագրության փոխարկիչը՝ "
+"հաստատման և չեղարկման կոճակներով, գտնվում է վեբ-կոմպոնենտ շերտում; սա մաքուր-"
+"CSS խմբագրելի տեսքն է։"
 
 #: layout/i18n.json#text1
 #, no-c-format
@@ -1619,8 +1683,12 @@ msgstr "և"
 #: layout/i18n.json#text5
 #, no-c-format
 msgctxt "docs.demos:layout:text5"
-msgid "props as composable classes — reach for them on\n    any element instead of a per-component modifier."
-msgstr "props որպես կոմպոզիցիոն კლასեր — օգտագործեք դրանք ցանկացած էլեմենտի վրա՝ ոչ թե յուրաքանչյուր կոմպոնենտի մոդիֆիկատորի փոխարեն։"
+msgid ""
+"props as composable classes — reach for them on\n"
+"    any element instead of a per-component modifier."
+msgstr ""
+"props որպես կոմպոզիցիոն კლასեր — օգտագործեք դրանք ցանկացած էլեմենտի վրա՝ ոչ "
+"թե յուրաքանչյուր կոմպոնենտի մոդիֆիկատորի փոխարեն։"
 
 #: layout/i18n.json#text6
 #, no-c-format
@@ -1659,19 +1727,19 @@ msgid "Text align"
 msgstr "Տեքստի կողմնորոշում"
 
 #: layout/i18n.json#text12
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:layout:text12"
 msgid "text-align-start"
 msgstr "text-align-start"
 
 #: layout/i18n.json#text13
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:layout:text13"
 msgid "text-align-center"
 msgstr "text-align-center"
 
 #: layout/i18n.json#text14
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:layout:text14"
 msgid "text-align-end"
 msgstr "text-align-end"
@@ -1851,7 +1919,7 @@ msgid "Start"
 msgstr "Սկիզբ"
 
 #: metric/i18n.json#text6
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:metric:text6"
 msgid "-text-align-start"
 msgstr "-text-align-start"
@@ -1863,7 +1931,7 @@ msgid "Center"
 msgstr "Կենտրոն"
 
 #: metric/i18n.json#text8
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:metric:text8"
 msgid "-text-align-center"
 msgstr "-text-align-center"
@@ -1875,7 +1943,7 @@ msgid "End"
 msgstr "Վերջ"
 
 #: metric/i18n.json#text10
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:metric:text10"
 msgid "-text-align-end"
 msgstr "-text-align-end"
@@ -2051,8 +2119,11 @@ msgstr "Հատկության շրջայց"
 #: pendo/i18n.json#popoverBody
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverBody"
-msgid "This anchored guide keeps the next action close to the feature it describes."
-msgstr "Այս ամրացված ուղեցույցը հաջորդ գործողությունը պահում է մոտ այն ֆունկցիան, որը այն նկարագրում է։"
+msgid ""
+"This anchored guide keeps the next action close to the feature it describes."
+msgstr ""
+"Այս ամրացված ուղեցույցը հաջորդ գործողությունը պահում է մոտ այն ֆունկցիան, "
+"որը այն նկարագրում է։"
 
 #: pendo/i18n.json#alertLabel
 #, no-c-format
@@ -2075,8 +2146,12 @@ msgstr "Սկսվում է գիշերվա 11:00-ին"
 #: pendo/i18n.json#alertBody
 #, no-c-format
 msgctxt "docs.demos:pendo:alertBody"
-msgid "Course tools will be unavailable briefly tonight while maintenance is completed."
-msgstr "Դասընթացի գործիքները այս գիշեր ժամանակավորապես մատչելի չեն լինելու, մինչև ավարտվի սպասարկումը։"
+msgid ""
+"Course tools will be unavailable briefly tonight while maintenance is "
+"completed."
+msgstr ""
+"Դասընթացի գործիքները այս գիշեր ժամանակավորապես մատչելի չեն լինելու, մինչև "
+"ավարտվի սպասարկումը։"
 
 #: pendo/i18n.json#bannerLabel
 #, no-c-format
@@ -2099,8 +2174,11 @@ msgstr "Մասնակցության պատկերացումներ"
 #: pendo/i18n.json#bannerBody
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerBody"
-msgid "Review participation trends and identify where learners may need support."
-msgstr "Ստուգեք մասնակցության միտումները և պարզեք, որտեղ ուսանողներին կարող է անհրաժեշտ լինել աջակցություն։"
+msgid ""
+"Review participation trends and identify where learners may need support."
+msgstr ""
+"Ստուգեք մասնակցության միտումները և պարզեք, որտեղ ուսանողներին կարող է "
+"անհրաժեշտ լինել աջակցություն։"
 
 #: pendo/i18n.json#closeLabel
 #, no-c-format
@@ -2189,8 +2267,11 @@ msgstr "Կիսվեք այս էջով"
 #: popover/i18n.json#text3
 #, no-c-format
 msgctxt "docs.demos:popover:text3"
-msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native"
-msgstr "Popover-ը թեթև մակերես է, որը կապված է տրիգերի հետ։ Սա օգտագործում է բնիկը"
+msgid ""
+"A popover is a lightweight surface anchored to a trigger. This one uses the "
+"native"
+msgstr ""
+"Popover-ը թեթև մակերես է, որը կապված է տրիգերի հետ։ Սա օգտագործում է բնիկը"
 
 #: popover/i18n.json#text4
 #, no-c-format
@@ -2285,8 +2366,12 @@ msgstr ", և որոշ"
 #: prose/i18n.json#text14
 #, no-c-format
 msgctxt "docs.demos:prose:text14"
-msgid ". The prose layer styles rendered\n      markdown to match the Heading and Text components."
-msgstr ". Գրավոր շերտը ձևափոխում է markdown-ը՝ համապատասխանելու Վերնագրի և Տեքստի կոմպոնենտներին։"
+msgid ""
+". The prose layer styles rendered\n"
+"      markdown to match the Heading and Text components."
+msgstr ""
+". Գրավոր շերտը ձևափոխում է markdown-ը՝ համապատասխանելու Վերնագրի և Տեքստի "
+"կոմպոնենտներին։"
 
 #: prose/i18n.json#text15
 #, no-c-format
@@ -2561,8 +2646,14 @@ msgstr "64rem,"
 #: responsive/i18n.json#text9
 #, no-c-format
 msgctxt "docs.demos:responsive:text9"
-msgid "80rem. For a component that adapts to its own width instead of the viewport,\n      wrap it in a"
-msgstr "80rem. Կոմպոնենտի համար, որը հարմարվում է իր սեփական լայնությանը ոչ թե դիտանշարին,\n      պարփակեք այն մեջեր մեկ"
+msgid ""
+"80rem. For a component that adapts to its own width instead of the "
+"viewport,\n"
+"      wrap it in a"
+msgstr ""
+"80rem. Կոմպոնենտի համար, որը հարմարվում է իր սեփական լայնությանը ոչ թե "
+"դիտանշարին,\n"
+"      պարփակեք այն մեջեր մեկ"
 
 #: responsive/i18n.json#text10
 #, no-c-format
@@ -2580,7 +2671,9 @@ msgstr "խնդրաքննություններ՝ նույն լայնություն
 #, no-c-format
 msgctxt "docs.demos:screen-reader-content:text1"
 msgid "This sentence is visible. After it sits screen-reader-only text."
-msgstr "Այս նախադասությունը տեսանելի է։ Արտահայտվելուց հետո այն մնալու է միայն էկրանի ընթերցողի համար նախատեսված տեքստ։"
+msgstr ""
+"Այս նախադասությունը տեսանելի է։ Արտահայտվելուց հետո այն մնալու է միայն "
+"էկրանի ընթերցողի համար նախատեսված տեքստ։"
 
 #: screen-reader-content/i18n.json#text2
 #, no-c-format
@@ -2699,14 +2792,24 @@ msgstr "Ականջային դասեր spacing մասշտաբի վրա —"
 #: spacing/i18n.json#text3
 #, no-c-format
 msgctxt "docs.demos:spacing:text3"
-msgid "for margin/padding, an\n    optional logical side\n    ("
-msgstr "մարդկանց համար margin/padding, մի\n    այլընտրանքային տրամաբանական կողմ\n    ("
+msgid ""
+"for margin/padding, an\n"
+"    optional logical side\n"
+"    ("
+msgstr ""
+"մարդկանց համար margin/padding, մի\n"
+"    այլընտրանքային տրամաբանական կողմ\n"
+"    ("
 
 #: spacing/i18n.json#text4
 #, no-c-format
 msgctxt "docs.demos:spacing:text4"
-msgid "),\n    then a step ("
-msgstr "),\n    հետո քայլ ("
+msgid ""
+"),\n"
+"    then a step ("
+msgstr ""
+"),\n"
+"    հետո քայլ ("
 
 #: spacing/i18n.json#text5
 #, no-c-format
@@ -2717,14 +2820,21 @@ msgstr ", ամեն դեպքում"
 #: spacing/i18n.json#text6
 #, no-c-format
 msgctxt "docs.demos:spacing:text6"
-msgid "for\n    margin). Every class also has a fully long, word-spelled twin —"
-msgstr "margin-ի համար). Յուրաքանչյուր դաս ունի նաև ամբողջատող, բառերով գրված զույգ —"
+msgid ""
+"for\n"
+"    margin). Every class also has a fully long, word-spelled twin —"
+msgstr ""
+"margin-ի համար). Յուրաքանչյուր դաս ունի նաև ամբողջատող, բառերով գրված զույգ —"
 
 #: spacing/i18n.json#text7
 #, no-c-format
 msgctxt "docs.demos:spacing:text7"
-msgid "is the same\n    rule as"
-msgstr "այդ նույն\n    կանոնը ինչպես"
+msgid ""
+"is the same\n"
+"    rule as"
+msgstr ""
+"այդ նույն\n"
+"    կանոնը ինչպես"
 
 #: spacing/i18n.json#text8
 #, no-c-format
@@ -2739,7 +2849,7 @@ msgid "p-sm, mb-2xs"
 msgstr "p-sm, mb-2xs"
 
 #: spacing/i18n.json#text10
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:spacing:text10"
 msgid "p-lg"
 msgstr "p-lg"
@@ -2751,7 +2861,7 @@ msgid "Center with auto margins"
 msgstr "Կենտրոնացնել՝ ավտո margins-ով"
 
 #: spacing/i18n.json#text12
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:spacing:text12"
 msgid "mx-auto"
 msgstr "mx-auto"
@@ -2769,7 +2879,7 @@ msgid "padding-small, margin-bottom-x-small"
 msgstr "padding-small, margin-bottom-x-small"
 
 #: spacing/i18n.json#text15
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:spacing:text15"
 msgid "padding-large"
 msgstr "padding-large"
@@ -3107,8 +3217,12 @@ msgstr "Ինչ է պարունակում այս փաթեթը՞"
 #: toggle-details/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:toggle-details:text2"
-msgid "Class-based component styles, built from the Instructure tokens, plus a prose layer."
-msgstr "Դասային վրա հիմնված կոմպոնենտի ոճեր, կանոնավոր Instructure տոկեններից բաղկացած, ինչպես նաև պրոպզ շերտ։"
+msgid ""
+"Class-based component styles, built from the Instructure tokens, plus a "
+"prose layer."
+msgstr ""
+"Դասային վրա հիմնված կոմպոնենտի ոճեր, կանոնավոր Instructure տոկեններից "
+"բաղկացած, ինչպես նաև պրոպզ շերտ։"
 
 #: toggle-details/i18n.json#text3
 #, no-c-format
@@ -3155,8 +3269,14 @@ msgstr "Խթանված կարգավորումներ"
 #: toggle-group/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:toggle-group:text2"
-msgid "These options are revealed when the group is expanded. The header row carries a chevron that\n        rotates on open, and the content sits below a divider."
-msgstr "Այս ընտրանքները բացվում են երբ խմբը զարգացվում է։ Վերնագիր-տողը կրում է chevron, որը\n        պտտվում է բացվելիս, և բովանդակությունը տեղադրված է բաժանարարի տակ։"
+msgid ""
+"These options are revealed when the group is expanded. The header row "
+"carries a chevron that\n"
+"        rotates on open, and the content sits below a divider."
+msgstr ""
+"Այս ընտրանքները բացվում են երբ խմբը զարգացվում է։ Վերնագիր-տողը կրում է "
+"chevron, որը\n"
+"        պտտվում է բացվելիս, և բովանդակությունը տեղադրված է բաժանարարի տակ։"
 
 #: toggle-group/i18n.json#text3
 #, no-c-format
@@ -3179,8 +3299,12 @@ msgstr "Տոկեն օգտակարություններ"
 #: token-utilities/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:token-utilities:text2"
-msgid "Every \"one token, one property\" family gets a class named after the token — here"
-msgstr "Յուրաքանչյուր «մեկ տոկեն, մեկ հատկություն» ընտանիք ստանում է դաս՝ տոկենի անունով — այստեղ"
+msgid ""
+"Every \"one token, one property\" family gets a class named after the token "
+"— here"
+msgstr ""
+"Յուրաքանչյուր «մեկ տոկեն, մեկ հատկություն» ընտանիք ստանում է դաս՝ տոկենի "
+"անունով — այստեղ"
 
 #: token-utilities/i18n.json#text3
 #, no-c-format
@@ -3195,49 +3319,49 @@ msgid ", and"
 msgstr ", և"
 
 #: token-utilities/i18n.json#text5
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:token-utilities:text5"
 msgid "font-weight-body-base"
 msgstr "font-weight-body-base"
 
 #: token-utilities/i18n.json#text6
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:token-utilities:text6"
 msgid "font-weight-body-strong"
 msgstr "font-weight-body-strong"
 
 #: token-utilities/i18n.json#text7
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:token-utilities:text7"
 msgid "font-family-code"
 msgstr "font-family-code"
 
 #: token-utilities/i18n.json#text8
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:token-utilities:text8"
 msgid "radius-container-sm"
 msgstr "radius-container-sm"
 
 #: token-utilities/i18n.json#text9
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:token-utilities:text9"
 msgid "radius-container-lg"
 msgstr "radius-container-lg"
 
 #: token-utilities/i18n.json#text10
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:token-utilities:text10"
 msgid "elevation-resting"
 msgstr "elevation-resting"
 
 #: token-utilities/i18n.json#text11
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:token-utilities:text11"
 msgid "elevation-topmost"
 msgstr "elevation-topmost"
 
 #: token-utilities/i18n.json#text12
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:token-utilities:text12"
 msgid "opacity-disabled"
 msgstr "opacity-disabled"
@@ -3300,7 +3424,9 @@ msgstr "Մանրամասներ"
 #, no-c-format
 msgctxt "docs.demos:tray:text6"
 msgid "This one docks to the end edge. Press Esc or click away to dismiss."
-msgstr "Այս մեկը նավարկվում է վերջի եզրին։ Սեղմեք Esc կամ դասեք կոճակը՝ փակելու համար։"
+msgstr ""
+"Այս մեկը նավարկվում է վերջի եզրին։ Սեղմեք Esc կամ դասեք կոճակը՝ փակելու "
+"համար։"
 
 #: tree-browser/i18n.json#text1
 #, no-c-format
@@ -3341,8 +3467,12 @@ msgstr "Rubric.docx"
 #: truncate/i18n.json#text1
 #, no-c-format
 msgctxt "docs.demos:truncate:text1"
-msgid "This single line keeps going past the edge of its box, so it ends in an ellipsis."
-msgstr "Այս միակ տողը շարունակվում է իր տուփի եզրից դուրս, ուստի ավարտվում է եռագիծով։"
+msgid ""
+"This single line keeps going past the edge of its box, so it ends in an "
+"ellipsis."
+msgstr ""
+"Այս միակ տողը շարունակվում է իր տուփի եզրից դուրս, ուստի ավարտվում է "
+"եռագիծով։"
 
 #: truncate/i18n.json#text2
 #, no-c-format
@@ -3353,8 +3483,14 @@ msgstr "Սահմանել"
 #: truncate/i18n.json#text3
 #, no-c-format
 msgctxt "docs.demos:truncate:text3"
-msgid "custom property to clamp to a fixed number of lines instead. This\n      paragraph runs long on purpose so the clamp has something to cut off after the second line."
-msgstr "կայուն հատկությունը՝ սահմանելու համար մի 固定 թիվ տողերի։ Այս\n      պարբերությունը դիտավորյալ երկար է՝ որպեսզի clamp-ը կարողանա կտրել երկրորդ տողից հետո։"
+msgid ""
+"custom property to clamp to a fixed number of lines instead. This\n"
+"      paragraph runs long on purpose so the clamp has something to cut off "
+"after the second line."
+msgstr ""
+"կայուն հատկությունը՝ սահմանելու համար մի 固定 թիվ տողերի։ Այս\n"
+"      պարբերությունը դիտավորյալ երկար է՝ որպեսզի clamp-ը կարողանա կտրել "
+"երկրորդ տողից հետո։"
 
 #: view/i18n.json#text1
 #, no-c-format
@@ -3371,8 +3507,15 @@ msgstr "InstUI-ի է"
 #: view/i18n.json#text3
 #, no-c-format
 msgctxt "docs.demos:view:text3"
-msgid ". Beyond the neutral box it carries\n    key-value modifiers for its own visual props, so it has the same devex as the other components —\n    no need to reach for utilities for the basics."
-msgstr ". Նեյտրալ տուփից այն կողմ այն կրում է իր տեսողական հատկությունների համար բանալի‑արժեք մոդիֆիկատորներ, ուստի դրա devex‑ը նույնն է, ինչ մյուս կոմպոնենտներինը — հիմնականների համար օգտակարությունների դիմելու կարիք չկա։"
+msgid ""
+". Beyond the neutral box it carries\n"
+"    key-value modifiers for its own visual props, so it has the same devex "
+"as the other components —\n"
+"    no need to reach for utilities for the basics."
+msgstr ""
+". Նեյտրալ տուփից այն կողմ այն կրում է իր տեսողական հատկությունների համար "
+"բանալի‑արժեք մոդիֆիկատորներ, ուստի դրա devex‑ը նույնն է, ինչ մյուս "
+"կոմպոնենտներինը — հիմնականների համար օգտակարությունների դիմելու կարիք չկա։"
 
 #: view/i18n.json#text4
 #, no-c-format
@@ -3381,19 +3524,19 @@ msgid "Native modifiers"
 msgstr "Նատիվ փոփոխիչներ"
 
 #: view/i18n.json#text5
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:view:text5"
 msgid "-background-primary -border-radius-large -shadow-resting"
 msgstr "-background-primary -border-radius-large -shadow-resting"
 
 #: view/i18n.json#text6
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:view:text6"
 msgid "-border-width-small -border-color-brand -border-radius-medium"
 msgstr "-border-width-small -border-color-brand -border-radius-medium"
 
 #: view/i18n.json#text7
-#, no-c-format, x-translate-never
+#, no-c-format
 msgctxt "docs.demos:view:text7"
 msgid "-background-brand"
 msgstr "-background-brand"
@@ -3408,7 +3551,9 @@ msgstr "Compose utilities-ները նույնպես"
 #, no-c-format
 msgctxt "docs.demos:view:text9"
 msgid "Spacing, color, and token utilities still layer onto a View — e.g."
-msgstr "Տարածքը, գույնը և տոկենների օգտակար գործիքները դեռևս շերտավորվում են View-ի վրա՝ օրինակ՝"
+msgstr ""
+"Տարածքը, գույնը և տոկենների օգտակար գործիքները դեռևս շերտավորվում են View-ի "
+"վրա՝ օրինակ՝"
 
 #: view/i18n.json#text10
 #, no-c-format

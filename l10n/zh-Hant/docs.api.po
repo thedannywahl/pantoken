@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 03:33+0000\n"
+"PO-Revision-Date: 2026-09-09 17:44+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29399,3 +29399,7 @@ msgstr "一個 [LocaleBundle](#) 物件，或一個 BCP47 標籤（`\"hu\"`、`\
 msgctxt "docs.api:prose"
 msgid "Defines the uniform plugin contract ([PantokenPlugin](interfaces/PantokenPlugin.md)) and adapts the resolved token IR for\nthe native lineage ([toStyleDictionary](functions/toStyleDictionary.md)). The upstream-resolving transform (`buildTokens`,\nwhich needs the GitHub-only `@instructure/instructure-design-tokens`) lives on the separate\n`@pantoken/core/build` entry so this main entry stays free of that exotic dependency."
 msgstr "定義統一的外掛合約 ([PantokenPlugin](interfaces/PantokenPlugin.md)))，並將解析後的 token IR 適配為原生 lineage ([toStyleDictionary](functions/toStyleDictionary.md)))。負責上游解析的轉換器 (`buildTokens`,\nwhich needs the GitHub-only `@instructure/instructure-design-tokens`)) 被放在單獨的\n`@pantoken/core/build` 條目中，因而本主要條目得以免於那個特殊的相依。"
+
+msgctxt "docs.api:prose"
+msgid "`theme`/`mode` select which `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), applied across every platform. `cdn` selects the CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);\n  ignored by every other platform. `locale` (default `\"en\"`) sets the generated markup's\n  `lang`/`dir` attributes."
+msgstr "`theme`/`mode` 選擇要 `@pantoken/css` 代幣表單樣板檔案\n  匯入（預設 `\"rebrand\"`/`\"light\"`)），應用於所有平台。 `cdn` 選擇 CDN\n  供應商 `canvas-theme-editor` 的 `theme.css`/`theme.js` 為其建立（預設 jsDelivr)；\n 被其他平台忽略。 `locale`（預設 `\"en\"`) 設定產生的標記的\n  `lang`/`dir` 屬性。"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 11:35+0000\n"
+"PO-Revision-Date: 2026-09-09 17:04+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -391,6 +391,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.chrome:chrome.lastUpdatedText"
 msgid "Last updated"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:chrome.agentShellPrompt"
+msgid "What would you like to build today?"
 msgstr ""
 
 #: docs/.vitepress/i18n.json

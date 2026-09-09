@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 03:29+0000\n"
+"PO-Revision-Date: 2026-09-09 17:23+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29399,3 +29399,7 @@ msgstr "یک شیء [LocaleBundle](#)، یا یک تگ BCP47 (`\"hu\"`, `\"ar\"`
 msgctxt "docs.api:prose"
 msgid "Defines the uniform plugin contract ([PantokenPlugin](interfaces/PantokenPlugin.md)) and adapts the resolved token IR for\nthe native lineage ([toStyleDictionary](functions/toStyleDictionary.md)). The upstream-resolving transform (`buildTokens`,\nwhich needs the GitHub-only `@instructure/instructure-design-tokens`) lives on the separate\n`@pantoken/core/build` entry so this main entry stays free of that exotic dependency."
 msgstr "قرارداد یکنواخت افزونه را تعریف می‌کند ([PantokenPlugin](interfaces/PantokenPlugin.md))) و IR توکن حل‌شده را برای زنجیرهٔ بومی ([toStyleDictionary](functions/toStyleDictionary.md))) تطبیق می‌دهد. تبدیل حل‌کنندهٔ بالادستی (`buildTokens`,\nکه نیاز به GitHub-only `@instructure/instructure-design-tokens`) دارد) در ورودی جداگانه\n`@pantoken/core/build` قرار دارد تا این ورودی اصلی از آن وابستگی عجیب‌وغریب عاری بماند."
+
+msgctxt "docs.api:prose"
+msgid "`theme`/`mode` select which `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), applied across every platform. `cdn` selects the CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);\n  ignored by every other platform. `locale` (default `\"en\"`) sets the generated markup's\n  `lang`/`dir` attributes."
+msgstr "`theme`/`mode` انتخاب کنید که `@pantoken/css` فایل‌های اسکافولد شدهٔ شیت توکن\n  ایمپورت (پیش‌فرض `\"rebrand\"`/`\"light\"`)), در سراسر همهٔ پلتفرم‌ها اعمال می‌شود. `cdn` CDN\n را انتخاب می‌کند  ارائه‌دهنده `canvas-theme-editor` متعلق به `theme.css`/`theme.js` برای ساخته شده‌اند (پیش‌فرض jsDelivr);\n توسط بقیهٔ پلتفرم‌ها نادیده گرفته می‌شود). `locale` (پیش‌فرض `\"en\"`) تنظیم می‌کند که مارک‌آپ تولیدشدهٔ\n  `lang`/`dir` ویژگی‌ها را."

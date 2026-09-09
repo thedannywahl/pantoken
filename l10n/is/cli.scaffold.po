@@ -1,6 +1,13 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8"
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-09 17:05+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"Language: und\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -57,6 +64,30 @@ msgid "Start the dev server (if your template has one)"
 msgstr "Ræstu þróunarþjóninn (ef sniðmátið inniheldur einn)"
 
 #: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:getStartedHeading"
+msgid "Get started:"
+msgstr "Næstu skref:"
+
+#: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:installSpinnerStart"
+msgid "Installing dependencies..."
+msgstr "Settu upp háður: {{command}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:installSpinnerStop"
+msgid "Dependencies installed."
+msgstr "Háðir pakkar uppsettir."
+
+#: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:installSpinnerFailed"
+msgid "Failed to install dependencies:"
+msgstr "Settu upp háður: {{command}}"
+
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:notesHeading"
 msgid "Note:"
@@ -72,7 +103,8 @@ msgstr "Ábending:"
 #, no-c-format
 msgctxt "cli.scaffold:errorMissingPlatform"
 msgid "Missing required argument \"platform\". Expected one of: {{platforms}}"
-msgstr "Vantar nauðsynlegt rök \"platform\". Búist var við einu af: {{platforms}}"
+msgstr ""
+"Vantar nauðsynlegt rök \"platform\". Búist var við einu af: {{platforms}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -83,8 +115,12 @@ msgstr "Hætt við."
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpPlatformDescription"
-msgid "Platform to scaffold ({{platforms}}; \"html\" is an alias for \"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
-msgstr "Vettvangur til að búa til ({{platforms}}; \"html\" er samskeyti fyrir \"components\", \"theme-editor\" er samskeyti fyrir \"canvas-theme-editor\")"
+msgid ""
+"Platform to scaffold ({{platforms}}; \"html\" is an alias for "
+"\"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
+msgstr ""
+"Vettvangur til að búa til ({{platforms}}; \"html\" er samskeyti fyrir "
+"\"components\", \"theme-editor\" er samskeyti fyrir \"canvas-theme-editor\")"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -95,8 +131,10 @@ msgstr "Áfangaskrá (spyr hvort verið er í TTY ef sleppt)"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpYesDescription"
-msgid "Never prompt; error instead of prompting for a missing platform/directory"
-msgstr "Aldrei spyrja; kasta villa í staðinn fyrir að spyrja um vantar vettvang/skrá"
+msgid ""
+"Never prompt; error instead of prompting for a missing platform/directory"
+msgstr ""
+"Aldrei spyrja; kasta villa í staðinn fyrir að spyrja um vantar vettvang/skrá"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -125,14 +163,22 @@ msgstr "{{dev}}"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.notes"
-msgid "Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / JavaScript) so pantoken's classes are available on every page."
-msgstr "Hladdu upp theme.css og theme.js í Canvas Theme Editor (Advanced → CSS / JavaScript) svo pantoken-klassar séu tiltækir á hverri síðu."
+msgid ""
+"Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / "
+"JavaScript) so pantoken's classes are available on every page."
+msgstr ""
+"Hladdu upp theme.css og theme.js í Canvas Theme Editor (Advanced → CSS / "
+"JavaScript) svo pantoken-klassar séu tiltækir á hverri síðu."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.caveats"
-msgid "Canvas sanitizes pasted HTML server-side — always verify content pasted from the RCE preview in Canvas."
-msgstr "Canvas hreinsar innlímaða HTML á þjóninum — staðfestu alltaf efni sem límt er inn frá RCE forskoðuninni í Canvas."
+msgid ""
+"Canvas sanitizes pasted HTML server-side — always verify content pasted from "
+"the RCE preview in Canvas."
+msgstr ""
+"Canvas hreinsar innlímaða HTML á þjóninum — staðfestu alltaf efni sem límt "
+"er inn frá RCE forskoðuninni í Canvas."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -143,8 +189,10 @@ msgstr "RCE sniðmátahöfundur"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.pageDescription"
-msgid "Author Canvas RCE page templates styled with pantoken, with a live preview."
-msgstr "Höfundu Canvas RCE síðu­sniðmát stílað með pantoken, með lifandi forskoðun."
+msgid ""
+"Author Canvas RCE page templates styled with pantoken, with a live preview."
+msgstr ""
+"Höfundu Canvas RCE síðu­sniðmát stílað með pantoken, með lifandi forskoðun."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -287,14 +335,29 @@ msgstr "Hvernig á að nota þessa síðu"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody1"
-msgid "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas."
-msgstr "Veldu byrjunar­sniðmát, breyttu því eins og í Canvas Rich Content Editor, smelltu á <strong>Copy HTML</strong> og límdu niðurstöðuna inn í Canvas síðu (skiptðu í HTML ritillinn fyrst). Canvas hreinsar límt HTML á þjóninum — þessi forskoðun hermir það ekki, svo staðfestu alltaf útkomuna í Canvas."
+msgid ""
+"Pick a starter template, edit it like you would in the Canvas Rich Content "
+"Editor, then click <strong>Copy HTML</strong> and paste the result into a "
+"Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted "
+"HTML server-side — this preview doesn't attempt to replicate that, so always "
+"verify the pasted result in Canvas."
+msgstr ""
+"Veldu byrjunar­sniðmát, breyttu því eins og í Canvas Rich Content Editor, "
+"smelltu á <strong>Copy HTML</strong> og límdu niðurstöðuna inn í Canvas síðu "
+"(skiptðu í HTML ritillinn fyrst). Canvas hreinsar límt HTML á þjóninum — "
+"þessi forskoðun hermir það ekki, svo staðfestu alltaf útkomuna í Canvas."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody2"
-msgid "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them."
-msgstr "Notaðu <strong>Edit theme</strong> til að breyta CDN birgja, þema eða ham, og til að breyta handvirkt mynduðu <code>theme.css</code>/<code>theme.js</code> áður en þú sækir þau."
+msgid ""
+"Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, "
+"and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> "
+"before downloading them."
+msgstr ""
+"Notaðu <strong>Edit theme</strong> til að breyta CDN birgja, þema eða ham, "
+"og til að breyta handvirkt mynduðu <code>theme.css</code>/<code>theme.js</"
+"code> áður en þú sækir þau."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -305,8 +368,12 @@ msgstr "Loka"
 #: packages/scaffold/src/i18n.json
 #, fuzzy, no-c-format
 msgctxt "cli.scaffold:nextStepsDependencies"
-msgid "2. Installing dependencies (npm install, pnpm install, yarn install or bun install)"
-msgstr "2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun install)"
+msgid ""
+"2. Installing dependencies (npm install, pnpm install, yarn install or bun "
+"install)"
+msgstr ""
+"2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun "
+"install)"
 
 #: packages/scaffold/src/i18n.json
 #, fuzzy, no-c-format

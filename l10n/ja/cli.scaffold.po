@@ -1,6 +1,13 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8"
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-09 17:06+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"Language: und\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -57,6 +64,30 @@ msgid "Start the dev server (if your template has one)"
 msgstr "開発サーバーを起動（テンプレートにある場合）"
 
 #: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:getStartedHeading"
+msgid "Get started:"
+msgstr "次の手順:"
+
+#: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:installSpinnerStart"
+msgid "Installing dependencies..."
+msgstr "依存関係をインストール: {{command}}"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:installSpinnerStop"
+msgid "Dependencies installed."
+msgstr "依存関係がインストールされました。"
+
+#: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:installSpinnerFailed"
+msgid "Failed to install dependencies:"
+msgstr "依存関係をインストール: {{command}}"
+
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:notesHeading"
 msgid "Note:"
@@ -83,8 +114,13 @@ msgstr "キャンセルされました。"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpPlatformDescription"
-msgid "Platform to scaffold ({{platforms}}; \"html\" is an alias for \"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
-msgstr "スキャフォールドするプラットフォーム ({{platforms}}; \"html\" は \"components\" の別名、\"theme-editor\" は \"canvas-theme-editor\" の別名です)"
+msgid ""
+"Platform to scaffold ({{platforms}}; \"html\" is an alias for "
+"\"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
+msgstr ""
+"スキャフォールドするプラットフォーム ({{platforms}}; \"html\" は "
+"\"components\" の別名、\"theme-editor\" は \"canvas-theme-editor\" の別名で"
+"す)"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -95,8 +131,11 @@ msgstr "ターゲットディレクトリ（省略するとTTY上で対話的に
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpYesDescription"
-msgid "Never prompt; error instead of prompting for a missing platform/directory"
-msgstr "プロンプトを表示しない（不足する platform/ディレクトリがある場合はプロンプトの代わりにエラーにする）"
+msgid ""
+"Never prompt; error instead of prompting for a missing platform/directory"
+msgstr ""
+"プロンプトを表示しない（不足する platform/ディレクトリがある場合はプロンプト"
+"の代わりにエラーにする）"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -125,14 +164,23 @@ msgstr "{{dev}}"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.notes"
-msgid "Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / JavaScript) so pantoken's classes are available on every page."
-msgstr "theme.css と theme.js を Canvas の Theme Editor（Advanced → CSS / JavaScript）にアップロードして、pantoken のクラスがすべてのページで利用できるようにしてください。"
+msgid ""
+"Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / "
+"JavaScript) so pantoken's classes are available on every page."
+msgstr ""
+"theme.css と theme.js を Canvas の Theme Editor（Advanced → CSS / "
+"JavaScript）にアップロードして、pantoken のクラスがすべてのページで利用できる"
+"ようにしてください。"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.caveats"
-msgid "Canvas sanitizes pasted HTML server-side — always verify content pasted from the RCE preview in Canvas."
-msgstr "Canvas はサーバー側で貼り付けた HTML をサニタイズします — RCE プレビューから Canvas に貼り付ける内容は必ず Canvas 上で確認してください。"
+msgid ""
+"Canvas sanitizes pasted HTML server-side — always verify content pasted from "
+"the RCE preview in Canvas."
+msgstr ""
+"Canvas はサーバー側で貼り付けた HTML をサニタイズします — RCE プレビューから "
+"Canvas に貼り付ける内容は必ず Canvas 上で確認してください。"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -143,8 +191,11 @@ msgstr "RCE テンプレート作成"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.pageDescription"
-msgid "Author Canvas RCE page templates styled with pantoken, with a live preview."
-msgstr "pantoken でスタイルした Canvas RCE ページテンプレートを作成し、ライブプレビューできます。"
+msgid ""
+"Author Canvas RCE page templates styled with pantoken, with a live preview."
+msgstr ""
+"pantoken でスタイルした Canvas RCE ページテンプレートを作成し、ライブプレ"
+"ビューできます。"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -287,14 +338,30 @@ msgstr "このページの使い方"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody1"
-msgid "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas."
-msgstr "スターターテンプレートを選び、Canvas の Rich Content Editor のように編集してから <strong>HTML をコピー</strong> をクリックし、結果を Canvas のページに貼り付けてください（先に HTML エディタ表示に切り替えてください）。Canvas はサーバー側で貼り付けた HTML をサニタイズするため、このプレビューは同じ動作を再現しません。必ず Canvas 上で貼り付け結果を確認してください。"
+msgid ""
+"Pick a starter template, edit it like you would in the Canvas Rich Content "
+"Editor, then click <strong>Copy HTML</strong> and paste the result into a "
+"Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted "
+"HTML server-side — this preview doesn't attempt to replicate that, so always "
+"verify the pasted result in Canvas."
+msgstr ""
+"スターターテンプレートを選び、Canvas の Rich Content Editor のように編集して"
+"から <strong>HTML をコピー</strong> をクリックし、結果を Canvas のページに貼"
+"り付けてください（先に HTML エディタ表示に切り替えてください）。Canvas はサー"
+"バー側で貼り付けた HTML をサニタイズするため、このプレビューは同じ動作を再現"
+"しません。必ず Canvas 上で貼り付け結果を確認してください。"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody2"
-msgid "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them."
-msgstr "<strong>テーマを編集</strong> で CDN プロバイダ、テーマ、モードを変更したり、ダウンロード前に生成された <code>theme.css</code>/<code>theme.js</code> を手動編集できます。"
+msgid ""
+"Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, "
+"and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> "
+"before downloading them."
+msgstr ""
+"<strong>テーマを編集</strong> で CDN プロバイダ、テーマ、モードを変更したり、"
+"ダウンロード前に生成された <code>theme.css</code>/<code>theme.js</code> を手"
+"動編集できます。"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -305,8 +372,12 @@ msgstr "閉じる"
 #: packages/scaffold/src/i18n.json
 #, fuzzy, no-c-format
 msgctxt "cli.scaffold:nextStepsDependencies"
-msgid "2. Installing dependencies (npm install, pnpm install, yarn install or bun install)"
-msgstr "2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun install)"
+msgid ""
+"2. Installing dependencies (npm install, pnpm install, yarn install or bun "
+"install)"
+msgstr ""
+"2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun "
+"install)"
 
 #: packages/scaffold/src/i18n.json
 #, fuzzy, no-c-format
