@@ -101,9 +101,12 @@ export type SpaceLocaleScope = { only: readonly string[] } | { exclude: readonly
 export interface ContentSpaceConfig {
   kind: "content";
   include: readonly string[];
+  /** Directory catalog `#:` references are relative to (repo-root-relative). Defaults to `"."`. */
+  root?: string;
   render: string;
   transientRender: boolean;
-  segment: "block" | "frontmatter";
+  /** `file` translates each source as one whole-Markdown unit; the others split it into leaves. */
+  segment: "file" | "block" | "frontmatter";
   rules?: string;
   locales?: SpaceLocaleScope;
 }

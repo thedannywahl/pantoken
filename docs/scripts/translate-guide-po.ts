@@ -7,8 +7,8 @@ import {
   parsePo,
   refreshCoverageReports,
   serializePo,
-  runExtractGuides,
-  runTranslateGuides,
+  runExtractContent,
+  runTranslateContent,
   writeCatalog,
 } from "@pantoken/i18n-engine";
 import { AiTranslationAdapter } from "./api-translation.ts";
@@ -21,11 +21,11 @@ const docsRoot = join(repoRoot, "docs");
 const locales = parseRequestedLocales(process.env.DOCS_TRANSLATION_LOCALE, NON_ROOT_LOCALES);
 const force = process.env.DOCS_TRANSLATION_FORCE === "1";
 
-runExtractGuides(config, repoRoot);
+runExtractContent(config, repoRoot, "docs.guides");
 const files = listGuideFiles(docsRoot);
 
 for (const locale of locales) {
-  await runTranslateGuides(config, repoRoot, locale);
+  await runTranslateContent(config, repoRoot, "docs.guides", locale);
   const poPath = join(repoRoot, "l10n", locale, "docs.guides.po");
   const entries = parsePo(readFileSync(poPath, "utf8"));
   const adapter = new AiTranslationAdapter(locale);

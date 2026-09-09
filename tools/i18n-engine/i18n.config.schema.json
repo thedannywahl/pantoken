@@ -152,9 +152,10 @@
           "minItems": 1,
           "items": { "type": "string", "minLength": 1 }
         },
+        "root": { "type": "string", "minLength": 1 },
         "render": { "type": "string", "minLength": 1 },
         "transientRender": { "type": "boolean" },
-        "segment": { "enum": ["block", "frontmatter"] },
+        "segment": { "enum": ["file", "block", "frontmatter"] },
         "rules": { "type": "string" },
         "locales": { "$ref": "#/$defs/localeScope" }
       }

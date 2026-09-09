@@ -19,7 +19,16 @@ const MINIMAL_CONFIG = {
     exclude: [],
     tiers: { source: ["en"], primary: ["hu"], secondary: ["*"] },
   },
-  spaces: { "docs.guides": { kind: "content" } },
+  spaces: {
+    "docs.guides": {
+      kind: "content",
+      include: ["docs/guide/**/*.md"],
+      root: "docs",
+      render: "docs/{locale}/guide/{path}",
+      transientRender: false,
+      segment: "file",
+    },
+  },
 };
 
 beforeEach(() => {
