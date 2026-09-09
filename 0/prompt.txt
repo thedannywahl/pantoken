@@ -1,0 +1,98 @@
+running npx create-pantoken-app clobbers with warnings about deprecated versions of glob.  can we update/override?
+```
+npm i
+npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting [REDACTED_EMAIL]
+
+added 672 packages, and audited 673 packages in 38s
+```
+
+pnpm why glob:
+```
+➜ pnpm why glob
+glob@10.5.0
+└─┬ cacache@19.0.1
+  └─┬ make-fetch-happen@14.0.3
+    └─┬ node-gyp@11.5.0
+      └─┬ ttf2woff2@8.0.1
+        └── @pantoken/icon-font@0.1.17 (dependencies)
+
+glob@13.0.6
+├─┬ @bundled-es-modules/glob@13.0.6
+│ └─┬ style-dictionary@5.5.3
+│   ├── @pantoken/sd-config@0.1.6 (dependencies)
+│   └─┬ @tokens-studio/sd-transforms@2.0.3
+│     └── @pantoken/sd-config@0.1.6 (dependencies)
+├─┬ @instructure/instructure-design-tokens@1.0.0
+│ ├── @pantoken/core@0.2.9 (dependencies)
+│ └── @pantoken/tokens@0.3.1 (devDependencies)
+└─┬ svgicons2svgfont@16.0.0
+  └── @pantoken/icon-font@0.1.17 (dependencies)
+
+Found 2 versions of glob
+```
+
+---
+
+it was not: here's the full command chain:
+```
+➜ npx create-pantoken-app@1.0.1
+Need to install the following packages:
+create-pantoken-app@1.0.1
+Ok to proceed? (y) y
+npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting [REDACTED_EMAIL]
+│
+◇  Select a platform to scaffold:
+│  components
+│
+◇  Target directory:
+│  my-web-components
+│
+◇  Done scaffolding.
+✓ my-web-components/.gitignore
+✓ my-web-components/README.md
+✓ my-web-components/index.html
+✓ my-web-components/package.json
+✓ my-web-components/tsconfig.json
+✓ my-web-components/vite.config.ts
+✓ my-web-components/.vscode/extensions.json
+✓ my-web-components/.vscode/settings.json
+✓ my-web-components/src/main.ts
+✓ my-web-components/cssdoc.json
+
+Next steps:
+1. cd my-web-components
+2. Install dependencies: npm install
+3. npm run dev
+test
+➜ cd my-web-components
+my-web-components via  26.8.1
+➜ npm i
+npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting [REDACTED_EMAIL]
+
+added 672 packages, and audited 673 packages in 38s
+
+219 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+npm warn install-scripts 2 packages have install scripts not yet covered by allowScripts:
+npm warn install-scripts   core-js@3.50.0 (postinstall: node -e "try{require('./postinstall')}catch(e){}")
+npm warn install-scripts   ttf2woff2@8.0.1 (install: node install/try-build.js)
+npm warn install-scripts
+npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+my-web-components via  26.8.1
+➜ pwd
+/Users/dwahl/Desktop/test/my-web-components
+```
+
+---
+
+ultimately we need to fix this- I'm also not sure why the fonts package is being imported at all. so we should fix this in the core environment, but also tighten deps on the scaffold scripts.
+
+---
+
+but do we need to override glob in icon-font to prevent warnings for users of that package?  or override/update the versions of any of hte packages in that tree that leads to glob?
+
+---
+
+issue 107 is exactly this, let's leave a comment in our change: https://github.com/nfroidure/ttf2woff2/issues/107
