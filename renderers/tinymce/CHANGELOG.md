@@ -1,5 +1,11 @@
 # @pantoken/tinymce
 
+## 0.2.2
+
+### Patch Changes
+
+- @pantoken/components@1.1.2
+
 ## 0.2.1
 
 ### Patch Changes

@@ -1,5 +1,28 @@
 # CHANGELOG
 
+## 0.2.10
+
+### Patch Changes
+
+- @pantoken/web-components@0.6.2
+  - @pantoken/components@1.1.2
+  - @pantoken/angular@0.1.30
+  - @pantoken/react@0.1.31
+  - @pantoken/svelte@0.1.31
+  - @pantoken/vue@0.1.31
+  - @pantoken/drupal@0.1.27
+  - @pantoken/astro@0.1.19
+  - @pantoken/bootstrap@0.1.3
+  - @pantoken/css-in-js@0.1.15
+  - @pantoken/docusaurus@0.1.3
+  - @pantoken/foundation@0.1.4
+  - @pantoken/mui@0.1.15
+  - @pantoken/pendo@0.3.16
+  - @pantoken/shadcn@0.1.3
+  - @pantoken/storybook@0.1.15
+  - @pantoken/vitepress@0.2.2
+  - @pantoken/cli@0.1.30
+
 ## 0.2.9
 
 ### Patch Changes

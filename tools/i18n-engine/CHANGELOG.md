@@ -1,5 +1,46 @@
 # @pantoken/i18n-engine
 
+## 0.3.0
+
+### Minor Changes
+
+- 28e42c9: Resolve the locale universe from committed catalogs so wildcard tiers actually enumerate.
+
+  `locales.tiers` patterns classify a locale; they can't enumerate one. Reading the set of known
+  locales out of the tier lists meant a `secondary: ["*"]` catch-all contributed nothing, so
+  `translate`, `render`, and `check` silently covered only the handful of tags spelled out
+  explicitly — two locales in this repository, while `lint` and `stats` (which read the `l10n/` tree)
+  reported all 44.
+
+  The new `knownLocales(config, configDir)` is the single source of truth: one locale per committed
+  catalog directory, unioned with any exact tag named in a tier. `contentLocales` and
+  `messagesLocales` now take `configDir` as their second argument.
+
+  Expect previously hidden drift to surface the first time a space is checked after this change: the
+  untranslated entries were always there, just outside the locale set the checker looked at.
+
+- 28e42c9: Translate whole-file content units as Markdown documents.
+
+  A content space with `segment: "file"` now fills its catalog one document per request, with fenced
+  and inline code, package names, escaped angle brackets, and `{{template}}` tokens masked out before
+  the model sees them — the batched JSON prompt used for short keyed strings would have flattened the
+  document's structure. The masking and prompt helpers moved into `@pantoken/translation-adapters`
+  (`preserveMarkdown`, `restoreMarkdown`, `buildMarkdownTranslationPrompt`, `stripMarkdownEnvelope`)
+  so the docs pipeline and the engine share one implementation.
+
+- 28e42c9: Drive content localization spaces from their configuration instead of hard-coded `docs/` paths.
+
+  `include` globs now select a content space's sources, the new `root` field anchors catalog
+  references, and `segment` gained a `file` value for whole-Markdown units (what `docs.guides` always
+  used in practice). Content spaces can also be AI-translated like message spaces, via a `FillOptions`
+  argument on `runTranslateContent`.
+
+  The `docs.guides`/`docs.home` special cases are gone, along with the `runExtractGuides`,
+  `runTranslateGuides`, `runRenderGuides`, `runCheckGuides`, `guidesLocales`, `DOCS_GUIDES`, and
+  `DOCS_HOME` exports. Call the `runExtractContent`/`runTranslateContent`/`runRenderContent`/
+  `runCheckContent` equivalents with an explicit space id instead. Existing catalogs and rendered
+  output are unchanged.
+
 ## 0.2.0
 
 ### Minor Changes
