@@ -3,7 +3,7 @@
   "checkpoint_id": "01M23KKZAKJ8G9D9YB8X64AC3E",
   "strategy": "manual-commit",
   "branch": "components-app-improvements",
-  "checkpoints_count": 2,
+  "checkpoints_count": 3,
   "files_touched": [
     ".changeset/scaffold-remove-readme-render-step.md",
     "packages/scaffold/package.json"
@@ -22,6 +22,13 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": ""
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
+      "prompt": "/2/prompt.txt"
     }
   ],
   "token_usage": {
