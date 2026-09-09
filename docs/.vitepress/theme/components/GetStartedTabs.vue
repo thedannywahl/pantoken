@@ -232,7 +232,7 @@ const highlightColor = computed(() =>
     <div class="gs-started__mode" role="tablist" aria-label="Getting started mode">
       <button
         type="button"
-        class="instui-button -on-color -shape-circle -icon-terminal -without-background -without-border gs-started__mode-btn"
+        class="instui-button -shape-circle -icon-terminal -without-background -without-border gs-started__mode-btn"
         :class="{ 'is-active': activeSurface === 'terminal' }"
         :aria-selected="activeSurface === 'terminal'"
         aria-label="Terminal mode"
@@ -242,7 +242,7 @@ const highlightColor = computed(() =>
       </button>
       <button
         type="button"
-        class="instui-button -on-color -shape-circle -icon-igniteai-logo -without-background -without-border gs-started__mode-btn"
+        class="instui-button -shape-circle -icon-igniteai-logo -without-background -without-border gs-started__mode-btn"
         :class="{ 'is-active': activeSurface === 'agent' }"
         :aria-selected="activeSurface === 'agent'"
         aria-label="Agent shell mode"
@@ -387,10 +387,13 @@ const highlightColor = computed(() =>
   cursor: pointer;
   transition: transform 180ms ease;
   color-scheme: dark;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--vp-c-text-1) 18%, transparent);
 }
 
-.gs-started__mode-btn.on-color {
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--vp-c-text-1) 18%, transparent);
+/* The stage behind these buttons is always the same dark navy gradient regardless of light/dark
+   mode, so the icon must stay white in every state — beat `.instui-button.-without-background`'s
+   own (theme-dependent) color with the extra `.instui-button` class match. */
+.instui-button.gs-started__mode-btn {
   color: var(--instui-primitive-color-white);
 }
 
