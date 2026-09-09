@@ -5,7 +5,8 @@ name: Release
 #    version bumps + per-package CHANGELOGs);
 #  - once that PR merges (no changesets left), it publishes the bumped packages to npm with provenance
 #    (via `release:publish` → scripts/release/publish-npm.ts, the npm CLI) and cuts a GitHub release per
-#    package from the script's `New tag:` stdout.
+#    package from the script's `New tag:` stdout. That path also uploads a `docs-deploy-request`
+#    artifact, which is what lets `docs.yml` publish the site for released versions only.
 #
 # Token-free npm auth: publishing uses npm OIDC "trusted publishing" (`id-token: write` + `npm publish`),
 # not an `NPM_TOKEN`. Requires (one-time):
@@ -305,3 +306,24 @@ jobs:
               --title "$tag" \
               --notes-file "$notes"
           done
+
+      # The docs site tracks published versions, not intermediate main commits. `docs.yml` runs on
+      # `workflow_run` after this workflow and deploys only when this artifact exists, so a Version PR
+      # run (or a run that published nothing) leaves the live site alone. An artifact is the signal
+      # because `workflow_run` can't read a triggering run's job outputs.
+      - name: Record the released tags
+        if: steps.mode.outputs.will_publish == 'true' && steps.packs.outputs.found == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          jq -r '.[].tag' "$RUNNER_TEMP/pantoken-releases.json" > "$RUNNER_TEMP/docs-deploy-request.txt"
+          echo "Requesting a docs deploy for:"
+          cat "$RUNNER_TEMP/docs-deploy-request.txt"
+
+      - name: Request a docs deploy
+        if: steps.mode.outputs.will_publish == 'true' && steps.packs.outputs.found == 'true'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: docs-deploy-request
+          path: ${{ runner.temp }}/docs-deploy-request.txt
+          retention-days: 1
