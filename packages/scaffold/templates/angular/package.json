@@ -27,10 +27,12 @@
   },
   "allowScripts": {
     "core-js": true,
+    "fsevents": true,
     "ttf2woff2": true
   },
   "trustedDependencies": [
     "core-js",
+    "fsevents",
     "ttf2woff2"
   ]
 }

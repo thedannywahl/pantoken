@@ -67,6 +67,24 @@ test("scaffolds a platform with projectName substituted", async () => {
   expect(pkg).not.toContain("{{projectName}}");
 });
 
+test("scaffolded package managers pre-approve known transitive install scripts", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-install-scripts-"));
+  const target = join(dir, "my-app");
+  await scaffoldProject("components", target);
+
+  const pkg = JSON.parse(readFileSync(join(target, "package.json"), "utf8")) as {
+    allowScripts?: Record<string, boolean>;
+    trustedDependencies?: string[];
+  };
+  const workspace = readFileSync(join(target, "pnpm-workspace.yaml"), "utf8");
+
+  expect(pkg.allowScripts).toMatchObject({ "core-js": true, fsevents: true, ttf2woff2: true });
+  expect(pkg.trustedDependencies).toEqual(
+    expect.arrayContaining(["core-js", "fsevents", "ttf2woff2"]),
+  );
+  expect(workspace).toContain("fsevents: true");
+});
+
 test("defaults every scaffold's pantoken CSS import to the rebrand/light theme", async () => {
   const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-theme-default-"));
   const target = join(dir, "my-app");

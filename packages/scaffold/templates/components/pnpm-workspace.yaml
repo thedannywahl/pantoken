@@ -1,7 +1,8 @@
-# core-js/ttf2woff2 arrive transitively via @pantoken/pantoken; pre-approve their install scripts
+# core-js/fsevents/ttf2woff2 arrive transitively; pre-approve their install scripts
 # so `pnpm install` doesn't fail/warn under pnpm's default strictDepBuilds gate.
 allowBuilds:
   core-js: true
+  fsevents: true
   ttf2woff2: true
 # @pantoken/tokens pulls in a git-resolved upstream dependency several levels deep; pnpm's default
 # blockExoticSubdeps gate otherwise fails the install with ERR_PNPM_EXOTIC_SUBDEP.
