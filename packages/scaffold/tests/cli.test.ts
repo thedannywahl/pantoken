@@ -10,6 +10,7 @@ import {
   createScaffoldCommand,
   detectPackageManager,
   expandHome,
+  installWithSpinner,
   printNextSteps,
   resolveScaffoldTarget,
   runScaffoldCli,
@@ -33,6 +34,19 @@ vi.mock("@clack/prompts", async (importOriginal) => {
     isCancel: (value: unknown) => value === CANCEL_SYMBOL,
     cancel: vi.fn(),
     spinner: vi.fn(() => ({ start: vi.fn(), stop: vi.fn() })),
+  };
+});
+
+// Real installs would hit the network; only pass through to spawn the "bin" black-box subprocess.
+vi.mock("node:child_process", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("node:child_process")>();
+  return {
+    ...actual,
+    execFileSync: vi.fn((command: string, args?: readonly string[], options?: object) =>
+      command === "node"
+        ? actual.execFileSync(command, args as string[], options as never)
+        : Buffer.from(""),
+    ),
   };
 });
 
@@ -214,11 +228,72 @@ test("printNextSteps uses the generic fallback (with detected dev script) for pl
   expect(printed).toContain("pnpm run dev");
 });
 
+test("printNextSteps collapses to a single 'Get started' dev step when installed", async () => {
+  const dir = mktemp();
+  const target = join(dir, "my-react-app");
+  const written = await scaffoldWithSpinner("react", target, t);
+
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  process.env.npm_config_user_agent = "pnpm/9.0.0 node/22";
+  let printed: string;
+  try {
+    printNextSteps(target, written, t, "react", true);
+    printed = logSpy.mock.calls.map((call: unknown[]) => call.join(" ")).join("\n");
+  } finally {
+    delete process.env.npm_config_user_agent;
+    logSpy.mockRestore();
+  }
+
+  expect(printed).toContain("Get started:");
+  expect(printed).toContain(`1. cd ${target} && pnpm run dev`);
+  expect(printed).not.toContain("pnpm install");
+});
+
+test("printNextSteps collapses canvas-theme-editor's authored steps to the dev step when installed", async () => {
+  const dir = mktemp();
+  const target = join(dir, "my-theme-app");
+  const written = await scaffoldWithSpinner("canvas-theme-editor", target, t);
+
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  process.env.npm_config_user_agent = "pnpm/9.0.0 node/22";
+  let printed: string;
+  try {
+    printNextSteps(target, written, t, "canvas-theme-editor", true);
+    printed = logSpy.mock.calls.map((call: unknown[]) => call.join(" ")).join("\n");
+  } finally {
+    delete process.env.npm_config_user_agent;
+    logSpy.mockRestore();
+  }
+
+  expect(printed).toContain("Get started:");
+  expect(printed).toContain(`1. cd ${target} && pnpm run dev`);
+  expect(printed).not.toContain("pnpm install");
+  expect(printed).toContain("Theme Editor");
+});
+
 test("canvas-theme-editor's scaffolded output doesn't include scaffold.json", async () => {
   const dir = mktemp();
   const target = join(dir, "my-theme-app");
   const written = await scaffoldWithSpinner("canvas-theme-editor", target, t);
   expect(written.some((p) => p.endsWith("scaffold.json"))).toBe(false);
+});
+
+// ---------------------------------------------------------------------------
+// installWithSpinner
+// ---------------------------------------------------------------------------
+
+test("installWithSpinner returns true and starts/stops the spinner on success", () => {
+  const dir = mktemp();
+  expect(installWithSpinner(dir, "npm", t)).toBe(true);
+  expect(spinner).toHaveBeenCalled();
+});
+
+test("installWithSpinner returns false when the install command fails", () => {
+  const dir = mktemp();
+  vi.mocked(execFileSync).mockImplementationOnce(() => {
+    throw new Error("network unreachable");
+  });
+  expect(installWithSpinner(dir, "npm", t)).toBe(false);
 });
 
 // ---------------------------------------------------------------------------
@@ -318,6 +393,7 @@ afterEach(() => {
   stderrSpy.mockRestore();
   vi.mocked(select).mockReset();
   vi.mocked(text).mockReset();
+  vi.mocked(execFileSync).mockClear();
 });
 
 test("createScaffoldCommand builds a command named after the given name", () => {
@@ -387,11 +463,31 @@ test("no args on a TTY prompts for platform and directory, then scaffolds", asyn
   expect(existsSync(join(target, "package.json"))).toBe(true);
 });
 
-test("scaffolds and prints next steps when --dir is given", async () => {
+test("scaffolds, installs dependencies automatically, and prints a single 'Get started' step", async () => {
   const dir = mktemp();
   const target = join(dir, "my-app");
   await runScaffoldCli(["react", "--dir", target, "--yes"], { usageCommand: "pantoken-scaffold" });
   expect(existsSync(join(target, "package.json"))).toBe(true);
+  expect(vi.mocked(execFileSync)).toHaveBeenCalledWith(
+    expect.any(String),
+    ["install"],
+    expect.objectContaining({ cwd: target }),
+  );
+  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Get started"));
+});
+
+test("--no-install skips the automatic install and keeps the full 'Next steps' block", async () => {
+  const dir = mktemp();
+  const target = join(dir, "my-app");
+  await runScaffoldCli(["react", "--dir", target, "--yes", "--no-install"], {
+    usageCommand: "pantoken-scaffold",
+  });
+  expect(existsSync(join(target, "package.json"))).toBe(true);
+  expect(vi.mocked(execFileSync)).not.toHaveBeenCalledWith(
+    expect.any(String),
+    ["install"],
+    expect.anything(),
+  );
   expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Next steps"));
 });
 
@@ -468,7 +564,9 @@ test("bin --help does not scaffold anything", () => {
 test("bin prints an install command and substitutes projectName", () => {
   const dir = mktemp();
   const target = join(dir, "my-app");
-  const output = execFileSync("node", [bin, "react", "--dir", target], { encoding: "utf8" });
+  const output = execFileSync("node", [bin, "react", "--dir", target, "--no-install"], {
+    encoding: "utf8",
+  });
   expect(output).toContain("install");
   expect(existsSync(join(target, "package.json"))).toBe(true);
   expect(readFileSync(join(target, "package.json"), "utf8")).toContain('"name": "my-app"');
