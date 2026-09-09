@@ -196,3 +196,16 @@ test("run builds the icon font (ttf, woff2, css, codepoints)", async () => {
   // The real font pipeline (arc→outline→ttf→woff2 over the whole icon set) runs ~10-15s, well past
   // vitest's 5s default — give it room so a cold run doesn't time out.
 }, 60_000);
+
+test("icon-font reports a clear error when the optional @pantoken/icon-font peer is missing", async () => {
+  vi.doMock("@pantoken/icon-font", () => {
+    throw new Error("Cannot find package '@pantoken/icon-font'");
+  });
+  try {
+    await expect(run(["generate", "icon-font", "--out", "/tmp/x"])).rejects.toThrow(
+      /requires @pantoken\/icon-font/,
+    );
+  } finally {
+    vi.doUnmock("@pantoken/icon-font");
+  }
+});
