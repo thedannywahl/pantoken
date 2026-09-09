@@ -1,0 +1,76 @@
+we still end up with some inconsistencies in translations, after all the changes on this branch I ran:
+`vpr i18n:translate:copilot`
+but CI still fails on drift check:
+```
+cli.scaffold — translation drift by surface:
+  cli.scaffold: 4 unit(s) in 1 file(s), 1 locale(s) — blocks
+
+✗ cli.scaffold: 4 blocking drift finding(s) across 1 file(s):
+  [cli.scaffold] packages/scaffold/src/i18n.json — 4 in 1 locale(s)
+    locales: hu
+    - Untranslated: "getStartedHeading" (English: Get started:)
+    - Untranslated: "installSpinnerStart" (English: Installing dependencies...)
+    - Untranslated: "installSpinnerStop" (English: Dependencies installed.)
+Error: cli.scaffold: 4 untranslated/drifted unit(s) across 1 locale(s) (hu). Fix with `i18n translate cli.scaffold && i18n render cli.scaffold`.
+
+Blocking translation drift. Run `i18n translate cli.scaffold && i18n render cli.scaffold` locally, then commit the updated translation cache. Loosen or tighten what blocks in `i18n.config.json`.
+
+---
+vp run: 2/156 cache hit (1%), 10.83s saved, 1 failed. @pantoken/interactions#build (and 6 more) not cached because they modified their inputs. (Run `vp run --last-details` for full details)
+Error: Process completed with exit code 1.
+```
+
+---
+
+Research the i18n/localization pipeline in the pantoken workspace at /Users/dwahl/Scripts/pantoken. This is READ-ONLY research; do not modify files.
+
+Goal: understand why running `vpr i18n:translate:copilot` did not resolve a CI drift-check failure for the surface `cli.scaffold`, specifically untranslated keys "getStartedHeading", "installSpinnerStart", "installSpinnerStop" in locale `hu`, reported against `packages/scaffold/src/i18n.json`.
+
+Please report on (be thorough):
+1. `i18n.config.json` at repo root — full contents: surface definitions, which surfaces block, extract/render/translate config, locale lists, and how `cli.scaffold` is configured (source files, pot file, output path).
+2. The full set of i18n-related scripts/tasks: search `package.json` files and `vite.config.ts` tasks for names matching `i18n` (e.g. `i18n:translate:copilot`, `i18n:extract`, `i18n:render`, `i18n:check`, drift check). Give exact command definitions and what each does. Where is the `i18n` CLI binary from (a workspace tool under tools/ or an external dep)? Find its source and describe the translate/render/check subcommand behavior — especially the "copilot" translate provider vs other providers.
+3. How `packages/scaffold/src/i18n.json` is produced (render step?) and how the l10n PO/POT files under `l10n/` (cli.scaffold.pot, l10n/hu/*) relate. Show whether hu PO file contains entries for the three keys, and whether the pot file has them.
+4. Any known gotchas: check /memories/repo/i18n-localization.md, docs/engineering-log.md, docs/conventions/build-and-docs.md for i18n notes.
+5. Where the three strings originate in the scaffold source (grep for getStartedHeading, installSpinnerStart, installSpinnerStop) — which files define them and whether they were recently added on this branch (check git log/diff for those files if useful).
+6. The exact CI workflow step that runs the drift check (.github/workflows/*.yml) and the command it runs.
+
+Report concrete file paths, exact command strings, and quoted config snippets.
+
+---
+
+docs spaces should be included. address teh dead cli options.
+
+---
+
+READ-ONLY research in /Users/dwahl/Scripts/pantoken. Do not modify any files.
+
+Context: We are fixing a bug in `tools/i18n-engine` where `runTranslateMessages` never regenerates the POT template from source (it only runs msgmerge PO<-POT), so newly added keys never reach translation. We're extending scope to (a) the docs.* spaces and (b) the dead CLI options on `i18n translate`.
+
+Please investigate and report in detail:
+
+## Part A — docs.* spaces POT freshness
+
+1. From `i18n.config.json`, list every space with `kind` != "messages" (docs.home, docs.chrome, docs.demos, docs.guides, docs.api) — give each one's `kind`, `source` config, and any extra fields. Quote the exact JSON for the `spaces` block.
+2. In `tools/i18n-engine/src/pipeline.ts`, read `runExtractContent`, `runExtractGuides`, `runTranslateContent`, `runTranslateGuides`, `runRenderContent`, `runRenderGuides`, `runCheckContent`, `runCheckGuides`, and the shared `mergeAndCount` helper. For EACH: does the translate path regenerate the POT before msgmerge, or does it read a possibly-stale committed POT? Does the check path re-extract from source (like runCheckMessages does)? Quote the relevant lines with line numbers.
+3. Does `docs.api` go through the engine at all, or through `docs/scripts/build-api-locales.ts` / `build-api-en.ts`? There is a known prior fix where `build-api-locales.ts` gained a `refreshApiPot()` call. Confirm it exists and describe it. Also check `docs/scripts/translate-guide-po.ts` and any other docs/scripts/*.ts that write to l10n/*.pot or l10n/{locale}/*.po — list which POTs each script regenerates.
+4. For docs.home, docs.chrome, docs.demos: what regenerates `l10n/docs.home.pot`, `l10n/docs.chrome.pot`, `l10n/docs.demos.pot`? Search all package.json scripts and vite.config.ts tasks for anything that runs an extract for these. Is there a gap (POT never regenerated) equivalent to the messages-space bug?
+5. Concretely test for staleness: for each of docs.home/docs.chrome/docs.demos/docs.guides, compare the POT contents against the current source. If cheap, describe how one would verify staleness rather than actually running builds. Note the source file globs from config.
+6. List the exact package.json scripts and vite.config.ts tasks for the docs surfaces: docs:translate*, docs:locales:translate*, docs:check:drift, docs:api:en, docs:api:locales, docs:chrome:locales*, docs:demos*, docs:guides:locales*. Give exact command strings.
+
+## Part B — dead CLI options on `i18n translate`
+
+7. In `tools/i18n-engine/src/cli.ts`, the `translate` command declares `--provider <provider>`, `--concurrency <n>`, and `--force`, but the action only destructures `opts.locale`. Confirm this and quote the code. Also check whether `--tier <tier>` is used or dead.
+8. Find what `config.provider` is: read the I18nConfig type (likely `tools/i18n-engine/src/config.ts` or types file) and show the `provider` shape (profiles? default? concurrency? command/args?). Quote the config's `provider`/`providers` block from `i18n.config.json`.
+9. Read `tools/i18n-engine/src/ai-translate.ts` fully: how does `fillUntranslatedEntries` use the provider — does it read env vars `I18N_TRANSLATION_COMMAND`/`I18N_TRANSLATION_COMMAND_ARGS` directly, or the config provider object? Is there any concurrency/batching already (batch size, parallelism)? Is there any "force"/skip-if-translated logic that `--force` would override?
+10. How do the `:force` variants currently work in vite.config.ts / package.json? Grep showed `ui:translate:force` runs the exact same command as `ui:translate` (i.e. force is a lie for messages spaces). Confirm. What does `docs:locales:translate:force` actually do differently — find the docs script and the env var or flag it sets (e.g. a FORCE env var).
+11. Does `--tier` map to the `locales.tiers` config (source/primary/secondary)? Find `messagesLocales`, `contentLocales`, `guidesLocales` helpers and show how they select locales, and whether a tier filter exists anywhere.
+
+Report exact file paths, line numbers, and quoted snippets. Be thorough.
+
+---
+
+Start implementation
+
+---
+
+create changesets, incremental conventional commits, and push.
