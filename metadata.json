@@ -3,7 +3,7 @@
   "checkpoint_id": "01M23MM7SD04G1R8SNM6AMWNKW",
   "strategy": "manual-commit",
   "branch": "components-app-improvements",
-  "checkpoints_count": 3,
+  "checkpoints_count": 4,
   "files_touched": [
     "l10n/ar/cli.scaffold.po",
     "l10n/ar/docs.api.po",
@@ -274,6 +274,13 @@
       "compact_transcript": "/2/transcript.jsonl",
       "content_hash": "/2/content_hash.txt",
       "prompt": "/2/prompt.txt"
+    },
+    {
+      "metadata": "/3/metadata.json",
+      "transcript": "/3/full.jsonl",
+      "compact_transcript": "/3/transcript.jsonl",
+      "content_hash": "/3/content_hash.txt",
+      "prompt": "/3/prompt.txt"
     }
   ],
   "token_usage": {
