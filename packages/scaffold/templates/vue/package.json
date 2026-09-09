@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@pantoken/css": "latest",
-    "@pantoken/plugin-layouts": "latest",
+    "@pantoken/interactions": "latest",
     "@pantoken/vue": "latest",
     "vue": "^3.5.41"
   },

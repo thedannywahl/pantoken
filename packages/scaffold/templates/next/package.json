@@ -9,8 +9,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@pantoken/interactions": "latest",
     "@pantoken/next": "latest",
-    "@pantoken/plugin-layouts": "latest",
     "next": "^16.2.11",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"

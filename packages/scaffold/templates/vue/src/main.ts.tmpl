@@ -2,7 +2,7 @@ import { createApp } from "vue";
 import { PantokenVue } from "@pantoken/vue";
 // Defines every --instui-* custom property this app can reference.
 {{pantokenCssImport}}
-import "@pantoken/plugin-layouts/layouts.css";
+import "@pantoken/interactions/interactions.iife.js"; // wires up modal, tooltip, and other component behaviors
 import App from "./App.vue";
 
 createApp(App).use(PantokenVue).mount("#app");
