@@ -18,6 +18,26 @@ import { PRESET_LEDGER } from "../generated/preset-ledger.ts";
 import { localeDirection } from "./locale.ts";
 import { themeStylesheetImport, type ThemeMode, type ThemeVariant } from "./theme.ts";
 
+/** Package managers whose commands can be reflected in scaffolded project files. */
+export type ScaffoldPackageManager = "npm" | "pnpm" | "yarn" | "bun" | "deno" | "vp";
+
+interface ScaffoldProjectOptions {
+  theme?: ThemeVariant;
+  mode?: ThemeMode;
+  cdn?: string;
+  locale?: string;
+  packageManager?: ScaffoldPackageManager;
+}
+
+const SCAFFOLD_PM_COMMANDS: Record<ScaffoldPackageManager, { install: string; dev: string }> = {
+  npm: { install: "npm install", dev: "npm run dev" },
+  pnpm: { install: "pnpm install", dev: "pnpm run dev" },
+  yarn: { install: "yarn install", dev: "yarn run dev" },
+  bun: { install: "bun install", dev: "bun run dev" },
+  deno: { install: "deno install", dev: "deno task dev" },
+  vp: { install: "vp install", dev: "vp run dev" },
+};
+
 export {
   themeStylesheetImport,
   validateThemeMode,
@@ -81,18 +101,53 @@ function writeScaffoldFile(path: string, content: string | Buffer): void {
   writeFileSync(path, content);
 }
 
+function shouldWriteScaffoldFile(
+  file: string,
+  packageManager: ScaffoldPackageManager | undefined,
+): boolean {
+  return (
+    file !== "pnpm-workspace.yaml" ||
+    !packageManager ||
+    packageManager === "pnpm" ||
+    packageManager === "vp"
+  );
+}
+
+function applyPackageManagerCommands(
+  file: string,
+  content: string | Buffer,
+  packageManager: ScaffoldPackageManager | undefined,
+): string | Buffer {
+  if (!packageManager || file !== "README.md" || typeof content !== "string") return content;
+  const commands = SCAFFOLD_PM_COMMANDS[packageManager];
+  return content
+    .replaceAll("npm install", commands.install)
+    .replaceAll("npm run dev", commands.dev);
+}
+
 /** Renders `resolvedPlatform`'s Bingo preset (if any) into `dir`; `[]` if there's no preset or it throws. */
-function writePresetFiles(resolvedPlatform: string, dir: string, projectName: string): string[] {
+function writePresetFiles(
+  resolvedPlatform: string,
+  dir: string,
+  projectName: string,
+  packageManager: ScaffoldPackageManager | undefined,
+): string[] {
   const preset = PRESET_LEDGER[resolvedPlatform as keyof typeof PRESET_LEDGER];
   if (!preset) return [];
 
   try {
     const creation = producePreset(preset, { offline: true, options: { name: projectName } });
-    return Object.entries(creation.files ?? {}).map(([file, rawContent]) => {
+    return Object.entries(creation.files ?? {}).flatMap(([file, rawContent]) => {
+      if (!shouldWriteScaffoldFile(file, packageManager)) return [];
       const path = join(dir, file);
-      const content = rawContent instanceof ArrayBuffer ? Buffer.from(rawContent) : rawContent;
+      const baseContent = rawContent instanceof ArrayBuffer ? Buffer.from(rawContent) : rawContent;
+      const content = applyPackageManagerCommands(
+        file,
+        baseContent as string | Buffer,
+        packageManager,
+      );
       writeScaffoldFile(path, content as string | Buffer);
-      return path;
+      return [path];
     });
   } catch {
     return []; // Preset threw — the caller falls back to the legacy template system.
@@ -105,19 +160,22 @@ function writeLegacyTemplateFiles(
   dir: string,
   locale: string,
   substitutions: Readonly<Record<string, string>>,
+  packageManager: ScaffoldPackageManager | undefined,
 ): string[] {
   const templates = SCAFFOLDS[resolvedPlatform as keyof typeof SCAFFOLDS];
   if (!templates) return [];
   const localized = { ...templates, ...SCAFFOLD_OVERLAYS[locale]?.[resolvedPlatform] };
 
-  return Object.entries(localized).map(([file, content]) => {
+  return Object.entries(localized).flatMap(([file, content]) => {
+    if (!shouldWriteScaffoldFile(file, packageManager)) return [];
     const substituted = Object.entries(substitutions).reduce(
       (text, [token, value]) => text.replaceAll(`{{${token}}}`, value),
       content,
     );
+    const resolved = applyPackageManagerCommands(file, substituted, packageManager) as string;
     const path = join(dir, file);
-    writeScaffoldFile(path, substituted);
-    return path;
+    writeScaffoldFile(path, resolved);
+    return [path];
   });
 }
 
@@ -169,7 +227,7 @@ function writeCanvasThemeEditorAssets(
 export async function scaffoldProject(
   platform: string,
   dir = ".",
-  options?: { theme?: ThemeVariant; mode?: ThemeMode; cdn?: string; locale?: string },
+  options?: ScaffoldProjectOptions,
 ): Promise<string[]> {
   const resolvedPlatform = resolveScaffoldPlatform(platform);
   const projectName = dir === "." ? "pantoken-app" : (dir.split("/").pop() ?? "pantoken-app");
@@ -183,9 +241,17 @@ export async function scaffoldProject(
 
   // Bingo presets with no blocks yet (or a failed render) produce no files — fall back to the
   // legacy scaffold template system so every platform still scaffolds something.
-  const written = writePresetFiles(resolvedPlatform, dir, projectName);
+  const written = writePresetFiles(resolvedPlatform, dir, projectName, options?.packageManager);
   if (written.length === 0) {
-    written.push(...writeLegacyTemplateFiles(resolvedPlatform, dir, locale, substitutions));
+    written.push(
+      ...writeLegacyTemplateFiles(
+        resolvedPlatform,
+        dir,
+        locale,
+        substitutions,
+        options?.packageManager,
+      ),
+    );
   }
   written.push(...writeCanvasThemeEditorAssets(resolvedPlatform, dir, options));
 

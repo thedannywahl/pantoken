@@ -31,6 +31,7 @@ import {
   SCAFFOLD_PLATFORMS,
   isScaffoldPlatform as checkScaffoldPlatform,
   resolveScaffoldPlatform,
+  type ScaffoldPackageManager,
 } from "./index.ts";
 import { scaffoldProject } from "./index.ts";
 import {
@@ -239,7 +240,13 @@ export async function scaffoldWithSpinner(
   platform: string,
   dir: string,
   t: LocaleLookup["t"],
-  options?: { theme?: ThemeVariant; mode?: ThemeMode; cdn?: string; locale?: string },
+  options?: {
+    theme?: ThemeVariant;
+    mode?: ThemeMode;
+    cdn?: string;
+    locale?: string;
+    packageManager?: ScaffoldPackageManager;
+  },
 ): Promise<string[]> {
   const s = spinner();
   s.start(t("spinnerStart"));
@@ -534,18 +541,20 @@ export function createScaffoldCommand(options?: ScaffoldCommandOptions): Command
         t,
       });
       const expandedDir = expandHome(dir);
+      const packageManager = detectPackageManager();
       const written = await scaffoldWithSpinner(platform, expandedDir, t, {
         theme: opts.theme as ThemeVariant | undefined,
         mode: opts.themeMode as ThemeMode | undefined,
         cdn: opts.cdn as string | undefined,
         locale,
+        packageManager,
       });
       for (const path of written) {
         console.log(t("wroteFile", { path }));
       }
       const installed =
         (opts.install as boolean | undefined) !== false &&
-        installWithSpinner(expandedDir, detectPackageManager(), t);
+        installWithSpinner(expandedDir, packageManager, t);
       // Once dependencies are installed, cwd into the scaffolded dir so the single remaining
       // printed next step can be just the dev command. If install failed or was skipped, keep the
       // original target path visible in the full recovery steps.

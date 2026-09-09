@@ -85,6 +85,21 @@ test("scaffolded package managers pre-approve known transitive install scripts",
   expect(workspace).toContain("fsevents: true");
 });
 
+test("bun-scaffolded projects use bun README commands and omit pnpm workspace config", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-bun-"));
+  const target = join(dir, "my-app");
+  await scaffoldProject("components", target, { packageManager: "bun" });
+
+  const readme = readFileSync(join(target, "README.md"), "utf8");
+
+  expect(existsSync(join(target, "package.json"))).toBe(true);
+  expect(existsSync(join(target, "pnpm-workspace.yaml"))).toBe(false);
+  expect(readme).toContain("bun install");
+  expect(readme).toContain("bun run dev");
+  expect(readme).not.toContain("npm install");
+  expect(readme).not.toContain("npm run dev");
+});
+
 test("defaults every scaffold's pantoken CSS import to the rebrand/light theme", async () => {
   const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-theme-default-"));
   const target = join(dir, "my-app");

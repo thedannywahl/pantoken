@@ -56,6 +56,24 @@ test("accepts the html alias for components", () => {
   expect(existsSync(join(target, "package.json"))).toBe(true);
 });
 
+test("bun-created apps use bun commands and omit pnpm workspace config", () => {
+  const dir = mkdtempSync(join(tmpdir(), "create-pantoken-app-bun-"));
+  const target = join(dir, "my-app");
+  const output = execFileSync("node", [bin, "html", "--dir", target, "--no-install"], {
+    encoding: "utf8",
+    env: { ...process.env, npm_config_user_agent: "bun/1.2.0 npm/? node/22" },
+  });
+  const readme = readFileSync(join(target, "README.md"), "utf8");
+
+  expect(existsSync(join(target, "package.json"))).toBe(true);
+  expect(existsSync(join(target, "pnpm-workspace.yaml"))).toBe(false);
+  expect(output).toContain("bun install");
+  expect(output).toContain("bun run dev");
+  expect(output).not.toContain("npm run dev");
+  expect(readme).toContain("bun install");
+  expect(readme).toContain("bun run dev");
+});
+
 test("generate <target> delegates to @pantoken/cli instead of scaffolding", () => {
   const dir = mkdtempSync(join(tmpdir(), "create-pantoken-app-generate-"));
   execFileSync("node", [bin, "generate", "vanilla", "--out", dir], { encoding: "utf8" });

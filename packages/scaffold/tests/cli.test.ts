@@ -542,6 +542,31 @@ test("chdirs into a non-'.' target dir so the printed next step never needs a se
   expect(devStep).not.toContain("cd ");
 });
 
+test("bun-created apps omit pnpm workspace config and print bun next steps", async () => {
+  const dir = mktemp();
+  const target = join(dir, "my-app");
+  const originalUserAgent = process.env.npm_config_user_agent;
+  process.env.npm_config_user_agent = "bun/1.2.0 npm/? node/22";
+  try {
+    await runScaffoldCli(["react", "--dir", target, "--yes"], {
+      usageCommand: "pantoken-scaffold",
+    });
+    const printed = logSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("\n");
+    const readme = readFileSync(join(target, "README.md"), "utf8");
+
+    expect(existsSync(join(target, "package.json"))).toBe(true);
+    expect(existsSync(join(target, "pnpm-workspace.yaml"))).toBe(false);
+    expect(printed).toContain("bun run dev");
+    expect(printed).not.toContain("npm run dev");
+    expect(readme).toContain("bun install");
+    expect(readme).toContain("bun run dev");
+    expect(readme).not.toContain("npm run dev");
+  } finally {
+    if (originalUserAgent === undefined) delete process.env.npm_config_user_agent;
+    else process.env.npm_config_user_agent = originalUserAgent;
+  }
+});
+
 test("keeps the target directory in next steps when automatic install fails", async () => {
   const dir = mktemp();
   const target = join(dir, "my-app");
