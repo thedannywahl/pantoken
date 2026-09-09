@@ -1,0 +1,39 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M23G86B45T53CREC3T7JW2CG",
+  "session_id": "0c5ca432-3627-43d3-8037-33b5d36c011b",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-09T16:33:08.338931Z",
+  "branch": "components-app-improvements",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    ".fallowrc.jsonc"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "8dd01bb9ef5a",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-09T16:33:08.320508Z",
+    "agent_lines": 7,
+    "agent_removed": 3,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 7,
+    "total_lines_changed": 10,
+    "agent_percentage": 100,
+    "metric_version": 2
+  }
+}

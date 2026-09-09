@@ -1,0 +1,161 @@
+it looks like the layout didn't actually get migrated to the index.html that's a gap.
+
+---
+
+so the scaffold sill correctly outputs the layout template html that was formerly in the ts file?
+
+---
+
+this change trips fallow, we need a comprehensive solution for the scaffolds to not look like dead code:
+```
+[](https://github.com/thedannywahl/pantoken/actions/runs/34363166118/job/102505692477?pr=132#step:6:2499)
+      
+      ~/packages/pantoken$ node scripts/generate-custom-data.ts ◉ cache hit, replaying
+
+    
+
+  
+
+    
+      
+      
+      pantoken meta: generated VS Code custom data and cssdoc model (674 class entries, 4683 token properties, 87 model entries)
+
+    
+
+  
+
+  
+
+    
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      $ node scripts/quality/fallow-health-gate.ts
+
+    
+
+  
+
+    
+      
+      
+      unused-file:packages/scaffold/templates/components/src/style.css
+
+    
+
+  
+
+    
+      
+      
+      ✗ fallow dead-code gate failed
+
+    
+
+  
+
+    
+      
+      
+      ✓ fallow health: 84.7 (B)
+
+    
+
+  
+
+    
+      
+      
+      ✗ fallow regression gate: findings grew beyond fallow-baseline.json
+
+    
+
+  
+
+    
+      
+      
+      ── Unused Code ─────────────────────────────────────
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      ● Unused files (1)
+
+    
+
+  
+
+    
+      
+      
+        packages/scaffold/templates/components/src/style.css
+
+    
+
+  
+
+    
+      
+      
+        Files not reachable from any entry point — [https://docs.fallow.tools/explanations/dead-code#unused-files](https://docs.fallow.tools/explanations/dead-code#unused-files)
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      ✓ fallow duplication: within the .fallowrc threshold
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      ---
+```
