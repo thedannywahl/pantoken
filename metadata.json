@@ -1,0 +1,37 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M21Z4DV8A7Q65THVW8WSRP2B",
+  "strategy": "manual-commit",
+  "branch": "exotic-subdeps",
+  "checkpoints_count": 2,
+  "files_touched": [
+    ".gitignore",
+    "docs/.vitepress/config.ts",
+    "docs/public/book-check-dark.svg",
+    "docs/public/book-check-light.svg",
+    "docs/public/favicon.ico",
+    "docs/public/favicon.png",
+    "docs/public/package-dark.svg",
+    "docs/public/package-light.svg",
+    "docs/public/unlink-dark.svg",
+    "docs/public/unlink-light.svg",
+    "docs/public/workflow-dark.svg",
+    "docs/public/workflow-light.svg"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": ""
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
