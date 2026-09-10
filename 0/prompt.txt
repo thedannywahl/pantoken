@@ -1,0 +1,3 @@
+docs deploy is still failing, use `gh` cli to investigate and remediate. As a reminder this is the first deploy that we're seeding with all translated content which is thousands of pages, after that incremental deploys should be considerably smaller.
+use changesets, conventional commits, and push as necessary.
+https://github.com/thedannywahl/pantoken/actions/runs/34429766901/job/102722602326
