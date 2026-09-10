@@ -1,0 +1,12 @@
+we should not be inventing utility classes for pendo, the html it gives us is static and immutable.
+
+---
+
+Value 'netlify' is not valid
+
+---
+
+further info is:
+The name of the environment used by the job.
+
+Available expression contexts: github, inputs, vars, needs, strategy, matrix
