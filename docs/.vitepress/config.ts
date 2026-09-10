@@ -408,6 +408,23 @@ const searchLocales = Object.fromEntries(
 // building for alternative environments (for example, a project-site path on github.io).
 const base = process.env.DOCS_BASE ?? "/";
 
+// VitePress SSR-renders pages with `buildConcurrency` (default 64) in flight at once, and every
+// in-flight page holds its rendered HTML, head tags, and Vue SSR context alive. At ~39k pages
+// (43 locales x the generated API tree) that peak is what pushes the 16 GB deploy runner past
+// physical memory, which the kernel resolves by killing the runner agent — the job just reports
+// "the runner has received a shutdown signal". Lowering the ceiling trades a little wall clock for
+// a build that finishes. See .github/workflows/docs.yml.
+const buildConcurrency = Number(process.env.DOCS_BUILD_CONCURRENCY ?? 64);
+
+// The local-search plugin runs a SECOND full markdown-it pass over every page and keeps one
+// MiniSearch index per locale in memory for the whole build. Indexing the machine-translated API
+// mirrors means ~38k extra renders (each `api/css/**` page also rebuilds its `<iframe srcdoc>`
+// previews) and per-locale indexes tens of megabytes each — the deploy build's single largest
+// memory cost, for an index so big that opening search would be a hostile download anyway. Index
+// the English API tree and every locale's hand-written guides; skip `<locale>/api/**`.
+const skipSearchIndex = (relativePath: string): boolean =>
+  NON_ROOT_LOCALES.some((locale) => relativePath.startsWith(`${locale}/api/`));
+
 const rawHostname = process.env.DOCS_HOSTNAME ?? "https://pantoken.app/";
 const hostname = rawHostname.endsWith("/") ? rawHostname : `${rawHostname}/`;
 
@@ -665,6 +682,7 @@ export default defineConfig({
   locales: localesConfig,
   cleanUrls: true,
   lastUpdated: true,
+  buildConcurrency,
   sitemap: { hostname },
   // Only index.md belongs in the public site at the docs root; all others are repo-internal.
   srcExclude: [
@@ -791,7 +809,19 @@ export default defineConfig({
   themeConfig: {
     siteTitle: false,
     logo: { light: "/logo-light.svg", dark: "/logo-dark.svg" },
-    search: { provider: "local", options: { locales: searchLocales } },
+    search: {
+      provider: "local",
+      options: {
+        locales: searchLocales,
+        // Mirrors the plugin's own default render, minus the pages `skipSearchIndex` drops
+        // (returning "" tells the plugin to index nothing for that file).
+        _render: async (src, env, md) => {
+          if (skipSearchIndex(env.relativePath)) return "";
+          const html = await md.renderAsync(src, env);
+          return env.frontmatter?.search === false ? "" : html;
+        },
+      },
+    },
     outline: { level: [2, 3] },
     socialLinks: [
       {

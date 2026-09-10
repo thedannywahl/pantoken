@@ -1,16 +1,23 @@
 name: Deploy docs
 
-# Publish the VitePress + TypeDoc site to GitHub Pages.
-# Enable Pages first: repo Settings -> Pages -> Build and deployment -> Source = GitHub Actions.
+# Publish the VitePress + TypeDoc site to Netlify.
+#
+# NOT GitHub Pages. The full-locale site is ~42k pages / ~92k files / ~1.7 GB, and GitHub caps a
+# published Pages site at 1 GB with a 10-minute deploy timeout - the site outgrew the host. Netlify
+# has no per-deploy file-count or size limit (only 54,000 files per single directory; the largest
+# here, `assets/`, lands around 40k) and its deploys are content-addressed, so after this first seed
+# each release uploads only the files that actually changed.
 #
 # Release-gated: this runs after the Release workflow and deploys only when that run actually
 # published packages, which it signals with a `docs-deploy-request` artifact. So the live site tracks
-# released versions rather than every green commit on main, and the full-locale build (~35k rendered
-# pages) is paid once per release instead of once per push. `workflow_dispatch` is the manual escape
-# hatch - a docs-only fix, or re-running a failed deploy - and skips the artifact check.
+# released versions rather than every green commit on main, and the full-locale build is paid once
+# per release instead of once per push. `workflow_dispatch` is the manual escape hatch - a docs-only
+# fix, or re-running a failed deploy - and skips the artifact check.
 #
 # This workflow builds the site itself: CI's `docs` job is an English-only breakage check that
-# uploads nothing.
+# uploads nothing, and Netlify's own build system is never invoked (we ship a prebuilt directory).
+#
+# Required repository secrets: NETLIFY_AUTH_TOKEN (personal access token) and NETLIFY_SITE_ID.
 
 on:
   workflow_run:
@@ -22,12 +29,10 @@ on:
 permissions:
   contents: read
   actions: read # inspect the triggering Release run's artifacts
-  pages: write
-  id-token: write
 
 # Let a running deploy finish; don't cancel it mid-publish.
 concurrency:
-  group: pages
+  group: docs-deploy
   cancel-in-progress: false
 
 env:
@@ -69,10 +74,19 @@ jobs:
             echo "Release run $RUN_ID published nothing (Version PR path); skipping deploy."
           fi
 
-  build:
+  # One job: building and deploying are a single unit now. The old split existed only because
+  # `actions/deploy-pages` had to run in the `github-pages` environment; Netlify's CLI has no such
+  # constraint, and handing a ~1.7 GB directory between jobs via an artifact was pure overhead.
+  deploy:
     needs: released
     if: needs.released.outputs.should_deploy == 'true'
     runs-on: ubuntu-latest
+    environment:
+      name: netlify
+      url: ${{ steps.netlify.outputs.url }}
+    # The full-locale render is measured in hours, not minutes. Cap it well under the 6h job ceiling
+    # so a wedged build fails visibly instead of burning a whole runner-day.
+    timeout-minutes: 300
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -80,8 +94,23 @@ jobs:
           persist-credentials: false
           ref: main
 
-      - name: Configure Pages
-        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
+      # ubuntu-latest has 16 GB of RAM and a 4 GB swapfile. When the docs build's peak working set
+      # crosses physical memory the kernel OOM-killer takes out the runner agent, and the job reports
+      # only "the runner has received a shutdown signal" - no V8 heap error, no stack. A large swapfile
+      # turns that hard kill into (slow) forward progress, so a build that overshoots still lands.
+      # /mnt is the runner's large scratch disk (~70 GB free).
+      - name: Enlarge swap
+        run: |
+          set -euo pipefail
+          sudo swapoff -a || true
+          sudo rm -f /mnt/swapfile
+          sudo fallocate -l 24G /mnt/swapfile
+          sudo chmod 600 /mnt/swapfile
+          sudo mkswap /mnt/swapfile
+          sudo swapon /mnt/swapfile
+          # Keep swap as a safety net rather than a first resort; the RSS should stay in RAM.
+          sudo sysctl -w vm.swappiness=10
+          free -h
 
       - name: Set up Vite+
         uses: voidzero-dev/setup-vp@49c3e4e92c52e7f8392712a9267bbe71c5ab30e5 # v1.19.0
@@ -108,28 +137,47 @@ jobs:
         env:
           DOCS_BASE: /
           DOCS_HOSTNAME: https://pantoken.app/
-          # vitepress-plugin-llms walks every locale's rendered pages, and does so again during
-          # VitePress's SSR pass; 8192 (raised once already) still OOMs once all ~44 locales carry
-          # full translated content. ubuntu-latest gives 16 GB RAM, so push close to that ceiling,
-          # leaving headroom for the OS and non-heap (buffer/external) memory. Incremental deploys
-          # after this first full-locale seed touch far fewer pages and should need much less.
-          NODE_OPTIONS: --max-old-space-size=14336
+          # Fewer pages SSR-rendered at once. VitePress defaults to 64 in flight, and each one holds
+          # its rendered HTML and Vue SSR context alive; at ~39k pages that peak is what overshot the
+          # runner's RAM. See the `buildConcurrency` note in docs/.vitepress/config.ts.
+          DOCS_BUILD_CONCURRENCY: "12"
+          # Sits below the 16 GB the runner actually has, so V8 collects under pressure instead of
+          # letting the kernel kill the runner agent. Raised from 8192 once already; the memory that
+          # made 8192 fail was mostly the local-search index, which no longer covers the translated
+          # API mirrors.
+          NODE_OPTIONS: --max-old-space-size=12288
 
-      - name: Write custom domain file
-        run: echo "pantoken.app" > docs/.vitepress/dist/CNAME
+      # Netlify's only structural limit is 54,000 files in a single directory, and VitePress puts one
+      # chunk per page in `assets/`. Fail here, with the offending directory named, rather than
+      # halfway through a multi-gigabyte upload.
+      - name: Check site shape
+        run: |
+          set -euo pipefail
+          cd docs/.vitepress/dist
+          du -sh .
+          echo "pages: $(find . -name '*.html' | wc -l)  files: $(find . -type f | wc -l)"
+          worst=$(find . -type d -exec sh -c 'echo "$(ls -1U "$1" | wc -l) $1"' _ {} \; | sort -rn | head -1)
+          echo "largest directory: $worst"
+          if [ "${worst%% *}" -ge 54000 ]; then
+            echo "::error::${worst#* } exceeds Netlify's 54,000-files-per-directory limit"
+            exit 1
+          fi
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
-        with:
-          path: docs/.vitepress/dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+      # `--no-build` ships the directory as-is; Netlify never runs a build of its own. The CLI hashes
+      # every file and uploads only the ones the site doesn't already have, so the first deploy is
+      # slow and every later one is proportional to the diff. The CLI is pinned and fetched on demand
+      # rather than vendored - it's a ~200 MB dependency that nothing else in the repo needs.
+      - name: Deploy to Netlify
+        id: netlify
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          set -euo pipefail
+          vpx --package netlify-cli@27.5.2 netlify deploy \
+            --prod \
+            --no-build \
+            --dir docs/.vitepress/dist \
+            --message "$GITHUB_WORKFLOW $GITHUB_SHA" \
+            --json > deploy.json
+          echo "url=$(node -p 'require("./deploy.json").url')" >> "$GITHUB_OUTPUT"

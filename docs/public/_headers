@@ -1,0 +1,8 @@
+# Netlify header rules. VitePress copies docs/public/ to the site root, so this ships inside the
+# deployed directory and needs no netlify.toml.
+#
+# Netlify's default for every file is `max-age=0, must-revalidate`. Everything under /assets/ is
+# content-hashed by Rolldown, so a changed file always changes its URL and the old one can be cached
+# forever. HTML deliberately keeps the revalidating default.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
