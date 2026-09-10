@@ -259,6 +259,12 @@ const localeEntries = Object.entries(LOCALE_THEMES) as [
 
 const rootLocaleOnly = process.env.DOCS_ROOT_LOCALE_ONLY === "1";
 
+// One locale per build. VitePress bakes a single `__ASSETS_DIR__` into the client router, so the only
+// way to keep any one directory under Netlify's 54,000-file cap is to build each locale separately
+// into `assets/<locale>/` and merge the outputs. Unset means "every locale in one build".
+const buildLocale = process.env.DOCS_LOCALE;
+const isLocaleScoped = buildLocale !== undefined;
+
 const docsRoot = at("docs");
 
 const readPartialPages = (): Set<string> | undefined => {
@@ -285,6 +291,23 @@ const partialPages = readPartialPages();
 const partialPageExcludes = partialPages
   ? walkMarkdown(docsRoot).filter((page) => !partialPages.has(page))
   : [];
+
+// The root locale owns every page outside a locale directory, so it excludes the locale trees; a
+// non-root locale excludes the other locales plus everything at the docs root. Both stay as globs —
+// listing the ~40k excluded pages individually makes VitePress's per-file matching quadratic.
+const localePageExcludes = !isLocaleScoped
+  ? []
+  : buildLocale === "root"
+    ? NON_ROOT_LOCALES.map((locale) => `${locale}/**`)
+    : [
+        ...NON_ROOT_LOCALES.filter((locale) => locale !== buildLocale).map(
+          (locale) => `${locale}/**`,
+        ),
+        ...readdirSync(docsRoot)
+          .filter((name) => name !== ".vitepress" && !NON_ROOT_LOCALES.includes(name as DocsLocale))
+          .map((name) => (statSync(`${docsRoot}/${name}`).isDirectory() ? `${name}/**` : name))
+          .filter((entry) => entry.endsWith("/**") || entry.endsWith(".md")),
+      ];
 
 const loadSidebar = (relativePath: string): DefaultTheme.SidebarItem[] => {
   const sidebarPath = fileURLToPath(new URL(relativePath, import.meta.url));
@@ -601,22 +624,27 @@ const description =
 // `apply` restricts these plugin instances to the client build only, so content never gets walked
 // twice for no benefit. Cast through the bottom type: the repo aliases `vite` to vite-plus-core,
 // while VitePress and this plugin each carry distinct Vite plugin types.
-const llmsTxtPlugins = llmstxt({
-  title: "pantoken",
-  description,
-  details:
-    "This index covers the canonical English documentation. Translations of every page are " +
-    "available under each locale's route prefix (for example /hu/).",
-  ignoreFiles: [
-    ...NON_ROOT_LOCALES.map((locale) => `${locale}/**`),
-    "CHANGELOG.md",
-    "compatibility.md",
-    "engineering-log.md",
-  ],
-}).map((plugin) => ({
-  ...plugin,
-  apply: (config: { build?: { ssr?: boolean | string } }): boolean => !config?.build?.ssr,
-})) as never[];
+// llms.txt indexes the canonical English docs only, so a non-root locale build skips the plugin
+// outright rather than emitting an index it would then have to merge away.
+const llmsTxtPlugins =
+  isLocaleScoped && buildLocale !== "root"
+    ? []
+    : (llmstxt({
+        title: "pantoken",
+        description,
+        details:
+          "This index covers the canonical English documentation. Translations of every page are " +
+          "available under each locale's route prefix (for example /hu/).",
+        ignoreFiles: [
+          ...NON_ROOT_LOCALES.map((locale) => `${locale}/**`),
+          "CHANGELOG.md",
+          "compatibility.md",
+          "engineering-log.md",
+        ],
+      }).map((plugin) => ({
+        ...plugin,
+        apply: (config: { build?: { ssr?: boolean | string } }): boolean => !config?.build?.ssr,
+      })) as never[]);
 
 // @ts-ignore TS2321 — VitePress alpha.18 UserConfig generic recursion can overflow TS depth.
 export default defineConfig({
@@ -712,6 +740,7 @@ export default defineConfig({
   lastUpdated: true,
   buildConcurrency,
   ...(outDir && { outDir }),
+  ...(isLocaleScoped && { assetsDir: `assets/${buildLocale}` }),
   sitemap: { hostname },
   // Only index.md belongs in the public site at the docs root; all others are repo-internal.
   srcExclude: [
@@ -719,6 +748,7 @@ export default defineConfig({
     "compatibility.md",
     "engineering-log.md",
     ...(rootLocaleOnly ? NON_ROOT_LOCALES.map((locale) => `${locale}/api/**`) : []),
+    ...localePageExcludes,
     ...partialPageExcludes,
   ],
   // The generated API pages cross-link heavily; don't fail the build on a link TypeDoc emitted.
