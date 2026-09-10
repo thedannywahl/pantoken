@@ -1,0 +1,462 @@
+that is a hard fail from netlify's documentation:
+https://docs.netlify.com/deploy/deploy-overview/
+> https://docs.netlify.com/deploy/deploy-overview/
+
+---
+
+that is a hard fail from netlify's documentation:
+https://docs.netlify.com/deploy/deploy-overview/
+> Files per directory limit
+
+> While Netlify doesn't have a limit on the number of files per deploy, we do have a limit of 54,000 files per directory. If any directory within your publish directory has more than 54,000 files, your deploys will fail.
+
+---
+
+let's re-think the asset sharding, can it be done by locale?
+
+---
+
+1. llms.txt/llms-full.txt don't need to be merged because it should be EN-only which is best practice, the other locales don't even need to run the plugin (locales are currently excluded)
+per-locale search indexes don't need to be merged either, search in a locale, swap to another locale. there is no point in showing the same result in another language anyways.
+sitemap could go either way.
+2. this is an acceptable risk as long as we implement a fallback.
+start the build/verify with navigation.
+
+---
+
+[Terminal c4d68cc1-553c-4e44-97a0-57188c7c8f94 notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on docs-diff-deploys ≡  ~2 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken/docs && find . -maxdepth 4 -type d -name 'shard-test' 2>/dev/null
+docs on docs-diff-deploys ≡  ~2 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken/docs/.vitepress/dist && echo "files: $(find . -type f | wc -l)  html: $(find . -name '*.html' | wc -l)"; find . -type d -exec sh -c 'for d; do echo "$(ls -1U "$d" | wc -l) $d"; done' _ {} + | awk '$1 > max { max = $1; line = $0 } END { print line }'; echo "assets subdirs: $(ls -1 assets | wc -l)"; ls -1 assets | head -4; echo '--- refs:'; grep -o 'assets/[^"]*' index.html | head -4
+files:     9306  html:     4233
+    2866 ./assets
+assets subdirs:     2866
+00
+01
+02
+03
+--- refs:
+assets/46/style.D6fZnW1b.css
+assets/vp-icons.139f4833.css
+assets/chunks/metadata.dacbfecc.js
+assets/app.Big-Le37.js
+dist on docs-diff-deploys ≡  ~2 
+➜  cd /Users/dwahl/Scripts/pantoken/docs/.vitepress/dist/assets && echo "loose files: $(find . -maxdepth 1 -type f | wc -l)  dirs: $(find . -maxdepth 1 -type d | wc -l)"; find . -maxdepth 1 -type f | head -8; echo '--- in shards:'; find . -mindepth 2 -type f | wc -l; ls chunks 2>/dev/null | wc -l
+loose files:     2650  dirs:      217
+./guide_plugins.md.aFSiTQ_r.lean.js
+./it_guide_cli.md.Zm-jUT4P.lean.js
+./fr-CA_guide_packages.md.ByOY7tv5.js
+./api_plugins_postcss_flatten-property_src_interfaces_FlattenPropertyOptions.md.ULPku6OZ.js
+./api_renderers_vitepress_src_variables_VITEPRESS_TO_INSTUI.md.B_eg9_PW.lean.js
+./api_renderers_mui_src_variables_lightTheme.md.BrfV8tGY.lean.js
+./api_formats_components_src_interfaces_ComponentOptions.md.Ce8IpJe8.lean.js
+./api_packages_utils_src_functions_elevationDeclarations.md.Bsn4pJ--.js
+--- in shards:
+     445
+       1
+assets on docs-diff-deploys ≡  ~2 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken/docs && rm -rf .vitepress/dist .vitepress/.temp && vp run docs:build 2>&1 | tail -8
+(Use `node --trace-warnings ...` to show where the warning was created)
+✓ rendering pages...
+- generating sitemap...
+✓ generating sitemap...
+build complete in 90.07s.
+
+---
+vp run: 7/12 cache hit (58%), 1.86s saved. @pantoken/docs#docs:assets (and 3 more) not cached because they modified their inputs. (Run `vp run --last-details` for full details)
+docs on docs-diff-deploys ≡  ~2 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken/docs/.vitepress/dist && echo "files: $(find . -type f | wc -l)  html: $(find . -name '*.html' | wc -l)"; find . -type d -exec sh -c 'for d; do echo "$(ls -1U "$d" | wc -l) $d"; done' _ {} + | awk '$1 > max { max = $1; line = $0 } END { print line }'; echo "loose in assets: $(find assets -maxdepth 1 -type f | wc -l)"; echo '--- refs:'; grep -o 'assets/[^"]*' index.html | head -4
+files:     9306  html:     4233
+     257 ./assets
+loose in assets:        1
+--- refs:
+assets/46/style.D6fZnW1b.css
+assets/vp-icons.139f4833.css
+assets/chunks/metadata.dd0f3d1f.js
+assets/21/app.CB2NvgvM.js
+dist on docs-diff-deploys ≡  ~2 
+➜  missing=0; checked=0; for f in index.html api/index.html guide/*.html; do [ -f "$f" ] || continue; for ref in $(grep -o 'assets/[A-Za-z0-9._/-]*' "$f" | sort -u); do checked=$((checked+1)); [ -f "$ref" ] || { echo "MISSING: $ref (in $f)"; missing=$((missing+1)); }; done; done; echo "checked=$checked missing=$missing"
+MISSING: assets/focus-outline.css (in index.html)
+MISSING: assets/index.md.DYNdD9Lf.lean.js (in index.html)
+MISSING: assets/visual-debug.css (in index.html)
+MISSING: assets/api_index.md.D0Vy-mLh.lean.js (in api/index.html)
+MISSING: assets/focus-outline.css (in api/index.html)
+MISSING: assets/visual-debug.css (in api/index.html)
+MISSING: assets/focus-outline.css (in guide/architecture.html)
+MISSING: assets/guide_architecture.md.BXC7i3Nt.lean.js (in guide/architecture.html)
+MISSING: assets/visual-debug.css (in guide/architecture.html)
+MISSING: assets/focus-outline.css (in guide/cdn-picker.html)
+MISSING: assets/guide_cdn-picker.md.BVXcYECi.lean.js (in guide/cdn-picker.html)
+MISSING: assets/visual-debug.css (in guide/cdn-picker.html)
+MISSING: assets/focus-outline.css (in guide/cdn.html)
+MISSING: assets/guide_cdn.md.CP23RUC0.lean.js (in guide/cdn.html)
+MISSING: assets/visual-debug.css (in guide/cdn.html)
+MISSING: assets/focus-outline.css (in guide/cli.html)
+MISSING: assets/guide_cli.md.DAcSpfkJ.lean.js (in guide/cli.html)
+MISSING: assets/visual-debug.css (in guide/cli.html)
+MISSING: assets/focus-outline.css (in guide/components.html)
+MISSING: assets/guide_components.md.DTyhCLzG.lean.js (in guide/components.html)
+MISSING: assets/visual-debug.css (in guide/components.html)
+MISSING: assets/focus-outline.css (in guide/generated-output.html)
+MISSING: assets/guide_generated-output.md.Cs1ZibFf.lean.js (in guide/generated-output.html)
+MISSING: assets/visual-debug.css (in guide/generated-output.html)
+MISSING: assets/focus-outline.css (in guide/getting-started.html)
+MISSING: assets/guide_getting-started.md.Berr0bIN.lean.js (in guide/getting-started.html)
+MISSING: assets/visual-debug.css (in guide/getting-started.html)
+MISSING: assets/focus-outline.css (in guide/packages.html)
+MISSING: assets/guide_packages.md.CRwxwNny.lean.js (in guide/packages.html)
+MISSING: assets/visual-debug.css (in guide/packages.html)
+MISSING: assets/focus-outline.css (in guide/plugins.html)
+MISSING: assets/guide_plugins.md.DZOIT9Ji.lean.js (in guide/plugins.html)
+MISSING: assets/visual-debug.css (in guide/plugins.html)
+checked=99 missing=33
+dist on docs-diff-deploys ≡  ~2 
+➜  cd /Users/dwahl/Scripts/pantoken && grep -rn "assets/" node_modules/.pnpm/vitepress@2.0.0-alpha.20*/node_modules/vitepress/dist/client/app/*.js | head -20
+pantoken on docs-diff-deploys ≡  ~2 via  26.8.1 x 
+➜  grep -rn "assets/" node_modules/.pnpm/vitepress@2.0.0-alpha.20*/node_modules/vitepress/dist/client/ 2>/dev/null | head -20; echo '=== shared:'; grep -rn "assets/" node_modules/.pnpm/vitepress@2.0.0-alpha.20*/node_modules/vitepress/dist/node/*.js 2>/dev/null | grep -i "hash\|pathToFile\|lean" | head -10
+=== shared:
+pantoken on docs-diff-deploys ≡  ~2 via  26.8.1 x 
+➜  p=$(echo node_modules/.pnpm/vitepress@2.0.0-alpha.20*/node_modules/vitepress); ls $p/dist; echo '==='; grep -rln "lean.js" $p/dist | head
+client         node           web-types.json
+===
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/node/chunk-BYTgXTwz.js
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/index.js
+pantoken on docs-diff-deploys ≡  ~2 via  26.8.1 
+➜  p=$(echo node_modules/.pnpm/vitepress@2.0.0-alpha.20*/node_modules/vitepress); grep -n "lean.js" $p/dist/client/app/index.js; echo '=== node side:'; grep -n "lean.js" $p/dist/node/chunk-BYTgXTwz.js | head
+89:                     if (isInitialPageLoad) pageFilePath = pageFilePath.replace(/\.js$/, ".lean.js");
+=== node side:
+22713:                                                          fileName: chunk.fileName.replace(/\.js$/, ".lean.js"),
+24465:  let siteData = resolveSiteDataByRoute(config.site, page, pageData.filePath), assetUrl = (file) => (config.assetsBase ?? pageBase) + file, assetsCrossOrigin = config.assetsBase && EXTERNAL_URL_RE.test(config.assetsBase) ? " crossorigin" : "", pageAssets = relativeBase ? assets.map(desentinel) : assets, title = createTitle(siteData, pageData), description = pageData.description || siteData.description, dir = pageData.frontmatter.dir || siteData.dir || "ltr", isDefault404 = page === "404.md" && !hasCustom404, pageHash = pageToHashMap[pageName.toLowerCase()], pageClientJsFileName = `${config.assetsDir}/${pageName}.${pageHash}.lean.js`, preloadLinks = [];
+pantoken on docs-diff-deploys ≡  ~2 via  26.8.1 
+➜  git checkout docs/.vitepress/config.ts && git status --short
+Updated 1 path from the index
+ M l10n/docs.api.pot
+pantoken on docs-diff-deploys ≡  ~1 via  26.8.1 
+➜  git status --short -- .github/workflows/docs.yml; git --no-pager diff --stat; echo "check-ignore:"; git check-ignore -v .github/workflows/docs.yml || echo "not ignored"
+ l10n/docs.api.pot | 7146 +----------------------------------------------------
+ 1 file changed, 1 insertion(+), 7145 deletions(-)
+check-ignore:
+not ignored
+pantoken on docs-diff-deploys ≡  ~1 via  26.8.1 
+➜  git show HEAD:.github/workflows/docs.yml | sed -n '259,275p'
+      - name: Check site shape
+        if: steps.changed_docs.outputs.scope != 'none'
+        run: |
+          set -euo pipefail
+          cd docs/.vitepress/dist
+          du -sh .
+          echo "pages: $(find . -name '*.html' | wc -l)  files: $(find . -type f | wc -l)"
+          # awk keeps the running max instead of `sort | head`: `head` closing the pipe early kills
+          # `sort` with SIGPIPE, which `pipefail` turns into a failed step right before the deploy.
+          worst=$(find . -type d -exec sh -c 'for d; do echo "$(ls -1U "$d" | wc -l) $d"; done' _ {} + \
+            | awk '$1 > max { max = $1; line = $0 } END { print line }')
+          echo "largest directory: $worst"
+          if [ "${worst%% *}" -ge 54000 ]; then
+            echo "::error::${worst#* } exceeds Netlify's 54,000-files-per-directory limit"
+            exit 1
+          fi
+
+pantoken on docs-diff-deploys ≡  ~1 via  26.8.1 
+➜  grep -n "assetShard\|shardAssets\|ASSET_SHARDS" docs/.vitepress/config.ts || echo "no sharding present (clean)"; echo '--- recent commits:'; git --no-pager log --oneline -5
+no sharding present (clean)
+--- recent commits:
+0354edb8b (HEAD -> docs-diff-deploys, origin/docs-diff-deploys) fix: improve directory size check to avoid premature pipe closure
+5eb5607bf docs: update vitepress version to 2.0.0-alpha.20 in lockfiles
+5ffeeb35c test: update changed-pages file path to be relative
+ee177defb test: cover docs changed-pages cli
+f2c3e7902 Merge branch 'main' into docs-diff-deploys
+pantoken on docs-diff-deploys ≡  ~1 via  26.8.1 
+➜  git checkout l10n/docs.api.pot && git status --short && echo "clean"
+Updated 1 path from the index
+clean
+pantoken on docs-diff-deploys ≡ via  26.8.1 
+➜  p=$(echo node_modules/.pnpm/vitepress@2.0.0-alpha.20*/node_modules/vitepress); sed -n '70,100p' $p/dist/client/app/index.js
+                router,
+                siteData: siteDataRef
+        });
+        if (import.meta.env.DEV || __VUE_PROD_DEVTOOLS__) import("./devtools.js").then(({ setupDevtools }) => setupDevtools(app, router, data));
+        return {
+                app,
+                router,
+                data
+        };
+}
+function newApp() {
+        return import.meta.env.PROD ? createSSRApp(VitePressApp) : createApp$1(VitePressApp);
+}
+function newRouter() {
+        let isInitialPageLoad = inBrowser;
+        return createRouter((path) => {
+                let pageFilePath = pathToFile(path);
+                let pageModule = null;
+                if (pageFilePath) {
+                        if (isInitialPageLoad) pageFilePath = pageFilePath.replace(/\.js$/, ".lean.js");
+                        if (import.meta.env.DEV) pageModule = import(
+                                /*@vite-ignore*/
+                                pageFilePath
+).catch((e) => {
+                                console.error(e);
+                                const url = new URL(pageFilePath, "http://a.com");
+                                return import(
+                                        /*@vite-ignore*/
+                                        (url.pathname.endsWith("/index.md") ? url.pathname.slice(0, -9) + ".md" : url.pathname.slice(0, -3) + "/index.md") + url.search + url.hash
+);
+                        });
+pantoken on docs-diff-deploys ≡ via  26.8.1 
+➜  p=$(echo node_modules/.pnpm/vitepress@2.0.0-alpha.20*/node_modules/vitepress); grep -rn "function pathToFile" -A 30 $p/dist/client/app/*.js | head -45
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js:37:function pathToFile(path) {
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-38- let pagePath = path.replace(/\.html$/, "");
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-39- pagePath = decodeURIComponent(pagePath);
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-40- pagePath = pagePath.replace(/\/$/, "/index");
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-41- if (import.meta.env.DEV) pagePath += `.md?t=${Date.now()}`;
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-42- else if (inBrowser) {
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-43-         const base = runtimeBase();
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-44-         if (pagePath + "/" === base) pagePath = base;
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-45-         if (!pagePath.startsWith(base)) return null;
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-46-         pagePath = sanitizeFileName(pagePath.slice(base.length).replace(/\//g, "_") || "index") + ".md";
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-47-         let pageHash = __VP_HASH_MAP__[pagePath.toLowerCase()];
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-48-         if (!pageHash) {
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-49-                 pagePath = pagePath.endsWith("_index.md") ? pagePath.slice(0, -9) + ".md" : pagePath.slice(0, -3) + "_index.md";
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-50-                 pageHash = __VP_HASH_MAP__[pagePath.toLowerCase()];
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-51-         }
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-52-         if (!pageHash) return null;
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-53-         pagePath = `${__ASSETS_BASE__ || base}${__ASSETS_DIR__}/${pagePath}.${pageHash}.js`;
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-54- } else pagePath = `./${sanitizeFileName(pagePath.slice(1).replace(/\//g, "_"))}.md.js`;
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-55- return pagePath;
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-56-}
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-57-let contentUpdatedCallbacks = [];
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-58-/**
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-59-* Register callback that is called every time the markdown content is updated
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-60-* in the DOM.
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-61-*/
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-62-function onContentUpdated(fn) {
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-63- contentUpdatedCallbacks.push(fn);
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-64- tryOnUnmounted(() => {
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-65-         contentUpdatedCallbacks = contentUpdatedCallbacks.filter((f) => f !== fn);
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-66- });
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/client/app/utils.js-67-}
+pantoken on docs-diff-deploys ≡ via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken/docs && rm -rf .vitepress/dist .vitepress/.temp && DOCS_ASSETS_DIR=assets/en vp run docs:build 2>&1 | tail -6
+- generating sitemap...
+✓ generating sitemap...
+build complete in 46.32s.
+
+---
+vp run: 7/12 cache hit (58%), 1.86s saved. @pantoken/docs#docs:assets (and 3 more) not cached because they modified their inputs. (Run `vp run --last-details` for full details)
+docs on docs-diff-deploys ≡  ~2 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken/docs/.vitepress/dist && find . -type d -exec sh -c 'for d; do echo "$(ls -1U "$d" | wc -l) $d"; done' _ {} + | awk '$1 > max { max = $1; line = $0 } END { print line }'; echo '--- refs in index.html:'; grep -o '"[^"]*assets/en/[^"]*"' index.html | head -3; echo '--- resolve check:'; missing=0; checked=0; for f in index.html api/index.html guide/*.html; do [ -f "$f" ] || continue; for ref in $(grep -o '"/assets/en/[A-Za-z0-9._/-]*"' "$f" | tr -d '"' | sort -u); do checked=$((checked+1)); [ -f ".$ref" ] || { echo "MISSING: $ref"; missing=$((missing+1)); }; done; done; echo "checked=$checked missing=$missing"
+    2666 ./assets
+--- refs in index.html:
+--- resolve check:
+checked=0 missing=0
+dist on docs-diff-deploys ≡  ~2 
+➜  cd /Users/dwahl/Scripts/pantoken && p=$(echo node_modules/.pnpm/vitepress@2.0.0-alpha.20*/node_modules/vitepress); grep -rn "assetsDir" $p/dist/node/*.d.ts $p/types/*.d.ts 2>/dev/null | head; echo '=== node impl:'; grep -on "assetsDir[^,;)}]\{0,60\}" $p/dist/node/chunk-BYTgXTwz.js | head -12
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/node/index.d.ts:1368:  assetsDir?: string;
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/node/index.d.ts:1370:   * URL prefix for built assets (everything under `assetsDir`), e.g. a CDN.
+node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.5.0_axios@1.20.0__6d28a390e0bdd2930d48d6e3154058b4/node_modules/vitepress/dist/node/index.d.ts:1605:  assetsDir: string;
+=== node impl:
+3078:assetsDir = userConfig.assetsDir ? slash(userConfig.assetsDir
+3078:assetsDir
+3080:assetsDir cannot be set to a location outside of the outDir."
+3082:assetsDir: ${assetsDir
+3091:assetsDir
+22583:assetsDir
+22843:assetsDir
+22848:assetsDir
+22850:assetsDir
+22850:assetsDir
+24465:assetsDir
+24503:assetsDir
+pantoken on docs-diff-deploys ≡  ~2 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken/docs && rm -rf .vitepress/dist .vitepress/.temp && DOCS_ASSETS_DIR=assets/en vp run docs:build 2>&1 | tail -5
+✓ generating sitemap...
+build complete in 44.67s.
+
+---
+vp run: 7/12 cache hit (58%), 1.86s saved. @pantoken/docs#docs:assets (and 3 more) not cached because they modified their inputs. (Run `vp run --last-details` for full details)
+docs on docs-diff-deploys ≡  ~2 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken/docs/.vitepress/dist && find . -type d -exec sh -c 'for d; do echo "$(ls -1U "$d" | wc -l) $d"; done' _ {} + | awk '$1 > max { max = $1; line = $0 } END { print line }'; echo '--- refs:'; grep -o '/assets/en/[A-Za-z0-9._-]*' index.html | head -3; echo '--- resolve check:'; missing=0; checked=0; for f in index.html api/index.html guide/*.html; do [ -f "$f" ] || continue; for ref in $(grep -o '/assets/en/[A-Za-z0-9._-]*' "$f" | sort -u); do checked=$((checked+1)); [ -f ".$ref" ] || { echo "MISSING: $ref"; missing=$((missing+1)); }; done; done; echo "checked=$checked missing=$missing"
+    2666 ./assets
+--- refs:
+--- resolve check:
+checked=0 missing=0
+dist on docs-diff-deploys ≡  ~2 
+➜  cd /Users/dwahl/Scripts/pantoken/docs && rm -rf .vitepress/dist .vitepress/.temp && DOCS_ROOT_LOCALE_ONLY=1 DOCS_ASSETS_DIR=assets/en vp exec vitepress build 2>&1 | tail -5
+(Use `node --trace-warnings ...` to show where the warning was created)
+✓ rendering pages...
+- generating sitemap...
+✓ generating sitemap...
+build complete in 54.96s.
+docs on docs-diff-deploys ≡  ~2 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken/docs/.vitepress/dist && find . -type d -exec sh -c 'for d; do echo "$(ls -1U "$d" | wc -l) $d"; done' _ {} + | awk '$1 > max { max = $1; line = $0 } END { print line }'; echo '--- refs:'; grep -o '/assets/en/[A-Za-z0-9._-]*' index.html | head -3; echo '--- resolve check:'; missing=0; checked=0; for f in index.html api/index.html guide/*.html; do [ -f "$f" ] || continue; for ref in $(grep -o '/assets/en/[A-Za-z0-9._-]*' "$f" | sort -u); do checked=$((checked+1)); [ -f ".$ref" ] || { echo "MISSING: $ref"; missing=$((missing+1)); }; done; done; echo "checked=$checked missing=$missing"; echo "--- __ASSETS_DIR__ in app chunk:"; grep -ro 'assets/en' assets/en/app.*.js | head -2
+    2666 ./assets/en
+--- refs:
+/assets/en/style.DhSapZl1.css
+/assets/en/vp-icons.139f4833.css
+/assets/en/chunks
+--- resolve check:
+MISSING: /assets/en/chunks
+MISSING: /assets/en/chunks
+MISSING: /assets/en/chunks
+MISSING: /assets/en/chunks
+MISSING: /assets/en/chunks
+MISSING: /assets/en/chunks
+MISSING: /assets/en/chunks
+MISSING: /assets/en/chunks
+MISSING: /assets/en/chunks
+MISSING: /assets/en/chunks
+MISSING: /assets/en/chunks
+checked=55 missing=11
+--- __ASSETS_DIR__ in app chunk:
+dist on docs-diff-deploys ≡  ~2 x 
+➜  missing=0; checked=0; for f in index.html api/index.html guide/*.html; do [ -f "$f" ] || continue; for ref in $(grep -o '/assets/en/[A-Za-z0-9._/-]*' "$f" | sort -u); do checked=$((checked+1)); [ -f ".$ref" ] || { echo "MISSING: $ref"; missing=$((missing+1)); }; done; done; echo "checked=$checked missing=$missing"; echo "--- top-level dirs:"; ls -1 assets; echo "--- lean chunk sample:"; ls assets/en | grep lean | head -2
+checked=77 missing=0
+--- top-level dirs:
+en
+--- lean chunk sample:
+api_ai_pantoken-ai_src_functions_installAgentAssets.md.Ci-7BhcZ.lean.js
+api_ai_pantoken-ai_src_functions_isScaffoldPlatform.md.Ca8PoAwb.lean.js
+dist on docs-diff-deploys ≡  ~2 x 
+➜  f=$(ls assets/en/app.*.js | head -1); echo "app chunk: $f"; grep -c 'assets/en' "$f"; grep -o '.\{40\}assets/en.\{20\}' "$f" | head -2
+app chunk: assets/en/app.DVN3b3Im.js
+0
+dist on docs-diff-deploys ≡  ~2 x 
+➜  grep -rl 'assets/en' assets/en --include='*.js' | head -3; echo "--- any bare assets/ router ref:"; grep -ro '"assets"' assets/en/chunks/*.js | head -3; grep -rho '\${[a-zA-Z_$]*||[a-zA-Z_$]*}\?assets[^`"]\{0,12\}' assets/en/chunks/*.js 2>/dev/null | head -3
+assets/en/chunks/theme.B0wCBQCn.js
+assets/en/chunks/mermaid-parser.core.DqmmRFLU.js
+assets/en/chunks/dist.C9MKeZvo.js
+--- any bare assets/ router ref:
+assets/en/chunks/@localSearchIndexca.Dii2B6kh.js:"assets"
+assets/en/chunks/@localSearchIndexda.DOpasGdS.js:"assets"
+assets/en/chunks/@localSearchIndexde.DFwuQAuP.js:"assets"
+dist on docs-diff-deploys ≡  ~2 x 
+➜  head -30 "/Users/dwahl/Library/Application Support/Code/User/workspaceStorage/5f67c0ff55939950f0d3e043cffff350/GitHub.copilot-chat/chat-session-resources/c89c8d27-83f0-4435-9a34-7b77df4b0e5e/REDACTED/content.txt"
+Page Title: Getting started | pantoken
+URL: http://localhost:5959/guide/getting-started
+Snapshot: 
+- <changed> generic [ref=e3]:
+  - ref=e4 [unchanged]
+  - banner:
+    - generic:
+      - generic:
+        - generic:
+          - ref=e6 [unchanged]
+          - ref=e7 [unchanged]
+  - button "On this page" [ref=e125] [cursor=pointer]: On this page
+  - complementary [ref=e127]:
+    - navigation "Sidebar Navigation" [ref=e129]:
+      - generic [ref=e130]: Sidebar Navigation
+      - generic [ref=e132]:
+        - heading "Introduction" [level=2] [ref=e135]
+        - list [ref=e136]:
+          - listitem [ref=e137]:
+            - link "Getting started" [ref=e141] [cursor=pointer]:
+              - /url: /guide/getting-started
+              - paragraph [ref=e142]: Getting started
+            - link "The package map" [ref=e146] [cursor=pointer]:
+              - /url: /guide/packages
+              - paragraph [ref=e147]: The package map
+            - link "Architecture" [ref=e151] [cursor=pointer]:
+              - /url: /guide/architecture
+              - paragraph [ref=e152]: Architecture
+            - link "Components" [ref=e156] [cursor=pointer]:
+              - /url: /guide/components
+dist on docs-diff-deploys ≡  ~2 
+➜  grep -n "console\|error\|Recent events" "/Users/dwahl/Library/Application Support/Code/User/workspaceStorage/5f67c0ff55939950f0d3e043cffff350/GitHub.copilot-chat/chat-session-resources/c89c8d27-83f0-4435-9a34-7b77df4b0e5e/REDACTED/content.txt" | head
+dist on docs-diff-deploys ≡  ~2 x 
+➜  cd /Users/dwahl/Scripts/pantoken && git checkout l10n/docs.api.pot 2>/dev/null; git status --short
+ M docs/.vitepress/config.ts
+pantoken on docs-diff-deploys ≡  ~1 via  26.8.1 
+➜  p=$(echo node_modules/.pnpm/vitepress@2.0.0-alpha.20*/node_modules/vitepress); grep -n "loadPageModule\|function createRouter" -A 45 $p/dist/client/app/router.js | sed -n '1,80p'
+15:function createRouter(loadPageModule, fallbackComponent) {
+16-     const route = reactive(getDefaultRoute());
+17-     const router = {
+18-             route,
+19-             async go(href, options) {
+20-                     const { hash } = new URL(href, fakeHost);
+21-                     const hasTextFragment = inBrowser && document.fragmentDirective && hash.includes(":~:");
+22-                     href = normalizeHref(href);
+23-                     if (await router.onBeforeRouteChange?.(href) === false) return;
+24-                     if (!inBrowser || await changeRoute(href, {
+25-                             ...options,
+26-                             hasTextFragment
+27-                     })) await loadPage(href, { initialLoad: !!options?.initialLoad });
+28-                     if (hasTextFragment) location.hash = hash;
+29-                     syncRouteQueryAndHash();
+30-                     await router.onAfterRouteChange?.(href);
+31-             }
+32-     };
+33-     let latestPendingPath = null;
+34-     async function loadPage(href, { scrollPosition = 0, isRetry = false, initialLoad = false } = {}) {
+35-             if (await router.onBeforePageLoad?.(href) === false) return;
+36-             const targetLoc = new URL(href, fakeHost);
+37-             const pendingPath = latestPendingPath = targetLoc.pathname;
+38-             try {
+39:                     let page = await loadPageModule(pendingPath);
+40-                     if (!page) throw new Error(`Page not found: ${pendingPath}`);
+41-                     if (latestPendingPath === pendingPath) {
+42-                             latestPendingPath = null;
+43-                             const { default: comp, __pageData } = page;
+44-                             if (!comp) throw new Error(`Invalid route component: ${comp}`);
+45-                             await router.onAfterPageLoad?.(href);
+46-                             route.path = inBrowser ? pendingPath : withBase(pendingPath);
+47-                             route.component = markRaw(comp);
+48-                             route.data = import.meta.env.PROD ? markRaw(__pageData) : readonly(__pageData);
+49-                             syncRouteQueryAndHash(targetLoc);
+50-                             if (inBrowser) nextTick(() => {
+51-                                     let actualPathname = runtimeBase() + __pageData.relativePath.replace(/(?:(^|\/)index)?\.md$/, "$1");
+52-                                     if (!siteDataRef.value.cleanUrls && !actualPathname.endsWith("/")) actualPathname += ".html";
+53-                                     if (actualPathname !== targetLoc.pathname) {
+54-                                             targetLoc.pathname = actualPathname;
+55-                                             href = actualPathname + targetLoc.search + targetLoc.hash;
+56-                                             history.replaceState({}, "", href);
+57-                                     }
+58-                                     if (!initialLoad) scrollTo(targetLoc.hash, scrollPosition);
+59-                             });
+60-                     }
+61-             } catch (err) {
+62-                     if (!/fetch|Page not found/.test(err.message) && !/^\/404(\.html|\/)?$/.test(href)) console.error(err);
+63-                     if (!isRetry) try {
+64-                             const res = await fetch(runtimeBase() + "hashmap.json");
+65-                             window.__VP_HASH_MAP__ = await res.json();
+66-                             await loadPage(href, {
+67-                                     scrollPosition,
+68-                                     isRetry: true,
+69-                                     initialLoad
+70-                             });
+71-                             return;
+72-                     } catch (e) {}
+73-                     if (latestPendingPath === pendingPath) {
+74-                             latestPendingPath = null;
+75-                             route.path = inBrowser ? pendingPath : withBase(pendingPath);
+76-                             route.component = fallbackComponent ? markRaw(fallbackComponent) : null;
+77-                             const relativePath = inBrowser ? route.path.replace(/(^|\/)$/, "$1index").replace(/(\.html)?$/, ".md").slice(runtimeBase().length) : "404.md";
+78-                             route.data = {
+79-                                     ...notFoundPageData,
+80-                                     relativePath
+81-                             };
+82-                             syncRouteQueryAndHash(targetLoc);
+83-                     }
+84-             }
+pantoken on docs-diff-deploys ≡  ~1 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken/docs && rm -rf .vitepress/dist .vitepress/.temp /tmp/pt-root /tmp/pt-hu && DOCS_LOCALE=root DOCS_OUT_DIR=/tmp/pt-root vp exec vitepress build 2>&1 | tail -4
+✓ rendering pages...
+- generating sitemap...
+✓ generating sitemap...
+build complete in 30.76s.
+docs on docs-diff-deploys ≡  ~2 via  26.8.1 
+➜  DOCS_LOCALE=hu DOCS_OUT_DIR=/tmp/pt-hu vp exec vitepress build 2>&1 | tail -4 
+✓ rendering pages...
+- generating sitemap...
+✓ generating sitemap...
+build complete in 826.40s.
+
+---
+
+continue
+
+---
+
+yes

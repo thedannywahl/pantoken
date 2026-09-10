@@ -1,0 +1,84 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M26PR2TX0V6Y2WKXK5ZJKW7D",
+  "session_id": "c89c8d27-83f0-4435-9a34-7b77df4b0e5e",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-10T22:24:23.758512Z",
+  "branch": "docs-diff-deploys",
+  "checkpoints_count": 5,
+  "save_step_count": 4,
+  "files_touched": [
+    ".changeset/docs-locale-sharded-assets.md",
+    ".github/workflows/docs.yml",
+    "docs/.vitepress/config.ts",
+    "docs/.vitepress/theme/index.ts",
+    "docs/package.json",
+    "docs/scripts/build-locales.test.ts",
+    "docs/scripts/build-locales.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "64321a98323a",
+  "checkpoint_transcript_start": 245,
+  "transcript_lines_at_start": 245,
+  "compact_transcript_start": 50,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 6
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-10T22:24:23.717631Z",
+    "agent_lines": 200,
+    "agent_removed": 10,
+    "human_added": 50,
+    "human_modified": 17,
+    "human_removed": 0,
+    "total_committed": 267,
+    "total_lines_changed": 277,
+    "agent_percentage": 75.81227436823104,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 67,
+      "user_lines_removed": 17,
+      "agent_lines_added": 1,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "docs/.vitepress/config.ts": 50,
+        "docs/.vitepress/theme/index.ts": 17
+      },
+      "user_removed_per_file": {
+        "docs/.vitepress/config.ts": 17
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 69,
+      "agent_lines_removed": 16
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 65,
+      "agent_lines_removed": 16
+    }
+  ]
+}
