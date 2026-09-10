@@ -1,0 +1,5 @@
+can we also update the vitepress plugin llms to only walk the en base locale? and to only do one pass?
+
+---
+
+docs needs a changeset so it can go through the release pipeline.
