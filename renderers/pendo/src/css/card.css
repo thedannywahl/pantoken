@@ -21,19 +21,26 @@
 
 /* Row spacing in Popover layout */
 ._pendo-row {
-  margin-top: var(--pendo-space-0);
-  margin-right: var(--pendo-space-0);
-  margin-bottom: var(--instui-component-shared-tokens-spacing-general-space-sm);
-  margin-left: var(--pendo-space-0);
+  margin: var(--pendo-space-0) var(--pendo-space-0)
+    var(--instui-component-shared-tokens-spacing-general-space-sm);
   line-height: var(--pendo-space-0);
+  padding: var(--pendo-space-0);
 }
 
 /* Row spacing in Alert layout */
 [data-layout="lightboxBlank"] ._pendo-row {
-  margin-top: var(--pendo-space-0);
-  margin-right: var(--pendo-space-0);
   margin-bottom: var(--instui-component-shared-tokens-spacing-gap-cards-sm);
-  margin-left: var(--pendo-space-0);
+}
+
+[data-layout="lightboxBlank"]:not([class*="instui-alert"]) ._pendo-row {
+  margin-bottom: var(--instui-component-shared-tokens-spacing-gap-cards-md);
+}
+
+/* Container is declared in container.css on the banner's ._pendo-step-container-size */
+@container pantoken-pendo-guide (max-width: 30em) {
+  [data-layout="lightboxBlank"]:not([class*="instui-alert"]) ._pendo-row {
+    margin-bottom: var(--instui-component-shared-tokens-spacing-gap-cards-sm);
+  }
 }
 
 /* Close button spacing in Popover layout */

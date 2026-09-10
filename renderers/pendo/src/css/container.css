@@ -85,18 +85,22 @@
       border-top: 16px solid var(--caret-color);
       /* sits below the box: shift up by margin-bottom */
       bottom: calc(4px + var(--instui-component-shared-tokens-spacing-gap-cards-md) - 14px);
+      margin: 0;
 
       & + .pendo-tooltip-caret-border {
         bottom: calc(4px + var(--instui-component-shared-tokens-spacing-gap-cards-md) - 15px);
+        margin: 0;
       }
     }
 
     &.pendo-tooltip-caret--right {
       border-right-color: var(--caret-color);
       left: -3px;
+      margin: 0 1rem 0 1px;
 
       & + .pendo-tooltip-caret-border {
         left: -4px;
+        margin: 0 1rem 0 1px;
       }
     }
 
@@ -104,18 +108,22 @@
       border-bottom: 16px solid var(--caret-color);
       /* sits above the box: shift down by margin-top */
       top: calc(var(--instui-component-shared-tokens-spacing-general-space-xs) - 14px);
+      margin: 0;
 
       & + .pendo-tooltip-caret-border {
         top: calc(var(--instui-component-shared-tokens-spacing-general-space-xs) - 15px);
+        margin: 0;
       }
     }
 
     &.pendo-tooltip-caret--left {
       border-left-color: var(--caret-color);
       right: -3px;
+      margin: 0 calc(1rem + 1px) 0 1px;
 
       & + .pendo-tooltip-caret-border {
         right: -4px;
+        margin: 0 calc(1rem + 1px) 0 1px;
       }
     }
   }
@@ -179,6 +187,7 @@
     box-shadow: none;
     color: var(--instui-component-banner-color);
     background: var(--instui-component-banner-violet-background);
+    margin: var(--instui-spacing-gap-cards-md) 0;
 
     &::before,
     &::after {
@@ -258,6 +267,7 @@
         var(--instui-component-banner-compact-padding-horizontal) +
           var(--_banner-close-button-reserve)
       );
+      margin: var(--instui-spacing-gap-cards-sm) 0;
 
       &::before,
       &::after {
@@ -274,7 +284,7 @@
 
 /* ─── Embedded alert ─── */
 
-:is(:scope[class*="instui-alert"], [class*="instui-alert"])[data-layout="lightboxBlank"] {
+:scope[class*="instui-alert"][data-layout="lightboxBlank"] {
   /* Variant tokens — set on the container, inherited by all children */
   &,
   &[class*="-info"] {
