@@ -1,0 +1,1061 @@
+with the size of the docs site, we've already changed it to only deploy on an actual release, but can we scope the deploy to only the diffed files?  And also can we also only build the diffed files instead of the entire docs site?
+
+---
+
+Read-only discovery for planning only. Workspace folder: /Users/dwahl/Scripts/pantoken. Follow the repo's .entire/graph-agent.md requirement: your first locating action must be `entire graph search --repo . --profile full --query "release-only docs deploy diffed files GitHub Actions"` from the pantoken repo, then inspect focused files. Do not edit. Task context: user asks whether docs deployment can be scoped to only diffed files, after it was already changed to deploy only on an actual release. Investigate GitHub Actions/workflows, release/deploy scripts, docs output publishing mechanism, and any upload/sync/deploy target details. Return: (1) current deploy trigger and deploy mechanism, (2) whether deploy can publish only changed files and what metadata/deletions need handling, (3) possible implementation approaches, (4) focused validation steps, (5) risks/open questions. Thoroughness: medium.
+
+---
+
+Read-only discovery for planning only. Workspace folder: /Users/dwahl/Scripts/pantoken. Follow .entire/graph-agent.md if locating new code: first use `entire graph search --repo . --profile full --query "docs translation drift po pot partial VitePress build changed pages"`, then focused reads. Do not edit. Context: user wants to prototype true partial VitePress docs builds/deploys, possibly by diffing core PO/POT/root locale and branching from the existing translation drift tracking rather than raw git file paths. Investigate docs translation/drift scripts and generated API/localized guide pipeline. Return: (1) files/functions that know source-to-locale drift or changed units, (2) whether they can produce changed source page paths or only string-level stats, (3) how generated docs/api/*.md and localized docs/<locale>/api/*.md are mapped, (4) where a partial VitePress page allowlist could be injected if feasible, (5) tests/verification commands and blockers. Thoroughness: medium.
+
+---
+
+we can also remove the hard release gate - as we may update guides without update packages, since these diffs should be smaller.
+
+---
+
+you're going to do incremental conventional commits, changesets, and make sure that local readiness gates are passing, push and open a PR. all this work goes on the docs-diff-deploys branch.
+
+---
+
+Start implementation
+
+---
+
+[Terminal 2a5c393a-8de9-4fa9-be80-fdda8983e311 notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+node16 (from ESM): OK (JSON)
+bundler: OK (JSON)
+
+***********************************
+@pantoken/plugin-custom-components$ attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm
+
+@pantoken/plugin-custom-components v0.3.1
+
+Build tools:
+- typescript@catalog:
+- vite@catalog:
+
+ (ignoring rules: 'no-resolution', 'cjs-resolves-to-esm')
+
+ No problems found
+
+
+"@pantoken/plugin-custom-components"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/plugin-custom-components/custom-components.css"
+
+node10: OK 
+node16 (from CJS): OK 
+node16 (from ESM): OK 
+bundler: OK 
+
+***********************************
+
+"@pantoken/plugin-custom-components/*.css"
+
+node10: (wildcard)
+node16 (from CJS): (wildcard)
+node16 (from ESM): (wildcard)
+bundler: (wildcard)
+
+***********************************
+
+"@pantoken/plugin-custom-components/model.json"
+
+node10: OK 
+node16 (from CJS): OK (JSON)
+node16 (from ESM): OK (JSON)
+bundler: OK (JSON)
+
+***********************************
+
+"@pantoken/plugin-custom-components/package.json"
+
+node10: OK (JSON)
+node16 (from CJS): OK (JSON)
+node16 (from ESM): OK (JSON)
+bundler: OK (JSON)
+
+***********************************
+@pantoken/astro$ attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm
+
+@pantoken/astro v0.1.19
+
+Build tools:
+- typescript@catalog:
+- vite@catalog:
+
+ (ignoring rules: 'no-resolution', 'cjs-resolves-to-esm')
+
+ No problems found
+
+
+"@pantoken/astro"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/astro/components.css"
+
+node10: OK 
+node16 (from CJS): OK 
+node16 (from ESM): OK 
+bundler: OK 
+
+***********************************
+
+"@pantoken/astro/package.json"
+
+node10: OK (JSON)
+node16 (from CJS): OK (JSON)
+node16 (from ESM): OK (JSON)
+bundler: OK (JSON)
+
+***********************************
+@pantoken/storybook$ attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm
+
+@pantoken/storybook v0.1.15
+
+Build tools:
+- typescript@catalog:
+- vite@catalog:
+
+ (ignoring rules: 'no-resolution', 'cjs-resolves-to-esm')
+
+ No problems found
+
+
+"@pantoken/storybook"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/storybook/components.css"
+
+node10: OK 
+node16 (from CJS): OK 
+node16 (from ESM): OK 
+bundler: OK 
+
+***********************************
+
+"@pantoken/storybook/package.json"
+
+node10: OK (JSON)
+node16 (from CJS): OK (JSON)
+node16 (from ESM): OK (JSON)
+bundler: OK (JSON)
+
+***********************************
+@pantoken/figma$ attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm
+
+@pantoken/figma v0.1.13
+
+Build tools:
+- typescript@catalog:
+- vite@catalog:
+
+ (ignoring rules: 'no-resolution', 'cjs-resolves-to-esm')
+
+ No problems found
+
+
+"@pantoken/figma"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/figma/package.json"
+
+node10: OK (JSON)
+node16 (from CJS): OK (JSON)
+node16 (from ESM): OK (JSON)
+bundler: OK (JSON)
+
+***********************************
+@pantoken/shadcn$ attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm
+
+@pantoken/shadcn v0.1.3
+
+Build tools:
+- typescript@catalog:
+- vite@catalog:
+
+ (ignoring rules: 'no-resolution', 'cjs-resolves-to-esm')
+
+ No problems found
+
+
+"@pantoken/shadcn"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/shadcn/theme.css"
+
+node10: OK 
+node16 (from CJS): OK 
+node16 (from ESM): OK 
+bundler: OK 
+
+***********************************
+
+"@pantoken/shadcn/components.css"
+
+node10: OK 
+node16 (from CJS): OK 
+node16 (from ESM): OK 
+bundler: OK 
+
+***********************************
+
+"@pantoken/shadcn/package.json"
+
+node10: OK (JSON)
+node16 (from CJS): OK (JSON)
+node16 (from ESM): OK (JSON)
+bundler: OK (JSON)
+
+***********************************
+@pantoken/css-in-js$ attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm
+
+@pantoken/css-in-js v0.1.15
+
+Build tools:
+- typescript@catalog:
+- vite@catalog:
+
+ (ignoring rules: 'no-resolution', 'cjs-resolves-to-esm')
+
+ No problems found
+
+
+"@pantoken/css-in-js"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/css-in-js/components.css"
+
+node10: OK 
+node16 (from CJS): OK 
+node16 (from ESM): OK 
+bundler: OK 
+
+***********************************
+
+"@pantoken/css-in-js/package.json"
+
+node10: OK (JSON)
+node16 (from CJS): OK (JSON)
+node16 (from ESM): OK (JSON)
+bundler: OK (JSON)
+
+***********************************
+@pantoken/pantoken$ attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm
+
+@pantoken/pantoken v0.2.12
+
+Build tools:
+- typescript@catalog:
+- vite@catalog:
+
+ (ignoring rules: 'no-resolution', 'cjs-resolves-to-esm')
+
+ No problems found
+
+
+"@pantoken/pantoken"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/android"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/angular"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/astro"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/bootstrap"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/cli"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/colors"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/components"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/compose"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/css"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/cssInJs"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/docusaurus"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/drupal"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/dtcg"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/email"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/figma"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/flutter"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/foundation"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/icons"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/less"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/logos"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/markdown-it"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/mintlify"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/mui"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/next"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/panda"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/pendo"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/postcss"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/primitives"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/pruneCustomProps"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/react"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/react-markdown"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/reactNative"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/rehype"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/scss"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/shadcn"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/simpleIcons"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/stacking"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/storybook"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/stylus"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/svelte"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/swatches"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/swift"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/tailwind"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/themeCustomMedia"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/tokens"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/transition"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/vanilla"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/visualDebug"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/vite"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/vitepress"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/vue"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/webComponents"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/webpack"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/wordpress"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/pantoken/html-custom-data.json"
+
+node10: OK 
+node16 (from CJS): OK (JSON)
+node16 (from ESM): OK (JSON)
+bundler: OK (JSON)
+
+***********************************
+
+"@pantoken/pantoken/css-custom-data.json"
+
+node10: OK 
+node16 (from CJS): OK (JSON)
+node16 (from ESM): OK (JSON)
+bundler: OK (JSON)
+
+***********************************
+
+"@pantoken/pantoken/cssdoc-base.json"
+
+node10: OK 
+node16 (from CJS): OK (JSON)
+node16 (from ESM): OK (JSON)
+bundler: OK (JSON)
+
+***********************************
+
+"@pantoken/pantoken/model.json"
+
+node10: OK 
+node16 (from CJS): OK (JSON)
+node16 (from ESM): OK (JSON)
+bundler: OK (JSON)
+
+***********************************
+
+"@pantoken/pantoken/package.json"
+
+node10: OK (JSON)
+node16 (from CJS): OK (JSON)
+node16 (from ESM): OK (JSON)
+bundler: OK (JSON)
+
+***********************************
+create-pantoken-app$ attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm
+
+This package does not contain types.
+Details: {
+  "packageName": "create-pantoken-app",
+  "packageVersion": "1.1.1",
+  "types": false
+}
+@pantoken/vite-workspace-orchestrator$ attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm
+
+@pantoken/vite-workspace-orchestrator v0.1.4
+
+Build tools:
+- typescript@catalog:
+- vite@catalog:
+
+ (ignoring rules: 'no-resolution', 'cjs-resolves-to-esm')
+
+ No problems found
+
+
+"@pantoken/vite-workspace-orchestrator"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/vite-workspace-orchestrator/package.json"
+
+node10: OK (JSON)
+node16 (from CJS): OK (JSON)
+node16 (from ESM): OK (JSON)
+bundler: OK (JSON)
+
+***********************************
+@pantoken/tinymce$ attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm
+
+@pantoken/tinymce v0.2.2
+
+Build tools:
+- typescript@catalog:
+- vite@catalog:
+
+ (ignoring rules: 'no-resolution', 'cjs-resolves-to-esm')
+
+ No problems found
+
+
+"@pantoken/tinymce"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/tinymce/package.json"
+
+node10: OK (JSON)
+node16 (from CJS): OK (JSON)
+node16 (from ESM): OK (JSON)
+bundler: OK (JSON)
+
+***********************************
+@pantoken/typedoc-plugin-live-example$ attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm
+
+@pantoken/typedoc-plugin-live-example v0.1.5
+
+Build tools:
+- typescript@^6.0.3
+- vite@catalog:
+
+ (ignoring rules: 'no-resolution', 'cjs-resolves-to-esm')
+
+ No problems found
+
+
+"@pantoken/typedoc-plugin-live-example"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/typedoc-plugin-live-example/package.json"
+
+node10: OK (JSON)
+node16 (from CJS): OK (JSON)
+node16 (from ESM): OK (JSON)
+bundler: OK (JSON)
+
+***********************************
+@pantoken/demo$ attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm
+
+@pantoken/demo v0.3.0
+
+Build tools:
+- typescript@catalog:
+- vite@catalog:
+
+ (ignoring rules: 'no-resolution', 'cjs-resolves-to-esm')
+
+ No problems found
+
+
+"@pantoken/demo"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/demo/demo.css"
+
+node10: OK 
+node16 (from CJS): OK 
+node16 (from ESM): OK 
+bundler: OK 
+
+***********************************
+
+"@pantoken/demo/card.css"
+
+node10: OK 
+node16 (from CJS): OK 
+node16 (from ESM): OK 
+bundler: OK 
+
+***********************************
+
+"@pantoken/demo/package.json"
+
+node10: OK (JSON)
+node16 (from CJS): OK (JSON)
+node16 (from ESM): OK (JSON)
+bundler: OK (JSON)
+
+***********************************
+@pantoken/typedoc-plugin-demo$ attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm
+
+@pantoken/typedoc-plugin-demo v0.1.5
+
+Build tools:
+- typescript@^6.0.3
+- vite@catalog:
+
+ (ignoring rules: 'no-resolution', 'cjs-resolves-to-esm')
+
+ No problems found
+
+
+"@pantoken/typedoc-plugin-demo"
+
+node10: OK 
+node16 (from CJS): OK (ESM)
+node16 (from ESM): OK (ESM)
+bundler: OK 
+
+***********************************
+
+"@pantoken/typedoc-plugin-demo/package.json"
+
+node10: OK (JSON)
+node16 (from CJS): OK (JSON)
+node16 (from ESM): OK (JSON)
+bundler: OK (JSON)
+
+***********************************
+@pantoken/validate-generated$ attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm
+
+@pantoken/validate-generated v0.1.15
+
+Build tools:
+- typescript@catalog:
+- vite@catalog:
+
+ (ignoring rules: 'no-resolution', 'cjs-resolves-to-esm')
+
+ No problems found
+
+
+┌───────────────────┬────────────────────────────────┐
+│                   │ "@pantoken/validate-generated" │
+├───────────────────┼────────────────────────────────┤
+│ node10            │ OK                             │
+├───────────────────┼────────────────────────────────┤
+│ node16 (from CJS) │ OK (ESM)                       │
+├───────────────────┼────────────────────────────────┤
+│ node16 (from ESM) │ OK (ESM)                       │
+├───────────────────┼────────────────────────────────┤
+│ bundler           │ OK                             │
+└───────────────────┴────────────────────────────────┘
+
+$ true ◉ cache hit, replaying
+
+---
+vp run: 135/162 cache hit (83%), 79.21s saved. @pantoken/interactions#build (and 8 more) not cached because they modified their inputs. (Run `vp run --last-details` for full details)
+
+---
+
+what is `oils` in the failed command?  try it with a different ai provider maybe?
+
+---
+
+❌ Patch coverage is `62.58503%` with `55 lines` in your changes missing coverage. Please review.
+
+✅ Project coverage is 95.36%. Comparing base ([`1e2ee0f`](https://app.codecov.io/gh/thedannywahl/pantoken/commit/1e2ee0f8f0f3fa87ceaa5c28b491fbc0158490bf?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)) to head ([`f2c3e79`](https://app.codecov.io/gh/thedannywahl/pantoken/commit/f2c3e790253a4f9da8d6b64c4459f457f0cdf0db?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)).
+
+✅ All tests successful. No failed tests found.
+
+[Files with missing lines](https://app.codecov.io/gh/thedannywahl/pantoken/pull/144?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
+Patch %
+Lines
+
+[docs/scripts/changed-pages.ts](https://app.codecov.io/gh/thedannywahl/pantoken/pull/144?src=pr&el=tree&filepath=docs%2Fscripts%2Fchanged-pages.ts&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl#REDACTED)
+56.34%
+[55 Missing ⚠️](https://app.codecov.io/gh/thedannywahl/pantoken/pull/144?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
+
+❌ Your patch check has failed because the patch coverage (62.58%) is below the target coverage (85.00%). You can increase the patch coverage or adjust the [target](https://docs.codecov.com/docs/commit-status#target) coverage.
