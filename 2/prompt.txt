@@ -1,0 +1,1 @@
+we should not be inventing utility classes for pendo, the html it gives us is static and immutable.
