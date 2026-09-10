@@ -1,5 +1,13 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-10 14:11+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"Language: und\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: alert/i18n.json#text1
 #, no-c-format
@@ -2211,6 +2219,78 @@ msgstr "분석 보기"
 msgctxt "docs.demos:pendo:secondaryLabel"
 msgid "Not now"
 msgstr "지금은 아님"
+
+#: pendo/i18n.json#surveyLabel
+#, fuzzy, no-c-format
+msgctxt "docs.demos:pendo:surveyLabel"
+msgid "Banner survey"
+msgstr "배너"
+
+#: pendo/i18n.json#surveyQuestion
+#, no-c-format
+msgctxt "docs.demos:pendo:surveyQuestion"
+msgid "How would you feel if you could no longer use participation insights?"
+msgstr "참여 통찰력을 더 이상 사용할 수 없다면 어떻게 느끼시겠습니까?"
+
+#: pendo/i18n.json#surveyChoiceVery
+#, no-c-format
+msgctxt "docs.demos:pendo:surveyChoiceVery"
+msgid "Very disappointed"
+msgstr "매우 실망했습니다"
+
+#: pendo/i18n.json#surveyChoiceMildly
+#, no-c-format
+msgctxt "docs.demos:pendo:surveyChoiceMildly"
+msgid "Mildly disappointed"
+msgstr "약간 실망했습니다"
+
+#: pendo/i18n.json#surveyChoiceNot
+#, no-c-format
+msgctxt "docs.demos:pendo:surveyChoiceNot"
+msgid "Not disappointed"
+msgstr "실망하지 않음"
+
+#: pendo/i18n.json#surveyFollowUp
+#, no-c-format
+msgctxt "docs.demos:pendo:surveyFollowUp"
+msgid "Please share the reasoning behind your rating."
+msgstr "귀하의 평가 이유를 공유해 주십시오."
+
+#: pendo/i18n.json#nextLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:nextLabel"
+msgid "Next"
+msgstr "다음"
+
+#: pendo/i18n.json#npsLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:npsLabel"
+msgid "Banner NPS survey"
+msgstr "배너 NPS 설문조사"
+
+#: pendo/i18n.json#npsQuestion
+#, no-c-format
+msgctxt "docs.demos:pendo:npsQuestion"
+msgid "How likely are you to recommend Canvas to a friend or colleague?"
+msgstr "Canvas를 친구나 동료에게 추천할 가능성이 얼마나 높습니까?"
+
+#: pendo/i18n.json#npsLowerBound
+#, no-c-format
+msgctxt "docs.demos:pendo:npsLowerBound"
+msgid "Not at all likely"
+msgstr "전혀 그럴 가능성이 없음"
+
+#: pendo/i18n.json#npsUpperBound
+#, no-c-format
+msgctxt "docs.demos:pendo:npsUpperBound"
+msgid "Extremely likely"
+msgstr "매우 가능성이 높음"
+
+#: pendo/i18n.json#submitLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:submitLabel"
+msgid "Submit"
+msgstr "제출"
 
 #: pill/i18n.json#text1
 #, no-c-format

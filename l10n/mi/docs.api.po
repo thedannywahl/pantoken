@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 22:08+0000\n"
+"PO-Revision-Date: 2026-09-10 16:20+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29407,3 +29407,7 @@ msgstr "`theme`/`mode` tīpako i ngā `@pantoken/css` token sheet scaffolded fil
 msgctxt "docs.api:prose"
 msgid "A platform pantoken can scaffold a starter project for."
 msgstr "He papanga ka taea e pantoken te whakatū i tētahi kaupapa tīmata mō."
+
+msgctxt "docs.api:prose"
+msgid "Pendo injects guide HTML into a host page; this renders that guide DOM (`._pendo-*`) to match\nInstructure UI, using pantoken's `--instui-*` token layer for alignment. It includes responsive\nviolet and sea banner guide treatments alongside alerts, popovers, surveys, and controls. The\ncomponent CSS is ported from `@instructure/pendo-global-css`; pantoken supplies the tokens and the\nassembly. A single theme class containing `instui` activates the scoped stylesheet; compact\nsuffixes on that class select banner colors and glyphs, and an `instui-banner` prefix extends the\nbanner surface to popovers and surveys while keeping their overlay elevation."
+msgstr "Ka whakakī a Pendo i te HTML arataki ki te whārangi tūmau; ko tēnei ka whakaatu i taua DOM arataki (`._pendo-*`) kia hāngai ki\nInstructure UI, mā te whakamahi i te paparanga token o pantoken `--instui-*` mō te whakarite. Kei roto hoki ngā whakamahinga arataki urutau:\nviolet me sea mō ngā pānui (banner), tāpiri atu ki ngā whakatūpato, popover, rangahau, me ngā mana whakahaere. Ko te\ncomponent CSS i whakawhitia mai i `@instructure/pendo-global-css`; ko pantoken te kaiwhakarato i ngā token me te\nassembly. Ko tētahi kara kaupapa kotahi e whai ana i `instui` e whakahohe ana i te tārua kāhua takiwā; ko ngā upoko poto (compact\nsuffixes) i runga i taua kara e tīpako ana i ngā tae me ngā tohu mō ngā pānui, ā, ko tētahi `instui-banner` tūāpapa e whakawhānui ana i te mata pānui\n ki ngā popover me ngā rangahau me te pupuri tonu i tō rātou teitei āpiti (overlay elevation)."

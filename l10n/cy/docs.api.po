@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 22:13+0000\n"
+"PO-Revision-Date: 2026-09-10 16:26+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29407,3 +29407,7 @@ msgstr "`theme`/`mode` dewiswch pa `@pantoken/css` ffeiliau strwythuredig ar gyf
 msgctxt "docs.api:prose"
 msgid "A platform pantoken can scaffold a starter project for."
 msgstr "Platfform y gall pantoken greu prosiect cychwyn ar ei gyfer."
+
+msgctxt "docs.api:prose"
+msgid "Pendo injects guide HTML into a host page; this renders that guide DOM (`._pendo-*`) to match\nInstructure UI, using pantoken's `--instui-*` token layer for alignment. It includes responsive\nviolet and sea banner guide treatments alongside alerts, popovers, surveys, and controls. The\ncomponent CSS is ported from `@instructure/pendo-global-css`; pantoken supplies the tokens and the\nassembly. A single theme class containing `instui` activates the scoped stylesheet; compact\nsuffixes on that class select banner colors and glyphs, and an `instui-banner` prefix extends the\nbanner surface to popovers and surveys while keeping their overlay elevation."
+msgstr "Pendo yn chwythu HTML canllaw i dudalen gartref; mae hyn yn rendro DOM y canllaw hwn (`._pendo-*`) to match\nInstructure UI, gan ddefnyddio haen tocyn pantoken `--instui-*` ar gyfer aliniad. Mae'n cynnwys triniaethau canllaw banner ymatebol \nlliw fioled a môr ac, ochr yn ochr â hynny, rhybuddion, popovers, arolygon, a rheolyddion. Cod CSS y\ncomponent wedi'i borthi o `@instructure/pendo-global-css`; mae pantoken yn darparu'r tocynnau a'r\nassembly. Mae un dosbarth thema sy'n cynnwys `instui` yn actifadu'r taflen arddull sydd wedi'i chwmpasu; mae \nsuffixes compact ar y dosbarth hwn yn dewis lliwiau a glyphs y banner, ac mae prefix `instui-banner` yn estyn arwyneb y\nbanner i popovers ac arolygon tra'n cadw eu uchder haenau gor-dorchuddiad."
