@@ -1,0 +1,2 @@
+the docs deploy to netlify failed again, investigate and perhaps we should do an initial seed from this local machine, wait for the diff changes on this branch to land, and then try re-publishing from github workflows.
+https://github.com/thedannywahl/pantoken/actions/runs/34507895086/job/102974506145
