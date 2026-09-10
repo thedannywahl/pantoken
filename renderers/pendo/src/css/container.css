@@ -8,7 +8,7 @@
  *   shared between all layouts; each layout applies its own sizing, spacing, and visual treatment.
  * @modifier [data-layout="lightboxBlank"] alert — Embedded alert guide; full-width with a coloured sidebar strip and status icon.
  * @modifier [data-layout="tooltipBlank"] popover — Overlay tooltip/popover guide; fixed width with optional caret.
- * @modifier ._pendo-guide-walkthrough_ survey — Survey guide; no data-layout value, auto width.
+ * @modifier _pendo-guide-walkthrough_ survey — Survey guide; no data-layout value, auto width.
  * @modifier -info info — Informational colour variant (alert only).
  * @modifier -danger danger — Danger/error colour variant (alert only).
  * @modifier -success success — Success colour variant (alert only).
@@ -21,6 +21,7 @@
  * @modifier -parchment parchment — Replace the default lightbulb glyph with the reversed Parchment icon.
  * @modifier -mastery mastery — Replace the default lightbulb glyph with the reversed Mastery icon.
  * @modifier -learnplatform learnplatform — Replace the default lightbulb glyph with the reversed LearnPlatform icon.
+ * @modifier -igniteai igniteai — Replace the default lightbulb glyph with the reversed IgniteAI icon.
  * @part ._pendo-guide-backdrop_ — Backdrop container.
  * @part ._pendo-backdrop — Fixed full-viewport overlay; display toggled by Pendo at runtime.
  * @part ._pendo-step-container-size — Positioning/sizing wrapper; stacks above the backdrop.
