@@ -400,7 +400,13 @@
             ></textarea>
           </form>
           <div id="survey-button-wrapper-demo-survey" class="_pendo-row">
-            <button class="bb-button _pendo-button-custom _pendo-button" type="button">
+            <!-- Custom-themed button: Pendo writes the guide author's colours inline, and
+                 `._pendo-button-custom` keeps pantoken from overriding them. -->
+            <button
+              class="bb-button _pendo-button-custom _pendo-button"
+              type="button"
+              style="background-color: #f0b429; border-color: #c78a10; color: #1b1b1b"
+            >
               {{nextLabel}}
             </button>
           </div>
