@@ -63,6 +63,31 @@ test("deletions widen to a full build", () => {
   expect(result.fallbackReason).toContain("deleted");
 });
 
+test("catalog changes without a comparison base widen to a full build", () => {
+  expect(
+    resolveChangedDocs([{ status: "M", path: "l10n/docs.api.pot" }], {
+      repoRoot: "/missing-repository",
+      locales: LOCALES,
+    }),
+  ).toEqual({
+    scope: "all",
+    pages: [],
+    surfaces: [],
+    fallbackReason: "Unable to compare l10n/docs.api.pot; running full docs build.",
+  });
+});
+
+test("unclassified docs changes widen to a full build", () => {
+  expect(
+    resolveChangedDocs([{ status: "M", path: "docs/README.md" }], { locales: LOCALES }),
+  ).toEqual({
+    scope: "all",
+    pages: [],
+    surfaces: [],
+    fallbackReason: "docs/README.md is not page-scoped yet.",
+  });
+});
+
 test("changed catalog entries return their referenced source pages", () => {
   const before = [
     "#: api/classes/Button.md:4",
