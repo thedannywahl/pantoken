@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test";
+import { relative } from "node:path";
 
 interface SpawnResult {
   status: number;
@@ -74,7 +75,7 @@ test("CLI writes a changed-pages file and GitHub outputs for a page-scoped diff"
   const [, body] = appendFileSync.mock.calls[0] as [string, string];
   expect(body).toContain("scope=subset");
   expect(body).toContain("page_count=2");
-  expect(body).toContain("pages_file=../../../../tmp/pantoken-docs-pages.json");
+  expect(body).toContain(`pages_file=${relative(process.cwd(), OUT_PATH)}`);
 });
 
 test("CLI falls back to a full build without a usable diff base", async () => {
