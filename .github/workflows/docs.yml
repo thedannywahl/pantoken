@@ -263,7 +263,10 @@ jobs:
           cd docs/.vitepress/dist
           du -sh .
           echo "pages: $(find . -name '*.html' | wc -l)  files: $(find . -type f | wc -l)"
-          worst=$(find . -type d -exec sh -c 'echo "$(ls -1U "$1" | wc -l) $1"' _ {} \; | sort -rn | head -1)
+          # awk keeps the running max instead of `sort | head`: `head` closing the pipe early kills
+          # `sort` with SIGPIPE, which `pipefail` turns into a failed step right before the deploy.
+          worst=$(find . -type d -exec sh -c 'for d; do echo "$(ls -1U "$d" | wc -l) $d"; done' _ {} + \
+            | awk '$1 > max { max = $1; line = $0 } END { print line }')
           echo "largest directory: $worst"
           if [ "${worst%% *}" -ge 54000 ]; then
             echo "::error::${worst#* } exceeds Netlify's 54,000-files-per-directory limit"
