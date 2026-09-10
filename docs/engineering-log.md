@@ -373,6 +373,25 @@ safe only for plugins whose effects are confined to emitted assets. When a hydra
 diagnosing, build with `define: { __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: "true" }` — the production
 Vue build otherwise reports the crash with no component or node context.
 
+### Mermaid's auto-run races VitePress hydration
+
+**Symptom** — `/guide/architecture` (the only page with a diagram) logged a hydration text mismatch:
+server rendered empty, client expected the graph source. The diagram itself rendered fine, so the
+only cost was a mismatch warning and a client re-render of that subtree.
+
+**Root cause** — Importing `mermaid` arms a `window` `load` listener that renders every element
+matching its default `.mermaid` selector. VitePress hydrates _after_ `load` (measured: load at 196 ms,
+hydration at 218 ms), so mermaid replaced the element's graph text with an SVG before Vue reached it.
+Two fixes that look right both fail: the component's `initialize({ startOnLoad: false })` ran too late
+(inside the render function), and hoisting `mermaid.startOnLoad = false` to module scope does nothing
+because the listener's guard reads the flag off mermaid's _internal_ object, not the imported binding.
+
+**Fix / rule** — Keep the container out of the selector: the element is `.mermaid-diagram`, and
+`renderDiagram` passes it explicitly via `nodes: [el]`. The auto-run then finds nothing regardless of
+mermaid's config state. The initial render also moved from a `watch(..., { immediate: true })` — which
+fires during setup, i.e. mid-hydration — to `onMounted`. To confirm a `load`-timing race like this,
+swallow `load` listeners in a Playwright init script and see whether the mismatch disappears.
+
 ### Snyk Code (SAST) gates locally, not in CI
 
 **Symptom** — Snyk has no GitHub App wired to this repo, so `snyk code test` (SAST) can't run in
