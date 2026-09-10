@@ -76,6 +76,30 @@ it's what keeps the English-only build internally consistent.
 tracks published versions, not intermediate main commits. `workflow_dispatch` remains the manual
 escape hatch. The deploy workflow builds the site itself; CI no longer uploads a `docs-site` artifact.
 
+**The site is on Netlify, not GitHub Pages.** The full-locale site is ~42k pages / ~92k files /
+~1.7 GB, and GitHub caps a published Pages site at 1 GB with a 10-minute deploy timeout — it outgrew
+the host, and no amount of build tuning would have changed that. Netlify has no per-deploy file-count
+or size limit; its one structural limit is **54,000 files in a single directory**, and VitePress puts
+one chunk per page in `assets/`, which lands around 40k. The `Check site shape` step in `docs.yml`
+fails the deploy if any directory crosses that line. Netlify deploys are content-addressed, so only
+the first seed uploads everything and each release after it uploads its diff. Deploy needs two repo
+secrets, `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID`; `docs/public/_headers` carries the immutable
+cache policy for `/assets/*` (Netlify otherwise serves everything `must-revalidate`).
+
+**The deploy build is memory-bound.** Three settings keep it inside a 16 GB runner, and all three
+have a reason:
+
+- `themeConfig.search.options._render` skips `<locale>/api/**`. The local-search plugin runs a
+  _second_ full markdown-it pass over every page and holds one MiniSearch index per locale in memory
+  for the whole build; indexing the translated API mirrors meant ~38k extra renders and ~77 MB of
+  retained indexes, to produce per-locale indexes so large that opening search would have downloaded
+  them.
+- `buildConcurrency` (`DOCS_BUILD_CONCURRENCY`) drops from VitePress's default of 64 to 12. Every
+  in-flight page holds its rendered HTML and Vue SSR context alive.
+- The workflow swaps the runner's 4 GB swapfile for 24 GB. When peak RSS crosses physical memory the
+  kernel OOM-killer takes out the runner _agent_, and the job reports only "the runner has received a
+  shutdown signal" — no V8 heap error, no stack, no clue. Swap converts that into slow progress.
+
 **Why the full build stays in CI.** The localized API tree is ~875 pages per locale across 44
 locales — roughly 35k generated files. Those are gitignored on purpose (they were committed once and
 removed), so building locally would mean either re-committing them or hand-pushing `dist`. Paying for

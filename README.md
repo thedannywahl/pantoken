@@ -83,7 +83,7 @@ upstream. Every other bucket consumes the IR.
 
 ## Documentation
 
-The site is built with VitePress and TypeDoc and deploys to GitHub Pages:
+The site is built with VitePress and TypeDoc and deploys to Netlify:
 [pantoken.app](https://pantoken.app).
 
 ```sh

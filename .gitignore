@@ -55,6 +55,8 @@ docs/public/*
 !docs/public/workflow-dark.svg
 !docs/public/workflow-light.svg
 !docs/public/robots.txt
+# Netlify reads this from the deployed directory root; VitePress copies public/ there verbatim.
+!docs/public/_headers
 !docs/public/.well-known/
 docs/public/.well-known/*
 !docs/public/.well-known/api-catalog

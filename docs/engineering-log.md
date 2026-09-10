@@ -209,6 +209,39 @@ token instead of hard-failing, and emit a `::warning::` when it's missing. The P
 npm publishing stays OIDC/token-free (`id-token: write` + trusted publishers). Fine-grained PATs expire
 (≤ 1 year); the "RELEASE_PAT missing" warning in the release log is the rotation cue.
 
+### "The runner has received a shutdown signal" is a whole-VM OOM, not a job timeout
+
+**Symptom** — The docs deploy ran 1h45m, printed the chunk-size warning, then went completely silent
+for 81 minutes and ended with `The runner has received a shutdown signal.` / `The operation was
+canceled.` No V8 heap error, no stack, no failing task named. Raising
+`NODE_OPTIONS=--max-old-space-size` from 8192 to 14336 made it worse, not better.
+
+**Root cause** — A GitHub-hosted `ubuntu-latest` runner has 16 GB of RAM. A heap ceiling of 14336 MB
+tells V8 it may grow to ~14 GB _before_ collecting seriously, so the process crosses physical memory
+and the kernel OOM-killer picks a victim — usually the runner agent itself, not node. Killing the
+agent is what produces the shutdown-signal message, which is why it reads like a cancellation.
+
+**Fix / rule** — Never set a heap ceiling near the runner's physical RAM; leave room for non-heap and
+the OS. Reduce the actual working set first (here: the VitePress local-search plugin was doing a
+second full markdown pass over ~38k pages and holding one MiniSearch index per locale), then cap
+concurrency, then add swap as a safety net so an overshoot degrades instead of dying. When a job dies
+silently with no application-level error, suspect the VM, not the program.
+
+### A static site can outgrow its host before it outgrows its build
+
+**Symptom** — Every fix aimed at making the docs deploy finish was aimed at the wrong failure. Even a
+successful build could not have shipped.
+
+**Root cause** — The full-locale site is ~42k pages / ~92k files / ~1.7 GB. GitHub Pages caps a
+published site at 1 GB and times deployments out after 10 minutes. Those limits are documented but
+easy to never think about, because they're invisible until the site is large.
+
+**Fix / rule** — Before optimizing a build that produces a very large artifact, measure the artifact
+and check it against the host's limits. `du -sh dist` and a file count are two commands. Netlify has
+no file-count or size cap but does limit a _single directory_ to 54,000 files — and VitePress emits
+one chunk per page into `assets/`, so that ceiling is the one to watch. Assert host limits in CI
+(`Check site shape` in `docs.yml`) rather than discovering them as an opaque deploy failure.
+
 ## Code quality gates
 
 ### The fallow health gap to grade A is diffuse, not a few fixable functions
