@@ -15,7 +15,7 @@
  */
 
 :is(:scope, [class*="instui"]) {
-  ._pendo-button {
+  ._pendo-button:not(._pendo-button-custom) {
     height: var(--instui-component-base-button-small-height);
     min-height: var(--instui-component-base-button-small-height);
     padding: var(--instui-component-base-button-padding-vertical)
