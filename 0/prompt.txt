@@ -1,0 +1,58 @@
+I need to integrate these rules into the pendo-tooltip-caret section:
+```
+.pendo-tooltip-caret.pendo-tooltip-caret--left,
+.pendo-tooltip-caret.pendo-tooltip-caret--left+.pendo-tooltip-caret-border {
+  margin: 1rem calc(1rem + 1px) 1rem 1px;
+}
+
+.pendo-tooltip-caret.pendo-tooltip-caret--right,
+.pendo-tooltip-caret.pendo-tooltip-caret--right+.pendo-tooltip-caret-border {
+  margin: 1rem calc(1rem) 1rem 1px;
+}
+
+.pendo-tooltip-caret.pendo-tooltip-caret--bottom,
+.pendo-tooltip-caret.pendo-tooltip-caret--bottom+.pendo-tooltip-caret-border {
+  margin: 0 2rem;
+}
+
+.pendo-tooltip-caret.pendo-tooltip-caret--top,
+.pendo-tooltip-caret.pendo-tooltip-caret--top+.pendo-tooltip-caret-border {
+    margin: 0 2rem;
+}
+```
+
+---
+
+we need to reuse the container query from container in card so that we can adjust the bottom margin based on the container width.
+
+---
+
+does this put a margin at the end of the first button and before the next button?
+
+---
+
+it doesn't seem to be getting picked up by this html:
+```
+<div id="pendo-row-19db1181" class="_pendo-row" data-editing-id="52841810-d46a-465f-8601-578105afb76b" style="display: flex; float: none; vertical-align: baseline; position: static; background-color: rgba(255, 255, 255, 0); padding: 0px; margin: 0px; flex-wrap: wrap; justify-content: flex-start; align-items: flex-start;" data-pendo-display-flex="true" data-pendo-justify-content="flex-start" data-_pendo-row-2=""><button id="pendo-button-3dc35b55" type="button" class="bb-button _pendo-button-primaryButton _pendo-button" data-editing-id="f36aa252-416e-4b16-9293-0100b8db78ef" style="width: auto; display: block; color: rgb(255, 255, 255); border: 0px solid rgb(42, 44, 53); font-weight: 400; float: none; vertical-align: baseline; position: relative; background-color: rgb(42, 44, 53); border-radius: 3px; padding: 11px 16px; margin: 10px 5px 10px 0px; font-size: 14px; letter-spacing: 0px; line-height: 1; overflow-wrap: break-word; text-transform: none; font-family: inherit; text-align: center; min-width: 0px; background-image: none; white-space: pre-wrap;" data-_pendo-button-primarybutton-1="" data-_pendo-button-1="">Primary</button><button id="pendo-button-45628e69" type="button" class="bb-button _pendo-button-secondaryButton _pendo-button" data-editing-id="c60bdd79-ab49-4248-81db-bf84b1f527e2" style="width: auto; display: block; color: rgb(255, 255, 255); border: 0px solid rgb(106, 108, 117); font-weight: 400; float: none; vertical-align: baseline; position: relative; background-color: rgb(106, 108, 117); border-radius: 3px; padding: 11px 16px; margin: 10px 5px; font-size: 14px; letter-spacing: 0px; line-height: 1; overflow-wrap: break-word; text-transform: none; font-family: inherit; text-align: center; min-width: 0px; background-image: none; white-space: pre-wrap;" data-_pendo-button-secondarybutton-1="" data-_pendo-button-2="">Secondary</button><button id="pendo-button-f2535a92" type="button" class="bb-button _pendo-button-tertiaryButton _pendo-button" data-editing-id="35ce8583-b186-4228-884d-b37eed84bf87" style="width: auto; display: block; color: rgb(42, 44, 53); border: 0px solid rgb(42, 44, 53); font-weight: 400; float: none; vertical-align: baseline; position: relative; background-color: rgba(255, 255, 255, 0); border-radius: 3px; padding: 11px 16px; margin: 10px 5px; font-size: 14px; letter-spacing: 0px; line-height: 1; overflow-wrap: break-word; text-transform: none; font-family: inherit; text-align: center; min-width: 0px; background-image: none; white-space: pre-wrap;" data-_pendo-button-tertiarybutton-1="" data-_pendo-button-3="">Next</button></div>
+```
+
+---
+
+there is a rule somewhere in the alert settings in pendo css that is resolving to:
+```
+@scope (.instui-alert) {
+  &::before {}
+}
+```
+that is applying the border, background, icon, etc.  that is supposed to be inside of ._pendo-step-container-styles causing it to looks like an alert rendering inside an alert.
+
+---
+
+I think it's this `:is` selector  that's not prefixed with scope that's causing the issue.
+
+---
+
+I intentionally flattened that selector but am still getting a double render with this html and the current generate/global.css styles:
+```
+<div id="REDACTED" class="instui-alert _pendo-step-container _pendo-guide-walkthrough_" data-editing-id="a442bf74-cf1e-49f6-95ba-043dd43ffe73" data-layout="lightboxBlank" style="width: 100%; display: block; float: none; vertical-align: baseline; visibility: visible;"><div id="REDACTED" class="_pendo-step-container-size" data-editing-id="fef24535-1d7d-474b-8577-d315fb02d840" style="width: 100%; display: block; float: none; vertical-align: baseline; z-index: 1; pointer-events: all; position: relative; animation: none; visibility: visible; margin-right: 0px; height: 621px;" data-relative-alignment="true"><div id="REDACTED" role="dialog" class="_pendo-step-container-styles" data-editing-id="a13d9421-e320-4004-b20d-d7b99f928cc1" style="height: 100%; display: block; border: 1px solid rgb(187, 187, 187); float: none; vertical-align: baseline; position: relative; background-color: rgb(255, 255, 255); box-sizing: border-box; border-radius: 7px; padding: 40px; box-shadow: rgb(136, 136, 136) 0px 0px 0px 0px;" aria-modal="false" tabindex="-1"><div id="pendo-row-055af1f4" class="_pendo-row" data-editing-id="04d09a84-b557-45c0-80b0-58583f58ef32" style="display: flex; float: none; vertical-align: baseline; position: static; background-color: rgba(255, 255, 255, 0); padding: 16px 24px; margin: 0px; flex-wrap: wrap; justify-content: flex-start; align-items: flex-start;" data-pendo-display-flex="true" data-pendo-justify-content="flex-start" data-_pendo-row-1=""><div id="pendo-text-b04bb0ff" class="bb-text _pendo-text-title" data-editing-id="a6fb5d4d-ec4e-4e1c-95f2-04aaf63b5c17" style="width: inherit; display: block; color: rgb(0, 0, 0); font-weight: 600; float: none; vertical-align: baseline; position: relative; padding: 0px; margin: 0px; font-size: 32px; letter-spacing: 0px; line-height: 1.2; overflow-wrap: break-word; text-transform: none; font-family: inherit; text-decoration: none; text-align: left; max-width: 714px;" data-_pendo-text-title-1=""><div id="pendo-text-9f7adba4" class="bb-text _pendo-simple-text" style="width: auto; display: block; color: inherit; font-weight: inherit; float: none; vertical-align: baseline; position: relative; padding: 0px; margin: 0px; font-size: inherit; letter-spacing: inherit; line-height: inherit; overflow-wrap: break-word; text-transform: inherit; font-family: inherit; text-align: inherit; font-style: inherit;" data-_pendo-simple-text-2=""><h2 id="pendo-text-5b5b680a" class="bb-text _pendo-simple-text" style="width: auto; display: block; color: inherit; font-weight: inherit; float: none; vertical-align: baseline; position: relative; padding: 0px; margin: 0px; font-size: inherit; letter-spacing: inherit; line-height: inherit; overflow-wrap: break-word; text-transform: inherit; font-family: inherit; text-align: inherit; font-style: inherit; white-space: pre-wrap;" data-_pendo-simple-text-1="">Image</h2></div></div></div><div id="pendo-row-020a282b" class="_pendo-row" data-editing-id="129890c8-f3c4-4e77-b0f6-5039512c998e" style="display: flex; float: none; vertical-align: baseline; position: static; background-color: rgba(255, 255, 255, 0); padding: 0px; margin: 0px; flex-wrap: wrap; justify-content: flex-start; align-items: flex-start;" data-pendo-display-flex="true" data-pendo-justify-content="flex-start" data-_pendo-row-2=""><div id="pendo-image-wrapper-83b55a0a" data-img-id="pendo-image-9c656430" class="pendo-block-wrapper _pendo-image-wrapper" data-editing-id="e52a4f19-ccaf-42d7-8867-ce28c0e3460c" data-_pendo-image-wrapper-1=""><img id="pendo-image-9c656430" class="_pendo-image" data-editing-id="e52a4f19-ccaf-42d7-8867-ce28c0e3460c" style="height: auto; width: 714px; display: block; float: none; vertical-align: baseline; box-shadow: rgba(255, 255, 255, 0) 0px 0px 0px 0px; margin: 0px; max-width: 714px;" data-pendo-accessible-element="true" src="https://pendo-static-4820939051958272.storage.googleapis.com/O1OmzROb7y_PUckWrRZHnirFuLA/guide-media-b427214d-64cd-4f19-a56d-bbc080884369" alt="" data-_pendo-image-1="" data-_pendo-media-resize-base-width="100%"></div></div><button id="pendo-close-guide-e5df9439" class="_pendo-close-guide" data-editing-id="0f1f82ea-c3f9-4cf4-a026-191a07e655a4" style="color: rgb(106, 108, 117); border: 0px; font-weight: 100; float: none; vertical-align: baseline; z-index: 20; position: absolute !important; background-color: rgba(255, 255, 255, 0); border-radius: 0px; padding: 0px; margin: 0px; font-size: 32px; line-height: 1; font-family: Helvetica; min-width: 0px; background-image: none; left: auto; right: 15px; top: 6px; white-space: pre-wrap;" aria-label="Close">×</button><div id="pendo-row-00aebfa8" class="_pendo-row" data-editing-id="649ef48c-5752-40a3-b844-03efa8aa1f2b" style="display: flex; float: none; vertical-align: baseline; position: static; background-color: rgba(255, 255, 255, 0); padding: 0px; margin: 0px; flex-wrap: wrap; justify-content: flex-start; align-items: flex-start;" data-pendo-display-flex="true" data-pendo-justify-content="flex-start" data-_pendo-row-3=""><button id="pendo-button-26b453cf" type="button" class="bb-button _pendo-button-primaryButton _pendo-button" data-editing-id="a1192d02-f2a9-4b3c-a20c-0da34c3b2f78" style="width: auto; display: block; color: rgb(255, 255, 255); border: 0px solid rgb(42, 44, 53); font-weight: 400; float: none; vertical-align: baseline; position: relative; background-color: rgb(42, 44, 53); border-radius: 3px; padding: 11px 16px; margin: 10px 0px; font-size: 14px; letter-spacing: 0px; line-height: 1; overflow-wrap: break-word; text-transform: none; font-family: inherit; text-align: center; min-width: 0px; background-image: none; white-space: pre-wrap;" data-_pendo-button-primarybutton-1="" data-_pendo-button-1="">Next</button></div></div></div></div>
+```
