@@ -108,9 +108,12 @@ jobs:
         env:
           DOCS_BASE: /
           DOCS_HOSTNAME: https://pantoken.app/
-          # vitepress-plugin-llms walks every locale's rendered pages; V8's auto-detected heap
-          # ceiling isn't enough once all ~44 locales carry full content, so raise it explicitly.
-          NODE_OPTIONS: --max-old-space-size=8192
+          # vitepress-plugin-llms walks every locale's rendered pages, and does so again during
+          # VitePress's SSR pass; 8192 (raised once already) still OOMs once all ~44 locales carry
+          # full translated content. ubuntu-latest gives 16 GB RAM, so push close to that ceiling,
+          # leaving headroom for the OS and non-heap (buffer/external) memory. Incremental deploys
+          # after this first full-locale seed touch far fewer pages and should need much less.
+          NODE_OPTIONS: --max-old-space-size=14336
 
       - name: Write custom domain file
         run: echo "pantoken.app" > docs/.vitepress/dist/CNAME
