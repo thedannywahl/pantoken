@@ -1,0 +1,67 @@
+1 test is failing in CI, fix it and push.
+```
+### [](https://github.com/thedannywahl/pantoken/pull/136#issuecomment-5611367860)
+
+  
+    
+        
+    
+    
+
+  
+
+    
+
+    
+        
+
+        
+
+    
+
+  
+
+      
+          
+
+        
+
+  
+    
+      
+          
+### ❌ 1 Tests Failed:
+
+Tests completed
+Failed
+Passed
+Skipped
+
+2142
+1
+2141
+0
+
+View the top 1 failed test(s) by shortest run time
+
+> ```
+> renderers/pendo/tests/build.test.ts > compact theme class suffixes select banner color and glyph treatments
+> ```
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> Stack Traces | 0.1s run time
+> > ```
+> >
+> > ```
+
+To view more test ana
+```
+
+Likely the test is outdated to the changes we just made.
