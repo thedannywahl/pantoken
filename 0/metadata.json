@@ -1,0 +1,154 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M261RQD2E0KN3XF3QC3JHPQQ",
+  "session_id": "b085ae41-1039-4fd6-ae75-ae3ac9361809",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-10T16:17:44.9217Z",
+  "branch": "pendo-popover-banners",
+  "checkpoints_count": 7,
+  "save_step_count": 6,
+  "files_touched": [
+    ".changeset/pendo-banner-surveys.md"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "53e2c58ece55",
+  "checkpoint_transcript_start": 340,
+  "transcript_lines_at_start": 340,
+  "compact_transcript_start": 49,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 8
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-10T16:17:44.884311Z",
+    "agent_lines": 17,
+    "agent_removed": 0,
+    "human_added": 16,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 33,
+    "total_lines_changed": 33,
+    "agent_percentage": 51.515151515151516,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 1103,
+      "user_lines_removed": 1602,
+      "agent_lines_added": 5165,
+      "agent_lines_removed": 6556,
+      "user_added_per_file": {
+        "docs/demos/pendo/style.css": 5,
+        "l10n/ru/docs.demos.po": 79,
+        "l10n/se/docs.demos.po": 139,
+        "l10n/sl/docs.demos.po": 140,
+        "l10n/sv/docs.demos.po": 140,
+        "l10n/th/docs.demos.po": 137,
+        "l10n/tr/docs.demos.po": 140,
+        "l10n/uk/docs.demos.po": 140,
+        "l10n/vi/docs.demos.po": 72,
+        "renderers/pendo/src/css/button.css": 15,
+        "renderers/pendo/src/css/card.css": 18,
+        "renderers/pendo/src/css/chrome.css": 3,
+        "renderers/pendo/src/css/container.css": 24,
+        "renderers/pendo/src/css/inputs.css": 41,
+        "renderers/pendo/src/css/text.css": 10
+      },
+      "user_removed_per_file": {
+        "docs/demos/pendo/style.css": 6,
+        "l10n/ru/docs.demos.po": 210,
+        "l10n/se/docs.demos.po": 195,
+        "l10n/sl/docs.demos.po": 198,
+        "l10n/sv/docs.demos.po": 198,
+        "l10n/th/docs.demos.po": 190,
+        "l10n/tr/docs.demos.po": 198,
+        "l10n/uk/docs.demos.po": 198,
+        "renderers/pendo/src/css/button.css": 27,
+        "renderers/pendo/src/css/card.css": 32,
+        "renderers/pendo/src/css/chrome.css": 6,
+        "renderers/pendo/src/css/container.css": 52,
+        "renderers/pendo/src/css/inputs.css": 76,
+        "renderers/pendo/src/css/text.css": 16
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 76,
+      "user_lines_removed": 201,
+      "agent_lines_added": 6418,
+      "agent_lines_removed": 8319,
+      "user_added_per_file": {
+        "l10n/zh-Hant/docs.demos.po": 76
+      },
+      "user_removed_per_file": {
+        "l10n/zh-Hant/docs.demos.po": 201
+      }
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 63,
+      "user_lines_removed": 59,
+      "agent_lines_added": 6483,
+      "agent_lines_removed": 8509,
+      "user_added_per_file": {
+        "l10n/ca/docs.api.po": 5,
+        "l10n/de/docs.api.po": 5,
+        "l10n/en-AU/docs.api.po": 5,
+        "l10n/en-CA/docs.api.po": 5,
+        "l10n/en-GB/docs.api.po": 5,
+        "l10n/ga/docs.api.po": 5,
+        "l10n/ht/docs.api.po": 5,
+        "renderers/pendo/src/css/container.css": 28
+      },
+      "user_removed_per_file": {
+        "l10n/ca/docs.api.po": 1,
+        "l10n/de/docs.api.po": 1,
+        "l10n/en-AU/docs.api.po": 1,
+        "l10n/en-CA/docs.api.po": 1,
+        "l10n/en-GB/docs.api.po": 1,
+        "l10n/ga/docs.api.po": 1,
+        "l10n/ht/docs.api.po": 1,
+        "renderers/pendo/src/css/container.css": 52
+      }
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 15,
+      "user_lines_removed": 3,
+      "agent_lines_added": 6532,
+      "agent_lines_removed": 8516,
+      "user_added_per_file": {
+        "l10n/ar/docs.api.po": 5,
+        "l10n/da/docs.api.po": 5,
+        "l10n/hy/docs.api.po": 5
+      },
+      "user_removed_per_file": {
+        "l10n/ar/docs.api.po": 1,
+        "l10n/da/docs.api.po": 1,
+        "l10n/hy/docs.api.po": 1
+      }
+    },
+    {
+      "checkpoint_number": 6,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 6547,
+      "agent_lines_removed": 8519
+    }
+  ]
+}
