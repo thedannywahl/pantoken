@@ -15,6 +15,7 @@ const productIcons = [
   "parchment",
   "mastery",
   "learnplatform",
+  "igniteai",
 ] as const satisfies readonly Product[];
 
 const productLogoCss = `[class*="instui"] {\n${productIcons

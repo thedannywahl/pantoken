@@ -143,9 +143,7 @@ test("compact theme class suffixes select banner color and glyph treatments", ()
   expect(containerCss).toContain('&[class*="-danger"]');
   expect(containerCss).toContain('&[class*="-success"]');
   expect(containerCss).toContain('&[class*="-warning"]');
-  expect(containerCss).toContain(
-    ':is(:scope[class*="instui-alert"], [class*="instui-alert"])[data-layout="lightboxBlank"]',
-  );
+  expect(containerCss).toContain(':scope[class*="instui-alert"][data-layout="lightboxBlank"]');
   expect(PENDO_VARS_CSS).toContain("--instui-logo-canvas-icon-reversed");
   expect(PENDO_VARS_CSS).toContain("--instui-logo-parchment-icon-reversed");
   expect(PENDO_VARS_CSS).toContain("--instui-logo-mastery-icon-reversed");

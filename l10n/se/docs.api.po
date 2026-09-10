@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 17:21+0000\n"
+"PO-Revision-Date: 2026-09-10 01:20+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -6654,13 +6654,13 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`[class*=\"-hidden-\"],[class*=\"-show-\"]` — Viewport- or container-width show/hide classes across a themed breakpoint scale."
-msgstr ""
+msgstr "`[class*=\"-hidden-\"],[class*=\"-show-\"]` — Viewport- vai kontejnera-laivvi čájehit/lokcinit luohkkat maŋŋebealafálut interval-vahkka maŋŋebeallain."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`.instui-hidden-max-<bp>`/`-hidden-min-<bp>` hide by viewport width; `.instui-show-max-<bp>`/`-show-min-<bp>` are the inverse (hidden by default, shown only inside the range via `display: revert`); the `-cq-` variants react to a `.instui-container` ancestor's width instead, not the viewport's. Scale tiers `xs`/`sm`/`md`/`lg`/`xl` (sourced from the IR's tray-width component tokens) are each aliased to a long-form spelling (`x-small`–`x-large`) and a device name (`mobile`/`phablet`/`tablet`/`laptop`/`desktop`) — both deprecated in favor of the short name — plus the unscaled, themed `content`/`content-full-width` tiers (the main content area's max-width)."
-msgstr ""
+msgstr "`.instui-hidden-max-<bp>`/`-hidden-min-<bp>` lokcinit viewport-laivvi rastervuođa mielde; `.instui-show-max-<bp>`/`-show-min-<bp>` leat moattemearkkalaš (lokcinon standordesta, čájehuvvon dušše vahkka sisa via `display: revert`); dat `-cq-` variašuvnnat vuehttet `.instui-container` maŋŋebealageažes laivvi maŋŋel, ii viewport-a laivvi. Maŋŋebeallafálut vahkkat `xs`/`sm`/`md`/`lg`/`xl` (geažes IR-a vahkka-laivvi komponeantta merkaš) leat goabbáge vahkka-nammain (`x-small`–`x-large`) ja reaidu namma (`mobile`/`phablet`/`tablet`/`laptop`/`desktop`) — goabbáge seailladuvvon oamastuvvan vahkka-namma dihte — maŋŋel unreastered, teamaš `content`/`content-full-width` vahkkat (pealge sátnejeakcu guovllu maksimala-laivvi)."
 
 #: css/responsive.md
 #, no-c-format
@@ -6672,13 +6672,13 @@ msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/mai
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the marked container is at or below the `content` breakpoint (`68.75em`)."
-msgstr ""
+msgstr "Lokcinit go maŕkiduvvon kontejnera lea vai alit `content` interval (`68.75em`)."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the marked container is at or below the `content-full-width` breakpoint (`98.75em`)."
-msgstr ""
+msgstr "Lokcinit go maŕkiduvvon kontejnera lea vai alit `content-full-width` interval (`98.75em`)."
 
 #: css/responsive.md
 #, no-c-format
@@ -6696,13 +6696,13 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the marked container is at or below the `lg` breakpoint (`48em`)."
-msgstr ""
+msgstr "Lokcinit go maŕkiduvvon kontejnera lea vai alit `lg` interval (`48em`)."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the marked container is at or below the `md` breakpoint (`30em`)."
-msgstr ""
+msgstr "Lokcinit go maŕkiduvvon kontejnera lea vai alit `md` interval (`30em`)."
 
 #: css/responsive.md
 #, no-c-format
@@ -6726,31 +6726,31 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the marked container is at or below the `sm` breakpoint (`20em`)."
-msgstr ""
+msgstr "Lokcinit go maŕkiduvvon kontejnera lea vai alit `sm` interval (`20em`)."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the marked container is at or below the `xl` breakpoint (`62em`)."
-msgstr ""
+msgstr "Lokcinit go maŕkiduvvon kontejnera lea vai alit `xl` interval (`62em`)."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the marked container is at or below the `xs` breakpoint (`16em`)."
-msgstr ""
+msgstr "Lokcinit go maŕkiduvvon kontejnera lea vai alit `xs` interval (`16em`)."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the marked container is at or above the `content` breakpoint (`68.75em`)."
-msgstr ""
+msgstr "Lokcinit go maŕkiduvvon kontejnera lea vai alehkos `content` interval (`68.75em`)."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the marked container is at or above the `content-full-width` breakpoint (`98.75em`)."
-msgstr ""
+msgstr "Lokcinit go maŕkiduvvon kontejnera lea vai alehkos `content-full-width` interval (`98.75em`)."
 
 #: css/responsive.md
 #, no-c-format
@@ -6768,13 +6768,13 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the marked container is at or above the `lg` breakpoint (`48em`)."
-msgstr ""
+msgstr "Lokcinit go maŕkiduvvon kontejnera lea vai alehkos `lg` interval (`48em`)."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the marked container is at or above the `md` breakpoint (`30em`)."
-msgstr ""
+msgstr "Lokcinit go maŕkiduvvon kontejnera lea vai alehkos `md` interval (`30em`)."
 
 #: css/responsive.md
 #, no-c-format
@@ -6798,31 +6798,31 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the marked container is at or above the `sm` breakpoint (`20em`)."
-msgstr ""
+msgstr "Lokcinit go maŕkiduvvon kontejnera lea vai alehkos `sm` interval (`20em`)."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the marked container is at or above the `xl` breakpoint (`62em`)."
-msgstr ""
+msgstr "Lokcinit go maŕkiduvvon kontejnera lea vai alehkos `xl` interval (`62em`)."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the marked container is at or above the `xs` breakpoint (`16em`)."
-msgstr ""
+msgstr "Lokcinit go maŕkiduvvon kontejnera lea vai alehkos `xs` interval (`16em`)."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Show when the marked container is at or below the `content` breakpoint (`68.75em`); hidden otherwise."
-msgstr ""
+msgstr "Čájehit go maŕkiduvvon kontejnera lea vai alit `content` interval (`68.75em`); lokcinon maŋŋel."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Show when the marked container is at or below the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
-msgstr ""
+msgstr "Čájehit go maŕkiduvvon kontejnera lea vai alit `content-full-width` interval (`98.75em`); lokcinon maŋŋel."
 
 #: css/responsive.md
 #, no-c-format
@@ -6840,13 +6840,13 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Show when the marked container is at or below the `lg` breakpoint (`48em`); hidden otherwise."
-msgstr ""
+msgstr "Čájehit go maŕkiduvvon kontejnera lea vai alit `lg` interval (`48em`); lokcinon maŋŋel."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Show when the marked container is at or below the `md` breakpoint (`30em`); hidden otherwise."
-msgstr ""
+msgstr "Čájehit go maŕkiduvvon kontejnera lea vai alit `md` interval (`30em`); lokcinon maŋŋel."
 
 #: css/responsive.md
 #, no-c-format
@@ -6870,31 +6870,31 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Show when the marked container is at or below the `sm` breakpoint (`20em`); hidden otherwise."
-msgstr ""
+msgstr "Čájehit go maŕkiduvvon kontejnera lea vai alit `sm` interval (`20em`); lokcinon maŋŋel."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Show when the marked container is at or below the `xl` breakpoint (`62em`); hidden otherwise."
-msgstr ""
+msgstr "Čájehit go maŕkiduvvon kontejnera lea vai alit `xl` interval (`62em`); lokcinon maŋŋel."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Show when the marked container is at or below the `xs` breakpoint (`16em`); hidden otherwise."
-msgstr ""
+msgstr "Čájehit go maŕkiduvvon kontejnera lea vai alit `xs` interval (`16em`); lokcinon maŋŋel."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Show when the marked container is at or above the `content` breakpoint (`68.75em`); hidden otherwise."
-msgstr ""
+msgstr "Čájehit go maŕkiduvvon kontejnera lea vai alehkos `content` interval (`68.75em`); lokcinon maŋŋel."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Show when the marked container is at or above the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
-msgstr ""
+msgstr "Čájehit go maŕkiduvvon kontejnera lea vai alehkos `content-full-width` interval (`98.75em`); lokcinon maŋŋel."
 
 #: css/responsive.md
 #, no-c-format
@@ -6912,13 +6912,13 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Show when the marked container is at or above the `lg` breakpoint (`48em`); hidden otherwise."
-msgstr ""
+msgstr "Čájehit go maŕkiduvvon kontejnera lea vai alehkos `lg` interval (`48em`); lokcinon maŋŋel."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Show when the marked container is at or above the `md` breakpoint (`30em`); hidden otherwise."
-msgstr ""
+msgstr "Čájehit go maŕkiduvvon kontejnera lea vai alehkos `md` interval (`30em`); lokcinon maŋŋel."
 
 #: css/responsive.md
 #, no-c-format
@@ -6942,31 +6942,31 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Show when the marked container is at or above the `sm` breakpoint (`20em`); hidden otherwise."
-msgstr ""
+msgstr "Čájehit go maŕkiduvvon kontejnera lea vai alehkos `sm` interval (`20em`); lokcinon maŋŋel."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Show when the marked container is at or above the `xl` breakpoint (`62em`); hidden otherwise."
-msgstr ""
+msgstr "Čájehit go maŕkiduvvon kontejnera lea vai alehkos `xl` interval (`62em`); lokcinon maŋŋel."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Show when the marked container is at or above the `xs` breakpoint (`16em`); hidden otherwise."
-msgstr ""
+msgstr "Čájehit go maŕkiduvvon kontejnera lea vai alehkos `xs` interval (`16em`); lokcinon maŋŋel."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the viewport is at or below the `content` breakpoint (`68.75em`)."
-msgstr ""
+msgstr "Lokcinit go viewport lea vai alit `content` interval (`68.75em`)."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the viewport is at or below the `content-full-width` breakpoint (`98.75em`)."
-msgstr ""
+msgstr "Lokcinit go viewport lea vai alit `content-full-width` interval (`98.75em`)."
 
 #: css/responsive.md
 #, no-c-format
@@ -6984,13 +6984,13 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the viewport is at or below the `lg` breakpoint (`48em`)."
-msgstr ""
+msgstr "Lokcinit go viewport lea vai alit `lg` interval (`48em`)."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the viewport is at or below the `md` breakpoint (`30em`)."
-msgstr ""
+msgstr "Lokcinit go viewport lea vai alit `md` interval (`30em`)."
 
 #: css/responsive.md
 #, no-c-format
@@ -7014,31 +7014,31 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the viewport is at or below the `sm` breakpoint (`20em`)."
-msgstr ""
+msgstr "Lokcinit go viewport lea vai alit `sm` interval (`20em`)."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the viewport is at or below the `xl` breakpoint (`62em`)."
-msgstr ""
+msgstr "Lokcinit go viewport lea vai alit `xl` interval (`62em`)."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the viewport is at or below the `xs` breakpoint (`16em`)."
-msgstr ""
+msgstr "Lokcinit go viewport lea vai alit `xs` interval (`16em`)."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the viewport is at or above the `content` breakpoint (`68.75em`)."
-msgstr ""
+msgstr "Lokcinit go viewport lea vai alehkos `content` interval (`68.75em`)."
 
 #: css/responsive.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the viewport is at or above the `content-full-width` breakpoint (`98.75em`)."
-msgstr ""
+msgstr "Lokcinit go viewport lea vai alehkos `content-full-width` interval (`98.75em`)."
 
 #: css/responsive.md
 #, no-c-format
@@ -7056,7 +7056,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Hide when the viewport is at or above the `lg` breakpoint (`48em`)."
-msgstr ""
+msgstr "Lokcinit go viewport lea vai alehkos `lg` interval (`48em`)."
 
 #: css/responsive.md
 #, no-c-format
@@ -29403,3 +29403,7 @@ msgstr "Geavahit sama plugin-kontrakta ([PantokenPlugin](interfaces/PantokenPlug
 msgctxt "docs.api:prose"
 msgid "`theme`/`mode` select which `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), applied across every platform. `cdn` selects the CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);\n  ignored by every other platform. `locale` (default `\"en\"`) sets the generated markup's\n  `lang`/`dir` attributes."
 msgstr "`theme`/`mode` Válgget mii `@pantoken/css` token-láhppi scaffolda fáilat\n  import (default `\"rebrand\"`/`\"light\"`), maid leat geavahan galgá platformaiguin. `cdn` váldá CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` leat ráhkadit (default jsDelivr);\n  ovddit eará platformaid vuostá). `locale` (default `\"en\"`) sáhttá settohkat genereremea markupiin\n  `lang`/`dir` atributtat."
+
+msgctxt "docs.api:prose"
+msgid "A platform pantoken can scaffold a starter project for."
+msgstr "Platforma mii pantoken sáhttá gávdnet almmuhaš projektas."

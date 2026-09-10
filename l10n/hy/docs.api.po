@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 17:12+0000\n"
+"PO-Revision-Date: 2026-09-09 22:03+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29403,3 +29403,7 @@ msgstr "Սահմանում է միատեսակ plugin-ի պայմանագիրը 
 msgctxt "docs.api:prose"
 msgid "`theme`/`mode` select which `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), applied across every platform. `cdn` selects the CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);\n  ignored by every other platform. `locale` (default `\"en\"`) sets the generated markup's\n  `lang`/`dir` attributes."
 msgstr "`theme`/`mode` ընտրեք, թե որ `@pantoken/css` token sheet-ի նախապատրաստված ֆայլերը\n  ներմուծում (դեֆոլտ `\"rebrand\"`/`\"light\"`), կիրառվում են բոլոր հարթակներում։ `cdn` ընտրում է CDN\n  մատակարարին `canvas-theme-editor`'s `theme.css`/`theme.js` կառուցված են (դեֆոլտ jsDelivr);\n  անտեսվում են բոլոր մյուս հարթակների կողմից). `locale` (դեֆոլտ `\"en\"`) սահմանում է գեներացված նշագրման\n  `lang`/`dir` հատկանիշները."
+
+msgctxt "docs.api:prose"
+msgid "A platform pantoken can scaffold a starter project for."
+msgstr "Պլատֆորմ, որի համար pantoken կարող է ստեղծել սկսնակ նախագիծ."

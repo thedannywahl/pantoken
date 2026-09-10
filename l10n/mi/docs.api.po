@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 17:20+0000\n"
+"PO-Revision-Date: 2026-09-09 22:08+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29403,3 +29403,7 @@ msgstr "Whakamāramahia te kirimana mono kotahi ([PantokenPlugin](interfaces/Pan
 msgctxt "docs.api:prose"
 msgid "`theme`/`mode` select which `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), applied across every platform. `cdn` selects the CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);\n  ignored by every other platform. `locale` (default `\"en\"`) sets the generated markup's\n  `lang`/`dir` attributes."
 msgstr "`theme`/`mode` tīpako i ngā `@pantoken/css` token sheet scaffolded files\n  import (taunoa `\"rebrand\"`/`\"light\"`), e whakamahia puta noa i ia papanga. `cdn` ka tīpako i te kaiwhakarato CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` kua hangaia mō (taunoa jsDelivr);\n  ka whakakorehia e ētahi atu papanga. `locale` (taunoa `\"en\"`) e tautuhi ana i ngā \n  `lang`/`dir` āhuatanga."
+
+msgctxt "docs.api:prose"
+msgid "A platform pantoken can scaffold a starter project for."
+msgstr "He papanga ka taea e pantoken te whakatū i tētahi kaupapa tīmata mō."

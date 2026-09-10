@@ -30,6 +30,10 @@
     letter-spacing: var(--instui-component-base-button-letter-spacing);
     cursor: pointer;
     margin: var(--pendo-space-0);
+
+    &:has(+ ._pendo-button) {
+      margin-inline-end: var(--instui-component-shared-tokens-spacing-gap-buttons);
+    }
   }
 
   /* Primary/Custom button variant */
