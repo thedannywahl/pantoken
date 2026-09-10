@@ -1,0 +1,37 @@
+I need to integrate these rules into the pendo-tooltip-caret section:
+```
+.pendo-tooltip-caret.pendo-tooltip-caret--left,
+.pendo-tooltip-caret.pendo-tooltip-caret--left+.pendo-tooltip-caret-border {
+  margin: 1rem calc(1rem + 1px) 1rem 1px;
+}
+
+.pendo-tooltip-caret.pendo-tooltip-caret--right,
+.pendo-tooltip-caret.pendo-tooltip-caret--right+.pendo-tooltip-caret-border {
+  margin: 1rem calc(1rem) 1rem 1px;
+}
+
+.pendo-tooltip-caret.pendo-tooltip-caret--bottom,
+.pendo-tooltip-caret.pendo-tooltip-caret--bottom+.pendo-tooltip-caret-border {
+  margin: 0 2rem;
+}
+
+.pendo-tooltip-caret.pendo-tooltip-caret--top,
+.pendo-tooltip-caret.pendo-tooltip-caret--top+.pendo-tooltip-caret-border {
+    margin: 0 2rem;
+}
+```
+
+---
+
+we need to reuse the container query from container in card so that we can adjust the bottom margin based on the container width.
+
+---
+
+does this put a margin at the end of the first button and before the next button?
+
+---
+
+it doesn't seem to be getting picked up by this html:
+```
+<div id="pendo-row-19db1181" class="_pendo-row" data-editing-id="52841810-d46a-465f-8601-578105afb76b" style="display: flex; float: none; vertical-align: baseline; position: static; background-color: rgba(255, 255, 255, 0); padding: 0px; margin: 0px; flex-wrap: wrap; justify-content: flex-start; align-items: flex-start;" data-pendo-display-flex="true" data-pendo-justify-content="flex-start" data-_pendo-row-2=""><button id="pendo-button-3dc35b55" type="button" class="bb-button _pendo-button-primaryButton _pendo-button" data-editing-id="f36aa252-416e-4b16-9293-0100b8db78ef" style="width: auto; display: block; color: rgb(255, 255, 255); border: 0px solid rgb(42, 44, 53); font-weight: 400; float: none; vertical-align: baseline; position: relative; background-color: rgb(42, 44, 53); border-radius: 3px; padding: 11px 16px; margin: 10px 5px 10px 0px; font-size: 14px; letter-spacing: 0px; line-height: 1; overflow-wrap: break-word; text-transform: none; font-family: inherit; text-align: center; min-width: 0px; background-image: none; white-space: pre-wrap;" data-_pendo-button-primarybutton-1="" data-_pendo-button-1="">Primary</button><button id="pendo-button-45628e69" type="button" class="bb-button _pendo-button-secondaryButton _pendo-button" data-editing-id="c60bdd79-ab49-4248-81db-bf84b1f527e2" style="width: auto; display: block; color: rgb(255, 255, 255); border: 0px solid rgb(106, 108, 117); font-weight: 400; float: none; vertical-align: baseline; position: relative; background-color: rgb(106, 108, 117); border-radius: 3px; padding: 11px 16px; margin: 10px 5px; font-size: 14px; letter-spacing: 0px; line-height: 1; overflow-wrap: break-word; text-transform: none; font-family: inherit; text-align: center; min-width: 0px; background-image: none; white-space: pre-wrap;" data-_pendo-button-secondarybutton-1="" data-_pendo-button-2="">Secondary</button><button id="pendo-button-f2535a92" type="button" class="bb-button _pendo-button-tertiaryButton _pendo-button" data-editing-id="35ce8583-b186-4228-884d-b37eed84bf87" style="width: auto; display: block; color: rgb(42, 44, 53); border: 0px solid rgb(42, 44, 53); font-weight: 400; float: none; vertical-align: baseline; position: relative; background-color: rgba(255, 255, 255, 0); border-radius: 3px; padding: 11px 16px; margin: 10px 5px; font-size: 14px; letter-spacing: 0px; line-height: 1; overflow-wrap: break-word; text-transform: none; font-family: inherit; text-align: center; min-width: 0px; background-image: none; white-space: pre-wrap;" data-_pendo-button-tertiarybutton-1="" data-_pendo-button-3="">Next</button></div>
+```
