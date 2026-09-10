@@ -1,0 +1,7 @@
+next for the app, it should be more completely automated I don't want
+next steps:
+1. cd to <dir>
+2. run <pm install>
+3. run <pm> dev
+
+the scaffold scripts should 1 and 2 automatically, and then leave the user with a single action to get started.
