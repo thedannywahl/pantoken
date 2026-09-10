@@ -252,6 +252,10 @@
   &[class*="-learnplatform"] {
     --_banner-glyph: var(--instui-logo-learnplatform-icon-reversed);
   }
+
+  &[class*="-igniteai"] {
+    --_banner-glyph: var(--instui-logo-igniteai-icon-reversed);
+  }
 }
 
 @container pantoken-pendo-guide (max-width: 30em) {
