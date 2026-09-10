@@ -1,0 +1,48 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M26SQ177QRGTQQWZZ0EQDQ8R",
+  "session_id": "7784ceea-c142-43a0-aac0-00ccff1ddd54",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-10T23:16:16.151637Z",
+  "branch": "docs-diff-deploys",
+  "checkpoints_count": 3,
+  "save_step_count": 1,
+  "files_touched": [
+    "packages/create-pantoken-app/README.md",
+    "packages/create-pantoken-app/bin/create-pantoken-app.mjs",
+    "packages/create-pantoken-app/package.json",
+    "packages/scaffold/package.json",
+    "packages/scaffold/src/cli.ts",
+    "packages/scaffold/src/index.ts",
+    "packages/scaffold/tests/cli.test.ts",
+    "packages/scaffold/tests/coverage-branches.test.ts",
+    "packages/scaffold/tests/index.test.ts",
+    "pnpm-lock.yaml"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "c31c6699151d",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 8
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-10T23:16:16.130422Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 6078,
+    "human_modified": 10,
+    "human_removed": 0,
+    "total_committed": 6078,
+    "total_lines_changed": 6357,
+    "agent_percentage": 0,
+    "metric_version": 2
+  }
+}

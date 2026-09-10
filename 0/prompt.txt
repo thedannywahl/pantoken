@@ -1,0 +1,50 @@
+deno completely doesn't work:
+```
+➜ deno run --min-dep-age=0 npm:create-pantoken-app@latest
+error: Error in @pantoken/core@0.2.9 parsing version requirement for dependency "@instructure/instructure-design-tokens": "github:instructure/instructure-design-tokens#v1.8.0"
+
+Caused by:
+    Package specified a dependency outside of npm (github:instructure/instructure-design-tokens#v1.8.0). Deno does not install these for security reasons. The npm package should be improved to have all its dependencies on npm.
+
+    To work around this, you can use a package.json and install the dependencies via `npm install`.
+deno x
+```
+
+---
+
+pnpm is still failing exotic subdeps:
+```
+➜ pnpm dlx create-pantoken-app@1.1.0
+Downloading @pantoken/web-components@0.6.2: 7.09 MB/7.09 MB, done
+.../mtul0e2n-s7h                         | Progress: resolved 0, reused 274, downloaded 26, added 0
+Error: ERR_PNPM_EXOTIC_SUBDEP
+
+  × adding a new package
+  ╰─▶ Failed to resolve dependency tree: Exotic dependency "@instructure/
+      instructure-design-tokens" (resolved via git-repository) is not allowed
+      in subdependencies when blockExoticSubdeps is enabled
+```
+
+---
+
+yarn also fails:
+```
+YARN_NPM_MINIMAL_AGE_GATE=0 yarn
+ dlx create-pantoken-app@1.1.0 
+➤
+ YN0000: · Yarn 4.18.0
+
+➤
+ YN0000
+: ┌ Resolution step
+➤
+ [YN0080](https://yarnpkg.com/advanced/error-codes#yn0080---network_disabled): │ @instructure/
+instructure-design-tokens
+@github:instructure/instructure-design-tokens#v1.8.0
+: Request to 'https://github.com/instructure/instructure-design-tokens.git' has been blocked because it doesn't match any of the patterns in 'approvedGitRepositories'
+➤
+ YN0000
+: └ Completed in 1s 413ms
+➤
+ YN0000: · Failed with errors in 1s 416ms
+```

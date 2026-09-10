@@ -1,0 +1,35 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M26SQ177QRGTQQWZZ0EQDQ8R",
+  "strategy": "manual-commit",
+  "branch": "docs-diff-deploys",
+  "checkpoints_count": 3,
+  "files_touched": [
+    "packages/create-pantoken-app/README.md",
+    "packages/create-pantoken-app/bin/create-pantoken-app.mjs",
+    "packages/create-pantoken-app/package.json",
+    "packages/scaffold/package.json",
+    "packages/scaffold/src/cli.ts",
+    "packages/scaffold/src/index.ts",
+    "packages/scaffold/tests/cli.test.ts",
+    "packages/scaffold/tests/coverage-branches.test.ts",
+    "packages/scaffold/tests/index.test.ts",
+    "pnpm-lock.yaml"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
