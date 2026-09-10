@@ -1,0 +1,41 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M26SYD09ZD207Q2EM09MRX3Z",
+  "session_id": "e1b81773-2809-48a2-9ab7-a74b2aef0a78",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-10T23:20:16.559497Z",
+  "branch": "docs-diff-deploys",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    ".changeset/fiery-pandas-double.md",
+    "docs/demos/pendo/index.html",
+    "renderers/pendo/src/css/button.css"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "2885c1d3e465",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-10T23:20:16.553914Z",
+    "agent_lines": 14,
+    "agent_removed": 8,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 14,
+    "total_lines_changed": 22,
+    "agent_percentage": 100,
+    "metric_version": 2
+  }
+}
