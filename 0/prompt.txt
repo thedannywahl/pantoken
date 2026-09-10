@@ -1,0 +1,15 @@
+## [Codecov](https://app.codecov.io/gh/thedannywahl/pantoken/pull/142?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl) Report
+
+❌ Patch coverage is `50.00000%` with `5 lines` in your changes missing coverage. Please review.
+
+✅ Project coverage is 95.56%. Comparing base ([`8ca6103`](https://app.codecov.io/gh/thedannywahl/pantoken/commit/8ca610363cf41090d3c1ea35b1112fb474323bdb?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)) to head ([`756bd43`](https://app.codecov.io/gh/thedannywahl/pantoken/commit/756bd43a2062e6ac579e46b1ff0ba72034180950?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)).
+
+✅ All tests successful. No failed tests found.
+
+[Files with missing lines](https://app.codecov.io/gh/thedannywahl/pantoken/pull/142?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
+Patch %
+Lines
+
+[docs/scripts/lib/og-fonts.ts](https://app.codecov.io/gh/thedannywahl/pantoken/pull/142?src=pr&el=tree&filepath=docs%2Fscripts%2Flib%2Fog-fonts.ts&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl#REDACTED)
+50.00%
+[5 Missing ⚠️](https://app.codecov.io/gh/thedannywahl/pantoken/pull/142?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
