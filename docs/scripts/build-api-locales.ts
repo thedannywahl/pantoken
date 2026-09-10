@@ -63,6 +63,26 @@ const apiDirFor = (locale: string): string => join(docsRoot, locale, "api");
 const locales = parseRequestedLocales(process.env.DOCS_TRANSLATION_LOCALE, NON_ROOT_LOCALES);
 const GLOSSARY_TEXT = new Set(GLOSSARY_TERMS.map(({ term }) => term));
 
+const readPartialPages = (): Set<string> | undefined => {
+  const path = process.env.DOCS_CHANGED_PAGES_FILE;
+  if (!path || !existsSync(path)) return undefined;
+  const parsed = JSON.parse(readFileSync(path, "utf8")) as string[];
+  return new Set(parsed.map((page) => page.split("\\").join("/")));
+};
+
+const partialPages = readPartialPages();
+const partialApiPagesFor = (locale: string): Set<string> | undefined => {
+  if (!partialPages) return undefined;
+  const prefix = `${locale}/api/`;
+  const pages = [...partialPages]
+    .filter((page) => page.startsWith(prefix))
+    .map((page) => join(docsRoot, page));
+  return new Set(pages);
+};
+
+const hasPartialApiPages = (): boolean =>
+  partialPages ? [...partialPages].some((page) => /^api\/|^[^/]+\/api\//u.test(page)) : true;
+
 const isAsciiLetter = (char: string): boolean =>
   (char >= "A" && char <= "Z") || (char >= "a" && char <= "z");
 
@@ -442,7 +462,10 @@ const buildLocale = async (locale: string): Promise<void> => {
   cloneApiForLocale(localeApiDir);
 
   const files = walkFiles(localeApiDir);
-  const markdownFiles = files.filter((f) => f.endsWith(".md"));
+  const partialApiPages = partialApiPagesFor(locale);
+  const markdownFiles = files.filter(
+    (f) => f.endsWith(".md") && (!partialApiPages || partialApiPages.has(f)),
+  );
   // The TypeDoc sidebar carries the CSS section too (merged by @cssdoc/typedoc), so its labels cover
   // both the TS API and the CSS reference.
   const sidebarFiles = files.filter((f) => f.endsWith("typedoc-sidebar.json"));
@@ -487,6 +510,11 @@ const buildLocale = async (locale: string): Promise<void> => {
 
 const build = async (): Promise<void> => {
   console.log(`📋 Building locale-specific API docs\n`);
+
+  if (!hasPartialApiPages()) {
+    console.log(`No API pages are in DOCS_CHANGED_PAGES_FILE; skipping API locale build.`);
+    return;
+  }
 
   rmSync(enApiDir, { recursive: true, force: true });
   for (const locale of locales) {

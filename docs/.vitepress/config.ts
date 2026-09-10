@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { type DefaultTheme, defineConfig } from "vitepress";
 import { workspaceOrchestrator } from "@pantoken/vite-workspace-orchestrator";
@@ -259,6 +259,33 @@ const localeEntries = Object.entries(LOCALE_THEMES) as [
 
 const rootLocaleOnly = process.env.DOCS_ROOT_LOCALE_ONLY === "1";
 
+const docsRoot = at("docs");
+
+const readPartialPages = (): Set<string> | undefined => {
+  const path = process.env.DOCS_CHANGED_PAGES_FILE;
+  if (!path) return undefined;
+  const parsed = JSON.parse(readFileSync(path, "utf8")) as string[];
+  return new Set(parsed.map((page) => page.split("\\").join("/")));
+};
+
+const walkMarkdown = (dir: string, prefix = ""): string[] => {
+  const files: string[] = [];
+  for (const name of readdirSync(dir)) {
+    if (name === ".vitepress") continue;
+    const fullPath = `${dir}/${name}`;
+    const relativePath = prefix ? `${prefix}/${name}` : name;
+    const stat = statSync(fullPath);
+    if (stat.isDirectory()) files.push(...walkMarkdown(fullPath, relativePath));
+    else if (relativePath.endsWith(".md")) files.push(relativePath);
+  }
+  return files;
+};
+
+const partialPages = readPartialPages();
+const partialPageExcludes = partialPages
+  ? walkMarkdown(docsRoot).filter((page) => !partialPages.has(page))
+  : [];
+
 const loadSidebar = (relativePath: string): DefaultTheme.SidebarItem[] => {
   const sidebarPath = fileURLToPath(new URL(relativePath, import.meta.url));
   return existsSync(sidebarPath)
@@ -407,6 +434,7 @@ const searchLocales = Object.fromEntries(
 // The site is served on a custom domain by default. Override DOCS_BASE and DOCS_HOSTNAME when
 // building for alternative environments (for example, a project-site path on github.io).
 const base = process.env.DOCS_BASE ?? "/";
+const outDir = process.env.DOCS_OUT_DIR;
 
 // VitePress SSR-renders pages with `buildConcurrency` (default 64) in flight at once, and every
 // in-flight page holds its rendered HTML, head tags, and Vue SSR context alive. At ~39k pages
@@ -683,6 +711,7 @@ export default defineConfig({
   cleanUrls: true,
   lastUpdated: true,
   buildConcurrency,
+  ...(outDir && { outDir }),
   sitemap: { hostname },
   // Only index.md belongs in the public site at the docs root; all others are repo-internal.
   srcExclude: [
@@ -690,6 +719,7 @@ export default defineConfig({
     "compatibility.md",
     "engineering-log.md",
     ...(rootLocaleOnly ? NON_ROOT_LOCALES.map((locale) => `${locale}/api/**`) : []),
+    ...partialPageExcludes,
   ],
   // The generated API pages cross-link heavily; don't fail the build on a link TypeDoc emitted.
   ignoreDeadLinks: true,

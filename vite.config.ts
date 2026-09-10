@@ -45,7 +45,7 @@ export default defineConfig({
         // siblings don't drag the floor). These are the high-complexity scripts now unit-tested so
         // their CRAP reflects real coverage rather than a worst-case zero.
         "formats/*/scripts/{fonts,generate}.ts",
-        "docs/scripts/{translation-memory,api-translation,build-api-locales,build-css-api,check-locale-drift,style-api-badges}.ts",
+        "docs/scripts/{translation-memory,api-translation,build-api-locales,build-css-api,changed-pages,check-locale-drift,style-api-badges}.ts",
         "docs/scripts/lib/scope-components.ts",
         "renderers/web-components/src/locales/**",
         "renderers/web-components/src/i18n.ts",
