@@ -458,8 +458,8 @@ catalogs:
       specifier: 0.3.1
       version: 0.3.1
     vitepress:
-      specifier: 2.0.0-alpha.19
-      version: 2.0.0-alpha.19
+      specifier: 2.0.0-alpha.20
+      version: 2.0.0-alpha.20
     vitepress-plugin-llms:
       specifier: ^1.13.5
       version: 1.13.5
@@ -872,7 +872,7 @@ importers:
         version: 5.1.0
       vitepress:
         specifier: 'catalog:'
-        version: 2.0.0-alpha.19(@arethetypeswrong/core@0.18.5)(@types/node@26.5.0)(axios@1.20.0(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2))(change-case@5.4.4)(jiti@2.6.1)(postcss@8.5.28)(publint@0.3.24)(terser@5.51.2)(typescript@6.0.3)(yaml@2.9.0)
+        version: 2.0.0-alpha.20(@arethetypeswrong/core@0.18.5)(@types/node@26.5.0)(axios@1.20.0(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2))(change-case@5.4.4)(jiti@2.6.1)(postcss@8.5.28)(publint@0.3.24)(terser@5.51.2)(typescript@6.0.3)(yaml@2.9.0)
       vitepress-plugin-llms:
         specifier: 'catalog:'
         version: 1.13.5(supports-color@10.2.2)
@@ -9412,8 +9412,8 @@ packages:
     resolution: {integrity: sha512-CTiDkKRs0h64J5rdiICdHmXH4pM1gBu2S/MJ+OxSAm+vM72srBkHr86ZubzfMJbGJh4AMVKff4R3oCu8etI1ww==}
     engines: {node: '>=18'}
 
-  vitepress@2.0.0-alpha.19:
-    resolution: {integrity: sha512-WnBsb0Bwr43kXKyiis+lld/7ri3hnMbthS8N3hpFtjjwsdLO4IRmiAE08D7aud4q6oMDf9uwRowxzNqRFe/amw==}
+  vitepress@2.0.0-alpha.20:
+    resolution: {integrity: sha512-uQWKmP9PaBkf9zxHn0iOml/ZPPDaGKqQXVMBHz3yjwyyd9Eg+BKLGxbqmOGlfOMCt6Fj8TLiAnE59qlKZ0A3xw==}
     hasBin: true
     peerDependencies:
       markdown-it-mathjax3: ^4
@@ -16999,15 +16999,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  vitepress@2.0.0-alpha.19(@arethetypeswrong/core@0.18.5)(@types/node@26.5.0)(axios@1.20.0(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2))(change-case@5.4.4)(jiti@2.6.1)(postcss@8.5.28)(publint@0.3.24)(terser@5.51.2)(typescript@6.0.3)(yaml@2.9.0):
+  vitepress@2.0.0-alpha.20(@arethetypeswrong/core@0.18.5)(@types/node@26.5.0)(axios@1.20.0(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2))(change-case@5.4.4)(jiti@2.6.1)(postcss@8.5.28)(publint@0.3.24)(terser@5.51.2)(typescript@6.0.3)(yaml@2.9.0):
     dependencies:
       '@docsearch/css': 4.7.0
       '@docsearch/js': 4.7.0
       '@docsearch/sidepanel-js': 4.7.0
       '@iconify-json/simple-icons': 1.2.95
-      '@shikijs/core': 4.4.3
       '@shikijs/transformers': 4.4.3
-      '@shikijs/types': 4.4.3
       '@types/markdown-it': 14.2.0
       '@vitejs/plugin-vue': 6.0.8(@voidzero-dev/vite-plus-core@0.3.1(@arethetypeswrong/core@0.18.5)(@types/node@26.5.0)(jiti@2.6.1)(publint@0.3.24)(terser@5.51.2)(typescript@6.0.3)(yaml@2.9.0))(vue@3.5.42(typescript@6.0.3))
       '@vue/devtools-api': 8.2.1
