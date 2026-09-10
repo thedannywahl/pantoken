@@ -1,0 +1,58 @@
+### ❌ 1 Tests Failed:
+
+Tests completed
+Failed
+Passed
+Skipped
+
+2165
+1
+2164
+0
+
+View the top 1 failed test(s) by shortest run time
+
+> ```
+> docs/scripts/changed-pages.main.test.ts > CLI writes a changed-pages file and GitHub outputs for a page-scoped diff
+> ```
+
+---
+
+but it failed in CI.
+
+---
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  docs/scripts/changed-pages.main.test.ts > CLI writes a changed-pages file and GitHub outputs for a page-scoped diff
+AssertionError: expected 'scope=subset\npage_count=2\npages_fil…' to contain 'pages_file=../../../../tmp/pantoken-d…'
+
+- Expected
++ Received
+
+- pages_file=../../../../tmp/pantoken-docs-pages.json
++ scope=subset
++ page_count=2
++ pages_file=../../../../../tmp/pantoken-docs-pages.json
++ surfaces=docs.guides
++ fallback_reason=
++
+
+ ❯ docs/scripts/changed-pages.main.test.ts:77:16
+     75|   expect(body).toContain("scope=subset");
+     76|   expect(body).toContain("page_count=2");
+     77|   expect(body).toContain("pages_file=../../../../tmp/pantoken-docs-pag…
+       |                ^
+     78| });
+     79|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 303 passed (304)
+      Tests  1 failed | 2166 passed (2167)
+   Start at  18:08:42
+   Duration  111.34s (transform 19.80s, setup 9.28s, import 149.15s, tests 68.49s, environment 11.94s)
+
+JUNIT report written to /home/runner/work/pantoken/pantoken/junit.xml
+Error: Process completed with exit code 1.
