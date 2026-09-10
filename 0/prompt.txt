@@ -1,0 +1,19 @@
+❌ Patch coverage is `77.66990%` with `46 lines` in your changes missing coverage. Please review.
+
+✅ Project coverage is 95.47%. Comparing base ([`1e2ee0f`](https://app.codecov.io/gh/thedannywahl/pantoken/commit/1e2ee0f8f0f3fa87ceaa5c28b491fbc0158490bf?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)) to head ([`e58cfd2`](https://app.codecov.io/gh/thedannywahl/pantoken/commit/e58cfd2bbbf19725d2ebe0ef9304202732def6d3?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)).
+
+✅ All tests successful. No failed tests found.
+
+[Files with missing lines](https://app.codecov.io/gh/thedannywahl/pantoken/pull/144?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
+Patch %
+Lines
+
+[docs/scripts/build-locales.ts](https://app.codecov.io/gh/thedannywahl/pantoken/pull/144?src=pr&el=tree&filepath=docs%2Fscripts%2Fbuild-locales.ts&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl#REDACTED)
+27.11%
+[43 Missing ⚠️](https://app.codecov.io/gh/thedannywahl/pantoken/pull/144?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
+
+[docs/scripts/changed-pages.ts](https://app.codecov.io/gh/thedannywahl/pantoken/pull/144?src=pr&el=tree&filepath=docs%2Fscripts%2Fchanged-pages.ts&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl#REDACTED)
+97.61%
+[3 Missing ⚠️](https://app.codecov.io/gh/thedannywahl/pantoken/pull/144?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
+
+❌ Your patch check has failed because the patch coverage (77.66%) is below the target coverage (85.00%). You can increase the patch coverage or adjust the [target](https://docs.codecov.com/docs/commit-status#target) coverage.
