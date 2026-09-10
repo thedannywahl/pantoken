@@ -352,6 +352,27 @@ postcss plugins as `dynamicallyLoaded`, and ignore the intentional deps fallow c
 `unused-catalog-entries: off`, config/CLI-loaded dev-deps via `unused-dev-dependencies: off`). That
 takes the real actionable set to a handful of genuinely-dead exports.
 
+### A content-injecting Vite plugin must run on both VitePress build passes
+
+**Symptom** — Every English page threw `TypeError: Cannot read properties of null (reading
+'nodeType')` during hydration on direct load (`/api/`, `/guide/*`). The home page only warned
+(`Server rendered element contains fewer child nodes than client vdom`) and every non-root locale was
+clean. Vue recovered with a full client mount, so pages still looked right and the bug hid for a long
+time.
+
+**Root cause** — `vitepress-plugin-llms` was wrapped with `apply: (config) => !config.build.ssr` to
+skip its `transform` on the SSR pass, on the assumption that the plugin only _emits_ files. It does
+more than that: `transform` injects a hidden `<div ... data-nosnippet>Are you an LLM? …</div>` hint
+into every page. Skipping the SSR pass left that div out of the server HTML while the client vdom
+still expected it — one child too few, exactly where hydration walks off the end. Non-root locales
+were clean only because the plugin's `ignoreFiles` already excluded `<locale>/**`, so both passes
+agreed there.
+
+**Fix / rule** — Never gate a plugin that _changes page content_ to one VitePress pass. `apply` is
+safe only for plugins whose effects are confined to emitted assets. When a hydration mismatch needs
+diagnosing, build with `define: { __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: "true" }` — the production
+Vue build otherwise reports the crash with no component or node context.
+
 ### Snyk Code (SAST) gates locally, not in CI
 
 **Symptom** — Snyk has no GitHub App wired to this repo, so `snyk code test` (SAST) can't run in

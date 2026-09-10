@@ -619,13 +619,15 @@ const description =
 // skips the plugin's per-file work for them entirely, not just their appearance in the generated
 // indexes. Patterns are minimatch against paths relative to workDir (docs/).
 //
-// VitePress builds the site twice (client, then SSR); the plugin only ever *emits* files on the
-// client pass, but its `transform` hook still walks every page's content on both passes regardless.
-// `apply` restricts these plugin instances to the client build only, so content never gets walked
-// twice for no benefit. Cast through the bottom type: the repo aliases `vite` to vite-plus-core,
-// while VitePress and this plugin each carry distinct Vite plugin types.
+// The plugin must run on BOTH of VitePress's build passes (client, then SSR). Its `transform` does
+// more than collect content for the indexes: it injects a hidden "Are you an LLM?" hint div into
+// every page. Restricting these instances to the client pass left that div out of the SSR HTML while
+// the client vdom still expected it, so every English page hydrated against markup with one child
+// too few and threw before mounting. Cast through the bottom type: the repo aliases `vite` to
+// vite-plus-core, while VitePress and this plugin each carry distinct Vite plugin types.
+//
 // llms.txt indexes the canonical English docs only, so a non-root locale build skips the plugin
-// outright rather than emitting an index it would then have to merge away.
+// outright rather than emitting an index the merge step would have to throw away.
 const llmsTxtPlugins =
   isLocaleScoped && buildLocale !== "root"
     ? []
@@ -641,10 +643,7 @@ const llmsTxtPlugins =
           "compatibility.md",
           "engineering-log.md",
         ],
-      }).map((plugin) => ({
-        ...plugin,
-        apply: (config: { build?: { ssr?: boolean | string } }): boolean => !config?.build?.ssr,
-      })) as never[]);
+      }) as unknown as never[]);
 
 // @ts-ignore TS2321 — VitePress alpha.18 UserConfig generic recursion can overflow TS depth.
 export default defineConfig({
