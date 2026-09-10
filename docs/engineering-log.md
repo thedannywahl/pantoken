@@ -187,6 +187,24 @@ class (`.instui-progress` prefixes `.instui-progress-value`), the split corrupts
 **Fix / rule** — Keep flat siblings and root-modifier-only rules (especially `-size-*`, which the alias
 post-processors append at top level) **outside** the `@scope` block. See `docs/conventions/authoring.md`.
 
+### A bare compound never matches the `@scope` root
+
+**Symptom** — Every rule in the Pendo renderer's `/* Surveys */` blocks was inert in the published
+build: survey radios didn't stack, NPS bound labels stayed italic. The same CSS worked with
+`scope: false`, and the tests — which assert on the unscoped strings — stayed green.
+
+**Root cause** — `@pantoken/pendo` wraps its output in
+`@scope ([class*="instui"]._pendo-step-container)`. Per spec, a scoped rule's selector matches
+elements _in_ the scope, but a bare compound cannot match the scoping root itself — only `:scope`
+does. Pendo puts the guide's layout class (`._pendo-guide-walkthrough_`) on that very root, so
+`._pendo-guide-walkthrough_ { … }` matched nothing. The banner and alert blocks had always written
+`:is(:scope, [class*="instui"])…` and so were unaffected, which masked the bug.
+
+**Fix / rule** — Any rule targeting the guide root must be written
+`:is(:scope, [class*="instui"])._pendo-guide-walkthrough_…`. More generally: inside `@scope`, reach
+the root through `:scope`, never through a bare class. Because the build also emits an unscoped
+variant, string-matching tests cannot catch this — verify root-targeting rules in a browser.
+
 ## CI / release
 
 ### The Version PR needs a PAT to trigger CI — and an unset secret hard-fails checkout

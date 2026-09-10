@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 22:06+0000\n"
+"PO-Revision-Date: 2026-09-10 14:32+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29407,3 +29407,7 @@ msgstr "`theme`/`mode` wähle, welche `@pantoken/css` vom Token-Sheet gerüstete
 msgctxt "docs.api:prose"
 msgid "A platform pantoken can scaffold a starter project for."
 msgstr "Eine Plattform, für die pantoken ein Starterprojekt erstellen kann."
+
+msgctxt "docs.api:prose"
+msgid "Pendo injects guide HTML into a host page; this renders that guide DOM (`._pendo-*`) to match\nInstructure UI, using pantoken's `--instui-*` token layer for alignment. It includes responsive\nviolet and sea banner guide treatments alongside alerts, popovers, surveys, and controls. The\ncomponent CSS is ported from `@instructure/pendo-global-css`; pantoken supplies the tokens and the\nassembly. A single theme class containing `instui` activates the scoped stylesheet; compact\nsuffixes on that class select banner colors and glyphs, and an `instui-banner` prefix extends the\nbanner surface to popovers and surveys while keeping their overlay elevation."
+msgstr "Pendo injiziert Guide-HTML in eine Host-Seite; dies rendert das Guide-DOM (`._pendo-*`) zum Anpassen\nInstructure UI, unter Verwendung von pantoken's `--instui-*` Token-Schicht zur Ausrichtung. Es umfasst responsive\nViolett- und See-Banner-Guide-Behandlungen neben Warnungen, Popovers, Umfragen und Steuerelementen. Das\nKomponenten-CSS wurde von `@instructure/pendo-global-css` portiert; pantoken liefert die Token und die\nMontage. Eine einzelne Theme-Klasse mit `instui` aktiviert das scoped-Stylesheet; kompakte\nSuffixe auf dieser Klasse wählen Banner-Farben und Glyphen, und ein `instui-banner` Präfix erweitert die\nBanner-Oberfläche zu Popovers und Umfragen, während ihre Overlay-Elevation beibehalten wird."

@@ -124,7 +124,10 @@
 }
 
 /* Banner buttons use the on-colour treatment from the InstUI banner component. */
-:is(:scope, [class*="instui"])[data-layout="lightboxBlank"]:not([class*="instui-alert"]) {
+:is(:scope, [class*="instui"]):not([class*="instui-alert"]):is(
+    [data-layout="lightboxBlank"],
+    [class*="instui-banner"]
+  ) {
   :is(._pendo-button-primaryButton, ._pendo-button-custom) {
     background: var(--instui-component-base-button-primary-inverse-background);
     border-color: var(--instui-component-base-button-primary-inverse-border-color);

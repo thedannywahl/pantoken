@@ -113,5 +113,77 @@
     "translate": {
       "en*": "optional"
     }
+  },
+  "surveyLabel": {
+    "message": "Banner survey",
+    "translate": {
+      "en*": "optional"
+    }
+  },
+  "surveyQuestion": {
+    "message": "How would you feel if you could no longer use participation insights?",
+    "translate": {
+      "en*": "optional"
+    }
+  },
+  "surveyChoiceVery": {
+    "message": "Very disappointed",
+    "translate": {
+      "en*": "optional"
+    }
+  },
+  "surveyChoiceMildly": {
+    "message": "Mildly disappointed",
+    "translate": {
+      "en*": "optional"
+    }
+  },
+  "surveyChoiceNot": {
+    "message": "Not disappointed",
+    "translate": {
+      "en*": "optional"
+    }
+  },
+  "surveyFollowUp": {
+    "message": "Please share the reasoning behind your rating.",
+    "translate": {
+      "en*": "optional"
+    }
+  },
+  "nextLabel": {
+    "message": "Next",
+    "translate": {
+      "en*": "optional"
+    }
+  },
+  "npsLabel": {
+    "message": "Banner NPS survey",
+    "translate": {
+      "en*": "optional"
+    }
+  },
+  "npsQuestion": {
+    "message": "How likely are you to recommend Canvas to a friend or colleague?",
+    "translate": {
+      "en*": "optional"
+    }
+  },
+  "npsLowerBound": {
+    "message": "Not at all likely",
+    "translate": {
+      "en*": "optional"
+    }
+  },
+  "npsUpperBound": {
+    "message": "Extremely likely",
+    "translate": {
+      "en*": "optional"
+    }
+  },
+  "submitLabel": {
+    "message": "Submit",
+    "translate": {
+      "en*": "optional"
+    }
   }
 }

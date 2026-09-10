@@ -1,5 +1,13 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-10 14:10+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"Language: und\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: alert/i18n.json#text1
 #, no-c-format
@@ -2217,6 +2225,80 @@ msgstr "Visualizza analisi"
 msgctxt "docs.demos:pendo:secondaryLabel"
 msgid "Not now"
 msgstr "Non ora"
+
+#: pendo/i18n.json#surveyLabel
+#, fuzzy, no-c-format
+msgctxt "docs.demos:pendo:surveyLabel"
+msgid "Banner survey"
+msgstr "Banner"
+
+#: pendo/i18n.json#surveyQuestion
+#, no-c-format
+msgctxt "docs.demos:pendo:surveyQuestion"
+msgid "How would you feel if you could no longer use participation insights?"
+msgstr ""
+"Come ti sentiresti se non potessi più usare le informazioni sulla "
+"partecipazione?"
+
+#: pendo/i18n.json#surveyChoiceVery
+#, no-c-format
+msgctxt "docs.demos:pendo:surveyChoiceVery"
+msgid "Very disappointed"
+msgstr "Molto deluso"
+
+#: pendo/i18n.json#surveyChoiceMildly
+#, no-c-format
+msgctxt "docs.demos:pendo:surveyChoiceMildly"
+msgid "Mildly disappointed"
+msgstr "Leggermente deluso"
+
+#: pendo/i18n.json#surveyChoiceNot
+#, no-c-format
+msgctxt "docs.demos:pendo:surveyChoiceNot"
+msgid "Not disappointed"
+msgstr "Non deluso"
+
+#: pendo/i18n.json#surveyFollowUp
+#, no-c-format
+msgctxt "docs.demos:pendo:surveyFollowUp"
+msgid "Please share the reasoning behind your rating."
+msgstr "Condividi il motivo della tua valutazione."
+
+#: pendo/i18n.json#nextLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:nextLabel"
+msgid "Next"
+msgstr "Avanti"
+
+#: pendo/i18n.json#npsLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:npsLabel"
+msgid "Banner NPS survey"
+msgstr "Sondaggio NPS Banner"
+
+#: pendo/i18n.json#npsQuestion
+#, no-c-format
+msgctxt "docs.demos:pendo:npsQuestion"
+msgid "How likely are you to recommend Canvas to a friend or colleague?"
+msgstr "Quanto è probabile che consiglieresti Canvas a un amico o collega?"
+
+#: pendo/i18n.json#npsLowerBound
+#, no-c-format
+msgctxt "docs.demos:pendo:npsLowerBound"
+msgid "Not at all likely"
+msgstr "Per niente probabile"
+
+#: pendo/i18n.json#npsUpperBound
+#, no-c-format
+msgctxt "docs.demos:pendo:npsUpperBound"
+msgid "Extremely likely"
+msgstr "Estremamente probabile"
+
+#: pendo/i18n.json#submitLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:submitLabel"
+msgid "Submit"
+msgstr "Invia"
 
 #: pill/i18n.json#text1
 #, no-c-format

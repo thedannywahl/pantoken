@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 11:35+0000\n"
+"PO-Revision-Date: 2026-09-10 14:04+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2149,6 +2149,78 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.demos:pendo:secondaryLabel"
 msgid "Not now"
+msgstr ""
+
+#: pendo/i18n.json#surveyLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:surveyLabel"
+msgid "Banner survey"
+msgstr ""
+
+#: pendo/i18n.json#surveyQuestion
+#, no-c-format
+msgctxt "docs.demos:pendo:surveyQuestion"
+msgid "How would you feel if you could no longer use participation insights?"
+msgstr ""
+
+#: pendo/i18n.json#surveyChoiceVery
+#, no-c-format
+msgctxt "docs.demos:pendo:surveyChoiceVery"
+msgid "Very disappointed"
+msgstr ""
+
+#: pendo/i18n.json#surveyChoiceMildly
+#, no-c-format
+msgctxt "docs.demos:pendo:surveyChoiceMildly"
+msgid "Mildly disappointed"
+msgstr ""
+
+#: pendo/i18n.json#surveyChoiceNot
+#, no-c-format
+msgctxt "docs.demos:pendo:surveyChoiceNot"
+msgid "Not disappointed"
+msgstr ""
+
+#: pendo/i18n.json#surveyFollowUp
+#, no-c-format
+msgctxt "docs.demos:pendo:surveyFollowUp"
+msgid "Please share the reasoning behind your rating."
+msgstr ""
+
+#: pendo/i18n.json#nextLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:nextLabel"
+msgid "Next"
+msgstr ""
+
+#: pendo/i18n.json#npsLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:npsLabel"
+msgid "Banner NPS survey"
+msgstr ""
+
+#: pendo/i18n.json#npsQuestion
+#, no-c-format
+msgctxt "docs.demos:pendo:npsQuestion"
+msgid "How likely are you to recommend Canvas to a friend or colleague?"
+msgstr ""
+
+#: pendo/i18n.json#npsLowerBound
+#, no-c-format
+msgctxt "docs.demos:pendo:npsLowerBound"
+msgid "Not at all likely"
+msgstr ""
+
+#: pendo/i18n.json#npsUpperBound
+#, no-c-format
+msgctxt "docs.demos:pendo:npsUpperBound"
+msgid "Extremely likely"
+msgstr ""
+
+#: pendo/i18n.json#submitLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:submitLabel"
+msgid "Submit"
 msgstr ""
 
 #: pill/i18n.json#text1

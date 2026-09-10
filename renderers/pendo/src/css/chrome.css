@@ -107,7 +107,10 @@ hr {
   inset-inline-end: var(--instui-component-alert-close-button-margin-right);
 }
 
-:is(:scope, [class*="instui"])[data-layout="lightboxBlank"]:not([class*="instui-alert"])
+:is(:scope, [class*="instui"]):not([class*="instui-alert"]):is(
+    [data-layout="lightboxBlank"],
+    [class*="instui-banner"]
+  )
   ._pendo-close-guide {
   inset-block-start: var(--instui-component-banner-close-button-margin-top);
   inset-inline-end: var(--instui-component-banner-close-button-margin-right);

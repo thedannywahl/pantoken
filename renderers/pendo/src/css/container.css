@@ -6,14 +6,17 @@
  *   `data-layout` attribute; the colour variant is set via the variant class in the Visual Design
  *   Studio. The `._pendo-step-container-size` and `._pendo-step-container-styles` elements are
  *   shared between all layouts; each layout applies its own sizing, spacing, and visual treatment.
+ *   Pendo ships layout values we do not enumerate (surveys arrive with no `data-layout`, or with one
+ *   such as `bannerNpsSurvey`), so the banner treatment is keyed on the class instead.
  * @modifier [data-layout="lightboxBlank"] alert — Embedded alert guide; full-width with a coloured sidebar strip and status icon.
  * @modifier [data-layout="tooltipBlank"] popover — Overlay tooltip/popover guide; fixed width with optional caret.
- * @modifier ._pendo-guide-walkthrough_ survey — Survey guide; no data-layout value, auto width.
+ * @modifier _pendo-guide-walkthrough_ survey — Survey guide; no data-layout value, auto width.
  * @modifier -info info — Informational colour variant (alert only).
  * @modifier -danger danger — Danger/error colour variant (alert only).
  * @modifier -success success — Success colour variant (alert only).
  * @modifier -warning warning — Warning colour variant (alert only).
  * @modifier instui banner — A `lightboxBlank` guide whose class contains `instui` is a violet banner by default.
+ * @modifier instui-banner banner popover/survey — Give a popover or survey the banner surface, icon swatch, and spacing while keeping the overlay drop shadow. Ignored on alerts.
  * @modifier -sea sea banner — Use the sea surface and icon swatch.
  * @modifier -megaphone megaphone — Replace the default lightbulb glyph with a megaphone.
  * @modifier -poll poll — Replace the default lightbulb glyph with a question-message glyph.
@@ -21,6 +24,7 @@
  * @modifier -parchment parchment — Replace the default lightbulb glyph with the reversed Parchment icon.
  * @modifier -mastery mastery — Replace the default lightbulb glyph with the reversed Mastery icon.
  * @modifier -learnplatform learnplatform — Replace the default lightbulb glyph with the reversed LearnPlatform icon.
+ * @modifier -igniteai igniteai — Replace the default lightbulb glyph with the reversed IgniteAI icon.
  * @part ._pendo-guide-backdrop_ — Backdrop container.
  * @part ._pendo-backdrop — Fixed full-viewport overlay; display toggled by Pendo at runtime.
  * @part ._pendo-step-container-size — Positioning/sizing wrapper; stacks above the backdrop.
@@ -34,6 +38,7 @@
  * @cssproperty --caret-color <color> — Private; the caret fill colour (maps to `view-background-primary`).
  * @cssproperty --_banner-icon-background <color> — Private; the banner icon swatch colour.
  * @cssproperty --_banner-icon-size <length> — Private; the responsive banner icon swatch size.
+ * @cssproperty --_banner-shadow <shadow># | none — Private; `none` on an embedded banner, the overlay elevation on an `instui-banner` popover or survey.
  * @structure
  * [class*="instui"] {
  *   ._pendo-guide-backdrop_ {
@@ -137,7 +142,11 @@
   }
 
   /* Surveys */
-  &._pendo-guide-walkthrough_:not([data-layout="tooltipBlank"], [data-layout="lightboxBlank"]) {
+  &._pendo-guide-walkthrough_:not(
+      [data-layout="tooltipBlank"],
+      [data-layout="lightboxBlank"],
+      [class*="instui-banner"]
+    ) {
     ._pendo-step-container-styles {
       width: auto;
       padding: var(--instui-component-shared-tokens-spacing-padding-card-lg)
@@ -157,16 +166,32 @@
 
 /* ─── Banners ─── */
 
-:is(:scope, [class*="instui"])[data-layout="lightboxBlank"]:not([class*="instui-alert"])
+:is(:scope, [class*="instui"]):not([class*="instui-alert"]):is(
+    [data-layout="lightboxBlank"],
+    [class*="instui-banner"]
+  )
   ._pendo-step-container-size {
   container: pantoken-pendo-guide / inline-size;
 }
 
-:is(:scope, [class*="instui"])[data-layout="lightboxBlank"]:not([class*="instui-alert"]) {
+:is(:scope, [class*="instui"]):not([class*="instui-alert"]):is(
+    [data-layout="lightboxBlank"],
+    [class*="instui-banner"]
+  ) {
   --_banner-close-button-reserve: 0rem;
   --_banner-glyph: var(--instui-icon-lightbulb);
   --_banner-icon-background: var(--instui-component-banner-violet-icon-background);
   --_banner-icon-size: 2rem;
+  --_banner-shadow: none;
+
+  /* An opted-in popover or survey keeps its overlay elevation over the banner surface. */
+  &[class*="instui-banner"]:not([data-layout="lightboxBlank"]) {
+    --_banner-shadow: var(--instui-elevation-above);
+  }
+
+  &[data-layout="lightboxBlank"] ._pendo-step-container-styles {
+    margin: var(--instui-spacing-gap-cards-md) 0;
+  }
 
   ._pendo-step-container-styles {
     position: relative;
@@ -184,10 +209,9 @@
       var(--instui-component-banner-relaxed-padding-horizontal) +
         var(--_banner-close-button-reserve)
     );
-    box-shadow: none;
+    box-shadow: var(--_banner-shadow);
     color: var(--instui-component-banner-color);
     background: var(--instui-component-banner-violet-background);
-    margin: var(--instui-spacing-gap-cards-md) 0;
 
     &::before,
     &::after {
@@ -233,6 +257,10 @@
     --_banner-glyph: var(--instui-icon-shield-check);
   }
 
+  &[class*="-checkmark"] {
+    --_banner-glyph: var(--instui-icon-check);
+  }
+
   &[class*="-poll"] {
     --_banner-glyph: var(--instui-icon-message-circle-question-mark);
   }
@@ -259,7 +287,14 @@
 }
 
 @container pantoken-pendo-guide (max-width: 30em) {
-  :is(:scope, [class*="instui"])[data-layout="lightboxBlank"]:not([class*="instui-alert"]) {
+  :is(:scope, [class*="instui"]):not([class*="instui-alert"]):is(
+      [data-layout="lightboxBlank"],
+      [class*="instui-banner"]
+    ) {
+    &[data-layout="lightboxBlank"] ._pendo-step-container-styles {
+      margin: var(--instui-spacing-gap-cards-sm) 0;
+    }
+
     ._pendo-step-container-styles {
       --_banner-icon-size: 1.5rem;
       padding-block: var(--instui-component-banner-compact-padding-vertical);
@@ -271,7 +306,6 @@
         var(--instui-component-banner-compact-padding-horizontal) +
           var(--_banner-close-button-reserve)
       );
-      margin: var(--instui-spacing-gap-cards-sm) 0;
 
       &::before,
       &::after {

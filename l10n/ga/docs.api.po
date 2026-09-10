@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 22:05+0000\n"
+"PO-Revision-Date: 2026-09-10 14:31+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29407,3 +29407,7 @@ msgstr "`theme`/`mode` roghnaigh cé na `@pantoken/css` comhaid struchtúrtha bi
 msgctxt "docs.api:prose"
 msgid "A platform pantoken can scaffold a starter project for."
 msgstr "Ar ardán ar féidir le pantoken tionscadal tosaigh a scafáil dó."
+
+msgctxt "docs.api:prose"
+msgid "Pendo injects guide HTML into a host page; this renders that guide DOM (`._pendo-*`) to match\nInstructure UI, using pantoken's `--instui-*` token layer for alignment. It includes responsive\nviolet and sea banner guide treatments alongside alerts, popovers, surveys, and controls. The\ncomponent CSS is ported from `@instructure/pendo-global-css`; pantoken supplies the tokens and the\nassembly. A single theme class containing `instui` activates the scoped stylesheet; compact\nsuffixes on that class select banner colors and glyphs, and an `instui-banner` prefix extends the\nbanner surface to popovers and surveys while keeping their overlay elevation."
+msgstr "Cuireann Pendo HTML treorach isteach i leathanach óstáin; léiríonn sé an DOM treorach sin (`._pendo-*`) a bhíonn i gcomhsheasamh\nInstructure UI, ag úsáid `--instui-*` leibhéal comharthaí do ailíniú. Áirítear ann freagarthóir\nviolet agus trasnáin banna treorach i gcomhthéacs le fógraí, popover, suirbhéanna, agus rialuithe. An\nCSS comhpháirt a bhí á dhíchur ó `@instructure/pendo-global-css`; soláthraíonn pantoken na comharthaí agus an\ncruinniú. Aon rang téama amháin ina bhfuil `instui` gníomhachtaíonn an stílbhileog fhearannaithe; dlúth\niarmhíreanna ar an rang sin a roghnaíonn dathanna banna agus ghlyphs, agus an `instui-banner` réimhfhocal síneann an\ndromchla banna ar popover agus suirbhéanna agus a gcoinneáil ar a n-ardú forleortha."

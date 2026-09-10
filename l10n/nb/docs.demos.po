@@ -1,5 +1,13 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-10 14:12+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"Language: und\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: alert/i18n.json#text1
 #, no-c-format
@@ -2217,6 +2225,80 @@ msgstr "Se analyser"
 msgctxt "docs.demos:pendo:secondaryLabel"
 msgid "Not now"
 msgstr "Ikke nå"
+
+#: pendo/i18n.json#surveyLabel
+#, fuzzy, no-c-format
+msgctxt "docs.demos:pendo:surveyLabel"
+msgid "Banner survey"
+msgstr "Banner"
+
+#: pendo/i18n.json#surveyQuestion
+#, no-c-format
+msgctxt "docs.demos:pendo:surveyQuestion"
+msgid "How would you feel if you could no longer use participation insights?"
+msgstr ""
+"Hvor skuffet ville du vært hvis du ikke lenger kunne bruke deltakerinnsikten?"
+
+#: pendo/i18n.json#surveyChoiceVery
+#, no-c-format
+msgctxt "docs.demos:pendo:surveyChoiceVery"
+msgid "Very disappointed"
+msgstr "Veldig skuffet"
+
+#: pendo/i18n.json#surveyChoiceMildly
+#, no-c-format
+msgctxt "docs.demos:pendo:surveyChoiceMildly"
+msgid "Mildly disappointed"
+msgstr "Litt skuffet"
+
+#: pendo/i18n.json#surveyChoiceNot
+#, no-c-format
+msgctxt "docs.demos:pendo:surveyChoiceNot"
+msgid "Not disappointed"
+msgstr "Ikke skuffet"
+
+#: pendo/i18n.json#surveyFollowUp
+#, no-c-format
+msgctxt "docs.demos:pendo:surveyFollowUp"
+msgid "Please share the reasoning behind your rating."
+msgstr "Del gjerne begrunnelsen for vurderingen din."
+
+#: pendo/i18n.json#nextLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:nextLabel"
+msgid "Next"
+msgstr "Neste"
+
+#: pendo/i18n.json#npsLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:npsLabel"
+msgid "Banner NPS survey"
+msgstr "Banner NPS-undersøkelse"
+
+#: pendo/i18n.json#npsQuestion
+#, no-c-format
+msgctxt "docs.demos:pendo:npsQuestion"
+msgid "How likely are you to recommend Canvas to a friend or colleague?"
+msgstr ""
+"Hvor sannsynlig er det at du vil anbefale Canvas til en venn eller kollega?"
+
+#: pendo/i18n.json#npsLowerBound
+#, no-c-format
+msgctxt "docs.demos:pendo:npsLowerBound"
+msgid "Not at all likely"
+msgstr "Ikke sannsynlig i det hele tatt"
+
+#: pendo/i18n.json#npsUpperBound
+#, no-c-format
+msgctxt "docs.demos:pendo:npsUpperBound"
+msgid "Extremely likely"
+msgstr "Ekstremt sannsynlig"
+
+#: pendo/i18n.json#submitLabel
+#, no-c-format
+msgctxt "docs.demos:pendo:submitLabel"
+msgid "Submit"
+msgstr "Send"
 
 #: pill/i18n.json#text1
 #, no-c-format

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 22:06+0000\n"
+"PO-Revision-Date: 2026-09-10 16:17+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29407,3 +29407,7 @@ msgstr "`theme`/`mode` επιλέξτε ποια `@pantoken/css` αρχεία π
 msgctxt "docs.api:prose"
 msgid "A platform pantoken can scaffold a starter project for."
 msgstr "Μια πλατφόρμα για την οποία το pantoken μπορεί να δημιουργήσει ένα αρχικό έργο."
+
+msgctxt "docs.api:prose"
+msgid "Pendo injects guide HTML into a host page; this renders that guide DOM (`._pendo-*`) to match\nInstructure UI, using pantoken's `--instui-*` token layer for alignment. It includes responsive\nviolet and sea banner guide treatments alongside alerts, popovers, surveys, and controls. The\ncomponent CSS is ported from `@instructure/pendo-global-css`; pantoken supplies the tokens and the\nassembly. A single theme class containing `instui` activates the scoped stylesheet; compact\nsuffixes on that class select banner colors and glyphs, and an `instui-banner` prefix extends the\nbanner surface to popovers and surveys while keeping their overlay elevation."
+msgstr "Η Pendo εγχέει το HTML του οδηγού σε μια φιλοξενούμενη σελίδα· αυτό αποδίδει το DOM του οδηγού (`._pendo-*`) για να ταιριάξει\nInstructure UI, χρησιμοποιώντας το στρώμα tokens του pantoken (`--instui-*`) για την ευθυγράμμιση. Περιλαμβάνει responsive\nστυλ οδηγού banner «violet» και «sea» μαζί με ειδοποιήσεις, αναδυόμενα παράθυρα (popovers), έρευνες και χειριστήρια. Το CSS του\ncomponent έχει μεταφερθεί από `@instructure/pendo-global-css`; το pantoken παρέχει τα tokens και τη\nσυναρμολόγηση. Μια ενιαία κλάση θέματος που περιέχει `instui` ενεργοποιεί το scoped stylesheet· συμπαγή\nκαταλήξεις σε αυτή την κλάση επιλέγουν τα χρώματα και τα γλυφικά του banner, και ένα `instui-banner` πρόθεμα επεκτείνει την επιφάνεια\nτου banner προς τα popovers και τις έρευνες διατηρώντας παράλληλα το ύψος επικάλυψής τους."

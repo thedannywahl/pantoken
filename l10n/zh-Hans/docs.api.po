@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 22:11+0000\n"
+"PO-Revision-Date: 2026-09-10 16:23+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29407,3 +29407,7 @@ msgstr "`theme`/`mode` 选择 哪些 `@pantoken/css` 代币 表 生成 的 文�
 msgctxt "docs.api:prose"
 msgid "A platform pantoken can scaffold a starter project for."
 msgstr "pantoken 可以为其搭建入门项目的平台。"
+
+msgctxt "docs.api:prose"
+msgid "Pendo injects guide HTML into a host page; this renders that guide DOM (`._pendo-*`) to match\nInstructure UI, using pantoken's `--instui-*` token layer for alignment. It includes responsive\nviolet and sea banner guide treatments alongside alerts, popovers, surveys, and controls. The\ncomponent CSS is ported from `@instructure/pendo-global-css`; pantoken supplies the tokens and the\nassembly. A single theme class containing `instui` activates the scoped stylesheet; compact\nsuffixes on that class select banner colors and glyphs, and an `instui-banner` prefix extends the\nbanner surface to popovers and surveys while keeping their overlay elevation."
+msgstr "Pendo 将引导 HTML 注入宿主页面；这会呈现该引导 DOM (`._pendo-*`) 以匹配\nInstructure UI，使用 pantoken 的 `--instui-*` 令牌层进行对齐。它包括响应式\n紫色和海色横幅引导样式，以及警报、弹出框、调查和控件。该\n组件的 CSS 已从 `@instructure/pendo-global-css` 移植；pantoken 提供令牌和\n组件。包含 `instui` 的单一主题类会激活作用域样式表；该类上的紧凑型\n后缀用于选择横幅颜色和图标，而 `instui-banner` 前缀将\n横幅表面扩展到弹出框和调查，同时保持其覆盖层的高度。"

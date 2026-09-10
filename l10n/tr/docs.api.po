@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 22:12+0000\n"
+"PO-Revision-Date: 2026-09-10 16:26+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29407,3 +29407,7 @@ msgstr "`theme`/`mode` hangi `@pantoken/css` token sayfası iskeletlenmiş dosya
 msgctxt "docs.api:prose"
 msgid "A platform pantoken can scaffold a starter project for."
 msgstr "Bir platform için pantoken'in başlangıç projesi iskeletini oluşturabilmesi."
+
+msgctxt "docs.api:prose"
+msgid "Pendo injects guide HTML into a host page; this renders that guide DOM (`._pendo-*`) to match\nInstructure UI, using pantoken's `--instui-*` token layer for alignment. It includes responsive\nviolet and sea banner guide treatments alongside alerts, popovers, surveys, and controls. The\ncomponent CSS is ported from `@instructure/pendo-global-css`; pantoken supplies the tokens and the\nassembly. A single theme class containing `instui` activates the scoped stylesheet; compact\nsuffixes on that class select banner colors and glyphs, and an `instui-banner` prefix extends the\nbanner surface to popovers and surveys while keeping their overlay elevation."
+msgstr "Pendo, rehber HTML'sini bir konak sayfaya enjekte eder; bu, o rehber DOM'unu render eder (`._pendo-*`) ile eşleştirmek için\nInstructure UI, hizalama için pantoken'in `--instui-*` token katmanını kullanır. Uyarılar, açılır pencereler, anketler ve kontrollerle birlikte duyarlı\nmor ve deniz bantlı rehber düzenlemelerini içerir. \nbileşen CSS'i `@instructure/pendo-global-css`'ten taşınmıştır; pantoken token'ları ve \nmontajını sağlar. `instui` içeren tek bir tema sınıfı kapsamlı stil sayfasını etkinleştirir; o sınıftaki kompakt\nson ekler pankart renklerini ve simgelerini seçer ve bir `instui-banner` öneki, örtüşme yükseltmesini korurken \npankart yüzeyini açılır pencerelere ve anketlere genişletir."

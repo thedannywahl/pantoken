@@ -75,6 +75,21 @@ Inside a banner, Pendo primary and custom buttons use the filled primary-on-colo
 Secondary and tertiary buttons use the transparent resting treatment and filled interaction states;
 the guide close button keeps its standard appearance and receives banner-specific positioning.
 
+### Banner popovers and surveys
+
+Prefix the class with `instui-banner` to give a popover or survey the banner surface, icon swatch,
+and spacing while keeping its overlay drop shadow. Suffixes still compose, so `instui-banner-poll` is
+a violet survey with the question-message glyph and `instui-banner-sea-megaphone` is a sea one with a
+megaphone.
+
+This is keyed on the class rather than on Pendo's layout, because Pendo ships survey layouts we do
+not enumerate — a PMF survey arrives with no `data-layout` at all, an NPS survey with
+`data-layout="bannerNpsSurvey"`. Both pick up the treatment from the same class. Alerts ignore
+`instui-banner` and keep their sidebar strip.
+
+Sizing still follows the guide container, so a narrow anchored survey renders compact while a
+full-width one renders relaxed.
+
 ## How it fits together
 
 - **Token layer** — pantoken's `@pantoken/css` emits the `--instui-*` custom properties, scoped to the guide container `[class*="instui"]`. This is the drop-in replacement for pendo-styles' generated `vendor/tokens.css`.

@@ -81,9 +81,6 @@ jobs:
     needs: released
     if: needs.released.outputs.should_deploy == 'true'
     runs-on: ubuntu-latest
-    environment:
-      name: netlify
-      url: ${{ steps.netlify.outputs.url }}
     # The full-locale render is measured in hours, not minutes. Cap it well under the 6h job ceiling
     # so a wedged build fails visibly instead of burning a whole runner-day.
     timeout-minutes: 300

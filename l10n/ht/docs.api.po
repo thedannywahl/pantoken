@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 22:06+0000\n"
+"PO-Revision-Date: 2026-09-10 14:36+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29407,3 +29407,7 @@ msgstr "`theme`/`mode` chwazi ki `@pantoken/css` fichye echèl fèy token yo\n  
 msgctxt "docs.api:prose"
 msgid "A platform pantoken can scaffold a starter project for."
 msgstr "Yon platfòm pantoken ka kreye yon pwojè demaraj pou."
+
+msgctxt "docs.api:prose"
+msgid "Pendo injects guide HTML into a host page; this renders that guide DOM (`._pendo-*`) to match\nInstructure UI, using pantoken's `--instui-*` token layer for alignment. It includes responsive\nviolet and sea banner guide treatments alongside alerts, popovers, surveys, and controls. The\ncomponent CSS is ported from `@instructure/pendo-global-css`; pantoken supplies the tokens and the\nassembly. A single theme class containing `instui` activates the scoped stylesheet; compact\nsuffixes on that class select banner colors and glyphs, and an `instui-banner` prefix extends the\nbanner surface to popovers and surveys while keeping their overlay elevation."
+msgstr "Pendo enjekte HTML gid nan yon paj òt; sa a pwodui dom gid sa a (`._pendo-*`) pou matche\nInstructure UI, sèvi ak pantoken a `--instui-*` kouch jeton pou aliyman. Li enkli responsif\nvyolèt ak lanmè tretman gid banyè ansanm ak alèt, popove, sondaj, ak kontwòl. A\nCSS konpozan an yo te pote depi `@instructure/pendo-global-css`; pantoken bay jeton yo ak\nasanble. Yon sèl klas tèm ki gen `instui` aktive fèy stil limit; konpak\nsifiks sou klas sa a chwazi koulè banyè ak glifik, ak yon `instui-banner` prefiks pwolonje\nsifas banyè a popove ak sondaj pandan li kenbe elevasyon maskinaj yo."

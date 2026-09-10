@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 22:07+0000\n"
+"PO-Revision-Date: 2026-09-10 16:19+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29407,3 +29407,7 @@ msgstr "`theme`/`mode` どの `@pantoken/css` token sheet scaffolded files\n を
 msgctxt "docs.api:prose"
 msgid "A platform pantoken can scaffold a starter project for."
 msgstr "pantoken がスタータープロジェクトをスキャフォールドできるプラットフォーム。"
+
+msgctxt "docs.api:prose"
+msgid "Pendo injects guide HTML into a host page; this renders that guide DOM (`._pendo-*`) to match\nInstructure UI, using pantoken's `--instui-*` token layer for alignment. It includes responsive\nviolet and sea banner guide treatments alongside alerts, popovers, surveys, and controls. The\ncomponent CSS is ported from `@instructure/pendo-global-css`; pantoken supplies the tokens and the\nassembly. A single theme class containing `instui` activates the scoped stylesheet; compact\nsuffixes on that class select banner colors and glyphs, and an `instui-banner` prefix extends the\nbanner surface to popovers and surveys while keeping their overlay elevation."
+msgstr "PendoはガイドHTMLをホストページに注入します；これによりそのガイドDOMがレンダリングされ（`._pendo-*`) to match\nInstructure UI、pantokenの`--instui-*`トークンレイヤーを使って整列します）。レスポンシブな\nvioletおよびseaバナーのガイド処理が、アラート、ポップオーバー、調査、コントロールと並んで含まれます。コンポーネントの\nCSSは`@instructure/pendo-global-css`から移植されており；pantokenはトークンと\nアセンブリを供給します。単一のテーマクラスが`instui`を含むことでスコープされたスタイルシートを有効化します；そのクラスに付けられたcompact\nサフィックスはバナーの色とグリフを選択し、`instui-banner`プレフィックスはオーバーレイのエレベーションを維持したまま\nバナー表面をポップオーバーや調査に拡張します。"
