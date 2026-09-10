@@ -149,11 +149,21 @@ const cachePath = (key: NotoKey): string => {
 
 const sha256 = (bytes: Uint8Array): string => createHash("sha256").update(bytes).digest("hex");
 
-/** Read the cached file for `key`, or `undefined` if it's absent or doesn't match its pinned hash. */
+/** Return whether the bytes look like a TTF/OTF font (not arbitrary network data). */
+export function isFontFile(bytes: Uint8Array): boolean {
+  if (bytes.length < 12) return false;
+  const version = bytes.subarray(0, 4);
+  return (
+    (version[0] === 0x00 && version[1] === 0x01 && version[2] === 0x00 && version[3] === 0x00) ||
+    (version[0] === 0x4f && version[1] === 0x54 && version[2] === 0x54 && version[3] === 0x4f)
+  );
+}
+
+/** Read the cached file for `key`, or `undefined` if it's absent, invalid, or mismatched. */
 function readCached(key: NotoKey): Uint8Array | undefined {
   try {
     const bytes = readFileSync(cachePath(key));
-    return sha256(bytes) === NOTO_FONTS[key].sha256 ? bytes : undefined;
+    return isFontFile(bytes) && sha256(bytes) === NOTO_FONTS[key].sha256 ? bytes : undefined;
   } catch {
     return undefined;
   }
@@ -176,6 +186,13 @@ async function resolveFont(key: NotoKey): Promise<string | undefined> {
     bytes = new Uint8Array(await response.arrayBuffer());
   } catch (error) {
     console.warn(`gen-og: could not fetch ${NOTO_FONTS[key].family} (${String(error)})`);
+    return undefined;
+  }
+
+  if (!isFontFile(bytes)) {
+    console.warn(
+      `gen-og: ${NOTO_FONTS[key].family} did not look like a valid font file — skipping`,
+    );
     return undefined;
   }
 

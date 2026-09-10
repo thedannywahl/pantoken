@@ -87,7 +87,10 @@
   }
 }
 
-._pendo-guide-walkthrough_:not([data-layout="tooltipBlank"], [data-layout="lightboxBlank"]) {
+:is(:scope, [class*="instui"])._pendo-guide-walkthrough_:not(
+    [data-layout="tooltipBlank"],
+    [data-layout="lightboxBlank"]
+  ) {
   ._pendo-open-text-poll-input {
     /* PMF Survey does not have `rows` attribute, so manually set to match other surveys */
     min-height: 100px;
@@ -278,7 +281,10 @@ select._pendo-multi-choice-poll-select option {
 
 /* Radio label */
 ._pendo-multi-choice-poll-select-border label.pendo-radio,
-._pendo-guide-walkthrough_:not([data-layout="tooltipBlank"], [data-layout="lightboxBlank"])
+:is(:scope, [class*="instui"])._pendo-guide-walkthrough_:not(
+    [data-layout="tooltipBlank"],
+    [data-layout="lightboxBlank"]
+  )
   :is([id*="survey-pmf-answers"], [id*="survey-single-choice"])
   label.pendo-radio {
   font-family: var(--instui-component-radio-input-font-family);
@@ -298,7 +304,10 @@ select._pendo-multi-choice-poll-select option {
 
 /* Radio input */
 ._pendo-multi-choice-poll-select-border input.pendo-radio,
-._pendo-guide-walkthrough_:not([data-layout="tooltipBlank"], [data-layout="lightboxBlank"])
+:is(:scope, [class*="instui"])._pendo-guide-walkthrough_:not(
+    [data-layout="tooltipBlank"],
+    [data-layout="lightboxBlank"]
+  )
   :is([id*="survey-pmf-answers"], [id*="survey-single-choice"])
   input.pendo-radio {
   width: var(--instui-component-radio-input-control-size-sm);
@@ -374,6 +383,8 @@ select._pendo-multi-choice-poll-select option {
   gap: var(--instui-component-shared-tokens-spacing-gap-buttons);
   display: flex;
   flex-direction: row;
+  /* Without wrapping, a narrow guide clips the high end of the scale out of reach. */
+  flex-wrap: wrap;
   width: fit-content;
 }
 

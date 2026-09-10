@@ -325,4 +325,162 @@
       </div>
     </div>
   </section>
+
+  <section class="pendo-example">
+    <p class="pendo-example__label">{{surveyLabel}}</p>
+    <div
+      id="pendo-base-demo-survey"
+      class="instui-banner-poll _pendo-step-container _pendo-guide-walkthrough_"
+    >
+      <div id="pendo-g-demo-survey" class="_pendo-step-container-size">
+        <div
+          id="pendo-guide-container-demo-survey"
+          class="_pendo-step-container-styles"
+          role="complementary"
+          aria-label="{{surveyLabel}}"
+          tabindex="-1"
+        >
+          <button class="_pendo-close-guide" type="button" aria-label="{{closeLabel}}">×</button>
+          <form id="survey-item-wrapper__demo-survey" class="pendo-survey-wrapper">
+            <div class="bb-text _pendo-text-custom">
+              <div class="bb-text _pendo-simple-text">
+                <h3 id="pendo-title-demo-survey" class="bb-text _pendo-simple-text">
+                  {{surveyQuestion}}
+                </h3>
+              </div>
+            </div>
+            <div id="survey-single-choice-answers">
+              <span>
+                <input
+                  id="pendo-poll-choice-very-demo-survey"
+                  class="pendo-radio"
+                  name="pendo-poll-choice-demo-survey"
+                  type="radio"
+                />
+                <label class="pendo-radio" for="pendo-poll-choice-very-demo-survey">
+                  {{surveyChoiceVery}}
+                </label>
+              </span>
+              <span>
+                <input
+                  id="pendo-poll-choice-mildly-demo-survey"
+                  class="pendo-radio"
+                  name="pendo-poll-choice-demo-survey"
+                  type="radio"
+                />
+                <label class="pendo-radio" for="pendo-poll-choice-mildly-demo-survey">
+                  {{surveyChoiceMildly}}
+                </label>
+              </span>
+              <span>
+                <input
+                  id="pendo-poll-choice-not-demo-survey"
+                  class="pendo-radio"
+                  name="pendo-poll-choice-demo-survey"
+                  type="radio"
+                />
+                <label class="pendo-radio" for="pendo-poll-choice-not-demo-survey">
+                  {{surveyChoiceNot}}
+                </label>
+              </span>
+            </div>
+          </form>
+          <form
+            id="survey-item-wrapper__demo-survey-text"
+            class="pendo-survey-wrapper _pendo-open-text-poll-wrapper"
+          >
+            <div id="pendo-text-demo-survey-followup" class="bb-text _pendo-simple-text">
+              {{surveyFollowUp}}
+            </div>
+            <textarea
+              id="survey-open-answer-demo-survey"
+              class="_pendo-open-text-poll-input"
+              rows="4"
+              aria-labelledby="pendo-text-demo-survey-followup"
+            ></textarea>
+          </form>
+          <div id="survey-button-wrapper-demo-survey" class="_pendo-row">
+            <button class="bb-button _pendo-button-custom _pendo-button" type="button">
+              {{nextLabel}}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pendo-example">
+    <p class="pendo-example__label">{{npsLabel}}</p>
+    <div
+      id="pendo-base-demo-nps"
+      class="instui-banner-poll _pendo-step-container _pendo-guide-walkthrough_"
+      data-layout="bannerNpsSurvey"
+    >
+      <div id="pendo-g-demo-nps" class="_pendo-step-container-size">
+        <div
+          id="pendo-guide-container-demo-nps"
+          class="_pendo-step-container-styles"
+          role="complementary"
+          aria-label="{{npsLabel}}"
+          tabindex="-1"
+        >
+          <div
+            id="pendo-text-demo-nps-question"
+            class="bb-text _pendo-text-subTitle _pendo-nps-poll-question"
+          >
+            <div class="bb-text _pendo-simple-text">
+              <h3 class="bb-text _pendo-simple-text">{{npsQuestion}}</h3>
+            </div>
+          </div>
+          <form id="pendo-nps-poll-demo-nps" class="pendo-block-wrapper _pendo-nps-poll-wrapper">
+            <div role="radiogroup" aria-labelledby="pendo-text-demo-nps-question">
+              <div class="bb-text _pendo-simple-text _pendo-nps-poll-lowerbound-label">
+                {{npsLowerBound}}
+              </div>
+              <!-- prettier-ignore -->
+              <span class="_pendo-nps-poll-0-wrapper"><input id="pendo-poll-choice-0-demo-nps" class="pendo-radio" name="pendo-poll-choice-demo-nps" type="radio" style="height:0;width:0;position:absolute;opacity:0" value="0" /><label class="pendo-radio _pendo-nps-poll-0" for="pendo-poll-choice-0-demo-nps">0</label></span>
+              <!-- prettier-ignore -->
+              <span class="_pendo-nps-poll-1-wrapper"><input id="pendo-poll-choice-1-demo-nps" class="pendo-radio" name="pendo-poll-choice-demo-nps" type="radio" style="height:0;width:0;position:absolute;opacity:0" value="1" /><label class="pendo-radio _pendo-nps-poll-1" for="pendo-poll-choice-1-demo-nps">1</label></span>
+              <!-- prettier-ignore -->
+              <span class="_pendo-nps-poll-2-wrapper"><input id="pendo-poll-choice-2-demo-nps" class="pendo-radio" name="pendo-poll-choice-demo-nps" type="radio" style="height:0;width:0;position:absolute;opacity:0" value="2" /><label class="pendo-radio _pendo-nps-poll-2" for="pendo-poll-choice-2-demo-nps">2</label></span>
+              <!-- prettier-ignore -->
+              <span class="_pendo-nps-poll-3-wrapper"><input id="pendo-poll-choice-3-demo-nps" class="pendo-radio" name="pendo-poll-choice-demo-nps" type="radio" style="height:0;width:0;position:absolute;opacity:0" value="3" /><label class="pendo-radio _pendo-nps-poll-3" for="pendo-poll-choice-3-demo-nps">3</label></span>
+              <!-- prettier-ignore -->
+              <span class="_pendo-nps-poll-4-wrapper"><input id="pendo-poll-choice-4-demo-nps" class="pendo-radio" name="pendo-poll-choice-demo-nps" type="radio" style="height:0;width:0;position:absolute;opacity:0" value="4" /><label class="pendo-radio _pendo-nps-poll-4" for="pendo-poll-choice-4-demo-nps">4</label></span>
+              <!-- prettier-ignore -->
+              <span class="_pendo-nps-poll-5-wrapper"><input id="pendo-poll-choice-5-demo-nps" class="pendo-radio" name="pendo-poll-choice-demo-nps" type="radio" style="height:0;width:0;position:absolute;opacity:0" value="5" /><label class="pendo-radio _pendo-nps-poll-5" for="pendo-poll-choice-5-demo-nps">5</label></span>
+              <!-- prettier-ignore -->
+              <span class="_pendo-nps-poll-6-wrapper"><input id="pendo-poll-choice-6-demo-nps" class="pendo-radio" name="pendo-poll-choice-demo-nps" type="radio" style="height:0;width:0;position:absolute;opacity:0" value="6" /><label class="pendo-radio _pendo-nps-poll-6" for="pendo-poll-choice-6-demo-nps">6</label></span>
+              <!-- prettier-ignore -->
+              <span class="_pendo-nps-poll-7-wrapper"><input id="pendo-poll-choice-7-demo-nps" class="pendo-radio" name="pendo-poll-choice-demo-nps" type="radio" style="height:0;width:0;position:absolute;opacity:0" value="7" /><label class="pendo-radio _pendo-nps-poll-7" for="pendo-poll-choice-7-demo-nps">7</label></span>
+              <!-- prettier-ignore -->
+              <span class="_pendo-nps-poll-8-wrapper"><input id="pendo-poll-choice-8-demo-nps" class="pendo-radio" name="pendo-poll-choice-demo-nps" type="radio" style="height:0;width:0;position:absolute;opacity:0" value="8" /><label class="pendo-radio _pendo-nps-poll-8" for="pendo-poll-choice-8-demo-nps">8</label></span>
+              <!-- prettier-ignore -->
+              <span class="_pendo-nps-poll-9-wrapper"><input id="pendo-poll-choice-9-demo-nps" class="pendo-radio" name="pendo-poll-choice-demo-nps" type="radio" style="height:0;width:0;position:absolute;opacity:0" value="9" /><label class="pendo-radio _pendo-nps-poll-9" for="pendo-poll-choice-9-demo-nps">9</label></span>
+              <!-- prettier-ignore -->
+              <span class="_pendo-nps-poll-10-wrapper"><input id="pendo-poll-choice-10-demo-nps" class="pendo-radio" name="pendo-poll-choice-demo-nps" type="radio" style="height:0;width:0;position:absolute;opacity:0" value="10" /><label class="pendo-radio _pendo-nps-poll-10" for="pendo-poll-choice-10-demo-nps">10</label></span>
+              <div class="bb-text _pendo-simple-text _pendo-nps-poll-upperbound-label">
+                {{npsUpperBound}}
+              </div>
+            </div>
+          </form>
+          <div
+            id="pendo-row-demo-nps"
+            class="_pendo-row"
+            data-pendo-display-flex="true"
+            data-pendo-justify-content="center"
+          >
+            <div class="pendo-mock-flexbox-row">
+              <div class="pendo-mock-flexbox-element">
+                <button class="bb-button _pendo-button-primaryButton _pendo-button" type="button">
+                  {{submitLabel}}
+                </button>
+              </div>
+            </div>
+          </div>
+          <button class="_pendo-close-guide" type="button" aria-label="{{closeLabel}}">×</button>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>

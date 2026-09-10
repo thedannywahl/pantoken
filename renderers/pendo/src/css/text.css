@@ -112,10 +112,14 @@ h3._pendo-simple-text {
 }
 
 /* Surveys*/
-._pendo-guide-walkthrough_:not([data-layout="tooltipBlank"], [data-layout="lightboxBlank"]) {
+:is(:scope, [class*="instui"])._pendo-guide-walkthrough_:not(
+    [data-layout="tooltipBlank"],
+    [data-layout="lightboxBlank"]
+  ) {
   /* @TODO: Surveys are terrible, clean this up. */
 
-  & *:not(._pendo-close-guide) {
+  /* Banner surveys take their sizes from the banner block below instead. */
+  &:not([class*="instui-banner"]) *:not(._pendo-close-guide) {
     font-size: var(--instui-component-heading-title-card-mini-font-size);
   }
 
@@ -168,11 +172,19 @@ h3._pendo-simple-text {
 }
 
 /* Banner typography follows the banner container rather than an authored size class. */
-:is(:scope, [class*="instui"])[data-layout="lightboxBlank"]:not([class*="instui-alert"]) {
+:is(:scope, [class*="instui"]):not([class*="instui-alert"]):is(
+    [data-layout="lightboxBlank"],
+    [class*="instui-banner"]
+  ) {
   :is(._pendo-simple-text, [class*="_pendo-text-"]) {
     font-size: var(--instui-component-text-content-font-size);
     font-weight: var(--instui-component-text-content-font-weight);
     line-height: var(--instui-component-text-content-line-height);
+  }
+
+  /* Re-assert after the rule above, which outranks the bare variant classes. */
+  :is(._pendo-text-bold, ._pendo-text-italic) {
+    font-weight: var(--instui-component-text-content-important-font-weight);
   }
 
   :is(h2._pendo-simple-text, h2._pendo-text-title) {
@@ -189,11 +201,18 @@ h3._pendo-simple-text {
 }
 
 @container pantoken-pendo-guide (max-width: 30em) {
-  :is(:scope, [class*="instui"])[data-layout="lightboxBlank"]:not([class*="instui-alert"]) {
+  :is(:scope, [class*="instui"]):not([class*="instui-alert"]):is(
+      [data-layout="lightboxBlank"],
+      [class*="instui-banner"]
+    ) {
     :is(._pendo-simple-text, [class*="_pendo-text-"]) {
       font-size: var(--instui-component-text-content-small-font-size);
       font-weight: var(--instui-component-text-content-small-font-weight);
       line-height: var(--instui-component-text-content-small-line-height);
+    }
+
+    :is(._pendo-text-bold, ._pendo-text-italic) {
+      font-weight: var(--instui-component-text-content-important-font-weight);
     }
 
     :is(h2._pendo-simple-text, h2._pendo-text-title) {

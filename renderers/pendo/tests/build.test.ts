@@ -121,7 +121,7 @@ test("mangle option renames --instui-* custom properties to short identifiers", 
 });
 
 test("compact theme class suffixes select banner color and glyph treatments", () => {
-  expect(containerCss).toContain('[class*="instui"])[data-layout="lightboxBlank"]');
+  expect(containerCss).toContain('[class*="instui-banner"]');
   expect(containerCss).toContain(':not([class*="instui-alert"])');
   expect(containerCss).toContain('[class*="-sea"]');
   expect(containerCss).toContain('[class*="-megaphone"]');
@@ -132,7 +132,7 @@ test("compact theme class suffixes select banner color and glyph treatments", ()
   expect(containerCss).toContain('[class*="-learnplatform"]');
   expect(containerCss).toContain("--instui-component-banner-violet-background");
   expect(containerCss).toContain("--instui-component-banner-sea-background");
-  expect(containerCss).toContain("box-shadow: none;");
+  expect(containerCss).toContain("box-shadow: var(--_banner-shadow);");
   expect(containerCss).toContain("--instui-icon-lightbulb");
   expect(containerCss).toContain("--instui-icon-megaphone");
   expect(containerCss).toContain("--instui-icon-message-circle-question-mark");
@@ -165,6 +165,34 @@ test("banner sizing follows the guide container at the InstUI sm breakpoint", ()
   expect(textCss).toContain("@container pantoken-pendo-guide (max-width: 30em)");
   expect(textCss).toContain("--instui-component-heading-title-card-regular-font-size");
   expect(textCss).toContain("--instui-component-heading-title-card-mini-font-size");
+});
+
+test("an instui-banner class gives popovers and surveys the banner surface with overlay elevation", () => {
+  const bannerRoot = ':is(:scope, [class*="instui"]):not([class*="instui-alert"]):is(';
+  for (const css of [containerCss, chromeCss, textCss, buttonCss]) {
+    expect(css).toContain(bannerRoot);
+  }
+  expect(cardCss).toContain('[data-layout="lightboxBlank"], [class*="instui-banner"]');
+  expect(containerCss).toContain('&[class*="instui-banner"]:not([data-layout="lightboxBlank"])');
+  expect(containerCss).toContain("--_banner-shadow: var(--instui-elevation-above);");
+  expect(containerCss).toContain("--_banner-shadow: none;");
+  // The embedded banner keeps its flow margins; the opt-in keeps the popover margins instead.
+  expect(containerCss).toContain(
+    '&[data-layout="lightboxBlank"] ._pendo-step-container-styles {\n    margin: var(--instui-spacing-gap-cards-md) 0;',
+  );
+  expect(textCss).toContain('&:not([class*="instui-banner"]) *:not(._pendo-close-guide)');
+});
+
+test("survey rules target the scoping root, which a bare compound never matches under @scope", () => {
+  const surveyRoot = ':is(:scope, [class*="instui"])._pendo-guide-walkthrough_';
+  for (const css of [cardCss, inputsCss, textCss]) {
+    expect(css).toContain(surveyRoot);
+    expect(css).not.toMatch(/^\._pendo-guide-walkthrough_/mu);
+  }
+});
+
+test("rating scales wrap so a narrow guide cannot clip options out of reach", () => {
+  expect(inputsCss).toContain("flex-wrap: wrap;");
 });
 
 test("layout titles and subtitles follow the banner heading scale", () => {

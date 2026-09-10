@@ -88,4 +88,9 @@ body {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     align-items: start;
   }
+
+  /* Pendo walkthrough guides are laid out edge-to-edge, so give them the full row. */
+  .pendo-example:has(> ._pendo-guide-walkthrough_) {
+    grid-column: 1 / -1;
+  }
 }

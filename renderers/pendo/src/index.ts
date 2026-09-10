@@ -6,7 +6,8 @@
  * violet and sea banner guide treatments alongside alerts, popovers, surveys, and controls. The
  * component CSS is ported from `@instructure/pendo-global-css`; pantoken supplies the tokens and the
  * assembly. A single theme class containing `instui` activates the scoped stylesheet; compact
- * suffixes on that class select banner colors and glyphs.
+ * suffixes on that class select banner colors and glyphs, and an `instui-banner` prefix extends the
+ * banner surface to popovers and surveys while keeping their overlay elevation.
  *
  * {@link buildPendoCss} composes the stylesheet; {@link pendoCss} is the ready-made `rebrand` build
  * (scoped, `!important`). A static file is published at `@pantoken/pendo/global.css`.
