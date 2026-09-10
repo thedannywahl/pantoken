@@ -1,0 +1,12 @@
+the `se` locale keeps choking on translations and triggering drift failures:
+```
+@pantoken/docs — translation drift by surface:
+  docs.api: 1 unit(s) in 1 file(s), 1 locale(s) — blocks
+
+✗ @pantoken/docs: 1 blocking drift finding(s) across 1 file(s):
+  [docs.api] docs/api/renderers/pendo/src/index.md — 1 in 1 locale(s)
+    locales: se
+    - [prose] Pendo injects guide HTML into a host page; this renders that…
+
+Blocking translation drift. Run `vp run docs:locales:translate` locally, then commit the updated translation cache. Loosen or tighten what blocks in `i18n.config.json`.
+```
