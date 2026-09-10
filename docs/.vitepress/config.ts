@@ -546,6 +546,33 @@ function websiteJsonLd(params: {
 const description =
   "Instructure design tokens and icons, reshaped for every platform and framework.";
 
+// Non-root locales (docs/<locale>/**) are machine-translated mirrors of the English source and add
+// up to ~44x the page count; excluding them via a global `ignoreFiles` (rather than just per-output)
+// skips the plugin's per-file work for them entirely, not just their appearance in the generated
+// indexes. Patterns are minimatch against paths relative to workDir (docs/).
+//
+// VitePress builds the site twice (client, then SSR); the plugin only ever *emits* files on the
+// client pass, but its `transform` hook still walks every page's content on both passes regardless.
+// `apply` restricts these plugin instances to the client build only, so content never gets walked
+// twice for no benefit. Cast through the bottom type: the repo aliases `vite` to vite-plus-core,
+// while VitePress and this plugin each carry distinct Vite plugin types.
+const llmsTxtPlugins = llmstxt({
+  title: "pantoken",
+  description,
+  details:
+    "This index covers the canonical English documentation. Translations of every page are " +
+    "available under each locale's route prefix (for example /hu/).",
+  ignoreFiles: [
+    ...NON_ROOT_LOCALES.map((locale) => `${locale}/**`),
+    "CHANGELOG.md",
+    "compatibility.md",
+    "engineering-log.md",
+  ],
+}).map((plugin) => ({
+  ...plugin,
+  apply: (config: { build?: { ssr?: boolean | string } }): boolean => !config?.build?.ssr,
+})) as never[];
+
 // @ts-ignore TS2321 — VitePress alpha.18 UserConfig generic recursion can overflow TS depth.
 export default defineConfig({
   base,
@@ -659,37 +686,8 @@ export default defineConfig({
   },
   vite: {
     // Emit llms.txt (an agent-legible index) and llms-full.txt (the whole site as one document) so AI
-    // agents can read the guides and generated API reference without scraping HTML. The repo aliases
-    // `vite` to vite-plus-core, while VitePress and this plugin each carry distinct Vite plugin types;
-    // cast through the bottom type to bridge those compatible runtime values.
-    plugins: [
-      orchestrator,
-      llmstxt({
-        title: "pantoken",
-        description,
-        // Non-root locales (docs/<locale>/**) are machine-translated mirrors of the English source.
-        // Keep them out of the aggregate indexes so llms.txt / llms-full.txt stay canonical-English (the
-        // plugin author's own guidance), but leave per-page .md generation on so a locale page can still
-        // be fetched as markdown. Patterns are minimatch against paths relative to workDir (docs/).
-        details:
-          "This index covers the canonical English documentation. Translations of every page are " +
-          "available under each locale's route prefix (for example /hu/).",
-        ignoreFilesPerOutput: {
-          llmsTxt: [
-            ...NON_ROOT_LOCALES.map((locale) => `${locale}/**`),
-            "CHANGELOG.md",
-            "compatibility.md",
-            "engineering-log.md",
-          ],
-          llmsFullTxt: [
-            ...NON_ROOT_LOCALES.map((locale) => `${locale}/**`),
-            "CHANGELOG.md",
-            "compatibility.md",
-            "engineering-log.md",
-          ],
-        },
-      }) as never,
-    ],
+    // agents can read the guides and generated API reference without scraping HTML.
+    plugins: [orchestrator, ...llmsTxtPlugins],
     resolve: {
       alias: [
         {
