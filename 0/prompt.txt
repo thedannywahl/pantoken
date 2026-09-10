@@ -1,0 +1,104 @@
+drift check finds missing, but translation doesn't find them:
+```
+vpr i18n:check:drift:all
+$ node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json lint ⊘ cache disabled
+Validated 9 spaces, 44 locales, and 396 catalogs.
+
+~/tools/translation-adapters$ vp pack ◉ cache hit, replaying
+ℹ entry: src/index.ts
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+ℹ dist/index.mjs    36.04 kB │ gzip: 12.24 kB
+ℹ dist/index.d.mts  16.56 kB │ gzip:  6.35 kB
+ℹ 2 files, total: 52.59 kB
+✔ Build complete in 35ms
+
+~/tools/i18n-engine$ vp pack ◉ cache hit, replaying
+ℹ entry: src/index.ts, src/cli.ts
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 6 files
+ℹ dist/index.mjs            5.79 kB │ gzip:  2.24 kB
+ℹ dist/cli.mjs              0.15 kB │ gzip:  0.12 kB
+ℹ dist/cli-CtFfrl7t.mjs    81.76 kB │ gzip: 23.75 kB
+ℹ dist/index.d.mts         19.84 kB │ gzip:  6.44 kB
+ℹ dist/cli.d.mts            0.15 kB │ gzip:  0.12 kB
+ℹ dist/cli-6eAL5QUr.d.mts   6.67 kB │ gzip:  2.46 kB
+ℹ 6 files, total: 114.35 kB
+✔ Build complete in 63ms
+
+~/renderers/web-components$ i18n --config "$(git rev-parse --show-toplevel)/i18n.config.json" check ui.strings ○ cache miss: 'tools/translation-adapters/dist/index.mjs' modified, executing
+✓ ui.strings: no translation drift
+
+~/packages/scaffold$ i18n --config "$(git rev-parse --show-toplevel)/i18n.config.json" check cli.scaffold && i18n --config "$(git rev-parse --show-toplevel)/i18n.config.json" check scaffold.readme ○ cache miss: args changed, executing
+✓ cli.scaffold: no translation drift
+✓ scaffold.readme: no translation drift
+
+~/ai/pantoken-ai$ i18n --config "$(git rev-parse --show-toplevel)/i18n.config.json" check cli.ai ○ cache miss: 'cli-BH2UbQWz.mjs' removed from 'tools/i18n-engine/dist', executing
+✓ cli.ai: no translation drift
+
+~/docs$ node scripts/check-locale-drift.ts ○ cache miss: 'l10n/pt/docs.api.po' modified, executing
+
+@pantoken/docs — translation drift by surface:
+  docs.api: 40 unit(s) in 1 file(s), 1 locale(s) — blocks
+
+✗ @pantoken/docs: 40 blocking drift finding(s) across 1 file(s):
+  [docs.api] docs/api/css/responsive.md — 40 in 1 locale(s)
+    locales: se
+    - [prose] `[class*="-hidden-"],[class*="-show-"]` — Viewport- or conta…
+    - [prose] `.instui-hidden-max-<bp>`/`-hidden-min-<bp>` hide by viewpor…
+    - [prose] Hide when the marked container is at or below the `content` …
+
+Blocking translation drift. Run `vp run docs:locales:translate` locally, then commit the updated translation cache. Loosen or tighten what blocks in `i18n.config.json`.
+
+---
+vp run: 2/7 cache hit (28%), 1.61s saved, 1 failed. (Run `vp run --last-details` for full details)
+pantoken on pendo-popovers ↑2 via  26.8.1 x
+➜ vpr docs:locales:translate
+Selected task: @pantoken/docs#docs:locales:translate:copilot
+~/docs$ DOCS_TRANSLATION_COMMAND="$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh" DOCS_TRANSLATION_COMMAND_ARGS="--model gpt-5-mini --effort low" node scripts/translate-guide-po.ts ○ cache miss: 'l10n/pt-BR/docs.api.po' modified, executing
+ar: guide PO update complete
+hy: guide PO update complete
+ca: guide PO update complete
+da: guide PO update complete
+nl: guide PO update complete
+en-AU: guide PO update complete
+en-CA: guide PO update complete
+en-GB: guide PO update complete
+fi: guide PO update complete
+fr: guide PO update complete
+fr-CA: guide PO update complete
+ga: guide PO update complete
+de: guide PO update complete
+el: guide PO update complete
+ht: guide PO update complete
+he: guide PO update complete
+hi: guide PO update complete
+hu: guide PO update complete
+is: guide PO update complete
+id: guide PO update complete
+it: guide PO update complete
+ja: guide PO update complete
+ko: guide PO update complete
+mi: guide PO update complete
+ms: guide PO update complete
+se: guide PO update complete
+nb: guide PO update complete
+nn: guide PO update complete
+fa: guide PO update complete
+pl: guide PO update complete
+pt: guide PO update complete
+pt-BR: guide PO update complete
+ru: guide PO update complete
+zh-Hans: guide PO update complete
+sl: guide PO update complete
+es: guide PO update complete
+sv: guide PO update complete
+th: guide PO update complete
+zh-Hant: guide PO update complete
+tr: guide PO update complete
+uk: guide PO update complete
+vi: guide PO update complete
+cy: guide PO update complete
+```
