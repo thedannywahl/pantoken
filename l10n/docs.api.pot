@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 17:11+0000\n"
+"PO-Revision-Date: 2026-09-09 22:03+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -134,7 +134,7 @@ msgstr ""
 #: ai/pantoken-ai/src/type-aliases/ScaffoldPlatform.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "A platform pantoken can scaffold a starter project for — either preset-ledger-backed (Bingo)\nor a legacy template-only entry (e.g. `canvas-theme-editor`) with no preset yet."
+msgid "A platform pantoken can scaffold a starter project for."
 msgstr ""
 
 #: ai/pantoken-ai/src/variables/AGENTS_MD.md

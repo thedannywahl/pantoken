@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 17:41+0000\n"
+"PO-Revision-Date: 2026-09-09 22:11+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29403,3 +29403,7 @@ msgstr "定义统一的插件契约 ([PantokenPlugin](interfaces/PantokenPlugin.
 msgctxt "docs.api:prose"
 msgid "`theme`/`mode` select which `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), applied across every platform. `cdn` selects the CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);\n  ignored by every other platform. `locale` (default `\"en\"`) sets the generated markup's\n  `lang`/`dir` attributes."
 msgstr "`theme`/`mode` 选择 哪些 `@pantoken/css` 代币 表 生成 的 文件\n  导入（默认 `\"rebrand\"`/`\"light\"`)），应用 于 每个平台。 `cdn` 选择 CDN\n  提供商 `canvas-theme-editor` 的 `theme.css`/`theme.js` 为 其 构建（默认 jsDelivr);\n  被 所有 其他 平台 忽略）。 `locale`（默认 `\"en\"`) 设置 生成 的 标记 的\n  `lang`/`dir` 属性。"
+
+msgctxt "docs.api:prose"
+msgid "A platform pantoken can scaffold a starter project for."
+msgstr "pantoken 可以为其搭建入门项目的平台。"

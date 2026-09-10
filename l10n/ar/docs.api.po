@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 17:12+0000\n"
+"PO-Revision-Date: 2026-09-09 22:03+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29403,3 +29403,7 @@ msgstr "يعرّف عقد الإضافة الموحد ([PantokenPlugin](interfac
 msgctxt "docs.api:prose"
 msgid "`theme`/`mode` select which `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), applied across every platform. `cdn` selects the CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);\n  ignored by every other platform. `locale` (default `\"en\"`) sets the generated markup's\n  `lang`/`dir` attributes."
 msgstr "`theme`/`mode` اختر أي `@pantoken/css` ملفات ورقة الرمز المنشأة\n  import (default `\"rebrand\"`/`\"light\"`), مطبّق عبر كل منصة. `cdn` يحدّد مزود CDN\n  المزود `canvas-theme-editor`'s `theme.css`/`theme.js` تم بناؤها لـ (الافتراضي jsDelivr);\n  وتتجاهلها كل منصة أخرى. `locale` (الافتراضي `\"en\"`) يضبط \n  `lang`/`dir` سمات العلامة المولَّدة."
+
+msgctxt "docs.api:prose"
+msgid "A platform pantoken can scaffold a starter project for."
+msgstr "منصة يمكن لـ pantoken إنشاء مشروع تمهيدي لها."

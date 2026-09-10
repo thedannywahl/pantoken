@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 17:13+0000\n"
+"PO-Revision-Date: 2026-09-09 22:04+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29403,3 +29403,7 @@ msgstr "Defineix el contracte uniforme del plugin ([PantokenPlugin](interfaces/P
 msgctxt "docs.api:prose"
 msgid "`theme`/`mode` select which `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), applied across every platform. `cdn` selects the CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);\n  ignored by every other platform. `locale` (default `\"en\"`) sets the generated markup's\n  `lang`/`dir` attributes."
 msgstr "`theme`/`mode` selecciona quins `@pantoken/css` fitxers generats del full de tokens\n  import (per defecte `\"rebrand\"`/`\"light\"`), aplicat a totes les plataformes. `cdn` selecciona el proveïdor CDN\n  `canvas-theme-editor`'s `theme.css`/`theme.js` estan destinats a (per defecte jsDelivr);\n  ignorats per totes les altres plataformes. `locale` (per defecte `\"en\"`) estableix els atributs del marcatge generat\n  `lang`/`dir` attributes."
+
+msgctxt "docs.api:prose"
+msgid "A platform pantoken can scaffold a starter project for."
+msgstr "Una plataforma per a la qual pantoken pot generar l'estructura inicial d'un projecte."

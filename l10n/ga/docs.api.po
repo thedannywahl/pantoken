@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 17:16+0000\n"
+"PO-Revision-Date: 2026-09-09 22:05+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29403,3 +29403,7 @@ msgstr "Sainmhíníonn sé an conradh phluigín aonfhoirmeach ([PantokenPlugin](
 msgctxt "docs.api:prose"
 msgid "`theme`/`mode` select which `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), applied across every platform. `cdn` selects the CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);\n  ignored by every other platform. `locale` (default `\"en\"`) sets the generated markup's\n  `lang`/`dir` attributes."
 msgstr "`theme`/`mode` roghnaigh cé na `@pantoken/css` comhaid struchtúrtha bileog token a iompórtáil\n  import (réamhshocraithe `\"rebrand\"`/`\"light\"`), curtha i bhfeidhm ar gach ardán. `cdn` roghnaíonn an CDN\n  soláthraí `canvas-theme-editor`'s `theme.css`/`theme.js` atá tógtha dó (réamhshocraithe jsDelivr);\n  neamhairdítear iad ag gach ardán eile. `locale` (réamhshocraithe `\"en\"`) socraíonn sé \n an mharcála atá ginte\n  `lang`/`dir` airíonna."
+
+msgctxt "docs.api:prose"
+msgid "A platform pantoken can scaffold a starter project for."
+msgstr "Ar ardán ar féidir le pantoken tionscadal tosaigh a scafáil dó."

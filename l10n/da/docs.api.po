@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 17:13+0000\n"
+"PO-Revision-Date: 2026-09-09 22:04+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29403,3 +29403,7 @@ msgstr "Definerer den ensartede plugin-kontrakt ([PantokenPlugin](interfaces/Pan
 msgctxt "docs.api:prose"
 msgid "`theme`/`mode` select which `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), applied across every platform. `cdn` selects the CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);\n  ignored by every other platform. `locale` (default `\"en\"`) sets the generated markup's\n  `lang`/`dir` attributes."
 msgstr "`theme`/`mode` vælg hvilke `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), anvendt på alle platforme. `cdn` vælger CDN\n  udbyderen `canvas-theme-editor`'s `theme.css`/`theme.js` er bygget til (standard jsDelivr);\n  ignoreres af alle andre platforme. `locale` (standard `\"en\"`) indstiller den genererede markups\n  `lang`/`dir` attributter."
+
+msgctxt "docs.api:prose"
+msgid "A platform pantoken can scaffold a starter project for."
+msgstr "En platform, som pantoken kan oprette et startprojekt for."

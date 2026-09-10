@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 17:44+0000\n"
+"PO-Revision-Date: 2026-09-09 22:12+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29403,3 +29403,7 @@ msgstr "กำหนดสัญญาปลั๊กอินแบบเดี
 msgctxt "docs.api:prose"
 msgid "`theme`/`mode` select which `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), applied across every platform. `cdn` selects the CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);\n  ignored by every other platform. `locale` (default `\"en\"`) sets the generated markup's\n  `lang`/`dir` attributes."
 msgstr "`theme`/`mode` เลือกว่า `@pantoken/css` ไฟล์เทมเพลตของแผ่นโทเค็น\n  นำเข้า (ค่าเริ่มต้น `\"rebrand\"`/`\"light\"`), ใช้กับทุกแพลตฟอร์ม. `cdn` เลือกผู้ให้บริการ CDN\n  ผู้ให้บริการ `canvas-theme-editor`'s `theme.css`/`theme.js` ถูกสร้างขึ้นสำหรับ (ค่าเริ่มต้น jsDelivr);\n  ถูกละเว้นโดยแพลตฟอร์มอื่นทั้งหมด. `locale` (ค่าเริ่มต้น `\"en\"`) กำหนด\n  `lang`/`dir` แอตทริบิวต์ของมาร์กอัปที่สร้างขึ้น."
+
+msgctxt "docs.api:prose"
+msgid "A platform pantoken can scaffold a starter project for."
+msgstr "แพลตฟอร์มที่ pantoken สามารถสร้างโครงการเริ่มต้นให้ได้."

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 17:19+0000\n"
+"PO-Revision-Date: 2026-09-09 22:07+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29403,3 +29403,7 @@ msgstr "일관된 플러그인 계약을 정의합니다 ([PantokenPlugin](inter
 msgctxt "docs.api:prose"
 msgid "`theme`/`mode` select which `@pantoken/css` token sheet scaffolded files\n  import (default `\"rebrand\"`/`\"light\"`), applied across every platform. `cdn` selects the CDN\n  provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);\n  ignored by every other platform. `locale` (default `\"en\"`) sets the generated markup's\n  `lang`/`dir` attributes."
 msgstr "`theme`/`mode` 어떤 `@pantoken/css` 토큰 시트로 스캐폴딩된 파일을 선택합니다\n  import (default `\"rebrand\"`/`\"light\"`), 모든 플랫폼에 적용됩니다. `cdn` CDN을 선택합니다\n  제공자 `canvas-theme-editor`'s `theme.css`/`theme.js` 는 (기본값 jsDelivr);\n) 빌드 대상이며 다른 모든 플랫폼에서는 무시됩니다. `locale` (기본값 `\"en\"`) 는 생성된 마크업의\n  `lang`/`dir` 속성을 설정합니다."
+
+msgctxt "docs.api:prose"
+msgid "A platform pantoken can scaffold a starter project for."
+msgstr "pantoken이 스타터 프로젝트를 스캐폴드할 수 있는 플랫폼."
