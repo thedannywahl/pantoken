@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.3.17
+
+### Patch Changes
+
+- a3c4346: Fix the igniteai banner glyph resolving to an empty computed value in production. `scripts/embed.ts`'s `productIcons` list was missing `"igniteai"`, so `--instui-logo-igniteai-icon-reversed` was referenced by `container.css` but never embedded into the shipped `global.css`/bundle.
+- a3c4346: fix spacing for banner and alert styles
+
 ## 0.3.16
 
 ### Patch Changes
