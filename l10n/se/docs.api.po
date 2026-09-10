@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-10 01:20+0000\n"
+"PO-Revision-Date: 2026-09-10 16:33+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29407,3 +29407,7 @@ msgstr "`theme`/`mode` Válgget mii `@pantoken/css` token-láhppi scaffolda fái
 msgctxt "docs.api:prose"
 msgid "A platform pantoken can scaffold a starter project for."
 msgstr "Platforma mii pantoken sáhttá gávdnet almmuhaš projektas."
+
+msgctxt "docs.api:prose"
+msgid "Pendo injects guide HTML into a host page; this renders that guide DOM (`._pendo-*`) to match\nInstructure UI, using pantoken's `--instui-*` token layer for alignment. It includes responsive\nviolet and sea banner guide treatments alongside alerts, popovers, surveys, and controls. The\ncomponent CSS is ported from `@instructure/pendo-global-css`; pantoken supplies the tokens and the\nassembly. A single theme class containing `instui` activates the scoped stylesheet; compact\nsuffixes on that class select banner colors and glyphs, and an `instui-banner` prefix extends the\nbanner surface to popovers and surveys while keeping their overlay elevation."
+msgstr "Pendo čeajaha giidat-HTML:a vastái vuoddain siidai; dás ovdal giidat DOM (`._pendo-*`) maŋŋel\nInstructure UI, pantoken's geavahit `--instui-*` token-loahppa bargguheamaid maŋŋa. Dat gullá responsive\nbadjeluođa ja mare giidat-jođiheamit dieđusteami, dihtovuođa, árvaleami, ja kontrolllat. The\ncomponent CSS lea šallendihte `@instructure/pendo-global-css`; pantoken vahkka tokens ja the\nassembly. Okta geavvalaš tema-klassa maidna `instui` aktivere mearkkáhuvvan stylesheet; dikšu\nsuffixat dás klassas vállje giidat-loahppa barggat ja glyphtat, ja an `instui-banner` prefix viidde the\nbanner surface popovers ja árvaleapmiide maŋŋa guođevuođa."
