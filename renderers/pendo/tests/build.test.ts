@@ -246,10 +246,14 @@ test("banner buttons map Pendo variants without restyling the close button", () 
   expect(chromeCss).toContain("--instui-component-banner-close-button-margin-top");
 });
 
-test("custom-themed buttons keep the shared base but opt out of every colour variant", () => {
-  // Unqualified, so a custom button still gets size, typography, and spacing.
+test("custom-themed buttons keep the shared base but opt out of editor-owned styles", () => {
+  // Unqualified, so a custom button still gets height, font family, line height, and focus treatment.
   expect(buttonCss).toContain("._pendo-button {");
-  // The author's own theme has to win, so no variant rule may name the custom class.
+  expect(buttonCss).toContain("._pendo-button:not(._pendo-button-custom)");
+  expect(buttonCss).toContain("._pendo-button-primaryButton:not(._pendo-button-custom)");
+  expect(buttonCss).toContain("._pendo-button-secondaryButton:not(._pendo-button-custom)");
+  expect(buttonCss).toContain("._pendo-button-tertiaryButton:not(._pendo-button-custom)");
+  // The author's own theme has to win, so custom buttons never receive editor-owned overrides.
   expect(buttonCss).not.toContain("._pendo-button-custom {");
   expect(buttonCss).not.toContain(", ._pendo-button-custom");
   expect(buttonCss).not.toContain("._pendo-button-custom,");
