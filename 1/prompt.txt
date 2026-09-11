@@ -1,0 +1,15 @@
+we need to add the fallow health badge
+https://docs.fallow.tools/integrations/badges
+
+---
+
+make sure you're doing the monorepo version, not the individual package.
+
+---
+
+does this stay updated with CI?
+
+---
+
+follow the documentation for publish from CI:
+https://docs.fallow.tools/integrations/badges#option-2-publish-from-ci-recommended
