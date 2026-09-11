@@ -9,7 +9,7 @@ import { copyFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 
 const docsRoot = join(import.meta.dirname, "..");
-const source = join(docsRoot, "../ai/pantoken-ai/skills/create-pantoken-app/SKILL.md");
+const source = join(docsRoot, "../packages/scaffold/skills/create-pantoken-app/SKILL.md");
 const publicDir = join(docsRoot, "public");
 
 mkdirSync(publicDir, { recursive: true });

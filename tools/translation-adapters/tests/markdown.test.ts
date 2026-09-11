@@ -104,6 +104,23 @@ test("rejects duplicated whole-document starts", () => {
   ).toThrow(/multiple document starts/);
 });
 
+test("does not treat sub-headings as multiple document starts", () => {
+  expect(() =>
+    assertCleanMarkdownTranslation(
+      "# Főcím\n\n## Alcím 1\n\n### Alcím 2\n\nTartalom.",
+      "guide/a.md",
+    ),
+  ).not.toThrow();
+});
+
+test("evaluates adversarial repeated-whitespace heading input in linear time", () => {
+  const adversarial = `# ${" \t".repeat(20_000)} Heading`;
+  const start = performance.now();
+  expect(() => assertCleanMarkdownTranslation(adversarial, "guide/a.md")).not.toThrow();
+  const elapsed = performance.now() - start;
+  expect(elapsed).toBeLessThan(100);
+});
+
 test("rejects unexpected CJK characters for non-CJK target languages", () => {
   expect(() =>
     assertCleanMarkdownTranslation(

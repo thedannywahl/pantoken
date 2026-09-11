@@ -114,6 +114,7 @@ const META_COMMENTARY_PATTERNS: readonly RegExp[] = [
 const LONG_REPEATED_CHARACTER = /(.)\1{24,}/u;
 const HAN_CHARACTER = /\p{Script=Han}/u;
 const CJK_TARGET_LANGUAGE = /\b(?:chinese|japanese|korean|cantonese|mandarin|taiwanese)\b/iu;
+const TOP_LEVEL_HEADING = /^#[^\S\r\n]+\S.*$/gmu;
 
 /** Throw when an AI response is commentary or corrupted text rather than one translated document. */
 export function assertCleanMarkdownTranslation(
@@ -133,7 +134,7 @@ export function assertCleanMarkdownTranslation(
     throw new Error(`Markdown translation for ${reference} contains unexpected CJK characters`);
   }
 
-  const topLevelHeadings = output.match(/^#\s+.+$/gmu) ?? [];
+  const topLevelHeadings = output.match(TOP_LEVEL_HEADING) ?? [];
   if (topLevelHeadings.length > 1) {
     throw new Error(`Markdown translation for ${reference} contains multiple document starts`);
   }
