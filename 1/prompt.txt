@@ -1,0 +1,13 @@
+[tools/translation-adapters/src/markdown.ts](https://github.com/thedannywahl/pantoken/pull/152/files/858bf6a9dad9146733513cbd7eff8e6b18767dcc#diff-6f694e71cd88a44c6c7dc8973a2b97eaadc9e2bf62fc5f6921d4a48b2409965a)
+```
+    throw new Error(`Markdown translation for ${reference} contains unexpected CJK characters`);
+  }
+
+  const topLevelHeadings = output.match(/^#\s+.+$/gmu) ?? [];
+```
+### CodeQL / Polynomial regular expression used on uncontrolled data
+This [regular expression](https://github.com/thedannywahl/pantoken/pull/1) that depends on [library input](https://github.com/thedannywahl/pantoken/pull/2) may run slow on strings starting with '# ' and with many repetitions of ' '.
+
+---
+
+Start implementation
