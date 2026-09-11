@@ -45,6 +45,15 @@ const MARKDOWN = [
   "",
   "Regular prose describing how to use the component.",
   "",
+  "## Examples",
+  "",
+  "```html",
+  '<div class="instui-button-group">',
+  '  <button class="instui-button" aria-label="Primary">Primary</button>',
+  '  <button class="instui-button -color-secondary">Secondary</button>',
+  "</div>",
+  "```",
+  "",
 ].join("\n");
 
 const SIDEBAR = JSON.stringify([
@@ -77,12 +86,12 @@ beforeAll(async () => {
       Usage: "Használat",
       Overview: "Áttekintés",
       Functions: "Függvények",
-    }).flatMap(([source, translation]) => [
-      'msgctxt "docs.api:text"',
-      `msgid "${source}"`,
-      `msgstr "${translation}"`,
-      "",
-    ]),
+      Primary: "Elsődleges",
+      Secondary: "Másodlagos",
+    }).flatMap(([source, translation]) => {
+      const kind = source === "Primary" || source === "Secondary" ? "prose" : "text";
+      return [`msgctxt "docs.api:${kind}"`, `msgid "${source}"`, `msgstr "${translation}"`, ""];
+    }),
   ].join("\n");
 });
 
@@ -145,6 +154,8 @@ test("build localizes markdown headings, prose, and sidebars, then logs the summ
   expect(md).toBeDefined();
   expect(md).toContain(`## ${glossaryEntryFor("Usage")}`);
   expect(md).toContain("Regular prose describing how to use the component.");
+  expect(md).toContain('<button class="instui-button" aria-label="Primary">Elsődleges</button>');
+  expect(md).toContain('<button class="instui-button -color-secondary">Másodlagos</button>');
 
   // The sidebar labels are translated and its absolute /api links point into the HU tree.
   const sidebar = writtenTo("typedoc-sidebar.json");

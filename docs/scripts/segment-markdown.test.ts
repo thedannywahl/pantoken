@@ -84,7 +84,11 @@ const identity = (text: string): string => text;
 const find = (segments: Segment[], needle: string): Segment => {
   const match = segments.filter(
     (s) =>
-      s.kind !== "table" && s.kind !== "callout" && s.kind !== "prompt" && s.text.includes(needle),
+      s.kind !== "table" &&
+      s.kind !== "callout" &&
+      s.kind !== "prompt" &&
+      s.kind !== "html" &&
+      s.text.includes(needle),
   );
   expect(match.length, `exactly one segment contains ${JSON.stringify(needle)}`).toBe(1);
   return match[0];
@@ -162,6 +166,48 @@ describe("classification", () => {
     expect(reassemble(segments, (text) => `HU: ${text}`)).toContain(
       "```prompt\nHU: Ask the agent to set up pantoken.\n```",
     );
+  });
+
+  test("html fences translate visible text nodes and preserve markup", () => {
+    const page = [
+      "```html",
+      '<div class="instui-button-group">',
+      "  <!-- Primary stays a comment -->",
+      '  <button class="instui-button" aria-label="Primary">Primary</button>',
+      '  <button class="instui-button -color-secondary">Secondary</button>',
+      "  <code>Primary</code>",
+      "  <style>.Primary { color: red; }</style>",
+      "  <script>const Primary = true;</script>",
+      "</div>",
+      "```",
+    ].join("\n");
+    const segments = segmentMarkdown(page);
+    const html = segments.find((segment) => segment.kind === "html");
+
+    expect(html?.kind).toBe("html");
+    expect(collectUnits(segments)).toEqual([
+      { text: "Primary", kind: "prose", translateCodeShaped: true },
+      { text: "Secondary", kind: "prose", translateCodeShaped: true },
+    ]);
+    expect(reassemble(segments, identity)).toBe(page);
+    expect(
+      reassemble(segments, (text) =>
+        text === "Primary" ? "Primær" : text === "Secondary" ? "Sekundær" : text,
+      ),
+    ).toBe(
+      page
+        .replace(">Primary</button>", ">Primær</button>")
+        .replace(">Secondary</button>", ">Sekundær</button>"),
+    );
+  });
+
+  test("non-html and unclosed html fences remain preserved", () => {
+    const page = ["```css", ".Primary {}", "```", "", "```html", "<p>Primary</p>"].join("\n");
+    const segments = segmentMarkdown(page);
+
+    expect(segments.some((segment) => segment.kind === "html")).toBe(false);
+    expect(collectUnits(segments)).toEqual([]);
+    expect(reassemble(segments, () => "TRANSLATED")).toBe(page);
   });
 
   test("tables become table segments", () => {

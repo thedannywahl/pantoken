@@ -125,12 +125,13 @@ set a custom `i18nRouting`).
   in the global `themeConfig.search.options.locales`). Add new UI strings here, never inline.
 - **Block-level API translation.** `build-api-locales.ts` doesn't translate whole `.md` files — it
   runs `segment-markdown.ts` to split each generated page into blocks: `prose` (descriptions,
-  remarks, `@example` captions, cssdoc table Description cells), `glossary` (section headings,
-  stability-badge pills, table column labels), and `preserve` (code fences, signatures, breadcrumbs,
-  token tables). Only prose carries a content key, so a page's prose survives the scaffolding churn
-  (badge flips, token-value changes, signature edits) that used to bust a whole-file key. `glossary`
-  blocks always go through the deterministic `GlossaryTranslationAdapter` (keyless, never cached);
-  `preserve` blocks are emitted verbatim.
+  remarks, `@example` captions, visible text nodes in HTML example fences, cssdoc table Description
+  cells), `glossary` (section headings, stability-badge pills, table column labels), and `preserve`
+  (non-HTML code fences, signatures, breadcrumbs, token tables). HTML example markup, attributes,
+  comments, and script/style/code contents remain verbatim. Only prose carries a content key, so a
+  page's prose survives the scaffolding churn (badge flips, token-value changes, signature edits) that
+  used to bust a whole-file key. `glossary` blocks always go through the deterministic
+  `GlossaryTranslationAdapter` (keyless, never cached); `preserve` blocks are emitted verbatim.
 - **The committed cache carries the prose; CI serves it.** The translation memory
   (`docs/i18n-cache/hu.api.json`) is content-addressed and adapter-agnostic, so a claude-authored
   prose entry is served to a `glossary` build as a plain cache hit. The workflow: run
