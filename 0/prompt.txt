@@ -1,0 +1,14 @@
+this translation got mangled and is full of agent reasoning output. we need to re-force this file translation but first we need to tighten the prompt that invokes it.
+
+---
+
+Read-only exploration for the pantoken workspace. The user says docs/hy/guide/components.md translation is mangled with agent reasoning output, and we need to tighten the prompt that invokes it before re-forcing this file translation. Follow the repo's .entire/graph-agent.md guidance first: use `entire graph search --repo . --profile full --query "where docs translation prompt invokes locale file translation and force translation command"` before grep/find/whole-file reads if your tooling allows terminal access. Find:
+1. The prompt/script/task that invokes or instructs docs translations, especially force/re-force translation of a single locale file.
+2. The source English file corresponding to docs/hy/guide/components.md.
+3. Existing i18n docs conventions or validation checks relevant to preventing agent reasoning/garbled output in translated markdown.
+4. Minimal files likely needing changes.
+Return concise findings with exact workspace-relative paths, relevant symbols/functions/scripts, and recommended verification commands. Do not edit files.
+
+---
+
+it was invoked with `vpr i18n:translate:copilot`

@@ -1,0 +1,50 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M29A5YF9CNAFYZ90P6MDPN22",
+  "strategy": "manual-commit",
+  "branch": "pendo-button-tweaks",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/tame-plums-sniff.md",
+    "ai/pantoken-ai/assets/AGENTS.md",
+    "ai/pantoken-ai/assets/copilot-instructions.md",
+    "ai/pantoken-ai/assets/cursor.mdc",
+    "ai/pantoken-ai/assets/llms.txt",
+    "ai/pantoken-ai/assets/windsurf.md",
+    "ai/pantoken-ai/scripts/generate.ts",
+    "ai/pantoken-ai/skills/create-pantoken-app/SKILL.md",
+    "ai/pantoken-ai/skills/init-pantoken/SKILL.md",
+    "ai/pantoken-ai/src/cli.ts",
+    "ai/pantoken-ai/src/index.ts",
+    "ai/pantoken-ai/tests/cli.test.ts",
+    "packages/scaffold/assets/AGENTS.md",
+    "packages/scaffold/assets/copilot-instructions.md",
+    "packages/scaffold/assets/cursor.mdc",
+    "packages/scaffold/assets/llms.txt",
+    "packages/scaffold/assets/windsurf.md",
+    "packages/scaffold/scripts/generate.ts",
+    "packages/scaffold/skills/create-pantoken-app/SKILL.md",
+    "packages/scaffold/skills/init-pantoken/SKILL.md",
+    "packages/scaffold/src/agent-assets.ts",
+    "packages/scaffold/src/cli.ts",
+    "packages/scaffold/src/i18n.json",
+    "packages/scaffold/src/index.ts",
+    "packages/scaffold/tests/cli.test.ts"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
