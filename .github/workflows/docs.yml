@@ -300,7 +300,12 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         run: |
           set -euo pipefail
+          # Netlify CLI 16+ scans for a pnpm/yarn workspace and, from the repo root, refuses to guess
+          # which of this monorepo's ~100 packages to deploy without --filter, even with
+          # NETLIFY_SITE_ID set. --filter picks the (only) linked site among the workspace packages;
+          # --dir still overrides where the deploy-ready files actually come from.
           vpx --package netlify-cli@27.5.2 netlify deploy \
+            --filter "@pantoken/docs" \
             --prod \
             --no-build \
             --dir docs/.vitepress/dist \
