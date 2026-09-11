@@ -70,11 +70,19 @@ There are three site builds, and they exist for different jobs:
 action at the English `/api/` tree instead of a route it didn't build. Don't remove that fallback —
 it's what keeps the English-only build internally consistent.
 
-**Deploys are release-gated.** `Deploy docs` no longer follows every green CI run on main. The
-`Release` workflow's publish path uploads a `docs-deploy-request` marker artifact, and `docs.yml`
-(triggered by `workflow_run` on `Release`) deploys only when that marker is present — so the site
-tracks published versions, not intermediate main commits. `workflow_dispatch` remains the manual
-escape hatch. The deploy workflow builds the site itself; CI no longer uploads a `docs-site` artifact.
+**Deploys are diff-scoped.** `Deploy docs` can run from three paths: a docs-affecting push to `main`,
+the `Release` workflow's publish path via its `docs-deploy-request` marker artifact, or a manual
+`workflow_dispatch`. The workflow first runs `docs/scripts/changed-pages.ts` against the selected base
+ref. Page-scoped guide/API/home changes can render through `docs:build:deploy:partial`; global inputs
+(VitePress config/theme, docs scripts, public assets, shared component/token/plugin sources, lockfile,
+and deleted pages) fall back to the full `docs:build:deploy` route. Manual dispatches default to the
+full build unless a base ref is supplied.
+
+Partial deploy builds write VitePress output to `docs/.vitepress/partial-dist`, then overlay that onto
+a restored complete `docs/.vitepress/dist` cache before calling Netlify. Netlify still receives a full
+site directory, so unchanged live pages stay present while Netlify's content-addressed deploy uploads
+only changed blobs. If the full dist cache is missing, a partial candidate falls back to the full docs
+build. The deploy workflow builds the site itself; CI no longer uploads a `docs-site` artifact.
 
 **The site is on Netlify, not GitHub Pages.** The full-locale site is ~42k pages / ~92k files /
 ~1.7 GB, and GitHub caps a published Pages site at 1 GB with a 10-minute deploy timeout — it outgrew

@@ -215,7 +215,6 @@ test("popover cards retain their border and small padding on every edge", () => 
 });
 
 test("banner buttons map Pendo variants without restyling the close button", () => {
-  expect(buttonCss).toContain("._pendo-button-primaryButton, ._pendo-button-custom");
   expect(buttonCss).toContain("--instui-component-base-button-primary-inverse-background");
   expect(buttonCss).toContain("--instui-component-base-button-primary-on-color-hover-text-color");
   expect(buttonCss).toContain("._pendo-button-secondaryButton, ._pendo-button-tertiaryButton");
@@ -245,4 +244,13 @@ test("banner buttons map Pendo variants without restyling the close button", () 
   expect(buttonCss).toContain('[aria-disabled="true"]');
   expect(buttonCss).not.toContain("._pendo-close-guide");
   expect(chromeCss).toContain("--instui-component-banner-close-button-margin-top");
+});
+
+test("custom-themed buttons keep the shared base but opt out of every colour variant", () => {
+  // Unqualified, so a custom button still gets size, typography, and spacing.
+  expect(buttonCss).toContain("._pendo-button {");
+  // The author's own theme has to win, so no variant rule may name the custom class.
+  expect(buttonCss).not.toContain("._pendo-button-custom {");
+  expect(buttonCss).not.toContain(", ._pendo-button-custom");
+  expect(buttonCss).not.toContain("._pendo-button-custom,");
 });

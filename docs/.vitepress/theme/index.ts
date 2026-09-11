@@ -125,6 +125,11 @@ function relayDemoMessage(event: MessageEvent): void {
   handleDemoMessage(event, message);
 }
 
+const localeOf = (pathname: string, locales: string[]): string => {
+  const segment = pathname.replace(/^\/+/, "").split("/")[0] ?? "";
+  return locales.includes(segment) ? segment : "root";
+};
+
 export default {
   extends: DefaultTheme,
   Layout,
@@ -140,6 +145,20 @@ export default {
     // render live (the elements inline their own CSS; the token sheet above colours them). A no-op
     // during SSR — it early-returns without a DOM.
     registerWebComponents();
+
+    // Each locale is built separately into its own `assets/<locale>/`, so a build's client router
+    // only knows its own pages: an SPA hop across locales would miss the hash map and render the 404
+    // component. Hand those off to the browser as a full page load instead. The locale keys come from
+    // site data rather than ../i18n.js — that module reaches for the filesystem and can't be bundled.
+    ctx.router.onBeforeRouteChange = (href) => {
+      if (typeof window === "undefined") return true;
+      const locales = Object.keys(ctx.siteData.value.locales ?? {});
+      const target = new URL(href, window.location.origin);
+      if (localeOf(target.pathname, locales) === localeOf(window.location.pathname, locales))
+        return true;
+      window.location.assign(target.href);
+      return false;
+    };
 
     // Wire the demo iframes: apply the persisted theme on load, then relay theme + size messages.
     if (typeof document !== "undefined") {

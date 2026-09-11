@@ -50,6 +50,7 @@ const MARKDOWN = [
 const SIDEBAR = JSON.stringify([
   { text: "Overview", link: "/api/index.md", items: [{ text: "Functions", link: "/api/fn.md" }] },
 ]);
+const PAGES_FILE = "/tmp/pantoken-docs-pages.json";
 
 // segment-markdown/translation-memory are deterministic and fs-free for the surface we touch, but must
 // be imported dynamically (after the vi.fn stubs initialize) so the node:fs mock factory doesn't run
@@ -93,6 +94,7 @@ beforeEach(() => {
   vi.resetModules();
   vi.clearAllMocks();
   delete process.env.DOCS_TRANSLATION_ADAPTER; // default glossary adapter (no real spawns)
+  delete process.env.DOCS_CHANGED_PAGES_FILE;
 
   // The merged API cache contains the glossary entries used by this fixture.
   // memory.save() refreshes the (ignored) coverage reports via i18n.config.json; treat it as absent
@@ -102,6 +104,7 @@ beforeEach(() => {
   readdirSync.mockReturnValue(["index.md", "typedoc-sidebar.json"]);
   statSync.mockReturnValue({ isDirectory: () => false });
   readFileSync.mockImplementation((path) => {
+    if (path === PAGES_FILE) return JSON.stringify(["hu/api/index.md"]);
     if (path.endsWith("docs.api.po")) return GLOSSARY_PO;
     return path.endsWith("typedoc-sidebar.json") ? SIDEBAR : MARKDOWN;
   });
@@ -164,6 +167,36 @@ test("build localizes markdown headings, prose, and sidebars, then logs the summ
   expect(summary).toMatch(/\(\d+ cached, \d+ translated\)/);
   expect(process.exitCode).toBeUndefined();
 }, 20000); // dynamic import of build-api-locales.ts can exceed the default 5s under full-suite load
+
+test("partial mode skips API generation when no API pages changed", async () => {
+  process.env.DOCS_CHANGED_PAGES_FILE = PAGES_FILE;
+  readFileSync.mockImplementation((path) => {
+    if (path === PAGES_FILE) return JSON.stringify(["guide/cli.md", "hu/guide/cli.md"]);
+    if (path.endsWith("docs.api.po")) return GLOSSARY_PO;
+    return path.endsWith("typedoc-sidebar.json") ? SIDEBAR : MARKDOWN;
+  });
+
+  const { buildPromise } = await import("./build-api-locales.ts");
+  await buildPromise;
+
+  expect(spawnSync).not.toHaveBeenCalled();
+  expect(cpSync).not.toHaveBeenCalled();
+  expect(writeFileSync).not.toHaveBeenCalled();
+  expect(logSpy.mock.calls.map((c: unknown[]) => String(c[0])).join("\n")).toContain(
+    "skipping API locale build",
+  );
+});
+
+test("partial mode translates only allowlisted locale API markdown", async () => {
+  process.env.DOCS_CHANGED_PAGES_FILE = PAGES_FILE;
+
+  const { buildPromise } = await import("./build-api-locales.ts");
+  await buildPromise;
+
+  expect(spawnSync).toHaveBeenCalled();
+  expect(cpSync).toHaveBeenCalled();
+  expect(writtenTo("index.md")).toContain("Regular prose describing how to use the component.");
+});
 
 test("escapes stray prose tags without changing Markdown code or balanced HTML", async () => {
   const { escapeBareHtmlTags } = await import("./build-api-locales.ts");

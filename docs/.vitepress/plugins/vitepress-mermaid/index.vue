@@ -1,10 +1,10 @@
 <template>
-  <div ref="diagramRef" class="mermaid">{{ graphText }}</div>
+  <div ref="diagramRef" class="mermaid-diagram">{{ graphText }}</div>
 </template>
 
 <script setup lang="ts">
 import { useData } from "vitepress";
-import { computed, nextTick, ref, watch } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import mermaid from "mermaid";
 
 const props = defineProps<{ graph: string }>();
@@ -45,10 +45,6 @@ const fixLink = (href: string): string => {
 };
 
 const renderDiagram = async (): Promise<void> => {
-  // Wait for the template ref to bind before reading it — the watcher runs `immediate`, i.e. during
-  // setup before mount, so reading `diagramRef.value` first would always be null and bail.
-  await nextTick();
-
   const el = diagramRef.value;
   if (!el) {
     return;
@@ -80,17 +76,28 @@ const renderDiagram = async (): Promise<void> => {
   }
 };
 
-watch(
-  [() => props.graph, () => isDark.value],
-  () => {
-    void renderDiagram();
-  },
-  { immediate: true },
-);
+// Not `immediate`: mermaid replaces this element's children with the rendered SVG, and firing during
+// setup would do that while Vue is still hydrating the page — the DOM shifts under the hydration walk
+// and Vue reports a mismatch. `onMounted` runs after hydration settles.
+onMounted(() => {
+  void renderDiagram();
+});
+
+watch([() => props.graph, () => isDark.value], () => {
+  void renderDiagram();
+});
 </script>
 
 <style scoped>
-.mermaid {
+/*
+ * Deliberately not `.mermaid`. Importing mermaid arms a `load` listener that renders every element
+ * matching its default `.mermaid` selector, and VitePress hydrates after `load` — so the auto-run
+ * would replace the graph source with an SVG before Vue hydrates the node, which reports as a text
+ * mismatch. Disabling `startOnLoad` doesn't help: the listener's guard reads the flag off mermaid's
+ * internal object, not the imported binding. Staying out of the selector keeps the auto-run a no-op;
+ * renderDiagram passes this element explicitly via `nodes`.
+ */
+.mermaid-diagram {
   display: flex;
   justify-content: center;
   margin: 1rem 0;

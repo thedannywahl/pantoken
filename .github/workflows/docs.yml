@@ -4,15 +4,16 @@ name: Deploy docs
 #
 # NOT GitHub Pages. The full-locale site is ~42k pages / ~92k files / ~1.7 GB, and GitHub caps a
 # published Pages site at 1 GB with a 10-minute deploy timeout - the site outgrew the host. Netlify
-# has no per-deploy file-count or size limit (only 54,000 files per single directory; the largest
-# here, `assets/`, lands around 40k) and its deploys are content-addressed, so after this first seed
-# each release uploads only the files that actually changed.
+# has no per-deploy file-count or size limit, only 54,000 files per single directory - which the site
+# would blow past (~78k) if VitePress emitted every page chunk into one flat `assets/`. It doesn't:
+# the site builds one locale at a time into `assets/<locale>/` (docs/scripts/build-locales.ts) and the
+# results are merged. Netlify deploys are content-addressed, so after this first seed each release
+# uploads only the files that actually changed.
 #
-# Release-gated: this runs after the Release workflow and deploys only when that run actually
-# published packages, which it signals with a `docs-deploy-request` artifact. So the live site tracks
-# released versions rather than every green commit on main, and the full-locale build is paid once
-# per release instead of once per push. `workflow_dispatch` is the manual escape hatch - a docs-only
-# fix, or re-running a failed deploy - and skips the artifact check.
+# Diff-scoped: docs-only changes on main can deploy without waiting for a package release. Package
+# releases still request a deploy through the Release workflow's `docs-deploy-request` artifact, and
+# `workflow_dispatch` remains the manual escape hatch. The changed-page resolver picks a partial docs
+# build when it can prove the affected pages, and falls back to the full-locale build when it cannot.
 #
 # This workflow builds the site itself: CI's `docs` job is an English-only breakage check that
 # uploads nothing, and Netlify's own build system is never invoked (we ship a prebuilt directory).
@@ -20,11 +21,37 @@ name: Deploy docs
 # Required repository secrets: NETLIFY_AUTH_TOKEN (personal access token) and NETLIFY_SITE_ID.
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - docs/**
+      - l10n/docs.*.pot
+      - l10n/*/docs.*.po
+      - i18n.config.json
+      - cssdoc.jsonc
+      - formats/components/**
+      - formats/css/**
+      - formats/tokens/**
+      - plugins/pantoken/**
+      - renderers/vitepress/**
+      - renderers/web-components/**
+      - tools/i18n-engine/**
+      - tools/translation-adapters/**
   workflow_run:
     workflows: ["Release"]
     types: [completed]
     branches: [main]
   workflow_dispatch:
+    inputs:
+      base:
+        description: Optional base ref for a diff-scoped manual deploy.
+        required: false
+        type: string
+      full_build:
+        description: Run the full docs build unless a base ref is provided.
+        required: false
+        default: true
+        type: boolean
 
 permissions:
   contents: read
@@ -42,12 +69,14 @@ env:
 jobs:
   # A Release run reaches `completed` on both of its paths: opening/updating the Version PR, and
   # publishing. Only the publish path uploads `docs-deploy-request` (see release.yml), so its presence
-  # is the "a release actually happened" signal.
+  # is the "a release actually happened" signal. Direct pushes and manual dispatches don't need that
+  # artifact gate.
   released:
-    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     outputs:
       should_deploy: ${{ steps.decide.outputs.should_deploy }}
+      trigger: ${{ steps.decide.outputs.trigger }}
     steps:
       - name: Decide whether to deploy
         id: decide
@@ -61,16 +90,25 @@ jobs:
           set -euo pipefail
           if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
             echo "should_deploy=true" >> "$GITHUB_OUTPUT"
+            echo "trigger=manual" >> "$GITHUB_OUTPUT"
             echo "Manual dispatch; deploying."
+            exit 0
+          fi
+          if [ "$EVENT_NAME" = "push" ]; then
+            echo "should_deploy=true" >> "$GITHUB_OUTPUT"
+            echo "trigger=docs-push" >> "$GITHUB_OUTPUT"
+            echo "Docs-affecting push; deploying."
             exit 0
           fi
           requested=$(gh api "repos/$REPO/actions/runs/$RUN_ID/artifacts" \
             --jq '[.artifacts[] | select(.name == "docs-deploy-request")] | length')
           if [ "$requested" -gt 0 ]; then
             echo "should_deploy=true" >> "$GITHUB_OUTPUT"
+            echo "trigger=release" >> "$GITHUB_OUTPUT"
             echo "Release run $RUN_ID published; deploying."
           else
             echo "should_deploy=false" >> "$GITHUB_OUTPUT"
+            echo "trigger=release" >> "$GITHUB_OUTPUT"
             echo "Release run $RUN_ID published nothing (Version PR path); skipping deploy."
           fi
 
@@ -89,7 +127,8 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
-          ref: main
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          fetch-depth: 0
 
       # ubuntu-latest has 16 GB of RAM and a 4 GB swapfile. When the docs build's peak working set
       # crosses physical memory the kernel OOM-killer takes out the runner agent, and the job reports
@@ -126,11 +165,68 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
 
+      # Partial builds render into `.vitepress/partial-dist` and overlay those files into the last
+      # complete deploy directory. Only the locales owning a changed page get rebuilt, and the
+      # partial run carries the previous `hashmap.json`/`sitemap.xml` forward (DOCS_BASE_DIST) so the
+      # overlay can't replace a whole-site index with a handful of pages. Netlify receives a complete
+      # `dist`, so unchanged live pages remain present while its content-addressed upload still sends
+      # only changed files.
+      - name: Restore docs dist cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: docs/.vitepress/dist
+          key: docs-dist-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            docs-dist-${{ runner.os }}-
+
+      - name: Resolve changed docs
+        id: changed_docs
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          TRIGGER: ${{ needs.released.outputs.trigger }}
+          PUSH_BASE: ${{ github.event.before }}
+          INPUT_BASE: ${{ github.event.inputs.base || '' }}
+          INPUT_FULL_BUILD: ${{ github.event.inputs.full_build || 'false' }}
+        run: |
+          set -euo pipefail
+          pages_file="$RUNNER_TEMP/docs-changed-pages.json"
+          echo "pages_file_abs=$pages_file" >> "$GITHUB_OUTPUT"
+
+          if [[ "$EVENT_NAME" == "workflow_dispatch" && "$INPUT_FULL_BUILD" == "true" && -z "$INPUT_BASE" ]]; then
+            echo "scope=all" >> "$GITHUB_OUTPUT"
+            echo "page_count=0" >> "$GITHUB_OUTPUT"
+            echo "pages_file=" >> "$GITHUB_OUTPUT"
+            echo "surfaces=" >> "$GITHUB_OUTPUT"
+            echo "fallback_reason=Manual dispatch requested a full build." >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          base="$INPUT_BASE"
+          if [[ -z "$base" && "$TRIGGER" == "docs-push" ]]; then
+            base="$PUSH_BASE"
+          fi
+          if [[ -z "$base" && "$TRIGGER" == "release" ]]; then
+            base=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || true)
+          fi
+
+          if [[ -z "$base" ]]; then
+            echo "scope=all" >> "$GITHUB_OUTPUT"
+            echo "page_count=0" >> "$GITHUB_OUTPUT"
+            echo "pages_file=" >> "$GITHUB_OUTPUT"
+            echo "surfaces=" >> "$GITHUB_OUTPUT"
+            echo "fallback_reason=No diff base was available." >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "Diffing docs against $base"
+          node docs/scripts/changed-pages.ts --base "$base" --out "$pages_file"
+
       # The full-locale build. `docs:api:locales` defaults to the deterministic `glossary` adapter, so
       # every locale's API tree is rendered from the committed `l10n/<locale>/docs.api.po` catalogs -
       # no AI adapter, no network, no secrets. An untranslated string falls back to English on its own.
       - name: Build docs (all locales)
-        run: vp run -F "@pantoken/docs..." build && vp run @pantoken/docs#docs:build:deploy
+        if: steps.changed_docs.outputs.scope != 'none'
         env:
           DOCS_BASE: /
           DOCS_HOSTNAME: https://pantoken.app/
@@ -143,17 +239,42 @@ jobs:
           # made 8192 fail was mostly the local-search index, which no longer covers the translated
           # API mirrors.
           NODE_OPTIONS: --max-old-space-size=12288
+          SCOPE: ${{ steps.changed_docs.outputs.scope }}
+          PAGES_FILE: ${{ steps.changed_docs.outputs.pages_file_abs }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "$SCOPE" == "subset" && -f docs/.vitepress/dist/index.html ]]; then
+            rm -rf docs/.vitepress/partial-dist
+            vp run -F "@pantoken/docs..." build
+            DOCS_CHANGED_PAGES_FILE="$PAGES_FILE" \
+            DOCS_BASE_DIST="$PWD/docs/.vitepress/dist" \
+              vp run @pantoken/docs#docs:build:deploy:partial
+            rsync -a docs/.vitepress/partial-dist/ docs/.vitepress/dist/
+            exit 0
+          fi
 
-      # Netlify's only structural limit is 54,000 files in a single directory, and VitePress puts one
-      # chunk per page in `assets/`. Fail here, with the offending directory named, rather than
-      # halfway through a multi-gigabyte upload.
+          if [[ "$SCOPE" == "subset" ]]; then
+            echo "No complete docs dist cache was restored; falling back to a full docs build."
+          fi
+          vp run -F "@pantoken/docs..." build
+          vp run @pantoken/docs#docs:build:deploy
+
+      # Netlify's only structural limit is 54,000 files in a single directory. The site is built one
+      # locale at a time into its own `assets/<locale>/` (see docs/scripts/build-locales.ts) to stay
+      # well under that — each locale lands near 1,800 files. Fail here, with the offending directory
+      # named, rather than halfway through a multi-gigabyte upload.
       - name: Check site shape
+        if: steps.changed_docs.outputs.scope != 'none'
         run: |
           set -euo pipefail
           cd docs/.vitepress/dist
           du -sh .
           echo "pages: $(find . -name '*.html' | wc -l)  files: $(find . -type f | wc -l)"
-          worst=$(find . -type d -exec sh -c 'echo "$(ls -1U "$1" | wc -l) $1"' _ {} \; | sort -rn | head -1)
+          # awk keeps the running max instead of `sort | head`: `head` closing the pipe early kills
+          # `sort` with SIGPIPE, which `pipefail` turns into a failed step right before the deploy.
+          worst=$(find . -type d -exec sh -c 'for d; do echo "$(ls -1U "$d" | wc -l) $d"; done' _ {} + \
+            | awk '$1 > max { max = $1; line = $0 } END { print line }')
           echo "largest directory: $worst"
           if [ "${worst%% *}" -ge 54000 ]; then
             echo "::error::${worst#* } exceeds Netlify's 54,000-files-per-directory limit"
@@ -166,6 +287,7 @@ jobs:
       # rather than vendored - it's a ~200 MB dependency that nothing else in the repo needs.
       - name: Deploy to Netlify
         id: netlify
+        if: steps.changed_docs.outputs.scope != 'none'
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
@@ -178,3 +300,10 @@ jobs:
             --message "$GITHUB_WORKFLOW $GITHUB_SHA" \
             --json > deploy.json
           echo "url=$(node -p 'require("./deploy.json").url')" >> "$GITHUB_OUTPUT"
+
+      - name: Save docs dist cache
+        if: steps.changed_docs.outputs.scope != 'none'
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: docs/.vitepress/dist
+          key: docs-dist-${{ runner.os }}-${{ github.sha }}

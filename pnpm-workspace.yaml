@@ -17,7 +17,7 @@ packages:
 catalogMode: prefer
 
 catalog:
-  "@types/node": ^26.5.0
+  "@types/node": ^26.5.1
   typescript: ^7.0.2
   arkregex: ^0.0.8
   vite: npm:@voidzero-dev/vite-plus-core@0.3.1
@@ -43,10 +43,10 @@ catalog:
   # Brand icons (plugin)
   simple-icons: ^16.30.0
   # React markdown integration
-  react: ^19.2.8
-  react-dom: ^19.2.8
-  "@types/react": ^19.2.18
-  "@types/react-dom": ^19.2.7
+  react: ^19.3.0
+  react-dom: ^19.3.0
+  "@types/react": ^19.3.0
+  "@types/react-dom": ^19.3.0
   react-markdown: ^10.1.0
   remark-gfm: ^4.0.1
   postcss: ^8.5.28
@@ -78,10 +78,10 @@ catalog:
   "@vitest/coverage-v8": 4.1.11
   markdownlint-cli2: ^0.23.2
   "@manypkg/cli": ^0.25.1
-  fallow: ^3.23.0
-  happy-dom: ^20.14.0
+  fallow: ^3.24.1
+  happy-dom: ^20.14.3
   dompurify: ^3.4.15
-  snyk: ^1.1307.1
+  snyk: ^1.1307.2
   publint: ^0.3.24
   "@arethetypeswrong/cli": ^0.18.5
   bumpp: ^12.2.1
@@ -92,7 +92,7 @@ catalog:
   "@shikijs/themes": ^4.4.3
   "@shikijs/types": ^4.4.3
   vue: ^3.5.42
-  vitepress: 2.0.0-alpha.19
+  vitepress: 2.0.0-alpha.20
   oxc-minify: ^0.147.0
   typedoc: ^0.28.20
   typedoc-plugin-markdown: ^4.13.0
