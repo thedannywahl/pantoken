@@ -413,6 +413,8 @@ const localesConfig = Object.fromEntries(
         // `lastUpdated: true` is set globally below, so localize its label here.
         lastUpdated: { text: locale.chrome.lastUpdatedText },
         notFound: locale.chrome.notFound,
+        // Read by the custom agent shell prompt (GetStartedTabs.vue) via `useData().theme`.
+        chrome: { agentShellPrompt: locale.chrome.agentShellPrompt },
         // Read by the custom palette selector (ThemeSelector.vue) via `useData().theme`.
         themeSelector: locale.themeSelector,
         // Read by the CDN picker (CdnPicker.vue) via `useData().theme`.
