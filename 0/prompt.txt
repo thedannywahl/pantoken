@@ -1,0 +1,4 @@
+on a fresh view of the homepage on the dev server I get this, is this worth investigating or should we just ignore?
+```
+[Vue warn]: Component "Badge" has already been registered in target app. [runtime-core.esm-bundler.js:51:13](http://localhost:5173/node_modules/.pnpm/@vue+runtime-core@3.5.42/node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js)
+```
