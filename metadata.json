@@ -3,8 +3,9 @@
   "checkpoint_id": "01M296998W9Y2T7AQZ6MPV3YMW",
   "strategy": "manual-commit",
   "branch": "pendo-button-tweaks",
-  "checkpoints_count": 4,
+  "checkpoints_count": 10,
   "files_touched": [
+    ".changeset/api-package-map.md",
     "docs/.vitepress/config.ts",
     "docs/.vitepress/i18n.json",
     "docs/.vitepress/i18n.ts",
@@ -334,6 +335,13 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": "/1/prompt.txt"
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
+      "prompt": "/2/prompt.txt"
     }
   ],
   "token_usage": {

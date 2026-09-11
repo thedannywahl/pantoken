@@ -1,0 +1,42 @@
+the netlify deploy succeeded, we can finish the migration from github docs including the domain
+
+---
+
+just walk me through the steps.
+
+---
+
+none of these styles get applied, the gs-started__mode-btn buttons are always no border, no background regardless of active state or pseudo state.  you can see it live at https://pantoken.app or http://localhost:5173/
+
+---
+
+these buttons should carry the focus-outline like all instui-buttons, but they currently don't.
+
+---
+
+use the browser screenshot, none of these changes visually appear in the browser. they might be resolving as computed to those values but they're not displaying.
+
+---
+
+not just the focus ring, the background styles as well.
+
+---
+
+and the pseudo states.
+
+---
+
+there are still no distinct visual differences. I have closed the dev server and re-run `vpr docs:dev` and still nothing. am I missing a build step?
+
+---
+
+it's back up on http://localhost:5174/ and there are still no styles applied. what's weird is even in my browser console if I set an inline style with `!important` it doesn't appear.
+
+---
+
+I see these in the console, they coudl be contributing:
+Loading module from “[http://localhost:5174/api/css.md?import&t=1789156078975](http://localhost:5174/api/css.md?import&t=1789156078975)” was blocked because of a disallowed MIME type (“text/html”).
+
+TypeError: error loading dynamically imported module: [http://localhost:5174/api/css.md?import&t=1789156078975](http://localhost:5174/api/css.md?import&t=1789156078975) [client:533:12](http://localhost:5174/@vite/client)    level client:533
+
+    pageModule index.js:94
