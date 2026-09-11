@@ -365,6 +365,16 @@ test("translateMarkdown strips an echoed markdown envelope", async () => {
   expect(out).toBe("# เริ่มต้น\n\nเนื้อหา");
 });
 
+test("translateMarkdown rejects model commentary instead of returning corrupted markdown", async () => {
+  useSpawn(() => ({
+    stdout: "# Components\n\nOops — must not produce garbled. I'll continue carefully.",
+  }));
+  const adapter = new AiTranslationAdapter();
+  await expect(
+    adapter.translateMarkdown("# Components\n\nContent", "guide/components.md"),
+  ).rejects.toThrow(/model commentary/);
+});
+
 test("translateMarkdown masks bare escaped angle brackets a hostile model would otherwise mangle", async () => {
   // Reproduces the real corruption this guards against: a TypeDoc signature line like
   // `> \`const\` **X**: \`Readonly\`\<\`Record\`\<\`string\`, \`string\`\>\>` splits into several

@@ -6,6 +6,7 @@
  */
 import { spawn } from "node:child_process";
 import {
+  assertCleanMarkdownTranslation,
   buildBatchTranslationPrompt,
   buildMarkdownTranslationPrompt,
   extractJsonObject,
@@ -389,6 +390,7 @@ export class AiTranslationAdapter implements TranslationAdapter {
     const translated = stripMarkdownEnvelope(
       await this.runClaude(prompt, `markdown file ${filePath}`),
     );
+    assertCleanMarkdownTranslation(translated, filePath, this.targetLanguage);
     return restoreMarkdown(translated, preserved);
   }
 

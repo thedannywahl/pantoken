@@ -33,6 +33,7 @@ export {
 // Whole-document Markdown masking/prompting, shared by the docs pipeline and the i18n engine's
 // `segment: "file"` content spaces.
 export {
+  assertCleanMarkdownTranslation,
   buildMarkdownTranslationPrompt,
   preserveMarkdown,
   restoreMarkdown,
