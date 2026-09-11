@@ -1,0 +1,98 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M29A5YF9CNAFYZ90P6MDPN22",
+  "session_id": "bfffd54b-1488-4a1c-a028-81cc4372a3ce",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-11T22:42:30.009282Z",
+  "branch": "pendo-button-tweaks",
+  "checkpoints_count": 3,
+  "save_step_count": 3,
+  "files_touched": [
+    ".changeset/tame-plums-sniff.md",
+    "ai/pantoken-ai/assets/AGENTS.md",
+    "ai/pantoken-ai/assets/copilot-instructions.md",
+    "ai/pantoken-ai/assets/cursor.mdc",
+    "ai/pantoken-ai/assets/llms.txt",
+    "ai/pantoken-ai/assets/windsurf.md",
+    "ai/pantoken-ai/scripts/generate.ts",
+    "ai/pantoken-ai/skills/create-pantoken-app/SKILL.md",
+    "ai/pantoken-ai/skills/init-pantoken/SKILL.md",
+    "ai/pantoken-ai/src/cli.ts",
+    "ai/pantoken-ai/src/index.ts",
+    "ai/pantoken-ai/tests/cli.test.ts",
+    "packages/scaffold/assets/AGENTS.md",
+    "packages/scaffold/assets/copilot-instructions.md",
+    "packages/scaffold/assets/cursor.mdc",
+    "packages/scaffold/assets/llms.txt",
+    "packages/scaffold/assets/windsurf.md",
+    "packages/scaffold/scripts/generate.ts",
+    "packages/scaffold/skills/create-pantoken-app/SKILL.md",
+    "packages/scaffold/skills/init-pantoken/SKILL.md",
+    "packages/scaffold/src/agent-assets.ts",
+    "packages/scaffold/src/cli.ts",
+    "packages/scaffold/src/i18n.json",
+    "packages/scaffold/src/index.ts",
+    "packages/scaffold/tests/cli.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "9c53265321fe",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 3
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-11T22:42:29.993804Z",
+    "agent_lines": 719,
+    "agent_removed": 575,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 1,
+    "total_committed": 719,
+    "total_lines_changed": 1295,
+    "agent_percentage": 99.92277992277992,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 8395,
+      "user_lines_removed": 3031,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "docs/ar/guide/components.md": 136,
+        "docs/ar/guide/getting-started.md": 38,
+        "l10n/ar/docs.guides.po": 29,
+        "l10n/docs.api.pot": 8192
+      },
+      "user_removed_per_file": {
+        "docs/ar/guide/components.md": 94,
+        "docs/ar/guide/getting-started.md": 38,
+        "l10n/ar/docs.guides.po": 2898,
+        "l10n/docs.api.pot": 1
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 9213,
+      "agent_lines_removed": 18597
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 10369,
+      "agent_lines_removed": 34579
+    }
+  ]
+}
