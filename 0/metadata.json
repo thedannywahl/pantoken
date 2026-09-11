@@ -1,0 +1,39 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M298TFR8N6V0KZFEA6Z5BD6E",
+  "session_id": "c3dcdae3-b054-43d1-8b66-7e9fb5353463",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-11T22:18:45.642179Z",
+  "branch": "pendo-button-tweaks",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "docs/index.md"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "3fbe264d77be",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 3
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-11T22:18:45.630046Z",
+    "agent_lines": 2,
+    "agent_removed": 5,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 2,
+    "total_lines_changed": 7,
+    "agent_percentage": 100,
+    "metric_version": 2
+  }
+}
