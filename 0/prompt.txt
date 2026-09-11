@@ -1,0 +1,5 @@
+this string doesn't seem to be getting applied in locales, it's always falling back to the hard-coded english.
+
+---
+
+Read-only discovery, quick-to-medium thoroughness. In the pantoken workspace, investigate why docs/.vitepress/theme/components/GetStartedTabs.vue uses `theme.value.chrome?.agentShellPrompt ?? "What would you like to build today?"` but localized pages always fall back to the hard-coded English. Before searching files, read /Users/dwahl/Scripts/pantoken/.entire/graph-agent.md and follow its resolution-first guidance. Find where VitePress theme config/locales define `chrome`, `getStartedTabs`, and `GET_STARTED_TABS_DEFAULTS`; identify the local code path that supplies `theme.value` to this component; look for analogous localized strings that do work; and report: (1) likely root cause, (2) exact files/symbols to modify, (3) cheapest validation command/test, (4) any ambiguity requiring user decision. Do not edit files.
