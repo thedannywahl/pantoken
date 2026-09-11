@@ -1,0 +1,47 @@
+a custom button still retains the default border width:
+```
+<button id="pendo-button-ff750287" type="button" class="bb-button _pendo-button-custom _pendo-button pendo-block-controls" data-editing-id="8c3d45c4-616b-4f2e-ab96-302f96601e50" style="border: 0px solid rgb(255, 255, 255); color: rgb(31, 104, 166); font-weight: 400; border-radius: 0px; background-color: rgba(255, 255, 255, 0); background-image: none; display: block; position: relative; font-size: 14px; width: auto; float: none; vertical-align: baseline; padding: 0px; overflow: visible; text-align: center; font-family: inherit; white-space: pre-wrap; margin: 0px 5px 0px 0px; letter-spacing: 0px; line-height: 1; overflow-wrap: break-word; text-transform: none; min-width: 0px; animation: none;" aria-label="Informed Consent" role="link" data-_pendo-button-custom-1="" data-_pendo-button-3="">Informed Consent</button>
+```
+inherited from this rule:
+```
+@layer instui.button {
+    :is(:scope,
+    [class*=instui]) {
+      & ._pendo-button {
+        height:var(--fg)!important;
+        min-height:var(--fg)!important;
+        padding:var(--dl) var(--fh)!important;
+        border-width:var(--h)!important;
+        border-radius:var(--dd)!important;
+        border-style:var(--de)!important;
+        font-family:var(--df)!important;
+        font-size:var(--ff)!important;
+        font-weight:var(--dg)!important;
+        line-height:var(--dj)!important;
+        letter-spacing:var(--di)!important;
+        cursor:pointer!important;
+        margin:var(--pendo-space-0)!important;
+        &:has(+._pendo-button) {
+          margin-inline-end:var(--id)!important
+        }
+      }
+    }
+}
+```
+
+---
+
+the pendo editor lets you set:
+* font-weight
+* font-size
+* color
+* background-color
+* border
+* margin
+* padding
+hover:
+* color
+* weight
+* background-color
+* border-color
+so all of those should probably go in the new :not() declaration while the others should stay.
