@@ -1,0 +1,2 @@
+build succeeded, deploy failed, continue remediating and creating PRs and merging them.
+https://github.com/thedannywahl/pantoken/actions/runs/34552480729/job/103118104965
