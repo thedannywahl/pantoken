@@ -144,7 +144,7 @@ propriedades customizadas `--instui-*`.
 
 ## Para onde ir a seguir
 
-- [O mapa de pacotes](/guide/packages) — qual pacote alcançar, por tarefa.
+- [O mapa de pacotes](/api/) — qual pacote alcançar, por tarefa.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — instale assets e regras do agente em um repositório consumidor.
 - [Arquitetura](/guide/architecture) — como o modelo de tokens, core e saídas se encaixam.
 - [Referência da API](/api/) — todos os símbolos exportados, gerados a partir da fonte.

@@ -7,7 +7,7 @@ import "@pantoken/components/components.css";
 ```
 
 > [!NOTE]
-> カスタム要素を好む場合は、`@pantoken/web-components` が同じスタイルを `<instui-button>`、`<instui-alert>`、`<instui-badge>`、`<instui-avatar>`、`<instui-progress>` などとしてラップしています — 詳しくは [package map](/guide/packages) を参照してください。
+> カスタム要素を好む場合は、`@pantoken/web-components` が同じスタイルを `<instui-button>`、`<instui-alert>`、`<instui-badge>`、`<instui-avatar>`、`<instui-progress>` などとしてラップしています — 詳しくは [package map](/api/) を参照してください。
 
 ## 慣習
 

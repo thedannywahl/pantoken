@@ -9,7 +9,7 @@ import "@pantoken/components/components.css";
 > [!NÓTA]
 > Is fearr eilimintí saincheaptha? Cuirtear na stíleanna céanna sin i gclúdach ag `@pantoken/web-components` mar `<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, agus níos mó — féach an
-> [mapa pacáiste](/guide/packages).
+> [mapa pacáiste](/api/).
 
 ## Coinbhéisí
 

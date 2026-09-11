@@ -10,13 +10,13 @@ hero:
       link: /fi/guide/getting-started
     - theme: alt
       text: Pakettikartta
-      link: /fi/guide/packages
+      link: /fi/api/
     - theme: alt
       text: API-viite
       link: /fi/api
     - theme: alt
       text: CSS-viite
-      link: /fi/api/css
+      link: /fi/api/css/
 features:
   - icon:
       light: /book-check-light.svg

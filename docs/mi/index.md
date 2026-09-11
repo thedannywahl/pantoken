@@ -10,13 +10,13 @@ hero:
       link: /mi/guide/getting-started
     - theme: alt
       text: Mahere mō ngā mōkī
-      link: /mi/guide/packages
+      link: /mi/api/
     - theme: alt
       text: Tohu API
       link: /mi/api
     - theme: alt
       text: Tohu CSS
-      link: /mi/api/css
+      link: /mi/api/css/
 features:
   - icon:
       light: /book-check-light.svg

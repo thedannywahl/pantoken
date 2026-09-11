@@ -141,7 +141,7 @@ Ez javaslatokat engedélyez `instui-*` osztály tokenekhez (és `-modifier` oszt
 
 ## Mi a következő lépés
 
-- [A csomagtérkép](/guide/packages) — melyik csomagot melyik feladathoz érdemes választani.
+- [A csomagtérkép](/api/) — melyik csomagot melyik feladathoz érdemes választani.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — telepítsd az ügynök eszközöket és szabályokat a fogyasztói repóba.
 - [Architektúra](/guide/architecture) — hogyan illeszkedik össze a tokenmodell, a core és a kimenetek rendszere.
 - [API referencia](/api/) — minden exportált szimbólum, a forrásból generálva.

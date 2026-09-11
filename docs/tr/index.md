@@ -10,13 +10,13 @@ hero:
       link: /tr/guide/getting-started
     - theme: alt
       text: Paket haritası
-      link: /tr/guide/packages
+      link: /tr/api/
     - theme: alt
       text: API referansı
       link: /tr/api
     - theme: alt
       text: CSS referansı
-      link: /tr/api/css
+      link: /tr/api/css/
 features:
   - icon:
       light: /book-check-light.svg

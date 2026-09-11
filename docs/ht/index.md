@@ -10,13 +10,13 @@ hero:
       link: /ht/guide/getting-started
     - theme: alt
       text: Kat pakè a
-      link: /ht/guide/packages
+      link: /ht/api/
     - theme: alt
       text: Referans API
       link: /ht/api
     - theme: alt
       text: Referans CSS
-      link: /ht/api/css
+      link: /ht/api/css/
 features:
   - icon:
       light: /book-check-light.svg

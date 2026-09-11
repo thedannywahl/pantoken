@@ -9,7 +9,7 @@ import "@pantoken/components/components.css";
 > [!NOTE]
 > O’ch bod yn ffafrio elfennau arfer? `@pantoken/web-components` yn wrapio’r un steiliau fel `<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, a mwy — gweler y
-> [map pecyn](/guide/packages).
+> [map pecyn](/api/).
 
 ## Confensiynau
 

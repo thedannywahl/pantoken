@@ -128,7 +128,7 @@ Sa pèmèt sijesyon pou tokèn klas `instui-*` (ak tokèn klas `-modifier`) plis
 
 ## Ki kote pou ale pwochen
 
-- [Kat pake a](/guide/packages) — ki pake pou chwazi selon travay la.
+- [Kat pake a](/api/) — ki pake pou chwazi selon travay la.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — enstale byen ak règ ajan nan yon depo konsomatè.
 - [Achitekti](/guide/architecture) — kijan modèl tokèn, nwayo, ak rezilta yo anfòm ansanm.
 - [Referans API](/api/) — chak senbòl ekspòte, jenere soti nan sous la.

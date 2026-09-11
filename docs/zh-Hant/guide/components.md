@@ -7,7 +7,7 @@ import "@pantoken/components/components.css";
 ```
 
 > [!注意]
-> 偏好自訂元素？`@pantoken/web-components` 以 `<instui-button>`、`<instui-alert>`、`<instui-badge>`、`<instui-avatar>`、`<instui-progress>` 等包裝相同樣式 — 詳見 [套件映射](/guide/packages)。
+> 偏好自訂元素？`@pantoken/web-components` 以 `<instui-button>`、`<instui-alert>`、`<instui-badge>`、`<instui-avatar>`、`<instui-progress>` 等包裝相同樣式 — 詳見 [套件映射](/api/)。
 
 ## 慣例
 

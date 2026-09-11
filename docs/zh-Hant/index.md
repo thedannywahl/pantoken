@@ -10,13 +10,13 @@ hero:
       link: /zh-Hant/guide/getting-started
     - theme: alt
       text: 套件地圖
-      link: /zh-Hant/guide/packages
+      link: /zh-Hant/api/
     - theme: alt
       text: API 參考
       link: /zh-Hant/api
     - theme: alt
       text: CSS 參考
-      link: /zh-Hant/api/css
+      link: /zh-Hant/api/css/
 features:
   - icon:
       light: /book-check-light.svg

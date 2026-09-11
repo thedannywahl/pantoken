@@ -140,7 +140,7 @@ Dette aktiverer forslag for `instui-*` klasse-tokens (og `-modifier` klasse-toke
 
 ## Hva nå
 
-- [Pakkeoversikten](/guide/packages) — hvilken pakke man skal bruke for hvilken oppgave.
+- [Pakkeoversikten](/api/) — hvilken pakke man skal bruke for hvilken oppgave.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — installer agent-assets og regler i et consumer-repo.
 - [Arkitektur](/guide/architecture) — hvordan token-modellen, core og output henger sammen.
 - [API-referanse](/api/) — alle eksporterte symboler, generert fra kilden.

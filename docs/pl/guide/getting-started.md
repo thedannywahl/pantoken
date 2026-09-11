@@ -142,7 +142,7 @@ właściwości niestandardowych `--instui-*`.
 
 ## Dokąd dalej
 
-- [Mapa pakietów](/guide/packages) — który pakiet wybrać, w zależności od zadania.
+- [Mapa pakietów](/api/) — który pakiet wybrać, w zależności od zadania.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — zainstaluj zasoby agenta i reguły w repozytorium konsumenta.
 - [Architektura](/guide/architecture) — jak model tokenów, core i wyjścia do siebie pasują.
 - [Dokumentacja API](/api/) — każdy eksportowany symbol, wygenerowany ze źródła.

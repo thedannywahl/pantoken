@@ -143,7 +143,7 @@ Dette gir forslag for `instui-*` klasse-token (og `-modifier` klasse-token) plus
 
 ## Kvar går ein vidare
 
-- [Pakke-kartet](/guide/packages) — kva pakke du skal nå etter, etter oppgåve.
+- [Pakke-kartet](/api/) — kva pakke du skal nå etter, etter oppgåve.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — installer agent-assets og reglar i eit forbrukar-repo.
 - [Arkitektur](/guide/architecture) — korleis token-modellen, kjerne og output heng saman.
 - [API-referanse](/api/) — kvar eksportert symbol, generert frå kjelda.

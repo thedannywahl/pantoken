@@ -9,7 +9,7 @@ import "@pantoken/components/components.css";
 > [!NOTE]
 > Προτιμάτε προσαρμοσμένα στοιχεία; `@pantoken/web-components` τυλίγει αυτά τα ίδια στυλ ως `<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` και άλλα — δείτε τον
-> [χάρτη πακέτων](/guide/packages).
+> [χάρτη πακέτων](/api/).
 
 ## Συμβάσεις
 

@@ -7,7 +7,7 @@ import "@pantoken/components/components.css";
 ```
 
 > [!NOTE]
-> कस्टम एलिमेंट पसंद हैं? `@pantoken/web-components` इन्हीं स्टाइल्स को `<instui-button>`, `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` आदि के रूप में रैप करता है — देखें [package map](/guide/packages).
+> कस्टम एलिमेंट पसंद हैं? `@pantoken/web-components` इन्हीं स्टाइल्स को `<instui-button>`, `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` आदि के रूप में रैप करता है — देखें [package map](/api/).
 
 ## कन्वेंशन्स
 

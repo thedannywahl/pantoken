@@ -7,7 +7,7 @@ import "@pantoken/components/components.css";
 ```
 
 > [!NOTE]
-> عناصر سفارشی را ترجیح می‌دهید؟ `@pantoken/web-components` همین سبک‌ها را به عنوان `<instui-button>`، `<instui-alert>`، `<instui-badge>`، `<instui-avatar>`، `<instui-progress>` و غیره بسته‌بندی می‌کند — ببینید [نقشه بسته‌ها](/guide/packages).
+> عناصر سفارشی را ترجیح می‌دهید؟ `@pantoken/web-components` همین سبک‌ها را به عنوان `<instui-button>`، `<instui-alert>`، `<instui-badge>`، `<instui-avatar>`، `<instui-progress>` و غیره بسته‌بندی می‌کند — ببینید [نقشه بسته‌ها](/api/).
 
 ## قراردادها
 

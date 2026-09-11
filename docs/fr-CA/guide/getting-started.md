@@ -142,7 +142,7 @@ les propriétés personnalisées `--instui-*`.
 
 ## Où aller ensuite
 
-- [La carte des paquets](/guide/packages) — quel paquet atteindre selon la tâche.
+- [La carte des paquets](/api/) — quel paquet atteindre selon la tâche.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — installer les assets et règles d’agent dans un dépôt consommateur.
 - [Architecture](/guide/architecture) — comment le modèle de tokens, le core et les sorties s’articulent.
 - [Référence API](/api/) — chaque symbole exporté, généré depuis la source.

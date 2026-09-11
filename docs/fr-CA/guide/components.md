@@ -10,7 +10,7 @@ import "@pantoken/components/components.css";
 > [!NOTE]
 > Préfèrez les éléments personnalisés ? `@pantoken/web-components` encapsule ces mêmes styles en tant que `<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, et plus — voir la
-> [carte des paquets](/guide/packages).
+> [carte des paquets](/api/).
 
 ## Conventions
 

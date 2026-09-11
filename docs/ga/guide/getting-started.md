@@ -128,7 +128,7 @@ Cuirtear mholtaí ar fáil do thóacáin rang `instui-*` (agus tóacáin rang `-
 
 ## Cá chuig leanúint
 
-- [Léarscáil an phacáiste](/guide/packages) — cén pacáiste a bhaint amach, de réir tasc.
+- [Léarscáil an phacáiste](/api/) — cén pacáiste a bhaint amach, de réir tasc.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — suiteáil acmhainní agus rialacha gníomhaire i stór tomhaltóra.
 - [Ailtireacht](/guide/architecture) — conas a cheanglaíonn an tsamhail thóacáin, an croí, agus na aschuir le chéile.
 - [Tagairt API](/api/) — gach siombail easpórtáilte, ginte ón fhoinse.

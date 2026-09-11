@@ -10,13 +10,13 @@ hero:
       link: /ru/guide/getting-started
     - theme: alt
       text: Карта пакетов
-      link: /ru/guide/packages
+      link: /ru/api/
     - theme: alt
       text: Справочник API
       link: /ru/api
     - theme: alt
       text: Справочник CSS
-      link: /ru/api/css
+      link: /ru/api/css/
 features:
   - icon:
       light: /book-check-light.svg

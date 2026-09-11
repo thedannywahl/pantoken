@@ -10,7 +10,7 @@ import "@pantoken/components/components.css";
 > [!NOTE]
 > He pai ake ngā wāhanga ritenga? Kōpiritia e `@pantoken/web-components` ēnei kāhua anō hei `<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, me ētahi atu — tirohia te
-> [mapa kete](/guide/packages).
+> [mapa kete](/api/).
 
 ## Ngā Tikanga
 

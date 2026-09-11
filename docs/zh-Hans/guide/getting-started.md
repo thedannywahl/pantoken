@@ -128,7 +128,7 @@ npm i @pantoken/pantoken
 
 ## 下一步去向
 
-- [包映射](/guide/packages) — 按任务查找应使用的包。
+- [包映射](/api/) — 按任务查找应使用的包。
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — 在消费仓库中安装代理资产和规则。
 - [架构](/guide/architecture) — 令牌模型、核心与输出如何协作。
 - [API 参考](/api/) — 每个导出符号，均由源代码生成。

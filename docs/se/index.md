@@ -10,13 +10,13 @@ hero:
       link: /se/guide/getting-started
     - theme: alt
       text: Pakkea mapa
-      link: /se/guide/packages
+      link: /se/api/
     - theme: alt
       text: API-birra
       link: /se/api
     - theme: alt
       text: CSS-birra
-      link: /se/api/css
+      link: /se/api/css/
 features:
   - icon:
       light: /book-check-light.svg

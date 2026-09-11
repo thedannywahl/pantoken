@@ -9,7 +9,7 @@ import "@pantoken/components/components.css";
 > [!NOTE]
 > Предпочитаете пользовательские элементы? `@pantoken/web-components` оборачивает те же стили как `<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` и другие — см. карту
-> [пакетов](/guide/packages).
+> [пакетов](/api/).
 
 ## Соглашения
 

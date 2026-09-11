@@ -10,13 +10,13 @@ hero:
       link: /nn/guide/getting-started
     - theme: alt
       text: Pakkekartet
-      link: /nn/guide/packages
+      link: /nn/api/
     - theme: alt
       text: API-referanse
       link: /nn/api
     - theme: alt
       text: CSS-referanse
-      link: /nn/api/css
+      link: /nn/api/css/
 features:
   - icon:
       light: /book-check-light.svg

@@ -140,7 +140,7 @@ Dát boares sáhttá suggetiuvvat `instui-*` class-tokenaid (ja `-modifier` clas
 
 ## Gos dál?
 
-- [Package map](/guide/packages) — mida pakettta oidnet geahččat, taska mii.
+- [Package map](/api/) — mida pakettta oidnet geahččat, taska mii.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — installera agent-assets ja rugget consumer-repos.
 - [Architecture](/guide/architecture) — mo token-model, core ja outputs barggá geavahan.
 - [API reference](/api/) — buot exporteran symbolat, genererestuvvon source-birra.

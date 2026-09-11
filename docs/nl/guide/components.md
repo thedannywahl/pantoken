@@ -10,7 +10,7 @@ import "@pantoken/components/components.css";
 > [!OPMERKING]
 > Liever custom elements? `@pantoken/web-components` verpakt dezelfde stijlen als `<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, en meer — zie de
-> [package map](/guide/packages).
+> [package map](/api/).
 
 ## Conventies
 

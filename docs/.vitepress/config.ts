@@ -340,8 +340,7 @@ const localesConfig = Object.fromEntries(
       themeConfig: {
         nav: [
           { text: locale.nav.guide, link: `${locale.guidePrefix}getting-started` },
-          { text: locale.nav.packages, link: `${locale.guidePrefix}packages` },
-          { text: locale.nav.css, link: `${apiPrefixFor(localeKey)}css` },
+          { text: locale.nav.css, link: `${apiPrefixFor(localeKey)}css/` },
           { text: locale.nav.api, link: apiPrefixFor(localeKey) },
         ],
         sidebar: {
@@ -352,10 +351,6 @@ const localesConfig = Object.fromEntries(
                 {
                   text: locale.sidebar.gettingStarted,
                   link: `${locale.guidePrefix}getting-started`,
-                },
-                {
-                  text: locale.sidebar.packageMap,
-                  link: `${locale.guidePrefix}packages`,
                 },
                 {
                   text: locale.sidebar.architecture,

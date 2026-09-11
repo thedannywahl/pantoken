@@ -10,13 +10,13 @@ hero:
       link: /fa/guide/getting-started
     - theme: alt
       text: نقشهٔ بسته‌ها
-      link: /fa/guide/packages
+      link: /fa/api/
     - theme: alt
       text: مرجع API
       link: /fa/api
     - theme: alt
       text: مرجع CSS
-      link: /fa/api/css
+      link: /fa/api/css/
 features:
   - icon:
       light: /book-check-light.svg

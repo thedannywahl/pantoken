@@ -106,12 +106,11 @@ export const NON_LATIN_LOCALES: Partial<Record<DocsLocale, string>> = {
  */
 export interface UiStrings {
   description: string;
-  nav: { guide: string; packages: string; css: string; api: string };
+  nav: { guide: string; css: string; api: string };
   sidebar: {
     intro: string;
     guides: string;
     gettingStarted: string;
-    packageMap: string;
     architecture: string;
     components: string;
     cdn: string;

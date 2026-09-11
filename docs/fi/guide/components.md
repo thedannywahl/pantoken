@@ -7,7 +7,7 @@ import "@pantoken/components/components.css";
 ```
 
 > [!NOTE]
-> Suositko mukautettuja elementtejä? `@pantoken/web-components` käärii nämä samat tyylit `<instui-button>`, `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` ja monena muuna — katso [package map](/guide/packages).
+> Suositko mukautettuja elementtejä? `@pantoken/web-components` käärii nämä samat tyylit `<instui-button>`, `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` ja monena muuna — katso [package map](/api/).
 
 ## Konventiot
 

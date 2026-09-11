@@ -128,7 +128,7 @@ npm i @pantoken/pantoken
 
 ## 다음으로 갈 곳
 
-- [패키지 맵](/guide/packages) — 작업별로 어떤 패키지를 선택할지.
+- [패키지 맵](/api/) — 작업별로 어떤 패키지를 선택할지.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — 소비자 리포지토리에 에이전트 자산과 규칙을 설치.
 - [아키텍처](/guide/architecture) — 토큰 모델, 코어, 출력물이 어떻게 맞물리는지.
 - [API 레퍼런스](/api/) — 소스에서 생성된 모든 익스포트 심볼.

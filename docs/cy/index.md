@@ -10,13 +10,13 @@ hero:
       link: /cy/guide/getting-started
     - theme: alt
       text: Map pecynnau
-      link: /cy/guide/packages
+      link: /cy/api/
     - theme: alt
       text: Cyfeirlyfr API
       link: /cy/api
     - theme: alt
       text: Cyfeirlyfr CSS
-      link: /cy/api/css
+      link: /cy/api/css/
 features:
   - icon:
       light: /book-check-light.svg

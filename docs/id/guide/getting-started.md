@@ -128,7 +128,7 @@ Ini mengaktifkan saran untuk token kelas `instui-*` (dan token kelas `-modifier`
 
 ## Selanjutnya ke mana
 
-- [Peta paket](/guide/packages) — paket mana yang digunakan, berdasarkan tugas.
+- [Peta paket](/api/) — paket mana yang digunakan, berdasarkan tugas.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — pasang aset agen dan aturan di repo konsumen.
 - [Arsitektur](/guide/architecture) — bagaimana model token, core, dan output saling terkait.
 - [Referensi API](/api/) — setiap simbol yang diekspor, dihasilkan dari sumber.

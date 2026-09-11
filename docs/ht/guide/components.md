@@ -10,7 +10,7 @@ import "@pantoken/components/components.css";
 > [!NOTE]
 > Pi pito eleman koutim? `@pantoken/web-components` vlope menm estil sa yo kòm `<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, ak plis ankò — gade
-> [kat pake a](/guide/packages).
+> [kat pake a](/api/).
 
 ## Konvansyon
 

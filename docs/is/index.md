@@ -10,13 +10,13 @@ hero:
       link: /is/guide/getting-started
     - theme: alt
       text: Pakkakortið
-      link: /is/guide/packages
+      link: /is/api/
     - theme: alt
       text: API tilvísun
       link: /is/api
     - theme: alt
       text: CSS tilvísun
-      link: /is/api/css
+      link: /is/api/css/
 features:
   - icon:
       light: /book-check-light.svg

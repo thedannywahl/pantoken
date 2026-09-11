@@ -10,7 +10,7 @@ import "@pantoken/components/components.css";
 > [!OPOMBA]
 > Raje prilagojeni elementi? `@pantoken/web-components` ovije iste sloge kot `<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` in še več — poglej
-> [mapo paketov](/guide/packages).
+> [mapo paketov](/api/).
 
 ## Konvencije
 

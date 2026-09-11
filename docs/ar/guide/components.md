@@ -9,7 +9,7 @@ import "@pantoken/components/components.css";
 > [!NOTE]
 > تفضّل العناصر المخصصة؟ `@pantoken/web-components` يغلف هذه الأنماط نفسها كـ `<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, والمزيد — انظر
-> [خريطة الحزم](/guide/packages).
+> [خريطة الحزم](/api/).
 
 ## الاتفاقيات
 

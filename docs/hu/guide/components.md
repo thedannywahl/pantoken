@@ -10,7 +10,7 @@ import "@pantoken/components/components.css";
 > [!MEGJEGYZÉS]
 > Előnyben részesíted az egyedi elemeket? `@pantoken/web-components` ugyanazokat a stílusokat csomagolja `<instui-button>`, `<instui-alert>`,
 > `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` és még több formájában — lásd a
-> [csomagtérképet](/guide/packages).
+> [csomagtérképet](/api/).
 
 ## Konvenciók
 

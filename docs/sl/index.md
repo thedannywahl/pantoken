@@ -10,13 +10,13 @@ hero:
       link: /sl/guide/getting-started
     - theme: alt
       text: Zemljevid paketov
-      link: /sl/guide/packages
+      link: /sl/api/
     - theme: alt
       text: Referenca API
       link: /sl/api
     - theme: alt
       text: Referenca za CSS
-      link: /sl/api/css
+      link: /sl/api/css/
 features:
   - icon:
       light: /book-check-light.svg

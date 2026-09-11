@@ -144,7 +144,7 @@ npm i @pantoken/pantoken
 
 ## Hvert næst
 
-- [Pakkaakortið](/guide/packages) — hvaða pakkann á að ná í, eftir verkefni.
+- [Pakkaakortið](/api/) — hvaða pakkann á að ná í, eftir verkefni.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — setjið upp hæfileikaaðföng og reglur í neytandageymslu.
 - [Arkitektúr](/guide/architecture) — hvernig token-líkan, kjarni, og útflutningar passa saman.
 - [API tilvísun](/api/) — hvert útflutt tákn, framleitt úr upprunanum.

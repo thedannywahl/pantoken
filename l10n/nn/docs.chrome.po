@@ -1,34 +1,25 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 17:09+0000\n"
+"PO-Revision-Date: 2026-09-11 19:58+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
-"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:description"
-msgid ""
-"Instructure design tokens and icons, reshaped for every platform and "
-"framework."
-msgstr ""
-"Instructure-designtoken og ikonar, omforma for kvar plattform og rammeverk."
+msgid "Instructure design tokens and icons, reshaped for every platform and framework."
+msgstr "Instructure-designtoken og ikonar, omforma for kvar plattform og rammeverk."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:nav.guide"
 msgid "Guide"
 msgstr "Guide"
-
-#: docs/.vitepress/i18n.json
-#, no-c-format
-msgctxt "docs.chrome:nav.packages"
-msgid "Packages"
-msgstr "Pakkar"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -39,8 +30,8 @@ msgstr "CSS"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:nav.api"
-msgid "API reference"
-msgstr "API-referanse"
+msgid "API"
+msgstr "API"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -59,12 +50,6 @@ msgstr "Vegleiarar"
 msgctxt "docs.chrome:sidebar.gettingStarted"
 msgid "Getting started"
 msgstr "Kom i gang"
-
-#: docs/.vitepress/i18n.json
-#, no-c-format
-msgctxt "docs.chrome:sidebar.packageMap"
-msgid "The package map"
-msgstr "Pakkekartet"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -249,12 +234,8 @@ msgstr "Om basis-reset"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfo"
-msgid ""
-"The opt-in global reset: box-sizing, the page surface, base text colour and "
-"font, color-scheme, and link defaults."
-msgstr ""
-"Valfri global reset: box-sizing, sidestrukturen på sida, basis tekstfarge og "
-"font, color-scheme og lenkjenorm."
+msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
+msgstr "Valfri global reset: box-sizing, sidestrukturen på sida, basis tekstfarge og font, color-scheme og lenkjenorm."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -271,12 +252,8 @@ msgstr "Om hjelpeklassane"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
-msgid ""
-"An opt-in layer of cross-cutting classes: a View primitive, spacing on the "
-"token scale, and semantic color overrides."
-msgstr ""
-"Eit valfritt lag med tverrgåande klassar: ein View-primtiv, mellomrom etter "
-"token-skalaen, og semantiske fargeoverstyringar."
+msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
+msgstr "Eit valfritt lag med tverrgåande klassar: ein View-primtiv, mellomrom etter token-skalaen, og semantiske fargeoverstyringar."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -299,20 +276,14 @@ msgstr "Vel ein eller fleire komponentar for å bygge ein URL."
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.fontsNote"
-msgid ""
-"Fonts load separately — add a <link> to @pantoken/components/fonts.css when "
-"you need them."
-msgstr ""
-"Skrifttypar lastar separat — legg til ein <link> til @pantoken/components/"
-"fonts.css når dei trengst."
+msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
+msgstr "Skrifttypar lastar separat — legg til ein <link> til @pantoken/components/fonts.css når dei trengst."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.iconsNote"
-msgid ""
-"component-icons.css is included because a selected component uses icons."
-msgstr ""
-"component-icons.css er inkludert fordi ein vald komponent brukar ikonar."
+msgid "component-icons.css is included because a selected component uses icons."
+msgstr "component-icons.css er inkludert fordi ein vald komponent brukar ikonar."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -347,12 +318,8 @@ msgstr "Gjenoppta animasjon"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
-msgid ""
-"\"Set up pantoken (github.com/thedannywahl/pantoken) in this project using "
-"create.pantoken.app/SKILL.md.\""
-msgstr ""
-"\"Set opp pantoken (github.com/thedannywahl/pantoken) i dette prosjektet ved "
-"å bruke create.pantoken.app/SKILL.md.\""
+msgid "\"Set up pantoken (github.com/thedannywahl/pantoken) in this project using create.pantoken.app/SKILL.md.\""
+msgstr "\"Set opp pantoken (github.com/thedannywahl/pantoken) i dette prosjektet ved å bruke create.pantoken.app/SKILL.md.\""
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -435,12 +402,8 @@ msgstr "SIDA FINNST IKKJE"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.quote"
-msgid ""
-"But if you don't change your direction, and if you keep looking, you may end "
-"up where you are heading."
-msgstr ""
-"Men om du ikkje endrar kursen, og om du held fram med å sjå, kan du ende opp "
-"der du er på veg."
+msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
+msgstr "Men om du ikkje endrar kursen, og om du held fram med å sjå, kan du ende opp der du er på veg."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

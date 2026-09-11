@@ -7,7 +7,7 @@ import "@pantoken/components/components.css";
 ```
 
 > [!NOTE]
-> Özel elementleri mi tercih ediyorsunuz? `@pantoken/web-components` aynı stilleri `<instui-button>`, `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` ve daha fazlası olarak sarar — bkz. [package map](/guide/packages).
+> Özel elementleri mi tercih ediyorsunuz? `@pantoken/web-components` aynı stilleri `<instui-button>`, `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` ve daha fazlası olarak sarar — bkz. [package map](/api/).
 
 ## Konvansiyonlar
 

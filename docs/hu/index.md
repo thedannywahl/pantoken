@@ -10,13 +10,13 @@ hero:
       link: /hu/guide/getting-started
     - theme: alt
       text: A csomagtérkép
-      link: /hu/guide/packages
+      link: /hu/api/
     - theme: alt
       text: API referencia
       link: /hu/api
     - theme: alt
       text: CSS referencia
-      link: /hu/api/css
+      link: /hu/api/css/
 features:
   - icon:
       light: /book-check-light.svg

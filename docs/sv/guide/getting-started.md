@@ -128,7 +128,7 @@ Detta möjliggör förslag för `instui-*` klass-tokens (och `-modifier` klass-t
 
 ## Vad kommer härnäst
 
-- [Paketkartan](/guide/packages) — vilket paket att använda, efter uppgift.
+- [Paketkartan](/api/) — vilket paket att använda, efter uppgift.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — installera agentassets och regler i ett consumer-repo.
 - [Arkitektur](/guide/architecture) — hur tokenmodellen, core och outputs hänger ihop.
 - [API-referens](/api/) — varje exporterad symbol, genererad från källan.

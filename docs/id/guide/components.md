@@ -10,7 +10,7 @@ import "@pantoken/components/components.css";
 > [!CATATAN]
 > Lebih suka elemen kustom? `@pantoken/web-components` membungkus gaya yang sama ini sebagai `<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, dan lainnya — lihat
-> [peta paket](/guide/packages).
+> [peta paket](/api/).
 
 ## Konvensi
 

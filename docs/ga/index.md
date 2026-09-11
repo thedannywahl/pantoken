@@ -10,13 +10,13 @@ hero:
       link: /ga/guide/getting-started
     - theme: alt
       text: An léarscáil phacáiste
-      link: /ga/guide/packages
+      link: /ga/api/
     - theme: alt
       text: Tagairt API
       link: /ga/api
     - theme: alt
       text: Tagairt CSS
-      link: /ga/api/css
+      link: /ga/api/css/
 features:
   - icon:
       light: /book-check-light.svg

@@ -7,7 +7,7 @@ import "@pantoken/components/components.css";
 ```
 
 > [!NOTE]
-> 커스텀 요소를 선호하나요? `@pantoken/web-components`은 동일한 스타일을 `<instui-button>`, `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` 등으로 래핑합니다 — [패키지 맵](/guide/packages) 참조.
+> 커스텀 요소를 선호하나요? `@pantoken/web-components`은 동일한 스타일을 `<instui-button>`, `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` 등으로 래핑합니다 — [패키지 맵](/api/) 참조.
 
 ## 규칙
 

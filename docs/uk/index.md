@@ -10,13 +10,13 @@ hero:
       link: /uk/guide/getting-started
     - theme: alt
       text: Карта пакетів
-      link: /uk/guide/packages
+      link: /uk/api/
     - theme: alt
       text: Довідник API
       link: /uk/api
     - theme: alt
       text: Довідник CSS
-      link: /uk/api/css
+      link: /uk/api/css/
 features:
   - icon:
       light: /book-check-light.svg

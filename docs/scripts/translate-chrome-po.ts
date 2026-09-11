@@ -18,6 +18,7 @@ const config = loadConfig(join(repoRoot, "i18n.config.json"));
 const { potPath } = runExtractMessages(config, repoRoot, "docs.chrome");
 const protectedSources = new Set([
   "404",
+  "API",
   "CSS",
   "<link>",
   "@import",

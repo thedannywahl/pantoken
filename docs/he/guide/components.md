@@ -9,7 +9,7 @@ import "@pantoken/components/components.css";
 > [!NOTE]
 > מעדיפים אלמנטים מותאמים? `@pantoken/web-components` עוטף את אותם סגנונות כ־`<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` ועוד — ראה את
-> [מפת החבילות](/guide/packages).
+> [מפת החבילות](/api/).
 
 ## קונבנציות
 

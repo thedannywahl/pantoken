@@ -10,13 +10,13 @@ hero:
       link: /da/guide/getting-started
     - theme: alt
       text: Pakkeoversigt
-      link: /da/guide/packages
+      link: /da/api/
     - theme: alt
       text: API-reference
       link: /da/api
     - theme: alt
       text: CSS-reference
-      link: /da/api/css
+      link: /da/api/css/
 features:
   - icon:
       light: /book-check-light.svg

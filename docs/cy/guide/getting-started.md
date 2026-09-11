@@ -135,7 +135,7 @@ priodoleddau personol `--instui-*`.
 
 ## I ble nesaf
 
-- [Map y pecynnau](/guide/packages) — pa becyn i’w gyrchu, yn dibynnu ar y dasg.
+- [Map y pecynnau](/api/) — pa becyn i’w gyrchu, yn dibynnu ar y dasg.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — gosod asedau asiant a rheolau mewn repo defnyddiwr.
 - [Pensaernïaeth](/guide/architecture) — sut mae’r model tôn, y core, a’r allbynnau yn cyd-fynd.
 - [Cyfeirlyfr API](/api/) — pob symbol a allforir, wedi’i chynhyrchu o’r ffynhonnell.

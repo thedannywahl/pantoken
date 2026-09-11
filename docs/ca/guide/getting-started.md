@@ -143,7 +143,7 @@ propietats personalitzades `--instui-*`.
 
 ## On anar després
 
-- [El mapa de paquets](/guide/packages) — quin paquet triar segons la tasca.
+- [El mapa de paquets](/api/) — quin paquet triar segons la tasca.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — instal·la actius i regles d'agent en un repositori consumidor.
 - [Arquitectura](/guide/architecture) — com encaixa el model de tokens, el core i les sortides.
 - [Referència d'API](/api/) — cada símbol exportat, generat des de la font.

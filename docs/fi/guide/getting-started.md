@@ -141,7 +141,7 @@ Tämä mahdollistaa ehdotukset `instui-*`-luokkatoimintojen (ja `-modifier`-luok
 
 ## Mihin seuraavaksi
 
-- [Paketin kartta](/guide/packages) — mikä paketti valitaan tehtävän mukaan.
+- [Paketin kartta](/api/) — mikä paketti valitaan tehtävän mukaan.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — asenna agenttiresurssit ja säännöt kuluttajarepoon.
 - [Arkkitehtuuri](/guide/architecture) — miten token-malli, core ja outputit sopivat yhteen.
 - [API-reference](/api/) — jokainen viety symboli, generoitu lähdekoodista.

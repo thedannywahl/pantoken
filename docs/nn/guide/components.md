@@ -9,7 +9,7 @@ import "@pantoken/components/components.css";
 > [!NOTE]
 > Føretrekkjer du eigne element? `@pantoken/web-components` pakkar dei same stilane som `<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, og meir — sjå
-> [pakke-kartet](/guide/packages).
+> [pakke-kartet](/api/).
 
 ## Konvensjonar
 

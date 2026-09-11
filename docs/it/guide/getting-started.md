@@ -143,7 +143,7 @@ proprietà custom `--instui-*`.
 
 ## Dove andare dopo
 
-- [La mappa dei pacchetti](/guide/packages) — quale pacchetto scegliere, in base al compito.
+- [La mappa dei pacchetti](/api/) — quale pacchetto scegliere, in base al compito.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — installare risorse e regole dell'agente in un repo consumer.
 - [Architettura](/guide/architecture) — come il modello di token, il core e gli output si incastrano.
 - [Riferimento API](/api/) — ogni simbolo esportato, generato dalla sorgente.

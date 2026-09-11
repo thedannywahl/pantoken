@@ -10,13 +10,13 @@ hero:
       link: /he/guide/getting-started
     - theme: alt
       text: מפת החבילות
-      link: /he/guide/packages
+      link: /he/api/
     - theme: alt
       text: מדריך API
       link: /he/api
     - theme: alt
       text: מדריך CSS
-      link: /he/api/css
+      link: /he/api/css/
 features:
   - icon:
       light: /book-check-light.svg

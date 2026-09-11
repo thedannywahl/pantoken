@@ -144,7 +144,7 @@ npm i @pantoken/pantoken
 
 ## Τι ακολουθεί
 
-- [Ο χάρτης πακέτων](/guide/packages) — ποιο πακέτο να χρησιμοποιήσετε ανά εργασία.
+- [Ο χάρτης πακέτων](/api/) — ποιο πακέτο να χρησιμοποιήσετε ανά εργασία.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — εγκαταστήστε agent assets και κανόνες σε ένα consumer repo.
 - [Αρχιτεκτονική](/guide/architecture) — πώς το μοντέλο token, το core και τα outputs συνεργάζονται.
 - [API reference](/api/) — κάθε εξαγόμενο σύμβολο, παραγόμενο από τον πηγαίο κώδικα.

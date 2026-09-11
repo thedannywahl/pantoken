@@ -8,7 +8,7 @@ import "@pantoken/components/components.css";
 
 > [!NOTE]
 > Віддаєте перевагу кастомним елементам? `@pantoken/web-components` обгортає ті самі стилі як `<instui-button>`,
-> `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` та інші — див. [мапу пакетів](/guide/packages).
+> `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` та інші — див. [мапу пакетів](/api/).
 
 ## Угоди
 

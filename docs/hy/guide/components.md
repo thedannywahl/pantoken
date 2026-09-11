@@ -7,7 +7,7 @@ import "@pantoken/components/components.css";
 ```
 
 > [!NOTE]
-> Նախընտրում եք հարմարեցված էլեմենտներ՞ `@pantoken/web-components` обվաշինգում է նույն ոճերը որպես `<instui-button>`, `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` և այլն — դիտեք [package map](/guide/packages).
+> Նախընտրում եք հարմարեցված էլեմենտներ՞ `@pantoken/web-components` обվաշինգում է նույն ոճերը որպես `<instui-button>`, `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` և այլն — դիտեք [package map](/api/).
 
 ## Կոնվենցիաներ
 

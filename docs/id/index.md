@@ -10,13 +10,13 @@ hero:
       link: /id/guide/getting-started
     - theme: alt
       text: Peta paket
-      link: /id/guide/packages
+      link: /id/api/
     - theme: alt
       text: Referensi API
       link: /id/api
     - theme: alt
       text: Referensi CSS
-      link: /id/api/css
+      link: /id/api/css/
 features:
   - icon:
       light: /book-check-light.svg

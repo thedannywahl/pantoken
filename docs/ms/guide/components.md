@@ -9,7 +9,7 @@ import "@pantoken/components/components.css";
 > [!NOTE]
 > Suka elemen tersuai? `@pantoken/web-components` membungkus gaya yang sama ini sebagai `<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, dan banyak lagi — lihat
-> [peta pakej](/guide/packages).
+> [peta pakej](/api/).
 
 ## Konvensyen
 

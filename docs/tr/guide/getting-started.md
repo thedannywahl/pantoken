@@ -130,7 +130,7 @@ Bu, `instui-*` sınıf token'ları (ve `-modifier` sınıf token'ları) ile `--i
 
 ## Bundan sonra nereye bakmalı
 
-- [Paket haritası](/guide/packages) — görev bazında hangi pakete ulaşılacağı.
+- [Paket haritası](/api/) — görev bazında hangi pakete ulaşılacağı.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — tüketici repoya ajan varlıklarını ve kurallarını yükleyin.
 - [Mimari](/guide/architecture) — token modeli, çekirdek ve çıktıların nasıl birleştiği.
 - [API referansı](/api/) — kaynaktan üretilmiş her ihraç edilen sembol.

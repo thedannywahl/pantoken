@@ -10,13 +10,13 @@ hero:
       link: /th/guide/getting-started
     - theme: alt
       text: แผนที่แพ็กเกจ
-      link: /th/guide/packages
+      link: /th/api/
     - theme: alt
       text: เอกสารอ้างอิง API
       link: /th/api
     - theme: alt
       text: เอกสารอ้างอิง CSS
-      link: /th/api/css
+      link: /th/api/css/
 features:
   - icon:
       light: /book-check-light.svg

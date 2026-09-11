@@ -128,7 +128,7 @@ npm i @pantoken/pantoken
 
 ## 下一步去哪裡
 
-- [套件地圖](/guide/packages) — 按任務選擇要使用的套件。
+- [套件地圖](/api/) — 按任務選擇要使用的套件。
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — 在消費者倉庫安裝代理資產與規則。
 - [架構](/guide/architecture) — 探討標記模型、核心與輸出如何協同運作。
 - [API 參考](/api/) — 每個匯出的符號，從原始碼產生。

@@ -9,7 +9,7 @@ import "@pantoken/components/components.css";
 > [!HINWEIS]
 > Bevorzugst du benutzerdefinierte Elemente? `@pantoken/web-components` verpackt dieselben Stile als `<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` und mehr — siehe die
-> [Paketübersicht](/guide/packages).
+> [Paketübersicht](/api/).
 
 ## Konventionen
 

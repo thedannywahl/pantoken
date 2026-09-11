@@ -128,7 +128,7 @@ Dette giver forslag til `instui-*` klasse-tokens (og `-modifier` klasse-tokens) 
 
 ## Hvorhen næste
 
-- [Pakkeoversigten](/guide/packages) — hvilken pakke man skal vælge efter opgave.
+- [Pakkeoversigten](/api/) — hvilken pakke man skal vælge efter opgave.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — installer agent-assets og regler i et forbruger-repo.
 - [Arkitektur](/guide/architecture) — hvordan token-modellen, core og outputs passer sammen.
 - [API reference](/api/) — alle eksporterede symboler, genereret fra kilden.

@@ -10,7 +10,7 @@ import "@pantoken/components/components.css";
 > [!NOTE]
 > Ưa dùng custom elements hơn? `@pantoken/web-components` bọc cùng các kiểu này dưới dạng `<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, và nhiều hơn nữa — xem
-> [bản đồ package](/guide/packages).
+> [bản đồ package](/api/).
 
 ## Quy ước
 

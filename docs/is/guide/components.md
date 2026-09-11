@@ -9,7 +9,7 @@ import "@pantoken/components/components.css";
 > [!ATH]
 > Kjósirðu sérsniðna þætti? `@pantoken/web-components` umlykur sömu stíla sem `<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, og fleiri — sjá
-> [pakka-kortið](/guide/packages).
+> [pakka-kortið](/api/).
 
 ## Venjur
 

@@ -10,13 +10,13 @@ hero:
       link: /it/guide/getting-started
     - theme: alt
       text: La mappa dei pacchetti
-      link: /it/guide/packages
+      link: /it/api/
     - theme: alt
       text: Riferimento API
       link: /it/api
     - theme: alt
       text: Riferimento CSS
-      link: /it/api/css
+      link: /it/api/css/
 features:
   - icon:
       light: /book-check-light.svg

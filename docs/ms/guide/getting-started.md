@@ -131,7 +131,7 @@ Ini membolehkan cadangan untuk token kelas `instui-*` (dan token kelas `-modifie
 
 ## Ke mana seterusnya
 
-- [Peta pakej](/guide/packages) — pakej mana untuk dicapai mengikut tugas.
+- [Peta pakej](/api/) — pakej mana untuk dicapai mengikut tugas.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — pasang aset ejen dan peraturan dalam repositori pengguna.
 - [Seni bina](/guide/architecture) — bagaimana model token, teras, dan output bersesuaian.
 - [Rujukan API](/api/) — setiap simbol yang dieksport, dijana dari sumber.

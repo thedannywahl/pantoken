@@ -134,7 +134,6 @@ export default {
   extends: DefaultTheme,
   Layout,
   enhanceApp(ctx) {
-    DefaultTheme.enhanceApp?.(ctx);
     ctx.app.component("vitepress-mermaid", VitePressMermaid);
     // The interactive CDN combine-URL builder used on the CDN guide page (docs/guide/cdn.md).
     ctx.app.component("CdnPicker", CdnPicker);

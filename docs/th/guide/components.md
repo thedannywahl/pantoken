@@ -10,7 +10,7 @@ import "@pantoken/components/components.css";
 > [!NOTE]
 > ชอบ custom elements ไหม? `@pantoken/web-components` ห่อสไตล์เดียวกันไว้เป็น `<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, และอื่น ๆ — ดูที่
-> [package map](/guide/packages).
+> [package map](/api/).
 
 ## Conventions
 

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 17:04+0000\n"
+"PO-Revision-Date: 2026-09-11 19:58+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -23,12 +23,6 @@ msgstr ""
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
-msgctxt "docs.chrome:nav.packages"
-msgid "Packages"
-msgstr ""
-
-#: docs/.vitepress/i18n.json
-#, no-c-format
 msgctxt "docs.chrome:nav.css"
 msgid "CSS"
 msgstr ""
@@ -36,7 +30,7 @@ msgstr ""
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:nav.api"
-msgid "API reference"
+msgid "API"
 msgstr ""
 
 #: docs/.vitepress/i18n.json
@@ -55,12 +49,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.chrome:sidebar.gettingStarted"
 msgid "Getting started"
-msgstr ""
-
-#: docs/.vitepress/i18n.json
-#, no-c-format
-msgctxt "docs.chrome:sidebar.packageMap"
-msgid "The package map"
 msgstr ""
 
 #: docs/.vitepress/i18n.json

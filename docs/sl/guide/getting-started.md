@@ -138,7 +138,7 @@ To omogoča predloge za `instui-*` razredne tokene (in `-modifier` razredne toke
 
 ## Kam naprej
 
-- [Zemljevid paketov](/guide/packages) — kateri paket uporabiti glede na nalogo.
+- [Zemljevid paketov](/api/) — kateri paket uporabiti glede na nalogo.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — namesti agentne vire in pravila v potrošniški repozitorij.
 - [Arhitektura](/guide/architecture) — kako model tokenov, jedro in izhodi povezujejo skupaj.
 - [API referenca](/api/) — vsak izvožen simbol, generiran iz izvorne kode.

@@ -142,7 +142,7 @@ Dies ermöglicht Vorschläge für `instui-*` Klassentokens (und `-modifier` Klas
 
 ## Wohin als Nächstes
 
-- [Die Paket-Übersicht](/guide/packages) — welches Paket für welche Aufgabe.
+- [Die Paket-Übersicht](/api/) — welches Paket für welche Aufgabe.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — Agent-Assets und Regeln in einem Consumer-Repo installieren.
 - [Architektur](/guide/architecture) — wie das Token-Modell, Core und Outputs zusammenpassen.
 - [API-Referenz](/api/) — jedes exportierte Symbol, aus dem Quellcode generiert.

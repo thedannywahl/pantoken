@@ -10,7 +10,7 @@ import "@pantoken/components/components.css";
 > [!NOTE]
 > Wolisz elementy niestandardowe? `@pantoken/web-components` owija te same style jako `<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` i więcej — zobacz
-> [mapę pakietów](/guide/packages).
+> [mapę pakietów](/api/).
 
 ## Konwencje
 

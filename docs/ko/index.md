@@ -10,13 +10,13 @@ hero:
       link: /ko/guide/getting-started
     - theme: alt
       text: 패키지 맵
-      link: /ko/guide/packages
+      link: /ko/api/
     - theme: alt
       text: API 참조
       link: /ko/api
     - theme: alt
       text: CSS 참조
-      link: /ko/api/css
+      link: /ko/api/css/
 features:
   - icon:
       light: /book-check-light.svg

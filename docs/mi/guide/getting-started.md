@@ -137,7 +137,7 @@ ngā rawa ritenga `--instui-*`.
 
 ## Kei hea te whai ake
 
-- [Te mapi kete](/guide/packages) — ko tēhea kete hei toro atu, ā, mō te aha.
+- [Te mapi kete](/api/) — ko tēhea kete hei toro atu, ā, mō te aha.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — tāuta ngā rawa me ngā ture pūkenga ki roto i tētahi repo kaihoko.
 - [Hanga](/guide/architecture) — me pehea te honohono o te tauira token, te pūtake, me ngā putanga.
 - [Tohutoro API](/api/) — ia tohu kaweake, i hangaia i te puna.

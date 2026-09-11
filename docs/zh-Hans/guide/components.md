@@ -9,7 +9,7 @@ import "@pantoken/components/components.css";
 > [!注意]
 > 偏好自定义元素？`@pantoken/web-components` 将相同样式封装为 `<instui-button>`、
 > `<instui-alert>`、`<instui-badge>`、`<instui-avatar>`、`<instui-progress>` 等 — 参见
-> [包映射](/guide/packages)。
+> [包映射](/api/)。
 
 ## 约定
 

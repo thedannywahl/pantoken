@@ -128,7 +128,7 @@ Dit maakt suggesties mogelijk voor `instui-*` class-tokens (en `-modifier` class
 
 ## Wat nu
 
-- [De pakketkaart](/guide/packages) — welk pakket te gebruiken per taak.
+- [De pakketkaart](/api/) — welk pakket te gebruiken per taak.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — installeer agent-assets en regels in een consumer-repo.
 - [Architectuur](/guide/architecture) — hoe het tokenmodel, core, en outputs samenhangen.
 - [API-referentie](/api/) — elk geëxporteerd symbool, gegenereerd uit de bron.

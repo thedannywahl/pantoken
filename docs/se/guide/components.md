@@ -10,7 +10,7 @@ import "@pantoken/components/components.css";
 > [!NOTE]
 > Dohkkehuvvat ieža elementaid? `@pantoken/web-components` válddeha eanet sama styledat `<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, ja muit — geažil
-> [package map](/guide/packages).
+> [package map](/api/).
 
 ## Konventšuvnnat
 

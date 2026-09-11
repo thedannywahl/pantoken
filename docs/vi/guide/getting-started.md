@@ -128,7 +128,7 @@ npm i @pantoken/pantoken
 
 ## Tiếp theo ở đâu
 
-- [Bản đồ gói](/guide/packages) — nên dùng gói nào cho nhiệm vụ.
+- [Bản đồ gói](/api/) — nên dùng gói nào cho nhiệm vụ.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — cài tài sản và quy tắc agent trong repo consumer.
 - [Kiến trúc](/guide/architecture) — cách mô hình token, core, và outputs kết hợp với nhau.
 - [Tham chiếu API](/api/) — mọi symbol được xuất, sinh từ nguồn.
