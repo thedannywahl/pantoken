@@ -179,6 +179,12 @@ jobs:
           restore-keys: |
             docs-dist-${{ runner.os }}-
 
+      # changed-pages.ts imports @pantoken/i18n-engine's built output directly (it isn't run through
+      # vp exec), so its dist must exist before the resolver step below runs. The later "vp run -F
+      # @pantoken/docs..." build steps also depend on it and will hit this build's cache.
+      - name: Build changed-pages script dependencies
+        run: vp run -F "@pantoken/i18n-engine..." build
+
       - name: Resolve changed docs
         id: changed_docs
         shell: bash
