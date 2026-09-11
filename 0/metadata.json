@@ -1,0 +1,75 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M298T6X80Z9CX5FTT4E8XJF9",
+  "session_id": "c3dcdae3-b054-43d1-8b66-7e9fb5353463",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-11T22:18:36.680029Z",
+  "branch": "pendo-button-tweaks",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "docs/conventions/build-and-docs.md",
+    "docs/scripts/build-api-locales.test.ts",
+    "docs/scripts/build-api-locales.ts",
+    "docs/scripts/segment-markdown.test.ts",
+    "docs/scripts/segment-markdown.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "3fbe264d77be",
+  "checkpoint_transcript_start": 451,
+  "transcript_lines_at_start": 451,
+  "compact_transcript_start": 62,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 3
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-11T22:18:36.665588Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 16,
+    "total_committed": 0,
+    "total_lines_changed": 16,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 573,
+      "user_lines_removed": 23,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".changeset/bright-buttons-speak.md": 5,
+        "docs/conventions/build-and-docs.md": 7,
+        "docs/index.md": 2,
+        "docs/scripts/build-api-locales.test.ts": 17,
+        "docs/scripts/build-api-locales.ts": 4,
+        "docs/scripts/segment-markdown.test.ts": 47,
+        "docs/scripts/segment-markdown.ts": 38,
+        "l10n/ar/docs.api.po": 282,
+        "l10n/docs.api.pot": 171
+      },
+      "user_removed_per_file": {
+        "docs/conventions/build-and-docs.md": 6,
+        "docs/index.md": 5,
+        "docs/scripts/build-api-locales.test.ts": 6,
+        "docs/scripts/build-api-locales.ts": 1,
+        "docs/scripts/segment-markdown.test.ts": 1,
+        "docs/scripts/segment-markdown.ts": 2,
+        "l10n/ar/docs.api.po": 1,
+        "l10n/docs.api.pot": 1
+      }
+    }
+  ]
+}

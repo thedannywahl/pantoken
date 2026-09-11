@@ -1,0 +1,5 @@
+Start implementation
+
+---
+
+running a full translation is too much, just validate that the strings have made it to the root pot.
