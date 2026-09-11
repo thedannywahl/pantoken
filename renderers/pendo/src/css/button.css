@@ -17,11 +17,10 @@
 
 :is(:scope, [class*="instui"]) {
   ._pendo-button {
-    height: var(--instui-component-base-button-small-height);
     min-height: var(--instui-component-base-button-small-height);
-    font-family: var(--instui-component-base-button-font-family);
     line-height: var(--instui-component-base-button-line-height);
     letter-spacing: var(--instui-component-base-button-letter-spacing);
+    font-family: var(--instui-component-base-button-font-family);
     cursor: pointer;
   }
 
@@ -34,6 +33,7 @@
     font-size: var(--instui-component-base-button-small-font-size);
     font-weight: var(--instui-component-base-button-font-weight);
     margin: var(--pendo-space-0);
+    height: var(--instui-component-base-button-small-height);
 
     &:has(+ ._pendo-button) {
       margin-inline-end: var(--instui-component-shared-tokens-spacing-gap-buttons);
