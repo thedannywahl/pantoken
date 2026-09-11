@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.5.2
+
+### Patch Changes
+
+- a8c9bef: Fix the deploy workflow's "Resolve changed docs" step failing with `ERR_MODULE_NOT_FOUND` on a clean checkout. `changed-pages.ts` imports `@pantoken/i18n-engine`'s built output directly, but nothing built that package before the step ran. The workflow now builds it first.
+- ee4ce97: Deploy docs from docs-affecting main pushes and add a diff-scoped partial build path that falls back to the full site build when a change cannot be safely mapped to pages.
+- ee4ce97: Fix a hydration crash that broke every English page on direct load. `vitepress-plugin-llms` was restricted to the client build pass, but its `transform` injects a hidden "Are you an LLM?" hint into each page, so the server HTML rendered one child fewer than the client expected and Vue threw before mounting. The plugin now runs on both passes.
+- ee4ce97: Build the docs site one locale at a time into `assets/<locale>/` and merge the results, so no single directory approaches Netlify's 54,000-file deploy limit (the flat `assets/` directory reached ~78,000). Cross-locale navigation falls back to a full page load, since each build's client router only knows its own pages. Partial deploys now rebuild only the locales that changed and carry the previous `hashmap.json` and `sitemap.xml` forward instead of overwriting them.
+- ee4ce97: Fix a hydration mismatch on pages with a mermaid diagram. Importing mermaid arms a `load` listener that renders every `.mermaid` element, and VitePress hydrates after `load`, so the diagram's source text was replaced with an SVG before Vue hydrated it. The container is now `.mermaid-diagram`, outside mermaid's default selector, and the first render happens in `onMounted` rather than during setup.
+
 ## 0.5.1
 
 ### Patch Changes
