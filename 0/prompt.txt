@@ -1,0 +1,2 @@
+the new diff release failed on docs deploy, use gh to investigate and remediate on this branch with incremental conventional commits, pushes, and changesets where appropriate. use `gh` cli to investigate:
+https://github.com/thedannywahl/pantoken/actions/runs/34544709282/job/103094876298
