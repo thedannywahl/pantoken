@@ -1,0 +1,2 @@
+similar error, solve this comprehensively this time.
+https://github.com/thedannywahl/pantoken/actions/runs/34548260315/job/103105494481
