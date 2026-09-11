@@ -70,7 +70,7 @@
   "getStartedTabs.pauseAnimation": { "message": "Pause animation", "translate": "always" },
   "getStartedTabs.playAnimation": { "message": "Resume animation", "translate": "always" },
   "getStartedTabs.agentPrompt": {
-    "message": "\"Set up pantoken (github.com/thedannywahl/pantoken) in this project using create.pantoken.app/SKILL.md.\"",
+    "message": "\"Set up pantoken in this project using create.pantoken.app/SKILL.md.\"",
     "translate": "always"
   },
   "chrome.outlineLabel": { "message": "On this page", "translate": "always" },
