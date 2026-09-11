@@ -1,0 +1,22 @@
+when this renders both locally in dev mode and in production none of the active/hover styles get applied to the buttons.
+```
+<div data-v-6da0b6e4="" class="gs-started__mode" role="tablist" aria-label="Getting started mode"><button data-v-6da0b6e4="" type="button" class="instui-button -shape-circle -icon-terminal -without-background -without-border gs-started__mode-btn is-active" aria-selected="true" aria-label="Terminal mode"><span data-v-6da0b6e4="" class="instui-screen-reader-content">CLI install</span></button><button data-v-6da0b6e4="" type="button" class="instui-button -shape-circle -icon-igniteai-logo -without-background -without-border gs-started__mode-btn" aria-selected="false" aria-label="Agent shell mode"><span data-v-6da0b6e4="" class="instui-screen-reader-content">AI install</span></button></div>
+```
+
+it doesn't matter if I manually edit the css to remove the classes, manually add style definitions, adjust the span inside the button, or the container around the button it is always just a white button with no background, no box-shadow and no active/hover/focus states.  What's odd is that all the way up the tree manually setting color or background does not visually get applied, but resolves in getComputedStyle()
+```
+let e = document.querySelector(".gs-started__mode-btn.is-active") 
+window.getComputedStyle(e) 
+background: "rgb(255, 0, 0)"
+```
+but there is no red in the active window in http://localhost:5173/
+
+we need a robust resolution and trusting the js/css resolution can't be done without visually verifying.  What's supposed to be happening is being able to distinguish between the active and inactive "tab" but that can't be done.
+
+---
+
+there is a dark svg on the html background, so this should always be the 'on-color' version (white) regardless of dark/light mode.
+
+---
+
+Start implementation
