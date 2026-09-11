@@ -1,4 +1,5 @@
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawn } from "node:child_process";
+import { EventEmitter } from "node:events";
 import { existsSync, mkdtempSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -12,11 +13,13 @@ vi.mock("@clack/prompts", async (importOriginal) => {
     ...actual,
     select: vi.fn(),
     text: vi.fn(),
-    spinner: vi.fn(() => ({ start: vi.fn(), stop: vi.fn() })),
+    spinner: vi.fn(() => ({ start: vi.fn(), stop: vi.fn(), message: vi.fn() })),
   };
 });
 
-// Real installs would hit the network; only pass through to spawn the "bin" black-box subprocess.
+// Real installs would hit the network; only pass through to execFileSync for the "bin"
+// black-box subprocess. `spawn` (used by `installWithSpinner`) resolves immediately with a fake
+// successful child process.
 vi.mock("node:child_process", async (importOriginal) => {
   const actual = await importOriginal<typeof import("node:child_process")>();
   return {
@@ -26,6 +29,11 @@ vi.mock("node:child_process", async (importOriginal) => {
         ? actual.execFileSync(command, args as string[], options as never)
         : Buffer.from(""),
     ),
+    spawn: vi.fn(() => {
+      const emitter = new EventEmitter();
+      queueMicrotask(() => emitter.emit("close", 0));
+      return emitter;
+    }),
   };
 });
 
@@ -58,6 +66,7 @@ afterEach(() => {
   vi.mocked(select).mockReset();
   vi.mocked(text).mockReset();
   vi.mocked(execFileSync).mockClear();
+  vi.mocked(spawn).mockClear();
 });
 
 test("createAiCommand builds a command named after the given name", () => {
@@ -139,7 +148,7 @@ test("scaffold writes both the scaffold and the agent assets, installing depende
   await runAiCli(["scaffold", "react", "--dir", target, "--yes", "--tool", "cursor"]);
   expect(existsSync(join(target, "package.json"))).toBe(true);
   expect(existsSync(join(target, ".cursor/rules/pantoken.mdc"))).toBe(true);
-  expect(vi.mocked(execFileSync)).toHaveBeenCalledWith(
+  expect(vi.mocked(spawn)).toHaveBeenCalledWith(
     expect.any(String),
     ["install"],
     expect.objectContaining({ cwd: target }),
@@ -161,7 +170,7 @@ test("scaffold --no-install skips the automatic install", async () => {
     "--no-install",
   ]);
   expect(existsSync(join(target, "package.json"))).toBe(true);
-  expect(vi.mocked(execFileSync)).not.toHaveBeenCalledWith(
+  expect(vi.mocked(spawn)).not.toHaveBeenCalledWith(
     expect.any(String),
     ["install"],
     expect.anything(),

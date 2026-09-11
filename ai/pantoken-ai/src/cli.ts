@@ -136,7 +136,8 @@ export function createAiCommand(options?: AiCommandOptions): Command {
       }
 
       const installed =
-        opts.install !== false && installWithSpinner(dir, detectPackageManager(), scaffoldT);
+        opts.install !== false &&
+        (await installWithSpinner(dir, detectPackageManager(), scaffoldT));
 
       // Print next steps (using scaffold's shared formatting, but with ai's locale lookup)
       printNextSteps(dir, scaffoldFiles, scaffoldT, resolveScaffoldPlatform(platform), installed);

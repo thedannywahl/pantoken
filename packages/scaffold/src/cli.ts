@@ -8,15 +8,16 @@
  * @alpha
  */
 
-import { cancel, isCancel, select, spinner, text } from "@clack/prompts";
+import { cancel, confirm, isCancel, select, spinner, text } from "@clack/prompts";
 import { Argument, Command, InvalidArgumentError, CommanderError } from "commander";
 import tab from "@bomb.sh/tab/commander";
 import { homedir } from "node:os";
 import { join, basename } from "node:path";
 import { readFileSync } from "node:fs";
-import { execFileSync } from "node:child_process";
+import { spawn } from "node:child_process";
 
 export { SCAFFOLD_PLATFORMS, isScaffoldPlatform, resolveScaffoldPlatform } from "./index.ts";
+export { installAgentAssets } from "./agent-assets.ts";
 export {
   detectLocale,
   createLocaleLookup,
@@ -34,6 +35,7 @@ import {
   type ScaffoldPackageManager,
 } from "./index.ts";
 import { scaffoldProject } from "./index.ts";
+import { installAgentAssets } from "./agent-assets.ts";
 import {
   detectLocale,
   createLocaleLookup,
@@ -204,6 +206,39 @@ async function resolveDir(
 }
 
 /**
+ * Resolves whether to install AI agent assets alongside the scaffold: `--no-ai` always wins
+ * (returns false); otherwise defaults to `true`, prompting via clack `confirm()` on a TTY (not
+ * --yes) to let the user opt out interactively.
+ *
+ * @throws ScaffoldCliError when the prompt is cancelled
+ */
+export async function resolveAiAssets(opts: {
+  yes?: boolean;
+  isTTY: boolean;
+  noAi?: boolean;
+  t: LocaleLookup["t"];
+}): Promise<boolean> {
+  const { yes, isTTY, noAi, t } = opts;
+  if (noAi) return false;
+
+  if (!shouldPrompt(undefined, { yes, isTTY })) {
+    return true; // Non-interactive default: install AI assets
+  }
+
+  const result = await confirm({
+    message: t("promptAiAssets"),
+    initialValue: true,
+  });
+
+  if (isCancel(result)) {
+    cancel(t("cancelled"));
+    throw new ScaffoldCliError(t("cancelled"), 1);
+  }
+
+  return result as boolean;
+}
+
+/**
  * Resolves platform + directory: prompts via clack select()/text() when omitted on a TTY
  * (not --yes); throws ScaffoldCliError with a clear, localized message when a required
  * value is missing non-interactively.
@@ -328,6 +363,10 @@ export function buildCreateUsageCommand(pm?: PackageManager): string {
 
 /**
  * Runs the detected package manager's install command in `dir`, wrapped in a clack spinner.
+ * Runs via async `spawn` (not `execFileSync`) so the spinner can actually animate while installing
+ * — a synchronous child process blocks the event loop and freezes the spinner's frames, making the
+ * CLI look hung even though it's working. Output is still suppressed (`stdio: "ignore"`); only the
+ * spinner's own text animates, updated periodically with the elapsed time.
  * Failures are reported but non-fatal — the project is still usable, just not installed — so the
  * caller decides how `printNextSteps` should reflect the outcome via the returned boolean.
  *
@@ -336,11 +375,11 @@ export function buildCreateUsageCommand(pm?: PackageManager): string {
  * @param t - Localized string lookup
  * @returns Whether the install command exited successfully
  */
-export function installWithSpinner(
+export async function installWithSpinner(
   dir: string,
   pm: PackageManager | undefined,
   t: LocaleLookup["t"],
-): boolean {
+): Promise<boolean> {
   const npmExecPath = pm === "npm" ? process.env.npm_execpath : undefined;
   const [command, ...args] = npmExecPath
     ? [process.execPath, npmExecPath, "install"]
@@ -348,13 +387,28 @@ export function installWithSpinner(
   const s = spinner();
   s.start(t("installSpinnerStart"));
 
+  const startedAt = Date.now();
+  const tick = setInterval(() => {
+    const elapsed = Math.floor((Date.now() - startedAt) / 1000);
+    s.message(`${t("installSpinnerStart")} (${elapsed}s)`);
+  }, 500);
+
   try {
-    execFileSync(command!, args, { cwd: dir, stdio: "ignore" });
+    await new Promise<void>((resolvePromise, rejectPromise) => {
+      const child = spawn(command!, args, { cwd: dir, stdio: "ignore" });
+      child.on("error", rejectPromise);
+      child.on("close", (code) => {
+        if (code === 0) resolvePromise();
+        else rejectPromise(new Error(`exited with code ${code}`));
+      });
+    });
     s.stop(t("installSpinnerStop"));
     return true;
   } catch (err) {
     s.stop(`${t("installSpinnerFailed")} ${err instanceof Error ? err.message : String(err)}`);
     return false;
+  } finally {
+    clearInterval(tick);
   }
 }
 
@@ -524,7 +578,8 @@ export function createScaffoldCommand(options?: ScaffoldCommandOptions): Command
       "CDN provider for canvas-theme-editor's theme.css/theme.js: jsdelivr (default), unpkg, esmsh",
       validateCdnProviderId,
     )
-    .option("--no-install", "Skip automatically installing dependencies after scaffolding");
+    .option("--no-install", "Skip automatically installing dependencies after scaffolding")
+    .option("--no-ai", "Skip installing AI agent assets after scaffolding");
 
   if (options?.version) {
     program.version(options.version, "-v, --version");
@@ -553,9 +608,21 @@ export function createScaffoldCommand(options?: ScaffoldCommandOptions): Command
       for (const path of written) {
         console.log(t("wroteFile", { path }));
       }
+      const isTTY = process.stdin?.isTTY ?? false;
+      const installAi = await resolveAiAssets({
+        yes: opts.yes as boolean | undefined,
+        isTTY,
+        noAi: (opts.ai as boolean | undefined) === false,
+        t,
+      });
+      if (installAi) {
+        for (const path of installAgentAssets("all", expandedDir)) {
+          console.log(t("wroteFile", { path }));
+        }
+      }
       const installed =
         (opts.install as boolean | undefined) !== false &&
-        installWithSpinner(expandedDir, packageManager, t);
+        (await installWithSpinner(expandedDir, packageManager, t));
       // Once dependencies are installed, cwd into the scaffolded dir so the single remaining
       // printed next step can be just the dev command. If install failed or was skipped, keep the
       // original target path visible in the full recovery steps.

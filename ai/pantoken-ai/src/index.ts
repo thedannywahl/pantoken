@@ -7,16 +7,22 @@
  * {@link scaffoldAndInit} / the `pantoken-ai` CLI to drop them into a consumer repo at the
  * conventional paths.
  *
+ * Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold
+ * flow can offer them without a circular dependency); re-exported here for back-compat.
+ *
  * @module
  * @alpha
  */
-import { mkdirSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
-import { scaffoldProject } from "@pantoken/scaffold";
-import { ASSETS } from "../generated/assets.ts";
+import { scaffoldProject, installAgentAssets, ASSETS, type AgentTool } from "@pantoken/scaffold";
 
-export { ASSETS } from "../generated/assets.ts";
-export { SCAFFOLD_PLATFORMS, isScaffoldPlatform, scaffoldProject } from "@pantoken/scaffold";
+export {
+  installAgentAssets,
+  AGENT_TOOLS,
+  type AgentTool,
+  SCAFFOLD_PLATFORMS,
+  isScaffoldPlatform,
+  scaffoldProject,
+} from "@pantoken/scaffold";
 export type { ScaffoldPlatform } from "@pantoken/scaffold";
 
 /**
@@ -44,85 +50,6 @@ export const AGENTS_MD: string = ASSETS.agents;
  * ```
  */
 export const LLMS_TXT: string = ASSETS.llms;
-
-/** An agent/editor tool pantoken can install assets for. */
-export type AgentTool = "agents" | "llms" | "cursor" | "copilot" | "windsurf" | "claude";
-
-interface AssetTarget {
-  file: string;
-  content: string;
-}
-
-/** Where each tool's asset(s) are written, relative to the target directory. */
-const TARGETS: Record<AgentTool, AssetTarget[]> = {
-  agents: [{ file: "AGENTS.md", content: ASSETS.agents }],
-  llms: [{ file: "llms.txt", content: ASSETS.llms }],
-  cursor: [{ file: ".cursor/rules/pantoken.mdc", content: ASSETS.cursor }],
-  copilot: [{ file: ".github/copilot-instructions.md", content: ASSETS.copilot }],
-  windsurf: [{ file: ".windsurf/rules/pantoken.md", content: ASSETS.windsurf }],
-  claude: [
-    { file: ".claude/skills/init-pantoken/SKILL.md", content: ASSETS.initSkill },
-    { file: ".claude/skills/create-pantoken-app/SKILL.md", content: ASSETS.createAppSkill },
-    { file: "AGENTS.md", content: ASSETS.agents },
-  ],
-};
-
-/**
- * Every installable tool key.
- *
- * @example Install each tool individually
- * ```ts
- * import { AGENT_TOOLS, installAgentAssets } from "@pantoken/ai";
- *
- * for (const tool of AGENT_TOOLS) installAgentAssets(tool, "./my-app");
- * ```
- */
-export const AGENT_TOOLS: readonly AgentTool[] = Object.keys(TARGETS) as AgentTool[];
-
-const AGENT_TOOL_SET = new Set<string>(AGENT_TOOLS);
-
-function ensureAgentTool(tool: string): asserts tool is AgentTool {
-  if (AGENT_TOOL_SET.has(tool)) return;
-  throw new Error(`Unknown tool "${tool}". Expected one of: ${AGENT_TOOLS.join(", ")}.`);
-}
-
-/**
- * Write pantoken's agent assets for a tool into a consumer repo.
- *
- * @param tool - A specific {@link AgentTool}, or `"all"` for every asset.
- * @param dir - The target directory (default `"."`).
- * @returns The paths written.
- *
- * @example Install one tool's assets into a repo
- * ```ts
- * import { installAgentAssets } from "@pantoken/ai";
- *
- * const written = installAgentAssets("cursor", "./my-app");
- * // → ["my-app/.cursor/rules/pantoken.mdc"]
- * ```
- *
- * @example Install every asset into the current directory
- * ```ts
- * import { installAgentAssets } from "@pantoken/ai";
- *
- * installAgentAssets("all");
- * // writes AGENTS.md, llms.txt, and the Cursor/Copilot/Windsurf/Claude assets
- * ```
- */
-export function installAgentAssets(tool: AgentTool | "all", dir = "."): string[] {
-  const tools =
-    tool === "all" ? AGENT_TOOLS : ((ensureAgentTool(tool), [tool]) as readonly AgentTool[]);
-  const written = new Set<string>();
-  for (const t of tools) {
-    for (const { file, content } of TARGETS[t]) {
-      const path = join(dir, file);
-      mkdirSync(dirname(path), { recursive: true });
-      writeFileSync(path, content);
-      written.add(path);
-    }
-  }
-  return [...written];
-}
 
 /**
  * Scaffold a starter project for a platform (via `@pantoken/scaffold`), and install pantoken's

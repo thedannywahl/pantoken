@@ -1,4 +1,5 @@
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawn } from "node:child_process";
+import { EventEmitter } from "node:events";
 import { existsSync, mkdtempSync, readFileSync, realpathSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -13,6 +14,7 @@ import {
   expandHome,
   installWithSpinner,
   printNextSteps,
+  resolveAiAssets,
   resolveScaffoldTarget,
   runScaffoldCli,
   scaffoldWithSpinner,
@@ -20,7 +22,7 @@ import {
   validateScaffoldPlatform,
   MESSAGES,
 } from "../src/cli.ts";
-import { select, spinner, text } from "@clack/prompts";
+import { confirm, select, spinner, text } from "@clack/prompts";
 
 // clack's real cancel sentinel is a module-private `Symbol("clack:cancel")`, unreachable from
 // outside the package, so tests use their own well-known sentinel and mock `isCancel` to match it.
@@ -32,13 +34,16 @@ vi.mock("@clack/prompts", async (importOriginal) => {
     ...actual,
     select: vi.fn(),
     text: vi.fn(),
+    confirm: vi.fn().mockResolvedValue(true),
     isCancel: (value: unknown) => value === CANCEL_SYMBOL,
     cancel: vi.fn(),
-    spinner: vi.fn(() => ({ start: vi.fn(), stop: vi.fn() })),
+    spinner: vi.fn(() => ({ start: vi.fn(), stop: vi.fn(), message: vi.fn() })),
   };
 });
 
-// Real installs would hit the network; only pass through to spawn the "bin" black-box subprocess.
+// Real installs would hit the network; only pass through to execFileSync for the "bin"
+// black-box subprocess. `spawn` (used by `installWithSpinner`) resolves immediately with a fake
+// successful child process unless a test overrides it for one call.
 vi.mock("node:child_process", async (importOriginal) => {
   const actual = await importOriginal<typeof import("node:child_process")>();
   return {
@@ -48,6 +53,11 @@ vi.mock("node:child_process", async (importOriginal) => {
         ? actual.execFileSync(command, args as string[], options as never)
         : Buffer.from(""),
     ),
+    spawn: vi.fn(() => {
+      const emitter = new EventEmitter();
+      queueMicrotask(() => emitter.emit("close", 0));
+      return emitter;
+    }),
   };
 });
 
@@ -330,35 +340,37 @@ test("canvas-theme-editor's scaffolded output doesn't include scaffold.json", as
 // installWithSpinner
 // ---------------------------------------------------------------------------
 
-test("installWithSpinner returns true and starts/stops the spinner on success", () => {
+test("installWithSpinner returns true and starts/stops the spinner on success", async () => {
   const dir = mktemp();
-  expect(installWithSpinner(dir, "npm", t)).toBe(true);
+  expect(await installWithSpinner(dir, "npm", t)).toBe(true);
   expect(spinner).toHaveBeenCalled();
 });
 
-test("installWithSpinner runs npm through npm_execpath when npm launched the CLI", () => {
+test("installWithSpinner runs npm through npm_execpath when npm launched the CLI", async () => {
   const dir = mktemp();
   const originalNpmExecPath = process.env.npm_execpath;
   process.env.npm_execpath = "/opt/npm/lib/node_modules/npm/bin/npm-cli.js";
   try {
-    expect(installWithSpinner(dir, "npm", t)).toBe(true);
+    expect(await installWithSpinner(dir, "npm", t)).toBe(true);
   } finally {
     if (originalNpmExecPath === undefined) delete process.env.npm_execpath;
     else process.env.npm_execpath = originalNpmExecPath;
   }
-  expect(vi.mocked(execFileSync)).toHaveBeenCalledWith(
+  expect(vi.mocked(spawn)).toHaveBeenCalledWith(
     process.execPath,
     ["/opt/npm/lib/node_modules/npm/bin/npm-cli.js", "install"],
     expect.objectContaining({ cwd: dir }),
   );
 });
 
-test("installWithSpinner returns false when the install command fails", () => {
+test("installWithSpinner returns false when the install command fails", async () => {
   const dir = mktemp();
-  vi.mocked(execFileSync).mockImplementationOnce(() => {
-    throw new Error("network unreachable");
+  vi.mocked(spawn).mockImplementationOnce(() => {
+    const emitter = new EventEmitter();
+    queueMicrotask(() => emitter.emit("close", 1));
+    return emitter as never;
   });
-  expect(installWithSpinner(dir, "npm", t)).toBe(false);
+  expect(await installWithSpinner(dir, "npm", t)).toBe(false);
 });
 
 // ---------------------------------------------------------------------------
@@ -428,6 +440,42 @@ test("resolveScaffoldTarget falls back to '.' for a blank prompted directory", a
 });
 
 // ---------------------------------------------------------------------------
+// resolveAiAssets
+// ---------------------------------------------------------------------------
+
+test("resolveAiAssets returns false when --no-ai is passed, without prompting", async () => {
+  const result = await resolveAiAssets({ noAi: true, isTTY: true, t });
+  expect(result).toBe(false);
+  expect(confirm).not.toHaveBeenCalled();
+});
+
+test("resolveAiAssets defaults to true under --yes, without prompting", async () => {
+  const result = await resolveAiAssets({ yes: true, isTTY: true, t });
+  expect(result).toBe(true);
+  expect(confirm).not.toHaveBeenCalled();
+});
+
+test("resolveAiAssets defaults to true on a non-TTY, without prompting", async () => {
+  const result = await resolveAiAssets({ isTTY: false, t });
+  expect(result).toBe(true);
+  expect(confirm).not.toHaveBeenCalled();
+});
+
+test("resolveAiAssets prompts on a TTY and returns the confirmed value", async () => {
+  vi.mocked(confirm).mockResolvedValueOnce(false);
+  const result = await resolveAiAssets({ isTTY: true, t });
+  expect(result).toBe(false);
+  expect(confirm).toHaveBeenCalledWith(
+    expect.objectContaining({ message: t("promptAiAssets"), initialValue: true }),
+  );
+});
+
+test("resolveAiAssets throws ScaffoldCliError when the prompt is cancelled", async () => {
+  vi.mocked(confirm).mockResolvedValueOnce(CANCEL_SYMBOL as never);
+  await expect(resolveAiAssets({ isTTY: true, t })).rejects.toThrow(ScaffoldCliError);
+});
+
+// ---------------------------------------------------------------------------
 // scaffoldWithSpinner
 // ---------------------------------------------------------------------------
 
@@ -476,7 +524,9 @@ afterEach(() => {
   stderrSpy.mockRestore();
   vi.mocked(select).mockReset();
   vi.mocked(text).mockReset();
+  vi.mocked(confirm).mockClear();
   vi.mocked(execFileSync).mockClear();
+  vi.mocked(spawn).mockClear();
   process.chdir(originalCwd);
 });
 
@@ -553,7 +603,7 @@ test("scaffolds, installs dependencies automatically, and prints a single dev st
   await runScaffoldCli(["react", "--dir", target, "--yes"], { usageCommand: "pantoken-scaffold" });
   const printed = logSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("\n");
   expect(existsSync(join(target, "package.json"))).toBe(true);
-  expect(vi.mocked(execFileSync)).toHaveBeenCalledWith(
+  expect(vi.mocked(spawn)).toHaveBeenCalledWith(
     expect.any(String),
     ["install"],
     expect.objectContaining({ cwd: target }),
@@ -604,8 +654,10 @@ test("keeps the target directory in next steps when automatic install fails", as
   const target = join(dir, "my-app");
   const originalUserAgent = process.env.npm_config_user_agent;
   process.env.npm_config_user_agent = "npm/10.0.0 node/22";
-  vi.mocked(execFileSync).mockImplementationOnce(() => {
-    throw new Error("spawnSync npm ENOENT");
+  vi.mocked(spawn).mockImplementationOnce(() => {
+    const emitter = new EventEmitter();
+    queueMicrotask(() => emitter.emit("error", new Error("spawn npm ENOENT")));
+    return emitter as never;
   });
   try {
     await runScaffoldCli(["react", "--dir", target, "--yes"], {
@@ -631,7 +683,7 @@ test("--no-install skips the automatic install and keeps the full 'Next steps' b
   });
   const printed = logSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("\n");
   expect(existsSync(join(target, "package.json"))).toBe(true);
-  expect(vi.mocked(execFileSync)).not.toHaveBeenCalledWith(
+  expect(vi.mocked(spawn)).not.toHaveBeenCalledWith(
     expect.any(String),
     ["install"],
     expect.anything(),
