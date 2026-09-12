@@ -1,0 +1,21 @@
+one security issue:
+```
+# Dangerous-Workflow #83
+.github/workflows/docs.yml:126
+   - name: Checkout code
+Dangerous-Workflow
+
+    score is 0: untrusted code checkout '${ github.event.workflow_run.head_sha || github.sha }'
+
+Remediation tip: Avoid the dangerous workflow patterns.
+
+See [this post](https://securitylab.github.com/research/github-actions-preventing-pwn-requests/) for information on avoiding untrusted code checkouts.
+```
+
+---
+
+Inspect .github/workflows/docs.yml around line 126 and overall workflow structure. Understand why github.event.workflow_run.head_sha is being checked out, what triggers this workflow (e.g., workflow_run), what permissions/secrets are used in this job or workflow, and how to safely remediate untrusted code checkout in workflow_run according to GitHub Actions security best practices (or repo patterns).
+
+---
+
+Start implementation
