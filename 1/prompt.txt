@@ -1,0 +1,37 @@
+I'm not sure where we got 'ash' from it seems like it doesn't exist and is just a duplicate of 'grey' so let's remove it here and in the custom plugin.
+
+---
+
+In /Users/dwahl/Scripts/pantoken, perform read-only discovery for the user's request: remove the `ash` color from ThemeSelector.vue and the custom plugin. First read the repository's .entire/graph-agent.md guidance and relevant AGENTS/CLAUDE instructions. Locate ThemeSelector.vue, the custom plugin definition/registry, PantokenColor/COLORS/theme helpers, locale strings, tests, generated artifacts, and any references to `ash`. Determine whether ash is a true duplicate/alias of grey, what files must change, whether generated files or changesets/docs/security assets are required, and the narrowest validation commands. Do not edit files. Return a concise report with paths, symbols, relevant line numbers, and blockers/ambiguities.
+
+---
+
+Read-only provenance check in /Users/dwahl/Scripts/pantoken. Determine whether `ash` is a valid token color name or only an old component modifier/example. Inspect the custom plugin COLOR_KEYS, token source/IR, avatar component metadata and generated docs/CSS, and git history/blame if useful. Explain why ash appears in avatar metadata and localized docs, whether any actual token namespace defines ash distinctly from grey, and recommend exact cleanup scope. Do not edit files.
+
+---
+
+I just rebuilt the navbar, so the color picker now lives in ThemeColorPicker.vue in docs.
+
+---
+
+don't do any of the translation work associated with this change, I'll handle that separately. on avatar we'll mark color-ash as deprecated.
+
+---
+
+Start implementation
+
+---
+
+check the focus-outline assertion that's failing, it could be hard coded for a color that we've now changed with the plugin.
+
+---
+
+now we need a changeset for docs, demos, plugins/pantoken/custom-theme-colors, and renderers/vitepress.
+
+---
+
+because we did this, navy and blue now appear as the active color again, we need to add the preserved colors here for those specifically for all 3 themes.
+
+---
+
+change the label from "Select theme" to "Theme" to match "Language" and "Appearance"
