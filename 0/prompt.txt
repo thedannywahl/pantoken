@@ -1,0 +1,7 @@
+with the locale-based split of the sidebar content it now doesn't load on any api page in any locale:
+http://localhost:5173/api/
+http://localhost:5173/api/css/
+
+it only loads on the guides page:
+
+http://localhost:5173/guide/getting-started
