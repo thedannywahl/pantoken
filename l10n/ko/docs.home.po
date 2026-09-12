@@ -22,25 +22,20 @@ msgstr "시작하기"
 
 #: index.md:12
 #, no-c-format
-msgid "The package map"
-msgstr "패키지 맵"
+msgid "CSS reference"
+msgstr "CSS 참조"
 
 #: index.md:15
 #, no-c-format
 msgid "API reference"
 msgstr "API 참조"
 
-#: index.md:18
-#, no-c-format
-msgid "CSS reference"
-msgstr "CSS 참조"
-
-#: index.md:24
+#: index.md:21
 #, no-c-format
 msgid "One source of truth"
 msgstr "하나의 신뢰할 수 있는 원천"
 
-#: index.md:25
+#: index.md:22
 #, no-c-format
 msgid ""
 "Every package reads the same resolved token IR. Change a token upstream and "
@@ -49,12 +44,12 @@ msgstr ""
 "모든 패키지가 동일한 해석된 토큰 IR을 읽습니다. 상위에서 토큰을 변경하면 "
 "CSS, SCSS, 네이티브 코드 및 Figma에 동일하게 반영됩니다."
 
-#: index.md:29
+#: index.md:26
 #, no-c-format
 msgid "Use the smallest package"
 msgstr "가장 작은 패키지 사용"
 
-#: index.md:30
+#: index.md:27
 #, no-c-format
 msgid ""
 "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and "
@@ -63,12 +58,12 @@ msgstr ""
 "스타일시트에는 @pantoken/css만 설치하고, 훅과 아이콘에는 @pantoken/react을 설"
 "치하거나 Tailwind, Panda, MUI용 번들러 프리셋을 사용하세요."
 
-#: index.md:34
+#: index.md:31
 #, no-c-format
 msgid "Generate for any platform"
 msgstr "모든 플랫폼용 생성"
 
-#: index.md:35
+#: index.md:32
 #, no-c-format
 msgid ""
 "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, "
@@ -78,12 +73,12 @@ msgstr ""
 "generate`을 실행하세요. 동일한 토큰을 각 생태계의 표현 방식에 맞게 제공합니"
 "다."
 
-#: index.md:39
+#: index.md:36
 #, no-c-format
 msgid "No upstream coupling"
 msgstr "업스트림 결합 없음"
 
-#: index.md:40
+#: index.md:37
 #, no-c-format
 msgid ""
 "The tokens ship vendored as static JSON, so `npm i` never reaches for a "
@@ -91,3 +86,7 @@ msgid ""
 msgstr ""
 "토큰은 벤더된 정적 JSON으로 배포되므로 `npm i`은 GitHub 전용 소스를 참조하지 "
 "않습니다. 배포 가능하고 semver 규격을 따르며 오프라인 친화적입니다."
+
+#, no-c-format
+#~ msgid "The package map"
+#~ msgstr "패키지 맵"

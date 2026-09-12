@@ -9,14 +9,11 @@ hero:
       text: Ξεκινώντας
       link: /el/guide/getting-started
     - theme: alt
-      text: Ο χάρτης πακέτων
-      link: /el/guide/packages
+      text: Αναφορά CSS
+      link: /el/api/css/
     - theme: alt
       text: Αναφορά API
       link: /el/api
-    - theme: alt
-      text: Αναφορά CSS
-      link: /el/api/css
 features:
   - icon:
       light: /book-check-light.svg

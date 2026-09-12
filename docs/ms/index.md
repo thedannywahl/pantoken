@@ -9,14 +9,11 @@ hero:
       text: Memulakan
       link: /ms/guide/getting-started
     - theme: alt
-      text: Peta pakej
-      link: /ms/guide/packages
+      text: Rujukan CSS
+      link: /ms/api/css/
     - theme: alt
       text: Rujukan API
       link: /ms/api
-    - theme: alt
-      text: Rujukan CSS
-      link: /ms/api/css
 features:
   - icon:
       light: /book-check-light.svg

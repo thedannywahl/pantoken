@@ -22,25 +22,20 @@ msgstr "Dechrau"
 
 #: index.md:12
 #, no-c-format
-msgid "The package map"
-msgstr "Map pecynnau"
+msgid "CSS reference"
+msgstr "Cyfeirlyfr CSS"
 
 #: index.md:15
 #, no-c-format
 msgid "API reference"
 msgstr "Cyfeirlyfr API"
 
-#: index.md:18
-#, no-c-format
-msgid "CSS reference"
-msgstr "Cyfeirlyfr CSS"
-
-#: index.md:24
+#: index.md:21
 #, no-c-format
 msgid "One source of truth"
 msgstr "Un ffynhonnell o wirionedd"
 
-#: index.md:25
+#: index.md:22
 #, no-c-format
 msgid ""
 "Every package reads the same resolved token IR. Change a token upstream and "
@@ -49,12 +44,12 @@ msgstr ""
 "Mae pob pecyn yn darllen yr un IR tocyn datrysiedig. Newidiwch docyn yn y "
 "ffynhonnell a llifo ef i CSS, SCSS, cod frodorol, a Figma yr un ffordd."
 
-#: index.md:29
+#: index.md:26
 #, no-c-format
 msgid "Use the smallest package"
 msgstr "Defnyddiwch y pecyn lleiaf"
 
-#: index.md:30
+#: index.md:27
 #, no-c-format
 msgid ""
 "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and "
@@ -64,12 +59,12 @@ msgstr ""
 "gyfer hooks ac eiconau, neu ragosodwr bundler ar gyfer Tailwind, Panda, neu "
 "MUI."
 
-#: index.md:34
+#: index.md:31
 #, no-c-format
 msgid "Generate for any platform"
 msgstr "Generiwch ar gyfer unrhyw lwyfan"
 
-#: index.md:35
+#: index.md:32
 #, no-c-format
 msgid ""
 "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, "
@@ -78,12 +73,12 @@ msgstr ""
 "Rhedwch `pantoken generate` i allforio Swift, Kotlin, Compose, Flutter, "
 "Rust, WordPress, ac eraill. Yr un tocynnau, yn idiom pob ecosystem."
 
-#: index.md:39
+#: index.md:36
 #, no-c-format
 msgid "No upstream coupling"
 msgstr "Dim cysylltiad uwchlaw"
 
-#: index.md:40
+#: index.md:37
 #, no-c-format
 msgid ""
 "The tokens ship vendored as static JSON, so `npm i` never reaches for a "
@@ -92,3 +87,7 @@ msgstr ""
 "Mae'r tocynnau'n cael eu danfon wedi'u vendorio fel JSON statig, felly nid "
 "yw `npm i` byth yn cyrraedd at ffynhonnell sydd ond ar GitHub. Gallu ei "
 "gyhoeddi, gyda semver, ac yn gyfeillgar i weithredu heb gysylltiad."
+
+#, no-c-format
+#~ msgid "The package map"
+#~ msgstr "Map pecynnau"

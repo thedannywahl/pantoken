@@ -1,44 +1,38 @@
 # Aloittaminen
 
-Pantoken ottaa [Instructure UI](https://instructure.design) -suunnittelutokenit ja -ikonit, ratkaisee ne kerran ja muokkaa tuon yhden
-mallin paketeiksi monille alustoille: tavallisiksi tyylitaulukoiksi, SCSS:ksi ja Less:ksi, Reactiksi, Vuella ja Sveltellä,
-Tailwindiksi ja Pandaksi, natiiviksi Swiftiksi ja Kotliniksi, WordPressiksi ja Drupaliksi, Figmaa varten ja muillekin.
+Pantoken ottaa [Instructure UI](https://instructure.design) -suunnittelutokenit ja ikonit, ratkaisee ne kerran ja muokkaa tuon yhden mallin paketeiksi monille alustoille: tavallisiksi tyylitaulukoiksi, SCSS:ksi ja Lessiksi, Reactiksi ja Vuella ja Sveltellä, Tailwindiksi ja Pandaksi, natiiviksi Swiftiksi ja Kotliniksi, WordPressiksi ja Drupaliksi, Figmaa ja lisää.
 
-Asenna pienin paketti, joka sopii tehtävääsi. Kaikki on myös uudelleenviety yhdistetyn
-`pantoken`-paketin kautta, joten voit aloittaa sieltä ja tarkentaa myöhemmin.
+Asenna pienin paketti, joka sopii tehtävääsi. Kaikki on myös uudelleenviety yhtenäiseen `pantoken`-pakettiin, joten voit aloittaa sieltä ja tarkentaa myöhemmin.
 
 ## Luo aloitusprojekti
 
-Nopein tapa kokeilla pantokenia: alusta starter-projekti, jossa se on jo asennettu ja kytketty.
+Nopein tapa kokeilla pantokenia: luo aloitusprojekti, johon se on jo asennettu ja kytketty.
 
 ```sh
 npx create-pantoken-app
 ```
 
 Alustat: `components` (tavallinen HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. Katso
-[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) kohdasta `--dir <path>` ja
-ohjelmallinen käyttö.
+[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) varten `--dir <path>` ja ohjelmallinen käyttö.
 
-Käytetäänkö AI-koodausskenaarioita? Asennusta ei tarvita — osoita agentti suoraan tälle skillille:
+Käytössäsi AI-koodausagentti? Asennusta ei tarvita — osoita agentti suoraan skillille:
 
 ```prompt
-Hae create.pantoken.app/SKILL.md ja noudata sitä ottaaksesi pantokenin käyttöön tässä projektissa.
+Hae create.pantoken.app/SKILL.md ja seuraa sitä asentaaksesi pantokenin tähän projektiin.
 ```
 
-Jos haluat kytkeä pantokenin agenttisäännöt pysyvästi repositorioon (AGENTS.md, editorin säännöt, paikallinen kopio tästä skillistä), suorita sen sijaan `npx @pantoken/ai init`.
+Jos haluat mieluummin kytkeä pantokenin agenttisäännöt pysyvästi repositorioon (AGENTS.md, editorin säännöt, paikallinen kopio tästä skillistä), suorita sen sijaan `npx @pantoken/ai init`.
 
 ## Token-malli
 
-Tokenit ovat CSS:n mukautettuja ominaisuuksia nimeltä `--instui-<group>-<name>`, esimerkiksi
+Tokenit ovat CSS:n mukautettuja ominaisuuksia nimeltään `--instui-<group>-<name>`, esimerkiksi
 `--instui-color-background-brand` tai `--instui-spacing-space-md`. Kolme teemaa toimitetaan: `rebrand`
-(oletusteema, jossa `light-dark()` eroavat light- ja dark-tiloissa), `canvas` ja `canvasHighContrast`.
-Ikonit ovat `<image>`-tokeneita (`--instui-icon-<name>`), jotka on johdettu Lucidesta plus Instructuren omat
-glyfit.
+(oletus, jossa `light-dark()` eroaa light- ja dark-teemoissa), `canvas`, ja `canvasHighContrast`.
+Ikonit ovat `<image>`-tokeneita (`--instui-icon-<name>`), jotka on johdettu Lucidesta sekä Instructuren omista glyfeistä.
 
-## Tyylittele web-sovellus
+## Tyylitä web-sovellus
 
-Asenna tyylitaulukko ja tuo se kerran. Se määrittelee jokaisen `--instui-*`-ominaisuuden, joten viittaat
-niihin suoraan omassa CSS:ssäsi.
+Asenna tyylitaulukko ja tuo se kerran. Se määrittelee kaikki `--instui-*`-ominaisuudet, joten viittaat niihin suoraan omassa CSS:ssäsi.
 
 ```sh
 npm i @pantoken/css
@@ -57,7 +51,7 @@ import "@pantoken/css/inject";
 
 ## Käytä ikoneita missä tahansa
 
-Web-komponentti toimii missä tahansa kehikossa ilman siirtoaskelta.
+Web-komponentti toimii missä tahansa frameworkissa ilman porttausta.
 
 ```sh
 npm i @pantoken/web-components
@@ -73,8 +67,7 @@ import "@pantoken/web-components";
 
 ### CSS-tokenit
 
-Ikonit ovat CSS:n mukautettuja ominaisuuksia (`--instui-icon-<name>`). Lataa tyylitaulukko kerran ja viittaa mihin tahansa
-ikoniin `mask-image`- tai `background-image`-muodossa — erillistä tuontia jokaista ikonia kohden ei tarvita.
+Ikonit ovat CSS:n mukautettuja ominaisuuksia (`--instui-icon-<name>`). Lataa tyylitaulukko kerran ja viittaa mihin tahansa ikoniin `mask-image`- tai `background-image`-muodossa — yksittäistä ikonia ei tarvitse tuoda erikseen.
 
 ```css
 .my-icon {
@@ -84,7 +77,7 @@ ikoniin `mask-image`- tai `background-image`-muodossa — erillistä tuontia jok
 
 ### JavaScript — yksittäinen ikoni vs. koko kokoelma
 
-`@pantoken/icons` paljastaa kaksi nimettyä vientiä. Käytä `iconsByName` tuodaksesi yhden ikonin ilman koko taulukon läpikäyntiä:
+`@pantoken/icons` tarjoaa kaksi nimettyä vientiä. Käytä `iconsByName` hakeaksesi yhden ikonin ilman, että tarvitsee iteroida koko taulukkoa:
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -93,7 +86,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-Käytä `icons` kun tarvitset koko joukkoa (esim. rakentamaan valitsimen):
+Käytä `icons`, kun tarvitset koko kokoelman (esim. valitsimen rakentamiseen):
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -102,11 +95,11 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Molemmat vientiä tuotavat täyden IR:n moduulin alustuksessa — tässä tasossa ei ole per-ikonin puuta-poistoa. Kevyempää CSS-only-latausta varten käytä [CDN picker](/guide/cdn-picker) -työkalua luodaksesi yhdistetyn URLin vain tarvitsemillesi ikoneille.
+Molemmat vientimuodot lataavat koko IR:n moduulin alustuksessa — tässä tasossa ei ole per-ikonin puuta-poistamista (tree-shaking). Kevyempään, vain CSS-pohjaiseen lataukseen käytä [CDN picker](/guide/cdn-picker) -työkalua generoimaan yhdistetty URL vain tarvitsemillesi ikooneille.
 
-## Generoi natiivialustalle
+## Generoi natiiville alustalle
 
-CLI kirjoittaa token-lähteen kohderepositorioon. Ei asennusta suoritusrungon lisäksi:
+CLI kirjoittaa token-lähteen kohderepoon. Juoksijaa lukuun ottamatta ei tarvita asennusta:
 
 ```sh
 npx @pantoken/cli generate swift --out ./ios/Tokens --icons arrow-left,check-mark
@@ -116,16 +109,15 @@ Katso [pantoken CLI](/guide/cli) jokaista kohdetta varten.
 
 ## VS Code -kirjoitusvinkit
 
-`@pantoken/pantoken` toimittaa nyt VS Code -custom-data-tiedostoja, jotta downstream-projektit saavat luokan ja
-tokenin täydennyksen HTML/CSS:ssä ilman pantoken-spesifistä laajennusta.
+`@pantoken/pantoken` toimittaa nyt VS Code -custom-data -tiedostoja, jotta downstream-projektit voivat saada luokka- ja token-automaattitäydennyksiä HTML/CSS:ssä ilman pantoken-spesifistä laajennusta.
 
-1. Asenna yhdistetty paketti:
+1. Asenna yhtenäinen paketti:
 
 ```sh
 npm i @pantoken/pantoken
 ```
 
-1. Ohjaa VS Code kuluttajatyötilasta löytyvään toimitettuun custom-data JSON:iin:
+1. Ohjaa VS Code kuluttajatyötilastasi toimitettuun custom-data JSON:iin:
 
 ```json
 {
@@ -136,12 +128,11 @@ npm i @pantoken/pantoken
 
 1. Lataa VS Code uudelleen (tai suorita "Developer: Reload Window") ottaaksesi uuden datan käyttöön.
 
-Tämä mahdollistaa ehdotukset `instui-*`-luokkatoimintojen (ja `-modifier`-luokkatoimintojen) sekä
-`--instui-*`-mukautettujen ominaisuuksien osalta.
+Tämä mahdollistaa ehdotukset `instui-*` luokkatokeneille (ja `-modifier` luokkatokeneille) sekä `--instui-*` mukautetuille ominaisuuksille.
 
 ## Mihin seuraavaksi
 
-- [Paketin kartta](/guide/packages) — mikä paketti valitaan tehtävän mukaan.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — asenna agenttiresurssit ja säännöt kuluttajarepoon.
-- [Arkkitehtuuri](/guide/architecture) — miten token-malli, core ja outputit sopivat yhteen.
-- [API-reference](/api/) — jokainen viety symboli, generoitu lähdekoodista.
+- [Paketin kartta](/api/) — mikä paketti sopii mihinkin tehtävään.
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — asenna agenttiassetit ja säännöt kuluttajarepoon.
+- [Arkkitehtuuri](/guide/architecture) — miten token-malli, core ja tuotokset sopivat yhteen.
+- [API-viite](/api/) — kaikki viedyt symbolit, generoitu lähdekoodista.

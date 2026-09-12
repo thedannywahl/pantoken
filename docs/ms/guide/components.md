@@ -1,25 +1,19 @@
 # Komponen
 
-`@pantoken/components` menghantar gaya komponen berasaskan kelas yang dibina daripada token Instructure. Import helaian gaya dan tandakan markup anda — tiada rangka kerja diperlukan.
+`@pantoken/components` menghantar gaya komponen berasaskan kelas yang dibina dari token Instructure. Import helaian gaya dan tag markup anda — tiada rangka kerja diperlukan.
 
 ```ts
 import "@pantoken/components/components.css";
 ```
 
 > [!NOTE]
-> Suka elemen tersuai? `@pantoken/web-components` membungkus gaya yang sama ini sebagai `<instui-button>`,
-> `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, dan banyak lagi — lihat
-> [peta pakej](/guide/packages).
+> Lebih suka elemen tersuai? `@pantoken/web-components` membalut gaya yang sama ini sebagai `<instui-button>`, `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, dan banyak lagi — lihat [peta pakej](/api/).
 
 ## Konvensyen
 
-Konvensyen CSS dalam pakej ini berdasar pada versi diubah suai [RSCSS](https://ricostacruz.com/rscss/index.html).
+Konvensyen CSS dalam pakej ini berasaskan versi diubah suai [RSCSS](https://ricostacruz.com/rscss/index.html).
 
-Pengubah (modifier) adalah **kunci-nilai** — `-<prop>-<val>`, selari dengan nama prop InstUI — jadi ia dibaca
-dengan sendiri: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Prop boolean adalah nama prop sahaja, di mana kewujudan bermaksud `true` (`-has-shadow`, `-clickable`); boolean lalai-pada yang dimatikan
-membalikkan (`-without-background`, `-without-border`). Saiz menerima ejaan pendek dan panjang
-(`-size-sm` = `-size-small`). Di mana nama menyimpang dari InstUI, kelas bersemantik InstUI masih berfungsi
-tetapi ditandakan usang (contoh `-variant-info` → gunakan `-color-info`).
+Modifier adalah **kunci-nilai** — `-<prop>-<val>`, selaras dengan nama prop InstUI — jadi ia terbaca sendiri: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Prop boolean ialah nama prop sahaja, di mana kehadiran bermaksud `true` (`-has-shadow`, `-clickable`); boolean yang lalai-aktif yang dimatikan membalikkan (`-without-background`, `-without-border`). Saiz menerima ejaan pendek dan panjang (`-size-sm` = `-size-small`). Apabila nama menyimpang daripada InstUI, kelas semantik InstUI masih berfungsi tetapi ditandakan usang (contohnya `-variant-info` → guna `-color-info`).
 
 ### Contoh
 
@@ -49,12 +43,7 @@ komponen pantoken:
 </div>
 ```
 
-Untuk prop `timeout` InstUI, tetapkan sifat tersuai tanpa unit `--timeout` dalam milisaat dan muatkan
-interaksi Alert. Nilai positif menjadualkan penutupan; `0` (lalai) membiarkan amaran di
-tempat. Tambah kelas `instui-transition -fade-entered` utiliti `transition` untuk fade InstUI; tinggalkan
-mereka untuk pengalih keluaran segera. Interaksi mengawal keadaan `-fade-exiting` dan memancarkan acara
-batal-boleh (cancelable), menggelembung `dismiss` sebelum penghapusan, jadi aplikasi boleh memanggil `preventDefault()` untuk mengekalkan
-amaran dipasang.
+Untuk prop `timeout` InstUI, tetapkan sifat tersuai tanpa unit `--timeout` dalam milisaat dan muatkan interaksi Alert. Nilai positif menjadualkan pembatalan; `0` (lalai) membiarkan amaran kekal. Tambah kelas `instui-transition -fade-entered` utiliti `transition` untuk pudar InstUI; tinggalkan ia untuk penghapusan segera. Interaksi menggerakkan keadaan `-fade-exiting` dan memancarkan acara `dismiss` yang boleh dibatalkan dan menggelembung sebelum penghapusan, supaya aplikasi boleh memanggil `preventDefault()` untuk mengekalkan pemasangan amaran.
 
 ```html
 <link
@@ -71,14 +60,7 @@ amaran dipasang.
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/alert.iife.js"></script>
 ```
 
-Bar kemajuan menerima skala sewenang-wenangnya melalui `--min` (`0` secara lalai), `--value`, dan `--max`
-(`100` secara lalai), dengan alias usang `--value-now` dan `--value-max`. Tambah `-should-animate`
-untuk menggunakan peralihan setengah saat InstUI setiap kali nilai berubah. `.value` berdampingan dengan `.bar` sebagai
-anak kepada root; tambah `-render-value-inside` untuk merendernya di atas trek, diselaraskan ke permulaan,
-sebagai ganti (gayakan untuk keterbacaan terhadap warna meter). Gunakan `<progress>` asli untuk julat berasaskan sifar dan `<meter>` apabila minimum bukan sifar; web components memilih di antara mereka
-secara automatik daripada atribut `min`. InstUI tiada keadaan tak tentu (indeterminate), jadi `<progress>`
-yang hilang atribut `value` adalah anggaran terbaik pantoken sahaja: `progress-bar` menganimasikan `.bar` sebagai
-segmen gelongsor dan `progress-circle` memusingkan cincangnya pada busur tetap, kedua-duanya menyembunyikan `.value`.
+Bar kemajuan menerima skala sewenang-wenangnya melalui `--min` (`0` secara lalai), `--value`, dan `--max` (`100` secara lalai), dengan alias usang `--value-now` dan `--value-max`. Tambah `-should-animate` untuk memohon peralihan separuh saat InstUI bila nilai berubah. `.value` berdiri bersama `.bar` sebagai anak akar; tambah `-render-value-inside` untuk merendernya di atas trek, diselaraskan ke permulaan, sebaliknya (gayakan untuk keterbacaan terhadap warna meter). Gunakan `<progress>` natif untuk julat berasaskan sifar dan `<meter>` apabila minimum bukan sifar; komponen web memilih antara keduanya secara automatik dari atribut `min`. InstUI tiada keadaan tidak tentu, jadi `<progress>` yang hilang atribut `value` adalah anggaran terbaik pantoken: `progress-bar` menganimasikan `.bar` sebagai segmen meluncur dan `progress-circle` memutar cincin pada busur tetap, kedua-duanya menyembunyikan `.value`.
 
 ```html
 <label>
@@ -94,11 +76,7 @@ segmen gelongsor dan `progress-circle` memusingkan cincangnya pada busur tetap, 
 </label>
 ```
 
-Bulatan kemajuan menerima skala sewenang-wenangnya yang sama melalui `--min`, `--value`, dan `--max`.
-`--value-now` dan `--value-max` kekal sebagai alias fungsional usang. Tambah `-should-animate` dan
-muatkan bundle interaksi fokus untuk menyerupai animasi mount InstUI; `--animation-delay` adalah
-tangguh tanpa unit dalam milisaat. Ejaan usang `-should-animate-on-mount` dan
-`-shold-animate-on-mount` kekal sebagai alias fungsional.
+Bulatan kemajuan menerima skala sewenang-wenangnya yang sama melalui `--min`, `--value`, dan `--max`. `--value-now` dan `--value-max` kekal sebagai alias fungsional usang. Tambah `-should-animate` dan muatkan pek interaksi fokus untuk menghasilkan semula animasi pemasangan InstUI; `--animation-delay` ialah kelewatan tanpa unit dalam milisaat. Ejaan usang `-should-animate-on-mount` dan `-shold-animate-on-mount` kekal alias fungsional.
 
 ```html
 <label for="upload-progress">Uploading Document</label>
@@ -116,9 +94,7 @@ tangguh tanpa unit dalam milisaat. Ejaan usang `-should-animate-on-mount` dan
 
 ## Awalan kelas
 
-Setiap kelas diberi namespace `instui-` secara lalai. Bina helaian gaya dengan prefix anda sendiri — atau tiada — dengan
-menyampaikan `prefix` kepada mana-mana pembina. Mana-mana nilai palsu (`null`, `undefined`, `""`, atau mengabaikannya) membuang
-prefix sepenuhnya, jadi anda boleh menulis `class="heading -level-h1"` bukannya `class="instui-heading -level-h1"`:
+Setiap kelas dinamasakan `instui-` secara lalai. Bina helaian gaya dengan awalan sendiri — atau tiada — dengan menyerahkan `prefix` kepada mana-mana pembina. Mana-mana nilai palsu (`null`, `undefined`, `""`, atau mengabaikannya) menjatuhkan awalan sepenuhnya, jadi anda boleh mengarang `class="heading -level-h1"` menggantikan `class="instui-heading -level-h1"`:
 
 ```ts
 import { componentsCss } from "@pantoken/components";
@@ -127,26 +103,20 @@ componentsCss({ prefix: "ui" }); // .ui-button
 componentsCss({ prefix: null }); // .button, .alert — no prefix
 ```
 
-Modifier berawalan sengkang (`.-color-secondary`, `.-level-h1`) tidak berubah sama ada. Helaian gaya yang dihantar oleh pakej mengekalkan prefix `instui`.
+Modifier berawalan sengkang (`.-color-secondary`, `.-level-h1`) tidak berubah sama ada. Helaian gaya yang dihantar oleh pakej mengekalkan awalan `instui`.
 
 ## Asas
 
-`base.css` adalah reset opt-in yang menetapkan default dokumen global dari token: `box-sizing`, satu
-reset `body`, permukaan halaman, warna dan fon teks asas, `color-scheme` (supaya token `light-dark()` dan kawalan asli mengikuti tema), dan pautan asas. Muatkannya sekali, sebelum helaian komponen dan prosa,
-apabila pantoken menguasai halaman.
+`base.css` ialah reset pilihan yang menetapkan lalai dokumen global dari token: `box-sizing`, reset `body`, permukaan halaman, warna teks asas dan fon, `color-scheme` (supaya token `light-dark()` dan kawalan natif mengikuti tema), dan pautan asas. Muat sekali, sebelum helaian komponen dan prosa, apabila pantoken menguruskan halaman.
 
 ```ts
 import "@pantoken/components/base.css";
 import "@pantoken/components/components.css";
 ```
 
-Langkau ia apabila anda menyematkan komponen ke hos yang sudah membuat tema `html` dan `body` sendiri —
-reset mengecat permukaan halaman, jadi anda tidak mahu ia bertindan dengan hos. Semua yang ditetapkannya menggunakan
-pemilih `:where()` ber-spesifiti rendah, jadi peraturan anda sendiri sentiasa menang.
+Langkau ia apabila anda menyematkan komponen ke hos yang sudah menentukalkan `html` dan `body` sendiri — reset itu mengecat permukaan halaman, jadi anda tidak mahu ia bertembung dengan hos. Semua yang ditetapkan menggunakan pemilih `:where()` berspesifik rendah, jadi peraturan anda sendiri sentiasa menang.
 
-`base.css` _menerapkan_ fon jenama (`font-family: var(--instui-font-family-base)`, dengan fallback sistem); untuk _memuatkannya_, import `fonts.css` opt-in — `@font-face` peraturan untuk Atkinson Hyperlegible
-Next, menunjuk ke woff2 yang dihantar dalam pakej. Ia dipisahkan kerana muka fon adalah ~350 kB dan
-menjalankan hosting sendiri untuk fon adalah pilihan yang disengajakan.
+`base.css` _menggunakan_ fon jenama (`font-family: var(--instui-font-family-base)`, dengan fallback sistem); untuk _memuatkannya_, import `fonts.css` pilihan — `@font-face` peraturan untuk Atkinson Hyperlegible Next, menunjuk kepada woff2 yang dihantar dalam pakej. Ia berasingan kerana muka huruf sekitar ~350 kB dan mengehos sendiri fon adalah pilihan yang disengajakan.
 
 ```ts
 import "@pantoken/components/base.css"; // applies the font (falls back to system without fonts.css)
@@ -155,21 +125,17 @@ import "@pantoken/components/fonts.css"; // loads the Atkinson Hyperlegible Next
 
 ## Kandungan pembaca skrin
 
-<p>Ada mesej tersembunyi selepas ayat ini.<span class="instui-screen-reader-content">Hanya pembaca skrin yang akan mengumumkannya.</span></p>
+<p>Ada mesej tersembunyi selepas ayat ini.<span class="instui-screen-reader-content">Hanya pembaca skrin yang mengumumkannya.</span></p>
 
 ```html
 <span class="instui-screen-reader-content">Only screen readers announce this.</span>
 ```
 
-`.instui-screen-reader-content` menyembunyikan elemen secara visual sambil mengekalkannya dalam pokok kebolehaksesan
-— untuk label dan teks status yang harus dibaca oleh teknologi bantuan tetapi reka bentuk tidak perlu paparkan.
+`.instui-screen-reader-content` menyembunyikan elemen secara visual sambil mengekalkannya dalam pokok aksesibiliti — untuk label dan teks status yang harus dibaca oleh teknologi bantuan tetapi reka bentuk tidak harus memaparkannya.
 
 ## Utiliti
 
-`utilities.css` adalah lapisan opt-in kelas lintas-gugus: primitif `View`, jarak pada skala token,
-dan ganti warna semantik. Berbeza dengan kelas komponen `-modifier`, ini menggunakan **dua sengkang**
-(`--mod`) supaya ia tidak pernah bertembung dengan nama modifier komponen, dan ia terpakai kepada mana-mana
-elemen — tunggal, atau digabungkan pada komponen.
+`utilities.css` ialah lapisan pilihan kelas rentas: primitif `View`, jarak pada skala token, dan ganti warna semantik. Berbeza dengan kelas `-modifier` komponen, ini menggunakan **sengkang berganda** (`--mod`) supaya ia tidak pernah bertembung dengan nama modifier komponen, dan ia terpakai pada mana-mana elemen — kosong, atau digabungkan pada komponen.
 
 ```ts
 import "@pantoken/components/utilities.css";
@@ -179,7 +145,7 @@ import "@pantoken/components/utilities.css";
   <span class="instui-text --text-on-color">Permukaan accent-blue dengan teks on-color.</span>
 </div>
 <div class="instui-view --bg-muted --p-sm --mx-auto" style="max-width: 12rem; border-radius: 6px; text-align: center;">
-  <span class="instui-text">Diselaraskan tengah dengan mx-auto.</span>
+  <span class="instui-text">Disediakan tengah dengan mx-auto.</span>
 </div>
 
 ```html
@@ -187,29 +153,23 @@ import "@pantoken/components/utilities.css";
 <div class="instui-view --bg-muted --p-sm --mx-auto">…</div>
 ```
 
-**View** — `.instui-view` adalah `View` InstUI. Ia adalah asas yang anda lapiskan dengan jarak dan warna, dan ia
-membawa modifier kunci-nilai untuk prop visualnya sendiri supaya anda tidak perlu bergantung pada utiliti:
+**View** — `.instui-view` ialah `View` InstUI. Ia asas yang anda lapisi dengan jarak dan warna, dan ia membawa modifier kunci-nilai untuk prop visualnya sendiri supaya anda tidak perlu mencari utiliti:
 `-background-*` (permukaannya), `-border-radius-{small,medium,large,circle,pill}`,
 `-border-width-{small,medium,large}` + `-border-color-*`, `-shadow-{resting,above,topmost}`,
-`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, dan `-cursor-*` — ini adalah modifier sengkang-tunggal milik `view`,
-tidak berkaitan dengan utiliti dua-sengkang di bawah. Prop nilai bebas
-(lebar/tinggi/inset) kekal sebagai gaya sebaris; `margin`/`padding` menggunakan utiliti jarak.
+`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, dan `-cursor-*` — ini ialah modifier sengkang tunggal `view` sendiri, tidak berkaitan dengan utiliti sengkang berganda di bawah. Prop nilai-bebas (lebar/tinggi/inset) kekal gaya sebaris; `margin`/`padding` menggunakan utiliti jarak.
 
-**Spacing** — kelas setiap sisi pada skala jarak. Baca mereka sebagai `{m|p}{side}-{step}`: `m` untuk
-margin atau `p` untuk padding (atau perkataan penuh `margin`/`padding`), satu sisi logik pilihan, kemudian langkah. Jadi `.--m-lg` dan `.--margin-lg` sama, serta `.--pt-md` dan `.--paddingt-md`.
+**Jarak** — kelas per-sisi pada skala jarak. Bacanya sebagai `{m|p}{side}-{step}`: `m` untuk margin atau `p` untuk padding (atau perkataan penuh `margin`/`padding`), pilihan sisi logik, kemudian langkah. Jadi `.--m-lg` dan `.--margin-lg` adalah sama, begitu juga `.--pt-md` dan `.--paddingt-md`.
 
-- Sisi: none (semua), `t`/`b` (permulaan/akhir blok), `s`/`e` (permulaan/akhir dalam-garis), `x`/`y` (paksi dalam/blok). Sisi logik kekal betul dalam susunan kanan-ke-kiri.
-- Langkah: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, serta `auto` untuk margin sahaja.
+- Sisi: none (semua), `t`/`b` (permulaan/akhir blok), `s`/`e` (permulaan/akhir sebaris), `x`/`y` (paksi sebaris/blok). Sisi logik kekal betul dalam susun atur kanan-ke-kiri.
+- Langkah: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, ditambah `auto` untuk margin sahaja.
 
 Gabungkan mereka untuk singkatan `margin="small auto large"` InstUI:
 `class="--mt-sm --mx-auto --mb-lg"`.
 
-**Color** — ganti semantik yang tetap pada palet: `.--bg-<name>` (latar),
-`.--text-<name>` (warna teks), dan `.--border-<name>` (warna sempadan). Setiap `<name>` adalah
-token warna semantik — niat (intents) (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
-`inverse`, `on-color`, `strong`, …) ditambah palet `accent-*` (`accent-blue`, `accent-green`, dan seterusnya). Nama hanya ada jika token wujud dalam keluarga itu, jadi `text-brand` bukan kelas — teks tiada token jenama. Tiada cara untuk mencapai primitif atau hex sewenang-wenangnya, dan setiap ganti mengikuti tema.
+**Warna** — ganti semantik yang kekal dalam palet: `.--bg-<name>` (latar),
+`.--text-<name>` (warna teks), dan `.--border-<name>` (warna sempadan). Setiap `<name>` ialah token warna semantik — niat (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`, `inverse`, `on-color`, `strong`, …) plus palet `accent-*` (`accent-blue`, `accent-green`, dan seterusnya). Nama wujud hanya jika token ada dalam keluarga itu, jadi `text-brand` bukan kelas — teks tiada token jenama. Tiada cara untuk mencapai primitif atau hex sewenang-wenangnya, dan setiap ganti mengikuti tema.
 
-**Keluarga token** — setiap keluarga "satu token, satu properti" mendapat satu kelas per token, dinamakan mengikut token. Gabungkan mereka dengan bebas:
+**Keluarga token** — setiap keluarga "satu token, satu sifat" mendapat kelas bagi setiap token, dinamakan selepas token. Gabungkan secara bebas:
 
 - `.--font-family-heading`, `.--font-family-code`, … → `font-family`
 - `.--font-weight-body-strong`, `.--font-weight-interactive`, … → `font-weight`
@@ -219,25 +179,19 @@ token warna semantik — niat (intents) (`base`, `brand`, `muted`, `success`, `w
 - `.--opacity-base`, `.--opacity-disabled` → `opacity`
 - `.--elevation-resting`/`-above`/`-topmost` (dan `-depth1`…`-card`) → `box-shadow`
 
-Setiap satu hanya menetapkan satu propertinya, jadi `border-width`/`border-radius` memerlukan warna `border-*` dan gaya sempadan untuk benar-benar menggambar sempadan. Ini menggunakan nama token penuh (`.--border-radius-md`), manakala pembantu warna dan jarak di atas menggunakan alias pendek (`.--bg-brand`, `.--mt-lg`) — alias adalah pintasan ergonomik; kelas token adalah literal dan lengkap.
+Setiap satu hanya menetapkan satu sifatnya, jadi `border-width`/`border-radius` memerlukan warna `border-*` dan gaya sempadan untuk benar-benar melukis sempadan. Ini menggunakan nama token penuh (`.--border-radius-md`), manakala pembantu warna dan jarak di atas menggunakan alias pendek (`.--bg-brand`, `.--mt-lg`) — alias adalah pintasan ergonomik; kelas token adalah literal dan menyeluruh.
 
-**Layout** — `.--display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`,
-`none`) dan `.--text-align-<value>` (`start`, `center`, `end`, `justify`) merangkumi prop lintas-gugus `display` dan `textAlign` InstUI (View, Button, Metric, Tabs, …) sebagai kelas boleh gabung —
-jadi itu bukan modifier setiap-komponen.
+**Susun atur** — `.--display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`, `none`) dan `.--text-align-<value>` (`start`, `center`, `end`, `justify`) merangkumi prop rentas `display` dan `textAlign` InstUI (View, Button, Metric, Tabs, …) sebagai kelas boleh-gabung — jadi itu bukan modifier per-komponen.
 
-Setiap kelas dua-sengkang memenangi cascadenya secara deterministik berbanding modifier komponen satu-sengkang yang bernama sama, tanpa mengira susunan import helaian gaya — lihat [Konvensyen authoring](/conventions/authoring)
-untuk mekanisme.
+Setiap kelas sengkang berganda menang kaskad secara pasti terhadap modifier komponen sengkang tunggal yang bernama sama, tanpa mengira susunan import helaian gaya — lihat [Konvensyen pengarang](/conventions/authoring) untuk mekanisme.
 
-Semua di sini adalah CSS tulen yang digerakkan oleh token `--instui-*`, jadi ia menjejaki InstUI melalui lapisan token. Lihat [rujukan API](/api/) untuk `componentsCss` dan pembina per-komponen.
+Semua di sini adalah CSS tulen yang digerakkan oleh token `--instui-*`, jadi ia mengikuti InstUI melalui lapisan token. Lihat [rujukan API](/api/) untuk `componentsCss` dan pembina per-komponen.
 
 ## Overlay: dialog dan popover
 
-Komponen overlay menggunakan primitif platform asli, jadi mereka berperilaku boleh diakses dengan sedikit atau tanpa
-JavaScript.
+Komponen overlay menggunakan primitif platform natif, jadi mereka berkelakuan boleh diakses dengan sedikit atau tiada JavaScript.
 
-**Modal** — letakkan `.instui-modal` pada `<dialog>` asli. Ia mendapat penjebakan fokus, penutupan dengan `Esc`, dan
-`::backdrop` secara percuma; backdrop diredupkan dengan token `--instui-component-mask-background-color`
-yang sama seperti `.instui-mask` (tambah `-blur` untuk membekukannya). Buka dan tutup dengan perintah invoker — tiada skrip:
+**Modal** — letakkan `.instui-modal` pada `<dialog>` natif. Ia mendapat perangkap fokus, tutup-dengan-`Esc`, dan `::backdrop` secara percuma; latar belakang diredam dengan token `--instui-component-mask-background-color` yang sama seperti `.instui-mask` (tambah `-blur` untuk memutihkannya). Buka dan tutup dengan arahan invoker — tiada skrip:
 
 ```html
 <button class="instui-button" command="show-modal" commandfor="dlg">Open</button>
@@ -250,21 +204,14 @@ yang sama seperti `.instui-mask` (tambah `-blur` untuk membekukannya). Buka dan 
 </dialog>
 ```
 
-**Context view / popover** — letakkan `.instui-context-view` pada elemen `[popover]` dan togalkannya dengan
-`popovertarget`. Ia berada di lapisan paling atas dan menutup secara ringan pada klik luar atau `Esc`, sekali lagi tiada skrip:
+**Context view / popover** — letakkan `.instui-context-view` pada elemen `[popover]` dan togólnya dengan `popovertarget`. Ia berada di lapisan teratas dan menutup ringan pada klik luar atau `Esc`, sekali lagi tiada skrip:
 
 ```html
 <button class="instui-button" popovertarget="cv">Details</button>
 <div id="cv" popover class="instui-context-view">…</div>
 ```
 
-**Susun atur laci (Drawer layout)** — letakkan `.instui-drawer-layout` pada root susun atur dengan anak `.tray` dan `.content`.
-Tambah atribut `open` (atau `-open`) untuk mendedahkan dulang, dan gunakan `placement="end"`
-(atau `-placement-end`) untuk dokkannya ke sisi akhir-inline — penempatan diselesaikan melalui sifat logik
-`inset-inline-*`/`flex-direction`, jadi ia beralih secara automatik di bawah `dir="rtl"` tanpa
-peraturan tambahan. Bundle interaksi fokus menambah penghalaan perintah Invoker dan menogol mod overlay
-(`should-overlay-tray`) apabila lebar melintasi `--drawer-layout-min-width` (lalai
-`--instui-breakpoints-sm`, kemudian `30rem`):
+**Susun atur laci** — letakkan `.instui-drawer-layout` pada akar susun atur dengan `.tray` dan `.content` anak. Tambah atribut `open` (atau `-open`) untuk mendedahkan dulang, dan gunakan `placement="end"` (atau `-placement-end`) untuk dokkannya ke sisi akhir-inline — penempatan diselesaikan melalui sifat logik `inset-inline-*`/`flex-direction`, jadi ia berbalik secara automatik di bawah `dir="rtl"` tanpa peraturan tambahan. Pek interaksi fokus menambah penghalaan arahan Invoker dan menogol mod overlay (`should-overlay-tray`) apabila lebar melintasi `--drawer-layout-min-width` (lalai `--instui-breakpoints-sm`, kemudian `30rem`):
 
 ```html
 <button class="instui-button" command="--toggle" commandfor="drawer">Toggle panel</button>
@@ -275,22 +222,15 @@ peraturan tambahan. Bundle interaksi fokus menambah penghalaan perintah Invoker 
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/drawer-layout.iife.js"></script>
 ```
 
-**Mask** — `.instui-mask` kekal untuk overlay dalam aliran (spinner di atas kad); `::backdrop`
-modal menampung kes modal.
+**Topeng** — `.instui-mask` kekal untuk overlay dalam-aliran (spinner di atas kad); `::backdrop` modal merangkumi kes modal.
 
-Kedua-dua corak juga dibungkus sebagai elemen tersuai berkelakuan dalam `@pantoken/web-components`:
-`<instui-modal open>` (sebuah `<dialog>` didorong oleh atribut `open`) dan `<instui-context-view>` (sebuah
-popover asli).
+Kedua-dua corak juga dibungkus sebagai elemen tersuai berkelakuan dalam `@pantoken/web-components`: `<instui-modal open>` (sebuah `<dialog>` dikawal oleh atribut `open`) dan `<instui-context-view>` (popover natif).
 
-Sokongan pelayar: API popover dan `popovertarget` adalah Baseline 2024; perintah invoker
-(`command`/`commandfor`) adalah Baseline 2025, jadi pada pelayar lama pautkan butang kepada `dialog.showModal()`
-sebagai fallback satu baris. Menempatkan popover bersebelahan pencetusnya menggunakan penempatan anchor CSS di mana
-disokong (Chromium); selain itu ia terpusatkan dalam lapisan atas.
+Sokongan penyemak imbas: API popover dan `popovertarget` adalah Baseline 2024; arahan invoker (`command`/`commandfor`) adalah Baseline 2025, jadi pada penyemak imbas lama pautkan butang kepada `dialog.showModal()` sebagai fallback satu baris. Menempatkan popover bersebelahan pencetusnya menggunakan penentuan kedudukan anchor CSS di mana disokong (Chromium); di tempat lain ia memusat dalam lapisan teratas.
 
 ## Borang
 
-**FormField** — `.instui-form-field` adalah pembungkus CSS-Grid yang menyusun label, kawalan, dan sebarang
-mesej. Letakkannya pada `<label>` supaya label berkaitan dengan kawalannya secara asli. Ia mempunyai tiga kawasan grid — `label`, `controls`, `messages`:
+**FormField** — `.instui-form-field` ialah pembungkus CSS-Grid yang menyusun label, kawalan, dan apa-apa mesej. Letakkan ia pada `<label>` supaya label mengait dengan kawalannya secara natif. Ia mempunyai tiga kawasan grid — `label`, `controls`, `messages`:
 
 ```html
 <label class="instui-form-field">
@@ -302,25 +242,13 @@ mesej. Letakkannya pada `<label>` supaya label berkaitan dengan kawalannya secar
 </label>
 ```
 
-`-layout-stacked` (lalai) menimbun kawasan; `-layout-inline` meletakkan label sebelah kawalan (sesuaikan
-dengan `-label-align-{start,end}` dan `-v-align-{top,middle,bottom}`). `-readonly` menukar warna label.
+`-layout-stacked` (lalai) menumpuk kawasan; `-layout-inline` meletakkan label di sebelah kawalan (laraskan dengan `-label-align-{start,end}` dan `-v-align-{top,middle,bottom}`). `-readonly` menukar warna label.
 
-Asterisk **diperlukan** muncul apabila medan diperlukan oleh _sama ada_ kelas `-required` _atau_ kawalan
-`required` asli di dalamnya — jadi anda boleh sahaja menetapkan `required` pada input dan tanda akan muncul.
-Ia bersifat hiasan (sebuah `::after` pada label, dikeluarkan dari pokok kebolehcapaian); padankan dengan nota seperti
-"medan bertanda \* adalah wajib" melainkan borang itu mudah difahami.
+**Asterisk wajib** muncul apabila medan diperlukan oleh _sama ada_ kelas `-required` _atau_ kawalan natif `required` di dalamnya — jadi anda boleh hanya menetapkan `required` pada input dan tanda akan muncul. Ia hiasan (sebuah `::after` pada label, di luar pokok aksesibiliti); padankan dengan nota seperti "medan yang ditandakan \* adalah wajib" melainkan borang jelas sendiri.
 
-**FormFieldGroup** — `.instui-form-field-group` mengumpulkan medan berkaitan dalam `<fieldset>` dengan
-deskripsi `<legend>`. Ia adalah susun atur tulen (tiada token khusus): lalai menimbun medan;
-`-layout-columns` / `-layout-inline` mengalirkannya ke lajur responsif, dengan `-row-spacing-*` /
-`-col-spacing-*` dan `-v-align-*` untuk menala grid.
+**FormFieldGroup** — `.instui-form-field-group` mengumpulkan medan berkaitan dalam `<fieldset>` dengan penerangan `<legend>`. Ia susun atur tulen (tiada token khusus): lalai menumpuk medan; `-layout-columns` / `-layout-inline` mengalirkannya ke lajur responsif, dengan `-row-spacing-*` / `-col-spacing-*` dan `-v-align-*` untuk melaras grid.
 
-**RadioInputGroup** — `.instui-radio-input-group` adalah pengelompokan `<fieldset>`/`<legend>` yang sama,
-dikhususkan untuk radio. Kerana radio anak berkongsi `name`, pemilihan adalah secara asli pilihan tunggal —
-jadi set butang togol berkelakuan sebagai satu kawalan, bukan butang longgar. `-variant-simple` (lalai) menyusun
-radio standard (`-layout-columns`/`-inline` mengalirkannya menjadi baris); `-variant-toggle` menghubungkan
-butang `.instui-radio.-variant-toggle` anak menjadi kawalan bersegmen tunggal (sempadan mampat,
-ujung luar dibundarkan):
+**RadioInputGroup** — `.instui-radio-input-group` adalah pengelompokan yang sama `<fieldset>`/`<legend>`, dioptimumkan untuk radio. Kerana radio anak berkongsi `name`, pemilihan secara natif adalah pilihan-tunggal — jadi set butang togol berkelakuan sebagai satu kawalan, bukan butang bebas. `-variant-simple` (lalai) menyusun radio standard (`-layout-columns`/`-inline` mengalirkannya ke baris); `-variant-toggle` menghubungkan butang `.instui-radio.-variant-toggle` anak menjadi kawalan bersegmen tunggal (sempadan terkumpul, hujung luar dibulatkan):
 
 ```html
 <fieldset class="instui-radio-input-group -variant-toggle">
@@ -333,34 +261,16 @@ ujung luar dibundarkan):
 </fieldset>
 ```
 
-**Mesej** — `.instui-form-field-messages` adalah bekas; setiap `.instui-form-field-message` mengambil
-`-type-*`: `-type-hint` (kelabu, lalai), `-type-error` (teks merah + glif amaran bulatan), `-type-success`
-(teks hijau + glif semak bulatan), dan `-type-screenreader-only` (terpotong secara visual, masih diumumkan).
-Glif dicat dalam `currentColor`, jadi mereka sentiasa padan dengan warna mesej. `-type-new-error` adalah
-alias usang `-type-error`. Sambungkan bekas ke kawalan dengan `aria-describedby`, dan tetapkan
-`aria-invalid` pada kawalan apabila terdapat ralat.
+**Mesej** — `.instui-form-field-messages` ialah bekas; setiap `.instui-form-field-message` mengambil `-type-*`: `-type-hint` (kelabu, lalai), `-type-error` (teks merah + glif amaran bulat), `-type-success` (teks hijau + glif semak bulat), dan `-type-screenreader-only` (dipotong secara visual, masih diumumkan). Glif mengecat dalam `currentColor`, jadi ia sentiasa sepadan dengan warna mesej. `-type-new-error` ialah alias usang bagi `-type-error`. Pautkan bekas ke kawalan dengan `aria-describedby`, dan tetapkan `aria-invalid` pada kawalan apabila terdapat ralat.
 
-Di dalam FormField, mesej `-type-error` mengikuti pengesahan sisi-klien: ia kekal tersembunyi sehingga
-kawalan medan menjadi `:user-invalid` (asal, selepas pengguna berinteraksi) — atau anda memaksanya dengan `-invalid`
-pada `.instui-form-field` (untuk ralat sisi-pelayan). `.instui-form-field-messages` berdiri sendiri (bukan dalam
-medan) tidak terjejas. Cincin fokus kawalan mengikuti: bahaya apabila `:user-invalid`/`-invalid`,
-kejayaan pada `-success`.
+Dalam FormField, mesej `-type-error` mengikuti pengesahan sisi-klien: ia kekal tersembunyi sehingga kawalan medan `:user-invalid` (natif, selepas pengguna berinteraksi) — atau anda paksakannya dengan `-invalid` pada `.instui-form-field` (untuk ralat sisi-pelayan). `.instui-form-field-messages` berdiri sendiri (bukan dalam medan) tidak terjejas. Cincin fokus kawalan mengikuti: bahaya apabila `:user-invalid`/`-invalid`, kejayaan pada `-success`.
 
-**Kawalan teks** — `.instui-text-input` ( `<input>` asli), `.instui-text-area` ( `<textarea>` asli,
-boleh ubah saiz), dan `.instui-simple-select` ( `<select>` asli dengan kursor) berkongsi rupa yang sama dan keadaan yang sama: `-invalid` (sempadan ralat), `-success` (sempadan kejayaan), `-readonly`, `:disabled` asli, dan
-`-size-{sm,md,lg}`. Untuk ikon hadapan/belakang (InstUI `renderBeforeInput`/`renderAfterInput`), bungkus
-input dalam `.instui-input-group` dan tambah slot `.before`/`.after` (glif `-icon-*`); `-should-not-wrap`
-mengekalkannya dalam satu baris. `.instui-number-input` adalah facade itu ditambah lajur spinner +/- `.arrows` ( `type="number"` asli; pautkan butang ke `stepUp()`/`stepDown()`). `.instui-range-input` adalah `input[type="range"]` berstail yang nilainya dirender dalam `.instui-range-input-value` gelembung songsang. Untuk combobox kaya dengan popover listbox, pilih `@instructure/ui` — perpustakaan ini merangkumi kawalan asli.
+**Kawalan teks** — `.instui-text-input` (natif `<input>`), `.instui-text-area` (natif `<textarea>`, boleh diubah saiz), dan `.instui-simple-select` (natif `<select>` dengan karet) berkongsi rupa dan keadaan yang sama: `-invalid` (sempadan ralat), `-success` (sempadan kejayaan), `-readonly`, `:disabled` natif, dan `-size-{sm,md,lg}`. Untuk ikon hadapan/belakang (InstUI `renderBeforeInput`/`renderAfterInput`), bungkus input dalam `.instui-input-group` dan tambah slot `.before`/`.after` (glif `-icon-*`); `-should-not-wrap` mengekalkannya dalam satu baris. `.instui-number-input` ialah fasad itu ditambah lajur spinner +/- `.arrows` (natif `type="number"`; pautkan butang kepada `stepUp()`/`stepDown()`). `.instui-range-input` ialah `input[type="range"]` bergaya yang nilainya dirender dalam `.instui-range-input-value` gelembung songsang. Untuk combobox kaya dengan popover listbox, gunakan `@instructure/ui` — perpustakaan ini merangkumi kawalan natif.
 
-**Pilihan dropdown bergaya (eksperimental)** — `select.css` opt-in menaik taraf elemen `.instui-simple-select` yang _sama_: ia menggayakan dropdown terbuka (panel dan setiap pilihan, dengan hover dan
-keadaan dipilih) menggunakan model Select Boleh-Tersuai CSS.
+**Pilihan dropdown bergaya (eksperimen)** — `select.css` pilihan menaik taraf elemen `.instui-simple-select` yang _sama_: ia menggayakan dropdown terbuka (panel dan setiap pilihan, dengan keadaan hover dan dipilih) menggunakan model Select Boleh-Diubahsuai CSS.
 
 > [!WARNING]
-> `select.css` bergantung pada `appearance: base-select` / `::picker(select)`, yang **eksperimen**
-> (Chrome 135+, belum Baseline). Ia dihantar sebagai helaian opt-in berasingan dan setiap peraturan dibatasi
-> di belakang `@supports (appearance: base-select)`, jadi ia tidak melakukan apa-apa pada pelayar yang tidak disokong — kawalan
-> `.instui-simple-select` kekal sebagai select asli biasa. Muatkan hanya jika anda mahu dropdown
-> dipertingkat dan menerima sokongan terhad.
+> `select.css` bergantung pada `appearance: base-select` / `::picker(select)`, yang **eksperimen** (Chrome 135+, belum Baseline). Ia dihantar sebagai helaian berasingan pilihan dan setiap peraturan digatekan di belakang `@supports (appearance: base-select)`, jadi ia tidak melakukan apa-apa dalam penyemak imbas yang tidak menyokong — kawalan `.instui-simple-select` hanya kekal sebagai select natif biasa. Muatkannya hanya jika anda mahukan dropdown dipertingkat dan menerima sokongan terhad.
 
 ```ts
 import "@pantoken/components/components.css";

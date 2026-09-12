@@ -125,12 +125,13 @@ set a custom `i18nRouting`).
   in the global `themeConfig.search.options.locales`). Add new UI strings here, never inline.
 - **Block-level API translation.** `build-api-locales.ts` doesn't translate whole `.md` files — it
   runs `segment-markdown.ts` to split each generated page into blocks: `prose` (descriptions,
-  remarks, `@example` captions, cssdoc table Description cells), `glossary` (section headings,
-  stability-badge pills, table column labels), and `preserve` (code fences, signatures, breadcrumbs,
-  token tables). Only prose carries a content key, so a page's prose survives the scaffolding churn
-  (badge flips, token-value changes, signature edits) that used to bust a whole-file key. `glossary`
-  blocks always go through the deterministic `GlossaryTranslationAdapter` (keyless, never cached);
-  `preserve` blocks are emitted verbatim.
+  remarks, `@example` captions, visible text nodes in HTML example fences, cssdoc table Description
+  cells), `glossary` (section headings, stability-badge pills, table column labels), and `preserve`
+  (non-HTML code fences, signatures, breadcrumbs, token tables). HTML example markup, attributes,
+  comments, and script/style/code contents remain verbatim. Only prose carries a content key, so a
+  page's prose survives the scaffolding churn (badge flips, token-value changes, signature edits) that
+  used to bust a whole-file key. `glossary` blocks always go through the deterministic
+  `GlossaryTranslationAdapter` (keyless, never cached); `preserve` blocks are emitted verbatim.
 - **The committed cache carries the prose; CI serves it.** The translation memory
   (`docs/i18n-cache/hu.api.json`) is content-addressed and adapter-agnostic, so a claude-authored
   prose entry is served to a `glossary` build as a plain cache hit. The workflow: run
@@ -175,6 +176,11 @@ translated`) and saves the memory after **each** chunk, so it's resumable — a 
   Hungarian. Unset means every locale. An unrecognized entry, or a selection that resolves to nothing
   (a tier with no docs locale like `source`, or `"hu,-hu"`), throws rather than building an empty
   directory. Honored by `build-api-locales.ts` and `translate-guide-po.ts`.
+- **Scope a guide translation with `DOCS_TRANSLATION_FILE`.** Pass one or more comma/space-separated
+  guide paths relative to `docs/` (for example, `DOCS_TRANSLATION_FILE=guide/components.md`) when a
+  force run should repair only selected hand-written guides. Paths are validated against the guide
+  source file list, and unknown values throw rather than silently running every guide. Combine with
+  `DOCS_TRANSLATION_LOCALE` and `DOCS_TRANSLATION_FORCE=1` for a single-file retry.
 
 ## Translation drift: what blocks a merge
 

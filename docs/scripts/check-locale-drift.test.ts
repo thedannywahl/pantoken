@@ -345,6 +345,22 @@ describe("top-level drift check", () => {
     expect(process.exitCode).toBe(0);
   });
 
+  test("writes resolved findings to DRIFT_JSON_OUT", async () => {
+    const output = "/tmp/drift-findings.json";
+    vi.stubEnv("DRIFT_JSON_OUT", output);
+    fixtures.guideFiles = ["intro.md"];
+    fixtures.guidesCache = {};
+
+    await import("./check-locale-drift.ts");
+
+    expect(mkdirSync).toHaveBeenCalledWith("/tmp", { recursive: true });
+    expect(writeFileSync).toHaveBeenCalledWith(
+      output,
+      expect.stringContaining('"msgid": "# Guide\\n\\nA whole guide file'),
+    );
+    vi.unstubAllEnvs();
+  });
+
   test("I18N_DRIFT_STRICT escalates an advisory policy back to blocking", async () => {
     vi.stubEnv("I18N_DRIFT_STRICT", "1");
     fixtures.policy = advisoryPolicy;

@@ -129,6 +129,45 @@ test("demoMarkdownIt routes a demo:self fence through localePrefix using env.rel
   expect(huOut).toContain(encodeURIComponent("/pantoken/hu/demos/button.html"));
 });
 
+test("localized runner tab labels ride along in the runner URL", () => {
+  const labels = { result: "Eredmény", html: "HTML", css: "CSS", js: "JS" };
+  expect(resolveDemo("self:button", { base: "/pantoken/", labels }).src).toContain(
+    `labels=${encodeURIComponent(JSON.stringify(labels))}`,
+  );
+  // No labels, no param — a single-locale host keeps the runner's English defaults.
+  expect(resolveDemo("self:button", { base: "/pantoken/" }).src).not.toContain("labels=");
+
+  const md = {
+    renderer: {
+      rules: {
+        fence: (_tokens: { info: string; content: string }[], _i: number, ..._rest: unknown[]) =>
+          "",
+      },
+    },
+  };
+  demoMarkdownIt(md as unknown as Parameters<typeof demoMarkdownIt>[0], {
+    base: "/pantoken/",
+    localeLabels: (relativePath) => (relativePath.startsWith("hu/") ? labels : undefined),
+  });
+  const render = md.renderer.rules.fence;
+  const huOut = render(
+    [{ info: "demo", content: "self:button" }],
+    0,
+    {},
+    { relativePath: "hu/guide/components.md" },
+    {},
+  );
+  expect(huOut).toContain(encodeURIComponent("Eredmény"));
+  const rootOut = render(
+    [{ info: "demo", content: "self:button" }],
+    0,
+    {},
+    { relativePath: "guide/components.md" },
+    {},
+  );
+  expect(rootOut).not.toContain("labels=");
+});
+
 test("liveExample seams a preview onto html fences on matching pages, skipping overlays", () => {
   const coreRules: Array<[string, (state: { tokens: unknown[] }) => void]> = [];
   const md = {

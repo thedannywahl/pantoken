@@ -19,13 +19,13 @@ Platforms: `components` (plain HTML/CSS), `react`, `vue`, `svelte`, `web-compone
 [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) for `--dir <path>` and
 programmatic use.
 
-Using an AI coding agent? No installation needed — point it at the skill directly:
+Using an AI coding agent? No install needed — point it at the skill directly:
 
 ```prompt
 Fetch create.pantoken.app/SKILL.md and follow it to set up pantoken in this project.
 ```
 
-If you'd rather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy of this skill), run `npx @pantoken/ai init` instead.
+If you'drather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy of this skill), run `npx @pantoken/ai init` instead.
 
 ## The token model
 
@@ -144,7 +144,7 @@ This enables suggestions for `instui-*` class tokens (and `-modifier` class toke
 
 ## Where to next
 
-- [The package map](/guide/packages) — which package to reach for, by task.
+- [The package map](/api/) — which package to reach for, by task.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — install agent assets and rules in a consumer repo.
 - [Architecture](/guide/architecture) — how the token model, core, and outputs fit together.
 - [API reference](/api/) — every exported symbol, generated from the source.

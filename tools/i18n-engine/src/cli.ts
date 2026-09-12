@@ -149,6 +149,15 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
     .option("--tier <tier>", "every locale in a tier")
     .option("--provider <provider>", "override the default provider profile")
     .option("--concurrency <n>", "override provider concurrency", Number)
+    .option(
+      "--unit <json>",
+      "translate one exact catalog unit; repeatable",
+      (value: string, values: string[]) => {
+        values.push(value);
+        return values;
+      },
+      [],
+    )
     .option("--force", "retranslate even when the cache/PO entry is up to date", false)
     .action(
       (
@@ -158,12 +167,28 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
           tier?: string;
           provider?: string;
           concurrency?: number;
+          unit: string[];
           force: boolean;
         },
       ) => {
+        const unitKeys = opts.unit.map((value) => {
+          const unit = JSON.parse(value) as { msgctxt?: unknown; msgid?: unknown };
+          if (
+            typeof unit.msgid !== "string" ||
+            (unit.msgctxt !== undefined && typeof unit.msgctxt !== "string")
+          ) {
+            throw new CommanderError(
+              1,
+              "i18n.invalidUnit",
+              "--unit must be JSON with a string msgid and optional msgctxt",
+            );
+          }
+          return `${unit.msgctxt ?? ""}\u0000${unit.msgid}`;
+        });
         const fillOptions: FillOptions = {
           ...(opts.provider ? { profile: opts.provider } : {}),
           ...(opts.concurrency ? { concurrency: opts.concurrency } : {}),
+          ...(unitKeys.length > 0 ? { unitKeys } : {}),
           force: opts.force,
         };
         const localesFor = (all: string[]): string[] => (opts.locale ? [opts.locale] : all);
@@ -242,18 +267,27 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
     .command("check")
     .addArgument(new Argument("[space]", "space id").argOptional())
     .option("--strict", "treat every warn-level finding as blocking", false)
-    .action((space: string | undefined, opts: { strict: boolean }) =>
+    .option("--json <path>", "write findings as JSON")
+    .action((space: string | undefined, opts: { strict: boolean; json?: string }) =>
       withSpace(
         "check",
         space,
         (config, spaceId) => {
           if (opts.strict) process.env.I18N_DRIFT_STRICT = "1";
-          const { exitCode } = runCheckMessages(config, configDirOf(), spaceId);
+          const { reporter, exitCode } = runCheckMessages(config, configDirOf(), spaceId);
+          if (opts.json) {
+            mkdirSync(dirname(opts.json), { recursive: true });
+            writeFileSync(opts.json, `${JSON.stringify(reporter.recordedFindings, null, 2)}\n`);
+          }
           process.exitCode = exitCode;
         },
         (config, spaceId) => {
           if (opts.strict) process.env.I18N_DRIFT_STRICT = "1";
-          const { exitCode } = runCheckContent(config, configDirOf(), spaceId);
+          const { reporter, exitCode } = runCheckContent(config, configDirOf(), spaceId);
+          if (opts.json) {
+            mkdirSync(dirname(opts.json), { recursive: true });
+            writeFileSync(opts.json, `${JSON.stringify(reporter.recordedFindings, null, 2)}\n`);
+          }
           process.exitCode = exitCode;
         },
       ),

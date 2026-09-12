@@ -60,6 +60,8 @@ export {
   type ThemeVariant,
 } from "./theme.ts";
 
+export { installAgentAssets, AGENT_TOOLS, ASSETS, type AgentTool } from "./agent-assets.ts";
+
 /**
  * A platform pantoken can scaffold a starter project for.
  */

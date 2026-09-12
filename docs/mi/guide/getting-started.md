@@ -1,40 +1,38 @@
-# Timata
+# Tīmata
 
-Ka tango a Pantoken i ngā token hoahoa me ngā tohu o te [Instructure UI](https://instructure.design), ka rongoa kotahi, ka hanga anō taua tauira kotahi ki ngā kete mō ngā papa maha: ngā aratohu kāpeka mārama, SCSS me Less, React me Vue me Svelte, Tailwind me Panda, native Swift me Kotlin, WordPress me Drupal, Figma, me ētahi atu.
+Ka tango a Pantoken i ngā tohu hoahoa me ngā tohu ā-ata o te [Instructure UI](https://instructure.design), ka mahi rātou kia kotahi, ka hōputu anō i taua tauira kotahi hei mōkī mō ngā papa maha: pepa āhuatanga mā, SCSS me Less, React me Vue me Svelte, Tailwind me Panda, taketake Swift me Kotlin, WordPress me Drupal, Figma, me ētahi atu.
 
-Ka tāuta koe i te kete iti rawa e hāngai ana ki tō mahi. Ka whakahokia anō ngā mea katoa e te kete whakakotahi `pantoken`, nō reira ka tīmata mai i reira, ā, ka whakaiti i muri mai.
+Ka tāuta koe i te mōkī iti rawa e hāngai ana ki tō mahi. Kei te kawe hoki ngā mea katoa e te mōkī kotahi ā-`pantoken`, nō reira ka tīmata koe ki reira ka āta whakarāpopoto ā muri ake.
 
-## Whakarite kaupapa tīmata
+## Hangaia he kaupapa tīmata
 
-Te ara tere ki te whakamātau i pantoken: whakaritea he kaupapa tīmata kua tāutahia, kua honoa rānei.
+Ko te huarahi tere ki te whakamātautau i pantoken: hangaia he kaupapa tīmata kua tāuta, kua honoa hoki.
 
 ```sh
 npx create-pantoken-app
 ```
 
-Ngā papa: `components` (HTML/CSS mārama), `react`, `vue`, `svelte`, `web-components`, `angular`. Tirohia
-[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) mō `--dir <path>` me te
-whakamahi auau.
+Papa: `components` (HTML/CSS mārama), `react`, `vue`, `svelte`, `web-components`, `angular`. Tirohia [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) mō `--dir <path>` me te whakamahinga ā-papanga.
 
-E whakamahi ana i tētahi kaiāwhina waehere AI? Kāore he tāutanga e hiahiatia — whakakitea ki te pūkenga tōmua:
+Kei te whakamahi i tētahi wakarite waehere AI? Kāore he tāutanga e hiahiatia — whakaatu ki taua pūkenga tika:
 
 ```prompt
-Tikiake create.pantoken.app/SKILL.md, ā, whai i ōna tohutohu kia whakauruhia a pantoken ki tēnei kaupapa.
+Tikiake create.pantoken.app/SKILL.md ka whai i ngā tohutohu kia whakatū i te pantoken i roto i tēnei kaupapa.
 ```
 
-Mēnā e hiahia ana kia hono tonu ngā ture kāri pantoken ki te repo (AGENTS.md, ture etita, kape ā-rohe o tēnei pūkenga), whakahaerehia `npx @pantoken/ai init` hei utu.
+Mēnā e hiahia ana kia hono tonu ngā ture wakarite pantoken ki te repo (AGENTS.md, ture kaiwhakatika, kape ā-rohe o tēnei pūkenga), whakahaerea `npx @pantoken/ai init` anō.
 
-## Te tauira token
+## Te tauira tohu
 
-Ko ngā token he rawa ritenga CSS kua ingoa `--instui-<group>-<name>`, hei tauira
-`--instui-color-background-brand` rānei `--instui-spacing-space-md`. E toru ngā kaupapa e kawea mai ana: `rebrand`
-(te taunoa, me `light-dark()` ina rerekē te mārama me te pō), `canvas`, me `canvasHighContrast`.
-Ko ngā tohu he token `<image>` (`--instui-icon-<name>`) i ahu mai i Lucide me ngā tohu āwhina ritenga o Instructure.
+Ko ngā tohu he rawa ritenga CSS ka ingoa `--instui-<group>-<name>`, hei tauira
+`--instui-color-background-brand` rānei `--instui-spacing-space-md`. E toru ngā kaupapa e tukuna ana: `rebrand`
+(te taunoa, me `light-dark()` hei wehe i te mārama me te pō), `canvas`, me `canvasHighContrast`.
+Ko ngā tohu tohu he tohu `<image>` (`--instui-icon-<name>`) i ahu mai i Lucide me ngā ahua ā-tāpare o Instructure.
 
-## Hoahoa taupānga paetukutuku
+## Hoahoa i tētahi taupānga tukutuku
 
-Tāutia te rauemi ā-tārua ka kawemai kotahi. Ka tautuhia ia rawa `--instui-*`, nō reira ka āhei koe ki te tohu
-i ēnei ā-tinana mā tō ake CSS.
+Tāuta te pepa āhuatanga ka kawemai kotahi. Ka tautuhia ia `--instui-*` rawa, nō reira ka taea te tuku whakaaro
+i rānei i tō ake CSS.
 
 ```sh
 npm i @pantoken/css
@@ -51,9 +49,9 @@ import "@pantoken/css/inject";
 }
 ```
 
-## Whakamahia ngā tohu i ngā wāhi katoa
+## Whakamahia ngā tohu ki ngā wāhi katoa
 
-Ka mahi te wahanga paetukutuku i roto i ngā anga katoa, me kore he whakawhiti.
+Ka mahi te paewhakarite tukutuku i ngā anga katoa, kāore he whakakapinga e hiahiatia.
 
 ```sh
 npm i @pantoken/web-components
@@ -67,10 +65,9 @@ import "@pantoken/web-components";
 <instui-icon name="check-mark"></instui-icon>
 ```
 
-### Ngā token CSS
+### Ngā tohu CSS
 
-Ko ngā tohu he rawa ritenga CSS (`--instui-icon-<name>`). Kawemai te rauemi ā-tārua kotahi ka tohu atu i tētahi tohu
-hei `mask-image` rānei `background-image` — kāore he kawemai mō ia tohu motuhake e hiahiatia ana.
+Ko ngā tohu he rawa ritenga CSS (`--instui-icon-<name>`). Kawemai te pepa āhuatanga kotahi ka tohu i tētahi tohu hei `mask-image` rānei `background-image` — kāore he kawemai mō ia tohu motuhake e hiahiatia.
 
 ```css
 .my-icon {
@@ -78,9 +75,9 @@ hei `mask-image` rānei `background-image` — kāore he kawemai mō ia tohu mot
 }
 ```
 
-### JavaScript — tohu kotahi vs. te huinga katoa
+### JavaScript — kotahi tohu rānei te huinga katoa
 
-Ka tuku e `@pantoken/icons` ngā kaweake ingoa e rua. Whakamahia `iconsByName` kia toia tētahi tohu kotahi, kaua e huri i te rārangi katoa:
+Ka whakaatu a `@pantoken/icons` i ngā kawe mōrahi e rua. Whakamahia `iconsByName` ki te toia tētahi tohu kotahi me te kore haere i te ara katoa:
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -89,7 +86,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-Whakamahia `icons` mēnā e hiahia ana koe i te huinga katoa (hei tauira, hei hanga kaituhi):
+Whakamahia `icons` mēnā e hiahia ana koe i te huinga katoa (hei tauira ki te waihanga i tētahi kaitīpako):
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -98,30 +95,29 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-E kawemai ana ngā kaweake e rua i te IR katoa i te tīmatanga o te mōdule — kāore he tree-shaking mō ia tohu i tēnei taumata. Mō te kawemai haumākū anake mā te CSS, whakamahi i te [CDN picker](/guide/cdn-picker) hei hanga URL hāngai mō ngā tohu anake e hiahiatia ana.
+E kawemai ana ngā kawe e rua i te IR katoa i te tīmatanga o te tauira — kāore he tārewa-rākau shake mō ia tohu i tēnei taumata. Mō te kawemai āhua pūmau me te whakamahi CSS-anake, whakamahia te [CDN picker](/guide/cdn-picker) hei hanga i tētahi URL whakakotahi mō ngā tohu e tika ana anake mōu.
 
-## Hangaia mō tētahi papa whaiaro
+## Waihanga mō tētahi papa taketake
 
-Ka tuhia e te CLI ngā puna token ki roto i tētahi repo ūnga. Kāore he tāutanga anō i tua atu i te kaiwhakahaere:
+Ka tuhituhi te CLI i te pūtake tohu ki roto i tētahi repo ārahi. Kāore he tāutanga atu i te kaikaiwhakaahu:
 
 ```sh
 npx @pantoken/cli generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-Tirohia [te pantoken CLI](/guide/cli) mō ia ūnga.
+Tirohia [te pantoken CLI](/guide/cli) mō ngā whāinga katoa.
 
-## Āwhina ā-VS Code mō te kaituhi
+## Āwhina tuhi VS Code
 
-Kei te kawe a `@pantoken/pantoken` ināianei i ngā kōnae raraunga ritenga VS Code kia taea ai e ngā kaupapa kaiwhakamahi te tiki oti-a-kāwai me te
-whakakī token i roto i HTML/CSS me kore e tāuta i tētahi toronga pantoken-motuhake.
+Kei te tukuna ināianei e `@pantoken/pantoken` ngā kōnae raraunga ā-tuakiri mō VS Code kia taea ai e ngā kaupapa kaihoko te tiki oti ā-kāwai me ngā tohu i roto i HTML/CSS me te kore tāuta i tētahi toronga motuhake pantoken.
 
-1. Tāuta te kete whakakotahi:
+1. Tāuta te mōkī kotahi:
 
 ```sh
 npm i @pantoken/pantoken
 ```
 
-1. Tohua e VS Code te kōnae custom-data JSON kua kawea mai i tō wāhi mahi kaihoko:
+1. Whakatauritea a VS Code ki te raraunga custom-data JSON i tukuna mai i tō waahi mahi kaihoko:
 
 ```json
 {
@@ -130,14 +126,13 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. Whakahou anō i VS Code (rānei whakahaere "Developer: Reload Window") kia tau ai ngā raraunga hou.
+1. Whakahou anō i VS Code (rānei whakahaere "Developer: Reload Window") kia oti te tono i ngā raraunga hou.
 
-Ka whakaahei tēnei i ngā tūtohu mō ngā token karaaka `instui-*` (me ngā token karaaka `-modifier`) me
-ngā rawa ritenga `--instui-*`.
+Ka whakahohe tēnei i ngā tūtohutanga mō ngā tohu kāwai `instui-*` (me ngā tohu kāwai `-modifier`) me ngā rawa ritenga `--instui-*`.
 
-## Kei hea te whai ake
+## He aha te whai ake
 
-- [Te mapi kete](/guide/packages) — ko tēhea kete hei toro atu, ā, mō te aha.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — tāuta ngā rawa me ngā ture pūkenga ki roto i tētahi repo kaihoko.
-- [Hanga](/guide/architecture) — me pehea te honohono o te tauira token, te pūtake, me ngā putanga.
-- [Tohutoro API](/api/) — ia tohu kaweake, i hangaia i te puna.
+- [Te mapi mōkī](/api/) — te mōkī hei toro atu, mō ia mahi.
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — tāuta rawa wakarite me ngā ture ki roto i tētahi repo kaihoko.
+- [Hoahoa](/guide/architecture) — me pēhea te hono o te tauira tohu, te pūtake, me ngā putanga.
+- [Tohutoro API](/api/) — ia tohu kaweake, i hangaia mai i te pūtake.

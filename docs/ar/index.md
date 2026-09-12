@@ -9,14 +9,11 @@ hero:
       text: البدء
       link: /ar/guide/getting-started
     - theme: alt
-      text: خريطة الحزم
-      link: /ar/guide/packages
+      text: مرجع CSS
+      link: /ar/api/css/
     - theme: alt
       text: مرجع API
       link: /ar/api
-    - theme: alt
-      text: مرجع CSS
-      link: /ar/api/css
 features:
   - icon:
       light: /book-check-light.svg

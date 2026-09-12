@@ -32,6 +32,19 @@ interface MarkdownItLike {
 }
 
 export { buildExampleSrcdoc, escapeSrcdoc, type ExampleSrcdocOptions } from "./srcdoc.ts";
+
+/** The runner's view-tab labels. Omitted keys fall back to the runner's English defaults. */
+export interface RunnerLabels {
+  /** The rendered-demo tab (English `Result`). */
+  result?: string;
+  /** The HTML source tab. */
+  html?: string;
+  /** The CSS source tab. */
+  css?: string;
+  /** The JavaScript source tab. */
+  js?: string;
+}
+
 /** Options for resolving a demo spec. Only the `self` provider uses the runner/demos/css fields. */
 export interface ResolveOptions {
   /** Site base path, e.g. `/pantoken/` (default `/`). */
@@ -46,6 +59,8 @@ export interface ResolveOptions {
    * the `data-pantoken-theme` attribute, so one token sheet covers every theme.
    */
   cssUrls?: readonly string[];
+  /** Localized {@link RunnerLabels} for the runner's view tabs, forwarded in the runner URL. */
+  labels?: RunnerLabels;
 }
 
 /** A resolved demo: iframe attributes plus the provider that produced them. */
@@ -94,8 +109,11 @@ export function resolveDemo(spec: string, options: ResolveOptions = {}): Resolve
       const demos = `${options.base ?? "/"}${options.demosPath ?? "demos/"}`;
       const source = /^(https?:\/\/|\/)/.test(ref) ? ref : `${demos}${ref}.html`;
       const css = (options.cssUrls ?? []).join(",");
+      const labels = options.labels;
       const query =
-        `?src=${encodeURIComponent(source)}` + (css ? `&css=${encodeURIComponent(css)}` : "");
+        `?src=${encodeURIComponent(source)}` +
+        (css ? `&css=${encodeURIComponent(css)}` : "") +
+        (labels ? `&labels=${encodeURIComponent(JSON.stringify(labels))}` : "");
       return { provider, src: `${runner}${query}`, sandbox: SANDBOX };
     }
     case "stackblitz": {
@@ -194,6 +212,12 @@ export interface DemoMarkdownItOptions extends ResolveOptions {
    * loads instead of the English source. Omit for a single-locale site.
    */
   localePrefix?: (relativePath: string) => string;
+  /**
+   * Resolve the runner's view-tab labels for the current page, from its markdown-it `env.relativePath`
+   * — the same locale lookup as {@link DemoMarkdownItOptions.localePrefix}. Omit for a single-locale
+   * site (the runner then shows its English defaults).
+   */
+  localeLabels?: (relativePath: string) => RunnerLabels | undefined;
 }
 
 /** An example that's hidden until opened (a `<dialog>` or a `[popover]`), so its live preview is skipped. */
@@ -502,9 +526,9 @@ export function demoMarkdownIt(md: MarkdownItLike, options: DemoMarkdownItOption
     if (info === "demo") {
       const relativePath = (env as { relativePath?: string } | undefined)?.relativePath ?? "";
       const prefix = options.localePrefix?.(relativePath) ?? "";
-      const demoOptions = prefix
-        ? { ...options, demosPath: `${prefix}${options.demosPath ?? "demos/"}` }
-        : options;
+      const labels = options.localeLabels?.(relativePath) ?? options.labels;
+      const demoOptions: ResolveOptions = { ...options, labels };
+      if (prefix) demoOptions.demosPath = `${prefix}${options.demosPath ?? "demos/"}`;
       return renderDemoFigure(resolveDemo(token.content.trim(), demoOptions));
     }
     const flags = new Set<string>(info.match(/-[a-z][a-z0-9-]*/gu) ?? []);

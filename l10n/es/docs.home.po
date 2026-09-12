@@ -22,25 +22,20 @@ msgstr "Primeros pasos"
 
 #: index.md:12
 #, no-c-format
-msgid "The package map"
-msgstr "El mapa de paquetes"
+msgid "CSS reference"
+msgstr "Referencia de CSS"
 
 #: index.md:15
 #, no-c-format
 msgid "API reference"
 msgstr "Referencia de la API"
 
-#: index.md:18
-#, no-c-format
-msgid "CSS reference"
-msgstr "Referencia de CSS"
-
-#: index.md:24
+#: index.md:21
 #, no-c-format
 msgid "One source of truth"
 msgstr "Una única fuente de verdad"
 
-#: index.md:25
+#: index.md:22
 #, no-c-format
 msgid ""
 "Every package reads the same resolved token IR. Change a token upstream and "
@@ -49,12 +44,12 @@ msgstr ""
 "Cada paquete lee el mismo IR de tokens resuelto. Cambia un token en upstream "
 "y se propagará a CSS, SCSS, código nativo y Figma de la misma forma."
 
-#: index.md:29
+#: index.md:26
 #, no-c-format
 msgid "Use the smallest package"
 msgstr "Usa el paquete más pequeño"
 
-#: index.md:30
+#: index.md:27
 #, no-c-format
 msgid ""
 "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and "
@@ -63,12 +58,12 @@ msgstr ""
 "Instala solo @pantoken/css para una hoja de estilo, @pantoken/react para "
 "hooks e íconos, o un preset de bundler para Tailwind, Panda o MUI."
 
-#: index.md:34
+#: index.md:31
 #, no-c-format
 msgid "Generate for any platform"
 msgstr "Genera para cualquier plataforma"
 
-#: index.md:35
+#: index.md:32
 #, no-c-format
 msgid ""
 "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, "
@@ -77,12 +72,12 @@ msgstr ""
 "Ejecuta `pantoken generate` para generar Swift, Kotlin, Compose, Flutter, "
 "Rust, WordPress y más. Los mismos tokens, en el idioma de cada ecosistema."
 
-#: index.md:39
+#: index.md:36
 #, no-c-format
 msgid "No upstream coupling"
 msgstr "Sin acoplamiento upstream"
 
-#: index.md:40
+#: index.md:37
 #, no-c-format
 msgid ""
 "The tokens ship vendored as static JSON, so `npm i` never reaches for a "
@@ -91,3 +86,7 @@ msgstr ""
 "Los tokens se distribuyen como JSON estático incluido, así que `npm i` nunca "
 "depende de una fuente exclusiva de GitHub. Publicable, versionado "
 "semánticamente y apto para uso sin conexión."
+
+#, no-c-format
+#~ msgid "The package map"
+#~ msgstr "El mapa de paquetes"

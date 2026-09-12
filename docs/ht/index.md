@@ -9,14 +9,11 @@ hero:
       text: Kòmanse
       link: /ht/guide/getting-started
     - theme: alt
-      text: Kat pakè a
-      link: /ht/guide/packages
+      text: Referans CSS
+      link: /ht/api/css/
     - theme: alt
       text: Referans API
       link: /ht/api
-    - theme: alt
-      text: Referans CSS
-      link: /ht/api/css
 features:
   - icon:
       light: /book-check-light.svg

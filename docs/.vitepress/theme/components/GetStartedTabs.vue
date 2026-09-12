@@ -236,6 +236,7 @@ const highlightColor = computed(() =>
     <div class="gs-started__mode" role="tablist" aria-label="Getting started mode">
       <button
         type="button"
+        role="tab"
         class="instui-button -shape-circle -icon-terminal -without-background -without-border gs-started__mode-btn"
         :class="{ 'is-active': activeSurface === 'terminal' }"
         :aria-selected="activeSurface === 'terminal'"
@@ -246,8 +247,13 @@ const highlightColor = computed(() =>
       </button>
       <button
         type="button"
-        class="instui-button -shape-circle -icon-igniteai-logo -without-background -without-border gs-started__mode-btn"
-        :class="{ 'is-active': activeSurface === 'agent' }"
+        role="tab"
+        class="instui-button -shape-circle -without-background -without-border gs-started__mode-btn"
+        :class="{
+          'is-active': activeSurface === 'agent',
+          '-icon-igniteai-icon-color': activeSurface === 'agent',
+          '-icon-igniteai-logo': activeSurface !== 'agent',
+        }"
         :aria-selected="activeSurface === 'agent'"
         aria-label="Agent shell mode"
         @click="selectSurface('agent')"
@@ -365,6 +371,7 @@ const highlightColor = computed(() =>
 @import "@pantoken/plugin-simple-icons/icons/cursor.css";
 @import "@pantoken/plugin-custom-icons/icons/openai.css";
 @import "@pantoken/plugin-simple-icons/icons/githubcopilot.css";
+@import "@pantoken/plugin-logos/igniteai-icon-color.css";
 </style>
 
 <style scoped>
@@ -374,11 +381,20 @@ const highlightColor = computed(() =>
 
 .gs-started__mode {
   display: inline-flex;
-  gap: 0.35rem;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   margin-block-end: 0.75rem;
+  backdrop-filter: blur(8px);
 }
 
-.gs-started__mode-btn {
+/* The hero background behind these buttons is always a dark SVG/gradient in both light and dark
+   modes, so the mode tabs always use the "on-color" palette (translucent white inactive, white hover,
+   solid white active with dark text). */
+.instui-button.gs-started__mode-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -388,26 +404,44 @@ const highlightColor = computed(() =>
   min-block-size: 0;
   padding: 0;
   border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
-  transition: transform 180ms ease;
-  color-scheme: dark;
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--vp-c-text-1) 18%, transparent);
+  box-shadow: none;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
-/* The stage behind these buttons is always the same dark navy gradient regardless of light/dark
-   mode, so the icon must stay white in every state — beat `.instui-button.-without-background`'s
-   own (theme-dependent) color with the extra `.instui-button` class match. */
-.instui-button.gs-started__mode-btn {
-  color: var(--instui-primitive-color-white);
+.instui-button.gs-started__mode-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--instui-primitive-color-white, #ffffff);
 }
 
-.gs-started__mode-btn:hover,
-.gs-started__mode-btn:focus-visible {
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--vp-c-text-1) 28%, transparent);
+.instui-button.gs-started__mode-btn:focus-visible {
+  outline: 2px solid var(--instui-primitive-color-white, #ffffff);
+  outline-offset: 2px;
+  color: var(--instui-primitive-color-white, #ffffff);
 }
 
-.gs-started__mode-btn.is-active {
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--vp-c-text-1) 42%, transparent);
+.instui-button.gs-started__mode-btn.is-active {
+  background: var(--instui-primitive-color-white, #ffffff);
+  color: var(--instui-color-text-interactive-action-primary-on-color-base, #182b49);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.instui-button.gs-started__mode-btn.is-active:hover {
+  background: var(--instui-primitive-color-white, #ffffff);
+  color: var(--instui-color-text-interactive-action-primary-on-color-base, #182b49);
+}
+
+.instui-button.gs-started__mode-btn.-icon-igniteai-icon-color::before {
+  background: var(--instui-logo-igniteai-icon-color) center / contain no-repeat;
+  -webkit-mask: none;
+  mask: none;
 }
 
 .gs-started__stage {

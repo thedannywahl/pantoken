@@ -85,8 +85,10 @@ export function buildMarkdownTranslationPrompt(
 ): string {
   return [
     `Translate this technical markdown from English to ${targetLanguage}.`,
-    "Return only the translated markdown.",
+    "Translate only the content between the BEGIN/END MARKDOWN delimiters.",
+    "Return only the translated markdown document body.",
     "Rules:",
+    "- Do not include explanations, reasoning, analysis, progress notes, self-corrections, apologies, or alternate attempts.",
     "- Keep markdown structure unchanged.",
     "- Translate heading text too (the words after the leading # symbols) — do not leave headings in English.",
     "- Do not alter placeholder tokens like __PTK_CODE_BLOCK_#__ or __PTK_INLINE_CODE_#__.",
@@ -98,6 +100,44 @@ export function buildMarkdownTranslationPrompt(
     maskedText,
     END,
   ].join("\n");
+}
+
+const META_COMMENTARY_PATTERNS: readonly RegExp[] = [
+  /\bI(?:'ll| will) (?:redo|continue|restart|try again|fix|translate)\b/iu,
+  /\b(?:oops|argh)\b/iu,
+  /\bdue to time\b/iu,
+  /\bmust (?:continue|finish|redo|restart) translation\b/iu,
+  /\brestart(?:ing)? (?:from|continuing)\b/iu,
+  /\b(?:let's|I need to) (?:produce|finish|continue|redo|restart)\b/iu,
+];
+
+const LONG_REPEATED_CHARACTER = /(.)\1{24,}/u;
+const HAN_CHARACTER = /\p{Script=Han}/u;
+const CJK_TARGET_LANGUAGE = /\b(?:chinese|japanese|korean|cantonese|mandarin|taiwanese)\b/iu;
+const TOP_LEVEL_HEADING = /^#[^\S\r\n]+\S.*$/gmu;
+
+/** Throw when an AI response is commentary or corrupted text rather than one translated document. */
+export function assertCleanMarkdownTranslation(
+  output: string,
+  reference: string,
+  targetLanguage?: string,
+): void {
+  for (const pattern of META_COMMENTARY_PATTERNS) {
+    if (pattern.test(output)) {
+      throw new Error(`Markdown translation for ${reference} contains model commentary`);
+    }
+  }
+  if (LONG_REPEATED_CHARACTER.test(output)) {
+    throw new Error(`Markdown translation for ${reference} contains repeated-character garbage`);
+  }
+  if (targetLanguage && !CJK_TARGET_LANGUAGE.test(targetLanguage) && HAN_CHARACTER.test(output)) {
+    throw new Error(`Markdown translation for ${reference} contains unexpected CJK characters`);
+  }
+
+  const topLevelHeadings = output.match(TOP_LEVEL_HEADING) ?? [];
+  if (topLevelHeadings.length > 1) {
+    throw new Error(`Markdown translation for ${reference} contains multiple document starts`);
+  }
 }
 
 /** Drop the envelope when a model echoes the prompt's delimiters back around its answer. */

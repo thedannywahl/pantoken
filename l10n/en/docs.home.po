@@ -17,11 +17,6 @@ msgstr "One resolved token model, reshaped into stylesheets, framework bindings,
 msgid "Getting started"
 msgstr "Getting started"
 
-#: index.md:12
-#, no-c-format
-msgid "The package map"
-msgstr "The package map"
-
 #: index.md:15
 #, no-c-format
 msgid "API reference"

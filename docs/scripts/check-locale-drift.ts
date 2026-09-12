@@ -23,9 +23,9 @@
  *
  * @module
  */
-import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
-import { join, relative } from "node:path";
-import { DriftReporter } from "@pantoken/translation-adapters";
+import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
+import { dirname, join, relative } from "node:path";
+import { DriftReporter, type DriftUnit } from "@pantoken/translation-adapters";
 import { extractFrontmatterUnits, parsePo } from "@pantoken/i18n-engine";
 import { ENGLISH_UI_STRINGS, NON_ROOT_LOCALES, flattenStrings } from "../.vitepress/i18n.ts";
 import { GLOSSARY_TERMS } from "./glossary.ts";
@@ -47,6 +47,7 @@ interface Missing {
   file: string;
   kind: string;
   sample: string;
+  unit?: DriftUnit;
 }
 
 const loadCacheKeys = (locale: string, namespace: string): Set<string> => {
@@ -86,14 +87,24 @@ const guideDrift = (locale: string): Missing[] => {
         source: readFileSync(file, "utf8"),
       }))
       .filter(({ source }) => !translated.has(source))
-      .map(({ file, source }) => ({ file, kind: "markdown", sample: preview(source) }));
+      .map(({ file, source }) => ({
+        file,
+        kind: "markdown",
+        sample: preview(source),
+        unit: { msgid: source },
+      }));
   }
   const cached = loadCacheKeys(locale, "guides");
   const missing: Missing[] = [];
   for (const file of walkMarkdown(guideDir)) {
     const source = readFileSync(file, "utf8");
     if (!cached.has(keyFor("markdown", source))) {
-      missing.push({ file: relative(docsRoot, file), kind: "markdown", sample: preview(source) });
+      missing.push({
+        file: relative(docsRoot, file),
+        kind: "markdown",
+        sample: preview(source),
+        unit: { msgid: source },
+      });
     }
   }
   return missing;
@@ -117,6 +128,7 @@ export const apiDrift = (locale: string): Missing[] => {
             file: relative(docsRoot, file),
             kind: unit.kind,
             sample: preview(unit.text),
+            unit: { msgctxt: `docs.api:${unit.kind}`, msgid: unit.text },
           });
         }
       }
@@ -130,7 +142,12 @@ export const apiDrift = (locale: string): Missing[] => {
     for (const unit of units) {
       if (!isCatalogedApiUnit(unit)) continue;
       if (!cached.has(keyFor("prose", unit.text))) {
-        missing.push({ file: relative(docsRoot, file), kind: "prose", sample: preview(unit.text) });
+        missing.push({
+          file: relative(docsRoot, file),
+          kind: "prose",
+          sample: preview(unit.text),
+          unit: { msgctxt: "docs.api:prose", msgid: unit.text },
+        });
       }
     }
   }
@@ -160,6 +177,7 @@ const chromeDrift = (locale: string): Missing[] => {
         file: `.vitepress/i18n.json#${path}`,
         kind: "text",
         sample: preview(text),
+        unit: { msgctxt: `docs.chrome:${path}`, msgid: text },
       }));
   }
   const cached = loadCacheKeys(locale, "chrome");
@@ -169,6 +187,7 @@ const chromeDrift = (locale: string): Missing[] => {
       file: `.vitepress/i18n.ts#${path}`,
       kind: "text",
       sample: preview(text),
+      unit: { msgctxt: `docs.chrome:${path}`, msgid: text },
     }));
 };
 
@@ -192,13 +211,23 @@ const homeDrift = (locale: string): Missing[] => {
     );
     return homeUnits
       .filter((unit) => !translated.has(unit.msgid))
-      .map((unit) => ({ file: unit.reference, kind: "text", sample: preview(unit.msgid) }));
+      .map((unit) => ({
+        file: unit.reference,
+        kind: "text",
+        sample: preview(unit.msgid),
+        unit: { msgid: unit.msgid },
+      }));
   }
   const cached = loadCacheKeys(locale, "home");
   const missing: Missing[] = [];
   for (const unit of homeUnits) {
     if (!cached.has(keyFor("text", unit.msgid))) {
-      missing.push({ file: "index.md", kind: "text", sample: preview(unit.msgid) });
+      missing.push({
+        file: "index.md",
+        kind: "text",
+        sample: preview(unit.msgid),
+        unit: { msgid: unit.msgid },
+      });
     }
   }
   return missing;
@@ -225,6 +254,7 @@ const demosDrift = (locale: string): Missing[] => {
             file: `demos/${name}/i18n.json#${key}`,
             kind: "text",
             sample: preview(strings[key]),
+            unit: { msgctxt: `docs.demos:${name}:${key}`, msgid: strings[key] },
           });
         }
       }
@@ -237,7 +267,12 @@ const demosDrift = (locale: string): Missing[] => {
     const { strings } = loadDemoI18n(join(demoDir, name));
     for (const text of Object.values(strings)) {
       if (!cached.has(keyFor("text", text))) {
-        missing.push({ file: `demos/${name}/i18n.json`, kind: "text", sample: preview(text) });
+        missing.push({
+          file: `demos/${name}/i18n.json`,
+          kind: "text",
+          sample: preview(text),
+          unit: { msgid: text },
+        });
       }
     }
   }
@@ -262,6 +297,7 @@ const record = (surface: string, locale: string, items: readonly Missing[]): voi
       locale,
       file: `docs/${path}`,
       detail: `[${item.kind}]${anchor ? ` ${anchor}:` : ""} ${item.sample}`,
+      unit: item.unit,
     });
   }
 };
@@ -280,3 +316,8 @@ for (const locale of targets) {
 }
 
 process.exitCode = reporter.report();
+const jsonOutput = process.env.DRIFT_JSON_OUT;
+if (jsonOutput) {
+  mkdirSync(dirname(jsonOutput), { recursive: true });
+  writeFileSync(jsonOutput, `${JSON.stringify(reporter.recordedFindings, null, 2)}\n`);
+}

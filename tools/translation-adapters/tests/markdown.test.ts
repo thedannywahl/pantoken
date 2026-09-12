@@ -1,5 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import {
+  assertCleanMarkdownTranslation,
   buildMarkdownTranslationPrompt,
   preserveMarkdown,
   restoreMarkdown,
@@ -56,6 +57,7 @@ test("prompt names the target language and wraps the document in its envelope", 
   const prompt = buildMarkdownTranslationPrompt("body", "Hungarian", "react/README.md");
   expect(prompt).toContain("English to Hungarian");
   expect(prompt).toContain("File: react/README.md");
+  expect(prompt).toContain("Do not include explanations, reasoning, analysis");
   expect(prompt).toContain("--- BEGIN MARKDOWN ---\nbody\n--- END MARKDOWN ---");
 });
 
@@ -67,4 +69,74 @@ test("strips the envelope when a model echoes the delimiters back", () => {
 
 test("returns the response unchanged when no envelope is echoed", () => {
   expect(stripMarkdownEnvelope("just the body")).toBe("just the body");
+});
+
+test("accepts a plain translated markdown body", () => {
+  expect(() =>
+    assertCleanMarkdownTranslation("# Komponensek\n\nLefordított tartalom.", "guide/a.md"),
+  ).not.toThrow();
+});
+
+test("rejects model self-correction commentary", () => {
+  expect(() =>
+    assertCleanMarkdownTranslation(
+      "# Komponensek\n\nOops — must not produce garbled. I'll continue carefully.",
+      "guide/a.md",
+    ),
+  ).toThrow(/model commentary/);
+});
+
+test("rejects repeated-character garbage", () => {
+  expect(() =>
+    assertCleanMarkdownTranslation(
+      "Թարգմանություն任任任任任任任任任任任任任任任任任任任任任任任任任",
+      "guide/a.md",
+    ),
+  ).toThrow(/repeated-character garbage/);
+});
+
+test("rejects duplicated whole-document starts", () => {
+  expect(() =>
+    assertCleanMarkdownTranslation(
+      "# Komponensek\n\nTartalom.\n\n# Komponensek\n\nTartalom.",
+      "guide/a.md",
+    ),
+  ).toThrow(/multiple document starts/);
+});
+
+test("does not treat sub-headings as multiple document starts", () => {
+  expect(() =>
+    assertCleanMarkdownTranslation(
+      "# Főcím\n\n## Alcím 1\n\n### Alcím 2\n\nTartalom.",
+      "guide/a.md",
+    ),
+  ).not.toThrow();
+});
+
+test("evaluates adversarial repeated-whitespace heading input in linear time", () => {
+  const adversarial = `# ${" \t".repeat(20_000)} Heading`;
+  const start = performance.now();
+  expect(() => assertCleanMarkdownTranslation(adversarial, "guide/a.md")).not.toThrow();
+  const elapsed = performance.now() - start;
+  expect(elapsed).toBeLessThan(100);
+});
+
+test("rejects unexpected CJK characters for non-CJK target languages", () => {
+  expect(() =>
+    assertCleanMarkdownTranslation(
+      "Գործընթացի բարերը ընդունում են任意 մասշտաբներ։",
+      "guide/a.md",
+      "Armenian",
+    ),
+  ).toThrow(/unexpected CJK characters/);
+});
+
+test("allows CJK characters for CJK target languages", () => {
+  expect(() =>
+    assertCleanMarkdownTranslation(
+      "# コンポーネント\n\n任意の尺度を受け入れます。",
+      "guide/a.md",
+      "Japanese",
+    ),
+  ).not.toThrow();
 });

@@ -18,7 +18,7 @@ import { copyFileSync, mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const docsRoot = join(import.meta.dirname, "..");
-const source = join(docsRoot, "../ai/pantoken-ai/skills/create-pantoken-app/SKILL.md");
+const source = join(docsRoot, "../packages/scaffold/skills/create-pantoken-app/SKILL.md");
 const siteDir = join(docsRoot, "../ai/create-pantoken-app-site");
 const target = "/SKILL.md";
 

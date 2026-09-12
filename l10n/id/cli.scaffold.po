@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 17:05+0000\n"
+"PO-Revision-Date: 2026-09-11 23:05+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "Language: und\n"
@@ -20,6 +20,12 @@ msgstr "Pilih platform untuk dibuat:"
 msgctxt "cli.scaffold:promptDir"
 msgid "Target directory:"
 msgstr "Direktori target:"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:promptAiAssets"
+msgid "Add AI agent assets (AGENTS.md, editor/Copilot rules)?"
+msgstr "Tambahkan aset agen AI (AGENTS.md, aturan editor/Copilot)?"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -137,6 +143,12 @@ msgid ""
 msgstr ""
 "Jangan pernah meminta konfirmasi; keluarkan kesalahan jika platform/"
 "direktori hilang"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:helpNoAiDescription"
+msgid "Skip installing AI agent assets after scaffolding"
+msgstr "Lewati pemasangan aset agen AI setelah scaffolding"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format

@@ -19,7 +19,9 @@ describe("docs.home PO migration", () => {
     for (const locale of locales) {
       const entries = parsePo(readFileSync(join(root, "l10n", locale, "docs.home.po"), "utf8"));
       const translations = new Map(
-        entries.filter((entry) => entry.msgstr !== "").map((entry) => [entry.msgid, entry.msgstr]),
+        entries
+          .filter((entry) => !entry.obsolete && entry.msgstr !== "")
+          .map((entry) => [entry.msgid, entry.msgstr]),
       );
       const rendered = renderFrontmatterFile(
         source,
@@ -29,7 +31,9 @@ describe("docs.home PO migration", () => {
       const pagePath =
         locale === "en" ? join(docsRoot, "index.md") : join(docsRoot, locale, "index.md");
       expect(rendered).toBe(readFileSync(pagePath, "utf8"));
-      expect(entries.filter((entry) => entry.msgstr !== "")).toHaveLength(units.length);
+      expect(entries.filter((entry) => !entry.obsolete && entry.msgstr !== "")).toHaveLength(
+        units.length,
+      );
     }
   });
 });

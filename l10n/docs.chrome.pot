@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 17:04+0000\n"
+"PO-Revision-Date: 2026-09-12 14:17+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -23,12 +23,6 @@ msgstr ""
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
-msgctxt "docs.chrome:nav.packages"
-msgid "Packages"
-msgstr ""
-
-#: docs/.vitepress/i18n.json
-#, no-c-format
 msgctxt "docs.chrome:nav.css"
 msgid "CSS"
 msgstr ""
@@ -36,7 +30,7 @@ msgstr ""
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:nav.api"
-msgid "API reference"
+msgid "API"
 msgstr ""
 
 #: docs/.vitepress/i18n.json
@@ -55,12 +49,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.chrome:sidebar.gettingStarted"
 msgid "Getting started"
-msgstr ""
-
-#: docs/.vitepress/i18n.json
-#, no-c-format
-msgctxt "docs.chrome:sidebar.packageMap"
-msgid "The package map"
 msgstr ""
 
 #: docs/.vitepress/i18n.json
@@ -113,6 +101,66 @@ msgstr ""
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
+msgctxt "docs.chrome:sidebar.css"
+msgid "CSS"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.ai"
+msgid "AI"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.bundlers"
+msgid "Bundlers"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.design"
+msgid "Design"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.formats"
+msgid "Formats"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.packages"
+msgid "Packages"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.platforms"
+msgid "Platforms"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.plugins"
+msgid "Plugins"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.renderers"
+msgid "Renderers"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.tools"
+msgid "Tools"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
 msgctxt "docs.chrome:sidebar.apiOverview"
 msgid "Overview"
 msgstr ""
@@ -121,6 +169,30 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.chrome:editText"
 msgid "Edit this page on GitHub"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:demoTabs.result"
+msgid "Result"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format, x-translate-optional
+msgctxt "docs.chrome:demoTabs.html"
+msgid "HTML"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format, x-translate-optional
+msgctxt "docs.chrome:demoTabs.css"
+msgid "CSS"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format, x-translate-optional
+msgctxt "docs.chrome:demoTabs.js"
+msgid "JS"
 msgstr ""
 
 #: docs/.vitepress/i18n.json
@@ -330,7 +402,7 @@ msgstr ""
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
-msgid "\"Set up pantoken (github.com/thedannywahl/pantoken) in this project using create.pantoken.app/SKILL.md.\""
+msgid "\"Set up pantoken in this project using create.pantoken.app/SKILL.md.\""
 msgstr ""
 
 #: docs/.vitepress/i18n.json

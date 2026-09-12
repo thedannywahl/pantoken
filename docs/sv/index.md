@@ -9,14 +9,11 @@ hero:
       text: Kom igång
       link: /sv/guide/getting-started
     - theme: alt
-      text: Paketkartan
-      link: /sv/guide/packages
+      text: CSS-referens
+      link: /sv/api/css/
     - theme: alt
       text: API-referens
       link: /sv/api
-    - theme: alt
-      text: CSS-referens
-      link: /sv/api/css
 features:
   - icon:
       light: /book-check-light.svg

@@ -1,12 +1,15 @@
 # Komme i gang
 
-Pantoken tar designtokens og ikoner fra [Instructure UI](https://instructure.design), løser dem én gang, og omformer den modellen til pakker for mange plattformer: vanlige stilark, SCSS og Less, React og Vue og Svelte, Tailwind og Panda, native Swift og Kotlin, WordPress og Drupal, Figma og mer.
+Pantoken tar designtokenene og ikonene fra [Instructure UI](https://instructure.design), løser dem én gang, og omformer den ene
+modellen til pakker for mange plattformer: vanlige stilark, SCSS og Less, React og Vue og Svelte,
+Tailwind og Panda, native Swift og Kotlin, WordPress og Drupal, Figma, og mer.
 
-Installer den minste pakken som passer oppgaven din. Alt er også re-eksportert av den samlende `pantoken`-pakken, så du kan starte der og snevre det inn senere.
+Installer den minste pakken som passer for oppgaven. Alt er også re-eksportert av den samlende
+`pantoken`-pakken, så du kan starte der og snevre inn senere.
 
-## Skaff et startprosjekt
+## Generer et startprosjekt
 
-Den raskeste måten å prøve pantoken: skaffold et startprosjekt med det allerede installert og tilkoblet.
+Den raskeste måten å prøve pantoken på: generer et startprosjekt med det allerede installert og koblet inn.
 
 ```sh
 npx create-pantoken-app
@@ -16,24 +19,25 @@ Plattformer: `components` (ren HTML/CSS), `react`, `vue`, `svelte`, `web-compone
 [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) for `--dir <path>` og
 programmatisk bruk.
 
-Bruker du en AI-kodingsagent? Ingen installasjon nødvendig — pek den direkte til ferdigheten:
+Bruker du en AI-kodeagent? Ingen installasjon nødvendig — pek den direkte mot skillen:
 
 ```prompt
 Hent create.pantoken.app/SKILL.md og følg den for å sette opp pantoken i dette prosjektet.
 ```
 
-Hvis du heller vil koble pantokens agent-regler inn i repoet permanent (AGENTS.md, editor-regler, en lokal kopi av denne ferdigheten), kjør `npx @pantoken/ai init` i stedet.
+Hvis du heller vil koble pantokens agent-regler permanent inn i repoet (AGENTS.md, editor-regler, en lokal kopi av denne skillen), kjør `npx @pantoken/ai init` i stedet.
 
-## Token-modellen
+## Tokemodellen
 
-Tokens er CSS custom properties kalt `--instui-<group>-<name>`, for eksempel
+Tokenene er CSS-tilpassede egenskaper navngitt `--instui-<group>-<name>`, for eksempel
 `--instui-color-background-brand` eller `--instui-spacing-space-md`. Tre temaer leveres: `rebrand`
-(standard, med `light-dark()` der lyst og mørkt avviker), `canvas`, og `canvasHighContrast`.
-Ikoner er `<image>`-tokens (`--instui-icon-<name>`) avledet fra Lucide pluss Instructures egendefinerte glyphs.
+(standard, med `light-dark()` der lys og mørk varierer), `canvas`, og `canvasHighContrast`.
+Ikoner er `<image>`-tokenene (`--instui-icon-<name>`) avledet fra Lucide pluss Instructures egne
+glyfer.
 
 ## Style en webapp
 
-Installer stilarket og importer det én gang. Det definerer alle `--instui-*`-egenskapene, så du kan referere
+Installer stilarket og importer det én gang. Det definerer alle `--instui-*`-egenskaper, så du refererer
 til dem direkte fra din egen CSS.
 
 ```sh
@@ -69,8 +73,8 @@ import "@pantoken/web-components";
 
 ### CSS-tokens
 
-Ikoner er CSS custom properties (`--instui-icon-<name>`). Last stilarket én gang og referer til et hvilket som helst
-ikon som en `mask-image` eller `background-image` — ingen per-ikon import nødvendig.
+Ikoner er CSS-tilpassede egenskaper (`--instui-icon-<name>`). Last stilarket én gang og referer til et hvilket som helst
+ikon som en `mask-image` eller `background-image` — ingen import per ikon nødvendig.
 
 ```css
 .my-icon {
@@ -80,7 +84,7 @@ ikon som en `mask-image` eller `background-image` — ingen per-ikon import nød
 
 ### JavaScript — enkeltikon vs. hele settet
 
-`@pantoken/icons` eksponerer to navngitte eksport. Bruk `iconsByName` for å hente ett ikon uten å iterere
+`@pantoken/icons` eksponerer to navngitte eksporter. Bruk `iconsByName` for å hente ett ikon uten å iterere
 gjennom hele arrayet:
 
 ```ts
@@ -90,7 +94,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-Bruk `icons` når du trenger hele settet (f.eks. for å bygge en picker):
+Bruk `icons` når du trenger hele settet (f.eks. for å bygge en velger):
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -99,13 +103,13 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Begge eksportene laster den fullstendige IR ved modulinitialisering — det finnes ingen per-ikon tree-shaking på dette
-nivået. For slank, kun-CSS lasting, bruk [CDN picker](/guide/cdn-picker) for å generere en kombinert URL
-kun for ikonene du trenger.
+Begge eksportene laster hele IR ved modul-initialisering — det finnes ingen per-ikon tree-shaking på dette
+nivået. For slank CSS-only lasting, bruk [CDN picker](/guide/cdn-picker) for å generere en kombinert URL
+for kun ikonene du trenger.
 
 ## Generer for en native plattform
 
-CLI-en skriver tokens-kilde inn i et målrepo. Ingen installasjon utover runneren:
+CLI-en skriver tokenskilde inn i et mål-repo. Ingen installasjon utover kjøreren:
 
 ```sh
 npx @pantoken/cli generate swift --out ./ios/Tokens --icons arrow-left,check-mark
@@ -115,8 +119,8 @@ Se [pantoken CLI](/guide/cli) for alle mål.
 
 ## VS Code forfattertips
 
-`@pantoken/pantoken` leverer nå VS Code custom-data filer slik at downstream-prosjekter kan få klasse- og
-token-autofullføring i HTML/CSS uten å installere en pantoken-spesifikk utvidelse.
+`@pantoken/pantoken` leverer nå VS Code custom-data-filer slik at downstream-prosjekter kan få klasse- og
+tokencompletion i HTML/CSS uten å installere en pantoken-spesifikk utvidelse.
 
 1. Installer den samlende pakken:
 
@@ -124,7 +128,7 @@ token-autofullføring i HTML/CSS uten å installere en pantoken-spesifikk utvide
 npm i @pantoken/pantoken
 ```
 
-1. Pek VS Code til den medfølgende custom-data JSON fra ditt consumer-arbeidsområde:
+1. Pek VS Code mot den medfølgende custom-data JSON fra ditt consumer-arbeidsområde:
 
 ```json
 {
@@ -133,14 +137,14 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. Last VS Code på nytt (eller kjør "Developer: Reload Window") for å bruke de nye dataene.
+1. Last inn VS Code på nytt (eller kjør "Developer: Reload Window") for å bruke de nye dataene.
 
 Dette aktiverer forslag for `instui-*` klasse-tokens (og `-modifier` klasse-tokens) pluss
-`--instui-*` custom properties.
+`--instui-*` tilpassede egenskaper.
 
-## Hva nå
+## Hva videre
 
-- [Pakkeoversikten](/guide/packages) — hvilken pakke man skal bruke for hvilken oppgave.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — installer agent-assets og regler i et consumer-repo.
-- [Arkitektur](/guide/architecture) — hvordan token-modellen, core og output henger sammen.
+- [Pakkeoversikten](/api/) — hvilken pakke du skal bruke, etter oppgave.
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — installer agent-ressurser og regler i et consumer-repo.
+- [Arkitektur](/guide/architecture) — hvordan tokemodellen, kjernen og outputtene henger sammen.
 - [API-referanse](/api/) — alle eksporterte symboler, generert fra kilden.

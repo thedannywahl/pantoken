@@ -106,12 +106,11 @@ export const NON_LATIN_LOCALES: Partial<Record<DocsLocale, string>> = {
  */
 export interface UiStrings {
   description: string;
-  nav: { guide: string; packages: string; css: string; api: string };
+  nav: { guide: string; css: string; api: string };
   sidebar: {
     intro: string;
     guides: string;
     gettingStarted: string;
-    packageMap: string;
     architecture: string;
     components: string;
     cdn: string;
@@ -120,9 +119,24 @@ export interface UiStrings {
     plugins: string;
     generated: string;
     api: string;
+    css: string;
+    apiGroups: {
+      ai: string;
+      bundlers: string;
+      design: string;
+      formats: string;
+      packages: string;
+      platforms: string;
+      plugins: string;
+      renderers: string;
+      tools: string;
+    };
     apiOverview: string;
   };
   editText: string;
+  // View tabs on the `@pantoken/demo` runner, passed into its iframe by the markdown-it plugin.
+  // The language names are acronyms, so most locales keep them as-is.
+  demoTabs: { result: string; html: string; css: string; js: string };
   // The pantoken palette selector injected into the nav by the custom theme (see ThemeSelector.vue).
   // `Canvas` is an Instructure product name and stays as-is per brand rules; only descriptors translate.
   themeSelector: {

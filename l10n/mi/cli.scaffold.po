@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 17:06+0000\n"
+"PO-Revision-Date: 2026-09-11 23:06+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "Language: und\n"
@@ -20,6 +20,12 @@ msgstr "Tīpakohia he papanga hei hanga:"
 msgctxt "cli.scaffold:promptDir"
 msgid "Target directory:"
 msgstr "Kōpaki ūkaipō (Target):"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:promptAiAssets"
+msgid "Add AI agent assets (AGENTS.md, editor/Copilot rules)?"
+msgstr "Tāpiri i ngā rawa mō ngā ajaneti AI (AGENTS.md, ture etita/Copilot)?"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -137,6 +143,12 @@ msgctxt "cli.scaffold:helpYesDescription"
 msgid ""
 "Never prompt; error instead of prompting for a missing platform/directory"
 msgstr "Kāore he pātai; ka hapa ina kore te papanga/kōpaki"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:helpNoAiDescription"
+msgid "Skip installing AI agent assets after scaffolding"
+msgstr "Aukatia te tāuta i ngā rawa ajaneti AI i muri i te hanga anga"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format

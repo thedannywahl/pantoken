@@ -253,7 +253,9 @@ export function runRenderContent(
   const space = config.spaces[spaceId];
   if (!space || space.kind !== "content") throw new Error(`"${spaceId}" is not a content space.`);
   const entries = loadPoEntriesForSpace(config, configDir, spaceId, locale);
-  const byMsgid = new Map(entries.filter((e) => e.msgstr !== "").map((e) => [e.msgid, e.msgstr]));
+  const byMsgid = new Map(
+    entries.filter((e) => !e.obsolete && e.msgstr !== "").map((e) => [e.msgid, e.msgstr]),
+  );
   const resolve = (text: string): string => byMsgid.get(text) ?? text;
 
   const filesWritten: string[] = [];
@@ -337,6 +339,7 @@ export function runCheckContent(
         file,
         line: line ? Number(line) : undefined,
         detail: `Untranslated: ${unit.msgid.slice(0, 60)}`,
+        unit: { msgid: unit.msgid },
       });
     }
   }
@@ -480,6 +483,7 @@ export function runCheckMessages(
         locale,
         file: space.source,
         detail: `Untranslated: "${unit.key}" (English: ${unit.msgid.slice(0, 60)})`,
+        unit: { msgctxt: unit.msgctxt, msgid: unit.msgid },
       });
     }
   }

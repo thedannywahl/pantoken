@@ -9,14 +9,11 @@ hero:
       text: شروع به کار
       link: /fa/guide/getting-started
     - theme: alt
-      text: نقشهٔ بسته‌ها
-      link: /fa/guide/packages
+      text: مرجع CSS
+      link: /fa/api/css/
     - theme: alt
       text: مرجع API
       link: /fa/api
-    - theme: alt
-      text: مرجع CSS
-      link: /fa/api/css
 features:
   - icon:
       light: /book-check-light.svg

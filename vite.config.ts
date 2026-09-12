@@ -407,6 +407,21 @@ export default defineConfig({
         command:
           "vp run @pantoken/translation-adapters#build && vp run @pantoken/i18n-engine#build && vp run @pantoken/web-components#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift",
       },
+      "i18n:drift:fix": {
+        command: "node scripts/i18n-drift-fix.ts --provider claude",
+        dependsOn: ["@pantoken/translation-adapters#build", "@pantoken/i18n-engine#build"],
+        cache: false,
+      },
+      "i18n:drift:fix:agy": {
+        command: "node scripts/i18n-drift-fix.ts --provider agy",
+        dependsOn: ["@pantoken/translation-adapters#build", "@pantoken/i18n-engine#build"],
+        cache: false,
+      },
+      "i18n:drift:fix:copilot": {
+        command: "node scripts/i18n-drift-fix.ts --provider copilot",
+        dependsOn: ["@pantoken/translation-adapters#build", "@pantoken/i18n-engine#build"],
+        cache: false,
+      },
       // Generate the local, git-ignored language coverage report. Keep this uncached so the report
       // always reflects the current PO catalogs and policy configuration.
       "i18n:coverage": {

@@ -334,6 +334,9 @@ const translateMarkdownFiles = async (
     const proseUnits: TranslationUnit[] = fileUnits
       .filter(isCatalogedApiUnit)
       .map((unit) => ({ kind: "prose", source: unit.text }));
+    const protectedProseUnits: TranslationUnit[] = fileUnits
+      .filter((unit) => isCatalogedApiUnit(unit) && unit.translateCodeShaped !== true)
+      .map((unit) => ({ kind: "prose", source: unit.text }));
 
     const beforeMisses = memory.misses;
     const beforeHits = memory.hits;
@@ -342,7 +345,7 @@ const translateMarkdownFiles = async (
       autosave: true,
       locale,
       defaultVerbatim: { allow: ["en*"] },
-      requiredVerbatimSources: requiredVerbatimSources(proseUnits),
+      requiredVerbatimSources: requiredVerbatimSources(protectedProseUnits),
     });
 
     const fileProseTranslated = memory.misses - beforeMisses;

@@ -10,7 +10,7 @@ import "@pantoken/components/components.css";
 > [!NOTE]
 > Prefer custom elements? `@pantoken/web-components` wraps these same styles as `<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, and more — see the
-> [package map](/guide/packages).
+> [package map](/api/).
 
 ## Conventions
 
@@ -182,10 +182,10 @@ import "@pantoken/components/utilities.css";
 ```
 
 <div class="instui-view --bg-accent-blue --text-on-color --p-md --mb-sm" style="border-radius: 6px;">
-  <span class="instui-text --text-on-color">Accent-blue surface with on-colour text.</span>
+  <span class="instui-text --text-on-color">Accent-blue surface with on-color text.</span>
 </div>
 <div class="instui-view --bg-muted --p-sm --mx-auto" style="max-width: 12rem; border-radius: 6px; text-align: center;">
-  <span class="instui-text">Centred with mx-auto.</span>
+  <span class="instui-text">Centered with mx-auto.</span>
 </div>
 
 ```html
@@ -248,7 +248,7 @@ for the mechanism.
 Everything here is pure CSS driven by the `--instui-*` tokens, so it tracks InstUI through the token
 layer. See the [API reference](/api/) for `componentsCss` and the per-component builders.
 
-## Overlays: dialog and popover
+## Overlays: dialogue and popover
 
 The overlay components ride native platform primitives, so they behave accessibly with little or no
 JavaScript.

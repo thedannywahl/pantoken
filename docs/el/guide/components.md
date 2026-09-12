@@ -1,29 +1,28 @@
 # Συστατικά
 
-`@pantoken/components` παρέχει στυλ συστατικών με βάση κλάσεις κατασκευασμένα από τα tokens του Instructure. Εισάγετε το stylesheet και επισημάνετε το markup — δεν απαιτείται πλαίσιο εργασίας.
+`@pantoken/components` παρέχει στυλ συστατικών βασισμένα σε κλάσεις που δημιουργούνται από τα tokens της Instructure. Εισάγετε το stylesheet και επισημάνετε το markup — δεν απαιτείται πλαίσιο.
 
 ```ts
 import "@pantoken/components/components.css";
 ```
 
-> [!NOTE]
-> Προτιμάτε προσαρμοσμένα στοιχεία; `@pantoken/web-components` τυλίγει αυτά τα ίδια στυλ ως `<instui-button>`,
+> [!ΣΗΜΕΙΩΣΗ]
+> Προτιμάτε προσαρμοσμένα στοιχεία; `@pantoken/web-components` τυλίγει τα ίδια στυλ ως `<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` και άλλα — δείτε τον
-> [χάρτη πακέτων](/guide/packages).
+> [χάρτη πακέτου](/api/).
 
 ## Συμβάσεις
 
-Οι συμβάσεις CSS σε αυτό το πακέτο βασίζονται σε μια τροποποιημένη έκδοση του [RSCSS](https://ricostacruz.com/rscss/index.html).
+Οι συμβάσεις CSS σε αυτό το πακέτο βασίζονται σε τροποποιημένη έκδοση του [RSCSS](https://ricostacruz.com/rscss/index.html).
 
-Οι τροποποιητές είναι **κλειδί-τιμή** — `-<prop>-<val>`, ευθυγραμμισμένοι με τα ονόματα props του InstUI — έτσι διαβάζονται από
-μόνα τους: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Τα boolean props είναι μόνο το όνομα του prop, όπου η παρουσία σημαίνει `true` (`-has-shadow`, `-clickable`); ένα boolean που είναι προεπιλεγμένο ενεργό και απενεργοποιείται
-αντιστρέφει (`-without-background`, `-without-border`). Τα μεγέθη δέχονται τόσο σύντομες όσο και μακρές ορθογραφίες
-(`-size-sm` = `-size-small`). Όταν ένα όνομα αποκλίνει από το InstUI, η σημασιολογική κλάση του InstUI εξακολουθεί να λειτουργεί
-αλλά είναι αποσυρμένη (π.χ. `-variant-info` → χρησιμοποιήστε `-color-info`).
+Οι τροποποιητές είναι **key-value** — `-<prop>-<val>`, ευθυγραμμισμένοι με τα ονόματα props του InstUI — έτσι διαβάζονται αυτόνομα: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Τα boolean props είναι μόνο το όνομα του prop, όπου η παρουσία σημαίνει `true` (`-has-shadow`, `-clickable`); ένα default-on boolean που απενεργοποιείται
+αντιστρέφει (`-without-background`, `-without-border`). Τα μεγέθη δέχονται σύντομες και μακρές ονομασίες
+(`-size-sm` = `-size-small`). Όταν ένα όνομα αποκλίνει από το InstUI, η σημασιολογική κλάση InstUI εξακολουθεί να λειτουργεί
+αλλά είναι καταργημένη (π.χ. `-variant-info` → χρησιμοποιήστε `-color-info`).
 
 ### Παράδειγμα
 
-Συστατικό Instructure UI React:
+Instructure UI React component:
 
 ```jsx
 <Alert variant="success" transition="fade" hasShadow renderCustomIcon={megaphone}>
@@ -49,12 +48,12 @@ pantoken components:
 </div>
 ```
 
-Για το prop `timeout` του InstUI, ορίστε την ακέραια προσαρμοσμένη ιδιότητα `--timeout` σε χιλιοστά του δευτερολέπτου και φορτώστε
-την αλληλεπίδραση Alert. Μια θετική τιμή προγραμματίζει την απόρριψη· `0` (η προεπιλογή) αφήνει το alert στη
-θέση του. Προσθέστε τις κλάσεις `instui-transition -fade-entered` της βοηθητικής `transition` για το fade του InstUI· παραλείψτε
-αυτές για άμεση αφαίρεση. Η αλληλεπίδραση χειρίζεται την κατάσταση `-fade-exiting` και εκπέμπει ένα ακυρώσιμο,
-φωλιαστικό συμβάν `dismiss` πριν την αφαίρεση, ώστε μια εφαρμογή να μπορεί να καλέσει `preventDefault()` για να κρατήσει
-το alert τοποθετημένο.
+Για το prop `timeout` του InstUI, ορίστε την unitless `--timeout` custom property σε milliseconds και φορτώστε
+την αλληλεπίδραση Alert. Μια θετική τιμή προγραμματίζει την απόρριψη· `0` (το προεπιλεγμένο) αφήνει το alert
+στη θέση του. Προσθέστε τις κλάσεις `instui-transition -fade-entered` του utility `transition` για το fade του InstUI· παραλείψτε
+αυτές για άμεση αφαίρεση. Η αλληλεπίδραση χειρίζεται την κατάσταση `-fade-exiting` και πυροδοτεί ένα ακυρώσιμο,
+φυσαλίδα `dismiss` event πριν από την αφαίρεση, ώστε μια εφαρμογή να μπορεί να καλέσει `preventDefault()` για να κρατήσει το
+alert τοποθετημένο.
 
 ```html
 <link
@@ -71,15 +70,15 @@ pantoken components:
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/alert.iife.js"></script>
 ```
 
-Οι μπάρες προόδου δέχονται αυθαίρετες κλίμακες μέσω `--min` (`0` από προεπιλογή), `--value`, και `--max`
-(`100` από προεπιλογή), με αποσυρθέντες ψευδωνύμους `--value-now` και `--value-max`. Προσθέστε `-should-animate`
-για να εφαρμόσετε τη μισοδευτερόλεπτη μετάβαση του InstUI όποτε αλλάζει μια τιμή. `.value` στέκεται δίπλα σε `.bar` ως
-παιδί της ρίζας· προσθέστε `-render-value-inside` για να το αποδώσετε πάνω από την τροχιά, ευθυγραμμισμένο στην αρχή του,
-αντίθετα (στυλιζάρετέ το για ευανάγνωστοτητα έναντι του χρώματος του μέτρου). Χρησιμοποιήστε ένα φυσικό `<progress>` για
-εύρος με βάση το μηδέν και `<meter>` όταν το ελάχιστο δεν είναι μηδέν· τα web components επιλέγουν ανάμεσά τους
-αυτόματα από το `min` attribute. Το InstUI δεν έχει ασαφή κατάσταση, οπότε ένα `<progress>`
-που λείπει το `value` attribute είναι μια μόνο-για-pantoken καλύτερη εκτίμηση: `progress-bar` κινούμε `.bar` ως
-ολισθαίνον τμήμα και `progress-circle` περιστρέφει το δαχτυλίδι του σε ένα σταθερό τόξο, και τα δύο κρύβουν `.value`.
+Οι μπάρες προόδου δέχονται αυθαίρετες κλίμακες μέσω `--min` (`0` εξ ορισμού), `--value` και `--max`
+(`100` εξ ορισμού), με καταργημένα aliases `--value-now` και `--value-max`. Προσθέστε `-should-animate`
+για να εφαρμόσετε τη μισο-δευτερόλεπτη μετάβαση του InstUI κάθε φορά που αλλάζει μια τιμή. Το `.value` βρίσκεται παράλληλα με το `.bar` ως
+παιδί της ρίζας· προσθέστε `-render-value-inside` για να το αποδώσετε πάνω από τη διαδρομή, ευθυγραμμισμένο στην αρχή του,
+αντίθετα (στοιχειοθετήστε το για αναγνωσιμότητα σε σχέση με το χρώμα του μετρητή). Χρησιμοποιήστε ένα native `<progress>` για
+zero-based εύρος και `<meter>` όταν το minimum δεν είναι μηδέν· τα web components επιλέγουν αυτόματα μεταξύ τους
+από το `min` attribute. Το InstUI δεν έχει indeterminate κατάσταση, οπότε ένα `<progress>`
+χωρίς το `value` attribute είναι μια μόνο-του-pantoken καλύτερη εκτίμηση: `progress-bar` ανιματίζει `.bar` ως
+συρόμενο τμήμα και `progress-circle` περιστρέφει το δακτύλιο σε σταθερή γωνία, κρύβοντας και τα δύο το `.value`.
 
 ```html
 <label>
@@ -95,11 +94,11 @@ pantoken components:
 </label>
 ```
 
-Οι κύκλοι προόδου δέχονται τις ίδιες αυθαίρετες κλίμακες μέσω `--min`, `--value`, και `--max`.
-`--value-now` και `--value-max` παραμένουν ως αποσυρθέντες λειτουργικοί ψευδώνυμοι. Προσθέστε `-should-animate` και
-φορτώστε το πακέτο focused interaction για να αναπαράγετε την ανύψωση (mount) του InstUI· `--animation-delay` είναι μια
-unitless καθυστέρηση σε χιλιοστά του δευτερολέπτου. Οι αποσυρθείσες ορθογραφίες `-should-animate-on-mount` και
-`-shold-animate-on-mount` παραμένουν λειτουργικά ψευδώνυμα.
+Οι κύκλοι προόδου δέχονται τις ίδιες αυθαίρετες κλίμακες μέσω `--min`, `--value` και `--max`.
+`--value-now` και `--value-max` παραμένουν ως καταργημένα λειτουργικά aliases. Προσθέστε `-should-animate` και
+φορτώστε το focused interaction bundle για να αναπαράγετε την mount animation του InstUI· το `--animation-delay` είναι μια
+unitless καθυστέρηση σε milliseconds. Οι καταργημένες ορθογραφίες `-should-animate-on-mount` και
+`-shold-animate-on-mount` παραμένουν λειτουργικά aliases.
 
 ```html
 <label for="upload-progress">Uploading Document</label>
@@ -117,8 +116,9 @@ unitless καθυστέρηση σε χιλιοστά του δευτερολέ�
 
 ## Πρόθεμα κλάσης
 
-Κάθε κλάση είναι ονοματοδοτημένη με namespace `instui-` από προεπιλογή. Δημιουργήστε ένα stylesheet με το δικό σας πρόθεμα — ή κανένα — περνώντας `prefix` σε οποιονδήποτε builder. Οποιαδήποτε ψευδής τιμή (`null`, `undefined`, `""`, ή η παράλειψή του) αφαιρεί
-τελείως το πρόθεμα, ώστε να μπορείτε να γράψετε `class="heading -level-h1"` αντί για `class="instui-heading -level-h1"`:
+Κάθε κλάση ονομάζεται namespace `instui-` εξ ορισμού. Δημιουργήστε ένα stylesheet με το δικό σας πρόθεμα — ή κανένα — περνώντας
+`prefix` σε οποιονδήποτε builder. Οποιαδήποτε falsy τιμή (`null`, `undefined`, `""`, ή παράλειψή της) αφαιρεί το
+πρόθεμα εντελώς, ώστε να μπορείτε να γράψετε `class="heading -level-h1"` αντί για `class="instui-heading -level-h1"`:
 
 ```ts
 import { componentsCss } from "@pantoken/components";
@@ -127,52 +127,52 @@ componentsCss({ prefix: "ui" }); // .ui-button
 componentsCss({ prefix: null }); // .button, .alert — no prefix
 ```
 
-Οι τροποποιητές που ξεκινούν με παύλα (`.-color-secondary`, `.-level-h1`) παραμένουν αμετάβλητοι σε κάθε περίπτωση. Τα
-stylesheets που παρέχει το πακέτο κρατούν το πρόθεμα `instui`.
+Οι τροποποιητές με προθεματικό παύλα (`.-color-secondary`, `.-level-h1`) παραμένουν αμετάβλητοι σε κάθε περίπτωση. Τα
+stylesheets που παρέχει το πακέτο διατηρούν το πρόθεμα `instui`.
 
 ## Βάση
 
-`base.css` είναι ένα opt-in reset που ορίζει προεπιλογές εγγράφου από τα tokens: `box-sizing`, ένα
-reset `body`, την επιφάνεια της σελίδας, το βασικό χρώμα κειμένου και γραμματοσειρά, `color-scheme` (ώστε τα `light-dark()` tokens
-και τα εγγενή controls να ακολουθούν το θέμα), και ένα βασικό link. Φορτώστε το μια φορά, πριν τα component και prose
-sheets, όταν το pantoken κατέχει τη σελίδα.
+`base.css` είναι ένα opt-in reset που ορίζει global defaults εγγράφου από τα tokens: `box-sizing`, ένα
+reset `body`, η επιφάνεια της σελίδας, το βασικό χρώμα κειμένου και γραμματοσειρά, `color-scheme` (ώστε τα `light-dark()` tokens
+και οι native ελέγχοι να ακολουθούν το θέμα), και ένας βασικός σύνδεσμος. Φορτώστε το μία φορά, πριν από τα component και prose
+sheets, όταν το pantoken διαχειρίζεται τη σελίδα.
 
 ```ts
 import "@pantoken/components/base.css";
 import "@pantoken/components/components.css";
 ```
 
-Παραλείψτε το όταν ενσωματώνετε συστατικά σε έναν host που ήδη θέτει το δικό του θέμα για `html` και `body` —
-το reset βάφει την επιφάνεια της σελίδας, οπότε δεν θέλετε να συγκρούεται με τον host. Ό,τι ορίζει χρησιμοποιεί
-χαμηλής ειδικότητας επιλεγείς `:where()`, έτσι οι δικοί σας κανόνες κερδίζουν πάντα.
+Παραλείψτε το όταν ενσωματώνετε συστατικά σε έναν host που ήδη θεματίζει τα δικά του `html` και `body` —
+το reset βάφει την επιφάνεια της σελίδας, οπότε δεν θέλετε να αντιπαρατεθεί με τον host. Όλα όσα ορίζει χρησιμοποιούν
+χαμηλής ειδικότητας `:where()` selectors, έτσι οι δικοί σας κανόνες κερδίζουν πάντα.
 
-`base.css` _εφαρμόζει_ τη γραμματοσειρά του brand (`font-family: var(--instui-font-family-base)`, με συστήματα
-fallback); για να την _φορτώσετε_, εισάγετε το opt-in `fonts.css` — `@font-face` κανόνες για Atkinson Hyperlegible
-Next, που δείχνουν στα woff2 που περιλαμβάνονται στο πακέτο. Είναι ξεχωριστό επειδή οι γραμματοσειρές είναι ~350 kB και
-η αυτο-φιλοξενία γραμματοσειρών είναι συνειδητή επιλογή.
+`base.css` _εφαρμόζει_ τη γραμματοσειρά brand (`font-family: var(--instui-font-family-base)`, με system
+fallbacks); για να την _φορτώσετε_, εισάγετε το opt-in `fonts.css` — `@font-face` κανόνες για Atkinson Hyperlegible
+Next, που δείχνουν τα woff2s που παρέχονται στο πακέτο. Είναι ξεχωριστό επειδή τα fonts είναι ~350 kB και
+η self-hosting των γραμματοσειρών είναι συνειδητή επιλογή.
 
 ```ts
 import "@pantoken/components/base.css"; // applies the font (falls back to system without fonts.css)
 import "@pantoken/components/fonts.css"; // loads the Atkinson Hyperlegible Next woff2s
 ```
 
-## Περιεχόμενο για ανάγνωστες οθόνης
+## Περιεχόμενο για οθόνη ανάγνωσης (screen reader)
 
-<p>Υπάρχει ένα κρυφό μήνυμα μετά από αυτή τη πρόταση.<span class="instui-screen-reader-content">Μόνο οι αναγνώστες οθόνης το ανακοινώνουν.</span></p>
+<p>Υπάρχει ένα κρυφό μήνυμα μετά από αυτή την πρόταση.<span class="instui-screen-reader-content">Μόνο οι screen readers ανακοινώνουν αυτό.</span></p>
 
 ```html
 <span class="instui-screen-reader-content">Only screen readers announce this.</span>
 ```
 
-`.instui-screen-reader-content` κρύβει ένα στοιχείο οπτικά ενώ το διατηρεί στο δέντρο προσβασιμότητας
-— για labels και κείμενο κατάστασης που η τεχνολογία υποβοήθησης πρέπει να διαβάζει αλλά ο σχεδιασμός δεν πρέπει να δείχνει.
+`.instui-screen-reader-content` κρύβει ένα στοιχείο οπτικά ενώ το διατηρεί στο accessibility tree
+— για ετικέτες και κείμενα κατάστασης που πρέπει να διαβάζει η βοηθητική τεχνολογία αλλά ο σχεδιασμός δεν πρέπει να εμφανίζει.
 
-## Βοηθητικά
+## Utilities
 
-`utilities.css` είναι ένα opt-in στρώμα από διασυνοριακές κλάσεις: ένα `View` πρωτότυπο, το spacing στην κλίμακα token,
-και σημασιολογικές υπερκαλύψεις χρωμάτων. Σε αντίθεση με τις κλάσεις `-modifier` των συστατικών, αυτές χρησιμοποιούν **διπλή
-παύλα** (`--mod`) ώστε να μην συγκρούονται ποτέ με τα ονόματα τροποποιητών ενός συστατικού, και εφαρμόζονται σε οποιοδήποτε
-στοιχείο — γυμνό, ή συντεθειμένο πάνω σε ένα component.
+`utilities.css` είναι ένα opt-in στρώμα cross-cutting κλάσεων: ένα primitive `View`, spacing στην κλίμακα token,
+και σημασιολογικές υπερισχύσεις χρώματος. Σε αντίθεση με τις component `-modifier` κλάσεις, αυτές χρησιμοποιούν **double
+dash** (`--mod`) ώστε ποτέ να μην συγκρούονται με τα ονόματα τροποποιητών του component, και εφαρμόζονται σε οποιοδήποτε
+στοιχείο — γυμνό, ή συνθετικό πάνω σε ένα component.
 
 ```ts
 import "@pantoken/components/utilities.css";
@@ -190,32 +190,33 @@ import "@pantoken/components/utilities.css";
 <div class="instui-view --bg-muted --p-sm --mx-auto">…</div>
 ```
 
-**View** — `.instui-view` είναι το `View` του InstUI. Είναι η βάση πάνω στην οποία στρώνετε spacing και χρώμα, και
-φέρνει τροποποιητές κλειδί-τιμή για τα δικά του οπτικά props ώστε να μην χρειάζεται να απευθυνθείτε σε utilities:
-`-background-*` (οι επιφάνειές του), `-border-radius-{small,medium,large,circle,pill}`,
+**View** — `.instui-view` είναι το `View` του InstUI. Είναι η βάση πάνω στην οποία στοιβάζετε spacing και χρώμα, και
+φέρει key-value τροποποιητές για τα δικά του οπτικά props ώστε να μην χρειάζεται να φτάσετε στα utilities:
+`-background-*` (τις επιφάνειές του), `-border-radius-{small,medium,large,circle,pill}`,
 `-border-width-{small,medium,large}` + `-border-color-*`, `-shadow-{resting,above,topmost}`,
 `-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, και `-cursor-*` — αυτά είναι οι δικοί του
-τροποποιητές με μια μονή παύλα, ασύνδετοι με τις διπλές παύλες των utilities παρακάτω. Οι props με ελεύθερη τιμή
-(width/height/inset) παραμένουν inline styles; `margin`/`padding` χρησιμοποιούν τα spacing utilities.
+single-dash τροποποιητές, ανεξάρτητοι από τα double-dash utilities παρακάτω. Οι props ελεύθερης τιμής
+(width/height/inset) παραμένουν inline styles· `margin`/`padding` χρησιμοποιούν τα spacing utilities.
 
-**Spacing** — κλάσεις ανά πλευρά στην κλίμακα spacing. Διαβάστε τις ως `{m|p}{side}-{step}`: `m` για
-margin ή `p` για padding (ή τις πλήρεις λέξεις `margin`/`padding`), μια προαιρετική λογική πλευρά, και μετά ένα
-βήμα. Έτσι `.--m-lg` και `.--margin-lg` είναι τα ίδια, όπως και `.--pt-md` και `.--paddingt-md`.
+**Spacing** — κλάσεις ανά πλευρά στην κλίμακα spacing. Διαβάζονται ως `{m|p}{side}-{step}`: `m` για
+margin ή `p` για padding (ή οι πλήρεις λέξεις `margin`/`padding`), μια προαιρετική λογική πλευρά, και μετά ένα
+βήμα. Έτσι `.--m-lg` και `.--margin-lg` είναι το ίδιο, όπως και `.--pt-md` και `.--paddingt-md`.
 
-- Πλευρές: none (όλες), `t`/`b` (αρχή/τέλος block), `s`/`e` (αρχή/τέλος inline), `x`/`y` (άξονας inline/block). Οι λογικές πλευρές παραμένουν σωστές σε layouts από δεξιά προς αριστερά.
+- Πλευρές: none (όλες), `t`/`b` (block start/end), `s`/`e` (inline start/end), `x`/`y` (inline/block
+  axis). Οι λογικές πλευρές παραμένουν σωστές σε layouts δεξιά-προς-αριστερά.
 - Βήματα: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, συν `auto` μόνο για margin.
 
 Συνθέστε τα για το shorthand `margin="small auto large"` του InstUI:
 `class="--mt-sm --mx-auto --mb-lg"`.
 
-**Χρώμα** — σημασιολογικές υπερκαλύψεις που παραμένουν στην παλέτα: `.--bg-<name>` (φόντο),
+**Color** — σημασιολογικές υπερισχύσεις που παραμένουν εντός παλέτας: `.--bg-<name>` (background),
 `.--text-<name>` (χρώμα κειμένου), και `.--border-<name>` (χρώμα περιγράμματος). Κάθε `<name>` είναι ένα
-σημασιολογικό token χρώματος — οι προθέσεις (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
-`inverse`, `on-color`, `strong`, …) συν την παλέτα `accent-*` (`accent-blue`, `accent-green`, κ.ο.κ.). Ένα όνομα υπάρχει μόνο αν το token υπάρχει σε εκείνη την οικογένεια, οπότε `text-brand` δεν είναι κλάση — το κείμενο δεν έχει
-token brand. Δεν υπάρχει τρόπος να προσπελάσετε ένα primitive ή ένα αυθαίρετο hex, και κάθε υπερκάλυψη ακολουθεί
+σημασιολογικό token χρώματος — τα intents (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
+`inverse`, `on-color`, `strong`, …) καθώς και η παλέτα `accent-*` (`accent-blue`, `accent-green`, κ.λπ.). Ένα όνομα υπάρχει μόνο αν το token υπάρχει στην οικογένεια, οπότε `text-brand` δεν είναι κλάση — το κείμενο δεν έχει
+brand token. Δεν υπάρχει τρόπος να φτάσετε σε primitive ή αυθαίρετο hex, και κάθε υπερισχύση ακολουθεί
 το θέμα.
 
-**Οικογένειες token** — κάθε οικογένεια "ένα token, μια ιδιότητα" παίρνει μια κλάση ανά token, ονομασμένη μετά το
+**Οικογένειες token** — κάθε οικογένεια "ένα token, μία ιδιότητα" έχει μια κλάση ανά token, ονομασμένη μετά το
 token. Συνθέστε τα ελεύθερα:
 
 - `.--font-family-heading`, `.--font-family-code`, … → `font-family`
@@ -226,25 +227,29 @@ token. Συνθέστε τα ελεύθερα:
 - `.--opacity-base`, `.--opacity-disabled` → `opacity`
 - `.--elevation-resting`/`-above`/`-topmost` (και `-depth1`…`-card`) → `box-shadow`
 
-Κάθε μία ορίζει μόνον την ιδιότητά της, επομένως `border-width`/`border-radius` χρειάζονται ένα `border-*` χρώμα και ένα στυλ περιγράμματος για να σχεδιάσουν πραγματικά ένα περίγραμμα. Αυτές χρησιμοποιούν το πλήρες όνομα token (`.--border-radius-md`), ενώ οι βοηθητικοί κανόνες χρώματος και spacing παραπάνω χρησιμοποιούν σύντομα ψευδώνυμα (`.--bg-brand`, `.--mt-lg`) — τα ψευδώνυμα είναι εργονομικά συντομεύσεις· οι κλάσεις token είναι κυριολεκτικές και εξαντλητικές.
+Κάθε μία ορίζει μόνο την ιδιότητά της, οπότε `border-width`/`border-radius` χρειάζονται ένα `border-*` χρώμα και ένα border
+style για να σχεδιάσουν πραγματικά ένα περίγραμμα. Αυτές χρησιμοποιούν το πλήρες όνομα token (`.--border-radius-md`), ενώ τα
+helpers χρώματος και spacing παραπάνω χρησιμοποιούν μικρές συντομεύσεις (`.--bg-brand`, `.--mt-lg`) — οι συντομεύσεις
+είναι εργονομικά shortcuts· οι κλάσεις token είναι κυριολεκτικές και εξαντλητικές.
 
 **Διάταξη** — `.--display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`,
-`none`) και `.--text-align-<value>` (`start`, `center`, `end`, `justify`) καλύπτουν τα
-διασυνοριακά `display` και `textAlign` props του InstUI (View, Button, Metric, Tabs, …) ως συνθέσιμες κλάσεις —
-έτσι αυτά δεν είναι τροποποιητές ανά-συστατικό.
+`none`) και `.--text-align-<value>` (`start`, `center`, `end`, `justify`) καλύπτουν τα διασταυρούμενα `display` και `textAlign` props του InstUI (View, Button, Metric, Tabs, …) ως συνθέσιμες κλάσεις —
+οπότε αυτά δεν είναι τροποποιητές ανά-component.
 
-Κάθε κλάση με διπλή παύλα κερδίζει το cascade ντετερμινιστικά πάνω σε μια ομό-ονόματη τροποποιητή με μία παύλα, ανεξαρτήτως της σειράς εισαγωγής stylesheet — δείτε τις [Συμβάσεις συγγραφής](/conventions/authoring)
+Κάθε double-dash κλάση κερδίζει την cascade με καθοριστικό τρόπο έναντι ενός component modifier με ίδιο όνομα,
+ανεξάρτητα από τη σειρά εισαγωγής του stylesheet — δείτε τις [Συμβάσεις Authoring](/conventions/authoring)
 για τον μηχανισμό.
 
-Όλα εδώ είναι καθαρό CSS που κινείται από τα `--instui-*` tokens, έτσι ακολουθεί το InstUI μέσω του στρώματος token. Δείτε το [API reference](/api/) για `componentsCss` και τους builders ανά συστατικό.
+Όλα εδώ είναι καθαρό CSS που οδηγείται από τα `--instui-*` tokens, οπότε ακολουθεί το InstUI μέσω του layer των token. Δείτε το [API reference](/api/) για `componentsCss` και τους per-component builders.
 
-## Επικάλυψεις: διάλογος και popover
+## Overlays: διάλογος και popover
 
-Τα components επικάλυψης χρησιμοποιούν εγγενή primitives της πλατφόρμας, επομένως συμπεριφέρονται προσβάσιμα με λίγη ή και χωρίς JavaScript.
+Τα συστατικά overlay χρησιμοποιούν native platform primitives, οπότε συμπεριφέρονται προσβάσιμα με λίγη ή καθόλου
+JavaScript.
 
-**Modal** — τοποθετήστε `.instui-modal` σε ένα εγγενές `<dialog>`. Παίρνει focus trapping, `Esc`-για-κλείσιμο, και ένα
-`::backdrop` δωρεάν· το backdrop σκουραίνει με το ίδιο token `--instui-component-mask-background-color`
-όπως `.instui-mask` (προσθέστε `-blur` για frosted εμφάνιση). Ανοίξτε και κλείστε με invoker commands — χωρίς script:
+**Modal** — βάλτε `.instui-modal` σε ένα native `<dialog>`. Παίρνει trapping focus, `Esc`-to-close, και ένα
+`::backdrop` δωρεάν· το backdrop σκοτεινιάζει με το ίδιο token `--instui-component-mask-background-color`
+όπως το `.instui-mask` (προσθέστε `-blur` για frost). Ανοίξτε και κλείστε με invoker commands — χωρίς script:
 
 ```html
 <button class="instui-button" command="show-modal" commandfor="dlg">Open</button>
@@ -257,21 +262,21 @@ token. Συνθέστε τα ελεύθερα:
 </dialog>
 ```
 
-**Context view / popover** — τοποθετήστε `.instui-context-view` σε ένα στοιχείο `[popover]` και εναλλαγή με
-`popovertarget`. Καβαλάει το πάνω στρώμα και κλείνει με ελαφριά απόρριψη σε κλικ έξω ή `Esc`, επίσης χωρίς script:
+**Context view / popover** — βάλτε `.instui-context-view` σε ένα στοιχείο `[popover]` και εναλλάξτε το με
+`popovertarget`. Καλύπτει το πάνω στρώμα και κλείνει με light-dismiss σε κλικ έξω ή `Esc`, και πάλι χωρίς script:
 
 ```html
 <button class="instui-button" popovertarget="cv">Details</button>
 <div id="cv" popover class="instui-context-view">…</div>
 ```
 
-**Drawer layout** — τοποθετήστε `.instui-drawer-layout` σε μια ρίζα διάταξης με `.tray` και `.content`
+**Drawer layout** — βάλτε `.instui-drawer-layout` σε μια ρίζα διάταξης με `.tray` και `.content`
 παιδιά. Προσθέστε το attribute `open` (ή `-open`) για να αποκαλύψετε το tray, και χρησιμοποιήστε `placement="end"`
-(ή `-placement-end`) για να το ακουμπήσετε στην inline-end πλευρά — η τοποθέτηση επιλύεται μέσω λογικών
-ιδιοτήτων `inset-inline-*`/`flex-direction`, οπότε αναστρέφεται αυτόματα υπό `dir="rtl"` χωρίς
-επιπλέον κανόνες. Το focused interaction bundle προσθέτει δρομολόγηση Invoker εντολών και εναλλάσσει το overlay mode
-(`should-overlay-tray`) όταν το πλάτος διασχίζει `--drawer-layout-min-width` (προεπιλογή
-`--instui-breakpoints-sm`, τότε `30rem`):
+(ή `-placement-end`) για να το εσωκλείσετε στην inline-end πλευρά — η τοποθέτηση επιλύεται μέσω λογικών
+`inset-inline-*`/`flex-direction` ιδιοτήτων, οπότε αναστρέφεται αυτόματα υπό `dir="rtl"` χωρίς
+επιπλέον κανόνες. Το focused interaction bundle προσθέτει routing εντολών Invoker και εναλλάσσει το overlay mode
+(`should-overlay-tray`) όταν το πλάτος διασχίζει `--drawer-layout-min-width` (προεπιλεγμένο
+`--instui-breakpoints-sm`, μετά `30rem`):
 
 ```html
 <button class="instui-button" command="--toggle" commandfor="drawer">Toggle panel</button>
@@ -282,22 +287,23 @@ token. Συνθέστε τα ελεύθερα:
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/drawer-layout.iife.js"></script>
 ```
 
-**Mask** — `.instui-mask` μένει για εντός-ροής επικάλυψεις (ένα spinner πάνω σε μια κάρτα); το `::backdrop`
+**Mask** — `.instui-mask` μένει για in-flow overlays (ένας spinner πάνω σε κάρτα); το `::backdrop`
 ενός modal καλύπτει την περίπτωση modal.
 
-Και τα δύο μοτίβα τυλίγονται επίσης ως συμπεριφορικά custom elements στο `@pantoken/web-components`:
-`<instui-modal open>` (ένα `<dialog>` που κινείται από το `open` attribute του) και `<instui-context-view>` (ένας
-εγγενής popover).
+Και τα δύο μοτίβα τυλίγονται επίσης ως συμπεριφορικά custom elements σε `@pantoken/web-components`:
+`<instui-modal open>` (ένα `<dialog>` που ελέγχεται από το `open` attribute του) και `<instui-context-view>` (ένα
+native popover).
 
-Υποστήριξη περιηγητών: το popover API και `popovertarget` είναι Baseline 2024; οι invoker commands
-(`command`/`commandfor`) είναι Baseline 2025, οπότε σε παλαιότερους περιηγητές συνδέστε τα κουμπιά στο `dialog.showModal()`
-ως μια μονό-γραμμή fallback. Τοποθετώντας ένα popover δίπλα στο trigger του χρησιμοποιεί CSS anchor positioning όπου
-υποστηρίζεται (Chromium); αλλού κεντράρει στο πάνω στρώμα.
+Υποστήριξη προγραμμάτων περιήγησης: το popover API και το `popovertarget` είναι Baseline 2024; οι invoker commands
+(`command`/`commandfor`) είναι Baseline 2025, οπότε σε παλαιότερα προγράμματα δέστε τα κουμπιά σε `dialog.showModal()`
+ως fallback μιας γραμμής. Τοποθέτηση popover δίπλα στο trigger χρησιμοποιεί CSS anchor positioning όπου
+υποστηρίζεται (Chromium); αλλού κεντράρεται στο πάνω στρώμα.
 
 ## Φόρμες
 
-**FormField** — `.instui-form-field` είναι ένα wrapper CSS-Grid που τοποθετεί ένα label, τον control, και τυχόν
-μηνύματα. Βάλτε το σε ένα `<label>` ώστε το label να συσχετίζεται εγγενώς με τον control. Έχει τρεις περιοχές grid — `label`, `controls`, `messages`:
+**FormField** — `.instui-form-field` είναι ένα wrapper CSS-Grid που τοποθετεί μια ετικέτα, τον έλεγχο και τυχόν
+μηνύματα. Βάλτε το σε ένα `<label>` ώστε η ετικέτα να συνδεθεί με τον έλεγχο εγγενώς. Έχει τρεις περιοχές grid —
+`label`, `controls`, `messages`:
 
 ```html
 <label class="instui-form-field">
@@ -309,24 +315,23 @@ token. Συνθέστε τα ελεύθερα:
 </label>
 ```
 
-`-layout-stacked` (προεπιλογή) στοιβάζει τις περιοχές· `-layout-inline` βάζει το label δίπλα στον control (ρυθμίστε
-με `-label-align-{start,end}` και `-v-align-{top,middle,bottom}`). `-readonly` επαναχρωματίζει το label.
+`-layout-stacked` (προεπιλογή) στοιβάζει τις περιοχές· `-layout-inline` βάζει την ετικέτα δίπλα στον έλεγχο (ρυθμίστε με `-label-align-{start,end}` και `-v-align-{top,middle,bottom}`). `-readonly` αναχρωματίζει την ετικέτα.
 
-Το **αστερίσκο απαιτούμενου** εμφανίζεται όταν το πεδίο απαιτείται από _είτε_ την κλάση `-required` _ή_ ένα
-εγγενές `required` control μέσα σε αυτό — οπότε μπορείτε απλώς να ορίσετε `required` στο input και το σημάδι εμφανίζεται.
-Είναι διακοσμητικό (ένα `::after` στο label, εκτός του δέντρου προσβασιμότητας); συνοδέψτε το με μια σημείωση όπως
-"τα πεδία με \* είναι υποχρεωτικά" εκτός αν η φόρμα είναι αυταπόδεικτη.
+Το **αστεράκι απαιτούμενου** εμφανίζεται όταν το πεδίο είναι υποχρεωτικό είτε από την κλάση `-required` _ή_ από ένα
+native `required` control μέσα του — έτσι μπορείτε απλά να ορίσετε `required` στο input και το σημάδι εμφανίζεται.
+Είναι διακοσμητικό (ένα `::after` στην ετικέτα, έξω από το accessibility tree); συνοδέψτε το με σημείωση όπως
+"πεδία με * είναι υποχρεωτικά" εκτός αν η φόρμα είναι αυτονόητη.
 
 **FormFieldGroup** — `.instui-form-field-group` ομαδοποιεί σχετικά πεδία σε ένα `<fieldset>` με μια
-περιγραφή `<legend>`. Είναι καθαρή διάταξη (χωρίς ειδικά tokens): προεπιλογή στοιβάζει τα πεδία;
-`-layout-columns` / `-layout-inline` ρέουν αυτά σε responsive στήλες, με `-row-spacing-*` /
-`-col-spacing-*` και `-v-align-*` για να ρυθμίσετε το grid.
+περιγραφή `<legend>`. Είναι καθαρή διάταξη (χωρίς αφιερωμένα tokens): η προεπιλογή στοιβάζει τα πεδία;
+`-layout-columns` / `-layout-inline` τα ρέουν σε responsive στήλες, με `-row-spacing-*` /
+`-col-spacing-*` και `-v-align-*` για tuning του grid.
 
 **RadioInputGroup** — `.instui-radio-input-group` είναι η ίδια `<fieldset>`/`<legend>` ομαδοποίηση,
-ειδικοποιημένη για radios. Επειδή τα παιδικά radios μοιράζονται ένα `name`, η επιλογή είναι εγγενώς μονο-επιλογής —
-οπότε ένα σετ toggle κουμπιών συμπεριφέρεται ως ένας έλεγχος, όχι ως χαλαρά κουμπιά. `-variant-simple` (προεπιλογή) τοποθετεί
-τα κανονικά ραδιόκουμπα (`-layout-columns`/`-inline` τα ρέουν σε μια σειρά); `-variant-toggle` συνδέει τα
-παιδικά `.instui-radio.-variant-toggle` κουμπιά σε ένα ενιαίο segmented control (συμπτυγμένα περιγράμματα,
+ειδική για radios. Επειδή τα παιδικά radios μοιράζονται ένα `name`, η επιλογή είναι εγγενώς μονο-επιλογής —
+οπότε ένα σετ toggle buttons συμπεριφέρεται ως ένας έλεγχος, όχι χαλαρά κουμπιά. `-variant-simple` (προεπιλογή) τοποθετεί
+τυπικά radios (`-layout-columns`/`-inline` τα ρέουν σε σειρά); `-variant-toggle` συνδέει τα
+παιδικά `.instui-radio.-variant-toggle` κουμπιά σε έναν ενιαίο segmented έλεγχο (συμπιεσμένα περιγράμματα,
 στρογγυλεμένα εξωτερικά άκρα):
 
 ```html
@@ -340,39 +345,39 @@ token. Συνθέστε τα ελεύθερα:
 </fieldset>
 ```
 
-**Μηνύματα** — `.instui-form-field-messages` είναι ο container; κάθε `.instui-form-field-message` παίρνει ένα
-`-type-*`: `-type-hint` (γκρι, προεπιλογή), `-type-error` (κόκκινο κείμενο + glyph κύκλου-ειδοποίησης), `-type-success`
-(πράσινο κείμενο + glyph κύκλου-ελέγχου), και `-type-screenreader-only` (οπτικά κλιπ, εξακολουθεί να ανακοινώνεται).
-Τα glyphs βάφονται σε `currentColor`, οπότε ταιριάζουν πάντα με το χρώμα του μηνύματος. `-type-new-error` είναι ένα
-αποσυρθέν ψευδώνυμο του `-type-error`. Συνδέστε το container με τον control με `aria-describedby`, και ορίστε
-`aria-invalid` στον control όταν υπάρχει σφάλμα.
+**Μηνύματα** — `.instui-form-field-messages` είναι το container; κάθε `.instui-form-field-message` παίρνει ένα
+`-type-*`: `-type-hint` (γκρι, προεπιλογή), `-type-error` (κόκκινο κείμενο + glyph κύκλου- συναγερμού), `-type-success`
+(πράσινο κείμενο + glyph κύκλου-επιβεβαίωσης), και `-type-screenreader-only` (οπτικά κλιπαρισμένο, εξακολουθεί να ανακοινώνεται).
+Τα glyphs χρωματίζονται σε `currentColor`, έτσι ταιριάζουν πάντα με το χρώμα του μηνύματος. `-type-new-error` είναι
+καταργημένο alias του `-type-error`. Συνδέστε το container με τον έλεγχο με `aria-describedby`, και ορίστε
+`aria-invalid` στον έλεγχο όταν υπάρχει σφάλμα.
 
-Μέσα σε ένα FormField, ένα `-type-error` μήνυμα ακολουθεί την επικύρωση στην πλευρά του πελάτη: παραμένει κρυφό μέχρι ο
-control του πεδίου να είναι `:user-invalid` (εγγενές, μετά τη αλληλεπίδραση του χρήστη) — ή το αναγκάσετε με `-invalid`
-στο `.instui-form-field` (για σφάλμα από διακομιστή). Ένα αυτόνομο `.instui-form-field-messages` (όχι μέσα σε
-πεδίο) δεν επηρεάζεται. Το focus ring του control ακολουθεί ανάλογα: danger όταν `:user-invalid`/`-invalid`,
-επιτυχία στο `-success`.
+Μέσα σε ένα FormField, ένα `-type-error` μήνυμα ακολουθεί την client-side επικύρωση: μένει κρυφό έως ότου ο
+έλεγχος του πεδίου είναι `:user-invalid` (εγγενές, μετά την αλληλεπίδραση του χρήστη) — ή το αναγκάζετε με `-invalid`
+στο `.instui-form-field` (για σφάλμα server-side). Ένα ανεξάρτητο `.instui-form-field-messages` (όχι σε
+πεδίο) δεν επηρεάζεται. Ο δακτύλιος εστίασης του ελέγχου ακολουθεί: danger όταν `:user-invalid`/`-invalid`,
+success σε `-success`.
 
-**Κείμενα ελέγχου** — `.instui-text-input` (εγγενές `<input>`), `.instui-text-area` (εγγενές `<textarea>`,
-με δυνατότητα αλλαγής μεγέθους), και `.instui-simple-select` (εγγενές `<select>` με caret) μοιράζονται μια εμφάνιση και τις ίδιες
-καταστάσεις: `-invalid` (περιθώριο λάθους), `-success` (περιθώριο επιτυχίας), `-readonly`, εγγενές `:disabled`, και
-`-size-{sm,md,lg}`. Για ένα leading/trailing icon (το InstUI `renderBeforeInput`/`renderAfterInput`), τυλίξτε
-το input σε `.instui-input-group` και προσθέστε μια υποδοχή `.before`/`.after` (ένα glyph `-icon-*`); `-should-not-wrap`
-το κρατάει σε μια γραμμή. `.instui-number-input` είναι αυτό το facade συν μια στήλη spinner +/- `.arrows` (εγγενές
-`type="number"`; συνδέστε τα κουμπιά με `stepUp()`/`stepDown()`). `.instui-range-input` είναι ένα στιλιζαρισμένο
-`input[type="range"]` της τιμής του οποίου αποδίδεται σε μια `.instui-range-input-value` αντίστροφη φούσκα. Για ένα πλούσιο
-combobox με μια listbox popover, επιλέξτε `@instructure/ui` — αυτή η βιβλιοθήκη καλύπτει τα εγγενή controls.
+**Κείμενα ελέγχων** — `.instui-text-input` (native `<input>`), `.instui-text-area` (native `<textarea>`,
+resizable), και `.instui-simple-select` (native `<select>` με caret) μοιράζονται μια εμφάνιση και τις ίδιες
+καταστάσεις: `-invalid` (περίγραμμα σφάλματος), `-success` (περίγραμμα επιτυχίας), `-readonly`, native `:disabled`, και
+`-size-{sm,md,lg}`. Για leading/trailing icon (InstUI's `renderBeforeInput`/`renderAfterInput`), τυλίξτε
+το input σε `.instui-input-group` και προσθέστε μια θέση `.before`/`.after` (ένα glyph `-icon-*`); `-should-not-wrap`
+το κρατά σε μία γραμμή. `.instui-number-input` είναι αυτό το facade μαζί με μια `.arrows` +/- στήλη spinner (native
+`type="number"`; δεστε τα κουμπιά σε `stepUp()`/`stepDown()`). `.instui-range-input` είναι ένα styled
+`input[type="range"]` της οποίας η τιμή εμφανίζεται σε ένα `.instui-range-input-value` αντίστροφο bubble. Για ένα πλούσιο
+combobox με listbox popover, χρησιμοποιήστε `@instructure/ui` — αυτή η βιβλιοθήκη καλύπτει τους native ελέγχους.
 
-**Στυλιζαρισμένο select dropdown (πειραματικό)** — ένα opt-in `select.css` αναβαθμίζει το _ίδιο_
-στοιχείο `.instui-simple-select`: στιλιζάρει το ανοιχτό dropdown (το panel και κάθε επιλογή, με hover και
-επιλεγμένες καταστάσεις) χρησιμοποιώντας το μοντέλο CSS Customizable Select.
+**Styled select dropdown (πειραματικό)** — ένα opt-in `select.css` αναβαθμίζει το _ίδιο_
+στοιχείο `.instui-simple-select`: στιλιζάρει το ανοιχτό dropdown (το πάνελ και κάθε επιλογή, με hover και
+selected καταστάσεις) χρησιμοποιώντας το CSS Customizable Select μοντέλο.
 
-> [!WARNING]
+> [!ΠΡΟΕΙΔΟΠΟΙΗΣΗ]
 > `select.css` βασίζεται σε `appearance: base-select` / `::picker(select)`, τα οποία είναι **πειραματικά**
-> (Chrome 135+, όχι ακόμα Baseline). Παραδίδεται ως ξεχωριστό opt-in φύλλο και κάθε κανόνας είναι ελεγχόμενος
-> πίσω από `@supports (appearance: base-select)`, οπότε δεν κάνει τίποτα σε μη υποστηριζόμενους περιηγητές — ο
-> `.instui-simple-select` control απλώς παραμένει το απλό εγγενές select. Φορτώστε το μόνο αν θέλετε το
-> βελτιωμένο dropdown και αποδέχεστε την περιορισμένη υποστήριξη.
+> (Chrome 135+, όχι ακόμη Baseline). Παρέχεται ως ξεχωριστό opt-in sheet και κάθε κανόνας φρουρείται
+> πίσω από `@supports (appearance: base-select)`, οπότε δεν κάνει τίποτα σε μη υποστηριζόμενα προγράμματα — το
+> `.instui-simple-select` control απλώς παραμένει το απλό native select. Φορτώστε το μόνο αν θέλετε το
+> ενισχυμένο dropdown και αποδέχεστε την περιορισμένη υποστήριξη.
 
 ```ts
 import "@pantoken/components/components.css";

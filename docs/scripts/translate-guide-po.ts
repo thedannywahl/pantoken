@@ -13,6 +13,7 @@ import {
 } from "@pantoken/i18n-engine";
 import { AiTranslationAdapter } from "./api-translation.ts";
 import { reassemble, segmentMarkdown } from "./segment-markdown.ts";
+import { parseRequestedGuideFiles } from "./translation-scope.ts";
 import { NON_ROOT_LOCALES, parseRequestedLocales } from "../.vitepress/i18n.ts";
 
 const repoRoot = new URL("../../", import.meta.url).pathname;
@@ -22,7 +23,11 @@ const locales = parseRequestedLocales(process.env.DOCS_TRANSLATION_LOCALE, NON_R
 const force = process.env.DOCS_TRANSLATION_FORCE === "1";
 
 runExtractContent(config, repoRoot, "docs.guides");
-const files = listGuideFiles(docsRoot);
+const files = parseRequestedGuideFiles(process.env.DOCS_TRANSLATION_FILE, listGuideFiles(docsRoot));
+
+if (process.env.DOCS_TRANSLATION_FILE !== undefined) {
+  console.log(`guide file scope: ${files.join(", ")}`);
+}
 
 for (const locale of locales) {
   await runTranslateContent(config, repoRoot, "docs.guides", locale);

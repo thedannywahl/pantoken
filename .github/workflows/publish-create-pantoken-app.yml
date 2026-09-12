@@ -14,7 +14,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "ai/pantoken-ai/skills/create-pantoken-app/**"
+      - "packages/scaffold/skills/create-pantoken-app/**"
   workflow_dispatch:
 
 permissions:

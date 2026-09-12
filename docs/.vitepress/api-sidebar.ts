@@ -2,8 +2,14 @@ import type { DefaultTheme } from "vitepress";
 
 type SidebarItem = DefaultTheme.SidebarItem;
 type SidebarRoutes = Record<string, SidebarItem[]>;
+type ApiGroupLabels = Partial<Record<string, string>>;
 
 const isCssSection = (item: SidebarItem): boolean => item.text === "CSS";
+
+const withTopLevelLabel = (item: SidebarItem, labels: ApiGroupLabels): SidebarItem => {
+  const text = item.text ? (labels[item.text] ?? item.text) : item.text;
+  return text === item.text ? { ...item } : { ...item, text };
+};
 
 const collapseTree = (item: SidebarItem): SidebarItem => {
   if (!item.items) return { ...item };
@@ -65,17 +71,27 @@ export const partitionApiSidebar = (
   merged: SidebarItem[],
   apiLabel: string,
   apiPrefix: string,
+  cssLabel: string,
+  apiGroupLabels: ApiGroupLabels,
   apiOverviewLabel: string,
 ): SidebarRoutes => {
-  const cssSections = merged.filter(isCssSection);
+  const cssSections = merged
+    .filter(isCssSection)
+    .map((item) => withTopLevelLabel(item, { CSS: cssLabel }));
   const typedocSections = merged.filter((item) => !isCssSection(item));
+  const labeledTypedocSections = typedocSections.map((item) =>
+    withTopLevelLabel(item, apiGroupLabels),
+  );
   const apiOverview: SidebarItem = { text: apiOverviewLabel, link: apiPrefix };
-  const cssOverview: SidebarItem = { text: "CSS", link: `${apiPrefix}css/` };
+  const cssOverview: SidebarItem = { text: cssLabel, link: `${apiPrefix}css/` };
 
   const makeSidebar = (activePackage?: string, includeFullCss = false): SidebarItem[] => {
     const apiSection: SidebarItem = {
       text: apiLabel,
-      items: [apiOverview, ...typedocSections.map((item) => compactTree(item, activePackage))],
+      items: [
+        apiOverview,
+        ...labeledTypedocSections.map((item) => compactTree(item, activePackage)),
+      ],
     };
 
     if (cssSections.length === 0) return [apiSection];

@@ -28,6 +28,10 @@ html.dark {
   color-scheme: dark;
 }
 
+.VPSidebarItem .text::first-letter {
+  text-transform: capitalize;
+}
+
 /* Each CSS-API `@example` is a source fence that seams into a bordered, page-background frame
    (`.css-example`, now an isolated `<iframe srcdoc>` — see `@pantoken/demo`'s `buildExampleSrcdoc` —
    so nothing from `.vp-doc` leaks into the live preview), wrapped in `.css-example-frame` (the actual
@@ -340,6 +344,18 @@ html[dir="rtl"] .is-home::before {
     padding-right: calc((100% - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width));
     padding-left: 0;
   }
+}
+
+/* Class names like `.--bg-<name>` are all bidi-neutral characters, so in an RTL paragraph the bidi
+   algorithm gives them the paragraph direction and reorders them on screen. Isolate code as LTR. */
+html[dir="rtl"] .vp-doc :is(code, kbd, samp) {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+html[dir="rtl"] .vp-doc div[class*="language-"] :is(pre, code) {
+  direction: ltr;
+  text-align: left;
 }
 
 .VPHomeHero {

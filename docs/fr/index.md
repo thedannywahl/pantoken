@@ -9,14 +9,11 @@ hero:
       text: Commencer
       link: /fr/guide/getting-started
     - theme: alt
-      text: La carte des packages
-      link: /fr/guide/packages
+      text: Référence CSS
+      link: /fr/api/css/
     - theme: alt
       text: Référence de l'API
       link: /fr/api
-    - theme: alt
-      text: Référence CSS
-      link: /fr/api/css
 features:
   - icon:
       light: /book-check-light.svg

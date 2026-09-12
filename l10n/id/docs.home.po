@@ -22,25 +22,20 @@ msgstr "Memulai"
 
 #: index.md:12
 #, no-c-format
-msgid "The package map"
-msgstr "Peta paket"
+msgid "CSS reference"
+msgstr "Referensi CSS"
 
 #: index.md:15
 #, no-c-format
 msgid "API reference"
 msgstr "Referensi API"
 
-#: index.md:18
-#, no-c-format
-msgid "CSS reference"
-msgstr "Referensi CSS"
-
-#: index.md:24
+#: index.md:21
 #, no-c-format
 msgid "One source of truth"
 msgstr "Satu sumber kebenaran"
 
-#: index.md:25
+#: index.md:22
 #, no-c-format
 msgid ""
 "Every package reads the same resolved token IR. Change a token upstream and "
@@ -50,12 +45,12 @@ msgstr ""
 "hulu dan itu mengalir ke CSS, SCSS, kode native, dan Figma dengan cara yang "
 "sama."
 
-#: index.md:29
+#: index.md:26
 #, no-c-format
 msgid "Use the smallest package"
 msgstr "Gunakan paket terkecil"
 
-#: index.md:30
+#: index.md:27
 #, no-c-format
 msgid ""
 "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and "
@@ -64,12 +59,12 @@ msgstr ""
 "Pasang hanya @pantoken/css untuk stylesheet, @pantoken/react untuk hooks dan "
 "ikon, atau preset bundler untuk Tailwind, Panda, atau MUI."
 
-#: index.md:34
+#: index.md:31
 #, no-c-format
 msgid "Generate for any platform"
 msgstr "Hasilkan untuk platform apa pun"
 
-#: index.md:35
+#: index.md:32
 #, no-c-format
 msgid ""
 "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, "
@@ -79,12 +74,12 @@ msgstr ""
 "Flutter, Rust, WordPress, dan lainnya. Token yang sama, dalam idiom setiap "
 "ekosistem."
 
-#: index.md:39
+#: index.md:36
 #, no-c-format
 msgid "No upstream coupling"
 msgstr "Tanpa ketergantungan hulu"
 
-#: index.md:40
+#: index.md:37
 #, no-c-format
 msgid ""
 "The tokens ship vendored as static JSON, so `npm i` never reaches for a "
@@ -93,3 +88,7 @@ msgstr ""
 "Token dikirimkan sebagai JSON statis yang disertakan, sehingga `npm i` tidak "
 "pernah mengambil dari sumber yang hanya ada di GitHub. Dapat diterbitkan, "
 "diberi versi semver, dan ramah-luring."
+
+#, no-c-format
+#~ msgid "The package map"
+#~ msgstr "Peta paket"

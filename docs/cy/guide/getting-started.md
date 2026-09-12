@@ -1,39 +1,39 @@
 # Dechrau
 
-Mae Pantoken yn cymryd tônau dylunio a symbolau [Instructure UI](https://instructure.design), yn eu datrys unwaith, ac yn ailffurfio’r un model hwnnw i mewn i becynnau ar gyfer sawl llwyfan: sheats steil plaen, SCSS a Less, React a Vue a Svelte, Tailwind a Panda, Swift a Kotlin brodorol, WordPress a Drupal, Figma, a mwy.
+Mae Pantoken yn cymryd tocynnau dylunio a eicons [Instructure UI](https://instructure.design), yn eu datrys unwaith, ac yn aildrefnu’r un model hwnnw i mewn i becynnau ar gyfer sawl llwyfan: taflenni steil syml, SCSS a Less, React a Vue a Svelte, Tailwind a Panda, Swift a Kotlin brodorol, WordPress a Drupal, Figma, a mwy.
 
-Rydych yn gosod y pecyn lleiaf sy’n addas ar gyfer eich tasg. Mae popeth hefyd yn cael ei ailallforio gan y pecyn unedig `pantoken`, felly gallwch ddechrau yno a chynhwysu’n fwy penodol yn nes ymlaen.
+Rydych yn gosod y pecyn lleiaf sy’n addas i’ch tasg. Mae popeth hefyd yn cael ei ail-allforio gan y pecyn undod`pantoken`, felly gallwch ddechrau yno a chyfyngu’n ddiweddarach.
 
-## Sgilffo prosiect cychwyn
+## Creu prosiect cychwynnol
 
-Y ffordd gyflymaf i roi cynnig ar pantoken: sgilffo prosiect cychwyn gyda fe eisoes wedi’i osod a’i wifro.
+Y ffordd gyflymaf i roi cynnig ar pantoken: scaffold prosiect cychwynnol gyda fe wedi’i osod a’i wrethi mewn eisoes.
 
 ```sh
 npx create-pantoken-app
 ```
 
-Llywddoedd: `components` (HTML/CSS plaen), `react`, `vue`, `svelte`, `web-components`, `angular`. Gweler
-[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) ar gyfer `--dir <path>` a
-defnydd programadwy.
+Lwyfannau: `components` (HTML/CSS syml), `react`, `vue`, `svelte`, `web-components`, `angular`. Gweler
+[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) am `--dir <path>` a
+defnydd rhaglenol.
 
-Yn defnyddio asiant codio AI? Dim angen gosod — pwyntiwch ef at y sgil yn uniongyrchol:
+A ydych yn defnyddio asiant codio AI? Dim angen gosod — pwyntiwch ef at y sgil yn uniongyrchol:
 
 ```prompt
-Lawrlwythwch create.pantoken.app/SKILL.md a dilynwch ef i sefydlu pantoken yn y prosiect hwn.
+Lawrlwytho create.pantoken.app/SKILL.md a dilynwch ef i sefydlu pantoken yn y prosiect hwn.
 ```
 
-Os hoffech yn hytrach wifro rheolau asiant pantoken i’r repo’n barhaol (AGENTS.md, rheolau golygydd, copi leol o’r sgil hwn), rhedwch `npx @pantoken/ai init` yn lle hynny.
+Os hoffech wrethu rheolau asiant pantoken i’r repo’n barhaol (AGENTS.md, rheolau golygydd, copi lleol o’r sgil hwn), rhedwch `npx @pantoken/ai init` yn lle hynny.
 
-## Y model tôn
+## Y model tocynnau
 
-Mae tônau yn eiddo personol CSS wedi’u henwi `--instui-<group>-<name>`, er enghraifft
-`--instui-color-background-brand` neu `--instui-spacing-space-md`. Mae tair thema yn cael eu hanfon: `rebrand`
-(y rhagosodedig, gyda `light-dark()` lle mae golau a thywyll yn wahanol), `canvas`, a `canvasHighContrast`.
-Mae eiconau yn docynnau `<image>` (`--instui-icon-<name>`) a gynhyrchir o Lucide ynghyd â glyphs arferol Instructure.
+Mae tocynnau yn eiddo arferol CSS wedi’u henwi `--instui-<group>-<name>`, er enghraifft
+`--instui-color-background-brand` neu `--instui-spacing-space-md`. Mae tri themâu yn cael eu cludo: `rebrand`
+(y rhagosodiad, gyda `light-dark()` lle mae golau a thywyll yn wahanol), `canvas`, a `canvasHighContrast`.
+Mae eicons yn docynnau `<image>` (`--instui-icon-<name>`) a ddeillir o Lucide yn ogystal ag eiconau arferol Instructure.
 
-## Steilio ap gwe
+## Arllwys steil i ap gwe
 
-Gosodwch y stylesheet a’i fewnforio unwaith. Mae’n diffinio pob eiddo `--instui-*`, felly rydych yn cyfeirio atynt yn uniongyrchol o’ch CSS chi eich hun.
+Gosodwch y taflen steil a’i mewnforio unwaith. Mae’n diffinio pob eiddo `--instui-*`, felly cyfeiriwch atyn nhw’n syth o’ch CSS eich hun.
 
 ```sh
 npm i @pantoken/css
@@ -50,9 +50,9 @@ import "@pantoken/css/inject";
 }
 ```
 
-## Defnyddiwch eiconau unrhywle
+## Defnyddiwch eicons unrhyw le
 
-Mae’r cydran gwe yn gweithio mewn unrhyw fframwaith, heb orfod porthi.
+Mae’r rhanogaeth gwe yn gweithio mewn unrhyw fframwaith, heb ategyniad.
 
 ```sh
 npm i @pantoken/web-components
@@ -66,9 +66,9 @@ import "@pantoken/web-components";
 <instui-icon name="check-mark"></instui-icon>
 ```
 
-### Docynnau CSS
+### Tocynnau CSS
 
-Mae eiconau yn eiddo personol CSS (`--instui-icon-<name>`). Llwythwch y stylesheet unwaith a chyfeiriwch at unrhyw eicon fel `mask-image` neu `background-image` — nid oes angen mewnforio fesul-eicon.
+Mae eicons yn eiddo arferol CSS (`--instui-icon-<name>`). Llwythwch y taflen steil unwaith a chyfeiriwch at unrhyw eicon fel `mask-image` neu `background-image` — dim angen mewnforio fesul eicon.
 
 ```css
 .my-icon {
@@ -76,9 +76,9 @@ Mae eiconau yn eiddo personol CSS (`--instui-icon-<name>`). Llwythwch y styleshe
 }
 ```
 
-### JavaScript — eicon sengl vs. set lawn
+### JavaScript — un eicon vs set llawn
 
-Mae `@pantoken/icons` yn datgelu dau allforio enwi. Defnyddiwch `iconsByName` i dynnu un eicon heb orfod trawsio’r arae lawn:
+Mae `@pantoken/icons` yn agor dau allbwn enwad. Defnyddiwch `iconsByName` i echdynnu un eicon heb iteru’r array llawn:
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -87,7 +87,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-Defnyddiwch `icons` pan fydd angen y set gyfan (e.e. i adeiladu dewiswr):
+Defnyddiwch `icons` pan fyddwch angen y set gyfan (er enghraifft i adeiladu dewiswr):
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -96,30 +96,29 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Mae’r ddau allbwn yn llwytho’r IR lawn ar gychwyn modiwl — nid oes tree-shaking fesul-eicon ar y lefel hon. Ar gyfer llwytho trwchus CSS-yn-unig, defnyddiwch y [CDN picker](/guide/cdn-picker) i gynhyrchu URL cyfuno
-ar gyfer yr eiconau rydych chi eu hangen yn unig.
+Mae’r ddau allbwn yn llwytho’r IR llawn ar gychwyn y modiwl — nid oes tree-shaking fesul eicon ar y lefel hon. Am lwytho denau sy’n seiliedig ar CSS yn unig, defnyddiwch y [CDN picker](/guide/cdn-picker) i gynhyrchu URL cyfuno ar gyfer dim ond yr eicons sydd eu hangen arnoch.
 
-## Genereiddio ar gyfer llwyfan brodorol
+## Generadu ar gyfer llwyfan brodorol
 
-Mae’r CLI yn ysgrifennu ffynhonnell tôn i mewn i repo targed. Dim gosodiad y tu hwnt i’r rhedegwr:
+Mae’r CLI yn ysgrifennu tarddiad tocynnau i repo cyrchfan. Dim gosod heblaw’r rhedegwr:
 
 ```sh
 npx @pantoken/cli generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-Gweler [y pantoken CLI](/guide/cli) am bob targed.
+Gweler [y pantoken CLI](/guide/cli) am bob cyrchfan.
 
-## Awgrymiadau awdurdodi VS Code
+## Awgrymiadau awduriaeth VS Code
 
-Mae `@pantoken/pantoken` yn awr yn cynnwys ffeiliau data-cwsustom VS Code fel y gall prosiectau defnyddwyr gael cwblhau dosbarth a thôn yn HTML/CSS heb osod estyniad penodol i pantoken.
+Mae `@pantoken/pantoken` bellach yn cyflwyno ffeiliau data-cyferbyniad VS Code fel y gall prosiectau defnyddwyr gael cwblhau dosbarth a thocyn mewn HTML/CSS heb osod estyniad penodol pantoken.
 
-1. Gosodwch y pecyn unedig:
+1. Gosodwch y pecyn undod:
 
 ```sh
 npm i @pantoken/pantoken
 ```
 
-1. Pwyntiwch VS Code at y JSON data-cwsustom wedi’i longio o’ch gofod defnyddiwr:
+1. Pwyntiwch VS Code at y JSON data-cyferbyniad a anfonwyd o’ch gweithle defnyddiwr:
 
 ```json
 {
@@ -128,14 +127,14 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. Ail-lwythwch VS Code (neu redeg "Developer: Reload Window") i weithredu’r data newydd.
+1. Ail-lwytho VS Code (neu redeg "Developer: Reload Window") i gymhwyso’r data newydd.
 
-Mae hyn yn galluogi awgrymiadau ar gyfer docynnau dosbarth `instui-*` (a docynnau dosbarth `-modifier`) yn ogystal â
-priodoleddau personol `--instui-*`.
+Mae hyn yn galluogi awgrymiadau ar gyfer tocynnau dosbarth `instui-*` (a thocynnau dosbarth `-modifier`) yn ogystal â
+eiddo arferol `--instui-*`.
 
-## I ble nesaf
+## Ble i fynd nesaf
 
-- [Map y pecynnau](/guide/packages) — pa becyn i’w gyrchu, yn dibynnu ar y dasg.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — gosod asedau asiant a rheolau mewn repo defnyddiwr.
-- [Pensaernïaeth](/guide/architecture) — sut mae’r model tôn, y core, a’r allbynnau yn cyd-fynd.
-- [Cyfeirlyfr API](/api/) — pob symbol a allforir, wedi’i chynhyrchu o’r ffynhonnell.
+- [Y map pecynnau](/api/) — pa becyn i’w gyrraedd, fesul tasg.
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — gosod asedau a rheolau asiant mewn repo defnyddiwr.
+- [Pensaernïaeth](/guide/architecture) — sut mae’r model tocynnau, y core, a’r allbynnau yn cyd-fynd.
+- [Cyfeirlyfr API](/api/) — pob symbol a allbwn, a gynhyrchir o’r ffynhonnell.

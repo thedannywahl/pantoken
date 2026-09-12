@@ -45,6 +45,8 @@ export interface FillOptions {
   concurrency?: number;
   /** Retranslate entries that already have a `msgstr`. */
   force?: boolean;
+  /** Restrict provider input to these collision-safe catalog unit keys. */
+  unitKeys?: readonly string[];
 }
 
 /**
@@ -133,8 +135,12 @@ export async function fillUntranslatedEntries(
   const invocation = resolveProviderInvocation(provider, options);
   if (!invocation) return;
   const entries = parsePo(readFileSync(poPath, "utf8"));
+  const selected = options.unitKeys ? new Set(options.unitKeys) : undefined;
   const pending = entries.filter(
-    (entry) => !entry.obsolete && (options.force === true || entry.msgstr === ""),
+    (entry) =>
+      !entry.obsolete &&
+      (selected === undefined || selected.has(`${entry.msgctxt ?? ""}\u0000${entry.msgid}`)) &&
+      (options.force === true || entry.msgstr === ""),
   );
   if (pending.length === 0) return;
 
@@ -184,8 +190,12 @@ export async function fillUntranslatedMarkdownEntries(
   const invocation = resolveProviderInvocation(provider, options);
   if (!invocation) return;
   const entries = parsePo(readFileSync(poPath, "utf8"));
+  const selected = options.unitKeys ? new Set(options.unitKeys) : undefined;
   const pending = entries.filter(
-    (entry) => !entry.obsolete && (options.force === true || entry.msgstr === ""),
+    (entry) =>
+      !entry.obsolete &&
+      (selected === undefined || selected.has(`${entry.msgctxt ?? ""}\u0000${entry.msgid}`)) &&
+      (options.force === true || entry.msgstr === ""),
   );
   if (pending.length === 0) return;
 

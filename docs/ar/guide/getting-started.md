@@ -1,38 +1,38 @@
 # البدء
 
-Pantoken يأخذ تصميم الرموز والرموز الأيقونية من [Instructure UI](https://instructure.design)، يحلّلها مرة واحدة، ويُعيد تشكيل هذا النموذج الواحد إلى حزم للعديد من المنصات: أوراق أنماط عادية، SCSS و Less، React و Vue و Svelte، Tailwind و Panda، Swift و Kotlin الأصليين، WordPress و Drupal، Figma، والمزيد.
+تأخذ Pantoken رموز التصميم والأيقونات من [Instructure UI](https://instructure.design)، تحلّلها مرة واحدة، وتعيد تشكيل ذلك النموذج الواحد إلى حزم لمنصات عديدة: ملفات أنماط عادية، SCSS و Less، React و Vue و Svelte، Tailwind و Panda، Swift و Kotlin الأصلية، WordPress و Drupal، Figma، والمزيد.
 
-قم بتثبيت الحزمة الأصغر التي تناسب مهمتك. كما أن كل شيء معاد تصديره بواسطة الحزمة الموحدة `pantoken`، لذا يمكنك البدء من هناك وتضييق الاختيار لاحقًا.
+قم بتثبيت أصغر حزمة تناسب مهمتك. كل شيء معاد تصديره أيضاً عبر الحزمة الموحدة `pantoken`، لذا يمكنك البدء منها ثم تضييق الاختيار لاحقاً.
 
-## إنشاء مشروع بدء سريع
+## إنشاء مشروع بداية
 
-أسرع طريقة لتجربة pantoken: أنشئ مشروع بدء سريع مع تثبيته ومربوطًا مسبقًا.
+الطريقة الأسرع لتجربة pantoken: إنشاء مشروع بداية يتم تثبيته وتوصيله مسبقاً.
 
 ```sh
 npx create-pantoken-app
 ```
 
 المنصات: `components` (HTML/CSS عادي)، `react`, `vue`, `svelte`, `web-components`, `angular`. انظر
-[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) لـ `--dir <path>` والاستخدام البرمجي.
+[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) لـ `--dir <path>` والاستخدام البرنامجي.
 
-تستخدم وكيل ترميز ذكي؟ لا حاجة للتثبيت — وجهه مباشرة إلى المهارة:
+تستخدم وكيل ترميز بالذكاء الاصطناعي؟ لا حاجة للتثبيت — أشر إليه مباشرةً:
 
 ```prompt
-جلب create.pantoken.app/SKILL.md واتباع الإرشادات الموجودة فيه لإعداد pantoken في هذا المشروع.
+قم بجلب create.pantoken.app/SKILL.md واتّبعها لإعداد pantoken في هذا المشروع.
 ```
 
-إذا كنت تفضّل ربط قواعد وكيل pantoken في المستودع بشكل دائم (AGENTS.md، قواعد المحرر، نسخة محلية من هذه المهارة)، شغّل `npx @pantoken/ai init` بدلًا من ذلك.
+إذا رغبت في توصيل قواعد وكيل pantoken داخل المستودع بشكل دائم (AGENTS.md، قواعد المحرر، نسخة محلية من هذه المهارة)، شغّل `npx @pantoken/ai init` بدلاً من ذلك.
 
-## نموذج الرموز
+## نموذج الرموز (التوكنات)
 
-الرموز هي خصائص CSS مخصصة مسماة `--instui-<group>-<name>`، على سبيل المثال
-`--instui-color-background-brand` أو `--instui-spacing-space-md`. ثلاث سمات تُشحن: `rebrand`
-(الافتراضية، مع `light-dark()` حيث يختلف الضوء والظلام)، `canvas`، و `canvasHighContrast`.
-الأيقونات هي رموز `<image>` (`--instui-icon-<name>`) مشتقة من Lucide بالإضافة إلى الرموز المخصصة لـ Instructure.
+الرموز هي خصائص مخصصة في CSS مسماة `--instui-<group>-<name>`، على سبيل المثال
+`--instui-color-background-brand` أو `--instui-spacing-space-md`. تُشحن ثلاثة سمات: `rebrand`
+(الافتراضية، مع `light-dark()` حيث يختلف الفاتح والداكن)، `canvas`، و `canvasHighContrast`.
+الأيقونات هي توكنات `<image>` (`--instui-icon-<name>`) مشتقة من Lucide بالإضافة إلى الرموز المخصصة لـ Instructure.
 
-## تزيين تطبيق ويب
+## تنسيق تطبيق ويب
 
-ثبت ملف الأنماط واستورده مرة واحدة. يعرّف كل `--instui-*` خاصية، لذا يمكنك الإشارة
+ثبت ورقة الأنماط واستوردها مرة واحدة. تُعرّف كل خاصية `--instui-*`، لذا يمكنك الإشارة
 إليها مباشرة من CSS الخاص بك.
 
 ```sh
@@ -50,9 +50,9 @@ import "@pantoken/css/inject";
 }
 ```
 
-## استخدم الأيقونات في أي مكان
+## استخدام الأيقونات في أي مكان
 
-مكوّن الويب يعمل في أي إطار عمل، بدون حاجة للترحيل.
+مكوّن الويب يعمل في أي إطار عمل، دون حاجة للترحيل.
 
 ```sh
 npm i @pantoken/web-components
@@ -66,9 +66,9 @@ import "@pantoken/web-components";
 <instui-icon name="check-mark"></instui-icon>
 ```
 
-### رموز CSS
+### توكنات CSS
 
-الأيقونات هي خصائص CSS مخصصة (`--instui-icon-<name>`). حمّل ملف الأنماط مرة واحدة واشِر إلى أي
+الأيقونات هي خصائص مخصصة في CSS (`--instui-icon-<name>`). حمّل ورقة الأنماط مرة واحدة وارجع إلى أي
 أيقونة كـ `mask-image` أو `background-image` — لا حاجة لاستيراد كل أيقونة على حدة.
 
 ```css
@@ -77,10 +77,10 @@ import "@pantoken/web-components";
 }
 ```
 
-### جافاسكربت — أيقونة مفردة مقابل المجموعة الكاملة
+### JavaScript — أيقونة منفردة مقابل المجموعة الكاملة
 
-`@pantoken/icons` يوفّر تصديرين مسمّيين. استخدم `iconsByName` لسحب أيقونة واحدة دون تكرار
-على الصفيف الكامل:
+`@pantoken/icons` يكشف تصديرين مسمّيين. استخدم `iconsByName` لسحب أيقونة واحدة دون تكرار
+المصفوفة الكاملة:
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -89,7 +89,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-استخدم `icons` عندما تحتاج المجموعة الكاملة (مثلاً لبناء منتقِ لاحقة):
+استخدم `icons` عندما تحتاج المجموعة الكاملة (مثلاً لبناء محدِّد اختيار):
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -98,23 +98,23 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-كلا التصديرين يحملان الـ IR الكامل عند تهيئة الوحدة النمطية — لا يوجد غرس شجري لكل أيقونة على هذا
-المستوى. لتحميل نحيف يقتصر على CSS فقط، استخدم [منتقِ CDN](/guide/cdn-picker) لتوليد عنوان URL مجمّع
-يحتوي فقط على الأيقونات التي تحتاجها.
+كلا التصديرين يقومان بتحميل الـ IR الكامل عند تهيئة الوحدة — لا يوجد تهذيب شجري (tree-shaking) لكل أيقونة
+على هذا المستوى. للتحميل الخفيف القائم على CSS فقط، استخدم [منتقي CDN](/guide/cdn-picker) لتوليد عنوان URL مجمع
+للأيقونات التي تحتاجها فقط.
 
 ## التوليد لمنصة أصلية
 
-تكتب CLI مصدر الرموز إلى مستودع الهدف. لا حاجة لتثبيت بخلاف المُشغّل:
+يقوم CLI بكتابة مصدر الرموز داخل مستودع الهدف. لا حاجة لتثبيت سوى المشغل:
 
 ```sh
 npx @pantoken/cli generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-انظر [pantoken CLI](/guide/cli) لكل هدف ممكن.
+انظر [the pantoken CLI](/guide/cli) لكل هدف.
 
-## تلميحات التحرير في VS Code
+## تلميحات التأليف في VS Code
 
-`@pantoken/pantoken` الآن يشحن ملفات بيانات مخصصة لـ VS Code حتى تتمكن المشروعات المستهلكة من الحصول على إكمال للفئات والرموز في HTML/CSS دون تثبيت امتداد خاص بـ pantoken.
+`@pantoken/pantoken` الآن يزوّد ملفات بيانات مخصصة لـ VS Code حتى تتمكن المشاريع المستهلكة من الحصول على إكمال للفئات والرموز في HTML/CSS دون تثبيت امتداد خاص بـ pantoken.
 
 1. ثبّت الحزمة الموحدة:
 
@@ -122,7 +122,7 @@ npx @pantoken/cli generate swift --out ./ios/Tokens --icons arrow-left,check-mar
 npm i @pantoken/pantoken
 ```
 
-1. وجّه VS Code إلى JSON البيانات المخصصة المشحونة من مساحة عمل المستهلك:
+1. أشر VS Code إلى JSON البيانات المخصصة المرفقة من مساحة العمل المستهلكة لديك:
 
 ```json
 {
@@ -133,12 +133,12 @@ npm i @pantoken/pantoken
 
 1. أعد تحميل VS Code (أو شغّل "Developer: Reload Window") لتطبيق البيانات الجديدة.
 
-هذا يتيح اقتراحات لرموز الفئة `instui-*` (ورموز الفئة `-modifier`) بالإضافة إلى
-الخصائص المخصصة `--instui-*`.
+هذا يمكّن الاقتراحات لرموز فئة `instui-*` (ورموز فئة `-modifier`) بالإضافة إلى
+خصائص مخصصة `--instui-*`.
 
-## إلى أين بعد ذلك
+## إلى أين التالي
 
-- [خريطة الحزم](/guide/packages) — أي حزمة تصل إليها بحسب المهمة.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — ثبّت أصول وقواعد الوكيل في مستودع مستهلك.
-- [الهندسة المعمارية](/guide/architecture) — كيف يتوافق نموذج الرموز، والنواة، والمخرجات معًا.
-- [مرجع API](/api/) — كل رمز مُصدّر، مُولَّد من المصدر.
+- [خريطة الحزم](/api/) — أي حزمة يجب الوصول إليها، بحسب المهمة.
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — ثبّت أصول القوالب والقواعد الخاصة بالوكيل في مستودع مستهلك.
+- [العمارة](/guide/architecture) — كيف يتناسب نموذج الرموز والنواة والنواتج معاً.
+- [مرجع API](/api/) — كل رمز مصدّر، مولَّد من المصدر.

@@ -26,3 +26,9 @@ test("prose headings map to the Heading component tokens; body to Text content",
   expect(css).toContain("var(--instui-component-text-content-small-font-size)");
   expect(css).toContain("var(--instui-component-text-content-important-font-weight)");
 });
+
+test("prose isolates code as LTR so RTL prose can't reorder class names", () => {
+  const css = proseCss({ scope: ".pantoken-prose" });
+  expect(css).toMatch(/\.pantoken-prose code \{[^}]*direction: ltr;[^}]*unicode-bidi: isolate;/);
+  expect(css).toMatch(/\.pantoken-prose pre \{[^}]*direction: ltr;[^}]*text-align: left;/);
+});

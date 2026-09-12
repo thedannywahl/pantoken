@@ -1,27 +1,27 @@
 # Comhpháirteanna
 
-`@pantoken/components` seoltaíonn stíleanna comhpháirte bunaithe ar ranga a tógadh ó na toicní Instructure. Iompórtáil an stíleagraf agus cuir lipéad ar do marcáil — níl aon fhráma ag teastáil.
+Seolann `@pantoken/components` stíleanna comhpháirte-bhunaithe a tógadh ón na tóicíní Instructure. Allmhaoinigh an stíleabhileog agus cuir lipéad ar do mharcáil — níl aon fhráma riachtanach.
 
 ```ts
 import "@pantoken/components/components.css";
 ```
 
 > [!NÓTA]
-> Is fearr eilimintí saincheaptha? Cuirtear na stíleanna céanna sin i gclúdach ag `@pantoken/web-components` mar `<instui-button>`,
-> `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, agus níos mó — féach an
-> [mapa pacáiste](/guide/packages).
+> An fearr eilimintí sainmhínithe? Cuimsíonn `@pantoken/web-components` na stíleanna céanna seo mar `<instui-button>`,
+> `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, agus tuilleadh — féach an
+> [léarscáil phacáiste](/api/).
 
-## Coinbhéisí
+## Coinbhéisiúin
 
-Tá na coinbhéisí CSS sa phacáiste seo bunaithe ar leagan modhnaithe de [RSCSS](https://ricostacruz.com/rscss/index.html).
+Tá na coinbhéisiúin CSS sa phacáiste seo bunaithe ar leagan modhnaithe de [RSCSS](https://ricostacruz.com/rscss/index.html).
 
-Is **eochair-luach** iad na modhnóirí — `-<prop>-<val>`, ailínithe le hainmneacha prop InstUI — mar sin léitear iad gan cur amú: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Is ainm prop amháin iad props bolscaireachta, agus ciallaíonn a láithreacht `true` (`-has-shadow`, `-clickable`); casann bolscaireas réamhshocraithe as a mhalairt (`-without-background`, `-without-border`). Glacann méideanna beirt scríbhinní gearra agus fada
-(`-size-sm` = `-size-small`). Nuair a sháraíonn ainm InstUI, oibríonn an rang seimhneach InstUI fós
-ach tá sé as úsáid (m.sh. `-variant-info` → bain úsáid as `-color-info`).
+Is iad na modhnóirí **eochair‑luach** — `-<prop>-<val>`, ailínithe le hainmneacha própa InstUI — mar sin léitear iad féin: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Is iad própaí bolscán (boolean) an t‑ainm própa amháin, áit a chiallaíonn a láithreachas `true` (`-has-shadow`, `-clickable`); má chasann bolscán réamhshocraithe as invertítear é (`-without-background`, `-without-border`). Glacann méideanna an dá leagan gearr agus fada
+(`-size-sm` = `-size-small`). Má chuireann ainm sála le InstUI, oibríonn an rang InstUI‑seamanta fós
+ach tá sé dúnta (m.sh. `-variant-info` → bain úsáid as `-color-info`).
 
 ### Sampla
 
-Comhpháirt React Instructure UI:
+Comhpháirte React Instructure UI:
 
 ```jsx
 <Alert variant="success" transition="fade" hasShadow renderCustomIcon={megaphone}>
@@ -29,7 +29,7 @@ Comhpháirt React Instructure UI:
 </Alert>
 ```
 
-comhpháirteanna pantoken:
+comhpháirte pantoken:
 
 ```html
 <!-- direct instui props -->
@@ -47,10 +47,12 @@ comhpháirteanna pantoken:
 </div>
 ```
 
-Maidir le prop `timeout` de InstUI, socraigh an mhaitrís neamh-aonadach `--timeout` mar mhaoin shaincheaptha i milliseicindí agus luchtú
-an idirghníomhaigh Alert. Sceidealóidh luach dearfach díothú; fágann `0` (an réamhshocrú) an rabhadh ina áit. Cuir na ranganna `instui-transition -fade-entered` den `transition` fóntais le haghaidh éirí InstUI; seachnaigh iad le haghaidh bainte láithreach. Tiomáineann an idirghníomhú an stádas `-fade-exiting` agus losaíonn sé imeacht so-ghlanadh,
-aisghairteach `dismiss` sular baineadh é, ionas gur féidir le feidhmchlár glaoch ar `preventDefault()` chun an
-rabhadh a choinneáil slán.
+Do phróip `timeout` de InstUI, socraigh an mhaoin shain‑airíonna gan aon aonad `--timeout` i milliseicindí agus luchtú
+an idirghníomhaigh Alert. Socraíonn luach dearfach éalú; `0` (an réamhshocrú) fágann an foláireamh ina
+áit. Cuir na ranganna `instui-transition -fade-entered` den uirlis `transition` le haghaidh díghéilleadh InstUI; déan neamhaird orthu má tá tú ag baint
+é láithreach. Tiomáineann an idirghníomhaigh stáit `-fade-exiting` agus lasann sé imeacht cancelable,
+bublála `dismiss` sula mbaintear, ionas gur féidir le feidhmchlár glaoch ar `preventDefault()` chun an
+foláireamh a choinneáil suite.
 
 ```html
 <link
@@ -67,15 +69,15 @@ rabhadh a choinneáil slán.
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/alert.iife.js"></script>
 ```
 
-Glacann barraí dul chun cinn scálaí ar bith trí `--min` (`0` de ghnáth), `--value`, agus `--max`
-(`100` de réir réamhshocraithe), le aliásanna as úsáid `--value-now` agus `--value-max`. Cuir `-should-animate`
-chuige chun trasúlú leath-soicind InstUI a chur i bhfeidhm gach uair a athraíonn luach. Tá `.value` ar thaobh `.bar` mar
-iníon den fréamhshamhail; cuir `-render-value-inside` air chun é a tharraingt os cionn an rian, ailínithe lena tús,
-in áit sin (stíl é le haghaidh léitheacht i gcoinne dath an mhéadair). Úsáid `<progress>` dúchais le haghaidh
-raon bunaithe ar nialas agus `<meter>` nuair atá an íosmhéid neamh-nialasach; roghnaíonn na comhpótaí gréasáin eatarthu
-go huathoibríoch óna hairíonna `min`. Níl stádas neamhchinnte ag InstUI, mar sin is réalachas pantoken é `<progress>`
-a chailltear a hairíonna `value`: réamhshocraítear `progress-bar` `.bar` mar
-seanmhír sleamhnáin agus casann `progress-circle` a fáinne ag aird taoibe seasta, ag cur i bhfolach `.value` beirt.
+Glacann barraí dul chun cinn scálaí ar bith trí `--min` (`0` de shaghas réamhshocraithe), `--value`, agus `--max`
+(`100` de shaghas réamhshocraithe), le haliasanna dúnta `--value-now` agus `--value-max` aosta. Cuir `-should-animate`
+chun trasú leath‑soicind InstUI a chur i bhfeidhm gach uair a athraíonn luach. Tá `.value` in aice le `.bar` mar
+linbh den fréimnigh; cuir `-render-value-inside` chun é a chur thar an traicte, ailínithe lena tús,
+ina ionad sin (stíleáil le haghaidh léitheacht i gcoinne dath an mheitéar). Bain úsáid as `<progress>` dúchais le haghaidh
+raon bunaithe ar nialas agus `<meter>` nuair atá an íos‑luach neamh‑nialasach; roghnaíonn na comhpháirteanna gréasáin eatarthu
+go huathoibríoch óna n‑airíonna `min`. Níl InstUI i staid indeterminate, mar sin má tá `<progress>`
+gan a hairíonna `value` is meastachán pantoken‑amháin é: `progress-bar` animíonn `.bar` mar
+seghment sleamhnáin agus casann `progress-circle` a fáinne ag uillinn shocraithe, an dá cheann ag cur i leataobh `.value`.
 
 ```html
 <label>
@@ -92,9 +94,9 @@ seanmhír sleamhnáin agus casann `progress-circle` a fáinne ag aird taoibe sea
 ```
 
 Glacann ciorcail dul chun cinn na scálaí céanna trí `--min`, `--value`, agus `--max`.
-Fanann `--value-now` agus `--value-max` mar aliásanna feidhmiúla as úsáid. Cuir `-should-animate` agus
-luchtú an baisnéise idirghníomhaigh dírithe chun athghiniú an ghluais bhunaidh mount InstUI a fheiceáil; is mhoill milliseicindí neamh-aonadach é `--animation-delay`. Fanann na scríbhinní `-should-animate-on-mount` agus
-`-shold-animate-on-mount` (a bhfuil an litriú seanbhainteach) mar aliásanna feidhmiúla.
+Fanann `--value-now` agus `--value-max` mar aicearraí feidhmiúla aosta. Cuir `-should-animate` agus
+luchtú an bunteaghráin idirghníomhaigh dírithe chun athshlánú a dhéanamh ar an beoghanú suiteála InstUI; is moill gan aonad i milliseicindí é `--animation-delay`.
+Fanann na litreacha scríofa `-should-animate-on-mount` agus `-shold-animate-on-mount` mar aicearraí feidhmiúla dúnta.
 
 ```html
 <label for="upload-progress">Uploading Document</label>
@@ -110,10 +112,11 @@ luchtú an baisnéise idirghníomhaigh dírithe chun athghiniú an ghluais bhuna
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/progress-circle.iife.js"></script>
 ```
 
-## Réamhfhocal rang
+## Réamhtheideal rang
 
-Tá gach rang ainmspásáilte mar `instui-` de réir réamhshocraithe. Tóg stíleagraf le do réamhfhocal féin — nó gan aon cheann — trí
-`prefix` a threorú chuig aon thógálaí. Baintear an réamhfhocal go hiomlán má thabharfar luach bréagach ar bith (`null`, `undefined`, `""`, nó é a fhágáil amach), mar sin is féidir leat `class="heading -level-h1"` a údairiú in áit `class="instui-heading -level-h1"`:
+Tá gach rang ainmhdaithe le spás ainmne `instui-` de ghnáth. Tóg stíleabhileog le do réamhtheideal féin — nó gan rud ar bith — trí
+`prefix` a rith chuig aon tógálaí. Droichíonn aon luach falsy (`null`, `undefined`, `""`, nó trí bheith as láthair) an
+réamhtheideal go hiomlán, ionas gur féidir leat `class="heading -level-h1"` a údair in ionad `class="instui-heading -level-h1"`:
 
 ```ts
 import { componentsCss } from "@pantoken/components";
@@ -122,33 +125,35 @@ componentsCss({ prefix: "ui" }); // .ui-button
 componentsCss({ prefix: null }); // .button, .alert — no prefix
 ```
 
-Níl na modhnóirí le dash (réamhphrefixáilte) (`.-color-secondary`, `.-level-h1`) athraithe ar aon bhealach. Coinníonn na
-stíleagrafaí a seolfar leis an bpacáiste an réamhfhocal `instui`.
+Níl na modhnóirí le réamhdhath (-‑prefixed) (`.-color-secondary`, `.-level-h1`) athraithe cibé ar bith. Coinníonn na
+stíleabhileoga a sheolann an pacáiste an réamhtheideal `instui`.
 
 ## Bun
 
-Is athshocrú roghnach é `base.css` a shocraíonn réamhshocruithe doiciméad domhanda ón toicní: `box-sizing`, athshocrú
-`body`, dromchla an leatháin, dath agus cló téacs bonn, `color-scheme` (ionas go leanfaidh toicní `light-dark()`
-agus rialuithe dúchasacha an téama), agus nasc bun. Luchtú é uair amháin, roimh na scaileanna comhpháirte agus próis, nuair atá pantoken i gceannas ar an leathanach.
+Is athshocrú roghnach é `base.css` a shocríonn réamhshocruithe doiciméid domhanda ó na tóicíní: `box-sizing`, athshocrú
+`body`, dromchla na leathanach, dath téacs bunúsach agus cló, `color-scheme` (ionas go n‑rèiteoidh `light-dark()` tóicíní
+agus rialuithe dúchais an téama), agus nasc bunúsach. Luchtú uair amháin é, roimh na bileoga comhpháirte agus próis,
+nuair a bhfuil pantoken ag úinéireacht ar an leathanach.
 
 ```ts
 import "@pantoken/components/base.css";
 import "@pantoken/components/components.css";
 ```
 
-Seachain é nuair atá tú ag cuimilt comhpháirteanna isteach i óstach a théamaíonn a `html` agus `body` féin cheana —
-cuireann an athshocrú dromchla an leatháin i bpéint, mar sin ní oireann sé le comhréireacht leis an óstach. Úsáidtear roghanna íseal-sonrachais `:where()`,
-mar sin buaileann do riachtanais féin i gcónaí.
+Sárthiceáil é má tá tú ag ionchlannú comhpháirteanna i óstach a dhéanann a théamú féin do `html` agus `body` —
+cuireann an athshocrú dromchla an leathanaigh péinteáilte, mar sin ní maith leat é ag troid leis an óstach. Úsáideann gach rud a shocríonn sé
+seachadáin íseal‑sainmhínithe `:where()`, mar sin buaileann do riail féin i gcónaí.
 
-Cuirtear an cló branda i bhfeidhm ag `base.css` (`font-family: var(--instui-font-family-base)`, le fillteáin chóras); chun é a luchtú, iompórtáil an `fonts.css` roghnach — tá rialacha `@font-face` le haghaidh Atkinson Hyperlegible
-Next, ag léiriú na woff2anna a sheolfar sa phacáiste. Tá sé ar leith mar tá na aghaidheanna thart ar ~350 kB agus rogha fhreastalaí féin ar chlódóirí ar chinneadh measartha.
+Cuirtear an cló branda i bhfeidhm le `base.css` (`font-family: var(--instui-font-family-base)`, le easnaimh córas); chun é a luchtú, importáil an roghnach `fonts.css` — rialacha `@font-face` do Atkinson Hyperlegible
+Next, ag léiriú na woff2anna a sheoltar sa phacáiste. Tá sé ar leith mar tá na haiceanna thart ar ~350 kB agus rogha ar mhhostáil féin ar
+shruthaí cló comhairte ríthábhachtach.
 
 ```ts
 import "@pantoken/components/base.css"; // applies the font (falls back to system without fonts.css)
 import "@pantoken/components/fonts.css"; // loads the Atkinson Hyperlegible Next woff2s
 ```
 
-## Ábhar léitheoir scáileáin
+## Ábhar léitheoirí scáileáin
 
 <p>Tá teachtaireacht i bhfolach tar éis an abairt seo.<span class="instui-screen-reader-content">Ní fhógraíonn ach léitheoirí scáileáin é seo.</span></p>
 
@@ -156,23 +161,24 @@ import "@pantoken/components/fonts.css"; // loads the Atkinson Hyperlegible Next
 <span class="instui-screen-reader-content">Only screen readers announce this.</span>
 ```
 
-Cuir i bhfolach eilimint go físúil ach coinnigh í sa chrann inrochtaineachta le `.instui-screen-reader-content`
-— do lipéid agus téacs stádais atá le léamh ag teicneolaíocht chúnamh ach nach bhfuil an dearadh ag iarraidh a thaispeáint.
+Cuireann `.instui-screen-reader-content` eilimint i bhfolach go físúil agus í fós sa chrainn inacmhainneachta
+— do lipéid agus téacs stádais a léann teicneolaíocht chúnamh ach nach gcaithfear a thaispeáint sa dearadh.
 
-## Féinmhuintearas
+## Uirlisí
 
-Is sraith roghnach é `utilities.css` de ranganna tras-choitianta: primitiúin `View`, spásáil ar scála na toicní, agus ábhair dathanna seimhneacha. Murab ionann agus na ranganna `-modifier` comhpháirte, úsáideann siad **dhá-dash** (`--mod`) ionas nach ndéanfaidh siad coinbhleacht riamh le hainmneacha modhnóra comhpháirte, agus cuireann siad i bhfeidhm iad ar aon
-eilimint — lom, nó comhdhéanta ar chomhpháirt.
+Is sraith roghnach de ranganna tras‑ghréasáin í `utilities.css`: prímad `View`, spásáil ar scála an tóicín,
+agus athsheachaintí dath seamantaí. Murab ionann le ranganna `-modifier` comhpháirte, úsáideann siad **dhúbailte‑lus** (`--mod`) ionas nach gcruachóidh siad riamh le hainmneacha modhnóra comhpháirte, agus feidhmíonn siad ar aon
+eilimint — lom, nó comhcheangailte le comhpháirt.
 
 ```ts
 import "@pantoken/components/utilities.css";
 ```
 
 <div class="instui-view --bg-accent-blue --text-on-color --p-md --mb-sm" style="border-radius: 6px;">
-  <span class="instui-text --text-on-color">Dromchla accent-blue le téacs on-color.</span>
+  <span class="instui-text --text-on-color">Dromchla gorm‑accent le téacs ar‑dath.</span>
 </div>
 <div class="instui-view --bg-muted --p-sm --mx-auto" style="max-width: 12rem; border-radius: 6px; text-align: center;">
-  <span class="instui-text">Láraithe le mx-auto.</span>
+  <span class="instui-text">Lárnach le mx-auto.</span>
 </div>
 
 ```html
@@ -180,26 +186,28 @@ import "@pantoken/components/utilities.css";
 <div class="instui-view --bg-muted --p-sm --mx-auto">…</div>
 ```
 
-**View** — is é `.instui-view` an `View` de InstUI. Is é an bonn ar cuireann tú spásáil agus dath air, agus iompróidh sé modhnóirí eochair-luach dá chuid féin ionas nach mbeidh ort dul i dteagmháil le fóntais:
+**View** — is é `.instui-view` `View` InstUI. Is é an bun a chuireann tú spásáil agus dath air, agus iompróidh sé modhnóirí eochair‑luach dá phrópaí féin visíochta ionas nach mbeidh ort dul chuig uirlisí:
 `-background-*` (a dromchlaí), `-border-radius-{small,medium,large,circle,pill}`,
 `-border-width-{small,medium,large}` + `-border-color-*`, `-shadow-{resting,above,topmost}`,
-`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, agus `-cursor-*` — is iad seo modhnóirí aon-dash `view` féin,
-neamhbhaintim le na fóntais dhá-dash thíos. Fanann props luach-saor (leithead/airde/insí) mar stíleanna líne; úsáideann `margin`/`padding` na fóntais spásála.
+`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, agus `-cursor-*` — is iad seo modhnóirí aon‑dhosca `view` féin,
+neamhbhaintreach le na huirlisí dhúbailte‑lus thíos. Fanann própaí luach‑saor
+(leathanach/airde/insteallta) mar stíleanna líne; úsáideann `margin`/`padding` na huirlisí spáisála.
 
-**Spásáil** — ranganna in aghaidh an taobha ar an scála spáis. Léigh iad mar `{m|p}{side}-{step}`: `m` do
-mairg nó `p` do fheistiú (nó na focail iomlána `margin`/`padding`), taobh loighciúil roghnach, ansin céim. Mar sin tá `.--m-lg` agus `.--margin-lg` mar an gcéanna, agus mar sin tá `.--pt-md` agus `.--paddingt-md`.
+**Spásáil** — ranganna in aghaidh an taobh ar an scála spáisála. Léigh iad mar `{m|p}{side}-{step}`: `m` do
+mhairnéas nó `p` do pháda (nó na focail iomlána `margin`/`padding`), taobh loighciúil roghnach, ansin céim. Mar sin tá `.--m-lg` agus `.--margin-lg` mar an gcéanna, mar atá `.--pt-md` agus `.--paddingt-md`.
 
-- Taobha: none (go léir), `t`/`b` (tús/ deireadh bloc), `s`/`e` (tús/ deireadh líne), `x`/`y` (ais líne/ bloc). Fanann taobha loighciúla ceart i leaganacha deas-go-ciúin.
-- Céimeanna: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, plus `auto` do mhairg amháin.
+- Taobhanna: none (go léir), `t`/`b` (tús/deireadh bloic), `s`/`e` (tús/deireadh inline), `x`/`y` (ais inline/bloic). Fanann na taobhanna loighciúla ceart i leaganacha deas‑go‑clé.
+- Céimeanna: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, plus `auto` do mhairnéas amháin.
 
-Comhcheangail iad le haghaidh shorthanda `margin="small auto large"` de InstUI:
+Comhlánaigh iad don ghrinnfhocal `margin="small auto large"` de InstUI:
 `class="--mt-sm --mx-auto --mb-lg"`.
 
-**Dath** — sraitheanna seimhneacha a fhanann ar-phailéad: `.--bg-<name>` (cúlra),
-`.--text-<name>` (dath téacs), agus `.--border-<name>` (dath teorainne). Tá gach `<name>` ina thicnó dath seimhneach — na réitigh i gceist (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
-`inverse`, `on-color`, `strong`, …) plus an phailéad `accent-*` (`accent-blue`, `accent-green`, agus mar sin de). Níl ainm ann ach má tá an toicnó sa chlann sin, mar sin níl `text-brand` mar rang — níl token branda do théacs. Níl bealach le rochtain a fháil ar phiriméad ná hex randamach, agus leanann gach corrlach an téama.
+**Dath** — athsheachaintí seamanta a choinneáil ar‑phalete: `.--bg-<name>` (cúlra),
+`.--text-<name>` (dath téacs), agus `.--border-<name>` (dath imeall). Is tóicín dath seamanta é gach `<name>` —
+na hintreachtaí (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
+`inverse`, `on-color`, `strong`, …) plus an phalete `accent-*` (`accent-blue`, `accent-green`, agus mar sin de). Tá ainm ann amháin má tá an tóicín sa chlann sin, mar sin níl `text-brand` mar rang — níl tóicín branda do théacs. Níl bealach le rochtain ar phirimid nó hex randamach, agus leanann gach athsheachaint an téama.
 
-**Clanna toicnó** — cuireann gach teaghlach "one token, one property" rang amháin in aghaidh gach toicnó, ainmniúcháin tar éis an toicnó. Comhcheangail iad go saor:
+**Teaghlaigh tóicín** — faigheann gach teaghlach "tóicín amháin, maoin amháin" rang in aghaidh an tóicín, ainmnithe tar éis an tóicín. Comhlánaigh iad go saor:
 
 - `.--font-family-heading`, `.--font-family-code`, … → `font-family`
 - `.--font-weight-body-strong`, `.--font-weight-interactive`, … → `font-weight`
@@ -209,26 +217,24 @@ Comhcheangail iad le haghaidh shorthanda `margin="small auto large"` de InstUI:
 - `.--opacity-base`, `.--opacity-disabled` → `opacity`
 - `.--elevation-resting`/`-above`/`-topmost` (agus `-depth1`…`-card`) → `box-shadow`
 
-Socraíonn gach ceann díobh ach a mhaoin amháin, mar sin tá gá le `border-width`/`border-radius` le haghaidh dath agus stíl teorainne chun teorann i ndáiríre a tharraingt. Úsáidtear an t-ainm iomlán toicnó (`.--border-radius-md`), cé go n-úsáideann na cúntóirí dath agus spásála thuas aliásanna gearra (`.--bg-brand`, `.--mt-lg`) — is giorrúcháin chompordacha iad na aliásanna; tá na ranganna toicnó litriúil agus iomlán.
+Ní leagann ach a mhaoin amháin siad, mar sin beidh `border-width`/`border-radius` ag teastáil ó `border-*` dath agus stíl imeall chun imeall a tharraingt le feiceáil. Úsáidtear an t‑ainm iomlán tóicín (`.--border-radius-md`), agus úsáideann na cúnamhóirí dath agus spáis thuas aicearraí giorra (`.--bg-brand`, `.--mt-lg`) — is giorranna ergonomacha iad na haicearraí; is litriúil agus gnóthach iad na ranganna tóicín.
 
-**Leagan** — `.--display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`,
-`none`) agus `.--text-align-<value>` (`start`, `center`, `end`, `justify`) clúdaíonn airíonna tras-choitianta `display` agus `textAlign` InstUI (View, Button, Metric, Tabs, …) mar ranganna in-athchomhdhlúite —
-mar sin níl siad modhnóirí do gach comhpháirt ar leith.
+**Luchtú** — `.--display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`,
+`none`) agus `.--text-align-<value>` (`start`, `center`, `end`, `justify`) clúdaíonn própaí tras‑ghréasáin `display` agus `textAlign` InstUI (View, Button, Metric, Tabs, …) mar ranganna comhlántacha —
+mar sin níl siad mar mhodhnóirí in aghaidh an chomhpháirte.
 
-Buaileann gach rang dhá-dash an cascade go cinnte thar modhnóir aon-dash dá ainm, beag beann ar ord iompórtála na stíleagraf — féach [Coinbhéisí údair](/conventions/authoring)
+Buaileann gach rang dhúbailte‑lus an chásál go cinnte thar modhnóir aon‑lus leis an ainm chéanna, beag beann ar ordugh luchtaithe stíleabhileog — féach [Coinbhéisiúin údaraithe](/conventions/authoring)
 don mheicníocht.
 
-Tá gach rud anseo ina CSS glan tiomáinte ag na toicní `--instui-*`, mar sin leanann sé InstUI tríd an sraith toicní. Féach an [tagairt API](/api/) do `componentsCss` agus na tógálacha in aghaidh an chomhpháirte.
+Tá gach rud anseo pure CSS faoi thiomnaithe le tóicíní `--instui-*`, mar sin leanann sé InstUI tríd an sráid‑tóicín. Féach an [Tagairt API](/api/) do `componentsCss` agus na tógálaithe in aghaidh an chomhpháirte.
 
-## Oslánaí: dialóg agus popover
+## Chlúdaigh: dialóg agus popover
 
-Tá na comhpháirteanna osláin ag úsáid prímáideacha dúchasacha an ardáin, mar sin iompraíonn siad go incháilithe le beagán nó gan aon
+Tagann na comhpháirte chlúdaigh le húsáid as prímad dúchasacha an ardáin, mar sin iompar siad go hinacmhainne le beag nó gan aon
 JavaScript.
 
-**Modal** — cuir `.instui-modal` ar `<dialog>` dúchais. Faigheann sé greamaíocht fócas, `Esc`-le-dún, agus
-`::backdrop` go saor; tá an backdrop doimhne le céim toicní `--instui-component-mask-background-color`
-mar `.instui-mask` (cuir `-blur` leis chun é a reo). Oscail agus
-dún é le horduithe invoker — gan script:
+**Módail** — cuir `.instui-modal` ar `<dialog>` dúchasach. Faigheann sé trapáil fócas, dúnadh le `Esc`, agus
+`::backdrop` saor in aisce; is é an tóicín `--instui-component-mask-background-color` an ceann céanna le `.instui-mask` (cuir `-blur` leis chun é a reo). Oscail agus dún le horduithe invoker — gan script:
 
 ```html
 <button class="instui-button" command="show-modal" commandfor="dlg">Open</button>
@@ -241,18 +247,18 @@ dún é le horduithe invoker — gan script:
 </dialog>
 ```
 
-**Deasc comhthéacs / popover** — cuir `.instui-context-view` ar eilimint `[popover]` agus casadh air le
-`popovertarget`. Tá sé ar an sraith uachtair agus déanann sé dí-aistriúchán é ar chliceáil lasmuigh nó `Esc`, arís gan script:
+**Radharc comhthéacs / popover** — cuir `.instui-context-view` ar eilimint `[popover]` agus lasc é le
+`popovertarget`. Tá sé ar an gciseal uachtarach agus baintear é go héadrom ar chliceáil seachtrach nó le `Esc`, arís gan script:
 
 ```html
 <button class="instui-button" popovertarget="cv">Details</button>
 <div id="cv" popover class="instui-context-view">…</div>
 ```
 
-**Leagan tarraiceán** — cuir `.instui-drawer-layout` ar fréamh leagan le páistí `.tray` agus `.content`.
-Cuir an hairíonna `open` (nó `-open`) chun an tráid a nochtadh, agus bain úsáid as `placement="end"`
-(nó `-placement-end`) chun é a dhaingniú don taobh deireadh líne — réitítear suíomh tríd
-airíonna loighciúla `inset-inline-*`/`flex-direction`, mar sin casann sé go huathoibríoch faoi `dir="rtl"` gan rialacha breise. Cuirann an baisnéis idirghníomhaigh dírithe ordú invoker agus steerann sé modh osláin
+**Léaráid tarraice** — cuir `.instui-drawer-layout` ar fréimnigh le `.tray` agus le leanaí `.content`.
+Cuir an tréith `open` (nó `-open`) chun an tráid a nochtadh, agus bain úsáid as `placement="end"`
+(nó `-placement-end`) chun é a dhaockáil ar an taobh istigh‑deirimhe (inline‑end) — réiteoidh an leagan trí mhaoine
+loighciúla `inset-inline-*`/`flex-direction`, mar sin casfaidh sé go huathoibríoch faoi `dir="rtl"` gan riail bhreise. Cuir an bunteaghrán idirghníomhaigh dírithe le haghaidh beartclárú ordaithe Invoker agus lascann mód clúdaigh
 (`should-overlay-tray`) nuair a sháraíonn leithead `--drawer-layout-min-width` (réamhshocrú
 `--instui-breakpoints-sm`, ansin `30rem`):
 
@@ -265,19 +271,20 @@ airíonna loighciúla `inset-inline-*`/`flex-direction`, mar sin casann sé go h
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/drawer-layout.iife.js"></script>
 ```
 
-**Mask** — fanann `.instui-mask` do osláin san sruth (spinner os cárta); clúdaíonn `::backdrop`
-an cás modal.
+**Masc** — fanann `.instui-mask` do chlúdaigh laistigh‑srutha (spinner thar cárta); clúdaíonn `::backdrop`
+módail an chás módail.
 
-Tá an dá phatrún pacáistithe freisin mar eilimintí saincheaptha iompraíochta i `@pantoken/web-components`:
-`<instui-modal open>` ( `<dialog>` tiomáinte ag a hairíonna `open`) agus `<instui-context-view>` (popover dúchais).
+Tá an dá pheatrán wraptha freisin mar eilimintí iompraíochta sa `@pantoken/web-components`:
+`<instui-modal open>` ( `<dialog>` tiomáinte ag a airíonna `open`) agus `<instui-context-view>` (popover dúchasach).
 
-Tacaíocht bhrabhsálaí: tá API popover agus `popovertarget` ina Bhonn 2024; tá ordú invoker
-(`command`/`commandfor`) ina Bhonn 2025, mar sin ar bhrabhsálaithe níos sine ceangail na cnaipe le `dialog.showModal()`
-mar chúlshocrú líne amháin. Úsáideann suíomh popover in aice lena spreagthóir phostú CSS anchor nuair a thacaítear leis (Chromium); in áiteanna eile lárnaíonn sé sa sraith uachtair.
+Tacaíocht brabhsálaí: is Bunlíne 2024 í an API popover agus `popovertarget`; is Bunlíne 2025 iad orduithe invoker
+(`command`/`commandfor`), mar sin i mbrabhsálaithe níos sine ceangail na cnaipí le `dialog.showModal()`
+mar iomlán droichead‑líne. Úsáid suíomhú anchor CSS chun popover a chur in aice lena spreagthóir nuair a thacaítear leis (Chromium); i gceantracha eile láróidh sé sa chiseal uachtarach.
 
-## Foirmeacha
+## Foirmí
 
-**FormField** — is wrapair CSS-Grid é `.instui-form-field` a leagan amach lipéad, an rialú, agus aon teachtaireachtaí. Cuir é ar `<label>` ionas go ndéanann an lipéad nascleanúint le rialú go dúchasach. Tá trí réigiún greille aige — `label`, `controls`, `messages`:
+**FormField** — is wrapair CSS‑Grid é `.instui-form-field` a leagan amach le lipéad, an rialtóir, agus aon
+theachtaireachtaí. Cuir é ar `<label>` ionas go gcuireann an lipéad comhoibriú lena rialtóir go dúchasach. Tá trí limistéar greille ann — `label`, `controls`, `messages`:
 
 ```html
 <label class="instui-form-field">
@@ -289,23 +296,22 @@ mar chúlshocrú líne amháin. Úsáideann suíomh popover in aice lena spreagt
 </label>
 ```
 
-Leagann `-layout-stacked` (réamhshocrú) na réimsí síos; cuireann `-layout-inline` an lipéad i taobh an rialaithe (tune
+Stacann `-layout-stacked` (réamhshocrú) na limistéir; cuireann `-layout-inline` an lipéad in aice leis an rialtóir (coigeartaigh
 le `-label-align-{start,end}` agus `-v-align-{top,middle,bottom}`). Athdathann `-readonly` an lipéad.
 
-Tá an **réaltóir riachtanach** le feiceáil nuair atá an réimse éigeantach de chuid _ceachtar_ an rang `-required` _nó_ rialtóir dúchais `required` laistigh de — mar sin is féidir leat `required` a shocrú ar an ionchur agus beidh an marc le feiceáil.
-Tá sé maisiúil ( `::after` ar an lipéad, as an chrann inrochtaineachta ); péireáil é le nóta cosúil le
-"réimsí marcáilte \* atá riachtanach" mura bhfuil an fhoirm soiléir ina féin.
+Taispeántar an **réaltaí riachtanach** nuair a éilítear an réimse ag _cé acu_ an rang `-required` _nó_ rialtóir dúchasach `required` istigh ann — mar sin is leor `required` a chur ar an ionchur agus taispeánfar an marc.
+Is maisiúil é ( `::after` ar an lipéad, as an gcraonadh inacmhainneachta); péireáil é le nóta cosúil le
+"tá réimsí a bhfuil \* orthu riachtanach" mura bhfuil an fhoirm féin‑léiritheach.
 
-**FormFieldGroup** — grúpálann `.instui-form-field-group` réimsí gaolmhara i `<fieldset>` le cur síos `<legend>`. Is é an leagan amach íon (gan toicní tiomnaithe): seachadann réamhshocrú na réimsí;
-cuireann `-layout-columns` / `-layout-inline` iad isteach i gcolúin freagracha, le `-row-spacing-*` /
-`-col-spacing-*` agus `-v-align-*` chun an greille a choigeartú.
+**FormFieldGroup** — grúpálann `.instui-form-field-group` réimsí gaolmhara i `<fieldset>` le
+cur síos `<legend>`. Is leagan amach í (gan tóicíní tiomnacha): stacaíonn réamhshocrú na réimsí;
+sruthóidh `-layout-columns` / `-layout-inline` iad i gcolúin freagracha, le `-row-spacing-*` /
+`-col-spacing-*` agus `-v-align-*` chun an ghreille a choigeartú.
 
-**RadioInputGroup** — is é `.instui-radio-input-group` an ghrúpáil céanna `<fieldset>`/`<legend>`,
-speisialaithe do raidió. Toisc go roinntear `name` leis na raidió páistí, tá rogha aonair dúchasach —
-mar sin iompraíonn sraith cnaipe lasc mar rialú aonair, ní cnaipe scaoilte. Leaganann `-variant-simple` (réamhshocrú)
-raidió caighdeánach (`-layout-columns`/`-inline` iad a shruthú isteach i mharcáin); nascann `-variant-toggle` na
-cnaipí `.instui-radio.-variant-toggle` le chéile mar rialú scoilte (teorainneacha comhbhrúite,
-deirgeanna imill chiorclacha):
+**RadioInputGroup** — is é `.instui-radio-input-group` an grúpáil `<fieldset>`/`<legend>` céanna,
+speisialaithe do raidió. Toisc go roinneann na raidí páiste `name`, tá rogha amháin dúchasach — mar sin bailíonn sraith cnaipe lasc mar rialtóir aonair, ní mar chnaipí neamhspleácha. Leagann `-variant-simple` (réamhshocrú) as raidí caighdeánacha (`-layout-columns`/`-inline` iad a shreabhadh isteach i sraith); nascann `-variant-toggle` na
+cnaipe `.instui-radio.-variant-toggle` páiste isteach i rialtóir séimeanta aonair (imeallacha comhbhrúite,
+deireadh ciorclach seachtrach):
 
 ```html
 <fieldset class="instui-radio-input-group -variant-toggle">
@@ -318,26 +324,25 @@ deirgeanna imill chiorclacha):
 </fieldset>
 ```
 
-**Teachtaireachtaí** — is é `.instui-form-field-messages` an coimeádaí; glacann gach `.instui-form-field-message` `-type-*`: `-type-hint` (liath, réamhshocrú), `-type-error` (téacs dearg + giolla ciorcal-rabhadh), `-type-success`
-(téacs glas + giolla seiceáil-chiorcal), agus `-type-screenreader-only` (dealraithe go físúil, fós fógartha).
-Péinteálann na giollaí i `currentColor`, mar sin comh-mhaireann siad leis an dath teachtaireachta. Is aliás as úsáid é `-type-new-error` de `-type-error`. Ceangail an coimeádaí leis an rialú le `aria-describedby`, agus socraigh
-`aria-invalid` ar an rialú nuair atá earráid ann.
+**Teachtaireachtaí** — is é `.instui-form-field-messages` an coinnire; tógann gach `.instui-form-field-message` `-type-*`: `-type-hint` (liath, réamhshocrú), `-type-error` (téacs dearg + glóif ciorcail‑foláirimh), `-type-success`
+(téacs glas + glóif seic ciorcail), agus `-type-screenreader-only` (gearrtha go físúil, fós fógartha). Péinteálann na glóifí i `currentColor`, mar sin comhlíonann siad i gcónaí dath an teachtaireachta. Is aicearra aosta é `-type-new-error` de `-type-error`. Ceangail an coinnire leis an rialtóir le `aria-describedby`, agus socraigh
+`aria-invalid` ar an rialtóir nuair atá earráid ann.
 
-Laistigh de FormField, leanann teachtaireacht `-type-error` bailíochtúchán ar thaobh an chliaint: fanann sí i bhfolach go dtí go bhfuil rialú an réimse `:user-invalid` (dúchasach, tar éis idirghníomhaigh an úsáideora) — nó cuirfidh tú é trí `-invalid`
-ar an `.instui-form-field` (do earráid ó fhreastalaí). Níl aon tionchar ag `.instui-form-field-messages` aonair (gan bheith i réimse). Leanann fáinne fócas an rialaithe an riail freisin: contúirt nuair `:user-invalid`/`-invalid`,
-rath ar `-success`.
+Laistigh de FormField, leanann teachtaireacht `-type-error` bailíochtú ó thaobh an chliaint: fanann sí i bhfolach go dtí go bhfuil rialtóir an réimse `:user-invalid` (dúchasach, tar éis idirghníomhú an úsáideora) — nó í a dhéantar éigin le `-invalid`
+ar an `.instui-form-field` (do earráid ó fhreastalaí). Níl tionchar ag `.instui-form-field-messages` neamhspleách (nach bhfuil i réimse). Leanann fáinne fócas an rialtóra an treo céanna: agus riosca nuair atá `:user-invalid`/`-invalid`,
+sonas ar `-success`.
 
-**Rialuithe téacs** — roinntear cuma agus stáit ar `.instui-text-input` ( `<input>` dúchasach), `.instui-text-area` ( `<textarea>` dúchasach,
-inathraithe), agus `.instui-simple-select` ( `<select>` dúchasach le cúrsóir), agus na stáit chéanna: `-invalid` (teorann earráide), `-success` (teorann rath), `-readonly`, `:disabled` dúchasach, agus
-`-size-{sm,md,lg}`. Le haghaidh íocón tosaigh/déanta ( `renderBeforeInput`/`renderAfterInput` InstUI), cuimligh an ionchur i `.instui-input-group` agus cuir sliotán `.before`/`.after` (giolla `-icon-*`); coinníonn `-should-not-wrap`
-é ar líne amháin. Is é `.instui-number-input` an aghaidh sin le colún spinner +/- `.arrows` (dúchasach
-`type="number"`; ceangail na cnaipí le `stepUp()`/`stepDown()`). Is `.instui-range-input` `input[type="range"]` stíleáilte é a léireann a luach i bublán inbhéart `.instui-range-input-value`. Le haghaidh combobox saibhir le popover liosta, bain úsáid as `@instructure/ui` — clúdaíonn an leabharlann seo na rialuithe dúchasacha.
+**Rialuithe téacs** — roinneann `.instui-text-input` ( `<input>` dúchasach), `.instui-text-area` ( `<textarea>` dúchasach,
+inathraithe), agus `.instui-simple-select` ( `<select>` dúchasach le caret) cuma agus stáit chéanna: `-invalid` (imeall earráide), `-success` (imeall rathúnais), `-readonly`, `:disabled` dúchasach, agus
+`-size-{sm,md,lg}`. Do shiombail tosaigh/déanta ( `renderBeforeInput`/`renderAfterInput` InstUI), fillfidh tú an ionchur i `.instui-input-group` agus cuirfidh tú sliotán `.before`/`.after` (glóif `-icon-*`); coinníonn `-should-not-wrap`
+é ar líne amháin. Is é `.instui-number-input` an aghaidh sin le colún spinner +/- `.arrows` ( `type="number"` dúchasach; nasc na cnaipí le `stepUp()`/`stepDown()`). Is select stíleáilte é `.instui-range-input`
+a bhfuil `input[type="range"]` mar luach a thaispeánann i bpobal frithchomhartha `.instui-range-input-value`. Do chomhbhosca saibhir le popover liosta‑bosca, bain úsáid as `@instructure/ui` — clúdaíonn an leabharlann seo na rialuithe dúchasacha.
 
-**Roghchlár roghnaithe stíleáilte (trialach)** — uasghrádaíonn `select.css` roghnach an _chomh_ eilimint `.instui-simple-select`: stíleáil an liosta oscailte (an phainéal agus gach rogha, le stádas hover agus roghnaithe) ag úsáid an Mhúnla Roghnaithe Inúsáidte CSS.
+**Roghchlár roghnú stíleáilte (turgnamhach)** — uasghrádaíonn `select.css` roghnach an `.instui-simple-select` céanna: stíleálann sé an roghchlár oscailte (an painéal agus gach rogha, le staid hover agus roghnaithe) ag baint úsáide as an Múnla Roghnú Inchoigeartaithe CSS.
 
-> [!RÉITIGH]
-> Tá `select.css` ag brath ar `appearance: base-select` / `::picker(select)`, atá **trialach**
-> (Chrome 135+, nach bhfuil Baseline fós). Tá sé seolta mar shraith roghnach ar leith agus tá gach riail ailínithe taobh thiar de `@supports (appearance: base-select)`, mar sin ní dhéanann sé aon rud i mbrabhsálaithe neamh-thacaíochta — fanann an rialtóir `.instui-simple-select` mar an roghchlár dúchasach simplí. Luchtú é má tá tú ag iarraidh an roghchlár feabhsaithe agus glacadh leis an tacaíocht teoranta.
+> [!RABHADH]
+> Tá `select.css` ag brath ar `appearance: base-select` / `::picker(select)`, atá **turgnamhach**
+> (Chrome 135+, nach bhfuil mar chuid fós de Bunlíne). Seoltar é mar bhileog roghnach ar leith agus tá gach riail faoi `@supports (appearance: base-select)`, mar sin ní dhéanann sé tada i mbrabhsálaithe nach dtacaíonn leis — fanann an rialtóir `.instui-simple-select` díreach an select dúchasach. Luchtú amháin má oireann an roghchlár feabhsaithe duit agus má ghlacann tú leis an tacaíocht theoranta.
 
 ```ts
 import "@pantoken/components/components.css";

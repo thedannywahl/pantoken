@@ -1,35 +1,25 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 17:08+0000\n"
+"PO-Revision-Date: 2026-09-12 14:20+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
-"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:description"
-msgid ""
-"Instructure design tokens and icons, reshaped for every platform and "
-"framework."
-msgstr ""
-"모든 플랫폼과 프레임워크에 맞게 재구성된 Instructure 디자인 토큰과 아이콘입니"
-"다."
+msgid "Instructure design tokens and icons, reshaped for every platform and framework."
+msgstr "모든 플랫폼과 프레임워크에 맞게 재구성된 Instructure 디자인 토큰과 아이콘입니다."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:nav.guide"
 msgid "Guide"
 msgstr "가이드"
-
-#: docs/.vitepress/i18n.json
-#, no-c-format
-msgctxt "docs.chrome:nav.packages"
-msgid "Packages"
-msgstr "패키지"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -40,8 +30,8 @@ msgstr "CSS"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:nav.api"
-msgid "API reference"
-msgstr "API 참조"
+msgid "API"
+msgstr "API"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -60,12 +50,6 @@ msgstr "안내서"
 msgctxt "docs.chrome:sidebar.gettingStarted"
 msgid "Getting started"
 msgstr "시작하기"
-
-#: docs/.vitepress/i18n.json
-#, no-c-format
-msgctxt "docs.chrome:sidebar.packageMap"
-msgid "The package map"
-msgstr "패키지 맵"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -117,6 +101,66 @@ msgstr "API 참조"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
+msgctxt "docs.chrome:sidebar.css"
+msgid "CSS"
+msgstr "CSS"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.ai"
+msgid "AI"
+msgstr "AI"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.bundlers"
+msgid "Bundlers"
+msgstr "번들러"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.design"
+msgid "Design"
+msgstr "디자인"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.formats"
+msgid "Formats"
+msgstr "형식"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.packages"
+msgid "Packages"
+msgstr "패키지"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.platforms"
+msgid "Platforms"
+msgstr "플랫폼"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.plugins"
+msgid "Plugins"
+msgstr "플러그인"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.renderers"
+msgid "Renderers"
+msgstr "렌더러"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.tools"
+msgid "Tools"
+msgstr "도구"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
 msgctxt "docs.chrome:sidebar.apiOverview"
 msgid "Overview"
 msgstr "개요"
@@ -126,6 +170,30 @@ msgstr "개요"
 msgctxt "docs.chrome:editText"
 msgid "Edit this page on GitHub"
 msgstr "이 페이지를 GitHub에서 편집"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:demoTabs.result"
+msgid "Result"
+msgstr "결과"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:demoTabs.html"
+msgid "HTML"
+msgstr "HTML"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:demoTabs.css"
+msgid "CSS"
+msgstr "CSS"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:demoTabs.js"
+msgid "JS"
+msgstr "JS"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -149,7 +217,7 @@ msgstr "Canvas"
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.canvasHighContrast"
 msgid "Canvas high contrast"
-msgstr "Canvas 고대비"
+msgstr "Canvas high contrast"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -173,7 +241,7 @@ msgstr "Canvas"
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeCanvasHighContrast"
 msgid "Canvas high contrast"
-msgstr "Canvas 고대비"
+msgstr "Canvas high contrast"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -250,12 +318,8 @@ msgstr "베이스 리셋에 대하여"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfo"
-msgid ""
-"The opt-in global reset: box-sizing, the page surface, base text colour and "
-"font, color-scheme, and link defaults."
-msgstr ""
-"선택적 전역 리셋: box-sizing, 페이지 표면, 기본 텍스트 색상 및 글꼴, color-"
-"scheme, 링크 기본값을 포함합니다."
+msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
+msgstr "선택적 전역 리셋: box-sizing, 페이지 표면, 기본 텍스트 색상 및 글꼴, color-scheme, 링크 기본값을 포함합니다."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -272,12 +336,8 @@ msgstr "유틸리티 클래스에 대하여"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
-msgid ""
-"An opt-in layer of cross-cutting classes: a View primitive, spacing on the "
-"token scale, and semantic color overrides."
-msgstr ""
-"선택적 크로스컷 클래스 레이어: View 원시 요소, 토큰 스케일의 간격, 의미론적 "
-"색상 재정의를 제공합니다."
+msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
+msgstr "선택적 크로스컷 클래스 레이어: View 원시 요소, 토큰 스케일의 간격, 의미론적 색상 재정의를 제공합니다."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -300,20 +360,14 @@ msgstr "하나 이상의 컴포넌트를 선택하여 URL을 생성하세요."
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.fontsNote"
-msgid ""
-"Fonts load separately — add a <link> to @pantoken/components/fonts.css when "
-"you need them."
-msgstr ""
-"폰트는 별도로 로드됩니다 — 필요할 때 @pantoken/components/fonts.css에 <link>"
-"를 추가하세요."
+msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
+msgstr "폰트는 별도로 로드됩니다 — 필요할 때 @pantoken/components/fonts.css에 <link>를 추가하세요."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.iconsNote"
-msgid ""
-"component-icons.css is included because a selected component uses icons."
-msgstr ""
-"선택된 컴포넌트가 아이콘을 사용하므로 component-icons.css가 포함됩니다."
+msgid "component-icons.css is included because a selected component uses icons."
+msgstr "선택된 컴포넌트가 아이콘을 사용하므로 component-icons.css가 포함됩니다."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -346,14 +400,10 @@ msgid "Resume animation"
 msgstr "애니메이션 재개"
 
 #: docs/.vitepress/i18n.json
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
-msgid ""
-"\"Set up pantoken (github.com/thedannywahl/pantoken) in this project using "
-"create.pantoken.app/SKILL.md.\""
-msgstr ""
-"\"이 프로젝트에 pantoken (github.com/thedannywahl/pantoken)을 설치하려면 "
-"create.pantoken.app/SKILL.md를 사용하세요.\""
+msgid "\"Set up pantoken in this project using create.pantoken.app/SKILL.md.\""
+msgstr "\"이 프로젝트에 pantoken (github.com/thedannywahl/pantoken)을 설치하려면 create.pantoken.app/SKILL.md를 사용하세요.\""
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -436,12 +486,8 @@ msgstr "페이지를 찾을 수 없습니다"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.quote"
-msgid ""
-"But if you don't change your direction, and if you keep looking, you may end "
-"up where you are heading."
-msgstr ""
-"하지만 방향을 바꾸지 않고 계속 바라본다면 결국 향하고 있는 곳에 도달할지도 모"
-"릅니다."
+msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
+msgstr "하지만 방향을 바꾸지 않고 계속 바라본다면 결국 향하고 있는 곳에 도달할지도 모릅니다."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

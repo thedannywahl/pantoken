@@ -1,27 +1,27 @@
 # Íhlutir
 
-`@pantoken/components` sendir klasa-byggðar stíla fyrir íhluti smíðaða úr Instructure-táknum. Flytjið inn stílafrá og merkjið uppsetninguna ykkar — engin rammaþjónusta nauðsynleg.
+`@pantoken/components` sendir klasa-bundna íhluta-stíla byggða á Instructure tokenunum. Flytja inn stílsniðið og merkja uppsetninguna — engin ramma þörf.
 
 ```ts
 import "@pantoken/components/components.css";
 ```
 
-> [!ATH]
-> Kjósirðu sérsniðna þætti? `@pantoken/web-components` umlykur sömu stíla sem `<instui-button>`,
+> [!NOTE]
+> Viltu frekar sérsniðnar frumur? `@pantoken/web-components` umlykur sömu stíla sem `<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, og fleiri — sjá
-> [pakka-kortið](/guide/packages).
+> [pakka-kortið](/api/).
 
-## Venjur
+## Samræmi
 
-CSS-venjur þessa pakka byggja á breyttri útgáfu af [RSCSS](https://ricostacruz.com/rscss/index.html).
+CSS-samræmið í þessum pakka byggir á breyttri útgáfu af [RSCSS](https://ricostacruz.com/rscss/index.html).
 
-Breytingar eru **lykil-gildi** — `-<prop>-<val>`, samhæfðar við InstUI prop nöfn — svo þær lesa sig sjálfar: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Boolean-prop eru bara prop-nafnið; tilvist merkir `true` (`-has-shadow`, `-clickable`); boolean sem er sjálfgefið á en slökkt snýr ( `-without-background`, `-without-border`). Stærðir taka bæði stutt og löng stafsetningar
-(`-size-sm` = `-size-small`). Þar sem nafn víkur frá InstUI virkar InstUI-semantíska klasanum enn
+Breytingar eru **lykil-gildi** — `-<prop>-<val>`, í samræmi við InstUI prop nöfn — þannig að þær lesa sjálfar sig: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Boolskeið prop eru aðeins prop nafnið, þar sem nærvera þýðir `true` (`-has-shadow`, `-clickable`); sjálfgefinn-on bool sem er slökktur snýr við (`-without-background`, `-without-border`). Stærðir taka bæði stutta og langa stafsetningu
+(`-size-sm` = `-size-small`). Þar sem nafn víkur frá InstUI virkar InstUI-merkingin enn
 en er úrelt (t.d. `-variant-info` → notaðu `-color-info`).
 
 ### Dæmi
 
-Instructure UI React-íhlutur:
+Instructure UI React íhluti:
 
 ```jsx
 <Alert variant="success" transition="fade" hasShadow renderCustomIcon={megaphone}>
@@ -47,9 +47,7 @@ pantoken íhlutir:
 </div>
 ```
 
-Fyrir InstUI's `timeout` prop, stillið einingalausa `--timeout` sérsniðnu eiginleikann í millisekúndum og hlaðið Alert-samskiptin. Jákvætt gildi skipuleggur sjálfvirka lokun; `0` (sjálfgefið) skilur viðvörunina eftir. Bætið við `transition` gagnsemiinnar `instui-transition -fade-entered` klösum fyrir InstUI's fade; sleppið þeim fyrir tafarlausa fjarlægingu. Samskiptin stjórna `-fade-exiting` ástandinu og skjóta af sér afturkallanlegan,
-bólgubundinn `dismiss` atburð áður en fjarlægð, svo forrit geti kallað `preventDefault()` til að halda
-viðvöruninni uppsettri.
+Fyrir InstUI's `timeout` prop, stilltu einingalausa `--timeout` sérsniðna eiginleikann í millisekúndum og hlaða Alert gagnvirkni. Jákvætt gildi skipuleggur lokun; `0` (sjálfgefið) skilur viðvörunina á staðnum. Bættu við `transition` gagnsemi `instui-transition -fade-entered` flokkum fyrir InstUI-daempun; slepptu þeim fyrir tafarlausa fjarlægingu. Gagnvirknin stýrir `-fade-exiting` ástandinu og kallar fram aflátanlegt, bubblað `dismiss` atburð áður en fjarlæging, svo forrit geti kallað `preventDefault()` til að halda viðvöruninni festri.
 
 ```html
 <link
@@ -66,15 +64,15 @@ viðvöruninni uppsettri.
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/alert.iife.js"></script>
 ```
 
-Framvindu-stikur taka hvaða kvarða sem er í gegnum `--min` (`0` sjálfgefið), `--value`, og `--max`
-(`100` sjálfgefið), með úreltum `--value-now` og `--value-max` aliasum. Bætið við `-should-animate`
-til að beita InstUI hálf-sekúndu umbreytingu þegar gildi breytist. `.value` situr með `.bar` sem
-barn rótarinnar; bætið `-render-value-inside` við til að teikna það yfir brautina, raðað við byrjun hennar,
-í staðinn (stílið fyrir lesanleika gegn lit mælisins). Notið innbyggða `<progress>` fyrir
-núll-byggðan bil og `<meter>` þegar lágmark er ekki núll; vef-íhlutirnir velja milli þeirra
-sjálfkrafa úr `min` eiginleikanum sínum. InstUI hefur ekki óákveðið ástand, svo `<progress>`
-sem vantar `value` eiginleikann er pantoken-einungis bestu ágiskun: `progress-bar` hreyfir `.bar` sem
-rennsli hluta og `progress-circle` snýst hringi á föstum boga, bæði fela `.value`.
+Framvindu-stiku taka á móti handahófskenndum skölum í gegnum `--min` (`0` sjálfgefið), `--value`, og `--max`
+(`100` sjálfgefið), með úreltum `--value-now` og `--value-max` aliasum. Bættu við `-should-animate`
+til að nota InstUI hálfsekúndu umbreytingu þegar gildi breytist. `.value` situr við hlið `.bar` sem
+barn rótarinnar; bættu við `-render-value-inside` til að teikna það yfir rennibrautina, stillt að byrjun hennar,
+í staðinn (stílun fyrir læsileika á móti lit mælisins). Notaðu innfædda `<progress>` fyrir
+núll-miðað svið og `<meter>` þegar lágmark er ekki núll; veffrumurnar velja á milli þeirra
+sjálfkrafa frá `min` eiginleikanum. InstUI hefur enga óákveðna stöðu, svo `<progress>`
+sem vantar `value` eigindi er pantoken-einstaklings ágiskun: `progress-bar` hreyfir `.bar` sem
+rennsli hluta og `progress-circle` snýr hring sinn á föstu bogastigi, bæði fela `.value`.
 
 ```html
 <label>
@@ -90,11 +88,11 @@ rennsli hluta og `progress-circle` snýst hringi á föstum boga, bæði fela `.
 </label>
 ```
 
-Framvindu-hringir taka sama óskilyrta kvarða í gegnum `--min`, `--value`, og `--max`.
-`--value-now` og `--value-max` verða áfram sem úrelt virkni-aliasar. Bætið við `-should-animate` og
-hladdu fókus-samskiptapakka til að endurskapa InstUI's uppsetningar-animasjón; `--animation-delay` er
-einingalaus millisekúndu töf. Úreltu stafsetningar `-should-animate-on-mount` og
-`-shold-animate-on-mount` verða áfram virkni-aliasar.
+Framvindu-hringir taka við sömu handahófskenndu skölum í gegnum `--min`, `--value`, og `--max`.
+`--value-now` og `--value-max` haldast sem úreltar virkar aliasar. Bættu við `-should-animate` og
+hlaða bundlu fyrir fókus-gagnvirkni til að endurskapa InstUI upphafs-hreyfingu; `--animation-delay` er
+einingalaus millisekúndu töf. Úreltu `-should-animate-on-mount` og
+`-shold-animate-on-mount` stafsetningar halda sér sem virkar aliasar.
 
 ```html
 <label for="upload-progress">Uploading Document</label>
@@ -110,11 +108,11 @@ einingalaus millisekúndu töf. Úreltu stafsetningar `-should-animate-on-mount`
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/progress-circle.iife.js"></script>
 ```
 
-## Klasa-forskeyti
+## Forskeyti flokks
 
-Hver klassi er nafnrýmið `instui-` sjálfgefið. Byggið stílafrá með ykkar eigin forskeyti — eða ekkert — með því að senda
-`prefix` til hvaða smiðs sem er. Hvaða falskt gildi sem er (`null`, `undefined`, `""`, eða að sleppa því) fjarlægir
-forskeytið alveg, svo þið getið höfundað `class="heading -level-h1"` í stað `class="instui-heading -level-h1"`:
+Allar klösur eru nafnaflokkaðar `instui-` sjálfgefið. Smíða stílsnið með þínu eigin forskeyti — eða engu — með því að senda
+`prefix` í hvaða byggjara sem er. Sérhvert falskt gildi (`null`, `undefined`, `""`, eða að sleppa því) fjarlægir
+forskeytið alveg, svo þú getur ritað `class="heading -level-h1"` í stað `class="instui-heading -level-h1"`:
 
 ```ts
 import { componentsCss } from "@pantoken/components";
@@ -123,28 +121,29 @@ componentsCss({ prefix: "ui" }); // .ui-button
 componentsCss({ prefix: null }); // .button, .alert — no prefix
 ```
 
-Kroppunda-breytingarnar (`.-color-secondary`, `.-level-h1`) breytast ekki hvorki né hvernig. Stílafrá sem pakkinn sendir halda áfram að nota `instui` forskeytið.
+Skilgreint-dash breytur (`.-color-secondary`, `.-level-h1`) breytast ekki hvorki né. Stílsniðin sem pakkinn sendir halda
+`instui` forskeytinu.
 
 ## Grunnur
 
-`base.css` er valfrjálst endurstillingarlag sem setur hnattræna skjalsstillingu úr táknunum: `box-sizing`, a
-`body` endurstillingu, síðuyfirborð, grunn textalit og letur, `color-scheme` (svo `light-dark()` tákn
-og innfædd stýringar fylgja þemað), og grunn tengillitur. Hladdu því einu sinni, fyrir íhluta- og texta-
-blaðunum, þegar pantoken á síðuna.
+`base.css` er valkvætt endurstillingarlag sem setur global skjalsjálfgefnar stillingar frá tokenunum: `box-sizing`, a
+`body` endurstilling, síðu-yfirborð, grunn textalit og letur, `color-scheme` (svo `light-dark()` tokenar
+og innfæddir stýringar elti þemað), og grunntengill. Hlaða því einu sinni, fyrir íhluta- og prósa
+blaða, þegar pantoken á síðuna.
 
 ```ts
 import "@pantoken/components/base.css";
 import "@pantoken/components/components.css";
 ```
 
-Sleppið því þegar þið innbyggið íhluti í hýsli sem þegar þemamyndar sitt eigið `html` og `body` —
-endurstillingin mála síðuyfirborðið, svo þið viljið ekki að hún rífist við hýsilinn. Allt sem hún setur notar
-lága sértækni `:where()` völd, svo ykkar reglur vinna alltaf.
+Slepptu því þegar þú innbyrðir íhluti í hýsi sem hefur þegar sitt eigið `html` og `body` —
+endurstillingin málar síðuyfirborðið, svo þú vilt ekki að hún berist gegn gestgjafanum. Allt sem hún setur notar
+lágsértækar `:where()` vafranir, svo þínar reglur vinna alltaf.
 
-`base.css` _beitir_ vörumerkjafontinum (`font-family: var(--instui-font-family-base)`, með kerfis-
-varaföllum); til að _hlaða_ það, flytjið inn valfrjálsa `fonts.css` — `@font-face` reglur fyrir Atkinson Hyperlegible
-Next, sem vísa á woff2 sem fylgja pakkanum. Það er aðskilið því leturgerðirnar eru ~350 kB og
-sjálf-hýsa leturgerðir er meðvitaður kostur.
+`base.css` _varðar_ vörumerkis-lituð letur (`font-family: var(--instui-font-family-base)`, með kerfis-
+varnarfalli); til að _hlaða_ það, flytja inn valfrjálsa `fonts.css` — `@font-face` reglur fyrir Atkinson Hyperlegible
+Next, sem vísa á woff2 skrár sem fylgja pakkanum. Það er aðskilið vegna þess að leturflokkarnir eru ~350 kB og
+sjálf-hýsing letur er meðvitað val.
 
 ```ts
 import "@pantoken/components/base.css"; // applies the font (falls back to system without fonts.css)
@@ -153,21 +152,21 @@ import "@pantoken/components/fonts.css"; // loads the Atkinson Hyperlegible Next
 
 ## Efni fyrir skjálesara
 
-<p>Það er falin skilaboð eftir þessari setningu.<span class="instui-screen-reader-content">Aðeins skjálesarar tilkynna þetta.</span></p>
+<p>Það er falin skilaboð eftir þessa setningu.<span class="instui-screen-reader-content">Aðeins skjálesarar kynna þetta.</span></p>
 
 ```html
 <span class="instui-screen-reader-content">Only screen readers announce this.</span>
 ```
 
-`.instui-screen-reader-content` felur stak sjónrænt en heldur því í aðgengistrénu
-— fyrir merki og stöðutexta sem hjálpatækni á að lesa en hönnunin eigi ekki að sýna.
+`.instui-screen-reader-content` felur þátt sjónrænt en heldur því í aðgengistrénu
+— fyrir merkingar og stöðutexta sem hjálpartækni ætti að lesa en hönnunin ætti ekki að sýna.
 
-## Hjálparklasar
+## Hjálparverkfæri
 
-`utilities.css` er valfrjálst lag af þverskurðarklössum: `View` frumefni, bil á táknakvarða,
-og merkingartengdar lita-yfirskriftir. Ólíkt íhluta `-modifier` klösum, nota þessir **tvöfalda
-bandstrik** (`--mod`) svo þeir rekist aldrei á eigin breytunöfn íhluta, og þeir eiga við hvaða
-stak — autt eða samansett á íhlut.
+`utilities.css` er valkvætt lag af þverskurðarlögum: `View` frumefni, bil á token-kvarða,
+og merkingarlit-yfirskrár. Ólíkt íhluta `-modifier` flokkum, nota þessi **tveggja
+dash** (`--mod`) svo þau rekast aldrei á nafn breytna íhluta, og þau gilda á hvaða
+þátt sem er — ber, eða sett saman á íhluta.
 
 ```ts
 import "@pantoken/components/utilities.css";
@@ -177,7 +176,7 @@ import "@pantoken/components/utilities.css";
   <span class="instui-text --text-on-color">Accent-blue yfirborð með on-color texta.</span>
 </div>
 <div class="instui-view --bg-muted --p-sm --mx-auto" style="max-width: 12rem; border-radius: 6px; text-align: center;">
-  <span class="instui-text">Miðstillt með mx-auto.</span>
+  <span class="instui-text">Miðja með mx-auto.</span>
 </div>
 
 ```html
@@ -185,33 +184,34 @@ import "@pantoken/components/utilities.css";
 <div class="instui-view --bg-muted --p-sm --mx-auto">…</div>
 ```
 
-**View** — `.instui-view` er InstUI's `View`. Það er grunnurinn sem þú lagar bil og lit á, og það
-ber lykil-gildi breytur fyrir eigin sjónræna prop svo þú þarft ekki að sækja í gagnsemi:
-`-background-*` (yfirborðin), `-border-radius-{small,medium,large,circle,pill}`,
+**View** — `.instui-view` er InstUI's `View`. Það er grunnurinn sem þú lagðir bil og lit ofan á, og það
+ber lykil-gildi breytur fyrir eigin sjónræna prop svo þú þarft ekki gagnsemi:
+`-background-*` (yfirborð þess), `-border-radius-{small,medium,large,circle,pill}`,
 `-border-width-{small,medium,large}` + `-border-color-*`, `-shadow-{resting,above,topmost}`,
-`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, og `-cursor-*` — þetta eru `view` eigin
-einstreka bandstrik-breytingar, ótengdar við tvöföldu-dash gagnsemina hér að neðan. Frjáls-gildi prop
-(breidd/hæð/innfelling) eru áfram inline-stílar; `margin`/`padding` nota bilagagnsemi.
+`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, og `-cursor-*` — þetta eru `view`'s eigin
+ein-dash breytur, óskylt tvö-dash hjálparverkfærunum hér að neðan. Frjáls-gildi prop
+(breidd/hæð/innsetning) eru áfram innlínustílar; `margin`/`padding` nota bil-hjálparverkfærin.
 
-**Bil** — per-hlið klös á bilakvarða. Lesið þau sem `{m|p}{side}-{step}`: `m` fyrir
-mörk eða `p` fyrir fyllingu (eða fullu orðin `margin`/`padding`), valkvæð rökrétt hlið, þá
-skref. Þannig eru `.--m-lg` og `.--margin-lg` þau sömu, eins og `.--pt-md` og `.--paddingt-md`.
+**Bilsýning** — per-hlið flokkarnir á bilakvarðanum. Lesið þau sem `{m|p}{side}-{step}`: `m` fyrir
+mörk eða `p` fyrir púða (eða full orð `margin`/`padding`), valfrjáls rökstefna, síðan
+skref. Svo `.--m-lg` og `.--margin-lg` eru það sama, eins og `.--pt-md` og `.--paddingt-md`.
 
-- Hliðar: engin (öll), `t`/`b` (blokk byrjun/enda), `s`/`e` (inline byrjun/enda), `x`/`y` (inline/blokk
-  ás). Rökréttar hliðar haldast réttar í hægri-til-vinstri útlögun.
-- Skref: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, auk `auto` fyrir einungis margin.
+- Hliðar: engin (öll), `t`/`b` (blokkar byrjun/endi), `s`/`e` (innlínubyrjun/endi), `x`/`y` (innlína/blokk
+  ás). Rökstefnulegar hliðar haldast réttar í hægri-til-vinstri útlitum.
+- Skref: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, auk `auto` aðeins fyrir mörk.
 
-Samsetjið þau fyrir InstUI's `margin="small auto large"` styttingu:
+Samið þau fyrir InstUI's `margin="small auto large"` stuttskammti:
 `class="--mt-sm --mx-auto --mb-lg"`.
 
-**Lit** — merkingarbundnar yfirskriftir sem halda á-litapallettunni: `.--bg-<name>` (bakgrunn),
+**Litur** — merkingarlysingar sem halda sér á litatöflu: `.--bg-<name>` (bakgrunnur),
 `.--text-<name>` (textalitur), og `.--border-<name>` (rammalitur). Hver `<name>` er
-merkingarlitur-tákni — tilgangarnir (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
-`inverse`, `on-color`, `strong`, …) plús `accent-*` pallettan (`accent-blue`, `accent-green`, og svo framvegis). Nafn er aðeins þar ef táknið er til í þeirri fjölskyldu, svo `text-brand` er ekki klasi — texti hefur
-ekkert vörumerki-tákni. Ekki er hægt að ná til frumefnis eða handahófs hex, og hver yfirskrift fylgir
-þemað.
+merkingarlitur-token — ætlarnir (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
+`inverse`, `on-color`, `strong`, …) plús `accent-*` pallurinn (`accent-blue`, `accent-green`, og svo
+framvegis). Nafn er aðeins til ef tokenið er í þeirri fjölskyldu, svo `text-brand` er ekki flokkur — texti hefur
+ekkert vörumerki token. Engin leið er að ná til frumefnis eða handahófs hex, og hvert yfirskrift fylgir
+þemanum.
 
-**Táknafjölskyldur** — hver "einn tákn, eitt eigindi" fjölskylda fær klasa per tákni, nefnd eftir tákninu. Sameina frjálst:
+**Token-fjölskyldur** — hver "einn token, ein eign" fjölskylda fær flokk per token, nefnd eftir tokeninu. Samsettu þau frjálslega:
 
 - `.--font-family-heading`, `.--font-family-code`, … → `font-family`
 - `.--font-weight-body-strong`, `.--font-weight-interactive`, … → `font-weight`
@@ -221,27 +221,27 @@ ekkert vörumerki-tákni. Ekki er hægt að ná til frumefnis eða handahófs he
 - `.--opacity-base`, `.--opacity-disabled` → `opacity`
 - `.--elevation-resting`/`-above`/`-topmost` (og `-depth1`…`-card`) → `box-shadow`
 
-Hver stillir aðeins eigindi sitt, svo `border-width`/`border-radius` þurfa `border-*` lit og rammastíl til að teikna ramma. Þeir nota fullt táknanafnið (`.--border-radius-md`), á meðan lit- og bil-aðstoðarinnar hér að ofan nota stutt alias (`.--bg-brand`, `.--mt-lg`) — aliasin eru þægilegar flýtileiðir; táknaklassarnir eru bókstaflegir og tæmandi.
+Hver stillir aðeins sína eina eign, svo `border-width`/`border-radius` þurfa `border-*` lit og rammastíl til að teikna ramma. Þessi nota fulla token-nafnið (`.--border-radius-md`), á meðan lit- og bil-aðstoðarverkfærin hér að ofan nota stutt alias (`.--bg-brand`, `.--mt-lg`) — aliasin eru þægileg styttingar; token-flokkarnir eru bókstaflegir og tæmandi.
 
-**Skipulag** — `.--display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`,
+**Uppsetning** — `.--display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`,
 `none`) og `.--text-align-<value>` (`start`, `center`, `end`, `justify`) ná yfir InstUI's
-þverskurð `display` og `textAlign` prop (View, Button, Metric, Tabs, …) sem samsetjanlegar klasa —
-svo þau eru ekki per-íhluta breytingar.
+þverskurðar `display` og `textAlign` prop (View, Button, Metric, Tabs, …) sem samsetjanlega flokka —
+svo þau eru ekki per-íhluta breytur.
 
-Allur tvöfalda-dash klassinn vinnur örugglega yfir sama nafna eina-dash íhluta-
-breytingu, óháð innflutningsröð stílafráa — sjá [Authoring conventions](/conventions/authoring)
-fyrir aðferðafræðina.
+Allur tvö-dash flokkurinn vinnur ákvörðunarbundið yfir sama nafn ein-dash íhluta
+breytu, óháð innflutningsröð stílsniðs — sjá [Ritunarsamræmi](/conventions/authoring)
+fyrir vélafræðina.
 
-Allt hér er hreint CSS knúið af `--instui-*` táknunum, svo það fylgir InstUI í gegnum táknalagið. Sjá [API reference](/api/) fyrir `componentsCss` og per-íhluta smiða.
+Allt hér er hreint CSS knúið af `--instui-*` tokenunum, svo það eltir InstUI í gegnum token-lagið. Skoðaðu [API heimildina](/api/) fyrir `componentsCss` og per-íhluta byggjara.
 
-## Yfirlag: samtalargluggi og popover
+## Yfirlag: gluggi og popover
 
-Yfirlags-íhlutir nota innfædd pallar, svo þeir hegða sér aðgengilega með litlu eða engu
+Yfirlag-íhlutir nota innfæddar pallgrundargerðir, svo þeir haga sér aðgengilega með litlu eða engu
 JavaScript.
 
-**Modal** — settu `.instui-modal` á innfædda `<dialog>`. Það fær fókus-fangelsi, `Esc`-til-loka, og
-`::backdrop` frítt; bakgrunnur dökkar með sama `--instui-component-mask-background-color`
-tákni og `.instui-mask` (bætið við `-blur` til að frosta). Opnið og lokið með invoker skipunum — engin skrift:
+**Modal** — settu `.instui-modal` á innfædda `<dialog>`. Hún fær fókus-fangelsi, `Esc`-til-loka, og
+`::backdrop` ókeypis; bakgrunnur er dimbda með sama `--instui-component-mask-background-color`
+token og `.instui-mask` (bættu við `-blur` til að frosta hann). Opnaðu og lokaðu með kveikjuskömmtum — engin skrift:
 
 ```html
 <button class="instui-button" command="show-modal" commandfor="dlg">Open</button>
@@ -254,20 +254,21 @@ tákni og `.instui-mask` (bætið við `-blur` til að frosta). Opnið og lokið
 </dialog>
 ```
 
-**Samhengis-sýn / popover** — settu `.instui-context-view` á `[popover]` stak og kveikið/slökkt með
-`popovertarget`. Það rís á efsta lagið og lokar við utanaðkomandi-smelli eða `Esc`, aftur engin skrift:
+**Samhengi-sýn / popover** — settu `.instui-context-view` á `[popover]` þátt og skiptu um með
+`popovertarget`. Hún rís á efsta lagið og lokast með klikkun utan eða `Esc`, aftur engin skrift:
 
 ```html
 <button class="instui-button" popovertarget="cv">Details</button>
 <div id="cv" popover class="instui-context-view">…</div>
 ```
 
-**Skuffulayout** — settu `.instui-drawer-layout` á layout-rót með `.tray` og `.content`
-börnum. Bætið við `open` eiginleikanum (eða `-open`) til að sýna bakka, og notið `placement="end"`
-(eða `-placement-end`) til að festa hann við inline-end hlið — staðsetningin leysist með rökréttum
+**Skúffu-uppsetning** — settu `.instui-drawer-layout` á uppsetningarót með `.tray` og `.content`
+börnum. Bættu við `open` eiginleikanum (eða `-open`) til að sýna skúffuna, og notaðu `placement="end"`
+(eða `-placement-end`) til að festa hana við inline-end hliðina — staðsetning leysist með rökstefnu
 `inset-inline-*`/`flex-direction` eiginleikum, svo hún snýr sjálfkrafa undir `dir="rtl"` án
-aukareglna. Fókus-samskiptapakkinn bætir Invoker skipanar-routing og rofar yfirlagsham (`should-overlay-tray`) þegar breidd fer yfir `--drawer-layout-min-width` (sjálfgefið
-`--instui-breakpoints-sm`, síðan `30rem`):
+viðbótar reglna. Fókusaða gagnvirknibundlan bætir Invoker skipanalagnir og skipta yfir á yfirlagsham
+(`should-overlay-tray`) þegar breidd fer yfir `--drawer-layout-min-width` (sjálfgefið
+`--instui-breakpoints-sm`, þá `30rem`):
 
 ```html
 <button class="instui-button" command="--toggle" commandfor="drawer">Toggle panel</button>
@@ -278,20 +279,20 @@ aukareglna. Fókus-samskiptapakkinn bætir Invoker skipanar-routing og rofar yfi
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/drawer-layout.iife.js"></script>
 ```
 
-**Maska** — `.instui-mask` stendur fyrir í-flæði yfirlög (spinner yfir korti); modal's `::backdrop`
-nær yfir modal-tilfelli.
+**Maska** — `.instui-mask` stendur fyrir innrennslis yfirlagi (spinner yfir spil), modal's `::backdrop`
+kemur fyrir modal tilvik.
 
-Bæði mynstur eru einnig umlykkt sem hegðunar-sérsniðnir þættir í `@pantoken/web-components`:
-`<instui-modal open>` ( `<dialog>` knúinn af `open` eiginleikanum sínum) og `<instui-context-view>` (innfæddur popover).
+Báðar mynstur eru einnig pakkaðar sem hegðunar-sérsniðnar frumur í `@pantoken/web-components`:
+`<instui-modal open>` (a `<dialog>` knúin af `open` eiginleikanum) og `<instui-context-view>` (innfæddur popover).
 
-Vafra-stuðningur: popover API og `popovertarget` eru Baseline 2024; invoker skipanir
-(`command`/`commandfor`) eru Baseline 2025, svo á eldri vöfrum tengið hnappana við `dialog.showModal()`
-sem eins-lína varatilvik. Staðsetning popover við trigger notar CSS anchor-staðsetningu þar sem stutt (Chromium); annars miðstillist það í efsta laginu.
+Vafra styður: popover API og `popovertarget` eru Baseline 2024; invoker skipanir
+(`command`/`commandfor`) eru Baseline 2025, svo á eldri vöfrum tengdu hnappana við `dialog.showModal()`
+sem eina línu fallback. Staðsetning popover við kveikju notar CSS anchor staðsetningu þar sem studdur (Chromium); annars miðjar hún í efsta laginu.
 
 ## Form
 
-**FormField** — `.instui-form-field` er CSS-Grid umbúðir sem leggur út merkimiða, stjórnina og allar
-skilaboð. Setjið það á `<label>` svo merkimiðinn tengist stýringunni innfædd. Það hefur þrjú grindarsvæði — `label`, `controls`, `messages`:
+**FormField** — `.instui-form-field` er CSS-Grid umbúðari sem leggur upp merkimiða, stýringuna, og skilaboð. Settu það á `<label>` svo merkimiði tengist stýringunni innfædd. Það hefur þrjú net
+svæði — `label`, `controls`, `messages`:
 
 ```html
 <label class="instui-form-field">
@@ -303,24 +304,25 @@ skilaboð. Setjið það á `<label>` svo merkimiðinn tengist stýringunni innf
 </label>
 ```
 
-`-layout-stacked` (sjálfgefið) staflar svæðunum; `-layout-inline` setur merkimiðann við hlið stýringar (tún með `-label-align-{start,end}` og `-v-align-{top,middle,bottom}`). `-readonly` endurlitar merkimiðann.
+`-layout-stacked` (sjálfgefið) staflar svæðunum; `-layout-inline` setur merkimiða við hlið stýringar (fínstilltu
+með `-label-align-{start,end}` og `-v-align-{top,middle,bottom}`). `-readonly` endurlaritar merkimiðann.
 
-**Skylda-stjarna** birtist þegar reiturinn er krafinn af _eða_ `-required` klasanum _eða_
-innfæddum `required` stjórn innanhúss — svo þú getur bara sett `required` á inntakið og merktið birtist.
-Hún er skrautleg ( `::after` á merkimiðanum, úr aðgengistréinu); paraðu hana við athugasemd eins og
-"reitir merktir \* eru skyldir" nema formið sé augljóst.
+**Þarf asterisk** birtist þegar reiturinn er krafinn af _annaðhvort_ `-required` klasa _eða_
+innfætt `required` stýring innan hans — svo þú getur einfaldlega sett `required` á inntakið og merkið sýnist.
+Það er skrautlegt ( `::after` á merkimiðanum, utan aðgengistrés); paraðu það með athugasemd eins og
+"reitir merktir \* eru krafðir" nema formið sé augljóst sjálft.
 
-**FormFieldGroup** — `.instui-form-field-group` hópar skyld reiti í `<fieldset>` með
-`<legend>` lýsingu. Það er hreint uppsetning (engin sérstök tákn): sjálfgefið staflar reitunum;
-`-layout-columns` / `-layout-inline` flæða þau í aðlagandi dálka, með `-row-spacing-*` /
-`-col-spacing-*` og `-v-align-*` til að fínstilla grindina.
+**FormFieldGroup** — `.instui-form-field-group` hópar tengda reiti í `<fieldset>` með
+`<legend>` lýsingu. Þetta er hreint uppsetning (engin token): sjálfgefið staflar reitunum;
+`-layout-columns` / `-layout-inline` flæða þau í móttækilegum dálkum, með `-row-spacing-*` /
+`-col-spacing-*` og `-v-align-*` til að fínstilla netið.
 
 **RadioInputGroup** — `.instui-radio-input-group` er sama `<fieldset>`/`<legend>` hópun,
-sérhæft fyrir radio. Þar sem barn-radio deila `name`, er val innfædd eitt-val —
-svo sett af rofabuttunum hegðar sér sem einn stjórn, ekki lausir hnappir. `-variant-simple` (sjálfgefið) raðar
-stöðluðum radio ( `-layout-columns`/`-inline` flæða þau í röð); `-variant-toggle` tengir
-barna `.instui-radio.-variant-toggle` hnappana í eitt sundurliðað stjórn (samanfallnar rammalínur,
-aftari útlínur með brún):
+sérsniðin fyrir hringval. Vegna þess að barnahringarnir deila `name`, er val innfæddlega einu-val —
+svo sett af rofa-hnöppum hegðar sér sem ein stýring, ekki lausir hnappir. `-variant-simple` (sjálfgefið) leggur
+upp staðlaða hringi (`-layout-columns`/`-inline` flæða þá í röð); `-variant-toggle` tengir
+barn `.instui-radio.-variant-toggle` hnappana í eina klofna stýringu (samanfallandi rammar,
+hnöttuð ytri endar):
 
 ```html
 <fieldset class="instui-radio-input-group -variant-toggle">
@@ -333,36 +335,36 @@ aftari útlínur með brún):
 </fieldset>
 ```
 
-**Skilaboð** — `.instui-form-field-messages` er umbúð; hver `.instui-form-field-message` tekur
-`-type-*`: `-type-hint` (grátt, sjálfgefið), `-type-error` (rautt texta + hring-bjalla tákn), `-type-success`
-(grænt texta + hring-merk tákn), og `-type-screenreader-only` (sjónrænt skorinn, enn tilkynnt). Táknin lita í `currentColor`, svo þau passa alltaf við skilaboðalit. `-type-new-error` er
-úrelt alias af `-type-error`. Tengið umbúðirnar við stjórnina með `aria-describedby`, og stillið
-`aria-invalid` á stjórnina þegar villa er til.
+**Skilaboð** — `.instui-form-field-messages` er ílát; hvert `.instui-form-field-message` tekur
+`-type-*`: `-type-hint` (grátt, sjálfgefið), `-type-error` (rautt texta + hringsviðvöru tákn), `-type-success`
+(grænt texta + hringsathugun tákn), og `-type-screenreader-only` (sjónrænt klippt, enn tilkynnt). Táknin lita í `currentColor`, svo þau passa alltaf við skilaboðalit. `-type-new-error` er
+úrelt alias af `-type-error`. Tengdu ílátið við stýringuna með `aria-describedby`, og stilltu
+`aria-invalid` á stýringunni þegar villa er til.
 
-Innan FormField fylgir `-type-error` skilaboð client-hlið staðfestingu: þau halda sér falin þar til
-stýringin er `:user-invalid` (innfædd, eftir notanda hefur haft samskipti) — eða þú neyðir það með `-invalid`
-á `.instui-form-field` (fyrir server-hlið villu). Stöðug `.instui-form-field-messages` (ekki í reit) er óáhrifuð. Fokus hringur stjórnarinnar fylgir sömu reglu: hætta þegar `:user-invalid`/`-invalid`,
+Innan FormField fylgir `-type-error` skilaboð við staðbundna viðskiptavina-staðfestingu: það er falið þar til
+stýring reitsins er `:user-invalid` (innfædd, eftir að notandi hefur haft samskipti) — eða þú neyðir það með `-invalid`
+á `.instui-form-field` (fyrir þjónustu-hlið villu). Stak `.instui-form-field-messages` (ekki í reit) er óáreittur. Fókus hringur stýringar fylgir sömu reglu: hætta þegar `:user-invalid`/`-invalid`,
 árangur á `-success`.
 
 **Texta stýringar** — `.instui-text-input` (innfædd `<input>`), `.instui-text-area` (innfædd `<textarea>`,
-aðgengjanleg), og `.instui-simple-select` (innfædd `<select>` með bendli) deila sama útliti og sömu
-ástandum: `-invalid` (villa-rammi), `-success` (árangur-rammi), `-readonly`, innfædd `:disabled`, og
-`-size-{sm,md,lg}`. Fyrir forgrunns/eftirbúna mynd (InstUI's `renderBeforeInput`/`renderAfterInput`), umlykið
-inntakið í `.instui-input-group` og bætið `.before`/`.after` rými ( `-icon-*` tákn); `-should-not-wrap`
-heldur því á einni línu. `.instui-number-input` er það yfirborð plús `.arrows` +/- spinner dálkur (innfædd
-`type="number"`; tengið hnappana við `stepUp()`/`stepDown()`). `.instui-range-input` er stílhreint
-`input[type="range"]` sem gildi birtast í `.instui-range-input-value` öfugum bubbl. Fyrir ríkt
-combobox með listbox popover, veljið `@instructure/ui` — bókasafnið nær yfir innfæddar stjórnir.
+breytanleg), og `.instui-simple-select` (innfædd `<select>` með setningarstaf) deila sama útliti og sömu
+ástandum: `-invalid` (villa rammann), `-success` (árangur ramma), `-readonly`, innfædd `:disabled`, og
+`-size-{sm,md,lg}`. Fyrir for- eða eftirlits tákn (InstUI's `renderBeforeInput`/`renderAfterInput`), umbúðu
+inntakið í `.instui-input-group` og bættu við `.before`/`.after` sloti ( `-icon-*` tákn); `-should-not-wrap`
+heldur því á einni línu. `.instui-number-input` er sú fasöð auk `.arrows` +/- spinner dálks (innfædd
+`type="number"`; tengdu hnappana við `stepUp()`/`stepDown()`). `.instui-range-input` er stíluð
+`input[type="range"]` þar sem gildi birtist í `.instui-range-input-value` öfugri blöðru. Fyrir ríka
+combobox með listbox popover, notaðu `@instructure/ui` — þetta bókasafn nær yfir innfæddar stýringar.
 
-**Stílaður select dropdown (tilraun)** — valfrjáls `select.css` uppfærsla sama
-`.instui-simple-select` elementsins: hún stílar opna dropdown (spjaldið og hvern valmöguleika, með hover og
-valdanum ástandum) með CSS Customizable Select módeli.
+**Stílaður select valmynd (tilraunaverkefni)** — valfrjálsi `select.css` uppfærir _sama_
+`.instui-simple-select` þáttinn: það stílar opna valmyndina (spjaldið og hverja valkost, með hover og
+valin ástand) með CSS Customizable Select módeli.
 
-> [!VARÚÐ]
-> `select.css` treystir á `appearance: base-select` / `::picker(select)`, sem er **tilraunakennt**
-> (Chrome 135+, ekki enn Baseline). Það er sent sem aðskilið valfrjálst blað og hver regla er læst
-> bakvið `@supports (appearance: base-select)`, svo það gerir ekkert í óstuddum vöfrum — `.instui-simple-select` stjórninn heldur sig sem venjulegur innfæddur select. Hladdu því aðeins ef þú vilt
-> bættan dropdown og samþykkir takmarkaðan stuðning.
+> [!WARNING]
+> `select.css` reiðir sig á `appearance: base-select` / `::picker(select)`, sem er **tilraunakennt**
+> (Chrome 135+, ekki enn Baseline). Það er sent sem sérvalið blað og hver regla er læst bakvið `@supports (appearance: base-select)`, svo hún gerir
+> ekkert í óstuddum vöfrum — `.instui-simple-select` stýringin helst einfaldlega venjuleg innfædd select. Hlaða því aðeins ef þú vilt
+> aukna valmynd og samþykkir takmarkaða stuðninginn.
 
 ```ts
 import "@pantoken/components/components.css";

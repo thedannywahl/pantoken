@@ -340,8 +340,7 @@ const localesConfig = Object.fromEntries(
       themeConfig: {
         nav: [
           { text: locale.nav.guide, link: `${locale.guidePrefix}getting-started` },
-          { text: locale.nav.packages, link: `${locale.guidePrefix}packages` },
-          { text: locale.nav.css, link: `${apiPrefixFor(localeKey)}css` },
+          { text: locale.nav.css, link: `${apiPrefixFor(localeKey)}css/` },
           { text: locale.nav.api, link: apiPrefixFor(localeKey) },
         ],
         sidebar: {
@@ -352,10 +351,6 @@ const localesConfig = Object.fromEntries(
                 {
                   text: locale.sidebar.gettingStarted,
                   link: `${locale.guidePrefix}getting-started`,
-                },
-                {
-                  text: locale.sidebar.packageMap,
-                  link: `${locale.guidePrefix}packages`,
                 },
                 {
                   text: locale.sidebar.architecture,
@@ -390,6 +385,8 @@ const localesConfig = Object.fromEntries(
             typedocSidebarByLocale[localeKey],
             locale.sidebar.api,
             apiPrefixFor(localeKey),
+            locale.sidebar.css,
+            locale.sidebar.apiGroups,
             locale.sidebar.apiOverview,
           ),
         },
@@ -418,6 +415,8 @@ const localesConfig = Object.fromEntries(
         // `lastUpdated: true` is set globally below, so localize its label here.
         lastUpdated: { text: locale.chrome.lastUpdatedText },
         notFound: locale.chrome.notFound,
+        // Read by the custom agent shell prompt (GetStartedTabs.vue) via `useData().theme`.
+        chrome: { agentShellPrompt: locale.chrome.agentShellPrompt },
         // Read by the custom palette selector (ThemeSelector.vue) via `useData().theme`.
         themeSelector: locale.themeSelector,
         // Read by the CDN picker (CdnPicker.vue) via `useData().theme`.
@@ -835,6 +834,13 @@ export default defineConfig({
         localePrefix: (relativePath: string) => {
           const locale = NON_ROOT_LOCALES.find((key) => relativePath.startsWith(`${key}/`));
           return locale ? `${locale}/` : "";
+        },
+        // The runner is its own document, so its view tabs can't inherit the page's translated chrome
+        // — hand them over in the runner URL instead.
+        localeLabels: (relativePath: string) => {
+          const locale =
+            NON_ROOT_LOCALES.find((key) => relativePath.startsWith(`${key}/`)) ?? "root";
+          return LOCALE_THEMES[locale].demoTabs;
         },
         // Seam a live preview onto each `@example` HTML fence at compile time: the same markup,
         // rendered in an isolated `<iframe srcdoc>` so none of the page's own `.vp-doc` styles (ours or

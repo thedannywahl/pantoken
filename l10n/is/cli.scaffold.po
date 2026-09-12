@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 17:05+0000\n"
+"PO-Revision-Date: 2026-09-11 23:05+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "Language: und\n"
@@ -20,6 +20,12 @@ msgstr "Veldu vettvang til að búa til grunn:"
 msgctxt "cli.scaffold:promptDir"
 msgid "Target directory:"
 msgstr "Áfangaskrá:"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:promptAiAssets"
+msgid "Add AI agent assets (AGENTS.md, editor/Copilot rules)?"
+msgstr "Bæta við AI-agent-eignum (AGENTS.md, editor/Copilot reglur)?"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -135,6 +141,13 @@ msgid ""
 "Never prompt; error instead of prompting for a missing platform/directory"
 msgstr ""
 "Aldrei spyrja; kasta villa í staðinn fyrir að spyrja um vantar vettvang/skrá"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:helpNoAiDescription"
+msgid "Skip installing AI agent assets after scaffolding"
+msgstr ""
+"Sleppa uppsetningu AI-agent-eigna eftir að sniðmátið hefur verið búið til"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format

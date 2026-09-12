@@ -23,6 +23,22 @@ const cssUrls = (params.get("css") ?? "").split(",").filter(Boolean);
 const srcUrl = params.get("src");
 const mount = document.getElementById("runner");
 
+/** The host's localized view-tab labels (`&labels=`), keeping only string values it actually sent. */
+const hostLabels = ((): Partial<Record<PartKey | "result", string>> => {
+  try {
+    const raw: unknown = JSON.parse(params.get("labels") ?? "{}");
+    if (!raw || typeof raw !== "object") return {};
+    return Object.fromEntries(
+      Object.entries(raw as Record<string, unknown>).filter(
+        ([key, value]) =>
+          typeof value === "string" && ["result", "html", "css", "js"].includes(key),
+      ),
+    ) as Partial<Record<PartKey | "result", string>>;
+  } catch {
+    return {};
+  }
+})();
+
 // The embedding docs page's origin, so theme/size posts target only the host and can't be intercepted
 // by a page that reframes the runner. `document.referrer` is the embedder's URL; fall back to our own
 // origin (same-origin embedding — the runner is served by the docs site with `allow-same-origin`).
@@ -188,7 +204,11 @@ function parseSource(sourceText: string, externalCss = "", externalJs = ""): Dem
   // What the code view shows and copies: the same source, but with the staging card wrapper stripped
   // from the HTML. The result (below) still renders `original`, so the preview keeps its card.
   const code: Record<PartKey, string> = { ...original, html: stripCardWrapper(original.html) };
-  const labels: Record<PartKey, string> = { html: "HTML", css: "CSS", js: "JS" };
+  const labels: Record<PartKey, string> = {
+    html: hostLabels.html ?? "HTML",
+    css: hostLabels.css ?? "CSS",
+    js: hostLabels.js ?? "JS",
+  };
   const parts = (["html", "css", "js"] as PartKey[]).filter((key) => original[key]);
   return { original, code, labels, parts };
 }
@@ -487,7 +507,7 @@ function addTab(ctx: RunnerCtx, name: string, label: string): void {
 
 /** Build the view tabs: Result first, then one per present code part. */
 function initTabs(ctx: RunnerCtx): void {
-  addTab(ctx, "result", "Result");
+  addTab(ctx, "result", hostLabels.result ?? "Result");
   for (const key of ctx.parts) addTab(ctx, key, ctx.labels[key]);
 }
 

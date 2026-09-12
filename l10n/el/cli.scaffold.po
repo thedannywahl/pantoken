@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 17:02+0000\n"
+"PO-Revision-Date: 2026-09-11 23:01+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "Language: und\n"
@@ -20,6 +20,12 @@ msgstr "Επιλέξτε πλατφόρμα για δημιουργία σκαλ
 msgctxt "cli.scaffold:promptDir"
 msgid "Target directory:"
 msgstr "Στόχος κατάλογος:"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:promptAiAssets"
+msgid "Add AI agent assets (AGENTS.md, editor/Copilot rules)?"
+msgstr "Προσθήκη πόρων πράκτορα AI (AGENTS.md, κανόνες editor/Copilot)?"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -138,6 +144,13 @@ msgid ""
 msgstr ""
 "Μην ζητάτε ποτέ εισαγωγή· σφάλμα αντί για ερώτηση για λείποντα πλατφόρμα/"
 "κατάλογο"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:helpNoAiDescription"
+msgid "Skip installing AI agent assets after scaffolding"
+msgstr ""
+"Παράλειψη εγκατάστασης πόρων πράκτορα AI μετά τη δημιουργία του σκελετού"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format

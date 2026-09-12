@@ -7,7 +7,8 @@
  * carries a content key — the scaffolding around it can change without busting the cache.
  *
  * Each segment is one of:
- * - `preserve` — emitted verbatim (non-prompt code fences, signatures, breadcrumbs, type/link-only lines, HTML).
+ * - `preserve` — emitted verbatim (non-HTML code fences, signatures, breadcrumbs, type/link-only lines, HTML).
+ * - `html`     — an HTML fence whose visible text nodes translate while markup stays verbatim.
  * - `prompt` — a prompt fence whose body is translated while its fence markers stay intact.
  * - `glossary` — deterministic term substitution (section headings, stability-badge pills, table
  *   column labels). Cheap, keyless, never cached.
@@ -20,6 +21,13 @@
  *
  * @module
  */
+
+import {
+  type DemoSegment,
+  collectDemoUnits,
+  reassembleDemoHtml,
+  segmentDemoHtml,
+} from "./segment-demo-html.ts";
 
 /** How a translatable segment is handled: cheap `glossary` substitution or real `prose` translation. */
 export type TranslationKind = "glossary" | "prose";
@@ -35,6 +43,7 @@ export const JS_CALLOUT_MARKER = "<!-- js-requirement -->";
 export type Segment =
   | { kind: "preserve"; text: string }
   | { kind: "prompt"; opening: string; body: string; closing: string }
+  | { kind: "html"; opening: string; body: DemoSegment[]; closing: string }
   | { kind: "glossary"; text: string }
   | { kind: "prose"; text: string }
   | {
@@ -59,6 +68,8 @@ export type Segment =
 export interface TranslatableUnit {
   text: string;
   kind: TranslationKind;
+  /** Visible example text may be a single identifier-shaped label that still needs translation. */
+  translateCodeShaped?: boolean;
 }
 
 /** Whether an API unit belongs in the PO catalog and translation-drift checks. */
@@ -102,6 +113,7 @@ const cellKind = (cell: string): TranslationKind =>
   cell.includes("pantoken-doc-tag") ? "glossary" : "prose";
 
 const FENCE = /^\s*```/;
+const HTML_FENCE = /^\s*```html\s*$/u;
 const PROMPT_FENCE = /^\s*```prompt\s*$/u;
 
 /** Split a table row into trimmed cells, honoring `\|`-escaped pipes inside cells. */
@@ -231,7 +243,15 @@ export function segmentMarkdown(md: string): Segment[] {
       flush();
       const start = index;
       index = scanFence(lines, start);
-      if (PROMPT_FENCE.test(line) && index > start + 1) {
+      const hasClosingFence = index > start + 1 && FENCE.test(lines[index - 1]);
+      if (HTML_FENCE.test(line) && hasClosingFence) {
+        segments.push({
+          kind: "html",
+          opening: lines[start],
+          body: segmentDemoHtml(lines.slice(start + 1, index - 1).join("\n")),
+          closing: lines[index - 1],
+        });
+      } else if (PROMPT_FENCE.test(line) && hasClosingFence) {
         segments.push({
           kind: "prompt",
           opening: lines[start],
@@ -290,6 +310,16 @@ export function collectUnits(segments: readonly Segment[]): TranslatableUnit[] {
       units.push({ text: segment.body, kind: "prose" });
       continue;
     }
+    if (segment.kind === "html") {
+      units.push(
+        ...collectDemoUnits(segment.body).map((text) => ({
+          text,
+          kind: "prose" as const,
+          translateCodeShaped: true,
+        })),
+      );
+      continue;
+    }
     if (segment.kind === "table") {
       units.push(...collectTableUnits(segment));
       continue;
@@ -312,6 +342,12 @@ const renderSegment = (segment: Segment, resolve: Resolve): string => {
       return segment.text;
     case "prompt":
       return [segment.opening, resolve(segment.body, "prose"), segment.closing].join("\n");
+    case "html":
+      return [
+        segment.opening,
+        reassembleDemoHtml(segment.body, (text) => resolve(text, "prose")),
+        segment.closing,
+      ].join("\n");
     case "glossary":
     case "prose":
       return resolve(segment.text, segment.kind);

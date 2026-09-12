@@ -1,12 +1,15 @@
 {
   "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
-  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
   "promptPlatform": {
     "message": "Select a platform to scaffold:",
     "translate": "always"
   },
   "promptDir": {
     "message": "Target directory:",
+    "translate": "always"
+  },
+  "promptAiAssets": {
+    "message": "Add AI agent assets (AGENTS.md, editor/Copilot rules)?",
     "translate": "always"
   },
   "spinnerStart": {
@@ -79,6 +82,10 @@
   },
   "helpYesDescription": {
     "message": "Never prompt; error instead of prompting for a missing platform/directory",
+    "translate": "always"
+  },
+  "helpNoAiDescription": {
+    "message": "Skip installing AI agent assets after scaffolding",
     "translate": "always"
   },
   "helpLangDescription": {

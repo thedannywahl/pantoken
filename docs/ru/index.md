@@ -9,14 +9,11 @@ hero:
       text: Начало работы
       link: /ru/guide/getting-started
     - theme: alt
-      text: Карта пакетов
-      link: /ru/guide/packages
+      text: Справочник CSS
+      link: /ru/api/css/
     - theme: alt
       text: Справочник API
       link: /ru/api
-    - theme: alt
-      text: Справочник CSS
-      link: /ru/api/css
 features:
   - icon:
       light: /book-check-light.svg
