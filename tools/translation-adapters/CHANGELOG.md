@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 1.0.2
+
+### Patch Changes
+
+- 0bde734: Markdown translation prompts now explicitly forbid model commentary, and the adapter rejects common
+  reasoning-output and repeated-character corruption before translated Markdown is written.
+
 ## 1.0.1
 
 ### Patch Changes
