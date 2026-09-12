@@ -338,9 +338,10 @@ const apiPrefixFor = (localeKey: DocsLocale): string =>
   rootLocaleOnly ? LOCALE_THEMES.root.apiPrefix : LOCALE_THEMES[localeKey].apiPrefix;
 
 // TypeDoc emits one monorepo-wide tree; partition it by package/CSS route so a page only ever needs
-// its own section instead of every package's nav. Computed once per active locale but kept OUT of the
-// shared themeConfig below — it's applied per page instead (see the `transformPageData` override
-// further down), so a guide page carries none of it and an API page carries only its own route.
+// its own section instead of every package's nav. Computed once per active locale, then merged into
+// that locale's `themeConfig.sidebar` below as additional path-prefix keys — VitePress's own
+// multi-sidebar resolution (`getSidebar`) picks the one matching key per page, so a guide page still
+// carries none of it and an API page still carries only its own route.
 const apiSidebarRoutesByLocale = Object.fromEntries(
   localeEntries
     .filter(([localeKey]) => isActiveLocale(localeKey))
@@ -419,8 +420,10 @@ const localesConfig = Object.fromEntries(
                 ],
               },
             ],
-            // The API sidebar is injected per-page instead — see `apiSidebarRoutesByLocale` above
-            // and its `transformPageData` use below.
+            // Per-route API/CSS sidebars (see `apiSidebarRoutesByLocale` above) — VitePress's
+            // `getSidebar` matches the longest key that's a prefix of the current page's path, so
+            // each API page only ever renders its own route's (already-partitioned) subtree.
+            ...apiSidebarRoutesByLocale[localeKey],
           },
           editLink: {
             pattern: "https://github.com/thedannywahl/pantoken/edit/main/docs/:path",
@@ -490,29 +493,6 @@ const searchLocales = Object.fromEntries(
 // building for alternative environments (for example, a project-site path on github.io).
 const base = process.env.DOCS_BASE ?? "/";
 const outDir = process.env.DOCS_OUT_DIR;
-
-/** A page's route path from its source-relative path (cleanUrls drops `index`/the extension). */
-function pagePath(relativePath: string): string {
-  return `/${relativePath}`.replace(/index\.md$/, "").replace(/\.md$/, "");
-}
-
-/**
- * The per-page API sidebar for a page, from `apiSidebarRoutesByLocale` — the longest route key
- * that's a prefix of the page's own path, matching VitePress's own multi-sidebar resolution.
- */
-function apiSidebarFor(
-  localeKey: DocsLocale,
-  relativePath: string,
-): DefaultTheme.SidebarItem[] | undefined {
-  const routes = apiSidebarRoutesByLocale[localeKey];
-  if (!routes) return undefined;
-  const path = pagePath(relativePath);
-  let bestKey: string | undefined;
-  for (const key of Object.keys(routes)) {
-    if (path.startsWith(key) && (!bestKey || key.length > bestKey.length)) bestKey = key;
-  }
-  return bestKey ? routes[bestKey] : undefined;
-}
 
 // VitePress SSR-renders pages with `buildConcurrency` (default 64) in flight at once, and every
 // in-flight page holds its rendered HTML, head tags, and Vue SSR context alive. At ~39k pages
@@ -759,12 +739,6 @@ export default defineConfig({
         }
       }
     }
-    // Inject this page's own API section tree (see `apiSidebarRoutesByLocale`) instead of relying
-    // on a global themeConfig.sidebar entry — keeps every other package's nav out of this page's
-    // site data. No-op for non-API pages (the guide sidebar stays in the global themeConfig).
-    const localeKey = localeHeadInfo(pageData.relativePath).localeKey;
-    const sidebar = apiSidebarFor(localeKey, pageData.relativePath);
-    if (sidebar) pageData.frontmatter.sidebar = sidebar;
   },
   // Layer per-page Open Graph / Twitter tags, a canonical link, the page locale, and translated
   // structured data on top of the head defaults, so each shared URL previews with its own title,
