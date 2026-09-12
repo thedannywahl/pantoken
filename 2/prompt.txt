@@ -1,0 +1,76 @@
+we need to amend this commit message it's failing commitlint in CI, but then we also need to investigate why the commitlint hook isn't catching it locally.
+```
+Run vp exec commitlint --from "eb31ba363e1b04e931fd3d2a679da1fe1dfafa09" --to "574993f448f01f56ac14cb5c3429d5b643ddc057" --verbose
+
+    
+
+  
+
+    
+      
+      
+      ⧗   --- input ---
+
+    
+
+  
+
+    
+      
+      
+      chore(i18n): Update translations
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      Entire-Checkpoint: 01M2AYAG76XEV42Q9YVF5J1RWG
+
+    
+
+  
+
+    
+      
+      
+      ✖   subject must not be sentence-case, start-case, pascal-case, upper-case [subject-case]
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      ✖   found 1 problems, 0 warnings
+
+    
+
+  
+
+    
+      
+      
+      ⓘ   Get help: [https://github.com/conventional-changelog/commitlint/#what-is-commitlint](https://github.com/conventional-changelog/commitlint/#what-is-commitlint)
+```
