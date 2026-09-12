@@ -1,0 +1,86 @@
+[docs/scripts/build-locales.ts](https://github.com/thedannywahl/pantoken/pull/156/files/fffb1597aeaffab8e35b722f1b1d0a93fee7d60f#diff-7015a3219bb1dc5a83d682ead9fe70f5e797ea97b06da28169f32fa9c6fdec40)
+```
+  for (const name of sharedChunkNames) {
+    const chunkPath = join(assetsDir, name);
+    totalBytes += statSync(chunkPath).size;
+    const content = readFileSync(chunkPath, "utf8");
+    ```
+    ### CodeQL / Potential file system race condition
+two failed tests:
+```
+### 2 Tests Failed:
+
+Tests completed
+Failed
+Passed
+Skipped
+
+2221
+2
+2219
+0
+
+View the top 2 failed test(s) by shortest run time
+
+> ```
+> docs/scripts/build-locales.main.test.ts > CLI overlays partial locale output onto a base deployment
+> ```
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> Stack Traces | 0.00379s run time
+> > ```
+> >
+> > ```
+
+> ```
+> docs/scripts/build-locales.main.test.ts > CLI builds requested locales and merges their deploy metadata
+> ```
+```
+
+---
+
+✖ vp check --fix:
+[1m[31merror:[39m[0m Lint or type issues found
+x tsdoc-require-2(require): Missing TSDoc for function assertScopedLocaleConfig.
+    ,-[docs/scripts/build-locales.ts:51:8]
+ 50 |     
+ 51 | ,-> export function assertScopedLocaleConfig(localeDistDir: string, locale: string): void {
+ 52 | |     const assetsDir = join(localeDistDir, "assets");
+ 53 | |     if (!existsSync(assetsDir)) return;
+ 54 | |     const sharedChunkNames = readdirSync(assetsDir).filter(
+ 55 | |       (name) => name.endsWith(".js") && !isPageChunk(name),
+ 56 | |     );
+ 57 | |     const otherLocales = NON_ROOT_LOCALES.filter((other) => other !== locale);
+ 58 | |     let totalBytes = 0;
+ 59 | |     for (const name of sharedChunkNames) {
+ 60 | |       const chunkPath = join(assetsDir, name);
+ 61 | |       // Read once and derive both the size and the content check from the same buffer — a separate
+ 62 | |       // `statSync` + `readFileSync` pair would race if the file changed between the two calls.
+ 63 | |       const buffer = readFileSync(chunkPath);
+ 64 | |       totalBytes += buffer.length;
+ 65 | |       const content = buffer.toString("utf8");
+ 66 | |       const leaked = otherLocales.find((other) => content.includes(`/${other}/guide/`));
+ 67 | |       if (leaked) {
+ 68 | |         throw new Error(
+ 69 | |           `${locale}: shared chunk ${name} embeds locale "${leaked}"'s nav — check the ` +
+ 70 | |             `\`isActiveLocale\` scoping in docs/.vitepress/config.ts`,
+ 71 | |         );
+ 72 | |       }
+ 73 | |     }
+ 74 | |     if (totalBytes > SHARED_CHUNK_MAX_BYTES) {
+ 75 | |       throw new Error(
+ 76 | |         `${locale}: shared site-data chunks total ${(totalBytes / 1024 / 1024).toFixed(1)} MB, over ` +
+ 77 | |           `the ${(SHARED_CHUNK_MAX_BYTES / 1024 / 1024).toFixed(0)} MB cap — check the ` +
+ 78 | |           `\`isActiveLocale\` scoping in docs/.vitepress/config.ts`,
+ 79 | |       );
+ 80 | |     }
+ 81 | `-> }
+ 82 |     
+    `----
