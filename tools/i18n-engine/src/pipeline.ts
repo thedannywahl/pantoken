@@ -337,6 +337,7 @@ export function runCheckContent(
         file,
         line: line ? Number(line) : undefined,
         detail: `Untranslated: ${unit.msgid.slice(0, 60)}`,
+        unit: { msgid: unit.msgid },
       });
     }
   }
@@ -480,6 +481,7 @@ export function runCheckMessages(
         locale,
         file: space.source,
         detail: `Untranslated: "${unit.key}" (English: ${unit.msgid.slice(0, 60)})`,
+        unit: { msgctxt: unit.msgctxt, msgid: unit.msgid },
       });
     }
   }

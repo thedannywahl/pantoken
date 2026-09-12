@@ -43,7 +43,15 @@ export interface DriftPolicy {
   fallback?: SurfacePolicy;
 }
 
-/** One thing a checker found missing: a `(surface, locale)` pair plus enough detail to act on it. */
+/** Collision-safe identity for one source unit in a translation catalog. */
+export interface DriftUnit {
+  /** PO context, such as a message key or `docs.api:prose`; omitted for unkeyed content. */
+  msgctxt?: string;
+  /** English source text represented by the catalog entry. */
+  msgid: string;
+}
+
+/** One thing a checker found missing: a `(surface, locale)` pair plus an exact unit selector. */
 export interface DriftFinding {
   /** Stable surface id, e.g. `"docs.guides"`. */
   surface: string;
@@ -53,6 +61,8 @@ export interface DriftFinding {
   file: string;
   /** Short human-readable description of what's missing. */
   detail: string;
+  /** Exact catalog unit to pass to a targeted translation pipeline. */
+  unit?: DriftUnit;
   /** 1-indexed line, when the checker knows one. */
   line?: number;
 }
