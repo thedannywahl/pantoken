@@ -1,0 +1,158 @@
+on the docs site we're going to to add a color selector to the theme selector, the default is 'navy' which is `--instui-color-institutional-brand-primary`'s default colors.
+we're going to add a color for each of. the color name spaces: blue, green, red, orange, grey, ash, plum, violet, stone, sky, honey, sea, and aurora in addition to navy.
+
+checking a color should add an equivalent light/dark value to each of the --instui-color-institutional-brand-* vars for light/dark maintaining at least a 3:1 contrast ratio, but in canvas high contrast maintianing 4.5:1 contrast ratio.
+
+---
+
+Investigate the theme selector on the docs site and how brand primary tokens / colors work.
+Specifically:
+1. Find where the theme selector is implemented in `docs/` or related packages (e.g. VitePress layout/components, theme toggle, header).
+2. Find how `--instui-color-institutional-brand-*` (e.g., brand-primary, brand-secondary, brand-tertiary, or other brand tokens) are defined and structured in tokens / CSS / `@pantoken/components` / theme files.
+3. Check how dark mode and canvas high contrast mode (and canvas light/dark themes if any) are handled on the docs site.
+4. Check available color scales or color namespaces in the token system (blue, green, red, orange, grey, ash, plum, violet, stone, sky, honey, sea, aurora, navy).
+Provide a thorough breakdown of file paths, components, CSS variables, and token definitions relevant to adding a color selector to the theme selector.
+
+---
+
+you only need to add English defaults in i18n, I'll handle translation later.
+
+---
+
+in-scope for this should be:
+* styling the pantoken logo in the header - the dot/circle color should reflect the active theme color.
+* coloring the page background svg tones
+* coloring the "pantoken" text in index.md
+* coloring the primary cta button color on the homepage.
+note that the homepage is always an 'on-color' variant and so the dark navy has light-blue text and light-blue button color, so the other colors should get this same treatment.  Changing the existing text/button colors to make them systematically the same is allowed.
+
+---
+
+Find where the following are located in docs/ or packages/:
+1. The logo in the header (dot/circle color). Where is logo component or SVG rendered for the docs site header?
+2. The page background SVG tones / hero background SVGs on the homepage or sitewide docs pages.
+3. The "pantoken" text and primary CTA button on the homepage (`docs/index.md` or custom home components / CSS).
+4. How homepage styles, primary CTA, and hero text colors are set in CSS (e.g. `--vp-c-brand-1`, `--instui-color-institutional-brand-primary`, custom CSS rules in `docs/.vitepress/theme/` or `@pantoken/vitepress`).
+Inspect how these reference CSS variables or themes so we can include them in our plan.
+
+---
+
+Start implementation
+
+---
+
+this rule is still displaying the hard-coded blue:
+```
+& :is(.name, .clip) {
+	color: var(--instui-primitive-color-blue-blue50);
+	-webkit-text-fill-color: var(--instui-primitive-color-blue-blue50);
+}
+```
+
+---
+
+the primary CTA button hover text color changes to white.
+
+---
+
+the mask dot on the logo is slightly larger than the circle and is not positioned correctly, check the browser http://localhost:5173/
+
+---
+
+the dot isn't place correctly in rtl.
+
+---
+
+many locales have their own logos, can't we just use a class based style instead of a mask?
+
+---
+
+let's do this, abstract these styles to a new pantoken plugin custom-theme-colors, and then import it.  because there's more surface we're going to add that diverges from standard instui tokens.
+
+---
+
+there are 3 overlapping concerns here:
+* instui
+* vitepress
+* pantoken vitepress instance.
+
+this plugin should only be dealing with instui tokens, it provides shims new values for --instui-color-institutional-* when imported.
+
+* vitepress is renderers/vitepress where its css vars are mapped to instui vars so like the primary brand color is instui-color-institutional- (navy by default, and only navy if plugin/custom-theme-colors isn't imported)
+
+* pantoken carries the custom color selectors, the hero svg, and other pantoken-specific implementations.
+
+---
+
+next for the plugin is expanding the focus outline to be colored, right now it's just always shades of blue in light/dark mode. this is the css we're targeting:
+```
+:where(:root) {
+  --instui-focus-outline-color: var(--instui-component-shared-tokens-focus-outline-info-color);
+  --instui-focus-outline-color-start: transparent;
+  --instui-focus-outline-width: var(--instui-component-shared-tokens-focus-outline-width);
+  --instui-focus-outline-offset: var(--instui-component-shared-tokens-focus-outline-offset);
+  --instui-focus-outline-radius: var(--instui-border-radius-md);
+  --instui-focus-outline-style: solid;
+  --instui-focus-outline-transition: outline-color 0.2s, outline-offset 0.25s;
+  --instui-focus-outline-color-success: var(--instui-component-shared-tokens-focus-outline-success-color);
+  --instui-focus-outline-color-danger: var(--instui-component-shared-tokens-focus-outline-danger-color);
+  --instui-focus-outline-color-inverse: var(--instui-component-shared-tokens-focus-outline-on-color);
+  --instui-focus-outline-inset: 0rem;
+}
+```
+from the focus-outline.css
+
+---
+
+next is links for tokens like `--instui-color-text-interactive-navigation-primary-base`
+
+---
+
+look through the generated tokens for interactive namespaces that are either primary or map to a blue/navy color (color-info should remain blue) and let's get them into the custom-theme-colors map.
+
+---
+
+the masked dot on the logo doesn't appear.
+
+---
+
+there are still several instui component elements that we need to override with our themes in a smart way, maintaining our accessibility contrast.
+prose.css:
+```
+:where(body) a {
+	color: var(--instui-color-text-interactive-navigation-primary-base);
+	text-decoration: underline;
+}
+:where(body) a:hover {
+	color: var(--instui-color-text-interactive-navigation-primary-hover);
+}
+:where(a, button, input, select, textarea, summary, [tabindex]):where(:focus-visible) {
+	outline-color: var(--instui-focus-outline-color);
+	outline-offset: var(--instui-focus-outline-offset);
+	border-radius: var(--instui-focus-outline-radius);
+}
+```
+
+---
+
+maybe overriding the color primitives with another color's primitives is the simplest/easiest way to go rathen than downstream token-by-token.
+
+---
+
+docs demos dont' seem to get themes applied, it was supposed tobe happening via a postmessage, but it might need to plugin too.
+http://localhost:5173/api/css/button
+
+---
+
+there are a few places where we need to preserve the navy/blue namespace and values when they are explicitly named. for example in http://localhost:5173/guide/components
+we use `--bg-accent-blue`
+to demonstrate how to do a blue `on-color` background. but it changes based on the current color.
+also, the color picker that we added to the theme selector updates the swatch color for 'Navy' and 'Blue' to whatever the current color is.
+
+---
+
+this looks like we reverted to the previous implementation, not that we added preservation on top of the primitive remapping.
+
+---
+
+are there no navy tokens to preserve, it's okay if not.
