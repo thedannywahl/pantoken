@@ -15,10 +15,14 @@ name: Deploy docs
 # `workflow_dispatch` remains the manual escape hatch. The changed-page resolver picks a partial docs
 # build when it can prove the affected pages, and falls back to the full-locale build when it cannot.
 #
-# The changesets "Version Packages" PR merge is excluded from this push-triggered path even though its
-# package.json/CHANGELOG.md bumps commonly touch watched paths (formats/components, formats/css, …) -
-# deploying then would double-deploy alongside the workflow_run path that fires once the same push
-# publishes packages and uploads docs-deploy-request.
+# The push-triggered path only watches paths that changeset-check.yml's `release_impact` filter does
+# NOT cover (docs/**, l10n/docs.* catalogs, i18n.config.json, cssdoc.jsonc) - none of these require a
+# changeset, so a PR touching only them merges straight to main with nothing pending in the changesets
+# "Version Packages" PR. Package source (formats/components, formats/css, renderers/vitepress, …) is
+# release-impacting and always carries a changeset, so it always lands on main again via that Version
+# PR's merge, which is what the workflow_run path below deploys. Watching those paths here too would
+# fire this push trigger on the first (feature-PR) merge and then again via workflow_run once the
+# Version PR merges - the same content deployed twice for one release.
 #
 # This workflow builds the site itself: CI's `docs` job is an English-only breakage check that
 # uploads nothing, and Netlify's own build system is never invoked (we ship a prebuilt directory).
@@ -34,14 +38,6 @@ on:
       - l10n/*/docs.*.po
       - i18n.config.json
       - cssdoc.jsonc
-      - formats/components/**
-      - formats/css/**
-      - formats/tokens/**
-      - plugins/pantoken/**
-      - renderers/vitepress/**
-      - renderers/web-components/**
-      - tools/i18n-engine/**
-      - tools/translation-adapters/**
   workflow_run:
     workflows: ["Release"]
     types: [completed]
