@@ -5,6 +5,7 @@
   "branch": "pendo-button-tweaks",
   "checkpoints_count": 3,
   "files_touched": [
+    ".vite-hooks/commit-msg.pre-entire",
     "l10n/ar/docs.chrome.po",
     "l10n/ca/docs.chrome.po",
     "l10n/cy/docs.chrome.po",
