@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-12 13:48+0000\n"
+"PO-Revision-Date: 2026-09-12 14:21+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -170,6 +170,30 @@ msgstr "Gambaran keseluruhan"
 msgctxt "docs.chrome:editText"
 msgid "Edit this page on GitHub"
 msgstr "Sunting halaman ini di GitHub"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:demoTabs.result"
+msgid "Result"
+msgstr "Hasil"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:demoTabs.html"
+msgid "HTML"
+msgstr "HTML"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:demoTabs.css"
+msgid "CSS"
+msgstr "CSS"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:demoTabs.js"
+msgid "JS"
+msgstr "JS"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
