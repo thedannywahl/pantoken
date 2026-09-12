@@ -356,7 +356,7 @@ describe("top-level drift check", () => {
     expect(mkdirSync).toHaveBeenCalledWith("/tmp", { recursive: true });
     expect(writeFileSync).toHaveBeenCalledWith(
       output,
-      expect.stringContaining('"surface": "docs.guides"'),
+      expect.stringContaining('"msgid": "# Guide\\n\\nA whole guide file'),
     );
     vi.unstubAllEnvs();
   });

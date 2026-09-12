@@ -16,7 +16,18 @@ const potPath = join(repoRoot, "l10n", "docs.api.pot");
 const path = join(repoRoot, "l10n", locale, "docs.api.po");
 await mergePoWithTemplate(path, potPath);
 const entries = parsePo(readFileSync(path, "utf8"));
-const missing = entries.filter((entry) => !entry.obsolete && entry.msgstr === "");
+const requestedUnits = process.env.DOCS_TRANSLATION_UNITS
+  ? (JSON.parse(process.env.DOCS_TRANSLATION_UNITS) as Array<{ msgctxt?: string; msgid: string }>)
+  : undefined;
+const selected = requestedUnits
+  ? new Set(requestedUnits.map((unit) => `${unit.msgctxt ?? ""}\u0000${unit.msgid}`))
+  : undefined;
+const missing = entries.filter(
+  (entry) =>
+    !entry.obsolete &&
+    (selected === undefined || selected.has(`${entry.msgctxt ?? ""}\u0000${entry.msgid}`)) &&
+    entry.msgstr === "",
+);
 
 if (missing.length > 0) {
   const adapter = new AiTranslationAdapter(locale);

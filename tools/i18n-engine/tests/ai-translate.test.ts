@@ -150,6 +150,28 @@ describe("fillUntranslatedEntries", () => {
     expect(entries.find((e) => e.msgid === "Cancel")?.msgstr).toBe("Mégse");
   });
 
+  test("fills only the selected catalog unit", async () => {
+    installFakeProvider('{"0":"Vissza"}');
+    writeFileSync(
+      poPath(),
+      [
+        'msgctxt "back"',
+        'msgid "Back"',
+        'msgstr ""',
+        "",
+        'msgctxt "forward"',
+        'msgid "Back"',
+        'msgstr ""',
+      ].join("\n"),
+    );
+    await fillUntranslatedEntries(poPath(), "hu", CONFIG_DEFAULTS.provider, {
+      unitKeys: ["back\u0000Back"],
+    });
+    const entries = parsePo(readFileSync(poPath(), "utf8"));
+    expect(entries.find((e) => e.msgctxt === "back")?.msgstr).toBe("Vissza");
+    expect(entries.find((e) => e.msgctxt === "forward")?.msgstr).toBe("");
+  });
+
   test("force retranslates an entry that already has a msgstr", async () => {
     installFakeProvider('{"0":"Vissza","1":"Új"}');
     writePo();

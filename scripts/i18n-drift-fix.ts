@@ -9,6 +9,7 @@ interface Finding {
   locale: string;
   file: string;
   detail: string;
+  unit?: { msgctxt?: string; msgid: string };
   line?: number;
 }
 
@@ -115,6 +116,9 @@ const runGenericFix = (space: string, provider: Provider, artifact: string): voi
   }
   console.log(`${space}: fixing ${locales.join(", ")}`);
   for (const locale of locales) {
+    const unitArguments = findings
+      .filter((finding) => finding.locale === locale)
+      .flatMap((finding) => (finding.unit ? ["--unit", JSON.stringify(finding.unit)] : []));
     const status = run(
       process.execPath,
       [
@@ -127,6 +131,7 @@ const runGenericFix = (space: string, provider: Provider, artifact: string): voi
         locale,
         "--provider",
         provider,
+        ...unitArguments,
       ],
       process.env,
     );
@@ -144,9 +149,13 @@ const runDocsFix = (surface: string, provider: Provider, allFindings: readonly F
   const environment = providerEnvironment(provider);
   if (surface === "docs.api") {
     for (const locale of locales) {
+      const units = findings
+        .filter((finding) => finding.locale === locale)
+        .flatMap((finding) => (finding.unit ? [finding.unit] : []));
       const status = run(process.execPath, [join(repoRoot, "docs/scripts/translate-api-po.ts")], {
         ...environment,
         DOCS_TRANSLATION_LOCALE: locale,
+        DOCS_TRANSLATION_UNITS: JSON.stringify(units),
       });
       if (status !== 0) throw new Error(`${surface} translation failed for ${locale}`);
     }
@@ -162,6 +171,9 @@ const runDocsFix = (surface: string, provider: Provider, allFindings: readonly F
   const scopedEnvironment: NodeJS.ProcessEnv = {
     ...environment,
     DOCS_TRANSLATION_LOCALE: locales.join(","),
+    DOCS_TRANSLATION_UNITS: JSON.stringify(
+      findings.flatMap((finding) => (finding.unit ? [finding.unit] : [])),
+    ),
   };
   if (surface === "docs.guides")
     scopedEnvironment.DOCS_TRANSLATION_FILE = filesFor(findings).join(",");

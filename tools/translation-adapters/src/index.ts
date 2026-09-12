@@ -24,6 +24,7 @@ export {
   resolveDriftSeverity,
   resolveTier,
   type DriftFinding,
+  type DriftUnit,
   type DriftPolicy,
   type DriftReporterOptions,
   type DriftSeverity,

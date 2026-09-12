@@ -19,7 +19,13 @@ const findings = JSON.stringify([
   { surface: "scaffold.readme", locale: "fr", file: "templates/a/README.md", detail: "missing" },
   { surface: "cli.ai", locale: "es", file: "src/i18n.json", detail: "missing" },
   { surface: "docs.guides", locale: "hu", file: "docs/guide/intro.md", detail: "missing" },
-  { surface: "docs.api", locale: "de", file: "docs/api/widget.md", detail: "missing" },
+  {
+    surface: "docs.api",
+    locale: "de",
+    file: "docs/api/widget.md",
+    detail: "missing",
+    unit: { msgctxt: "docs.api:prose", msgid: "One block" },
+  },
   { surface: "docs.home", locale: "fr", file: "docs/index.md", detail: "missing" },
   {
     surface: "docs.chrome",
@@ -90,6 +96,26 @@ test("uses the Copilot provider environment for a scoped docs fix", async () => 
     DOCS_TRANSLATION_COMMAND: expect.stringContaining("copilot-wrapper.sh"),
     DOCS_TRANSLATION_COMMAND_ARGS: "--model gpt-5-mini --effort low",
     DOCS_TRANSLATION_LOCALE: "fr",
+  });
+});
+
+test("passes API unit selectors to the API worker", async () => {
+  process.argv = [
+    "node",
+    "scripts/i18n-drift-fix.ts",
+    "--provider",
+    "copilot",
+    "--surfaces",
+    "docs.api",
+  ];
+
+  await import("./i18n-drift-fix.ts");
+
+  const apiCall = spawnSync.mock.calls.find((call) =>
+    (call[1] as string[]).some((arg) => arg.includes("translate-api-po.ts")),
+  );
+  expect((apiCall?.[2] as { env: NodeJS.ProcessEnv } | undefined)?.env).toMatchObject({
+    DOCS_TRANSLATION_UNITS: JSON.stringify([{ msgctxt: "docs.api:prose", msgid: "One block" }]),
   });
 });
 
