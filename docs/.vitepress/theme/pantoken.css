@@ -346,6 +346,18 @@ html[dir="rtl"] .is-home::before {
   }
 }
 
+/* Class names like `.--bg-<name>` are all bidi-neutral characters, so in an RTL paragraph the bidi
+   algorithm gives them the paragraph direction and reorders them on screen. Isolate code as LTR. */
+html[dir="rtl"] .vp-doc :is(code, kbd, samp) {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+html[dir="rtl"] .vp-doc div[class*="language-"] :is(pre, code) {
+  direction: ltr;
+  text-align: left;
+}
+
 .VPHomeHero {
   .heading {
     color: var(--instui-primitive-color-white);
