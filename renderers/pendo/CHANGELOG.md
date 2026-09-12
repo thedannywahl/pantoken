@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.4.2
+
+### Patch Changes
+
+- 0bde734: Custom buttons can now have padding applied by not settings a height value on a pendo-button.
+- Updated dependencies [0bde734]
+  - @pantoken/components@1.1.3
+
 ## 0.4.1
 
 ### Patch Changes

@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.1.34
+
+### Patch Changes
+
+- Updated dependencies [0bde734]
+  - @pantoken/pendo@0.4.2
+  - @pantoken/drupal@0.1.28
+  - @pantoken/hugo@0.1.28
+  - @pantoken/jekyll@0.1.28
+
 ## 0.1.33
 
 ### Patch Changes

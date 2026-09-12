@@ -1,5 +1,12 @@
 # @pantoken/i18n-engine
 
+## 0.3.1
+
+### Patch Changes
+
+- Updated dependencies [0bde734]
+  - @pantoken/translation-adapters@1.0.2
+
 ## 0.3.0
 
 ### Minor Changes
