@@ -3,7 +3,7 @@
   "checkpoint_id": "01M2B2P31RKGK5KQGP4ZQV3JGZ",
   "strategy": "manual-commit",
   "branch": "pendo-button-tweaks",
-  "checkpoints_count": 2,
+  "checkpoints_count": 3,
   "files_touched": [
     "l10n/ar/docs.api.po",
     "l10n/ca/docs.api.po",
@@ -25,7 +25,29 @@
     "l10n/ht/docs.api.po",
     "l10n/hu/docs.api.po",
     "l10n/hy/docs.api.po",
-    "l10n/id/docs.api.po"
+    "l10n/id/docs.api.po",
+    "l10n/is/docs.api.po",
+    "l10n/it/docs.api.po",
+    "l10n/ja/docs.api.po",
+    "l10n/ko/docs.api.po",
+    "l10n/mi/docs.api.po",
+    "l10n/ms/docs.api.po",
+    "l10n/nb/docs.api.po",
+    "l10n/nl/docs.api.po",
+    "l10n/nn/docs.api.po",
+    "l10n/pl/docs.api.po",
+    "l10n/pt-BR/docs.api.po",
+    "l10n/pt/docs.api.po",
+    "l10n/ru/docs.api.po",
+    "l10n/se/docs.api.po",
+    "l10n/sl/docs.api.po",
+    "l10n/sv/docs.api.po",
+    "l10n/th/docs.api.po",
+    "l10n/tr/docs.api.po",
+    "l10n/uk/docs.api.po",
+    "l10n/vi/docs.api.po",
+    "l10n/zh-Hans/docs.api.po",
+    "l10n/zh-Hant/docs.api.po"
   ],
   "sessions": [
     {
@@ -34,6 +56,13 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {

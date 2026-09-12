@@ -1,0 +1,18 @@
+the script mangled the primary pot
+
+---
+
+so we can specify: namespace(s), file(s), locale(s) for granular targeting of translations, the thing that's missing (I think) is string(s). so when drift check finds for example 4 drifted strings in a file we are passing the entire file to the translation pipeline which is then passing the whole doc to find the untranslated/drifted strings, OR re-translating every string. we should be able to say these string(s) in these file(s) in these locale(s) in these namespace(s).
+
+---
+
+Read-only investigate /Users/dwahl/Scripts/pantoken for the requested granular targeting: namespace(s), file(s), locale(s), and string(s). Focus on current drift finding shapes and translation pipeline inputs.
+
+Inspect:
+- tools/i18n-engine/src/pipeline.ts, cli.ts, ai-translate.ts, gettext/PO types and tests: what identifiers are available for messages/content units, whether translate supports string/file filters, how batches are built, and whether options can carry selectors.
+- docs/scripts/check-locale-drift.ts, translate-guide-po.ts, translate-api-po.ts, translate-chrome-po.ts, translate-demo-po.ts, segment-markdown.ts, translation-scope.ts: exact finding identity for docs strings/blocks, and whether scripts can target individual units instead of whole files/catalogs.
+- scripts/i18n-drift-fix.ts and its tests: current grouping/forwarding and smallest architecture to pass string selectors.
+- i18n.config.json spaces: namespace/file/segment semantics.
+- Nearby tests for PO parsing and translation batching.
+
+Determine a concrete recommended design for a selector tuple `{ namespace, file, locale, string/key }`, including stable key representation per surface and CLI/env syntax. Call out edge cases: duplicate strings in one file, msgctxt vs msgid, markdown whole-file guides, API prose blocks, message spaces, and providers. Do not modify files. Return exact paths, symbols, and proposed implementation/test steps.
