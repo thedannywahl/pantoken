@@ -1,0 +1,5 @@
+ci is failing on the docs step, investigate and remediate https://github.com/thedannywahl/pantoken/actions/runs/34656396507/job/103449960945?pr=152
+
+---
+
+do we need to fix the sub-module in pantoken/ai as well (create-pantoken-app-site) ? there's something in github workflows that updates that.
