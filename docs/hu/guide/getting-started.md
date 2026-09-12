@@ -1,6 +1,6 @@
 # Első lépések
 
-A Pantoken az Instructure UI (https://instructure.design) design tokenjeit és ikonait veszi, egyszer feloldja őket, és azt az egy modellt több platformra alakítja át: egyszerű stíluslapok, SCSS és Less, React és Vue és Svelte, Tailwind és Panda, natív Swift és Kotlin, WordPress és Drupal, Figma és még sok más.
+A Pantoken az [Instructure UI](https://instructure.design) design tokenjeit és ikonait veszi, egyszer feloldja őket, és azt az egy modellt több platformra alakítja át: egyszerű stíluslapok, SCSS és Less, React és Vue és Svelte, Tailwind és Panda, natív Swift és Kotlin, WordPress és Drupal, Figma és még sok más.
 
 Telepítsd a feladathoz legkisebb csomagot. Minden egyben újraexportálva elérhető az egységes `pantoken` csomagon keresztül, így ott is kezdhetsz, és később szűkíthetsz.
 

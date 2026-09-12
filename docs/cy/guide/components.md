@@ -332,10 +332,10 @@ Mewn FormField, mae neges `-type-error` yn dilyn dilysu ochr-cleient: mae’n ar
 ar y `.instui-form-field` (ar gyfer gwall gweinydd). Nid yw `.instui-form-field-messages` annibynnol (heb fod mewn maes) yn cael ei effeithio. Mae cylch ffocws y rheolydd yn cydymffurfio: perygl pan fo `:user-invalid`/`-invalid`,
 llwyddiant ar `-success`.
 
-**Rheolyddion testun** — mae `.instui-text-input` (**`<input>` naturiol), `.instui-text-area` (**`<textarea>` naturiol,
-aralladwy), a `.instui-simple-select` (__`<select>` naturiol gyda caret) yn rhannu un golwg a’r same
-statws: `-invalid` (bwrdd gwall), `-success` (bwrdd llwyddiant), `-readonly`, **`:disabled` naturiol, a
-`-size-{sm,md,lg}`. Ar gyfer eicon ar y blaen/cynnen (InstUI `renderBeforeInput`/`renderAfterInput`), rhowch y mewnbwn mewn `.instui-input-group` a ychwanegwch slot `.before`/`.after` (glyff `-icon-*`); mae `-should-not-wrap` yn ei gadw ar un linell. Mae `.instui-number-input` yn yr wyneb hwnnw gyda cholofn spinner +/- `.arrows` (**`type="number"` naturiol; cysylltwch y botymau â `stepUp()`/`stepDown()`). Mae `.instui-range-input` yn __`input[type="range"]` wedi’i arddullio sy’n rendro ei werth mewn bwbl gwrthdro `.instui-range-input-value`. Ar gyfer combobox cyfoethog gyda popover rhestr, defnyddiwch `@instructure/ui` — mae’r llyfrgell hon yn cwmpasu’r rheolyddion naturiol.
+**Rheolyddion testun** — mae `.instui-text-input` (`<input>` naturiol), `.instui-text-area` (`<textarea>` naturiol,
+aralladwy), a `.instui-simple-select` (`<select>` naturiol gyda caret) yn rhannu un golwg a’r same
+statws: `-invalid` (bwrdd gwall), `-success` (bwrdd llwyddiant), `-readonly`, `:disabled` naturiol, a
+`-size-{sm,md,lg}`. Ar gyfer eicon ar y blaen/cynnen (InstUI `renderBeforeInput`/`renderAfterInput`), rhowch y mewnbwn mewn `.instui-input-group` a ychwanegwch slot `.before`/`.after` (glyff `-icon-*`); mae `-should-not-wrap` yn ei gadw ar un linell. Mae `.instui-number-input` yn yr wyneb hwnnw gyda cholofn spinner +/- `.arrows` (`type="number"` naturiol; cysylltwch y botymau â `stepUp()`/`stepDown()`). Mae `.instui-range-input` yn `input[type="range"]` wedi’i arddullio sy’n rendro ei werth mewn bwbl gwrthdro `.instui-range-input-value`. Ar gyfer combobox cyfoethog gyda popover rhestr, defnyddiwch `@instructure/ui` — mae’r llyfrgell hon yn cwmpasu’r rheolyddion naturiol.
 
 **Dewis dropdown wedi’i arddullio (arbennig)** — mae `select.css` dewisol yn uwchraddio’r un
 elfen `.instui-simple-select`: mae’n arddullio’r dropdown agored (y panel a phob opsiwn, gyda hover a
