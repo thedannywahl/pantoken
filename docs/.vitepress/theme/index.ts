@@ -44,13 +44,13 @@ import "@pantoken/demo/demo.css";
 import "@pantoken/demo/card.css";
 import "./pantoken.css";
 import Layout from "./Layout.vue";
-import { applyTheme, getStoredTheme } from "./theme";
+import { applyColor, applyTheme, getStoredColor, getStoredTheme } from "./theme";
 
-/** Reply to a booting runner with the stored theme, targeting the frame's own origin. */
+/** Reply to a booting runner with the stored theme and color, targeting the frame's own origin. */
 function replyWithTheme(event: MessageEvent): void {
   // "*" only for an opaque sandboxed frame, which can't match a specific target origin.
   (event.source as Window | null)?.postMessage(
-    { type: "pantoken-demo-theme", theme: getStoredTheme() },
+    { type: "pantoken-demo-theme", theme: getStoredTheme(), color: getStoredColor() },
     event.origin === "null" ? "*" : event.origin,
   );
 }
@@ -164,6 +164,7 @@ export default {
       // The head script already set the theme attribute (no flash); this reconciles the light/dark
       // class and broadcasts the theme to any demos already on the page.
       applyTheme(getStoredTheme());
+      applyColor(getStoredColor());
 
       // The runner (inside each figure's iframe) posts the height it wants — its toolbar plus the body
       // (which hugs the demo by default, capped at 30rem, or whatever height the reader dragged it to).

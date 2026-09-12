@@ -122,7 +122,7 @@ test("CLI skips work when a partial build has no changed pages", async () => {
 
 test("CLI stops when a locale build fails", async () => {
   const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
-  vi.spyOn(process, "exit").mockImplementation(() => {
+  const exitSpy = vi.spyOn(process, "exit").mockImplementation(() => {
     throw new Error("exit");
   });
   process.argv = ["node", MODULE_PATH];
@@ -132,6 +132,6 @@ test("CLI stops when a locale build fails", async () => {
   await import("./build-locales.ts");
   await vi.waitFor(() => expect(errorSpy).toHaveBeenCalledWith("✗ hu: build failed"));
 
-  expect(process.exit).toHaveBeenCalledWith(1);
+  expect(exitSpy).toHaveBeenCalledWith(1);
   expect(cpSync).not.toHaveBeenCalled();
 });

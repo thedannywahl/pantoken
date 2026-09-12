@@ -4,7 +4,7 @@
  * @summary A user avatar showing initials or an image, circular by default.
  * @remarks By default the palette colour tints the initials on a transparent surface; `-has-inverse-color` fills the surface with the colour and puts the initials on-colour. The `-color-ai` variant always fills with the violet→sea gradient. For a full display name, put it in the content (so it stays in the accessibility tree) and add `data-initials="XX"` for the compact visual — the real text is what a screen reader announces. Without `data-initials`, overflowing content just hard-clips (no ellipsis); wrap it in `.name` for a precise single-leading-letter clip instead, or split it into `.first-name`/`.last-name` for two clipped letters (either half can be omitted and the other stays centred).
  * @modifier -color-ai — AI-accent palette colour.
- * @modifier -color-ash — Ash palette colour.
+ * @modifier -color-ash — @deprecated {@link -color-grey}
  * @modifier -color-blue — Blue palette colour.
  * @modifier -color-green — Green palette colour.
  * @modifier -color-grey — Grey palette colour.

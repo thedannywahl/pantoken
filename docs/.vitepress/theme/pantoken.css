@@ -216,12 +216,44 @@ div[class*="language-"]:has(+ .css-example-frame) > pre {
   line-height: 1.5rem;
 }
 
+/* Header logo dot color overlay reflecting active theme color choice. */
+.VPNavBarTitle .title {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.VPNavBarTitle .logo {
+  height: 24px;
+  width: auto;
+  transition: opacity 0.25s;
+}
+
+.VPNavBarTitle .title::after {
+  content: "";
+  position: absolute;
+  top: calc(50% - 12px);
+  left: 0;
+  width: calc(24px * 696.252 / 123.284);
+  height: 24px;
+  background-color: var(--pantoken-logo-dot-color);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%27108.948%20121.056%20696.252%20123.284%27%3E%3Ccircle%20cx%3D%27787.3%27%20cy%3D%27225.5%27%20r%3D%2713.9%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E")
+    no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%27108.948%20121.056%20696.252%20123.284%27%3E%3Ccircle%20cx%3D%27787.3%27%20cy%3D%27225.5%27%20r%3D%2713.9%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E")
+    no-repeat center / contain;
+  pointer-events: none;
+}
+
+html[dir="rtl"] .VPNavBarTitle .title::after {
+  left: auto;
+  right: 8px;
+}
+
 /* Home styles */
 
 :root:has(.is-home) {
-  --vp-home-bg-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20374%20160%27%3E%3Crect%20width%3D%27374%27%20height%3D%27160%27%20fill%3D%27%23002b4d%27%2F%3E%3Ccircle%20cx%3D%27374%27%20cy%3D%27160%27%20r%3D%27200%27%20fill%3D%27%23004880%27%2F%3E%3Ccircle%20cx%3D%27374%27%20cy%3D%27160%27%20r%3D%27140%27%20fill%3D%27%230065b3%27%2F%3E%3Ccircle%20cx%3D%27374%27%20cy%3D%27160%27%20r%3D%2780%27%20fill%3D%27%230090ff%27%2F%3E%3C%2Fsvg%3E");
   /* Fallback paint for any area outside body during initial layout. */
-  background-color: #002b4d;
+  background-color: var(--vp-home-bg-color, #002b4d);
 }
 
 .is-home {
@@ -309,10 +341,6 @@ html[dir="rtl"] .is-home::before {
     order: 1;
   }
 
-  html[dir="rtl"] .VPNavBar .content-body .appearance {
-    margin-left: 8px;
-  }
-
   html[dir="rtl"] .VPNavBar .content-body .social-links {
     margin-right: 0;
     margin-left: -8px;
@@ -363,8 +391,11 @@ html[dir="rtl"] .vp-doc div[class*="language-"] :is(pre, code) {
     color: var(--instui-primitive-color-white);
 
     & :is(.name, .clip) {
-      color: var(--instui-primitive-color-blue-blue50);
-      -webkit-text-fill-color: var(--instui-primitive-color-blue-blue50);
+      color: var(--vp-home-hero-name-color, var(--instui-primitive-color-blue-blue50));
+      -webkit-text-fill-color: var(
+        --vp-home-hero-name-color,
+        var(--instui-primitive-color-blue-blue50)
+      );
     }
   }
 
@@ -391,11 +422,13 @@ html[dir="rtl"] .vp-doc div[class*="language-"] :is(pre, code) {
   }
 }
 
-/* Only the rebrand theme ships light/dark values; canvas and canvas-high-contrast are single-scheme,
-   so the appearance toggle does nothing for them — hide it (nav bar + mobile nav screen). */
-html:not([data-pantoken-theme="rebrand"]) .VPNavBarAppearance,
-html:not([data-pantoken-theme="rebrand"]) .VPNavScreenAppearance {
-  display: none;
+/* The light/dark toggle now lives inside ThemeColorPicker (desktop dropdown, tablet kebab, mobile
+   accordion) so it travels with the theme/color choice — hide VitePress's standalone copies.
+   `!important` because VitePress's own scoped style (with its `[data-v-*]` attribute selector) 
+   otherwise outweighs our plain class selector. */
+.VPNavBarAppearance,
+.VPNavScreenAppearance {
+  display: none !important;
 }
 
 /* Keep custom outline social icons from inheriting VitePress's solid icon fill. */

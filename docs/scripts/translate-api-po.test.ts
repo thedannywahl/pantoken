@@ -8,6 +8,7 @@ const mocks = vi.hoisted(() => ({
   serializePo: vi.fn(() => ""),
   writeCatalog: vi.fn(),
   AiTranslationAdapter: vi.fn(),
+  refreshApiPot: vi.fn(),
 }));
 
 vi.mock("node:fs", () => ({ readFileSync: vi.fn(() => "") }));
@@ -15,6 +16,7 @@ vi.mock("@pantoken/i18n-engine", () => mocks);
 vi.mock("./api-translation.ts", () => ({
   AiTranslationAdapter: mocks.AiTranslationAdapter,
 }));
+vi.mock("./refresh-api-pot.ts", () => ({ refreshApiPot: mocks.refreshApiPot }));
 
 beforeEach(() => {
   vi.resetModules();
@@ -27,10 +29,12 @@ beforeEach(() => {
 test("merges the TypeDoc API catalog before filling entries", async () => {
   await import("./translate-api-po.ts");
 
+  expect(mocks.refreshApiPot).toHaveBeenCalled();
   expect(mocks.mergePoWithTemplate).toHaveBeenCalledWith(
     expect.stringContaining("docs.api.po"),
     expect.stringContaining("l10n/docs.api.pot"),
   );
+  expect(mocks.mergePoWithTemplate).toHaveBeenCalledAfter(mocks.refreshApiPot);
   expect(mocks.parsePo).toHaveBeenCalledAfter(mocks.mergePoWithTemplate);
 });
 

@@ -784,6 +784,14 @@ export default defineConfig({
           ),
         },
         {
+          // Override VitePress's built-in VPNavScreen (the mobile hamburger panel) with our custom
+          // version that inserts the theme+color accordion between the language chooser and the
+          // appearance toggle. Same anchoring technique as the VPNavBarExtra override above — VPNav.vue
+          // imports this with a relative specifier, so match the trailing path segment only.
+          find: /^.*[/\\]VPNavScreen\.vue$/,
+          replacement: fileURLToPath(new URL("theme/components/VPNavScreen.vue", import.meta.url)),
+        },
+        {
           // Drop the default theme's Inter faces (and their build-injected `preload` link) — the
           // site renders `--instui-font-family-base` instead. See theme/no-default-fonts.css.
           // The default theme imports this relatively (`./styles/fonts.css`), and Vite's alias

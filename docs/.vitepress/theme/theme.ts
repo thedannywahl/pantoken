@@ -10,9 +10,31 @@
  */
 export type PantokenTheme = "rebrand" | "canvas" | "canvasHighContrast";
 
+/** One selectable color choice for site-wide brand token remapping. */
+export type PantokenColor =
+  | "navy"
+  | "blue"
+  | "green"
+  | "red"
+  | "orange"
+  | "grey"
+  | "plum"
+  | "violet"
+  | "stone"
+  | "sky"
+  | "honey"
+  | "sea"
+  | "aurora";
+
 /** One palette choice in the theme selector: its {@link PantokenTheme} key and display label. */
 export interface ThemeOption {
   key: PantokenTheme;
+  label: string;
+}
+
+/** One color choice in the theme selector: its {@link PantokenColor} key and display label. */
+export interface ColorOption {
+  key: PantokenColor;
   label: string;
 }
 
@@ -27,14 +49,42 @@ export interface ThemeSelectorStrings {
   rebrand: string;
   canvas: string;
   canvasHighContrast: string;
+  colorLabel: string;
+  navy: string;
+  blue: string;
+  green: string;
+  red: string;
+  orange: string;
+  grey: string;
+  plum: string;
+  violet: string;
+  stone: string;
+  sky: string;
+  honey: string;
+  sea: string;
+  aurora: string;
 }
 
 /** English defaults, also the fallback when a locale doesn't localize the selector. */
 export const THEME_SELECTOR_DEFAULTS: ThemeSelectorStrings = {
-  label: "Select theme",
+  label: "Theme",
   rebrand: "Rebrand",
   canvas: "Canvas",
   canvasHighContrast: "Canvas high contrast",
+  colorLabel: "Color scheme",
+  navy: "Navy",
+  blue: "Blue",
+  green: "Green",
+  red: "Red",
+  orange: "Orange",
+  grey: "Grey",
+  plum: "Plum",
+  violet: "Violet",
+  stone: "Stone",
+  sky: "Sky",
+  honey: "Honey",
+  sea: "Sea",
+  aurora: "Aurora",
 };
 
 /** The selectable themes, in menu order. Labels are localized at render time (see {@link ThemeSelectorStrings}). */
@@ -44,16 +94,41 @@ export const THEMES: readonly ThemeOption[] = [
   { key: "canvasHighContrast", label: "Canvas high contrast" },
 ];
 
+/** The selectable color schemes, in menu order. */
+export const COLORS: readonly ColorOption[] = [
+  { key: "navy", label: "Navy" },
+  { key: "blue", label: "Blue" },
+  { key: "green", label: "Green" },
+  { key: "red", label: "Red" },
+  { key: "orange", label: "Orange" },
+  { key: "grey", label: "Grey" },
+  { key: "plum", label: "Plum" },
+  { key: "violet", label: "Violet" },
+  { key: "stone", label: "Stone" },
+  { key: "sky", label: "Sky" },
+  { key: "honey", label: "Honey" },
+  { key: "sea", label: "Sea" },
+  { key: "aurora", label: "Aurora" },
+];
+
 /** Only rebrand ships light/dark values; the others are single-scheme. */
 export const supportsScheme = (theme: PantokenTheme): boolean => theme === "rebrand";
 
 const STORAGE_KEY = "pantoken-theme";
+const STORAGE_COLOR_KEY = "pantoken-color";
 
 /** The persisted theme (default `rebrand`). */
 export function getStoredTheme(): PantokenTheme {
   if (typeof localStorage === "undefined") return "rebrand";
   const value = localStorage.getItem(STORAGE_KEY);
   return THEMES.some((t) => t.key === value) ? (value as PantokenTheme) : "rebrand";
+}
+
+/** The persisted color scheme (default `navy`). */
+export function getStoredColor(): PantokenColor {
+  if (typeof localStorage === "undefined") return "navy";
+  const value = localStorage.getItem(STORAGE_COLOR_KEY);
+  return COLORS.some((c) => c.key === value) ? (value as PantokenColor) : "navy";
 }
 
 // The reader's light/dark choice while on rebrand, remembered across a detour through a single-scheme
@@ -78,12 +153,26 @@ function themeTargetOrigin(frame: HTMLIFrameElement): string {
 }
 
 /** Post the active theme to every embedded demo runner so it re-themes its rendered result. */
-export function broadcastTheme(theme: PantokenTheme): void {
+export function broadcastTheme(
+  theme: PantokenTheme,
+  color: PantokenColor = getStoredColor(),
+): void {
   if (typeof document === "undefined") return;
   for (const frame of document.querySelectorAll<HTMLIFrameElement>(".pantoken-demo__frame")) {
     // deepcode ignore TooPermissiveCorsPostMessage: "*" only targets opaque-origin sandboxed frames (no concrete origin can match); a real-src frame gets its own origin, and the payload is a non-sensitive theme name.
     frame.contentWindow?.postMessage(
-      { type: "pantoken-demo-theme", theme },
+      { type: "pantoken-demo-theme", theme, color },
+      themeTargetOrigin(frame),
+    );
+  }
+}
+
+/** Post the active color scheme to every embedded demo runner. */
+export function broadcastColor(color: PantokenColor): void {
+  if (typeof document === "undefined") return;
+  for (const frame of document.querySelectorAll<HTMLIFrameElement>(".pantoken-demo__frame")) {
+    frame.contentWindow?.postMessage(
+      { type: "pantoken-demo-color", color },
       themeTargetOrigin(frame),
     );
   }
@@ -93,6 +182,15 @@ export function broadcastTheme(theme: PantokenTheme): void {
 function persistTheme(theme: PantokenTheme): void {
   try {
     localStorage.setItem(STORAGE_KEY, theme);
+  } catch {
+    // Private mode / storage disabled — the attribute still applies for this session.
+  }
+}
+
+/** Persist the selected color scheme when storage is available. */
+function persistColor(color: PantokenColor): void {
+  try {
+    localStorage.setItem(STORAGE_COLOR_KEY, color);
   } catch {
     // Private mode / storage disabled — the attribute still applies for this session.
   }
@@ -122,5 +220,16 @@ export function applyTheme(theme: PantokenTheme): void {
   html.dataset.pantokenTheme = theme;
   persistTheme(theme);
   syncSchemeClass(html, theme);
-  broadcastTheme(theme);
+  broadcastTheme(theme, getStoredColor());
+}
+
+/**
+ * Apply a color scheme: set the root attribute, persist it, and broadcast to the demos.
+ */
+export function applyColor(color: PantokenColor): void {
+  if (typeof document === "undefined") return;
+  const html = document.documentElement;
+  html.dataset.pantokenColor = color;
+  persistColor(color);
+  broadcastColor(color);
 }

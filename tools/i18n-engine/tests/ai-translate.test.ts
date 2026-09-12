@@ -1,4 +1,4 @@
-import { chmodSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, test } from "vite-plus/test";
@@ -27,42 +27,41 @@ afterEach(() => {
   else process.env.I18N_TRANSLATION_COMMAND_ARGS = originalArgs;
 });
 
-// TEMP DIAGNOSTIC (remove after capturing the "oils I/O error" flake): dumps the child's own
-// shell-resolution env to a fixed log path every time the fake provider runs, since the flake only
-// shows up under `vp run ready`'s full parallel task graph, not an isolated `vp test` run.
-const DEBUG_LOG = join(tmpdir(), "pantoken-ai-translate-debug.log");
-
 /** A fake AI command: ignores stdin/args, always answers with one fixed JSON translation. */
 function installFakeProvider(response: string): void {
-  const scriptPath = join(testDir, "fake-provider.sh");
+  const scriptPath = join(testDir, "fake-provider.mjs");
   writeFileSync(
     scriptPath,
-    `#!/usr/bin/env bash\n{ echo "--- $(date -u +%FT%TZ) pid=$$ ---"; echo "PATH=$PATH"; command -v env; command -v bash; env -- bash --version | head -1; uname -a; ulimit -u; } >>'${DEBUG_LOG}' 2>&1\ncat >/dev/null\nprintf '%s' '${response}'\n`,
+    [
+      "process.stdin.resume();",
+      'await new Promise((resolve) => process.stdin.once("end", resolve));',
+      `process.stdout.write(${JSON.stringify(response)});`,
+      "",
+    ].join("\n"),
   );
-  chmodSync(scriptPath, 0o755);
-  process.env.I18N_TRANSLATION_COMMAND = scriptPath;
-  delete process.env.I18N_TRANSLATION_COMMAND_ARGS;
+  process.env.I18N_TRANSLATION_COMMAND = process.execPath;
+  process.env.I18N_TRANSLATION_COMMAND_ARGS = scriptPath;
 }
 
 /** A fake provider that brackets each call with `+`/`-` markers so overlap is observable. */
 function installConcurrencyProbe(): void {
-  const scriptPath = join(testDir, "probe-provider.sh");
+  const scriptPath = join(testDir, "probe-provider.mjs");
   const log = join(testDir, "concurrency.log");
   writeFileSync(
     scriptPath,
     [
-      "#!/usr/bin/env bash",
-      "cat >/dev/null",
-      `echo + >>'${log}'`,
-      "sleep 0.1",
-      `echo - >>'${log}'`,
-      "printf '%s' '{}'",
+      'import { appendFileSync } from "node:fs";',
+      "process.stdin.resume();",
+      'await new Promise((resolve) => process.stdin.once("end", resolve));',
+      `appendFileSync(${JSON.stringify(log)}, "+\\n");`,
+      "await new Promise((resolve) => setTimeout(resolve, 100));",
+      `appendFileSync(${JSON.stringify(log)}, "-\\n");`,
+      'process.stdout.write("{}");',
       "",
     ].join("\n"),
   );
-  chmodSync(scriptPath, 0o755);
-  process.env.I18N_TRANSLATION_COMMAND = scriptPath;
-  delete process.env.I18N_TRANSLATION_COMMAND_ARGS;
+  process.env.I18N_TRANSLATION_COMMAND = process.execPath;
+  process.env.I18N_TRANSLATION_COMMAND_ARGS = scriptPath;
 }
 
 /** The highest number of probe calls that were ever in flight at once. */

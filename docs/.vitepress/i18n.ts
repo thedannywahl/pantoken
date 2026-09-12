@@ -144,6 +144,21 @@ export interface UiStrings {
     rebrand: string;
     canvas: string;
     canvasHighContrast: string;
+    colorLabel?: string;
+    navy?: string;
+    blue?: string;
+    green?: string;
+    red?: string;
+    orange?: string;
+    grey?: string;
+    ash?: string;
+    plum?: string;
+    violet?: string;
+    stone?: string;
+    sky?: string;
+    honey?: string;
+    sea?: string;
+    aurora?: string;
   };
   // The interactive CDN combine-URL builder on the CDN guide page (see theme/components/CdnPicker.vue
   // and theme/cdn.ts). Component names and the generated URL are not translated.

@@ -3,19 +3,22 @@ import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 import { useData } from "vitepress";
 import VPFlyout from "vitepress/dist/client/theme-default/components/VPFlyout.vue";
 import VPSocialLinks from "vitepress/dist/client/theme-default/components/VPSocialLinks.vue";
-import VPSwitchAppearance from "vitepress/dist/client/theme-default/components/VPSwitchAppearance.vue";
 import { useLangs } from "vitepress/dist/client/theme-default/composables/langs.js";
+import { useNavOverflow } from "vitepress/dist/client/theme-default/composables/nav-overflow.js";
+import ThemeColorPicker from "./ThemeColorPicker.vue";
 import {
-  applyTheme,
   getStoredTheme,
   THEME_SELECTOR_DEFAULTS,
-  THEMES,
   type PantokenTheme,
   type ThemeSelectorStrings,
 } from "../theme";
 
 const { site, theme } = useData();
 const { localeLinks, currentLang } = useLangs({ correspondingLink: true });
+// Shares VitePress's real Priority+ overflow engine (provided once by the actual VPNavBar) so this
+// flyout only surfaces a unit once the bar's own inline copy has collapsed out of the way — without
+// this, both copies show at once whenever the bar still has room for its own inline copy.
+const overflow = useNavOverflow();
 
 const hasExtraContent = computed(
   () =>
@@ -33,26 +36,20 @@ const strings = computed<ThemeSelectorStrings>(() => ({
 }));
 
 // Display conditions lifted out of the template so its markup stays flat (and each stays one small
-// expression here rather than a multi-clause `v-if`).
+// expression here rather than a multi-clause `v-if`). Gated on `overflow.state` (not just data
+// availability) so a unit only shows here once its inline bar copy has actually collapsed.
 const showTranslations = computed(
-  () => localeLinks.value.length > 0 && Boolean(currentLang.value.label),
-);
-const showAppearance = computed(
   () =>
-    current.value === "rebrand" &&
-    Boolean(site.value.appearance) &&
-    site.value.appearance !== "force-dark" &&
-    site.value.appearance !== "force-auto",
+    localeLinks.value.length > 0 &&
+    Boolean(currentLang.value.label) &&
+    !(overflow?.state.translations ?? true),
 );
-const appearanceLabel = computed(() => theme.value.darkModeSwitchLabel || "Appearance");
+const showSocialLinks = computed(
+  () => Boolean(theme.value.socialLinks) && !(overflow?.state.socialLinks ?? true),
+);
 // Read by the language `<select>` below: falls back to the VitePress default so an untranslated
 // locale (English-passthrough UI strings) still gets a sensible label.
 const langMenuLabel = computed(() => theme.value.langMenuLabel || "Change language");
-
-function select(t: PantokenTheme): void {
-  current.value = t;
-  applyTheme(t);
-}
 
 // A `<select>` scales to many locales far better than a flat link list (44+ Canvas locales) and gives
 // free type-to-search in every browser. Navigation is a full page load across locale sub-sites, so a
@@ -68,7 +65,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <VPFlyout v-if="hasExtraContent" class="VPNavBarExtra" label="extra navigation">
+  <VPFlyout
+    v-if="hasExtraContent"
+    class="VPNavBarExtra"
+    label="extra navigation"
+    :ref="(inst: any) => overflow?.setExtraEl(inst?.$el ?? null)"
+  >
     <div v-if="showTranslations" class="group translations">
       <label class="trans-title" for="lang-select">{{ langMenuLabel }}</label>
 
@@ -89,33 +91,12 @@ onMounted(() => {
 
     <div class="group">
       <p class="trans-title">{{ strings.label }}</p>
-      <div class="item theme-selector-item" role="radiogroup" :aria-label="strings.label">
-        <button
-          v-for="t in THEMES"
-          :key="t.key"
-          class="theme-option"
-          type="button"
-          role="radio"
-          :aria-checked="current === t.key"
-          @click="select(t.key)"
-        >
-          {{ strings[t.key] }}
-        </button>
+      <div class="item theme-selector-item">
+        <ThemeColorPicker @theme-change="current = $event" />
       </div>
     </div>
 
-    <div v-if="showAppearance" class="group">
-      <div class="item appearance">
-        <p class="label">
-          {{ appearanceLabel }}
-        </p>
-        <div class="appearance-action">
-          <VPSwitchAppearance />
-        </div>
-      </div>
-    </div>
-
-    <div v-if="theme.socialLinks" class="group">
+    <div v-if="showSocialLinks" class="group">
       <div class="item social-links">
         <VPSocialLinks class="social-links-list" :links="theme.socialLinks" />
       </div>
@@ -153,19 +134,10 @@ onMounted(() => {
   padding: 0 12px;
 }
 
-.item.appearance,
 .item.social-links {
   display: flex;
   align-items: center;
   padding: 0 12px;
-}
-
-.item.appearance {
-  min-width: 176px;
-}
-
-.appearance-action {
-  margin-right: -2px;
 }
 
 .social-links-list {
@@ -182,31 +154,5 @@ onMounted(() => {
   font-weight: 500;
   color: var(--vp-c-text-1);
   background-color: var(--vp-c-bg-soft);
-}
-
-.theme-option {
-  display: block;
-  border-radius: 6px;
-  padding: 0 12px;
-  width: 100%;
-  line-height: 32px;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--vp-c-text-1);
-  text-align: left;
-  white-space: nowrap;
-  transition:
-    background-color 0.25s,
-    color 0.25s;
-}
-
-.theme-option:not([aria-checked="true"]):hover {
-  color: var(--vp-c-brand-1);
-  background-color: var(--vp-c-default-soft);
-}
-
-.theme-option[aria-checked="true"] {
-  font-weight: 700;
-  cursor: default;
 }
 </style>

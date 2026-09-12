@@ -176,6 +176,7 @@ interface RunnerCtx {
   parts: PartKey[];
   booting: boolean;
   currentTheme: string;
+  currentColor: string;
   activeCode: PartKey | null;
   resultContentHeight: number;
   userResized: boolean;
@@ -286,6 +287,7 @@ function createRunnerContext(
   // attribute — on this chrome document, and on the result's `<html>` (stamped in render). Starts on the
   // default until the host replies to our request below.
   document.documentElement.dataset.pantokenTheme = "rebrand";
+  document.documentElement.dataset.pantokenColor = "navy";
   // Built hidden (`runner--booting`) alongside the spinner; `reveal()` swaps them once ready.
   mount.insertAdjacentHTML("beforeend", runnerMarkup());
   const runner = mount.querySelector(".runner") as HTMLElement;
@@ -319,6 +321,7 @@ function createRunnerContext(
     parts,
     booting: true,
     currentTheme: "rebrand",
+    currentColor: "navy",
     activeCode: parts[0] ?? null,
     resultContentHeight: 0,
     userResized: false,
@@ -353,7 +356,7 @@ function render(ctx: RunnerCtx): void {
   // runner asks it to hide its own scrollbar so it doesn't flicker as the height recomputes.
   const sizeReporter = `<script>(function(){var p=window.parent;function r(){p.postMessage({type:"pantoken-demo-result-size",height:Math.ceil(document.body.getBoundingClientRect().height)},"*");}addEventListener("load",r);if(window.ResizeObserver){new ResizeObserver(r).observe(document.body);}addEventListener("message",function(e){if(e&&e.data&&e.data.type==="pantoken-demo-freeze"){document.documentElement.style.overflow=e.data.value?"hidden":"";}});r();})()</script>`;
   ctx.resultFrame.srcdoc =
-    `<!doctype html><html dir="${isRtl() ? "rtl" : "ltr"}" data-pantoken-theme="${ctx.currentTheme}" style="color-scheme:${scheme}"><head><meta charset="utf-8">${links}${gutter}` +
+    `<!doctype html><html dir="${isRtl() ? "rtl" : "ltr"}" data-pantoken-theme="${ctx.currentTheme}" data-pantoken-color="${ctx.currentColor}" style="color-scheme:${scheme}"><head><meta charset="utf-8">${links}${gutter}` +
     `<style>${ctx.original.css}</style></head><body class="pantoken-prose">${safeHtml}` +
     `<script>${ctx.original.js}</script>${sizeReporter}</body></html>`;
 }
@@ -369,6 +372,14 @@ function setTheme(ctx: RunnerCtx, name: string): void {
   if (name === ctx.currentTheme) return;
   ctx.currentTheme = name;
   document.documentElement.dataset.pantokenTheme = name;
+  render(ctx);
+}
+
+/** Switch the token color scheme on the chrome and result, then re-render. */
+function setColor(ctx: RunnerCtx, name: string): void {
+  if (name === ctx.currentColor) return;
+  ctx.currentColor = name;
+  document.documentElement.dataset.pantokenColor = name;
   render(ctx);
 }
 
@@ -570,6 +581,7 @@ interface DemoMessage {
   type?: string;
   height?: number;
   theme?: string;
+  color?: string;
 }
 
 /**
@@ -587,10 +599,13 @@ const MESSAGE_HANDLERS: Record<string, (ctx: RunnerCtx, data: DemoMessage) => vo
     applyTheme(ctx);
   },
   "pantoken-demo-theme": (ctx, data) => {
-    if (typeof data.theme !== "string") return;
-    setTheme(ctx, data.theme);
+    if (typeof data.theme === "string") setTheme(ctx, data.theme);
+    if (typeof data.color === "string") setColor(ctx, data.color);
     ctx.resolveTheme?.();
     ctx.resolveTheme = undefined;
+  },
+  "pantoken-demo-color": (ctx, data) => {
+    if (typeof data.color === "string") setColor(ctx, data.color);
   },
   "pantoken-demo-result-size": (ctx, data) => {
     if (typeof data.height !== "number") return;
