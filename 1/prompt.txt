@@ -1,0 +1,5 @@
+in the sidenav, the items should be translated, but in most locales only one or two of them are translated on the top level. we also need to capitalize "AI" in the root locale.  below the top layer everything is translating correctly.
+
+---
+
+Read-only exploration only. In /Users/dwahl/Scripts/pantoken, investigate why VitePress docs sidenav/sidebar top-level items are only partially translated in most locales while lower levels translate correctly, and root locale needs capitalized "AI". Follow repo instructions, including using entire graph first. Return: (1) likely controlling files/functions/types, (2) how sidebar/chrome i18n is structured, (3) likely root cause, (4) minimal implementation plan, (5) focused verification commands. Do not modify files. Thoroughness: medium.
