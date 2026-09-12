@@ -32,7 +32,6 @@ import {
   readdirSync,
   readFileSync,
   rmSync,
-  statSync,
   writeFileSync,
 } from "node:fs";
 import { createRequire } from "node:module";
@@ -49,7 +48,8 @@ import { runAsMain } from "../../scripts/release/cli.ts";
 const SHARED_CHUNK_MAX_BYTES = 5 * 1024 * 1024;
 const isPageChunk = (name: string): boolean => /\.md\.[^./]+\.(lean\.)?js$/u.test(name);
 
-function assertScopedLocaleConfig(localeDistDir: string, locale: string): void {
+/** Throws if a locale's shared site-data chunks embed another locale's nav or exceed the size cap. */
+export function assertScopedLocaleConfig(localeDistDir: string, locale: string): void {
   const assetsDir = join(localeDistDir, "assets");
   if (!existsSync(assetsDir)) return;
   const sharedChunkNames = readdirSync(assetsDir).filter(
@@ -59,8 +59,11 @@ function assertScopedLocaleConfig(localeDistDir: string, locale: string): void {
   let totalBytes = 0;
   for (const name of sharedChunkNames) {
     const chunkPath = join(assetsDir, name);
-    totalBytes += statSync(chunkPath).size;
-    const content = readFileSync(chunkPath, "utf8");
+    // Read once and derive both the size and the content check from the same buffer — a separate
+    // `statSync` + `readFileSync` pair would race if the file changed between the two calls.
+    const buffer = readFileSync(chunkPath);
+    totalBytes += buffer.length;
+    const content = buffer.toString("utf8");
     const leaked = otherLocales.find((other) => content.includes(`/${other}/guide/`));
     if (leaked) {
       throw new Error(

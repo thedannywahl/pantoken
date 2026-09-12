@@ -7,6 +7,7 @@ interface SpawnResult {
 const cpSync = vi.fn();
 const existsSync = vi.fn<(path: string) => boolean>();
 const mkdirSync = vi.fn();
+const readdirSync = vi.fn<(path: string) => string[]>();
 const readFileSync = vi.fn<(path: string) => string>();
 const rmSync = vi.fn();
 const spawnSync = vi.fn<(...args: unknown[]) => SpawnResult>();
@@ -17,6 +18,7 @@ vi.mock("node:fs", () => ({
   cpSync,
   existsSync,
   mkdirSync,
+  readdirSync,
   readFileSync,
   rmSync,
   writeFileSync,
@@ -43,6 +45,9 @@ beforeEach(() => {
   delete process.env.DOCS_DIST_DIR;
   delete process.env.DOCS_LOCALES;
   existsSync.mockReturnValue(true);
+  // No shared JS chunks in these fixtures — assertScopedLocaleConfig's own logic is covered
+  // separately; these tests only care about the build/merge flow around it.
+  readdirSync.mockReturnValue([]);
   spawnSync.mockReturnValue({ status: 0 });
   logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
 });
