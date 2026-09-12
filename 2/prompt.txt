@@ -1,0 +1,13 @@
+⚠ typescript(unbound-method): Avoid referencing unbound methods which may cause unintentional scoping of `this`.
+     ╭─[docs/scripts/build-locales.main.test.ts:135:10]
+ 134 │
+ 135 │   expect(process.exit).toHaveBeenCalledWith(1);
+     ·          ────────────┬
+     ·                │     ╰── This reference may be unbound and lose `this` context
+ 136 │   expect(cpSync).not.toHaveBeenCalled();
+     ╰────
+  help: If your function does not access `this`, you can annotate it with `this: void`, or consider using an arrow function instead.
+
+---
+
+Start implementation
