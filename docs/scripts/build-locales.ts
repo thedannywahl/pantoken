@@ -25,11 +25,58 @@
  *                   doesn't replace a whole-site index with a two-page one.
  */
 import { spawnSync } from "node:child_process";
-import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import {
+  cpSync,
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  rmSync,
+  statSync,
+  writeFileSync,
+} from "node:fs";
 import { createRequire } from "node:module";
 import { dirname, join, resolve } from "node:path";
 import { NON_ROOT_LOCALES, parseRequestedLocales } from "../.vitepress/i18n.ts";
 import { runAsMain } from "../../scripts/release/cli.ts";
+
+// The shared site-data chunk (the app bundle every page loads) should hold only the locale being
+// built — see `isActiveLocale` in `.vitepress/config.ts`. A regression there re-embeds every other
+// locale's nav/sidebar, so guard both a byte ceiling (well above one locale's own footprint, far
+// below the ~30 MB an unscoped config produces) and a direct content check for another locale's
+// guide link. Per-page `*.md.<hash>.js` chunks are excluded — those scale with page count for an
+// unrelated, accepted reason.
+const SHARED_CHUNK_MAX_BYTES = 5 * 1024 * 1024;
+const isPageChunk = (name: string): boolean => /\.md\.[^./]+\.(lean\.)?js$/u.test(name);
+
+function assertScopedLocaleConfig(localeDistDir: string, locale: string): void {
+  const assetsDir = join(localeDistDir, "assets");
+  if (!existsSync(assetsDir)) return;
+  const sharedChunkNames = readdirSync(assetsDir).filter(
+    (name) => name.endsWith(".js") && !isPageChunk(name),
+  );
+  const otherLocales = NON_ROOT_LOCALES.filter((other) => other !== locale);
+  let totalBytes = 0;
+  for (const name of sharedChunkNames) {
+    const chunkPath = join(assetsDir, name);
+    totalBytes += statSync(chunkPath).size;
+    const content = readFileSync(chunkPath, "utf8");
+    const leaked = otherLocales.find((other) => content.includes(`/${other}/guide/`));
+    if (leaked) {
+      throw new Error(
+        `${locale}: shared chunk ${name} embeds locale "${leaked}"'s nav — check the ` +
+          `\`isActiveLocale\` scoping in docs/.vitepress/config.ts`,
+      );
+    }
+  }
+  if (totalBytes > SHARED_CHUNK_MAX_BYTES) {
+    throw new Error(
+      `${locale}: shared site-data chunks total ${(totalBytes / 1024 / 1024).toFixed(1)} MB, over ` +
+        `the ${(SHARED_CHUNK_MAX_BYTES / 1024 / 1024).toFixed(0)} MB cap — check the ` +
+        `\`isActiveLocale\` scoping in docs/.vitepress/config.ts`,
+    );
+  }
+}
 
 /** Build order. Root goes last: it owns the shared root-level files, so its copies must win. */
 export const orderRootLast = (keys: Iterable<string>): string[] => {
@@ -101,6 +148,7 @@ async function main(): Promise<void> {
       console.error(`✗ ${locale}: build failed`);
       process.exit(result.status ?? 1);
     }
+    assertScopedLocaleConfig(join(stagingDir, locale), locale);
     const seconds = ((Date.now() - started) / 1000).toFixed(1);
     console.log(`✓ ${locale}: built in ${seconds}s (${index + 1}/${locales.length})`);
   }
