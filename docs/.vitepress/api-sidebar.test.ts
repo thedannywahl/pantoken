@@ -59,9 +59,21 @@ const flattenItems = (items: TestItem[]): TestItem[] =>
 const findItem = (items: TestItem[], text: string): TestItem | undefined =>
   flattenItems(items).find((item) => item.text === text);
 
+const apiGroupLabels = {
+  ai: "AI",
+  packages: "Packages",
+};
+
 describe("partitionApiSidebar", () => {
   test("keeps only package entry links in the root API sidebar", () => {
-    const routes = partitionApiSidebar(sidebar, "API reference", "/api/", "Overview");
+    const routes = partitionApiSidebar(
+      sidebar,
+      "API reference",
+      "/api/",
+      "CSS",
+      apiGroupLabels,
+      "Overview",
+    );
 
     expect(Object.keys(routes)).toEqual([
       "/api/",
@@ -77,7 +89,14 @@ describe("partitionApiSidebar", () => {
   });
 
   test("expands only the package selected by the route prefix", () => {
-    const routes = partitionApiSidebar(sidebar, "API reference", "/api/", "Overview");
+    const routes = partitionApiSidebar(
+      sidebar,
+      "API reference",
+      "/api/",
+      "CSS",
+      apiGroupLabels,
+      "Overview",
+    );
     const coreRoute = routes["/api/packages/core/src/"] as TestItem[];
 
     expect(findItem(coreRoute, "core")?.items).toHaveLength(1);
@@ -87,7 +106,14 @@ describe("partitionApiSidebar", () => {
   });
 
   test("uses the complete CSS tree only on CSS routes", () => {
-    const routes = partitionApiSidebar(sidebar, "API reference", "/api/", "Overview");
+    const routes = partitionApiSidebar(
+      sidebar,
+      "API reference",
+      "/api/",
+      "CSS",
+      apiGroupLabels,
+      "Overview",
+    );
     const cssRoute = routes["/api/css/"] as TestItem[];
 
     expect(findItem(cssRoute, "button")?.link).toBe("/api/css/button.md");
@@ -105,15 +131,60 @@ describe("partitionApiSidebar", () => {
       items: entry.items?.map(localize),
     });
     const localized = sidebar.map(localize);
-    const routes = partitionApiSidebar(localized, "API referencia", "/hu/api/", "Áttekintés");
+    const routes = partitionApiSidebar(
+      localized,
+      "API referencia",
+      "/hu/api/",
+      "CSS",
+      apiGroupLabels,
+      "Áttekintés",
+    );
 
     expect(routes).toHaveProperty("/hu/api/packages/core/src/");
     expect(routes).toHaveProperty("/hu/api/css/");
   });
 
+  test("uses display labels for top-level API buckets", () => {
+    const routes = partitionApiSidebar(
+      sidebar,
+      "API reference",
+      "/api/",
+      "CSS",
+      apiGroupLabels,
+      "Overview",
+    );
+
+    expect(findItem(routes["/api/"] as TestItem[], "Packages")?.items).toHaveLength(2);
+    expect(findItem(routes["/api/"] as TestItem[], "packages")).toBeUndefined();
+    expect(findItem(routes["/api/"] as TestItem[], "core")?.items).toBeUndefined();
+    expect(
+      findItem(routes["/api/packages/core/src/"] as TestItem[], "Packages")?.items,
+    ).toHaveLength(2);
+    expect(findItem(routes["/api/packages/core/src/"] as TestItem[], "core")?.items).toHaveLength(
+      1,
+    );
+  });
+
+  test("uses the localized CSS label for compact cross-links", () => {
+    const routes = partitionApiSidebar(
+      sidebar,
+      "API referencia",
+      "/hu/api/",
+      "CSS referencia",
+      apiGroupLabels,
+      "Áttekintés",
+    );
+
+    expect(findItem(routes["/hu/api/"] as TestItem[], "CSS referencia")).toMatchObject({
+      link: "/hu/api/css/",
+    });
+    expect(findItem(routes["/hu/api/css/"] as TestItem[], "CSS referencia")?.items).toBeDefined();
+    expect(findItem(routes["/hu/api/css/"] as TestItem[], "CSS")).toBeUndefined();
+  });
+
   test("does not mutate the generated sidebar", () => {
     const before = structuredClone(sidebar);
-    partitionApiSidebar(sidebar, "API reference", "/api/", "Overview");
+    partitionApiSidebar(sidebar, "API reference", "/api/", "CSS", apiGroupLabels, "Overview");
     expect(sidebar).toEqual(before);
   });
 });

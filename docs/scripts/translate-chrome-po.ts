@@ -22,6 +22,7 @@ const locales = new Set(
 const { potPath } = runExtractMessages(config, repoRoot, "docs.chrome");
 const protectedSources = new Set([
   "404",
+  "AI",
   "API",
   "CSS",
   "<link>",
@@ -35,7 +36,13 @@ for (const entry of readdirSync(join(repoRoot, "l10n"), { withFileTypes: true })
   const path = join(repoRoot, "l10n", entry.name, "docs.chrome.po");
   await mergePoWithTemplate(path, potPath);
   const entries = parsePo(readFileSync(path, "utf8"));
-  const missing = entries.filter((item) => !item.obsolete && (force || item.msgstr === ""));
+  const missing = entries.filter(
+    (item) =>
+      !item.obsolete &&
+      (force ||
+        item.msgstr === "" ||
+        (protectedSources.has(item.msgid) && (item.fuzzy || item.msgstr !== item.msgid))),
+  );
   if (missing.length === 0) continue;
 
   const adapter = new AiTranslationAdapter(entry.name);
@@ -47,6 +54,8 @@ for (const entry of readdirSync(join(repoRoot, "l10n"), { withFileTypes: true })
     item.msgstr = protectedSources.has(item.msgid)
       ? item.msgid
       : (translations[item.msgctxt ?? item.msgid] ?? "");
+    item.fuzzy = false;
+    item.flags = item.flags.filter((flag) => flag !== "fuzzy");
   }
   writeCatalog(path, serializePo(entries));
   refreshCoverageReports(join(repoRoot, "i18n.config.json"));

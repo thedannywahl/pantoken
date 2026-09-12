@@ -385,6 +385,8 @@ const localesConfig = Object.fromEntries(
             typedocSidebarByLocale[localeKey],
             locale.sidebar.api,
             apiPrefixFor(localeKey),
+            locale.sidebar.css,
+            locale.sidebar.apiGroups,
             locale.sidebar.apiOverview,
           ),
         },

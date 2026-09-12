@@ -119,6 +119,18 @@ export interface UiStrings {
     plugins: string;
     generated: string;
     api: string;
+    css: string;
+    apiGroups: {
+      ai: string;
+      bundlers: string;
+      design: string;
+      formats: string;
+      packages: string;
+      platforms: string;
+      plugins: string;
+      renderers: string;
+      tools: string;
+    };
     apiOverview: string;
   };
   editText: string;
