@@ -15,6 +15,11 @@ name: Deploy docs
 # `workflow_dispatch` remains the manual escape hatch. The changed-page resolver picks a partial docs
 # build when it can prove the affected pages, and falls back to the full-locale build when it cannot.
 #
+# The changesets "Version Packages" PR merge is excluded from this push-triggered path even though its
+# package.json/CHANGELOG.md bumps commonly touch watched paths (formats/components, formats/css, …) -
+# deploying then would double-deploy alongside the workflow_run path that fires once the same push
+# publishes packages and uploads docs-deploy-request.
+#
 # This workflow builds the site itself: CI's `docs` job is an English-only breakage check that
 # uploads nothing, and Netlify's own build system is never invoked (we ship a prebuilt directory).
 #
@@ -77,6 +82,7 @@ jobs:
     outputs:
       should_deploy: ${{ steps.decide.outputs.should_deploy }}
       trigger: ${{ steps.decide.outputs.trigger }}
+      checkout_ref: ${{ steps.decide.outputs.checkout_ref }}
     steps:
       - name: Decide whether to deploy
         id: decide
@@ -85,19 +91,43 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           REPO: ${{ github.repository }}
           RUN_ID: ${{ github.event.workflow_run.id }}
+          WORKFLOW_RUN_HEAD_REPO: ${{ github.event.workflow_run.head_repository.full_name }}
+          WORKFLOW_RUN_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          SHA: ${{ github.sha }}
+          HEAD_COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
         shell: bash
         run: |
           set -euo pipefail
           if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
             echo "should_deploy=true" >> "$GITHUB_OUTPUT"
             echo "trigger=manual" >> "$GITHUB_OUTPUT"
+            echo "checkout_ref=$SHA" >> "$GITHUB_OUTPUT"
             echo "Manual dispatch; deploying."
             exit 0
           fi
           if [ "$EVENT_NAME" = "push" ]; then
+            # Matches the "chore: version packages" commit-message/pr-title release.yml sets for the
+            # changesets Version PR, under squash, merge-commit, or rebase merge alike.
+            if echo "$HEAD_COMMIT_MESSAGE" | grep -qi 'chore: version packages'; then
+              echo "should_deploy=false" >> "$GITHUB_OUTPUT"
+              echo "trigger=version-pr-merge" >> "$GITHUB_OUTPUT"
+              echo "checkout_ref=$SHA" >> "$GITHUB_OUTPUT"
+              echo "Version Packages PR merge; deferring to the release workflow_run deploy."
+              exit 0
+            fi
             echo "should_deploy=true" >> "$GITHUB_OUTPUT"
             echo "trigger=docs-push" >> "$GITHUB_OUTPUT"
+            echo "checkout_ref=$SHA" >> "$GITHUB_OUTPUT"
             echo "Docs-affecting push; deploying."
+            exit 0
+          fi
+          # Security guard: Ensure workflow_run triggers originate from the same repository
+          # to prevent untrusted code checkouts and secret exfiltration.
+          if [ -n "$WORKFLOW_RUN_HEAD_REPO" ] && [ "$WORKFLOW_RUN_HEAD_REPO" != "$REPO" ]; then
+            echo "should_deploy=false" >> "$GITHUB_OUTPUT"
+            echo "trigger=release" >> "$GITHUB_OUTPUT"
+            echo "checkout_ref=$SHA" >> "$GITHUB_OUTPUT"
+            echo "Untrusted workflow_run event from repo '$WORKFLOW_RUN_HEAD_REPO' (expected '$REPO'); skipping deploy."
             exit 0
           fi
           requested=$(gh api "repos/$REPO/actions/runs/$RUN_ID/artifacts" \
@@ -105,10 +135,12 @@ jobs:
           if [ "$requested" -gt 0 ]; then
             echo "should_deploy=true" >> "$GITHUB_OUTPUT"
             echo "trigger=release" >> "$GITHUB_OUTPUT"
+            echo "checkout_ref=${WORKFLOW_RUN_HEAD_SHA:-$SHA}" >> "$GITHUB_OUTPUT"
             echo "Release run $RUN_ID published; deploying."
           else
             echo "should_deploy=false" >> "$GITHUB_OUTPUT"
             echo "trigger=release" >> "$GITHUB_OUTPUT"
+            echo "checkout_ref=$SHA" >> "$GITHUB_OUTPUT"
             echo "Release run $RUN_ID published nothing (Version PR path); skipping deploy."
           fi
 
@@ -127,7 +159,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
-          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          ref: ${{ needs.released.outputs.checkout_ref }}
           fetch-depth: 0
 
       # ubuntu-latest has 16 GB of RAM and a 4 GB swapfile. When the docs build's peak working set

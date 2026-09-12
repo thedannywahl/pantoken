@@ -27,14 +27,22 @@ export interface ExampleSrcdocOptions {
 // Boots the preview: asks the parent for the active theme (a sandboxed srcdoc frame without
 // `allow-same-origin` has an opaque origin, so it can't address the parent by a concrete origin
 // string — target "*" on the way out; the host's own trust check happens on receipt) and applies the
-// reply's `data-pantoken-theme`. Then reports the rendered body height whenever it changes, so the
+// reply's `data-pantoken-theme` and `data-pantoken-color`. Then reports the rendered body height whenever it changes, so the
 // embedding page can size the iframe to its content instead of a fixed box. Mirrors the `/play`
 // runner's own request-theme boot and size-reporter (tools/demo/runner/main.ts).
 const BOOT_SCRIPT = `<script>(function(){
 var p=window.parent;
 function r(){p.postMessage({type:"pantoken-demo-size",height:Math.ceil(document.body.getBoundingClientRect().height)},"*");}
 addEventListener("message",function(e){
-  if(e&&e.data&&e.data.type==="pantoken-demo-theme"){document.documentElement.dataset.pantokenTheme=e.data.theme;}
+  if(e&&e.data){
+    if(e.data.type==="pantoken-demo-theme"){
+      if(e.data.theme){document.documentElement.dataset.pantokenTheme=e.data.theme;}
+      if(e.data.color){document.documentElement.dataset.pantokenColor=e.data.color;}
+    }
+    if(e.data.type==="pantoken-demo-color"){
+      if(e.data.color){document.documentElement.dataset.pantokenColor=e.data.color;}
+    }
+  }
 });
 p.postMessage({type:"pantoken-demo-request-theme"},"*");
 addEventListener("load",r);

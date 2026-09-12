@@ -36,6 +36,7 @@ test("buildExampleSrcdoc's boot script requests the theme, applies replies, and 
   expect(doc).toContain('type:"pantoken-demo-request-theme"');
   expect(doc).toContain('e.data.type==="pantoken-demo-theme"');
   expect(doc).toContain("document.documentElement.dataset.pantokenTheme=e.data.theme");
+  expect(doc).toContain("document.documentElement.dataset.pantokenColor=e.data.color");
   expect(doc).toContain('type:"pantoken-demo-size"');
   expect(doc).toContain("ResizeObserver");
 });

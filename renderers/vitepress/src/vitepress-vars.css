@@ -102,16 +102,16 @@
    */
 
   /** @property {color} Brand accent 1 (link text). */
-  --vp-c-brand-1: var(--instui-color-text-interactive-navigation-primary-base);
+  --vp-c-brand-1: var(--instui-color-institutional-brand-primary);
 
   /** @property {color} Brand accent 2 (link hover). */
-  --vp-c-brand-2: var(--instui-color-text-interactive-navigation-primary-hover);
+  --vp-c-brand-2: var(--instui-color-institutional-brand-button-secondary-bgd);
 
   /** @property {color} Brand accent 3 (solid button fill). */
-  --vp-c-brand-3: var(--instui-color-background-info);
+  --vp-c-brand-3: var(--instui-color-institutional-brand-primary);
 
   /** @property {color} Brand subtle background. */
-  --vp-c-brand-soft: var(--instui-color-background-info);
+  --vp-c-brand-soft: var(--instui-color-institutional-brand-button-secondary-bgd);
 
   /**
    * Colors: Functional – Tip (uses brand in VitePress; info in InstUI)
@@ -253,29 +253,28 @@
   --vp-button-brand-border: transparent;
 
   /** @property {color} Brand button text. */
-  --vp-button-brand-text: var(--instui-color-text-on-color);
+  --vp-button-brand-text: var(--instui-color-institutional-brand-button-primary-text);
 
   /** @property {color} Brand button background. */
-  --vp-button-brand-bg: var(--instui-color-background-info);
+  --vp-button-brand-bg: var(--instui-color-institutional-brand-button-primary-bgd);
 
   /** @property {color} Brand button hover border. */
   --vp-button-brand-hover-border: transparent;
 
   /** @property {color} Brand button hover text. */
-  --vp-button-brand-hover-text: var(--instui-color-text-on-color);
+  --vp-button-brand-hover-text: var(--instui-color-institutional-brand-button-primary-text);
 
   /** @property {color} Brand button hover background. */
-  --vp-button-brand-hover-bg: var(--instui-color-background-info);
-  /* @todo: InstUI does not have a hover state for info buttons; using info background as approximation. */
+  --vp-button-brand-hover-bg: var(--instui-color-institutional-brand-button-secondary-bgd);
 
   /** @property {color} Brand button active border. */
   --vp-button-brand-active-border: transparent;
 
   /** @property {color} Brand button active text. */
-  --vp-button-brand-active-text: var(--instui-color-text-on-color);
+  --vp-button-brand-active-text: var(--instui-color-institutional-brand-button-primary-text);
 
   /** @property {color} Brand button active background. */
-  --vp-button-brand-active-bg: var(--instui-color-background-info);
+  --vp-button-brand-active-bg: var(--instui-color-institutional-brand-button-primary-bgd);
 
   /** @property {color} Alt button border. */
   --vp-button-alt-border: transparent;

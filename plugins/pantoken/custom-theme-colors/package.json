@@ -1,0 +1,53 @@
+{
+  "name": "@pantoken/plugin-custom-theme-colors",
+  "version": "0.1.0",
+  "description": "pantoken plugin: custom theme color rules and hero/brand variables for site theme color selection.",
+  "homepage": "https://pantoken.app",
+  "bugs": "https://github.com/thedannywahl/pantoken/issues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git",
+    "directory": "plugins/pantoken/custom-theme-colors"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./custom-theme-colors.css": "./dist/custom-theme-colors.css",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "generate": "node scripts/generate.ts",
+    "dev": "vp run generate && vp pack --watch",
+    "test": "vp run generate && vp test",
+    "check": "vp run generate && vp check"
+  },
+  "dependencies": {
+    "@pantoken/model": "workspace:*",
+    "@pantoken/plugin-kit": "workspace:*",
+    "@pantoken/tokens": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "pantoken": {
+    "key": "customThemeColors",
+    "kind": "namespace"
+  }
+}

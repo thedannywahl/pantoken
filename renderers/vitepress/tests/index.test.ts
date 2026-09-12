@@ -84,7 +84,7 @@ test("maps VitePress variables to var(--instui-*)", () => {
   expect(vitePressCss).toContain("--vp-c-bg: var(--instui-color-background-page);");
   expect(vitePressCss).toContain("--vp-c-text-1: var(--instui-color-text-base);");
   expect(vitePressCss).toContain(
-    "--vp-c-brand-1: var(--instui-color-text-interactive-navigation-primary-base);",
+    "--vp-c-brand-1: var(--instui-color-institutional-brand-primary);",
   );
   expect(vitePressCss).toContain(":root {");
 });

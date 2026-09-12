@@ -1,17 +1,10 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 import { useData } from "vitepress";
-import {
-  applyTheme,
-  getStoredTheme,
-  THEME_SELECTOR_DEFAULTS,
-  THEMES,
-  type PantokenTheme,
-  type ThemeSelectorStrings,
-} from "../theme";
+import { THEME_SELECTOR_DEFAULTS, type ThemeSelectorStrings } from "../theme";
+import ThemeColorPicker from "./ThemeColorPicker.vue";
 
 const open = ref(false);
-const current = ref<PantokenTheme>("rebrand");
 
 // Localized selector strings from the active locale's `themeConfig.themeSelector`, falling back to
 // the English defaults so a missing block never renders blank.
@@ -21,21 +14,12 @@ const strings = computed<ThemeSelectorStrings>(() => ({
   ...(theme.value as { themeSelector?: Partial<ThemeSelectorStrings> }).themeSelector,
 }));
 
-function select(theme: PantokenTheme): void {
-  current.value = theme;
-  applyTheme(theme);
-  open.value = false;
-}
-
 function onDocumentClick(event: MouseEvent): void {
   const target = event.target as HTMLElement | null;
   if (!target?.closest?.(".theme-selector")) open.value = false;
 }
 
-onMounted(() => {
-  current.value = getStoredTheme();
-  document.addEventListener("click", onDocumentClick);
-});
+onMounted(() => document.addEventListener("click", onDocumentClick));
 onBeforeUnmount(() => document.removeEventListener("click", onDocumentClick));
 </script>
 
@@ -54,17 +38,7 @@ onBeforeUnmount(() => document.removeEventListener("click", onDocumentClick));
       <span class="theme-selector__chevron" aria-hidden="true" />
     </button>
     <div class="theme-selector__menu" role="menu">
-      <button
-        v-for="t in THEMES"
-        :key="t.key"
-        class="theme-selector__item"
-        type="button"
-        role="menuitemradio"
-        :aria-checked="current === t.key"
-        @click="select(t.key)"
-      >
-        {{ strings[t.key] }}
-      </button>
+      <ThemeColorPicker />
     </div>
   </div>
 </template>
@@ -110,7 +84,7 @@ onBeforeUnmount(() => document.removeEventListener("click", onDocumentClick));
   top: calc(100% + 8px);
   right: 0;
   z-index: 100;
-  min-width: 12rem;
+  min-width: 14rem;
   padding: 8px;
   background: var(--vp-c-bg-elv);
   border: 1px solid var(--vp-c-divider);
@@ -126,29 +100,5 @@ onBeforeUnmount(() => document.removeEventListener("click", onDocumentClick));
 .theme-selector__button[aria-expanded="true"] + .theme-selector__menu {
   opacity: 1;
   visibility: visible;
-}
-.theme-selector__item {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 32px;
-  padding: 0 12px;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--vp-c-text-1);
-  text-align: left;
-  white-space: nowrap;
-  transition:
-    background-color 0.25s,
-    color 0.25s;
-}
-.theme-selector__item:not([aria-checked="true"]):hover {
-  color: var(--vp-c-brand-1);
-  background: var(--vp-c-default-soft);
-}
-.theme-selector__item[aria-checked="true"] {
-  font-weight: 700;
-  cursor: default;
 }
 </style>
