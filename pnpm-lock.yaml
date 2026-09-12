@@ -458,7 +458,7 @@ catalogs:
       specifier: 0.3.1
       version: 0.3.1
     vitepress:
-      specifier: 2.0.0-alpha.20
+      specifier: https://pkg.pr.new/vitepress@5432
       version: 2.0.0-alpha.20
     vitepress-plugin-llms:
       specifier: ^1.13.5
@@ -872,7 +872,7 @@ importers:
         version: 5.1.0
       vitepress:
         specifier: 'catalog:'
-        version: 2.0.0-alpha.20(@arethetypeswrong/core@0.18.5)(@types/node@26.5.1)(axios@1.20.0(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2))(change-case@5.4.4)(jiti@2.6.1)(postcss@8.5.28)(publint@0.3.24)(terser@5.51.2)(typescript@6.0.3)(yaml@2.9.0)
+        version: https://pkg.pr.new/vitepress@5432(@arethetypeswrong/core@0.18.5)(@types/node@26.5.1)(axios@1.20.0(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2))(change-case@5.4.4)(jiti@2.6.1)(postcss@8.5.28)(publint@0.3.24)(terser@5.51.2)(typescript@6.0.3)(yaml@2.9.0)
       vitepress-plugin-llms:
         specifier: 'catalog:'
         version: 1.13.5(supports-color@10.2.2)
@@ -9418,8 +9418,9 @@ packages:
     resolution: {integrity: sha512-CTiDkKRs0h64J5rdiICdHmXH4pM1gBu2S/MJ+OxSAm+vM72srBkHr86ZubzfMJbGJh4AMVKff4R3oCu8etI1ww==}
     engines: {node: '>=18'}
 
-  vitepress@2.0.0-alpha.20:
-    resolution: {integrity: sha512-uQWKmP9PaBkf9zxHn0iOml/ZPPDaGKqQXVMBHz3yjwyyd9Eg+BKLGxbqmOGlfOMCt6Fj8TLiAnE59qlKZ0A3xw==}
+  vitepress@https://pkg.pr.new/vitepress@5432:
+    resolution: {integrity: sha512-oIyafG0F120y2e6ib0dXbIvIc/xHN1ZXvNRhHORuRkIGhc6qv6W+o7h2eAFaxGqZudvqffzKtbCw8sqAogPLHg==, tarball: https://pkg.pr.new/vitepress@5432}
+    version: 2.0.0-alpha.20
     hasBin: true
     peerDependencies:
       markdown-it-mathjax3: ^4
@@ -12308,7 +12309,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 26.5.1
+      '@types/node': 22.20.2
 
   '@typescript-eslint/parser@8.69.0(eslint@10.9.1(jiti@2.6.1)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@5.6.1-rc)':
     dependencies:
@@ -13331,7 +13332,7 @@ snapshots:
 
   buffer-image-size@0.6.4:
     dependencies:
-      '@types/node': 26.5.1
+      '@types/node': 22.20.2
 
   buffer@6.0.3:
     dependencies:
@@ -14281,7 +14282,7 @@ snapshots:
 
   happy-dom@20.14.3:
     dependencies:
-      '@types/node': 26.5.1
+      '@types/node': 22.20.2
       '@types/whatwg-mimetype': 3.0.2
       '@types/ws': 8.18.1
       buffer-image-size: 0.6.4
@@ -17011,7 +17012,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  vitepress@2.0.0-alpha.20(@arethetypeswrong/core@0.18.5)(@types/node@26.5.1)(axios@1.20.0(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2))(change-case@5.4.4)(jiti@2.6.1)(postcss@8.5.28)(publint@0.3.24)(terser@5.51.2)(typescript@6.0.3)(yaml@2.9.0):
+  vitepress@https://pkg.pr.new/vitepress@5432(@arethetypeswrong/core@0.18.5)(@types/node@26.5.1)(axios@1.20.0(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2))(change-case@5.4.4)(jiti@2.6.1)(postcss@8.5.28)(publint@0.3.24)(terser@5.51.2)(typescript@6.0.3)(yaml@2.9.0):
     dependencies:
       '@docsearch/css': 4.7.0
       '@docsearch/js': 4.7.0
