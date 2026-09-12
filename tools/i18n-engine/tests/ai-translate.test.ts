@@ -51,10 +51,10 @@ function installConcurrencyProbe(): void {
     scriptPath,
     [
       'import { appendFileSync } from "node:fs";',
+      `appendFileSync(${JSON.stringify(log)}, "+\\n");`,
       "process.stdin.resume();",
       'await new Promise((resolve) => process.stdin.once("end", resolve));',
-      `appendFileSync(${JSON.stringify(log)}, "+\\n");`,
-      "await new Promise((resolve) => setTimeout(resolve, 100));",
+      "await new Promise((resolve) => setTimeout(resolve, 250));",
       `appendFileSync(${JSON.stringify(log)}, "-\\n");`,
       'process.stdout.write("{}");',
       "",

@@ -1,4 +1,7 @@
-import { expect, test, vi } from "vite-plus/test";
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { afterEach, expect, test, vi } from "vite-plus/test";
 
 vi.mock("../.vitepress/i18n.ts", () => ({
   NON_ROOT_LOCALES: ["de", "hu"],
@@ -7,7 +10,7 @@ vi.mock("../.vitepress/i18n.ts", () => ({
 }));
 vi.mock("../../scripts/release/cli.ts", () => ({ runAsMain: () => {} }));
 
-const { localeOfPage, mergeSitemapUrls, orderRootLast, renderSitemap } =
+const { assertScopedLocaleConfig, localeOfPage, mergeSitemapUrls, orderRootLast, renderSitemap } =
   await import("./build-locales.ts");
 
 test("orderRootLast puts root after every non-root locale", () => {
@@ -53,4 +56,52 @@ test("renderSitemap emits a well-formed urlset", () => {
   const xml = renderSitemap([sitemapOf("https://x/a")]);
   expect(xml.startsWith('<?xml version="1.0" encoding="UTF-8"?>')).toBe(true);
   expect(xml.trimEnd().endsWith("</urlset>")).toBe(true);
+});
+
+let localeDistDir: string | undefined;
+
+afterEach(() => {
+  if (localeDistDir) rmSync(localeDistDir, { recursive: true, force: true });
+  localeDistDir = undefined;
+});
+
+const withChunk = (content: string): string => {
+  localeDistDir = mkdtempSync(join(tmpdir(), "build-locales-test-"));
+  const assetsDir = join(localeDistDir, "assets");
+  mkdirSync(assetsDir, { recursive: true });
+  writeFileSync(join(assetsDir, "app.abc123.js"), content);
+  return localeDistDir;
+};
+
+test("assertScopedLocaleConfig is a no-op when there's no assets dir", () => {
+  const emptyDir = mkdtempSync(join(tmpdir(), "build-locales-test-"));
+  localeDistDir = emptyDir;
+  expect(() => assertScopedLocaleConfig(emptyDir, "hu")).not.toThrow();
+});
+
+test("assertScopedLocaleConfig passes a small, correctly scoped chunk", () => {
+  const dir = withChunk('{"locales":{"hu":{"label":"Magyar"}}}');
+  expect(() => assertScopedLocaleConfig(dir, "hu")).not.toThrow();
+});
+
+test("assertScopedLocaleConfig throws when another locale's nav leaks in", () => {
+  const dir = withChunk('{"link":"/de/guide/getting-started"}');
+  expect(() => assertScopedLocaleConfig(dir, "hu")).toThrow(/embeds locale "de"/u);
+});
+
+test("assertScopedLocaleConfig throws when the shared chunks exceed the byte cap", () => {
+  const dir = withChunk("x".repeat(6 * 1024 * 1024));
+  expect(() => assertScopedLocaleConfig(dir, "hu")).toThrow(/over the 5 MB cap/u);
+});
+
+test("assertScopedLocaleConfig ignores per-page chunks", () => {
+  const dir = mkdtempSync(join(tmpdir(), "build-locales-test-"));
+  localeDistDir = dir;
+  const assetsDir = join(dir, "assets");
+  mkdirSync(assetsDir, { recursive: true });
+  writeFileSync(
+    join(assetsDir, "de_guide_cli.md.abc123.js"),
+    '{"link":"/de/guide/getting-started"}',
+  );
+  expect(() => assertScopedLocaleConfig(dir, "hu")).not.toThrow();
 });

@@ -265,6 +265,13 @@ const rootLocaleOnly = process.env.DOCS_ROOT_LOCALE_ONLY === "1";
 const buildLocale = process.env.DOCS_LOCALE;
 const isLocaleScoped = buildLocale !== undefined;
 
+// A per-locale build (see build-locales.ts) only ever renders `buildLocale`'s own pages, so every
+// OTHER locale's full nav/sidebar would be dead weight in this build's site-data script (see the
+// `localesConfig` comment below for why it's safe to drop). Unscoped `vitepress dev` builds every
+// locale in one process, so every locale stays "active" there.
+const isActiveLocale = (localeKey: DocsLocale): boolean =>
+  !isLocaleScoped || localeKey === buildLocale;
+
 const docsRoot = at("docs");
 
 const readPartialPages = (): Set<string> | undefined => {
@@ -316,8 +323,12 @@ const loadSidebar = (relativePath: string): DefaultTheme.SidebarItem[] => {
     : [];
 };
 
+// Only load the (potentially large) TypeDoc sidebar JSON for locales that actually get a full
+// themeConfig below — a per-locale build never needs the other 43 locales' copies.
 const typedocSidebarByLocale = Object.fromEntries(
-  localeEntries.map(([localeKey, locale]) => [localeKey, loadSidebar(locale.typedocSidebarPath)]),
+  localeEntries
+    .filter(([localeKey]) => isActiveLocale(localeKey))
+    .map(([localeKey, locale]) => [localeKey, loadSidebar(locale.typedocSidebarPath)]),
 ) as Record<DocsLocale, DefaultTheme.SidebarItem[]>;
 
 // `DOCS_ROOT_LOCALE_ONLY=1` builds skip every `<locale>/api/**` page (see `srcExclude` below), so a
@@ -326,106 +337,128 @@ const typedocSidebarByLocale = Object.fromEntries(
 const apiPrefixFor = (localeKey: DocsLocale): string =>
   rootLocaleOnly ? LOCALE_THEMES.root.apiPrefix : LOCALE_THEMES[localeKey].apiPrefix;
 
+// TypeDoc emits one monorepo-wide tree; partition it by package/CSS route so a page only ever needs
+// its own section instead of every package's nav. Computed once per active locale but kept OUT of the
+// shared themeConfig below — it's applied per page instead (see the `transformPageData` override
+// further down), so a guide page carries none of it and an API page carries only its own route.
+const apiSidebarRoutesByLocale = Object.fromEntries(
+  localeEntries
+    .filter(([localeKey]) => isActiveLocale(localeKey))
+    .map(([localeKey, locale]) => [
+      localeKey,
+      partitionApiSidebar(
+        typedocSidebarByLocale[localeKey],
+        locale.sidebar.api,
+        apiPrefixFor(localeKey),
+        locale.sidebar.css,
+        locale.sidebar.apiGroups,
+        locale.sidebar.apiOverview,
+      ),
+    ]),
+) as Partial<Record<DocsLocale, ReturnType<typeof partitionApiSidebar>>>;
+
 // A script-specific wordmark, when one exists (see `NON_LATIN_LOCALES` in i18n.ts); every other
 // locale falls back to the default Latin logo set below.
 const localesConfig = Object.fromEntries(
-  localeEntries.map(([localeKey, locale]) => [
-    localeKey,
-    {
-      label: locale.label,
-      lang: locale.lang,
-      dir: locale.dir,
-      title: "pantoken",
-      description: locale.description,
-      themeConfig: {
-        nav: [
-          { text: locale.nav.guide, link: `${locale.guidePrefix}getting-started` },
-          { text: locale.nav.css, link: `${apiPrefixFor(localeKey)}css/` },
-          { text: locale.nav.api, link: apiPrefixFor(localeKey) },
-        ],
-        sidebar: {
-          [locale.guidePrefix]: [
-            {
-              text: locale.sidebar.intro,
-              items: [
-                {
-                  text: locale.sidebar.gettingStarted,
-                  link: `${locale.guidePrefix}getting-started`,
-                },
-                {
-                  text: locale.sidebar.architecture,
-                  link: `${locale.guidePrefix}architecture`,
-                },
-                {
-                  text: locale.sidebar.components,
-                  link: `${locale.guidePrefix}components`,
-                },
-              ],
-            },
-            {
-              text: locale.sidebar.guides,
-              items: [
-                { text: locale.sidebar.cdn, link: `${locale.guidePrefix}cdn` },
-                {
-                  text: locale.sidebar.cdnPicker,
-                  link: `${locale.guidePrefix}cdn-picker`,
-                },
-                { text: locale.sidebar.cli, link: `${locale.guidePrefix}cli` },
-                { text: locale.sidebar.plugins, link: `${locale.guidePrefix}plugins` },
-                {
-                  text: locale.sidebar.generated,
-                  link: `${locale.guidePrefix}generated-output`,
-                },
-              ],
-            },
+  localeEntries.map(([localeKey, locale]) => {
+    // A per-locale build (see build-locales.ts) already builds every OTHER locale as its own
+    // independent site with its own full nav/sidebar. The language switcher (VPNavBarExtra.vue)
+    // does a hard `window.location.assign`, not an SPA route change, so this build never needs to
+    // render another locale's pages — only enough to list it in the language dropdown (`useLangs()`
+    // reads `label`/`lang`; `link` defaults from the key).
+    if (!isActiveLocale(localeKey)) {
+      return [localeKey, { label: locale.label, lang: locale.lang, dir: locale.dir }];
+    }
+    return [
+      localeKey,
+      {
+        label: locale.label,
+        lang: locale.lang,
+        dir: locale.dir,
+        title: "pantoken",
+        description: locale.description,
+        themeConfig: {
+          nav: [
+            { text: locale.nav.guide, link: `${locale.guidePrefix}getting-started` },
+            { text: locale.nav.css, link: `${apiPrefixFor(localeKey)}css/` },
+            { text: locale.nav.api, link: apiPrefixFor(localeKey) },
           ],
-          // TypeDoc emits one monorepo-wide tree. Partition it by package/CSS route so VitePress doesn't
-          // server-render all API symbols into every generated page.
-          ...partitionApiSidebar(
-            typedocSidebarByLocale[localeKey],
-            locale.sidebar.api,
-            apiPrefixFor(localeKey),
-            locale.sidebar.css,
-            locale.sidebar.apiGroups,
-            locale.sidebar.apiOverview,
-          ),
-        },
-        editLink: {
-          pattern: "https://github.com/thedannywahl/pantoken/edit/main/docs/:path",
-          text: locale.editText,
-        },
-        // A script-specific wordmark, when one exists (see `NON_LATIN_LOCALES` above); VitePress
-        // stacks this over the root `themeConfig.logo` set below.
-        ...(NON_LATIN_LOCALES[localeKey] && {
-          logo: {
-            light: `/logo-light-${NON_LATIN_LOCALES[localeKey]}.svg`,
-            dark: `/logo-dark-${NON_LATIN_LOCALES[localeKey]}.svg`,
+          sidebar: {
+            [locale.guidePrefix]: [
+              {
+                text: locale.sidebar.intro,
+                items: [
+                  {
+                    text: locale.sidebar.gettingStarted,
+                    link: `${locale.guidePrefix}getting-started`,
+                  },
+                  {
+                    text: locale.sidebar.architecture,
+                    link: `${locale.guidePrefix}architecture`,
+                  },
+                  {
+                    text: locale.sidebar.components,
+                    link: `${locale.guidePrefix}components`,
+                  },
+                ],
+              },
+              {
+                text: locale.sidebar.guides,
+                items: [
+                  { text: locale.sidebar.cdn, link: `${locale.guidePrefix}cdn` },
+                  {
+                    text: locale.sidebar.cdnPicker,
+                    link: `${locale.guidePrefix}cdn-picker`,
+                  },
+                  { text: locale.sidebar.cli, link: `${locale.guidePrefix}cli` },
+                  { text: locale.sidebar.plugins, link: `${locale.guidePrefix}plugins` },
+                  {
+                    text: locale.sidebar.generated,
+                    link: `${locale.guidePrefix}generated-output`,
+                  },
+                ],
+              },
+            ],
+            // The API sidebar is injected per-page instead — see `apiSidebarRoutesByLocale` above
+            // and its `transformPageData` use below.
           },
-        }),
-        // Localized default-theme chrome. `outline.label` merges over the global `outline.level`
-        // (VitePress stacks per-locale themeConfig recursively over the root), so the level survives.
-        outline: { label: locale.chrome.outlineLabel },
-        docFooter: { prev: locale.chrome.docFooterPrev, next: locale.chrome.docFooterNext },
-        darkModeSwitchLabel: locale.chrome.darkModeSwitchLabel,
-        lightModeSwitchTitle: locale.chrome.lightModeSwitchTitle,
-        darkModeSwitchTitle: locale.chrome.darkModeSwitchTitle,
-        sidebarMenuLabel: locale.chrome.sidebarMenuLabel,
-        returnToTopLabel: locale.chrome.returnToTopLabel,
-        langMenuLabel: locale.chrome.langMenuLabel,
-        // `lastUpdated: true` is set globally below, so localize its label here.
-        lastUpdated: { text: locale.chrome.lastUpdatedText },
-        notFound: locale.chrome.notFound,
-        // Read by the custom agent shell prompt (GetStartedTabs.vue) via `useData().theme`.
-        chrome: { agentShellPrompt: locale.chrome.agentShellPrompt },
-        // Read by the custom palette selector (ThemeSelector.vue) via `useData().theme`.
-        themeSelector: locale.themeSelector,
-        // Read by the CDN picker (CdnPicker.vue) via `useData().theme`.
-        cdnPicker: locale.cdnPicker,
-        // Read by the "Get started" scaffold tabs (GetStartedTabs.vue) via `useData().theme`.
-        getStartedTabs: locale.getStartedTabs,
+          editLink: {
+            pattern: "https://github.com/thedannywahl/pantoken/edit/main/docs/:path",
+            text: locale.editText,
+          },
+          // A script-specific wordmark, when one exists (see `NON_LATIN_LOCALES` above); VitePress
+          // stacks this over the root `themeConfig.logo` set below.
+          ...(NON_LATIN_LOCALES[localeKey] && {
+            logo: {
+              light: `/logo-light-${NON_LATIN_LOCALES[localeKey]}.svg`,
+              dark: `/logo-dark-${NON_LATIN_LOCALES[localeKey]}.svg`,
+            },
+          }),
+          // Localized default-theme chrome. `outline.label` merges over the global `outline.level`
+          // (VitePress stacks per-locale themeConfig recursively over the root), so the level survives.
+          outline: { label: locale.chrome.outlineLabel },
+          docFooter: { prev: locale.chrome.docFooterPrev, next: locale.chrome.docFooterNext },
+          darkModeSwitchLabel: locale.chrome.darkModeSwitchLabel,
+          lightModeSwitchTitle: locale.chrome.lightModeSwitchTitle,
+          darkModeSwitchTitle: locale.chrome.darkModeSwitchTitle,
+          sidebarMenuLabel: locale.chrome.sidebarMenuLabel,
+          returnToTopLabel: locale.chrome.returnToTopLabel,
+          langMenuLabel: locale.chrome.langMenuLabel,
+          // `lastUpdated: true` is set globally below, so localize its label here.
+          lastUpdated: { text: locale.chrome.lastUpdatedText },
+          notFound: locale.chrome.notFound,
+          // Read by the custom agent shell prompt (GetStartedTabs.vue) via `useData().theme`.
+          chrome: { agentShellPrompt: locale.chrome.agentShellPrompt },
+          // Read by the custom palette selector (ThemeSelector.vue) via `useData().theme`.
+          themeSelector: locale.themeSelector,
+          // Read by the CDN picker (CdnPicker.vue) via `useData().theme`.
+          cdnPicker: locale.cdnPicker,
+          // Read by the "Get started" scaffold tabs (GetStartedTabs.vue) via `useData().theme`.
+          getStartedTabs: locale.getStartedTabs,
+        },
       },
-    },
-  ]),
+    ];
+  }),
 );
 
 // The local-search index reads the *root* themeConfig (not the per-route one), so its per-locale UI
@@ -457,6 +490,29 @@ const searchLocales = Object.fromEntries(
 // building for alternative environments (for example, a project-site path on github.io).
 const base = process.env.DOCS_BASE ?? "/";
 const outDir = process.env.DOCS_OUT_DIR;
+
+/** A page's route path from its source-relative path (cleanUrls drops `index`/the extension). */
+function pagePath(relativePath: string): string {
+  return `/${relativePath}`.replace(/index\.md$/, "").replace(/\.md$/, "");
+}
+
+/**
+ * The per-page API sidebar for a page, from `apiSidebarRoutesByLocale` — the longest route key
+ * that's a prefix of the page's own path, matching VitePress's own multi-sidebar resolution.
+ */
+function apiSidebarFor(
+  localeKey: DocsLocale,
+  relativePath: string,
+): DefaultTheme.SidebarItem[] | undefined {
+  const routes = apiSidebarRoutesByLocale[localeKey];
+  if (!routes) return undefined;
+  const path = pagePath(relativePath);
+  let bestKey: string | undefined;
+  for (const key of Object.keys(routes)) {
+    if (path.startsWith(key) && (!bestKey || key.length > bestKey.length)) bestKey = key;
+  }
+  return bestKey ? routes[bestKey] : undefined;
+}
 
 // VitePress SSR-renders pages with `buildConcurrency` (default 64) in flight at once, and every
 // in-flight page holds its rendered HTML, head tags, and Vue SSR context alive. At ~39k pages
@@ -692,15 +748,23 @@ export default defineConfig({
   // doesn't build (see `srcExclude` below). Retarget those actions at the English API tree so the
   // hero buttons resolve instead of 404ing; the full-locale build leaves them alone.
   transformPageData: (pageData) => {
-    if (!rootLocaleOnly || pageData.frontmatter.layout !== "home") return;
-    const localeKey = NON_ROOT_LOCALES.find((key) => pageData.relativePath.startsWith(`${key}/`));
-    if (!localeKey) return;
-    const actions = (pageData.frontmatter.hero?.actions ?? []) as { link?: string }[];
-    for (const action of actions) {
-      if (action.link?.startsWith(`/${localeKey}/api`)) {
-        action.link = action.link.slice(`/${localeKey}`.length);
+    if (rootLocaleOnly && pageData.frontmatter.layout === "home") {
+      const localeKey = NON_ROOT_LOCALES.find((key) => pageData.relativePath.startsWith(`${key}/`));
+      const actions = localeKey
+        ? ((pageData.frontmatter.hero?.actions ?? []) as { link?: string }[])
+        : [];
+      for (const action of actions) {
+        if (action.link?.startsWith(`/${localeKey}/api`)) {
+          action.link = action.link.slice(`/${localeKey}`.length);
+        }
       }
     }
+    // Inject this page's own API section tree (see `apiSidebarRoutesByLocale`) instead of relying
+    // on a global themeConfig.sidebar entry — keeps every other package's nav out of this page's
+    // site data. No-op for non-API pages (the guide sidebar stays in the global themeConfig).
+    const localeKey = localeHeadInfo(pageData.relativePath).localeKey;
+    const sidebar = apiSidebarFor(localeKey, pageData.relativePath);
+    if (sidebar) pageData.frontmatter.sidebar = sidebar;
   },
   // Layer per-page Open Graph / Twitter tags, a canonical link, the page locale, and translated
   // structured data on top of the head defaults, so each shared URL previews with its own title,
