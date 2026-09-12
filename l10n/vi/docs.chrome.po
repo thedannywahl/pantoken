@@ -1,23 +1,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:58+0000\n"
+"PO-Revision-Date: 2026-09-12 13:48+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
-"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:description"
-msgid ""
-"Instructure design tokens and icons, reshaped for every platform and "
-"framework."
-msgstr ""
-"Tokens thiết kế và biểu tượng của Instructure, được tái tạo cho mọi nền tảng "
-"và framework."
+msgid "Instructure design tokens and icons, reshaped for every platform and framework."
+msgstr "Tokens thiết kế và biểu tượng của Instructure, được tái tạo cho mọi nền tảng và framework."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -105,6 +101,66 @@ msgstr "Tài liệu API"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
+msgctxt "docs.chrome:sidebar.css"
+msgid "CSS"
+msgstr "CSS"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.ai"
+msgid "AI"
+msgstr "AI"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.bundlers"
+msgid "Bundlers"
+msgstr "Bundlers"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.design"
+msgid "Design"
+msgstr "Thiết kế"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.formats"
+msgid "Formats"
+msgstr "Định dạng"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.packages"
+msgid "Packages"
+msgstr "Gói"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.platforms"
+msgid "Platforms"
+msgstr "Nền tảng"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.plugins"
+msgid "Plugins"
+msgstr "Plugin"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.renderers"
+msgid "Renderers"
+msgstr "Công cụ kết xuất"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.tools"
+msgid "Tools"
+msgstr "Công cụ"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
 msgctxt "docs.chrome:sidebar.apiOverview"
 msgid "Overview"
 msgstr "Tổng quan"
@@ -137,7 +193,7 @@ msgstr "Canvas"
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.canvasHighContrast"
 msgid "Canvas high contrast"
-msgstr "Canvas độ tương phản cao"
+msgstr "Canvas high contrast"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -161,7 +217,7 @@ msgstr "Canvas"
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeCanvasHighContrast"
 msgid "Canvas high contrast"
-msgstr "Canvas độ tương phản cao"
+msgstr "Canvas high contrast"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -238,12 +294,8 @@ msgstr "Về thiết lập lại cơ sở"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfo"
-msgid ""
-"The opt-in global reset: box-sizing, the page surface, base text colour and "
-"font, color-scheme, and link defaults."
-msgstr ""
-"Thiết lập lại toàn cục chọn tham gia: box-sizing, bề mặt trang, màu chữ cơ "
-"bản và font, color-scheme, và mặc định cho liên kết."
+msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
+msgstr "Thiết lập lại toàn cục chọn tham gia: box-sizing, bề mặt trang, màu chữ cơ bản và font, color-scheme, và mặc định cho liên kết."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -260,12 +312,8 @@ msgstr "Về các lớp tiện ích"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
-msgid ""
-"An opt-in layer of cross-cutting classes: a View primitive, spacing on the "
-"token scale, and semantic color overrides."
-msgstr ""
-"Một lớp các lớp cắt ngang chọn tham gia: một primitive View, khoảng cách "
-"theo thang token, và ghi đè màu có ý nghĩa."
+msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
+msgstr "Một lớp các lớp cắt ngang chọn tham gia: một primitive View, khoảng cách theo thang token, và ghi đè màu có ý nghĩa."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -288,21 +336,14 @@ msgstr "Chọn một hoặc nhiều thành phần để tạo URL."
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.fontsNote"
-msgid ""
-"Fonts load separately — add a <link> to @pantoken/components/fonts.css when "
-"you need them."
-msgstr ""
-"Font được tải riêng — thêm một <link> tới @pantoken/components/fonts.css khi "
-"cần."
+msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
+msgstr "Font được tải riêng — thêm một <link> tới @pantoken/components/fonts.css khi cần."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.iconsNote"
-msgid ""
-"component-icons.css is included because a selected component uses icons."
-msgstr ""
-"component-icons.css được bao gồm vì một thành phần được chọn sử dụng biểu "
-"tượng."
+msgid "component-icons.css is included because a selected component uses icons."
+msgstr "component-icons.css được bao gồm vì một thành phần được chọn sử dụng biểu tượng."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -338,9 +379,7 @@ msgstr "Tiếp tục hoạt ảnh"
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
 msgid "\"Set up pantoken in this project using create.pantoken.app/SKILL.md.\""
-msgstr ""
-"\"Thiết lập pantoken (github.com/thedannywahl/pantoken) trong dự án này bằng "
-"create.pantoken.app/SKILL.md.\""
+msgstr "\"Thiết lập pantoken (github.com/thedannywahl/pantoken) trong dự án này bằng create.pantoken.app/SKILL.md.\""
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -423,12 +462,8 @@ msgstr "KHÔNG TÌM THẤY TRANG"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.quote"
-msgid ""
-"But if you don't change your direction, and if you keep looking, you may end "
-"up where you are heading."
-msgstr ""
-"Nhưng nếu bạn không thay đổi hướng đi của mình, và nếu bạn tiếp tục tìm "
-"kiếm, bạn có thể kết thúc ở nơi bạn đang hướng tới."
+msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
+msgstr "Nhưng nếu bạn không thay đổi hướng đi của mình, và nếu bạn tiếp tục tìm kiếm, bạn có thể kết thúc ở nơi bạn đang hướng tới."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

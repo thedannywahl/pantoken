@@ -1,23 +1,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:58+0000\n"
+"PO-Revision-Date: 2026-09-12 13:48+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
-"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:description"
-msgid ""
-"Instructure design tokens and icons, reshaped for every platform and "
-"framework."
-msgstr ""
-"Instructure design tokens and icons, reshaped for every platform and "
-"framework."
+msgid "Instructure design tokens and icons, reshaped for every platform and framework."
+msgstr "Instructure design tokens and icons, reshaped for every platform and framework."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -102,6 +98,66 @@ msgstr "Generated output"
 msgctxt "docs.chrome:sidebar.api"
 msgid "API reference"
 msgstr "API reference"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.css"
+msgid "CSS"
+msgstr "CSS"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.ai"
+msgid "AI"
+msgstr "AI"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.bundlers"
+msgid "Bundlers"
+msgstr "Bundlers"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.design"
+msgid "Design"
+msgstr "Design"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.formats"
+msgid "Formats"
+msgstr "Formats"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.packages"
+msgid "Packages"
+msgstr "Packages"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.platforms"
+msgid "Platforms"
+msgstr "Platforms"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.plugins"
+msgid "Plugins"
+msgstr "Plugins"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.renderers"
+msgid "Renderers"
+msgstr "Renderers"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.tools"
+msgid "Tools"
+msgstr "Tools"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -238,12 +294,8 @@ msgstr "About the base reset"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfo"
-msgid ""
-"The opt-in global reset: box-sizing, the page surface, base text colour and "
-"font, color-scheme, and link defaults."
-msgstr ""
-"The opt-in global reset: box-sizing, the page surface, base text colour and "
-"font, color-scheme, and link defaults."
+msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
+msgstr "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -260,12 +312,8 @@ msgstr "About the utility classes"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
-msgid ""
-"An opt-in layer of cross-cutting classes: a View primitive, spacing on the "
-"token scale, and semantic color overrides."
-msgstr ""
-"An opt-in layer of cross-cutting classes: a View primitive, spacing on the "
-"token scale, and semantic colour overrides."
+msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
+msgstr "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic colour overrides."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -288,20 +336,14 @@ msgstr "Select one or more components to build a URL."
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.fontsNote"
-msgid ""
-"Fonts load separately — add a <link> to @pantoken/components/fonts.css when "
-"you need them."
-msgstr ""
-"Fonts load separately — add a <link> to @pantoken/components/fonts.css when "
-"you need them."
+msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
+msgstr "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.iconsNote"
-msgid ""
-"component-icons.css is included because a selected component uses icons."
-msgstr ""
-"component-icons.css is included because a selected component uses icons."
+msgid "component-icons.css is included because a selected component uses icons."
+msgstr "component-icons.css is included because a selected component uses icons."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -337,9 +379,7 @@ msgstr "Resume animation"
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
 msgid "\"Set up pantoken in this project using create.pantoken.app/SKILL.md.\""
-msgstr ""
-"\"Set up pantoken (github.com/thedannywahl/pantoken) in this project using "
-"create.pantoken.app/SKILL.md.\""
+msgstr "\"Set up pantoken (github.com/thedannywahl/pantoken) in this project using create.pantoken.app/SKILL.md.\""
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -422,12 +462,8 @@ msgstr "PAGE NOT FOUND"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.quote"
-msgid ""
-"But if you don't change your direction, and if you keep looking, you may end "
-"up where you are heading."
-msgstr ""
-"But if you don't change your direction, and if you keep looking, you may end "
-"up where you are heading."
+msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
+msgstr "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

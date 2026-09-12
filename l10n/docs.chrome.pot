@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 23:56+0000\n"
+"PO-Revision-Date: 2026-09-12 13:39+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -97,6 +97,66 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.chrome:sidebar.api"
 msgid "API reference"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.css"
+msgid "CSS"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.ai"
+msgid "AI"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.bundlers"
+msgid "Bundlers"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.design"
+msgid "Design"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.formats"
+msgid "Formats"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.packages"
+msgid "Packages"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.platforms"
+msgid "Platforms"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.plugins"
+msgid "Plugins"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.renderers"
+msgid "Renderers"
+msgstr ""
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.tools"
+msgid "Tools"
 msgstr ""
 
 #: docs/.vitepress/i18n.json

@@ -1,22 +1,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:58+0000\n"
+"PO-Revision-Date: 2026-09-12 13:48+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
-"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:description"
-msgid ""
-"Instructure design tokens and icons, reshaped for every platform and "
-"framework."
-msgstr ""
-"تصميم Instructure للرموز والرموز التعبيرية، مُعاد تشكيله لكل منصة وإطار عمل."
+msgid "Instructure design tokens and icons, reshaped for every platform and framework."
+msgstr "تصميم Instructure للرموز والرموز التعبيرية، مُعاد تشكيله لكل منصة وإطار عمل."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -104,6 +101,66 @@ msgstr "مرجع واجهة برمجة التطبيقات"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
+msgctxt "docs.chrome:sidebar.css"
+msgid "CSS"
+msgstr "CSS"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.ai"
+msgid "AI"
+msgstr "AI"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.bundlers"
+msgid "Bundlers"
+msgstr "أدوات التجميع"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.design"
+msgid "Design"
+msgstr "التصميم"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.formats"
+msgid "Formats"
+msgstr "الصيغ"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.packages"
+msgid "Packages"
+msgstr "الحزم"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.platforms"
+msgid "Platforms"
+msgstr "المنصات"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.plugins"
+msgid "Plugins"
+msgstr "الإضافات"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.renderers"
+msgid "Renderers"
+msgstr "أدوات التصيير"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.tools"
+msgid "Tools"
+msgstr "الأدوات"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
 msgctxt "docs.chrome:sidebar.apiOverview"
 msgid "Overview"
 msgstr "نظرة عامة"
@@ -136,7 +193,7 @@ msgstr "Canvas"
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.canvasHighContrast"
 msgid "Canvas high contrast"
-msgstr "Canvas تباين عالي"
+msgstr "Canvas high contrast"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -160,7 +217,7 @@ msgstr "Canvas"
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeCanvasHighContrast"
 msgid "Canvas high contrast"
-msgstr "Canvas تباين عالي"
+msgstr "Canvas high contrast"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -237,12 +294,8 @@ msgstr "حول إعادة التعيين الأساسية"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfo"
-msgid ""
-"The opt-in global reset: box-sizing, the page surface, base text colour and "
-"font, color-scheme, and link defaults."
-msgstr ""
-"إعادة التعيين العالمية الاختيارية: box-sizing، سطح الصفحة، لون النص والخط "
-"الأساسي، نظام الألوان، وإعدادات الروابط الافتراضية."
+msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
+msgstr "إعادة التعيين العالمية الاختيارية: box-sizing، سطح الصفحة، لون النص والخط الأساسي، نظام الألوان، وإعدادات الروابط الافتراضية."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -259,12 +312,8 @@ msgstr "حول فئات الأدوات المساعدة"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
-msgid ""
-"An opt-in layer of cross-cutting classes: a View primitive, spacing on the "
-"token scale, and semantic color overrides."
-msgstr ""
-"طبقة اختيارية من الفئات الشاملة: بدائية View، تباعد وفق مقياس الرموز، "
-"وتجاوزات اللون الدلالي."
+msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
+msgstr "طبقة اختيارية من الفئات الشاملة: بدائية View، تباعد وفق مقياس الرموز، وتجاوزات اللون الدلالي."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -287,18 +336,13 @@ msgstr "اختر مكونًا واحدًا أو أكثر لإنشاء عنوان
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.fontsNote"
-msgid ""
-"Fonts load separately — add a <link> to @pantoken/components/fonts.css when "
-"you need them."
-msgstr ""
-"الخطوط تُحمّل بشكل منفصل — أضف <link> إلى @pantoken/components/fonts.css عند "
-"الحاجة إليها."
+msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
+msgstr "الخطوط تُحمّل بشكل منفصل — أضف <link> إلى @pantoken/components/fonts.css عند الحاجة إليها."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.iconsNote"
-msgid ""
-"component-icons.css is included because a selected component uses icons."
+msgid "component-icons.css is included because a selected component uses icons."
 msgstr "component-icons.css مُضمّن لأن مكونًا محددًا يستخدم أيقونات."
 
 #: docs/.vitepress/i18n.json
@@ -335,9 +379,7 @@ msgstr "استئناف الرسوم المتحركة"
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
 msgid "\"Set up pantoken in this project using create.pantoken.app/SKILL.md.\""
-msgstr ""
-"\"قم بإعداد pantoken (github.com/thedannywahl/pantoken) في هذا المشروع "
-"باستخدام create.pantoken.app/SKILL.md.\""
+msgstr "\"قم بإعداد pantoken (github.com/thedannywahl/pantoken) في هذا المشروع باستخدام create.pantoken.app/SKILL.md.\""
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -420,11 +462,8 @@ msgstr "الصفحة غير موجودة"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.quote"
-msgid ""
-"But if you don't change your direction, and if you keep looking, you may end "
-"up where you are heading."
-msgstr ""
-"ولكن إذا لم تغير اتجاهك، واستمررت في النظر، فقد ينتهي بك المطاف حيث تتجه."
+msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
+msgstr "ولكن إذا لم تغير اتجاهك، واستمررت في النظر، فقد ينتهي بك المطاف حيث تتجه."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

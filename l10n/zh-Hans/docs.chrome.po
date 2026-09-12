@@ -1,20 +1,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:58+0000\n"
+"PO-Revision-Date: 2026-09-12 13:48+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
-"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:description"
-msgid ""
-"Instructure design tokens and icons, reshaped for every platform and "
-"framework."
+msgid "Instructure design tokens and icons, reshaped for every platform and framework."
 msgstr "Instructure 的设计代币和图标，针对每个平台和框架重新塑形。"
 
 #: docs/.vitepress/i18n.json
@@ -103,6 +101,66 @@ msgstr "API 参考"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
+msgctxt "docs.chrome:sidebar.css"
+msgid "CSS"
+msgstr "CSS"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.ai"
+msgid "AI"
+msgstr "AI"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.bundlers"
+msgid "Bundlers"
+msgstr "打包工具"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.design"
+msgid "Design"
+msgstr "设计"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.formats"
+msgid "Formats"
+msgstr "格式"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.packages"
+msgid "Packages"
+msgstr "包"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.platforms"
+msgid "Platforms"
+msgstr "平台"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.plugins"
+msgid "Plugins"
+msgstr "插件"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.renderers"
+msgid "Renderers"
+msgstr "渲染器"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.tools"
+msgid "Tools"
+msgstr "工具"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
 msgctxt "docs.chrome:sidebar.apiOverview"
 msgid "Overview"
 msgstr "概览"
@@ -135,7 +193,7 @@ msgstr "Canvas"
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.canvasHighContrast"
 msgid "Canvas high contrast"
-msgstr "Canvas 高对比度"
+msgstr "Canvas high contrast"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -159,7 +217,7 @@ msgstr "Canvas"
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeCanvasHighContrast"
 msgid "Canvas high contrast"
-msgstr "Canvas 高对比度"
+msgstr "Canvas high contrast"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -236,12 +294,8 @@ msgstr "关于基础重置"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfo"
-msgid ""
-"The opt-in global reset: box-sizing, the page surface, base text colour and "
-"font, color-scheme, and link defaults."
-msgstr ""
-"可选的全局重置：box-sizing、页面表面、基础文本颜色和字体、color-scheme，以及"
-"链接默认样式。"
+msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
+msgstr "可选的全局重置：box-sizing、页面表面、基础文本颜色和字体、color-scheme，以及链接默认样式。"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -258,9 +312,7 @@ msgstr "关于实用类"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
-msgid ""
-"An opt-in layer of cross-cutting classes: a View primitive, spacing on the "
-"token scale, and semantic color overrides."
+msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
 msgstr "一组可选的跨轴类：View 原语、基于代币刻度的间距，以及语义颜色覆盖。"
 
 #: docs/.vitepress/i18n.json
@@ -284,18 +336,13 @@ msgstr "选择一个或多个组件以构建 URL。"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.fontsNote"
-msgid ""
-"Fonts load separately — add a <link> to @pantoken/components/fonts.css when "
-"you need them."
-msgstr ""
-"字体单独加载 — 需要字体时，请向 @pantoken/components/fonts.css 添加一个 "
-"<link>。"
+msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
+msgstr "字体单独加载 — 需要字体时，请向 @pantoken/components/fonts.css 添加一个 <link>。"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.iconsNote"
-msgid ""
-"component-icons.css is included because a selected component uses icons."
+msgid "component-icons.css is included because a selected component uses icons."
 msgstr "component-icons.css 已包含，因为所选组件使用了图标。"
 
 #: docs/.vitepress/i18n.json
@@ -332,9 +379,7 @@ msgstr "恢复动画"
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
 msgid "\"Set up pantoken in this project using create.pantoken.app/SKILL.md.\""
-msgstr ""
-"\"在此项目中使用 create.pantoken.app/SKILL.md 设置 pantoken (github.com/"
-"thedannywahl/pantoken)。\""
+msgstr "\"在此项目中使用 create.pantoken.app/SKILL.md 设置 pantoken (github.com/thedannywahl/pantoken)。\""
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -417,9 +462,7 @@ msgstr "页面未找到"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.quote"
-msgid ""
-"But if you don't change your direction, and if you keep looking, you may end "
-"up where you are heading."
+msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
 msgstr "但如果你不改变方向，并且继续前进，你可能会到达你正朝着的地方。"
 
 #: docs/.vitepress/i18n.json

@@ -1,22 +1,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:58+0000\n"
+"PO-Revision-Date: 2026-09-12 13:48+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
-"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:description"
-msgid ""
-"Instructure design tokens and icons, reshaped for every platform and "
-"framework."
-msgstr ""
-"โทเค็นการออกแบบและไอคอนของ Instructure ปรับรูปแบบใหม่ให้เข้ากับทุกแพลตฟอร์มและเฟรมเวิร์ก"
+msgid "Instructure design tokens and icons, reshaped for every platform and framework."
+msgstr "โทเค็นการออกแบบและไอคอนของ Instructure ปรับรูปแบบใหม่ให้เข้ากับทุกแพลตฟอร์มและเฟรมเวิร์ก"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -104,6 +101,66 @@ msgstr "เอกสารอ้างอิง API"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
+msgctxt "docs.chrome:sidebar.css"
+msgid "CSS"
+msgstr "CSS"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.ai"
+msgid "AI"
+msgstr "AI"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.bundlers"
+msgid "Bundlers"
+msgstr "บันเดิลเลอร์"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.design"
+msgid "Design"
+msgstr "ออกแบบ"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.formats"
+msgid "Formats"
+msgstr "รูปแบบ"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.packages"
+msgid "Packages"
+msgstr "แพคเกจ"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.platforms"
+msgid "Platforms"
+msgstr "แพลตฟอร์ม"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.plugins"
+msgid "Plugins"
+msgstr "ปลั๊กอิน"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.renderers"
+msgid "Renderers"
+msgstr "เรนเดอร์"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.tools"
+msgid "Tools"
+msgstr "เครื่องมือ"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
 msgctxt "docs.chrome:sidebar.apiOverview"
 msgid "Overview"
 msgstr "ภาพรวม"
@@ -136,7 +193,7 @@ msgstr "Canvas"
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.canvasHighContrast"
 msgid "Canvas high contrast"
-msgstr "Canvas ความคอนทราสต์สูง"
+msgstr "Canvas high contrast"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -160,7 +217,7 @@ msgstr "Canvas"
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeCanvasHighContrast"
 msgid "Canvas high contrast"
-msgstr "Canvas ความคอนทราสต์สูง"
+msgstr "Canvas high contrast"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -237,12 +294,8 @@ msgstr "เกี่ยวกับการรีเซ็ตฐาน"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfo"
-msgid ""
-"The opt-in global reset: box-sizing, the page surface, base text colour and "
-"font, color-scheme, and link defaults."
-msgstr ""
-"การรีเซ็ตทั่วทั้งระบบแบบเลือกเปิด: box-sizing, พื้นผิวหน้าเพจ, สีและฟอนต์เริ่มต้นของข้อความ, "
-"color-scheme, และค่าดีฟอลต์ของลิงก์"
+msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
+msgstr "การรีเซ็ตทั่วทั้งระบบแบบเลือกเปิด: box-sizing, พื้นผิวหน้าเพจ, สีและฟอนต์เริ่มต้นของข้อความ, color-scheme, และค่าดีฟอลต์ของลิงก์"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -259,12 +312,8 @@ msgstr "เกี่ยวกับคลาสยูทิลิตี้"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
-msgid ""
-"An opt-in layer of cross-cutting classes: a View primitive, spacing on the "
-"token scale, and semantic color overrides."
-msgstr ""
-"เลเยอร์แบบเลือกเปิดของคลาสครอบคลุมข้าม: พื้นฐาน View, การเว้นช่องว่างตามสเกลโทเค็น, "
-"และการเขียนทับสีเชิงความหมาย"
+msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
+msgstr "เลเยอร์แบบเลือกเปิดของคลาสครอบคลุมข้าม: พื้นฐาน View, การเว้นช่องว่างตามสเกลโทเค็น, และการเขียนทับสีเชิงความหมาย"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -287,16 +336,13 @@ msgstr "เลือกคอมโพเนนต์หนึ่งหรือ
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.fontsNote"
-msgid ""
-"Fonts load separately — add a <link> to @pantoken/components/fonts.css when "
-"you need them."
+msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
 msgstr "ฟอนต์โหลดแยก — เพิ่ม <link> ไปที่ @pantoken/components/fonts.css เมื่อจำเป็น"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.iconsNote"
-msgid ""
-"component-icons.css is included because a selected component uses icons."
+msgid "component-icons.css is included because a selected component uses icons."
 msgstr "ไฟล์ component-icons.css ถูกแนบเพราะคอมโพเนนต์ที่เลือกใช้ไอคอน"
 
 #: docs/.vitepress/i18n.json
@@ -333,9 +379,7 @@ msgstr "ทำการเคลื่อนไหวต่อ"
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
 msgid "\"Set up pantoken in this project using create.pantoken.app/SKILL.md.\""
-msgstr ""
-"\"ตั้งค่า pantoken (github.com/thedannywahl/pantoken) ในโปรเจกต์นี้โดยใช้ "
-"create.pantoken.app/SKILL.md.\""
+msgstr "\"ตั้งค่า pantoken (github.com/thedannywahl/pantoken) ในโปรเจกต์นี้โดยใช้ create.pantoken.app/SKILL.md.\""
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -418,9 +462,7 @@ msgstr "ไม่พบหน้าเพจ"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.quote"
-msgid ""
-"But if you don't change your direction, and if you keep looking, you may end "
-"up where you are heading."
+msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
 msgstr "แต่ถ้าคุณไม่เปลี่ยนทิศทาง และถ้าคุณยังคงมองหา คุณอาจไปถึงที่ที่คุณกำลังมุ่งหน้าอยู่"
 
 #: docs/.vitepress/i18n.json

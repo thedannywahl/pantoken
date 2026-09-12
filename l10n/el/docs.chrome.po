@@ -1,23 +1,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:58+0000\n"
+"PO-Revision-Date: 2026-09-12 13:48+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
-"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:description"
-msgid ""
-"Instructure design tokens and icons, reshaped for every platform and "
-"framework."
-msgstr ""
-"Σημεία σχεδίασης (design tokens) και εικονίδια του Instructure, "
-"αναδιαμορφωμένα για κάθε πλατφόρμα και πλαίσιο εργασίας."
+msgid "Instructure design tokens and icons, reshaped for every platform and framework."
+msgstr "Σημεία σχεδίασης (design tokens) και εικονίδια του Instructure, αναδιαμορφωμένα για κάθε πλατφόρμα και πλαίσιο εργασίας."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -105,6 +101,66 @@ msgstr "Αναφορά API"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
+msgctxt "docs.chrome:sidebar.css"
+msgid "CSS"
+msgstr "CSS"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.ai"
+msgid "AI"
+msgstr "AI"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.bundlers"
+msgid "Bundlers"
+msgstr "Bundler"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.design"
+msgid "Design"
+msgstr "Σχεδίαση"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.formats"
+msgid "Formats"
+msgstr "Μορφές"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.packages"
+msgid "Packages"
+msgstr "Πακέτα"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.platforms"
+msgid "Platforms"
+msgstr "Πλατφόρμες"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.plugins"
+msgid "Plugins"
+msgstr "Πρόσθετα"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.renderers"
+msgid "Renderers"
+msgstr "Renderer"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.apiGroups.tools"
+msgid "Tools"
+msgstr "Εργαλεία"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
 msgctxt "docs.chrome:sidebar.apiOverview"
 msgid "Overview"
 msgstr "Επισκόπηση"
@@ -137,7 +193,7 @@ msgstr "Canvas"
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.canvasHighContrast"
 msgid "Canvas high contrast"
-msgstr "Canvas υψηλής αντίθεσης"
+msgstr "Canvas high contrast"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -161,7 +217,7 @@ msgstr "Canvas"
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeCanvasHighContrast"
 msgid "Canvas high contrast"
-msgstr "Canvas υψηλής αντίθεσης"
+msgstr "Canvas high contrast"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -238,13 +294,8 @@ msgstr "Σχετικά με το base reset"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfo"
-msgid ""
-"The opt-in global reset: box-sizing, the page surface, base text colour and "
-"font, color-scheme, and link defaults."
-msgstr ""
-"Η προαιρετική παγκόσμια επαναφορά: box-sizing, η επιφάνεια της σελίδας, το "
-"βασικό χρώμα και γραμματοσειρά κειμένου, το color-scheme και οι προεπιλογές "
-"συνδέσμων."
+msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
+msgstr "Η προαιρετική παγκόσμια επαναφορά: box-sizing, η επιφάνεια της σελίδας, το βασικό χρώμα και γραμματοσειρά κειμένου, το color-scheme και οι προεπιλογές συνδέσμων."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -261,12 +312,8 @@ msgstr "Σχετικά με τις βοηθητικές κλάσεις"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
-msgid ""
-"An opt-in layer of cross-cutting classes: a View primitive, spacing on the "
-"token scale, and semantic color overrides."
-msgstr ""
-"Ένα προαιρετικό στρώμα γενικών κλάσεων: μια πρωτογενής View, αποστάσεις στη "
-"κλίμακα token και σημασιολογικές παρακάμψεις χρωμάτων."
+msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
+msgstr "Ένα προαιρετικό στρώμα γενικών κλάσεων: μια πρωτογενής View, αποστάσεις στη κλίμακα token και σημασιολογικές παρακάμψεις χρωμάτων."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -289,21 +336,14 @@ msgstr "Επιλέξτε ένα ή περισσότερα συστατικά γ�
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.fontsNote"
-msgid ""
-"Fonts load separately — add a <link> to @pantoken/components/fonts.css when "
-"you need them."
-msgstr ""
-"Οι γραμματοσειρές φορτώνουν ξεχωριστά — προσθέστε ένα <link> σε @pantoken/"
-"components/fonts.css όταν τις χρειάζεστε."
+msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
+msgstr "Οι γραμματοσειρές φορτώνουν ξεχωριστά — προσθέστε ένα <link> σε @pantoken/components/fonts.css όταν τις χρειάζεστε."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.iconsNote"
-msgid ""
-"component-icons.css is included because a selected component uses icons."
-msgstr ""
-"Το component-icons.css συμπεριλαμβάνεται επειδή ένα επιλεγμένο συστατικό "
-"χρησιμοποιεί εικονίδια."
+msgid "component-icons.css is included because a selected component uses icons."
+msgstr "Το component-icons.css συμπεριλαμβάνεται επειδή ένα επιλεγμένο συστατικό χρησιμοποιεί εικονίδια."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -339,9 +379,7 @@ msgstr "Συνέχεια κινούμενων"
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
 msgid "\"Set up pantoken in this project using create.pantoken.app/SKILL.md.\""
-msgstr ""
-"\"Ρυθμίστε το pantoken (github.com/thedannywahl/pantoken) σε αυτό το έργο "
-"χρησιμοποιώντας create.pantoken.app/SKILL.md.\""
+msgstr "\"Ρυθμίστε το pantoken (github.com/thedannywahl/pantoken) σε αυτό το έργο χρησιμοποιώντας create.pantoken.app/SKILL.md.\""
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -424,12 +462,8 @@ msgstr "Η ΣΕΛΙΔΑ ΔΕΝ ΒΡΕΘΗΚΕ"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.quote"
-msgid ""
-"But if you don't change your direction, and if you keep looking, you may end "
-"up where you are heading."
-msgstr ""
-"Αλλά αν δεν αλλάξετε την κατεύθυνσή σας, και αν συνεχίσετε να κοιτάζετε, "
-"μπορεί τελικά να καταλήξετε εκεί που κατευθύνεστε."
+msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
+msgstr "Αλλά αν δεν αλλάξετε την κατεύθυνσή σας, και αν συνεχίσετε να κοιτάζετε, μπορεί τελικά να καταλήξετε εκεί που κατευθύνεστε."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
