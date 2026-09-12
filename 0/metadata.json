@@ -1,0 +1,56 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2AY94H3WR9R8K0F0A9EFRTM",
+  "session_id": "832807c2-bca5-4c0a-921d-6f1f18c5c02a",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-12T13:53:00.328256Z",
+  "branch": "pendo-button-tweaks",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    ".changeset/localized-sidebar-labels.md",
+    "docs/.vitepress/api-sidebar.test.ts",
+    "docs/.vitepress/api-sidebar.ts",
+    "docs/.vitepress/config.ts",
+    "docs/.vitepress/i18n.json",
+    "docs/.vitepress/i18n.ts",
+    "docs/scripts/translate-chrome-po.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "8a4611a541fb",
+  "checkpoint_transcript_start": 275,
+  "transcript_lines_at_start": 275,
+  "compact_transcript_start": 42,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-12T13:53:00.314254Z",
+    "agent_lines": 134,
+    "agent_removed": 9,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 134,
+    "total_lines_changed": 143,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
+}
