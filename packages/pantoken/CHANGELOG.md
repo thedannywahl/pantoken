@@ -1,5 +1,30 @@
 # CHANGELOG
 
+## 0.2.15
+
+### Patch Changes
+
+- Updated dependencies [c22ba83]
+- Updated dependencies [c22ba83]
+  - @pantoken/components@1.1.4
+  - @pantoken/vitepress@0.2.3
+  - @pantoken/drupal@0.1.29
+  - @pantoken/angular@0.1.32
+  - @pantoken/astro@0.1.19
+  - @pantoken/bootstrap@0.1.3
+  - @pantoken/css-in-js@0.1.15
+  - @pantoken/docusaurus@0.1.3
+  - @pantoken/foundation@0.1.4
+  - @pantoken/mui@0.1.15
+  - @pantoken/pendo@0.4.3
+  - @pantoken/react@0.1.33
+  - @pantoken/shadcn@0.1.3
+  - @pantoken/storybook@0.1.15
+  - @pantoken/svelte@0.1.33
+  - @pantoken/vue@0.1.33
+  - @pantoken/web-components@0.6.4
+  - @pantoken/cli@0.1.35
+
 ## 0.2.14
 
 ### Patch Changes
