@@ -1,0 +1,199 @@
+running `vpr i18n:drift:fix:copilot` didn't actually fix, it just did the drift check:
+```
+vpr i18n:drift:fix:copilot
+~/tools/translation-adapters$ vp pack ○ cache miss: 'tools/translation-adapters/src/drift-policy.ts' modified, executing
+~/tools/i18n-engine$ vp pack ◉ cache hit, replaying
+ℹ entry: src/index.ts, src/cli.ts
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 6 files
+ℹ dist/index.mjs            5.79 kB │ gzip:  2.24 kB
+ℹ dist/cli.mjs              0.15 kB │ gzip:  0.12 kB
+ℹ dist/cli-AlGvA38z.mjs    82.16 kB │ gzip: 23.80 kB
+ℹ dist/index.d.mts         19.84 kB │ gzip:  6.44 kB
+ℹ dist/cli.d.mts            0.15 kB │ gzip:  0.12 kB
+ℹ dist/cli-6eAL5QUr.d.mts   6.67 kB │ gzip:  2.46 kB
+ℹ 6 files, total: 114.76 kB
+✔ Build complete in 55ms
+
+ℹ entry: src/index.ts
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+ℹ dist/index.mjs    37.80 kB │ gzip: 12.89 kB
+ℹ dist/index.d.mts  16.98 kB │ gzip:  6.48 kB
+ℹ 2 files, total: 54.78 kB
+✔ Build complete in 41ms
+
+$ node scripts/i18n-drift-fix.ts --provider copilot ⊘ cache disabled
+✓ ui.strings: no translation drift
+ui.strings: no drift, skipping
+✓ cli.scaffold: no translation drift
+cli.scaffold: no drift, skipping
+✓ scaffold.readme: no translation drift
+scaffold.readme: no drift, skipping
+✓ cli.ai: no translation drift
+cli.ai: no drift, skipping
+
+@pantoken/docs — translation drift by surface:
+  docs.api: 791 unit(s) in 48 file(s), 43 locale(s) — blocks
+
+✗ @pantoken/docs: 791 blocking drift finding(s) across 48 file(s):
+  [docs.api] docs/api/tools/demo/src/interfaces/RunnerLabels.md — 215 in 43 locale(s)
+    locales: ar, ca, cy, da, de, el, +37 more
+    - [prose] The runner's view-tab labels. Omitted keys fall back to the …
+    - [prose] The rendered-demo tab (English `Result`).
+    - [prose] The HTML source tab.
+  [docs.api] docs/api/css/avatar.md — 168 in 28 locale(s)
+    locales: ca, cy, da, de, es, fi, +22 more
+    - [prose] LH
+    - [prose] AI
+    - [prose] Dr. Nguyen Van Thoc
+  [docs.api] docs/api/tools/demo/src/interfaces/DemoMarkdownItOptions.md — 84 in 42 locale(s)
+    locales: ca, cy, da, de, el, en-AU, +36 more
+    - [prose] Localized [RunnerLabels](RunnerLabels.md) for the runner's v…
+    - [prose] Resolve the runner's view-tab labels for the current page, f…
+    - [prose] Localized [RunnerLabels](RunnerLabels.md) for the runner's v…
+  [docs.api] docs/api/renderers/web-components/src/variables/avatar.md — 80 in 40 locale(s)
+    locales: ar, ca, cy, da, de, el, +34 more
+    - [prose] JS
+    - [prose] AB
+    - [prose] JS
+  [docs.api] docs/api/css/checkbox.md — 68 in 34 locale(s)
+    locales: ar, ca, cy, da, el, fa, +28 more
+    - [prose] Checkbox
+    - [prose] Toggle
+    - [prose] Checkbox
+  [docs.api] docs/api/tools/demo/src/interfaces/ResolveOptions.md — 42 in 42 locale(s)
+    locales: ca, cy, da, de, el, en-AU, +36 more
+    - [prose] Localized [RunnerLabels](RunnerLabels.md) for the runner's v…
+    - [prose] Localized [RunnerLabels](RunnerLabels.md) for the runner's v…
+    - [prose] Localized [RunnerLabels](RunnerLabels.md) for the runner's v…
+  [docs.api] docs/api/css/form-field-group.md — 9 in 1 locale(s)
+    locales: se
+    - [prose] Shipping address
+    - [prose] First name
+    - [prose] Last name
+  [docs.api] docs/api/renderers/web-components/src/variables/tray.md — 9 in 9 locale(s)
+    locales: da, fr, fr-CA, id, ms, nl, +3 more
+    - [prose] Menu
+    - [prose] Menu
+    - [prose] Menu
+  [docs.api] docs/api/css/calendar.md — 8 in 1 locale(s)
+    locales: se
+    - [prose] March 2026
+    - [prose] Su
+    - [prose] Mo
+  [docs.api] docs/api/css/radio-input-group.md — 8 in 1 locale(s)
+    locales: se
+    - [prose] T-shirt size
+    - [prose] Small
+    - [prose] Medium
+  [docs.api] docs/api/css/table.md — 8 in 1 locale(s)
+    locales: se
+    - [prose] Top-rated films
+    - [prose] Rank
+    - [prose] Title
+  [docs.api] docs/api/css/tree-browser.md — 6 in 1 locale(s)
+    locales: se
+    - [prose] Course files
+    - [prose] Syllabus.pdf
+    - [prose] Week 1
+  [docs.api] docs/api/renderers/web-components/src/variables/tag.md — 6 in 6 locale(s)
+    locales: da, de, nb, pt, pt-BR, sv
+    - [prose] Design
+    - [prose] Design
+    - [prose] Design
+  [docs.api] docs/api/css/banner.md — 5 in 1 locale(s)
+    locales: se
+    - [prose] New feature
+    - [prose] This is a violet banner with a custom icon.
+    - [prose] OK
+  [docs.api] docs/api/css/pill.md — 5 in 1 locale(s)
+    locales: se
+    - [prose] Published
+    - [prose] Draft
+    - [prose] In review
+  [docs.api] docs/api/css/breadcrumb.md — 4 in 1 locale(s)
+    locales: se
+    - [prose] Home
+    - [prose] Guides
+    - [prose] Components
+  [docs.api] docs/api/css/menu.md — 4 in 1 locale(s)
+    locales: se
+    - [prose] Actions
+    - [prose] Edit
+    - [prose] Duplicate
+  [docs.api] docs/api/css/simple-select.md — 4 in 1 locale(s)
+    locales: se
+    - [prose] Choose a fruit…
+    - [prose] Apple
+    - [prose] Orange
+  [docs.api] docs/api/css/tabs.md — 4 in 1 locale(s)
+    locales: se
+    - [prose] Overview
+    - [prose] Disabled
+    - [prose] History
+  [docs.api] docs/api/css/text.md — 4 in 1 locale(s)
+    locales: se
+    - [prose] x-small text
+    - [prose] small text
+    - [prose] Quoted text
+  …and 28 more file(s).
+
+Blocking translation drift. Run `vp run docs:locales:translate` locally, then commit the updated translation cache. Loosen or tighten what blocks in `i18n.config.json`.
+docs.guides: no drift, skipping
+ar: filled 0; remaining 0
+ca: filled 0; remaining 0
+cy: filled 0; remaining 0
+da: filled 0; remaining 0
+de: filled 0; remaining 0
+el: filled 0; remaining 0
+en-AU: filled 0; remaining 0
+en-CA: filled 0; remaining 0
+en-GB: filled 0; remaining 0
+es: filled 0; remaining 0
+fa: filled 0; remaining 0
+fi: filled 0; remaining 0
+fr: filled 0; remaining 0
+fr-CA: filled 0; remaining 0
+ga: filled 0; remaining 0
+he: filled 0; remaining 0
+hi: filled 0; remaining 0
+ht: filled 0; remaining 0
+hu: filled 0; remaining 0
+hy: filled 0; remaining 0
+id: filled 0; remaining 0
+is: filled 0; remaining 0
+it: filled 0; remaining 0
+ja: filled 0; remaining 0
+ko: filled 0; remaining 0
+mi: filled 0; remaining 0
+ms: filled 0; remaining 0
+nb: filled 0; remaining 0
+nl: filled 0; remaining 0
+nn: filled 0; remaining 0
+pl: filled 0; remaining 0
+pt: filled 0; remaining 0
+pt-BR: filled 0; remaining 0
+ru: filled 0; remaining 0
+se: filled 0; remaining 0
+sl: filled 0; remaining 0
+sv: filled 0; remaining 0
+th: filled 0; remaining 0
+tr: filled 0; remaining 0
+uk: filled 0; remaining 0
+vi: filled 0; remaining 0
+zh-Hans: filled 0; remaining 0
+zh-Hant: filled 0; remaining 0
+docs.home: no drift, skipping
+docs.chrome: no drift, skipping
+docs.demos: no drift, skipping
+
+---
+vp run: 1/3 cache hit (33%), 188ms saved. (Run `vp run --last-details` for full details)
+```
+
+---
+
+Read-only investigate /Users/dwahl/Scripts/pantoken current docs API i18n flow. Inspect docs/scripts/translate-api-po.ts, build-api-locales.ts, i18n engine pipeline functions runExtractContent/runTranslateContent/mergePoWithTemplate, and relevant tests. Determine why check-locale-drift reports docs.api missing units while translate-api-po.ts prints `filled 0; remaining 0`, especially whether PO catalogs lack newly extracted entries or msgctxt keys mismatch. Report exact root cause, smallest code fix, and test locations. Do not edit files.
