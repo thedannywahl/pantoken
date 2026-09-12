@@ -3,19 +3,16 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { AiTranslationAdapter } from "./api-translation.ts";
 import {
-  loadConfig,
   mergePoWithTemplate,
   parsePo,
   refreshCoverageReports,
-  runExtractContent,
   serializePo,
   writeCatalog,
 } from "@pantoken/i18n-engine";
 
 const repoRoot = new URL("../../", import.meta.url).pathname;
 const locale = process.env.DOCS_TRANSLATION_LOCALE ?? "hu";
-const config = loadConfig(join(repoRoot, "i18n.config.json"));
-const { potPath } = runExtractContent(config, repoRoot, "docs.api");
+const potPath = join(repoRoot, "l10n", "docs.api.pot");
 const path = join(repoRoot, "l10n", locale, "docs.api.po");
 await mergePoWithTemplate(path, potPath);
 const entries = parsePo(readFileSync(path, "utf8"));
