@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.5.5
+
+### Patch Changes
+
+- 0bde734: Move the package map to the API landing page and remove the separate package guide route.
+- 0bde734: Translate visible prose in HTML examples on localized CSS API pages.
+- 0bde734: Localize the agent shell prompt in the getting-started tabs.
+- 0bde734: Guide translations can now be scoped to specific Markdown files with `DOCS_TRANSLATION_FILE`, so a
+  forced retry can repair one localized guide without reprocessing every guide for that locale.
+- 0bde734: Localize top-level API sidebar labels and keep AI capitalized in the docs sidenav.
+- 0bde734: Add targeted translation fixes driven by machine-readable i18n drift findings, with provider and locale/file scoping.
+
 ## 0.5.4
 
 ### Patch Changes
