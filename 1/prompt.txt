@@ -1,0 +1,1 @@
+even though we updated docs deploy, it still fired twice in a worflow: once on the PR merge to main that generates the changesets PR and then again on the merge to main of the changesets PR.  It should only fire on the latter.
