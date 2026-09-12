@@ -1,0 +1,25 @@
+pantoken/cli needs the following updates:
+1. it should ask if the ai assets should be added, and if yes it should also do the ai scaffold.
+2. when installing it suppresses all output so it looks hung, it should have an active animating with text of install progress.
+
+---
+
+In the pantoken monorepo (root /Users/dwahl/Scripts/pantoken), find the CLI package (likely under packages/ or tools/, named something like "cli" or "@pantoken/cli" or "create-pantoken-app"). I need thorough understanding of:
+
+1. Where the CLI package lives (full path).
+2. The overall flow of the CLI: what prompts/questions it currently asks the user (e.g. via prompts/inquirer/clack/enquirer or similar), especially anything related to package selection, scaffolding options, "ai assets" (there's an `ai/pantoken-ai` and `ai/create-pantoken-app-site` directory in the repo — investigate how these AI assets are referenced/scaffolded, if at all, by the CLI).
+3. Where/how the CLI does package installation (e.g. calling pnpm/npm install programmatically, spawn/execa/child_process usage), and how output is currently handled (is it piped to /dev/null, `stdio: 'ignore'`, silent flag, etc). Find the exact code location and current behavior.
+4. Any existing spinner/progress-indicator library already used elsewhere in the CLI or repo (e.g. ora, cli-spinners, listr2, clack's spinner) that could be reused for animated install progress.
+5. How "ai scaffold" work currently happens — is there an existing function/module that copies ai/pantoken-ai assets into a generated project? Find its name and file path even if it's currently unused/dead code, or note if it doesn't exist yet and needs to be built from scratch.
+6. The general prompt library used (e.g., @clack/prompts, prompts, inquirer) and examples of existing yes/no confirm prompts and multi-select prompts in the CLI code, so a new plan can match existing conventions.
+7. Package.json of the CLI package: dependencies related to prompting and process execution.
+
+Report back: exact file paths, function names, current prompt flow order (as a list), the current install invocation code snippet, and any existing spinner utilities. Also report if there's a "create-pantoken-app" related package distinct from a general "cli" package, and how they relate.
+
+---
+
+Start implementation
+
+---
+
+Try Again
