@@ -1,0 +1,24 @@
+make a plan to address this chunk issue:
+```
+I traced the file: it’s mostly navigation data for every language.
+
+The local artifact contains:
+
+ContentApproximate sizeSerialized site configuration31.1 MBSidebar data across 44 locales29.6 MBPage-to-chunk lookup map74 KB
+
+The homepage explicitly loads this metadata script. Those are uncompressed sizes, not measured network transfer.
+
+**Rolldown chunking won’t fix this particular file directly.** VitePress generates it separately by serializing the site configuration and writing a JavaScript file. It doesn’t pass through normal module chunking. Additionally, Rolldown’s `maxSize` is a target, not a hard limit, and cannot split a single oversized module. [Rolldown documentation](https://rolldown.rs/in-depth/manual-code-splitting)
+
+The root cause is visible in [config.ts (line 331)](/Users/dwahl/Scripts/pantoken/docs/.vitepress/config.ts:331): every locale gets its full sidebar embedded in the global configuration—even though [the build already runs each locale separately (line 94)](/Users/dwahl/Scripts/pantoken/docs/scripts/build-locales.ts:94).
+
+I recommend two stages:
+
+1. **Scope the heavy configuration to the locale being built.** Keep the lightweight language list, labels, and links for all languages, but include full navigation and sidebar data only for the active language. Language switching must load the destination locale’s configuration, either through a full navigation or a lazy loader. This should take metadata from tens of megabytes toward roughly one megabyte per locale; that’s an estimate pending a build.
+2. **Load sidebar sections on demand if further reduction is worthwhile.** A guide page shouldn’t need every package’s API navigation. Split that data by locale and API section, while retaining server-rendered navigation for the current page.
+Rolldown remains useful for ordinary application modules and lazy imports, but the biggest win here is **stopping every visitor from receiving all 44 languages’ navigation**.
+```
+
+---
+
+Start implementation
