@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 02:53+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -56,7 +56,7 @@ msgstr "Εάν το `platform` είναι μία γνωστή [ScaffoldPlatform]
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Scaffold a starter project for a platform (via `@pantoken/scaffold`), and install pantoken's\nagent assets (via [installAgentAssets](installAgentAssets.md)) into the same directory."
-msgstr "Scaffold a starter project for a platform (via `@pantoken/scaffold`), and install pantoken's\nagent assets (via [installAgentAssets](installAgentAssets.md)) into the same directory."
+msgstr "Δημιουργήστε τη δομή ενός αρχικού έργου για μια πλατφόρμα (μέσω `@pantoken/scaffold`), και εγκαταστήστε τα agent assets του pantoken\n (μέσω [installAgentAssets](installAgentAssets.md)) στον ίδιο φάκελο."
 
 #: ai/pantoken-ai/src/functions/scaffoldAndInit.md
 #: ai/pantoken-ai/src/functions/scaffoldProject.md
@@ -2777,13 +2777,13 @@ msgstr "`@pantoken/ai` — περιουσιακά στοιχεία agent προ�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
-msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
+msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) εγκαθιστά `AGENTS.md`, `llms.txt`, και\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) σε ένα αποθετήριο καταναλωτή."
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Plugins we author for the tools we build with, grouped by host. They're standalone and publishable."
-msgstr "Plugins we author for the tools we build with, grouped by host. They're standalone and publishable."
+msgstr "Πρόσθετα που δημιουργούμε για τα εργαλεία με τα οποία χτίζουμε, ομαδοποιημένα ανά host. Είναι αυτόνομα και εκδοτέα."
 
 #: packages/cli/src/functions/parseArgs.md
 #, no-c-format
@@ -3801,7 +3801,7 @@ msgstr "Δημιουργήστε έναν επιλυτή που επεκτείν
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`Token`](../../../core/src/interfaces/Token.md)[]"
-msgstr "readonly [`Token`](../../../core/src/interfaces/Token.md)[]"
+msgstr "μόνο για ανάγνωση [`Token`](../../../core/src/interfaces/Token.md)[]"
 
 #: packages/plugin-kit/src/functions/makeResolver.md
 #: packages/utils/src/functions/makeResolver.md
@@ -10942,7 +10942,7 @@ msgstr "Ένα κουμπί \"προβολή σε πλήρη οθόνη\" που
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "✅ Use Callout when:"
-#~ msgstr "✅ Use Callout when:"
+#~ msgstr "✅ Χρησιμοποιήστε το Callout όταν:"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -12737,7 +12737,7 @@ msgstr "Ένα κουμπί \"προβολή σε πλήρη οθόνη\" που
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "**Group:** Plugins · **Source:** [generate.ts](https://github.com/thedannywahl/pantoken/blob/main/plugins/pantoken/logos/scripts/generate.ts)"
-#~ msgstr "**Group:** Plugins · **Source:** [generate.ts](https://github.com/thedannywahl/pantoken/blob/main/plugins/pantoken/logos/scripts/generate.ts)"
+#~ msgstr "**Ομάδα:** Πρόσθετα · **Πηγή:** [generate.ts](https://github.com/thedannywahl/pantoken/blob/main/plugins/pantoken/logos/scripts/generate.ts)"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -25390,3 +25390,687 @@ msgstr "Ένα κουμπί \"προβολή σε πλήρη οθόνη\" που
 #~ msgctxt "docs.api:prose"
 #~ msgid "pantoken icon logo (reversed)."
 #~ msgstr "εικονίδιο λογότυπο pantoken (αντεστραμμένο)."
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "Το περιεχόμενο του asset και η συνάρτηση writer πλέον ζουν στο `@pantoken/scaffold` (ώστε το βασικό scaffold\nflow να τα προσφέρει χωρίς κυκλική εξάρτηση); επανεξαγόμενα εδώ για συμβατότητα προς τα πίσω."
+
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "Πράκτορας AI"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "Περιεχόμενο εδώ."
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "Ενέργεια"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  Ένα προειδοποιητικό μήνυμα με την προεπιλεγμένη "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " χρώμα και ένα προσαρμοσμένο εικονίδιο.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  Συγχαρητήρια! Χρησιμοποιείτε το χρώμα \"success\".\n  "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "LH"
+msgstr "LH"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "AI"
+msgstr "AI"
+
+msgctxt "docs.api:prose"
+msgid "Dr. Nguyen Van Thoc"
+msgstr "Δρ. Nguyen Van Thoc"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Miguel Sanchez"
+msgstr "Miguel Sanchez"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Miguel"
+msgstr "Miguel"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Sanchez"
+msgstr "Sanchez"
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "Εισερχόμενα"
+
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "Νέα δυνατότητα"
+
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "Αυτό είναι ένα ιώδες πανό με προσαρμοσμένο εικονίδιο."
+
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "Εντάξει"
+
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  Αυτό είναι ένα θαλασσί χρώματος πανό με συμπαγή απόσταση.\n"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "Μορφοποιημένος σύνδεσμος στη βασική επιφάνεια."
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "Δεν υπάρχουν ακόμα στοιχεία"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "Δημιουργήστε το πρώτο σας στοιχείο για να ξεκινήσετε."
+
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "Αρχική"
+
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "Οδηγοί"
+
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "Συστατικά"
+
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "Διαδρομή πλοήγησης"
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "Πρωτεύον"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "Δευτερεύον"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "Τι νέο υπάρχει"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "Η φιγούρα μπορεί να είναι οποιοδήποτε κύριο οπτικό στοιχείο — ένα εικονίδιο, ένα avatar ή μια εικόνα."
+
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "Μάρτιος 2026"
+
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "Κυ"
+
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "Δε"
+
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "Τρ"
+
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "Τε"
+
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "Πε"
+
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "Πα"
+
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "Σα"
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "Τίτλος κάρτας"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "Πρώτη ενότητα"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "Δεύτερη ενότητα"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "Κάτι πήγε στραβά."
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "Μια context view πλαισιώνει ένα callout με ένα caret. Ως popover βρίσκεται στην κορυφαία στρώση και κλείνει όταν κάνετε κλικ έξω ή πατήσετε Esc."
+
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "Περιεχόμενο δίσκου"
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "Πλοήγηση"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "Κύριο περιεχόμενο"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "Μονάδες"
+
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "Σύρε μια εικόνα εδώ"
+
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", ή κάντε κλικ για να περιηγηθείτε."
+
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG ή JPG έως 5&nbsp;MB."
+
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "Διεύθυνση αποστολής"
+
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "Όνομα"
+
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "Επώνυμο"
+
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "Πόλη"
+
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "Πολιτεία"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "Όλα τα πεδία χρησιμοποιούνται μόνο για παράδοση."
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "Δεν θα το μοιραστούμε ποτέ."
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "Εισάγετε μια έγκυρη διεύθυνση email."
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "Διεύθυνση ηλεκτρονικού ταχυδρομείου"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "Ένα"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "Δύο"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "Επικεφαλίδα h1"
+
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "Χωρίς τίτλο"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "Στυλιζαρισμένος σύνδεσμος"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "Πρώτο στοιχείο"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "Δεύτερο στοιχείο"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "Τρίτο στοιχείο"
+
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "Ενέργειες"
+
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "Αντιγραφή"
+
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "Διαγραφή"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "Ενεργοί χρήστες"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "Μικρό"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — ένα στενό modal."
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "Κλείσιμο"
+
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "Δημοσιευμένο"
+
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "Προσχέδιο"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "Υπό ανασκόπηση"
+
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "Παρωχημένο"
+
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "Μπλοκαρισμένο"
+
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "Μοιραστείτε αυτή τη σελίδα"
+
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "Ένα popover είναι μια ελαφριά επιφάνεια αγκυρωμένη σε έναν ενεργοποιητή. Αυτό χρησιμοποιεί το εγγενές "
+
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr " χαρακτηριστικό."
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "Κουτί ζωγραφισμένο με πρωτόγονο στυλ."
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  Μεταφόρτωση εγγράφου: "
+
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "Σκορ"
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "Χώρος αποθήκευσης που χρησιμοποιείται"
+
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "Σημειώσεις έκδοσης"
+
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "Κείμενο σώματος με ένα "
+
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "σύνδεσμος"
+
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "Μέγεθος T-shirt"
+
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " Μικρό"
+
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " Μεσαίο"
+
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " Μεγάλο"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " Επιλογή Α"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "Απόκρυψη στο ή κάτω από το μικρό breakpoint."
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "Εμφανίζεται μόνο στο ή πάνω από το μικρό breakpoint."
+
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "παράδειγμα"
+
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "Ανοίγει σε νέο παράθυρο"
+
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "Ημερολόγιο"
+
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "Επιλέξτε ένα φρούτο…"
+
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "Μήλο"
+
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "Πορτοκάλι"
+
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "Αχλάδι"
+
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "Πλαίσιο με εσωτερικό περιθώριο και μεγάλο επάνω περιθώριο."
+
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "Πάντα στην κορυφή."
+
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "Κορυφαίες ταινίες"
+
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "Κατάταξη"
+
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "Τίτλος"
+
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "Έτος"
+
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "Βαθμολογία"
+
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "Η Εξιλέωση του Σόουσανκ"
+
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "Ο Νονός"
+
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "Ο Νονός: Μέρος Β'"
+
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "Επισκόπηση"
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "Λεπτομέρειες"
+
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "Απενεργοποιημένο"
+
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "Ιστορικό"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "Το περιεχόμενο της καρτέλας Επισκόπηση εμφανίζεται εδώ."
+
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "μικρό"
+
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "πολύ μικρό κείμενο"
+
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "μικρό κείμενο"
+
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "Κείμενο σε εισαγωγικά"
+
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "Κείμενο επισήμανσης AI"
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "Τι περιλαμβάνεται σε αυτό το πακέτο;"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  Στυλ συστατικών με βάση τις κλάσεις, κατασκευασμένα από τα tokens του Instructure, συν ένα επίπεδο κειμένου.\n"
+
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "Σύνθετες ρυθμίσεις"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "Αυτές οι επιλογές αποκαλύπτονται όταν η ομάδα επεκτείνεται. Η γραμμή κεφαλίδας φέρει ένα chevron που περιστρέφεται όταν ανοίγει, και το περιεχόμενο τοποθετείται κάτω από έναν διαχωριστή."
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "Η προεπιλεγμένη τοποθέτηση είναι πάνω"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "Κινούμενο περιεχόμενο"
+
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "Φίλτρα"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "Ένα συρτάρι εμφανίζεται από την αρχική άκρη και γεμίζει το ύψος του παραθύρου προβολής."
+
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "εναλλαγή συρταριού"
+
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " Αρχεία μαθήματος"
+
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " Πρόγραμμα_μαθήματος.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " Εβδομάδα 1"
+
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " Ανάγνωση.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " Διαφάνειες.pptx"
+
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " Κριτήριο_αξιολόγησης.docx"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "Αυτό το κείμενο περιορίζεται σε μία γραμμή από προεπιλογή και τελειώνει με αποσιωπητικά."
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "Αυτό το κείμενο περιορίζεται σε τρεις γραμμές και τελειώνει με αποσιωπητικά."
+
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  Μια επιφάνεια τύπου κάρτας.\n"
+
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "Παιδί με περίγραμμα."
+
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "Οι αλλαγές σας αποθηκεύτηκαν."
+
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "Μια επίπεδη, ενσωματωμένη ειδοποίηση."
+
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "Αποθήκευση αλλαγών"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "Περισσότερα για αυτό το στοιχείο."
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "Εναλλαγή πάνελ"
+
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "Προφίλ"
+
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "Διαγραφή…"
+
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "Να διαγραφεί αυτό το στοιχείο;"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "Πρώτο "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "Επόμενο"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "Δεύτερο "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "Πίσω"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "Ενεργό"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "Επιλογές"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "Πίνακας ελέγχου"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "Μαθήματα"
+
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "Σχεδιασμός"
+
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "Προστέθηκε στα σελιδοδείκτες"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "Τοποθετήστε τον δείκτη πάνω μου"
+
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "Μενού"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "Μια μακροσκελής περιγραφή που θα περιοριστεί σε δύο γραμμές…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

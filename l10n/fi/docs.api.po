@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 01:48+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2777,7 +2777,7 @@ msgstr "`@pantoken/ai` — asiakaskäyttöön suunnatut agenttiresurssit projekt
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
-msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
+msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) asentaa `AGENTS.md`, `llms.txt`, ja\n\tassistant/editor-säännöt (Cursor, Copilot, Windsurf, Claude Code) kuluttajarepositioon."
 
 #: index.md
 #, no-c-format
@@ -25390,3 +25390,674 @@ msgstr "Hiirellä aktivoituva \"view fullscreen\" -painike, sijoitettuna demo-/e
 #~ msgctxt "docs.api:prose"
 #~ msgid "pantoken icon logo (reversed)."
 #~ msgstr "pantoken ikoni‑logo (käänteinen)."
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "Assetin sisältö ja kirjoitustoiminto sijaitsevat nyt `@pantoken/scaffold` (joten perus scaffold\nflow voi tarjota ne ilman silmukkapohjaista riippuvuutta); uudelleenviety tässä takautuvan yhteensopivuuden vuoksi."
+
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "AI-agentti"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "Sisältö tässä."
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "Toiminto"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  Ilmoitus oletusarvoisella "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " väri ja mukautettu kuvake.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  Onnittelut! Käytät \"success\"-väriä.\n  "
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "Saapuneet"
+
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "Uusi ominaisuus"
+
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "Tämä on violetti banneri, jossa on mukautettu kuvake."
+
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "Hyväksy"
+
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "Peruuta"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  Tämä on merenvärinen banneri, jossa on tiivis väli.\n"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "Muotoiltu linkki peruspinnalla."
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "Ei vielä kohteita"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "Luo ensimmäinen kohteesi, jotta pääset alkuun."
+
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "Etusivu"
+
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "Oppaat"
+
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "Komponentit"
+
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "Murupolku"
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "Ensisijainen"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "Toissijainen"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "Mitä uutta"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "Kuva voi olla mikä tahansa etualalla oleva visuaalinen elementti — kuvake, avatar tai kuva."
+
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "maaliskuu 2026"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "Su"
+
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "Ma"
+
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "Ti"
+
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "Ke"
+
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "To"
+
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "Pe"
+
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "La"
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "Kortin otsikko"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "Ensimmäinen osio"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "Toinen osio"
+
+msgctxt "docs.api:prose"
+msgid "Checkbox\n"
+msgstr "Valintaruutu\n"
+
+msgctxt "docs.api:prose"
+msgid "Toggle\n"
+msgstr "Kytkin\n"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "Jotain meni pieleen."
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "Kontekstinäkymä kehystää huomautuksen osoittimella. Popoverina se on päällimmäisellä tasolla ja sulkeutuu, kun napsautat muualla tai painat Esc."
+
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "Lokeron sisältö"
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "Navigointi"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "Pääsisältö"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "Moduulit"
+
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "Vedä kuva tähän"
+
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", tai napsauta selataksesi."
+
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG tai JPG, enintään 5&nbsp;MB."
+
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "Toimitusosoite"
+
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "Etunimi"
+
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "Sukunimi"
+
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "Kaupunki"
+
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "Osavaltio"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "Kaikkia kenttiä käytetään vain toimitusta varten."
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "Emme koskaan jaa sitä."
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "Anna kelvollinen sähköpostiosoite."
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "Sähköpostiosoite"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "Yksi"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "Kaksi"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "Otsikko h1"
+
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "Nimetön"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "Muotoiltu linkki"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "Ensimmäinen kohde"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "Toinen kohde"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "Kolmas kohde"
+
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "Toiminnot"
+
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "Muokkaa"
+
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "Monista"
+
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "Poista"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "Aktiiviset käyttäjät"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "Pieni"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — kapea modaali-ikkuna."
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "Sulje"
+
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "Julkaistu"
+
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "Luonnos"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "Tarkistuksessa"
+
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "Vanhentunut"
+
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "Estetty"
+
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "Jaa tämä sivu"
+
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "Ponnahdusikkuna on kevyt pinta, joka on kiinnitetty laukaisimeen. Tämä käyttää natiivia "
+
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr " attribuutti."
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "Primitiivisesti maalattu laatikko."
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  Ladataan asiakirjaa: "
+
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "Pisteet"
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "Käytetty tallennustila"
+
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "Julkaisumuistiinpanot"
+
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "Leipäteksti, jossa on "
+
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "linkki"
+
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "T-paidan koko"
+
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " Pieni"
+
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " Keskikoko"
+
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " Suuri"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " Vaihtoehto A"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "Piilotettu small-murtopisteessä tai sitä pienemmissä."
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "Näkyy vain small-murtopisteessä tai sitä suuremmissa."
+
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "esimerkki"
+
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "Avautuu uuteen ikkunaan"
+
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "Kalenteri"
+
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "Asetukset"
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "Valitse hedelmä…"
+
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "Omena"
+
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "Appelsiini"
+
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "Päärynä"
+
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "Laatikko, jossa on täytteet ja suuri ylämarginaali."
+
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "Aina päällimmäisenä."
+
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "Korkeimmin arvioidut elokuvat"
+
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "Sijoitus"
+
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "Nimi"
+
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "Vuosi"
+
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "Arvio"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "The Shawshank Redemption"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "The Godfather"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "The Godfather: Part II"
+
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "Yleiskatsaus"
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "Lisätiedot"
+
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "Poissa käytöstä"
+
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "Historia"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "Yleiskatsaus-välilehden sisältö näkyy täällä."
+
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "pieni"
+
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "erittäin pieni teksti"
+
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "pieni teksti"
+
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "Lainattu teksti"
+
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "AI-korostusteksti"
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "Mitä tämä paketti sisältää?"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  Luokkaperusteiset komponenttityylit, rakennettu Instructure-tokenien pohjalta, sekä proosakerros.\n"
+
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "Lisäasetukset"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "Nämä asetukset näytetään, kun ryhmä laajennetaan. Otsikkorivillä on chevron, joka pyörii avatessa, ja sisältö on jakajan alapuolella."
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "Oletussijoitus on ylhäällä"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "Animoitu sisältö"
+
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "Suodattimet"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "Paneeli liukuu aloitusreunasta ja täyttää näkymän korkeuden."
+
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "vaihda paneeli"
+
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " Kurssitiedostot"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " Syllabus.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " Viikko 1"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " Reading.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " Slides.pptx"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " Rubric.docx"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "Tämä teksti rajataan oletuksena yhteen riviin ja päättyy ellipsiin."
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "Tämä teksti rajataan kolmeen riviin ja päättyy ellipsiin."
+
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  Korttimainen pinta.\n"
+
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "Reunustettu lapsi."
+
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "Muutoksesi tallennettiin."
+
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "Yksinkertainen, rivin sisäinen ilmoitus."
+
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "Tallenna muutokset"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "Lisätietoja tästä kohteesta."
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "Näytä/piilota paneeli"
+
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "Profiili"
+
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "Poista…"
+
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "Poistetaanko tämä kohde?"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "Ensimmäinen "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "Seuraava"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "Toinen "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "Takaisin"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "Aktiivinen"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "Asetukset"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "Hallintapaneeli"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "Kurssit"
+
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "Suunnittelu"
+
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "Kirjanmerkattu"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "Vie hiiren osoitin tämän päälle"
+
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "Valikko"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "Pitkä kuvaus, joka rajataan kahteen riviin…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 03:21+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2759,13 +2759,13 @@ msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) מתקין `AGENTS.md`, `ll
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are\nself-contained, so we document them here and some ship to npm on their own."
-msgstr "Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are\nself-contained, so we document them here and some ship to npm on their own."
+msgstr "תשתיות בניה, תיעוד והדגמה עבור המונורפו עצמו. רובו פנימי, אבל החלקים הם\nעצמאיים, לכן מתעדים אותם כאן וחלקם מתפרסמים ל-npm בנפרד."
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API\npage; the others do."
-msgstr "`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API\npage; the others do."
+msgstr "`@pantoken/validate-generated` הוא סקריפט הרצה-פעם אחת (מופעל על ידי `pnpm run ready`), ולכן אין לו דף API\n; לאחרים יש)."
 
 #: index.md
 #, fuzzy, no-c-format
@@ -2777,13 +2777,13 @@ msgstr "`@pantoken/ai` — נכסים של סוכן הפונים לצרכנים 
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
-msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
+msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) מתקין `AGENTS.md`, `llms.txt`, ו\n\tכללי assistant/editor (Cursor, Copilot, Windsurf, Claude Code)) לתוך מאגר צרכן."
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Plugins we author for the tools we build with, grouped by host. They're standalone and publishable."
-msgstr "Plugins we author for the tools we build with, grouped by host. They're standalone and publishable."
+msgstr "תוספים שאנו יוצרים לכלים איתם אנו בונים, מקובצים לפי מאחסן. הם עצמאיים וניתנים לפרסום."
 
 #: packages/cli/src/functions/parseArgs.md
 #, no-c-format
@@ -3699,7 +3699,7 @@ msgstr "מסנן רשימת תוספים לשמירת אלה שמשתתפים ב
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]"
-msgstr "readonly [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]"
+msgstr "לקריאה בלבד [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]"
 
 #: packages/plugin-kit/src/functions/checkPlugins.md
 #, no-c-format
@@ -3801,7 +3801,7 @@ msgstr "בנה פותר (resolver) שמרחיב הפניות `var(--x)` לערכ
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`Token`](../../../core/src/interfaces/Token.md)[]"
-msgstr "readonly [`Token`](../../../core/src/interfaces/Token.md)[]"
+msgstr "לקריאה בלבד [`Token`](../../../core/src/interfaces/Token.md)[]"
 
 #: packages/plugin-kit/src/functions/makeResolver.md
 #: packages/utils/src/functions/makeResolver.md
@@ -25390,3 +25390,690 @@ msgstr "כפתור שניתן להרחיף מעליו \"view fullscreen\", המ�
 #~ msgctxt "docs.api:prose"
 #~ msgid "pantoken icon logo (reversed)."
 #~ msgstr "לוגו אייקון של pantoken (הפוך)."
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "תוכן הנכס ופונקציית הכותב נמצאים כעת ב`@pantoken/scaffold` (כך שהמסגרת הבסיסית\nflow תוכל להציע אותם ללא תלות מעגלית); מיוצא מחדש כאן לשמירת תאימות לאחור.)"
+
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "סוכן בינה מלאכותית"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "תוכן כאן."
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "פעולה"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  התראה עם ברירת המחדל "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " צבע, ואייקון מותאם אישית.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  מזל טוב! אתה משתמש בצבע \"success\".\n  "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "LH"
+msgstr "LH"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "AI"
+msgstr "AI"
+
+msgctxt "docs.api:prose"
+msgid "Dr. Nguyen Van Thoc"
+msgstr "ד\"ר Nguyen Van Thoc"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Miguel Sanchez"
+msgstr "Miguel Sanchez"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Miguel"
+msgstr "Miguel"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Sanchez"
+msgstr "Sanchez"
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "דואר נכנס"
+
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "תכונה חדשה"
+
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "זה באנר סגול עם אייקון מותאם."
+
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "אישור"
+
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "ביטול"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  זה באנר בצבע ים עם ריווח קומפקטי.\n"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "קישור מעוצב על המשטח הבסיסי."
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "עדיין אין פריטים"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "צור את הפריט הראשון שלך כדי להתחיל."
+
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "דף הבית"
+
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "מדריכים"
+
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "רכיבים"
+
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "נתיב ניווט"
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "ראשי"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "משני"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "מה חדש"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "האיור יכול להיות כל אלמנט חזותי מוביל — אייקון, אווטאר או תמונה."
+
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "מרץ 2026"
+
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "א׳"
+
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "ב׳"
+
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "ג׳"
+
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "ד׳"
+
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "ה׳"
+
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "ו׳"
+
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "ש׳"
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "כותרת הכרטיס"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "חלק ראשון"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "חלק שני"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "משהו השתבש."
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "תצוגת הקשר מקיפה תיבת קריאה עם מחוון. בתור חלון קופץ (popover) היא נמצאת בשכבה העליונה ונסגרת כשאתה לוחץ מחוץ לה או לוחץ על Esc."
+
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "תוכן המגש"
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "ניווט"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "תוכן ראשי"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "מודולים"
+
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "גרור תמונה לכאן"
+
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", או לחץ כדי לדפדף."
+
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG או JPG עד 5&nbsp;MB."
+
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "כתובת למשלוח"
+
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "שם פרטי"
+
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "שם משפחה"
+
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "עיר"
+
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "מדינה"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "כל השדות משמשים אך ורק למשלוח."
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "אנחנו לעולם לא נשתף זאת."
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "הזן כתובת דוא\"ל חוקית."
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "כתובת דוא׳ל"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "אחד"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "שניים"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "כותרת h1"
+
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "ללא כותרת"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "קישור מעוצב"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "פריט ראשון"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "פריט שני"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "פריט שלישי"
+
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "פעולות"
+
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "ערוך"
+
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "שכפל"
+
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "מחק"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "משתמשים פעילים"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "קטן"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — חלון מודאלי צר."
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "סגור"
+
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "פורסם"
+
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "טיוטה"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "בסקירה"
+
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "לא פעיל"
+
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "חסום"
+
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "שתף את הדף הזה"
+
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "Popover הוא משטח קל-משקל שמוצמד לטריגר. זה משתמש ב- "
+
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr " תכונה."
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "קופסה צבועה פרימיטיבית."
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  העלאת מסמך: "
+
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "ציון"
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "שימוש באחסון"
+
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "הערות שחרור"
+
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "טקסט גוף עם "
+
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "קישור"
+
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "גודל חולצה"
+
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " קטן"
+
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " בינוני"
+
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " גדול"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " אפשרות A"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "מוסתר בנקודת השבירה הקטנה או מתחתיה."
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "מוצג רק בנקודת השבירה הקטנה או מעליה."
+
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "דוגמה"
+
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "נפתח בחלון חדש"
+
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "לוח שנה"
+
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "הגדרות"
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "בחר פרי…"
+
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "תפוח"
+
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "תפוז"
+
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "אגס"
+
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "תיבה מרופדת עם שול עליון גדול."
+
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "תמיד למעלה."
+
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "הסרטים המדורגים ביותר"
+
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "מיקום"
+
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "כותרת"
+
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "שנה"
+
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "דירוג"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "The Shawshank Redemption"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "The Godfather"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "The Godfather: Part II"
+
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "סקירה"
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "פרטים"
+
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "מנוטרל"
+
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "היסטוריה"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "התוכן של לשונית 'סקירה' מוצג כאן."
+
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "קטן"
+
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "טקסט קטן מאוד"
+
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "טקסט קטן"
+
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "טקסט מצוטט"
+
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "טקסט מודגש על ידי AI"
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "מה כלול בחבילה זו?"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  סגנונות רכיבים מבוססי מחלקה, שנבנו מתוך הטוקנים של Instructure, בנוסף לשכבת פרוזה.\n"
+
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "הגדרות מתקדמות"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "אפשרויות אלו נחשפות כאשר הקבוצה מורחבת. שורת הכותרת כוללת סימן חץ (chevron) שמסתובב בעת פתיחה, והתוכן נמצא מתחת למפריד."
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "המיקום המוגדר כברירת מחדל הוא למעלה"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "תוכן מונפש"
+
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "מסננים"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "מגש מחליק פנימה מקצה ההתחלה וממלא את גובה חלון התצוגה."
+
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "החלף מגש"
+
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " קבצי הקורס"
+
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " סילבוס.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " שבוע 1"
+
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " קריאה.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " מצגת.pptx"
+
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " סולם_הערכה.docx"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "טקסט זה מוגבל לשורה אחת כברירת מחדל ומסתיים באיליפסיס."
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "טקסט זה מוגבל לשלוש שורות ומסתיים באיליפסיס."
+
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  משטח בדומה לכרטיס.\n"
+
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "ילד עם קו תאר."
+
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "השינויים שלך נשמרו."
+
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "הודעה שטוחה, בתוך השורה."
+
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "שמור שינויים"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "מידע נוסף על פריט זה."
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "הצג/הסתר לוח"
+
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "פרופיל"
+
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "מחק…"
+
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "למחוק את הפריט הזה?"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "ראשון "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "הבא"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "שני "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "חזור"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "פעיל"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "אפשרויות"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "לוח מחוונים"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "קורסים"
+
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "עיצוב"
+
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "נשמר בסימניות"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "העבר את העכבר מעליי"
+
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "תפריט"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "תיאור ארוך שיצטמצם לשתי שורות…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

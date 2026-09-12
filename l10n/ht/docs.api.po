@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 03:07+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2777,7 +2777,7 @@ msgstr "`@pantoken/ai` — assets ajan pou itilizatè final pou pwojè ki *sèvi
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
-msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
+msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) enstale `AGENTS.md`, `llms.txt`, ak\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) nan yon depo konsomatè."
 
 #: index.md
 #, no-c-format
@@ -25390,3 +25390,662 @@ msgstr "Yon bouton \"view fullscreen\" ki parèt lè w pase sourit la sou li, ko
 #~ msgctxt "docs.api:prose"
 #~ msgid "pantoken icon logo (reversed)."
 #~ msgstr "ikon logo pantoken (ranvèse)."
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "Kontni asset la ak fonksyon ekriven an kounye a sitiye nan `@pantoken/scaffold` (donk echafodaj baz la\nflow ka ofri yo san yon depandans sikilè); re-ekspòte isit la pou konpatibilite ak vèsyon anvan)."
+
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "Ajan AI"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "Kontni isit la."
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "Aksyon"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  Yon avètisman ak valè default "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " koulè, ak yon ikon koutim.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  Felisitasyon! Ou ap itilize koulè \"success\".\n  "
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "Bwat resepsyon"
+
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "Nouvo karakteristik"
+
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "Sa a se yon banyè vyolèt ak yon ikòn pèsonalize."
+
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "Dakò"
+
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "Anile"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  Sa a se yon banyè koulè lanmè ak espas konpak.\n"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "Yon lyen ki gen style sou sifas debaz la."
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "Pa gen atik ankò"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "Kreye premye atik ou pou kòmanse."
+
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "Akèy"
+
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "Gid"
+
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "Konpozan"
+
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "Fil navigasyon"
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "Prensipal"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "Segondè"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "Kisa ki nouvo"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "Figi a ka nenpòt eleman vizyèl ki premye gade — yon ikòn, yon avatar, oswa yon imaj."
+
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "Mas 2026"
+
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "Di"
+
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "Lu"
+
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "Ma"
+
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "Me"
+
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "Je"
+
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "Ve"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "Sa"
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "Tit kat"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "Premye seksyon"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "Dezyèm seksyon"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "Yon bagay pa t mache."
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "Yon view kontèks mete yon ankadreman sou yon callout ki gen yon caret. Kòm yon popover li chita sou kouch ki pi wo a epi li fèmen lè ou klike lwen oswa peze Esc."
+
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "Kontni plato"
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "Navigasyon"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "Kontni prensipal"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "Modil"
+
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "Rale yon imaj isit la"
+
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", oswa klike pou chèche."
+
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG oswa JPG jiska 5&nbsp;MB."
+
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "Adrès livrezon"
+
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "Non"
+
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "Non fanmi"
+
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "Vil"
+
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "Eta"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "Tout chan yo itilize sèlman pou livrezon."
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "Nou pap janm pataje li."
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "Antre yon adrès imèl valab."
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "Adrès imèl"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "Youn"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "De"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "Tit h1"
+
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "San tit"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "Yon lyen ki gen stil"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "Premye atik"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "Dezyèm atik"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "Twazyèm atik"
+
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "Aksyon"
+
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "Modifye"
+
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "Duplike"
+
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "Efase"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "Itilizatè aktif"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "Ti"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — yon modal etwat."
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "Fèmen"
+
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "Pibliye"
+
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "Brouyon"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "Nan revizyon"
+
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "Demode"
+
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "Bloke"
+
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "Pataje paj sa a"
+
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "Yon popover se yon sifas lejè ki ankre sou yon deklanche. Sa a itilize natirèl "
+
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr " atribit la."
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "Bwat pentire primitif."
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  Ap telechaje dokiman: "
+
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "Nòt"
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "Depo itilize"
+
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "Nòt lage"
+
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "Kopi kò a ak yon "
+
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "lyen"
+
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "Gwosè T-shirt"
+
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " Ti"
+
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " Mwayen"
+
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " Gwo"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " Opsyon A"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "Kache nan oswa anba breakpoint ti a."
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "Montre sèlman nan oswa pi wo pase breakpoint ti a."
+
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "egzanp"
+
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "Louvri nan yon nouvo fenèt"
+
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "Kalandriye"
+
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "Anviwònman"
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "Chwazi yon fwi…"
+
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "Pòm"
+
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "Zoranj"
+
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "Pè"
+
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "Bwat ak rembouraj ak yon gwo marge anlè."
+
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "Toujou sou tèt."
+
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "Fim ki gen pi bon nòt"
+
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "Pozisyon"
+
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "Tit"
+
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "Ane"
+
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "Nòt"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "The Shawshank Redemption"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "The Godfather"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "The Godfather: Part II"
+
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "Apèsi jeneral"
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "Detay"
+
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "Dezaktive"
+
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "Istwa"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "Kontni tab Apèsi jeneral la parèt isit la."
+
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "ti"
+
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "tèks ekstra piti"
+
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "tèks piti"
+
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "Tèks site"
+
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "Tèks mete an evidans pa AI"
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "Ki sa ki enkli nan pake sa a?"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  Style konpozan ki baze sou klas, ki konstwi soti nan tokens Instructure yo, plis yon kouch pwòz.\n"
+
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "Anviwònman avanse"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "Opsyon sa yo parèt lè gwoup la elaji. Ranje header a gen yon chevron ki vire lè louvri, epi kontni an chita anba yon divizè."
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "Plasman default la se anlè"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "Kontni anime"
+
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "Filtè"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "Yon panèl glise soti nan kwen kòmanse a epi li ranpli wotè fenèt la."
+
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "montre/kache panèl"
+
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " Dosye kou"
+
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " Silab.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " Semèn 1"
+
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " Lekti.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " Glisad.pptx"
+
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " Kritè.docx"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "Tèks sa a ranje pou l rete sou yon liy pa default epi li fini ak yon elips."
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "Tèks sa a ranje pou l rete sou twa liy pa default epi li fini ak yon elips."
+
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  Yon sifas ki sanble ak yon kat.\n"
+
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "Timoun ki gen yon kontou."
+
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "Chanjman ou yo te sove."
+
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "Yon avi plat, an liy."
+
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "Sove chanjman"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "Plis sou atik sa a."
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "Montre/kache panèl"
+
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "Pwofil"
+
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "Efase…"
+
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "Efase atik sa a?"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "Premye "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "Pwochen"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "Dezyèm "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "Tounen"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "Aktif"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "Opsyon"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "Panèl kontwòl"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "Kou"
+
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "Konsepsyon"
+
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "Ajoute nan Favori"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "Pase sourit sou mwen"
+
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "Meni"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "Yon deskripsyon long ki pral limite a de liy…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

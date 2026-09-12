@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 07:22+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -1009,7 +1009,7 @@ msgstr "每个 focus-ring 变量对应一个 `[customProperty, value]` 对。"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The focus-ring rules for a given focusable selector: a transparent resting ring that transitions in\non `:focus-visible`, plus the `-focus-color-*` / `-focus-position-inset` / `-focus-within` /\n`-without-focus-animation` modifiers. All `:where()`-wrapped, so zero-specificity."
-msgstr "The focus-ring rules for a given focusable selector: a transparent resting ring that transitions in\non `:focus-visible`, plus the `-focus-color-*` / `-focus-position-inset` / `-focus-within` /\n`-without-focus-animation` modifiers. All `:where()`-wrapped, so zero-specificity."
+msgstr "给定可聚焦选择器的 focus-ring 规则：一个透明的静止环，渐入\n在 `:focus-visible`，再加上 `-focus-color-*` / `-focus-position-inset` / `-focus-within` /\n`-without-focus-animation` 修饰符。全部 `:where()` 包裹，因此特异性为零。"
 
 #: formats/components/src/functions/focusOutlineRules.md
 #: packages/utils/src/functions/focusOutlineRules.md
@@ -2759,13 +2759,13 @@ msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) 安装 `AGENTS.md`, `llms.t
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are\nself-contained, so we document them here and some ship to npm on their own."
-msgstr "Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are\nself-contained, so we document them here and some ship to npm on their own."
+msgstr "为 monorepo 本身构建、文档和演示基础设施。大部分是内部使用，但这些组件是\n自包含的，因此我们在此记录它们，其中一些单独发布到 npm。"
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API\npage; the others do."
-msgstr "`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API\npage; the others do."
+msgstr "`@pantoken/validate-generated` 是一个只运行一次的脚本（由 `pnpm run ready`) 调用，因此它没有 API\n页面；其他的有。"
 
 #: index.md
 #, fuzzy, no-c-format
@@ -2777,13 +2777,13 @@ msgstr "`@pantoken/ai` — 面向使用 pantoken 的项目的消费者端代理�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
-msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
+msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) 安装 `AGENTS.md`， `llms.txt`，并\n\tassistant/editor 规则（Cursor, Copilot, Windsurf, Claude Code)）到消费者仓库。"
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Plugins we author for the tools we build with, grouped by host. They're standalone and publishable."
-msgstr "Plugins we author for the tools we build with, grouped by host. They're standalone and publishable."
+msgstr "我们为所使用的构建工具编写的插件，按宿主分组。它们是独立的且可发布的。"
 
 #: packages/cli/src/functions/parseArgs.md
 #, no-c-format
@@ -3801,7 +3801,7 @@ msgstr "构建一个解析器，将 `var(--x)` 引用针对 `base` 展开为具�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`Token`](../../../core/src/interfaces/Token.md)[]"
-msgstr "readonly [`Token`](../../../core/src/interfaces/Token.md)[]"
+msgstr "只读 [`Token`](../../../core/src/interfaces/Token.md)[]"
 
 #: packages/plugin-kit/src/functions/makeResolver.md
 #: packages/utils/src/functions/makeResolver.md
@@ -13357,7 +13357,7 @@ msgstr "一个可悬停的 \"查看全屏\" 按钮，覆盖在演示/示例框�
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "The `.arrows` buttons are `aria-hidden` and purely presentational — incrementing/decrementing the value on click is the consumer's JS to wire up."
-#~ msgstr "The `.arrows` buttons are `aria-hidden` and purely presentational — incrementing/decrementing the value on click is the consumer's JS to wire up."
+#~ msgstr "这些 `.arrows` 按钮是 `aria-hidden`，并且纯粹用于展示 — 点击时对值进行增减由使用者的 JS 来绑定。"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -25390,3 +25390,684 @@ msgstr "一个可悬停的 \"查看全屏\" 按钮，覆盖在演示/示例框�
 #~ msgctxt "docs.api:prose"
 #~ msgid "pantoken icon logo (reversed)."
 #~ msgstr "pantoken 图标徽标（反色）。"
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "资产内容和写入器函数现在位于 `@pantoken/scaffold` (因此基础 scaffold\nflow 可以在没有循环依赖) 的情况下提供它们；在此为向后兼容重新导出。"
+
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "AI 代理"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "此处内容。"
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "操作"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  带有默认 "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " 颜色，和自定义图标.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  恭喜！您正在使用 \"success\" 颜色.\n  "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "LH"
+msgstr "LH"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "AI"
+msgstr "AI"
+
+msgctxt "docs.api:prose"
+msgid "Dr. Nguyen Van Thoc"
+msgstr "阮文托克博士"
+
+msgctxt "docs.api:prose"
+msgid "Miguel Sanchez"
+msgstr "米格尔·桑切斯"
+
+msgctxt "docs.api:prose"
+msgid "Miguel"
+msgstr "米格尔"
+
+msgctxt "docs.api:prose"
+msgid "Sanchez"
+msgstr "桑切斯"
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "收件箱"
+
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "新功能"
+
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "这是一个带自定义图标的紫罗兰色横幅。"
+
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "确定"
+
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  这是一个海色横幅，间距紧凑.\n"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "基础表面上的样式化链接。"
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "还没有项目"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "创建你的第一个项目以开始。"
+
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "首页"
+
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "指南"
+
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "组件"
+
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "面包屑"
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "主要"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "次要"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "更新内容"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "该图像可以是任意前导视觉元素 — 图标、头像或图片。"
+
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "2026年3月"
+
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "周日"
+
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "周一"
+
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "周二"
+
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "周三"
+
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "周四"
+
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "周五"
+
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "周六"
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "卡片标题"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "第一部分"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "第二部分"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "出现了问题。"
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "上下文视图使用带有尖角（caret）的提示框来框出一个 callout。作为弹出式小窗（popover），它位于顶层，并在你点击外部或按 Esc 键时关闭。"
+
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "托盘内容"
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "导航"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "主要内容"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "模块"
+
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "将图片拖到此处"
+
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", 或点击以浏览."
+
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG 或 JPG 最多 5&nbsp;MB."
+
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "收货地址"
+
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "名字"
+
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "姓氏"
+
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "城市"
+
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "州"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "所有字段仅用于配送。"
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "我们绝不会分享它。"
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "请输入有效的电子邮件地址。"
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "电子邮件地址"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "一"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "二"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "标题 h1"
+
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "未命名"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "带样式的链接"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "第一项"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "第二项"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "第三项"
+
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "操作"
+
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "编辑"
+
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "复制"
+
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "删除"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "活跃用户"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "小"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — 一个窄模态对话框。"
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "关闭"
+
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "已发布"
+
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "草稿"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "审核中"
+
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "过时"
+
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "已阻止"
+
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "分享此页面"
+
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "弹出框是一个锚定到触发器的轻量级面板。这个使用原生 "
+
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr " 属性."
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "原始绘制的盒子。"
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  正在上传文档: "
+
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "得分"
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "已用存储"
+
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "发行说明"
+
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "正文文本，带有 "
+
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "链接"
+
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "T恤尺码"
+
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " 小号"
+
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " 中号"
+
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " 大号"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " 选项 A"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "在小断点及以下隐藏。"
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "仅在小断点及以上显示。"
+
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "示例"
+
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "在新窗口中打开"
+
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "日历"
+
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "设置"
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "选择一种水果…"
+
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "苹果"
+
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "橙子"
+
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "梨"
+
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "带有内边距且顶部外边距较大的盒子。"
+
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "始终置顶。"
+
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "评分最高的电影"
+
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "排名"
+
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "片名"
+
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "年份"
+
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "评分"
+
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "肖申克的救赎"
+
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "教父"
+
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "教父：第二部"
+
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "概览"
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "详细信息"
+
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "已禁用"
+
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "历史"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "概览选项卡的内容显示在此处。"
+
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "小"
+
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "超小文本"
+
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "小文本"
+
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "引用文本"
+
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "AI 高亮文本"
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "此包包含什么？"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  基于类的组件样式，由 Instructure 代币构建，外加一层正文样式.\n"
+
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "高级设置"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "当组展开时会显示这些选项。标题行带有一个在打开时旋转的折叠箭头，内容位于分隔线下方。"
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "默认放置在顶部"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "动画内容"
+
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "筛选"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "一个托盘从起始边滑入并填满视口高度。"
+
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "切换托盘"
+
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " 课程文件"
+
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " 教学大纲.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " 第1周"
+
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " 阅读.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " 幻灯片.pptx"
+
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " 评分标准.docx"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "此文本默认被限制为一行，并以省略号结尾。"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "此文本被限制为三行，并以省略号结尾。"
+
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  类似卡片的表面.\n"
+
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "带轮廓的子项。"
+
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "您的更改已保存。"
+
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "一个扁平的内联通知。"
+
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "保存更改"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "关于此项目的更多信息。"
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "切换面板"
+
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "个人资料"
+
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "删除…"
+
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "删除此项目？"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "第一 "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "下一步"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "第二 "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "返回"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "活动"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "选项"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "仪表板"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "课程"
+
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "设计"
+
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "已收藏"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "将鼠标悬停在我上方"
+
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "菜单"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "一个将被限制为两行的长描述…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

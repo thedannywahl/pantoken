@@ -9,14 +9,11 @@ hero:
       text: 快速入门
       link: /zh-Hans/guide/getting-started
     - theme: alt
-      text: 包映射
-      link: /zh-Hans/api/
+      text: CSS 参考
+      link: /zh-Hans/api/css/
     - theme: alt
       text: API 参考
       link: /zh-Hans/api
-    - theme: alt
-      text: CSS 参考
-      link: /zh-Hans/api/css/
 features:
   - icon:
       light: /book-check-light.svg

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 04:44+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2531,7 +2531,7 @@ msgstr "[toLess](functions/toLess.md) は任意の IR を変換します。[less
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Re-exports [Mode](../../../packages/core/src/type-aliases/Mode.md)"
-msgstr "Re-exports [Mode](../../../packages/core/src/type-aliases/Mode.md)"
+msgstr "再エクスポート [モード](../../../packages/core/src/type-aliases/Mode.md)"
 
 #: formats/less/src/index.md
 #, no-c-format
@@ -2747,25 +2747,25 @@ msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) は `AGENTS.md`、`llms.txt
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "For design tools."
-msgstr "For design tools."
+msgstr "デザインツール向け。"
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins)."
-msgstr "Optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins)."
+msgstr "トークンやCSS出力を拡張するオプションの変換。詳しくは [Plugins](/guide/plugins) を参照。"
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are\nself-contained, so we document them here and some ship to npm on their own."
-msgstr "Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are\nself-contained, so we document them here and some ship to npm on their own."
+msgstr "モノレポ自体のビルド、ドキュメント、デモ用インフラ。ほとんどは内部用だが、これらのパーツは\n自己完結しているため、ここで文書化しており、一部は単体でnpmに公開される。"
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API\npage; the others do."
-msgstr "`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API\npage; the others do."
+msgstr "`@pantoken/validate-generated` は一度実行されるスクリプトです（`pnpm run ready`) によって呼び出されるので、API\nページはありません；他のものはあります。）"
 
 #: index.md
 #, fuzzy, no-c-format
@@ -2777,13 +2777,13 @@ msgstr "`@pantoken/ai` — pantoken を利用するプロジェクト向けの�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
-msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
+msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) は `AGENTS.md`, `llms.txt`、および\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code)) をコンシューマーリポジトリにインストールします。"
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Plugins we author for the tools we build with, grouped by host. They're standalone and publishable."
-msgstr "Plugins we author for the tools we build with, grouped by host. They're standalone and publishable."
+msgstr "我々がビルドに使用するツール向けに作成したプラグイン。ホスト別に分類しています。単独で動作し、公開可能です。"
 
 #: packages/cli/src/functions/parseArgs.md
 #, no-c-format
@@ -5950,7 +5950,7 @@ msgstr "InstUIのレイアウトプリミティブ（View、Flex、Grid、List�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Renames and re-exports [visualDebug](functions/visualDebug.md)"
-msgstr "Renames and re-exports [visualDebug](functions/visualDebug.md)"
+msgstr "名前を変更し、再エクスポートします [visualDebug](functions/visualDebug.md)"
 
 #: plugins/pantoken/visual-debug/src/interfaces/VisualDebugOptions.md
 #, no-c-format
@@ -9355,7 +9355,7 @@ msgstr "次の3つを提供します: [resolveDemo](functions/resolveDemo.md)（
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Options for [demoMarkdownIt](../functions/demoMarkdownIt.md): the [resolveDemo](../functions/resolveDemo.md) fields plus optional live-example seaming."
-msgstr "Options for [demoMarkdownIt](../functions/demoMarkdownIt.md): the [resolveDemo](../functions/resolveDemo.md) fields plus optional live-example seaming."
+msgstr "のオプション： the [resolveDemo](../functions/resolveDemo.md) フィールドと、オプションのライブ例の結合。"
 
 #: tools/demo/src/interfaces/DemoMarkdownItOptions.md
 #: tools/demo/src/interfaces/ResolveOptions.md
@@ -25390,3 +25390,693 @@ msgstr "ホバー可能な「全画面表示」ボタン。VitePress の code-bl
 #~ msgctxt "docs.api:prose"
 #~ msgid "pantoken icon logo (reversed)."
 #~ msgstr "pantoken アイコンロゴ（反転）。"
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "アセットのコンテンツとライター関数は現在 `@pantoken/scaffold` に配置されています（そのためベースのスキャフォールド\nflow が循環依存なしにそれらを提供できるように); 後方互換のためここで再エクスポートされています。）"
+
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "AIエージェント"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "ここにコンテンツ。"
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "アクション"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  デフォルトのアラート "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " 色とカスタムアイコン.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  おめでとうございます！\\\"success\\\" カラーを使用しています.\n  "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "LH"
+msgstr "LH"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "AI"
+msgstr "AI"
+
+msgctxt "docs.api:prose"
+msgid "Dr. Nguyen Van Thoc"
+msgstr "グエン・ヴァン・トック博士"
+
+msgctxt "docs.api:prose"
+msgid "Miguel Sanchez"
+msgstr "ミゲル・サンチェス"
+
+msgctxt "docs.api:prose"
+msgid "Miguel"
+msgstr "ミゲル"
+
+msgctxt "docs.api:prose"
+msgid "Sanchez"
+msgstr "サンチェス"
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "受信トレイ"
+
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "新機能"
+
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "これはカスタムアイコンを持つバイオレットのバナーです。"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "キャンセル"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  これはシー色のバナーで、間隔がコンパクトです.\n"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "ベースサーフェス上のスタイル付きリンク。"
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "まだアイテムがありません"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "開始するには最初のアイテムを作成してください。"
+
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "ホーム"
+
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "ガイド"
+
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "コンポーネント"
+
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "パンくずリスト"
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "主要"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "副次的"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "更新情報"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "図は任意の先頭ビジュアルにできます — アイコン、アバター、または画像。"
+
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "2026年3月"
+
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "日"
+
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "月"
+
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "火"
+
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "水"
+
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "木"
+
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "金"
+
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "土"
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "カードのタイトル"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "最初のセクション"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "2番目のセクション"
+
+msgctxt "docs.api:prose"
+msgid "Checkbox\n"
+msgstr "チェックボックス\n"
+
+msgctxt "docs.api:prose"
+msgid "Toggle\n"
+msgstr "トグル\n"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "問題が発生しました。"
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "コンテキストビューはキャレット付きのコールアウトを枠で囲みます。ポップオーバーとして最上層に表示され、外側をクリックするか Esc を押すと閉じます。"
+
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "トレイの内容"
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "ナビゲーション"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "メインコンテンツ"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "モジュール"
+
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "画像をここにドラッグしてください"
+
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", またはクリックして参照してください."
+
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG または JPG、最大5&nbsp;MB."
+
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "配送先住所"
+
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "名"
+
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "姓"
+
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "市区町村"
+
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "州"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "すべての項目は配送のみに使用されます。"
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "当社はそれを決して共有しません。"
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "有効なメールアドレスを入力してください。"
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "メールアドレス"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "一"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "二"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "見出し h1"
+
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "無題"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "装飾されたリンク"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "最初の項目"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "二番目の項目"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "三番目の項目"
+
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "操作"
+
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "編集"
+
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "複製"
+
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "削除"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "アクティブユーザー"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "小"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — 狭いモーダルです。"
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "閉じる"
+
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "公開"
+
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "下書き"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "レビュー中"
+
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "期限切れ"
+
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "ブロック中"
+
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "このページを共有する"
+
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "ポップオーバーはトリガーにアンカーされた軽量なサーフェスです。こちらはネイティブの "
+
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr " 属性。"
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "プリミティブに塗装されたボックス。"
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  ドキュメントをアップロード中: "
+
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "スコア"
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "使用済みストレージ"
+
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "リリースノート"
+
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "本文のコピーと "
+
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "リンク"
+
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "Tシャツのサイズ"
+
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " 小"
+
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " 中"
+
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " 大"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " オプションA"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "小さいブレークポイント以下で非表示。"
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "小さいブレークポイント以上でのみ表示。"
+
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "例"
+
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "新しいウィンドウで開きます"
+
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "カレンダー"
+
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "設定"
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "果物を選んでください…"
+
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "りんご"
+
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "オレンジ"
+
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "洋梨"
+
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "上部に大きなマージンがあり、パディングが施されたボックス。"
+
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "常に最前面に表示される。"
+
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "高評価の映画"
+
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "順位"
+
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "タイトル"
+
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "年"
+
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "評価"
+
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "ショーシャンクの空に"
+
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "ゴッドファーザー"
+
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "ゴッドファーザー PART II"
+
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "概要"
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "詳細"
+
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "無効"
+
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "履歴"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "概要タブの内容がここに表示されます。"
+
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "小さい"
+
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "極小のテキスト"
+
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "小さいテキスト"
+
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "引用テキスト"
+
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "AIハイライトテキスト"
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "このパッケージには何が含まれていますか？"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  Instructure のトークンから構築されたクラスベースのコンポーネントスタイルと、プローズレイヤー。\n"
+
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "詳細設定"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "これらのオプションはグループを展開したときに表示されます。ヘッダー行には開くと回転するシェブロンがあり、コンテンツは区切り線の下に配置されます。"
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "デフォルトの配置は上です"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "アニメーションコンテンツ"
+
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "フィルター"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "トレイが開始エッジからスライドして表示され、ビューポートの高さを満たします。"
+
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "トレイを切り替え"
+
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " コースファイル"
+
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " シラバス.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " 第1週"
+
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " リーディング.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " スライド.pptx"
+
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " ルーブリック.docx"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "このテキストはデフォルトで1行に制限され、末尾は省略記号で終わります。"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "このテキストは3行に制限され、末尾は省略記号で終わります。"
+
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  カードのような表面。\n"
+
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "アウトライン表示された子。"
+
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "変更が保存されました。"
+
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "フラットなインライン通知。"
+
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "変更を保存"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "この項目の詳細について。"
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "パネルを切り替え"
+
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "プロフィール"
+
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "削除…"
+
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "この項目を削除しますか？"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "最初 "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "次へ"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "二番目 "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "戻る"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "アクティブ"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "オプション"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "ダッシュボード"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "コース"
+
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "デザイン"
+
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "ブックマーク済み"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "ここにカーソルを合わせて"
+
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "メニュー"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "2行に切り詰められる長い説明…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

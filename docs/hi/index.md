@@ -9,14 +9,11 @@ hero:
       text: शुरू करें
       link: /hi/guide/getting-started
     - theme: alt
-      text: पैकेज मानचित्र
-      link: /hi/api/
+      text: CSS संदर्भ
+      link: /hi/api/css/
     - theme: alt
       text: API संदर्भ
       link: /hi/api
-    - theme: alt
-      text: CSS संदर्भ
-      link: /hi/api/css/
 features:
   - icon:
       light: /book-check-light.svg

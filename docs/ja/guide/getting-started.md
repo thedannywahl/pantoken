@@ -1,34 +1,34 @@
 # はじめに
 
-Pantoken は [Instructure UI](https://instructure.design) のデザイントークンとアイコンを取り込み、一度解決してからその単一のモデルを多くのプラットフォーム向けに再成形します：プレーンなスタイルシート、SCSS と Less、React と Vue と Svelte、Tailwind と Panda、ネイティブの Swift と Kotlin、WordPress と Drupal、Figma など。
+Pantokenは[Instructure UI](https://instructure.design)のデザイントークンとアイコンを一度解決し、その単一モデルを多数のプラットフォーム向けのパッケージに整形します：プレーンなスタイルシート、SCSSやLess、ReactやVueやSvelte、TailwindやPanda、ネイティブのSwiftやKotlin、WordPressやDrupal、Figmaなど。
 
-作業に合う最小のパッケージをインストールします。すべては統合された `pantoken` パッケージからも再エクスポートされているので、そこから始めて後で絞り込むことができます。
+用途に合う最小のパッケージをインストールします。すべては統一された`pantoken`パッケージでも再エクスポートされているので、まずそこから始めて後で絞り込むことができます。
 
-## スタータープロジェクトのスキャフォールド
+## スタータープロジェクトをスキャフォールドする
 
-pantoken を素早く試す最短ルート：あらかじめインストールと設定が済んだスタータープロジェクトをスキャフォールドします。
+pantokenを試す最速の方法：あらかじめインストールされ接続されたスタータープロジェクトをスキャフォールドすることです。
 
 ```sh
 npx create-pantoken-app
 ```
 
-対応プラットフォーム：`components`（プレーン HTML/CSS）、`react`、`vue`、`svelte`、`web-components`、`angular`。プログラム的な利用や `--dir <path>` については [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) を参照してください。
+対応プラットフォーム：`components`（プレーンHTML/CSS）、`react`、`vue`、`svelte`、`web-components`、`angular`。`--dir <path>`やプログラムからの利用については[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold)を参照してください。
 
-AI コーディングエージェントを使う場合はインストール不要 — スキルを直接指し示してください：
+AIコーディングエージェントを使用していますか？インストール不要 — スキルを直接指示してください：
 
 ```prompt
 create.pantoken.app/SKILL.md を取得し、それに従ってこのプロジェクトに pantoken をセットアップしてください。
 ```
 
-pantoken のエージェントルールをリポジトリに恒久的に組み込みたい場合（AGENTS.md、エディタルール、このスキルのローカルコピーなど）は、代わりに `npx @pantoken/ai init` を実行してください。
+pantokenのエージェントルールをリポジトリに恒久的に組み込みたい場合（AGENTS.md、エディタルール、このスキルのローカルコピー）、代わりに`npx @pantoken/ai init`を実行してください。
 
 ## トークンモデル
 
-トークンは `--instui-<group>-<name>` という名前の CSS カスタムプロパティです。例えば `--instui-color-background-brand` や `--instui-spacing-space-md`。3 つのテーマが同梱されています：デフォルトの `rebrand`（ライトとダークで異なる箇所は `light-dark()`）、`canvas`、および `canvasHighContrast`。アイコンは Lucide と Instructure のカスタムグリフから派生した `<image>` トークン（`--instui-icon-<name>`）です。
+トークンは`--instui-<group>-<name>`という名前のCSSカスタムプロパティで、例えば`--instui-color-background-brand`や`--instui-spacing-space-md`のようなものです。3つのテーマが同梱されています：デフォルトの`rebrand`（ライトとダークが異なる箇所は`light-dark()`）、`canvas`、および`canvasHighContrast`。アイコンはLucideにInstructureのカスタムグリフを加えた派生の`<image>`トークン（`--instui-icon-<name>`）です。
 
-## Web アプリのスタイリング
+## ウェブアプリのスタイル適用
 
-スタイルシートをインストールして一度インポートしてください。すべての `--instui-*` プロパティを定義しているので、自分の CSS から直接参照できます。
+スタイルシートをインストールして一度インポートします。すべての`--instui-*`プロパティを定義しているので、自分のCSSから直接参照できます。
 
 ```sh
 npm i @pantoken/css
@@ -47,7 +47,7 @@ import "@pantoken/css/inject";
 
 ## アイコンをどこでも使う
 
-Web コンポーネントはどのフレームワークでも動作し、移植は不要です。
+このWebコンポーネントはフレームワークを問わず動作し、移植作業は不要です。
 
 ```sh
 npm i @pantoken/web-components
@@ -61,9 +61,9 @@ import "@pantoken/web-components";
 <instui-icon name="check-mark"></instui-icon>
 ```
 
-### CSS トークン
+### CSSトークン
 
-アイコンは CSS カスタムプロパティです（`--instui-icon-<name>`）。スタイルシートを一度読み込み、任意のアイコンを `mask-image` または `background-image` として参照してください — アイコンごとの個別インポートは不要です。
+アイコンはCSSカスタムプロパティ（`--instui-icon-<name>`）です。スタイルシートを一度読み込み、任意のアイコンを`mask-image`または`background-image`として参照できます — アイコンごとの個別インポートは不要です。
 
 ```css
 .my-icon {
@@ -71,9 +71,9 @@ import "@pantoken/web-components";
 }
 ```
 
-### JavaScript — 単一アイコン vs. フルセット
+### JavaScript — 単一アイコン vs 全セット
 
-`@pantoken/icons` は二つの名前付きエクスポートを公開します。フル配列を走査せずに単一アイコンを取得するには `iconsByName` を使います：
+`@pantoken/icons`は2つの名前付きエクスポートを公開します。配列全体を反復せずに1つのアイコンを取り出すには`iconsByName`を使用してください：
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -82,7 +82,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-ピッカーを作るなど全セットが必要な場合は `icons` を使います：
+ピッカーを作るなど全セットが必要な場合は`icons`を使用します：
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -91,29 +91,29 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-両方のエクスポートはモジュール初期化時に完全な IR を読み込みます — このレベルでのアイコン単位のツリーシェイキングはありません。軽量の CSS のみで読み込む場合は、必要なアイコンだけの結合 URL を生成する [CDN ピッカー](/guide/cdn-picker) を使用してください。
+どちらのエクスポートもモジュール初期化時に完全なIRを読み込みます — このレベルではアイコン個別のツリーシェイキングはありません。CSSのみで軽量に読み込みたい場合は、必要なアイコンだけを組み合わせたURLを生成する[CDNピッカー](/guide/cdn-picker)を使用してください。
 
-## ネイティブプラットフォーム向け生成
+## ネイティブプラットフォーム向けの生成
 
-CLI はトークンソースをターゲットリポジトリに書き出します。ランナー以外のインストールは不要です：
+CLIはターゲットリポジトリにトークンソースを書き込みます。ランナー以外のインストールは不要です：
 
 ```sh
 npx @pantoken/cli generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-すべてのターゲットについては [the pantoken CLI](/guide/cli) を参照してください。
+すべてのターゲットについては[the pantoken CLI](/guide/cli)を参照してください。
 
-## VS Code の作成支援ヒント
+## VS Codeのオーサリングヒント
 
-`@pantoken/pantoken` は現在、下流プロジェクトが pantoken 固有の拡張をインストールせずに HTML/CSS でクラスとトークンの補完を得られるよう、VS Code 用の custom-data ファイルを同梱しています。
+`@pantoken/pantoken`はVS Codeのカスタムデータファイルを同梱しており、ダウンストリームプロジェクトはpantoken専用拡張をインストールせずにHTML/CSSでクラスやトークンの補完を得られます。
 
-1. 統合パッケージをインストールします：
+1. 統一パッケージをインストールします：
 
 ```sh
 npm i @pantoken/pantoken
 ```
 
-1. 消費側のワークスペースから同梱の custom-data JSON を VS Code にポイントします：
+1. コンシューマのワークスペースから同梱のcustom-data JSONをVS Codeに向けます：
 
 ```json
 {
@@ -122,13 +122,13 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. 新しいデータを適用するために VS Code をリロードします（または「Developer: Reload Window」を実行）。
+1. VS Codeをリロードする（または「Developer: Reload Window」を実行）して新しいデータを適用します。
 
-これにより `instui-*` クラストークン（および `-modifier` クラストークン）と `--instui-*` カスタムプロパティの補完が有効になります。
+これにより`instui-*`クラストークン（および`-modifier`クラストークン）や`--instui-*`カスタムプロパティの補完が有効になります。
 
-## 次に見る場所
+## 次はどこへ
 
-- [パッケージマップ](/api/) — タスク別にどのパッケージを選ぶべきか。
+- [パッケージマップ](/api/) — タスク別にどのパッケージを使うべきか。
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — コンシューマリポジトリにエージェント資産とルールをインストールする。
-- [アーキテクチャ](/guide/architecture) — トークンモデル、コア、出力がどのように結びつくか。
-- [API リファレンス](/api/) — ソースから生成されたすべてのエクスポートシンボル。
+- [アーキテクチャ](/guide/architecture) — トークンモデル、コア、出力がどのように結合するか。
+- [APIリファレンス](/api/) — ソースから生成されたすべてのエクスポートシンボル。

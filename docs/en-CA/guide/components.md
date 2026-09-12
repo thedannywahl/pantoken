@@ -185,7 +185,7 @@ import "@pantoken/components/utilities.css";
   <span class="instui-text --text-on-color">Accent-blue surface with on-color text.</span>
 </div>
 <div class="instui-view --bg-muted --p-sm --mx-auto" style="max-width: 12rem; border-radius: 6px; text-align: center;">
-  <span class="instui-text">Centred with mx-auto.</span>
+  <span class="instui-text">Centered with mx-auto.</span>
 </div>
 
 ```html

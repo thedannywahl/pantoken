@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 09:09+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2777,7 +2777,7 @@ msgstr "`@pantoken/ai` — tài sản agent dành cho người tiêu dùng cho c
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
-msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
+msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) cài đặt `AGENTS.md`, `llms.txt`, và\n\tquy tắc assistant/editor (Cursor, Copilot, Windsurf, Claude Code)) vào một kho lưu trữ dành cho người tiêu dùng."
 
 #: index.md
 #, no-c-format
@@ -15107,7 +15107,7 @@ msgstr "Một nút \"xem toàn màn hình\" hiện khi rê chuột, phủ lên k
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "The `-variant-*` presets and the `-color-*`/`-size-*`/`-weight-*` modifiers all compose on the same element; unlike `heading`, it renders no implicit semantic level."
-#~ msgstr "The `-variant-*` presets and the `-color-*`/`-size-*`/`-weight-*` modifiers all compose on the same element; unlike `heading`, it renders no implicit semantic level."
+#~ msgstr "Các `-variant-*` presets và các `-color-*`/`-size-*`/`-weight-*` modifiers đều ghép trên cùng một phần tử; không giống như `heading`, nó không tạo ra cấp độ ngữ nghĩa ngầm định."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -25390,3 +25390,661 @@ msgstr "Một nút \"xem toàn màn hình\" hiện khi rê chuột, phủ lên k
 #~ msgctxt "docs.api:prose"
 #~ msgid "pantoken icon logo (reversed)."
 #~ msgstr "pantoken logo biểu tượng (đảo màu)."
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "Nội dung tài sản và hàm ghi bây giờ nằm trong `@pantoken/scaffold` (vì vậy bộ khung cơ sở\nflow có thể cung cấp chúng mà không gây phụ thuộc vòng); được xuất lại ở đây để tương thích ngược."
+
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "Tác nhân AI"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "Nội dung ở đây."
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "Hành động"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  Một cảnh báo với mặc định "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " màu sắc, và một biểu tượng tùy chỉnh.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  Xin chúc mừng! Bạn đang sử dụng màu \"success\".\n  "
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "Hộp thư đến"
+
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "Tính năng mới"
+
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "Đây là một biểu ngữ màu tím với một biểu tượng tùy chỉnh."
+
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "Đồng ý"
+
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "Hủy"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  Đây là một biểu ngữ màu biển với khoảng cách gọn gàng.\n"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "Một liên kết được định kiểu trên bề mặt cơ bản."
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "Chưa có mục nào"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "Tạo mục đầu tiên để bắt đầu."
+
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "Trang chủ"
+
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "Hướng dẫn"
+
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "Thành phần"
+
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "Phân cấp điều hướng"
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "Chính"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "Phụ"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "Có gì mới"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "Hình minh họa có thể là bất kỳ yếu tố hình ảnh dẫn đầu nào — một biểu tượng, một ảnh đại diện, hoặc một hình ảnh."
+
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "Tháng 3 năm 2026"
+
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "CN"
+
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "T2"
+
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "T3"
+
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "T4"
+
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "T5"
+
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "T6"
+
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "T7"
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "Tiêu đề thẻ"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "Phần đầu tiên"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "Phần thứ hai"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "Đã xảy ra lỗi."
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "Chế độ xem ngữ cảnh đóng khung một hộp chú thích bằng một mũi caret. Khi là một hộp bật lên nó nằm ở lớp trên cùng và đóng khi bạn nhấp ra ngoài hoặc nhấn Esc."
+
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "Nội dung khay"
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "Điều hướng"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "Nội dung chính"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "Mô-đun"
+
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "Kéo một ảnh vào đây"
+
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", hoặc nhấp để duyệt."
+
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG hoặc JPG tối đa 5&nbsp;MB."
+
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "Địa chỉ giao hàng"
+
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "Tên"
+
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "Họ"
+
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "Thành phố"
+
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "Tiểu bang"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "Tất cả các trường chỉ được sử dụng cho giao hàng."
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "Chúng tôi sẽ không bao giờ chia sẻ điều đó."
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "Nhập địa chỉ email hợp lệ."
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "Địa chỉ email"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "Một"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "Hai"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "Tiêu đề h1"
+
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "Không có tiêu đề"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "Một liên kết được định kiểu"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "Mục đầu tiên"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "Mục thứ hai"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "Mục thứ ba"
+
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "Hành động"
+
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "Chỉnh sửa"
+
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "Sao chép"
+
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "Xóa"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "Người dùng hoạt động"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "Nhỏ"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — một hộp thoại hẹp."
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "Đóng"
+
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "Đã xuất bản"
+
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "Bản nháp"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "Đang xem xét"
+
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "Lỗi thời"
+
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "Bị chặn"
+
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "Chia sẻ trang này"
+
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "Một popover là một bề mặt nhẹ được neo vào một phần kích hoạt. Cái này sử dụng gốc "
+
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr " thuộc tính."
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "Hộp được sơn nguyên thủy."
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  Đang tải tài liệu lên: "
+
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "Điểm"
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "Dung lượng đã sử dụng"
+
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "Ghi chú phát hành"
+
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "Nội dung chính với một "
+
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "liên kết"
+
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "Kích thước áo thun"
+
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " Nhỏ"
+
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " Vừa"
+
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " Lớn"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " Tùy chọn A"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "Ẩn ở hoặc dưới điểm ngắt nhỏ."
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "Chỉ hiển thị ở hoặc trên điểm ngắt nhỏ."
+
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "ví dụ"
+
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "Mở trong cửa sổ mới"
+
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "Lịch"
+
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "Cài đặt"
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "Chọn một loại trái cây…"
+
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "Táo"
+
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "Cam"
+
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "Lê"
+
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "Hộp có padding với lề trên lớn."
+
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "Luôn ở trên cùng."
+
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "Phim được đánh giá cao nhất"
+
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "Xếp hạng"
+
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "Tiêu đề"
+
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "Năm"
+
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "Đánh giá"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "The Shawshank Redemption"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "The Godfather"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "The Godfather: Part II"
+
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "Tổng quan"
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "Chi tiết"
+
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "Đã tắt"
+
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "Lịch sử"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "Nội dung của tab Tổng quan hiển thị ở đây."
+
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "nhỏ"
+
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "văn bản rất nhỏ"
+
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "văn bản nhỏ"
+
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "Văn bản được trích dẫn"
+
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "Văn bản được AI làm nổi bật"
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "Gói này bao gồm những gì?"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  Các kiểu component dựa trên lớp, được xây dựng từ các token của Instructure, kèm theo một lớp văn bản.\n"
+
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "Cài đặt nâng cao"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "Các tùy chọn này được hiển thị khi nhóm được mở rộng. Hàng tiêu đề có một chevron xoay khi mở, và nội dung nằm bên dưới một đường phân cách."
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "Vị trí mặc định là ở trên"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "Nội dung hoạt ảnh"
+
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "Bộ lọc"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "Một khay trượt vào từ cạnh bắt đầu và chiếm toàn bộ chiều cao khung nhìn."
+
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "chuyển đổi khay"
+
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " Tệp khóa học"
+
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " Đề cương.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " Tuần 1"
+
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " Bài đọc.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " Trình chiếu.pptx"
+
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " Tiêu chí chấm điểm.docx"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "Đoạn văn này được giới hạn ở một dòng theo mặc định và kết thúc bằng dấu ba chấm."
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "Đoạn văn này được giới hạn ở ba dòng và kết thúc bằng dấu ba chấm."
+
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  Một bề mặt dạng thẻ.\n"
+
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "Phần tử con có viền."
+
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "Các thay đổi của bạn đã được lưu."
+
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "Một thông báo phẳng, nội tuyến."
+
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "Lưu thay đổi"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "Thêm về mục này."
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "Bật/tắt bảng điều khiển"
+
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "Hồ sơ"
+
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "Xóa…"
+
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "Xóa mục này?"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "Đầu tiên "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "Tiếp theo"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "Thứ hai "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "Quay lại"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "Đang hoạt động"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "Tùy chọn"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "Bảng điều khiển"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "Khóa học"
+
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "Thiết kế"
+
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "Đã đánh dấu"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "Di chuột lên tôi"
+
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "Thực đơn"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "Một mô tả dài sẽ bị giới hạn ở hai dòng…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

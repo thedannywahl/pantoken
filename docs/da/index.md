@@ -9,14 +9,11 @@ hero:
       text: Kom godt i gang
       link: /da/guide/getting-started
     - theme: alt
-      text: Pakkeoversigt
-      link: /da/api/
+      text: CSS-reference
+      link: /da/api/css/
     - theme: alt
       text: API-reference
       link: /da/api
-    - theme: alt
-      text: CSS-reference
-      link: /da/api/css/
 features:
   - icon:
       light: /book-check-light.svg

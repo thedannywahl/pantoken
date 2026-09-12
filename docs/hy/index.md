@@ -9,14 +9,11 @@ hero:
       text: Սկսում
       link: /hy/guide/getting-started
     - theme: alt
-      text: Փաթեթների քարտեզը
-      link: /hy/api/
+      text: CSS հղում
+      link: /hy/api/css/
     - theme: alt
       text: API հղում
       link: /hy/api
-    - theme: alt
-      text: CSS հղում
-      link: /hy/api/css/
 features:
   - icon:
       light: /book-check-light.svg

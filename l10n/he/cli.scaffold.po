@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 17:04+0000\n"
+"PO-Revision-Date: 2026-09-11 23:03+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "Language: und\n"
@@ -20,6 +20,12 @@ msgstr "בחר פלטפורמה ליצירת scaffold:"
 msgctxt "cli.scaffold:promptDir"
 msgid "Target directory:"
 msgstr "תיקיית יעד:"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:promptAiAssets"
+msgid "Add AI agent assets (AGENTS.md, editor/Copilot rules)?"
+msgstr "להוסיף נכסי סוכני AI (AGENTS.md, כללי העורך/Copilot)?"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -133,6 +139,12 @@ msgctxt "cli.scaffold:helpYesDescription"
 msgid ""
 "Never prompt; error instead of prompting for a missing platform/directory"
 msgstr "אל תבקש אישור; במקום זאת להחזיר שגיאה אם חסרה פלטפורמה/תיקייה"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:helpNoAiDescription"
+msgid "Skip installing AI agent assets after scaffolding"
+msgstr "דלג על התקנת נכסי סוכני AI לאחר יצירת התשתית"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format

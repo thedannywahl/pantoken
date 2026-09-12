@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 05:41+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -25390,3 +25390,243 @@ msgstr "Hoverejuvvon \"view fullscreen\"-buktá, mii lámmá demonstrasuvnna/dae
 #~ msgctxt "docs.api:prose"
 #~ msgid "pantoken icon logo (reversed)."
 #~ msgstr "pantoken ikona logo (juokčán)."
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  Alertta dálgát default-várriin "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " várri, ja oaivvildan ikona.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  Buorre! Don geavahit \"success\"-várriin.\n  "
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "Innboks"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "Stilálaš linka álmmu čáhppes."
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "Ii leat muhto čuovggat"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "Geažet dutnje vuosttaš čuovgga mii boađeheapmi."
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "Primár"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "Sekundár"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "Maid lea ođđa?"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "Gávcci sáhttá leat minká olbmuvisuála — ikon, avatar dahje kuvva."
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "Kártta šeaddji"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "Sisdoallu dán."
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "Dávggat"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "Ovtta jaokta"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "Guokte jaokta"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "Dat leat gohččon."
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "Navigasjovnna"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "Ovddas ealáhusa"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "Moduulat"
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "Mii ii guhká muitalit dát."
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "Geavahemi dábálaš e‑postadressa."
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "E‑postadressa"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "Okta"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "Guokte"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "Oktavuohta h1"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "Stilevva linka"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "Vuosttaš item"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "Njukčamat item"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "Golbma item"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "Aktivalaš oahppat"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "Gávpi"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr "— čuovddaš modal"
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "Running a web search for the correct Northern Sami translation of the UI label \"Close\".\n\n[32m●[39m [1mWeb Search [22m(MCP: github-mcp-server) · Northern Sami translation \"Close\" UI label · query: \"Nor… 9s\n  └ No relevant web results found.\n\nLohkat"
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "Primitiivalaš máttaráhka boksi."
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  Dokumenta gávdnodat: "
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "Usiheapmi dávviruhttin"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " Válgá A"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "Doaibmat ovddas dahje almmu small breakpoint."
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "Buktá muhto ovddas dahje gilvvus small breakpoint."
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "Maid šaddet dán pakkásas?"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  Klassapohjjálaš komponentta stiliid, gávdnojuvvo Instructure tokenaid gaskkas, ja prose-gulvvu.\n"
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "Dihtii skádja lea ovtta"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "Animasjonaš sisdoavttir"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "Dát tekstta lea čuhkke ovttasline ja galggašii čađđit ellipsaha."
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "Dát tekstta lea čuhkke golmmu ovttasline ja galggašii čađđit ellipsaha."
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "Detaljjat"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "Máŋga eanet dát barggus."
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "Váltte panel"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "Ovttas "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "Maŋŋá"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "Guokte "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "Boađe"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "Aktiv"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "Válggat"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "Instrumentpanel"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "Kursat"
+
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "Diseain"
+
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "Meny"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

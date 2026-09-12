@@ -1,39 +1,34 @@
 # Začetek
 
-Pantoken vzame oblikovne tokene in ikone iz [Instructure UI](https://instructure.design), jih enkrat razreši in preoblikuje ta en model v pakete za mnoge platforme: navadne slogovne datoteke, SCSS in Less, React in Vue in Svelte, Tailwind in Panda, nativen Swift in Kotlin, WordPress in Drupal, Figma in še več.
+Pantoken vzame oblikovne tokene in ikone iz [Instructure UI](https://instructure.design), jih enkrat razreši in ta en model preoblikuje v pakete za mnoge platforme: navadne slogovne liste, SCSS in Less, React in Vue in Svelte, Tailwind in Panda, nativni Swift in Kotlin, WordPress in Drupal, Figma in drugo.
 
-Namesti se najmanjši paket, ki ustreza tvoji nalogi. Vse je tudi ponovno izvezeno v enotnem `pantoken` paketu, tako da lahko začneš tam in kasneje zožiš izbiro.
+Namesti se najmanjši paket, ki ustreza tvoji nalogi. Vse je tudi ponovno izvoženo v združenem paketu `pantoken`, zato lahko začneš tam in kasneje zožiš izbor.
 
-## Postavitev začetnega projekta
+## Ustvari začetni projekt
 
-Najhitrejši način, da preizkusiš pantoken: ustvariti začetni projekt z že nameščenim in povezanih pantokenom.
+Najhitrejši način za preizkus pantoken je ustvariti začetni projekt z že nameščenim in povezanem pantoken.
 
 ```sh
 npx create-pantoken-app
 ```
 
-Platforme: `components` (navaden HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. Oglej si
-[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) za `--dir <path>` in
-programsko uporabo.
+Platforme: `components` (navaden HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. Oglej si [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) za `--dir <path>` in programsko rabo.
 
-Uporabljaš AI koderja? Namestitev ni potrebna — usmeri ga neposredno na skill:
+Uporabljaš AI kodirnega agenta? Namestitev ni potrebna — usmeri ga neposredno na skill:
 
 ```prompt
-Pridobi create.pantoken.app/SKILL.md in sledite navodilom v njem, da nastavite pantoken v tem projektu.
+Pridobite create.pantoken.app/SKILL.md in sledite navodilom za nastavitev pantoken v tem projektu.
 ```
 
-Če raje trajno povežeš pantokenova pravila agenta v repozitorij (AGENTS.md, pravila urejevalnika, lokalna kopija tega skilla), zaženi `npx @pantoken/ai init` namesto tega.
+Če raje trajno vključiš pravila pantokenovega agenta v repozitorij (AGENTS.md, uredniška pravila, lokalna kopija tega skilla), zaženi `npx @pantoken/ai init` namesto tega.
 
 ## Model tokenov
 
-Tokeni so CSS lastnosti po meri imenovane `--instui-<group>-<name>`, na primer
-`--instui-color-background-brand` ali `--instui-spacing-space-md`. Teme so tri: `rebrand`
-(privzeta, z `light-dark()` kjer se svetla in temna razlikujeta), `canvas` in `canvasHighContrast`.
-Ikone so `<image>` tokeni (`--instui-icon-<name>`) izpeljani iz Lucide plus Instructure-ovih lastnih glifov.
+Tokeni so CSS lastnosti po meri imenovane `--instui-<group>-<name>`, na primer `--instui-color-background-brand` ali `--instui-spacing-space-md`. Vključeni so trije tematski nabori: `rebrand` (privzeti, z `light-dark()` tam, kjer se svetla in temna tema razlikujeta), `canvas` in `canvasHighContrast`. Ikone so `<image>` tokeni (`--instui-icon-<name>`), izpeljani iz Lucide in Instructureovih prilagojenih glifov.
 
-## Stiliziranje spletne aplikacije
+## Oblikuj spletno aplikacijo
 
-Namesti slogovno datoteko in jo uvozi enkrat. Določi vsako `--instui-*` lastnost, zato jih uporabljaš neposredno iz svojega CSS.
+Namesti slogovni list in ga enkrat uvozi. Določi vsako `--instui-*` lastnost, zato jih lahko citiraš neposredno iz lastnega CSS.
 
 ```sh
 npm i @pantoken/css
@@ -52,7 +47,7 @@ import "@pantoken/css/inject";
 
 ## Uporaba ikon kjerkoli
 
-Web komponenta deluje v kateremkoli ogrodju, brez portanja.
+Spletni komponent deluje v kateremkoli ogrodju, brez prenašanja.
 
 ```sh
 npm i @pantoken/web-components
@@ -68,8 +63,7 @@ import "@pantoken/web-components";
 
 ### CSS tokeni
 
-Ikone so CSS lastnosti po meri (`--instui-icon-<name>`). Naloži slogovno datoteko enkrat in referenciraj katerokoli
-ikono kot `mask-image` ali `background-image` — ni potrebe po uvozu posamezne ikone.
+Ikone so CSS lastnosti po meri (`--instui-icon-<name>`). Naloži slogovni list enkrat in katero koli ikono sklicuj kot `mask-image` ali `background-image` — uvoz posamezne ikone ni potreben.
 
 ```css
 .my-icon {
@@ -77,10 +71,9 @@ ikono kot `mask-image` ali `background-image` — ni potrebe po uvozu posamezne 
 }
 ```
 
-### JavaScript — posamezna ikona proti celotnemu naboru
+### JavaScript — ena ikona proti celotnemu naboru
 
-`@pantoken/icons` izpostavlja dva imenovana izvoza. Uporabi `iconsByName` za pridobitev ene ikone brez iteracije
-celega polja:
+`@pantoken/icons` izpostavi dva imenovana izvoza. Uporabi `iconsByName` za pridobitev ene ikone brez iteracije celotnega seznama:
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -89,7 +82,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-Uporabi `icons` kadar potrebuješ celoten nabor (npr. za gradnjo izbirnika):
+Uporabi `icons` kadar potrebuješ celoten nabor (npr. za izgradnjo izbirnika):
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -98,10 +91,9 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Oba izvoza naložita celoten IR ob inicializaciji modula — na tej ravni ni treeshakinga po posamezni ikoni. Za varčno nalaganje samo z CSS uporabite [CDN picker](/guide/cdn-picker) za generiranje kombinirane URL povezave
-samo za ikone, ki jih potrebuješ.
+Oba izvoza naložita celoten IR ob inicializaciji modula — na tej ravni ni selektivnega tree-shakinga po posameznih ikonah. Za vitko nalaganje samo z CSS uporabi [CDN picker](/guide/cdn-picker) za generiranje združene URL povezave samo za ikone, ki jih potrebuješ.
 
-## Generiranje za nativen platform
+## Generiraj za nativno platformo
 
 CLI zapiše izvor tokenov v ciljni repozitorij. Namestitev ni potrebna razen zaganjalnika:
 
@@ -109,20 +101,19 @@ CLI zapiše izvor tokenov v ciljni repozitorij. Namestitev ni potrebna razen zag
 npx @pantoken/cli generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-Oglej si [pantoken CLI](/guide/cli) za vsak cilj.
+Poglej [pantoken CLI](/guide/cli) za vsak cilj.
 
-## Namigi za urejanje v VS Code
+## Namigi za pisanje v VS Code
 
-`@pantoken/pantoken` sedaj pošilja VS Code custom-data datoteke, tako da potrošniški projekti lahko dobijo dokončanje razredov in
-tokenov v HTML/CSS brez nameščanja pantoken-specifične razširitve.
+`@pantoken/pantoken` sedaj vključuje VS Code custom-data datoteke, tako da lahko downstream projekti dobijo dokončanje razredov in tokenov v HTML/CSS brez nameščanja pantoken-specifične razširitve.
 
-1. Namesti enotni paket:
+1. Namesti združeni paket:
 
 ```sh
 npm i @pantoken/pantoken
 ```
 
-1. Usmeri VS Code na priloženi custom-data JSON iz svojega potrošniškega delovnega prostora:
+1. V VS Code usmeri na priloženo custom-data JSON iz svojega potrošniškega delovnega prostora:
 
 ```json
 {
@@ -131,14 +122,13 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. Znova naloži VS Code (ali zaženi "Developer: Reload Window") za uporabo novih podatkov.
+1. Znova naloži VS Code (ali zaženi "Developer: Reload Window"), da se nova podatka uveljavita.
 
-To omogoča predloge za `instui-*` razredne tokene (in `-modifier` razredne tokene) ter
-`--instui-*` lastnosti po meri.
+To omogoči predloge za `instui-*` razredne tokene (in `-modifier` razredne tokene) ter `--instui-*` lastnosti po meri.
 
 ## Kam naprej
 
 - [Zemljevid paketov](/api/) — kateri paket uporabiti glede na nalogo.
 - [@pantoken/ai](/api/ai/pantoken-ai/src/) — namesti agentne vire in pravila v potrošniški repozitorij.
-- [Arhitektura](/guide/architecture) — kako model tokenov, jedro in izhodi povezujejo skupaj.
+- [Arhitektura](/guide/architecture) — kako se model tokenov, jedro in izhodi povezujejo.
 - [API referenca](/api/) — vsak izvožen simbol, generiran iz izvorne kode.

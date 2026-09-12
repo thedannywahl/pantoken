@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 05:12+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2777,7 +2777,7 @@ msgstr "`@pantoken/ai` — taonga-ā-kaihoko mō ngā kaupapa e *whakamahi ana* 
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
-msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
+msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) tāuta `AGENTS.md`, `llms.txt`, me\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) ki roto i tētahi putunga kaihoko."
 
 #: index.md
 #, no-c-format
@@ -25390,3 +25390,669 @@ msgstr "He pātene ka puta i te pākina \"tiro i te mata-katoa\", ā, ka whakano
 #~ msgctxt "docs.api:prose"
 #~ msgid "pantoken icon logo (reversed)."
 #~ msgstr "pantoken tohu ā-ikon (huri)."
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "Kei te noho inaianei te ihirangi o te rawa me te mahi kaituhi i roto i `@pantoken/scaffold` (kia taea e te papa scaffold\nflow te tuku i ēnei kia kore ai he whakawhirinaki porowhita); kua kaweake anō ki konei mō te hototahitanga whakamuri.)"
+
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "Agena AI"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "Ihirangi i konei."
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "Mahi"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  He whakatūpato me te taunoa "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " tae, me tētahi tohu ritenga.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  Ngā mihi! Kei te whakamahi koe i te tae \"success\".\n  "
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "Pouaka Mēra"
+
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "Āhuatanga hou"
+
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "He paepae poroporo tēnei me tētahi tohu ritenga."
+
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "Kia pai"
+
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "Whakakore"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  He paepae tae moana tēnei me te mokowā paku.\n"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "He hononga kua whakapaipaihia i runga i te mata turanga."
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "Kāore anō he tūemi"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "Waihangahia tō tūemi tuatahi kia tīmata."
+
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "Kāinga"
+
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "Aratohu"
+
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "Wāhanga"
+
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "Rārangi ara"
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "Matua"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "Tuarua"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "He aha ngā mea hou"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "Ka taea te ahua hei whakaaturanga arataki — he tohu, he avatar, he whakaahua rānei."
+
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "Poutū-te-rangi 2026"
+
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "Rātapu"
+
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "Rāhina"
+
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "Rātū"
+
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "Rāapa"
+
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "Rāpare"
+
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "Rāmere"
+
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "Rāhoroi"
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "Taitara kāri"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "Wāhanga tuatahi"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "Wāhanga tuarua"
+
+msgctxt "docs.api:prose"
+msgid "Checkbox\n"
+msgstr "Pouaka tīpako\n"
+
+msgctxt "docs.api:prose"
+msgid "Toggle\n"
+msgstr "Whakawhiti\n"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "I puta he hapa."
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "Ko te tirohanga horopaki e anga ana i tētahi panui (callout) me tētahi caret. Hei popover, ka noho ia i te taumata o runga ka kati ina pāwhiri koe ki waho, rānei ka pēhi i te Esc."
+
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "Ngā ihirangi o te ipu"
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "Whakatere"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "Ihirangi matua"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "Ngā Kōwae"
+
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "Tōia he whakaahua ki konei"
+
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", ranei pāwhiria kia tirotiro."
+
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG rānei JPG tae noa ki te 5&nbsp;MB."
+
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "Wāhitau tuku"
+
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "Ingoa tuatahi"
+
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "Ingoa whakamutunga"
+
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "Taone"
+
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "Rohe"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "Ko ngā āpure katoa hei whakamahinga mō te tuku anake."
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "Kāore mātou e tukuna atu."
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "Tomo i tētahi wāhitau īmēra whaimana."
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "Wāhitau īmēra"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "Tahi"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "Rua"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "Taitara h1"
+
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "Kāore he taitara"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "He hononga kua whakapaipai"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "Tūemi tuatahi"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "Tūemi tuarua"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "Tūemi tuatoru"
+
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "Ngā Mahi"
+
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "Whakatika"
+
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "Tārua"
+
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "Mukua"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "Ngā kaiwhakamahi e mahi ana"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "Iti"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — he matapihi angiangi."
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "Katia"
+
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "Kua whakaputaina"
+
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "Tuhi"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "Kei te arotake"
+
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "Kua tawhito"
+
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "Kua aukatia"
+
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "Toha tēnei whārangi"
+
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "He mata māmā te popover e herea ana ki tētahi tīmatanga. Kei te whakamahi tēnei i te āhuatanga taketake "
+
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr " āhuatanga."
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "Pouaka peita taketake."
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  E tuku ana i te tuhinga: "
+
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "Tohu"
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "Rokiroki kua whakamahia"
+
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "Ngā tuhipoka tuku"
+
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "Tuhinga matua me tētahi "
+
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "hononga"
+
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "Rahi tī-hāte"
+
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " Iti"
+
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " Waenga"
+
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " Nui"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " Kōwhiringa A"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "Huna i te wā e taurite ana, i raro rānei i te rohe pakaru iti."
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "Whakaatuhia anake i te wā e taurite ana, i runga rānei i te rohe pakaru iti."
+
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "hei tauira"
+
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "Ka tuwhera i roto i tētahi matapihi hou"
+
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "Maramataka"
+
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "Tautuhinga"
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "Kōwhiria he hua…"
+
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "Āporo"
+
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "Ōrenji"
+
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "Pera"
+
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "Pouaka me te papanga tāpiri me te āputa runga nui."
+
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "Kei runga tonu."
+
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "Ngā kiriata tino pai"
+
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "Tūnga"
+
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "Taitara"
+
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "Tau"
+
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "Whakatauranga"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "The Shawshank Redemption"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "The Godfather"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "The Godfather: Part II"
+
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "Tirohanga whānui"
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "Taipitopito"
+
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "Kua whakaweto"
+
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "Hītori"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "Kei konei te ihirangi o te ripa Tirohanga whānui."
+
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "iti"
+
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "kuputuhi tino-iti"
+
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "kuputuhi iti"
+
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "kuputuhi i kīia"
+
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "kuputuhi i whakanuihia e te AI"
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "He aha kei roto i tēnei pākete?"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  Ngā kāhua wāhanga i runga i ngā kara (class-based), i hangaia mai i ngā token Instructure, me tētahi paparanga tuhinga.\n"
+
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "Tautuhinga Aratau"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "Ka whakaatuhia ēnei kōwhiringa ka whānui ake te rōpū. He chevron kei te rārangi upoko e huri ana ina whakatuwhera, ā, kei raro i tētahi wehenga ngā ihirangi."
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "Ko te tūnga taunoa kei runga"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "Ihirangi nekeneke"
+
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "Tātari"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "Ka taka mai tētahi pae mai i te taha tīmatanga, ā, ka whakakī i te teitei o te mata tirohanga."
+
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "whakawhiti pae"
+
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " Kōnae akoranga"
+
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " Kaupapa akoranga.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " Wiki 1"
+
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " Pānui.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " Whakaaturanga.pptx"
+
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " Paearu Arotake.docx"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "Kei te herea tēnei kuputuhi ki te kotahi rārangi mā te taunoa, ā, ka mutu ki te tohu ‘…’."
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "Kei te herea tēnei kuputuhi ki ngā toru rārangi, ā, ka mutu ki te tohu ‘…’."
+
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  He mata pērā i tētahi kāri.\n"
+
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "Tamaiti kua āta whakaahuatia."
+
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "Kua tiakina ō panoni."
+
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "He whakamōhiotanga papatahi, i roto i te raina."
+
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "Tiaki ngā panoni"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "He kōrero anō mō tēnei tūemi."
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "Hurihia te pane"
+
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "Kōtaha"
+
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "Muku…"
+
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "Muku tēnei mea?"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "Tuatahi "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "Panuku"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "Tuarua "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "Hoki"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "Mahi"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "Ngā kōwhiringa"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "Papamahi"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "Ngā Akoranga"
+
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "Hoahoa"
+
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "Kua tāpiri ki ngā tohu"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "Whakanohoia tō tohu ki runga i ahau"
+
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "Mēnu"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "He whakamārama roa ka herea kia rua ngā rārangi…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

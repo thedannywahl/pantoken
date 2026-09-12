@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 00:38+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2765,7 +2765,7 @@ msgstr "Infraestructura de construcció, documentació i demostració per al mon
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API\npage; the others do."
-msgstr "`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API\npage; the others do."
+msgstr "`@pantoken/validate-generated` és un script d'execució única (invocat per `pnpm run ready`), així que no té una pàgina d'API\n; les altres sí."
 
 #: index.md
 #, fuzzy, no-c-format
@@ -2777,7 +2777,7 @@ msgstr "`@pantoken/ai` — actius d'agent orientats al consumidor per a projecte
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
-msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
+msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) instal·la `AGENTS.md`, `llms.txt`, and\n\tregles d'assistent/editor (Cursor, Copilot, Windsurf, Claude Code)) en un repositori consumidor."
 
 #: index.md
 #, no-c-format
@@ -25390,3 +25390,666 @@ msgstr "Un botó \"veure a pantalla completa\" sobre el qual es pot passar el ra
 #~ msgctxt "docs.api:prose"
 #~ msgid "pantoken icon logo (reversed)."
 #~ msgstr "pantoken logotip icona (invertit)."
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "El contingut de l'actiu i la funció d'escriptura ara es troben a `@pantoken/scaffold` (perquè el scaffold base\nflow pugui oferir-los sense una dependència circular); reexportat aquí per compatibilitat amb versions anteriors."
+
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "Agent d'IA"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "Contingut aquí."
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "Acció"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  Una alerta amb el valor predeterminat "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " color, i una icona personalitzada.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  Felicitats! Estàs utilitzant el \"success\" color.\n  "
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "Safata d'entrada"
+
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "Nova funcionalitat"
+
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "Aquest és un bàner violeta amb una icona personalitzada."
+
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "D'acord"
+
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  Aquest és un bàner color marí amb espaiat compacte.\n"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "Un enllaç amb estil a la superfície base."
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "Encara no hi ha elements"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "Crea el teu primer element per començar."
+
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "Inici"
+
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "Guies"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "Components"
+
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "Molla de pa"
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "Primari"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "Secundari"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "Què hi ha de nou"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "La figura pot ser qualsevol element visual principal — una icona, un avatar o una imatge."
+
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "març 2026"
+
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "Dg"
+
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "Dl"
+
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "Dt"
+
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "Dc"
+
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "Dj"
+
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "Dv"
+
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "Ds"
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "Títol de la targeta"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "Primera secció"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "Segona secció"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "Alguna cosa ha anat malament."
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "Una vista de context emmarca un callout amb una fletxa. Com a popover, es mostra a la capa superior i es tanca quan feu clic fora o premeu Esc."
+
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "Contingut de la safata"
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "Navegació"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "Contingut principal"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "Mòduls"
+
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "Arrossega una imatge aquí"
+
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", o fes clic per examinar."
+
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG o JPG fins a 5&nbsp;MB."
+
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "Adreça d'enviament"
+
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "Nom"
+
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "Cognom"
+
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "Ciutat"
+
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "Estat"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "Tots els camps s'utilitzen només per al lliurament."
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "No ho compartirem mai."
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "Introdueix una adreça de correu electrònic vàlida."
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "Adreça de correu electrònic"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "Un"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "Dos"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "Capçalera h1"
+
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "Sense títol"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "Un enllaç amb estil"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "Primer element"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "Segon element"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "Tercer element"
+
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "Accions"
+
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "Edita"
+
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "Duplica"
+
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "Elimina"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "Usuaris actius"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "Petit"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — un modal estret."
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "Tanca"
+
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "Publicat"
+
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "En revisió"
+
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "Obsolet"
+
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "Bloquejat"
+
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "Comparteix aquesta pàgina"
+
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "Un popover és una superfície lleugera ancorada a un activador. Aquest utilitza la nativa "
+
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr " atribut."
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "Caixa pintada primitiva."
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  Pujant el document: "
+
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "Puntuació"
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "Emmagatzematge utilitzat"
+
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "Notes de llançament"
+
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "Cos del text amb un "
+
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "enllaç"
+
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "Mida de la samarreta"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " Small"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " Medium"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " Large"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " Opció A"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "Amagat al punt de trencament petit o per sota."
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "Mostrat només al punt de trencament petit o per sobre."
+
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "exemple"
+
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "S'obre en una finestra nova"
+
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "Calendari"
+
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "Configuració"
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "Tria una fruita…"
+
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "Poma"
+
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "Taronja"
+
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "Pera"
+
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "Caixa amb espai interior i un gran marge superior."
+
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "Sempre a dalt."
+
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "Pel·lícules millor valorades"
+
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "Posició"
+
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "Títol"
+
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "Any"
+
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "Valoració"
+
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "Cadena perpètua"
+
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "El padrí"
+
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "El padrí: Part II"
+
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "Visió general"
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "Detalls"
+
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "Desactivat"
+
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "Historial"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "El contingut de la pestanya Visió general es mostra aquí."
+
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "petit"
+
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "text molt petit"
+
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "text petit"
+
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "Text citat"
+
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "Text ressaltat per IA"
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "Què s'inclou en aquest paquet?"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  Estils de components basats en classes, construïts a partir dels tokens d'Instructure, més una capa de prosa.\n"
+
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "Configuració avançada"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "Aquestes opcions es mostren quan el grup s'expandeix. La fila de capçalera porta un chevron que gira en obrir-se, i el contingut es troba sota un separador."
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "La posició predeterminada és a la part superior"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "Contingut animat"
+
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "Filtres"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "Una safata llisca des del costat d'inici i omple l'alçada de la finestra de visualització."
+
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "alternar safata"
+
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " Fitxers del curs"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " Syllabus.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " Setmana 1"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " Reading.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " Slides.pptx"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " Rubric.docx"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "Aquest text està limitat a una línia per defecte i acaba amb punts suspensius."
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "Aquest text està limitat a tres línies i acaba amb punts suspensius."
+
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  Una superfície similar a una targeta.\n"
+
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "Fill amb contorn."
+
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "S'han desat els canvis."
+
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "Un avís pla, en línia."
+
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "Desa els canvis"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "Més informació sobre aquest element."
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "Alternar el panell"
+
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "Perfil"
+
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "Eliminar…"
+
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "Eliminar aquest element?"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "Primer "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "Següent"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "Segon "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "Enrere"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "Actiu"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "Opcions"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "Tauler de control"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "Cursos"
+
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "Disseny"
+
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "Marcat"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "Passa el cursor per sobre meu"
+
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "Menú"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "Una descripció llarga que serà restringida a dues línies…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

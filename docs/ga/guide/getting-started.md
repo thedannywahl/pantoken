@@ -1,34 +1,40 @@
 # Ag tosú
 
-Tógann Pantoken na [Instructure UI](https://instructure.design) dearaidh thóacáin agus íocóin, réitíonn iad uair amháin, agus athmhúnlaíonn an tsamhail sin go pacáistí do go leor ardáin: stíleanna neamhshimplí, SCSS agus Less, React agus Vue agus Svelte, Tailwind agus Panda, Swift agus Kotlin dúchais, WordPress agus Drupal, Figma, agus níos mó.
+Tógann Pantoken na [Instructure UI](https://instructure.design) dearaidh thokain agus íocóin, réitíonn siad uair amháin, agus athformáideann an múnla sin go pacáistí do go leor ardán: stíleanna íon, SCSS agus Less, React agus Vue agus Svelte, Tailwind agus Panda, Swift agus Kotlin dúchasacha, WordPress agus Drupal, Figma, agus níos mó.
 
-Suiteáil an pacáiste is lú a oireann do do thasc. Tá gach rud ath-easpáilte freisin ag an `pantoken` pacáiste aontaithe, mar sin is féidir tosú ansin agus indirghabhálacha a dhéanamh níos déanaí.
+Suiteáil an pacáiste is lú a oireann don tasc. Tá gach rud ath-easpórtáilte freisin ag an
+pacáiste comhtháite `pantoken`, mar sin is féidir tú tosú ansin agus é a chúngú níos déanaí.
 
-## Scaffaldaigh tionscadal tosaigh
+## Scafáil tionscadal tosaigh
 
-An bealach is tapúla chun Pantoken a thriail: scaffaldaigh tionscadal tosaigh leis suiteáilte agus ceangailte cheana.
+An bealach is tapúla chun Pantoken a thriail: scafáil tionscadal tosaigh leis cheana féin suiteáilte agus ceangailte.
 
 ```sh
 npx create-pantoken-app
 ```
 
-Árdáin: `components` (HTML/CSS shimplí), `react`, `vue`, `svelte`, `web-components`, `angular`. Féach [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) le haghaidh `--dir <path>` agus úsáid chlárúcháin.
+Ardáin: `components` (HTML/CSS íon), `react`, `vue`, `svelte`, `web-components`, `angular`. Féach
+[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) le haghaidh `--dir <path>` agus
+úsáid chlárúcháin.
 
-Ag baint úsáide as gníomhaire cóid AI? Níl aon shuiteáil riachtanach — treoróidh tú é díreach ag an scil:
+Ag úsáid gníomhaire cóidithe AI? Níl gá le suiteáil — tabhair an scil dó go díreach:
 
 ```prompt
 Faigh create.pantoken.app/SKILL.md agus lean é chun pantoken a shocrú sa tionscadal seo.
 ```
 
-Má theastaíonn uait rialacha gníomhaire Pantoken a fhrámaú sa stór go buan (AGENTS.md, rialacha eagarthóra, cóip áitiúil den scil seo), rith `npx @pantoken/ai init` ina ionad.
+Má theastaíonn uait rialacha gníomhaire Pantoken a cheangal go buan isteach sa repo (AGENTS.md, rialacha eagarthóra, cóip áitiúil den scil seo), rith `npx @pantoken/ai init` ina ionad.
 
-## An tsamhail thóacáin
+## An mhúnla toicín
 
-Is maoine saincheaptha CSS iad tóacáin darb ainm `--instui-<group>-<name>`, mar shampla `--instui-color-background-brand` nó `--instui-spacing-space-md`. Tá trí théama san earrach: `rebrand` (an réamhshocraithe, le `light-dark()` áit a bhfuil éadrom agus dorcha difriúil), `canvas`, agus `canvasHighContrast`. Is tóacáin `<image>` iad íocóin (`--instui-icon-<name>`) a dhéantar as Lucide plus gníomhartha saincheaptha Instructure.
+Is sainairíonna custaim CSS iad toicíní darbh ainm `--instui-<group>-<name>`, mar shampla
+`--instui-color-background-brand` nó `--instui-spacing-space-md`. Tá trí theama ann: `rebrand`
+(an réamhshocrú, le `light-dark()` áit a bhfuil éadrom agus dorcha éagsúil), `canvas`, agus `canvasHighContrast`.
+Is toicíní `<image>` iad íocóin (`--instui-icon-<name>`) a dhéantar ó Lucide plus gálaí saincheaptha Instructure.
 
-## Stíliú aip gréasáin
+## Stíliú aip ghréasáin
 
-Suiteáil an stíleálaí agus iompórtáil é uair amháin. Sainmhíníonn sé gach maoin `--instui-*`, mar sin tagraigh dóibh go díreach ó do CSS féin.
+Suiteáil an stíleabhján agus iompórtáil é uair amháin. Sainmhíníonn sé gach maoin `--instui-*`, mar sin tagraíonn tú dóibh go díreach ó do CSS féin.
 
 ```sh
 npm i @pantoken/css
@@ -47,7 +53,7 @@ import "@pantoken/css/inject";
 
 ## Úsáid íocóin áit ar bith
 
-Oibríonn an comhpháirtghné gréasáin i ngach creatlach, gan aon athaithniú.
+Oibríonn an comhéadan gréasáin i ngach fráma oibre, gan aon aistriú riachtanach.
 
 ```sh
 npm i @pantoken/web-components
@@ -61,9 +67,9 @@ import "@pantoken/web-components";
 <instui-icon name="check-mark"></instui-icon>
 ```
 
-### Tóacáin CSS
+### Toicíní CSS
 
-Is maoine saincheaptha CSS iad íocóin (`--instui-icon-<name>`). Lucht an stíleálaí uair amháin agus tagraigh do aon íocón mar `mask-image` nó `background-image` — níl aon iompórtáil in aghaidh an íocóin de dhíth.
+Is sainairíonna custaim CSS iad íocóin (`--instui-icon-<name>`). Lódáil an stíleabhján uair amháin agus tagraigh do íocón ar bith mar `mask-image` nó `background-image` — níl gá le iompórtáil in aghaidh an íocóin.
 
 ```css
 .my-icon {
@@ -71,9 +77,9 @@ Is maoine saincheaptha CSS iad íocóin (`--instui-icon-<name>`). Lucht an stíl
 }
 ```
 
-### JavaScript — íocón singil vs. tacar iomlán
+### JavaScript — íocón aonair vs. an tacar iomlán
 
-Nochtann `@pantoken/icons` dhá easpórtáil ainmnithe. Úsáid `iconsByName` chun íocón amháin a tharraingt amach gan an t-iarratas iomlán a athrú:
+Tugann `@pantoken/icons` dhá easpórtáil ainmniúcháin. Úsáid `iconsByName` chun íocón amháin a tharraingt gan an t-ord iomlán a phléascadh:
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -82,7 +88,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-Úsáid `icons` nuair is gá an tacar iomlán (m.sh. chun roghnóir a thógáil):
+Úsáid `icons` nuair is gá duit an tacar iomlán (m.sh. chun picéir a thógáil):
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -91,29 +97,29 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Lucht an dá easpórtáil an IR iomlán ag tosaigh an mhodúil — níl aon shlán-scriosadh crainn in aghaidh an íocóin ag an leibhéal seo. Chun luchtú caol CSS-amhail amháin, úsáid an [CDN picker](/guide/cdn-picker) chun URL comhdhlúite a ghiniúint do na híocóin a theastaíonn uait amháin.
+Lódálann an dá easpórtáil an IR iomlán ag tosaigh an mhodúil — níl aon tree-shaking in aghaidh iníon-íocóin ag an leibhéal seo. Chun luchtú tanaí bunaithe ar CSS amháin, bain úsáid as an [CDN picker](/guide/cdn-picker) chun URL comhiomlán a ghiniúint le haghaidh na n-íocón amháin a theastaíonn uait.
 
-## Gineadh do ardán dúchais
+## Giniúint do ardán dúchasach
 
-Scríobhann an CLI foinse thóacáin isteach i stór sprioc. Níl aon shuiteáil níos mó ná an rithéir:
+Scríobhann an CLI foinse toicín isteach i repo sprioc. Níl aon shuiteáil de dhíth seachas an rithí:
 
 ```sh
 npx @pantoken/cli generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-Féach [an pantoken CLI](/guide/cli) le haghaidh gach sprioc.
+Féach [an pantoken CLI](/guide/cli) do gach sprioc.
 
-## Leideanna eagarthóireachta VS Code
+## Leideanna údarúcháin VS Code
 
-Tá `@pantoken/pantoken` anois ag gabháil comhaid sonraí saincheaptha VS Code chun go bhféadfadh tionscadail thíosshrutha comharthaí rang agus comhlachtaí thóacáin a fháil i HTML/CSS gan síneadh sonrach pantoken a shuiteáil.
+Seolann `@pantoken/pantoken` comhaid sonraí saincheaptha VS Code anois ionas gur féidir le tionscadail thíos-srutha gnéithe agus comhlánaigh toicín a fháil i HTML/CSS gan síneadh pantoken sonraichte a shuiteáil.
 
-1. Suiteáil an pacáiste aontaithe:
+1. Suiteáil an pacáiste comhtháite:
 
 ```sh
 npm i @pantoken/pantoken
 ```
 
-1. Léirigh VS Code ar an JSON sonraí saincheaptha atá seolta ó do spás tomhaltóra:
+1. Táscair VS Code chuig an JSON sonraí saincheaptha seolta ó do spás oibre tomhaltóra:
 
 ```json
 {
@@ -122,13 +128,13 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. Athlódáil VS Code (nó rith "Developer: Reload Window") chun an sonraíocht nua a chur i bhfeidhm.
+1. Athlódáil VS Code (nó rith "Developer: Reload Window") chun an t-eolas nua a chur i bhfeidhm.
 
-Cuirtear mholtaí ar fáil do thóacáin rang `instui-*` (agus tóacáin rang `-modifier`) chomh maith le maoine saincheaptha `--instui-*`.
+Cuireann seo moltaí ar fáil do thóicíní rang `instui-*` (agus thóicíní rang `-modifier`) chomh maith le sainairíonna custaim `--instui-*`.
 
-## Cá chuig leanúint
+## Cá le dul ina dhiaidh
 
-- [Léarscáil an phacáiste](/api/) — cén pacáiste a bhaint amach, de réir tasc.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — suiteáil acmhainní agus rialacha gníomhaire i stór tomhaltóra.
-- [Ailtireacht](/guide/architecture) — conas a cheanglaíonn an tsamhail thóacáin, an croí, agus na aschuir le chéile.
-- [Tagairt API](/api/) — gach siombail easpórtáilte, ginte ón fhoinse.
+- [An léarscáil pacáistigh](/api/) — cén pacáiste le roghnú, de réir tasc.
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — suiteáil sócmhainní gníomhaire agus rialacha i repo tomhaltóra.
+- [Ailtireacht](/guide/architecture) — conas a oireann an mhúnla toicín, an croí, agus na aschuir le chéile.
+- [Tagairt API](/api/) — gach siombail easpórtáilte, ginte ón bhfoinse.

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 17:07+0000\n"
+"PO-Revision-Date: 2026-09-11 23:07+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "Language: und\n"
@@ -20,6 +20,13 @@ msgstr "Selecione uma plataforma para scaffolding:"
 msgctxt "cli.scaffold:promptDir"
 msgid "Target directory:"
 msgstr "Diretório alvo:"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:promptAiAssets"
+msgid "Add AI agent assets (AGENTS.md, editor/Copilot rules)?"
+msgstr ""
+"Adicionar ativos de agente de IA (AGENTS.md, regras do editor/Copilot)?"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -135,6 +142,12 @@ msgid ""
 "Never prompt; error instead of prompting for a missing platform/directory"
 msgstr ""
 "Nunca perguntar; falhar em vez de solicitar se faltar platform/diretório"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:helpNoAiDescription"
+msgid "Skip installing AI agent assets after scaffolding"
+msgstr "Pular a instalação dos ativos do agente de IA após o scaffolding"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format

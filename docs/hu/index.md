@@ -9,14 +9,11 @@ hero:
       text: Első lépések
       link: /hu/guide/getting-started
     - theme: alt
-      text: A csomagtérkép
-      link: /hu/api/
+      text: CSS referencia
+      link: /hu/api/css/
     - theme: alt
       text: API referencia
       link: /hu/api
-    - theme: alt
-      text: CSS referencia
-      link: /hu/api/css/
 features:
   - icon:
       light: /book-check-light.svg

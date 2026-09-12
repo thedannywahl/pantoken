@@ -9,14 +9,11 @@ hero:
       text: Oktavuođaid ožžot
       link: /se/guide/getting-started
     - theme: alt
-      text: Pakkea mapa
-      link: /se/api/
+      text: CSS-birra
+      link: /se/api/css/
     - theme: alt
       text: API-birra
       link: /se/api
-    - theme: alt
-      text: CSS-birra
-      link: /se/api/css/
 features:
   - icon:
       light: /book-check-light.svg

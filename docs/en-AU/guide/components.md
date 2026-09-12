@@ -185,7 +185,7 @@ import "@pantoken/components/utilities.css";
   <span class="instui-text --text-on-color">Accent-blue surface with on-color text.</span>
 </div>
 <div class="instui-view --bg-muted --p-sm --mx-auto" style="max-width: 12rem; border-radius: 6px; text-align: center;">
-  <span class="instui-text">Centered with mx-auto.</span>
+  <span class="instui-text">Centred with mx-auto.</span>
 </div>
 
 ```html
@@ -248,7 +248,7 @@ for the mechanism.
 Everything here is pure CSS driven by the `--instui-*` tokens, so it tracks InstUI through the token
 layer. See the [API reference](/api/) for `componentsCss` and the per-component builders.
 
-## Overlays: dialogue and popover
+## Overlays: dialog and popover
 
 The overlay components ride native platform primitives, so they behave accessibly with little or no
 JavaScript.
@@ -353,7 +353,7 @@ rounded outer ends):
 ```
 
 **Messages** — `.instui-form-field-messages` is the container; each `.instui-form-field-message` takes a
-`-type-*`: `-type-hint` (gray, default), `-type-error` (red text + a circle-alert glyph), `-type-success`
+`-type-*`: `-type-hint` (grey, default), `-type-error` (red text + a circle-alert glyph), `-type-success`
 (green text + a circle-check glyph), and `-type-screenreader-only` (visually clipped, still announced).
 The glyphs paint in `currentColor`, so they always match the message colour. `-type-new-error` is a
 deprecated alias of `-type-error`. Wire the container to the control with `aria-describedby`, and set

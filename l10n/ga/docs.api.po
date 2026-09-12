@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 02:26+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2777,7 +2777,7 @@ msgstr "`@pantoken/ai` — sócmhainní gníomhaire atá dírithe ar thomhaltói
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
-msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
+msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) suiteálann `AGENTS.md`, `llms.txt`, agus\n\trialacha cúntóra/eagarthóra (Cursor, Copilot, Windsurf, Claude Code)) isteach i stór tomhaltóra."
 
 #: index.md
 #, no-c-format
@@ -3801,7 +3801,7 @@ msgstr "Tóg réititheoir a leathnaíonn tagairtí `var(--x)` go luachanna duill
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`Token`](../../../core/src/interfaces/Token.md)[]"
-msgstr "readonly [`Token`](../../../core/src/interfaces/Token.md)[]"
+msgstr "léamh-aonair [`Token`](../../../core/src/interfaces/Token.md)[]"
 
 #: packages/plugin-kit/src/functions/makeResolver.md
 #: packages/utils/src/functions/makeResolver.md
@@ -25405,3 +25405,666 @@ msgstr "Cnaipe \"féach lánscáileán\" atá le feiceáil nuair a sleamhnaítea
 #~ msgctxt "docs.api:prose"
 #~ msgid "pantoken icon logo (reversed)."
 #~ msgstr "lógó íocón pantoken (mhalairt)."
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "Tá ábhar an acmhainní agus an fheidhm scríbhneora anois lonnaithe i `@pantoken/scaffold` (ionas go bhféadfadh an scafall bunúsach\nflow iad a thairiscint gan spleáchas ciorclach); easpórtáilte arís anseo ar mhaithe le comhoiriúnacht siar."
+
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "Gníomhaire AI"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "Ábhar anseo."
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "Gníomh"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  Fógra leis an réamhshocraithe "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " dath, agus deilbhín saincheaptha.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  Comhghairdeas! Tá tú ag úsáid an dath \"success\".\n  "
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "Bosca isteach"
+
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "Gné nua"
+
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "Is bratach corcra é seo le deilbhín saincheaptha."
+
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "Ceart go leor"
+
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "Cealaigh"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  Is bratach dath na farraige é seo le spásáil dhlúth.\n"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "Nasc stíleáilte ar an dromchla bun."
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "Níl aon earraí fós"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "Cruthaigh do chéad earra chun tosú."
+
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "Baile"
+
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "Treoracha"
+
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "Comhpháirteanna"
+
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "Rian nascleanúna"
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "Príomhúil"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "Tánaisteach"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "Cad atá nua"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "Is féidir leis an bhfigiúr a bheith ina rud amhairc ceannródaíoch ar bith — íocón, avatar, nó íomhá."
+
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "Márta 2026"
+
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "Dom"
+
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "Lu"
+
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "Má"
+
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "Cé"
+
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "Dé"
+
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "Ao"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "Sa"
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "Teideal cárta"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "An chéad rannóg"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "An dara rannóg"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "Tharla rud éigin mícheart."
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "Cuireann radharc comhthéacsach fráma ar ghlaoch amach le cúinne. Mar popover, tá sé ar an sraith is uachtaracha agus dúnann sé nuair a chliceálann tú amach nó nuair a bhrúnann tú Esc."
+
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "Ábhar an thréid"
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "Nascleanúint"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "Príomhábhar"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "Modúil"
+
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "Tarraing íomhá anseo"
+
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", nó cliceáil chun brabhsáil."
+
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG nó JPG suas go dtí 5&nbsp;MB."
+
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "Seoladh loingseoireachta"
+
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "Ainm"
+
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "Sloinne"
+
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "Cathair"
+
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "Stát"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "Úsáidtear gach réimse le haghaidh seachadta amháin."
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "Ní roinnfimid é riamh."
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "Iontráil seoladh ríomhphoist bailí."
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "Seoladh ríomhphoist"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "Aon"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "Dó"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "Ceanntásc h1"
+
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "Gan Teideal"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "Nasc stílithe"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "An chéad mhír"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "An dara mír"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "An tríú mír"
+
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "Gníomhartha"
+
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "Cuir in Eagar"
+
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "Cóipeáil"
+
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "Scrios"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "Úsáideoirí gníomhacha"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "Beag"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — modal caol."
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "Dún"
+
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "Foilsithe"
+
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "Dréacht"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "Ar athbhreithniú"
+
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "As dáta"
+
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "Blocáilte"
+
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "Roinn an leathanach seo"
+
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "Is dromchla é popover atá éadrom agus ceangailte le spreagthóir. Úsáideann an ceann seo an ghné dúchais "
+
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr " airíonna."
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "Bosca péinteáilte primitiúil."
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  Ag uaslódáil Doiciméad: "
+
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "Scór"
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "Spás stórála in úsáid"
+
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "Nótaí scaoilte"
+
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "Cóip an choirp le "
+
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "nasc"
+
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "Méid T-léine"
+
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " Beag"
+
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " Meán"
+
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " Mór"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " Rogha A"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "Folaítear é ag an phointe brise beag nó thíos."
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "Taispeántar é amháin ag an phointe brise beag nó os a chionn."
+
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "sampla"
+
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "Oscailtear i bhfuinneog nua"
+
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "Féilire"
+
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "Socruithe"
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "Roghnaigh torthaí…"
+
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "Úll"
+
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "Oráiste"
+
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "Piorra"
+
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "Bosca padáilte le margadh uachtarach mór."
+
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "I gcónaí ar bharr."
+
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "Scannáin leis na rátálacha is airde"
+
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "Rang"
+
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "Teideal"
+
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "Bliain"
+
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "Rátáil"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "The Shawshank Redemption"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "The Godfather"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "The Godfather: Part II"
+
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "Forbhreathnú"
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "Sonraí"
+
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "As Feidhm"
+
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "Stair"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "Taispeántar ábhar an táb 'Forbhreathnú' anseo."
+
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "beag"
+
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "téacs an-bheag"
+
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "téacs beag"
+
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "téacs luaite"
+
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "téacs béimnithe AI"
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "Cad a thagann sa phacáiste seo?"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  Stíleanna comhpháirte bunaithe ar ranganna, tógtha ó na tóicní Instructure, agus sraith próis.\n"
+
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "Socruithe chun cinn"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "Nochtar na roghanna seo nuair a leathnaítear an grúpa. Tá chevron ar an sraith ceannlíne a rothlaíonn nuair a osclaítear í, agus tá an t-ábhar suite thíos faoi scaradán."
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "Tá an suíomh réamhshocraithe ar bharr"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "Ábhar beochana"
+
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "Scagairí"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "Sleamhnaíonn tráid isteach ón imeall tosaigh agus líonann sé airde an radhairc."
+
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "lasca tráid"
+
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " Comhaid chúrsa"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " Syllabus.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " Seachtain 1"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " Reading.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " Slides.pptx"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " Rubric.docx"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "Tá an téacs seo cuibhrithe go líne amháin de réir réamhshocraithe agus críochnaíonn sé le ellipsís."
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "Tá an téacs seo cuibhrithe go dtí trí líne agus críochnaíonn sé le ellipsís."
+
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  Dromchla cosúil le cárta.\n"
+
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "Leanbh imlínithe."
+
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "Sábháladh do chuid athruithe."
+
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "Fógra simplí inlíne."
+
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "Sábháil na hathruithe"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "Tuilleadh eolais faoin earra seo."
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "Lascaigh painéal"
+
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "Próifíl"
+
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "Scrios…"
+
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "An scriosfaidh tú an mhír seo?"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "Céad "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "Ar Aghaidh"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "Dara "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "Ar ais"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "Gníomhach"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "Roghanna"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "Painéal"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "Cúrsaí"
+
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "Dearadh"
+
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "Leabharmharcáilte"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "Sleamhnaigh orm"
+
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "Roghchlár"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "Cur síos fada a bheidh teoranta chuig dhá líne…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

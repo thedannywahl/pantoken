@@ -9,14 +9,11 @@ hero:
       text: Aan de slag
       link: /nl/guide/getting-started
     - theme: alt
-      text: Het pakketoverzicht
-      link: /nl/api/
+      text: CSS-referentie
+      link: /nl/api/css/
     - theme: alt
       text: API-referentie
       link: /nl/api
-    - theme: alt
-      text: CSS-referentie
-      link: /nl/api/css/
 features:
   - icon:
       light: /book-check-light.svg

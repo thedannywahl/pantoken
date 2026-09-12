@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 08:17+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2759,13 +2759,13 @@ msgstr "ปลั๊กอินที่ผู้เขียนสำหรั
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are\nself-contained, so we document them here and some ship to npm on their own."
-msgstr "Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are\nself-contained, so we document them here and some ship to npm on their own."
+msgstr "โครงสร้างพื้นฐานสำหรับการสร้าง เอกสาร และตัวอย่างสำหรับ monorepo เอง ส่วนใหญ่เป็นภายใน แต่ชิ้นส่วนเหล่านี้\nเป็นอิสระในตัวเอง ดังนั้นเราจึงบันทึกไว้ที่นี่และบางส่วนจัดส่งไปยัง npm แยกกัน."
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API\npage; the others do."
-msgstr "`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API\npage; the others do."
+msgstr "`@pantoken/validate-generated` เป็นสคริปต์รันครั้งเดียว (ถูกเรียกโดย `pnpm run ready`)), ดังนั้นจึงไม่มีหน้า API\npage; ส่วนอื่นๆ มี."
 
 #: index.md
 #, fuzzy, no-c-format
@@ -2777,13 +2777,13 @@ msgstr "`@pantoken/ai` — ไฟล์ทรัพยากรเอเย่�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
-msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
+msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) ติดตั้ง `AGENTS.md`, `llms.txt`, และ\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code)) เข้าไปยังรีโพซิทอรีผู้บริโภค."
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Plugins we author for the tools we build with, grouped by host. They're standalone and publishable."
-msgstr "Plugins we author for the tools we build with, grouped by host. They're standalone and publishable."
+msgstr "ปลั๊กอินที่เราสร้างสำหรับเครื่องมือที่เราใช้ จัดกลุ่มตามโฮสต์ พวกมันเป็นแบบสแตนด์อโลนและสามารถเผยแพร่ได้."
 
 #: packages/cli/src/functions/parseArgs.md
 #, no-c-format
@@ -3699,7 +3699,7 @@ msgstr "กรองรายการปลั๊กอินให้เหล
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]"
-msgstr "readonly [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]"
+msgstr "อ่านอย่างเดียว [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]"
 
 #: packages/plugin-kit/src/functions/checkPlugins.md
 #, no-c-format
@@ -3801,7 +3801,7 @@ msgstr "สร้าง resolver ที่ขยายการอ้างอ�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`Token`](../../../core/src/interfaces/Token.md)[]"
-msgstr "readonly [`Token`](../../../core/src/interfaces/Token.md)[]"
+msgstr "อ่านอย่างเดียว [`Token`](../../../core/src/interfaces/Token.md)[]"
 
 #: packages/plugin-kit/src/functions/makeResolver.md
 #: packages/utils/src/functions/makeResolver.md
@@ -6194,19 +6194,19 @@ msgstr "`@pantoken/plugin-props-minify` — รวมการแปลง prune
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Each CSS-emitting pipeline (generate scripts, renderers) uses `applyMinify` for a consistent\nminification surface without taking a direct PostCSS dependency."
-msgstr "Each CSS-emitting pipeline (generate scripts, renderers) uses `applyMinify` for a consistent\nminification surface without taking a direct PostCSS dependency."
+msgstr "แต่ละไพป์ไลน์ที่สร้าง CSS (generate scripts, renderers)) ใช้ `applyMinify` เพื่อพื้นผิวที่สอดคล้อง\nการย่อขนาดโดยไม่ต้องพึ่งพา PostCSS โดยตรง."
 
 #: plugins/postcss/props-minify/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Prune + mangle are only safe for self-contained bundles** where all `var(--instui-*)` references\nand their definitions live in the same output. For separate-file consumers (`@pantoken/css` +\n`@pantoken/components` loaded independently), apply `{ flatten: true }` only."
-msgstr "**Prune + mangle are only safe for self-contained bundles** where all `var(--instui-*)` references\nand their definitions live in the same output. For separate-file consumers (`@pantoken/css` +\n`@pantoken/components` loaded independently), apply `{ flatten: true }` only."
+msgstr "**Prune + mangle ปลอดภัยเฉพาะกับบันเดิลที่เป็นเอกเทศ** ซึ่งการอ้างอิงทั้งหมด `var(--instui-*)` และคำจำกัดความของพวกมันอยู่ในเอาต์พุตชุดเดียวกัน สำหรับผู้บริโภคที่แยกไฟล์ (`@pantoken/css` +\n`@pantoken/components` ที่โหลดแยกกัน)), ให้ใช้ `{ flatten: true }` เท่านั้น."
 
 #: plugins/postcss/props-minify/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Mangle across file boundaries:** pass the same `Map` instance as\n`mangle.sharedManifest` to every `applyMinify` call that processes CSS files loaded together.\nProcess the token sheet first (it seeds the manifest), then component sheets."
-msgstr "**Mangle across file boundaries:** pass the same `Map` instance as\n`mangle.sharedManifest` to every `applyMinify` call that processes CSS files loaded together.\nProcess the token sheet first (it seeds the manifest), then component sheets."
+msgstr "**การ mangle ข้ามขอบเขตไฟล์:** ส่งผ่านอินสแตนซ์ `Map` เดียวกันเป็น\n`mangle.sharedManifest` ไปยังการเรียก `applyMinify` ทุกครั้งที่ประมวลผลไฟล์ CSS ที่โหลดร่วมกัน.\nประมวลผลชีตโทเค็นก่อน (มันเป็นเมล็ดสำหรับ manifests)), จากนั้นจึงประมวลผลชีตของคอมโพเนนต์."
 
 #: plugins/postcss/props-minify/src/index.md
 #, no-c-format
@@ -25390,3 +25390,687 @@ msgstr "ปุ่ม \"ดูแบบเต็มจอ\" ที่แสดง
 #~ msgctxt "docs.api:prose"
 #~ msgid "pantoken icon logo (reversed)."
 #~ msgstr "โลโก้ไอคอน pantoken (กลับสี)."
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "เนื้อหาของแอสเซ็ทและฟังก์ชันผู้เขียนตอนนี้อยู่ใน `@pantoken/scaffold` (ดังนั้น base scaffold\nflow จึงสามารถนำเสนอพวกมันได้โดยไม่มีการพึ่งพาเป็นวงกลม); ส่งออกซ้ำที่นี่เพื่อความเข้ากันได้ย้อนหลัง."
+
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "เอเจนต์ AI"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "เนื้อหาอยู่ที่นี่."
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "การดำเนินการ"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  การแจ้งเตือนที่ใช้ค่าเริ่มต้น "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " สี และไอคอนแบบกำหนดเอง.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  ขอแสดงความยินดี! คุณกำลังใช้สี \"success\".\n  "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "LH"
+msgstr "LH"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "AI"
+msgstr "AI"
+
+msgctxt "docs.api:prose"
+msgid "Dr. Nguyen Van Thoc"
+msgstr "ดร. Nguyen Van Thoc"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Miguel Sanchez"
+msgstr "Miguel Sanchez"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Miguel"
+msgstr "Miguel"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Sanchez"
+msgstr "Sanchez"
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "กล่องขาเข้า"
+
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "ฟีเจอร์ใหม่"
+
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "นี่คือแบนเนอร์สีม่วงที่มีไอคอนที่กำหนดเอง."
+
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "ตกลง"
+
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "ยกเลิก"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  นี่คือแบนเนอร์สีทะเลที่มีระยะห่างแบบกะทัดรัด.\n"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "ลิงก์ที่มีสไตล์บนพื้นผิวฐาน."
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "ยังไม่มีรายการ"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "สร้างรายการแรกของคุณเพื่อเริ่มต้น"
+
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "หน้าแรก"
+
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "คู่มือ"
+
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "คอมโพเนนต์"
+
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "เส้นทางนำทาง"
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "หลัก"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "รอง"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "มีอะไรใหม่"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "รูปภาพสามารถเป็นภาพนำใดก็ได้ — ไอคอน อวาตาร์ หรือรูปภาพ"
+
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "มีนาคม 2026"
+
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "อา"
+
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "จ"
+
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "อ"
+
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "พ"
+
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "พฤ"
+
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "ศ"
+
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "ส"
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "ชื่อการ์ด"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "ส่วนแรก"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "ส่วนที่สอง"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "มีบางอย่างผิดพลาด."
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "มุมมองบริบทจัดกรอบคอลเอาต์ด้วยลูกศรชี้ (caret). ในฐานะป๊อปโอเวอร์ มันจะอยู่บนเลเยอร์ด้านบนสุดและปิดเมื่อคุณคลิกที่อื่นหรือกด Esc."
+
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "เนื้อหาในถาด"
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "การนำทาง"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "เนื้อหาหลัก"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "โมดูล"
+
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "ลากรูปภาพมาวางที่นี่"
+
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", หรือคลิกเพื่อเรียกดู."
+
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG หรือ JPG ขนาดไม่เกิน 5&nbsp;MB."
+
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "ที่อยู่สำหรับจัดส่ง"
+
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "ชื่อ"
+
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "นามสกุล"
+
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "เมือง"
+
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "รัฐ"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "ข้อมูลทั้งหมดจะถูกใช้สำหรับการจัดส่งเท่านั้น."
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "เราจะไม่เปิดเผยข้อมูลนี้."
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "กรอกที่อยู่อีเมลที่ถูกต้อง."
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "ที่อยู่อีเมล"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "หนึ่ง"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "สอง"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "หัวข้อ h1"
+
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "ไม่มีชื่อ"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "ลิงก์ที่มีสไตล์"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "รายการแรก"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "รายการที่สอง"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "รายการที่สาม"
+
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "การดำเนินการ"
+
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "แก้ไข"
+
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "ทำสำเนา"
+
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "ลบ"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "ผู้ใช้ที่ใช้งานอยู่"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "เล็ก"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — กล่องโต้ตอบขนาดแคบ."
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "ปิด"
+
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "เผยแพร่"
+
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "ร่าง"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "อยู่ระหว่างการตรวจสอบ"
+
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "ล้าสมัย"
+
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "ถูกบล็อก"
+
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "แชร์หน้านี้"
+
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "Popover เป็นพื้นผิวขนาดเบาที่แนบกับทริกเกอร์ อันนี้ใช้ของระบบ "
+
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr " แอตทริบิวต์."
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "กล่องทาสีขั้นพื้นฐาน."
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  กำลังอัปโหลดเอกสาร: "
+
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "คะแนน"
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "พื้นที่จัดเก็บที่ใช้"
+
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "บันทึกการเผยแพร่"
+
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "ข้อความเนื้อหาพร้อม "
+
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "ลิงก์"
+
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "ขนาดเสื้อยืด"
+
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " เล็ก"
+
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " กลาง"
+
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " ใหญ่"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " ตัวเลือก A"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "ซ่อนเมื่ออยู่ที่หรือต่ำกว่าจุดตัดขนาดเล็ก."
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "แสดงเฉพาะเมื่ออยู่ที่หรือสูงกว่าจุดตัดขนาดเล็ก."
+
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "ตัวอย่าง"
+
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "เปิดในหน้าต่างใหม่"
+
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "ปฏิทิน"
+
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "การตั้งค่า"
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "เลือกผลไม้…"
+
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "แอปเปิล"
+
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "ส้ม"
+
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "ลูกแพร์"
+
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "กล่องที่มีการเว้นขอบด้านใน (padding) และมีระยะห่างด้านบนขนาดใหญ่."
+
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "อยู่ด้านบนเสมอ."
+
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "ภาพยนตร์ที่ได้รับคะแนนสูงสุด"
+
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "อันดับ"
+
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "ชื่อเรื่อง"
+
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "ปี"
+
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "คะแนน"
+
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "ชอว์แชงค์ มนต์รักจากเรือนจำ"
+
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "เจ้าพ่อ"
+
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "เจ้าพ่อ: ภาคที่ 2"
+
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "ภาพรวม"
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "รายละเอียด"
+
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "ปิดใช้งาน"
+
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "ประวัติ"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "เนื้อหาในแท็บภาพรวมจะแสดงที่นี่."
+
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "เล็ก"
+
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "ข้อความขนาดเล็กมาก"
+
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "ข้อความขนาดเล็ก"
+
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "ข้อความที่อ้างไว้"
+
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "ข้อความที่ไฮไลต์โดย AI"
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "แพ็กเกจนี้มาพร้อมอะไรบ้าง?"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  สไตล์ของคอมโพเนนต์แบบใช้คลาส สร้างจาก Instructure tokens พร้อมชั้นเนื้อหา.\n"
+
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "การตั้งค่าขั้นสูง"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "ตัวเลือกเหล่านี้จะแสดงเมื่อกลุ่มถูกขยาย. แถวหัวเรื่องมีลูกศรเชฟรอนที่หมุนเมื่อเปิด และเนื้อหาอยู่ด้านล่างของตัวแบ่ง."
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "ตำแหน่งเริ่มต้นคือด้านบน"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "เนื้อหาเคลื่อนไหว"
+
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "ตัวกรอง"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "ถาดเลื่อนเข้าจากขอบเริ่มต้นและเติมความสูงของมุมมอง"
+
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "สลับถาด"
+
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " ไฟล์หลักสูตร"
+
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " หลักสูตร.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " สัปดาห์ที่ 1"
+
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " เอกสารอ่านประกอบ.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " สไลด์.pptx"
+
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " เกณฑ์การให้คะแนน.docx"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "ข้อความนี้ถูกจำกัดให้เป็นหนึ่งบรรทัดโดยค่าเริ่มต้นและลงท้ายด้วยจุดไข่ปลา."
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "ข้อความนี้ถูกจำกัดให้เป็นสามบรรทัดและลงท้ายด้วยจุดไข่ปลา."
+
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  พื้นผิวลักษณะเป็นการ์ด.\n"
+
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "ลูกที่มีเส้นขอบ."
+
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "การเปลี่ยนแปลงของคุณถูกบันทึกแล้ว."
+
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "การแจ้งเตือนแบบเรียบในบรรทัดเดียว."
+
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "บันทึกการเปลี่ยนแปลง"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "ข้อมูลเพิ่มเติมเกี่ยวกับรายการนี้."
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "สลับแผง"
+
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "โปรไฟล์"
+
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "ลบ…"
+
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "ลบรายการนี้หรือไม่?"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "แรก "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "ถัดไป"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "ที่สอง "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "ย้อนกลับ"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "ใช้งาน"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "ตัวเลือก"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "แดชบอร์ด"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "หลักสูตร"
+
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "การออกแบบ"
+
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "บุ๊กมาร์กแล้ว"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "เลื่อนเมาส์เหนือฉัน"
+
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "เมนู"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "คำอธิบายยาวที่จะถูกจำกัดให้เป็นสองบรรทัด…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

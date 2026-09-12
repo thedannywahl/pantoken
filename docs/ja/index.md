@@ -9,14 +9,11 @@ hero:
       text: はじめに
       link: /ja/guide/getting-started
     - theme: alt
-      text: パッケージマップ
-      link: /ja/api/
+      text: CSS リファレンス
+      link: /ja/api/css/
     - theme: alt
       text: API リファレンス
       link: /ja/api
-    - theme: alt
-      text: CSS リファレンス
-      link: /ja/api/css/
 features:
   - icon:
       light: /book-check-light.svg

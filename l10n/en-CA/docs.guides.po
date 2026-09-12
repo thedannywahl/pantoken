@@ -1,5 +1,13 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-11 22:31+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"Language: und\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: guide/architecture.md
 #, no-c-format
@@ -636,7 +644,7 @@ msgstr ""
 "the CLI. See the [API reference](/api/) for each platform package.\n"
 
 #: guide/components.md
-#, fuzzy, no-c-format
+#, no-c-format
 msgid ""
 "# Components\n"
 "\n"
@@ -1427,7 +1435,7 @@ msgstr ""
 "</div>\n"
 "<div class=\"instui-view --bg-muted --p-sm --mx-auto\" style=\"max-width: "
 "12rem; border-radius: 6px; text-align: center;\">\n"
-"  <span class=\"instui-text\">Centred with mx-auto.</span>\n"
+"  <span class=\"instui-text\">Centered with mx-auto.</span>\n"
 "</div>\n"
 "\n"
 "```html\n"
@@ -1852,7 +1860,7 @@ msgstr ""
 "standard gate.\n"
 
 #: guide/getting-started.md
-#, fuzzy, no-c-format
+#, no-c-format
 msgid ""
 "# Getting started\n"
 "\n"
@@ -2065,7 +2073,7 @@ msgstr ""
 "`--dir <path>` and\n"
 "programmatic use.\n"
 "\n"
-"Using an AI coding agent? No installation needed — point it at the skill "
+"Using an AI coding agent? No install needed — point it at the skill "
 "directly:\n"
 "\n"
 "```prompt\n"
@@ -2073,7 +2081,7 @@ msgstr ""
 "project.\n"
 "```\n"
 "\n"
-"If you'd rather wire pantoken's agent rules into the repo permanently "
+"If you'drather wire pantoken's agent rules into the repo permanently "
 "(AGENTS.md, editor rules, a local copy of this skill), run `npx @pantoken/ai "
 "init` instead.\n"
 "\n"

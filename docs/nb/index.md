@@ -9,14 +9,11 @@ hero:
       text: Kom i gang
       link: /nb/guide/getting-started
     - theme: alt
-      text: Pakkekartet
-      link: /nb/api/
+      text: CSS-referanse
+      link: /nb/api/css/
     - theme: alt
       text: API-referanse
       link: /nb/api
-    - theme: alt
-      text: CSS-referanse
-      link: /nb/api/css/
 features:
   - icon:
       light: /book-check-light.svg

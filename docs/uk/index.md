@@ -9,14 +9,11 @@ hero:
       text: Початок роботи
       link: /uk/guide/getting-started
     - theme: alt
-      text: Карта пакетів
-      link: /uk/api/
+      text: Довідник CSS
+      link: /uk/api/css/
     - theme: alt
       text: Довідник API
       link: /uk/api
-    - theme: alt
-      text: Довідник CSS
-      link: /uk/api/css/
 features:
   - icon:
       light: /book-check-light.svg

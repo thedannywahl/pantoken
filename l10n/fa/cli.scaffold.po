@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 17:03+0000\n"
+"PO-Revision-Date: 2026-09-11 23:02+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "Language: und\n"
@@ -20,6 +20,12 @@ msgstr "پلتفرمی برای ساخت اسکافولد انتخاب کنید:
 msgctxt "cli.scaffold:promptDir"
 msgid "Target directory:"
 msgstr "دایرکتوری هدف:"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:promptAiAssets"
+msgid "Add AI agent assets (AGENTS.md, editor/Copilot rules)?"
+msgstr "افزودن دارایی‌های عامل هوش مصنوعی (AGENTS.md, قوانین ویرایشگر/Copilot)?"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -134,6 +140,12 @@ msgctxt "cli.scaffold:helpYesDescription"
 msgid ""
 "Never prompt; error instead of prompting for a missing platform/directory"
 msgstr "هرگز پرسش نکن؛ در صورت فقدان پلتفرم/دایرکتوری خطا صادر کن"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:helpNoAiDescription"
+msgid "Skip installing AI agent assets after scaffolding"
+msgstr "نصب دارایی‌های عامل هوش مصنوعی را پس از اسکافولد رد کن"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format

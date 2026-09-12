@@ -22,25 +22,20 @@ msgstr "Erste Schritte"
 
 #: index.md:12
 #, no-c-format
-msgid "The package map"
-msgstr "Die Paketübersicht"
+msgid "CSS reference"
+msgstr "CSS-Referenz"
 
 #: index.md:15
 #, no-c-format
 msgid "API reference"
 msgstr "API-Referenz"
 
-#: index.md:18
-#, no-c-format
-msgid "CSS reference"
-msgstr "CSS-Referenz"
-
-#: index.md:24
+#: index.md:21
 #, no-c-format
 msgid "One source of truth"
 msgstr "Eine einzige Quelle der Wahrheit"
 
-#: index.md:25
+#: index.md:22
 #, no-c-format
 msgid ""
 "Every package reads the same resolved token IR. Change a token upstream and "
@@ -49,12 +44,12 @@ msgstr ""
 "Jedes Paket liest dasselbe aufgelöste Token-IR. Ändere ein Token upstream "
 "und es fließt auf die gleiche Weise in CSS, SCSS, nativen Code und Figma."
 
-#: index.md:29
+#: index.md:26
 #, no-c-format
 msgid "Use the smallest package"
 msgstr "Verwende das kleinste Paket"
 
-#: index.md:30
+#: index.md:27
 #, no-c-format
 msgid ""
 "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and "
@@ -63,12 +58,12 @@ msgstr ""
 "Installiere nur @pantoken/css für ein Stylesheet, @pantoken/react für Hooks "
 "und Icons oder ein Bundler-Preset für Tailwind, Panda oder MUI."
 
-#: index.md:34
+#: index.md:31
 #, no-c-format
 msgid "Generate for any platform"
 msgstr "Für jede Plattform generieren"
 
-#: index.md:35
+#: index.md:32
 #, no-c-format
 msgid ""
 "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, "
@@ -77,12 +72,12 @@ msgstr ""
 "Führe `pantoken generate` aus, um Swift, Kotlin, Compose, Flutter, Rust, "
 "WordPress und mehr zu erzeugen. Dieselben Tokens im Idiom jedes Ökosystems."
 
-#: index.md:39
+#: index.md:36
 #, no-c-format
 msgid "No upstream coupling"
 msgstr "Keine Upstream-Kopplung"
 
-#: index.md:40
+#: index.md:37
 #, no-c-format
 msgid ""
 "The tokens ship vendored as static JSON, so `npm i` never reaches for a "
@@ -91,3 +86,7 @@ msgstr ""
 "Die Tokens werden vendored als statisches JSON ausgeliefert, daher greift "
 "`npm i` niemals auf eine nur auf GitHub verfügbare Quelle zu. "
 "Veröffentlichbar, semver-konform, offline-freundlich."
+
+#, no-c-format
+#~ msgid "The package map"
+#~ msgstr "Die Paketübersicht"

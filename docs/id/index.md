@@ -9,14 +9,11 @@ hero:
       text: Memulai
       link: /id/guide/getting-started
     - theme: alt
-      text: Peta paket
-      link: /id/api/
+      text: Referensi CSS
+      link: /id/api/css/
     - theme: alt
       text: Referensi API
       link: /id/api
-    - theme: alt
-      text: Referensi CSS
-      link: /id/api/css/
 features:
   - icon:
       light: /book-check-light.svg

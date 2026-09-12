@@ -9,14 +9,11 @@ hero:
       text: Bắt đầu
       link: /vi/guide/getting-started
     - theme: alt
-      text: Bản đồ gói
-      link: /vi/api/
+      text: Tham khảo CSS
+      link: /vi/api/css/
     - theme: alt
       text: Tham khảo API
       link: /vi/api
-    - theme: alt
-      text: Tham khảo CSS
-      link: /vi/api/css/
 features:
   - icon:
       light: /book-check-light.svg

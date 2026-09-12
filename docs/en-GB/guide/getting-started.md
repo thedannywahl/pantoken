@@ -4,12 +4,12 @@ Pantoken takes the [Instructure UI](https://instructure.design) design tokens an
 model into packages for many platforms: plain stylesheets, SCSS and Less, React and Vue and Svelte,
 Tailwind and Panda, native Swift and Kotlin, WordPress and Drupal, Figma, and more.
 
-You install the smallest package that suits your task. Everything is also re-exported by the unified
+You install the smallest package that fits your task. Everything is also re-exported by the unified
 `pantoken` package, so you can start there and narrow down later.
 
 ## Scaffold a starter project
 
-The fastest way to try pantoken: scaffold a starter project with it already installed and wired in.
+The fastest way to try pantoken: scaffold a starter project with it already installed and wired up.
 
 ```sh
 npx create-pantoken-app
@@ -22,7 +22,7 @@ programmatic use.
 Using an AI coding agent? No installation needed — point it at the skill directly:
 
 ```prompt
-Retrieve create.pantoken.app/SKILL.md and follow it to set up pantoken in this project.
+Fetch create.pantoken.app/SKILL.md and follow it to set up pantoken in this project.
 ```
 
 If you'd rather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy of this skill), run `npx @pantoken/ai init` instead.
@@ -104,12 +104,12 @@ icons.filter((i) => i.source === "lucide");
 ```
 
 Both exports load the full IR at module initialisation — there is no per-icon tree-shaking at this
-level. For lean CSS-only loading, use the [CDN picker](/guide/cdn-picker) to generate a combined URL
+level. For lean CSS-only loading, use the [CDN picker](/guide/cdn-picker) to generate a combine URL
 for only the icons you need.
 
 ## Generate for a native platform
 
-The CLI writes token source into a target repo. No install beyond the runner:
+The CLI writes token source into a target repo. No installation beyond the runner:
 
 ```sh
 npx @pantoken/cli generate swift --out ./ios/Tokens --icons arrow-left,check-mark

@@ -9,14 +9,11 @@ hero:
       text: Tús a chur
       link: /ga/guide/getting-started
     - theme: alt
-      text: An léarscáil phacáiste
-      link: /ga/api/
+      text: Tagairt CSS
+      link: /ga/api/css/
     - theme: alt
       text: Tagairt API
       link: /ga/api
-    - theme: alt
-      text: Tagairt CSS
-      link: /ga/api/css/
 features:
   - icon:
       light: /book-check-light.svg

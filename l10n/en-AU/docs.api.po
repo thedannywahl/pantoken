@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 01:13+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -26250,3 +26250,854 @@ msgstr "A hoverable \"view fullscreen\" button, overlaid on a demo/example frame
 #~ msgctxt "docs.api:text"
 #~ msgid "LogoLang"
 #~ msgstr "LogoLang"
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "Asset content and the writer function now reside in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for backwards compatibility."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "AI Agent"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "Content here."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "Action"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  An alert with the default "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " colour, and a custom icon.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  Congratulations! You're using the \"success\" colour.\n  "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "LH"
+msgstr "LH"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "AI"
+msgstr "AI"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Dr. Nguyen Van Thoc"
+msgstr "Dr. Nguyen Van Thoc"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Miguel Sanchez"
+msgstr "Miguel Sanchez"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Miguel"
+msgstr "Miguel"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Sanchez"
+msgstr "Sanchez"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "Inbox"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "New feature"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "This is a violet banner with a custom icon."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "OK"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  This is a sea-coloured banner with compact spacing.\n"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "A styled link on the base surface."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "No items yet"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "Create your first item to get started."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "Home"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "Guides"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "Components"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "Breadcrumb"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "Primary"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "Secondary"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "What's new"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "The figure can be any leading visual — an icon, an avatar, or an image."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "March 2026"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "Su"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "Mo"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "Tu"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "We"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "Th"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "Fr"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "Sa"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "Card title"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "First section"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "Second section"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Checkbox\n"
+msgstr "Checkbox\n"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Toggle\n"
+msgstr "Toggle\n"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "Something went wrong."
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "A context view frames a callout with a caret. As a popover it sits on the top layer and closes when you click away or press Esc."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "Tray content"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "Navigation"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "Main content"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "Modules"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "Drag an image here"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", or click to browse."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG or JPG up to 5&nbsp;MB."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "Shipping address"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "First name"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "Last name"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "City"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "State"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "All fields are used for delivery only."
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "We will never share it."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "Enter a valid email address."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "Email address"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "One"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "Two"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "Heading h1"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "Untitled"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "A styled link"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "First item"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "Second item"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "Third item"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "Actions"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "Edit"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "Duplicate"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "Delete"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "Active users"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "Small"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — a narrow modal."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "Close"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "Published"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "Under review"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "Stale"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "Blocked"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "Share this page"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr " attribute."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "Primitive-painted box."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  Uploading Document: "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "Score"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "Storage used"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "Release notes"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "Body copy with a "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "link"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "T-shirt size"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " Small"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " Medium"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " Large"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " Option A"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "Hidden at or below the small breakpoint."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "Shown only at or above the small breakpoint."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "example"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "Opens in a new window"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "Calendar"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "Settings"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "Choose a fruit…"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "Apple"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "Orange"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "Pear"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "Padded box with a large top margin."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "Always on top."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "Top-rated films"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "Rank"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "Title"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "Year"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "Rating"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "The Shawshank Redemption"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "The Godfather"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "The Godfather: Part II"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "Overview"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "Details"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "Disabled"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "History"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "The Overview tab's content is shown here."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "small"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "x-small text"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "small text"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "Quoted text"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "AI highlight text"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "What ships in this package?"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "Advanced settings"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "These options are revealed when the group is expanded. The header row carries a chevron that rotates when opened, and the content sits below a divider."
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "Default placement is at the top"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "Animated content"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "Filters"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "A tray slides in from the leading edge and fills the viewport height."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "toggle tray"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " Course files"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " Syllabus.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " Week 1"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " Reading.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " Slides.pptx"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " Rubric.docx"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "This text is clamped to one line by default and ends in an ellipsis."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "This text is clamped to three lines and ends in an ellipsis."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  A card-like surface.\n"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "Outlined child."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "Your changes were saved."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "A flat, inline notice."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "JS"
+msgstr "JS"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "AB"
+msgstr "AB"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "Save changes"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "More about this item."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "Toggle panel"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "Profile"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "Delete…"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "Delete this item?"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "First "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "Next"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "Second "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "Back"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "Active"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "Options"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "Courses"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "Design"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "Bookmarked"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "Hover over me"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "Menu"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "A long description that will be truncated to two lines…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

@@ -9,14 +9,11 @@ hero:
       text: Başlarken
       link: /tr/guide/getting-started
     - theme: alt
-      text: Paket haritası
-      link: /tr/api/
+      text: CSS referansı
+      link: /tr/api/css/
     - theme: alt
       text: API referansı
       link: /tr/api
-    - theme: alt
-      text: CSS referansı
-      link: /tr/api/css/
 features:
   - icon:
       light: /book-check-light.svg

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 07:38+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -288,7 +288,7 @@ msgstr "Ustvari Panda prednastavitev iz token IR."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
-msgstr "readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
+msgstr "samo za branje [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
 
 #: bundlers/panda/src/functions/toPandaPreset.md
 #: design/figma/src/functions/toFigmaVariables.md
@@ -719,7 +719,7 @@ msgstr "Kodiraj vzorce barv v ASE bajte. Vzorci, ki niso v šestnajstiškem form
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`Swatch`](../interfaces/Swatch.md)[]"
-msgstr "readonly [`Swatch`](../interfaces/Swatch.md)[]"
+msgstr "samo za branje [`Swatch`](../interfaces/Swatch.md)[]"
 
 #: design/swatches/src/functions/toAse.md
 #: design/swatches/src/functions/toGpl.md
@@ -2777,7 +2777,7 @@ msgstr "`@pantoken/ai` — sredstva za agente, namenjena končnim uporabnikom za
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
-msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
+msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) namesti `AGENTS.md`, `llms.txt`, in\n\tpravila asistenta/urejevalnika (Cursor, Copilot, Windsurf, Claude Code) v repozitorij potrošnika."
 
 #: index.md
 #, no-c-format
@@ -3019,7 +3019,7 @@ msgstr "Preslikaj vsak ikonni žeton v njegov dekodiran SVG (ključeno po imenu 
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`Token`](../interfaces/Token.md)[]"
-msgstr "readonly [`Token`](../interfaces/Token.md)[]"
+msgstr "samo za branje [`Token`](../interfaces/Token.md)[]"
 
 #: packages/core/src/functions/isContextual.md
 #, no-c-format
@@ -6340,7 +6340,7 @@ msgstr "Možnosti za vtičnik theme custom-media."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Target theme to emit (default `\"rebrand\"`)."
-msgstr "Target theme to emit (default `\"rebrand\"`)."
+msgstr "Ciljna tema za izvoz (privzeto `\"rebrand\"`)."
 
 #: plugins/postcss/theme-custom-media/src/type-aliases/Theme.md
 #, no-c-format
@@ -15552,7 +15552,7 @@ msgstr "Gumb, ki se ob premiku miške prikaže kot \"prikaži celozaslonsko\", p
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "✅ Use Two-Column when:"
-#~ msgstr "✅ Use Two-Column when:"
+#~ msgstr "✅ Uporabite Two-Column, ko:"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -25390,3 +25390,665 @@ msgstr "Gumb, ki se ob premiku miške prikaže kot \"prikaži celozaslonsko\", p
 #~ msgctxt "docs.api:prose"
 #~ msgid "pantoken icon logo (reversed)."
 #~ msgstr "pantoken ikona logotipa (obrnjen)."
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "Vsebina sredstva in funkcija zapisovalca se zdaj nahajata v `@pantoken/scaffold` (tako lahko osnovni scaffold\nflow ju ponudita brez krožne odvisnosti); ponovno izvoženo tukaj zaradi združljivosti s prejšnjimi različicami."
+
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "Agent umetne inteligence"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "Vsebina tukaj."
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "Dejanje"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  Opozorilo s privzetim "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " barvo in prilagojeno ikono.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  Čestitke! Uporabljate barvo \"success\".\n  "
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "Prejeto"
+
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "Nova funkcija"
+
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "To je vijolična pasica s prilagojeno ikono."
+
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "V redu"
+
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "Prekliči"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  To je pasica v morski barvi s kompaktnim razmikom.\n"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "Oblikovana povezava na osnovni površini."
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "Še ni postavk"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "Ustvarite svojo prvo postavko, da začnete."
+
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "Domov"
+
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "Vodniki"
+
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "Komponente"
+
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "Drobtinice"
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "Primarno"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "Sekundarno"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "Kaj je novega"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "Prikaz lahko predstavlja katerokoli vodilno vizualno podobo — ikono, avatar ali sliko."
+
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "marec 2026"
+
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "Ne"
+
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "Po"
+
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "To"
+
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "Sr"
+
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "Čt"
+
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "Pe"
+
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "So"
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "Naslov kartice"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "Prvi razdelek"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "Drugi razdelek"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "Nekaj je šlo narobe."
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "Pogled konteksta obda poziv s kazalcem. Kot pojavna okna se prikaže na najvišjem sloju in se zapre, ko kliknete zunaj ali pritisnete Esc."
+
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "Vsebina pladnja"
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "Navigacija"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "Glavna vsebina"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "Moduli"
+
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "Povlecite sliko sem"
+
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", ali kliknite za brskanje."
+
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG ali JPG do 5&nbsp;MB."
+
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "Naslov za dostavo"
+
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "Ime"
+
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "Priimek"
+
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "Mesto"
+
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "Zvezna država"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "Vsa polja se uporabljajo le za dostavo."
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "Nikoli je ne bomo delili."
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "Vnesite veljaven e-poštni naslov."
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "E-poštni naslov"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "Ena"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "Dve"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "Naslov h1"
+
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "Brez naslova"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "Oblikovana povezava"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "Prvi element"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "Drugi element"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "Tretji element"
+
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "Dejanja"
+
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "Uredi"
+
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "Podvoji"
+
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "Izbriši"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "Aktivni uporabniki"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "Majhen"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — ozko modalno okno."
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "Zapri"
+
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "Objavljeno"
+
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "Osnutek"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "V pregledu"
+
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "Zastarelo"
+
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "Blokirano"
+
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "Deli to stran"
+
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "Popover je lahka površina, pritrjena na sprožilec. Ta uporablja izvorni "
+
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr " atribut."
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "Primitivno pobarvana škatla."
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  Nalaganje dokumenta: "
+
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "Ocena"
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "Zaseden prostor"
+
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "Opombe ob izdaji"
+
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "Telo besedila z "
+
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "povezava"
+
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "Velikost majice"
+
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " Majhna"
+
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " Srednja"
+
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " Velika"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " Možnost A"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "Skrito na ali pod majhno prelomno točko."
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "Vidno le na ali nad majhno prelomno točko."
+
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "primer"
+
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "Odpre se v novem oknu"
+
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "Koledar"
+
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "Nastavitve"
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "Izberite sadje…"
+
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "Jabolko"
+
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "Pomaranča"
+
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "Hruška"
+
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "Škatla z notranjim odmikom in velikim zgornjim robom."
+
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "Vedno na vrhu."
+
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "Najbolje ocenjeni filmi"
+
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "Uvrstitev"
+
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "Naslov"
+
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "Leto"
+
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "Ocena"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "The Shawshank Redemption"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "The Godfather"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "The Godfather: Part II"
+
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "Pregled"
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "Podrobnosti"
+
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "Onemogočeno"
+
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "Zgodovina"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "Vsebina zavihka Pregled je prikazana tukaj."
+
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "majhen"
+
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "zelo majhen tekst"
+
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "majhen tekst"
+
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "Citirano besedilo"
+
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "Besedilo, poudarjeno z AI"
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "Kaj vsebuje ta paket?"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  Slogi komponent, temelječi na razredih, zgrajeni iz Instructure tokenov, ter sloj besedila.\n"
+
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "Napredne nastavitve"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "Te možnosti se prikažejo, ko je skupina razširjena. Glavna vrstica ima chevron, ki se ob odpiranju zavrti, vsebina pa je pod delilnikom."
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "Privzeta postavitev je zgoraj"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "Animirana vsebina"
+
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "Filtri"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "Predal se zasune z začetnega roba in zapolni višino vidnega okna."
+
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "preklopi predal"
+
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " Datoteke tečaja"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " Syllabus.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " Teden 1"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " Reading.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " Slides.pptx"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " Rubric.docx"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "To besedilo je privzeto omejeno na eno vrstico in se konča z elipsami."
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "To besedilo je omejeno na tri vrstice in se konča z elipsami."
+
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  Površina, podobna kartici.\n"
+
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "Podrejeni element z obrisom."
+
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "Vaše spremembe so bile shranjene."
+
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "Enostavno, vstavno obvestilo."
+
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "Shrani spremembe"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "Več o tej postavki."
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "Preklopi ploščo"
+
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "Profil"
+
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "Izbriši…"
+
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "Izbrisati ta element?"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "Prvi "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "Naprej"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "Drugi "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "Nazaj"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "Aktiven"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "Možnosti"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "Nadzorna plošča"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "Tečaji"
+
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "Oblikovanje"
+
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "Dodano med zaznamke"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "Postavite kazalec miške nad mene"
+
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "Meni"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "Dolg opis, ki bo omejen na dve vrstici…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

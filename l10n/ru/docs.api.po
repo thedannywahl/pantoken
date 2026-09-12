@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 07:09+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2753,19 +2753,19 @@ msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) устанавливает 
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins)."
-msgstr "Optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins)."
+msgstr "Необязательные преобразования, расширяющие выходные данные токенов или CSS. См. [Plugins](/guide/plugins)."
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are\nself-contained, so we document them here and some ship to npm on their own."
-msgstr "Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are\nself-contained, so we document them here and some ship to npm on their own."
+msgstr "Инфраструктура сборки, документации и демонстраций для самого монорепозитория. Большая часть внутреняя, но отдельные части\nсамостоятельны, поэтому мы документируем их здесь и некоторые публикуются в npm отдельно."
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API\npage; the others do."
-msgstr "`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API\npage; the others do."
+msgstr "`@pantoken/validate-generated` — это скрипт, выполняемый один раз (вызывается `pnpm run ready`), поэтому у него нет страницы API\n; у других она есть."
 
 #: index.md
 #, fuzzy, no-c-format
@@ -2777,13 +2777,13 @@ msgstr "`@pantoken/ai` — пользовательские ассеты аге�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
-msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
+msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) устанавливает `AGENTS.md`, `llms.txt`, и\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) в потребительский репозиторий."
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Plugins we author for the tools we build with, grouped by host. They're standalone and publishable."
-msgstr "Plugins we author for the tools we build with, grouped by host. They're standalone and publishable."
+msgstr "Плагины, которые мы создаём для инструментов, с которыми работаем, сгруппированы по хостам. Они автономны и пригодны для публикации."
 
 #: packages/cli/src/functions/parseArgs.md
 #, no-c-format
@@ -3019,7 +3019,7 @@ msgstr "Сопоставляет каждый токен иконки с его 
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`Token`](../interfaces/Token.md)[]"
-msgstr "readonly [`Token`](../interfaces/Token.md)[]"
+msgstr "только для чтения [`Token`](../interfaces/Token.md)[]"
 
 #: packages/core/src/functions/isContextual.md
 #, no-c-format
@@ -3801,7 +3801,7 @@ msgstr "Построить разрешатель, который развора
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`Token`](../../../core/src/interfaces/Token.md)[]"
-msgstr "readonly [`Token`](../../../core/src/interfaces/Token.md)[]"
+msgstr "только для чтения [`Token`](../../../core/src/interfaces/Token.md)[]"
 
 #: packages/plugin-kit/src/functions/makeResolver.md
 #: packages/utils/src/functions/makeResolver.md
@@ -25390,3 +25390,688 @@ msgstr "Кнопка «просмотр в полноэкранном режим
 #~ msgctxt "docs.api:prose"
 #~ msgid "pantoken icon logo (reversed)."
 #~ msgstr "иконка-логотип pantoken (обратный)."
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "Содержимое ассета и функция записи теперь находятся в `@pantoken/scaffold` (так что базовый scaffold\nflow может предоставить их без циклической зависимости); переэкспортировано здесь для обратной совместимости."
+
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "ИИ-агент"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "Содержимое здесь."
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "Действие"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  Уведомление с цветом по умолчанию "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " цвет, и пользовательская иконка.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  Поздравляем! Вы используете цвет \"success\".\n  "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "LH"
+msgstr "LH"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "AI"
+msgstr "AI"
+
+msgctxt "docs.api:prose"
+msgid "Dr. Nguyen Van Thoc"
+msgstr "Др. Нгуен Ван Тхок"
+
+msgctxt "docs.api:prose"
+msgid "Miguel Sanchez"
+msgstr "Мигель Санчес"
+
+msgctxt "docs.api:prose"
+msgid "Miguel"
+msgstr "Мигель"
+
+msgctxt "docs.api:prose"
+msgid "Sanchez"
+msgstr "Санчес"
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "Входящие"
+
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "Новая функция"
+
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "Это фиолетовый баннер с пользовательской иконкой."
+
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "ОК"
+
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "Отмена"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  Это баннер морского цвета с компактными отступами.\n"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "Стилизованная ссылка на базовой поверхности."
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "Пока нет элементов"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "Создайте первый элемент, чтобы начать."
+
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "Главная"
+
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "Руководства"
+
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "Компоненты"
+
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "Хлебные крошки"
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "Основной"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "Вторичный"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "Что нового"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "Фигура может быть любым ведущим визуальным элементом — иконкой, аватаром или изображением."
+
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "март 2026"
+
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "Вс"
+
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "Пн"
+
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "Вт"
+
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "Ср"
+
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "Чт"
+
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "Пт"
+
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "Сб"
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "Заголовок карточки"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "Первый раздел"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "Второй раздел"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "Что-то пошло не так."
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "Контекстный просмотр оформляет выноску со стрелкой. В виде всплывающего окна он располагается в верхнем слое и закрывается при клике вне области или при нажатии Esc."
+
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "Содержимое лотка"
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "Навигация"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "Основное содержимое"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "Модули"
+
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "Перетащите изображение сюда"
+
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", или нажмите, чтобы просмотреть."
+
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG или JPG до 5&nbsp;МБ."
+
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "Адрес доставки"
+
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "Имя"
+
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "Фамилия"
+
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "Город"
+
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "Штат"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "Все поля используются только для доставки."
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "Мы никогда не поделимся этим."
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "Введите корректный адрес электронной почты."
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "Адрес электронной почты"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "Один"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "Два"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "Заголовок h1"
+
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "Без названия"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "Стилизованная ссылка"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "Первый элемент"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "Второй элемент"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "Третий элемент"
+
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "Действия"
+
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "Редактировать"
+
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "Дублировать"
+
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "Удалить"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "Активные пользователи"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "Маленький"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — узкое модальное окно."
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "Закрыть"
+
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "Опубликовано"
+
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "Черновик"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "На проверке"
+
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "Устаревший"
+
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "Заблокировано"
+
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "Поделиться этой страницей"
+
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "Поповер — это лёгкая поверхность, прикреплённая к триггеру. Этот использует родный "
+
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr " атрибут."
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "Коробка, раскрашенная простыми формами."
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  Загрузка документа: "
+
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "Оценка"
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "Используемое хранилище"
+
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "Примечания к выпуску"
+
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "Текст содержимого с "
+
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "ссылка"
+
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "Размер футболки"
+
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " Маленький"
+
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " Средний"
+
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " Большой"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " Вариант A"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "Скрыто на малом брейкпойнте или ниже."
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "Показано только при малом брейкпойнте или выше."
+
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "пример"
+
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "Открывается в новом окне"
+
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "Календарь"
+
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "Настройки"
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "Выберите фрукт…"
+
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "Яблоко"
+
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "Апельсин"
+
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "Груша"
+
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "Блок с внутренними отступами и большим верхним отступом."
+
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "Всегда сверху."
+
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "Лучшие фильмы"
+
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "Ранг"
+
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "Название"
+
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "Год"
+
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "Рейтинг"
+
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "Побег из Шоушенка"
+
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "Крестный отец"
+
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "Крестный отец: Часть II"
+
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "Обзор"
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "Подробности"
+
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "Отключено"
+
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "История"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "Содержимое вкладки «Обзор» отображается здесь."
+
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "маленький"
+
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "очень маленький текст"
+
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "маленький текст"
+
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "Цитируемый текст"
+
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "Текст, выделенный ИИ"
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "Что входит в этот пакет?"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  Стили компонентов на основе классов, созданные из токенов Instructure, плюс слой прозаического текста.\n"
+
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "Расширенные настройки"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "Эти параметры отображаются, когда группа раскрыта. В строке заголовка есть шеврон, который поворачивается при открытии, а содержимое располагается ниже разделителя."
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "Размещение по умолчанию — сверху"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "Анимированное содержимое"
+
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "Фильтры"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "Панель выезжает с начального края и заполняет высоту области просмотра."
+
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "переключить панель"
+
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " Файлы курса"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " Syllabus.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " Неделя 1"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " Reading.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " Slides.pptx"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " Rubric.docx"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "Этот текст по умолчанию ограничен одной строкой и заканчивается многоточием."
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "Этот текст ограничен тремя строками и заканчивается многоточием."
+
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  Поверхность, похожая на карточку.\n"
+
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "Дочерний элемент с обводкой."
+
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "Ваши изменения сохранены."
+
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "Плоское встроенное уведомление."
+
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "Сохранить изменения"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "Подробнее об этом элементе."
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "Переключить панель"
+
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "Профиль"
+
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "Удалить…"
+
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "Удалить этот элемент?"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "Первый "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "Далее"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "Второй "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "Назад"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "Активный"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "Параметры"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "Панель управления"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "Курсы"
+
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "Дизайн"
+
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "Добавлено в закладки"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "Наведите курсор"
+
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "Меню"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "Длинное описание, которое будет обрезано до двух строк…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

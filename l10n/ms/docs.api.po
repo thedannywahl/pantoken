@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 05:24+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2777,7 +2777,7 @@ msgstr "`@pantoken/ai` — aset ejen berorientasikan pengguna untuk projek yang 
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
-msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
+msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) memasang `AGENTS.md`, `llms.txt`, dan\n\tperaturan pembantu/editor (Cursor, Copilot, Windsurf, Claude Code) ke dalam repositori pengguna."
 
 #: index.md
 #, no-c-format
@@ -3801,7 +3801,7 @@ msgstr "Bina penyelesai yang mengembangkan rujukan `var(--x)` kepada nilai daun 
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`Token`](../../../core/src/interfaces/Token.md)[]"
-msgstr "readonly [`Token`](../../../core/src/interfaces/Token.md)[]"
+msgstr "hanya baca [`Token`](../../../core/src/interfaces/Token.md)[]"
 
 #: packages/plugin-kit/src/functions/makeResolver.md
 #: packages/utils/src/functions/makeResolver.md
@@ -4823,7 +4823,7 @@ msgstr "`@pantoken/swift` — mengeluarkan token reka bentuk Instructure sebagai
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "This is pantoken's native proof: it flattens the IR to concrete, single-mode values\n(`@pantoken/core`'s `toStyleDictionary`), keeps the natively-typed tokens (colours, dimensions,\nnumbers), and hands them to `@pantoken/sd-config`. Swapping `platform` to `flutter`/`compose`\nreuses the same path."
-msgstr "This is pantoken's native proof: it flattens the IR to concrete, single-mode values\n(`@pantoken/core`'s `toStyleDictionary`), keeps the natively-typed tokens (colours, dimensions,\nnumbers), and hands them to `@pantoken/sd-config`. Swapping `platform` to `flutter`/`compose`\nreuses the same path."
+msgstr "Ini adalah bukti asli pantoken: ia meratakan IR kepada nilai konkrit, bermodus tunggal\n(`@pantoken/core`'s `toStyleDictionary`), mengekalkan token yang ditaip secara asli (warna, dimensi,\nnumbers), dan menyerahkannya kepada `@pantoken/sd-config`. Menukar `platform` kepada `flutter`/`compose`\nmenggunakan semula laluan yang sama."
 
 #: platforms/swift/src/index.md
 #, no-c-format
@@ -15172,7 +15172,7 @@ msgstr "Butang \"view fullscreen\" yang boleh di-hover, dilapiskan pada bingkai 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Italic."
-#~ msgstr "Italic."
+#~ msgstr "Miring."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -25390,3 +25390,659 @@ msgstr "Butang \"view fullscreen\" yang boleh di-hover, dilapiskan pada bingkai 
 #~ msgctxt "docs.api:prose"
 #~ msgid "pantoken icon logo (reversed)."
 #~ msgstr "logo ikon pantoken (terbalik)."
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "Kandungan aset dan fungsi penulis kini disimpan di `@pantoken/scaffold` (supaya rangka asas scaffold\nflow dapat menawarkannya tanpa pergantungan melingkar); dieksport semula di sini untuk keserasian ke belakang."
+
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "Ejen AI"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "Kandungan di sini."
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "Tindakan"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  Amaran dengan tetapan lalai "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " warna, dan ikon tersuai.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  Tahniah! Anda menggunakan warna \"success\".\n  "
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "Peti Masuk"
+
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "Ciri baharu"
+
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "Ini adalah sepanduk ungu dengan ikon tersuai."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "Batal"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  Ini adalah sepanduk berwarna laut dengan jarak yang padat.\n"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "Pautan berstail pada permukaan asas."
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "Tiada item lagi"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "Cipta item pertama anda untuk memulakan."
+
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "Laman Utama"
+
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "Panduan"
+
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "Komponen"
+
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "Jejak Roti"
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "Utama"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "Sekunder"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "Apa yang baru"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "Rajah boleh berupa sebarang visual utama — ikon, avatar, atau imej."
+
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "Mac 2026"
+
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "Ah"
+
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "Is"
+
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "Se"
+
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "Ra"
+
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "Kh"
+
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "Ju"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "Sa"
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "Tajuk kad"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "Bahagian pertama"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "Bahagian kedua"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "Ada sesuatu yang tidak kena."
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "Pandangan konteks membingkai sebuah callout dengan caret. Sebagai popover ia berada pada lapisan teratas dan ditutup apabila anda mengklik di luar atau menekan Esc."
+
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "Kandungan dulang"
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "Navigasi"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "Kandungan utama"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "Modul"
+
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "Seret imej di sini"
+
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", atau klik untuk menyemak imbas."
+
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG atau JPG sehingga 5&nbsp;MB."
+
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "Alamat penghantaran"
+
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "Nama pertama"
+
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "Nama keluarga"
+
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "Bandar"
+
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "Negeri"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "Semua medan digunakan untuk penghantaran sahaja."
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "Kami tidak akan berkongsi maklumat ini."
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "Masukkan alamat emel yang sah."
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "Alamat emel"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "Satu"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "Dua"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "Tajuk h1"
+
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "Tanpa tajuk"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "Pautan bergaya"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "Item pertama"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "Item kedua"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "Item ketiga"
+
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "Tindakan"
+
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "Sunting"
+
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "Gandakan"
+
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "Padam"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "Pengguna aktif"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "Kecil"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — sebuah modal sempit."
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "Tutup"
+
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "Diterbitkan"
+
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "Draf"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "Dalam semakan"
+
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "Usang"
+
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "Disekat"
+
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "Kongsi halaman ini"
+
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "Popover adalah permukaan ringan yang dipautkan kepada pencetus. Yang ini menggunakan "
+
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr " atribut."
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "Kotak yang dicat bergaya primitif."
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  Muat Naik Dokumen: "
+
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "Skor"
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "Simpanan digunakan"
+
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "Nota keluaran"
+
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "Teks badan dengan "
+
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "pautan"
+
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "Saiz T-shirt"
+
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " Kecil"
+
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " Sederhana"
+
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " Besar"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " Pilihan A"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "Tersembunyi pada atau di bawah titik hentian kecil."
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "Dipaparkan hanya pada atau di atas titik hentian kecil."
+
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "contoh"
+
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "Buka dalam tetingkap baru"
+
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "Kalendar"
+
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "Tetapan"
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "Pilih buah…"
+
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "Epal"
+
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "Oren"
+
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "Pir"
+
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "Kotak berlapik dengan margin atas yang besar."
+
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "Sentiasa di atas."
+
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "Filem yang mendapat penilaian tertinggi"
+
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "Peringkat"
+
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "Tajuk"
+
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "Tahun"
+
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "Penilaian"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "The Shawshank Redemption"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "The Godfather"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "The Godfather: Part II"
+
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "Gambaran Keseluruhan"
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "Butiran"
+
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "Dilumpuhkan"
+
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "Sejarah"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "Kandungan tab Gambaran Keseluruhan dipaparkan di sini."
+
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "kecil"
+
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "teks sangat kecil"
+
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "teks kecil"
+
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "Teks yang dipetik"
+
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "teks sorotan AI"
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "Apa yang disertakan dalam pakej ini?"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  Gaya komponen berasaskan kelas, dibina daripada token Instructure, ditambah lapisan prosa.\n"
+
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "Tetapan lanjutan"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "Pilihan ini didedahkan apabila kumpulan dibuka. Bar pengepala membawa chevron yang berpusing apabila dibuka, dan kandungan terletak di bawah pemisah."
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "Penempatan lalai ialah di atas"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "Kandungan animasi"
+
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "Penapis"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "Sebuah dulang meluncur dari tepi mula dan mengisi ketinggian paparan."
+
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "togol dulang"
+
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " Fail Kursus"
+
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " Silabus.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " Minggu 1"
+
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " Bacaan.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " Slaid.pptx"
+
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " Rubrik.docx"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "Teks ini dihadkan kepada satu baris secara lalai dan berakhir dengan elipsis."
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "Teks ini dihadkan kepada tiga baris dan berakhir dengan elipsis."
+
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  Permukaan seperti kad.\n"
+
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "Anak berbingkai."
+
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "Perubahan anda telah disimpan."
+
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "Notis rata, sebaris."
+
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "Simpan perubahan"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "Maklumat lanjut tentang item ini."
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "Togol panel"
+
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "Profil"
+
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "Padam…"
+
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "Padam item ini?"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "Pertama "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "Seterusnya"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "Kedua "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "Kembali"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "Aktif"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "Pilihan"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "Papan Pemuka"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "Kursus"
+
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "Reka bentuk"
+
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "Ditanda"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "Arahkan kursor ke saya"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "Keterangan panjang yang akan dipadatkan kepada dua baris…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 04:06+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -288,7 +288,7 @@ msgstr "Smíða Panda-forstillingu úr token-IR."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
-msgstr "readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
+msgstr "aðeins til lestrar [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
 
 #: bundlers/panda/src/functions/toPandaPreset.md
 #: design/figma/src/functions/toFigmaVariables.md
@@ -2777,7 +2777,7 @@ msgstr "`@pantoken/ai` — neytendamiðuð umboðseign fyrir verkefni sem *nota*
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
-msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
+msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) setur upp `AGENTS.md`, `llms.txt`, og\n\treglur fyrir assistant/ritstjóra (Cursor, Copilot, Windsurf, Claude Code)) í neytendageymslu."
 
 #: index.md
 #, no-c-format
@@ -3801,7 +3801,7 @@ msgstr "Búa til resolver sem stækkar tilvísanir `var(--x)` í raunveruleg bla
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`Token`](../../../core/src/interfaces/Token.md)[]"
-msgstr "readonly [`Token`](../../../core/src/interfaces/Token.md)[]"
+msgstr "aðeins lesanlegt [`Token`](../../../core/src/interfaces/Token.md)[]"
 
 #: packages/plugin-kit/src/functions/makeResolver.md
 #: packages/utils/src/functions/makeResolver.md
@@ -25390,3 +25390,662 @@ msgstr "Hnappur sem birtist þegar músin fer yfir hann: „Skoða á fullri skj
 #~ msgctxt "docs.api:prose"
 #~ msgid "pantoken icon logo (reversed)."
 #~ msgstr "pantoken táknlógó (öfugt)."
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "Innihald eignar og skrifarafallið eru nú staðsett í `@pantoken/scaffold` (svo grunn-ramminn\nflæði getur boðið þeim án hringtengingar); endurflutt hér fyrir bakvirka samhæfni."
+
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "AI umboðsmaður"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "Innihald hér."
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "Aðgerð"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  Viðvörun með sjálfgefnu "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " litur, og sérsniðið tákn.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  Til hamingju! Þú ert að nota \"success\" litinn.\n  "
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "Innbakki"
+
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "Nýr eiginleiki"
+
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "Þetta er fjólublár borði með sérsniðnu tákni."
+
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "Í lagi"
+
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "Hætta við"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  Þetta er sjávarlitaður borði með þéttum bilum.\n"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "Stílhert tengil á grunnyfirborði."
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "Engin atriði enn"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "Búðu til fyrsta atriðið þitt til að byrja."
+
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "Heim"
+
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "Leiðbeiningar"
+
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "Íhlutir"
+
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "Brauðmolar"
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "Aðal"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "Auka"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "Hvað er nýtt"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "Myndin getur verið hvaða leiðandi sjónræna atriði sem er — tákn, avatar eða mynd."
+
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "mars 2026"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "Su"
+
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "Mán"
+
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "Þr"
+
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "Mið"
+
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "Fim"
+
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "Fös"
+
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "Lau"
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "Titill korts"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "Fyrsti hluti"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "Annar hluti"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "Eitthvað fór úrskeiðis."
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "Samhengissýn rammar inn tilkynningu með bendli. Sem sprettigluggi situr hún efst á laginu og lokast þegar þú smellir annars staðar eða ýtir á Esc."
+
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "Innihald skúffu"
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "Leiðsögn"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "Aðalinnihald"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "Einingar"
+
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "Dragðu mynd hingað"
+
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", eða smelltu til að fletta."
+
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG eða JPG allt að 5&nbsp;MB."
+
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "Heimilisfang sendingar"
+
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "Fornafn"
+
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "Eftirnafn"
+
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "Borg"
+
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "Fylki"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "Allir reitir eru eingöngu notaðir fyrir afhendingu."
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "Við munum aldrei deila því."
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "Sláðu inn gilt netfang."
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "Netfang"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "Einn"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "Tveir"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "Fyrirsögn h1"
+
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "Ónafngreint"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "Stílaður hlekkur"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "Fyrsta atriðið"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "Annað atriðið"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "Þriðja atriðið"
+
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "Aðgerðir"
+
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "Breyta"
+
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "Afrita"
+
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "Eyða"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "Virkir notendur"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "Lítil"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — þröngur modalgluggi."
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "Loka"
+
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "Birt"
+
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "Uppkast"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "Í yfirferð"
+
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "Úrelt"
+
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "Blokkað"
+
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "Deila þessari síðu"
+
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "Popover er létt yfirborð sem er fest við kveikju. Þetta notar innbyggða "
+
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr " eiginleika."
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "Frumstætt málaður kassi."
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  Hleður upp skjali: "
+
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "Stig"
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "Notuð geymsla"
+
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "Uppfærslunótur"
+
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "Aðaltexti með "
+
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "hlekkur"
+
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "Stærð T-skyrtu"
+
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " Lítil"
+
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " Miðlungs"
+
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " Stór"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " Valkostur A"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "Falin við eða fyrir neðan litla brotpunkta."
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "Sýnt aðeins við eða fyrir ofan litla brotpunkta."
+
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "dæmi"
+
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "Opnast í nýjum glugga"
+
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "Dagatal"
+
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "Stillingar"
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "Veldu ávöxt…"
+
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "Epli"
+
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "Appelsína"
+
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "Pera"
+
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "Kassi með innfyllingu og stórri efri jaðri."
+
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "Alltaf efst."
+
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "Kvikmyndir með hæstu einkunn"
+
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "Sæti"
+
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "Titill"
+
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "Ár"
+
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "Einkunn"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "The Shawshank Redemption"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "The Godfather"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "The Godfather: Part II"
+
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "Yfirlit"
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "Upplýsingar"
+
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "Óvirkt"
+
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "Saga"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "Innihald flipans „Yfirlit“ er sýnt hér."
+
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "lítil"
+
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "x-smár texti"
+
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "lítill texti"
+
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "Tilvitnaður texti"
+
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "AI áherslutexti"
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "Hvað fylgir með í þessu pakka?"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  Klassa-miðaðir íhlutastílar, byggðir úr Instructure-táknum, auk textalags.\n"
+
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "Háþróaðar stillingar"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "Þessar valkostir birtast þegar hópurinn er opnaður. Yfirskriftarröðin ber ör sem snýst við opnun, og efnið er staðsett fyrir neðan skiljara."
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "Sjálfgefin staðsetning er efst"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "Animerað efni"
+
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "Síur"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "Skúffa rennur inn frá upphafsbrún og fyllir hæð skjágluggans."
+
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "Sýna/fela skúffu"
+
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " Námsgögn"
+
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " Kennsluskrá.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " Vika 1"
+
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " Lesefni.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " Glærur.pptx"
+
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " Einkunnunarviðmið.docx"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "Þessi texti er sjálfgefið takmarkaður við eina línu og endar á þrem punktum."
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "Þessi texti er sjálfgefið takmarkaður við þrjár línur og endar á þrem punktum."
+
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  Kort-líkt yfirborð.\n"
+
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "Útlínulagt barn."
+
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "Breytingarnar þínar hafa verið vistaðar."
+
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "Flöt, innfelld tilkynning."
+
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "Vista breytingar"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "Meira um þennan hlut."
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "Sýna/fela spjaldið"
+
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "Prófíll"
+
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "Eyða…"
+
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "Eyða þessu atriði?"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "Fyrsta "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "Næsta"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "Önnur "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "Til baka"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "Virkur"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "Valkostir"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "Yfirlit"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "Námskeið"
+
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "Hönnun"
+
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "Bókamerkt"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "Sveima yfir mig"
+
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "Valmynd"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "Löng lýsing sem verður takmörkuð við tvær línur…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

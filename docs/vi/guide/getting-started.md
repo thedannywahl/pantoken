@@ -1,8 +1,8 @@
 # Bắt đầu
 
-Pantoken lấy các design token và biểu tượng từ [Instructure UI](https://instructure.design), giải quyết chúng một lần, và biến mẫu đó thành các gói cho nhiều nền tảng: stylesheet thuần, SCSS và Less, React và Vue và Svelte, Tailwind và Panda, Swift và Kotlin gốc, WordPress và Drupal, Figma, và nhiều hơn nữa.
+Pantoken lấy các design token và biểu tượng từ [Instructure UI](https://instructure.design), giải quyết chúng một lần, rồi biến đổi mô hình đó thành các gói cho nhiều nền tảng: stylesheet thuần, SCSS và Less, React và Vue và Svelte, Tailwind và Panda, native Swift và Kotlin, WordPress và Drupal, Figma, và hơn thế nữa.
 
-Cài gói nhỏ nhất phù hợp với nhiệm vụ. Mọi thứ cũng được xuất lại bởi gói hợp nhất `pantoken`, nên có thể bắt đầu từ đó rồi thu hẹp sau.
+Cài gói nhỏ nhất phù hợp với nhiệm vụ của bạn. Mọi thứ cũng được xuất lại bởi gói hợp nhất `pantoken`, nên có thể bắt đầu từ đó rồi thu hẹp về sau.
 
 ## Tạo khung dự án khởi đầu
 
@@ -12,23 +12,23 @@ Cách nhanh nhất để thử pantoken: tạo khung dự án khởi đầu đã
 npx create-pantoken-app
 ```
 
-Nền tảng: `components` (HTML/CSS thuần), `react`, `vue`, `svelte`, `web-components`, `angular`. Xem [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) để biết `--dir <path>` và sử dụng theo chương trình.
+Nền tảng: `components` (HTML/CSS thuần), `react`, `vue`, `svelte`, `web-components`, `angular`. Xem [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) để biết `--dir <path>` và cách sử dụng lập trình.
 
-Dùng một agent lập trình AI? Không cần cài — trỏ trực tiếp kỹ năng vào nó:
+Đang dùng agent mã hóa AI? Không cần cài — chỉ trỏ nó tới skill trực tiếp:
 
 ```prompt
-Lấy create.pantoken.app/SKILL.md và làm theo hướng dẫn trong đó để thiết lập pantoken trong dự án này.
+Truy xuất create.pantoken.app/SKILL.md và làm theo hướng dẫn để thiết lập pantoken trong dự án này.
 ```
 
-Nếu muốn tích hợp vĩnh viễn quy tắc agent của pantoken vào repo (AGENTS.md, quy tắc editor, bản sao local của kỹ năng này), chạy `npx @pantoken/ai init` thay thế.
+Nếu muốn tích hợp vĩnh viễn quy tắc agent của pantoken vào repo (AGENTS.md, quy tắc editor, bản sao cục bộ của skill này), chạy `npx @pantoken/ai init` thay thế.
 
 ## Mô hình token
 
-Token là các thuộc tính tùy chỉnh CSS đặt tên `--instui-<group>-<name>`, ví dụ `--instui-color-background-brand` hoặc `--instui-spacing-space-md`. Ba theme được phát hành: `rebrand` (mặc định, với `light-dark()` nơi light và dark khác nhau), `canvas`, và `canvasHighContrast`. Biểu tượng là token `<image>` (`--instui-icon-<name>`) được suy ra từ Lucide cộng với glyph tùy chỉnh của Instructure.
+Token là các thuộc tính tuỳ chỉnh CSS có tên `--instui-<group>-<name>`, ví dụ `--instui-color-background-brand` hoặc `--instui-spacing-space-md`. Ba theme được phát hành: `rebrand` (mặc định, với `light-dark()` nơi sáng và tối khác nhau), `canvas`, và `canvasHighContrast`. Biểu tượng là token `<image>` (`--instui-icon-<name>`) được tạo từ Lucide cộng với các glyph tùy chỉnh của Instructure.
 
 ## Tạo kiểu cho ứng dụng web
 
-Cài stylesheet và import một lần. Nó định nghĩa mọi thuộc tính `--instui-*`, nên tham chiếu trực tiếp từ CSS của bạn.
+Cài stylesheet và import một lần. Nó định nghĩa mọi thuộc tính `--instui-*`, nên bạn tham chiếu trực tiếp từ CSS của mình.
 
 ```sh
 npm i @pantoken/css
@@ -63,7 +63,7 @@ import "@pantoken/web-components";
 
 ### Token CSS
 
-Biểu tượng là thuộc tính tùy chỉnh CSS (`--instui-icon-<name>`). Tải stylesheet một lần và tham chiếu bất kỳ biểu tượng nào như `mask-image` hoặc `background-image` — không cần import từng biểu tượng.
+Biểu tượng là các thuộc tính tuỳ chỉnh CSS (`--instui-icon-<name>`). Tải stylesheet một lần và tham chiếu bất kỳ biểu tượng nào như `mask-image` hoặc `background-image` — không cần import từng biểu tượng.
 
 ```css
 .my-icon {
@@ -71,9 +71,9 @@ Biểu tượng là thuộc tính tùy chỉnh CSS (`--instui-icon-<name>`). T�
 }
 ```
 
-### JavaScript — biểu tượng đơn lẻ vs bộ đầy đủ
+### JavaScript — một biểu tượng đơn lẻ so với toàn bộ tập
 
-`@pantoken/icons` cung cấp hai export đặt tên. Dùng `iconsByName` để lấy một biểu tượng mà không cần lặp toàn bộ mảng:
+`@pantoken/icons` cung cấp hai export được đặt tên. Dùng `iconsByName` để lấy một biểu tượng mà không cần lặp toàn bộ mảng:
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -93,19 +93,19 @@ icons.filter((i) => i.source === "lucide");
 
 Cả hai export đều tải toàn bộ IR khi module khởi tạo — không có tree-shaking theo biểu tượng ở cấp này. Để tải nhẹ chỉ bằng CSS, dùng [CDN picker](/guide/cdn-picker) để tạo URL kết hợp chỉ cho các biểu tượng bạn cần.
 
-## Tạo cho nền tảng gốc
+## Sinh cho nền tảng native
 
-CLI ghi nguồn token vào repo đích. Không cần cài gì thêm ngoài runner:
+CLI ghi nguồn token vào repo đích. Không cần cài thêm ngoài runner:
 
 ```sh
 npx @pantoken/cli generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-Xem [the pantoken CLI](/guide/cli) cho mọi đích.
+Xem [the pantoken CLI](/guide/cli) cho mọi mục tiêu.
 
-## Mẹo soạn thảo VS Code
+## Gợi ý soạn thảo VS Code
 
-`@pantoken/pantoken` hiện cung cấp file custom-data VS Code để dự án downstream có thể nhận gợi ý class và token trong HTML/CSS mà không cần cài extension riêng cho pantoken.
+`@pantoken/pantoken` hiện đi kèm file custom-data cho VS Code để dự án hạ nguồn có thể nhận hoàn thiện class và token trong HTML/CSS mà không cần cài extension riêng cho pantoken.
 
 1. Cài gói hợp nhất:
 
@@ -113,7 +113,7 @@ Xem [the pantoken CLI](/guide/cli) cho mọi đích.
 npm i @pantoken/pantoken
 ```
 
-1. Trỏ VS Code tới JSON custom-data được phát hành từ workspace người dùng:
+1. Chỉ VS Code vào file custom-data JSON đã đóng gói từ workspace người dùng:
 
 ```json
 {
@@ -122,13 +122,13 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. Reload VS Code (hoặc chạy "Developer: Reload Window") để áp dụng dữ liệu mới.
+1. Tải lại VS Code (hoặc chạy "Developer: Reload Window") để áp dụng dữ liệu mới.
 
-Điều này bật gợi ý cho token class `instui-*` (và token class `-modifier`) cùng với thuộc tính tùy chỉnh `--instui-*`.
+Điều này kích hoạt gợi ý cho token class `instui-*` (và token class `-modifier`) cùng với thuộc tính tuỳ chỉnh `--instui-*`.
 
-## Tiếp theo ở đâu
+## Tiếp theo đến đâu
 
-- [Bản đồ gói](/api/) — nên dùng gói nào cho nhiệm vụ.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — cài tài sản và quy tắc agent trong repo consumer.
-- [Kiến trúc](/guide/architecture) — cách mô hình token, core, và outputs kết hợp với nhau.
-- [Tham chiếu API](/api/) — mọi symbol được xuất, sinh từ nguồn.
+- [Bản đồ gói](/api/) — gói nào nên dùng cho nhiệm vụ nào.
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — cài tài sản agent và quy tắc vào repo người dùng.
+- [Kiến trúc](/guide/architecture) — cách mô hình token, core, và các đầu ra kết hợp với nhau.
+- [Tài liệu API](/api/) — mọi symbol được xuất, sinh từ mã nguồn.

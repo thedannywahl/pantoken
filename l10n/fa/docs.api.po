@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 06:20+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2753,19 +2753,19 @@ msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) `AGENTS.md`, `llms.txt` و\
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins)."
-msgstr "Optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins)."
+msgstr "تبدیل‌های اختیاری که خروجی توکن یا CSS را گسترش می‌دهند. مراجعه کنید به [Plugins](/guide/plugins)."
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are\nself-contained, so we document them here and some ship to npm on their own."
-msgstr "Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are\nself-contained, so we document them here and some ship to npm on their own."
+msgstr "زیرساخت ساخت، مستندات و دموی خودِ مونورپو. بیشتر آن داخلی است، اما قطعات \nمستقل هستند، بنابراین آن‌ها را اینجا مستندسازی می‌کنیم و برخی به‌صورت جداگانه به npm ارسال می‌شوند."
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API\npage; the others do."
-msgstr "`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API\npage; the others do."
+msgstr "`@pantoken/validate-generated` یک اسکریپتِ تک‌بار اجرا است (فراخوانی شده توسط `pnpm run ready`)، بنابراین صفحهٔ API\n ندارد؛ سایرین دارند."
 
 #: index.md
 #, fuzzy, no-c-format
@@ -2777,13 +2777,13 @@ msgstr "`@pantoken/ai` — دارایی‌های عامل سمت مصرف‌کن
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
-msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
+msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) نصب می‌کند `AGENTS.md`، `llms.txt`، و\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code)) را در یک مخزن مصرف‌کننده."
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Plugins we author for the tools we build with, grouped by host. They're standalone and publishable."
-msgstr "Plugins we author for the tools we build with, grouped by host. They're standalone and publishable."
+msgstr "پلاگین‌هایی که برای ابزارهایی که با آن‌ها کار می‌کنیم می‌نویسیم، بر اساس میزبان گروه‌بندی شده‌اند. آن‌ها مستقل و قابل انتشار هستند."
 
 #: packages/cli/src/functions/parseArgs.md
 #, no-c-format
@@ -3699,7 +3699,7 @@ msgstr "فهرست پلاگین‌ها را به آن‌هایی که در `stag
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]"
-msgstr "readonly [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]"
+msgstr "فقط خواندنی [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]"
 
 #: packages/plugin-kit/src/functions/checkPlugins.md
 #, no-c-format
@@ -25390,3 +25390,691 @@ msgstr "یک دکمه شناور «نمایش تمام صفحه»، که هما�
 #~ msgctxt "docs.api:prose"
 #~ msgid "pantoken icon logo (reversed)."
 #~ msgstr "لوگوی آیکون pantoken (معکوس)."
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "محتوای دارایی و تابع نویسنده اکنون در `@pantoken/scaffold` قرار دارند (تا پایه‌ی scaffold\nflow بتواند آن‌ها را بدون وابستگی دایره‌ای) ارائه دهد؛ برای سازگاری با گذشته دوباره صادر شده‌اند)."
+
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "عامل هوش مصنوعی"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "محتوا اینجا."
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "اقدام"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  یک هشدار با رنگ پیش‌فرض "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " رنگ، و یک آیکون سفارشی.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  تبریک! شما از رنگ \"success\" استفاده می‌کنید.\n  "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "LH"
+msgstr "LH"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "AI"
+msgstr "AI"
+
+msgctxt "docs.api:prose"
+msgid "Dr. Nguyen Van Thoc"
+msgstr "دکتر Nguyen Van Thoc"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Miguel Sanchez"
+msgstr "Miguel Sanchez"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Miguel"
+msgstr "Miguel"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Sanchez"
+msgstr "Sanchez"
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "صندوق ورودی"
+
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "ویژگی جدید"
+
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "این یک بنر بنفش با یک نماد سفارشی است."
+
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "تایید"
+
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "لغو"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  این یک بنر به رنگ دریا با فاصله‌بندی فشرده است.\n"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "یک لینک با استایل روی سطح پایه."
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "هنوز آیتمی وجود ندارد"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "برای شروع، اولین آیتم خود را ایجاد کنید."
+
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "خانه"
+
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "راهنماها"
+
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "کامپوننت‌ها"
+
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "مسیر ناوبری"
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "اصلی"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "ثانویه"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "چه خبر"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "شکل می‌تواند هر نوع عنصر بصری پیشرو باشد — یک آیکون، یک آواتار، یا یک تصویر."
+
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "مارس ۲۰۲۶"
+
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "یکشنبه"
+
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "دوشنبه"
+
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "سه‌شنبه"
+
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "چهارشنبه"
+
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "پنج‌شنبه"
+
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "جمعه"
+
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "شنبه"
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "عنوان کارت"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "بخش اول"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "بخش دوم"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "خطایی رخ داد."
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "یک نمای زمینه‌ای یک کال‌اوت را با یک پیکان قاب‌بندی می‌کند. به‌عنوان یک پاپ‌آور، در لایهٔ بالایی قرار می‌گیرد و وقتی در خارج کلیک می‌کنید یا کلید Esc را فشار می‌دهید بسته می‌شود."
+
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "محتوای سینی"
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "ناوبری"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "محتوای اصلی"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "ماژول‌ها"
+
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "یک تصویر را اینجا بکشید"
+
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", یا برای مرور کلیک کنید."
+
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG یا JPG تا 5&nbsp;MB."
+
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "آدرس ارسال"
+
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "نام"
+
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "نام خانوادگی"
+
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "شهر"
+
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "استان"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "تمامی فیلدها فقط برای تحویل استفاده می‌شوند."
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "ما هرگز آن را به اشتراک نخواهیم گذاشت."
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "یک آدرس ایمیل معتبر وارد کنید."
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "آدرس ایمیل"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "یک"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "دو"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "عنوان h1"
+
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "بدون عنوان"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "یک لینک با استایل"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "آیتم اول"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "آیتم دوم"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "آیتم سوم"
+
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "عملیات"
+
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "ویرایش"
+
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "تکثیر"
+
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "حذف"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "کاربران فعال"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "کوچک"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — یک مودال باریک."
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "بستن"
+
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "منتشر شده"
+
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "در بررسی"
+
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "منقضی"
+
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "مسدود شده"
+
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "اشتراک‌گذاری این صفحه"
+
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "یک پاپ‌اور یک سطح سبک‌وزن است که به یک ماشه متصل می‌شود. این یکی از "
+
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr " ویژگی بومی."
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "جعبهٔ نقاشی‌شدهٔ ابتدایی."
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  در حال بارگذاری سند: "
+
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "امتیاز"
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "فضای استفاده‌شده"
+
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "یادداشت‌های انتشار"
+
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "متن بدنه همراه با "
+
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "لینک"
+
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "سایز تی‌شرت"
+
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " کوچک"
+
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " متوسط"
+
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " بزرگ"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " گزینه A"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "در نقطهٔ شکست کوچک یا پایین‌تر مخفی است."
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "فقط در نقطهٔ شکست کوچک یا بالاتر نمایش داده می‌شود."
+
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "مثال"
+
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "در یک پنجرهٔ جدید باز می‌شود"
+
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "تقویم"
+
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "تنظیمات"
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "یک میوه را انتخاب کنید…"
+
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "سیب"
+
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "پرتقال"
+
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "گلابی"
+
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "جعبه‌ای دارای پد و حاشیهٔ بالایی بزرگ."
+
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "همیشه در بالا."
+
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "فیلم‌های برتر"
+
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "رتبه"
+
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "عنوان"
+
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "سال"
+
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "امتیاز"
+
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "رستگاری در شاوشنک"
+
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "پدرخوانده"
+
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "پدرخوانده: قسمت دوم"
+
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "نمای کلی"
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "جزئیات"
+
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "غیرفعال"
+
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "تاریخچه"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "محتوای تب نمای کلی در اینجا نمایش داده می‌شود."
+
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "کوچک"
+
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "متن بسیار کوچک"
+
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "متن کوچک"
+
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "متن نقل‌شده"
+
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "متن برجستهٔ هوش مصنوعی"
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "این بسته چه چیزهایی را شامل می‌شود؟"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  استایل‌های مؤلفه مبتنی بر کلاس، ساخته‌شده از توکن‌های Instructure، به‌علاوه یک لایهٔ نثری.\n"
+
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "تنظیمات پیشرفته"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "این گزینه‌ها وقتی گروه باز می‌شود نشان داده می‌شوند. سطر سربرگ دارای یک علامت مثلثی (chevron) است که هنگام باز شدن می‌چرخد، و محتوا زیر یک جداکننده قرار دارد."
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "قرارگیری پیش‌فرض در بالا است"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "محتوای انیمیشنی"
+
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "فیلترها"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "یک پنل از لبهٔ شروع وارد می‌شود و ارتفاع نما (viewport) را پر می‌کند."
+
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "نمایش/پنهان‌سازی پنل"
+
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " فایل‌های دوره"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " Syllabus.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " هفته ۱"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " Reading.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " Slides.pptx"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " Rubric.docx"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "متن به‌طور پیش‌فرض به یک خط محدود شده و با سه‌نقطه پایان می‌یابد."
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "این متن به سه خط محدود شده و با سه‌نقطه پایان می‌یابد."
+
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  سطحی شبیه کارت.\n"
+
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "فرزند با طرح حاشیه‌ای."
+
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "تغییرات شما ذخیره شد."
+
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "یک اعلان مسطح و درون‌خطی."
+
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "ذخیره تغییرات"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "اطلاعات بیشتر دربارهٔ این مورد."
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "تغییر وضعیت پنل"
+
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "پروفایل"
+
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "حذف…"
+
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "این مورد را حذف کنید?"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "اول "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "بعدی"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "دوم "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "قبلی"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "فعال"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "گزینه‌ها"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "داشبورد"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "دوره‌ها"
+
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "طراحی"
+
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "نشانه‌گذاری‌شده"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "ماوس را روی من ببرید"
+
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "منو"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "یک توضیح طولانی که به دو خط محدود خواهد شد…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

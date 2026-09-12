@@ -9,14 +9,11 @@ hero:
       text: Aloittaminen
       link: /fi/guide/getting-started
     - theme: alt
-      text: Pakettikartta
-      link: /fi/api/
+      text: CSS-viite
+      link: /fi/api/css/
     - theme: alt
       text: API-viite
       link: /fi/api
-    - theme: alt
-      text: CSS-viite
-      link: /fi/api/css/
 features:
   - icon:
       light: /book-check-light.svg

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 00:25+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2759,13 +2759,13 @@ msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) տեղադրում է `AGEN
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are\nself-contained, so we document them here and some ship to npm on their own."
-msgstr "Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are\nself-contained, so we document them here and some ship to npm on their own."
+msgstr "Մոնոռեպոյի համար կառուցման, փաստաթղթերի և ցուցադրական ենթակառուցվածք։ Շատ մասը ներքին է, բայց բաղադրիչները \nանկախ են, ուստի մենք դրանք փաստագրում ենք այստեղ, և որոշները ինքնուրույն հրապարակվում են npm-ում։"
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API\npage; the others do."
-msgstr "`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API\npage; the others do."
+msgstr "`@pantoken/validate-generated` տեղադրված է մեկ անգամ 실행վող սցենար (կոչվում է `pnpm run ready`)), այդ իսկ պատճառով դրա API\nէջը չկա; մյուսները ունեն։"
 
 #: index.md
 #, fuzzy, no-c-format
@@ -2777,13 +2777,13 @@ msgstr "`@pantoken/ai` — սպառողի կողմից նայված գործակ
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
-msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
+msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) տեղադրում է `AGENTS.md`, `llms.txt`, և\n\tassistant/editor կանոնները (Cursor, Copilot, Windsurf, Claude Code)) սպառողի ռեպոզիտորի մեջ։"
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Plugins we author for the tools we build with, grouped by host. They're standalone and publishable."
-msgstr "Plugins we author for the tools we build with, grouped by host. They're standalone and publishable."
+msgstr "Պլագիններ, որոնք մենք գրանցում ենք այն գործիքների համար, որոնցով կառուցում ենք, խմբավորված ըստ հոստերի։ Դրանք ինքնուրույն են և կարող են հրապարակվել։"
 
 #: packages/cli/src/functions/parseArgs.md
 #, no-c-format
@@ -22135,3 +22135,691 @@ msgstr "Շարժական «դիտել ամբողջ էկրանում» կոճակ
 #~ msgctxt "docs.api:prose"
 #~ msgid "pantoken icon logo (reversed)."
 #~ msgstr "pantoken պատկերակի լոգո (հակադարձ)."
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "Ռեսուրսի բովանդակությունը և գրողի ֆունկցիան այժմ գտնվում են `@pantoken/scaffold` (որպեսզի հիմնական scaffold\nflow-ը կարողանա դրանք առաջարկել առանց շրջանաձև կախվածության); այստեղ կրկնա-արտահանվում է հետհամատեղելիության համար."
+
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "ԱԻ գործակալ"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "Բովանդակություն այստեղ."
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "Գործողություն"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  Ստանդարտ "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " գույն, և հարմարեցված պատկերակ.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  Շնորհավոր! Դուք օգտագործում եք \"success\" գույնը.\n  "
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "LH"
+msgstr "LH"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "AI"
+msgstr "AI"
+
+msgctxt "docs.api:prose"
+msgid "Dr. Nguyen Van Thoc"
+msgstr "Դոկտ. Նգույեն Վան Թոկ"
+
+msgctxt "docs.api:prose"
+msgid "Miguel Sanchez"
+msgstr "Միգել Սանչես"
+
+msgctxt "docs.api:prose"
+msgid "Miguel"
+msgstr "Միգել"
+
+msgctxt "docs.api:prose"
+msgid "Sanchez"
+msgstr "Սանչես"
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "Ներարկղ"
+
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "Նոր հնարավորություն"
+
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "Սա մանուշակագույն պաստառ է՝ հատուկ պատկերակով."
+
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "Լավ"
+
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "Չեղարկել"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  Սա ծովի գույնի պաստառ է՝ կոմպակտ տարածքով.\n"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "Ստիլացված հղում հիմնական մակերեսի վրա."
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "Առայ.Results:ժմ ոչ մի տարր չկա"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "Սկզբի համար ստեղծեք ձեր առաջին տարրը։"
+
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "Գլխավոր"
+
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "Ճանապարհորդական ուղեցույցներ"
+
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "Բաղադրիչներ"
+
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "Նավիգացիա"
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "Հիմնական"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "Երկրորդային"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "Ինչ նոր կա"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "Ֆիգուրը կարող է լինել ցանկացած գլխավոր վիզուալ — պատկերակ, ավատար կամ նկար։"
+
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "Մարտ 2026"
+
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "Կիրակի"
+
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "Երկուշաբթի"
+
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "Երեքշաբթի"
+
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "Չորեքշաբթի"
+
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "Հինգշաբթի"
+
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "Ուրբաթ"
+
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "Շաբաթ"
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "Քարտի վերնագիր"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "Առաջին բաժին"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "Երկրորդ բաժին"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "Ինչ-որ բան սխալ է պատահել."
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "Համատեքստային դիտումը շրջանակում է caret-ով նշված callout-ը։ Որպես popover՝ այն գտնվում է վերին շերտում և փակվում է, երբ սեղմում եք այլ ուրույն տեղ կամ նաև երբ սեղմում եք Esc։"
+
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "Տրեյի բովանդակություն"
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "Նավիգացիա"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "Հիմնական բովանդակություն"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "Մոդուլներ"
+
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "Խցկեք պատկերը այստեղ"
+
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", կամ սեղմեք՝ զննելու համար."
+
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG կամ JPG մինչև 5&nbsp;MB."
+
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "Առաքման հասցե"
+
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "Անուն"
+
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "Ազգանուն"
+
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "Քաղաք"
+
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "Մարզ"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "Բոլոր դաշտերը օգտագործվում են միայն առաքման համար."
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "Մենք երբեք այն չենք կիսի։"
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "Մուտքագրեք վավեր էլփոստի հասցե։"
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "Էլեկտրոնային փոստի հասցե"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "Մեկ"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "Երկու"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "Վերնագիր h1"
+
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "Անվերնագր"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "Ստիլացված հղում"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "Առաջին տարր"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "Երկրորդ տարր"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "Երրորդ տարր"
+
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "Գործողություններ"
+
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "Խմբագրել"
+
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "Պատճենել"
+
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "Ջնջել"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "Ակտիվ օգտվողներ"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "Փոքր"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — նեղ մոդալ."
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "Փակել"
+
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "Հրապարակված"
+
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "Սևագիր"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "Վերանայման մեջ"
+
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "Հնացած"
+
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "Արգելափակված"
+
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "Կիսել այս էջը"
+
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "Popover-ը թեթև մակերես է, որը ամրացված է trigger-ին։ Այս մեկը օգտագործում է բնիկ "
+
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr "ատրիբուտը."
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "Պրիմիտիվ կերպով ներկված տուփ."
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  Վերբեռնվում է փաստաթուղթ: "
+
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "Միավոր"
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "Օգտագործված պահեստ"
+
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "Թողարկման նշումներ"
+
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "Բովանդակության տեքստը ` "
+
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "հղում"
+
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "Տ-շապիկի չափս"
+
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " Փոքր"
+
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " Միջին"
+
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " Մեծ"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " Ընտրանք A"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "Թաքնված է փոքր ընդհատման կետում կամ այն կամ դրա տակ։"
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "Ցուցադրվում է միայն փոքր ընդհատման կետում կամ նրանից վեր։"
+
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "օրինակ"
+
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "Բացվում է նոր պատուհանում"
+
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "Օրացույց"
+
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "Պարամետրեր"
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "Ընտրեք մի մրգ…"
+
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "Խնձոր"
+
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "Նարինջ"
+
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "Տանձ"
+
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "Տուփ՝ padding-ով և մեծ top margin-ով."
+
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "Միշտ վերևում."
+
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "Ամենաբարձր գնահատված ֆիլմեր"
+
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "Դասակարգում"
+
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "Վերնագիր"
+
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "Տարի"
+
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "Գնահատական"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "The Shawshank Redemption"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "The Godfather"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "The Godfather: Part II"
+
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "Ամփոփում"
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "Մանրամասներ"
+
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "Անջատված"
+
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "Պատմություն"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "«Ամփոփում» ներդիրի պարունակությունը ցուցադրվում է այստեղ."
+
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "փոքր"
+
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "Էքս-փոքր տեքստ"
+
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "Փոքր տեքստ"
+
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "Մեջբերված տեքստ"
+
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "Արհեստական բանականության ընդգծված տեքստ"
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "Այս փաթեթում ինչ է ներառված?"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  Դասերով հիմնված կոմպոնենտների ոճեր, կառուցված Instructure տոկեններից, և հավելյալ տեքստային շերտ.\n"
+
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "Ընդլայնված կարգավորումներ"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "Այս ընտրանքները հայտնվում են, երբ խումբը բացվում է. Վերնագրի տողը ունի շևրոն, որը պտտվում է բացելիս, և բովանդակությունը գտնվում է բաժանարարի տակ."
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "Նախնական տեղակայումը վեր է"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "Անիմացված բովանդակություն"
+
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "Ֆիլտրեր"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "Տրեյը սահում է սկսման եզրից և լցնում է դիտման պատուհանի ամբողջ բարձրությունը."
+
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "ցուցադրել/թաքցնել տրեյը"
+
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " Դասընթացի ֆայլեր"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " Syllabus.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " Շաբաթ 1"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " Reading.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " Slides.pptx"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " Rubric.docx"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "Այս տեքստը ըստ կանխադրվածի սահմանափակված է մեկ տողով և ավարտվում է եռակետով."
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "Այս տեքստը սահմանափակված է երեք տողով և ավարտվում է եռակետով."
+
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  Քարտի նման մակերես.\n"
+
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "Գծապատված երեխա."
+
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "Ձեր փոփոխությունները պահպանվել են."
+
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "Հարթ, տողային ծանուցում."
+
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "Պահպանել փոփոխությունները"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "Ավելին այս տարրի մասին։"
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "Փոխել վահանակը"
+
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "Պրոֆիլ"
+
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "Ջնջել…"
+
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "Այս տարրը ջնջե՞լ?"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "Առաջին "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "Հաջորդ"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "Երկրորդ "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "Վերադառնալ"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "Ակտիվ"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "Ընտրանքներ"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "Վահանակ"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "Դասընթացներ"
+
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "Դիզայն"
+
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "Նշված"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "Կուրսորը դրեք իմ վրա"
+
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "Մենյու"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "Մեկ երկար նկարագրություն, որը կսահմանափակվի երկու տողով…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

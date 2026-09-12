@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 09:23+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2777,7 +2777,7 @@ msgstr "`@pantoken/ai` — asedau asiantaeth sy’n wynebu defnyddwyr ar gyfer p
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
-msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
+msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) yn gosod `AGENTS.md`, `llms.txt`, a\n\t­rheolau cynorthwyydd/golygydd (Cursor, Copilot, Windsurf, Claude Code)) mewn repo defnyddiwr."
 
 #: index.md
 #, no-c-format
@@ -3019,7 +3019,7 @@ msgstr "Mapio pob tocyn eicon i'w SVG wedi'i ddatgodi (gan ddefnyddio'r enw heb 
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`Token`](../interfaces/Token.md)[]"
-msgstr "readonly [`Token`](../interfaces/Token.md)[]"
+msgstr "darllen yn unig [`Token`](../interfaces/Token.md)[]"
 
 #: packages/core/src/functions/isContextual.md
 #, no-c-format
@@ -25390,3 +25390,666 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 #~ msgctxt "docs.api:prose"
 #~ msgid "pantoken icon logo (reversed)."
 #~ msgstr "logo eicon pantoken (wedi'i wrthdroi)."
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "Mae cynnwys ased a swyddogaeth y llenyddwr bellach yn byw yn `@pantoken/scaffold` (felly gall y sgalffold sylfaenol\nflow eu cynnig heb ddibyniaeth gylchol); ail-allforiwyd yma er mwyn cadw cydnawsedd yn ôl."
+
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "Asiant Deallusrwydd Artiffisial"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "Cynnwys yma."
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "Gweithred"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  Rhybudd gyda'r diofyn "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " lliw, a eicon wedi'i addasu.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  Llongyfarchiadau! Rydych chi'n defnyddio'r \"success\" lliw.\n  "
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "Blwch Derbyn"
+
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "Nodwedd newydd"
+
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "Mae hwn yn faner fioled gyda eicon wedi'i haddasu."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "Canslo"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  Mae hwn yn faner lliw y môr gyda bylchau cywasgedig.\n"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "Cyswllt wedi'i arddullio ar arwyneb sylfaenol."
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "Dim eitemau eto"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "Creu eich eitem gyntaf i ddechrau."
+
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "Hafan"
+
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "Canllawiau"
+
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "Cydrannau"
+
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "Llwybr bara"
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "Prif"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "Eilaidd"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "Beth sy'n newydd"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "Gall y ffigur fod yn unrhyw delwedd arweiniol — eicon, avatâr, neu ddelwedd."
+
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "Mawrth 2026"
+
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "Sul"
+
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "Llun"
+
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "Mawrth"
+
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "Mercher"
+
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "Iau"
+
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "Gwener"
+
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "Sadwrn"
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "Teitl cerdyn"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "Adran gyntaf"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "Ail adran"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "Aeth rhywbeth o'i le."
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "Mae golwg gyd-destun yn fframio blwch galwad gyda 'caret'. Fel popover mae'n eistedd ar y haen uchaf ac mae'n cau pan gliciwch i ffwrdd neu pan wasgwch Esc."
+
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "Cynnwys y tray"
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "Llywio"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "Prif gynnwys"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "Modiwlau"
+
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "Llusgo delwedd yma"
+
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", neu cliciwch i bori."
+
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG neu JPG hyd at 5&nbsp;MB."
+
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "Cyfeiriad anfon"
+
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "Enw cyntaf"
+
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "Cyfenw"
+
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "Dinas"
+
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "Talaith"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "Defnyddir pob maes at ddibenion danfon yn unig."
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "Ni fyddwn byth yn ei rannu."
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "Rhowch gyfeiriad e-bost dilys."
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "Cyfeiriad e-bost"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "Un"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "Dau"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "Pennawd h1"
+
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "Heb deitl"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "Cyswllt wedi'i steilio"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "Eitem gyntaf"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "Eitem yn ail"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "Eitem trydydd"
+
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "Gweithredoedd"
+
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "Golygu"
+
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "Dyblygu"
+
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "Dileu"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "Defnyddwyr gweithredol"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "Bach"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — deialog modal cul."
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "Cau"
+
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "Cyhoeddwyd"
+
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "Drafft"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "Mewn adolygiad"
+
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "Heb ei ddiweddaru"
+
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "Wedi'i rhwystro"
+
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "Rhannwch y dudalen hon"
+
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "Mae popover yn arwyneb ysgafn sy'n glymu i sbardun. Mae hwn yn defnyddio'r nodwedd frodorol "
+
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr " priodoledd."
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "Bocs wedi'i baentio'n syml."
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  Llwytho Dogfen: "
+
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "Sgôr"
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "Storfa a ddefnyddir"
+
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "Nodiadau rhyddhau"
+
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "Testun y corff gyda "
+
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "cyswllt"
+
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "Maint T-shirt"
+
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " Bach"
+
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " Canolig"
+
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " Mawr"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " Dewis A"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "Cuddiedig ar neu o dan y pwynt torri bach."
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "Yn cael ei ddangos yn unig ar neu uwchlaw'r pwynt torri bach."
+
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "enghraifft"
+
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "Yn agor mewn ffenestr newydd"
+
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "Calendr"
+
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "Gosodiadau"
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "Dewiswch ffrwyth…"
+
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "Afal"
+
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "Oren"
+
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "Pera"
+
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "Blwch wedi'i baddio gyda margîn uchaf mawr."
+
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "Bob amser ar y brig."
+
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "Ffilmiau â'r sgôr uchaf"
+
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "Safle"
+
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "Teitl"
+
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "Blwyddyn"
+
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "Sgôr"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "The Shawshank Redemption"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "The Godfather"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "The Godfather: Part II"
+
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "Trosolwg"
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "Manylion"
+
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "Anabl"
+
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "Hanes"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "Mae cynnwys y tab Trosolwg yn cael ei arddangos yma."
+
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "bach"
+
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "testun x-fach"
+
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "testun bach"
+
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "Testun dyfynedig"
+
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "Testun amlygu AI"
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "Beth sy'n cael ei gynnwys yn y pecyn hwn?"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  Steiliau cydrannau seiliedig ar ddosbarth, wedi'u hadeiladu o'r tocynnau Instructure, yn ogystal ag haen o destun.\n"
+
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "Gosodiadau Uwch"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "Mae'r opsiynau hyn yn cael eu datgelu pan fydd y grŵp yn cael ei ehangu. Mae'r rhes pennawd yn cario chevron sy'n troi pan fydd yn agor, ac mae'r cynnwys yn eistedd o dan rhannwr."
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "Mae'r lleoliad diofyn ar y brig"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "Cynnwys animeiddiedig"
+
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "Hidlyddion"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "Mae tray yn llithro i mewn o'r ymyl cychwyn ac yn llenwi uchder y ffenestr olygfa."
+
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "toglo tray"
+
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " Ffeiliau'r cwrs"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " Syllabus.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " Wythnos 1"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " Reading.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " Slides.pptx"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " Rubric.docx"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "Mae'r testun hwn yn cael ei gyfyngu i un llinell yn ddiofyn ac yn gorffen mewn ellips."
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "Mae'r testun hwn yn cael ei gyfyngu i dri llinell ac yn gorffen mewn ellips."
+
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  Arwyneb tebyg i gerdyn.\n"
+
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "Plentyn wedi'i amlinellu."
+
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "Mae eich newidiadau wedi'u cadw."
+
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "Hysbysiad syml, mewnlin."
+
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "Cadw newidiadau"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "Mwy am y eitem hon."
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "Toglo'r panel"
+
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "Proffil"
+
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "Dileu…"
+
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "Dileu'r eitem hon?"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "Cyntaf "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "Nesaf"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "Ail "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "Yn ôl"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "Gweithredol"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "Dewisiadau"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "Dangosfwrdd"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "Cyrsiau"
+
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "Dylunio"
+
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "Wedi'i farcio"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "Symudwch y cyrchwr drosof i"
+
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "Dewislen"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "Disgrifiad hir a gaiff ei glipio i ddwy linell…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

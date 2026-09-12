@@ -1,31 +1,31 @@
-# Komponenttat
+# Komponentat
 
-`@pantoken/components` gaskkahusa class-básejuvvon komponentta stilat čuojahit Instructure-tokenaid. Importera
-stylesheeta ja tagga markuppa — ii gal boares frameworka.
+`@pantoken/components` šaddá klassa-bargga komponentta stilmusaid mat leat bargguid Instructure tokenbargguid gaskkas. Importere
+styleheet ja merkka markuppan — ain dohko framværdnje.
 
 ```ts
 import "@pantoken/components/components.css";
 ```
 
 > [!NOTE]
-> Dohkkehuvvat ieža elementaid? `@pantoken/web-components` válddeha eanet sama styledat `<instui-button>`,
-> `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, ja muit — geažil
-> [package map](/api/).
+> Preferere guovddáš elementtat? `@pantoken/web-components` válddeheap dasa sama stilmusaid `<instui-button>`,
+> `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, ja máŋga mas —
+> iegodat [package map](/api/).
 
-## Konventšuvnnat
+## Konventuvnnat
 
-CSS-konventšuvnnat sis dohkkeheapkárat ovttastuvvon veršuvnna [RSCSS](https://ricostacruz.com/rscss/index.html) maid leat modifearet.
+CSS-konventuvnnat dál paketii leat basedat muhtun veršuvnna [RSCSS](https://ricostacruz.com/rscss/index.html) dohkorvuhtii.
 
-Modifiserar leat **vuođđa-válgá** — `-<prop>-<val>`, InstUI-prop-nammai aligned — de sii leat čállan
-dáid: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Boolean-proppat leat prop
-nammagiin iežas, mii geahččii `true` (`-has-shadow`, `-clickable`); dat default-on boolean mii lea mátkabeaivvi
-vuođđudit (`-without-background`, `-without-border`). Suoddjit barggá båddodettiin ja olmmoš čuovgga
-(`-size-sm` = `-size-small`). Gos namma aldeha InstUI-dieđuid, InstUI-semantihkka class sáhttá deagu
-muhto leat deprekeárvuohta (muhto. `-variant-info` → käytte `-color-info`).
+Modifisera leat **avddas-čájá** — `-<prop>-<val>`, InstUI prop-nammasiid gilvvos — dak galget sáhttit čállit dahkat:
+`-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Boolean-propaat leat prop
+namma iežamet, mii gal dáhpáhusa lea `true` (`-has-shadow`, `-clickable`); default-on boolean mii lea váikkuhit
+inverta `-without-background`, `-without-border`. Suoidniid válddehat ovttas hui lágidan muhtun skrivvuid
+(`-size-sm` = `-size-small`). Gos nama maid háliida InstUI-st, InstUI-semantihkka klassa lea maŋemus ja
+deprekahttasahttá (dat. `-variant-info` → geavaha `-color-info`).
 
-### Dálažis
+### Dádjá
 
-Instructure UI React komponentta:
+Instructure UI React komponenta:
 
 ```jsx
 <Alert variant="success" transition="fade" hasShadow renderCustomIcon={megaphone}>
@@ -33,7 +33,7 @@ Instructure UI React komponentta:
 </Alert>
 ```
 
-pantoken komponenttat:
+pantoken komponentat:
 
 ```html
 <!-- direct instui props -->
@@ -51,12 +51,11 @@ pantoken komponenttat:
 </div>
 ```
 
-InstUI:s `timeout` prop:s, setta unitless `--timeout` custom-prop millisekunddasa ja loada
-Alert-interakšuvnna. Positiiva værdde suunná dismissála; `0` (default) de dávjá alertta
-ána. Addta `transition` utilitiid `instui-transition -fade-entered` classaid InstUI:s fade‑guin; oalle
-dátteheamis gávdnat. Interakšuvnna juoiggá `-fade-exiting` stáhta ja gaskká cancelerbar,
-bubbluv `dismiss` event mii oahppot muhtumin, de app sáhtea guovtti `preventDefault()` viežžat
-alertta muitala.
+InstUI `timeout` proppa, setta unitless `--timeout` muhtun proprietta millisekundas ja loada
+Alert-interakšuvnna. Positiiva vērdni schedulereh dahkat; `0` (default) leat alertta ruoktas. Adda `transition`
+utilihttas `instui-transition -fade-entered` klassaid InstUI fade-dál; ovttas dihte dahkát nu ahte snahtta. Interakšuvdna ohjjá `-fade-exiting`
+státusa ja geavaha cancellable, bubblin `dismiss` event mii válddehahttá, dat app sáhte čájehit `preventDefault()` mainnit
+alertta mount-tuvvon.
 
 ```html
 <link
@@ -73,15 +72,14 @@ alertta muitala.
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/alert.iife.js"></script>
 ```
 
-Progress-barrat acceptera arbitraarana skálas dál `--min` (`0` default), `--value`, ja `--max`
-(`100` default), deprekeárvuohta `--value-now` ja `--value-max` aliassat. Addta `-should-animate`
-máilbmuid aplikere InstUI:s beasse-sekundda transition gos värddii muuttá. `.value` sáhttá leat `.bar` bálvalusas
-root:na; addta `-render-value-inside` classa sii galgá renderera olggobeal track:in, alignerad start:iin,
-istamin (stilta dasa legibility meter color:in). Käytä native `<progress>` nugo
-zero-pohjainen range ja `<meter>` gos minimuma lea eará-juokseva; web-komponentat valmáhvuođat daid
-automatiskt dalle `min` attributta. InstUI:dal lea ii indeterminate státus, nupp `<progress>`
-mii eai lea `value` attributta sáhttá leat pantoken-only best guess: `progress-bar` animere `.bar` nugo
-sliding segment ja `progress-circle` rávvese ringa fixed arc:s, buot hidde `.value`.
+Progress-barrat válddehat arbitrary skaalat `--min` (`0` by default), `--value`, ja `--max`
+(`100` by default), deprekahtta `--value-now` ja `--value-max` aliášaid. Adda `-should-animate`
+maŋit InstUI'n ovtta-sekunda transition gos vērdni muhtii. `.value` leat `.bar` mellett juohke
+rootin eanet; add `-render-value-inside` maŋit dan renderrá track'a dahje, muhto alignera start'a,
+insteaddá (stylit geavahusat legibility maŋit meter color'a). Use nehterá `<progress>` sihkkar range ja `<meter>` gos minimum ii lea noll; web komponentat
+valii nuhtii dahje daid `min` attributta bargoheap automatihkalaš. InstUI'n ii leat indeterminate státus, dasgo `<progress>`
+mii leat without `value` attributta leat pantoken-dán maid njuolga dárkkadus: `progress-bar` animajá `.bar` sihkkar
+sliding segmenttas ja `progress-circle` spinna ruvnna fixed arc's, juovlla `.value`.
 
 ```html
 <label>
@@ -97,10 +95,11 @@ sliding segment ja `progress-circle` rávvese ringa fixed arc:s, buot hidde `.va
 </label>
 ```
 
-Progress-circles acceptera sama arbitraarana skálaid dál `--min`, `--value`, ja `--max`.
-`--value-now` ja `--value-max` gávdnidjá maid leat deprekeárvuohta functional aliassat. Addta `-should-animate` ja
-loada focused interaction-bundle dasa reproducejá InstUI:s mount‑animáša; `--animation-delay` lea unitless millisecond delay. Deprekeárvuohta `-should-animate-on-mount` ja
-`-shold-animate-on-mount` skrivvut leat funkšuvdnalaš aliassat.
+Progress-circlat válddehat sama arbitrary skaalat `--min`, `--value`, ja `--max`.
+`--value-now` ja `--value-max` leat deprekahttta funcional aliášaid. Adda `-should-animate` ja
+loada focused interaction bundle maŋit reproducerrá InstUI mount animation; `--animation-delay` lea
+unitless millisekundalaš delay. Deprekahttta `-should-animate-on-mount` ja
+`-shold-animate-on-mount` skrivvuid leat sihkkar funkcional aliášaid.
 
 ```html
 <label for="upload-progress">Uploading Document</label>
@@ -116,11 +115,11 @@ loada focused interaction-bundle dasa reproducejá InstUI:s mount‑animáša; `
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/progress-circle.iife.js"></script>
 ```
 
-## Class prefix
+## Klassen prefiks
 
-Buot class leat namespaced `instui-` defaultiid. Bovddá stylesheet ieža prefix:in — vai dahje ii — bohtet
-`prefix` mihkkár builder:iin. Buot falsy værddit (`null`, `undefined`, `""`, vai omitting)
-dáhpá prefix fárrui, nu ahte sáhtát autor `class="heading -level-h1"` statt `class="instui-heading -level-h1"`:
+Juokšuvat klassat leat namespace'd `instui-` by default. Bouwta stylesheet ovddasbargguid prefiksa — dahje ii — mainna
+passera `prefix` mii lohkat buot builder:s. Dušše falsy vērdni (`null`, `undefined`, `""`, dahje olmmošáiggi) rievdad
+prefiks mannat, dasgo sáhtát girjjit `class="heading -level-h1"` nu`class="instui-heading -level-h1"`:
 
 ```ts
 import { componentsCss } from "@pantoken/components";
@@ -129,48 +128,50 @@ componentsCss({ prefix: "ui" }); // .ui-button
 componentsCss({ prefix: null }); // .button, .alert — no prefix
 ```
 
-Dash-prefixed modifiserat (`.-color-secondary`, `.-level-h1`) leat eará dihtii maid. Stylesheetat mii fáidnehot paketii keepa `instui` prefixin.
+Dash-prefiksearvodat modifierat (`.-color-secondary`, `.-level-h1`) leat váldos ivdnodat olbmui. Styleheetat mii paketii šaddá `instui` prefiks.
 
-## Basih
+## Basša
 
-`base.css` lea opt‑in reset mii setta global document defaulta token:iid: `box-sizing`, `body` reset, page surface, base text color ja font, `color-scheme` (nu `light-dark()` token:at
-ja native controllat tracka thema), ja base link. Loada dasa go pantoken omistá sivu.
+`base.css` lea opt-in reset mii settaa global dokumenta defaults tokenbargguid gaskkas: `box-sizing`, `body` reset, page surface, bas text color ja font, `color-scheme` (dasgo `light-dark()` tokenat
+ja nehterá controllat lusa thema), ja basa link. Loada muhtin, vuođđi komponenta ja prose
+sheets, gos pantoken ovtta guovtti.
 
 ```ts
 import "@pantoken/components/base.css";
 import "@pantoken/components/components.css";
 ```
 
-Skippe da go dárkanat komponenttat embedda host:iin mii already theme:er ieža `html` ja `body` —
-reset olbmu vuođđuje page surface, niin don wanta ii beroha host:in. Buot maid mii setta uses
-low-specificity `:where()` selectors, niin ieža ruledat álggevuođa guovtti.
+Skiphea dan gos don embedda komponentat host'a mii already theme'a eanet `html` ja `body` —
+reset paint'a page surface, dasgo ii leat good dát host'iga. Buot mii settehaš beassat geavahit
+low-specificity `:where()` selector:a, dasgo dii eanet doarvái dutnje rules.
 
-`base.css` _applyi_ brand-font:in (`font-family: var(--instui-font-family-base)`, system
-fallbacks); për _loaddá_ dat, importera opt‑in `fonts.css` — `@font-face` rules Atkinson Hyperlegible
-Next:iin, mole davvis woff2s mii fáidnet paketis. Separate lea dasa maid faces lea ~350 kB ja
-self-hosting fonddat lea deliberate val.
+`base.css` _applera_ brand font'a (`font-family: var(--instui-font-family-base)`, system
+fallbacksa); da _load_ dii, importera opt-in `fonts.css` — `@font-face` rullegát Atkinson Hyperlegible
+Next, mat ovtta woff2s mii paketii. Dat leat eret go faces leat ~350 kB ja
+self-host font'a lea deliberate valgu.
 
 ```ts
 import "@pantoken/components/base.css"; // applies the font (falls back to system without fonts.css)
 import "@pantoken/components/fonts.css"; // loads the Atkinson Hyperlegible Next woff2s
 ```
 
-## Skírreadára obsah
+## Skermmearráš čuottalusat
 
-<p>Dat leat heaset gávnnat maŋemus dolgga. <span class="instui-screen-reader-content">Dasto doarvái skírreadárat geahččet dán.</span></p>
+<p>Dat leat nihtečajánus mas muhto dohkket. <span class="instui-screen-reader-content">Guktit skermmearrášit girjjit dan doarvái.</span></p>
 
 ```html
 <span class="instui-screen-reader-content">Only screen readers announce this.</span>
 ```
 
-`.instui-screen-reader-content` heitá elementta visuvnna muhto čállá dan accessibility-tree:iin
-— labelaid ja status text mii assistive tech galget čállit mutta design ii leat dasa.
+`.instui-screen-reader-content` hide'r elementa visuvnalaččat go dat čállá accessibility-risttaga
+— label'ide ja státusa text'ide mii assistive tech gal dohkkit muhto design ii leat dasa čállán.
 
-## Utilitat
+## Utilihttat
 
-`utilities.css` lea opt‑in layer cross-cutting classaid: `View` primitiv, spacing token-scale:in, ja semantihkka color overrides. Eará komponentta `-modifier` classaid, dacu dahká **double
-dash** (`--mod`) nu ahte ii barggut collide komponentta modifiseranammuid, ja sii applya buot
-elementta — bare vai komponenda luhtte.
+`utilities.css` lea opt-in layer cross-cutting klassaid: `View` primitive, spacing token
+skaalabargguid, ja semantic color overrides. Agu component `-modifier` klassaid, dii geavat **duvttin
+dash** (`--mod`) dasgo dii minnge sáhttet eai riššat komponenta modifier nammad, ja dii applera buot
+elementta — bare dahje komponennas composeerat.
 
 ```ts
 import "@pantoken/components/utilities.css";
@@ -188,31 +189,30 @@ import "@pantoken/components/utilities.css";
 <div class="instui-view --bg-muted --p-sm --mx-auto">…</div>
 ```
 
-**View** — `.instui-view` lea InstUI:s `View`. Dat lea base mii don layera spacing ja color lágidan, ja
-su livká key-value modifierat iežas visual-proppain niin don ii galggá geavahit utilitat:
-`-background-*` (su surface:at), `-border-radius-{small,medium,large,circle,pill}`,
+**View** — `.instui-view` lea InstUI'n `View`. Dat lea basša mii layerer spacing ja color pässi, ja
+bearra key-value modifieraid visuvnala propiid daide leat gullohusa dasgo utilihttat:
+`-background-*` (su surfaces), `-border-radius-{small,medium,large,circle,pill}`,
 `-border-width-{small,medium,large}` + `-border-color-*`, `-shadow-{resting,above,topmost}`,
-`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, ja `-cursor-*` — dakka leat `view`'s iežas
-single-dash modifiserat, eai leat geavahus double-dash utilitat:mii. Free-value prop:at
-(width/height/inset) leat inline-stylea; `margin`/`padding` geavahusa spacing-utilities.
+`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, ja `-cursor-*` — dii leat `view`'s
+own single-dash modifierat, man ii leat borran double-dash utilihttain. Free-value propaid
+(width/height/inset) leat inline styllas; `margin`/`padding` geavat spacing utilihttas.
 
-**Spacing** — per-side classaid spacing scale:is. Čállat daid nugo `{m|p}{side}-{step}`: `m` margin dahje `p` padding (vai dássán `margin`/`padding`), optional logical side, ja step. Nubb `.--m-lg` ja `.--margin-lg` leat sama, nuibbi `.--pt-md` ja `.--paddingt-md`.
+**Spacing** — per-side klassaid spacing skaala. Čállat daid nugo `{m|p}{side}-{step}`: `m` margin dahje `p` padding (dahje full
+sanaid `margin`/`padding`), optional logical side, nu vai step. Dasto `.--m-lg` ja `.--margin-lg` leat sama, nugo `.--pt-md` ja `.--paddingt-md`.
 
-- Sided: none (buot), `t`/`b` (block start/end), `s`/`e` (inline start/end), `x`/`y` (inline/block
-  axis). Logical sides stay correct right-to-left layouta.
-- Steps: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, ja `auto` margin:ain.
+- Sides: none (buot), `t`/`b` (block start/end), `s`/`e` (inline start/end), `x`/`y` (inline/block
+  axis). Logical sides boahtteheamis dálgeheap lihkosihttit giđđa-right-to-left layouts.
+- Steps: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, ja `auto` margin doarvái.
 
-Compose daid InstUI:s `margin="small auto large"` shorthand:
+Compose dakkajit InstUI `margin="small auto large"` shorthand:
 `class="--mt-sm --mx-auto --mb-lg"`.
 
-**Color** — semantihkka overrides mii stay on-palette: `.--bg-<name>` (background),
-`.--text-<name>` (text color), ja `.--border-<name>` (border color). Buot `<name>` lea
+**Color** — semantic overrides mii bargga on-palette: `.--bg-<name>` (background),
+`.--text-<name>` (text color), ja `.--border-<name>` (border color). Juokse `<name>` lea
 semantic color token — intents (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
-`inverse`, `on-color`, `strong`, …) plus `accent-*` paletti (`accent-blue`, `accent-green`, ja nu
-eanet). Namma lea doarvái alleen jos token existeraa dán familjain, niin `text-brand` ii leat class — text:in
-brand token ii leat. Ii lea mánnávuohta sáhttit primitive dahje arbitrary hex, ja buot override followa thema.
+`inverse`, `on-color`, `strong`, …) ja `accent-*` paleta (`accent-blue`, `accent-green`, ja nu go dahje). Nama lea lassin jos token lea daja family's, dasgo `text-brand` ii leat klassa — text'n ii leat brand token. Ii leat beaivváhit primitiva dahje arbitrár hex, ja buot override follovvra thema.
 
-**Token familjat** — buot "one token, one property" familjat sáhttá class per token, nammad token:in. Compose čáppán:
+**Token familyat** — juohke "one token, one property" familyi geavahána klassa per token, namma tokenmii. Compose vástádusaid:
 
 - `.--font-family-heading`, `.--font-family-code`, … → `font-family`
 - `.--font-weight-body-strong`, `.--font-weight-interactive`, … → `font-weight`
@@ -222,28 +222,28 @@ brand token ii leat. Ii lea mánnávuohta sáhttit primitive dahje arbitrary hex
 - `.--opacity-base`, `.--opacity-disabled` → `opacity`
 - `.--elevation-resting`/`-above`/`-topmost` (ja `-depth1`…`-card`) → `box-shadow`
 
-Buot mii settá doarje almmuhit prop:aid, niin `border-width`/`border-radius` galgá leama `border-*` color ja border
-stylein máilbmi. Dát geavahusa full token-namma (`.--border-radius-md`), vai color ja spacing helperat gus use short aliassat (`.--bg-brand`, `.--mt-lg`) — aliassat
-lean ergonomiske shortcutta; token-classat leat literála ja exhaustiiva.
+Juokse geavahit doarvvut ovttas buot, dasgo `border-width`/`border-radius` galge leat `border-*` color ja border
+style mainnit boahtit border. Dii geavat buot full token-nen (`.--border-radius-md`), muhto color ja spacing helpers ovttas goaleas aliases (`.--bg-brand`, `.--mt-lg`) — aliasat leat ergonoomalaš shortcuts; token klassat leavvot literal ja exhaustiv.
 
 **Layout** — `.--display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`,
-`none`) ja `.--text-align-<value>` (`start`, `center`, `end`, `justify`) coverra InstUI:s
-cross-cutting `display` ja `textAlign` proppaid (View, Button, Metric, Tabs, …) nugo composable classaid —
-nu ii leat per-komponentta modifiserat.
+`none`) ja `.--text-align-<value>` (`start`, `center`, `end`, `justify`) coverera InstUI'n
+cross-cutting `display` ja `textAlign` propaid (View, Button, Metric, Tabs, …) nugo composebara klassaid —
+dasa ii leat per-komponent modifierat.
 
-Buot double-dash class dohkkehaisvuohta cascade:s deterministtala ovttas same-named single-dash component
-modifierin, man stylesheet import olggobealde — geavahata [Authoring conventions](/conventions/authoring) mekanismaa.
+Buot double-dash klassa válddeha cascade'a deterministtalaš above same-named single-dash komponenta
+modifier, ain ii berošt stylesheet import-ođđa — iegodat [Authoring conventions](/conventions/authoring)
+mechanism'a.
 
-Buot dát lea pur CSS mii gánddá `--instui-*` token:ain, niin dat track:á InstUI token-layer:in. Geažil [API reference](/api/) `componentsCss` ja per-komponentta builderat.
+Buot dál pure CSS mii ohjaa `--instui-*` tokenbargguid gaskkas, dasgo dat track'á InstUI token layer. Iegodat [API reference](/api/) `componentsCss` ja per-komponent builders.
 
-## Overlay: dialog ja popover
+## Overlayat: dialoga ja popover
 
-Overlay-komponenttat gokteha native platform-primitiivain, nu de liiká accesible mii leat vähá dahje ii álki
-JavaScript:ta.
+Overlay komponentat gávdno native platform primitive:t, dasgo dii behávva accesability guovddáš váldas dahje máhte
+JavaScript.
 
-**Modal** — setta `.instui-modal` go native `<dialog>`. Dat gávnná focus-trapping, `Esc`-to-close, ja
-`::backdrop` moadde; backdrop lea dimmeheapmi sama `--instui-component-mask-background-color`
-token:in nugo `.instui-mask` (addta `-blur` frosta). Avása ja bođá daid invoker kommanda — ii skripta:
+**Modal** — set `.instui-modal` dihte native `<dialog>`. Dat leat focus trapping, `Esc`-ma_close, ja
+`::backdrop` muhto muhtin; backdrop lea dimmed dahje sama `--instui-component-mask-background-color`
+token nu `.instui-mask` (adda `-blur` maŋit frost'it). Open ja close invoker commands — ii script:
 
 ```html
 <button class="instui-button" command="show-modal" commandfor="dlg">Open</button>
@@ -256,19 +256,21 @@ token:in nugo `.instui-mask` (addta `-blur` frosta). Avása ja bođá daid invok
 </dialog>
 ```
 
-**Context view / popover** — setta `.instui-context-view` go `[popover]` element ja toggla daid `popovertarget`. Dat máhccá top layer:is ja light-dismissá ovttast click:in dahje `Esc`, ii skripta:
+**Context view / popover** — set `.instui-context-view` dihte `[popover]` elementta ja toggle dii riŋga
+`popovertarget`. Dat lea top layer ja light-dismisses outside-click dahje `Esc`, dego ii script:
 
 ```html
 <button class="instui-button" popovertarget="cv">Details</button>
 <div id="cv" popover class="instui-context-view">…</div>
 ```
 
-**Drawer layout** — setta `.instui-drawer-layout` go layout root:s `.tray` ja `.content`
-children. Addta `open` attributt (vai `-open`) dahje lážžut tray:in, ja geavá `placement="end"`
-(vai `-placement-end`) dahje dock:it inline-end side — placement resolvá loogal
-`inset-inline-*`/`flex-direction` properties, niin dat flippa automatihkala under `dir="rtl"` ilman eará rule:aid. Focused interaction bundle addá Invoker command routing ja toggla overlay mode
-(`should-overlay-tray`) gos width crossa `--drawer-layout-min-width` (default
-`--instui-breakpoints-sm`, de `30rem`):
+**Drawer layout** — set `.instui-drawer-layout` root layout'á main `.tray` ja `.content`
+childrean. Adda `open` attributta (dahje `-open`) maŋit reveal'er tray, ja geavaha `placement="end"`
+(dahje `-placement-end`) adda dock'a inline-end sáhka — placement resolve:ra logical
+`inset-inline-*`/`flex-direction` propii, dasgo dat flip'a automatihkalaš under `dir="rtl"` ii vuolde
+extra rules. Focused interaction bundle addá Invoker command routing ja toggle overlay mode
+(`should-overlay-tray`) gos width cross'a `--drawer-layout-min-width` (default
+`--instui-breakpoints-sm`, das ná `30rem`):
 
 ```html
 <button class="instui-button" command="--toggle" commandfor="drawer">Toggle panel</button>
@@ -279,20 +281,21 @@ children. Addta `open` attributt (vai `-open`) dahje lážžut tray:in, ja geav�
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/drawer-layout.iife.js"></script>
 ```
 
-**Mask** — `.instui-mask` stay in-flow overlays (spinner över card); modal:s `::backdrop`
-covera modal casen.
+**Mask** — `.instui-mask` stay in-flow overlays (spinner over card); modal'n `::backdrop`
+cover'a modal-casem.
 
-Bágo patternat leat wrappehtte behavioral custom elements:s `@pantoken/web-components`:
-`<instui-modal open>` ( `<dialog>` drivena daid `open` attributt:in) ja `<instui-context-view>` (native popover).
+Buot patternaid sáhttet leat wraps nugo behavioral custom elementtat `@pantoken/web-components`:
+`<instui-modal open>` ( `<dialog>` drivven dahje `open` attributta) ja `<instui-context-view>` (native popover).
 
-Browser support: popover API ja `popovertarget` leat Baseline 2024; invoker kommanda
-(`command`/`commandfor`) Baseline 2025, nubb eaŋgá browsera gelda bođđa, wire buttons to `dialog.showModal()`
-nugo one-line fallback. Positione popover mii oktan trigger:in uses CSS anchor positioning gos supported (Chromium); eará ođđa center­e top layer:is.
+Browser support: popover API ja `popovertarget` leat Baseline 2024; invoker commands
+(`command`/`commandfor`) leat Baseline 2025, dasgo olde browseraide barggahit bind buttons to `dialog.showModal()`
+nugo one-line fallback. Positione popover céahppi trigger'á geavahit CSS anchor positioning gos
+support'a (Chromium); muhttun čuojahit dahje centers top layer.
 
-## Formala
+## Fomas
 
-**FormField** — `.instui-form-field` lea CSS-Grid wrapper mii layout:á label, control, ja buot
-messages. Setta da `<label>` nu label associere kontrolla nativala. Dat leat golbma grid
+**FormField** — `.instui-form-field` lea CSS-Grid wrapper mii layout'á label, controlla, ja buot
+messages. Setta da `<label>` dasgo label associate'á controlla nativalaš. Dat leat golbma grid
 areas — `label`, `controls`, `messages`:
 
 ```html
@@ -305,20 +308,21 @@ areas — `label`, `controls`, `messages`:
 </label>
 ```
 
-`-layout-stacked` (default) stack:a areala; `-layout-inline` da label juoiggá control:in (tune
-with `-label-align-{start,end}` ja `-v-align-{top,middle,bottom}`). `-readonly` recolor:á label:an.
+`-layout-stacked` (default) stack'a áreas; `-layout-inline` setta label boras controlla (tune
+geavahit `-label-align-{start,end}` ja `-v-align-{top,middle,bottom}`). `-readonly` recolora label'a.
 
-**Required asterisk** sáhteha gos fiellda lea required _geahččat_ `-required` class _dakkár_ dahje native `required` control guovtti — nubb don sáhtát doarvái setta `required` on input ja mark das goffi. Dat lea dekoratiivva ( `::after` label:as, accessibility-tree:in eai) ; pair:a ja note maiddái "fields marked * are required" muhto jos form:s ii leat obvious.
+**Required asterisk** álbmot go fálaldatšuvnnas lea required _nuppin_ `-required` class _dahje_ native `required` control inside it — dasgo sáhtát just set `required` input'ii ja mark shows.
+Dat lea dekoratiivva ( `::after` label'ain, out accessibility tree); pair'a dan nugo
+"fields marked \* are required" jos fomas ii leat obvious.
 
-**FormFieldGroup** — `.instui-form-field-group` gruppára relatot fields in `<fieldset>` vai `<legend>` description. Dat lea pur layout (ii dedicate tokens): default stack:á fields;
-`-layout-columns` / `-layout-inline` flow:era responsive columns, gávdno `-row-spacing-*` /
-`-col-spacing-*` ja `-v-align-*` álgge finessa grid.
+**FormFieldGroup** — `.instui-form-field-group` gruppá related fields in `<fieldset>` vástádusa ja
+`<legend>` descriptión. Dat lea pure layout (ii dedicated token): default stack'a fields;
+`-layout-columns` / `-layout-inline` flow dii responsiva columns, geavahit `-row-spacing-*` /
+`-col-spacing-*` ja `-v-align-*` maŋit tune grid.
 
 **RadioInputGroup** — `.instui-radio-input-group` lea sama `<fieldset>`/`<legend>` grouping,
-specializera rádiosa. Dál čalibiid rádiosa share:á `name`, selection lea nativala single-choice —
-so toggle-button set behavevá nugo okta kontrolla, ii vel loos buttona. `-variant-simple` (default) layout:á
-standard rádiosa (`-layout-columns`/`-inline` flow:era row); `-variant-toggle` konnektává
-child `.instui-radio.-variant-toggle` buttona segmenterad control (collapsed borders,
+specialisera radios. Dađđa radios childra share'a `name`, selection lea nativalaš single-choice —
+dasgo set toggle buttons behave nugo one control, ii loos buttons. `-variant-simple` (default) layout standard radios (`-layout-columns`/`-inline` flow dii row); `-variant-toggle` connect'a child `.instui-radio.-variant-toggle` buttons into single segmented control (collapsed borders,
 rounded outer ends):
 
 ```html
@@ -332,34 +336,36 @@ rounded outer ends):
 </fieldset>
 ```
 
-**Messages** — `.instui-form-field-messages` lea container; buot `.instui-form-field-message` borgá `-type-*`: `-type-hint` (gray, default), `-type-error` (ruoksatext + circle-alert glyph), `-type-success`
-(greenn text + circle-check glyph), ja `-type-screenreader-only` (visually clipped, muhto juoigget). Glyph:at paina `currentColor`, niin sii siempre match:era message color. `-type-new-error` lea deprekeárvuohta alias `-type-error`. Wire container to control with `aria-describedby`, ja setta
-`aria-invalid` on control jos galgá error.
+**Messages** — `.instui-form-field-messages` lea container; juokse `.instui-form-field-message` gávdno
+`-type-*`: `-type-hint` (gray, default), `-type-error` (ruoks text + circle-alert glyph), `-type-success`
+(ruohta text + circle-check glyph), ja `-type-screenreader-only` (visually clipped, das leat guoskadus).
+Glyphs paint'á `currentColor`, dasgo dii almmuhađat message color'ain. `-type-new-error` lea
+deprekahttta alias `-type-error`. Wire container to controlla geavahit `aria-describedby`, ja set
+`aria-invalid` controlla gos dárkkadus lea.
 
-In FormField, `-type-error` message following client-side validation: da stay hidden muhto fiellda control
-lea `:user-invalid` (native, govve user interact) — vai force it with `-invalid`
-on `.instui-form-field` (server-side error). Standalone `.instui-form-field-messages` (ii in field) eai leat affected. Control focus-ring followa: danger gos `:user-invalid`/`-invalid`,
+FormField sisne, `-type-error` message follow client-side validation: dat eatna hide'a go
+field'a controlla lea `:user-invalid` (native, duopmái user interactii) — dahje don force'ra daid geavahit `-invalid`
+on `.instui-form-field` (server-side error). Standalone `.instui-form-field-messages` (ii field:s) leat unaffected. Controlla focus ring follow'a: danger gos `:user-invalid`/`-invalid`,
 success gos `-success`.
 
-**Text controls** — `.instui-text-input` (native `<input>`), `.instui-text-area` (native `<textarea>`,
-resizable), ja `.instui-simple-select` (native `<select>` with caret) dihte galggá same look ja same
+**Text controllat** — `.instui-text-input` (native `<input>`), `.instui-text-area` (native `<textarea>`,
+resizable), ja `.instui-simple-select` (native `<select>` with caret) share ođđa look ja same
 states: `-invalid` (error border), `-success` (success border), `-readonly`, native `:disabled`, ja
-`-size-{sm,md,lg}`. Ama leading/trailing icon (InstUI:s `renderBeforeInput`/`renderAfterInput`), wrap
-input in `.instui-input-group` ja addta `.before`/`.after` slot ( `-icon-*` glyph); `-should-not-wrap`
-keeps ita on one line. `.instui-number-input` lea facade plus `.arrows` +/- spinner column (native
+`-size-{sm,md,lg}`. For leading/trailing icon (InstUI `renderBeforeInput`/`renderAfterInput`), wrap
+input in `.instui-input-group` ja add `.before`/`.after` slot ( `-icon-*` glyph); `-should-not-wrap`
+keep'a on one line. `.instui-number-input` lea facade plus `.arrows` +/- spinner column (native
 `type="number"`; wire buttons to `stepUp()`/`stepDown()`). `.instui-range-input` lea styled
-`input[type="range"]` mii value rendera in `.instui-range-input-value` inverse bubble. For rich combobox
-with listbox popover, use `@instructure/ui` — lib covera native controllat.
+`input[type="range"]` mii value render'a in `.instui-range-input-value` inverse bubble. For rich
+combobox with listbox popover, use `@instructure/ui` — library covers native controllat.
 
-**Styled select dropdown (experimental)** — opt‑in `select.css` upgradea _sama_
-`.instui-simple-select` element: dat staila open dropdown (panel ja buot option, hover ja
-selected states) geavahusa CSS Customizable Select model.
+**Styled select dropdown (experimental)** — opt-in `select.css` upgrade'a _same_
+`.instui-simple-select` elementta: dat style'a open dropdown (panel ja juođiid option, hover ja
+selected státusat) CSS Customizable Select model'a geavaheap.
 
 > [!WARNING]
-> `select.css` dependá `appearance: base-select` / `::picker(select)`, mii lea **experimental**
-> (Chrome 135+, eai geavahus noch Baseline). Dat fáidnet sagast opt‑in sheet:na ja buot ruledat leat gated
-> behind `@supports (appearance: base-select)`, nuiggá dat dohkkeha ii supported browsera — `.instui-simple-select` control doarvái plain native select. Loada dasa juohke jos don
-> wanta enhanced dropdown ja acceptera limited support.
+> `select.css` reliance'ar `appearance: base-select` / `::picker(select)`, mii lea **experimental**
+> (Chrome 135+, ii geahčen Baseline). Dat šaddá separate opt-in sheet ja buot rullegi leat gate'd
+> behind `@supports (appearance: base-select)`, dasgo ii doalvvo daid browsers mii ii suport'era — `.instui-simple-select` controlla just lea plain native select. Loada das go don váldit enhanced dropdown ja acceptera limited support.
 
 ```ts
 import "@pantoken/components/components.css";

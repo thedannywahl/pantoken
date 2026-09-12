@@ -1,24 +1,23 @@
 # Cydrannau
 
-`@pantoken/components` yn cyflwyno steiliau cydrannau seiliedig ar ddosbarth a adeiladwyd o’r tocynnau Instructure. Mewnforio’r sheitlys a thagio’ch marc-up — dim ffrâm angenrheidiol.
+`@pantoken/components` yn cludo steiliau cydrannau seiliedig ar ddosbarth wedi’u hadeiladu o’r tokenau Instructure. Mewngludwch y sheitlis a tagiwch eich marciad — dim fframwaith angenrheidiol.
 
 ```ts
 import "@pantoken/components/components.css";
 ```
 
 > [!NOTE]
-> O’ch bod yn ffafrio elfennau arfer? `@pantoken/web-components` yn wrapio’r un steiliau fel `<instui-button>`,
+> O blithwch elfennau custom? Mae `@pantoken/web-components` yn amgáu’r un steiliau fel `<instui-button>`,
 > `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, a mwy — gweler y
 > [map pecyn](/api/).
 
 ## Confensiynau
 
-Mae’r confensiynau CSS yn y pecyn hwn yn seiliedig ar fersiwn addasedig o [RSCSS](https://ricostacruz.com/rscss/index.html).
+Mae’r confensiynau CSS yn y pecyn hwn yn seiliedig ar fersiwn addasu o [RSCSS](https://ricostacruz.com/rscss/index.html).
 
-Mae modiwleiddwyr yn **allwedd-gwerth** — `-<prop>-<val>`, sy’n cyd-fynd â enwau prop InstUI — felly maent yn darllen drostynt eu hunain: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Mae propiau boolean yn y prop
-enw yn unig, lle mae presenoldeb yn golygu `true` (`-has-shadow`, `-clickable`); mae boolean diofyn-wrth-ddewis wedi’i oddi-wneud yn gwrthdroi (`-without-background`, `-without-border`). Mae meintiau yn derbyn sillafiadau byr a hir
-(`-size-sm` = `-size-small`). Pan fo enw yn gwthio oddi wrth InstUI, mae’r dosbarth semantaidd InstUI yn dal i weithio
-ond mae’n hen ffasiwn (e.e. `-variant-info` → defnyddiwch `-color-info`).
+Mae modiwleiddwyr yn **allweddol-werth** — `-<prop>-<val>`, yn gyfwerth â enwau prop InstUI — felly maent yn darllen eu hunain: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Mae propiau boolean yn yr enw prop yn unig, lle mae presenoldeb yn golygu `true` (`-has-shadow`, `-clickable`); mae boolean sydd â gwerth diofyn ymlaen ac wedi’i analluogi yn gwrthdroi (`-without-background`, `-without-border`). Mae meintiau yn derbyn naill ai ffurf fyr neu hir
+(`-size-sm` = `-size-small`). Lle mae enw yn mynd yn groes i InstUI, mae’r dosbarth semantig InstUI yn dal i weithio
+ond mae’n hynaws (e.e. `-variant-info` → defnyddiwch `-color-info`).
 
 ### Enghraifft
 
@@ -48,12 +47,12 @@ cydrannau pantoken:
 </div>
 ```
 
-Ar gyfer prop `timeout` InstUI, gosodwch y priodwedd arfer `--timeout` heb uned mewn milisecondau a llwythwch
-yr rhyngweithrediad Alert. Mae gwerth cadarnhaol yn trefnu diddymu; `0` (y diofyn) yn gadael yr rhybudd mewn
-lle. Ychwanegwch ddosbarthiadau `instui-transition -fade-entered` o’r cyfleustodau `transition` ar gyfer y fade InstUI; anwybyddwch
-hwy am dynnu yn syth. Mae’r rhyngweithrediad yn gyrru’r state `-fade-exiting` ac yn tanio digwyddiad dadganiadwy a
-bwydo `dismiss` cyn tynnu, fel y gall cais alw `preventDefault()` i gadw’r
-rhybudd wedi’i fodiwl.
+Ar gyfer prop `timeout` InstUI, gosodwch y eiddo custom heb uned `--timeout` mewn milisecundau a llwythwch
+’r rhyngweithio Alert. Mae gwerth cadarnhaol yn rhaglennu diddymu; `0` (y diofyn) yn gadael yr rhybudd yn
+ei le. Ychwanegwch ddosbarthiadau `instui-transition -fade-entered` o’r cyfleustodyn `transition` ar gyfer diddymiad ysgafn InstUI; peidiwch â’u cynnwys
+os ydych am gael gwared ar unwaith. Mae’r rhyngweithio yn gyrru’r statws `-fade-exiting` ac yn tanio digwyddiad
+gallus-ganslo, yn chwifio `dismiss` cyn tynnu, fel y gall cais alw `preventDefault()` i gadw’r
+rhagddiemyn wedi’i ffitio.
 
 ```html
 <link
@@ -70,15 +69,15 @@ rhybudd wedi’i fodiwl.
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/alert.iife.js"></script>
 ```
 
-Mae bariau cynnydd yn derbyn graddfeydd arwynebol trwy `--min` (`0` yn ddiofyn), `--value`, a `--max`
-(`100` yn ddiofyn), gyda hen ffasiwn `--value-now` a `--value-max` o enwau amgen. Ychwanegwch `-should-animate`
-i gymhwyso trawsnewid hanner eiliad InstUI bob tro mae gwerth yn newid. Mae `.value` yn sefyll ochr yn ochr â `.bar` fel
-blentyn o’r gwraidd; ychwanegwch `-render-value-inside` i’w rendro dros y trac, wedi’i alinio i’w gychwyn,
-yn lle hynny (stiliwch ef er mwyn bod yn ddarllenadwy yn erbyn lliw y metrau). Defnyddiwch `<progress>` naturiol ar gyfer
-amrediad sy’n dechrau ar sero a `<meter>` pan fo’r lleiaf yn an-syfraith; mae’r cydrannau gwe yn dewis rhyngddynt
-yn awtomatig o’u nodwedd `min`. Nid oes gan InstUI statws anniffinio, felly mae `<progress>`
-heb ei nodwedd `value` yn dybiaeth gorau pantoken: mae `progress-bar` yn animeiddio `.bar` fel
-segment llithrig a mae `progress-circle` yn troi ei gadwyn mewn arc sefydlog, gan guddio `.value`.
+Mae bariau cynnydd yn derbyn raddfaau aribïtrïol trwy `--min` (`0` yn ddiofyn), `--value`, a `--max`
+(`100` yn ddiofyn), gyda hen-enwau `--value-now` a `--value-max` wedi’u diddymu. Ychwanegwch `-should-animate`
+i gymhwyso trawsnewid hanner-eiliad InstUI pan fo gwerth yn newid. Mae `.value` yn sefyll ochr yn ochr â `.bar` fel
+blentyn i’r gwraidd; ychwanegwch `-render-value-inside` i’w rendro dros y trac, wedi’i alinio i’w dechrau,
+yn lle hynny (stiliwch ef i fod yn ddarllenadwy yn erbyn lliw y metrau). Defnyddiwch `<progress>` naturiol ar gyfer
+amrediad sy’n seiliedig ar sero a `<meter>` pan fo’r lleiaf ddim yn sero; mae’r cydrannau tudalen yn dewis rhyngddynt
+yn awtomatig o’u nodwedd `min`. Nid oes statws anbeniedig gan InstUI, felly mae `<progress>`
+sydd heb ei nodwedd `value` yn dybiaeth orau pantoken: mae `progress-bar` yn animeiddio `.bar` fel
+segment symudol a `progress-circle` yn troi ei ring mewn arc sefydlog, gan guddio `.value`.
 
 ```html
 <label>
@@ -94,10 +93,10 @@ segment llithrig a mae `progress-circle` yn troi ei gadwyn mewn arc sefydlog, ga
 </label>
 ```
 
-Mae cylchdroadau cynnydd yn derbyn yr un graddfeydd arwynebol trwy `--min`, `--value`, a `--max`.
-Mae `--value-now` a `--value-max` yn parhau fel enwau amgen gweithredol sydd wedi’u henffasiynu. Ychwanegwch `-should-animate` a
-llwythwch y bundle rhyngweithrediad ffocysu i ailadrodd animeiddiad mont InstUI; mae `--animation-delay` yn oediad heb uned mewn milisecondau. Mae’r hen ffasiwn `-should-animate-on-mount` a
-`-shold-animate-on-mount` yn parhau fel enwau amgen gweithredol.
+Mae cylchoedd cynnydd yn derbyn yr un raddfaau aribïtrïol trwy `--min`, `--value`, a `--max`.
+Mae `--value-now` a `--value-max` yn parhau fel hen-enwau swyddogaethol. Ychwanegwch `-should-animate` a
+llwythwch y buntl rhyngweithio ganolbwynt er mwyn atgynhyrchu animeiddiad gosod InstUI; mae `--animation-delay` yn oediad heb uned mewn milisecundau. Mae’r hen-enwau `-should-animate-on-mount` a
+`-shold-animate-on-mount` yn parhau fel hen-enwau swyddogaethol.
 
 ```html
 <label for="upload-progress">Uploading Document</label>
@@ -113,11 +112,11 @@ llwythwch y bundle rhyngweithrediad ffocysu i ailadrodd animeiddiad mont InstUI;
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/progress-circle.iife.js"></script>
 ```
 
-## Rhagenw dosbarth
+## Cyffyrddiad dosbarth
 
-Mae pob dosbarth wedi’i enbynnu gyda `instui-` fel diofyn. Adeiladwch sheitlys gyda’ch rhagenw eich hun — neu ddim rhagenw — drwy
-basiu `prefix` i unrhyw adeiladwr. Bydd unrhyw werth falsy (`null`, `undefined`, `""`, neu’i hepgor) yn cwympo’r
-rhagenw yn gyfan gwbl, felly gallwch awduru `class="heading -level-h1"` yn lle `class="instui-heading -level-h1"`:
+Mae pob dosbarth yn enw maes `instui-` yn ddiofyn. Adeiladwch sheitlis gyda’ch rhagddull chi — neu dim — trwy
+basio `prefix` i unrhyw adeiladwr. Mae unrhyw werth gwag (`null`, `undefined`, `""`, neu osgoi) yn gollwng y
+blaendid yn gyfan gwbl, felly gallwch awdurdodi `class="heading -level-h1"` yn lle `class="instui-heading -level-h1"`:
 
 ```ts
 import { componentsCss } from "@pantoken/components";
@@ -126,61 +125,58 @@ componentsCss({ prefix: "ui" }); // .ui-button
 componentsCss({ prefix: null }); // .button, .alert — no prefix
 ```
 
-Nid yw’r modiwleiddwyr sydd â dash ymlaen (`.-color-secondary`, `.-level-h1`) yn newid o’r naill ffordd na’r llall. Mae’r
-sheitlysiadau a anfonir gan y pecyn yn cadw’r rhagenw `instui`.
+Mae’r modiwleiddwyr sydd â dash rhagosodedig (`.-color-secondary`, `.-level-h1`) heb eu newid beth bynnag. Mae’r
+sheitliseis a anfonir gan y pecyn yn cadw’r blaenadrodd `instui`.
 
 ## Sylfaen
 
-`base.css` yw reset opsiynol sy’n gosod diofynion dogfennol byd-eang o’r tocynnau: `box-sizing`, reset
-`body`, arwyneb y dudalen, lliw testun sylfaenol a ffont, `color-scheme` (fel bod tocynnau `light-dark()` a rheolyddion naturiol yn dilyn y thema), a dolen sylfaen. Llwythwch ef unwaith, cyn y sheitlys cydrannau a
-prose, pan fo pantoken yn berchen ar y dudalen.
+Mae `base.css` yn adferiad dewisol sy’n gosod diofynion dogfen byd-eang o’r tokenau: `box-sizing`, adferiad
+`body`, arwyneb y dudalen, lliw testun sylfaenol a ffont, `color-scheme` (fel bod tokenau `light-dark()` a rheolyddion cwbledig yn dilyn y thema), a dolen sylfaen. Llwythwch hi unwaith, cyn y sheitlis cydran a’r sheitlis cynnwys,
+pan fo pantoken yn berchen ar y dudalen.
 
 ```ts
 import "@pantoken/components/base.css";
 import "@pantoken/components/components.css";
 ```
 
-Anwybyddwch ef pan fyddwch yn mewnosod cydrannau i gartref sy’n thema ei `html` a `body` ei hun eisoes —
-mae’r reset yn peintio arwyneb y dudalen, felly does dim dymuniad i wrthi’n gystadleuol â’r cartref. Mae popeth a osodir ganddo yn defnyddio
-detholwyr `:where()` â mwy o isradd — felly mae eich rheolau eich hun bob amser yn ennill.
+Peidiwch â’i lwytho pan fyddwch yn mewnosod cydrannau i gartref sydd eisoes yn thema ei `html` a `body` — mae’r adferiad yn paentio arwyneb y dudalen, felly nid ydych am iddo wrthdaro â’r cartref. Mae popeth y mae’n ei osod yn defnyddio
+dewiswyr `:where()` o is-benadwyedd isel, felly mae’ch rheolau eich hun bob amser yn ennill.
 
-Mae `base.css` yn _cymhwyso_’r ffont brand (`font-family: var(--instui-font-family-base)`, gyda defaid system);
-i’w _llwytho_, mewnforiwch y `fonts.css` opsiynol — mae rheolau `@font-face` ar gyfer Atkinson Hyperlegible
-Next, yn pwyntio at y woff2s a anfonir yn y pecyn. Mae’n wahân am fod y wynebau tua ~350 kB a
-mae hunan-letya ffontiau yn ddewis bwriadol.
+Mae `base.css` yn _aplygu_ y ffont brand (`font-family: var(--instui-font-family-base)`, gyda dilynwyr system); i _lwytho_ ef, mewnforiwch y `fonts.css` dewisol — rheolau `@font-face` ar gyfer Atkinson Hyperlegible
+Next, sy’n pwyntio at y woff2s a anfonir yn y pecyn. Mae’n ar wahân oherwydd bod y wynebau tua 350 kB a
+mae hunan-lwfyny ffontiau yn ddewis fwriadol.
 
 ```ts
 import "@pantoken/components/base.css"; // applies the font (falls back to system without fonts.css)
 import "@pantoken/components/fonts.css"; // loads the Atkinson Hyperlegible Next woff2s
 ```
 
-## Cynnwys darllenwyr sgrin
+## Cynnwys darllenydd sgrin
 
-<p>Mae neges gudd wedi ei rhoi ar ôl y frawddeg hon.<span class="instui-screen-reader-content">Dim ond darllenwyr sgrin sy’n hysbysu hyn.</span></p>
+<p>Mae neges cudd ar ôl y frawddeg hon.<span class="instui-screen-reader-content">Dim ond darllenydd sgrin sy’n hysbysu hyn.</span></p>
 
 ```html
 <span class="instui-screen-reader-content">Only screen readers announce this.</span>
 ```
 
 Mae `.instui-screen-reader-content` yn cuddio elfen yn weledol tra’n ei chadw yn y goeden hygyrchedd
-— ar gyfer labeli a thestun statws y dylai technoleg cynorthwyol ei ddarllen ond nad yw’r dyluniad yn ei ddangos.
+— ar gyfer labeli a thestun statws y dylai’r dechnoleg gynorthwyol eu darllen ond nad yw’r dyluniad yn eu dangos.
 
 ## Cyfleustodau
 
-Mae `utilities.css` yn haen opsiynol o ddosbarthiadau traws-groes: bonyn `View`, gofod ar raddfa’r tocyn,
-a throsi lliw semantaidd. Yn wahanol i ddosbarthiadau cydran `-modifier`, maent yn defnyddio **ddau dash**
-(`--mod`) felly byth yn gwrthdaro ag enwau modiwleiddwyr cydran un-dash, ac maent yn gymwys i unrhyw
-elfen — yn syth, neu wedi’i gydoli ar gydran.
+Mae `utilities.css` yn haen ddewisol o ddosbarthiadau traws-gloi: _primitive_ `View`, toriadau yn raddfa token,
+a gorchmynion lliw semantig. Yn wahanol i ddosbarthiadau cydran `-modifier`, maent yn defnyddio **dau gôt** (`--mod`) fel na fyddant byth yn gwrthdaro â enwau modiwleiddwyr cydran, ac maent yn berthnasol i unrhyw
+elfen — unig, neu wedi’u cyfuno ar gydran.
 
 ```ts
 import "@pantoken/components/utilities.css";
 ```
 
 <div class="instui-view --bg-accent-blue --text-on-color --p-md --mb-sm" style="border-radius: 6px;">
-  <span class="instui-text --text-on-color">Arwyneb accent-blue gyda thestun ar-liw.</span>
+  <span class="instui-text --text-on-color">Arwyneb accent-blue gyda testun on-color.</span>
 </div>
 <div class="instui-view --bg-muted --p-sm --mx-auto" style="max-width: 12rem; border-radius: 6px; text-align: center;">
-  <span class="instui-text">Canolog gyda mx-auto.</span>
+  <span class="instui-text">Wedi’i ganoli gyda mx-auto.</span>
 </div>
 
 ```html
@@ -188,31 +184,30 @@ import "@pantoken/components/utilities.css";
 <div class="instui-view --bg-muted --p-sm --mx-auto">…</div>
 ```
 
-**View** — `.instui-view` yw `View` InstUI. Dyma’r sylfaen y haenwch leoliad a lliw arni, ac mae’n
-dwyn modiwleiddwyr allwedd-gwerth i’w propriau gweledol ei hun fel nad oes raid ichi gyrraedd am gyfleustodau:
+**View** — mae `.instui-view` yn `View` InstUI. Dyma’r sylfaen rydych yn haenu toriadau a lliw ar ei
+ben, ac mae’n cario modiwleiddwyr allweddol-werth ar gyfer ei bropratau gweledol ei hun fel na ddylech gyrraedd am y cyfleustodau:
 `-background-*` (ei arwynebau), `-border-radius-{small,medium,large,circle,pill}`,
 `-border-width-{small,medium,large}` + `-border-color-*`, `-shadow-{resting,above,topmost}`,
-`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, a `-cursor-*` — mae’r rhain yn
-fodiwlau un-dash `view` ei hun, nad ydynt yn gysylltiedig â’r cyfleustodau dau-dash isod. Mae propriau gwerth-rhydd
-(trwch/lled/insit) yn parhau fel arddulliau mewnlin; mae `margin`/`padding` yn defnyddio’r cyfleustodau lleoliad.
+`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, a `-cursor-*` — mae’r rhain yn foddau un-dash `view` eu hunain,
+heb gysylltiad â’r cyfleustodau dau-dash isod. Mae propiau gwerth-rhydd
+(led/uchel/ mewnosodiad) yn aros fel arddulliau ar-lein; mae `margin`/`padding` yn defnyddio’r cyfleustodau toriadau.
 
-**Gofod** — dosbarthiadau y tu mewn fesul ochr ar raddfa’r gofod. Darllen nhw fel `{m|p}{side}-{step}`: `m` ar gyfer
-margen neu `p` ar gyfer padio (neu’r geiriau llawn `margin`/`padding`), ochr rhesymegol ddewisol, yna cam. Felly mae `.--m-lg` a `.--margin-lg` yn yr un peth, fel y mae `.--pt-md` a `.--paddingt-md`.
+**Toriadau** — dosbarthiadau fesul ochr ar y graddfa toriadau. Darllenwch hwy fel `{m|p}{side}-{step}`: `m` ar gyfer
+marged neu `p` ar gyfer padio (neu’r geiriau llawn `margin`/`padding`), yna ochr rhesymol ddewisol, yna cam. Felly mae `.--m-lg` a `.--margin-lg` yr un peth, fel y mae `.--pt-md` a `.--paddingt-md`.
 
-- Ochrau: none (pawb), `t`/`b` (dechrau/diwedd bloc), `s`/`e` (dechrau/diwedd inline), `x`/`y` (echdoriad inline/bloc). Mae ochrau rhesymegol yn cael eu cadw’n gywir mewn cynlluniau dde-i-rif.
-- Camau: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, yn ogystal ag `auto` ar gyfer margin yn unig.
+- Ochr: none (pawb), `t`/`b` (dechrau/diwedd bloc), `s`/`e` (dechrau/diwedd mewnol), `x`/`y` (echel mewnol/bloc). Mae ochrau rhesymol yn aros yn gywir mewn rhaglennau dde-i-rag.
+- Camau: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, ynghyd â `auto` ar gyfer marged yn unig.
 
-Cyfangu nhw ar gyfer shorthand `margin="small auto large"` InstUI:
+Cyfuno hwy ar gyfer shorthand `margin="small auto large"` InstUI:
 `class="--mt-sm --mx-auto --mb-lg"`.
 
-**Lliw** — gorchmynion semantaidd sy’n aros ar y pallet: `.--bg-<name>` (cefndir),
-`.--text-<name>` (lliw testun), a `.--border-<name>` (lliw ffin). Mae pob `<name>` yn
-docyn lliw semantaidd — yr anogaethau (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
-`inverse`, `on-color`, `strong`, …) ynghyd â’r palet `accent-*` (`accent-blue`, `accent-green`, ac ati). Dim ond os yw’r docyn yn bodoli yn y teulu hwn y bydd enw arno, felly nid yw `text-brand` yn ddosbarth — nid oes gan destun
-docyn brand. Nid oes ffordd i gyrraedd hen ffynhonnell neu hex arwyneb, a phob gorchymyn dilyn y thema.
+**Lliw** — gorchmynion semantig sy’n aros ar y palet: `.--bg-<name>` (background),
+`.--text-<name>` (lliw testun), a `.--border-<name>` (lliw bwrdd). Mae pob `<name>` yn
+ddosbarth lliw semantig — y bwriadau (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
+`inverse`, `on-color`, `strong`, …) ynghyd â palet `accent-*` (`accent-blue`, `accent-green`, ac yn y blaen). Mae enw yn bodoli yn unig os yw’r tocyn yn bodoli yn y teulu hwnnw, felly nid yw `text-brand` yn ddosbarth — nid oes tocyn brand i destun. Nid oes modd cyrchu rhifyn neu hex aribïtrïol, ac mae pob gorchymyn yn dilyn y thema.
 
-**Teulu tocynnau** — mae pob teulu “un tocyn, un priodwedd” yn cael dosbarth fesul tocyn, wedi’i enwi ar ôl y
-tocyn. Cyfangu nhw’n rhydd:
+**Teuluoedd tocyn** — mae pob teulu “un tocyn, un eiddo” yn cael dosbarth fesul tocyn, wedi’i enwi ar ôl y
+tocyn. Cyfansoddwch hwy’n rhydd:
 
 - `.--font-family-heading`, `.--font-family-code`, … → `font-family`
 - `.--font-weight-body-strong`, `.--font-weight-interactive`, … → `font-weight`
@@ -222,25 +217,25 @@ tocyn. Cyfangu nhw’n rhydd:
 - `.--opacity-base`, `.--opacity-disabled` → `opacity`
 - `.--elevation-resting`/`-above`/`-topmost` (a `-depth1`…`-card`) → `box-shadow`
 
-Mae pob un yn gosod ond ei un priodwedd, felly mae angen `border-width`/`border-radius` liw a arddull ffin i dynnu ffin yn wirioneddol. Maent yn defnyddio’r enw tocyn llawn (`.--border-radius-md`), tra bod yr helpwyr lliw a gofod uchod yn defnyddio aliasau byr (`.--bg-brand`, `.--mt-lg`) — mae’r aliasau yn fyrddonol; mae dosbarthiadau tocyn yn llythrennol ac yn gynhwysfawr.
+Mae pob un yn gosod dim ond ei briopertïau unig, felly mae angen `border-width`/`border-radius` ar gyfer lliw `border-*` a steil bwrdd i dynnu bwrdd mewn gwirionedd. Maent yn defnyddio’r enw tocyn llawn (`.--border-radius-md`), tra bod y cymorth lliw a thoriadau uchod yn defnyddio aliason byr (`.--bg-brand`, `.--mt-lg`) — mae’r aliasonau’n fyrbwyntiol ar gyfer ergonomeg; mae dosbarthiadau tocyn yn llythrennol ac yn estynedig.
 
 **Trefniant** — `.--display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`,
-`none`) a `.--text-align-<value>` (`start`, `center`, `end`, `justify`) yn cwmpasu
-propriau `display` a `textAlign` croes-groes InstUI (View, Button, Metric, Tabs, …) fel dosbarthiadau y gellir eu cyfuno —
-felly nid yw’r rheiny’n fodiwlau ar gyfer pob cydran.
+`none`) a `.--text-align-<value>` (`start`, `center`, `end`, `justify`) yn cwmpasu proffilau traws-gloi InstUI `display` a `textAlign` (View, Button, Metric, Tabs, …) fel dosbarthiadau y gellir eu cyfuno —
+felly nid modiwleiddwyr penodol i bob cydran yw’r rheini.
 
-Mae pob dosbarth dau-dash yn ennill y gylchdroi yn benderfynol dros fodiwl cydran un-dash o’r un enw, waeth beth fo trefn mewnforio’r sheitlys — gweler [Confensiynau Awduron](/conventions/authoring)
+Mae pob dosbarth dau-dash yn ennill y caesdad yn ddiamau dros fodiwleiddwr cydran unig-ennw o’r un enw, beth bynnag fo trefn mewnforio’r sheitlis — gweler [Confensiynau awduriaeth](/conventions/authoring)
 am y mecanwaith.
 
-Mae popeth yma yn bur CSS a gyrrir gan docynnau `--instui-*`, felly mae’n dilyn InstUI trwy haen y tocynnau. Gweler y [cyfeirlyfr API](/api/) ar gyfer `componentsCss` a’r adeiladwyr fesul-cydran.
+Mae popeth yma yn bur CSS a gyrrir gan y tokenau `--instui-*`, felly mae’n dilyn InstUI trwy haen y tocyn. Gweler yr [API reference](/api/) am `componentsCss` a’r adeiladwyr fesul-cydran.
 
-## Gor-lenyddion: dialog a popover
+## Gorchuddion: deialog a popover
 
-Mae’r cydrannau gor-lenydd yn defnyddio rhain enghreifftiau platfform naturiol, felly maent yn ymddwyn yn hygyrch gyda ychydig neu ddim JavaScript.
+Mae cydrannau gorchudd yn marchogaeth hen-lwybrau platfform, felly maent yn ymddwyn yn hygyrch gyda dim neu ychydig o
+JavaScript.
 
-**Modal** — rhowch `.instui-modal` ar `<dialog>` naturiol. Mae’n cael trapio ffocws, `Esc`-i-gae, a
-`::backdrop` am ddim; mae’r cefndir yn cael ei dynnu’n fach gyda’r un docyn `--instui-component-mask-background-color`
-â `.instui-mask` (ychwanegwch `-blur` i’w rewlio). Agorwch a chau gyda gorchmynion invoker — dim sgript:
+**Modal** — rhowch `.instui-modal` ar `<dialog>` naturiol. Fe gaiff trapio ffocws, cau-gyda-`Esc`, a
+`::backdrop` am ddim; mae’r cefnlen wedi’i dywyllu gyda’r un tocyn `--instui-component-mask-background-color`
+â `.instui-mask` (ychwanegwch `-blur` i’i rewio). Agorwch a chau gyda gorchmynion invoker — dim sgript:
 
 ```html
 <button class="instui-button" command="show-modal" commandfor="dlg">Open</button>
@@ -253,19 +248,20 @@ Mae’r cydrannau gor-lenydd yn defnyddio rhain enghreifftiau platfform naturiol
 </dialog>
 ```
 
-**Context view / popover** — rhowch `.instui-context-view` ar elfenn `[popover]` a’i thoglo gyda
-`popovertarget`. Mae’n eistedd ar y haen uchaf ac yn cau ar glic y tu allan neu `Esc`, eto dim sgript:
+**View cyd-destun / popover** — rhowch `.instui-context-view` ar elfen `[popover]` a’i thoglo gyda
+`popovertarget`. Mae’n hedfan ar yr haen uchaf ac yn cael gwared yn ysgafn ar glic tu fas neu `Esc`, eto dim sgript:
 
 ```html
 <button class="instui-button" popovertarget="cv">Details</button>
 <div id="cv" popover class="instui-context-view">…</div>
 ```
 
-**Layout drôr** — rhowch `.instui-drawer-layout` ar wraidd layout gyda phlant `.tray` a `.content`.
-Ychwanegwch yr atodiad `open` (neu `-open`) i ddatgelu’r drôr, a defnyddiwch `placement="end"`
-(neu `-placement-end`) i gludo ef i’r ochr diwedd mewnlin — mae lleoliad yn datrys trwy berpriodweddau rhesymegol
-`inset-inline-*`/`flex-direction`, felly mae’n troi’n awtomatig o dan `dir="rtl"` heb reolau ychwanegol. Mae’r bundle rhyngweithrediad ffocysu yn ychwanegu rheoliad command Invoker ac yn toglo modd gor-lenydd
-(`should-overlay-tray`) pan fo lled yn croesi `--drawer-layout-min-width` (diofyn
+**Trefniant drôr** — rhowch `.instui-drawer-layout` ar wraidd trefniant gyda plant `.tray` a `.content`.
+Ychwanegwch yr awgrymyn `open` (neu `-open`) i ddatgelu’r drôr, a defnyddiwch `placement="end"`
+(neu `-placement-end`) i’w docio i ochr diweddu mewnol — mae lleoliad yn penderfynu trwy eiddo rhesymol
+`inset-inline-*`/`flex-direction`, felly mae’n troi’n awtomatig o dan `dir="rtl"` heb
+reolau ychwanegol. Mae’r buntl rhyngweithio canolbwynt yn ychwanegu llwybro gorchmynion Invoker ac yn toglo modd gorchudd
+(`should-overlay-tray`) pan fo lled yn croesi `--drawer-layout-min-width` (ddiofyn
 `--instui-breakpoints-sm`, yna `30rem`):
 
 ```html
@@ -277,18 +273,18 @@ Ychwanegwch yr atodiad `open` (neu `-open`) i ddatgelu’r drôr, a defnyddiwch 
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/drawer-layout.iife.js"></script>
 ```
 
-**Masg** — mae `.instui-mask` ar gyfer gor-lenyddion sy’n ffrydio (spinner dros gerdyn); mae `::backdrop` modal yn ymdrin â’r achos modal.
+**Masg** — mae `.instui-mask` ar gyfer gorchuddion mewn-flow (spinner dros gard); mae `::backdrop` modal yn cwmpasu achos modal.
 
-Mae’r ddau batrwm hefyd wedi’u lapio fel elfennau arfer ymddygiadol yn `@pantoken/web-components`:
-`<instui-modal open>` (yn `<dialog>` a gyrrir gan ei nodwedd `open`) a `<instui-context-view>` (popover naturiol).
+Mae’r ddau batrwm hefyd wedi’u pacio fel elfennau arferol ymddygiadol yn `@pantoken/web-components`:
+`<instui-modal open>` (__`<dialog>` yn cael ei gyrru gan ei nodwedd `open`) a `<instui-context-view>` (popover naturiol).
 
 Cefnogaeth porwr: mae API popover a `popovertarget` yn Baseline 2024; mae gorchmynion invoker
-(`command`/`commandfor`) yn Baseline 2025, felly ar borwyr hŷn cysylltwch y botymau i `dialog.showModal()`
-fel un-lin fallback. Mae gosod popover wrth ei sbardun yn defnyddio lleoliad anchora CSS lle mae’n cael ei gefnogi (Chromium); mewn mannau eraill mae’n canoli yn y haen uchaf.
+(`command`/`commandfor`) yn Baseline 2025, felly ar borwyr hŷn gwnewch linciau’r botymau i `dialog.showModal()`
+fel adran un-lin. Mae lleoli popover wrth ei sbardun yn defnyddio lleoliad anchora CSS lle mae hwnnw’n cael ei gefnogi (Chromium); fel arall mae’n canolbwyntio yn yr haen uchaf.
 
 ## Ffurflenni
 
-**FormField** — mae `.instui-form-field` yn lapwr CSS-Grid sy’n gosod label, y rheolydd, a negeseuon. Rhowch ef ar `<label>` fel bod y label yn cysylltu â’i reolydd yn naturiol. Mae ganddo dri ardal grid — `label`, `controls`, `messages`:
+**FormField** — mae `.instui-form-field` yn lapio CSS-Grid sy’n gosod label, y rheolydd, a negeseuon. Rhowch ef ar `<label>` fel bod y label yn cysylltu â’i reolydd yn naturiol. Mae ganddo dri ardal grid — `label`, `controls`, `messages`:
 
 ```html
 <label class="instui-form-field">
@@ -300,22 +296,21 @@ fel un-lin fallback. Mae gosod popover wrth ei sbardun yn defnyddio lleoliad anc
 </label>
 ```
 
-Mae `-layout-stacked` (diofyn) yn stacio’r ardaloedd; mae `-layout-inline` yn gosod y label ochr-yn-ochr â’r rheolydd (tune gyda `-label-align-{start,end}` a `-v-align-{top,middle,bottom}`). Mae `-readonly` yn ail-liwio’r label.
+Mae `-layout-stacked` (ddiofyn) yn stacio’r ardaloedd; mae `-layout-inline` yn gosod y label wrth ymyl y rheolydd (addaswch gyda `-label-align-{start,end}` a `-v-align-{top,middle,bottom}`). Mae `-readonly` yn ail-liwio’r label.
 
-Mae’r **asterisg gofynnol** yn ymddangos pan fo’r maes yn ofynnol gan _naill ai_ y dosbarth `-required` _neu_ reolydd naturiol `required` o fewn iddo — felly gallwch osod `required` ar y mewnbwn a bydd y marciau’n ymddangos. Mae’n addurniadol (yn `::after` ar y label, y tu allan i goeden hygyrchedd); pairiwch ef gyda nod fel
-“mae meysydd wedi’u marcio \* yn ofynnol” oni bai bod y ffurflen yn amlwg ei hun.
+Mae’r **asterisk gofynnol** yn ymddangos pan fo’r maes yn ofynnol gan _naill ai_ ddosbarth `-required` _neu_ reolydd naturiol `required` ynddo — felly gallwch osod `required` ar y mewngofnodi a bydd y nod yn ymddangos. Mae’n addurnol (__`::after` ar y label, allan o goedyn hygyrchedd); paru ef ag nodyn fel
+"mae caeau wedi’u marcio \* yn ofynnol" oni bai bod y ffurflen yn eglur ei hun.
 
-**FormFieldGroup** — mae `.instui-form-field-group` yn grwpio meysydd cysylltiedig mewn `<fieldset>` gyda
-disgrifiad `<legend>`. Mae’n pure layout (dim tocynnau penodol): yn ddiofyn mae’n stacio’r meysydd;
+**FormFieldGroup** — mae `.instui-form-field-group` yn grwpio caeau perthnasol mewn `<fieldset>` gyda disgrifiad `<legend>`. Mae’n hollol drefniant (dim tocynnau penodol): mae’n stacio’r caeau’n ddiofyn;
 mae `-layout-columns` / `-layout-inline` yn eu llifo i golofnau ymatebol, gyda `-row-spacing-*` /
-`-col-spacing-*` a `-v-align-*` i aflunio’r grid.
+`-col-spacing-*` a `-v-align-*` i addasu’r grid.
 
 **RadioInputGroup** — mae `.instui-radio-input-group` yn yr un grwpio `<fieldset>`/`<legend>`,
-arbenigol ar gyfer radio. Oherwydd bod y radio plant yn rhannu `name`, mae’r dewis yn un-ddewis yn naturiol —
-felly mae set o fotymau toggle yn ymddwyn fel un rheolydd, nid botymau rhydd. Mae `-variant-simple` (diofyn) yn gosod
-radio safonol (`-layout-columns`/`-inline` yn eu llifo i rhes); mae `-variant-toggle` yn cysylltu’r
-botymau `.instui-radio.-variant-toggle` plant i un rheolydd segmentiedig (ffiniau ffin wedi’u cywasgu,
-penau allanol crwn):
+arbenigol ar gyfer radio. Oherwydd bod y radios plentyn yn rhannu `name`, mae dewis yn un-ddewisiad yn naturiol —
+felly mae set o fotymau troi yn ymddwyn fel un rheolydd, nid botymau rhydd. Mae `-variant-simple` (ddiofyn) yn gosod
+radios safonol (`-layout-columns`/`-inline` yn eu llifo i rhes); mae `-variant-toggle` yn cysylltu’r
+botymau `.instui-radio.-variant-toggle` plentyn yn un rheolydd segmentiedig (byrddau wedi’u cwtogi,
+pen-y-mewn yn crwn):
 
 ```html
 <fieldset class="instui-radio-input-group -variant-toggle">
@@ -328,31 +323,29 @@ penau allanol crwn):
 </fieldset>
 ```
 
-**Negeseuon** — mae `.instui-form-field-messages` yn y cynhwysydd; mae pob `.instui-form-field-message` yn cymryd
-`-type-*`: `-type-hint` (llwyd, diofyn), `-type-error` (testun coch + glyph cylch-rhybudd), `-type-success`
-(testun gwyrdd + glyph cylch-tic), a `-type-screenreader-only` (lle mae’n cael ei dorri’n weledol, ond yn dal i gael ei gyhoeddi). Mae’r glyphs yn paentio yn `currentColor`, felly maent bob amser yn cyfateb i liw y neges. Mae `-type-new-error` yn henffasiwn o `-type-error`. Cysylltwch y cynhwysydd â’r rheolydd gyda `aria-describedby`, a gosod
+**Negeseuon** — mae `.instui-form-field-messages` yn y cynnwys; mae pob `.instui-form-field-message` yn cymryd
+`-type-*`: `-type-hint` (llwyd, diofyn), `-type-error` (testun coch + glyff cylch-rhybudd), `-type-success`
+(testun gwyrdd + glyff cylch-ticio), a `-type-screenreader-only` (wedi’i dorri’n weledol, yn dal i gael ei gyhoeddi). Mae’r glyffau’n paentio yn `currentColor`, felly maent bob amser yn cyfateb i liw y neges. Mae `-type-new-error` yn hen-enw o `-type-error`. Cysylltwch y cynhwysydd â’r rheolydd gyda `aria-describedby`, a gosodwch
 `aria-invalid` ar y rheolydd pan fo gwall.
 
-Mewn FormField, mae negeseuon `-type-error` yn dilyn dilysu ochr-clïen: maent yn aros wedi’u cuddio tan fod rheolydd y maes yn `:user-invalid` (naturiol, ar ôl i’r defnyddiwr ryngweithio) — neu’ch gorchmynnwch ef gyda `-invalid`
-ar y `.instui-form-field` (ar gyfer gwall ar y gweinydd). Mae `.instui-form-field-messages` unigol (heb fod mewn maes) heb ei effeithio. Mae cylch ffocws y rheolydd yn dilyn yr un patrwm: perygl pan fo `:user-invalid`/`-invalid`,
+Mewn FormField, mae neges `-type-error` yn dilyn dilysu ochr-cleient: mae’n aros wedi’i guddio tan fod rheolydd y maes yn `:user-invalid` (naturiol, ar ôl i’r defnyddiwr ryngweithio) — neu gallwch ei orfodi gyda `-invalid`
+ar y `.instui-form-field` (ar gyfer gwall gweinydd). Nid yw `.instui-form-field-messages` annibynnol (heb fod mewn maes) yn cael ei effeithio. Mae cylch ffocws y rheolydd yn cydymffurfio: perygl pan fo `:user-invalid`/`-invalid`,
 llwyddiant ar `-success`.
 
-**Rheolyddion testun** — mae `.instui-text-input` (**`<input>`** naturiol), `.instui-text-area` (**`<textarea>`** naturiol,
-addasadwy), a `.instui-simple-select` (**`<select>`** naturiol gyda caret) yn rhannu un golwg a’r un
-statwsau: `-invalid` (ffin gwall), `-success` (ffin llwyddiant), `-readonly`, `:disabled` naturiol, a
-`-size-{sm,md,lg}`. Ar gyfer eicon ar y blaen/cefndi (InstUI’s `renderBeforeInput`/`renderAfterInput`), rhowch y mewnbwn mewn `.instui-input-group` a chynnwys slot `.before`/`.after` (glyph `-icon-*`); mae `-should-not-wrap`
-yn cadw’r elfen ar un llinell. Mae `.instui-number-input` yn y fasâd honno gyda cholofn spinner +/- `.arrows` (**`type="number"`** naturiol); cysylltwch y botymau at `stepUp()`/`stepDown()`). Mae `.instui-range-input` yn `input[type="range"]` wedi’i steilio sy’n rendro ei werth mewn `.instui-range-input-value` bwcl gwrthwyneb. Ar gyfer combobox cyfoethog gyda popover listbox, defnyddiwch `@instructure/ui` — mae’r llyfrgell hon yn cwmpasu’r rheolyddion naturiol.
+**Rheolyddion testun** — mae `.instui-text-input` (**`<input>` naturiol), `.instui-text-area` (**`<textarea>` naturiol,
+aralladwy), a `.instui-simple-select` (__`<select>` naturiol gyda caret) yn rhannu un golwg a’r same
+statws: `-invalid` (bwrdd gwall), `-success` (bwrdd llwyddiant), `-readonly`, **`:disabled` naturiol, a
+`-size-{sm,md,lg}`. Ar gyfer eicon ar y blaen/cynnen (InstUI `renderBeforeInput`/`renderAfterInput`), rhowch y mewnbwn mewn `.instui-input-group` a ychwanegwch slot `.before`/`.after` (glyff `-icon-*`); mae `-should-not-wrap` yn ei gadw ar un linell. Mae `.instui-number-input` yn yr wyneb hwnnw gyda cholofn spinner +/- `.arrows` (**`type="number"` naturiol; cysylltwch y botymau â `stepUp()`/`stepDown()`). Mae `.instui-range-input` yn __`input[type="range"]` wedi’i arddullio sy’n rendro ei werth mewn bwbl gwrthdro `.instui-range-input-value`. Ar gyfer combobox cyfoethog gyda popover rhestr, defnyddiwch `@instructure/ui` — mae’r llyfrgell hon yn cwmpasu’r rheolyddion naturiol.
 
-**Dewis dropdown wedi’i steilio (arbrofol)** — mae `select.css` opsiynol yn uwchraddio’r un
-elfen `.instui-simple-select`: mae’n steilio’r dropdown agored (y panel a phob dewis, gyda hover a
-statws wedi’u dewis) gan ddefnyddio’r model Select Addasadwy CSS.
+**Dewis dropdown wedi’i arddullio (arbennig)** — mae `select.css` dewisol yn uwchraddio’r un
+elfen `.instui-simple-select`: mae’n arddullio’r dropdown agored (y panel a phob opsiwn, gyda hover a
+statws wedi’u dewis) gan ddefnyddio model Select Addasadwy CSS.
 
 > [!WARNING]
-> Mae `select.css` yn ddibynnol ar `appearance: base-select` / `::picker(select)`, sydd **arbrofol**
-> (Chrome 135+, heb fod yn Baseline eto). Fe’i anfonir fel sheitlys opsiynol ar wahân ac mae pob rheol wedi’i raddio
-> tu ôl i `@supports (appearance: base-select)`, felly ni wnaiff ddim yn borwyr nad ydynt yn eu cefnogi — mae’r
-> rheolydd `.instui-simple-select` yn aros yn yr select naturiol syml. Llwythwch ef ond os ydych eisiau’r
-> dropdown uwch ac yn derbyn y cefnogaeth cyfyngedig.
+> Mae `select.css` yn dibynnu ar `appearance: base-select` / `::picker(select)`, sy’n **arniadol**
+> (Chrome 135+, heb fod yn Baseline eto). Fe’i cynhwysir fel sheitlis ar wahân a phob rheol wedi’i gatu
+> y tu ôl i `@supports (appearance: base-select)`, felly nid yw’n gwneud dim ar borwyr heb gefnogaeth — mae’r rheolydd `.instui-simple-select` yn aros y select naturiol syml. Llwythwch ef ond os ydych eisiau’r
+> dropdown uwchraddiedig a chydnabod y cefnogaeth gyfyngedig.
 
 ```ts
 import "@pantoken/components/components.css";

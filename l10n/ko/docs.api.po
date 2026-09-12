@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 04:57+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2747,25 +2747,25 @@ msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) 는 `AGENTS.md`, `llms.txt`
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "For design tools."
-msgstr "For design tools."
+msgstr "디자인 도구용."
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins)."
-msgstr "Optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins)."
+msgstr "토큰 또는 CSS 출력을 확장하는 선택적 변환입니다. [Plugins](/guide/plugins)를 참조하세요."
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are\nself-contained, so we document them here and some ship to npm on their own."
-msgstr "Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are\nself-contained, so we document them here and some ship to npm on their own."
+msgstr "모노레포 자체를 위한 빌드, 문서 및 데모 인프라입니다. 대부분은 내부용이지만, 구성 요소들은\n독립적이어서 여기서 문서화하고 일부는 별도로 npm에 배포됩니다."
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API\npage; the others do."
-msgstr "`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API\npage; the others do."
+msgstr "`@pantoken/validate-generated`는 한 번 실행되는 스크립트입니다(`pnpm run ready`)에 의해 호출되므로), 따라서 API\n페이지가 없습니다; 다른 것들은 있습니다."
 
 #: index.md
 #, fuzzy, no-c-format
@@ -2777,13 +2777,13 @@ msgstr "`@pantoken/ai` — pantoken을 *사용하는* 프로젝트를 위한 소
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
-msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
+msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/)는 `AGENTS.md`, `llms.txt`, 및\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code))를 소비자 레포지토리에 설치합니다."
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Plugins we author for the tools we build with, grouped by host. They're standalone and publishable."
-msgstr "Plugins we author for the tools we build with, grouped by host. They're standalone and publishable."
+msgstr "우리가 사용하는 도구를 위해 작성한 플러그인으로 호스트별로 그룹화되어 있습니다. 독립형이며 게시할 수 있습니다."
 
 #: packages/cli/src/functions/parseArgs.md
 #, no-c-format
@@ -5950,7 +5950,7 @@ msgstr "InstUI의 레이아웃 프리미티브(View, Flex, Grid, List, …)는 �
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Renames and re-exports [visualDebug](functions/visualDebug.md)"
-msgstr "Renames and re-exports [visualDebug](functions/visualDebug.md)"
+msgstr "이름을 변경하고 재내보냅니다 [visualDebug](functions/visualDebug.md)"
 
 #: plugins/pantoken/visual-debug/src/interfaces/VisualDebugOptions.md
 #, no-c-format
@@ -10527,7 +10527,7 @@ msgstr "호버할 수 있는 \"전체 화면 보기\" 버튼으로, VitePress �
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "The `.hero`/`.heading`/`.message` parts are composed by the consumer's markup, not enforced structure; `-clickable` only adds hover styling, so a real click target still needs `tabindex` and a keyboard handler."
-#~ msgstr "The `.hero`/`.heading`/`.message` parts are composed by the consumer's markup, not enforced structure; `-clickable` only adds hover styling, so a real click target still needs `tabindex` and a keyboard handler."
+#~ msgstr "이 `.hero`/`.heading`/`.message` 부분들은 강제된 구조가 아니라 소비자의 마크업으로 구성됩니다; `-clickable` 은 호버 스타일만 추가하므로, 실제 클릭 대상은 여전히 `tabindex` 과 키보드 핸들러가 필요합니다."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -25390,3 +25390,662 @@ msgstr "호버할 수 있는 \"전체 화면 보기\" 버튼으로, VitePress �
 #~ msgctxt "docs.api:prose"
 #~ msgid "pantoken icon logo (reversed)."
 #~ msgstr "pantoken 아이콘 로고(반전)."
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "에셋 콘텐츠와 작성자 함수는 이제 `@pantoken/scaffold`에 위치합니다 (따라서 기본 scaffold\nflow는 순환 의존성) 없이 이를 제공할 수 있습니다; 하위 호환성을 위해 여기에서 재내보냅니다."
+
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "AI 에이전트"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "여기에 내용입니다."
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "동작"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  기본 "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " 색상과 사용자 지정 아이콘.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  축하합니다! 당신은 \"success\" 색상을 사용하고 있습니다.\n  "
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "받은 편지함"
+
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "새 기능"
+
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "이것은 사용자 지정 아이콘이 있는 보라색 배너입니다."
+
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "확인"
+
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "취소"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  이것은 간격이 좁은 바다색 배너입니다.\n"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "기본 표면의 스타일이 적용된 링크."
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "아직 항목이 없습니다"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "시작하려면 첫 항목을 생성하세요."
+
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "홈"
+
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "가이드"
+
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "구성 요소"
+
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "경로 표시"
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "기본"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "보조"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "새로운 기능"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "해당 피겨는 아이콘, 아바타 또는 이미지와 같은 어떤 선행 비주얼도 될 수 있습니다."
+
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "2026년 3월"
+
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "일"
+
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "월"
+
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "화"
+
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "수"
+
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "목"
+
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "금"
+
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "토"
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "카드 제목"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "첫 번째 섹션"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "두 번째 섹션"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "문제가 발생했습니다."
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "컨텍스트 뷰는 캐럿이 있는 콜아웃을 프레임합니다. 팝오버로서 최상위 레이어에 올라가며 밖을 클릭하거나 Esc를 누르면 닫힙니다."
+
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "트레이 내용"
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "네비게이션"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "주요 콘텐츠"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "모듈"
+
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "여기에 이미지를 끌어다 놓으세요"
+
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", 또는 클릭하여 찾아보세요."
+
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG 또는 JPG 최대 5&nbsp;MB."
+
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "배송 주소"
+
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "이름"
+
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "성"
+
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "시"
+
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "주"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "모든 항목은 배송 목적으로만 사용됩니다."
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "절대 공유하지 않습니다."
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "유효한 이메일 주소를 입력하세요."
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "이메일 주소"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "하나"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "둘"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "제목 h1"
+
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "제목 없음"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "스타일이 적용된 링크"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "첫 번째 항목"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "두 번째 항목"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "세 번째 항목"
+
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "작업"
+
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "편집"
+
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "복제"
+
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "삭제"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "활성 사용자"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "작음"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — 좁은 모달입니다."
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "닫기"
+
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "게시됨"
+
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "초안"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "검토 중"
+
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "오래됨"
+
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "차단됨"
+
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "이 페이지 공유"
+
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "팝오버는 트리거에 연결된 가벼운 표면입니다. 이 팝오버는 네이티브 "
+
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr " 속성."
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "원시적으로 칠해진 상자."
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  문서 업로드: "
+
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "점수"
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "사용된 저장 공간"
+
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "릴리스 노트"
+
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "본문 텍스트와 "
+
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "링크"
+
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "티셔츠 사이즈"
+
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " 스몰"
+
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " 미디엄"
+
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " 라지"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " 옵션 A"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "작은 브레이크포인트에서 또는 그 이하에서 숨김."
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "작은 브레이크포인트에서 또는 그 이상에서만 표시됨."
+
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "예시"
+
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "새 창에서 열림"
+
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "캘린더"
+
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "설정"
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "과일을 선택하세요…"
+
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "사과"
+
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "오렌지"
+
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "배"
+
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "상단 마진이 큰 패딩된 상자."
+
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "항상 맨 위."
+
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "평점이 높은 영화"
+
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "순위"
+
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "제목"
+
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "연도"
+
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "평점"
+
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "쇼생크 탈출"
+
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "대부"
+
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "대부 2"
+
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "개요"
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "세부 정보"
+
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "비활성화됨"
+
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "기록"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "개요 탭의 내용이 여기에 표시됩니다."
+
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "작음"
+
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "아주 작은 텍스트"
+
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "작은 텍스트"
+
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "인용된 텍스트"
+
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "AI 강조 텍스트"
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "이 패키지에는 무엇이 포함되나요?"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  Instructure 토큰으로 빌드된 클래스 기반 컴포넌트 스타일과 본문 레이어.\n"
+
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "고급 설정"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "이 옵션들은 그룹이 확장되면 표시됩니다. 헤더 행에는 열릴 때 회전하는 셰브런(chevron)이 있으며, 내용은 구분선 아래에 배치됩니다."
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "기본 배치는 상단입니다"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "애니메이션 콘텐츠"
+
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "필터"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "트레이가 시작 가장자리에서 슬라이드되어 나타나며 뷰포트 높이를 채웁니다."
+
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "트레이 전환"
+
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " 강의 자료"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " Syllabus.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " 1주차"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " Reading.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " Slides.pptx"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " Rubric.docx"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "이 텍스트는 기본적으로 한 줄로 제한되며 줄임표(...)로 끝납니다."
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "이 텍스트는 세 줄로 제한되며 줄임표(...)로 끝납니다."
+
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  카드와 유사한 표면.\n"
+
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "윤곽선이 있는 자식."
+
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "변경 사항이 저장되었습니다."
+
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "단순한 인라인 알림."
+
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "변경 사항 저장"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "이 항목에 대한 자세한 정보."
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "패널 전환"
+
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "프로필"
+
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "삭제…"
+
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "이 항목을 삭제하시겠습니까?"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "첫 번째 "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "다음"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "두 번째 "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "뒤로"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "활성"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "옵션"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "대시보드"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "강좌"
+
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "디자인"
+
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "북마크됨"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "마우스를 올려보세요"
+
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "메뉴"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "두 줄로 제한될 긴 설명…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

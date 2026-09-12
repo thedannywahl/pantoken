@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 08:44+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -488,7 +488,7 @@ msgstr "Her token bir `var(--instui-*)` referansı olarak (somut bir değer değ
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Renames and re-exports [pantokenPreset](functions/pantokenPreset.md)"
-msgstr "Renames and re-exports [pantokenPreset](functions/pantokenPreset.md)"
+msgstr "Yeniden adlandırır ve yeniden dışa aktarır [pantokenPreset](functions/pantokenPreset.md)"
 
 #: bundlers/tailwind/src/interfaces/PantokenPresetOptions.md
 #, no-c-format
@@ -719,7 +719,7 @@ msgstr "Renk örneklerini ASE baytları olarak kodla. Hex olmayan renk örnekler
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`Swatch`](../interfaces/Swatch.md)[]"
-msgstr "readonly [`Swatch`](../interfaces/Swatch.md)[]"
+msgstr "salt okunur [`Swatch`](../interfaces/Swatch.md)[]"
 
 #: design/swatches/src/functions/toAse.md
 #: design/swatches/src/functions/toGpl.md
@@ -2777,7 +2777,7 @@ msgstr "`@pantoken/ai` — pantoken'i kullanan projeler için tüketiciye yönel
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
-msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
+msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) yükler `AGENTS.md`, `llms.txt`, ve\n\tassistant/editor kuralları (Cursor, Copilot, Windsurf, Claude Code) tüketici deposuna."
 
 #: index.md
 #, no-c-format
@@ -3922,7 +3922,7 @@ msgstr "Dönüşümün bir `plugins:` dizisini gerçekte yönlendirdiği aşamal
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Re-exports [Mode](../../core/src/type-aliases/Mode.md)"
-msgstr "Re-exports [Mode](../../core/src/type-aliases/Mode.md)"
+msgstr "Yeniden dışa aktarır [Mode](../../core/src/type-aliases/Mode.md)"
 
 #: packages/plugin-kit/src/interfaces/ResolveOptions.md
 #: packages/utils/src/interfaces/ResolveOptions.md
@@ -5204,7 +5204,7 @@ msgstr "Brings in icons that aren't part of the InstUI set (product/brand marks,
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Renames and re-exports [customIcons](functions/customIcons.md)"
-msgstr "Renames and re-exports [customIcons](functions/customIcons.md)"
+msgstr "Yeniden adlandırır ve yeniden dışa aktarır [customIcons](functions/customIcons.md)"
 
 #: plugins/pantoken/custom-icons/src/interfaces/CustomIcon.md
 #, no-c-format
@@ -9355,7 +9355,7 @@ msgstr "Üç öğe içerir: [resolveDemo](functions/resolveDemo.md) (spec → if
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Options for [demoMarkdownIt](../functions/demoMarkdownIt.md): the [resolveDemo](../functions/resolveDemo.md) fields plus optional live-example seaming."
-msgstr "Options for [demoMarkdownIt](../functions/demoMarkdownIt.md): the [resolveDemo](../functions/resolveDemo.md) fields plus optional live-example seaming."
+msgstr "[demoMarkdownIt](../functions/demoMarkdownIt.md) için seçenekler: [resolveDemo](../functions/resolveDemo.md) alanları ve isteğe bağlı canlı örnek birleştirmesi."
 
 #: tools/demo/src/interfaces/DemoMarkdownItOptions.md
 #: tools/demo/src/interfaces/ResolveOptions.md
@@ -9461,7 +9461,7 @@ msgstr "Embed'i üreten sağlayıcı (`url`, `self`, `stackblitz`, …)."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The iframe `src`."
-msgstr "The iframe `src`."
+msgstr "Bu iframe `src`."
 
 #: tools/demo/src/interfaces/ResolvedDemo.md
 #, no-c-format
@@ -10547,7 +10547,7 @@ msgstr "Hover ile görünen bir \"tam ekran görüntüle\" düğmesi; VitePress'
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Long-form alias of {@link -size-lg}."
-#~ msgstr "Long-form alias of {@link -size-lg}."
+#~ msgstr "{@link -size-lg} için uzun biçimli takma ad."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -10562,7 +10562,7 @@ msgstr "Hover ile görünen bir \"tam ekran görüntüle\" düğmesi; VitePress'
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Long-form alias of {@link -size-md}."
-#~ msgstr "Long-form alias of {@link -size-md}."
+#~ msgstr "{@link -size-md} için uzun biçimli takma ad."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -10572,7 +10572,7 @@ msgstr "Hover ile görünen bir \"tam ekran görüntüle\" düğmesi; VitePress'
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Long-form alias of {@link -size-sm}."
-#~ msgstr "Long-form alias of {@link -size-sm}."
+#~ msgstr "{@link -size-sm} için uzun biçimli takma ad."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -25390,3 +25390,661 @@ msgstr "Hover ile görünen bir \"tam ekran görüntüle\" düğmesi; VitePress'
 #~ msgctxt "docs.api:prose"
 #~ msgid "pantoken icon logo (reversed)."
 #~ msgstr "pantoken ikon logo (ters)."
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "Varlık içeriği ve yazma işlevi artık `@pantoken/scaffold` içinde yer alıyor (böylece temel iskelet\nflow bunları döngüsel bir bağımlılık olmadan sunabilir); burada geriye dönük uyumluluk için yeniden ihraç edildi)."
+
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "Yapay Zeka Ajanı"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "İçerik burada."
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "Eylem"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  Varsayılan ile bir uyarı "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " renk ve özel bir simge.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  Tebrikler! \"success\" rengini kullanıyorsunuz.\n  "
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "Gelen Kutusu"
+
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "Yeni özellik"
+
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "Bu, özel bir simgeye sahip menekşe renkli bir afiştir."
+
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "Tamam"
+
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "İptal"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  Bu kompakt boşluklu deniz renkli bir afiştir.\n"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "Temel yüzeyde stillendirilmiş bir bağlantı."
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "Henüz öğe yok"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "Başlamak için ilk öğenizi oluşturun."
+
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "Ana Sayfa"
+
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "Kılavuzlar"
+
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "Bileşenler"
+
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "Gezinti Yolu"
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "Birincil"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "İkincil"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "Yenilikler"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "Figür herhangi bir öncü görsel olabilir — bir simge, bir avatar veya bir resim."
+
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "Mart 2026"
+
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "Paz"
+
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "Pzt"
+
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "Sal"
+
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "Çar"
+
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "Per"
+
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "Cum"
+
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "Cmt"
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "Kart başlığı"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "Birinci bölüm"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "İkinci bölüm"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "Bir şeyler yanlış gitti."
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "Bir bağlam görünümü, bir işaretçi (caret) ile bir çağırıcıyı (callout) çerçeveler. Popover olarak en üst katmanda yer alır ve başka bir yere tıkladığınızda veya Esc tuşuna bastığınızda kapanır."
+
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "Tepsi içeriği"
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "Gezinti"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "Ana içerik"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "Modüller"
+
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "Buraya bir görüntü sürükleyin"
+
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", veya göz atmak için tıklayın."
+
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG veya JPG, en fazla 5&nbsp;MB."
+
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "Teslimat adresi"
+
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "Ad"
+
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "Soyad"
+
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "Şehir"
+
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "Eyalet"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "Tüm alanlar yalnızca teslimat için kullanılır."
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "Bunu asla paylaşmayacağız."
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "Geçerli bir e-posta adresi girin."
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "E-posta adresi"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "Bir"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "İki"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "Başlık h1"
+
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "Başlıksız"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "Stil verilmiş bir bağlantı"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "Birinci öğe"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "İkinci öğe"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "Üçüncü öğe"
+
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "İşlemler"
+
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "Düzenle"
+
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "Kopyala"
+
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "Sil"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "Aktif kullanıcılar"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "Küçük"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — dar bir modal."
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "Kapat"
+
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "Yayınlandı"
+
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "Taslak"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "İncelemede"
+
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "Güncelliğini yitirmiş"
+
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "Engellendi"
+
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "Bu sayfayı paylaş"
+
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "Bir popover, bir tetikleyiciye sabitlenmiş hafif bir yüzeydir. Bu olan, yerel "
+
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr " özniteliği."
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "İlkel boyalı kutu."
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  Belge Yükleniyor: "
+
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "Skor"
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "Kullanılan depolama"
+
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "Sürüm notları"
+
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "Gövde metni ile bir "
+
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "bağlantı"
+
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "Tişört bedeni"
+
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " Küçük"
+
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " Orta"
+
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " Büyük"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " Seçenek A"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "Küçük kırılma noktasında veya altında gizli."
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "Sadece küçük kırılma noktasında veya üzerinde gösterilir."
+
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "örnek"
+
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "Yeni bir pencerede açılır"
+
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "Takvim"
+
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "Ayarlar"
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "Bir meyve seçin…"
+
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "Elma"
+
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "Portakal"
+
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "Armut"
+
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "Üstte büyük bir kenar boşluğu olan dolgulu kutu."
+
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "Her zaman en üstte."
+
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "En yüksek puanlı filmler"
+
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "Sıra"
+
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "Başlık"
+
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "Yıl"
+
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "Puan"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "The Shawshank Redemption"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "The Godfather"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "The Godfather: Part II"
+
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "Genel Bakış"
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "Ayrıntılar"
+
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "Devre Dışı"
+
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "Geçmiş"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "Genel Bakış sekmesinin içeriği burada gösterilir."
+
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "küçük"
+
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "çok küçük metin"
+
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "küçük metin"
+
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "Alıntı metni"
+
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "Yapay zeka vurgulu metin"
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "Bu pakette neler bulunur?"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  Instructure token'larından oluşturulmuş sınıf tabanlı bileşen stilleri ve ek olarak bir metin katmanı.\n"
+
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "Gelişmiş ayarlar"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "Bu seçenekler grup genişletildiğinde açığa çıkar. Başlık satırı, açıldığında dönen bir chevron taşır ve içerik bir ayırıcı altında yer alır."
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "Varsayılan yerleşim üstte"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "Animasyonlu içerik"
+
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "Filtreler"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "Bir çekmece başlangıç kenarından kayar ve görünüm yüksekliğini doldurur."
+
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "çekmeceyi aç/kapat"
+
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " Ders dosyaları"
+
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " Müfredat.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " Hafta 1"
+
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " Okuma.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " Sunumlar.pptx"
+
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " Değerlendirme Ölçeği.docx"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "Bu metin varsayılan olarak tek satıra sınırlandırılır ve sonunda üç nokta ile biter."
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "Bu metin üç satıra sınırlandırılır ve sonunda üç nokta ile biter."
+
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  Kart benzeri bir yüzey.\n"
+
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "Anahatlı alt öğe."
+
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "Değişiklikleriniz kaydedildi."
+
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "Düz, satır içi bir bildirim."
+
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "Değişiklikleri kaydet"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "Bu öğe hakkında daha fazla bilgi."
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "Paneli aç/kapat"
+
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "Profil"
+
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "Sil…"
+
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "Bu öğeyi silmek istiyor musunuz?"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "İlk "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "Sonraki"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "İkinci "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "Geri"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "Etkin"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "Seçenekler"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "Kontrol Paneli"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "Kurslar"
+
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "Tasarım"
+
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "Yer işaretlendi"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "Üzerine gel"
+
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "Menü"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "İki satıra sıkıştırılacak uzun bir açıklama…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

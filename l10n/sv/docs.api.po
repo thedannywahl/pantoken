@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 08:03+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2777,7 +2777,7 @@ msgstr "`@pantoken/ai` — kundvända agentresurser för projekt som *använder*
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
-msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
+msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installerar `AGENTS.md`, `llms.txt`, och\n\tassistant/editor-regler (Cursor, Copilot, Windsurf, Claude Code) i ett konsumentförråd."
 
 #: index.md
 #, no-c-format
@@ -3801,7 +3801,7 @@ msgstr "Skapa en resolver som expanderar `var(--x)`-referenser till konkreta bla
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`Token`](../../../core/src/interfaces/Token.md)[]"
-msgstr "readonly [`Token`](../../../core/src/interfaces/Token.md)[]"
+msgstr "skrivskyddad [`Token`](../../../core/src/interfaces/Token.md)[]"
 
 #: packages/plugin-kit/src/functions/makeResolver.md
 #: packages/utils/src/functions/makeResolver.md
@@ -7916,7 +7916,7 @@ msgstr "Löser upp en uppsättning [CdnFile](../../../../platforms/canvas-theme-
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[]"
-msgstr "readonly [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[]"
+msgstr "skrivskyddad [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[]"
 
 #: renderers/tinymce/src/functions/pantokenHtmlCompletion.md
 #, no-c-format
@@ -10862,7 +10862,7 @@ msgstr "En hovringsbar \"visa i helskärm\"-knapp, överlagrad på en demo/exemp
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Medium."
-#~ msgstr "Medium."
+#~ msgstr "Medel."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -25390,3 +25390,668 @@ msgstr "En hovringsbar \"visa i helskärm\"-knapp, överlagrad på en demo/exemp
 #~ msgctxt "docs.api:prose"
 #~ msgid "pantoken icon logo (reversed)."
 #~ msgstr "pantoken ikonlogotyp (inverterad)."
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "Tillgångens innehåll och skrivarfunktionen finns nu i `@pantoken/scaffold` (så att basstommen\nflöde kan erbjuda dem utan ett cirkulärt beroende); återexporteras här för bakåtkompatibilitet."
+
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "AI-agent"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "Innehåll här."
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "Åtgärd"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  En varning med standard "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " färg och en anpassad ikon.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  Grattis! Du använder \"success\"-färgen.\n  "
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "Inkorg"
+
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "Ny funktion"
+
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "Detta är en violett banderoll med en anpassad ikon."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "Avbryt"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  Detta är en havsfärgad banderoll med kompakt avstånd.\n"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "En stylad länk på basytan."
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "Inga objekt ännu"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "Skapa ditt första objekt för att komma igång."
+
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "Hem"
+
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "Guider"
+
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "Komponenter"
+
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "Brödsmulor"
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "Primär"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "Sekundär"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "Vad är nytt"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "Figuren kan vara vilket ledande visuellt element som helst — en ikon, en avatar eller en bild."
+
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "mars 2026"
+
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "Sö"
+
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "Må"
+
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "Ti"
+
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "On"
+
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "To"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "Fr"
+
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "Lö"
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "Korttitel"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "Första sektionen"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "Andra sektionen"
+
+msgctxt "docs.api:prose"
+msgid "Checkbox\n"
+msgstr "Kryssruta\n"
+
+msgctxt "docs.api:prose"
+msgid "Toggle\n"
+msgstr "Växla\n"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "Något gick fel."
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "En kontextvy ramar in en callout med en pil. Som en popover ligger den överst och stängs när du klickar utanför eller trycker på Esc."
+
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "Brickans innehåll"
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "Navigering"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "Huvudinnehåll"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "Moduler"
+
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "Dra en bild hit"
+
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", eller klicka för att bläddra."
+
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG eller JPG upp till 5&nbsp;MB."
+
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "Leveransadress"
+
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "Förnamn"
+
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "Efternamn"
+
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "Stad"
+
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "Delstat"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "Alla fält används endast för leverans."
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "Vi kommer aldrig att dela det."
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "Ange en giltig e-postadress."
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "E-postadress"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "Ett"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "Två"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "Rubrik h1"
+
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "Namnlös"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "En stylad länk"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "Första objektet"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "Andra objektet"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "Tredje objektet"
+
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "Åtgärder"
+
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "Redigera"
+
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "Duplicera"
+
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "Ta bort"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "Aktiva användare"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "Liten"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — ett smalt modalfönster."
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "Stäng"
+
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "Publicerad"
+
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "Utkast"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "Under granskning"
+
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "Föråldrad"
+
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "Blockerad"
+
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "Dela den här sidan"
+
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "En popover är en lätt yta förankrad vid en utlösare. Den här använder den inbyggda "
+
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr " attribut."
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "Primitivt målad låda."
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  Laddar upp dokument: "
+
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "Poäng"
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "Använt lagringsutrymme"
+
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "Versionsanteckningar"
+
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "Brödtext med en "
+
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "länk"
+
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "T-shirtstorlek"
+
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " Liten"
+
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " Mellan"
+
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " Stor"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " Alternativ A"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "Dold vid eller under den lilla brytpunkten."
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "Visas endast vid eller ovanför den lilla brytpunkten."
+
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "exempel"
+
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "Öppnas i ett nytt fönster"
+
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "Kalender"
+
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "Inställningar"
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "Välj en frukt…"
+
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "Äpple"
+
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "Apelsin"
+
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "Päron"
+
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "Ruta med utfyllnad och stor övre marginal."
+
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "Alltid överst."
+
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "Högst rankade filmer"
+
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "Placering"
+
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "Titel"
+
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "År"
+
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "Betyg"
+
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "Nyckeln till frihet"
+
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "Gudfadern"
+
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "Gudfadern: Del II"
+
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "Översikt"
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "Detaljer"
+
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "Inaktiverad"
+
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "Historik"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "Innehållet i fliken Översikt visas här."
+
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "liten"
+
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "extra liten text"
+
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "liten text"
+
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "Citerad text"
+
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "AI-markerad text"
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "Vad ingår i detta paket?"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  Klassbaserade komponentstilar, byggda från Instructure-tokens, plus ett prosalager.\n"
+
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "Avancerade inställningar"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "Dessa alternativ visas när gruppen expanderas. Rubrikraden har en chevron som roterar vid öppning, och innehållet ligger under en avdelare."
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "Standardplacering är högst upp"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "Animerat innehåll"
+
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "Filter"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "En panel skjuts in från startkanten och fyller vyfönstrets höjd."
+
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "växla panel"
+
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " Kursfiler"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " Syllabus.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " Vecka 1"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " Reading.pdf"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " Slides.pptx"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " Rubric.docx"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "Denna text är begränsad till en rad som standard och slutar med en ellips."
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "Denna text är begränsad till tre rader och slutar med en ellips."
+
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  En kortliknande yta.\n"
+
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "Barn med kontur."
+
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "Dina ändringar sparades."
+
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "Ett platt, inlinemeddelande."
+
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "Spara ändringar"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "Mer om det här objektet."
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "Växla panel"
+
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "Profil"
+
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "Ta bort…"
+
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "Ta bort det här objektet?"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "Första "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "Nästa"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "Andra "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "Tillbaka"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "Aktiv"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "Alternativ"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "Instrumentpanel"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "Kurser"
+
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "Bokmärkt"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "Håll muspekaren över mig"
+
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "Meny"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "En lång beskrivning som kommer att begränsas till två rader…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

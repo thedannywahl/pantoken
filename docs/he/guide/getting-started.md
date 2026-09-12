@@ -1,41 +1,42 @@
-# התחלה
+# התחלה מהירה
 
-Pantoken מקבל את ערכי העיצוב והאייקונים של [Instructure UI](https://instructure.design), פותר אותם פעם אחת, ומשנה את אותו
+Pantoken לוקח את עיצובי ה-tokens והאייקונים של [Instructure UI](https://instructure.design), מפענח אותם פעם אחת, ומשנה את אותו
 מודל לחבילות לפלטפורמות רבות: גיליונות סגנון רגילים, SCSS ו-Less, React ו-Vue ו-Svelte,
-Tailwind ו-Panda, Swift ו-Kotlin מקומיים, WordPress ו-Drupal, Figma ועוד.
+Tailwind ו-Panda, Swift ו-Kotlin נייטיביים, WordPress ו-Drupal, Figma, ועוד.
 
-מתקינים את חבילת המינימום שמתאימה למשימה. הכל גם מיוצא מחדש על ידי החבילה המאוחדת
-`pantoken`, כך שאפשר להתחיל שם ולהצמצם מאוחר יותר.
+מתקינים את החבילה הקטנה ביותר שמתאימה למשימה. הכל גם מיוצא מחדש על ידי החבילה המאוחדת
+`pantoken`, כך שאפשר להתחיל שם ולהצטמצם מאוחר יותר.
 
-## יצירת פרויקט התחלה
+## יצירת פרויקט התחלתי
 
-הדרך המהירה ביותר לנסות את pantoken: ליצור פרויקט התחלה שמותקן ומחובר כבר.
+הדרך המהירה ביותר לנסות את pantoken: ליצור פרויקט התחלתי עם ההתקנה והחיבור כבר קיימים.
 
 ```sh
 npx create-pantoken-app
 ```
 
 פלטפורמות: `components` (HTML/CSS פשוט), `react`, `vue`, `svelte`, `web-components`, `angular`. ראה
-[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) עבור `--dir <path>` ושימוש פרוגרמטי.
+[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) עבור `--dir <path>` ו
+שימוש תכנותי.
 
-משתמש בסוכן קוד מבוסס AI? אין צורך בהתקנה — הפנה אותו ישירות לכישורים:
+משתמשים בסוכן קוד מבוסס AI? אין צורך להתקין — כוון אותו ישירות למיומנות:
 
 ```prompt
-שלוף את create.pantoken.app/SKILL.md ופעל על פיו כדי להגדיר את pantoken בפרויקט זה.
+הורד את create.pantoken.app/SKILL.md ופעל על פיו כדי להגדיר את pantoken בפרויקט זה.
 ```
 
-אם מעדיפים לחבר באופן קבוע את כללי הסוכן של pantoken למאגר (AGENTS.md, כללי עורך, עותק מקומי של הכישור הזה), להריץ `npx @pantoken/ai init` במקום.
+אם מעדיפים לשלב את כללי הסוכן של pantoken בריפוזיטורי באופן קבוע (AGENTS.md, כללי עורך, העתק מקומי של מיומנות זו), הריצו `npx @pantoken/ai init` במקום.
 
 ## מודל הטוקנים
 
-טוקנים הם תכונות מותאמות של CSS בשם `--instui-<group>-<name>`, לדוגמה
-`--instui-color-background-brand` או `--instui-spacing-space-md`. משולחות שלוש ערכות נושא: `rebrand`
-(ברירת המחדל, עם `light-dark()` שבהן בהירות וחושך שונות), `canvas`, ו-`canvasHighContrast`.
-אייקונים הם טוקני `<image>` (`--instui-icon-<name>`) הנגזרים מ-Lucide בנוסף לציוריים המותאמים של Instructure.
+טוקנים הם תכונות מותאמות של CSS בשם `--instui-<group>-<name>`, למשל
+`--instui-color-background-brand` או `--instui-spacing-space-md`. משלוח שלוש תמות: `rebrand`
+(ברירת המחדל, עם `light-dark()` כאשר בהירות ושחור משתנים), `canvas`, ו-`canvasHighContrast`.
+אייקונים הם טוקני `<image>` (`--instui-icon-<name>`) המקורם ב-Lucide בתוספת גליפים מותאמים של Instructure.
 
 ## עיצוב אפליקציית ווב
 
-התקינו את גיליון הסגנון וייבאו אותו פעם אחת. הוא מגדיר כל תכונת `--instui-*`, כך שתפנו
+התקינו את גיליון הסגנון וייבאו אותו פעם אחת. הוא מגדיר כל תכונת `--instui-*`, כך שאתם מתייחסים
 אליהן ישירות מתוך ה-CSS שלכם.
 
 ```sh
@@ -55,7 +56,7 @@ import "@pantoken/css/inject";
 
 ## שימוש באייקונים בכל מקום
 
-רכיב ה-web עובד בכל מסגרת, ללא צורך בהמרה.
+רכיב ה-web עובד בכל פריימוורק, ללא צורך ב-porting.
 
 ```sh
 npm i @pantoken/web-components
@@ -80,9 +81,9 @@ import "@pantoken/web-components";
 }
 ```
 
-### JavaScript — אייקון יחיד לעומת סט מלא
+### JavaScript — אייקון יחיד לעומת המכלול המלא
 
-`@pantoken/icons` מייצא שני יצואיים בשם. השתמשו ב-`iconsByName` כדי למשוך אייקון יחידי בלי לעבור
+`@pantoken/icons` חושף שתי ייצואיות בשם. השתמשו ב-`iconsByName` כדי למשוך אייקון יחיד בלי לעבור
 על כל המערך:
 
 ```ts
@@ -92,7 +93,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-השתמשו ב-`icons` כשצריך את הסט המלא (למשל כדי לבנות בורר):
+השתמשו ב-`icons` כשצריך את המכלול המלא (למשל לבניית בורר):
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -101,22 +102,21 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-שני היצואיים טוענים את ה-IR המלא בעת אתחול המודול — אין tree-shaking לאייקון בודד ברמה הזו. לטעינה קומפקטית מבוססת CSS בלבד, השתמשו ב-[CDN picker](/guide/cdn-picker) כדי לייצר URL משולב
-רק עבור האייקונים שאתם צריכים.
+שני הייצואיות טוענות את ה-IR המלא בזמן אתחול המודול — אין tree-shaking per-icon ברמה זו. לטעינה קומפקטית מבוססת CSS בלבד, השתמשו ב-[CDN picker](/guide/cdn-picker) כדי ליצור URL משולב רק לאייקונים שאתם צריכים.
 
-## יצירה לפלטפורמה מקומית
+## יצירה לפלטפורמה נייטיבית
 
-ה-CLI כותב מקור טוקנים לתוך מאגר היעד. אין התקנה מעבר להרצה:
+ה-CLI כותב את מקור הטוקנים לתוך ריפו יעד. אין צורך בהתקנה מעבר לרץ:
 
 ```sh
 npx @pantoken/cli generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-ראה [the pantoken CLI](/guide/cli) עבור כל יעד.
+ראה [the pantoken CLI](/guide/cli) עבור כל יעד אפשרי.
 
 ## רמזים לעריכה ב-VS Code
 
-`@pantoken/pantoken` כעת כולל קבצי custom-data ל-VS Code כך שפרויקטים צורכים יכולים לקבל השלמות לכיתות ולטוקנים ב-HTML/CSS בלי להתקין תוסף ספציפי ל-pantoken.
+`@pantoken/pantoken` כעת שולח קבצי custom-data ל-VS Code כדי שפרויקטים צאצאיים יקבלו השלמת מחלקות וטוקנים ב-HTML/CSS בלי התקנת תוספת ספציפית ל-pantoken.
 
 1. התקינו את החבילה המאוחדת:
 
@@ -124,7 +124,7 @@ npx @pantoken/cli generate swift --out ./ios/Tokens --icons arrow-left,check-mar
 npm i @pantoken/pantoken
 ```
 
-1. הכוונו את VS Code אל ה-custom-data JSON שנשלח מהמקום הצרכן שלכם:
+1. כוונו את VS Code אל קובץ ה-custom-data JSON שנשלח מתוך סביבת הצרכן שלכם:
 
 ```json
 {
@@ -135,12 +135,12 @@ npm i @pantoken/pantoken
 
 1. טענו מחדש את VS Code (או הריצו "Developer: Reload Window") כדי להחיל את הנתונים החדשים.
 
-זה מאפשר הצעות עבור טוקני כיתה `instui-*` (ו-`-modifier` לטוקני כיתה) בנוסף
-לתכונות מותאמות `--instui-*`.
+זה מאפשר הצעות עבור טוקני מחלקות `instui-*` (ועבור טוקני מחלקות `-modifier`) וכן
+תכונות מותאמות `--instui-*`.
 
-## לאן להמשיך
+## לאן מכאן
 
-- [מפת החבילות](/api/) — איזו חבילה לגשת לפי משימה.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — התקנת נכסי סוכן וכללים במאגר צרכן.
-- [ארכיטקטורה](/guide/architecture) — כיצד מודל הטוקנים, הליבה והתוצאות משתלבים זה בזה.
-- [תיעוד API](/api/) — כל סימול מיוצא, שנוצר מהמקור.
+- [מפת החבילות](/api/) — איזו חבילה לבחור, לפי משימה.
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — התקינו נכסי סוכן וכללים בריפו צרכן.
+- [ארכיטקטורה](/guide/architecture) — כיצד מודל הטוקנים, ה-core, והתוצרים משתלבים.
+- [מדריך API](/api/) — כל סימן מיוצא, שנוצר מהקוד המקור.

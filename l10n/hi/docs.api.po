@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 03:36+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -288,7 +288,7 @@ msgstr "टोकन IR से Panda प्रीसेट बनाएँ।"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
-msgstr "readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
+msgstr "केवल-पढ़ने [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
 
 #: bundlers/panda/src/functions/toPandaPreset.md
 #: design/figma/src/functions/toFigmaVariables.md
@@ -719,7 +719,7 @@ msgstr "स्वैच को ASE बाइट्स के रूप में
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`Swatch`](../interfaces/Swatch.md)[]"
-msgstr "readonly [`Swatch`](../interfaces/Swatch.md)[]"
+msgstr "केवल-पठनीय [`Swatch`](../interfaces/Swatch.md)[]"
 
 #: design/swatches/src/functions/toAse.md
 #: design/swatches/src/functions/toGpl.md
@@ -2759,13 +2759,13 @@ msgstr "वे प्लगइन्स जिन्हें हम उन ट�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are\nself-contained, so we document them here and some ship to npm on their own."
-msgstr "Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are\nself-contained, so we document them here and some ship to npm on their own."
+msgstr "मोनोरिपो के लिए बिल्ड, डॉक्स, और डेमो अवसंरचना। अधिकांश आंतरिक हैं, लेकिन ये हिस्से हैं\nस्वयं-निहित, इसलिए हम उन्हें यहाँ दस्तावेज़ करते हैं और कुछ अपने आप npm पर प्रकाशित होते हैं।"
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API\npage; the others do."
-msgstr "`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API\npage; the others do."
+msgstr "`@pantoken/validate-generated` एक रन-वन-बार स्क्रिप्ट है (जिसे `pnpm run ready`) द्वारा बुलाया जाता है, इसलिए इसका कोई API\nपृष्ठ नहीं है; दूसरों के हैं।"
 
 #: index.md
 #, fuzzy, no-c-format
@@ -2777,13 +2777,13 @@ msgstr "`@pantoken/ai` — pantoken का उपयोग करने वा�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
-msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
+msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) इंस्टॉल करता है `AGENTS.md`, `llms.txt`, और\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code)) एक उपभोक्ता रिपॉज़िटरी में।"
 
 #: index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Plugins we author for the tools we build with, grouped by host. They're standalone and publishable."
-msgstr "Plugins we author for the tools we build with, grouped by host. They're standalone and publishable."
+msgstr "वे प्लगइन्स जिन्हें हम उन टूल्स के लिए बनाते हैं जिनके साथ हम काम करते हैं, होस्ट के अनुसार समूहबद्ध। वे स्वतंत्र हैं और प्रकाशित किए जा सकते हैं।"
 
 #: packages/cli/src/functions/parseArgs.md
 #, no-c-format
@@ -3082,7 +3082,7 @@ msgstr "Run every plugin's `icons` hook, letting plugins register extra glyphs a
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`PantokenPlugin`](../interfaces/PantokenPlugin.md)[]"
-msgstr "readonly [`PantokenPlugin`](../interfaces/PantokenPlugin.md)[]"
+msgstr "केवल-पठनीय [`PantokenPlugin`](../interfaces/PantokenPlugin.md)[]"
 
 #: packages/core/src/functions/runIconPlugins.md
 #, no-c-format
@@ -6230,7 +6230,7 @@ msgstr "**एक ही मैपिंग के साथ दो फ़ाइ�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Options for [applyMinify](../functions/applyMinify.md)."
-msgstr "Options for [applyMinify](../functions/applyMinify.md)."
+msgstr "[applyMinify](../functions/applyMinify.md) के विकल्प."
 
 #: plugins/postcss/props-minify/src/interfaces/PropsMinifyOptions.md
 #, no-c-format
@@ -10547,7 +10547,7 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Long-form alias of {@link -size-lg}."
-#~ msgstr "Long-form alias of {@link -size-lg}."
+#~ msgstr "लंबे रूप में {@link -size-lg} का उपनाम."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -10562,7 +10562,7 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Long-form alias of {@link -size-md}."
-#~ msgstr "Long-form alias of {@link -size-md}."
+#~ msgstr "लंबे रूप में {@link -size-md} का उपनाम."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -10572,7 +10572,7 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Long-form alias of {@link -size-sm}."
-#~ msgstr "Long-form alias of {@link -size-sm}."
+#~ msgstr "लंबे रूप में {@link -size-sm} का उपनाम."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -12737,7 +12737,7 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "**Group:** Plugins · **Source:** [generate.ts](https://github.com/thedannywahl/pantoken/blob/main/plugins/pantoken/logos/scripts/generate.ts)"
-#~ msgstr "**Group:** Plugins · **Source:** [generate.ts](https://github.com/thedannywahl/pantoken/blob/main/plugins/pantoken/logos/scripts/generate.ts)"
+#~ msgstr "**समूह:** प्लगइन्स · **स्रोत:** [generate.ts](https://github.com/thedannywahl/pantoken/blob/main/plugins/pantoken/logos/scripts/generate.ts)"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -25390,3 +25390,661 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #~ msgctxt "docs.api:prose"
 #~ msgid "pantoken icon logo (reversed)."
 #~ msgstr "pantoken आइकन लोगो (उल्टा)।"
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "एसेट सामग्री और लेखक फ़ंक्शन अब `@pantoken/scaffold` में रहते हैं (ताकि बेस स्कैफ़ॉल्ड\nflow उन्हें सर्कुलर निर्भरता) के बिना पेश कर सके; यहाँ बैक-कॉम्पैट के लिए पुनः-निर्यात किया गया है."
+
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "AI एजेंट"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "यहाँ सामग्री।"
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "क्रिया"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  डिफ़ॉल्ट "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " रंग, और एक कस्टम आइकन.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  बधाई हो! आप \"success\" रंग का उपयोग कर रहे हैं.\n  "
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "इनबॉक्स"
+
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "नई सुविधा"
+
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "यह एक बैंगनी बैनर है जिसमें एक कस्टम आइकन है।"
+
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "ठीक है"
+
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "रद्द करें"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  यह एक समुद्री-रंग का बैनर है जिसमें कॉम्पैक्ट स्पेसिंग है।\n"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "बेस सतह पर एक स्टाइल किया गया लिंक।"
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "अभी तक कोई आइटम नहीं"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "शुरू करने के लिए अपना पहला आइटम बनाएं।"
+
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "मुखपृष्ठ"
+
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "मार्गदर्शक"
+
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "घटक"
+
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "ब्रेडक्रंब"
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "प्राथमिक"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "माध्यमिक"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "क्या नया है"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "चित्र कोई भी प्रमुख दृश्य हो सकता है — एक आइकन, एक अवतार, या एक छवि।"
+
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "मार्च 2026"
+
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "रवि"
+
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "सोम"
+
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "मंगल"
+
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "बुध"
+
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "गुरु"
+
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "शुक्र"
+
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "शनि"
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "कार्ड शीर्षक"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "पहला अनुभाग"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "दूसरा अनुभाग"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "कुछ गलत हो गया।"
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "संदर्भ दृश्य एक केयरट के साथ कॉलआउट को फ़्रेम करता है। पॉपओवर के रूप में यह शीर्ष परत पर दिखाई देता है और जब आप कहीं और क्लिक करते हैं या Esc दबाते हैं तो यह बंद हो जाता है।"
+
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "ट्रे की सामग्री"
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "नेविगेशन"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "मुख्य सामग्री"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "मॉड्यूल"
+
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "यहाँ एक छवि खींचें"
+
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", या ब्राउज़ करने के लिए क्लिक करें."
+
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG या JPG 5&nbsp;MB तक."
+
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "शिपिंग पता"
+
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "पहला नाम"
+
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "उपनाम"
+
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "शहर"
+
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "राज्य"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "सभी फ़ील्ड केवल डिलीवरी के लिए उपयोग किए जाते हैं।"
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "हम इसे कभी साझा नहीं करेंगे।"
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "एक वैध ईमेल पता दर्ज करें।"
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "ईमेल पता"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "एक"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "दो"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "शीर्षक h1"
+
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "बिना शीर्षक"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "एक स्टाइल किया गया लिंक"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "पहला आइटम"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "दूसरा आइटम"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "तीसरा आइटम"
+
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "क्रियाएँ"
+
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "संपादित करें"
+
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "डुप्लिकेट करें"
+
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "हटाएँ"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "सक्रिय उपयोगकर्ता"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "छोटा"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — एक संकीर्ण मोडल।"
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "बंद करें"
+
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "प्रकाशित"
+
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "मसौदा"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "समीक्षा में"
+
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "अप्रचलित"
+
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "अवरुद्ध"
+
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "इस पृष्ठ को साझा करें"
+
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "एक पॉपओवर एक हल्का सतह है जो ट्रिगर से जुड़ा होता है। यह मूल "
+
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr " विशेषता."
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "मूल-चित्रित बॉक्स."
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  दस्तावेज़ अपलोड हो रहा है: "
+
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "स्कोर"
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "उपयोग किया गया भंडारण"
+
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "रिलीज़ नोट्स"
+
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "बॉडी कॉपी के साथ "
+
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "लिंक"
+
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "टी-शर्ट आकार"
+
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " छोटा"
+
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " मध्यम"
+
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " बड़ा"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " विकल्प A"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "छोटे ब्रेकपॉइंट पर या उसके नीचे छिपा हुआ।"
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "केवल छोटे ब्रेकपॉइंट पर या उससे ऊपर दिखाई देता है।"
+
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "उदाहरण"
+
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "नई विंडो में खुलता है"
+
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "कैलेंडर"
+
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "सेटिंग्स"
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "एक फल चुनें…"
+
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "सेब"
+
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "संतरा"
+
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "नाशपाती"
+
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "ऊपर बड़ा मार्जिन वाला पैड किया हुआ बॉक्स."
+
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "हमेशा ऊपर."
+
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "शीर्ष रेटेड फिल्में"
+
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "रैंक"
+
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "शीर्षक"
+
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "वर्ष"
+
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "रेटिंग"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "The Shawshank Redemption"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "The Godfather"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "The Godfather: Part II"
+
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "अवलोकन"
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "विवरण"
+
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "अक्षम"
+
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "इतिहास"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "ओवरव्यू टैब की सामग्री यहाँ दिखाई देती है."
+
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "छोटा"
+
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "बहुत छोटा पाठ"
+
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "छोटा पाठ"
+
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "उद्धृत पाठ"
+
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "AI हाइलाइट पाठ"
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "इस पैकेज में क्या शामिल है?"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  क्लास-आधारित कॉम्पोनेंट शैलियाँ, Instructure tokens से बनाई गईं, साथ ही एक गद्य परत.\n"
+
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "उन्नत सेटिंग्स"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "ये विकल्प तब प्रदर्शित होते हैं जब समूह विस्तारित किया जाता है। हेडर पंक्ति में एक चिवरॉन होता है जो खोलने पर घूमता है, और सामग्री एक विभेदक के नीचे स्थित होती है।"
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "डिफ़ॉल्ट प्लेसमेंट शीर्ष पर है"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "एनिमेटेड सामग्री"
+
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "फ़िल्टर"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "एक ट्रे प्रारंभिक किनारे से स्लाइड होकर आती है और व्यूपोर्ट की ऊँचाई भर देती है।"
+
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "टॉगल ट्रे"
+
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " पाठ्यक्रम फ़ाइलें"
+
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " पाठ्यक्रम.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " सप्ताह 1"
+
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " पठन.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " स्लाइड्स.pptx"
+
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " मूल्यांकन मानदंड.docx"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "यह पाठ डिफ़ॉल्ट रूप से एक पंक्ति तक सीमित है और तीन बिंदुओं (...) पर समाप्त होता है."
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "यह पाठ तीन पंक्तियों तक सीमित है और तीन बिंदुओं (...) पर समाप्त होता है."
+
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  कार्ड जैसी सतह.\n"
+
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "आउटलाइन किया गया चाइल्ड."
+
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "आपके परिवर्तन सहेजे गए."
+
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "एक सादा, इनलाइन सूचना."
+
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "परिवर्तनों को सहेजें"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "इस आइटम के बारे में और जानकारी।"
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "पैनल टॉगल"
+
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "प्रोफ़ाइल"
+
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "हटाएँ…"
+
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "क्या इस आइटम को हटाएं?"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "पहला "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "अगला"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "दूसरा "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "वापस"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "सक्रिय"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "विकल्प"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "डैशबोर्ड"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "पाठ्यक्रम"
+
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "डिज़ाइन"
+
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "बुकमार्क किया गया"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "मुझ पर होवर करें"
+
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "मेनू"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "एक लंबा विवरण जो दो पंक्तियों तक सीमा में काट दिया जाएगा…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-09 17:05+0000\n"
+"PO-Revision-Date: 2026-09-11 23:04+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "Language: und\n"
@@ -20,6 +20,13 @@ msgstr "Ընտրեք պատշաճ պլատֆորմը՝ սկաֆոլդինգի հ
 msgctxt "cli.scaffold:promptDir"
 msgid "Target directory:"
 msgstr "Նշանակված թղթապանակը:"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:promptAiAssets"
+msgid "Add AI agent assets (AGENTS.md, editor/Copilot rules)?"
+msgstr ""
+"Ավելացնե՞լ AI գործակալների ռեսուրսները (AGENTS.md, editor/Copilot rules)?"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -139,6 +146,12 @@ msgid ""
 msgstr ""
 "Չորեքչայլ հարցում; սխալ վերադարձնել՝ հանելով մեկին պակասող platform/dir-ի "
 "դեպքում"
+
+#: packages/scaffold/src/i18n.json
+#, no-c-format
+msgctxt "cli.scaffold:helpNoAiDescription"
+msgid "Skip installing AI agent assets after scaffolding"
+msgstr "Բաց թողնել AI գործակալների ռեսուրսների տեղադրումը scaffolding-ից հետո"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format

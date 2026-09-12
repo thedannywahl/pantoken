@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 19:59+0000\n"
+"PO-Revision-Date: 2026-09-12 03:50+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2777,7 +2777,7 @@ msgstr "`@pantoken/ai` — fogyasztó felé néző ügynök eszközei olyan proj
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
-msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and\n\tassistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository."
+msgstr "- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) telepíti `AGENTS.md`, `llms.txt`, és\n\tassistant/editor szabályokat (Cursor, Copilot, Windsurf, Claude Code) egy fogyasztói repóba."
 
 #: index.md
 #, no-c-format
@@ -26250,3 +26250,658 @@ msgstr "Egy rámutatáskor megjelenő \"teljes képernyős nézet\" gomb, amely 
 #~ msgctxt "docs.api:text"
 #~ msgid "LogoLang"
 #~ msgstr "LogoLang"
+
+msgctxt "docs.api:prose"
+msgid "Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold\nflow can offer them without a circular dependency); re-exported here for back-compat."
+msgstr "Az asset tartalma és a writer függvény most a `@pantoken/scaffold` helyen találhatók (így az alap scaffold\nflow felkínálhatja őket körkörös függőség nélkül); itt újraexportálva a visszafelé kompatibilitás érdekében."
+
+msgctxt "docs.api:prose"
+msgid "AI Agent"
+msgstr "MI-ügynök"
+
+msgctxt "docs.api:prose"
+msgid "Content here."
+msgstr "Tartalom itt."
+
+msgctxt "docs.api:prose"
+msgid "Action"
+msgstr "Művelet"
+
+msgctxt "docs.api:prose"
+msgid "\n  An alert with the default "
+msgstr "\n  Egy figyelmeztetés az alapértelmezett "
+
+msgctxt "docs.api:prose"
+msgid " color, and a custom icon.\n"
+msgstr " színnel és egy egyedi ikonnal.\n"
+
+msgctxt "docs.api:prose"
+msgid "\n  Congratulations! You're using the \"success\" color.\n  "
+msgstr "\n  Gratulálunk! A \"success\" színt használod.\n  "
+
+msgctxt "docs.api:prose"
+msgid "Inbox"
+msgstr "Beérkező levelek"
+
+msgctxt "docs.api:prose"
+msgid "New feature"
+msgstr "Új funkció"
+
+msgctxt "docs.api:prose"
+msgid "This is a violet banner with a custom icon."
+msgstr "Ez egy ibolyaszínű banner egy egyedi ikonnal."
+
+msgctxt "docs.api:prose"
+msgid "OK"
+msgstr "Rendben"
+
+msgctxt "docs.api:prose"
+msgid "Cancel"
+msgstr "Mégse"
+
+msgctxt "docs.api:prose"
+msgid "\n  This is a sea-colored banner with compact spacing.\n"
+msgstr "\n  Ez egy tengerszínű banner kompakt távolságokkal.\n"
+
+msgctxt "docs.api:prose"
+msgid "A styled link on the base surface."
+msgstr "Egy stílusozott hivatkozás az alapfelületen."
+
+msgctxt "docs.api:prose"
+msgid "No items yet"
+msgstr "Még nincs elem"
+
+msgctxt "docs.api:prose"
+msgid "Create your first item to get started."
+msgstr "Hozd létre az első elemet a kezdéshez."
+
+msgctxt "docs.api:prose"
+msgid "Home"
+msgstr "Kezdőlap"
+
+msgctxt "docs.api:prose"
+msgid "Guides"
+msgstr "Útmutatók"
+
+msgctxt "docs.api:prose"
+msgid "Components"
+msgstr "Komponensek"
+
+msgctxt "docs.api:prose"
+msgid "Breadcrumb"
+msgstr "Morzsa"
+
+msgctxt "docs.api:prose"
+msgid "Primary"
+msgstr "Elsődleges"
+
+msgctxt "docs.api:prose"
+msgid "Secondary"
+msgstr "Másodlagos"
+
+msgctxt "docs.api:prose"
+msgid "What's new"
+msgstr "Újdonságok"
+
+msgctxt "docs.api:prose"
+msgid "The figure can be any leading visual — an icon, an avatar, or an image."
+msgstr "A figura lehet bármilyen vezető vizuális elem — egy ikon, egy avatar vagy egy kép."
+
+msgctxt "docs.api:prose"
+msgid "March 2026"
+msgstr "2026. március"
+
+msgctxt "docs.api:prose"
+msgid "Su"
+msgstr "Vas"
+
+msgctxt "docs.api:prose"
+msgid "Mo"
+msgstr "Hé"
+
+msgctxt "docs.api:prose"
+msgid "Tu"
+msgstr "Ke"
+
+msgctxt "docs.api:prose"
+msgid "We"
+msgstr "Sze"
+
+msgctxt "docs.api:prose"
+msgid "Th"
+msgstr "Cs"
+
+msgctxt "docs.api:prose"
+msgid "Fr"
+msgstr "Pé"
+
+msgctxt "docs.api:prose"
+msgid "Sa"
+msgstr "Szo"
+
+msgctxt "docs.api:prose"
+msgid "Card title"
+msgstr "Kártya címe"
+
+msgctxt "docs.api:prose"
+msgid "First section"
+msgstr "Első szakasz"
+
+msgctxt "docs.api:prose"
+msgid "Second section"
+msgstr "Második szakasz"
+
+msgctxt "docs.api:prose"
+msgid "Something went wrong."
+msgstr "Valami hiba történt."
+
+msgctxt "docs.api:prose"
+msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc."
+msgstr "A context view egy carettel rendelkező calloutot keretez. Popoverként a felső rétegen jelenik meg, és bezárul, ha máshova kattintasz vagy megnyomod az Esc billentyűt."
+
+msgctxt "docs.api:prose"
+msgid "Tray content"
+msgstr "Tálca tartalma"
+
+msgctxt "docs.api:prose"
+msgid "Navigation"
+msgstr "Navigáció"
+
+msgctxt "docs.api:prose"
+msgid "Main content"
+msgstr "Fő tartalom"
+
+msgctxt "docs.api:prose"
+msgid "Modules"
+msgstr "Modulok"
+
+msgctxt "docs.api:prose"
+msgid "Drag an image here"
+msgstr "Húzz ide egy képet"
+
+msgctxt "docs.api:prose"
+msgid ", or click to browse."
+msgstr ", vagy kattints a tallózáshoz."
+
+msgctxt "docs.api:prose"
+msgid "PNG or JPG up to 5&nbsp;MB."
+msgstr "PNG vagy JPG legfeljebb 5&nbsp;MB."
+
+msgctxt "docs.api:prose"
+msgid "Shipping address"
+msgstr "Szállítási cím"
+
+msgctxt "docs.api:prose"
+msgid "First name"
+msgstr "Keresztnév"
+
+msgctxt "docs.api:prose"
+msgid "Last name"
+msgstr "Vezetéknév"
+
+msgctxt "docs.api:prose"
+msgid "City"
+msgstr "Város"
+
+msgctxt "docs.api:prose"
+msgid "State"
+msgstr "Állam"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "CA"
+msgstr "CA"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "NY"
+msgstr "NY"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "TX"
+msgstr "TX"
+
+msgctxt "docs.api:prose"
+msgid "All fields are used for delivery only."
+msgstr "Minden mezőt kizárólag a kézbesítéshez használunk."
+
+msgctxt "docs.api:prose"
+msgid "We'll never share it."
+msgstr "Soha nem osztjuk meg."
+
+msgctxt "docs.api:prose"
+msgid "Enter a valid email address."
+msgstr "Adjon meg egy érvényes e-mail címet."
+
+msgctxt "docs.api:prose"
+msgid "Email address"
+msgstr "E-mail cím"
+
+msgctxt "docs.api:prose"
+msgid "One"
+msgstr "Egy"
+
+msgctxt "docs.api:prose"
+msgid "Two"
+msgstr "Kettő"
+
+msgctxt "docs.api:prose"
+msgid "Heading h1"
+msgstr "Címsor h1"
+
+msgctxt "docs.api:prose"
+msgid "Untitled"
+msgstr "Cím nélkül"
+
+msgctxt "docs.api:prose"
+msgid "A styled link"
+msgstr "Egy formázott hivatkozás"
+
+msgctxt "docs.api:prose"
+msgid "First item"
+msgstr "Első elem"
+
+msgctxt "docs.api:prose"
+msgid "Second item"
+msgstr "Második elem"
+
+msgctxt "docs.api:prose"
+msgid "Third item"
+msgstr "Harmadik elem"
+
+msgctxt "docs.api:prose"
+msgid "Actions"
+msgstr "Műveletek"
+
+msgctxt "docs.api:prose"
+msgid "Edit"
+msgstr "Szerkesztés"
+
+msgctxt "docs.api:prose"
+msgid "Duplicate"
+msgstr "Duplikálás"
+
+msgctxt "docs.api:prose"
+msgid "Delete"
+msgstr "Törlés"
+
+msgctxt "docs.api:prose"
+msgid "Active users"
+msgstr "Aktív felhasználók"
+
+msgctxt "docs.api:prose"
+msgid "Small"
+msgstr "Kis"
+
+msgctxt "docs.api:prose"
+msgid " — a narrow modal."
+msgstr " — egy keskeny modális ablak."
+
+msgctxt "docs.api:prose"
+msgid "Close"
+msgstr "Bezár"
+
+msgctxt "docs.api:prose"
+msgid "Published"
+msgstr "Közzétéve"
+
+msgctxt "docs.api:prose"
+msgid "Draft"
+msgstr "Vázlat"
+
+msgctxt "docs.api:prose"
+msgid "In review"
+msgstr "Felülvizsgálat alatt"
+
+msgctxt "docs.api:prose"
+msgid "Stale"
+msgstr "Elavult"
+
+msgctxt "docs.api:prose"
+msgid "Blocked"
+msgstr "Blokkolva"
+
+msgctxt "docs.api:prose"
+msgid "Share this page"
+msgstr "Oszd meg ezt az oldalt"
+
+msgctxt "docs.api:prose"
+msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native "
+msgstr "A popover egy könnyű felület, amely egy triggerhez van rögzítve. Ez a példány a natív "
+
+msgctxt "docs.api:prose"
+msgid " attribute."
+msgstr " attribútum."
+
+msgctxt "docs.api:prose"
+msgid "Primitive-painted box."
+msgstr "Primitíven festett doboz."
+
+msgctxt "docs.api:prose"
+msgid "\n  Uploading Document: "
+msgstr "\n  Dokumentum feltöltése: "
+
+msgctxt "docs.api:prose"
+msgid "Score"
+msgstr "Pontszám"
+
+msgctxt "docs.api:prose"
+msgid "Storage used"
+msgstr "Használt tárhely"
+
+msgctxt "docs.api:prose"
+msgid "Release notes"
+msgstr "Változásnapló"
+
+msgctxt "docs.api:prose"
+msgid "Body copy with a "
+msgstr "Törzsszöveg ezzel a "
+
+msgctxt "docs.api:prose"
+msgid "link"
+msgstr "hivatkozás"
+
+msgctxt "docs.api:prose"
+msgid "T-shirt size"
+msgstr "Pólóméret"
+
+msgctxt "docs.api:prose"
+msgid " Small"
+msgstr " Kicsi"
+
+msgctxt "docs.api:prose"
+msgid " Medium"
+msgstr " Közepes"
+
+msgctxt "docs.api:prose"
+msgid " Large"
+msgstr " Nagy"
+
+msgctxt "docs.api:prose"
+msgid " Option A"
+msgstr " A lehetőség"
+
+msgctxt "docs.api:prose"
+msgid "Hidden at or below the small breakpoint."
+msgstr "Rejtett a kis töréspontnál vagy annál kisebb méretnél."
+
+msgctxt "docs.api:prose"
+msgid "Shown only at or above the small breakpoint."
+msgstr "Csak a kis töréspontnál vagy annál nagyobb méretnél látható."
+
+msgctxt "docs.api:prose"
+msgid "example"
+msgstr "példa"
+
+msgctxt "docs.api:prose"
+msgid "Opens in a new window"
+msgstr "Új ablakban nyílik meg"
+
+msgctxt "docs.api:prose"
+msgid "Calendar"
+msgstr "Naptár"
+
+msgctxt "docs.api:prose"
+msgid "Settings"
+msgstr "Beállítások"
+
+msgctxt "docs.api:prose"
+msgid "Choose a fruit…"
+msgstr "Válassz egy gyümölcsöt…"
+
+msgctxt "docs.api:prose"
+msgid "Apple"
+msgstr "Alma"
+
+msgctxt "docs.api:prose"
+msgid "Orange"
+msgstr "Narancs"
+
+msgctxt "docs.api:prose"
+msgid "Pear"
+msgstr "Körte"
+
+msgctxt "docs.api:prose"
+msgid "Padded box with a large top margin."
+msgstr "Párnázott doboz nagy felső margóval."
+
+msgctxt "docs.api:prose"
+msgid "Always on top."
+msgstr "Mindig előtérben."
+
+msgctxt "docs.api:prose"
+msgid "Top-rated films"
+msgstr "Legjobbra értékelt filmek"
+
+msgctxt "docs.api:prose"
+msgid "Rank"
+msgstr "Helyezés"
+
+msgctxt "docs.api:prose"
+msgid "Title"
+msgstr "Cím"
+
+msgctxt "docs.api:prose"
+msgid "Year"
+msgstr "Év"
+
+msgctxt "docs.api:prose"
+msgid "Rating"
+msgstr "Értékelés"
+
+msgctxt "docs.api:prose"
+msgid "The Shawshank Redemption"
+msgstr "A remény rabjai"
+
+msgctxt "docs.api:prose"
+msgid "The Godfather"
+msgstr "A keresztapa"
+
+msgctxt "docs.api:prose"
+msgid "The Godfather: Part II"
+msgstr "A keresztapa: 2. rész"
+
+msgctxt "docs.api:prose"
+msgid "Overview"
+msgstr "Áttekintés"
+
+msgctxt "docs.api:prose"
+msgid "Details"
+msgstr "Részletek"
+
+msgctxt "docs.api:prose"
+msgid "Disabled"
+msgstr "Letiltva"
+
+msgctxt "docs.api:prose"
+msgid "History"
+msgstr "Előzmények"
+
+msgctxt "docs.api:prose"
+msgid "The Overview tab's content shows here."
+msgstr "Itt jelenik meg az Áttekintés lap tartalma."
+
+msgctxt "docs.api:prose"
+msgid "small"
+msgstr "kicsi"
+
+msgctxt "docs.api:prose"
+msgid "x-small text"
+msgstr "nagyon kicsi szöveg"
+
+msgctxt "docs.api:prose"
+msgid "small text"
+msgstr "kis szöveg"
+
+msgctxt "docs.api:prose"
+msgid "Quoted text"
+msgstr "Idézett szöveg"
+
+msgctxt "docs.api:prose"
+msgid "AI highlight text"
+msgstr "AI kiemelt szöveg"
+
+msgctxt "docs.api:prose"
+msgid "What ships in this package?"
+msgstr "Mit tartalmaz ez a csomag?"
+
+msgctxt "docs.api:prose"
+msgid "\n  Class-based component styles, built from the Instructure tokens, plus a prose layer.\n"
+msgstr "\n  Osztály-alapú komponensstílusok, az Instructure tokenjeiből építve, valamint egy prózaréteg.\n"
+
+msgctxt "docs.api:prose"
+msgid "Advanced settings"
+msgstr "Speciális beállítások"
+
+msgctxt "docs.api:prose"
+msgid "These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider."
+msgstr "Ezek az opciók akkor válnak láthatóvá, amikor a csoport ki van bontva. A fejléc sor egy chevront tartalmaz, amely megnyitáskor elforog, és a tartalom egy elválasztó alatt helyezkedik el."
+
+msgctxt "docs.api:prose"
+msgid "Default placement is top"
+msgstr "Az alapértelmezett elhelyezés: fent"
+
+msgctxt "docs.api:prose"
+msgid "Animated content"
+msgstr "Animált tartalom"
+
+msgctxt "docs.api:prose"
+msgid "Filters"
+msgstr "Szűrők"
+
+msgctxt "docs.api:prose"
+msgid "A tray slides in from the start edge and fills the viewport height."
+msgstr "A tálca a kezdő él felől csúszik be, és kitölti a nézetablak magasságát."
+
+msgctxt "docs.api:prose"
+msgid "toggle tray"
+msgstr "tálca váltása"
+
+msgctxt "docs.api:prose"
+msgid " Course files"
+msgstr " Kurzus fájlok"
+
+msgctxt "docs.api:prose"
+msgid " Syllabus.pdf"
+msgstr " Tanmenet.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Week 1"
+msgstr " 1. hét"
+
+msgctxt "docs.api:prose"
+msgid " Reading.pdf"
+msgstr " Olvasmány.pdf"
+
+msgctxt "docs.api:prose"
+msgid " Slides.pptx"
+msgstr " Diák.pptx"
+
+msgctxt "docs.api:prose"
+msgid " Rubric.docx"
+msgstr " Értékelési útmutató.docx"
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to one line by default and ends in an ellipsis."
+msgstr "Ez a szöveg alapértelmezés szerint egy sorra van korlátozva, és három ponttal végződik."
+
+msgctxt "docs.api:prose"
+msgid "This text is clamped to three lines and ends in an ellipsis."
+msgstr "Ez a szöveg három sorra van korlátozva, és három ponttal végződik."
+
+msgctxt "docs.api:prose"
+msgid "\n  A card-like surface.\n"
+msgstr "\n  Kártyaszerű felület.\n"
+
+msgctxt "docs.api:prose"
+msgid "Outlined child."
+msgstr "Körvonalas gyermek."
+
+msgctxt "docs.api:prose"
+msgid "Your changes were saved."
+msgstr "A módosításaid elmentésre kerültek."
+
+msgctxt "docs.api:prose"
+msgid "A flat, inline notice."
+msgstr "Egy lapos, beágyazott értesítés."
+
+msgctxt "docs.api:prose"
+msgid "Save changes"
+msgstr "Változtatások mentése"
+
+msgctxt "docs.api:prose"
+msgid "More about this item."
+msgstr "Több információ erről a tételről."
+
+msgctxt "docs.api:prose"
+msgid "Toggle panel"
+msgstr "Panel váltása"
+
+msgctxt "docs.api:prose"
+msgid "Profile"
+msgstr "Profil"
+
+msgctxt "docs.api:prose"
+msgid "Delete…"
+msgstr "Törlés…"
+
+msgctxt "docs.api:prose"
+msgid "Delete this item?"
+msgstr "Törli ezt az elemet?"
+
+msgctxt "docs.api:prose"
+msgid "First "
+msgstr "Első "
+
+msgctxt "docs.api:prose"
+msgid "Next"
+msgstr "Következő"
+
+msgctxt "docs.api:prose"
+msgid "Second "
+msgstr "Második "
+
+msgctxt "docs.api:prose"
+msgid "Back"
+msgstr "Vissza"
+
+msgctxt "docs.api:prose"
+msgid "Active"
+msgstr "Aktív"
+
+msgctxt "docs.api:prose"
+msgid "Options"
+msgstr "Opciók"
+
+msgctxt "docs.api:prose"
+msgid "Dashboard"
+msgstr "Irányítópult"
+
+msgctxt "docs.api:prose"
+msgid "Courses"
+msgstr "Tanfolyamok"
+
+msgctxt "docs.api:prose"
+msgid "Design"
+msgstr "Tervezés"
+
+msgctxt "docs.api:prose"
+msgid "Bookmarked"
+msgstr "Könyvjelzőzve"
+
+msgctxt "docs.api:prose"
+msgid "Hover me"
+msgstr "Tartsd az egeret fölé"
+
+msgctxt "docs.api:prose"
+msgid "Menu"
+msgstr "Menü"
+
+msgctxt "docs.api:prose"
+msgid "A long description that will be clamped to two lines…"
+msgstr "Hosszú leírás, amely két sorra lesz korlátozva…"
+
+msgctxt "docs.api:text"
+msgid "BuildIconFontOptions"
+msgstr "BuildIconFontOptions"

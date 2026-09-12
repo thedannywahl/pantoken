@@ -25,7 +25,7 @@ Using an AI coding agent? No install needed — point it at the skill directly:
 Fetch create.pantoken.app/SKILL.md and follow it to set up pantoken in this project.
 ```
 
-If you'drather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy of this skill), run `npx @pantoken/ai init` instead.
+If you'd rather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy of this skill), run `npx @pantoken/ai init` instead.
 
 ## The token model
 

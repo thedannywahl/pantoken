@@ -176,6 +176,11 @@ translated`) and saves the memory after **each** chunk, so it's resumable — a 
   Hungarian. Unset means every locale. An unrecognized entry, or a selection that resolves to nothing
   (a tier with no docs locale like `source`, or `"hu,-hu"`), throws rather than building an empty
   directory. Honored by `build-api-locales.ts` and `translate-guide-po.ts`.
+- **Scope a guide translation with `DOCS_TRANSLATION_FILE`.** Pass one or more comma/space-separated
+  guide paths relative to `docs/` (for example, `DOCS_TRANSLATION_FILE=guide/components.md`) when a
+  force run should repair only selected hand-written guides. Paths are validated against the guide
+  source file list, and unknown values throw rather than silently running every guide. Combine with
+  `DOCS_TRANSLATION_LOCALE` and `DOCS_TRANSLATION_FORCE=1` for a single-file retry.
 
 ## Translation drift: what blocks a merge
 
