@@ -3,9 +3,24 @@
   "checkpoint_id": "01M2BHKZ90D2D6ST8BBT4FMYW7",
   "strategy": "manual-commit",
   "branch": "theme-colors",
-  "checkpoints_count": 35,
+  "checkpoints_count": 36,
   "files_touched": [
-    "l10n/docs.api.pot"
+    "docs/scripts/build-api-locales.ts",
+    "docs/scripts/refresh-api-pot.ts",
+    "docs/scripts/translate-api-po.test.ts",
+    "docs/scripts/translate-api-po.ts",
+    "l10n/ar/docs.api.po",
+    "l10n/ca/docs.api.po",
+    "l10n/cy/docs.api.po",
+    "l10n/da/docs.api.po",
+    "l10n/de/docs.api.po",
+    "l10n/docs.api.pot",
+    "l10n/el/docs.api.po",
+    "l10n/en-AU/docs.api.po",
+    "l10n/en-CA/docs.api.po",
+    "l10n/en-GB/docs.api.po",
+    "l10n/es/docs.api.po",
+    "l10n/fa/docs.api.po"
   ],
   "sessions": [
     {
@@ -49,6 +64,13 @@
       "compact_transcript": "/5/transcript.jsonl",
       "content_hash": "/5/content_hash.txt",
       "prompt": "/5/prompt.txt"
+    },
+    {
+      "metadata": "/6/metadata.json",
+      "transcript": "/6/full.jsonl",
+      "compact_transcript": "/6/transcript.jsonl",
+      "content_hash": "/6/content_hash.txt",
+      "prompt": "/6/prompt.txt"
     }
   ],
   "token_usage": {

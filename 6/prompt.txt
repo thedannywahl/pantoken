@@ -1,0 +1,14 @@
+I ran `vpr i18n:drift:fix:copilot` but in ci it failed the drift check:
+```
+
+Blocking translation drift. Run `vp run docs:locales:translate` locally, then commit the updated translation cache. Loosen or tighten what blocks in `i18n.config.json`.
+Error: docs.api: 172 untranslated/drifted unit(s) across 43 locale(s) (ar, ca, cy, da, de, el, en-AU, en-CA, …). Fix with `vp run docs:locales:translate`.
+Error: docs.api: 129 untranslated/drifted unit(s) across 43 locale(s) (ar, ca, cy, da, de, el, en-AU, en-CA, …). Fix with `vp run docs:locales:translate`.
+Error: docs.api: 86 untranslated/drifted unit(s) across 43 locale(s) (ar, ca, cy, da, de, el, en-AU, en-CA, …). Fix with `vp run docs:locales:translate`.
+Error: docs.api: 43 untranslated/drifted unit(s) across 43 locale(s) (ar, ca, cy, da, de, el, en-AU, en-CA, …). Fix with `vp run docs:locales:translate`.
+Error: docs.api: 43 untranslated/drifted unit(s) across 43 locale(s) (ar, ca, cy, da, de, el, en-AU, en-CA, …). Fix with `vp run docs:locales:translate`.
+Error: docs.api: 43 untranslated/drifted unit(s) across 43 locale(s) (ar, ca, cy, da, de, el, en-AU, en-CA, …). Fix with `vp run docs:locales:translate`.
+
+```
+
+investigate and remediate the gaps in translation drift detection and the fix script, and then run the translations and push.
