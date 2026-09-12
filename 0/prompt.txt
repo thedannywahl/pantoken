@@ -1,0 +1,87 @@
+also the html, css, and js tabls themselves (the code editors) should be appropriately displayed, it looks like they're displaying rtl right now which is incorrect.
+
+---
+
+[Terminal 381bba65-c5ae-4ac6-9a90-61ae4ba60717 notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on pendo-button-tweaks ≡  ~1 via  26.8.1 
+➜  vp exec stylelint docs/.vitepress/theme/pantoken.css && vp exec oxfmt --check docs/.vitepress/theme/pantoken.css
+VITE+ - The Unified Toolchain for the Web
+
+VITE+ - The Unified Toolchain for the Web
+
+This oxfmt wrapper is for IDE extension use only (lsp or stdin mode).
+To format your code, run: vp fmt
+pantoken on pendo-button-tweaks ≡  ~1 via  26.8.1 x 
+➜  cd formats/components && vp test tests/rules/prose.test.ts 2>&1 | tail -30
+note: You are running `vp test` as a Vite+ built-in command. If you meant to run the test npm script, use `vpr test` instead.
+
+ RUN  v4.1.11 /Users/dwahl/Scripts/pantoken/formats/components
+
+
+ Test Files  1 passed (1)
+      Tests  4 passed (4)
+   Start at  08:15:54
+   Duration  1.40s (transform 778ms, setup 0ms, import 1.11s, tests 5ms, environment 0ms)
+
+components on pendo-button-tweaks ↑1  ~2 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken/tools/demo && vp test 2>&1 | tail -25
+note: You are running `vp test` as a Vite+ built-in command. If you meant to run the test npm script, use `vpr test` instead.
+
+ RUN  v4.1.11 /Users/dwahl/Scripts/pantoken/tools/demo
+
+
+ Test Files  2 passed (2)
+      Tests  26 passed (26)
+   Start at  08:17:15
+   Duration  104ms (transform 44ms, setup 0ms, import 57ms, tests 5ms, environment 0ms)
+
+demo on pendo-button-tweaks ↑1  ~9 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken && node tools/i18n-engine/bin/i18n.mjs extract docs.chrome
+Extracted 90 unit(s) from docs.chrome to l10n/docs.chrome.pot.
+pantoken on pendo-button-tweaks ↑1  ~10 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken/docs && vp run docs:chrome:locales:claude 2>&1 | tail -40
+en-AU: filled 1 protected + 3 translated
+en-CA: filled 1 protected + 3 translated
+en-GB: filled 1 protected + 3 translated
+es: filled 1 protected + 3 translated
+fa: filled 1 protected + 3 translated
+fi: filled 1 protected + 3 translated
+fr: filled 1 protected + 3 translated
+fr-CA: filled 1 protected + 3 translated
+ga: filled 1 protected + 3 translated
+he: filled 1 protected + 3 translated
+hi: filled 1 protected + 3 translated
+ht: filled 1 protected + 3 translated
+hu: filled 1 protected + 3 translated
+hy: filled 1 protected + 3 translated
+id: filled 1 protected + 3 translated
+is: filled 1 protected + 3 translated
+it: filled 1 protected + 3 translated
+ja: filled 1 protected + 3 translated
+ko: filled 1 protected + 3 translated
+mi: filled 1 protected + 3 translated
+ms: filled 1 protected + 3 translated
+nb: filled 1 protected + 3 translated
+nl: filled 1 protected + 3 translated
+nn: filled 1 protected + 3 translated
+pl: filled 1 protected + 3 translated
+pt: filled 1 protected + 3 translated
+pt-BR: filled 1 protected + 3 translated
+ru: filled 1 protected + 3 translated
+se: filled 1 protected + 3 translated
+sl: filled 1 protected + 3 translated
+sv: filled 1 protected + 3 translated
+th: filled 1 protected + 3 translated
+tr: filled 1 protected + 3 translated
+uk: filled 1 protected + 3 translated
+vi: filled 1 protected + 3 translated
+zh-Hans: filled 1 protected + 3 translated
+zh-Hant: filled 1 protected + 3 translated
+
+---
+vp run: @pantoken/docs#docs:chrome:locales:claude not cached because it modified its input. (Run `vp run --last-details` for full details)
+
+---
+
+I don't want you to run the translation updates.
