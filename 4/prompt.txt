@@ -1,0 +1,8 @@
+it looks like docs might still be getting deployed twice:
+* merge to main (release) which triggers the changeset release
+* changeset release
+it should only deploy to netlify on the actual changeset release, not the one that creates a PR for changesets.
+
+---
+
+Start implementation
