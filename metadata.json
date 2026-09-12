@@ -1,0 +1,46 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2B2P31RKGK5KQGP4ZQV3JGZ",
+  "strategy": "manual-commit",
+  "branch": "pendo-button-tweaks",
+  "checkpoints_count": 2,
+  "files_touched": [
+    "l10n/ar/docs.api.po",
+    "l10n/ca/docs.api.po",
+    "l10n/cy/docs.api.po",
+    "l10n/da/docs.api.po",
+    "l10n/de/docs.api.po",
+    "l10n/el/docs.api.po",
+    "l10n/en-AU/docs.api.po",
+    "l10n/en-CA/docs.api.po",
+    "l10n/en-GB/docs.api.po",
+    "l10n/es/docs.api.po",
+    "l10n/fa/docs.api.po",
+    "l10n/fi/docs.api.po",
+    "l10n/fr-CA/docs.api.po",
+    "l10n/fr/docs.api.po",
+    "l10n/ga/docs.api.po",
+    "l10n/he/docs.api.po",
+    "l10n/hi/docs.api.po",
+    "l10n/ht/docs.api.po",
+    "l10n/hu/docs.api.po",
+    "l10n/hy/docs.api.po",
+    "l10n/id/docs.api.po"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}

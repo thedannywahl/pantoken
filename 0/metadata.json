@@ -1,0 +1,142 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2B2P31RKGK5KQGP4ZQV3JGZ",
+  "session_id": "075aee66-5ed5-4c69-9360-baf24677584b",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-12T15:10:14.831768Z",
+  "branch": "pendo-button-tweaks",
+  "checkpoints_count": 2,
+  "save_step_count": 2,
+  "files_touched": [
+    "l10n/ar/docs.api.po",
+    "l10n/ca/docs.api.po",
+    "l10n/cy/docs.api.po",
+    "l10n/da/docs.api.po",
+    "l10n/de/docs.api.po",
+    "l10n/el/docs.api.po",
+    "l10n/en-AU/docs.api.po",
+    "l10n/en-CA/docs.api.po",
+    "l10n/en-GB/docs.api.po",
+    "l10n/es/docs.api.po",
+    "l10n/fa/docs.api.po",
+    "l10n/fi/docs.api.po",
+    "l10n/fr-CA/docs.api.po",
+    "l10n/fr/docs.api.po",
+    "l10n/ga/docs.api.po",
+    "l10n/he/docs.api.po",
+    "l10n/hi/docs.api.po",
+    "l10n/ht/docs.api.po",
+    "l10n/hu/docs.api.po",
+    "l10n/hy/docs.api.po",
+    "l10n/id/docs.api.po"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "d71273f8d12a",
+  "checkpoint_transcript_start": 139,
+  "transcript_lines_at_start": 139,
+  "compact_transcript_start": 30,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 3
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-12T15:10:14.817508Z",
+    "agent_lines": 0,
+    "agent_removed": 3459,
+    "human_added": 74431,
+    "human_modified": 136537,
+    "human_removed": 0,
+    "total_committed": 74431,
+    "total_lines_changed": 356192,
+    "agent_percentage": 0.9711054712065403,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 158837,
+      "user_lines_removed": 115601,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "l10n/ar/docs.api.po": 21216,
+        "l10n/ca/docs.api.po": 8054,
+        "l10n/cy/docs.api.po": 8054,
+        "l10n/da/docs.api.po": 8054,
+        "l10n/de/docs.api.po": 8054,
+        "l10n/el/docs.api.po": 8054,
+        "l10n/en-AU/docs.api.po": 8054,
+        "l10n/en-CA/docs.api.po": 8054,
+        "l10n/en-GB/docs.api.po": 8054,
+        "l10n/es/docs.api.po": 8054,
+        "l10n/fa/docs.api.po": 8054,
+        "l10n/fi/docs.api.po": 8054,
+        "l10n/fr-CA/docs.api.po": 8054,
+        "l10n/fr/docs.api.po": 8054,
+        "l10n/ga/docs.api.po": 8054,
+        "l10n/he/docs.api.po": 8057,
+        "l10n/hi/docs.api.po": 16808
+      },
+      "user_removed_per_file": {
+        "l10n/ar/docs.api.po": 10288,
+        "l10n/ca/docs.api.po": 6454,
+        "l10n/cy/docs.api.po": 6454,
+        "l10n/da/docs.api.po": 6454,
+        "l10n/de/docs.api.po": 6458,
+        "l10n/el/docs.api.po": 6475,
+        "l10n/en-AU/docs.api.po": 6638,
+        "l10n/en-CA/docs.api.po": 6641,
+        "l10n/en-GB/docs.api.po": 6625,
+        "l10n/es/docs.api.po": 6455,
+        "l10n/fa/docs.api.po": 6479,
+        "l10n/fi/docs.api.po": 6458,
+        "l10n/fr-CA/docs.api.po": 6453,
+        "l10n/fr/docs.api.po": 6453,
+        "l10n/ga/docs.api.po": 6454,
+        "l10n/he/docs.api.po": 6481,
+        "l10n/hi/docs.api.po": 7881
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 33730,
+      "user_lines_removed": 20933,
+      "agent_lines_added": 158137,
+      "agent_lines_removed": 120619,
+      "user_added_per_file": {
+        "l10n/hu/docs.api.po": 8054,
+        "l10n/hy/docs.api.po": 8054,
+        "l10n/id/docs.api.po": 17622
+      },
+      "user_removed_per_file": {
+        "l10n/hu/docs.api.po": 6446,
+        "l10n/hy/docs.api.po": 6479,
+        "l10n/id/docs.api.po": 8008
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 38,
+      "user_lines_removed": 3,
+      "agent_lines_added": 359487,
+      "agent_lines_removed": 281755,
+      "user_added_per_file": {
+        "tools/i18n-engine/src/ai-translate.ts": 12,
+        "tools/i18n-engine/src/cli.ts": 13,
+        "tools/i18n-engine/src/pipeline.ts": 2,
+        "tools/translation-adapters/src/drift-policy.ts": 11
+      },
+      "user_removed_per_file": {
+        "tools/i18n-engine/src/ai-translate.ts": 2,
+        "tools/translation-adapters/src/drift-policy.ts": 1
+      }
+    }
+  ]
+}

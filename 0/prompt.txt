@@ -1,0 +1,8 @@
+create a new worktree in /.worktrees for this and set your base work from there, we should be ensuring that we follow the standard repo best practices:
+* incremental conventional commits
+* test coverage
+* typedoc coverage
+
+---
+
+create the worktreee off of origin/main. current local HEAD has too many changes to validate against.
