@@ -1,0 +1,67 @@
+looking at http://localhost:5173/
+tablet width:
+* the social links, light/dark toggle, and hte language chooser are added to the kebab menu, but they are not removed from the top nav, they should be removed from the top nav.
+* the text for "Appearance" with the toggle does not match the rest of the menu
+* the new color swatches do not appear with the theme selector
+mobile width:
+* the "appearance" toggle does not look like the rest of the menu
+* the theme selector is an icon, but should be an expandable menu like language is, and it should appear between the language chooser and the appearance toggle like it does on the tablet layout
+
+---
+
+In this repo (pantoken), under docs/.vitepress/theme/, I need to understand how the top navigation bar is customized, specifically:
+
+1. How social links, the light/dark appearance toggle, and the language (locale) chooser are rendered in the top nav for tablet/mobile widths (VitePress default has a "hamburger"/kebab menu for smaller screens - VPNavBarExtra or similar). Look for any custom overrides of VitePress's default `VPNavBarExtra.vue`, `VPNavBarAppearance.vue`, `VPNavBarSocialLinks.vue`, `VPNavBarTranslations.vue`, `VPFlyout.vue`, or similar components.
+2. Find the custom `ThemeSelector.vue` component at docs/.vitepress/theme/components/ThemeSelector.vue and understand its structure and how it currently renders (is it a dropdown/flyout for desktop, and an icon-only button for mobile?).
+3. Find where `ThemeSelector` is included/registered in the theme (e.g. in a custom Layout.vue, or slots defined in .vitepress/theme/index.ts, or an override of VPNavBarExtra).
+4. Look for any custom CSS/SCSS in docs/.vitepress/theme/ that targets `.VPNavBarExtra`, `.VPFlyout`, kebab menu, appearance toggle, media queries around 768px/960px (VitePress breakpoints), and specifically anything mentioning "Appearance" text or theme selector swatches.
+5. Check if there's a language chooser flyout (VPNavBarTranslations override) to use as a reference pattern for making the theme selector expandable like it on mobile.
+
+Report back:
+- Full file paths of all relevant files (theme entry index.ts, Layout.vue if any, ThemeSelector.vue, any NavBarExtra/kebab menu override, any custom CSS files)
+- The full contents of ThemeSelector.vue
+- The full contents of any custom NavBarExtra/kebab-menu-related component
+- Relevant CSS rules affecting nav bar responsive behavior, especially around social links / appearance toggle / language chooser / kebab menu, with line numbers
+- How "Appearance" toggle text/markup is structured in VitePress default vs custom, and what CSS class is used for it
+- Any existing media query breakpoints used (screen-sm, screen-md etc. per VitePress convention) for mobile vs tablet
+Be thorough - this is for planning a fix, not implementing yet.
+
+---
+
+Start implementation
+
+---
+
+Network: use --host to expose
+12:32:14 PM [vitepress] (client) Pre-transform error: Failed to resolve import "@vueuse/core" from ".vitepress/theme/components/VPNavScreen.vue". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/dwahl/Scripts/pantoken/docs/.vitepress/theme/components/VPNavScreen.vue:2:28
+  1  |  import { defineComponent as _defineComponent } from "vue";
+  2  |  import { onKeyStroke } from "@vueuse/core";
+     |                               ^
+  3  |  import { provide } from "vue";
+  4  |  import { navScreenInjectionKey, useNav } from "vitepress/dist/client/theme-default/composables/nav.js";
+12:32:15 PM [vitepress] Internal server error: Failed to resolve import "@vueuse/core" from ".vitepress/theme/components/VPNavScreen.vue". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/dwahl/Scripts/pantoken/docs/.vitepress/theme/components/VPNavScreen.vue:2:28
+  1  |  import { defineComponent as _defineComponent } from "vue";
+  2  |  import { onKeyStroke } from "@vueuse/core";
+     |                               ^
+  3  |  import { provide } from "vue";
+  4  |  import { navScreenInjectionKey, useNav } from "vitepress/dist/client/theme-default/composables/nav.js";
+
+---
+
+let's just move the light/dark toggle to be part of the theme picker component, underneath the swatches so they all travel together.
+
+---
+
+we can remove the toggle from the vpNavBar in desktop mode, it's still rendering there.
+
+---
+
+in mobile, the carets don't match:
+language collapsed: down
+language expanded: left
+theme collapsed: left
+theme expended: up

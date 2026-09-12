@@ -1,0 +1,52 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2BFE13MPT254P10D1K9GZW5",
+  "strategy": "manual-commit",
+  "branch": "theme-colors",
+  "checkpoints_count": 6,
+  "files_touched": [
+    ".github/workflows/docs.yml",
+    "docs/.vitepress/config.ts",
+    "docs/.vitepress/i18n.ts",
+    "docs/.vitepress/theme/Layout.vue",
+    "docs/.vitepress/theme/components/ThemeColorPicker.vue",
+    "docs/.vitepress/theme/components/ThemeSelector.vue",
+    "docs/.vitepress/theme/components/ThemeSelectorAccordion.vue",
+    "docs/.vitepress/theme/components/VPNavBarExtra.vue",
+    "docs/.vitepress/theme/components/VPNavScreen.vue",
+    "docs/.vitepress/theme/index.ts",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/.vitepress/theme/theme.ts",
+    "docs/scripts/site-themes.ts",
+    "formats/components/src/components/avatar/avatar.css",
+    "plugins/pantoken/custom-theme-colors/README.md",
+    "plugins/pantoken/custom-theme-colors/package.json",
+    "plugins/pantoken/custom-theme-colors/scripts/generate.ts",
+    "plugins/pantoken/custom-theme-colors/src/index.ts",
+    "plugins/pantoken/custom-theme-colors/tests/index.test.ts",
+    "plugins/pantoken/custom-theme-colors/tsconfig.json",
+    "plugins/pantoken/custom-theme-colors/vite.config.ts",
+    "pnpm-lock.yaml",
+    "renderers/vitepress/src/vitepress-vars.css",
+    "renderers/vitepress/tests/index.test.ts",
+    "tools/demo/runner/main.ts",
+    "tools/demo/src/srcdoc.ts",
+    "tools/demo/tests/srcdoc.test.ts"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
