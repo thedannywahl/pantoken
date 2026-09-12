@@ -737,6 +737,7 @@ export default defineConfig({
   cleanUrls: true,
   lastUpdated: true,
   buildConcurrency,
+  assetsShards: 4,
   ...(outDir && { outDir }),
   ...(isLocaleScoped && { assetsDir: `assets/${buildLocale}` }),
   sitemap: { hostname },

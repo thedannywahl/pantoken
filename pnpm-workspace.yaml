@@ -92,7 +92,7 @@ catalog:
   "@shikijs/themes": ^4.4.3
   "@shikijs/types": ^4.4.3
   vue: ^3.5.42
-  vitepress: 2.0.0-alpha.20
+  vitepress: https://pkg.pr.new/vitepress@5432
   oxc-minify: ^0.147.0
   typedoc: ^0.28.20
   typedoc-plugin-markdown: ^4.13.0
