@@ -1,0 +1,22 @@
+in a previous conversation we ran into an issue where vitepress emitted all assets into a single directory and we ran into an issue with netlify haivng a cap of files in a directory, and the assetsBase / assetsDir was a fixed value in vitepress, so we effectively worked around it by doing a pseudo vitepress instance per locale on build / deploy. I filed an issue with vitepress and they have a test case for us to explore:
+https://github.com/vuejs/vitepress/issues/5427#issuecomment-5646333237
+```
+```
+pnpm add https://pkg.pr.new/vitepress@5432
+```
+
+    
+      
+    
+
+    
+  
+
+then set `assetsShards: 4` in config
+
+It can't guarantee things though, like things should be fairly distributed, but if most of the file name hashes start with the same integer, then they will end up in the same directory. However, realistically speaking it should work unless you're trying with crafted data.
+```
+
+---
+
+Search and investigate how VitePress is configured in this repository, especially in docs/, package.json files, build scripts, and where the workaround for per-locale VitePress build/deploy is implemented. Find out how VitePress config is structured and where `assetsShards` would be added.
