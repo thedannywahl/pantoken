@@ -1,0 +1,50 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2B4V0E7VQ1XHD3A80SXZAD0",
+  "session_id": "48266755-8d0b-4887-8600-1db73f1f452f",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-12T15:47:37.986528Z",
+  "branch": "pendo-button-tweaks",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "l10n/en/docs.home.po",
+    "tools/i18n-engine/src/pipeline.ts",
+    "tools/i18n-engine/tests/pipeline-guides.test.ts",
+    "tools/i18n-engine/tests/pipeline-home.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "80db95ff443c",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-12T15:47:37.974032Z",
+    "agent_lines": 12,
+    "agent_removed": 9,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 12,
+    "total_lines_changed": 21,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
+}
