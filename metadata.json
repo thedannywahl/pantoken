@@ -3,7 +3,7 @@
   "checkpoint_id": "01M2BFE13MPT254P10D1K9GZW5",
   "strategy": "manual-commit",
   "branch": "theme-colors",
-  "checkpoints_count": 35,
+  "checkpoints_count": 36,
   "files_touched": [
     ".changeset/remove-ash-theme-color.md",
     ".github/workflows/docs.yml",
@@ -33,7 +33,8 @@
     "renderers/vitepress/tests/index.test.ts",
     "tools/demo/runner/main.ts",
     "tools/demo/src/srcdoc.ts",
-    "tools/demo/tests/srcdoc.test.ts"
+    "tools/demo/tests/srcdoc.test.ts",
+    "tools/i18n-engine/tests/ai-translate.test.ts"
   ],
   "sessions": [
     {
@@ -77,6 +78,13 @@
       "compact_transcript": "/5/transcript.jsonl",
       "content_hash": "/5/content_hash.txt",
       "prompt": "/5/prompt.txt"
+    },
+    {
+      "metadata": "/6/metadata.json",
+      "transcript": "/6/full.jsonl",
+      "compact_transcript": "/6/transcript.jsonl",
+      "content_hash": "/6/content_hash.txt",
+      "prompt": "/6/prompt.txt"
     }
   ],
   "token_usage": {

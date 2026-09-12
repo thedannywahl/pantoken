@@ -1,0 +1,17 @@
+FAIL  tools/i18n-engine/tests/ai-translate.test.ts > fillUntranslatedEntries > keeps at most `concurrency` provider calls in flight
+Error: AI command exited 2 for locale 'hu': oils I/O error (main): No such process
+ ❯ ChildProcess.<anonymous> tools/translation-adapters/dist/index.mjs:535:43
+    533|    settled = true;
+    534|    const where = context ? ` for ${context}` : "";
+    535|    if (code !== 0) reject(/* @__PURE__ */ new Error(`AI command exited…
+       |                                           ^
+    536|    else resolve(out.trimEnd());
+    537|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 309 passed (310)
+      Tests  1 failed | 2222 passed (2223)
+   Start at  12:49:30
+   Duration  55.18s (transform 71.43s, setup 9.33s, import 235.98s, tests 136.63s, environment 15.03s)
