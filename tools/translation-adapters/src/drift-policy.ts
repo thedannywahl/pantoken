@@ -293,6 +293,11 @@ export class DriftReporter {
     return this.findings.some((f) => f.severity === "block");
   }
 
+  /** Findings retained after policy resolution, including their effective severity. */
+  get recordedFindings(): readonly (DriftFinding & { severity: Exclude<DriftSeverity, "off"> })[] {
+    return this.findings;
+  }
+
   /** Collapse findings to one row per `(severity, surface, file)`, biggest first. */
   private group(): Grouped[] {
     const rows = new Map<string, Grouped>();

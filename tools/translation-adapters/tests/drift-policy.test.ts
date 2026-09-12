@@ -190,6 +190,9 @@ test("DriftReporter exits 1 when any finding blocks", () => {
   const reporter = reporterFor(POLICY);
   reporter.add({ surface: "ui.strings", locale: "en", file: "a.json", detail: "x" });
   expect(reporter.blocking).toBe(true);
+  expect(reporter.recordedFindings).toEqual([
+    { surface: "ui.strings", locale: "en", file: "a.json", detail: "x", severity: "block" },
+  ]);
   expect(reporter.report()).toBe(1);
 });
 

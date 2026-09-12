@@ -242,18 +242,27 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
     .command("check")
     .addArgument(new Argument("[space]", "space id").argOptional())
     .option("--strict", "treat every warn-level finding as blocking", false)
-    .action((space: string | undefined, opts: { strict: boolean }) =>
+    .option("--json <path>", "write findings as JSON")
+    .action((space: string | undefined, opts: { strict: boolean; json?: string }) =>
       withSpace(
         "check",
         space,
         (config, spaceId) => {
           if (opts.strict) process.env.I18N_DRIFT_STRICT = "1";
-          const { exitCode } = runCheckMessages(config, configDirOf(), spaceId);
+          const { reporter, exitCode } = runCheckMessages(config, configDirOf(), spaceId);
+          if (opts.json) {
+            mkdirSync(dirname(opts.json), { recursive: true });
+            writeFileSync(opts.json, `${JSON.stringify(reporter.recordedFindings, null, 2)}\n`);
+          }
           process.exitCode = exitCode;
         },
         (config, spaceId) => {
           if (opts.strict) process.env.I18N_DRIFT_STRICT = "1";
-          const { exitCode } = runCheckContent(config, configDirOf(), spaceId);
+          const { reporter, exitCode } = runCheckContent(config, configDirOf(), spaceId);
+          if (opts.json) {
+            mkdirSync(dirname(opts.json), { recursive: true });
+            writeFileSync(opts.json, `${JSON.stringify(reporter.recordedFindings, null, 2)}\n`);
+          }
           process.exitCode = exitCode;
         },
       ),

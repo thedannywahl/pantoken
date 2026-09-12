@@ -28,6 +28,10 @@ html.dark {
   color-scheme: dark;
 }
 
+.VPSidebarItem .text::first-letter {
+  text-transform: capitalize;
+}
+
 /* Each CSS-API `@example` is a source fence that seams into a bordered, page-background frame
    (`.css-example`, now an isolated `<iframe srcdoc>` — see `@pantoken/demo`'s `buildExampleSrcdoc` —
    so nothing from `.vp-doc` leaks into the live preview), wrapped in `.css-example-frame` (the actual

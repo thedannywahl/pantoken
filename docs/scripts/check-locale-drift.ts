@@ -23,8 +23,8 @@
  *
  * @module
  */
-import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
-import { join, relative } from "node:path";
+import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
+import { dirname, join, relative } from "node:path";
 import { DriftReporter } from "@pantoken/translation-adapters";
 import { extractFrontmatterUnits, parsePo } from "@pantoken/i18n-engine";
 import { ENGLISH_UI_STRINGS, NON_ROOT_LOCALES, flattenStrings } from "../.vitepress/i18n.ts";
@@ -280,3 +280,8 @@ for (const locale of targets) {
 }
 
 process.exitCode = reporter.report();
+const jsonOutput = process.env.DRIFT_JSON_OUT;
+if (jsonOutput) {
+  mkdirSync(dirname(jsonOutput), { recursive: true });
+  writeFileSync(jsonOutput, `${JSON.stringify(reporter.recordedFindings, null, 2)}\n`);
+}
