@@ -85,12 +85,16 @@ ${s} blockquote {
   font-style: var(--instui-component-text-content-quote-font-style);
 }
 
+/* Code is written left-to-right even inside RTL prose, and a class name like \`.--bg-<name>\` is all
+   bidi-neutral characters, so without an isolated LTR run the bidi algorithm reorders it on screen. */
 ${s} code {
   font-family: var(--instui-font-family-code);
   font-size: 0.9em;
   background: var(--instui-color-background-muted);
   padding: var(--instui-spacing-space2xs) var(--instui-spacing-space-xs);
   border-radius: var(--instui-border-radius-sm);
+  direction: ltr;
+  unicode-bidi: isolate;
 }
 ${s} pre {
   font-family: var(--instui-font-family-code);
@@ -100,6 +104,8 @@ ${s} pre {
   border: var(--instui-border-width-sm) solid var(--instui-color-stroke-base);
   border-radius: var(--instui-border-radius-md);
   overflow-x: auto;
+  direction: ltr;
+  text-align: left;
 }
 ${s} pre code { background: none; padding: 0; border-radius: 0; font-size: inherit; }
 

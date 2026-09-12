@@ -149,6 +149,9 @@ body {
   display: none;
   /* Positioning context for the copy button. */
   position: relative;
+  /* The chrome follows the embedding page's direction, but source code is always read left-to-right. */
+  direction: ltr;
+  text-align: left;
   /* The copy button, ported from the docs' `@example` code fences: a 40×40 icon button pinned top-right,
    hidden until the pane is hovered or the button is focused. The two glyphs are the same theme-neutral
    grey SVGs VitePress uses (copy → checkmark), so they read in both light and dark. */

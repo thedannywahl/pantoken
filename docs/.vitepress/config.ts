@@ -835,6 +835,13 @@ export default defineConfig({
           const locale = NON_ROOT_LOCALES.find((key) => relativePath.startsWith(`${key}/`));
           return locale ? `${locale}/` : "";
         },
+        // The runner is its own document, so its view tabs can't inherit the page's translated chrome
+        // — hand them over in the runner URL instead.
+        localeLabels: (relativePath: string) => {
+          const locale =
+            NON_ROOT_LOCALES.find((key) => relativePath.startsWith(`${key}/`)) ?? "root";
+          return LOCALE_THEMES[locale].demoTabs;
+        },
         // Seam a live preview onto each `@example` HTML fence at compile time: the same markup,
         // rendered in an isolated `<iframe srcdoc>` so none of the page's own `.vp-doc` styles (ours or
         // VitePress's native theme CSS) can reach it, wrapped in `.css-example` (framed by the theme).

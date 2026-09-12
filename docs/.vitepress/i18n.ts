@@ -134,6 +134,9 @@ export interface UiStrings {
     apiOverview: string;
   };
   editText: string;
+  // View tabs on the `@pantoken/demo` runner, passed into its iframe by the markdown-it plugin.
+  // The language names are acronyms, so most locales keep them as-is.
+  demoTabs: { result: string; html: string; css: string; js: string };
   // The pantoken palette selector injected into the nav by the custom theme (see ThemeSelector.vue).
   // `Canvas` is an Instructure product name and stays as-is per brand rules; only descriptors translate.
   themeSelector: {
