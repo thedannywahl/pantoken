@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.1.4
+
+### Patch Changes
+
+- c22ba83: Mark 'ash' as a deprecated color in avatar
+
 ## 1.1.3
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.5.6
+
+### Patch Changes
+
+- c22ba83: Remove the duplicate `ash` color namespace from custom theme color generation and the docs color picker. Refresh the docs/demo theme assets and VitePress integration. The avatar `-color-ash` modifier remains functional but is now deprecated in favor of `-color-grey`.
+
 ## 0.5.5
 
 ### Patch Changes
