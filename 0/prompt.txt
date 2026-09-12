@@ -1,0 +1,5 @@
+why did ossf scorecard fail on merge? https://github.com/thedannywahl/pantoken/actions/runs/34703823295/job/103580155152
+
+---
+
+Start implementation
