@@ -1,0 +1,67 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2B37904BCC211YRFS0SXE3C",
+  "session_id": "0feb1dc0-222d-4460-be9d-0cd30f66becd",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-12T15:19:22.937048Z",
+  "branch": "pendo-button-tweaks",
+  "checkpoints_count": 2,
+  "save_step_count": 2,
+  "files_touched": [
+    "docs/scripts/check-locale-drift.test.ts",
+    "docs/scripts/check-locale-drift.ts",
+    "docs/scripts/sync-home-locales.ts",
+    "docs/scripts/translate-api-po.test.ts",
+    "docs/scripts/translate-api-po.ts",
+    "docs/scripts/translate-chrome-po.ts",
+    "docs/scripts/translate-demo-po.ts",
+    "scripts/i18n-drift-fix.test.ts",
+    "scripts/i18n-drift-fix.ts",
+    "tools/i18n-engine/tests/ai-translate.test.ts",
+    "tools/translation-adapters/src/index.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "f5b38d06fa2d",
+  "checkpoint_transcript_start": 1365,
+  "transcript_lines_at_start": 1365,
+  "compact_transcript_start": 228,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 9
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-12T15:19:22.899463Z",
+    "agent_lines": 184,
+    "agent_removed": 13,
+    "human_added": 0,
+    "human_modified": 1,
+    "human_removed": 2,
+    "total_committed": 185,
+    "total_lines_changed": 200,
+    "agent_percentage": 98.5,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 187,
+      "agent_lines_removed": 12
+    }
+  ]
+}

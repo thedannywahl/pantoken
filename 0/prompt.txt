@@ -1,0 +1,39 @@
+vp check --fix:
+[1m[31merror:[39m[0m Lint or type issues found
+x typescript(TS2322): Type '{ msgctxt: string; msgid: string; msgstr: string; obsolete: false; fuzzy: false; flags: []; references: []; }' is not assignable to type 'never'.
+    ,-[docs/scripts/translate-api-po.test.ts:42:5]
+ 41 |       mocks.parsePo.mockReturnValue([
+ 42 | ,->     {
+ 43 | |         msgctxt: "docs.api:prose",
+ 44 | |         msgid: "One block",
+ 45 | |         msgstr: "",
+ 46 | |         obsolete: false,
+ 47 | |         fuzzy: false,
+ 48 | |         flags: [],
+ 49 | |         references: [],
+ 50 | `->     },
+ 51 |         {
+    `----
+
+  x typescript(TS2322): Type '{ msgctxt: string; msgid: string; msgstr: string; obsolete: false; fuzzy: false; flags: []; references: []; }' is not assignable to type 'never'.
+    ,-[docs/scripts/translate-api-po.test.ts:51:5]
+ 50 |         },
+ 51 | ,->     {
+ 52 | |         msgctxt: "docs.api:prose",
+ 53 | |         msgid: "Other block",
+ 54 | |         msgstr: "",
+ 55 | |         obsolete: false,
+ 56 | |         fuzzy: false,
+ 57 | |         flags: [],
+ 58 | |         references: [],
+ 59 | `->     },
+ 60 |       ]);
+    `----
+
+  x typescript(TS2345): Argument of type 'typeof (Anonymous class)' is not assignable to parameter of type '(...args: any[]) => any'.
+    ,-[docs/scripts/translate-api-po.test.ts:62:5]
+ 61 |   mocks.AiTranslationAdapter.mockImplementation(
+ 62 |     class {
+    :     ^^^^^
+ 63 |       translateBatch = translateBatch;
+    `----
