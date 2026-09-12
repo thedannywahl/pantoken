@@ -1,0 +1,87 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2AXD07CJGPP2F60TF86Z0JJ",
+  "session_id": "0feb1dc0-222d-4460-be9d-0cd30f66becd",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-12T13:37:38.507925Z",
+  "branch": "pendo-button-tweaks",
+  "checkpoints_count": 4,
+  "save_step_count": 3,
+  "files_touched": [
+    ".changeset/targeted-drift-fix.md",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/scripts/check-locale-drift.test.ts",
+    "docs/scripts/check-locale-drift.ts",
+    "docs/scripts/sync-home-locales.ts",
+    "docs/scripts/translate-chrome-po.ts",
+    "docs/scripts/translate-demo-po.ts",
+    "l10n/docs.api.pot",
+    "scripts/i18n-drift-fix.test.ts",
+    "scripts/i18n-drift-fix.ts",
+    "tools/i18n-engine/src/cli.ts",
+    "tools/translation-adapters/src/drift-policy.ts",
+    "tools/translation-adapters/tests/drift-policy.test.ts",
+    "vite.config.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "69976173b3b6",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 4
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-12T13:37:38.488669Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 39,
+    "human_removed": 8049,
+    "total_committed": 452,
+    "total_lines_changed": 8088,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 32,
+      "user_lines_removed": 8053,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "l10n/docs.api.pot": 32
+      },
+      "user_removed_per_file": {
+        "l10n/docs.api.pot": 8053
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 16,
+      "user_lines_removed": 22,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "docs/.vitepress/theme/pantoken.css": 16
+      },
+      "user_removed_per_file": {
+        "docs/.vitepress/theme/pantoken.css": 22
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 271,
+      "agent_lines_removed": 31
+    }
+  ]
+}

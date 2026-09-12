@@ -1,0 +1,50 @@
+`vpr i18n:drift:check` is pretty fast, but all the individual translate scripts are fairly slow.  but since we can specify a namespace, a language set and a file (or file set?) we should be able to build a targeted `vpr i18n:drift:fix` with the different providers like `vpr i18n:drift:fix:copilot` which runs the check, and then transforms the output into a targeted translation pipeline.
+
+---
+
+In the pantoken repo (/Users/dwahl/Scripts/pantoken), investigate the i18n tooling thoroughly. I need a detailed report on:
+
+1. Where the `i18n:drift:check` script/task lives (likely in vite.config.ts tasks, package.json scripts, or docs/scripts, or a top-level scripts/ dir). Find its exact command definition (what `vpr i18n:drift:check` maps to — check root vite.config.ts, docs/package.json, root package.json "run" scripts, and any i18n.config.json usage).
+2. What it actually does: read the implementing script file(s) fully. What output/format does it produce (JSON report? console list? file diffs?)? What does "drift" mean here (missing translations per locale/namespace, stale translations, etc.)? What CLI args/flags does it support (namespace, language, file filters)?
+3. Where the "individual translate scripts" live — the ones described as slow. Find scripts referenced by names like `i18n:translate`, `translate:*`, or similar under docs/scripts, scripts/, or docs/package.json. Read them fully to understand:
+   - What provider(s) they currently support (if any) — is there already a concept of "providers" (e.g. an LLM API, Google Translate API, DeepL, manual)?
+   - How they invoke translation (API calls, model calls, files touched)
+   - Why they might be slow (e.g., iterate all locales/namespaces/files unconditionally, no filtering options, rate-limited API calls, no concurrency)
+   - What CLI arguments they currently accept, if any (namespace, language, file)
+4. The i18n.config.json at repo root — read its full contents to understand configured locales, namespaces, glossary/ai adapters, etc.
+5. The translation layer/adapter architecture mentioned in copilot-instructions: `docs/.vitepress/i18n.ts` — read it to understand the "symmetric prefix swap" locales (root English, hu Magyar) and the glossary/ai adapters referenced in AGENTS.md ("Localizable UI strings go in i18n.ts... use the glossary adapter... ai adapter only for hand-written guides").
+6. Check `docs/conventions/build-and-docs.md` for any documented i18n workflow, and `docs/engineering-log.md` for any known gotchas about translation scripts.
+7. Check if there's already any concept of "copilot" as a provider anywhere in the codebase (e.g. existing scripts calling GitHub Copilot CLI, VS Code chat API, or an LLM). Search for "copilot" mentions in scripts/ and docs/scripts and package.json.
+8. Look for any existing "pipeline" pattern for chained CLI tools in this repo (e.g. scripts that call `entire` CLI, or compose multiple steps) to see what conventions to follow for building a new `i18n:drift:fix` script that shells out to a "copilot" translation step.
+9. Check package.json / docs/package.json for the exact npm/vp script names in the "i18n" namespace (list them all with their exact command strings).
+
+For each relevant file, give me the FULL exact file path (absolute), and quote the key parts of file content (script definitions, function signatures, CLI arg parsing logic, output format) so I can reference exact code without re-reading. Also tell me total line counts of key script files.
+
+Do NOT modify any files — this is read-only research.
+
+---
+
+In the pantoken repo (/Users/dwahl/Scripts/pantoken), I need a detailed report on the i18n "check:drift" and "translate" implementations for three packages: `@pantoken/web-components` (ui.strings surface), `@pantoken/scaffold` (cli.scaffold surface), and `@pantoken/ai` (cli.ai surface). These are referenced in vite.config.ts tasks like `ui:translate`, `ui:translate:copilot`, `@pantoken/web-components#check:drift`, `cli:translate`, `@pantoken/scaffold#translate:copilot`, `@pantoken/ai#check:drift`, etc.
+
+For each of the three packages, find and read FULLY:
+1. Their package.json — locate the exact `translate`, `translate:claude`, `translate:agy`, `translate:copilot`, `translate:force*`, `check:drift`, `extract` script definitions (exact command strings).
+2. The actual script file(s) each of those npm scripts invokes (e.g. something like `scripts/translate.ts`, `scripts/check-drift.ts` or similar — find the real filenames first via file search/grep for "check:drift" and "translate" in each package's package.json, then read the referenced script files).
+3. For each package's translate script: does it already support locale-scoping via an env var (e.g. `DOCS_TRANSLATION_LOCALE`-equivalent, maybe `UI_TRANSLATION_LOCALE`, `I18N_TRANSLATION_LOCALE`, or similar)? Does it support a file/namespace-level filter? Quote the exact env var names read (via `process.env.X`) and how they're parsed.
+4. For each package's check:drift/drift script: what "Missing" or finding shape does it produce? Is there an exported/importable function that returns structured findings (like `apiDrift` is exported in docs/scripts/check-locale-drift.ts), or is it only a CLI script that prints/exits?
+5. Is there a shared `DriftReporter` (from `@pantoken/translation-adapters`) used here too, same as docs? Confirm import.
+6. What underlying translation adapter do they use — is it the same `AiTranslationAdapter`/`GlossaryTranslationAdapter` pattern from docs/scripts/api-translation.ts, or a separate implementation local to each package? If separate, give the full path and note key differences (constructor signature, translateBatch/translateMarkdown method signatures, provider env vars read like DOCS_TRANSLATION_COMMAND).
+7. Give me exact absolute file paths and line counts for every file you read.
+
+This is read-only research — do not modify any files. Report back with exact quoted code for: each package's relevant package.json script lines, each translate script's locale/file scoping logic, and each drift script's exported detection functions signature (if any).
+
+---
+
+the json output should go in the `/.i18n` folder where the coverage report is written since this path is gitignored.
+
+---
+
+start the plan
+
+---
+
+make sure that these are full typedoc'd and have test coverage of >= 85%, and a changeset.
