@@ -1,0 +1,45 @@
+okay, now we need to expand this to several platforms as a POC, and add an animation to change the text to match the platform, with the proper casing, so if react should be capitalized it should be 'React' but if it should be lowercase, then it should be kept lowercase.
+
+---
+
+I don't want a fade, I want the 'box' around the text to stay the same and then I want it to look like the text slides down out of the box, and the new text slides up to replace it. the box width should animate too.
+
+---
+
+now I want the text to stay visible for ~5 seconds.
+
+---
+
+the icon should be vertically centered with the text. web looks okay, but everything else is too low.
+
+---
+
+look at it visually on http://localhost:5173/ it's still not correct.
+
+---
+
+now the iconds are centered correctly to the text, but they are not vertically centered within the platform container - they're all vertically at the top.
+
+---
+
+the text is vertically at the top of the container, and the icon is vertically centered to the text, making everything look too high.
+
+---
+
+okay, now fix the wrap, we should keep 'accessible ___' always on one line, ifwe need to adjust the html here in `text` we can to make it easier.
+
+---
+
+slow the text transition speed by 50%.
+
+---
+
+can we make the icon transition with the text?
+
+---
+
+if it's easier to do html here with `<span class="instui-icon -icon-html">` and then manipulate the classes let's do that.
+
+---
+
+now the text baseline for `accessible` and the active platform should match, but the platform text is higher than `accessible`
