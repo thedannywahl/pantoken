@@ -2,7 +2,7 @@
 layout: home
 hero:
   name: Pantoken
-  text: InstUI, everywhere
+  text: Create beautiful,<br/><span class="platform-line">accessible <span class="platform web">web</span></span><br/>apps.
   tagline: One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads.
   actions:
     - theme: brand
@@ -19,12 +19,12 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: One source of truth
-    details: Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way.
+    details: Every packages uses the official Instructure design tokens, components, and interactions from <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
     title: Use the smallest package
-    details: Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI.
+    details: Install just <code>@pantoken/css</code> for a stylesheet, <code>@pantoken/react</code> for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI.
   - icon:
       light: /workflow-light.svg
       dark: /workflow-dark.svg

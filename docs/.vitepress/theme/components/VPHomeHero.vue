@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { DefaultTheme } from "vitepress/theme";
 import { useData } from "vitepress";
+import { onBeforeUnmount, onMounted, ref } from "vue";
 import VPButton from "vitepress/dist/client/theme-default/components/VPButton.vue";
 import VPImage from "vitepress/dist/client/theme-default/components/VPImage.vue";
 import GetStartedTabs from "./GetStartedTabs.vue";
@@ -14,6 +15,157 @@ interface HeroAction {
 }
 
 const { frontmatter: fm } = useData();
+
+// Cycles the hero tagline's `.platform` pill through the emitted platforms, renderers, and
+// bundler formats, each with its own glyph (`icon` maps to an `--instui-icon-<name>` token from
+// pantoken.css) and casing convention.
+const PLATFORMS = [
+  { name: "web", label: "web", icon: "html5" },
+  { name: "react", label: "React", icon: "react" },
+  { name: "vue", label: "Vue", icon: "vuedotjs" },
+  { name: "swift", label: "Swift", icon: "swift" },
+  { name: "android", label: "Android", icon: "android" },
+  { name: "wordpress", label: "WordPress", icon: "wordpress" },
+  { name: "angular", label: "Angular", icon: "angular" },
+  { name: "svelte", label: "Svelte", icon: "svelte" },
+  { name: "astro", label: "Astro", icon: "astro" },
+  { name: "vite", label: "Vite", icon: "vite" },
+  { name: "webpack", label: "Webpack", icon: "webpack" },
+  { name: "tailwind", label: "Tailwind", icon: "tailwindcss" },
+  { name: "postcss", label: "PostCSS", icon: "postcss" },
+  { name: "next", label: "Next.js", icon: "nextdotjs" },
+  { name: "compose", label: "Compose", icon: "jetpackcompose" },
+  { name: "flutter", label: "Flutter", icon: "flutter" },
+  { name: "rust", label: "Rust", icon: "rust" },
+  { name: "drupal", label: "Drupal", icon: "drupal" },
+  { name: "hugo", label: "Hugo", icon: "hugo" },
+  { name: "jekyll", label: "Jekyll", icon: "jekyll" },
+  { name: "sass", label: "Sass", icon: "sass" },
+  { name: "stylus", label: "Stylus", icon: "stylus" },
+  { name: "storybook", label: "Storybook", icon: "storybook" },
+  { name: "bootstrap", label: "Bootstrap", icon: "bootstrap" },
+  { name: "docusaurus", label: "Docusaurus", icon: "docusaurus" },
+  { name: "mintlify", label: "Mintlify", icon: "mintlify" },
+  { name: "shadcn", label: "shadcn/ui", icon: "shadcnui" },
+  { name: "web-components", label: "Web Components", icon: "webcomponentsdotorg" },
+  { name: "mui", label: "MUI", icon: "mui" },
+  { name: "foundation", label: "Foundation", icon: "zurb" },
+  { name: "tinymce", label: "TinyMCE", icon: "tiny" },
+] as const;
+
+const heroTextRef = ref<HTMLElement | null>(null);
+let cycleIntervalId: number | undefined;
+let swapTimeoutId: number | undefined;
+let syncViewportWidth: (() => void) | undefined;
+
+const TRANSITION_MS = 450;
+
+onMounted(() => {
+  const platformEl = heroTextRef.value?.querySelector<HTMLElement>(".platform");
+  if (!platformEl || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  let index = PLATFORMS.findIndex((platform) => platformEl.classList.contains(platform.name));
+  if (index < 0) index = 0;
+
+  const iconViewport = document.createElement("span");
+  iconViewport.className = "platform-glyph-viewport";
+
+  let currentIcon = document.createElement("span");
+  currentIcon.className = "platform-glyph";
+  currentIcon.style.setProperty("--pantoken-glyph", `var(--instui-icon-${PLATFORMS[index].icon})`);
+  iconViewport.append(currentIcon);
+
+  const viewport = document.createElement("span");
+  viewport.className = "platform-viewport";
+
+  let currentLabel = document.createElement("span");
+  currentLabel.className = "platform-label";
+  currentLabel.textContent = platformEl.textContent;
+  viewport.append(currentLabel);
+
+  platformEl.textContent = "";
+  platformEl.append(iconViewport, viewport);
+  viewport.style.width = `${currentLabel.offsetWidth}px`;
+
+  // .platform's flex centering positions the viewport geometrically, not by text baseline, so
+  // measure and correct the gap against the surrounding "accessible" text — recomputed on resize
+  // since the required offset isn't a fixed ratio of font-size across breakpoints.
+  const syncBaseline = () => {
+    const line = heroTextRef.value?.querySelector<HTMLElement>(".platform-line");
+    const textNode = Array.from(line?.childNodes ?? []).find(
+      (n): n is Text => n.nodeType === Node.TEXT_NODE && !!n.textContent?.trim(),
+    );
+    if (!textNode || !currentLabel.firstChild) return;
+
+    viewport.style.top = "0px";
+    const textRange = document.createRange();
+    textRange.selectNodeContents(textNode);
+    const textBottom = textRange.getBoundingClientRect().bottom;
+
+    const labelRange = document.createRange();
+    labelRange.selectNodeContents(currentLabel.firstChild);
+    const labelBottom = labelRange.getBoundingClientRect().bottom;
+
+    viewport.style.top = `${textBottom - labelBottom}px`;
+  };
+  syncBaseline();
+
+  // Keep the box width and baseline correct across breakpoint changes without waiting for the next cycle.
+  syncViewportWidth = () => {
+    viewport.style.transition = "none";
+    viewport.style.width = `${currentLabel.offsetWidth}px`;
+    void viewport.offsetWidth;
+    viewport.style.transition = "";
+    syncBaseline();
+  };
+  window.addEventListener("resize", syncViewportWidth);
+
+  cycleIntervalId = window.setInterval(() => {
+    index = (index + 1) % PLATFORMS.length;
+    const next = PLATFORMS[index];
+
+    const nextIcon = document.createElement("span");
+    nextIcon.className = "platform-glyph";
+    nextIcon.style.setProperty("--pantoken-glyph", `var(--instui-icon-${next.icon})`);
+    nextIcon.style.transform = "translateY(100%)";
+    iconViewport.append(nextIcon);
+
+    const nextLabel = document.createElement("span");
+    nextLabel.className = "platform-label";
+    nextLabel.textContent = next.label;
+    nextLabel.style.transform = "translateY(100%)";
+    viewport.append(nextLabel);
+
+    // Force layout so the entering icon/label start below the box before their transforms animate.
+    void nextLabel.offsetWidth;
+
+    viewport.style.width = `${nextLabel.offsetWidth}px`;
+    for (const platform of PLATFORMS) platformEl.classList.remove(platform.name);
+    platformEl.classList.add(next.name);
+
+    currentIcon.style.transform = "translateY(100%)";
+    nextIcon.style.transform = "translateY(0)";
+    currentLabel.style.transform = "translateY(100%)";
+    nextLabel.style.transform = "translateY(0)";
+
+    const exitingIcon = currentIcon;
+    const exitingLabel = currentLabel;
+    currentIcon = nextIcon;
+    currentLabel = nextLabel;
+
+    swapTimeoutId = window.setTimeout(() => {
+      exitingIcon.remove();
+      exitingLabel.remove();
+      syncBaseline();
+    }, TRANSITION_MS);
+  }, 5000);
+});
+
+onBeforeUnmount(() => {
+  window.clearInterval(cycleIntervalId);
+  window.clearTimeout(swapTimeoutId);
+  if (syncViewportWidth) window.removeEventListener("resize", syncViewportWidth);
+});
 </script>
 
 <template>
@@ -24,7 +176,7 @@ const { frontmatter: fm } = useData();
         <slot name="home-hero-info">
           <h1 class="heading">
             <span v-if="fm.hero.name" v-html="fm.hero.name" class="name clip"></span>
-            <span v-if="fm.hero.text" v-html="fm.hero.text" class="text"></span>
+            <span v-if="fm.hero.text" ref="heroTextRef" v-html="fm.hero.text" class="text"></span>
           </h1>
           <p v-if="fm.hero.tagline" v-html="fm.hero.tagline" class="tagline"></p>
         </slot>

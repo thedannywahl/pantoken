@@ -1,5 +1,39 @@
 /* Use InstUI's font, Atkinson Hyperlegible Next (from @pantoken/components/fonts.css), for the
    whole site. The token carries its own fallback chain: Atkinson, then system-ui. */
+/* Brand glyphs for the hero tagline's chained `.platform.<name>` pills (e.g. `.web` → HTML5), cycled
+   by `VPHomeHero.vue`'s platform animation — one per emitted platform/renderer/bundler format. */
+@import "@pantoken/plugin-simple-icons/icons/html5.css";
+@import "@pantoken/plugin-simple-icons/icons/react.css";
+@import "@pantoken/plugin-simple-icons/icons/vuedotjs.css";
+@import "@pantoken/plugin-simple-icons/icons/swift.css";
+@import "@pantoken/plugin-simple-icons/icons/android.css";
+@import "@pantoken/plugin-simple-icons/icons/wordpress.css";
+@import "@pantoken/plugin-simple-icons/icons/angular.css";
+@import "@pantoken/plugin-simple-icons/icons/svelte.css";
+@import "@pantoken/plugin-simple-icons/icons/astro.css";
+@import "@pantoken/plugin-simple-icons/icons/vite.css";
+@import "@pantoken/plugin-simple-icons/icons/webpack.css";
+@import "@pantoken/plugin-simple-icons/icons/tailwindcss.css";
+@import "@pantoken/plugin-simple-icons/icons/postcss.css";
+@import "@pantoken/plugin-simple-icons/icons/nextdotjs.css";
+@import "@pantoken/plugin-simple-icons/icons/jetpackcompose.css";
+@import "@pantoken/plugin-simple-icons/icons/flutter.css";
+@import "@pantoken/plugin-simple-icons/icons/rust.css";
+@import "@pantoken/plugin-simple-icons/icons/drupal.css";
+@import "@pantoken/plugin-simple-icons/icons/hugo.css";
+@import "@pantoken/plugin-simple-icons/icons/jekyll.css";
+@import "@pantoken/plugin-simple-icons/icons/sass.css";
+@import "@pantoken/plugin-simple-icons/icons/stylus.css";
+@import "@pantoken/plugin-simple-icons/icons/storybook.css";
+@import "@pantoken/plugin-simple-icons/icons/bootstrap.css";
+@import "@pantoken/plugin-simple-icons/icons/docusaurus.css";
+@import "@pantoken/plugin-simple-icons/icons/mintlify.css";
+@import "@pantoken/plugin-simple-icons/icons/shadcnui.css";
+@import "@pantoken/plugin-simple-icons/icons/webcomponentsdotorg.css";
+@import "@pantoken/plugin-simple-icons/icons/mui.css";
+@import "@pantoken/plugin-custom-icons/icons/zurb.css";
+@import "@pantoken/plugin-custom-icons/icons/tiny.css";
+
 :root {
   /* Vite's production CSS transform lowers light-dark() to scheme helper variables. Give that
      transform an explicit light default to pair with the dark override below; without it,
@@ -402,6 +436,83 @@ html[dir="rtl"] .vp-doc div[class*="language-"] :is(pre, code) {
   .tagline {
     color: #aab0b5;
   }
+
+  .platform {
+    display: inline-flex;
+    align-items: center;
+    background-color: color-mix(
+      in srgb,
+      var(--instui-color-institutional-brand-primary) 50%,
+      transparent
+    );
+    box-shadow: inset 0 -4px 0 0
+      color-mix(in srgb, var(--instui-color-institutional-brand-primary) 75%, transparent);
+    padding: 0 0.25rem;
+    border-radius: var(--instui-primitive-size-size4);
+  }
+
+  /* Keeps "accessible <platform>" on one line even when the roller swaps in a long label like
+     "WordPress" — the surrounding `<br/>`s in index.md still control where the other lines break. */
+  .platform-line {
+    white-space: nowrap;
+  }
+
+  /* "accessible WordPress" is close to the line's available width on narrow phones; shrink slightly
+     so it doesn't spill past the hero's edge padding. */
+  @media (max-width: 639px) {
+    .platform-line {
+      font-size: 0.85em;
+    }
+  }
+
+  /* Text roller built by VPHomeHero.vue's platform cycle: a fixed-height clipping window holding one
+     or two absolutely positioned `.platform-label`s, so the outgoing label can slide down out of
+     view while the incoming one slides up into its place. `.platform`'s own width is auto and
+     tracks the viewport's animated width every frame, since inline-block children size their
+     container just like plain text would. */
+  .platform-viewport {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    height: 1.2em;
+    transition: width 0.45s ease;
+  }
+
+  .platform-label {
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0;
+    display: inline-block;
+    white-space: nowrap;
+    transition: transform 0.45s ease;
+  }
+
+  /* Same roller technique as `.platform-viewport`/`.platform-label`, but for the brand glyph:
+     `--pantoken-glyph` is set inline per glyph element (not via a platform class) so the outgoing
+     and incoming glyphs can each keep their own icon while they slide past one another.
+     Named `.platform-glyph*`, not `.platform-icon*` — any class containing the substring
+     "-icon-" gets painted by the design system's generic `[class*="-icon-"]::before` painter,
+     which would render a second, broken glyph on top of this one. */
+  .platform-glyph-viewport {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    inline-size: 0.75em;
+    block-size: 0.75em;
+    margin-inline-end: 0.0625em;
+  }
+
+  .platform-glyph {
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    background: currentColor;
+    -webkit-mask: var(--pantoken-glyph) center / contain no-repeat;
+    mask: var(--pantoken-glyph) center / contain no-repeat;
+    transition: transform 0.45s ease;
+  }
 }
 
 .VPHomeFeatures .box:has(.VPImage) {
@@ -419,6 +530,17 @@ html[dir="rtl"] .vp-doc div[class*="language-"] :is(pre, code) {
   .details {
     grid-column: 1/-1;
     margin: 0;
+
+    a {
+      color: var(--instui-color-text-interactive-navigation-primary-base);
+      text-decoration: underline;
+
+      &:hover,
+      &:focus-visible,
+      &:active {
+        color: var(--instui-color-text-interactive-navigation-primary-hover);
+      }
+    }
   }
 }
 

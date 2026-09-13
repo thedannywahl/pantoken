@@ -44,5 +44,9 @@
   },
   "engines": {
     "node": ">=22.18.0"
+  },
+  "pantoken": {
+    "key": "canvasThemeEditor",
+    "kind": "namespace"
   }
 }

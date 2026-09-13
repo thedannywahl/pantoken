@@ -43,6 +43,7 @@
     "@pantoken/model": "workspace:*",
     "@pantoken/pendo": "workspace:*",
     "@pantoken/rust": "workspace:*",
+    "@pantoken/scaffold": "workspace:*",
     "@pantoken/swatches": "workspace:*",
     "@pantoken/swift": "workspace:*",
     "@pantoken/tokens": "workspace:*",
