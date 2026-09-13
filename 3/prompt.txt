@@ -1,0 +1,13 @@
+inline code blocks should be styled like the vp-docs inline code blocks: http://localhost:5173/
+
+---
+
+Explore the pantoken repo for how docs inline code is styled, especially docs/index.md and VitePress theme CSS/config. Identify the smallest relevant files, existing tests or visual verification commands, and any local patterns matching vp-docs inline code styling. Read-only only; do not edit. Report specific paths, symbols/selectors, and likely implementation approach. Thoroughness: medium.
+
+---
+
+you can investigate the actual styles for inline code rendered at http://localhost:5173/guide/getting-started
+
+---
+
+Start implementation
