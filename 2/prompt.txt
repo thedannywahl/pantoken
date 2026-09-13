@@ -1,0 +1,1 @@
+this anchor shouldn't be hard-coded blue, it should be the same as the anchors in the guides that follow the active color scheme, and should have its hover/focus/active styles.
