@@ -1,0 +1,56 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2E24APVR28Z21DR0ZQYWBE7",
+  "session_id": "858eb8a2-f388-439c-b5e4-4bdc1550af8b",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-13T18:58:01.256786Z",
+  "branch": "registry",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/index.md",
+    "docs/package.json",
+    "formats/interactions/package.json",
+    "l10n/docs.api.pot",
+    "package.json",
+    "packages/cli/README.md",
+    "packages/cli/package.json",
+    "packages/cli/src/index.ts",
+    "packages/cli/tests/index.test.ts",
+    "packages/pantoken/package.json",
+    "packages/pantoken/src/index.ts",
+    "platforms/canvas-theme-editor/package.json",
+    "platforms/hugo/package.json",
+    "platforms/jekyll/package.json",
+    "pnpm-lock.yaml",
+    "renderers/tinymce/package.json"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "ab86bd264c32",
+  "checkpoint_transcript_start": 113,
+  "transcript_lines_at_start": 113,
+  "compact_transcript_start": 24,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 3
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-13T18:58:01.25111Z",
+    "agent_lines": 476,
+    "agent_removed": 16,
+    "human_added": 682,
+    "human_modified": 20,
+    "human_removed": 0,
+    "total_committed": 1178,
+    "total_lines_changed": 1194,
+    "agent_percentage": 41.20603015075377,
+    "metric_version": 2
+  }
+}

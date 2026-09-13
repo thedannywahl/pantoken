@@ -1,0 +1,1 @@
+make this 25% opacity, and add an overlapping outline on the bottom that's 4px thick and the same color but 50% opacity.
