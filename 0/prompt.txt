@@ -1,0 +1,153 @@
+on hover/focus/active the animation for the platform should pause.  on click or interaction it should open a dropdown similar to the language picker with category labels (formats, renderers, etc.) and clicking on one should select it- continuing to pause the animation until blurred.
+
+---
+
+In this repo (pantoken monorepo, VitePress docs site under docs/), I need context for a planned feature change. Find and report back in detail:
+
+1. A component/feature that displays an animated cycling "platform" indicator (likely showing rotating text/logos of formats or renderers like CSS, SCSS, React, Swift, Kotlin, etc.) — probably on the docs homepage or landing page. Search for terms like "platform", "cycle", "rotate", "animate" in docs/.vitepress, docs/index.md, or Vue components under docs/. Look for any CSS animation (e.g. @keyframes) tied to a rotating/cycling list of platform names.
+2. The existing "language picker" component in the docs site (VitePress locale switcher) — find where it's implemented. Is it VitePress's built-in locale dropdown, or a custom Vue component? Find its file path, its markup structure (dropdown trigger + list with grouped/labeled items), and how it's styled (CSS classes, hover/focus/active states, ARIA attributes for accessibility).
+3. Any existing dropdown/menu component patterns already used in the docs site or components package that could be reused as a template (e.g. a `<details>`/`<summary>` pattern, or a custom Vue dropdown with keyboard/ARIA support).
+4. How "formats" and "renderers" (and other categories like "platforms", "bundlers") are enumerated/listed anywhere in the docs site already (e.g. a data file, JSON, or generated list) that could back category labels in a new dropdown ("formats", "renderers", etc.).
+
+For each item found, give: full file path, relevant line ranges, and a description of the structure/behavior (props, events, CSS classes, animation keyframes, ARIA roles). Also note the tech stack used (Vue 3 SFC? plain JS? VitePress theme customization?). Be thorough — this is for planning a non-trivial UI feature, so include enough detail (actual snippets of key markup/CSS/script) that someone could design a similar dropdown without re-reading the files themselves.
+
+---
+
+this is not the interactive terminal, it's the text of `create beautible, accessible <platform> apps`
+
+---
+
+also rolled into this, we're going to add a 'command' to the PLATFORMS const that is the create/add/generate/??? command to use with the new `pantoken` package, i.e. when it flips to wordpress the command is `<pm> pantoken generate wordpress`.
+then we're going to use that to feed the mock terminal command, so when it scrolls to vue the terminal will show `<pm> pantoken create vue` with its type-ahead. and then we'll sync the animations: platform scrolls in, type, backspace, platform scrolls out.  hovering either pauses both.  the <pm> should still scroll sequentially to show that it works with any package manager, so the first is still `vpx ...` and then `npx ...`
+
+---
+
+In this repo (pantoken monorepo), I need the exact CLI command syntax for `@pantoken/cli` (the `pantoken` binary) to generate/create output for a specific platform/renderer/format target (e.g. wordpress, vue, swift, react, tailwind, etc.).
+
+1. Look at packages/cli/ — find its README, src/index.ts or similar entrypoint, and any docs describing its subcommands (e.g. is it `pantoken generate <target>`, `pantoken create <target>`, `pantoken add <target>`, or something else?). Find the exact verb and argument shape, and whether platform/renderer/format names passed on the CLI match the `name` values used elsewhere (e.g. "wordpress", "vue", "swift", "tailwind", "webpack", "next", "postcss", "sass"/"scss", "stylus", "web"/"css", "web-components", "mui", "bootstrap", "shadcn", "foundation", "docusaurus", "mintlify", "storybook", "tinymce", "astro", "svelte", "angular", "android", "compose", "flutter", "rust", "drupal", "hugo", "jekyll", "figma").
+2. Check docs/scripts/write-api-overview.ts (already known to enumerate packages by category formats/renderers/bundlers/platforms/design) for any CLI usage examples like `pantoken generate <target>` shown in generated docs, to confirm the verb.
+3. Check GetStartedTabs.vue's BASE_COMMAND = "create-pantoken-app" and its surrounding context/docs (docs/index.md or guide pages) for whether there's an existing convention of "<pm> pantoken generate <target>" or similar shown to users elsewhere in the docs.
+4. Also check if not every one of the 31+ platform names actually has a corresponding CLI target (i.e., some of the PLATFORMS entries in VPHomeHero.vue like "web", "sass", "stylus" might not map to a distinct CLI-generatable target since they might just be format outputs bundled by default). Report which of the following names (if any) do NOT have a clean 1:1 CLI target and what the actual corresponding CLI argument should be instead: web, react, vue, swift, android, wordpress, angular, svelte, astro, vite, webpack, tailwind, postcss, next, compose, flutter, rust, drupal, hugo, jekyll, sass, stylus, storybook, bootstrap, docusaurus, mintlify, shadcn, web-components, mui, foundation, tinymce, figma.
+
+Report back: the exact command verb/syntax (with a couple of real examples), and a mapping table of which PLATFORMS names have a direct CLI target vs which don't (and what to use instead, if anything). Be thorough — read actual CLI source/README content, don't guess.
+
+---
+
+In the pantoken monorepo, I need an exact, verified command-line invocation for EACH of these 32 target names, to show as a demo command in docs (format: things like `pantoken generate wordpress`, `pantoken create vue`, `pantoken add <x>`, or `npm install @pantoken/<pkg>` if there's truly no CLI subcommand):
+
+web, react, vue, swift, android, wordpress, angular, svelte, astro, vite, webpack, tailwind, postcss, next, compose, flutter, rust, drupal, hugo, jekyll, sass, stylus, storybook, bootstrap, docusaurus, mintlify, shadcn, web-components, mui, foundation, tinymce, figma
+
+Do this by reading the ACTUAL source, not guessing:
+1. Read packages/cli/src/**/*.ts (or wherever the CLI entry/commands are defined) to find every registered subcommand (`generate`, `create`, `add`, others) and, for each, the exact list of valid `<target>` argument values it accepts (look for an enum, a switch statement, a map of target-name -> generator, or a registry file). Read the actual generator/target registry (likely something like packages/cli/src/generators/*.ts or a targets.ts/registry.ts file) to get the literal string each target is invoked with (they may not exactly match display names, e.g. "webcomponents" vs "web-components", "scss" vs "sass").
+2. Read packages/cli/README.md in full for a command reference table/list.
+3. Read packages/create-pantoken-app/ (README.md and src/**) to find its exact CLI syntax — is it `create-pantoken-app --framework <x>`, `create-pantoken-app <x>`, `pantoken create <x>`, or a separate binary entirely? What are the valid framework/target values it accepts (react, vue, svelte, astro, angular, web-components, etc.)? Does it cover ALL renderer targets or just some?
+4. For any of the 32 names that have NEITHER a `generate` target NOR a `create` scaffold NOR an `add` registry entry (i.e. they're consumed purely via `npm install @pantoken/<pkg>` with no pantoken-branded CLI command at all — e.g. bundler plugins like vite/webpack/tailwind/postcss/next, or CSS-variable bridges like bootstrap/foundation/shadcn/mui/tinymce/docusaurus/mintlify/storybook), confirm this explicitly by checking that package's README for its actual "getting started" command (e.g. is it literally `npm install @pantoken/vite` and edit config, with zero CLI step?).
+
+Return a single table: name -> {verb: "generate"|"create"|"add"|"install-only", exact CLI argument string used, and a full example command with the placeholder `<pm>` in front of the executable, e.g. `<pm> pantoken generate wordpress`, `<pm> create-pantoken-app --framework vue`, `<pm> add @pantoken/react`, or `<pm> install @pantoken/vite` if it's install-only}. Flag any name where you're not fully certain, and quote the exact source lines you based each answer on (file path + line numbers).
+
+---
+
+yes, we should be shooting to make both of these components accessible.
+
+---
+
+Start implementation
+
+---
+
+I didn' want the different platforms to have their respective colors on the home page, it's fine to keep it in the PLATFORMS object, but keep everything white for the .platform area.
+
+---
+
+nevermind, it's good. it displays as white, but is the brand color in the select, that's okay.
+
+---
+
+we don't need space for the chevron unless it's visible.  it shouldn' be visible on hover- only on focus, and hover should open the menu.  also the text for the platforms is way too large, it should match like the <pm> menu size.
+
+---
+
+it still carries too much spacing.
+
+---
+
+what I mean is the padding around the options is still enormous.
+
+---
+
+the home page is always on-color, so there shouldn't be a dark treatment for this dropdown, just abstract the one from the terminal and then reuse it on both.
+
+---
+
+we need to make sure that the icons meet the 3:1 contrast ratio.
+
+---
+
+the figma icon doesn't appear correctly, it should be available in the custom-icons plugin.
+
+---
+
+hovering over an item shows a gray background but hovering out sets the background to transparent and shows a flash of a border in the brand color, we don't need the border.
+
+---
+
+right now some platforms are wide enough they bleed over to the fake terminal and on top of it, the terminal should be on top so the text expands behind it.
+
+---
+
+add word-wrap to the terminal typing like there is for the ai prompt tab.
+
+---
+
+fix the other two warnings.
+
+---
+
+you said, "Only the same pre-existing unrelated warnings remain."
+
+---
+
+look at http://localhost:5173/
+web-components overflows the terminal, it doesn't wrap.
+
+---
+
+no, you fixed it in the wrong area. I don't wnt it fixed in the home hero, I want it fixed in the dummy terminal.
+
+the home hero was correct.
+
+---
+
+now, set the display order for the platforms to random.
+
+---
+
+the 'platform' select should use the pantoken/instui focus ring, not a custom focus ring.
+
+---
+
+the platform text animation should not overflow its container box, it currently does by several pixels.
+
+---
+
+on tablet view we should line-break between "accessible" and "platform"
+
+---
+
+in the viewport between the largest desktop and when the terminal is stacked underneat the home text, we should add a line break between "accessible" and <platform>
+
+---
+
+let's just do a line break after "accessible" on all viewports for simplicity's sake.
+
+---
+
+now the platform text sits entirely too high, it overlaps completely with 'accessible'
+
+---
+
+if the active tab in the terminal is the ai tab, it should still be synced with animation tab. so that a platform comes in, types, deletes, and then a platform exits.
+
+---
+
+Cannot find name 'reducedMotion'.
