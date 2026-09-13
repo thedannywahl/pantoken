@@ -1,1 +1,5 @@
 now that we've added the registry locally how do we make it browsable if they go to `/r/` ?
+
+---
+
+option 1.
