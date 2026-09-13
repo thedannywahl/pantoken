@@ -43,3 +43,7 @@ if it's easier to do html here with `<span class="instui-icon -icon-html">` and 
 ---
 
 now the text baseline for `accessible` and the active platform should match, but the platform text is higher than `accessible`
+
+---
+
+check all breakpoints.
