@@ -28,6 +28,7 @@
   "sidebar.apiGroups.plugins": { "message": "Plugins", "translate": "always" },
   "sidebar.apiGroups.renderers": { "message": "Renderers", "translate": "always" },
   "sidebar.apiGroups.tools": { "message": "Tools", "translate": "always" },
+  "platformPicker.label": { "message": "Choose a platform", "translate": "always" },
   "sidebar.apiOverview": { "message": "Overview", "translate": "always" },
   "editText": { "message": "Edit this page on GitHub", "translate": "always" },
   "demoTabs.result": { "message": "Result", "translate": "always" },

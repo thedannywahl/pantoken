@@ -1,10 +1,16 @@
 <script setup lang="ts">
 import type { DefaultTheme } from "vitepress/theme";
 import { useData } from "vitepress";
-import { onBeforeUnmount, onMounted, ref } from "vue";
+import { onBeforeUnmount, onMounted, ref, watch } from "vue";
 import VPButton from "vitepress/dist/client/theme-default/components/VPButton.vue";
 import VPImage from "vitepress/dist/client/theme-default/components/VPImage.vue";
 import GetStartedTabs from "./GetStartedTabs.vue";
+import {
+  PLATFORM_CATEGORY_ORDER,
+  PLATFORM_OPTIONS,
+  type PlatformOption,
+} from "./platform-options.ts";
+import { usePlatformTerminalCycle } from "./usePlatformTerminalCycle.ts";
 
 interface HeroAction {
   theme?: "brand" | "alt";
@@ -14,65 +20,56 @@ interface HeroAction {
   rel?: string;
 }
 
-const { frontmatter: fm } = useData();
+type DocsThemeWithPlatformPicker = {
+  platformPicker?: { label?: string };
+  sidebar?: { apiGroups?: Partial<Record<PlatformOption["category"], string>> };
+};
 
-// Cycles the hero tagline's `.platform` pill through the emitted platforms, renderers, and
-// bundler formats, each with its own glyph (`icon` maps to an `--instui-icon-<name>` token from
-// pantoken.css) and casing convention.
-const PLATFORMS = [
-  { name: "web", label: "web", icon: "html5" },
-  { name: "react", label: "React", icon: "react" },
-  { name: "vue", label: "Vue", icon: "vuedotjs" },
-  { name: "swift", label: "Swift", icon: "swift" },
-  { name: "android", label: "Android", icon: "android" },
-  { name: "wordpress", label: "WordPress", icon: "wordpress" },
-  { name: "angular", label: "Angular", icon: "angular" },
-  { name: "svelte", label: "Svelte", icon: "svelte" },
-  { name: "astro", label: "Astro", icon: "astro" },
-  { name: "vite", label: "Vite", icon: "vite" },
-  { name: "webpack", label: "Webpack", icon: "webpack" },
-  { name: "tailwind", label: "Tailwind", icon: "tailwindcss" },
-  { name: "postcss", label: "PostCSS", icon: "postcss" },
-  { name: "next", label: "Next.js", icon: "nextdotjs" },
-  { name: "compose", label: "Compose", icon: "jetpackcompose" },
-  { name: "flutter", label: "Flutter", icon: "flutter" },
-  { name: "rust", label: "Rust", icon: "rust" },
-  { name: "drupal", label: "Drupal", icon: "drupal" },
-  { name: "hugo", label: "Hugo", icon: "hugo" },
-  { name: "jekyll", label: "Jekyll", icon: "jekyll" },
-  { name: "sass", label: "Sass", icon: "sass" },
-  { name: "stylus", label: "Stylus", icon: "stylus" },
-  { name: "storybook", label: "Storybook", icon: "storybook" },
-  { name: "bootstrap", label: "Bootstrap", icon: "bootstrap" },
-  { name: "docusaurus", label: "Docusaurus", icon: "docusaurus" },
-  { name: "mintlify", label: "Mintlify", icon: "mintlify" },
-  { name: "shadcn", label: "shadcn/ui", icon: "shadcnui" },
-  { name: "web-components", label: "Web Components", icon: "webcomponentsdotorg" },
-  { name: "mui", label: "MUI", icon: "mui" },
-  { name: "foundation", label: "Foundation", icon: "zurb" },
-  { name: "tinymce", label: "TinyMCE", icon: "tiny" },
-] as const;
+const { frontmatter: fm, theme } = useData<DocsThemeWithPlatformPicker>();
+
+const pickerLabel = () => theme.value.platformPicker?.label ?? "Choose a platform";
+const categoryLabel = (category: PlatformOption["category"]) =>
+  theme.value.sidebar?.apiGroups?.[category] ?? category;
 
 const heroTextRef = ref<HTMLElement | null>(null);
-let cycleIntervalId: number | undefined;
-let swapTimeoutId: number | undefined;
 let syncViewportWidth: (() => void) | undefined;
+let exitTimeoutId: number | undefined;
+let enterTimeoutId: number | undefined;
+let menuOpen = false;
+let hovering = false;
+let focused = false;
 
-const TRANSITION_MS = 450;
+const reducedMotion = ref(false);
+
+// Shared with GetStartedTabs.vue's mock terminal (a child of this component) — the pill's slide
+// and the terminal's type/backspace are driven by the same phase machine so they stay in lockstep.
+const platformCycle = usePlatformTerminalCycle({ reducedMotion });
 
 onMounted(() => {
-  const platformEl = heroTextRef.value?.querySelector<HTMLElement>(".platform");
-  if (!platformEl || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  reducedMotion.value = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  let index = PLATFORMS.findIndex((platform) => platformEl.classList.contains(platform.name));
-  if (index < 0) index = 0;
+  const platformEl = heroTextRef.value?.querySelector<HTMLElement>(".platform");
+  if (!platformEl) {
+    // No `.platform` pill in this page's hero text — still drive the terminal.
+    platformCycle.start();
+    return;
+  }
+  const platformElement: HTMLElement = platformEl;
+
+  const initialIndex = PLATFORM_OPTIONS.findIndex((platform) =>
+    platformElement.classList.contains(platform.name),
+  );
+  if (initialIndex >= 0) platformCycle.platformIndex.value = initialIndex;
 
   const iconViewport = document.createElement("span");
   iconViewport.className = "platform-glyph-viewport";
 
   let currentIcon = document.createElement("span");
   currentIcon.className = "platform-glyph";
-  currentIcon.style.setProperty("--pantoken-glyph", `var(--instui-icon-${PLATFORMS[index].icon})`);
+  currentIcon.style.setProperty(
+    "--pantoken-glyph",
+    `var(--instui-icon-${platformCycle.activePlatform.value.icon})`,
+  );
   iconViewport.append(currentIcon);
 
   const viewport = document.createElement("span");
@@ -80,12 +77,28 @@ onMounted(() => {
 
   let currentLabel = document.createElement("span");
   currentLabel.className = "platform-label";
-  currentLabel.textContent = platformEl.textContent;
+  currentLabel.textContent = platformElement.textContent;
   viewport.append(currentLabel);
 
-  platformEl.textContent = "";
-  platformEl.append(iconViewport, viewport);
+  const srLabel = document.createElement("span");
+  srLabel.className = "instui-screen-reader-content";
+  srLabel.textContent = `${pickerLabel()}: `;
+
+  const chevron = document.createElement("span");
+  chevron.className = "platform-picker__chevron";
+  chevron.setAttribute("aria-hidden", "true");
+
+  platformElement.textContent = "";
+  platformElement.append(srLabel, iconViewport, viewport, chevron);
   viewport.style.width = `${currentLabel.offsetWidth}px`;
+
+  platformElement.setAttribute("role", "button");
+  platformElement.setAttribute("tabindex", "0");
+  platformElement.setAttribute("aria-haspopup", "true");
+  platformElement.setAttribute("aria-expanded", "false");
+  // Pantoken's own on-color focus ring (base.css's `-focus-color-inverse` modifier) — the hero's
+  // colored background makes the default ring color too low-contrast to read.
+  platformElement.classList.add("-focus-color-inverse");
 
   // .platform's flex centering positions the viewport geometrically, not by text baseline, so
   // measure and correct the gap against the surrounding "accessible" text — recomputed on resize
@@ -100,13 +113,16 @@ onMounted(() => {
     viewport.style.top = "0px";
     const textRange = document.createRange();
     textRange.selectNodeContents(textNode);
-    const textBottom = textRange.getBoundingClientRect().bottom;
+    const textRect = textRange.getBoundingClientRect();
+
+    // The explicit hero line break puts the pill below this text; don't apply same-line baseline math.
+    if (platformElement.getBoundingClientRect().top >= textRect.bottom) return;
 
     const labelRange = document.createRange();
     labelRange.selectNodeContents(currentLabel.firstChild);
     const labelBottom = labelRange.getBoundingClientRect().bottom;
 
-    viewport.style.top = `${textBottom - labelBottom}px`;
+    viewport.style.top = `${textRect.bottom - labelBottom}px`;
   };
   syncBaseline();
 
@@ -120,50 +136,220 @@ onMounted(() => {
   };
   window.addEventListener("resize", syncViewportWidth);
 
-  cycleIntervalId = window.setInterval(() => {
-    index = (index + 1) % PLATFORMS.length;
-    const next = PLATFORMS[index];
+  const TRANSITION_MS = 450;
+
+  /** Slide the current label/glyph out into `.platform-viewport`'s clipping window. */
+  function slideOut() {
+    // Captured here, not read from the shared `currentIcon`/`currentLabel` at removal time —
+    // `slideIn` reassigns those to the *next* platform's elements well before this timeout fires.
+    const outgoingIcon = currentIcon;
+    const outgoingLabel = currentLabel;
+    outgoingIcon.style.transform = "translateY(100%)";
+    outgoingLabel.style.transform = "translateY(100%)";
+    clearTimeout(exitTimeoutId);
+    exitTimeoutId = window.setTimeout(() => {
+      outgoingIcon.remove();
+      outgoingLabel.remove();
+    }, TRANSITION_MS);
+  }
+
+  /** Build and slide in the label/glyph for the (already current) `activePlatform`. */
+  function slideIn(animate: boolean) {
+    const next = platformCycle.activePlatform.value;
 
     const nextIcon = document.createElement("span");
     nextIcon.className = "platform-glyph";
     nextIcon.style.setProperty("--pantoken-glyph", `var(--instui-icon-${next.icon})`);
-    nextIcon.style.transform = "translateY(100%)";
+    if (animate) nextIcon.style.transform = "translateY(100%)";
     iconViewport.append(nextIcon);
 
     const nextLabel = document.createElement("span");
     nextLabel.className = "platform-label";
     nextLabel.textContent = next.label;
-    nextLabel.style.transform = "translateY(100%)";
+    if (animate) nextLabel.style.transform = "translateY(100%)";
     viewport.append(nextLabel);
 
-    // Force layout so the entering icon/label start below the box before their transforms animate.
+    // Force layout so an entering icon/label starts below the box before its transform animates.
     void nextLabel.offsetWidth;
 
     viewport.style.width = `${nextLabel.offsetWidth}px`;
-    for (const platform of PLATFORMS) platformEl.classList.remove(platform.name);
-    platformEl.classList.add(next.name);
+    for (const platform of PLATFORM_OPTIONS) platformElement.classList.remove(platform.name);
+    platformElement.classList.add(next.name);
+    srLabel.textContent = `${pickerLabel()}: `;
 
-    currentIcon.style.transform = "translateY(100%)";
-    nextIcon.style.transform = "translateY(0)";
-    currentLabel.style.transform = "translateY(100%)";
-    nextLabel.style.transform = "translateY(0)";
+    if (animate) {
+      nextIcon.style.transform = "translateY(0)";
+      nextLabel.style.transform = "translateY(0)";
+    }
 
-    const exitingIcon = currentIcon;
-    const exitingLabel = currentLabel;
     currentIcon = nextIcon;
     currentLabel = nextLabel;
+    clearTimeout(enterTimeoutId);
+    enterTimeoutId = window.setTimeout(syncBaseline, animate ? TRANSITION_MS : 0);
+  }
 
-    swapTimeoutId = window.setTimeout(() => {
-      exitingIcon.remove();
-      exitingLabel.remove();
-      syncBaseline();
-    }, TRANSITION_MS);
-  }, 5000);
+  // Auto-cycle: the pill slides out at the end of `typing`/`deleting` (phase → "exiting") and back
+  // in once the next platform is current (phase → "entering", which only ever follows "exiting").
+  watch(platformCycle.phase, (phase) => {
+    if (phase === "exiting") slideOut();
+    else if (phase === "entering") slideIn(true);
+  });
+
+  // Manual pick (the dropdown below) sets `platformIndex` directly and forces `phase` to "paused"
+  // in the same tick — that combination never happens during the auto-cycle (which only changes
+  // `platformIndex` while transitioning into "entering"), so it's an unambiguous "snap instantly"
+  // signal, distinct from the animated auto-cycle path above.
+  watch(platformCycle.platformIndex, () => {
+    if (platformCycle.phase.value === "paused") {
+      slideOut();
+      slideIn(false);
+    }
+  });
+
+  // --- Categorized dropdown (opens on click, closes on Escape/outside click/blur) ---
+
+  const menu = document.createElement("div");
+  menu.className = "platform-picker__menu hero-popover";
+  menu.setAttribute("role", "menu");
+
+  for (const category of PLATFORM_CATEGORY_ORDER) {
+    const items = PLATFORM_OPTIONS.filter((p) => p.category === category);
+    if (items.length === 0) continue;
+
+    const groupId = `platform-picker-group-${category}`;
+    const group = document.createElement("div");
+    group.setAttribute("role", "group");
+    group.setAttribute("aria-labelledby", groupId);
+
+    const title = document.createElement("div");
+    title.className = "platform-picker__group-title";
+    title.id = groupId;
+    title.textContent = categoryLabel(category);
+    group.append(title);
+
+    for (const option of items) {
+      const index = PLATFORM_OPTIONS.indexOf(option);
+      const item = document.createElement("button");
+      item.type = "button";
+      item.setAttribute("role", "menuitem");
+      // `light-dark()` so each icon still clears WCAG's 3:1 non-text contrast minimum against the
+      // popover's background in both site themes (see platform-options.ts).
+      item.style.color = option.darkColor
+        ? `light-dark(${option.color}, ${option.darkColor})`
+        : option.color;
+
+      const glyph = document.createElement("span");
+      glyph.className = "platform-picker__icon";
+      glyph.style.setProperty("--pantoken-glyph", `var(--instui-icon-${option.icon})`);
+      glyph.setAttribute("aria-hidden", "true");
+
+      item.append(glyph, document.createTextNode(option.label));
+      item.addEventListener("click", (event) => {
+        event.stopPropagation();
+        platformCycle.pickPlatform(index);
+        closeMenu();
+        platformElement.focus({ preventScroll: true });
+      });
+      group.append(item);
+    }
+
+    menu.append(group);
+  }
+
+  platformElement.append(menu);
+
+  function menuItems(): HTMLButtonElement[] {
+    return Array.from(menu.querySelectorAll("button"));
+  }
+
+  function openMenu() {
+    if (menuOpen) return;
+    menuOpen = true;
+    menu.classList.add("-open");
+    platformElement.setAttribute("aria-expanded", "true");
+  }
+
+  function closeMenu() {
+    if (!menuOpen) return;
+    menuOpen = false;
+    menu.classList.remove("-open");
+    platformElement.setAttribute("aria-expanded", "false");
+  }
+
+  // --- Pause on hover/focus/active; resume only once neither, the menu is closed, and the
+  //     terminal isn't also being interacted with (see GetStartedTabs.vue's own pause/resume). ---
+
+  function maybeResume() {
+    if (!hovering && !focused && !menuOpen) platformCycle.resume();
+  }
+
+  platformElement.addEventListener("mouseenter", () => {
+    hovering = true;
+    platformCycle.pause();
+    openMenu();
+  });
+  platformElement.addEventListener("mouseleave", () => {
+    hovering = false;
+    if (!focused) closeMenu();
+    maybeResume();
+  });
+  platformElement.addEventListener("focusin", () => {
+    focused = true;
+    platformCycle.pause();
+  });
+  platformElement.addEventListener("focusout", (event) => {
+    const next = event.relatedTarget as Node | null;
+    if (next && platformElement.contains(next)) return;
+    focused = false;
+    if (!hovering) closeMenu();
+    maybeResume();
+  });
+
+  platformElement.addEventListener("click", (event) => {
+    if ((event.target as HTMLElement)?.closest(".platform-picker__menu")) return;
+    // Mouse users always hover before they click, which has already opened the menu — a plain
+    // toggle here would immediately close what hover just opened. Only a tap (no prior hover, e.g.
+    // touch) toggles; a real mouse click while hovering is a no-op (mouseleave closes it instead).
+    if (menuOpen && !hovering) closeMenu();
+    else if (!menuOpen) {
+      openMenu();
+      menuItems()[0]?.focus({ preventScroll: true });
+    }
+  });
+
+  platformElement.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " " || event.key === "ArrowDown") {
+      event.preventDefault();
+      openMenu();
+      menuItems()[0]?.focus({ preventScroll: true });
+    } else if (event.key === "Escape" && menuOpen) {
+      closeMenu();
+    }
+  });
+
+  menu.addEventListener("keydown", (event) => {
+    const items = menuItems();
+    const currentIndex = items.indexOf(document.activeElement as HTMLButtonElement);
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      items[(currentIndex + 1) % items.length]?.focus();
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      items[(currentIndex - 1 + items.length) % items.length]?.focus();
+    } else if (event.key === "Escape") {
+      event.preventDefault();
+      closeMenu();
+      platformElement.focus({ preventScroll: true });
+    }
+  });
+
+  platformCycle.start();
 });
 
 onBeforeUnmount(() => {
-  window.clearInterval(cycleIntervalId);
-  window.clearTimeout(swapTimeoutId);
+  clearTimeout(exitTimeoutId);
+  clearTimeout(enterTimeoutId);
+  platformCycle.stop();
   if (syncViewportWidth) window.removeEventListener("resize", syncViewportWidth);
 });
 </script>
@@ -204,7 +390,7 @@ onBeforeUnmount(() => {
       </div>
 
       <div class="home-started-terminal">
-        <GetStartedTabs />
+        <GetStartedTabs :cycle="platformCycle" />
       </div>
 
       <div v-if="fm.hero.image" class="image">
@@ -268,6 +454,10 @@ onBeforeUnmount(() => {
 }
 
 .home-started-terminal {
+  /* Higher than `.main`'s stacking context (z-index: 10) so a wide platform-pill label (e.g.
+     "Web Components") overflows behind the terminal card instead of painting on top of it. */
+  position: relative;
+  z-index: 20;
   order: 3;
   width: min(100%, 400px);
   max-width: 400px;

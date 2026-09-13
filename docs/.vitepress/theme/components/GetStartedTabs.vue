@@ -1,74 +1,22 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from "vue";
 import { useData } from "vitepress";
-import { useCommandCycle, type CommandCycleOption } from "./useCommandCycle";
 import CommandCycleRow from "./CommandCycleRow.vue";
 import TerminalChrome from "./TerminalChrome.vue";
 import { GET_STARTED_TABS_DEFAULTS, type GetStartedTabsStrings } from "../get-started";
+import { PM_OPTIONS } from "./pm-options.ts";
+import { AI_OPTIONS } from "./ai-options.ts";
+import { useCommandCycle } from "./useCommandCycle.ts";
+import {
+  DEFAULT_PLATFORM_TERMINAL_TIMINGS,
+  WIDEST_PLATFORM_COMMAND_TEXT,
+  type PlatformTerminalCycleController,
+} from "./usePlatformTerminalCycle.ts";
 
-const pmOptions: CommandCycleOption[] = [
-  { id: "vpx", label: "vp", launcher: "vpx ", color: "#6b77f8", icon: "vite-plus" },
-  { id: "pnpm", label: "pnpm", launcher: "pnpm dlx ", color: "#F69220", icon: "pnpm" },
-  {
-    id: "deno",
-    label: "deno",
-    launcher: "deno run npm:",
-    color: "#00b84d",
-    darkColor: "#70ffaf",
-    icon: "deno",
-  },
-  { id: "bun", label: "bun", launcher: "bunx ", color: "#ff2e97", icon: "bun" },
-  { id: "npm", label: "npm", launcher: "npx ", color: "#CB3837", icon: "npm" },
-  { id: "yarn", label: "yarn", launcher: "yarn dlx ", color: "#2C8EBB", icon: "yarn" },
-];
-
-const aiProviderOptions: CommandCycleOption[] = [
-  { id: "claude", label: "claude", launcher: "claude ", color: "#D97757", icon: "claudecode" },
-  {
-    id: "gemini",
-    label: "gemini",
-    launcher: "gemini ",
-    color: "#0072e3",
-    darkColor: "#ffddba",
-    icon: "googlegemini",
-  },
-  {
-    id: "cursor",
-    label: "cursor",
-    // The installed binary is `agent` (marketed as "Cursor CLI"/"cursor-agent" in its own docs).
-    launcher: "agent ",
-    // Cursor's brand mark is flat black — unreadable on a dark background, so light/dark instead
-    // of the raw simple-icons hex.
-    color: "#26251e",
-    darkColor: "#edecec",
-    icon: "cursor",
-  },
-  {
-    id: "codex",
-    label: "codex",
-    launcher: "codex ",
-    color: "#000",
-    darkColor: "#fff",
-    icon: "openai",
-  },
-  {
-    id: "copilot",
-    label: "copilot",
-    // -p puts Copilot CLI in "programmatic mode" (its docs' term) for a plain prompt argument.
-    launcher: "copilot -p ",
-    color: "#8534F3",
-    icon: "githubcopilot",
-  },
-  // No bundled icon: simple-icons (this repo's icon set) has no Amazon/AWS entry.
-  {
-    id: "q",
-    label: "q",
-    launcher: "q chat ",
-    color: "#5921b8",
-    darkColor: "#2fabff",
-    icon: "amazon-q",
-  },
-];
+const props = defineProps<{
+  /** Owned by VPHomeHero.vue (the parent) so the hero pill and this terminal share one cycle. */
+  cycle: PlatformTerminalCycleController;
+}>();
 
 const activeSurface = ref<"terminal" | "agent">("terminal");
 const isFlipping = ref(false);
@@ -76,8 +24,7 @@ const terminalHovered = ref(false);
 const terminalTextHovered = ref(false);
 const agentHovered = ref(false);
 const agentTextHovered = ref(false);
-
-const BASE_COMMAND = "create-pantoken-app";
+const reducedMotion = ref(false);
 
 type DocsThemeWithGetStartedTabs = {
   getStartedTabs?: GetStartedTabsStrings;
@@ -92,45 +39,23 @@ const agentShellPrompt = computed(
 );
 
 const isPaused = ref(false);
-const reducedMotion = ref(false);
 // User-toggled pause, independent of (and overriding) the hover/focus auto-pause below.
 const manuallyPaused = ref(false);
 
-const TYPE_MS = 70;
-const DELETE_MS = 40;
-const HOLD_MS = 1400;
-// A touch longer than HOLD_MS so the new word's arrival reads as a deliberate beat, not a rebound.
-const START_HOLD_MS = 1700;
-const BLINK_MS = 600;
-
-const timings = {
-  typeMs: TYPE_MS,
-  deleteMs: DELETE_MS,
-  holdMs: HOLD_MS,
-  startHoldMs: START_HOLD_MS,
-  blinkMs: BLINK_MS,
-};
-
 // Agent prompts are longer than package-manager commands, so type/delete ~1.5x faster to keep
-// the cycle feeling brisk.
+// the cycle feeling brisk, while synchronizing hold and inter-cycle gaps with the terminal cycle.
 const AGENT_SPEED_MULTIPLIER = 1.5;
 const agentTimings = {
-  ...timings,
-  typeMs: TYPE_MS / AGENT_SPEED_MULTIPLIER,
-  deleteMs: DELETE_MS / AGENT_SPEED_MULTIPLIER,
+  typeMs: DEFAULT_PLATFORM_TERMINAL_TIMINGS.typeMs / AGENT_SPEED_MULTIPLIER,
+  deleteMs: DEFAULT_PLATFORM_TERMINAL_TIMINGS.deleteMs / AGENT_SPEED_MULTIPLIER,
+  holdMs: DEFAULT_PLATFORM_TERMINAL_TIMINGS.holdMs,
+  startHoldMs: DEFAULT_PLATFORM_TERMINAL_TIMINGS.enterMs + DEFAULT_PLATFORM_TERMINAL_TIMINGS.exitMs,
+  blinkMs: DEFAULT_PLATFORM_TERMINAL_TIMINGS.blinkMs,
 };
-
-const terminalCycle = useCommandCycle({
-  options: pmOptions,
-  suffix: BASE_COMMAND,
-  isPaused,
-  reducedMotion,
-  timings,
-});
 
 const agentPrompt = computed(() => getStartedTabs.value.agentPrompt);
 const agentCycle = useCommandCycle({
-  options: aiProviderOptions,
+  options: AI_OPTIONS,
   suffix: agentPrompt,
   isPaused,
   reducedMotion,
@@ -140,13 +65,11 @@ const agentCycle = useCommandCycle({
 onMounted(() => {
   reducedMotion.value = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (window.location.hash === "#ai") activeSurface.value = "agent";
-  terminalCycle.start();
   agentCycle.start();
 });
 
 onUnmounted(() => {
   clearTimeout(flipTimeoutId);
-  terminalCycle.stop();
   agentCycle.stop();
 });
 
@@ -171,18 +94,18 @@ function selectSurface(surface: "terminal" | "agent") {
   }, FLIP_MS + 60);
 }
 
-// Hovering/focusing mid-type or mid-backspace jumps straight to the fully-typed line, not wherever
-// the animation happened to be — pausing shouldn't leave a half-typed or half-erased command visible.
+// The manual toggle pauses/resumes both faces together; automatic hover/focus pausing (below)
+// only ever touches the face actually being interacted with.
 function pause() {
   isPaused.value = true;
-  terminalCycle.pauseAtFull();
+  props.cycle.pause();
   agentCycle.pauseAtFull();
 }
 function resume() {
   // The manual toggle wins over a hover/focus-driven resume (e.g. mouseleave while paused).
   if (manuallyPaused.value) return;
   isPaused.value = false;
-  terminalCycle.resume();
+  props.cycle.resume();
   agentCycle.resume();
 }
 
@@ -195,6 +118,7 @@ function toggleManualPause() {
   }
 }
 
+// Hovering/focusing either face pauses both cycles — "hovering either pauses both".
 function enterTerminal() {
   terminalHovered.value = true;
   pause();
@@ -217,7 +141,7 @@ function leaveAgent() {
   resume();
 }
 
-function tone(option: CommandCycleOption): string {
+function tone(option: { color: string; darkColor?: string }): string {
   return option.darkColor ? `light-dark(${option.color}, ${option.darkColor})` : option.color;
 }
 
@@ -225,7 +149,7 @@ function tone(option: CommandCycleOption): string {
 const highlightColor = computed(() =>
   tone(
     activeSurface.value === "terminal"
-      ? terminalCycle.activeOption.value
+      ? props.cycle.activeOption.value
       : agentCycle.activeOption.value,
   ),
 );
@@ -291,8 +215,9 @@ const highlightColor = computed(() =>
               >
                 <pre><code
                     ><CommandCycleRow
-                      :cycle="terminalCycle"
-                      :options="pmOptions"
+                      :cycle="props.cycle"
+                      :options="PM_OPTIONS"
+                      :sizer-text="WIDEST_PLATFORM_COMMAND_TEXT"
                       copy-label="Copy command"
                       :copied-label="getStartedTabs.copied"
                       suffix-variant="terminal"
@@ -338,7 +263,7 @@ const highlightColor = computed(() =>
                   >
                     <CommandCycleRow
                       :cycle="agentCycle"
-                      :options="aiProviderOptions"
+                      :options="AI_OPTIONS"
                       copy-label="Copy agent input"
                       :copied-label="getStartedTabs.copied"
                       suffix-variant="agent"
@@ -361,6 +286,7 @@ const highlightColor = computed(() =>
 <style>
 @import "@pantoken/plugin-custom-icons/icons/vite-plus.css";
 @import "@pantoken/plugin-custom-icons/icons/amazon-q.css";
+@import "@pantoken/plugin-custom-icons/icons/openai.css";
 @import "@pantoken/plugin-simple-icons/icons/npm.css";
 @import "@pantoken/plugin-simple-icons/icons/pnpm.css";
 @import "@pantoken/plugin-simple-icons/icons/deno.css";
@@ -369,14 +295,13 @@ const highlightColor = computed(() =>
 @import "@pantoken/plugin-simple-icons/icons/claudecode.css";
 @import "@pantoken/plugin-simple-icons/icons/googlegemini.css";
 @import "@pantoken/plugin-simple-icons/icons/cursor.css";
-@import "@pantoken/plugin-custom-icons/icons/openai.css";
 @import "@pantoken/plugin-simple-icons/icons/githubcopilot.css";
 @import "@pantoken/plugin-logos/igniteai-icon-color.css";
 </style>
 
 <style scoped>
 .gs-started {
-  margin-inline-end: 2rem;
+  margin-inline-start: 2rem;
 }
 
 .gs-started__mode {
@@ -575,6 +500,9 @@ const highlightColor = computed(() =>
   box-shadow: none;
   background: transparent;
   overflow: visible;
+  /* `<pre>` defaults to `white-space: pre`, which disables wrapping outright — `overflow-wrap`
+     on the descendants below has no effect until wrapping itself is allowed. */
+  white-space: pre-wrap;
 }
 
 .gs-terminal__body code {
@@ -585,7 +513,19 @@ const highlightColor = computed(() =>
 }
 
 .gs-terminal__command-zone {
-  inline-size: fit-content;
+  max-inline-size: 100%;
+}
+
+.gs-terminal__command-zone :deep(.gs-command-row) {
+  /* Same wrapping treatment as the agent tab's `.gs-agent__input-wrap` override below — plain
+     inline-block flow wraps within the text instead of `fit-content` just growing the box offscreen. */
+  display: inline-block;
+  max-inline-size: 100%;
+}
+
+.gs-terminal__command-zone :deep(.gs-command-row__suffix.-terminal) {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .gs-agent-terminal__body {
@@ -704,6 +644,18 @@ const highlightColor = computed(() =>
 
   .gs-started__stage.-agent .gs-started__flipper,
   .gs-started__stage.-agent::after {
+    transform: rotateY(180deg);
+  }
+
+  /* The `:dir(rtl)` tilt rules above outrank these plain selectors on specificity alone, so RTL
+     needs its own flattening here or the tilt survives into the narrow layout. */
+  :dir(rtl) .gs-started__flipper,
+  :dir(rtl) .gs-started__stage::after {
+    transform: rotateY(0deg);
+  }
+
+  :dir(rtl) .gs-started__stage.-agent .gs-started__flipper,
+  :dir(rtl) .gs-started__stage.-agent::after {
     transform: rotateY(180deg);
   }
 }

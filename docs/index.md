@@ -2,7 +2,8 @@
 layout: home
 hero:
   name: Pantoken
-  text: Create beautiful,<br/><span class="platform-line">accessible <span class="platform web">web</span></span><br/>apps.
+  text: Create beautiful,<br/><span class="platform-line">accessible<br/><span class="platform web">web</span></span><br/>apps.
+
   tagline: One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads.
   actions:
     - theme: brand
@@ -24,15 +25,15 @@ features:
       light: /package-light.svg
       dark: /package-dark.svg
     title: Use the smallest package
-    details: Install just <code>@pantoken/css</code> for a stylesheet, <code>@pantoken/react</code> for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI.
+    details: Install just <code>@pantoken/css</code> for a stylesheet, <code>@pantoken/pendo</code> for guides, or a bundler preset for Tailwind, Panda, or MUI.
   - icon:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Generate for any platform
-    details: Run &grave;pantoken generate&grave; to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom.
+    details: Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: No upstream coupling
-    details: The tokens ship vendored as static JSON, so &grave;npm i&grave; never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly.
+    title: No React needed
+    details: The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere.
 ---

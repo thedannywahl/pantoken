@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, onUnmounted, ref } from "vue";
+import { computed, nextTick, onUnmounted, ref, watch } from "vue";
 import type { CommandCycleController, CommandCycleOption } from "./useCommandCycle";
 
 interface Props {
@@ -14,6 +14,12 @@ interface Props {
   popoverVisible?: boolean;
   autoOpenOnRowHover?: boolean;
   popoverPlacement?: "below" | "above";
+  /**
+   * A single pre-computed "widest possible command" string, reserved as one hidden sizer instead
+   * of the per-option loop below. Needed when the suffix itself varies per option (not just the
+   * launcher) — the per-option loop can't reserve the right width in that case.
+   */
+  sizerText?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -35,6 +41,17 @@ const resolvedPopoverOpen = computed(() => {
 onUnmounted(() => {
   clearTimeout(copyFeedbackTimeoutId);
 });
+
+// Announced once per cycle (when the command finishes typing, not per keystroke) — the typing
+// animation itself is `aria-hidden`, so this is the only way a screen reader hears the command.
+const announceText = ref("");
+watch(
+  () => props.cycle.cursorBlink.value,
+  (blinking) => {
+    if (blinking && props.cycle.visibleText.value)
+      announceText.value = props.cycle.visibleText.value;
+  },
+);
 
 function closePopoverUnless(e: FocusEvent, container: HTMLElement | null) {
   const next = e.relatedTarget as Node | null;
@@ -109,12 +126,18 @@ function openPopoverIfEnabled() {
       :cycle="props.cycle"
       :active-option="props.cycle.activeOption.value"
     ></slot>
-    <!-- Every option is laid out hidden in the same grid cell as the live text, so the row's box is
-         already as wide (and tall) as the longest command can ever be. Without that, each typed
-         character resizes the row and reflows the whole tilted card. -->
+    <!-- Every option (or, when `sizerText` is given, one fixed string) is laid out hidden in the
+         same grid cell as the live text, so the row's box is already as wide (and tall) as the
+         longest command can ever be. Without that, each typed character resizes the row and
+         reflows the whole tilted card. -->
     <span class="gs-command-row__text">
+      <span v-if="props.sizerText" class="gs-command-row__sizer" aria-hidden="true">
+        <span class="instui-icon gs-command-row__icon"></span>
+        <span>{{ props.sizerText }}</span>
+        <span v-if="props.showCopy" class="gs-command-row__copy-wrap"></span>
+      </span>
       <span
-        v-for="option in props.options"
+        v-for="option in props.sizerText ? [] : props.options"
         :key="option.id"
         class="gs-command-row__sizer"
         aria-hidden="true"
@@ -139,18 +162,24 @@ function openPopoverIfEnabled() {
           :style="{ color: tone(props.cycle.activeOption.value) }"
           aria-hidden="true"
         ></span>
-        <span :style="{ color: tone(props.cycle.activeOption.value) }">{{
+        <span aria-hidden="true" :style="{ color: tone(props.cycle.activeOption.value) }">{{
           props.cycle.typedLauncher.value
         }}</span>
-        <span class="gs-command-row__suffix" :class="`-${props.suffixVariant}`">{{
-          props.cycle.typedSuffix.value
-        }}</span>
+        <span
+          aria-hidden="true"
+          class="gs-command-row__suffix"
+          :class="`-${props.suffixVariant}`"
+          >{{ props.cycle.typedSuffix.value }}</span
+        >
         <span
           class="gs-command-row__cursor"
           :class="{ 'gs-command-row__cursor--blink': props.cycle.cursorBlink.value }"
           :style="{ backgroundColor: tone(props.cycle.activeOption.value) }"
           aria-hidden="true"
         ></span>
+        <!-- Screen-reader-only: the animation above is `aria-hidden`, so this is what announces the
+             resolved command — once per cycle, not per keystroke. -->
+        <span class="instui-screen-reader-content" aria-live="polite">{{ announceText }}</span>
         <!-- Inside the live text (not a sibling of the grid) so it trails the cursor instead of the
              widest sizer's right edge. Each sizer reserves an equal-width blank twin. -->
         <span v-if="props.showCopy" class="gs-command-row__copy-wrap">
@@ -173,7 +202,7 @@ function openPopoverIfEnabled() {
     <slot name="inline" :cycle="props.cycle" :active-option="props.cycle.activeOption.value"></slot>
     <span
       v-if="props.showSelector && resolvedPopoverOpen"
-      class="gs-command-row__popover"
+      class="gs-command-row__popover hero-popover"
       :class="`-${props.popoverPlacement}`"
       @mouseleave="popoverOpen = false"
     >
@@ -340,19 +369,9 @@ function openPopoverIfEnabled() {
   inset-block-start: 100%;
   inset-inline-start: 0;
   z-index: 1;
-  display: flex;
-  min-inline-size: 10rem;
-  flex-direction: column;
-  padding: 4px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  background: light-dark(
-    var(--instui-color-background-container),
-    var(--instui-color-background-page)
-  );
   /* Same reason as the copy popover: --vp-shadow-3's wide blur pushes each hover repaint past the
-     card's edge and tears the rotated quad. */
-  box-shadow: 0 2px 8px rgb(0 0 0 / 26%);
+     card's edge and tears the rotated quad — visual chrome itself lives in the shared
+     `.hero-popover` class (pantoken.css), reused by the hero's platform picker too. */
   contain: layout style;
 }
 
@@ -362,19 +381,7 @@ function openPopoverIfEnabled() {
 }
 
 .gs-command-row__popover button {
-  padding: 4px 8px;
-  border: 0;
-  border-radius: 4px;
-  background: transparent;
-  font: inherit;
-  text-align: start;
-  cursor: pointer;
   contain: layout style paint;
-}
-
-.gs-command-row__popover button:hover,
-.gs-command-row__popover button:focus-visible {
-  background: light-dark(#e9edf3, #2a3038);
 }
 
 @media (prefers-reduced-motion: reduce) {

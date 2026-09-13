@@ -134,6 +134,9 @@ export interface UiStrings {
     apiOverview: string;
   };
   editText: string;
+  // Screen-reader label for the hero's rotating `.platform` pill, which otherwise only announces
+  // whichever platform name is currently cycling in (see theme/components/VPHomeHero.vue).
+  platformPicker: { label: string };
   // View tabs on the `@pantoken/demo` runner, passed into its iframe by the markdown-it plugin.
   // The language names are acronyms, so most locales keep them as-is.
   demoTabs: { result: string; html: string; css: string; js: string };

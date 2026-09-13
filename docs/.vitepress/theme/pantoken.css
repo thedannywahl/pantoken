@@ -33,6 +33,7 @@
 @import "@pantoken/plugin-simple-icons/icons/mui.css";
 @import "@pantoken/plugin-custom-icons/icons/zurb.css";
 @import "@pantoken/plugin-custom-icons/icons/tiny.css";
+@import "@pantoken/plugin-custom-icons/icons/figma.css";
 
 :root {
   /* Vite's production CSS transform lowers light-dark() to scheme helper variables. Give that
@@ -420,6 +421,44 @@ html[dir="rtl"] .vp-doc div[class*="language-"] :is(pre, code) {
   text-align: left;
 }
 
+/* Shared popover chrome for the home hero: both the terminal's package-manager popover
+   (CommandCycleRow.vue's `.gs-command-row__popover`) and the platform picker below apply this
+   class, so there's one visual treatment instead of two — the hero is on-color in every site
+   theme, but that's `light-dark()`'d here exactly like the terminal's own popover already was. */
+.hero-popover {
+  display: flex;
+  flex-direction: column;
+  min-inline-size: 10rem;
+  padding: 4px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  background: light-dark(
+    var(--instui-color-background-container),
+    var(--instui-color-background-page)
+  );
+  box-shadow: 0 2px 8px rgb(0 0 0 / 26%);
+}
+
+.hero-popover button {
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+  /* Without this, the browser's default focus/active ring (which picks up `currentColor`, i.e.
+     each item's brand color) flashes briefly on mouseleave between hover and focus-visible states. */
+  outline: none;
+}
+
+.hero-popover button:hover,
+.hero-popover button:focus-visible {
+  background: light-dark(#e9edf3, #2a3038);
+  outline: none;
+}
+
 .VPHomeHero {
   .heading {
     color: var(--instui-primitive-color-white);
@@ -434,10 +473,12 @@ html[dir="rtl"] .vp-doc div[class*="language-"] :is(pre, code) {
   }
 
   .tagline {
-    color: #aab0b5;
+    /* color: #aab0b5; */
+    display: none;
   }
 
   .platform {
+    position: relative;
     display: inline-flex;
     align-items: center;
     background-color: color-mix(
@@ -449,10 +490,99 @@ html[dir="rtl"] .vp-doc div[class*="language-"] :is(pre, code) {
       color-mix(in srgb, var(--instui-color-institutional-brand-primary) 75%, transparent);
     padding: 0 0.25rem;
     border-radius: var(--instui-primitive-size-size4);
+    cursor: pointer;
   }
 
-  /* Keeps "accessible <platform>" on one line even when the roller swaps in a long label like
-     "WordPress" — the surrounding `<br/>`s in index.md still control where the other lines break. */
+  .platform:hover {
+    box-shadow:
+      inset 0 -4px 0 0
+        color-mix(in srgb, var(--instui-color-institutional-brand-primary) 75%, transparent),
+      0 0 0 2px rgba(255, 255, 255, 0.5);
+  }
+
+  /* Keyboard-focus-only affordance hinting the pill opens a picker — collapsed to zero width
+     otherwise, so it never nudges the pill's layout or shows on mouse hover. */
+  .platform-picker__chevron {
+    display: inline-block;
+    inline-size: 0;
+    block-size: 0.5em;
+    margin-inline-start: 0;
+    overflow: hidden;
+    opacity: 0;
+    border-inline-end: 2px solid currentColor;
+    border-block-end: 2px solid currentColor;
+    transform: rotate(45deg) translateY(-2px);
+    transition:
+      opacity 0.15s ease,
+      inline-size 0.15s ease,
+      margin-inline-start 0.15s ease;
+  }
+
+  .platform:focus-visible .platform-picker__chevron {
+    inline-size: 0.5em;
+    margin-inline-start: 0.3em;
+    opacity: 0.8;
+  }
+
+  /* Position/sizing/grouping only — visual chrome (background, border, shadow, button hover) comes
+     from the shared `.hero-popover` class above. */
+  .platform-picker__menu {
+    position: absolute;
+    inset-block-start: calc(100% + 8px);
+    inset-inline-start: 0;
+    z-index: 20;
+    display: none;
+    gap: 2px;
+    min-inline-size: 12rem;
+    max-block-size: 22rem;
+    overflow-y: auto;
+    font-size: 0.85rem;
+    font-weight: 400;
+    /* `.heading`/`.text` set a fixed-px line-height (40-64px across breakpoints); that's an
+       inherited absolute length, so it doesn't shrink with the smaller font-size above and would
+       otherwise make every row enormous. */
+    line-height: 1.3;
+    text-transform: none;
+    letter-spacing: normal;
+    cursor: auto;
+  }
+
+  .platform-picker__menu.-open {
+    display: flex;
+  }
+
+  .platform-picker__group-title {
+    padding: 2px 6px;
+    color: var(--vp-c-text-2);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .platform-picker__menu [role="group"] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .platform-picker__menu button {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    padding: 3px 6px;
+  }
+
+  .platform-picker__icon {
+    display: inline-block;
+    flex: none;
+    inline-size: 1em;
+    block-size: 1em;
+    background: currentColor;
+    -webkit-mask: var(--pantoken-glyph) center / contain no-repeat;
+    mask: var(--pantoken-glyph) center / contain no-repeat;
+  }
+
+  /* Keeps the animated platform label on one line even when the roller swaps in a long label like
+      "WordPress". */
   .platform-line {
     white-space: nowrap;
   }
@@ -500,6 +630,7 @@ html[dir="rtl"] .vp-doc div[class*="language-"] :is(pre, code) {
     inline-size: 0.75em;
     block-size: 0.75em;
     margin-inline-end: 0.0625em;
+    margin-bottom: 0.125em;
   }
 
   .platform-glyph {
@@ -530,6 +661,14 @@ html[dir="rtl"] .vp-doc div[class*="language-"] :is(pre, code) {
   .details {
     grid-column: 1/-1;
     margin: 0;
+
+    :not(pre) > code {
+      color: var(--vp-code-color);
+      background: var(--vp-code-bg);
+      border-radius: 4px;
+      padding: 3px 6px;
+      font-size: var(--vp-code-font-size);
+    }
 
     a {
       color: var(--instui-color-text-interactive-navigation-primary-base);
