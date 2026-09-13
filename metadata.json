@@ -3,7 +3,7 @@
   "checkpoint_id": "01M2DN5NSP6EVJB2SC44SQDPPP",
   "strategy": "manual-commit",
   "branch": "registry",
-  "checkpoints_count": 12,
+  "checkpoints_count": 13,
   "files_touched": [
     ".github/workflows/docs.yml"
   ],
@@ -21,6 +21,13 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": "/1/prompt.txt"
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
+      "prompt": "/2/prompt.txt"
     }
   ],
   "token_usage": {
