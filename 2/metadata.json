@@ -1,0 +1,79 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2ECM5TGYGN6GYZ226FA2R72",
+  "session_id": "98c3c495-331f-4ab1-a293-11a914917040",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-13T22:01:26.266666Z",
+  "branch": "registry",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "docs/.vitepress/i18n.json",
+    "docs/.vitepress/i18n.ts",
+    "docs/.vitepress/theme/components/CommandCycleRow.vue",
+    "docs/.vitepress/theme/components/GetStartedTabs.vue",
+    "docs/.vitepress/theme/components/VPHomeHero.vue",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/index.md",
+    "l10n/docs.api.pot"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "0bcb655ccce7",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-13T22:01:26.258806Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 2,
+    "human_removed": 260,
+    "total_committed": 0,
+    "total_lines_changed": 262,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 1291,
+      "user_lines_removed": 260,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "docs/.vitepress/i18n.json": 1,
+        "docs/.vitepress/i18n.ts": 3,
+        "docs/.vitepress/theme/components/CommandCycleRow.vue": 41,
+        "docs/.vitepress/theme/components/GetStartedTabs.vue": 61,
+        "docs/.vitepress/theme/components/VPHomeHero.vue": 263,
+        "docs/.vitepress/theme/components/ai-options.ts": 54,
+        "docs/.vitepress/theme/components/platform-options.ts": 330,
+        "docs/.vitepress/theme/components/pm-options.ts": 72,
+        "docs/.vitepress/theme/components/usePlatformTerminalCycle.ts": 314,
+        "docs/.vitepress/theme/pantoken.css": 142,
+        "docs/index.md": 4,
+        "docs/tsdoc.json": 4,
+        "l10n/docs.api.pot": 1,
+        "plugins/pantoken/custom-icons/assets/icons/figma.svg": 1
+      },
+      "user_removed_per_file": {
+        "docs/.vitepress/theme/components/CommandCycleRow.vue": 34,
+        "docs/.vitepress/theme/components/GetStartedTabs.vue": 146,
+        "docs/.vitepress/theme/components/VPHomeHero.vue": 73,
+        "docs/.vitepress/theme/pantoken.css": 3,
+        "docs/index.md": 3,
+        "l10n/docs.api.pot": 1
+      }
+    }
+  ]
+}

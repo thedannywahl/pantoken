@@ -1,0 +1,5 @@
+the "ai" tab of getting started now show the cli tab text, it should be cycling through the different ai providers with the getting started prompt, we were supposed to synchronize the timing, not re-use the text.
+
+---
+
+Continue: "Continue to iterate?"
