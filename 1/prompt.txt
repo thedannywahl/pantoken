@@ -1,0 +1,5 @@
+on the narrowest viewport in rtl locales the terminal still carries its Y translated view, but it doesn't in ltr locales.
+
+---
+
+on the narrowest viewport in rtl locales the terminal still carries its Y translated view, but it doesn't in ltr locales. it should not be present in the either text direction.

@@ -3,7 +3,7 @@
   "checkpoint_id": "01M2ECM5TGYGN6GYZ226FA2R72",
   "strategy": "manual-commit",
   "branch": "registry",
-  "checkpoints_count": 23,
+  "checkpoints_count": 24,
   "files_touched": [
     "docs/.vitepress/i18n.json",
     "docs/.vitepress/i18n.ts",
@@ -23,6 +23,13 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
