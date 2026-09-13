@@ -1,0 +1,33 @@
+we need to add a glyph var before the text and then it should change based on the chained platform selector, so so for example `.web` should be the html icon from pantoken-custom-icons.
+
+---
+
+In this pantoken monorepo, I need context for a planned CSS change to `docs/.vitepress/theme/pantoken.css`.
+
+There's a `.VPHomeHero .tagline .platform` rule with a nested `&.web {}` selector (currently empty) in that file. The task: add a glyph/icon (via a CSS custom property, e.g. `content` or a mask/background icon) before the text, that changes based on chained platform selector classes like `.platform.web`, `.platform.ios`, `.platform.android`, etc. For `.web` specifically, it should show the "html" icon from something called "pantoken-custom-icons".
+
+Please investigate and report back:
+1. Where is `.platform` class used in markup — find the VitePress home page frontmatter/config (likely `docs/index.md` or `docs/.vitepress/config.ts` or a custom home component) that renders text wrapped in `<span class="platform web">...</span>` or similar. Report the exact markup and what platform values exist (web, ios, android, swift, kotlin, flutter, wordpress, drupal, hugo, jekyll, rust, canvas, etc.) based on `platforms/` directory names.
+2. Find "pantoken-custom-icons" — search the whole repo (grep) for "custom-icons", "pantoken-custom-icons", or similar package/icon-font references. Report where these icons are defined (e.g. is there an icon font package in `formats/icon-font` or `formats/icons`?), how individual icons are referenced elsewhere in CSS (mask, background-image, content, ligature font, data URI, CSS custom property like `--pantoken-icon-html`), and what the "html" icon's identifier/name is.
+3. Find any existing CSS pattern in this codebase for rendering an icon "glyph" before text via a CSS variable (e.g. something like `.icon::before { content: var(--icon-glyph); }` or mask-image approach) — check `formats/components` or `formats/icons` or `docs/.vitepress/theme` for prior art of icon-before-text patterns.
+4. Report the exact list of platform-specific icon names available for: web/html, ios/swift, android/kotlin, flutter, wordpress, drupal, hugo, jekyll, rust, canvas — if such icons exist in the icon set at all. If they don't exist by these exact names, list the closest available icon names (search formats/icons or formats/icon-font source/metadata for available icon names, e.g. search for "html", "apple", "android", "wordpress", "drupal" in icon names/metadata).
+5. Report the full current content of the `.VPHomeHero` block in `docs/.vitepress/theme/pantoken.css` (already may have it, but confirm the surrounding CSS nesting) and any related home page CSS/markup files (e.g. `docs/.vitepress/theme/Layout.vue`, `docs/index.md`) that define `.tagline` and `.platform` usage.
+
+Be thorough - use grep_search and semantic_search across the whole repo, and read relevant files. Report file paths with line numbers, exact code snippets, and a clear list of available icon names relevant to platforms. This is research only — do not edit any files.
+
+---
+
+In the pantoken monorepo, I'm planning a CSS change in `docs/.vitepress/theme/pantoken.css` to add an icon glyph before text for `.platform.web` (using an HTML5 logo from "Simple Icons").
+
+Research needed:
+1. Find the Simple Icons plugin/integration in this repo — search for "simple-icons", "plugin-simple-icons", "@pantoken/plugin-simple-icons" or similar across `plugins/`, `packages/`, `formats/icons`. Report where it's defined, whether it's currently wired into the build (is it used anywhere, e.g. `pantoken.config.ts` or similar config that lists icon plugins?), and how to reference an individual icon from it (package name, icon slug format e.g. "html5", export name, data-URI format).
+2. Confirm whether "html5" (or "html" ) exists as a Simple Icons slug that would be available if the plugin is enabled, and how consuming code would reference its resolved CSS custom property/token name (e.g. is there a token naming convention such as `--instui-icon-simple-html5` or similar, based on how the Lucide-backed `--instui-icon-check` tokens are named per formats/components/src/utilities/icon-glyphs/index.ts)?
+3. Look at `docs/.vitepress/theme/pantoken.css` and confirm what CSS custom properties/icon tokens are ALREADY available at build time in the VitePress docs site — i.e., does the docs site import `@pantoken/css` or similar package providing all icon custom properties as `--instui-icon-*`? Check `docs/.vitepress/theme/index.ts` (or similar entry) for CSS imports, and check if icon tokens are globally available there.
+4. Report whether enabling Simple Icons for just the docs site (if not already wired in) would require build/config changes (e.g. editing `pantoken.config.ts`, a plugin manifest, or package.json dependencies) — i.e., is this a lightweight CSS-only change, or does it require pipeline/config changes elsewhere in the monorepo to make the html5 icon token available?
+5. Report the exact CSS custom property syntax used elsewhere for icon glyphs (e.g. `--instui-icon-<name>: url("data:image/svg+xml,...")`) so the plan can reference the correct existing naming pattern.
+
+This is research only, do not edit files. Report file paths with line numbers and concrete findings.
+
+---
+
+Start implementation
