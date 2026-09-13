@@ -3,13 +3,16 @@
   "checkpoint_id": "01M2ECM5TGYGN6GYZ226FA2R72",
   "strategy": "manual-commit",
   "branch": "registry",
-  "checkpoints_count": 28,
+  "checkpoints_count": 29,
   "files_touched": [
     "docs/.vitepress/i18n.json",
     "docs/.vitepress/i18n.ts",
     "docs/.vitepress/theme/components/CommandCycleRow.vue",
     "docs/.vitepress/theme/components/GetStartedTabs.vue",
     "docs/.vitepress/theme/components/VPHomeHero.vue",
+    "docs/.vitepress/theme/components/platform-options.ts",
+    "docs/.vitepress/theme/components/pm-options.ts",
+    "docs/.vitepress/theme/components/usePlatformTerminalCycle.ts",
     "docs/.vitepress/theme/pantoken.css",
     "docs/index.md",
     "docs/tsdoc.json",
@@ -44,6 +47,13 @@
       "compact_transcript": "/3/transcript.jsonl",
       "content_hash": "/3/content_hash.txt",
       "prompt": "/3/prompt.txt"
+    },
+    {
+      "metadata": "/4/metadata.json",
+      "transcript": "/4/full.jsonl",
+      "compact_transcript": "/4/transcript.jsonl",
+      "content_hash": "/4/content_hash.txt",
+      "prompt": "/4/prompt.txt"
     }
   ],
   "token_usage": {

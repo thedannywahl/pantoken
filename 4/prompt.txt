@@ -1,0 +1,5 @@
+'platformEl' is possibly 'null' or 'undefined'.
+
+---
+
+Planning-only, read-only investigation. In /Users/dwahl/Scripts/pantoken, inspect the current TypeScript/Vue error `'platformEl' is possibly 'null' or 'undefined'`, centered on docs/.vitepress/theme/components/VPHomeHero.vue. Read applicable repo guidance, locate the exact expression and controlling code path, inspect the nearest related types/tests/call sites, and report: (1) likely root cause, (2) smallest code change, (3) one focused validation command. Do not edit files.
