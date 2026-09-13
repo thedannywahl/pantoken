@@ -1,0 +1,68 @@
+shadcn/registry looks like an enabler for the distribution or collection of package exports that we're doing with pantoken.  I'm not sure if library becomes an export format, if it becomes a standard way to manage the mapping of pantoken to exports, or if we use it at all, but it seems to have some utility for this project.  Research and come up with a review of supplements, gaps, replacements, overlaps, etc. and a recommendation for if/how/where registry fits in.  (https://ui.shadcn.com/docs/registry)
+
+---
+
+Explore the workspace to understand how pantoken currently generates, packages, distributes, and exports design tokens, components, frameworks, scaffolds, and web components.
+Check:
+1. `packages/` - what does core, pantoken, cli, scaffold, create-pantoken-app do?
+2. `formats/` - list of format packages (components, css, dtcg, icons, etc.) and what they emit/export.
+3. `renderers/` - web-components, framework wrappers (react, vue, svelte, etc.).
+4. `platforms/` and `bundlers/`.
+5. How `create-pantoken-app` and `@pantoken/scaffold` work for consumers installing/configuring pantoken.
+6. How CDN/registry/manifest distribution currently works (e.g. `dist/component-capabilities.json`, CDN exports).
+
+Provide a concise, highly structured overview of pantoken's distribution and export model.
+
+---
+
+the vitepress site is pantoken.app, but we could do a sub-domain like registry.pantoken.app/* or pantoken.app/r/*
+
+it would also be nice if we could alias the npm package `pantoken` over `shadcn` so `npx pantoken add button` becomes `npx shadcn add @pantoken/button`
+
+---
+
+the `pantoken` root package is not published and we would not want it to be published, so we should rename it to like `pantoken-root` or `pantoken-workspace` and then create a new package in the workspace that will get published under `pantoken`
+
+---
+
+Start implementation
+
+---
+
+String does not match the pattern of "^\./".
+
+---
+
+I want it to include the packages from plugins/pantoken/* too.
+
+---
+
+all hte postcss plugins should be added too.
+
+---
+
+it looks like there's a few other packages missing, for example I don't see `@pantoken/tinymce`
+
+---
+
+Search for all package.json files across the workspace.
+For each package.json:
+1. Find its `name`.
+2. Check if it has a `pantoken` field in its package.json (`"pantoken": { ... }`).
+3. If it has a `pantoken` field, check its `key` and whether it is included in `packages/pantoken/package.json` dependencies.
+4. Also check if there are packages (e.g. in platforms/, renderers/, bundlers/, plugins/, formats/) that do NOT yet have a `pantoken` field or might be missing.
+
+List all packages with:
+- name
+- path
+- has pantoken field? (and what key)
+- in @pantoken/pantoken dependencies?
+Return a clear structured table/list.
+
+---
+
+`pantoken create` should alias `create-pantoken-app`
+
+---
+
+let's temporarily disable the docs deploy
