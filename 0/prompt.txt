@@ -1,0 +1,21 @@
+Continue: "Continue to iterate?"
+
+---
+
+review this hosting migration plan and we need to comprehensively implement it, let me know where you need me to go to cloudflare to implement things. we also need to add to the plan to re-enable the docs deploy as the final step.
+
+---
+
+Start implementation
+
+---
+
+now how do we actually deploy?
+
+---
+
+walk me through the CLOUDFLARE_R2_BUCKET - I don't have workers set up.
+
+---
+
+I'm not sure what workers plan i'm on but it says I'm at 0/100,000 actions.
