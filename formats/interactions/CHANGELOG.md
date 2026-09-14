@@ -1,5 +1,11 @@
 # @pantoken/interactions
 
+## 0.3.8
+
+### Patch Changes
+
+- a1c0d58: add exports to the un-prefixed pantoken package.
+
 ## 0.3.7
 
 ### Patch Changes

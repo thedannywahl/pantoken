@@ -1,5 +1,11 @@
 # @pantoken/canvas-theme-editor
 
+## 0.2.1
+
+### Patch Changes
+
+- a1c0d58: add exports to the un-prefixed pantoken package.
+
 ## 0.2.0
 
 ### Minor Changes

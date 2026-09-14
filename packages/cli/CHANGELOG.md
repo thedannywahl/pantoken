@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.1.36
+
+### Patch Changes
+
+- a1c0d58: add exports to the un-prefixed pantoken package.
+- Updated dependencies [a1c0d58]
+  - @pantoken/hugo@0.1.30
+  - @pantoken/jekyll@0.1.30
+  - @pantoken/scaffold@1.3.0
+
 ## 0.1.35
 
 ### Patch Changes
