@@ -1,0 +1,65 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2GE348CVAJ16WXZCPZQ84TC",
+  "session_id": "8cc47810-489f-45cd-b75f-c87315dea277",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-14T17:05:35.998659Z",
+  "branch": "registry",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "docs/es/index.md",
+    "l10n/ar/docs.home.po",
+    "l10n/ca/docs.home.po",
+    "l10n/es/docs.home.po"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-haiku-4-5-20251001",
+  "turn_id": "6fa734add970",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 10,
+    "cache_creation_tokens": 14600,
+    "cache_read_tokens": 19265,
+    "output_tokens": 5206,
+    "api_call_count": 1
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-14T17:05:35.989535Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 1383,
+    "human_modified": 156,
+    "human_removed": 0,
+    "total_committed": 1383,
+    "total_lines_changed": 3939,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 90,
+      "user_lines_removed": 157,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "docs/es/index.md": 5,
+        "l10n/ar/docs.home.po": 28,
+        "l10n/ca/docs.home.po": 28,
+        "l10n/docs.api.pot": 1,
+        "l10n/es/docs.home.po": 28
+      },
+      "user_removed_per_file": {
+        "docs/es/index.md": 5,
+        "l10n/ar/docs.home.po": 49,
+        "l10n/ca/docs.home.po": 51,
+        "l10n/docs.api.pot": 1,
+        "l10n/es/docs.home.po": 51
+      }
+    }
+  ]
+}
