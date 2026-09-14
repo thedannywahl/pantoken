@@ -3,7 +3,7 @@
   "checkpoint_id": "01M2GE348CVAJ16WXZCPZQ84TC",
   "strategy": "manual-commit",
   "branch": "registry",
-  "checkpoints_count": 2,
+  "checkpoints_count": 3,
   "files_touched": [
     "docs/es/index.md",
     "l10n/ar/docs.home.po",
@@ -31,7 +31,21 @@
     "l10n/is/docs.home.po",
     "l10n/it/docs.home.po",
     "l10n/ja/docs.home.po",
-    "l10n/ko/docs.home.po"
+    "l10n/ko/docs.home.po",
+    "l10n/mi/docs.home.po",
+    "l10n/ms/docs.home.po",
+    "l10n/nb/docs.home.po",
+    "l10n/nl/docs.home.po",
+    "l10n/nn/docs.home.po",
+    "l10n/pl/docs.home.po",
+    "l10n/pt-BR/docs.home.po",
+    "l10n/pt/docs.home.po",
+    "l10n/ru/docs.home.po",
+    "l10n/se/docs.home.po",
+    "l10n/sl/docs.home.po",
+    "l10n/sv/docs.home.po",
+    "l10n/th/docs.home.po",
+    "l10n/tr/docs.home.po"
   ],
   "sessions": [
     {
@@ -47,13 +61,20 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": "/1/prompt.txt"
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
+      "prompt": "/2/prompt.txt"
     }
   ],
   "token_usage": {
-    "input_tokens": 20,
-    "cache_creation_tokens": 25543,
-    "cache_read_tokens": 38530,
-    "output_tokens": 13931,
-    "api_call_count": 2
+    "input_tokens": 30,
+    "cache_creation_tokens": 39215,
+    "cache_read_tokens": 57795,
+    "output_tokens": 20283,
+    "api_call_count": 3
   }
 }
