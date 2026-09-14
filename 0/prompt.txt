@@ -3,3 +3,12 @@ the pantoken logo has a masked dot that is the theme color that is superposition
 ---
 
 Continue: "Continue to iterate?"
+
+---
+
+use the browser to view the logos on both the home page and on a docs page, and validate they are correct. they are not on the default /en.
+http://localhost:5173/
+
+---
+
+arabic has a purple and a blue dot on the home page and the docs page, it's not correct.
