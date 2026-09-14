@@ -1,0 +1,42 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2G9DK4KXYWB8X1YK1RR8GHF",
+  "session_id": "b4610910-9847-4b28-b8c3-0d1344d08b74",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-14T15:43:53.53499Z",
+  "branch": "registry",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    ".gitignore",
+    "docs/.vitepress/theme/components/RegistryBrowser.vue",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/scripts/generate-registry.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "a2adf5c4fdb0",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-14T15:43:53.529595Z",
+    "agent_lines": 75,
+    "agent_removed": 94,
+    "human_added": 270,
+    "human_modified": 28,
+    "human_removed": 0,
+    "total_committed": 373,
+    "total_lines_changed": 641,
+    "agent_percentage": 26.365054602184085,
+    "metric_version": 2
+  }
+}
