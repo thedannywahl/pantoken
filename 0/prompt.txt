@@ -1,0 +1,1 @@
+ci is failing on the cf deploy, investigate adn remediate with gh cli https://github.com/thedannywahl/pantoken/actions/runs/34895321558/job/104147776596
