@@ -1,0 +1,1 @@
+should hte new registry json for shadcn go in the /.well-known api docs?
