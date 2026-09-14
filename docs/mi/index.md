@@ -30,7 +30,7 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Hangaia mō ngā tūāpapa katoa
-    details: Whakauru i te pantoken cli hei whakaputa tauira, hei tāpiri whakaritenga mā ia kaupapa: web, native, me ētahi atu i waenganui.
+    details: Whakauru i te pantoken cli hei whakaputa tauira, hei tāpiri whakaritenga mā ia kaupapa&colon; web, native, me ētahi atu i waenganui.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg

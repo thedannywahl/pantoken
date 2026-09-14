@@ -20,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Egyetlen igazságforrás
-    details: Minden csomag az Instructure hivatalos design tokenjeit, komponenseit és interakcióit használja innen: <a href="https://instructure.design" target="_blank">InstUI</a>.
+    details: Minden csomag az Instructure hivatalos design tokenjeit, komponenseit és interakcióit használja innen&colon; <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg

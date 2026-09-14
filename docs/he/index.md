@@ -30,7 +30,7 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: ייצר לכל פלטפורמה
-    details: התקן את pantoken cli כדי ליצור הגדרות מראש או להוסיף רכיבים לכל פלטפורמה: web, native, וכל דבר אחר.
+    details: התקן את pantoken cli כדי ליצור הגדרות מראש או להוסיף רכיבים לכל פלטפורמה&colon; web, native, וכל דבר אחר.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg

@@ -20,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Մեկ ճշմարտության աղբյուր
-    details: Յուրաքանչյուր փաղետ օգտագործում է պաշտոնական Instructure դիզայն տոկենները, բաղադրիչները և փոխազդեցությունները <a href="https://instructure.design" target="_blank">InstUI</a>-ից:
+    details: Յուրաքանչյուր փաղետ օգտագործում է պաշտոնական Instructure դիզայն տոկենները, բաղադրիչները և փոխազդեցությունները <a href="https://instructure.design" target="_blank">InstUI</a>-ից&colon;
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -30,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Ստեղծեք ցանկացած պլատֆորմի համար
-    details: Տեղադրեք pantoken cli-ն՝ նախորոշումներ ստեղծել կամ բաղադրիչներ ավելացնել ցանկացած պլատֆորմի համար&colon; վեբ, բնական և ամեն ինչ միջև:
+    details: Տեղադրեք pantoken cli-ն՝ նախորոշումներ ստեղծել կամ բաղադրիչներ ավելացնել ցանկացած պլատֆորմի համար&colon; վեբ, բնական և ամեն ինչ միջև&colon;
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: React պետք չէ
-    details: InstUI գրադարանը սերտորեն կապված React-ի հետ: Եթե ցանկանում եք այն օգտագործել, պետք է React օգտագործեք: Այժմ կարող եք շինել ցանկացած տեղում:
+    details: InstUI գրադարանը սերտորեն կապված React-ի հետ&colon; Եթե ցանկանում եք այն օգտագործել, պետք է React օգտագործեք&colon; Այժմ կարող եք շինել ցանկացած տեղում&colon;
 ---
