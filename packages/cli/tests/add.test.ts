@@ -6,7 +6,7 @@ import { beforeEach, expect, test, vi } from "vite-plus/test";
 const spawnSync = vi.fn();
 vi.mock("node:child_process", () => ({ spawnSync }));
 
-const { detectRunner, runAdd, run } = await import("../src/index.ts");
+const { runAdd, run } = await import("../src/index.ts");
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -20,23 +20,52 @@ beforeEach(() => {
   });
 });
 
-test("detectRunner detects package manager from npm_config_user_agent", () => {
+test("runAdd detects package manager runner from npm_config_user_agent", async () => {
   const original = process.env.npm_config_user_agent;
   try {
     process.env.npm_config_user_agent = "pnpm/9.0.0 npm/? node/v20.0.0 darwin arm64";
-    expect(detectRunner()).toEqual({ cmd: "pnpm", args: ["dlx", "shadcn@latest"] });
+    await runAdd(["button"]);
+    expect(spawnSync).toHaveBeenCalledWith(
+      "pnpm",
+      expect.arrayContaining(["dlx", "shadcn@latest", "add", "@pantoken/button"]),
+      expect.any(Object),
+    );
 
+    spawnSync.mockClear();
     process.env.npm_config_user_agent = "bun/1.1.0 npm/? node/v20.0.0 darwin arm64";
-    expect(detectRunner()).toEqual({ cmd: "bunx", args: ["--bun", "shadcn@latest"] });
+    await runAdd(["button"]);
+    expect(spawnSync).toHaveBeenCalledWith(
+      "bunx",
+      expect.arrayContaining(["--bun", "shadcn@latest", "add", "@pantoken/button"]),
+      expect.any(Object),
+    );
 
+    spawnSync.mockClear();
     process.env.npm_config_user_agent = "yarn/1.22.19 npm/? node/v20.0.0 darwin arm64";
-    expect(detectRunner()).toEqual({ cmd: "yarn", args: ["dlx", "shadcn@latest"] });
+    await runAdd(["button"]);
+    expect(spawnSync).toHaveBeenCalledWith(
+      "yarn",
+      expect.arrayContaining(["dlx", "shadcn@latest", "add", "@pantoken/button"]),
+      expect.any(Object),
+    );
 
+    spawnSync.mockClear();
     process.env.npm_config_user_agent = "npm/10.0.0 node/v20.0.0 darwin arm64";
-    expect(detectRunner()).toEqual({ cmd: "npx", args: ["shadcn@latest"] });
+    await runAdd(["button"]);
+    expect(spawnSync).toHaveBeenCalledWith(
+      "npx",
+      expect.arrayContaining(["shadcn@latest", "add", "@pantoken/button"]),
+      expect.any(Object),
+    );
 
+    spawnSync.mockClear();
     delete process.env.npm_config_user_agent;
-    expect(detectRunner()).toEqual({ cmd: "npx", args: ["shadcn@latest"] });
+    await runAdd(["button"]);
+    expect(spawnSync).toHaveBeenCalledWith(
+      "npx",
+      expect.arrayContaining(["shadcn@latest", "add", "@pantoken/button"]),
+      expect.any(Object),
+    );
   } finally {
     if (original !== undefined) process.env.npm_config_user_agent = original;
     else delete process.env.npm_config_user_agent;
