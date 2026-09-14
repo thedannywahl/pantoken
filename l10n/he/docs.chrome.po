@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-14 02:15+0000\n"
+"PO-Revision-Date: 2026-09-14 15:46+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -416,6 +416,102 @@ msgstr "המשך אנימציה"
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
 msgid "\"Set up pantoken in this project using create.pantoken.app/SKILL.md.\""
 msgstr "\"הגדר את pantoken (github.com/thedannywahl/pantoken) בפרויקט זה באמצעות create.pantoken.app/SKILL.md.\""
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.title"
+msgid "shadcn/ui Registry"
+msgstr "מאגר"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:registryBrowser.subtitle"
+msgid "Compatible components, themes, and behavior hooks conforming to the shadcn/ui registry specification. Add items directly to your shadcn/ui project via CLI."
+msgstr "רכיבים תואמים, ערכות נושא, וחיגרי התנהגות התואמים למפרט הרישום של shadcn/ui. הוסף פריטים ישירות לפרויקט shadcn/ui שלך דרך ה-CLI."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:registryBrowser.tabAll"
+msgid "All"
+msgstr "הכל"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.tabComponents"
+msgid "Components"
+msgstr "רכיבים"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.tabThemes"
+msgid "Themes"
+msgstr "ערכת נושא"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:registryBrowser.tabHooks"
+msgid "Hooks"
+msgstr "הוקים"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:registryBrowser.searchPlaceholder"
+msgid "Filter components, themes, hooks…"
+msgstr "סנן רכיבים, ערכות נושא, הוקים…"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:registryBrowser.cliLabel"
+msgid "CLI:"
+msgstr "CLI:"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.copy"
+msgid "Copy"
+msgstr "העתק"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.copied"
+msgid "Copied"
+msgstr "הועתק"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:registryBrowser.depsLabel"
+msgid "Deps:"
+msgstr "תלויות:"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:registryBrowser.previewDetails"
+msgid "Preview details"
+msgstr "פרטי תצוגה מקדימה"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:registryBrowser.previewTokens"
+msgid "Token mappings (light)"
+msgstr "מיפויי טוקנים (light)"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:registryBrowser.viewJson"
+msgid "JSON"
+msgstr "JSON"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:registryBrowser.emptyTitle"
+msgid "No registry items match your search."
+msgstr "אין פריטים ברישום התואמים לחיפוש שלך."
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.emptyReset"
+msgid "Reset Filters"
+msgstr "איפוס חיפוש"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-14 02:14+0000\n"
+"PO-Revision-Date: 2026-09-14 15:45+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -416,6 +416,102 @@ msgstr "Reprendre l'animation"
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
 msgid "\"Set up pantoken in this project using create.pantoken.app/SKILL.md.\""
 msgstr "\"Configurez pantoken (github.com/thedannywahl/pantoken) dans ce projet en utilisant create.pantoken.app/SKILL.md.\""
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.title"
+msgid "shadcn/ui Registry"
+msgstr "Registre"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:registryBrowser.subtitle"
+msgid "Compatible components, themes, and behavior hooks conforming to the shadcn/ui registry specification. Add items directly to your shadcn/ui project via CLI."
+msgstr "Composants, thèmes et hooks de comportement compatibles conformes à la spécification du registre shadcn/ui. Ajoutez des éléments directement à votre projet shadcn/ui via la CLI."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:registryBrowser.tabAll"
+msgid "All"
+msgstr "Tous"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.tabComponents"
+msgid "Components"
+msgstr "Composants"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.tabThemes"
+msgid "Themes"
+msgstr "Thème"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:registryBrowser.tabHooks"
+msgid "Hooks"
+msgstr "Hooks"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:registryBrowser.searchPlaceholder"
+msgid "Filter components, themes, hooks…"
+msgstr "Filtrer les composants, thèmes, hooks…"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:registryBrowser.cliLabel"
+msgid "CLI:"
+msgstr "CLI:"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.copy"
+msgid "Copy"
+msgstr "Copier"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.copied"
+msgid "Copied"
+msgstr "Copié"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:registryBrowser.depsLabel"
+msgid "Deps:"
+msgstr "Dépendances:"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:registryBrowser.previewDetails"
+msgid "Preview details"
+msgstr "Détails de l'aperçu"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:registryBrowser.previewTokens"
+msgid "Token mappings (light)"
+msgstr "Correspondances de jetons (light)"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:registryBrowser.viewJson"
+msgid "JSON"
+msgstr "JSON"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:registryBrowser.emptyTitle"
+msgid "No registry items match your search."
+msgstr "Aucun élément du registre ne correspond à votre recherche."
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:registryBrowser.emptyReset"
+msgid "Reset Filters"
+msgstr "Réinitialiser la recherche"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
