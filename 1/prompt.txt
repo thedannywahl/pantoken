@@ -1,0 +1,17 @@
+now that we've added the registry locally how do we make it browsable if they go to `/r/` ?
+
+---
+
+option 1.
+
+---
+
+this should be using pantoken like the cdn picker is.
+
+---
+
+he registry should still have a guides sidebar like CDN picker.
+
+---
+
+Registry should be added to the Guides sidebar like the CDN picker
