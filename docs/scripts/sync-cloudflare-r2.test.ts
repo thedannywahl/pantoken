@@ -116,6 +116,67 @@ test("syncR2Assets uploads files with authorization and content type headers", a
   expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Cloudflare R2 sync complete"));
 });
 
+test("syncR2Assets retries rate-limited uploads before reporting success", async () => {
+  const file = join(r2AssetsDir, "assets/chunks/rate-limited.js");
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, "console.log('retry');");
+
+  const mockFetch = vi
+    .fn()
+    .mockResolvedValueOnce(
+      new Response("Too Many Requests", { status: 429, headers: { "Retry-After": "0" } }),
+    )
+    .mockResolvedValueOnce(new Response(null, { status: 200 }));
+  const sleepSpy = vi.fn().mockResolvedValue(undefined);
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
+
+  const result = await syncR2Assets({
+    r2AssetsDir,
+    accountId: "test-account",
+    apiToken: "test-token",
+    dryRun: false,
+    concurrency: 1,
+    maxRetries: 1,
+    fetchFn: mockFetch as unknown as typeof fetch,
+    sleepFn: sleepSpy,
+  });
+
+  expect(result.uploadedFiles).toBe(1);
+  expect(result.errors).toHaveLength(0);
+  expect(mockFetch).toHaveBeenCalledTimes(2);
+  expect(sleepSpy).toHaveBeenCalledWith(0);
+  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Cloudflare R2 sync complete"));
+});
+
+test("syncR2Assets does not retry non-retryable upload errors", async () => {
+  const file = join(r2AssetsDir, "assets/chunks/unauthorized.js");
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, "no retry");
+
+  const mockFetch = vi
+    .fn()
+    .mockResolvedValue(new Response("Unauthorized", { status: 401, statusText: "Unauthorized" }));
+  const sleepSpy = vi.fn().mockResolvedValue(undefined);
+  const errSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+
+  await expect(
+    syncR2Assets({
+      r2AssetsDir,
+      accountId: "test-account",
+      apiToken: "bad-token",
+      dryRun: false,
+      maxRetries: 3,
+      retryBaseDelayMs: 0,
+      fetchFn: mockFetch as unknown as typeof fetch,
+      sleepFn: sleepSpy,
+    }),
+  ).rejects.toThrow(/R2 upload failed/);
+
+  expect(mockFetch).toHaveBeenCalledTimes(1);
+  expect(sleepSpy).not.toHaveBeenCalled();
+  expect(errSpy).toHaveBeenCalled();
+});
+
 test("syncR2Assets handles and throws on upload errors", async () => {
   const file = join(r2AssetsDir, "assets/chunks/error.js");
   mkdirSync(dirname(file), { recursive: true });

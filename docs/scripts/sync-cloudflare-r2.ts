@@ -10,7 +10,16 @@ import { runAsMain } from "../../scripts/release/cli.ts";
 import { getMimeType } from "../cloudflare/src/index.ts";
 
 /** Default concurrent upload requests to Cloudflare R2. */
-export const DEFAULT_R2_UPLOAD_CONCURRENCY = 25;
+export const DEFAULT_R2_UPLOAD_CONCURRENCY = 6;
+
+/** Default number of retry attempts for transient Cloudflare responses. */
+export const DEFAULT_R2_UPLOAD_MAX_RETRIES = 6;
+
+/** Default initial retry delay for transient Cloudflare responses. */
+export const DEFAULT_R2_UPLOAD_RETRY_BASE_DELAY_MS = 1_000;
+
+/** Default maximum retry delay for transient Cloudflare responses. */
+export const DEFAULT_R2_UPLOAD_RETRY_MAX_DELAY_MS = 30_000;
 
 /** Options for synchronizing assets to Cloudflare R2. */
 export interface R2SyncOptions {
@@ -24,10 +33,18 @@ export interface R2SyncOptions {
   bucketName?: string;
   /** Maximum number of concurrent uploads. */
   concurrency?: number;
+  /** Maximum retry attempts for transient Cloudflare responses. */
+  maxRetries?: number;
+  /** Initial retry delay in milliseconds. */
+  retryBaseDelayMs?: number;
+  /** Maximum retry delay in milliseconds. */
+  retryMaxDelayMs?: number;
   /** Dry run mode (scans and validates without performing HTTP writes). */
   dryRun?: boolean;
   /** Custom fetch implementation for testing and mocking. */
   fetchFn?: typeof fetch;
+  /** Custom sleep implementation for testing retry behavior. */
+  sleepFn?: (ms: number) => Promise<void>;
 }
 
 /** Result summary of an R2 synchronization run. */
@@ -92,6 +109,58 @@ function pathIsAbsolute(pathLike: string): boolean {
   return pathLike.startsWith("/") || pathLike.startsWith("\\") || /^[A-Za-z]:[\\/]/u.test(pathLike);
 }
 
+function positiveInteger(value: number | undefined, fallback: number): number {
+  return Number.isFinite(value) && value !== undefined ? Math.max(1, Math.trunc(value)) : fallback;
+}
+
+function positiveIntegerFromEnv(name: string, fallback: number): number {
+  const value = Number(process.env[name]);
+  return positiveInteger(value, fallback);
+}
+
+function nonNegativeInteger(value: number | undefined, fallback: number): number {
+  return Number.isFinite(value) && value !== undefined ? Math.max(0, Math.trunc(value)) : fallback;
+}
+
+function nonNegativeIntegerFromEnv(name: string, fallback: number): number {
+  const value = Number(process.env[name]);
+  return nonNegativeInteger(value, fallback);
+}
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolveSleep) => setTimeout(resolveSleep, ms));
+}
+
+function isRetryableStatus(status: number): boolean {
+  return status === 429 || (status >= 500 && status < 600);
+}
+
+function retryAfterDelayMs(response: Response | undefined): number | undefined {
+  const retryAfter = response?.headers.get("Retry-After")?.trim();
+  if (!retryAfter) return undefined;
+
+  const seconds = Number(retryAfter);
+  if (Number.isFinite(seconds) && seconds >= 0) {
+    return seconds * 1_000;
+  }
+
+  const retryAt = Date.parse(retryAfter);
+  if (Number.isFinite(retryAt)) {
+    return Math.max(0, retryAt - Date.now());
+  }
+
+  return undefined;
+}
+
+function retryDelayMs(
+  attempt: number,
+  response: Response | undefined,
+  baseDelayMs: number,
+  maxDelayMs: number,
+): number {
+  return Math.min(retryAfterDelayMs(response) ?? baseDelayMs * 2 ** attempt, maxDelayMs);
+}
+
 /**
  * Execute an array of async tasks with bounded concurrency.
  *
@@ -136,10 +205,32 @@ export async function syncR2Assets(options: R2SyncOptions = {}): Promise<R2SyncR
     process.env.CLOUDFLARE_R2_BUCKET ??
     "pantoken-docs-assets"
   ).trim();
-  const concurrency = Math.max(1, options.concurrency ?? DEFAULT_R2_UPLOAD_CONCURRENCY);
+  const concurrency = positiveInteger(
+    options.concurrency,
+    positiveIntegerFromEnv("CLOUDFLARE_R2_UPLOAD_CONCURRENCY", DEFAULT_R2_UPLOAD_CONCURRENCY),
+  );
+  const maxRetries = positiveInteger(
+    options.maxRetries,
+    positiveIntegerFromEnv("CLOUDFLARE_R2_MAX_RETRIES", DEFAULT_R2_UPLOAD_MAX_RETRIES),
+  );
+  const retryBaseDelay = nonNegativeInteger(
+    options.retryBaseDelayMs,
+    nonNegativeIntegerFromEnv(
+      "CLOUDFLARE_R2_RETRY_BASE_DELAY_MS",
+      DEFAULT_R2_UPLOAD_RETRY_BASE_DELAY_MS,
+    ),
+  );
+  const retryMaxDelay = nonNegativeInteger(
+    options.retryMaxDelayMs,
+    nonNegativeIntegerFromEnv(
+      "CLOUDFLARE_R2_RETRY_MAX_DELAY_MS",
+      DEFAULT_R2_UPLOAD_RETRY_MAX_DELAY_MS,
+    ),
+  );
   const dryRun =
     options.dryRun ?? (process.env.CLOUDFLARE_R2_DRY_RUN === "true" || (!accountId && !apiToken));
   const fetchImpl = options.fetchFn ?? globalThis.fetch;
+  const sleepImpl = options.sleepFn ?? sleep;
 
   if (!existsSync(r2AssetsDir)) {
     throw new Error(`R2 assets directory does not exist: ${r2AssetsDir}`);
@@ -193,23 +284,40 @@ export async function syncR2Assets(options: R2SyncOptions = {}): Promise<R2SyncR
       // contract because the body is a build artifact sent to the configured Cloudflare bucket.
       // lgtm[js/file-data-in-request]
       // codeql[js/file-data-in-request]
-      const response = await fetchImpl(targetUrl, {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${apiToken}`,
-          "Content-Type": contentType,
-          "Content-Length": String(fileBytes.length),
-        },
-        body: fileBytes,
-      });
+      for (let attempt = 0; attempt <= maxRetries; attempt += 1) {
+        let response: Response;
+        try {
+          response = await fetchImpl(targetUrl, {
+            method: "PUT",
+            headers: {
+              Authorization: `Bearer ${apiToken}`,
+              "Content-Type": contentType,
+              "Content-Length": String(fileBytes.length),
+            },
+            body: fileBytes,
+          });
+        } catch (err) {
+          if (attempt < maxRetries) {
+            await sleepImpl(retryDelayMs(attempt, undefined, retryBaseDelay, retryMaxDelay));
+            continue;
+          }
+          throw err;
+        }
 
-      if (!response.ok) {
+        if (response.ok) {
+          result.uploadedFiles += 1;
+          result.uploadedBytes += fileBytes.length;
+          return;
+        }
+
+        if (attempt < maxRetries && isRetryableStatus(response.status)) {
+          await sleepImpl(retryDelayMs(attempt, response, retryBaseDelay, retryMaxDelay));
+          continue;
+        }
+
         const errorBody = await response.text().catch(() => "");
         throw new Error(`HTTP ${response.status} ${response.statusText}: ${errorBody}`);
       }
-
-      result.uploadedFiles += 1;
-      result.uploadedBytes += fileBytes.length;
     } catch (err) {
       result.errors.push({
         file: relKey,
