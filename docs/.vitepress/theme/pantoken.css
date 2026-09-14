@@ -251,11 +251,25 @@ div[class*="language-"]:has(+ .css-example-frame) > pre {
   line-height: 1.5rem;
 }
 
-/* Header logo dot color overlay reflecting active theme color choice. */
+/* Header logo dot color overlay reflecting active theme color choice. The wordmark SVG is loaded via
+   `<img>`, so it can't pick up page CSS (no `currentColor`/`var()` inside an external image document) —
+   this pseudo-element paints the dot instead, masked to the dot's own circle. VitePress's own
+   `.title { width: 100% }` stretches to fill the nav bar (not just the logo), so the overlay can't be
+   sized off `.title`'s box — it's sized off the logo `<img>`'s own box instead: `height: 24px` (set
+   below) times each wordmark's own aspect ratio. VitePress's default `.logo` also carries a *physical*
+   `margin-right: 8px` that doesn't flip for `dir="rtl"`, so the image's physical right edge always sits
+   8px in from `.title`'s right edge in both directions — matched here with physical `left`/`right`
+   (not logical `inset-inline-*`, which would assume the image is flush to the logical start edge and
+   misplace it under RTL). Every locale with a script-specific wordmark (see `NON_LATIN_LOCALES` in
+   `i18n.ts`) has its own aspect ratio and draws its dot at a different position in a
+   differently-proportioned viewBox, so `--pantoken-logo-mask` and `--pantoken-logo-aspect` are set per
+   `html[lang]` below. */
 .VPNavBarTitle .title {
   position: relative;
   display: inline-flex;
   align-items: center;
+  --pantoken-logo-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%27108.948%20121.056%20696.252%20123.284%27%3E%3Ccircle%20cx%3D%27787.3%27%20cy%3D%27225.5%27%20r%3D%2713.9%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
+  --pantoken-logo-aspect: 5.647546;
 }
 
 .VPNavBarTitle .logo {
@@ -267,21 +281,80 @@ div[class*="language-"]:has(+ .css-example-frame) > pre {
 .VPNavBarTitle .title::after {
   content: "";
   position: absolute;
-  top: calc(50% - 12px);
   left: 0;
-  width: calc(24px * 696.252 / 123.284);
+  top: calc(50% - 12px);
+  width: calc(24px * var(--pantoken-logo-aspect));
   height: 24px;
   background-color: var(--pantoken-logo-dot-color);
-  -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%27108.948%20121.056%20696.252%20123.284%27%3E%3Ccircle%20cx%3D%27787.3%27%20cy%3D%27225.5%27%20r%3D%2713.9%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E")
-    no-repeat center / contain;
-  mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%27108.948%20121.056%20696.252%20123.284%27%3E%3Ccircle%20cx%3D%27787.3%27%20cy%3D%27225.5%27%20r%3D%2713.9%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E")
-    no-repeat center / contain;
+  -webkit-mask: var(--pantoken-logo-mask) no-repeat center / contain;
+  mask: var(--pantoken-logo-mask) no-repeat center / contain;
   pointer-events: none;
 }
 
 html[dir="rtl"] .VPNavBarTitle .title::after {
   left: auto;
   right: 8px;
+}
+
+html[lang="el"] .VPNavBarTitle .title {
+  --pantoken-logo-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%27-0.344%20-117.572%20736.274%20123.400%27%3E%3Ccircle%20cx%3D%27717.651%27%20cy%3D%27-12.843%27%20r%3D%2714.279%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
+  --pantoken-logo-aspect: 5.966564;
+}
+
+html[lang="ar"] .VPNavBarTitle .title {
+  --pantoken-logo-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%27-60.803%20-115.429%20553.749%20156.807%27%3E%3Ccircle%20cx%3D%27-38.391%27%20cy%3D%2713.13%27%20r%3D%2718.413%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
+  --pantoken-logo-aspect: 3.531405;
+}
+
+html[lang="fa"] .VPNavBarTitle .title {
+  --pantoken-logo-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%27-62.159%20-114.512%20506.020%20160.333%27%3E%3Ccircle%20cx%3D%27-39.311%27%20cy%3D%2712.737%27%20r%3D%2718.849%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
+  --pantoken-logo-aspect: 3.156056;
+}
+
+html[lang="he"] .VPNavBarTitle .title {
+  --pantoken-logo-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%27-37.439%20-86.680%20459.363%20123.139%27%3E%3Ccircle%20cx%3D%27-19.367%27%20cy%3D%2718.387%27%20r%3D%2714.072%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
+  --pantoken-logo-aspect: 3.730443;
+}
+
+html[lang="hi"] .VPNavBarTitle .title {
+  --pantoken-logo-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%27-16.948%20-162.964%20585.793%20169.731%27%3E%3Ccircle%20cx%3D%27545.079%27%20cy%3D%27-16.999%27%20r%3D%2719.766%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
+  --pantoken-logo-aspect: 3.451302;
+}
+
+html[lang="hy"] .VPNavBarTitle .title {
+  --pantoken-logo-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%278.636%20-122.560%20981.665%20163.844%27%3E%3Ccircle%20cx%3D%27967.018%27%20cy%3D%27-15.784%27%20r%3D%2719.283%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
+  --pantoken-logo-aspect: 5.991461;
+}
+
+html[lang="ja"] .VPNavBarTitle .title {
+  --pantoken-logo-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270.680%20-132.076%20811.370%20144.188%27%3E%3Ccircle%20cx%3D%27791.199%27%20cy%3D%27-8.739%27%20r%3D%2716.851%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
+  --pantoken-logo-aspect: 5.627167;
+}
+
+html[lang="ko"] .VPNavBarTitle .title {
+  --pantoken-logo-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%27-2.440%20-130.672%20702.002%20146.996%27%3E%3Ccircle%20cx%3D%27678.363%27%20cy%3D%27-4.875%27%20r%3D%2717.199%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
+  --pantoken-logo-aspect: 4.775654;
+}
+
+html[lang="ru"] .VPNavBarTitle .title {
+  --pantoken-logo-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%276.296%20-89.956%20644.032%2087.404%27%3E%3Ccircle%20cx%3D%27636.503%27%20cy%3D%27-16.377%27%20r%3D%279.825%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
+  --pantoken-logo-aspect: 7.36845;
+}
+
+html[lang="th"] .VPNavBarTitle .title {
+  --pantoken-logo-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%276.116%20-148.483%20757.281%20155.515%27%3E%3Ccircle%20cx%3D%27741.361%27%20cy%3D%27-15.004%27%20r%3D%2718.036%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
+  --pantoken-logo-aspect: 4.869505;
+}
+
+html[lang="uk"] .VPNavBarTitle .title {
+  --pantoken-logo-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%276.359%20-86.723%20702.701%2092.551%27%3E%3Ccircle%20cx%3D%27694.599%27%20cy%3D%27-9.41%27%20r%3D%2710.462%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
+  --pantoken-logo-aspect: 7.592581;
+}
+
+html[lang="zh-Hans"] .VPNavBarTitle .title,
+html[lang="zh-Hant"] .VPNavBarTitle .title {
+  --pantoken-logo-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%271.460%20-135.820%20518.137%20154.253%27%3E%3Ccircle%20cx%3D%27497.723%27%20cy%3D%27-3.441%27%20r%3D%2717.874%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
+  --pantoken-logo-aspect: 3.359008;
 }
 
 /* Home styles */
@@ -317,6 +390,14 @@ html[dir="rtl"] .is-home::before {
 
 .VPNavBar.home {
   background-color: var(--vp-nav-bg-color);
+}
+
+/* In RTL layouts, navbar flyouts (language dropdown, extra/theme picker, etc.) sit on the left side
+   of the header. VitePress defaults flyout menus to `right: 0`, which aligns their right edge to the
+   icon and causes the menu to overflow off the left edge of the page. Align to the left rail instead. */
+html[dir="rtl"] .VPFlyout .menu {
+  right: auto;
+  left: 0;
 }
 
 @media (min-width: 768px) {

@@ -465,6 +465,8 @@ const localesConfig = Object.fromEntries(
           cdnPicker: locale.cdnPicker,
           // Read by the "Get started" scaffold tabs (GetStartedTabs.vue) via `useData().theme`.
           getStartedTabs: locale.getStartedTabs,
+          // Read by the shadcn/ui registry browser (RegistryBrowser.vue) via `useData().theme`.
+          registryBrowser: locale.registryBrowser,
         },
       },
     ];

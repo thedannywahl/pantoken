@@ -6,60 +6,21 @@
  * Emits:
  * - `docs/public/r/registry.json` (the full catalog)
  * - `docs/public/r/[name].json` (individual item manifests for all themes, components, and hooks)
+ * - `docs/src/r/registry.json` (the catalog imported by the docs app)
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { SHADCN_TO_INSTUI } from "../../renderers/shadcn/src/mapping.ts";
 import { COMPONENTS } from "../../formats/components/src/components/index.ts";
+import type {
+  RegistryCatalog,
+  RegistryItem,
+} from "../.vitepress/theme/components/registry-types.ts";
 
 const outDir = resolve(import.meta.dirname, "../public/r");
+const sourceDir = resolve(import.meta.dirname, "../src/r");
 mkdirSync(outDir, { recursive: true });
-
-interface RegistryFile {
-  path: string;
-  type: string;
-  content?: string;
-  target?: string;
-}
-
-interface RegistryItem {
-  $schema?: string;
-  name: string;
-  type:
-    | "registry:base"
-    | "registry:block"
-    | "registry:component"
-    | "registry:font"
-    | "registry:lib"
-    | "registry:hook"
-    | "registry:ui"
-    | "registry:page"
-    | "registry:file"
-    | "registry:style"
-    | "registry:theme"
-    | "registry:item";
-  title?: string;
-  description?: string;
-  author?: string;
-  dependencies?: string[];
-  devDependencies?: string[];
-  registryDependencies?: string[];
-  files?: RegistryFile[];
-  cssVars?: {
-    theme?: Record<string, string>;
-    light?: Record<string, string>;
-    dark?: Record<string, string>;
-  };
-  css?: Record<string, Record<string, string>>;
-  meta?: Record<string, unknown>;
-}
-
-interface RegistryCatalog {
-  $schema: string;
-  name: string;
-  homepage: string;
-  items: RegistryItem[];
-}
+mkdirSync(sourceDir, { recursive: true });
 
 const lightVars: Record<string, string> = {};
 for (const [shadcnVar, instuiToken] of Object.entries(SHADCN_TO_INSTUI)) {
@@ -260,7 +221,10 @@ const catalog: RegistryCatalog = {
 };
 
 const catalogPath = resolve(outDir, "registry.json");
-writeFileSync(catalogPath, JSON.stringify(catalog, null, 2) + "\n");
+const sourceCatalogPath = resolve(sourceDir, "registry.json");
+const catalogJson = JSON.stringify(catalog, null, 2) + "\n";
+writeFileSync(catalogPath, catalogJson);
+writeFileSync(sourceCatalogPath, catalogJson);
 console.log(`✓ registry: wrote ${catalogPath} (${items.length} items)`);
 
 // Write individual item files

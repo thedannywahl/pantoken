@@ -50,6 +50,19 @@ interface Missing {
   unit?: DriftUnit;
 }
 
+const loadPoTranslatedSet = (
+  poPath: string,
+  keyFn: (entry: { msgctxt?: string; msgid: string; msgstr: string }) => string | undefined = (
+    entry,
+  ) => entry.msgid,
+): Set<string | undefined> => {
+  return new Set(
+    parsePo(readFileSync(poPath, "utf8"))
+      .filter((entry) => entry.msgstr !== "")
+      .map(keyFn),
+  );
+};
+
 const loadCacheKeys = (locale: string, namespace: string): Set<string> => {
   const path = join(cacheDir, `${locale}.${namespace}.json`);
   if (!existsSync(path)) return new Set();
@@ -76,11 +89,7 @@ const preview = (text: string): string =>
 const guideDrift = (locale: string): Missing[] => {
   const poPath = join(l10nDir, locale, "docs.guides.po");
   if (existsSync(poPath)) {
-    const translated = new Set(
-      parsePo(readFileSync(poPath, "utf8"))
-        .filter((entry) => entry.msgstr !== "")
-        .map((entry) => entry.msgid),
-    );
+    const translated = loadPoTranslatedSet(poPath);
     return walkMarkdown(guideDir)
       .map((file) => ({
         file: relative(docsRoot, file),
@@ -114,10 +123,9 @@ const guideDrift = (locale: string): Missing[] => {
 export const apiDrift = (locale: string): Missing[] => {
   const poPath = join(l10nDir, locale, "docs.api.po");
   if (existsSync(poPath)) {
-    const translated = new Set(
-      parsePo(readFileSync(poPath, "utf8"))
-        .filter((entry) => entry.msgstr !== "")
-        .map((entry) => `${entry.msgctxt ?? ""}\0${entry.msgid}`),
+    const translated = loadPoTranslatedSet(
+      poPath,
+      (entry) => `${entry.msgctxt ?? ""}\0${entry.msgid}`,
     );
     const missing: Missing[] = [];
     for (const file of walkMarkdown(apiDir)) {
@@ -166,11 +174,7 @@ const chromeDrift = (locale: string): Missing[] => {
   if (chromeLeaves.length === 0) return [];
   const poPath = join(l10nDir, locale, "docs.chrome.po");
   if (existsSync(poPath)) {
-    const translated = new Set(
-      parsePo(readFileSync(poPath, "utf8"))
-        .filter((entry) => entry.msgstr !== "")
-        .map((entry) => entry.msgctxt),
-    );
+    const translated = loadPoTranslatedSet(poPath, (entry) => entry.msgctxt);
     return chromeLeaves
       .filter(({ path }) => !translated.has(`docs.chrome:${path}`))
       .map(({ path, text }) => ({
@@ -204,11 +208,7 @@ const homeDrift = (locale: string): Missing[] => {
   if (homeUnits.length === 0) return [];
   const poPath = join(l10nDir, locale, "docs.home.po");
   if (existsSync(poPath)) {
-    const translated = new Set(
-      parsePo(readFileSync(poPath, "utf8"))
-        .filter((entry) => entry.msgstr !== "")
-        .map((entry) => entry.msgid),
-    );
+    const translated = loadPoTranslatedSet(poPath);
     return homeUnits
       .filter((unit) => !translated.has(unit.msgid))
       .map((unit) => ({
@@ -240,11 +240,7 @@ const demosDrift = (locale: string): Missing[] => {
   if (demoNames.length === 0) return [];
   const poPath = join(l10nDir, locale, "docs.demos.po");
   if (existsSync(poPath)) {
-    const translated = new Set(
-      parsePo(readFileSync(poPath, "utf8"))
-        .filter((entry) => entry.msgstr !== "")
-        .map((entry) => entry.msgctxt),
-    );
+    const translated = loadPoTranslatedSet(poPath, (entry) => entry.msgctxt);
     const missing: Missing[] = [];
     for (const name of demoNames) {
       const { strings } = loadDemoI18n(join(demoDir, name));

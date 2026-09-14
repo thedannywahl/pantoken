@@ -1,6 +1,8 @@
 import { computed, ref, type ComputedRef, type Ref } from "vue";
 import { PM_OPTIONS, type PmOption } from "./pm-options.ts";
 import { PLATFORM_OPTIONS, type PlatformOption } from "./platform-options.ts";
+import { createCursorBlink, createCycleStepper, useTypedDisplay } from "./cycle-helpers.ts";
+import type { CommandCycleController } from "./useCommandCycle.ts";
 
 /** Durations (in milliseconds) driving each phase of the combined slide/type/delete cycle. */
 export interface PlatformTerminalCycleTimings {
@@ -35,11 +37,10 @@ export interface UsePlatformTerminalCycleOptions {
 /**
  * Reactive state and controls shared by the hero's platform pill and its mock terminal.
  *
- * Deliberately structurally compatible with `CommandCycleRow.vue`'s `CommandCycleController` prop
- * (`activeOption`/`typedLauncher`/`typedSuffix`/`pick`/…, aliased below to the pm side of this
- * cycle) so the row component needs no changes to render either cycle.
+ * Inherits and conforms to `CommandCycleController<PmOption>` so `CommandCycleRow.vue` needs no
+ * changes to render either cycle.
  */
-export interface PlatformTerminalCycleController {
+export interface PlatformTerminalCycleController extends CommandCycleController<PmOption> {
   phase: Ref<CyclePhase>;
   pmIndex: Ref<number>;
   platformIndex: Ref<number>;
@@ -48,24 +49,6 @@ export interface PlatformTerminalCycleController {
   commandBody: ComputedRef<string>;
   /** `activeLauncher + commandBody`, the complete line the terminal types out. */
   fullText: ComputedRef<string>;
-
-  // `CommandCycleController`-compatible surface (see CommandCycleRow.vue) — `activeOption` and
-  // `pick` operate on the *pm*, matching that row's existing "switch package manager" popover.
-  activeIndex: Ref<number>;
-  activeOption: ComputedRef<PmOption>;
-  iconVisible: ComputedRef<boolean>;
-  typedLauncher: ComputedRef<string>;
-  typedSuffix: ComputedRef<string>;
-  suffixText: ComputedRef<string>;
-  visibleText: ComputedRef<string>;
-  cursorBlink: Ref<boolean>;
-  totalLength: ComputedRef<number>;
-  start: () => void;
-  stop: () => void;
-  pauseAtFull: () => void;
-  resume: () => void;
-  /** Switch package manager (the existing per-row popover) — platform stays put. */
-  pick: (index: number) => void;
   /** Jump directly to a platform (the hero's new dropdown) — stays paused until `resume()`. */
   pickPlatform: (index: number) => void;
   /** Pause both the pill's slide and the terminal's typing (hover/focus on either surface). */
@@ -121,7 +104,7 @@ export function usePlatformTerminalCycle(
   let platformOrderPos = 0;
   const platformIndex = ref(platformOrder[0]);
   const charCount = ref(0);
-  const cursorBlink = ref(false);
+  const { cursorBlink, beatBlink, clearBlinkTimer } = createCursorBlink(timings.blinkMs);
 
   const activeOption = computed(() => PM_OPTIONS[pmIndex.value]);
   const activePlatform = computed(() => PLATFORM_OPTIONS[platformIndex.value]);
@@ -135,82 +118,39 @@ export function usePlatformTerminalCycle(
   const iconOffset = computed(() => (activeOption.value.icon ? 1 : 0));
   const iconVisible = computed(() => !!activeOption.value.icon && charCount.value > 0);
 
-  const typedLauncher = computed(() =>
-    activeLauncher.value.slice(
-      0,
-      Math.min(Math.max(0, charCount.value - iconOffset.value), activeLauncher.value.length),
-    ),
+  const { typedLauncher, typedSuffix, visibleText } = useTypedDisplay(
+    activeLauncher,
+    commandBody,
+    charCount,
+    iconOffset,
   );
-  const typedSuffix = computed(() =>
-    commandBody.value.slice(
-      0,
-      Math.max(0, charCount.value - iconOffset.value - activeLauncher.value.length),
-    ),
-  );
-  const visibleText = computed(() => `${typedLauncher.value}${typedSuffix.value}`);
   const totalLength = computed(() => iconOffset.value + fullText.value.length);
 
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
-  let blinkTimeoutId: ReturnType<typeof setTimeout> | undefined;
   let isPaused = false;
 
   function clearTimers() {
     clearTimeout(timeoutId);
-    clearTimeout(blinkTimeoutId);
-  }
-
-  function beatBlink() {
-    cursorBlink.value = false;
-    clearTimeout(blinkTimeoutId);
-    requestAnimationFrame(() => {
-      cursorBlink.value = true;
-      blinkTimeoutId = setTimeout(() => {
-        cursorBlink.value = false;
-      }, timings.blinkMs);
-    });
+    clearBlinkTimer();
   }
 
   function after(ms: number, run: () => void) {
     timeoutId = setTimeout(run, ms);
   }
 
+  const { scheduleTyping, schedulePaused, scheduleDeleting } = createCycleStepper(
+    charCount,
+    totalLength,
+    timings,
+    after,
+    beatBlink,
+    () => scheduleNext(),
+  );
+
   function scheduleEntering() {
     after(timings.enterMs, () => {
       phase.value = "typing";
       charCount.value = 0;
-      scheduleNext();
-    });
-  }
-
-  function scheduleTyping() {
-    if (charCount.value >= totalLength.value) {
-      phase.value = "paused";
-      beatBlink();
-      scheduleNext();
-      return;
-    }
-    after(timings.typeMs, () => {
-      charCount.value++;
-      scheduleNext();
-    });
-  }
-
-  function schedulePaused() {
-    after(timings.holdMs, () => {
-      phase.value = "deleting";
-      scheduleNext();
-    });
-  }
-
-  function scheduleDeleting() {
-    if (charCount.value <= 0) {
-      phase.value = "exiting";
-      beatBlink();
-      scheduleNext();
-      return;
-    }
-    after(timings.deleteMs, () => {
-      charCount.value--;
       scheduleNext();
     });
   }
@@ -227,9 +167,9 @@ export function usePlatformTerminalCycle(
 
   const phaseHandlers: Record<CyclePhase, () => void> = {
     entering: scheduleEntering,
-    typing: scheduleTyping,
-    paused: schedulePaused,
-    deleting: scheduleDeleting,
+    typing: () => scheduleTyping(() => (phase.value = "paused")),
+    paused: () => schedulePaused(() => (phase.value = "deleting")),
+    deleting: () => scheduleDeleting(() => (phase.value = "exiting")),
     exiting: scheduleExiting,
   };
 

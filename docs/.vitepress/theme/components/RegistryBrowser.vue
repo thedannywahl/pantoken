@@ -1,78 +1,22 @@
 <script setup lang="ts">
 import { computed, ref, shallowRef, watch } from "vue";
 import { useData } from "vitepress";
-import catalogData from "../../../public/r/registry.json";
+import catalogData from "../../../src/r/registry.json";
 import { readHashParam, writeHashParam } from "../composables/useHashParams";
 import { useHashParamRef } from "../composables/usePickerHelpers";
-
-interface RegistryFile {
-  path: string;
-  type: string;
-  content?: string;
-  target?: string;
-}
-
-interface RegistryItem {
-  $schema?: string;
-  name: string;
-  type:
-    | "registry:base"
-    | "registry:block"
-    | "registry:component"
-    | "registry:font"
-    | "registry:lib"
-    | "registry:hook"
-    | "registry:ui"
-    | "registry:page"
-    | "registry:file"
-    | "registry:style"
-    | "registry:theme"
-    | "registry:item";
-  title?: string;
-  description?: string;
-  author?: string;
-  dependencies?: string[];
-  devDependencies?: string[];
-  registryDependencies?: string[];
-  files?: RegistryFile[];
-  cssVars?: {
-    theme?: Record<string, string>;
-    light?: Record<string, string>;
-    dark?: Record<string, string>;
-  };
-  css?: Record<string, Record<string, string>>;
-  meta?: Record<string, unknown>;
-}
+import { REGISTRY_BROWSER_DEFAULTS, type RegistryBrowserStrings } from "../registry";
+import type { RegistryItem } from "./registry-types";
 
 type TabKey = "all" | "ui" | "theme" | "hook";
 
-const { theme } = useData();
-const t = computed(() => {
-  const base = {
-    title: "shadcn/ui Registry",
-    subtitle:
-      "Compatible components, themes, and behavior hooks conforming to the shadcn/ui registry specification. Add items directly to your shadcn/ui project via CLI.",
-    tabAll: "All",
-    tabComponents: "Components",
-    tabThemes: "Themes",
-    tabHooks: "Hooks",
-    searchPlaceholder: "Filter components, themes, hooks…",
-    cliLabel: "CLI:",
-    copy: "Copy",
-    copied: "Copied",
-    depsLabel: "Deps:",
-    previewDetails: "Preview details",
-    previewTokens: "Token mappings (light)",
-    viewJson: "JSON",
-    emptyTitle: "No registry items match your search.",
-    emptyReset: "Reset Filters",
-  };
-  const overrides = ((theme.value as Record<string, unknown>).registryBrowser ?? {}) as Record<
-    string,
-    unknown
-  >;
-  return { ...base, ...overrides };
-});
+type DocsThemeWithRegistryBrowser = {
+  registryBrowser?: RegistryBrowserStrings;
+};
+
+const { theme } = useData<DocsThemeWithRegistryBrowser>();
+const t = computed<RegistryBrowserStrings>(
+  () => theme.value.registryBrowser ?? REGISTRY_BROWSER_DEFAULTS,
+);
 
 const catalog = shallowRef(catalogData);
 const items = computed<RegistryItem[]>(() => catalog.value.items as RegistryItem[]);

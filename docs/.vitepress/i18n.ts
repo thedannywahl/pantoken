@@ -2,6 +2,7 @@ import { LOCALES } from "@pantoken/web-components";
 import chromeSource from "./i18n.json" with { type: "json" };
 import type { CdnPickerStrings } from "./theme/cdn.ts";
 import type { GetStartedTabsStrings } from "./theme/get-started.ts";
+import type { RegistryBrowserStrings } from "./theme/registry.ts";
 import { loadConfig, resolveMessagesForLocale, resolveTier } from "@pantoken/i18n-engine";
 
 /**
@@ -170,6 +171,8 @@ export interface UiStrings {
   // The "Get started" scaffold tabs (see theme/components/GetStartedTabs.vue and theme/get-started.ts).
   // Only the AI tab's instructions are prose; the other tabs' `npx …` commands are not translated.
   getStartedTabs: GetStartedTabsStrings;
+  // The shadcn/ui registry browser (see theme/components/RegistryBrowser.vue and theme/registry.ts).
+  registryBrowser: RegistryBrowserStrings;
   // Default-theme chrome VitePress renders around the content. Without these an untranslated locale
   // shows English labels (outline heading, prev/next footer, dark-mode toggle, the 404 page, etc.).
   chrome: {
