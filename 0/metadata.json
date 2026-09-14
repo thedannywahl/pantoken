@@ -1,0 +1,73 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2G9DK4KXYWB8X1YK1RR8GHF",
+  "session_id": "10f05a5b-924d-4ccc-b786-da36553688ba",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-14T15:43:53.299315Z",
+  "branch": "registry",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    ".gitignore",
+    "docs/.vitepress/theme/components/RegistryBrowser.vue",
+    "docs/.vitepress/theme/components/useCommandCycle.ts",
+    "docs/.vitepress/theme/components/usePlatformTerminalCycle.ts",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/scripts/check-locale-drift.ts",
+    "docs/scripts/generate-registry.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "ab5d2ed41505",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-14T15:43:53.29345Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 78,
+    "human_removed": 218,
+    "total_committed": 7,
+    "total_lines_changed": 296,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 316,
+      "user_lines_removed": 268,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".gitignore": 2,
+        "docs/.vitepress/theme/components/RegistryBrowser.vue": 2,
+        "docs/.vitepress/theme/components/cycle-helpers.ts": 99,
+        "docs/.vitepress/theme/components/registry-types.ts": 54,
+        "docs/.vitepress/theme/components/useCommandCycle.ts": 23,
+        "docs/.vitepress/theme/components/usePlatformTerminalCycle.ts": 24,
+        "docs/.vitepress/theme/pantoken.css": 80,
+        "docs/scripts/check-locale-drift.ts": 20,
+        "docs/scripts/generate-registry.ts": 12
+      },
+      "user_removed_per_file": {
+        "docs/.vitepress/theme/components/RegistryBrowser.vue": 40,
+        "docs/.vitepress/theme/components/useCommandCycle.ts": 66,
+        "docs/.vitepress/theme/components/usePlatformTerminalCycle.ts": 84,
+        "docs/.vitepress/theme/pantoken.css": 7,
+        "docs/scripts/check-locale-drift.ts": 24,
+        "docs/scripts/generate-registry.ts": 47
+      }
+    }
+  ]
+}

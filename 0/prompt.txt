@@ -1,0 +1,1 @@
+in rtl the language dropdown menu in docs is still aligning the right-rail of the dropdown to the menu icon instead of the left rail, meaning that the menu overflows off the page. yo ucan see here: http://localhost:5173/ar/
