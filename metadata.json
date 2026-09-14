@@ -1,0 +1,52 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2GE348CVAJ16WXZCPZQ84TC",
+  "strategy": "manual-commit",
+  "branch": "registry",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "docs/es/index.md",
+    "l10n/ar/docs.home.po",
+    "l10n/ca/docs.home.po",
+    "l10n/cy/docs.home.po",
+    "l10n/da/docs.home.po",
+    "l10n/de/docs.home.po",
+    "l10n/el/docs.home.po",
+    "l10n/en-AU/docs.home.po",
+    "l10n/en-CA/docs.home.po",
+    "l10n/en-GB/docs.home.po",
+    "l10n/en/docs.home.po",
+    "l10n/es/docs.home.po",
+    "l10n/fa/docs.home.po",
+    "l10n/fi/docs.home.po",
+    "l10n/fr-CA/docs.home.po",
+    "l10n/fr/docs.home.po",
+    "l10n/ga/docs.home.po",
+    "l10n/he/docs.home.po",
+    "l10n/hi/docs.home.po",
+    "l10n/ht/docs.home.po",
+    "l10n/hu/docs.home.po",
+    "l10n/hy/docs.home.po",
+    "l10n/id/docs.home.po",
+    "l10n/is/docs.home.po",
+    "l10n/it/docs.home.po",
+    "l10n/ja/docs.home.po",
+    "l10n/ko/docs.home.po"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 10,
+    "cache_creation_tokens": 13478,
+    "cache_read_tokens": 19265,
+    "output_tokens": 9038,
+    "api_call_count": 1
+  }
+}
