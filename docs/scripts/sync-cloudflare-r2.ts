@@ -270,20 +270,15 @@ export async function syncR2Assets(options: R2SyncOptions = {}): Promise<R2SyncR
     assertAssetPathUnderRoot(r2AssetsDir, filePath);
 
     const relKey = relative(r2AssetsDir, filePath).replace(/\\/gu, "/");
-    // This upload intentionally sends the bytes of a known, generated asset to the configured Cloudflare bucket.
-    // The asset list is derived from the docs build output and is validated to stay under the R2 asset root.
-    // lgtm[js/file-data-in-request]
+    // Uploads only bytes from files discovered under r2AssetsDir; assertAssetPathUnderRoot above
+    // rejects any path escape. See .github/codeql/codeql-config.yml for why this file is excluded
+    // from the js/file-data-in-request CodeQL query instead of relying on inline suppression.
     const fileBytes = readFileSync(filePath);
     const contentType = getMimeType(relKey);
 
     const targetUrl = `${baseUrl}/${encodeURIComponent(relKey).replace(/%2F/gu, "/")}`;
 
     try {
-      // The upload is intentionally limited to generated docs assets from a configured directory and
-      // is not user-controlled input. Suppress the file-data taint warning for this specific R2 sync
-      // contract because the body is a build artifact sent to the configured Cloudflare bucket.
-      // lgtm[js/file-data-in-request]
-      // codeql[js/file-data-in-request]
       for (let attempt = 0; attempt <= maxRetries; attempt += 1) {
         let response: Response;
         try {
