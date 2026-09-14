@@ -1,5 +1,11 @@
 # @pantoken/plugin-custom-icons
 
+## 0.3.9
+
+### Patch Changes
+
+- a1c0d58: add exports to the un-prefixed pantoken package.
+
 ## 0.3.8
 
 ### Patch Changes

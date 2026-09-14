@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.1.30
+
+### Patch Changes
+
+- a1c0d58: add exports to the un-prefixed pantoken package.
+
 ## 0.1.29
 
 ### Patch Changes

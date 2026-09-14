@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## 0.2.16
+
+### Patch Changes
+
+- a1c0d58: add exports to the un-prefixed pantoken package.
+- Updated dependencies [a1c0d58]
+  - @pantoken/canvas-theme-editor@0.2.1
+  - @pantoken/cli@0.1.36
+  - @pantoken/hugo@0.1.30
+  - @pantoken/interactions@0.3.8
+  - @pantoken/jekyll@0.1.30
+  - @pantoken/plugin-custom-icons@0.3.9
+  - @pantoken/tinymce@0.2.5
+  - @pantoken/web-components@0.6.5
+  - @pantoken/angular@0.1.33
+  - @pantoken/react@0.1.34
+  - @pantoken/svelte@0.1.34
+  - @pantoken/vue@0.1.34
+
 ## 0.2.15
 
 ### Patch Changes

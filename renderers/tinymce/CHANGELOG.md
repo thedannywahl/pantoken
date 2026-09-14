@@ -1,5 +1,11 @@
 # @pantoken/tinymce
 
+## 0.2.5
+
+### Patch Changes
+
+- a1c0d58: add exports to the un-prefixed pantoken package.
+
 ## 0.2.4
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.6.5
+
+### Patch Changes
+
+- Updated dependencies [a1c0d58]
+  - @pantoken/interactions@0.3.8
+
 ## 0.6.4
 
 ### Patch Changes
