@@ -3,7 +3,7 @@
   "checkpoint_id": "01M2GE348CVAJ16WXZCPZQ84TC",
   "strategy": "manual-commit",
   "branch": "registry",
-  "checkpoints_count": 34,
+  "checkpoints_count": 35,
   "files_touched": [
     "docs/es/index.md",
     "l10n/ar/docs.home.po",
@@ -288,13 +288,20 @@
       "compact_transcript": "/33/transcript.jsonl",
       "content_hash": "/33/content_hash.txt",
       "prompt": "/33/prompt.txt"
+    },
+    {
+      "metadata": "/34/metadata.json",
+      "transcript": "/34/full.jsonl",
+      "compact_transcript": "/34/transcript.jsonl",
+      "content_hash": "/34/content_hash.txt",
+      "prompt": "/34/prompt.txt"
     }
   ],
   "token_usage": {
-    "input_tokens": 340,
-    "cache_creation_tokens": 466042,
-    "cache_read_tokens": 659254,
-    "output_tokens": 182842,
-    "api_call_count": 34
+    "input_tokens": 350,
+    "cache_creation_tokens": 481074,
+    "cache_read_tokens": 678519,
+    "output_tokens": 188004,
+    "api_call_count": 35
   }
 }
