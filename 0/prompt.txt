@@ -1,0 +1,15 @@
+❌ Patch coverage is `79.59184%` with `10 lines` in your changes missing coverage. Please review.
+
+✅ Project coverage is 96.15%. Comparing base ([`4f909c4`](https://app.codecov.io/gh/thedannywahl/pantoken/commit/4f909c4ade5ba9601eb5dbbacb029db9b41c09bf?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)) to head ([`c2785da`](https://app.codecov.io/gh/thedannywahl/pantoken/commit/c2785dafff8843e14eae368d252bf6243d9438e9?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)).
+
+✅ All tests successful. No failed tests found.
+
+[Files with missing lines](https://app.codecov.io/gh/thedannywahl/pantoken/pull/162?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
+Patch %
+Lines
+
+[docs/scripts/sync-cloudflare-r2.ts](https://app.codecov.io/gh/thedannywahl/pantoken/pull/162?src=pr&el=tree&filepath=docs%2Fscripts%2Fsync-cloudflare-r2.ts&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl#REDACTED)
+79.59%
+[10 Missing ⚠️](https://app.codecov.io/gh/thedannywahl/pantoken/pull/162?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
+
+❌ Your patch check has failed because the patch coverage (79.59%) is below the target coverage (85.00%). You can increase the patch coverage or adjust the [target](https://docs.codecov.com/docs/commit-status#target) coverage.
