@@ -1,12 +1,51 @@
-import { existsSync, readFileSync } from "node:fs";
-import { resolve } from "node:path";
-import { beforeAll, expect, test } from "vite-plus/test";
-import { writeRegistry } from "./generate-registry.ts";
+import { existsSync, mkdtempSync, readFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join, resolve } from "node:path";
+import { beforeAll, expect, test, vi } from "vite-plus/test";
+import { buildRegistryCatalog, writeRegistry } from "./generate-registry.ts";
 
 const outDir = resolve(import.meta.dirname, "../public/r");
+const MODULE_PATH = new URL("./generate-registry.ts", import.meta.url).pathname;
 
 beforeAll(() => {
   writeRegistry();
+});
+
+test("buildRegistryCatalog builds in-memory catalog conforming to shadcn schema", () => {
+  const catalog = buildRegistryCatalog();
+  expect(catalog.$schema).toBe("https://ui.shadcn.com/schema/registry.json");
+  expect(catalog.name).toBe("pantoken");
+  expect(catalog.homepage).toBe("https://pantoken.app");
+  expect(catalog.items.length).toBeGreaterThan(0);
+});
+
+test("writeRegistry writes to custom outDir and sourceDir", () => {
+  const customOut = mkdtempSync(join(tmpdir(), "registry-out-"));
+  const customSource = mkdtempSync(join(tmpdir(), "registry-source-"));
+
+  const { catalogPath, count } = writeRegistry({
+    outDir: customOut,
+    sourceDir: customSource,
+  });
+
+  expect(existsSync(catalogPath)).toBe(true);
+  expect(existsSync(join(customSource, "registry.json"))).toBe(true);
+  expect(count).toBeGreaterThan(0);
+  expect(existsSync(join(customOut, "button.json"))).toBe(true);
+});
+
+test("direct CLI execution invokes writeRegistry", async () => {
+  const savedArgv = process.argv;
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
+  try {
+    vi.resetModules();
+    process.argv = ["node", MODULE_PATH];
+    await import("./generate-registry.ts");
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("registry: wrote"));
+  } finally {
+    process.argv = savedArgv;
+    logSpy.mockRestore();
+  }
 });
 
 test("registry.json catalog is generated with valid structure", () => {

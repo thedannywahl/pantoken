@@ -349,7 +349,10 @@ function warnIfUnsafePath(out: string): void {
     console.warn(`⚠️ pantoken: output path "${out}" escapes the current directory.`);
 }
 
-function detectRunner(): { cmd: string; args: string[] } {
+/**
+ * Detect the active package manager runner command and arguments for shadcn delegation.
+ */
+export function detectRunner(): { cmd: string; args: string[] } {
   const userAgent = process.env.npm_config_user_agent || "";
   if (userAgent.startsWith("pnpm")) return { cmd: "pnpm", args: ["dlx", "shadcn@latest"] };
   if (userAgent.startsWith("bun")) return { cmd: "bunx", args: ["--bun", "shadcn@latest"] };

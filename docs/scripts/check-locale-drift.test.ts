@@ -6,7 +6,7 @@ import { afterEach, beforeAll, beforeEach, describe, expect, test, vi } from "vi
 // real (they're deterministic and fs-free for the surface we touch).
 const existsSync = vi.fn<(p: string) => boolean>();
 const readFileSync = vi.fn<(p: string) => string>();
-const readdirSync = vi.fn<(p: string) => string[]>();
+const readdirSync = vi.fn();
 const statSync = vi.fn<(p: string) => { isDirectory: () => boolean }>();
 const mkdirSync = vi.fn();
 const writeFileSync = vi.fn();
@@ -28,10 +28,14 @@ vi.mock("node:fs", () => ({
 vi.mock("../.vitepress/i18n.ts", () => ({
   NON_ROOT_LOCALES: ["hu"],
   ENGLISH_UI_STRINGS: {},
-  flattenStrings: () => [],
+  flattenStrings: () => fixtures.chromeLeaves,
 }));
 // Empty so API glossary terms contribute no items to these fixtures, same rationale as ENGLISH_UI_STRINGS.
-vi.mock("./glossary.ts", () => ({ GLOSSARY_TERMS: [] }));
+vi.mock("./glossary.ts", () => ({
+  get GLOSSARY_TERMS() {
+    return fixtures.glossaryTerms;
+  },
+}));
 
 const GUIDE_MD = "# Guide\n\nA whole guide file, translated as one markdown unit.\n";
 const API_MD = [
@@ -95,57 +99,94 @@ const advisoryPolicy = {
 interface Fixtures {
   guideFiles: string[];
   apiFiles: string[];
+  demoDirs: string[];
+  chromeLeaves: Array<{ path: string; text: string }>;
+  glossaryTerms: Array<{ id: string; term: string }>;
   guideMd: string;
   apiMd: string;
+  homeMd: string;
+  demoI18nJson: Record<string, unknown>;
   guidesCache: Record<string, string> | null;
   apiCache: Record<string, string> | null;
+  homeCache: Record<string, string> | null;
+  chromeCache: Record<string, string> | null;
+  demosCache: Record<string, string> | null;
+  guidesPo: string | null;
   apiPo: string | null;
+  homePo: string | null;
+  chromePo: string | null;
+  demosPo: string | null;
   apiDirExists: boolean;
+  demoDirExists: boolean;
   policy: {
     tiers: Record<string, string[]>;
     surfaces: Record<string, string | Record<string, string>>;
     fallback: string | Record<string, string>;
   };
-  homeMd: string;
-  homeCache: Record<string, string> | null;
 }
 const fixtures: Fixtures = {
   guideFiles: [],
   apiFiles: [],
+  demoDirs: [],
+  chromeLeaves: [],
+  glossaryTerms: [],
   guideMd: GUIDE_MD,
   apiMd: API_MD,
+  homeMd: "",
+  demoI18nJson: {},
   guidesCache: {},
   apiCache: {},
-  apiPo: null,
-  apiDirExists: true,
-  policy: blockingPolicy,
-  homeMd: "",
   homeCache: {},
+  chromeCache: {},
+  demosCache: {},
+  guidesPo: null,
+  apiPo: null,
+  homePo: null,
+  chromePo: null,
+  demosPo: null,
+  apiDirExists: true,
+  demoDirExists: false,
+  policy: blockingPolicy,
 };
 
 /** Resolve whether a mocked path should be treated as existing. */
 function fixtureExists(pathName: string): boolean {
-  if (pathName.endsWith(".home.po")) return false;
-  if (pathName.endsWith(".chrome.po")) return false;
-  if (pathName.endsWith(".demos.po")) return false;
-  if (pathName.endsWith(".guides.po")) return false;
-  if (pathName.endsWith(".api.po")) return fixtures.apiPo !== null;
+  if (pathName.includes("docs.guides.po")) {
+    return fixtures.guidesPo !== null;
+  }
+  if (pathName.includes("docs.home.po")) return fixtures.homePo !== null;
+  if (pathName.includes("docs.chrome.po")) return fixtures.chromePo !== null;
+  if (pathName.includes("docs.demos.po")) return fixtures.demosPo !== null;
+  if (pathName.includes("docs.api.po")) return fixtures.apiPo !== null;
   const cacheStates = [
     [".guides.json", fixtures.guidesCache],
     [".api.json", fixtures.apiCache],
     [".home.json", fixtures.homeCache],
+    [".chrome.json", fixtures.chromeCache],
+    [".demos.json", fixtures.demosCache],
   ] as const;
   const cache = cacheStates.find(([suffix]) => pathName.endsWith(suffix));
   if (cache) return cache[1] !== null;
   if (pathName.endsWith("/api")) return fixtures.apiDirExists;
+  if (pathName.endsWith("/demos")) return fixtures.demoDirExists;
+  if (pathName.endsWith("/index.md")) return fixtures.homeMd !== "";
   return true;
 }
 
 /** Mock directory listing lookup based on fixture roots. */
-function fixtureDirEntries(pathName: string): string[] {
-  if (pathName.endsWith("/guide")) return fixtures.guideFiles;
-  if (pathName.endsWith("/api")) return fixtures.apiFiles;
-  return [];
+function fixtureDirEntries(pathName: string, options?: { withFileTypes?: boolean }): any[] {
+  let names: string[] = [];
+  if (pathName.endsWith("/guide")) names = fixtures.guideFiles;
+  else if (pathName.endsWith("/api")) names = fixtures.apiFiles;
+  else if (pathName.endsWith("/demos")) names = fixtures.demoDirs;
+
+  if (options?.withFileTypes) {
+    return names.map((name) => ({
+      name,
+      isDirectory: () => true,
+    }));
+  }
+  return names;
 }
 
 /** Mock file-content lookup for the drift policy, caches, and markdown files. */
@@ -156,7 +197,13 @@ function fixtureFileContents(pathName: string): string {
       drift: { surfaces: fixtures.policy.surfaces, fallback: fixtures.policy.fallback },
     });
   if (pathName.endsWith("/index.md")) return fixtures.homeMd;
-  if (pathName.endsWith(".api.po")) return fixtures.apiPo ?? "";
+  if (pathName.includes("docs.api.po")) return fixtures.apiPo ?? "";
+  if (pathName.includes("docs.guides.po")) return fixtures.guidesPo ?? "";
+  if (pathName.includes("docs.home.po")) return fixtures.homePo ?? "";
+  if (pathName.includes("docs.chrome.po")) return fixtures.chromePo ?? "";
+  if (pathName.includes("docs.demos.po")) return fixtures.demosPo ?? "";
+  if (pathName.endsWith("i18n.json")) return JSON.stringify(fixtures.demoI18nJson);
+  if (pathName.endsWith("index.html")) return "<div>{{title}}</div>";
   return fixtureCacheFileContents(pathName) ?? fixtureMarkdownContents(pathName);
 }
 
@@ -173,6 +220,8 @@ function cacheFixtureFor(pathName: string): Record<string, string> | null {
     [".guides.json", fixtures.guidesCache],
     [".api.json", fixtures.apiCache],
     [".home.json", fixtures.homeCache],
+    [".chrome.json", fixtures.chromeCache],
+    [".demos.json", fixtures.demosCache],
   ];
   for (const [suffix, cache] of cacheBySuffix) {
     if (pathName.endsWith(suffix)) return cache;
@@ -186,10 +235,12 @@ function fixtureMarkdownContents(pathName: string): string {
 }
 
 function applyFsMocks(): void {
-  existsSync.mockImplementation((p) => fixtureExists(String(p)));
-  readdirSync.mockImplementation((p) => fixtureDirEntries(String(p)));
+  existsSync.mockImplementation((p: string) => fixtureExists(String(p)));
+  readdirSync.mockImplementation((p: string, opts?: { withFileTypes?: boolean }) =>
+    fixtureDirEntries(String(p), opts),
+  );
   statSync.mockImplementation(() => ({ isDirectory: () => false }));
-  readFileSync.mockImplementation((p) => fixtureFileContents(String(p)));
+  readFileSync.mockImplementation((p: string) => fixtureFileContents(String(p)));
 }
 
 let logSpy: ReturnType<typeof vi.spyOn>;
@@ -203,15 +254,26 @@ beforeEach(() => {
   Object.assign(fixtures, {
     guideFiles: [],
     apiFiles: [],
+    demoDirs: [],
+    chromeLeaves: [],
+    glossaryTerms: [],
     guideMd: GUIDE_MD,
     apiMd: API_MD,
+    homeMd: "",
+    demoI18nJson: {},
     guidesCache: {},
     apiCache: {},
-    apiPo: null,
-    apiDirExists: true,
-    policy: blockingPolicy,
-    homeMd: "",
     homeCache: {},
+    chromeCache: {},
+    demosCache: {},
+    guidesPo: null,
+    apiPo: null,
+    homePo: null,
+    chromePo: null,
+    demosPo: null,
+    apiDirExists: true,
+    demoDirExists: false,
+    policy: blockingPolicy,
   });
   applyFsMocks();
   logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
@@ -421,5 +483,79 @@ describe("top-level drift check", () => {
 
     expect(warnSpy.mock.calls.flat().map(String).join("\n")).toContain("docs/api not generated");
     expect(process.exitCode).toBe(0);
+  });
+
+  test("evaluates PO-backed guides drift", async () => {
+    vi.resetModules();
+    fixtures.guideFiles = ["intro.md", "advanced.md"];
+    fixtures.guidesPo = 'msgid "other.md"\nmsgstr "Bevezetés"\n';
+
+    await import("./check-locale-drift.ts");
+
+    const out = errText();
+    expect(out).toContain("[docs.guides]");
+    expect(out).toContain("docs/guide/intro.md");
+    expect(process.exitCode).toBe(1);
+  });
+
+  test("evaluates PO-backed home drift", async () => {
+    vi.resetModules();
+    fixtures.homeMd = HOME_MD;
+    fixtures.homePo = 'msgid "InstUI, everywhere"\nmsgstr "InstUI, mindenhol"\n';
+
+    await import("./check-locale-drift.ts");
+
+    expect(errText()).not.toContain("[docs.home]");
+    expect(process.exitCode).toBe(0);
+  });
+
+  test("evaluates PO-backed and cache-backed chrome drift", async () => {
+    fixtures.chromeLeaves = [{ path: "nav.home", text: "Home" }];
+    fixtures.chromePo = 'msgctxt "docs.chrome:nav.home"\nmsgid "Home"\nmsgstr "Főoldal"\n';
+
+    await import("./check-locale-drift.ts");
+    expect(errText()).not.toContain("[docs.chrome]");
+
+    vi.resetModules();
+    fixtures.chromePo = null;
+    fixtures.chromeCache = { [keyFor("text", "Home")]: "Főoldal" };
+    await import("./check-locale-drift.ts");
+    expect(errText()).not.toContain("[docs.chrome]");
+
+    vi.resetModules();
+    fixtures.chromeCache = {};
+    await import("./check-locale-drift.ts");
+    expect(errText()).toContain("[docs.chrome]");
+  });
+
+  test("evaluates PO-backed and cache-backed demo drift", async () => {
+    fixtures.demoDirExists = true;
+    fixtures.demoDirs = ["modal"];
+    fixtures.demoI18nJson = { title: { message: "Modal Title", translate: "always" } };
+    fixtures.demosPo = 'msgctxt "docs.demos:modal:title"\nmsgid "Modal Title"\nmsgstr "Modális"\n';
+
+    await import("./check-locale-drift.ts");
+    expect(errText()).not.toContain("[docs.demos]");
+
+    vi.resetModules();
+    fixtures.demosPo = null;
+    fixtures.demosCache = { [keyFor("text", "Modal Title")]: "Modális" };
+    await import("./check-locale-drift.ts");
+    expect(errText()).not.toContain("[docs.demos]");
+
+    vi.resetModules();
+    fixtures.demosCache = {};
+    await import("./check-locale-drift.ts");
+    expect(errText()).toContain("[docs.demos]");
+  });
+
+  test("flags missing glossary terms in api cache", async () => {
+    fixtures.apiFiles = ["page.md"];
+    fixtures.apiCache = Object.fromEntries(apiProseKeys.map((k) => [k, "t"]));
+    fixtures.glossaryTerms = [{ id: "instui", term: "InstUI" }];
+
+    await import("./check-locale-drift.ts");
+    expect(errText()).toContain("docs/glossary.ts");
+    expect(errText()).toContain("instui: InstUI");
   });
 });

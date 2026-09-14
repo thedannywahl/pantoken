@@ -103,6 +103,32 @@ test("ensureComponentsJsonRegistry returns false when components.json does not e
   expect(ensureComponentsJsonRegistry(dir)).toBe(false);
 });
 
+test("ensureComponentsJsonRegistry returns true when @pantoken is already registered", () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-cli-add-existing-"));
+  const componentsJson = join(dir, "components.json");
+  writeFileSync(
+    componentsJson,
+    JSON.stringify({ registries: { "@pantoken": "https://pantoken.app/r/{name}.json" } }, null, 2),
+  );
+  expect(ensureComponentsJsonRegistry(dir)).toBe(true);
+});
+
+test("run handles version and help flags", async () => {
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
+  await run(["--help"]);
+  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("pantoken CLI"));
+
+  await run(["-h"]);
+  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("pantoken CLI"));
+
+  await run(["--version"]);
+  expect(logSpy).toHaveBeenCalled();
+
+  await run(["-v"]);
+  expect(logSpy).toHaveBeenCalled();
+  logSpy.mockRestore();
+});
+
 test("resolveRegistryItemNames prepends @pantoken to bare names", () => {
   const resolved = resolveRegistryItemNames([
     "button",
