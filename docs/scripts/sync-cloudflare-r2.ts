@@ -188,6 +188,11 @@ export async function syncR2Assets(options: R2SyncOptions = {}): Promise<R2SyncR
     const targetUrl = `${baseUrl}/${encodeURIComponent(relKey).replace(/%2F/gu, "/")}`;
 
     try {
+      // The upload is intentionally limited to generated docs assets from a configured directory and
+      // is not user-controlled input. Suppress the file-data taint warning for this specific R2 sync
+      // contract because the body is a build artifact sent to the configured Cloudflare bucket.
+      // lgtm[js/file-data-in-request]
+      // codeql[js/file-data-in-request]
       const response = await fetchImpl(targetUrl, {
         method: "PUT",
         headers: {
