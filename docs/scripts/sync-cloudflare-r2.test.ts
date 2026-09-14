@@ -1,4 +1,4 @@
-import { mkdirSync, mkdtempSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, symlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test";
@@ -116,6 +116,67 @@ test("syncR2Assets uploads files with authorization and content type headers", a
   expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Cloudflare R2 sync complete"));
 });
 
+test("syncR2Assets retries rate-limited uploads before reporting success", async () => {
+  const file = join(r2AssetsDir, "assets/chunks/rate-limited.js");
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, "console.log('retry');");
+
+  const mockFetch = vi
+    .fn()
+    .mockResolvedValueOnce(
+      new Response("Too Many Requests", { status: 429, headers: { "Retry-After": "0" } }),
+    )
+    .mockResolvedValueOnce(new Response(null, { status: 200 }));
+  const sleepSpy = vi.fn().mockResolvedValue(undefined);
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
+
+  const result = await syncR2Assets({
+    r2AssetsDir,
+    accountId: "test-account",
+    apiToken: "test-token",
+    dryRun: false,
+    concurrency: 1,
+    maxRetries: 1,
+    fetchFn: mockFetch as unknown as typeof fetch,
+    sleepFn: sleepSpy,
+  });
+
+  expect(result.uploadedFiles).toBe(1);
+  expect(result.errors).toHaveLength(0);
+  expect(mockFetch).toHaveBeenCalledTimes(2);
+  expect(sleepSpy).toHaveBeenCalledWith(0);
+  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Cloudflare R2 sync complete"));
+});
+
+test("syncR2Assets does not retry non-retryable upload errors", async () => {
+  const file = join(r2AssetsDir, "assets/chunks/unauthorized.js");
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, "no retry");
+
+  const mockFetch = vi
+    .fn()
+    .mockResolvedValue(new Response("Unauthorized", { status: 401, statusText: "Unauthorized" }));
+  const sleepSpy = vi.fn().mockResolvedValue(undefined);
+  const errSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+
+  await expect(
+    syncR2Assets({
+      r2AssetsDir,
+      accountId: "test-account",
+      apiToken: "bad-token",
+      dryRun: false,
+      maxRetries: 3,
+      retryBaseDelayMs: 0,
+      fetchFn: mockFetch as unknown as typeof fetch,
+      sleepFn: sleepSpy,
+    }),
+  ).rejects.toThrow(/R2 upload failed/);
+
+  expect(mockFetch).toHaveBeenCalledTimes(1);
+  expect(sleepSpy).not.toHaveBeenCalled();
+  expect(errSpy).toHaveBeenCalled();
+});
+
 test("syncR2Assets handles and throws on upload errors", async () => {
   const file = join(r2AssetsDir, "assets/chunks/error.js");
   mkdirSync(dirname(file), { recursive: true });
@@ -137,6 +198,199 @@ test("syncR2Assets handles and throws on upload errors", async () => {
   ).rejects.toThrow(/R2 upload failed/);
 
   expect(errSpy).toHaveBeenCalled();
+});
+
+test("walkFiles skips entries that are neither files nor directories", async () => {
+  const file = join(r2AssetsDir, "assets/kept.js");
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, "console.log('kept');");
+  symlinkSync(join(tempDir, "missing-target"), join(r2AssetsDir, "broken-link"));
+
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
+
+  const result = await syncR2Assets({ r2AssetsDir, dryRun: true });
+
+  expect(result.totalFiles).toBe(1);
+  expect(logSpy).toHaveBeenCalled();
+});
+
+test("syncR2Assets retries on network errors using the default sleep implementation", async () => {
+  const file = join(r2AssetsDir, "assets/chunks/flaky.js");
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, "console.log('flaky');");
+
+  const mockFetch = vi
+    .fn()
+    .mockRejectedValueOnce(new TypeError("network down"))
+    .mockResolvedValueOnce(new Response(null, { status: 200 }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
+
+  const result = await syncR2Assets({
+    r2AssetsDir,
+    accountId: "test-account",
+    apiToken: "test-token",
+    dryRun: false,
+    maxRetries: 1,
+    retryBaseDelayMs: 0,
+    fetchFn: mockFetch as unknown as typeof fetch,
+  });
+
+  expect(result.uploadedFiles).toBe(1);
+  expect(result.errors).toHaveLength(0);
+  expect(mockFetch).toHaveBeenCalledTimes(2);
+  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Cloudflare R2 sync complete"));
+});
+
+test("syncR2Assets records an error after exhausting retries on network errors", async () => {
+  const file = join(r2AssetsDir, "assets/chunks/down.js");
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, "console.log('down');");
+
+  const mockFetch = vi.fn().mockRejectedValue(new TypeError("network down"));
+  const errSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+
+  await expect(
+    syncR2Assets({
+      r2AssetsDir,
+      accountId: "test-account",
+      apiToken: "test-token",
+      dryRun: false,
+      maxRetries: 0,
+      retryBaseDelayMs: 0,
+      fetchFn: mockFetch as unknown as typeof fetch,
+    }),
+  ).rejects.toThrow(/R2 upload failed/);
+
+  // maxRetries is clamped to a minimum of 1, so one retry attempt is still made.
+  expect(mockFetch).toHaveBeenCalledTimes(2);
+  expect(errSpy).toHaveBeenCalled();
+});
+
+test("syncR2Assets honors a parseable Retry-After date header", async () => {
+  const file = join(r2AssetsDir, "assets/chunks/date-retry.js");
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, "console.log('date-retry');");
+
+  const retryAt = new Date(Date.now() + 1_000).toUTCString();
+  const mockFetch = vi
+    .fn()
+    .mockResolvedValueOnce(
+      new Response("Too Many Requests", { status: 429, headers: { "Retry-After": retryAt } }),
+    )
+    .mockResolvedValueOnce(new Response(null, { status: 200 }));
+  const sleepSpy = vi.fn().mockResolvedValue(undefined);
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
+
+  const result = await syncR2Assets({
+    r2AssetsDir,
+    accountId: "test-account",
+    apiToken: "test-token",
+    dryRun: false,
+    maxRetries: 1,
+    fetchFn: mockFetch as unknown as typeof fetch,
+    sleepFn: sleepSpy,
+  });
+
+  expect(result.uploadedFiles).toBe(1);
+  expect(sleepSpy).toHaveBeenCalledWith(expect.any(Number));
+  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Cloudflare R2 sync complete"));
+});
+
+test("syncR2Assets falls back to the base delay when Retry-After is unparseable", async () => {
+  const file = join(r2AssetsDir, "assets/chunks/garbage-retry.js");
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, "console.log('garbage-retry');");
+
+  const mockFetch = vi
+    .fn()
+    .mockResolvedValueOnce(
+      new Response("Too Many Requests", { status: 429, headers: { "Retry-After": "not-a-date" } }),
+    )
+    .mockResolvedValueOnce(new Response(null, { status: 200 }));
+  const sleepSpy = vi.fn().mockResolvedValue(undefined);
+  vi.spyOn(console, "log").mockImplementation(() => {});
+
+  const result = await syncR2Assets({
+    r2AssetsDir,
+    accountId: "test-account",
+    apiToken: "test-token",
+    dryRun: false,
+    maxRetries: 1,
+    retryBaseDelayMs: 5,
+    fetchFn: mockFetch as unknown as typeof fetch,
+    sleepFn: sleepSpy,
+  });
+
+  expect(result.uploadedFiles).toBe(1);
+  expect(sleepSpy).toHaveBeenCalledWith(5);
+});
+
+test("syncR2Assets falls back to an empty error body when response.text() rejects", async () => {
+  const file = join(r2AssetsDir, "assets/chunks/text-fails.js");
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, "console.log('text-fails');");
+
+  const mockFetch = vi.fn().mockResolvedValue({
+    ok: false,
+    status: 500,
+    statusText: "Internal Server Error",
+    headers: new Headers(),
+    text: () => Promise.reject(new Error("body read failed")),
+  });
+  const errSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+
+  await expect(
+    syncR2Assets({
+      r2AssetsDir,
+      accountId: "test-account",
+      apiToken: "test-token",
+      dryRun: false,
+      maxRetries: 1,
+      retryBaseDelayMs: 0,
+      fetchFn: mockFetch as unknown as typeof fetch,
+    }),
+  ).rejects.toThrow(/R2 upload failed/);
+
+  expect(mockFetch).toHaveBeenCalledTimes(2);
+  expect(errSpy).toHaveBeenCalled();
+});
+
+test("syncR2Assets falls back to the default assets directory under docs/.vitepress", async () => {
+  const savedEnv = process.env.DOCS_CF_R2_ASSETS_DIR;
+  delete process.env.DOCS_CF_R2_ASSETS_DIR;
+
+  try {
+    await expect(syncR2Assets({})).rejects.toThrow(
+      /R2 assets directory does not exist.*cf-r2-assets/,
+    );
+  } finally {
+    if (savedEnv === undefined) {
+      delete process.env.DOCS_CF_R2_ASSETS_DIR;
+    } else {
+      process.env.DOCS_CF_R2_ASSETS_DIR = savedEnv;
+    }
+  }
+});
+
+test("syncR2Assets stringifies non-Error rejections in the error report", async () => {
+  const file = join(r2AssetsDir, "assets/chunks/non-error.js");
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, "console.log('non-error');");
+
+  const mockFetch = vi.fn().mockRejectedValue("plain string rejection");
+  vi.spyOn(console, "error").mockImplementation(() => {});
+
+  await expect(
+    syncR2Assets({
+      r2AssetsDir,
+      accountId: "test-account",
+      apiToken: "test-token",
+      dryRun: false,
+      maxRetries: 0,
+      retryBaseDelayMs: 0,
+      fetchFn: mockFetch as unknown as typeof fetch,
+    }),
+  ).rejects.toThrow(/plain string rejection/);
 });
 
 test("DEFAULT_R2_UPLOAD_CONCURRENCY is defined", () => {
