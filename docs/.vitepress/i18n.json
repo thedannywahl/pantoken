@@ -14,6 +14,7 @@
   "sidebar.components": { "message": "Components", "translate": "always" },
   "sidebar.cdn": { "message": "CDN & distribution", "translate": "always" },
   "sidebar.cdnPicker": { "message": "CDN picker", "translate": "always" },
+  "sidebar.registry": { "message": "Registry", "translate": "always" },
   "sidebar.cli": { "message": "The pantoken CLI", "translate": "always" },
   "sidebar.plugins": { "message": "Plugins", "translate": "always" },
   "sidebar.generated": { "message": "Generated output", "translate": "always" },

@@ -115,6 +115,7 @@ export interface UiStrings {
     components: string;
     cdn: string;
     cdnPicker: string;
+    registry: string;
     cli: string;
     plugins: string;
     generated: string;

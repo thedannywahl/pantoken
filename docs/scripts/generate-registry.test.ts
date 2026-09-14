@@ -37,3 +37,10 @@ test("button component item contains React implementation file", () => {
   expect(button.type).toBe("registry:ui");
   expect(button.files?.[0]?.content).toContain("instui-button");
 });
+
+test("registry browser page exists at docs/r/index.md", () => {
+  const pagePath = resolve(import.meta.dirname, "../r/index.md");
+  expect(existsSync(pagePath)).toBe(true);
+  const content = readFileSync(pagePath, "utf8");
+  expect(content).toContain("<RegistryBrowser />");
+});
