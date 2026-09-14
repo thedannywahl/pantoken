@@ -1,9 +1,12 @@
 {
   "cli_version": "0.10.6",
   "checkpoint_id": "01M2GA8HBWFSAV20R9JKEBMVVP",
+  "session_id": "dbb15c4d-a61e-4083-a839-5d43564ce259",
   "strategy": "manual-commit",
+  "created_at": "2026-09-14T15:58:36.520699Z",
   "branch": "registry",
-  "checkpoints_count": 3,
+  "checkpoints_count": 1,
+  "save_step_count": 2,
   "files_touched": [
     "l10n/ar/docs.chrome.po",
     "l10n/ca/docs.chrome.po",
@@ -51,34 +54,39 @@
     "l10n/zh-Hans/docs.chrome.po",
     "l10n/zh-Hant/docs.chrome.po"
   ],
-  "sessions": [
-    {
-      "metadata": "/0/metadata.json",
-      "transcript": "/0/full.jsonl",
-      "compact_transcript": "/0/transcript.jsonl",
-      "content_hash": "/0/content_hash.txt",
-      "prompt": "/0/prompt.txt"
-    },
-    {
-      "metadata": "/1/metadata.json",
-      "transcript": "/1/full.jsonl",
-      "compact_transcript": "/1/transcript.jsonl",
-      "content_hash": "/1/content_hash.txt",
-      "prompt": "/1/prompt.txt"
-    },
-    {
-      "metadata": "/2/metadata.json",
-      "transcript": "/2/full.jsonl",
-      "compact_transcript": "/2/transcript.jsonl",
-      "content_hash": "/2/content_hash.txt",
-      "prompt": "/2/prompt.txt"
-    }
-  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "7fffc57fe04d",
+  "compact_transcript_start": 0,
   "token_usage": {
     "input_tokens": 0,
     "cache_creation_tokens": 0,
     "cache_read_tokens": 0,
     "output_tokens": 0,
     "api_call_count": 0
-  }
+  },
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-14T15:58:36.509711Z",
+    "agent_lines": 4300,
+    "agent_removed": 8091,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 4300,
+    "total_lines_changed": 12391,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
 }
