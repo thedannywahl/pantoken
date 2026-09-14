@@ -3,10 +3,12 @@ msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
 #: index.md:5
 #, no-c-format
-msgid "InstUI, everywhere"
-msgstr "InstUI — скрізь"
+msgid ""
+"Create beautiful,<br/><span class=\"platform-line\">accessible<br/><span "
+"class=\"platform web\">web</span></span><br/>apps."
+msgstr ""
 
-#: index.md:6
+#: index.md:7
 #, no-c-format
 msgid ""
 "One resolved token model, reshaped into stylesheets, framework bindings, "
@@ -15,77 +17,105 @@ msgstr ""
 "Одна уніфікована модель токенів, перетворена на таблиці стилів, прив'язки "
 "фреймворків, нативний код і пакети для інструментів дизайну."
 
-#: index.md:9
+#: index.md:10
 #, no-c-format
 msgid "Getting started"
 msgstr "Початок роботи"
 
-#: index.md:12
+#: index.md:13
 #, no-c-format
 msgid "CSS reference"
 msgstr "Довідник CSS"
 
-#: index.md:15
+#: index.md:16
 #, no-c-format
 msgid "API reference"
 msgstr "Довідник API"
 
-#: index.md:21
+#: index.md:22
 #, no-c-format
 msgid "One source of truth"
 msgstr "Єдине джерело істини"
 
-#: index.md:22
+#: index.md:23
 #, no-c-format
 msgid ""
-"Every package reads the same resolved token IR. Change a token upstream and "
-"it flows to CSS, SCSS, native code, and Figma the same way."
+"Every packages uses the official Instructure design tokens, components, and "
+"interactions from <a href=\"https://instructure.design\" "
+"target=\"_blank\">InstUI</a>."
 msgstr ""
-"Кожен пакет використовує ту саму вирішену IR‑модель токенів. Змініть токен "
-"вгорі — і він однаково потрапить у CSS, SCSS, нативний код і Figma."
 
-#: index.md:26
+#: index.md:27
 #, no-c-format
 msgid "Use the smallest package"
 msgstr "Використовуйте найменший пакет"
 
-#: index.md:27
-#, no-c-format
+#: index.md:28
+#, fuzzy, no-c-format
 msgid ""
-"Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and "
-"icons, or a bundler preset for Tailwind, Panda, or MUI."
+"Install just <code>@pantoken/css</code> for a stylesheet, <code>@pantoken/"
+"pendo</code> for guides, or a bundler preset for Tailwind, Panda, or MUI."
 msgstr ""
 "Встановіть лише @pantoken/css для таблиці стилів, @pantoken/react для хуків "
 "і іконок, або пресет бандлера для Tailwind, Panda чи MUI."
 
-#: index.md:31
+#: index.md:32
 #, no-c-format
 msgid "Generate for any platform"
 msgstr "Генеруйте для будь-якої платформи"
 
-#: index.md:32
+#: index.md:33
 #, no-c-format
 msgid ""
-"Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, "
-"WordPress, and more. The same tokens, in each ecosystem's idiom."
+"Install the pantoken cli to generate presets or add components for any "
+"platform&colon; web, native, and anything in between."
 msgstr ""
-"Запустіть `pantoken generate` щоб згенерувати Swift, Kotlin, Compose, "
-"Flutter, Rust, WordPress та інше. Ті самі токени — мовою кожної екосистеми."
-
-#: index.md:36
-#, no-c-format
-msgid "No upstream coupling"
-msgstr "Без прив'язки до upstream"
 
 #: index.md:37
 #, no-c-format
-msgid ""
-"The tokens ship vendored as static JSON, so `npm i` never reaches for a "
-"GitHub-only source. Publishable, semver'd, offline-friendly."
+msgid "No React needed"
 msgstr ""
-"Токени постачаються як вендорні статичні JSON‑файли, тож `npm i` ніколи не "
-"звертається до джерела, доступного лише на GitHub. Готові до публікації, з "
-"семантичним версіонуванням, дружні до офлайну."
+
+#: index.md:38
+#, no-c-format
+msgid ""
+"The InstUI library is tightly coupled with React. If you want to use it, you "
+"have to use React. Now you can build anywhere."
+msgstr ""
+
+#, no-c-format
+#~ msgid "InstUI, everywhere"
+#~ msgstr "InstUI — скрізь"
+
+#, no-c-format
+#~ msgid ""
+#~ "Every package reads the same resolved token IR. Change a token upstream "
+#~ "and it flows to CSS, SCSS, native code, and Figma the same way."
+#~ msgstr ""
+#~ "Кожен пакет використовує ту саму вирішену IR‑модель токенів. Змініть "
+#~ "токен вгорі — і він однаково потрапить у CSS, SCSS, нативний код і Figma."
+
+#, no-c-format
+#~ msgid ""
+#~ "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, "
+#~ "WordPress, and more. The same tokens, in each ecosystem's idiom."
+#~ msgstr ""
+#~ "Запустіть `pantoken generate` щоб згенерувати Swift, Kotlin, Compose, "
+#~ "Flutter, Rust, WordPress та інше. Ті самі токени — мовою кожної "
+#~ "екосистеми."
+
+#, no-c-format
+#~ msgid "No upstream coupling"
+#~ msgstr "Без прив'язки до upstream"
+
+#, no-c-format
+#~ msgid ""
+#~ "The tokens ship vendored as static JSON, so `npm i` never reaches for a "
+#~ "GitHub-only source. Publishable, semver'd, offline-friendly."
+#~ msgstr ""
+#~ "Токени постачаються як вендорні статичні JSON‑файли, тож `npm i` ніколи "
+#~ "не звертається до джерела, доступного лише на GitHub. Готові до "
+#~ "публікації, з семантичним версіонуванням, дружні до офлайну."
 
 #, no-c-format
 #~ msgid "The package map"

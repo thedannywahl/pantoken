@@ -2,7 +2,8 @@
 layout: home
 hero:
   name: Pantoken
-  text: InstUI, buotruoktot
+  text: Create beautiful,<br/><span class="platform-line">accessible<br/><span class="platform web">web</span></span><br/>apps.
+
   tagline: Okta ráddjeduvvon token-mudel, mánuheapmái rievdasašša, framework-binnttaga, nativkoda ja design-ovttasvuođa čađaheapmái.
   actions:
     - theme: brand
@@ -19,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Okta čuovgga máŋggabeaivi
-    details: Buot pakki čállá das rávdna ráddjeduvvon token-IR. Vázzit token mii gávdno álgguheapmái ja son vuođđá CSS:s, SCSS:s, nativkodas ja Figma:s diŋgga.
+    details: Every packages uses the official Instructure design tokens, components, and interactions from <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -29,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Generere mihkke platvorma
-    details: Rádjái &grave;pantoken generate&grave; emit Swift, Kotlin, Compose, Flutter, Rust, WordPress ja máŋga. Dihte sama tokenat, buot ekošystemain dihte.
+    details: Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: Ii beassadálki giegđen
-    details: Tokenat leat vendorejuhkát stahtalaš JSON:s, doul &grave;npm i&grave; ii olmmoš gávdno GitHub-olmmoš vuohtas. Publiserevdu, semver-dávjá ja offline-buorre.
+    title: No React needed
+    details: The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere.
 ---

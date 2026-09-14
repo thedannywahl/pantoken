@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-12 14:20+0000\n"
+"PO-Revision-Date: 2026-09-14 02:15+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -74,6 +74,12 @@ msgstr "CDN & distribisyon"
 msgctxt "docs.chrome:sidebar.cdnPicker"
 msgid "CDN picker"
 msgstr "Chwazi CDN"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.registry"
+msgid "Registry"
+msgstr "Rejistrè"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -158,6 +164,12 @@ msgstr "Randrè"
 msgctxt "docs.chrome:sidebar.apiGroups.tools"
 msgid "Tools"
 msgstr "Zouti"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:platformPicker.label"
+msgid "Choose a platform"
+msgstr "Chwazi yon platfòm"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

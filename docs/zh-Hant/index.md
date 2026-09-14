@@ -2,7 +2,8 @@
 layout: home
 hero:
   name: Pantoken
-  text: InstUI，無所不在
+  text: Create beautiful,<br/><span class="platform-line">accessible<br/><span class="platform web">web</span></span><br/>apps.
+
   tagline: 一個解析後的代幣模型，轉換成樣式表、框架綁定、原生程式碼與設計工具的載入資料。
   actions:
     - theme: brand
@@ -19,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: 單一真實來源
-    details: 每個套件都讀取相同的解析後代幣中介表示（IR）。在上游變更代幣，會以相同方式流到 CSS、SCSS、原生程式碼與 Figma。
+    details: Every packages uses the official Instructure design tokens, components, and interactions from <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -29,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: 為任何平台生成
-    details: 執行 &grave;pantoken generate&grave; 可輸出 Swift、Kotlin、Compose、Flutter、Rust、WordPress 等。相同的代幣，以各生態系慣用語表達。
+    details: Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: 不與上游耦合
-    details: 代幣以內嵌（vendored）靜態 JSON 發佈，因此 &grave;npm i&grave; 不會去取用僅在 GitHub 的來源。可發佈、使用 semver，且支援離線。
+    title: No React needed
+    details: The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere.
 ---

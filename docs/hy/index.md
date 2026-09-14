@@ -2,7 +2,8 @@
 layout: home
 hero:
   name: Pantoken
-  text: InstUI, ամենուրեք
+  text: Create beautiful,<br/><span class="platform-line">accessible<br/><span class="platform web">web</span></span><br/>apps.
+
   tagline: Մի լուծված տոկենի մոդել, վերաձևված՝ ոճաթերթիկների, ֆրեյմվորկային կապերի, բնիկ կոդի և դիզայն-սարքերի payload-ների համար։
   actions:
     - theme: brand
@@ -19,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Մեկ ճշմարտության աղբյուր
-    details: Յուրաքանչյուր փաթեթ մեկն է՝ ընթերցելով նույն լուծված տոկենների IR-ը։ Փոխեք տոկենը վերին աղբյուրում, և այն նույն τρόπω կհայտնվի CSS‑ում, SCSS‑ում, բնիկ կոդում և Figma‑ում։
+    details: Every packages uses the official Instructure design tokens, components, and interactions from <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -29,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Ստեղծեք ցանկացած պլատֆորմի համար
-    details: Անեք &grave;pantoken generate&grave;՝ արտահանելու համար Swift, Kotlin, Compose, Flutter, Rust, WordPress և այլն։ Նույն տոկենները՝ յուրաքանչյուր էկոհամակարգի ձևաբանությամբ։
+    details: Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: Ոչ մի վերին կախվածություն
-    details: Տոկենները մատակարարվում են վենդորացված ստատիկ JSON ձևաչափով, այդ պատճառով &grave;npm i&grave; երբեք չի կախվի միայն GitHub աղբյուրից։ Հրապարակման համար պատրաստ, semver-ով համապատասխանած և օֆֆլայն-համատեղելի։
+    title: No React needed
+    details: The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere.
 ---

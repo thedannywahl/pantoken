@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-12 14:22+0000\n"
+"PO-Revision-Date: 2026-09-14 02:17+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -74,6 +74,12 @@ msgstr "CDN и дистрибуция"
 msgctxt "docs.chrome:sidebar.cdnPicker"
 msgid "CDN picker"
 msgstr "Выбор CDN"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.registry"
+msgid "Registry"
+msgstr "Реестр"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -158,6 +164,12 @@ msgstr "Рендеры"
 msgctxt "docs.chrome:sidebar.apiGroups.tools"
 msgid "Tools"
 msgstr "Инструменты"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:platformPicker.label"
+msgid "Choose a platform"
+msgstr "Выберите платформу"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

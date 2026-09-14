@@ -2,7 +2,8 @@
 layout: home
 hero:
   name: Pantoken
-  text: InstUI，无处不在
+  text: Create beautiful,<br/><span class="platform-line">accessible<br/><span class="platform web">web</span></span><br/>apps.
+
   tagline: 一个解析后的令牌模型，重塑为样式表、框架绑定、本地代码和设计工具的载荷。
   actions:
     - theme: brand
@@ -19,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: 单一事实来源
-    details: 每个包都读取相同的已解析令牌 IR。在上游更改令牌后，它会以相同方式流向 CSS、SCSS、本地代码和 Figma。
+    details: Every packages uses the official Instructure design tokens, components, and interactions from <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -29,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: 为任意平台生成
-    details: 运行 &grave;pantoken generate&grave; 来生成 Swift、Kotlin、Compose、Flutter、Rust、WordPress 等。相同的令牌，以每个生态系统的习惯用法呈现。
+    details: Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: 无上游耦合
-    details: 这些令牌作为静态 JSON 随包发布，因此 &grave;npm i&grave; 永远不会依赖仅限 GitHub 的源。可发布、遵循语义化版本控制、离线友好。
+    title: No React needed
+    details: The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere.
 ---

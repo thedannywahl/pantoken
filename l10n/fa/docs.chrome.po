@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-12 14:19+0000\n"
+"PO-Revision-Date: 2026-09-14 02:14+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -74,6 +74,12 @@ msgstr "CDN و توزیع"
 msgctxt "docs.chrome:sidebar.cdnPicker"
 msgid "CDN picker"
 msgstr "انتخاب‌کنندهٔ CDN"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:sidebar.registry"
+msgid "Registry"
+msgstr "رجیستری"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -158,6 +164,12 @@ msgstr "رندرکنندگان"
 msgctxt "docs.chrome:sidebar.apiGroups.tools"
 msgid "Tools"
 msgstr "ابزارها"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:platformPicker.label"
+msgid "Choose a platform"
+msgstr "یک پلتفرم را انتخاب کنید"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

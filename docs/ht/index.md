@@ -2,7 +2,8 @@
 layout: home
 hero:
   name: Pantoken
-  text: InstUI, toupatou
+  text: Create beautiful,<br/><span class="platform-line">accessible<br/><span class="platform web">web</span></span><br/>apps.
+
   tagline: Yon sèl modèl tòken rezoud, refòme an fichye stil, lyen pou kad (framework), kòd natif, ak chaj pou zouti konsepsyon.
   actions:
     - theme: brand
@@ -19,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Yon sèl sous laverite
-    details: Chak pakè li menm IR tòken rezoud la. Chanje yon tòken anwo, epi li pral rive nan CSS, SCSS, kòd natif, ak Figma menm jan an.
+    details: Every packages uses the official Instructure design tokens, components, and interactions from <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -29,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Jenere pou nenpòt platfòm
-    details: Egzekite &grave;pantoken generate&grave; pou pwodui Swift, Kotlin, Compose, Flutter, Rust, WordPress, ak plis ankò. Menm tòken yo, nan idyòm chak ekosistèm.
+    details: Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: Pa gen kouplaj ak sous anlè
-    details: Tòken yo anbake kòm JSON estatik, kidonk &grave;npm i&grave; pa janm depann sou yon sous ki sèlman sou GitHub. Piblikab, semver, epi zanmitay offline.
+    title: No React needed
+    details: The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere.
 ---
