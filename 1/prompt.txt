@@ -1,0 +1,8 @@
+[packages/cli/src/index.ts](https://github.com/thedannywahl/pantoken/pull/159/files/c25a75837c78667e99ecde245204ee96233b3ef7#diff-2fb448d11702324cc59d657d5945d59cd325540eb87b71f2e66a5bc01ada834c)
+```
+    config.registries = config.registries || {};
+    if (!config.registries["@pantoken"]) {
+      config.registries["@pantoken"] = "https://pantoken.app/r/{name}.json";
+      writeFileSync(componentsJsonPath, JSON.stringify(config, null, 2) + "\n");
+```
+### CodeQL / Potential file system race condition
