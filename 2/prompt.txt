@@ -1,0 +1,14 @@
+the pantoken logo has a masked dot that is the theme color that is superpositioned over the actual dot in the svg.  this positioning is wrong for all the locales that have their own logo or for the rtl locales that use the regular logo.  if feasible update the actual svg to use the active theme color so the circle component itself is colored correctly, if not possible then fix the positioning of the dot in all locales.
+
+---
+
+Continue: "Continue to iterate?"
+
+---
+
+use the browser to view the logos on both the home page and on a docs page, and validate they are correct. they are not on the default /en.
+http://localhost:5173/
+
+---
+
+arabic has a purple and a blue dot on the home page and the docs page, it's not correct.

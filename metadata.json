@@ -3,10 +3,12 @@
   "checkpoint_id": "01M2G9DK4KXYWB8X1YK1RR8GHF",
   "strategy": "manual-commit",
   "branch": "registry",
-  "checkpoints_count": 2,
+  "checkpoints_count": 3,
   "files_touched": [
     ".gitignore",
     "docs/.vitepress/theme/components/RegistryBrowser.vue",
+    "docs/.vitepress/theme/components/cycle-helpers.ts",
+    "docs/.vitepress/theme/components/registry-types.ts",
     "docs/.vitepress/theme/components/useCommandCycle.ts",
     "docs/.vitepress/theme/components/usePlatformTerminalCycle.ts",
     "docs/.vitepress/theme/pantoken.css",
@@ -27,6 +29,13 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": "/1/prompt.txt"
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
+      "prompt": "/2/prompt.txt"
     }
   ],
   "token_usage": {
