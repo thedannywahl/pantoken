@@ -70,7 +70,6 @@ export interface R2SyncResult {
  * @returns Array of absolute file paths.
  */
 function walkFiles(dir: string): string[] {
-  if (!existsSync(dir)) return [];
   const files: string[] = [];
   const entries = readdirSync(dir, { withFileTypes: true });
   for (const entry of entries) {
@@ -176,10 +175,8 @@ async function runWithConcurrency<T>(
   const queue = [...items];
   const workers = Array.from({ length: Math.min(concurrency, items.length) }, async () => {
     while (queue.length > 0) {
-      const item = queue.shift();
-      if (item !== undefined) {
-        await fn(item);
-      }
+      const item = queue.shift() as T;
+      await fn(item);
     }
   });
   await Promise.all(workers);
