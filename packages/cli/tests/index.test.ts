@@ -98,6 +98,11 @@ test("ensureComponentsJsonRegistry updates components.json with @pantoken regist
   expect(updated.registries?.["@pantoken"]).toBe("https://pantoken.app/r/{name}.json");
 });
 
+test("ensureComponentsJsonRegistry returns false when components.json does not exist", () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-cli-add-missing-"));
+  expect(ensureComponentsJsonRegistry(dir)).toBe(false);
+});
+
 test("resolveRegistryItemNames prepends @pantoken to bare names", () => {
   const resolved = resolveRegistryItemNames([
     "button",

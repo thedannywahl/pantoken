@@ -9,7 +9,7 @@
  * @module
  * @beta
  */
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 import { generateAndroid } from "@pantoken/android";
@@ -363,7 +363,6 @@ function detectRunner(): { cmd: string; args: string[] } {
  */
 export function ensureComponentsJsonRegistry(cwd: string = process.cwd()): boolean {
   const componentsJsonPath = join(cwd, "components.json");
-  if (!existsSync(componentsJsonPath)) return false;
   try {
     const content = readFileSync(componentsJsonPath, "utf8");
     const config = JSON.parse(content);
