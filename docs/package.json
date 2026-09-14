@@ -42,6 +42,8 @@
     "docs:build": "vp run docs:assets && vp run docs:api:en && vp run docs:api:css && DOCS_ROOT_LOCALE_ONLY=1 vitepress build",
     "docs:build:deploy:partial": "vp run docs:assets && vp run docs:api:locales && DOCS_DIST_DIR=.vitepress/partial-dist node scripts/build-locales.ts",
     "docs:build:deploy": "vp run docs:assets && vp run docs:api:locales && node scripts/build-locales.ts",
+    "docs:deploy:prepare": "node scripts/prepare-cloudflare-deploy.ts",
+    "docs:deploy:sync-r2": "node scripts/sync-cloudflare-r2.ts",
     "docs:build:all": "vp run docs:assets && vp run docs:api:locales && vp run docs:check:locales && vitepress build",
     "docs:build:claude": "vp run docs:assets && vp run docs:api:locales:claude && vp run docs:check:locales && vitepress build",
     "docs:preview": "vitepress preview"

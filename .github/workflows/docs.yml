@@ -1,14 +1,13 @@
 name: Deploy docs
 
-# Publish the VitePress + TypeDoc site to Netlify.
+# Publish the VitePress + TypeDoc site to Cloudflare (Workers Static Assets + R2).
 #
-# NOT GitHub Pages. The full-locale site is ~42k pages / ~92k files / ~1.7 GB, and GitHub caps a
-# published Pages site at 1 GB with a 10-minute deploy timeout - the site outgrew the host. Netlify
-# has no per-deploy file-count or size limit, only 54,000 files per single directory - which the site
-# would blow past (~78k) if VitePress emitted every page chunk into one flat `assets/`. It doesn't:
-# the site builds one locale at a time into `assets/<locale>/` (docs/scripts/build-locales.ts) and the
-# results are merged. Netlify deploys are content-addressed, so after this first seed each release
-# uploads only the files that actually changed.
+# NOT GitHub Pages (capped at 1 GB / 10-minute timeout) or Netlify (credit-metered request & bandwidth billing).
+# The full-locale site is ~42k pages / ~138k files / ~3.8 GB. Cloudflare Workers Paid supports up to
+# 100,000 static assets per Worker version (with zero per-request charges). The deployment is split:
+# - Workers Static Assets (`cf-worker-dist`) holds HTML pages, root metadata, and shadcn registry files (~43k files).
+# - Cloudflare R2 bucket (`cf-r2-assets`) holds hashed client bundles (`/assets/*`) and demo assets (`/demos-assets/*`) (~95k files, 0 egress fees).
+# - Cloudflare Worker router (`docs/cloudflare/src/index.ts`) serves both from the same origin without CORS or subdomain changes.
 #
 # Diff-scoped: docs-only changes on main can deploy without waiting for a package release. Package
 # releases still request a deploy through the Release workflow's `docs-deploy-request` artifact, and
@@ -20,10 +19,7 @@ name: Deploy docs
 # deploying then would double-deploy alongside the workflow_run path that fires once the same push
 # publishes packages and uploads docs-deploy-request.
 #
-# This workflow builds the site itself: CI's `docs` job is an English-only breakage check that
-# uploads nothing, and Netlify's own build system is never invoked (we ship a prebuilt directory).
-#
-# Required repository secrets: NETLIFY_AUTH_TOKEN (personal access token) and NETLIFY_SITE_ID.
+# Required repository secrets / variables: CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID, CLOUDFLARE_R2_BUCKET.
 
 on:
   push:
@@ -77,7 +73,6 @@ jobs:
   # is the "a release actually happened" signal. Direct pushes and manual dispatches don't need that
   # artifact gate.
   released:
-    if: false # Temporarily disabled
     runs-on: ubuntu-latest
     outputs:
       should_deploy: ${{ steps.decide.outputs.should_deploy }}
@@ -299,51 +294,37 @@ jobs:
           vp run -F "@pantoken/docs..." build
           vp run @pantoken/docs#docs:build:deploy
 
-      # Netlify's only structural limit is 54,000 files in a single directory. The site is built one
-      # locale at a time into its own `assets/<locale>/` (see docs/scripts/build-locales.ts) to stay
-      # well under that — each locale lands near 1,800 files. Fail here, with the offending directory
-      # named, rather than halfway through a multi-gigabyte upload.
-      - name: Check site shape
+      # Cloudflare Workers Static Assets supports up to 100,000 files per version and 25 MiB per file.
+      # Prepare the deployment trees:
+      # - `docs/.vitepress/cf-worker-dist` (HTML, root files, /r/* registry, icons ~43k files)
+      # - `docs/.vitepress/cf-r2-assets` (client chunks /assets/* and demo assets /demos-assets/* ~95k files)
+      - name: Prepare Cloudflare deploy trees
         if: steps.changed_docs.outputs.scope != 'none'
         run: |
           set -euo pipefail
-          cd docs/.vitepress/dist
-          du -sh .
-          echo "pages: $(find . -name '*.html' | wc -l)  files: $(find . -type f | wc -l)"
-          # awk keeps the running max instead of `sort | head`: `head` closing the pipe early kills
-          # `sort` with SIGPIPE, which `pipefail` turns into a failed step right before the deploy.
-          worst=$(find . -type d -exec sh -c 'for d; do echo "$(ls -1U "$d" | wc -l) $d"; done' _ {} + \
-            | awk '$1 > max { max = $1; line = $0 } END { print line }')
-          echo "largest directory: $worst"
-          if [ "${worst%% *}" -ge 54000 ]; then
-            echo "::error::${worst#* } exceeds Netlify's 54,000-files-per-directory limit"
-            exit 1
-          fi
+          node docs/scripts/prepare-cloudflare-deploy.ts
 
-      # `--no-build` ships the directory as-is; Netlify never runs a build of its own. The CLI hashes
-      # every file and uploads only the ones the site doesn't already have, so the first deploy is
-      # slow and every later one is proportional to the diff. The CLI is pinned and fetched on demand
-      # rather than vendored - it's a ~200 MB dependency that nothing else in the repo needs.
-      - name: Deploy to Netlify
-        id: netlify
+      # 1. Sync high-file-count hashed assets and demos assets to Cloudflare R2 bucket.
+      - name: Sync assets to Cloudflare R2
         if: steps.changed_docs.outputs.scope != 'none'
         env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || vars.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_R2_BUCKET: ${{ secrets.CLOUDFLARE_R2_BUCKET || vars.CLOUDFLARE_R2_BUCKET || 'pantoken-docs-assets' }}
         run: |
           set -euo pipefail
-          # Netlify CLI 16+ scans for a pnpm/yarn workspace and, from the repo root, refuses to guess
-          # which of this monorepo's ~100 packages to deploy without --filter, even with
-          # NETLIFY_SITE_ID set. --filter picks the (only) linked site among the workspace packages;
-          # --dir still overrides where the deploy-ready files actually come from.
-          vpx --package netlify-cli@27.5.2 netlify deploy \
-            --filter "@pantoken/docs" \
-            --prod \
-            --no-build \
-            --dir docs/.vitepress/dist \
-            --message "$GITHUB_WORKFLOW $GITHUB_SHA" \
-            --json > deploy.json
-          echo "url=$(node -p 'require("./deploy.json").url')" >> "$GITHUB_OUTPUT"
+          node docs/scripts/sync-cloudflare-r2.ts
+
+      # 2. Deploy Worker with Static Assets binding to Cloudflare Workers.
+      - name: Deploy to Cloudflare Workers
+        id: cloudflare
+        if: steps.changed_docs.outputs.scope != 'none'
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || vars.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          vpx --package wrangler@3.114.0 wrangler deploy --config docs/cloudflare/wrangler.jsonc
 
       - name: Save docs dist cache
         if: steps.changed_docs.outputs.scope != 'none'
