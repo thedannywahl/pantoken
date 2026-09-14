@@ -8,3 +8,7 @@ Continue: "Continue to iterate?"
 ---
 
 you're stuck in an interactive shell, you need to run docs:chrome:locales:copilot instead.
+
+---
+
+is the registry browser strings in the docs translation pipeline? it should be.
