@@ -1,0 +1,85 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2ET74VH3DS79B7VCHYJC7MJ",
+  "session_id": "80bd71f2-90fe-4e8f-92ea-d3fefcaf500f",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-14T01:58:59.056476Z",
+  "branch": "registry",
+  "checkpoints_count": 3,
+  "save_step_count": 4,
+  "files_touched": [
+    "docs/.vitepress/config.ts",
+    "docs/.vitepress/theme/components/RegistryBrowser.vue",
+    "docs/.vitepress/theme/index.ts",
+    "docs/r/index.md",
+    "docs/scripts/generate-registry.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "2fdd77062ede",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 4
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-14T01:58:59.042254Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 935,
+    "human_removed": 661,
+    "total_committed": 287,
+    "total_lines_changed": 1596,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 870,
+      "agent_lines_removed": 1
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 310,
+      "user_lines_removed": 532,
+      "agent_lines_added": 870,
+      "agent_lines_removed": 1,
+      "user_added_per_file": {
+        "docs/.vitepress/theme/components/RegistryBrowser.vue": 310
+      },
+      "user_removed_per_file": {
+        "docs/.vitepress/theme/components/RegistryBrowser.vue": 532
+      }
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 310,
+      "user_lines_removed": 532,
+      "agent_lines_added": 908,
+      "agent_lines_removed": 36,
+      "user_added_per_file": {
+        "docs/.vitepress/theme/components/RegistryBrowser.vue": 310
+      },
+      "user_removed_per_file": {
+        "docs/.vitepress/theme/components/RegistryBrowser.vue": 532
+      }
+    }
+  ]
+}
