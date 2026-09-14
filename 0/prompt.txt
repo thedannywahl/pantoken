@@ -1,0 +1,29 @@
+Continue: "Continue to iterate?"
+
+---
+
+## [Codecov](https://app.codecov.io/gh/thedannywahl/pantoken/pull/159?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl) Report
+
+❌ Patch coverage is `66.95652%` with `38 lines` in your changes missing coverage. Please review.
+
+✅ Project coverage is 95.56%. Comparing base ([`c823d80`](https://app.codecov.io/gh/thedannywahl/pantoken/commit/c823d8025635b4ece7daf485f5d7f0642ec5edbd?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)) to head ([`a03cd3e`](https://app.codecov.io/gh/thedannywahl/pantoken/commit/a03cd3e3ac17d98dfd8c9c3171a9bde8ef324615?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)).
+
+✅ All tests successful. No failed tests found.
+
+[Files with missing lines](https://app.codecov.io/gh/thedannywahl/pantoken/pull/159?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
+Patch %
+Lines
+
+[packages/cli/src/index.ts](https://app.codecov.io/gh/thedannywahl/pantoken/pull/159?src=pr&el=tree&filepath=packages%2Fcli%2Fsrc%2Findex.ts&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl#REDACTED)
+52.45%
+[29 Missing ⚠️](https://app.codecov.io/gh/thedannywahl/pantoken/pull/159?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
+
+[docs/scripts/check-locale-drift.ts](https://app.codecov.io/gh/thedannywahl/pantoken/pull/159?src=pr&el=tree&filepath=docs%2Fscripts%2Fcheck-locale-drift.ts&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl#REDACTED)
+50.00%
+[6 Missing ⚠️](https://app.codecov.io/gh/thedannywahl/pantoken/pull/159?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
+
+[docs/scripts/generate-registry.ts](https://app.codecov.io/gh/thedannywahl/pantoken/pull/159?src=pr&el=tree&filepath=docs%2Fscripts%2Fgenerate-registry.ts&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl#REDACTED)
+92.85%
+[3 Missing ⚠️](https://app.codecov.io/gh/thedannywahl/pantoken/pull/159?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
+
+❌ Your patch check has failed because the patch coverage (83.33%) is below the target coverage (85.00%). You can increase the patch coverage or adjust the [target](https://docs.codecov.com/docs/commit-status#target) coverage.

@@ -1,0 +1,53 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2GG1GWZXAVSR4ZMDCVZM2TK",
+  "session_id": "45583bb0-f0fc-4d4a-bf06-79cf569138d1",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-14T17:39:37.984479Z",
+  "branch": "registry",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "docs/scripts/check-locale-drift.test.ts",
+    "docs/scripts/generate-registry.test.ts",
+    "packages/cli/src/index.ts",
+    "packages/cli/tests/add.test.ts",
+    "packages/cli/tests/index.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "68f12fdda21d",
+  "checkpoint_transcript_start": 1147,
+  "transcript_lines_at_start": 1147,
+  "compact_transcript_start": 231,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-14T17:39:37.957823Z",
+    "agent_lines": 330,
+    "agent_removed": 27,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 330,
+    "total_lines_changed": 357,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
+}
