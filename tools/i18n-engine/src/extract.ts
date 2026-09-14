@@ -101,6 +101,9 @@ const normalizeGraves = (value: string): string =>
 
 const escapeGraves = (value: string): string => replaceDelimited(value, "`", "&grave;");
 
+const escapeFrontmatterValue = (value: string): string =>
+  escapeGraves(value).replace(/:(\s|$)/gu, "&colon;$1");
+
 /** Collect every non-blank prose `text` node's absolute range — never a `code`/`inlineCode` leaf. */
 export function collectProseRanges(source: string): ProseRange[] {
   const tree = parser.parse(source);
@@ -183,7 +186,7 @@ export function renderFrontmatterFile(
     }
     const field = parseFrontmatterField(line);
     if (!field?.value) continue;
-    const translated = escapeGraves(resolve(normalizeGraves(field.value)));
+    const translated = escapeFrontmatterValue(resolve(normalizeGraves(field.value)));
     lines[index] = `${field.prefix}${field.key}:${field.separator}${translated}`;
   }
   return lines.join("\n");

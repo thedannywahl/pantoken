@@ -61,5 +61,9 @@
   },
   "engines": {
     "node": ">=22.18.0"
+  },
+  "pantoken": {
+    "key": "tinymce",
+    "kind": "subpath"
   }
 }

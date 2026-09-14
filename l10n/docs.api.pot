@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-12 19:07+0000\n"
+"PO-Revision-Date: 2026-09-14 02:34+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -1025,7 +1025,10 @@ msgstr ""
 
 #: formats/components/src/functions/iconGlyphsCss.md
 #: packages/cli/src/functions/parseArgs.md
+#: packages/cli/src/functions/resolveRegistryItemNames.md
 #: packages/cli/src/functions/run.md
+#: packages/cli/src/functions/runAdd.md
+#: packages/cli/src/functions/runCreate.md
 #: packages/core/src/functions/flutterIconManifest.md
 #: renderers/svelte/src/functions/registerLocalized.md
 #: renderers/web-components/src/functions/formatList.md
@@ -2782,6 +2785,12 @@ msgctxt "docs.api:prose"
 msgid "Plugins we author for the tools we build with, grouped by host. They're standalone and publishable."
 msgstr ""
 
+#: packages/cli/src/functions/ensureComponentsJsonRegistry.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Ensure `components.json` in the given directory registers the `@pantoken` namespace.\nReturns true if modified or already present, false if components.json does not exist."
+msgstr ""
+
 #: packages/cli/src/functions/parseArgs.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -2800,10 +2809,28 @@ msgctxt "docs.api:prose"
 msgid "**Boolean flags and a comma-separated --icons list**"
 msgstr ""
 
+#: packages/cli/src/functions/resolveRegistryItemNames.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve item names passed to `pantoken add` into full registry identifiers.\nBare names like `button` become `@pantoken/button`. URLs and scoped names are preserved."
+msgstr ""
+
 #: packages/cli/src/functions/run.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Run the CLI."
+msgstr ""
+
+#: packages/cli/src/functions/run.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "**Add a component from the pantoken registry**"
+msgstr ""
+
+#: packages/cli/src/functions/run.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "**Scaffold a starter project with pantoken**"
 msgstr ""
 
 #: packages/cli/src/functions/run.md
@@ -2816,6 +2843,18 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Generate a themed swatch palette in a specific format**"
+msgstr ""
+
+#: packages/cli/src/functions/runAdd.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Run the `pantoken add <item>` command, delegating to `shadcn add @pantoken/<item>`."
+msgstr ""
+
+#: packages/cli/src/functions/runCreate.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Run the `pantoken create <platform>` command, delegating to `@pantoken/scaffold/cli`."
 msgstr ""
 
 #: packages/cli/src/index.md

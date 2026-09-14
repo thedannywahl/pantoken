@@ -2,7 +2,8 @@
 layout: home
 hero:
   name: Pantoken
-  text: InstUI, partout
+  text: Créez de belles,<br/><span class="platform-line">accessibles<br/><span class="platform web">web</span></span><br/>applications.
+
   tagline: Un modèle de token résolu, transformé en feuilles de style, liaisons de framework, code natif et payloads pour outils de design.
   actions:
     - theme: brand
@@ -19,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Une source de vérité
-    details: Chaque package lit le même IR de tokens résolu. Changez un token en amont et il se propage de la même façon vers le CSS, SCSS, le code natif et Figma.
+    details: Tous les packages utilisent les jetons de conception, composants et interactions officiels d'Instructure de <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -29,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Générez pour n'importe quelle plateforme
-    details: Exécutez &grave;pantoken generate&grave; pour émettre Swift, Kotlin, Compose, Flutter, Rust, WordPress, et plus. Les mêmes tokens, dans l'idiome de chaque écosystème.
+    details: Installez le CLI pantoken pour générer des présets ou ajouter des composants pour n'importe quelle plateforme&colon; web, natif, et tout ce qu'il y a entre les deux.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: Pas de couplage en amont
-    details: Les tokens sont fournis en JSON statique inclus, donc &grave;npm i&grave; ne dépend jamais d'une source réservée à GitHub. Publiable, versionné semver, et adapté au hors-ligne.
+    title: Aucun React nécessaire
+    details: La bibliothèque InstUI est étroitement couplée avec React. Si vous voulez l'utiliser, vous devez utiliser React. Maintenant, vous pouvez construire n'importe où.
 ---

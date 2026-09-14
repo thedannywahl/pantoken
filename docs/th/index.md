@@ -2,7 +2,8 @@
 layout: home
 hero:
   name: Pantoken
-  text: InstUI ในทุกที่
+  text: สร้างอย่างสวยงาม,<br/><span class="platform-line">เข้าถึงได้<br/><span class="platform web">web</span></span><br/>แอปพลิเคชัน
+
   tagline: โมเดลโทเค็นที่ถูกรวมแล้วเดียวเดียว ถูกปรับรูปร่างเป็นสไตล์ชีต ผูกกับเฟรมเวิร์ก โค้ดเนทีฟ และข้อมูลสำหรับเครื่องมือออกแบบ
   actions:
     - theme: brand
@@ -19,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: แหล่งความจริงเดียว
-    details: ทุกแพ็กเกจอ่าน IR โทเค็นที่ถูกรวมเดียวกัน เปลี่ยนโทเค็นที่ต้นทางแล้วมันจะไหลไปยัง CSS, SCSS, โค้ดเนทีฟ และ Figma ในแบบเดียวกัน
+    details: แต่ละแพคเกจใช้โทเคนการออกแบบ ส่วนประกอบ และปฏิสัมพันธ์อย่างเป็นทางการของ Instructure จาก <a href="https://instructure.design" target="_blank">InstUI</a>
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -29,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: สร้างสำหรับแพลตฟอร์มใดๆ
-    details: รัน &grave;pantoken generate&grave; เพื่อสร้าง Swift, Kotlin, Compose, Flutter, Rust, WordPress และอื่นๆ โทเค็นเดียวกันในสำนวนของแต่ละระบบนิเวศ
+    details: ติดตั้ง pantoken cli เพื่อสร้างพรีเซ็ตหรือเพิ่มส่วนประกอบสำหรับแพลตฟอร์มใดก็ได้&colon; web, native และสิ่งอื่นๆ ที่อยู่ระหว่างนั้น
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: ไม่มีการผูกกับต้นทาง
-    details: โทเค็นถูกจัดส่งเป็นไฟล์ JSON แบบ vendored ดังนั้น &grave;npm i&grave; จะไม่ดึงจากแหล่งที่หาได้เฉพาะบน GitHub สามารถเผยแพร่ มีเวอร์ชัน semver และใช้งานแบบออฟไลน์ได้.
+    title: ไม่จำเป็นต้องใช้ React
+    details: ไลบรารี InstUI มีความเชื่อมโยงแบบแน่นแฟ้นกับ React หากคุณต้องการใช้มัน คุณต้องใช้ React ตอนนี้คุณสามารถสร้างได้ทุกที่
 ---

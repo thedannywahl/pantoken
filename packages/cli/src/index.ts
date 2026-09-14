@@ -9,8 +9,9 @@
  * @module
  * @beta
  */
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
+import { spawnSync } from "node:child_process";
 import { generateAndroid } from "@pantoken/android";
 import { generateCompose } from "@pantoken/compose";
 import { generateFlutter } from "@pantoken/flutter";
@@ -348,8 +349,113 @@ function warnIfUnsafePath(out: string): void {
     console.warn(`⚠️ pantoken: output path "${out}" escapes the current directory.`);
 }
 
+function detectRunner(): { cmd: string; args: string[] } {
+  const userAgent = process.env.npm_config_user_agent || "";
+  if (userAgent.startsWith("pnpm")) return { cmd: "pnpm", args: ["dlx", "shadcn@latest"] };
+  if (userAgent.startsWith("bun")) return { cmd: "bunx", args: ["--bun", "shadcn@latest"] };
+  if (userAgent.startsWith("yarn")) return { cmd: "yarn", args: ["dlx", "shadcn@latest"] };
+  return { cmd: "npx", args: ["shadcn@latest"] };
+}
+
+/**
+ * Ensure `components.json` in the given directory registers the `@pantoken` namespace.
+ * Returns true if modified or already present, false if components.json does not exist.
+ */
+export function ensureComponentsJsonRegistry(cwd: string = process.cwd()): boolean {
+  const componentsJsonPath = join(cwd, "components.json");
+  try {
+    const content = readFileSync(componentsJsonPath, "utf8");
+    const config = JSON.parse(content);
+    config.registries = config.registries || {};
+    if (!config.registries["@pantoken"]) {
+      config.registries["@pantoken"] = "https://pantoken.app/r/{name}.json";
+      writeFileSync(componentsJsonPath, JSON.stringify(config, null, 2) + "\n");
+      console.log("✓ pantoken: registered @pantoken in components.json");
+    }
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Resolve item names passed to `pantoken add` into full registry identifiers.
+ * Bare names like `button` become `@pantoken/button`. URLs and scoped names are preserved.
+ */
+export function resolveRegistryItemNames(items: readonly string[]): string[] {
+  return items.map((item) => {
+    if (
+      item.startsWith("http://") ||
+      item.startsWith("https://") ||
+      item.startsWith("@") ||
+      item.includes("/")
+    ) {
+      return item;
+    }
+    return `@pantoken/${item}`;
+  });
+}
+
+/**
+ * Run the `pantoken add <item>` command, delegating to `shadcn add @pantoken/<item>`.
+ */
+export async function runAdd(argv: readonly string[], cwd: string = process.cwd()): Promise<void> {
+  const items: string[] = [];
+  const passthroughFlags: string[] = [];
+
+  for (let i = 0; i < argv.length; i++) {
+    const arg = argv[i];
+    if (arg.startsWith("-")) {
+      passthroughFlags.push(arg);
+    } else {
+      items.push(arg);
+    }
+  }
+
+  if (items.length === 0) {
+    throw new Error("Missing item name for pantoken add. Usage: pantoken add <item> [flags]");
+  }
+
+  ensureComponentsJsonRegistry(cwd);
+  const resolvedItems = resolveRegistryItemNames(items);
+
+  const runner = detectRunner();
+  const args = [...runner.args, "add", ...resolvedItems, ...passthroughFlags];
+  const result = spawnSync(runner.cmd, args, { stdio: "inherit", cwd });
+  if (result.error) throw result.error;
+  if (result.status !== 0 && result.status !== null) {
+    process.exitCode = result.status;
+  }
+}
+
+/**
+ * Run the `pantoken create <platform>` command, delegating to `@pantoken/scaffold/cli`.
+ */
+export async function runCreate(argv: readonly string[]): Promise<void> {
+  const { runScaffoldCli } = await import("@pantoken/scaffold/cli");
+  const pkg = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8"));
+  await runScaffoldCli([...argv], {
+    usageCommand: "pantoken create",
+    version: pkg.version,
+  });
+}
+
 /**
  * Run the CLI.
+ *
+ * @example Add a component from the pantoken registry
+ * ```ts
+ * import { run } from "@pantoken/cli";
+ *
+ * await run(["add", "button"]);
+ * ```
+ *
+ * @example Scaffold a starter project with pantoken
+ * ```ts
+ * import { run } from "@pantoken/cli";
+ *
+ * await run(["create", "react", "--dir", "./my-app", "--no-install"]);
+ * ```
  *
  * @example Generate Swift tokens into a consumer repo
  * ```ts
@@ -367,6 +473,40 @@ function warnIfUnsafePath(out: string): void {
  * ```
  */
 export async function run(argv: readonly string[]): Promise<void> {
+  if (argv.length === 0 || argv[0] === "--help" || argv[0] === "-h") {
+    console.log(`pantoken CLI
+
+Usage:
+  pantoken generate <target> [--out dir] [--theme t] [--class Name]
+  pantoken add <item...> [flags]
+  pantoken create <platform> [options]
+
+Commands:
+  generate  Emit native/non-npm design tokens (swift, android, compose, flutter, rust, wordpress, etc.)
+  add       Add components, themes, or hooks from the pantoken registry via shadcn
+  create    Scaffold a starter project with pantoken (alias for create-pantoken-app)
+
+Options:
+  --help, -h     Show help
+  --version, -v  Show version
+`);
+    return;
+  }
+
+  if (argv[0] === "--version" || argv[0] === "-v") {
+    const pkg = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8"));
+    console.log(pkg.version);
+    return;
+  }
+
+  if (argv[0] === "add") {
+    return runAdd(argv.slice(1));
+  }
+
+  if (argv[0] === "create") {
+    return runCreate(argv.slice(1));
+  }
+
   const args = parseArgs(argv);
   assertGenerateTarget(args);
   warnIfUnsafePath(args.out);

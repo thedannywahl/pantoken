@@ -2,7 +2,8 @@
 layout: home
 hero:
   name: Pantoken
-  text: InstUI, i ngā wāhi katoa
+  text: Waihanga pai,<br/><span class="platform-line">āputa<br/><span class="platform web">web</span></span><br/>āplikihana.
+
   tagline: Tētahi tauira tohu kua whakatauhia, kua hurihia hei stylesheets, here anga, waehere taketake, me ngā raraunga mō ngā taputapu hoahoa.
   actions:
     - theme: brand
@@ -19,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Kotahi te puna pono
-    details: Ka pānuitia e ngā mōkī katoa te IR o ngā tohu kua whakatauhia. Mēnā ka huri tētahi tohu ki te puna matua, ka pā tonu aua huri ki CSS, SCSS, waehere taketake, me Figma.
+    details: Ka whakamahi ia pūtake i ngā tohu hoahoa Instructure tūturu, ngā whakaritenga, me ngā tīpako mai i <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -29,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Hangaia mō ngā tūāpapa katoa
-    details: Whakarewa &grave;pantoken generate&grave; kia whakaputa Swift, Kotlin, Compose, Flutter, Rust, WordPress, me ētahi atu. Ngā tohu kotahi — i ia reo o ia pūnaha.
+    details: Whakauru i te pantoken cli hei whakaputa tauira, hei tāpiri whakaritenga mā ia kaupapa&colon; web, native, me ētahi atu i waenganui.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: Kāore he here ki te puna matua
-    details: Ka tukuna ngā tohu hei JSON vendored tūwhera, nō reira kāore &grave;npm i&grave; e rapu i tētahi puna e wātea ana anake i GitHub. Ka taea te whakaputa, kua noho semver, ā, he pai mō te whakamahi tuimotu (offline).
+    title: Kaore React e hiahiatia
+    details: He hononga tata ki a React te tawhā InstUI. Mēnā e hiahia ana koe ki te whakamahi i a ia, me whakamahi e koe i a React. Ināianei ka taea e koe te hanga i te waahi nui rawa.
 ---

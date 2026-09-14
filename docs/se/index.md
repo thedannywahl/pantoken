@@ -2,7 +2,8 @@
 layout: home
 hero:
   name: Pantoken
-  text: InstUI, buotruoktot
+  text: Ráhppa čeakčat,<br/><span class="platform-line">almmolašvuođain<br/><span class="platform web">interneta</span></span><br/>prográmmat.
+
   tagline: Okta ráddjeduvvon token-mudel, mánuheapmái rievdasašša, framework-binnttaga, nativkoda ja design-ovttasvuođa čađaheapmái.
   actions:
     - theme: brand
@@ -19,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Okta čuovgga máŋggabeaivi
-    details: Buot pakki čállá das rávdna ráddjeduvvon token-IR. Vázzit token mii gávdno álgguheapmái ja son vuođđá CSS:s, SCSS:s, nativkodas ja Figma:s diŋgga.
+    details: Juohke pakehta geažes officiella Instructure design-tokehniidda, komponenhtaid ja interakšuvnnaid <a href="https://instructure.design" target="_blank">InstUI</a>s.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -29,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Generere mihkke platvorma
-    details: Rádjái &grave;pantoken generate&grave; emit Swift, Kotlin, Compose, Flutter, Rust, WordPress ja máŋga. Dihte sama tokenat, buot ekošystemain dihte.
+    details: Hálediš pantoken cli:a maid oastit valmaduvvon váđđaid juohke platform:as&colon; interneta, áddjá, ja buohccá maiddái.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: Ii beassadálki giegđen
-    details: Tokenat leat vendorejuhkát stahtalaš JSON:s, doul &grave;npm i&grave; ii olmmoš gávdno GitHub-olmmoš vuohtas. Publiserevdu, semver-dávjá ja offline-buorre.
+    title: React ii leat dárbbat
+    details: InstUI bibliotehka lea čeakcu guođalaš React:iin. Jus háliid geažešeapmi dan, de maŋŋelaččat geažešeapmi React:a. Dás sáhtat ráhpat maiddái.
 ---

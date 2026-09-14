@@ -1,4 +1,5 @@
 import { computed, ref, type ComputedRef, type Ref } from "vue";
+import { createCursorBlink, createCycleStepper, useTypedDisplay } from "./cycle-helpers";
 
 /** A single launcher command shown in the cycling animation. */
 export interface CommandCycleOption {
@@ -31,9 +32,9 @@ export interface UseCommandCycleOptions {
 }
 
 /** Reactive state and controls returned by {@link useCommandCycle}. */
-export interface CommandCycleController {
+export interface CommandCycleController<TOption = CommandCycleOption> {
   activeIndex: Ref<number>;
-  activeOption: ComputedRef<CommandCycleOption>;
+  activeOption: ComputedRef<TOption>;
   iconVisible: ComputedRef<boolean>;
   typedLauncher: ComputedRef<string>;
   typedSuffix: ComputedRef<string>;
@@ -62,54 +63,43 @@ export function useCommandCycle({
 
   const phase = ref<CyclePhase>("typing");
   const charCount = ref(0);
-  const cursorBlink = ref(false);
+  const { cursorBlink, beatBlink, clearBlinkTimer } = createCursorBlink(timings.blinkMs);
 
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
-  let blinkTimeoutId: ReturnType<typeof setTimeout> | undefined;
 
   const suffixValue = computed(() => (typeof suffix === "string" ? suffix : suffix.value));
+  const activeLauncher = computed(() => activeOption.value.launcher);
   const iconOffset = computed(() => (activeOption.value.icon ? 1 : 0));
   const iconVisible = computed(() => !!activeOption.value.icon && charCount.value > 0);
 
-  const typedLauncher = computed(() =>
-    activeOption.value.launcher.slice(
-      0,
-      Math.min(Math.max(0, charCount.value - iconOffset.value), activeOption.value.launcher.length),
-    ),
+  const { typedLauncher, typedSuffix, visibleText } = useTypedDisplay(
+    activeLauncher,
+    suffixValue,
+    charCount,
+    iconOffset,
   );
-
-  const typedSuffix = computed(() =>
-    suffixValue.value.slice(
-      0,
-      Math.max(0, charCount.value - iconOffset.value - activeOption.value.launcher.length),
-    ),
-  );
-
-  const visibleText = computed(() => `${typedLauncher.value}${typedSuffix.value}`);
   const totalLength = computed(
     () => iconOffset.value + activeOption.value.launcher.length + suffixValue.value.length,
   );
 
   function clearTimers() {
     clearTimeout(timeoutId);
-    clearTimeout(blinkTimeoutId);
-  }
-
-  function beatBlink() {
-    cursorBlink.value = false;
-    clearTimeout(blinkTimeoutId);
-    requestAnimationFrame(() => {
-      cursorBlink.value = true;
-      blinkTimeoutId = setTimeout(() => {
-        cursorBlink.value = false;
-      }, timings.blinkMs);
-    });
+    clearBlinkTimer();
   }
 
   /** Schedule `run` after `ms`, tracked as the cycle's single pending timer. */
   function after(ms: number, run: () => void) {
     timeoutId = setTimeout(run, ms);
   }
+
+  const { scheduleTyping, schedulePaused, scheduleDeleting } = createCycleStepper(
+    charCount,
+    totalLength,
+    timings,
+    after,
+    beatBlink,
+    () => scheduleNext(),
+  );
 
   // One handler per phase (below), keyed by `phase.value` — each owns just that phase's own
   // branching, so `scheduleNext` itself is a flat dispatch rather than one large state machine.
@@ -122,44 +112,11 @@ export function useCommandCycle({
     });
   }
 
-  function scheduleTyping() {
-    if (charCount.value >= totalLength.value) {
-      phase.value = "paused";
-      beatBlink();
-      scheduleNext();
-      return;
-    }
-    after(timings.typeMs, () => {
-      charCount.value++;
-      scheduleNext();
-    });
-  }
-
-  function schedulePaused() {
-    after(timings.holdMs, () => {
-      phase.value = "deleting";
-      scheduleNext();
-    });
-  }
-
-  function scheduleDeleting() {
-    if (charCount.value <= 0) {
-      phase.value = "idle";
-      beatBlink();
-      scheduleNext();
-      return;
-    }
-    after(timings.deleteMs, () => {
-      charCount.value--;
-      scheduleNext();
-    });
-  }
-
   const phaseHandlers: Record<CyclePhase, () => void> = {
     idle: scheduleIdle,
-    typing: scheduleTyping,
-    paused: schedulePaused,
-    deleting: scheduleDeleting,
+    typing: () => scheduleTyping(() => (phase.value = "paused")),
+    paused: () => schedulePaused(() => (phase.value = "deleting")),
+    deleting: () => scheduleDeleting(() => (phase.value = "idle")),
   };
 
   function scheduleNext() {

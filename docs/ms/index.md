@@ -2,7 +2,8 @@
 layout: home
 hero:
   name: Pantoken
-  text: InstUI, di mana-mana
+  text: Cipta indah,<br/><span class="platform-line">mudah diakses<br/><span class="platform web">web</span></span><br/>aplikasi.
+
   tagline: Satu model token yang diselesaikan, dibentuk semula menjadi helaian gaya, pengikat rangka kerja, kod asli, dan muatan alat reka bentuk.
   actions:
     - theme: brand
@@ -19,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Satu sumber kebenaran
-    details: Setiap pakej membaca IR token yang sama yang telah diselesaikan. Tukar token di hulu dan ia mengalir ke CSS, SCSS, kod asli, dan Figma dengan cara yang sama.
+    details: Setiap paket menggunakan token desain Instructure resmi, komponen, dan interaksi dari <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -29,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Jana untuk mana-mana platform
-    details: Jalankan &grave;pantoken generate&grave; untuk menghasilkan Swift, Kotlin, Compose, Flutter, Rust, WordPress, dan lain-lain. Token yang sama, dalam idiom setiap ekosistem.
+    details: Pasang pantoken cli untuk menghasilkan preset atau menambahkan komponen untuk platform apa pun&colon; web, asli, dan apa pun di antaranya.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: Tiada pengikatan hulu
-    details: Token dihantar sebagai JSON statik yang dibundel, jadi &grave;npm i&grave; tidak pernah mengambil dari sumber eksklusif GitHub. Boleh diterbitkan, menggunakan semver, mesra luar talian.
+    title: Tidak perlu React
+    details: Perpustakaan InstUI sangat terikat dengan React. Jika Anda ingin menggunakannya, Anda harus menggunakan React. Sekarang Anda dapat membangun di mana saja.
 ---

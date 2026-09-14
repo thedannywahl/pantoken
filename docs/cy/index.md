@@ -2,7 +2,8 @@
 layout: home
 hero:
   name: Pantoken
-  text: InstUI, ym mhobman
+  text: Creu hardd,<br/><span class="platform-line">hygyrch<br/><span class="platform web">gwe</span></span><br/>apiau.
+
   tagline: Un model tocyn datrysiedig, wedi'i drawsffurfio i arddulliau, rhwymiadau fframwaith, cod frodorol, a chynnig offer dylunio.
   actions:
     - theme: brand
@@ -19,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Un ffynhonnell o wirionedd
-    details: Mae pob pecyn yn darllen yr un IR tocyn datrysiedig. Newidiwch docyn yn y ffynhonnell a llifo ef i CSS, SCSS, cod frodorol, a Figma yr un ffordd.
+    details: Mae pob pecyn yn defnyddio'r tocynau dylunio swyddogol Instructure, cydrannau, a rhyngweithiad o <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -29,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Generiwch ar gyfer unrhyw lwyfan
-    details: Rhedwch &grave;pantoken generate&grave; i allforio Swift, Kotlin, Compose, Flutter, Rust, WordPress, ac eraill. Yr un tocynnau, yn idiom pob ecosystem.
+    details: Gosod y pantoken cli i gynhyrchu rhagosodiadau neu ychwanegu cydrannau ar gyfer unrhyw lwyfan&colon; gwe, brodorol, a pob dim arall.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: Dim cysylltiad uwchlaw
-    details: Mae'r tocynnau'n cael eu danfon wedi'u vendorio fel JSON statig, felly nid yw &grave;npm i&grave; byth yn cyrraedd at ffynhonnell sydd ond ar GitHub. Gallu ei gyhoeddi, gyda semver, ac yn gyfeillgar i weithredu heb gysylltiad.
+    title: Dim React angen
+    details: Mae Llyfrgell InstUI wedi'i chysylltu'n dynn â React. Os ydych chi eisiau ei defnyddio, rhaid i chi ddefnyddio React. Nawr gallwch chi adeiladu yn unrhywle.
 ---

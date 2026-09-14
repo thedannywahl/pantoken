@@ -2,7 +2,8 @@
 layout: home
 hero:
   name: Pantoken
-  text: InstUI, povsod
+  text: Ustvari čudovite,<br/><span class="platform-line">dostopne<br/><span class="platform web">spletne</span></span><br/>aplikacije.
+
   tagline: En razrešen model tokenov, preoblikovan v slogovne liste, vezave za ogrodja, nativen kodo in pakete za oblikovalska orodja.
   actions:
     - theme: brand
@@ -19,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: En sam vir resnice
-    details: Vsak paket uporablja isti razrešeni token IR. Spremenite token v izvoru in sprememba se enako prenese v CSS, SCSS, nativen kodo in Figma.
+    details: Vsak paket uporablja uradne Instructure design tokene, komponente in interakcije iz <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -29,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Generirajte za katero koli platformo
-    details: Zaženite &grave;pantoken generate&grave;, da izvozite Swift, Kotlin, Compose, Flutter, Rust, WordPress in še več. Isti tokeni, v idiomu vsakega ekosistema.
+    details: Namestite pantoken cli za generiranje prednastavitev ali dodajanje komponent za katero koli platformo&colon; splet, native in vse drugo.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: Brez vezave na upstream
-    details: Tokeni so vključeni kot vendorirana statična JSON datoteka, zato &grave;npm i&grave; nikoli ne posega po izvoru, ki je omejen na GitHub. Objavljivo, s semver različicami, prijazno za delo brez povezave.
+    title: React ni potreben
+    details: Knjižnica InstUI je tesno povezana s React-om. Če jo želite uporabiti, morate uporabiti React. Sedaj lahko gradite kjerkoli.
 ---

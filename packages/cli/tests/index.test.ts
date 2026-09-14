@@ -1,8 +1,13 @@
-import { existsSync, mkdtempSync, readFileSync, statSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterAll, beforeAll, expect, test, vi } from "vite-plus/test";
-import { parseArgs, run } from "../src/index.ts";
+import {
+  ensureComponentsJsonRegistry,
+  parseArgs,
+  resolveRegistryItemNames,
+  run,
+} from "../src/index.ts";
 
 let warnSpy: ReturnType<typeof vi.spyOn>;
 
@@ -70,8 +75,81 @@ test("parseArgs treats a trailing --format flag with no value as 'true'", () => 
   expect(args.format).toBe("true");
 });
 
-test("an unknown command (not `generate`) reports a usage error", async () => {
+test("an unknown command reports a usage error", async () => {
   await expect(run(["build", "swift"])).rejects.toThrow(/Unknown command/);
+});
+
+test("run without arguments prints help without throwing", async () => {
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
+  await run([]);
+  expect(logSpy).toHaveBeenCalled();
+  logSpy.mockRestore();
+});
+
+test("ensureComponentsJsonRegistry updates components.json with @pantoken registry", () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-cli-add-"));
+  const componentsJson = join(dir, "components.json");
+  writeFileSync(componentsJson, JSON.stringify({ style: "default" }, null, 2));
+
+  const modified = ensureComponentsJsonRegistry(dir);
+  expect(modified).toBe(true);
+
+  const updated = JSON.parse(readFileSync(componentsJson, "utf8"));
+  expect(updated.registries?.["@pantoken"]).toBe("https://pantoken.app/r/{name}.json");
+});
+
+test("ensureComponentsJsonRegistry returns false when components.json does not exist", () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-cli-add-missing-"));
+  expect(ensureComponentsJsonRegistry(dir)).toBe(false);
+});
+
+test("ensureComponentsJsonRegistry returns true when @pantoken is already registered", () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-cli-add-existing-"));
+  const componentsJson = join(dir, "components.json");
+  writeFileSync(
+    componentsJson,
+    JSON.stringify({ registries: { "@pantoken": "https://pantoken.app/r/{name}.json" } }, null, 2),
+  );
+  expect(ensureComponentsJsonRegistry(dir)).toBe(true);
+});
+
+test("run handles version and help flags", async () => {
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
+  await run(["--help"]);
+  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("pantoken CLI"));
+
+  await run(["-h"]);
+  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("pantoken CLI"));
+
+  await run(["--version"]);
+  expect(logSpy).toHaveBeenCalled();
+
+  await run(["-v"]);
+  expect(logSpy).toHaveBeenCalled();
+  logSpy.mockRestore();
+});
+
+test("resolveRegistryItemNames prepends @pantoken to bare names", () => {
+  const resolved = resolveRegistryItemNames([
+    "button",
+    "theme-canvas",
+    "@custom/modal",
+    "https://foo.com/r/bar.json",
+  ]);
+  expect(resolved).toEqual([
+    "@pantoken/button",
+    "@pantoken/theme-canvas",
+    "@custom/modal",
+    "https://foo.com/r/bar.json",
+  ]);
+});
+
+test("run create scaffolds a starter project", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-cli-create-"));
+  const target = join(dir, "app");
+  await run(["create", "react", "--dir", target, "--no-install"]);
+  expect(existsSync(join(target, "package.json"))).toBe(true);
+  expect(readFileSync(join(target, "package.json"), "utf8")).toContain('"name": "app"');
 });
 
 // Regression tests for Phase B: CLI input validation

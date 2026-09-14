@@ -29,6 +29,7 @@ import VitePressMermaid from "../plugins/vitepress-mermaid/index.vue";
 import CdnPicker from "./components/CdnPicker.vue";
 import CdnPickerPage from "./components/CdnPickerPage.vue";
 import GetStartedTabs from "./components/GetStartedTabs.vue";
+import RegistryBrowser from "./components/RegistryBrowser.vue";
 // Import register() from the web-components SOURCE, not `@pantoken/web-components` (dist). The dist
 // bundle is only rebuilt by `vp pack`, which can't run nested under vitepress — so a package import
 // would freeze element behaviour + shadow CSS at the last pack. The source graph is Node-free (no
@@ -139,6 +140,7 @@ export default {
     ctx.app.component("CdnPicker", CdnPicker);
     ctx.app.component("CdnPickerPage", CdnPickerPage);
     ctx.app.component("GetStartedTabs", GetStartedTabs);
+    ctx.app.component("RegistryBrowser", RegistryBrowser);
 
     // Register the pantoken custom elements so the `@example` blocks on the web-components API pages
     // render live (the elements inline their own CSS; the token sheet above colours them). A no-op

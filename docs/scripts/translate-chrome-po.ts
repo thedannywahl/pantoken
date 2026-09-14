@@ -31,6 +31,7 @@ const protectedSources = new Set([
   "AI",
   "API",
   "CSS",
+  "JSON",
   "<link>",
   "@import",
   "Canvas",

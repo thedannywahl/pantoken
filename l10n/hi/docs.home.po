@@ -1,90 +1,98 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-14 16:30+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
 
 #: index.md:5
 #, no-c-format
-msgid "InstUI, everywhere"
-msgstr "InstUI, हर जगह"
+msgid "Create beautiful,<br/><span class=\"platform-line\">accessible<br/><span class=\"platform web\">web</span></span><br/>apps."
+msgstr "बनाएं सुंदर,<br/><span class=\"platform-line\">सुलभ<br/><span class=\"platform web\">वेब</span></span><br/>ऐप्स।"
 
-#: index.md:6
+#: index.md:7
 #, no-c-format
-msgid ""
-"One resolved token model, reshaped into stylesheets, framework bindings, "
-"native code, and design-tool payloads."
-msgstr ""
-"एक सुलझाया गया टोकन मॉडल, जिसे स्टाइलशीट, फ्रेमवर्क बाइंडिंग्स, नेटिव कोड और डिजाइन-टूल "
-"पेलोड्स के रूप में दोबारा आकार दिया गया।"
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "एक सुलझाया गया टोकन मॉडल, जिसे स्टाइलशीट, फ्रेमवर्क बाइंडिंग्स, नेटिव कोड और डिजाइन-टूल पेलोड्स के रूप में दोबारा आकार दिया गया।"
 
-#: index.md:9
+#: index.md:10
 #, no-c-format
 msgid "Getting started"
 msgstr "शुरू करें"
 
-#: index.md:12
+#: index.md:13
 #, no-c-format
 msgid "CSS reference"
 msgstr "CSS संदर्भ"
 
-#: index.md:15
+#: index.md:16
 #, no-c-format
 msgid "API reference"
 msgstr "API संदर्भ"
 
-#: index.md:21
+#: index.md:22
 #, no-c-format
 msgid "One source of truth"
 msgstr "एक सत्य स्रोत"
 
-#: index.md:22
+#: index.md:23
 #, no-c-format
-msgid ""
-"Every package reads the same resolved token IR. Change a token upstream and "
-"it flows to CSS, SCSS, native code, and Figma the same way."
-msgstr ""
-"हर पैकेज वही सुलझाया गया टोकन IR पढ़ता है। ऊपर के स्रोत में टोकन बदलें और वह वही तरीके से "
-"CSS, SCSS, नेटिव कोड और Figma में प्रवाहित होगा।"
+msgid "Every packages uses the official Instructure design tokens, components, and interactions from <a href=\"https://instructure.design\" target=\"_blank\">InstUI</a>."
+msgstr "हर package <a href=\"https://instructure.design\" target=\"_blank\">InstUI</a> से अधिकारिक Instructure डिजाइन टोकन, घटक, और इंटरएक्शन का उपयोग करता है।"
 
-#: index.md:26
+#: index.md:27
 #, no-c-format
 msgid "Use the smallest package"
 msgstr "सबसे छोटा पैकेज उपयोग करें"
 
-#: index.md:27
-#, no-c-format
-msgid ""
-"Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and "
-"icons, or a bundler preset for Tailwind, Panda, or MUI."
-msgstr ""
-"स्टाइलशीट के लिए केवल @pantoken/css इंस्टॉल करें, हुक्स और आइकनों के लिए @pantoken/"
-"react, या Tailwind, Panda, या MUI के लिए एक बंडलर प्रीसेट।"
+#: index.md:28
+#, fuzzy, no-c-format
+msgid "Install just <code>@pantoken/css</code> for a stylesheet, <code>@pantoken/pendo</code> for guides, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "स्टाइलशीट के लिए केवल @pantoken/css इंस्टॉल करें, हुक्स और आइकनों के लिए @pantoken/react, या Tailwind, Panda, या MUI के लिए एक बंडलर प्रीसेट।"
 
-#: index.md:31
+#: index.md:32
 #, no-c-format
 msgid "Generate for any platform"
 msgstr "किसी भी प्लेटफ़ॉर्म के लिए जनरेट करें"
 
-#: index.md:32
+#: index.md:33
 #, no-c-format
-msgid ""
-"Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, "
-"WordPress, and more. The same tokens, in each ecosystem's idiom."
-msgstr ""
-"Swift, Kotlin, Compose, Flutter, Rust, WordPress और अन्य उत्पन्न करने के लिए "
-"`pantoken generate` चलाएँ। वही टोकन, प्रत्येक इकोसिस्टम की अभिव्यक्ति में।"
-
-#: index.md:36
-#, no-c-format
-msgid "No upstream coupling"
-msgstr "कोई अपस्ट्रीम जोड़ाव नहीं"
+msgid "Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between."
+msgstr "pantoken cli install करें presets उत्पन्न करने या किसी भी platform के लिए components जोड़ने के लिए&colon; web, native, और कुछ और भी।"
 
 #: index.md:37
 #, no-c-format
-msgid ""
-"The tokens ship vendored as static JSON, so `npm i` never reaches for a "
-"GitHub-only source. Publishable, semver'd, offline-friendly."
-msgstr ""
-"टोकन वेंडर्ड स्थिर JSON के रूप में शिप होते हैं, इसलिए `npm i` कभी भी केवल GitHub-स्रोत "
-"तक नहीं पहुँचता। प्रकाशित करने योग्य, semver'd, और ऑफ़लाइन-अनुकूल।"
+msgid "No React needed"
+msgstr "React की जरूरत नहीं"
+
+#: index.md:38
+#, no-c-format
+msgid "The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere."
+msgstr "InstUI लाइब्रेरी React के साथ मजबूती से जुड़ी है। अगर आप इसका उपयोग करना चाहते हैं, तो आपको React का उपयोग करना होगा। अब आप कहीं भी build कर सकते हैं।"
+
+#, no-c-format
+#~ msgid "InstUI, everywhere"
+#~ msgstr "InstUI, हर जगह"
+
+#, no-c-format
+#~ msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+#~ msgstr "हर पैकेज वही सुलझाया गया टोकन IR पढ़ता है। ऊपर के स्रोत में टोकन बदलें और वह वही तरीके से CSS, SCSS, नेटिव कोड और Figma में प्रवाहित होगा।"
+
+#, no-c-format
+#~ msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+#~ msgstr "Swift, Kotlin, Compose, Flutter, Rust, WordPress और अन्य उत्पन्न करने के लिए `pantoken generate` चलाएँ। वही टोकन, प्रत्येक इकोसिस्टम की अभिव्यक्ति में।"
+
+#, no-c-format
+#~ msgid "No upstream coupling"
+#~ msgstr "कोई अपस्ट्रीम जोड़ाव नहीं"
+
+#, no-c-format
+#~ msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+#~ msgstr "टोकन वेंडर्ड स्थिर JSON के रूप में शिप होते हैं, इसलिए `npm i` कभी भी केवल GitHub-स्रोत तक नहीं पहुँचता। प्रकाशित करने योग्य, semver'd, और ऑफ़लाइन-अनुकूल।"
 
 #, no-c-format
 #~ msgid "The package map"

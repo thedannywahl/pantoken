@@ -2,7 +2,8 @@
 layout: home
 hero:
   name: Pantoken
-  text: InstUI, alls staðar
+  text: Búðu til glæsilega,<br/><span class="platform-line">aðgengilega<br/><span class="platform web">vef</span></span><br/>forrit.
+
   tagline: Eitt leyst táknalíkan, umbreytt í stílblöð, rammabindingar, innfæddan kóða og gagnapakka fyrir hönnunarverkfæri.
   actions:
     - theme: brand
@@ -19,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Ein uppspretta sannleikans
-    details: Öll pakkar lesa sama leysta tákn-IR. Breyttu tákni upstream og það berst til CSS, SCSS, innfædds kóða og Figma á sama hátt.
+    details: Öll pakkin nota opinbera Instructure hönnunarmerki, íhluti og samskipti frá <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -29,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Búðu til fyrir hvaða vettvang sem er
-    details: Keyrðu &grave;pantoken generate&grave; til að framleiða Swift, Kotlin, Compose, Flutter, Rust, WordPress og fleira. Sömu táknin, í málfari hvers vistkerfis.
+    details: Settu upp pantoken cli til að mynda forstillingar eða bæta við íhlutum fyrir hvaða vettvang&colon; vef, innfædd, og allt þar á milli.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: Engin upstream-tenging
-    details: Tákna eru sendir sem meðfylgjandi föst JSON, svo &grave;npm i&grave; þarf aldrei að ná í GitHub-eina uppsprettu. Birtingarhæfar, með semver og hentugar fyrir offline-notkun.
+    title: Enginn React þörf
+    details: InstUI-bókasafnið er þétt bundið við React. Ef þú vilt nota það, verður þú að nota React. Nú getur þú byggt hvar sem er.
 ---

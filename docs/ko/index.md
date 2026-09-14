@@ -2,7 +2,8 @@
 layout: home
 hero:
   name: Pantoken
-  text: 어디서나 InstUI
+  text: 아름다운,<br/><span class="platform-line">접근성 있는<br/><span class="platform web">웹</span></span><br/>앱을 만들어보세요.
+
   tagline: 하나의 해석된 토큰 모델을 스타일시트, 프레임워크 바인딩, 네이티브 코드 및 디자인 도구용 페이로드로 변환합니다.
   actions:
     - theme: brand
@@ -19,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: 하나의 신뢰할 수 있는 원천
-    details: 모든 패키지가 동일한 해석된 토큰 IR을 읽습니다. 상위에서 토큰을 변경하면 CSS, SCSS, 네이티브 코드 및 Figma에 동일하게 반영됩니다.
+    details: 모든 패키지는 <a href="https://instructure.design" target="_blank">InstUI</a>의 공식 Instructure 디자인 토큰, 컴포넌트, 상호작용을 사용합니다.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -29,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: 모든 플랫폼용 생성
-    details: Swift, Kotlin, Compose, Flutter, Rust, WordPress 등으로 내보내려면 &grave;pantoken generate&grave;을 실행하세요. 동일한 토큰을 각 생태계의 표현 방식에 맞게 제공합니다.
+    details: pantoken cli를 설치하여 모든 플랫폼&colon; 웹, 네이티브, 그리고 그 사이의 모든 것에 대해 프리셋을 생성하거나 컴포넌트를 추가하세요.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: 업스트림 결합 없음
-    details: 토큰은 벤더된 정적 JSON으로 배포되므로 &grave;npm i&grave;은 GitHub 전용 소스를 참조하지 않습니다. 배포 가능하고 semver 규격을 따르며 오프라인 친화적입니다.
+    title: React가 필요 없습니다
+    details: InstUI 라이브러리는 React와 긴밀하게 결합되어 있습니다. 이를 사용하려면 React를 사용해야 합니다. 이제 어디서든 빌드할 수 있습니다.
 ---

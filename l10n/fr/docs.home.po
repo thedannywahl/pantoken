@@ -1,93 +1,98 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-14 16:26+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
 
 #: index.md:5
 #, no-c-format
-msgid "InstUI, everywhere"
-msgstr "InstUI, partout"
+msgid "Create beautiful,<br/><span class=\"platform-line\">accessible<br/><span class=\"platform web\">web</span></span><br/>apps."
+msgstr "Créez de belles,<br/><span class=\"platform-line\">accessibles<br/><span class=\"platform web\">web</span></span><br/>applications."
 
-#: index.md:6
+#: index.md:7
 #, no-c-format
-msgid ""
-"One resolved token model, reshaped into stylesheets, framework bindings, "
-"native code, and design-tool payloads."
-msgstr ""
-"Un modèle de token résolu, transformé en feuilles de style, liaisons de "
-"framework, code natif et payloads pour outils de design."
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "Un modèle de token résolu, transformé en feuilles de style, liaisons de framework, code natif et payloads pour outils de design."
 
-#: index.md:9
+#: index.md:10
 #, no-c-format
 msgid "Getting started"
 msgstr "Commencer"
 
-#: index.md:12
+#: index.md:13
 #, no-c-format
 msgid "CSS reference"
 msgstr "Référence CSS"
 
-#: index.md:15
+#: index.md:16
 #, no-c-format
 msgid "API reference"
 msgstr "Référence de l'API"
 
-#: index.md:21
+#: index.md:22
 #, no-c-format
 msgid "One source of truth"
 msgstr "Une source de vérité"
 
-#: index.md:22
+#: index.md:23
 #, no-c-format
-msgid ""
-"Every package reads the same resolved token IR. Change a token upstream and "
-"it flows to CSS, SCSS, native code, and Figma the same way."
-msgstr ""
-"Chaque package lit le même IR de tokens résolu. Changez un token en amont et "
-"il se propage de la même façon vers le CSS, SCSS, le code natif et Figma."
+msgid "Every packages uses the official Instructure design tokens, components, and interactions from <a href=\"https://instructure.design\" target=\"_blank\">InstUI</a>."
+msgstr "Tous les packages utilisent les jetons de conception, composants et interactions officiels d'Instructure de <a href=\"https://instructure.design\" target=\"_blank\">InstUI</a>."
 
-#: index.md:26
+#: index.md:27
 #, no-c-format
 msgid "Use the smallest package"
 msgstr "Utilisez le package le plus petit"
 
-#: index.md:27
-#, no-c-format
-msgid ""
-"Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and "
-"icons, or a bundler preset for Tailwind, Panda, or MUI."
-msgstr ""
-"Installez seulement @pantoken/css pour une feuille de style, @pantoken/react "
-"pour les hooks et icônes, ou un preset de bundler pour Tailwind, Panda ou "
-"MUI."
+#: index.md:28
+#, fuzzy, no-c-format
+msgid "Install just <code>@pantoken/css</code> for a stylesheet, <code>@pantoken/pendo</code> for guides, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "Installez seulement @pantoken/css pour une feuille de style, @pantoken/react pour les hooks et icônes, ou un preset de bundler pour Tailwind, Panda ou MUI."
 
-#: index.md:31
+#: index.md:32
 #, no-c-format
 msgid "Generate for any platform"
 msgstr "Générez pour n'importe quelle plateforme"
 
-#: index.md:32
+#: index.md:33
 #, no-c-format
-msgid ""
-"Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, "
-"WordPress, and more. The same tokens, in each ecosystem's idiom."
-msgstr ""
-"Exécutez `pantoken generate` pour émettre Swift, Kotlin, Compose, Flutter, "
-"Rust, WordPress, et plus. Les mêmes tokens, dans l'idiome de chaque "
-"écosystème."
-
-#: index.md:36
-#, no-c-format
-msgid "No upstream coupling"
-msgstr "Pas de couplage en amont"
+msgid "Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between."
+msgstr "Installez le CLI pantoken pour générer des présets ou ajouter des composants pour n'importe quelle plateforme&colon; web, natif, et tout ce qu'il y a entre les deux."
 
 #: index.md:37
 #, no-c-format
-msgid ""
-"The tokens ship vendored as static JSON, so `npm i` never reaches for a "
-"GitHub-only source. Publishable, semver'd, offline-friendly."
-msgstr ""
-"Les tokens sont fournis en JSON statique inclus, donc `npm i` ne dépend "
-"jamais d'une source réservée à GitHub. Publiable, versionné semver, et "
-"adapté au hors-ligne."
+msgid "No React needed"
+msgstr "Aucun React nécessaire"
+
+#: index.md:38
+#, no-c-format
+msgid "The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere."
+msgstr "La bibliothèque InstUI est étroitement couplée avec React. Si vous voulez l'utiliser, vous devez utiliser React. Maintenant, vous pouvez construire n'importe où."
+
+#, no-c-format
+#~ msgid "InstUI, everywhere"
+#~ msgstr "InstUI, partout"
+
+#, no-c-format
+#~ msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+#~ msgstr "Chaque package lit le même IR de tokens résolu. Changez un token en amont et il se propage de la même façon vers le CSS, SCSS, le code natif et Figma."
+
+#, no-c-format
+#~ msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+#~ msgstr "Exécutez `pantoken generate` pour émettre Swift, Kotlin, Compose, Flutter, Rust, WordPress, et plus. Les mêmes tokens, dans l'idiome de chaque écosystème."
+
+#, no-c-format
+#~ msgid "No upstream coupling"
+#~ msgstr "Pas de couplage en amont"
+
+#, no-c-format
+#~ msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+#~ msgstr "Les tokens sont fournis en JSON statique inclus, donc `npm i` ne dépend jamais d'une source réservée à GitHub. Publiable, versionné semver, et adapté au hors-ligne."
 
 #, no-c-format
 #~ msgid "The package map"

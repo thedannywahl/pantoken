@@ -2,7 +2,8 @@
 layout: home
 hero:
   name: Pantoken
-  text: InstUI، في كل مكان.
+  text: أنشئ جميلة،<br/><span class="platform-line">متاحة<br/><span class="platform web">ويب</span></span><br/>تطبيقات.
+
   tagline: نموذج توكن مُحلّل واحد، معاد تشكيله إلى أوراق أنماط، ربطات أطر العمل، كود أصلي، وبيانات لأدوات التصميم.
   actions:
     - theme: brand
@@ -19,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: مصدر واحد للحقيقة
-    details: كل حزمة تقرأ نفس نموذج التوكن المحلّل. غيّر توكنًا في الأصل وسينتقل بنفس الطريقة إلى CSS وSCSS والكود الأصلي وFigma.
+    details: كل الحزم تستخدم رموز Instructure الرسمية والمكونات والتفاعلات من <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -29,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: توليد لأي منصة
-    details: شغّل &grave;pantoken generate&grave; لإصدار Swift وKotlin وCompose وFlutter وRust وWordPress والمزيد. نفس التوكنات، بعبارات كل نظام إيكوسيستم.
+    details: ثبّت pantoken cli لإنشاء الإعدادات المسبقة أو إضافة المكونات لأي منصة&colon; ويب، أصلي، وأي شيء بينهما.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: بدون اقتران بالأصل
-    details: التوكنات تُوزّع مضمّنة كـ JSON ثابت، لذلك &grave;npm i&grave; لا يعتمد على مصدر حصري على GitHub. قابلة للنشر، بمعاملات semver، وصديقة للبيئة دون إنترنت.
+    title: لا حاجة إلى React
+    details: مكتبة InstUI مرتبطة بشكل وثيق بـ React. إذا كنت تريد استخدامها، يجب عليك استخدام React. الآن يمكنك البناء في أي مكان.
 ---

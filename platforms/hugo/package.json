@@ -41,5 +41,9 @@
   },
   "engines": {
     "node": ">=22.18.0"
+  },
+  "pantoken": {
+    "key": "hugo",
+    "kind": "namespace"
   }
 }

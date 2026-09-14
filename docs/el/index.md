@@ -2,7 +2,8 @@
 layout: home
 hero:
   name: Pantoken
-  text: InstUI, παντού
+  text: Δημιουργήστε ωραία,<br/><span class="platform-line">προσιτή<br/><span class="platform web">ιστό</span></span><br/>εφαρμογές.
+
   tagline: Ένα επιλυμένο μοντέλο token, διαμορφωμένο σε stylesheets, συνδέσεις framework, native κώδικα και δεδομένα για εργαλεία σχεδίασης.
   actions:
     - theme: brand
@@ -19,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Μία πηγή αλήθειας
-    details: Κάθε πακέτο χρησιμοποιεί την ίδια επιλυμένη αναπαράσταση token (IR). Αλλάξτε ένα token στην upstream πηγή και αυτό μεταδίδεται στην CSS, SCSS, native κώδικα και Figma με τον ίδιο τρόπο.
+    details: Κάθε πακέτο χρησιμοποιεί τα επίσημα διακριτικά σχεδίασης Instructure, τα συστατικά και τις αλληλεπιδράσεις από <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -29,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Δημιουργία για οποιαδήποτε πλατφόρμα
-    details: Εκτελέστε &grave;pantoken generate&grave; για να παράγετε Swift, Kotlin, Compose, Flutter, Rust, WordPress και άλλα. Τα ίδια tokens, στην ιδιωματική μορφή κάθε οικοσυστήματος.
+    details: Εγκαταστήστε το pantoken cli για να δημιουργήσετε προεπιλογές ή προσθέστε συστατικά για οποιαδήποτε πλατφόρμα&colon; ιστό, εγγενής και οτιδήποτε ανάμεσα.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: Χωρίς σύνδεση με upstream
-    details: Τα tokens διανέμονται ως vendored στατικά JSON, οπότε το &grave;npm i&grave; δεν αναζητά ποτέ πηγή αποκλειστικά στο GitHub. Μπορούν να δημοσιευτούν, έχουν semver και είναι φιλικά για offline χρήση.
+    title: Δεν απαιτείται React
+    details: Η βιβλιοθήκη InstUI είναι ισχυρά συνδεδεμένη με React. Εάν θέλετε να τη χρησιμοποιήσετε, πρέπει να χρησιμοποιήσετε React. Τώρα μπορείτε να δημιουργήσετε παντού.
 ---

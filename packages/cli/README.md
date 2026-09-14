@@ -1,8 +1,8 @@
 # @pantoken/cli
 
-`pantoken generate <target>` — emit native and other non-npm design-token source into a consumer
-repo. Covers targets that don't fit the npm-package model: native platforms, static-site assets,
-design-tool swatches, and CMS themes.
+`pantoken generate <target>`, `pantoken create <platform>`, `pantoken add <item>` — CLI tooling
+for the pantoken design-token ecosystem. Covers code scaffolding, component distribution from the
+registry, and native/non-npm target code generation.
 
 ## Install
 
@@ -13,6 +13,8 @@ npm i @pantoken/cli
 ## Usage
 
 ```sh
+pantoken create react --dir ./my-app
+pantoken add button
 pantoken generate swift --out ./ios/DesignTokens --theme rebrand --class PanTokens
 ```
 

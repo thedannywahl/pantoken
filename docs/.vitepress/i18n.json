@@ -14,6 +14,7 @@
   "sidebar.components": { "message": "Components", "translate": "always" },
   "sidebar.cdn": { "message": "CDN & distribution", "translate": "always" },
   "sidebar.cdnPicker": { "message": "CDN picker", "translate": "always" },
+  "sidebar.registry": { "message": "Registry", "translate": "always" },
   "sidebar.cli": { "message": "The pantoken CLI", "translate": "always" },
   "sidebar.plugins": { "message": "Plugins", "translate": "always" },
   "sidebar.generated": { "message": "Generated output", "translate": "always" },
@@ -28,6 +29,7 @@
   "sidebar.apiGroups.plugins": { "message": "Plugins", "translate": "always" },
   "sidebar.apiGroups.renderers": { "message": "Renderers", "translate": "always" },
   "sidebar.apiGroups.tools": { "message": "Tools", "translate": "always" },
+  "platformPicker.label": { "message": "Choose a platform", "translate": "always" },
   "sidebar.apiOverview": { "message": "Overview", "translate": "always" },
   "editText": { "message": "Edit this page on GitHub", "translate": "always" },
   "demoTabs.result": { "message": "Result", "translate": "always" },
@@ -87,6 +89,31 @@
     "message": "\"Set up pantoken in this project using create.pantoken.app/SKILL.md.\"",
     "translate": "always"
   },
+  "registryBrowser.title": { "message": "shadcn/ui Registry", "translate": "always" },
+  "registryBrowser.subtitle": {
+    "message": "Compatible components, themes, and behavior hooks conforming to the shadcn/ui registry specification. Add items directly to your shadcn/ui project via CLI.",
+    "translate": "always"
+  },
+  "registryBrowser.tabAll": { "message": "All", "translate": "always" },
+  "registryBrowser.tabComponents": { "message": "Components", "translate": "always" },
+  "registryBrowser.tabThemes": { "message": "Themes", "translate": "always" },
+  "registryBrowser.tabHooks": { "message": "Hooks", "translate": "always" },
+  "registryBrowser.searchPlaceholder": {
+    "message": "Filter components, themes, hooks…",
+    "translate": "always"
+  },
+  "registryBrowser.cliLabel": { "message": "CLI:", "translate": "always" },
+  "registryBrowser.copy": { "message": "Copy", "translate": "always" },
+  "registryBrowser.copied": { "message": "Copied", "translate": "always" },
+  "registryBrowser.depsLabel": { "message": "Deps:", "translate": "always" },
+  "registryBrowser.previewDetails": { "message": "Preview details", "translate": "always" },
+  "registryBrowser.previewTokens": { "message": "Token mappings (light)", "translate": "always" },
+  "registryBrowser.viewJson": { "message": "JSON", "translate": "always" },
+  "registryBrowser.emptyTitle": {
+    "message": "No registry items match your search.",
+    "translate": "always"
+  },
+  "registryBrowser.emptyReset": { "message": "Reset Filters", "translate": "always" },
   "chrome.outlineLabel": { "message": "On this page", "translate": "always" },
   "chrome.docFooterPrev": { "message": "Previous page", "translate": "always" },
   "chrome.docFooterNext": { "message": "Next page", "translate": "always" },

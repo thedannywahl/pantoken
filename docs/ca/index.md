@@ -2,7 +2,8 @@
 layout: home
 hero:
   name: Pantoken
-  text: InstUI, arreu
+  text: Crea belles,<br/><span class="platform-line">accessibles<br/><span class="platform web">web</span></span><br/>aplicacions.
+
   tagline: Un model de tokens resolt, reformat en fulls d'estil, enllaços per a frameworks, codi nadiu i contingut per a eines de disseny.
   actions:
     - theme: brand
@@ -19,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Una única font de veritat
-    details: Cada paquet llegeix la mateixa IR de tokens resolta. Canvia un token a l'origen i flueix a CSS, SCSS, codi nadiu i Figma de la mateixa manera.
+    details: Cada paquet utilitza els tokens de disseny oficials d'Instructure, components i interaccions de <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -29,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Genera per a qualsevol plataforma
-    details: Executa &grave;pantoken generate&grave; per generar Swift, Kotlin, Compose, Flutter, Rust, WordPress i més. Els mateixos tokens, en l'idioma de cada ecosistema.
+    details: Instal·la el CLI de pantoken per generar presets o afegir components per a qualsevol plataforma&colon; web, nativa i qualsevol cosa entre mig.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: Sense acoblament amb l'origen
-    details: Els tokens s'envien empacats com JSON estàtic, així &grave;npm i&grave; mai no accedeix a una font exclusiva de GitHub. Publicable, amb semver i aptes per a ús fora de línia.
+    title: No cal React
+    details: La biblioteca InstUI està estretament acoblada a React. Si la vols fer servir, has d'usar React. Ara pots desenvolupar a qualsevol lloc.
 ---

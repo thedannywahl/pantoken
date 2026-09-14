@@ -2,7 +2,8 @@
 layout: home
 hero:
   name: Pantoken
-  text: InstUI — скрізь
+  text: Створюйте красиво,<br/><span class="platform-line">доступні<br/><span class="platform web">веб</span></span><br/>програми.
+
   tagline: Одна уніфікована модель токенів, перетворена на таблиці стилів, прив'язки фреймворків, нативний код і пакети для інструментів дизайну.
   actions:
     - theme: brand
@@ -19,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Єдине джерело істини
-    details: Кожен пакет використовує ту саму вирішену IR‑модель токенів. Змініть токен вгорі — і він однаково потрапить у CSS, SCSS, нативний код і Figma.
+    details: Всі пакети використовують офіційні дизайнерські токени, компоненти та взаємодії Instructure з <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -29,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Генеруйте для будь-якої платформи
-    details: Запустіть &grave;pantoken generate&grave; щоб згенерувати Swift, Kotlin, Compose, Flutter, Rust, WordPress та інше. Ті самі токени — мовою кожної екосистеми.
+    details: Встановіть pantoken cli для створення налаштувань або додавання компонентів для будь-якої платформи&colon; веб, нативні та все, що між ними.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: Без прив'язки до upstream
-    details: Токени постачаються як вендорні статичні JSON‑файли, тож &grave;npm i&grave; ніколи не звертається до джерела, доступного лише на GitHub. Готові до публікації, з семантичним версіонуванням, дружні до офлайну.
+    title: React не потрібна
+    details: Бібліотека InstUI тісно пов'язана з React. Якщо ви хочете її використовувати, повинні використовувати React. Тепер ви можете розробляти де завгодно.
 ---

@@ -370,6 +370,46 @@ const localesConfig = Object.fromEntries(
     if (!isActiveLocale(localeKey)) {
       return [localeKey, { label: locale.label, lang: locale.lang, dir: locale.dir }];
     }
+    const guideSidebar = [
+      {
+        text: locale.sidebar.intro,
+        items: [
+          {
+            text: locale.sidebar.gettingStarted,
+            link: `${locale.guidePrefix}getting-started`,
+          },
+          {
+            text: locale.sidebar.architecture,
+            link: `${locale.guidePrefix}architecture`,
+          },
+          {
+            text: locale.sidebar.components,
+            link: `${locale.guidePrefix}components`,
+          },
+        ],
+      },
+      {
+        text: locale.sidebar.guides,
+        items: [
+          { text: locale.sidebar.cdn, link: `${locale.guidePrefix}cdn` },
+          {
+            text: locale.sidebar.cdnPicker,
+            link: `${locale.guidePrefix}cdn-picker`,
+          },
+          {
+            text: locale.sidebar.registry,
+            link: `${localeKey === "root" ? "/" : `/${localeKey}/`}r/`,
+          },
+          { text: locale.sidebar.cli, link: `${locale.guidePrefix}cli` },
+          { text: locale.sidebar.plugins, link: `${locale.guidePrefix}plugins` },
+          {
+            text: locale.sidebar.generated,
+            link: `${locale.guidePrefix}generated-output`,
+          },
+        ],
+      },
+    ];
+
     return [
       localeKey,
       {
@@ -385,41 +425,8 @@ const localesConfig = Object.fromEntries(
             { text: locale.nav.api, link: apiPrefixFor(localeKey) },
           ],
           sidebar: {
-            [locale.guidePrefix]: [
-              {
-                text: locale.sidebar.intro,
-                items: [
-                  {
-                    text: locale.sidebar.gettingStarted,
-                    link: `${locale.guidePrefix}getting-started`,
-                  },
-                  {
-                    text: locale.sidebar.architecture,
-                    link: `${locale.guidePrefix}architecture`,
-                  },
-                  {
-                    text: locale.sidebar.components,
-                    link: `${locale.guidePrefix}components`,
-                  },
-                ],
-              },
-              {
-                text: locale.sidebar.guides,
-                items: [
-                  { text: locale.sidebar.cdn, link: `${locale.guidePrefix}cdn` },
-                  {
-                    text: locale.sidebar.cdnPicker,
-                    link: `${locale.guidePrefix}cdn-picker`,
-                  },
-                  { text: locale.sidebar.cli, link: `${locale.guidePrefix}cli` },
-                  { text: locale.sidebar.plugins, link: `${locale.guidePrefix}plugins` },
-                  {
-                    text: locale.sidebar.generated,
-                    link: `${locale.guidePrefix}generated-output`,
-                  },
-                ],
-              },
-            ],
+            [locale.guidePrefix]: guideSidebar,
+            [`${localeKey === "root" ? "/" : `/${localeKey}/`}r/`]: guideSidebar,
             // Per-route API/CSS sidebars (see `apiSidebarRoutesByLocale` above) — VitePress's
             // `getSidebar` matches the longest key that's a prefix of the current page's path, so
             // each API page only ever renders its own route's (already-partitioned) subtree.
@@ -458,6 +465,8 @@ const localesConfig = Object.fromEntries(
           cdnPicker: locale.cdnPicker,
           // Read by the "Get started" scaffold tabs (GetStartedTabs.vue) via `useData().theme`.
           getStartedTabs: locale.getStartedTabs,
+          // Read by the shadcn/ui registry browser (RegistryBrowser.vue) via `useData().theme`.
+          registryBrowser: locale.registryBrowser,
         },
       },
     ];

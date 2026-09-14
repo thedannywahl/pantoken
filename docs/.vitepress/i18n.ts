@@ -2,6 +2,7 @@ import { LOCALES } from "@pantoken/web-components";
 import chromeSource from "./i18n.json" with { type: "json" };
 import type { CdnPickerStrings } from "./theme/cdn.ts";
 import type { GetStartedTabsStrings } from "./theme/get-started.ts";
+import type { RegistryBrowserStrings } from "./theme/registry.ts";
 import { loadConfig, resolveMessagesForLocale, resolveTier } from "@pantoken/i18n-engine";
 
 /**
@@ -115,6 +116,7 @@ export interface UiStrings {
     components: string;
     cdn: string;
     cdnPicker: string;
+    registry: string;
     cli: string;
     plugins: string;
     generated: string;
@@ -134,6 +136,9 @@ export interface UiStrings {
     apiOverview: string;
   };
   editText: string;
+  // Screen-reader label for the hero's rotating `.platform` pill, which otherwise only announces
+  // whichever platform name is currently cycling in (see theme/components/VPHomeHero.vue).
+  platformPicker: { label: string };
   // View tabs on the `@pantoken/demo` runner, passed into its iframe by the markdown-it plugin.
   // The language names are acronyms, so most locales keep them as-is.
   demoTabs: { result: string; html: string; css: string; js: string };
@@ -166,6 +171,8 @@ export interface UiStrings {
   // The "Get started" scaffold tabs (see theme/components/GetStartedTabs.vue and theme/get-started.ts).
   // Only the AI tab's instructions are prose; the other tabs' `npx …` commands are not translated.
   getStartedTabs: GetStartedTabsStrings;
+  // The shadcn/ui registry browser (see theme/components/RegistryBrowser.vue and theme/registry.ts).
+  registryBrowser: RegistryBrowserStrings;
   // Default-theme chrome VitePress renders around the content. Without these an untranslated locale
   // shows English labels (outline heading, prev/next footer, dark-mode toggle, the 404 page, etc.).
   chrome: {
