@@ -2,7 +2,7 @@
 layout: home
 hero:
   name: Pantoken
-  text: Create beautiful,<br/><span class="platform-line">accessible<br/><span class="platform web">web</span></span><br/>apps.
+  text: 创建美观，<br/><span class="platform-line">易于访问的<br/><span class="platform web">web</span></span><br/>应用程序。
 
   tagline: 一个解析后的令牌模型，重塑为样式表、框架绑定、本地代码和设计工具的载荷。
   actions:
@@ -20,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: 单一事实来源
-    details: Every packages uses the official Instructure design tokens, components, and interactions from <a href="https://instructure.design" target="_blank">InstUI</a>.
+    details: 每个包都使用来自 <a href="https://instructure.design" target="_blank">InstUI</a> 的官方 Instructure 设计令牌、组件和交互。
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -30,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: 为任意平台生成
-    details: Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between.
+    details: 安装 pantoken cli 以生成预设或为任何平台添加组件&colon; web、native 及其他。
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: No React needed
-    details: The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere.
+    title: 无需 React
+    details: InstUI 库与 React 紧密耦合。如果要使用它，必须使用 React。现在您可以在任何地方构建。
 ---

@@ -2,7 +2,7 @@
 layout: home
 hero:
   name: Pantoken
-  text: Create beautiful,<br/><span class="platform-line">accessible<br/><span class="platform web">web</span></span><br/>apps.
+  text: Kreye bèl,<br/><span class="platform-line">aksesib<br/><span class="platform web">wèb</span></span><br/>app yo.
 
   tagline: Yon sèl modèl tòken rezoud, refòme an fichye stil, lyen pou kad (framework), kòd natif, ak chaj pou zouti konsepsyon.
   actions:
@@ -20,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Yon sèl sous laverite
-    details: Every packages uses the official Instructure design tokens, components, and interactions from <a href="https://instructure.design" target="_blank">InstUI</a>.
+    details: Chak pakè a itilize token ofisyèl dizen Instructure, konpozan, ak entèraksyon soti nan <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -30,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Jenere pou nenpòt platfòm
-    details: Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between.
+    details: Enstole pantoken cli pou jenere preset oswa ajoute konpozan pou nenpòt platfòm&colon; wèb, natif, ak nenpòt bagay ant.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: No React needed
-    details: The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere.
+    title: React pa nesesè
+    details: Bibliyotèk InstUI a fèmen konekte ak React. Si ou vle itilize li, ou dwe itilize React. Kounye a ou ka bati nenpòt kote.
 ---

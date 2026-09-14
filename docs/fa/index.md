@@ -2,7 +2,7 @@
 layout: home
 hero:
   name: Pantoken
-  text: Create beautiful,<br/><span class="platform-line">accessible<br/><span class="platform web">web</span></span><br/>apps.
+  text: ایجاد زیبا،<br/><span class="platform-line">قابل دسترسی<br/><span class="platform web">وب</span></span><br/>برنامه‌ها.
 
   tagline: یک مدل توکن حل‌شده که به فایل‌های استایل، بایندینگ‌های فریم‌ورک، کد بومی و داده‌های ابزار طراحی تبدیل شده‌است.
   actions:
@@ -20,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: یک منبع حقیقت
-    details: Every packages uses the official Instructure design tokens, components, and interactions from <a href="https://instructure.design" target="_blank">InstUI</a>.
+    details: هر بسته از نشانه‌های طراحی رسمی Instructure، اجزا، و تعاملات از <a href="https://instructure.design" target="_blank">InstUI</a> استفاده می‌کند.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -30,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: تولید برای هر پلتفرم
-    details: Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between.
+    details: CLI pantoken را برای تولید پیش‌تنظیمات یا افزودن اجزا برای هر پلتفرمی نصب کنید&colon; وب، بومی، و هر چیز میانی.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: No React needed
-    details: The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere.
+    title: React نیازی نیست
+    details: کتابخانه InstUI به‌شدت با React مرتبط است. اگر می‌خواهید از آن استفاده کنید، باید React را استفاده کنید. اکنون می‌توانید در هر جایی بسازید.
 ---

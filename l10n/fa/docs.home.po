@@ -1,21 +1,23 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-14 16:24+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
 
 #: index.md:5
 #, no-c-format
-msgid ""
-"Create beautiful,<br/><span class=\"platform-line\">accessible<br/><span "
-"class=\"platform web\">web</span></span><br/>apps."
-msgstr ""
+msgid "Create beautiful,<br/><span class=\"platform-line\">accessible<br/><span class=\"platform web\">web</span></span><br/>apps."
+msgstr "ایجاد زیبا،<br/><span class=\"platform-line\">قابل دسترسی<br/><span class=\"platform web\">وب</span></span><br/>برنامه‌ها."
 
 #: index.md:7
 #, no-c-format
-msgid ""
-"One resolved token model, reshaped into stylesheets, framework bindings, "
-"native code, and design-tool payloads."
-msgstr ""
-"یک مدل توکن حل‌شده که به فایل‌های استایل، بایندینگ‌های فریم‌ورک، کد بومی و "
-"داده‌های ابزار طراحی تبدیل شده‌است."
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "یک مدل توکن حل‌شده که به فایل‌های استایل، بایندینگ‌های فریم‌ورک، کد بومی و داده‌های ابزار طراحی تبدیل شده‌است."
 
 #: index.md:10
 #, no-c-format
@@ -39,11 +41,8 @@ msgstr "یک منبع حقیقت"
 
 #: index.md:23
 #, no-c-format
-msgid ""
-"Every packages uses the official Instructure design tokens, components, and "
-"interactions from <a href=\"https://instructure.design\" "
-"target=\"_blank\">InstUI</a>."
-msgstr ""
+msgid "Every packages uses the official Instructure design tokens, components, and interactions from <a href=\"https://instructure.design\" target=\"_blank\">InstUI</a>."
+msgstr "هر بسته از نشانه‌های طراحی رسمی Instructure، اجزا، و تعاملات از <a href=\"https://instructure.design\" target=\"_blank\">InstUI</a> استفاده می‌کند."
 
 #: index.md:27
 #, no-c-format
@@ -52,12 +51,8 @@ msgstr "از کوچک‌ترین بسته استفاده کنید"
 
 #: index.md:28
 #, fuzzy, no-c-format
-msgid ""
-"Install just <code>@pantoken/css</code> for a stylesheet, <code>@pantoken/"
-"pendo</code> for guides, or a bundler preset for Tailwind, Panda, or MUI."
-msgstr ""
-"فقط @pantoken/css را برای یک stylesheet نصب کنید، @pantoken/react را برای "
-"هوک‌ها و آیکون‌ها، یا یک پیش‌تنظیم bundler برای Tailwind، Panda یا MUI."
+msgid "Install just <code>@pantoken/css</code> for a stylesheet, <code>@pantoken/pendo</code> for guides, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "فقط @pantoken/css را برای یک stylesheet نصب کنید، @pantoken/react را برای هوک‌ها و آیکون‌ها، یا یک پیش‌تنظیم bundler برای Tailwind، Panda یا MUI."
 
 #: index.md:32
 #, no-c-format
@@ -66,55 +61,38 @@ msgstr "تولید برای هر پلتفرم"
 
 #: index.md:33
 #, no-c-format
-msgid ""
-"Install the pantoken cli to generate presets or add components for any "
-"platform&colon; web, native, and anything in between."
-msgstr ""
+msgid "Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between."
+msgstr "CLI pantoken را برای تولید پیش‌تنظیمات یا افزودن اجزا برای هر پلتفرمی نصب کنید&colon; وب، بومی، و هر چیز میانی."
 
 #: index.md:37
 #, no-c-format
 msgid "No React needed"
-msgstr ""
+msgstr "React نیازی نیست"
 
 #: index.md:38
 #, no-c-format
-msgid ""
-"The InstUI library is tightly coupled with React. If you want to use it, you "
-"have to use React. Now you can build anywhere."
-msgstr ""
+msgid "The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere."
+msgstr "کتابخانه InstUI به‌شدت با React مرتبط است. اگر می‌خواهید از آن استفاده کنید، باید React را استفاده کنید. اکنون می‌توانید در هر جایی بسازید."
 
 #, no-c-format
 #~ msgid "InstUI, everywhere"
 #~ msgstr "رابط کاربری InstUI، همه جا"
 
 #, no-c-format
-#~ msgid ""
-#~ "Every package reads the same resolved token IR. Change a token upstream "
-#~ "and it flows to CSS, SCSS, native code, and Figma the same way."
-#~ msgstr ""
-#~ "هر بسته همان IR توکن حل‌شده را می‌خواند. یک توکن را در upstream تغییر دهید "
-#~ "و همان تغییر به یک شکل به CSS، SCSS، کد بومی و Figma منتقل می‌شود."
+#~ msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+#~ msgstr "هر بسته همان IR توکن حل‌شده را می‌خواند. یک توکن را در upstream تغییر دهید و همان تغییر به یک شکل به CSS، SCSS، کد بومی و Figma منتقل می‌شود."
 
 #, no-c-format
-#~ msgid ""
-#~ "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, "
-#~ "WordPress, and more. The same tokens, in each ecosystem's idiom."
-#~ msgstr ""
-#~ "اجرای `pantoken generate` برای تولید Swift، Kotlin، Compose، Flutter، "
-#~ "Rust، WordPress و موارد دیگر. همان توکن‌ها، به زبان هر اکوسیستم."
+#~ msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+#~ msgstr "اجرای `pantoken generate` برای تولید Swift، Kotlin، Compose، Flutter، Rust، WordPress و موارد دیگر. همان توکن‌ها، به زبان هر اکوسیستم."
 
 #, no-c-format
 #~ msgid "No upstream coupling"
 #~ msgstr "بدون وابستگی به upstream"
 
 #, no-c-format
-#~ msgid ""
-#~ "The tokens ship vendored as static JSON, so `npm i` never reaches for a "
-#~ "GitHub-only source. Publishable, semver'd, offline-friendly."
-#~ msgstr ""
-#~ "توکن‌ها به‌صورت vendored و به شکل JSON ایستا منتشر می‌شوند، بنابراین `npm i` "
-#~ "هرگز به یک منبع مختص GitHub وابسته نمی‌شود. قابل انتشار، نسخه‌بندی‌شده "
-#~ "(semver) و مناسب برای حالت آفلاین."
+#~ msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+#~ msgstr "توکن‌ها به‌صورت vendored و به شکل JSON ایستا منتشر می‌شوند، بنابراین `npm i` هرگز به یک منبع مختص GitHub وابسته نمی‌شود. قابل انتشار، نسخه‌بندی‌شده (semver) و مناسب برای حالت آفلاین."
 
 #, no-c-format
 #~ msgid "The package map"

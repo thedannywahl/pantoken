@@ -2,7 +2,7 @@
 layout: home
 hero:
   name: Pantoken
-  text: Create beautiful,<br/><span class="platform-line">accessible<br/><span class="platform web">web</span></span><br/>apps.
+  text: Búðu til glæsilega,<br/><span class="platform-line">aðgengilega<br/><span class="platform web">vef</span></span><br/>forrit.
 
   tagline: Eitt leyst táknalíkan, umbreytt í stílblöð, rammabindingar, innfæddan kóða og gagnapakka fyrir hönnunarverkfæri.
   actions:
@@ -20,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Ein uppspretta sannleikans
-    details: Every packages uses the official Instructure design tokens, components, and interactions from <a href="https://instructure.design" target="_blank">InstUI</a>.
+    details: Öll pakkin nota opinbera Instructure hönnunarmerki, íhluti og samskipti frá <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -30,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Búðu til fyrir hvaða vettvang sem er
-    details: Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between.
+    details: Settu upp pantoken cli til að mynda forstillingar eða bæta við íhlutum fyrir hvaða vettvang&colon; vef, innfædd, og allt þar á milli.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: No React needed
-    details: The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere.
+    title: Enginn React þörf
+    details: InstUI-bókasafnið er þétt bundið við React. Ef þú vilt nota það, verður þú að nota React. Nú getur þú byggt hvar sem er.
 ---

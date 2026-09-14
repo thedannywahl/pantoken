@@ -40,8 +40,6 @@ docs/docs/.vitepress/.temp/
 docs/public/
 !docs/public/
 docs/public/*
-# Registry catalog imported by the docs app, reproduced by `docs:assets`.
-docs/src/r/
 !docs/public/logo-dark.svg
 !docs/public/logo-light.svg
 # Static (non-generated) site assets: favicons and the home-page feature icons. Nothing regenerates

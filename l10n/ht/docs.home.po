@@ -1,21 +1,23 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-14 16:31+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
 
 #: index.md:5
 #, no-c-format
-msgid ""
-"Create beautiful,<br/><span class=\"platform-line\">accessible<br/><span "
-"class=\"platform web\">web</span></span><br/>apps."
-msgstr ""
+msgid "Create beautiful,<br/><span class=\"platform-line\">accessible<br/><span class=\"platform web\">web</span></span><br/>apps."
+msgstr "Kreye bèl,<br/><span class=\"platform-line\">aksesib<br/><span class=\"platform web\">wèb</span></span><br/>app yo."
 
 #: index.md:7
 #, no-c-format
-msgid ""
-"One resolved token model, reshaped into stylesheets, framework bindings, "
-"native code, and design-tool payloads."
-msgstr ""
-"Yon sèl modèl tòken rezoud, refòme an fichye stil, lyen pou kad (framework), "
-"kòd natif, ak chaj pou zouti konsepsyon."
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "Yon sèl modèl tòken rezoud, refòme an fichye stil, lyen pou kad (framework), kòd natif, ak chaj pou zouti konsepsyon."
 
 #: index.md:10
 #, no-c-format
@@ -39,11 +41,8 @@ msgstr "Yon sèl sous laverite"
 
 #: index.md:23
 #, no-c-format
-msgid ""
-"Every packages uses the official Instructure design tokens, components, and "
-"interactions from <a href=\"https://instructure.design\" "
-"target=\"_blank\">InstUI</a>."
-msgstr ""
+msgid "Every packages uses the official Instructure design tokens, components, and interactions from <a href=\"https://instructure.design\" target=\"_blank\">InstUI</a>."
+msgstr "Chak pakè a itilize token ofisyèl dizen Instructure, konpozan, ak entèraksyon soti nan <a href=\"https://instructure.design\" target=\"_blank\">InstUI</a>."
 
 #: index.md:27
 #, no-c-format
@@ -52,12 +51,8 @@ msgstr "Sèvi ak pi piti pakè a"
 
 #: index.md:28
 #, fuzzy, no-c-format
-msgid ""
-"Install just <code>@pantoken/css</code> for a stylesheet, <code>@pantoken/"
-"pendo</code> for guides, or a bundler preset for Tailwind, Panda, or MUI."
-msgstr ""
-"Enstale sèlman @pantoken/css pou yon fichye stil, @pantoken/react pou hooks "
-"ak ikon, oswa yon preset bundler pou Tailwind, Panda, oswa MUI."
+msgid "Install just <code>@pantoken/css</code> for a stylesheet, <code>@pantoken/pendo</code> for guides, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "Enstale sèlman @pantoken/css pou yon fichye stil, @pantoken/react pou hooks ak ikon, oswa yon preset bundler pou Tailwind, Panda, oswa MUI."
 
 #: index.md:32
 #, no-c-format
@@ -66,54 +61,38 @@ msgstr "Jenere pou nenpòt platfòm"
 
 #: index.md:33
 #, no-c-format
-msgid ""
-"Install the pantoken cli to generate presets or add components for any "
-"platform&colon; web, native, and anything in between."
-msgstr ""
+msgid "Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between."
+msgstr "Enstole pantoken cli pou jenere preset oswa ajoute konpozan pou nenpòt platfòm&colon; wèb, natif, ak nenpòt bagay ant."
 
 #: index.md:37
 #, no-c-format
 msgid "No React needed"
-msgstr ""
+msgstr "React pa nesesè"
 
 #: index.md:38
 #, no-c-format
-msgid ""
-"The InstUI library is tightly coupled with React. If you want to use it, you "
-"have to use React. Now you can build anywhere."
-msgstr ""
+msgid "The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere."
+msgstr "Bibliyotèk InstUI a fèmen konekte ak React. Si ou vle itilize li, ou dwe itilize React. Kounye a ou ka bati nenpòt kote."
 
 #, no-c-format
 #~ msgid "InstUI, everywhere"
 #~ msgstr "InstUI, toupatou"
 
 #, no-c-format
-#~ msgid ""
-#~ "Every package reads the same resolved token IR. Change a token upstream "
-#~ "and it flows to CSS, SCSS, native code, and Figma the same way."
-#~ msgstr ""
-#~ "Chak pakè li menm IR tòken rezoud la. Chanje yon tòken anwo, epi li pral "
-#~ "rive nan CSS, SCSS, kòd natif, ak Figma menm jan an."
+#~ msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+#~ msgstr "Chak pakè li menm IR tòken rezoud la. Chanje yon tòken anwo, epi li pral rive nan CSS, SCSS, kòd natif, ak Figma menm jan an."
 
 #, no-c-format
-#~ msgid ""
-#~ "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, "
-#~ "WordPress, and more. The same tokens, in each ecosystem's idiom."
-#~ msgstr ""
-#~ "Egzekite `pantoken generate` pou pwodui Swift, Kotlin, Compose, Flutter, "
-#~ "Rust, WordPress, ak plis ankò. Menm tòken yo, nan idyòm chak ekosistèm."
+#~ msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+#~ msgstr "Egzekite `pantoken generate` pou pwodui Swift, Kotlin, Compose, Flutter, Rust, WordPress, ak plis ankò. Menm tòken yo, nan idyòm chak ekosistèm."
 
 #, no-c-format
 #~ msgid "No upstream coupling"
 #~ msgstr "Pa gen kouplaj ak sous anlè"
 
 #, no-c-format
-#~ msgid ""
-#~ "The tokens ship vendored as static JSON, so `npm i` never reaches for a "
-#~ "GitHub-only source. Publishable, semver'd, offline-friendly."
-#~ msgstr ""
-#~ "Tòken yo anbake kòm JSON estatik, kidonk `npm i` pa janm depann sou yon "
-#~ "sous ki sèlman sou GitHub. Piblikab, semver, epi zanmitay offline."
+#~ msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+#~ msgstr "Tòken yo anbake kòm JSON estatik, kidonk `npm i` pa janm depann sou yon sous ki sèlman sou GitHub. Piblikab, semver, epi zanmitay offline."
 
 #, no-c-format
 #~ msgid "The package map"

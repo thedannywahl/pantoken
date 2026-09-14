@@ -2,7 +2,7 @@
 layout: home
 hero:
   name: Pantoken
-  text: Create beautiful,<br/><span class="platform-line">accessible<br/><span class="platform web">web</span></span><br/>apps.
+  text: Ստեղծեք գեղեցիկ,<br/><span class="platform-line">մատչելի<br/><span class="platform web">վեբ</span></span><br/>ծրագրեր.
 
   tagline: Մի լուծված տոկենի մոդել, վերաձևված՝ ոճաթերթիկների, ֆրեյմվորկային կապերի, բնիկ կոդի և դիզայն-սարքերի payload-ների համար։
   actions:
@@ -20,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Մեկ ճշմարտության աղբյուր
-    details: Every packages uses the official Instructure design tokens, components, and interactions from <a href="https://instructure.design" target="_blank">InstUI</a>.
+    details: Յուրաքանչյուր փաղետ օգտագործում է պաշտոնական Instructure դիզայն տոկենները, բաղադրիչները և փոխազդեցությունները <a href="https://instructure.design" target="_blank">InstUI</a>-ից:
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -30,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Ստեղծեք ցանկացած պլատֆորմի համար
-    details: Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between.
+    details: Տեղադրեք pantoken cli-ն՝ նախորոշումներ ստեղծել կամ բաղադրիչներ ավելացնել ցանկացած պլատֆորմի համար&colon; վեբ, բնական և ամեն ինչ միջև:
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: No React needed
-    details: The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere.
+    title: React պետք չէ
+    details: InstUI գրադարանը սերտորեն կապված React-ի հետ: Եթե ցանկանում եք այն օգտագործել, պետք է React օգտագործեք: Այժմ կարող եք շինել ցանկացած տեղում:
 ---

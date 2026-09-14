@@ -2,7 +2,7 @@
 layout: home
 hero:
   name: Pantoken
-  text: Create beautiful,<br/><span class="platform-line">accessible<br/><span class="platform web">web</span></span><br/>apps.
+  text: Creu hardd,<br/><span class="platform-line">hygyrch<br/><span class="platform web">gwe</span></span><br/>apiau.
 
   tagline: Un model tocyn datrysiedig, wedi'i drawsffurfio i arddulliau, rhwymiadau fframwaith, cod frodorol, a chynnig offer dylunio.
   actions:
@@ -20,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Un ffynhonnell o wirionedd
-    details: Every packages uses the official Instructure design tokens, components, and interactions from <a href="https://instructure.design" target="_blank">InstUI</a>.
+    details: Mae pob pecyn yn defnyddio'r tocynau dylunio swyddogol Instructure, cydrannau, a rhyngweithiad o <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -30,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Generiwch ar gyfer unrhyw lwyfan
-    details: Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between.
+    details: Gosod y pantoken cli i gynhyrchu rhagosodiadau neu ychwanegu cydrannau ar gyfer unrhyw lwyfan&colon; gwe, brodorol, a pob dim arall.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: No React needed
-    details: The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere.
+    title: Dim React angen
+    details: Mae Llyfrgell InstUI wedi'i chysylltu'n dynn â React. Os ydych chi eisiau ei defnyddio, rhaid i chi ddefnyddio React. Nawr gallwch chi adeiladu yn unrhywle.
 ---

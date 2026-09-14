@@ -2,7 +2,7 @@
 layout: home
 hero:
   name: Pantoken
-  text: Create beautiful,<br/><span class="platform-line">accessible<br/><span class="platform web">web</span></span><br/>apps.
+  text: Luo kauniita,<br/><span class="platform-line">saavutettavia<br/><span class="platform web">web</span></span><br/>sovelluksia.
 
   tagline: Yksi ratkaistu token-malli, muutettuna tyylitaulukoiksi, kehys-sidoksiksi, natiivikoodiksi ja suunnittelutyökalujen sisältöihin.
   actions:
@@ -20,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Yksi totuuden lähde
-    details: Every packages uses the official Instructure design tokens, components, and interactions from <a href="https://instructure.design" target="_blank">InstUI</a>.
+    details: Jokainen paketti käyttää virallisia Instructure-suunnittelutunnuksia, komponentteja ja vuorovaikutuksia osoitteesta <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -30,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Luo mille tahansa alustalle
-    details: Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between.
+    details: Asenna pantoken cli luodaksesi esiasetuksia tai lisätäksesi komponentteja mille tahansa alustalle&colon; web, natiivi ja mitä tahansa siltä väliltä.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: No React needed
-    details: The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere.
+    title: React ei tarvita
+    details: InstUI-kirjasto on tiiviisti kytketty React:iin. Jos haluat käyttää sitä, sinun täytyy käyttää React:ia. Nyt voit rakentaa missä tahansa.
 ---

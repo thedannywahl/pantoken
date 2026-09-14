@@ -2,7 +2,7 @@
 layout: home
 hero:
   name: Pantoken
-  text: Create beautiful,<br/><span class="platform-line">accessible<br/><span class="platform web">web</span></span><br/>apps.
+  text: Maak prachtige,<br/><span class="platform-line">toegankelijke<br/><span class="platform web">web</span></span><br/>apps.
 
   tagline: Één opgelost tokenmodel, omgevormd tot stylesheets, framework-bindings, native code en design-tool payloads.
   actions:
@@ -20,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Één bron van waarheid
-    details: Every packages uses the official Instructure design tokens, components, and interactions from <a href="https://instructure.design" target="_blank">InstUI</a>.
+    details: Elk pakket gebruikt de officiële Instructure design tokens, componenten en interacties van <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -30,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Genereer voor elk platform
-    details: Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between.
+    details: Installeer de pantoken cli om presets te genereren of componenten toe te voegen voor elk platform&colon; web, native, en alles daartussenin.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: No React needed
-    details: The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere.
+    title: Geen React nodig
+    details: De InstUI-bibliotheek is nauw gekoppeld met React. Als je het wilt gebruiken, moet je React gebruiken. Nu kun je overal bouwen.
 ---

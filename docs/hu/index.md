@@ -2,7 +2,7 @@
 layout: home
 hero:
   name: Pantoken
-  text: Create beautiful,<br/><span class="platform-line">accessible<br/><span class="platform web">web</span></span><br/>apps.
+  text: Hozzon létre gyönyörű,<br/><span class="platform-line">elérhető<br/><span class="platform web">web</span></span><br/>alkalmazásokat.
 
   tagline: Egy feloldott token-modell, átalakítva stíluslapokká, keretrendszer-kötésekké, natív kóddá és dizájneszközöknek szánt adatcsomagokká.
   actions:
@@ -20,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Egyetlen igazságforrás
-    details: Every packages uses the official Instructure design tokens, components, and interactions from <a href="https://instructure.design" target="_blank">InstUI</a>.
+    details: Minden csomag az Instructure hivatalos design tokenjeit, komponenseit és interakcióit használja innen: <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -30,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Generálás bármely platformra
-    details: Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between.
+    details: Telepítse a pantoken parancssori felületet előbeállítások generálásához vagy összetevők hozzáadásához bármely platformhoz&colon; web, natív és bármi más.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: No React needed
-    details: The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere.
+    title: Nincs szükség a React-re
+    details: Az InstUI könyvtár szorosan összekapcsolódik a React-kel. Ha szeretnéd használni, React-et kell használnod. Most bárhol építhetsz.
 ---

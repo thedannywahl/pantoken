@@ -2,7 +2,7 @@
 layout: home
 hero:
   name: Pantoken
-  text: Create beautiful,<br/><span class="platform-line">accessible<br/><span class="platform web">web</span></span><br/>apps.
+  text: Erstellen Sie wunderschöne,<br/><span class="platform-line">barrierefreie<br/><span class="platform web">Web</span></span><br/>Apps.
 
   tagline: Ein aufgelöstes Token-Modell, umgeformt in Stylesheets, Framework-Bindings, nativen Code und Design-Tool-Payloads.
   actions:
@@ -20,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Eine einzige Quelle der Wahrheit
-    details: Every packages uses the official Instructure design tokens, components, and interactions from <a href="https://instructure.design" target="_blank">InstUI</a>.
+    details: Jedes Paket verwendet die offiziellen Instructure-Designtoken, Komponenten und Interaktionen von <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -30,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Für jede Plattform generieren
-    details: Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between.
+    details: Installieren Sie die pantoken-CLI, um Voreinstellungen zu generieren oder Komponenten für jede Plattform&colon; Web, nativ und alles dazwischen hinzuzufügen.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: No React needed
-    details: The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere.
+    title: Kein React erforderlich
+    details: Die InstUI-Bibliothek ist eng mit React gekoppelt. Wenn Sie sie verwenden möchten, müssen Sie React verwenden. Jetzt können Sie überall entwickeln.
 ---

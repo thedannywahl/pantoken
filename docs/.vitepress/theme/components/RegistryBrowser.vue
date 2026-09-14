@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, shallowRef, watch } from "vue";
 import { useData } from "vitepress";
-import catalogData from "../../../src/r/registry.json";
+import catalogData from "../generated/registry.json";
 import { readHashParam, writeHashParam } from "../composables/useHashParams";
 import { useHashParamRef } from "../composables/usePickerHelpers";
 import { REGISTRY_BROWSER_DEFAULTS, type RegistryBrowserStrings } from "../registry";

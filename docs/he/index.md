@@ -2,7 +2,7 @@
 layout: home
 hero:
   name: Pantoken
-  text: Create beautiful,<br/><span class="platform-line">accessible<br/><span class="platform web">web</span></span><br/>apps.
+  text: צור יפות,<br/><span class="platform-line">נגישות<br/><span class="platform web">ווב</span></span><br/>אפליקציות.
 
   tagline: דגם טוקנים אחד מפוענח, מעוצב מחדש לגיליונות סגנון, חיבורי פריימוורק, קוד מקומי ונתוני כלי עיצוב.
   actions:
@@ -20,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: מקור אמת יחיד
-    details: Every packages uses the official Instructure design tokens, components, and interactions from <a href="https://instructure.design" target="_blank">InstUI</a>.
+    details: כל חבילה משתמשת בטוקנים עיצוביים רשמיים של Instructure, רכיבים ואינטראקציות מ-<a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -30,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: ייצר לכל פלטפורמה
-    details: Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between.
+    details: התקן את pantoken cli כדי ליצור הגדרות מראש או להוסיף רכיבים לכל פלטפורמה: web, native, וכל דבר אחר.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: No React needed
-    details: The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere.
+    title: אין צורך ב-React
+    details: ספריית InstUI קשורה היטב עם React. אם אתה רוצה להשתמש בה, עליך להשתמש ב-React. עכשיו אתה יכול לבנות בכל מקום.
 ---

@@ -2,7 +2,7 @@
 layout: home
 hero:
   name: Pantoken
-  text: Create beautiful,<br/><span class="platform-line">accessible<br/><span class="platform web">web</span></span><br/>apps.
+  text: Ráhppa čeakčat,<br/><span class="platform-line">almmolašvuođain<br/><span class="platform web">interneta</span></span><br/>prográmmat.
 
   tagline: Okta ráddjeduvvon token-mudel, mánuheapmái rievdasašša, framework-binnttaga, nativkoda ja design-ovttasvuođa čađaheapmái.
   actions:
@@ -20,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Okta čuovgga máŋggabeaivi
-    details: Every packages uses the official Instructure design tokens, components, and interactions from <a href="https://instructure.design" target="_blank">InstUI</a>.
+    details: Juohke pakehta geažes officiella Instructure design-tokehniidda, komponenhtaid ja interakšuvnnaid <a href="https://instructure.design" target="_blank">InstUI</a>s.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -30,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Generere mihkke platvorma
-    details: Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between.
+    details: Hálediš pantoken cli:a maid oastit valmaduvvon váđđaid juohke platform:as&colon; interneta, áddjá, ja buohccá maiddái.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: No React needed
-    details: The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere.
+    title: React ii leat dárbbat
+    details: InstUI bibliotehka lea čeakcu guođalaš React:iin. Jus háliid geažešeapmi dan, de maŋŋelaččat geažešeapmi React:a. Dás sáhtat ráhpat maiddái.
 ---

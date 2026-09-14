@@ -2,7 +2,7 @@
 layout: home
 hero:
   name: Pantoken
-  text: Create beautiful,<br/><span class="platform-line">accessible<br/><span class="platform web">web</span></span><br/>apps.
+  text: Створюйте красиво,<br/><span class="platform-line">доступні<br/><span class="platform web">веб</span></span><br/>програми.
 
   tagline: Одна уніфікована модель токенів, перетворена на таблиці стилів, прив'язки фреймворків, нативний код і пакети для інструментів дизайну.
   actions:
@@ -20,7 +20,7 @@ features:
       light: /book-check-light.svg
       dark: /book-check-dark.svg
     title: Єдине джерело істини
-    details: Every packages uses the official Instructure design tokens, components, and interactions from <a href="https://instructure.design" target="_blank">InstUI</a>.
+    details: Всі пакети використовують офіційні дизайнерські токени, компоненти та взаємодії Instructure з <a href="https://instructure.design" target="_blank">InstUI</a>.
   - icon:
       light: /package-light.svg
       dark: /package-dark.svg
@@ -30,10 +30,10 @@ features:
       light: /workflow-light.svg
       dark: /workflow-dark.svg
     title: Генеруйте для будь-якої платформи
-    details: Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between.
+    details: Встановіть pantoken cli для створення налаштувань або додавання компонентів для будь-якої платформи&colon; веб, нативні та все, що між ними.
   - icon:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
-    title: No React needed
-    details: The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere.
+    title: React не потрібна
+    details: Бібліотека InstUI тісно пов'язана з React. Якщо ви хочете її використовувати, повинні використовувати React. Тепер ви можете розробляти де завгодно.
 ---

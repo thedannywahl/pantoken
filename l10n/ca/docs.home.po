@@ -1,21 +1,23 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-14 16:19+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
 
 #: index.md:5
 #, no-c-format
-msgid ""
-"Create beautiful,<br/><span class=\"platform-line\">accessible<br/><span "
-"class=\"platform web\">web</span></span><br/>apps."
-msgstr ""
+msgid "Create beautiful,<br/><span class=\"platform-line\">accessible<br/><span class=\"platform web\">web</span></span><br/>apps."
+msgstr "Crea belles,<br/><span class=\"platform-line\">accessibles<br/><span class=\"platform web\">web</span></span><br/>aplicacions."
 
 #: index.md:7
 #, no-c-format
-msgid ""
-"One resolved token model, reshaped into stylesheets, framework bindings, "
-"native code, and design-tool payloads."
-msgstr ""
-"Un model de tokens resolt, reformat en fulls d'estil, enllaços per a "
-"frameworks, codi nadiu i contingut per a eines de disseny."
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "Un model de tokens resolt, reformat en fulls d'estil, enllaços per a frameworks, codi nadiu i contingut per a eines de disseny."
 
 #: index.md:10
 #, no-c-format
@@ -39,11 +41,8 @@ msgstr "Una única font de veritat"
 
 #: index.md:23
 #, no-c-format
-msgid ""
-"Every packages uses the official Instructure design tokens, components, and "
-"interactions from <a href=\"https://instructure.design\" "
-"target=\"_blank\">InstUI</a>."
-msgstr ""
+msgid "Every packages uses the official Instructure design tokens, components, and interactions from <a href=\"https://instructure.design\" target=\"_blank\">InstUI</a>."
+msgstr "Cada paquet utilitza els tokens de disseny oficials d'Instructure, components i interaccions de <a href=\"https://instructure.design\" target=\"_blank\">InstUI</a>."
 
 #: index.md:27
 #, no-c-format
@@ -52,12 +51,8 @@ msgstr "Fes servir el paquet més petit"
 
 #: index.md:28
 #, fuzzy, no-c-format
-msgid ""
-"Install just <code>@pantoken/css</code> for a stylesheet, <code>@pantoken/"
-"pendo</code> for guides, or a bundler preset for Tailwind, Panda, or MUI."
-msgstr ""
-"Instal·la només @pantoken/css per a un full d'estil, @pantoken/react per a "
-"hooks i icones, o un preset de bundler per a Tailwind, Panda o MUI."
+msgid "Install just <code>@pantoken/css</code> for a stylesheet, <code>@pantoken/pendo</code> for guides, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "Instal·la només @pantoken/css per a un full d'estil, @pantoken/react per a hooks i icones, o un preset de bundler per a Tailwind, Panda o MUI."
 
 #: index.md:32
 #, no-c-format
@@ -66,56 +61,38 @@ msgstr "Genera per a qualsevol plataforma"
 
 #: index.md:33
 #, no-c-format
-msgid ""
-"Install the pantoken cli to generate presets or add components for any "
-"platform&colon; web, native, and anything in between."
-msgstr ""
+msgid "Install the pantoken cli to generate presets or add components for any platform&colon; web, native, and anything in between."
+msgstr "Instal·la el CLI de pantoken per generar presets o afegir components per a qualsevol plataforma&colon; web, nativa i qualsevol cosa entre mig."
 
 #: index.md:37
 #, no-c-format
 msgid "No React needed"
-msgstr ""
+msgstr "No cal React"
 
 #: index.md:38
 #, no-c-format
-msgid ""
-"The InstUI library is tightly coupled with React. If you want to use it, you "
-"have to use React. Now you can build anywhere."
-msgstr ""
+msgid "The InstUI library is tightly coupled with React. If you want to use it, you have to use React. Now you can build anywhere."
+msgstr "La biblioteca InstUI està estretament acoblada a React. Si la vols fer servir, has d'usar React. Ara pots desenvolupar a qualsevol lloc."
 
 #, no-c-format
 #~ msgid "InstUI, everywhere"
 #~ msgstr "InstUI, arreu"
 
 #, no-c-format
-#~ msgid ""
-#~ "Every package reads the same resolved token IR. Change a token upstream "
-#~ "and it flows to CSS, SCSS, native code, and Figma the same way."
-#~ msgstr ""
-#~ "Cada paquet llegeix la mateixa IR de tokens resolta. Canvia un token a "
-#~ "l'origen i flueix a CSS, SCSS, codi nadiu i Figma de la mateixa manera."
+#~ msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+#~ msgstr "Cada paquet llegeix la mateixa IR de tokens resolta. Canvia un token a l'origen i flueix a CSS, SCSS, codi nadiu i Figma de la mateixa manera."
 
 #, no-c-format
-#~ msgid ""
-#~ "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, "
-#~ "WordPress, and more. The same tokens, in each ecosystem's idiom."
-#~ msgstr ""
-#~ "Executa `pantoken generate` per generar Swift, Kotlin, Compose, Flutter, "
-#~ "Rust, WordPress i més. Els mateixos tokens, en l'idioma de cada "
-#~ "ecosistema."
+#~ msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+#~ msgstr "Executa `pantoken generate` per generar Swift, Kotlin, Compose, Flutter, Rust, WordPress i més. Els mateixos tokens, en l'idioma de cada ecosistema."
 
 #, no-c-format
 #~ msgid "No upstream coupling"
 #~ msgstr "Sense acoblament amb l'origen"
 
 #, no-c-format
-#~ msgid ""
-#~ "The tokens ship vendored as static JSON, so `npm i` never reaches for a "
-#~ "GitHub-only source. Publishable, semver'd, offline-friendly."
-#~ msgstr ""
-#~ "Els tokens s'envien empacats com JSON estàtic, així `npm i` mai no "
-#~ "accedeix a una font exclusiva de GitHub. Publicable, amb semver i aptes "
-#~ "per a ús fora de línia."
+#~ msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+#~ msgstr "Els tokens s'envien empacats com JSON estàtic, així `npm i` mai no accedeix a una font exclusiva de GitHub. Publicable, amb semver i aptes per a ús fora de línia."
 
 #, no-c-format
 #~ msgid "The package map"

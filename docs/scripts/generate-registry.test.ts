@@ -1,8 +1,13 @@
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { expect, test } from "vite-plus/test";
+import { beforeAll, expect, test } from "vite-plus/test";
+import { writeRegistry } from "./generate-registry.ts";
 
 const outDir = resolve(import.meta.dirname, "../public/r");
+
+beforeAll(() => {
+  writeRegistry();
+});
 
 test("registry.json catalog is generated with valid structure", () => {
   const catalogPath = resolve(outDir, "registry.json");
