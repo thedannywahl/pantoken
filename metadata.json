@@ -3,7 +3,7 @@
   "checkpoint_id": "01M2EVNVREPJZ7C0YNY6ZRKXP3",
   "strategy": "manual-commit",
   "branch": "registry",
-  "checkpoints_count": 5,
+  "checkpoints_count": 6,
   "files_touched": [
     "docs/ar/index.md",
     "docs/ca/index.md",
@@ -202,6 +202,13 @@
       "compact_transcript": "/2/transcript.jsonl",
       "content_hash": "/2/content_hash.txt",
       "prompt": "/2/prompt.txt"
+    },
+    {
+      "metadata": "/3/metadata.json",
+      "transcript": "/3/full.jsonl",
+      "compact_transcript": "/3/transcript.jsonl",
+      "content_hash": "/3/content_hash.txt",
+      "prompt": "/3/prompt.txt"
     }
   ],
   "token_usage": {
