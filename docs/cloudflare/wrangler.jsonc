@@ -1,0 +1,19 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "pantoken-docs",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-14",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "../.vitepress/cf-worker-dist",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "r2_buckets": [
+    {
+      "binding": "R2_DOCS",
+      "bucket_name": "pantoken-docs-assets"
+    }
+  ]
+}

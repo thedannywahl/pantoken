@@ -79,20 +79,19 @@ and deleted pages) fall back to the full `docs:build:deploy` route. Manual dispa
 full build unless a base ref is supplied.
 
 Partial deploy builds write VitePress output to `docs/.vitepress/partial-dist`, then overlay that onto
-a restored complete `docs/.vitepress/dist` cache before calling Netlify. Netlify still receives a full
-site directory, so unchanged live pages stay present while Netlify's content-addressed deploy uploads
-only changed blobs. If the full dist cache is missing, a partial candidate falls back to the full docs
-build. The deploy workflow builds the site itself; CI no longer uploads a `docs-site` artifact.
+a restored complete `docs/.vitepress/dist` cache before preparing the deploy. If the full dist cache
+is missing, a partial candidate falls back to the full docs build. The deploy workflow builds the site
+itself; CI no longer uploads a `docs-site` artifact.
 
-**The site is on Netlify, not GitHub Pages.** The full-locale site is ~42k pages / ~92k files /
-~1.7 GB, and GitHub caps a published Pages site at 1 GB with a 10-minute deploy timeout — it outgrew
-the host, and no amount of build tuning would have changed that. Netlify has no per-deploy file-count
-or size limit; its one structural limit is **54,000 files in a single directory**, and VitePress puts
-one chunk per page in `assets/`, which lands around 40k. The `Check site shape` step in `docs.yml`
-fails the deploy if any directory crosses that line. Netlify deploys are content-addressed, so only
-the first seed uploads everything and each release after it uploads its diff. Deploy needs two repo
-secrets, `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID`; `docs/public/_headers` carries the immutable
-cache policy for `/assets/*` (Netlify otherwise serves everything `must-revalidate`).
+**The site is on Cloudflare (Workers Static Assets + R2), not GitHub Pages or Netlify.** The full-locale
+site is ~42k pages / ~138k files / ~3.8 GB. GitHub caps Pages at 1 GB with a 10-minute timeout, and
+Netlify applies credit-metered bandwidth and request pricing. Cloudflare Workers Paid provides up to
+100,000 static assets per version with zero per-request charges. The deploy workflow splits the output
+via `docs/scripts/prepare-cloudflare-deploy.ts`:
+
+- **Worker Static Assets** (`docs/.vitepress/cf-worker-dist`): HTML pages (44 locales), root files (`sitemap.xml`, `hashmap.json`, `robots.txt`, `favicon.*`, `llms.txt`), and shadcn registry files (`/r/*`) (~43k files).
+- **R2 Bucket** (`docs/.vitepress/cf-r2-assets`): High-volume hashed client bundles (`/assets/*`) and demo assets (`/demos-assets/*`) (~95k files, 0 egress fees), synced via `docs/scripts/sync-cloudflare-r2.ts`.
+- **Worker Router** (`docs/cloudflare/src/index.ts`): Routes `/assets/*` and `/demos-assets/*` to R2 with immutable caching headers (`public, max-age=31536000, immutable`) and falls back to Worker Static Assets for HTML and root documents. Deploy needs `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, and `CLOUDFLARE_R2_BUCKET`.
 
 **The deploy build is memory-bound.** Three settings keep it inside a 16 GB runner, and all three
 have a reason:
