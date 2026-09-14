@@ -1,0 +1,10 @@
+[docs/scripts/sync-cloudflare-r2.ts](https://github.com/thedannywahl/pantoken/pull/161/files/bdc92b6c9d594cb8ec71bbb79aad7b6a1b0f34ba#diff-688ef65f1d4fa22afc080d136f6f707888b536e47a7a3023e34680e494b4a6a8)
+```
+          "Content-Type": contentType,
+          "Content-Length": String(fileBytes.length),
+        },
+        body: fileBytes,
+```
+### CodeQL / File data in outbound network request
+
+Outbound network request depends on [file data](https://github.com/thedannywahl/pantoken/pull/1).
