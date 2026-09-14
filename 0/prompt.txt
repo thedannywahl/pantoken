@@ -1,0 +1,9 @@
+we're still getting codeql warnings/blocks:
+[docs/scripts/sync-cloudflare-r2.ts](https://github.com/thedannywahl/pantoken/pull/162/files/c2785dafff8843e14eae368d252bf6243d9438e9#diff-688ef65f1d4fa22afc080d136f6f707888b536e47a7a3023e34680e494b4a6a8)
+```
+              "Content-Type": contentType,
+              "Content-Length": String(fileBytes.length),
+            },
+            body: fileBytes,
+```
+Outbound network request depends on [file data](https://github.com/thedannywahl/pantoken/pull/1).
