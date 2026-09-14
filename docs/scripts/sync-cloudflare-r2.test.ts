@@ -2,7 +2,11 @@ import { mkdirSync, mkdtempSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test";
-import { DEFAULT_R2_UPLOAD_CONCURRENCY, syncR2Assets } from "./sync-cloudflare-r2.ts";
+import {
+  assertAssetPathUnderRoot,
+  DEFAULT_R2_UPLOAD_CONCURRENCY,
+  syncR2Assets,
+} from "./sync-cloudflare-r2.ts";
 
 const MODULE_PATH = new URL("./sync-cloudflare-r2.ts", import.meta.url).pathname;
 
@@ -59,6 +63,16 @@ test("syncR2Assets throws when credentials are missing in non-dry-run mode", asy
       apiToken: "",
     }),
   ).rejects.toThrow(/Missing Cloudflare credentials/);
+});
+
+test("assertAssetPathUnderRoot rejects paths outside the configured asset directory", () => {
+  expect(() =>
+    assertAssetPathUnderRoot(r2AssetsDir, join(r2AssetsDir, "..", "outside.txt")),
+  ).toThrow(/outside the asset directory/i);
+
+  expect(() =>
+    assertAssetPathUnderRoot(r2AssetsDir, join(r2AssetsDir, "assets", "app.js")),
+  ).not.toThrow();
 });
 
 test("syncR2Assets uploads files with authorization and content type headers", async () => {

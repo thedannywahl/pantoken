@@ -68,6 +68,31 @@ function walkFiles(dir: string): string[] {
 }
 
 /**
+ * Ensure a candidate upload path stays within the generated asset directory tree.
+ *
+ * This script intentionally uploads only the files produced by the docs build and the Cloudflare
+ * asset-prep step; a path escape here would risk uploading unrelated files from the local checkout.
+ */
+export function assertAssetPathUnderRoot(rootDir: string, filePath: string): void {
+  const resolvedRoot = resolve(rootDir);
+  const resolvedFile = resolve(filePath);
+  const rel = relative(resolvedRoot, resolvedFile);
+  const isWithinRoot = rel === "" || (!rel.startsWith("..") && !pathIsAbsolute(rel));
+
+  if (isWithinRoot) {
+    return;
+  }
+
+  throw new Error(
+    `Refusing to upload "${filePath}" because it is outside the asset directory "${rootDir}".`,
+  );
+}
+
+function pathIsAbsolute(pathLike: string): boolean {
+  return pathLike.startsWith("/") || pathLike.startsWith("\\") || /^[A-Za-z]:[\\/]/u.test(pathLike);
+}
+
+/**
  * Execute an array of async tasks with bounded concurrency.
  *
  * @param items - Items to process.
@@ -151,7 +176,12 @@ export async function syncR2Assets(options: R2SyncOptions = {}): Promise<R2SyncR
   const baseUrl = `https://api.cloudflare.com/client/v4/accounts/${accountId}/r2/buckets/${bucketName}/objects`;
 
   const uploadFile = async (filePath: string): Promise<void> => {
+    assertAssetPathUnderRoot(r2AssetsDir, filePath);
+
     const relKey = relative(r2AssetsDir, filePath).replace(/\\/gu, "/");
+    // This upload intentionally sends the bytes of a known, generated asset to the configured Cloudflare bucket.
+    // The asset list is derived from the docs build output and is validated to stay under the R2 asset root.
+    // lgtm[js/file-data-in-request]
     const fileBytes = readFileSync(filePath);
     const contentType = getMimeType(relKey);
 
