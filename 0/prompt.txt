@@ -1,0 +1,126 @@
+CI is failing on pr 161, remediate and continue pushing and watch until green.
+
+---
+
+Run vp run lint:markdown
+
+    
+
+  
+
+    
+      
+      
+      $ vp exec markdownlint-cli2 "**/*.md" ⊘ cache disabled
+
+    
+
+  
+
+    
+      
+      
+      markdownlint-cli2 v0.23.2 (markdownlint v0.41.1)
+
+    
+
+  
+
+    
+      
+      
+      Finding: **/*.md !node_modules !**/node_modules !dist !**/dist !coverage !**/coverage !**/style.css !**/generated !**/generated/** !docs/api !docs/api/** !docs/*/api !docs/*/api/** !docs/internal !docs/internal/** !.github/copilot-instructions.md !.changeset/*.md !**/CHANGELOG.md !.agents/skills !.agents/skills/** !agent/skills !agent/skills/** !.claude !.claude/**
+
+    
+
+  
+
+    
+      
+      
+      Linting: 517 files
+
+    
+
+  
+
+    
+      
+      
+      Summary: 8 issues in 1 file
+
+    
+
+  
+
+    
+      
+      
+      HOSTING_MIGRATION_IMPLEMENTATION_PLAN.md:41:30 error MD034/no-bare-urls Bare URL used [Context: "[https://developers.cloudflare....](https://developers.cloudflare....)"]
+
+    
+
+  
+
+    
+      
+      
+      HOSTING_MIGRATION_IMPLEMENTATION_PLAN.md:42:52 error MD034/no-bare-urls Bare URL used [Context: "[https://developers.cloudflare....](https://developers.cloudflare....)"]
+
+    
+
+  
+
+    
+      
+      
+      HOSTING_MIGRATION_IMPLEMENTATION_PLAN.md:43:37 error MD034/no-bare-urls Bare URL used [Context: "[https://developers.cloudflare....](https://developers.cloudflare....)"]
+
+    
+
+  
+
+    
+      
+      
+      HOSTING_MIGRATION_IMPLEMENTATION_PLAN.md:44:26 error MD034/no-bare-urls Bare URL used [Context: "[https://developers.cloudflare....](https://developers.cloudflare....)"]
+
+    
+
+  
+
+    
+      
+      
+      HOSTING_MIGRATION_IMPLEMENTATION_PLAN.md:45:28 error MD034/no-bare-urls Bare URL used [Context: "[https://developers.cloudflare....](https://developers.cloudflare....)"]
+
+    
+
+  
+
+    
+      
+      
+      HOSTING_MIGRATION_IMPLEMENTATION_PLAN.md:46:20 error MD034/no-bare-urls Bare URL used [Context: "[https://www.netlify.com/pricin...](https://www.netlify.com/pricin...)"]
+
+    
+
+  
+
+    
+      
+      
+      HOSTING_MIGRATION_IMPLEMENTATION_PLAN.md:47:36 error MD034/no-bare-urls Bare URL used [Context: "[https://www.netlify.com/change...](https://www.netlify.com/change...)"]
+
+    
+
+  
+
+    
+      
+      
+      HOSTING_MIGRATION_IMPLEMENTATION_PLAN.md:48:18 error MD034/no-bare-urls Bare URL used [Context: "[https://bunny.net/pricing](https://bunny.net/pricing)"]
+
+---
+
+#attachment:Pasted text #1
