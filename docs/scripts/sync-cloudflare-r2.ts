@@ -6,10 +6,14 @@
  * file's MD5 by size + hash, so unchanged files (the common case on a rerun or a retried job) are
  * skipped instead of re-uploaded. This is what makes a retried run cheap and effectively resumable.
  *
+ * Progress is logged on a heartbeat (`progressIntervalMs`, `CLOUDFLARE_R2_PROGRESS_INTERVAL_MS`) so
+ * a long run stays visibly alive in CI, and a short markdown summary is appended to
+ * `$GITHUB_STEP_SUMMARY` when present.
+ *
  * @module
  */
 import { createHash } from "node:crypto";
-import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
+import { appendFileSync, existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 import { runAsMain } from "../../scripts/release/cli.ts";
 import { getMimeType } from "../cloudflare/src/index.ts";
@@ -19,6 +23,9 @@ export const DEFAULT_R2_UPLOAD_CONCURRENCY = 6;
 
 /** Number of objects requested per page when listing existing R2 objects. */
 export const R2_LIST_PAGE_SIZE = 1_000;
+
+/** Default interval between upload progress heartbeat logs, so a long run stays visibly alive. */
+export const DEFAULT_R2_PROGRESS_INTERVAL_MS = 30_000;
 
 /** Default number of retry attempts for transient Cloudflare responses. */
 export const DEFAULT_R2_UPLOAD_MAX_RETRIES = 6;
@@ -49,6 +56,8 @@ export interface R2SyncOptions {
   retryMaxDelayMs?: number;
   /** Dry run mode (scans and validates without performing HTTP writes). */
   dryRun?: boolean;
+  /** Interval between upload progress heartbeat logs in milliseconds (0 disables). */
+  progressIntervalMs?: number;
   /** Custom fetch implementation for testing and mocking. */
   fetchFn?: typeof fetch;
   /** Custom sleep implementation for testing retry behavior. */
@@ -127,6 +136,57 @@ async function listExistingObjects(
   } while (cursor);
 
   return existing;
+}
+
+/** Format a millisecond duration as e.g. "1h 2m 3s" (or "3s" when under a minute). */
+function formatDuration(ms: number): string {
+  const totalSeconds = Math.max(0, Math.round(ms / 1_000));
+  const hours = Math.floor(totalSeconds / 3_600);
+  const minutes = Math.floor((totalSeconds % 3_600) / 60);
+  const seconds = totalSeconds % 60;
+
+  return [hours && `${hours}h`, (hours || minutes) && `${minutes}m`, `${seconds}s`]
+    .filter(Boolean)
+    .join(" ");
+}
+
+/** Append a short markdown summary of the sync to `$GITHUB_STEP_SUMMARY`, if running in CI. */
+function writeStepSummary(result: R2SyncResult, bucketName: string, elapsedMs: number): void {
+  const summaryPath = process.env.GITHUB_STEP_SUMMARY;
+  if (!summaryPath) return;
+
+  const lines = [
+    "### Cloudflare R2 sync",
+    "",
+    "| Total | Uploaded | Unchanged | Errors | Uploaded size | Duration |",
+    "| --- | --- | --- | --- | --- | --- |",
+    `| ${result.totalFiles} | ${result.uploadedFiles} | ${result.skippedFiles} | ${result.errors.length} | ` +
+      `${(result.uploadedBytes / 1024 / 1024).toFixed(1)} MB | ${formatDuration(elapsedMs)} |`,
+    "",
+    `Bucket: \`${bucketName}\``,
+    "",
+  ];
+
+  try {
+    appendFileSync(summaryPath, `${lines.join("\n")}\n`);
+  } catch {
+    // Best-effort only; never fail the sync because the job summary couldn't be written.
+  }
+}
+
+/**
+ * Shuffle files in place (Fisher-Yates) so upload order doesn't follow directory order.
+ *
+ * `walkFiles` always visits directories in the same order (e.g. `assets/` fully before
+ * `demos-assets/`), so a run that's cancelled or times out partway leaves whichever directory
+ * comes later completely untouched. Randomizing order means a partial run makes proportional
+ * progress across every prefix instead of finishing one directory and starving the rest.
+ */
+function shuffleInPlace<T>(items: T[]): void {
+  for (let i = items.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [items[i], items[j]] = [items[j], items[i]];
+  }
 }
 
 /**
@@ -255,6 +315,7 @@ async function runWithConcurrency<T>(
  * @returns Summary of synchronization operations.
  */
 export async function syncR2Assets(options: R2SyncOptions = {}): Promise<R2SyncResult> {
+  const startedAt = Date.now();
   const docsRoot = resolve(import.meta.dirname, "..");
   const r2AssetsDir = resolve(
     options.r2AssetsDir ??
@@ -292,6 +353,13 @@ export async function syncR2Assets(options: R2SyncOptions = {}): Promise<R2SyncR
   );
   const dryRun =
     options.dryRun ?? (process.env.CLOUDFLARE_R2_DRY_RUN === "true" || (!accountId && !apiToken));
+  const progressIntervalMs = nonNegativeInteger(
+    options.progressIntervalMs,
+    nonNegativeIntegerFromEnv(
+      "CLOUDFLARE_R2_PROGRESS_INTERVAL_MS",
+      DEFAULT_R2_PROGRESS_INTERVAL_MS,
+    ),
+  );
   const fetchImpl = options.fetchFn ?? globalThis.fetch;
   const sleepImpl = options.sleepFn ?? sleep;
 
@@ -306,6 +374,9 @@ export async function syncR2Assets(options: R2SyncOptions = {}): Promise<R2SyncR
   }
 
   const allFiles = walkFiles(r2AssetsDir);
+  // Randomize order so a cancelled/timed-out run makes proportional progress across every
+  // directory (e.g. `demos-assets/`) instead of only ever reaching whatever comes first.
+  shuffleInPlace(allFiles);
   const result: R2SyncResult = {
     totalFiles: allFiles.length,
     uploadedFiles: 0,
@@ -327,13 +398,22 @@ export async function syncR2Assets(options: R2SyncOptions = {}): Promise<R2SyncR
     return result;
   }
 
+  console.log(
+    `ℹ Cloudflare R2 sync: found ${result.totalFiles} files ` +
+      `(${(result.totalBytes / 1024 / 1024).toFixed(1)} MB) under ${r2AssetsDir}.`,
+  );
+
   const baseUrl = `https://api.cloudflare.com/client/v4/accounts/${accountId}/r2/buckets/${bucketName}/objects`;
 
   // A fresh bucket, a bucket the API token can't list, or a transient list failure all just mean an
   // empty map here, which degrades to uploading every file below - never to under-uploading.
   let existingObjects = new Map<string, R2ListedObject>();
+  const listStartedAt = Date.now();
   try {
     existingObjects = await listExistingObjects(fetchImpl, baseUrl, apiToken);
+    console.log(
+      `ℹ Listed ${existingObjects.size} existing R2 object(s) in ${formatDuration(Date.now() - listStartedAt)}.`,
+    );
   } catch (err) {
     console.error(
       `⚠ Could not list existing R2 objects, uploading all files: ${err instanceof Error ? err.message : String(err)}`,
@@ -404,11 +484,32 @@ export async function syncR2Assets(options: R2SyncOptions = {}): Promise<R2SyncR
     }
   };
 
-  await runWithConcurrency(allFiles, concurrency, uploadFile);
+  const heartbeat =
+    progressIntervalMs > 0
+      ? setInterval(() => {
+          const processed = result.uploadedFiles + result.skippedFiles + result.errors.length;
+          console.log(
+            `… Cloudflare R2 sync progress: ${processed}/${result.totalFiles} files processed ` +
+              `(${result.uploadedFiles} uploaded, ${result.skippedFiles} unchanged, ${result.errors.length} errors) ` +
+              `- ${formatDuration(Date.now() - startedAt)} elapsed.`,
+          );
+        }, progressIntervalMs)
+      : undefined;
+  heartbeat?.unref();
+
+  try {
+    await runWithConcurrency(allFiles, concurrency, uploadFile);
+  } finally {
+    if (heartbeat) clearInterval(heartbeat);
+  }
+
+  const elapsedMs = Date.now() - startedAt;
+  writeStepSummary(result, bucketName, elapsedMs);
 
   if (result.errors.length > 0) {
     console.error(
-      `✗ Cloudflare R2 sync encountered ${result.errors.length} error(s) out of ${result.totalFiles} files.`,
+      `✗ Cloudflare R2 sync encountered ${result.errors.length} error(s) out of ${result.totalFiles} files ` +
+        `after ${formatDuration(elapsedMs)}.`,
     );
     throw new Error(
       `R2 upload failed for ${result.errors.length} file(s):\n` +
@@ -422,7 +523,7 @@ export async function syncR2Assets(options: R2SyncOptions = {}): Promise<R2SyncR
   console.log(
     `✓ Cloudflare R2 sync complete: uploaded ${result.uploadedFiles}/${result.totalFiles} files ` +
       `(${(result.uploadedBytes / 1024 / 1024).toFixed(1)} MB), ${result.skippedFiles} unchanged, ` +
-      `to bucket "${bucketName}".`,
+      `in ${formatDuration(elapsedMs)} to bucket "${bucketName}".`,
   );
 
   return result;
