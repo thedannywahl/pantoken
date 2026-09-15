@@ -1,0 +1,208 @@
+the cloudflare deploy failed, is it something that we can fix in cloudflare for this initial release?
+```
+.../mu2zt2qx-8it                         | [WARN] deprecated wrangler@3.114.0
+
+    
+
+  
+
+    
+      
+      
+      Progress: resolved 1, reused 0, downloaded 0, added 0
+
+    
+
+  
+
+  
+
+    
+    
+      
+      
+      [WARN] 2 deprecated subdependencies found: rollup-plugin-inject@3.0.2, sourcemap-codec@1.4.8
+
+    
+
+  
+
+    
+      
+      
+      Packages: +59
+
+    
+
+  
+
+    
+      
+      
+      +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    
+
+  
+
+    
+      
+      
+      Progress: resolved 104, reused 11, downloaded 48, added 5
+
+    
+
+  
+
+  
+
+    
+    
+      
+      
+      Progress: resolved 104, reused 11, downloaded 50, added 59, done
+
+    
+
+  
+
+  
+
+    
+    
+      
+      
+       ⛅️ wrangler 3.114.0 (update available 4.132.0)
+
+    
+
+  
+
+    
+      
+      
+      -----------------------------------------------
+
+    
+
+  
+
+    
+      
+      
+      ▲ [WARNING] The version of Wrangler you are using is now out-of-date.
+
+    
+
+  
+
+    
+      
+      
+        Please update to the latest version to prevent critical errors.
+
+    
+
+  
+
+    
+      
+      
+        Run `npm install --save-dev wrangler@4` to update to the latest version.
+
+    
+
+  
+
+    
+      
+      
+        After installation, run Wrangler with `npx wrangler`.
+
+    
+
+  
+
+  
+
+    
+    
+      
+      
+      🌀 Building list of assets...
+
+    
+
+  
+
+  
+
+    
+    
+      
+      
+      ✘ [ERROR] Maximum number of assets exceeded.
+
+    
+
+  
+
+    
+      
+      
+        Cloudflare Workers supports up to 20,000 assets in a version. We found 20,000 files in the specified assets directory "/home/runner/work/pantoken/pantoken/docs/.vitepress/cf-worker-dist".
+
+    
+
+  
+
+    
+      
+      
+        Ensure your assets directory contains a maximum of 20,000 files, and that you have specified your assets directory correctly.
+
+    
+
+  
+
+    
+      
+      
+      Cloudflare collects anonymous telemetry about your usage of Wrangler. Learn more at [https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md)
+
+    
+
+  
+
+  
+
+    
+    
+      
+      
+      🪵  Logs were written to "/home/runner/.config/.wrangler/logs/wrangler-2026-09-15_18-15-58_253.log"
+
+    
+
+  
+
+  
+
+    
+    
+      
+      
+      Error: Process completed with exit code 1.
+```
+
+---
+
+I'm on a paid plan.
+
+---
+
+if we re-run this are alll the uploaded files going to be retained?
+
+---
+
+does the wrangler config need to be updated for v4?
