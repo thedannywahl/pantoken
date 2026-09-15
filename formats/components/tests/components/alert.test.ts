@@ -17,7 +17,7 @@ test("alert draws its bar + glyph from pseudo-elements (no wrappers) with varian
   expect(css).toContain("&::after");
   expect(css).toContain("var(--pantoken-alert-icon-bg)");
   expect(css).toContain("var(--instui-component-alert-danger-icon-background)");
-  expect(css).toContain("var(--instui-component-alert-icon-color)");
+  expect(css).toContain("var(--instui-color-icon-on-color)");
   // No icon/content wrapper classes anymore.
   expect(css).not.toContain(".instui-alert__icon");
   expect(css).not.toContain(".instui-alert__content");

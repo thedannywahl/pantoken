@@ -62,8 +62,8 @@
     padding: var(--instui-component-alert-content-padding-vertical)
       var(--instui-component-alert-content-padding-horizontal);
     padding-inline-start: calc(2.5rem + var(--instui-component-alert-content-padding-horizontal));
-    background: var(--instui-component-alert-background);
-    color: var(--instui-component-alert-color);
+    background: var(--instui-component-alert-info-background);
+    color: var(--instui-color-text-base);
     border: var(--instui-component-alert-border-width) var(--instui-component-alert-border-style)
       var(--instui-component-alert-info-border-color);
     border-radius: var(--instui-component-alert-border-radius);
@@ -108,7 +108,7 @@
     inset-block: 0;
     inset-inline-start: 0;
     inline-size: 2.5rem;
-    background: var(--instui-component-alert-icon-color);
+    background: var(--instui-color-icon-on-color);
     -webkit-mask: var(--pantoken-alert-glyph) center / 1.125rem no-repeat;
     mask: var(--pantoken-alert-glyph) center / 1.125rem no-repeat;
   }

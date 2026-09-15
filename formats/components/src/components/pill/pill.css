@@ -3,10 +3,21 @@
  * @selector .pfx-pill
  * @summary A compact status label; add a leading glyph with the shared `-icon-<name>` form.
  * @remarks Unlike `badge`, which shows a count, or `tag`, which is removable, the pill is a static status label; its leading glyph is a masked `::before`, not an `<img>`.
+ * @modifier -size-x-small — The smallest pill size.
+ * @modifier -size-medium — The medium pill size.
+ * @modifier -size-large — The largest pill size.
+ * @modifier -color-neutral — A neutral status.
  * @modifier -color-info — Informational status.
  * @modifier -color-success — Positive status.
  * @modifier -color-warning — Cautionary status.
  * @modifier -color-danger — Error status.
+ * @modifier -color-plum — Plum accent status.
+ * @modifier -color-aurora — Aurora accent status.
+ * @modifier -color-sky — Sky accent status.
+ * @modifier -color-orange — Orange accent status.
+ * @modifier -color-violet — Violet accent status.
+ * @modifier -color-sea — Sea accent status.
+ * @modifier -color-stone — Stone accent status.
  * @modifier -icon-* — A leading glyph from the icon set (e.g. `-icon-check`), painted before the label.
  * @modifier -render-icon-<name> — @deprecated The former `renderIcon` prop; still works as an alias, but use `-icon-<name>` instead.
  * @pseudo ::before — The leading icon glyph, sized and spaced to the pill.
@@ -29,8 +40,10 @@
     align-items: center;
     height: var(--instui-component-pill-height);
     max-width: var(--instui-component-pill-max-width);
-    padding: 0 var(--instui-component-pill-padding-horizontal);
-    background: var(--instui-component-pill-background-color);
+    padding-block: var(--instui-component-pill-padding-vertical);
+    padding-inline: var(--instui-component-pill-padding-horizontal);
+    gap: var(--instui-component-pill-gap-content);
+    background: var(--instui-component-pill-neutral-background-color);
     color: var(--instui-component-pill-base-text-color);
     border: var(--instui-component-pill-border-width) var(--instui-component-pill-border-style)
       var(--instui-component-pill-base-border-color);
@@ -41,32 +54,106 @@
     line-height: var(--instui-component-pill-line-height);
   }
 
-  /* A leading icon (InstUI `renderIcon`): a glyph class on the pill renders a masked ::before that
-     inherits the pill's colour. It refines the shared icon ::before to the pill's size + spacing. */
   &[class*="-icon-"]::before {
     inline-size: var(--instui-font-size-text-xs);
     block-size: var(--instui-font-size-text-xs);
-    margin-inline-end: 0.375rem;
+    margin-inline-end: var(--instui-component-pill-gap-icon-label);
+  }
+
+  &.-size-x-small {
+    height: var(--instui-component-pill-height-x-small);
+  }
+
+  &.-size-medium {
+    height: var(--instui-component-pill-height-medium);
+    padding-inline: var(--instui-component-pill-padding-horizontal-medium);
+    font-size: var(--instui-component-pill-text-font-size-medium);
+    gap: var(--instui-component-pill-gap-content);
+  }
+
+  &.-size-large {
+    height: var(--instui-component-pill-height-large);
+    padding-inline: var(--instui-component-pill-padding-horizontal-large);
+    font-size: var(--instui-component-pill-text-font-size-large);
+    gap: var(--instui-component-pill-gap-content);
+  }
+
+  &.-size-medium[class*="-icon-"]::before {
+    margin-inline-end: var(--instui-component-pill-gap-icon-label-medium);
+  }
+
+  &.-size-large[class*="-icon-"]::before {
+    margin-inline-end: var(--instui-component-pill-gap-icon-label-large);
+  }
+
+  &.-color-neutral {
+    background: var(--instui-component-pill-neutral-background-color);
   }
 
   &.-color-info {
+    background: var(--instui-component-pill-info-background-color);
     color: var(--instui-component-pill-info-text-color);
     border-color: var(--instui-component-pill-info-border-color);
   }
 
   &.-color-success {
+    background: var(--instui-component-pill-success-background-color);
     color: var(--instui-component-pill-success-text-color);
     border-color: var(--instui-component-pill-success-border-color);
   }
 
   &.-color-warning {
+    background: var(--instui-component-pill-warning-background-color);
     color: var(--instui-component-pill-warning-text-color);
     border-color: var(--instui-component-pill-warning-border-color);
   }
 
-  &.-color-danger {
+  &:is(.-color-danger, .-color-error) {
+    background: var(--instui-component-pill-error-background-color);
     color: var(--instui-component-pill-error-text-color);
     border-color: var(--instui-component-pill-error-border-color);
+  }
+
+  &.-color-plum {
+    background: var(--instui-component-pill-plum-background-color);
+    color: var(--instui-component-pill-plum-text-color);
+    border-color: var(--instui-component-pill-plum-border-color);
+  }
+
+  &.-color-aurora {
+    background: var(--instui-component-pill-aurora-background-color);
+    color: var(--instui-component-pill-aurora-text-color);
+    border-color: var(--instui-component-pill-aurora-border-color);
+  }
+
+  &.-color-sky {
+    background: var(--instui-component-pill-sky-background-color);
+    color: var(--instui-component-pill-sky-text-color);
+    border-color: var(--instui-component-pill-sky-border-color);
+  }
+
+  &.-color-orange {
+    background: var(--instui-component-pill-orange-background-color);
+    color: var(--instui-component-pill-orange-text-color);
+    border-color: var(--instui-component-pill-orange-border-color);
+  }
+
+  &.-color-violet {
+    background: var(--instui-component-pill-violet-background-color);
+    color: var(--instui-component-pill-violet-text-color);
+    border-color: var(--instui-component-pill-violet-border-color);
+  }
+
+  &.-color-sea {
+    background: var(--instui-component-pill-sea-background-color);
+    color: var(--instui-component-pill-sea-text-color);
+    border-color: var(--instui-component-pill-sea-border-color);
+  }
+
+  &.-color-stone {
+    background: var(--instui-component-pill-stone-background-color);
+    color: var(--instui-component-pill-stone-text-color);
+    border-color: var(--instui-component-pill-stone-border-color);
   }
 
   &.-color-info,

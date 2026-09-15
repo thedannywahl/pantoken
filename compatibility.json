@@ -1,53 +1,53 @@
 {
   "upstream": {
     "@instructure/instructure-design-tokens": {
-      "range": "github:instructure/instructure-design-tokens#v1.8.0",
-      "resolved": "v1.8.0@b85c96436131",
+      "range": "github:instructure/instructure-design-tokens#v1.9.0",
+      "resolved": "v1.9.0@3c6a96cca755",
       "feeds": "token-ir"
     },
     "@instructure/ui-icons": {
-      "range": "^11.7.5",
-      "resolved": "11.7.5",
+      "range": "^11.7.6",
+      "resolved": "11.7.6",
       "feeds": "icons"
     },
     "@instructure/ui-heading": {
-      "range": "^11.7.5",
-      "resolved": "11.7.5",
+      "range": "^11.7.6",
+      "resolved": "11.7.6",
       "feeds": "instui-react"
     },
     "@instructure/ui-text": {
-      "range": "^11.7.5",
-      "resolved": "11.7.5",
+      "range": "^11.7.6",
+      "resolved": "11.7.6",
       "feeds": "instui-react"
     },
     "@instructure/ui-link": {
-      "range": "^11.7.5",
-      "resolved": "11.7.5",
+      "range": "^11.7.6",
+      "resolved": "11.7.6",
       "feeds": "instui-react"
     },
     "@instructure/ui-list": {
-      "range": "^11.7.5",
-      "resolved": "11.7.5",
+      "range": "^11.7.6",
+      "resolved": "11.7.6",
       "feeds": "instui-react"
     },
     "@instructure/ui-table": {
-      "range": "^11.7.5",
-      "resolved": "11.7.5",
+      "range": "^11.7.6",
+      "resolved": "11.7.6",
       "feeds": "instui-react"
     },
     "@instructure/ui-view": {
-      "range": "^11.7.5",
-      "resolved": "11.7.5",
+      "range": "^11.7.6",
+      "resolved": "11.7.6",
       "feeds": "instui-react"
     },
     "@instructure/ui-img": {
-      "range": "^11.7.5",
-      "resolved": "11.7.5",
+      "range": "^11.7.6",
+      "resolved": "11.7.6",
       "feeds": "instui-react"
     },
     "@instructure/ui-alerts": {
-      "range": "^11.7.5",
-      "resolved": "11.7.5",
+      "range": "^11.7.6",
+      "resolved": "11.7.6",
       "feeds": "instui-react"
     }
   },
@@ -218,5 +218,107 @@
       "governedBy": "token-ir"
     }
   ],
-  "deprecations": []
+  "deprecations": [
+    {
+      "token": "--instui-component-alert-background",
+      "deprecatedIn": "design-tokens@v1.9.0",
+      "removeIn": "design-tokens@v2.0.0",
+      "replacement": "--instui-component-alert-info-background",
+      "note": "The generic alert background was replaced by status-specific backgrounds."
+    },
+    {
+      "token": "--instui-component-alert-color",
+      "deprecatedIn": "design-tokens@v1.9.0",
+      "removeIn": "design-tokens@v2.0.0",
+      "replacement": "--instui-color-text-base",
+      "note": "The generic alert text color now uses the shared base text color."
+    },
+    {
+      "token": "--instui-component-alert-icon-color",
+      "deprecatedIn": "design-tokens@v1.9.0",
+      "removeIn": "design-tokens@v2.0.0",
+      "replacement": "--instui-color-icon-on-color",
+      "note": "The alert icon color now uses the shared on-color icon color."
+    },
+    {
+      "token": "--instui-component-banner-ai-background-bottom-gradient-color",
+      "deprecatedIn": "design-tokens@v1.9.0",
+      "removeIn": "design-tokens@v2.0.0",
+      "note": "The upstream AI banner gradient token was removed without a canonical replacement."
+    },
+    {
+      "token": "--instui-component-banner-ai-background-top-gradient-color",
+      "deprecatedIn": "design-tokens@v1.9.0",
+      "removeIn": "design-tokens@v2.0.0",
+      "note": "The upstream AI banner gradient token was removed without a canonical replacement."
+    },
+    {
+      "token": "--instui-component-pill-background-color",
+      "deprecatedIn": "design-tokens@v1.9.0",
+      "removeIn": "design-tokens@v2.0.0",
+      "replacement": "--instui-component-pill-neutral-background-color",
+      "note": "The generic pill background was replaced by the neutral status background."
+    },
+    {
+      "token": "--instui-icon-angry",
+      "deprecatedIn": "ui@11.7.6",
+      "removeIn": "ui@12.0.0",
+      "note": "The upstream icon was removed and has no pantoken implementation reference."
+    },
+    {
+      "token": "--instui-icon-annoyed",
+      "deprecatedIn": "ui@11.7.6",
+      "removeIn": "ui@12.0.0",
+      "note": "The upstream icon was removed and has no pantoken implementation reference."
+    },
+    {
+      "token": "--instui-icon-frown",
+      "deprecatedIn": "ui@11.7.6",
+      "removeIn": "ui@12.0.0",
+      "note": "The upstream icon was removed and has no pantoken implementation reference."
+    },
+    {
+      "token": "--instui-icon-history",
+      "deprecatedIn": "ui@11.7.6",
+      "removeIn": "ui@12.0.0",
+      "replacement": "--instui-icon-rotate-ccw-clock",
+      "note": "The upstream icon was renamed."
+    },
+    {
+      "token": "--instui-icon-laugh",
+      "deprecatedIn": "ui@11.7.6",
+      "removeIn": "ui@12.0.0",
+      "note": "The upstream icon was removed and has no pantoken implementation reference."
+    },
+    {
+      "token": "--instui-icon-meh",
+      "deprecatedIn": "ui@11.7.6",
+      "removeIn": "ui@12.0.0",
+      "note": "The upstream icon was removed and has no pantoken implementation reference."
+    },
+    {
+      "token": "--instui-icon-podcast",
+      "deprecatedIn": "ui@11.7.6",
+      "removeIn": "ui@12.0.0",
+      "note": "The upstream icon was removed and has no pantoken implementation reference."
+    },
+    {
+      "token": "--instui-icon-smile",
+      "deprecatedIn": "ui@11.7.6",
+      "removeIn": "ui@12.0.0",
+      "note": "The upstream icon was removed and has no pantoken implementation reference."
+    },
+    {
+      "token": "--instui-icon-smile-plus",
+      "deprecatedIn": "ui@11.7.6",
+      "removeIn": "ui@12.0.0",
+      "note": "The upstream icon was removed and has no pantoken implementation reference."
+    },
+    {
+      "token": "--instui-icon-trash-2",
+      "deprecatedIn": "ui@11.7.6",
+      "removeIn": "ui@12.0.0",
+      "note": "The upstream icon was removed and has no pantoken implementation reference."
+    }
+  ]
 }

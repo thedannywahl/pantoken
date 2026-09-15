@@ -405,7 +405,7 @@
       mask-size: contain;
       mask-repeat: no-repeat;
       mask-position: center;
-      background-color: var(--instui-component-alert-icon-color);
+      background-color: var(--instui-color-icon-on-color);
     }
   }
 }

@@ -126,6 +126,22 @@ test("banner color modifiers set background and icon-background tokens", () => {
   expect(css).toContain("var(--instui-component-banner-sea-icon-background)");
 });
 
+test("banner color backgrounds resolve through the upstream pastel tokens", () => {
+  for (const theme of ["rebrand", "canvas", "canvasHighContrast"] as const) {
+    const tokens = byTheme(theme);
+    const valueOf = (name: string): string =>
+      tokens.find((token) => token.name === name)?.value ?? "";
+    expect(valueOf("--instui-component-banner-violet-background")).toBe(
+      "var(--instui-color-background-pastel-violet)",
+    );
+    expect(valueOf("--instui-component-banner-sea-background")).toBe(
+      "var(--instui-color-background-pastel-sea)",
+    );
+    expect(valueOf("--instui-color-background-pastel-violet")).not.toBe("");
+    expect(valueOf("--instui-color-background-pastel-sea")).not.toBe("");
+  }
+});
+
 test("banner renders a megaphone icon by default and supports custom icon modifiers", () => {
   const css = bannerRules("instui-");
   expect(css).toContain("--pantoken-banner-glyph: var(--instui-icon-megaphone)");
