@@ -1,4 +1,5 @@
-import { mkdirSync, mkdtempSync, symlinkSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { mkdirSync, mkdtempSync, readFileSync, symlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test";
@@ -9,6 +10,14 @@ import {
 } from "./sync-cloudflare-r2.ts";
 
 const MODULE_PATH = new URL("./sync-cloudflare-r2.ts", import.meta.url).pathname;
+
+/** Empty List Objects response, so tests that don't exercise diffing can ignore the list call. */
+const emptyListResponse = (): Response =>
+  new Response(JSON.stringify({ result: [], result_info: { is_truncated: false } }), {
+    status: 200,
+  });
+
+const md5Hex = (content: string): string => createHash("md5").update(content).digest("hex");
 
 let tempDir: string;
 let r2AssetsDir: string;
@@ -85,6 +94,9 @@ test("syncR2Assets uploads files with authorization and content type headers", a
 
   const uploadedUrls: string[] = [];
   const mockFetch = vi.fn().mockImplementation((url: string, init?: RequestInit) => {
+    if (init?.method !== "PUT") {
+      return Promise.resolve(emptyListResponse());
+    }
     uploadedUrls.push(url);
     expect(init?.method).toBe("PUT");
     expect((init?.headers as Record<string, string>)?.Authorization).toBe("Bearer test-token");
@@ -106,7 +118,7 @@ test("syncR2Assets uploads files with authorization and content type headers", a
   expect(result.totalFiles).toBe(2);
   expect(result.uploadedFiles).toBe(2);
   expect(result.errors).toHaveLength(0);
-  expect(mockFetch).toHaveBeenCalledTimes(2);
+  expect(mockFetch).toHaveBeenCalledTimes(3);
   expect(uploadedUrls).toContain(
     "https://api.cloudflare.com/client/v4/accounts/test-account/r2/buckets/test-bucket/objects/assets/chunks/app.123.js",
   );
@@ -123,6 +135,7 @@ test("syncR2Assets retries rate-limited uploads before reporting success", async
 
   const mockFetch = vi
     .fn()
+    .mockResolvedValueOnce(emptyListResponse())
     .mockResolvedValueOnce(
       new Response("Too Many Requests", { status: 429, headers: { "Retry-After": "0" } }),
     )
@@ -143,7 +156,7 @@ test("syncR2Assets retries rate-limited uploads before reporting success", async
 
   expect(result.uploadedFiles).toBe(1);
   expect(result.errors).toHaveLength(0);
-  expect(mockFetch).toHaveBeenCalledTimes(2);
+  expect(mockFetch).toHaveBeenCalledTimes(3);
   expect(sleepSpy).toHaveBeenCalledWith(0);
   expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Cloudflare R2 sync complete"));
 });
@@ -172,7 +185,8 @@ test("syncR2Assets does not retry non-retryable upload errors", async () => {
     }),
   ).rejects.toThrow(/R2 upload failed/);
 
-  expect(mockFetch).toHaveBeenCalledTimes(1);
+  // one list call (also 401, non-fatal) plus one non-retryable PUT attempt.
+  expect(mockFetch).toHaveBeenCalledTimes(2);
   expect(sleepSpy).not.toHaveBeenCalled();
   expect(errSpy).toHaveBeenCalled();
 });
@@ -221,6 +235,7 @@ test("syncR2Assets retries on network errors using the default sleep implementat
 
   const mockFetch = vi
     .fn()
+    .mockResolvedValueOnce(emptyListResponse())
     .mockRejectedValueOnce(new TypeError("network down"))
     .mockResolvedValueOnce(new Response(null, { status: 200 }));
   const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
@@ -237,7 +252,7 @@ test("syncR2Assets retries on network errors using the default sleep implementat
 
   expect(result.uploadedFiles).toBe(1);
   expect(result.errors).toHaveLength(0);
-  expect(mockFetch).toHaveBeenCalledTimes(2);
+  expect(mockFetch).toHaveBeenCalledTimes(3);
   expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Cloudflare R2 sync complete"));
 });
 
@@ -261,8 +276,8 @@ test("syncR2Assets records an error after exhausting retries on network errors",
     }),
   ).rejects.toThrow(/R2 upload failed/);
 
-  // maxRetries is clamped to a minimum of 1, so one retry attempt is still made.
-  expect(mockFetch).toHaveBeenCalledTimes(2);
+  // one failed list call, plus two PUT attempts (maxRetries is clamped to a minimum of 1).
+  expect(mockFetch).toHaveBeenCalledTimes(3);
   expect(errSpy).toHaveBeenCalled();
 });
 
@@ -274,6 +289,7 @@ test("syncR2Assets honors a parseable Retry-After date header", async () => {
   const retryAt = new Date(Date.now() + 1_000).toUTCString();
   const mockFetch = vi
     .fn()
+    .mockResolvedValueOnce(emptyListResponse())
     .mockResolvedValueOnce(
       new Response("Too Many Requests", { status: 429, headers: { "Retry-After": retryAt } }),
     )
@@ -303,6 +319,7 @@ test("syncR2Assets falls back to the base delay when Retry-After is unparseable"
 
   const mockFetch = vi
     .fn()
+    .mockResolvedValueOnce(emptyListResponse())
     .mockResolvedValueOnce(
       new Response("Too Many Requests", { status: 429, headers: { "Retry-After": "not-a-date" } }),
     )
@@ -351,8 +368,163 @@ test("syncR2Assets falls back to an empty error body when response.text() reject
     }),
   ).rejects.toThrow(/R2 upload failed/);
 
-  expect(mockFetch).toHaveBeenCalledTimes(2);
+  // one failed (ok: false) list call, plus two PUT attempts.
+  expect(mockFetch).toHaveBeenCalledTimes(3);
   expect(errSpy).toHaveBeenCalled();
+});
+
+test("syncR2Assets skips uploading a file whose size and MD5 already match R2", async () => {
+  const file = join(r2AssetsDir, "assets/chunks/unchanged.js");
+  mkdirSync(dirname(file), { recursive: true });
+  const content = "console.log('unchanged');";
+  writeFileSync(file, content);
+
+  const mockFetch = vi.fn().mockImplementation((_url: string, init?: RequestInit) => {
+    if (init?.method === "PUT") {
+      throw new Error("should not upload an unchanged file");
+    }
+    return Promise.resolve(
+      new Response(
+        JSON.stringify({
+          result: [
+            {
+              key: "assets/chunks/unchanged.js",
+              etag: md5Hex(content),
+              size: Buffer.byteLength(content),
+            },
+          ],
+          result_info: { is_truncated: false },
+        }),
+        { status: 200 },
+      ),
+    );
+  });
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
+
+  const result = await syncR2Assets({
+    r2AssetsDir,
+    accountId: "test-account",
+    apiToken: "test-token",
+    dryRun: false,
+    fetchFn: mockFetch as unknown as typeof fetch,
+  });
+
+  expect(result.uploadedFiles).toBe(0);
+  expect(result.skippedFiles).toBe(1);
+  expect(result.errors).toHaveLength(0);
+  expect(mockFetch).toHaveBeenCalledTimes(1);
+  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("1 unchanged"));
+});
+
+test("syncR2Assets re-uploads a file whose remote content differs", async () => {
+  const file = join(r2AssetsDir, "assets/chunks/changed.js");
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, "console.log('new content');");
+
+  const mockFetch = vi.fn().mockImplementation((_url: string, init?: RequestInit) => {
+    if (init?.method === "PUT") {
+      return Promise.resolve(new Response(null, { status: 200 }));
+    }
+    return Promise.resolve(
+      new Response(
+        JSON.stringify({
+          result: [{ key: "assets/chunks/changed.js", etag: md5Hex("stale content"), size: 14 }],
+          result_info: { is_truncated: false },
+        }),
+        { status: 200 },
+      ),
+    );
+  });
+  vi.spyOn(console, "log").mockImplementation(() => {});
+
+  const result = await syncR2Assets({
+    r2AssetsDir,
+    accountId: "test-account",
+    apiToken: "test-token",
+    dryRun: false,
+    fetchFn: mockFetch as unknown as typeof fetch,
+  });
+
+  expect(result.uploadedFiles).toBe(1);
+  expect(result.skippedFiles).toBe(0);
+});
+
+test("syncR2Assets follows List Objects pagination cursors", async () => {
+  const file = join(r2AssetsDir, "assets/chunks/paged.js");
+  mkdirSync(dirname(file), { recursive: true });
+  const content = "console.log('paged');";
+  writeFileSync(file, content);
+
+  const mockFetch = vi.fn().mockImplementation((url: string, init?: RequestInit) => {
+    if (init?.method === "PUT") {
+      throw new Error("should not upload an unchanged file");
+    }
+    const cursor = new URL(url).searchParams.get("cursor");
+    if (!cursor) {
+      return Promise.resolve(
+        new Response(
+          JSON.stringify({ result: [], result_info: { is_truncated: true, cursor: "page-2" } }),
+          { status: 200 },
+        ),
+      );
+    }
+    return Promise.resolve(
+      new Response(
+        JSON.stringify({
+          result: [
+            {
+              key: "assets/chunks/paged.js",
+              etag: md5Hex(content),
+              size: Buffer.byteLength(content),
+            },
+          ],
+          result_info: { is_truncated: false },
+        }),
+        { status: 200 },
+      ),
+    );
+  });
+
+  const result = await syncR2Assets({
+    r2AssetsDir,
+    accountId: "test-account",
+    apiToken: "test-token",
+    dryRun: false,
+    fetchFn: mockFetch as unknown as typeof fetch,
+  });
+
+  expect(result.skippedFiles).toBe(1);
+  expect(result.uploadedFiles).toBe(0);
+  expect(mockFetch).toHaveBeenCalledTimes(2);
+});
+
+test("syncR2Assets uploads everything when listing existing objects fails", async () => {
+  const file = join(r2AssetsDir, "assets/chunks/list-fails.js");
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, "console.log('list-fails');");
+
+  const mockFetch = vi.fn().mockImplementation((_url: string, init?: RequestInit) => {
+    if (init?.method === "PUT") {
+      return Promise.resolve(new Response(null, { status: 200 }));
+    }
+    return Promise.resolve(new Response("Forbidden", { status: 403, statusText: "Forbidden" }));
+  });
+  const errSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+  vi.spyOn(console, "log").mockImplementation(() => {});
+
+  const result = await syncR2Assets({
+    r2AssetsDir,
+    accountId: "test-account",
+    apiToken: "test-token",
+    dryRun: false,
+    fetchFn: mockFetch as unknown as typeof fetch,
+  });
+
+  expect(result.uploadedFiles).toBe(1);
+  expect(result.errors).toHaveLength(0);
+  expect(errSpy).toHaveBeenCalledWith(
+    expect.stringContaining("Could not list existing R2 objects"),
+  );
 });
 
 test("syncR2Assets falls back to the default assets directory under docs/.vitepress", async () => {
@@ -391,6 +563,113 @@ test("syncR2Assets stringifies non-Error rejections in the error report", async 
       fetchFn: mockFetch as unknown as typeof fetch,
     }),
   ).rejects.toThrow(/plain string rejection/);
+});
+
+test("syncR2Assets writes a GITHUB_STEP_SUMMARY table when the env var is set", async () => {
+  const file = join(r2AssetsDir, "assets/chunks/summary.js");
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, "console.log('summary');");
+  const summaryPath = join(tempDir, "step-summary.md");
+  writeFileSync(summaryPath, "");
+
+  const mockFetch = vi.fn().mockImplementation((_url: string, init?: RequestInit) => {
+    if (init?.method === "PUT") return Promise.resolve(new Response(null, { status: 200 }));
+    return Promise.resolve(emptyListResponse());
+  });
+  vi.spyOn(console, "log").mockImplementation(() => {});
+  vi.stubEnv("GITHUB_STEP_SUMMARY", summaryPath);
+
+  try {
+    await syncR2Assets({
+      r2AssetsDir,
+      accountId: "test-account",
+      apiToken: "test-token",
+      bucketName: "test-bucket",
+      dryRun: false,
+      fetchFn: mockFetch as unknown as typeof fetch,
+    });
+  } finally {
+    vi.unstubAllEnvs();
+  }
+
+  const summary = readFileSync(summaryPath, "utf8");
+  expect(summary).toContain("Cloudflare R2 sync");
+  expect(summary).toContain("test-bucket");
+});
+
+test("syncR2Assets tolerates a GITHUB_STEP_SUMMARY path it can't write to", async () => {
+  const file = join(r2AssetsDir, "assets/chunks/summary-fail.js");
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, "console.log('summary-fail');");
+
+  const mockFetch = vi.fn().mockImplementation((_url: string, init?: RequestInit) => {
+    if (init?.method === "PUT") return Promise.resolve(new Response(null, { status: 200 }));
+    return Promise.resolve(emptyListResponse());
+  });
+  vi.spyOn(console, "log").mockImplementation(() => {});
+  // A directory path, not a file: appendFileSync must throw, and the sync must still succeed.
+  vi.stubEnv("GITHUB_STEP_SUMMARY", tempDir);
+
+  try {
+    const result = await syncR2Assets({
+      r2AssetsDir,
+      accountId: "test-account",
+      apiToken: "test-token",
+      dryRun: false,
+      fetchFn: mockFetch as unknown as typeof fetch,
+    });
+    expect(result.uploadedFiles).toBe(1);
+  } finally {
+    vi.unstubAllEnvs();
+  }
+});
+
+test("syncR2Assets logs upload progress on a heartbeat interval", async () => {
+  const file = join(r2AssetsDir, "assets/chunks/slow.js");
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, "console.log('slow');");
+
+  const mockFetch = vi.fn().mockImplementation((_url: string, init?: RequestInit) => {
+    if (init?.method !== "PUT") return Promise.resolve(emptyListResponse());
+    return new Promise((resolveFetch) => {
+      setTimeout(() => resolveFetch(new Response(null, { status: 200 })), 30);
+    });
+  });
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
+
+  await syncR2Assets({
+    r2AssetsDir,
+    accountId: "test-account",
+    apiToken: "test-token",
+    dryRun: false,
+    progressIntervalMs: 5,
+    fetchFn: mockFetch as unknown as typeof fetch,
+  });
+
+  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("sync progress"));
+});
+
+test("syncR2Assets can disable the progress heartbeat", async () => {
+  const file = join(r2AssetsDir, "assets/chunks/no-heartbeat.js");
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, "console.log('no-heartbeat');");
+
+  const mockFetch = vi.fn().mockImplementation((_url: string, init?: RequestInit) => {
+    if (init?.method === "PUT") return Promise.resolve(new Response(null, { status: 200 }));
+    return Promise.resolve(emptyListResponse());
+  });
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
+
+  await syncR2Assets({
+    r2AssetsDir,
+    accountId: "test-account",
+    apiToken: "test-token",
+    dryRun: false,
+    progressIntervalMs: 0,
+    fetchFn: mockFetch as unknown as typeof fetch,
+  });
+
+  expect(logSpy).not.toHaveBeenCalledWith(expect.stringContaining("sync progress"));
 });
 
 test("DEFAULT_R2_UPLOAD_CONCURRENCY is defined", () => {
