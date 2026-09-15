@@ -1,0 +1,33 @@
+how do we resolve these warnings?
+```
+~/docs$ node scripts/build-api-en.ts
+[info] Loaded plugin typedoc-plugin-markdown
+[info] Loaded plugin typedoc-vitepress-theme
+[info] Loaded plugin /Users/dwahl/Scripts/pantoken/plugins/typedoc/demo/dist/index.mjs
+[warning] The blockTags defined in typedoc.json will be overwritten by configuration in tsdoc.json
+[info] markdown generated at ./api
+[warning] Found 0 errors and 1 warnings
+✓ API badges: styled 714 markdown file(s)
+✓ API overview: wrote docs/api/index.md
+```
+
+---
+
+in http://localhost:5173/api/css/alert
+the backgrounds and borders need to be hard-coded, they are overrridden by the custom-theme-colors plugin.
+
+---
+
+the info version icon background doesn't match the rest of the alert body background.
+
+---
+
+the error color doesn't look correct.
+
+---
+
+is the text color correct in light/dark mode on the alerts or should it be the on-color versions?
+
+---
+
+what do the color tokens specify for the component? right now in light mode the icons are white but the text is dark.

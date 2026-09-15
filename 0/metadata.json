@@ -1,0 +1,89 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2K71SKVYZNKJ2TJ40NF38D6",
+  "session_id": "6e6fa463-4da5-44e9-93da-ac175498b991",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-15T19:00:13.026395Z",
+  "branch": "instuiupgrade",
+  "checkpoints_count": 4,
+  "save_step_count": 5,
+  "files_touched": [
+    ".changeset/fixed-alert-colors.md",
+    "formats/components/src/components/alert/alert.css",
+    "formats/components/tests/components/alert.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "83b47851dab3",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 5
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-15T19:00:13.017738Z",
+    "agent_lines": 1,
+    "agent_removed": 20,
+    "human_added": 10,
+    "human_modified": 42,
+    "human_removed": 0,
+    "total_committed": 32,
+    "total_lines_changed": 73,
+    "agent_percentage": 28.767123287671232,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 27,
+      "agent_lines_removed": 34
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 28,
+      "user_lines_removed": 21,
+      "agent_lines_added": 29,
+      "agent_lines_removed": 35,
+      "user_added_per_file": {
+        ".changeset/fixed-alert-colors.md": 1,
+        "formats/components/src/components/alert/alert.css": 20,
+        "formats/components/tests/components/alert.test.ts": 6,
+        "l10n/docs.api.pot": 1
+      },
+      "user_removed_per_file": {
+        ".changeset/fixed-alert-colors.md": 1,
+        "formats/components/src/components/alert/alert.css": 15,
+        "formats/components/tests/components/alert.test.ts": 4,
+        "l10n/docs.api.pot": 1
+      }
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 1,
+      "user_lines_removed": 1,
+      "agent_lines_added": 51,
+      "agent_lines_removed": 50,
+      "user_added_per_file": {
+        ".changeset/fixed-alert-colors.md": 1
+      },
+      "user_removed_per_file": {
+        ".changeset/fixed-alert-colors.md": 1
+      }
+    }
+  ]
+}
