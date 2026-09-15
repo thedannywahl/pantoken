@@ -7,6 +7,7 @@
  * @modifier -color-success — A positive/confirmation message.
  * @modifier -color-warning — A cautionary message.
  * @modifier -color-danger — An error message.
+ * @modifier -color-error — @alias {@link -color-danger}
  * @modifier -without-shadow — Remove the default elevation shadow (InstUI `hasShadow={false}`).
  * @modifier -has-shadow-false — @alias {@link -without-shadow}
  * @modifier -screen-reader-only — Visually hidden but announced.
@@ -34,8 +35,16 @@
  * <div class="pfx-alert -icon-megaphone --mb-md">
  *   An alert with the default <code>info</code> color, and a custom icon.
  * </div>
- * <div class="pfx-alert -color-success">
+ * <div class="pfx-alert -color-success --mb-md">
  *   Congratulations! You're using the "success" color.
+ *   <button class="pfx-close-button" aria-label="Close"></button>
+ * </div>
+ * <div class="pfx-alert -color-error --mb-md">
+ *   Oops! You're using the "error" color.
+ *   <button class="pfx-close-button" aria-label="Close"></button>
+ * </div>
+ * <div class="pfx-alert -color-warning --mb-md">
+ *   Watch out! You're using the "warning" color.
  *   <button class="pfx-close-button" aria-label="Close"></button>
  * </div>
  * ```
@@ -62,10 +71,10 @@
     padding: var(--instui-component-alert-content-padding-vertical)
       var(--instui-component-alert-content-padding-horizontal);
     padding-inline-start: calc(2.5rem + var(--instui-component-alert-content-padding-horizontal));
-    background: var(--instui-component-alert-background);
-    color: var(--instui-component-alert-color);
+    background: #2b7abc;
+    color: var(--instui-color-text-base);
     border: var(--instui-component-alert-border-width) var(--instui-component-alert-border-style)
-      var(--instui-component-alert-info-border-color);
+      #2b7abc;
     border-radius: var(--instui-component-alert-border-radius);
     /* Elevated by default (InstUI's hasShadow defaults to true); -without-shadow opts out. */
     box-shadow: var(--instui-elevation-above);
@@ -73,7 +82,7 @@
     font-size: var(--instui-component-alert-content-font-size);
     font-weight: var(--instui-component-alert-content-font-weight);
     line-height: var(--instui-component-alert-content-line-height);
-    --pantoken-alert-icon-bg: var(--instui-component-alert-info-icon-background);
+    --pantoken-alert-icon-bg: #2b7abc;
     --pantoken-alert-glyph: var(--instui-icon-info);
 
     /* Close/dismiss is optional: pin it in the top-end corner (the button's own box centres the ×, so it
@@ -108,7 +117,7 @@
     inset-block: 0;
     inset-inline-start: 0;
     inline-size: 2.5rem;
-    background: var(--instui-component-alert-icon-color);
+    background: var(--instui-color-icon-on-color);
     -webkit-mask: var(--pantoken-alert-glyph) center / 1.125rem no-repeat;
     mask: var(--pantoken-alert-glyph) center / 1.125rem no-repeat;
   }
@@ -134,25 +143,29 @@
     border: 0;
   }
 
-  &.-color-info {
-    border-color: var(--instui-component-alert-info-border-color);
+  &:is(.-variant-info, .-color-info) {
+    background: #2b7abc;
+    border-color: #2b7abc;
   }
 
-  &.-color-success {
-    border-color: var(--instui-component-alert-success-border-color);
-    --pantoken-alert-icon-bg: var(--instui-component-alert-success-icon-background);
+  &:is(.-variant-success, .-color-success) {
+    background: #03893d;
+    border-color: #03893d;
+    --pantoken-alert-icon-bg: #03893d;
     --pantoken-alert-glyph: var(--instui-icon-circle-check);
   }
 
-  &.-color-warning {
-    border-color: var(--instui-component-alert-warning-border-color);
-    --pantoken-alert-icon-bg: var(--instui-component-alert-warning-icon-background);
+  &:is(.-variant-warning, .-color-warning) {
+    background: light-dark(#f0c16c, #8c6400);
+    border-color: light-dark(#f0c16c, #8c6400);
+    --pantoken-alert-icon-bg: light-dark(#f0c16c, #8c6400);
     --pantoken-alert-glyph: var(--instui-icon-triangle-alert);
   }
 
-  &.-color-danger {
-    border-color: var(--instui-component-alert-danger-border-color);
-    --pantoken-alert-icon-bg: var(--instui-component-alert-danger-icon-background);
+  &:is(.-variant-error, .-color-danger, .-color-error) {
+    background: #e62429;
+    border-color: #e62429;
+    --pantoken-alert-icon-bg: #e62429;
     --pantoken-alert-glyph: var(--instui-icon-circle-x);
   }
 
@@ -195,27 +208,5 @@
   /* Deprecated aliases paired with supported modifiers via :is() for backward compatibility. */
   &:is(.-has-shadow-false, .-without-shadow) {
     box-shadow: none;
-  }
-
-  &:is(.-variant-info, .-color-info) {
-    border-color: var(--instui-component-alert-info-border-color);
-  }
-
-  &:is(.-variant-success, .-color-success) {
-    border-color: var(--instui-component-alert-success-border-color);
-    --pantoken-alert-icon-bg: var(--instui-component-alert-success-icon-background);
-    --pantoken-alert-glyph: var(--instui-icon-circle-check);
-  }
-
-  &:is(.-variant-warning, .-color-warning) {
-    border-color: var(--instui-component-alert-warning-border-color);
-    --pantoken-alert-icon-bg: var(--instui-component-alert-warning-icon-background);
-    --pantoken-alert-glyph: var(--instui-icon-triangle-alert);
-  }
-
-  &:is(.-variant-error, .-color-danger) {
-    border-color: var(--instui-component-alert-danger-border-color);
-    --pantoken-alert-icon-bg: var(--instui-component-alert-danger-icon-background);
-    --pantoken-alert-glyph: var(--instui-icon-circle-x);
   }
 }

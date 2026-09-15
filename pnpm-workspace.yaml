@@ -20,13 +20,13 @@ catalog:
   "@types/node": ^26.5.1
   typescript: ^7.0.2
   arkregex: ^0.0.8
-  vite: npm:@voidzero-dev/vite-plus-core@0.3.1
-  vite-plus: 0.3.1
+  vite: npm:@voidzero-dev/vite-plus-core@0.3.2
+  vite-plus: 0.3.2
   # Upstream Instructure sources. The design-tokens repo is GitHub-only and versioned independently of
   # the 11.7.x line, so it's pinned to a release tag (its package.json version is unreliable — stuck at
   # 1.0.0 across tags — so the tag + resolved commit are the provenance the upgrade pipeline records).
-  "@instructure/instructure-design-tokens": "github:instructure/instructure-design-tokens#v1.8.0"
-  "@instructure/ui-icons": ^11.7.5
+  "@instructure/instructure-design-tokens": "github:instructure/instructure-design-tokens#v1.9.0"
+  "@instructure/ui-icons": ^11.7.6
   lucide: ^1.23.0
   # Native token transforms
   style-dictionary: ^5.5.3
@@ -39,9 +39,9 @@ catalog:
   # Localization-engine MF2 messages (Phase 3)
   messageformat: ^4.0.0
   # markdown-it integration
-  markdown-it: ^15.0.1
+  markdown-it: ^15.0.2
   # Brand icons (plugin)
-  simple-icons: ^16.30.0
+  simple-icons: ^16.31.0
   # React markdown integration
   react: ^19.3.0
   react-dom: ^19.3.0
@@ -58,28 +58,28 @@ catalog:
   svg2ttf: ^6.1.0
   ttf2woff2: ^8.0.1
   "@mdx-js/react": ^3.1.1
-  "@instructure/ui-heading": ^11.7.5
-  "@instructure/ui-text": ^11.7.5
-  "@instructure/ui-link": ^11.7.5
-  "@instructure/ui-list": ^11.7.5
-  "@instructure/ui-table": ^11.7.5
-  "@instructure/ui-view": ^11.7.5
-  "@instructure/ui-img": ^11.7.5
-  "@instructure/ui-alerts": ^11.7.5
+  "@instructure/ui-heading": ^11.7.6
+  "@instructure/ui-text": ^11.7.6
+  "@instructure/ui-link": ^11.7.6
+  "@instructure/ui-list": ^11.7.6
+  "@instructure/ui-table": ^11.7.6
+  "@instructure/ui-view": ^11.7.6
+  "@instructure/ui-img": ^11.7.6
+  "@instructure/ui-alerts": ^11.7.6
   core-js: ^3.50.0
   # Property-based testing
-  fast-check: ^4.9.0
+  fast-check: ^4.10.0
   # Codecov bundle analysis plugin
   "@codecov/vite-plugin": ^2.0.1
   # Quality gates
   "@commitlint/cli": ^21.2.2
   "@commitlint/config-conventional": ^21.2.2
-  "@changesets/cli": ^3.0.2
+  "@changesets/cli": ^3.0.3
   "@vitest/coverage-v8": 4.1.11
   markdownlint-cli2: ^0.23.2
   "@manypkg/cli": ^0.25.1
-  fallow: ^3.24.1
-  happy-dom: ^20.14.3
+  fallow: ^3.25.0
+  happy-dom: ^20.14.5
   dompurify: ^3.4.15
   snyk: ^1.1307.2
   publint: ^0.3.24
@@ -97,11 +97,11 @@ catalog:
   typedoc: ^0.28.20
   typedoc-plugin-markdown: ^4.13.0
   typedoc-vitepress-theme: ^1.1.4
-  vitepress-plugin-llms: ^1.13.5
+  vitepress-plugin-llms: ^1.14.0
   # CLI framework (commander-based scaffolding CLI rebuild)
   commander: ^15.0.0
   "@commander-js/extra-typings": ^15.0.0
-  "@clack/prompts": ^1.8.0
+  "@clack/prompts": ^1.8.1
   "@bomb.sh/tab": ^0.0.22
   # @cssdoc/* toolchain — @cssdoc/markdown arrives transitively
   # via @cssdoc/typedoc; the entries below are pantoken's direct dependencies.

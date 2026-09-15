@@ -236,13 +236,8 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-angry": {
-      "hash": "04fe20cbeb9075b2",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-annoyed": {
-      "hash": "f5e1b3291a2ea7dd",
+    "--instui-icon-angle": {
+      "hash": "90de69042fd23b30",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -560,7 +555,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-asterisk": {
-      "hash": "7209d0950c19dd2a",
+      "hash": "125035498e5b4d5c",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -581,6 +576,16 @@
     },
     "--instui-icon-audio-lines": {
       "hash": "75526c7d6c7c0497",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-audio-lines-off": {
+      "hash": "5901e05cc7b95b3c",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-audio-lines-x": {
+      "hash": "bf6e3839f6ca43bb",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -636,7 +641,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-badge-check": {
-      "hash": "8f4dfe1486286562",
+      "hash": "69eaa6ba3b285e3f",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -768,7 +773,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-barrel": {
-      "hash": "4a68cdb8982f6a02",
+      "hash": "6936c88b82d90dd1",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -848,7 +853,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-beef": {
-      "hash": "34b5924baa5ee259",
+      "hash": "f13ffef9bfb060d7",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -978,7 +983,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-blend": {
-      "hash": "b1b953f897031ce2",
+      "hash": "e5c044ee51d80c0a",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -1118,17 +1123,17 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-book-open": {
-      "hash": "4bca6761da03177d",
+      "hash": "0de34e3e841cb9f9",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-book-open-check": {
-      "hash": "b8fe70ee23670814",
+      "hash": "e4af6d35c313aba7",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-book-open-text": {
-      "hash": "c6878bdbfc4f4d71",
+      "hash": "20b2deca64bc8df0",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -1168,7 +1173,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-book-x": {
-      "hash": "c329ca1c8810d3ce",
+      "hash": "bcd536b380cec776",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -1289,6 +1294,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-bridge": {
+      "hash": "c50da2ec1d065dff",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-briefcase": {
       "hash": "adcd26ce38e7c0a4",
       "source": "lucide",
@@ -1316,6 +1326,16 @@
     },
     "--instui-icon-broccoli": {
       "hash": "35572bbb7a338bc8",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-broom": {
+      "hash": "57d03fd80a87965a",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-broom-sparkles": {
+      "hash": "d91f59489a44bf24",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -1401,109 +1421,109 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-calendar": {
-      "hash": "a9aa2d02fe746739",
+      "hash": "7c6479c13f34d6e9",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-calendar-1": {
-      "hash": "80e74d9cc0303e81",
+      "hash": "2e027062ff01f299",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-calendar-arrow-down": {
       "bidirectional": true,
-      "hash": "c446deca53d360e3",
+      "hash": "e05c1f92101ca8ed",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-calendar-arrow-up": {
       "bidirectional": true,
-      "hash": "ff250b225989f7ce",
+      "hash": "4e57b2f64f7ff60f",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-calendar-check": {
-      "hash": "1ec756db9d90804d",
+      "hash": "590da773b1dd1793",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-calendar-check-2": {
-      "hash": "6c5639af14663a7e",
+      "hash": "f0cebe8bf8e6f969",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-calendar-clock": {
-      "hash": "f6423a8219858d94",
+      "hash": "1620d3675fb24220",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-calendar-cog": {
-      "hash": "3ba20dca52c3111a",
+      "hash": "b8e835ea8f4654bf",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-calendar-days": {
-      "hash": "c743bd2725ac2e20",
+      "hash": "183ae2b0d19002f6",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-calendar-fold": {
-      "hash": "3d633f05615a3a60",
+      "hash": "5fa1bd09b8e3fde6",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-calendar-heart": {
-      "hash": "ad95d0ae60e7316d",
+      "hash": "0ddd42dc2176a9e0",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-calendar-minus": {
-      "hash": "82044e664801a76a",
+      "hash": "0e73a930bf38399f",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-calendar-minus-2": {
-      "hash": "ac9d7723ed2229e4",
+      "hash": "6f0a13a49bf893ed",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-calendar-off": {
-      "hash": "fe00d12aaf7c11e7",
+      "hash": "45fd2f3e4327c102",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-calendar-plus": {
-      "hash": "7a22076b50a4ca23",
+      "hash": "550109242c7d7634",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-calendar-plus-2": {
-      "hash": "96932449436dde94",
+      "hash": "700b74ad12875365",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-calendar-range": {
-      "hash": "b6e0c93417789ebc",
+      "hash": "52fa57c73a36855a",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-calendar-search": {
-      "hash": "b340a5eb1662d462",
+      "hash": "96d5bf051ecef1a8",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-calendar-sync": {
-      "hash": "5b4c30c990b53a3f",
+      "hash": "04f1762798ce9fbf",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-calendar-x": {
-      "hash": "3e73ea343192a2ef",
+      "hash": "df585250b2432858",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-calendar-x-2": {
-      "hash": "d95597c43d56a130",
+      "hash": "265db0fdaa25eff5",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -1519,6 +1539,16 @@
     },
     "--instui-icon-camera-off": {
       "hash": "141bc701c792e8de",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-can": {
+      "hash": "3a79634f72a0801c",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-can-soda": {
+      "hash": "96fb837a35dcb583",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -1571,6 +1601,11 @@
     },
     "--instui-icon-car": {
       "hash": "abb9886690013d16",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-car-battery": {
+      "hash": "4bd53d01da770c57",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2008,7 +2043,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-circle-check": {
-      "hash": "3a43a987c84e1002",
+      "hash": "ba275a581425b3a4",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2057,7 +2092,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-circle-dot": {
-      "hash": "2501f3feb122109b",
+      "hash": "6b13e4fd190cbd12",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2073,6 +2108,11 @@
     },
     "--instui-icon-circle-equal": {
       "hash": "607bbdb414a9a68a",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-circle-euro": {
+      "hash": "2383d1439c2610ea",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2275,7 +2315,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-clipboard-x": {
-      "hash": "56b53fbe914cbca0",
+      "hash": "b6e10163f7faa9f1",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2374,7 +2414,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-clock-check": {
-      "hash": "d91abf151d15e048",
+      "hash": "b04f85da48f743b4",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2568,7 +2608,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-columns-3-cog": {
-      "hash": "44107ccf9c556891",
+      "hash": "45895b52b7d9b8e2",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2630,12 +2670,12 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-contact": {
-      "hash": "523f2d4d76f6d07d",
+      "hash": "bc8a408f20143595",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-contact-round": {
-      "hash": "36d06da058cc9133",
+      "hash": "f62eeab2ad4b1493",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2685,7 +2725,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-copy-x": {
-      "hash": "cf031a40be3f7356",
+      "hash": "c3f759a1d25f55fb",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2777,6 +2817,31 @@
     },
     "--instui-icon-credit-card": {
       "hash": "3d4058b620cb07c4",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-credit-card-check": {
+      "hash": "89eb3c458caf2c5a",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-credit-card-minus": {
+      "hash": "fce04353fb454262",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-credit-card-plus": {
+      "hash": "16b90f2e0df0f5b9",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-credit-card-reader": {
+      "hash": "2dbfdfeca95e8c47",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-credit-card-x": {
+      "hash": "8bd687eaa08c633e",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -3025,22 +3090,27 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-door-closed": {
-      "hash": "a1f09ca72baf3ee3",
+      "hash": "15fc106166db34ed",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-door-closed-locked": {
-      "hash": "bf3bd1fdb1771bba",
+      "hash": "f0f0ed78842432db",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-door-open": {
-      "hash": "3aa5df9236d893b1",
+      "hash": "a4ec0f57d310d24d",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-door-stairwell": {
+      "hash": "26540c9eb918b657",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-dot": {
-      "hash": "5ef01261a5687267",
+      "hash": "3e6859d30e4e2c22",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -3139,6 +3209,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-eject": {
+      "hash": "1a1d3476720216c5",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-elevate-logo": {
       "hash": "98e5fdabf406dfa6",
       "source": "custom",
@@ -3157,6 +3232,11 @@
     },
     "--instui-icon-ellipsis-vertical": {
       "hash": "31525b2054864176",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-engine": {
+      "hash": "f17a8fb02be55737",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -3181,7 +3261,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-ethernet-port": {
-      "hash": "6aa740db7e921f4a",
+      "hash": "9b5860c904059c50",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -3225,6 +3305,41 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-face-angry": {
+      "hash": "28f1e5c69a7fccdd",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-face-expressionless": {
+      "hash": "b3f474391d79092d",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-face-grinning": {
+      "hash": "0d1e92b6d308ad6c",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-face-neutral": {
+      "hash": "daf2641b47c92a30",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-face-slightly-frowning": {
+      "hash": "ddab3b098f2df24f",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-face-slightly-smiling": {
+      "hash": "126d284b1f0d65fe",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-face-slightly-smiling-plus": {
+      "hash": "7b1e216935b5ae68",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-factory": {
       "hash": "2bc7f740fd4595a3",
       "source": "lucide",
@@ -3249,7 +3364,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-feather": {
-      "hash": "3c346f6a3c06a73f",
+      "hash": "52f87e818bf91567",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -3284,7 +3399,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-file-box": {
-      "hash": "d9859f9a9602d769",
+      "hash": "7181876c30824d3a",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -3873,11 +3988,6 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-frown": {
-      "hash": "e5e8709785534697",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
     "--instui-icon-fuel": {
       "hash": "9907e4433d64a727",
       "source": "lucide",
@@ -3900,6 +4010,11 @@
     },
     "--instui-icon-funnel-x": {
       "hash": "c35a42924eb5024e",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-galaxy": {
+      "hash": "ddd642602fb84b1c",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -3965,8 +4080,18 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-germ": {
+      "hash": "42ca05b71cc4c736",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-germ-off": {
+      "hash": "05a548a873ee2c83",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-ghost": {
-      "hash": "3b95eb2d40c57b7a",
+      "hash": "8abe9d0bdea5ceeb",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4026,7 +4151,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-git-merge-conflict": {
-      "hash": "2d5c0ec2b7c32bcc",
+      "hash": "d292e829712f4ca4",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4042,7 +4167,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-git-pull-request-closed": {
-      "hash": "fc83e392c40b9a0a",
+      "hash": "30a161fe897a5a29",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4133,7 +4258,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-grid-2x2-x": {
-      "hash": "86543f5731fb216f",
+      "hash": "51e01c183238b298",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4278,7 +4403,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-hdmi-port": {
-      "hash": "91bb1939f2989036",
+      "hash": "4c2506d2a3f3e300",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4395,11 +4520,6 @@
     },
     "--instui-icon-highlighter": {
       "hash": "a2515130bc8ed984",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-history": {
-      "hash": "56cfa70ed40a5629",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4632,7 +4752,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-key": {
-      "hash": "82e34459ce5323c9",
+      "hash": "b7a55fc0fbc1de21",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4731,8 +4851,15 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-laugh": {
-      "hash": "b79eb5e769b89e19",
+    "--instui-icon-layer-arrow-down": {
+      "bidirectional": true,
+      "hash": "e4b14feeed80a6ff",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-layer-arrow-up": {
+      "bidirectional": true,
+      "hash": "1f78e03140373f6e",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4743,6 +4870,18 @@
     },
     "--instui-icon-layers-2": {
       "hash": "4eeb366188340956",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-layers-arrow-down": {
+      "bidirectional": true,
+      "hash": "e4a5b7c37369d8cb",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-layers-arrow-up": {
+      "bidirectional": true,
+      "hash": "43bd98032157d20f",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4758,6 +4897,11 @@
     },
     "--instui-icon-layout-dashboard": {
       "hash": "f565742b29d808ef",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-layout-freeform": {
+      "hash": "c8fbc321d922dcfd",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4788,7 +4932,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-leaf": {
-      "hash": "44f64faf84eaea7d",
+      "hash": "6046311b8e65fa03",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4839,6 +4983,11 @@
     },
     "--instui-icon-lightbulb-off": {
       "hash": "f250250e6313d56e",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-lighthouse": {
+      "hash": "ddb81015a6dca837",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4908,6 +5057,11 @@
       "hash": "21c7f93fae9355c2",
       "source": "custom",
       "style": "Custom",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-list-clock": {
+      "hash": "9e35ffebb3e43b04",
+      "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-list-collapse": {
@@ -5123,6 +5277,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-mail-badge": {
+      "hash": "b4876becd04c6113",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-mail-check": {
       "hash": "82e0b3726f79c505",
       "source": "lucide",
@@ -5134,6 +5293,11 @@
       "style": "Custom",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-mail-clock": {
+      "hash": "e067e0d891a1681b",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-mail-minus": {
       "hash": "40e76617cd450eb5",
       "source": "lucide",
@@ -5141,6 +5305,11 @@
     },
     "--instui-icon-mail-open": {
       "hash": "90e2220c1ebab60b",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-mail-pen": {
+      "hash": "34f14e20d64ead6f",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -5165,7 +5334,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-mail-x": {
-      "hash": "1fca9fabd5f03066",
+      "hash": "2563bd39e49cae41",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -5322,11 +5491,6 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-meh": {
-      "hash": "b169c88800b1d800",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
     "--instui-icon-memory-stick": {
       "hash": "5e338220078f4e8b",
       "source": "lucide",
@@ -5348,7 +5512,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-message-circle-check": {
-      "hash": "16901158fb4fac26",
+      "hash": "c3b8efaed0063e71",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -5359,6 +5523,11 @@
     },
     "--instui-icon-message-circle-dashed": {
       "hash": "1f5fe477262737ca",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-message-circle-dashed-check": {
+      "hash": "07710281f9375eca",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -5504,8 +5673,18 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-mic-audio-lines": {
+      "hash": "f12f647685e1c412",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-mic-off": {
       "hash": "a8c622825c964a38",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-mic-signal": {
+      "hash": "ef4e81cbc581c7c7",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -5526,6 +5705,11 @@
     },
     "--instui-icon-microwave": {
       "hash": "980bd313295a4d42",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-midi-port": {
+      "hash": "e5409f3f2f1b353b",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -5646,6 +5830,21 @@
     },
     "--instui-icon-moon-star": {
       "hash": "f8388b0f98d7d5f6",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-mop": {
+      "hash": "cb77e8336cf7d073",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-mop-sparkles": {
+      "hash": "acfe1fd69001a231",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-mosque": {
+      "hash": "20df99666501ca4c",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -5918,7 +6117,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-option": {
-      "hash": "d3e646effedb7864",
+      "hash": "c16efc11eb12844e",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -5998,7 +6197,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-panda": {
-      "hash": "3352ba87b4a51aab",
+      "hash": "7f96dd978945cdbb",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -6287,7 +6486,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-piano": {
-      "hash": "aa314ca999275f70",
+      "hash": "c6f5b6ff6608f112",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -6389,6 +6588,21 @@
       "style": "Custom",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-playing-card": {
+      "hash": "afa7e07680a5d340",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-playing-cards": {
+      "hash": "108a28e3a504b003",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-playing-cards-fan": {
+      "hash": "2e5df4441d9318ac",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-plug": {
       "hash": "840ccc4c58172d38",
       "source": "lucide",
@@ -6411,11 +6625,6 @@
     },
     "--instui-icon-pocket-knife": {
       "hash": "848c845fb38aaee4",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-podcast": {
-      "hash": "b25b5c28d0877a5b",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -6772,6 +6981,16 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-robot-arm": {
+      "hash": "2aac7f963f67726a",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-robot-vacuum": {
+      "hash": "a100d3197e53d348",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-rocket": {
       "hash": "5a1af12e115a8473",
       "source": "lucide",
@@ -6808,6 +7027,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-rotate-ccw-clock": {
+      "hash": "56cfa70ed40a5629",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-rotate-ccw-key": {
       "hash": "6ac91e815af2a3ed",
       "source": "lucide",
@@ -6820,6 +7044,11 @@
     },
     "--instui-icon-rotate-cw": {
       "hash": "ad23a8c9c95d5226",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-rotate-cw-fading-clock": {
+      "hash": "1df9d94a02ec27ef",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -6963,6 +7192,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-scan-box": {
+      "hash": "c9b6a5d315f9e15d",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-scan-eye": {
       "hash": "ddf80d193a4505f0",
       "source": "lucide",
@@ -6990,6 +7224,11 @@
     },
     "--instui-icon-scan-search": {
       "hash": "a37231c3679d0eda",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-scan-square": {
+      "hash": "34375db4d835b1a4",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7125,6 +7364,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-server-plus": {
+      "hash": "7c63b5f9be22194c",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-settings": {
       "hash": "54afc779e6cac2ea",
       "source": "lucide",
@@ -7205,6 +7449,16 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-shield-keyhole": {
+      "hash": "82eb5722acc3dcca",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-shield-lock": {
+      "hash": "81810d559da40939",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-shield-minus": {
       "hash": "5073c69aa144b1b5",
       "source": "lucide",
@@ -7236,7 +7490,12 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-ship": {
-      "hash": "1fbbd840788607d0",
+      "hash": "a01a48be35005687",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-ship-cargo": {
+      "hash": "fcf1406c7118ae77",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7261,7 +7520,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-shopping-cart": {
-      "hash": "a1bed5f7744b7630",
+      "hash": "ca94ecec8c5cd50b",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7269,6 +7528,16 @@
       "hash": "a63f48b5f2ded3c5",
       "source": "custom",
       "style": "Custom",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-shopping-cart-minus": {
+      "hash": "0a2bf0c4802f0a5b",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-shopping-cart-plus": {
+      "hash": "1fee43d19a192de4",
+      "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-shovel": {
@@ -7287,7 +7556,12 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-shrimp": {
-      "hash": "f9e2e7bb9185d62f",
+      "hash": "1983a754cb1c3e4c",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-shrimp-off": {
+      "hash": "ac7e111211b8ae40",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7408,16 +7682,6 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-smile": {
-      "hash": "f61d5e556acbdbe0",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-smile-plus": {
-      "hash": "dc5782ee2ee4d7df",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
     "--instui-icon-snail": {
       "hash": "b47e541442d916e8",
       "source": "lucide",
@@ -7485,7 +7749,7 @@
       "viewBox": "0 0 1920 1920"
     },
     "--instui-icon-spell-check": {
-      "hash": "d2bfe7003edec830",
+      "hash": "071de9856d9b43ff",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7634,7 +7898,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-square-bottom-dashed-scissors": {
-      "hash": "0885a43e5f7a433e",
+      "hash": "80f26897804ef15b",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7654,7 +7918,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-square-check": {
-      "hash": "fee2268a36fe15bf",
+      "hash": "6e09d18a229b47ab",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7727,6 +7991,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-square-dimensions": {
+      "hash": "f67ac95971a49455",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-square-divide": {
       "hash": "4e3b6c143fa3adf2",
       "source": "lucide",
@@ -7739,6 +8008,11 @@
     },
     "--instui-icon-square-equal": {
       "hash": "8264193cfe0afdd0",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-exclamation-point": {
+      "hash": "2eca2d47c9289ca2",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7774,6 +8048,11 @@
     },
     "--instui-icon-square-mouse-pointer": {
       "hash": "acdddee5d03043f9",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-off": {
+      "hash": "b177ea1f9c9ef7b8",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7838,7 +8117,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-square-scissors": {
-      "hash": "2a9264e11d627c58",
+      "hash": "fe6c22a24b200831",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7859,12 +8138,12 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-square-split-horizontal": {
-      "hash": "0384318b719f5030",
+      "hash": "cc3d784ffbcb7231",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-square-split-vertical": {
-      "hash": "1e3b0b726909c26e",
+      "hash": "07773c4535e746b4",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7890,6 +8169,11 @@
     },
     "--instui-icon-square-terminal": {
       "hash": "94b945a9b6e8d60b",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-text": {
+      "hash": "82cafc435412f64e",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -8155,12 +8439,12 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-sword": {
-      "hash": "3a9c611dcbf893a3",
+      "hash": "26ebb07568adc32a",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-swords": {
-      "hash": "719699d13926abae",
+      "hash": "5a465eae1031c28b",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -8576,7 +8860,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-toolbox": {
-      "hash": "baa01ceb5fd46c5c",
+      "hash": "ea84ad1174132567",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -8625,6 +8909,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-trailer": {
+      "hash": "2d8413f51daceefd",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-train-front": {
       "hash": "b0cce578817757b3",
       "source": "lucide",
@@ -8651,11 +8940,6 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-trash": {
-      "hash": "ef45de0f14c3fae2",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-trash-2": {
       "hash": "488f0449c69151b6",
       "source": "lucide",
       "viewBox": "0 0 24 24"
@@ -8717,7 +9001,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-trophy": {
-      "hash": "b2a686a47c78da4b",
+      "hash": "6c039ebdc161d084",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -8846,6 +9130,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-usb-c-port": {
+      "hash": "18b41c8f225d387f",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-user": {
       "hash": "259ba857bc693616",
       "source": "lucide",
@@ -8958,12 +9247,17 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-user-round-x": {
-      "hash": "1dd9ef59c1865384",
+      "hash": "5cd5d37019d86337",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-user-search": {
       "hash": "dd0fcca117cc4fb1",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-user-shield": {
+      "hash": "51d499f780799657",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -9017,8 +9311,13 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-vector-polygon": {
+      "hash": "0926d3f1d58c7ff3",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-vector-square": {
-      "hash": "4136fcbf0afea3f1",
+      "hash": "981cdc934b45de31",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -9078,6 +9377,16 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-virus": {
+      "hash": "c12373b07f1bb9f2",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-virus-off": {
+      "hash": "a055421af6ef7ff6",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-voicemail": {
       "hash": "c49bef8c6059f95c",
       "source": "lucide",
@@ -9109,7 +9418,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-volume-x": {
-      "hash": "d0dfe89b72a8578b",
+      "hash": "6219be87be5f5545",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -9235,6 +9544,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-whistle": {
+      "hash": "efce835ed31ccc03",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-whole-word": {
       "hash": "5655854dbb91e7f0",
       "source": "lucide",
@@ -9332,12 +9646,12 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-zap": {
-      "hash": "80dec647a4e80b84",
+      "hash": "103213c94cf37e3a",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-zap-off": {
-      "hash": "c4aae6714871d5a9",
+      "hash": "e71c017b22c6d109",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -9419,13 +9733,13 @@
   },
   "provenance": {
     "designTokens": {
-      "commit": "b85c96436131df6a23174a54bcbd3b03a5da1b8a",
+      "commit": "3c6a96cca75529937fabefd4db2c57524e8c0be4",
       "package": "@instructure/instructure-design-tokens",
-      "ref": "v1.8.0"
+      "ref": "v1.9.0"
     },
     "uiIcons": {
       "package": "@instructure/ui-icons",
-      "resolved": "11.7.5"
+      "resolved": "11.7.6"
     }
   },
   "themes": {
@@ -10919,6 +11233,12 @@
         "syntax": "*",
         "value": "var(--instui-primitive-color-grey-grey150)"
       },
+      "--instui-color-background-mobile-nav": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-grey-grey10",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-grey-grey10)"
+      },
       "--instui-color-background-muted": {
         "inherits": true,
         "refersTo": "--instui-primitive-color-grey-grey10",
@@ -10967,17 +11287,77 @@
         "syntax": "*",
         "value": "var(--instui-primitive-color-white)"
       },
+      "--instui-color-background-pastel-aurora": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-aurora-aurora20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-aurora-aurora20)"
+      },
+      "--instui-color-background-pastel-error": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-red-red20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-red-red20)"
+      },
+      "--instui-color-background-pastel-info": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-blue-blue20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-blue-blue20)"
+      },
+      "--instui-color-background-pastel-neutral": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-grey-grey20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-grey-grey20)"
+      },
+      "--instui-color-background-pastel-orange": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-orange-orange20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-orange-orange20)"
+      },
+      "--instui-color-background-pastel-plum": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-plum-plum20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-plum-plum20)"
+      },
       "--instui-color-background-pastel-sea": {
         "inherits": true,
         "refersTo": "--instui-primitive-color-sea-sea20",
         "syntax": "*",
         "value": "var(--instui-primitive-color-sea-sea20)"
       },
+      "--instui-color-background-pastel-sky": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-sky-sky20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-sky-sky20)"
+      },
+      "--instui-color-background-pastel-stone": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-stone-stone20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-stone-stone20)"
+      },
+      "--instui-color-background-pastel-success": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-green-green20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-green-green20)"
+      },
       "--instui-color-background-pastel-violet": {
         "inherits": true,
         "refersTo": "--instui-primitive-color-violet-violet20",
         "syntax": "*",
         "value": "var(--instui-primitive-color-violet-violet20)"
+      },
+      "--instui-color-background-pastel-warning": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-honey-honey20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-honey-honey20)"
       },
       "--instui-color-background-success": {
         "inherits": true,
@@ -11417,9 +11797,9 @@
       },
       "--instui-color-icon-warning": {
         "inherits": true,
-        "refersTo": "--instui-primitive-color-orange-orange100",
+        "refersTo": "--instui-primitive-color-honey-honey100",
         "syntax": "*",
-        "value": "var(--instui-primitive-color-orange-orange100)"
+        "value": "var(--instui-primitive-color-honey-honey100)"
       },
       "--instui-color-institutional-brand-button-primary-bgd": {
         "inherits": true,
@@ -11486,6 +11866,12 @@
         "refersTo": "--instui-primitive-color-blue-blue100",
         "syntax": "*",
         "value": "var(--instui-primitive-color-blue-blue100)"
+      },
+      "--instui-color-mobile-course": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-plum-plum110",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-plum-plum110)"
       },
       "--instui-color-stroke-accent-ash": {
         "inherits": true,
@@ -11957,9 +12343,9 @@
       },
       "--instui-color-stroke-warning": {
         "inherits": true,
-        "refersTo": "--instui-primitive-color-orange-orange100",
+        "refersTo": "--instui-primitive-color-honey-honey100",
         "syntax": "*",
-        "value": "var(--instui-primitive-color-orange-orange100)"
+        "value": "var(--instui-primitive-color-honey-honey100)"
       },
       "--instui-color-text-accent-ash": {
         "inherits": true,
@@ -12490,10 +12876,11 @@
         "value": "var(--instui-spacing-space-xl)"
       },
       "--instui-component-alert-background": {
+        "deprecated": true,
         "inherits": true,
-        "refersTo": "--instui-color-background-elevated-surface-base",
+        "refersTo": "--instui-component-alert-info-background",
         "syntax": "*",
-        "value": "var(--instui-color-background-elevated-surface-base)"
+        "value": "var(--instui-component-alert-info-background)"
       },
       "--instui-component-alert-border-radius": {
         "inherits": true,
@@ -12523,10 +12910,11 @@
         "value": "0.5rem"
       },
       "--instui-component-alert-color": {
+        "deprecated": true,
         "inherits": true,
-        "refersTo": "--instui-color-institutional-brand-font-color-dark",
+        "refersTo": "--instui-color-text-base",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-font-color-dark)"
+        "value": "var(--instui-color-text-base)"
       },
       "--instui-component-alert-content-font-family": {
         "inherits": true,
@@ -12564,7 +12952,25 @@
         "syntax": "*",
         "value": "var(--instui-spacing-space-md)"
       },
+      "--instui-component-alert-danger-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-error",
+        "syntax": "*",
+        "value": "var(--instui-color-background-error)"
+      },
+      "--instui-component-alert-danger-background-inline": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
       "--instui-component-alert-danger-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-error",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-error)"
+      },
+      "--instui-component-alert-danger-border-color-inline": {
         "inherits": true,
         "refersTo": "--instui-color-stroke-error",
         "syntax": "*",
@@ -12577,12 +12983,49 @@
         "value": "var(--instui-color-background-error)"
       },
       "--instui-component-alert-icon-color": {
+        "deprecated": true,
         "inherits": true,
         "refersTo": "--instui-color-icon-on-color",
         "syntax": "*",
         "value": "var(--instui-color-icon-on-color)"
       },
+      "--instui-component-alert-icon-padding-left": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-sm)"
+      },
+      "--instui-component-alert-icon-padding-right": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-sm)"
+      },
+      "--instui-component-alert-icon-padding-vertical": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-lg",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-lg)"
+      },
+      "--instui-component-alert-info-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-info",
+        "syntax": "*",
+        "value": "var(--instui-color-background-info)"
+      },
+      "--instui-component-alert-info-background-inline": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
       "--instui-component-alert-info-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-info",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-info)"
+      },
+      "--instui-component-alert-info-border-color-inline": {
         "inherits": true,
         "refersTo": "--instui-color-stroke-info",
         "syntax": "*",
@@ -12594,7 +13037,25 @@
         "syntax": "*",
         "value": "var(--instui-color-background-info)"
       },
+      "--instui-component-alert-success-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-success",
+        "syntax": "*",
+        "value": "var(--instui-color-background-success)"
+      },
+      "--instui-component-alert-success-background-inline": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
       "--instui-component-alert-success-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-success",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-success)"
+      },
+      "--instui-component-alert-success-border-color-inline": {
         "inherits": true,
         "refersTo": "--instui-color-stroke-success",
         "syntax": "*",
@@ -12606,7 +13067,25 @@
         "syntax": "*",
         "value": "var(--instui-color-background-success)"
       },
+      "--instui-component-alert-warning-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
+      "--instui-component-alert-warning-background-inline": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
       "--instui-component-alert-warning-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-warning",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-warning)"
+      },
+      "--instui-component-alert-warning-border-color-inline": {
         "inherits": true,
         "refersTo": "--instui-color-stroke-warning",
         "syntax": "*",
@@ -12614,9 +13093,9 @@
       },
       "--instui-component-alert-warning-icon-background": {
         "inherits": true,
-        "refersTo": "--instui-color-background-warning",
+        "refersTo": "--instui-color-background-base",
         "syntax": "*",
-        "value": "var(--instui-color-background-warning)"
+        "value": "var(--instui-color-background-base)"
       },
       "--instui-component-app-nav-border-color": {
         "inherits": true,
@@ -13032,12 +13511,14 @@
         "value": "0.75rem"
       },
       "--instui-component-banner-ai-background-bottom-gradient-color": {
+        "deprecated": true,
         "inherits": true,
         "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient",
         "syntax": "*",
         "value": "var(--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient)"
       },
       "--instui-component-banner-ai-background-top-gradient-color": {
+        "deprecated": true,
         "inherits": true,
         "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-top-gradient",
         "syntax": "*",
@@ -13094,6 +13575,11 @@
         "syntax": "*",
         "value": "var(--instui-border-radius-md)"
       },
+      "--instui-component-banner-compact-icon-height": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "1.5rem"
+      },
       "--instui-component-banner-compact-padding-horizontal": {
         "inherits": true,
         "refersTo": "--instui-spacing-space-md",
@@ -13108,9 +13594,9 @@
       },
       "--instui-component-banner-content-gap-vertical": {
         "inherits": true,
-        "refersTo": "--instui-spacing-space-md",
+        "refersTo": "--instui-spacing-space-sm",
         "syntax": "*",
-        "value": "var(--instui-spacing-space-md)"
+        "value": "var(--instui-spacing-space-sm)"
       },
       "--instui-component-banner-icon-color": {
         "inherits": true,
@@ -13129,6 +13615,11 @@
         "refersTo": "--instui-border-radius-lg",
         "syntax": "*",
         "value": "var(--instui-border-radius-lg)"
+      },
+      "--instui-component-banner-relaxed-icon-height": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "2rem"
       },
       "--instui-component-banner-relaxed-padding-horizontal": {
         "inherits": true,
@@ -18142,6 +18633,18 @@
         "syntax": "*",
         "value": "var(--instui-line-height-standalone-text2xl)"
       },
+      "--instui-component-mobile-shared-tokens-mobile-course": {
+        "inherits": true,
+        "refersTo": "--instui-color-mobile-course",
+        "syntax": "*",
+        "value": "var(--instui-color-mobile-course)"
+      },
+      "--instui-component-mobile-shared-tokens-mobile-nav": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-mobile-nav",
+        "syntax": "*",
+        "value": "var(--instui-color-background-mobile-nav)"
+      },
       "--instui-component-modal-auto-min-width": {
         "inherits": true,
         "syntax": "*",
@@ -18629,11 +19132,30 @@
         "syntax": "*",
         "value": "var(--instui-color-background-elevated-surface-base)"
       },
-      "--instui-component-pill-background-color": {
+      "--instui-component-pill-aurora-background-color": {
         "inherits": true,
         "refersTo": "--instui-color-background-base",
         "syntax": "*",
         "value": "var(--instui-color-background-base)"
+      },
+      "--instui-component-pill-aurora-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-accent-aurora",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-accent-aurora)"
+      },
+      "--instui-component-pill-aurora-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-accent-aurora",
+        "syntax": "*",
+        "value": "var(--instui-color-text-accent-aurora)"
+      },
+      "--instui-component-pill-background-color": {
+        "deprecated": true,
+        "inherits": true,
+        "refersTo": "--instui-component-pill-neutral-background-color",
+        "syntax": "*",
+        "value": "var(--instui-component-pill-neutral-background-color)"
       },
       "--instui-component-pill-base-border-color": {
         "inherits": true,
@@ -18664,11 +19186,23 @@
         "syntax": "*",
         "value": "var(--instui-border-width-sm)"
       },
+      "--instui-component-pill-error-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
       "--instui-component-pill-error-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-stroke-error",
         "syntax": "*",
         "value": "var(--instui-color-stroke-error)"
+      },
+      "--instui-component-pill-error-icon-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-icon-error",
+        "syntax": "*",
+        "value": "var(--instui-color-icon-error)"
       },
       "--instui-component-pill-error-text-color": {
         "inherits": true,
@@ -18682,10 +19216,55 @@
         "syntax": "*",
         "value": "var(--instui-font-family-base)"
       },
+      "--instui-component-pill-gap-content": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space2xs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space2xs)"
+      },
+      "--instui-component-pill-gap-icon-label": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-sm)"
+      },
+      "--instui-component-pill-gap-icon-label-large": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-sm)"
+      },
+      "--instui-component-pill-gap-icon-label-medium": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-sm)"
+      },
       "--instui-component-pill-height": {
         "inherits": true,
-        "syntax": "<length>",
-        "value": "24px"
+        "syntax": "*",
+        "value": "1.5rem"
+      },
+      "--instui-component-pill-height-large": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "2rem"
+      },
+      "--instui-component-pill-height-medium": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "1.75rem"
+      },
+      "--instui-component-pill-height-x-small": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "1.25rem"
+      },
+      "--instui-component-pill-info-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
       },
       "--instui-component-pill-info-border-color": {
         "inherits": true,
@@ -18710,17 +19289,137 @@
         "syntax": "<length>",
         "value": "240px"
       },
+      "--instui-component-pill-neutral-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
+      "--instui-component-pill-orange-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
+      "--instui-component-pill-orange-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-accent-orange",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-accent-orange)"
+      },
+      "--instui-component-pill-orange-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-accent-orange",
+        "syntax": "*",
+        "value": "var(--instui-color-text-accent-orange)"
+      },
       "--instui-component-pill-padding-horizontal": {
         "inherits": true,
         "refersTo": "--instui-spacing-space-sm",
         "syntax": "*",
         "value": "var(--instui-spacing-space-sm)"
       },
+      "--instui-component-pill-padding-horizontal-large": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-md)"
+      },
+      "--instui-component-pill-padding-horizontal-medium": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-md)"
+      },
+      "--instui-component-pill-padding-vertical": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-xs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-xs)"
+      },
+      "--instui-component-pill-plum-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
+      "--instui-component-pill-plum-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-accent-plum",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-accent-plum)"
+      },
+      "--instui-component-pill-plum-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-accent-plum",
+        "syntax": "*",
+        "value": "var(--instui-color-text-accent-plum)"
+      },
+      "--instui-component-pill-sea-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
+      "--instui-component-pill-sea-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-accent-sea",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-accent-sea)"
+      },
+      "--instui-component-pill-sea-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-accent-sea",
+        "syntax": "*",
+        "value": "var(--instui-color-text-accent-sea)"
+      },
+      "--instui-component-pill-sky-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
+      "--instui-component-pill-sky-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-accent-sky",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-accent-sky)"
+      },
+      "--instui-component-pill-sky-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-accent-sky",
+        "syntax": "*",
+        "value": "var(--instui-color-text-accent-sky)"
+      },
       "--instui-component-pill-status-label-font-weight": {
         "inherits": true,
         "refersTo": "--instui-font-weight-body-strong",
         "syntax": "*",
         "value": "var(--instui-font-weight-body-strong)"
+      },
+      "--instui-component-pill-stone-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
+      "--instui-component-pill-stone-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-accent-stone",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-accent-stone)"
+      },
+      "--instui-component-pill-stone-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-accent-stone",
+        "syntax": "*",
+        "value": "var(--instui-color-text-accent-stone)"
+      },
+      "--instui-component-pill-success-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
       },
       "--instui-component-pill-success-border-color": {
         "inherits": true,
@@ -18740,11 +19439,47 @@
         "syntax": "*",
         "value": "var(--instui-font-size-text-sm)"
       },
+      "--instui-component-pill-text-font-size-large": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-sm",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-sm)"
+      },
+      "--instui-component-pill-text-font-size-medium": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-sm",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-sm)"
+      },
       "--instui-component-pill-text-font-weight": {
         "inherits": true,
-        "refersTo": "--instui-font-weight-body-base",
+        "refersTo": "--instui-font-weight-body-strong",
         "syntax": "*",
-        "value": "var(--instui-font-weight-body-base)"
+        "value": "var(--instui-font-weight-body-strong)"
+      },
+      "--instui-component-pill-violet-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
+      "--instui-component-pill-violet-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-accent-violet",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-accent-violet)"
+      },
+      "--instui-component-pill-violet-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-accent-violet",
+        "syntax": "*",
+        "value": "var(--instui-color-text-accent-violet)"
+      },
+      "--instui-component-pill-warning-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
       },
       "--instui-component-pill-warning-border-color": {
         "inherits": true,
@@ -20625,9 +21360,9 @@
       },
       "--instui-component-side-nav-bar-new-background-color": {
         "inherits": true,
-        "refersTo": "--instui-color-background-dark",
+        "refersTo": "--instui-color-institutional-brand-global-nav-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-background-dark)"
+        "value": "var(--instui-color-institutional-brand-global-nav-bgd)"
       },
       "--instui-component-side-nav-bar-new-border-color": {
         "inherits": true,
@@ -20648,9 +21383,9 @@
       },
       "--instui-component-side-nav-bar-new-button-text-color": {
         "inherits": true,
-        "refersTo": "--instui-color-text-on-color",
+        "refersTo": "--instui-color-institutional-brand-global-nav-menu-item-text-color",
         "syntax": "*",
-        "value": "var(--instui-color-text-on-color)"
+        "value": "var(--instui-color-institutional-brand-global-nav-menu-item-text-color)"
       },
       "--instui-component-side-nav-bar-new-drilldown-option-active-background-color": {
         "inherits": true,
@@ -20695,9 +21430,9 @@
       },
       "--instui-component-side-nav-bar-new-drilldown-option-text-color": {
         "inherits": true,
-        "refersTo": "--instui-color-text-on-color",
+        "refersTo": "--instui-color-institutional-brand-global-nav-menu-item-text-color",
         "syntax": "*",
-        "value": "var(--instui-color-text-on-color)"
+        "value": "var(--instui-color-institutional-brand-global-nav-menu-item-text-color)"
       },
       "--instui-component-side-nav-bar-new-fill": {
         "inherits": true,
@@ -20747,15 +21482,15 @@
       },
       "--instui-component-side-nav-bar-new-item-current-text-color": {
         "inherits": true,
-        "refersTo": "--instui-color-text-interactive-navigation-primary-base",
+        "refersTo": "--instui-color-institutional-brand-global-nav-menu-item-text-color-active",
         "syntax": "*",
-        "value": "var(--instui-color-text-interactive-navigation-primary-base)"
+        "value": "var(--instui-color-institutional-brand-global-nav-menu-item-text-color-active)"
       },
       "--instui-component-side-nav-bar-new-item-font-color": {
         "inherits": true,
-        "refersTo": "--instui-color-text-on-color",
+        "refersTo": "--instui-color-institutional-brand-global-nav-menu-item-text-color",
         "syntax": "*",
-        "value": "var(--instui-color-text-on-color)"
+        "value": "var(--instui-color-institutional-brand-global-nav-menu-item-text-color)"
       },
       "--instui-component-side-nav-bar-new-item-font-family": {
         "inherits": true,
@@ -20782,9 +21517,9 @@
       },
       "--instui-component-side-nav-bar-new-item-hover-background-color": {
         "inherits": true,
-        "refersTo": "--instui-color-background-interactive-action-primary-hover",
+        "refersTo": "--instui-color-institutional-global-nav-link-hover",
         "syntax": "*",
-        "value": "var(--instui-color-background-interactive-action-primary-hover)"
+        "value": "var(--instui-color-institutional-global-nav-link-hover)"
       },
       "--instui-component-side-nav-bar-new-item-icon-wrapper-height": {
         "inherits": true,
@@ -20872,7 +21607,7 @@
       "--instui-component-side-nav-bar-new-min-width": {
         "inherits": true,
         "syntax": "*",
-        "value": "15.75rem"
+        "value": "14.5rem"
       },
       "--instui-component-side-nav-bar-new-minimized-border-radius": {
         "inherits": true,
@@ -20920,9 +21655,9 @@
       },
       "--instui-component-side-nav-bar-new-text-color": {
         "inherits": true,
-        "refersTo": "--instui-color-text-on-color",
+        "refersTo": "--instui-color-institutional-brand-global-nav-menu-item-text-color",
         "syntax": "*",
-        "value": "var(--instui-color-text-on-color)"
+        "value": "var(--instui-color-institutional-brand-global-nav-menu-item-text-color)"
       },
       "--instui-component-side-nav-bar-new-toggle-transition": {
         "inherits": true,
@@ -23959,6 +24694,13 @@
         "inherits": true,
         "syntax": "*",
         "value": "currentColor"
+      },
+      "--instui-icon-history": {
+        "deprecated": true,
+        "inherits": true,
+        "refersTo": "--instui-icon-rotate-ccw-clock",
+        "syntax": "*",
+        "value": "var(--instui-icon-rotate-ccw-clock)"
       },
       "--instui-line-height-heading-base": {
         "inherits": true,
@@ -27273,6 +28015,12 @@
         "syntax": "*",
         "value": "var(--instui-primitive-color-grey-grey150)"
       },
+      "--instui-color-background-mobile-nav": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-grey-grey10",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-grey-grey10)"
+      },
       "--instui-color-background-muted": {
         "inherits": true,
         "refersTo": "--instui-primitive-color-grey-grey10",
@@ -27321,17 +28069,77 @@
         "syntax": "*",
         "value": "var(--instui-primitive-color-white)"
       },
+      "--instui-color-background-pastel-aurora": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-aurora-aurora20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-aurora-aurora20)"
+      },
+      "--instui-color-background-pastel-error": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-red-red20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-red-red20)"
+      },
+      "--instui-color-background-pastel-info": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-blue-blue20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-blue-blue20)"
+      },
+      "--instui-color-background-pastel-neutral": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-grey-grey20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-grey-grey20)"
+      },
+      "--instui-color-background-pastel-orange": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-orange-orange20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-orange-orange20)"
+      },
+      "--instui-color-background-pastel-plum": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-plum-plum20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-plum-plum20)"
+      },
       "--instui-color-background-pastel-sea": {
         "inherits": true,
         "refersTo": "--instui-primitive-color-sea-sea20",
         "syntax": "*",
         "value": "var(--instui-primitive-color-sea-sea20)"
       },
+      "--instui-color-background-pastel-sky": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-sky-sky20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-sky-sky20)"
+      },
+      "--instui-color-background-pastel-stone": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-stone-stone20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-stone-stone20)"
+      },
+      "--instui-color-background-pastel-success": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-green-green20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-green-green20)"
+      },
       "--instui-color-background-pastel-violet": {
         "inherits": true,
         "refersTo": "--instui-primitive-color-violet-violet20",
         "syntax": "*",
         "value": "var(--instui-primitive-color-violet-violet20)"
+      },
+      "--instui-color-background-pastel-warning": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-honey-honey20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-honey-honey20)"
       },
       "--instui-color-background-success": {
         "inherits": true,
@@ -27771,9 +28579,9 @@
       },
       "--instui-color-icon-warning": {
         "inherits": true,
-        "refersTo": "--instui-primitive-color-orange-orange130",
+        "refersTo": "--instui-primitive-color-honey-honey130",
         "syntax": "*",
-        "value": "var(--instui-primitive-color-orange-orange130)"
+        "value": "var(--instui-primitive-color-honey-honey130)"
       },
       "--instui-color-institutional-brand-button-primary-bgd": {
         "inherits": true,
@@ -27840,6 +28648,12 @@
         "refersTo": "--instui-primitive-color-blue-blue130",
         "syntax": "*",
         "value": "var(--instui-primitive-color-blue-blue130)"
+      },
+      "--instui-color-mobile-course": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-plum-plum110",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-plum-plum110)"
       },
       "--instui-color-stroke-accent-ash": {
         "inherits": true,
@@ -28311,9 +29125,9 @@
       },
       "--instui-color-stroke-warning": {
         "inherits": true,
-        "refersTo": "--instui-primitive-color-orange-orange140",
+        "refersTo": "--instui-primitive-color-honey-honey140",
         "syntax": "*",
-        "value": "var(--instui-primitive-color-orange-orange140)"
+        "value": "var(--instui-primitive-color-honey-honey140)"
       },
       "--instui-color-text-accent-ash": {
         "inherits": true,
@@ -28844,10 +29658,11 @@
         "value": "var(--instui-spacing-space-xl)"
       },
       "--instui-component-alert-background": {
+        "deprecated": true,
         "inherits": true,
-        "refersTo": "--instui-color-background-elevated-surface-base",
+        "refersTo": "--instui-component-alert-info-background",
         "syntax": "*",
-        "value": "var(--instui-color-background-elevated-surface-base)"
+        "value": "var(--instui-component-alert-info-background)"
       },
       "--instui-component-alert-border-radius": {
         "inherits": true,
@@ -28877,10 +29692,11 @@
         "value": "0.5rem"
       },
       "--instui-component-alert-color": {
+        "deprecated": true,
         "inherits": true,
-        "refersTo": "--instui-color-institutional-brand-font-color-dark",
+        "refersTo": "--instui-color-text-base",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-font-color-dark)"
+        "value": "var(--instui-color-text-base)"
       },
       "--instui-component-alert-content-font-family": {
         "inherits": true,
@@ -28918,7 +29734,25 @@
         "syntax": "*",
         "value": "var(--instui-spacing-space-md)"
       },
+      "--instui-component-alert-danger-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-error",
+        "syntax": "*",
+        "value": "var(--instui-color-background-error)"
+      },
+      "--instui-component-alert-danger-background-inline": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
       "--instui-component-alert-danger-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-error",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-error)"
+      },
+      "--instui-component-alert-danger-border-color-inline": {
         "inherits": true,
         "refersTo": "--instui-color-stroke-error",
         "syntax": "*",
@@ -28931,12 +29765,49 @@
         "value": "var(--instui-color-background-error)"
       },
       "--instui-component-alert-icon-color": {
+        "deprecated": true,
         "inherits": true,
         "refersTo": "--instui-color-icon-on-color",
         "syntax": "*",
         "value": "var(--instui-color-icon-on-color)"
       },
+      "--instui-component-alert-icon-padding-left": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-sm)"
+      },
+      "--instui-component-alert-icon-padding-right": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-sm)"
+      },
+      "--instui-component-alert-icon-padding-vertical": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-lg",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-lg)"
+      },
+      "--instui-component-alert-info-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-info",
+        "syntax": "*",
+        "value": "var(--instui-color-background-info)"
+      },
+      "--instui-component-alert-info-background-inline": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
       "--instui-component-alert-info-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-info",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-info)"
+      },
+      "--instui-component-alert-info-border-color-inline": {
         "inherits": true,
         "refersTo": "--instui-color-stroke-info",
         "syntax": "*",
@@ -28948,7 +29819,25 @@
         "syntax": "*",
         "value": "var(--instui-color-background-info)"
       },
+      "--instui-component-alert-success-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-success",
+        "syntax": "*",
+        "value": "var(--instui-color-background-success)"
+      },
+      "--instui-component-alert-success-background-inline": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
       "--instui-component-alert-success-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-success",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-success)"
+      },
+      "--instui-component-alert-success-border-color-inline": {
         "inherits": true,
         "refersTo": "--instui-color-stroke-success",
         "syntax": "*",
@@ -28960,7 +29849,25 @@
         "syntax": "*",
         "value": "var(--instui-color-background-success)"
       },
+      "--instui-component-alert-warning-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
+      "--instui-component-alert-warning-background-inline": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
       "--instui-component-alert-warning-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-warning",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-warning)"
+      },
+      "--instui-component-alert-warning-border-color-inline": {
         "inherits": true,
         "refersTo": "--instui-color-stroke-warning",
         "syntax": "*",
@@ -28968,9 +29875,9 @@
       },
       "--instui-component-alert-warning-icon-background": {
         "inherits": true,
-        "refersTo": "--instui-color-background-warning",
+        "refersTo": "--instui-color-background-base",
         "syntax": "*",
-        "value": "var(--instui-color-background-warning)"
+        "value": "var(--instui-color-background-base)"
       },
       "--instui-component-app-nav-border-color": {
         "inherits": true,
@@ -29386,12 +30293,14 @@
         "value": "0.75rem"
       },
       "--instui-component-banner-ai-background-bottom-gradient-color": {
+        "deprecated": true,
         "inherits": true,
         "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient",
         "syntax": "*",
         "value": "var(--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient)"
       },
       "--instui-component-banner-ai-background-top-gradient-color": {
+        "deprecated": true,
         "inherits": true,
         "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-top-gradient",
         "syntax": "*",
@@ -29448,6 +30357,11 @@
         "syntax": "*",
         "value": "var(--instui-border-radius-md)"
       },
+      "--instui-component-banner-compact-icon-height": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "1.5rem"
+      },
       "--instui-component-banner-compact-padding-horizontal": {
         "inherits": true,
         "refersTo": "--instui-spacing-space-md",
@@ -29462,9 +30376,9 @@
       },
       "--instui-component-banner-content-gap-vertical": {
         "inherits": true,
-        "refersTo": "--instui-spacing-space-md",
+        "refersTo": "--instui-spacing-space-sm",
         "syntax": "*",
-        "value": "var(--instui-spacing-space-md)"
+        "value": "var(--instui-spacing-space-sm)"
       },
       "--instui-component-banner-icon-color": {
         "inherits": true,
@@ -29483,6 +30397,11 @@
         "refersTo": "--instui-border-radius-lg",
         "syntax": "*",
         "value": "var(--instui-border-radius-lg)"
+      },
+      "--instui-component-banner-relaxed-icon-height": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "2rem"
       },
       "--instui-component-banner-relaxed-padding-horizontal": {
         "inherits": true,
@@ -34496,6 +35415,18 @@
         "syntax": "*",
         "value": "var(--instui-line-height-standalone-text2xl)"
       },
+      "--instui-component-mobile-shared-tokens-mobile-course": {
+        "inherits": true,
+        "refersTo": "--instui-color-mobile-course",
+        "syntax": "*",
+        "value": "var(--instui-color-mobile-course)"
+      },
+      "--instui-component-mobile-shared-tokens-mobile-nav": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-mobile-nav",
+        "syntax": "*",
+        "value": "var(--instui-color-background-mobile-nav)"
+      },
       "--instui-component-modal-auto-min-width": {
         "inherits": true,
         "syntax": "*",
@@ -34983,11 +35914,30 @@
         "syntax": "*",
         "value": "var(--instui-color-background-elevated-surface-base)"
       },
-      "--instui-component-pill-background-color": {
+      "--instui-component-pill-aurora-background-color": {
         "inherits": true,
         "refersTo": "--instui-color-background-base",
         "syntax": "*",
         "value": "var(--instui-color-background-base)"
+      },
+      "--instui-component-pill-aurora-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-accent-aurora",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-accent-aurora)"
+      },
+      "--instui-component-pill-aurora-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-accent-aurora",
+        "syntax": "*",
+        "value": "var(--instui-color-text-accent-aurora)"
+      },
+      "--instui-component-pill-background-color": {
+        "deprecated": true,
+        "inherits": true,
+        "refersTo": "--instui-component-pill-neutral-background-color",
+        "syntax": "*",
+        "value": "var(--instui-component-pill-neutral-background-color)"
       },
       "--instui-component-pill-base-border-color": {
         "inherits": true,
@@ -35018,11 +35968,23 @@
         "syntax": "*",
         "value": "var(--instui-border-width-sm)"
       },
+      "--instui-component-pill-error-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
       "--instui-component-pill-error-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-stroke-error",
         "syntax": "*",
         "value": "var(--instui-color-stroke-error)"
+      },
+      "--instui-component-pill-error-icon-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-icon-error",
+        "syntax": "*",
+        "value": "var(--instui-color-icon-error)"
       },
       "--instui-component-pill-error-text-color": {
         "inherits": true,
@@ -35036,10 +35998,55 @@
         "syntax": "*",
         "value": "var(--instui-font-family-base)"
       },
+      "--instui-component-pill-gap-content": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space2xs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space2xs)"
+      },
+      "--instui-component-pill-gap-icon-label": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-sm)"
+      },
+      "--instui-component-pill-gap-icon-label-large": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-sm)"
+      },
+      "--instui-component-pill-gap-icon-label-medium": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-sm)"
+      },
       "--instui-component-pill-height": {
         "inherits": true,
-        "syntax": "<length>",
-        "value": "24px"
+        "syntax": "*",
+        "value": "1.5rem"
+      },
+      "--instui-component-pill-height-large": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "2rem"
+      },
+      "--instui-component-pill-height-medium": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "1.75rem"
+      },
+      "--instui-component-pill-height-x-small": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "1.25rem"
+      },
+      "--instui-component-pill-info-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
       },
       "--instui-component-pill-info-border-color": {
         "inherits": true,
@@ -35064,17 +36071,137 @@
         "syntax": "<length>",
         "value": "240px"
       },
+      "--instui-component-pill-neutral-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
+      "--instui-component-pill-orange-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
+      "--instui-component-pill-orange-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-accent-orange",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-accent-orange)"
+      },
+      "--instui-component-pill-orange-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-accent-orange",
+        "syntax": "*",
+        "value": "var(--instui-color-text-accent-orange)"
+      },
       "--instui-component-pill-padding-horizontal": {
         "inherits": true,
         "refersTo": "--instui-spacing-space-sm",
         "syntax": "*",
         "value": "var(--instui-spacing-space-sm)"
       },
+      "--instui-component-pill-padding-horizontal-large": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-md)"
+      },
+      "--instui-component-pill-padding-horizontal-medium": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-md)"
+      },
+      "--instui-component-pill-padding-vertical": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-xs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-xs)"
+      },
+      "--instui-component-pill-plum-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
+      "--instui-component-pill-plum-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-accent-plum",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-accent-plum)"
+      },
+      "--instui-component-pill-plum-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-accent-plum",
+        "syntax": "*",
+        "value": "var(--instui-color-text-accent-plum)"
+      },
+      "--instui-component-pill-sea-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
+      "--instui-component-pill-sea-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-accent-sea",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-accent-sea)"
+      },
+      "--instui-component-pill-sea-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-accent-sea",
+        "syntax": "*",
+        "value": "var(--instui-color-text-accent-sea)"
+      },
+      "--instui-component-pill-sky-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
+      "--instui-component-pill-sky-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-accent-sky",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-accent-sky)"
+      },
+      "--instui-component-pill-sky-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-accent-sky",
+        "syntax": "*",
+        "value": "var(--instui-color-text-accent-sky)"
+      },
       "--instui-component-pill-status-label-font-weight": {
         "inherits": true,
         "refersTo": "--instui-font-weight-body-strong",
         "syntax": "*",
         "value": "var(--instui-font-weight-body-strong)"
+      },
+      "--instui-component-pill-stone-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
+      "--instui-component-pill-stone-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-accent-stone",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-accent-stone)"
+      },
+      "--instui-component-pill-stone-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-accent-stone",
+        "syntax": "*",
+        "value": "var(--instui-color-text-accent-stone)"
+      },
+      "--instui-component-pill-success-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
       },
       "--instui-component-pill-success-border-color": {
         "inherits": true,
@@ -35094,11 +36221,47 @@
         "syntax": "*",
         "value": "var(--instui-font-size-text-sm)"
       },
+      "--instui-component-pill-text-font-size-large": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-sm",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-sm)"
+      },
+      "--instui-component-pill-text-font-size-medium": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-sm",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-sm)"
+      },
       "--instui-component-pill-text-font-weight": {
         "inherits": true,
-        "refersTo": "--instui-font-weight-body-base",
+        "refersTo": "--instui-font-weight-body-strong",
         "syntax": "*",
-        "value": "var(--instui-font-weight-body-base)"
+        "value": "var(--instui-font-weight-body-strong)"
+      },
+      "--instui-component-pill-violet-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
+      },
+      "--instui-component-pill-violet-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-accent-violet",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-accent-violet)"
+      },
+      "--instui-component-pill-violet-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-accent-violet",
+        "syntax": "*",
+        "value": "var(--instui-color-text-accent-violet)"
+      },
+      "--instui-component-pill-warning-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-base",
+        "syntax": "*",
+        "value": "var(--instui-color-background-base)"
       },
       "--instui-component-pill-warning-border-color": {
         "inherits": true,
@@ -36979,9 +38142,9 @@
       },
       "--instui-component-side-nav-bar-new-background-color": {
         "inherits": true,
-        "refersTo": "--instui-color-background-dark",
+        "refersTo": "--instui-color-institutional-brand-global-nav-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-background-dark)"
+        "value": "var(--instui-color-institutional-brand-global-nav-bgd)"
       },
       "--instui-component-side-nav-bar-new-border-color": {
         "inherits": true,
@@ -37002,9 +38165,9 @@
       },
       "--instui-component-side-nav-bar-new-button-text-color": {
         "inherits": true,
-        "refersTo": "--instui-color-text-on-color",
+        "refersTo": "--instui-color-institutional-brand-global-nav-menu-item-text-color",
         "syntax": "*",
-        "value": "var(--instui-color-text-on-color)"
+        "value": "var(--instui-color-institutional-brand-global-nav-menu-item-text-color)"
       },
       "--instui-component-side-nav-bar-new-drilldown-option-active-background-color": {
         "inherits": true,
@@ -37049,9 +38212,9 @@
       },
       "--instui-component-side-nav-bar-new-drilldown-option-text-color": {
         "inherits": true,
-        "refersTo": "--instui-color-text-on-color",
+        "refersTo": "--instui-color-institutional-brand-global-nav-menu-item-text-color",
         "syntax": "*",
-        "value": "var(--instui-color-text-on-color)"
+        "value": "var(--instui-color-institutional-brand-global-nav-menu-item-text-color)"
       },
       "--instui-component-side-nav-bar-new-fill": {
         "inherits": true,
@@ -37101,15 +38264,15 @@
       },
       "--instui-component-side-nav-bar-new-item-current-text-color": {
         "inherits": true,
-        "refersTo": "--instui-color-text-interactive-navigation-primary-base",
+        "refersTo": "--instui-color-institutional-brand-global-nav-menu-item-text-color-active",
         "syntax": "*",
-        "value": "var(--instui-color-text-interactive-navigation-primary-base)"
+        "value": "var(--instui-color-institutional-brand-global-nav-menu-item-text-color-active)"
       },
       "--instui-component-side-nav-bar-new-item-font-color": {
         "inherits": true,
-        "refersTo": "--instui-color-text-on-color",
+        "refersTo": "--instui-color-institutional-brand-global-nav-menu-item-text-color",
         "syntax": "*",
-        "value": "var(--instui-color-text-on-color)"
+        "value": "var(--instui-color-institutional-brand-global-nav-menu-item-text-color)"
       },
       "--instui-component-side-nav-bar-new-item-font-family": {
         "inherits": true,
@@ -37136,9 +38299,9 @@
       },
       "--instui-component-side-nav-bar-new-item-hover-background-color": {
         "inherits": true,
-        "refersTo": "--instui-color-background-interactive-action-primary-hover",
+        "refersTo": "--instui-color-institutional-global-nav-link-hover",
         "syntax": "*",
-        "value": "var(--instui-color-background-interactive-action-primary-hover)"
+        "value": "var(--instui-color-institutional-global-nav-link-hover)"
       },
       "--instui-component-side-nav-bar-new-item-icon-wrapper-height": {
         "inherits": true,
@@ -37226,7 +38389,7 @@
       "--instui-component-side-nav-bar-new-min-width": {
         "inherits": true,
         "syntax": "*",
-        "value": "15.75rem"
+        "value": "14.5rem"
       },
       "--instui-component-side-nav-bar-new-minimized-border-radius": {
         "inherits": true,
@@ -37274,9 +38437,9 @@
       },
       "--instui-component-side-nav-bar-new-text-color": {
         "inherits": true,
-        "refersTo": "--instui-color-text-on-color",
+        "refersTo": "--instui-color-institutional-brand-global-nav-menu-item-text-color",
         "syntax": "*",
-        "value": "var(--instui-color-text-on-color)"
+        "value": "var(--instui-color-institutional-brand-global-nav-menu-item-text-color)"
       },
       "--instui-component-side-nav-bar-new-toggle-transition": {
         "inherits": true,
@@ -40313,6 +41476,13 @@
         "inherits": true,
         "syntax": "*",
         "value": "currentColor"
+      },
+      "--instui-icon-history": {
+        "deprecated": true,
+        "inherits": true,
+        "refersTo": "--instui-icon-rotate-ccw-clock",
+        "syntax": "*",
+        "value": "var(--instui-icon-rotate-ccw-clock)"
       },
       "--instui-line-height-heading-base": {
         "inherits": true,
@@ -43497,9 +44667,9 @@
       },
       "--instui-color-background-interactive-action-primary-on-color-active": {
         "inherits": true,
-        "refersTo": "--instui-primitive-color-navy-navy40",
+        "refersTo": "--instui-primitive-color-navy-navy20",
         "syntax": "*",
-        "value": "var(--instui-primitive-color-navy-navy40)"
+        "value": "var(--instui-primitive-color-navy-navy20)"
       },
       "--instui-color-background-interactive-action-primary-on-color-base": {
         "inherits": true,
@@ -43515,9 +44685,9 @@
       },
       "--instui-color-background-interactive-action-primary-on-color-hover": {
         "inherits": true,
-        "refersTo": "--instui-primitive-color-navy-navy30",
+        "refersTo": "--instui-primitive-color-navy-navy10",
         "syntax": "*",
-        "value": "var(--instui-primitive-color-navy-navy30)"
+        "value": "var(--instui-primitive-color-navy-navy10)"
       },
       "--instui-color-background-interactive-action-secondary-active": {
         "inherits": true,
@@ -43627,6 +44797,12 @@
         "themed": true,
         "value": "light-dark(var(--instui-primitive-color-grey-grey150), var(--instui-primitive-color-grey-grey10))"
       },
+      "--instui-color-background-mobile-nav": {
+        "inherits": true,
+        "syntax": "*",
+        "themed": true,
+        "value": "light-dark(var(--instui-primitive-color-grey-grey10), var(--instui-primitive-color-grey-grey190))"
+      },
       "--instui-color-background-muted": {
         "inherits": true,
         "syntax": "*",
@@ -43675,17 +44851,77 @@
         "themed": true,
         "value": "light-dark(var(--instui-primitive-color-grey-grey10), var(--instui-primitive-color-grey-grey200))"
       },
+      "--instui-color-background-pastel-aurora": {
+        "inherits": true,
+        "syntax": "*",
+        "themed": true,
+        "value": "light-dark(var(--instui-primitive-color-aurora-aurora20), var(--instui-primitive-color-aurora-aurora160))"
+      },
+      "--instui-color-background-pastel-error": {
+        "inherits": true,
+        "syntax": "*",
+        "themed": true,
+        "value": "light-dark(var(--instui-primitive-color-red-red20), var(--instui-primitive-color-red-red160))"
+      },
+      "--instui-color-background-pastel-info": {
+        "inherits": true,
+        "syntax": "*",
+        "themed": true,
+        "value": "light-dark(var(--instui-primitive-color-blue-blue20), var(--instui-primitive-color-blue-blue160))"
+      },
+      "--instui-color-background-pastel-neutral": {
+        "inherits": true,
+        "syntax": "*",
+        "themed": true,
+        "value": "light-dark(var(--instui-primitive-color-grey-grey20), var(--instui-primitive-color-grey-grey160))"
+      },
+      "--instui-color-background-pastel-orange": {
+        "inherits": true,
+        "syntax": "*",
+        "themed": true,
+        "value": "light-dark(var(--instui-primitive-color-orange-orange20), var(--instui-primitive-color-orange-orange160))"
+      },
+      "--instui-color-background-pastel-plum": {
+        "inherits": true,
+        "syntax": "*",
+        "themed": true,
+        "value": "light-dark(var(--instui-primitive-color-plum-plum20), var(--instui-primitive-color-plum-plum160))"
+      },
       "--instui-color-background-pastel-sea": {
         "inherits": true,
         "syntax": "*",
         "themed": true,
         "value": "light-dark(var(--instui-primitive-color-sea-sea20), var(--instui-primitive-color-sea-sea160))"
       },
+      "--instui-color-background-pastel-sky": {
+        "inherits": true,
+        "syntax": "*",
+        "themed": true,
+        "value": "light-dark(var(--instui-primitive-color-sky-sky20), var(--instui-primitive-color-sky-sky160))"
+      },
+      "--instui-color-background-pastel-stone": {
+        "inherits": true,
+        "syntax": "*",
+        "themed": true,
+        "value": "light-dark(var(--instui-primitive-color-stone-stone20), var(--instui-primitive-color-stone-stone160))"
+      },
+      "--instui-color-background-pastel-success": {
+        "inherits": true,
+        "syntax": "*",
+        "themed": true,
+        "value": "light-dark(var(--instui-primitive-color-green-green20), var(--instui-primitive-color-green-green160))"
+      },
       "--instui-color-background-pastel-violet": {
         "inherits": true,
         "syntax": "*",
         "themed": true,
         "value": "light-dark(var(--instui-primitive-color-violet-violet20), var(--instui-primitive-color-violet-violet160))"
+      },
+      "--instui-color-background-pastel-warning": {
+        "inherits": true,
+        "syntax": "*",
+        "themed": true,
+        "value": "light-dark(var(--instui-primitive-color-honey-honey20), var(--instui-primitive-color-honey-honey160))"
       },
       "--instui-color-background-success": {
         "inherits": true,
@@ -43695,9 +44931,9 @@
       },
       "--instui-color-background-warning": {
         "inherits": true,
-        "refersTo": "--instui-primitive-color-orange-orange100",
         "syntax": "*",
-        "value": "var(--instui-primitive-color-orange-orange100)"
+        "themed": true,
+        "value": "light-dark(var(--instui-primitive-color-honey-honey40), var(--instui-primitive-color-honey-honey110))"
       },
       "--instui-color-drop-shadow-shadow-color1": {
         "inherits": true,
@@ -43811,13 +45047,13 @@
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-red-red110), var(--instui-primitive-color-red-red50))"
+        "value": "light-dark(var(--instui-primitive-color-red-red120), var(--instui-primitive-color-red-red50))"
       },
       "--instui-color-icon-info": {
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-blue-blue110), var(--instui-primitive-color-blue-blue50))"
+        "value": "light-dark(var(--instui-primitive-color-blue-blue120), var(--instui-primitive-color-blue-blue50))"
       },
       "--instui-color-icon-interactive-action-ai-active": {
         "inherits": true,
@@ -44123,13 +45359,13 @@
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-green-green110), var(--instui-primitive-color-green-green50))"
+        "value": "light-dark(var(--instui-primitive-color-green-green120), var(--instui-primitive-color-green-green50))"
       },
       "--instui-color-icon-warning": {
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-orange-orange110), var(--instui-primitive-color-orange-orange50))"
+        "value": "light-dark(var(--instui-primitive-color-honey-honey140), var(--instui-primitive-color-honey-honey50))"
       },
       "--instui-color-institutional-brand-button-primary-bgd": {
         "inherits": true,
@@ -44196,6 +45432,12 @@
         "syntax": "*",
         "themed": true,
         "value": "light-dark(var(--instui-primitive-color-blue-blue120), var(--instui-primitive-color-blue-blue50))"
+      },
+      "--instui-color-mobile-course": {
+        "inherits": true,
+        "syntax": "*",
+        "themed": true,
+        "value": "light-dark(var(--instui-primitive-color-plum-plum110), var(--instui-primitive-color-plum-plum50))"
       },
       "--instui-color-stroke-accent-ash": {
         "inherits": true,
@@ -44667,9 +45909,9 @@
       },
       "--instui-color-stroke-warning": {
         "inherits": true,
-        "refersTo": "--instui-primitive-color-orange-orange100",
         "syntax": "*",
-        "value": "var(--instui-primitive-color-orange-orange100)"
+        "themed": true,
+        "value": "light-dark(var(--instui-primitive-color-honey-honey40), var(--instui-primitive-color-honey-honey110))"
       },
       "--instui-color-text-accent-ash": {
         "inherits": true,
@@ -44681,7 +45923,7 @@
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-aurora-aurora110), var(--instui-primitive-color-aurora-aurora50))"
+        "value": "light-dark(var(--instui-primitive-color-aurora-aurora120), var(--instui-primitive-color-aurora-aurora50))"
       },
       "--instui-color-text-accent-blue": {
         "inherits": true,
@@ -44705,19 +45947,19 @@
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-honey-honey110), var(--instui-primitive-color-honey-honey50))"
+        "value": "light-dark(var(--instui-primitive-color-honey-honey120), var(--instui-primitive-color-honey-honey50))"
       },
       "--instui-color-text-accent-orange": {
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-orange-orange110), var(--instui-primitive-color-orange-orange50))"
+        "value": "light-dark(var(--instui-primitive-color-orange-orange120), var(--instui-primitive-color-orange-orange50))"
       },
       "--instui-color-text-accent-plum": {
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-plum-plum110), var(--instui-primitive-color-plum-plum50))"
+        "value": "light-dark(var(--instui-primitive-color-plum-plum120), var(--instui-primitive-color-plum-plum50))"
       },
       "--instui-color-text-accent-red": {
         "inherits": true,
@@ -44729,25 +45971,25 @@
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-sea-sea110), var(--instui-primitive-color-sea-sea50))"
+        "value": "light-dark(var(--instui-primitive-color-sea-sea120), var(--instui-primitive-color-sea-sea50))"
       },
       "--instui-color-text-accent-sky": {
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-sky-sky110), var(--instui-primitive-color-sky-sky50))"
+        "value": "light-dark(var(--instui-primitive-color-sky-sky120), var(--instui-primitive-color-sky-sky50))"
       },
       "--instui-color-text-accent-stone": {
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-stone-stone110), var(--instui-primitive-color-stone-stone50))"
+        "value": "light-dark(var(--instui-primitive-color-stone-stone120), var(--instui-primitive-color-stone-stone50))"
       },
       "--instui-color-text-accent-violet": {
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-violet-violet110), var(--instui-primitive-color-violet-violet50))"
+        "value": "light-dark(var(--instui-primitive-color-violet-violet120), var(--instui-primitive-color-violet-violet50))"
       },
       "--instui-color-text-ai-color": {
         "inherits": true,
@@ -44771,13 +46013,13 @@
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-red-red110), var(--instui-primitive-color-red-red50))"
+        "value": "light-dark(var(--instui-primitive-color-red-red120), var(--instui-primitive-color-red-red50))"
       },
       "--instui-color-text-info": {
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-blue-blue110), var(--instui-primitive-color-blue-blue50))"
+        "value": "light-dark(var(--instui-primitive-color-blue-blue120), var(--instui-primitive-color-blue-blue50))"
       },
       "--instui-color-text-interactive-action-ai-active": {
         "inherits": true,
@@ -45113,13 +46355,13 @@
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-green-green110), var(--instui-primitive-color-green-green50))"
+        "value": "light-dark(var(--instui-primitive-color-green-green120), var(--instui-primitive-color-green-green50))"
       },
       "--instui-color-text-warning": {
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-orange-orange110), var(--instui-primitive-color-orange-orange50))"
+        "value": "light-dark(var(--instui-primitive-color-honey-honey140), var(--instui-primitive-color-honey-honey50))"
       },
       "--instui-color-transparent-color": {
         "inherits": true,
@@ -45200,10 +46442,11 @@
         "value": "var(--instui-spacing-space-xl)"
       },
       "--instui-component-alert-background": {
+        "deprecated": true,
         "inherits": true,
-        "refersTo": "--instui-color-background-elevated-surface-base",
+        "refersTo": "--instui-component-alert-info-background",
         "syntax": "*",
-        "value": "var(--instui-color-background-elevated-surface-base)"
+        "value": "var(--instui-component-alert-info-background)"
       },
       "--instui-component-alert-border-radius": {
         "inherits": true,
@@ -45218,9 +46461,9 @@
       },
       "--instui-component-alert-border-width": {
         "inherits": true,
-        "refersTo": "--instui-border-width-md",
+        "refersTo": "--instui-border-width-sm",
         "syntax": "*",
-        "value": "var(--instui-border-width-md)"
+        "value": "var(--instui-border-width-sm)"
       },
       "--instui-component-alert-close-button-margin-right": {
         "inherits": true,
@@ -45233,10 +46476,11 @@
         "value": "0.5rem"
       },
       "--instui-component-alert-color": {
+        "deprecated": true,
         "inherits": true,
-        "refersTo": "--instui-color-institutional-brand-font-color-dark",
+        "refersTo": "--instui-color-text-base",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-font-color-dark)"
+        "value": "var(--instui-color-text-base)"
       },
       "--instui-component-alert-content-font-family": {
         "inherits": true,
@@ -45264,9 +46508,9 @@
       },
       "--instui-component-alert-content-padding-horizontal": {
         "inherits": true,
-        "refersTo": "--instui-spacing-space-xl",
+        "refersTo": "--instui-spacing-space-md",
         "syntax": "*",
-        "value": "var(--instui-spacing-space-xl)"
+        "value": "var(--instui-spacing-space-md)"
       },
       "--instui-component-alert-content-padding-vertical": {
         "inherits": true,
@@ -45274,11 +46518,29 @@
         "syntax": "*",
         "value": "var(--instui-spacing-space-md)"
       },
+      "--instui-component-alert-danger-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-error",
+        "syntax": "*",
+        "value": "var(--instui-color-background-error)"
+      },
+      "--instui-component-alert-danger-background-inline": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-pastel-error",
+        "syntax": "*",
+        "value": "var(--instui-color-background-pastel-error)"
+      },
       "--instui-component-alert-danger-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-stroke-error",
         "syntax": "*",
         "value": "var(--instui-color-stroke-error)"
+      },
+      "--instui-component-alert-danger-border-color-inline": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-strong",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-strong)"
       },
       "--instui-component-alert-danger-icon-background": {
         "inherits": true,
@@ -45287,10 +46549,40 @@
         "value": "var(--instui-color-background-error)"
       },
       "--instui-component-alert-icon-color": {
+        "deprecated": true,
         "inherits": true,
         "refersTo": "--instui-color-icon-on-color",
         "syntax": "*",
         "value": "var(--instui-color-icon-on-color)"
+      },
+      "--instui-component-alert-icon-padding-left": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-md)"
+      },
+      "--instui-component-alert-icon-padding-right": {
+        "inherits": true,
+        "syntax": "<integer>",
+        "value": "0"
+      },
+      "--instui-component-alert-icon-padding-vertical": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-lg",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-lg)"
+      },
+      "--instui-component-alert-info-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-info",
+        "syntax": "*",
+        "value": "var(--instui-color-background-info)"
+      },
+      "--instui-component-alert-info-background-inline": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-pastel-info",
+        "syntax": "*",
+        "value": "var(--instui-color-background-pastel-info)"
       },
       "--instui-component-alert-info-border-color": {
         "inherits": true,
@@ -45298,11 +46590,29 @@
         "syntax": "*",
         "value": "var(--instui-color-stroke-info)"
       },
+      "--instui-component-alert-info-border-color-inline": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-strong",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-strong)"
+      },
       "--instui-component-alert-info-icon-background": {
         "inherits": true,
         "refersTo": "--instui-color-background-info",
         "syntax": "*",
         "value": "var(--instui-color-background-info)"
+      },
+      "--instui-component-alert-success-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-success",
+        "syntax": "*",
+        "value": "var(--instui-color-background-success)"
+      },
+      "--instui-component-alert-success-background-inline": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-pastel-success",
+        "syntax": "*",
+        "value": "var(--instui-color-background-pastel-success)"
       },
       "--instui-component-alert-success-border-color": {
         "inherits": true,
@@ -45310,17 +46620,41 @@
         "syntax": "*",
         "value": "var(--instui-color-stroke-success)"
       },
+      "--instui-component-alert-success-border-color-inline": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-strong",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-strong)"
+      },
       "--instui-component-alert-success-icon-background": {
         "inherits": true,
         "refersTo": "--instui-color-background-success",
         "syntax": "*",
         "value": "var(--instui-color-background-success)"
       },
+      "--instui-component-alert-warning-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-warning",
+        "syntax": "*",
+        "value": "var(--instui-color-background-warning)"
+      },
+      "--instui-component-alert-warning-background-inline": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-pastel-warning",
+        "syntax": "*",
+        "value": "var(--instui-color-background-pastel-warning)"
+      },
       "--instui-component-alert-warning-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-stroke-warning",
         "syntax": "*",
         "value": "var(--instui-color-stroke-warning)"
+      },
+      "--instui-component-alert-warning-border-color-inline": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-strong",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-strong)"
       },
       "--instui-component-alert-warning-icon-background": {
         "inherits": true,
@@ -45743,12 +47077,14 @@
         "value": "0.75rem"
       },
       "--instui-component-banner-ai-background-bottom-gradient-color": {
+        "deprecated": true,
         "inherits": true,
         "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient",
         "syntax": "*",
         "value": "var(--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient)"
       },
       "--instui-component-banner-ai-background-top-gradient-color": {
+        "deprecated": true,
         "inherits": true,
         "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-top-gradient",
         "syntax": "*",
@@ -45805,6 +47141,11 @@
         "syntax": "*",
         "value": "var(--instui-border-radius-md)"
       },
+      "--instui-component-banner-compact-icon-height": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "1.5rem"
+      },
       "--instui-component-banner-compact-padding-horizontal": {
         "inherits": true,
         "refersTo": "--instui-spacing-space-md",
@@ -45819,9 +47160,9 @@
       },
       "--instui-component-banner-content-gap-vertical": {
         "inherits": true,
-        "refersTo": "--instui-spacing-space-md",
+        "refersTo": "--instui-spacing-space-sm",
         "syntax": "*",
-        "value": "var(--instui-spacing-space-md)"
+        "value": "var(--instui-spacing-space-sm)"
       },
       "--instui-component-banner-icon-color": {
         "inherits": true,
@@ -45840,6 +47181,11 @@
         "refersTo": "--instui-border-radius-lg",
         "syntax": "*",
         "value": "var(--instui-border-radius-lg)"
+      },
+      "--instui-component-banner-relaxed-icon-height": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "2rem"
       },
       "--instui-component-banner-relaxed-padding-horizontal": {
         "inherits": true,
@@ -50858,6 +52204,18 @@
         "syntax": "*",
         "value": "var(--instui-line-height-standalone-text2xl)"
       },
+      "--instui-component-mobile-shared-tokens-mobile-course": {
+        "inherits": true,
+        "refersTo": "--instui-color-mobile-course",
+        "syntax": "*",
+        "value": "var(--instui-color-mobile-course)"
+      },
+      "--instui-component-mobile-shared-tokens-mobile-nav": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-mobile-nav",
+        "syntax": "*",
+        "value": "var(--instui-color-background-mobile-nav)"
+      },
       "--instui-component-modal-auto-min-width": {
         "inherits": true,
         "syntax": "*",
@@ -51345,17 +52703,36 @@
         "syntax": "*",
         "value": "var(--instui-color-background-elevated-surface-base)"
       },
-      "--instui-component-pill-background-color": {
+      "--instui-component-pill-aurora-background-color": {
         "inherits": true,
-        "refersTo": "--instui-color-background-base",
+        "refersTo": "--instui-color-background-pastel-aurora",
         "syntax": "*",
-        "value": "var(--instui-color-background-base)"
+        "value": "var(--instui-color-background-pastel-aurora)"
+      },
+      "--instui-component-pill-aurora-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-strong",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-strong)"
+      },
+      "--instui-component-pill-aurora-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-accent-aurora",
+        "syntax": "*",
+        "value": "var(--instui-color-text-accent-aurora)"
+      },
+      "--instui-component-pill-background-color": {
+        "deprecated": true,
+        "inherits": true,
+        "refersTo": "--instui-component-pill-neutral-background-color",
+        "syntax": "*",
+        "value": "var(--instui-component-pill-neutral-background-color)"
       },
       "--instui-component-pill-base-border-color": {
         "inherits": true,
-        "refersTo": "--instui-color-stroke-base",
+        "refersTo": "--instui-color-stroke-strong",
         "syntax": "*",
-        "value": "var(--instui-color-stroke-base)"
+        "value": "var(--instui-color-stroke-strong)"
       },
       "--instui-component-pill-base-text-color": {
         "inherits": true,
@@ -51365,9 +52742,9 @@
       },
       "--instui-component-pill-border-radius": {
         "inherits": true,
-        "refersTo": "--instui-border-radius-md",
+        "refersTo": "--instui-border-radius-full",
         "syntax": "*",
-        "value": "var(--instui-border-radius-md)"
+        "value": "var(--instui-border-radius-full)"
       },
       "--instui-component-pill-border-style": {
         "inherits": true,
@@ -51380,17 +52757,29 @@
         "syntax": "*",
         "value": "var(--instui-border-width-sm)"
       },
+      "--instui-component-pill-error-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-error",
+        "syntax": "*",
+        "value": "var(--instui-color-background-error)"
+      },
       "--instui-component-pill-error-border-color": {
         "inherits": true,
-        "refersTo": "--instui-color-stroke-error",
+        "refersTo": "--instui-color-stroke-strong",
         "syntax": "*",
-        "value": "var(--instui-color-stroke-error)"
+        "value": "var(--instui-color-stroke-strong)"
+      },
+      "--instui-component-pill-error-icon-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-icon-on-color",
+        "syntax": "*",
+        "value": "var(--instui-color-icon-on-color)"
       },
       "--instui-component-pill-error-text-color": {
         "inherits": true,
-        "refersTo": "--instui-color-text-error",
+        "refersTo": "--instui-color-text-on-color",
         "syntax": "*",
-        "value": "var(--instui-color-text-error)"
+        "value": "var(--instui-color-text-on-color)"
       },
       "--instui-component-pill-font-family": {
         "inherits": true,
@@ -51398,16 +52787,61 @@
         "syntax": "*",
         "value": "var(--instui-font-family-base)"
       },
+      "--instui-component-pill-gap-content": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space2xs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space2xs)"
+      },
+      "--instui-component-pill-gap-icon-label": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-xs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-xs)"
+      },
+      "--instui-component-pill-gap-icon-label-large": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-sm)"
+      },
+      "--instui-component-pill-gap-icon-label-medium": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-sm)"
+      },
       "--instui-component-pill-height": {
         "inherits": true,
-        "syntax": "<length>",
-        "value": "24px"
+        "syntax": "*",
+        "value": "1.5rem"
+      },
+      "--instui-component-pill-height-large": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "2rem"
+      },
+      "--instui-component-pill-height-medium": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "1.75rem"
+      },
+      "--instui-component-pill-height-x-small": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "1.25rem"
+      },
+      "--instui-component-pill-info-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-pastel-info",
+        "syntax": "*",
+        "value": "var(--instui-color-background-pastel-info)"
       },
       "--instui-component-pill-info-border-color": {
         "inherits": true,
-        "refersTo": "--instui-color-stroke-info",
+        "refersTo": "--instui-color-stroke-strong",
         "syntax": "*",
-        "value": "var(--instui-color-stroke-info)"
+        "value": "var(--instui-color-stroke-strong)"
       },
       "--instui-component-pill-info-text-color": {
         "inherits": true,
@@ -51426,23 +52860,143 @@
         "syntax": "<length>",
         "value": "240px"
       },
+      "--instui-component-pill-neutral-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-pastel-neutral",
+        "syntax": "*",
+        "value": "var(--instui-color-background-pastel-neutral)"
+      },
+      "--instui-component-pill-orange-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-pastel-orange",
+        "syntax": "*",
+        "value": "var(--instui-color-background-pastel-orange)"
+      },
+      "--instui-component-pill-orange-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-strong",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-strong)"
+      },
+      "--instui-component-pill-orange-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-accent-orange",
+        "syntax": "*",
+        "value": "var(--instui-color-text-accent-orange)"
+      },
       "--instui-component-pill-padding-horizontal": {
         "inherits": true,
         "refersTo": "--instui-spacing-space-sm",
         "syntax": "*",
         "value": "var(--instui-spacing-space-sm)"
       },
+      "--instui-component-pill-padding-horizontal-large": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-md)"
+      },
+      "--instui-component-pill-padding-horizontal-medium": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-md)"
+      },
+      "--instui-component-pill-padding-vertical": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-xs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-xs)"
+      },
+      "--instui-component-pill-plum-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-pastel-plum",
+        "syntax": "*",
+        "value": "var(--instui-color-background-pastel-plum)"
+      },
+      "--instui-component-pill-plum-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-strong",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-strong)"
+      },
+      "--instui-component-pill-plum-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-accent-plum",
+        "syntax": "*",
+        "value": "var(--instui-color-text-accent-plum)"
+      },
+      "--instui-component-pill-sea-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-pastel-sea",
+        "syntax": "*",
+        "value": "var(--instui-color-background-pastel-sea)"
+      },
+      "--instui-component-pill-sea-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-strong",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-strong)"
+      },
+      "--instui-component-pill-sea-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-accent-sea",
+        "syntax": "*",
+        "value": "var(--instui-color-text-accent-sea)"
+      },
+      "--instui-component-pill-sky-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-pastel-sky",
+        "syntax": "*",
+        "value": "var(--instui-color-background-pastel-sky)"
+      },
+      "--instui-component-pill-sky-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-strong",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-strong)"
+      },
+      "--instui-component-pill-sky-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-accent-sky",
+        "syntax": "*",
+        "value": "var(--instui-color-text-accent-sky)"
+      },
       "--instui-component-pill-status-label-font-weight": {
         "inherits": true,
-        "refersTo": "--instui-font-weight-body-strong",
+        "refersTo": "--instui-font-weight-body-base",
         "syntax": "*",
-        "value": "var(--instui-font-weight-body-strong)"
+        "value": "var(--instui-font-weight-body-base)"
+      },
+      "--instui-component-pill-stone-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-pastel-stone",
+        "syntax": "*",
+        "value": "var(--instui-color-background-pastel-stone)"
+      },
+      "--instui-component-pill-stone-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-strong",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-strong)"
+      },
+      "--instui-component-pill-stone-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-accent-stone",
+        "syntax": "*",
+        "value": "var(--instui-color-text-accent-stone)"
+      },
+      "--instui-component-pill-success-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-pastel-success",
+        "syntax": "*",
+        "value": "var(--instui-color-background-pastel-success)"
       },
       "--instui-component-pill-success-border-color": {
         "inherits": true,
-        "refersTo": "--instui-color-stroke-success",
+        "refersTo": "--instui-color-stroke-strong",
         "syntax": "*",
-        "value": "var(--instui-color-stroke-success)"
+        "value": "var(--instui-color-stroke-strong)"
       },
       "--instui-component-pill-success-text-color": {
         "inherits": true,
@@ -51452,21 +53006,57 @@
       },
       "--instui-component-pill-text-font-size": {
         "inherits": true,
+        "refersTo": "--instui-font-size-text-xs",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-xs)"
+      },
+      "--instui-component-pill-text-font-size-large": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-base",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-base)"
+      },
+      "--instui-component-pill-text-font-size-medium": {
+        "inherits": true,
         "refersTo": "--instui-font-size-text-sm",
         "syntax": "*",
         "value": "var(--instui-font-size-text-sm)"
       },
       "--instui-component-pill-text-font-weight": {
         "inherits": true,
-        "refersTo": "--instui-font-weight-body-strong",
+        "refersTo": "--instui-font-weight-body-base",
         "syntax": "*",
-        "value": "var(--instui-font-weight-body-strong)"
+        "value": "var(--instui-font-weight-body-base)"
+      },
+      "--instui-component-pill-violet-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-pastel-violet",
+        "syntax": "*",
+        "value": "var(--instui-color-background-pastel-violet)"
+      },
+      "--instui-component-pill-violet-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-strong",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-strong)"
+      },
+      "--instui-component-pill-violet-text-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-text-accent-violet",
+        "syntax": "*",
+        "value": "var(--instui-color-text-accent-violet)"
+      },
+      "--instui-component-pill-warning-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-pastel-warning",
+        "syntax": "*",
+        "value": "var(--instui-color-background-pastel-warning)"
       },
       "--instui-component-pill-warning-border-color": {
         "inherits": true,
-        "refersTo": "--instui-color-stroke-warning",
+        "refersTo": "--instui-color-stroke-strong",
         "syntax": "*",
-        "value": "var(--instui-color-stroke-warning)"
+        "value": "var(--instui-color-stroke-strong)"
       },
       "--instui-component-pill-warning-text-color": {
         "inherits": true,
@@ -53348,9 +54938,9 @@
       },
       "--instui-component-side-nav-bar-new-background-color": {
         "inherits": true,
-        "refersTo": "--instui-color-background-elevated-surface-base",
+        "refersTo": "--instui-color-institutional-brand-global-nav-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-background-elevated-surface-base)"
+        "value": "var(--instui-color-institutional-brand-global-nav-bgd)"
       },
       "--instui-component-side-nav-bar-new-border-color": {
         "inherits": true,
@@ -53360,9 +54950,9 @@
       },
       "--instui-component-side-nav-bar-new-border-radius": {
         "inherits": true,
-        "refersTo": "--instui-border-radius-container-md",
+        "refersTo": "--instui-border-radius-lg",
         "syntax": "*",
-        "value": "var(--instui-border-radius-container-md)"
+        "value": "var(--instui-border-radius-lg)"
       },
       "--instui-component-side-nav-bar-new-border-width": {
         "inherits": true,
@@ -53372,9 +54962,9 @@
       },
       "--instui-component-side-nav-bar-new-button-text-color": {
         "inherits": true,
-        "refersTo": "--instui-color-text-base",
+        "refersTo": "--instui-color-institutional-brand-global-nav-menu-item-text-color",
         "syntax": "*",
-        "value": "var(--instui-color-text-base)"
+        "value": "var(--instui-color-institutional-brand-global-nav-menu-item-text-color)"
       },
       "--instui-component-side-nav-bar-new-drilldown-option-active-background-color": {
         "inherits": true,
@@ -53420,9 +55010,9 @@
       },
       "--instui-component-side-nav-bar-new-drilldown-option-text-color": {
         "inherits": true,
-        "refersTo": "--instui-color-text-base",
+        "refersTo": "--instui-color-institutional-brand-global-nav-menu-item-text-color",
         "syntax": "*",
-        "value": "var(--instui-color-text-base)"
+        "value": "var(--instui-color-institutional-brand-global-nav-menu-item-text-color)"
       },
       "--instui-component-side-nav-bar-new-fill": {
         "inherits": true,
@@ -53467,21 +55057,21 @@
       },
       "--instui-component-side-nav-bar-new-item-current-background-color": {
         "inherits": true,
-        "refersTo": "--instui-color-background-brand",
+        "refersTo": "--instui-color-institutional-brand-primary",
         "syntax": "*",
-        "value": "var(--instui-color-background-brand)"
+        "value": "var(--instui-color-institutional-brand-primary)"
       },
       "--instui-component-side-nav-bar-new-item-current-text-color": {
         "inherits": true,
-        "refersTo": "--instui-color-text-inverse",
+        "refersTo": "--instui-color-institutional-brand-global-nav-menu-item-text-color-active",
         "syntax": "*",
-        "value": "var(--instui-color-text-inverse)"
+        "value": "var(--instui-color-institutional-brand-global-nav-menu-item-text-color-active)"
       },
       "--instui-component-side-nav-bar-new-item-font-color": {
         "inherits": true,
-        "refersTo": "--instui-color-text-base",
+        "refersTo": "--instui-color-institutional-brand-global-nav-menu-item-text-color",
         "syntax": "*",
-        "value": "var(--instui-color-text-base)"
+        "value": "var(--instui-color-institutional-brand-global-nav-menu-item-text-color)"
       },
       "--instui-component-side-nav-bar-new-item-font-family": {
         "inherits": true,
@@ -53601,7 +55191,7 @@
       "--instui-component-side-nav-bar-new-min-width": {
         "inherits": true,
         "syntax": "*",
-        "value": "17.25rem"
+        "value": "16rem"
       },
       "--instui-component-side-nav-bar-new-minimized-border-radius": {
         "inherits": true,
@@ -53651,9 +55241,9 @@
       },
       "--instui-component-side-nav-bar-new-text-color": {
         "inherits": true,
-        "refersTo": "--instui-color-text-base",
+        "refersTo": "--instui-color-institutional-brand-global-nav-menu-item-text-color",
         "syntax": "*",
-        "value": "var(--instui-color-text-base)"
+        "value": "var(--instui-color-institutional-brand-global-nav-menu-item-text-color)"
       },
       "--instui-component-side-nav-bar-new-toggle-transition": {
         "inherits": true,
@@ -56668,9 +58258,9 @@
       },
       "--instui-font-size-text2xl": {
         "inherits": true,
-        "refersTo": "--instui-primitive-size-size40",
+        "refersTo": "--instui-primitive-size-size36",
         "syntax": "*",
-        "value": "var(--instui-primitive-size-size40)"
+        "value": "var(--instui-primitive-size-size36)"
       },
       "--instui-font-weight-body-base": {
         "inherits": true,
@@ -56711,6 +58301,13 @@
         "inherits": true,
         "syntax": "*",
         "value": "currentColor"
+      },
+      "--instui-icon-history": {
+        "deprecated": true,
+        "inherits": true,
+        "refersTo": "--instui-icon-rotate-ccw-clock",
+        "syntax": "*",
+        "value": "var(--instui-icon-rotate-ccw-clock)"
       },
       "--instui-line-height-heading-base": {
         "inherits": true,

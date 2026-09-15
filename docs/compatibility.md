@@ -14,16 +14,16 @@ every package consumes, while the `@instructure/ui-*` React packages are used on
 
 | Package                                  | Feeds        | Range                                                 | Resolved              |
 | ---------------------------------------- | ------------ | ----------------------------------------------------- | --------------------- |
-| `@instructure/instructure-design-tokens` | token-ir     | `github:instructure/instructure-design-tokens#v1.8.0` | `v1.8.0@b85c96436131` |
-| `@instructure/ui-icons`                  | icons        | `^11.7.5`                                             | `11.7.5`              |
-| `@instructure/ui-heading`                | instui-react | `^11.7.5`                                             | `11.7.5`              |
-| `@instructure/ui-text`                   | instui-react | `^11.7.5`                                             | `11.7.5`              |
-| `@instructure/ui-link`                   | instui-react | `^11.7.5`                                             | `11.7.5`              |
-| `@instructure/ui-list`                   | instui-react | `^11.7.5`                                             | `11.7.5`              |
-| `@instructure/ui-table`                  | instui-react | `^11.7.5`                                             | `11.7.5`              |
-| `@instructure/ui-view`                   | instui-react | `^11.7.5`                                             | `11.7.5`              |
-| `@instructure/ui-img`                    | instui-react | `^11.7.5`                                             | `11.7.5`              |
-| `@instructure/ui-alerts`                 | instui-react | `^11.7.5`                                             | `11.7.5`              |
+| `@instructure/instructure-design-tokens` | token-ir     | `github:instructure/instructure-design-tokens#v1.9.0` | `v1.9.0@3c6a96cca755` |
+| `@instructure/ui-icons`                  | icons        | `^11.7.6`                                             | `11.7.6`              |
+| `@instructure/ui-heading`                | instui-react | `^11.7.6`                                             | `11.7.6`              |
+| `@instructure/ui-text`                   | instui-react | `^11.7.6`                                             | `11.7.6`              |
+| `@instructure/ui-link`                   | instui-react | `^11.7.6`                                             | `11.7.6`              |
+| `@instructure/ui-list`                   | instui-react | `^11.7.6`                                             | `11.7.6`              |
+| `@instructure/ui-table`                  | instui-react | `^11.7.6`                                             | `11.7.6`              |
+| `@instructure/ui-view`                   | instui-react | `^11.7.6`                                             | `11.7.6`              |
+| `@instructure/ui-img`                    | instui-react | `^11.7.6`                                             | `11.7.6`              |
+| `@instructure/ui-alerts`                 | instui-react | `^11.7.6`                                             | `11.7.6`              |
 
 ## Consumers
 
@@ -69,4 +69,21 @@ Tokens upstream dropped that pantoken still ships as a compatibility shim. Each 
 its `Removed in` upstream minor is adopted, at which point the shim is retired and a consumer minor
 is cut. A shim either forwards to a `Replacement` token or freezes its last-known value.
 
-_No active token deprecations._
+| Token                                                           | Deprecated in          | Removed in             | Replacement                                        |
+| --------------------------------------------------------------- | ---------------------- | ---------------------- | -------------------------------------------------- |
+| `--instui-component-alert-background`                           | `design-tokens@v1.9.0` | `design-tokens@v2.0.0` | `--instui-component-alert-info-background`         |
+| `--instui-component-alert-color`                                | `design-tokens@v1.9.0` | `design-tokens@v2.0.0` | `--instui-color-text-base`                         |
+| `--instui-component-alert-icon-color`                           | `design-tokens@v1.9.0` | `design-tokens@v2.0.0` | `--instui-color-icon-on-color`                     |
+| `--instui-component-banner-ai-background-bottom-gradient-color` | `design-tokens@v1.9.0` | `design-tokens@v2.0.0` | _frozen value_                                     |
+| `--instui-component-banner-ai-background-top-gradient-color`    | `design-tokens@v1.9.0` | `design-tokens@v2.0.0` | _frozen value_                                     |
+| `--instui-component-pill-background-color`                      | `design-tokens@v1.9.0` | `design-tokens@v2.0.0` | `--instui-component-pill-neutral-background-color` |
+| `--instui-icon-angry`                                           | `ui@11.7.6`            | `ui@12.0.0`            | _frozen value_                                     |
+| `--instui-icon-annoyed`                                         | `ui@11.7.6`            | `ui@12.0.0`            | _frozen value_                                     |
+| `--instui-icon-frown`                                           | `ui@11.7.6`            | `ui@12.0.0`            | _frozen value_                                     |
+| `--instui-icon-history`                                         | `ui@11.7.6`            | `ui@12.0.0`            | `--instui-icon-rotate-ccw-clock`                   |
+| `--instui-icon-laugh`                                           | `ui@11.7.6`            | `ui@12.0.0`            | _frozen value_                                     |
+| `--instui-icon-meh`                                             | `ui@11.7.6`            | `ui@12.0.0`            | _frozen value_                                     |
+| `--instui-icon-podcast`                                         | `ui@11.7.6`            | `ui@12.0.0`            | _frozen value_                                     |
+| `--instui-icon-smile`                                           | `ui@11.7.6`            | `ui@12.0.0`            | _frozen value_                                     |
+| `--instui-icon-smile-plus`                                      | `ui@11.7.6`            | `ui@12.0.0`            | _frozen value_                                     |
+| `--instui-icon-trash-2`                                         | `ui@11.7.6`            | `ui@12.0.0`            | _frozen value_                                     |

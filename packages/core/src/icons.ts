@@ -148,9 +148,9 @@ function readLucideGlyphs(uiIconsRoot: string, bidi: Set<string>): IconToken[] {
   const genIndex = join(uiIconsRoot, "es/generated/lucide/index.js");
   if (!existsSync(genIndex)) return out;
   const wrapped = new Set(
-    [...readFileSync(genIndex, "utf8").matchAll(/wrapLucideIcon\(Lucide\.([A-Za-z0-9]+)\)/g)].map(
-      (m) => m[1],
-    ),
+    [
+      ...readFileSync(genIndex, "utf8").matchAll(/wrapLucideIcon\((?:Lucide\.)?([A-Za-z0-9]+)\)/g),
+    ].map((m) => m[1]),
   );
 
   const mainIndex = readEsmModule(join(lucideDir, "dist/esm"), "lucide-react");
