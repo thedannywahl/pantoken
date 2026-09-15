@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { mkdirSync, mkdtempSync, symlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
@@ -9,6 +10,14 @@ import {
 } from "./sync-cloudflare-r2.ts";
 
 const MODULE_PATH = new URL("./sync-cloudflare-r2.ts", import.meta.url).pathname;
+
+/** Empty List Objects response, so tests that don't exercise diffing can ignore the list call. */
+const emptyListResponse = (): Response =>
+  new Response(JSON.stringify({ result: [], result_info: { is_truncated: false } }), {
+    status: 200,
+  });
+
+const md5Hex = (content: string): string => createHash("md5").update(content).digest("hex");
 
 let tempDir: string;
 let r2AssetsDir: string;

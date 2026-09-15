@@ -2,8 +2,13 @@
  * Synchronize high-volume client assets (`docs/.vitepress/cf-r2-assets`) to Cloudflare R2
  * storage using the Cloudflare REST API with concurrent streaming uploads.
  *
+ * Before uploading, the existing bucket contents are listed once and compared against each local
+ * file's MD5 by size + hash, so unchanged files (the common case on a rerun or a retried job) are
+ * skipped instead of re-uploaded. This is what makes a retried run cheap and effectively resumable.
+ *
  * @module
  */
+import { createHash } from "node:crypto";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 import { runAsMain } from "../../scripts/release/cli.ts";
@@ -11,6 +16,9 @@ import { getMimeType } from "../cloudflare/src/index.ts";
 
 /** Default concurrent upload requests to Cloudflare R2. */
 export const DEFAULT_R2_UPLOAD_CONCURRENCY = 6;
+
+/** Number of objects requested per page when listing existing R2 objects. */
+export const R2_LIST_PAGE_SIZE = 1_000;
 
 /** Default number of retry attempts for transient Cloudflare responses. */
 export const DEFAULT_R2_UPLOAD_MAX_RETRIES = 6;
@@ -61,6 +69,64 @@ export interface R2SyncResult {
   uploadedBytes: number;
   /** Any upload errors encountered during the run. */
   errors: Array<{ file: string; error: string }>;
+}
+
+/** Minimal shape of an object entry returned by the Cloudflare R2 List Objects API. */
+interface R2ListedObject {
+  /** Raw hex MD5 digest, as returned by the List Objects API (unquoted). */
+  etag: string;
+  /** Size in bytes. */
+  size: number;
+}
+
+/**
+ * List every object currently in the bucket, so the caller can diff local files against what's
+ * already there instead of blindly re-uploading unchanged content.
+ *
+ * Failures here are intentionally non-fatal to the caller: on error this throws, and the caller
+ * falls back to an empty map (uploading everything), which is always correct, just not optimal.
+ *
+ * @param fetchImpl - Fetch implementation to use.
+ * @param baseUrl - Cloudflare R2 objects endpoint for the target bucket.
+ * @param apiToken - Cloudflare API token.
+ * @returns Map of object key to its remote size and MD5 etag.
+ */
+async function listExistingObjects(
+  fetchImpl: typeof fetch,
+  baseUrl: string,
+  apiToken: string,
+): Promise<Map<string, R2ListedObject>> {
+  const existing = new Map<string, R2ListedObject>();
+  let cursor: string | undefined;
+
+  do {
+    const url = new URL(baseUrl);
+    url.searchParams.set("per_page", String(R2_LIST_PAGE_SIZE));
+    if (cursor) url.searchParams.set("cursor", cursor);
+
+    const response = await fetchImpl(url.toString(), {
+      headers: { Authorization: `Bearer ${apiToken}` },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status} ${response.statusText}`);
+    }
+
+    const body = (await response.json()) as {
+      result?: Array<{ key?: string; etag?: string; size?: number }>;
+      result_info?: { cursor?: string; is_truncated?: boolean };
+    };
+
+    for (const object of body.result ?? []) {
+      if (object.key && object.etag && object.size !== undefined) {
+        existing.set(object.key, { etag: object.etag.toLowerCase(), size: object.size });
+      }
+    }
+
+    cursor = body.result_info?.is_truncated ? body.result_info.cursor : undefined;
+  } while (cursor);
+
+  return existing;
 }
 
 /**
@@ -263,6 +329,17 @@ export async function syncR2Assets(options: R2SyncOptions = {}): Promise<R2SyncR
 
   const baseUrl = `https://api.cloudflare.com/client/v4/accounts/${accountId}/r2/buckets/${bucketName}/objects`;
 
+  // A fresh bucket, a bucket the API token can't list, or a transient list failure all just mean an
+  // empty map here, which degrades to uploading every file below - never to under-uploading.
+  let existingObjects = new Map<string, R2ListedObject>();
+  try {
+    existingObjects = await listExistingObjects(fetchImpl, baseUrl, apiToken);
+  } catch (err) {
+    console.error(
+      `⚠ Could not list existing R2 objects, uploading all files: ${err instanceof Error ? err.message : String(err)}`,
+    );
+  }
+
   const uploadFile = async (filePath: string): Promise<void> => {
     assertAssetPathUnderRoot(r2AssetsDir, filePath);
 
@@ -272,6 +349,15 @@ export async function syncR2Assets(options: R2SyncOptions = {}): Promise<R2SyncR
     // from the js/file-data-in-request CodeQL query instead of relying on inline suppression.
     const fileBytes = readFileSync(filePath);
     const contentType = getMimeType(relKey);
+
+    const existingObject = existingObjects.get(relKey);
+    if (existingObject && existingObject.size === fileBytes.length) {
+      const localEtag = createHash("md5").update(fileBytes).digest("hex");
+      if (localEtag === existingObject.etag) {
+        result.skippedFiles += 1;
+        return;
+      }
+    }
 
     const targetUrl = `${baseUrl}/${encodeURIComponent(relKey).replace(/%2F/gu, "/")}`;
 
@@ -335,7 +421,8 @@ export async function syncR2Assets(options: R2SyncOptions = {}): Promise<R2SyncR
 
   console.log(
     `✓ Cloudflare R2 sync complete: uploaded ${result.uploadedFiles}/${result.totalFiles} files ` +
-      `(${(result.uploadedBytes / 1024 / 1024).toFixed(1)} MB) to bucket "${bucketName}".`,
+      `(${(result.uploadedBytes / 1024 / 1024).toFixed(1)} MB), ${result.skippedFiles} unchanged, ` +
+      `to bucket "${bucketName}".`,
   );
 
   return result;
