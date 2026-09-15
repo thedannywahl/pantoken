@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## 0.1.37
+
+### Patch Changes
+
+- Updated dependencies [1bbe6c6]
+  - @pantoken/tokens@0.4.0
+  - @pantoken/pendo@0.4.4
+  - @pantoken/swatches@0.1.16
+  - @pantoken/icon-font@0.1.19
+  - @pantoken/android@0.1.20
+  - @pantoken/compose@0.1.20
+  - @pantoken/flutter@0.1.20
+  - @pantoken/rust@0.1.18
+  - @pantoken/swift@0.1.20
+  - @pantoken/vanilla@0.1.13
+  - @pantoken/wordpress@0.1.13
+  - @pantoken/mintlify@0.1.16
+  - @pantoken/scaffold@1.3.0
+  - @pantoken/drupal@0.1.30
+  - @pantoken/hugo@0.1.31
+  - @pantoken/jekyll@0.1.31
+
 ## 0.1.36
 
 ### Patch Changes
