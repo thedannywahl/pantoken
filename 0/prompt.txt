@@ -1,0 +1,16 @@
+let's add some better output/status logging to the workflow/script as well.
+
+---
+
+how do I check cloudflare to see if anything actually synced?
+
+---
+
+`[pantoken-docs-assets](https://dash.cloudflare.com/33f1a695e1067a2d4160e2bf951ddfcb/r2/default/buckets/pantoken-docs-assets)
+
+64.11k
+809.85 MB`
+
+---
+
+there is only an assets folder, there is no demos-assets folder.
