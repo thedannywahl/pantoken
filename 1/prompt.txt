@@ -1,0 +1,13 @@
+instui 11.7.6 and instructure-design-tokens 1.9.0 were released, and we need to upgrade in the monorepo, write an upgrade plan.
+
+---
+
+we also need to review the actual implementations of the components as called out in the changelog for the design tokens: alert, pill, and also the pastels (used by banner), we did a lot of manual creation for banner styles.
+
+---
+
+In /Users/dwahl/Scripts/pantoken, perform read-only exploration for the requested upgrade planning scope. Find the actual implementations, tests, demos, and token records for: alert, pill, pastel tokens used by banner, and banner styles/manual creation. Also identify any recorded intent/history if readily available through repository metadata. Report exact workspace-relative file paths, key symbols, current behavior, likely impact points for upgrading instructure-design-tokens 1.9.0, and focused verification commands. Do not edit files. Be medium thorough.
+
+---
+
+Start implementation
