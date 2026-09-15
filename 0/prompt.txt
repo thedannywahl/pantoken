@@ -1,0 +1,12 @@
+how do we resolve these warnings?
+```
+~/docs$ node scripts/build-api-en.ts
+[info] Loaded plugin typedoc-plugin-markdown
+[info] Loaded plugin typedoc-vitepress-theme
+[info] Loaded plugin /Users/dwahl/Scripts/pantoken/plugins/typedoc/demo/dist/index.mjs
+[warning] The blockTags defined in typedoc.json will be overwritten by configuration in tsdoc.json
+[info] markdown generated at ./api
+[warning] Found 0 errors and 1 warnings
+✓ API badges: styled 714 markdown file(s)
+✓ API overview: wrote docs/api/index.md
+```
