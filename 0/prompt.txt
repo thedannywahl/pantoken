@@ -1,0 +1,2 @@
+this job failed after 4 hours, is it resumable, diffable, streamable?  can we seed cloudflare?  is there other optimization we can add?
+https://github.com/thedannywahl/pantoken/actions/runs/34902918393/job/104172860978
