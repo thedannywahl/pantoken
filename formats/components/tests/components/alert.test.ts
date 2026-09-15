@@ -13,11 +13,11 @@ test("alert draws its bar + glyph from pseudo-elements (no wrappers) with varian
   expect(css).toContain("&:is(.-variant-success, .-color-success)");
   expect(css).toContain("&:is(.-variant-warning, .-color-warning)");
   expect(css).toContain("&:is(.-variant-error, .-color-danger, .-color-error)");
-  for (const color of ["#2B7ABC", "#03893D", "light-dark(#F0C16C, #8C6400)", "#E62429"]) {
+  for (const color of ["#2b7abc", "#03893d", "light-dark(#f0c16c, #8c6400)", "#e62429"]) {
     expect(css).toContain(`background: ${color}`);
     expect(css).toContain(`border-color: ${color}`);
   }
-  for (const color of ["#2B7ABC", "#03893D", "light-dark(#F0C16C, #8C6400)", "#E62429"]) {
+  for (const color of ["#2b7abc", "#03893d", "light-dark(#f0c16c, #8c6400)", "#e62429"]) {
     expect(css).toContain(`--pantoken-alert-icon-bg: ${color}`);
   }
   // The left bar (::before) and the glyph (::after) are self-drawn from the variant tokens.
