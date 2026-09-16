@@ -14,6 +14,10 @@ pantoken is a design-token transformation and distribution system. It converts I
 
 - Published downstream packages use a vendored, versioned token model and do not require consumers to retrieve the GitHub-hosted upstream design-token source.
 - Generated output is reproducible from the repository source and pinned dependencies.
+- Tokens Studio colour modifiers from the pinned upstream source are validated for structure,
+  operation, colour space, numeric range, reference integrity, and colour type before publication.
+  Malformed modifiers are recorded for review and block replacement of generated artifacts until an
+  explicit rewrite is supplied.
 - npm releases include provenance linking the package to its source commit and GitHub Actions workflow.
 - The project tests token resolution, output generation, reference integrity, package exports, and supported integrations in continuous integration.
 - Reported vulnerabilities affecting the latest release will be investigated and, when confirmed, fixed in a subsequent release.
