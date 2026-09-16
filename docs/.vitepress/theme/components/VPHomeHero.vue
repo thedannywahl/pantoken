@@ -136,6 +136,10 @@ onMounted(() => {
   };
   window.addEventListener("resize", syncViewportWidth);
 
+  // `font-display: swap` paints the fallback face first, so the initial `syncBaseline()` above can
+  // measure fallback-font metrics and go stale once the brand face finishes loading; resync once it has.
+  void document.fonts?.ready.then(() => syncViewportWidth?.());
+
   const TRANSITION_MS = 450;
 
   /** Slide the current label/glyph out into `.platform-viewport`'s clipping window. */

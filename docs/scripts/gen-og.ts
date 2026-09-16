@@ -205,6 +205,16 @@ const heroIndexPath = (localeKey: DocsLocale): string =>
     new URL(localeKey === "root" ? "../index.md" : `../${localeKey}/index.md`, import.meta.url),
   );
 
+// `hero.text` carries inline markup (`<br/>`, the animated `.platform` pill's `<span>`s) for the
+// live homepage's `v-html` render; the card renders one plain-text line, so collapse it to the
+// words a reader sees.
+const stripHtml = (text: string): string =>
+  text
+    .replace(/<br\s*\/?>/gi, " ")
+    .replace(/<[^>]+>/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
 function readHero(localeKey: DocsLocale): { headline: string; tagline: string } {
   const source = readFileSync(heroIndexPath(localeKey), "utf8");
   const frontmatter = source.split(/^---$/m)[1];
@@ -214,7 +224,7 @@ function readHero(localeKey: DocsLocale): { headline: string; tagline: string } 
     if (!match) throw new Error(`gen-og: ${heroIndexPath(localeKey)} is missing hero.${key}`);
     return match[1].trim();
   };
-  return { headline: field("text"), tagline: field("tagline") };
+  return { headline: stripHtml(field("text")), tagline: stripHtml(field("tagline")) };
 }
 
 function renderCard(
