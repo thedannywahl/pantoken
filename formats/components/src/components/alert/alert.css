@@ -1,14 +1,15 @@
 /**
  * @component alert
- * @summary An inline message with a status colour bar and a masked status glyph from the shared icon set.
- * @remarks A custom `-icon-<name>` swaps the status glyph but keeps the variant's coloured bar; the bar fill is re-asserted at higher specificity so the shared icon painter doesn't consume it. A direct close button defaults to small; add a size modifier to override it.
+ * @summary A status message with floating and inline surface treatments and a masked status glyph from the shared icon set.
+ * @remarks Floating is the default, with an elevated coloured surface and on-colour actions. `-inline` uses a pastel surface, no shadow, status-coloured glyph, standard close button, primary action, and tertiary secondary action. A direct close button defaults to small; add a size modifier to override it.
  * @selector .pfx-alert
  * @modifier -color-info — Informational (default).
  * @modifier -color-success — A positive/confirmation message.
  * @modifier -color-warning — A cautionary message.
  * @modifier -color-danger — An error message.
  * @modifier -color-error — @alias {@link -color-danger}
- * @modifier -without-shadow — Remove the default elevation shadow (InstUI `hasShadow={false}`).
+ * @modifier -inline — A non-elevated pastel surface for placement in document flow.
+ * @modifier -without-shadow — Remove the floating elevation shadow.
  * @modifier -has-shadow-false — @alias {@link -without-shadow}
  * @modifier -screen-reader-only — Visually hidden but announced.
  * @modifier -variant-info — @deprecated {@link -color-info}
@@ -22,10 +23,9 @@
  * @modifier -timeout-4 — Four seconds before automatic dismissal.
  * @modifier -timeout-5 — Five seconds before automatic dismissal.
  * @slot content — The alert's message content; may include a dismiss button.
- * @modifier -icon-* — Swap the status glyph for a custom icon (e.g. `-icon-megaphone`), kept white on the variant's coloured bar.
+ * @modifier -icon-* — Swap the status glyph for a custom icon (e.g. `-icon-megaphone`).
  * @modifier -render-custom-icon-* — @deprecated The former `renderCustomIcon` prop; still works as an alias, but use `-icon-<name>` (or override `--pantoken-alert-glyph`) instead.
- * @pseudo ::before — The solid variant-coloured status bar, flush to the rounded start edge.
- * @pseudo ::after — The white status glyph, masked and centred over the bar.
+ * @pseudo ::after — The status glyph, masked and padded independently from the content.
  * @cssproperty --pantoken-alert-glyph <url> — The low-level status-glyph source; `-icon-<name>` sets it for you. Override for a custom icon (a url-encoded SVG).
  * @cssproperty --pantoken-alert-icon-bg <color> — The coloured status-bar fill behind the glyph; each `-color-*` variant sets its own.
  * @cssproperty --timeout <integer> — Milliseconds before automatic dismissal; `0` disables it. Requires the alert interaction bundle.
@@ -70,19 +70,26 @@
     min-inline-size: 12rem;
     padding: var(--instui-component-alert-content-padding-vertical)
       var(--instui-component-alert-content-padding-horizontal);
-    padding-inline-start: calc(2.5rem + var(--instui-component-alert-content-padding-horizontal));
-    background: #2b7abc;
-    color: var(--instui-color-text-base);
+    padding-inline-start: calc(
+      1.125rem + var(--instui-component-alert-icon-padding-left) +
+        var(--instui-component-alert-icon-padding-right)
+    );
+    background: var(--instui-component-alert-info-background);
+    color: var(--instui-component-text-base-on-color);
     border: var(--instui-component-alert-border-width) var(--instui-component-alert-border-style)
-      #2b7abc;
+      var(--instui-component-alert-info-border-color);
     border-radius: var(--instui-component-alert-border-radius);
-    /* Elevated by default (InstUI's hasShadow defaults to true); -without-shadow opts out. */
-    box-shadow: var(--instui-elevation-above);
+    box-shadow:
+      0 4px 4px 0 var(--instui-color-drop-shadow-shadow-color1),
+      0 var(--instui-drop-shadow-y-elevation4-dropshadow1)
+        var(--instui-drop-shadow-blur-elevation4-dropshadow1)
+        var(--instui-drop-shadow-spread-elevation4-dropshadow1)
+        var(--instui-color-drop-shadow-shadow-color1);
     font-family: var(--instui-component-alert-content-font-family);
     font-size: var(--instui-component-alert-content-font-size);
     font-weight: var(--instui-component-alert-content-font-weight);
     line-height: var(--instui-component-alert-content-line-height);
-    --pantoken-alert-icon-bg: #2b7abc;
+    --pantoken-alert-icon-color: var(--instui-color-icon-on-color);
     --pantoken-alert-glyph: var(--instui-icon-info);
 
     /* Close/dismiss is optional: pin it in the top-end corner (the button's own box centres the ×, so it
@@ -95,29 +102,19 @@
       position: absolute;
       inset-block-start: var(--instui-spacing-space-xs);
       inset-inline-end: var(--instui-spacing-space-xs);
+      color: var(--instui-color-icon-on-color);
     }
   }
 
-  /* The solid variant-coloured bar, flush to the rounded left edge (overlapping the border). */
-  &::before {
-    content: "";
-    position: absolute;
-    inset-block: calc(-1 * var(--instui-component-alert-border-width));
-    inset-inline-start: calc(-1 * var(--instui-component-alert-border-width));
-    inline-size: 2.5rem;
-    border-start-start-radius: var(--instui-component-alert-border-radius);
-    border-end-start-radius: var(--instui-component-alert-border-radius);
-    background: var(--pantoken-alert-icon-bg);
-  }
-
-  /* The white variant glyph, centred over the bar (masked, so it takes the icon-colour token). */
+  /* The glyph carries its own token-defined padding rather than sitting on a coloured bar. */
   &::after {
     content: "";
     position: absolute;
-    inset-block: 0;
-    inset-inline-start: 0;
-    inline-size: 2.5rem;
-    background: var(--instui-color-icon-on-color);
+    inset-block-start: var(--instui-component-alert-icon-padding-vertical);
+    inset-inline-start: var(--instui-component-alert-icon-padding-left);
+    inline-size: 1.125rem;
+    block-size: 1.125rem;
+    background: var(--pantoken-alert-icon-color);
     -webkit-mask: var(--pantoken-alert-glyph) center / 1.125rem no-repeat;
     mask: var(--pantoken-alert-glyph) center / 1.125rem no-repeat;
   }
@@ -143,46 +140,36 @@
     border: 0;
   }
 
-  &:is(.-variant-info, .-color-info) {
-    background: #2b7abc;
-    border-color: #2b7abc;
-  }
-
   &:is(.-variant-success, .-color-success) {
-    background: #03893d;
-    border-color: #03893d;
-    --pantoken-alert-icon-bg: #03893d;
+    background: var(--instui-component-alert-success-background);
+    border-color: var(--instui-component-alert-success-border-color);
     --pantoken-alert-glyph: var(--instui-icon-circle-check);
   }
 
   &:is(.-variant-warning, .-color-warning) {
-    background: light-dark(#f0c16c, #8c6400);
-    border-color: light-dark(#f0c16c, #8c6400);
-    --pantoken-alert-icon-bg: light-dark(#f0c16c, #8c6400);
+    background: var(--instui-component-alert-warning-background);
+    border-color: var(--instui-component-alert-warning-border-color);
     --pantoken-alert-glyph: var(--instui-icon-triangle-alert);
+    --pantoken-alert-icon-color: var(--instui-color-text-base);
+
+    > .pfx-close-button {
+      color: var(--instui-color-text-base);
+    }
   }
 
   &:is(.-variant-error, .-color-danger, .-color-error) {
-    background: #e62429;
-    border-color: #e62429;
-    --pantoken-alert-icon-bg: #e62429;
+    background: var(--instui-component-alert-danger-background);
+    border-color: var(--instui-component-alert-danger-border-color);
     --pantoken-alert-glyph: var(--instui-icon-circle-x);
   }
 
-  /* A custom `-icon-<name>` on the alert swaps the status glyph (still drawn white over the coloured
-   bar), keeping the variant's bar colour. Last, so it wins over the per-variant glyph above. The
-   generic icon painter also targets `[class*="-icon-"]::before` at equal specificity and later in the
-   sheet — it would consume the bar — so re-assert the bar here at higher specificity. */
+  /* A custom `-icon-<name>` swaps the status glyph. Suppress the generic painter's ::before glyph. */
   &[class*="-icon-"] {
     --pantoken-alert-glyph: var(--pantoken-glyph);
   }
 
   &[class*="-icon-"]::before {
-    inline-size: 2.5rem;
-    block-size: auto;
-    background: var(--pantoken-alert-icon-bg);
-    -webkit-mask: none;
-    mask: none;
+    content: none;
   }
 
   &.-timeout-1 {
@@ -205,8 +192,61 @@
     --timeout: 5000;
   }
 
-  /* Deprecated aliases paired with supported modifiers via :is() for backward compatibility. */
+  &.-inline {
+    background: var(--instui-component-alert-info-background-inline);
+    border-color: var(--instui-component-alert-info-border-color-inline);
+    box-shadow: none;
+    color: var(--instui-color-text-base);
+    --pantoken-alert-icon-color: var(--instui-color-icon-info);
+
+    > .pfx-close-button {
+      color: var(--instui-color-icon-base);
+    }
+  }
+
+  &.-inline:is(.-variant-success, .-color-success) {
+    background: var(--instui-component-alert-success-background-inline);
+    border-color: var(--instui-component-alert-success-border-color-inline);
+    --pantoken-alert-icon-color: var(--instui-color-icon-success);
+  }
+
+  &.-inline:is(.-variant-warning, .-color-warning) {
+    background: var(--instui-component-alert-warning-background-inline);
+    border-color: var(--instui-component-alert-warning-border-color-inline);
+    --pantoken-alert-icon-color: var(--instui-color-icon-warning);
+  }
+
+  &.-inline:is(.-variant-error, .-color-danger, .-color-error) {
+    background: var(--instui-component-alert-danger-background-inline);
+    border-color: var(--instui-component-alert-danger-border-color-inline);
+    --pantoken-alert-icon-color: var(--instui-color-icon-error);
+  }
+
+  &.-inline > .pfx-button:not(.-color-secondary) {
+    background: var(--instui-color-background-interactive-action-primary-base);
+    border-color: var(--instui-color-stroke-interactive-action-primary-base);
+    color: var(--instui-color-text-interactive-action-primary-base);
+  }
+
+  &.-inline > .pfx-button.-color-secondary {
+    background: transparent;
+    border-color: var(--instui-component-base-button-primary-ghost-border-color);
+    color: var(--instui-component-base-button-primary-ghost-color);
+  }
+
   &:is(.-has-shadow-false, .-without-shadow) {
     box-shadow: none;
+  }
+
+  & > .pfx-button:not(.-color-secondary) {
+    background: var(--instui-component-base-button-primary-inverse-background);
+    border-color: var(--instui-component-base-button-primary-inverse-border-color);
+    color: var(--instui-component-base-button-primary-inverse-color);
+  }
+
+  & > .pfx-button.-color-secondary {
+    background: transparent;
+    border-color: var(--instui-component-base-button-primary-inverse-ghost-border-color);
+    color: var(--instui-component-base-button-primary-inverse-ghost-color);
   }
 }

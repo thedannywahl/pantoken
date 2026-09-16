@@ -130,9 +130,9 @@ test("modifiers are key-value: sizes alias short/long, deviations keep a depreca
   // Size scale is emitted with both short and long spellings.
   expect(css).toContain("&.-size-sm");
   expect(css).toContain("&.-size-small");
-  // Deviations from InstUI keep a deprecated InstUI-semantic shim: alert variant→color, and the
-  // avatar accent1–6 names (InstUI-documented) aliasing our token-named colours.
-  expect(css).toMatch(/&:is\(\.-variant-info,\s*\.-color-info\)\s*\{/u);
+  // Alert keeps deprecated status aliases and has an explicit inline treatment; avatar keeps its
+  // InstUI-documented accent1–6 names as aliases for token-named colours.
+  expect(css).toMatch(/&\.-inline\s*\{/u);
   expect(css).toMatch(/&:is\(\.-variant-error,\s*\.-color-danger,\s*\.-color-error\)\s*\{/u);
   expect(css).toContain(".instui-avatar.-color-accent1");
   expect(css).toContain(".instui-avatar.-color-accent6");
