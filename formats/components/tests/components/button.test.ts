@@ -181,12 +181,13 @@ test("button has fill/border removal modifiers, deprecated ghost, and a block va
   expect(css).toContain("&.-ghost:hover");
   expect(css).toContain("&.-display-block");
   expect(css).toContain("width: 100%");
-  // Ghost hover derives a low-opacity, darkened wash from the brand (via @pantoken/plugin-colors),
-  // so the coloured rest text stays legible instead of printing same-on-same. Appended in index.ts.
-  expect(css).toContain(".instui-button.-without-background:hover");
   expect(css).toContain(
-    "color-mix(in srgb, hsl(from var(--instui-component-base-button-primary-ghost-color) h s calc(l - 10)) 10%, transparent)",
+    "background: var(--instui-component-base-button-primary-ghost-hover-background)",
   );
+  expect(css).toContain(
+    "background: var(--instui-component-base-button-primary-ghost-active-background)",
+  );
+  expect(css).not.toContain("hsl(from");
   expect(css).toContain("&.-without-border");
 });
 

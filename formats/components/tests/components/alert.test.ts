@@ -26,9 +26,8 @@ test("alert supports token-backed floating and inline status treatments", () => 
   expect(css).toContain("--instui-component-alert-icon-padding-left");
   expect(css).toContain("+ 0.75rem");
   expect(css).toContain("--instui-component-alert-icon-padding-vertical");
-  expect(css).toMatch(
-    /color-mix\(in srgb,\s*var\(--instui-component-alert-info-border-color-inline\) 20%,\s*transparent\)/u,
-  );
+  expect(css).toContain("border-color: var(--instui-component-alert-info-border-color-inline)");
+  expect(css).not.toContain("color-mix(");
   expect(css).toContain('&[class*="-icon-"]::before');
   expect(css).toContain("content: none");
   // No icon/content wrapper classes anymore.
@@ -52,7 +51,9 @@ test("alert supports token-backed floating and inline status treatments", () => 
   expect(css).toContain("--instui-component-base-button-primary-inverse-hover-background");
   expect(css).toContain("--instui-component-base-button-secondary-on-color-disabled-border-color");
   expect(css).toContain("--instui-component-base-button-tertiary-hover-border-color");
-  expect(css).toContain("&:is(.-inline, .-variant-warning, .-color-warning) > .instui-button");
+  expect(css).toMatch(
+    /&:is\(\.-inline,\s*\.-variant-warning,\s*\.-color-warning\)\s*>\s*\.instui-button/u,
+  );
   expect(css).toContain("&.-screen-reader-only");
   expect(css).toMatch(/>\s*\.instui-close-button:not\(\[class\*="-size-"\]\)/u);
   expect(css).toContain("var(--instui-component-base-button-small-height)");

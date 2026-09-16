@@ -882,9 +882,6 @@ importers:
 
   formats/components:
     dependencies:
-      '@pantoken/plugin-colors':
-        specifier: workspace:*
-        version: link:../../plugins/pantoken/colors
       '@pantoken/scaffold-base':
         specifier: workspace:*
         version: link:../../packages/scaffold-base

@@ -108,6 +108,16 @@ test("banner root uses border/color/radius tokens and defaults to relaxed size",
   expect(css).toContain("var(--instui-component-banner-relaxed-content-gap-horizontal)");
 });
 
+test("banner border modifier is computed in every vendored theme", () => {
+  for (const theme of ["rebrand", "canvas", "canvasHighContrast"] as const) {
+    const token = byTheme(theme).find(
+      ({ name }) => name === "--instui-component-banner-border-color",
+    );
+    expect(token?.value).toMatch(/^#[0-9a-f]{8}$/iu);
+    expect(token?.value).not.toContain("var(");
+  }
+});
+
 test("banner -size-compact switches padding/gap/icon-radius tokens", () => {
   const css = bannerRules("instui-");
   expect(css).toContain("-size-compact");

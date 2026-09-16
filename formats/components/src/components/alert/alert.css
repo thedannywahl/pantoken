@@ -231,11 +231,7 @@
 
   &.-inline {
     background: var(--instui-component-alert-info-background-inline);
-    border-color: color-mix(
-      in srgb,
-      var(--instui-component-alert-info-border-color-inline) 20%,
-      transparent
-    );
+    border-color: var(--instui-component-alert-info-border-color-inline);
     box-shadow: none;
     color: var(--instui-color-text-base);
     --pantoken-alert-icon-color: var(--instui-color-icon-info);
@@ -247,31 +243,19 @@
 
   &.-inline:is(.-variant-success, .-color-success) {
     background: var(--instui-component-alert-success-background-inline);
-    border-color: color-mix(
-      in srgb,
-      var(--instui-component-alert-success-border-color-inline) 20%,
-      transparent
-    );
+    border-color: var(--instui-component-alert-success-border-color-inline);
     --pantoken-alert-icon-color: var(--instui-color-icon-success);
   }
 
   &.-inline:is(.-variant-warning, .-color-warning) {
     background: var(--instui-component-alert-warning-background-inline);
-    border-color: color-mix(
-      in srgb,
-      var(--instui-component-alert-warning-border-color-inline) 20%,
-      transparent
-    );
+    border-color: var(--instui-component-alert-warning-border-color-inline);
     --pantoken-alert-icon-color: var(--instui-color-icon-warning);
   }
 
   &.-inline:is(.-variant-error, .-color-danger, .-color-error) {
     background: var(--instui-component-alert-danger-background-inline);
-    border-color: color-mix(
-      in srgb,
-      var(--instui-component-alert-danger-border-color-inline) 20%,
-      transparent
-    );
+    border-color: var(--instui-component-alert-danger-border-color-inline);
     --pantoken-alert-icon-color: var(--instui-color-icon-error);
   }
 
