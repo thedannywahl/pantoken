@@ -1,5 +1,63 @@
 # CHANGELOG
 
+## 0.2.17
+
+### Patch Changes
+
+- Updated dependencies [1bbe6c6]
+- Updated dependencies [1bbe6c6]
+  - @pantoken/tokens@0.4.0
+  - @pantoken/components@1.2.0
+  - @pantoken/pendo@0.4.4
+  - @pantoken/panda@0.1.16
+  - @pantoken/tailwind@0.1.10
+  - @pantoken/vite@0.1.20
+  - @pantoken/swatches@0.1.16
+  - @pantoken/css@0.3.10
+  - @pantoken/dtcg@0.1.14
+  - @pantoken/icons@0.2.3
+  - @pantoken/less@0.1.16
+  - @pantoken/scss@0.1.16
+  - @pantoken/stylus@0.1.16
+  - @pantoken/cli@0.1.37
+  - @pantoken/android@0.1.20
+  - @pantoken/compose@0.1.20
+  - @pantoken/email@0.1.16
+  - @pantoken/flutter@0.1.20
+  - @pantoken/swift@0.1.20
+  - @pantoken/vanilla@0.1.13
+  - @pantoken/wordpress@0.1.13
+  - @pantoken/plugin-custom-components@0.3.1
+  - @pantoken/plugin-custom-theme-colors@0.2.1
+  - @pantoken/plugin-primitives@1.0.2
+  - @pantoken/plugin-stacking@1.0.6
+  - @pantoken/plugin-theme-custom-media@0.2.5
+  - @pantoken/astro@0.1.20
+  - @pantoken/bootstrap@0.1.3
+  - @pantoken/css-in-js@0.1.16
+  - @pantoken/docusaurus@0.1.3
+  - @pantoken/foundation@0.1.4
+  - @pantoken/mintlify@0.1.16
+  - @pantoken/mui@0.1.16
+  - @pantoken/react-native@0.1.16
+  - @pantoken/shadcn@0.1.3
+  - @pantoken/storybook@0.1.16
+  - @pantoken/vitepress@0.2.3
+  - @pantoken/drupal@0.1.30
+  - @pantoken/hugo@0.1.31
+  - @pantoken/jekyll@0.1.31
+  - @pantoken/angular@0.1.34
+  - @pantoken/react@0.1.35
+  - @pantoken/svelte@0.1.35
+  - @pantoken/tinymce@0.2.6
+  - @pantoken/vue@0.1.35
+  - @pantoken/web-components@0.6.6
+  - @pantoken/postcss@0.1.20
+  - @pantoken/webpack@0.1.20
+  - @pantoken/markdown-it@0.1.13
+  - @pantoken/react-markdown@0.1.15
+  - @pantoken/rehype@0.1.13
+
 ## 0.2.16
 
 ### Patch Changes
