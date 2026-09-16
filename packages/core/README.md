@@ -75,8 +75,8 @@ buildTokens({ theme: "rebrand", plugins: [focus] });
   walker and reference resolver.
 - **`cssSyntaxForValue`, `isContextual`, `toKebab`, `ICON_COLOR_SPECIAL_VALUES`** — value-level
   helpers (`@property` syntax sniffing, name casing, icon-colour constants).
-- **`applyModify(value, modify)`** — apply a validated HSL Tokens Studio colour modifier to a
-  concrete hex value.
+- **`applyModify(value, modify)`** — apply a validated HSL or CIE LCH Tokens Studio colour modifier
+  to a concrete hex value.
 - Re-exports the IR types from `@pantoken/model`: `Token`, `TokenInput`, `TokenMeta`,
   `TokenModify`, `Theme`, `PantokenPlugin` (and the hook-context and CSS-contribution types).
 

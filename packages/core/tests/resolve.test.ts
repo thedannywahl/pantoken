@@ -105,6 +105,20 @@ test("collectLeaves accepts modifier boundaries as strings and numbers", () => {
   }
 });
 
+test("collectLeaves accepts HSL and LCH modifier spaces", () => {
+  for (const space of ["hsl", "lch"] as const) {
+    const [leaf] = collectLeaves({
+      color: {
+        value: "#fff",
+        type: "color",
+        $extensions: { "studio.tokens": { modify: { type: "darken", value: "0.1", space } } },
+      },
+    });
+    expect(leaf.modify?.space).toBe(space);
+    expect(leaf.modifyIssue).toBeUndefined();
+  }
+});
+
 test("referenceToVarName discriminates semantic from primitive", () => {
   expect(referenceToVarName("color.white")).toBe("--instui-primitive-color-white");
   expect(referenceToVarName("semantic.color.background.base")).toBe(

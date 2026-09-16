@@ -263,10 +263,11 @@ Pantoken applies allowlists at several constrained entry points: CLI commands an
 platform selections, DTCG dangerous-key filtering, expected file extensions, path containment,
 CSS custom property name pattern for plugin-contributed tokens, and an SVG script-injection strip
 for decoded icon SVGs and plugin-contributed SVG assets.
-Tokens Studio colour modifiers accept only `alpha`, `darken`, or `lighten` in HSL with a finite
-amount from zero through one. The transformer verifies that modified references resolve through
-colour-typed tokens to a concrete colour, detects missing references and cycles, and blocks generated
-artifact replacement until every malformed modifier has an explicit reviewed ledger rewrite.
+Tokens Studio colour modifiers accept only `alpha`, `darken`, or `lighten` in HSL or CIE LCH with a
+finite amount from zero through one. The transformer verifies that modified references resolve
+through colour-typed tokens to a concrete colour, detects missing references and cycles, and blocks
+generated artifact replacement until every malformed modifier has an explicit reviewed ledger
+rewrite.
 Browser interaction helpers validate numeric configuration before scheduling work; missing,
 non-finite, and non-positive alert timeouts leave the element mounted.
 ProgressCircle animation delays are normalized to a finite, non-negative millisecond value.

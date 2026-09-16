@@ -53,3 +53,10 @@ test("applyModify replaces alpha and preserves it through HSL operations", () =>
   expect(applyModify("#12345680", { type: "alpha", value: 0.25, space: "hsl" })).toBe("#12345640");
   expect(applyModify("#80808080", { type: "darken", value: 0.5, space: "hsl" })).toBe("#40404080");
 });
+
+test("applyModify darkens and lightens in CIE LCH while preserving alpha", () => {
+  expect(applyModify("#f2f4f5", { type: "darken", value: 0.1, space: "lch" })).toBe("#d7d9da");
+  expect(applyModify("#80808080", { type: "lighten", value: 0.5, space: "lch" })).toBe("#bdbdbd80");
+  expect(applyModify("#44709f", { type: "darken", value: 0.1, space: "lch" })).toBe("#376593");
+  expect(applyModify("#44709f", { type: "lighten", value: 0.1, space: "lch" })).toBe("#537eae");
+});

@@ -64,18 +64,5 @@
     "upstreamValue": "var(--instui-color-stroke-interactive-action-tertiary-disabled)",
     "rewriteValue": "light-dark(#C7CACD, var(--instui-primitive-color-grey-grey130))",
     "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0; adopt the current Figma light-mode tertiary disabled value while preserving the existing dark-mode value."
-  },
-  {
-    "kind": "modifier",
-    "name": "--instui-component-text-input-arrows-border-disabled-color",
-    "upstreamValue": "{semantic.color.institutional.brandButtonSecondaryBgd}",
-    "rawModifier": {
-      "type": "darken",
-      "value": "0.1",
-      "space": "lch"
-    },
-    "reason": "modify.space must be \"hsl\"",
-    "rewriteValue": "#D7D9DA",
-    "note": "Upstream specifies unsupported LCH math. Resolved from canvas grey10 (#F2F4F5) by reducing CIE LCH lightness 10%, verified with colorjs.io 0.5.2."
   }
 ]

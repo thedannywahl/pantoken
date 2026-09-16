@@ -32,7 +32,8 @@ const token: Token = {
   `inherits` and `syntax` default.
 - **`TokenMeta`** — non-value metadata such as icon and compatibility provenance.
 - **`TokenModify`** — the validated Tokens Studio `alpha`, `darken`, or `lighten` operation consumed
-  by `@pantoken/core`; modifiers are resolved before values enter the public token IR.
+  by `@pantoken/core` in HSL or CIE LCH; modifiers are resolved before values enter the public token
+  IR.
 - **`Theme`** — the available upstream themes (`rebrand`, `canvas`, `canvasHighContrast`).
 - **`PantokenPlugin`** — the uniform plugin contract; each optional hook (`tokens`, `icons`,
   `css`, `rehype`, `native`) opts the plugin into that stage.

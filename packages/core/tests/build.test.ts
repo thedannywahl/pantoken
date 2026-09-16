@@ -38,6 +38,14 @@ test("materializes upstream modifiers after resolving references and theme branc
   expect(alertBorder?.value).toMatch(/^light-dark\(#[0-9a-f]{8}, #[0-9a-f]{8}\)$|^#[0-9a-f]{8}$/i);
 });
 
+test("materializes the upstream canvas TextInput LCH modifier", () => {
+  const canvas = buildTokens({ theme: "canvas", includeIcons: false });
+  const disabledArrowBorder = canvas.find(
+    ({ name }) => name === "--instui-component-text-input-arrows-border-disabled-color",
+  );
+  expect(disabledArrowBorder?.value).toBe("#d7d9da");
+});
+
 const modifier = (type: "alpha" | "darken" | "lighten", value = "0.5") => ({
   "studio.tokens": { modify: { type, value, space: "hsl" } },
 });

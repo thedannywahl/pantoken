@@ -49,7 +49,8 @@ function readModify(node: Record<string, unknown>): {
     return invalid("modify contains unsupported fields");
   if (typeof modify.type !== "string" || !MODIFY_TYPES.has(modify.type as TokenModify["type"]))
     return invalid("modify.type must be alpha, darken, or lighten");
-  if (modify.space !== "hsl") return invalid('modify.space must be "hsl"');
+  if (modify.space !== "hsl" && modify.space !== "lch")
+    return invalid('modify.space must be "hsl" or "lch"');
 
   const rawValue = modify.value;
   const validString = typeof rawValue === "string" && MODIFY_VALUE.test(rawValue);
@@ -62,7 +63,7 @@ function readModify(node: Record<string, unknown>): {
     modify: {
       type: modify.type as TokenModify["type"],
       value: typeof rawValue === "number" ? rawValue : Number.parseFloat(rawValue as string),
-      space: "hsl",
+      space: modify.space,
     },
   };
 }

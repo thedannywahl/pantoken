@@ -21,7 +21,7 @@ export interface TokenModify {
   /** The modifier amount, `0`–`1`. */
   value: number;
   /** The colour space the modifier operates in. */
-  space: "hsl";
+  space: "hsl" | "lch";
 }
 
 /** Non-value metadata attached to a {@link Token}. */
