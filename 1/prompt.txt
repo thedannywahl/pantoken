@@ -539,3 +539,7 @@ Read-only, medium thoroughness. Trace why Alert info background/border/icon/text
 ---
 
 Read-only, medium thoroughness. Find all uses and generated outputs of @pantoken/plugin-custom-theme-colors, especially docs theme. Determine required regeneration/build/test commands and whether docs or API visual examples would need changes to validate a preservation mechanism. Report concise findings, do not edit.
+
+---
+
+Start implementation
