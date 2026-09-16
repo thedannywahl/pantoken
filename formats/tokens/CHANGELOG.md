@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.5.0
+
+### Minor Changes
+
+- 23c9ffb: Record malformed color modifiers in the syntax issue ledger and require an explicit reviewed rewrite before generation succeeds.
+
+### Patch Changes
+
+- Updated dependencies [23c9ffb]
+- Updated dependencies [23c9ffb]
+  - @pantoken/model@0.4.0
+
 ## 0.4.0
 
 ### Minor Changes

@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 1.2.1
+
+### Patch Changes
+
+- 23c9ffb: Update Alert floating and inline treatments, including automatic action button styling. Preserve
+  semantic status colors when applying custom theme colors.
+- 23c9ffb: fix incorrect component wrapper on pill example
+- 23c9ffb: Use resolved modifier-bearing colors directly in component, CSS, and Pendo output.
+- Updated dependencies [23c9ffb]
+  - @pantoken/tokens@0.5.0
+  - @pantoken/utils@1.0.3
+  - @pantoken/scaffold-base@0.3.1
+
 ## 1.2.0
 
 ### Minor Changes

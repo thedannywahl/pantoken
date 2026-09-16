@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 0.4.5
+
+### Patch Changes
+
+- 23c9ffb: Use resolved modifier-bearing colors directly in component, CSS, and Pendo output.
+- Updated dependencies [23c9ffb]
+- Updated dependencies [23c9ffb]
+- Updated dependencies [23c9ffb]
+- Updated dependencies [23c9ffb]
+- Updated dependencies [23c9ffb]
+- Updated dependencies [23c9ffb]
+  - @pantoken/components@1.2.1
+  - @pantoken/model@0.4.0
+  - @pantoken/css@0.3.11
+  - @pantoken/tokens@0.5.0
+
 ## 0.4.4
 
 ### Patch Changes

@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 0.6.7
+
+### Patch Changes
+
+- Updated dependencies [23c9ffb]
+- Updated dependencies [23c9ffb]
+- Updated dependencies [23c9ffb]
+- Updated dependencies [23c9ffb]
+- Updated dependencies [23c9ffb]
+  - @pantoken/components@1.2.1
+  - @pantoken/model@0.4.0
+  - @pantoken/icons@0.2.4
+  - @pantoken/interactions@0.3.9
+  - @pantoken/scaffold-base@0.3.1
+
 ## 0.6.6
 
 ### Patch Changes
