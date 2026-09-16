@@ -11,7 +11,7 @@
 import { createRequire } from "node:module";
 import { dirname, join, resolve } from "node:path";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { buildTokens } from "@pantoken/core/build";
+import { buildTokens, type TokenModifierIssue } from "@pantoken/core/build";
 import { themeTokens } from "@instructure/instructure-design-tokens";
 import { deprecationShims } from "@pantoken/plugin-deprecations";
 import { syntaxMismatches } from "@pantoken/utils/token-syntax";
@@ -32,7 +32,8 @@ const ledger = JSON.parse(
 ) as DeprecationLedger;
 
 /** A build-failing upstream syntax bug we've already triaged, pending an upstream fix. */
-interface KnownSyntaxIssue {
+interface KnownValueSyntaxIssue {
+  kind?: "syntax";
   /** The token name, e.g. `--instui-component-text-content-quote-font-weight`. */
   name: string;
   /** The exact bad value observed upstream — if it changes, the patch stops applying (see below). */
@@ -44,6 +45,20 @@ interface KnownSyntaxIssue {
   /** Why the value is invalid. */
   note?: string;
 }
+
+/** A malformed or unresolvable Tokens Studio colour modifier awaiting manual review. */
+interface KnownModifierIssue {
+  kind: "modifier";
+  name: string;
+  upstreamValue: string;
+  rawModifier: unknown;
+  reason: string;
+  /** A reviewed final colour value. Without this field, generation fails closed. */
+  rewriteValue?: string | number;
+  note?: string;
+}
+
+type KnownSyntaxIssue = KnownValueSyntaxIssue | KnownModifierIssue;
 
 /**
  * Known, already-triaged upstream syntax bugs (`formats/tokens/known-syntax-issues.json`): rather than
@@ -60,6 +75,8 @@ interface KnownSyntaxIssue {
  * committed file. `supplemental` is for the "upstream squashed two properties into one bad string"
  * case (e.g. a `font-weight` token holding `"Medium Italic"`): it adds a new token to the IR rather
  * than just patching the offending one, and is never auto-populated — a human adds it once triaged.
+ * Modifier issues are stricter: their exact raw payload and reason are recorded, but generation
+ * remains failed and does not replace artifacts until a reviewer supplies an explicit rewriteValue.
  */
 const knownSyntaxIssuesPath = resolve(import.meta.dirname, "../known-syntax-issues.json");
 const knownSyntaxIssues = JSON.parse(
@@ -67,6 +84,36 @@ const knownSyntaxIssues = JSON.parse(
 ) as KnownSyntaxIssue[];
 const patchedIssues = new Set<string>();
 const newIssues = new Map<string, KnownSyntaxIssue>();
+const unblessedModifierIssues = new Set<string>();
+const modifierResolutions = new Map<string, string | undefined>();
+
+function stableValue(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(stableValue);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value as Record<string, unknown>)
+        .sort(([left], [right]) => left.localeCompare(right))
+        .map(([key, nested]) => [key, stableValue(nested)]),
+    );
+  }
+  return value;
+}
+
+function issueKey(issue: KnownSyntaxIssue): string {
+  return JSON.stringify(stableValue(issue));
+}
+
+function modifierIdentity(issue: TokenModifierIssue | KnownModifierIssue): string {
+  return JSON.stringify(
+    stableValue({
+      kind: "modifier",
+      name: issue.name,
+      upstreamValue: issue.upstreamValue,
+      rawModifier: issue.rawModifier,
+      reason: issue.reason,
+    }),
+  );
+}
 
 const THEMES: Theme[] = ["rebrand", "canvas", "canvasHighContrast"];
 
@@ -75,17 +122,50 @@ const THEMES: Theme[] = ["rebrand", "canvas", "canvasHighContrast"];
 // with no extra wiring. Applied as a post-build step (rather than via `buildTokens({ plugins })`) so
 // this tokens-only plugin never runs through the icon stage, which would log a noisy "no icons hook".
 const shims = deprecationShims(ledger);
+const generatedThemes = new Map<Theme, string>();
 
 for (const theme of THEMES) {
-  const base = buildTokens({ theme });
+  const base = buildTokens({
+    theme,
+    resolveModifierIssue: (issue) => {
+      const identity = modifierIdentity(issue);
+      if (modifierResolutions.has(identity)) return modifierResolutions.get(identity);
+      const known = knownSyntaxIssues.find(
+        (entry): entry is KnownModifierIssue =>
+          entry.kind === "modifier" && modifierIdentity(entry) === identity,
+      );
+      if (known?.rewriteValue !== undefined) {
+        patchedIssues.add(issueKey(known));
+        const rewrite = String(known.rewriteValue);
+        console.warn(
+          `[pantoken] ${theme}: modifier on "${issue.name}" patched to "${rewrite}" — known upstream issue`,
+        );
+        modifierResolutions.set(identity, rewrite);
+        return rewrite;
+      }
+
+      const discovered: KnownModifierIssue = { kind: "modifier", ...issue };
+      if (!known) newIssues.set(identity, discovered);
+      else patchedIssues.add(issueKey(known));
+      unblessedModifierIssues.add(identity);
+      console.warn(
+        `[pantoken] ${theme}: modifier on "${issue.name}" is invalid — recorded in known-syntax-issues.json and requires rewriteValue`,
+      );
+      modifierResolutions.set(identity, undefined);
+      return undefined;
+    },
+  });
   const tokens = shims.tokens?.({ tokens: base, theme }) ?? base;
   const supplementalTokens = [];
   for (const token of tokens) {
     const known = knownSyntaxIssues.find(
-      (k) => k.name === token.name && k.upstreamValue === token.value,
+      (entry): entry is KnownValueSyntaxIssue =>
+        entry.kind !== "modifier" &&
+        entry.name === token.name &&
+        entry.upstreamValue === token.value,
     );
     if (known) {
-      patchedIssues.add(known.name);
+      patchedIssues.add(issueKey(known));
       const rewrite = String(known.rewriteValue ?? "unset");
       console.warn(
         `[pantoken] ${theme}: "${known.name}" patched to "${rewrite}" — known upstream issue`,
@@ -120,12 +200,12 @@ for (const theme of THEMES) {
       );
     }
   }
-  writeFileSync(join(outDir, `${theme}.json`), `${JSON.stringify(tokens)}\n`);
+  generatedThemes.set(theme, `${JSON.stringify(tokens)}\n`);
   console.log(`✓ ${theme}: ${tokens.length} tokens`);
 }
 
 for (const known of knownSyntaxIssues) {
-  if (!patchedIssues.has(known.name)) {
+  if (!patchedIssues.has(issueKey(known))) {
     console.warn(
       `[pantoken] known-syntax-issues.json: removed "${known.name}" — no longer reproduces (resolved upstream)`,
     );
@@ -135,14 +215,29 @@ for (const known of knownSyntaxIssues) {
 writeFileSync(
   knownSyntaxIssuesPath,
   `${JSON.stringify(
-    [...knownSyntaxIssues.filter((k) => patchedIssues.has(k.name)), ...newIssues.values()],
+    [
+      ...knownSyntaxIssues.filter((issue) => patchedIssues.has(issueKey(issue))),
+      ...newIssues.values(),
+    ],
     null,
     2,
   )}\n`,
 );
 
+if (unblessedModifierIssues.size > 0) {
+  console.error(
+    `[pantoken] ${unblessedModifierIssues.size} modifier issue(s) require an explicit rewriteValue`,
+  );
+  process.exitCode = 1;
+} else {
+  for (const [theme, json] of generatedThemes) {
+    writeFileSync(join(outDir, `${theme}.json`), json);
+  }
+}
+
 // Raw Tokens Studio JSON, re-published verbatim (npm + semver access without GitHub pinning).
-writeFileSync(join(outDir, "raw.json"), `${JSON.stringify(themeTokens)}\n`);
+if (unblessedModifierIssues.size === 0)
+  writeFileSync(join(outDir, "raw.json"), `${JSON.stringify(themeTokens)}\n`);
 
 /** The `#ref` a package is pinned to in the catalog (e.g. `v1.5.0`), or `unpinned`. */
 export function catalogRef(pkg: string): string {

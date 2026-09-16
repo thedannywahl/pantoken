@@ -42,6 +42,107 @@ afterEach(() => {
 
 // --- syntax validation (build-time) -----------------------------------------
 
+const modifierIssue = {
+  name: "--instui-component-example-background",
+  upstreamValue: "{color.bad}",
+  rawModifier: { type: "alpha", value: "2", space: "hsl" },
+  reason: "modify.value must be a finite number from 0 through 1",
+};
+
+test("generate.ts records and fails on an unblessed modifier without replacing artifacts", async () => {
+  buildTokens.mockImplementation((options: any) => {
+    options.resolveModifierIssue(modifierIssue);
+    return [];
+  });
+  writeFileSync.mockClear();
+  vi.spyOn(console, "warn").mockImplementation(() => {});
+  vi.spyOn(console, "error").mockImplementation(() => {});
+  vi.resetModules();
+  await import(MODULE_PATH);
+
+  expect(process.exitCode).toBe(1);
+  const ledgerWrite = writeFileSync.mock.calls.findLast(([path]) =>
+    String(path).endsWith("known-syntax-issues.json"),
+  ) as [string, string];
+  expect(JSON.parse(ledgerWrite[1])).toEqual([{ kind: "modifier", ...modifierIssue }]);
+  expect(
+    writeFileSync.mock.calls.some(([path]) =>
+      /generated\/(?:rebrand|canvas|raw)\.json$/u.test(String(path)),
+    ),
+  ).toBe(false);
+});
+
+test("generate.ts keeps an unblessed known modifier fatal", async () => {
+  const known = { kind: "modifier", ...modifierIssue };
+  readFileSync.mockImplementation((path: unknown) =>
+    String(path).endsWith("known-syntax-issues.json") ? JSON.stringify([known]) : "[]",
+  );
+  buildTokens.mockImplementation((options: any) => {
+    options.resolveModifierIssue(modifierIssue);
+    return [];
+  });
+  writeFileSync.mockClear();
+  vi.spyOn(console, "warn").mockImplementation(() => {});
+  vi.spyOn(console, "error").mockImplementation(() => {});
+  vi.resetModules();
+  await import(MODULE_PATH);
+
+  expect(process.exitCode).toBe(1);
+  const ledgerWrite = writeFileSync.mock.calls.findLast(([path]) =>
+    String(path).endsWith("known-syntax-issues.json"),
+  ) as [string, string];
+  expect(JSON.parse(ledgerWrite[1])).toEqual([known]);
+});
+
+test("generate.ts applies an exact blessed modifier rewrite and writes artifacts", async () => {
+  const known = { kind: "modifier", ...modifierIssue, rewriteValue: "#123456" };
+  readFileSync.mockImplementation((path: unknown) =>
+    String(path).endsWith("known-syntax-issues.json") ? JSON.stringify([known]) : "[]",
+  );
+  const rewrites: unknown[] = [];
+  buildTokens.mockImplementation((options: any) => {
+    rewrites.push(options.resolveModifierIssue(modifierIssue));
+    return [];
+  });
+  writeFileSync.mockClear();
+  vi.spyOn(console, "warn").mockImplementation(() => {});
+  vi.resetModules();
+  await import(MODULE_PATH);
+
+  expect(process.exitCode).toBeUndefined();
+  expect(rewrites).toEqual(["#123456", "#123456", "#123456"]);
+  expect(
+    writeFileSync.mock.calls.some(([path]) => String(path).endsWith("generated/rebrand.json")),
+  ).toBe(true);
+});
+
+test("generate.ts treats a changed raw modifier payload as a new unblessed issue", async () => {
+  const stale = {
+    kind: "modifier",
+    ...modifierIssue,
+    rawModifier: { type: "alpha", value: "3", space: "hsl" },
+    rewriteValue: "#123456",
+  };
+  readFileSync.mockImplementation((path: unknown) =>
+    String(path).endsWith("known-syntax-issues.json") ? JSON.stringify([stale]) : "[]",
+  );
+  buildTokens.mockImplementation((options: any) => {
+    options.resolveModifierIssue(modifierIssue);
+    return [];
+  });
+  writeFileSync.mockClear();
+  vi.spyOn(console, "warn").mockImplementation(() => {});
+  vi.spyOn(console, "error").mockImplementation(() => {});
+  vi.resetModules();
+  await import(MODULE_PATH);
+
+  expect(process.exitCode).toBe(1);
+  const ledgerWrite = writeFileSync.mock.calls.findLast(([path]) =>
+    String(path).endsWith("known-syntax-issues.json"),
+  ) as [string, string];
+  expect(JSON.parse(ledgerWrite[1])).toEqual([{ kind: "modifier", ...modifierIssue }]);
+});
+
 test("generate.ts patches a newly discovered CSS grammar mismatch to `unset` and adds it to the ledger", async () => {
   buildTokens.mockReturnValue([
     {
