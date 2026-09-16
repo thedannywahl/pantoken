@@ -122,7 +122,7 @@
     /* Submit / Finish buttons: Center only if they're the only button in the container */
     div:has(> ._pendo-button-primaryButton):not(:has(> :not(._pendo-button-primaryButton))) {
       display: flex;
-      justify-content: center;
+      justify-content: start;
     }
   }
 }

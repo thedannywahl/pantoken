@@ -145,8 +145,6 @@
 
   ._pendo-step-container-styles > ._pendo-row {
     max-width: var(--pendo-embedded-width);
-    margin-left: auto;
-    margin-right: auto;
   }
 
   /* With no title above it, the leading block would double the card's top padding. */

@@ -62,6 +62,11 @@
 :is(:scope, [class*="instui"]):is([data-layout="tooltipBlank"], ._pendo-guide-walkthrough_) {
   ._pendo-step-container-size {
     height: auto;
+    /* gap-cards-md + box-shadow y + box-shadow spread */
+    padding: var(--instui-component-shared-tokens-spacing-general-space-xs)
+      var(--instui-component-shared-tokens-spacing-general-space-md)
+      calc(4px + var(--instui-component-shared-tokens-spacing-gap-cards-md))
+      var(--instui-component-shared-tokens-spacing-general-space-md);
   }
 
   ._pendo-step-container-styles {
@@ -71,11 +76,6 @@
     border-radius: var(--instui-component-popover-border-radius);
     border: var(--instui-border-width-sm) solid var(--instui-component-popover-border-color);
     box-shadow: var(--instui-elevation-above);
-    /* gap-cards-md + box-shadow y + box-shadow spread */
-    margin-bottom: calc(4px + var(--instui-component-shared-tokens-spacing-gap-cards-md));
-    margin-left: var(--instui-component-shared-tokens-spacing-general-space-md);
-    margin-right: var(--instui-component-shared-tokens-spacing-general-space-md);
-    margin-top: var(--instui-component-shared-tokens-spacing-general-space-xs);
   }
 
   .pendo-tooltip-caret {
@@ -90,22 +90,24 @@
       border-top: 16px solid var(--caret-color);
       /* sits below the box: shift up by margin-bottom */
       bottom: calc(4px + var(--instui-component-shared-tokens-spacing-gap-cards-md) - 14px);
-      margin: 0;
+      margin: 0 1rem;
 
       & + .pendo-tooltip-caret-border {
         bottom: calc(4px + var(--instui-component-shared-tokens-spacing-gap-cards-md) - 15px);
-        margin: 0;
+        margin: 0 1rem;
+        border-top-color: var(--instui-component-popover-border-color);
       }
     }
 
     &.pendo-tooltip-caret--right {
       border-right-color: var(--caret-color);
       left: -3px;
-      margin: 0 1rem 0 1px;
+      margin: 0 0 0 1px;
 
       & + .pendo-tooltip-caret-border {
         left: -4px;
-        margin: 0 1rem 0 1px;
+        margin: 0 0 0 1px;
+        border-right-color: var(--instui-component-popover-border-color);
       }
     }
 
@@ -113,22 +115,24 @@
       border-bottom: 16px solid var(--caret-color);
       /* sits above the box: shift down by margin-top */
       top: calc(var(--instui-component-shared-tokens-spacing-general-space-xs) - 14px);
-      margin: 0;
+      margin: 0 1rem;
 
       & + .pendo-tooltip-caret-border {
         top: calc(var(--instui-component-shared-tokens-spacing-general-space-xs) - 15px);
-        margin: 0;
+        margin: 0 1rem;
+        border-bottom-color: var(--instui-component-popover-border-color);
       }
     }
 
     &.pendo-tooltip-caret--left {
       border-left-color: var(--caret-color);
       right: -3px;
-      margin: 0 calc(1rem + 1px) 0 1px;
+      margin: 0 calc(2.5rem + 1px) 0 1px;
 
       & + .pendo-tooltip-caret-border {
         right: -4px;
-        margin: 0 calc(1rem + 1px) 0 1px;
+        margin: 0 calc(2.5rem + 1px) 0 1px;
+        border-left-color: var(--instui-component-popover-border-color);
       }
     }
   }

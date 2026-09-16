@@ -17,6 +17,7 @@
  * @related pendo-card — Provides the card container where text content is rendered.
  */
 
+._pendo-text-paragraph,
 ._pendo-simple-text,
 [class*="_pendo-text-"] {
   font-family: var(--instui-component-text-content-small-font-family);
@@ -26,6 +27,7 @@
   letter-spacing: var(--instui-component-text-letter-spacing-normal);
   color: var(--instui-component-text-base-color);
   max-width: 100%;
+  width: auto;
 }
 
 ._pendo-text-bold {
@@ -135,7 +137,9 @@ h3._pendo-simple-text {
   /* UX Lite question labels (exclude form control wrappers with inputs) */
   .pendo-survey-wrapper>div:not(:has([class])):not(:has(input)),
   h2._pendo-simple-text,
-  h2._pendo-text-title ._pendo-simple-text,
+  ._pendo-text-title ._pendo-simple-text,
+  h3._pendo-simple-text,
+  ._pendo-text-subTitle ._pendo-simple-text,
   ._pendo-simple-text._pendo-nps-open-text-poll-question {
     font-weight: var(--instui-component-heading-title-card-mini-font-weight);
     font-family: var(--instui-component-heading-title-card-mini-font-family);
