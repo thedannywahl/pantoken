@@ -198,12 +198,7 @@
     border-color: var(--instui-component-base-button-primary-inverse-ghost-border-color);
     color: var(--instui-component-base-button-primary-inverse-ghost-color);
 
-    &:focus {
-      background: var(--instui-component-base-button-primary-inverse-background);
-      border-color: var(--instui-component-base-button-primary-inverse-border-color);
-      color: var(--instui-component-base-button-primary-inverse-color);
-    }
-
+    &:focus,
     &:hover {
       background: var(--instui-component-base-button-primary-inverse-ghost-hover-background);
       border-color: var(--instui-component-base-button-primary-on-color-hover-border-color);

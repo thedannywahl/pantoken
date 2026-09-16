@@ -270,6 +270,9 @@ test("banner and alert buttons map Pendo variants without restyling the close bu
     "var(--instui-component-base-button-primary-on-color-hover-text-color)",
   );
   expect(buttonCss).toContain(
+    "--instui-component-base-button-primary-inverse-ghost-hover-background",
+  );
+  expect(buttonCss).toContain(
     "var(--instui-component-base-button-primary-on-color-active-text-color)",
   );
   expect(buttonCss).toContain(
