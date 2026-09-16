@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-14 02:34+0000\n"
+"PO-Revision-Date: 2026-09-16 13:10+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2920,7 +2920,7 @@ msgstr ""
 #: packages/core/src/functions/applyModify.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "**Non-hex input and mix return undefined (preserve as metadata)**"
+msgid "**Non-hex input returns undefined**"
 msgstr ""
 
 #: packages/core/src/functions/collectIcons.md
@@ -3541,13 +3541,6 @@ msgstr ""
 #: packages/model/src/interfaces/TokenMeta.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "A colour modifier preserved for the native lineage (Style Dictionary)."
-msgstr ""
-
-#: packages/core/src/interfaces/TokenMeta.md
-#: packages/model/src/interfaces/TokenMeta.md
-#, no-c-format
-msgctxt "docs.api:prose"
 msgid "Present on a compatibility-shim token (from a `DeprecationEntry`)."
 msgstr ""
 
@@ -3576,14 +3569,7 @@ msgstr ""
 #: packages/model/src/interfaces/TokenModify.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The colour space the modifier operates in (e.g. `\"hsl\"`)."
-msgstr ""
-
-#: packages/core/src/interfaces/TokenModify.md
-#: packages/model/src/interfaces/TokenModify.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The second colour, for `mix`."
+msgid "The colour space the modifier operates in."
 msgstr ""
 
 #: packages/core/src/interfaces/VectorDrawableOptions.md
@@ -5302,7 +5288,7 @@ msgstr ""
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Generate CSS rules for all custom theme color choices by remapping primitive color scale steps\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`), while preserving explicitly\nnamed blue accent tokens."
+msgid "Generate CSS rules for all custom theme color choices by remapping primitive color scale steps\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`), while preserving explicitly\nnamed blue accents and semantic status intents."
 msgstr ""
 
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
