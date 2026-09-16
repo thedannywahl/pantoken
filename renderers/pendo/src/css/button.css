@@ -126,12 +126,12 @@
   }
 }
 
-/* Banner actions render secondary then primary, matching the component action order. */
+/* Banner actions preserve Pendo's primary and secondary button semantics. */
 :is(:scope, [class*="instui"]):not([class*="instui-alert"]):is(
     [data-layout="lightboxBlank"],
     [class*="instui-banner"]
   ) {
-  ._pendo-button-secondaryButton:not(._pendo-button-custom) {
+  ._pendo-button-primaryButton:not(._pendo-button-custom) {
     background: var(--instui-color-background-interactive-action-primary-base);
     border-color: var(--instui-color-stroke-interactive-action-primary-base);
     color: var(--instui-color-text-interactive-action-primary-base);
@@ -154,7 +154,7 @@
     }
   }
 
-  :is(._pendo-button-primaryButton, ._pendo-button-tertiaryButton):not(._pendo-button-custom) {
+  :is(._pendo-button-secondaryButton, ._pendo-button-tertiaryButton):not(._pendo-button-custom) {
     background: transparent;
     border-color: var(--instui-component-base-button-primary-ghost-border-color);
     color: var(--instui-component-base-button-primary-ghost-color);
@@ -186,9 +186,9 @@
   }
 }
 
-/* Elevated alerts render secondary then primary; warning uses standard action colours. */
+/* Elevated alerts use inverse actions except warning, which uses standard action colours. */
 :is(:scope, [class*="instui"])[class*="instui-alert"][data-layout="lightboxBlank"] {
-  ._pendo-button-secondaryButton:not(._pendo-button-custom) {
+  ._pendo-button-primaryButton:not(._pendo-button-custom) {
     background: var(--instui-component-base-button-primary-inverse-background);
     border-color: var(--instui-component-base-button-primary-inverse-border-color);
     color: var(--instui-component-base-button-primary-inverse-color);
@@ -213,7 +213,7 @@
     }
   }
 
-  :is(._pendo-button-primaryButton, ._pendo-button-tertiaryButton):not(._pendo-button-custom) {
+  :is(._pendo-button-secondaryButton, ._pendo-button-tertiaryButton):not(._pendo-button-custom) {
     background: transparent;
     border-color: var(--instui-component-base-button-primary-inverse-ghost-border-color);
     color: var(--instui-component-base-button-primary-inverse-ghost-color);
@@ -245,7 +245,7 @@
   }
 
   &[class*="-warning"] {
-    ._pendo-button-secondaryButton:not(._pendo-button-custom) {
+    ._pendo-button-primaryButton:not(._pendo-button-custom) {
       background: var(--instui-color-background-interactive-action-primary-base);
       border-color: var(--instui-color-stroke-interactive-action-primary-base);
       color: var(--instui-color-text-interactive-action-primary-base);
@@ -267,7 +267,7 @@
       }
     }
 
-    :is(._pendo-button-primaryButton, ._pendo-button-tertiaryButton):not(._pendo-button-custom) {
+    :is(._pendo-button-secondaryButton, ._pendo-button-tertiaryButton):not(._pendo-button-custom) {
       background: transparent;
       border-color: var(--instui-component-base-button-primary-ghost-border-color);
       color: var(--instui-component-base-button-primary-ghost-color);

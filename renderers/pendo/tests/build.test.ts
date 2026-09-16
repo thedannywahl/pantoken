@@ -246,8 +246,8 @@ test("popover cards retain their border and small padding on every edge", () => 
 test("banner and alert buttons map Pendo variants without restyling the close button", () => {
   expect(buttonCss).toContain("--instui-color-background-interactive-action-primary-base");
   expect(buttonCss).toContain("--instui-color-stroke-interactive-action-primary-hover");
-  expect(buttonCss).toContain("._pendo-button-secondaryButton:not(._pendo-button-custom)");
-  expect(buttonCss).toContain("._pendo-button-primaryButton, ._pendo-button-tertiaryButton");
+  expect(buttonCss).toContain("._pendo-button-primaryButton:not(._pendo-button-custom)");
+  expect(buttonCss).toContain("._pendo-button-secondaryButton, ._pendo-button-tertiaryButton");
   expect(buttonCss).toContain("background: transparent");
   expect(buttonCss).toContain(
     "border-color: var(--instui-component-base-button-primary-ghost-border-color);",
