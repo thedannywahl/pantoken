@@ -30,8 +30,9 @@ const token: Token = {
   `inherits`, `value`, plus optional `themed`, `refersTo`, and `meta`).
 - **`TokenInput`** — the partial shape the `define()` helper in `@pantoken/core` accepts;
   `inherits` and `syntax` default.
-- **`TokenMeta`, `TokenModify`** — non-value metadata: icon provenance (kind, style, viewBox,
-  source, bidirectional) and Tokens Studio colour modifiers.
+- **`TokenMeta`** — non-value metadata such as icon and compatibility provenance.
+- **`TokenModify`** — the validated Tokens Studio `alpha`, `darken`, or `lighten` operation consumed
+  by `@pantoken/core`; modifiers are resolved before values enter the public token IR.
 - **`Theme`** — the available upstream themes (`rebrand`, `canvas`, `canvasHighContrast`).
 - **`PantokenPlugin`** — the uniform plugin contract; each optional hook (`tokens`, `icons`,
   `css`, `rehype`, `native`) opts the plugin into that stage.

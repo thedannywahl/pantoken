@@ -12,12 +12,13 @@ interface Rgb {
   r: number;
   g: number;
   b: number;
+  a: number;
 }
 
 /** Parse `#rgb`, `#rrggbb`, or `#rrggbbaa` to 0–255 channels. Returns `undefined` otherwise. */
 function parseHex(hex: string): Rgb | undefined {
   const c = parseHexColor(hex);
-  return c ? { r: c.r, g: c.g, b: c.b } : undefined;
+  return c ? { r: c.r, g: c.g, b: c.b, a: c.a } : undefined;
 }
 
 function toHex(n: number): string {
@@ -46,7 +47,7 @@ function rgbToHsl({ r, g, b }: Rgb): [number, number, number] {
 function hslToRgb(h: number, s: number, l: number): Rgb {
   if (s === 0) {
     const v = l * 255;
-    return { r: v, g: v, b: v };
+    return { r: v, g: v, b: v, a: 1 };
   }
   const hue = (t: number): number => {
     let tn = t;
@@ -59,7 +60,12 @@ function hslToRgb(h: number, s: number, l: number): Rgb {
   };
   const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
   const p = 2 * l - q;
-  return { r: hue(h + 1 / 3) * 255, g: hue(h) * 255, b: hue(h - 1 / 3) * 255 };
+  return { r: hue(h + 1 / 3) * 255, g: hue(h) * 255, b: hue(h - 1 / 3) * 255, a: 1 };
+}
+
+function formatHex({ r, g, b, a }: Rgb): string {
+  const alpha = a < 1 ? toHex(a * 255) : "";
+  return `#${toHex(r)}${toHex(g)}${toHex(b)}${alpha}`;
 }
 
 /**
@@ -72,17 +78,16 @@ function hslToRgb(h: number, s: number, l: number): Rgb {
  * ```ts
  * import { applyModify } from "@pantoken/core";
  *
- * applyModify("#808080", { type: "darken", value: 0.5 });  // → "#404040"
- * applyModify("#808080", { type: "lighten", value: 0.5 }); // → "#c0c0c0"
- * applyModify("#ffffff", { type: "alpha", value: 0.5 });   // → "#ffffff80"
+ * applyModify("#808080", { type: "darken", value: 0.5, space: "hsl" });  // → "#404040"
+ * applyModify("#808080", { type: "lighten", value: 0.5, space: "hsl" }); // → "#c0c0c0"
+ * applyModify("#ffffff", { type: "alpha", value: 0.5, space: "hsl" });   // → "#ffffff80"
  * ```
  *
- * @example Non-hex input and mix return undefined (preserve as metadata)
+ * @example Non-hex input returns undefined
  * ```ts
  * import { applyModify } from "@pantoken/core";
  *
- * applyModify("var(--x)", { type: "darken", value: 0.1 });        // → undefined
- * applyModify("#fff", { type: "mix", value: 0.5, color: "#000" }); // → undefined
+ * applyModify("var(--x)", { type: "darken", value: 0.1, space: "hsl" }); // → undefined
  * ```
  */
 export function applyModify(value: string, modify: TokenModify): string | undefined {
@@ -90,7 +95,7 @@ export function applyModify(value: string, modify: TokenModify): string | undefi
   if (!rgb) return undefined;
 
   if (modify.type === "alpha") {
-    return `#${toHex(rgb.r)}${toHex(rgb.g)}${toHex(rgb.b)}${toHex(modify.value * 255)}`;
+    return formatHex({ ...rgb, a: modify.value });
   }
 
   const [h, s, l] = rgbToHsl(rgb);
@@ -100,7 +105,6 @@ export function applyModify(value: string, modify: TokenModify): string | undefi
       : modify.type === "lighten"
         ? l + (1 - l) * modify.value
         : l;
-  if (modify.type === "mix") return undefined; // mix needs a second colour; preserve as meta.
   const out = hslToRgb(h, s, Math.max(0, Math.min(1, nl)));
-  return `#${toHex(out.r)}${toHex(out.g)}${toHex(out.b)}`;
+  return formatHex({ ...out, a: rgb.a });
 }

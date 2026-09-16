@@ -9,10 +9,26 @@ import { themeTokens } from "@instructure/instructure-design-tokens";
 import { applyModify } from "./color.ts";
 import { collectIcons } from "./icons.ts";
 import { defineToken, runIconPlugins, runTokenPlugins } from "./plugin.ts";
-import { collectLeaves, resolveValue, varName } from "./resolve.ts";
+import { collectLeaves, referencedVarName, resolveValue, varName } from "./resolve.ts";
 import type { PantokenPlugin } from "./plugin.ts";
 import type { Leaf } from "./resolve.ts";
-import type { Theme, Token, TokenMeta } from "./model.ts";
+import type { Theme, Token } from "./model.ts";
+
+/** A modifier that cannot be safely resolved into a concrete colour. */
+export interface TokenModifierIssue {
+  name: string;
+  upstreamValue: string;
+  rawModifier: unknown;
+  reason: string;
+}
+
+/** Aggregate failure raised after every malformed modifier in a theme has been collected. */
+export class TokenModifierError extends Error {
+  constructor(public readonly issues: readonly TokenModifierIssue[]) {
+    super(`Unable to resolve ${issues.length} Tokens Studio colour modifier(s)`);
+    this.name = "TokenModifierError";
+  }
+}
 
 /** Options for {@link buildTokens}. */
 export interface BuildTokensOptions {
@@ -26,6 +42,8 @@ export interface BuildTokensOptions {
   includeInstui?: boolean;
   /** Include Lucide glyphs (default: true). */
   includeLucide?: boolean;
+  /** Resolve a known modifier issue to a reviewed replacement value. */
+  resolveModifierIssue?: (issue: TokenModifierIssue) => string | undefined;
 }
 
 interface ThemeSpec {
@@ -40,63 +58,121 @@ const THEME_SPECS: Record<Theme, ThemeSpec> = {
   canvasHighContrast: { group: "canvas", light: "canvasHighContrast" },
 };
 
-/** Resolve a leaf's value, applying a concrete colour modifier or preserving it as metadata. */
-function resolveLeaf(leaf: Leaf): { value: string; meta?: TokenMeta } {
-  const value = resolveValue(leaf.value);
-  if (!leaf.modify) return { value };
-  const applied = value.startsWith("#") ? applyModify(value, leaf.modify) : undefined;
-  return applied ? { value: applied } : { value, meta: { modify: leaf.modify } };
+interface Candidate {
+  name: string;
+  light: Leaf;
+  dark?: Leaf;
 }
 
-function toToken(name: string, value: string, meta?: TokenMeta): Token {
-  return defineToken({ name, value, meta });
+function toToken(name: string, value: string): Token {
+  return defineToken({ name, value });
 }
 
-// 1. Primitives — shared across themes, concrete values.
-function primitiveTokens(root: Record<string, any>): Token[] {
-  return collectLeaves(root.primitives?.default).map((leaf) => {
-    const { value, meta } = resolveLeaf(leaf);
-    return toToken(varName("primitive", leaf.path), value, meta);
-  });
+function candidates(prefix: string, root: unknown): Candidate[] {
+  return collectLeaves(root).map((light) => ({ name: varName(prefix, light.path), light }));
 }
 
-// 2. Layout (size, spacing, radii, type…) — references point at primitives.
-function layoutTokens(group: any): Token[] {
-  return collectLeaves(group?.semantic?.layout?.default?.semantic).map((leaf) => {
-    const { value, meta } = resolveLeaf(leaf);
-    return toToken(varName("", leaf.path), value, meta);
-  });
-}
-
-// 3. Semantic colours — emit a single value when light and dark resolve identically, else wrap both
-//    in light-dark(). This is the only layer that produces light-dark().
-function semanticColorTokens(group: any, spec: { light: string; dark?: string }): Token[] {
+function semanticColorCandidates(group: any, spec: { light: string; dark?: string }): Candidate[] {
   const darkByPath = new Map<string, Leaf>();
   if (spec.dark) {
     for (const leaf of collectLeaves(group?.semantic?.color?.[spec.dark]?.semantic)) {
       darkByPath.set(leaf.path.join("."), leaf);
     }
   }
-  return collectLeaves(group?.semantic?.color?.[spec.light]?.semantic).map((leaf) => {
-    const light = resolveLeaf(leaf);
-    const darkLeaf = darkByPath.get(leaf.path.join("."));
-    const dark = darkLeaf ? resolveLeaf(darkLeaf) : light;
-    const value =
-      light.value === dark.value ? light.value : `light-dark(${light.value}, ${dark.value})`;
-    return toToken(varName("", leaf.path), value, light.meta);
-  });
+  return collectLeaves(group?.semantic?.color?.[spec.light]?.semantic).map((light) => ({
+    name: varName("", light.path),
+    light,
+    dark: darkByPath.get(light.path.join(".")),
+  }));
 }
 
-// 4. Components — reference the colour/layout layers, so theming flows through automatically.
-function componentTokens(group: any): Token[] {
-  const out: Token[] = [];
+function componentCandidates(group: any): Candidate[] {
+  const out: Candidate[] = [];
   for (const component of Object.values(group?.component ?? {})) {
-    for (const leaf of collectLeaves(component)) {
-      const { value, meta } = resolveLeaf(leaf);
-      out.push(toToken(varName("component", leaf.path), value, meta));
-    }
+    out.push(...candidates("component", component));
   }
   return out;
+}
+
+function materializeCandidates(
+  all: readonly Candidate[],
+  resolveIssue?: (issue: TokenModifierIssue) => string | undefined,
+): Token[] {
+  const byName = new Map(all.map((candidate) => [candidate.name, candidate]));
+  const issues = new Map<string, TokenModifierIssue>();
+  const memo = new Map<string, string>();
+
+  const report = (candidate: Candidate, leaf: Leaf, reason: string): string => {
+    const issue: TokenModifierIssue = {
+      name: candidate.name,
+      upstreamValue: leaf.value,
+      rawModifier: leaf.modifyIssue?.raw ?? leaf.modify,
+      reason,
+    };
+    const key = JSON.stringify(issue);
+    issues.set(key, issue);
+    return resolveIssue?.(issue) ?? "#000000";
+  };
+
+  const resolveColor = (
+    candidate: Candidate,
+    mode: "light" | "dark",
+    active: ReadonlySet<string>,
+  ): string => {
+    const memoKey = `${mode}:${candidate.name}`;
+    const cached = memo.get(memoKey);
+    if (cached !== undefined) return cached;
+    const leaf = mode === "dark" ? (candidate.dark ?? candidate.light) : candidate.light;
+    if (leaf.modifyIssue) return report(candidate, leaf, leaf.modifyIssue.reason);
+    if (leaf.type !== "color")
+      return report(
+        candidate,
+        leaf,
+        `modified colour chain includes type ${JSON.stringify(leaf.type)}`,
+      );
+    if (active.has(memoKey)) return report(candidate, leaf, "modified colour reference cycle");
+
+    const reference = referencedVarName(leaf.value);
+    let base: string;
+    if (reference) {
+      const target = byName.get(reference);
+      if (!target)
+        return report(candidate, leaf, `modified colour references missing token ${reference}`);
+      base = resolveColor(target, mode, new Set([...active, memoKey]));
+    } else {
+      base = leaf.value.trim();
+    }
+
+    if (!base.startsWith("#"))
+      return report(
+        candidate,
+        leaf,
+        `modified colour resolves to unsupported value ${JSON.stringify(base)}`,
+      );
+    const value = leaf.modify ? applyModify(base, leaf.modify) : base;
+    if (!value) return report(candidate, leaf, "modified colour could not be computed");
+    memo.set(memoKey, value);
+    return value;
+  };
+
+  const tokens = all.map((candidate) => {
+    const modified =
+      candidate.light.modify !== undefined ||
+      candidate.light.modifyIssue !== undefined ||
+      candidate.dark?.modify !== undefined ||
+      candidate.dark?.modifyIssue !== undefined;
+    if (modified) {
+      const light = resolveColor(candidate, "light", new Set());
+      const dark = resolveColor(candidate, "dark", new Set());
+      return toToken(candidate.name, light === dark ? light : `light-dark(${light}, ${dark})`);
+    }
+    const light = resolveValue(candidate.light.value);
+    const dark = resolveValue((candidate.dark ?? candidate.light).value);
+    return toToken(candidate.name, light === dark ? light : `light-dark(${light}, ${dark})`);
+  });
+
+  if (issues.size > 0 && !resolveIssue) throw new TokenModifierError([...issues.values()]);
+  return tokens;
 }
 
 // 5. Icons — rolled in as <image> tokens, plus the icon-colour special values.
@@ -148,23 +224,34 @@ function iconTokens(opts: { includeInstui: boolean; includeLucide: boolean }): T
  * ```
  */
 export function buildTokens(options: BuildTokensOptions = {}): Token[] {
+  return buildTokensFromRoot(themeTokens as unknown as Record<string, any>, options);
+}
+
+/** Build tokens from a Tokens Studio root. Exported from the build subpath for validation tooling. */
+export function buildTokensFromRoot(
+  root: Record<string, any>,
+  options: BuildTokensOptions = {},
+): Token[] {
   const {
     theme = "rebrand",
     plugins = [],
     includeIcons = true,
     includeInstui = true,
     includeLucide = true,
+    resolveModifierIssue,
   } = options;
 
   const spec = THEME_SPECS[theme];
-  const root = themeTokens as unknown as Record<string, any>;
   const group = root[spec.group];
 
+  const tokenCandidates = [
+    ...candidates("primitive", root.primitives?.default),
+    ...candidates("", group?.semantic?.layout?.default?.semantic),
+    ...semanticColorCandidates(group, spec),
+    ...componentCandidates(group),
+  ];
   const tokens: Token[] = [
-    ...primitiveTokens(root),
-    ...layoutTokens(group),
-    ...semanticColorTokens(group, spec),
-    ...componentTokens(group),
+    ...materializeCandidates(tokenCandidates, resolveModifierIssue),
     ...(includeIcons ? iconTokens({ includeInstui, includeLucide }) : []),
   ];
 

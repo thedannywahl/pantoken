@@ -57,8 +57,8 @@ describe("applyModify", () => {
   bench("alpha + darken over the palette", () => {
     for (const token of withoutIcons) {
       if (!token.value.startsWith("#")) continue;
-      applyModify(token.value, { type: "alpha", value: 0.5 });
-      applyModify(token.value, { type: "darken", value: 0.2 });
+      applyModify(token.value, { type: "alpha", value: 0.5, space: "hsl" });
+      applyModify(token.value, { type: "darken", value: 0.2, space: "hsl" });
     }
   });
 });

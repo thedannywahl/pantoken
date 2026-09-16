@@ -15,35 +15,72 @@ const REFERENCE = /^\{([^}]+)\}$/;
 export interface Leaf {
   path: string[];
   value: string;
+  type?: string;
   modify?: TokenModify;
+  modifyIssue?: ModifyIssue;
 }
 
-function readModify(node: Record<string, unknown>): TokenModify | undefined {
+/** A malformed Tokens Studio colour modifier discovered while collecting leaves. */
+export interface ModifyIssue {
+  raw: unknown;
+  reason: string;
+}
+
+const MODIFY_TYPES = new Set<TokenModify["type"]>(["alpha", "darken", "lighten"]);
+const MODIFY_VALUE = /^(?:0(?:\.\d+)?|1(?:\.0+)?)$/;
+
+function readModify(node: Record<string, unknown>): {
+  modify?: TokenModify;
+  modifyIssue?: ModifyIssue;
+} {
   const ext = node.$extensions as Record<string, unknown> | undefined;
   const studio = ext?.["studio.tokens"] as Record<string, unknown> | undefined;
-  const modify = studio?.modify as Record<string, unknown> | undefined;
-  if (!modify || typeof modify.type !== "string") return undefined;
+  const raw = studio?.modify;
+  if (raw === undefined) return {};
+  const invalid = (reason: string): { modifyIssue: ModifyIssue } => ({
+    modifyIssue: { raw, reason },
+  });
+  if (!raw || typeof raw !== "object" || Array.isArray(raw))
+    return invalid("modify must be an object");
+
+  const modify = raw as Record<string, unknown>;
+  const keys = Object.keys(modify);
+  if (keys.some((key) => !["type", "value", "space"].includes(key)))
+    return invalid("modify contains unsupported fields");
+  if (typeof modify.type !== "string" || !MODIFY_TYPES.has(modify.type as TokenModify["type"]))
+    return invalid("modify.type must be alpha, darken, or lighten");
+  if (modify.space !== "hsl") return invalid('modify.space must be "hsl"');
+
+  const rawValue = modify.value;
+  const validString = typeof rawValue === "string" && MODIFY_VALUE.test(rawValue);
+  const validNumber =
+    typeof rawValue === "number" && Number.isFinite(rawValue) && rawValue >= 0 && rawValue <= 1;
+  if (!validString && !validNumber)
+    return invalid("modify.value must be a finite number from 0 through 1");
+
   return {
-    type: modify.type as TokenModify["type"],
-    value: Number(modify.value),
-    space: typeof modify.space === "string" ? modify.space : undefined,
-    color: typeof modify.color === "string" ? modify.color : undefined,
+    modify: {
+      type: modify.type as TokenModify["type"],
+      value: typeof rawValue === "number" ? rawValue : Number.parseFloat(rawValue as string),
+      space: "hsl",
+    },
   };
 }
 
 /** Push the leaf/leaves for a `{ value, ... }` record: a scalar string, or a nested value object. */
 function pushValueLeaves(record: Record<string, unknown>, basePath: string[], out: Leaf[]): void {
-  const modify = readModify(record);
+  const { modify, modifyIssue } = readModify(record);
+  const type = typeof record.type === "string" ? record.type : undefined;
   const value = record.value;
   if (typeof value === "string") {
-    out.push({ path: basePath, value, modify });
+    out.push({ path: basePath, value, type, modify, modifyIssue });
     return;
   }
   if (value && typeof value === "object" && !Array.isArray(value)) {
     for (const [subKey, subValue] of Object.entries(value)) {
       if (subKey === "type") continue;
       if (typeof subValue === "string") {
-        out.push({ path: [...basePath, subKey], value: subValue, modify });
+        out.push({ path: [...basePath, subKey], value: subValue, type, modify, modifyIssue });
       }
     }
   }
@@ -128,6 +165,12 @@ export function referenceToVarName(reference: string): string {
 export function resolveValue(raw: string): string {
   const match = raw.match(REFERENCE);
   return match ? `var(${referenceToVarName(match[1])})` : raw.trim();
+}
+
+/** Return the custom-property name referenced by an exact Tokens Studio reference. */
+export function referencedVarName(raw: string): string | undefined {
+  const match = raw.match(REFERENCE);
+  return match ? referenceToVarName(match[1]) : undefined;
 }
 
 /**
