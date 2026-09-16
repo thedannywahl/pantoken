@@ -1,0 +1,78 @@
+now that formats/components/alerts and plugins/pantoken/custom-components/banner have been updated with the authoritative styles, those changed need to be ported to pendo. we should maintain the 4 alert variants with the box-shadows and not add the 4 -inline/-without-shadow variants.  But the full alert look & feel needs to be updated and the buttons need to be updated, and the banner buttons need to be updated.
+
+---
+
+Discovery only; do not edit. In /Users/dwahl/Scripts/pantoken, thoroughly but concisely inspect the authoritative changed sources formats/components/alerts and plugins/pantoken/custom-components/banner plus the Pendo renderer sources/tests/generated pipeline. Identify exact files, symbols, CSS blocks, tests and build commands required to port alert visual styles, alert buttons, and banner buttons. Verify where alert variants and inline/without-shadow variants are defined and how to retain just four variants. Report precise recommended changes, factual existing styling differences, constraints, and ambiguities. Read .entire/graph-agent.md before code exploration and use entire graph as instructed.
+
+---
+
+Start implementation
+
+---
+
+go fix those.
+
+---
+
+why does pendo need a tsdoc file that doesn't do anything but none of its siblings do?
+
+---
+
+the pendo alert close button needs to be the correct color to match the various alerts.
+and the pendo text slots in an alert should all be the appropriate color for the variants like alerts are, where 3 are on-color and warning is text-base.
+
+---
+
+the pendo button order coloring needs to be swapped to match alert/banner: secondary + primary
+
+---
+
+there's something wrong with the on-color styles, primary and secondary are switched from alert/banner.
+
+---
+
+the active label on a radio input in the multi-choice poll is changing text colors and not maintaining the on-color treatment.
+
+---
+
+active radio is still resolving to dark text:
+```
+color: rgb(39, 53, 64);
+
+guide.-323232.1789581209193.css:2
+Best Match & + label
+var(--ih)
+
+guide.-323232.1789581209193.css:2
+Matched & ._pendo-multi-choice-poll-select-border label.pendo-radio
+var(--jw)
+
+guide.-323232.1789581209193.css:2
+Matched ._pendo-multi-choice-poll-select-border label.pendo-radio
+var(--ih)
+
+Matched element
+rgb(0, 0, 0)
+
+Parent Match #pendo-radio-select-805346df
+rgb(0, 0, 0)
+
+guide.-323232.1789581209193.css:2
+Parent Match & ._pendo-step-container-styles
+var(--\_alert-text-color)
+
+guide.-323232.1789581209193.css:2
+Parent Match ._pendo-step-container-styles
+var(--ky)
+
+common-7faef57a1a.css:75
+Parent Match body
+var(--ic-brand-font-color-dark)
+
+Parent Match :root
+canvastext
+```
+
+---
+
+the on-color variants of alerts need to use the on-color focus ring.
