@@ -171,7 +171,15 @@ function publishPackage(pkg: WorkspacePackage, rootDir: string): boolean {
     shell: false,
     stdio: "inherit",
   });
-  return result.status === 0;
+  if (result.status === 0) return true;
+
+  if (isVersionOnNpm(pkg)) {
+    console.error(
+      `  ${pkg.name}@${pkg.version} is already on npm after the publish attempt; continuing.`,
+    );
+    return true;
+  }
+  return false;
 }
 
 interface ReleaseContext {
