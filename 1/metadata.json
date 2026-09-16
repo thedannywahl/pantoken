@@ -1,0 +1,73 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2N4GQ8WZQ8P6QSPMEYDHN32",
+  "session_id": "a7d7bd2a-220e-4f82-b975-6e00f5fbcaee",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-16T12:54:25.354365Z",
+  "branch": "alert-updates",
+  "checkpoints_count": 10,
+  "files_touched": [
+    ".changeset/resolve-color-modifiers.md",
+    "bench/core.bench.ts",
+    "packages/core/README.md",
+    "packages/core/src/build.ts",
+    "packages/core/src/color.ts",
+    "packages/core/src/resolve.ts",
+    "packages/core/tests/build.test.ts",
+    "packages/core/tests/color.test.ts",
+    "packages/core/tests/resolve.test.ts",
+    "packages/model/README.md",
+    "packages/model/src/index.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "38bfdb99c70d",
+  "checkpoint_transcript_start": 846,
+  "transcript_lines_at_start": 846,
+  "compact_transcript_start": 159,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 10
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-16T12:54:25.318587Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 261,
+    "human_modified": 144,
+    "human_removed": 0,
+    "total_committed": 261,
+    "total_lines_changed": 405,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 125,
+      "user_lines_removed": 43,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "packages/core/src/color.ts": 14,
+        "packages/core/src/resolve.ts": 46,
+        "packages/core/tests/color.test.ts": 27,
+        "packages/core/tests/resolve.test.ts": 35,
+        "packages/model/src/index.ts": 3
+      },
+      "user_removed_per_file": {
+        "packages/core/src/color.ts": 10,
+        "packages/core/src/resolve.ts": 10,
+        "packages/core/tests/color.test.ts": 13,
+        "packages/core/tests/resolve.test.ts": 3,
+        "packages/model/src/index.ts": 7
+      }
+    }
+  ]
+}
