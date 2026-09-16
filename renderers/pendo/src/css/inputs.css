@@ -537,6 +537,22 @@ input.pendo-radio:checked + label.pendo-radio[class*="_pendo-nps-poll-"],
 /* ─── On-color (elevated alert) ─── */
 /* Elevated alerts use inverse/on-color actions except warning, which keeps standard colours. */
 :is(:scope, [class*="instui"])[class*="instui-alert"][data-layout="lightboxBlank"] {
+  [id*="survey-single-choice"] label.pendo-radio {
+    color: var(--_alert-text-color);
+
+    &:hover {
+      color: var(--_alert-text-color);
+    }
+  }
+
+  [id*="survey-single-choice"] input.pendo-radio:checked + label.pendo-radio {
+    color: var(--_alert-text-color);
+
+    &:is(:hover, :active) {
+      color: var(--_alert-text-color);
+    }
+  }
+
   ._pendo-multi-choice-poll-select-border label.pendo-radio {
     color: var(--instui-component-text-base-on-color);
 
