@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.4.6
+
+### Patch Changes
+
+- c9dbc5c: Update Pendo alerts and banner actions to match the authoritative component styles.
+
 ## 0.4.5
 
 ### Patch Changes

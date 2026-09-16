@@ -1,5 +1,11 @@
 # @pantoken/plugin-custom-components
 
+## 0.3.3
+
+### Patch Changes
+
+- c9dbc5c: Match banner button-group primary and secondary actions to Alert ordering.
+
 ## 0.3.2
 
 ### Patch Changes
