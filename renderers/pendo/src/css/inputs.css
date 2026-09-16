@@ -561,6 +561,14 @@ input.pendo-radio:checked + label.pendo-radio[class*="_pendo-nps-poll-"],
     }
   }
 
+  ._pendo-multi-choice-poll-select-border input.pendo-radio:checked + label.pendo-radio {
+    color: var(--_alert-text-color);
+
+    &:is(:hover, :active) {
+      color: var(--_alert-text-color);
+    }
+  }
+
   label.pendo-radio[class*="_pendo-number-scale-poll-"] + [class$="-description"],
   .pendo-survey-wrapper > :not([id*="survey-single-choice"]) label + div {
     color: var(--instui-component-text-muted-on-color);

@@ -230,6 +230,9 @@ test("alerts retain four elevated colour treatments without inline variants", ()
   expect(containerCss).toContain("color: var(--_alert-icon-color);");
   expect(textCss).toContain("color: var(--_alert-text-color);");
   expect(inputsCss).toContain('[id*="survey-single-choice"] input.pendo-radio:checked');
+  expect(inputsCss).toContain(
+    "._pendo-multi-choice-poll-select-border input.pendo-radio:checked + label.pendo-radio",
+  );
   expect(inputsCss).toContain("color: var(--_alert-text-color);");
   expect(containerCss).not.toContain('[class*="-inline"]');
   expect(containerCss).not.toContain('[class*="-without-shadow"]');
