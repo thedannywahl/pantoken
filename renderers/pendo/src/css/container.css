@@ -380,7 +380,9 @@
     border-radius: var(--instui-component-alert-border-radius);
     overflow: hidden;
     padding: var(--instui-component-alert-content-padding-vertical)
-      var(--instui-component-alert-content-padding-horizontal);
+      var(--instui-component-alert-content-padding-horizontal)
+      var(--instui-component-alert-content-padding-vertical)
+      calc(0.833rem + var(--instui-component-alert-icon-padding-left) + 0.75rem);
     box-shadow: var(--instui-elevation-above);
     color: var(--_alert-text-color);
     background: var(--_alert-background);
@@ -404,7 +406,7 @@
     }
   }
 
-  &[class*="-warning"] ._pendo-close-guide {
-    color: var(--instui-color-text-base);
+  ._pendo-close-guide {
+    color: var(--_alert-icon-color);
   }
 }

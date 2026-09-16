@@ -227,6 +227,8 @@ test("alerts retain four elevated colour treatments without inline variants", ()
     "inset-block-start: var(--instui-component-alert-icon-padding-vertical);",
   );
   expect(containerCss).toContain("--_alert-icon-color: var(--instui-color-text-base);");
+  expect(containerCss).toContain("color: var(--_alert-icon-color);");
+  expect(textCss).toContain("color: var(--_alert-text-color);");
   expect(containerCss).not.toContain('[class*="-inline"]');
   expect(containerCss).not.toContain('[class*="-without-shadow"]');
   expect(containerCss).not.toContain('[class*="-has-shadow-false"]');
@@ -244,7 +246,8 @@ test("popover cards retain their border and small padding on every edge", () => 
 test("banner and alert buttons map Pendo variants without restyling the close button", () => {
   expect(buttonCss).toContain("--instui-color-background-interactive-action-primary-base");
   expect(buttonCss).toContain("--instui-color-stroke-interactive-action-primary-hover");
-  expect(buttonCss).toContain("._pendo-button-secondaryButton, ._pendo-button-tertiaryButton");
+  expect(buttonCss).toContain("._pendo-button-secondaryButton:not(._pendo-button-custom)");
+  expect(buttonCss).toContain("._pendo-button-primaryButton, ._pendo-button-tertiaryButton");
   expect(buttonCss).toContain("background: transparent");
   expect(buttonCss).toContain(
     "border-color: var(--instui-component-base-button-primary-ghost-border-color);",
