@@ -1,5 +1,14 @@
 # @pantoken/plugin-custom-icons
 
+## 0.3.10
+
+### Patch Changes
+
+- Updated dependencies [23c9ffb]
+- Updated dependencies [23c9ffb]
+  - @pantoken/model@0.4.0
+  - @pantoken/plugin-kit@0.3.1
+
 ## 0.3.9
 
 ### Patch Changes

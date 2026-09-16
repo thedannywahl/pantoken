@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.5.8
+
+### Patch Changes
+
+- 23c9ffb: Omit inline file contents from the public shadcn registry catalog to satisfy registry directory requirements, while preserving installation manifests and browser source previews.
+
 ## 0.5.7
 
 ### Patch Changes

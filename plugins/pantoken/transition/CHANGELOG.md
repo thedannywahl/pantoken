@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 1.0.6
+
+### Patch Changes
+
+- Updated dependencies [23c9ffb]
+- Updated dependencies [23c9ffb]
+  - @pantoken/model@0.4.0
+  - @pantoken/plugin-kit@0.3.1
+
 ## 1.0.5
 
 ### Patch Changes

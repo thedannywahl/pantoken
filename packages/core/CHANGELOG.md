@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 0.4.0
+
+### Minor Changes
+
+- 23c9ffb: Validate and resolve Tokens Studio alpha, darken, and lighten modifiers into concrete IR colors.
+- 23c9ffb: Support Tokens Studio darken and lighten modifiers that use the CIE LCH color space.
+
+### Patch Changes
+
+- Updated dependencies [23c9ffb]
+- Updated dependencies [23c9ffb]
+  - @pantoken/model@0.4.0
+  - @pantoken/plugin-kit@0.3.1
+  - @pantoken/utils@1.0.3
+
 ## 0.3.1
 
 ### Patch Changes

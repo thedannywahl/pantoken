@@ -1,5 +1,16 @@
 # @pantoken/plugin-custom-components
 
+## 0.3.2
+
+### Patch Changes
+
+- 23c9ffb: Use Alert's inline primary and secondary button treatments for pastel Banner actions.
+- 23c9ffb: ignore fallow duplicate code warnings between banner and alert
+- Updated dependencies [23c9ffb]
+- Updated dependencies [23c9ffb]
+  - @pantoken/model@0.4.0
+  - @pantoken/plugin-kit@0.3.1
+
 ## 0.3.1
 
 ### Patch Changes

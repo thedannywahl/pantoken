@@ -1,5 +1,18 @@
 # @pantoken/plugin-custom-theme-colors
 
+## 0.2.2
+
+### Patch Changes
+
+- 23c9ffb: Update Alert floating and inline treatments, including automatic action button styling. Preserve
+  semantic status colors when applying custom theme colors.
+- Updated dependencies [23c9ffb]
+- Updated dependencies [23c9ffb]
+- Updated dependencies [23c9ffb]
+  - @pantoken/model@0.4.0
+  - @pantoken/tokens@0.5.0
+  - @pantoken/plugin-kit@0.3.1
+
 ## 0.2.1
 
 ### Patch Changes
