@@ -44,6 +44,10 @@ test("the focus ring is delegated to the focus-outline plugin in a last-declared
   expect(css).toContain("@layer instui.focusOutline {");
   expect(css).toContain(":where(:focus-visible)");
   expect(css).toContain("--instui-focus-outline-color");
+  expect(css).toContain("--instui-focus-outline-color-inverse");
+  expect(css).toContain(
+    '[class*="instui-alert"][data-layout="lightboxBlank"]:not([class*="-warning"])',
+  );
   // The manual focus-outline tokens and the delegated per-component :focus rules are gone.
   expect(css).not.toContain("--manual-light-focus-outline");
 });
@@ -230,9 +234,9 @@ test("alerts retain four elevated colour treatments without inline variants", ()
   expect(containerCss).toContain("color: var(--_alert-icon-color);");
   expect(textCss).toContain("color: var(--_alert-text-color);");
   expect(inputsCss).toContain('[id*="survey-single-choice"] input.pendo-radio:checked');
-  expect(inputsCss).toContain(
-    "._pendo-multi-choice-poll-select-border input.pendo-radio:checked + label.pendo-radio",
-  );
+  expect(inputsCss).toContain("._pendo-multi-choice-poll-select-border input.pendo-radio:checked");
+  expect(inputsCss).toContain("label.pendo-radio");
+  expect(inputsCss).toContain("outline-color: var(--instui-focus-outline-color-inverse);");
   expect(inputsCss).toContain("color: var(--_alert-text-color);");
   expect(containerCss).not.toContain('[class*="-inline"]');
   expect(containerCss).not.toContain('[class*="-without-shadow"]');

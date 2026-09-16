@@ -535,8 +535,28 @@ input.pendo-radio:checked + label.pendo-radio[class*="_pendo-nps-poll-"],
 }
 
 /* ─── On-color (elevated alert) ─── */
-/* Elevated alerts use inverse/on-color actions except warning, which keeps standard colours. */
-:is(:scope, [class*="instui"])[class*="instui-alert"][data-layout="lightboxBlank"] {
+/* Elevated alerts use inverse/on-color actions except warning, which is excluded here so it falls
+   through to the standard colours set above — no restatement needed. */
+:is(:scope, [class*="instui"])[class*="instui-alert"][data-layout="lightboxBlank"]:not(
+    [class*="-warning"]
+  ) {
+  &:not([class*="-warning"]) {
+    :is(
+      input.pendo-radio:focus-visible + label.pendo-radio[class*="_pendo-number-scale-poll-"],
+      input.pendo-radio:focus-visible + label.pendo-radio[class*="_pendo-nps-poll-"],
+      .pendo-survey-wrapper
+        > :not([id*="survey-single-choice"])
+        input.pendo-radio:focus-visible
+        + label.pendo-radio,
+      .pendo-survey-wrapper
+        > :not([id*="survey-single-choice"])
+        input[type="radio"]:focus-visible
+        + label
+    ) {
+      outline-color: var(--instui-focus-outline-color-inverse);
+    }
+  }
+
   [id*="survey-single-choice"] label.pendo-radio {
     color: var(--_alert-text-color);
 
@@ -615,65 +635,6 @@ input.pendo-radio:checked + label.pendo-radio[class*="_pendo-nps-poll-"],
       background: var(--instui-component-base-button-primary-inverse-active-background);
       border-color: var(--instui-component-base-button-primary-on-color-active-border-color);
       color: var(--instui-component-base-button-primary-on-color-active-text-color);
-    }
-  }
-
-  &[class*="-warning"] {
-    ._pendo-multi-choice-poll-select-border label.pendo-radio {
-      color: var(--instui-component-radio-input-label-base-color);
-
-      &:hover {
-        color: var(--instui-component-radio-input-label-hover-color);
-      }
-    }
-
-    label.pendo-radio[class*="_pendo-number-scale-poll-"] + [class$="-description"],
-    .pendo-survey-wrapper > :not([id*="survey-single-choice"]) label + div {
-      color: var(--instui-component-text-muted-color);
-    }
-
-    label.pendo-radio[class*="_pendo-number-scale-poll-"],
-    label.pendo-radio[class*="_pendo-nps-poll-"],
-    .pendo-survey-wrapper > :not([id*="survey-single-choice"]) label {
-      background: var(--instui-component-base-button-secondary-background);
-      border-color: var(--instui-component-base-button-secondary-border-color);
-      color: var(--instui-component-base-button-secondary-color);
-
-      &:hover {
-        background: var(--instui-component-base-button-secondary-hover-background);
-        border-color: var(--instui-component-base-button-secondary-hover-border-color);
-        color: var(--instui-component-base-button-secondary-hover-text-color);
-      }
-
-      &:active {
-        background: var(--instui-component-base-button-secondary-active-background);
-        border-color: var(--instui-component-base-button-secondary-active-border-color);
-        color: var(--instui-component-base-button-secondary-active-text-color);
-      }
-    }
-
-    input.pendo-radio:checked + label.pendo-radio[class*="_pendo-number-scale-poll-"],
-    input.pendo-radio:checked + label.pendo-radio[class*="_pendo-nps-poll-"],
-    .pendo-survey-wrapper
-      > :not([id*="survey-single-choice"])
-      input.pendo-radio:checked
-      + label.pendo-radio,
-    .pendo-survey-wrapper > :not([id*="survey-single-choice"]) input[type="radio"]:checked + label {
-      background: var(--instui-component-base-button-primary-background);
-      border-color: var(--instui-component-base-button-primary-border-color);
-      color: var(--instui-component-base-button-primary-color);
-
-      &:hover {
-        background: var(--instui-component-base-button-primary-hover-background);
-        border-color: var(--instui-component-base-button-primary-hover-border-color);
-        color: var(--instui-component-base-button-primary-hover-text-color);
-      }
-
-      &:active {
-        background: var(--instui-component-base-button-primary-active-background);
-        border-color: var(--instui-component-base-button-primary-active-border-color);
-        color: var(--instui-component-base-button-primary-active-text-color);
-      }
     }
   }
 }
