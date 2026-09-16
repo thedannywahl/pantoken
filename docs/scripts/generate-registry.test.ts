@@ -32,6 +32,25 @@ test("writeRegistry writes to custom outDir and sourceDir", () => {
   expect(existsSync(join(customSource, "registry.json"))).toBe(true);
   expect(count).toBeGreaterThan(0);
   expect(existsSync(join(customOut, "button.json"))).toBe(true);
+
+  const publicCatalog = JSON.parse(readFileSync(catalogPath, "utf8"));
+  const sourceCatalog = JSON.parse(readFileSync(join(customSource, "registry.json"), "utf8"));
+  for (const item of sourceCatalog.items) {
+    const publicItem = publicCatalog.items.find(
+      (entry: { name: string }) => entry.name === item.name,
+    );
+    const manifest = JSON.parse(readFileSync(join(customOut, `${item.name}.json`), "utf8"));
+    expect(manifest.files).toEqual(item.files);
+    expect(publicItem).toEqual({
+      ...item,
+      ...(item.files && {
+        files: item.files.map(({ content: _content, ...file }: { content?: string }) => file),
+      }),
+    });
+    for (const file of publicItem.files ?? []) {
+      expect(file).not.toHaveProperty("content");
+    }
+  }
 });
 
 test("direct CLI execution invokes writeRegistry", async () => {
