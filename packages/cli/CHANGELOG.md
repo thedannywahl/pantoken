@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.1.39
+
+### Patch Changes
+
+- Updated dependencies [c9dbc5c]
+  - @pantoken/pendo@0.4.6
+
 ## 0.1.38
 
 ### Patch Changes

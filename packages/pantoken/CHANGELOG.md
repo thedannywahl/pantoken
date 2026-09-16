@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.2.19
+
+### Patch Changes
+
+- Updated dependencies [c9dbc5c]
+- Updated dependencies [c9dbc5c]
+  - @pantoken/plugin-custom-components@0.3.3
+  - @pantoken/pendo@0.4.6
+  - @pantoken/astro@0.1.21
+  - @pantoken/tinymce@0.2.8
+  - @pantoken/cli@0.1.39
+
 ## 0.2.18
 
 ### Patch Changes
