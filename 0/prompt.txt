@@ -1,0 +1,9 @@
+[docs/scripts/gen-og.ts](https://github.com/thedannywahl/pantoken/pull/169/files/5ebb59a38d17897c91ee89845d3f810e6dc86bb1#diff-9b83a259a0364e8818aaee89a4c700aeae0adfb611cb66b508ed06c63f74b494)
+```
+text
+    .replace(/<br\s*\/?>/gi, " ")
+    .replace(/<[^>]+>/g, "")
+```
+### CodeQL / Incomplete multi-character sanitization
+
+This string may still contain [<script](https://github.com/thedannywahl/pantoken/pull/1), which may cause an HTML element injection vulnerability.
