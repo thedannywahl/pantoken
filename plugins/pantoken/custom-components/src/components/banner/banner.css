@@ -235,6 +235,7 @@
       padding-inline: var(--instui-component-base-button-small-padding-horizontal);
     }
 
+    /* fallow-ignore-next-line code-duplication */
     > .pfx-button:not([class*="-color-"]),
     > .button-group > .pfx-button:first-of-type:not([class*="-color-"]) {
       background: var(--instui-color-background-interactive-action-primary-base);
@@ -260,12 +261,14 @@
       }
     }
 
+    /* fallow-ignore-next-line code-duplication */
     > .button-group > .pfx-button:first-of-type ~ .pfx-button:not([class*="-color-"]) {
       background: transparent;
       border-color: var(--instui-component-base-button-primary-ghost-border-color);
       color: var(--instui-component-base-button-primary-ghost-color);
 
       &:focus,
+      /* fallow-ignore-next-line code-duplication */
       &:hover {
         background: var(--instui-component-base-button-primary-ghost-hover-background);
         border-color: var(--instui-component-base-button-tertiary-hover-border-color);
