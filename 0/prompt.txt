@@ -1,0 +1,5 @@
+we had previously written some custom button styles for the banner component, but now that we have authoritative button styles for alert, they should be used in banner component as well.  the banners are inline and use pastels so they should follow the inline secondary + primary button styles from Alert.
+
+---
+
+banner should use `button-group` as a part, nto `pfx-button-group` as a component. this is what alert does, and it should match.
