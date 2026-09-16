@@ -1,0 +1,162 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2N4A4859XWJS7A943SZ7J4T",
+  "session_id": "a7d7bd2a-220e-4f82-b975-6e00f5fbcaee",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-16T12:50:49.692193Z",
+  "branch": "alert-updates",
+  "checkpoints_count": 10,
+  "save_step_count": 10,
+  "files_touched": [
+    ".changeset/alert-action-treatments.md",
+    "formats/components/src/components/alert/alert.css",
+    "formats/components/tests/components/alert.test.ts",
+    "formats/tokens/known-syntax-issues.json"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "31cc26e40861",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 10
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-16T12:50:49.661809Z",
+    "agent_lines": 25,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 79,
+    "human_removed": 19,
+    "total_committed": 77,
+    "total_lines_changed": 123,
+    "agent_percentage": 20.32520325203252,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 87,
+      "user_lines_removed": 41,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "formats/components/src/components/alert/alert.css": 78,
+        "formats/components/tests/components/alert.test.ts": 6,
+        "formats/tokens/known-syntax-issues.json": 2,
+        "l10n/docs.api.pot": 1
+      },
+      "user_removed_per_file": {
+        "formats/components/src/components/alert/alert.css": 37,
+        "formats/components/tests/components/alert.test.ts": 1,
+        "formats/tokens/known-syntax-issues.json": 2,
+        "l10n/docs.api.pot": 1
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 8,
+      "user_lines_removed": 4,
+      "agent_lines_added": 87,
+      "agent_lines_removed": 43,
+      "user_added_per_file": {
+        "formats/components/src/components/alert/alert.css": 8
+      },
+      "user_removed_per_file": {
+        "formats/components/src/components/alert/alert.css": 4
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 10,
+      "user_lines_removed": 10,
+      "agent_lines_added": 99,
+      "agent_lines_removed": 44,
+      "user_added_per_file": {
+        "formats/components/src/components/alert/alert.css": 10
+      },
+      "user_removed_per_file": {
+        "formats/components/src/components/alert/alert.css": 10
+      }
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 197,
+      "agent_lines_removed": 52
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 10,
+      "user_lines_removed": 15,
+      "agent_lines_added": 197,
+      "agent_lines_removed": 52,
+      "user_added_per_file": {
+        "formats/components/src/components/alert/alert.css": 6,
+        "formats/components/tests/components/alert.test.ts": 3,
+        "l10n/docs.api.pot": 1
+      },
+      "user_removed_per_file": {
+        "formats/components/src/components/alert/alert.css": 6,
+        "formats/components/tests/components/alert.test.ts": 2,
+        "formats/tokens/known-syntax-issues.json": 6,
+        "l10n/docs.api.pot": 1
+      }
+    },
+    {
+      "checkpoint_number": 6,
+      "user_lines_added": 1,
+      "user_lines_removed": 3,
+      "agent_lines_added": 204,
+      "agent_lines_removed": 56,
+      "user_added_per_file": {
+        "formats/components/tests/components/alert.test.ts": 1
+      },
+      "user_removed_per_file": {
+        "formats/components/tests/components/alert.test.ts": 3
+      }
+    },
+    {
+      "checkpoint_number": 7,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 209,
+      "agent_lines_removed": 56
+    },
+    {
+      "checkpoint_number": 8,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 211,
+      "agent_lines_removed": 56
+    },
+    {
+      "checkpoint_number": 9,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 205,
+      "agent_lines_removed": 56
+    },
+    {
+      "checkpoint_number": 10,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 210,
+      "agent_lines_removed": 56
+    },
+    {
+      "checkpoint_number": 11,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 210,
+      "agent_lines_removed": 55
+    }
+  ]
+}

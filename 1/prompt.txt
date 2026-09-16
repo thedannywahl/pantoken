@@ -1,0 +1,529 @@
+the instui tokens for Alert updated, but the new code hasn't been implemented yet, so we're going to have to do some manual revisions to known syntax issues and to the alert css file.  here's some of the changes I see:
+there is now "floating" and "inline"  which control the box-shadow and the background and maybe some other things.  we'll need to add a modifier for something like -without-shadow and/or -inline. and it 
+
+floating:
+box-shadow: 0 4 4 0 semantic/color/dropShadow/shadowColor1, 0 8 12 6 sharedTokens/boxShadow/elevation4
+border :1px solid alert/infoBorderColor
+background: alert/infoBackground
+icon (and close button): icon/onColor
+text: text/baseOnColor
+floating primary button: onColorPrimary
+floating secondary button: onColorSecondary
+
+inline:
+box-shadow: none
+border: 1px solid alert/infoBorderColorInline (#5F6E7A33)
+background: alert/infoBackgroundInline
+icon: icon/infoColor
+close button: icon/baseColor
+text: text/baseColor
+inline primary button: primary button
+inline secondary button: tertiary
+
+except floating + warning is text/baseColor
+for the icon and the close button.
+
+the icon is also no longer centered in a colored backdrop, it carries its own padding:
+* top: alert/iconPaddingVertical (16px)
+* right: alert/iconPaddingRight (undefined/0)
+* bottom: alert/iconPaddingVertical (16px)
+* left: alert/iconPaddingLeft (12px)
+
+If any of these don't exist let me know and I can give you the values from figma.
+
+---
+
+this should be 20% opacity
+
+---
+
+no, what we need is a mixin that uses the variable and sets it to 20% on the alpha channel.
+
+---
+
+these .pfx-button declarations should work either as a direct descendant OR within a button-group.
+
+---
+
+simplify the selectors using `:is()`
+
+---
+
+can we automatically stack the button/button-group on a new "row" underneath the text slot without having to wrap the text slot in a div/span?
+
+---
+
+take a look at the pendo button, we're going to implement something similar in alert, but use the specifications I gave you earlier.
+* remove the button-group modifier, we should be able to author text (button + button) (close buton)
+* a single button should be styled like the on-color or inline primary button automatically.
+* two buttons should be styled in secondary followed by primary
+* buttons should automatically carry their spacing (gap between buttons: sharedTokens/spacing/gap/buttons, 0.75rem) (gap between slot and buttons: 
+sharedTokens/spacing/general/spaceMd)
+* button size should be small
+* like pendo if a button modifier is included, it takes priority
+hover, focus, active, and disabled styles should be applied appropriately.
+* validate with http://localhost:5173/api/css/alert - right now the button colors are not correct for the
+
+---
+
+the gap between buttons is not correct.
+
+---
+
+visually look at the demo- the secondary button is on the left of the alert container, and the primary button is visually in the center of the container, a few hundred pixels difference, not computed to 12px.
+
+---
+
+I realized you injected an alert into the demo site, I mean the css-example that rendered from alert.css at http://localhost:5173/api/css/alert
+
+---
+
+[Terminal 3535a86a-32e7-4a3e-88a7-085762a6d245 notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on alert-updates ≡  ?1 ~4 via  26.8.2 
+➜  node formats/components/scripts/component-styles.ts && node docs/scripts/components-sheet.ts && vp test formats/components/tests/components/alert.test.ts
+✓ components: wrote src/generated/component-styles.ts (156 stylesheets)
+✓ components-sheet: wrote theme/generated/components.css + demos-assets/components.css
+VITE+ - The Unified Toolchain for the Web
+
+
+ RUN  v4.1.11 /Users/dwahl/Scripts/pantoken
+
+ ❯ formats/components/tests/components/alert.test.ts (2 tests | 1 failed) 35ms
+   × alert supports token-backed floating and inline status treatments 10ms
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  formats/components/tests/components/alert.test.ts > alert supports token-backed floating and inline status treatments
+AssertionError: expected '/* InstUI alert (@pantoken/components…' to contain 'display: flow-root'
+
+- Expected
++ Received
+
+- display: flow-root
++ /* InstUI alert (@pantoken/components) — prefix: instui */
++ /**
++  * @component alert
++  * @summary A status message with floating and inline surface treatments and a masked status glyph from the shared icon set.
++  * @remarks Floating is the default, with an elevated coloured surface and on-colour actions. `-inline` uses a pastel surface, no shadow, status-coloured glyph, standard close button, primary action, and tertiary secondary action. Direct action buttons form a row after unwrapped text: a single button becomes primary, while two buttons become secondary then primary. Any button modifier opts out of this automatic variant assignment. A direct close button defaults to small; add a size modifier to override it.
++  * @selector .instui-alert
++  * @modifier -color-info — Informational (default).
++  * @modifier -color-success — A positive/confirmation message.
++  * @modifier -color-warning — A cautionary message.
++  * @modifier -color-danger — An error message.
++  * @modifier -color-error — @alias {@link -color-danger}
++  * @modifier -inline — A non-elevated pastel surface for placement in document flow.
++  * @modifier -without-shadow — @deprecated {@link -inline}
++  * @modifier -has-shadow-false — @alias {@link -without-shadow}
++  * @modifier -screen-reader-only — Visually hidden but announced.
++  * @modifier -variant-info — @deprecated {@link -color-info}
++  * @modifier -variant-success — @deprecated {@link -color-success}
++  * @modifier -variant-warning — @deprecated {@link -color-warning}
++  * @modifier -variant-error — @deprecated {@link -color-danger}
++  * @modifier -timeout — @interaction The alert will automatically dismiss after a default of 5 seconds.
++  * @modifier -timeout-1 — One second before automatic dismissal.
++  * @modifier -timeout-2 — Two seconds before automatic dismissal.
++  * @modifier -timeout-3 — Three seconds before automatic dismissal.
++  * @modifier -timeout-4 — Four seconds before automatic dismissal.
++  * @modifier -timeout-5 — Five seconds before automatic dismissal.
++  * @slot content — The alert's message content; may include a dismiss button.
++  * @modifier -icon-* — Swap the status glyph for a custom icon (e.g. `-icon-megaphone`).
++  * @modifier -render-custom-icon-* — @deprecated The former `renderCustomIcon` prop; still works as an alias, but use `-icon-<name>` (or override `--pantoken-alert-glyph`) instead.
++  * @pseudo ::after — The status glyph, masked and padded independently from the content.
++  * @cssproperty --pantoken-alert-glyph <url> — The low-level status-glyph source; `-icon-<name>` sets it for you. Override for a custom icon (a url-encoded SVG).
++  * @cssproperty --pantoken-alert-icon-bg <color> — The coloured status-bar fill behind the glyph; each `-color-*` variant sets its own.
++  * @cssproperty --timeout <integer> — Milliseconds before automatic dismissal; `0` disables it. Requires the alert interaction bundle.
++  * @accessibility For an important message, add `role="alert"` or an `aria-live` region so assistive tech announces it; the dismiss control is a labelled close button (the `.instui-close-button` in the example carries `aria-label="Close"`).
++  * @example -nocard
++  * ```html
++  * <div class="instui-alert -icon-megaphone --mb-md">
++  *   An alert with the default info color, and a custom icon.
++  * </div>
++  * <div class="instui-alert -icon-megaphone -inline --mb-md">
++  *   An alert with the default info color, and a custom icon.
++  * </div>
++  * <div class="instui-alert -color-success --mb-md">
++  *   Congratulations! You're using the "success" color.
++  *     <button class="instui-button">Ok</button>
++  *   <button class="instui-close-button" aria-label="Close"></button>
++  * </div>
++  * <div class="instui-alert -color-success -inline --mb-md">
++  *   Congratulations! You're using the "success" color.
++  *     <button class="instui-button">Ok</button>
++  *   <button class="instui-close-button" aria-label="Close"></button>
++  * </div>
++  * <div class="instui-alert -color-error --mb-md">
++  *   Oops! You're using the "error" color.
++  *   <button class="instui-button">Cancel</button>
++  *   <button class="instui-button">Ok</button>
++  *   <button class="instui-close-button" aria-label="Close"></button>
++  * </div>
++  * <div class="instui-alert -color-error -inline --mb-md">
++  *   Oops! You're using the "error" color.
++  *   <button class="instui-button">Cancel</button>
++  *   <button class="instui-button">Ok</button>
++  *   <button class="instui-close-button" aria-label="Close"></button>
++  * </div>
++  * <div class="instui-alert -color-warning --mb-md">
++  *   Watch out! You're using the "warning" color.
++  *   <button class="instui-button">Cancel</button>
++  *   <button class="instui-button">Ok</button>
++  *   <button class="instui-close-button" aria-label="Close"></button>
++  * </div>
++  * <div class="instui-alert -color-warning -inline --mb-md">
++  *   Watch out! You're using the "warning" color.
++  *   <button class="instui-button">Cancel</button>
++  *   <button class="instui-button">Ok</button>
++  *   <button class="instui-close-button" aria-label="Close"></button>
++  * </div>
++  * ```
++  * @structure
++  * .instui-alert {
++  *   slot {}
++  *   @component button:optional:one-or-more {}
++  * }
++  * @related close-button — The dismiss control an alert may include.
++  * @sealed
++  * @stable
++  */
++ @property --timeout {
++   syntax: "<integer>";
++   inherits: false;
++   initial-value: 5;
++ }
++
++ @scope (.instui-alert) {
++   & {
++     --timeout: 0;
++     position: relative;
++     min-inline-size: 12rem;
++     padding: var(--instui-component-alert-content-padding-vertical) var(--instui-component-alert-content-padding-horizontal);
++     padding-inline-start: calc(0.833rem + var(--instui-component-alert-icon-padding-left) + 0.75rem);
++     background: var(--instui-component-alert-info-background);
++     color: var(--instui-component-text-base-on-color);
++     border: var(--instui-component-alert-border-width) var(--instui-component-alert-border-style) var(--instui-component-alert-info-border-color);
++     border-radius: var(--instui-component-alert-border-radius);
++     box-shadow: 0 4px 4px 0 var(--instui-color-drop-shadow-shadow-color1),
++       0 var(--instui-drop-shadow-y-elevation4-dropshadow1) var(--instui-drop-shadow-blur-elevation4-dropshadow1) var(--instui-drop-shadow-spread-elevation4-dropshadow1) var(--instui-color-drop-shadow-shadow-color1);
++     font-family: var(--instui-component-alert-content-font-family);
++     font-size: var(--instui-component-alert-content-font-size);
++     font-weight: var(--instui-component-alert-content-font-weight);
++     line-height: var(--instui-component-alert-content-line-height);
++     --pantoken-alert-icon-color: var(--instui-color-icon-on-color);
++     --pantoken-alert-glyph: var(--instui-icon-info);
++
++     /* Close/dismiss is optional: pin it in the top-end corner (the button's own box centres the ×, so it
++      takes a small symmetric inset, not the content padding), and reserve room only when it's present. */
++     >.instui-close-button:not([class*="-size-"]) {
++       min-height: var(--instui-component-base-button-small-height);
++     }
++
++     >.instui-close-button {
++       position: absolute;
++       inset-block-start: var(--instui-spacing-space-xs);
++       inset-inline-end: var(--instui-spacing-space-xs);
++       color: var(--instui-color-icon-on-color);
++     }
++   }
++
++   /* The glyph carries its own token-defined padding rather than sitting on a coloured bar. */
++   &::after {
++     content: "";
++     position: absolute;
++     inset-block-start: var(--instui-component-alert-icon-padding-vertical);
++     inset-inline-start: var(--instui-component-alert-icon-padding-left);
++     inline-size: 0.833rem;
++     block-size: 0.833rem;
++     background: var(--pantoken-alert-icon-color);
++     -webkit-mask: var(--pantoken-alert-glyph) center / 0.833rem no-repeat;
++     mask: var(--pantoken-alert-glyph) center / 0.833rem no-repeat;
++   }
++
++   &:has(> .instui-close-button) {
++     padding-inline-end: calc(var(--instui-component-base-button-medium-height) + var(--instui-spacing-space-xs));
++   }
++
++   /* screenReaderOnly: announced to assistive tech, but visually hidden. */
++   /* fallow-ignore-next-line css-duplicate-block -- screenReaderOnly is a public Alert prop; declarations cannot be extracted without breaking the component API */
++   &.-screen-reader-only {
++     position: absolute;
++     inline-size: 1px;
++     block-size: 1px;
++     padding: 0;
++     margin: -1px;
++     overflow: hidden;
++     clip: rect(0 0 0 0);
++     clip-path: inset(50%);
++     white-space: nowrap;
++     border: 0;
++   }
++
++   &:is(.-variant-success, .-color-success) {
++     background: var(--instui-component-alert-success-background);
++     border-color: var(--instui-component-alert-success-border-color);
++     --pantoken-alert-glyph: var(--instui-icon-circle-check);
++   }
++
++   &:is(.-variant-warning, .-color-warning) {
++     background: var(--instui-component-alert-warning-background);
++     border-color: var(--instui-component-alert-warning-border-color);
++     color: var(--instui-color-text-base);
++     --pantoken-alert-glyph: var(--instui-icon-triangle-alert);
++     --pantoken-alert-icon-color: var(--instui-color-text-base);
++
++     >.instui-close-button {
++       color: var(--instui-color-text-base);
++     }
++   }
++
++   &:is(.-variant-error, .-color-danger, .-color-error) {
++     background: var(--instui-component-alert-danger-background);
++     border-color: var(--instui-component-alert-danger-border-color);
++     --pantoken-alert-glyph: var(--instui-icon-circle-x);
++   }
++
++   /* A custom `-icon-<name>` swaps the status glyph. Suppress the generic painter's ::before glyph. */
++   &[class*="-icon-"] {
++     --pantoken-alert-glyph: var(--pantoken-glyph);
++   }
++
++   &[class*="-icon-"]::before {
++     content: none;
++   }
++
++   &.-timeout-1 {
++     --timeout: 1000;
++   }
++
++   &.-timeout-2 {
++     --timeout: 2000;
++   }
++
++   &.-timeout-3 {
++     --timeout: 3000;
++   }
++
++   &.-timeout-4 {
++     --timeout: 4000;
++   }
++
++   &.-timeout-5 {
++     --timeout: 5000;
++   }
++
++   &.-inline {
++     background: var(--instui-component-alert-info-background-inline);
++     border-color: color-mix(in srgb,
++         var(--instui-component-alert-info-border-color-inline) 20%,
++         transparent);
++     box-shadow: none;
++     color: var(--instui-color-text-base);
++     --pantoken-alert-icon-color: var(--instui-color-icon-info);
++
++     >.instui-close-button {
++       color: var(--instui-color-icon-base);
++     }
++   }
++
++   &.-inline:is(.-variant-success, .-color-success) {
++     background: var(--instui-component-alert-success-background-inline);
++     border-color: color-mix(in srgb,
++         var(--instui-component-alert-success-border-color-inline) 20%,
++         transparent);
++     --pantoken-alert-icon-color: var(--instui-color-icon-success);
++   }
++
++   &.-inline:is(.-variant-warning, .-color-warning) {
++     background: var(--instui-component-alert-warning-background-inline);
++     border-color: color-mix(in srgb,
++         var(--instui-component-alert-warning-border-color-inline) 20%,
++         transparent);
++     --pantoken-alert-icon-color: var(--instui-color-icon-warning);
++   }
++
++   &.-inline:is(.-variant-error, .-color-danger, .-color-error) {
++     background: var(--instui-component-alert-danger-background-inline);
++     border-color: color-mix(in srgb,
++         var(--instui-component-alert-danger-border-color-inline) 20%,
++         transparent);
++     --pantoken-alert-icon-color: var(--instui-color-icon-error);
++   }
++
++   &:has(> .instui-button) {
++     display: grid;
++     grid-auto-columns: max-content;
++     grid-auto-flow: column;
++     row-gap: var(--instui-component-shared-tokens-spacing-general-space-md);
++     column-gap: var(--instui-component-shared-tokens-spacing-gap-buttons);
++   }
++
++   &>.instui-button {
++     grid-row: 2;
++     justify-self: start;
++   }
++
++   &>.instui-button:not([class*="-size-"]) {
++     min-height: var(--instui-component-base-button-small-height);
++     padding-inline: var(--instui-component-base-button-small-padding-horizontal);
++     font-size: var(--instui-component-base-button-small-font-size);
++   }
++
++   &>.instui-button:not([class*=" -"]):not(:has(+ .instui-button)) {
++     background: var(--instui-component-base-button-primary-inverse-background);
++     border-color: var(--instui-component-base-button-primary-inverse-border-color);
++     color: var(--instui-component-base-button-primary-inverse-color);
++
++     &:focus,
++     &:hover {
++       background: var(--instui-component-base-button-primary-inverse-hover-background);
++       border-color: var(--instui-component-base-button-primary-on-color-hover-border-color);
++       color: var(--instui-component-base-button-primary-on-color-hover-text-color);
++     }
++
++     &:active {
++       background: var(--instui-component-base-button-primary-inverse-active-background);
++       border-color: var(--instui-component-base-button-primary-on-color-active-border-color);
++       color: var(--instui-component-base-button-primary-on-color-active-text-color);
++     }
++
++     &:is(:disabled, [aria-disabled="true"]) {
++       background: var(--instui-component-base-button-primary-on-color-disabled-background-color);
++       border-color: var(--instui-component-base-button-primary-on-color-disabled-border-color);
++       color: var(--instui-component-base-button-primary-on-color-disabled-text-color);
++       cursor: not-allowed;
++     }
++   }
++
++   &>.instui-button:not([class*=" -"]):has(+ .instui-button) {
++     background: transparent;
++     border-color: var(--instui-component-base-button-primary-inverse-ghost-border-color);
++     color: var(--instui-component-base-button-primary-inverse-ghost-color);
++
++     &:focus {
++       background: var(--instui-component-base-button-primary-inverse-background);
++       border-color: var(--instui-component-base-button-primary-inverse-border-color);
++       color: var(--instui-component-base-button-primary-inverse-color);
++     }
++
++     &:hover {
++       background: var(--instui-component-base-button-primary-inverse-ghost-hover-background);
++       border-color: var(--instui-component-base-button-primary-on-color-hover-border-color);
++       color: var(--instui-component-base-button-primary-on-color-hover-text-color);
++     }
++
++     &:active {
++       background: var(--instui-component-base-button-primary-inverse-ghost-active-background);
++       border-color: var(--instui-component-base-button-secondary-on-color-active-border-color);
++       color: var(--instui-component-base-button-secondary-on-color-active-text-color);
++     }
++
++     &:is(:disabled, [aria-disabled="true"]) {
++       background: transparent;
++       border-color: var(--instui-component-base-button-secondary-on-color-disabled-border-color);
++       color: var(--instui-component-base-button-secondary-on-color-disabled-text-color);
++       cursor: not-allowed;
++     }
++   }
++
++   &.-inline>.instui-button:not([class*=" -"]):not(:has(+ .instui-button)) {
++     background: var(--instui-color-background-interactive-action-primary-base);
++     border-color: var(--instui-color-stroke-interactive-action-primary-base);
++     color: var(--instui-color-text-interactive-action-primary-base);
++
++     &:focus,
++     &:hover {
++       background: var(--instui-color-background-interactive-action-primary-hover);
++       border-color: var(--instui-color-stroke-interactive-action-primary-hover);
++     }
++
++     &:active {
++       background: var(--instui-color-background-interactive-action-primary-active);
++       border-color: var(--instui-color-stroke-interactive-action-primary-active);
++     }
++
++     &:is(:disabled, [aria-disabled="true"]) {
++       background: var(--instui-component-base-button-primary-disabled-background-color);
++       border-color: var(--instui-component-base-button-primary-disabled-border-color);
++       color: var(--instui-component-base-button-primary-disabled-text-color);
++       cursor: not-allowed;
++     }
++   }
++
++   &.-inline>.instui-button:not([class*=" -"]):has(+ .instui-button) {
++     background: transparent;
++     border-color: var(--instui-component-base-button-primary-ghost-border-color);
++     color: var(--instui-component-base-button-primary-ghost-color);
++
++     &:focus,
++     &:hover {
++       background: var(--instui-component-base-button-primary-ghost-hover-background);
++       border-color: var(--instui-component-base-button-tertiary-hover-border-color);
++       color: var(--instui-component-base-button-tertiary-hover-text-color);
++     }
++
++     &:active {
++       background: var(--instui-component-base-button-primary-ghost-active-background);
++       border-color: var(--instui-component-base-button-tertiary-active-border-color);
++       color: var(--instui-component-base-button-tertiary-active-text-color);
++     }
++
++     &:is(:disabled, [aria-disabled="true"]) {
++       background: transparent;
++       border-color: var(--instui-component-base-button-tertiary-disabled-border-color);
++       color: var(--instui-component-base-button-tertiary-disabled-text-color);
++       cursor: not-allowed;
++     }
++   }
++
++   &:is(.-has-shadow-false, .-without-shadow) {
++     box-shadow: none;
++   }
++ }
++
+
+ ❯ formats/components/tests/components/alert.test.ts:46:15
+     44|   // preceding unmodified buttons are secondary. Any authored button m…
+     45|   expect(css).toContain("&:has(> .instui-button)");
+     46|   expect(css).toContain("display: flow-root");
+       |               ^
+     47|   expect(css).toContain("float: inline-start");
+     48|   expect(css).toContain("clear: inline-start");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  06:23:45
+   Duration  1.28s (transform 764ms, setup 24ms, import 1.11s, tests 35ms, environment 0ms)
+
+pantoken on alert-updates ≡  ?1 ~4 via  26.8.2 x 
+➜  vp run docs:api:css
+VITE+ - The Unified Toolchain for the Web
+
+Selected task: @pantoken/docs#docs:api:css
+~/docs$ node scripts/build-css-api.ts
+✓ CSS API: wrote 102 record page(s) to api/css/ + merged the CSS section into the TypeDoc sidebar
+
+---
+vp run: @pantoken/docs#docs:api:css not cached because it modified its input. (Run `vp run --last-details` for full details)
+
+---
+
+but now the buttons effectively sit on the same row as thte anonymous text
+
+---
+
+now the first button is set to the column width of the anonymous text, not to the width of its content.
+
+---
+
+okay, button group for 2 buttons, no button group required for a single buton.
+
+---
+
+that broken the color styles on button-groups.
+
+---
+
+7 of the 8 examples are now correct.  the warning on-color variant and warning inline variant should both use the the styles of the inline version.  warning on-color should not actually use the on-color buttons.
