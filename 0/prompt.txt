@@ -1,0 +1,23 @@
+the alert on-color variants with an hr should use color-stroke-on-color var.
+
+---
+
+In the pantoken repo, under renderers/pendo/src/css/, I need to understand how "on-color" alert variants are handled in CSS, so I can plan a change to chrome.css's `hr` rule (currently uses `border-color: var(--instui-color-stroke-muted);`).
+
+Please investigate and report back:
+1. Look at renderers/pendo/src/css/chrome.css in full (especially the `hr` rule around lines 55-62).
+2. Search renderers/pendo/src/css/ for all files and how "alert" component variants are styled, especially anything related to "on-color" (e.g. selectors like `[data-layout*="alert"]`, `.instui-alert`, attribute selectors for color variants like `-color-danger`, `-color-success`, `on-color`, etc.). Look for any existing CSS custom property named something like `--instui-color-stroke-on-color` or similar "on-color" stroke/text/icon tokens used elsewhere in the pendo renderer or in formats/components (the main instui component library) to confirm the exact token name.
+3. Search formats/components or formats/tokens for token names matching `stroke-on-color` or `on-color` to find the exact CSS variable name(s) available.
+4. Look for any existing pattern in chrome.css or other pendo CSS files where a selector scopes a rule specifically to "alert" layouts with on-color background variants (e.g. success/danger/warning alert backgrounds), to see the exact selector syntax convention used in this file (there's already a selector example in chrome.css like `:is(:scope, [class*="instui"]):not([class*="instui-alert"]):is([data-layout="lightboxBlank"], [class*="instui-banner"])`).
+5. Check renderers/pendo/src/css/card.css or alert-specific css files (if any) for how alert variants/backgrounds are scoped (attribute selectors, data attributes, class names like `-color-danger`, `-status-*`, etc.), and whether there's a notion of "on-color" already applied to icon or text color in alert context.
+6. Check docs/conventions or docs/engineering-log.md for any mention of "on-color" tokens conventions.
+
+Report back: the exact token/variable name for the on-color stroke token, the exact selector pattern(s) used to scope alert on-color variants in this pendo renderer, example code snippets, and file paths with line numbers for everything relevant so I can write a precise plan.
+
+---
+
+I dont' want warning to be excluded from style definitions, it shouldn't use the on-color treatment, it should use the muted treatment which is the default.
+
+---
+
+Start implementation
