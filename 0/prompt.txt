@@ -1,0 +1,13 @@
+we need to do some additional docs cleanup:
+* generate-og is taking the html from index.md and treating it as a string so it's outputting the html into the image.
+* on initial load the .platform icon + text does not display correctly - the text sits a full lineheight above the icon, it's not until a widow resize event that it displays correctly, likely the calcuator for the wrapper width is off by a couple of pixels due to borders/padding/etc.
+
+dev server is live at http://localhost:5173/
+
+---
+
+Start implementation
+
+---
+
+yes, add a changeset for docs.
