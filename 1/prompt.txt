@@ -1,0 +1,1 @@
+fallow is failing us again, likely due to perceived code duplication. https://github.com/thedannywahl/pantoken/actions/runs/35129145505/job/104905959656?pr=169
