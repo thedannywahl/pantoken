@@ -126,11 +126,68 @@
   }
 }
 
-/* Banner buttons use the on-colour treatment from the InstUI banner component. */
+/* Banner actions use standard primary and ghost treatments. */
 :is(:scope, [class*="instui"]):not([class*="instui-alert"]):is(
     [data-layout="lightboxBlank"],
     [class*="instui-banner"]
   ) {
+  ._pendo-button-primaryButton:not(._pendo-button-custom) {
+    background: var(--instui-color-background-interactive-action-primary-base);
+    border-color: var(--instui-color-stroke-interactive-action-primary-base);
+    color: var(--instui-color-text-interactive-action-primary-base);
+
+    &:hover {
+      background: var(--instui-color-background-interactive-action-primary-hover);
+      border-color: var(--instui-color-stroke-interactive-action-primary-hover);
+    }
+
+    &:active {
+      background: var(--instui-color-background-interactive-action-primary-active);
+      border-color: var(--instui-color-stroke-interactive-action-primary-active);
+    }
+
+    &:is(:disabled, [aria-disabled="true"]) {
+      background: var(--instui-component-base-button-primary-disabled-background-color);
+      border-color: var(--instui-component-base-button-primary-disabled-border-color);
+      color: var(--instui-component-base-button-primary-disabled-text-color);
+      cursor: not-allowed;
+    }
+  }
+
+  :is(._pendo-button-secondaryButton, ._pendo-button-tertiaryButton):not(._pendo-button-custom) {
+    background: transparent;
+    border-color: var(--instui-component-base-button-primary-ghost-border-color);
+    color: var(--instui-component-base-button-primary-ghost-color);
+
+    &:focus {
+      background: var(--instui-component-base-button-primary-ghost-hover-background);
+      border-color: var(--instui-component-base-button-tertiary-hover-border-color);
+      color: var(--instui-component-base-button-tertiary-hover-text-color);
+    }
+
+    &:hover {
+      background: var(--instui-component-base-button-primary-ghost-hover-background);
+      border-color: var(--instui-component-base-button-tertiary-hover-border-color);
+      color: var(--instui-component-base-button-tertiary-hover-text-color);
+    }
+
+    &:active {
+      background: var(--instui-component-base-button-primary-ghost-active-background);
+      border-color: var(--instui-component-base-button-tertiary-active-border-color);
+      color: var(--instui-component-base-button-tertiary-active-text-color);
+    }
+
+    &:is(:disabled, [aria-disabled="true"]) {
+      background: transparent;
+      border-color: var(--instui-component-base-button-tertiary-disabled-border-color);
+      color: var(--instui-component-base-button-tertiary-disabled-text-color);
+      cursor: not-allowed;
+    }
+  }
+}
+
+/* Elevated alerts use inverse actions except warning, which uses the standard action colours. */
+:is(:scope, [class*="instui"])[class*="instui-alert"][data-layout="lightboxBlank"] {
   ._pendo-button-primaryButton:not(._pendo-button-custom) {
     background: var(--instui-component-base-button-primary-inverse-background);
     border-color: var(--instui-component-base-button-primary-inverse-border-color);
@@ -159,46 +216,79 @@
   :is(._pendo-button-secondaryButton, ._pendo-button-tertiaryButton):not(._pendo-button-custom) {
     background: transparent;
     border-color: var(--instui-component-base-button-primary-inverse-ghost-border-color);
-    color: light-dark(
-      var(--instui-component-base-button-primary-inverse-color),
-      var(--instui-component-base-button-primary-inverse-ghost-border-color)
-    );
+    color: var(--instui-component-base-button-primary-inverse-ghost-color);
 
     &:focus {
       background: var(--instui-component-base-button-primary-inverse-background);
       border-color: var(--instui-component-base-button-primary-inverse-border-color);
-      color: light-dark(
-        var(--instui-component-base-button-primary-inverse-color),
-        var(--instui-component-base-button-primary-inverse-ghost-border-color)
-      );
+      color: var(--instui-component-base-button-primary-inverse-color);
     }
 
     &:hover {
       background: var(--instui-component-base-button-primary-inverse-ghost-hover-background);
       border-color: var(--instui-component-base-button-primary-on-color-hover-border-color);
-      color: light-dark(
-        var(--instui-component-base-button-primary-on-color-hover-text-color),
-        var(--instui-component-base-button-primary-inverse-ghost-border-color)
-      );
+      color: var(--instui-component-base-button-primary-on-color-hover-text-color);
     }
 
     &:active {
       background: var(--instui-component-base-button-primary-inverse-ghost-active-background);
       border-color: var(--instui-component-base-button-secondary-on-color-active-border-color);
-      color: light-dark(
-        var(--instui-component-base-button-primary-on-color-active-text-color),
-        var(--instui-component-base-button-primary-inverse-ghost-border-color)
-      );
+      color: var(--instui-component-base-button-secondary-on-color-active-text-color);
     }
 
     &:is(:disabled, [aria-disabled="true"]) {
       background: transparent;
       border-color: var(--instui-component-base-button-secondary-on-color-disabled-border-color);
-      color: light-dark(
-        var(--instui-component-base-button-primary-on-color-disabled-text-color),
-        var(--instui-component-base-button-primary-inverse-ghost-border-color)
-      );
+      color: var(--instui-component-base-button-secondary-on-color-disabled-text-color);
       cursor: not-allowed;
+    }
+  }
+
+  &[class*="-warning"] {
+    ._pendo-button-primaryButton:not(._pendo-button-custom) {
+      background: var(--instui-color-background-interactive-action-primary-base);
+      border-color: var(--instui-color-stroke-interactive-action-primary-base);
+      color: var(--instui-color-text-interactive-action-primary-base);
+
+      &:hover {
+        background: var(--instui-color-background-interactive-action-primary-hover);
+        border-color: var(--instui-color-stroke-interactive-action-primary-hover);
+      }
+
+      &:active {
+        background: var(--instui-color-background-interactive-action-primary-active);
+        border-color: var(--instui-color-stroke-interactive-action-primary-active);
+      }
+
+      &:is(:disabled, [aria-disabled="true"]) {
+        background: var(--instui-component-base-button-primary-disabled-background-color);
+        border-color: var(--instui-component-base-button-primary-disabled-border-color);
+        color: var(--instui-component-base-button-primary-disabled-text-color);
+      }
+    }
+
+    :is(._pendo-button-secondaryButton, ._pendo-button-tertiaryButton):not(._pendo-button-custom) {
+      background: transparent;
+      border-color: var(--instui-component-base-button-primary-ghost-border-color);
+      color: var(--instui-component-base-button-primary-ghost-color);
+
+      &:is(:focus, :hover) {
+        background: var(--instui-component-base-button-primary-ghost-hover-background);
+        border-color: var(--instui-component-base-button-tertiary-hover-border-color);
+        color: var(--instui-component-base-button-tertiary-hover-text-color);
+      }
+
+      &:active {
+        background: var(--instui-component-base-button-primary-ghost-active-background);
+        border-color: var(--instui-component-base-button-tertiary-active-border-color);
+        color: var(--instui-component-base-button-tertiary-active-text-color);
+      }
+
+      &:is(:disabled, [aria-disabled="true"]) {
+        background: transparent;
+        border-color: var(--instui-component-base-button-tertiary-disabled-border-color);
+        color: var(--instui-component-base-button-tertiary-disabled-text-color);
+      }
     }
   }
 }
