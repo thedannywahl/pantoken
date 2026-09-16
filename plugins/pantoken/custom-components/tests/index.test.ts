@@ -113,7 +113,7 @@ test("banner border modifier is computed in every vendored theme", () => {
     const token = byTheme(theme).find(
       ({ name }) => name === "--instui-component-banner-border-color",
     );
-    expect(token?.value).toMatch(/^#[0-9a-f]{8}$/iu);
+    expect(token?.value).toMatch(/^(?:#[0-9a-f]{8}|light-dark\(#[0-9a-f]{8}, #[0-9a-f]{8}\))$/iu);
     expect(token?.value).not.toContain("var(");
   }
 });
