@@ -49,7 +49,8 @@ function focusLayer(selector: string): string {
   const decls = focusOutlineDeclarations()
     .map(([n, v]) => `  ${n}: ${v};`)
     .join("\n");
-  return `@layer instui.focusOutline {\n${selector} {\n${decls}\n}\n\n${focusOutlineRules(FOCUSABLES)}\n}`;
+  const alertOnColorFocus = `:is(${selector}, [class*="instui"])[class*="instui-alert"][data-layout="lightboxBlank"]:not([class*="-warning"])`;
+  return `@layer instui.focusOutline {\n${selector} {\n${decls}\n}\n\n${alertOnColorFocus} {\n  --instui-focus-outline-color: var(--instui-focus-outline-color-inverse);\n}\n\n${focusOutlineRules(FOCUSABLES)}\n}`;
 }
 
 /** Options for {@link buildPendoCss}. */

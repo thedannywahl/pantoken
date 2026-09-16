@@ -44,6 +44,10 @@ test("the focus ring is delegated to the focus-outline plugin in a last-declared
   expect(css).toContain("@layer instui.focusOutline {");
   expect(css).toContain(":where(:focus-visible)");
   expect(css).toContain("--instui-focus-outline-color");
+  expect(css).toContain("--instui-focus-outline-color-inverse");
+  expect(css).toContain(
+    '[class*="instui-alert"][data-layout="lightboxBlank"]:not([class*="-warning"])',
+  );
   // The manual focus-outline tokens and the delegated per-component :focus rules are gone.
   expect(css).not.toContain("--manual-light-focus-outline");
 });
@@ -217,6 +221,31 @@ test("layout titles and subtitles follow the banner heading scale", () => {
   expect(textCss).toContain("--instui-font-size-text-sm");
 });
 
+test("alerts retain four elevated colour treatments without inline variants", () => {
+  expect(containerCss).toContain("--instui-component-alert-info-background");
+  expect(containerCss).toContain("--instui-component-alert-success-background");
+  expect(containerCss).toContain("--instui-component-alert-warning-background");
+  expect(containerCss).toContain("--instui-component-alert-danger-background");
+  expect(containerCss).toContain("box-shadow: var(--instui-elevation-above);");
+  expect(containerCss).toContain(
+    "inset-block-start: var(--instui-component-alert-icon-padding-vertical);",
+  );
+  expect(containerCss).toContain("--_alert-icon-color: var(--instui-color-text-base);");
+  expect(containerCss).toContain("color: var(--_alert-icon-color);");
+  expect(textCss).toContain("color: var(--_alert-text-color);");
+  expect(inputsCss).toContain('[id*="survey-single-choice"] input.pendo-radio:checked');
+  expect(inputsCss).toContain("._pendo-multi-choice-poll-select-border input.pendo-radio:checked");
+  expect(inputsCss).toContain("label.pendo-radio");
+  expect(inputsCss).toContain("outline-color: var(--instui-focus-outline-color-inverse);");
+  expect(inputsCss).toContain(
+    "color: var(--instui-component-base-button-primary-on-color-hover-text-color);",
+  );
+  expect(inputsCss).toContain("color: var(--_alert-text-color);");
+  expect(containerCss).not.toContain('[class*="-inline"]');
+  expect(containerCss).not.toContain('[class*="-without-shadow"]');
+  expect(containerCss).not.toContain('[class*="-has-shadow-false"]');
+});
+
 test("popover cards retain their border and small padding on every edge", () => {
   expect(containerCss).toContain(
     "border: var(--instui-border-width-sm) solid var(--instui-component-popover-border-color);",
@@ -226,23 +255,25 @@ test("popover cards retain their border and small padding on every edge", () => 
   );
 });
 
-test("banner buttons map Pendo variants without restyling the close button", () => {
-  expect(buttonCss).toContain("--instui-component-base-button-primary-inverse-background");
-  expect(buttonCss).toContain("--instui-component-base-button-primary-on-color-hover-text-color");
+test("banner and alert buttons map Pendo variants without restyling the close button", () => {
+  expect(buttonCss).toContain("--instui-color-background-interactive-action-primary-base");
+  expect(buttonCss).toContain("--instui-color-stroke-interactive-action-primary-hover");
+  expect(buttonCss).toContain("._pendo-button-primaryButton:not(._pendo-button-custom)");
   expect(buttonCss).toContain("._pendo-button-secondaryButton, ._pendo-button-tertiaryButton");
   expect(buttonCss).toContain("background: transparent");
   expect(buttonCss).toContain(
-    "border-color: var(--instui-component-base-button-primary-inverse-ghost-border-color);",
+    "border-color: var(--instui-component-base-button-primary-ghost-border-color);",
   );
-  expect(buttonCss).toContain("var(--instui-component-base-button-primary-inverse-color)");
+  expect(buttonCss).toContain("--instui-component-base-button-primary-ghost-hover-background");
+  expect(buttonCss).toContain("--instui-component-base-button-tertiary-active-border-color");
+  expect(buttonCss).toContain('[class*="instui-alert"][data-layout="lightboxBlank"]');
+  expect(buttonCss).toContain('[class*="-warning"]');
+  expect(buttonCss).toContain("--instui-component-base-button-primary-inverse-background");
   expect(buttonCss).toContain(
-    "var(--instui-component-base-button-primary-inverse-ghost-border-color)",
+    "var(--instui-component-base-button-primary-on-color-hover-text-color)",
   );
   expect(buttonCss).toContain(
     "--instui-component-base-button-primary-inverse-ghost-hover-background",
-  );
-  expect(buttonCss).toContain(
-    "var(--instui-component-base-button-primary-on-color-hover-text-color)",
   );
   expect(buttonCss).toContain(
     "var(--instui-component-base-button-primary-on-color-active-text-color)",
@@ -254,6 +285,7 @@ test("banner buttons map Pendo variants without restyling the close button", () 
     "--instui-component-base-button-secondary-on-color-disabled-border-color",
   );
   expect(buttonCss).toContain('[aria-disabled="true"]');
+  expect(buttonCss).not.toContain("light-dark(");
   expect(buttonCss).not.toContain("._pendo-close-guide");
   expect(chromeCss).toContain("--instui-component-banner-close-button-margin-top");
 });

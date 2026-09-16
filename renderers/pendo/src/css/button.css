@@ -40,7 +40,8 @@
     }
   }
 
-  /* Primary button variant */
+  /* Primary button variant. Covers banner/lightbox actions too — the alert-warning override
+     below is the only context that needs to reclaim these colours from the alert's inverse rule. */
   ._pendo-button-primaryButton:not(._pendo-button-custom) {
     background: var(--instui-color-background-interactive-action-primary-base);
     border-color: var(--instui-color-stroke-interactive-action-primary-base);
@@ -56,7 +57,7 @@
       border-color: var(--instui-color-stroke-interactive-action-primary-active);
     }
 
-    &:disabled {
+    &:is(:disabled, [aria-disabled="true"]) {
       background: var(--instui-component-base-button-primary-disabled-background-color);
       border-color: var(--instui-component-base-button-primary-disabled-border-color);
       color: var(--instui-component-base-button-primary-disabled-text-color);
@@ -121,16 +122,52 @@
     /* Submit / Finish buttons: Center only if they're the only button in the container */
     div:has(> ._pendo-button-primaryButton):not(:has(> :not(._pendo-button-primaryButton))) {
       display: flex;
-      justify-content: center;
+      justify-content: start;
     }
   }
 }
 
-/* Banner buttons use the on-colour treatment from the InstUI banner component. */
-:is(:scope, [class*="instui"]):not([class*="instui-alert"]):is(
-    [data-layout="lightboxBlank"],
-    [class*="instui-banner"]
-  ) {
+/* Banner/lightbox and alert-warning actions both use ghost secondary/tertiary colours instead of
+   the base's branded secondary style; the primary variant needs no override here — the base rule
+   above already covers banner/lightbox, and the alert-warning override below handles that case. */
+:is(
+  :is(:scope, [class*="instui"]):not([class*="instui-alert"]):is(
+      [data-layout="lightboxBlank"],
+      [class*="instui-banner"]
+    ),
+  :is(
+      :scope,
+      [class*="instui"]
+    )[class*="instui-alert"][data-layout="lightboxBlank"][class*="-warning"]
+) {
+  :is(._pendo-button-secondaryButton, ._pendo-button-tertiaryButton):not(._pendo-button-custom) {
+    background: transparent;
+    border-color: var(--instui-component-base-button-primary-ghost-border-color);
+    color: var(--instui-component-base-button-primary-ghost-color);
+
+    &:is(:focus, :hover) {
+      background: var(--instui-component-base-button-primary-ghost-hover-background);
+      border-color: var(--instui-component-base-button-tertiary-hover-border-color);
+      color: var(--instui-component-base-button-tertiary-hover-text-color);
+    }
+
+    &:active {
+      background: var(--instui-component-base-button-primary-ghost-active-background);
+      border-color: var(--instui-component-base-button-tertiary-active-border-color);
+      color: var(--instui-component-base-button-tertiary-active-text-color);
+    }
+
+    &:is(:disabled, [aria-disabled="true"]) {
+      background: transparent;
+      border-color: var(--instui-component-base-button-tertiary-disabled-border-color);
+      color: var(--instui-component-base-button-tertiary-disabled-text-color);
+      cursor: not-allowed;
+    }
+  }
+}
+
+/* Elevated alerts use inverse actions except warning, which uses standard action colours. */
+:is(:scope, [class*="instui"])[class*="instui-alert"][data-layout="lightboxBlank"] {
   ._pendo-button-primaryButton:not(._pendo-button-custom) {
     background: var(--instui-component-base-button-primary-inverse-background);
     border-color: var(--instui-component-base-button-primary-inverse-border-color);
@@ -159,46 +196,52 @@
   :is(._pendo-button-secondaryButton, ._pendo-button-tertiaryButton):not(._pendo-button-custom) {
     background: transparent;
     border-color: var(--instui-component-base-button-primary-inverse-ghost-border-color);
-    color: light-dark(
-      var(--instui-component-base-button-primary-inverse-color),
-      var(--instui-component-base-button-primary-inverse-ghost-border-color)
-    );
+    color: var(--instui-component-base-button-primary-inverse-ghost-color);
 
-    &:focus {
-      background: var(--instui-component-base-button-primary-inverse-background);
-      border-color: var(--instui-component-base-button-primary-inverse-border-color);
-      color: light-dark(
-        var(--instui-component-base-button-primary-inverse-color),
-        var(--instui-component-base-button-primary-inverse-ghost-border-color)
-      );
-    }
-
+    &:focus,
     &:hover {
       background: var(--instui-component-base-button-primary-inverse-ghost-hover-background);
       border-color: var(--instui-component-base-button-primary-on-color-hover-border-color);
-      color: light-dark(
-        var(--instui-component-base-button-primary-on-color-hover-text-color),
-        var(--instui-component-base-button-primary-inverse-ghost-border-color)
-      );
+      color: var(--instui-component-base-button-primary-on-color-hover-text-color);
     }
 
     &:active {
       background: var(--instui-component-base-button-primary-inverse-ghost-active-background);
       border-color: var(--instui-component-base-button-secondary-on-color-active-border-color);
-      color: light-dark(
-        var(--instui-component-base-button-primary-on-color-active-text-color),
-        var(--instui-component-base-button-primary-inverse-ghost-border-color)
-      );
+      color: var(--instui-component-base-button-secondary-on-color-active-text-color);
     }
 
     &:is(:disabled, [aria-disabled="true"]) {
       background: transparent;
       border-color: var(--instui-component-base-button-secondary-on-color-disabled-border-color);
-      color: light-dark(
-        var(--instui-component-base-button-primary-on-color-disabled-text-color),
-        var(--instui-component-base-button-primary-inverse-ghost-border-color)
-      );
+      color: var(--instui-component-base-button-secondary-on-color-disabled-text-color);
       cursor: not-allowed;
+    }
+  }
+
+  &[class*="-warning"] {
+    /* Warning alerts use standard action colours, not the inverse palette above. */
+    ._pendo-button-primaryButton:not(._pendo-button-custom) {
+      background: var(--instui-color-background-interactive-action-primary-base);
+      border-color: var(--instui-color-stroke-interactive-action-primary-base);
+      color: var(--instui-color-text-interactive-action-primary-base);
+
+      &:hover {
+        background: var(--instui-color-background-interactive-action-primary-hover);
+        border-color: var(--instui-color-stroke-interactive-action-primary-hover);
+      }
+
+      &:active {
+        background: var(--instui-color-background-interactive-action-primary-active);
+        border-color: var(--instui-color-stroke-interactive-action-primary-active);
+      }
+
+      &:is(:disabled, [aria-disabled="true"]) {
+        background: var(--instui-component-base-button-primary-disabled-background-color);
+        border-color: var(--instui-component-base-button-primary-disabled-border-color);
+        color: var(--instui-component-base-button-primary-disabled-text-color);
+        cursor: not-allowed;
+      }
     }
   }
 }

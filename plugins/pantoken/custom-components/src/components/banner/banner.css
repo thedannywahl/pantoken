@@ -12,8 +12,8 @@
  * 3. A heading (`h1`–`h6`, or a bare `.pfx-heading` with no `-level-*` modifier) styles as the
  *    banner's title, using title-card typography appropriate to the active size. Give an
  *    `.pfx-heading` a `-level-*` class to opt it out of this treatment.
- * 4. Wrap banner actions in `.button-group`: the first button defaults to the inline primary
- *    treatment, and following buttons default to the inline secondary treatment. Add a `-color-*`
+ * 4. Wrap banner actions in `.button-group`: buttons before the last default to the inline secondary
+ *    treatment, and the last button defaults to the inline primary treatment. Add a `-color-*`
  *    modifier to any button to use its own colour.
  * 5. Buttons default to `-size-sm` regardless of the banner's own size; add a `-size-*` modifier to
  *    opt out.
@@ -42,8 +42,8 @@
  *   <h2 class="pfx-heading">New feature</h2>
  *   <span class="instui-text">This is a violet banner with a custom icon.</span>
  *   <div class="button-group">
- *     <button class="pfx-button">OK</button>
  *     <button class="pfx-button">Cancel</button>
+ *     <button class="pfx-button">OK</button>
  *   </div>
  *   <button class="pfx-close-button" aria-label="Close"></button>
  * </div>
@@ -237,7 +237,7 @@
 
     /* fallow-ignore-next-line code-duplication */
     > .pfx-button:not([class*="-color-"]),
-    > .button-group > .pfx-button:first-of-type:not([class*="-color-"]) {
+    > .button-group > .pfx-button:not(:has(+ .pfx-button)):not([class*="-color-"]) {
       background: var(--instui-color-background-interactive-action-primary-base);
       border-color: var(--instui-color-stroke-interactive-action-primary-base);
       color: var(--instui-color-text-interactive-action-primary-base);
@@ -262,7 +262,7 @@
     }
 
     /* fallow-ignore-next-line code-duplication */
-    > .button-group > .pfx-button:first-of-type ~ .pfx-button:not([class*="-color-"]) {
+    > .button-group > .pfx-button:has(+ .pfx-button):not([class*="-color-"]) {
       background: transparent;
       border-color: var(--instui-component-base-button-primary-ghost-border-color);
       color: var(--instui-component-base-button-primary-ghost-color);

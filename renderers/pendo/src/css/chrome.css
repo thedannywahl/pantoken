@@ -56,7 +56,25 @@ hr {
   border-style: var(--instui-component-view-border-style);
   margin: var(--instui-component-shared-tokens-spacing-general-space-xs) var(--pendo-space-0);
   border-radius: var(--instui-component-shared-tokens-border-radius-full);
-  border-color: var(--instui-component-tabs-panel-border-color);
+  border-color: var(--instui-color-stroke-muted);
+}
+
+/* Info/danger/success alerts render on-color; warning stays on the muted default above. */
+:is(:scope, [class*="instui"])[class*="instui-alert"][data-layout="lightboxBlank"]:is(
+    [class*="-info"],
+    [class*="-danger"],
+    [class*="-success"]
+  )
+  hr {
+  border-color: var(--instui-color-stroke-on-color);
+}
+
+:is(
+    :scope,
+    [class*="instui"]
+  )[class*="instui-alert"][data-layout="lightboxBlank"][class*="-warning"]
+  hr {
+  border-color: var(--instui-color-stroke-muted);
 }
 
 /* ─── Close button ─── */

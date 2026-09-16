@@ -8,7 +8,9 @@
  *       into Chromium's base-select model under `@supports (appearance: base-select)`.
  *   (3) Radio group — `label.pendo-radio` + `input.pendo-radio`; used for single-choice and PMF surveys.
  *   (4) Number-scale / NPS — `input[type="radio"]` + `label` pairs styled as small square buttons
- *       (secondary unselected, primary selected); also covers UX-Lite and CSAT surveys.
+ *       (secondary unselected, primary selected); also covers UX-Lite and CSAT surveys. Radio
+ *       labels, descriptions, and scale buttons all get on-color treatment inside elevated alerts
+ *       (`[data-layout="lightboxBlank"]`), except the warning variant, which keeps standard colours.
  * @part ._pendo-open-text-poll-input — Open-text textarea; full-width with auto height.
  * @part ._pendo-multi-choice-poll-select-border — Select wrapper; supplies the chevron via `::after`.
  * @part select._pendo-multi-choice-poll-select — The `<select>` element.
@@ -530,4 +532,110 @@ input.pendo-radio:checked + label.pendo-radio[class*="_pendo-nps-poll-"],
 [class$="-poll-question"] + ._pendo-row [class$="-description"] {
   padding-top: var(--instui-component-shared-tokens-spacing-general-space-xs);
   color: var(--instui-component-text-muted-color);
+}
+
+/* ─── On-color (elevated alert) ─── */
+/* Elevated alerts use inverse/on-color actions except warning, which keeps standard colours; the
+   warning-excluded rules share the `&:not([class*="-warning"])` block below with the pre-existing
+   focus-visible override, so warning alerts fall through to the standard colours with no
+   restatement needed. */
+:is(:scope, [class*="instui"])[class*="instui-alert"][data-layout="lightboxBlank"] {
+  &:not([class*="-warning"]) {
+    :is(
+      input.pendo-radio:focus-visible + label.pendo-radio[class*="_pendo-number-scale-poll-"],
+      input.pendo-radio:focus-visible + label.pendo-radio[class*="_pendo-nps-poll-"],
+      .pendo-survey-wrapper
+        > :not([id*="survey-single-choice"])
+        input.pendo-radio:focus-visible
+        + label.pendo-radio,
+      .pendo-survey-wrapper
+        > :not([id*="survey-single-choice"])
+        input[type="radio"]:focus-visible
+        + label
+    ) {
+      outline-color: var(--instui-focus-outline-color-inverse);
+      color: var(--instui-component-base-button-primary-on-color-hover-text-color);
+    }
+
+    ._pendo-multi-choice-poll-select-border label.pendo-radio {
+      color: var(--instui-component-text-base-on-color);
+
+      &:hover {
+        color: var(--instui-component-text-base-on-color);
+      }
+    }
+
+    label.pendo-radio[class*="_pendo-number-scale-poll-"] + [class$="-description"],
+    .pendo-survey-wrapper > :not([id*="survey-single-choice"]) label + div {
+      color: var(--instui-component-text-muted-on-color);
+    }
+
+    label.pendo-radio[class*="_pendo-number-scale-poll-"],
+    label.pendo-radio[class*="_pendo-nps-poll-"],
+    .pendo-survey-wrapper > :not([id*="survey-single-choice"]) label {
+      background: transparent;
+      border-color: var(--instui-component-base-button-primary-inverse-ghost-border-color);
+      color: var(--instui-component-base-button-primary-inverse-ghost-color);
+
+      &:hover {
+        background: var(--instui-component-base-button-primary-inverse-ghost-hover-background);
+        border-color: var(--instui-component-base-button-primary-on-color-hover-border-color);
+        color: var(--instui-component-base-button-primary-on-color-hover-text-color);
+      }
+
+      &:active {
+        background: var(--instui-component-base-button-primary-inverse-ghost-active-background);
+        border-color: var(--instui-component-base-button-secondary-on-color-active-border-color);
+        color: var(--instui-component-base-button-secondary-on-color-active-text-color);
+      }
+    }
+
+    input.pendo-radio:checked + label.pendo-radio[class*="_pendo-number-scale-poll-"],
+    input.pendo-radio:checked + label.pendo-radio[class*="_pendo-nps-poll-"],
+    .pendo-survey-wrapper
+      > :not([id*="survey-single-choice"])
+      input.pendo-radio:checked
+      + label.pendo-radio,
+    .pendo-survey-wrapper > :not([id*="survey-single-choice"]) input[type="radio"]:checked + label {
+      background: var(--instui-component-base-button-primary-inverse-background);
+      border-color: var(--instui-component-base-button-primary-inverse-border-color);
+      color: var(--instui-component-base-button-primary-inverse-color);
+
+      &:hover {
+        background: var(--instui-component-base-button-primary-inverse-hover-background);
+        border-color: var(--instui-component-base-button-primary-on-color-hover-border-color);
+        color: var(--instui-component-base-button-primary-on-color-hover-text-color);
+      }
+
+      &:active {
+        background: var(--instui-component-base-button-primary-inverse-active-background);
+        border-color: var(--instui-component-base-button-primary-on-color-active-border-color);
+        color: var(--instui-component-base-button-primary-on-color-active-text-color);
+      }
+    }
+  }
+
+  [id*="survey-single-choice"] label.pendo-radio {
+    color: var(--_alert-text-color);
+
+    &:hover {
+      color: var(--_alert-text-color);
+    }
+  }
+
+  [id*="survey-single-choice"] input.pendo-radio:checked + label.pendo-radio {
+    color: var(--_alert-text-color);
+
+    &:is(:hover, :active) {
+      color: var(--_alert-text-color);
+    }
+  }
+
+  ._pendo-multi-choice-poll-select-border input.pendo-radio:checked + label.pendo-radio {
+    color: var(--_alert-text-color);
+
+    &:is(:hover, :active) {
+      color: var(--_alert-text-color);
+    }
+  }
 }
