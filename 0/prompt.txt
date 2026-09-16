@@ -76,3 +76,7 @@ canvastext
 ---
 
 the on-color variants of alerts need to use the on-color focus ring.
+
+---
+
+on-color button secondary on the alert with focus-visible changes the background color of the button to solid white, but it should be the same as the hover background color.
