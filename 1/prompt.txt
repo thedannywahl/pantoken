@@ -1,0 +1,1 @@
+we did some timing updates between getstarted tabs and the homepage `.platform` text animations, however, we lost that when the animation is paused the full type-ahead in the terminal should be displayed regardless of whether it was animating in or animating out. it now pauses at the typed character. we need to restore the previous display behavior on pause.
