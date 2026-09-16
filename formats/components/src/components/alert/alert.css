@@ -1,7 +1,7 @@
 /**
  * @component alert
  * @summary A status message with floating and inline surface treatments and a masked status glyph from the shared icon set.
- * @remarks Floating is the default, with an elevated coloured surface and on-colour actions. `-inline` uses a pastel surface, no shadow, status-coloured glyph, standard close button, primary action, and tertiary secondary action. A direct close button defaults to small; add a size modifier to override it.
+ * @remarks Floating is the default, with an elevated coloured surface and on-colour actions. `-inline` uses a pastel surface, no shadow, status-coloured glyph, standard close button, primary action, and tertiary secondary action. A single direct action button forms a row after unwrapped text; wrap two actions in `.button-group`, where they become secondary then primary. Any button modifier opts out of this automatic variant assignment. A direct close button defaults to small; add a size modifier to override it.
  * @selector .pfx-alert
  * @modifier -color-info — Informational (default).
  * @modifier -color-success — A positive/confirmation message.
@@ -9,7 +9,7 @@
  * @modifier -color-danger — An error message.
  * @modifier -color-error — @alias {@link -color-danger}
  * @modifier -inline — A non-elevated pastel surface for placement in document flow.
- * @modifier -without-shadow — Remove the floating elevation shadow.
+ * @modifier -without-shadow — @deprecated {@link -inline}
  * @modifier -has-shadow-false — @alias {@link -without-shadow}
  * @modifier -screen-reader-only — Visually hidden but announced.
  * @modifier -variant-info — @deprecated {@link -color-info}
@@ -22,6 +22,7 @@
  * @modifier -timeout-3 — Three seconds before automatic dismissal.
  * @modifier -timeout-4 — Four seconds before automatic dismissal.
  * @modifier -timeout-5 — Five seconds before automatic dismissal.
+ * @part button-group — The row container for two action buttons.
  * @slot content — The alert's message content; may include a dismiss button.
  * @modifier -icon-* — Swap the status glyph for a custom icon (e.g. `-icon-megaphone`).
  * @modifier -render-custom-icon-* — @deprecated The former `renderCustomIcon` prop; still works as an alias, but use `-icon-<name>` (or override `--pantoken-alert-glyph`) instead.
@@ -33,25 +34,61 @@
  * @example -nocard
  * ```html
  * <div class="pfx-alert -icon-megaphone --mb-md">
- *   An alert with the default <code>info</code> color, and a custom icon.
+ *   An alert with the default info color, and a custom icon.
+ * </div>
+ * <div class="pfx-alert -icon-megaphone -inline --mb-md">
+ *   An alert with the default info color, and a custom icon.
  * </div>
  * <div class="pfx-alert -color-success --mb-md">
  *   Congratulations! You're using the "success" color.
+ *     <button class="pfx-button">Ok</button>
+ *   <button class="pfx-close-button" aria-label="Close"></button>
+ * </div>
+ * <div class="pfx-alert -color-success -inline --mb-md">
+ *   Congratulations! You're using the "success" color.
+ *     <button class="pfx-button">Ok</button>
  *   <button class="pfx-close-button" aria-label="Close"></button>
  * </div>
  * <div class="pfx-alert -color-error --mb-md">
  *   Oops! You're using the "error" color.
+ *   <div class="button-group">
+ *     <button class="pfx-button">Cancel</button>
+ *     <button class="pfx-button">Ok</button>
+ *   </div>
+ *   <button class="pfx-close-button" aria-label="Close"></button>
+ * </div>
+ * <div class="pfx-alert -color-error -inline --mb-md">
+ *   Oops! You're using the "error" color.
+ *   <div class="button-group">
+ *     <button class="pfx-button">Cancel</button>
+ *     <button class="pfx-button">Ok</button>
+ *   </div>
  *   <button class="pfx-close-button" aria-label="Close"></button>
  * </div>
  * <div class="pfx-alert -color-warning --mb-md">
  *   Watch out! You're using the "warning" color.
+ *   <div class="button-group">
+ *     <button class="pfx-button">Cancel</button>
+ *     <button class="pfx-button">Ok</button>
+ *   </div>
+ *   <button class="pfx-close-button" aria-label="Close"></button>
+ * </div>
+ * <div class="pfx-alert -color-warning -inline --mb-md">
+ *   Watch out! You're using the "warning" color.
+ *   <div class="button-group">
+ *     <button class="pfx-button">Cancel</button>
+ *     <button class="pfx-button">Ok</button>
+ *   </div>
  *   <button class="pfx-close-button" aria-label="Close"></button>
  * </div>
  * ```
  * @structure
  * .pfx-alert {
  *   slot {}
- *   @component close-button:optional {}
+ *   @component button:optional {}
+ *   .button-group:optional {
+ *     @component button:two {}
+ *   }
  * }
  * @related close-button — The dismiss control an alert may include.
  * @sealed
@@ -71,8 +108,7 @@
     padding: var(--instui-component-alert-content-padding-vertical)
       var(--instui-component-alert-content-padding-horizontal);
     padding-inline-start: calc(
-      1.125rem + var(--instui-component-alert-icon-padding-left) +
-        var(--instui-component-alert-icon-padding-right)
+      0.833rem + var(--instui-component-alert-icon-padding-left) + 0.75rem
     );
     background: var(--instui-component-alert-info-background);
     color: var(--instui-component-text-base-on-color);
@@ -112,11 +148,11 @@
     position: absolute;
     inset-block-start: var(--instui-component-alert-icon-padding-vertical);
     inset-inline-start: var(--instui-component-alert-icon-padding-left);
-    inline-size: 1.125rem;
-    block-size: 1.125rem;
+    inline-size: 0.833rem;
+    block-size: 0.833rem;
     background: var(--pantoken-alert-icon-color);
-    -webkit-mask: var(--pantoken-alert-glyph) center / 1.125rem no-repeat;
-    mask: var(--pantoken-alert-glyph) center / 1.125rem no-repeat;
+    -webkit-mask: var(--pantoken-alert-glyph) center / 0.833rem no-repeat;
+    mask: var(--pantoken-alert-glyph) center / 0.833rem no-repeat;
   }
 
   &:has(> .pfx-close-button) {
@@ -149,6 +185,7 @@
   &:is(.-variant-warning, .-color-warning) {
     background: var(--instui-component-alert-warning-background);
     border-color: var(--instui-component-alert-warning-border-color);
+    color: var(--instui-color-text-base);
     --pantoken-alert-glyph: var(--instui-icon-triangle-alert);
     --pantoken-alert-icon-color: var(--instui-color-text-base);
 
@@ -194,7 +231,11 @@
 
   &.-inline {
     background: var(--instui-component-alert-info-background-inline);
-    border-color: var(--instui-component-alert-info-border-color-inline);
+    border-color: color-mix(
+      in srgb,
+      var(--instui-component-alert-info-border-color-inline) 20%,
+      transparent
+    );
     box-shadow: none;
     color: var(--instui-color-text-base);
     --pantoken-alert-icon-color: var(--instui-color-icon-info);
@@ -206,47 +247,172 @@
 
   &.-inline:is(.-variant-success, .-color-success) {
     background: var(--instui-component-alert-success-background-inline);
-    border-color: var(--instui-component-alert-success-border-color-inline);
+    border-color: color-mix(
+      in srgb,
+      var(--instui-component-alert-success-border-color-inline) 20%,
+      transparent
+    );
     --pantoken-alert-icon-color: var(--instui-color-icon-success);
   }
 
   &.-inline:is(.-variant-warning, .-color-warning) {
     background: var(--instui-component-alert-warning-background-inline);
-    border-color: var(--instui-component-alert-warning-border-color-inline);
+    border-color: color-mix(
+      in srgb,
+      var(--instui-component-alert-warning-border-color-inline) 20%,
+      transparent
+    );
     --pantoken-alert-icon-color: var(--instui-color-icon-warning);
   }
 
   &.-inline:is(.-variant-error, .-color-danger, .-color-error) {
     background: var(--instui-component-alert-danger-background-inline);
-    border-color: var(--instui-component-alert-danger-border-color-inline);
+    border-color: color-mix(
+      in srgb,
+      var(--instui-component-alert-danger-border-color-inline) 20%,
+      transparent
+    );
     --pantoken-alert-icon-color: var(--instui-color-icon-error);
   }
 
-  &.-inline > .pfx-button:not(.-color-secondary) {
+  & > .pfx-button:not(:has(+ .pfx-button)),
+  & > .button-group {
+    display: flex;
+    inline-size: fit-content;
+    margin-block-start: var(--instui-component-shared-tokens-spacing-general-space-md);
+  }
+
+  & > .button-group {
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--instui-component-shared-tokens-spacing-gap-buttons);
+  }
+
+  & > .pfx-button:not([class*="-size-"]),
+  & > .button-group > .pfx-button:not([class*="-size-"]) {
+    min-height: var(--instui-component-base-button-small-height);
+    padding-inline: var(--instui-component-base-button-small-padding-horizontal);
+    font-size: var(--instui-component-base-button-small-font-size);
+  }
+
+  & > .pfx-button:not(:has(+ .pfx-button)):not([class*=" -"]),
+  & > .button-group > .pfx-button:not(:has(+ .pfx-button)):not([class*=" -"]) {
+    background: var(--instui-component-base-button-primary-inverse-background);
+    border-color: var(--instui-component-base-button-primary-inverse-border-color);
+    color: var(--instui-component-base-button-primary-inverse-color);
+
+    &:focus,
+    &:hover {
+      background: var(--instui-component-base-button-primary-inverse-hover-background);
+      border-color: var(--instui-component-base-button-primary-on-color-hover-border-color);
+      color: var(--instui-component-base-button-primary-on-color-hover-text-color);
+    }
+
+    &:active {
+      background: var(--instui-component-base-button-primary-inverse-active-background);
+      border-color: var(--instui-component-base-button-primary-on-color-active-border-color);
+      color: var(--instui-component-base-button-primary-on-color-active-text-color);
+    }
+
+    &:is(:disabled, [aria-disabled="true"]) {
+      background: var(--instui-component-base-button-primary-on-color-disabled-background-color);
+      border-color: var(--instui-component-base-button-primary-on-color-disabled-border-color);
+      color: var(--instui-component-base-button-primary-on-color-disabled-text-color);
+      cursor: not-allowed;
+    }
+  }
+
+  & > .pfx-button:has(+ .pfx-button):not([class*=" -"]),
+  & > .button-group > .pfx-button:has(+ .pfx-button):not([class*=" -"]) {
+    background: transparent;
+    border-color: var(--instui-component-base-button-primary-inverse-ghost-border-color);
+    color: var(--instui-component-base-button-primary-inverse-ghost-color);
+
+    &:focus {
+      background: var(--instui-component-base-button-primary-inverse-background);
+      border-color: var(--instui-component-base-button-primary-inverse-border-color);
+      color: var(--instui-component-base-button-primary-inverse-color);
+    }
+
+    &:hover {
+      background: var(--instui-component-base-button-primary-inverse-ghost-hover-background);
+      border-color: var(--instui-component-base-button-primary-on-color-hover-border-color);
+      color: var(--instui-component-base-button-primary-on-color-hover-text-color);
+    }
+
+    &:active {
+      background: var(--instui-component-base-button-primary-inverse-ghost-active-background);
+      border-color: var(--instui-component-base-button-secondary-on-color-active-border-color);
+      color: var(--instui-component-base-button-secondary-on-color-active-text-color);
+    }
+
+    &:is(:disabled, [aria-disabled="true"]) {
+      background: transparent;
+      border-color: var(--instui-component-base-button-secondary-on-color-disabled-border-color);
+      color: var(--instui-component-base-button-secondary-on-color-disabled-text-color);
+      cursor: not-allowed;
+    }
+  }
+
+  &:is(.-inline, .-variant-warning, .-color-warning)
+    > .pfx-button:not(:has(+ .pfx-button)):not([class*=" -"]),
+  &:is(.-inline, .-variant-warning, .-color-warning)
+    > .button-group
+    > .pfx-button:not(:has(+ .pfx-button)):not([class*=" -"]) {
     background: var(--instui-color-background-interactive-action-primary-base);
     border-color: var(--instui-color-stroke-interactive-action-primary-base);
     color: var(--instui-color-text-interactive-action-primary-base);
+
+    &:focus,
+    &:hover {
+      background: var(--instui-color-background-interactive-action-primary-hover);
+      border-color: var(--instui-color-stroke-interactive-action-primary-hover);
+    }
+
+    &:active {
+      background: var(--instui-color-background-interactive-action-primary-active);
+      border-color: var(--instui-color-stroke-interactive-action-primary-active);
+    }
+
+    &:is(:disabled, [aria-disabled="true"]) {
+      background: var(--instui-component-base-button-primary-disabled-background-color);
+      border-color: var(--instui-component-base-button-primary-disabled-border-color);
+      color: var(--instui-component-base-button-primary-disabled-text-color);
+      cursor: not-allowed;
+    }
   }
 
-  &.-inline > .pfx-button.-color-secondary {
+  &:is(.-inline, .-variant-warning, .-color-warning)
+    > .pfx-button:has(+ .pfx-button):not([class*=" -"]),
+  &:is(.-inline, .-variant-warning, .-color-warning)
+    > .button-group
+    > .pfx-button:has(+ .pfx-button):not([class*=" -"]) {
     background: transparent;
     border-color: var(--instui-component-base-button-primary-ghost-border-color);
     color: var(--instui-component-base-button-primary-ghost-color);
+
+    &:focus,
+    &:hover {
+      background: var(--instui-component-base-button-primary-ghost-hover-background);
+      border-color: var(--instui-component-base-button-tertiary-hover-border-color);
+      color: var(--instui-component-base-button-tertiary-hover-text-color);
+    }
+
+    &:active {
+      background: var(--instui-component-base-button-primary-ghost-active-background);
+      border-color: var(--instui-component-base-button-tertiary-active-border-color);
+      color: var(--instui-component-base-button-tertiary-active-text-color);
+    }
+
+    &:is(:disabled, [aria-disabled="true"]) {
+      background: transparent;
+      border-color: var(--instui-component-base-button-tertiary-disabled-border-color);
+      color: var(--instui-component-base-button-tertiary-disabled-text-color);
+      cursor: not-allowed;
+    }
   }
 
   &:is(.-has-shadow-false, .-without-shadow) {
     box-shadow: none;
-  }
-
-  & > .pfx-button:not(.-color-secondary) {
-    background: var(--instui-component-base-button-primary-inverse-background);
-    border-color: var(--instui-component-base-button-primary-inverse-border-color);
-    color: var(--instui-component-base-button-primary-inverse-color);
-  }
-
-  & > .pfx-button.-color-secondary {
-    background: transparent;
-    border-color: var(--instui-component-base-button-primary-inverse-ghost-border-color);
-    color: var(--instui-component-base-button-primary-inverse-ghost-color);
   }
 }

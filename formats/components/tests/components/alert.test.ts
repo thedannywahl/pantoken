@@ -24,8 +24,11 @@ test("alert supports token-backed floating and inline status treatments", () => 
   expect(css).toContain("--pantoken-alert-icon-color");
   expect(css).toContain("&::after");
   expect(css).toContain("--instui-component-alert-icon-padding-left");
-  expect(css).toContain("--instui-component-alert-icon-padding-right");
+  expect(css).toContain("+ 0.75rem");
   expect(css).toContain("--instui-component-alert-icon-padding-vertical");
+  expect(css).toMatch(
+    /color-mix\(in srgb,\s*var\(--instui-component-alert-info-border-color-inline\) 20%,\s*transparent\)/u,
+  );
   expect(css).toContain('&[class*="-icon-"]::before');
   expect(css).toContain("content: none");
   // No icon/content wrapper classes anymore.
@@ -37,8 +40,19 @@ test("alert supports token-backed floating and inline status treatments", () => 
   );
   expect(css).toMatch(/&\.-inline\s*\{[\s\S]*box-shadow:\s*none/u);
   expect(css).toContain("box-shadow: none");
-  expect(css).toContain("& > .instui-button:not(.-color-secondary)");
-  expect(css).toContain("& > .instui-button.-color-secondary");
+  // A direct singleton and a two-button group form action rows. Unmodified actions become
+  // primary or secondary by position; authored button modifiers opt out.
+  expect(css).toContain("inline-size: fit-content");
+  expect(css).toContain("& > .button-group");
+  expect(css).toContain("display: flex");
+  expect(css).toContain("--instui-component-shared-tokens-spacing-general-space-md");
+  expect(css).toContain("--instui-component-shared-tokens-spacing-gap-buttons");
+  expect(css).toContain(".button-group > .instui-button");
+  expect(css).toContain("--instui-component-base-button-small-height");
+  expect(css).toContain("--instui-component-base-button-primary-inverse-hover-background");
+  expect(css).toContain("--instui-component-base-button-secondary-on-color-disabled-border-color");
+  expect(css).toContain("--instui-component-base-button-tertiary-hover-border-color");
+  expect(css).toContain("&:is(.-inline, .-variant-warning, .-color-warning) > .instui-button");
   expect(css).toContain("&.-screen-reader-only");
   expect(css).toMatch(/>\s*\.instui-close-button:not\(\[class\*="-size-"\]\)/u);
   expect(css).toContain("var(--instui-component-base-button-small-height)");

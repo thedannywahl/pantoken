@@ -18,12 +18,6 @@
     "note": "A stringified JS `undefined` instead of the top-offset length InstUI's smallViewportTrayFixTopPosition theme variable expects (default equals the navbar height) — referencing the sibling height token instead of hardcoding it keeps them in sync."
   },
   {
-    "name": "--instui-component-alert-icon-padding-right",
-    "upstreamValue": "0",
-    "rewriteValue": "0px",
-    "note": "InstUI emits the Alert icon's right padding as an integer, but the padding shorthand requires a CSS length."
-  },
-  {
     "name": "--instui-component-banner-border-color",
     "upstreamValue": "var(--instui-color-stroke-strong)",
     "rewriteValue": "#5F6E7A1A",
