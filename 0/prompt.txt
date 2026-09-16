@@ -1,0 +1,67 @@
+instructure-design-tokens now have the possibility of carrying a 'modify' set, which currently consists of 'alpha', 'darken', and 'lighten' which look like:
+lighten:
+```
+        "mobileNav": {
+          "value": "{color.grey.grey10}",
+          "type": "color",
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "lighten",
+                "value": "0.5",
+                "space": "hsl"
+              }
+            }
+          }
+        },
+```
+darken:
+```
+    "arrowsBackgroundHoverColor": {
+      "value": "{semantic.color.institutional.brandButtonSecondaryBgd}",
+      "type": "color",
+      "$extensions": {
+        "studio.tokens": {
+          "modify": {
+            "type": "darken",
+            "value": "0.1",
+            "space": "hsl"
+          }
+        }
+      }
+    },
+```
+alpha:
+```
+        "brandButtonSecondaryBgd": {
+          "value": "{color.navy.navy60}",
+          "type": "color",
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "alpha",
+                "value": "0.3",
+                "space": "hsl"
+              }
+            }
+          }
+        },
+```
+we should deterministically resolve the computed value in our flattened IR so that the tokens we provide are simply the appropriate color and this carries into the css properties, etc.  we should validate every component of these extensions/modifiers.  Is the modifier a valid type? (alpha, lighten, darken) is the value a valid increment (0.00 -> 1.00), is the upstream token/token reference a color?  If it also carries a modifier, how do we resolve it?
+broken modifiers should be collected in known-syntax-issues.json so they can be manually resolved and blessed.
+
+---
+
+Read-only discovery, medium thoroughness. In /Users/dwahl/Scripts/pantoken, investigate known-syntax-issues.json creation/blessing and validation patterns for malformed upstream token syntax. FIRST comply with .entire/graph-agent.md: run exactly one `entire graph search --repo . --profile full --query "collect malformed token syntax issues known-syntax-issues.json validate upstream tokens"`, then inspect focused source. Also run `entire status`; for key files, check git log checkpoint trailers and explain relevant checkpoints if present per using-entire skill. Determine: file location and schema, collector behavior/determinism, tests/fixtures/snapshots, validation error taxonomy, how known issues are blessed/updated, relevant build commands, and whether security/docs/changeset updates are implicated. Return concise findings with exact workspace-relative files and line numbers/symbols, recorded intent vs code inference, ambiguities/blockers, and recommended verification. Do not edit.
+
+---
+
+validation should also go through formats/components, renderers/pendo, plugins/pantoken/custom-components and find instances of these tokens with modifiers where css is manually applying a color mixing (e.x. components/alert/alert.css) and remove the mixin and use the new bare token that carries the modifier.
+
+---
+
+Read-only, quick-to-medium discovery in /Users/dwahl/Scripts/pantoken. Audit formats/components for manually applied color mixing/alpha/darken/lighten around tokens that now carry Tokens Studio modifiers, starting with formats/components/src/components/alert/alert.css and its tests/docs/demo. Follow .entire/graph-agent.md graph-first if terminal is available. Identify exact selectors/declarations/helpers/tests and which manual operations should become bare var(--token) references after modifier-aware IR generation. Check for all analogous instances, not just Alert. Return concise exact files, line numbers, token names, and likely expected changes. Do not edit.
+
+---
+
+this plan needs incremental conventional commits with changesets, ignoring files that you haven't touched as there are other agents working in the repo.
