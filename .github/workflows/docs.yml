@@ -314,7 +314,10 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || vars.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_R2_BUCKET: ${{ secrets.CLOUDFLARE_R2_BUCKET || vars.CLOUDFLARE_R2_BUCKET || 'pantoken-docs-assets' }}
-          CLOUDFLARE_R2_UPLOAD_CONCURRENCY: ${{ vars.CLOUDFLARE_R2_UPLOAD_CONCURRENCY || '6' }}
+          # A shared-token change can invalidate content hashes across nearly every asset at once
+          # (e.g. an InstUI token bump); 6 concurrent PUTs is too slow to clear ~95k files inside the
+          # job's 300-minute cap. The script's existing retry/backoff absorbs any 429s this causes.
+          CLOUDFLARE_R2_UPLOAD_CONCURRENCY: ${{ vars.CLOUDFLARE_R2_UPLOAD_CONCURRENCY || '24' }}
         run: |
           set -euo pipefail
           node docs/scripts/sync-cloudflare-r2.ts
