@@ -207,13 +207,18 @@ const heroIndexPath = (localeKey: DocsLocale): string =>
 
 // `hero.text` carries inline markup (`<br/>`, the animated `.platform` pill's `<span>`s) for the
 // live homepage's `v-html` render; the card renders one plain-text line, so collapse it to the
-// words a reader sees.
-const stripHtml = (text: string): string =>
-  text
-    .replace(/<br\s*\/?>/gi, " ")
-    .replace(/<[^>]+>/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
+// words a reader sees. Strip tags in a loop rather than a single pass: a single `<[^>]+>` pass
+// leaves a nested/overlapping construction like `<<script>` behind (removing the outer tag can
+// expose a complete inner one), so re-run it until a pass removes nothing.
+const stripHtml = (text: string): string => {
+  let collapsed = text.replace(/<br\s*\/?>/gi, " ");
+  let previous: string;
+  do {
+    previous = collapsed;
+    collapsed = collapsed.replace(/<[^>]+>/g, "");
+  } while (collapsed !== previous);
+  return collapsed.replace(/\s+/g, " ").trim();
+};
 
 function readHero(localeKey: DocsLocale): { headline: string; tagline: string } {
   const source = readFileSync(heroIndexPath(localeKey), "utf8");
