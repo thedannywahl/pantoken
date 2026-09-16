@@ -1,0 +1,3 @@
+* labels for multi-choice polls in radio format are not the correct color on an on-color alert variant.
+* number poll labels "Horrible" "Great" are not the correct color on an on-color alert variant
+* number poll "buttons" (label) should have the secondary on-color for unselected and primary on-color for selected for on-color alert variants.
