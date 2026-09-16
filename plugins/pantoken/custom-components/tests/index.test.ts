@@ -209,14 +209,14 @@ test("banner keeps elevation absent and defaults button-group actions to inline 
   const css = bannerRules("instui-");
   expect(css).not.toContain("box-shadow:");
   expect(css).toMatch(
-    />\s*\.instui-button:not\(\[class\*="-color-"\]\),\s*>\s*\.button-group\s*>\s*\.instui-button:first-of-type:not\(\[class\*="-color-"\]\)\s*\{/u,
+    />\s*\.instui-button:not\(\[class\*="-color-"\]\),\s*>\s*\.button-group\s*>\s*\.instui-button:not\(:has\(\+ \.instui-button\)\):not\(\[class\*="-color-"\]\)\s*\{/u,
   );
   expect(css).toContain(".button-group");
   expect(css).toContain("var(--instui-color-background-interactive-action-primary-base)");
   expect(css).toContain("var(--instui-color-stroke-interactive-action-primary-base)");
   expect(css).toContain("var(--instui-color-text-interactive-action-primary-base)");
   expect(css).toMatch(
-    />\s*\.button-group\s*>\s*\.instui-button:first-of-type\s*~\s*\.instui-button:not\(\[class\*="-color-"\]\)\s*\{/u,
+    />\s*\.button-group\s*>\s*\.instui-button:has\(\+ \.instui-button\):not\(\[class\*="-color-"\]\)\s*\{/u,
   );
   expect(css).toContain("var(--instui-component-base-button-primary-ghost-border-color)");
   expect(css).toContain("var(--instui-component-base-button-primary-ghost-hover-background)");
@@ -225,7 +225,8 @@ test("banner keeps elevation absent and defaults button-group actions to inline 
   expect(css).toContain("var(--instui-component-base-button-tertiary-active-text-color)");
   expect(css).toContain("var(--instui-component-base-button-tertiary-disabled-text-color)");
   expect(css).toContain("var(--instui-component-shared-tokens-spacing-gap-buttons)");
-  expect(css).not.toContain("+ .instui-button");
+  expect(css).not.toContain("first-of-type");
+  expect(css).not.toContain("~ .instui-button");
   expect(css).not.toContain("primary-inverse");
   expect(css).not.toContain('[class*=" -"]');
 });
