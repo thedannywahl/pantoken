@@ -1,0 +1,1 @@
+lch is a valid css space, so let's add that to the supported math types alongside hsl
