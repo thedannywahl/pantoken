@@ -1,0 +1,6 @@
+we need to update the button + button stylings in a group to match Alert:
+secondary + primary
+
+---
+
+In /Users/dwahl/Scripts/pantoken, investigate the user's request: update button + button stylings in a group to match Alert, specifically secondary + primary. Start from plugins/pantoken/custom-components/src/components/banner/banner.css. Read only enough local context to identify the relevant Alert implementation, button group rules, component records/tests/docs/demos, and the exact files likely needing edits. Follow repository guidance, including .entire/graph-agent.md before broad exploration if needed. Do not edit files. Report: (1) current relevant selectors and behavior, (2) Alert reference selectors/values, (3) likely minimal file set, (4) focused validation commands/tests, and (5) ambiguities needing user clarification.
