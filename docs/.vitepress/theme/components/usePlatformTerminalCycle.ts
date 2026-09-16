@@ -192,13 +192,17 @@ export function usePlatformTerminalCycle(
     clearTimers();
   }
 
+  // Pausing always snaps to the fully-typed state before holding — mid-typing/deleting characters
+  // paused half-drawn read as broken, and this keeps parity with `useCommandCycle.pauseAtFull`.
   function pause() {
     isPaused = true;
     clearTimers();
+    cursorBlink.value = false;
+    charCount.value = totalLength.value;
+    phase.value = "paused";
   }
 
-  // Alias — freezing in place (rather than jumping to the fully-typed state) reads better for the
-  // slide phases, which `pauseAtFull` (named for parity with `useCommandCycle`) doesn't have.
+  // Alias, named for parity with `useCommandCycle`.
   const pauseAtFull = pause;
 
   function resume() {
