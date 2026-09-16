@@ -3,8 +3,12 @@
   "checkpoint_id": "01M2N4RH89GB2FF8KEEVT2E500",
   "strategy": "manual-commit",
   "branch": "alert-updates",
-  "checkpoints_count": 3,
-  "files_touched": null,
+  "checkpoints_count": 4,
+  "files_touched": [
+    "formats/tokens/known-syntax-issues.json",
+    "formats/tokens/scripts/generate.test.ts",
+    "formats/tokens/scripts/generate.ts"
+  ],
   "sessions": [
     {
       "metadata": "/0/metadata.json",
@@ -12,6 +16,13 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
