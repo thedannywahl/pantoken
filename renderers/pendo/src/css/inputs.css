@@ -554,6 +554,7 @@ input.pendo-radio:checked + label.pendo-radio[class*="_pendo-nps-poll-"],
         + label
     ) {
       outline-color: var(--instui-focus-outline-color-inverse);
+      color: var(--instui-component-base-button-primary-on-color-hover-text-color);
     }
   }
 

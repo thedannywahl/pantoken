@@ -237,6 +237,9 @@ test("alerts retain four elevated colour treatments without inline variants", ()
   expect(inputsCss).toContain("._pendo-multi-choice-poll-select-border input.pendo-radio:checked");
   expect(inputsCss).toContain("label.pendo-radio");
   expect(inputsCss).toContain("outline-color: var(--instui-focus-outline-color-inverse);");
+  expect(inputsCss).toContain(
+    "color: var(--instui-component-base-button-primary-on-color-hover-text-color);",
+  );
   expect(inputsCss).toContain("color: var(--_alert-text-color);");
   expect(containerCss).not.toContain('[class*="-inline"]');
   expect(containerCss).not.toContain('[class*="-without-shadow"]');
