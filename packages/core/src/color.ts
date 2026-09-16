@@ -1,7 +1,6 @@
 /**
- * Minimal colour math for applying Tokens Studio `modify` extensions (darken / lighten / alpha)
- * to concrete hex colours. Reference-valued modifiers are preserved as {@link TokenModify}
- * metadata instead, so the native (Style Dictionary) lineage can apply them precisely.
+ * Minimal HSL and CIE LCH colour math for applying Tokens Studio `modify` extensions
+ * (darken / lighten / alpha) to concrete hex colours.
  *
  * @module
  */
@@ -12,12 +11,13 @@ interface Rgb {
   r: number;
   g: number;
   b: number;
+  a: number;
 }
 
 /** Parse `#rgb`, `#rrggbb`, or `#rrggbbaa` to 0–255 channels. Returns `undefined` otherwise. */
 function parseHex(hex: string): Rgb | undefined {
   const c = parseHexColor(hex);
-  return c ? { r: c.r, g: c.g, b: c.b } : undefined;
+  return c ? { r: c.r, g: c.g, b: c.b, a: c.a } : undefined;
 }
 
 function toHex(n: number): string {
@@ -46,7 +46,7 @@ function rgbToHsl({ r, g, b }: Rgb): [number, number, number] {
 function hslToRgb(h: number, s: number, l: number): Rgb {
   if (s === 0) {
     const v = l * 255;
-    return { r: v, g: v, b: v };
+    return { r: v, g: v, b: v, a: 1 };
   }
   const hue = (t: number): number => {
     let tn = t;
@@ -59,7 +59,83 @@ function hslToRgb(h: number, s: number, l: number): Rgb {
   };
   const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
   const p = 2 * l - q;
-  return { r: hue(h + 1 / 3) * 255, g: hue(h) * 255, b: hue(h - 1 / 3) * 255 };
+  return { r: hue(h + 1 / 3) * 255, g: hue(h) * 255, b: hue(h - 1 / 3) * 255, a: 1 };
+}
+
+type Vector = [number, number, number];
+
+function multiplyMatrix(matrix: readonly Vector[], vector: Vector): Vector {
+  return matrix.map(
+    (row) => row[0] * vector[0] + row[1] * vector[1] + row[2] * vector[2],
+  ) as Vector;
+}
+
+function rgbToLch({ r, g, b }: Rgb): Vector {
+  const linear = [r, g, b].map((channel) => {
+    const value = channel / 255;
+    return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+  }) as Vector;
+  const xyzD65 = multiplyMatrix(
+    [
+      [0.4123907993, 0.3575843394, 0.1804807884],
+      [0.2126390059, 0.7151686788, 0.0721923154],
+      [0.0193308187, 0.1191947798, 0.9505321522],
+    ],
+    linear,
+  );
+  const [x, y, z] = multiplyMatrix(
+    [
+      [1.0479298208, 0.0229467933, -0.0501922295],
+      [0.0296278157, 0.9904344846, -0.017073825],
+      [-0.0092430582, 0.0150551449, 0.7518742899],
+    ],
+    xyzD65,
+  );
+  const delta = 6 / 29;
+  const f = (value: number): number =>
+    value > delta ** 3 ? Math.cbrt(value) : value / (3 * delta ** 2) + 4 / 29;
+  const fx = f(x / 0.96422);
+  const fy = f(y);
+  const fz = f(z / 0.82521);
+  const labA = 500 * (fx - fy);
+  const labB = 200 * (fy - fz);
+  return [116 * fy - 16, Math.hypot(labA, labB), Math.atan2(labB, labA)];
+}
+
+function lchToRgb(lightness: number, chroma: number, hue: number): Rgb {
+  const labA = chroma * Math.cos(hue);
+  const labB = chroma * Math.sin(hue);
+  const fy = (lightness + 16) / 116;
+  const fx = fy + labA / 500;
+  const fz = fy - labB / 200;
+  const delta = 6 / 29;
+  const finv = (value: number): number =>
+    value > delta ? value ** 3 : 3 * delta ** 2 * (value - 4 / 29);
+  const xyzD50: Vector = [0.96422 * finv(fx), finv(fy), 0.82521 * finv(fz)];
+  const xyzD65 = multiplyMatrix(
+    [
+      [0.9554734527, -0.0230985369, 0.0632593087],
+      [-0.0283697069, 1.009995458, 0.0210413989],
+      [0.0123140017, -0.0205076964, 1.3303659366],
+    ],
+    xyzD50,
+  );
+  const linear = multiplyMatrix(
+    [
+      [3.2409699419, -1.5373831776, -0.4986107603],
+      [-0.9692436363, 1.8759675015, 0.0415550574],
+      [0.0556300797, -0.2039769589, 1.0569715142],
+    ],
+    xyzD65,
+  );
+  const gamma = (value: number): number =>
+    255 * (value <= 0.0031308 ? 12.92 * value : 1.055 * value ** (1 / 2.4) - 0.055);
+  return { r: gamma(linear[0]), g: gamma(linear[1]), b: gamma(linear[2]), a: 1 };
+}
+
+function formatHex({ r, g, b, a }: Rgb): string {
+  const alpha = a < 1 ? toHex(a * 255) : "";
+  return `#${toHex(r)}${toHex(g)}${toHex(b)}${alpha}`;
 }
 
 /**
@@ -72,17 +148,17 @@ function hslToRgb(h: number, s: number, l: number): Rgb {
  * ```ts
  * import { applyModify } from "@pantoken/core";
  *
- * applyModify("#808080", { type: "darken", value: 0.5 });  // → "#404040"
- * applyModify("#808080", { type: "lighten", value: 0.5 }); // → "#c0c0c0"
- * applyModify("#ffffff", { type: "alpha", value: 0.5 });   // → "#ffffff80"
+ * applyModify("#808080", { type: "darken", value: 0.5, space: "hsl" });  // → "#404040"
+ * applyModify("#808080", { type: "lighten", value: 0.5, space: "hsl" }); // → "#c0c0c0"
+ * applyModify("#808080", { type: "lighten", value: 0.5, space: "lch" }); // → "#bdbdbd"
+ * applyModify("#ffffff", { type: "alpha", value: 0.5, space: "hsl" });   // → "#ffffff80"
  * ```
  *
- * @example Non-hex input and mix return undefined (preserve as metadata)
+ * @example Non-hex input returns undefined
  * ```ts
  * import { applyModify } from "@pantoken/core";
  *
- * applyModify("var(--x)", { type: "darken", value: 0.1 });        // → undefined
- * applyModify("#fff", { type: "mix", value: 0.5, color: "#000" }); // → undefined
+ * applyModify("var(--x)", { type: "darken", value: 0.1, space: "hsl" }); // → undefined
  * ```
  */
 export function applyModify(value: string, modify: TokenModify): string | undefined {
@@ -90,17 +166,24 @@ export function applyModify(value: string, modify: TokenModify): string | undefi
   if (!rgb) return undefined;
 
   if (modify.type === "alpha") {
-    return `#${toHex(rgb.r)}${toHex(rgb.g)}${toHex(rgb.b)}${toHex(modify.value * 255)}`;
+    return formatHex({ ...rgb, a: modify.value });
   }
 
-  const [h, s, l] = rgbToHsl(rgb);
-  const nl =
-    modify.type === "darken"
-      ? l * (1 - modify.value)
-      : modify.type === "lighten"
-        ? l + (1 - l) * modify.value
-        : l;
-  if (modify.type === "mix") return undefined; // mix needs a second colour; preserve as meta.
-  const out = hslToRgb(h, s, Math.max(0, Math.min(1, nl)));
-  return `#${toHex(out.r)}${toHex(out.g)}${toHex(out.b)}`;
+  let out: Rgb;
+  if (modify.space === "lch") {
+    const [lightness, chroma, hue] = rgbToLch(rgb);
+    const nextLightness =
+      modify.type === "darken"
+        ? lightness * (1 - modify.value)
+        : lightness + (100 - lightness) * modify.value;
+    out = lchToRgb(Math.max(0, Math.min(100, nextLightness)), chroma, hue);
+  } else {
+    const [hue, saturation, lightness] = rgbToHsl(rgb);
+    const nextLightness =
+      modify.type === "darken"
+        ? lightness * (1 - modify.value)
+        : lightness + (1 - lightness) * modify.value;
+    out = hslToRgb(hue, saturation, Math.max(0, Math.min(1, nextLightness)));
+  }
+  return formatHex({ ...out, a: rgb.a });
 }

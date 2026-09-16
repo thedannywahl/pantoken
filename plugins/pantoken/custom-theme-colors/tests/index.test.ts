@@ -17,6 +17,29 @@ test("emits rules for all color namespaces and only instui tokens", () => {
   expect(css).not.toContain("--vp-");
 });
 
+test("preserves semantic status colors when blue primitives are remapped", () => {
+  const css = customThemeColorsCss(
+    new Map([
+      ["--instui-primitive-color-blue-blue100", "#2b7abc"],
+      ["--instui-primitive-color-blue-blue140", "#1d354f"],
+      ["--instui-color-background-info", "var(--instui-primitive-color-blue-blue100)"],
+      ["--instui-color-background-pastel-info", "var(--instui-primitive-color-blue-blue140)"],
+      ["--instui-color-stroke-info", "var(--instui-primitive-color-blue-blue100)"],
+      ["--instui-color-text-info", "var(--instui-primitive-color-blue-blue140)"],
+      ["--instui-color-icon-info", "var(--instui-primitive-color-blue-blue140)"],
+    ]),
+  );
+
+  for (const key of COLOR_KEYS) {
+    expect(css).toContain(`:root[data-pantoken-color="${key}"]`);
+    expect(css).toContain("--instui-color-background-info: #2b7abc;");
+    expect(css).toContain("--instui-color-background-pastel-info: #1d354f;");
+    expect(css).toContain("--instui-color-stroke-info: #2b7abc;");
+    expect(css).toContain("--instui-color-text-info: #1d354f;");
+    expect(css).toContain("--instui-color-icon-info: #1d354f;");
+  }
+});
+
 test("plugin css hook appends rules", () => {
   const plugin = customThemeColors();
   const out = plugin.css?.({ tokens: [], css: "" });

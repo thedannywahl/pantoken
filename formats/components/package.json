@@ -57,7 +57,6 @@
     "check": "vp run @pantoken/plugin-theme-custom-media#build && node scripts/component-styles.ts && node scripts/build-entries.ts && vp check"
   },
   "dependencies": {
-    "@pantoken/plugin-colors": "workspace:*",
     "@pantoken/scaffold-base": "workspace:*",
     "@pantoken/tokens": "workspace:*",
     "@pantoken/utils": "workspace:*"

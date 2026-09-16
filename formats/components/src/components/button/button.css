@@ -1,7 +1,7 @@
 /**
  * @component button
  * @summary An accessible action control, styled from the token palette; primary by default.
- * @remarks The AI variants layer two gradients — a padding-box fill and a border-box stroke — for their frame, and `-color-ai-secondary` can't paint gradient text and a fill at once, so its centre stays transparent at rest and fills on hover or active. `-without-background` hover and active derive a low-opacity, slightly-darkened brand wash rather than using the raw hover-background tokens, which would print same-colour-on-same-colour text. Also sets its own icon/label `gap` and horizontal `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. The optional `.pfx-button-group` wrapper maps Figma's `.buttonGroup` and owns adjacent button spacing.
+ * @remarks The AI variants layer two gradients — a padding-box fill and a border-box stroke — for their frame, and `-color-ai-secondary` can't paint gradient text and a fill at once, so its centre stays transparent at rest and fills on hover or active. `-without-background` reads the resolved ghost-state tokens. Also sets its own icon/label `gap` and horizontal `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. The optional `.pfx-button-group` wrapper maps Figma's `.buttonGroup` and owns adjacent button spacing.
  * @selector .pfx-button
  * @modifier -color-primary — (default) the primary action.
  * @modifier -color-secondary — A lower-emphasis secondary action.
@@ -179,6 +179,14 @@
     background: transparent;
     border-color: var(--instui-component-base-button-tertiary-disabled-border-color);
     color: var(--instui-component-base-button-tertiary-disabled-text-color);
+  }
+
+  &.-without-background:hover {
+    background: var(--instui-component-base-button-primary-ghost-hover-background);
+  }
+
+  &.-without-background:active {
+    background: var(--instui-component-base-button-primary-ghost-active-background);
   }
 
   &.-color-primary-inverse {

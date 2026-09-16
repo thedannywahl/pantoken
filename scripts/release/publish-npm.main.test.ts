@@ -178,6 +178,33 @@ test("a failed publish continues past the failure and exits non-zero", async () 
   );
 });
 
+test("a publish failure is successful when the exact version is now on npm", async () => {
+  let npmViewCalls = 0;
+  spawnSync.mockImplementation((...spawnArgs: unknown[]) => {
+    const cmd = spawnArgs[0] as string;
+    const args = spawnArgs[1] as string[];
+    if (cmd === "npm" && args[0] === "view") {
+      npmViewCalls += 1;
+      return npmViewCalls === 1 ? NOT_FOUND_RESULT : { status: 0, stdout: "0.2.0\n", stderr: "" };
+    }
+    if (cmd === "npm" && args[0] === "publish") {
+      return { status: 1, stdout: "", stderr: "Cannot publish over previously staged version" };
+    }
+    return defaultRouteResult(cmd, args);
+  });
+  process.argv = ["node", MODULE_PATH];
+
+  await import("./publish-npm.ts");
+  await vi.waitFor(() =>
+    expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("done:"))).toBe(true),
+  );
+
+  expect(process.exitCode).toBeUndefined();
+  expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("already on npm"))).toBe(
+    true,
+  );
+});
+
 test("--releases-only skips publishing and prepares manifest for versions already on npm", async () => {
   // Everything already on npm → nothing to publish; manifest prepared for the skipped set.
   spawnSync.mockImplementation(

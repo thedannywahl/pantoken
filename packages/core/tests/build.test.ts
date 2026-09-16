@@ -1,7 +1,7 @@
 import { expect, test } from "vite-plus/test";
 import { definePlugin } from "@pantoken/plugin-kit";
 import { defineToken } from "../src/plugin.ts";
-import { buildTokens } from "../src/build.ts";
+import { buildTokens, buildTokensFromRoot, TokenModifierError } from "../src/build.ts";
 
 const tokens = buildTokens({ theme: "rebrand" });
 const byName = new Map(tokens.map((t) => [t.name, t]));
@@ -22,6 +22,127 @@ test("a semantic colour token is typed <color> and themes via light-dark only wh
   for (const t of tokens) {
     if (t.value.startsWith("light-dark(")) expect(t.themed).toBe(true);
   }
+});
+
+test("materializes upstream modifiers after resolving references and theme branches", () => {
+  const mobileNav = byName.get("--instui-color-background-mobile-nav");
+  const secondary = byName.get("--instui-color-institutional-brand-button-secondary-bgd");
+  const hover = byName.get("--instui-component-base-button-primary-hover-background");
+  const alertBorder = byName.get("--instui-component-alert-info-border-color-inline");
+
+  for (const token of [mobileNav, secondary, hover, alertBorder]) {
+    expect(token).toBeDefined();
+    expect(token?.value).not.toContain("var(");
+    expect(token?.meta).toBeUndefined();
+  }
+  expect(alertBorder?.value).toMatch(/^light-dark\(#[0-9a-f]{8}, #[0-9a-f]{8}\)$|^#[0-9a-f]{8}$/i);
+});
+
+test("materializes the upstream canvas TextInput LCH modifier", () => {
+  const canvas = buildTokens({ theme: "canvas", includeIcons: false });
+  const disabledArrowBorder = canvas.find(
+    ({ name }) => name === "--instui-component-text-input-arrows-border-disabled-color",
+  );
+  expect(disabledArrowBorder?.value).toBe("#d7d9da");
+});
+
+const modifier = (type: "alpha" | "darken" | "lighten", value = "0.5") => ({
+  "studio.tokens": { modify: { type, value, space: "hsl" } },
+});
+
+function rootWithPrimitives(primitives: Record<string, unknown>): Record<string, any> {
+  return {
+    primitives: { default: primitives },
+    rebrand: {
+      semantic: {
+        layout: { default: { semantic: {} } },
+        color: { rebrandLight: { semantic: {} }, rebrandDark: { semantic: {} } },
+      },
+      component: {},
+    },
+  };
+}
+
+test("resolves chained modifiers from the terminal colour outward", () => {
+  const root = rootWithPrimitives({
+    color: {
+      base: { value: "#808080", type: "color" },
+      dark: {
+        value: "{color.base}",
+        type: "color",
+        $extensions: modifier("darken"),
+      },
+      wash: {
+        value: "{color.dark}",
+        type: "color",
+        $extensions: modifier("alpha", "0.25"),
+      },
+    },
+  });
+  const built = buildTokensFromRoot(root, { includeIcons: false });
+  expect(built.find((token) => token.name.endsWith("color-wash"))?.value).toBe("#40404040");
+});
+
+test("aggregates malformed, non-colour, missing, and cyclic modifier failures", () => {
+  const root = rootWithPrimitives({
+    color: {
+      malformed: {
+        value: "#fff",
+        type: "color",
+        $extensions: { "studio.tokens": { modify: { type: "mix", value: "2" } } },
+      },
+      missing: {
+        value: "{color.absent}",
+        type: "color",
+        $extensions: modifier("alpha"),
+      },
+      cycleA: {
+        value: "{color.cycleB}",
+        type: "color",
+        $extensions: modifier("darken"),
+      },
+      cycleB: { value: "{color.cycleA}", type: "color" },
+      wrongType: {
+        value: "{spacing.base}",
+        type: "color",
+        $extensions: modifier("lighten"),
+      },
+    },
+    spacing: { base: { value: "1rem", type: "dimension" } },
+  });
+
+  expect(() => buildTokensFromRoot(root, { includeIcons: false })).toThrow(TokenModifierError);
+  try {
+    buildTokensFromRoot(root, { includeIcons: false });
+  } catch (error) {
+    const reasons = (error as TokenModifierError).issues.map((issue) => issue.reason);
+    expect(reasons.some((reason) => reason.includes("modify.type"))).toBe(true);
+    expect(reasons.some((reason) => reason.includes("missing token"))).toBe(true);
+    expect(reasons.some((reason) => reason.includes("cycle"))).toBe(true);
+    expect(reasons.some((reason) => reason.includes('type "dimension"'))).toBe(true);
+  }
+});
+
+test("allows validation tooling to supply a reviewed modifier replacement", () => {
+  const root = rootWithPrimitives({
+    color: {
+      bad: {
+        value: "#fff",
+        type: "color",
+        $extensions: { "studio.tokens": { modify: { type: "mix", value: "0.5" } } },
+      },
+    },
+  });
+  const issues: unknown[] = [];
+  const built = buildTokensFromRoot(root, {
+    includeIcons: false,
+    resolveModifierIssue: (issue) => {
+      issues.push(issue);
+      return "#123456";
+    },
+  });
+  expect(issues).toHaveLength(2);
+  expect(built[0]?.value).toBe("#123456");
 });
 
 test("icons are rolled in as <image> tokens with metadata", () => {

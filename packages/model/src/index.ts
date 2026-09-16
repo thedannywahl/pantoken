@@ -17,13 +17,11 @@ export type Theme = "rebrand" | "canvas" | "canvasHighContrast";
 /** A Tokens Studio colour modifier (`$extensions."studio.tokens".modify`). */
 export interface TokenModify {
   /** The modification applied to the resolved colour. */
-  type: "darken" | "lighten" | "alpha" | "mix";
+  type: "darken" | "lighten" | "alpha";
   /** The modifier amount, `0`–`1`. */
   value: number;
-  /** The colour space the modifier operates in (e.g. `"hsl"`). */
-  space?: string;
-  /** The second colour, for `mix`. */
-  color?: string;
+  /** The colour space the modifier operates in. */
+  space: "hsl" | "lch";
 }
 
 /** Non-value metadata attached to a {@link Token}. */
@@ -38,8 +36,6 @@ export interface TokenMeta {
   bidirectional?: boolean;
   /** The origin of an icon glyph. */
   source?: "custom" | "lucide";
-  /** A colour modifier preserved for the native lineage (Style Dictionary). */
-  modify?: TokenModify;
   /** Present on a compatibility-shim token (from a `DeprecationEntry`). */
   deprecated?: { replacement?: string; deprecatedIn?: string; removeIn?: string; note?: string };
 }

@@ -1,5 +1,11 @@
 import { expect, test } from "vite-plus/test";
-import { collectLeaves, referenceToVarName, resolveValue, varName } from "../src/resolve.ts";
+import {
+  collectLeaves,
+  referencedVarName,
+  referenceToVarName,
+  resolveValue,
+  varName,
+} from "../src/resolve.ts";
 
 test("collectLeaves flattens string and composite leaves, capturing modify", () => {
   const tree = {
@@ -25,8 +31,8 @@ test("collectLeaves flattens string and composite leaves, capturing modify", () 
     type: "darken",
     value: 0.1,
     space: "hsl",
-    color: undefined,
   });
+  expect(byPath.get("color.hover")?.type).toBe("color");
   expect(byPath.get("typography.body.fontFamily")?.value).toBe("Lato");
   expect(byPath.get("typography.body.fontSize")?.value).toBe("1rem");
   // The composite `type` sub-key is skipped.
@@ -55,7 +61,7 @@ test("collectLeaves skips array values, metadata keys, and non-string leaf value
   expect(paths).toEqual(["color.base"]);
 });
 
-test("collectLeaves ignores a modify block whose type is not a string", () => {
+test("collectLeaves reports a modify block whose type is invalid", () => {
   const tree = {
     color: {
       x: {
@@ -64,7 +70,53 @@ test("collectLeaves ignores a modify block whose type is not a string", () => {
       },
     },
   };
-  expect(collectLeaves(tree)[0].modify).toBeUndefined();
+  expect(collectLeaves(tree)[0].modifyIssue?.reason).toContain("modify.type");
+});
+
+test("collectLeaves validates every modifier field", () => {
+  const cases = [
+    [{ type: "mix", value: "0.1", space: "hsl" }, "modify.type"],
+    [{ type: "alpha", value: "", space: "hsl" }, "modify.value"],
+    [{ type: "alpha", value: "1.01", space: "hsl" }, "modify.value"],
+    [{ type: "alpha", value: Number.NaN, space: "hsl" }, "modify.value"],
+    [{ type: "alpha", value: "0.1", space: "rgb" }, "modify.space"],
+    [{ type: "alpha", value: "0.1", space: "hsl", color: "#fff" }, "unsupported"],
+  ] as const;
+  for (const [modify, reason] of cases) {
+    const [leaf] = collectLeaves({
+      color: { value: "#fff", type: "color", $extensions: { "studio.tokens": { modify } } },
+    });
+    expect(leaf.modify).toBeUndefined();
+    expect(leaf.modifyIssue?.reason).toContain(reason);
+  }
+});
+
+test("collectLeaves accepts modifier boundaries as strings and numbers", () => {
+  for (const value of ["0", "0.00", "1", "1.00", 0, 1]) {
+    const [leaf] = collectLeaves({
+      color: {
+        value: "#fff",
+        type: "color",
+        $extensions: { "studio.tokens": { modify: { type: "alpha", value, space: "hsl" } } },
+      },
+    });
+    expect(leaf.modify?.value).toBe(Number(value));
+    expect(leaf.modifyIssue).toBeUndefined();
+  }
+});
+
+test("collectLeaves accepts HSL and LCH modifier spaces", () => {
+  for (const space of ["hsl", "lch"] as const) {
+    const [leaf] = collectLeaves({
+      color: {
+        value: "#fff",
+        type: "color",
+        $extensions: { "studio.tokens": { modify: { type: "darken", value: "0.1", space } } },
+      },
+    });
+    expect(leaf.modify?.space).toBe(space);
+    expect(leaf.modifyIssue).toBeUndefined();
+  }
 });
 
 test("referenceToVarName discriminates semantic from primitive", () => {
@@ -79,6 +131,11 @@ test("resolveValue turns references into var() and passes concrete values throug
     "var(--instui-color-background-base)",
   );
   expect(resolveValue("#ffffff")).toBe("#ffffff");
+});
+
+test("referencedVarName returns only exact Tokens Studio references", () => {
+  expect(referencedVarName("{color.white}")).toBe("--instui-primitive-color-white");
+  expect(referencedVarName(" #fff ")).toBeUndefined();
 });
 
 test("varName builds prefixed kebab custom-property names", () => {

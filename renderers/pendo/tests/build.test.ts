@@ -74,6 +74,18 @@ test("close and standard button interactions use the canonical component tokens"
   expect(inputsCss).toContain("--instui-component-shared-tokens-spacing-gap-buttons");
 });
 
+test("ghost state tokens are computed before entering the Pendo token layer", () => {
+  const css = buildPendoCss({ prune: false, important: false });
+  for (const state of ["hover", "active"]) {
+    expect(css).toMatch(
+      new RegExp(
+        `--instui-component-base-button-primary-ghost-${state}-background:[^;]*#[0-9a-f]{8}`,
+        "iu",
+      ),
+    );
+  }
+});
+
 test("scope + important are on by default and toggle off", () => {
   const on = buildPendoCss();
   expect(on).toContain('@scope ([class*="instui"]._pendo-step-container) {');

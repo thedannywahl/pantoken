@@ -50,10 +50,50 @@ const PRIMITIVE_STEPS = [
   10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200,
 ] as const;
 
+const STATUS_INTENT_TOKEN =
+  /^--instui-color-(?:background(?:-pastel)?|stroke|text|icon)-(?:info|success|warning|error)$/u;
+
+// Tokens explicitly named blue accent remain blue even when the brand primitives are remapped.
+const PRESERVED_BLUE_ACCENT_TOKENS = [
+  "--instui-color-background-accent-blue",
+  "--instui-color-stroke-accent-blue",
+  "--instui-color-text-accent-blue",
+  "--instui-color-icon-accent-blue",
+  "--instui-component-shared-tokens-background-accent-blue",
+  "--instui-component-shared-tokens-stroke-accent-blue",
+  "--instui-component-icon-accent-blue-color",
+  "--instui-component-avatar-blue-background-color",
+  "--instui-component-avatar-blue-text-color",
+  "--instui-component-app-nav-item-text-color",
+  "--instui-component-source-code-editor-tag-definition-variable-name-color",
+  "--instui-component-source-code-editor-tag-definition-property-name-color",
+  "--instui-component-source-code-editor-tag-atom-color",
+  "--instui-color-background-chart-sequential-blue-color0",
+  "--instui-color-background-chart-sequential-blue-color1",
+  "--instui-color-background-chart-sequential-blue-color2",
+  "--instui-color-background-chart-sequential-blue-color3",
+  "--instui-color-background-chart-sequential-blue-color4",
+  "--instui-color-background-chart-sequential-blue-color5",
+  "--instui-color-background-chart-sequential-blue-color6",
+  "--instui-color-background-chart-sequential-blue-color7",
+  "--instui-color-background-chart-sequential-blue-color8",
+  "--instui-color-background-chart-sequential-blue-color9",
+  "--instui-component-chart-sequential-blue-color0",
+  "--instui-component-chart-sequential-blue-color1",
+  "--instui-component-chart-sequential-blue-color2",
+  "--instui-component-chart-sequential-blue-color3",
+  "--instui-component-chart-sequential-blue-color4",
+  "--instui-component-chart-sequential-blue-color5",
+  "--instui-component-chart-sequential-blue-color6",
+  "--instui-component-chart-sequential-blue-color7",
+  "--instui-component-chart-sequential-blue-color8",
+  "--instui-component-chart-sequential-blue-color9",
+] as const;
+
 /**
  * Generate CSS rules for all custom theme color choices by remapping primitive color scale steps
  * (`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`), while preserving explicitly
- * named blue accent tokens.
+ * named blue accents and semantic status intents.
  *
  * @param tokens - Optional token array or map for primitive step color lookups.
  * @returns Generated CSS rules string.
@@ -69,41 +109,9 @@ export function customThemeColorsCss(tokens?: readonly Token[] | Map<string, str
     for (const t of byTheme("rebrand")) tokenMap.set(t.name, t.value);
   }
 
-  // Tokens explicitly named blue accent that should be preserved as blue even when primitives are remapped.
-  const preservedBlueTokens = [
-    "--instui-color-background-accent-blue",
-    "--instui-color-stroke-accent-blue",
-    "--instui-color-text-accent-blue",
-    "--instui-color-icon-accent-blue",
-    "--instui-component-shared-tokens-background-accent-blue",
-    "--instui-component-shared-tokens-stroke-accent-blue",
-    "--instui-component-icon-accent-blue-color",
-    "--instui-component-avatar-blue-background-color",
-    "--instui-component-avatar-blue-text-color",
-    "--instui-component-app-nav-item-text-color",
-    "--instui-component-source-code-editor-tag-definition-variable-name-color",
-    "--instui-component-source-code-editor-tag-definition-property-name-color",
-    "--instui-component-source-code-editor-tag-atom-color",
-    "--instui-color-background-chart-sequential-blue-color0",
-    "--instui-color-background-chart-sequential-blue-color1",
-    "--instui-color-background-chart-sequential-blue-color2",
-    "--instui-color-background-chart-sequential-blue-color3",
-    "--instui-color-background-chart-sequential-blue-color4",
-    "--instui-color-background-chart-sequential-blue-color5",
-    "--instui-color-background-chart-sequential-blue-color6",
-    "--instui-color-background-chart-sequential-blue-color7",
-    "--instui-color-background-chart-sequential-blue-color8",
-    "--instui-color-background-chart-sequential-blue-color9",
-    "--instui-component-chart-sequential-blue-color0",
-    "--instui-component-chart-sequential-blue-color1",
-    "--instui-component-chart-sequential-blue-color2",
-    "--instui-component-chart-sequential-blue-color3",
-    "--instui-component-chart-sequential-blue-color4",
-    "--instui-component-chart-sequential-blue-color5",
-    "--instui-component-chart-sequential-blue-color6",
-    "--instui-component-chart-sequential-blue-color7",
-    "--instui-component-chart-sequential-blue-color8",
-    "--instui-component-chart-sequential-blue-color9",
+  const preservedTokens = [
+    ...PRESERVED_BLUE_ACCENT_TOKENS,
+    ...[...tokenMap.keys()].filter((name) => STATUS_INTENT_TOKEN.test(name)),
   ];
 
   function getPreservedValue(tokenName: string): string {
@@ -129,7 +137,7 @@ export function customThemeColorsCss(tokens?: readonly Token[] | Map<string, str
 
     const opacityOverride = `  --instui-primitive-color-navy-opacity10: color-mix(in srgb, var(--instui-primitive-color-${scale}-${scale}170) 10%, transparent);`;
 
-    const accentPreservations = preservedBlueTokens
+    const preservedValues = [...new Set(preservedTokens)]
       .map((name) => {
         const val = getPreservedValue(name);
         return val ? `  ${name}: ${val};` : "";
@@ -137,7 +145,7 @@ export function customThemeColorsCss(tokens?: readonly Token[] | Map<string, str
       .filter(Boolean)
       .join("\n");
 
-    return `:root[data-pantoken-color="${c}"] {\n${navyOverrides}\n${blueOverrides}\n${opacityOverride}\n${accentPreservations}\n}`;
+    return `:root[data-pantoken-color="${c}"] {\n${navyOverrides}\n${blueOverrides}\n${opacityOverride}\n${preservedValues}\n}`;
   }).join("\n\n");
 }
 /**

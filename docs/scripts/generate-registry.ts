@@ -235,9 +235,19 @@ export function writeRegistry(options?: { outDir?: string; sourceDir?: string })
   const catalog = buildRegistryCatalog();
   const catalogPath = resolve(outDir, "registry.json");
   const sourceCatalogPath = resolve(sourceDir, "registry.json");
-  const catalogJson = JSON.stringify(catalog, null, 2) + "\n";
-  writeFileSync(catalogPath, catalogJson);
-  writeFileSync(sourceCatalogPath, catalogJson);
+  // The public directory index must omit file contents. Keep them in the
+  // browser's source catalog and individual manifests for previews and installs.
+  const publicCatalog = {
+    ...catalog,
+    items: catalog.items.map((item) => ({
+      ...item,
+      ...(item.files && {
+        files: item.files.map(({ content: _content, ...file }) => file),
+      }),
+    })),
+  };
+  writeFileSync(catalogPath, JSON.stringify(publicCatalog, null, 2) + "\n");
+  writeFileSync(sourceCatalogPath, JSON.stringify(catalog, null, 2) + "\n");
 
   // Write individual item files
   for (const item of catalog.items) {

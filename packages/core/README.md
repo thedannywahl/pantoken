@@ -56,7 +56,9 @@ buildTokens({ theme: "rebrand", plugins: [focus] });
 ## API
 
 - **`buildTokens(options): Token[]`** — build the IR for a theme, running plugin `tokens` and
-  `icons` hooks. Options: `theme`, `plugins`, `includeIcons`, `includeInstui`, `includeLucide`.
+  `icons` hooks. Tokens Studio `alpha`, `darken`, and `lighten` modifiers are validated and resolved
+  to concrete colours before hooks run. Options: `theme`, `plugins`, `includeIcons`, `includeInstui`,
+  `includeLucide`.
 - **`toStyleDictionary(tokens, mode): Record<string, SdLeaf>`** — shape the resolved IR as a flat
   Style Dictionary dictionary for the native emitters.
 - **`resolveReferences(tokens, mode): Map<string, string>`** — resolve every token to a concrete,
@@ -73,7 +75,8 @@ buildTokens({ theme: "rebrand", plugins: [focus] });
   walker and reference resolver.
 - **`cssSyntaxForValue`, `isContextual`, `toKebab`, `ICON_COLOR_SPECIAL_VALUES`** — value-level
   helpers (`@property` syntax sniffing, name casing, icon-colour constants).
-- **`applyModify(value, modify)`** — apply a Tokens Studio colour modifier to a concrete hex value.
+- **`applyModify(value, modify)`** — apply a validated HSL or CIE LCH Tokens Studio colour modifier
+  to a concrete hex value.
 - Re-exports the IR types from `@pantoken/model`: `Token`, `TokenInput`, `TokenMeta`,
   `TokenModify`, `Theme`, `PantokenPlugin` (and the hook-context and CSS-contribution types).
 
@@ -89,7 +92,7 @@ The IR is aligned to the CSS `@property` schema and extended into a superset:
 | `value`    | Concrete value, `var(...)` reference, or `light-dark(a, b)`.     |
 | `themed`   | True when light and dark differ.                                 |
 | `refersTo` | The referenced token, when `value` is a single `var(...)`.       |
-| `meta`     | Non-value metadata (icons, colour modifiers).                    |
+| `meta`     | Non-value metadata (icons and compatibility provenance).         |
 
 ## Related
 
