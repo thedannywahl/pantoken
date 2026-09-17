@@ -1,0 +1,31 @@
+on the last Agent docs tab, I want the order to be:
+* title
+* description
+* list of assets (no marker)
+
+---
+
+it looks like its still displaying as a single row:
+title asset
+description
+it should be rows:
+title
+description
+<ul>
+  <assets>
+
+---
+
+cards should all grow to the same size, at least on a flex row.
+
+---
+
+✖ vp check --fix:
+[1m[31merror:[39m[0m Lint or type issues found
+x typescript(TS2305): Module '"../../src/index.ts"' has no exported member 'aiGradientCss'.
+   ,-[formats/components/tests/utilities/ai-gradient.test.ts:2:10]
+ 1 | import { expect, test } from "vite-plus/test";
+ 2 | import { aiGradientCss } from "../../src/index.ts";
+   :          ^^^^^^^^^^^^^
+ 3 | import { aiGradient } from "../../src/utilities/ai-gradient/index.ts";
+   `----
