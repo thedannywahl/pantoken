@@ -1,0 +1,63 @@
+now that pantoken is added to the shadcn/ui registry under the `@pantoken` namespace, we need to update `@pantoken/ai` for information on using the registry https://ui.shadcn.com/docs/registry. We should evaluate whether this is a better way for agents to discover pantoken components and styles when building html pages and whether it should be advertised as the preferred method, or an additional method.  We should also evaluate any implementation gaps or missing best practices.
+
+---
+
+Plan-only, read-only discovery in /Users/dwahl/Scripts/pantoken. Follow repo instructions, and FIRST run `entire graph search --repo . --profile full --query "update @pantoken/ai guidance for shadcn registry component and style discovery"` before other code searches. Thoroughness: medium. Map the canonical source files, generators, generated outputs, tests/evals, docs, and validation commands for @pantoken/ai guidance related to HTML/component/style recommendations. Identify exact symbols/files and analogous existing integration guidance. Do not edit anything. Return concise findings, likely files to change, gaps, and uncertainties.
+
+---
+
+Plan-only, read-only history check in /Users/dwahl/Scripts/pantoken. Follow using-entire workflow: run `entire status`, inspect recent git log/trailers for docs/scripts/generate-registry.ts, packages/cli/src/index.ts, and packages/scaffold/assets/AGENTS.md, then use `entire explain --checkpoint ... --json --no-pager` or `--commit` where available. Determine recorded intent behind the registry and pantoken add command, especially intended consumers, preferred-vs-additional positioning, known limitations, and intended follow-up work. Do not edit. Return checkpoint-backed facts separately from code inference.
+
+---
+
+also I noticed some of the registries are looking for or referencing tsx files - but pantoken does not have React.
+
+---
+
+Plan-only, read-only discovery in /Users/dwahl/Scripts/pantoken. The user clarified Pantoken has no React component library; generated TSX wrappers are invalid. Follow repo instructions and first run the required entire graph search. Determine the best shadcn registry representation for Pantoken's actual products: CSS component records, themes, vanilla interactions, and HTML examples. Evaluate registry:item vs registry:style vs registry:file, how to use dependencies/registryDependencies/css/files/docs fields, and how `shadcn add` can install or wire CSS without TSX. Inspect current generated registry and component package exports. Return a concrete recommended item model, migration implications for existing item names, exact files/tests to change, and anything that requires experimental validation. Do not edit.
+
+---
+
+I think there are two primary agentic use cases that we need pantoken/ai to accommodate:
+1. building a proper web app (or native app) with a package manager, dependencies, etc.
+2. mocking a standalone html file. This is the "mock up an email to a customer" that should be using pantoken components in that simple render.
+
+---
+
+Plan-only, read-only discovery in /Users/dwahl/Scripts/pantoken. Follow repo instructions and first run the required entire graph search. Investigate the existing supported path for a single standalone HTML mockup with no package manager/build step: CDN URLs, base/components/utilities/icons/fonts CSS, interaction IIFEs, web-component icons, component capability manifest, examples/templates, and any email-specific constraints or packages. Determine how @pantoken/ai currently guides or fails this use case, and whether the @pantoken shadcn registry should be used only for discovery metadata while CDN assets render the page. Return exact files, URLs/patterns, tests, and recommended agent workflow. Do not edit.
+
+---
+
+it's okay if the registry doesn't serve both. the pantoken/ai package should thought.
+
+---
+
+Plan-only, read-only discovery in /Users/dwahl/Scripts/pantoken. Follow repo instructions and first run the required entire graph search. Investigate how agents should build a single standalone HTML mockup with Pantoken components and no package manager/build step. Find existing CDN URLs/helpers/manifests, component CSS and interaction IIFEs, icon support, email-specific packages/limitations, examples/templates, and any relevant CSP/SRI/offline concerns. Contrast a browser-viewed HTML mockup with an actual HTML email. Return exact files/symbols, recommended workflow, gaps, and validation strategy. Do not edit.
+
+---
+
+we also need to get the pantoken plugis that are applicable into the registry.
+
+---
+
+Plan-only, read-only discovery in /Users/dwahl/Scripts/pantoken. Follow repo instructions and first run the required entire graph search. Audit every plugins/pantoken package and any plugin packages elsewhere for suitability in the shadcn @pantoken registry. Categorize: CSS components/styles/utilities/layouts/icons that can be registry:style/theme/item; build-time/runtime plugins that should not be registry items; internal-only plugins. For applicable plugins, identify canonical records/exports, package CSS paths, dependencies on base/components/icons/interactions, examples/cssdoc metadata, name collision risks, and recommended registry item names/categories. Also assess generation from definePlugin/checkPlugins and test/drift strategy. Return exact files/symbols and unresolved decisions. Do not edit.
+
+---
+
+make sure that @pantoken/shadcn is also up-to-date, I don't think there's anything that needs to change there but we should review.
+
+---
+
+Plan-only, read-only audit in /Users/dwahl/Scripts/pantoken. Follow repo instructions and first run the required entire graph search. Review renderers/shadcn completely enough to determine whether @pantoken/shadcn is current with the 2026 shadcn CSS variable/theme contract and suitable for the planned CSS-native @pantoken registry. Inspect mappings, generated theme/components CSS, package exports/dependencies, tests, docs, integration with themes, light/dark/high-contrast behavior, Tailwind v4 variables/sidebar/chart/destructive/radius coverage, and generated-output drift. Compare against current official shadcn docs via web if useful. Separate required changes, optional improvements, and verified no-change areas. Return exact files/symbols and validation steps. Do not edit.
+
+---
+
+do incremental conventional commits, readiness checks, changesets (including docs), and pushes. don't do translations, I'll handle that separately.
+
+---
+
+also ignore changes that aren't yours there are other agents working in the directory.
+
+---
+
+Start implementation

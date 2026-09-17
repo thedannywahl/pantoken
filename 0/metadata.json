@@ -1,0 +1,59 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2R1SE9FJKX487XM1TWDV9EP",
+  "session_id": "5d4cce3b-c754-4696-b2ab-77709be94f79",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-17T16:04:29.215211Z",
+  "branch": "ai-registry",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/css-native-registry.md",
+    "ASSURANCE.md",
+    "SECURITY.md",
+    "docs/.vitepress/theme/components/RegistryBrowser.vue",
+    "docs/.vitepress/theme/components/registry-types.ts",
+    "docs/.vitepress/theme/registry.ts",
+    "docs/guide/cli.md",
+    "docs/guide/registry.md",
+    "docs/r/index.md",
+    "docs/scripts/generate-registry.test.ts",
+    "docs/scripts/generate-registry.ts",
+    "docs/scripts/registry-plugins.ts",
+    "packages/cli/README.md"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "93462b7058b9",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-17T16:04:29.158763Z",
+    "agent_lines": 380,
+    "agent_removed": 183,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 380,
+    "total_lines_changed": 563,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
+}
