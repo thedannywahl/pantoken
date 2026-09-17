@@ -157,3 +157,15 @@
     margin-block-start: var(--pendo-space-0);
   }
 }
+
+/* Banner poll titles and subtitles */
+:is(:scope, [class*="instui"]):is([class*="instui-banner"], [data-layout="lightboxBlank"]):not(
+    [class*="instui-alert"]
+  )
+  ._pendo-step-container-styles
+  > :is(._pendo-text-title, ._pendo-text-subTitle) {
+  margin: var(--pendo-space-0) auto var(--instui-component-shared-tokens-spacing-general-space-sm)
+    auto;
+  width: 100%;
+  max-width: var(--pendo-embedded-width);
+}

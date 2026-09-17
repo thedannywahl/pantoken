@@ -199,6 +199,12 @@ test("an instui-banner class gives popovers and surveys the banner surface with 
   expect(textCss).toContain('&:not([class*="instui-banner"]) *:not(._pendo-close-guide)');
 });
 
+test("banner polls space title and subtitle blocks", () => {
+  expect(cardCss).toContain("/* Banner poll titles and subtitles */");
+  expect(cardCss).toContain(":is(._pendo-text-title, ._pendo-text-subTitle)");
+  expect(cardCss).toContain("--instui-component-shared-tokens-spacing-general-space-sm");
+});
+
 test("survey rules target the scoping root, which a bare compound never matches under @scope", () => {
   const surveyRoot = ':is(:scope, [class*="instui"])._pendo-guide-walkthrough_';
   for (const css of [cardCss, inputsCss, textCss]) {
