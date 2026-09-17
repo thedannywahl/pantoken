@@ -111,12 +111,14 @@ export interface UiStrings {
   sidebar: {
     intro: string;
     guides: string;
+    utilities: string;
     gettingStarted: string;
     architecture: string;
     components: string;
     cdn: string;
     cdnPicker: string;
     registry: string;
+    agentTools: string;
     cli: string;
     plugins: string;
     generated: string;

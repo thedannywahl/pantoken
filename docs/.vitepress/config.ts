@@ -354,6 +354,8 @@ const apiSidebarRoutesByLocale = Object.fromEntries(
         locale.sidebar.css,
         locale.sidebar.apiGroups,
         locale.sidebar.apiOverview,
+        locale.sidebar.guides,
+        `${locale.guidePrefix}getting-started`,
       ),
     ]),
 ) as Partial<Record<DocsLocale, ReturnType<typeof partitionApiSidebar>>>;
@@ -372,7 +374,7 @@ const localesConfig = Object.fromEntries(
     }
     const guideSidebar = [
       {
-        text: locale.sidebar.intro,
+        text: locale.sidebar.guides,
         items: [
           {
             text: locale.sidebar.gettingStarted,
@@ -382,32 +384,30 @@ const localesConfig = Object.fromEntries(
             text: locale.sidebar.architecture,
             link: `${locale.guidePrefix}architecture`,
           },
-          {
-            text: locale.sidebar.components,
-            link: `${locale.guidePrefix}components`,
-          },
-        ],
-      },
-      {
-        text: locale.sidebar.guides,
-        items: [
-          { text: locale.sidebar.cdn, link: `${locale.guidePrefix}cdn` },
-          {
-            text: locale.sidebar.cdnPicker,
-            link: `${locale.guidePrefix}cdn-picker`,
-          },
-          {
-            text: locale.sidebar.registry,
-            link: `${localeKey === "root" ? "/" : `/${localeKey}/`}r/`,
-          },
           { text: locale.sidebar.cli, link: `${locale.guidePrefix}cli` },
           { text: locale.sidebar.plugins, link: `${locale.guidePrefix}plugins` },
           {
-            text: locale.sidebar.generated,
-            link: `${locale.guidePrefix}generated-output`,
+            text: locale.sidebar.utilities,
+            collapsed: true,
+            items: [
+              {
+                text: locale.sidebar.cdnPicker,
+                link: `${locale.guidePrefix}cdn-picker`,
+              },
+              {
+                text: locale.sidebar.registry,
+                link: `${localeKey === "root" ? "/" : `/${localeKey}/`}r/`,
+              },
+              {
+                text: locale.sidebar.agentTools,
+                link: `${locale.guidePrefix}agent-tools`,
+              },
+            ],
           },
         ],
       },
+      { items: [{ text: locale.sidebar.api, link: apiPrefixFor(localeKey) }] },
+      { items: [{ text: locale.sidebar.css, link: `${apiPrefixFor(localeKey)}css/` }] },
     ];
 
     return [
@@ -432,10 +432,7 @@ const localesConfig = Object.fromEntries(
             // each API page only ever renders its own route's (already-partitioned) subtree.
             ...apiSidebarRoutesByLocale[localeKey],
           },
-          editLink: {
-            pattern: "https://github.com/thedannywahl/pantoken/edit/main/docs/:path",
-            text: locale.editText,
-          },
+          editLink: false,
           // A script-specific wordmark, when one exists (see `NON_LATIN_LOCALES` above); VitePress
           // stacks this over the root `themeConfig.logo` set below.
           ...(NON_LATIN_LOCALES[localeKey] && {
