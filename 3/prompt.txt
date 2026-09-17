@@ -1,0 +1,17 @@
+on the Install Assets tab the copy/download buttons should be proper instui-button pantoken components in secondary/primary colors.
+
+---
+
+download should be an icon with a screenreader label.
+
+---
+
+buttons that are only icon buttons (so they only have no descendents or instui-screen-reader-content) should be a square aspect ratio regardless of size. these are appearing as 44x32.
+
+---
+
+changeset is interactive, just update the existing one.
+
+---
+
+these shape paddings seem fixed regardless of size, but the size modifiers should modify with the shapes so that the glyph remains appropriately sized.
