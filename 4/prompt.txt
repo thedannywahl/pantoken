@@ -1,0 +1,48 @@
+move this provider icon resolution to the anchor's instui-button class chain.
+
+---
+
+the glyph doesn't appear positioned correctly, we may need to update the styles in pantoken/components/button or pantoken/components/link to accommodate making a link look like a button.
+
+---
+
+write a changeset and commit the changed to formats/components
+
+---
+
+while we're working on buttons, a `-color-ai` or `-color-ai-secondary` paired with a `-icon-*` should drop the ai built-in glyph and replace it with the specified glyph, keeping the coloring, etc.
+
+---
+
+yes.
+
+---
+
+plan a new pantoken plugin that provides additional global helper classes:
+* `--border-color-ai` 
+* `--border-color-ai-horizontal`
+* `--background-ai`
+* `--background-ai-horizontal`
+border-color-ai should effectively implement the same "border" that is available on the custom `agent-shell` component but just makes it available anywhere.  it should work with `-border-width-*` and `border-radius` and `background-*` modifiers.
+the `-horizontal` variant sets the gradient direction 'to right' on rtl and 'to left' on ltr.
+the background global classes do the same thing, except they paint the background of the div instead of the border.
+
+---
+
+Start implementation
+
+---
+
+none of this goes in formats/components. it must be a plugin. it could go in custom-components or it could go in a new plugin, but this background and border are NOT specified in InstUI which is the contract with formats/components.
+
+---
+
+the glyph on `.-color-ai-secondary.-icon-*` is white/transparent, not the correct color. also `.-color-ai-secondary.-without-border` still displays the border.
+
+---
+
+now let's register the ai-gradient in the docs site so we can use it.
+
+---
+
+Try Again

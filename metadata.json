@@ -3,7 +3,7 @@
   "checkpoint_id": "01M2RTMQW381RPHEWWR25VWYB6",
   "strategy": "manual-commit",
   "branch": "ai-registry",
-  "checkpoints_count": 13,
+  "checkpoints_count": 20,
   "files_touched": [
     ".changeset/agent-tools-utility.md",
     ".changeset/ai-gradient-global-utility.md",
@@ -82,6 +82,13 @@
       "compact_transcript": "/3/transcript.jsonl",
       "content_hash": "/3/content_hash.txt",
       "prompt": "/3/prompt.txt"
+    },
+    {
+      "metadata": "/4/metadata.json",
+      "transcript": "/4/full.jsonl",
+      "compact_transcript": "/4/transcript.jsonl",
+      "content_hash": "/4/content_hash.txt",
+      "prompt": "/4/prompt.txt"
     }
   ],
   "token_usage": {
