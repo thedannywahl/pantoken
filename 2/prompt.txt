@@ -1,0 +1,21 @@
+now wire the ai gradient styles into the docs site so we can use them.
+
+---
+
+I added --border-ai-horizontal here but there are no computed styles on the page for that class.
+
+---
+
+this should be an instui simple-select
+
+---
+
+the width of the select isn't adjusting anymore so the caret overlaps some entries.
+
+---
+
+remove all the other styles for this and just use the pantoken simple-select classes.
+
+---
+
+it still needs a max-width to the max- content, now it takes the full container.

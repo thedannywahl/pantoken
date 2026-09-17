@@ -1,0 +1,196 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2RTMQW381RPHEWWR25VWYB6",
+  "session_id": "5671cb67-a7a9-412e-a3d2-171b634a75e8",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-17T23:18:48.995526Z",
+  "branch": "ai-registry",
+  "checkpoints_count": 5,
+  "save_step_count": 5,
+  "files_touched": [
+    "ai/pantoken-ai/README.md",
+    "ai/pantoken-ai/package.json",
+    "ai/pantoken-ai/src/index.ts",
+    "ai/pantoken-ai/tests/cli.test.ts",
+    "ai/pantoken-ai/tests/index.test.ts",
+    "docs/.vitepress/config.ts",
+    "docs/.vitepress/i18n.json",
+    "docs/.vitepress/i18n.ts",
+    "docs/.vitepress/theme/composables/useShikiHighlight.ts",
+    "docs/.vitepress/theme/index.ts",
+    "docs/CHANGELOG.md",
+    "docs/conventions/build-and-docs.md",
+    "docs/guide/agent-tools.md",
+    "docs/guide/cdn-picker.md",
+    "docs/guide/cdn.md",
+    "docs/guide/components.md",
+    "docs/guide/generated-output.md",
+    "docs/guide/registry.md",
+    "docs/package.json",
+    "docs/r/index.md",
+    "formats/components/src/components/button/button.css",
+    "formats/components/tests/components/button.test.ts",
+    "l10n/docs.api.pot",
+    "packages/scaffold/scripts/generate.ts",
+    "packages/scaffold/skills/init-pantoken/SKILL.md",
+    "packages/scaffold/src/agent-assets.ts",
+    "plugins/pantoken/custom-components/scripts/generate.ts",
+    "plugins/pantoken/custom-components/src/components/index.ts",
+    "plugins/pantoken/custom-components/src/index.ts",
+    "plugins/pantoken/custom-components/tests/index.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "20c29d121006",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 5
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-17T23:18:48.989303Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 163,
+    "human_removed": 817,
+    "total_committed": 45,
+    "total_lines_changed": 980,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 1664,
+      "user_lines_removed": 717,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".changeset/agent-tools-utility.md": 8,
+        ".changeset/ai-gradient-global-utility.md": 5,
+        "ai/pantoken-ai/README.md": 6,
+        "ai/pantoken-ai/evals/use-pantoken-registry/eval.yaml": 26,
+        "ai/pantoken-ai/evals/use-pantoken-registry/tasks/non-shadcn-fallback.yaml": 17,
+        "ai/pantoken-ai/evals/use-pantoken-registry/tasks/positive-shadcn-add.yaml": 17,
+        "ai/pantoken-ai/evals/use-pantoken-registry/tasks/react-components-ambiguity.yaml": 16,
+        "ai/pantoken-ai/package.json": 1,
+        "ai/pantoken-ai/src/index.ts": 2,
+        "ai/pantoken-ai/tests/cli.test.ts": 1,
+        "ai/pantoken-ai/tests/index.test.ts": 1,
+        "docs/.vitepress/config.ts": 3,
+        "docs/.vitepress/i18n.json": 116,
+        "docs/.vitepress/i18n.ts": 4,
+        "docs/.vitepress/theme/agent-tools.ts": 172,
+        "docs/.vitepress/theme/components/AgentAssetEmbed.vue": 42,
+        "docs/.vitepress/theme/components/AgentToolsPage.vue": 898,
+        "docs/.vitepress/theme/composables/useShikiHighlight.ts": 1,
+        "docs/.vitepress/theme/index.ts": 2,
+        "docs/CHANGELOG.md": 1,
+        "docs/conventions/build-and-docs.md": 2,
+        "docs/guide/agent-tools.md": 2,
+        "docs/guide/cdn-picker.md": 1,
+        "docs/package.json": 1,
+        "docs/r/index.md": 1,
+        "docs/scripts/stage-vscode-custom-data.ts": 15,
+        "formats/components/src/components/button/button.css": 46,
+        "formats/components/src/utilities/ai-gradient/index.ts": 72,
+        "formats/components/tests/components/button.test.ts": 9,
+        "formats/components/tests/utilities/ai-gradient.test.ts": 19,
+        "l10n/docs.api.pot": 2,
+        "packages/scaffold/scripts/generate.ts": 1,
+        "packages/scaffold/skills/init-pantoken/SKILL.md": 5,
+        "packages/scaffold/skills/use-pantoken-registry/SKILL.md": 71,
+        "packages/scaffold/src/agent-assets.ts": 1,
+        "plugins/pantoken/custom-components/src/components/ai-gradient/ai-gradient.css": 42,
+        "plugins/pantoken/custom-components/src/components/ai-gradient/index.ts": 11,
+        "plugins/pantoken/custom-components/src/components/index.ts": 1,
+        "plugins/pantoken/custom-components/src/index.ts": 3,
+        "plugins/pantoken/custom-components/tests/index.test.ts": 17,
+        "plugins/pantoken/custom-icons/assets/icons/vscode.svg": 3
+      },
+      "user_removed_per_file": {
+        "ai/pantoken-ai/README.md": 4,
+        "ai/pantoken-ai/package.json": 1,
+        "ai/pantoken-ai/src/index.ts": 1,
+        "docs/.vitepress/config.ts": 3,
+        "docs/.vitepress/theme/composables/useShikiHighlight.ts": 1,
+        "docs/CHANGELOG.md": 1,
+        "docs/conventions/build-and-docs.md": 2,
+        "docs/guide/agent-tools.md": 33,
+        "docs/guide/cdn-picker.md": 2,
+        "docs/guide/cdn.md": 109,
+        "docs/guide/components.md": 392,
+        "docs/guide/generated-output.md": 43,
+        "docs/guide/registry.md": 42,
+        "docs/package.json": 1,
+        "docs/r/index.md": 7,
+        "formats/components/src/components/button/button.css": 66,
+        "l10n/docs.api.pot": 2,
+        "packages/scaffold/skills/init-pantoken/SKILL.md": 3,
+        "plugins/pantoken/custom-components/src/index.ts": 3,
+        "plugins/pantoken/custom-components/tests/index.test.ts": 1
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 3,
+      "user_lines_removed": 19,
+      "agent_lines_added": 1665,
+      "agent_lines_removed": 720,
+      "user_added_per_file": {
+        "docs/.vitepress/theme/components/AgentToolsPage.vue": 2,
+        "l10n/docs.api.pot": 1
+      },
+      "user_removed_per_file": {
+        "docs/.vitepress/theme/components/AgentToolsPage.vue": 18,
+        "l10n/docs.api.pot": 1
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 16,
+      "user_lines_removed": 39,
+      "agent_lines_added": 1665,
+      "agent_lines_removed": 720,
+      "user_added_per_file": {
+        "docs/.vitepress/theme/components/AgentToolsPage.vue": 16
+      },
+      "user_removed_per_file": {
+        "docs/.vitepress/theme/components/AgentToolsPage.vue": 39
+      }
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 25,
+      "user_lines_removed": 39,
+      "agent_lines_added": 1665,
+      "agent_lines_removed": 720,
+      "user_added_per_file": {
+        "docs/.vitepress/theme/components/AgentToolsPage.vue": 25
+      },
+      "user_removed_per_file": {
+        "docs/.vitepress/theme/components/AgentToolsPage.vue": 39
+      }
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 13,
+      "user_lines_removed": 110,
+      "agent_lines_added": 1665,
+      "agent_lines_removed": 720,
+      "user_added_per_file": {
+        "docs/.vitepress/theme/components/AgentToolsPage.vue": 13
+      },
+      "user_removed_per_file": {
+        "docs/.vitepress/theme/components/AgentToolsPage.vue": 110
+      }
+    }
+  ]
+}
