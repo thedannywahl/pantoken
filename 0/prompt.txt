@@ -1,0 +1,41 @@
+we're going to do so work updating the sidebar on the docs site:
+under /guide the order should be:
+<logo>
+---
+Guides:
+* Getting Started
+* Architecture
+* The Pantoken CLI
+* Plugins
+* Utilities >
+* * CDN Picker
+* * shadcn/ui Registry
+* * Agent Tools
+---
+API
+---
+CSS
+```
+then on /api the toolbar should look like:
+<logo>
+---
+Guides
+---
+API Reference ... (everything that exists now)
+---
+CSS
+```
+and finally on /api/css
+```
+<logo>
+---
+Guides
+---
+API Reference (collapsed)
+---
+CSS... (everything like it is now)
+```
+
+---
+
+Explore the /Users/dwahl/Scripts/pantoken repository read-only. Find the docs site sidebar/navigation configuration and determine how it currently behaves for /guide, /api, and /api/css. Identify exact files, relevant symbols, existing ordering/grouping patterns, and likely tests or build checks. Do not edit files. Return a concise but specific report with paths and line numbers where possible. Also note any ambiguity in the user's requested labels or existing generated/sidebar structure. Thoroughness: medium.
