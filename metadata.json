@@ -1,0 +1,34 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2R7PW3Y9NZA5VAQ9R0CK5JR",
+  "strategy": "manual-commit",
+  "branch": "ai-registry",
+  "checkpoints_count": 7,
+  "files_touched": [
+    ".changeset/docs-sidebar-navigation.md",
+    "docs/.vitepress/api-sidebar.test.ts",
+    "docs/.vitepress/api-sidebar.ts",
+    "docs/.vitepress/config.ts",
+    "docs/.vitepress/i18n.json",
+    "docs/.vitepress/i18n.ts",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/guide/agent-tools.md",
+    "l10n/docs.api.pot"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}

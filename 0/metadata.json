@@ -1,0 +1,129 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2R7PW3Y9NZA5VAQ9R0CK5JR",
+  "session_id": "4a5b48ae-6183-46d6-80a6-51252eb20ac6",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-17T17:47:55.924877Z",
+  "branch": "ai-registry",
+  "checkpoints_count": 7,
+  "save_step_count": 6,
+  "files_touched": [
+    ".changeset/docs-sidebar-navigation.md",
+    "docs/.vitepress/api-sidebar.test.ts",
+    "docs/.vitepress/api-sidebar.ts",
+    "docs/.vitepress/config.ts",
+    "docs/.vitepress/i18n.json",
+    "docs/.vitepress/i18n.ts",
+    "docs/.vitepress/theme/pantoken.css",
+    "docs/guide/agent-tools.md",
+    "l10n/docs.api.pot"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "7cb3931cea12",
+  "checkpoint_transcript_start": 189,
+  "transcript_lines_at_start": 189,
+  "compact_transcript_start": 22,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 7
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-17T17:47:55.905399Z",
+    "agent_lines": 23,
+    "agent_removed": 0,
+    "human_added": 12,
+    "human_modified": 84,
+    "human_removed": 0,
+    "total_committed": 96,
+    "total_lines_changed": 119,
+    "agent_percentage": 19.327731092436977,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 93,
+      "agent_lines_removed": 24
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 34,
+      "user_lines_removed": 45,
+      "agent_lines_added": 103,
+      "agent_lines_removed": 24,
+      "user_added_per_file": {
+        "docs/.vitepress/theme/pantoken.css": 32,
+        "docs/guide/agent-tools.md": 1,
+        "l10n/docs.api.pot": 1
+      },
+      "user_removed_per_file": {
+        "docs/.vitepress/theme/pantoken.css": 43,
+        "docs/guide/agent-tools.md": 1,
+        "l10n/docs.api.pot": 1
+      }
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 1,
+      "user_lines_removed": 1,
+      "agent_lines_added": 134,
+      "agent_lines_removed": 65,
+      "user_added_per_file": {
+        "docs/guide/agent-tools.md": 1
+      },
+      "user_removed_per_file": {
+        "docs/guide/agent-tools.md": 1
+      }
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 2,
+      "user_lines_removed": 4,
+      "agent_lines_added": 134,
+      "agent_lines_removed": 65,
+      "user_added_per_file": {
+        "docs/.vitepress/theme/pantoken.css": 1,
+        "docs/guide/agent-tools.md": 1
+      },
+      "user_removed_per_file": {
+        "docs/.vitepress/theme/pantoken.css": 3,
+        "docs/guide/agent-tools.md": 1
+      }
+    },
+    {
+      "checkpoint_number": 6,
+      "user_lines_added": 12,
+      "user_lines_removed": 11,
+      "agent_lines_added": 125,
+      "agent_lines_removed": 65,
+      "user_added_per_file": {
+        "docs/.vitepress/api-sidebar.test.ts": 1,
+        "docs/.vitepress/api-sidebar.ts": 9,
+        "docs/guide/agent-tools.md": 1,
+        "l10n/docs.api.pot": 1
+      },
+      "user_removed_per_file": {
+        "docs/.vitepress/api-sidebar.test.ts": 1,
+        "docs/.vitepress/api-sidebar.ts": 8,
+        "docs/guide/agent-tools.md": 1,
+        "l10n/docs.api.pot": 1
+      }
+    }
+  ]
+}

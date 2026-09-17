@@ -1,0 +1,39 @@
+Start implementation
+
+---
+
+* on /api or /api CSS I just want the word styled like the title Guides that links to /guide/getting started.
+* on /guide there should be a divider between API Reference and CSS and they should be styled like the section titles but still be links.
+
+---
+
+this selecor gets overriden by 
+.VPSidebarItem.level-0.is-link > .item > .link:hover .text[data-v-52441aea], .VPSidebarItem.level-1.is-link > .item > .link:hover .text[data-v-52441aea], .VPSidebarItem.level-2.is-link > .item > .link:hover .text[data-v-52441aea], .VPSidebarItem.level-3.is-link > .item > .link:hover .text[data-v-52441aea], .VPSidebarItem.level-4.is-link > .item > .link:hover .text[data-v-52441aea], .VPSidebarItem.level-5.is-link > .item > .link:hover .text[data-v-52441aea] {color: var(--vp-c-brand-1)}
+```
+and:
+```
+.VPSidebarItem.level-1 .text[data-v-52441aea], .VPSidebarItem.level-2 .text[data-v-52441aea], .VPSidebarItem.level-3 .text[data-v-52441aea], .VPSidebarItem.level-4 .text[data-v-52441aea], .VPSidebarItem.level-5 .text[data-v-52441aea] {font-weight: 500}
+```
+
+---
+
+I want that style if there's only 1 item in the group like this:
+```
+<div data-v-9dea8e91="" class="group"><div data-v-52441aea="" data-v-9dea8e91="" class="VPSidebarItem level-0"><!--v-if--><ul data-v-52441aea="" class="items"><li data-v-52441aea=""><div data-v-52441aea="" class="VPSidebarItem level-1 is-link"><div data-v-52441aea="" class="item"><div data-v-52441aea="" class="indicator"></div><a data-v-52441aea="" class="VPLink link link" href="/guide/getting-started"><p data-v-52441aea="" class="text">Guides</p></a><!--v-if--></div><!--v-if--></div></li></ul></div></div>
+```
+but not if there are multiple items in the group like this:
+```
+<div data-v-9dea8e91="" class="group"><section data-v-52441aea="" data-v-9dea8e91="" class="VPSidebarItem level-0 has-active"><div data-v-52441aea="" class="item"><div data-v-52441aea="" class="indicator"></div><h2 data-v-52441aea="" class="text">Guides</h2><!--v-if--></div><ul data-v-52441aea="" class="items"><li data-v-52441aea=""><div data-v-52441aea="" class="VPSidebarItem level-1 is-link is-active has-active"><div data-v-52441aea="" class="item"><div data-v-52441aea="" class="indicator"></div><a data-v-52441aea="" class="VPLink link link" href="/guide/getting-started" aria-current="page"><p data-v-52441aea="" class="text">Getting started</p></a><!--v-if--></div><!--v-if--></div><div data-v-52441aea="" class="VPSidebarItem level-1 is-link"><div data-v-52441aea="" class="item"><div data-v-52441aea="" class="indicator"></div><a data-v-52441aea="" class="VPLink link link" href="/guide/architecture"><p data-v-52441aea="" class="text">Architecture</p></a><!--v-if--></div><!--v-if--></div><div data-v-52441aea="" class="VPSidebarItem level-1 is-link"><div data-v-52441aea="" class="item"><div data-v-52441aea="" class="indicator"></div><a data-v-52441aea="" class="VPLink link link" href="/guide/cli"><p data-v-52441aea="" class="text">The pantoken CLI</p></a><!--v-if--></div><!--v-if--></div><div data-v-52441aea="" class="VPSidebarItem level-1 is-link"><div data-v-52441aea="" class="item"><div data-v-52441aea="" class="indicator"></div><a data-v-52441aea="" class="VPLink link link" href="/guide/plugins"><p data-v-52441aea="" class="text">Plugins</p></a><!--v-if--></div><!--v-if--></div><section data-v-52441aea="" class="VPSidebarItem level-1 collapsible collapsed"><div data-v-52441aea="" class="item"><div data-v-52441aea="" class="indicator"></div><h3 data-v-52441aea="" class="text">Utilities</h3><button data-v-52441aea="" type="button" class="caret" aria-label="toggle section" aria-expanded="false"><span data-v-52441aea="" class="vpi-chevron-right caret-icon"></span></button></div><ul data-v-52441aea="" class="items"><li data-v-52441aea=""><div data-v-52441aea="" class="VPSidebarItem level-2 is-link"><div data-v-52441aea="" class="item"><div data-v-52441aea="" class="indicator"></div><a data-v-52441aea="" class="VPLink link link" href="/guide/cdn-picker"><p data-v-52441aea="" class="text">CDN picker</p></a><!--v-if--></div><!--v-if--></div><div data-v-52441aea="" class="VPSidebarItem level-2 is-link"><div data-v-52441aea="" class="item"><div data-v-52441aea="" class="indicator"></div><a data-v-52441aea="" class="VPLink link link" href="/r/"><p data-v-52441aea="" class="text">shadcn/ui Registry</p></a><!--v-if--></div><!--v-if--></div><div data-v-52441aea="" class="VPSidebarItem level-2 is-link"><div data-v-52441aea="" class="item"><div data-v-52441aea="" class="indicator"></div><a data-v-52441aea="" class="VPLink link link" href="/guide/agent-tools"><p data-v-52441aea="" class="text">Agent Tools</p></a><!--v-if--></div><!--v-if--></div></li></ul></section></li></ul></section></div>
+```
+
+---
+
+on the /guides page the API Reference and CSS links in the side nav bar should be separate groups.
+
+---
+
+now, on /api/css can we remove the full /api sidebar nav from the tree and replace it with a link like there is for Guides ? This should greatly simplify the size of the pages for the css api reference docs.
+
+---
+
+on CSS Guides and API reference should be different groups like API/CSS are on the Guides page.
