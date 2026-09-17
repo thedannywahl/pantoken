@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-16 13:10+0000\n"
+"PO-Revision-Date: 2026-09-17 16:27+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -110,7 +110,7 @@ msgstr ""
 #: ai/pantoken-ai/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "It ships an `AGENTS.md`, an `llms.txt`, editor/agent rule files (Cursor, Copilot, Windsurf), and\nClaude Code skills (`init-pantoken`, `create-pantoken-app`), plus [installAgentAssets](functions/installAgentAssets.md) /\n[scaffoldAndInit](functions/scaffoldAndInit.md) / the `pantoken-ai` CLI to drop them into a consumer repo at the\nconventional paths."
+msgid "It ships an `AGENTS.md`, an `llms.txt`, editor/agent rule files (Cursor, Copilot, Windsurf), and\nClaude Code skills (`init-pantoken`, `create-pantoken-app`, `create-pantoken-mockup`), plus\n[installAgentAssets](functions/installAgentAssets.md) / [scaffoldAndInit](functions/scaffoldAndInit.md) / the `pantoken-ai` CLI to drop them into a\nconsumer repo at the conventional paths."
 msgstr ""
 
 #: ai/pantoken-ai/src/index.md
@@ -5152,16 +5152,17 @@ msgctxt "docs.api:prose"
 msgid "A CSS color: a literal (`#1d354f`, `rebeccapurple`), a `var(--token)`, or a nested helper result."
 msgstr ""
 
-#: plugins/pantoken/custom-components/src/functions/bannerRules.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Build the banner layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.\nDefaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
-msgstr ""
-
+#: plugins/pantoken/custom-components/src/functions/agentShellRules.md
 #: plugins/pantoken/custom-components/src/functions/cardRules.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build the card layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.\nDefaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
+msgstr ""
+
+#: plugins/pantoken/custom-components/src/functions/bannerRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build the banner layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.\nDefaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
 msgstr ""
 
 #: plugins/pantoken/custom-components/src/functions/customComponents.md
@@ -5477,16 +5478,94 @@ msgctxt "docs.api:prose"
 msgid "`@instructure/instructure-design-tokens` pinned ref, e.g. `\"v1.5.0\"`."
 msgstr ""
 
+#: plugins/pantoken/layouts/src/functions/calloutRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build the callout layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.\nDefaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
+msgstr ""
+
+#: plugins/pantoken/layouts/src/functions/calloutTemplate.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Generate an HTML template for the callout layout."
+msgstr ""
+
+#: plugins/pantoken/layouts/src/functions/heroRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build the hero layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.\nDefaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
+msgstr ""
+
+#: plugins/pantoken/layouts/src/functions/heroTemplate.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Generate an HTML template for the hero layout."
+msgstr ""
+
 #: plugins/pantoken/layouts/src/functions/layouts.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Create a pantoken plugin that emits layout composition rules."
 msgstr ""
 
+#: plugins/pantoken/layouts/src/functions/pageLayoutRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build the page-layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.\nDefaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
+msgstr ""
+
+#: plugins/pantoken/layouts/src/functions/pageLayoutTemplate.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Generate an HTML template for the page-layout layout."
+msgstr ""
+
+#: plugins/pantoken/layouts/src/functions/rubricNoteRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build the rubric-note layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.\nDefaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
+msgstr ""
+
+#: plugins/pantoken/layouts/src/functions/rubricNoteTemplate.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Generate an HTML template for the rubric-note layout."
+msgstr ""
+
+#: plugins/pantoken/layouts/src/functions/testimonialRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build the testimonial layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.\nDefaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
+msgstr ""
+
+#: plugins/pantoken/layouts/src/functions/testimonialTemplate.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Generate an HTML template for the testimonial layout."
+msgstr ""
+
+#: plugins/pantoken/layouts/src/functions/twoColumnRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build the two-column layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.\nDefaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
+msgstr ""
+
+#: plugins/pantoken/layouts/src/functions/twoColumnTemplate.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Generate an HTML template for the two-column layout."
+msgstr ""
+
 #: plugins/pantoken/layouts/src/functions/wrapperRules.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build the wrapper layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.\nDefaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
+msgstr ""
+
+#: plugins/pantoken/layouts/src/functions/wrapperTemplate.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Generate an HTML template for the wrapper layout."
 msgstr ""
 
 #: plugins/pantoken/layouts/src/index.md
@@ -7786,6 +7865,12 @@ msgctxt "docs.api:prose"
 msgid "Emit the shadcn → Instructure CSS-variable bridge."
 msgstr ""
 
+#: renderers/shadcn/src/functions/toShadcnTailwindV4Css.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Emit Tailwind v4 aliases for the shadcn theme variables and derived radius scale."
+msgstr ""
+
 #: renderers/shadcn/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -7814,6 +7899,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "shadcn CSS variable → the Instructure token it resolves to."
+msgstr ""
+
+#: renderers/shadcn/src/variables/shadcnTailwindV4Css.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The ready-made Tailwind v4 alias stylesheet."
 msgstr ""
 
 #: renderers/storybook/src/functions/pantokenStorybookTheme.md
