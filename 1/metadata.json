@@ -1,0 +1,72 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2R7PW3Y9NZA5VAQ9R0CK5JR",
+  "session_id": "60958429-7747-41dd-99d5-0d9ef45d049d",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-17T17:47:55.989742Z",
+  "branch": "ai-registry",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "docs/.vitepress/api-sidebar.test.ts",
+    "docs/.vitepress/api-sidebar.ts",
+    "docs/.vitepress/config.ts",
+    "docs/.vitepress/i18n.json",
+    "docs/.vitepress/i18n.ts",
+    "docs/.vitepress/theme/pantoken.css",
+    "l10n/docs.api.pot"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "56eaf3dca533",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-17T17:47:55.985057Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 47,
+    "human_removed": 47,
+    "total_committed": 1,
+    "total_lines_changed": 94,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 132,
+      "user_lines_removed": 71,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".changeset/docs-sidebar-navigation.md": 5,
+        "docs/.vitepress/api-sidebar.test.ts": 13,
+        "docs/.vitepress/api-sidebar.ts": 20,
+        "docs/.vitepress/config.ts": 21,
+        "docs/.vitepress/i18n.json": 3,
+        "docs/.vitepress/i18n.ts": 2,
+        "docs/.vitepress/theme/pantoken.css": 30,
+        "docs/guide/agent-tools.md": 37,
+        "l10n/docs.api.pot": 1
+      },
+      "user_removed_per_file": {
+        "docs/.vitepress/api-sidebar.ts": 8,
+        "docs/.vitepress/config.ts": 21,
+        "docs/.vitepress/i18n.json": 1,
+        "docs/.vitepress/theme/pantoken.css": 40,
+        "l10n/docs.api.pot": 1
+      }
+    }
+  ]
+}

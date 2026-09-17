@@ -3,7 +3,7 @@
   "checkpoint_id": "01M2R7PW3Y9NZA5VAQ9R0CK5JR",
   "strategy": "manual-commit",
   "branch": "ai-registry",
-  "checkpoints_count": 7,
+  "checkpoints_count": 8,
   "files_touched": [
     ".changeset/docs-sidebar-navigation.md",
     "docs/.vitepress/api-sidebar.test.ts",
@@ -22,6 +22,13 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
