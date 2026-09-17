@@ -134,6 +134,8 @@ Security-relevant entry points include:
 - Script fonts fetched at documentation-build time by the social-card renderer.
 - CDN provider/version/package/path values passed to `@pantoken/cdn`'s URL builders (consumed by
   `@pantoken/canvas-theme-editor`'s `buildTheme` and, in future, the docs CDN picker).
+- Public shadcn registry JSON consumed by `shadcn list`, `search`, `view`, and `add`; installation
+  may add package dependencies and mutate the consumer's configured global CSS file.
 - Dependency updates, pull requests, GitHub Actions workflows, and the release workflow.
 
 ### Threats and controls
@@ -155,6 +157,7 @@ Security-relevant entry points include:
 | T-13 | A font fetched during the documentation build is substituted with a hostile file.                                   | Social-card script fonts are fetched from URLs pinned to one `google/fonts` commit and verified against recorded SHA-256 digests before use. A mismatched or unreachable download is discarded, never cached, and the card falls back to the vendored Latin faces rather than failing the build.                                                                                                                                                                                                  | [`docs/scripts/lib/og-fonts.ts`](docs/scripts/lib/og-fonts.ts)                                                                                                                                                                                                                                                                                                                                                                     |
 | T-14 | A crafted `--lang` value is written into scaffolded markup as an HTML attribute.                                    | The scaffold CLI resolves `--lang` against the fixed 44-entry supported-locale registry and rejects anything else before the value reaches template substitution, so only registry-canonical tags are ever emitted into a generated `lang`/`dir` attribute. Ambient sources (`LC_ALL`/`LANG`/`Intl`) are narrowed to a registry entry or discarded in favor of English.                                                                                                                           | [`packages/scaffold/src/locale.ts`](packages/scaffold/src/locale.ts), [`packages/scaffold/tests/locale.test.ts`](packages/scaffold/tests/locale.test.ts), [`packages/scaffold/tests/index.test.ts`](packages/scaffold/tests/index.test.ts)                                                                                                                                                                                         |
 | T-15 | Statically deployed documentation assets exceed hosting quotas or fail to maintain origin and integrity boundaries. | Deploy tooling splits the distribution into Worker Static Assets (<100k files, <25MB/file) and R2 assets (`assets/`, `demos-assets/`). A single Worker entry point handles same-origin routing and sets immutable cache headers for hashed assets without cross-origin CORS exposure. Gating checks enforce file and size limits before deployment.                                                                                                                                               | [`docs/scripts/prepare-cloudflare-deploy.ts`](docs/scripts/prepare-cloudflare-deploy.ts), [`docs/cloudflare/src/index.ts`](docs/cloudflare/src/index.ts), [docs deploy workflow](.github/workflows/docs.yml)                                                                                                                                                                                                                       |
+| T-16 | A public registry item changes dependencies or CSS configuration unexpectedly.                                      | Registry catalogs and item manifests are generated from reviewed source, validated against the shadcn schema, tested with the current shadcn CLI, and served over HTTPS. Public guidance tells consumers to inspect items with `shadcn view` and review installation diffs. npm provenance covers package payloads; registry JSON itself remains mutable and unsigned.                                                                                                                            | [`docs/scripts/generate-registry.ts`](docs/scripts/generate-registry.ts), [`docs/scripts/generate-registry.test.ts`](docs/scripts/generate-registry.test.ts), [`docs/guide/registry.md`](docs/guide/registry.md), [`SECURITY.md`](SECURITY.md#security-boundaries-and-limitations)                                                                                                                                                 |
 
 ## Trust boundaries
 
@@ -194,6 +197,14 @@ malicious local user who already controls the CLI invocation.
 Repository-controlled documentation and demo specifications become HTML and iframe URLs. Pantoken
 escapes generated attributes and applies iframe sandboxing. The documentation toolchain still treats
 the underlying Markdown and example code as trusted project content.
+
+### TB-7: Public registry to consumer project
+
+The shadcn CLI retrieves Pantoken registry JSON over HTTPS, validates its schema, and applies
+declared package and CSS changes to a consumer project. Schema validation does not establish that an
+item is appropriate for that project. Consumers are responsible for trusting the registry origin,
+inspecting item content and diffs, and reviewing package updates. npm provenance does not cover the
+registry JSON response.
 
 ## Application of secure-design principles
 
@@ -350,6 +361,10 @@ The following risks remain or are deliberately outside the security claim:
    assets. Each release now has an attached package tarball and SLSA `*.sigstore.json` provenance
    bundle; the automatically-generated source archives are separate and not covered by those
    signatures. npm packages are additionally covered by registry signatures and Sigstore provenance.
+9. **Registry item mutability.** The public shadcn namespace resolves to latest JSON served from
+   `pantoken.app`; those manifests are not independently signed or version-addressable. HTTPS,
+   generated-output tests, schema checks, `shadcn view`, and consumer diff review reduce this risk,
+   while npm provenance applies only to package dependencies installed by an item.
 
 These limitations do not weaken the narrower requirements in SR-1 through SR-6 because they are
 included in the documented scope and trust model. They do prevent Pantoken from claiming that it
