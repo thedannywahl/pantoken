@@ -1,0 +1,90 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2RPY7870H7X6J36B4KTG36G",
+  "session_id": "e068064d-c476-4cf4-a7b2-d2d88e73026c",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-17T22:14:05.014055Z",
+  "branch": "ai-registry",
+  "checkpoints_count": 2,
+  "save_step_count": 3,
+  "files_touched": [
+    "formats/components/src/components/button/button.css",
+    "formats/components/src/components/button/index.ts",
+    "formats/components/tests/components/button.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "911b77ee222a",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 4
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-17T22:14:05.007488Z",
+    "agent_lines": 18,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 3,
+    "human_removed": 2,
+    "total_committed": 21,
+    "total_lines_changed": 23,
+    "agent_percentage": 78.26086956521739,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 1282,
+      "user_lines_removed": 0,
+      "agent_lines_added": 154,
+      "agent_lines_removed": 647,
+      "user_added_per_file": {
+        ".changeset/agent-tools-utility.md": 8,
+        "ai/pantoken-ai/evals/use-pantoken-registry/eval.yaml": 26,
+        "ai/pantoken-ai/evals/use-pantoken-registry/tasks/non-shadcn-fallback.yaml": 17,
+        "ai/pantoken-ai/evals/use-pantoken-registry/tasks/positive-shadcn-add.yaml": 17,
+        "ai/pantoken-ai/evals/use-pantoken-registry/tasks/react-components-ambiguity.yaml": 16,
+        "docs/.vitepress/theme/agent-tools.ts": 172,
+        "docs/.vitepress/theme/components/AgentAssetEmbed.vue": 42,
+        "docs/.vitepress/theme/components/AgentToolsPage.vue": 895,
+        "docs/scripts/stage-vscode-custom-data.ts": 15,
+        "packages/scaffold/skills/use-pantoken-registry/SKILL.md": 71,
+        "plugins/pantoken/custom-icons/assets/icons/vscode.svg": 3
+      }
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 1282,
+      "user_lines_removed": 0,
+      "agent_lines_added": 177,
+      "agent_lines_removed": 647,
+      "user_added_per_file": {
+        ".changeset/agent-tools-utility.md": 8,
+        "ai/pantoken-ai/evals/use-pantoken-registry/eval.yaml": 26,
+        "ai/pantoken-ai/evals/use-pantoken-registry/tasks/non-shadcn-fallback.yaml": 17,
+        "ai/pantoken-ai/evals/use-pantoken-registry/tasks/positive-shadcn-add.yaml": 17,
+        "ai/pantoken-ai/evals/use-pantoken-registry/tasks/react-components-ambiguity.yaml": 16,
+        "docs/.vitepress/theme/agent-tools.ts": 172,
+        "docs/.vitepress/theme/components/AgentAssetEmbed.vue": 42,
+        "docs/.vitepress/theme/components/AgentToolsPage.vue": 895,
+        "docs/scripts/stage-vscode-custom-data.ts": 15,
+        "packages/scaffold/skills/use-pantoken-registry/SKILL.md": 71,
+        "plugins/pantoken/custom-icons/assets/icons/vscode.svg": 3
+      }
+    }
+  ]
+}

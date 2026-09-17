@@ -1,0 +1,13 @@
+move this provider icon resolution to the anchor's instui-button class chain.
+
+---
+
+the glyph doesn't appear positioned correctly, we may need to update the styles in pantoken/components/button or pantoken/components/link to accommodate making a link look like a button.
+
+---
+
+write a changeset and commit the changed to formats/components
+
+---
+
+while we're working on buttons, a `-color-ai` or `-color-ai-secondary` paired with a `-icon-*` should drop the ai built-in glyph and replace it with the specified glyph, keeping the coloring, etc.
