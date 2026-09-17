@@ -16,8 +16,31 @@
  */
 import { definePlugin } from "@pantoken/plugin-kit";
 import type { PantokenPlugin } from "@pantoken/model";
-import { wrapperRules } from "./layouts/index.ts";
-export { wrapperRules } from "./layouts/index.ts";
+import {
+  calloutRules,
+  heroRules,
+  pageLayoutRules,
+  rubricNoteRules,
+  testimonialRules,
+  twoColumnRules,
+  wrapperRules,
+} from "./layouts/index.ts";
+export {
+  calloutRules,
+  calloutTemplate,
+  heroRules,
+  heroTemplate,
+  pageLayoutRules,
+  pageLayoutTemplate,
+  rubricNoteRules,
+  rubricNoteTemplate,
+  testimonialRules,
+  testimonialTemplate,
+  twoColumnRules,
+  twoColumnTemplate,
+  wrapperRules,
+  wrapperTemplate,
+} from "./layouts/index.ts";
 export { pageLayouts, type PageLayout } from "./layouts/index.ts";
 
 /** Options for the {@link layouts} plugin. */
@@ -36,7 +59,15 @@ export interface LayoutsOptions {
  */
 export function layouts(options: LayoutsOptions = {}): PantokenPlugin {
   const position = options.position ?? "append";
-  const rules = wrapperRules();
+  const rules = [
+    wrapperRules(),
+    calloutRules(),
+    heroRules(),
+    pageLayoutRules(),
+    rubricNoteRules(),
+    testimonialRules(),
+    twoColumnRules(),
+  ].join("\n\n");
   return definePlugin({
     name: "@pantoken/plugin-layouts",
     css: () => ({ marker: "pantoken:layouts", [position]: rules }),

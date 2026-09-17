@@ -18,15 +18,19 @@ import { twoColumnRules } from "../src/layouts/two-column/two-column.ts";
 const outDir = resolve(import.meta.dirname, "../generated");
 mkdirSync(outDir, { recursive: true });
 
-const allLayoutsCss = [
-  wrapperRules("instui-"),
-  calloutRules("instui-"),
-  heroRules("instui-"),
-  pageLayoutRules("instui-"),
-  rubricNoteRules("instui-"),
-  testimonialRules("instui-"),
-  twoColumnRules("instui-"),
-].join("\n\n");
+const layouts: Array<[string, (prefix?: string) => string]> = [
+  ["wrapper", wrapperRules],
+  ["callout", calloutRules],
+  ["hero", heroRules],
+  ["page-layout", pageLayoutRules],
+  ["rubric-note", rubricNoteRules],
+  ["testimonial", testimonialRules],
+  ["two-column", twoColumnRules],
+];
+const allLayoutsCss = layouts.map(([, rules]) => rules("instui-")).join("\n\n");
 
 writeFileSync(join(outDir, "layouts.css"), `${allLayoutsCss}\n`);
-console.log(`✓ layouts: wrote layouts.css`);
+for (const [name, rules] of layouts) {
+  writeFileSync(join(outDir, `${name}.css`), `${rules("instui-")}\n`);
+}
+console.log(`✓ layouts: wrote layouts.css + ${layouts.length} per-layout CSS files`);

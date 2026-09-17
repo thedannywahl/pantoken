@@ -2,8 +2,7 @@ import { expect, test } from "vite-plus/test";
 import { capabilitiesOf } from "@pantoken/plugin-kit";
 import { unknownReferences } from "@pantoken/utils";
 import { byTheme } from "@pantoken/tokens";
-import { customComponents, cardRules, bannerRules } from "../src/index.ts";
-import { agentShellRules } from "../src/components/agent-shell/index.ts";
+import { agentShellRules, bannerRules, cardRules, customComponents } from "../src/index.ts";
 
 const cssOf = (plugin: ReturnType<typeof customComponents>): string => {
   const out = plugin.css?.({ tokens: [], css: "" });
@@ -65,9 +64,10 @@ test("@scope block contains container-variant direct-child rules", () => {
   expect(css).toMatch(/&\.-variant-container\s*>\s*\*/u);
 });
 
-test("cardRules() and bannerRules() default to instui- prefix and both appear in the plugin css output", () => {
+test("every custom component appears in the plugin css output", () => {
   const css = cssOf(customComponents());
   expect(css).toContain(cardRules());
+  expect(css).toContain(agentShellRules());
   expect(css).toContain(bannerRules());
 });
 
