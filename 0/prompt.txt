@@ -11,3 +11,7 @@ write a changeset and commit the changed to formats/components
 ---
 
 while we're working on buttons, a `-color-ai` or `-color-ai-secondary` paired with a `-icon-*` should drop the ai built-in glyph and replace it with the specified glyph, keeping the coloring, etc.
+
+---
+
+yes.
