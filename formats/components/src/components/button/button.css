@@ -486,10 +486,23 @@
    * shape buttons carry no label, so grow the glyph to fill the square control rather than tracking a
    * (missing) label's cap height.
    */
+  &[class*="-icon-"]::before {
+    display: inline-block;
+    inline-size: 1em;
+    block-size: 1em;
+    flex: none;
+    margin-inline-end: var(--instui-spacing-space-xs);
+    vertical-align: -0.125em;
+    background: currentColor;
+    -webkit-mask: var(--pantoken-glyph) center / contain no-repeat;
+    mask: var(--pantoken-glyph) center / contain no-repeat;
+  }
+
   &.-shape-square[class*="-icon-"]::before,
   &.-shape-circle[class*="-icon-"]::before {
     inline-size: 1.25em;
     block-size: 1.25em;
+    margin-inline-end: 0;
   }
 
   &.-condensed {

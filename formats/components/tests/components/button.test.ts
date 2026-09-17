@@ -63,6 +63,15 @@ test("button gains icon, condensed, and toggle modifiers", () => {
   expect(css).toContain("&.-without-border"); // InstUI withBorder={false}
 });
 
+test("button icon modifiers center the glyph and add the expected gap", () => {
+  const css = buttonCss({ prefix: "instui" });
+  expect(css).toContain('&[class*="-icon-"]::before');
+  expect(css).toContain("margin-inline-end: var(--instui-spacing-space-xs);");
+  expect(css).toContain("display: inline-block");
+  expect(css).toContain("inline-size: 1em");
+  expect(css).toContain("block-size: 1em");
+});
+
 test("button has success color and small/medium/large size modifiers", () => {
   const css = buttonCss({ prefix: "instui" });
   expect(css).toContain("&.-color-success");

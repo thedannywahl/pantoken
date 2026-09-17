@@ -50,6 +50,22 @@
     font-size: var(--instui-component-link-font-size-lg);
     line-height: var(--instui-component-link-line-height-lg);
   }
+
+  &[class*="-icon-"]::before {
+    display: inline-block;
+    inline-size: 1em;
+    block-size: 1em;
+    flex: none;
+    margin-inline-end: var(--instui-spacing-space-xs);
+    vertical-align: -0.125em;
+    background: currentColor;
+    -webkit-mask: var(--pantoken-glyph) center / contain no-repeat;
+    mask: var(--pantoken-glyph) center / contain no-repeat;
+  }
+
+  &[class*="-icon-"]:only-child::before {
+    margin-inline-end: 0;
+  }
 }
 
 .pfx-link.-color-inverse {
