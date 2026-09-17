@@ -129,6 +129,15 @@ test("ai buttons carry gradient borders, a ring, and an auto ai glyph", () => {
   );
 });
 
+test("ai buttons with explicit icons replace the AI mask while keeping the AI palette", () => {
+  const css = buttonCss({ prefix: "instui" });
+  expect(css).toContain('.instui-button.-color-ai[class*="-icon-"]::before');
+  expect(css).toContain('.instui-button.-color-ai-secondary[class*="-icon-"]::before');
+  expect(css).toContain("var(--pantoken-glyph)");
+  expect(css).toContain("var(--instui-color-text-interactive-action-ai-base)");
+  expect(css).toContain("var(--instui-color-stroke-interactive-action-ai-top-gradient-base)");
+});
+
 test("primary-inverse resolves its hover border to the on-color hover token", () => {
   const css = buttonCss({ prefix: "instui" });
   expect(css).toContain("&.-color-primary-inverse:hover");

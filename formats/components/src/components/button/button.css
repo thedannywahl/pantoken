@@ -428,6 +428,11 @@
     );
   }
 
+  &.-color-ai[class*="-icon-"]::before,
+  &.-color-ai-secondary[class*="-icon-"]::before {
+    background: currentColor;
+  }
+
   &.-color-ai:disabled::before,
   &.-color-ai[aria-disabled="true"]::before,
   &.-color-ai-secondary:disabled::before,

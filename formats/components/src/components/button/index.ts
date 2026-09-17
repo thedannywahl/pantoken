@@ -22,6 +22,13 @@ const interpolatedRules = (p: string) =>
   -webkit-mask: ${AI_ICON_MASK};
   mask: ${AI_ICON_MASK};
 }
+
+/* An explicit glyph class takes precedence over the default AI glyph while keeping the AI palette. */
+.${p}button.-color-ai[class*="-icon-"]::before,
+.${p}button.-color-ai-secondary[class*="-icon-"]::before {
+  -webkit-mask: var(--pantoken-glyph) center / contain no-repeat;
+  mask: var(--pantoken-glyph) center / contain no-repeat;
+}
 `;
 
 /** The `button` component record: an accessible action control styled from the token palette, primary by default. */
