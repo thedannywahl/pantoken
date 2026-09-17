@@ -1,0 +1,1 @@
+we added `--background-ai-horizontal` to the custom-components and it should be registered as a global modifier, so instui-view should not be warning via cssdoc that it is undocumented.
