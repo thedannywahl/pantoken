@@ -1,0 +1,125 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2RPQV3WB52W4N6A6DZKSQA4",
+  "session_id": "e068064d-c476-4cf4-a7b2-d2d88e73026c",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-17T22:10:36.120818Z",
+  "branch": "ai-registry",
+  "checkpoints_count": 2,
+  "save_step_count": 2,
+  "files_touched": [
+    "formats/components/src/components/button/button.css",
+    "formats/components/src/components/link/link.css",
+    "formats/components/tests/components/button.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "046b43c9cd21",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-17T22:10:36.114386Z",
+    "agent_lines": 38,
+    "agent_removed": 0,
+    "human_added": 6,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 44,
+    "total_lines_changed": 44,
+    "agent_percentage": 86.36363636363636,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 1442,
+      "user_lines_removed": 647,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".changeset/agent-tools-utility.md": 8,
+        "ai/pantoken-ai/README.md": 6,
+        "ai/pantoken-ai/evals/use-pantoken-registry/eval.yaml": 26,
+        "ai/pantoken-ai/evals/use-pantoken-registry/tasks/non-shadcn-fallback.yaml": 17,
+        "ai/pantoken-ai/evals/use-pantoken-registry/tasks/positive-shadcn-add.yaml": 17,
+        "ai/pantoken-ai/evals/use-pantoken-registry/tasks/react-components-ambiguity.yaml": 16,
+        "ai/pantoken-ai/package.json": 1,
+        "ai/pantoken-ai/src/index.ts": 2,
+        "ai/pantoken-ai/tests/cli.test.ts": 1,
+        "ai/pantoken-ai/tests/index.test.ts": 1,
+        "docs/.vitepress/config.ts": 3,
+        "docs/.vitepress/i18n.json": 116,
+        "docs/.vitepress/i18n.ts": 4,
+        "docs/.vitepress/theme/agent-tools.ts": 172,
+        "docs/.vitepress/theme/components/AgentAssetEmbed.vue": 42,
+        "docs/.vitepress/theme/components/AgentToolsPage.vue": 901,
+        "docs/.vitepress/theme/composables/useShikiHighlight.ts": 1,
+        "docs/.vitepress/theme/index.ts": 2,
+        "docs/CHANGELOG.md": 1,
+        "docs/conventions/build-and-docs.md": 2,
+        "docs/guide/agent-tools.md": 2,
+        "docs/guide/cdn-picker.md": 1,
+        "docs/package.json": 1,
+        "docs/r/index.md": 1,
+        "docs/scripts/stage-vscode-custom-data.ts": 15,
+        "l10n/docs.api.pot": 2,
+        "packages/scaffold/scripts/generate.ts": 1,
+        "packages/scaffold/skills/init-pantoken/SKILL.md": 5,
+        "packages/scaffold/skills/use-pantoken-registry/SKILL.md": 71,
+        "packages/scaffold/src/agent-assets.ts": 1,
+        "plugins/pantoken/custom-icons/assets/icons/vscode.svg": 3
+      },
+      "user_removed_per_file": {
+        "ai/pantoken-ai/README.md": 4,
+        "ai/pantoken-ai/package.json": 1,
+        "ai/pantoken-ai/src/index.ts": 1,
+        "docs/.vitepress/config.ts": 3,
+        "docs/.vitepress/theme/composables/useShikiHighlight.ts": 1,
+        "docs/CHANGELOG.md": 1,
+        "docs/conventions/build-and-docs.md": 2,
+        "docs/guide/agent-tools.md": 33,
+        "docs/guide/cdn-picker.md": 2,
+        "docs/guide/cdn.md": 109,
+        "docs/guide/components.md": 392,
+        "docs/guide/generated-output.md": 43,
+        "docs/guide/registry.md": 42,
+        "docs/package.json": 1,
+        "docs/r/index.md": 7,
+        "l10n/docs.api.pot": 2,
+        "packages/scaffold/skills/init-pantoken/SKILL.md": 3
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 1,
+      "agent_lines_added": 1437,
+      "agent_lines_removed": 647,
+      "user_removed_per_file": {
+        "docs/.vitepress/theme/components/AgentToolsPage.vue": 1
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 2,
+      "user_lines_removed": 3,
+      "agent_lines_added": 1475,
+      "agent_lines_removed": 647,
+      "user_added_per_file": {
+        "docs/.vitepress/theme/components/AgentToolsPage.vue": 2
+      },
+      "user_removed_per_file": {
+        "docs/.vitepress/theme/components/AgentToolsPage.vue": 3
+      }
+    }
+  ]
+}

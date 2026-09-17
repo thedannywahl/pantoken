@@ -1,0 +1,5 @@
+move this provider icon resolution to the anchor's instui-button class chain.
+
+---
+
+the glyph doesn't appear positioned correctly, we may need to update the styles in pantoken/components/button or pantoken/components/link to accommodate making a link look like a button.
