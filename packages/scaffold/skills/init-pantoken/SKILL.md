@@ -6,8 +6,8 @@ description: Install pantoken's agent assets (AGENTS.md, llms.txt, editor/agent 
 # Init pantoken (AI assets)
 
 Install pantoken's consumer-facing agent assets into the current repo: `AGENTS.md`, `llms.txt`,
-editor/agent rule files (Cursor, Copilot, Windsurf), and the `create-pantoken-app` and
-`create-pantoken-mockup` skills.
+editor/agent rule files (Cursor, Copilot, Windsurf), and the `create-pantoken-app`,
+`create-pantoken-mockup`, and `use-pantoken-registry` skills.
 
 ```sh
 npx pantoken-ai init
@@ -22,4 +22,6 @@ on the package manager detected in the repo (look for `pnpm-lock.yaml`, `yarn.lo
 That's all this skill does — it only writes the asset files above, it does not install any
 `@pantoken/*` package or modify application code. Once the assets are installed, use
 `create-pantoken-app` for a maintained project (or run `npx pantoken-ai scaffold <platform>`
-directly), and use `create-pantoken-mockup` for a standalone browser or email artifact.
+directly), use `create-pantoken-mockup` for a standalone browser or email artifact, and use
+`use-pantoken-registry` when a shadcn project should search, inspect, or add Pantoken registry
+items.

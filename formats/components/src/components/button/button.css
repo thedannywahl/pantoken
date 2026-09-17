@@ -1,7 +1,7 @@
 /**
  * @component button
  * @summary An accessible action control, styled from the token palette; primary by default.
- * @remarks The AI variants layer two gradients — a padding-box fill and a border-box stroke — for their frame, and `-color-ai-secondary` can't paint gradient text and a fill at once, so its centre stays transparent at rest and fills on hover or active. `-without-background` reads the resolved ghost-state tokens. Also sets its own icon/label `gap` and horizontal `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. The optional `.pfx-button-group` wrapper maps Figma's `.buttonGroup` and owns adjacent button spacing.
+ * @remarks The AI variants layer two gradients — a padding-box fill and a border-box stroke — for their frame, and `-color-ai-secondary` can't paint gradient text and a fill at once, so its centre stays transparent at rest and fills on hover or active. `-without-background` reads the resolved ghost-state tokens. Buttons with an icon and no visible label become square automatically. Also sets its own icon/label `gap` and horizontal `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. The optional `.pfx-button-group` wrapper maps Figma's `.buttonGroup` and owns adjacent button spacing.
  * @selector .pfx-button
  * @modifier -color-primary — (default) the primary action.
  * @modifier -color-secondary — A lower-emphasis secondary action.
@@ -428,9 +428,16 @@
     );
   }
 
-  &.-color-ai[class*="-icon-"]::before,
-  &.-color-ai-secondary[class*="-icon-"]::before {
+  &.-color-ai[class*="-icon-"]::before {
     background: currentColor;
+  }
+
+  &.-color-ai-secondary[class*="-icon-"]::before {
+    background: linear-gradient(
+      to bottom,
+      var(--instui-color-stroke-interactive-action-ai-top-gradient-base) 0%,
+      var(--instui-color-stroke-interactive-action-ai-bottom-gradient-base) 100%
+    );
   }
 
   &.-color-ai:disabled::before,
@@ -462,10 +469,26 @@
     padding-inline: var(--instui-component-base-button-small-padding-horizontal);
   }
 
+  &.-size-sm:is(
+      .-shape-square,
+      [class*="-icon-"]:not(:has(> *)),
+      [class*="-icon-"]:has(> .pfx-screen-reader-content:only-child)
+    ) {
+    inline-size: var(--instui-component-base-button-small-height);
+  }
+
   &.-size-md {
     font-size: var(--instui-component-base-button-medium-font-size);
     min-height: var(--instui-component-base-button-medium-height);
     padding-inline: var(--instui-component-base-button-medium-padding-horizontal);
+  }
+
+  &.-size-md:is(
+      .-shape-square,
+      [class*="-icon-"]:not(:has(> *)),
+      [class*="-icon-"]:has(> .pfx-screen-reader-content:only-child)
+    ) {
+    inline-size: var(--instui-component-base-button-medium-height);
   }
 
   &.-size-lg {
@@ -474,7 +497,17 @@
     padding-inline: var(--instui-component-base-button-large-padding-horizontal);
   }
 
-  &.-shape-square {
+  &.-size-lg:is(
+      .-shape-square,
+      [class*="-icon-"]:not(:has(> *)),
+      [class*="-icon-"]:has(> .pfx-screen-reader-content:only-child)
+    ) {
+    inline-size: var(--instui-component-base-button-large-height);
+  }
+
+  &.-shape-square,
+  &[class*="-icon-"]:not(:has(> *)),
+  &[class*="-icon-"]:has(> .pfx-screen-reader-content:only-child) {
     padding: var(--instui-spacing-space-xs);
     aspect-ratio: 1;
   }
@@ -504,7 +537,9 @@
   }
 
   &.-shape-square[class*="-icon-"]::before,
-  &.-shape-circle[class*="-icon-"]::before {
+  &.-shape-circle[class*="-icon-"]::before,
+  &[class*="-icon-"]:not(:has(> *))::before,
+  &[class*="-icon-"]:has(> .pfx-screen-reader-content:only-child)::before {
     inline-size: 1.25em;
     block-size: 1.25em;
     margin-inline-end: 0;
@@ -531,6 +566,10 @@
   /* InstUI's withBorder={false}: drop the border but keep the button's box (border-box sizing). */
   &.-without-border {
     border-style: none;
+  }
+
+  &.-color-ai-secondary.-without-border::after {
+    display: none;
   }
 }
 

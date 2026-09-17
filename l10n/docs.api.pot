@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-17 17:38+0000\n"
+"PO-Revision-Date: 2026-09-17 23:14+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -110,7 +110,7 @@ msgstr ""
 #: ai/pantoken-ai/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "It ships an `AGENTS.md`, an `llms.txt`, editor/agent rule files (Cursor, Copilot, Windsurf), and\nClaude Code skills (`init-pantoken`, `create-pantoken-app`, `create-pantoken-mockup`), plus\n[installAgentAssets](functions/installAgentAssets.md) / [scaffoldAndInit](functions/scaffoldAndInit.md) / the `pantoken-ai` CLI to drop them into a\nconsumer repo at the conventional paths."
+msgid "It ships an `AGENTS.md`, an `llms.txt`, editor/agent rule files (Cursor, Copilot, Windsurf), and\nClaude Code skills (`init-pantoken`, `create-pantoken-app`, `create-pantoken-mockup`,\n`use-pantoken-registry`), plus\n[installAgentAssets](functions/installAgentAssets.md) / [scaffoldAndInit](functions/scaffoldAndInit.md) / the `pantoken-ai` CLI to drop them into a\nconsumer repo at the conventional paths."
 msgstr ""
 
 #: ai/pantoken-ai/src/index.md
@@ -5157,6 +5157,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build the card layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.\nDefaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
+msgstr ""
+
+#: plugins/pantoken/custom-components/src/functions/aiGradientRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build the AI gradient utility CSS as a global modifier layer for custom surfaces.\nThe selectors intentionally stay on the bare `--*` modifier form, so they can be reused anywhere\nwithout being tied to the shared InstUI component contract."
 msgstr ""
 
 #: plugins/pantoken/custom-components/src/functions/bannerRules.md

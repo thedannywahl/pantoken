@@ -1,0 +1,16 @@
+id: react-components-ambiguity-001
+name: React component ambiguity
+description: User asks for full React components, which the Pantoken registry does not provide.
+tags:
+  - negative-trigger
+inputs:
+  prompt: "Install Pantoken registry React button and modal components for my app."
+expected:
+  should_trigger: false
+graders:
+  - type: text
+    name: explains-css-not-react
+    config:
+      contains:
+        - "not React components"
+        - "@instructure/ui"

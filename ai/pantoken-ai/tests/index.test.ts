@@ -32,6 +32,7 @@ test("installs all Claude skills + AGENTS.md", () => {
   expect(existsSync(join(dir, ".claude/skills/init-pantoken/SKILL.md"))).toBe(true);
   expect(existsSync(join(dir, ".claude/skills/create-pantoken-app/SKILL.md"))).toBe(true);
   expect(existsSync(join(dir, ".claude/skills/create-pantoken-mockup/SKILL.md"))).toBe(true);
+  expect(existsSync(join(dir, ".claude/skills/use-pantoken-registry/SKILL.md"))).toBe(true);
   expect(existsSync(join(dir, "AGENTS.md"))).toBe(true);
 });
 

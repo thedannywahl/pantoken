@@ -3,7 +3,8 @@
  * developing pantoken itself).
  *
  * It ships an `AGENTS.md`, an `llms.txt`, editor/agent rule files (Cursor, Copilot, Windsurf), and
- * Claude Code skills (`init-pantoken`, `create-pantoken-app`, `create-pantoken-mockup`), plus
+ * Claude Code skills (`init-pantoken`, `create-pantoken-app`, `create-pantoken-mockup`,
+ * `use-pantoken-registry`), plus
  * {@link installAgentAssets} / {@link scaffoldAndInit} / the `pantoken-ai` CLI to drop them into a
  * consumer repo at the conventional paths.
  *

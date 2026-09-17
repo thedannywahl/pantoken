@@ -2,7 +2,13 @@ import { expect, test } from "vite-plus/test";
 import { capabilitiesOf } from "@pantoken/plugin-kit";
 import { unknownReferences } from "@pantoken/utils";
 import { byTheme } from "@pantoken/tokens";
-import { agentShellRules, bannerRules, cardRules, customComponents } from "../src/index.ts";
+import {
+  agentShellRules,
+  aiGradientRules,
+  bannerRules,
+  cardRules,
+  customComponents,
+} from "../src/index.ts";
 
 const cssOf = (plugin: ReturnType<typeof customComponents>): string => {
   const out = plugin.css?.({ tokens: [], css: "" });
@@ -69,6 +75,16 @@ test("every custom component appears in the plugin css output", () => {
   expect(css).toContain(cardRules());
   expect(css).toContain(agentShellRules());
   expect(css).toContain(bannerRules());
+  expect(css).toContain(aiGradientRules());
+});
+
+test("aiGradientRules emits AI border/background helpers in the plugin API", () => {
+  const css = aiGradientRules();
+  expect(css).toContain(":where(*) .--border-color-ai");
+  expect(css).toContain(":where(*) .--background-ai");
+  expect(css).toContain("linear-gradient");
+  expect(css).toContain("background-clip: padding-box, border-box");
+  expect(css).toContain(":dir(rtl)");
 });
 
 test("cardRules accepts an explicit prefix", () => {

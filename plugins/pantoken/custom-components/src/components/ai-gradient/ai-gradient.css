@@ -1,0 +1,71 @@
+/**
+ * @utility ai-gradient
+ * @selector .--background-ai-horizontal
+ * @summary AI-accent gradient helpers intended for custom surfaces, not the shared InstUI contract.
+ * @global
+ * @modifier --border-color-ai — A transparent border framed by the shared AI gradient.
+ * @modifier --border-color-ai-horizontal — Direction-aware horizontal variant.
+ * @modifier --background-ai — Paint the element background with the shared AI gradient.
+ * @modifier --background-ai-horizontal — Direction-aware horizontal variant.
+ */
+:where(*) .--border-color-ai {
+  border: var(--instui-border-width-sm) solid transparent;
+  background-color: var(--instui-color-background-base);
+  background-image:
+    linear-gradient(var(--instui-color-background-base), var(--instui-color-background-base)),
+    linear-gradient(
+      var(--instui-color-stroke-ai-top-gradient),
+      var(--instui-color-stroke-ai-bottom-gradient)
+    );
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+:where(*) .--border-color-ai-horizontal {
+  border: var(--instui-border-width-sm) solid transparent;
+  background-color: var(--instui-color-background-base);
+  background-image:
+    linear-gradient(var(--instui-color-background-base), var(--instui-color-background-base)),
+    linear-gradient(
+      to left,
+      var(--instui-color-stroke-ai-top-gradient),
+      var(--instui-color-stroke-ai-bottom-gradient)
+    );
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+:where(*):dir(rtl) .--border-color-ai-horizontal {
+  background-image:
+    linear-gradient(var(--instui-color-background-base), var(--instui-color-background-base)),
+    linear-gradient(
+      to right,
+      var(--instui-color-stroke-ai-top-gradient),
+      var(--instui-color-stroke-ai-bottom-gradient)
+    );
+}
+
+:where(*) .--background-ai {
+  background-color: var(--instui-color-background-base);
+  background-image: linear-gradient(
+    var(--instui-color-stroke-ai-top-gradient),
+    var(--instui-color-stroke-ai-bottom-gradient)
+  );
+}
+
+:where(*) .--background-ai-horizontal {
+  background-color: var(--instui-color-background-base);
+  background-image: linear-gradient(
+    to left,
+    var(--instui-color-stroke-ai-top-gradient),
+    var(--instui-color-stroke-ai-bottom-gradient)
+  );
+}
+
+:where(*):dir(rtl) .--background-ai-horizontal {
+  background-image: linear-gradient(
+    to right,
+    var(--instui-color-stroke-ai-top-gradient),
+    var(--instui-color-stroke-ai-bottom-gradient)
+  );
+}

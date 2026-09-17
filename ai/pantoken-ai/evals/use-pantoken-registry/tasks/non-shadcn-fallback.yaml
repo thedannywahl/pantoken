@@ -1,0 +1,17 @@
+id: non-shadcn-fallback-001
+name: Non-shadcn fallback
+description: A general package-managed app setup request belongs to create-pantoken-app.
+tags:
+  - negative-trigger
+inputs:
+  prompt: "Add Pantoken tokens to my plain Vite app. It does not use shadcn."
+expected:
+  should_trigger: false
+graders:
+  - type: text
+    name: routes-away-from-registry
+    config:
+      contains:
+        - "create-pantoken-app"
+      not_contains:
+        - "shadcn add"

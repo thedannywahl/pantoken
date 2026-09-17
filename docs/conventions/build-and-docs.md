@@ -244,7 +244,7 @@ retranslates entries that already have a translation. `I18N_TRANSLATION_COMMAND`
 
 ## Publishing the create-pantoken-app skill
 
-`ai/pantoken-ai/skills/create-pantoken-app/SKILL.md` is the one canonical source, staged into two
+`packages/scaffold/skills/create-pantoken-app/SKILL.md` is the one canonical source, staged into two
 places by tasks in `docs/.vitepress/config.ts`:
 
 - `stage-create-pantoken-app-skill.ts` → `docs/public/create-pantoken-app.md`, served by the main
@@ -257,7 +257,7 @@ places by tasks in `docs/.vitepress/config.ts`:
 Both tasks only stage the local working tree. The submodule is a separate GitHub repo, so publishing
 a skill update to `create.pantoken.app` needs a commit + push inside it. `.github/workflows/
 publish-create-pantoken-app.yml` automates this: on every push to `main` that touches
-`ai/pantoken-ai/skills/create-pantoken-app/**`, it re-runs the staging script, commits+pushes the
+`packages/scaffold/skills/create-pantoken-app/**`, it re-runs the staging script, commits+pushes the
 submodule if changed, then opens a PR that bumps the submodule pointer in this repo. It needs a repo secret
 `CREATE_PANTOKEN_APP_PAT` (a fine-grained PAT scoped to just `thedannywahl/create-pantoken-app`,
 Contents: Read and write — the default `GITHUB_TOKEN` can't push to a different repo); without it

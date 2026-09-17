@@ -86,6 +86,7 @@ const agentAssets: Record<string, string> = {
   initSkill: readFileSync(join(root, "skills/init-pantoken/SKILL.md"), "utf8"),
   createAppSkill: readFileSync(join(root, "skills/create-pantoken-app/SKILL.md"), "utf8"),
   createMockupSkill: readFileSync(join(root, "skills/create-pantoken-mockup/SKILL.md"), "utf8"),
+  registrySkill: readFileSync(join(root, "skills/use-pantoken-registry/SKILL.md"), "utf8"),
 };
 writeFileSync(
   join(outDir, "assets.ts"),
