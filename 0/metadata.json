@@ -1,0 +1,75 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2R0B7QX0AA88A90M9X3V5CC",
+  "session_id": "92290b6b-1092-4690-a559-4ef6039f2be7",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-17T15:39:14.889242Z",
+  "branch": "ai-registry",
+  "checkpoints_count": 3,
+  "save_step_count": 3,
+  "files_touched": [
+    ".changeset/shadcn-theme-contract.md",
+    "renderers/shadcn/README.md",
+    "renderers/shadcn/package.json",
+    "renderers/shadcn/scripts/generate.ts",
+    "renderers/shadcn/src/index.ts",
+    "renderers/shadcn/src/mapping.ts",
+    "renderers/shadcn/tests/index.test.ts",
+    "renderers/shadcn/vite.config.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "81ac7c52235e",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 3
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-17T15:39:14.878486Z",
+    "agent_lines": 90,
+    "agent_removed": 3,
+    "human_added": 0,
+    "human_modified": 1,
+    "human_removed": 2,
+    "total_committed": 91,
+    "total_lines_changed": 96,
+    "agent_percentage": 96.875,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 1,
+      "user_lines_removed": 3,
+      "agent_lines_added": 89,
+      "agent_lines_removed": 6,
+      "user_added_per_file": {
+        "renderers/shadcn/src/index.ts": 1
+      },
+      "user_removed_per_file": {
+        "renderers/shadcn/src/index.ts": 3
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 87,
+      "agent_lines_removed": 6
+    }
+  ]
+}
