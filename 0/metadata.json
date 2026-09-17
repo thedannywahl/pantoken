@@ -1,0 +1,63 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2R2H1A6FPB5GNEY9BAD9ARM",
+  "session_id": "5d4cce3b-c754-4696-b2ab-77709be94f79",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-17T16:17:21.973688Z",
+  "branch": "ai-registry",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/agent-app-mockup-routing.md",
+    "ai/pantoken-ai/.waza.yaml",
+    "ai/pantoken-ai/README.md",
+    "ai/pantoken-ai/evals/create-pantoken-app/tasks/negative-trigger-3.yaml",
+    "ai/pantoken-ai/evals/create-pantoken-mockup/eval.yaml",
+    "ai/pantoken-ai/evals/create-pantoken-mockup/tasks/app-negative.yaml",
+    "ai/pantoken-ai/evals/create-pantoken-mockup/tasks/browser-trigger.yaml",
+    "ai/pantoken-ai/evals/create-pantoken-mockup/tasks/email-trigger.yaml",
+    "ai/pantoken-ai/package.json",
+    "ai/pantoken-ai/src/index.ts",
+    "ai/pantoken-ai/tests/index.test.ts",
+    "docs/guide/cdn.md",
+    "docs/scripts/cdn-plugin-manifest.test.ts",
+    "docs/scripts/cdn-plugin-manifest.ts",
+    "packages/scaffold/README.md",
+    "packages/scaffold/assets/AGENTS.md",
+    "packages/scaffold/assets/copilot-instructions.md",
+    "packages/scaffold/assets/llms.txt",
+    "packages/scaffold/assets/windsurf.md",
+    "packages/scaffold/scripts/generate.ts",
+    "packages/scaffold/skills/create-pantoken-app/SKILL.md",
+    "packages/scaffold/skills/create-pantoken-mockup/SKILL.md",
+    "packages/scaffold/skills/init-pantoken/SKILL.md",
+    "packages/scaffold/src/agent-assets.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "93462b7058b9",
+  "checkpoint_transcript_start": 2187,
+  "transcript_lines_at_start": 2187,
+  "compact_transcript_start": 332,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-17T16:17:21.845095Z",
+    "agent_lines": 334,
+    "agent_removed": 22,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 334,
+    "total_lines_changed": 356,
+    "agent_percentage": 100,
+    "metric_version": 2
+  }
+}

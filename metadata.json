@@ -1,0 +1,49 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2R2H1A6FPB5GNEY9BAD9ARM",
+  "strategy": "manual-commit",
+  "branch": "ai-registry",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/agent-app-mockup-routing.md",
+    "ai/pantoken-ai/.waza.yaml",
+    "ai/pantoken-ai/README.md",
+    "ai/pantoken-ai/evals/create-pantoken-app/tasks/negative-trigger-3.yaml",
+    "ai/pantoken-ai/evals/create-pantoken-mockup/eval.yaml",
+    "ai/pantoken-ai/evals/create-pantoken-mockup/tasks/app-negative.yaml",
+    "ai/pantoken-ai/evals/create-pantoken-mockup/tasks/browser-trigger.yaml",
+    "ai/pantoken-ai/evals/create-pantoken-mockup/tasks/email-trigger.yaml",
+    "ai/pantoken-ai/package.json",
+    "ai/pantoken-ai/src/index.ts",
+    "ai/pantoken-ai/tests/index.test.ts",
+    "docs/guide/cdn.md",
+    "docs/scripts/cdn-plugin-manifest.test.ts",
+    "docs/scripts/cdn-plugin-manifest.ts",
+    "packages/scaffold/README.md",
+    "packages/scaffold/assets/AGENTS.md",
+    "packages/scaffold/assets/copilot-instructions.md",
+    "packages/scaffold/assets/llms.txt",
+    "packages/scaffold/assets/windsurf.md",
+    "packages/scaffold/scripts/generate.ts",
+    "packages/scaffold/skills/create-pantoken-app/SKILL.md",
+    "packages/scaffold/skills/create-pantoken-mockup/SKILL.md",
+    "packages/scaffold/skills/init-pantoken/SKILL.md",
+    "packages/scaffold/src/agent-assets.ts"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": ""
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
