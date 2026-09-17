@@ -26,12 +26,20 @@ test("installs a single tool's asset at its conventional path", () => {
   expect(readFileSync(rule, "utf8")).toContain("pantoken");
 });
 
-test("installs both Claude skills + AGENTS.md", () => {
+test("installs all Claude skills + AGENTS.md", () => {
   const dir = mkdtempSync(join(tmpdir(), "pantoken-ai-claude-"));
   installAgentAssets("claude", dir);
   expect(existsSync(join(dir, ".claude/skills/init-pantoken/SKILL.md"))).toBe(true);
   expect(existsSync(join(dir, ".claude/skills/create-pantoken-app/SKILL.md"))).toBe(true);
+  expect(existsSync(join(dir, ".claude/skills/create-pantoken-mockup/SKILL.md"))).toBe(true);
   expect(existsSync(join(dir, "AGENTS.md"))).toBe(true);
+});
+
+test("ships intent routing for apps, browser mockups, and sendable email", () => {
+  expect(AGENTS_MD).toContain("Standalone artifact");
+  expect(AGENTS_MD).toContain("search @pantoken");
+  expect(AGENTS_MD).toContain("@pantoken");
+  expect(AGENTS_MD).toContain("@pantoken/email");
 });
 
 test("'all' writes every asset, deduped", () => {

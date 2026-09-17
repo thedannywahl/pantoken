@@ -85,6 +85,7 @@ const agentAssets: Record<string, string> = {
   windsurf: readFileSync(join(root, "assets/windsurf.md"), "utf8"),
   initSkill: readFileSync(join(root, "skills/init-pantoken/SKILL.md"), "utf8"),
   createAppSkill: readFileSync(join(root, "skills/create-pantoken-app/SKILL.md"), "utf8"),
+  createMockupSkill: readFileSync(join(root, "skills/create-pantoken-mockup/SKILL.md"), "utf8"),
 };
 writeFileSync(
   join(outDir, "assets.ts"),

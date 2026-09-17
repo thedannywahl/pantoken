@@ -5,3 +5,4 @@ tokens:
       "SKILL.md": 500
     overrides:
       "skills/create-pantoken-app/SKILL.md": 2200
+      "skills/create-pantoken-mockup/SKILL.md": 1600

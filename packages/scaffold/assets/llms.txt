@@ -19,6 +19,10 @@
 - Icons: `@pantoken/icons` for raw decoded SVG markup/data (`getIcon("arrow-left")`), or
 	`@pantoken/web-components` for a drop-in `<instui-icon>` custom element.
 - Component behaviors (vanilla JS): `@pantoken/interactions` — `initModal`, `initTooltip`, `initInPlaceEdit`, `initCloseButton`; IIFE entry points for CDN.
+- shadcn registry: `shadcn search @pantoken`, `shadcn view @pantoken/<item>`, then `shadcn add
+	@pantoken/<item>`. Items install CSS/packages and usage metadata, not React components.
+- Standalone browser mockups: use the CDN guide, component capability manifest, demos, and optional
+	per-component interaction IIFEs. Sendable email uses concrete `@pantoken/email` values inline.
 
 ## Frameworks
 

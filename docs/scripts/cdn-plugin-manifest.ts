@@ -15,7 +15,9 @@ import { icons as vendoredCustomIcons } from "../../plugins/pantoken/custom-icon
 import { logos, products } from "../../plugins/pantoken/logos/src/index.ts";
 
 const outDir = resolve(import.meta.dirname, "../.vitepress/theme/generated");
+const publicDir = resolve(import.meta.dirname, "../public");
 mkdirSync(outDir, { recursive: true });
+mkdirSync(publicDir, { recursive: true });
 
 // ── Custom components ────────────────────────────────────────────────────────
 // Mirrors the `[name, rules]` tuple `scripts/build-entries.ts` uses to emit per-component sheets.
@@ -29,6 +31,22 @@ const customComponents = [
 // Vendored icons in the same --instui-icon-<name> namespace as the InstUI icon set — one checkbox
 // each, listed on the Icons tab below Simple Icons.
 const customIcons = vendoredCustomIcons.map((i) => ({ name: i.name }));
+
+const layouts = [
+  "wrapper",
+  "callout",
+  "hero",
+  "page-layout",
+  "rubric-note",
+  "testimonial",
+  "two-column",
+].map((name) => ({ name }));
+
+const simpleIcons = {
+  pkg: "@pantoken/plugin-simple-icons",
+  file: "simple-icons.css",
+  manifest: "https://pantoken.app/icon-manifest.json",
+};
 
 // ── Other plugins ─────────────────────────────────────────────────────────────
 // Single-file CSS plugins that aren't rolled into Base/Utilities and aren't components, icons, or
@@ -44,6 +62,12 @@ const otherPlugins = [
     label: "Primitives",
   },
   { key: "layouts", pkg: "@pantoken/plugin-layouts", file: "layouts.css", label: "Layouts" },
+  {
+    key: "theme-colors",
+    pkg: "@pantoken/plugin-custom-theme-colors",
+    file: "custom-theme-colors.css",
+    label: "Custom theme colors",
+  },
   {
     key: "visual-debug",
     pkg: "@pantoken/plugin-visual-debug",
@@ -69,14 +93,13 @@ const logosByProduct = products.map((product) => ({
 }));
 
 const out = resolve(outDir, "cdn-plugin-manifest.json");
-writeFileSync(
-  out,
-  `${JSON.stringify(
-    { customComponents, otherPlugins, customIcons, logos: logosByProduct },
-    null,
-    2,
-  )}\n`,
-);
+const manifest = `${JSON.stringify(
+  { customComponents, layouts, otherPlugins, customIcons, simpleIcons, logos: logosByProduct },
+  null,
+  2,
+)}\n`;
+writeFileSync(out, manifest);
+writeFileSync(resolve(publicDir, "cdn-plugin-manifest.json"), manifest);
 console.log(
   `✓ docs: wrote cdn-plugin-manifest.json (${customComponents.length} custom components, ` +
     `${otherPlugins.length} other plugins, ${customIcons.length} custom icons, ` +

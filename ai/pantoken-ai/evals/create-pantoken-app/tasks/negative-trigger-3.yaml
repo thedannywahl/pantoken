@@ -1,0 +1,16 @@
+id: negative-trigger-003
+name: Standalone mockup anti-trigger
+description: A one-file browser mockup belongs to create-pantoken-mockup, not application scaffolding.
+tags:
+  - negative-trigger
+inputs:
+  prompt: "Make a quick standalone HTML mockup with Pantoken components; do not create a project"
+expected:
+  should_trigger: false
+graders:
+  - type: text
+    name: avoids-app-scaffolding
+    config:
+      not_contains:
+        - "npm init"
+        - "pantoken-ai scaffold"

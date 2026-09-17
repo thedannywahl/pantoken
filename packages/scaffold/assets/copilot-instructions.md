@@ -2,6 +2,12 @@
 
 When styling this project, use pantoken components, icons and tokens.
 
+- First distinguish a maintained application from a standalone artifact. For a single HTML mockup
+  or sendable email, follow the `create-pantoken-mockup` skill instead of scaffolding a project.
+- In a shadcn project, discover CSS items with `shadcn search @pantoken`, inspect with `shadcn view
+@pantoken/<item>`, and install with `shadcn add @pantoken/<item>`. These are styles and metadata,
+  not React components. `@pantoken/shadcn` is only the CSS-variable bridge.
+
 - Tokens are CSS custom properties `--instui-<group>-<name>` (e.g. `--instui-color-background-brand`).
   Use `var(--instui-*)` references, never hard-coded colours, so theming keeps working. Resolve real
   names from `@pantoken/tokens` — don't guess. If the exact token name is unknown, state that the

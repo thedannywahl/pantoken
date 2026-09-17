@@ -115,7 +115,8 @@ changes. See `scripts/wrapper-layout.ts`.
 ## Integration with `@pantoken/ai`
 
 `@pantoken/ai`'s `pantoken-ai scaffold <platform>` command wraps this package and additionally
-installs pantoken's agent assets (AGENTS.md, editor/agent rules, skills) into the same directory.
+installs pantoken's agent assets (AGENTS.md, editor/agent rules, and skills for maintained apps and
+standalone browser/email mockups) into the same directory.
 
 ## License
 

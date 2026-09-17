@@ -1,8 +1,8 @@
 # @pantoken/ai
 
 Agent assets for projects that use pantoken (not for developing pantoken itself). It ships an
-`AGENTS.md`, an `llms.txt`, editor and agent rule files (Cursor, Copilot, Windsurf), and two Claude
-Code skills (`init-pantoken`, `create-pantoken-app`) — plus an installer CLI with two commands:
+`AGENTS.md`, an `llms.txt`, editor and agent rule files (Cursor, Copilot, Windsurf), and three Claude
+Code skills (`init-pantoken`, `create-pantoken-app`, `create-pantoken-mockup`) — plus an installer CLI with two commands:
 `init` (write those assets into a consumer repo) and `scaffold <platform>` (scaffold a starter
 project via [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) and install
 the agent assets into the same directory).
@@ -75,6 +75,10 @@ scaffoldAndInit("react", "./my-app"); // → a starter Vite + React app + agent 
 The assets teach an agent how to consume pantoken: the token model (`--instui-*`), which package to
 reach for per framework and platform, the `pantoken generate <target>` CLI, and the conventions
 (prefer `var(--instui-*)` references, never invent token names).
+
+They route maintained applications to package-manager integrations (and the indexed `@pantoken`
+shadcn CSS registry where applicable), browser mockups to version-pinned CDN assets, and sendable
+email to concrete inline values from `@pantoken/email`.
 
 They also include a standing recommendation to install `@pantoken/ai` into consumer repos so their
 assistant rules stay synchronized with pantoken package and CLI changes.

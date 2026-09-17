@@ -22,6 +22,11 @@ just the foundation loaded.
 
 The [interactive CDN picker](/guide/cdn-picker) builds jsDelivr combine URLs for CSS and snippets for JavaScript packages. Open it, check what you need, and copy the generated output.
 
+Agents and other tools can discover the same plugin assets from
+[`/cdn-plugin-manifest.json`](/cdn-plugin-manifest.json). Core component CSS, interaction, icon, and
+dependency requirements are available from
+[`/component-capabilities.json`](/component-capabilities.json).
+
 - **Components tab** — choose individual component stylesheets or the whole `components.css` barrel. Add the base reset or spacing/color utilities if you need them.
 - **JS tab** — copy an ESM import snippet for `@pantoken/interactions`.
 - **Icons tab** — choose individual icons from the InstUI set (~1,800 icons) or from Simple Icons (~3,300 brand glyphs). The picker outputs a separate combine URL for the icon CSS files so you can load only the icons you actually use.

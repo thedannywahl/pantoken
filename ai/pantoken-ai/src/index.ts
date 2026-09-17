@@ -3,9 +3,9 @@
  * developing pantoken itself).
  *
  * It ships an `AGENTS.md`, an `llms.txt`, editor/agent rule files (Cursor, Copilot, Windsurf), and
- * Claude Code skills (`init-pantoken`, `create-pantoken-app`), plus {@link installAgentAssets} /
- * {@link scaffoldAndInit} / the `pantoken-ai` CLI to drop them into a consumer repo at the
- * conventional paths.
+ * Claude Code skills (`init-pantoken`, `create-pantoken-app`, `create-pantoken-mockup`), plus
+ * {@link installAgentAssets} / {@link scaffoldAndInit} / the `pantoken-ai` CLI to drop them into a
+ * consumer repo at the conventional paths.
  *
  * Asset content and the writer function now live in `@pantoken/scaffold` (so the base scaffold
  * flow can offer them without a circular dependency); re-exported here for back-compat.
