@@ -27,3 +27,7 @@ vitepress has some builtin icons and we should use those before doing our own sv
 ---
 
 make sure that the component is accessible, and any strings/labels are able to go through the vitepress translation pipeline automatically.
+
+---
+
+Start implementation
