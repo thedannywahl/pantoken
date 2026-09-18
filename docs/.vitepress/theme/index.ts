@@ -32,6 +32,8 @@ import AgentToolsPage from "./components/AgentToolsPage.vue";
 import CanvasRcePage from "./components/CanvasRcePage.vue";
 import GetStartedTabs from "./components/GetStartedTabs.vue";
 import RegistryBrowser from "./components/RegistryBrowser.vue";
+import SidebarToggle from "@pantoken/vitepress-sidebar-toggle/SidebarToggle.vue";
+import "@pantoken/vitepress-sidebar-toggle/style.css";
 // Import register() from the web-components SOURCE, not `@pantoken/web-components` (dist). The dist
 // bundle is only rebuilt by `vp pack`, which can't run nested under vitepress — so a package import
 // would freeze element behaviour + shadow CSS at the last pack. The source graph is Node-free (no
@@ -145,6 +147,8 @@ export default {
     ctx.app.component("CanvasRcePage", CanvasRcePage);
     ctx.app.component("GetStartedTabs", GetStartedTabs);
     ctx.app.component("RegistryBrowser", RegistryBrowser);
+    // The whole-sidebar show/hide toggle (see Layout.vue) — @pantoken/vitepress-sidebar-toggle.
+    ctx.app.component("SidebarToggle", SidebarToggle);
 
     // Register the pantoken custom elements so the `@example` blocks on the web-components API pages
     // render live (the elements inline their own CSS; the token sheet above colours them). A no-op

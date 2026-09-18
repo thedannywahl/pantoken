@@ -12,8 +12,14 @@ const { Layout } = DefaultTheme;
       Flexbox ordering (see <style>) repositions it right after .translations (order 1). Hidden at
       768–1280 px where VPNavBarExtra (kebab) takes over. The appearance toggle now lives inside
       ThemeSelector's ThemeColorPicker instead of its own nav-bar slot.
+
+      SidebarToggle sits right before it, at every width — it's a single icon button (no swatch
+      grid/label to collapse), so it doesn't need the same overflow handling.
     -->
     <template #nav-bar-content-after>
+      <div class="VPNavBarSidebarToggle">
+        <SidebarToggle />
+      </div>
       <div class="VPNavBarThemeSelector">
         <ThemeSelector />
       </div>
@@ -36,6 +42,11 @@ const { Layout } = DefaultTheme;
  *   order 2  – .VPNavBarThemeSelector  (our top-level slot wrapper)
  *   order 3+ – .social-links, .extra, .hamburger  (already hidden at ≥1280 px or stay last)
  */
+.VPNavBarSidebarToggle {
+  display: flex;
+  align-items: center;
+}
+
 .VPNavBarThemeSelector {
   /* Mirror VPNavBarTranslations / VPNavBarAppearance: hidden until ≥1280 px. */
   display: none;

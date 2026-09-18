@@ -79,6 +79,7 @@
     "@pantoken/utils": "workspace:*",
     "@pantoken/vite-workspace-orchestrator": "workspace:*",
     "@pantoken/vitepress": "workspace:*",
+    "@pantoken/vitepress-sidebar-toggle": "workspace:*",
     "@pantoken/web-components": "workspace:*",
     "@resvg/resvg-js": "catalog:",
     "@types/node": "catalog:",

@@ -852,6 +852,9 @@ importers:
       '@pantoken/vitepress':
         specifier: workspace:*
         version: link:../renderers/vitepress
+      '@pantoken/vitepress-sidebar-toggle':
+        specifier: workspace:*
+        version: link:../plugins/vitepress/side-bar-toggle
       '@pantoken/web-components':
         specifier: workspace:*
         version: link:../renderers/web-components

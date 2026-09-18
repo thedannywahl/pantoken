@@ -196,6 +196,7 @@ export interface UiStrings {
     sidebarMenuLabel: string;
     returnToTopLabel: string;
     langMenuLabel: string;
+    sidebarToggleLabel: string;
     lastUpdatedText: string;
     agentShellPrompt: string;
     notFound: {

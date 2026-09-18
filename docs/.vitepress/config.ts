@@ -10,6 +10,7 @@ import {
 } from "@pantoken/demo";
 import llmstxt from "vitepress-plugin-llms";
 import type { HeadConfig } from "vitepress";
+import { sidebarToggleHead } from "@pantoken/vitepress-sidebar-toggle";
 import { partitionApiSidebar } from "./api-sidebar.js";
 import { LOCALE_THEMES, NON_LATIN_LOCALES, NON_ROOT_LOCALES, type DocsLocale } from "./i18n.js";
 import { mermaidPlugin } from "./plugins/vitepress-mermaid/index.js";
@@ -468,6 +469,8 @@ const localesConfig = Object.fromEntries(
           sidebarMenuLabel: locale.chrome.sidebarMenuLabel,
           returnToTopLabel: locale.chrome.returnToTopLabel,
           langMenuLabel: locale.chrome.langMenuLabel,
+          // Read by the sidebar show/hide toggle (Layout.vue) via `useData().theme`.
+          sidebarToggleLabel: locale.chrome.sidebarToggleLabel,
           // `lastUpdated: true` is set globally below, so localize its label here.
           lastUpdated: { text: locale.chrome.lastUpdatedText },
           notFound: locale.chrome.notFound,
@@ -721,7 +724,10 @@ export default defineConfig({
       {},
       `(function(){try{var t=localStorage.getItem("pantoken-theme")||"rebrand";var d=document.documentElement;d.dataset.pantokenTheme=t;if(t!=="rebrand")d.classList.remove("dark");}catch(e){}})();`,
     ],
+    // Same before-paint-restore technique, for the sidebar show/hide toggle (see Layout.vue).
+    sidebarToggleHead(),
     // `favicon.ico` is also requested at the site root by browsers that ignore the declared icon.
+
     ["link", { rel: "icon", type: "image/x-icon", sizes: "any", href: `${base}favicon.ico` }],
     ["link", { rel: "icon", type: "image/png", href: `${base}favicon.png` }],
     ["link", { rel: "stylesheet", href: `${base}demos-assets/focus-outline.css` }],
