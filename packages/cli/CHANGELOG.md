@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 0.1.40
+
+### Patch Changes
+
+- 9ba476b: Document `pantoken add` as a convenience wrapper for the indexed, CSS-native `@pantoken` shadcn
+  registry, including the recommended list, search, view, and add workflow. Clarify that registry
+  items install Pantoken styles and metadata rather than React components.
+- Updated dependencies [9ba476b]
+- Updated dependencies [9ba476b]
+- Updated dependencies [9ba476b]
+  - @pantoken/scaffold@1.4.0
+  - @pantoken/pendo@0.4.7
+  - @pantoken/drupal@0.1.32
+  - @pantoken/hugo@0.1.33
+  - @pantoken/jekyll@0.1.33
+
 ## 0.1.39
 
 ### Patch Changes

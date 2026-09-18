@@ -1,5 +1,41 @@
 # CHANGELOG
 
+## 0.2.20
+
+### Patch Changes
+
+- Updated dependencies [9ba476b]
+- Updated dependencies [9ba476b]
+- Updated dependencies [9ba476b]
+- Updated dependencies [9ba476b]
+- Updated dependencies [9ba476b]
+- Updated dependencies [9ba476b]
+- Updated dependencies [9ba476b]
+  - @pantoken/plugin-custom-components@0.4.0
+  - @pantoken/components@1.2.2
+  - @pantoken/plugin-layouts@0.4.0
+  - @pantoken/cli@0.1.40
+  - @pantoken/plugin-custom-icons@0.3.11
+  - @pantoken/pendo@0.4.7
+  - @pantoken/shadcn@0.2.0
+  - @pantoken/astro@0.1.21
+  - @pantoken/tinymce@0.2.9
+  - @pantoken/drupal@0.1.32
+  - @pantoken/hugo@0.1.33
+  - @pantoken/jekyll@0.1.33
+  - @pantoken/angular@0.1.36
+  - @pantoken/bootstrap@0.1.3
+  - @pantoken/css-in-js@0.1.17
+  - @pantoken/docusaurus@0.1.3
+  - @pantoken/foundation@0.1.4
+  - @pantoken/mui@0.1.17
+  - @pantoken/react@0.1.37
+  - @pantoken/storybook@0.1.17
+  - @pantoken/svelte@0.1.37
+  - @pantoken/vitepress@0.2.3
+  - @pantoken/vue@0.1.37
+  - @pantoken/web-components@0.6.8
+
 ## 0.2.19
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.5.10
+
+### Patch Changes
+
+- 9ba476b: Reorganize the documentation sidebars and add an Agent Tools guide.
+
 ## 0.5.9
 
 ### Patch Changes

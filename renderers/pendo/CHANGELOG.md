@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.4.7
+
+### Patch Changes
+
+- 9ba476b: Restore bottom spacing for Pendo banner poll titles and subtitles.
+- Updated dependencies [9ba476b]
+  - @pantoken/components@1.2.2
+
 ## 0.4.6
 
 ### Patch Changes
