@@ -17,3 +17,7 @@ Report back: a concise reference list of relevant component classes and their mo
 ---
 
 work in incremental conventional commits, with changesets even for private packages, ignoring changed files you haven't touched as there are other agents.
+
+---
+
+Start implementation
