@@ -12,6 +12,7 @@ packages:
   - plugins/postcss/*
   - plugins/typedoc/*
   - plugins/vite/*
+  - plugins/vitepress/*
   - tools/*
 
 catalogMode: prefer
