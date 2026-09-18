@@ -223,9 +223,15 @@ catalogs:
     '@codemirror/autocomplete':
       specifier: ^6.20.3
       version: 6.20.3
+    '@codemirror/lang-css':
+      specifier: ^6.3.1
+      version: 6.3.1
     '@codemirror/lang-html':
       specifier: ^6.4.12
       version: 6.4.12
+    '@codemirror/lang-javascript':
+      specifier: ^6.2.5
+      version: 6.2.5
     '@codemirror/lint':
       specifier: ^6.9.7
       version: 6.9.7
@@ -756,6 +762,15 @@ importers:
 
   docs:
     devDependencies:
+      '@codemirror/lang-css':
+        specifier: 'catalog:'
+        version: 6.3.1
+      '@codemirror/lang-html':
+        specifier: 'catalog:'
+        version: 6.4.12
+      '@codemirror/lang-javascript':
+        specifier: 'catalog:'
+        version: 6.2.5
       '@cssdoc/config':
         specifier: 'catalog:'
         version: 0.16.0
@@ -765,6 +780,9 @@ importers:
       '@cssdoc/typedoc':
         specifier: 'catalog:'
         version: 0.16.0(typedoc@0.28.20(typescript@6.0.3))
+      '@pantoken/canvas-theme-editor':
+        specifier: workspace:*
+        version: link:../platforms/canvas-theme-editor
       '@pantoken/cdn':
         specifier: workspace:*
         version: link:../packages/cdn
@@ -795,6 +813,9 @@ importers:
       '@pantoken/plugin-custom-icons':
         specifier: workspace:*
         version: link:../plugins/pantoken/custom-icons
+      '@pantoken/plugin-layouts':
+        specifier: workspace:*
+        version: link:../plugins/pantoken/layouts
       '@pantoken/plugin-logos':
         specifier: workspace:*
         version: link:../plugins/pantoken/logos
@@ -807,6 +828,12 @@ importers:
       '@pantoken/plugin-visual-debug':
         specifier: workspace:*
         version: link:../plugins/pantoken/visual-debug
+      '@pantoken/scaffold':
+        specifier: workspace:*
+        version: link:../packages/scaffold
+      '@pantoken/tinymce':
+        specifier: workspace:*
+        version: link:../renderers/tinymce
       '@pantoken/tokens':
         specifier: workspace:*
         version: link:../formats/tokens
@@ -834,6 +861,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.1
+      codemirror:
+        specifier: 'catalog:'
+        version: 6.0.2
       markdown-it:
         specifier: 'catalog:'
         version: 15.0.2
@@ -855,6 +885,9 @@ importers:
       shiki:
         specifier: 'catalog:'
         version: 4.4.3
+      tinymce:
+        specifier: 'catalog:'
+        version: 5.10.9
       typedoc:
         specifier: 'catalog:'
         version: 0.28.20(typescript@6.0.3)
