@@ -1,0 +1,596 @@
+ci is failing on PR 171, investigate and remediate with incremental conventional commits and changesets where appropriate. use the `copilot` option for any translation needs. use `gh` cli to investigate https://github.com/thedannywahl/pantoken/pull/171
+
+---
+
+guide/cli was deleted from the source language, I'm guessing we don't have a way to off-board docs and that's causing the errors.
+
+---
+
+and don't forget the `--yes` on cli commands so you don't get stuck in interactive terminals.
+
+---
+
+oh, cli.md was kept there were others that were removed.
+
+---
+
+[Terminal 198af115-269e-4967-9117-b5bd5e9635db notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on ai-registry ≡  ~8 via  26.8.2 
+➜  rg -n 'commander|option\(|--yes|program\.option|allowUnknownOption|parseAsync' docs/scripts/translate-guide-po.ts tools/translation-adapters -g '*.ts' -g '*.sh'
+pantoken on ai-registry ≡  ~8 via  26.8.2 x 
+➜  git status --short
+ M docs/scripts/translate-guide-po.ts
+ M l10n/ar/docs.guides.po
+ M l10n/ca/docs.guides.po
+ M l10n/da/docs.guides.po
+ M l10n/en-AU/docs.guides.po
+ M l10n/en-CA/docs.guides.po
+ M l10n/en-GB/docs.guides.po
+ M l10n/fi/docs.guides.po
+ M l10n/fr-CA/docs.guides.po
+ M l10n/fr/docs.guides.po
+ M l10n/ga/docs.guides.po
+ M l10n/hy/docs.guides.po
+ M l10n/nl/docs.guides.po
+ M tools/i18n-engine/src/pipeline.ts
+ M tools/i18n-engine/tests/pipeline-content.test.ts
+pantoken on ai-registry ≡  ~15 via  26.8.2 
+➜  git diff --stat -- docs/scripts/translate-guide-po.ts tools/i18n-engine/src/pipeline.ts tools/i18n-engine/tests/pipeline-content.test.ts l10n/ar/docs.guides.po l10n/ca/docs.guides.po l10n/da/docs.guides.po l10n/en-AU/docs.guides.po l10n/en-CA/docs.guides.po l10n/en-GB/docs.guides.po l10n/fi/docs.guides.po l10n/fr-CA/docs.guides.po l10n/fr/docs.guides.po l10n/ga/docs.guides.po l10n/hy/docs.guides.po l10n/nl/docs.guides.po
+ docs/scripts/translate-guide-po.ts               |    4 +
+ l10n/ar/docs.guides.po                           | 2846 ++++++++++++++++++++-
+ l10n/ca/docs.guides.po                           | 2901 ++++++++++++++++++++-
+ l10n/da/docs.guides.po                           | 2895 ++++++++++++++++++++-
+ l10n/en-AU/docs.guides.po                        | 2905 ++++++++++++++++++++-
+ l10n/en-CA/docs.guides.po                        | 2905 ++++++++++++++++++++-
+ l10n/en-GB/docs.guides.po                        | 2905 ++++++++++++++++++++-
+ l10n/fi/docs.guides.po                           | 2838 ++++++++++++++++++++-
+ l10n/fr-CA/docs.guides.po                        | 2886 ++++++++++++++++++++-
+ l10n/fr/docs.guides.po                           | 2927 ++++++++++++++++++++-
+ l10n/ga/docs.guides.po                           | 2902 ++++++++++++++++++++-
+ l10n/hy/docs.guides.po                           | 2850 ++++++++++++++++++++-
+ l10n/nl/docs.guides.po                           | 2931 +++++++++++++++++++++-
+ tools/i18n-engine/src/pipeline.ts                |   26 +-
+ tools/i18n-engine/tests/pipeline-content.test.ts |   32 +-
+ 15 files changed, 34511 insertions(+), 242 deletions(-)
+pantoken on ai-registry ≡  ~15 via  26.8.2 
+➜  git diff -- l10n/ar/docs.guides.po | sed -n '1,160p'
+diff --git a/l10n/ar/docs.guides.po b/l10n/ar/docs.guides.po
+index 713c29dfe..8b828fb80 100644
+--- a/l10n/ar/docs.guides.po
++++ b/l10n/ar/docs.guides.po
+@@ -4,57 +4,2863 @@ msgstr ""
+ "PO-Revision-Date: 2026-09-17 23:23+0000\n"
+ "Last-Translator: pantoken localization engine\n"
+ "Language-Team: pantoken\n"
++"Language: und\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
+-"Language: und\n"
+ 
+ #: guide/agent-tools.md
+ #, no-c-format
+-msgid "---\ntitle: Agent Tools\nlayout: page\n---\n\n<AgentToolsPage />\n"
+-msgstr "---\ntitle: أدوات الوكيل\nlayout: page\n---\n\n<AgentToolsPage />\n"
++msgid ""
++"---\n"
++"title: Agent Tools\n"
++"layout: page\n"
++"---\n"
++"\n"
++"<AgentToolsPage />\n"
++msgstr ""
++"---\n"
++"title: أدوات الوكيل\n"
++"layout: page\n"
++"---\n"
++"\n"
++"<AgentToolsPage />\n"
+ 
+ #: guide/architecture.md
+ #, no-c-format
+-msgid "# Architecture\n\npantoken has one job: resolve Instructure's design tokens and icons once, then reshape that model\nfor every target. The layers below keep that reshaping honest and keep the published packages free\nof any GitHub-only upstream.\n\n## The layers\n\n```mermaid\nflowchart TD\n  upstream[\"@instructure/instructure-design-tokens<br/>(upstream, GitHub-only)\"]\n  core[\"@pantoken/core<br/>buildTokens() / toCss() - resolves upstream into the IR\"]\n  tokens[\"@pantoken/tokens<br/>the IR, vendored as static JSON per theme<br/>(the decoupling point)\"]\n\n  formats[\"formats/<br/>(css, scss, ...)\"]\n  renderers[\"renderers/<br/>(react, vue, web-components, ...)\"]\n  platforms[\"platforms/<br/>(swift, wordpress, ...)\"]\n  design[\"design/<br/>(figma, swatches)\"]\n  bundlers[\"bundlers/<br/>(vite, tailwind, ...)\"]\n\n  upstream --> core --> tokens\n  tokens --> formats\n  tokens --> renderers\n  tokens --> platforms\n  tokens --> design\n  tokens --> bundlers\n```\n\n- **`@pantoken/model`** holds the type contracts, and nothing else. It's the source of truth for the\n  `Token` shape and the plugin contract, with zero dependencies, so any package can depend on it\n  freely.\n- **`@pantoken/core`** is the only package that touches the upstream source. It resolves tokens and\n  icons into the canonical IR and renders CSS.\n- **`@pantoken/tokens`** vendors that IR as static JSON at build time. This is the decoupling point:\n  downstream packages read `@pantoken/tokens`, never `@pantoken/core`, so `npm i pantoken` never\n  reaches for the GitHub-only upstream.\n- **`@pantoken/utils`** carries the shared helpers — the `var(--x)` resolver, the reference regexes,\n  case and color conversion, and the drift checks that keep generated output faithful to the IR.\n\n## Why tokens are vendored\n\nThe upstream token package lives on GitHub, not npm. If every downstream package depended on it,\n`npm i pantoken` would fail for anyone without that access. Instead `@pantoken/tokens` resolves the\nupstream once at build time and writes the result to static JSON. The published packages carry that\nJSON, so they install cleanly from npm, pin to semver, and work offline.\n\n## Buckets\n\nEach downstream bucket is a way of consuming the IR:\n\n- **formats/** — turn the tokens into a file (CSS, SCSS, Less, Stylus, DTCG).\n- **renderers/** — framework and tool integrations (React, Vue, Svelte, MUI, Pendo, and more).\n- **bundlers/** — build-tool plugins and presets (Vite, Next, Tailwind, Panda, PostCSS, webpack).\n- **platforms/** — native and site-generator targets (Swift, Kotlin, Rust, WordPress, Drupal).\n- **design/** — payloads for design tools (Figma, color swatches).\n- **plugins/** — optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).\n\n## Generated output\n\nEvery package that emits a file writes it to a per-package `generated/` directory that a build\nreproduces, so nothing generated is committed. A workspace task validates all of it. See\n[Generated output](/guide/generated-output).\n"
+-msgstr "# البنية المعمارية\n\npantoken لها مهمة واحدة: حل رموز التصميم (design tokens) والأيقونات الخاصة بـ Instructure مرة واحدة، ثم إعادة تشكيل ذلك النموذج لكل هدف. الطبقات أدناه تحافظ على نزاهة عملية إعادة التشكيل وتضمن أن الحزم المنشورة خالية من أي تبعيات خاصة بـ GitHub.\n\n## الطبقات\n\n```mermaid\nflowchart TD\n  upstream[\"@instructure/instructure-design-tokens<br/>(upstream, GitHub-only)\"]\n  core[\"@pantoken/core<br/>buildTokens() / toCss() - resolves upstream into the IR\"]\n  tokens[\"@pantoken/tokens<br/>the IR, vendored as static JSON per theme<br/>(the decoupling point)\"]\n\n  formats[\"formats/<br/>(css, scss, ...)\"]\n  renderers[\"renderers/<br/>(react, vue, web-components, ...)\"]\n  platforms[\"platforms/<br/>(swift, wordpress, ...)\"]\n  design[\"design/<br/>(figma, swatches)\"]\n  bundlers[\"bundlers/<br/>(vite, tailwind, ...)\"]\n\n  upstream --> core --> tokens\n  tokens --> formats\n  tokens --> renderers\n  tokens --> platforms\n  tokens --> design\n  tokens --> bundlers\n```\n\n- **`@pantoken/model`** يحتوي على عقود الأنواع، ولا شيء غيرها. هو مصدر الحقيقة لشكل `Token` وعقدة الإضافة (plugin)، بدون أي تبعيات، بحيث يمكن لأي حزمة الاعتماد عليه بحرية.\n- **`@pantoken/core`** هي الحزمة الوحيدة التي تتعامل مع المصدر الصاعد upstream. تقوم بحل الرموز والأيقونات إلى IR القانوني canonical IR وتولد CSS.\n- **`@pantoken/tokens`** توفر ذلك الـ IR كـ JSON ثابت في وقت البناء. هذه هي نقطة فصل الارتباط: الحزم المتتابعة تقرأ `@pantoken/tokens`، لا `@pantoken/core`، لذا `npm i pantoken` لا تصل أبداً إلى المصدر الصاعد الخاص بـ GitHub.\n- **`@pantoken/utils`** تحمل المساعدات المشتركة — محلل `var(--x)`، تعابير المنتظم للمرجع، تحويل الحالة والألوان، وفحوصات الإنحراف (drift) التي تحافظ على إخراج المولد مطابقاً للـ IR.\n\n## لماذا تُوزّن الرموز\n\nحزمة الرموز الصاعدة upstream مستضافة على GitHub، وليست على npm. لو اعتمدت كل الحزم المتتابعة عليها، فـ `npm i pantoken` سيفشل لأي شخص بدون تلك الصلاحية. بدلاً من ذلك `@pantoken/tokens` تحل المصدر الصاعد مرة واحدة في وقت البناء وتكتب النتيجة إلى JSON ثابت. الحزم المنشورة تحمل ذلك الـ JSON، لذا تُثبَّت بسهولة من npm، تُقفل على semver، وتعمل دون اتصال.\n\n## الدلاء (Buckets)\n\nكل دلاء متتابعة هي وسيلة لاستهلاك الـ IR:\n\n- **formats/** — تحويل الرموز إلى ملف (CSS، SCSS، Less، Stylus، DTCG).\n- **renderers/** — تكاملات الإطار والأدوات (React، Vue، Svelte، MUI، Pendo، والمزيد).\n- **bundlers/** — ملحقات وإعدادات أدوات البناء (Vite، Next، Tailwind، Panda، PostCSS، webpack).\n- **platforms/** — أهداف أصلية ومنشئي مواقع (Swift، Kotlin، Rust، WordPress، Drupal).\n- **design/** — حمولات لأدوات التصميم (Figma، عينات الألوان).\n- **plugins/** — تحويلات اختيارية توسع مخرجات الرموز أو CSS. انظر [الإضافات](/guide/plugins).\n\n## الإخراج المولد\n\nكل حزمة تُصدر ملفاً تكتبه إلى دليل `generated/` خاص بالحزمة يتم إعادة إنتاجه أثناء البناء، لذا لا يتم الالتزام بأي شيء مولَّد. مهمة مساحة العمل تتحقق من كل ذلك. انظر [الإخراج المولد](/guide/generated-output).\n"
++msgid ""
++"# Architecture\n"
++"\n"
++"pantoken has one job: resolve Instructure's design tokens and icons once, "
++"then reshape that model\n"
++"for every target. The layers below keep that reshaping honest and keep the "
++"published packages free\n"
++"of any GitHub-only upstream.\n"
++"\n"
++"## The layers\n"
++"\n"
++"```mermaid\n"
++"flowchart TD\n"
++"  upstream[\"@instructure/instructure-design-tokens<br/>(upstream, GitHub-"
++"only)\"]\n"
++"  core[\"@pantoken/core<br/>buildTokens() / toCss() - resolves upstream into "
++"the IR\"]\n"
++"  tokens[\"@pantoken/tokens<br/>the IR, vendored as static JSON per theme<br/"
++">(the decoupling point)\"]\n"
++"\n"
++"  formats[\"formats/<br/>(css, scss, ...)\"]\n"
++"  renderers[\"renderers/<br/>(react, vue, web-components, ...)\"]\n"
++"  platforms[\"platforms/<br/>(swift, wordpress, ...)\"]\n"
++"  design[\"design/<br/>(figma, swatches)\"]\n"
++"  bundlers[\"bundlers/<br/>(vite, tailwind, ...)\"]\n"
++"\n"
++"  upstream --> core --> tokens\n"
++"  tokens --> formats\n"
++"  tokens --> renderers\n"
++"  tokens --> platforms\n"
++"  tokens --> design\n"
++"  tokens --> bundlers\n"
++"```\n"
++"\n"
++"- **`@pantoken/model`** holds the type contracts, and nothing else. It's the "
++"source of truth for the\n"
++"  `Token` shape and the plugin contract, with zero dependencies, so any "
++"package can depend on it\n"
++"  freely.\n"
++"- **`@pantoken/core`** is the only package that touches the upstream source. "
++"It resolves tokens and\n"
++"  icons into the canonical IR and renders CSS.\n"
++"- **`@pantoken/tokens`** vendors that IR as static JSON at build time. This "
++"is the decoupling point:\n"
++"  downstream packages read `@pantoken/tokens`, never `@pantoken/core`, so "
++"`npm i pantoken` never\n"
++"  reaches for the GitHub-only upstream.\n"
++"- **`@pantoken/utils`** carries the shared helpers — the `var(--x)` "
++"resolver, the reference regexes,\n"
++"  case and color conversion, and the drift checks that keep generated output "
++"faithful to the IR.\n"
++"\n"
++"## Why tokens are vendored\n"
++"\n"
++"The upstream token package lives on GitHub, not npm. If every downstream "
++"package depended on it,\n"
++"`npm i pantoken` would fail for anyone without that access. Instead "
++"`@pantoken/tokens` resolves the\n"
++"upstream once at build time and writes the result to static JSON. The "
++"published packages carry that\n"
++"JSON, so they install cleanly from npm, pin to semver, and work offline.\n"
++"\n"
++"## Buckets\n"
++"\n"
++"Each downstream bucket is a way of consuming the IR:\n"
++"\n"
++"- **formats/** — turn the tokens into a file (CSS, SCSS, Less, Stylus, "
++"DTCG).\n"
++"- **renderers/** — framework and tool integrations (React, Vue, Svelte, MUI, "
++"Pendo, and more).\n"
++"- **bundlers/** — build-tool plugins and presets (Vite, Next, Tailwind, "
++"Panda, PostCSS, webpack).\n"
++"- **platforms/** — native and site-generator targets (Swift, Kotlin, Rust, "
++"WordPress, Drupal).\n"
++"- **design/** — payloads for design tools (Figma, color swatches).\n"
++"- **plugins/** — optional transforms that extend the token or CSS output. "
++"See [Plugins](/guide/plugins).\n"
++"\n"
++"## Generated output\n"
++"\n"
++"Every package that emits a file writes it to a per-package `generated/` "
++"directory that a build\n"
++"reproduces, so nothing generated is committed. A workspace task validates "
++"all of it. See\n"
++"[Generated output](/guide/generated-output).\n"
++msgstr ""
++"# البنية المعمارية\n"
++"\n"
++"pantoken لها مهمة واحدة: حل رموز التصميم (design tokens) والأيقونات الخاصة "
++"بـ Instructure مرة واحدة، ثم إعادة تشكيل ذلك النموذج لكل هدف. الطبقات أدناه "
++"تحافظ على نزاهة عملية إعادة التشكيل وتضمن أن الحزم المنشورة خالية من أي "
++"تبعيات خاصة بـ GitHub.\n"
++"\n"
++"## الطبقات\n"
++"\n"
++"```mermaid\n"
++"flowchart TD\n"
++"  upstream[\"@instructure/instructure-design-tokens<br/>(upstream, GitHub-"
++"only)\"]\n"
++"  core[\"@pantoken/core<br/>buildTokens() / toCss() - resolves upstream into "
++"the IR\"]\n"
++"  tokens[\"@pantoken/tokens<br/>the IR, vendored as static JSON per theme<br/"
++">(the decoupling point)\"]\n"
++"\n"
++"  formats[\"formats/<br/>(css, scss, ...)\"]\n"
++"  renderers[\"renderers/<br/>(react, vue, web-components, ...)\"]\n"
++"  platforms[\"platforms/<br/>(swift, wordpress, ...)\"]\n"
++"  design[\"design/<br/>(figma, swatches)\"]\n"
++"  bundlers[\"bundlers/<br/>(vite, tailwind, ...)\"]\n"
++"\n"
++"  upstream --> core --> tokens\n"
++"  tokens --> formats\n"
++"  tokens --> renderers\n"
++"  tokens --> platforms\n"
++"  tokens --> design\n"
++"  tokens --> bundlers\n"
++"```\n"
++"\n"
++"- **`@pantoken/model`** يحتوي على عقود الأنواع، ولا شيء غيرها. هو مصدر "
++"الحقيقة لشكل `Token` وعقدة الإضافة (plugin)، بدون أي تبعيات، بحيث يمكن لأي "
++"حزمة الاعتماد عليه بحرية.\n"
++"- **`@pantoken/core`** هي الحزمة الوحيدة التي تتعامل مع المصدر الصاعد "
++"upstream. تقوم بحل الرموز والأيقونات إلى IR القانوني canonical IR وتولد "
+pantoken on ai-registry ≡  ~15 via  26.8.2 
+➜  git diff -- docs/scripts/translate-guide-po.ts tools/i18n-engine/src/pipeline.ts tools/i18n-engine/tests/pipeline-content.test.ts | sed -n '1,260p'
+diff --git a/docs/scripts/translate-guide-po.ts b/docs/scripts/translate-guide-po.ts
+index 24f2895f0..cb91fa651 100644
+--- a/docs/scripts/translate-guide-po.ts
++++ b/docs/scripts/translate-guide-po.ts
+@@ -55,6 +55,10 @@ for (const locale of locales) {
+       }
+       return text;
+     });
++    if (localized.trim().length === 0) {
++      console.warn(`  ! ${locale} ${file}: empty translation, not cached`);
++      continue;
++    }
+     entry.msgstr = `${localized.trimEnd()}\n`;
+     entry.fuzzy = false;
+     entry.flags = entry.flags.filter((flag) => flag !== "fuzzy");
+diff --git a/tools/i18n-engine/src/pipeline.ts b/tools/i18n-engine/src/pipeline.ts
+index 94fd73596..bcbc951f8 100644
+--- a/tools/i18n-engine/src/pipeline.ts
++++ b/tools/i18n-engine/src/pipeline.ts
+@@ -8,7 +8,7 @@
+  *
+  * @module
+  */
+-import { globSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
++import { existsSync, globSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
+ import { dirname, join, relative, sep } from "node:path";
+ import { DriftReporter, type DriftPolicy } from "@pantoken/translation-adapters";
+ import type { ContentSpaceConfig, I18nConfig, MessagesSpaceConfig } from "./config.ts";
+@@ -269,9 +269,33 @@ export function runRenderContent(
+     writeFileSync(outPath, rendered);
+     filesWritten.push(outPath);
+   }
++  cleanupStaleRenderedFiles(space, configDir, locale, new Set(filesWritten));
+   return { space: spaceId, locale, filesWritten };
+ }
+ 
++function cleanupStaleRenderedFiles(
++  space: ContentSpaceConfig,
++  configDir: string,
++  locale: string,
++  filesWritten: ReadonlySet<string>,
++): void {
++  if (space.transientRender || !space.render.includes("{path}")) return;
++  const renderRoot = join(
++    configDir,
++    resolvePattern(space.render.slice(0, space.render.indexOf("{path}")), { locale }),
++  );
++  if (!existsSync(renderRoot)) return;
++  for (const path of renderedFiles(renderRoot)) {
++    if (!filesWritten.has(path)) rmSync(path, { force: true });
++  }
++}
++
++function renderedFiles(root: string): string[] {
++  return globSync("**/*", { cwd: root })
++    .map((path) => join(root, path))
++    .filter((path) => statSync(path).isFile());
++}
++
+ /** Splice `resolve`d translations back into one source file, per the space's segmentation. */
+ function renderContentFile(
+   segment: ContentSpaceConfig["segment"],
+diff --git a/tools/i18n-engine/tests/pipeline-content.test.ts b/tools/i18n-engine/tests/pipeline-content.test.ts
+index 50a53d882..ce5c78ad1 100644
+--- a/tools/i18n-engine/tests/pipeline-content.test.ts
++++ b/tools/i18n-engine/tests/pipeline-content.test.ts
+@@ -1,4 +1,4 @@
+-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
++import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+ import { tmpdir } from "node:os";
+ import { join } from "node:path";
+ import { afterEach, beforeEach, expect, test } from "vite-plus/test";
+@@ -111,3 +111,33 @@ test("splices a translated whole-file unit into the rendered output", () => {
+   expect(rendered).toContain("Egy react app.");
+   expect(rendered).toContain("{{projectName}}");
+ });
++
++test("removes stale persistent rendered files when a source file is removed", () => {
++  const persistentConfig = parseConfig({
++    source: "en",
++    locales: {
++      registry: "@pantoken/web-components#LOCALES",
++      exclude: [],
++      tiers: { source: ["en"], primary: ["hu"], secondary: ["*"] },
++    },
++    spaces: {
++      "scaffold.readme": {
++        kind: "content",
++        include: ["packages/scaffold/templates/*/README.md"],
++        root: "packages/scaffold/templates",
++        render: "packages/scaffold/generated/l10n/{locale}/{path}",
++        transientRender: false,
++        segment: "file",
++      },
++    },
++  });
++  runExtractContent(persistentConfig, repo, "scaffold.readme");
++  runRenderContent(persistentConfig, repo, "scaffold.readme", "hu");
++
++  rmSync(join(repo, "packages/scaffold/templates", "vue", "README.md"));
++  runExtractContent(persistentConfig, repo, "scaffold.readme");
++  runRenderContent(persistentConfig, repo, "scaffold.readme", "hu");
++
++  expect(existsSync(join(repo, "packages/scaffold/generated/l10n/hu/react/README.md"))).toBe(true);
++  expect(existsSync(join(repo, "packages/scaffold/generated/l10n/hu/vue/README.md"))).toBe(false);
++});
+pantoken on ai-registry ≡  ~15 via  26.8.2 
+➜  git restore -- l10n/ar/docs.guides.po l10n/ca/docs.guides.po l10n/da/docs.guides.po l10n/en-AU/docs.guides.po l10n/en-CA/docs.guides.po l10n/en-GB/docs.guides.po l10n/fi/docs.guides.po l10n/fr-CA/docs.guides.po l10n/fr/docs.guides.po l10n/ga/docs.guides.po l10n/hy/docs.guides.po l10n/nl/docs.guides.po && git status --short
+ M docs/scripts/translate-guide-po.ts
+ M tools/i18n-engine/src/pipeline.ts
+ M tools/i18n-engine/tests/pipeline-content.test.ts
+pantoken on ai-registry ≡  ~3 via  26.8.2 
+➜  git diff --name-status main...HEAD -- 'docs/*/guide/*.md' docs/guide/*.md l10n/docs.guides.pot | sed -n '1,140p'
+A       docs/ar/guide/agent-tools.md
+M       docs/ar/guide/cdn-picker.md
+M       docs/ar/guide/cdn.md
+M       docs/ar/guide/cli.md
+A       docs/ar/guide/registry.md
+A       docs/ca/guide/agent-tools.md
+M       docs/ca/guide/cdn-picker.md
+M       docs/ca/guide/cdn.md
+M       docs/ca/guide/cli.md
+A       docs/ca/guide/registry.md
+A       docs/cy/guide/agent-tools.md
+M       docs/cy/guide/cdn-picker.md
+M       docs/cy/guide/cdn.md
+M       docs/cy/guide/cli.md
+A       docs/cy/guide/registry.md
+A       docs/da/guide/agent-tools.md
+M       docs/da/guide/cdn-picker.md
+M       docs/da/guide/cdn.md
+M       docs/da/guide/cli.md
+A       docs/da/guide/registry.md
+A       docs/de/guide/agent-tools.md
+M       docs/de/guide/cdn-picker.md
+M       docs/de/guide/cdn.md
+M       docs/de/guide/cli.md
+A       docs/de/guide/registry.md
+A       docs/el/guide/agent-tools.md
+M       docs/el/guide/cdn-picker.md
+M       docs/el/guide/cdn.md
+M       docs/el/guide/cli.md
+A       docs/el/guide/registry.md
+A       docs/en-AU/guide/agent-tools.md
+M       docs/en-AU/guide/cdn-picker.md
+M       docs/en-AU/guide/cdn.md
+M       docs/en-AU/guide/cli.md
+A       docs/en-AU/guide/registry.md
+A       docs/en-CA/guide/agent-tools.md
+M       docs/en-CA/guide/cdn-picker.md
+M       docs/en-CA/guide/cdn.md
+M       docs/en-CA/guide/cli.md
+A       docs/en-CA/guide/registry.md
+A       docs/en-GB/guide/agent-tools.md
+M       docs/en-GB/guide/cdn-picker.md
+M       docs/en-GB/guide/cdn.md
+M       docs/en-GB/guide/cli.md
+A       docs/en-GB/guide/registry.md
+A       docs/es/guide/agent-tools.md
+M       docs/es/guide/cdn-picker.md
+M       docs/es/guide/cdn.md
+M       docs/es/guide/cli.md
+A       docs/es/guide/registry.md
+A       docs/fa/guide/agent-tools.md
+M       docs/fa/guide/cdn-picker.md
+M       docs/fa/guide/cdn.md
+M       docs/fa/guide/cli.md
+A       docs/fa/guide/registry.md
+A       docs/fi/guide/agent-tools.md
+M       docs/fi/guide/cdn-picker.md
+M       docs/fi/guide/cdn.md
+M       docs/fi/guide/cli.md
+A       docs/fi/guide/registry.md
+A       docs/fr-CA/guide/agent-tools.md
+M       docs/fr-CA/guide/cdn-picker.md
+M       docs/fr-CA/guide/cdn.md
+M       docs/fr-CA/guide/cli.md
+A       docs/fr-CA/guide/registry.md
+A       docs/fr/guide/agent-tools.md
+M       docs/fr/guide/cdn-picker.md
+M       docs/fr/guide/cdn.md
+M       docs/fr/guide/cli.md
+A       docs/fr/guide/registry.md
+A       docs/ga/guide/agent-tools.md
+M       docs/ga/guide/cdn-picker.md
+M       docs/ga/guide/cdn.md
+M       docs/ga/guide/cli.md
+A       docs/ga/guide/registry.md
+A       docs/guide/agent-tools.md
+M       docs/guide/cdn-picker.md
+M       docs/guide/cli.md
+A       docs/he/guide/agent-tools.md
+M       docs/he/guide/cdn-picker.md
+M       docs/he/guide/cdn.md
+M       docs/he/guide/cli.md
+A       docs/he/guide/registry.md
+A       docs/hi/guide/agent-tools.md
+M       docs/hi/guide/cdn-picker.md
+M       docs/hi/guide/cdn.md
+M       docs/hi/guide/cli.md
+A       docs/hi/guide/registry.md
+A       docs/ht/guide/agent-tools.md
+M       docs/ht/guide/cdn-picker.md
+M       docs/ht/guide/cdn.md
+M       docs/ht/guide/cli.md
+A       docs/ht/guide/registry.md
+A       docs/hu/guide/agent-tools.md
+M       docs/hu/guide/cdn-picker.md
+M       docs/hu/guide/cdn.md
+M       docs/hu/guide/cli.md
+A       docs/hu/guide/registry.md
+A       docs/hy/guide/agent-tools.md
+M       docs/hy/guide/cdn-picker.md
+M       docs/hy/guide/cdn.md
+M       docs/hy/guide/cli.md
+A       docs/hy/guide/registry.md
+A       docs/id/guide/agent-tools.md
+M       docs/id/guide/cdn-picker.md
+M       docs/id/guide/cdn.md
+M       docs/id/guide/cli.md
+A       docs/id/guide/registry.md
+A       docs/is/guide/agent-tools.md
+M       docs/is/guide/cdn-picker.md
+M       docs/is/guide/cdn.md
+M       docs/is/guide/cli.md
+A       docs/is/guide/registry.md
+A       docs/it/guide/agent-tools.md
+M       docs/it/guide/cdn-picker.md
+M       docs/it/guide/cdn.md
+M       docs/it/guide/cli.md
+A       docs/it/guide/registry.md
+A       docs/ja/guide/agent-tools.md
+M       docs/ja/guide/cdn-picker.md
+M       docs/ja/guide/cdn.md
+M       docs/ja/guide/cli.md
+A       docs/ja/guide/registry.md
+A       docs/ko/guide/agent-tools.md
+M       docs/ko/guide/cdn-picker.md
+M       docs/ko/guide/cdn.md
+M       docs/ko/guide/cli.md
+A       docs/ko/guide/registry.md
+A       docs/mi/guide/agent-tools.md
+M       docs/mi/guide/cdn-picker.md
+M       docs/mi/guide/cdn.md
+M       docs/mi/guide/cli.md
+A       docs/mi/guide/registry.md
+A       docs/ms/guide/agent-tools.md
+M       docs/ms/guide/cdn-picker.md
+M       docs/ms/guide/cdn.md
+M       docs/ms/guide/cli.md
+A       docs/ms/guide/registry.md
+A       docs/nb/guide/agent-tools.md
+M       docs/nb/guide/cdn-picker.md
+pantoken on ai-registry ≡  ~3 via  26.8.2 
+➜  DOCS_TRANSLATION_FORCE=1 DOCS_TRANSLATION_FILE=guide/cli.md DOCS_TRANSLATION_COMMAND="$PWD/tools/translation-adapters/copilot-wrapper.sh" DOCS_TRANSLATION_COMMAND_ARGS="--yes --model gpt-5-mini --effort low" node docs/scripts/translate-guide-po.ts
+guide file scope: guide/cli.md
+file:///Users/dwahl/Scripts/pantoken/docs/scripts/api-translation.ts:70
+        reject(new Error(`AI command exited ${String(code)} for ${context}: ${error.trim()}`));
+               ^
+
+Error: AI command exited 1 for markdown file guide/cli.md: error: Invalid command format.
+
+It looks like your prompt was not quoted, so the extra words were treated as separate arguments.
+Wrap the prompt in quotes, for example: copilot -p "your prompt here"
+
+Try 'copilot --help' for more information.
+    at ChildProcess.<anonymous> (file:///Users/dwahl/Scripts/pantoken/docs/scripts/api-translation.ts:70:16)
+    at ChildProcess.emit (node:events:514:20)
+    at maybeClose (node:internal/child_process:1125:16)
+    at Socket.<anonymous> (node:internal/child_process:497:11)
+    at Socket.emit (node:events:514:20)
+    at Pipe.<anonymous> (node:net:362:12)
+
+Node.js v26.9.0
+pantoken on ai-registry ≡  ~4 via  26.8.2 x 
+➜  DOCS_TRANSLATION_FORCE=1 DOCS_TRANSLATION_FILE=guide/cli.md DOCS_TRANSLATION_COMMAND="$PWD/tools/translation-adapters/copilot-wrapper.sh" DOCS_TRANSLATION_COMMAND_ARGS="--model gpt-5-mini --effort low" node docs/scripts/translate-guide-po.ts
+guide file scope: guide/cli.md
+file:///Users/dwahl/Scripts/pantoken/tools/translation-adapters/src/markdown.ts:131
+    throw new Error(`Markdown translation for ${reference} contains repeated-character garbage`);
+          ^
+
+Error: Markdown translation for guide/cli.md contains repeated-character garbage
+    at assertCleanMarkdownTranslation (file:///Users/dwahl/Scripts/pantoken/tools/translation-adapters/src/markdown.ts:131:11)
+    at AiTranslationAdapter.translateMarkdown (file:///Users/dwahl/Scripts/pantoken/docs/scripts/api-translation.ts:393:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async file:///Users/dwahl/Scripts/pantoken/docs/scripts/translate-guide-po.ts:43:24
+
+Node.js v26.9.0
+pantoken on ai-registry ≡  ~4 via  26.8.2 x 
+➜  DOCS_TRANSLATION_FORCE=1 DOCS_TRANSLATION_FILE=guide/cli.md DOCS_TRANSLATION_COMMAND="$PWD/tools/translation-adapters/copilot-wrapper.sh" DOCS_TRANSLATION_COMMAND_ARGS="--model gpt-5-mini --effort medium" node docs/scripts/translate-guide-po.ts
+guide file scope: guide/cli.md
+  ! ar guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+ar: guide PO update complete
+  ! hy guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+hy: guide PO update complete
+  ! ca guide/cli.md: AI command timed out after 120000ms for markdown file guide/cli.md
+ca: guide PO update complete
+  ! da guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+da: guide PO update complete
+  ! nl guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+nl: guide PO update complete
+  ! en-AU guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+en-AU: guide PO update complete
+  ! en-CA guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+en-CA: guide PO update complete
+  ! en-GB guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+en-GB: guide PO update complete
+  ! fi guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+fi: guide PO update complete
+  ! fr guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+fr: guide PO update complete
+  ! fr-CA guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+fr-CA: guide PO update complete
+  ! ga guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+ga: guide PO update complete
+  ! de guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+de: guide PO update complete
+  ! el guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+el: guide PO update complete
+  ! ht guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+ht: guide PO update complete
+  ! he guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+he: guide PO update complete
+  ! hi guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+hi: guide PO update complete
+  ! hu guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+hu: guide PO update complete
+  ! is guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+is: guide PO update complete
+  ! id guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+id: guide PO update complete
+  ! it guide/cli.md: AI command timed out after 120000ms for markdown file guide/cli.md
+it: guide PO update complete
+  ! ja guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+ja: guide PO update complete
+  ! ko guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+ko: guide PO update complete
+  ! mi guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+mi: guide PO update complete
+  ! ms guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+ms: guide PO update complete
+  ! se guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+se: guide PO update complete
+  ! nb guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+nb: guide PO update complete
+  ! nn guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+nn: guide PO update complete
+  ! fa guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+fa: guide PO update complete
+  ! pl guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+pl: guide PO update complete
+  ! pt guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+pt: guide PO update complete
+  ! pt-BR guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+pt-BR: guide PO update complete
+  ! ru guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+ru: guide PO update complete
+  ! zh-Hans guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+zh-Hans: guide PO update complete
+  ! sl guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+sl: guide PO update complete
+  ! es guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+es: guide PO update complete
+  ! sv guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+sv: guide PO update complete
+  ! th guide/cli.md: AI command timed out after 120000ms for markdown file guide/cli.md
+th: guide PO update complete
+  ! zh-Hant guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+zh-Hant: guide PO update complete
+  ! tr guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+tr: guide PO update complete
+  ! uk guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+uk: guide PO update complete
+  ! vi guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+vi: guide PO update complete
+  ! cy guide/cli.md: Markdown translation for guide/cli.md contains repeated-character garbage
+cy: guide PO update complete
