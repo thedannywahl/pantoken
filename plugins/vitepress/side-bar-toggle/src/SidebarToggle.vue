@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useData } from "vitepress";
 
-import type { SidebarToggleOptions } from "./inline-script.ts";
 import { useSidebarVisibility } from "./useSidebarVisibility.ts";
 
 /** The theme-config surface this component reads — mirrors VitePress core's own `*Label` fields. */
@@ -9,7 +8,13 @@ interface ThemeConfig {
   sidebarToggleLabel?: string;
 }
 
-const props = defineProps<SidebarToggleOptions>();
+// Inlined (not imported from ./inline-script.ts) — @vue/compiler-sfc's `defineProps<T>()` macro
+// resolves T's shape at compile time via its own limited cross-file type resolver, which can't
+// follow this SFC's sibling imports once shipped as raw source inside a consumer's node_modules.
+const props = defineProps<{
+  storageKey?: string;
+  hiddenClass?: string;
+}>();
 
 const { theme } = useData<ThemeConfig>();
 const { isHidden, toggle } = useSidebarVisibility(props);
