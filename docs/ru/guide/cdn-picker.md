@@ -1,7 +1,6 @@
 ---
-aside: false
-editLink: false
 title: Выбор CDN
+layout: page
 ---
 
 <CdnPickerPage />

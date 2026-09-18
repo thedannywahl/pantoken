@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-14 15:52+0000\n"
+"PO-Revision-Date: 2026-09-18 00:13+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -46,6 +46,12 @@ msgid "Guides"
 msgstr "Hướng dẫn"
 
 #: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:sidebar.utilities"
+msgid "Utilities"
+msgstr "Tiện ích"
+
+#: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:sidebar.gettingStarted"
 msgid "Getting started"
@@ -76,10 +82,16 @@ msgid "CDN picker"
 msgstr "Bộ chọn CDN"
 
 #: docs/.vitepress/i18n.json
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.chrome:sidebar.registry"
-msgid "Registry"
+msgid "shadcn/ui Registry"
 msgstr "Đăng ký"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:sidebar.agentTools"
+msgid "Agent Tools"
+msgstr "Công cụ"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -512,6 +524,306 @@ msgstr "Không có mục registry nào khớp với tìm kiếm của bạn."
 msgctxt "docs.chrome:registryBrowser.emptyReset"
 msgid "Reset Filters"
 msgstr "Đặt lại tìm kiếm"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.title"
+msgid "Agent Tools"
+msgstr "Công cụ"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.subtitle"
+msgid "Pick a Pantoken agent workflow, generate the command or launch URL, and give your assistant the files it needs to stop guessing."
+msgstr "Chọn một luồng tác vụ agent của Pantoken, tạo lệnh hoặc URL khởi chạy, và cung cấp cho trợ lý các tệp nó cần để ngừng đoán mò."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.providerLabel"
+msgid "Agent"
+msgstr "Tác nhân"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.packageManagerLabel"
+msgid "Runner"
+msgstr "Trình chạy"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.copy"
+msgid "Copy"
+msgstr "Sao chép"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.download"
+msgid "Download"
+msgstr "Tải xuống"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.copied"
+msgid "Copied"
+msgstr "Đã sao chép"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.open"
+msgid "Open"
+msgstr "Mở"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.openInAgent"
+msgid "Open in {{agent}}"
+msgstr "Mở trong {{agent}}"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.openUnavailable"
+msgid "This agent does not publish a stable launch URL. Use Copy for the CLI prompt."
+msgstr "Agent này không xuất bản URL khởi chạy ổn định. Dùng Sao chép để lấy lời nhắc CLI."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.tabBootstrap"
+msgid "Bootstrap"
+msgstr "Khởi tạo"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.tabInstall"
+msgid "Install assets"
+msgstr "Cài đặt tài sản"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.tabRegistry"
+msgid "Registry"
+msgstr "Đăng ký"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.tabDocs"
+msgid "Agent docs"
+msgstr "Tài liệu agent"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.bootstrapTitle"
+msgid "Bootstrap a project"
+msgstr "Khởi tạo một dự án"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.bootstrapDescription"
+msgid "Scaffold a starter with Pantoken wired in and install the repo-local agent assets in the same pass."
+msgstr "Tạo khuôn mẫu khởi đầu với Pantoken được tích hợp và cài đặt các tài sản agent trong repo trong cùng một bước."
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.platformLabel"
+msgid "Platform"
+msgstr "Nền tảng"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.directoryLabel"
+msgid "Directory"
+msgstr "Thư mục"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.installTitle"
+msgid "Add agent guidance to a repo"
+msgstr "Thêm hướng dẫn agent vào repo"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.installDescription"
+msgid "Install AGENTS.md, llms.txt, editor rules, and Claude skills into an existing project that already uses or is about to use Pantoken."
+msgstr "Cài đặt AGENTS.md, llms.txt, quy tắc trình soạn thảo và kỹ năng Claude vào một dự án hiện có đang sử dụng hoặc sắp sử dụng Pantoken."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.toolLabel"
+msgid "Asset set"
+msgstr "Bộ tài sản"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.writesLabel"
+msgid "Writes"
+msgstr "Ghi"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.registryTitle"
+msgid "Work with the shadcn/ui registry"
+msgstr "Đăng ký"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.registryDescription"
+msgid "Point an agent at Pantoken's indexed registry so it can search, inspect, and add CSS-backed registry items instead of inventing package names."
+msgstr "Trỏ agent tới registry đã được lập chỉ mục của Pantoken để nó có thể tìm kiếm, kiểm tra và thêm các mục registry có hỗ trợ CSS thay vì tự tạo tên package."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.registryActionLabel"
+msgid "Action"
+msgstr "Hành động"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.registryItemLabel"
+msgid "Registry item"
+msgstr "Đăng ký"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.docsTitle"
+msgid "Agent-readable documentation"
+msgstr "Tài liệu đọc được bởi agent"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.docsDescription"
+msgid "Pantoken publishes fetchable documentation and manifests for assistants that can browse URLs or read raw Markdown."
+msgstr "Pantoken xuất bản tài liệu và manifest có thể truy xuất cho các trợ lý có thể duyệt URL hoặc đọc Markdown thô."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.installPrompt"
+msgid "Install Pantoken agent guidance in this repository. Use {{command}}, then summarize the files written and when future agents should read them."
+msgstr "Cài đặt hướng dẫn agent Pantoken trong repository này. Dùng {{command}}, sau đó tóm tắt các tệp đã ghi và khi nào các agent tương lai nên đọc chúng."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.registryPrompt"
+msgid "Use the Pantoken shadcn registry for this project. Fetch https://pantoken.app/r/registry.json, then run {{command}} if the project uses shadcn or has components.json. Registry items install CSS and metadata, not React components."
+msgstr "Sử dụng registry shadcn của Pantoken cho dự án này. Lấy https://pantoken.app/r/registry.json, sau đó chạy {{command}} nếu dự án dùng shadcn hoặc có components.json. Các mục registry cài đặt CSS và metadata, không phải các component React."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.docsPrompt"
+msgid "Fetch https://pantoken.app/llms.txt first. When a page is needed, prefer its raw Markdown URL by adding .md to the clean docs path, and use Pantoken manifests for component capabilities, CDN plugins, demos, and registry items."
+msgstr "Lấy https://pantoken.app/llms.txt trước. Khi cần một trang, ưu tiên URL Markdown thô của nó bằng cách thêm .md vào đường dẫn tài liệu sạch, và dùng manifest của Pantoken cho khả năng component, plugin CDN, demo và các mục registry."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.docsCommand"
+msgid "Fetch https://pantoken.app/llms.txt, then follow links to the pages and manifests relevant to this task."
+msgstr "Lấy https://pantoken.app/llms.txt, sau đó theo các liên kết đến các trang và manifest liên quan đến nhiệm vụ này."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.createDomainTitle"
+msgid "Bootstrap skill URL"
+msgstr "URL khởi tạo skill"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.createDomainDescription"
+msgid "The short public URL any URL-capable agent can fetch to set up Pantoken."
+msgstr "URL công khai ngắn mà bất kỳ agent nào có khả năng truy xuất URL cũng có thể lấy để thiết lập Pantoken."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.llmsTitle"
+msgid "Site index"
+msgstr "Chỉ mục trang"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.llmsDescription"
+msgid "Canonical English documentation index for agents and LLM-aware clients."
+msgstr "Chỉ mục tài liệu tiếng Anh chuẩn cho các agent và client nhận biết LLM."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.llmsFullTitle"
+msgid "Full site context"
+msgstr "Ngữ cảnh toàn bộ trang"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.llmsFullDescription"
+msgid "Expanded LLM context for agents that need the complete documentation set."
+msgstr "Mở rộng ngữ cảnh LLM cho các agent cần toàn bộ bộ tài liệu."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.pageMdTitle"
+msgid "Raw Markdown pages"
+msgstr "Các trang Markdown thô"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.pageMdDescription"
+msgid "Every docs HTML page advertises a raw Markdown alternate link."
+msgstr "Mỗi trang HTML tài liệu đều công bố một liên kết thay thế đến Markdown thô."
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.registryManifestTitle"
+msgid "Registry manifest"
+msgstr "Đăng ký"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.registryManifestDescription"
+msgid "shadcn-compatible index of Pantoken CSS registry items."
+msgstr "Chỉ mục tương thích shadcn của các mục registry CSS của Pantoken."
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.capabilitiesTitle"
+msgid "Component capabilities"
+msgstr "Các thành phần"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.capabilitiesDescription"
+msgid "Machine-readable map of component CSS, JavaScript, icon, and dependency needs."
+msgstr "Bản đồ có thể đọc bởi máy về nhu cầu CSS, JavaScript, biểu tượng và phụ thuộc của component."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.pluginsTitle"
+msgid "CDN plugin manifest"
+msgstr "Manifest plugin CDN"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.pluginsDescription"
+msgid "Plugin styles available to CDN and standalone mockup workflows."
+msgstr "Các style plugin có sẵn cho workflow CDN và mockup độc lập."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.apiCatalogTitle"
+msgid "API catalog"
+msgstr "Danh mục API"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.apiCatalogDescription"
+msgid "Machine-readable linkset for Pantoken's agent-readable resources."
+msgstr "Tập hợp liên kết có thể đọc bởi máy cho các tài nguyên của Pantoken mà agent có thể đọc."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.vscodeCustomDataTitle"
+msgid "VS Code custom data"
+msgstr "Dữ liệu tùy chỉnh VS Code"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.vscodeCustomDataDescription"
+msgid "HTML classes and CSS custom properties for VS Code IntelliSense."
+msgstr "Các lớp HTML và thuộc tính tùy chỉnh CSS cho IntelliSense của VS Code."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

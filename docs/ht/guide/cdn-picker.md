@@ -1,7 +1,6 @@
 ---
-aside: false
-editLink: false
 title: Chwazi CDN
+layout: page
 ---
 
 <CdnPickerPage />

@@ -1,7 +1,6 @@
 ---
-aside: false
-editLink: false
-title: בחירת CDN
+title: בורר CDN
+layout: page
 ---
 
 <CdnPickerPage />

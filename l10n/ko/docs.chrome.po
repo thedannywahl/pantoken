@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-14 15:48+0000\n"
+"PO-Revision-Date: 2026-09-18 00:09+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -46,6 +46,12 @@ msgid "Guides"
 msgstr "안내서"
 
 #: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:sidebar.utilities"
+msgid "Utilities"
+msgstr "유틸리티"
+
+#: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:sidebar.gettingStarted"
 msgid "Getting started"
@@ -76,10 +82,16 @@ msgid "CDN picker"
 msgstr "CDN 선택기"
 
 #: docs/.vitepress/i18n.json
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.chrome:sidebar.registry"
-msgid "Registry"
+msgid "shadcn/ui Registry"
 msgstr "레지스트리"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:sidebar.agentTools"
+msgid "Agent Tools"
+msgstr "도구"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -512,6 +524,306 @@ msgstr "검색과 일치하는 레지스트리 항목이 없습니다."
 msgctxt "docs.chrome:registryBrowser.emptyReset"
 msgid "Reset Filters"
 msgstr "검색 초기화"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.title"
+msgid "Agent Tools"
+msgstr "도구"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.subtitle"
+msgid "Pick a Pantoken agent workflow, generate the command or launch URL, and give your assistant the files it needs to stop guessing."
+msgstr "Pantoken 에이전트 워크플로를 선택하고, 명령어 또는 시작 URL을 생성하며, 어시스턴트가 추측을 멈추고 작업할 수 있도록 필요한 파일을 제공합니다."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.providerLabel"
+msgid "Agent"
+msgstr "에이전트"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.packageManagerLabel"
+msgid "Runner"
+msgstr "실행기"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.copy"
+msgid "Copy"
+msgstr "복사"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.download"
+msgid "Download"
+msgstr "다운로드"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.copied"
+msgid "Copied"
+msgstr "복사됨"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.open"
+msgid "Open"
+msgstr "열기"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.openInAgent"
+msgid "Open in {{agent}}"
+msgstr "{{agent}}에서 열기"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.openUnavailable"
+msgid "This agent does not publish a stable launch URL. Use Copy for the CLI prompt."
+msgstr "이 에이전트는 안정적인 실행 URL을 공개하지 않습니다. CLI 프롬프트에는 복사(Copy)를 사용하세요."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.tabBootstrap"
+msgid "Bootstrap"
+msgstr "부트스트랩"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.tabInstall"
+msgid "Install assets"
+msgstr "에셋 설치"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.tabRegistry"
+msgid "Registry"
+msgstr "레지스트리"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.tabDocs"
+msgid "Agent docs"
+msgstr "에이전트 문서"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.bootstrapTitle"
+msgid "Bootstrap a project"
+msgstr "프로젝트 부트스트랩"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.bootstrapDescription"
+msgid "Scaffold a starter with Pantoken wired in and install the repo-local agent assets in the same pass."
+msgstr "Pantoken이 연동된 스타터를 스캐폴딩하고 같은 과정에서 리포지토리 로컬 에이전트 에셋을 설치합니다."
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.platformLabel"
+msgid "Platform"
+msgstr "플랫폼"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.directoryLabel"
+msgid "Directory"
+msgstr "디렉터리"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.installTitle"
+msgid "Add agent guidance to a repo"
+msgstr "리포지토리에 에이전트 안내 추가"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.installDescription"
+msgid "Install AGENTS.md, llms.txt, editor rules, and Claude skills into an existing project that already uses or is about to use Pantoken."
+msgstr "이미 Pantoken을 사용 중이거나 사용하려는 기존 프로젝트에 AGENTS.md, llms.txt, 에디터 규칙, Claude 스킬을 설치합니다."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.toolLabel"
+msgid "Asset set"
+msgstr "에셋 세트"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.writesLabel"
+msgid "Writes"
+msgstr "작성 항목"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.registryTitle"
+msgid "Work with the shadcn/ui registry"
+msgstr "레지스트리"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.registryDescription"
+msgid "Point an agent at Pantoken's indexed registry so it can search, inspect, and add CSS-backed registry items instead of inventing package names."
+msgstr "에이전트를 Pantoken의 인덱스 레지스트리를 가리키게 하여, 패키지 이름을 새로 만들지 않고도 검색·검사·CSS 기반 레지스트리 항목 추가를 하게 합니다."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.registryActionLabel"
+msgid "Action"
+msgstr "작업"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.registryItemLabel"
+msgid "Registry item"
+msgstr "레지스트리"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.docsTitle"
+msgid "Agent-readable documentation"
+msgstr "에이전트가 읽을 수 있는 문서"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.docsDescription"
+msgid "Pantoken publishes fetchable documentation and manifests for assistants that can browse URLs or read raw Markdown."
+msgstr "Pantoken은 URL을 탐색하거나 원시 Markdown을 읽을 수 있는 어시스턴트를 위해 가져올 수 있는 문서와 매니페스트를 발행합니다."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.installPrompt"
+msgid "Install Pantoken agent guidance in this repository. Use {{command}}, then summarize the files written and when future agents should read them."
+msgstr "이 리포지토리에 Pantoken 에이전트 안내를 설치하세요. {{command}}를 사용한 다음 작성된 파일들과 향후 에이전트가 이를 언제 읽어야 하는지 요약하세요."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.registryPrompt"
+msgid "Use the Pantoken shadcn registry for this project. Fetch https://pantoken.app/r/registry.json, then run {{command}} if the project uses shadcn or has components.json. Registry items install CSS and metadata, not React components."
+msgstr "이 프로젝트에 Pantoken shadcn 레지스트리를 사용하세요. https://pantoken.app/r/registry.json 를 가져온 다음 프로젝트가 shadcn을 사용하거나 components.json이 있으면 {{command}}를 실행하세요. 레지스트리 항목은 React 컴포넌트가 아닌 CSS와 메타데이터를 설치합니다."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.docsPrompt"
+msgid "Fetch https://pantoken.app/llms.txt first. When a page is needed, prefer its raw Markdown URL by adding .md to the clean docs path, and use Pantoken manifests for component capabilities, CDN plugins, demos, and registry items."
+msgstr "먼저 https://pantoken.app/llms.txt 를 가져오세요. 페이지가 필요할 때는 정리된 문서 경로에 .md를 추가한 원시 Markdown URL을 우선 사용하고, 컴포넌트 기능, CDN 플러그인, 데모 및 레지스트리 항목에는 Pantoken 매니페스트를 사용하세요."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.docsCommand"
+msgid "Fetch https://pantoken.app/llms.txt, then follow links to the pages and manifests relevant to this task."
+msgstr "https://pantoken.app/llms.txt 를 가져온 다음, 이 작업과 관련된 페이지와 매니페스트의 링크를 따라가세요."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.createDomainTitle"
+msgid "Bootstrap skill URL"
+msgstr "스킬 부트스트랩 URL"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.createDomainDescription"
+msgid "The short public URL any URL-capable agent can fetch to set up Pantoken."
+msgstr "Pantoken을 설정하기 위해 URL 지원 에이전트가 가져갈 수 있는 짧은 공개 URL입니다."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.llmsTitle"
+msgid "Site index"
+msgstr "사이트 인덱스"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.llmsDescription"
+msgid "Canonical English documentation index for agents and LLM-aware clients."
+msgstr "에이전트와 LLM 인식 클라이언트를 위한 표준 영어 문서 인덱스입니다."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.llmsFullTitle"
+msgid "Full site context"
+msgstr "전체 사이트 컨텍스트"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.llmsFullDescription"
+msgid "Expanded LLM context for agents that need the complete documentation set."
+msgstr "전체 문서 세트가 필요한 에이전트를 위한 확장된 LLM 컨텍스트입니다."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.pageMdTitle"
+msgid "Raw Markdown pages"
+msgstr "원시 Markdown 페이지"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.pageMdDescription"
+msgid "Every docs HTML page advertises a raw Markdown alternate link."
+msgstr "모든 문서 HTML 페이지는 원시 Markdown 대체 링크를 광고합니다."
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.registryManifestTitle"
+msgid "Registry manifest"
+msgstr "레지스트리"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.registryManifestDescription"
+msgid "shadcn-compatible index of Pantoken CSS registry items."
+msgstr "shadcn 호환 Pantoken CSS 레지스트리 항목 인덱스입니다."
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.capabilitiesTitle"
+msgid "Component capabilities"
+msgstr "컴포넌트"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.capabilitiesDescription"
+msgid "Machine-readable map of component CSS, JavaScript, icon, and dependency needs."
+msgstr "컴포넌트의 CSS, JavaScript, 아이콘 및 의존성 필요를 기계가 읽을 수 있게 맵핑한 것입니다."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.pluginsTitle"
+msgid "CDN plugin manifest"
+msgstr "CDN 플러그인 매니페스트"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.pluginsDescription"
+msgid "Plugin styles available to CDN and standalone mockup workflows."
+msgstr "CDN 및 독립 모형 워크플로에서 사용 가능한 플러그인 스타일입니다."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.apiCatalogTitle"
+msgid "API catalog"
+msgstr "API 카탈로그"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.apiCatalogDescription"
+msgid "Machine-readable linkset for Pantoken's agent-readable resources."
+msgstr "Pantoken의 에이전트가 읽을 수 있는 리소스들에 대한 기계 판독 링크셋입니다."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.vscodeCustomDataTitle"
+msgid "VS Code custom data"
+msgstr "VS Code 사용자 데이터"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.vscodeCustomDataDescription"
+msgid "HTML classes and CSS custom properties for VS Code IntelliSense."
+msgstr "VS Code IntelliSense용 HTML 클래스와 CSS 커스텀 프로퍼티입니다."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
