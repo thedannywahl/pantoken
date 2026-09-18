@@ -1,0 +1,58 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2TASKP2QYZ6PE6HTJMKAFVZ",
+  "session_id": "603a35ea-3977-42bb-9198-045aa94ccf51",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-18T13:20:20.105651Z",
+  "branch": "update-deps",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "formats/interactions/tests/truncate.test.ts",
+    "packages/plugin-kit/tests/sandbox-error-paths.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "0d8d534b6f29",
+  "checkpoint_transcript_start": 10,
+  "transcript_lines_at_start": 10,
+  "compact_transcript_start": 3,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-18T13:20:20.101471Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 23,
+    "total_committed": 0,
+    "total_lines_changed": 23,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 21,
+      "user_lines_removed": 23,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "formats/interactions/tests/truncate.test.ts": 7,
+        "packages/plugin-kit/tests/sandbox-error-paths.test.ts": 14
+      },
+      "user_removed_per_file": {
+        "formats/interactions/tests/truncate.test.ts": 7,
+        "packages/plugin-kit/tests/sandbox-error-paths.test.ts": 16
+      }
+    }
+  ]
+}
