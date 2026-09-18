@@ -345,7 +345,7 @@ async function copy(value: string, key: string): Promise<void> {
           v-if="activeTab === 'bootstrap'"
           class="agent-tools-page__panel --display-flex --gap-md"
         >
-          <div class="agent-tools-page__intro --display-flex --gap-2xs">
+          <div class="agent-tools-page__intro --display-flex --gap-sm --mt-md">
             <h2 class="instui-heading -level-h2 --m-0">{{ t.bootstrapTitle }}</h2>
             <p class="instui-text -color-secondary --m-0">{{ t.bootstrapDescription }}</p>
           </div>
@@ -397,7 +397,7 @@ async function copy(value: string, key: string): Promise<void> {
           v-else-if="activeTab === 'install'"
           class="agent-tools-page__panel --display-flex --gap-md"
         >
-          <div class="agent-tools-page__intro --display-flex --gap-2xs">
+          <div class="agent-tools-page__intro --display-flex --gap-sm --mt-md">
             <h2 class="instui-heading -level-h2 --m-0">{{ t.installTitle }}</h2>
             <p class="instui-text -color-secondary --m-0">{{ t.installDescription }}</p>
           </div>
@@ -472,7 +472,7 @@ async function copy(value: string, key: string): Promise<void> {
         </section>
 
         <section v-else class="agent-tools-page__panel --display-flex --gap-md">
-          <div class="agent-tools-page__intro --display-flex --gap-2xs">
+          <div class="agent-tools-page__intro --display-flex --gap-sm --mt-md">
             <h2 class="instui-heading -level-h2 --m-0">{{ t.docsTitle }}</h2>
             <p class="instui-text -color-secondary --m-0">{{ t.docsDescription }}</p>
           </div>
@@ -649,6 +649,7 @@ async function copy(value: string, key: string): Promise<void> {
 }
 
 .agent-tools-page__asset-heading {
+  flex-direction: column;
   min-width: 0;
 }
 
