@@ -61,3 +61,7 @@ Report back with concrete file paths, snippets, and a clear picture of: (a) what
 ---
 
 work in incremental conventional commits, with changesets even for private packages, ignoring changed files you haven't touched as there are other agents.
+
+---
+
+Start implementation
