@@ -1,5 +1,11 @@
 # @pantoken/plugin-custom-components
 
+## 0.4.1
+
+### Patch Changes
+
+- 091942b: Update Banner structure to specify `.button-group` max button count.
+
 ## 0.4.0
 
 ### Minor Changes
