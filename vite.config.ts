@@ -452,7 +452,7 @@ export default defineConfig({
       // Publishing must also validate generated API prose, which is not present in a clean checkout
       // until the English API build runs.
       "gate:i18n": {
-        command: "vp run @pantoken/docs#docs:api:en && vp run i18n:check:drift:all",
+        command: "vp run @pantoken/docs#docs:api:en:build && vp run i18n:check:drift:all",
         dependsOn: ["build:all"],
       },
       "i18n:bundles:build": {
