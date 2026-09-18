@@ -90,6 +90,7 @@
     "unist-util-visit": "catalog:",
     "vitepress": "catalog:",
     "vitepress-plugin-llms": "catalog:",
-    "vue": "catalog:"
+    "vue": "catalog:",
+    "wrangler": "catalog:"
   }
 }

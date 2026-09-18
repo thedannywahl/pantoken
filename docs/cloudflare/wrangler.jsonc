@@ -1,6 +1,7 @@
 {
-  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "$schema": "../node_modules/wrangler/config-schema.json",
   "name": "pantoken-docs",
+  "send_metrics": false,
   "main": "src/index.ts",
   "compatibility_date": "2026-09-14",
   "compatibility_flags": ["nodejs_compat"],
