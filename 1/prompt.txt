@@ -1,0 +1,20 @@
+what's the cause of the issue, vscode, cssdoc plugin, cssdoc configuration or something else?
+```
+2026-09-18 07:11:11.836 [error] cssdoc client: couldn't create connection to server.
+Error: spawn EBADF
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:829:9)
+    at fork (node:child_process:175:10)
+    at node:electron/js2c/node_init:2:19556
+    at Vr.r.fork (/Users/dwahl/.vscode/extensions/vue.volar-3.3.11/dist/extension.js:392:16431)
+    at /Users/dwahl/.vscode/extensions/cssdoc.cssdoc-vscode-0.16.0/dist/extension.cjs:22663:33
+    at new Promise (<anonymous>)
+    at /Users/dwahl/.vscode/extensions/cssdoc.cssdoc-vscode-0.16.0/dist/extension.cjs:22644:22
+    at async LanguageClient2.createConnection (/Users/dwahl/.vscode/extensions/cssdoc.cssdoc-vscode-0.16.0/dist/extension.cjs:20026:28)
+    at async LanguageClient2.start (/Users/dwahl/.vscode/extensions/cssdoc.cssdoc-vscode-0.16.0/dist/extension.cjs:19581:30)
+    at async /Users/dwahl/.vscode/extensions/cssdoc.cssdoc-vscode-0.16.0/dist/extension.cjs:38567:5
+    at async activate (/Users/dwahl/.vscode/extensions/cssdoc.cssdoc-vscode-0.16.0/dist/extension.cjs:38580:3)
+    at async Ub._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:555:16021)
+    at async Ub._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:555:15963)
+    at async Ub._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:555:15330)
+```
