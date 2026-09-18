@@ -1,0 +1,80 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2TPWFDTY12ED6G1MBKYM5C1",
+  "session_id": "e90e1bcc-860c-4c90-9481-931dc01ca28b",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-18T16:51:36.977218Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 2,
+  "save_step_count": 2,
+  "files_touched": [
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "4a93687499ed",
+  "checkpoint_transcript_start": 592,
+  "transcript_lines_at_start": 592,
+  "compact_transcript_start": 104,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 5
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-18T16:51:36.963397Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 522,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 522,
+    "total_lines_changed": 522,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 539,
+      "user_lines_removed": 8184,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "docs/.vitepress/theme/components/AgentToolsPage.vue": 3,
+        "l10n/docs.api.pot": 38,
+        "plugins/vitepress/side-bar-toggle/README.md": 68,
+        "plugins/vitepress/side-bar-toggle/package.json": 50,
+        "plugins/vitepress/side-bar-toggle/src/SidebarToggle.vue": 60,
+        "plugins/vitepress/side-bar-toggle/src/index.ts": 4,
+        "plugins/vitepress/side-bar-toggle/src/inline-script.ts": 32,
+        "plugins/vitepress/side-bar-toggle/src/style.css": 25,
+        "plugins/vitepress/side-bar-toggle/src/useSidebarVisibility.ts": 36,
+        "plugins/vitepress/side-bar-toggle/tests/SidebarToggle.test.ts": 24,
+        "plugins/vitepress/side-bar-toggle/tests/inline-script.test.ts": 27,
+        "plugins/vitepress/side-bar-toggle/tests/useSidebarVisibility.test.ts": 44,
+        "plugins/vitepress/side-bar-toggle/tsconfig.json": 7,
+        "plugins/vitepress/side-bar-toggle/vite.config.ts": 17,
+        "pnpm-lock.yaml": 103,
+        "pnpm-workspace.yaml": 1
+      },
+      "user_removed_per_file": {
+        "docs/.vitepress/theme/components/AgentToolsPage.vue": 3,
+        "l10n/docs.api.pot": 8181
+      }
+    }
+  ]
+}
