@@ -1,0 +1,19 @@
+this needs to be re-worked to use as much pantoken components as possible instead of using custom BEM classes and styles. I have re-worked some of the bootstrap tab as an example.
+
+---
+
+I'm working in the pantoken monorepo (design tokens/components library). I need to rework a Vue file at docs/.vitepress/theme/components/AgentToolsPage.vue to use pantoken's semantic CSS component classes (from @pantoken/components, prefixed `instui-`) instead of custom BEM classes and inline custom CSS.
+
+Please research and report back:
+
+1. Read docs/conventions/authoring.md for the full authoring conventions of @pantoken/components (the modifier convention, RSCSS style, etc).
+2. List available components in formats/components/src/components/ (just file names) and formats/components/src/utilities/ and formats/components/src/rules/ - I need to know what component classes exist (e.g. instui-view, instui-card, instui-tabs, instui-button, instui-text, instui-heading, etc.) and what modifiers each supports.
+3. Specifically look for and report full modifier options / usage examples for: instui-tabs, instui-card, instui-view (spacing/layout utility), instui-grid or flex-layout utilities, instui-toggle-group / instui-details or disclosure-like components, instui-radio-input-group, instui-simple-select, instui-list or similar list layout utilities, instui-link, instui-screen-reader-content, and any "stack"/"flex"/"grid" layout utility components for replacing custom flexbox/grid CSS (gap, align-items, flex-wrap etc.)
+4. Find other .vue files in docs/.vitepress/theme/components/ that already make heavy use of pantoken instui- classes as good reference examples (especially any that use instui-tabs, instui-card lists, grids, or already were "reworked" recently - check git log/blame if useful, or just read a few good examples fully).
+5. Check formats/components/README or demo docs (docs/demos or docs/guide) showing markup examples for cards, grids, lists, tabs.
+
+Report back: a concise reference list of relevant component classes and their modifiers (as markdown), plus 1-2 example files with good instui usage patterns (file paths), plus any gotchas from docs/conventions/authoring.md relevant to migrating custom BEM CSS to instui utility classes (e.g., spacing utilities like --padding-xs, --my-md, --background-ai-horizontal seen in the current file).
+
+---
+
+work in incremental conventional commits, with changesets even for private packages, ignoring changed files you haven't touched as there are other agents.
