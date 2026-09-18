@@ -19,3 +19,7 @@ it goes in plugins/vitepress/side-bar-toggle and is published as `@pantoken/vite
 ---
 
 work in incremental conventional commits, with changesets even for private packages, ignoring changed files you haven't touched as there are other agents.
+
+---
+
+vitepress has some builtin icons and we should use those before doing our own svg inlining.
