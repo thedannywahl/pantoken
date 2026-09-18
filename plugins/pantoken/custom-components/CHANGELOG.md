@@ -1,5 +1,18 @@
 # @pantoken/plugin-custom-components
 
+## 0.4.0
+
+### Minor Changes
+
+- 9ba476b: Align each plugin's runtime CSS contribution with its published aggregate stylesheet. Custom
+  components now include agent shell rules, while layouts include all seven compositions and expose
+  their rule/template APIs plus selective per-layout CSS imports. Update the package documentation to
+  describe aggregate and selective usage.
+
+### Patch Changes
+
+- 9ba476b: Add the AI gradient helper utilities to the custom-components plugin as opt-in border/background treatments for AI-accent surfaces, including RTL/LTR-aware horizontal variants.
+
 ## 0.3.3
 
 ### Patch Changes

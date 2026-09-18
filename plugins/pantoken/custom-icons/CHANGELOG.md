@@ -1,5 +1,11 @@
 # @pantoken/plugin-custom-icons
 
+## 0.3.11
+
+### Patch Changes
+
+- 9ba476b: Add vscode icon
+
 ## 0.3.10
 
 ### Patch Changes
