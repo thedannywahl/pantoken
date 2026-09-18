@@ -17,11 +17,11 @@ packages:
 catalogMode: prefer
 
 catalog:
-  "@types/node": ^26.5.1
+  "@types/node": ^26.6.1
   typescript: ^7.0.2
   arkregex: ^0.0.8
-  vite: npm:@voidzero-dev/vite-plus-core@0.3.2
-  vite-plus: 0.3.2
+  vite: npm:@voidzero-dev/vite-plus-core@0.3.3
+  vite-plus: 0.3.3
   # Upstream Instructure sources. The design-tokens repo is GitHub-only and versioned independently of
   # the 11.7.x line, so it's pinned to a release tag (its package.json version is unreliable — stuck at
   # 1.0.0 across tags — so the tag + resolved commit are the provenance the upgrade pipeline records).
@@ -29,7 +29,7 @@ catalog:
   "@instructure/ui-icons": ^11.7.6
   lucide: ^1.23.0
   # Native token transforms
-  style-dictionary: ^5.5.3
+  style-dictionary: ^5.5.4
   "@tokens-studio/sd-transforms": ^2.0.3
   # Rehype / unist
   unist-util-visit: ^5.1.0
@@ -68,7 +68,7 @@ catalog:
   "@instructure/ui-alerts": ^11.7.6
   core-js: ^3.50.0
   # Property-based testing
-  fast-check: ^4.10.0
+  fast-check: ^4.10.1
   # Codecov bundle analysis plugin
   "@codecov/vite-plugin": ^2.0.1
   # Quality gates
@@ -78,10 +78,10 @@ catalog:
   "@vitest/coverage-v8": 4.1.11
   markdownlint-cli2: ^0.23.2
   "@manypkg/cli": ^0.25.1
-  fallow: ^3.25.0
+  fallow: ^3.27.0
   happy-dom: ^20.14.5
   dompurify: ^3.4.15
-  snyk: ^1.1307.2
+  snyk: ^1.1307.3
   publint: ^0.3.24
   "@arethetypeswrong/cli": ^0.18.5
   bumpp: ^12.2.1
@@ -91,11 +91,11 @@ catalog:
   "@shikijs/langs": ^4.4.3
   "@shikijs/themes": ^4.4.3
   "@shikijs/types": ^4.4.3
-  vue: ^3.5.42
+  vue: ^3.5.43
   vitepress: 2.0.0-alpha.20
-  oxc-minify: ^0.147.0
+  oxc-minify: ^0.150.0
   typedoc: ^0.28.20
-  typedoc-plugin-markdown: ^4.13.0
+  typedoc-plugin-markdown: ^4.13.1
   typedoc-vitepress-theme: ^1.1.4
   vitepress-plugin-llms: ^1.14.0
   # CLI framework (commander-based scaffolding CLI rebuild)
@@ -105,17 +105,17 @@ catalog:
   "@bomb.sh/tab": ^0.0.22
   # @cssdoc/* toolchain — @cssdoc/markdown arrives transitively
   # via @cssdoc/typedoc; the entries below are pantoken's direct dependencies.
-  "@cssdoc/cli": ^0.15.2
-  "@cssdoc/core": ^0.15.2
-  "@cssdoc/config": ^0.15.2
-  "@cssdoc/typedoc": ^0.15.2
+  "@cssdoc/cli": ^0.16.0
+  "@cssdoc/core": ^0.16.0
+  "@cssdoc/config": ^0.16.0
+  "@cssdoc/typedoc": ^0.16.0
   # Transitive deps that pantoken also uses directly (the stylelint config); the rest were mirrored
   # only for the linked cssdoc source and are now unused, kept harmless under `catalogMode: prefer`.
   ajv: ^8.20.0
   grammarkdown: ^3.3.2
   stylelint: ^17.15.0
   # Not ESLint deps: oxlint loads these two through its ESLint-compatible JS-plugin bridge.
-  eslint-plugin-tsdoc: ^0.5.2
+  eslint-plugin-tsdoc: ^0.5.3
   eslint-plugin-tsdoc-require-2: ^1.2.7
   postcss-value-parser: ^4.2.0
   css-tree: ^3.2.1
@@ -141,8 +141,8 @@ catalog:
   "@codemirror/lang-javascript": ^6.2.5
   "@codemirror/lint": ^6.9.7
   "@codemirror/autocomplete": ^6.20.3
-  "@codemirror/state": ^6.7.4
-  "@codemirror/view": ^6.43.11
+  "@codemirror/state": ^6.7.5
+  "@codemirror/view": ^6.43.12
   vitest: 4.1.11
 overrides:
   vite@*: "catalog:"

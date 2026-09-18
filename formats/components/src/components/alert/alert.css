@@ -85,10 +85,15 @@
  * @structure
  * .pfx-alert {
  *   slot {}
- *   @component button:optional {}
- *   .button-group:optional {
- *     @component button:two {}
+ *   @variant bare-button {
+ *     @component button:max-1 {}
  *   }
+ *   @variant button-group {
+ *     .button-group {
+ *       @component button:one-or-more:max-2 {}
+ *     }
+ *   }
+ *   @component close-button:optional {}
  * }
  * @related close-button — The dismiss control an alert may include.
  * @sealed

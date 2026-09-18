@@ -20,13 +20,13 @@ function mockRects(hostHeight: number, parentHeight = hostHeight) {
       height,
       toJSON: () => ({}),
     }) as DOMRect;
-  return vi
-    .spyOn(HTMLElement.prototype, "getBoundingClientRect")
-    .mockImplementation(function (this: HTMLElement): DOMRect {
-      if (this.classList.contains("parent")) return rect(parentHeight);
-      if (this.classList.contains("host")) return rect(hostHeight);
-      return rect(hostHeight);
-    });
+  return vi.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockImplementation(function (
+    this: HTMLElement,
+  ): DOMRect {
+    if (this.classList.contains("parent")) return rect(parentHeight);
+    if (this.classList.contains("host")) return rect(hostHeight);
+    return rect(hostHeight);
+  });
 }
 
 test("syncTruncateAutoLines computes floor(availableHeight/lineHeight)", () => {
