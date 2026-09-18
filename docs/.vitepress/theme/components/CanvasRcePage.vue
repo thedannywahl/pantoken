@@ -9,7 +9,11 @@ const t = computed(() => ({
   ...((theme.value as Record<string, unknown>).canvasRce as object),
 }));
 
-const iframeSrc = computed(() => withBase("/tools/canvas-rce/"));
+// Explicit `index.html`, not a bare directory URL: VitePress dev's clean-URL page
+// routing intercepts extensionless paths and serves the docs SPA shell for them, shadowing the
+// static bundle in `public/`. The `.html` extension routes around that middleware in both dev and
+// the production build.
+const iframeSrc = computed(() => withBase("/tools/canvas-rce/index.html"));
 </script>
 
 <template>
