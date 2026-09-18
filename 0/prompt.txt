@@ -31,3 +31,46 @@ make sure that the component is accessible, and any strings/labels are able to g
 ---
 
 Start implementation
+
+---
+
+~/docs$ vitepress dev
+failed to load config from /Users/dwahl/Scripts/pantoken/docs/.vitepress/config.ts
+failed to resolve config. error:
+Build failed with 1 error:
+
+[plugin externalize-deps]
+Error: Failed to resolve entry for package "@pantoken/vitepress-sidebar-toggle". The package may have incorrect main/module/exports specified in its package.json.
+    at packageEntryFailure (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_75f151d000e8bb180cbbd20d48d7b443/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:34398:30)
+    at resolvePackageEntry (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_75f151d000e8bb180cbbd20d48d7b443/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:34395:2)
+    at tryNodeResolve (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_75f151d000e8bb180cbbd20d48d7b443/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:34294:70)
+    at nodeResolveWithVite (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_75f151d000e8bb180cbbd20d48d7b443/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:34556:9)
+    at PluginContextImpl.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_75f151d000e8bb180cbbd20d48d7b443/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:42739:19)
+    at plugin (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_75f151d000e8bb180cbbd20d48d7b443/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/bindingify-input-options-CbBAjvu6.mjs:1460:30)
+    at file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_75f151d000e8bb180cbbd20d48d7b443/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/bindingify-input-options-CbBAjvu6.mjs:1931:21
+    at plugin.<computed> (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_75f151d000e8bb180cbbd20d48d7b443/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/bindingify-input-options-CbBAjvu6.mjs:2128:18)
+Error: Build failed with 1 error:
+
+[plugin externalize-deps]
+Error: Failed to resolve entry for package "@pantoken/vitepress-sidebar-toggle". The package may have incorrect main/module/exports specified in its package.json.
+    at packageEntryFailure (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_75f151d000e8bb180cbbd20d48d7b443/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:34398:30)
+    at resolvePackageEntry (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_75f151d000e8bb180cbbd20d48d7b443/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:34395:2)
+    at tryNodeResolve (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_75f151d000e8bb180cbbd20d48d7b443/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:34294:70)
+    at nodeResolveWithVite (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_75f151d000e8bb180cbbd20d48d7b443/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:34556:9)
+    at PluginContextImpl.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_75f151d000e8bb180cbbd20d48d7b443/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:42739:19)
+    at plugin (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_75f151d000e8bb180cbbd20d48d7b443/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/bindingify-input-options-CbBAjvu6.mjs:1460:30)
+    at file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_75f151d000e8bb180cbbd20d48d7b443/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/bindingify-input-options-CbBAjvu6.mjs:1931:21
+    at plugin.<computed> (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_75f151d000e8bb180cbbd20d48d7b443/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/bindingify-input-options-CbBAjvu6.mjs:2128:18)
+    at aggregateBindingErrorsIntoJsError (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_75f151d000e8bb180cbbd20d48d7b443/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-CGhV1ebk.mjs:48:18)
+    at unwrapBindingResult (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_75f151d000e8bb180cbbd20d48d7b443/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-CGhV1ebk.mjs:18:128)
+    at #build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_75f151d000e8bb180cbbd20d48d7b443/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/rolldown-DZGaRc5R.mjs:133:34)
+    at async bundleConfigFile (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_75f151d000e8bb180cbbd20d48d7b443/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:42795:12)
+    at async bundleAndLoadConfigFile (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_75f151d000e8bb180cbbd20d48d7b443/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:42691:18)
+    at async loadConfigFromFile (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_75f151d000e8bb180cbbd20d48d7b443/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:42652:42)
+    at async resolveUserConfig (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_axios@1.20.0__b718f05519f52f078ec2627fac648f39/node_modules/vitepress/dist/node/chunk-BYTgXTwz.js:3146:23)
+    at async resolveConfig (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_axios@1.20.0__b718f05519f52f078ec2627fac648f39/node_modules/vitepress/dist/node/chunk-BYTgXTwz.js:3075:45)
+    at async file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.20_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_axios@1.20.0__b718f05519f52f078ec2627fac648f39/node_modules/vitepress/dist/node/cli.js:187:15
+
+---
+
+`vpr docs:dev` is what ran that.
