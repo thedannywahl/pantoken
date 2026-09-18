@@ -1,0 +1,12 @@
+deleting files the lint hook sees no files staged:
+```
+→ lint-staged could not find any staged files.
+⧗   --- input ---
+fix(entire): entire skills should live in .agent not agent.
+✖   subject may not end with full stop [subject-full-stop]
+
+✖   found 1 problems, 0 warnings
+ⓘ   Get help: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+
+VITE+ - commit-msg script failed (code 1)
+```
