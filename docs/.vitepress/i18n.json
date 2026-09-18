@@ -17,6 +17,7 @@
   "sidebar.cdnPicker": { "message": "CDN picker", "translate": "always" },
   "sidebar.registry": { "message": "shadcn/ui Registry", "translate": "always" },
   "sidebar.agentTools": { "message": "Agent Tools", "translate": "always" },
+  "sidebar.canvasRce": { "message": "Canvas RCE", "translate": "always" },
   "sidebar.cli": { "message": "The pantoken CLI", "translate": "always" },
   "sidebar.plugins": { "message": "Plugins", "translate": "always" },
   "sidebar.generated": { "message": "Generated output", "translate": "always" },
@@ -116,6 +117,16 @@
     "translate": "always"
   },
   "registryBrowser.emptyReset": { "message": "Reset Filters", "translate": "always" },
+  "canvasRce.title": { "message": "Canvas RCE", "translate": "always" },
+  "canvasRce.description": {
+    "message": "A live preview of pantoken's Canvas LMS Rich Content Editor template: a TinyMCE-based editor with starter layouts, a live preview pane, and hand-editable theme.css/theme.js output.",
+    "translate": "always"
+  },
+  "canvasRce.openInNewTab": { "message": "Open in a new tab", "translate": "always" },
+  "canvasRce.runLocally": {
+    "message": "Run locally: npx create-pantoken-app canvas-theme-editor",
+    "translate": "always"
+  },
   "agentTools.title": { "message": "Agent Tools", "translate": "always" },
   "agentTools.subtitle": {
     "message": "Pick a Pantoken agent workflow, generate the command or launch URL, and give your assistant the files it needs to stop guessing.",

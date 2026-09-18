@@ -29,6 +29,7 @@ import VitePressMermaid from "../plugins/vitepress-mermaid/index.vue";
 import CdnPicker from "./components/CdnPicker.vue";
 import CdnPickerPage from "./components/CdnPickerPage.vue";
 import AgentToolsPage from "./components/AgentToolsPage.vue";
+import CanvasRcePage from "./components/CanvasRcePage.vue";
 import GetStartedTabs from "./components/GetStartedTabs.vue";
 import RegistryBrowser from "./components/RegistryBrowser.vue";
 // Import register() from the web-components SOURCE, not `@pantoken/web-components` (dist). The dist
@@ -141,6 +142,7 @@ export default {
     ctx.app.component("CdnPicker", CdnPicker);
     ctx.app.component("CdnPickerPage", CdnPickerPage);
     ctx.app.component("AgentToolsPage", AgentToolsPage);
+    ctx.app.component("CanvasRcePage", CanvasRcePage);
     ctx.app.component("GetStartedTabs", GetStartedTabs);
     ctx.app.component("RegistryBrowser", RegistryBrowser);
 

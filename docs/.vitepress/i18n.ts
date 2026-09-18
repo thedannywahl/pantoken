@@ -1,6 +1,7 @@
 import { LOCALES } from "@pantoken/web-components";
 import chromeSource from "./i18n.json" with { type: "json" };
 import type { AgentToolsStrings } from "./theme/agent-tools.ts";
+import type { CanvasRceStrings } from "./theme/canvas-rce.ts";
 import type { CdnPickerStrings } from "./theme/cdn.ts";
 import type { GetStartedTabsStrings } from "./theme/get-started.ts";
 import type { RegistryBrowserStrings } from "./theme/registry.ts";
@@ -120,6 +121,7 @@ export interface UiStrings {
     cdnPicker: string;
     registry: string;
     agentTools: string;
+    canvasRce: string;
     cli: string;
     plugins: string;
     generated: string;
@@ -179,6 +181,9 @@ export interface UiStrings {
   // The interactive Agent Tools utility (see theme/components/AgentToolsPage.vue and
   // theme/agent-tools.ts).
   agentTools: AgentToolsStrings;
+  // The Canvas RCE utility page embedding the canvas-theme-editor scaffold's live TinyMCE editor (see
+  // theme/components/CanvasRcePage.vue and theme/canvas-rce.ts).
+  canvasRce: CanvasRceStrings;
   // Default-theme chrome VitePress renders around the content. Without these an untranslated locale
   // shows English labels (outline heading, prev/next footer, dark-mode toggle, the 404 page, etc.).
   chrome: {

@@ -241,6 +241,19 @@ const orchestrator = workspaceOrchestrator({
       build: ["node", "scripts/build-css-api.ts"],
       dependents: [],
     },
+    {
+      // Re-render the canvas-theme-editor scaffold template and build it into the static bundle the
+      // "Canvas RCE" utility page embeds via iframe (public/tools/canvas-rce/). Watches the template's
+      // own source plus the scaffolder that renders it, so an edit to either rebuilds the demo.
+      name: "@pantoken/docs#canvas-rce",
+      dir: at("docs"),
+      watchPaths: [
+        at("packages/scaffold/templates/canvas-theme-editor"),
+        at("packages/scaffold/src"),
+      ],
+      build: ["node", "scripts/build-canvas-rce.ts"],
+      dependents: [],
+    },
   ],
   outputWatchPaths: [
     // The generated CSS the theme imports via `@fs` — bridged into HMR. (Web components are imported from
@@ -401,6 +414,10 @@ const localesConfig = Object.fromEntries(
               {
                 text: locale.sidebar.agentTools,
                 link: `${locale.guidePrefix}agent-tools`,
+              },
+              {
+                text: locale.sidebar.canvasRce,
+                link: `${locale.guidePrefix}canvas-rce`,
               },
             ],
           },
