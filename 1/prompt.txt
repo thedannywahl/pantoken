@@ -1,0 +1,25 @@
+we're going to build a vitepress plugin that works with live and static generated sites that adds collapse/expand functionality to the sidebar.
+
+---
+
+In the pantoken repo, research the conventions used for authoring internal plugins (Vite plugins, VitePress plugins, or similar tooling plugins) so a new "vitepress sidebar collapse/expand" plugin can follow established patterns:
+
+1. Look at plugins/vite/, plugins/pantoken/, plugins/postcss/, plugins/typedoc/ — for each, find the main entry file and summarize the shape of the plugin (how it's defined/exported, TypeScript patterns, whether it uses a factory function, how it's published/consumed by other packages, whether it has its own package.json name like `@pantoken/vite-plugin-x`).
+2. Check if any of these plugins specifically hook into VitePress (config, transforms, client-side runtime injection) — grep for "vitepress" across the repo (case-insensitive) outside of docs/ to see if any package already targets VitePress specifically.
+3. Look at docs/.vitepress/theme/components/AgentToolsPage.vue (the file currently open) and its sibling components in docs/.vitepress/theme/components/ to understand existing Vue component conventions (Composition API vs Options API, script setup, styling conventions e.g. scoped CSS, use of CSS custom properties/design tokens from pantoken).
+4. Check tsconfig.base.json and any relevant docs/conventions/build-and-docs.md notes for module format conventions (ESM only, etc.) and whether packages under plugins/ get their own package.json, README, and are published to npm.
+5. Check .changeset/ folder conventions (is a changeset required for a new plugin package?).
+
+Report back: the established plugin package structure/pattern (with a concrete example file path to model after), whether any existing package already touches VitePress, the Vue component authoring conventions in docs/.vitepress/theme/components/, and changeset requirements.
+
+---
+
+it goes in plugins/vitepress/side-bar-toggle and is published as `@pantoken/vitepress-sidebar-toggle` - it doesn't depend on any pantoken packages otherwise, it is a pure vitepress plugin using its available hooks, icons, etc.
+
+---
+
+work in incremental conventional commits, with changesets even for private packages, ignoring changed files you haven't touched as there are other agents.
+
+---
+
+vitepress has some builtin icons and we should use those before doing our own svg inlining.
