@@ -1,0 +1,67 @@
+the pantoken app scaffold has a tinymce (canvas-theme-editor) instance, I want to surface that compiled package as an additional utility page in docs alongside the CDN picker, Agent tools, etc.
+
+---
+
+In the pantoken monorepo (/Users/dwahl/Scripts/pantoken), investigate how the VitePress docs site (`docs/`) implements "utility" pages like the CDN picker and "Agent tools" pages (these are interactive tool pages, not regular content docs).
+
+I need to understand:
+1. Find the CDN picker page — likely under `docs/guide/` or `docs/internal/` or similar. Find its full file path, and read its content (the .md file and any associated Vue component / script it uses).
+2. Find the "Agent tools" page similarly — full path, content, associated components.
+3. How are these pages registered in the VitePress sidebar/nav config? Look at `docs/.vitepress/config.ts` (or similar) for sidebar entries.
+4. What Vue components or client-side JS do these utility pages use? Are they custom Vue components living in `docs/.vitepress/components` or similar? How do they load data (e.g., fetching a manifest JSON, like `component-capabilities.json` mentioned for interactions)?
+5. Is there a common pattern/convention for adding a new "tool" page (e.g., a directory listing of existing tool pages, naming conventions, i18n requirements per docs/conventions/build-and-docs.md)?
+6. Check `docs/conventions/build-and-docs.md` for any documented conventions about utility/tool pages.
+
+Report back:
+- Full paths of the CDN picker page and Agent tools page, with their content summarized
+- The Vue/component architecture backing them (file paths)
+- The VitePress config/sidebar wiring (file path + relevant snippet)
+- Any documented conventions for adding new utility pages
+- i18n requirements (since docs site has many locales) — do utility pages need per-locale copies, or is there a shared/root-only pattern for tool pages?
+
+---
+
+In the pantoken monorepo (/Users/dwahl/Scripts/pantoken), deeply investigate `packages/scaffold/templates/canvas-theme-editor/` — the TinyMCE-based live editor/preview template that will need to be ported into a VitePress docs utility page.
+
+Read and report on:
+1. Full directory listing (list_dir recursively as needed) of `packages/scaffold/templates/canvas-theme-editor/`.
+2. `index.html` — full contents (layout structure, panes, toolbar).
+3. `src/main.ts` (or equivalent entry) — full contents. I need to understand: how TinyMCE is initialized (version, plugins, toolbar config), how the split-pane preview works, how the "Edit theme" tray (Config/CSS/JS tabs) works, how CodeMirror is used for source view, how layouts are inserted, and how download links for theme.css/theme.js work.
+4. Any other src/*.ts or src/*.css files — list them and summarize each briefly (one line each), noting anything critical to reproducing behavior (state management, DOM manipulation approach — vanilla JS or a framework?).
+5. package.json — dependencies (especially tinymce version, codemirror version, any framework like vue/react), build tooling (vite?), scripts.
+6. Confirm: is this all vanilla TypeScript/DOM (no Vue/React), or does it use a framework? This matters because docs site components are Vue.
+7. Check `platforms/canvas-theme-editor/src/build-theme.ts` for the exact signature of `buildTheme()`, `buildThemeCss()`, `buildThemeJs()`, and `CDN_PROVIDERS`, theme/mode option types — I need the exact TypeScript API surface to call it from a new Vue component.
+8. Check whether `@pantoken/canvas-theme-editor` and `@pantoken/cdn` (its only dependency) are safe to import in a browser bundle context (no node:* imports, no fs access) — read `platforms/canvas-theme-editor/src/index.ts` and `packages/cdn` main entry to confirm.
+9. Check the README at `packages/scaffold/templates/canvas-theme-editor/README.md` for a description of the pane layout, resizing, fullscreen modes, and any user-facing feature list I should replicate.
+
+Report back with enough detail (including relevant code snippets) that I can plan porting this vanilla-JS TinyMCE editor experience into a Vue 3 component (`docs/.vitepress/theme/components/CanvasRcePage.vue`) for the VitePress docs site, reusing as much logic as possible (ideally by importing shared logic rather than duplicating), and calling out any risks (e.g., large bundle size from tinymce, SSR issues in VitePress since VitePress pre-renders on build, CodeMirror bundling, layout HTML assets).
+
+---
+
+In the pantoken monorepo (/Users/dwahl/Scripts/pantoken), I need to plan embedding a heavy vanilla-JS TinyMCE app (currently living as a scaffold starter template at `packages/scaffold/templates/canvas-theme-editor/`, a `.tmpl`-templated Vite project) as a live iframe demo inside the VitePress docs site (`docs/`).
+
+Investigate and report:
+
+1. **`docs/scripts/` directory**: list all files. For each script relevant to build-time asset generation (e.g. `build-css-api.ts`, any script that builds/copies static assets into `docs/public/` or `docs/.vitepress/public/`), read it and summarize what it does and how it's invoked (from `docs/package.json` scripts, or a top-level orchestrator).
+
+2. **Docs orchestrator**: find the main docs build orchestrator script (mentioned in `docs/conventions/build-and-docs.md` as spawning `node scripts/x.ts` directly, not nested `vp run`). Read `docs/package.json` scripts section fully, and any orchestrator file, to understand the full sequence of build steps for `docs:build` and `docs:dev`.
+
+3. **Existing live/interactive demos in docs**: search for any existing pattern of embedding a standalone built bundle via `<iframe>` in a Vue component under `docs/.vitepress/theme/components/`. Check `docs/demos/` directory too — what's in there, and how is it wired into the VitePress build (any vite config in `docs/.vitepress/config.ts` for handling `docs/demos`)?
+
+4. **`docs/public/` or `docs/.vitepress/public/`**: list what static assets already live there, to understand the convention for standalone static bundles served alongside the docs site.
+
+5. **`@pantoken/scaffold` programmatic API**: read `packages/scaffold/src/index.ts` (and any exported render/scaffold function) to determine whether there's a way to programmatically render a template (substituting `{{variables}}`, copying `.tmpl` files) into an output directory without going through the interactive CLI. Report the exact function signature(s) available for this (e.g. `scaffoldProject(options)` or similar), and what options it takes (platform, locale, projectName, output dir, etc.).
+
+6. **`packages/scaffold/templates/canvas-theme-editor/package.json`**: read fully — list all dependencies/devDependencies (tinymce version, codemirror packages, @pantoken/tinymce, @pantoken/interactions, @pantoken/canvas-theme-editor, vite version) and all scripts (dev/build/preview).
+
+7. Check whether `vite.config.ts.tmpl` in that template is empty/default or has special config (base path, build.outDir) that would need overriding to build it as a subpath-served static bundle (e.g. served at `/tools/canvas-rce/` under the docs site instead of `/`).
+
+Report back with concrete file paths, snippets, and a clear picture of: (a) what tool/script already builds static assets for docs, (b) whether scaffold has a clean programmatic render API I can call from a new docs build script, (c) the exact dependencies/build tool used by the template so I can plan a `vite build` invocation with a custom `base`/`outDir`.
+
+---
+
+work in incremental conventional commits, with changesets even for private packages, ignoring changed files you haven't touched as there are other agents.
+
+---
+
+Start implementation
