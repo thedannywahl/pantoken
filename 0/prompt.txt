@@ -1,0 +1,13 @@
+`running vpr docs:dev` still touches the timestamp on docs.api.pot but it shouldn't.  only a real build should.
+
+---
+
+Quick, read-only exploration in /Users/dwahl/Scripts/pantoken. Follow .entire/graph-agent.md: first run `entire graph search --repo . --profile full --query "docs dev task updates docs.api.pot localization extraction"`, then inspect focused source. Determine exactly how `vpr docs:dev` is defined, why it touches l10n/docs.api.pot, and how normal docs build triggers that generation. Identify minimal implementation options consistent with existing task conventions, potential relevant tests, and exact files/symbols/line areas. Do not edit files. Report a concise evidence-backed recommendation and validation commands.
+
+---
+
+Start implementation
+
+---
+
+Start implementation
