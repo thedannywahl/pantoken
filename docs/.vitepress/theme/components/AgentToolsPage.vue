@@ -307,10 +307,10 @@ async function copy(value: string, key: string): Promise<void> {
 <template>
   <div class="agent-tools-page instui-view">
     <header class="agent-tools-page__hero --display-flex --gap-sm --mb-lg">
-      <h1 class="instui-heading -level-h1 -variant-title-page agent-tools-page__title">
+      <h1 class="instui-heading -level-h1 -variant-title-page agent-tools-page__title --m-0">
         {{ t.title }}
       </h1>
-      <p class="instui-text -color-secondary agent-tools-page__subtitle">{{ t.subtitle }}</p>
+      <p class="instui-text -color-secondary agent-tools-page__subtitle --m-0">{{ t.subtitle }}</p>
     </header>
 
     <div class="instui-tabs --mb-xl">
@@ -345,9 +345,9 @@ async function copy(value: string, key: string): Promise<void> {
           v-if="activeTab === 'bootstrap'"
           class="agent-tools-page__panel --display-flex --gap-md"
         >
-          <div>
-            <h2 class="instui-heading -level-h2 --my-md">{{ t.bootstrapTitle }}</h2>
-            <p class="instui-text -color-secondary">{{ t.bootstrapDescription }}</p>
+          <div class="agent-tools-page__intro --display-flex --gap-2xs">
+            <h2 class="instui-heading -level-h2 --m-0">{{ t.bootstrapTitle }}</h2>
+            <p class="instui-text -color-secondary --m-0">{{ t.bootstrapDescription }}</p>
           </div>
           <div
             class="agent-tools-page__prompt-wrapper instui-view --border-radius-lg --padding-xs --background-ai-horizontal"
@@ -397,9 +397,9 @@ async function copy(value: string, key: string): Promise<void> {
           v-else-if="activeTab === 'install'"
           class="agent-tools-page__panel --display-flex --gap-md"
         >
-          <div>
-            <h2 class="instui-heading -level-h2">{{ t.installTitle }}</h2>
-            <p class="instui-text -color-secondary">{{ t.installDescription }}</p>
+          <div class="agent-tools-page__intro --display-flex --gap-2xs">
+            <h2 class="instui-heading -level-h2 --m-0">{{ t.installTitle }}</h2>
+            <p class="instui-text -color-secondary --m-0">{{ t.installDescription }}</p>
           </div>
           <fieldset class="instui-radio-input-group -variant-toggle agent-tools-page__asset-filter">
             <legend>{{ t.toolLabel }}</legend>
@@ -472,15 +472,15 @@ async function copy(value: string, key: string): Promise<void> {
         </section>
 
         <section v-else class="agent-tools-page__panel --display-flex --gap-md">
-          <div>
-            <h2 class="instui-heading -level-h2">{{ t.docsTitle }}</h2>
-            <p class="instui-text -color-secondary">{{ t.docsDescription }}</p>
+          <div class="agent-tools-page__intro --display-flex --gap-2xs">
+            <h2 class="instui-heading -level-h2 --m-0">{{ t.docsTitle }}</h2>
+            <p class="instui-text -color-secondary --m-0">{{ t.docsDescription }}</p>
           </div>
           <ul class="instui-list -unstyled -inline agent-tools-page__links --gap-md">
             <li v-for="link in docsLinks" :key="link.id">
-              <article class="instui-card agent-tools-page__link-card">
-                <h3 class="instui-heading -level-h3">{{ link.title }}</h3>
-                <p class="instui-text -size-small -color-secondary">{{ link.description }}</p>
+              <article class="instui-card agent-tools-page__link-card --display-flex --gap-sm">
+                <h3 class="instui-heading -level-h3 --m-0">{{ link.title }}</h3>
+                <p class="instui-text -size-small -color-secondary --m-0">{{ link.description }}</p>
                 <ul class="instui-list -unstyled agent-tools-page__asset-links">
                   <li v-if="link.href">
                     <a
@@ -538,6 +538,10 @@ async function copy(value: string, key: string): Promise<void> {
 }
 
 .agent-tools-page__hero {
+  flex-direction: column;
+}
+
+.agent-tools-page__intro {
   flex-direction: column;
 }
 
@@ -680,6 +684,7 @@ async function copy(value: string, key: string): Promise<void> {
 
 .agent-tools-page__link-card {
   flex: 1;
+  flex-direction: column;
   padding: 1rem;
   min-width: 0;
 }
