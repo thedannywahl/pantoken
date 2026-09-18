@@ -1,0 +1,10 @@
+cssdoc 0.16.0 now allows us to specify variants and max, the structure for the buttons should be:
+optional max 1 bare button, or an optional button group with 1 to 2 buttons.
+
+---
+
+check the syntax on this, I think it's supposed to be :optional:max-1, not spaced. also right now it looks like you could have the optional button AND the optional button group, not OR the optional button group.
+
+---
+
+okay, but you removed the slot and the optional close button which should be in the structure still.
