@@ -1,4 +1,4 @@
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, expect, test } from "vite-plus/test";
@@ -110,4 +110,34 @@ test("splices a translated whole-file unit into the rendered output", () => {
   );
   expect(rendered).toContain("Egy react app.");
   expect(rendered).toContain("{{projectName}}");
+});
+
+test("removes stale persistent rendered files when a source file is removed", () => {
+  const persistentConfig = parseConfig({
+    source: "en",
+    locales: {
+      registry: "@pantoken/web-components#LOCALES",
+      exclude: [],
+      tiers: { source: ["en"], primary: ["hu"], secondary: ["*"] },
+    },
+    spaces: {
+      "scaffold.readme": {
+        kind: "content",
+        include: ["packages/scaffold/templates/*/README.md"],
+        root: "packages/scaffold/templates",
+        render: "packages/scaffold/generated/l10n/{locale}/{path}",
+        transientRender: false,
+        segment: "file",
+      },
+    },
+  });
+  runExtractContent(persistentConfig, repo, "scaffold.readme");
+  runRenderContent(persistentConfig, repo, "scaffold.readme", "hu");
+
+  rmSync(join(repo, "packages/scaffold/templates", "vue", "README.md"));
+  runExtractContent(persistentConfig, repo, "scaffold.readme");
+  runRenderContent(persistentConfig, repo, "scaffold.readme", "hu");
+
+  expect(existsSync(join(repo, "packages/scaffold/generated/l10n/hu/react/README.md"))).toBe(true);
+  expect(existsSync(join(repo, "packages/scaffold/generated/l10n/hu/vue/README.md"))).toBe(false);
 });

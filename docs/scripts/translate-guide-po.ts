@@ -40,11 +40,20 @@ for (const locale of locales) {
     const entry = entries.find((item) => !item.obsolete && item.msgid === source);
     if (!entry || (!force && entry.msgstr !== "" && !entry.fuzzy)) continue;
 
-    const translated = await adapter.translateMarkdown(source, file);
+    let translated: string;
+    let promptTranslations: Record<string, string>;
     const promptBodies = collectPromptBodies(source);
-    const promptTranslations = await adapter.translateBatch(
-      promptBodies.map((text, index) => ({ id: `prompt:${index}`, text })),
-    );
+    try {
+      translated = await adapter.translateMarkdown(source, file);
+      promptTranslations = await adapter.translateBatch(
+        promptBodies.map((text, index) => ({ id: `prompt:${index}`, text })),
+      );
+    } catch (error) {
+      console.warn(
+        `  ! ${locale} ${file}: ${error instanceof Error ? error.message : String(error)}`,
+      );
+      continue;
+    }
     let promptIndex = 0;
     const localized = reassemble(segmentMarkdown(translated), (text) => {
       const prompt = promptBodies[promptIndex];
@@ -55,6 +64,10 @@ for (const locale of locales) {
       }
       return text;
     });
+    if (localized.trim().length === 0) {
+      console.warn(`  ! ${locale} ${file}: empty translation, not cached`);
+      continue;
+    }
     entry.msgstr = `${localized.trimEnd()}\n`;
     entry.fuzzy = false;
     entry.flags = entry.flags.filter((flag) => flag !== "fuzzy");
