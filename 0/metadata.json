@@ -1,0 +1,49 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2TQJT02H3K8T6M8ZJ1XEPJM",
+  "session_id": "c6314b99-11d9-42cd-b5a1-71a750bf6194",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-18T17:03:48.659384Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "save_step_count": 2,
+  "files_touched": [],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "3eaf51849efe",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 5
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 2,
+      "user_lines_removed": 2,
+      "agent_lines_added": 38,
+      "agent_lines_removed": 8181,
+      "user_added_per_file": {
+        "docs/guide/canvas-rce.md": 1,
+        "l10n/docs.api.pot": 1
+      },
+      "user_removed_per_file": {
+        "docs/guide/canvas-rce.md": 1,
+        "l10n/docs.api.pot": 1
+      }
+    }
+  ]
+}
