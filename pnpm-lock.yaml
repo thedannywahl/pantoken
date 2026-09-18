@@ -783,6 +783,9 @@ importers:
       '@pantoken/interactions':
         specifier: workspace:*
         version: link:../formats/interactions
+      '@pantoken/pantoken':
+        specifier: workspace:*
+        version: link:../packages/pantoken
       '@pantoken/pendo':
         specifier: workspace:*
         version: link:../renderers/pendo

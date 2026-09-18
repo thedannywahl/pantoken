@@ -58,6 +58,7 @@
     "@pantoken/demo": "workspace:*",
     "@pantoken/i18n-engine": "workspace:*",
     "@pantoken/interactions": "workspace:*",
+    "@pantoken/pantoken": "workspace:*",
     "@pantoken/pendo": "workspace:*",
     "@pantoken/plugin-custom-components": "workspace:*",
     "@pantoken/plugin-custom-icons": "workspace:*",
