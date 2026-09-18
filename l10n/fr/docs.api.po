@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-17 23:45+0000\n"
+"PO-Revision-Date: 2026-09-18 02:02+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -28825,3 +28825,9 @@ msgstr "Un bouton « voir en plein écran » visible au survol, superposé sur u
 #~ msgctxt "docs.api:text"
 #~ msgid "BuildIconFontOptions"
 #~ msgstr "BuildIconFontOptions"
+
+#: formats/components/src/variables/aiGradientCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The AI gradient utility as a standalone, header-wrapped stylesheet."
+msgstr "L'utilitaire de dégradé IA en tant que feuille de style autonome, enveloppé dans un en-tête."
