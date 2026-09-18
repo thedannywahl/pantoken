@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.2.3
+
+### Patch Changes
+
+- 091942b: Update Alert structure to specify `.button-group` max button count.
+
 ## 1.2.2
 
 ### Patch Changes
