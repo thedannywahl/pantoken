@@ -1,6 +1,6 @@
 {
   "name": "pantoken",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Unscoped meta-package and CLI for pantoken: Instructure design tokens, icons, and platform integrations.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

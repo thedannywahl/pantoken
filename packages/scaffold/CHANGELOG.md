@@ -1,5 +1,20 @@
 # @pantoken/scaffold
 
+## 1.4.0
+
+### Minor Changes
+
+- 9ba476b: Teach agents to choose between maintained applications and standalone artifacts before selecting a
+  Pantoken integration. Add the `create-pantoken-mockup` skill for CDN-backed browser prototypes and
+  email-safe inline HTML, document the CSS-native `@pantoken` shadcn registry and applicable plugins,
+  and install the new skill with Claude assets.
+
+### Patch Changes
+
+- 9ba476b: Add a `use-pantoken-registry` Claude skill to the installed Pantoken agent assets, and expand the
+  Agent Tools docs page into an interactive utility for generating agent commands, launch prompts, and
+  links to agent-readable Pantoken documentation.
+
 ## 1.3.0
 
 ### Minor Changes

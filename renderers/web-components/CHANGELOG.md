@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.6.8
+
+### Patch Changes
+
+- Updated dependencies [9ba476b]
+  - @pantoken/components@1.2.2
+  - @pantoken/scaffold-base@0.3.2
+
 ## 0.6.7
 
 ### Patch Changes

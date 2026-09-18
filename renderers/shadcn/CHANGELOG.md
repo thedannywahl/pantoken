@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 9ba476b: Cover shadcn's chart and sidebar theme variables with verified InstUI tokens, and add a separate
+  Tailwind v4 stylesheet with `@theme inline` color aliases and the derived radius scale. Document the
+  bridge, Tailwind version boundary, and optional prose stylesheet.
+
 ## 0.1.3
 
 ### Patch Changes
