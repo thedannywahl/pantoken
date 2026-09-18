@@ -1,7 +1,6 @@
 ---
-aside: false
-editLink: false
 title: Dewiswr CDN
+layout: page
 ---
 
 <CdnPickerPage />

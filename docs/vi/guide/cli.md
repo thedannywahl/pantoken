@@ -8,6 +8,16 @@ giao diện CMS và trình tạo site tĩnh.
 npx pantoken generate <target> --out <dir> [--theme <name>] [--icons a,b,c]
 ```
 
+For a project configured with shadcn, this delegates to `shadcn add @pantoken/<item>` and registers
+the indexed namespace when necessary:
+
+```sh
+npx pantoken add button
+```
+
+Use the official shadcn `list`, `search`, and `view` commands for discovery. Registry items install
+Pantoken CSS styles and metadata, not React components.
+
 ## Mục tiêu
 
 | Target      | Output                                                                               |

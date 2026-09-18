@@ -1,0 +1,16 @@
+id: app-negative-001
+name: Maintained application anti-trigger
+description: A package-managed application belongs to create-pantoken-app, not the mockup skill.
+tags:
+  - negative-trigger
+inputs:
+  prompt: "Add Pantoken to my existing Vite React application and configure the dependencies"
+expected:
+  should_trigger: false
+graders:
+  - type: text
+    name: avoids-mockup-workflow
+    config:
+      not_contains:
+        - "cdn.jsdelivr.net"
+        - "standalone HTML"

@@ -81,6 +81,11 @@ describe("partitionApiSidebar", () => {
       "/api/packages/model/src/",
       "/api/css/",
     ]);
+    expect(routes["/api/"]).toMatchObject([
+      { text: "Guides", link: "/guide/getting-started" },
+      { text: "API reference" },
+      { text: "CSS", link: "/api/css/" },
+    ]);
     expect(findItem(routes["/api/"] as TestItem[], "core")?.items).toBeUndefined();
     expect(findItem(routes["/api/"] as TestItem[], "model")?.items).toBeUndefined();
     expect(findItem(routes["/api/"] as TestItem[], "CSS")).toMatchObject({
@@ -116,6 +121,8 @@ describe("partitionApiSidebar", () => {
     );
     const cssRoute = routes["/api/css/"] as TestItem[];
 
+    expect(cssRoute.map((item) => item.text)).toEqual(["Guides", undefined, "CSS"]);
+    expect(cssRoute[1]).toEqual({ items: [{ text: "API reference", link: "/api/" }] });
     expect(findItem(cssRoute, "button")?.link).toBe("/api/css/button.md");
     expect(findItem(cssRoute, "core")?.items).toBeUndefined();
     // Members stay nested under their parent rather than flattening to siblings.
@@ -138,10 +145,16 @@ describe("partitionApiSidebar", () => {
       "CSS",
       apiGroupLabels,
       "Áttekintés",
+      "Útmutatók",
+      "/hu/guide/getting-started",
     );
 
     expect(routes).toHaveProperty("/hu/api/packages/core/src/");
     expect(routes).toHaveProperty("/hu/api/css/");
+    expect(routes["/hu/api/"]?.[0]).toMatchObject({
+      text: "Útmutatók",
+      link: "/hu/guide/getting-started",
+    });
   });
 
   test("uses display labels for top-level API buckets", () => {

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-14 15:46+0000\n"
+"PO-Revision-Date: 2026-09-18 00:07+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -46,6 +46,12 @@ msgid "Guides"
 msgstr "मार्गदर्शिकाएँ"
 
 #: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:sidebar.utilities"
+msgid "Utilities"
+msgstr "यूटिलिटीज़"
+
+#: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:sidebar.gettingStarted"
 msgid "Getting started"
@@ -76,10 +82,16 @@ msgid "CDN picker"
 msgstr "CDN चयन"
 
 #: docs/.vitepress/i18n.json
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.chrome:sidebar.registry"
-msgid "Registry"
+msgid "shadcn/ui Registry"
 msgstr "रजिस्ट्री"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:sidebar.agentTools"
+msgid "Agent Tools"
+msgstr "उपकरण"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -512,6 +524,306 @@ msgstr "कोई रजिस्ट्री आइटम आपकी खो�
 msgctxt "docs.chrome:registryBrowser.emptyReset"
 msgid "Reset Filters"
 msgstr "खोज रीसेट करें"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.title"
+msgid "Agent Tools"
+msgstr "उपकरण"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.subtitle"
+msgid "Pick a Pantoken agent workflow, generate the command or launch URL, and give your assistant the files it needs to stop guessing."
+msgstr "एक Pantoken एजेंट वर्कफ़्लो चुनें, कमांड या लॉन्च URL जेनरेट करें, और अपने सहायक को वे फ़ाइलें दें जिनकी उसे अनुमान लगाने की ज़रूरत न पड़े।"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.providerLabel"
+msgid "Agent"
+msgstr "एजेंट"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.packageManagerLabel"
+msgid "Runner"
+msgstr "रनर"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.copy"
+msgid "Copy"
+msgstr "कॉपी"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.download"
+msgid "Download"
+msgstr "डाउनलोड"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.copied"
+msgid "Copied"
+msgstr "कॉपी किया गया"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.open"
+msgid "Open"
+msgstr "खोलें"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.openInAgent"
+msgid "Open in {{agent}}"
+msgstr "{{agent}} में खोलें"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.openUnavailable"
+msgid "This agent does not publish a stable launch URL. Use Copy for the CLI prompt."
+msgstr "यह एजेंट एक स्थिर लॉन्च URL प्रकाशित नहीं करता। CLI प्रॉम्प्ट के लिए Copy का उपयोग करें।"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.tabBootstrap"
+msgid "Bootstrap"
+msgstr "बूटस्ट्रैप"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.tabInstall"
+msgid "Install assets"
+msgstr "संसाधन स्थापित करें"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.tabRegistry"
+msgid "Registry"
+msgstr "रजिस्ट्री"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.tabDocs"
+msgid "Agent docs"
+msgstr "एजेंट डॉक्स"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.bootstrapTitle"
+msgid "Bootstrap a project"
+msgstr "प्रोजेक्ट बूटस्ट्रैप करें"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.bootstrapDescription"
+msgid "Scaffold a starter with Pantoken wired in and install the repo-local agent assets in the same pass."
+msgstr "Pantoken को जोड़कर एक स्टार्टर स्कैफ़ोल्ड करें और उसी ऑपरेशन में रेपो-लोकल एजेंट एसेट्स इंस्टॉल करें।"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.platformLabel"
+msgid "Platform"
+msgstr "प्लेटफॉर्म"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.directoryLabel"
+msgid "Directory"
+msgstr "निर्देशिका"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.installTitle"
+msgid "Add agent guidance to a repo"
+msgstr "एक रेपो में एजेंट मार्गदर्शन जोड़ें"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.installDescription"
+msgid "Install AGENTS.md, llms.txt, editor rules, and Claude skills into an existing project that already uses or is about to use Pantoken."
+msgstr "एक मौजूदा प्रोजेक्ट में AGENTS.md, llms.txt, एडिटर नियम, और Claude कौशल इंस्टॉल करें जो पहले से Pantoken का उपयोग करता है या उपयोग करने वाला है।"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.toolLabel"
+msgid "Asset set"
+msgstr "एसेट सेट"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.writesLabel"
+msgid "Writes"
+msgstr "लिखता है"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.registryTitle"
+msgid "Work with the shadcn/ui registry"
+msgstr "रजिस्ट्री"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.registryDescription"
+msgid "Point an agent at Pantoken's indexed registry so it can search, inspect, and add CSS-backed registry items instead of inventing package names."
+msgstr "Pantoken के इंडेक्स्ड रजिस्ट्री की ओर एजेंट को पॉइंट करें ताकि यह पैकेज नाम बनाने के बजाय रजिस्ट्री आइटम्स को खोज, निरीक्षण और जोड़ सके।"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.registryActionLabel"
+msgid "Action"
+msgstr "कार्य"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.registryItemLabel"
+msgid "Registry item"
+msgstr "रजिस्ट्री"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.docsTitle"
+msgid "Agent-readable documentation"
+msgstr "एजेंट-पठनीय दस्तावेज़"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.docsDescription"
+msgid "Pantoken publishes fetchable documentation and manifests for assistants that can browse URLs or read raw Markdown."
+msgstr "Pantoken सहायक एजेंटों के लिए फ़ेच करने योग्य दस्तावेज़ और मैनीफेस्ट प्रकाशित करता है जो URL ब्राउज़ या कच्चा Markdown पढ़ सकते हैं।"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.installPrompt"
+msgid "Install Pantoken agent guidance in this repository. Use {{command}}, then summarize the files written and when future agents should read them."
+msgstr "इस रिपॉज़िटरी में Pantoken एजेंट मार्गदर्शन इंस्टॉल करें। {{command}} का उपयोग करें, फिर लिखी गई फ़ाइलों और भविष्य के एजेंटों को उन्हें कब पढ़ना चाहिए इसका सारांश दें।"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.registryPrompt"
+msgid "Use the Pantoken shadcn registry for this project. Fetch https://pantoken.app/r/registry.json, then run {{command}} if the project uses shadcn or has components.json. Registry items install CSS and metadata, not React components."
+msgstr "इस प्रोजेक्ट के लिए Pantoken shadcn रजिस्ट्री का उपयोग करें। https://pantoken.app/r/registry.json फ़ेच करें, फिर यदि प्रोजेक्ट shadcn का उपयोग करता है या components.json है तो {{command}} चलाएँ। रजिस्ट्री आइटम CSS और मेटाडेटा इंस्टॉल करते हैं, React कंपोनेंट्स नहीं।"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.docsPrompt"
+msgid "Fetch https://pantoken.app/llms.txt first. When a page is needed, prefer its raw Markdown URL by adding .md to the clean docs path, and use Pantoken manifests for component capabilities, CDN plugins, demos, and registry items."
+msgstr "पहले https://pantoken.app/llms.txt फ़ेच करें। जब किसी पृष्ठ की आवश्यकता हो, तो क्लीान डॉक्स पाथ में .md जोड़कर उसके कच्चे Markdown URL को प्राथमिकता दें, और कंपोनेंट क्षमताओं, CDN प्लगइन्स, डेमो और रजिस्ट्री आइटम्स के लिए Pantoken मैनीफेस्ट का उपयोग करें।"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.docsCommand"
+msgid "Fetch https://pantoken.app/llms.txt, then follow links to the pages and manifests relevant to this task."
+msgstr "https://pantoken.app/llms.txt फ़ेच करें, फिर इस टास्क से संबंधित पृष्ठों और मैनीफेस्ट्स के लिंक का पालन करें।"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.createDomainTitle"
+msgid "Bootstrap skill URL"
+msgstr "स्किल URL बूटस्ट्रैप करें"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.createDomainDescription"
+msgid "The short public URL any URL-capable agent can fetch to set up Pantoken."
+msgstr "छोटा सार्वजनिक URL जिसे कोई भी URL-सक्षम एजेंट Pantoken सेटअप के लिए फ़ेच कर सकता है।"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.llmsTitle"
+msgid "Site index"
+msgstr "साइट सूची"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.llmsDescription"
+msgid "Canonical English documentation index for agents and LLM-aware clients."
+msgstr "एजेंट्स और LLM-ज्ञात क्लाइंट्स के लिए स्वीकृत अंग्रेज़ी दस्तावेज़ सूचकांक।"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.llmsFullTitle"
+msgid "Full site context"
+msgstr "पूर्ण साइट संदर्भ"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.llmsFullDescription"
+msgid "Expanded LLM context for agents that need the complete documentation set."
+msgstr "उन एजेंटों के लिए विस्तारित LLM संदर्भ जिन्हें पूर्ण दस्तावेज़ सेट की आवश्यकता है।"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.pageMdTitle"
+msgid "Raw Markdown pages"
+msgstr "कच्चे Markdown पृष्ठ"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.pageMdDescription"
+msgid "Every docs HTML page advertises a raw Markdown alternate link."
+msgstr "हर डॉक्स HTML पेज एक कच्चे Markdown वैकल्पिक लिंक का विज्ञापन करता है।"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.registryManifestTitle"
+msgid "Registry manifest"
+msgstr "रजिस्ट्री"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.registryManifestDescription"
+msgid "shadcn-compatible index of Pantoken CSS registry items."
+msgstr "Pantoken CSS रजिस्ट्री आइटम्स का shadcn-अनुकूल सूचकांक।"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.capabilitiesTitle"
+msgid "Component capabilities"
+msgstr "कॉम्पोनेंट्स"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.capabilitiesDescription"
+msgid "Machine-readable map of component CSS, JavaScript, icon, and dependency needs."
+msgstr "कंपोनेंट के CSS, JavaScript, आइकन, और निर्भरताओं की मशीन-पठनीय मैप।"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.pluginsTitle"
+msgid "CDN plugin manifest"
+msgstr "CDN प्लगइन मैनिफेस्ट"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.pluginsDescription"
+msgid "Plugin styles available to CDN and standalone mockup workflows."
+msgstr "CDN और स्टैंडअलोन मॉकअप वर्कफ़्लो के लिए उपलब्ध प्लगइन शैलियाँ।"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.apiCatalogTitle"
+msgid "API catalog"
+msgstr "API कैटलॉग"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.apiCatalogDescription"
+msgid "Machine-readable linkset for Pantoken's agent-readable resources."
+msgstr "Pantoken के एजेंट-पठनीय संसाधनों के लिए मशीन-पठनीय लिंकसेट।"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.vscodeCustomDataTitle"
+msgid "VS Code custom data"
+msgstr "VS Code कस्टम डेटा"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.vscodeCustomDataDescription"
+msgid "HTML classes and CSS custom properties for VS Code IntelliSense."
+msgstr "VS Code IntelliSense के लिए HTML क्लासेस और CSS कस्टम प्रॉपर्टीज़।"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

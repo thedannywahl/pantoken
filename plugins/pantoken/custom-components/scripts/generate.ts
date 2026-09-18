@@ -7,13 +7,26 @@
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
-import { cardRules, agentShellRules, bannerRules } from "../src/components/index.ts";
+import {
+  agentShellRules,
+  aiGradientRules,
+  bannerRules,
+  cardRules,
+} from "../src/components/index.ts";
 
 const outDir = resolve(import.meta.dirname, "../generated");
-const allInstui = [cardRules("instui-"), agentShellRules("instui-"), bannerRules("instui-")].join(
-  "\n",
-);
-const allPfx = [cardRules("pfx-"), agentShellRules("pfx-"), bannerRules("pfx-")].join("\n");
+const allInstui = [
+  cardRules("instui-"),
+  agentShellRules("instui-"),
+  aiGradientRules("instui-"),
+  bannerRules("instui-"),
+].join("\n");
+const allPfx = [
+  cardRules("pfx-"),
+  agentShellRules("pfx-"),
+  aiGradientRules("pfx-"),
+  bannerRules("pfx-"),
+].join("\n");
 mkdirSync(outDir, { recursive: true });
 writeFileSync(join(outDir, "custom-components.css"), `${allInstui}\n`);
 writeFileSync(join(outDir, "_records.css"), `${allPfx}\n`);

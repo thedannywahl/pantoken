@@ -8,7 +8,15 @@
  *
  * @module
  */
-import { globSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import {
+  existsSync,
+  globSync,
+  mkdirSync,
+  readFileSync,
+  rmSync,
+  statSync,
+  writeFileSync,
+} from "node:fs";
 import { dirname, join, relative, sep } from "node:path";
 import { DriftReporter, type DriftPolicy } from "@pantoken/translation-adapters";
 import type { ContentSpaceConfig, I18nConfig, MessagesSpaceConfig } from "./config.ts";
@@ -269,7 +277,31 @@ export function runRenderContent(
     writeFileSync(outPath, rendered);
     filesWritten.push(outPath);
   }
+  cleanupStaleRenderedFiles(space, configDir, locale, new Set(filesWritten));
   return { space: spaceId, locale, filesWritten };
+}
+
+function cleanupStaleRenderedFiles(
+  space: ContentSpaceConfig,
+  configDir: string,
+  locale: string,
+  filesWritten: ReadonlySet<string>,
+): void {
+  if (space.transientRender || !space.render.includes("{path}")) return;
+  const renderRoot = join(
+    configDir,
+    resolvePattern(space.render.slice(0, space.render.indexOf("{path}")), { locale }),
+  );
+  if (!existsSync(renderRoot)) return;
+  for (const path of renderedFiles(renderRoot)) {
+    if (!filesWritten.has(path)) rmSync(path, { force: true });
+  }
+}
+
+function renderedFiles(root: string): string[] {
+  return globSync("**/*", { cwd: root })
+    .map((path) => join(root, path))
+    .filter((path) => statSync(path).isFile());
 }
 
 /** Splice `resolve`d translations back into one source file, per the space's segmentation. */

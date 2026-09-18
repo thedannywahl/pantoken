@@ -7,7 +7,7 @@ import { useHashParamRef } from "../composables/usePickerHelpers";
 import { REGISTRY_BROWSER_DEFAULTS, type RegistryBrowserStrings } from "../registry";
 import type { RegistryItem } from "./registry-types";
 
-type TabKey = "all" | "ui" | "theme" | "hook";
+type TabKey = "all" | "ui" | "theme";
 
 type DocsThemeWithRegistryBrowser = {
   registryBrowser?: RegistryBrowserStrings;
@@ -26,9 +26,7 @@ const pm = useHashParamRef("r_pm", "npx");
 
 const initialTab = readHashParam("r_tab");
 const activeTab = ref<TabKey>(
-  initialTab === "ui" || initialTab === "theme" || initialTab === "hook"
-    ? (initialTab as TabKey)
-    : "all",
+  initialTab === "ui" || initialTab === "theme" ? (initialTab as TabKey) : "all",
 );
 watch(activeTab, (tab) => writeHashParam("r_tab", tab, "all"));
 
@@ -36,27 +34,24 @@ const copiedItem = ref<string | null>(null);
 
 const counts = computed(() => {
   const all = items.value.length;
-  const ui = items.value.filter((i) => i.type === "registry:ui").length;
+  const ui = items.value.filter((i) => i.type === "registry:style").length;
   const theme = items.value.filter(
     (i) => i.type === "registry:theme" || i.type === "registry:base",
   ).length;
-  const hook = items.value.filter((i) => i.type === "registry:hook").length;
-  return { all, ui, theme, hook };
+  return { all, ui, theme };
 });
 
 const filteredItems = computed(() => {
   const query = search.value.trim().toLowerCase();
   return items.value.filter((item) => {
     // Tab filter
-    if (activeTab.value === "ui" && item.type !== "registry:ui") return false;
+    if (activeTab.value === "ui" && item.type !== "registry:style") return false;
     if (
       activeTab.value === "theme" &&
       item.type !== "registry:theme" &&
       item.type !== "registry:base"
     )
       return false;
-    if (activeTab.value === "hook" && item.type !== "registry:hook") return false;
-
     // Search query filter
     if (!query) return true;
     const matchName = item.name.toLowerCase().includes(query);
@@ -68,15 +63,15 @@ const filteredItems = computed(() => {
 });
 
 function getCommand(name: string): string {
-  const url = `https://pantoken.app/r/${name}.json`;
+  const item = `@pantoken/${name}`;
   switch (pm.value) {
     case "pnpm":
-      return `pnpm dlx shadcn@latest add ${url}`;
+      return `pnpm dlx shadcn@latest add ${item}`;
     case "bun":
-      return `bunx --bun shadcn@latest add ${url}`;
+      return `bunx --bun shadcn@latest add ${item}`;
     case "npx":
     default:
-      return `npx shadcn@latest add ${url}`;
+      return `npx shadcn@latest add ${item}`;
   }
 }
 
@@ -99,6 +94,8 @@ async function copyCommand(name: string) {
 
 function typeBadgeLabel(type: RegistryItem["type"]): string {
   switch (type) {
+    case "registry:style":
+      return "CSS";
     case "registry:ui":
       return "UI";
     case "registry:theme":
@@ -114,6 +111,7 @@ function typeBadgeLabel(type: RegistryItem["type"]): string {
 
 function badgeColorClass(type: RegistryItem["type"]): string {
   switch (type) {
+    case "registry:style":
     case "registry:ui":
       return "-color-brand";
     case "registry:theme":
@@ -152,9 +150,7 @@ function badgeColorClass(type: RegistryItem["type"]): string {
       </p>
       <div class="registry-page__hero-tip instui-view -border-radius-medium --p-sm">
         <span class="instui-text -weight-bold -size-small">CLI pattern:</span>
-        <code class="registry-page__code"
-          >npx shadcn@latest add https://pantoken.app/r/[item].json</code
-        >
+        <code class="registry-page__code">npx shadcn@latest add @pantoken/[item]</code>
       </div>
     </div>
 
@@ -184,14 +180,6 @@ function badgeColorClass(type: RegistryItem["type"]): string {
           @click="activeTab = 'theme'"
         >
           {{ t.tabThemes }} ({{ counts.theme }})
-        </button>
-        <button
-          class="tab"
-          role="tab"
-          :aria-selected="activeTab === 'hook'"
-          @click="activeTab = 'hook'"
-        >
-          {{ t.tabHooks }} ({{ counts.hook }})
         </button>
       </div>
 

@@ -1,7 +1,6 @@
 ---
-aside: false
-editLink: false
-title: Kōwhiri CDN
+title: Kaiwhiri CDN
+layout: page
 ---
 
 <CdnPickerPage />

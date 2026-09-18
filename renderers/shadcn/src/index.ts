@@ -41,7 +41,30 @@ export function toShadcnCss(options: ToShadcnCssOptions = {}): string {
   return `/* shadcn/ui themed with Instructure tokens (pantoken) */\n${selector} {\n${lines.join("\n")}\n}\n`;
 }
 
+const COLOR_ALIASES = Object.keys(SHADCN_TO_INSTUI).filter((name) => name !== "--radius");
+
+/** Emit Tailwind v4 aliases for the shadcn theme variables and derived radius scale. */
+export function toShadcnTailwindV4Css(): string {
+  const colors = COLOR_ALIASES.map((name) => `  --color-${name.slice(2)}: var(${name});`);
+  const radii = [
+    "  --radius-sm: calc(var(--radius) * 0.6);",
+    "  --radius-md: calc(var(--radius) * 0.8);",
+    "  --radius-lg: var(--radius);",
+    "  --radius-xl: calc(var(--radius) * 1.4);",
+    "  --radius-2xl: calc(var(--radius) * 1.8);",
+    "  --radius-3xl: calc(var(--radius) * 2.2);",
+    "  --radius-4xl: calc(var(--radius) * 2.6);",
+  ];
+  return `/* Tailwind v4 aliases for the pantoken shadcn theme */\n@theme inline {\n${[
+    ...colors,
+    ...radii,
+  ].join("\n")}\n}\n`;
+}
+
 /** The ready-made bridge stylesheet. */
 export const shadcnCss: string = toShadcnCss();
+
+/** The ready-made Tailwind v4 alias stylesheet. */
+export const shadcnTailwindV4Css: string = toShadcnTailwindV4Css();
 
 export default shadcnCss;

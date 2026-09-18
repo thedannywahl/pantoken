@@ -6,6 +6,7 @@ export default extendBase({
     entry: {
       index: "src/index.ts",
       theme: "generated/theme.css",
+      "tailwind-v4": "generated/tailwind-v4.css",
       components: "generated/components.css",
     },
     css: { splitting: true, target: false, minify: true, modules: false, inject: false },

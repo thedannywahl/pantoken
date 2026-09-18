@@ -1,7 +1,6 @@
 ---
-aside: false
-editLink: false
 title: Вибір CDN
+layout: page
 ---
 
 <CdnPickerPage />

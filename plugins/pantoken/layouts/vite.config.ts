@@ -18,6 +18,13 @@ export default extendBase({
     entry: {
       index: "src/index.ts",
       layouts: "generated/layouts.css",
+      wrapper: "generated/wrapper.css",
+      callout: "generated/callout.css",
+      hero: "generated/hero.css",
+      "page-layout": "generated/page-layout.css",
+      "rubric-note": "generated/rubric-note.css",
+      testimonial: "generated/testimonial.css",
+      "two-column": "generated/two-column.css",
     },
     css: { splitting: true, target: false, minify: true, modules: false, inject: false },
     exports: false,

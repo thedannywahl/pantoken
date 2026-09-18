@@ -1,7 +1,6 @@
 ---
-aside: false
-editLink: false
-title: CDN पिकर
+title: CDN चयनकर्ता
+layout: page
 ---
 
 <CdnPickerPage />

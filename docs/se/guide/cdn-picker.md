@@ -1,7 +1,6 @@
 ---
-aside: false
-editLink: false
-title: CDN váldoheapmi
+title: CDN válddahus
+layout: page
 ---
 
 <CdnPickerPage />

@@ -1,12 +1,23 @@
 # The pantoken CLI
 
-`@pantoken/cli` provides `pantoken generate <target>`, which writes token source into a target repo.
-Reach for it when a platform needs generated code rather than a runtime dependency — native apps,
-CMS themes, and static-site generators.
+`@pantoken/cli` provides `pantoken generate <target>`, which writes token source into a target repo,
+and `pantoken add <item>`, a convenience wrapper around the shadcn registry. Reach for `generate`
+when a platform needs generated code rather than a runtime dependency — native apps, CMS themes,
+and static-site generators.
 
 ```sh
 npx pantoken generate <target> --out <dir> [--theme <name>] [--icons a,b,c]
 ```
+
+For a project configured with shadcn, this delegates to `shadcn add @pantoken/<item>` and registers
+the indexed namespace when necessary:
+
+```sh
+npx pantoken add button
+```
+
+Use the official shadcn `list`, `search`, and `view` commands for discovery. Registry items install
+Pantoken CSS styles and metadata, not React components.
 
 ## Targets
 

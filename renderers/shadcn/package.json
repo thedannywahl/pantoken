@@ -20,6 +20,7 @@
   "exports": {
     ".": "./dist/index.mjs",
     "./theme.css": "./dist/theme.css",
+    "./tailwind-v4.css": "./dist/tailwind-v4.css",
     "./components.css": "./dist/components.css",
     "./package.json": "./package.json"
   },

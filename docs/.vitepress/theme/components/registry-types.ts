@@ -40,6 +40,8 @@ export interface RegistryItem {
   devDependencies?: string[];
   registryDependencies?: string[];
   files?: RegistryFile[];
+  docs?: string;
+  categories?: string[];
   cssVars?: {
     theme?: Record<string, string>;
     light?: Record<string, string>;

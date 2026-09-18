@@ -31,6 +31,8 @@ const TARGETS: Record<AgentTool, AssetTarget[]> = {
   claude: [
     { file: ".claude/skills/init-pantoken/SKILL.md", content: ASSETS.initSkill },
     { file: ".claude/skills/create-pantoken-app/SKILL.md", content: ASSETS.createAppSkill },
+    { file: ".claude/skills/create-pantoken-mockup/SKILL.md", content: ASSETS.createMockupSkill },
+    { file: ".claude/skills/use-pantoken-registry/SKILL.md", content: ASSETS.registrySkill },
     { file: "AGENTS.md", content: ASSETS.agents },
   ],
 };

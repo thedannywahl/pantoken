@@ -63,6 +63,27 @@ test("button gains icon, condensed, and toggle modifiers", () => {
   expect(css).toContain("&.-without-border"); // InstUI withBorder={false}
 });
 
+test("button icon modifiers center the glyph and add the expected gap", () => {
+  const css = buttonCss({ prefix: "instui" });
+  expect(css).toContain('&[class*="-icon-"]::before');
+  expect(css).toContain("margin-inline-end: var(--instui-spacing-space-xs);");
+  expect(css).toContain("display: inline-block");
+  expect(css).toContain("inline-size: 1em");
+  expect(css).toContain("block-size: 1em");
+});
+
+test("icon-only buttons automatically use square icon-button geometry", () => {
+  const css = buttonCss({ prefix: "instui" });
+  expect(css).toContain('&[class*="-icon-"]:not(:has(> *))');
+  expect(css).toContain('&[class*="-icon-"]:has(> .instui-screen-reader-content:only-child)');
+  expect(css).toContain("aspect-ratio: 1");
+  expect(css).toContain("inline-size: 1.25em");
+  expect(css).toContain("margin-inline-end: 0");
+  expect(css).toContain("inline-size: var(--instui-component-base-button-small-height)");
+  expect(css).toContain("inline-size: var(--instui-component-base-button-medium-height)");
+  expect(css).toContain("inline-size: var(--instui-component-base-button-large-height)");
+});
+
 test("button has success color and small/medium/large size modifiers", () => {
   const css = buttonCss({ prefix: "instui" });
   expect(css).toContain("&.-color-success");
@@ -118,6 +139,24 @@ test("ai buttons carry gradient borders, a ring, and an auto ai glyph", () => {
   expect(css).toContain(
     "var(--instui-color-background-interactive-action-ai-secondary-hover-top-gradient)",
   );
+});
+
+test("ai buttons with explicit icons replace the AI mask while keeping the AI palette", () => {
+  const css = buttonCss({ prefix: "instui" });
+  expect(css).toContain('.instui-button.-color-ai[class*="-icon-"]::before');
+  expect(css).toContain('.instui-button.-color-ai-secondary[class*="-icon-"]::before');
+  expect(css).toContain("var(--pantoken-glyph)");
+  expect(css).toContain("var(--instui-color-text-interactive-action-ai-base)");
+  expect(css).toContain("var(--instui-color-stroke-interactive-action-ai-top-gradient-base)");
+  expect(css).toContain('&.-color-ai-secondary[class*="-icon-"]::before');
+  expect(css).toContain("background: linear-gradient(");
+});
+
+test("ai-secondary without-border removes the frame ring while keeping the gradient glyph", () => {
+  const css = buttonCss({ prefix: "instui" });
+  expect(css).toContain("&.-color-ai-secondary.-without-border::after");
+  expect(css).toContain("display: none;");
+  expect(css).toContain("&.-without-border");
 });
 
 test("primary-inverse resolves its hover border to the on-color hover token", () => {

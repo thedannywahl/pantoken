@@ -32,6 +32,11 @@ pantoken is a design-token transformation and distribution system. It converts I
 - pantoken plugins execute with the privileges of the Node.js build or application process that loads them. Plugin structure is validated by `validatePlugin` (non-empty name, function hooks, no unrecognised keys) and plugin output is validated at the IR boundary before it enters the token graph. Full execution sandboxing is planned. Only trusted plugins and configuration should be used.
 - The CLI validates `--theme`, `--class`, and `--format` inputs against allowlists at parse time; unknown flags are rejected immediately. The CLI warns when the output path escapes the current working directory but still writes to the caller-selected location.
 - Repository translation sources are trusted input. Entries marked `verbatim: "required"` bypass external translation adapters and are copied exactly into locale caches; `allow` only permits a model response to match the source.
+- The public shadcn registry is an HTTPS distribution channel for package dependencies, CSS
+  configuration, and usage metadata. Registry schema validation checks structure, not code quality
+  or project suitability. Inspect an item with `shadcn view`, review the resulting diff, and pin
+  package versions for durable applications. npm provenance covers installed packages but does not
+  sign the mutable JSON served from `pantoken.app`.
 
 ## Reporting a vulnerability
 

@@ -8,26 +8,25 @@
  * - `docs/public/r/[name].json` (individual item manifests for all themes, components, and hooks)
  * - `docs/.vitepress/theme/generated/registry.json` (the catalog imported by the docs app)
  */
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, readdirSync, unlinkSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { SHADCN_TO_INSTUI } from "../../renderers/shadcn/src/mapping.ts";
 import { COMPONENTS } from "../../formats/components/src/components/index.ts";
 import type {
   RegistryCatalog,
   RegistryItem,
 } from "../.vitepress/theme/components/registry-types.ts";
+import { buildPluginRegistryItems } from "./registry-plugins.ts";
 
 const defaultOutDir = resolve(import.meta.dirname, "../public/r");
 const defaultSourceDir = resolve(import.meta.dirname, "../.vitepress/theme/generated");
+const AUTHOR = "pantoken <https://pantoken.app>";
+
+function cssImports(paths: readonly string[]): Record<string, Record<string, string>> {
+  return Object.fromEntries(paths.map((path) => [`@import "${path}"`, {}]));
+}
 
 /** Build the complete shadcn/ui registry catalog object in-memory. */
 export function buildRegistryCatalog(): RegistryCatalog {
-  const lightVars: Record<string, string> = {};
-  for (const [shadcnVar, instuiToken] of Object.entries(SHADCN_TO_INSTUI)) {
-    const cleanKey = shadcnVar.replace(/^--/, "");
-    lightVars[cleanKey] = `var(${instuiToken})`;
-  }
-
   const items: RegistryItem[] = [];
 
   // 1. Base / Theme items
@@ -36,12 +35,10 @@ export function buildRegistryCatalog(): RegistryCatalog {
     type: "registry:theme",
     title: "Canvas LMS Theme",
     description: "Instructure Canvas LMS theme variables bridging to shadcn/ui custom properties.",
-    author: "pantoken <https://pantoken.app>",
+    author: AUTHOR,
     dependencies: ["@pantoken/css", "@pantoken/shadcn"],
-    cssVars: {
-      light: lightVars,
-      dark: lightVars,
-    },
+    registryDependencies: ["@pantoken/base"],
+    css: cssImports(["@pantoken/css/style.canvas.css"]),
   });
 
   items.push({
@@ -49,12 +46,10 @@ export function buildRegistryCatalog(): RegistryCatalog {
     type: "registry:theme",
     title: "Canvas High Contrast Theme",
     description: "Canvas LMS High Contrast theme variables for WCAG AAA compliance.",
-    author: "pantoken <https://pantoken.app>",
+    author: AUTHOR,
     dependencies: ["@pantoken/css", "@pantoken/shadcn"],
-    cssVars: {
-      light: lightVars,
-      dark: lightVars,
-    },
+    registryDependencies: ["@pantoken/base"],
+    css: cssImports(["@pantoken/css/style.canvas-high-contrast.css"]),
   });
 
   items.push({
@@ -62,12 +57,10 @@ export function buildRegistryCatalog(): RegistryCatalog {
     type: "registry:theme",
     title: "Instructure Rebrand Theme",
     description: "Modern Instructure brand theme variables.",
-    author: "pantoken <https://pantoken.app>",
+    author: AUTHOR,
     dependencies: ["@pantoken/css", "@pantoken/shadcn"],
-    cssVars: {
-      light: lightVars,
-      dark: lightVars,
-    },
+    registryDependencies: ["@pantoken/base"],
+    css: cssImports(["@pantoken/css/style.css"]),
   });
 
   items.push({
@@ -76,143 +69,48 @@ export function buildRegistryCatalog(): RegistryCatalog {
     title: "Pantoken Base System",
     description:
       "Pantoken core design token system, CSS custom properties, and semantic components.",
-    author: "pantoken <https://pantoken.app>",
+    author: AUTHOR,
     dependencies: ["@pantoken/css", "@pantoken/components", "@pantoken/shadcn"],
-    cssVars: {
-      light: lightVars,
-      dark: lightVars,
-    },
+    css: cssImports([
+      "@pantoken/css/style.css",
+      "@pantoken/components/base.css",
+      "@pantoken/shadcn/theme.css",
+      "@pantoken/shadcn/tailwind-v4.css",
+    ]),
   });
 
-  // 2. Behavior hooks
-  items.push({
-    name: "use-instui-modal",
-    type: "registry:hook",
-    title: "Instructure Modal Hook",
-    description:
-      "React hook wrapping @pantoken/interactions modal behavior with keyboard navigation and focus trapping.",
-    author: "pantoken <https://pantoken.app>",
-    dependencies: ["@pantoken/interactions"],
-    files: [
-      {
-        path: "hooks/use-instui-modal.ts",
-        type: "registry:hook",
-        target: "@hooks/use-instui-modal.ts",
-        content: `import { useEffect, useRef } from "react";
-import { initModal } from "@pantoken/interactions";
-
-export function useInstuiModal(isOpen: boolean, onClose?: () => void) {
-  const dialogRef = useRef<HTMLDialogElement | null>(null);
-
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-
-    if (isOpen) {
-      if (!dialog.open) dialog.showModal();
-      const instance = initModal({ dialog, onClose });
-      return () => instance.cleanup();
-    } else {
-      if (dialog.open) dialog.close();
-    }
-  }, [isOpen, onClose]);
-
-  return { dialogRef };
-}
-`,
-      },
-    ],
-  });
-
-  items.push({
-    name: "use-instui-tooltip",
-    type: "registry:hook",
-    title: "Instructure Tooltip Hook",
-    description:
-      "React hook wrapping @pantoken/interactions tooltip positioning and accessibility.",
-    author: "pantoken <https://pantoken.app>",
-    dependencies: ["@pantoken/interactions"],
-    files: [
-      {
-        path: "hooks/use-instui-tooltip.ts",
-        type: "registry:hook",
-        target: "@hooks/use-instui-tooltip.ts",
-        content: `import { useEffect, useRef } from "react";
-import { initTooltip } from "@pantoken/interactions";
-
-export function useInstuiTooltip() {
-  const triggerRef = useRef<HTMLElement | null>(null);
-  const tooltipRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    const trigger = triggerRef.current;
-    const tooltip = tooltipRef.current;
-    if (!trigger || !tooltip) return;
-
-    const instance = initTooltip({ trigger, tooltip });
-    return () => instance.cleanup();
-  }, []);
-
-  return { triggerRef, tooltipRef };
-}
-`,
-      },
-    ],
-  });
-
-  // 3. UI Component items
-  for (const comp of COMPONENTS) {
+  // 2. CSS component items. Member records are installed with their owning root component.
+  for (const comp of COMPONENTS.filter(({ name }) => !name.includes("."))) {
     const name = comp.name;
     const title = name.charAt(0).toUpperCase() + name.slice(1);
     const description = `Instructure ${title} component styled with semantic .instui-${name} classes.`;
-    const pascalName = name
-      .split("-")
-      .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
-      .join("");
+    const members = COMPONENTS.filter(({ name: candidate }) =>
+      candidate.startsWith(`${name}.`),
+    ).map(({ name: member }) => member);
 
     items.push({
       name,
-      type: "registry:ui",
+      type: "registry:style",
       title,
       description,
-      author: "pantoken <https://pantoken.app>",
-      dependencies: ["@pantoken/components", "@pantoken/css"],
-      files: [
-        {
-          path: `components/ui/${name}.tsx`,
-          type: "registry:ui",
-          target: `@ui/${name}.tsx`,
-          content: `import * as React from "react";
-
-export interface ${pascalName}Props extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: string;
-  size?: "small" | "medium" | "large";
-}
-
-export const ${pascalName} = React.forwardRef<HTMLDivElement, ${pascalName}Props>(
-  ({ className = "", variant, size, children, ...props }, ref) => {
-    const classes = [
-      "instui-${name}",
-      variant ? \`-color-\${variant}\` : "",
-      size ? \`-size-\${size}\` : "",
-      className,
-    ]
-      .filter(Boolean)
-      .join(" ");
-
-    return (
-      <div ref={ref} className={classes} {...props}>
-        {children}
-      </div>
-    );
-  }
-);
-${pascalName}.displayName = "${pascalName}";
-`,
-        },
-      ],
+      author: AUTHOR,
+      dependencies: ["@pantoken/components"],
+      registryDependencies: ["@pantoken/base"],
+      css: cssImports([
+        `@pantoken/components/${name}.css`,
+        ...members.map((member) => `@pantoken/components/${member}.css`),
+      ]),
+      docs: `Apply \`class="instui-${name}"\` to semantic HTML. See https://pantoken.app/api/css/components/${name}.`,
+      categories: ["components"],
+      meta: {
+        className: `instui-${name}`,
+        members,
+        framework: "css",
+      },
     });
   }
+
+  items.push(...buildPluginRegistryItems());
 
   return {
     $schema: "https://ui.shadcn.com/schema/registry.json",
@@ -257,6 +155,14 @@ export function writeRegistry(options?: { outDir?: string; sourceDir?: string })
     };
     const itemPath = resolve(outDir, `${item.name}.json`);
     writeFileSync(itemPath, JSON.stringify(itemPayload, null, 2) + "\n");
+  }
+
+  const expectedFiles = new Set([
+    "registry.json",
+    ...catalog.items.map(({ name }) => `${name}.json`),
+  ]);
+  for (const file of readdirSync(outDir)) {
+    if (file.endsWith(".json") && !expectedFiles.has(file)) unlinkSync(resolve(outDir, file));
   }
 
   return { catalogPath, count: catalog.items.length };

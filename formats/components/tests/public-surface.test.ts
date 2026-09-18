@@ -12,6 +12,7 @@ const EXPECTED = [
   "DEFAULT_PREFIX",
   "ELEVATION_NAMES",
   "FOCUSABLE_SELECTOR",
+  "aiGradientCss",
   "alertCss",
   "avatarCss",
   "badgeCss",

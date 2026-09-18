@@ -6,7 +6,7 @@ This package currently ships:
 
 - `card` rules (the plugin output)
 - `banner` rules (the plugin output)
-- `agent-shell` rules (exported for direct composition)
+- `agent-shell` rules (the plugin output)
 
 ## Install
 
@@ -34,16 +34,24 @@ Import the built stylesheet directly when you only need the static CSS:
 import "@pantoken/plugin-custom-components/custom-components.css";
 ```
 
+Or import one component:
+
+```ts
+import "@pantoken/plugin-custom-components/card.css";
+```
+
 ## API
 
 - `customComponents(options?)` — returns a CSS plugin with `position: "append" | "prepend"`.
 - `cardRules(prefix?)` — returns the card rules as CSS text.
 - `bannerRules(prefix?)` — returns the banner rules as CSS text.
 - `agentShellRules(prefix?)` — returns the agent-shell rules as CSS text.
+- `./custom-components.css` — aggregate stylesheet export.
+- `./card.css`, `./banner.css`, `./agent-shell.css` — per-component stylesheet exports.
 
 ## cssdoc
 
-`./model.json` publishes the documented `card`/`agent-shell` records as a `CssDocEntry[]` model. Add it
+`./model.json` publishes the documented component records as a `CssDocEntry[]` model. Add it
 to your `cssdoc.json` `providers` so a consumer project resolves these classes/modifiers:
 
 ```jsonc
@@ -54,5 +62,3 @@ to your `cssdoc.json` `providers` so a consumer project resolves these classes/m
   //   "prefix": { "from": "instui-", "to": "acme-" }
 }
 ```
-
-- `./custom-components.css` — published stylesheet export.

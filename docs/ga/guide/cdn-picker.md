@@ -1,7 +1,6 @@
 ---
-aside: false
-editLink: false
 title: Roghnóir CDN
+layout: page
 ---
 
 <CdnPickerPage />

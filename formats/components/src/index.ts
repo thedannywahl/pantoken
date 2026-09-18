@@ -151,6 +151,7 @@ export { viewCss } from "./components/view/index.ts";
 export { selectCss } from "./components/select/index.ts";
 
 // ── Utilities ───────────────────────────────────────────────────────────────
+export { aiGradientCss } from "./utilities/ai-gradient/index.ts";
 export { spacingUtilitiesCss } from "./utilities/spacing/index.ts";
 export { gapCss } from "./utilities/gap/index.ts";
 export { layoutUtilitiesCss } from "./utilities/layout/index.ts";

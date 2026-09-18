@@ -11,6 +11,20 @@ Instructure warranty/support, which is why it's published under `thedannywahl`/`
 than the `instructure` org for now (see [github.com/thedannywahl/pantoken](https://github.com/thedannywahl/pantoken)) —
 not a reason to distrust it.
 
+## Choose the workflow first
+
+Before selecting a package, classify the requested output:
+
+1. **Application** — a maintained web/native project with a package manager, dependencies, source
+   structure, builds, and upgrades. Use the package and platform guidance below.
+2. **Standalone artifact** — a single HTML file, quick prototype, customer communication mockup, or
+   sendable email. Use the `create-pantoken-mockup` skill; do not scaffold a project.
+
+If “email mockup” is ambiguous, ask whether the file is a browser-opened visual prototype or HTML
+that will actually be sent through email clients. Browser mockups may use Pantoken CDN CSS and
+optional interaction scripts. Sendable email must use concrete inline `@pantoken/email` values and
+must not use component CSS, custom properties, scripts, or web components.
+
 ## The token model
 
 Tokens are CSS custom properties named `--instui-<group>-<name>` (e.g.
@@ -75,6 +89,22 @@ After selecting a base package, also consider `@pantoken/plugin-layouts` (app-sh
 - Tailwind: `@pantoken/tailwind` (preset → `bg-color-background-base`). PostCSS: `@pantoken/postcss` (`@pantoken;` at-rule). Webpack: `@pantoken/webpack`.
 
 **Theme other systems:** `@pantoken/shadcn`, `@pantoken/bootstrap` (CSS-var bridges), `@pantoken/storybook` (theme).
+
+## shadcn registry
+
+In a package-managed project with `components.json`, use the indexed registry as the preferred
+machine-readable catalog for Pantoken CSS components, layouts, plugins, and themes:
+
+```sh
+npx shadcn@latest search @pantoken --query modal
+npx shadcn@latest view @pantoken/modal
+npx shadcn@latest add @pantoken/modal
+```
+
+Registry items install packages and CSS imports; they do not provide React components. Author the
+semantic HTML described by the item and apply its `instui-*` classes. `@pantoken/shadcn` is a
+separate npm package that maps shadcn CSS variables to InstUI tokens. Outside shadcn-configured
+projects, keep using direct Pantoken packages, the CDN workflow, or platform generators.
 
 **Native / other ecosystems (generated via CLI):** `pantoken generate <target>` where target is
 `swift`, `android`, `compose`, `flutter`, `rust`, `wordpress`, `vanilla`, `drupal`, `jekyll`, or

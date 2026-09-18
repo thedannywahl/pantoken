@@ -2,7 +2,8 @@
 
 Layout composition records for downstream consumers.
 
-This package provides layout-level CSS records (currently `wrapper`) that compose semantic components into an app-shell structure.
+This package provides layout-level CSS records for `wrapper`, `callout`, `hero`, `page-layout`,
+`rubric-note`, `testimonial`, and `two-column` compositions.
 
 ## Install
 
@@ -30,15 +31,23 @@ Import the built stylesheet directly when you only need the static CSS:
 import "@pantoken/plugin-layouts/layouts.css";
 ```
 
+Or import one layout:
+
+```ts
+import "@pantoken/plugin-layouts/hero.css";
+```
+
 ## API
 
 - `layouts(options?)` — returns a CSS plugin with `position: "append" | "prepend"`.
-- `wrapperRules(prefix?)` — returns the wrapper layout rules as CSS text.
-- `./layouts.css` — published stylesheet export.
+- `<name>Rules(prefix?)` — returns one layout's CSS text.
+- `<name>Template(prefix?)` — returns canonical HTML for one layout.
+- `./layouts.css` — aggregate stylesheet export.
+- `./<name>.css` — per-layout stylesheet exports.
 
 ## cssdoc
 
-`./model.json` publishes the documented `wrapper` layout record as a `CssDocEntry[]` model. Add it to
+`./model.json` publishes all documented layout records as a `CssDocEntry[]` model. Add it to
 your `cssdoc.json` `providers` so a consumer project resolves these classes/modifiers:
 
 ```jsonc

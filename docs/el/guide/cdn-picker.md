@@ -1,7 +1,6 @@
 ---
-aside: false
-editLink: false
-title: Επιλογέας CDN
+title: Επιλογή CDN
+layout: page
 ---
 
 <CdnPickerPage />

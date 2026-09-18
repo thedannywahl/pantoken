@@ -42,12 +42,12 @@ export interface RegistryBrowserStrings {
 export const REGISTRY_BROWSER_DEFAULTS: RegistryBrowserStrings = {
   title: "shadcn/ui Registry",
   subtitle:
-    "Compatible components, themes, and behavior hooks conforming to the shadcn/ui registry specification. Add items directly to your shadcn/ui project via CLI.",
+    "CSS components, layouts, plugins, and themes for package-managed shadcn projects. Items install styles and usage metadata, not React components.",
   tabAll: "All",
   tabComponents: "Components",
   tabThemes: "Themes",
   tabHooks: "Hooks",
-  searchPlaceholder: "Filter components, themes, hooks…",
+  searchPlaceholder: "Filter components, layouts, plugins, themes…",
   cliLabel: "CLI:",
   copy: "Copy",
   copied: "Copied",

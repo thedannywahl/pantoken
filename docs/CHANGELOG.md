@@ -373,7 +373,7 @@ it…"`) is now a translatable UI string (`GetStartedTabsStrings.agentPrompt` in
   host custom parsers.
 - 63e06cb: Register the `prompt` Markdown fence as a `txt` syntax-highlighting alias in VitePress.
 - 7d964ee: Publish the `create-pantoken-app` skill at `/create-pantoken-app.md` (staged from
-  `ai/pantoken-ai/skills/create-pantoken-app/SKILL.md` into `public/`, served verbatim like
+  `packages/scaffold/skills/create-pantoken-app/SKILL.md` into `public/`, served verbatim like
   `robots.txt`), so any agent CLI's own fetch tool can read it directly — no `npx @pantoken/ai init`
   required for a one-shot try.
 - 63e06cb: Refresh the generated API localization catalog from the segmented API documentation source.

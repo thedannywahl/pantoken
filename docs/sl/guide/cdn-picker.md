@@ -1,7 +1,6 @@
 ---
-aside: false
-editLink: false
 title: Izbirnik CDN
+layout: page
 ---
 
 <CdnPickerPage />

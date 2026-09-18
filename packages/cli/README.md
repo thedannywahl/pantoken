@@ -18,6 +18,17 @@ pantoken add button
 pantoken generate swift --out ./ios/DesignTokens --theme rebrand --class PanTokens
 ```
 
+`pantoken add` delegates to the shadcn CLI and resolves bare names through the indexed `@pantoken`
+namespace. Registry items install Pantoken packages and CSS imports; they do not generate React
+components. Use shadcn directly to discover and inspect items before adding them:
+
+```sh
+npx shadcn@latest list @pantoken
+npx shadcn@latest search @pantoken --query button
+npx shadcn@latest view @pantoken/button
+npx shadcn@latest add @pantoken/button
+```
+
 Writes:
 
 - `Sources/PanTokens/Tokens.swift` — the generated Swift tokens.

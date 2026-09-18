@@ -1,0 +1,18 @@
+id: browser-trigger-001
+name: Standalone browser mockup
+description: A single browser-opened HTML prototype should use Pantoken CDN assets without scaffolding.
+tags:
+  - positive-trigger
+inputs:
+  prompt: "Mock up a customer announcement as one HTML file I can open directly in my browser"
+expected:
+  should_trigger: true
+graders:
+  - type: text
+    name: browser-workflow
+    config:
+      contains:
+        - "component-capabilities.json"
+        - "cdn.jsdelivr.net"
+      not_contains:
+        - "npm init"

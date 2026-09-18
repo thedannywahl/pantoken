@@ -1,7 +1,6 @@
 ---
-aside: false
-editLink: false
-title: Trình chọn CDN
+title: Bộ chọn CDN
+layout: page
 ---
 
 <CdnPickerPage />

@@ -1,0 +1,19 @@
+id: email-trigger-001
+name: Sendable email HTML
+description: Email-client-ready HTML should use concrete inline Pantoken values without browser-only assets.
+tags:
+  - positive-trigger
+inputs:
+  prompt: "Create a standalone HTML email that I can send through our email service using Pantoken colors"
+expected:
+  should_trigger: true
+graders:
+  - type: text
+    name: email-workflow
+    config:
+      contains:
+        - "@pantoken/email"
+        - "inline"
+      not_contains:
+        - "@pantoken/components/dist"
+        - "<script"

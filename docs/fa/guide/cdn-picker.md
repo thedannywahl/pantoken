@@ -1,7 +1,6 @@
 ---
-aside: false
-editLink: false
-title: انتخاب‌کننده CDN
+title: انتخاب‌گر CDN
+layout: page
 ---
 
 <CdnPickerPage />

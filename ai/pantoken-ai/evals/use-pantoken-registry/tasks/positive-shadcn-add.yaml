@@ -1,0 +1,17 @@
+id: positive-shadcn-add-001
+name: Positive shadcn add
+description: User has a shadcn project and wants to add a Pantoken registry item.
+tags:
+  - positive-trigger
+inputs:
+  prompt: "This repo has components.json. Use the Pantoken shadcn registry to add button styles."
+expected:
+  should_trigger: true
+graders:
+  - type: text
+    name: contains-registry-commands
+    config:
+      contains:
+        - "shadcn"
+        - "@pantoken"
+        - "add"

@@ -74,6 +74,8 @@ export const partitionApiSidebar = (
   cssLabel: string,
   apiGroupLabels: ApiGroupLabels,
   apiOverviewLabel: string,
+  guidesLabel = "Guides",
+  guidesLink = "/guide/getting-started",
 ): SidebarRoutes => {
   const cssSections = merged
     .filter(isCssSection)
@@ -86,16 +88,26 @@ export const partitionApiSidebar = (
   const cssOverview: SidebarItem = { text: cssLabel, link: `${apiPrefix}css/` };
 
   const makeSidebar = (activePackage?: string, includeFullCss = false): SidebarItem[] => {
-    const apiSection: SidebarItem = {
-      text: apiLabel,
-      items: [
-        apiOverview,
-        ...labeledTypedocSections.map((item) => compactTree(item, activePackage)),
-      ],
+    const guidesSection: SidebarItem = {
+      text: guidesLabel,
+      link: guidesLink,
     };
+    const apiSection: SidebarItem = includeFullCss
+      ? { items: [{ text: apiLabel, link: apiPrefix }] }
+      : {
+          text: apiLabel,
+          items: [
+            apiOverview,
+            ...labeledTypedocSections.map((item) => compactTree(item, activePackage)),
+          ],
+        };
 
-    if (cssSections.length === 0) return [apiSection];
-    return [apiSection, ...(includeFullCss ? cssSections.map(normalizeCssSection) : [cssOverview])];
+    if (cssSections.length === 0) return [guidesSection, apiSection];
+    return [
+      guidesSection,
+      apiSection,
+      ...(includeFullCss ? cssSections.map(normalizeCssSection) : [cssOverview]),
+    ];
   };
 
   const routes: SidebarRoutes = { [apiPrefix]: makeSidebar() };

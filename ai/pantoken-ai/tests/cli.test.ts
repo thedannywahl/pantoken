@@ -104,6 +104,7 @@ test("init defaults to installing every tool's assets", async () => {
   expect(existsSync(join(dir, "AGENTS.md"))).toBe(true);
   expect(existsSync(join(dir, "llms.txt"))).toBe(true);
   expect(existsSync(join(dir, ".github/copilot-instructions.md"))).toBe(true);
+  expect(existsSync(join(dir, ".claude/skills/use-pantoken-registry/SKILL.md"))).toBe(true);
 });
 
 test("init rejects an unknown --tool value", async () => {

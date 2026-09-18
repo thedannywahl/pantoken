@@ -1,7 +1,6 @@
 ---
-aside: false
-editLink: false
 title: CDN-väljare
+layout: page
 ---
 
 <CdnPickerPage />

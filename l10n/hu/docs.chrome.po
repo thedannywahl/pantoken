@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-14 15:46+0000\n"
+"PO-Revision-Date: 2026-09-18 00:07+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -46,6 +46,12 @@ msgid "Guides"
 msgstr "Útmutatók"
 
 #: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:sidebar.utilities"
+msgid "Utilities"
+msgstr "Segédosztályok"
+
+#: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:sidebar.gettingStarted"
 msgid "Getting started"
@@ -76,10 +82,16 @@ msgid "CDN picker"
 msgstr "CDN választó"
 
 #: docs/.vitepress/i18n.json
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.chrome:sidebar.registry"
-msgid "Registry"
+msgid "shadcn/ui Registry"
 msgstr "Regiszter"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:sidebar.agentTools"
+msgid "Agent Tools"
+msgstr "Eszközök"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -512,6 +524,306 @@ msgstr "A keresésnek nincs megfelelő regiszterelem."
 msgctxt "docs.chrome:registryBrowser.emptyReset"
 msgid "Reset Filters"
 msgstr "Keresés törlése"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.title"
+msgid "Agent Tools"
+msgstr "Eszközök"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.subtitle"
+msgid "Pick a Pantoken agent workflow, generate the command or launch URL, and give your assistant the files it needs to stop guessing."
+msgstr "Válassz egy Pantoken ügynök munkafolyamatot, generáld le a parancsot vagy indító URL-t, és add meg a segédednek a fájlokat, amelyekre szüksége van ahhoz, hogy ne kelljen találgatnia."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.providerLabel"
+msgid "Agent"
+msgstr "Ügynök"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.packageManagerLabel"
+msgid "Runner"
+msgstr "Futtató"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.copy"
+msgid "Copy"
+msgstr "Másolás"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.download"
+msgid "Download"
+msgstr "Letöltés"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.copied"
+msgid "Copied"
+msgstr "Másolva"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.open"
+msgid "Open"
+msgstr "Megnyitás"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.openInAgent"
+msgid "Open in {{agent}}"
+msgstr "Megnyitás: {{agent}}"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.openUnavailable"
+msgid "This agent does not publish a stable launch URL. Use Copy for the CLI prompt."
+msgstr "Ennek az ügynöknek nincs közzétett stabil indító URL-je. Használd a Másolás lehetőséget a CLI parancshoz."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.tabBootstrap"
+msgid "Bootstrap"
+msgstr "Bootstrap"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.tabInstall"
+msgid "Install assets"
+msgstr "Eszközök telepítése"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.tabRegistry"
+msgid "Registry"
+msgstr "Regiszter"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.tabDocs"
+msgid "Agent docs"
+msgstr "Ügynök dokumentáció"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.bootstrapTitle"
+msgid "Bootstrap a project"
+msgstr "Projekt bootstrapolása"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.bootstrapDescription"
+msgid "Scaffold a starter with Pantoken wired in and install the repo-local agent assets in the same pass."
+msgstr "Generálj egy kezdőt, amelybe be van kapcsolva a Pantoken, és telepítsd a repo-helyi ügynökeszközöket ugyanabban a lépésben."
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.platformLabel"
+msgid "Platform"
+msgstr "Platformok"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.directoryLabel"
+msgid "Directory"
+msgstr "Könyvtár"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.installTitle"
+msgid "Add agent guidance to a repo"
+msgstr "Ügynök útmutatás hozzáadása egy repohoz"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.installDescription"
+msgid "Install AGENTS.md, llms.txt, editor rules, and Claude skills into an existing project that already uses or is about to use Pantoken."
+msgstr "Telepítsd az AGENTS.md, llms.txt, szerkesztőszabályokat és Claude-hoz kapcsolódó skill-eket egy meglévő projekthez, amely már használja vagy használni fogja a Pantoken-t."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.toolLabel"
+msgid "Asset set"
+msgstr "Eszközkészlet"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.writesLabel"
+msgid "Writes"
+msgstr "Írások"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.registryTitle"
+msgid "Work with the shadcn/ui registry"
+msgstr "Regiszter"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.registryDescription"
+msgid "Point an agent at Pantoken's indexed registry so it can search, inspect, and add CSS-backed registry items instead of inventing package names."
+msgstr "Irányítsd az ügynököt a Pantoken indexelt regiszterére, hogy keresni, ellenőrizni és CSS-alapú regiszterelemeket hozzáadni tudjon ahelyett, hogy csomagneveket találna ki."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.registryActionLabel"
+msgid "Action"
+msgstr "Művelet"
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.registryItemLabel"
+msgid "Registry item"
+msgstr "Regiszter"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.docsTitle"
+msgid "Agent-readable documentation"
+msgstr "Ügynök-olvasható dokumentáció"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.docsDescription"
+msgid "Pantoken publishes fetchable documentation and manifests for assistants that can browse URLs or read raw Markdown."
+msgstr "A Pantoken lekérdezhető dokumentációt és manifesteket publikál olyan asszisztensek számára, amelyek képesek URL-eket böngészni vagy nyers Markdown-t olvasni."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.installPrompt"
+msgid "Install Pantoken agent guidance in this repository. Use {{command}}, then summarize the files written and when future agents should read them."
+msgstr "Telepítsd a Pantoken ügynök útmutatást ebbe a tárolóba. Használd a {{command}} parancsot, majd foglald össze a létrehozott fájlokat és azt, hogy a jövőbeli ügynökök mikor olvassák ezeket."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.registryPrompt"
+msgid "Use the Pantoken shadcn registry for this project. Fetch https://pantoken.app/r/registry.json, then run {{command}} if the project uses shadcn or has components.json. Registry items install CSS and metadata, not React components."
+msgstr "Használd a Pantoken shadcn regisztert ehhez a projekthez. Kérd le a https://pantoken.app/r/registry.json fájlt, majd futtasd a {{command}} parancsot, ha a projekt használja a shadcn-t vagy van components.json fájlja. A regiszterelemek CSS-t és metaadatokat telepítenek, nem React komponenseket."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.docsPrompt"
+msgid "Fetch https://pantoken.app/llms.txt first. When a page is needed, prefer its raw Markdown URL by adding .md to the clean docs path, and use Pantoken manifests for component capabilities, CDN plugins, demos, and registry items."
+msgstr "Először kérd le a https://pantoken.app/llms.txt fájlt. Ha oldalra van szükség, részesítsd előnyben a nyers Markdown URL-t úgy, hogy .md-et adsz a tiszta dokumentációs útvonalhoz, és használd a Pantoken manifesteket a komponens képességek, CDN pluginek, demók és regiszterelemek esetén."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.docsCommand"
+msgid "Fetch https://pantoken.app/llms.txt, then follow links to the pages and manifests relevant to this task."
+msgstr "Kérd le a https://pantoken.app/llms.txt fájlt, majd kövesd a hivatkozásokat az adott feladathoz kapcsolódó oldalakhoz és manifestekhez."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.createDomainTitle"
+msgid "Bootstrap skill URL"
+msgstr "Skill bootstrap URL"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.createDomainDescription"
+msgid "The short public URL any URL-capable agent can fetch to set up Pantoken."
+msgstr "A rövid nyilvános URL, amelyet bármely URL-t lekérdezni képes ügynök használhat a Pantoken beállításához."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.llmsTitle"
+msgid "Site index"
+msgstr "Oldal index"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.llmsDescription"
+msgid "Canonical English documentation index for agents and LLM-aware clients."
+msgstr "Kanóniák angol dokumentációs index ügynökök és LLM-érzékeny kliensek számára."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.llmsFullTitle"
+msgid "Full site context"
+msgstr "Teljes oldal kontextus"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.llmsFullDescription"
+msgid "Expanded LLM context for agents that need the complete documentation set."
+msgstr "Kiterjesztett LLM-környezet azoknak az ügynököknek, amelyek a teljes dokumentációs készletet igénylik."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.pageMdTitle"
+msgid "Raw Markdown pages"
+msgstr "Nyers Markdown oldalak"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.pageMdDescription"
+msgid "Every docs HTML page advertises a raw Markdown alternate link."
+msgstr "Minden dokumentációs HTML oldal hirdet egy nyers Markdown alternatív hivatkozást."
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.registryManifestTitle"
+msgid "Registry manifest"
+msgstr "Regiszter"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.registryManifestDescription"
+msgid "shadcn-compatible index of Pantoken CSS registry items."
+msgstr "shadcn-kompatibilis index a Pantoken CSS regiszterelemekhez."
+
+#: docs/.vitepress/i18n.json
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:agentTools.capabilitiesTitle"
+msgid "Component capabilities"
+msgstr "Komponensek"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.capabilitiesDescription"
+msgid "Machine-readable map of component CSS, JavaScript, icon, and dependency needs."
+msgstr "Gép által olvasható térkép a komponensek CSS, JavaScript, ikon- és függőségi igényeiről."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.pluginsTitle"
+msgid "CDN plugin manifest"
+msgstr "CDN plugin manifest"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.pluginsDescription"
+msgid "Plugin styles available to CDN and standalone mockup workflows."
+msgstr "Plugin stílusok, amelyek elérhetők CDN-hez és önálló mockup munkafolyamatokhoz."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.apiCatalogTitle"
+msgid "API catalog"
+msgstr "API katalógus"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.apiCatalogDescription"
+msgid "Machine-readable linkset for Pantoken's agent-readable resources."
+msgstr "Gép által olvasható hivatkozáskészlet a Pantoken ügynök-olvasható erőforrásaihoz."
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.vscodeCustomDataTitle"
+msgid "VS Code custom data"
+msgstr "VS Code egyedi adatok"
+
+#: docs/.vitepress/i18n.json
+#, no-c-format
+msgctxt "docs.chrome:agentTools.vscodeCustomDataDescription"
+msgid "HTML classes and CSS custom properties for VS Code IntelliSense."
+msgstr "HTML osztályok és CSS egyéni tulajdonságok a VS Code IntelliSense-hez."
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

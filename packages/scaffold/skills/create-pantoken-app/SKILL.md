@@ -1,12 +1,15 @@
 ---
 name: create-pantoken-app
-description: Scaffold a new project, or add Instructure design tokens and icons (pantoken) to an existing one. Use when the user wants to start a new app with pantoken already wired in, or wants to add Instructure/Canvas theming, InstUI design tokens, or the pantoken packages to an existing app — detects the framework, installs the right @pantoken/* packages, and wires the token CSS.
+description: Scaffold a maintained application, or add Instructure design tokens and icons (pantoken) to an existing project with a package manager. Use for web, framework, native, and CMS projects that need dependencies and builds. Do not use for a standalone HTML mockup or sendable email; use create-pantoken-mockup.
 ---
 
 # Scaffold pantoken
 
 Set up [pantoken](https://www.npmjs.com/package/@pantoken/pantoken) — a design tokens and icons
 library for Instructure UI — in the current project. Work through these steps.
+
+If the user wants one standalone HTML file, a quick browser prototype, a customer email mockup, or
+sendable email HTML, stop and use the `create-pantoken-mockup` skill instead.
 
 ## About pantoken
 
@@ -103,6 +106,19 @@ command for every install/run step below instead of assuming npm:
 If no lockfile exists yet, default to npm (or whatever the user prefers).
 
 ## 3. Install
+
+If `components.json` exists or the user explicitly requests shadcn, use the indexed registry to
+discover and install Pantoken CSS styles:
+
+```sh
+npx shadcn@latest search @pantoken --query <need>
+npx shadcn@latest view @pantoken/<item>
+npx shadcn@latest add @pantoken/<item>
+```
+
+Registry items provide CSS and usage metadata, not React components. Use `@instructure/ui-*` when
+the user needs full React components. Continue with direct package installation for non-shadcn
+projects.
 
 Use the package manager detected in step 2 for every command below (the examples use `npm i`;
 substitute `pnpm add`, `yarn add`, or `bun add` as appropriate).
