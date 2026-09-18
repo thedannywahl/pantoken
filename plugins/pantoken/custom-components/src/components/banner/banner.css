@@ -29,8 +29,14 @@
  * .pfx-banner {
  *   @component heading:optional {}
  *   slot {}
- *   @component button:optional {}
- *   .button-group:optional {}
+ *   @variant bare-button {
+ *     @component button:max-1 {}
+ *   }
+ *   @variant button-group {
+ *     .button-group {
+ *       @component button:one-or-more:max-2 {}
+ *     }
+ *   }
  *   @component close-button:optional {}
  * }
  * @a11y Add `role="status"` (or `role="alert"` for urgent messages) so assistive tech announces the
