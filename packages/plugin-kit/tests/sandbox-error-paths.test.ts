@@ -14,22 +14,20 @@ import type { SandboxedPluginEntry } from "../src/sandbox.ts";
 
 vi.mock("node:worker_threads", () => {
   let callCount = 0;
-  const fakeWorker = vi
-    .fn()
-    .mockImplementation(
-      function (this: { once: (event: string, cb: (...args: unknown[]) => void) => void }) {
-        const em = new EventEmitter();
-        this.once = em.once.bind(em);
-        callCount++;
-        if (callCount % 2 === 0) {
-          // Even calls: emit 'exit' with non-zero code (covers the exit handler branch).
-          setImmediate(() => em.emit("exit", 2));
-        } else {
-          // Odd calls: emit 'error' event (covers the error handler).
-          setImmediate(() => em.emit("error", new Error("worker-error-event")));
-        }
-      },
-    );
+  const fakeWorker = vi.fn().mockImplementation(function (this: {
+    once: (event: string, cb: (...args: unknown[]) => void) => void;
+  }) {
+    const em = new EventEmitter();
+    this.once = em.once.bind(em);
+    callCount++;
+    if (callCount % 2 === 0) {
+      // Even calls: emit 'exit' with non-zero code (covers the exit handler branch).
+      setImmediate(() => em.emit("exit", 2));
+    } else {
+      // Odd calls: emit 'error' event (covers the error handler).
+      setImmediate(() => em.emit("error", new Error("worker-error-event")));
+    }
+  });
   return { Worker: fakeWorker };
 });
 
