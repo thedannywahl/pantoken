@@ -1,0 +1,6 @@
+we need to disable wrangler telemetry: https://github.com/cloudflare/workers-sdk/blob/main/packages/wrangler/telemetry.md
+
+---
+
+Unable to load schema from '/Users/dwahl/Scripts/pantoken/node_modules/wrangler/config-schema.json': Schema not found: file:///Users/dwahl/Scripts/pantoken/node_modules/wrangler/config-schema.json.
+config-schema.json(1, 1): Unable to load schema from '/Users/dwahl/Scripts/pantoken/node_modules/wrangler/config-schema.json': Schema not found: file:///Users/dwahl/Scripts/pantoken/node_modules/wrangler/config-schema.json.
