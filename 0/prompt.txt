@@ -1,0 +1,48 @@
+we need to simplify and refactor the canvas-theme-editor scaffold.  the "app" itself should use pantoken, if we injest/bundle `@pantoken/components` to build the wrapper layout the tinymce and srcdoc preview should use the CDN versions still as an actual preview of the configs of the wrapper app.
+
+remove the rotate/scale and just have the editor on top and the preview underneath.  so it should have:
+header
+description
+---
+controls
+---
+content
+
+---
+
+Investigate the `packages/scaffold/templates/canvas-theme-editor` directory in this pantoken monorepo thoroughly. I need to understand the full structure and content of this scaffold template so we can refactor/simplify it.
+
+Please report back:
+1. Full directory tree of `packages/scaffold/templates/canvas-theme-editor` (all files, including .tmpl files).
+2. Contents of the main entry file `src/main.ts.tmpl` (full contents).
+3. Contents of any HTML template files (e.g. index.html.tmpl or similar).
+4. Contents of any CSS files in the template.
+5. How `@pantoken/components` is currently referenced/used (imported, bundled, or CDN) in this scaffold — search for `@pantoken/components`, `pantoken` CDN URLs, and any bundler config (vite.config, package.json.tmpl) in this template dir.
+6. How tinymce is used/loaded (CDN script tag? npm import?) — find all references to "tinymce" in the template dir.
+7. How the srcdoc preview mechanism works — find where `srcdoc` is used, what iframe content is generated, and how the preview reflects "configs of the wrapper app".
+8. Find any "rotate" or "scale" related code/controls (buttons, CSS transforms, state) in this scaffold — full context of where these live and how they're wired up (event listeners, CSS classes toggled, etc).
+9. Identify the current DOM layout structure of the app (look for header, description, controls, content/preview sections) — report the current section order and structure so we can see what needs reordering.
+10. Report the package.json.tmpl dependencies for this scaffold template.
+11. Look for any docs describing this scaffold (docs/conventions or README in the template) that explain its purpose/design intentions.
+
+Be thorough — read full file contents where reasonably sized, and quote exact code so I can plan a refactor without re-reading these files myself. This is a read-only research task; do not modify any files.
+
+---
+
+Start implementation
+
+---
+
+on all 3 tabs of the cdn page this lost its formatting, it now overflows the x bound on the page and doesn't have its border with rounded corners anymore. you can view at http://localhost:5173/guide/cdn-picker#i_instui=a-arrow-down&i_lucide=ampersand-square&i_simple=4chan&i_custom=conveyor%2Ctiny%2Cvite-plus&comp_sel=alert&tab=web-components&w_sel=all
+
+---
+
+going back to the scaffold, I've stopped the dev server, rebuilt the scaffold package and re-started the dev server, I even added it to the workspace orchestrator and I still see the same previous layout.
+
+---
+
+how do we wire that into the `vpr docs:dev` command via the workspace-orchestrator?
+
+---
+
+and not just remateriize on start, but also on scaffold edit -> HMR
