@@ -1,0 +1,1 @@
+the sidebar toggle shouldn't be added/rendered on page layouts that don't have a sidebar or when `sidebar: false` is in the frontmatter.
