@@ -1,0 +1,11 @@
+Unnecessary escape character '['
+help: Replace `\[` with `[`.
+runtime-css.ts(1, 83):
+
+---
+
+In /Users/dwahl/Scripts/pantoken, investigate the reported lint warning in plugins/pantoken/layouts/src/lib/runtime-css.ts:1, specifically `Unnecessary escape character '['` for the CARDINALITY_PSEUDO regex. Read the applicable repository guidance (including .entire/graph-agent.md if needed), inspect nearby tests/configuration, and determine the minimal correct code change plus the narrowest validation command. Do not edit files. Return concise findings with exact paths/symbols and any edge cases about regex character classes.
+
+---
+
+Start implementation
