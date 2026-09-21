@@ -1,0 +1,59 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M3321EC3KSB9M8HPEMZ1X4K5",
+  "session_id": "166324d3-420a-480b-a750-6e7423e34d2f",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-21T22:40:28.629943Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    ".changeset/publish-i18n-schemas.md",
+    "docs/.vitepress/theme/components/CanvasRcePage.vue",
+    "docs/package.json",
+    "docs/scripts/stage-i18n-schemas.ts",
+    "packages/scaffold/templates/canvas-theme-editor/src/i18n.json"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "540d5d335ebd",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-21T22:40:28.622797Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 65,
+    "human_removed": 63,
+    "total_committed": 11,
+    "total_lines_changed": 128,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 9,
+      "user_lines_removed": 45,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "docs/.vitepress/theme/components/CanvasRcePage.vue": 9
+      },
+      "user_removed_per_file": {
+        "docs/.vitepress/theme/components/CanvasRcePage.vue": 44,
+        "packages/scaffold/templates/canvas-theme-editor/src/i18n.json": 1
+      }
+    }
+  ]
+}
