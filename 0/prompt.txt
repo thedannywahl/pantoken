@@ -1,0 +1,41 @@
+we need the vite-workspace-orchestrator instance that watches the canvas-theme-editor and rebuilds/refreshes the docs HMR.
+
+---
+
+Quick, read-only discovery in /Users/dwahl/Scripts/pantoken. The request is to ensure the vite-workspace-orchestrator instance watches canvas-theme-editor and rebuilds/refreshes docs HMR. Inspect current docs/.vitepress/config.ts orchestrator entry, docs/scripts/build-canvas-rce.ts, relevant scaffold renderer/template sources, package scripts/tests. Follow .entire/graph-agent.md first (graph search before broad search). Report: (1) current behavior and whether config entry already meets the goal, (2) exact files/symbols to change if any, (3) focused validation command(s), (4) ambiguities/blockers. Do not edit files.
+
+---
+
+Start implementation
+
+---
+
+continue
+
+---
+
+I added a class declaration here and saved it, but the vitepress server on :5173 doesn't seem to have picked up a rebuild. it did see the change and refreshed the page, but it looks the same:
+```
+3:19:08 PM [vitepress]
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+3:19:08 PM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+3:19:08 PM [vitepress] (client) hmr update /.vitepress/theme/components/AgentToolsPage.vue
+3:19:08 PM [vitepress]
+[orchestrator] @pantoken/docs#canvas-rce — building…
+3:19:08 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+3:19:09 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+3:19:09 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+3:19:09 PM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — done.
+3:19:09 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+3:19:09 PM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+```
