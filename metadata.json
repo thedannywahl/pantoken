@@ -1,0 +1,47 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M3321FRWKHQ3AGSHD1X81YHA",
+  "strategy": "manual-commit",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 5,
+  "files_touched": [
+    ".changeset/lazy-lamps-lucide-lab.md",
+    ".changeset/publish-i18n-schemas.md",
+    "docs/.vitepress/theme/components/CanvasRcePage.vue",
+    "docs/.vitepress/theme/components/IconPicker.vue",
+    "docs/.vitepress/theme/index.ts",
+    "docs/guide/canvas-rce.md",
+    "docs/guide/plugins.md",
+    "docs/package.json",
+    "docs/scripts/cdn-icon-manifest.ts",
+    "docs/scripts/icon-manifest.test.ts",
+    "docs/scripts/icon-manifest.ts",
+    "docs/scripts/stage-i18n-schemas.ts",
+    "l10n/docs.api.pot",
+    "packages/scaffold/templates/canvas-theme-editor/src/i18n.json",
+    "plugins/pantoken/lucide-lab/package.json",
+    "plugins/pantoken/lucide-lab/scripts/generate.ts",
+    "plugins/pantoken/lucide-lab/scripts/post-pack.ts",
+    "plugins/pantoken/lucide-lab/src/index.ts",
+    "plugins/pantoken/lucide-lab/tests/index.test.ts",
+    "plugins/pantoken/lucide-lab/vite.config.ts",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}

@@ -1,0 +1,53 @@
+add lucide-labs icons as a custom plugin icon set.
+
+---
+
+Repository: /Users/dwahl/Scripts/pantoken. Planning only, do not edit files. Investigate how custom plugin icon sets are authored and registered, especially existing icon-set plugins or icon-font/custom icon examples. Read the relevant graph guidance if needed. Identify exact files, symbols, tests, docs, generated artifacts, package/dependency constraints, and validation commands needed to add lucide-labs icons as a custom plugin icon set. Also inspect current git status only if useful, and distinguish tracked source from generated output. Return a concise but detailed implementation-oriented report with likely ambiguities and recommended approach. Thoroughness: thorough.
+
+---
+
+Start implementation
+
+---
+
+now add it to the cdn picker between the InstUI Icons and Simple Icons sets.
+
+---
+
+Repository: /Users/dwahl/Scripts/pantoken. Read-only exploration, do not edit. Find the CDN picker UI/data source that lists icon sets, specifically the entries for InstUI Icons and Simple Icons. Identify exact files, symbols, ordering logic, tests, and any generated/config assets that must change to insert the newly added @pantoken/plugin-lucide-lab between those two sets. Also inspect current lucide-lab package exports/metadata enough to recommend the correct CDN URLs and labels. Return concise implementation guidance with file paths and validation commands. Thoroughness: medium.
+
+---
+
+on the IconPicker we should display the "collection" of selected icons underneath the picker and above the output.  it should be a div that displays them in order at a larger size than the icons in the picker itself.  If there's a performance concern then we should truncate the list and add a `+<n> more` to the end.
+
+---
+
+Read-only review of the current IconPicker.vue at /Users/dwahl/Scripts/pantoken/docs/.vitepress/theme/components/IconPicker.vue. The requested feature is a selected icon collection below the picker and above output, larger icons, truncate with +N more if performance concern. Identify any subtle Vue reactivity/template/type issues with adding a computed ordered collection from InstUI, Lucide Lab, Simple Icons, and custom icons. Recommend exact minimal implementation and whether logos should be included. Do not edit files. Thoroughness: quick.
+
+---
+
+No edits. Review the intended implementation for IconPicker.vue: computed selected collection ordered InstUI, Lucide Lab, Simple Icons, custom icons, logos; cap 100 and add +N more; template inserted after fieldset before PickerOutput; larger previews. Identify any likely type/template issue with Vue 3 and the existing component, but do not modify files. Return only concise risks.
+
+---
+
+Read-only. Inspect /Users/dwahl/Scripts/pantoken/plugins/pantoken/logos/generated/*.css and related logo utility conventions to confirm whether selected logo names can render in IconPicker with class `instui-icon -icon-{name}`. Return one sentence with evidence. Do not edit.
+
+---
+
+Read-only, no edits. Given IconPicker.vue, advise concise accessible markup for a visual selected-icon collection between fieldset and PickerOutput, including how to label a +N more tile and avoid duplicate screen-reader noise. Return brief recommendation.
+
+---
+
+No edits. Confirm the recommended decision: implement the selected collection for icon sets only, excluding logos because logo CSS is separate. Return 'proceed'. Do not ask questions.
+
+---
+
+You may edit files for this task. In /Users/dwahl/Scripts/pantoken/docs/.vitepress/theme/components/IconPicker.vue, implement the user's requested selected-icon collection. Requirements: add a div/section after the picker fieldset and before PickerOutput; display selected icons in stable source order InstUI, Lucide Lab, Simple Icons, Custom Icons (exclude Logos because it uses separate logo CSS and is not an icon set); larger previews than picker icons; cap visible items at 100 and append a +N more tile for overflow; use source-appropriate rendering (span class instui-icon -icon-name for InstUI/Lucide Lab/custom, img using the existing simple-icons CDN URL for Simple Icons); include accessible labels/names and no duplicate screen-reader noise. Add concise scoped CSS matching existing style. Use current component state/types, keep TypeScript/Vue syntax valid, and edit only this file. Do not change other files. Return a brief summary and exact validation command recommendation.
+
+---
+
+Start implementation
+
+---
+
+selected icons should be a single row, not tiles and there should be scroll-x

@@ -1,0 +1,108 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M3321FRWKHQ3AGSHD1X81YHA",
+  "session_id": "8a5f49d9-0492-4fa0-a239-82bf067e642e",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-21T22:40:30.346086Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 5,
+  "save_step_count": 5,
+  "files_touched": [
+    ".changeset/lazy-lamps-lucide-lab.md",
+    ".changeset/publish-i18n-schemas.md",
+    "docs/.vitepress/theme/components/CanvasRcePage.vue",
+    "docs/.vitepress/theme/components/IconPicker.vue",
+    "docs/.vitepress/theme/index.ts",
+    "docs/guide/canvas-rce.md",
+    "docs/guide/plugins.md",
+    "docs/package.json",
+    "docs/scripts/cdn-icon-manifest.ts",
+    "docs/scripts/icon-manifest.test.ts",
+    "docs/scripts/icon-manifest.ts",
+    "docs/scripts/stage-i18n-schemas.ts",
+    "l10n/docs.api.pot",
+    "packages/scaffold/templates/canvas-theme-editor/src/i18n.json",
+    "plugins/pantoken/lucide-lab/package.json",
+    "plugins/pantoken/lucide-lab/scripts/generate.ts",
+    "plugins/pantoken/lucide-lab/scripts/post-pack.ts",
+    "plugins/pantoken/lucide-lab/src/index.ts",
+    "plugins/pantoken/lucide-lab/tests/index.test.ts",
+    "plugins/pantoken/lucide-lab/vite.config.ts",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "efe8599954f4",
+  "checkpoint_transcript_start": 191,
+  "transcript_lines_at_start": 191,
+  "compact_transcript_start": 23,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 5
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-21T22:40:30.308534Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 7507,
+    "human_modified": 890,
+    "human_removed": 0,
+    "total_committed": 8265,
+    "total_lines_changed": 8397,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 24,
+      "agent_lines_removed": 45
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 1,
+      "user_lines_removed": 1,
+      "agent_lines_added": 337,
+      "agent_lines_removed": 46,
+      "user_added_per_file": {
+        ".changeset/lazy-lamps-lucide-lab.md": 1
+      },
+      "user_removed_per_file": {
+        ".changeset/lazy-lamps-lucide-lab.md": 1
+      }
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 567,
+      "agent_lines_removed": 59
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 130,
+      "user_lines_removed": 0,
+      "agent_lines_added": 567,
+      "agent_lines_removed": 59,
+      "user_added_per_file": {
+        "docs/.vitepress/theme/components/IconPicker.vue": 130
+      }
+    }
+  ]
+}
