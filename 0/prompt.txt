@@ -1,0 +1,9 @@
+this scaffold passing to docs is throwing in the console:
+```
+Uncaught TypeError: can't access property "addEventListener", Tw is null    <anonymous> http://localhost:5173/tools/canvas-rce/assets/index-DulHA1Sb.js:287
+
+  [index-DulHA1Sb.js:287:1480](http://localhost:5173/tools/canvas-rce/assets/index-DulHA1Sb.js)    <anonymous> http://localhost:5173/tools/canvas-rce/assets/index-DulHA1Sb.js:287
+
+```
+
+http://localhost:5173/guide/canvas-rce
