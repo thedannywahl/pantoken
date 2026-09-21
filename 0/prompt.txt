@@ -1,0 +1,9 @@
+editing this file now does the hmr for the guidepage that contains it, but it doesn't actually refresh the content of the iframe that embeds this file.
+
+---
+
+we need to add this icon to the imports in main.ts.tmpl
+
+---
+
+we don't want to import all the icons, that's thousands, there are named exports.
