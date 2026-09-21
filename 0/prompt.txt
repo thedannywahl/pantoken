@@ -1,0 +1,5 @@
+import all the interactions into the template too.
+
+---
+
+as a sideeffect import are they auto-registered on the page? that's what I want.
