@@ -1,0 +1,5 @@
+we need a listener/postmessage that gets the content height from the iframe and then sets the iframe height to match so that the iframe doesn't have scrollbars - the docs page still handles scrolling, and it shoudl fire on page load and on page resize.
+
+---
+
+the guides page that embeds the CanvasRcePage doesn't have scrolling, so the iframe is just hidden because its height isn't changing from this. and changing/removing these styles causes it to be extremely short.  and it doesn't recompute on resize. you can view it in a browser here: http://localhost:5173/guide/canvas-rce
