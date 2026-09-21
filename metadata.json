@@ -1,0 +1,18 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M3321E2DDJRD95SPYRGQ4TXX",
+  "strategy": "manual-commit",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 3,
+  "files_touched": [
+    "docs/.vitepress/theme/components/CanvasRcePage.vue",
+    "docs/guide/canvas-rce.md",
+    "l10n/docs.api.pot"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "prompt": ""
+    }
+  ]
+}
