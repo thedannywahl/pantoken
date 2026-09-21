@@ -1,0 +1,58 @@
+I keep seeing this warning on docs build, it seems like there's a cssdoc comment that's being interpreted as css:
+```
+[lightningcss minify] Unknown at rule: @component
+2  |  *,:before,:after{box-sizing:border-box}:where(html){color-scheme:light dark;background:var(--instui-color-background-...
+3  |  :root{--timeout:5;--value:0;--value-now:0;--min:0;--max:100;--value-max:100;--animation-delay:0}@scope(.instui-button...
+4  |  ...tretch;min-width:0;min-height:100dvh;display:flex;@component side-nav-bar{ }& .container{flex-direction:column;fle...
+   |                                                                 ^
+5  |  /* Layout for this scaffold's own authoring UI (not part of any Canvas-pasted RCE content). */
+6  |
+[lightningcss minify] Unknown at rule: @component
+2  |  *,:before,:after{box-sizing:border-box}:where(html){color-scheme:light dark;background:var(--instui-color-background-...
+3  |  :root{--timeout:5;--value:0;--value-now:0;--min:0;--max:100;--value-max:100;--animation-delay:0}@scope(.instui-button...
+4  |  ... .top{grid-template-columns:1fr auto;display:grid;@component breadcrumb{ }& .utilities:optional{justify-self:end}}...
+   |                                                                 ^
+5  |  /* Layout for this scaffold's own authoring UI (not part of any Canvas-pasted RCE content). */
+6  |
+[lightningcss minify] Unknown at rule: @component
+2  |  *,:before,:after{box-sizing:border-box}:where(html){color-scheme:light dark;background:var(--instui-color-background-...
+3  |  :root{--timeout:5;--value:0;--value-now:0;--min:0;--max:100;--value-max:100;--animation-delay:0}@scope(.instui-button...
+4  |  ...ities:optional{justify-self:end}}& .tabs:optional{@component tabs{ }}}& .content{flex-direction:row;flex:auto;min-...
+   |                                                                 ^
+5  |  /* Layout for this scaffold's own authoring UI (not part of any Canvas-pasted RCE content). */
+6  |
+[lightningcss minify] 'one-or-more' is not recognized as a valid pseudo-class. Did you mean '::one-or-more' (pseudo-element) or is this a typo?
+2  |  *,:before,:after{box-sizing:border-box}:where(html){color-scheme:light dark;background:var(--instui-color-background-...
+3  |  :root{--timeout:5;--value:0;--value-now:0;--min:0;--max:100;--value-max:100;--animation-delay:0}@scope(.instui-button...
+4  |  ...div[class~=instui-rubric-note] .instui-criteria .instui-row:one-or-more{gap:var(--instui-space-medium);padding:var...
+   |                                                                 ^
+5  |  /* Layout for this scaffold's own authoring UI (not part of any Canvas-pasted RCE content). */
+```
+
+---
+
+Planning-mode discovery only: do not edit files. Investigate why docs build emits lightningcss minify warnings where cssdoc comments or cssdoc syntax like `@component`, `:optional`, and `:one-or-more` appear in CSS. Workspace: /Users/dwahl/Scripts/pantoken. Focus on docs CSS/API build, cssdoc integration, generated component docs/demos, and any transforms that strip or fail to strip CSSDoc comments before lightningcss. Return: (1) likely root cause with exact files/functions/symbols, (2) analogous existing sanitization/stripping patterns to reuse, (3) minimal implementation plan and tests/commands to verify, (4) any ambiguities or risks. Thoroughness: medium.
+
+---
+
+I thought postcss was already doing this removal for us.
+
+---
+
+does cssdoc provide a package that handles this?  should it be opened as an issue there instead?
+
+---
+
+you can look here for the authoritative source: https://cssdoc.dev/guide/packages.md
+
+---
+
+why is layouts getting pulled into the runtime anyways, we know it's not valid CSS?
+
+---
+
+I don't know that canvas-theme-editor runtime import is stale - we're in process of adding it as a guides page so they can interactively try it.
+
+---
+
+Start implementation
