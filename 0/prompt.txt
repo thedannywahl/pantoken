@@ -1,0 +1,26 @@
+a few updates for the sidebar toggle:
+* there is an existing show/hide menu button that displays on narrower viewports:
+```
+<div data-v-f7ff56bc="" data-v-9afdf3d2="" class="VPLocalNav has-sidebar empty"><div data-v-f7ff56bc="" class="container"><button data-v-f7ff56bc="" type="button" class="menu" aria-expanded="false" aria-controls="VPSidebarNav"><span data-v-f7ff56bc="" class="vpi-align-left menu-icon" aria-hidden="true"></span><span data-v-f7ff56bc="" class="menu-text">Menu</span></button><div data-v-e7aafc23="" data-v-f7ff56bc="" class="VPLocalNavOutlineDropdown" style="--vp-vh: 0px;" data-allow-mismatch="style"><button data-v-e7aafc23="" type="button">Return to top</button><!--v-if--></div></div></div>
+```
+we should hook into its control so that states are synchronized.  because hiding the menu with our button on a large viewport shouldn't keep it hidden when somebody clicks "menu" on a narrower viewport.
+
+also, our toggle should only be visible at the viewport where the above menu button is hidden (nav is automatically display at this wider viewport)
+
+sidebarToggleHead should have a config option like llmstxt does: it should support placement (start/end) and BYO icons.
+
+the icons should flip on the x axis in rtl languages.
+
+---
+
+now for our instance of the plugin (via config) I want it moved to the start (before search) and I want the lucide icons:
+panel-left-close / panel-left-open
+
+---
+
+Variable must have an explicit type annotation with --isolatedDeclarations.
+SidebarToggle.vue(1, 25): Add a type annotation to the variable __VLS_export.
+
+---
+
+TypeError: Cannot read properties of undefined (reading 'clear')
