@@ -1,0 +1,96 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M35KESTEWKNZ3CP271BJMK21",
+  "session_id": "4d439096-73c7-4c80-8aa9-e50418c85e29",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-22T22:23:21.850824Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 2,
+  "save_step_count": 2,
+  "files_touched": [
+    ".changeset/calm-seas-wrap.md",
+    ".changeset/tinymce-layout-insert-replace.md",
+    "packages/scaffold/src/index.ts",
+    "packages/scaffold/templates/canvas-theme-editor/README.md",
+    "packages/scaffold/templates/canvas-theme-editor/src/app.html",
+    "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
+    "packages/scaffold/tests/index.test.ts",
+    "platforms/canvas-theme-editor/README.md",
+    "platforms/canvas-theme-editor/src/build-theme.ts",
+    "platforms/canvas-theme-editor/tests/index.test.ts",
+    "plugins/pantoken/custom-theme-colors/README.md",
+    "plugins/pantoken/custom-theme-colors/package.json",
+    "plugins/pantoken/custom-theme-colors/scripts/generate.ts",
+    "plugins/pantoken/custom-theme-colors/tests/index.test.ts",
+    "plugins/pantoken/custom-theme-colors/vite.config.ts",
+    "renderers/tinymce/src/i18n.json",
+    "renderers/tinymce/src/icons.ts",
+    "renderers/tinymce/src/index.ts",
+    "renderers/tinymce/src/plugins/layouts.ts",
+    "renderers/tinymce/src/strings.ts",
+    "renderers/tinymce/tests/icons.test.ts",
+    "renderers/tinymce/tests/layouts.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "67fab48a33cf",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-22T22:23:21.83866Z",
+    "agent_lines": 383,
+    "agent_removed": 56,
+    "human_added": 52,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 435,
+    "total_lines_changed": 578,
+    "agent_percentage": 75.9515570934256,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 2497,
+      "user_lines_removed": 56,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "l10n/ar/tinymce.strings.po": 331,
+        "l10n/ca/tinymce.strings.po": 331,
+        "l10n/cy/tinymce.strings.po": 331,
+        "l10n/da/tinymce.strings.po": 331,
+        "l10n/de/tinymce.strings.po": 331,
+        "l10n/el/tinymce.strings.po": 331,
+        "l10n/en/tinymce.strings.po": 348,
+        "l10n/tinymce.strings.pot": 163
+      },
+      "user_removed_per_file": {
+        "l10n/ar/tinymce.strings.po": 7,
+        "l10n/ca/tinymce.strings.po": 7,
+        "l10n/cy/tinymce.strings.po": 7,
+        "l10n/da/tinymce.strings.po": 7,
+        "l10n/de/tinymce.strings.po": 7,
+        "l10n/el/tinymce.strings.po": 7,
+        "l10n/en/tinymce.strings.po": 7,
+        "l10n/tinymce.strings.pot": 7
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 2497,
+      "agent_lines_removed": 56
+    }
+  ]
+}
