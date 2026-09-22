@@ -1,0 +1,64 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M359JSYEPXCDN607QN0KFGB9",
+  "session_id": "7936193e-9868-45a8-81ef-649e3d06acf1",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-22T19:30:47.647323Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    ".changeset/decouple-canvas-rce-preview-theme.md",
+    "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
+    "plugins/pantoken/custom-theme-colors/src/index.ts",
+    "plugins/pantoken/custom-theme-colors/tests/index.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "c3218950d0c3",
+  "checkpoint_transcript_start": 180,
+  "transcript_lines_at_start": 180,
+  "compact_transcript_start": 31,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-22T19:30:47.633431Z",
+    "agent_lines": 151,
+    "agent_removed": 24,
+    "human_added": 0,
+    "human_modified": 11,
+    "human_removed": 5,
+    "total_committed": 162,
+    "total_lines_changed": 191,
+    "agent_percentage": 91.62303664921467,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 57,
+      "user_lines_removed": 4,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".changeset/canvas-theme-editor-local-preview-detection.md": 5,
+        ".changeset/visualblocks-footer.md": 3,
+        "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl": 8,
+        "renderers/tinymce/src/plugins/visualblocks-footer.ts": 27,
+        "renderers/tinymce/tests/visualblocks-footer.test.ts": 14
+      },
+      "user_removed_per_file": {
+        ".changeset/visualblocks-footer.md": 1,
+        "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl": 3
+      }
+    }
+  ]
+}
