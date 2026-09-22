@@ -1,0 +1,93 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M35KESTEWKNZ3CP271BJMK21",
+  "session_id": "cf18f306-6568-4c5d-95dc-8c7ded8fa101",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-22T22:23:22.410937Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "packages/scaffold/templates/canvas-theme-editor/README.md",
+    "packages/scaffold/templates/canvas-theme-editor/package.json",
+    "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
+    "packages/scaffold/tests/index.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "992f6a8de2d1",
+  "checkpoint_transcript_start": 741,
+  "transcript_lines_at_start": 741,
+  "compact_transcript_start": 116,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-22T22:23:22.382153Z",
+    "agent_lines": 0,
+    "agent_removed": 1,
+    "human_added": 386,
+    "human_modified": 39,
+    "human_removed": 0,
+    "total_committed": 386,
+    "total_lines_changed": 539,
+    "agent_percentage": 0.1855287569573284,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 3431,
+      "user_lines_removed": 66,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "ASSURANCE.md": 9,
+        "SECURITY.md": 6,
+        "docs/package.json": 1,
+        "i18n.config.json": 2,
+        "l10n/ar/tinymce.strings.po": 331,
+        "l10n/ca/tinymce.strings.po": 331,
+        "l10n/cy/tinymce.strings.po": 331,
+        "l10n/da/tinymce.strings.po": 331,
+        "l10n/de/tinymce.strings.po": 331,
+        "l10n/el/tinymce.strings.po": 331,
+        "l10n/en/tinymce.strings.po": 348,
+        "l10n/tinymce.strings.pot": 163,
+        "packages/scaffold/templates/canvas-theme-editor/README.md": 16,
+        "packages/scaffold/templates/canvas-theme-editor/package.json": 4,
+        "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl": 96,
+        "packages/scaffold/tests/index.test.ts": 18,
+        "plugins/tinymce/save/README.md": 49,
+        "plugins/tinymce/save/package.json": 45,
+        "plugins/tinymce/save/src/i18n.json": 48,
+        "plugins/tinymce/save/src/index.ts": 374,
+        "plugins/tinymce/save/src/strings.ts": 44,
+        "plugins/tinymce/save/tests/index.test.ts": 198,
+        "plugins/tinymce/save/vite.config.ts": 6,
+        "pnpm-lock.yaml": 18
+      },
+      "user_removed_per_file": {
+        "i18n.config.json": 1,
+        "l10n/ar/tinymce.strings.po": 7,
+        "l10n/ca/tinymce.strings.po": 7,
+        "l10n/cy/tinymce.strings.po": 7,
+        "l10n/da/tinymce.strings.po": 7,
+        "l10n/de/tinymce.strings.po": 7,
+        "l10n/el/tinymce.strings.po": 7,
+        "l10n/en/tinymce.strings.po": 7,
+        "l10n/tinymce.strings.pot": 7,
+        "packages/scaffold/templates/canvas-theme-editor/README.md": 2,
+        "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl": 2,
+        "packages/scaffold/tests/index.test.ts": 5
+      }
+    }
+  ]
+}
