@@ -1,0 +1,31 @@
+the icons plugin is still not displaying correctly. many glyphs are broken and the layout is wrong. it may be that using a custom emoji dictionary is the wrong approach and we need to build our own plugin instead.  the vitepress docs already has an icon picker that handles the lazy rendering fairly well.  I don't want the look and feel of the icon chooser, let's keep the emoji-like experience in tinymce, but otherwise we need to fix the plugin.
+
+---
+
+Thoroughly explore the TinyMCE renderer package at /Users/dwahl/Scripts/pantoken/renderers/tinymce/. I need a detailed report on the icons picker implementation. Specifically:
+
+1. Read renderers/tinymce/src/icons.ts fully — document `buildEmoticonsDatabase`, `TaggedIcon`, `ICON_BUNDLE_CDN_FILES`, `getIconCdnFile`, `buildIconMarkup`, `matchInsertedIcon`, `PANTOKEN_ICONS_DATABASE_ID`. Show the exact shape of the emoticons database entries produced (char/keywords/category fields) and how icon glyphs are rendered (CSS custom property? font? `::before` content?).
+2. Read renderers/tinymce/src/icon-pack.ts fully.
+3. Read renderers/tinymce/src/plugins/icons.ts (already known) and any related files: content-css.ts, types.ts, strings.ts, lib/insertion-target.ts.
+4. List all files in renderers/tinymce/src/ and src/plugins/ and briefly describe each. Note whether there are other custom dialog-based plugins in this package (e.g. a components picker, a logos picker) that already implement a custom TinyMCE dialog with a grid/search — if so, describe how they build the dialog (editor.windowManager.open, panel/htmlpanel items, search input, pagination/lazy rendering, event wiring).
+5. Find where the icon list (TaggedIcon[]) comes from — generated manifests? How many icons total per source (instui, lucide-lab, simple-icons, custom-icons, logos)?
+6. Read the tests directory for icons-related tests.
+7. Report how icon CSS works for these glyphs: find in formats/components or plugins/* how `-icon-<name>` classes and `dist/icons/<name>.css` files define the glyph (is it a mask-image with a data URI custom property? a font ligature?). This matters for whether a glyph can render in an arbitrary dialog DOM.
+
+Do NOT write any code. Return a detailed written report with file paths and key code excerpts.
+
+---
+
+In /Users/dwahl/Scripts/pantoken, investigate the icon CSS distribution for the plugins used by the TinyMCE icons picker. Be precise and verify with file reads / terminal commands (ls -la, du -h, head -c). Do NOT modify anything.
+
+1. For each of these packages: plugins/simple-icons (@pantoken/plugin-simple-icons), plugins/lucide-lab (@pantoken/plugin-lucide-lab), plugins/custom-icons (@pantoken/plugin-custom-icons), formats/components (@pantoken/components):
+   - Does a built `dist/` exist? List the bundle files referenced by ICON_BUNDLE_CDN_FILES in renderers/tinymce/src/icons.ts: dist/icons.css, dist/simple-icons.css, dist/lucide-lab.css, dist/custom-icons.css. Report actual byte sizes.
+   - Does a `dist/icons/<name>.css` per-icon directory exist? How many files? Show the content of one file verbatim.
+   - Report the exact CSS class names emitted (e.g. is it `.-icon-github` or something namespaced/prefixed like `.-icon-si-github`?). Show a grep of a couple of class selectors from each bundle.
+2. Determine whether the `.instui-icon` painter rule (`[class*="-icon-"]::before`) lives in a separate file and whether those icon bundles include it. If a page loads only `simple-icons.css` without the painter, do glyphs render?
+3. Check for NAME COLLISIONS between sources: e.g. does the same `-icon-<name>` class get defined by both @pantoken/components icons.css and simple-icons.css or lucide-lab.css? Count overlaps if feasible (extract class names from two bundles and compare, using node/awk in the terminal).
+4. Report the exact counts of icons per source: number of entries in @pantoken/plugin-simple-icons manifest.json, @pantoken/plugin-lucide-lab manifest.json, @pantoken/plugin-custom-icons icons export, and components icon tokens (kind === "icon" in @pantoken/tokens).
+5. Check how renderers/tinymce declares dependencies in its package.json on these plugin packages, and whether the icon manifests are bundled into the tinymce dist (i.e. is the icon list statically imported and therefore shipped in the JS bundle? how big?).
+6. Look at renderers/tinymce/src/content-css.ts to report the default CDN provider/base URL used by buildFileUrl and whether the provider is configurable.
+
+Return a precise factual report with numbers and verbatim CSS excerpts.
