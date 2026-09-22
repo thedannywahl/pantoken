@@ -1,0 +1,1 @@
+add the visual blocks plugin to the footer of the canvas-theme-editor scaffold RCE instance https://www.tiny.cloud/docs/tinymce/latest/visualblocks/
