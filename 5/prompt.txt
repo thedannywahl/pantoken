@@ -1,0 +1,5 @@
+can we add a tiny mce icon remap so that all the icons displayed are the instui/panken/lucide icons?
+
+---
+
+the icons are not displaying correctly. it's like they have an incorrect fill.
