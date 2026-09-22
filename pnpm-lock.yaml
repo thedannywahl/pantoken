@@ -2214,6 +2214,9 @@ importers:
       '@pantoken/cssdoc-model':
         specifier: workspace:*
         version: link:../../../tools/cssdoc-model
+      '@pantoken/i18n-engine':
+        specifier: workspace:*
+        version: link:../../../tools/i18n-engine
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.1

@@ -1,19 +1,26 @@
 /**
  * TinyMCE "Layouts" plugin — like the Components/Icons/Logos pickers, but for whole starter page
- * layouts. Defaults to pantoken's own bundled {@link pageLayouts}; pass `layouts` to override or
- * extend the list.
+ * layouts. Defaults to pantoken's own bundled layouts, rendered in `locale` (default `"en"`); pass
+ * `layouts` to override or extend the list.
  *
  * \@module
  */
 import type { Editor } from "tinymce";
-import { pageLayouts, type PageLayout, type PageLayoutImagePlaceholder } from "../layouts.js";
+import {
+  pageLayoutTemplates,
+  renderPageLayout,
+  type PageLayout,
+  type PageLayoutImagePlaceholder,
+} from "../layouts.js";
 import { insertHtml, replaceContent } from "../lib/insertion-target.js";
 import { formatTinymceString, TINYMCE_STRINGS } from "../strings.js";
 
 /** Options for {@link createLayoutsPlugin}. */
 export interface LayoutsPluginOptions {
-  /** The page layouts offered in the "Insert layout" picker. Defaults to {@link pageLayouts}. */
+  /** The page layouts offered in the "Insert layout" picker. Defaults to the bundled layouts. */
   layouts?: readonly PageLayout[];
+  /** BCP47 locale to render layout text in. Defaults to `"en"`. */
+  locale?: string;
   /** Resolves a layout image slot into a consumer-specific image URL. */
   resolveImage?: LayoutImageResolver;
   /** Called after a layout is inserted (e.g. to refresh a live preview). */
@@ -76,7 +83,8 @@ export const LAYOUTS_COMMAND = "pantokenOpenLayouts";
 
 /** Builds the `tinymce.PluginManager.add` callback for the "Insert layout" plugin. */
 export function createLayoutsPlugin(options: LayoutsPluginOptions = {}) {
-  const { layouts = pageLayouts, onInsert, resolveImage } = options;
+  const { layouts = pageLayoutTemplates, onInsert, resolveImage, locale = "en" } = options;
+  const resolvedLayouts = layouts.map((layout) => renderPageLayout(layout, locale));
   return function pantokenLayoutsPlugin(editor: Editor) {
     const openDialog = (): void => {
       editor.windowManager.open({
@@ -88,11 +96,11 @@ export function createLayoutsPlugin(options: LayoutsPluginOptions = {}) {
               type: "selectbox",
               name: "layout",
               label: TINYMCE_STRINGS.layoutsSelectLabel,
-              items: layouts.map((l) => ({ value: l.name, text: l.title })),
+              items: resolvedLayouts.map((l) => ({ value: l.name, text: l.title })),
             },
           ],
         },
-        initialData: { layout: layouts[0]?.name ?? "" },
+        initialData: { layout: resolvedLayouts[0]?.name ?? "" },
         buttons: [
           { type: "cancel", text: TINYMCE_STRINGS.cancelButton },
           { type: "custom", name: "replace", text: TINYMCE_STRINGS.replaceButton },
@@ -100,7 +108,7 @@ export function createLayoutsPlugin(options: LayoutsPluginOptions = {}) {
         ],
         onSubmit: (api): void => {
           const { layout } = api.getData() as { layout: string };
-          const chosen = layouts.find((l) => l.name === layout);
+          const chosen = resolvedLayouts.find((l) => l.name === layout);
           api.close();
           if (!chosen) return;
           insertHtml(editor, materializeLayout(chosen, resolveImage));
@@ -109,7 +117,7 @@ export function createLayoutsPlugin(options: LayoutsPluginOptions = {}) {
         onAction: (api, details): void => {
           if (details.name !== "replace") return;
           const { layout } = api.getData() as { layout: string };
-          const chosen = layouts.find((l) => l.name === layout);
+          const chosen = resolvedLayouts.find((l) => l.name === layout);
           api.close();
           if (!chosen) return;
           editor.windowManager.confirm(

@@ -39,5 +39,10 @@ export {
 } from "../lib/slot-labels.ts";
 
 // Page layouts (simple HTML compositions, kept for backwards compatibility)
-export { pageLayouts, type PageLayout } from "./pages/index.ts";
+export {
+  pageLayouts,
+  pageLayoutTemplates,
+  renderPageLayout,
+  type PageLayout,
+} from "./pages/index.ts";
 export type { PageLayoutImagePlaceholder } from "./pages/page-layout.ts";

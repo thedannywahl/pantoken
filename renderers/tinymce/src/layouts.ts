@@ -8,4 +8,6 @@ export {
   type PageLayout,
   type PageLayoutImagePlaceholder,
   pageLayouts,
+  pageLayoutTemplates,
+  renderPageLayout,
 } from "@pantoken/plugin-layouts";

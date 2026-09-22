@@ -251,3 +251,18 @@ test("resolves placeholders when inserting a layout through the plugin", () => {
     '<img class="instui-img" src="https://placehold.co/600x400.png" alt="" width="600" height="400">',
   );
 });
+
+test("renders a passed-in locale, falling back to English for missing translations", () => {
+  const editor = fakeEditor();
+  const plugin = createLayoutsPlugin({ locale: "hu" });
+  plugin(editor as never);
+
+  const openAction = editor.ui.registry.addButton.mock.calls[0]?.[1].onAction as () => void;
+  openAction();
+
+  const dialogSpec = editor.windowManager.open.mock.calls[0]?.[0];
+  const heroItem = dialogSpec.body.items[0].items.find(
+    (item: { value: string }) => item.value === "hero",
+  );
+  expect(heroItem).toEqual({ value: "hero", text: "Hero" });
+});

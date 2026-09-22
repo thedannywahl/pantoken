@@ -4,7 +4,10 @@ import { beforeEach, expect, test, vi } from "vite-plus/test";
 const mkdirSync = vi.fn();
 const writeFileSync = vi.fn();
 
-vi.mock("node:fs", () => ({ mkdirSync, writeFileSync }));
+vi.mock("node:fs", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("node:fs")>();
+  return { ...actual, mkdirSync, writeFileSync };
+});
 
 const MODULE_PATH = new URL("./generate.ts", import.meta.url).pathname;
 

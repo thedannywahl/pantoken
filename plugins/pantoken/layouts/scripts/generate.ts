@@ -8,6 +8,7 @@
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
+import { generateMessageBundles, loadConfig } from "@pantoken/i18n-engine";
 import { runtimeCss } from "../src/lib/runtime-css.ts";
 import { wrapperRules } from "../src/layouts/wrapper/wrapper.ts";
 import { calloutRules } from "../src/layouts/callout/callout.ts";
@@ -16,7 +17,9 @@ import { pageLayoutRules } from "../src/layouts/page-layout/page-layout.ts";
 import { rubricNoteRules } from "../src/layouts/rubric-note/rubric-note.ts";
 import { testimonialRules } from "../src/layouts/testimonial/testimonial.ts";
 import { twoColumnRules } from "../src/layouts/two-column/two-column.ts";
+import { LOCALES } from "./lib/locales.ts";
 
+const root = resolve(import.meta.dirname, "..");
 const outDir = resolve(import.meta.dirname, "../generated");
 const runtimeDir = join(outDir, "runtime");
 mkdirSync(outDir, { recursive: true });
@@ -42,4 +45,15 @@ for (const [name, rules] of layouts) {
 }
 console.log(
   `✓ layouts: wrote raw + runtime layouts.css and ${layouts.length} per-layout CSS files`,
+);
+
+generateMessageBundles(
+  loadConfig(resolve(root, "../../../i18n.config.json")),
+  resolve(root, "../../.."),
+  "layouts.strings",
+  Object.keys(LOCALES),
+  outDir,
+);
+console.log(
+  `✓ layouts: emitted layouts.strings message bundles for ${Object.keys(LOCALES).length} locales`,
 );

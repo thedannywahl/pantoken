@@ -1,0 +1,153 @@
+{
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
+  "aboutMe.title": { "message": "About me", "translate": "always" },
+  "aboutMe.heading": { "message": "About your instructor", "translate": "always" },
+  "aboutMe.intro": {
+    "message": "Share a brief introduction, your role, and what you hope students take away from this course.",
+    "translate": "always"
+  },
+  "aboutMe.reachHeading": { "message": "How to reach me", "translate": "always" },
+  "aboutMe.emailLabel": { "message": "Email:", "translate": "always" },
+  "aboutMe.emailPlaceholder": { "message": "instructor@example.edu", "translate": "never" },
+  "aboutMe.officeLabel": { "message": "Office:", "translate": "always" },
+  "aboutMe.officePlaceholder": {
+    "message": "Add your office location or virtual meeting link.",
+    "translate": "always"
+  },
+  "aboutMe.responseLabel": { "message": "Response time:", "translate": "always" },
+  "aboutMe.responsePlaceholder": {
+    "message": "Add when students can expect a reply.",
+    "translate": "always"
+  },
+  "aboutMe.officeHoursHeading": { "message": "Office hours", "translate": "always" },
+  "aboutMe.officeHoursText": {
+    "message": "Add your recurring office hours and explain how students can meet with you.",
+    "translate": "always"
+  },
+  "aboutMe.instructorPhotoAlt": {
+    "message": "A photo of the instructor",
+    "translate": "always"
+  },
+
+  "callout.title": { "message": "Callout", "translate": "always" },
+  "callout.noteLabel": { "message": "Note:", "translate": "always" },
+  "callout.noteText": {
+    "message": "Replace this callout with an important reminder for students.",
+    "translate": "always"
+  },
+
+  "courseHome.title": { "message": "Course home", "translate": "always" },
+  "courseHome.welcomeHeading": { "message": "Welcome to the course", "translate": "always" },
+  "courseHome.welcomeText": {
+    "message": "Give students a warm welcome and explain what they should do first.",
+    "translate": "always"
+  },
+  "courseHome.startHeading": { "message": "Start here", "translate": "always" },
+  "courseHome.reviewHeaderLink": {
+    "message": "Review the course header and navigation",
+    "translate": "always"
+  },
+  "courseHome.readSyllabusLink": { "message": "Read the syllabus", "translate": "always" },
+  "courseHome.meetInstructorLink": { "message": "Meet your instructor", "translate": "always" },
+  "courseHome.openModuleText": {
+    "message": "Open the first module or activity.",
+    "translate": "always"
+  },
+  "courseHome.thisWeekHeading": { "message": "This week", "translate": "always" },
+  "courseHome.thisWeekText": {
+    "message": "Add the current focus, important dates, readings, or actions students should see first.",
+    "translate": "always"
+  },
+  "courseHome.needHelpHeading": { "message": "Need help?", "translate": "always" },
+  "courseHome.needHelpPrefix": { "message": "Point students to the", "translate": "always" },
+  "courseHome.needHelpLinkText": {
+    "message": "course contact and support information",
+    "translate": "always"
+  },
+
+  "footer.title": { "message": "Footer", "translate": "always" },
+  "footer.questionsHeading": { "message": "Questions or need help?", "translate": "always" },
+  "footer.questionsText": {
+    "message": "Add office hours, contact details, support links, or accessibility information here.",
+    "translate": "always"
+  },
+  "footer.emailPlaceholder": { "message": "instructor@example.edu", "translate": "never" },
+  "footer.courseInfoText": {
+    "message": "Course code · Term · Department",
+    "translate": "always"
+  },
+
+  "header.title": { "message": "Header", "translate": "always" },
+  "header.courseCodeTerm": { "message": "COURSE CODE · TERM", "translate": "always" },
+  "header.courseTitle": { "message": "Course title", "translate": "always" },
+  "header.description": {
+    "message": "A short description of the course or page goes here.",
+    "translate": "always"
+  },
+  "header.navHome": { "message": "Home", "translate": "always" },
+  "header.navSyllabus": { "message": "Syllabus", "translate": "always" },
+  "header.navAboutInstructor": { "message": "About the instructor", "translate": "always" },
+
+  "hero.title": { "message": "Hero", "translate": "always" },
+  "hero.heading": { "message": "Welcome to the course", "translate": "always" },
+  "hero.intro": {
+    "message": "A short introduction goes here. Replace this text and the heading above.",
+    "translate": "always"
+  },
+  "hero.cta": { "message": "Get started", "translate": "always" },
+
+  "rubricNote.title": { "message": "Rubric note", "translate": "always" },
+  "rubricNote.heading": { "message": "Grading note", "translate": "always" },
+  "rubricNote.text": {
+    "message": "Explain how this assignment is graded, referencing the rubric below.",
+    "translate": "always"
+  },
+
+  "syllabus.title": { "message": "Syllabus", "translate": "always" },
+  "syllabus.heading": { "message": "Course syllabus", "translate": "always" },
+  "syllabus.intro": {
+    "message": "Add a concise overview of the course, who it is for, and what students will learn.",
+    "translate": "always"
+  },
+  "syllabus.outcomesHeading": { "message": "Learning outcomes", "translate": "always" },
+  "syllabus.outcome1": { "message": "Describe the first outcome.", "translate": "always" },
+  "syllabus.outcome2": { "message": "Apply the second outcome.", "translate": "always" },
+  "syllabus.outcome3": {
+    "message": "Create or demonstrate the third outcome.",
+    "translate": "always"
+  },
+  "syllabus.infoHeading": { "message": "Course information", "translate": "always" },
+  "syllabus.scheduleLabel": { "message": "Schedule:", "translate": "always" },
+  "syllabus.schedulePlaceholder": {
+    "message": "Add meeting times or the course rhythm.",
+    "translate": "always"
+  },
+  "syllabus.gradingLabel": { "message": "Grading:", "translate": "always" },
+  "syllabus.gradingPlaceholder": {
+    "message": "Add grading categories and weights.",
+    "translate": "always"
+  },
+  "syllabus.materialsLabel": { "message": "Materials:", "translate": "always" },
+  "syllabus.materialsPlaceholder": {
+    "message": "Add required books, tools, or access notes.",
+    "translate": "always"
+  },
+  "syllabus.policiesHeading": { "message": "Policies and support", "translate": "always" },
+  "syllabus.policiesText": {
+    "message": "Add attendance, late work, accessibility, academic integrity, and support information here.",
+    "translate": "always"
+  },
+
+  "testimonial.title": { "message": "Testimonial", "translate": "always" },
+  "testimonial.quote": {
+    "message": "\"Replace this with a quote from a student or alum.\"",
+    "translate": "always"
+  },
+  "testimonial.attribution": { "message": "— Name, Program", "translate": "always" },
+
+  "twoColumn.title": { "message": "Two column", "translate": "always" },
+  "twoColumn.leftHeading": { "message": "Left column", "translate": "always" },
+  "twoColumn.leftText": { "message": "Describe the first topic here.", "translate": "always" },
+  "twoColumn.rightHeading": { "message": "Right column", "translate": "always" },
+  "twoColumn.rightText": { "message": "Describe the second topic here.", "translate": "always" }
+}

@@ -42,7 +42,13 @@ export {
   wrapperRules,
   wrapperTemplate,
 } from "./layouts/index.ts";
-export { pageLayouts, type PageLayout, type PageLayoutImagePlaceholder } from "./layouts/index.ts";
+export {
+  pageLayouts,
+  pageLayoutTemplates,
+  renderPageLayout,
+  type PageLayout,
+  type PageLayoutImagePlaceholder,
+} from "./layouts/index.ts";
 
 /** Options for the {@link layouts} plugin. */
 export interface LayoutsOptions {

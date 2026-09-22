@@ -6,6 +6,7 @@
     "cli.scaffold",
     "cli.ai",
     "tinymce.strings",
+    "layouts.strings",
     "scaffold.readme",
     "docs.home",
     "docs.chrome",
@@ -39,6 +40,7 @@
       "cli.scaffold": { "source": "block", "primary": "block", "secondary": "block" },
       "cli.ai": { "source": "block", "primary": "block", "secondary": "block" },
       "tinymce.strings": { "source": "block", "primary": "block", "secondary": "block" },
+      "layouts.strings": { "source": "block", "primary": "block", "secondary": "block" },
       "scaffold.readme": { "source": "block", "primary": "block", "secondary": "warn" },
       "docs.guides": { "source": "block", "primary": "block", "secondary": "block" },
       "docs.api": { "source": "block", "primary": "block", "secondary": "block" },
@@ -79,6 +81,10 @@
         "plugins/tinymce/codemirror/src/i18n.json",
         "plugins/tinymce/save/src/i18n.json"
       ]
+    },
+    "layouts.strings": {
+      "kind": "messages",
+      "source": "plugins/pantoken/layouts/src/i18n.json"
     },
     "scaffold.readme": {
       "kind": "content",

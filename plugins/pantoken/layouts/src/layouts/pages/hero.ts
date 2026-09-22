@@ -3,13 +3,13 @@ import type { PageLayout } from "./page-layout.ts";
 /** Full-width intro banner: heading, supporting text, and a primary call-to-action. */
 export const hero: PageLayout = {
   name: "hero",
-  title: "Hero",
+  title: "{{hero.title}}",
   html: `<div class="instui-view --padding-large --text-align-center">
-  <h1 class="instui-heading">Welcome to the course</h1>
+  <h1 class="instui-heading">{{hero.heading}}</h1>
   <p class="instui-text">
-    A short introduction goes here. Replace this text and the heading above.
+    {{hero.intro}}
   </p>
-  <a class="instui-button -color-primary" href="#">Get started</a>
+  <a class="instui-button -color-primary" href="#">{{hero.cta}}</a>
 </div>
 `,
 };
