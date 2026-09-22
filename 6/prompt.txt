@@ -1,0 +1,9 @@
+we added 'none' as a CDN option to the canvas-theme-editor scaffold in dev mode.  it should be the default option.
+
+---
+
+In /Users/dwahl/Scripts/pantoken, investigate the canvas-theme-editor scaffold dev-mode CDN option. Find where the recently added 'none' option is defined, how the default is selected, related generated/template files, and the narrowest existing tests or validation commands. Read relevant local instructions as needed. Do not edit files. Return specific file paths, symbols/lines, current behavior, likely root cause, proposed minimal implementation, and tests to update/run. Thoroughness: medium.
+
+---
+
+Start implementation
