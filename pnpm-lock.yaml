@@ -3214,12 +3214,18 @@ importers:
       '@pantoken/plugin-custom-components':
         specifier: workspace:*
         version: link:../../plugins/pantoken/custom-components
+      '@pantoken/plugin-custom-icons':
+        specifier: workspace:*
+        version: link:../../plugins/pantoken/custom-icons
       '@pantoken/plugin-layouts':
         specifier: workspace:*
         version: link:../../plugins/pantoken/layouts
       '@pantoken/plugin-logos':
         specifier: workspace:*
         version: link:../../plugins/pantoken/logos
+      '@pantoken/plugin-lucide-lab':
+        specifier: workspace:*
+        version: link:../../plugins/pantoken/lucide-lab
       '@pantoken/plugin-simple-icons':
         specifier: workspace:*
         version: link:../../plugins/pantoken/simple-icons

@@ -51,8 +51,10 @@
     "@pantoken/cdn": "workspace:*",
     "@pantoken/components": "workspace:*",
     "@pantoken/plugin-custom-components": "workspace:*",
+    "@pantoken/plugin-custom-icons": "workspace:*",
     "@pantoken/plugin-layouts": "workspace:*",
     "@pantoken/plugin-logos": "workspace:*",
+    "@pantoken/plugin-lucide-lab": "workspace:*",
     "@pantoken/plugin-simple-icons": "workspace:*",
     "@pantoken/tinymce-codemirror": "workspace:*",
     "@pantoken/tokens": "workspace:*"

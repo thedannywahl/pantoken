@@ -1,9 +1,11 @@
 import { expect, test, vi } from "vite-plus/test";
 import {
   createTemplatesPlugin,
+  pageTemplates,
   TEMPLATES_PLUGIN_NAME,
   TEMPLATES_TOOLBAR_NAME,
 } from "../src/plugins/templates.js";
+import { pageLayouts } from "../src/layouts.js";
 import type { StarterTemplate } from "../src/types.js";
 
 const templates: StarterTemplate[] = [
@@ -13,6 +15,22 @@ const templates: StarterTemplate[] = [
 
 test("exposes the plugin name used in TinyMCE's init options", () => {
   expect(TEMPLATES_PLUGIN_NAME).toBe("pantoken_templates");
+});
+
+test("defaults to the bundled page layouts", () => {
+  expect(pageTemplates).toEqual(pageLayouts.map(({ title, html }) => ({ title, content: html })));
+
+  const editor = fakeEditor();
+  const plugin = createTemplatesPlugin();
+  plugin(editor as never);
+
+  const openAction = editor.ui.registry.addButton.mock.calls[0]?.[1].onAction as () => void;
+  openAction();
+
+  const dialogSpec = editor.windowManager.open.mock.calls[0]?.[0];
+  expect(dialogSpec.body.items[0].items).toEqual(
+    pageTemplates.map(({ title }) => ({ value: title, text: title })),
+  );
 });
 
 /** A minimal `Editor`-shaped stub recording the calls this plugin makes. */

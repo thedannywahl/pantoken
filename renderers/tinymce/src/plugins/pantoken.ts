@@ -33,7 +33,7 @@ export interface PantokenPluginOptions {
   icons: IconsPickerOptions;
   logos: LogosPickerOptions;
   layouts?: LayoutsPluginOptions;
-  templates: TemplatesPluginOptions;
+  templates?: TemplatesPluginOptions;
 }
 
 /** Build a single pantoken toolbar menu that opens each composed plugin. */

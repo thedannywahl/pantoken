@@ -8,10 +8,11 @@
 
 // Phase 1: content-CSS wiring.
 export { injectContentStylesheet, pantokenContentCssUrls } from "./content-css.js";
+export { PANTOKEN_ICON_PACK_NAME, registerPantokenIconPack } from "./icon-pack.js";
 export { TINYMCE_STRINGS, type TinymceStrings } from "./strings.js";
 
 // Phase 2: templates plugin.
-export { createTemplatesPlugin } from "./plugins/templates.js";
+export { createTemplatesPlugin, pageTemplates } from "./plugins/templates.js";
 
 export {
   CONTENT_CLASSES_PLUGIN_NAME,

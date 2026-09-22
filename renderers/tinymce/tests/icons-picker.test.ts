@@ -47,7 +47,7 @@ test("createIconsPlugin injects the top-level icon-CSS bundles once", () => {
   const editor = createMockEditor();
   createIconsPlugin({ icons: mockIcons, currentAssets: [] })(editor);
   createIconsPlugin({ icons: mockIcons, currentAssets: [] })(editor);
-  expect(document.head.querySelectorAll("link[rel=stylesheet]")).toHaveLength(2);
+  expect(document.head.querySelectorAll("link[rel=stylesheet]")).toHaveLength(4);
 });
 
 test("createIconsPlugin registers the emoticons database", () => {

@@ -7,7 +7,14 @@ const generatedDir = join(import.meta.dirname, "generated");
 export default extendBase({
   run: {
     tasks: {
-      build: { command: ["node scripts/generate.ts", "vp pack", "node scripts/post-pack.ts"] },
+      build: {
+        command: [
+          "node scripts/generate.ts",
+          "vp pack",
+          "node scripts/post-pack.ts",
+          "node scripts/generate-manifest.ts",
+        ],
+      },
     },
   },
   pack: {

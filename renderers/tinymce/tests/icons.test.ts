@@ -9,11 +9,13 @@ import {
   type TaggedIcon,
 } from "../src/icons.js";
 
-test("loadAllIcons returns both simple-icons and component icons, sorted by name", async () => {
+test("loadAllIcons returns icons from all four providers, sorted by name", async () => {
   const icons = await loadAllIcons();
   expect(icons.length).toBeGreaterThan(0);
   expect(icons.some((icon) => icon.source === "simple-icons")).toBe(true);
   expect(icons.some((icon) => icon.source === "components")).toBe(true);
+  expect(icons.some((icon) => icon.source === "lucide-lab")).toBe(true);
+  expect(icons.some((icon) => icon.source === "custom-icons")).toBe(true);
   const names = icons.map((icon) => icon.name);
   expect(names).toEqual([...names].sort((a, b) => a.localeCompare(b)));
 });
@@ -31,6 +33,22 @@ test("getIconCdnFile resolves the components package/path", () => {
   expect(getIconCdnFile(icon)).toEqual({
     package: "@pantoken/components",
     path: "dist/icons/heart.css",
+  });
+});
+
+test("getIconCdnFile resolves the lucide-lab package/path", () => {
+  const icon: TaggedIcon = { name: "burger", source: "lucide-lab" };
+  expect(getIconCdnFile(icon)).toEqual({
+    package: "@pantoken/plugin-lucide-lab",
+    path: "dist/icons/burger.css",
+  });
+});
+
+test("getIconCdnFile resolves the custom-icons package/path", () => {
+  const icon: TaggedIcon = { name: "highspot", source: "custom-icons" };
+  expect(getIconCdnFile(icon)).toEqual({
+    package: "@pantoken/plugin-custom-icons",
+    path: "dist/icons/highspot.css",
   });
 });
 

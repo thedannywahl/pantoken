@@ -18,6 +18,7 @@
     ".": "./dist/index.mjs",
     "./lucide-lab.css": "./dist/lucide-lab.css",
     "./icons/*.css": "./dist/icons/*.css",
+    "./manifest.json": "./dist/manifest.json",
     "./package.json": "./package.json"
   },
   "publishConfig": {

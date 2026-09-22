@@ -9,6 +9,8 @@ export const VISUALBLOCKS_FOOTER_PLUGIN_NAME = "pantoken_visualblocks_footer";
 /** The footer/statusbar control name registered by this plugin. */
 export const VISUALBLOCKS_FOOTER_STATUSBAR_NAME = "pantokenVisualBlocksStatus";
 const VISUALBLOCKS_STYLE_ID = "pantokenVisualBlocksStyle";
+const VISUALBLOCKS_FOOTER_STYLE_ID = "pantokenVisualBlocksFooterStyle";
+const VISUALBLOCKS_FOOTER_ACTIVE_CLASS = "pantoken-visualblocks-status--active";
 
 const VISUALBLOCKS_ICON_SVG =
   '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>';
@@ -29,6 +31,21 @@ const VISUALBLOCKS_OUTLINE_CSS = `
 }
 `;
 
+const VISUALBLOCKS_FOOTER_CSS = `
+#${VISUALBLOCKS_FOOTER_STATUSBAR_NAME} {
+  align-items: center;
+  border-radius: 0.1875rem;
+  display: inline-flex;
+  min-height: 1.5rem;
+  padding: 0 0.25rem;
+}
+
+#${VISUALBLOCKS_FOOTER_STATUSBAR_NAME}.${VISUALBLOCKS_FOOTER_ACTIVE_CLASS} {
+  background: var(--pantoken-visual-debug-color, #f42272);
+  color: #fff;
+}
+`;
+
 /** Build a footer-only button that toggles TinyMCE's visual blocks outlines. */
 export function createVisualBlocksFooterPlugin() {
   return function pantokenVisualBlocksFooterPlugin(editor: Editor) {
@@ -41,6 +58,21 @@ export function createVisualBlocksFooterPlugin() {
       style.id = VISUALBLOCKS_STYLE_ID;
       style.textContent = VISUALBLOCKS_OUTLINE_CSS;
       doc.head.append(style);
+    };
+
+    const injectFooterStyle = (): void => {
+      const doc = editor.getContainer().ownerDocument;
+      if (doc.getElementById(VISUALBLOCKS_FOOTER_STYLE_ID)) return;
+      const style = doc.createElement("style");
+      style.id = VISUALBLOCKS_FOOTER_STYLE_ID;
+      style.textContent = VISUALBLOCKS_FOOTER_CSS;
+      doc.head.append(style);
+    };
+
+    const setButtonState = (state: boolean): void => {
+      button?.setAttribute("aria-pressed", String(state));
+      button?.classList.toggle(VISUALBLOCKS_FOOTER_ACTIVE_CLASS, state);
+      if (button) button.title = state ? "Hide blocks" : "Show blocks";
     };
 
     const attachFooter = (): void => {
@@ -57,6 +89,7 @@ export function createVisualBlocksFooterPlugin() {
       button.title = "Show blocks";
       button.setAttribute("aria-pressed", "false");
       button.innerHTML = VISUALBLOCKS_ICON_SVG;
+      injectFooterStyle();
       button.addEventListener("click", () => editor.execCommand("mceVisualBlocks"));
       footer.append(button);
     };
@@ -69,7 +102,7 @@ export function createVisualBlocksFooterPlugin() {
     editor.on("PostRender", attachFooter);
     editor.on("init", injectOutlineStyle);
     editor.on("VisualBlocks", (event) => {
-      button?.setAttribute("aria-pressed", String(Boolean((event as { state?: boolean }).state)));
+      setButtonState(Boolean((event as { state?: boolean }).state));
     });
     editor.on("remove", detachFooter);
 

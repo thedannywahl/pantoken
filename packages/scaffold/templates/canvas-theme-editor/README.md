@@ -13,8 +13,8 @@ Content Editor (RCE) page templates styled with
 - `index.html` / `src/main.ts` — a local, TinyMCE-based editor (`npm run dev`) that mirrors Canvas's
   RCE so you can author page templates against pantoken's classes before copying them into Canvas.
   The page itself is built with pantoken's `wrapper` layout: click **Edit theme** to open a tray
-  with **Config** / **CSS** / **JS** tabs (CDN provider/theme/mode selects, and syntax-highlighted,
-  hand-editable copies of `theme.css`/`theme.js` that feed the live preview), and the **?** button
+  with **Config** / **CSS** / **JS** tabs (CDN provider/theme/mode selects, and blank CSS/JS
+  editors for custom overrides that get appended to `theme.css`/`theme.js`), and the **?** button
   for full instructions. Use the **Layouts** toolbar button to start from one of pantoken's bundled
   starter page layouts (hero, callout, two-column, rubric note, testimonial), sourced from
   [`@pantoken/plugin-layouts`](https://www.npmjs.com/package/@pantoken/plugin-layouts).
@@ -47,10 +47,10 @@ This opens a Vite dev server with:
   assets, wrapped to match Canvas's own content-area background and max width — a faithful "what
   this will look like once uploaded to Canvas" check, updated live as you type or edit the theme.
 - The **Edit theme** tray's **Config** tab holds the CDN provider/theme/mode selects and
-  **Download theme.css** / **Download theme.js** links; its **CSS**/**JS** tabs are editable copies
-  of the generated files — hand-edit them and the preview picks up your changes directly. Changing
-  a Config select re-generates the CSS/JS tabs unless you've already edited them, in which case a
-  **Regenerate from config** button appears instead of silently overwriting your edit.
+  **Download theme.css** / **Download theme.js** links; its **CSS**/**JS** tabs start blank —
+  anything you add there is appended to the generated `theme.css`/`theme.js`, both in the live
+  preview and in the downloaded files, so custom overrides survive Config select changes instead
+  of being regenerated away.
 
 ## Workflow
 

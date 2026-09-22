@@ -66,14 +66,21 @@
     "message": "Download theme.js",
     "translate": "optional"
   },
-  "regenerateLabel": { "message": "Regenerate from config", "translate": "always" },
+  "cssPanelHintLabel": {
+    "message": "Add custom CSS here — it's appended to the generated theme.css, in the preview and the download.",
+    "translate": "always"
+  },
+  "jsPanelHintLabel": {
+    "message": "Add custom JS here — it's appended to the generated theme.js, in the preview and the download.",
+    "translate": "always"
+  },
   "helpModalTitle": { "message": "How to use this page", "translate": "always" },
   "helpModalBody1": {
     "message": "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas.",
     "translate": "always"
   },
   "helpModalBody2": {
-    "message": "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them.",
+    "message": "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to add custom CSS/JS that's appended to the generated <code>theme.css</code>/<code>theme.js</code> before downloading them.",
     "translate": "always"
   },
   "closeLabel": { "message": "Close", "translate": "always" }

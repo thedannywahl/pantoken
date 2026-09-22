@@ -7,7 +7,9 @@
  */
 import type { CdnFile } from "@pantoken/cdn";
 import { rebrandTokens } from "@pantoken/tokens";
+import { icons as customIconsList } from "@pantoken/plugin-custom-icons";
 import simpleIconsManifest from "@pantoken/plugin-simple-icons/manifest.json" with { type: "json" };
+import lucideLabManifest from "@pantoken/plugin-lucide-lab/manifest.json" with { type: "json" };
 
 /** Prefix stripped from `@pantoken/tokens` icon token names to recover the bare icon slug. */
 const COMPONENT_ICON_TOKEN_PREFIX = "--instui-icon-";
@@ -17,7 +19,7 @@ const COMPONENT_ICON_TOKEN_PREFIX = "--instui-icon-";
  */
 export interface TaggedIcon {
   name: string;
-  source: "components" | "simple-icons";
+  source: "components" | "simple-icons" | "lucide-lab" | "custom-icons";
   description?: string;
 }
 
@@ -35,12 +37,21 @@ export const PANTOKEN_ICONS_DATABASE_ID = "tinymce.plugins.pantoken-icons";
 const CATEGORY_BY_SOURCE: Record<TaggedIcon["source"], string> = {
   components: "Instructure UI",
   "simple-icons": "Simple Icons",
+  "lucide-lab": "Lucide Lab",
+  "custom-icons": "Custom Icons",
 };
 
-/** The two "all icons in one file" bundles the picker's own dialog chrome needs loaded to render every glyph. */
+/**
+ * The "all icons in one file" bundles the picker's own dialog chrome needs loaded to render every
+ * glyph. Must be the full glyph sheets, not `component-icons.css` — that lean file only carries the
+ * handful of `--instui-icon-*` tokens the component CSS itself references, so most icons would have
+ * no glyph token defined and render as unmasked, filled squares in the picker.
+ */
 export const ICON_BUNDLE_CDN_FILES: CdnFile[] = [
-  { package: "@pantoken/components", path: "dist/component-icons.css" },
+  { package: "@pantoken/components", path: "dist/icons.css" },
   { package: "@pantoken/plugin-simple-icons", path: "dist/simple-icons.css" },
+  { package: "@pantoken/plugin-lucide-lab", path: "dist/lucide-lab.css" },
+  { package: "@pantoken/plugin-custom-icons", path: "dist/custom-icons.css" },
 ];
 
 /**
@@ -67,6 +78,24 @@ export async function loadAllIcons(): Promise<TaggedIcon[]> {
     }
   }
 
+  if (Array.isArray(lucideLabManifest)) {
+    for (const iconName of lucideLabManifest) {
+      icons.push({
+        name: iconName,
+        source: "lucide-lab",
+        description: `Lucide Lab icon: ${iconName}`,
+      });
+    }
+  }
+
+  for (const icon of customIconsList) {
+    icons.push({
+      name: icon.name,
+      source: "custom-icons",
+      description: `Custom icon: ${icon.name}`,
+    });
+  }
+
   return icons.sort((a, b) => a.name.localeCompare(b.name));
 }
 
@@ -84,6 +113,16 @@ export function getIconCdnFile(icon: TaggedIcon): CdnFile {
     case "simple-icons":
       return {
         package: "@pantoken/plugin-simple-icons",
+        path: `dist/icons/${icon.name}.css`,
+      };
+    case "lucide-lab":
+      return {
+        package: "@pantoken/plugin-lucide-lab",
+        path: `dist/icons/${icon.name}.css`,
+      };
+    case "custom-icons":
+      return {
+        package: "@pantoken/plugin-custom-icons",
         path: `dist/icons/${icon.name}.css`,
       };
   }

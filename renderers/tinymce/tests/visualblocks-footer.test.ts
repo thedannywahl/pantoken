@@ -44,15 +44,37 @@ test("attaches a footer button that toggles visual blocks and reflects its state
     .querySelector<HTMLButtonElement>(`#${VISUALBLOCKS_FOOTER_STATUSBAR_NAME}`);
   expect(button).not.toBeNull();
   expect(button?.getAttribute("aria-pressed")).toBe("false");
+  expect(button?.classList.contains("pantoken-visualblocks-status--active")).toBe(false);
+  expect(button?.title).toBe("Show blocks");
 
   button?.click();
   expect(editor.execCommand).toHaveBeenCalledWith("mceVisualBlocks");
 
   for (const handler of editor.listeners.get("VisualBlocks") ?? []) handler({ state: true });
   expect(button?.getAttribute("aria-pressed")).toBe("true");
+  expect(button?.classList.contains("pantoken-visualblocks-status--active")).toBe(true);
+  expect(button?.title).toBe("Hide blocks");
+
+  for (const handler of editor.listeners.get("VisualBlocks") ?? []) handler({ state: false });
+  expect(button?.getAttribute("aria-pressed")).toBe("false");
+  expect(button?.classList.contains("pantoken-visualblocks-status--active")).toBe(false);
+  expect(button?.title).toBe("Show blocks");
 
   for (const handler of editor.listeners.get("remove") ?? []) handler();
   expect(button?.isConnected).toBe(false);
+});
+
+test("injects active footer button styles once", () => {
+  const editor = fakeEditor();
+  createVisualBlocksFooterPlugin()(editor as never);
+
+  for (const handler of editor.listeners.get("PostRender") ?? []) handler();
+  expect(document.getElementById("pantokenVisualBlocksFooterStyle")?.textContent).toContain(
+    "pantoken-visualblocks-status--active",
+  );
+
+  for (const handler of editor.listeners.get("PostRender") ?? []) handler();
+  expect(document.querySelectorAll("#pantokenVisualBlocksFooterStyle")).toHaveLength(1);
 });
 
 test("injects the outline stylesheet into the content document on init", () => {

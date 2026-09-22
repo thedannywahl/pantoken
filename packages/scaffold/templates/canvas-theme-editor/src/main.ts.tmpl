@@ -92,9 +92,10 @@ import {
   listUtilities,
   loadAllIcons,
   logos,
-  pageLayouts,
+  PANTOKEN_ICON_PACK_NAME,
   PANTOKEN_ICONS_DATABASE_ID,
   products,
+  registerPantokenIconPack,
   pantokenHtmlLinter,
   pantokenHtmlCompletion,
   SEARCHREPLACE_FOOTER_PLUGIN_NAME,
@@ -249,11 +250,6 @@ window.addEventListener("message", (event) => {
 
 window.parent.postMessage({ type: "pantoken-demo-request-theme" }, window.location.origin);
 
-// Set around `replaceEditorDoc`'s dispatch so its own doc replacement isn't mistaken for a user
-// edit by the update listener below (which otherwise marks the CSS/JS tab dirty on every
-// programmatic theme/mode/provider refresh — see `docs/engineering-log.md`).
-let isProgrammaticDocChange = false;
-
 /** Creates a CodeMirror editor for the given language, wired to call `onChange` on user edits. */
 function createEditor(
   container: HTMLElement,
@@ -267,7 +263,7 @@ function createEditor(
     langExtension,
     EditorView.lineWrapping,
     EditorView.updateListener.of((update: any): void => {
-      if (update.docChanged && !isProgrammaticDocChange) onChange();
+      if (update.docChanged) onChange();
     }),
   ];
   
@@ -284,13 +280,6 @@ function createEditor(
     extensions,
     parent: container,
   });
-}
-
-/** Replaces an editor's full document contents without triggering the "user edited" dirty tracking. */
-function replaceEditorDoc(view: EditorView, content: string): void {
-  isProgrammaticDocChange = true;
-  view.dispatch({ changes: { from: 0, to: view.state.doc.length, insert: content } });
-  isProgrammaticDocChange = false;
 }
 
 // Register one pantoken plugin that composes components, icons, logos, layouts, and templates
@@ -321,10 +310,7 @@ const registerPantokenPlugin = (async () => {
       layouts: {
         onInsert: () => refreshAll(),
       },
-      templates: {
-        templates: pageLayouts.map(({ title, html }) => ({ title, content: html })),
-        onInsert: () => refreshAll(),
-      },
+      templates: { onInsert: () => refreshAll() },
     }),
   );
 })();
@@ -396,16 +382,10 @@ const downloadCss = document.querySelector<HTMLAnchorElement>("#download-theme-c
 const downloadJs = document.querySelector<HTMLAnchorElement>("#download-theme-js")!;
 const copyButton = document.querySelector<HTMLButtonElement>("#copy-html")!;
 const copyStatus = document.querySelector<HTMLElement>("#copy-status")!;
-const regenerateCssButton = document.querySelector<HTMLButtonElement>("#regenerate-css")!;
-const regenerateJsButton = document.querySelector<HTMLButtonElement>("#regenerate-js")!;
 
 let activeEditor: Editor | undefined;
 let cssObjectUrl: string | undefined;
 let jsObjectUrl: string | undefined;
-// Once the author hand-edits the CSS/JS tab, config-select changes no longer overwrite it —
-// they only re-enable "Regenerate from config" so the edit isn't silently discarded.
-let cssDirty = false;
-let jsDirty = false;
 
 // Only the tray (below) and the preview it drives read these — the chrome has its own,
 // docs-driven theme/color tracked separately by `applyChromeTheme`/`applyChromeColor` above.
@@ -617,8 +597,12 @@ function updatePreview(): void {
   // Canvas's own theme already frames the RCE content area — the picker's border would double up.
   previewFrame.style.borderColor =
     selectedTheme === "canvas" || selectedTheme === "canvasHighContrast" ? "transparent" : "";
-  const themeCss = cssEditorView.state.doc.toString();
-  const themeJs = jsEditorView.state.doc.toString();
+  const themeCss = [buildCurrentTheme().css, cssEditorView.state.doc.toString()]
+    .filter(Boolean)
+    .join("\n");
+  const themeJs = [buildCurrentTheme().js, jsEditorView.state.doc.toString()]
+    .filter(Boolean)
+    .join("\n");
   // Elevation is a rebrand-only affordance — Canvas's own themes don't use drop-shadow surfaces.
   const contentClass =
     selectedTheme === "rebrand"
@@ -667,9 +651,12 @@ previewFrame.addEventListener("load", () => {
   previewMutationObserver.observe(root, { childList: true, subtree: true, attributes: true });
 });
 
-/** Regenerates the downloadable theme.css/theme.js blobs for the chosen provider/theme/mode. */
+/** Regenerates the downloadable theme.css/theme.js blobs, appending the author's custom CSS/JS
+ * tab content onto the generated preset for the chosen provider/theme/mode. */
 function updateDownloads(): void {
-  const { css: generatedCss, js: generatedJs } = buildCurrentTheme();
+  const { css: presetCss, js: presetJs } = buildCurrentTheme();
+  const generatedCss = [presetCss, cssEditorView.state.doc.toString()].filter(Boolean).join("\n");
+  const generatedJs = [presetJs, jsEditorView.state.doc.toString()].filter(Boolean).join("\n");
   if (cssObjectUrl) URL.revokeObjectURL(cssObjectUrl);
   if (jsObjectUrl) URL.revokeObjectURL(jsObjectUrl);
   cssObjectUrl = URL.createObjectURL(new Blob([generatedCss], { type: "text/css" }));
@@ -678,53 +665,25 @@ function updateDownloads(): void {
   downloadJs.href = jsObjectUrl;
 }
 
-/** Re-seeds the CSS/JS editors from the current config, unless the author has hand-edited them. */
-function updateThemeEditors(): void {
-  const { css, js } = buildCurrentTheme();
-  if (!cssDirty) replaceEditorDoc(cssEditorView, css);
-  if (!jsDirty) replaceEditorDoc(jsEditorView, js);
-}
-
 function refreshAll(): void {
-  updateThemeEditors();
   updatePreview();
   updateDownloads();
 }
 
-// CSS/JS editors, seeded from the initial config selection.
+// CSS/JS editors start blank — anything typed here is appended to the generated preset (in both
+// the preview and the downloaded files) rather than replacing it.
 const cssEditorView = createEditor(
   document.querySelector<HTMLElement>("#css-editor")!,
   "css",
-  buildCurrentTheme().css,
-  () => {
-    cssDirty = true;
-    regenerateCssButton.hidden = false;
-    debouncedUpdatePreview();
-  },
+  "",
+  () => debouncedUpdatePreview(),
 );
 const jsEditorView = createEditor(
   document.querySelector<HTMLElement>("#js-editor")!,
   "javascript",
-  buildCurrentTheme().js,
-  () => {
-    jsDirty = true;
-    regenerateJsButton.hidden = false;
-    debouncedUpdatePreview();
-  },
+  "",
+  () => debouncedUpdatePreview(),
 );
-
-regenerateCssButton.addEventListener("click", () => {
-  replaceEditorDoc(cssEditorView, buildCurrentTheme().css);
-  cssDirty = false;
-  regenerateCssButton.hidden = true;
-  debouncedUpdatePreview();
-});
-regenerateJsButton.addEventListener("click", () => {
-  replaceEditorDoc(jsEditorView, buildCurrentTheme().js);
-  jsDirty = false;
-  regenerateJsButton.hidden = true;
-  debouncedUpdatePreview();
-});
 
 providerSelect.addEventListener("change", () => {
   refreshAll();
@@ -737,6 +696,8 @@ copyButton.addEventListener("click", () => {
   });
 });
 
+registerPantokenIconPack(tinymce.IconManager);
+
 void registerPantokenPlugin.then(() =>
   tinymce
     .init({
@@ -746,6 +707,7 @@ void registerPantokenPlugin.then(() =>
       toolbar: `undo redo | pantoken | fontsize blocks | bold italic underline forecolor backcolor ${SUP_SUB_TOOLBAR_NAME} | link image placehold | align | bullist numlist | removeformat table media`,
       menubar: false,
       theme: "silver",
+      icons: PANTOKEN_ICON_PACK_NAME,
       branding: false,
       // Self-hosted TinyMCE 6+ requires a license_key; "gpl" opts into the GPL license terms.
       license_key: "gpl",
