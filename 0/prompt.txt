@@ -1,0 +1,10 @@
+continued improvements for the tinymce editor instance:
+* instead of `:root[data-pantoken-color="sea"]` in the canvas-theme-editor scaffold it should be added to a div that wraps all the content of the editor with the attribute.  a single canvas page can edit anything inside `#content` but there is no other way to manipulate the styles. data attributes are allowed so we could wrap everything in `<div data-pantoken-color="sea">...</div>` and it would work, and the author can change edit it.
+
+---
+
+Planning-only, read-only exploration in /Users/dwahl/Scripts/pantoken. Follow repository instructions, including running the mandatory `entire graph search --repo . --profile full --query "canvas theme editor scaffold move data-pantoken-color selector from root to editable content wrapper"` before grep/find. Also check `entire status` and relevant checkpoint history where practical. Find the exact source files/functions/templates that generate the canvas-theme-editor scaffold's theme CSS selectors like `:root[data-pantoken-color="sea"]`, and the TinyMCE initial/editor content under `#content`. Identify current tests, generation commands, docs/demos, changeset expectations, and whether changing selector scope requires generated outputs or AI assets. Determine a precise implementation approach for wrapping all editable content in `<div data-pantoken-color="sea">...</div>` and changing CSS selectors to match that editable wrapper, including implications for TinyMCE root/body behavior and round-trip save/load. Return concise findings with full paths and relevant symbol names/line numbers; do not edit anything.
+
+---
+
+Start implementation
