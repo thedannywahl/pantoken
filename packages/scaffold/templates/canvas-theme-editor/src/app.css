@@ -37,9 +37,20 @@
   --pantoken-glyph: var(--instui-icon-panel-left-close);
 }
 
+.instui-tray .instui-tabs {
+  position: relative;
+}
+
 .instui-tray .list {
   display: flex;
   gap: 0.5rem;
+  padding-inline-end: var(--instui-component-base-button-small-height);
+}
+
+.theme-tray__close {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: 0;
 }
 
 .instui-tray .panel[hidden] {
@@ -57,19 +68,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-}
-
-.theme-picker__item {
-  padding: 0.25rem 0.75rem;
-  border-radius: 999px;
-  border: 1px solid var(--instui-component-shared-tokens-border-color-primary, #ccc);
-  background: transparent;
-  cursor: pointer;
-}
-
-.theme-picker__item[aria-checked="true"] {
-  border-color: currentcolor;
-  font-weight: 700;
 }
 
 .theme-picker__colors {

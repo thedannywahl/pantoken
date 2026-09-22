@@ -132,33 +132,37 @@
         {{tabJsLabel}}
       </button>
     </div>
+    <button
+      class="instui-close-button -size-sm theme-tray__close"
+      type="button"
+      popovertarget="theme-tray"
+      popovertargetaction="hide"
+      aria-label="{{closeLabel}}"
+    ></button>
     <div class="panel" role="tabpanel" id="panel-config" aria-labelledby="tab-config">
       <div class="config-section">
         <span class="instui-heading -level-h3">{{themeLabel}}</span>
         <div class="theme-picker" role="group" aria-label="{{themeLabel}}">
           <button
             type="button"
-            class="theme-picker__item -selected"
-            role="menuitemradio"
-            aria-checked="true"
+            class="instui-button -size-sm -color-secondary -toggle"
+            aria-pressed="true"
             data-theme="rebrand"
           >
             {{themeRebrandLabel}}
           </button>
           <button
             type="button"
-            class="theme-picker__item"
-            role="menuitemradio"
-            aria-checked="false"
+            class="instui-button -size-sm -color-secondary -toggle"
+            aria-pressed="false"
             data-theme="canvas"
           >
             {{themeCanvasLabel}}
           </button>
           <button
             type="button"
-            class="theme-picker__item"
-            role="menuitemradio"
-            aria-checked="false"
+            class="instui-button -size-sm -color-secondary -toggle"
+            aria-pressed="false"
             data-theme="canvasHighContrast"
           >
             {{themeCanvasHighContrastLabel}}
@@ -316,9 +320,9 @@
       </div>
       <div class="config-section">
         <span class="instui-heading -level-h3">{{cdnSectionLabel}}</span>
-        <label>
+        <label for="cdn-provider">
           {{cdnProviderLabel}}
-          <select id="cdn-provider"></select>
+          <select class="instui-simple-select" id="cdn-provider"></select>
         </label>
       </div>
       <p>

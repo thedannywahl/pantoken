@@ -253,7 +253,7 @@ function applyParentTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
   includeDarkModeCheckbox.checked = mode === "dark";
   document.documentElement.dataset.pantokenScheme = mode;
   const themeButton = [...themeButtons].find((button) => button.dataset.theme === theme);
-  if (themeButton) selectButton(themeButtons, themeButton);
+  if (themeButton) selectToggleButton(themeButtons, themeButton);
   includeDarkModeRow.hidden = theme !== "rebrand";
   applyEditorTheme(activeEditor);
   refreshAll();
@@ -436,7 +436,7 @@ if (
   providerSelect.value = preferences.cdnProvider;
 }
 
-const themeButtons = document.querySelectorAll<HTMLButtonElement>(".theme-picker__item[data-theme]");
+const themeButtons = document.querySelectorAll<HTMLButtonElement>(".theme-picker [data-theme]");
 const colorButtons = document.querySelectorAll<HTMLButtonElement>(
   ".theme-picker__color-item[data-color]",
 );
@@ -620,7 +620,7 @@ function restoreCanvasThemePreset(preset: CanvasThemePreset): void {
 
   selectedTheme = preset.theme;
   const themeButton = [...themeButtons].find((button) => button.dataset.theme === preset.theme);
-  if (themeButton) selectButton(themeButtons, themeButton);
+  if (themeButton) selectToggleButton(themeButtons, themeButton);
   includeDarkModeRow.hidden = selectedTheme !== "rebrand";
   includeDarkModeCheckbox.checked = preset.mode === "adaptive";
   providerSelect.value = preset.cdnProvider;
@@ -675,7 +675,7 @@ function buildCurrentTheme(): { css: string; js: string } {
   };
 }
 
-/** Marks the clicked button as selected within its `role="group"` (theme or color pickers). */
+/** Marks the clicked color swatch as selected within its `role="group"`. */
 function selectButton(buttons: NodeListOf<HTMLButtonElement>, target: HTMLButtonElement): void {
   for (const button of buttons) {
     const selected = button === target;
@@ -684,7 +684,7 @@ function selectButton(buttons: NodeListOf<HTMLButtonElement>, target: HTMLButton
   }
 }
 
-/** Marks the clicked instui-button `-toggle` as pressed within its `role="group"` (preview width). */
+/** Marks the clicked instui-button `-toggle` as pressed within its `role="group"`. */
 function selectToggleButton(buttons: NodeListOf<HTMLButtonElement>, target: HTMLButtonElement): void {
   for (const button of buttons) button.setAttribute("aria-pressed", String(button === target));
 }
@@ -692,7 +692,7 @@ function selectToggleButton(buttons: NodeListOf<HTMLButtonElement>, target: HTML
 themeButtons.forEach((button) => {
   button.addEventListener("click", () => {
     selectedTheme = button.dataset.theme as ThemeVariant;
-    selectButton(themeButtons, button);
+    selectToggleButton(themeButtons, button);
     includeDarkModeRow.hidden = selectedTheme !== "rebrand";
     applyEditorTheme(activeEditor);
     refreshAll();

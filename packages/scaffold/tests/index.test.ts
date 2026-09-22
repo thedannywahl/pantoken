@@ -32,6 +32,21 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(existsSync(join(target, "index.html"))).toBe(true);
   expect(existsSync(join(target, "src/main.ts"))).toBe(true);
   const main = readFileSync(join(target, "src/main.ts"), "utf8");
+  const appHtml = readFileSync(join(target, "src/app.html"), "utf8");
+  expect(appHtml.match(/class="instui-button -size-sm -color-secondary -toggle"/g)).toHaveLength(3);
+  expect(appHtml).toContain('aria-pressed="true"');
+  expect(appHtml).toContain('class="instui-checkbox -variant-toggle"');
+  expect(appHtml).toContain('class="instui-simple-select" id="cdn-provider"');
+  expect(appHtml).toContain('class="instui-close-button -size-sm theme-tray__close"');
+  expect(appHtml).toContain('popovertargetaction="hide"');
+  expect(appHtml).toContain('aria-label="{{closeLabel}}"');
+  expect(appHtml).not.toContain("theme-picker__item");
+  expect(main.match(/selectToggleButton\(themeButtons, themeButton\);/g)).toHaveLength(2);
+  expect(main).toContain("selectToggleButton(themeButtons, button);");
+  expect(main).not.toContain("selectButton(themeButtons");
+  expect(main).toContain(
+    'document.querySelectorAll<HTMLButtonElement>(".theme-picker [data-theme]")',
+  );
   expect(main.indexOf('document.querySelector<HTMLDivElement>("#app")!')).toBeLessThan(
     main.indexOf("interactionsScript.src = interactionsIifeUrl"),
   );
@@ -95,9 +110,7 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain('selector: "",');
   expect(main).toContain("<html><head><style>${themeCss}");
   expect(main).not.toContain('<html data-pantoken-color="${selectedColor}">');
-  expect(readFileSync(join(target, "src/app.html"), "utf8")).toContain(
-    '<div data-pantoken-color="navy"><p></p></div>',
-  );
+  expect(appHtml).toContain('<div data-pantoken-color="navy"><p></p></div>');
   expect(main).toContain('autosave_interval: "30s"');
   expect(readFileSync(join(target, "src/app.css"), "utf8")).toContain(
     '.content[data-layout="row"] .preview-pane',
