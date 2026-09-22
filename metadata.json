@@ -3,18 +3,33 @@
   "checkpoint_id": "01M35EJ93VVF9CV4G5F9XX2TW1",
   "strategy": "manual-commit",
   "branch": "tinymce-utility",
-  "checkpoints_count": 4,
+  "checkpoints_count": 10,
   "files_touched": [
+    ".changeset/canvas-course-layouts.md",
     ".changeset/sync-canvas-rce-dark-mode.md",
     "packages/scaffold/templates/canvas-theme-editor/README.md",
     "packages/scaffold/templates/canvas-theme-editor/package.json",
     "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
     "packages/scaffold/templates/canvas-theme-editor/src/preferences.ts",
     "packages/scaffold/tests/index.test.ts",
+    "plugins/pantoken/layouts/README.md",
+    "plugins/pantoken/layouts/src/index.ts",
+    "plugins/pantoken/layouts/src/layouts/index.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/about-me.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/course-home.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/footer.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/header.ts",
     "plugins/pantoken/layouts/src/layouts/pages/index.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/page-layout.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/syllabus.ts",
     "plugins/pantoken/layouts/tests/index.test.ts",
     "plugins/tinymce/a11y/src/index.ts",
-    "plugins/tinymce/a11y/tests/index.test.ts"
+    "plugins/tinymce/a11y/tests/index.test.ts",
+    "renderers/tinymce/src/icon-pack.ts",
+    "renderers/tinymce/src/index.ts",
+    "renderers/tinymce/src/layouts.ts",
+    "renderers/tinymce/src/plugins/layouts.ts",
+    "renderers/tinymce/tests/layouts.test.ts"
   ],
   "sessions": [
     {
@@ -23,6 +38,13 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
