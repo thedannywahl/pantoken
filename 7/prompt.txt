@@ -1,0 +1,60 @@
+~/docs$ node scripts/build-canvas-rce.ts
+✗ Build failed in 540ms
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+Build failed with 2 errors:
+
+[MISSING_EXPORT] "createSourceTogglePlugin" is not exported by "../renderers/tinymce/dist/index.mjs".
+    ╭─[ .vitepress/cache/canvas-rce-src/src/main.ts:54:32 ]
+    │
+ 54 │ import { createPantokenPlugin, createSourceTogglePlugin, listComponents, listUtilities, loadAllIcons, logos, pageLayouts, PANTOKEN_ICONS_DATABASE_ID, products, pantokenHtmlLinter, pantokenHtmlCompletion, SOURCE_TOGGLE_PLUGIN_NAME } from "@pantoken/tinymce";
+    │                                ────────────┬───────────
+    │                                            ╰───────────── Missing export
+────╯
+
+[MISSING_EXPORT] "SOURCE_TOGGLE_PLUGIN_NAME" is not exported by "../renderers/tinymce/dist/index.mjs".
+    ╭─[ .vitepress/cache/canvas-rce-src/src/main.ts:54:205 ]
+    │
+ 54 │ import { createPantokenPlugin, createSourceTogglePlugin, listComponents, listUtilities, loadAllIcons, logos, pageLayouts, PANTOKEN_ICONS_DATABASE_ID, products, pantokenHtmlLinter, pantokenHtmlCompletion, SOURCE_TOGGLE_PLUGIN_NAME } from "@pantoken/tinymce";
+    │                                                                                                                                                                                                             ────────────┬────────────
+    │                                                                                                                                                                                                                         ╰────────────── Missing export
+────╯
+
+    at aggregateBindingErrorsIntoJsError (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-CGhV1ebk.mjs:48:18)
+    at unwrapBindingResult (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-CGhV1ebk.mjs:18:128)
+    at #build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/rolldown-DZGaRc5R.mjs:133:34)
+    at async buildEnvironment (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:39599:66)
+    at async Object.build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40020:19)
+    at async file:///Users/dwahl/Scripts/pantoken/docs/scripts/build-canvas-rce.ts:51:1 {
+  errors: [Getter/Setter]
+}
+
+Node.js v26.9.0
+
+---
+
+---
+
+In this pantoken monorepo, I need to investigate a build failure. The docs build script `docs/scripts/build-canvas-rce.ts` builds a bundle from `.vitepress/cache/canvas-rce-src/src/main.ts` which imports `createSourceTogglePlugin` and `SOURCE_TOGGLE_PLUGIN_NAME` from `@pantoken/tinymce`, but these are not exported from `renderers/tinymce/dist/index.mjs`.
+
+Please investigate thoroughly:
+1. Find the package `@pantoken/tinymce` — likely at `renderers/tinymce/`. Read its `package.json` to see the `main`/`exports` field and entry point (e.g. `src/index.ts`).
+2. Read the entry point file (e.g. `renderers/tinymce/src/index.ts`) to see what's currently exported.
+3. Search the `renderers/tinymce/src/` directory for `createSourceTogglePlugin`, `SOURCE_TOGGLE_PLUGIN_NAME`, and "source toggle" / "sourceToggle" to find if this plugin exists somewhere in the codebase (maybe implemented but not exported, or maybe doesn't exist at all — check other similar repos/dirs too, like `plugins/tinymce/`).
+4. Find where `.vitepress/cache/canvas-rce-src/src/main.ts` comes from — is it a cached/generated copy of a source file elsewhere (e.g. from a git submodule, another repo checkout, or copied from `canvas-lms` or similar)? Check `docs/scripts/build-canvas-rce.ts` fully to understand how this cache directory is populated (e.g. does it clone/copy from an external repo/URL, or from a local path in this workspace?).
+5. Check git log / recent changes: search for "SOURCE_TOGGLE_PLUGIN_NAME" or "createSourceTogglePlugin" anywhere across the whole workspace (not just renderers/tinymce) via grep, including in `plugins/tinymce/a11y` since the user's currently open file is `plugins/tinymce/a11y/src/i18n.json`.
+6. Check `renderers/tinymce/src/` directory listing entirely to see all plugin files and the naming convention used for other plugins (e.g. how a similar existing plugin like "pantoken" plugin or "html linter" plugin is structured, exported, and named) so we understand the expected pattern for adding a new plugin.
+7. Check if there's a CHANGELOG or recent commit that added references to source-toggle feature but forgot to export it, e.g. via `git log --oneline -- renderers/tinymce` or search for "source toggle" in commit messages/docs.
+
+Report back:
+- Whether `createSourceTogglePlugin`/`SOURCE_TOGGLE_PLUGIN_NAME` exist anywhere in source but aren't exported (give exact file path and current export state), or whether they don't exist at all anywhere in the repo.
+- The exact current contents of `renderers/tinymce/src/index.ts` (or main entry) exports list.
+- Where `.vitepress/cache/canvas-rce-src` comes from (full mechanism) — is it copied from `docs/` sources, or from an external source outside this workspace that's out of our control?
+- The pattern used for existing plugins in `renderers/tinymce` (file structure, naming, how each plugin's create function + constant name are exported) so a new one could follow the same pattern.
+- Any TODO comments or partial implementation of "source toggle" functionality.
+
+---
+
+Start implementation
