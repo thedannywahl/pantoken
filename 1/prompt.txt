@@ -1,0 +1,12 @@
+tinymce icon plugin should switch from injecting with screenreader content:
+```
+<span class="instui-icon -icon-*"><span class="instui-screen-reader-text">megaphone</span></span>
+```
+to using aria-hidden:
+```
+<span class="instui-icon -icon-*" aria-hidden="true"></span>
+```
+
+---
+
+no, not the icon pack.  the renderers/tinymce/plugins/icons emoji selector.
