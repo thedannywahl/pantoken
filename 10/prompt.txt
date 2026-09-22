@@ -1,0 +1,57 @@
+add a tinymce 8 skin following these instructions:
+* https://www.tiny.cloud/docs/tinymce/latest/creating-a-skin/
+* https://github.com/tinymce/tinymce/tree/main/modules/oxide
+
+---
+
+Planning-only research in /Users/dwahl/Scripts/pantoken. Do not edit files. Investigate the existing TinyMCE renderer/package, current TinyMCE version and assets, analogous skin/theme integrations, package build/generation conventions, tests/docs/changeset requirements, and the likely work needed to add a TinyMCE 8 skin based on TinyMCE's oxide module. Read the repository's applicable graph guidance before broad search. Return: (1) concrete file paths and symbols, (2) current behavior and gaps, (3) recommended implementation steps, (4) validation commands, (5) ambiguities or risks such as licensing/assets/version pinning. Keep scope focused on renderers/tinymce and relevant build/docs files.
+
+---
+
+Planning-only research in /Users/dwahl/Scripts/pantoken. Do not edit files. Investigate the existing TinyMCE renderer/package, current TinyMCE version and assets, analogous skin/theme integrations, package build/generation conventions, tests/docs/changeset requirements, and the likely work needed to add a TinyMCE 8 skin based on TinyMCE's oxide module. Read .entire/graph-agent.md before broad search. Return concrete paths/symbols, current gaps, recommended steps, validation commands, and risks around licensing/assets/version pinning.
+
+---
+
+actually we shouldn't be calling this pantoken, there should be a skin per theme: Next gen, Canvas, and Canvas High Contrast.
+
+---
+
+tiny breaks out light and dark themes, can we just combine them into one for next gen?  canvas and canvas-high-contrast don't support dark mode.
+
+---
+
+content css needs to stay light mode regardless of the ui light/dark for now.
+
+---
+
+Start implementation
+
+---
+
+now wire the skin(s) into the canvas-theme-editor scaffold, it should auto-switch light/dark and theme based on the active vitepress docs theme switcher configuration.
+
+---
+
+this skin is not following the convention recommended by the guides:
+1. Duplicate the `default` folder in `modules/oxide/src/less/skins/ui/` and rename it.
+2. Open `modules/oxide/src/less/skin/ui/<your-skin-name>/skin.less`.
+3. Open a Less file from the theme folder (e.g., `modules/oxide/src/less/theme/globals/global-variables.less`) and copy a variable to modify.
+4. Paste the variable into the `skin.less` file.
+5. The updated `skin.less` should look like this:
+```less
+@import 'src/less/theme/theme';
+
+//
+// Place your variables here
+//
+
+@background-color: red;
+```
+
+---
+
+these shouldn't be hard-coded. they should be the pantoken vars from the token IR.
+
+---
+
+do we need to update the config in canvas-theme-editor scaffold?
