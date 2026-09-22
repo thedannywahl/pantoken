@@ -1,0 +1,48 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M35B1NCKZVPT7X81RFW3MXPG",
+  "session_id": "eb3668e8-8a91-4dd0-8aa9-0e49490b11d9",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-22T19:56:25.527627Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/tinymce-icons-more-glyph-libraries.md",
+    "plugins/pantoken/lucide-lab/package.json",
+    "plugins/pantoken/lucide-lab/scripts/generate-manifest.ts",
+    "plugins/pantoken/lucide-lab/vite.config.ts",
+    "pnpm-lock.yaml",
+    "renderers/tinymce/package.json",
+    "renderers/tinymce/src/icons.ts",
+    "renderers/tinymce/tests/icons-picker.test.ts",
+    "renderers/tinymce/tests/icons.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "453c07ed5ebe",
+  "checkpoint_transcript_start": 385,
+  "transcript_lines_at_start": 385,
+  "compact_transcript_start": 68,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-22T19:56:25.438023Z",
+    "agent_lines": 134,
+    "agent_removed": 6,
+    "human_added": 288,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 422,
+    "total_lines_changed": 500,
+    "agent_percentage": 28.000000000000004,
+    "metric_version": 2
+  }
+}
