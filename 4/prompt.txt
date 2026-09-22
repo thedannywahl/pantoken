@@ -1,0 +1,70 @@
+underneath /plugins/ we need a /tinymce/placehold that implements a placeholder image interface for https://placehold.co/ in png format.
+
+---
+
+Planning-only, read-only exploration in /Users/dwahl/Scripts/pantoken. Thoroughness: medium. Focus on TinyMCE-related code/docs/dependencies in the repo and conventions for implementing a TinyMCE image-related interface. Search for tinymce imports, plugins, image dialogs, file picker callbacks, upload handlers, placeholder/image generation, and l10n strings. Do not edit. Return existing integration points, likely package boundary/API, testing approach, and unresolved product questions.
+
+---
+
+Planning-only, read-only exploration in /Users/dwahl/Scripts/pantoken. Thoroughness: thorough but focused. Given decisions: create a standalone TinyMCE plugin package at plugins/tinymce/placehold; dialog exposes width, height, background color, text color, custom text, alt text; always generates placehold.co PNG URL and inserts an img; also wire it into the Canvas theme editor scaffold. Trace exactly how packages/scaffold/templates/canvas-theme-editor is generated/copied/tested, which package.json templates and snapshots must change, and what commands regenerate synchronized output. Inspect relevant package metadata/gate requirements and whether README/docs/i18n/AI assets need updates. Also identify security implications of inserting external URLs and exact ASSURANCE.md/SECURITY.md sections if applicable. Do not edit. Return specific paths, symbols, commands, dependency/package naming recommendation, and blockers.
+
+---
+
+the interface controls need to go through the i18n pipeline, the user-input (text/alt text) does not.
+
+---
+
+Planning-only, read-only exploration in /Users/dwahl/Scripts/pantoken. Thoroughness: focused/medium. Determine exactly how the i18n engine handles a messages space's `source` field. Can tinymce.strings include more than one i18n.json source (array, directory, glob), or must all strings remain in renderers/tinymce/src/i18n.json? Trace schema/types/extraction/check code and tests. Recommend the smallest architecture that lets UI controls in a standalone plugins/tinymce/placehold package go through the existing tinymce.strings pipeline without introducing a runtime dependency from the plugin package on @pantoken/tinymce. Identify exact files to change, generated/catalog outputs, and validation commands. Do not edit.
+
+---
+
+the tinymce toolbar icon should be '`add-file`'
+
+---
+
+Start implementation
+
+---
+
+what's the status of this task?
+
+---
+
+don't do any translation work, just make sure the pipeline is ready, now continue.
+
+---
+
+~/docs$ node scripts/build-canvas-rce.ts
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✗ Build failed in 475ms
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+Build failed with 1 error:
+
+Error: [vite+]: Rolldown failed to resolve import "@pantoken/tinymce-placehold" from "/Users/dwahl/Scripts/pantoken/docs/.vitepress/cache/canvas-rce-src/src/main.ts".
+This is most likely unintended because it can break your application at runtime.
+If you do want to externalize this module explicitly add it to
+`build.rolldownOptions.external`
+    at viteLog (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:39692:57)
+    at onRollupLog (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:39725:7)
+    at onLog (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:39489:4)
+    at file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/create-bundler-option-wxuQPB7F.mjs:48:26
+    at logger (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/create-bundler-option-wxuQPB7F.mjs:39:3)
+    at aggregateBindingErrorsIntoJsError (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-CGhV1ebk.mjs:48:18)
+    at unwrapBindingResult (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-CGhV1ebk.mjs:18:128)
+    at #build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/rolldown-DZGaRc5R.mjs:133:34)
+    at async buildEnvironment (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:39599:66)
+    at async Object.build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40020:19)
+    at async file:///Users/dwahl/Scripts/pantoken/docs/scripts/build-canvas-rce.ts:51:1 {
+  errors: [Getter/Setter]
+}
+
+Node.js v26.9.0
+
+---
