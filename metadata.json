@@ -3,14 +3,16 @@
   "checkpoint_id": "01M357QH5RZKHP7T4NEHH86H03",
   "strategy": "manual-commit",
   "branch": "tinymce-utility",
-  "checkpoints_count": 44,
+  "checkpoints_count": 45,
   "files_touched": [
     ".changeset/canvas-theme-editor-quickbars-config.md",
     ".changeset/visualblocks-footer.md",
     "packages/scaffold/templates/canvas-theme-editor/README.md",
     "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
     "packages/scaffold/tests/index.test.ts",
-    "renderers/tinymce/src/index.ts"
+    "renderers/tinymce/src/index.ts",
+    "renderers/tinymce/src/plugins/visualblocks-footer.ts",
+    "renderers/tinymce/tests/visualblocks-footer.test.ts"
   ],
   "sessions": [
     {
@@ -63,6 +65,13 @@
       "compact_transcript": "/8/transcript.jsonl",
       "content_hash": "/8/content_hash.txt",
       "prompt": "/8/prompt.txt"
+    },
+    {
+      "metadata": "/9/metadata.json",
+      "transcript": "/9/full.jsonl",
+      "compact_transcript": "/9/transcript.jsonl",
+      "content_hash": "/9/content_hash.txt",
+      "prompt": "/9/prompt.txt"
     }
   ],
   "token_usage": {

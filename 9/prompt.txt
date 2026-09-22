@@ -1,0 +1,4 @@
+on /guide/canvas-rce the canvas-theme-editor instance should use the docs theme and theme colors for its display.
+the _preview_ window inside the canvas-theme-editor should use the theme and color scheme from the app tray.  right now the theme and colors pass through to the preview and are semi-synced (changing the docs theme changes the tray active button to sync, but changing the tray theme doesn't change the docs theme).  but changing the docs active theme (canvas, high contrast) does not change the style of the buttons on the canvas-theme-editor scaffold, it should.
+the color schemes between the docs and the tray are synced, but they should not be.  We need for somebody to be able to:
+* set docs to green, canvas-high-contrast and have everything in the docs and the scaffold except the preview sync to match, and then they can set the preview them to canvas/orange in the tray and the preview will render that.
