@@ -1,0 +1,9 @@
+there are many errors in this file, some are because it's a template and some are valid errors, let's add a suppression for:
+```
+Cannot find module or type declarations for side-effect import of '...*.css'. (ts2882)
+```
+to the top of the file, and then remediate the rest of the issues.
+
+---
+
+Quick discovery only; do not edit. Inspect /Users/dwahl/Scripts/pantoken/packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl and nearby analogous templates/configuration. Identify every genuine issue likely reported in this file apart from TS2882 side-effect CSS imports, explain the minimal fix consistent with local patterns, and name the narrowest validation command or diagnostics check. Include file paths and relevant symbols/locations. Also assess whether a top-of-file suppression should be @ts-expect-error / @ts-ignore / eslint/tsconfig-based and why. Return concise findings.
