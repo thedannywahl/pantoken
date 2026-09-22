@@ -1,0 +1,182 @@
+between docs, plugins/pantoken/custom-theme-colors, and formats/components an active toggle button doesn't get the theme color applied it's always blue via:
+```
+:scope.-toggle[aria-pressed="true"] {
+	background: var(--instui-color-background-interactive-action-secondary-active);
+	border-color: var(--instui-color-stroke-interactive-action-secondary-active);
+	color: var(--instui-color-text-interactive-action-secondary-base);
+}
+```
+
+---
+
+In the repo /Users/dwahl/Scripts/pantoken, research (READ-ONLY, thorough) why a toggle button in the pressed state (`.instui-button.-toggle[aria-pressed="true"]`) always renders blue instead of picking up the custom theme color.
+
+Investigate and report:
+
+1. In `formats/components/src/components/button.ts` (or wherever the button record lives): find the `-toggle` / `aria-pressed="true"` CSS block. Report the exact CSS and ALL custom properties it references (e.g. `--instui-color-background-interactive-action-secondary-active`, `--instui-color-stroke-interactive-action-secondary-active`, `--instui-color-text-interactive-action-secondary-base`). Also report what other button color states use (e.g. `-color-secondary` normal/hover/active) so I can see the naming pattern.
+
+2. In `plugins/pantoken/custom-theme-colors` (find the exact path): explain exactly how the plugin works — which token names/prefixes it rewrites/overrides, how it maps a chosen palette (navy/blue/green/...) onto tokens, and what the list/regex/allowlist of overridden variables is. Report the source file(s) and the key function names. Critically: determine whether `*-interactive-action-secondary-*` tokens (background/stroke/text) are included in the override set, and why or why not.
+
+3. Determine the token definitions: where do `--instui-color-background-interactive-action-secondary-active`, `--instui-color-stroke-interactive-action-secondary-active`, `--instui-color-text-interactive-action-secondary-base` come from (which format/package emits them, what raw values/aliases they resolve to). Are they aliased to a "primitive brand/blue" token or to a theme-color token? Show the resolution chain if possible.
+
+4. In `docs/`, find where the custom theme colors demo/guide page lives and how it applies the theme (which CSS file/plugin invocation), plus any docs page for the button toggle. Also check `platforms/canvas-theme-editor` and `packages/scaffold/templates/canvas-theme-editor` for how theme CSS is generated (which function builds the theme override CSS).
+
+5. Identify the precise root cause of the bug and list candidate fix locations with full file paths and specific symbol/function names.
+
+Return a detailed written report with file paths (workspace-relative), line numbers, exact CSS/variable names, and function names. Do NOT modify any files.
+
+---
+
+READ-ONLY investigation in /Users/dwahl/Scripts/pantoken. I've confirmed the root cause of a bug and need precise details to plan a fix. Note: many generated/dist files are gitignored, so use `includeIgnoredFiles: true` or read files directly; scope searches narrowly to avoid timeouts.
+
+CONFIRMED FACT: In `formats/css/generated/style.rebrand.light.css` around lines 315-320, these tokens are baked as literal hex rather than `var(--instui-primitive-color-navy-*)` references:
+```
+--instui-color-background-interactive-action-secondary-base: #44709f33;
+--instui-color-background-interactive-action-secondary-hover: #44709f26;
+--instui-color-background-interactive-action-secondary-active: #44709f26;
+--instui-color-stroke-interactive-action-secondary-base: #44709f00;
+--instui-color-stroke-interactive-action-secondary-hover: #44709f00;
+--instui-color-stroke-interactive-action-secondary-active: #44709f00;
+--instui-color-institutional-brand-button-secondary-bgd: #44709f33;
+```
+Because they are literal hex, `plugins/pantoken/custom-theme-colors` (which only remaps `--instui-primitive-color-navy-*` / `blue-*` var references) has no effect on them, so toggle buttons stay navy/blue under every theme color.
+
+Please report:
+
+1. **All literal-hex brand-colored tokens in the rebrand theme.** Read `formats/css/generated/style.rebrand.light.css` (and `style.css`, which uses `light-dark(#44709f33, #345B84)` style values) and enumerate EVERY custom property whose value is a literal hex/rgba that matches the navy/blue brand family — specifically `#44709f`, `#234465`, `#345B84`, `#3E6895`, `#2E5177`, and any rgba() with those components. Give the exact property names, values, and line numbers. Group them (interactive-action-secondary, institutional-brand, drop-shadow, mobile-nav, others).
+
+2. **What are the navy primitive values?** Find the values of `--instui-primitive-color-navy-navy10` through `navy200` in the rebrand theme (read the generated file directly or the tokens JSON). Determine which navy step `#44709f`, `#234465`, `#345B84`, `#3E6895`, `#2E5177` correspond to (exact or nearest). Report the mapping. Also report the same for another palette e.g. `--instui-primitive-color-green-green*` so I can see the parallel scale exists for all 13 namespaces.
+
+3. **Where do these hex values originate in the pipeline?** Trace from upstream source → IR. Look at `packages/core/src` (the resolve/build functions), `formats/tokens` (the vendored IR/raw JSON), and `tools/upstream-diff/baseline`. Is the hex baked in the upstream Tokens Studio JSON, or does pantoken's resolver flatten a var reference into hex? Show the relevant function names and file paths. Is there an existing "alias/relink" or override mechanism in core or in any plugin that rewrites token VALUES (not just appends CSS)?
+
+4. **Does `--instui-color-text-interactive-action-secondary-base` exist in the rebrand theme, and what is its value?** (var reference or hex?)
+
+5. **Plugin CSS output ordering/specificity:** In `plugins/pantoken/custom-theme-colors/src/index.ts`, the plugin emits `:root[data-pantoken-color="…"]` blocks appended via the `css` hook. Confirm where in the output these land relative to the `:root` theme block, and whether an added direct override of `--instui-color-background-interactive-action-secondary-*` inside those blocks would win (specificity of `:root[attr]` vs `:root`). Also check `formats/css/src` `toCss()` and the plugin marker/append mechanism.
+
+6. **Tests and snapshots that would need updating:** find test files for the custom-theme-colors plugin and any snapshot/drift tests asserting its CSS output. Full paths.
+
+7. **Consumers:** list every place `customThemeColorsCss` / `customThemeColors` is imported or the generated CSS is inlined (e.g. `platforms/canvas-theme-editor/src/build-theme.ts`, `packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl`, docs). Full paths + line numbers.
+
+Return a precise written report with file paths, line numbers, and exact variable names/values. Do NOT modify any files.
+
+---
+
+READ-ONLY, quick+precise, in /Users/dwahl/Scripts/pantoken. Generated files are gitignored — read them directly with read_file rather than grep (grep times out on them).
+
+Answer these five questions exactly:
+
+1. In `formats/css/generated/style.rebrand.light.css`, find and report the exact declarations (with line numbers) for ALL properties whose name matches `--instui-color-text-interactive-action-secondary-*` and `--instui-color-icon-interactive-action-secondary-*`. Are their values literal hex or `var(--instui-primitive-color-...)` references? Report the exact value.
+
+2. In `formats/css/generated/style.css` (the light-dark/default build), report the exact declarations and line numbers for all `--instui-color-background-interactive-action-secondary-*`, `--instui-color-stroke-interactive-action-secondary-*`, and `--instui-color-text-interactive-action-secondary-*`. Report the exact `light-dark(...)` values.
+
+3. Read `plugins/pantoken/custom-theme-colors/tests/index.test.ts` in full and summarize what each test asserts (test names + key assertions). Also list any other test/snapshot files under `plugins/pantoken/custom-theme-colors/` and under `formats/css/tests/` or `docs/` that assert on custom-theme-colors output.
+
+4. Read `plugins/pantoken/custom-theme-colors/scripts/generate.ts` and `plugins/pantoken/custom-theme-colors/package.json` — report what the generate script produces (output file paths), and how the dist CSS is built/consumed.
+
+5. Search the repo (source files only, not dist/generated) for any existing usage of `color-mix(` inside `plugins/`, `formats/components/src/`, and `formats/css/src/` — report file paths and example lines. Also check `compatibility.json` and `fallow-baseline.json` at repo root for what browser-support baseline the project targets, and whether relative color syntax (`rgb(from ...)`) or `color-mix()` is mentioned/allowed anywhere.
+
+Return a concise but exact report with file paths, line numbers, and verbatim values. Do NOT modify files.
+
+---
+
+Start implementation
+
+---
+
+build me a standalone, self-contained demo like the one you had built that I can put on a tech demo site.  I want the different components that are affected in groups:
+* buttons
+* view/box-shadow
+*??? 
+
+We won't commit this to the repo, it's just so that I can upload a single html/css/js file(s) to a codesandbox.
+
+---
+
+I don't want re-linking fix as an option, it should be done automatically, we're not trying to show that we fixed a bug, we're trying to show that we can implement swatch based themeing.
+
+---
+
+we also need things like `on-color` views, text, links, etc. basically go through formats/css and look at the generated styles.css for anything components that utilize these themeable colors and add them to this demo.
+
+---
+
+READ-ONLY, thorough, in /Users/dwahl/Scripts/pantoken. I am building a demo page that shows off swatch-based brand theming. I need to know WHICH components in `formats/components` consume the brand-derived tokens, and the exact RSCSS class names + modifiers to write in plain HTML.
+
+The demo uses the `instui` prefix (e.g. `class="instui-button -color-secondary"`). Note the source files use `pfx-` as a placeholder in doc examples — translate to `instui-`.
+
+These are the brand-derived tokens (they resolve from the navy/blue primitive scales, so they recolor with the selected theme). Search `formats/components/src/**/*.css` for each family and report which component consumes it:
+
+**A. Focus ring**
+- `--instui-color-stroke-interactive-focus-ring-base`
+Where is the focus outline defined (likely `formats/components/src/.../base.css` or a rule record)? Report the exact selector and whether any focusable element shows it.
+
+**B. Links / navigation text**
+- `--instui-color-text-interactive-navigation-primary-base/hover/active`
+- `--instui-color-icon-interactive-navigation-primary-*`
+Which component(s)? Report the Link component's selector and ALL its modifiers (especially any inverse/on-color variant), plus Breadcrumb, Side Nav Bar, App Nav, Pagination, Tabs, Tree Browser, Menu — whichever actually use these.
+
+**C. "on-color" / inverse treatments**
+- `--instui-color-background-interactive-action-primary-on-color-hover/active`
+- `--instui-color-stroke-interactive-action-primary-on-color-hover/active`
+- `--instui-color-stroke-interactive-action-secondary-on-color-hover/active`
+- `--instui-color-text-interactive-action-primary-on-color-base/hover/active`
+- `--instui-color-icon-interactive-action-primary-on-color-base/hover/active`
+- `--instui-color-text-interactive-navigation-primary-on-color-hover/active`
+- `--instui-color-icon-interactive-navigation-primary-on-color-*`
+Which components/modifiers expose these? I specifically want to know the exact modifier names for "on color" / "inverse" variants on Button, Link, and anything else. Report the exact class strings and what background they are meant to sit on.
+
+**D. Brand surfaces**
+- `--instui-color-background-brand`, `--instui-color-stroke-brand`, `--instui-color-icon-brand`
+- `--instui-color-background-opacity`
+Which components/utilities? Does the View component have a `-background-brand` modifier? List ALL View `-background-*` modifier values and all `-border-color-*` / stroke modifier values.
+
+**E. Tertiary action colors**
+- `--instui-color-background-interactive-action-tertiary-hover/active`
+- `--instui-color-stroke-interactive-action-tertiary-*`
+- `--instui-color-text-interactive-action-tertiary-*`
+- `--instui-color-icon-interactive-action-tertiary-*`
+Which components beyond Button?
+
+**F. Charts**
+- `--instui-color-background-chart-categorical-color10`
+- `--instui-color-background-chart-alert-info`
+
+**G. Institutional / Canvas theme vars**
+- `--instui-color-institutional-brand-primary`, `--instui-color-institutional-link-color`,
+  `--instui-color-institutional-brand-button-primary-bgd/text`, `--instui-color-institutional-global-nav-link-hover`
+Are these consumed by any component CSS, or are they Canvas-platform-only variables with no component using them?
+
+**ALSO report, as ready-to-paste HTML snippets using the `instui-` prefix:**
+1. A Link in default and inverse/on-color form.
+2. A Button in every color variant INCLUDING any inverse/on-color variant.
+3. A View with a brand background.
+4. Breadcrumb, Tabs, Side Nav Bar, Pagination, Menu, Tree Browser, Table — minimal valid markup for each, taken from the `@example` blocks in their source CSS doc comments (translate `pfx-` to `instui-`). Only include components that actually consume brand tokens.
+5. Anything with a text-link inside prose (the `prose` / `text` component).
+
+IMPORTANT: do NOT include any component whose markup requires icon glyphs to be legible (the demo does not bundle icons.css), and flag any component whose example uses `-icon-*` modifiers.
+
+Return exact file paths, selectors, modifier names, and the HTML snippets. Do not modify files.
+
+---
+
+for now, let's temporarily remove the box-shadow mapping, we can comment it out in the plugin and then regenerate the styles for this demo.
+
+---
+
+let's add a `0 * Token map` that has the text that's currently at the top about the attribute and then shows the color scale with the original values and the mapped values as swatches on the 10 -> 200 scale.
+
+---
+
+for this demo let's change it from `data-pantoken-color` attribute to `data-theme-color` attribute.
+
+---
+
+the layout cards should be using pantoken styles so swapping to darkmode should swap the background and text color so that the dark color swatches can be validated.
+
+---
+
+dark mode on-color background gets very light I thought on-color meant a fixed color in light or dark mode.  currently the on-color secondary and on-color inverse link don't meet contrast ratios because the on-color view background is too light.
+
+---
+
+what's the minimal package.json I need with this to run it in stackblitz?
