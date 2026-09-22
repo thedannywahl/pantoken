@@ -1,0 +1,43 @@
+tinymce lets you specify the commands that are passed with buttons, we need to provide a way to register them to use pantoken component classes when clicked. for example when inserting a list:
+```
+tinymce.activeEditor.execCommand('InsertDefinitionList', false, {
+  'list-item-attributes': {class: 'instui-list'},
+});
+```
+The RCE in Canvas has the following buttons:
+* font size
+* text type (paragraph, H2 through H6)
+* Bold, Italic, Underline
+* font color
+* highlight color
+* super/sub script
+* link
+* image
+* text align
+* lists
+* tables
+we also need to make sure that the existing plugins in this renderer inject with the appropriate component classes, for example placehold should be inserting as an instui-img
+
+---
+
+Planning-only, read-only exploration. Thoroughness: thorough. In /Users/dwahl/Scripts/pantoken, map which @pantoken/components classes/modifiers should represent content produced by these TinyMCE/Canvas RCE controls: font size, paragraph/H2-H6, bold/italic/underline, font color, highlight color, super/subscript, link, image, alignment, lists (including definition lists), and tables. Include whether classes belong on container vs child elements and any required modifier names. Also inspect analogous integrations/renderers/plugins that transform editor output or register commands. Follow .entire/graph-agent.md: first run the mandated graph search and then focused reads. Check history via Entire when useful. Report exact source records/docs/tests and distinguish confirmed class contracts from gaps that require a product/API decision. Do not edit anything.
+
+---
+
+Planning-only, read-only exploration. Thoroughness: thorough. In /Users/dwahl/Scripts/pantoken, investigate renderers/tinymce for the requested feature: expose a way to register TinyMCE commands/buttons so generated content uses pantoken component classes; Canvas RCE controls include font size, text type paragraph/H2-H6, bold/italic/underline, font/highlight color, super/subscript, link, image, alignment, lists, and tables; existing renderer plugins such as placeholder should insert appropriate classes (e.g. instui-img). Follow .entire/graph-agent.md: first run the mandated `entire graph search --repo . --profile full --query ...`, then focused reads. Also run `entire status` and inspect checkpoint history/intent for key files per the using-entire skill, where available. Read relevant package scripts/tests/docs and report: current architecture and public API, exact symbols/files, existing command/plugin registration patterns, tests and validation commands, likely implementation shape, ambiguities/blockers, and checkpoint-backed intent versus code inference. Do not edit anything.
+
+---
+
+Planning-only, read-only exploration. Thoroughness: medium. In /Users/dwahl/Scripts/pantoken, inspect the TinyMCE package dependencies/types and current renderer tests to determine the feasible TinyMCE extension mechanism for mapping toolbar commands/formats to pantoken classes. Specifically identify whether setup callback wrapping, formatter.register, editor.addCommand, execCommand interception, UI registry, content_style/content_css, valid_elements/extended_valid_elements, or plugin command overrides are already used or appropriate. Focus on repo-installed TinyMCE version and types; do not rely on general memory. Follow .entire/graph-agent.md with graph search first. Return concrete API signatures/patterns, command names used by Canvas controls if discoverable in repo, compatibility concerns, and a recommended registration API shape. Do not edit anything.
+
+---
+
+Planning-only, read-only. Thoroughness: thorough but tightly scoped. In /Users/dwahl/Scripts/pantoken, produce a concrete implementation design for an opt-in @pantoken/tinymce plugin with Canvas-oriented defaults. Decisions: preserve native semantics/styles for controls lacking exact pantoken classes; cover native image insertion plus logo and @pantoken/tinymce-placehold with instui-img; default prefix instui with sensible configurability. Verify against installed TinyMCE 8 source/types and official docs as available. Determine: correct lifecycle for formatter.register; exact built-in format names and commands for font size, p/h2-h6, bold/italic/underline, forecolor/hilitecolor, sub/sup, link, align, lists, tables, image; how to add classes to inserted list/table/image/link elements without replacing native command behavior; whether command payload attributes are sufficient and whether parsing/content events are safer; exact plugin factory/options/API names consistent with repo; required tests and docs/changesets/AI assets. Inspect relevant source narrowly; do not edit. Clearly flag uncertainties and recommend the smallest reliable architecture.
+
+---
+
+Start implementation
+
+---
+
+now wire it into the canvas-theme-editor scaffold.
