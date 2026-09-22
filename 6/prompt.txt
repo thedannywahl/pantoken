@@ -1,0 +1,12 @@
+whereever there's a label throughout the monorepo that represents the available themes we need to update the label for 'rebrand' from 'Rebrand' to 'Next gen' so the three themes will be seen as:
+* canvas -> Canvas
+* canvas-high-contrast -> Canvas high contrast
+* rebrand -> Next gen
+
+---
+
+In /Users/dwahl/Scripts/pantoken, investigate the user's request: update every label throughout the monorepo representing available themes so labels are exactly canvas -> Canvas, canvas-high-contrast -> Canvas high contrast, rebrand -> Next gen. This is read-only research only; do not edit files. First read the repository's .entire/graph-agent.md as required by AGENTS.md/CLAUDE.md before broad exploration. Identify all source/config/docs/tests/generated/template/i18n locations that define or display these theme labels, distinguish authoritative sources from generated copies, find existing theme-label tests or generation commands, and note relevant instruction files. Report exact file paths and symbols/keys, likely files to modify, dependencies/order, and focused verification commands. Be thorough but stay scoped to theme labels.
+
+---
+
+Start implementation
