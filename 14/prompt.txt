@@ -1,0 +1,10 @@
+on http://localhost:5173/guide/canvas-rce
+the app's tabs still don't work, they should be using the interactions from formats/components to automatically just work.
+
+---
+
+Continue: "Continue to iterate?"
+
+---
+
+interactions.iife.js should be all component interactions so you don't have to import individual ones.
