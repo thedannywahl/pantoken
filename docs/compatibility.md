@@ -8,14 +8,15 @@ check fails if it drifts.
 
 ## Upstream sources
 
-pantoken consumes Instructure UI two ways: the design tokens and icons feed the resolved token IR that
-every package consumes, while the `@instructure/ui-*` React packages are used only by
+The design tokens, Instructure custom icons, and Lucide catalog feed the resolved token IR that every
+package consumes. The `@instructure/ui-*` React packages are used only by
 `@pantoken/react-markdown`.
 
 | Package                                  | Feeds        | Range                                                 | Resolved              |
 | ---------------------------------------- | ------------ | ----------------------------------------------------- | --------------------- |
 | `@instructure/instructure-design-tokens` | token-ir     | `github:instructure/instructure-design-tokens#v1.9.0` | `v1.9.0@3c6a96cca755` |
 | `@instructure/ui-icons`                  | icons        | `^11.7.6`                                             | `11.7.6`              |
+| `lucide`                                 | icons        | `^1.47.0`                                             | `1.47.0`              |
 | `@instructure/ui-heading`                | instui-react | `^11.7.6`                                             | `11.7.6`              |
 | `@instructure/ui-text`                   | instui-react | `^11.7.6`                                             | `11.7.6`              |
 | `@instructure/ui-link`                   | instui-react | `^11.7.6`                                             | `11.7.6`              |

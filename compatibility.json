@@ -10,6 +10,11 @@
       "resolved": "11.7.6",
       "feeds": "icons"
     },
+    "lucide": {
+      "range": "^1.47.0",
+      "resolved": "1.47.0",
+      "feeds": "icons"
+    },
     "@instructure/ui-heading": {
       "range": "^11.7.6",
       "resolved": "11.7.6",

@@ -67,6 +67,12 @@ export const icons: PantokenIcon[] = tokens
     source: t.meta?.source,
   }));
 
+/** Every canonical Lucide icon. */
+export const lucideIcons: PantokenIcon[] = icons.filter((icon) => icon.source === "lucide");
+
+/** Every Instructure-authored custom icon. */
+export const customIcons: PantokenIcon[] = icons.filter((icon) => icon.source === "custom");
+
 /**
  * Every pantoken icon, keyed by name.
  *

@@ -15,10 +15,12 @@ Also available as `pantoken/icons`.
 ## Usage
 
 ```ts
-import { icons, getIcon, resolve } from "@pantoken/icons";
+import { customIcons, getIcon, icons, lucideIcons, resolve } from "@pantoken/icons";
 
 getIcon("arrow-left"); // { name, dataUri, svg, viewBox, bidirectional, source }
 icons.length; // the full set
+lucideIcons.length; // canonical Lucide icons
+customIcons.length; // Instructure-authored icons
 
 resolve("arrow-left"); // IconResolver — for the plugin / rehype stages
 ```
@@ -29,6 +31,8 @@ plus the decoded `svg` and the original `dataUri`.
 ## API
 
 - **`icons: PantokenIcon[]`** — every pantoken icon, sorted by name.
+- **`lucideIcons: PantokenIcon[]`** — canonical Lucide icons.
+- **`customIcons: PantokenIcon[]`** — Instructure-authored custom icons.
 - **`iconsByName: Map<string, PantokenIcon>`** — every icon, keyed by name.
 - **`getIcon(name): PantokenIcon | undefined`** — look up one icon by name.
 - **`resolve: IconResolver`** — an `IconResolver` backed by the icon set, for the plugin and rehype

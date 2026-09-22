@@ -1,9 +1,27 @@
 import { expect, test } from "vite-plus/test";
-import { buildIconResolverChain, getIcon, icons, resolve } from "../src/index.ts";
+import {
+  buildIconResolverChain,
+  customIcons,
+  getIcon,
+  icons,
+  lucideIcons,
+  resolve,
+} from "../src/index.ts";
 import { sanitizeSvg } from "@pantoken/utils";
 
 test("exposes the full icon set derived from the IR", () => {
   expect(icons.length).toBeGreaterThan(500);
+});
+
+test("exposes exhaustive source-specific icon collections", () => {
+  expect(lucideIcons.length).toBeGreaterThan(1800);
+  expect(customIcons.length).toBeGreaterThan(50);
+  expect(lucideIcons.every((icon) => icon.source === "lucide")).toBe(true);
+  expect(customIcons.every((icon) => icon.source === "custom")).toBe(true);
+  expect(lucideIcons.length + customIcons.length).toBe(icons.length);
+  expect(new Set([...lucideIcons, ...customIcons].map((icon) => icon.name)).size).toBe(
+    icons.length,
+  );
 });
 
 test("arrow-left is bidirectional and decodes to inline SVG", () => {

@@ -16,6 +16,7 @@ const provenance: Provenance = {
     commit: "abcdef012345",
   },
   uiIcons: { package: "@instructure/ui-icons", resolved: "11.7.3" },
+  lucide: { package: "lucide", resolved: "1.46.0" },
 };
 
 const tok = (name: string, value: string, extra: Partial<Token> = {}): Token => ({

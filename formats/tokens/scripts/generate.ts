@@ -4,9 +4,9 @@
  * This is what lets the published package ship with no dependency on the (GitHub-only) upstream.
  *
  * Provenance records the *pinned ref + resolved commit* of the GitHub-only design-tokens source and
- * the *resolved version* of `@instructure/ui-icons`. It deliberately does NOT trust the design-tokens
- * `package.json` version: that field is stuck at `1.0.0` across every upstream tag, so the tag pin
- * (from the catalog) and the commit (from the lockfile) are the only reliable provenance.
+ * the *resolved versions* of `@instructure/ui-icons` and Lucide. It deliberately does NOT trust the
+ * design-tokens `package.json` version: that field is stuck at `1.0.0` across every upstream tag, so
+ * the tag pin (from the catalog) and the commit (from the lockfile) are the only reliable provenance.
  */
 import { createRequire } from "node:module";
 import { dirname, join, resolve } from "node:path";
@@ -25,6 +25,7 @@ mkdirSync(outDir, { recursive: true });
 
 const DESIGN_TOKENS = "@instructure/instructure-design-tokens";
 const UI_ICONS = "@instructure/ui-icons";
+const LUCIDE = "lucide";
 
 /** The ledger of removed/renamed upstream tokens and pantoken's policy for each. */
 const ledger = JSON.parse(
@@ -307,8 +308,12 @@ const meta = {
     package: UI_ICONS,
     resolved: resolvedVersion(UI_ICONS),
   },
+  lucide: {
+    package: LUCIDE,
+    resolved: resolvedVersion(LUCIDE),
+  },
 };
 writeFileSync(join(outDir, "meta.json"), `${JSON.stringify(meta)}\n`);
 console.log(
-  `✓ raw.json + meta.json (design-tokens ${meta.designTokens.ref}@${meta.designTokens.commit.slice(0, 7)}, ui-icons ${meta.uiIcons.resolved})`,
+  `✓ raw.json + meta.json (design-tokens ${meta.designTokens.ref}@${meta.designTokens.commit.slice(0, 7)}, ui-icons ${meta.uiIcons.resolved}, lucide ${meta.lucide.resolved})`,
 );

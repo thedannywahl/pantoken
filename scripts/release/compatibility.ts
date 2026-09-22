@@ -5,8 +5,8 @@
  * truth and can't drift.
  *
  * Two upstream tiers, because pantoken consumes Instructure UI two different ways:
- * - `token-ir` / `icons` — the GitHub-only design-tokens source and `@instructure/ui-icons` feed the
- *   resolved token IR that every format, platform, and renderer consumes.
+ * - `token-ir` / `icons` — the GitHub-only design-tokens source, `@instructure/ui-icons`, and Lucide
+ *   feed the resolved token IR that every format, platform, and renderer consumes.
  * - `instui-react` — the eight `@instructure/ui-*` React packages, consumed *only* by
  *   `renderers/react-markdown`, which renders real InstUI components.
  *
@@ -20,6 +20,7 @@ const WORKSPACE_ROOT = path.resolve(new URL("../../", import.meta.url).pathname)
 
 const TOKEN_SOURCE = "@instructure/instructure-design-tokens";
 const ICON_SOURCE = "@instructure/ui-icons";
+const LUCIDE_SOURCE = "lucide";
 /** The InstUI React packages, consumed only by `renderers/react-markdown`. */
 const REACT_PACKAGES = [
   "@instructure/ui-heading",
@@ -74,6 +75,7 @@ export interface Compatibility {
 interface Meta {
   designTokens: { package: string; ref: string; commit: string };
   uiIcons: { package: string; resolved: string };
+  lucide: { package: string; resolved: string };
 }
 
 /** The deprecation ledger shape (`formats/tokens/deprecations.json`). */
@@ -147,6 +149,11 @@ export async function buildCompatibility(): Promise<Compatibility> {
       resolved: meta.uiIcons.resolved,
       feeds: "icons",
     },
+    [LUCIDE_SOURCE]: {
+      range: catalogRange(workspaceYaml, LUCIDE_SOURCE),
+      resolved: meta.lucide.resolved,
+      feeds: "icons",
+    },
   };
   for (const pkg of REACT_PACKAGES) {
     upstream[pkg] = {
@@ -216,8 +223,8 @@ check fails if it drifts.
 
 ## Upstream sources
 
-pantoken consumes Instructure UI two ways: the design tokens and icons feed the resolved token IR that
-every package consumes, while the \`@instructure/ui-*\` React packages are used only by
+The design tokens, Instructure custom icons, and Lucide catalog feed the resolved token IR that every
+package consumes. The \`@instructure/ui-*\` React packages are used only by
 \`@pantoken/react-markdown\`.
 
 | Package | Feeds | Range | Resolved |
