@@ -15,10 +15,12 @@ function fakeEditor() {
   statusbarText.className = "tox-statusbar__text-container";
   statusbar.append(statusbarText);
   container.append(statusbar);
+  const doc = document.implementation.createHTMLDocument();
   const listeners = new Map<string, Array<(event?: unknown) => void>>();
   return {
     execCommand: vi.fn(),
     getContainer: vi.fn(() => container),
+    getDoc: vi.fn(() => doc),
     on: vi.fn((name: string, callback: (event?: unknown) => void) => {
       listeners.set(name, [...(listeners.get(name) ?? []), callback]);
     }),
@@ -51,4 +53,16 @@ test("attaches a footer button that toggles visual blocks and reflects its state
 
   for (const handler of editor.listeners.get("remove") ?? []) handler();
   expect(button?.isConnected).toBe(false);
+});
+
+test("injects the outline stylesheet into the content document on init", () => {
+  const editor = fakeEditor();
+  createVisualBlocksFooterPlugin()(editor as never);
+
+  for (const handler of editor.listeners.get("init") ?? []) handler();
+  expect(editor.getDoc().getElementById("pantokenVisualBlocksStyle")).not.toBeNull();
+
+  // Re-firing init must not duplicate the stylesheet.
+  for (const handler of editor.listeners.get("init") ?? []) handler();
+  expect(editor.getDoc().querySelectorAll("#pantokenVisualBlocksStyle")).toHaveLength(1);
 });
