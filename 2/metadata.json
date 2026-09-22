@@ -1,0 +1,61 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M35PKVBZV2BH5WDWNFD5GM74",
+  "session_id": "a6cead68-323a-4029-b0a5-6e1fd3f0ab46",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-22T23:18:33.720351Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "i18n.config.json",
+    "plugins/pantoken/layouts/src/i18n.json",
+    "plugins/pantoken/layouts/src/layouts/pages/about-me.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/callout.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/course-home.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/footer.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/header.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/hero.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/rubric-note.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/syllabus.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/testimonial.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/two-column.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "39e92f8a9b03",
+  "checkpoint_transcript_start": 738,
+  "transcript_lines_at_start": 738,
+  "compact_transcript_start": 114,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-22T23:18:33.699406Z",
+    "agent_lines": 223,
+    "agent_removed": 64,
+    "human_added": 765,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 988,
+    "total_lines_changed": 1091,
+    "agent_percentage": 26.306141154903756,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
+}
