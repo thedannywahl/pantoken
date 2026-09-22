@@ -1,0 +1,131 @@
+error: Lint or type issues found
+× tsdoc-require-2(require): Missing TSDoc for function savePersistedA11ySettings.
+     ╭─[plugins/tinymce/a11y/src/index.ts:162:8]
+ 161 │
+ 162 │ ╭─▶ export function savePersistedA11ySettings(settings: Partial<A11yPersistedSettings>): void {
+ 163 │ │     try {
+ 164 │ │       const current = loadPersistedA11ySettings();
+ 165 │ │       const merged = { ...current, ...settings };
+ 166 │ │       localStorage.setItem(A11Y_STORAGE_KEY, JSON.stringify(merged));
+ 167 │ │
+ 168 │ │       const sharedRaw = localStorage.getItem(SHARED_EDITOR_PREFERENCES_KEY);
+ 169 │ │       const shared = sharedRaw ? JSON.parse(sharedRaw) : {};
+ 170 │ │       if (shared && typeof shared === "object") {
+ 171 │ │         const nextShared = {
+ 172 │ │           ...shared,
+ 173 │ │           tinymceConfig: {
+ 174 │ │             ...(shared as { tinymceConfig?: Record<string, unknown> }).tinymceConfig,
+ 175 │ │             a11y: merged,
+ 176 │ │           },
+ 177 │ │         };
+ 178 │ │         localStorage.setItem(SHARED_EDITOR_PREFERENCES_KEY, JSON.stringify(nextShared));
+ 179 │ │       }
+ 180 │ │     } catch {
+ 181 │ │       // Storage may be unavailable in some browsers or private browsing mode.
+ 182 │ │     }
+ 183 │ ╰─▶ }
+ 184 │
+     ╰────
+
+  × tsdoc-require-2(require): Missing TSDoc for function loadPersistedA11ySettings.
+     ╭─[plugins/tinymce/a11y/src/index.ts:185:8]
+ 184 │
+ 185 │ ╭─▶ export function loadPersistedA11ySettings(): Partial<A11yPersistedSettings> {
+ 186 │ │     try {
+ 187 │ │       const raw = localStorage.getItem(A11Y_STORAGE_KEY);
+ 188 │ │       if (!raw) {
+ 189 │ │         const sharedRaw = localStorage.getItem(SHARED_EDITOR_PREFERENCES_KEY);
+ 190 │ │         if (!sharedRaw) return {};
+ 191 │ │         const shared = JSON.parse(sharedRaw) as {
+ 192 │ │           tinymceConfig?: { a11y?: Partial<A11yPersistedSettings> };
+ 193 │ │         };
+ 194 │ │         return shared.tinymceConfig?.a11y ?? {};
+ 195 │ │       }
+ 196 │ │       const parsed: unknown = JSON.parse(raw);
+ 197 │ │       return typeof parsed === "object" && parsed !== null
+ 198 │ │         ? (parsed as Partial<A11yPersistedSettings>)
+ 199 │ │         : {};
+ 200 │ │     } catch {
+ 201 │ │       return {};
+ 202 │ │     }
+ 203 │ ╰─▶ }
+ 204 │
+     ╰────
+
+  × typescript(TS2339): Property 'style' does not exist on type 'Element'.
+     ╭─[plugins/tinymce/a11y/src/index.ts:238:29]
+ 237 │       const style = window.getComputedStyle(element);
+ 238 │       const color = element.style.color || style.color;
+     ·                             ─────
+ 239 │       const bg = element.style.backgroundColor || style.backgroundColor;
+     ╰────
+
+  × typescript(TS2339): Property 'style' does not exist on type 'Element'.
+     ╭─[plugins/tinymce/a11y/src/index.ts:239:26]
+ 238 │       const color = element.style.color || style.color;
+ 239 │       const bg = element.style.backgroundColor || style.backgroundColor;
+     ·                          ─────
+ 240 │       const ratio = contrastRatio(color, bg);
+     ╰────
+
+  × typescript(TS2353): Object literal may only specify known properties, and 'label' does not exist in type 'ButtonSpec'.
+     ╭─[plugins/tinymce/a11y/src/index.ts:520:15]
+ 519 │               name: "fixIssue",
+ 520 │               label: "Fix issue",
+     ·               ─────
+ 521 │               disabled: !issues[0]?.rule.fix,
+     ╰────
+
+  × typescript(TS2353): Object literal may only specify known properties, and 'checked' does not exist in type 'CheckboxSpec'.
+     ╭─[plugins/tinymce/a11y/src/index.ts:533:15]
+ 532 │               label: "Highlight accessibility issues",
+ 533 │               checked: settings.highlightIssues,
+     ·               ───────
+ 534 │             },
+     ╰────
+
+  × typescript(TS2322): Type '{ type: string; name: string; label: string; checked: boolean; }' is not assignable to type 'BodyComponentSpec'.
+     ╭─[plugins/tinymce/a11y/src/index.ts:544:13]
+ 543 │                 },
+ 544 │ ╭─▶             ...A11Y_RULES.map((rule) => ({
+ 545 │ │                 type: "checkbox",
+ 546 │ │                 name: rule.id,
+ 547 │ │                 label: rule.message,
+ 548 │ │                 checked: issueRuleState[rule.id] ?? true,
+ 549 │ ╰─▶             })),
+ 550 │               ],
+     ╰────
+
+  × typescript(TS2367): This comparison appears to be unintentional because the types '"contrastThreshold" | "highlightIssues" | "issue"' and '"fixIssue"' have no overlap.
+     ╭─[plugins/tinymce/a11y/src/index.ts:575:11]
+ 574 │       }
+ 575 │       if (details.name === "fixIssue") {
+     ·           ───────────────────────────
+ 576 │         const index = Number(api.getData().issue);
+     ╰────
+
+  × typescript(TS2345): Argument of type '{ highlightIssues: boolean; contrastThreshold: string; enabledRules: { "img-alt": boolean; "headings-sequence": boolean; }; }' is not assignable to parameter of type 'Partial<A11yPersistedSettings>'.
+     ╭─[plugins/tinymce/a11y/tests/index.test.ts:275:31]
+ 274 │
+ 275 │     savePersistedA11ySettings(settings);
+     ·                               ────────
+ 276 │     expect(
+     ╰────
+
+  ⚠ typescript(no-floating-promises): Promises must be awaited, add void operator to ignore.
+     ╭─[plugins/tinymce/a11y/src/index.ts:495:5]
+ 494 │          if (!selectedIssue || !selectedIssue.rule.fix) return;
+ 495 │ ╭──▶     selectedIssue.rule.fix(selectedIssue.element, {
+ 496 │ ││         root: editor.getBody(),
+ 497 │ ││         config: runtimeConfig,
+ 498 │ ├──▶     });
+     · ╰───── This unhandled promise-like value has type `void | Promise<void>`.
+ 499 │          applyIssueHighlights(issues, settings.highlightIssues);
+     ╰────
+  help: The promise must end with a call to .catch, or end with a call to .then with a rejection handler, or be explicitly marked as ignored with the `void` operator.
+
+Found 9 errors and 1 warning in 1725 files (5.5s, 10 threads)
+
+---
+
+you can fix these.
