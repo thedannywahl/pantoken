@@ -1,0 +1,1 @@
+in renderers/tinymce the layouts and templates plugins surface the same exact content from plugin/pantoken/layouts.
