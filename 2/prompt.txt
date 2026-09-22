@@ -1,0 +1,9 @@
+switching the docs theme to dark mode should switch the tinymce editor theme to dark in canvas-theme-editor scaffold instance on /guide/canvas-rce
+
+---
+
+Repository: /Users/dwahl/Scripts/pantoken. Planning only: do not edit files. Investigate the user's request: switching the docs theme to dark mode should switch the TinyMCE editor theme to dark in the canvas-theme-editor scaffold instance on /guide/canvas-rce. Read the relevant repo instructions, especially .entire/graph-agent.md before broad code exploration. Locate the /guide/canvas-rce docs/demo/scaffold implementation, the canvas-theme-editor scaffold instance, TinyMCE initialization and theme configuration, and any existing docs theme or dark-mode listeners/patterns. Identify exact files/symbols likely to change, existing tests, and the narrowest executable verification commands. Note ambiguities or blockers. Return a concise, evidence-based report with paths and symbols, no code edits.
+
+---
+
+Start implementation

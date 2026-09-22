@@ -1,0 +1,89 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M35EJ93VVF9CV4G5F9XX2TW1",
+  "session_id": "cb5ad0fd-97a1-4394-8b67-d2bdb2344114",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-22T20:57:53.151719Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 2,
+  "save_step_count": 2,
+  "files_touched": [
+    ".changeset/sync-canvas-rce-dark-mode.md",
+    "packages/scaffold/templates/canvas-theme-editor/README.md",
+    "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
+    "packages/scaffold/templates/canvas-theme-editor/src/preferences.ts",
+    "packages/scaffold/tests/index.test.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/index.ts",
+    "plugins/pantoken/layouts/tests/index.test.ts",
+    "plugins/tinymce/a11y/src/index.ts",
+    "plugins/tinymce/a11y/tests/index.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "80aafaf360dd",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-22T20:57:53.141477Z",
+    "agent_lines": 209,
+    "agent_removed": 7,
+    "human_added": 296,
+    "human_modified": 19,
+    "human_removed": 0,
+    "total_committed": 524,
+    "total_lines_changed": 543,
+    "agent_percentage": 39.77900552486188,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 293,
+      "user_lines_removed": 16,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl": 7,
+        "packages/scaffold/templates/canvas-theme-editor/src/preferences.ts": 1,
+        "plugins/tinymce/a11y/src/index.ts": 213,
+        "plugins/tinymce/a11y/tests/index.test.ts": 72
+      },
+      "user_removed_per_file": {
+        "plugins/tinymce/a11y/src/index.ts": 15,
+        "plugins/tinymce/a11y/tests/index.test.ts": 1
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 148,
+      "user_lines_removed": 3,
+      "agent_lines_added": 415,
+      "agent_lines_removed": 20,
+      "user_added_per_file": {
+        ".changeset/canvas-course-layouts.md": 5,
+        "packages/scaffold/templates/canvas-theme-editor/README.md": 2,
+        "plugins/pantoken/layouts/src/layouts/pages/about-me.ts": 20,
+        "plugins/pantoken/layouts/src/layouts/pages/course-home.ts": 29,
+        "plugins/pantoken/layouts/src/layouts/pages/footer.ts": 14,
+        "plugins/pantoken/layouts/src/layouts/pages/header.ts": 18,
+        "plugins/pantoken/layouts/src/layouts/pages/index.ts": 22,
+        "plugins/pantoken/layouts/src/layouts/pages/syllabus.ts": 26,
+        "plugins/pantoken/layouts/tests/index.test.ts": 12
+      },
+      "user_removed_per_file": {
+        "packages/scaffold/templates/canvas-theme-editor/README.md": 1,
+        "plugins/pantoken/layouts/src/layouts/pages/index.ts": 1,
+        "plugins/pantoken/layouts/tests/index.test.ts": 1
+      }
+    }
+  ]
+}
