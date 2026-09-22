@@ -1,0 +1,1 @@
+I want to refactor the app tray's CSS/JS tabs.  instead of displaying our pre-populated CSS/JS it should be blank and anything the author adds gets dynamically appended to our presets on download.
