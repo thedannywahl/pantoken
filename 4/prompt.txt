@@ -1,0 +1,5 @@
+roughly half the time when viewing canvas-theme-editor scaffold on localhost via `vpr docs:dev` it doesn't detect that this is a non-production environment and defauults to using a CDN to drive the preview, when it should be using 'none' and using local assets.
+
+---
+
+this should be the pantoken/instui visualdebug token values. and if we can use an outline instead of a border so that we keep pixel accuracy views.
