@@ -29,14 +29,33 @@
   }
 
   var last = -1;
+  var lastFullscreen = null;
   var timer = 0;
+
+  /**
+   * True while the preview pane or TinyMCE (which puts `tox-fullscreen` on the root and body) is
+   * overlaying the viewport. Those overlays are sized in `vh`, which inside a content-height iframe
+   * resolves to the whole document — the parent has to clamp the frame to its own viewport instead.
+   */
+  function isFullscreen() {
+    return (
+      document.documentElement.classList.contains("tox-fullscreen") ||
+      document.body.classList.contains("tox-fullscreen") ||
+      document.querySelector(".preview-pane.-fullscreen") !== null
+    );
+  }
 
   function report() {
     timer = 0;
     var height = contentHeight();
-    if (height === last) return;
+    var fullscreen = isFullscreen();
+    if (height === last && fullscreen === lastFullscreen) return;
     last = height;
-    window.parent.postMessage({ type: MESSAGE_TYPE, height: height }, window.location.origin);
+    lastFullscreen = fullscreen;
+    window.parent.postMessage(
+      { type: MESSAGE_TYPE, height: height, fullscreen: fullscreen },
+      window.location.origin,
+    );
   }
 
   function schedule() {

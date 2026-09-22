@@ -206,6 +206,9 @@ describe("createA11yPlugin", () => {
     expect(button?.hidden).toBe(false);
     expect(button?.getAttribute("aria-label")).toBe("0 accessibility issues");
     expect(button?.querySelector(".pantoken-a11y-statusbar-count")?.textContent).toBe("0");
+    expect(
+      button?.querySelector<HTMLElement>(".pantoken-a11y-statusbar-count")?.style.backgroundColor,
+    ).toBe("#008000");
     vi.useRealTimers();
   });
 

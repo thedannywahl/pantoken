@@ -206,6 +206,20 @@ test("reacts to the data-pantoken-scheme attribute for dark mode theming", async
   document.documentElement.removeAttribute("data-pantoken-scheme");
 });
 
+test("installs syntax highlighting styles for HTML tokens", () => {
+  const { editor } = fakeEditor('<div class="example">content</div>');
+  const plugin = createSourceTogglePlugin({ height: 200 });
+  plugin(editor as never);
+  toggleOn(editor);
+
+  const styles = Array.from(document.head.querySelectorAll("style"))
+    .map((style) => style.textContent)
+    .join("\n");
+
+  expect(styles).toContain("#800000");
+  expect(styles).toContain("#0000ff");
+});
+
 /** A fake editor supporting multiple listeners per event and a statusbar container, for
  * exercising the footer-display mode. */
 function footerEditor(content: string) {

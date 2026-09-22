@@ -31,8 +31,10 @@
   },
   "dependencies": {
     "@codemirror/lang-html": "catalog:",
+    "@codemirror/language": "catalog:",
     "@codemirror/state": "catalog:",
     "@codemirror/view": "catalog:",
+    "@lezer/highlight": "catalog:",
     "codemirror": "catalog:",
     "prettier": "catalog:"
   },
@@ -45,8 +47,10 @@
   },
   "peerDependencies": {
     "@codemirror/lang-html": "^6.4.12",
+    "@codemirror/language": "^6.12.4",
     "@codemirror/state": "^6.7.1",
     "@codemirror/view": "^6.0.0",
+    "@lezer/highlight": "^1.2.3",
     "codemirror": "^6.0.2",
     "tinymce": "^8.0"
   },

@@ -350,6 +350,7 @@ export function createA11yPlugin(
             });
             button.setAttribute("aria-label", label);
             count!.textContent = String(issues.length);
+            count!.style.backgroundColor = issues.length === 0 ? "#008000" : "#c00";
           });
         }, STATUSBAR_SCAN_DELAY_MS);
       };

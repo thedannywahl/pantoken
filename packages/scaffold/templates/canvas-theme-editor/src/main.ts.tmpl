@@ -619,6 +619,12 @@ let previewResizeObserver: ResizeObserver | undefined;
 let previewMutationObserver: MutationObserver | undefined;
 const PREVIEW_BORDER_PX = 2;
 function resizePreviewFrame(): void {
+  // Fullscreen pins the pane to the viewport, so the frame flexes to fill it (app.css) rather than
+  // growing past it — a content-height frame would push the overlay into a scrollbar.
+  if (previewPane.classList.contains("-fullscreen")) {
+    previewFrame.style.removeProperty("height");
+    return;
+  }
   const root = previewFrame.contentDocument?.documentElement;
   const body = previewFrame.contentDocument?.body;
   if (!root || !body) return;

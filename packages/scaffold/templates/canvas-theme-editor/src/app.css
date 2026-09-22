@@ -5,7 +5,7 @@
 }
 
 :where(body) {
-  padding: 3rem;
+  padding: 1.5rem 3rem;
 }
 
 #app {
@@ -226,11 +226,18 @@
   width: 100vw !important;
   height: 100vh !important;
   margin: 0 !important;
-  padding: 1rem;
+  padding: 0;
   background: var(--instui-color-background-primary, #fff);
-  overflow: auto;
+  overflow: hidden;
   border: 0 none;
   border-radius: 0;
+}
+
+/* The page behind the overlay keeps its full content height, so without this the document still
+   scrolls under a pane that's pinned to the viewport. */
+html:has(.preview-pane.-fullscreen),
+html:has(.preview-pane.-fullscreen) body {
+  overflow: hidden;
 }
 
 #editor,
@@ -243,13 +250,23 @@
 
 /* Width is set inline (large/medium/small); height grows with content — see updatePreview(). */
 #preview {
-  border: 1px solid #ccc;
+  border-width: 1px 0;
+  border-style: solid;
+  border-color: #ccc;
   overflow: hidden;
   width: 100%;
   margin-inline: auto;
-  border-radius: 0 0 8px 8px;
 }
 
+/* Fullscreen swaps the content-height sizing (see resizePreviewFrame) for filling the pane, so long
+   content scrolls inside the frame instead of growing a scrollbar on the overlay. */
 .preview-pane.-fullscreen #preview {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
   border-radius: 0;
+}
+
+.preview-footer {
+  align-self: end;
 }

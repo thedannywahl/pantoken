@@ -9,8 +9,10 @@
  */
 import { basicSetup, EditorView } from "codemirror";
 import { html } from "@codemirror/lang-html";
+import { HighlightStyle, syntaxHighlighting } from "@codemirror/language";
 import { Compartment } from "@codemirror/state";
 import type { Extension } from "@codemirror/state";
+import { tags } from "@lezer/highlight";
 import * as prettier from "prettier/standalone";
 import * as prettierHtml from "prettier/plugins/html";
 import type { Editor } from "tinymce";
@@ -40,6 +42,28 @@ const darkTheme = EditorView.theme(
     ".cm-selectionBackground": { backgroundColor: "rgba(255, 255, 255, 0.15) !important" },
   },
   { dark: true },
+);
+
+const lightHighlighting = syntaxHighlighting(
+  HighlightStyle.define([
+    { tag: tags.tagName, color: "#800000" },
+    { tag: tags.attributeName, color: "#ff0000" },
+    { tag: tags.attributeValue, color: "#0000ff" },
+    { tag: tags.string, color: "#0000ff" },
+    { tag: tags.comment, color: "#008000" },
+    { tag: tags.bracket, color: "#000080" },
+  ]),
+);
+
+const darkHighlighting = syntaxHighlighting(
+  HighlightStyle.define([
+    { tag: tags.tagName, color: "#569cd6" },
+    { tag: tags.attributeName, color: "#9cdcfe" },
+    { tag: tags.attributeValue, color: "#ce9178" },
+    { tag: tags.string, color: "#ce9178" },
+    { tag: tags.comment, color: "#6a9955" },
+    { tag: tags.bracket, color: "#d4d4d4" },
+  ]),
 );
 
 const CONTAINER_BACKGROUND = { light: "#ffffff", dark: "#1e1e1e" };
@@ -111,7 +135,11 @@ export function createSourceTogglePlugin(
     const applyTheme = (): void => {
       if (!sourceView) return;
       sourceView.dispatch({
-        effects: themeCompartment.reconfigure(currentScheme() === "dark" ? darkTheme : lightTheme),
+        effects: themeCompartment.reconfigure(
+          currentScheme() === "dark"
+            ? [darkTheme, darkHighlighting]
+            : [lightTheme, lightHighlighting],
+        ),
       });
       applyContainerChrome();
     };
@@ -128,7 +156,11 @@ export function createSourceTogglePlugin(
           basicSetup,
           html(),
           EditorView.lineWrapping,
-          themeCompartment.of(currentScheme() === "dark" ? darkTheme : lightTheme),
+          themeCompartment.of(
+            currentScheme() === "dark"
+              ? [darkTheme, darkHighlighting]
+              : [lightTheme, lightHighlighting],
+          ),
           EditorView.updateListener.of((update): void => {
             if (update.docChanged) onChange?.(update.state.doc.toString());
           }),
