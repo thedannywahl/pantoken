@@ -1,0 +1,5 @@
+renderers/tinymce layouts plugin should have "insert" and "replace" - insert inserts at cursor, replace replaces the entire editor and keeps the confirmation modal.
+
+---
+
+don't do translation, I'll handle that separately, do everything else.
