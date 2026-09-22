@@ -41,8 +41,8 @@ This opens a Vite dev server with:
   Also enabled: **Image** (URL-only — the Upload tab is hidden, so images are always linked, never
   embedded as base64), **Fullscreen**, **Find and replace**, **Quickbars** (a contextual formatting
   toolbar on text selection, an insert toolbar for images/tables/media/placeholders, and an
-  alignment/edit toolbar on selected images), **Word count** (status bar), and **Autosave** (drafts
-  persist to the browser's `localStorage`).
+  alignment/edit toolbar on selected images), **Word count** (status bar), **Autosave** (drafts
+  persist to the browser's `localStorage`), and **Presets** (explicit named snapshots).
 - A **preview** pane underneath, showing the editor's content with the current CSS/JS tab's
   stylesheet/script applied plus real CDN `<link>` tags for any picker-inserted icon/component/logo
   assets, wrapped to match Canvas's own content-area background and max width — a faithful "what
@@ -52,6 +52,20 @@ This opens a Vite dev server with:
   anything you add there is appended to the generated `theme.css`/`theme.js`, both in the live
   preview and in the downloaded files, so custom overrides survive Config select changes instead
   of being regenerated away.
+
+### Named presets
+
+The TinyMCE **Presets** menu provides **Save**, **Save as...**, **Open...**, and **Delete...**. A
+preset captures the editor HTML together with the active theme, color scheme, light/adaptive mode,
+CDN provider, custom CSS, and custom JavaScript. Names are unique without regard to case; **Save
+as...** asks before replacing an existing name, and **Open...** asks before discarding changes made
+since the last open or save. Deleting a preset does not clear the current working document.
+
+Presets and Autosave serve different purposes and use separate localStorage keys. Autosave remains
+short-lived draft recovery; presets open only when selected and never replace an Autosave draft on
+reload. Both are local to this browser origin and are not uploaded or synchronized to Canvas.
+Private browsing, disabled storage, or storage quota limits can prevent a preset from being saved.
+Preset HTML, CSS, and JavaScript are trusted author input and are restored without sanitization.
 
 ## Workflow
 

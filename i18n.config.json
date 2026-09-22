@@ -76,7 +76,8 @@
       "sourceMerge": [
         "plugins/tinymce/placehold/src/i18n.json",
         "plugins/tinymce/a11y/src/i18n.json",
-        "plugins/tinymce/codemirror/src/i18n.json"
+        "plugins/tinymce/codemirror/src/i18n.json",
+        "plugins/tinymce/save/src/i18n.json"
       ]
     },
     "scaffold.readme": {

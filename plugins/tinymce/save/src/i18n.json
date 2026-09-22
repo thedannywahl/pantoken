@@ -1,0 +1,48 @@
+{
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
+  "saveToolbarText": { "message": "Presets", "translate": "always" },
+  "saveToolbarTooltip": { "message": "Manage saved presets", "translate": "always" },
+  "saveAction": { "message": "Save", "translate": "always" },
+  "saveAsAction": { "message": "Save as...", "translate": "always" },
+  "openAction": { "message": "Open...", "translate": "always" },
+  "deleteAction": { "message": "Delete...", "translate": "always" },
+  "saveAsDialogTitle": { "message": "Save preset", "translate": "always" },
+  "presetNameLabel": { "message": "Name", "translate": "always" },
+  "openDialogTitle": { "message": "Open preset", "translate": "always" },
+  "deleteDialogTitle": { "message": "Delete preset", "translate": "always" },
+  "presetLabel": { "message": "Preset", "translate": "always" },
+  "confirmOverwrite": {
+    "message": "A preset named “{{name}}” already exists. Replace it?",
+    "translate": "always"
+  },
+  "confirmDiscard": {
+    "message": "Open “{{name}}” and discard the current unsaved changes?",
+    "translate": "always"
+  },
+  "confirmDelete": {
+    "message": "Delete “{{name}}”? This cannot be undone.",
+    "translate": "always"
+  },
+  "emptyPresets": { "message": "No saved presets are available.", "translate": "always" },
+  "invalidName": { "message": "Enter a preset name.", "translate": "always" },
+  "invalidPreset": {
+    "message": "This preset is invalid and could not be opened.",
+    "translate": "always"
+  },
+  "storageReadError": {
+    "message": "Saved presets could not be read from this browser.",
+    "translate": "always"
+  },
+  "storageWriteError": {
+    "message": "The preset could not be saved in this browser.",
+    "translate": "always"
+  },
+  "storageDeleteError": {
+    "message": "The preset could not be deleted from this browser.",
+    "translate": "always"
+  },
+  "presetSaveButton": { "message": "Save", "translate": "always" },
+  "presetOpenButton": { "message": "Open", "translate": "always" },
+  "presetDeleteButton": { "message": "Delete", "translate": "always" },
+  "presetCancelButton": { "message": "Cancel", "translate": "always" }
+}

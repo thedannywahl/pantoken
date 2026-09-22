@@ -78,6 +78,7 @@
     "@pantoken/tinymce-a11y": "workspace:*",
     "@pantoken/tinymce-codemirror": "workspace:*",
     "@pantoken/tinymce-placehold": "workspace:*",
+    "@pantoken/tinymce-save": "workspace:*",
     "@pantoken/tokens": "workspace:*",
     "@pantoken/translation-adapters": "workspace:*",
     "@pantoken/typedoc-plugin-demo": "workspace:*",

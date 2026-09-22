@@ -43,19 +43,20 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain("CONTENT_CLASSES_PLUGIN_NAME");
   expect(main).toContain("createA11yPlugin");
   expect(main).toContain("createSourceTogglePlugin");
-  expect(main).toContain(
-    "providerSelect.value = import.meta.env.DEV ? LOCAL_PROVIDER_ID : DEFAULT_CDN_PROVIDER_ID;",
-  );
+  expect(main).toContain("if (isLocalPreview) {");
+  expect(main).toContain("providerSelect.value = LOCAL_PROVIDER_ID;");
   expect(main).toContain("@pantoken/tinymce/skins/next-gen/skin.css?url");
   expect(main).toContain("@pantoken/tinymce/skins/canvas/skin.css?url");
   expect(main).toContain("@pantoken/tinymce/skins/canvas-high-contrast/skin.css?url");
   expect(main).not.toContain("tinymce/skins/ui/oxide/skin.css");
   expect(main).toContain(
-    '"pantoken pantoken_content_classes placehold pantoken_a11y pantoken_sup_sub pantoken_source_toggle pantoken_fullscreen_footer pantoken_searchreplace_footer pantoken_visualblocks_footer image link lists',
+    '"pantoken pantoken_content_classes placehold pantoken_a11y pantoken_save pantoken_sup_sub pantoken_source_toggle pantoken_fullscreen_footer pantoken_searchreplace_footer pantoken_visualblocks_footer image link lists',
   );
   expect(main).toContain('createA11yPlugin({ display: "footer" })');
+  expect(main).toContain("createSavePlugin<CanvasThemePreset>");
+  expect(main).toContain("SAVE_PLUGIN_NAME");
   expect(main).toContain(
-    "toolbar: `undo redo | pantoken | fontsize blocks | bold italic underline",
+    "toolbar: `undo redo | pantoken ${SAVE_TOOLBAR_NAME} | fontsize blocks | bold italic underline",
   );
   expect(main).not.toContain("pantokenA11y");
   expect(main).toContain("let previewMutationObserver: MutationObserver | undefined");
@@ -66,6 +67,17 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain("document.documentElement.dataset.pantokenScheme = mode;");
   expect(main).toContain("applyEditorTheme(activeEditor);");
   expect(main).toContain("refreshAll();");
+  expect(main).toContain("interface CanvasThemePreset");
+  expect(main).toContain("readonly theme: ThemeVariant;");
+  expect(main).toContain("readonly color: PantokenColorNamespace;");
+  expect(main).toContain("readonly mode: ThemeMode;");
+  expect(main).toContain("readonly cdnProvider: string;");
+  expect(main).toContain("readonly customCss: string;");
+  expect(main).toContain("readonly customJs: string;");
+  expect(main).toContain("readonly editorHtml: string;");
+  expect(main).toContain("activeEditor.resetContent(preset.editorHtml);");
+  expect(main).toContain("sourceToggle.replaceAll(preset.editorHtml)");
+  expect(main).toContain('autosave_interval: "30s"');
   expect(readFileSync(join(target, "src/app.css"), "utf8")).toContain(
     '.content[data-layout="row"] .preview-pane',
   );
@@ -86,6 +98,7 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(pkg).toContain('"name": "my-app"');
   expect(pkg).toContain('"@pantoken/tinymce-placehold": "latest"');
   expect(pkg).toContain('"@pantoken/tinymce-a11y": "latest"');
+  expect(pkg).toContain('"@pantoken/tinymce-save": "latest"');
   expect(pkg).not.toContain("{{projectName}}");
 });
 

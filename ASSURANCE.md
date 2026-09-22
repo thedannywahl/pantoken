@@ -283,6 +283,9 @@ Browser interaction helpers validate numeric configuration before scheduling wor
 non-finite, and non-positive alert timeouts leave the element mounted.
 ProgressCircle animation delays are normalized to a finite, non-negative millisecond value.
 Progress web-component values are normalized to a finite range between a minimum and larger maximum.
+TinyMCE named presets use a versioned localStorage envelope and require the host application to
+validate caller-owned state before restoring it. Blocked, malformed, or full browser storage fails
+without replacing the working document.
 HTML attributes are escaped at the output boundary.
 
 ## Common implementation weaknesses and countermeasures
@@ -295,6 +298,7 @@ HTML attributes are escaped at the output boundary.
 | Markup and attribute injection        | Output-boundary attribute escaping; `sanitizeSvg` strip on decoded icon SVGs and plugin SVG output; documented trusted-content boundary for raw HTML.             |
 | Plugin output injection               | Token names validated against CSS custom property pattern; `<image>` SVG sanitized; `</style>` check on CSS contributions; invalid tokens dropped with a warning. |
 | Untrusted active content              | Explicit iframe sandbox capabilities for rendered and self-hosted demonstrations.                                                                                 |
+| Persisted browser content             | Versioned preset envelopes, host-supplied state validation before restore, origin-local storage documentation, and non-destructive storage failures.              |
 | Regular-expression denial of service  | Non-ambiguous expressions, bounded property-test inputs, high-iteration scheduled property tests, CodeQL, and Snyk Code.                                          |
 | Unsafe object mutation                | Frozen public mapping tables where mutation would alter global behavior, null-prototype generated maps, and immutable inputs where practical.                     |
 | Malformed browser numeric input       | Alert timeouts and ProgressCircle delays accept only finite values; Progress web-component values clamp between zero and a positive maximum.                      |
@@ -364,7 +368,11 @@ The following risks remain or are deliberately outside the security claim:
 9. **Registry item mutability.** The public shadcn namespace resolves to latest JSON served from
    `pantoken.app`; those manifests are not independently signed or version-addressable. HTTPS,
    generated-output tests, schema checks, `shadcn view`, and consumer diff review reduce this risk,
-   while npm provenance applies only to package dependencies installed by an item.
+   while npm provenance applies only to package dependencies installed by an item. 10. **Named editor presets.** TinyMCE presets intentionally persist trusted author HTML, CSS, and
+   JavaScript in origin-local browser storage. localStorage is not encrypted, secret, synchronized,
+   or isolated from other scripts on the same origin. Restoring custom JavaScript reactivates it in
+   the Canvas editor's existing preview context. Schema validation prevents malformed records from
+   being applied, but does not sanitize intentionally authored active content.
 
 These limitations do not weaken the narrower requirements in SR-1 through SR-6 because they are
 included in the documented scope and trust model. They do prevent Pantoken from claiming that it

@@ -117,6 +117,11 @@ import {
   A11Y_PLUGIN_NAME,
   createA11yPlugin,
 } from "@pantoken/tinymce-a11y";
+import {
+  createSavePlugin,
+  SAVE_PLUGIN_NAME,
+  SAVE_TOOLBAR_NAME,
+} from "@pantoken/tinymce-save";
 import { loadPreferences, savePreferences } from "./preferences.ts";
 
 // Shared with the toolbar's source-view editor so both stay the same size.
@@ -372,6 +377,14 @@ tinymce.PluginManager.add(
 tinymce.PluginManager.add(FULLSCREEN_FOOTER_PLUGIN_NAME, createFullscreenFooterPlugin());
 tinymce.PluginManager.add(SEARCHREPLACE_FOOTER_PLUGIN_NAME, createSearchReplaceFooterPlugin());
 tinymce.PluginManager.add(VISUALBLOCKS_FOOTER_PLUGIN_NAME, createVisualBlocksFooterPlugin());
+tinymce.PluginManager.add(
+  SAVE_PLUGIN_NAME,
+  createSavePlugin<CanvasThemePreset>({
+    capture: captureCanvasThemePreset,
+    restore: restoreCanvasThemePreset,
+    isValid: isCanvasThemePreset,
+  }),
+);
 
 const providerSelect = document.querySelector<HTMLSelectElement>("#cdn-provider")!;
 if (isLocalPreview) {
@@ -422,6 +435,17 @@ let jsObjectUrl: string | undefined;
 let selectedTheme: ThemeVariant = "rebrand";
 let selectedColor: PantokenColorNamespace = "navy";
 
+interface CanvasThemePreset {
+  readonly version: 1;
+  readonly theme: ThemeVariant;
+  readonly color: PantokenColorNamespace;
+  readonly mode: ThemeMode;
+  readonly cdnProvider: string;
+  readonly customCss: string;
+  readonly customJs: string;
+  readonly editorHtml: string;
+}
+
 function applyThemeColor(color: PantokenColorNamespace, refresh = true): void {
   selectedColor = color;
   const colorButton = [...colorButtons].find((button) => button.dataset.color === color);
@@ -436,6 +460,76 @@ function getEditorHtml(): string {
     | undefined;
   if (sourceToggle?.isSourceMode()) return sourceToggle.getContent();
   return activeEditor?.getContent() ?? "";
+}
+
+function captureCanvasThemePreset(): CanvasThemePreset {
+  return {
+    version: 1,
+    theme: selectedTheme,
+    color: selectedColor,
+    mode: includeDarkModeCheckbox.checked ? "adaptive" : "light",
+    cdnProvider: providerSelect.value,
+    customCss: cssEditorView.state.doc.toString(),
+    customJs: jsEditorView.state.doc.toString(),
+    editorHtml: getEditorHtml(),
+  };
+}
+
+function isThemeVariant(value: unknown): value is ThemeVariant {
+  return value === "rebrand" || value === "canvas" || value === "canvasHighContrast";
+}
+
+function isThemeMode(value: unknown): value is ThemeMode {
+  return value === "light" || value === "adaptive";
+}
+
+function isCdnProvider(value: unknown): value is string {
+  return (
+    typeof value === "string" &&
+    (Object.hasOwn(CDN_PROVIDERS, value) || (isLocalPreview && value === LOCAL_PROVIDER_ID))
+  );
+}
+
+function isCanvasThemePreset(value: unknown): value is CanvasThemePreset {
+  if (typeof value !== "object" || value === null) return false;
+  const preset = value as Partial<CanvasThemePreset>;
+  return (
+    preset.version === 1 &&
+    isThemeVariant(preset.theme) &&
+    isThemeColor(preset.color) &&
+    isThemeMode(preset.mode) &&
+    isCdnProvider(preset.cdnProvider) &&
+    typeof preset.customCss === "string" &&
+    typeof preset.customJs === "string" &&
+    typeof preset.editorHtml === "string"
+  );
+}
+
+function replaceEditorDocument(view: EditorView, content: string): void {
+  view.dispatch({ changes: { from: 0, to: view.state.doc.length, insert: content } });
+}
+
+function restoreCanvasThemePreset(preset: CanvasThemePreset): void {
+  if (!activeEditor || !isCanvasThemePreset(preset)) throw new TypeError("invalid-preset");
+
+  selectedTheme = preset.theme;
+  const themeButton = [...themeButtons].find((button) => button.dataset.theme === preset.theme);
+  if (themeButton) selectButton(themeButtons, themeButton);
+  includeDarkModeRow.hidden = selectedTheme !== "rebrand";
+  includeDarkModeCheckbox.checked = preset.mode === "adaptive";
+  providerSelect.value = preset.cdnProvider;
+  applyThemeColor(preset.color, false);
+  replaceEditorDocument(cssEditorView, preset.customCss);
+  replaceEditorDocument(jsEditorView, preset.customJs);
+
+  activeEditor.resetContent(preset.editorHtml);
+  const sourceToggle = activeEditor.plugins[SOURCE_TOGGLE_PLUGIN_NAME] as
+    | SourceTogglePluginApi
+    | undefined;
+  if (sourceToggle?.isSourceMode()) sourceToggle.replaceAll(preset.editorHtml);
+
+  applyEditorTheme(activeEditor);
+  refreshAll();
 }
 
 function currentSelection(): { provider: string; theme: ThemeVariant; mode: ThemeMode } {
@@ -748,8 +842,8 @@ void registerPantokenPlugin.then(() =>
     .init({
       selector: "#editor",
       plugins:
-        "pantoken pantoken_content_classes placehold pantoken_a11y pantoken_sup_sub pantoken_source_toggle pantoken_fullscreen_footer pantoken_searchreplace_footer pantoken_visualblocks_footer image link lists table media autosave fullscreen quickbars searchreplace wordcount emoticons visualblocks",
-      toolbar: `undo redo | pantoken | fontsize blocks | bold italic underline forecolor backcolor ${SUP_SUB_TOOLBAR_NAME} | link image placehold | align | bullist numlist | removeformat table media`,
+        "pantoken pantoken_content_classes placehold pantoken_a11y pantoken_save pantoken_sup_sub pantoken_source_toggle pantoken_fullscreen_footer pantoken_searchreplace_footer pantoken_visualblocks_footer image link lists table media autosave fullscreen quickbars searchreplace wordcount emoticons visualblocks",
+      toolbar: `undo redo | pantoken ${SAVE_TOOLBAR_NAME} | fontsize blocks | bold italic underline forecolor backcolor ${SUP_SUB_TOOLBAR_NAME} | link image placehold | align | bullist numlist | removeformat table media`,
       menubar: false,
       theme: "silver",
       icons: PANTOKEN_ICON_PACK_NAME,
