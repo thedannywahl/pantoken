@@ -5,7 +5,6 @@
  * provider/theme/mode. The page shell itself is built with pantoken (wrapper layout, tray, modal,
  * tabs) so this authoring tool dogfoods the same library it's previewing.
  */
-import "@pantoken/css/style.css"; // this app's own chrome always uses this theme, independent of the preview's chosen theme
 import "@pantoken/components/components.css";
 import "@pantoken/components/utilities.css";
 import "@pantoken/components/base.css";
@@ -123,11 +122,18 @@ const EDITOR_HEIGHT_PX = 400;
 // Canvas's content area caps out at this width — the preview mirrors that constraint.
 const CANVAS_CONTENT_MAX_WIDTH = "59.25rem";
 // All 13 `:root[data-pantoken-color="…"]` color-remap rules, computed once — the shell and preview
-// only need to toggle the attribute, never a network fetch, to switch color schemes.
-const CUSTOM_THEME_COLORS_CSS = customThemeColorsCss();
+// only need to toggle the attribute, never a network fetch, to switch color schemes. `resetSelector`
+// pins the theme tray's own subtree (buttons, swatches) back to true colors, immune to whatever
+// color the chrome (below) currently has active — see plugins/pantoken/custom-theme-colors.
+const CUSTOM_THEME_COLORS_CSS = customThemeColorsCss(undefined, { resetSelector: "#theme-tray" });
 const customThemeColorsStyle = document.createElement("style");
 customThemeColorsStyle.textContent = CUSTOM_THEME_COLORS_CSS;
 document.head.append(customThemeColorsStyle);
+// The scaffold's own chrome (toolbar, buttons outside the tray) mirrors the embedding docs page's
+// active theme and color — entirely independent of the preview and the tray, which drive their own
+// theme/color separately below.
+const chromeThemeStyle = document.createElement("style");
+document.head.append(chromeThemeStyle);
 const preferences = loadPreferences();
 const LOCAL_PROVIDER_ID = "none";
 // `import.meta.env.DEV` is baked in at build time, so it's `false` for any `vite build` output —
@@ -199,39 +205,46 @@ function applyEditorTheme(editor: Editor | undefined): void {
   editor.getDoc().head.append(editorContentLink);
 }
 
-function applyParentTheme(
-  theme: ThemeVariant,
-  mode: "light" | "dark",
-  color: PantokenColorNamespace = selectedColor,
-): void {
-  selectedTheme = theme;
-  document.documentElement.dataset.pantokenScheme = mode;
-  applyThemeColor(color, false);
-  selectButton(themeButtons, [...themeButtons].find((button) => button.dataset.theme === theme)!);
-  includeDarkModeRow.hidden = theme !== "rebrand";
-  applyEditorTheme(activeEditor);
-  refreshAll();
+/** Re-themes the chrome's token variant + light/dark scheme — never the preview or the tray. */
+function applyChromeTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
+  chromeThemeStyle.textContent =
+    theme === "canvas"
+      ? canvasTokensCss
+      : theme === "canvasHighContrast"
+        ? canvasHighContrastTokensCss
+        : adaptiveTokensCss;
+  // Pins `light-dark()` resolution to the docs page's explicit mode instead of the OS preference —
+  // single-scheme themes (canvas/canvasHighContrast) only ever render light.
+  document.documentElement.style.colorScheme = theme === "rebrand" ? mode : "light";
 }
+
+/** Re-colors the chrome only — the tray's `#theme-tray` reset scope keeps it (and the preview,
+ * which reads `selectedColor` directly) immune to this. */
+function applyChromeColor(color: PantokenColorNamespace): void {
+  document.documentElement.dataset.pantokenColor = color;
+}
+
+applyChromeTheme("rebrand", "light");
+applyChromeColor("navy");
 
 window.addEventListener("message", (event) => {
   if (event.source !== window.parent || event.origin !== window.location.origin) return;
   const data = event.data as { type?: unknown; theme?: unknown; mode?: unknown; color?: unknown };
   if (data?.type === "pantoken-demo-color") {
-    if (isThemeColor(data.color)) applyThemeColor(data.color);
+    if (isThemeColor(data.color)) applyChromeColor(data.color);
     return;
   }
   if (data?.type !== "pantoken-demo-theme") return;
-  const color = data.color === undefined ? selectedColor : data.color;
   if (
     (data.theme !== "rebrand" &&
       data.theme !== "canvas" &&
       data.theme !== "canvasHighContrast") ||
-    (data.mode !== "light" && data.mode !== "dark") ||
-    !isThemeColor(color)
+    (data.mode !== "light" && data.mode !== "dark")
   ) {
     return;
   }
-  applyParentTheme(data.theme, data.mode, color);
+  applyChromeTheme(data.theme, data.mode);
+  if (isThemeColor(data.color)) applyChromeColor(data.color);
 });
 
 window.parent.postMessage({ type: "pantoken-demo-request-theme" }, window.location.origin);
@@ -394,14 +407,13 @@ let jsObjectUrl: string | undefined;
 let cssDirty = false;
 let jsDirty = false;
 
-// Only the rebrand theme ships light/dark values — the toggle is hidden for the other themes.
+// Only the tray (below) and the preview it drives read these — the chrome has its own,
+// docs-driven theme/color tracked separately by `applyChromeTheme`/`applyChromeColor` above.
 let selectedTheme: ThemeVariant = "rebrand";
 let selectedColor: PantokenColorNamespace = "navy";
-document.documentElement.dataset.pantokenColor = selectedColor;
 
 function applyThemeColor(color: PantokenColorNamespace, refresh = true): void {
   selectedColor = color;
-  document.documentElement.dataset.pantokenColor = color;
   const colorButton = [...colorButtons].find((button) => button.dataset.color === color);
   if (colorButton) selectButton(colorButtons, colorButton);
   if (refresh) updatePreview();

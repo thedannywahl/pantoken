@@ -180,3 +180,42 @@ test("no navy brand literal survives in a non-navy block of the real token set",
     expect(blockFor(css, key)).not.toContain("#44709f");
   }
 });
+
+test("scopes conditional rules under a custom selector instead of :root", () => {
+  const css = customThemeColorsCss(undefined, { selector: "#chrome" });
+  expect(css).toContain('#chrome[data-pantoken-color="green"]');
+  expect(css).not.toContain(':root[data-pantoken-color="green"]');
+});
+
+test("emits an unconditional reset block pinning true base colors under resetSelector", () => {
+  const css = customThemeColorsCss(
+    new Map([
+      ["--instui-primitive-color-navy-navy70", "#123456"],
+      ["--instui-primitive-color-blue-blue70", "#654321"],
+    ]),
+    { resetSelector: "#theme-tray" },
+  );
+  const reset = css.match(/#theme-tray \{[^}]*\}/u)?.[0] ?? "";
+  expect(reset).toContain("--instui-primitive-color-navy-navy70: #123456;");
+  expect(reset).toContain("--instui-primitive-color-blue-blue70: #654321;");
+  // Unconditional — no `[data-pantoken-color="…"]` attribute gate on the reset selector itself.
+  expect(reset).not.toContain("data-pantoken-color");
+});
+
+test("reset block restores literal brand values relinked elsewhere in the sheet", () => {
+  const css = customThemeColorsCss(
+    new Map([
+      ["--instui-primitive-color-navy-navy110", "#44709f"],
+      ["--instui-color-background-interactive-action-secondary-base", "#44709f33"],
+    ]),
+    { resetSelector: "#theme-tray" },
+  );
+  const green = blockFor(css, "green");
+  expect(green).toContain(
+    "--instui-color-background-interactive-action-secondary-base: color-mix(in srgb, var(--instui-primitive-color-green-green110) 20%, transparent);",
+  );
+  const reset = css.match(/#theme-tray \{[^}]*\}/u)?.[0] ?? "";
+  expect(reset).toContain(
+    "--instui-color-background-interactive-action-secondary-base: #44709f33;",
+  );
+});

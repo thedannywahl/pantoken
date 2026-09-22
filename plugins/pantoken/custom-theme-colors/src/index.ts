@@ -44,6 +44,10 @@ export type PantokenColorNamespace = (typeof COLOR_KEYS)[number];
 export interface CustomThemeColorsOptions {
   /** Optional token array or map to resolve primitive step color values from. */
   tokens?: readonly Token[] | Map<string, string>;
+  /** Selector prefix for the conditional rules — see {@link CustomThemeColorsCssOptions.selector}. */
+  selector?: string;
+  /** Always-true-color subtree — see {@link CustomThemeColorsCssOptions.resetSelector}. */
+  resetSelector?: string;
 }
 
 const PRIMITIVE_STEPS = [
@@ -199,6 +203,28 @@ const PRESERVED_BLUE_ACCENT_TOKENS = [
 // Delete this constant and its use in customThemeColorsCss to restore it.
 const RELINK_EXCLUDED = /^--instui-color-drop-shadow-/u;
 
+/** Options for {@link customThemeColorsCss}. */
+export interface CustomThemeColorsCssOptions {
+  /**
+   * Selector prefix the conditional `[data-pantoken-color="…"]` rules are scoped under. Defaults to
+   * `:root`. Two callers can each pass a different selector (e.g. `:root` for a page's chrome and
+   * `#some-tray` for a nested widget) to run independent, non-interfering color instances on the
+   * same page — each toggles its own attribute on its own element instead of sharing `:root`.
+   */
+  selector?: string;
+  /**
+   * An additional selector whose subtree should always render the true, unremapped colors,
+   * regardless of what an ancestor's `[data-pantoken-color]` scope currently has active. Emits one
+   * unconditional rule pinning every token this plugin can override back to its own base value —
+   * e.g. a color-swatch legend nested inside an already-themed page needs its reference swatches to
+   * stay constant rather than inherit the ancestor's remap.
+   */
+  resetSelector?: string;
+}
+
+/** Sentinel scale that never matches a real color namespace, so every affected token is selected. */
+const RESET_SCALE = "\0";
+
 /**
  * Generate CSS rules for all custom theme color choices by remapping primitive color scale steps
  * (`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`) and relinking literal
@@ -206,9 +232,14 @@ const RELINK_EXCLUDED = /^--instui-color-drop-shadow-/u;
  * named blue accents and semantic status intents.
  *
  * @param tokens - Optional token array or map for primitive step color lookups.
+ * @param options - {@link CustomThemeColorsCssOptions}.
  * @returns Generated CSS rules string.
  */
-export function customThemeColorsCss(tokens?: readonly Token[] | Map<string, string>): string {
+export function customThemeColorsCss(
+  tokens?: readonly Token[] | Map<string, string>,
+  options: CustomThemeColorsCssOptions = {},
+): string {
+  const { selector = ":root", resetSelector } = options;
   const tokenMap = new Map<string, string>();
 
   if (tokens instanceof Map) {
@@ -234,7 +265,7 @@ export function customThemeColorsCss(tokens?: readonly Token[] | Map<string, str
     });
   }
 
-  return COLOR_KEYS.map((c) => {
+  const rules = COLOR_KEYS.map((c) => {
     const scale = c;
 
     // Self-referencing var() (e.g. navy remapped to navy) is a guaranteed-invalid circular custom
@@ -275,8 +306,47 @@ export function customThemeColorsCss(tokens?: readonly Token[] | Map<string, str
       .filter(Boolean)
       .join("\n");
 
-    return `:root[data-pantoken-color="${c}"] {\n${navyOverrides}\n${blueOverrides}\n${opacityOverride}\n${preservedValues}\n${relinkedValues}\n}`;
+    return `${selector}[data-pantoken-color="${c}"] {\n${navyOverrides}\n${blueOverrides}\n${opacityOverride}\n${preservedValues}\n${relinkedValues}\n}`;
   }).join("\n\n");
+
+  if (!resetSelector) return rules;
+
+  // Same property set the per-scale blocks above can touch, each pinned back to its own base value
+  // (not a `var()` alias) so an ancestor's active `[data-pantoken-color]` scope can't reach in via
+  // inheritance — `resetSelector`'s own declaration on the matched element wins outright.
+  const resetEntries: [string, string | undefined][] = [
+    ...PRIMITIVE_STEPS.map((step): [string, string | undefined] => [
+      `--instui-primitive-color-navy-navy${step}`,
+      tokenMap.get(`--instui-primitive-color-navy-navy${step}`),
+    ]),
+    ...PRIMITIVE_STEPS.map((step): [string, string | undefined] => [
+      `--instui-primitive-color-blue-blue${step}`,
+      tokenMap.get(`--instui-primitive-color-blue-blue${step}`),
+    ]),
+    [
+      "--instui-primitive-color-navy-opacity10",
+      tokenMap.get("--instui-primitive-color-navy-opacity10"),
+    ],
+    ...[...new Set(preservedTokens)].map((name): [string, string | undefined] => [
+      name,
+      getPreservedValue(name) || undefined,
+    ]),
+    ...[...tokenMap.entries()]
+      .filter(
+        ([name, value]) =>
+          !preservedNames.has(name) &&
+          !name.startsWith("--instui-primitive-color-") &&
+          !RELINK_EXCLUDED.test(name) &&
+          relinkLiteralColors(value, primitiveHexIndex, RESET_SCALE) !== undefined,
+      )
+      .map(([name, value]): [string, string | undefined] => [name, value]),
+  ];
+  const resetDecls = resetEntries
+    .filter((entry): entry is [string, string] => entry[1] !== undefined)
+    .map(([name, value]) => `  ${name}: ${value};`)
+    .join("\n");
+
+  return `${rules}\n\n${resetSelector} {\n${resetDecls}\n}`;
 }
 /**
  * Create the custom theme colors plugin.
@@ -289,7 +359,10 @@ export function customThemeColors(options: CustomThemeColorsOptions = {}): Panto
     name: "@pantoken/plugin-custom-theme-colors",
     css: (ctx) => ({
       marker: "pantoken:custom-theme-colors",
-      append: customThemeColorsCss(options.tokens ?? ctx?.tokens),
+      append: customThemeColorsCss(options.tokens ?? ctx?.tokens, {
+        selector: options.selector,
+        resetSelector: options.resetSelector,
+      }),
     }),
   });
 }
