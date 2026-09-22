@@ -1,0 +1,80 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M356WQ0QCBZSX0MH0GF5ND9S",
+  "session_id": "4548eeb3-a9c5-48fc-9569-988e016991b8",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-22T18:43:49.840728Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 2,
+  "save_step_count": 2,
+  "files_touched": [
+    ".changeset/fullscreen-viewport-height.md",
+    ".changeset/restore-codemirror-syntax-highlighting.md",
+    "docs/.vitepress/theme/components/CanvasRcePage.vue",
+    "docs/scripts/canvas-rce-iframe-height.js",
+    "packages/scaffold/templates/canvas-theme-editor/src/app.css",
+    "packages/scaffold/templates/canvas-theme-editor/src/app.html",
+    "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
+    "plugins/tinymce/a11y/src/index.ts",
+    "plugins/tinymce/a11y/tests/index.test.ts",
+    "plugins/tinymce/codemirror/package.json",
+    "plugins/tinymce/codemirror/src/index.ts",
+    "plugins/tinymce/codemirror/tests/source-toggle.test.ts",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "3ed90931174f",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-22T18:43:49.834421Z",
+    "agent_lines": 79,
+    "agent_removed": 10,
+    "human_added": 21,
+    "human_modified": 6,
+    "human_removed": 0,
+    "total_committed": 106,
+    "total_lines_changed": 121,
+    "agent_percentage": 73.55371900826447,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 70,
+      "user_lines_removed": 2,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "plugins/tinymce/a11y/src/index.ts": 1,
+        "plugins/tinymce/a11y/tests/index.test.ts": 3,
+        "plugins/tinymce/codemirror/package.json": 4,
+        "plugins/tinymce/codemirror/src/index.ts": 34,
+        "plugins/tinymce/codemirror/tests/source-toggle.test.ts": 14,
+        "pnpm-lock.yaml": 12,
+        "pnpm-workspace.yaml": 2
+      },
+      "user_removed_per_file": {
+        "plugins/tinymce/codemirror/src/index.ts": 2
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 138,
+      "agent_lines_removed": 8
+    }
+  ]
+}

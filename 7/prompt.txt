@@ -1,0 +1,15 @@
+when we toggle the preview or the tinymce editor into fullscreen, it full-screens to the height of the iframe, which is generally taller than the viewport.  when fullscreen is toggled active we should bind the iframe height to the parent container so there are no vertical scroll bars
+
+---
+
+that's good, but the `.canvas-rce-page__frame` iframe should be at least the viewport height.  this is what it's shrinking to (good) in full screen, but it's starting out at content height (bad) because it makes the tray look truncated.
+you can inspect here:
+
+http://localhost:5173/guide/canvas-rce
+
+stylistically:
+* .VPContent -> full height
+    * .VPPage -> content height
+      * div -> content
+        * div -> content
+          * iframe -> content
