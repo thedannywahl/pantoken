@@ -1,0 +1,98 @@
+a list of issues to remediate between renderers/tinymce plugins/tinymce/* and scaffold/canvas-theme-editor:
+* the preview content container stays at a fixed size, and content overflows it. the preview container should grow and the iframe should grow to match there should be no scrollbars on the preview at all.
+* on guide/canvas-rce the component's config / js / css tabs don't work - they should be using the built-in interactions from formats/components/interactions.
+* navy and blue color schemes don't visually appear in the preview - everything is transparent, the other color schemes do.
+* the code view plugin seems not very functional, we should investigate using https://www.tiny.cloud/docs/tinymce/latest/code/ instead.
+* the content editor height should be able to be increased its default is currently only capable of being lowered.
+* above the preview and below the editor we need a 'large', 'medium', 'small' toggle group that sets the iframe width to canvas breakpoints for mobile tablet and desktop (100%, default)
+* the toolbar is missing many of the standard editor buttons that should be included like lists, links, bold, italic, underline, etc.
+
+---
+
+Investigate two things in this pantoken monorepo:
+
+1. /Users/dwahl/Scripts/pantoken/formats/interactions/ - the @pantoken/interactions package (shared behavior extraction for components). Report:
+   - src/behaviors/*.ts files available (list all, especially anything related to tabs, tab groups, toggle groups, or "config/js/css" style tab switching)
+   - src/components/*.ts entry points relevant to tabs/toggle-group components
+   - How a consumer (e.g. a docs demo or another package) is supposed to wire up these interactions (register(), initModal-style functions, etc.) - find example usage in the repo
+   - Whether there's an existing "toggle group" or segmented control behavior/component (for the requested large/medium/small toggle)
+
+2. Find and investigate the "guide/canvas-rce" documentation page - search docs/guide for a file related to "canvas-rce" (likely docs/guide/canvas-rce.md or similar, possibly under a locale-neutral guide folder). Report:
+   - Exact file path
+   - How it renders the config/js/css tabs currently (what markup/component is used, does it use raw HTML tabs, a Vue component, a VitePress custom component?)
+   - Whether it references @pantoken/interactions or implements its own tab logic
+   - Any related Vue component files it imports (search docs/.vitepress or docs/guide for related components used on this page)
+
+Return exact file paths, line numbers, and relevant code snippets for each point. This is read-only research - do not modify any files.
+
+---
+
+Investigate /Users/dwahl/Scripts/pantoken/packages/scaffold/templates/canvas-theme-editor/ in this pantoken monorepo. This is the actual interactive "canvas-rce" tool template (embedded as an iframe in docs/guide/canvas-rce.md via /tools/canvas-rce/index.html) that includes a TinyMCE preview, config/css/js tabs, and color scheme selection.
+
+Report in detail with exact file paths and line numbers:
+1. Full directory tree of this template folder
+2. app.html - the full tab markup structure (config/css/js panels), and the preview container markup (search for iframe, TinyMCE mount point, or a content container element). Include actual HTML around the preview area.
+3. main.ts.tmpl - how TinyMCE is initialized (init options: height, toolbar, plugins list), how the preview container/iframe is created and sized, how CodeMirror/source-toggle plugin from @pantoken/tinymce is wired in, and how the config/css/js tab panels get their content populated
+4. Any CSS file(s) in this template - specifically search for fixed height/width rules on preview/iframe containers, overflow/scroll rules, and any color-scheme-conditional CSS (search for "navy", "blue", "canvas", data-pantoken-color attribute usage)
+5. How color scheme selection (a dropdown/selector) is wired to the preview - trace the full flow from selector change event to what gets applied to the iframe/preview element. Look for how `data-pantoken-color` or similar attributes get set on the preview, and whether the CSS import order or `:root` scoping requires the attribute to be on a specific ancestor element that might be missing from the preview iframe.
+6. Any breakpoint/width toggle for mobile/tablet/desktop preview sizing - does one already partially exist?
+7. The toolbar array/string passed to tinymce.init - list every button/plugin included currently
+8. Whether editor height is configurable via a UI control (search for resize, drag, or height input elements) and how the height value is used (min-height vs height, whether the container can only shrink)
+
+This is read-only research - do not modify any files. Return the full findings with exact code snippets.
+
+---
+
+Start implementation
+
+---
+
+we need to make the breakpoints a size smaller for the small/medium instances.  the height of the preview is off by ~2px probably because it has borders, which we should remove.
+
+---
+
+actually keep the border, but add 2px to the height.
+
+---
+
+if the active theme is canvas or canvas-high-contrast then set the border color to transparent.
+
+---
+
+elevation resting should only be applicable if the active theme is rebrand.
+
+---
+
+I want a toggle button that changes between the icon `layout-arrow-right` and `layout-arrow-down` in ltr and `layout-arrow-left` / `layout-arrow-down` in rtl. it should change the flex-direction of .content to match.
+
+---
+
+layout-arrow-down definitely exists in lucide, we may need to update our version?  also the 'large, medium, small' buttons should be wrapped with the preview to move with it. they shouldn't be a top-level child of .content.
+
+---
+
+the layout sizing buttons should be instui-buttons and should use the icons 'smartphone', 'tablet', and 'monitor' and they should be start-aligned, not centered.
+
+---
+
+in flex-direction "row" the preview resizing works strangely. since 'desktop' is 100% the MCE editor remains the same size and the preview move to available space.  selecting tablet resizes the tiny editor to fit available space for the tablet's fixed width.  Then clicking to 'smartphone' narrows the width of the container for the preview but does not widen the area of the mce preview, so they both end up very narrow.  the mce preview cannot be resized horizontally, neither can the preview.  but in row mode they should both take up 100% width combined.
+
+---
+
+next to the smart phone button add a toggle button with the icon 'expand' / 'minimize' that sets the `.preview-pane` to fullscreen: the full screen of the containing iframe not monitor full-screen.  This is the same as the tinymce full-screen toggle.
+
+---
+
+I want to re-style the preview and its buttons to mimic the 'tox' interface of the tinymce editor. the buttons should be on a mock toolbar and it should follow the same borders, colors, etc. as the wrapper.
+
+---
+
+the preview now renders at 0 height
+
+---
+
+the preview now renders at 0 height in row view, but renders correctly in column view.
+
+---
+
+revert the preiew change from 'tox' back to instui.
