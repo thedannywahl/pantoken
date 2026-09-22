@@ -1,7 +1,6 @@
 /**
  * TinyMCE icons picker plugin. Feeds pantoken's icons into TinyMCE's native `emoticons` plugin as
- * a custom database (categorized by provider) instead of a bespoke grid dialog, then edits the
- * inserted icon's screen-reader label via a small follow-up dialog.
+ * a custom database (categorized by provider) instead of a bespoke grid dialog.
  *
  * \@module
  */
@@ -9,9 +8,9 @@ import type { Editor } from "tinymce";
 import { buildFileUrl } from "@pantoken/cdn";
 import type { CdnFile } from "@pantoken/cdn";
 import {
+  buildIconMarkup,
   buildEmoticonsDatabase,
   getIconCdnFile,
-  humanizeIconName,
   ICON_BUNDLE_CDN_FILES,
   matchInsertedIcon,
   PANTOKEN_ICONS_DATABASE_ID,
@@ -20,7 +19,7 @@ import {
 import type { MissingAssetHandler } from "../types.js";
 import { trackAndInjectAsset } from "../content-css.js";
 import { insertHtmlIntoSourceViewOnly } from "../lib/insertion-target.js";
-import { formatTinymceString, TINYMCE_STRINGS } from "../strings.js";
+import { TINYMCE_STRINGS } from "../strings.js";
 
 /**
  * Configuration options for the icons picker plugin.
@@ -68,9 +67,10 @@ export function createIconsPlugin(options: IconsPickerOptions): (editor: Editor)
       if (!icon) return;
       // TinyMCE's native emoticons command already inserted into the (possibly hidden) WYSIWYG
       // doc by this point — mirror it into the CodeMirror doc if that's the visible surface.
-      insertHtmlIntoSourceViewOnly(editor, e.value as string);
+      insertHtmlIntoSourceViewOnly(editor, buildIconMarkup(icon));
       trackAndInjectAsset(editor, getIconCdnFile(icon), options);
-      openIconLabelDialog(editor, icon);
+      const selector = `[data-pantoken-icon="${icon.source}:${icon.name}"]`;
+      editor.dom.select(selector)[0]?.removeAttribute("data-pantoken-icon");
     });
 
     if (options.registerUi === false) return;
@@ -90,49 +90,4 @@ export function createIconsPlugin(options: IconsPickerOptions): (editor: Editor)
       onAction: openIconsDialog,
     });
   };
-}
-
-/**
- * Open a small dialog to edit the just-inserted icon's screen-reader label, prefilled with the
- * humanized icon name. Locates the inserted node via its transient `data-pantoken-icon` marker,
- * which is removed once this dialog closes.
- */
-function openIconLabelDialog(editor: Editor, icon: TaggedIcon): void {
-  const selector = `[data-pantoken-icon="${icon.source}:${icon.name}"]`;
-
-  const clearMarker = (): void => {
-    editor.dom.select(selector)[0]?.removeAttribute("data-pantoken-icon");
-  };
-
-  editor.windowManager.open({
-    title: TINYMCE_STRINGS.iconLabelDialogTitle,
-    body: {
-      type: "panel",
-      items: [
-        {
-          type: "input",
-          name: "label",
-          label: TINYMCE_STRINGS.iconLabelInputLabel,
-        },
-      ],
-    },
-    initialData: { label: humanizeIconName(icon.name) },
-    buttons: [
-      { type: "cancel", text: formatTinymceString(TINYMCE_STRINGS.cancelButton, {}) },
-      {
-        type: "submit",
-        text: formatTinymceString(TINYMCE_STRINGS.insertButton, {}),
-        primary: true,
-      },
-    ],
-    onSubmit: (api) => {
-      const { label } = api.getData() as { label: string };
-      const node = editor.dom.select(selector)[0];
-      const labelNode = node?.querySelector(".instui-screen-reader-content");
-      if (labelNode) labelNode.textContent = label;
-      clearMarker();
-      api.close();
-    },
-    onCancel: clearMarker,
-  });
 }

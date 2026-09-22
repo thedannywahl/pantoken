@@ -25,6 +25,7 @@ function fakeEditor() {
   };
   const editor = {
     ui: { registry },
+    insertContent: vi.fn(),
     setContent: vi.fn(),
     windowManager: {
       open: vi.fn(),
@@ -64,7 +65,7 @@ test("defaults to the bundled pantoken page layouts", () => {
   );
 });
 
-test("confirming the dialog replaces the document with the chosen layout", () => {
+test("inserting a layout adds it at the cursor without confirmation", () => {
   const editor = fakeEditor();
   const onInsert = vi.fn();
   const plugin = createLayoutsPlugin({ layouts, onInsert });
@@ -82,6 +83,29 @@ test("confirming the dialog replaces the document with the chosen layout", () =>
   const api = { getData: () => ({ layout: "callout" }), close: vi.fn() };
   dialogSpec.onSubmit(api);
   expect(api.close).toHaveBeenCalled();
+  expect(editor.insertContent).toHaveBeenCalledWith("<div>callout</div>");
+  expect(editor.windowManager.confirm).not.toHaveBeenCalled();
+  expect(onInsert).toHaveBeenCalledWith(layouts[1]);
+});
+
+test("replacing confirms before replacing the document with the chosen layout", () => {
+  const editor = fakeEditor();
+  const onInsert = vi.fn();
+  const plugin = createLayoutsPlugin({ layouts, onInsert });
+  plugin(editor as never);
+
+  const openAction = editor.ui.registry.addButton.mock.calls[0]?.[1].onAction as () => void;
+  openAction();
+  const dialogSpec = editor.windowManager.open.mock.calls[0]?.[0];
+  expect(dialogSpec.buttons).toEqual([
+    { type: "cancel", text: "Cancel" },
+    { type: "custom", name: "replace", text: "Replace" },
+    { type: "submit", text: "Insert", primary: true },
+  ]);
+
+  const api = { getData: () => ({ layout: "callout" }), close: vi.fn() };
+  dialogSpec.onAction(api, { name: "replace" });
+  expect(api.close).toHaveBeenCalled();
 
   const confirmCallback = editor.windowManager.confirm.mock.calls[0]?.[1] as (
     confirmed: boolean,
@@ -92,7 +116,25 @@ test("confirming the dialog replaces the document with the chosen layout", () =>
   expect(onInsert).toHaveBeenCalledWith(layouts[1]);
 });
 
-test("replaces the CodeMirror doc instead while the source view is active", () => {
+test("inserts into the CodeMirror doc at the cursor while the source view is active", () => {
+  const editor = fakeEditor();
+  const insertAtCursor = vi.fn();
+  (editor as unknown as Record<string, unknown>).plugins = {
+    pantoken_source_toggle: { isSourceMode: () => true, insertAtCursor },
+  };
+  const plugin = createLayoutsPlugin({ layouts });
+  plugin(editor as never);
+
+  const openAction = editor.ui.registry.addButton.mock.calls[0]?.[1].onAction as () => void;
+  openAction();
+  const dialogSpec = editor.windowManager.open.mock.calls[0]?.[0];
+  dialogSpec.onSubmit({ getData: () => ({ layout: "callout" }), close: vi.fn() });
+
+  expect(insertAtCursor).toHaveBeenCalledWith("<div>callout</div>");
+  expect(editor.insertContent).not.toHaveBeenCalled();
+});
+
+test("replaces the CodeMirror doc after confirmation while the source view is active", () => {
   const editor = fakeEditor();
   const replaceAll = vi.fn();
   (editor as unknown as Record<string, unknown>).plugins = {
@@ -104,7 +146,10 @@ test("replaces the CodeMirror doc instead while the source view is active", () =
   const openAction = editor.ui.registry.addButton.mock.calls[0]?.[1].onAction as () => void;
   openAction();
   const dialogSpec = editor.windowManager.open.mock.calls[0]?.[0];
-  dialogSpec.onSubmit({ getData: () => ({ layout: "callout" }), close: vi.fn() });
+  dialogSpec.onAction(
+    { getData: () => ({ layout: "callout" }), close: vi.fn() },
+    { name: "replace" },
+  );
   const confirmCallback = editor.windowManager.confirm.mock.calls[0]?.[1] as (
     confirmed: boolean,
   ) => void;
@@ -123,7 +168,7 @@ test("declining the confirm does not modify the editor", () => {
   openAction();
   const dialogSpec = editor.windowManager.open.mock.calls[0]?.[0];
   const api = { getData: () => ({ layout: "hero" }), close: vi.fn() };
-  dialogSpec.onSubmit(api);
+  dialogSpec.onAction(api, { name: "replace" });
 
   const confirmCallback = editor.windowManager.confirm.mock.calls[0]?.[1] as (
     confirmed: boolean,
@@ -193,7 +238,10 @@ test("resolves placeholders when inserting a layout through the plugin", () => {
   const openAction = editor.ui.registry.addButton.mock.calls[0]?.[1].onAction as () => void;
   openAction();
   const dialogSpec = editor.windowManager.open.mock.calls[0]?.[0];
-  dialogSpec.onSubmit({ getData: () => ({ layout: "with-image" }), close: vi.fn() });
+  dialogSpec.onAction(
+    { getData: () => ({ layout: "with-image" }), close: vi.fn() },
+    { name: "replace" },
+  );
   const confirmCallback = editor.windowManager.confirm.mock.calls[0]?.[1] as (
     confirmed: boolean,
   ) => void;

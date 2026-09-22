@@ -14,6 +14,7 @@
     "@pantoken/components": "latest",
     "@pantoken/css": "latest",
     "@pantoken/plugin-layouts": "latest",
+    "@pantoken/plugin-logos": "latest",
     "@pantoken/tinymce": "latest",
     "@pantoken/tinymce-a11y": "latest",
     "@pantoken/tinymce-codemirror": "latest",

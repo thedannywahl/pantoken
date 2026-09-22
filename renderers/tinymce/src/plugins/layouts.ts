@@ -7,7 +7,7 @@
  */
 import type { Editor } from "tinymce";
 import { pageLayouts, type PageLayout, type PageLayoutImagePlaceholder } from "../layouts.js";
-import { replaceContent } from "../lib/insertion-target.js";
+import { insertHtml, replaceContent } from "../lib/insertion-target.js";
 import { formatTinymceString, TINYMCE_STRINGS } from "../strings.js";
 
 /** Options for {@link createLayoutsPlugin}. */
@@ -95,9 +95,19 @@ export function createLayoutsPlugin(options: LayoutsPluginOptions = {}) {
         initialData: { layout: layouts[0]?.name ?? "" },
         buttons: [
           { type: "cancel", text: TINYMCE_STRINGS.cancelButton },
+          { type: "custom", name: "replace", text: TINYMCE_STRINGS.replaceButton },
           { type: "submit", text: TINYMCE_STRINGS.insertButton, primary: true },
         ],
         onSubmit: (api): void => {
+          const { layout } = api.getData() as { layout: string };
+          const chosen = layouts.find((l) => l.name === layout);
+          api.close();
+          if (!chosen) return;
+          insertHtml(editor, materializeLayout(chosen, resolveImage));
+          onInsert?.(chosen);
+        },
+        onAction: (api, details): void => {
+          if (details.name !== "replace") return;
           const { layout } = api.getData() as { layout: string };
           const chosen = layouts.find((l) => l.name === layout);
           api.close();

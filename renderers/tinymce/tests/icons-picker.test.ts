@@ -78,7 +78,7 @@ test("registerUi: false skips the standalone toolbar button/menu item", () => {
   expect(editor.ui.registry.addMenuItem).not.toHaveBeenCalled();
 });
 
-test("inserting an icon tracks its CSS asset and opens the label dialog", () => {
+test("inserting an icon tracks its CSS asset without opening a label dialog", () => {
   const editor = createMockEditor();
   const currentAssets: any[] = [];
   const onMissingAsset = vi.fn();
@@ -93,9 +93,7 @@ test("inserting an icon tracks its CSS asset and opens the label dialog", () => 
     { package: "@pantoken/plugin-simple-icons", path: "dist/icons/heart.css" },
   ]);
   expect(onMissingAsset).toHaveBeenCalled();
-  expect(editor.windowManager.open).toHaveBeenCalledWith(
-    expect.objectContaining({ initialData: { label: "heart" } }),
-  );
+  expect(editor.windowManager.open).not.toHaveBeenCalled();
 });
 
 test("unrelated ExecCommand events are ignored", () => {
@@ -119,47 +117,24 @@ test("mirrors the native emoticons insertion into the CodeMirror doc while the s
   });
 
   expect(insertAtCursor).toHaveBeenCalledWith(
-    '<span class="instui-icon -icon-heart" data-pantoken-icon="simple-icons:heart"></span>',
+    '<span class="instui-icon -icon-heart" aria-hidden="true"></span>',
   );
 });
 
-test("label dialog submit updates the inserted icon's screen-reader text and clears the marker", () => {
+test("inserting an icon clears its transient source marker", () => {
   const editor = createMockEditor();
   createIconsPlugin({ icons: mockIcons, currentAssets: [] })(editor);
 
   document.body.innerHTML =
-    '<span class="instui-icon -icon-heart" data-pantoken-icon="simple-icons:heart">' +
-    '<span class="instui-screen-reader-content">heart</span></span>';
+    '<span class="instui-icon -icon-heart" data-pantoken-icon="simple-icons:heart" aria-hidden="true"></span>';
 
   editor.fire("ExecCommand", {
     command: "mceInsertContent",
     value: '<span data-pantoken-icon="simple-icons:heart"></span>',
   });
-
-  const dialogConfig = (editor.windowManager.open as any).mock.calls[0][0];
-  const api = { getData: () => ({ label: "a heart" }), close: vi.fn() };
-  dialogConfig.onSubmit(api);
-
-  const node = document.querySelector("[data-pantoken-icon]");
-  expect(node).toBeNull();
-  expect(document.querySelector(".instui-screen-reader-content")?.textContent).toBe("a heart");
-  expect(api.close).toHaveBeenCalled();
-});
-
-test("label dialog cancel still clears the transient marker", () => {
-  const editor = createMockEditor();
-  createIconsPlugin({ icons: mockIcons, currentAssets: [] })(editor);
-
-  document.body.innerHTML =
-    '<span class="instui-icon -icon-heart" data-pantoken-icon="simple-icons:heart"></span>';
-
-  editor.fire("ExecCommand", {
-    command: "mceInsertContent",
-    value: '<span data-pantoken-icon="simple-icons:heart"></span>',
-  });
-
-  const dialogConfig = (editor.windowManager.open as any).mock.calls[0][0];
-  dialogConfig.onCancel();
 
   expect(document.querySelector("[data-pantoken-icon]")).toBeNull();
+  expect(document.body.innerHTML).toBe(
+    '<span class="instui-icon -icon-heart" aria-hidden="true"></span>',
+  );
 });

@@ -78,6 +78,7 @@ export {
 export {
   buildIconMarkup,
   getIconCdnFile,
+  getUsedIconCdnFiles,
   humanizeIconName,
   loadAllIcons,
   PANTOKEN_ICONS_DATABASE_ID,

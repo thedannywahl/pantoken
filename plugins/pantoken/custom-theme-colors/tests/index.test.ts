@@ -187,6 +187,12 @@ test("scopes conditional rules under a custom selector instead of :root", () => 
   expect(css).not.toContain(':root[data-pantoken-color="green"]');
 });
 
+test("supports attribute-only rules for editable content wrappers", () => {
+  const css = customThemeColorsCss(undefined, { selector: "" });
+  expect(css).toContain('[data-pantoken-color="sea"]');
+  expect(css).not.toContain(':root[data-pantoken-color="sea"]');
+});
+
 test("emits an unconditional reset block pinning true base colors under resetSelector", () => {
   const css = customThemeColorsCss(
     new Map([

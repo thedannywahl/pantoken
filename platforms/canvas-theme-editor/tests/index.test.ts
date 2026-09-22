@@ -11,7 +11,7 @@ test("THEME_CSS imports pantoken's CDN-hosted tokens, components, and fonts", ()
   expect(THEME_CSS).toContain("npm/@pantoken/css/dist/style.rebrand.light.lean.css");
   expect(THEME_CSS).toContain("npm/@pantoken/components/dist/components.css");
   expect(THEME_CSS).toContain(
-    "npm/@pantoken/plugin-custom-theme-colors/dist/custom-theme-colors.css",
+    "npm/@pantoken/plugin-custom-theme-colors/dist/custom-theme-colors.scoped.css",
   );
   expect(THEME_CSS).toContain("https://cdn.jsdelivr.net/npm/@pantoken/components/dist/fonts.css");
 });
@@ -55,7 +55,7 @@ test("buildTheme defaults to the rebrand/light token sheet", () => {
 
 test("buildThemeCss always imports the custom-theme-colors color-remap sheet", () => {
   expect(buildThemeCss({ theme: "canvas" })).toContain(
-    "npm/@pantoken/plugin-custom-theme-colors/dist/custom-theme-colors.css",
+    "npm/@pantoken/plugin-custom-theme-colors/dist/custom-theme-colors.scoped.css",
   );
 });
 

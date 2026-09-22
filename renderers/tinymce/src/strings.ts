@@ -36,6 +36,7 @@ export interface TinymceStrings {
   logosColorModeMonochrome: string;
   logosColorModeLight: string;
   insertButton: string;
+  replaceButton: string;
   cancelButton: string;
   logoAltSuffix: string;
   templatesConfirmReplace: string;

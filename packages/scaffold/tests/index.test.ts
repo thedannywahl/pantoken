@@ -41,6 +41,13 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain('alt: placeholder.altText ?? ""');
   expect(main).toContain("createContentClassesPlugin");
   expect(main).toContain("CONTENT_CLASSES_PLUGIN_NAME");
+  expect(main).toContain("getUsedIconCdnFiles");
+  expect(main).toContain("syncIconAssetsFromEditor();");
+  expect(main).toContain("...currentAssets]");
+  expect(main).toContain("const onMissingAsset = () => refreshAll();");
+  expect(main).toContain('"/node_modules/@pantoken/plugin-logos/dist/*.png"');
+  expect(main).toContain("buildFileUrl(file, providerSelect.value)");
+  expect(main).toContain("buildAssetUrl: buildSelectedAssetUrl");
   expect(main).toContain("createA11yPlugin");
   expect(main).toContain("createSourceTogglePlugin");
   expect(main).toContain("if (isLocalPreview) {");
@@ -75,8 +82,15 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain("readonly customCss: string;");
   expect(main).toContain("readonly customJs: string;");
   expect(main).toContain("readonly editorHtml: string;");
-  expect(main).toContain("activeEditor.resetContent(preset.editorHtml);");
-  expect(main).toContain("sourceToggle.replaceAll(preset.editorHtml)");
+  expect(main).toContain("normalizeEditorHtml(preset.editorHtml, preset.color)");
+  expect(main).toContain("activeEditor.resetContent(editorHtml);");
+  expect(main).toContain("sourceToggle.replaceAll(editorHtml)");
+  expect(main).toContain('selector: "",');
+  expect(main).toContain("<html><head><style>${themeCss}");
+  expect(main).not.toContain('<html data-pantoken-color="${selectedColor}">');
+  expect(readFileSync(join(target, "src/app.html"), "utf8")).toContain(
+    '<div data-pantoken-color="navy"><p></p></div>',
+  );
   expect(main).toContain('autosave_interval: "30s"');
   expect(readFileSync(join(target, "src/app.css"), "utf8")).toContain(
     '.content[data-layout="row"] .preview-pane',
@@ -94,9 +108,13 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(readFileSync(join(target, "theme.css"), "utf8")).toContain(
     "@pantoken/css/dist/style.rebrand.light.lean.css",
   );
+  expect(readFileSync(join(target, "theme.css"), "utf8")).toContain(
+    "@pantoken/plugin-custom-theme-colors/dist/custom-theme-colors.scoped.css",
+  );
   const pkg = readFileSync(join(target, "package.json"), "utf8");
   expect(pkg).toContain('"name": "my-app"');
   expect(pkg).toContain('"@pantoken/tinymce-placehold": "latest"');
+  expect(pkg).toContain('"@pantoken/plugin-logos": "latest"');
   expect(pkg).toContain('"@pantoken/tinymce-a11y": "latest"');
   expect(pkg).toContain('"@pantoken/tinymce-save": "latest"');
   expect(pkg).not.toContain("{{projectName}}");
@@ -121,6 +139,9 @@ test("canvas-theme-editor's theme.css/theme.js honor --cdn/--theme at scaffold t
   const themeCss = readFileSync(join(target, "theme.css"), "utf8");
   expect(themeCss).toContain("unpkg.com");
   expect(themeCss).toContain("style.canvas.lean.css");
+  expect(themeCss).toContain(
+    "@pantoken/plugin-custom-theme-colors/dist/custom-theme-colors.scoped.css",
+  );
 });
 
 test("theme-editor is accepted as an alias for canvas-theme-editor", async () => {

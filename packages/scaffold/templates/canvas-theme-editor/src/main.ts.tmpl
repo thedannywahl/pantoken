@@ -64,6 +64,7 @@ import {
   buildTheme,
   CDN_PROVIDERS,
   DEFAULT_CDN_PROVIDER_ID,
+  defaultThemeCssAssets,
   type ThemeMode,
   type ThemeVariant,
 } from "@pantoken/canvas-theme-editor";
@@ -78,7 +79,7 @@ import { basicSetup, EditorView } from "codemirror";
 import { css } from "@codemirror/lang-css";
 import { html } from "@codemirror/lang-html";
 import { javascript } from "@codemirror/lang-javascript";
-import type { CdnFile } from "@pantoken/cdn";
+import { buildFileUrl, buildFileUrls, type CdnFile } from "@pantoken/cdn";
 import {
   CONTENT_CLASSES_PLUGIN_NAME,
   createContentClassesPlugin,
@@ -88,6 +89,8 @@ import {
   createSupSubPlugin,
   createVisualBlocksFooterPlugin,
   FULLSCREEN_FOOTER_PLUGIN_NAME,
+  getIconCdnFile,
+  getUsedIconCdnFiles,
   listComponents,
   listUtilities,
   loadAllIcons,
@@ -102,6 +105,7 @@ import {
   SUP_SUB_PLUGIN_NAME,
   SUP_SUB_TOOLBAR_NAME,
   VISUALBLOCKS_FOOTER_PLUGIN_NAME,
+  type TaggedIcon,
 } from "@pantoken/tinymce";
 import {
   createSourceTogglePlugin,
@@ -128,11 +132,14 @@ import { loadPreferences, savePreferences } from "./preferences.ts";
 const EDITOR_HEIGHT_PX = 400;
 // Canvas's content area caps out at this width — the preview mirrors that constraint.
 const CANVAS_CONTENT_MAX_WIDTH = "59.25rem";
-// All 13 `:root[data-pantoken-color="…"]` color-remap rules, computed once — the shell and preview
-// only need to toggle the attribute, never a network fetch, to switch color schemes. `resetSelector`
+// All 13 `[data-pantoken-color="…"]` color-remap rules, computed once — editable Canvas content,
+// the shell, and the preview can each own an independent color scope. `resetSelector`
 // pins the theme tray's own subtree (buttons, swatches) back to true colors, immune to whatever
 // color the chrome (below) currently has active — see plugins/pantoken/custom-theme-colors.
-const CUSTOM_THEME_COLORS_CSS = customThemeColorsCss(undefined, { resetSelector: "#theme-tray" });
+const CUSTOM_THEME_COLORS_CSS = customThemeColorsCss(undefined, {
+  selector: "",
+  resetSelector: "#theme-tray",
+});
 const customThemeColorsStyle = document.createElement("style");
 customThemeColorsStyle.textContent = CUSTOM_THEME_COLORS_CSS;
 document.head.append(customThemeColorsStyle);
@@ -167,13 +174,23 @@ const interactionsScript = document.createElement("script");
 interactionsScript.src = interactionsIifeUrl;
 document.head.append(interactionsScript);
 
-// Shared CSS assets array — tracks stylesheet URLs for dynamic injection into WYSIWYG editor.
-// Each picker plugin calls onMissingAsset to add new assets, and they're injected when an item is inserted.
+// Shared CSS assets array — tracks stylesheets for dynamic injection and generated theme CSS.
 const currentAssets: CdnFile[] = [];
-const onMissingAsset = (asset: CdnFile) => {
-  currentAssets.push(asset);
-  // In a real app, you'd also trigger a download/export of the aggregated theme.css here.
-};
+const onMissingAsset = () => refreshAll();
+let availableIcons: TaggedIcon[] = [];
+const localLogoUrls = import.meta.glob<string>(
+  "/node_modules/@pantoken/plugin-logos/dist/*.png",
+  { eager: true, import: "default", query: "?url" },
+);
+
+function buildSelectedAssetUrl(file: CdnFile): string {
+  if (providerSelect.value !== LOCAL_PROVIDER_ID) {
+    return buildFileUrl(file, providerSelect.value);
+  }
+  const localUrl = localLogoUrls[`/node_modules/${file.package}/${file.path}`];
+  if (!localUrl) throw new Error(`Missing local package asset: ${file.package}/${file.path}`);
+  return localUrl;
+}
 
 const editorThemeUrls: Record<
   ThemeVariant,
@@ -305,6 +322,7 @@ function createEditor(
 const registerPantokenPlugin = (async () => {
   const componentModel = [...listComponents(), ...listUtilities()];
   const allIcons = await loadAllIcons();
+  availableIcons = allIcons;
 
   tinymce.PluginManager.add(
     "pantoken",
@@ -324,6 +342,7 @@ const registerPantokenPlugin = (async () => {
         products,
         currentAssets,
         onMissingAsset,
+        buildAssetUrl: buildSelectedAssetUrl,
       },
       layouts: {
         resolveImage: (placeholder) => {
@@ -341,7 +360,10 @@ const registerPantokenPlugin = (async () => {
             height: image.height,
           };
         },
-        onInsert: () => refreshAll(),
+        onInsert: () => {
+          applyThemeColor(selectedColor, false);
+          refreshAll();
+        },
       },
     }),
   );
@@ -367,7 +389,11 @@ tinymce.PluginManager.add(
       pantokenHtmlLinter({ model: [...listComponents(), ...listUtilities()] as any }),
       pantokenHtmlCompletion({ model: [...listComponents(), ...listUtilities()] as any }),
     ],
-    onChange: () => debouncedUpdatePreview(),
+    onChange: () => {
+      syncThemeColorFromEditor();
+      if (syncIconAssetsFromEditor()) updateDownloads();
+      debouncedUpdatePreview();
+    },
     onToggle: () => refreshAll(),
   }),
 );
@@ -446,10 +472,71 @@ interface CanvasThemePreset {
   readonly editorHtml: string;
 }
 
-function applyThemeColor(color: PantokenColorNamespace, refresh = true): void {
+function selectThemeColor(color: PantokenColorNamespace): void {
   selectedColor = color;
   const colorButton = [...colorButtons].find((button) => button.dataset.color === color);
   if (colorButton) selectButton(colorButtons, colorButton);
+}
+
+function parseEditorHtml(html: string): HTMLTemplateElement {
+  const template = document.createElement("template");
+  template.innerHTML = html;
+  return template;
+}
+
+function findColorWrapper(content: DocumentFragment): HTMLElement | undefined {
+  const wrapper = content.firstElementChild as HTMLElement | null;
+  if (!wrapper?.hasAttribute("data-pantoken-color")) return undefined;
+  const hasContentOutsideWrapper = [...content.childNodes].some(
+    (node) => node !== wrapper && (node.nodeType !== Node.TEXT_NODE || node.textContent?.trim()),
+  );
+  return hasContentOutsideWrapper ? undefined : wrapper;
+}
+
+function normalizeEditorHtml(html: string, fallbackColor: PantokenColorNamespace): string {
+  const template = parseEditorHtml(html);
+  let wrapper = findColorWrapper(template.content);
+  if (!wrapper) {
+    wrapper = document.createElement("div");
+    wrapper.dataset.pantokenColor = fallbackColor;
+    wrapper.append(...template.content.childNodes);
+    template.content.append(wrapper);
+  } else if (!isThemeColor(wrapper.dataset.pantokenColor)) {
+    wrapper.dataset.pantokenColor = fallbackColor;
+  }
+  return template.innerHTML;
+}
+
+function editorHtmlColor(html: string): PantokenColorNamespace | undefined {
+  const wrapper = findColorWrapper(parseEditorHtml(html).content);
+  const color = wrapper?.dataset.pantokenColor;
+  return isThemeColor(color) ? color : undefined;
+}
+
+function setEditorHtmlColor(html: string, color: PantokenColorNamespace): string {
+  const template = parseEditorHtml(normalizeEditorHtml(html, color));
+  findColorWrapper(template.content)!.dataset.pantokenColor = color;
+  return template.innerHTML;
+}
+
+function syncThemeColorFromEditor(): void {
+  const color = editorHtmlColor(getEditorHtml());
+  if (color) selectThemeColor(color);
+}
+
+function applyThemeColor(color: PantokenColorNamespace, refresh = true): void {
+  selectThemeColor(color);
+  if (activeEditor) {
+    const sourceToggle = activeEditor.plugins[SOURCE_TOGGLE_PLUGIN_NAME] as
+      | SourceTogglePluginApi
+      | undefined;
+    const nextHtml = setEditorHtmlColor(getEditorHtml(), color);
+    if (sourceToggle?.isSourceMode()) {
+      sourceToggle.replaceAll(nextHtml);
+    } else {
+      activeEditor.undoManager.transact(() => activeEditor!.setContent(nextHtml));
+    }
+  }
   if (refresh) updatePreview();
 }
 
@@ -462,6 +549,25 @@ function getEditorHtml(): string {
   return activeEditor?.getContent() ?? "";
 }
 
+function getNormalizedEditorHtml(): string {
+  return normalizeEditorHtml(getEditorHtml(), selectedColor);
+}
+
+function assetKey(asset: CdnFile): string {
+  return `${asset.package}:${asset.path}`;
+}
+
+function syncIconAssetsFromEditor(): boolean {
+  const content = parseEditorHtml(getEditorHtml()).content;
+  const iconAssetKeys = new Set(availableIcons.map((icon) => assetKey(getIconCdnFile(icon))));
+  const nonIconAssets = currentAssets.filter((asset) => !iconAssetKeys.has(assetKey(asset)));
+  const usedIconAssets = getUsedIconCdnFiles(content, availableIcons, currentAssets);
+  const nextAssets = [...nonIconAssets, ...usedIconAssets];
+  const changed = currentAssets.map(assetKey).join("\n") !== nextAssets.map(assetKey).join("\n");
+  if (changed) currentAssets.splice(0, currentAssets.length, ...nextAssets);
+  return changed;
+}
+
 function captureCanvasThemePreset(): CanvasThemePreset {
   return {
     version: 1,
@@ -471,7 +577,7 @@ function captureCanvasThemePreset(): CanvasThemePreset {
     cdnProvider: providerSelect.value,
     customCss: cssEditorView.state.doc.toString(),
     customJs: jsEditorView.state.doc.toString(),
-    editorHtml: getEditorHtml(),
+    editorHtml: getNormalizedEditorHtml(),
   };
 }
 
@@ -518,15 +624,17 @@ function restoreCanvasThemePreset(preset: CanvasThemePreset): void {
   includeDarkModeRow.hidden = selectedTheme !== "rebrand";
   includeDarkModeCheckbox.checked = preset.mode === "adaptive";
   providerSelect.value = preset.cdnProvider;
-  applyThemeColor(preset.color, false);
+  selectThemeColor(preset.color);
   replaceEditorDocument(cssEditorView, preset.customCss);
   replaceEditorDocument(jsEditorView, preset.customJs);
 
-  activeEditor.resetContent(preset.editorHtml);
+  const editorHtml = normalizeEditorHtml(preset.editorHtml, preset.color);
+  activeEditor.resetContent(editorHtml);
   const sourceToggle = activeEditor.plugins[SOURCE_TOGGLE_PLUGIN_NAME] as
     | SourceTogglePluginApi
     | undefined;
-  if (sourceToggle?.isSourceMode()) sourceToggle.replaceAll(preset.editorHtml);
+  if (sourceToggle?.isSourceMode()) sourceToggle.replaceAll(editorHtml);
+  syncThemeColorFromEditor();
 
   applyEditorTheme(activeEditor);
   refreshAll();
@@ -542,7 +650,12 @@ function currentSelection(): { provider: string; theme: ThemeVariant; mode: Them
 
 function buildCurrentTheme(): { css: string; js: string } {
   const selection = currentSelection();
-  if (!isLocalPreview || selection.provider !== LOCAL_PROVIDER_ID) return buildTheme(selection);
+  if (!isLocalPreview || selection.provider !== LOCAL_PROVIDER_ID) {
+    return buildTheme({
+      ...selection,
+      css: [...defaultThemeCssAssets(selection.theme, selection.mode), ...currentAssets],
+    });
+  }
 
   const tokensCss =
     selection.theme === "canvas"
@@ -553,7 +666,11 @@ function buildCurrentTheme(): { css: string; js: string } {
           ? adaptiveTokensCss
           : rebrandLightTokensCss;
   return {
-    css: [tokensCss, LOCAL_COMPONENT_CSS].join("\n"),
+    css: [
+      ...buildFileUrls(currentAssets).map((url) => `@import url("${url}");`),
+      tokensCss,
+      LOCAL_COMPONENT_CSS,
+    ].join("\n"),
     js: localInteractionsJs,
   };
 }
@@ -726,8 +843,8 @@ function debounce<Args extends unknown[]>(fn: (...args: Args) => void, ms: numbe
  * Renders the editor's current HTML with the CSS/JS tab's *current editable text* embedded
  * directly (not linked from the CDN) — so hand-edits in those tabs show up in the preview too.
  * The body content is wrapped to match Canvas's own content-area background and max width.
- * `data-pantoken-color` on the root element, plus the inlined `CUSTOM_THEME_COLORS_CSS`, remaps
- * brand colors instantly — a no-op for the default "navy" scheme. `#content`'s height is a min,
+ * The editable outer `data-pantoken-color` wrapper, plus the inlined `CUSTOM_THEME_COLORS_CSS`,
+ * remaps brand colors instantly — a no-op for the default "navy" scheme. `#content`'s height is a min,
  * not a fixed viewport height, so the iframe (resized to match in `resizePreviewFrame`) grows to
  * fit instead of scrolling internally.
  */
@@ -747,11 +864,11 @@ function updatePreview(): void {
     selectedTheme === "rebrand"
       ? "instui-view -background-primary --elevation-resting"
       : "instui-view -background-primary";
-  previewFrame.srcdoc = `<!doctype html><html data-pantoken-color="${selectedColor}"><head><style>${themeCss}
+  previewFrame.srcdoc = `<!doctype html><html><head><style>${themeCss}
 ${CUSTOM_THEME_COLORS_CSS}</style><style>#wrapper{padding:32px;}#content{padding:36px 48px 48px;min-height:20rem;margin:0 auto;border-radius:12px;}@media not all and (min-width: 768px) {
   #wrapper{padding:24px;}#content{padding-left:12px;padding-right:12px;min-height:16rem;border-radius:8px;}</style></head><body>
     <div id="wrapper" class="instui-view"><div id="content" class="${contentClass}" style="max-width: ${CANVAS_CONTENT_MAX_WIDTH};">
-      ${getEditorHtml()}
+      ${getNormalizedEditorHtml()}
     </div></div>
     <script>${themeJs}</script>
   </body></html>`;
@@ -830,7 +947,7 @@ providerSelect.addEventListener("change", () => {
 });
 
 copyButton.addEventListener("click", () => {
-  void navigator.clipboard.writeText(getEditorHtml()).then(() => {
+  void navigator.clipboard.writeText(getNormalizedEditorHtml()).then(() => {
     copyStatus.textContent = "Copied. Paste into the Canvas Rich Content Editor HTML view.";
   });
 });
@@ -880,14 +997,20 @@ void registerPantokenPlugin.then(() =>
       quickbars_insert_toolbar: "quickimage quicktable media placehold",
       quickbars_image_toolbar: "alignleft aligncenter alignright | image",
       setup(editor: Editor): void {
-        editor.on("input change Undo Redo SetContent", () => debouncedUpdatePreview());
+        editor.on("input change Undo Redo SetContent", () => {
+          syncThemeColorFromEditor();
+          if (syncIconAssetsFromEditor()) updateDownloads();
+          debouncedUpdatePreview();
+        });
       },
     })
     .then((editors: Editor[]) => {
       activeEditor = editors[0];
-        document.documentElement.dataset.pantokenScheme = includeDarkModeCheckbox.checked
-          ? "dark"
-          : "light";
+      syncThemeColorFromEditor();
+      syncIconAssetsFromEditor();
+      document.documentElement.dataset.pantokenScheme = includeDarkModeCheckbox.checked
+        ? "dark"
+        : "light";
       applyEditorTheme(activeEditor);
       refreshAll();
     }),

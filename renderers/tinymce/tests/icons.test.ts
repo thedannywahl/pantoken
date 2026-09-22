@@ -1,8 +1,12 @@
+/**
+ * @vitest-environment happy-dom
+ */
 import { expect, test } from "vite-plus/test";
 import {
   buildEmoticonsDatabase,
   buildIconMarkup,
   getIconCdnFile,
+  getUsedIconCdnFiles,
   humanizeIconName,
   loadAllIcons,
   matchInsertedIcon,
@@ -56,11 +60,10 @@ test("humanizeIconName turns hyphens into spaces", () => {
   expect(humanizeIconName("circle-question-mark")).toBe("circle question mark");
 });
 
-test("buildIconMarkup renders the accessible icon component", () => {
+test("buildIconMarkup renders a decorative icon", () => {
   const icon: TaggedIcon = { name: "heart", source: "components" };
-  expect(buildIconMarkup(icon, "heart")).toBe(
-    '<span class="instui-icon -icon-heart" data-pantoken-icon="components:heart">' +
-      '<span class="instui-screen-reader-content">heart</span></span>',
+  expect(buildIconMarkup(icon)).toBe(
+    '<span class="instui-icon -icon-heart" aria-hidden="true"></span>',
   );
 });
 
@@ -73,6 +76,8 @@ test("buildEmoticonsDatabase categorizes icons by provider", () => {
   expect(database["simple-icons:heart"]?.category).toBe("Simple Icons");
   expect(database["components:close"]?.category).toBe("Instructure UI");
   expect(database["components:close"]?.char).toContain("-icon-close");
+  expect(database["components:close"]?.char).toContain('aria-hidden="true"');
+  expect(database["components:close"]?.char).not.toContain("instui-screen-reader-content");
   expect(database["components:close"]?.keywords).toContain("close");
 });
 
@@ -84,4 +89,35 @@ test("matchInsertedIcon recovers the TaggedIcon from a data-pantoken-icon marker
 
 test("matchInsertedIcon returns undefined when there's no marker", () => {
   expect(matchInsertedIcon("<p>no icon here</p>", [])).toBeUndefined();
+});
+
+test("getUsedIconCdnFiles deduplicates icon classes and drops deleted icons", () => {
+  const icons: TaggedIcon[] = [
+    { name: "heart", source: "components" },
+    { name: "github", source: "simple-icons" },
+  ];
+  const template = document.createElement("template");
+  template.innerHTML = '<span class="instui-icon -icon-heart"></span><i class="-icon-heart"></i>';
+
+  expect(getUsedIconCdnFiles(template.content, icons)).toEqual([
+    { package: "@pantoken/components", path: "dist/icons/heart.css" },
+  ]);
+
+  template.innerHTML = "<p>No icons remain.</p>";
+  expect(getUsedIconCdnFiles(template.content, icons)).toEqual([]);
+});
+
+test("getUsedIconCdnFiles preserves the selected provider for duplicate icon names", () => {
+  const icons: TaggedIcon[] = [
+    { name: "heart", source: "components" },
+    { name: "heart", source: "simple-icons" },
+  ];
+  const template = document.createElement("template");
+  template.innerHTML = '<span class="-icon-heart"></span>';
+
+  expect(
+    getUsedIconCdnFiles(template.content, icons, [
+      { package: "@pantoken/plugin-simple-icons", path: "dist/icons/heart.css" },
+    ]),
+  ).toEqual([{ package: "@pantoken/plugin-simple-icons", path: "dist/icons/heart.css" }]);
 });

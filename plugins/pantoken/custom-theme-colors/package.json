@@ -20,6 +20,7 @@
   "exports": {
     ".": "./dist/index.mjs",
     "./custom-theme-colors.css": "./dist/custom-theme-colors.css",
+    "./custom-theme-colors.scoped.css": "./dist/custom-theme-colors.scoped.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {

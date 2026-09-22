@@ -70,9 +70,12 @@ export function defaultThemeCssAssets(
     { package: "@pantoken/components", path: "dist/component-icons.css" },
     { package: "@pantoken/components", path: "dist/components.css" },
     { package: "@pantoken/components", path: "dist/utilities.css" },
-    // Scoped `:root[data-pantoken-color="…"]` overrides for all 13 color choices — a no-op unless
-    // that attribute is set, so callers can remap brand colors client-side without rebuilding.
-    { package: "@pantoken/plugin-custom-theme-colors", path: "dist/custom-theme-colors.css" },
+    // Attribute-scoped overrides for all 13 color choices — Canvas authors place the attribute on
+    // an editable content wrapper because the RCE cannot set attributes on the document root.
+    {
+      package: "@pantoken/plugin-custom-theme-colors",
+      path: "dist/custom-theme-colors.scoped.css",
+    },
   ];
 }
 

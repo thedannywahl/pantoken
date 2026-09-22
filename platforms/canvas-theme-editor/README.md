@@ -13,3 +13,10 @@ import { THEME_CSS, THEME_JS } from "@pantoken/canvas-theme-editor";
 ```
 
 Upload the two files to [Canvas's Theme Editor](https://community.instructure.com/en/kb/articles/661411-how-do-i-upload-custom-javascript-and-css-files-to-an-account) under **Advanced → CSS / JavaScript**.
+
+The generated CSS scopes color remapping to an editable content wrapper. Wrap a Canvas page's RCE
+HTML in a supported color attribute instead of trying to set an attribute on the document root:
+
+```html
+<div data-pantoken-color="sea">...</div>
+```

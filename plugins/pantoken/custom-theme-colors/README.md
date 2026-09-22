@@ -14,6 +14,14 @@ const css = toCss(byTheme("rebrand"), {
 });
 ```
 
+The package also exports two standalone stylesheets. `custom-theme-colors.css` matches attributes
+on `:root`; `custom-theme-colors.scoped.css` matches `[data-pantoken-color]` on any element so an
+editable subtree can own its color scheme:
+
+```html
+<div data-pantoken-color="sea">...</div>
+```
+
 ## Preservation Policy
 
 Custom color selection remaps the brand primitives (`navy` and `blue`). Upstream flattens some

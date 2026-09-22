@@ -128,21 +128,58 @@ export function getIconCdnFile(icon: TaggedIcon): CdnFile {
   }
 }
 
+/**
+ * Resolve the icon stylesheets used by `-icon-*` classes below `root`.
+ * Existing assets break ties when multiple providers expose the same icon name.
+ */
+export function getUsedIconCdnFiles(
+  root: ParentNode,
+  icons: TaggedIcon[],
+  currentAssets: readonly CdnFile[] = [],
+): CdnFile[] {
+  const assetKey = (asset: CdnFile): string => `${asset.package}:${asset.path}`;
+  const iconsByName = new Map<string, TaggedIcon[]>();
+  for (const icon of icons) {
+    const candidates = iconsByName.get(icon.name) ?? [];
+    candidates.push(icon);
+    iconsByName.set(icon.name, candidates);
+  }
+
+  const currentAssetKeys = new Set(currentAssets.map(assetKey));
+  const usedNames = new Set<string>();
+  for (const element of root.querySelectorAll("[class]")) {
+    for (const className of element.classList) {
+      if (className.startsWith("-icon-") && className.length > "-icon-".length) {
+        usedNames.add(className.slice("-icon-".length));
+      }
+    }
+  }
+
+  return [...usedNames].flatMap((name) => {
+    const candidates = iconsByName.get(name);
+    if (!candidates?.length) return [];
+    const icon = candidates.find((candidate) =>
+      currentAssetKeys.has(assetKey(getIconCdnFile(candidate))),
+    );
+    return [getIconCdnFile(icon ?? candidates[0])];
+  });
+}
+
 /** Turn a hyphenated icon slug into a readable label, e.g. `circle-question-mark` → `circle question mark`. */
 export function humanizeIconName(name: string): string {
   return name.replace(/-/g, " ");
 }
 
 /**
- * The markup inserted into editor content for a picked icon — pantoken's real accessible icon
- * component, not a placeholder. `data-pantoken-icon` is a transient marker (removed once the
- * label-edit follow-up dialog closes) used to locate the just-inserted node.
+ * The decorative icon markup retained in editor content after a picker selection.
  */
-export function buildIconMarkup(icon: TaggedIcon, label: string): string {
-  return (
-    `<span class="instui-icon -icon-${icon.name}" data-pantoken-icon="${icon.source}:${icon.name}">` +
-    `<span class="instui-screen-reader-content">${label}</span></span>`
-  );
+export function buildIconMarkup(icon: TaggedIcon): string {
+  return `<span class="instui-icon -icon-${icon.name}" aria-hidden="true"></span>`;
+}
+
+/** Add a transient source marker so the picker plugin can track the selected icon's CSS asset. */
+function buildTrackedIconMarkup(icon: TaggedIcon): string {
+  return `<span class="instui-icon -icon-${icon.name}" data-pantoken-icon="${icon.source}:${icon.name}" aria-hidden="true"></span>`;
 }
 
 /** Build the custom emoticons database TinyMCE's `emoticons` plugin renders/searches/inserts from. */
@@ -152,7 +189,7 @@ export function buildEmoticonsDatabase(icons: TaggedIcon[]): Record<string, Emot
     const key = `${icon.source}:${icon.name}`;
     database[key] = {
       keywords: [...icon.name.split("-"), ...(icon.description ? [icon.description] : [])],
-      char: buildIconMarkup(icon, humanizeIconName(icon.name)),
+      char: buildTrackedIconMarkup(icon),
       category: CATEGORY_BY_SOURCE[icon.source],
     };
   }

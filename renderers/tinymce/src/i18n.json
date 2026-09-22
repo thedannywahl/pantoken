@@ -52,6 +52,7 @@
   "logosColorModeMonochrome": { "message": "Monochrome", "translate": "always" },
   "logosColorModeLight": { "message": "Light", "translate": "always" },
   "insertButton": { "message": "Insert", "translate": "always" },
+  "replaceButton": { "message": "Replace", "translate": "always" },
   "cancelButton": { "message": "Cancel", "translate": "always" },
   "logoAltSuffix": { "message": "logo", "translate": "always" },
   "templatesConfirmReplace": {

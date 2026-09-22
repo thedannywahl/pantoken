@@ -22,6 +22,8 @@ export interface LogosPickerOptions {
   products: readonly Product[];
   currentAssets: CdnFile[];
   onMissingAsset?: MissingAssetHandler;
+  /** Resolve the selected logo's package export to a local or CDN URL. */
+  buildAssetUrl?: (file: CdnFile) => string;
   /** Register this picker's standalone toolbar button and menu item. */
   registerUi?: boolean;
 }
@@ -132,7 +134,13 @@ function openLogosDialog(editor: Editor, options: LogosPickerOptions): void {
       const selectedColorMode = data.colorMode;
 
       if (selectedProduct && selectedLayout && selectedColorMode) {
-        insertLogo(editor, selectedProduct, selectedLayout, selectedColorMode);
+        insertLogo(
+          editor,
+          selectedProduct,
+          selectedLayout,
+          selectedColorMode,
+          options.buildAssetUrl,
+        );
       }
       api.close();
     },
@@ -140,7 +148,7 @@ function openLogosDialog(editor: Editor, options: LogosPickerOptions): void {
 }
 
 /**
- * Insert the selected logo into the editor as a real, CDN-hosted `<img>` — Canvas's RCE strips
+ * Insert the selected logo into the editor as a real, hosted `<img>` — Canvas's RCE strips
  * inline `<svg>` and the CSS `background-image` this used to rely on, so the logo must be a
  * genuine raster image with its own `src`, `width`, and `height`.
  *
@@ -152,6 +160,7 @@ export function insertLogo(
   productId: string,
   layout: string,
   colorMode: string,
+  buildAssetUrl: (file: CdnFile) => string = buildFileUrl,
 ): void {
   const meta = getLogoMeta(
     productId as Product,
@@ -160,7 +169,10 @@ export function insertLogo(
   );
   if (!meta) return;
 
-  const url = buildFileUrl({ package: "@pantoken/plugin-logos", path: `dist/${meta.name}.png` });
+  const url = buildAssetUrl({
+    package: "@pantoken/plugin-logos",
+    path: `dist/${meta.name}.png`,
+  });
   insertHtml(editor, generateLogoHtml(meta, url));
 }
 

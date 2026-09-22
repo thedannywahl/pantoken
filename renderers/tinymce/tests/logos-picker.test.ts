@@ -243,6 +243,23 @@ test("insertLogo inserts a real hosted <img>, not a CSS-class placeholder", () =
   expect(insertContent).toHaveBeenCalledWith(expect.stringContaining('height="121"'));
 });
 
+test("insertLogo delegates the logo package export to the caller's asset URL builder", () => {
+  const editor = createMockEditor();
+  const buildAssetUrl = vi.fn(() => "/local/canvas-horizontal-color.png");
+
+  insertLogo(editor, "canvas", "horizontal", "color", buildAssetUrl);
+
+  expect(buildAssetUrl).toHaveBeenCalledWith({
+    package: "@pantoken/plugin-logos",
+    path: "dist/canvas-horizontal-color.png",
+  });
+  const insertContent = (editor as unknown as { insertContent: (html: string) => void })
+    .insertContent;
+  expect(insertContent).toHaveBeenCalledWith(
+    expect.stringContaining('src="/local/canvas-horizontal-color.png"'),
+  );
+});
+
 test("insertLogo writes into the CodeMirror doc while the source view is active", () => {
   const editor = createMockEditor();
   const insertAtCursor = vi.fn();

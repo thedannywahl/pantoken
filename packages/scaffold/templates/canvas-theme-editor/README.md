@@ -78,6 +78,11 @@ Preset HTML, CSS, and JavaScript are trusted author input and are restored witho
    replicate that, so always verify the pasted result in Canvas (see "Notes on Canvas's RCE"
    below).
 
+Copied HTML has one outer `<div data-pantoken-color="navy">` wrapper. The color picker updates that
+editable attribute, and you can change it directly in the HTML source view to any supported color
+namespace, such as `sea`. Keep the page content inside the wrapper so the uploaded `theme.css` can
+scope the selected color to that Canvas page.
+
 Use the **Placeholder image** button to insert a PNG from
 [`placehold.co`](https://placehold.co/) with custom dimensions, colors, visible text, and alt text.
 The preview and the resulting Canvas page need network access to `https://placehold.co` to render
