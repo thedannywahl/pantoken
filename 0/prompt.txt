@@ -132,3 +132,7 @@ Keep tests focused and resilient.
 4. Update existing changeset wording to mention embedded docs theme/color synchronization and preventing TinyMCE blanking.
 
 Before editing, read current contents/diff because user/formatter edits occurred. Use apply_patch, not destructive commands. After first edit, run the focused materialization test for `canvas-theme-editor is a known, template-only platform (no preset)`. If it fails, repair locally and rerun. Then run formatter only on changed files if available. Do not run full coverage. Do not commit. Return exact changed files and test result.
+
+---
+
+Start implementation
