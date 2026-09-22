@@ -1,0 +1,49 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M35QKMASXRGN32BJKP2ZF913",
+  "strategy": "manual-commit",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/complete-lucide-icons.md",
+    "compatibility.json",
+    "docs/compatibility.md",
+    "formats/icons/README.md",
+    "formats/icons/src/index.ts",
+    "formats/icons/tests/index.test.ts",
+    "formats/tokens/README.md",
+    "formats/tokens/package.json",
+    "formats/tokens/scripts/generate.ts",
+    "formats/tokens/src/meta.ts",
+    "formats/tokens/tests/index.test.ts",
+    "packages/core/README.md",
+    "packages/core/package.json",
+    "packages/core/src/icons.ts",
+    "packages/core/tests/icons.test.ts",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    "scripts/release/compatibility.test.ts",
+    "scripts/release/compatibility.ts",
+    "tools/upstream-diff/baseline/manifest.json",
+    "tools/upstream-diff/index.test.ts",
+    "tools/upstream-diff/index.ts",
+    "tools/upstream-diff/lib.test.ts",
+    "tools/upstream-diff/lib.ts"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
