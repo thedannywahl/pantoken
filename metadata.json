@@ -1,0 +1,53 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M35PKVBZV2BH5WDWNFD5GM74",
+  "strategy": "manual-commit",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/layouts-i18n-strings.md",
+    "i18n.config.json",
+    "l10n/layouts.strings.pot",
+    "plugins/pantoken/layouts/package.json",
+    "plugins/pantoken/layouts/scripts/generate.test.ts",
+    "plugins/pantoken/layouts/scripts/generate.ts",
+    "plugins/pantoken/layouts/scripts/lib/locales.ts",
+    "plugins/pantoken/layouts/src/i18n.json",
+    "plugins/pantoken/layouts/src/index.ts",
+    "plugins/pantoken/layouts/src/layouts/index.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/about-me.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/callout.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/course-home.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/footer.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/header.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/hero.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/index.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/rubric-note.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/syllabus.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/testimonial.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/two-column.ts",
+    "plugins/pantoken/layouts/src/lib/render-layout.ts",
+    "plugins/pantoken/layouts/tests/lib/render-layout.test.ts",
+    "pnpm-lock.yaml",
+    "renderers/tinymce/src/layouts.ts",
+    "renderers/tinymce/src/plugins/layouts.ts",
+    "renderers/tinymce/tests/layouts.test.ts",
+    "vite.config.ts"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}

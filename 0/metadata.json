@@ -1,0 +1,90 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M35PKVBZV2BH5WDWNFD5GM74",
+  "session_id": "6cc5d702-d20c-44bb-a819-c4ce175da991",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-22T23:18:33.325851Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    ".changeset/layouts-i18n-strings.md",
+    "i18n.config.json",
+    "l10n/layouts.strings.pot",
+    "plugins/pantoken/layouts/package.json",
+    "plugins/pantoken/layouts/scripts/generate.test.ts",
+    "plugins/pantoken/layouts/scripts/generate.ts",
+    "plugins/pantoken/layouts/scripts/lib/locales.ts",
+    "plugins/pantoken/layouts/src/i18n.json",
+    "plugins/pantoken/layouts/src/index.ts",
+    "plugins/pantoken/layouts/src/layouts/index.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/about-me.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/callout.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/course-home.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/footer.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/header.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/hero.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/index.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/rubric-note.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/syllabus.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/testimonial.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/two-column.ts",
+    "plugins/pantoken/layouts/src/lib/render-layout.ts",
+    "plugins/pantoken/layouts/tests/lib/render-layout.test.ts",
+    "pnpm-lock.yaml",
+    "renderers/tinymce/src/layouts.ts",
+    "renderers/tinymce/src/plugins/layouts.ts",
+    "renderers/tinymce/tests/layouts.test.ts",
+    "vite.config.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "198ee81603a2",
+  "checkpoint_transcript_start": 319,
+  "transcript_lines_at_start": 319,
+  "compact_transcript_start": 48,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-22T23:18:33.303549Z",
+    "agent_lines": 1008,
+    "agent_removed": 104,
+    "human_added": 6,
+    "human_modified": 1,
+    "human_removed": 0,
+    "total_committed": 1015,
+    "total_lines_changed": 1119,
+    "agent_percentage": 99.37444146559427,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 60,
+      "user_lines_removed": 46,
+      "agent_lines_added": 2146,
+      "agent_lines_removed": 330,
+      "user_added_per_file": {
+        "renderers/tinymce/tests/icons-picker.test.ts": 60
+      },
+      "user_removed_per_file": {
+        "renderers/tinymce/tests/icons-picker.test.ts": 46
+      }
+    }
+  ]
+}
