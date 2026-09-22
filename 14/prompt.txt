@@ -1,0 +1,84 @@
+renderers/tinymce code editor is just not meeting the needs.  it doesn't format/pretty print, it doesn't syntax highlight, it doesn't look good in dark mode, doesn't have a background in fullscreen, and none of the toolbar buttons work with it- so in html mode you can't insert a component or a layout or anything.  We need to compare with the alternatives and decide to replace or improve:
+* tiny plugin Code https://www.tiny.cloud/docs/tinymce/latest/code/
+* canvas-rce instructure_html_view https://github.com/instructure/canvas-lms/tree/1c9f0bb8013ed69c4f2efe11fd483025469b7e6c/packages/canvas-rce/src/rce/plugins/instructure_html_view
+* another option
+
+---
+
+In this pantoken monorepo, look at renderers/tinymce (likely a plugin package for TinyMCE that adds Instructure UI / pantoken component insertion capabilities). I need a THOROUGH understanding of:
+
+1. The overall structure of renderers/tinymce - what plugins/buttons/toolbar items it registers, how it integrates with TinyMCE.
+2. Specifically find the "code editor" / "code view" / HTML source view functionality - is it using TinyMCE's built-in `code` plugin, or a custom implementation? Find the exact file(s) implementing this.
+3. How does the current code view dialog/window work - does it use a plain textarea, or a code editor library (CodeMirror, Monaco, Ace, etc)? Check for any dependencies related to code editors in package.json.
+4. Look for dark mode / theme handling in the tinymce renderer - how is dark mode implemented elsewhere in the package (e.g. skin css, custom CSS overrides)?
+5. Look for how toolbar buttons (insert component, insert layout, etc.) are implemented - do they only work in the WYSIWYG iframe view, or do they have any awareness of/integration with the code/HTML view?
+6. Check for any existing tests related to the code editor feature.
+7. Look at package.json dependencies (tinymce version, any editor libraries like codemirror/monaco already installed anywhere in the repo - check other packages too via grep for "codemirror" or "monaco-editor" across the whole repo).
+8. Check docs/conventions or docs/architecture for any documentation of this renderer.
+
+Report back: exact file paths and line ranges for the current code-view implementation, relevant package.json dependency versions, any dark-mode CSS patterns used elsewhere in the repo that could be reused, and a summary of the toolbar button architecture (how insert-component/insert-layout buttons are wired, so I understand whether they could be adapted to work in an alternate code editor).
+
+---
+
+In the pantoken monorepo, in the package renderers/tinymce/src/plugins/, examine these five plugin files in detail: components.ts, layouts.ts, templates.ts, icons.ts, logos.ts.
+
+For EACH plugin, report:
+1. The exact function(s)/line ranges where content is actually inserted into the TinyMCE editor (look for calls like `editor.insertContent(...)`, `editor.execCommand('mceInsertContent', ...)`, `editor.selection.setContent(...)`, `editor.setContent(...)`, or any DOM manipulation of `editor.getBody()`).
+2. What HTML string is being built right before insertion (is it built as a plain string via template literal, or via DOM APIs then serialized)?
+3. Whether insertion depends on cursor/selection state in the WYSIWYG iframe (e.g. `editor.selection.getRng()`, bookmark-based insertion) in a way that wouldn't have an equivalent concept in a plain text/CodeMirror editor.
+4. Any shared helper module used by multiple plugins for building/inserting HTML (e.g. a common `insertHtml()` utility) — find its exact file path and signature if it exists.
+5. The `registerUi` option pattern mentioned in past research — confirm whether the actual insertion command (e.g. COMPONENTS_COMMAND) is a single function callable independent of UI registration, and where exactly that command function lives (file + line range) so it could potentially be called from a source-mode context too.
+6. Check renderers/tinymce/src/index.ts and any shared types file for a common `Editor`-like interface used across plugins, to see if introducing an alternate "insertion target" abstraction (WYSIWYG editor vs CodeMirror source view) would need to be threaded through many call sites or just one.
+
+Also check renderers/tinymce/tests/ for existing tests of components.ts, layouts.ts, icons.ts, logos.ts, templates.ts to understand what insertion behavior is already tested (test file names + key assertions on inserted HTML), so a plan can specify what needs updated/added test coverage.
+
+Report back concisely with exact file:line references for every claim.
+
+---
+
+thinking about it, the code editor doesn't have anything to do with rendering pantoken in tinymce, so we should move this to its own package in plugins/tinymce and then import it in canvas-theme-editor scaffold too.
+
+---
+
+Start implementation
+
+---
+
+we don't need to keep js-beautify just because Canvas uses it, if there's a better, modern alternative that fits better with the pantoken project, use that.
+
+---
+
+~/docs$ node scripts/build-canvas-rce.ts
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✗ Build failed in 963ms
+node:internal/modules/run_main:111
+    triggerUncaughtException(
+    ^
+
+Build failed with 1 error:
+
+Error: [vite+]: Rolldown failed to resolve import "@pantoken/tinymce-codemirror" from "/Users/dwahl/Scripts/pantoken/docs/.vitepress/cache/canvas-rce-src/src/main.ts".
+This is most likely unintended because it can break your application at runtime.
+If you do want to externalize this module explicitly add it to
+`build.rolldownOptions.external`
+    at viteLog (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_0af29a7fe375e7f2714b24cabd6be3aa/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:39692:57)
+    at onRollupLog (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_0af29a7fe375e7f2714b24cabd6be3aa/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:39725:7)
+    at onLog (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_0af29a7fe375e7f2714b24cabd6be3aa/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:39489:4)
+    at file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_0af29a7fe375e7f2714b24cabd6be3aa/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/create-bundler-option-wxuQPB7F.mjs:48:26
+    at logger (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_0af29a7fe375e7f2714b24cabd6be3aa/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/create-bundler-option-wxuQPB7F.mjs:39:3)
+    at aggregateBindingErrorsIntoJsError (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_0af29a7fe375e7f2714b24cabd6be3aa/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-CGhV1ebk.mjs:48:18)
+    at unwrapBindingResult (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_0af29a7fe375e7f2714b24cabd6be3aa/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-CGhV1ebk.mjs:18:128)
+    at #build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_0af29a7fe375e7f2714b24cabd6be3aa/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/rolldown-DZGaRc5R.mjs:133:34)
+    at async buildEnvironment (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_0af29a7fe375e7f2714b24cabd6be3aa/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:39599:66)
+    at async Object.build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_0af29a7fe375e7f2714b24cabd6be3aa/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40020:19)
+    at async file:///Users/dwahl/Scripts/pantoken/docs/scripts/build-canvas-rce.ts:51:1 {
+  errors: [Getter/Setter]
+}
+
+Node.js v26.10.0
+
+---
