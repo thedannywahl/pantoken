@@ -1,0 +1,87 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M35EJ93VVF9CV4G5F9XX2TW1",
+  "session_id": "cf18f306-6568-4c5d-95dc-8c7ded8fa101",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-22T20:57:53.277126Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    ".changeset/canvas-course-layouts.md",
+    ".changeset/sync-canvas-rce-dark-mode.md",
+    "packages/scaffold/templates/canvas-theme-editor/README.md",
+    "packages/scaffold/templates/canvas-theme-editor/package.json",
+    "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
+    "packages/scaffold/templates/canvas-theme-editor/src/preferences.ts",
+    "packages/scaffold/tests/index.test.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/about-me.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/course-home.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/footer.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/header.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/index.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/syllabus.ts",
+    "plugins/pantoken/layouts/tests/index.test.ts",
+    "plugins/tinymce/a11y/src/index.ts",
+    "plugins/tinymce/a11y/tests/index.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "ab58d66602a3",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-22T20:57:53.257182Z",
+    "agent_lines": 75,
+    "agent_removed": 4,
+    "human_added": 140,
+    "human_modified": 23,
+    "human_removed": 0,
+    "total_committed": 238,
+    "total_lines_changed": 254,
+    "agent_percentage": 31.10236220472441,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 587,
+      "user_lines_removed": 23,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".changeset/canvas-course-layouts.md": 5,
+        ".changeset/sync-canvas-rce-dark-mode.md": 5,
+        "packages/scaffold/templates/canvas-theme-editor/README.md": 2,
+        "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl": 19,
+        "packages/scaffold/templates/canvas-theme-editor/src/preferences.ts": 1,
+        "packages/scaffold/tests/index.test.ts": 4,
+        "plugins/pantoken/layouts/src/layouts/pages/about-me.ts": 20,
+        "plugins/pantoken/layouts/src/layouts/pages/course-home.ts": 29,
+        "plugins/pantoken/layouts/src/layouts/pages/footer.ts": 14,
+        "plugins/pantoken/layouts/src/layouts/pages/header.ts": 18,
+        "plugins/pantoken/layouts/src/layouts/pages/index.ts": 22,
+        "plugins/pantoken/layouts/src/layouts/pages/syllabus.ts": 26,
+        "plugins/pantoken/layouts/tests/index.test.ts": 12,
+        "plugins/tinymce/a11y/src/index.ts": 327,
+        "plugins/tinymce/a11y/tests/index.test.ts": 83
+      },
+      "user_removed_per_file": {
+        "packages/scaffold/templates/canvas-theme-editor/README.md": 1,
+        "plugins/pantoken/layouts/src/layouts/pages/index.ts": 1,
+        "plugins/pantoken/layouts/tests/index.test.ts": 1,
+        "plugins/tinymce/a11y/src/index.ts": 15,
+        "plugins/tinymce/a11y/tests/index.test.ts": 5
+      }
+    }
+  ]
+}
