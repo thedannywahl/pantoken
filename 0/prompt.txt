@@ -1,0 +1,1 @@
+roughly half the time when viewing canvas-theme-editor scaffold on localhost via `vpr docs:dev` it doesn't detect that this is a non-production environment and defauults to using a CDN to drive the preview, when it should be using 'none' and using local assets.
