@@ -3,7 +3,7 @@
   "checkpoint_id": "01M35M2TQQB0GT2SAXH6GAZYAP",
   "strategy": "manual-commit",
   "branch": "tinymce-utility",
-  "checkpoints_count": 7,
+  "checkpoints_count": 8,
   "files_touched": [
     "l10n/ar/tinymce.strings.po",
     "l10n/ca/tinymce.strings.po",
@@ -56,6 +56,13 @@
       "compact_transcript": "/5/transcript.jsonl",
       "content_hash": "/5/content_hash.txt",
       "prompt": "/5/prompt.txt"
+    },
+    {
+      "metadata": "/6/metadata.json",
+      "transcript": "/6/full.jsonl",
+      "compact_transcript": "/6/transcript.jsonl",
+      "content_hash": "/6/content_hash.txt",
+      "prompt": "/6/prompt.txt"
     }
   ],
   "token_usage": {
