@@ -10,7 +10,7 @@ export const SUP_SUB_PLUGIN_NAME = "pantoken_sup_sub";
 export const SUP_SUB_TOOLBAR_NAME = "pantokenSupSub";
 
 const SUP_SUB_ICON =
-  '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 12h8M12 19V5"/><path d="M21 8h-3.5a1.5 1.5 0 1 1 1.5 2.6L17.5 12H21M21 15.5h-3.5a1.5 1.5 0 1 0 1.5-2.6"/></svg>';
+  '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 19 8-8"/><path d="m12 19-8-8"/><path d="M20 12h-4c0-1.5.442-2 1.5-2.5S20 8.334 20 7.002c0-.472-.17-.93-.484-1.29a2.105 2.105 0 0 0-2.617-.436c-.42.239-.738.614-.899 1.06"/></svg>';
 
 /** Build a single toolbar menu button toggling superscript or subscript. */
 export function createSupSubPlugin() {
