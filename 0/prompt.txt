@@ -1,0 +1,18 @@
+are we doing contrast checking in this plugin?
+
+---
+
+yes, we're going to do a major renovation here:
+1. add a settings tab to the modal so it's 'findings | settings' that has all the rules and toggles for them to be enabled/disabled (enabled by default)
+2. the toggle for contrast should also have a picker for 3:1 and 4.5:1 contrast ratios.
+3. when an accessibility issue is found the modal should paginate/sub-tab the issues. and we should be using the withvisualdebug to highlight in the editor where the issue is while the modal's open.
+4. the settings should have a 'highlight a11y issues' that automatically turns on the visualdebug for the invalid element.
+5. our rules have recommended fixes, if a fix can be automated we should have a 'fix' button that attempts to fix it.
+
+---
+
+1. use the WCAG best practice for 2.2 conformance
+2. it should persist
+3. no, the opening of the modal and review of the issue is effectively the confirmation.
+also:
+canvas-theme-editor currently saves its config settings to local storage, the tinymce config settings (all, not just this plugin) should be written to the config's local storage settings too.

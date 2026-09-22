@@ -1,0 +1,48 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M35B1NCKZVPT7X81RFW3MXPG",
+  "strategy": "manual-commit",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 3,
+  "files_touched": [
+    ".changeset/canvas-theme-editor-blank-css-js-tabs.md",
+    ".changeset/tinymce-icons-more-glyph-libraries.md",
+    ".changeset/visualblocks-footer-active-state.md",
+    "packages/scaffold/templates/canvas-theme-editor/README.md",
+    "packages/scaffold/templates/canvas-theme-editor/src/app.html",
+    "packages/scaffold/templates/canvas-theme-editor/src/i18n.json",
+    "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
+    "plugins/pantoken/lucide-lab/package.json",
+    "plugins/pantoken/lucide-lab/scripts/generate-manifest.ts",
+    "plugins/pantoken/lucide-lab/vite.config.ts",
+    "pnpm-lock.yaml",
+    "renderers/tinymce/package.json",
+    "renderers/tinymce/src/icon-pack.ts",
+    "renderers/tinymce/src/icons.ts",
+    "renderers/tinymce/src/index.ts",
+    "renderers/tinymce/src/plugins/pantoken.ts",
+    "renderers/tinymce/src/plugins/templates.ts",
+    "renderers/tinymce/src/plugins/visualblocks-footer.ts",
+    "renderers/tinymce/tests/icon-pack.test.ts",
+    "renderers/tinymce/tests/icons-picker.test.ts",
+    "renderers/tinymce/tests/icons.test.ts",
+    "renderers/tinymce/tests/templates.test.ts",
+    "renderers/tinymce/tests/visualblocks-footer.test.ts"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
