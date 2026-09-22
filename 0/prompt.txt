@@ -1,0 +1,44 @@
+the canvas-theme-editor scaffold should save user configuration settings to the local storage:
+* editor/preview direction (row/column)
+* preview size
+* editor / preview full screen toggle
+* preferred CDN provider
+
+---
+
+In the pantoken repo at /Users/dwahl/Scripts/pantoken, explore the `platforms/canvas-theme-editor/` directory thoroughly.
+
+I need to understand:
+1. Overall structure of this package (is it a Vite app, what framework - React/Vue/Svelte/vanilla?)
+2. Where the main UI/editor component(s) live, especially any state related to:
+   - editor/preview layout direction (row vs column / split orientation)
+   - preview size (e.g. width/height or viewport size selector)
+   - full screen toggle for editor or preview panels
+   - CDN provider selection (there's likely a dropdown/select for choosing which CDN to load pantoken assets from)
+3. How state is currently managed (React useState/useReducer/context, Vue ref/reactive, Zustand, plain JS, URL params, etc.) — is there already any persistence to localStorage, sessionStorage, or URL query params?
+4. Any existing utility for localStorage access patterns elsewhere in the repo (search across the whole repo for `localStorage` usage to see if there's a shared convention/helper).
+5. File paths and relevant line numbers/snippets for each piece of state above (the component that owns the state, and where it's read/written).
+6. Check for any tests directory for this package and how components are tested (to know what test conventions to follow for a future persistence feature).
+7. Check package.json for this scaffold to see framework/deps and build scripts.
+
+Report back with: a summary of the architecture, the exact file paths and code snippets (with line numbers) for each of the 4 state pieces (direction, preview size, fullscreen toggle, CDN provider), any existing localStorage/persistence conventions found repo-wide, and the test setup conventions for this package.
+
+---
+
+Start implementation
+
+---
+
+there are multiple agents working, likely they touched those.
+
+---
+
+what happened to this file? it got completely reverted
+
+---
+
+what were the 8 files?
+
+---
+
+which src/i18n.json?
