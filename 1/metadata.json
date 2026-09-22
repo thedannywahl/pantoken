@@ -1,12 +1,13 @@
 {
   "cli_version": "0.10.6",
   "checkpoint_id": "01M35QN65036E3WJY2TRA04659",
+  "session_id": "a6cead68-323a-4029-b0a5-6e1fd3f0ab46",
   "strategy": "manual-commit",
+  "created_at": "2026-09-22T23:36:45.404618Z",
   "branch": "tinymce-utility",
-  "checkpoints_count": 2,
+  "checkpoints_count": 1,
+  "save_step_count": 1,
   "files_touched": [
-    ".changeset/components-self-contained-icons-css.md",
-    ".changeset/tinymce-icons-custom-picker.md",
     "ASSURANCE.md",
     "formats/components/scripts/build-icon-entries.ts",
     "formats/components/scripts/generate.ts",
@@ -26,33 +27,45 @@
     "renderers/tinymce/src/plugins/icons.ts",
     "renderers/tinymce/src/plugins/pantoken.ts",
     "renderers/tinymce/src/strings.ts",
-    "renderers/tinymce/tests/icon-picker-dom.test.ts",
-    "renderers/tinymce/tests/icon-picker-styles.test.ts",
     "renderers/tinymce/tests/icons-picker.test.ts",
     "renderers/tinymce/tests/icons.test.ts",
     "renderers/tinymce/tests/pantoken.test.ts"
   ],
-  "sessions": [
-    {
-      "metadata": "/0/metadata.json",
-      "transcript": "/0/full.jsonl",
-      "compact_transcript": "/0/transcript.jsonl",
-      "content_hash": "/0/content_hash.txt",
-      "prompt": "/0/prompt.txt"
-    },
-    {
-      "metadata": "/1/metadata.json",
-      "transcript": "/1/full.jsonl",
-      "compact_transcript": "/1/transcript.jsonl",
-      "content_hash": "/1/content_hash.txt",
-      "prompt": "/1/prompt.txt"
-    }
-  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "fdcf354a0c1a",
+  "checkpoint_transcript_start": 1430,
+  "transcript_lines_at_start": 1430,
+  "compact_transcript_start": 217,
   "token_usage": {
     "input_tokens": 0,
     "cache_creation_tokens": 0,
     "cache_read_tokens": 0,
     "output_tokens": 0,
     "api_call_count": 0
-  }
+  },
+  "session_metrics": {
+    "turn_count": 3
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-22T23:36:45.379699Z",
+    "agent_lines": 930,
+    "agent_removed": 251,
+    "human_added": 171,
+    "human_modified": 58,
+    "human_removed": 0,
+    "total_committed": 1159,
+    "total_lines_changed": 1410,
+    "agent_percentage": 83.75886524822695,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
 }
