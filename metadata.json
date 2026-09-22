@@ -3,7 +3,7 @@
   "checkpoint_id": "01M35NJZXGGCV4VF56Z5DFE570",
   "strategy": "manual-commit",
   "branch": "tinymce-utility",
-  "checkpoints_count": 2,
+  "checkpoints_count": 5,
   "files_touched": [
     ".changeset/use-pantoken-tray-controls.md",
     "packages/scaffold/templates/canvas-theme-editor/src/app.css",
@@ -25,6 +25,13 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": "/1/prompt.txt"
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
+      "prompt": "/2/prompt.txt"
     }
   ],
   "token_usage": {
