@@ -1,0 +1,45 @@
+the canvas a11y plugin that we modeled this after has the accessibliity checker in the footer of the toolbar with the word-count and it carries a badge that automatically updates the number of issues as you type, is that possible here?
+
+---
+
+Read-only, medium thoroughness. Explore the pantoken repo for the TinyMCE a11y plugin and any existing footer/statusbar/word-count/badge integration patterns, especially Canvas-inspired code. Determine whether TinyMCE supports registering a footer/statusbar component with a dynamic issue-count badge, identify concrete APIs/events and relevant tests/config. Do not edit files. Return concise findings with exact file paths and symbols.
+
+---
+
+consumers should be able to specify how they want the a11y checker displayed: toolbar, footer, both, etc.  the footer icon should be clickable and open the checker like the toolbar button does.
+
+---
+
+Read-only, quick exploration. In pantoken, inspect @pantoken/tinymce-a11y public API, README/docs, and TinyMCE generator/integration references. Determine exactly where consumer plugin options are documented/exported and find existing config-option patterns that can model a display-mode option. Include paths, symbols, and recommended literal values. Do not edit.
+
+---
+
+Start implementation
+
+---
+
+you're stuck in an interactive shell.
+
+---
+
+now, wire this into the canvas-theme-editor scaffold in the footer (not the toolbar)
+
+---
+
+I get: Failed to initialize plugin: pantoken_a11y
+
+---
+
+the preview pane height should be dynamically adjusting to fit the height of the iframe, which in turn should be dynamically adjusting via the post-message to get the content height.
+
+---
+
+preview at: http://localhost:5173/guide/canvas-rce the preview pane height is not scaled to the content height.
+
+---
+
+good, this now works, however, the a11y plugin does not render in the footer of the tinymce instance.
+
+---
+
+it now loads on the footer but shows the text 'zero accessibility issues' instead of just the icon. or '1 accessibility issues' instead of a badge.
