@@ -3,7 +3,7 @@
   "checkpoint_id": "01M357QH5RZKHP7T4NEHH86H03",
   "strategy": "manual-commit",
   "branch": "tinymce-utility",
-  "checkpoints_count": 15,
+  "checkpoints_count": 29,
   "files_touched": [
     "packages/scaffold/templates/canvas-theme-editor/README.md",
     "packages/scaffold/tests/index.test.ts",
@@ -23,6 +23,10 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": "/1/prompt.txt"
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "prompt": ""
     }
   ],
   "token_usage": {
