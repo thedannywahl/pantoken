@@ -3,7 +3,7 @@
   "checkpoint_id": "01M356WQ0QCBZSX0MH0GF5ND9S",
   "strategy": "manual-commit",
   "branch": "tinymce-utility",
-  "checkpoints_count": 73,
+  "checkpoints_count": 77,
   "files_touched": [
     ".changeset/fullscreen-viewport-height.md",
     ".changeset/restore-codemirror-syntax-highlighting.md",
@@ -133,6 +133,13 @@
       "compact_transcript": "/15/transcript.jsonl",
       "content_hash": "/15/content_hash.txt",
       "prompt": "/15/prompt.txt"
+    },
+    {
+      "metadata": "/16/metadata.json",
+      "transcript": "/16/full.jsonl",
+      "compact_transcript": "/16/transcript.jsonl",
+      "content_hash": "/16/content_hash.txt",
+      "prompt": "/16/prompt.txt"
     }
   ],
   "token_usage": {
