@@ -1,0 +1,112 @@
+TinyMCE and Canvas do not allow svg - all of our icons and our logos are svgs, we need a way to export/import png versions, and they may possibly need to be hosted somewhere to be importable into the Canvas RCE via copy/paste.
+
+---
+
+In the pantoken monorepo (/Users/dwahl/Scripts/pantoken), I need to understand how icons and logos are represented and inserted into the TinyMCE editor for the canvas-theme-editor app, in order to plan adding a PNG export/import path (since Canvas LMS's Rich Content Editor and TinyMCE strip/disallow inline <svg> elements).
+
+Please investigate and report back (thorough):
+
+1. `formats/icons/` — how icons are stored/emitted. Are they raw SVG strings? Is there any existing rasterization (SVG->PNG) tooling anywhere in the repo (search for "png", "canvas.toDataURL", "sharp", "resvg", "sharp-cli", "rasteriz" etc across the whole repo)?
+2. `packages/pantoken/` or wherever `logos` are defined (used in main.ts.tmpl via `import { logos, products } from "@pantoken/tinymce"`) — find the `@pantoken/tinymce` package (likely under `renderers/` or `bundlers/` or `platforms/`) and show how `loadAllIcons()`, `logos`, `createPantokenPlugin` work, specifically the icon-picker and logo-picker plugins that insert content into the TinyMCE editor. Show exactly what HTML/markup gets inserted (is it an `<img>` tag with an SVG data URI, or literal inline `<svg>`, or a `<img>` referencing a CDN URL already?).
+3. `packages/cdn/` — how CDN asset URLs are constructed for icons/logos/components (the `CdnFile` type, `onMissingAsset` callback, `currentAssets` array pattern used in main.ts.tmpl). Is there already a hosted CDN endpoint (e.g. jsdelivr/unpkg via npm package) that serves icon SVG files by URL? Does it serve any raster/PNG format already?
+4. Check `formats/icon-font/` for any relevant format that might already support PNG/raster.
+5. Search the codebase for any existing mentions of "raster", "PNG", "svg to png", "rsvg", "sharp" as an npm dependency (check root package.json and any formats/platforms package.json for image-processing libraries like `sharp`, `svg2png`, `resvg-js`, `@resvg/resvg-js`, `canvas` (npm package), `puppeteer`).
+6. Look at `packages/scaffold/templates/canvas-theme-editor/` fully (list directory) to understand the whole app structure - src files, README, app.html, plugin files for custom-components/custom-theme-colors etc mentioned in main.ts.tmpl imports (`@pantoken/plugin-custom-components`, `@pantoken/plugin-layouts`, `@pantoken/plugin-custom-theme-colors`) - are these under `plugins/`?
+7. Check `docs/engineering-log.md` and `docs/architecture/overview.md` for any relevant existing notes about SVG restrictions in Canvas/TinyMCE, or about the CDN hosting model (is pantoken's CDN just npm-package-backed via jsdelivr, meaning we can't host arbitrary generated PNGs on demand without a real server backend?).
+
+Report back:
+- Exact current insertion behavior (SVG inline vs img+dataURI vs CDN URL) for icons and logos in the TinyMCE plugin
+- Whether any PNG/raster generation tooling already exists in the repo
+- How CDN URLs work today (is it purely static npm-published files served via jsdelivr, i.e. no dynamic upload capability) 
+- Full list of relevant file paths with line numbers for key logic
+- The scaffold app's full directory structure and package.json dependencies
+
+---
+
+In the pantoken monorepo (/Users/dwahl/Scripts/pantoken), I'm planning a new PNG raster format for icons and logos (to support Canvas LMS RCE, which disallows inline SVG/style and requires `<img src>` to be an http(s) URL, not a data: URI). I need details to design a pre-generated PNG catalog with a fixed color x size matrix, published to the existing static CDN (npm + jsDelivr/unpkg), consumed by canvas-theme-editor's TinyMCE picker UI.
+
+Please investigate (thorough) and report back with concrete facts + file paths + line numbers:
+
+1. **Icon color tokens**: In `@pantoken/core`/`@pantoken/tokens`/`formats/css`, what discrete icon/text color tokens exist (e.g. primary, secondary, brand, on-inverse, etc.)? List the canonical token names/values usable as a fixed PNG color variant set. Also check `formats/components/src/` for how icon color is normally applied (currentColor? a modifier class like `-color-*`?).
+
+2. **Icon sizes**: In `formats/components/src/utilities` or wherever icon sizing utility classes live, what discrete sizes exist (e.g. xs/sm/md/lg/xl mapped to px)? Also check `formats/icon-font/` for any font-based sizing conventions.
+
+3. **Logos**: Find `formats/` or `plugins/` package defining logos (referenced as `@pantoken/plugin-logos` in renderers/tinymce/src/plugins/logos.ts). Show the full combination matrix already supported: product IDs, layout options (horizontal/stacked/icon-only?), color-mode options. Does it already support multiple sizes, or just one viewBox-scalable SVG per combo?
+
+4. **@pantoken/tinymce icon/logo picker UI**: Read `renderers/tinymce/src/plugins/icons.ts` and `renderers/tinymce/src/plugins/logos.ts` in full. Does the picker dialog currently expose any color or size selection controls (dropdowns, swatches) before insert? What's the exact `Ui.Dialog` config/body structure? I need to know if adding "choose color" + "choose size" controls to this dialog is a small/medium/large change.
+
+5. **CDN package conventions for adding a new asset type**: Read `packages/cdn/src/` in full (build-url.ts, types, provider config, and any registry/allowlist of known packages or asset kinds). If I publish a new npm package like `@pantoken/icons-png` or add a new export subpath e.g. `@pantoken/components/icons/{name}-png/{color}-{size}.png`, what changes are needed in packages/cdn to build correct URLs for it (is there a hardcoded list of packages/extensions, or is it fully generic path-based)?
+
+6. **Existing build scripts that rasterize or process icon SVGs**: check `formats/icons/` and `formats/icon-font/` package.json + build scripts (e.g. tsdown config, any svgo/sharp/resvg usage) to see established patterns I should follow for a new formats/icons-png-like package (script location, how dist files get published, exports map style in package.json).
+
+7. **plugins/pantoken or plugin-kit conventions**: is there a `definePlugin` pattern already used for something like `@pantoken/plugin-logos` or `@pantoken/plugin-simple-icons` that publishes a large generated file catalog? Show its package.json exports and a sample of its generated directory structure (e.g. `dist/icons/{name}.css`) so I can mirror it for PNGs (`dist/icons/{name}/{color}-{size}.png`).
+
+8. **CI/publish pipeline**: Is there a `vp run generate` or similar script that regenerates these catalogs, and would a new png catalog need a new script wired into `package.json`'s build/prepublish steps? Check root `package.json` scripts and the relevant package's `package.json` scripts.
+
+Report back with concrete recommendations file paths, and note any conventions/gotchas relevant to adding a new generated static-asset package (e.g. size limits, existing patterns for `?inline` vs regular imports, monorepo publish workflow via changesets).
+
+---
+
+the colors for the list should be the ones from the theme color picker plus black and white.
+
+---
+
+I'm planning a feature for the pantoken repo's canvas-theme-editor scaffold app (packages/scaffold/templates/canvas-theme-editor). The app is a TinyMCE-based RCE (Rich Content Editor) authoring tool for Canvas LMS. It lets authors pick components, icons, logos, layouts from pantoken's design system and insert them into a WYSIWYG editor, with a live preview and theme.css/theme.js export.
+
+Context: TinyMCE/Canvas RCE does not allow inline SVG content (Canvas strips <svg> tags on save/render). But pantoken ships icons and logos exclusively as SVG. The user wants a way to export/import PNG versions of icons and logos, and possibly host them somewhere so they can be copy/pasted into Canvas RCE.
+
+Also there's a "theme color picker" in the app already (a list of color swatches used to preview theme color remapping, likely `selectedColor`/`colorButtons`/`.theme-picker__color-item` in main.ts.tmpl, and something in `@pantoken/plugin-custom-theme-colors` / `customThemeColorsCss()`). The user now wants: "the colors for the list should be the ones from the theme color picker plus black and white" — figure out what "list" this most likely refers to (likely a new color-selection list for icon/logo PNG export, e.g. choosing icon fill color before exporting to PNG).
+
+Please investigate and report back:
+1. Full structure of `packages/scaffold/templates/canvas-theme-editor/` (list all files/dirs, especially src/, app.html, strings.ts).
+2. The `@pantoken/canvas-theme-editor` package (likely under `platforms/canvas-theme-editor` or similar) — find `buildTheme`, `CDN_PROVIDERS`, `ThemeVariant`, `ThemeMode` exports and their source file paths.
+3. `@pantoken/plugin-custom-theme-colors` package — where is it, what does `customThemeColorsCss()` return, what are the actual color names/values used in the theme color picker (the `.theme-picker__color-item[data-color]` list) — find the HTML/config defining these color swatches (likely colors like navy, blue, green etc.) and their hex values.
+4. `@pantoken/tinymce` package — specifically `listComponents`, `listUtilities`, `loadAllIcons`, `logos`, `pageLayouts`, `products`, and any existing icon-picker or logo-picker plugin UI code (look for a picker plugin file, e.g. icons picker, logos picker) — how do they render icon/logo previews currently (as inline SVG? img tags with data URIs?).
+5. `formats/icons` package — how are icons represented/stored (SVG source, are there any existing PNG/raster exports, sprite sheets, any rasterization tooling e.g. sharp, resvg, sharp-based scripts elsewhere in repo)?
+6. Search the whole repo for any existing PNG export/rasterization utilities, "svg to png", "rasteriz", "sharp", "resvg", "canvas.toDataURL", "toBlob" that could be reused.
+7. Search for any existing CDN hosting mechanism (`@pantoken/cdn` package) - does it host files that could serve generated PNGs? What's its structure/API (CdnFile type, CDN_PROVIDERS)?
+8. Any existing "color" list constants near icons/logos (e.g. a fixed set of icon colors used elsewhere for icon color variants) that might be the "list" the user refers to.
+
+Report file paths with line numbers for key exports, and summarize actual hex/color values found for the theme color picker list (the `data-color` values) so I can build a plan for "list of colors for icon/logo export = theme color picker colors + black and white".
+
+---
+
+In the pantoken repo, I need detailed context to plan a new build-time SVG-to-PNG icon rasterization feature published via CDN. Investigate and report:
+
+1. `formats/icons/` package: full structure (src files, package.json, how icons are stored/exported — e.g. a manifest, individual SVG files, a generated index). Show the shape of an icon entry (name, svg string/path, tags, category) and where `TaggedIcon` type is defined (likely in renderers/tinymce/src/icons.ts or formats/icons).
+2. `formats/icon-font/` package: full structure — this is precedent for a *generated/build-time* derived-format package from the base icons. Show its package.json (name, exports, build script), its build script source (how it reads formats/icons and generates output), and how it's published/versioned (check pnpm-workspace.yaml catalog, changesets usage).
+3. How is `@pantoken/icon-font` (or similar generated format package) referenced via the CDN — check `packages/cdn/src/index.ts` CDN_PROVIDERS and any hardcoded package list, and check `platforms/canvas-theme-editor/src/build-theme.ts` for how it builds CdnFile lists referencing other packages' dist output paths.
+4. `renderers/tinymce/src/icons.ts` — full content: `loadAllIcons()` implementation, `TaggedIcon` type, how icon SVG content is fetched/loaded (from `@pantoken/icons` package directly, or a manifest).
+5. `renderers/tinymce/src/plugins/icons.ts` — full content, especially the dialog UI structure, the grid item rendering, and the final "insert" action (what HTML/DOM gets inserted into the TinyMCE editor when a user picks an icon).
+6. `docs/scripts/gen-og.ts` — full content, as the closest existing precedent for `@resvg/resvg-js` based build-time PNG generation (show how it invokes Resvg, any font loading, output file writing).
+7. `plugins/pantoken/custom-theme-colors/src/index.ts` — full content, to get the exact hex values (or CSS var references) for the 13 COLOR_KEYS.
+8. Check `pnpm-workspace.yaml` catalog for `@resvg/resvg-js` and `sharp` version pins.
+9. Check if there's a `changesets` convention file (`.changeset/README.md` or similar) confirming `pnpm changeset` usage.
+
+Report full file contents (or the relevant excerpts) with file paths and line numbers so I can design: a new `@pantoken/icons-png` (or similarly named) format package that at build time rasterizes every icon in formats/icons at multiple colors (13 theme colors + black + white) into PNG files, publishes them, and is consumable via @pantoken/cdn; plus changes needed in renderers/tinymce/src/plugins/icons.ts to add a color picker UI and swap SVG insertion for a hosted PNG `<img>` insertion when targeting Canvas RCE.
+
+---
+
+we were able to provide an alterative for icons by having them insert an icon component class and the icon gets loaded with the stylesheet, so we can narrow this to only logos, which means we don't need any color swapping.
+
+---
+
+In the pantoken monorepo (/Users/dwahl/Scripts/pantoken), find the package that provides pantoken's logos (referenced as `@pantoken/plugin-logos` and `logos`/`products` in `renderers/tinymce/src/index.ts` and used by `renderers/tinymce/src/plugins/logos.ts`). I need full detail to plan a build-time SVG-to-PNG export for logos.
+
+Report back:
+1. Full location and structure of the logos package (likely `plugins/pantoken/logos/` or similar — search for "plugin-logos" across the repo). Show package.json (deps, exports, scripts) and src/ file listing.
+2. How logo SVGs are stored/generated: raw SVG per product×layout×colorMode combo, or generated from a template + brand assets? Show the actual source file(s) (e.g. src/logos/*.svg or a data structure with inline SVG strings).
+3. The full list of `products` (product IDs) and `logos` export referenced in `renderers/tinymce/src/index.ts` — what's the exact shape of the `logos` data structure (name, per-product entries, layout options, colorMode options)? Any intrinsic width/height or viewBox per logo/layout that determines its natural aspect ratio (since logos "have their own sizing" unlike square icons)?
+4. How does the current build produce `dist/{productId}-{layout}-{colorMode}.css` (mentioned in renderers/tinymce/src/plugins/logos.ts) — find the build script that generates this CSS output, and see whether it computes/knows real pixel width/height per logo (needed for `<img width height>` on a raster PNG version).
+5. Read `renderers/tinymce/src/plugins/logos.ts` in full — the dialog UI (product/layout/colorMode selects), and the exact `insertLogo`/insertion function, including how alt text is currently generated (or not) for the img tag, and how CSS asset tracking works (`trackAndInjectAsset`/`onMissingAsset`).
+6. Check for any existing viewBox/dimension metadata already present in the logo SVG source data (needed to size PNGs and set `<img width height>` correctly per layout).
+
+Report concrete file paths + line numbers + relevant code excerpts (data shapes, build script) so I can design a `@pantoken/logos-png`-style build-time rasterization package and picker UI update.
+
+---
+
+the content max-width is 956px, so having the logos width be half of that should be fine, then derive the height from the ratio of the viewbox. icon logos can be half of that (239px wide).
+
+---
+
+Start implementation
