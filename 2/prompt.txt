@@ -1,0 +1,5 @@
+in the canvas-theme-editor scaffold instance, inserting an icon, either through html (-icon-* class) or through the icon picker (emoji library) should automatically add it to the custom css that we silently track and generate.  it should also keep track of deletions so it's not polluted, and it should track duplicates so it's not polluted.
+
+---
+
+Continue: "Continue to iterate?"
