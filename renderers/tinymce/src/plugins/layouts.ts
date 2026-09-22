@@ -1,12 +1,12 @@
 /**
  * TinyMCE "Layouts" plugin — like the Components/Icons/Logos pickers, but for whole starter page
- * layouts. Defaults to pantoken's own bundled {@link pageLayouts} (hero, callout, testimonial,
- * two-column, rubric note); pass `layouts` to override or extend the list.
+ * layouts. Defaults to pantoken's own bundled {@link pageLayouts}; pass `layouts` to override or
+ * extend the list.
  *
  * \@module
  */
 import type { Editor } from "tinymce";
-import { pageLayouts, type PageLayout } from "../layouts.js";
+import { pageLayouts, type PageLayout, type PageLayoutImagePlaceholder } from "../layouts.js";
 import { replaceContent } from "../lib/insertion-target.js";
 import { formatTinymceString, TINYMCE_STRINGS } from "../strings.js";
 
@@ -14,10 +14,57 @@ import { formatTinymceString, TINYMCE_STRINGS } from "../strings.js";
 export interface LayoutsPluginOptions {
   /** The page layouts offered in the "Insert layout" picker. Defaults to {@link pageLayouts}. */
   layouts?: readonly PageLayout[];
+  /** Resolves a layout image slot into a consumer-specific image URL. */
+  resolveImage?: LayoutImageResolver;
   /** Called after a layout is inserted (e.g. to refresh a live preview). */
   onInsert?: (layout: PageLayout) => void;
   /** Register this picker's standalone toolbar button and menu item. */
   registerUi?: boolean;
+}
+
+/** Image attributes returned by a consumer-specific layout image resolver. */
+export interface LayoutImageAttributes {
+  src: string;
+  alt?: string;
+  width?: number | string;
+  height?: number | string;
+}
+
+/** Resolves a provider-neutral layout image slot for a particular consumer. */
+export type LayoutImageResolver = (
+  placeholder: PageLayoutImagePlaceholder,
+  layout: PageLayout,
+) => LayoutImageAttributes | undefined;
+
+/** Materialize declared layout image slots without embedding a provider URL in the layout. */
+export function materializeLayout(layout: PageLayout, resolveImage?: LayoutImageResolver): string {
+  if (!resolveImage || !layout.imagePlaceholders?.length) return layout.html;
+
+  const parser = new DOMParser();
+  const document = parser.parseFromString(`<body>${layout.html}</body>`, "text/html");
+  const placeholders = new Map(
+    layout.imagePlaceholders.map((placeholder) => [placeholder.key, placeholder]),
+  );
+
+  for (const image of Array.from(
+    document.querySelectorAll("img[data-pantoken-image-placeholder]"),
+  )) {
+    const key = image.getAttribute("data-pantoken-image-placeholder");
+    if (!key) continue;
+    const placeholder = placeholders.get(key);
+    if (!placeholder) continue;
+    const attributes = resolveImage(placeholder, layout);
+    if (!attributes) continue;
+
+    image.classList.add("instui-img");
+    image.setAttribute("src", attributes.src);
+    image.setAttribute("alt", attributes.alt ?? placeholder.altText ?? "");
+    image.setAttribute("width", String(attributes.width ?? placeholder.width));
+    image.setAttribute("height", String(attributes.height ?? placeholder.height));
+    image.removeAttribute("data-pantoken-image-placeholder");
+  }
+
+  return document.body.innerHTML;
 }
 
 /** The plugin name to pass in TinyMCE's `plugins`/`toolbar` init options. */
@@ -29,7 +76,7 @@ export const LAYOUTS_COMMAND = "pantokenOpenLayouts";
 
 /** Builds the `tinymce.PluginManager.add` callback for the "Insert layout" plugin. */
 export function createLayoutsPlugin(options: LayoutsPluginOptions = {}) {
-  const { layouts = pageLayouts, onInsert } = options;
+  const { layouts = pageLayouts, onInsert, resolveImage } = options;
   return function pantokenLayoutsPlugin(editor: Editor) {
     const openDialog = (): void => {
       editor.windowManager.open({
@@ -59,7 +106,7 @@ export function createLayoutsPlugin(options: LayoutsPluginOptions = {}) {
             formatTinymceString(TINYMCE_STRINGS.layoutsConfirmReplace, { title: chosen.title }),
             (confirmed: boolean): void => {
               if (!confirmed) return;
-              replaceContent(editor, chosen.html);
+              replaceContent(editor, materializeLayout(chosen, resolveImage));
               onInsert?.(chosen);
             },
           );

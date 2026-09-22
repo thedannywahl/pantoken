@@ -54,11 +54,14 @@ export {
 } from "./plugins/sup-sub.js";
 
 // Layouts: starter page layouts sourced from @pantoken/plugin-layouts, alongside Components/Icons/Logos.
-export { type PageLayout, pageLayouts } from "./layouts.js";
+export { type PageLayout, type PageLayoutImagePlaceholder, pageLayouts } from "./layouts.js";
 export {
   createLayoutsPlugin,
   LAYOUTS_PLUGIN_NAME,
   LAYOUTS_TOOLBAR_NAME,
+  materializeLayout,
+  type LayoutImageAttributes,
+  type LayoutImageResolver,
   type LayoutsPluginOptions,
 } from "./plugins/layouts.js";
 

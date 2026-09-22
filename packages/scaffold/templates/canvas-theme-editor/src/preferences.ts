@@ -7,6 +7,7 @@ export interface StoredPreferences {
   previewWidth: "large" | "medium" | "small";
   previewFullscreen: boolean;
   cdnProvider: string;
+  tinymceConfig?: Record<string, unknown>;
 }
 
 /** Reads stored preferences, tolerating missing/corrupt/blocked storage. */
@@ -26,7 +27,21 @@ export function loadPreferences(): Partial<StoredPreferences> {
 /** Persists preferences, silently no-op-ing if storage is unavailable. */
 export function savePreferences(preferences: Partial<StoredPreferences>): void {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(preferences));
+    const current = loadPreferences();
+    const nextTinymceConfig = {
+      ...(typeof current.tinymceConfig === "object" && current.tinymceConfig !== null
+        ? current.tinymceConfig
+        : {}),
+      ...(typeof preferences.tinymceConfig === "object" && preferences.tinymceConfig !== null
+        ? preferences.tinymceConfig
+        : {}),
+    };
+    const nextPreferences = {
+      ...current,
+      ...preferences,
+      tinymceConfig: nextTinymceConfig,
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(nextPreferences));
   } catch {
     // Private mode / storage disabled — preferences just won't persist across reloads.
   }

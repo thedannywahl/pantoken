@@ -16,7 +16,8 @@ Content Editor (RCE) page templates styled with
   with **Config** / **CSS** / **JS** tabs (CDN provider/theme/mode selects, and blank CSS/JS
   editors for custom overrides that get appended to `theme.css`/`theme.js`), and the **?** button
   for full instructions. Use the **Layouts** toolbar button to start from one of pantoken's bundled
-  starter page layouts (hero, callout, two-column, rubric note, testimonial), sourced from
+  starter page layouts (course home, header, footer, about me, syllabus, hero, callout, two-column,
+  rubric note, testimonial), sourced from
   [`@pantoken/plugin-layouts`](https://www.npmjs.com/package/@pantoken/plugin-layouts).
 
 ## Develop

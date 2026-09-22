@@ -109,6 +109,7 @@ import {
   type SourceTogglePluginApi,
 } from "@pantoken/tinymce-codemirror";
 import {
+  buildPlaceholdImage,
   createPlaceholdPlugin,
   PLACEHOLD_PLUGIN_NAME,
 } from "@pantoken/tinymce-placehold";
@@ -225,6 +226,17 @@ function applyChromeColor(color: PantokenColorNamespace): void {
   document.documentElement.dataset.pantokenColor = color;
 }
 
+function applyParentTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
+  selectedTheme = theme;
+  includeDarkModeCheckbox.checked = mode === "dark";
+  document.documentElement.dataset.pantokenScheme = mode;
+  const themeButton = [...themeButtons].find((button) => button.dataset.theme === theme);
+  if (themeButton) selectButton(themeButtons, themeButton);
+  includeDarkModeRow.hidden = theme !== "rebrand";
+  applyEditorTheme(activeEditor);
+  refreshAll();
+}
+
 applyChromeTheme("rebrand", "light");
 applyChromeColor("navy");
 
@@ -245,6 +257,7 @@ window.addEventListener("message", (event) => {
     return;
   }
   applyChromeTheme(data.theme, data.mode);
+  applyParentTheme(data.theme, data.mode);
   if (isThemeColor(data.color)) applyChromeColor(data.color);
 });
 
@@ -308,6 +321,21 @@ const registerPantokenPlugin = (async () => {
         onMissingAsset,
       },
       layouts: {
+        resolveImage: (placeholder) => {
+          const image = buildPlaceholdImage({
+            width: placeholder.width,
+            height: placeholder.height,
+            backgroundColor: "#eeeeee",
+            textColor: "#31343c",
+            text: placeholder.text,
+          });
+          return {
+            src: image.url,
+            alt: placeholder.altText ?? "",
+            width: image.width,
+            height: image.height,
+          };
+        },
         onInsert: () => refreshAll(),
       },
     }),
@@ -358,7 +386,10 @@ for (const [id, provider] of Object.entries(CDN_PROVIDERS)) {
   option.textContent = provider.label;
   providerSelect.append(option);
 }
-providerSelect.value = isLocalPreview ? LOCAL_PROVIDER_ID : DEFAULT_CDN_PROVIDER_ID;
+providerSelect.value = import.meta.env.DEV ? LOCAL_PROVIDER_ID : DEFAULT_CDN_PROVIDER_ID;
+if (isLocalPreview) {
+  providerSelect.value = LOCAL_PROVIDER_ID;
+}
 if (
   preferences.cdnProvider &&
   [...providerSelect.options].some((option) => option.value === preferences.cdnProvider)
@@ -562,11 +593,26 @@ if (preferences.layout === "row" || preferences.layout === "column") {
 
 /** Saves this app's current layout/preview/CDN provider settings for the next visit. */
 function persistPreferences(): void {
+  const mergedTinymceConfig = {
+    ...(preferences.tinymceConfig ?? {}),
+    a11y: {
+      ...((preferences.tinymceConfig as Record<string, unknown> | undefined)?.a11y as Record<
+        string,
+        unknown
+      > | null),
+      highlightIssues: true,
+      contrastThreshold: "4.5:1",
+      enabledRules: {},
+    },
+  };
+
   savePreferences({
+    ...preferences,
     layout: contentEl.dataset.layout === "row" ? "row" : "column",
     previewWidth: selectedPreviewWidth as "large" | "medium" | "small",
     previewFullscreen: previewPane.classList.contains("-fullscreen"),
     cdnProvider: providerSelect.value,
+    tinymceConfig: mergedTinymceConfig,
   });
 }
 

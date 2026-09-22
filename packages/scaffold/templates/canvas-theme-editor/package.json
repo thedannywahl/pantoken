@@ -14,7 +14,9 @@
     "@pantoken/components": "latest",
     "@pantoken/css": "latest",
     "@pantoken/plugin-layouts": "latest",
-    "@pantoken/tinymce": "latest"
+    "@pantoken/tinymce": "latest",
+    "@pantoken/tinymce-a11y": "latest",
+    "@pantoken/tinymce-placehold": "latest"
   },
   "devDependencies": {
     "@codemirror/lang-css": "catalog:",

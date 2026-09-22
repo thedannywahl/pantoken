@@ -42,6 +42,8 @@ import "@pantoken/plugin-layouts/hero.css";
 - `layouts(options?)` — returns a CSS plugin with `position: "append" | "prepend"`.
 - `<name>Rules(prefix?)` — returns one layout's CSS text.
 - `<name>Template(prefix?)` — returns canonical HTML for one layout.
+- `pageLayouts` — starter page records for Canvas and other content editors.
+- `PageLayoutImagePlaceholder` — provider-neutral image intent that consumers can materialize.
 - `./layouts.css` — aggregate stylesheet export.
 - `./<name>.css` — per-layout stylesheet exports.
 
@@ -58,3 +60,8 @@ your `cssdoc.json` `providers` so a consumer project resolves these classes/modi
   //   "prefix": { "from": "instui-", "to": "acme-" }
 }
 ```
+
+Page layouts may declare image slots with `imagePlaceholders`. The HTML uses an
+`data-pantoken-image-placeholder` marker on an `instui-img` image without embedding a provider URL.
+Consumers resolve the slot and should always emit an `alt` attribute; use `alt=""` when the image is
+decorative.

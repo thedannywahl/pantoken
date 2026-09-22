@@ -36,6 +36,9 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
     main.indexOf("interactionsScript.src = interactionsIifeUrl"),
   );
   expect(main).toContain("createPlaceholdPlugin");
+  expect(main).toContain("resolveImage: (placeholder) => {");
+  expect(main).toContain("src: image.url");
+  expect(main).toContain('alt: placeholder.altText ?? ""');
   expect(main).toContain("createContentClassesPlugin");
   expect(main).toContain("CONTENT_CLASSES_PLUGIN_NAME");
   expect(main).toContain("createA11yPlugin");
@@ -51,12 +54,18 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
     '"pantoken pantoken_content_classes placehold pantoken_a11y pantoken_sup_sub pantoken_source_toggle pantoken_fullscreen_footer pantoken_searchreplace_footer pantoken_visualblocks_footer image link lists',
   );
   expect(main).toContain('createA11yPlugin({ display: "footer" })');
-  expect(main).toContain("toolbar: `undo redo | pantoken placehold | bold italic underline");
+  expect(main).toContain(
+    "toolbar: `undo redo | pantoken | fontsize blocks | bold italic underline",
+  );
   expect(main).not.toContain("pantokenA11y");
   expect(main).toContain("let previewMutationObserver: MutationObserver | undefined");
   expect(main).toContain("previewFrame.contentDocument?.documentElement");
   expect(main).toContain("previewMutationObserver.observe(root");
   expect(main).toContain("previewFrame.style.height");
+  expect(main).toContain('includeDarkModeCheckbox.checked = mode === "dark";');
+  expect(main).toContain("document.documentElement.dataset.pantokenScheme = mode;");
+  expect(main).toContain("applyEditorTheme(activeEditor);");
+  expect(main).toContain("refreshAll();");
   expect(readFileSync(join(target, "src/app.css"), "utf8")).toContain(
     '.content[data-layout="row"] .preview-pane',
   );
@@ -78,6 +87,18 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(pkg).toContain('"@pantoken/tinymce-placehold": "latest"');
   expect(pkg).toContain('"@pantoken/tinymce-a11y": "latest"');
   expect(pkg).not.toContain("{{projectName}}");
+});
+
+test("canvas-theme-editor keeps other tinymce config keys when persisting a11y settings", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-canvas-prefs-"));
+  const target = join(dir, "my-app");
+  await scaffoldProject("canvas-theme-editor", target);
+  const preferences = readFileSync(join(target, "src/preferences.ts"), "utf8");
+  expect(preferences).toContain("const current = loadPreferences();");
+  expect(preferences).toContain(
+    '...(typeof current.tinymceConfig === "object" && current.tinymceConfig !== null',
+  );
+  expect(preferences).toContain("tinymceConfig: nextTinymceConfig,");
 });
 
 test("canvas-theme-editor's theme.css/theme.js honor --cdn/--theme at scaffold time", async () => {

@@ -68,8 +68,35 @@ test("plugin css payload is runtime-safe", () => {
 
 test("pageLayouts exposes the bundled starter page layouts", () => {
   const names = pageLayouts.map((layout) => layout.name).sort((a, b) => a.localeCompare(b));
-  expect(names).toEqual(["callout", "hero", "rubric-note", "testimonial", "two-column"]);
+  expect(names).toEqual([
+    "about-me",
+    "callout",
+    "course-home",
+    "footer",
+    "header",
+    "hero",
+    "rubric-note",
+    "syllabus",
+    "testimonial",
+    "two-column",
+  ]);
   for (const layout of pageLayouts) {
     expect(layout.html).toContain("instui-");
+    expect(layout.html).not.toContain("placehold.co");
   }
+});
+
+test("image placeholders are provider-neutral and use the image component marker", () => {
+  const aboutMe = pageLayouts.find((layout) => layout.name === "about-me");
+  expect(aboutMe?.imagePlaceholders).toEqual([
+    {
+      key: "instructor-photo",
+      width: 240,
+      height: 240,
+      altText: "A photo of the instructor",
+    },
+  ]);
+  expect(aboutMe?.html).toContain(
+    '<img class="instui-img" data-pantoken-image-placeholder="instructor-photo"',
+  );
 });

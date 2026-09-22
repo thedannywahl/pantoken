@@ -8,9 +8,33 @@ import {
   A11Y_RULES,
   A11Y_STATUSBAR_NAME,
   A11Y_TOOLBAR_NAME,
+  type A11yPersistedSettings,
   createA11yPlugin,
+  loadPersistedA11ySettings,
+  savePersistedA11ySettings,
   scanAccessibility,
 } from "../src/index.ts";
+
+const localStorageMock = (() => {
+  const store = new Map<string, string>();
+  return {
+    getItem: (key: string) => (store.has(key) ? store.get(key)! : null),
+    setItem: (key: string, value: string) => {
+      store.set(key, String(value));
+    },
+    removeItem: (key: string) => {
+      store.delete(key);
+    },
+    clear: () => {
+      store.clear();
+    },
+  };
+})();
+
+Object.defineProperty(globalThis, "localStorage", {
+  configurable: true,
+  value: localStorageMock,
+});
 
 function editorFor(body: HTMLElement) {
   const container = document.createElement("div");
@@ -96,6 +120,7 @@ describe("createA11yPlugin", () => {
     await vi.waitFor(() => expect(done).toHaveBeenCalled());
     expect(done.mock.calls[0]?.[0]).toHaveLength(1);
     expect(A11Y_RULES.map((rule) => rule.id)).toEqual([
+      "contrast",
       "img-alt",
       "img-alt-filename",
       "img-alt-length",
@@ -123,11 +148,22 @@ describe("createA11yPlugin", () => {
     button.onAction();
     await vi.waitFor(() => expect(editor.windowManager.open).toHaveBeenCalled());
 
-    expect(editor.windowManager.open.mock.calls[0]?.[0]).toMatchObject({
-      body: {
-        items: [{ items: [{ text: expect.stringContaining("Localized image message") }] }],
-      },
-    });
+    const dialog = editor.windowManager.open.mock.calls[0]?.[0];
+    expect(dialog.body.tabs[0].title).toBe("Findings");
+    expect(dialog.body.tabs[0].items[0].items[0].text).toContain("Localized image message");
+  });
+
+  test("injects editor highlight styles while issues are visible", async () => {
+    const body = document.createElement("main");
+    body.innerHTML = "<img src='photo.png'>";
+    const editor = editorFor(body);
+    createA11yPlugin()(editor as never);
+
+    const button = editor.ui.registry.addButton.mock.calls[0]?.[1] as { onAction: () => void };
+    button.onAction();
+    await vi.waitFor(() => expect(editor.windowManager.open).toHaveBeenCalled());
+
+    expect(document.head.querySelector("#pantoken-a11y-highlight-style")).not.toBeNull();
   });
 
   test("registers an updating footer checker without toolbar controls", async () => {
@@ -228,5 +264,48 @@ describe("createA11yPlugin", () => {
     expect(commandOnlyEditor.addCommand).toHaveBeenCalledWith(A11Y_COMMAND, expect.any(Function));
     expect(commandOnlyEditor.ui.registry.addButton).not.toHaveBeenCalled();
     expect(commandOnlyEditor.getContainer().querySelector(`#${A11Y_STATUSBAR_NAME}`)).toBeNull();
+  });
+
+  test("persists accessibility settings to localStorage and restores them on load", () => {
+    const settings: A11yPersistedSettings = {
+      highlightIssues: true,
+      contrastThreshold: "3:1",
+      enabledRules: { "img-alt": false, "headings-sequence": true },
+    };
+
+    savePersistedA11ySettings(settings);
+    expect(
+      JSON.parse(localStorage.getItem("pantoken-tinymce-a11y-settings") ?? "{}"),
+    ).toMatchObject(settings);
+    expect(loadPersistedA11ySettings()).toMatchObject(settings);
+  });
+
+  test("applies the configured contrast threshold and honors disabled rules", async () => {
+    const body = document.createElement("main");
+    body.innerHTML = "<p style='color:#fff;background:#000'>High contrast</p>";
+
+    const issues = await scanAccessibility(body, {
+      config: {
+        enabledRules: { "headings-sequence": false, contrast: false },
+        contrastThreshold: "4.5:1",
+      },
+    });
+
+    expect(issues).toHaveLength(0);
+
+    const lowContrast = document.createElement("p");
+    lowContrast.style.color = "#777";
+    lowContrast.style.backgroundColor = "#fff";
+    lowContrast.textContent = "Low contrast text";
+    body.innerHTML = "";
+    body.append(lowContrast);
+
+    const contrastIssues = await scanAccessibility(body, {
+      config: {
+        contrastThreshold: "4.5:1",
+      },
+    });
+
+    expect(contrastIssues.some((issue) => issue.rule.id === "contrast")).toBe(true);
   });
 });
