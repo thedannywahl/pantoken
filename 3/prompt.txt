@@ -1,0 +1,17 @@
+there is a conflict between `x` in simple-icons and `x` in instui icons. instui icons (and/or lucide) should be "winning" in any conflicts.
+
+---
+
+In the pantoken repo (/Users/dwahl/Scripts/pantoken), there's an icon system that combines multiple icon sources including "simple-icons" (brand/logo icons) and InstUI icons (instructure-ui icon set), and possibly "lucide" icons too. There's a naming conflict: an icon named `x` exists in simple-icons (e.g. the "X" formerly Twitter logo) and also in InstUI icons, and currently one is winning over the other in a way the user doesn't want — they want InstUI icons (and/or lucide) to always win over simple-icons in case of a name conflict.
+
+Please investigate thoroughly (thoroughness: thorough) and report back:
+
+1. Where icons are sourced/registered from simple-icons, instui, and lucide — likely in `formats/icons/` or `packages/core/` or similar. Find the actual source files that load/list/merge icon sets.
+2. How icon names are generated/normalized for each source (e.g. kebab-case transforms, prefixing).
+3. Where/how these icon sets get merged into a single flat namespace or lookup map (e.g. a big object, a Map, or a build script that writes JSON). Look for merge order, e.g. `{...simpleIcons, ...instuiIcons}` or similar, or an array of sources iterated in some order with `Object.assign`/spread/for loop that would let later sources overwrite earlier ones.
+4. Whether this merging happens at build-time (a script generating a JSON/TS file) or at runtime (a resolver function). Find exact file paths and line numbers.
+5. Any existing conflict-resolution or precedence logic already in place (e.g. a defined priority order array, comments about conflicts, existing tests about icon name collisions).
+6. Any tests specifically covering the `x` icon or icon-name conflicts.
+7. The exact current order sources are combined in, and confirm whether simple-icons currently wins (overwrites) instui/lucide, which is the bug to fix.
+
+Report exact file paths, relevant line ranges, and code snippets/excerpts for the merge logic so a plan can be written to fix the precedence order. Do not modify any files — this is read-only research.
