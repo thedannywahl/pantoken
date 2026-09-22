@@ -1,0 +1,25 @@
+the labels and prose in this plugin should go through the i18n pipeline.
+
+---
+
+I need deep context for planning a change (read-only research, do not write any files).
+
+Task: The user wants the labels and prose strings in `plugins/pantoken/layouts` (a plugin that generates page layouts like about-me.ts, with `html` template literals containing English headings/paragraphs/labels, plus `title`, `altText`, etc.) to be routed through the pantoken i18n pipeline instead of being hardcoded English strings.
+
+Please investigate and report back with:
+
+1. Full structure of `plugins/pantoken/layouts/src/` — list all layout files (e.g. `src/layouts/pages/*.ts`), the `PageLayout` type definition (`page-layout.ts`), and how the layouts are consumed downstream (what package/script imports `PageLayout` objects and turns them into output files — e.g. HTML, scaffold output). Read a couple of layout files fully to see the shape of hardcoded prose/labels (headings, paragraphs, list items, altText, title).
+
+2. How i18n / localization already works elsewhere in this repo for similarly "hardcoded English UI strings that ship in generated/scaffolded output" — specifically look at:
+   - `packages/scaffold` and `packages/scaffold-base` (scaffold.readme.pot, cli.scaffold.pot in `l10n/`) — how do they mark strings for translation? Is there a `t()`/gettext-style helper, a strings registry file, or a glossary/adapter pattern?
+   - `l10n/` directory structure and the `.pot` catalog naming convention (one per "namespace", e.g. `cli.ai.pot`, `cli.scaffold.pot`, `ui.strings.pot`). Read `i18n.config.json` at repo root to see the configured namespaces/domains and their source globs.
+   - Any `i18n` CLI or script (`scripts/`, `tools/`) that extracts strings into `.pot` files and the workflow to add a NEW namespace (if layouts would need one) versus reusing an existing one like `cli.scaffold.pot`.
+   - How translated strings get consumed at runtime/build time for scaffold — is there a `t(key)` call pattern, a JSON strings file per locale, or something else? Find a concrete code example of a string lookup/injection pattern used in a non-docs package (docs site translation is different — VitePress i18n.ts — we care about the CLI/package-level pattern instead, similar to how `cli.scaffold.pot` strings are used in `packages/scaffold`).
+
+3. Check `plugins/pantoken/layouts/package.json` for its dependencies — does it already depend on any i18n/gettext helper package used elsewhere (search for packages like `@pantoken/i18n`, gettext-parser, or similar in the monorepo, e.g. via grep for "gettext" or "readPo" or ".pot" across `tools/` and `packages/`).
+
+4. Read `docs/conventions/build-and-docs.md` for any i18n conventions documented there, and search `docs/engineering-log.md` for "i18n" or "layouts" mentions.
+
+5. Look at `plugins/pantoken/layouts/tests/` to understand how layouts are currently tested (so the plan can include test updates).
+
+Report back concisely with file paths, relevant code snippets (key function signatures / patterns, not full files), and a clear description of the existing i18n mechanism used for CLI/scaffold-type packages so I can decide whether to reuse it for the layouts plugin or need a new mechanism. Use thorough exploration.
