@@ -35,7 +35,6 @@ test("composes all content plugins behind one pantoken menu button", () => {
     components: { model: [], currentAssets: [] },
     icons: { icons: [], currentAssets: [] },
     logos: { logos: [], products: [], currentAssets: [] },
-    templates: { templates: [] },
   });
 
   plugin(editor as never);
@@ -60,13 +59,12 @@ test("composes all content plugins behind one pantoken menu button", () => {
     "Icons",
     "Logos",
     "Layouts",
-    "Templates",
   ]);
 
   for (const item of items) item.onAction();
   // Icons now delegates to TinyMCE's native `mceEmoticons` command instead of opening its own
-  // windowManager dialog, so only the other four pickers show up as `open` calls here.
-  expect(editor.execCommand).toHaveBeenCalledTimes(5);
+  // windowManager dialog, so only the other three pickers show up as `open` calls here.
+  expect(editor.execCommand).toHaveBeenCalledTimes(4);
   expect(editor.execCommand).toHaveBeenCalledWith("mceEmoticons");
-  expect(editor.windowManager.open).toHaveBeenCalledTimes(4);
+  expect(editor.windowManager.open).toHaveBeenCalledTimes(3);
 });
