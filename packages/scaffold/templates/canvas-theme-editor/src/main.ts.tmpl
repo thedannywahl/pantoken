@@ -895,10 +895,33 @@ function resizePreviewFrame(): void {
   const height = Math.ceil(Math.max(root.getBoundingClientRect().height, body.offsetHeight + margins));
   previewFrame.style.height = `${height + PREVIEW_BORDER_PX}px`;
 }
+
+function handlePreviewLinkClick(event: MouseEvent): void {
+  if (event.defaultPrevented) return;
+  const anchor = (event.target as Element | null)?.closest("a[href]");
+  const href = anchor?.getAttribute("href")?.trim();
+  if (!href?.startsWith("#")) return;
+
+  event.preventDefault();
+  let fragment: string;
+  try {
+    fragment = decodeURIComponent(href.slice(1));
+  } catch {
+    return;
+  }
+  if (!fragment) return;
+
+  const previewDocument = event.currentTarget as Document;
+  const target =
+    previewDocument.getElementById(fragment) ?? previewDocument.getElementsByName(fragment)[0];
+  target?.scrollIntoView();
+}
+
 previewFrame.addEventListener("load", () => {
   previewResizeObserver?.disconnect();
   previewMutationObserver?.disconnect();
   resizePreviewFrame();
+  previewFrame.contentDocument?.addEventListener("click", handlePreviewLinkClick);
   const root = previewFrame.contentDocument?.documentElement;
   if (!root) return;
   previewResizeObserver = new ResizeObserver(resizePreviewFrame);

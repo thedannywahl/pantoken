@@ -70,6 +70,13 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain("previewFrame.contentDocument?.documentElement");
   expect(main).toContain("previewMutationObserver.observe(root");
   expect(main).toContain("previewFrame.style.height");
+  expect(main).toContain('if (!href?.startsWith("#")) return;');
+  expect(main).toContain("event.preventDefault();");
+  expect(main).toContain("previewDocument.getElementById(fragment)");
+  expect(main).toContain("previewDocument.getElementsByName(fragment)[0]");
+  expect(main).toContain(
+    'previewFrame.contentDocument?.addEventListener("click", handlePreviewLinkClick);',
+  );
   expect(main).toContain('includeDarkModeCheckbox.checked = mode === "dark";');
   expect(main).toContain("document.documentElement.dataset.pantokenScheme = mode;");
   expect(main).toContain("applyEditorTheme(activeEditor);");
