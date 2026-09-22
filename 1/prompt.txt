@@ -1,0 +1,1 @@
+the custom emoji dictionary in the the canvas-theme-editor scaffold config is very broken, they do not render correctly at all.  clicking an emoji seems to insert the proper html, but the picker display is messed up.
