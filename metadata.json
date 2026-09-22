@@ -1,0 +1,51 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M35QN65036E3WJY2TRA04659",
+  "strategy": "manual-commit",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/components-self-contained-icons-css.md",
+    ".changeset/tinymce-icons-custom-picker.md",
+    "ASSURANCE.md",
+    "formats/components/scripts/build-icon-entries.ts",
+    "formats/components/scripts/generate.ts",
+    "formats/components/src/utilities/icon-glyphs/index.ts",
+    "formats/components/tests/utilities/icon-glyphs.test.ts",
+    "l10n/tinymce.strings.pot",
+    "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
+    "renderers/tinymce/oxide/src/less/skins/content/canvas-high-contrast/content.less",
+    "renderers/tinymce/oxide/src/less/skins/content/canvas/content.less",
+    "renderers/tinymce/oxide/src/less/skins/content/next-gen/content.less",
+    "renderers/tinymce/oxide/src/less/skins/content/pantoken-icons.less",
+    "renderers/tinymce/src/i18n.json",
+    "renderers/tinymce/src/icons.ts",
+    "renderers/tinymce/src/index.ts",
+    "renderers/tinymce/src/lib/icon-picker-dom.ts",
+    "renderers/tinymce/src/lib/icon-picker-styles.ts",
+    "renderers/tinymce/src/plugins/icons.ts",
+    "renderers/tinymce/src/plugins/pantoken.ts",
+    "renderers/tinymce/src/strings.ts",
+    "renderers/tinymce/tests/icon-picker-dom.test.ts",
+    "renderers/tinymce/tests/icon-picker-styles.test.ts",
+    "renderers/tinymce/tests/icons-picker.test.ts",
+    "renderers/tinymce/tests/icons.test.ts",
+    "renderers/tinymce/tests/pantoken.test.ts"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
