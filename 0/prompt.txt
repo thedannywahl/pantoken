@@ -1,0 +1,25 @@
+inserting components shouldn't keep the code blocks from the example tags, or the descriptions. for example, inserting an agent shell does this:
+```
+<p>-nocard ```html</p>
+<div class="instui-agent-shell --p-md">
+<h2 class="instui-heading -variant-title-card-large">AI Agent</h2>
+<p>Content here.</p>
+<button class="instui-button">Action</button></div>
+<p>```</p>
+```
+
+---
+
+you'r stuck in an interactive shell
+
+---
+
+if we're loading the interactions iife do we need this? or should it be auto registered?
+
+---
+
+we need a tabs interaction in formats/interactions that follows the behaviors and setup of the other interactions.  Then we need that threaded into renderers/web-components as well.
+
+---
+
+this example in tabs.css should be updated/extended to work with the new interaction.
