@@ -256,7 +256,11 @@ writeFileSync(
   join(outDir, "icons.css"),
   iconGlyphsCss(
     icons.map((icon) => icon.name),
-    { ...opts, deprecatedAliases: true },
+    {
+      ...opts,
+      deprecatedAliases: true,
+      values: Object.fromEntries(icons.map((icon) => [icon.name, icon.dataUri])),
+    },
   ),
 );
 // `colorUtilitiesCss` is a generic emitter (in @pantoken/utils), so its CSS-API doc comment is authored

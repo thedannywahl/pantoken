@@ -1,0 +1,156 @@
+/**
+ * Stylesheet setup for the icons picker dialog, which renders in the top-level document rather than
+ * the editor's content iframe and so can't rely on anything the host page happens to have loaded.
+ *
+ * \@module
+ */
+import { buildFileUrl } from "@pantoken/cdn";
+import { buildIconTokenCss, ICON_BUNDLE_CDN_FILES, type TaggedIcon } from "../icons.js";
+
+/** Marks the elements this module owns so each is injected at most once per document. */
+const OWNED_ATTRIBUTE = "data-pantoken-icon-picker";
+
+/** Root class the dialog markup carries; scopes the glyph painter so it can't leak into the host page. */
+export const PICKER_ROOT_CLASS = "pantoken-ip";
+
+/**
+ * The glyph painter, scoped to the picker. Mirrors the canonical `icon` utility in
+ * `@pantoken/components` (`src/utilities/icon/icon.css`) — keep the two in sync.
+ */
+const PAINTER_CSS = `
+.${PICKER_ROOT_CLASS} .instui-icon {
+  display: inline-flex;
+}
+.${PICKER_ROOT_CLASS} [class*="-icon-"]::before {
+  content: "";
+  display: inline-block;
+  inline-size: 1em;
+  block-size: 1em;
+  flex: none;
+  vertical-align: -0.125em;
+  background: currentColor;
+  -webkit-mask: var(--pantoken-glyph) center / contain no-repeat;
+  mask: var(--pantoken-glyph) center / contain no-repeat;
+}`;
+
+/** Layout for the picker chrome. Deliberately self-contained so no Oxide collection styles apply. */
+const LAYOUT_CSS = `
+.${PICKER_ROOT_CLASS} {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+  height: 60vh;
+}
+.${PICKER_ROOT_CLASS}__search {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 8px;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  opacity: 0.999;
+}
+.${PICKER_ROOT_CLASS}__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.${PICKER_ROOT_CLASS}__tab {
+  padding: 4px 10px;
+  font: inherit;
+  font-size: 0.85em;
+  color: inherit;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  opacity: 0.65;
+}
+.${PICKER_ROOT_CLASS}__tab[aria-selected="true"] {
+  font-weight: 600;
+  opacity: 1;
+}
+.${PICKER_ROOT_CLASS}__grid {
+  display: grid;
+  flex: 1 1 auto;
+  grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+  gap: 4px;
+  min-height: 0;
+  padding: 4px;
+  overflow-y: auto;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+}
+.${PICKER_ROOT_CLASS}__tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  padding: 0;
+  font-size: 20px;
+  color: inherit;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.${PICKER_ROOT_CLASS}__tile:hover,
+.${PICKER_ROOT_CLASS}__tile:focus-visible {
+  border-color: currentColor;
+}
+.${PICKER_ROOT_CLASS}__sentinel {
+  grid-column: 1 / -1;
+  height: 1px;
+}
+.${PICKER_ROOT_CLASS}__status {
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+.${PICKER_ROOT_CLASS}__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}`;
+
+function appendOnce(doc: Document, key: string, build: () => Element): void {
+  if (doc.head.querySelector(`[${OWNED_ATTRIBUTE}="${key}"]`)) return;
+  const element = build();
+  element.setAttribute(OWNED_ATTRIBUTE, key);
+  doc.head.append(element);
+}
+
+function appendStyle(doc: Document, key: string, css: string): void {
+  appendOnce(doc, key, () => {
+    const style = doc.createElement("style");
+    style.textContent = css;
+    return style;
+  });
+}
+
+/**
+ * Install everything the picker needs to paint glyphs: the scoped painter, its layout, the glyph
+ * tokens this package carries inline, and a stylesheet per source whose SVGs it does not.
+ * Idempotent — safe to call on every dialog open.
+ */
+export function injectPickerStyles(
+  doc: Document,
+  icons: readonly TaggedIcon[],
+  provider?: string,
+): void {
+  appendStyle(doc, "chrome", `${PAINTER_CSS}\n${LAYOUT_CSS}`);
+  appendStyle(doc, "tokens", buildIconTokenCss(icons));
+  for (const file of ICON_BUNDLE_CDN_FILES) {
+    appendOnce(doc, file.package, () => {
+      const link = doc.createElement("link");
+      link.rel = "stylesheet";
+      link.href = buildFileUrl(file, provider);
+      return link;
+    });
+  }
+}

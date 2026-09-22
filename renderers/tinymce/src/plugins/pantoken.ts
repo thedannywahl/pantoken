@@ -9,7 +9,7 @@ import {
   createComponentsPlugin,
   type ComponentsPickerOptions,
 } from "./components.js";
-import { createIconsPlugin, type IconsPickerOptions } from "./icons.js";
+import { createIconsPlugin, ICONS_COMMAND, type IconsPickerOptions } from "./icons.js";
 import { createLayoutsPlugin, LAYOUTS_COMMAND, type LayoutsPluginOptions } from "./layouts.js";
 import { createLogosPlugin, LOGOS_COMMAND, type LogosPickerOptions } from "./logos.js";
 import {
@@ -61,7 +61,7 @@ export function createPantokenPlugin(options: PantokenPluginOptions) {
           {
             type: "menuitem",
             text: TINYMCE_STRINGS.iconsToolbarText,
-            onAction: () => editor.execCommand("mceEmoticons"),
+            onAction: () => editor.execCommand(ICONS_COMMAND),
           },
           {
             type: "menuitem",

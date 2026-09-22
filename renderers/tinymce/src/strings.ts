@@ -14,6 +14,12 @@ export interface TinymceStrings {
   iconLabelDialogTitle: string;
   iconLabelInputLabel: string;
   iconsMenuText: string;
+  iconsDialogTitle: string;
+  iconsSearchPlaceholder: string;
+  iconsSearchLabel: string;
+  iconsAllSources: string;
+  iconsResultCount: string;
+  iconsNoResults: string;
   iconsToolbarText: string;
   iconsToolbarTooltip: string;
   layoutsConfirmReplace: string;

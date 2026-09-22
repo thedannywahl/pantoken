@@ -3,13 +3,16 @@
  */
 import { expect, test } from "vite-plus/test";
 import {
-  buildEmoticonsDatabase,
   buildIconMarkup,
+  buildIconTokenCss,
+  filterIcons,
   getIconCdnFile,
+  getIconImageSrc,
+  getIconTokenValue,
   getUsedIconCdnFiles,
   humanizeIconName,
   loadAllIcons,
-  matchInsertedIcon,
+  matchesIconQuery,
   type TaggedIcon,
 } from "../src/icons.js";
 
@@ -67,28 +70,64 @@ test("buildIconMarkup renders a decorative icon", () => {
   );
 });
 
-test("buildEmoticonsDatabase categorizes icons by provider", () => {
+test("matchesIconQuery matches on name, source label, and description", () => {
+  const icon: TaggedIcon = { name: "heart", source: "simple-icons", description: "Brand icon" };
+  expect(matchesIconQuery(icon, "")).toBe(true);
+  expect(matchesIconQuery(icon, "hear")).toBe(true);
+  expect(matchesIconQuery(icon, "simple")).toBe(true);
+  expect(matchesIconQuery(icon, "brand")).toBe(true);
+  expect(matchesIconQuery(icon, "nope")).toBe(false);
+});
+
+test("filterIcons narrows by query and source", () => {
   const icons: TaggedIcon[] = [
-    { name: "heart", source: "simple-icons", description: "Brand icon: heart" },
-    { name: "close", source: "components", description: "Instructure UI icon: close" },
+    { name: "heart", source: "components" },
+    { name: "heart-crack", source: "simple-icons" },
+    { name: "star", source: "components" },
   ];
-  const database = buildEmoticonsDatabase(icons);
-  expect(database["simple-icons:heart"]?.category).toBe("Simple Icons");
-  expect(database["components:close"]?.category).toBe("Instructure UI");
-  expect(database["components:close"]?.char).toContain("-icon-close");
-  expect(database["components:close"]?.char).toContain('aria-hidden="true"');
-  expect(database["components:close"]?.char).not.toContain("instui-screen-reader-content");
-  expect(database["components:close"]?.keywords).toContain("close");
+  expect(filterIcons(icons, "heart").map((i) => i.name)).toEqual(["heart", "heart-crack"]);
+  expect(filterIcons(icons, "heart", "components").map((i) => i.name)).toEqual(["heart"]);
+  expect(filterIcons(icons, "", "components")).toHaveLength(2);
 });
 
-test("matchInsertedIcon recovers the TaggedIcon from a data-pantoken-icon marker", () => {
-  const icons: TaggedIcon[] = [{ name: "heart", source: "simple-icons" }];
-  const html = '<span data-pantoken-icon="simple-icons:heart"></span>';
-  expect(matchInsertedIcon(html, icons)).toEqual(icons[0]);
+test("getIconTokenValue resolves glyphs bundled in this package, not CDN-only ones", async () => {
+  const icons = await loadAllIcons();
+  const component = icons.find((icon) => icon.source === "components")!;
+  const brand = icons.find((icon) => icon.source === "simple-icons")!;
+  const custom = icons.find((icon) => icon.source === "custom-icons")!;
+  expect(getIconTokenValue(component)).toMatch(/^url\('data:image\/svg\+xml/u);
+  expect(getIconTokenValue(custom)).toMatch(/^url\('data:image\/svg\+xml/u);
+  expect(getIconTokenValue(brand)).toBeUndefined();
 });
 
-test("matchInsertedIcon returns undefined when there's no marker", () => {
-  expect(matchInsertedIcon("<p>no icon here</p>", [])).toBeUndefined();
+test("getIconImageSrc unwraps the url() and normalizes the charset parameter", async () => {
+  const icons = await loadAllIcons();
+  const component = icons.find((icon) => icon.source === "components")!;
+  expect(getIconImageSrc(component)).toMatch(/^data:image\/svg\+xml;charset=utf-8,/u);
+  expect(getIconImageSrc(component)).not.toContain(";utf8,");
+});
+
+test("getIconImageSrc falls back to the custom property on the given root", () => {
+  const brand: TaggedIcon = { name: "github", source: "simple-icons" };
+  expect(getIconImageSrc(brand)).toBeUndefined();
+  document.documentElement.style.setProperty(
+    "--instui-icon-github",
+    "url('data:image/svg+xml;utf8,%3Csvg%3E%3C/svg%3E')",
+  );
+  expect(getIconImageSrc(brand, document.documentElement)).toBe(
+    "data:image/svg+xml;charset=utf-8,%3Csvg%3E%3C/svg%3E",
+  );
+  document.documentElement.style.removeProperty("--instui-icon-github");
+});
+
+test("buildIconTokenCss declares only the glyphs this package carries inline", () => {
+  const icons: TaggedIcon[] = [
+    { name: "github", source: "simple-icons" },
+    { name: "pantoken", source: "custom-icons" },
+  ];
+  const css = buildIconTokenCss(icons);
+  expect(css).toContain("--instui-icon-pantoken:url(");
+  expect(css).not.toContain("--instui-icon-github");
 });
 
 test("getUsedIconCdnFiles deduplicates icon classes and drops deleted icons", () => {

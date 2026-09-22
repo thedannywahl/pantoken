@@ -1,10 +1,9 @@
 /**
  * Emit one self-contained stylesheet per icon for selective CDN delivery.
  *
- * Unlike `icons.css` (which only ships the glyph class and relies on the full token sheet for
- * the data-URI), each `generated/icons/<name>.css` declares both the `--instui-icon-<name>`
- * custom property value AND the `.-icon-<name>` glyph modifier, so it works alongside the lean
- * token sheet (`style.lean.css`) without loading the entire icon set.
+ * Each `generated/icons/<name>.css` declares both the `--instui-icon-<name>` custom property value
+ * AND the `.-icon-<name>` glyph modifier, so it works alongside the lean token sheet
+ * (`style.lean.css`) without loading the entire icon set (`icons.css`).
  *
  * Output is intentionally minimal (no `@property` registration, no comments) to keep each file
  * small for combine-URL delivery. The `.instui-icon` painter utility still needs to be loaded

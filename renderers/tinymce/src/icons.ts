@@ -1,7 +1,7 @@
 /**
- * Merged icon list: \@pantoken/components built-in icons + \@pantoken/plugin-simple-icons brand icons.
- * Each icon is tagged with its source package so the correct CdnFile/category can be computed.
- * Feeds a custom TinyMCE emoticons database (see plugins/icons.ts) instead of a bespoke picker UI.
+ * Merged icon list across the four pantoken icon sources, each tagged with its source package so
+ * the correct CdnFile, category label, and glyph data URI can be computed. Feeds the icons picker
+ * dialog and autocompleter (see plugins/icons.ts).
  *
  * \@module
  */
@@ -23,18 +23,16 @@ export interface TaggedIcon {
   description?: string;
 }
 
-/** TinyMCE emoticons custom-database entry shape (`tinymce.Resource.add('tinymce.plugins.emoticons', ...)`). */
-export interface EmoticonEntry {
-  keywords: string[];
-  char: string;
-  category: string;
-}
+/** The icon sources, in the order the picker lists them. */
+export const ICON_SOURCES: readonly TaggedIcon["source"][] = [
+  "components",
+  "custom-icons",
+  "lucide-lab",
+  "simple-icons",
+];
 
-/** Stable id this package registers its icon database under; pass to TinyMCE's `emoticons_database_id`. */
-export const PANTOKEN_ICONS_DATABASE_ID = "tinymce.plugins.pantoken-icons";
-
-/** Category label shown as a picker tab, per icon source. */
-const CATEGORY_BY_SOURCE: Record<TaggedIcon["source"], string> = {
+/** Human label shown as a picker tab and an autocompleter row caption, per icon source. */
+export const SOURCE_LABELS: Record<TaggedIcon["source"], string> = {
   components: "Instructure UI",
   "simple-icons": "Simple Icons",
   "lucide-lab": "Lucide Lab",
@@ -42,16 +40,15 @@ const CATEGORY_BY_SOURCE: Record<TaggedIcon["source"], string> = {
 };
 
 /**
- * The "all icons in one file" bundles the picker's own dialog chrome needs loaded to render every
- * glyph. Must be the full glyph sheets, not `component-icons.css` — that lean file only carries the
- * handful of `--instui-icon-*` tokens the component CSS itself references, so most icons would have
- * no glyph token defined and render as unmasked, filled squares in the picker.
+ * The "all icons in one file" glyph sheets the picker dialog needs loaded to paint a preview.
+ *
+ * Only the two sources whose SVG payloads are *not* already in this package's JS bundle are listed:
+ * components and custom-icons glyphs are declared from in-memory token data instead (see
+ * `buildIconTokenCss`), so opening the picker costs two stylesheet requests rather than one per icon.
  */
 export const ICON_BUNDLE_CDN_FILES: CdnFile[] = [
-  { package: "@pantoken/components", path: "dist/icons.css" },
   { package: "@pantoken/plugin-simple-icons", path: "dist/simple-icons.css" },
   { package: "@pantoken/plugin-lucide-lab", path: "dist/lucide-lab.css" },
-  { package: "@pantoken/plugin-custom-icons", path: "dist/custom-icons.css" },
 ];
 
 /**
@@ -177,29 +174,89 @@ export function buildIconMarkup(icon: TaggedIcon): string {
   return `<span class="instui-icon -icon-${icon.name}" aria-hidden="true"></span>`;
 }
 
-/** Add a transient source marker so the picker plugin can track the selected icon's CSS asset. */
-function buildTrackedIconMarkup(icon: TaggedIcon): string {
-  return `<span class="instui-icon -icon-${icon.name}" data-pantoken-icon="${icon.source}:${icon.name}" aria-hidden="true"></span>`;
+/**
+ * The `--instui-icon-*` glyph values this package carries in its own JS bundle, so the picker can
+ * paint components and custom-icons previews without fetching a stylesheet for them.
+ */
+const inlineIconValues = new Map<string, string>();
+for (const token of rebrandTokens) {
+  if (token.meta?.kind !== "icon" || !token.name.startsWith(COMPONENT_ICON_TOKEN_PREFIX)) continue;
+  inlineIconValues.set(
+    `components:${token.name.slice(COMPONENT_ICON_TOKEN_PREFIX.length)}`,
+    token.value,
+  );
+}
+for (const icon of customIconsList) {
+  inlineIconValues.set(
+    `custom-icons:${icon.name}`,
+    `url('data:image/svg+xml;utf8,${encodeURIComponent(icon.svg)}')`,
+  );
 }
 
-/** Build the custom emoticons database TinyMCE's `emoticons` plugin renders/searches/inserts from. */
-export function buildEmoticonsDatabase(icons: TaggedIcon[]): Record<string, EmoticonEntry> {
-  const database: Record<string, EmoticonEntry> = {};
+/** Strip the `url("…")` wrapper off a CSS image value. */
+function unwrapCssUrl(value: string): string | undefined {
+  const match = /^\s*url\(\s*(['"]?)(data:image\/svg\+xml[^'")]*)\1\s*\)\s*$/u.exec(value);
+  return match?.[2];
+}
+
+/**
+ * The CSS `url(…)` value for an icon's glyph, or `undefined` when this package doesn't carry it.
+ * Only components and custom-icons resolve — the brand and Lucide Lab SVGs live in their CDN sheets.
+ */
+export function getIconTokenValue(icon: TaggedIcon): string | undefined {
+  return inlineIconValues.get(`${icon.source}:${icon.name}`);
+}
+
+/**
+ * A `data:` URI usable as an `<img src>` for the icon, for sources this package bundles; for the
+ * rest it reads the custom property back off `root`, which resolves once the source's glyph sheet
+ * has loaded. Returns `undefined` when neither path yields a glyph.
+ */
+export function getIconImageSrc(icon: TaggedIcon, root?: Element): string | undefined {
+  const inline = getIconTokenValue(icon);
+  const value =
+    inline ??
+    (root
+      ? root.ownerDocument.defaultView
+          ?.getComputedStyle(root)
+          .getPropertyValue(`${COMPONENT_ICON_TOKEN_PREFIX}${icon.name}`)
+      : undefined);
+  const uri = value ? unwrapCssUrl(value) : undefined;
+  // `;utf8,` is not a real media-type parameter; browsers tolerate it in CSS but not always in `src`.
+  return uri?.replace(";utf8,", ";charset=utf-8,");
+}
+
+/**
+ * A `:root` rule declaring every glyph token this package carries inline, so picker previews for
+ * components and custom icons paint with no network request.
+ */
+export function buildIconTokenCss(icons: readonly TaggedIcon[]): string {
+  const declarations: string[] = [];
   for (const icon of icons) {
-    const key = `${icon.source}:${icon.name}`;
-    database[key] = {
-      keywords: [...icon.name.split("-"), ...(icon.description ? [icon.description] : [])],
-      char: buildTrackedIconMarkup(icon),
-      category: CATEGORY_BY_SOURCE[icon.source],
-    };
+    const value = getIconTokenValue(icon);
+    if (value) declarations.push(`${COMPONENT_ICON_TOKEN_PREFIX}${icon.name}:${value}`);
   }
-  return database;
+  return `:root{${declarations.join(";")}}`;
 }
 
-/** Recover the {@link TaggedIcon} a freshly-inserted HTML snippet came from, via its `data-pantoken-icon` marker. */
-export function matchInsertedIcon(html: string, icons: TaggedIcon[]): TaggedIcon | undefined {
-  const match = /data-pantoken-icon="([^":]+):([^"]+)"/.exec(html);
-  if (!match) return undefined;
-  const [, source, name] = match;
-  return icons.find((icon) => icon.source === source && icon.name === name);
+/** Match `query` against an icon's name, source label, and description; blank matches everything. */
+export function matchesIconQuery(icon: TaggedIcon, query: string): boolean {
+  const needle = query.trim().toLowerCase();
+  if (!needle) return true;
+  return (
+    icon.name.includes(needle) ||
+    SOURCE_LABELS[icon.source].toLowerCase().includes(needle) ||
+    (icon.description?.toLowerCase().includes(needle) ?? false)
+  );
+}
+
+/** Narrow `icons` to those matching `query` and, when given, a single `source`. */
+export function filterIcons(
+  icons: readonly TaggedIcon[],
+  query: string,
+  source?: TaggedIcon["source"],
+): TaggedIcon[] {
+  return icons.filter(
+    (icon) => (!source || icon.source === source) && matchesIconQuery(icon, query),
+  );
 }

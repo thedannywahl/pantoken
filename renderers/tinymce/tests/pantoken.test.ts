@@ -21,6 +21,7 @@ test("composes all content plugins behind one pantoken menu button", () => {
     addMenuItem: vi.fn(),
     addIcon: vi.fn(),
     addMenuButton: vi.fn(),
+    addAutocompleter: vi.fn(),
   };
   const editor = {
     editorManager: { Resource: { add: vi.fn() } },
@@ -29,6 +30,7 @@ test("composes all content plugins behind one pantoken menu button", () => {
     addCommand: vi.fn((name: string, action: () => void) => commands.set(name, action)),
     execCommand: vi.fn((name: string) => commands.get(name)?.()),
     ui: { registry },
+    getContainer: () => document.createElement("div"),
     windowManager: { open: vi.fn(), confirm: vi.fn() },
   };
   const plugin = createPantokenPlugin({
@@ -62,9 +64,7 @@ test("composes all content plugins behind one pantoken menu button", () => {
   ]);
 
   for (const item of items) item.onAction();
-  // Icons now delegates to TinyMCE's native `mceEmoticons` command instead of opening its own
-  // windowManager dialog, so only the other three pickers show up as `open` calls here.
   expect(editor.execCommand).toHaveBeenCalledTimes(4);
-  expect(editor.execCommand).toHaveBeenCalledWith("mceEmoticons");
-  expect(editor.windowManager.open).toHaveBeenCalledTimes(3);
+  expect(editor.execCommand).toHaveBeenCalledWith("pantokenOpenIcons");
+  expect(editor.windowManager.open).toHaveBeenCalledTimes(4);
 });

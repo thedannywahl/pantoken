@@ -1,0 +1,27 @@
+//
+// Paints `<span class="instui-icon -icon-<name>">` inside the editing surface, so an inserted icon
+// is visible, selectable, and recolorable without the host adding `components.css` to `content_css`.
+// The `--instui-icon-<name>` value still arrives per-icon from the pickers' asset injection.
+//
+// Mirrors the canonical `icon` utility in
+// `@pantoken/components` (`src/utilities/icon/icon.css`) — keep the two in sync.
+//
+
+.instui-icon {
+  display: inline-flex;
+  // The span has no text content; without a floor it collapses to a caret-width click target.
+  min-inline-size: 1em;
+  min-block-size: 1em;
+}
+
+[class*="-icon-"]::before {
+  content: "";
+  display: inline-block;
+  inline-size: 1em;
+  block-size: 1em;
+  flex: none;
+  vertical-align: -0.125em;
+  background: currentColor;
+  -webkit-mask: var(--pantoken-glyph) center / contain no-repeat;
+  mask: var(--pantoken-glyph) center / contain no-repeat;
+}

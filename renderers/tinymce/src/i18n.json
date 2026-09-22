@@ -27,6 +27,15 @@
     "translate": "always"
   },
   "iconsMenuText": { "message": "Icon", "translate": "always" },
+  "iconsDialogTitle": { "message": "Insert icon", "translate": "always" },
+  "iconsSearchPlaceholder": { "message": "Search icons…", "translate": "always" },
+  "iconsSearchLabel": { "message": "Search icons", "translate": "always" },
+  "iconsAllSources": { "message": "All", "translate": "always" },
+  "iconsResultCount": {
+    "message": "{{count}} icons",
+    "translate": "always"
+  },
+  "iconsNoResults": { "message": "No icons match your search.", "translate": "always" },
   "iconsToolbarText": { "message": "Icons", "translate": "always" },
   "iconsToolbarTooltip": { "message": "Insert an icon", "translate": "always" },
   "layoutsConfirmReplace": {

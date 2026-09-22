@@ -77,18 +77,21 @@ export {
 } from "./cssdoc/model.js";
 export {
   buildIconMarkup,
+  filterIcons,
   getIconCdnFile,
+  getIconImageSrc,
   getUsedIconCdnFiles,
   humanizeIconName,
+  ICON_SOURCES,
   loadAllIcons,
-  PANTOKEN_ICONS_DATABASE_ID,
+  SOURCE_LABELS,
 } from "./icons.js";
 export type { LogoMeta, Product } from "./logos.js";
 export { logos, products } from "./logos.js";
 
 // Phase 3A/B/C: picker plugins.
 export { createComponentsPlugin } from "./plugins/components.js";
-export { createIconsPlugin } from "./plugins/icons.js";
+export { createIconsPlugin, DEFAULT_ICON_TRIGGER, ICONS_COMMAND } from "./plugins/icons.js";
 export { createLogosPlugin } from "./plugins/logos.js";
 
 // Phase 4/5: CodeMirror extensions.
