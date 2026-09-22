@@ -1,0 +1,1 @@
+we need to update the quickbars config to be more useful in the canvas-theme-editor tinymce instance https://www.tiny.cloud/docs/tinymce/latest/quickbars/
