@@ -1,0 +1,9 @@
+canvas-theme-editor scaffold tray components need to be rewritten to use pantoken components.  the theme buttons, toggle, and CDN picker are all hand-rolled.
+
+---
+
+Planning-only, read-only exploration in /Users/dwahl/Scripts/pantoken. Thoroughness: medium. Investigate the canvas-theme-editor scaffold tray components that the user says are hand-rolled: theme buttons, toggle, and CDN picker. You MUST follow .entire/graph-agent.md: first run exactly one `entire graph search --repo . --profile full --query "canvas theme editor scaffold tray hand rolled theme buttons toggle CDN picker"`, then focused reads. Also run `entire status` and inspect git/checkpoint history for key files per the using-entire skill when practical. Identify: owning source files/symbols, whether generated copies exist, data/state/event behavior that must be preserved, tests/docs/demos covering it, build/generation commands, and likely files to modify. Do not edit anything. Return concise findings with exact absolute paths, symbols, and line ranges, distinguishing checkpoint-backed intent from code inference.
+
+---
+
+Planning-only, read-only in /Users/dwahl/Scripts/pantoken. Quick investigation. Check `git status --short` and `git diff -- packages/scaffold/templates/canvas-theme-editor/src/app.html packages/scaffold/templates/canvas-theme-editor/src/app.css packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl` to determine whether the current partial pantoken conversion is uncommitted. Then inspect recent git log/commit bodies for those files and any Entire-Checkpoint trailers; if found, run the appropriate `entire explain --checkpoint ... --json --no-pager`. Do not edit. Report only current dirty state and relevant recorded intent/history.
