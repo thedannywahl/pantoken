@@ -3,12 +3,14 @@
   "checkpoint_id": "01M35KESTEWKNZ3CP271BJMK21",
   "strategy": "manual-commit",
   "branch": "tinymce-utility",
-  "checkpoints_count": 2,
+  "checkpoints_count": 3,
   "files_touched": [
     ".changeset/calm-seas-wrap.md",
+    ".changeset/tinymce-icons-aria-hidden.md",
     ".changeset/tinymce-layout-insert-replace.md",
     "packages/scaffold/src/index.ts",
     "packages/scaffold/templates/canvas-theme-editor/README.md",
+    "packages/scaffold/templates/canvas-theme-editor/package.json",
     "packages/scaffold/templates/canvas-theme-editor/src/app.html",
     "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
     "packages/scaffold/tests/index.test.ts",
@@ -23,10 +25,14 @@
     "renderers/tinymce/src/i18n.json",
     "renderers/tinymce/src/icons.ts",
     "renderers/tinymce/src/index.ts",
+    "renderers/tinymce/src/plugins/icons.ts",
     "renderers/tinymce/src/plugins/layouts.ts",
+    "renderers/tinymce/src/plugins/logos.ts",
     "renderers/tinymce/src/strings.ts",
+    "renderers/tinymce/tests/icons-picker.test.ts",
     "renderers/tinymce/tests/icons.test.ts",
-    "renderers/tinymce/tests/layouts.test.ts"
+    "renderers/tinymce/tests/layouts.test.ts",
+    "renderers/tinymce/tests/logos-picker.test.ts"
   ],
   "sessions": [
     {
@@ -35,6 +41,13 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
