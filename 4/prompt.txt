@@ -1,0 +1,1 @@
+in canvas-theme-editor tinymce scaffold when cdn is set to 'none' the logo pngs should be served from the local server, not from jsdelivr.  also jsdelivr shouldn't be hard-coded for the logo paths, they're just package exports that the CDN picker can build.
