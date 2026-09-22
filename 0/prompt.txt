@@ -1,0 +1,5 @@
+this button should be end-aligned and swap to -icno-panel-right-close when the tray is visible. right/left should be swapped in rtl either by swapping the glyph or by flipping it on the x axis.
+
+---
+
+bow now the page title is on hte same row as the button.
