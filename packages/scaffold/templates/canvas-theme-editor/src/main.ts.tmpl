@@ -130,6 +130,11 @@ customThemeColorsStyle.textContent = CUSTOM_THEME_COLORS_CSS;
 document.head.append(customThemeColorsStyle);
 const preferences = loadPreferences();
 const LOCAL_PROVIDER_ID = "none";
+// `import.meta.env.DEV` is baked in at build time, so it's `false` for any `vite build` output —
+// including docs' Canvas RCE preview, which is always built for production yet only ever served on
+// localhost. Fall back to a hostname check so a local, non-CDN preview is detected either way.
+const isLocalPreview =
+  import.meta.env.DEV || ["localhost", "127.0.0.1", "[::1]"].includes(window.location.hostname);
 const LOCAL_COMPONENT_CSS = [
   baseCss,
   componentIconsCss,
@@ -343,7 +348,7 @@ tinymce.PluginManager.add(SEARCHREPLACE_FOOTER_PLUGIN_NAME, createSearchReplaceF
 tinymce.PluginManager.add(VISUALBLOCKS_FOOTER_PLUGIN_NAME, createVisualBlocksFooterPlugin());
 
 const providerSelect = document.querySelector<HTMLSelectElement>("#cdn-provider")!;
-if (import.meta.env.DEV) {
+if (isLocalPreview) {
   const option = document.createElement("option");
   option.value = LOCAL_PROVIDER_ID;
   option.textContent = STRINGS.localProviderLabel;
@@ -355,7 +360,7 @@ for (const [id, provider] of Object.entries(CDN_PROVIDERS)) {
   option.textContent = provider.label;
   providerSelect.append(option);
 }
-providerSelect.value = import.meta.env.DEV ? LOCAL_PROVIDER_ID : DEFAULT_CDN_PROVIDER_ID;
+providerSelect.value = isLocalPreview ? LOCAL_PROVIDER_ID : DEFAULT_CDN_PROVIDER_ID;
 if (
   preferences.cdnProvider &&
   [...providerSelect.options].some((option) => option.value === preferences.cdnProvider)
@@ -421,7 +426,7 @@ function currentSelection(): { provider: string; theme: ThemeVariant; mode: Them
 
 function buildCurrentTheme(): { css: string; js: string } {
   const selection = currentSelection();
-  if (!import.meta.env.DEV || selection.provider !== LOCAL_PROVIDER_ID) return buildTheme(selection);
+  if (!isLocalPreview || selection.provider !== LOCAL_PROVIDER_ID) return buildTheme(selection);
 
   const tokensCss =
     selection.theme === "canvas"
