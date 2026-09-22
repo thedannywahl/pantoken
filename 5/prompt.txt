@@ -1,0 +1,19 @@
+In /Users/dwahl/Scripts/pantoken, use the terminal (grep -rl / ls) to answer precisely. Do not modify files.
+
+1. Which published package + dist file defines the `--instui-icon-*` CUSTOM PROPERTY VALUES (i.e. `:root{--instui-icon-heart:url('data:image/svg+xml...')}`) for the @pantoken/components built-in icon set? Search across formats/*/dist and packages/*/dist (these are gitignored, so use raw `grep -rl -- '--instui-icon-heart:url' <dirs>` in the terminal). Report every dist file path that matches and its byte size.
+2. Confirm that formats/components/dist/icons.css does NOT define those values (only the `.-icon-* { --pantoken-glyph: var(--instui-icon-*) }` mapping). Report its byte size.
+3. Which dist file(s) contain the painter rule `[class*="-icon-"]::before` with the mask declaration? Report paths and byte sizes (check formats/components/dist/*.css, e.g. components.css, base.css, utilities.css, component-icons.css, icon.css).
+4. Report byte sizes of: formats/components/dist/icons.css, plugins/pantoken/simple-icons/dist/simple-icons.css, plugins/pantoken/lucide-lab/dist/lucide-lab.css, plugins/pantoken/custom-icons/dist/custom-icons.css. Also list all *.css files at the top level of formats/components/dist with sizes.
+5. Is there a per-icon file for components that is self-contained (includes the :root token)? You can confirm via formats/components/dist/icons/heart.css. Also report how many files are in formats/components/dist/icons.
+
+Return a short factual report with exact paths and sizes.
+
+---
+
+1. fix this too.
+2. explain this.
+3. that's fine.
+
+---
+
+as part of this, the editor content.less should display the icon- this will let users more easily delete it, change its color, etc.
