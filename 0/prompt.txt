@@ -1,0 +1,55 @@
+continue
+
+---
+
+Research the pantoken repo for /plugins/tinymce and determine how hard it would be to re-implement Canvas RCE's tinymce-a11y-checker as a pure TinyMCE plugin. Read the relevant local architecture, package conventions, tests, and build scripts. Also inspect the referenced GitHub implementation (use web or GitHub tools if available) and compare dependencies, UI behavior, APIs, and likely missing pieces. Do not edit files. Return: (1) exact relevant local files/symbols, (2) Canvas implementation structure and external dependencies, (3) feasibility estimate broken into work items, (4) key risks/unknowns, (5) recommended MVP scope and validation strategy.
+
+---
+
+Start implementation
+
+---
+
+now it needs to get wired into the canvas-theme-editor scaffold.
+
+---
+
+plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✗ Build failed in 430ms
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+Build failed with 1 error:
+
+Error: [vite+]: Rolldown failed to resolve import "@pantoken/tinymce-a11y" from "/Users/dwahl/Scripts/pantoken/docs/.vitepress/cache/canvas-rce-src/src/main.ts".
+This is most likely unintended because it can break your application at runtime.
+If you do want to externalize this module explicitly add it to
+`build.rolldownOptions.external`
+    at viteLog (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:39692:57)
+    at onRollupLog (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:39725:7)
+    at onLog (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:39489:4)
+    at file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/create-bundler-option-wxuQPB7F.mjs:48:26
+    at logger (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/create-bundler-option-wxuQPB7F.mjs:39:3)
+    at aggregateBindingErrorsIntoJsError (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-CGhV1ebk.mjs:48:18)
+    at unwrapBindingResult (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-CGhV1ebk.mjs:18:128)
+    at #build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/rolldown-DZGaRc5R.mjs:133:34)
+    at async buildEnvironment (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:39599:66)
+    at async Object.build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_2929c9cd38ac2b4d2273e6f899a326ab/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40020:19)
+    at async file:///Users/dwahl/Scripts/pantoken/docs/scripts/build-canvas-rce.ts:51:1 {
+  errors: [Getter/Setter]
+}
+
+Node.js v26.9.0
+
+---
+
+now scope the equation editor https://github.com/instructure/canvas-lms/tree/1c9f0bb8013ed69c4f2efe11fd483025469b7e6c/packages/canvas-rce/src/rce/plugins/instructure_equation
+
+---
+
+Scope the pinned Canvas LMS instructure_equation plugin at commit 1c9f0bb8013ed69c4f2efe11fd483025469b7e6c and compare it with this pantoken repo's architecture. Research the Canvas directory/source files, dependencies, math rendering/editor libraries, TinyMCE integration, localization, tests, and licensing. Also inspect the existing canvas-theme-editor scaffold and TinyMCE plugin package conventions. Do not edit files. Return: exact upstream file structure and behavior, local integration files, dependency/license risks, MVP vs full parity work breakdown, effort estimate, recommended scope, and verification strategy. Be precise and flag uncertain claims.
