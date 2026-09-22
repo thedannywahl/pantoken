@@ -1,0 +1,20 @@
+we're going to refactor this tab into two section:
+* Theme
+* CDN
+
+the theme section should be patterned after the the docs site theme selector component:
+* theme buttons
+* color picker
+* mode (if applicable for theme)
+
+and these settings should dynamically refresh the preview.
+
+---
+
+Continue: "Continue to iterate?"
+
+---
+
+1. include dark mode should be visible only on the rebrand theme
+2. clicking different color schemes doesn't refresh the preview with the new color scheme
+3. changing themes doesn't refresh the preview with the new theme's styles.
