@@ -1,0 +1,80 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M35EJ93VVF9CV4G5F9XX2TW1",
+  "session_id": "2abd6e4c-5f15-4255-9d1e-7e55723721ca",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-22T20:57:52.917809Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 4,
+  "save_step_count": 4,
+  "files_touched": [
+    ".changeset/sync-canvas-rce-dark-mode.md",
+    "packages/scaffold/templates/canvas-theme-editor/README.md",
+    "packages/scaffold/templates/canvas-theme-editor/package.json",
+    "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
+    "packages/scaffold/templates/canvas-theme-editor/src/preferences.ts",
+    "packages/scaffold/tests/index.test.ts",
+    "plugins/pantoken/layouts/src/layouts/pages/index.ts",
+    "plugins/pantoken/layouts/tests/index.test.ts",
+    "plugins/tinymce/a11y/src/index.ts",
+    "plugins/tinymce/a11y/tests/index.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "d2e694d7b001",
+  "checkpoint_transcript_start": 114,
+  "transcript_lines_at_start": 114,
+  "compact_transcript_start": 25,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 7
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-22T20:57:52.902328Z",
+    "agent_lines": 560,
+    "agent_removed": 28,
+    "human_added": 279,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 839,
+    "total_lines_changed": 879,
+    "agent_percentage": 66.89419795221842,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 290,
+      "agent_lines_removed": 20
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 384,
+      "agent_lines_removed": 20
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 563,
+      "agent_lines_removed": 23
+    }
+  ]
+}
