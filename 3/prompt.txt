@@ -1,0 +1,55 @@
+further tinymce implementation updates in canvas-theme-editor scaffold:
+the toolbar order should be (each bullet is a group, with a separator between)
+* pantoken
+* font size picker, paragraph-h6 picker
+* bold, italic, underline, font-color, highlight color, super script / sub script picker
+* link, image, placeholder image,
+* text align
+* list picker (unordered, ordered)
+* clear formatting, table, embed
+
+---
+
+In the pantoken repo (/Users/dwahl/Scripts/pantoken), find the TinyMCE integration for the canvas-theme-editor scaffold template, likely under packages/scaffold/templates/canvas-theme-editor/. 
+
+I need you to:
+1. Find where TinyMCE is initialized/configured (toolbar config, plugins config, any "pantoken" custom toolbar button/plugin, font size picker, paragraph/heading picker, bold/italic/underline, font color, highlight/background color, superscript/subscript, link, image, placeholder image, text align, lists, clear formatting, table, embed/media related config).
+2. Read and report the FULL current toolbar string/array configuration verbatim (exact syntax used, e.g. `toolbar: 'undo redo | bold italic'`), including any plugins array and any custom "pantoken" toolbar item registration.
+3. Report the full file path(s) where this config lives.
+4. If there's a "placeholder image" custom feature, report where it's implemented/registered (button name used in toolbar).
+5. Report any existing separators format used (pipe `|` vs groups) and how font size / heading dropdowns are named (e.g. `fontsize`, `blocks`, `styles`, custom names).
+6. Check docs/engineering-log.md and any related markdown docs in the scaffold template folder for context/reasoning about the current toolbar order or past changes.
+
+Report back: exact file paths, exact current toolbar config code, plugin list, and any custom button names relevant to: pantoken button, fontsize picker, paragraph/heading (h1-h6) picker, bold, italic, underline, forecolor, backcolor/highlight, superscript, subscript, link, image, placeholder image (custom), align left/center/right/justify, bullist, numlist, removeformat, table, media/embed.
+
+---
+
+the footer toolbar order should be:
+* accessibility checker
+* word count
+* html editor
+* full screen
+
+---
+
+In the pantoken repo (/Users/dwahl/Scripts/pantoken), I'm investigating how to arrange a "footer toolbar" in the canvas-theme-editor scaffold's TinyMCE setup (packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl, tinymce.init() call around line 640-680).
+
+Current state: plugins are "pantoken pantoken_content_classes placehold pantoken_a11y pantoken_source_toggle image link lists autosave fullscreen quickbars searchreplace wordcount emoticons" and toolbar is a single string: `undo redo | pantoken placehold | bold italic underline | bullist numlist | link | sourcecode ${SOURCE_FORMAT_TOOLBAR_NAME} | image | fullscreen searchreplace`.
+
+I need to understand:
+1. The `@pantoken/tinymce-a11y` plugin (plugins/tinymce/a11y/src/index.ts) — specifically its `createA11yPlugin({ display: "footer" })` option. What values does `display` accept (e.g. "toolbar" vs "footer")? How does "footer" rendering work — does it use TinyMCE's statusbar API (`editor.ui.registry.addContextToolbar`? `editor.on('PostRender')`? some `editor.ui.registry` statusbar mechanism)? Report the exact mechanism and code.
+2. Does TinyMCE 6/7 (whatever version is used here — check package.json in the scaffold template's package.json.tmpl or the root) have any built-in "footer" toolbar concept distinct from the main toolbar and the default statusbar (element path / word count toggle / branding / resize handle)? Look at how TinyMCE's `statusbar` option, `toolbar` option (can be an array for multiple rows), and any "footer" registry APIs work in the installed tinymce version (check node_modules/tinymce or the tinymce.d.ts types if present, or plugins/tinymce/a11y source for how it hooks into the footer).
+3. Does the `wordcount` plugin have any option to render as a footer/statusbar item rather than a toolbar button? Check tinymce's wordcount plugin docs/types (node_modules/tinymce/plugins/wordcount if present) for a "wordcount_location" or similar option, and whether it normally appears in statusbar automatically.
+4. Does `fullscreen` plugin or the `pantoken_source_toggle` (plugins/tinymce/codemirror/src/index.ts, exports SOURCE_FORMAT_TOOLBAR_NAME) plugin have any footer/statusbar placement option, or are they toolbar-only buttons?
+5. Report the full current a11y plugin registration code (createA11yPlugin implementation) verbatim, including all options it accepts.
+6. Check the scaffold's README.md for any mention of "footer toolbar" or "statusbar" arrangement plans.
+
+Report back with: exact APIs/options available for placing items in TinyMCE's footer/statusbar area, the a11y plugin's exact "footer" display implementation, and whether wordcount/fullscreen/sourcecode toggle can similarly be placed in a footer bar via existing pantoken plugin code or native TinyMCE options. This is research only — do not edit any files.
+
+---
+
+find and replace can go to the footer too.
+
+---
+
+Start implementation

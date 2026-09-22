@@ -3,7 +3,7 @@
   "checkpoint_id": "01M34ZGJWWM1A4N3X1A0VJND2A",
   "strategy": "manual-commit",
   "branch": "tinymce-utility",
-  "checkpoints_count": 29,
+  "checkpoints_count": 32,
   "files_touched": [
     "packages/scaffold/templates/canvas-theme-editor/src/app.css"
   ],
@@ -28,6 +28,13 @@
       "compact_transcript": "/2/transcript.jsonl",
       "content_hash": "/2/content_hash.txt",
       "prompt": "/2/prompt.txt"
+    },
+    {
+      "metadata": "/3/metadata.json",
+      "transcript": "/3/full.jsonl",
+      "compact_transcript": "/3/transcript.jsonl",
+      "content_hash": "/3/content_hash.txt",
+      "prompt": "/3/prompt.txt"
     }
   ],
   "token_usage": {
