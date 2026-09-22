@@ -55,7 +55,7 @@ export function buildRegistryCatalog(): RegistryCatalog {
   items.push({
     name: "theme-rebrand",
     type: "registry:theme",
-    title: "Instructure Rebrand Theme",
+    title: "Instructure Next gen Theme",
     description: "Modern Instructure brand theme variables.",
     author: AUTHOR,
     dependencies: ["@pantoken/css", "@pantoken/shadcn"],

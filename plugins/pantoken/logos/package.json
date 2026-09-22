@@ -22,6 +22,7 @@
     ".": "./dist/index.mjs",
     "./logos.css": "./dist/logos.css",
     "./*.css": "./dist/*.css",
+    "./*.png": "./dist/*.png",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -36,7 +37,8 @@
   },
   "dependencies": {
     "@pantoken/model": "workspace:*",
-    "@pantoken/plugin-kit": "workspace:*"
+    "@pantoken/plugin-kit": "workspace:*",
+    "@resvg/resvg-js": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:",

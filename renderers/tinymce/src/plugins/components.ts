@@ -1,6 +1,6 @@
 /**
  * TinyMCE components picker plugin.
- * Provides a dialog for browsing and inserting pantoken components, utilities, and custom-components.
+ * Provides a dialog for browsing and inserting pantoken components.
  *
  * \@module
  */
@@ -9,6 +9,8 @@ import type { CdnFile } from "@pantoken/cdn";
 import type { CssDocEntry } from "../cssdoc/model.js";
 import type { MissingAssetHandler } from "../types.js";
 import { trackAndInjectAsset } from "../content-css.js";
+import { insertHtml } from "../lib/insertion-target.js";
+import { TINYMCE_STRINGS } from "../strings.js";
 
 /**
  * Configuration options for the components picker plugin.
@@ -17,7 +19,12 @@ export interface ComponentsPickerOptions {
   model: CssDocEntry[];
   currentAssets: CdnFile[];
   onMissingAsset?: MissingAssetHandler;
+  /** Register this picker's standalone toolbar button and menu item. */
+  registerUi?: boolean;
 }
+
+/** Command that opens the components picker. */
+export const COMPONENTS_COMMAND = "pantokenOpenComponents";
 
 /**
  * A component/utility record for display in the picker.
@@ -28,6 +35,11 @@ interface ComponentRecord {
   kind: "component" | "utility" | "custom-component";
   description?: string;
   examples: string[];
+}
+
+function normalizeExample(example: string): string {
+  const fencedHtml = example.match(/```(?:html)?\s*([\s\S]*?)```/iu);
+  return (fencedHtml?.[1] ?? example).trim();
 }
 
 /**
@@ -44,31 +56,40 @@ export function createComponentsPlugin(options: ComponentsPickerOptions): (edito
   // TinyMCE always instantiates plugins with `new Plugin(editor, ...)` — must be a constructible
   // function expression, not an arrow function (arrows throw "is not a constructor").
   return function pantokenComponentsPlugin(editor: Editor) {
-    // Build a flattened list of all available components/utilities.
+    // Build a list of available components.
     const componentList = buildComponentList(options.model);
+    const openDialog = (): void => openComponentsDialog(editor, componentList, options);
+
+    if (options.registerUi === false) {
+      editor.addCommand(COMPONENTS_COMMAND, openDialog);
+      return;
+    }
 
     // Register the toolbar button.
     editor.ui.registry.addButton("pantokenComponents", {
-      text: "Components",
-      tooltip: "Insert a pantoken component",
-      onAction: () => openComponentsDialog(editor, componentList, options),
+      text: TINYMCE_STRINGS.componentsToolbarText,
+      tooltip: TINYMCE_STRINGS.componentsToolbarTooltip,
+      onAction: openDialog,
     });
 
     // Register a menu item.
     editor.ui.registry.addMenuItem("pantokenComponents", {
-      text: "Component",
-      onAction: () => openComponentsDialog(editor, componentList, options),
+      text: TINYMCE_STRINGS.componentsMenuText,
+      onAction: openDialog,
     });
   };
 }
 
 /**
- * Build a searchable list of all components/utilities for the picker.
+ * Build a list of components for the picker.
  */
 function buildComponentList(model: CssDocEntry[]): ComponentRecord[] {
   const list: ComponentRecord[] = [];
 
   for (const entry of model) {
+    const kind = entry.kind as string;
+    if (kind !== "component" && kind !== "custom-component") continue;
+
     list.push({
       name: entry.name,
       className: entry.className,
@@ -89,28 +110,18 @@ function openComponentsDialog(
   components: ComponentRecord[],
   options: ComponentsPickerOptions,
 ): void {
-  // Filter state for search.
-  let _currentFilter = "";
-  let filteredComponents = components;
-
-  // Dialog body: title, search box, results list, details pane.
+  // Dialog body: title and results list.
   const _body = editor.windowManager.open({
-    title: "Insert Component",
+    title: TINYMCE_STRINGS.componentsDialogTitle,
     body: {
       type: "panel",
       items: [
         {
-          type: "input",
-          name: "search",
-          label: "Search",
-          placeholder: "e.g., button, card, form",
-        },
-        {
           type: "listbox",
           name: "component",
-          label: "Components",
-          items: filteredComponents.map((c) => ({
-            text: `${c.name} (${c.kind})`,
+          label: TINYMCE_STRINGS.componentsListLabel,
+          items: components.map((c) => ({
+            text: c.name,
             value: c.name,
           })),
           size: 10,
@@ -119,12 +130,12 @@ function openComponentsDialog(
     },
     buttons: [
       {
-        text: "Insert",
+        text: TINYMCE_STRINGS.insertButton,
         type: "submit",
         primary: true,
       },
       {
-        text: "Cancel",
+        text: TINYMCE_STRINGS.cancelButton,
         type: "cancel",
       },
     ],
@@ -135,8 +146,8 @@ function openComponentsDialog(
 
       if (component && component.examples.length > 0) {
         // Insert the first example.
-        const html = component.examples[0];
-        editor.insertContent(html);
+        const html = normalizeExample(component.examples[0]);
+        insertHtml(editor, html);
 
         // If this component has a CSS file, inject it into the content area.
         const cssFile: CdnFile = {

@@ -74,3 +74,38 @@ export function extractMessagesSpace(sourcePath: string, contextPrefix?: string)
     closeSync(sourceFd);
   }
 }
+
+/** One configured source file or directory in a merged messages space. */
+export interface MessageSourceLocation {
+  path: string;
+  reference: string;
+}
+
+/** Extract and merge configured message sources, rejecting duplicate runtime keys. */
+export function extractMessagesSources(
+  sources: readonly MessageSourceLocation[],
+  contextPrefix?: string,
+): MessageUnit[] {
+  const units: MessageUnit[] = [];
+  const contexts = new Map<string, string>();
+
+  for (const source of sources) {
+    for (const unit of extractMessagesSpace(source.path, contextPrefix)) {
+      const previousSource = contexts.get(unit.msgctxt);
+      if (previousSource) {
+        throw new Error(
+          `Duplicate message key "${unit.key}" in ${previousSource} and ${source.reference}`,
+        );
+      }
+      contexts.set(unit.msgctxt, source.reference);
+      units.push({
+        ...unit,
+        reference: unit.reference
+          ? `${source.reference}/${unit.reference}`
+          : `${source.reference}#${unit.key}`,
+      });
+    }
+  }
+
+  return units;
+}

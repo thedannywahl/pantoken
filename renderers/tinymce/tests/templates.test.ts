@@ -39,7 +39,7 @@ test("registers a toolbar button and menu item listing every template", () => {
 
   expect(editor.ui.registry.addButton).toHaveBeenCalledWith(
     TEMPLATES_TOOLBAR_NAME,
-    expect.objectContaining({ text: "Insert template" }),
+    expect.objectContaining({ text: "Templates" }),
   );
   expect(editor.ui.registry.addMenuItem).toHaveBeenCalledWith(
     TEMPLATES_TOOLBAR_NAME,
@@ -73,6 +73,28 @@ test("confirming the dialog replaces the document with the chosen template", () 
 
   expect(editor.setContent).toHaveBeenCalledWith("<div>callout</div>");
   expect(onInsert).toHaveBeenCalledWith(templates[1]);
+});
+
+test("replaces the CodeMirror doc instead while the source view is active", () => {
+  const editor = fakeEditor();
+  const replaceAll = vi.fn();
+  (editor as unknown as Record<string, unknown>).plugins = {
+    pantoken_source_toggle: { isSourceMode: () => true, replaceAll },
+  };
+  const plugin = createTemplatesPlugin({ templates });
+  plugin(editor as never);
+
+  const openAction = editor.ui.registry.addButton.mock.calls[0]?.[1].onAction as () => void;
+  openAction();
+  const dialogSpec = editor.windowManager.open.mock.calls[0]?.[0];
+  dialogSpec.onSubmit({ getData: () => ({ template: "Callout" }), close: vi.fn() });
+  const confirmCallback = editor.windowManager.confirm.mock.calls[0]?.[1] as (
+    confirmed: boolean,
+  ) => void;
+  confirmCallback(true);
+
+  expect(replaceAll).toHaveBeenCalledWith("<div>callout</div>");
+  expect(editor.setContent).not.toHaveBeenCalled();
 });
 
 test("declining the confirm does not modify the editor", () => {

@@ -114,7 +114,7 @@ const t = computed(() => {
     iifeNote:
       "This snippet loads its own token sheet and always registers every element, regardless of selection.",
     themeLabel: "Theme",
-    themeRebrand: "Rebrand",
+    themeRebrand: "Next gen",
     themeCanvas: "Canvas",
     themeCanvasHighContrast: "Canvas high contrast",
     modeLabel: "Rebrand mode",

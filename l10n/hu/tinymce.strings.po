@@ -1,0 +1,352 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-21 21:17+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
+
+#: renderers/tinymce/src/i18n.json#autocompleteModifierDetail
+#, no-c-format
+msgctxt "tinymce.strings:autocompleteModifierDetail"
+msgid "modifier"
+msgstr "módosító"
+
+#: renderers/tinymce/src/i18n.json#classValidationIncompleteComponent
+#, no-c-format
+msgctxt "tinymce.strings:classValidationIncompleteComponent"
+msgid "Incomplete component name after '{{prefix}}'"
+msgstr "Hiányos komponensnév a '{{prefix}}' után"
+
+#: renderers/tinymce/src/i18n.json#classValidationTokenPrefix
+#, no-c-format
+msgctxt "tinymce.strings:classValidationTokenPrefix"
+msgid "Token must start with '{{prefix}}'"
+msgstr "A tokennek '{{prefix}}' előtaggal kell kezdődnie"
+
+#: renderers/tinymce/src/i18n.json#classValidationUnknownComponent
+#, no-c-format
+msgctxt "tinymce.strings:classValidationUnknownComponent"
+msgid "Unknown component/utility: '{{componentName}}'"
+msgstr "Ismeretlen komponens/segéd: '{{componentName}}'"
+
+#: renderers/tinymce/src/i18n.json#componentsDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:componentsDialogTitle"
+msgid "Insert Component"
+msgstr "Komponens beszúrása"
+
+#: renderers/tinymce/src/i18n.json#componentsListLabel
+#, no-c-format
+msgctxt "tinymce.strings:componentsListLabel"
+msgid "Components"
+msgstr "Komponensek"
+
+#: renderers/tinymce/src/i18n.json#componentsMenuText
+#, no-c-format
+msgctxt "tinymce.strings:componentsMenuText"
+msgid "Component"
+msgstr "Komponens"
+
+#: renderers/tinymce/src/i18n.json#componentsToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:componentsToolbarText"
+msgid "Components"
+msgstr "Komponensek"
+
+#: renderers/tinymce/src/i18n.json#componentsToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:componentsToolbarTooltip"
+msgid "Insert a pantoken component"
+msgstr "Pantoken-komponens beszúrása"
+
+#: renderers/tinymce/src/i18n.json#iconLabelDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:iconLabelDialogTitle"
+msgid "Icon label"
+msgstr "Ikon címke"
+
+#: renderers/tinymce/src/i18n.json#iconLabelInputLabel
+#, no-c-format
+msgctxt "tinymce.strings:iconLabelInputLabel"
+msgid "Screen reader label"
+msgstr "Képernyőolvasó címke"
+
+#: renderers/tinymce/src/i18n.json#iconsMenuText
+#, no-c-format
+msgctxt "tinymce.strings:iconsMenuText"
+msgid "Icon"
+msgstr "Ikon"
+
+#: renderers/tinymce/src/i18n.json#iconsToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:iconsToolbarText"
+msgid "Icons"
+msgstr "Ikonok"
+
+#: renderers/tinymce/src/i18n.json#iconsToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:iconsToolbarTooltip"
+msgid "Insert an icon"
+msgstr "Ikon beszúrása"
+
+#: renderers/tinymce/src/i18n.json#layoutsConfirmReplace
+#, no-c-format
+msgctxt "tinymce.strings:layoutsConfirmReplace"
+msgid "Replace the current content with the \"{{title}}\" layout?"
+msgstr "A jelenlegi tartalmat lecseréljük a \"{{title}}\" elrendezésre?"
+
+#: renderers/tinymce/src/i18n.json#layoutsDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:layoutsDialogTitle"
+msgid "Insert layout"
+msgstr "Elrendezés beszúrása"
+
+#: renderers/tinymce/src/i18n.json#layoutsMenuText
+#, no-c-format
+msgctxt "tinymce.strings:layoutsMenuText"
+msgid "Layout…"
+msgstr "Elrendezés…"
+
+#: renderers/tinymce/src/i18n.json#layoutsSelectLabel
+#, no-c-format
+msgctxt "tinymce.strings:layoutsSelectLabel"
+msgid "Starter layout"
+msgstr "Kezdő elrendezés"
+
+#: renderers/tinymce/src/i18n.json#layoutsToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:layoutsToolbarText"
+msgid "Layouts"
+msgstr "Elrendezések"
+
+#: renderers/tinymce/src/i18n.json#layoutsToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:layoutsToolbarTooltip"
+msgid "Insert a starter layout"
+msgstr "Kezdő elrendezés beszúrása"
+
+#: renderers/tinymce/src/i18n.json#logosToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:logosToolbarText"
+msgid "Logos"
+msgstr "Logók"
+
+#: renderers/tinymce/src/i18n.json#logosToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:logosToolbarTooltip"
+msgid "Insert a logo"
+msgstr "Logó beszúrása"
+
+#: renderers/tinymce/src/i18n.json#logosMenuText
+#, no-c-format
+msgctxt "tinymce.strings:logosMenuText"
+msgid "Logo"
+msgstr "Logó"
+
+#: renderers/tinymce/src/i18n.json#logosDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:logosDialogTitle"
+msgid "Insert Logo"
+msgstr "Logó beszúrása"
+
+#: renderers/tinymce/src/i18n.json#logosProductLabel
+#, no-c-format
+msgctxt "tinymce.strings:logosProductLabel"
+msgid "Product"
+msgstr "Termék"
+
+#: renderers/tinymce/src/i18n.json#logosLayoutLabel
+#, no-c-format
+msgctxt "tinymce.strings:logosLayoutLabel"
+msgid "Layout"
+msgstr "Elrendezés"
+
+#: renderers/tinymce/src/i18n.json#logosLayoutHorizontal
+#, no-c-format
+msgctxt "tinymce.strings:logosLayoutHorizontal"
+msgid "Horizontal"
+msgstr "Vízszintes"
+
+#: renderers/tinymce/src/i18n.json#logosLayoutVertical
+#, no-c-format
+msgctxt "tinymce.strings:logosLayoutVertical"
+msgid "Vertical"
+msgstr "Függőleges"
+
+#: renderers/tinymce/src/i18n.json#logosLayoutStacked
+#, no-c-format
+msgctxt "tinymce.strings:logosLayoutStacked"
+msgid "Stacked"
+msgstr "Egymásra helyezett"
+
+#: renderers/tinymce/src/i18n.json#logosColorModeLabel
+#, no-c-format
+msgctxt "tinymce.strings:logosColorModeLabel"
+msgid "Color Mode"
+msgstr "Színmód"
+
+#: renderers/tinymce/src/i18n.json#logosColorModeColor
+#, no-c-format
+msgctxt "tinymce.strings:logosColorModeColor"
+msgid "Color"
+msgstr "Szín"
+
+#: renderers/tinymce/src/i18n.json#logosColorModeMonochrome
+#, no-c-format
+msgctxt "tinymce.strings:logosColorModeMonochrome"
+msgid "Monochrome"
+msgstr "Monokróm"
+
+#: renderers/tinymce/src/i18n.json#logosColorModeLight
+#, no-c-format
+msgctxt "tinymce.strings:logosColorModeLight"
+msgid "Light"
+msgstr "Világos"
+
+#: renderers/tinymce/src/i18n.json#insertButton
+#, no-c-format
+msgctxt "tinymce.strings:insertButton"
+msgid "Insert"
+msgstr "Beszúrás"
+
+#: renderers/tinymce/src/i18n.json#cancelButton
+#, no-c-format
+msgctxt "tinymce.strings:cancelButton"
+msgid "Cancel"
+msgstr "Mégse"
+
+#: renderers/tinymce/src/i18n.json#logoAltSuffix
+#, no-c-format
+msgctxt "tinymce.strings:logoAltSuffix"
+msgid "logo"
+msgstr "logó"
+
+#: renderers/tinymce/src/i18n.json#sourceToggleTooltip
+#, no-c-format
+msgctxt "tinymce.strings:sourceToggleTooltip"
+msgid "Source code"
+msgstr "Forráskód"
+
+#: renderers/tinymce/src/i18n.json#templatesConfirmReplace
+#, no-c-format
+msgctxt "tinymce.strings:templatesConfirmReplace"
+msgid "Replace the current content with the \"{{title}}\" template?"
+msgstr "A jelenlegi tartalmat lecseréljük a \"{{title}}\" sablonra?"
+
+#: renderers/tinymce/src/i18n.json#templatesDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:templatesDialogTitle"
+msgid "Insert template"
+msgstr "Sablon beszúrása"
+
+#: renderers/tinymce/src/i18n.json#templatesMenuText
+#, no-c-format
+msgctxt "tinymce.strings:templatesMenuText"
+msgid "Insert template…"
+msgstr "Sablon beszúrása…"
+
+#: renderers/tinymce/src/i18n.json#templatesSelectLabel
+#, no-c-format
+msgctxt "tinymce.strings:templatesSelectLabel"
+msgid "Starter template"
+msgstr "Kezdő sablon"
+
+#: renderers/tinymce/src/i18n.json#templatesToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:templatesToolbarText"
+msgid "Templates"
+msgstr "Sablonok"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:placeholdToolbarText"
+msgid "Placeholder"
+msgstr "Helyőrző"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:placeholdToolbarTooltip"
+msgid "Insert a placeholder image"
+msgstr "Helyőrző kép beszúrása"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdMenuText
+#, no-c-format
+msgctxt "tinymce.strings:placeholdMenuText"
+msgid "Placeholder image…"
+msgstr "Helyőrző kép…"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:placeholdDialogTitle"
+msgid "Insert placeholder image"
+msgstr "Helyőrző kép beszúrása"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdWidthLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdWidthLabel"
+msgid "Width"
+msgstr "Szélesség"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdHeightLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdHeightLabel"
+msgid "Height"
+msgstr "Magasság"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdBackgroundColorLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdBackgroundColorLabel"
+msgid "Background color"
+msgstr "Háttérszín"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdTextColorLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdTextColorLabel"
+msgid "Text color"
+msgstr "Szövegszín"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdTextLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdTextLabel"
+msgid "Text"
+msgstr "Szöveg"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdAltTextLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdAltTextLabel"
+msgid "Alt text"
+msgstr "Alternatív szöveg"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdInsertButton
+#, no-c-format
+msgctxt "tinymce.strings:placeholdInsertButton"
+msgid "Insert"
+msgstr "Beszúrás"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdCancelButton
+#, no-c-format
+msgctxt "tinymce.strings:placeholdCancelButton"
+msgid "Cancel"
+msgstr "Mégse"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdInvalidDimensions
+#, no-c-format
+msgctxt "tinymce.strings:placeholdInvalidDimensions"
+msgid "Width and height must be whole numbers from 10 through 4000."
+msgstr "A szélességnek és magasságnak egész számnak kell lennie 10 és 4000 között."
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdInvalidColor
+#, no-c-format
+msgctxt "tinymce.strings:placeholdInvalidColor"
+msgid "Colors must use three- or six-digit hexadecimal values."
+msgstr "A színeknek három- vagy hatjegyű hexadecimális értékeket kell használniuk."
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdAltFallback
+#, no-c-format
+msgctxt "tinymce.strings:placeholdAltFallback"
+msgid "{{width}} by {{height}} placeholder image"
+msgstr "{{width}} × {{height}} helyőrző kép"

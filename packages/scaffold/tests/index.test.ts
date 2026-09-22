@@ -31,11 +31,52 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(existsSync(join(target, "theme.js"))).toBe(true);
   expect(existsSync(join(target, "index.html"))).toBe(true);
   expect(existsSync(join(target, "src/main.ts"))).toBe(true);
+  const main = readFileSync(join(target, "src/main.ts"), "utf8");
+  expect(main.indexOf('document.querySelector<HTMLDivElement>("#app")!')).toBeLessThan(
+    main.indexOf("interactionsScript.src = interactionsIifeUrl"),
+  );
+  expect(main).toContain("createPlaceholdPlugin");
+  expect(main).toContain("createContentClassesPlugin");
+  expect(main).toContain("CONTENT_CLASSES_PLUGIN_NAME");
+  expect(main).toContain("createA11yPlugin");
+  expect(main).toContain("createSourceTogglePlugin");
+  expect(main).toContain(
+    "providerSelect.value = import.meta.env.DEV ? LOCAL_PROVIDER_ID : DEFAULT_CDN_PROVIDER_ID;",
+  );
+  expect(main).toContain("@pantoken/tinymce/skins/next-gen/skin.css?url");
+  expect(main).toContain("@pantoken/tinymce/skins/canvas/skin.css?url");
+  expect(main).toContain("@pantoken/tinymce/skins/canvas-high-contrast/skin.css?url");
+  expect(main).not.toContain("tinymce/skins/ui/oxide/skin.css");
+  expect(main).toContain(
+    '"pantoken pantoken_content_classes placehold pantoken_a11y pantoken_source_toggle image link lists',
+  );
+  expect(main).toContain('createA11yPlugin({ display: "footer" })');
+  expect(main).toContain("toolbar: `undo redo | pantoken placehold | bold italic underline");
+  expect(main).not.toContain("pantokenA11y");
+  expect(main).toContain("let previewMutationObserver: MutationObserver | undefined");
+  expect(main).toContain("previewFrame.contentDocument?.documentElement");
+  expect(main).toContain("previewMutationObserver.observe(root");
+  expect(main).toContain("previewFrame.style.height");
+  expect(readFileSync(join(target, "src/app.css"), "utf8")).toContain(
+    '.content[data-layout="row"] .preview-pane',
+  );
+  expect(main).not.toContain('tinymce.PluginManager.add("pantoken_components"');
+  expect(main).not.toContain('tinymce.PluginManager.add("pantoken_source_toggle"');
+  expect(existsSync(join(target, "src/preferences.ts"))).toBe(true);
+  expect(main).toContain('import { loadPreferences, savePreferences } from "./preferences.ts";');
+  expect(main).toContain("const preferences = loadPreferences();");
+  expect(main).toContain("function persistPreferences(): void {");
+  const preferences = readFileSync(join(target, "src/preferences.ts"), "utf8");
+  expect(preferences).toContain("pantoken-canvas-theme-editor-preferences");
+  expect(preferences).toContain("export function loadPreferences(");
+  expect(preferences).toContain("export function savePreferences(");
   expect(readFileSync(join(target, "theme.css"), "utf8")).toContain(
     "@pantoken/css/dist/style.rebrand.light.lean.css",
   );
   const pkg = readFileSync(join(target, "package.json"), "utf8");
   expect(pkg).toContain('"name": "my-app"');
+  expect(pkg).toContain('"@pantoken/tinymce-placehold": "latest"');
+  expect(pkg).toContain('"@pantoken/tinymce-a11y": "latest"');
   expect(pkg).not.toContain("{{projectName}}");
 });
 

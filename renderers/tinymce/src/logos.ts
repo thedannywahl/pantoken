@@ -4,4 +4,4 @@
  *
  * \@module
  */
-export { type LogoMeta, type Product, logos, products } from "@pantoken/plugin-logos";
+export { type LogoMeta, type Product, getLogoMeta, logos, products } from "@pantoken/plugin-logos";

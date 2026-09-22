@@ -63,6 +63,11 @@ test("validateClassToken accepts valid component tokens", () => {
   expect(errors.filter((e) => e.includes("Unknown component"))).toHaveLength(0);
 });
 
+test("validateClassToken accepts hyphenated component names", () => {
+  expect(validateClassToken("instui-agent-shell")).toEqual([]);
+  expect(validateClassToken("instui-close-button")).toEqual([]);
+});
+
 test("validateClassToken detects unknown components", () => {
   const errors = validateClassToken("instui-nonexistent");
   expect(errors.some((e) => e.includes("Unknown component"))).toBe(true);

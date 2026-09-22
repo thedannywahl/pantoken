@@ -243,26 +243,36 @@ const orchestrator = workspaceOrchestrator({
       dependents: [],
     },
     {
+      // Re-inline every scaffold template into generated/scaffolds.ts (the single source
+      // `scaffoldProject` reads — see packages/scaffold/src/index.ts) BEFORE the canvas-rce node
+      // below re-renders from it. Without this cascade, an edit to the canvas-theme-editor template
+      // would rebuild the static bundle from a stale generated/scaffolds.ts (the same staleness bug
+      // `scaffold:dev`'s own `regenerate()` step exists to avoid).
+      name: "@pantoken/scaffold#generate",
+      dir: at("packages/scaffold"),
+      watchPaths: [at("packages/scaffold/templates"), at("packages/scaffold/src")],
+      build: ["node", "scripts/generate.ts"],
+      dependents: ["@pantoken/docs#canvas-rce"],
+    },
+    {
       // Re-render the canvas-theme-editor scaffold template and build it into the static bundle the
-      // "Canvas RCE" utility page embeds via iframe (public/tools/canvas-rce/). Watches the template's
-      // own source plus the scaffolder that renders it, so an edit to either rebuilds the demo.
+      // "Canvas RCE" utility page embeds via iframe (public/tools/canvas-rce/). Dependent-only —
+      // triggered by `@pantoken/scaffold#generate` above so it always rebuilds from freshly
+      // regenerated templates, never a stale copy.
       name: "@pantoken/docs#canvas-rce",
       dir: at("docs"),
-      watchPaths: [
-        at("packages/scaffold/templates/canvas-theme-editor"),
-        at("packages/scaffold/src"),
-      ],
+      watchPaths: [],
       build: ["node", "scripts/build-canvas-rce.ts"],
       dependents: [],
     },
   ],
   outputWatchPaths: [
-    // The generated CSS the theme imports via `@fs` — bridged into HMR. (Web components are imported from
-    // source now, so their `dist` no longer needs bridging; the plugin/demo sheets land in public/ and
-    // reload on their own.)
+    // Generated CSS imported via `@fs` and the Canvas RCE static iframe bundle — bridged into Vite's
+    // watcher. (Web components are imported from source now, so their `dist` no longer needs bridging.)
     at("formats/css/generated"),
     at("formats/components/generated"),
     at("plugins/pantoken/custom-components/generated"),
+    at("docs/public/tools/canvas-rce"),
   ],
 });
 
@@ -725,7 +735,10 @@ export default defineConfig({
       `(function(){try{var t=localStorage.getItem("pantoken-theme")||"rebrand";var d=document.documentElement;d.dataset.pantokenTheme=t;if(t!=="rebrand")d.classList.remove("dark");}catch(e){}})();`,
     ],
     // Same before-paint-restore technique, for the sidebar show/hide toggle (see Layout.vue).
-    sidebarToggleHead(),
+    sidebarToggleHead({
+      placement: "start",
+      icons: { show: "-icon-panel-left-open", hide: "-icon-panel-left-close" },
+    }),
     // `favicon.ico` is also requested at the site root by browsers that ignore the declared icon.
 
     ["link", { rel: "icon", type: "image/x-icon", sizes: "any", href: `${base}favicon.ico` }],

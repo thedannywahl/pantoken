@@ -14,6 +14,11 @@ interface InstuiIconEntry {
   name: string;
 }
 
+/** A Lucide Lab entry from `cdn-icon-manifest-lucide-lab.json`. */
+interface LucideLabIconEntry {
+  name: string;
+}
+
 /** A Simple Icons entry from `cdn-icon-manifest-simple.json`. */
 interface SimpleIconEntry {
   slug: string;
@@ -29,6 +34,7 @@ interface PluginManifest {
 /** One published icon/logo manifest entry, tagged by its source and exact per-item CDN CSS URL. */
 type IconManifestEntry =
   | { source: "instui"; name: string; css: string }
+  | { source: "lucide-lab"; name: string; css: string }
   | { source: "simple-icons"; slug: string; title: string; css: string }
   | { source: "custom-icons"; name: string; css: string }
   | { source: "logos"; product: string; name: string; css: string };
@@ -41,6 +47,7 @@ const readGenerated = <T>(generatedDir: string, file: string): T =>
 /** Build the flat, tagged icon/logo manifest from the three generated picker manifests. */
 export const buildIconManifest = (
   instuiIcons: readonly InstuiIconEntry[],
+  lucideLabIcons: readonly LucideLabIconEntry[],
   simpleIcons: readonly SimpleIconEntry[],
   pluginManifest: PluginManifest,
 ): { description: string; icons: IconManifestEntry[] } => {
@@ -48,6 +55,12 @@ export const buildIconManifest = (
     css: `${CDN_BASE}/@pantoken/components/dist/icons/${icon.name}.css`,
     name: icon.name,
     source: "instui",
+  }));
+
+  const lucideLab: IconManifestEntry[] = lucideLabIcons.map((icon) => ({
+    css: `${CDN_BASE}/@pantoken/plugin-lucide-lab/dist/icons/${icon.name}.css`,
+    name: icon.name,
+    source: "lucide-lab",
   }));
 
   const simple: IconManifestEntry[] = simpleIcons.map((icon) => ({
@@ -77,7 +90,7 @@ export const buildIconManifest = (
       "pantoken icon/logo manifest. Each entry names its source " +
       "(instui | simple-icons | custom-icons | logos) and its exact per-item CDN CSS URL — " +
       "never bulk-import a whole source to get a single icon.",
-    icons: [...instui, ...simple, ...customIcons, ...logos],
+    icons: [...instui, ...lucideLab, ...simple, ...customIcons, ...logos],
   };
 };
 
@@ -92,13 +105,17 @@ export const writeIconManifest = (): void => {
     generatedDir,
     "cdn-icon-manifest-instui.json",
   );
+  const lucideLabIcons = readGenerated<LucideLabIconEntry[]>(
+    generatedDir,
+    "cdn-icon-manifest-lucide-lab.json",
+  );
   const simpleIcons = readGenerated<SimpleIconEntry[]>(
     generatedDir,
     "cdn-icon-manifest-simple.json",
   );
   const pluginManifest = readGenerated<PluginManifest>(generatedDir, "cdn-plugin-manifest.json");
 
-  const manifest = buildIconManifest(instuiIcons, simpleIcons, pluginManifest);
+  const manifest = buildIconManifest(instuiIcons, lucideLabIcons, simpleIcons, pluginManifest);
   const out = resolve(publicDir, "icon-manifest.json");
   writeFileSync(out, `${JSON.stringify(manifest, null, 2)}\n`);
   console.log(`✓ docs: wrote icon-manifest.json (${manifest.icons.length} entries)`);

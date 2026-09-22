@@ -60,6 +60,8 @@ export default defineConfig({
         "**/dist/**",
         "**/*.config.*",
         "**/*.d.ts",
+        // Ships as raw source for the consumer's Vue compiler; V8's parser can't instrument SFCs.
+        "plugins/vitepress/side-bar-toggle/src/SidebarToggle.vue",
         // Data files, not executable code — nothing for v8 to instrument.
         "**/*.json",
         // Type-only package — no runtime statements to cover, so it can't meet an 85% floor.
@@ -259,6 +261,10 @@ export default defineConfig({
         command: "vp run @pantoken/web-components#extract",
         cache: false,
       },
+      "tinymce:extract": {
+        command: "vp run @pantoken/tinymce#extract",
+        cache: false,
+      },
       "cli:extract": {
         command: "vp run @pantoken/scaffold#extract && vp run @pantoken/ai#extract",
         cache: false,
@@ -275,7 +281,7 @@ export default defineConfig({
       },
       "i18n:extract": {
         command: "true",
-        dependsOn: ["ui:extract", "cli:extract", "docs:extract"],
+        dependsOn: ["ui:extract", "tinymce:extract", "cli:extract", "docs:extract"],
         cache: false,
       },
       // UI (web-components) string localization.
@@ -301,6 +307,31 @@ export default defineConfig({
       },
       "ui:translate:force:copilot": {
         command: "vp run @pantoken/web-components#translate:force:copilot",
+        cache: false,
+      },
+      // TinyMCE string localization.
+      "tinymce:translate": {
+        command: "vp run @pantoken/tinymce#translate",
+        cache: false,
+      },
+      "tinymce:translate:agy": {
+        command: "vp run @pantoken/tinymce#translate:agy",
+        cache: false,
+      },
+      "tinymce:translate:copilot": {
+        command: "vp run @pantoken/tinymce#translate:copilot",
+        cache: false,
+      },
+      "tinymce:translate:force": {
+        command: "vp run @pantoken/tinymce#translate:force",
+        cache: false,
+      },
+      "tinymce:translate:force:agy": {
+        command: "vp run @pantoken/tinymce#translate:force:agy",
+        cache: false,
+      },
+      "tinymce:translate:force:copilot": {
+        command: "vp run @pantoken/tinymce#translate:force:copilot",
         cache: false,
       },
       // Docs locale translation (both claude and agy variants).
@@ -359,17 +390,27 @@ export default defineConfig({
       // Umbrella tasks for all translation domains.
       "i18n:translate": {
         command: "true",
-        dependsOn: ["ui:translate", "docs:translate", "cli:translate"],
+        dependsOn: ["ui:translate", "tinymce:translate", "docs:translate", "cli:translate"],
         cache: false,
       },
       "i18n:translate:agy": {
         command: "true",
-        dependsOn: ["ui:translate:agy", "docs:translate:agy", "cli:translate:agy"],
+        dependsOn: [
+          "ui:translate:agy",
+          "tinymce:translate:agy",
+          "docs:translate:agy",
+          "cli:translate:agy",
+        ],
         cache: false,
       },
       "i18n:translate:copilot": {
         command: "true",
-        dependsOn: ["ui:translate:copilot", "docs:translate:copilot", "cli:translate:copilot"],
+        dependsOn: [
+          "ui:translate:copilot",
+          "tinymce:translate:copilot",
+          "docs:translate:copilot",
+          "cli:translate:copilot",
+        ],
         cache: false,
       },
       // Bypasses every domain's translation-memory cache — retranslates and overwrites everything,
@@ -377,7 +418,12 @@ export default defineConfig({
       // DOCS_TRANSLATION_FORCE / I18N_TRANSLATION_FORCE in the respective translation pipelines.
       "i18n:translate:force": {
         command: "true",
-        dependsOn: ["ui:translate:force", "docs:translate:force", "cli:translate:force"],
+        dependsOn: [
+          "ui:translate:force",
+          "tinymce:translate:force",
+          "docs:translate:force",
+          "cli:translate:force",
+        ],
         cache: false,
       },
       // Same as i18n:translate:force but routed through the agy adapter wrapper.
@@ -385,6 +431,7 @@ export default defineConfig({
         command: "true",
         dependsOn: [
           "ui:translate:force:agy",
+          "tinymce:translate:force:agy",
           "docs:translate:force:agy",
           "cli:translate:force:agy",
         ],
@@ -395,6 +442,7 @@ export default defineConfig({
         command: "true",
         dependsOn: [
           "ui:translate:force:copilot",
+          "tinymce:translate:force:copilot",
           "docs:translate:force:copilot",
           "cli:translate:force:copilot",
         ],
@@ -405,7 +453,7 @@ export default defineConfig({
       // tree and is included in the all-surface task below.
       "i18n:check:drift": {
         command:
-          "vp run @pantoken/translation-adapters#build && vp run @pantoken/i18n-engine#build && vp run @pantoken/web-components#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift",
+          "vp run @pantoken/translation-adapters#build && vp run @pantoken/i18n-engine#build && vp run @pantoken/web-components#check:drift && vp run @pantoken/tinymce#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift",
       },
       "i18n:drift:fix": {
         command: "node scripts/i18n-drift-fix.ts --provider claude",

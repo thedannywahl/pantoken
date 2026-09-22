@@ -1,0 +1,60 @@
+{
+  "name": "@pantoken/tinymce-codemirror",
+  "version": "0.1.0",
+  "description": "A CodeMirror 6 source-view toggle for TinyMCE: syntax-highlighted HTML editing with dark-mode theming, pretty-print, and fullscreen support, replacing TinyMCE's stock `code` modal.",
+  "homepage": "https://pantoken.app",
+  "bugs": "https://github.com/thedannywahl/pantoken/issues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git",
+    "directory": "plugins/tinymce/codemirror"
+  },
+  "files": [
+    "dist",
+    "src/i18n.json"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@codemirror/lang-html": "catalog:",
+    "@codemirror/state": "catalog:",
+    "@codemirror/view": "catalog:",
+    "codemirror": "catalog:",
+    "prettier": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "tinymce": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "@codemirror/lang-html": "^6.4.12",
+    "@codemirror/state": "^6.7.1",
+    "@codemirror/view": "^6.0.0",
+    "codemirror": "^6.0.2",
+    "tinymce": "^8.0"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "pantoken": {
+    "key": "tinymce-codemirror",
+    "kind": "subpath"
+  }
+}

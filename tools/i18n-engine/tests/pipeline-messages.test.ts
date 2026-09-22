@@ -52,6 +52,38 @@ describe("runExtractMessages", () => {
     expect(pot).toContain('msgid "yyyy-mm-dd"');
     expect(pot).toContain("x-translate-optional");
   });
+
+  test("includes sourceMerge units in extraction and locale resolution", () => {
+    const pluginPath = join(testDir, "plugin.json");
+    writeFileSync(
+      pluginPath,
+      JSON.stringify({ placeholdWidth: { message: "Width", translate: "always" } }),
+    );
+    const config = parseConfig({
+      source: "en",
+      locales: {
+        registry: "@pantoken/web-components#LOCALES",
+        exclude: [],
+        tiers: { source: ["en"], primary: ["hu"], secondary: ["*"] },
+      },
+      spaces: {
+        "ui.strings": {
+          kind: "messages",
+          source: "i18n.json",
+          sourceMerge: ["plugin.json"],
+        },
+      },
+    });
+
+    const result = runExtractMessages(config, testDir, "ui.strings");
+    const pot = readFileSync(result.potPath, "utf8");
+    expect(result.unitCount).toBe(3);
+    expect(pot).toContain('msgctxt "ui.strings:placeholdWidth"');
+    expect(pot).toContain("#: plugin.json#placeholdWidth");
+    expect(resolveMessagesForLocale(config, testDir, "ui.strings", "hu").strings).toMatchObject({
+      placeholdWidth: "Width",
+    });
+  });
 });
 
 describe("POT freshness", () => {

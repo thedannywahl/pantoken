@@ -32,6 +32,7 @@ import { rating } from "./rating.ts";
 import { sideNavBar } from "./side-nav-bar.ts";
 import { spinner } from "./spinner.ts";
 import { tag } from "./tag.ts";
+import { tabs } from "./tabs.ts";
 import { toggleButton } from "./toggle-button.ts";
 import { tooltip } from "./tooltip.ts";
 import { tray } from "./tray.ts";
@@ -74,4 +75,5 @@ export const DEFINITIONS: readonly ElementDefinition[] = [
   drawerLayout,
   dateInput,
   dateTimeInput,
+  tabs,
 ];

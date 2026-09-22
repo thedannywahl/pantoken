@@ -10,6 +10,9 @@
  */
 export type PantokenTheme = "rebrand" | "canvas" | "canvasHighContrast";
 
+/** The active VitePress appearance mode used by the embedded Canvas RCE. */
+export type PantokenScheme = "light" | "dark";
+
 /** One selectable color choice for site-wide brand token remapping. */
 export type PantokenColor =
   | "navy"
@@ -68,7 +71,7 @@ export interface ThemeSelectorStrings {
 /** English defaults, also the fallback when a locale doesn't localize the selector. */
 export const THEME_SELECTOR_DEFAULTS: ThemeSelectorStrings = {
   label: "Theme",
-  rebrand: "Rebrand",
+  rebrand: "Next gen",
   canvas: "Canvas",
   canvasHighContrast: "Canvas high contrast",
   colorLabel: "Color scheme",
@@ -89,7 +92,7 @@ export const THEME_SELECTOR_DEFAULTS: ThemeSelectorStrings = {
 
 /** The selectable themes, in menu order. Labels are localized at render time (see {@link ThemeSelectorStrings}). */
 export const THEMES: readonly ThemeOption[] = [
-  { key: "rebrand", label: "Rebrand" },
+  { key: "rebrand", label: "Next gen" },
   { key: "canvas", label: "Canvas" },
   { key: "canvasHighContrast", label: "Canvas high contrast" },
 ];
@@ -116,6 +119,13 @@ export const supportsScheme = (theme: PantokenTheme): boolean => theme === "rebr
 
 const STORAGE_KEY = "pantoken-theme";
 const STORAGE_COLOR_KEY = "pantoken-color";
+
+/** Reads the active VitePress appearance class. */
+export function getActiveScheme(): PantokenScheme {
+  return typeof document !== "undefined" && document.documentElement.classList.contains("dark")
+    ? "dark"
+    : "light";
+}
 
 /** The persisted theme (default `rebrand`). */
 export function getStoredTheme(): PantokenTheme {
@@ -158,10 +168,12 @@ export function broadcastTheme(
   color: PantokenColor = getStoredColor(),
 ): void {
   if (typeof document === "undefined") return;
-  for (const frame of document.querySelectorAll<HTMLIFrameElement>(".pantoken-demo__frame")) {
+  for (const frame of document.querySelectorAll<HTMLIFrameElement>(
+    ".pantoken-demo__frame, .canvas-rce-page__frame",
+  )) {
     // deepcode ignore TooPermissiveCorsPostMessage: "*" only targets opaque-origin sandboxed frames (no concrete origin can match); a real-src frame gets its own origin, and the payload is a non-sensitive theme name.
     frame.contentWindow?.postMessage(
-      { type: "pantoken-demo-theme", theme, color },
+      { type: "pantoken-demo-theme", theme, color, mode: getActiveScheme() },
       themeTargetOrigin(frame),
     );
   }
@@ -170,7 +182,9 @@ export function broadcastTheme(
 /** Post the active color scheme to every embedded demo runner. */
 export function broadcastColor(color: PantokenColor): void {
   if (typeof document === "undefined") return;
-  for (const frame of document.querySelectorAll<HTMLIFrameElement>(".pantoken-demo__frame")) {
+  for (const frame of document.querySelectorAll<HTMLIFrameElement>(
+    ".pantoken-demo__frame, .canvas-rce-page__frame",
+  )) {
     frame.contentWindow?.postMessage(
       { type: "pantoken-demo-color", color },
       themeTargetOrigin(frame),

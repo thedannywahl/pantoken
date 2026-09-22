@@ -2,7 +2,11 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, test } from "vite-plus/test";
-import { extractMessagesSpace, parseMessageSource } from "../src/extract-messages.ts";
+import {
+  extractMessagesSources,
+  extractMessagesSpace,
+  parseMessageSource,
+} from "../src/extract-messages.ts";
 
 describe("parseMessageSource", () => {
   test("an explicit message entry is always-translate", () => {
@@ -120,5 +124,45 @@ describe("extractMessagesSpace", () => {
         reference: "button/i18n.json#label",
       },
     ]);
+  });
+
+  test("merges sources in declaration order with source-qualified references", () => {
+    const corePath = join(testDir, "core.json");
+    const pluginPath = join(testDir, "plugin.json");
+    writeFileSync(corePath, JSON.stringify({ back: { message: "Back", translate: "always" } }));
+    writeFileSync(
+      pluginPath,
+      JSON.stringify({ insert: { message: "Insert", translate: "always" } }),
+    );
+
+    expect(
+      extractMessagesSources(
+        [
+          { path: corePath, reference: "core.json" },
+          { path: pluginPath, reference: "plugin.json" },
+        ],
+        "tinymce.strings",
+      ),
+    ).toMatchObject([
+      { key: "back", reference: "core.json#back" },
+      { key: "insert", reference: "plugin.json#insert" },
+    ]);
+  });
+
+  test("rejects duplicate runtime keys across merged sources", () => {
+    const firstPath = join(testDir, "first.json");
+    const secondPath = join(testDir, "second.json");
+    writeFileSync(
+      firstPath,
+      JSON.stringify({ insert: { message: "Insert", translate: "always" } }),
+    );
+    writeFileSync(secondPath, JSON.stringify({ insert: { message: "Add", translate: "always" } }));
+
+    expect(() =>
+      extractMessagesSources([
+        { path: firstPath, reference: "first.json" },
+        { path: secondPath, reference: "second.json" },
+      ]),
+    ).toThrow('Duplicate message key "insert" in first.json and second.json');
   });
 });

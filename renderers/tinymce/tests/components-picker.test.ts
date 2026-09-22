@@ -90,6 +90,45 @@ test("toolbar button opens dialog when clicked", () => {
   expect(editor.windowManager.open).toHaveBeenCalled();
 });
 
+test("picker lists components and custom components without a search field", () => {
+  const editor = createMockEditor();
+  const plugin = createComponentsPlugin({
+    model: [
+      ...mockModel,
+      {
+        name: "agent-shell",
+        className: ".instui-agent-shell",
+        kind: "custom-component",
+        examples: [],
+      },
+      {
+        name: "spacing",
+        className: ".instui-spacing",
+        kind: "utility",
+        examples: [],
+      },
+    ] as any,
+    currentAssets: [],
+  });
+
+  plugin(editor);
+  (editor.ui.registry.addButton as any).mock.calls[0][1].onAction();
+
+  const dialogConfig = (editor.windowManager.open as any).mock.calls[0][0];
+  const items = dialogConfig.body.items;
+
+  expect(items).toHaveLength(1);
+  expect(items[0].name).toBe("component");
+  expect(items[0].items.map((item: { value: string }) => item.value)).toEqual([
+    "agent-shell",
+    "button",
+  ]);
+  expect(items[0].items.map((item: { text: string }) => item.text)).toEqual([
+    "agent-shell",
+    "button",
+  ]);
+});
+
 test("onMissingAsset callback is invoked when component is inserted", () => {
   const editor = createMockEditor();
   const currentAssets = [] as any[];
@@ -157,4 +196,62 @@ test("component example is inserted into editor", () => {
   // Verify insertContent was called with the example HTML.
   const insertContent = (editor as unknown as Record<string, unknown>).insertContent;
   expect(insertContent).toHaveBeenCalledWith('<button class="instui-button">Click me</button>');
+});
+
+test("component example is written into the CodeMirror doc while the source view is active", () => {
+  const editor = createMockEditor();
+  const insertAtCursor = vi.fn();
+  (editor as unknown as Record<string, unknown>).plugins = {
+    pantoken_source_toggle: { isSourceMode: () => true, insertAtCursor },
+  };
+  const plugin = createComponentsPlugin({
+    model: mockModel as any,
+    currentAssets: [],
+  });
+
+  plugin(editor);
+  (editor.ui.registry.addButton as any).mock.calls[0][1].onAction();
+  const dialogConfig = (editor.windowManager.open as any).mock.calls[0][0];
+  dialogConfig.onSubmit({
+    getData: vi.fn().mockReturnValue({ component: "button" }),
+    close: vi.fn(),
+  });
+
+  expect(insertAtCursor).toHaveBeenCalledWith('<button class="instui-button">Click me</button>');
+  const insertContent = (editor as unknown as Record<string, unknown>).insertContent;
+  expect(insertContent).not.toHaveBeenCalled();
+});
+
+test("component example inserts only the HTML from a fenced example", () => {
+  const editor = createMockEditor();
+  const plugin = createComponentsPlugin({
+    model: [
+      {
+        name: "agent-shell",
+        className: ".instui-agent-shell",
+        kind: "custom-component",
+        description: "A surface container for AI agents.",
+        examples: [
+          '-nocard ```html\n<div class="instui-agent-shell --p-md">\n  <p>Content here.</p>\n</div>\n```',
+        ],
+        modifiers: [],
+      },
+    ] as any,
+    currentAssets: [],
+  });
+
+  plugin(editor);
+  const addButtonCall = (editor.ui.registry.addButton as any).mock.calls[0];
+  addButtonCall[1].onAction();
+
+  const openCall = (editor.windowManager.open as any).mock.calls[0];
+  openCall[0].onSubmit({
+    getData: vi.fn().mockReturnValue({ component: "agent-shell" }),
+    close: vi.fn(),
+  });
+
+  const insertContent = (editor as unknown as Record<string, unknown>).insertContent;
+  expect(insertContent).toHaveBeenCalledWith(
+    '<div class="instui-agent-shell --p-md">\n  <p>Content here.</p>\n</div>',
+  );
 });

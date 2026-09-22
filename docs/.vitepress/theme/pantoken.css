@@ -63,6 +63,16 @@ html.dark {
   color-scheme: dark;
 }
 
+@media (min-width: 90rem) {
+  .VPContent.has-sidebar:has(.VPPage) {
+    padding-right: 0;
+  }
+}
+
+.sidebar-hidden {
+  --vp-sidebar-width: 0;
+}
+
 .VPSidebarItem .text::first-letter {
   text-transform: capitalize;
 }
@@ -778,6 +788,10 @@ html[dir="rtl"] .vp-doc div[class*="language-"] :is(pre, code) {
   }
 }
 
+.vitepress-sidebar-toggle {
+  margin-inline-start: 2rem;
+}
+
 /* The light/dark toggle now lives inside ThemeColorPicker (desktop dropdown, tablet kebab, mobile
    accordion) so it travels with the theme/color choice — hide VitePress's standalone copies.
    `!important` because VitePress's own scoped style (with its `[data-v-*]` attribute selector) 
@@ -813,6 +827,10 @@ html[dir="rtl"] .vp-doc div[class*="language-"] :is(pre, code) {
   .VPNavBarTranslations .menu,
   .VPNavBarTranslations .menu .VPMenu {
     max-height: 50vh;
+  }
+
+  .VPNavBarSearchButton.VPNavBarSearchButton {
+    background-color: light-dark(var(--instui-primitive-color-grey-grey10), var(--vp-c-bg-alt));
   }
 }
 

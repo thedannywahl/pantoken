@@ -36,6 +36,7 @@ const protectedSources = new Set([
   "@import",
   "Canvas",
   "Canvas high contrast",
+  "Next gen",
 ]);
 
 for (const entry of readdirSync(join(repoRoot, "l10n"), { withFileTypes: true })) {

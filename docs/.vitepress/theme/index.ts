@@ -24,6 +24,7 @@ import "../../../formats/components/generated/utilities.css";
 import "../../../formats/components/generated/icons.css";
 import "../../../plugins/pantoken/custom-components/generated/custom-components.css";
 import "../../../plugins/pantoken/custom-icons/generated/custom-icons.css";
+import "../../../plugins/pantoken/lucide-lab/generated/lucide-lab.css";
 import "@pantoken/components/fonts.css";
 import VitePressMermaid from "../plugins/vitepress-mermaid/index.vue";
 import CdnPicker from "./components/CdnPicker.vue";
@@ -49,13 +50,25 @@ import "@pantoken/demo/demo.css";
 import "@pantoken/demo/card.css";
 import "./pantoken.css";
 import Layout from "./Layout.vue";
-import { applyColor, applyTheme, getStoredColor, getStoredTheme } from "./theme";
+import {
+  applyColor,
+  applyTheme,
+  broadcastTheme,
+  getActiveScheme,
+  getStoredColor,
+  getStoredTheme,
+} from "./theme";
 
 /** Reply to a booting runner with the stored theme and color, targeting the frame's own origin. */
 function replyWithTheme(event: MessageEvent): void {
   // "*" only for an opaque sandboxed frame, which can't match a specific target origin.
   (event.source as Window | null)?.postMessage(
-    { type: "pantoken-demo-theme", theme: getStoredTheme(), color: getStoredColor() },
+    {
+      type: "pantoken-demo-theme",
+      theme: getStoredTheme(),
+      color: getStoredColor(),
+      mode: getActiveScheme(),
+    },
     event.origin === "null" ? "*" : event.origin,
   );
 }
@@ -175,6 +188,14 @@ export default {
       // class and broadcasts the theme to any demos already on the page.
       applyTheme(getStoredTheme());
       applyColor(getStoredColor());
+
+      const appearanceObserver = new MutationObserver(() => {
+        broadcastTheme(getStoredTheme(), getStoredColor());
+      });
+      appearanceObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
 
       // The runner (inside each figure's iframe) posts the height it wants — its toolbar plus the body
       // (which hugs the demo by default, capped at 30rem, or whatever height the reader dragged it to).

@@ -1,4 +1,4 @@
-import { existsSync, readdirSync } from "node:fs";
+import { copyFileSync, existsSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { extendBase } from "../../../vite.config.base.ts";
 
@@ -17,6 +17,20 @@ const logoEntries = existsSync(generatedDir)
     )
   : {};
 
+// PNGs aren't JS/CSS entry points rollup can bundle, so they're copied straight into `dist/` once the
+// bundle is written — mirrors how the generated CSS entries above land in `dist/`, just via `fs` instead
+// of rollup's own output pipeline.
+const copyGeneratedPngs = {
+  name: "copy-generated-logo-pngs",
+  writeBundle(outputOptions: { dir?: string }) {
+    if (!existsSync(generatedDir)) return;
+    const dir = outputOptions.dir ?? join(import.meta.dirname, "dist");
+    for (const file of readdirSync(generatedDir)) {
+      if (file.endsWith(".png")) copyFileSync(join(generatedDir, file), join(dir, file));
+    }
+  },
+};
+
 export default extendBase({
   run: { tasks: { build: { command: ["vp run generate", "vp pack"] } } },
   pack: {
@@ -28,5 +42,6 @@ export default extendBase({
     css: { splitting: true, target: false, minify: true, modules: false, inject: false },
     // Exports are hand-managed so the static `./logos.css` export survives.
     exports: false,
+    plugins: [copyGeneratedPngs],
   },
 });

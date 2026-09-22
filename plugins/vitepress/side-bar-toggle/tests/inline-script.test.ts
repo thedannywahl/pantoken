@@ -26,6 +26,16 @@ describe("sidebarToggleHead", () => {
     expect(content).not.toContain(DEFAULT_HIDDEN_CLASS);
   });
 
+  it("serializes placement and custom icon classes for the component", () => {
+    const [, , content] = sidebarToggleHead({
+      placement: "end",
+      icons: { show: "icon-expand", hide: "icon-collapse" },
+    });
+    expect(content).toContain('"placement":"end"');
+    expect(content).toContain('"show":"icon-expand"');
+    expect(content).toContain('"hide":"icon-collapse"');
+  });
+
   it("wraps the body in try/catch so a blocked localStorage never throws before paint", () => {
     const [, , content] = sidebarToggleHead();
     expect(content).toMatch(/^\(function\(\)\{try\{/);

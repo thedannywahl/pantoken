@@ -1,13 +1,27 @@
 // @vitest-environment happy-dom
-import { beforeEach, describe, expect, it } from "vite-plus/test";
+import { beforeAll, beforeEach, describe, expect, it } from "vite-plus/test";
 
 import { DEFAULT_HIDDEN_CLASS, DEFAULT_STORAGE_KEY } from "../src/inline-script.ts";
 import { useSidebarVisibility } from "../src/useSidebarVisibility.ts";
 
+const values = new Map<string, string>();
+const storage: Storage = {
+  get length() {
+    return values.size;
+  },
+  clear: () => values.clear(),
+  getItem: (key) => values.get(key) ?? null,
+  key: (index) => [...values.keys()][index] ?? null,
+  removeItem: (key) => values.delete(key),
+  setItem: (key, value) => values.set(key, value),
+};
+
 describe("useSidebarVisibility", () => {
+  beforeAll(() => Object.defineProperty(window, "localStorage", { value: storage }));
+
   beforeEach(() => {
     document.documentElement.className = "";
-    localStorage.clear();
+    storage.clear();
   });
 
   it("defaults to visible when the bootstrap script never applied the hidden class", () => {
@@ -27,18 +41,30 @@ describe("useSidebarVisibility", () => {
     toggle();
     expect(isHidden.value).toBe(true);
     expect(document.documentElement.classList.contains(DEFAULT_HIDDEN_CLASS)).toBe(true);
-    expect(localStorage.getItem(DEFAULT_STORAGE_KEY)).toBe("true");
+    expect(storage.getItem(DEFAULT_STORAGE_KEY)).toBe("true");
 
     toggle();
     expect(isHidden.value).toBe(false);
     expect(document.documentElement.classList.contains(DEFAULT_HIDDEN_CLASS)).toBe(false);
-    expect(localStorage.getItem(DEFAULT_STORAGE_KEY)).toBe("false");
+    expect(storage.getItem(DEFAULT_STORAGE_KEY)).toBe("false");
+  });
+
+  it("show() synchronizes a hidden sidebar back to visible", () => {
+    document.documentElement.classList.add(DEFAULT_HIDDEN_CLASS);
+    storage.setItem(DEFAULT_STORAGE_KEY, "true");
+    const { isHidden, show } = useSidebarVisibility();
+
+    show();
+
+    expect(isHidden.value).toBe(false);
+    expect(document.documentElement.classList.contains(DEFAULT_HIDDEN_CLASS)).toBe(false);
+    expect(storage.getItem(DEFAULT_STORAGE_KEY)).toBe("false");
   });
 
   it("honors a custom storage key and hidden class", () => {
     const { toggle } = useSidebarVisibility({ storageKey: "k", hiddenClass: "c" });
     toggle();
     expect(document.documentElement.classList.contains("c")).toBe(true);
-    expect(localStorage.getItem("k")).toBe("true");
+    expect(storage.getItem("k")).toBe("true");
   });
 });

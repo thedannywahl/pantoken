@@ -1,0 +1,352 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-21 21:20+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
+
+#: renderers/tinymce/src/i18n.json#autocompleteModifierDetail
+#, no-c-format
+msgctxt "tinymce.strings:autocompleteModifierDetail"
+msgid "modifier"
+msgstr "수정자"
+
+#: renderers/tinymce/src/i18n.json#classValidationIncompleteComponent
+#, no-c-format
+msgctxt "tinymce.strings:classValidationIncompleteComponent"
+msgid "Incomplete component name after '{{prefix}}'"
+msgstr "'{{prefix}}' 뒤에 불완전한 컴포넌트 이름"
+
+#: renderers/tinymce/src/i18n.json#classValidationTokenPrefix
+#, no-c-format
+msgctxt "tinymce.strings:classValidationTokenPrefix"
+msgid "Token must start with '{{prefix}}'"
+msgstr "토큰은 '{{prefix}}'로 시작해야 합니다"
+
+#: renderers/tinymce/src/i18n.json#classValidationUnknownComponent
+#, no-c-format
+msgctxt "tinymce.strings:classValidationUnknownComponent"
+msgid "Unknown component/utility: '{{componentName}}'"
+msgstr "알 수 없는 컴포넌트/유틸리티: '{{componentName}}'"
+
+#: renderers/tinymce/src/i18n.json#componentsDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:componentsDialogTitle"
+msgid "Insert Component"
+msgstr "컴포넌트 삽입"
+
+#: renderers/tinymce/src/i18n.json#componentsListLabel
+#, no-c-format
+msgctxt "tinymce.strings:componentsListLabel"
+msgid "Components"
+msgstr "컴포넌트"
+
+#: renderers/tinymce/src/i18n.json#componentsMenuText
+#, no-c-format
+msgctxt "tinymce.strings:componentsMenuText"
+msgid "Component"
+msgstr "컴포넌트"
+
+#: renderers/tinymce/src/i18n.json#componentsToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:componentsToolbarText"
+msgid "Components"
+msgstr "컴포넌트"
+
+#: renderers/tinymce/src/i18n.json#componentsToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:componentsToolbarTooltip"
+msgid "Insert a pantoken component"
+msgstr "pantoken 컴포넌트 삽입"
+
+#: renderers/tinymce/src/i18n.json#iconLabelDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:iconLabelDialogTitle"
+msgid "Icon label"
+msgstr "아이콘 레이블"
+
+#: renderers/tinymce/src/i18n.json#iconLabelInputLabel
+#, no-c-format
+msgctxt "tinymce.strings:iconLabelInputLabel"
+msgid "Screen reader label"
+msgstr "스크린 리더 레이블"
+
+#: renderers/tinymce/src/i18n.json#iconsMenuText
+#, no-c-format
+msgctxt "tinymce.strings:iconsMenuText"
+msgid "Icon"
+msgstr "아이콘"
+
+#: renderers/tinymce/src/i18n.json#iconsToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:iconsToolbarText"
+msgid "Icons"
+msgstr "아이콘"
+
+#: renderers/tinymce/src/i18n.json#iconsToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:iconsToolbarTooltip"
+msgid "Insert an icon"
+msgstr "아이콘 삽입"
+
+#: renderers/tinymce/src/i18n.json#layoutsConfirmReplace
+#, no-c-format
+msgctxt "tinymce.strings:layoutsConfirmReplace"
+msgid "Replace the current content with the \"{{title}}\" layout?"
+msgstr "현재 내용을 \"{{title}}\" 레이아웃으로 바꾸시겠습니까?"
+
+#: renderers/tinymce/src/i18n.json#layoutsDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:layoutsDialogTitle"
+msgid "Insert layout"
+msgstr "레이아웃 삽입"
+
+#: renderers/tinymce/src/i18n.json#layoutsMenuText
+#, no-c-format
+msgctxt "tinymce.strings:layoutsMenuText"
+msgid "Layout…"
+msgstr "레이아웃…"
+
+#: renderers/tinymce/src/i18n.json#layoutsSelectLabel
+#, no-c-format
+msgctxt "tinymce.strings:layoutsSelectLabel"
+msgid "Starter layout"
+msgstr "시작 레이아웃"
+
+#: renderers/tinymce/src/i18n.json#layoutsToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:layoutsToolbarText"
+msgid "Layouts"
+msgstr "레이아웃"
+
+#: renderers/tinymce/src/i18n.json#layoutsToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:layoutsToolbarTooltip"
+msgid "Insert a starter layout"
+msgstr "시작 레이아웃 삽입"
+
+#: renderers/tinymce/src/i18n.json#logosToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:logosToolbarText"
+msgid "Logos"
+msgstr "로고"
+
+#: renderers/tinymce/src/i18n.json#logosToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:logosToolbarTooltip"
+msgid "Insert a logo"
+msgstr "로고 삽입"
+
+#: renderers/tinymce/src/i18n.json#logosMenuText
+#, no-c-format
+msgctxt "tinymce.strings:logosMenuText"
+msgid "Logo"
+msgstr "로고"
+
+#: renderers/tinymce/src/i18n.json#logosDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:logosDialogTitle"
+msgid "Insert Logo"
+msgstr "로고 삽입"
+
+#: renderers/tinymce/src/i18n.json#logosProductLabel
+#, no-c-format
+msgctxt "tinymce.strings:logosProductLabel"
+msgid "Product"
+msgstr "제품"
+
+#: renderers/tinymce/src/i18n.json#logosLayoutLabel
+#, no-c-format
+msgctxt "tinymce.strings:logosLayoutLabel"
+msgid "Layout"
+msgstr "레이아웃"
+
+#: renderers/tinymce/src/i18n.json#logosLayoutHorizontal
+#, no-c-format
+msgctxt "tinymce.strings:logosLayoutHorizontal"
+msgid "Horizontal"
+msgstr "가로"
+
+#: renderers/tinymce/src/i18n.json#logosLayoutVertical
+#, no-c-format
+msgctxt "tinymce.strings:logosLayoutVertical"
+msgid "Vertical"
+msgstr "세로"
+
+#: renderers/tinymce/src/i18n.json#logosLayoutStacked
+#, no-c-format
+msgctxt "tinymce.strings:logosLayoutStacked"
+msgid "Stacked"
+msgstr "쌓인"
+
+#: renderers/tinymce/src/i18n.json#logosColorModeLabel
+#, no-c-format
+msgctxt "tinymce.strings:logosColorModeLabel"
+msgid "Color Mode"
+msgstr "색상 모드"
+
+#: renderers/tinymce/src/i18n.json#logosColorModeColor
+#, no-c-format
+msgctxt "tinymce.strings:logosColorModeColor"
+msgid "Color"
+msgstr "색상"
+
+#: renderers/tinymce/src/i18n.json#logosColorModeMonochrome
+#, no-c-format
+msgctxt "tinymce.strings:logosColorModeMonochrome"
+msgid "Monochrome"
+msgstr "단색"
+
+#: renderers/tinymce/src/i18n.json#logosColorModeLight
+#, no-c-format
+msgctxt "tinymce.strings:logosColorModeLight"
+msgid "Light"
+msgstr "밝음"
+
+#: renderers/tinymce/src/i18n.json#insertButton
+#, no-c-format
+msgctxt "tinymce.strings:insertButton"
+msgid "Insert"
+msgstr "삽입"
+
+#: renderers/tinymce/src/i18n.json#cancelButton
+#, no-c-format
+msgctxt "tinymce.strings:cancelButton"
+msgid "Cancel"
+msgstr "취소"
+
+#: renderers/tinymce/src/i18n.json#logoAltSuffix
+#, no-c-format
+msgctxt "tinymce.strings:logoAltSuffix"
+msgid "logo"
+msgstr "logo"
+
+#: renderers/tinymce/src/i18n.json#sourceToggleTooltip
+#, no-c-format
+msgctxt "tinymce.strings:sourceToggleTooltip"
+msgid "Source code"
+msgstr "소스 코드"
+
+#: renderers/tinymce/src/i18n.json#templatesConfirmReplace
+#, no-c-format
+msgctxt "tinymce.strings:templatesConfirmReplace"
+msgid "Replace the current content with the \"{{title}}\" template?"
+msgstr "현재 내용을 \"{{title}}\" 템플릿으로 바꾸시겠습니까?"
+
+#: renderers/tinymce/src/i18n.json#templatesDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:templatesDialogTitle"
+msgid "Insert template"
+msgstr "템플릿 삽입"
+
+#: renderers/tinymce/src/i18n.json#templatesMenuText
+#, no-c-format
+msgctxt "tinymce.strings:templatesMenuText"
+msgid "Insert template…"
+msgstr "템플릿 삽입…"
+
+#: renderers/tinymce/src/i18n.json#templatesSelectLabel
+#, no-c-format
+msgctxt "tinymce.strings:templatesSelectLabel"
+msgid "Starter template"
+msgstr "시작 템플릿"
+
+#: renderers/tinymce/src/i18n.json#templatesToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:templatesToolbarText"
+msgid "Templates"
+msgstr "템플릿"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:placeholdToolbarText"
+msgid "Placeholder"
+msgstr "자리표시자"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:placeholdToolbarTooltip"
+msgid "Insert a placeholder image"
+msgstr "자리표시자 이미지 삽입"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdMenuText
+#, no-c-format
+msgctxt "tinymce.strings:placeholdMenuText"
+msgid "Placeholder image…"
+msgstr "자리표시자 이미지…"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:placeholdDialogTitle"
+msgid "Insert placeholder image"
+msgstr "자리표시자 이미지 삽입"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdWidthLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdWidthLabel"
+msgid "Width"
+msgstr "너비"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdHeightLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdHeightLabel"
+msgid "Height"
+msgstr "높이"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdBackgroundColorLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdBackgroundColorLabel"
+msgid "Background color"
+msgstr "배경색"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdTextColorLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdTextColorLabel"
+msgid "Text color"
+msgstr "텍스트 색"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdTextLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdTextLabel"
+msgid "Text"
+msgstr "텍스트"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdAltTextLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdAltTextLabel"
+msgid "Alt text"
+msgstr "대체 텍스트"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdInsertButton
+#, no-c-format
+msgctxt "tinymce.strings:placeholdInsertButton"
+msgid "Insert"
+msgstr "삽입"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdCancelButton
+#, no-c-format
+msgctxt "tinymce.strings:placeholdCancelButton"
+msgid "Cancel"
+msgstr "취소"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdInvalidDimensions
+#, no-c-format
+msgctxt "tinymce.strings:placeholdInvalidDimensions"
+msgid "Width and height must be whole numbers from 10 through 4000."
+msgstr "너비와 높이는 10에서 4000 사이의 정수여야 합니다."
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdInvalidColor
+#, no-c-format
+msgctxt "tinymce.strings:placeholdInvalidColor"
+msgid "Colors must use three- or six-digit hexadecimal values."
+msgstr "색상은 3자리 또는 6자리 16진수 값을 사용해야 합니다."
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdAltFallback
+#, no-c-format
+msgctxt "tinymce.strings:placeholdAltFallback"
+msgid "{{width}} by {{height}} placeholder image"
+msgstr "{{width}} by {{height}} 자리표시자 이미지"

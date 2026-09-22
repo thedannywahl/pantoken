@@ -11,10 +11,10 @@
  *
  * @module
  */
-import { rmSync } from "node:fs";
+import { copyFileSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { build } from "vite";
-import { scaffoldProject } from "@pantoken/scaffold";
+import { scaffoldProject } from "../../packages/scaffold/src/index.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
 // Already-ignored (see .gitignore's `docs/.vitepress/cache/`), so no new ignore rule is needed.
@@ -29,6 +29,24 @@ await scaffoldProject("canvas-theme-editor", renderDir, {
   mode: "light",
   packageManager: "npm",
 });
+
+// Docs-only iframe auto-sizing: added here, after rendering, so the published starter template has
+// no embedding-specific code. Copied into the render project's `public/` so Vite ships it verbatim
+// instead of merging it into the app's entry chunk.
+const publicDir = join(renderDir, "public");
+mkdirSync(publicDir, { recursive: true });
+copyFileSync(
+  join(import.meta.dirname, "canvas-rce-iframe-height.js"),
+  join(publicDir, "iframe-height.js"),
+);
+const indexHtml = join(renderDir, "index.html");
+writeFileSync(
+  indexHtml,
+  readFileSync(indexHtml, "utf8").replace(
+    "</body>",
+    `  <script src="/iframe-height.js"></script>\n  </body>`,
+  ),
+);
 
 await build({
   root: renderDir,

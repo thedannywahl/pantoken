@@ -228,8 +228,8 @@ msgstr "Valitse teema"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.rebrand"
-msgid "Rebrand"
-msgstr "Uudelleensommittelu"
+msgid "Next gen"
+msgstr "Next gen"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -252,8 +252,8 @@ msgstr "Teema"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeRebrand"
-msgid "Rebrand"
-msgstr "Uudelleensommittelu"
+msgid "Next gen"
+msgstr "Next gen"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

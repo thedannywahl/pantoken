@@ -44,6 +44,7 @@ const ALL_COMPONENTS = [
   "drawer-layout",
   "date-input",
   "date-time-input",
+  "tabs",
 ];
 
 function toCamelCase(name: string): string {

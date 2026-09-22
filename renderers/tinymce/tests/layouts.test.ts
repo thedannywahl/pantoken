@@ -90,6 +90,28 @@ test("confirming the dialog replaces the document with the chosen layout", () =>
   expect(onInsert).toHaveBeenCalledWith(layouts[1]);
 });
 
+test("replaces the CodeMirror doc instead while the source view is active", () => {
+  const editor = fakeEditor();
+  const replaceAll = vi.fn();
+  (editor as unknown as Record<string, unknown>).plugins = {
+    pantoken_source_toggle: { isSourceMode: () => true, replaceAll },
+  };
+  const plugin = createLayoutsPlugin({ layouts });
+  plugin(editor as never);
+
+  const openAction = editor.ui.registry.addButton.mock.calls[0]?.[1].onAction as () => void;
+  openAction();
+  const dialogSpec = editor.windowManager.open.mock.calls[0]?.[0];
+  dialogSpec.onSubmit({ getData: () => ({ layout: "callout" }), close: vi.fn() });
+  const confirmCallback = editor.windowManager.confirm.mock.calls[0]?.[1] as (
+    confirmed: boolean,
+  ) => void;
+  confirmCallback(true);
+
+  expect(replaceAll).toHaveBeenCalledWith("<div>callout</div>");
+  expect(editor.setContent).not.toHaveBeenCalled();
+});
+
 test("declining the confirm does not modify the editor", () => {
   const editor = fakeEditor();
   const plugin = createLayoutsPlugin({ layouts });

@@ -23,6 +23,9 @@ interface InstUiEntry {
   name: string;
   source: "custom" | "lucide";
 }
+interface LucideLabEntry {
+  name: string;
+}
 interface SimpleIconEntry {
   slug: string;
   title: string;
@@ -35,6 +38,10 @@ interface LogoGroup {
 interface CustomIconEntry {
   name: string;
 }
+type SelectedIcon =
+  | { source: "glyph"; name: string; label: string }
+  | { source: "simple"; slug: string; label: string }
+  | { source: "more"; count: number };
 
 const logoGroups = pluginManifest.logos as LogoGroup[];
 const customIcons = pluginManifest.customIcons as CustomIconEntry[];
@@ -44,6 +51,7 @@ const { theme } = useData();
 const t = computed(() => {
   const base = {
     sectionInstui: "InstUI icons",
+    sectionLucideLab: "Lucide Lab icons",
     sectionSimple: "Simple Icons",
     sectionCustomIcons: "Custom icons",
     sectionLogos: "Logos",
@@ -56,21 +64,27 @@ const t = computed(() => {
     copied: "Copied",
     empty: "Select one or more icons to build a URL.",
     loadingNote: "Loading icon list…",
+    selectedTitle: "Selected icons",
+    selectedMore: "more",
   };
   return { ...base, ...((theme.value as Record<string, unknown>).iconPicker as object) };
 });
 
 // ── Manifests (both load up front — the two sources render together, not behind tabs) ────────────
 const instuiIcons = shallowRef<InstUiEntry[] | null>(null);
+const lucideLabIcons = shallowRef<LucideLabEntry[] | null>(null);
 const simpleIcons = shallowRef<SimpleIconEntry[] | null>(null);
 const loadingInstui = ref(false);
+const loadingLucideLab = ref(false);
 const loadingSimple = ref(false);
 const loadErrorInstui = ref(false);
+const loadErrorLucideLab = ref(false);
 const loadErrorSimple = ref(false);
 
 // Deep-linking: the manifests load asynchronously, so a restored "all"/name-list selection from the
 // URL hash can only be validated (and applied) once the matching manifest has actually arrived.
 const pendingInstuiSel = readHashParam("i_instui");
+const pendingLucideLabSel = readHashParam("i_lucide");
 const pendingSimpleSel = readHashParam("i_simple");
 
 function restoreSelection(raw: string | null, allNames: string[]): Set<string> {
@@ -118,13 +132,36 @@ async function loadSimple(): Promise<void> {
   }
 }
 
+async function loadLucideLab(): Promise<void> {
+  if (lucideLabIcons.value || loadingLucideLab.value) return;
+  loadingLucideLab.value = true;
+  loadErrorLucideLab.value = false;
+  try {
+    const data =
+      (await import("../generated/cdn-icon-manifest-lucide-lab.json")) as LucideLabEntry[];
+    lucideLabIcons.value = Array.isArray(data)
+      ? data
+      : (data as { default: LucideLabEntry[] }).default;
+    selectedLucideLab.value = restoreSelection(
+      pendingLucideLabSel,
+      lucideLabIcons.value.map((i) => i.name),
+    );
+  } catch {
+    loadErrorLucideLab.value = true;
+  } finally {
+    loadingLucideLab.value = false;
+  }
+}
+
 onMounted(() => {
   void loadInstui();
+  void loadLucideLab();
   void loadSimple();
 });
 
 // ── Selection ─────────────────────────────────────────────────────────────────
 const selectedInstui = ref<Set<string>>(new Set());
+const selectedLucideLab = ref<Set<string>>(new Set());
 const selectedSimple = ref<Set<string>>(new Set());
 const allCustomIconNames = customIcons.map((i) => i.name);
 const selectedCustomIcons = ref<Set<string>>(
@@ -149,6 +186,12 @@ function toggleSimple(slug: string): void {
   if (next.has(slug)) next.delete(slug);
   else next.add(slug);
   selectedSimple.value = next;
+}
+function toggleLucideLab(name: string): void {
+  const next = new Set(selectedLucideLab.value);
+  if (next.has(name)) next.delete(name);
+  else next.add(name);
+  selectedLucideLab.value = next;
 }
 function toggleCustomIcon(name: string): void {
   const next = new Set(selectedCustomIcons.value);
@@ -184,6 +227,14 @@ const allInstuiSelected = computed(
 const someInstuiSelected = computed(
   () => !allInstuiSelected.value && selectedInstui.value.size > 0,
 );
+const allLucideLabSelected = computed(
+  () =>
+    (lucideLabIcons.value?.length ?? 0) > 0 &&
+    selectedLucideLab.value.size === lucideLabIcons.value?.length,
+);
+const someLucideLabSelected = computed(
+  () => !allLucideLabSelected.value && selectedLucideLab.value.size > 0,
+);
 const allSimpleSelected = computed(
   () =>
     (simpleIcons.value?.length ?? 0) > 0 && selectedSimple.value.size === simpleIcons.value?.length,
@@ -205,6 +256,9 @@ const allLogosSelected = computed(
 watch(selectedInstui, (s) => {
   writeHashParam("i_instui", allInstuiSelected.value ? "all" : [...s].join(","), "");
 });
+watch(selectedLucideLab, (s) => {
+  writeHashParam("i_lucide", allLucideLabSelected.value ? "all" : [...s].join(","), "");
+});
 watch(selectedSimple, (s) => {
   writeHashParam("i_simple", allSimpleSelected.value ? "all" : [...s].join(","), "");
 });
@@ -225,6 +279,11 @@ function toggleAllSimple(checked: boolean): void {
     ? new Set((simpleIcons.value ?? []).map((i) => i.slug))
     : new Set();
 }
+function toggleAllLucideLab(checked: boolean): void {
+  selectedLucideLab.value = checked
+    ? new Set((lucideLabIcons.value ?? []).map((i) => i.name))
+    : new Set();
+}
 function toggleAllCustomIcons(checked: boolean): void {
   selectedCustomIcons.value = checked ? new Set(allCustomIconNames) : new Set();
 }
@@ -239,10 +298,44 @@ const filteredSimple = computed(() => {
   const q = search.value.trim().toLowerCase();
   return q ? all.filter((i) => i.slug.includes(q) || i.title.toLowerCase().includes(q)) : all;
 });
+const filteredLucideLab = computed(() => {
+  const all = lucideLabIcons.value ?? [];
+  const q = search.value.trim().toLowerCase();
+  return q ? all.filter((i) => i.name.includes(q)) : all;
+});
+
+const selectedCollection = computed<SelectedIcon[]>(() => {
+  const selected: SelectedIcon[] = [];
+
+  for (const name of selectedInstui.value) {
+    if (instuiIcons.value?.some((icon) => icon.name === name))
+      selected.push({ source: "glyph", name, label: name });
+  }
+  for (const name of selectedLucideLab.value) {
+    if (lucideLabIcons.value?.some((icon) => icon.name === name))
+      selected.push({ source: "glyph", name, label: name });
+  }
+  for (const slug of selectedSimple.value) {
+    const icon = simpleIcons.value?.find((entry) => entry.slug === slug);
+    if (icon) selected.push({ source: "simple", slug, label: icon.title });
+  }
+  for (const name of selectedCustomIcons.value) {
+    if (customIcons.some((icon) => icon.name === name))
+      selected.push({ source: "glyph", name, label: name });
+  }
+
+  const maxVisible = 100;
+  if (selected.length <= maxVisible) return selected;
+  return [
+    ...selected.slice(0, maxVisible - 1),
+    { source: "more", count: selected.length - maxVisible + 1 },
+  ];
+});
 
 const hasSelection = computed(
   () =>
     selectedInstui.value.size > 0 ||
+    selectedLucideLab.value.size > 0 ||
     selectedSimple.value.size > 0 ||
     selectedCustomIcons.value.size > 0 ||
     selectedLogos.value.size > 0,
@@ -252,6 +345,7 @@ const hasSelection = computed(
 // The InstUI icon sheet is pushed last: :root custom properties resolve last-wins, so on a name
 // collision with a vendored custom icon (or, in principle, a brand glyph), the built-in wins.
 const SIMPLE_ICONS_PKG = "@pantoken/plugin-simple-icons";
+const LUCIDE_LAB_PKG = "@pantoken/plugin-lucide-lab";
 const CUSTOM_ICONS_PKG = "@pantoken/plugin-custom-icons";
 const LOGOS_PKG = "@pantoken/plugin-logos";
 const INSTUI_ICONS_PKG = "@pantoken/components";
@@ -277,6 +371,18 @@ function logoFiles(): CdnFile[] {
 
 const iconFiles = computed<CdnFile[]>(() => {
   const files: CdnFile[] = [];
+  if (allInstuiSelected.value) {
+    files.push({ package: INSTUI_ICONS_PKG, path: "dist/icons.css" });
+  } else {
+    for (const name of selectedInstui.value)
+      files.push({ package: INSTUI_ICONS_PKG, path: `dist/icons/${name}.css` });
+  }
+  if (allLucideLabSelected.value) {
+    files.push({ package: LUCIDE_LAB_PKG, path: "dist/lucide-lab.css" });
+  } else {
+    for (const name of selectedLucideLab.value)
+      files.push({ package: LUCIDE_LAB_PKG, path: `dist/icons/${name}.css` });
+  }
   if (allSimpleSelected.value) {
     files.push({ package: SIMPLE_ICONS_PKG, path: "dist/simple-icons.css" });
   } else {
@@ -290,12 +396,6 @@ const iconFiles = computed<CdnFile[]>(() => {
       files.push({ package: CUSTOM_ICONS_PKG, path: `dist/icons/${name}.css` });
   }
   files.push(...logoFiles());
-  if (allInstuiSelected.value) {
-    files.push({ package: INSTUI_ICONS_PKG, path: "dist/icons.css" });
-  } else {
-    for (const name of selectedInstui.value)
-      files.push({ package: INSTUI_ICONS_PKG, path: `dist/icons/${name}.css` });
-  }
   return files;
 });
 
@@ -348,6 +448,40 @@ const output = computed(() => {
                   type="checkbox"
                   :checked="selectedInstui.has(icon.name)"
                   @change="toggleInstui(icon.name)"
+                />
+                <span
+                  class="instui-icon icon-picker__glyph"
+                  :class="`-icon-${icon.name}`"
+                  aria-hidden="true"
+                ></span>
+                <span class="icon-picker__label">{{ icon.name }}</span>
+              </label>
+            </div>
+          </PickerSection>
+
+          <p
+            v-if="loadingLucideLab"
+            class="instui-text -color-secondary -style-italic icon-picker__status"
+          >
+            {{ t.loadingNote }}
+          </p>
+          <PickerSection
+            v-else-if="lucideLabIcons"
+            :label="t.sectionLucideLab"
+            :all-selected="allLucideLabSelected"
+            :some-selected="someLucideLabSelected"
+            @toggle-all="toggleAllLucideLab"
+          >
+            <div class="icon-picker__grid">
+              <label
+                v-for="icon in filteredLucideLab"
+                :key="icon.name"
+                class="instui-checkbox icon-picker__item"
+              >
+                <input
+                  type="checkbox"
+                  :checked="selectedLucideLab.has(icon.name)"
+                  @change="toggleLucideLab(icon.name)"
                 />
                 <span
                   class="instui-icon icon-picker__glyph"
@@ -433,9 +567,48 @@ const output = computed(() => {
             @toggle-item="toggleLogo"
           />
         </div>
+        <div
+          v-if="hasSelection && selectedCollection.length > 0"
+          class="icon-picker__collection --bg-secondary --pt-sm --px-sm"
+          role="region"
+          :aria-label="t.selectedTitle"
+        >
+          <div class="icon-picker__collection-grid">
+            <figure
+              v-for="(icon, index) in selectedCollection"
+              :key="`${icon.source}-${icon.source === 'simple' ? icon.slug : icon.source === 'glyph' ? icon.name : index}`"
+              class="icon-picker__collection-item"
+            >
+              <template v-if="icon.source === 'more'">
+                <div
+                  class="icon-picker__collection-more"
+                  :aria-label="`+${icon.count} ${t.selectedMore}`"
+                >
+                  +{{ icon.count }} {{ t.selectedMore }}
+                </div>
+              </template>
+              <template v-else-if="icon.source === 'simple'">
+                <img
+                  class="icon-picker__collection-icon icon-picker__collection-img"
+                  :src="`https://cdn.jsdelivr.net/npm/simple-icons/icons/${icon.slug}.svg`"
+                  :alt="icon.label"
+                  loading="lazy"
+                />
+                <figcaption>{{ icon.label }}</figcaption>
+              </template>
+              <template v-else>
+                <span
+                  class="instui-icon icon-picker__collection-icon"
+                  :class="`-icon-${icon.name}`"
+                  aria-hidden="true"
+                ></span>
+                <figcaption>{{ icon.label }}</figcaption>
+              </template>
+            </figure>
+          </div>
+        </div>
       </div>
     </fieldset>
-
     <PickerOutput
       v-model="format"
       :formats="[
@@ -502,5 +675,51 @@ html.dark .icon-picker__img {
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 0.75rem;
+}
+.icon-picker__collection {
+  overflow-x: auto;
+}
+.icon-picker__collection-label {
+  margin: 0 0 0.5rem;
+}
+.icon-picker__collection-grid {
+  display: flex;
+  width: max-content;
+  min-width: 100%;
+  align-items: center;
+  gap: 1rem;
+}
+.icon-picker__collection-item {
+  display: flex;
+  flex: 0 0 auto;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.icon-picker__collection-icon {
+  flex: 0 0 auto;
+  width: 2rem;
+  height: 2rem;
+  font-size: 2rem;
+}
+.icon-picker__collection-img {
+  object-fit: contain;
+  margin: 0;
+}
+html.dark .icon-picker__collection-img {
+  filter: invert(1);
+}
+.icon-picker__collection-item figcaption {
+  font-size: 0.65rem;
+  color: var(--vp-c-text-1);
+}
+.icon-picker__collection-more {
+  white-space: nowrap;
+  color: var(--vp-c-text-1);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
 }
 </style>

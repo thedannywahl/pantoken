@@ -26,7 +26,7 @@ import {
   renderFile,
   renderFrontmatterFile,
 } from "./extract.ts";
-import { extractMessagesSpace, type MessageUnit } from "./extract-messages.ts";
+import { extractMessagesSources, type MessageUnit } from "./extract-messages.ts";
 import { mergePoWithTemplate } from "./gettext.ts";
 import { parsePo, readCatalog, serializePot, writeCatalog, type PoEntry } from "./po.ts";
 import { refreshCoverageReports } from "./coverage.ts";
@@ -401,6 +401,21 @@ function messagesSpaceConfig(config: I18nConfig, spaceId: string): MessagesSpace
   return space;
 }
 
+/** Extract every configured source for a messages space in declaration order. */
+function extractMessageUnits(
+  configDir: string,
+  spaceId: string,
+  space: MessagesSpaceConfig,
+): MessageUnit[] {
+  return extractMessagesSources(
+    [space.source, ...(space.sourceMerge ?? [])].map((source) => ({
+      path: join(configDir, source),
+      reference: source,
+    })),
+    spaceId,
+  );
+}
+
 /** `i18n extract <space>` for a `"messages"`-kind space: write `l10n/{space}.pot` from its
  *  `src/i18n.json`-shaped source. */
 export function runExtractMessages(
@@ -409,7 +424,7 @@ export function runExtractMessages(
   spaceId: string,
 ): ExtractResult {
   const space = messagesSpaceConfig(config, spaceId);
-  const units = extractMessagesSpace(join(configDir, space.source), spaceId);
+  const units = extractMessageUnits(configDir, spaceId, space);
   const potPath = join(configDir, potPathForSpace(config, spaceId));
   mkdirSync(dirname(potPath), { recursive: true });
   writeCatalog(
@@ -473,7 +488,7 @@ export function resolveMessagesForLocale(
   locale: string,
 ): ResolvedMessages {
   const space = messagesSpaceConfig(config, spaceId);
-  const units = extractMessagesSpace(join(configDir, space.source), spaceId);
+  const units = extractMessageUnits(configDir, spaceId, space);
   const entries = loadMessagesPoEntries(config, configDir, spaceId, locale);
   const byKey = new Map(
     entries.filter((e) => e.msgstr !== "").map((e) => [catalogUnitKey(e), e.msgstr]),
@@ -491,7 +506,7 @@ export function runCheckMessages(
   spaceId: string,
 ): CheckResult {
   const space = messagesSpaceConfig(config, spaceId);
-  const sourceUnits = extractMessagesSpace(join(configDir, space.source), spaceId);
+  const sourceUnits = extractMessageUnits(configDir, spaceId, space);
   const units: MessageUnit[] = sourceUnits.filter((u) => u.translate !== "never");
   const reporter = new DriftReporter({
     label: spaceId,

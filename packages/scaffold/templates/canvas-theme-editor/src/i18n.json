@@ -1,6 +1,5 @@
 {
   "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
-  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
   "pageTitle": { "message": "RCE template authoring", "translate": "always" },
   "pageDescription": {
     "message": "Author Canvas RCE page templates styled with pantoken, with a live preview.",
@@ -12,21 +11,12 @@
     "translate": "optional"
   },
   "copyHtmlLabel": { "message": "Copy HTML", "translate": "always" },
-  "editorPaneLabel": {
-    "message": "Editor",
-    "translate": "optional"
-  },
-  "previewPaneLabel": {
-    "message": "Preview",
-    "translate": "optional"
-  },
+  "downloadPackageLabel": { "message": "Download package", "translate": "always" },
   "previewFrameTitle": { "message": "Styled preview", "translate": "always" },
-  "fullscreenEditorAriaLabel": { "message": "Fullscreen editor", "translate": "always" },
-  "fullscreenPreviewAriaLabel": { "message": "Fullscreen preview", "translate": "always" },
-  "resizePanesAriaLabel": { "message": "Resize editor and preview", "translate": "always" },
-  "stackVerticallyLabel": { "message": "Stack vertically", "translate": "always" },
-  "stackSideBySideLabel": { "message": "Stack side by side", "translate": "always" },
-  "swapPanesLabel": { "message": "Swap panes", "translate": "always" },
+  "previewWidthGroupLabel": { "message": "Preview width", "translate": "always" },
+  "previewWidthLargeLabel": { "message": "Large", "translate": "always" },
+  "previewWidthMediumLabel": { "message": "Medium", "translate": "always" },
+  "previewWidthSmallLabel": { "message": "Small", "translate": "always" },
   "themeTrayAriaLabel": { "message": "Theme settings", "translate": "always" },
   "tabConfigLabel": {
     "message": "Config",
@@ -41,14 +31,33 @@
     "translate": "never"
   },
   "cdnProviderLabel": { "message": "CDN provider", "translate": "always" },
+  "localProviderLabel": { "message": "None (local)", "translate": "never" },
+  "cdnSectionLabel": { "message": "CDN", "translate": "never" },
   "themeLabel": {
     "message": "Theme",
     "translate": "optional"
   },
-  "modeLabel": {
-    "message": "Mode",
+  "themeRebrandLabel": { "message": "Next gen", "translate": "optional" },
+  "themeCanvasLabel": { "message": "Canvas", "translate": "optional" },
+  "themeCanvasHighContrastLabel": {
+    "message": "Canvas high contrast",
     "translate": "optional"
   },
+  "includeDarkModeLabel": { "message": "Include dark mode", "translate": "always" },
+  "colorLabel": { "message": "Color scheme", "translate": "always" },
+  "colorNavyLabel": { "message": "Navy", "translate": "optional" },
+  "colorBlueLabel": { "message": "Blue", "translate": "optional" },
+  "colorGreenLabel": { "message": "Green", "translate": "optional" },
+  "colorRedLabel": { "message": "Red", "translate": "optional" },
+  "colorOrangeLabel": { "message": "Orange", "translate": "optional" },
+  "colorGreyLabel": { "message": "Grey", "translate": "optional" },
+  "colorPlumLabel": { "message": "Plum", "translate": "optional" },
+  "colorVioletLabel": { "message": "Violet", "translate": "optional" },
+  "colorStoneLabel": { "message": "Stone", "translate": "optional" },
+  "colorSkyLabel": { "message": "Sky", "translate": "optional" },
+  "colorHoneyLabel": { "message": "Honey", "translate": "optional" },
+  "colorSeaLabel": { "message": "Sea", "translate": "optional" },
+  "colorAuroraLabel": { "message": "Aurora", "translate": "optional" },
   "downloadCssLabel": {
     "message": "Download theme.css",
     "translate": "optional"

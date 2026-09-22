@@ -1,0 +1,5 @@
+{
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
+  "sourceToggleTooltip": { "message": "Source code", "translate": "always" },
+  "sourceFormatTooltip": { "message": "Format code", "translate": "always" }
+}

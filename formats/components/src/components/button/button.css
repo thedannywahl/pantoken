@@ -50,6 +50,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
     gap: var(--instui-spacing-space-xs);
     min-height: var(--instui-component-base-button-medium-height);
     padding: var(--instui-spacing-space-xs)

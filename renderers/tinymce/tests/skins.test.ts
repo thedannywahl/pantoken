@@ -1,0 +1,49 @@
+import { existsSync, readFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { expect, test } from "vite-plus/test";
+import { SKIN_FILES } from "../scripts/generate.ts";
+
+const generatedRoot = resolve(import.meta.dirname, "../generated/skins");
+
+test("generates every published theme skin and content stylesheet", () => {
+  for (const file of SKIN_FILES) {
+    const path = resolve(generatedRoot, file);
+    expect(existsSync(path), file).toBe(true);
+    const css = readFileSync(path, "utf8");
+    expect(css).toContain(file.endsWith("content.css") ? "body {" : ".tox-tinymce");
+  }
+});
+
+test("keeps dark mode in Next Gen UI only", () => {
+  const nextGenUi = readFileSync(resolve(generatedRoot, "next-gen/skin.css"), "utf8");
+  expect(nextGenUi).toContain(':root[data-pantoken-scheme="dark"]');
+
+  for (const file of SKIN_FILES.filter((file) => !file.endsWith("next-gen/skin.css"))) {
+    expect(readFileSync(resolve(generatedRoot, file), "utf8")).not.toContain(
+      'data-pantoken-scheme="dark"',
+    );
+  }
+});
+
+test("uses Oxide convention skin entrypoints with theme variable overrides", () => {
+  const sourceRoot = resolve(import.meta.dirname, "../oxide/src/less/skins/ui");
+  for (const [theme, color] of [
+    ["next-gen", "--instui-color-stroke-base"],
+    ["canvas", "--instui-color-stroke-base"],
+    ["canvas-high-contrast", "--instui-color-stroke-base"],
+  ] as const) {
+    const source = readFileSync(resolve(sourceRoot, theme, "skin.less"), "utf8");
+    expect(source).toContain("@import 'src/less/theme/theme';");
+    expect(source).toContain("src/less/generated/");
+    const generatedName = theme === "next-gen" ? "next-gen-light" : theme;
+    const generated = readFileSync(
+      resolve(import.meta.dirname, `../oxide/src/less/generated/${generatedName}-tokens.less`),
+      "utf8",
+    );
+    expect(generated).toContain(`// ${color}`);
+  }
+
+  expect(readFileSync(resolve(generatedRoot, "next-gen/skin.css"), "utf8")).toContain(
+    "border-color:",
+  );
+});

@@ -10,6 +10,7 @@ packages:
   - ai/*
   - plugins/pantoken/*
   - plugins/postcss/*
+  - plugins/tinymce/*
   - plugins/typedoc/*
   - plugins/vite/*
   - plugins/vitepress/*
@@ -43,6 +44,8 @@ catalog:
   markdown-it: ^15.0.2
   # Brand icons (plugin)
   simple-icons: ^16.31.0
+  # Lucide Lab icons (plugin)
+  "@lucide/lab": ^0.7.0
   # React markdown integration
   react: ^19.3.0
   react-dom: ^19.3.0
@@ -133,9 +136,11 @@ catalog:
   "@codspeed/vitest-plugin": ^5.7.1
   bingo-stratum: ^0.5.13
   zod: ^4.4.3
-  # @pantoken/tinymce + canvas-theme-editor scaffold — tinymce is pinned to the 5.x line to match
-  # instructure/canvas-lms's own production RCE version, not the current tinymce major.
-  tinymce: ^5.10.9
+  # @pantoken/tinymce + canvas-theme-editor scaffold — tracks the current tinymce major, not
+  # instructure/canvas-lms's own (older) production RCE version. v8's stricter DOMPurify
+  # sanitization is stricter than canvas-lms's tinymce 5, which is an acceptable direction.
+  tinymce: ^8.9.1
+  less: ^4.9.1
   codemirror: ^6.0.2
   "@codemirror/lang-html": ^6.4.12
   "@codemirror/lang-css": ^6.3.1
@@ -144,6 +149,7 @@ catalog:
   "@codemirror/autocomplete": ^6.20.3
   "@codemirror/state": ^6.7.5
   "@codemirror/view": ^6.43.12
+  prettier: ^3.9.8
   vitest: 4.1.11
 overrides:
   vite@*: "catalog:"

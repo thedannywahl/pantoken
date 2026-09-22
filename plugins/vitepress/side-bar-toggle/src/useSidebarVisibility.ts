@@ -9,6 +9,7 @@ import {
 /** Reactive whole-sidebar visibility state returned by {@link useSidebarVisibility}. */
 export interface SidebarVisibility {
   isHidden: ComputedRef<boolean>;
+  show: () => void;
   toggle: () => void;
 }
 
@@ -25,16 +26,20 @@ export function useSidebarVisibility(options: SidebarToggleOptions = {}): Sideba
 
   const hidden = ref(isBrowser && document.documentElement.classList.contains(hiddenClass));
 
-  function toggle(): void {
-    hidden.value = !hidden.value;
+  function setHidden(value: boolean): void {
+    hidden.value = value;
     if (!isBrowser) return;
     document.documentElement.classList.toggle(hiddenClass, hidden.value);
     try {
-      localStorage.setItem(storageKey, String(hidden.value));
+      window.localStorage.setItem(storageKey, String(hidden.value));
     } catch {
       // storage may be unavailable (private browsing, disabled) — the toggle still works for the session
     }
   }
 
-  return { isHidden: computed(() => hidden.value), toggle };
+  return {
+    isHidden: computed(() => hidden.value),
+    show: () => setHidden(false),
+    toggle: () => setHidden(!hidden.value),
+  };
 }

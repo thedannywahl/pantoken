@@ -1,0 +1,33 @@
+{
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
+  "placeholdToolbarText": { "message": "Placeholder", "translate": "always" },
+  "placeholdToolbarTooltip": {
+    "message": "Insert a placeholder image",
+    "translate": "always"
+  },
+  "placeholdMenuText": { "message": "Placeholder image…", "translate": "always" },
+  "placeholdDialogTitle": { "message": "Insert placeholder image", "translate": "always" },
+  "placeholdWidthLabel": { "message": "Width", "translate": "always" },
+  "placeholdHeightLabel": { "message": "Height", "translate": "always" },
+  "placeholdBackgroundColorLabel": {
+    "message": "Background color",
+    "translate": "always"
+  },
+  "placeholdTextColorLabel": { "message": "Text color", "translate": "always" },
+  "placeholdTextLabel": { "message": "Text", "translate": "always" },
+  "placeholdAltTextLabel": { "message": "Alt text", "translate": "always" },
+  "placeholdInsertButton": { "message": "Insert", "translate": "always" },
+  "placeholdCancelButton": { "message": "Cancel", "translate": "always" },
+  "placeholdInvalidDimensions": {
+    "message": "Width and height must be whole numbers from 10 through 4000.",
+    "translate": "always"
+  },
+  "placeholdInvalidColor": {
+    "message": "Colors must use three- or six-digit hexadecimal values.",
+    "translate": "always"
+  },
+  "placeholdAltFallback": {
+    "message": "{{width}} by {{height}} placeholder image",
+    "translate": "always"
+  }
+}

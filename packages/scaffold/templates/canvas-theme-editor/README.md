@@ -28,20 +28,23 @@ npm run dev
 
 This opens a Vite dev server with:
 
-- An **editor** pane (TinyMCE, matching the version/config
-  [instructure/canvas-lms](https://github.com/instructure/canvas-lms) itself uses — see below).
-  Use the **Layouts** button to load one of the bundled starter layouts (this replaces the whole
-  document, after a confirm, rather than inserting at the cursor), and the **Source code** toggle
-  to hand-edit the raw HTML in a syntax-highlighted (CodeMirror) view alongside the editor, with
-  the preview pane updating live as you type — unlike TinyMCE's stock `code` plugin, which edits in
-  a one-shot modal dialog with no live preview.
-- A **preview** pane showing the editor's content with the current CSS/JS tab's stylesheet/script
-  applied (not just the resolved CDN URLs), wrapped to match Canvas's own content-area background
-  and max width — a faithful "what this will look like once uploaded to Canvas" check, updated
-  live as you type or edit the theme.
-- The editor and preview panes sit in a split view you can resize by dragging the divider, stack
-  vertically instead of side by side, and swap the order of (drag a pane's toolbar onto the other,
-  or use the **Swap panes** button). Each pane has its own fullscreen button.
+- An **editor** pane on top (TinyMCE, matching the version/config
+  [instructure/canvas-lms](https://github.com/instructure/canvas-lms) itself uses — see below),
+  styled live with the real CDN CSS for the chosen provider/theme/mode, so WYSIWYG editing looks
+  like the page will once uploaded to Canvas. Use the **Layouts** button to load one of the bundled
+  starter layouts (this replaces the whole document, after a confirm, rather than inserting at the
+  cursor), the **Accessibility** button to check common image, heading, table, link, and list
+  issues, and the **Source code** toggle to hand-edit the raw HTML in a syntax-highlighted
+  (CodeMirror) view alongside the editor, with the preview pane updating live as you type — unlike
+  TinyMCE's stock `code` plugin, which edits in a one-shot modal dialog with no live preview.
+  Also enabled: **Image** (URL-only — the Upload tab is hidden, so images are always linked, never
+  embedded as base64), **Fullscreen**, **Find and replace**, **Quickbars** (contextual toolbars on
+  text selection and image insert), **Word count** (status bar), and **Autosave** (drafts persist
+  to the browser's `localStorage`).
+- A **preview** pane underneath, showing the editor's content with the current CSS/JS tab's
+  stylesheet/script applied plus real CDN `<link>` tags for any picker-inserted icon/component/logo
+  assets, wrapped to match Canvas's own content-area background and max width — a faithful "what
+  this will look like once uploaded to Canvas" check, updated live as you type or edit the theme.
 - The **Edit theme** tray's **Config** tab holds the CDN provider/theme/mode selects and
   **Download theme.css** / **Download theme.js** links; its **CSS**/**JS** tabs are editable copies
   of the generated files — hand-edit them and the preview picks up your changes directly. Changing
@@ -58,6 +61,25 @@ This opens a Vite dev server with:
    view first). Canvas sanitizes pasted HTML server-side — this scaffold doesn't attempt to
    replicate that, so always verify the pasted result in Canvas (see "Notes on Canvas's RCE"
    below).
+
+Use the **Placeholder image** button to insert a PNG from
+[`placehold.co`](https://placehold.co/) with custom dimensions, colors, visible text, and alt text.
+The preview and the resulting Canvas page need network access to `https://placehold.co` to render
+these images. The existing **Image** button remains available for other remote image URLs.
+
+### Class-aware editing commands
+
+The editor enables `@pantoken/tinymce`'s content-classes plugin. Stock TinyMCE actions add the
+matching pantoken classes to paragraphs, headings, inline links, images, alignment, lists, and
+tables. Existing classes are preserved, and repeated edits don't duplicate them. Placeholder and
+product-logo images also include `instui-img` directly.
+
+Hosts that build their own Canvas-style toolbar can import `PANTOKEN_COMMANDS` from
+`@pantoken/tinymce` and pass those command names to their buttons. The aliases cover paragraph and
+H2-H6 formats, semantic `xs` through `xl` font sizes, inline formatting, colors, links, images,
+alignment, lists, and tables. Underline, arbitrary font/highlight colors, superscript, and
+subscript retain TinyMCE's semantic elements or inline styles because pantoken doesn't define
+equivalent component modifiers.
 
 ## Notes on Canvas's RCE
 
@@ -84,3 +106,16 @@ allowlist (`gems/canvas_sanitize` in canvas-lms, kept in sync with TinyMCE's own
 useful for interactions on pages you build directly in Canvas's RCE with raw HTML edits, but (per
 above) any `popover`/`command`-attribute-driven markup pasted from the RCE preview here won't stay
 interactive once saved.
+
+### Canvas-specific plugins intentionally left out
+
+Canvas's own RCE also ships an accessibility checker
+([`tinymce-a11y-checker`](https://github.com/instructure/canvas-lms/tree/master/packages/canvas-rce/src/rce/plugins/tinymce-a11y-checker))
+and a LaTeX equation editor
+([`instructure_equation`](https://github.com/instructure/canvas-lms/tree/master/packages/canvas-rce/src/rce/plugins/instructure_equation)).
+The Canvas implementations are not included here because they are deeply coupled to canvas-rce's
+internals (React, roughly a dozen `@instructure/ui-*` packages, Redux, the mathlive/KaTeX math
+editor, and canvas-rce's own `Bridge` singleton). This scaffold does include pantoken's standalone,
+React-free accessibility checker as the **Accessibility** toolbar button; it checks common image,
+heading, table, link, and list issues without depending on Canvas's RCE internals. Follow the linked
+source if you need Canvas's full tray UI or equation editor.

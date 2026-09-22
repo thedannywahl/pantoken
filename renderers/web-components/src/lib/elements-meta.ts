@@ -44,6 +44,7 @@ export const ELEMENTS = [
   "drawer-layout",
   "date-input",
   "date-time-input",
+  "tabs",
 ] as const;
 
 /**

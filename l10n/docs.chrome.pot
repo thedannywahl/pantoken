@@ -234,7 +234,7 @@ msgstr ""
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.rebrand"
-msgid "Rebrand"
+msgid "Next gen"
 msgstr ""
 
 #: docs/.vitepress/i18n.json
@@ -258,7 +258,7 @@ msgstr ""
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeRebrand"
-msgid "Rebrand"
+msgid "Next gen"
 msgstr ""
 
 #: docs/.vitepress/i18n.json

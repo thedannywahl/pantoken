@@ -15,6 +15,13 @@ export interface CanvasRceStrings {
   runLocally: string;
 }
 
+/**
+ * `postMessage` type the embedded editor uses to report its content height so the iframe can grow to
+ * fit. Must stay in sync with `scripts/canvas-rce-iframe-height.ts`, which is injected into the
+ * bundle at build time.
+ */
+export const CANVAS_RCE_HEIGHT_MESSAGE = "pantoken:canvas-rce:height";
+
 /** English defaults, also the fallback when a locale doesn't localize the page. */
 export const CANVAS_RCE_DEFAULTS: CanvasRceStrings = {
   title: "Canvas RCE",

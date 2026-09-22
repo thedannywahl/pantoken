@@ -70,6 +70,7 @@ export { rating } from "./elements/rating.ts";
 export { sideNavBar } from "./elements/side-nav-bar.ts";
 export { spinner } from "./elements/spinner.ts";
 export { tag } from "./elements/tag.ts";
+export { tabs } from "./elements/tabs.ts";
 export { toggleButton } from "./elements/toggle-button.ts";
 export { tooltip } from "./elements/tooltip.ts";
 export { tray } from "./elements/tray.ts";

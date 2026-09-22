@@ -7,6 +7,7 @@
 import type { CssDocEntry } from "@cssdoc/core";
 import componentsModel from "@pantoken/components/model.json" with { type: "json" };
 import customComponentsModel from "@pantoken/plugin-custom-components/model.json" with { type: "json" };
+import { formatTinymceString, TINYMCE_STRINGS } from "../strings.js";
 
 export type { CssDocEntry } from "@cssdoc/core";
 
@@ -71,26 +72,36 @@ export function validateClassToken(token: string): string[] {
 
   // Must start with "instui-" (or be just "instui-" which is incomplete).
   if (!token.startsWith("instui-")) {
-    return ["Token must start with 'instui-'"];
+    return [formatTinymceString(TINYMCE_STRINGS.classValidationTokenPrefix, { prefix: "instui-" })];
   }
 
-  // Extract base component name: split on "-" after the prefix, but be careful with modifiers.
-  // Pattern: instui-COMPONENT(-MODIFIER)* where COMPONENT is [a-z0-9]+ and MODIFIER is -PROP-VALUE or -BOOL.
+  // Find the longest known component name before any modifier suffix.
   const rest = token.slice("instui-".length); // e.g., "button.-color-primary"
-  const parts = rest.split("-");
-
-  if (parts.length === 0 || !parts[0]) {
-    return ["Incomplete component name after 'instui-'"];
+  if (!rest) {
+    return [
+      formatTinymceString(TINYMCE_STRINGS.classValidationIncompleteComponent, {
+        prefix: "instui-",
+      }),
+    ];
   }
 
-  const componentName = parts[0]; // e.g., "button"
-  const entry = findEntry(componentName);
+  const parts = rest.split("-");
+  let componentName = rest;
+  let entry = findEntry(componentName);
+
+  for (let partCount = parts.length - 1; !entry && partCount > 0; partCount -= 1) {
+    componentName = parts.slice(0, partCount).join("-");
+    entry = findEntry(componentName);
+  }
+
   if (!entry) {
-    errors.push(`Unknown component/utility: '${componentName}'`);
+    errors.push(
+      formatTinymceString(TINYMCE_STRINGS.classValidationUnknownComponent, { componentName }),
+    );
   }
 
   // If we found the entry, validate modifiers.
-  if (entry && parts.length > 1) {
+  if (entry && componentName !== rest) {
     const modifierTokens = rest.slice(componentName.length + 1); // e.g., "color-primary"
     const modifierList = entry.modifiers || [];
 

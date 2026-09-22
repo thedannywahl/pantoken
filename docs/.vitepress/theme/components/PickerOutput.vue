@@ -70,6 +70,20 @@ const highlighted = useShikiHighlight(outputRef, lang);
   display: block;
   margin: 0;
 }
+/* This output lives outside `.vp-doc`, so it doesn't inherit VitePress's own
+   `.vp-doc div[class*="language-"]` rounded-border/scroll-contained code-block styling. */
+.picker-output :deep(div[class*="language-"]) {
+  margin: 1rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.picker-output :deep(div[class*="language-"] pre) {
+  margin: 0;
+  overflow-x: auto;
+  padding: 1.25rem 1.5rem;
+
+  border: var(--instui-border-width-sm) solid var(--instui-color-stroke-base);
+}
 /* Shiki's dual-theme output sets `--shiki-dark`/`--shiki-dark-bg` inline alongside the light-theme
    `color`/`background-color` on the <pre> and a `--shiki-dark` alongside `color` on every token
    <span> — VitePress's own dark-mode CSS promotes those in .vp-doc, but this v-html'd output lives

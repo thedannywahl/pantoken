@@ -132,40 +132,8 @@
     "message": "Copy HTML",
     "translate": "always"
   },
-  "canvas-theme-editor.editorPaneLabel": {
-    "message": "Editor",
-    "translate": "always"
-  },
-  "canvas-theme-editor.previewPaneLabel": {
-    "message": "Preview",
-    "translate": "always"
-  },
   "canvas-theme-editor.previewFrameTitle": {
     "message": "Styled preview",
-    "translate": "always"
-  },
-  "canvas-theme-editor.fullscreenEditorAriaLabel": {
-    "message": "Fullscreen editor",
-    "translate": "always"
-  },
-  "canvas-theme-editor.fullscreenPreviewAriaLabel": {
-    "message": "Fullscreen preview",
-    "translate": "always"
-  },
-  "canvas-theme-editor.resizePanesAriaLabel": {
-    "message": "Resize editor and preview",
-    "translate": "always"
-  },
-  "canvas-theme-editor.stackVerticallyLabel": {
-    "message": "Stack vertically",
-    "translate": "always"
-  },
-  "canvas-theme-editor.stackSideBySideLabel": {
-    "message": "Stack side by side",
-    "translate": "always"
-  },
-  "canvas-theme-editor.swapPanesLabel": {
-    "message": "Swap panes",
     "translate": "always"
   },
   "canvas-theme-editor.themeTrayAriaLabel": {

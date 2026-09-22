@@ -50,6 +50,111 @@ const PRIMITIVE_STEPS = [
   10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200,
 ] as const;
 
+/** Brand primitive families whose literal hex values get relinked to the selected scale. */
+const BRAND_FAMILIES = ["navy", "blue"] as const;
+
+const COLOR_LITERAL = /#[0-9a-f]{3,8}|rgba?\([^()]*\)/giu;
+
+interface ParsedColor {
+  /** Opaque `#rrggbb`, lowercased. */
+  hex: string;
+  /** 0–1. */
+  alpha: number;
+}
+
+function parseColorLiteral(literal: string): ParsedColor | undefined {
+  if (literal.startsWith("#")) {
+    const body = literal.slice(1).toLowerCase();
+    if (body.length === 3 || body.length === 4) {
+      const r = body.slice(0, 1);
+      const g = body.slice(1, 2);
+      const b = body.slice(2, 3);
+      const a = body.slice(3, 4);
+      const alpha = a === "" ? 1 : Number.parseInt(`${a}${a}`, 16) / 255;
+      return { hex: `#${r}${r}${g}${g}${b}${b}`, alpha };
+    }
+    if (body.length === 6 || body.length === 8) {
+      const alpha = body.length === 8 ? Number.parseInt(body.slice(6, 8), 16) / 255 : 1;
+      return { hex: `#${body.slice(0, 6)}`, alpha };
+    }
+    return undefined;
+  }
+
+  const parts = literal
+    .slice(literal.indexOf("(") + 1, -1)
+    .split(/[,\s/]+/u)
+    .filter(Boolean);
+  if (parts.length < 3) return undefined;
+
+  const channels = parts.slice(0, 3).map((part) => Number(part.replace("%", "")));
+  if (channels.some((n) => !Number.isFinite(n))) return undefined;
+  const hex = `#${channels.map((n) => Math.round(n).toString(16).padStart(2, "0")).join("")}`;
+
+  const rawAlpha = parts[3];
+  if (rawAlpha === undefined) return { hex, alpha: 1 };
+  const alpha = rawAlpha.endsWith("%") ? Number(rawAlpha.slice(0, -1)) / 100 : Number(rawAlpha);
+  return Number.isFinite(alpha) ? { hex, alpha } : undefined;
+}
+
+/**
+ * Index the opaque hex value of every brand primitive step so literal colors elsewhere in the
+ * token set can be traced back to the primitive they were flattened from.
+ *
+ * @param tokenMap - Resolved token name to value map.
+ * @returns Map of `#rrggbb` to the primitive family and step it belongs to.
+ */
+function buildPrimitiveHexIndex(
+  tokenMap: Map<string, string>,
+): Map<string, { family: string; step: number }> {
+  const index = new Map<string, { family: string; step: number }>();
+  for (const family of BRAND_FAMILIES) {
+    for (const step of PRIMITIVE_STEPS) {
+      const value = tokenMap.get(`--instui-primitive-color-${family}-${family}${step}`);
+      if (!value) continue;
+      const parsed = parseColorLiteral(value.trim());
+      if (!parsed || parsed.alpha < 1 || index.has(parsed.hex)) continue;
+      index.set(parsed.hex, { family, step });
+    }
+  }
+  return index;
+}
+
+/**
+ * Rewrite literal brand colors in a token value to `var()` references against the selected scale.
+ *
+ * Upstream flattens some tokens (secondary action backgrounds and strokes, brand button fills,
+ * shadow colors) to raw hex with a baked alpha, so the primitive remap alone can never reach them.
+ *
+ * @param value - The token value to rewrite.
+ * @param index - Output of {@link buildPrimitiveHexIndex}.
+ * @param scale - The selected color namespace.
+ * @returns The rewritten value, or `undefined` when nothing matched.
+ */
+function relinkLiteralColors(
+  value: string,
+  index: Map<string, { family: string; step: number }>,
+  scale: string,
+): string | undefined {
+  // Icon tokens carry SVG data URIs whose fills must not be themed.
+  if (value.includes("url(")) return undefined;
+
+  let changed = false;
+  const next = value.replace(COLOR_LITERAL, (literal) => {
+    const parsed = parseColorLiteral(literal);
+    if (!parsed) return literal;
+    const primitive = index.get(parsed.hex);
+    if (!primitive || primitive.family === scale) return literal;
+
+    changed = true;
+    const reference = `var(--instui-primitive-color-${scale}-${scale}${primitive.step})`;
+    if (parsed.alpha >= 1) return reference;
+    const percentage = Number((parsed.alpha * 100).toFixed(2));
+    return `color-mix(in srgb, ${reference} ${percentage}%, transparent)`;
+  });
+
+  return changed ? next : undefined;
+}
+
 const STATUS_INTENT_TOKEN =
   /^--instui-color-(?:background(?:-pastel)?|stroke|text|icon)-(?:info|success|warning|error)$/u;
 
@@ -90,9 +195,14 @@ const PRESERVED_BLUE_ACCENT_TOKENS = [
   "--instui-component-chart-sequential-blue-color9",
 ] as const;
 
+// TEMPORARY: brand-tinting the elevation shadows is paused pending a design decision.
+// Delete this constant and its use in customThemeColorsCss to restore it.
+const RELINK_EXCLUDED = /^--instui-color-drop-shadow-/u;
+
 /**
  * Generate CSS rules for all custom theme color choices by remapping primitive color scale steps
- * (`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`), while preserving explicitly
+ * (`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`) and relinking literal
+ * brand hex values that upstream flattened away from those primitives, while preserving explicitly
  * named blue accents and semantic status intents.
  *
  * @param tokens - Optional token array or map for primitive step color lookups.
@@ -113,6 +223,8 @@ export function customThemeColorsCss(tokens?: readonly Token[] | Map<string, str
     ...PRESERVED_BLUE_ACCENT_TOKENS,
     ...[...tokenMap.keys()].filter((name) => STATUS_INTENT_TOKEN.test(name)),
   ];
+  const preservedNames = new Set<string>(preservedTokens);
+  const primitiveHexIndex = buildPrimitiveHexIndex(tokenMap);
 
   function getPreservedValue(tokenName: string): string {
     const raw = tokenMap.get(tokenName);
@@ -125,15 +237,23 @@ export function customThemeColorsCss(tokens?: readonly Token[] | Map<string, str
   return COLOR_KEYS.map((c) => {
     const scale = c;
 
-    const navyOverrides = PRIMITIVE_STEPS.map(
-      (step) =>
-        `  --instui-primitive-color-navy-navy${step}: var(--instui-primitive-color-${scale}-${scale}${step});`,
-    ).join("\n");
+    // Self-referencing var() (e.g. navy remapped to navy) is a guaranteed-invalid circular custom
+    // property per the CSS spec, which computes as transparent — skip the no-op remap instead.
+    const navyOverrides =
+      scale === "navy"
+        ? ""
+        : PRIMITIVE_STEPS.map(
+            (step) =>
+              `  --instui-primitive-color-navy-navy${step}: var(--instui-primitive-color-${scale}-${scale}${step});`,
+          ).join("\n");
 
-    const blueOverrides = PRIMITIVE_STEPS.map(
-      (step) =>
-        `  --instui-primitive-color-blue-blue${step}: var(--instui-primitive-color-${scale}-${scale}${step});`,
-    ).join("\n");
+    const blueOverrides =
+      scale === "blue"
+        ? ""
+        : PRIMITIVE_STEPS.map(
+            (step) =>
+              `  --instui-primitive-color-blue-blue${step}: var(--instui-primitive-color-${scale}-${scale}${step});`,
+          ).join("\n");
 
     const opacityOverride = `  --instui-primitive-color-navy-opacity10: color-mix(in srgb, var(--instui-primitive-color-${scale}-${scale}170) 10%, transparent);`;
 
@@ -145,7 +265,17 @@ export function customThemeColorsCss(tokens?: readonly Token[] | Map<string, str
       .filter(Boolean)
       .join("\n");
 
-    return `:root[data-pantoken-color="${c}"] {\n${navyOverrides}\n${blueOverrides}\n${opacityOverride}\n${preservedValues}\n}`;
+    const relinkedValues = [...tokenMap.entries()]
+      .map(([name, value]) => {
+        if (preservedNames.has(name) || name.startsWith("--instui-primitive-color-")) return "";
+        if (RELINK_EXCLUDED.test(name)) return "";
+        const relinked = relinkLiteralColors(value, primitiveHexIndex, scale);
+        return relinked ? `  ${name}: ${relinked};` : "";
+      })
+      .filter(Boolean)
+      .join("\n");
+
+    return `:root[data-pantoken-color="${c}"] {\n${navyOverrides}\n${blueOverrides}\n${opacityOverride}\n${preservedValues}\n${relinkedValues}\n}`;
   }).join("\n\n");
 }
 /**

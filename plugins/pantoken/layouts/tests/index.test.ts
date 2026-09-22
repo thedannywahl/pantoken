@@ -12,6 +12,7 @@ import {
   wrapperRules,
 } from "../src/index.ts";
 import { SENTINEL } from "../src/lib/sentinel.ts";
+import { runtimeCss } from "../src/lib/runtime-css.ts";
 
 const cssOf = (plugin: ReturnType<typeof layouts>): string => {
   const out = plugin.css?.({ tokens: [], css: "" });
@@ -55,8 +56,14 @@ test("every layout appears in the plugin css payload", () => {
     testimonialRules,
     twoColumnRules,
   ]) {
-    expect(css).toContain(rules());
+    expect(css).toContain(runtimeCss(rules()));
   }
+});
+
+test("plugin css payload is runtime-safe", () => {
+  const css = cssOf(layouts());
+  expect(css).not.toContain("@component");
+  expect(css).not.toMatch(/:(?:optional|one-or-more)\b/u);
 });
 
 test("pageLayouts exposes the bundled starter page layouts", () => {

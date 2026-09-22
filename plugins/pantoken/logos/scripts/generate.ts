@@ -9,6 +9,9 @@
  *   each set to a `url(data:image/svg+xml;base64,…)` image token, plus a typed `@property` registration
  *   per token (a `<url>` syntax and the data URI as `initial-value`) that the docs CSS-API table reads
  *   into its Type and Default columns.
+ * - `generated/<name>.png` — a rasterized PNG per logo, for hosts (e.g. Canvas LMS's RCE) that strip
+ *   inline `<svg>`/CSS background-images but accept a real `<img src>`. Width is fixed by layout
+ *   group (see {@link targetWidth}) and height is derived from the SVG's own `viewBox` aspect ratio.
  *
  * SVGs are small, so they're inlined as data URIs — the stylesheet is self-contained and the tokens
  * work anywhere `var()` does (`background-image`, `mask`, `content`).
@@ -17,6 +20,7 @@
  */
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
+import { Resvg } from "@resvg/resvg-js";
 
 const root = resolve(import.meta.dirname, "..");
 const logosDir = join(root, "assets/logos");
@@ -77,6 +81,50 @@ interface LogoMeta {
   lang?: string;
   name: string;
   path: string;
+  width: number;
+  height: number;
+}
+
+// Icon-mark layouts (square-ish glyphs) render at half the width of wordmark/lockup layouts, both
+// derived from the canvas-theme-editor preview's content max-width (956px) — see
+// `CANVAS_CONTENT_MAX_WIDTH` in `packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl`.
+const ICON_LAYOUTS = new Set(["icon", "icon-single-dot", "icon-three-dot"]);
+const FULL_WIDTH_TARGET = 478; // 956 / 2
+const ICON_WIDTH_TARGET = 239; // 478 / 2
+// Rasterize at 2x the display size for retina sharpness; `<img width height>` downscales to display size.
+const RASTER_SCALE = 2;
+
+/** The display (non-retina) target width for a logo's layout, per the fixed layout-group rule above. */
+function targetWidth(layout: string): number {
+  return ICON_LAYOUTS.has(layout) ? ICON_WIDTH_TARGET : FULL_WIDTH_TARGET;
+}
+
+/** Parse an SVG's `viewBox` into its natural `[width, height]`, or `undefined` if absent/malformed. */
+function parseViewBox(svg: string): [number, number] | undefined {
+  const match = /viewBox="[\d.-]+\s+[\d.-]+\s+([\d.]+)\s+([\d.]+)"/u.exec(svg);
+  if (!match) return undefined;
+  return [Number.parseFloat(match[1]), Number.parseFloat(match[2])];
+}
+
+/**
+ * Rasterize a logo SVG to PNG at the given display width (scaled by {@link RASTER_SCALE}), deriving
+ * height from the SVG's own `viewBox` aspect ratio.
+ *
+ * @param svg - The source SVG markup.
+ * @param displayWidth - The target `<img width>` (CSS pixels, not raster pixels).
+ * @returns The PNG bytes and the display `{ width, height }` to store in the logo's metadata.
+ */
+function rasterize(
+  svg: string,
+  displayWidth: number,
+): { png: Buffer; width: number; height: number } {
+  const viewBox = parseViewBox(svg);
+  const aspect = viewBox ? viewBox[1] / viewBox[0] : 1;
+  const height = Math.round(displayWidth * aspect);
+  const png = new Resvg(svg, { fitTo: { mode: "width", value: displayWidth * RASTER_SCALE } })
+    .render()
+    .asPng();
+  return { png, width: displayWidth, height };
 }
 
 /**
@@ -106,6 +154,7 @@ export function parseStem(
 
 const logos: LogoMeta[] = [];
 const svgs: Record<string, string> = {};
+const pngs = new Map<string, Buffer>();
 for (const product of PRODUCTS) {
   let files: string[];
   try {
@@ -118,6 +167,8 @@ for (const product of PRODUCTS) {
     const parsed = parseStem(file.replace(/\.svg$/u, ""));
     if (!parsed) continue;
     const name = `${product}-${parsed.layout}-${parsed.colorMode}${parsed.lang ? `-${parsed.lang}` : ""}`;
+    const svg = readFileSync(join(logosDir, product, file), "utf8");
+    const { png, width, height } = rasterize(svg, targetWidth(parsed.layout));
     logos.push({
       product,
       layout: parsed.layout,
@@ -125,11 +176,20 @@ for (const product of PRODUCTS) {
       ...(parsed.lang ? { lang: parsed.lang } : {}),
       name,
       path: `${product}/${file}`,
+      width,
+      height,
     });
-    svgs[name] = readFileSync(join(logosDir, product, file), "utf8");
+    svgs[name] = svg;
+    pngs.set(name, png);
   }
 }
 logos.sort((a, b) => a.name.localeCompare(b.name));
+
+mkdirSync(outDir, { recursive: true });
+for (const logo of logos) {
+  const png = pngs.get(logo.name);
+  if (png) writeFileSync(join(outDir, `${logo.name}.png`), png);
+}
 
 /**
  * Encode a raw SVG string as a `data:image/svg+xml;base64,…` data URI.
@@ -189,7 +249,6 @@ const PROPERTY_RULES = logos
   )
   .join("\n");
 
-mkdirSync(outDir, { recursive: true });
 // `:root` values lead (so plain imports get the tokens first), then the doc record, then the `@property`
 // registrations — mirroring the stacking sheet's order so cssdoc folds the registrations into the record.
 writeFileSync(join(outDir, "logos.css"), `${logosCss}${DOC}\n${PROPERTY_RULES}\n`);
@@ -240,5 +299,5 @@ writeFileSync(join(outDir, "embedded.ts"), embedded);
 
 console.log(
   `✓ logos: ${logos.length} logos across ${new Set(logos.map((l) => l.product)).size} products ` +
-    `(+ ${logos.length} per-logo and ${productSheetCount} per-product sheets)`,
+    `(+ ${logos.length} per-logo and ${productSheetCount} per-product sheets, ${pngs.size} PNGs)`,
 );

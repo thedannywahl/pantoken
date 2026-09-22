@@ -228,8 +228,8 @@ msgstr "เลือกธีม"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.rebrand"
-msgid "Rebrand"
-msgstr "รีแบรนด์"
+msgid "Next gen"
+msgstr "Next gen"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -252,8 +252,8 @@ msgstr "ธีม"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeRebrand"
-msgid "Rebrand"
-msgstr "รีแบรนด์"
+msgid "Next gen"
+msgstr "Next gen"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

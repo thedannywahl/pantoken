@@ -7,7 +7,7 @@ persists across navigation and reloads via `localStorage`, restored by a blockin
 script so there's no flash of the wrong state.
 
 No dependency on any `@pantoken/*` package. Requires a site whose theme extends VitePress's
-`DefaultTheme` (the toggle icon reuses VitePress's own built-in `vpi-chevron-*` icon classes).
+`DefaultTheme`. The default toggle icons reuse VitePress's built-in `vpi-chevron-*` classes.
 
 ## Setup
 
@@ -18,7 +18,12 @@ import { defineConfig } from "vitepress";
 import { sidebarToggleHead } from "@pantoken/vitepress-sidebar-toggle";
 
 export default defineConfig({
-  head: [sidebarToggleHead()],
+  head: [
+    sidebarToggleHead({
+      placement: "start",
+      icons: { show: "my-show-icon", hide: "my-hide-icon" },
+    }),
+  ],
   themeConfig: {
     // optional — defaults to "Toggle sidebar"; localize per-locale like any other VitePress label
     sidebarToggleLabel: "Toggle sidebar",
@@ -41,7 +46,9 @@ export default {
 };
 ```
 
-Then drop `<SidebarToggle />` into a theme slot, e.g. `nav-bar-content-after` in a custom `Layout.vue`.
+Then drop `<SidebarToggle />` directly into the `nav-bar-content-after` theme slot in a custom
+`Layout.vue`. The component must be a direct child of VitePress's navbar flex container for
+`placement: "start"` to move it before search.
 
 ## Localization
 
@@ -56,13 +63,24 @@ Both `sidebarToggleHead(options)` and the `<SidebarToggle>` component accept:
 
 - `storageKey` — the `localStorage` key persisting hidden/shown state. Default: `vitepress-sidebar-hidden`.
 - `hiddenClass` — the class applied to `<html>` while hidden. Default: `sidebar-hidden`.
+- `placement` — `start` places the toggle before search; `end` leaves it after VitePress's standard
+  navbar controls. Default: `end`.
+- `icons.show` — CSS class or classes for the icon that shows a hidden sidebar. Default:
+  `vpi-chevron-right`.
+- `icons.hide` — CSS class or classes for the icon that hides a visible sidebar. Default:
+  `vpi-chevron-left`.
 
-Pass matching options to both if you customize either — the head script and the component must agree.
+Options passed to `sidebarToggleHead()` are available to the component automatically. Component props
+override the matching head options. Directional icons mirror on the x axis for RTL locales.
+
+The toggle appears at `60rem` and wider, exactly where VitePress hides its built-in local-nav menu.
+Clicking that narrow-viewport menu always restores a persistently hidden sidebar before VitePress opens
+it, keeping both controls synchronized.
 
 ## Programmatic access
 
 ```ts
 import { useSidebarVisibility } from "@pantoken/vitepress-sidebar-toggle";
 
-const { isHidden, toggle } = useSidebarVisibility();
+const { isHidden, show, toggle } = useSidebarVisibility();
 ```

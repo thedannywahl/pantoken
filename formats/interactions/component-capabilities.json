@@ -246,8 +246,9 @@
     },
     {
       "name": "tabs",
-      "type": "css-only",
-      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/tabs.css"
+      "type": "both",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/tabs.css",
+      "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/tabs.iife.js"
     },
     {
       "name": "tag",

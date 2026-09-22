@@ -228,8 +228,8 @@ msgstr "选择主题"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.rebrand"
-msgid "Rebrand"
-msgstr "品牌重塑"
+msgid "Next gen"
+msgstr "Next gen"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -252,8 +252,8 @@ msgstr "主题"
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeRebrand"
-msgid "Rebrand"
-msgstr "品牌重塑"
+msgid "Next gen"
+msgstr "Next gen"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

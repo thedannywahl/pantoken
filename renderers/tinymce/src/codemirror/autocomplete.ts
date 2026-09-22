@@ -9,6 +9,7 @@ import { autocompletion, Completion } from "@codemirror/autocomplete";
 import type { CompletionContext } from "@codemirror/autocomplete";
 import type { CssDocEntry } from "../cssdoc/model.js";
 import { listComponents, listUtilities, getModifierSuggestions } from "../cssdoc/model.js";
+import { TINYMCE_STRINGS } from "../strings.js";
 
 /**
  * Configuration options for the pantoken HTML autocomplete extension.
@@ -120,7 +121,7 @@ function generateCompletions(partial: string, _model: CssDocEntry[]): Completion
 
     completions.push({
       label: modPrefix,
-      detail: mod.prop || "modifier",
+      detail: mod.prop || TINYMCE_STRINGS.autocompleteModifierDetail,
       type: "class",
       info: mod.description || "",
     });

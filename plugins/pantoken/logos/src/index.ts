@@ -69,6 +69,10 @@ export interface LogoMeta {
   name: string;
   /** The path within `assets/logos`, e.g. `"canvas/horizontal-full-color.svg"`. */
   path: string;
+  /** The rasterized PNG's display width in CSS pixels (fixed per layout group, not the SVG's own size). */
+  width: number;
+  /** The rasterized PNG's display height in CSS pixels, derived from the SVG's `viewBox` aspect ratio. */
+  height: number;
 }
 
 /**
@@ -169,6 +173,36 @@ export function getLogoDataUri(
   const svg = getLogoSvg(product, layout, colorMode, lang);
   if (svg === undefined) return undefined;
   return `data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`;
+}
+
+/**
+ * Get a logo's metadata, including the rasterized PNG's `width`/`height` — for consumers that need
+ * to build a `dist/<name>.png` path (e.g. via `@pantoken/cdn`) or size an `<img>` without parsing SVG.
+ *
+ * @param product - The product.
+ * @param layout - The layout (default `"horizontal"`).
+ * @param colorMode - The color treatment (default `"full-color"`).
+ * @param lang - The localized wordmark's language, if a translated variant is wanted.
+ * @returns The {@link LogoMeta}, or `undefined` if that combination doesn't exist.
+ *
+ * @example Build a PNG CDN path for a logo
+ * ```ts
+ * import { getLogoMeta } from "@pantoken/plugin-logos";
+ *
+ * const meta = getLogoMeta("canvas", "horizontal", "color");
+ * meta && `dist/${meta.name}.png`; // "dist/canvas-horizontal-color.png"
+ * ```
+ */
+export function getLogoMeta(
+  product: Product,
+  layout: LogoLayout = "horizontal",
+  colorMode: LogoColorMode = "full-color",
+  lang?: LogoLang,
+): LogoMeta | undefined {
+  return LOGOS.find(
+    (l) =>
+      l.product === product && l.layout === layout && l.colorMode === colorMode && l.lang === lang,
+  );
 }
 
 /** Options for the {@link logosPlugin} plugin. */

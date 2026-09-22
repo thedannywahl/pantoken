@@ -8,9 +8,43 @@
 
 // Phase 1: content-CSS wiring.
 export { injectContentStylesheet, pantokenContentCssUrls } from "./content-css.js";
+export { TINYMCE_STRINGS, type TinymceStrings } from "./strings.js";
 
 // Phase 2: templates plugin.
 export { createTemplatesPlugin } from "./plugins/templates.js";
+
+export {
+  CONTENT_CLASSES_PLUGIN_NAME,
+  createContentClassesPlugin,
+  PANTOKEN_COMMANDS,
+  type ContentClassesPluginOptions,
+  type PantokenFontSize,
+} from "./plugins/content-classes.js";
+
+export {
+  createPantokenPlugin,
+  PANTOKEN_PLUGIN_NAME,
+  PANTOKEN_TOOLBAR_NAME,
+  type PantokenPluginOptions,
+} from "./plugins/pantoken.js";
+
+export {
+  createFullscreenFooterPlugin,
+  FULLSCREEN_FOOTER_PLUGIN_NAME,
+  FULLSCREEN_FOOTER_STATUSBAR_NAME,
+} from "./plugins/fullscreen-footer.js";
+
+export {
+  createSearchReplaceFooterPlugin,
+  SEARCHREPLACE_FOOTER_PLUGIN_NAME,
+  SEARCHREPLACE_FOOTER_STATUSBAR_NAME,
+} from "./plugins/searchreplace-footer.js";
+
+export {
+  createSupSubPlugin,
+  SUP_SUB_PLUGIN_NAME,
+  SUP_SUB_TOOLBAR_NAME,
+} from "./plugins/sup-sub.js";
 
 // Layouts: starter page layouts sourced from @pantoken/plugin-layouts, alongside Components/Icons/Logos.
 export { type PageLayout, pageLayouts } from "./layouts.js";
@@ -31,7 +65,13 @@ export {
   validateClassToken,
   type CssDocEntry,
 } from "./cssdoc/model.js";
-export { getIconCdnFile, loadAllIcons } from "./icons.js";
+export {
+  buildIconMarkup,
+  getIconCdnFile,
+  humanizeIconName,
+  loadAllIcons,
+  PANTOKEN_ICONS_DATABASE_ID,
+} from "./icons.js";
 export type { LogoMeta, Product } from "./logos.js";
 export { logos, products } from "./logos.js";
 

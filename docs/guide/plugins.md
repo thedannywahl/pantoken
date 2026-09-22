@@ -59,10 +59,24 @@ expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ## The bundled plugins
 
 - `@pantoken/plugin-simple-icons` — brand icons from simple-icons, registered as icon tokens.
+- `@pantoken/plugin-lucide-lab` — Lucide Lab icons, registered as `--instui-icon-*` image tokens.
 - `@pantoken/plugin-logos` — Instructure product logos as SVGs, data URIs, and `--instui-logo-*`
   image tokens.
 - `@pantoken/plugin-prune-custom-props` — a PostCSS plugin (not a pantoken plugin) that drops
   unused custom properties from a stylesheet.
+
+Lucide Lab's registry can be loaded lazily, then passed to the synchronous token hook:
+
+```ts
+import { buildTokens } from "@pantoken/core/build";
+import { defaultRegistry, lucideLab } from "@pantoken/plugin-lucide-lab";
+
+const registry = await defaultRegistry();
+buildTokens({
+  theme: "rebrand",
+  plugins: [lucideLab({ registry, names: ["burger", "at-sign-circle"] })],
+});
+```
 
 A few things that used to be plugins now ship in `@pantoken/components`, since so many components need
 them out of the box: elevation shadows (`--instui-elevation-*`, in `components.css`), the focus-outline

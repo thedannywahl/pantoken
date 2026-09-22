@@ -76,6 +76,7 @@ test("icon-only buttons automatically use square icon-button geometry", () => {
   const css = buttonCss({ prefix: "instui" });
   expect(css).toContain('&[class*="-icon-"]:not(:has(> *))');
   expect(css).toContain('&[class*="-icon-"]:has(> .instui-screen-reader-content:only-child)');
+  expect(css).toContain("box-sizing: border-box");
   expect(css).toContain("aspect-ratio: 1");
   expect(css).toContain("inline-size: 1.25em");
   expect(css).toContain("margin-inline-end: 0");

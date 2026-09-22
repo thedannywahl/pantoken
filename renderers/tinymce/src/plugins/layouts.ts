@@ -3,10 +3,12 @@
  * layouts. Defaults to pantoken's own bundled {@link pageLayouts} (hero, callout, testimonial,
  * two-column, rubric note); pass `layouts` to override or extend the list.
  *
- * @module
+ * \@module
  */
 import type { Editor } from "tinymce";
 import { pageLayouts, type PageLayout } from "../layouts.js";
+import { replaceContent } from "../lib/insertion-target.js";
+import { formatTinymceString, TINYMCE_STRINGS } from "../strings.js";
 
 /** Options for {@link createLayoutsPlugin}. */
 export interface LayoutsPluginOptions {
@@ -14,12 +16,16 @@ export interface LayoutsPluginOptions {
   layouts?: readonly PageLayout[];
   /** Called after a layout is inserted (e.g. to refresh a live preview). */
   onInsert?: (layout: PageLayout) => void;
+  /** Register this picker's standalone toolbar button and menu item. */
+  registerUi?: boolean;
 }
 
 /** The plugin name to pass in TinyMCE's `plugins`/`toolbar` init options. */
 export const LAYOUTS_PLUGIN_NAME = "pantoken_layouts";
 /** The toolbar button/menu item name registered by this plugin. */
 export const LAYOUTS_TOOLBAR_NAME = "pantokenLayouts";
+/** Command that opens the layouts picker. */
+export const LAYOUTS_COMMAND = "pantokenOpenLayouts";
 
 /** Builds the `tinymce.PluginManager.add` callback for the "Insert layout" plugin. */
 export function createLayoutsPlugin(options: LayoutsPluginOptions = {}) {
@@ -27,22 +33,22 @@ export function createLayoutsPlugin(options: LayoutsPluginOptions = {}) {
   return function pantokenLayoutsPlugin(editor: Editor) {
     const openDialog = (): void => {
       editor.windowManager.open({
-        title: "Insert layout",
+        title: TINYMCE_STRINGS.layoutsDialogTitle,
         body: {
           type: "panel",
           items: [
             {
               type: "selectbox",
               name: "layout",
-              label: "Starter layout",
+              label: TINYMCE_STRINGS.layoutsSelectLabel,
               items: layouts.map((l) => ({ value: l.name, text: l.title })),
             },
           ],
         },
         initialData: { layout: layouts[0]?.name ?? "" },
         buttons: [
-          { type: "cancel", text: "Cancel" },
-          { type: "submit", text: "Insert", primary: true },
+          { type: "cancel", text: TINYMCE_STRINGS.cancelButton },
+          { type: "submit", text: TINYMCE_STRINGS.insertButton, primary: true },
         ],
         onSubmit: (api): void => {
           const { layout } = api.getData() as { layout: string };
@@ -50,10 +56,10 @@ export function createLayoutsPlugin(options: LayoutsPluginOptions = {}) {
           api.close();
           if (!chosen) return;
           editor.windowManager.confirm(
-            `Replace the current content with the "${chosen.title}" layout?`,
+            formatTinymceString(TINYMCE_STRINGS.layoutsConfirmReplace, { title: chosen.title }),
             (confirmed: boolean): void => {
               if (!confirmed) return;
-              editor.setContent(chosen.html);
+              replaceContent(editor, chosen.html);
               onInsert?.(chosen);
             },
           );
@@ -61,13 +67,18 @@ export function createLayoutsPlugin(options: LayoutsPluginOptions = {}) {
       });
     };
 
+    if (options.registerUi === false) {
+      editor.addCommand(LAYOUTS_COMMAND, openDialog);
+      return {};
+    }
+
     editor.ui.registry.addButton(LAYOUTS_TOOLBAR_NAME, {
-      text: "Layouts",
-      tooltip: "Insert a starter layout",
+      text: TINYMCE_STRINGS.layoutsToolbarText,
+      tooltip: TINYMCE_STRINGS.layoutsToolbarTooltip,
       onAction: openDialog,
     });
     editor.ui.registry.addMenuItem(LAYOUTS_TOOLBAR_NAME, {
-      text: "Layout…",
+      text: TINYMCE_STRINGS.layoutsMenuText,
       onAction: openDialog,
     });
 

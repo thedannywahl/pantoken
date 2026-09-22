@@ -6,7 +6,7 @@
  * `content_css` after `init()` runs, so a picker's "missing asset" instead injects a `<link>`
  * directly into the editor's content document).
  *
- * @module
+ * \@module
  */
 import { buildFileUrls } from "@pantoken/cdn";
 import type { CdnFile, CdnProvider } from "@pantoken/cdn";
