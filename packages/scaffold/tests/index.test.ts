@@ -48,7 +48,7 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain("@pantoken/tinymce/skins/canvas-high-contrast/skin.css?url");
   expect(main).not.toContain("tinymce/skins/ui/oxide/skin.css");
   expect(main).toContain(
-    '"pantoken pantoken_content_classes placehold pantoken_a11y pantoken_source_toggle image link lists',
+    '"pantoken pantoken_content_classes placehold pantoken_a11y pantoken_sup_sub pantoken_source_toggle pantoken_fullscreen_footer pantoken_searchreplace_footer pantoken_visualblocks_footer image link lists',
   );
   expect(main).toContain('createA11yPlugin({ display: "footer" })');
   expect(main).toContain("toolbar: `undo redo | pantoken placehold | bold italic underline");

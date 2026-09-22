@@ -41,6 +41,12 @@ export {
 } from "./plugins/searchreplace-footer.js";
 
 export {
+  createVisualBlocksFooterPlugin,
+  VISUALBLOCKS_FOOTER_PLUGIN_NAME,
+  VISUALBLOCKS_FOOTER_STATUSBAR_NAME,
+} from "./plugins/visualblocks-footer.js";
+
+export {
   createSupSubPlugin,
   SUP_SUB_PLUGIN_NAME,
   SUP_SUB_TOOLBAR_NAME,

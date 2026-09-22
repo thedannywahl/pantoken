@@ -38,9 +38,10 @@ This opens a Vite dev server with:
   (CodeMirror) view alongside the editor, with the preview pane updating live as you type — unlike
   TinyMCE's stock `code` plugin, which edits in a one-shot modal dialog with no live preview.
   Also enabled: **Image** (URL-only — the Upload tab is hidden, so images are always linked, never
-  embedded as base64), **Fullscreen**, **Find and replace**, **Quickbars** (contextual toolbars on
-  text selection and image insert), **Word count** (status bar), and **Autosave** (drafts persist
-  to the browser's `localStorage`).
+  embedded as base64), **Fullscreen**, **Find and replace**, **Quickbars** (a contextual formatting
+  toolbar on text selection, an insert toolbar for images/tables/media/placeholders, and an
+  alignment/edit toolbar on selected images), **Word count** (status bar), and **Autosave** (drafts
+  persist to the browser's `localStorage`).
 - A **preview** pane underneath, showing the editor's content with the current CSS/JS tab's
   stylesheet/script applied plus real CDN `<link>` tags for any picker-inserted icon/component/logo
   assets, wrapped to match Canvas's own content-area background and max width — a faithful "what

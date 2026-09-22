@@ -54,6 +54,7 @@ import "tinymce/plugins/wordcount";
 import "tinymce/plugins/emoticons";
 import "tinymce/plugins/table";
 import "tinymce/plugins/media";
+import "tinymce/plugins/visualblocks";
 import nextGenSkinUrl from "@pantoken/tinymce/skins/next-gen/skin.css?url";
 import nextGenContentUrl from "@pantoken/tinymce/skins/next-gen/content.css?url";
 import canvasSkinUrl from "@pantoken/tinymce/skins/canvas/skin.css?url";
@@ -86,6 +87,7 @@ import {
   createPantokenPlugin,
   createSearchReplaceFooterPlugin,
   createSupSubPlugin,
+  createVisualBlocksFooterPlugin,
   FULLSCREEN_FOOTER_PLUGIN_NAME,
   listComponents,
   listUtilities,
@@ -99,6 +101,7 @@ import {
   SEARCHREPLACE_FOOTER_PLUGIN_NAME,
   SUP_SUB_PLUGIN_NAME,
   SUP_SUB_TOOLBAR_NAME,
+  VISUALBLOCKS_FOOTER_PLUGIN_NAME,
 } from "@pantoken/tinymce";
 import {
   createSourceTogglePlugin,
@@ -332,10 +335,12 @@ tinymce.PluginManager.add(
     onToggle: () => refreshAll(),
   }),
 );
-// Fullscreen and find-and-replace ship as toolbar-only controls upstream — these footer-only
-// wrappers surface both from the statusbar instead, alongside word count and the a11y checker.
+// Fullscreen, find-and-replace, and visual blocks ship as toolbar-only controls upstream — these
+// footer-only wrappers surface all three from the statusbar instead, alongside word count and the
+// a11y checker.
 tinymce.PluginManager.add(FULLSCREEN_FOOTER_PLUGIN_NAME, createFullscreenFooterPlugin());
 tinymce.PluginManager.add(SEARCHREPLACE_FOOTER_PLUGIN_NAME, createSearchReplaceFooterPlugin());
+tinymce.PluginManager.add(VISUALBLOCKS_FOOTER_PLUGIN_NAME, createVisualBlocksFooterPlugin());
 
 const providerSelect = document.querySelector<HTMLSelectElement>("#cdn-provider")!;
 if (import.meta.env.DEV) {
@@ -720,7 +725,7 @@ void registerPantokenPlugin.then(() =>
     .init({
       selector: "#editor",
       plugins:
-        "pantoken pantoken_content_classes placehold pantoken_a11y pantoken_sup_sub pantoken_source_toggle pantoken_fullscreen_footer pantoken_searchreplace_footer image link lists table media autosave fullscreen quickbars searchreplace wordcount emoticons",
+        "pantoken pantoken_content_classes placehold pantoken_a11y pantoken_sup_sub pantoken_source_toggle pantoken_fullscreen_footer pantoken_searchreplace_footer pantoken_visualblocks_footer image link lists table media autosave fullscreen quickbars searchreplace wordcount emoticons visualblocks",
       toolbar: `undo redo | pantoken | fontsize blocks | bold italic underline forecolor backcolor ${SUP_SUB_TOOLBAR_NAME} | link image placehold | align | bullist numlist | removeformat table media`,
       menubar: false,
       theme: "silver",
@@ -751,8 +756,11 @@ void registerPantokenPlugin.then(() =>
       autosave_interval: "30s",
       autosave_retention: "30m",
       autosave_restore_when_empty: false,
-      quickbars_selection_toolbar: "bold italic | quicklink",
-      quickbars_insert_toolbar: "image",
+      // Mirrors the fixed toolbar's own formatting groups so the contextual popup never offers a
+      // control the fixed toolbar lacks.
+      quickbars_selection_toolbar: `bold italic underline forecolor backcolor ${SUP_SUB_TOOLBAR_NAME} | link | align | removeformat`,
+      quickbars_insert_toolbar: "quickimage quicktable media placehold",
+      quickbars_image_toolbar: "alignleft aligncenter alignright | image",
       setup(editor: Editor): void {
         editor.on("input change Undo Redo SetContent", () => debouncedUpdatePreview());
       },
