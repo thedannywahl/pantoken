@@ -4,6 +4,7 @@ import englishBase from "./i18n.json" with { type: "json" };
 export interface CodemirrorStrings {
   sourceToggleTooltip: string;
   sourceFormatTooltip: string;
+  sourceFormatErrorMessage: string;
 }
 
 /** English defaults for the source-view interface. */

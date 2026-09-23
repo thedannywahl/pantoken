@@ -25,20 +25,46 @@ const FORMAT_ICON_NAME = "pantoken-source-format";
 const FORMAT_ICON_SVG =
   '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3 5 12l4 9M15 3l4 9-4 9"/></svg>';
 
+// TinyMCE's skin ships `.tox :not(svg):not(rect) { color: inherit; font-family: inherit; ... }`,
+// which — because our source container is a descendant of `.tox` — outguns any of our unscoped,
+// single-class CodeMirror style rules on specificity ((0,1,2) beats a plain `.ͼn` class's (0,1,0)).
+// Every cosmetic value below needs `!important` to survive that reset (structural properties like
+// `position`/`display` don't, since CodeMirror's own base stylesheet already marks those
+// `!important`). Only affects the source view's own colors — verified live against the docs guide's
+// embedded instance, where this reset is what was silently erasing all highlighting/theming.
+const MONOSPACE_FONT =
+  "ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace !important";
+
 const lightTheme = EditorView.theme({
-  "&": { backgroundColor: "#ffffff", color: "#1e1e1e" },
-  ".cm-gutters": { backgroundColor: "#f5f5f5", color: "#888888", border: "none" },
-  ".cm-activeLine": { backgroundColor: "rgba(0, 0, 0, 0.04)" },
-  ".cm-activeLineGutter": { backgroundColor: "rgba(0, 0, 0, 0.06)" },
+  "&": {
+    backgroundColor: "#ffffff !important",
+    color: "#1e1e1e !important",
+    fontFamily: MONOSPACE_FONT,
+  },
+  ".cm-gutters": {
+    backgroundColor: "#f5f5f5 !important",
+    color: "#888888 !important",
+    border: "none !important",
+  },
+  ".cm-activeLine": { backgroundColor: "rgba(0, 0, 0, 0.04) !important" },
+  ".cm-activeLineGutter": { backgroundColor: "rgba(0, 0, 0, 0.06) !important" },
 });
 
 const darkTheme = EditorView.theme(
   {
-    "&": { backgroundColor: "#1e1e1e", color: "#d4d4d4" },
-    ".cm-gutters": { backgroundColor: "#252525", color: "#7a7a7a", border: "none" },
-    ".cm-activeLine": { backgroundColor: "rgba(255, 255, 255, 0.06)" },
-    ".cm-activeLineGutter": { backgroundColor: "rgba(255, 255, 255, 0.08)" },
-    ".cm-cursor": { borderLeftColor: "#d4d4d4" },
+    "&": {
+      backgroundColor: "#1e1e1e !important",
+      color: "#d4d4d4 !important",
+      fontFamily: MONOSPACE_FONT,
+    },
+    ".cm-gutters": {
+      backgroundColor: "#252525 !important",
+      color: "#7a7a7a !important",
+      border: "none !important",
+    },
+    ".cm-activeLine": { backgroundColor: "rgba(255, 255, 255, 0.06) !important" },
+    ".cm-activeLineGutter": { backgroundColor: "rgba(255, 255, 255, 0.08) !important" },
+    ".cm-cursor": { borderLeftColor: "#d4d4d4 !important" },
     ".cm-selectionBackground": { backgroundColor: "rgba(255, 255, 255, 0.15) !important" },
   },
   { dark: true },
@@ -46,23 +72,23 @@ const darkTheme = EditorView.theme(
 
 const lightHighlighting = syntaxHighlighting(
   HighlightStyle.define([
-    { tag: tags.tagName, color: "#800000" },
-    { tag: tags.attributeName, color: "#ff0000" },
-    { tag: tags.attributeValue, color: "#0000ff" },
-    { tag: tags.string, color: "#0000ff" },
-    { tag: tags.comment, color: "#008000" },
-    { tag: tags.bracket, color: "#000080" },
+    { tag: tags.tagName, color: "#800000 !important" },
+    { tag: tags.attributeName, color: "#ff0000 !important" },
+    { tag: tags.attributeValue, color: "#0000ff !important" },
+    { tag: tags.string, color: "#0000ff !important" },
+    { tag: tags.comment, color: "#008000 !important" },
+    { tag: tags.bracket, color: "#000080 !important" },
   ]),
 );
 
 const darkHighlighting = syntaxHighlighting(
   HighlightStyle.define([
-    { tag: tags.tagName, color: "#569cd6" },
-    { tag: tags.attributeName, color: "#9cdcfe" },
-    { tag: tags.attributeValue, color: "#ce9178" },
-    { tag: tags.string, color: "#ce9178" },
-    { tag: tags.comment, color: "#6a9955" },
-    { tag: tags.bracket, color: "#d4d4d4" },
+    { tag: tags.tagName, color: "#569cd6 !important" },
+    { tag: tags.attributeName, color: "#9cdcfe !important" },
+    { tag: tags.attributeValue, color: "#ce9178 !important" },
+    { tag: tags.string, color: "#ce9178 !important" },
+    { tag: tags.comment, color: "#6a9955 !important" },
+    { tag: tags.bracket, color: "#d4d4d4 !important" },
   ]),
 );
 
@@ -193,11 +219,19 @@ export function createSourceTogglePlugin(
 
     const format = async (): Promise<void> => {
       if (!sourceView) return;
-      const formatted = await prettier.format(sourceView.state.doc.toString(), {
-        parser: "html",
-        plugins: [prettierHtml],
-      });
-      replaceDoc(formatted);
+      try {
+        const formatted = await prettier.format(sourceView.state.doc.toString(), {
+          parser: "html",
+          plugins: [prettierHtml],
+        });
+        replaceDoc(formatted);
+      } catch (error) {
+        editor.notificationManager.open({
+          text: CODEMIRROR_STRINGS.sourceFormatErrorMessage,
+          type: "error",
+        });
+        console.error("pantoken source-toggle: prettier format failed", error);
+      }
     };
 
     const toggle = (onActiveChange?: (active: boolean) => void): void => {
@@ -210,6 +244,7 @@ export function createSourceTogglePlugin(
         contentArea.style.display = "none";
         sourceContainer!.style.display = "block";
         view.focus();
+        void format();
       } else {
         contentArea.style.display = "";
         sourceContainer!.style.display = "none";
@@ -247,6 +282,7 @@ export function createSourceTogglePlugin(
 
     if (hasFooter) {
       let footerButton: HTMLButtonElement | undefined;
+      let formatButton: HTMLButtonElement | undefined;
       const attachFooter = (): void => {
         if (footerButton) return;
         const footer = editor
@@ -265,11 +301,27 @@ export function createSourceTogglePlugin(
           toggle((active) => footerButton!.setAttribute("aria-pressed", String(active))),
         );
         footer.append(footerButton);
+
+        formatButton = document.createElement("button");
+        formatButton.id = SOURCE_FORMAT_TOOLBAR_NAME;
+        formatButton.type = "button";
+        formatButton.className = "tox-statusbar__wordcount";
+        formatButton.title = CODEMIRROR_STRINGS.sourceFormatTooltip;
+        formatButton.textContent = "{ }";
+        formatButton.disabled = !sourceMode;
+        formatButton.addEventListener("click", () => void format());
+        const formatListener = (active: boolean): void => {
+          formatButton!.disabled = !active;
+        };
+        sourceModeListeners.add(formatListener);
+        footer.append(formatButton);
       };
       const detachFooter = (): void => {
         editor.off("PostRender", attachFooter);
         footerButton?.remove();
         footerButton = undefined;
+        formatButton?.remove();
+        formatButton = undefined;
       };
       editor.on("PostRender", attachFooter);
       editor.on("remove", detachFooter);

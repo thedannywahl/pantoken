@@ -33,10 +33,12 @@ The source view reacts automatically to the `data-pantoken-scheme="dark"` attrib
 
 ## Pretty-print
 
-The format button (`SOURCE_FORMAT_TOOLBAR_NAME`) runs the current doc through `prettier`'s
-standalone HTML parser (`prettier/standalone` + `prettier/plugins/html`) and is enabled only while
-the source view is active. `SourceTogglePluginApi.format()` is async since prettier's standalone
-API returns a promise.
+The format button (`SOURCE_FORMAT_TOOLBAR_NAME` in toolbar mode, or a `{ }` statusbar button when
+`display` includes `"footer"`) runs the current doc through `prettier`'s standalone HTML parser
+(`prettier/standalone` + `prettier/plugins/html`) and is enabled only while the source view is
+active. Entering source mode also auto-formats once. `SourceTogglePluginApi.format()` is async
+since prettier's standalone API returns a promise; a failed format surfaces a TinyMCE notification
+rather than failing silently.
 
 ## Extending
 
