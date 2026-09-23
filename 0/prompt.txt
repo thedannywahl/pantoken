@@ -1,0 +1,11 @@
+the vitepress server throws these warnings:
+```
+Failed to index de/guide/canvas-rce.md for search: incomplete explicit mapping pair; a key node is missed; or followed by a non-tabulated empty line at line 2, column 14:
+    title: Canvas: Remote-Code-Ausführung (RCE)
+                 ^
+Failed to index fi/guide/canvas-rce.md for search: incomplete explicit mapping pair; a key node is missed; or followed by a non-tabulated empty line at line 2, column 14:
+    title: Canvas: etäkoodin suoritus (RCE)
+                 ^
+Failed to index is/guide/canvas-rce.md for search: incomplete explicit mapping pair; a key node is missed; or followed by a non-tabulated empty line at line 2, column 14:
+    title: Canvas: Fjarstýrð kóðakeyrsla
+```
