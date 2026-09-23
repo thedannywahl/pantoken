@@ -3,7 +3,7 @@
   "checkpoint_id": "01M376HN85TKJKJR28693YTBET",
   "strategy": "manual-commit",
   "branch": "tinymce-utility",
-  "checkpoints_count": 5,
+  "checkpoints_count": 6,
   "files_touched": [
     "docs/conventions/scoping.md",
     "docs/engineering-log.md",
@@ -37,6 +37,13 @@
       "compact_transcript": "/3/transcript.jsonl",
       "content_hash": "/3/content_hash.txt",
       "prompt": ""
+    },
+    {
+      "metadata": "/4/metadata.json",
+      "transcript": "/4/full.jsonl",
+      "compact_transcript": "/4/transcript.jsonl",
+      "content_hash": "/4/content_hash.txt",
+      "prompt": "/4/prompt.txt"
     }
   ],
   "token_usage": {
