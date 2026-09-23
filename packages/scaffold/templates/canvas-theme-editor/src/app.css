@@ -392,7 +392,7 @@ body.canvas-rce-shell-enabled #app {
   height: 100vh !important;
   margin: 0 !important;
   padding: 0;
-  background: var(--instui-color-background-primary, #fff);
+  background: var(--instui-color-background-primary, Canvas);
   overflow: hidden;
   border: 0 none;
   border-radius: 0;

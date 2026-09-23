@@ -146,6 +146,14 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(readFileSync(join(target, "src/app.css"), "utf8")).toContain(
     '.content[data-layout="row"] .preview-pane',
   );
+  // The fullscreen overlay's background must adapt to dark mode like every other background in
+  // this file — a hardcoded `#fff` fallback showed white chrome behind a dark-mode preview.
+  expect(readFileSync(join(target, "src/app.css"), "utf8")).toContain(
+    "background: var(--instui-color-background-primary, Canvas);",
+  );
+  expect(readFileSync(join(target, "src/app.css"), "utf8")).not.toContain(
+    "background: var(--instui-color-background-primary, #fff);",
+  );
   expect(main).not.toContain('tinymce.PluginManager.add("pantoken_components"');
   expect(main).not.toContain('tinymce.PluginManager.add("pantoken_source_toggle"');
   expect(existsSync(join(target, "src/preferences.ts"))).toBe(true);
