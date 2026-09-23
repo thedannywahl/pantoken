@@ -39,6 +39,7 @@ Load these two instead of a single `style.*.css` when more than one theme must b
   Registrations are document-global: a second copy silently redefines every token's initial value for
   the whole page. `ensureProperties()` makes a repeat call a no-op.
 - `@pantoken/css/scope.css` — a shared base block plus one complete token block per theme.
+- `@pantoken/css/schemes.css` — optional `[data-pantoken-scheme]` forcing blocks; see below.
 
 A single-theme page should keep using `style.lean.css`; it is much smaller.
 
@@ -57,13 +58,33 @@ invariant, and breaking it reintroduces the bug silently.
 ## Color schemes
 
 `color-scheme` is an inherited CSS property, so it already resolves `light-dark()` per subtree. A
-scope sets it directly, which is why a light subtree and a dark subtree can coexist.
+scope sets it directly, which is why a light subtree and a dark subtree can coexist. In almost every
+case that is all you need.
 
-`[data-pantoken-scheme]` blocks are the forcing layer on top: they flatten every `light-dark()` token
-to the chosen branch, for when a subtree must ignore both the OS preference and any `color-scheme` an
-embedding page set.
+`[data-pantoken-scheme]` blocks flatten every `light-dark()` token to the chosen branch. They are
+**opt-in** (`multiScopeCss({ schemes: true })`, or the standalone `@pantoken/css/schemes.css`)
+because they duplicate what `color-scheme` already does and cost ~87kb uncompressed. Load them only
+where a scope can set an attribute but not a style — Canvas RCE content is the case that needs them.
 
-Set both. The attribute alone only selects the forcing block; the property is what the browser uses.
+`createScope` sets both the attribute and the property, so either mechanism works.
+
+## Sizing
+
+Measured over the three shipped themes, lean (no icons):
+
+|                                                         | bytes | gzip |
+| ------------------------------------------------------- | ----: | ---: |
+| `style.lean.css` (one theme)                            | 285 K | 25 K |
+| `properties.lean.css` + `scope.lean.css` (three themes) | 569 K | 46 K |
+
+Of 2,921 tokens, only **786 vary across themes** — the other 73% are emitted once, in the shared base
+block and the `@property` registrations. The repetition that remains is irreducible: custom
+properties resolve by inheritance, not by lookup, so values that differ per subtree must physically
+exist on each subtree's root.
+
+Emitting complete theme blocks rather than diffs is close to free, and the reason is worth knowing:
+`canvas` already differs from `rebrand` in 764 of those 786 tokens, and `canvasHighContrast` in 785.
+The diff _is_ the full set. Completeness buys nesting safety for 1–3%.
 
 ## The runtime
 

@@ -33,6 +33,7 @@ export {
   multiScopeCss,
   propertiesCss,
   schemeScopeSelector,
+  schemesCss,
   scopedSchemeCss,
   scopedThemeCss,
   themeScopeSelector,

@@ -9,7 +9,7 @@ import { resolve } from "node:path";
 import { applyMinify } from "@pantoken/plugin-props-minify";
 import { foundationPlugin } from "../src/foundation.ts";
 import { themedTokens } from "../src/theme-variants.ts";
-import { multiScopeCss, propertiesCss } from "../src/scoped.ts";
+import { multiScopeCss, propertiesCss, schemesCss } from "../src/scoped.ts";
 import { css, leanCss, toCss } from "../src/index.ts";
 import type { Theme } from "@pantoken/model";
 
@@ -55,7 +55,8 @@ write(
 
 // Multi-scope pair: registrations once, then every theme's complete token set keyed to
 // `data-pantoken-theme` on any element. Loading `properties` + `scope` instead of a `style.*` sheet
-// is what lets two themes coexist in one document.
+// is what lets two themes coexist in one document. The `[data-pantoken-scheme]` forcing blocks are a
+// separate sheet because `color-scheme` already covers the common case.
 const SCOPE_THEMES: Theme[] = ["rebrand", "canvas", "canvasHighContrast"];
 const scopeOptions = { themes: SCOPE_THEMES, defaultTheme: "rebrand" as Theme };
 
@@ -69,3 +70,4 @@ write(
   "scope.lean.css",
   multiScopeCss({ ...scopeOptions, includeIcons: false, plugins: [foundationPlugin] }),
 );
+write("schemes.css", schemesCss(SCOPE_THEMES));

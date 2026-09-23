@@ -28,13 +28,13 @@ test("theme blocks are element-scoped, so a nested subtree can pick its own them
   expect(css).not.toContain(":root[data-pantoken-theme=");
 });
 
-test("each theme ships light and dark forcing blocks, so schemes can differ per subtree", () => {
+test("no scheme forcing blocks: the docs scope pins color-scheme itself", () => {
   const css = siteThemesCss();
 
-  for (const theme of ["rebrand", "canvas", "canvasHighContrast"]) {
-    expect(css).toContain(`[data-pantoken-theme="${theme}"][data-pantoken-scheme="dark"] {`);
-    expect(css).toContain(`[data-pantoken-theme="${theme}"][data-pantoken-scheme="light"] {`);
-  }
+  // `color-scheme` is inherited, so setting it on the scope element already resolves `light-dark()`
+  // for that subtree. The forcing blocks are ~87kb of pure duplication here.
+  expect(css).not.toContain("@layer pantoken.scheme");
+  expect(css).not.toContain('[data-pantoken-scheme="dark"]');
 });
 
 test("every varying token is declared in every theme block", () => {

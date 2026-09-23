@@ -32,6 +32,7 @@
     "./properties.lean.css": "./dist/properties.lean.css",
     "./scope.css": "./dist/scope.css",
     "./scope.lean.css": "./dist/scope.lean.css",
+    "./schemes.css": "./dist/schemes.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {

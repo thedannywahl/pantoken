@@ -7,6 +7,7 @@ import {
   multiScopeCss,
   propertiesCss,
   schemeScopeSelector,
+  schemesCss,
   scopedSchemeCss,
   scopedThemeCss,
   themeScopeSelector,
@@ -105,12 +106,31 @@ test("a scheme block pins color-scheme and forces the matching branch", () => {
   expect(dark).not.toContain("light-dark(");
 });
 
+test("forcing blocks are opt-in, since color-scheme already covers the common case", () => {
+  const shared = { themes: ["rebrand"] as const, defaultTheme: "rebrand" as const };
+  expect(multiScopeCss({ ...shared, includeIcons: false })).not.toContain("@layer pantoken.scheme");
+  expect(multiScopeCss({ ...shared, includeIcons: false, schemes: true })).toContain(
+    "@layer pantoken.scheme",
+  );
+});
+
+test("schemesCss stands alone so it can layer onto a scope sheet", () => {
+  const sheet = schemesCss(["rebrand", "canvas"]);
+  for (const theme of ["rebrand", "canvas"]) {
+    for (const scheme of ["light", "dark"]) {
+      expect(sheet).toContain(
+        `[data-pantoken-theme="${theme}"][data-pantoken-scheme="${scheme}"] {`,
+      );
+    }
+  }
+  expect(sheet).not.toMatch(/@property\s+--/);
+});
+
 test("every theme block declares the identical varying token set", () => {
   const sheet = multiScopeCss({
     themes: ["rebrand", "canvas", "canvasHighContrast"],
     defaultTheme: "rebrand",
     includeIcons: false,
-    schemes: false,
   });
 
   const names = (theme: string): string[] => {

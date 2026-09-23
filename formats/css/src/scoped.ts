@@ -81,9 +81,11 @@ export function scopedThemeCss(theme: Theme, options: ScopedCssOptions = {}): st
  * The forcing block for a pinned color scheme: every `light-dark()` token flattened to the requested
  * branch, scoped to `[data-pantoken-theme="<theme>"][data-pantoken-scheme="<scheme>"]`.
  *
- * `color-scheme` alone already resolves `light-dark()` per subtree, and is emitted alongside. This
- * block is the explicit override for when a subtree must ignore both the OS preference and any
- * `color-scheme` an embedding page has set.
+ * Usually redundant. `color-scheme` is an inherited property, so setting it on a scope element
+ * already resolves `light-dark()` for that subtree, and it is supported by exactly the browsers that
+ * support `light-dark()` in the first place. These blocks exist for consumers that can set an
+ * attribute but *not* a style — Canvas RCE content being the case that needs them — and they are
+ * bulky, so they are opt-in.
  */
 export function scopedSchemeCss(theme: Theme, scheme: Scheme): string {
   const selector = `${themeScopeSelector(theme)}${schemeScopeSelector(scheme)}`;
@@ -100,13 +102,34 @@ export function scopedSchemeCss(theme: Theme, scheme: Scheme): string {
   ].join("\n");
 }
 
+/**
+ * Every theme's light and dark forcing blocks, as a standalone sheet that layers on top of
+ * {@link multiScopeCss}. Load it only where a scope can't set `color-scheme` itself.
+ *
+ * @example
+ * ```ts
+ * import { schemesCss } from "@pantoken/css";
+ *
+ * schemesCss(["rebrand", "canvas"]);
+ * ```
+ */
+export function schemesCss(themes: readonly Theme[]): string {
+  return themes
+    .flatMap((theme) => [scopedSchemeCss(theme, "light"), scopedSchemeCss(theme, "dark")])
+    .join("\n\n");
+}
+
 /** Options for {@link multiScopeCss}. */
 export interface MultiScopeCssOptions extends ScopedCssOptions {
   /** Themes to emit scope blocks for. */
   themes: readonly Theme[];
   /** The theme whose concrete tokens back the one-time `@property` registrations. */
   defaultTheme: Theme;
-  /** Emit `[data-pantoken-scheme]` forcing blocks (default `true`). */
+  /**
+   * Inline the `[data-pantoken-scheme]` forcing blocks (default `false`). Leave them out unless the
+   * consumer cannot set `color-scheme` on a scope element; see {@link scopedSchemeCss}. They are
+   * also available on their own via {@link schemesCss}.
+   */
   schemes?: boolean;
 }
 
@@ -127,7 +150,7 @@ export interface MultiScopeCssOptions extends ScopedCssOptions {
  * ```
  */
 export function multiScopeCss(options: MultiScopeCssOptions): string {
-  const { themes, defaultTheme, schemes = true, includeIcons = true, plugins = [] } = options;
+  const { themes, defaultTheme, schemes = false, includeIcons = true, plugins = [] } = options;
 
   const perTheme = new Map(themes.map((t) => [t, themedTokens(t, { includeIcons })]));
   const varying = new Set<string>();
