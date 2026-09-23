@@ -1,0 +1,32 @@
+tinymce codemirror plugin imported into canvas-theme-editor scaffold instance in docs guide/canvas-rce still does not do prettify or syntax highlighting.  It needs a holistic comprehensive approach.
+
+---
+
+Thoroughly (thorough level) investigate the `@pantoken/tinymce-codemirror` package at plugins/tinymce/codemirror in this pantoken monorepo (read-only, do not edit anything).
+
+I need to understand why syntax highlighting and "prettify" (HTML formatting/beautification) are NOT working when this plugin is used inside the canvas-theme-editor scaffold app (packages/scaffold/templates/canvas-theme-editor/) and inside the docs guide instance at docs/guide/canvas-rce.md (built via a docs/scripts/build-canvas-rce.ts pipeline that produces some kind of embedded browser instance/iframe).
+
+Please read and report on:
+1. All files under plugins/tinymce/codemirror/src/ — what the plugin does, how it registers with TinyMCE (source code view toggle), what CodeMirror 6 extensions it wires up (language support e.g. @codemirror/lang-html, syntax highlighting themes, HighlightStyle/tags, any prettify/format-on-open logic).
+2. plugins/tinymce/codemirror/package.json — dependencies (is @codemirror/lang-html, @codemirror/language, @lezer/highlight, prettier or js-beautify present?).
+3. plugins/tinymce/codemirror/README.md and any tests in plugins/tinymce/codemirror/tests/ that reveal intended behavior.
+4. The changeset file .changeset/restore-codemirror-syntax-highlighting.md and git history/blame if easily discoverable (or just note its existence and content) — this suggests syntax highlighting was previously fixed/regressed.
+5. How packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl imports and initializes this codemirror plugin (search for "codemirror" and "tinymce-codemirror" in that file and the accompanying package.json.tmpl in that template dir).
+6. How docs/scripts/build-canvas-rce.ts (or similarly named script under docs/scripts/) builds/embeds the canvas-theme-editor scaffold for the docs/guide/canvas-rce.md guide page — does it use the scaffold template directly, or a separate/cached bundle? Check for any bundling step that might tree-shake or externalize CodeMirror pieces incorrectly, or any CSS that might be missing (CodeMirror needs its own CSS/theme classes applied to render highlighting, and needs the editor DOM to be visible/have layout for CodeMirror to initialize correctly).
+7. Check for known "prettify" references — grep for "prettify", "beautify", "format" near tinymce/codemirror code to find any half-implemented formatting feature.
+8. Check the docs/package.json for @codemirror/lang-css and other @codemirror packages listed there — are these the same versions as in plugins/tinymce/codemirror/package.json or the pnpm-workspace.yaml catalog? Look for version mismatches.
+9. Look at how the toggle button/source view is registered in the actual @pantoken/tinymce package (renderers/tinymce or packages related) to see if it calls into tinymce-codemirror correctly, and whether there's a DOM timing issue (e.g., CodeMirror EditorView created while container is display:none / not yet in the document, which is a very common cause of "syntax highlighting doesn't render").
+10. Check for any dynamic import() of the codemirror plugin that might silently fail (e.g. wrong path in CDN builds), especially any CDN-based / esm.sh loading path used in docs guide vs. local npm resolution used in the scaffold template.
+
+Report back with:
+- A precise architecture summary of how source-view + CodeMirror + syntax highlighting + prettify was intended to work end-to-end (TinyMCE toolbar button → dialog/panel opens → CodeMirror EditorView is mounted → language extension + highlight style applied → optional format/prettify function runs).
+- Concrete file paths and line numbers for every relevant piece (plugin registration, extension setup, highlight style / theme, format button if any).
+- Your best-supported hypotheses for why highlighting AND prettify are both broken in the canvas-theme-editor scaffold instance and in the docs guide/canvas-rce embedded instance specifically — is it the same root cause in both places, or two different bugs (one packaging/build issue for docs, one integration issue for scaffold)?
+- Whether a "prettify" feature exists at all in the codebase today, or whether it needs to be built from scratch (i.e., is this a feature request, not just a bug fix?).
+- Version numbers of tinymce, @pantoken/tinymce, @pantoken/tinymce-codemirror in use in both the scaffold template and docs, and any catalog entries in pnpm-workspace.yaml for @codemirror/* and @lezer/* packages.
+
+Do not make any edits. This is read-only research.
+
+---
+
+Start implementation
