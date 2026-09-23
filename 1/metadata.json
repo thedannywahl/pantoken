@@ -1,0 +1,85 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M37G4CSS8DH2Q0YXEXGTH4TG",
+  "session_id": "66b776fa-4f38-44b2-a869-68be6a2a13aa",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-23T16:03:45.015341Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    ".github/workflows/ci.yml",
+    "bench/core.bench.ts",
+    "bench/formats.bench.ts",
+    "bench/utils.bench.ts",
+    "package.json",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    "vite.bench.config.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "5bb0ea75c9e7",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-23T16:03:45.001244Z",
+    "agent_lines": 0,
+    "agent_removed": 4,
+    "human_added": 0,
+    "human_modified": 7,
+    "human_removed": 118,
+    "total_committed": 6,
+    "total_lines_changed": 130,
+    "agent_percentage": 3.076923076923077,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 3524,
+      "user_lines_removed": 160,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "bench/core.bench.ts": 31,
+        "bench/formats.bench.ts": 31,
+        "bench/run-bench.ts": 13,
+        "bench/utils.bench.ts": 28,
+        "docs/.vitepress/theme/theme.ts": 1,
+        "l10n/ar/docs.api.po": 671,
+        "l10n/ca/docs.api.po": 672,
+        "l10n/cy/docs.api.po": 689,
+        "l10n/da/docs.api.po": 672,
+        "l10n/docs.api.pot": 671,
+        "package.json": 2,
+        "pnpm-lock.yaml": 37,
+        "pnpm-workspace.yaml": 2,
+        "vite.bench.config.ts": 4
+      },
+      "user_removed_per_file": {
+        "bench/core.bench.ts": 30,
+        "bench/formats.bench.ts": 30,
+        "bench/utils.bench.ts": 27,
+        "docs/.vitepress/theme/theme.ts": 1,
+        "l10n/ar/docs.api.po": 6,
+        "l10n/ca/docs.api.po": 3,
+        "l10n/cy/docs.api.po": 20,
+        "l10n/da/docs.api.po": 3,
+        "l10n/docs.api.pot": 2,
+        "package.json": 1,
+        "pnpm-lock.yaml": 29,
+        "vite.bench.config.ts": 8
+      }
+    }
+  ]
+}
