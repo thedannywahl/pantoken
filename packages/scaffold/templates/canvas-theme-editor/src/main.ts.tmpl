@@ -84,6 +84,7 @@ import { basicSetup, EditorView } from "codemirror";
 import { css } from "@codemirror/lang-css";
 import { html } from "@codemirror/lang-html";
 import { javascript } from "@codemirror/lang-javascript";
+import { strToU8, zipSync } from "fflate";
 import { buildFileUrl, type CdnFile } from "@pantoken/cdn";
 import {
   CONTENT_CLASSES_PLUGIN_NAME,
@@ -482,6 +483,8 @@ const previewFrame = document.querySelector<HTMLIFrameElement>("#preview")!;
 const previewPane = document.querySelector<HTMLElement>(".preview-pane")!;
 const downloadCss = document.querySelector<HTMLAnchorElement>("#download-theme-css")!;
 const downloadJs = document.querySelector<HTMLAnchorElement>("#download-theme-js")!;
+const downloadPackageButton = document.querySelector<HTMLButtonElement>("#download-package")!;
+const downloadHtmlButton = document.querySelector<HTMLButtonElement>("#download-html")!;
 const copyButton = document.querySelector<HTMLButtonElement>("#copy-html")!;
 const copyStatus = document.querySelector<HTMLElement>("#copy-status")!;
 
@@ -1018,18 +1021,38 @@ previewFrame.addEventListener("load", () => {
   previewMutationObserver.observe(root, { childList: true, subtree: true, attributes: true });
 });
 
+function buildDownloadFiles(theme: { css: string; js: string }): {
+  css: string;
+  js: string;
+} {
+  const { css: presetCss, js: presetJs } = theme;
+  return {
+    css: [presetCss, cssEditorView.state.doc.toString()].filter(Boolean).join("\n"),
+    js: [presetJs, jsEditorView.state.doc.toString()].filter(Boolean).join("\n"),
+  };
+}
+
 /** Regenerates the downloadable theme.css/theme.js blobs, appending the author's custom CSS/JS
  * tab content onto the generated preset for the chosen provider/theme/mode. */
 function updateDownloads(theme: { css: string; js: string }): void {
-  const { css: presetCss, js: presetJs } = theme;
-  const generatedCss = [presetCss, cssEditorView.state.doc.toString()].filter(Boolean).join("\n");
-  const generatedJs = [presetJs, jsEditorView.state.doc.toString()].filter(Boolean).join("\n");
+  const files = buildDownloadFiles(theme);
   if (cssObjectUrl) URL.revokeObjectURL(cssObjectUrl);
   if (jsObjectUrl) URL.revokeObjectURL(jsObjectUrl);
-  cssObjectUrl = URL.createObjectURL(new Blob([generatedCss], { type: "text/css" }));
-  jsObjectUrl = URL.createObjectURL(new Blob([generatedJs], { type: "text/javascript" }));
+  cssObjectUrl = URL.createObjectURL(new Blob([files.css], { type: "text/css" }));
+  jsObjectUrl = URL.createObjectURL(new Blob([files.js], { type: "text/javascript" }));
   downloadCss.href = cssObjectUrl;
   downloadJs.href = jsObjectUrl;
+}
+
+function downloadBlob(blob: Blob, filename: string): void {
+  const objectUrl = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = objectUrl;
+  anchor.download = filename;
+  document.body.append(anchor);
+  anchor.click();
+  anchor.remove();
+  setTimeout(() => URL.revokeObjectURL(objectUrl), 0);
 }
 
 async function refreshAll(): Promise<void> {
@@ -1062,6 +1085,33 @@ const jsEditorView = createEditor(
 providerSelect.addEventListener("change", () => {
   void refreshAll();
   persistPreferences();
+});
+
+downloadHtmlButton.addEventListener("click", () => {
+  downloadBlob(
+    new Blob([getNormalizedEditorHtml()], { type: "text/html;charset=utf-8" }),
+    "index.html",
+  );
+});
+
+downloadPackageButton.addEventListener("click", () => {
+  downloadPackageButton.disabled = true;
+  void buildCurrentTheme()
+    .then((theme) => {
+      const files = buildDownloadFiles(theme);
+      const archive = zipSync({
+        "index.html": strToU8(getNormalizedEditorHtml()),
+        "theme.css": strToU8(files.css),
+        "theme.js": strToU8(files.js),
+      });
+      downloadBlob(new Blob([archive], { type: "application/zip" }), "canvas-theme.zip");
+    })
+    .catch((error) => {
+      console.error("Unable to build the theme package", error);
+    })
+    .finally(() => {
+      downloadPackageButton.disabled = false;
+    });
 });
 
 copyButton.addEventListener("click", () => {

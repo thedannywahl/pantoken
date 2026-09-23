@@ -52,6 +52,9 @@ This opens a Vite dev server with:
   anything you add there is appended to the generated `theme.css`/`theme.js`, both in the live
   preview and in the downloaded files, so custom overrides survive Config select changes instead
   of being regenerated away.
+- **Download HTML** saves the current normalized Canvas RCE fragment as `index.html`. **Download
+  package** saves `canvas-theme.zip`, containing that same `index.html` plus the current
+  `theme.css` and `theme.js`, including anything added in the CSS and JS tabs.
 
 ### Named presets
 
@@ -70,13 +73,14 @@ Preset HTML, CSS, and JavaScript are trusted author input and are restored witho
 ## Workflow
 
 1. Upload `theme.css` and `theme.js` to Canvas's Theme Editor (**Advanced → CSS / JavaScript**) so
-   pantoken's classes are available on every page.
+   pantoken's classes are available on every page. Download them individually from **Edit theme**,
+   or use **Download package** to get both files together with the page HTML.
 2. Run `npm run dev`, use **Layouts** to start from a bundled starter, and edit it like you
    would in Canvas's own RCE.
 3. Click **Copy HTML** and paste the result into a Canvas page's RCE (switch to the HTML editor
-   view first). Canvas sanitizes pasted HTML server-side — this scaffold doesn't attempt to
-   replicate that, so always verify the pasted result in Canvas (see "Notes on Canvas's RCE"
-   below).
+   view first), or use **Download HTML** to save the same fragment as `index.html`. Canvas sanitizes
+   pasted HTML server-side — this scaffold doesn't attempt to replicate that, so always verify the
+   pasted result in Canvas (see "Notes on Canvas's RCE" below).
 
 Copied HTML has one outer `<div data-pantoken-color="navy">` wrapper. The color picker updates that
 editable attribute, and you can change it directly in the HTML source view to any supported color

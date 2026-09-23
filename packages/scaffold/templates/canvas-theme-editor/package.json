@@ -19,7 +19,8 @@
     "@pantoken/tinymce-a11y": "latest",
     "@pantoken/tinymce-codemirror": "latest",
     "@pantoken/tinymce-placehold": "latest",
-    "@pantoken/tinymce-save": "latest"
+    "@pantoken/tinymce-save": "latest",
+    "fflate": "catalog:"
   },
   "devDependencies": {
     "@codemirror/lang-css": "catalog:",

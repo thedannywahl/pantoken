@@ -126,6 +126,21 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).not.toContain('<html data-pantoken-color="${selectedColor}">');
   expect(appHtml).toContain('<div data-pantoken-color="navy"><p></p></div>');
   expect(main).toContain('autosave_interval: "30s"');
+  expect(main).toContain('import { strToU8, zipSync } from "fflate";');
+  expect(main).toContain('document.querySelector<HTMLButtonElement>("#download-package")!');
+  expect(main).toContain('document.querySelector<HTMLButtonElement>("#download-html")!');
+  expect(main).toContain('downloadHtmlButton.addEventListener("click"');
+  expect(main).toContain(
+    'new Blob([getNormalizedEditorHtml()], { type: "text/html;charset=utf-8" })',
+  );
+  expect(main).toContain('"index.html",');
+  expect(main).toContain('downloadPackageButton.addEventListener("click"');
+  expect(main).toContain("const files = buildDownloadFiles(theme);");
+  expect(main).toContain('"index.html": strToU8(getNormalizedEditorHtml())');
+  expect(main).toContain('"theme.css": strToU8(files.css)');
+  expect(main).toContain('"theme.js": strToU8(files.js)');
+  expect(main).toContain('"canvas-theme.zip"');
+  expect(main).toContain('type: "application/zip"');
   expect(readFileSync(join(target, "src/app.css"), "utf8")).toContain(
     '.content[data-layout="row"] .preview-pane',
   );
@@ -151,6 +166,7 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(pkg).toContain('"@pantoken/plugin-logos": "latest"');
   expect(pkg).toContain('"@pantoken/tinymce-a11y": "latest"');
   expect(pkg).toContain('"@pantoken/tinymce-save": "latest"');
+  expect(pkg).toContain('"fflate": "catalog:"');
   expect(pkg).not.toContain("{{projectName}}");
 });
 
