@@ -27,20 +27,26 @@ export interface ExampleSrcdocOptions {
 // Boots the preview: asks the parent for the active theme (a sandboxed srcdoc frame without
 // `allow-same-origin` has an opaque origin, so it can't address the parent by a concrete origin
 // string — target "*" on the way out; the host's own trust check happens on receipt) and applies the
-// reply's `data-pantoken-theme` and `data-pantoken-color`. Then reports the rendered body height whenever it changes, so the
-// embedding page can size the iframe to its content instead of a fixed box. Mirrors the `/play`
-// runner's own request-theme boot and size-reporter (tools/demo/runner/main.ts).
+// reply's theme, color, and scheme onto its own root as scope attributes. `color-scheme` is set
+// alongside `data-pantoken-scheme` because that property, not the attribute, is what resolves
+// `light-dark()`. Then reports the rendered body height whenever it changes, so the embedding page
+// can size the iframe to its content instead of a fixed box. Mirrors the `/play` runner's own
+// request-theme boot and size-reporter (tools/demo/runner/main.ts).
 const BOOT_SCRIPT = `<script>(function(){
 var p=window.parent;
+var d=document.documentElement;
 function r(){p.postMessage({type:"pantoken-demo-size",height:Math.ceil(document.body.getBoundingClientRect().height)},"*");}
+function s(m){if(m==="light"||m==="dark"){d.dataset.pantokenScheme=m;d.style.colorScheme=m;}}
 addEventListener("message",function(e){
   if(e&&e.data){
+    if(e.data.instanceId){d.dataset.pantokenInstance=e.data.instanceId;}
     if(e.data.type==="pantoken-demo-theme"){
-      if(e.data.theme){document.documentElement.dataset.pantokenTheme=e.data.theme;}
-      if(e.data.color){document.documentElement.dataset.pantokenColor=e.data.color;}
+      if(e.data.theme){d.dataset.pantokenTheme=e.data.theme;}
+      if(e.data.color){d.dataset.pantokenColor=e.data.color;}
+      s(e.data.mode);
     }
     if(e.data.type==="pantoken-demo-color"){
-      if(e.data.color){document.documentElement.dataset.pantokenColor=e.data.color;}
+      if(e.data.color){d.dataset.pantokenColor=e.data.color;}
     }
   }
 });

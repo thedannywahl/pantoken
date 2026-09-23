@@ -74,6 +74,7 @@
     "@pantoken/plugin-simple-icons": "workspace:*",
     "@pantoken/plugin-visual-debug": "workspace:*",
     "@pantoken/scaffold": "workspace:*",
+    "@pantoken/scope": "workspace:*",
     "@pantoken/tinymce": "workspace:*",
     "@pantoken/tinymce-a11y": "workspace:*",
     "@pantoken/tinymce-codemirror": "workspace:*",

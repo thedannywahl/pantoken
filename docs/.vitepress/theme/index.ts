@@ -51,6 +51,7 @@ import "@pantoken/demo/card.css";
 import "./pantoken.css";
 import Layout from "./Layout.vue";
 import {
+  DOCS_INSTANCE,
   applyColor,
   applyTheme,
   broadcastTheme,
@@ -65,6 +66,7 @@ function replyWithTheme(event: MessageEvent): void {
   (event.source as Window | null)?.postMessage(
     {
       type: "pantoken-demo-theme",
+      instanceId: DOCS_INSTANCE,
       theme: getStoredTheme(),
       color: getStoredColor(),
       mode: getActiveScheme(),

@@ -17,8 +17,48 @@ test("the docs theme sheet carries the component foundation variables", () => {
 
   expect(css).toContain("--instui-elevation-above:");
   expect(css).toContain("--instui-focus-outline-color:");
-  expect(css).toContain(':root[data-pantoken-theme="canvas"]');
-  expect(css).toContain(':root[data-pantoken-theme="canvasHighContrast"]');
+});
+
+test("theme blocks are element-scoped, so a nested subtree can pick its own theme", () => {
+  const css = siteThemesCss();
+
+  expect(css).toContain('[data-pantoken-theme="canvas"] {');
+  expect(css).toContain('[data-pantoken-theme="canvasHighContrast"] {');
+  // A `:root`-anchored theme block could only ever apply once per document.
+  expect(css).not.toContain(":root[data-pantoken-theme=");
+});
+
+test("each theme ships light and dark forcing blocks, so schemes can differ per subtree", () => {
+  const css = siteThemesCss();
+
+  for (const theme of ["rebrand", "canvas", "canvasHighContrast"]) {
+    expect(css).toContain(`[data-pantoken-theme="${theme}"][data-pantoken-scheme="dark"] {`);
+    expect(css).toContain(`[data-pantoken-theme="${theme}"][data-pantoken-scheme="light"] {`);
+  }
+});
+
+test("every varying token is declared in every theme block", () => {
+  const css = siteThemesCss();
+  const names = (theme: string): string[] => {
+    const start = css.indexOf(`  [data-pantoken-theme="${theme}"] {`);
+    return css
+      .slice(start, css.indexOf("\n  }", start))
+      .split("\n")
+      .flatMap((line) => line.match(/^\s+(--[\w-]+):/)?.[1] ?? [])
+      .sort();
+  };
+
+  const rebrand = names("rebrand");
+  expect(rebrand.length).toBeGreaterThan(0);
+  // A token missing from one block would inherit the enclosing scope's value when nested.
+  expect(names("canvas")).toEqual(rebrand);
+  expect(names("canvasHighContrast")).toEqual(rebrand);
+});
+
+test("properties are registered once, so a second sheet cannot clobber them", () => {
+  const registered = siteThemesCss().match(/@property\s+(--[\w-]+)/g) ?? [];
+  expect(registered.length).toBeGreaterThan(0);
+  expect(registered.length).toBe(new Set(registered).size);
 });
 
 test("writeSiteThemes writes theme CSS to vitepress theme and demos-assets", () => {

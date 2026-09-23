@@ -53,9 +53,14 @@ const HOST_ORIGIN = ((): string => {
 // A manual override (set by the host's light/dark toggle) wins over the inherited scheme; null means
 // "follow the embedding page".
 let schemeOverride: "light" | "dark" | null = null;
+// The scheme the host told us about, via `pantoken-demo-theme`/`pantoken-demo-scheme`. Preferred over
+// any read of the parent document: with several pantoken instances on a page, the parent's root
+// `.dark` class belongs to whichever instance owns the chrome, not necessarily the one that owns us.
+let hostScheme: "light" | "dark" | null = null;
 
-/** The inherited scheme: the embedding page's `.dark`, else system (when opened top-level). */
+/** The inherited scheme: what the host reported, else the parent's `.dark`, else system. */
 function isDark(): boolean {
+  if (hostScheme) return hostScheme === "dark";
   try {
     if (window.parent && window.parent !== window) {
       return window.parent.document.documentElement.classList.contains("dark");
@@ -582,6 +587,8 @@ interface DemoMessage {
   height?: number;
   theme?: string;
   color?: string;
+  mode?: string;
+  instanceId?: string;
 }
 
 /**
@@ -599,6 +606,8 @@ const MESSAGE_HANDLERS: Record<string, (ctx: RunnerCtx, data: DemoMessage) => vo
     applyTheme(ctx);
   },
   "pantoken-demo-theme": (ctx, data) => {
+    // The host's scheme is authoritative; it knows which instance owns this frame.
+    if (data.mode === "light" || data.mode === "dark") hostScheme = data.mode;
     if (typeof data.theme === "string") setTheme(ctx, data.theme);
     if (typeof data.color === "string") setColor(ctx, data.color);
     ctx.resolveTheme?.();

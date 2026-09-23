@@ -28,6 +28,7 @@ export * as primitives from "@pantoken/plugin-primitives";
 export * as propsMinify from "@pantoken/plugin-props-minify";
 export * as pruneCustomProps from "@pantoken/plugin-prune-custom-props";
 export * as rehype from "@pantoken/rehype";
+export * as scope from "@pantoken/scope";
 export * as scss from "@pantoken/scss";
 export * as shadcn from "@pantoken/shadcn";
 export * as simpleIcons from "@pantoken/plugin-simple-icons";

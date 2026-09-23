@@ -35,10 +35,18 @@ test("buildExampleSrcdoc's boot script requests the theme, applies replies, and 
   const doc = buildExampleSrcdoc("<p>Hi</p>", { cssUrls: [] });
   expect(doc).toContain('type:"pantoken-demo-request-theme"');
   expect(doc).toContain('e.data.type==="pantoken-demo-theme"');
-  expect(doc).toContain("document.documentElement.dataset.pantokenTheme=e.data.theme");
-  expect(doc).toContain("document.documentElement.dataset.pantokenColor=e.data.color");
+  expect(doc).toContain("d.dataset.pantokenTheme=e.data.theme");
+  expect(doc).toContain("d.dataset.pantokenColor=e.data.color");
   expect(doc).toContain('type:"pantoken-demo-size"');
   expect(doc).toContain("ResizeObserver");
+});
+
+test("buildExampleSrcdoc's boot script pins color-scheme, not just the scheme attribute", () => {
+  const doc = buildExampleSrcdoc("<p>Hi</p>", { cssUrls: [] });
+  // `color-scheme` is what resolves `light-dark()`; the attribute alone only picks the forcing block.
+  expect(doc).toContain("d.dataset.pantokenScheme=m");
+  expect(doc).toContain("d.style.colorScheme=m");
+  expect(doc).toContain("d.dataset.pantokenInstance=e.data.instanceId");
 });
 
 test('escapeSrcdoc escapes & and " but leaves other characters alone', () => {

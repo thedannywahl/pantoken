@@ -1,13 +1,22 @@
 /**
  * Shared state for the site-wide pantoken theme (rebrand / canvas / canvas high contrast). The palette
  * selector in the nav and the theme bootstrap in `index.ts` both go through {@link applyTheme}, so the
- * `<html data-pantoken-theme>` attribute, the `pantoken-theme` localStorage key, the light/dark gating,
- * and the demo-iframe broadcast stay in sync.
+ * scope attributes, the namespaced storage keys, the light/dark gating, and the demo-iframe broadcast
+ * stay in sync.
  *
- * `site-themes.css` scopes each theme's tokens to `:root[data-pantoken-theme="…"]`; toggling the
- * attribute re-themes the whole site (VitePress chrome via the `@pantoken/vitepress` bridge, the live
- * `@example` blocks, and — over postMessage — the embedded demos).
+ * The state lives in a named `@pantoken/scope` instance (`docs`) rather than in bare
+ * `document.documentElement` writes and unnamespaced storage keys. That is what lets an embedded
+ * preview — the canvas-theme-editor scaffold, say — run its own theme and color scheme on the same
+ * page without the two clobbering each other.
+ *
+ * `site-themes.css` keys each theme's tokens to `[data-pantoken-theme="…"]` on *any* element, so the
+ * scope element re-themes its own subtree; here that element is `<html>`, which re-themes the whole
+ * site (VitePress chrome via the `@pantoken/vitepress` bridge, the live `@example` blocks, and — over
+ * postMessage — the embedded demos).
  */
+import { createScope, type PantokenScope } from "@pantoken/scope";
+
+/** One selectable site-wide palette. */
 export type PantokenTheme = "rebrand" | "canvas" | "canvasHighContrast";
 
 /** The active VitePress appearance mode used by the embedded Canvas RCE. */
@@ -117,8 +126,30 @@ export const COLORS: readonly ColorOption[] = [
 /** Only rebrand ships light/dark values; the others are single-scheme. */
 export const supportsScheme = (theme: PantokenTheme): boolean => theme === "rebrand";
 
-const STORAGE_KEY = "pantoken-theme";
-const STORAGE_COLOR_KEY = "pantoken-color";
+/** The instance this site owns. An embedded preview must use a different one. */
+export const DOCS_INSTANCE = "docs";
+
+const STORAGE_KEY = `pantoken:${DOCS_INSTANCE}:theme`;
+const STORAGE_COLOR_KEY = `pantoken:${DOCS_INSTANCE}:color`;
+
+let scope: PantokenScope | null = null;
+
+/**
+ * The docs' own scope, created on first use.
+ *
+ * Rooted at `<html>` so it themes the whole site, but named — anything that declares its own scope
+ * further down the tree (a preview pane, an embedded editor) overrides it for its own subtree and
+ * keeps its own persisted state.
+ */
+export function docsScope(): PantokenScope | null {
+  if (typeof document === "undefined") return null;
+  scope ??= createScope(document.documentElement, {
+    instanceId: DOCS_INSTANCE,
+    theme: getStoredTheme(),
+    color: getStoredColor(),
+  });
+  return scope;
+}
 
 /** Reads the active VitePress appearance class. */
 export function getActiveScheme(): PantokenScheme {
@@ -162,18 +193,37 @@ function themeTargetOrigin(frame: HTMLIFrameElement): string {
   }
 }
 
+/**
+ * The demo frames this instance owns: those inside its scope element, minus any sitting inside a
+ * *different* instance's scope. Without that second filter an embedded preview's own frames would be
+ * re-themed by the docs chrome, which is the collision this whole mechanism exists to stop.
+ */
+function ownedFrames(): HTMLIFrameElement[] {
+  const root = docsScope()?.element ?? document.documentElement;
+  return [
+    ...root.querySelectorAll<HTMLIFrameElement>(".pantoken-demo__frame, .canvas-rce-page__frame"),
+  ].filter((frame) => {
+    const owner = frame.closest("[data-pantoken-instance]");
+    return !owner || owner.getAttribute("data-pantoken-instance") === DOCS_INSTANCE;
+  });
+}
+
 /** Post the active theme to every embedded demo runner so it re-themes its rendered result. */
 export function broadcastTheme(
   theme: PantokenTheme,
   color: PantokenColor = getStoredColor(),
 ): void {
   if (typeof document === "undefined") return;
-  for (const frame of document.querySelectorAll<HTMLIFrameElement>(
-    ".pantoken-demo__frame, .canvas-rce-page__frame",
-  )) {
+  for (const frame of ownedFrames()) {
     // deepcode ignore TooPermissiveCorsPostMessage: "*" only targets opaque-origin sandboxed frames (no concrete origin can match); a real-src frame gets its own origin, and the payload is a non-sensitive theme name.
     frame.contentWindow?.postMessage(
-      { type: "pantoken-demo-theme", theme, color, mode: getActiveScheme() },
+      {
+        type: "pantoken-demo-theme",
+        instanceId: DOCS_INSTANCE,
+        theme,
+        color,
+        mode: getActiveScheme(),
+      },
       themeTargetOrigin(frame),
     );
   }
@@ -182,11 +232,9 @@ export function broadcastTheme(
 /** Post the active color scheme to every embedded demo runner. */
 export function broadcastColor(color: PantokenColor): void {
   if (typeof document === "undefined") return;
-  for (const frame of document.querySelectorAll<HTMLIFrameElement>(
-    ".pantoken-demo__frame, .canvas-rce-page__frame",
-  )) {
+  for (const frame of ownedFrames()) {
     frame.contentWindow?.postMessage(
-      { type: "pantoken-demo-color", color },
+      { type: "pantoken-demo-color", instanceId: DOCS_INSTANCE, color },
       themeTargetOrigin(frame),
     );
   }
@@ -225,25 +273,26 @@ function syncSchemeClass(html: HTMLElement, theme: PantokenTheme): void {
 }
 
 /**
- * Apply a theme: set the root attribute, persist it, gate light/dark (single-scheme themes force
- * light and hide the appearance toggle via CSS), and broadcast to the demos.
+ * Apply a theme: update the scope, persist it, gate light/dark (single-scheme themes force light and
+ * hide the appearance toggle via CSS), and broadcast to the demos.
  */
 export function applyTheme(theme: PantokenTheme): void {
   if (typeof document === "undefined") return;
   const html = document.documentElement;
-  html.dataset.pantokenTheme = theme;
-  persistTheme(theme);
   syncSchemeClass(html, theme);
+  // Pin the scheme rather than leaving it to the OS: VitePress's `.dark` class is this instance's
+  // scheme input, and pinning is what lets a nested scope choose the opposite one.
+  docsScope()?.set({ theme, scheme: supportsScheme(theme) ? getActiveScheme() : "light" });
+  persistTheme(theme);
   broadcastTheme(theme, getStoredColor());
 }
 
 /**
- * Apply a color scheme: set the root attribute, persist it, and broadcast to the demos.
+ * Apply a color scheme: update the scope, persist it, and broadcast to the demos.
  */
 export function applyColor(color: PantokenColor): void {
   if (typeof document === "undefined") return;
-  const html = document.documentElement;
-  html.dataset.pantokenColor = color;
+  docsScope()?.set({ color });
   persistColor(color);
   broadcastColor(color);
 }

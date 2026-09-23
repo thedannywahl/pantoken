@@ -18,9 +18,26 @@ import { toCss } from "./to-css.ts";
 import type { Theme } from "@pantoken/model";
 
 export { toCss } from "./to-css.ts";
-export type { ToCssOptions } from "./to-css.ts";
+export type { CssEmitTarget, ToCssOptions } from "./to-css.ts";
 export { buildCssFile } from "./emit.ts";
 export type { CssSection } from "./emit.ts";
+export { darkBranch, lightBranch, schemeOverrideTokens, themedTokens } from "./theme-variants.ts";
+export type { Scheme } from "./theme-variants.ts";
+export {
+  BOUNDARY_ATTR,
+  COLOR_ATTR,
+  LAYERS,
+  SCHEME_ATTR,
+  THEME_ATTR,
+  layerOrderCss,
+  multiScopeCss,
+  propertiesCss,
+  schemeScopeSelector,
+  scopedSchemeCss,
+  scopedThemeCss,
+  themeScopeSelector,
+} from "./scoped.ts";
+export type { MultiScopeCssOptions, ScopedCssOptions } from "./scoped.ts";
 
 function themedCss(
   theme: Theme,

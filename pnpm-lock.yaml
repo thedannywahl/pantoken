@@ -852,6 +852,9 @@ importers:
       '@pantoken/scaffold':
         specifier: workspace:*
         version: link:../packages/scaffold
+      '@pantoken/scope':
+        specifier: workspace:*
+        version: link:../formats/scope
       '@pantoken/tinymce':
         specifier: workspace:*
         version: link:../renderers/tinymce

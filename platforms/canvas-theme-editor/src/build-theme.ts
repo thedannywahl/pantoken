@@ -63,9 +63,19 @@ function tokenSheetFile(theme: ThemeVariant, mode: ThemeMode): CdnFile {
 export function defaultThemeCssAssets(
   theme: ThemeVariant = "rebrand",
   mode: ThemeMode = "light",
+  scoped = false,
 ): CdnFile[] {
+  // Scoped mode swaps the single-theme sheet for the registrations/declarations pair, so a Canvas
+  // page that embeds content carrying its own `data-pantoken-theme` renders it in that theme rather
+  // than forcing everything to this one.
+  const tokens: CdnFile[] = scoped
+    ? [
+        { package: "@pantoken/css", path: "dist/properties.lean.css" },
+        { package: "@pantoken/css", path: "dist/scope.lean.css" },
+      ]
+    : [tokenSheetFile(theme, mode)];
   return [
-    tokenSheetFile(theme, mode),
+    ...tokens,
     { package: "@pantoken/components", path: "dist/base.css" },
     { package: "@pantoken/components", path: "dist/component-icons.css" },
     { package: "@pantoken/components", path: "dist/components.css" },
@@ -104,6 +114,11 @@ export interface BuildThemeOptions {
   mode?: ThemeMode;
   /** Component-style sheets. Defaults to {@link defaultThemeCssAssets} for `theme`/`mode`. */
   css?: readonly CdnFile[];
+  /**
+   * Ship the multi-scope token pair instead of a single baked theme, so several themes and color
+   * schemes can be active in one Canvas page. Larger; only worth it when that's actually needed.
+   */
+  scoped?: boolean;
   /** Font sheet(s). Defaults to {@link DEFAULT_THEME_FONT_ASSETS}. */
   fonts?: readonly CdnFile[];
   /** Script(s). Defaults to {@link DEFAULT_THEME_JS_ASSETS}. */
@@ -143,7 +158,7 @@ function scriptTags(
 export function buildThemeCss(options: BuildThemeOptions = {}): string {
   const { provider, version } = options;
   const buildOptions: CdnBuildOptions = { version };
-  const css = options.css ?? defaultThemeCssAssets(options.theme, options.mode);
+  const css = options.css ?? defaultThemeCssAssets(options.theme, options.mode, options.scoped);
   const fonts = options.fonts ?? DEFAULT_THEME_FONT_ASSETS;
   const s: ThemeStrings = { ...ENGLISH_THEME_STRINGS, ...options.strings };
   return `/**

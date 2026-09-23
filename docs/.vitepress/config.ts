@@ -728,11 +728,13 @@ export default defineConfig({
   // via the theme instead.
   head: [
     // Apply the stored pantoken theme before first paint (no flash). The palette selector in the nav
-    // writes `pantoken-theme`; non-rebrand themes have no light/dark, so drop `.dark` for them.
+    // writes the same instance-namespaced key; non-rebrand themes have no light/dark, so drop `.dark`
+    // for them. The `data-pantoken-instance` marker is what tells an embedded preview which scope
+    // owns `<html>`.
     [
       "script",
       {},
-      `(function(){try{var t=localStorage.getItem("pantoken-theme")||"rebrand";var d=document.documentElement;d.dataset.pantokenTheme=t;if(t!=="rebrand")d.classList.remove("dark");}catch(e){}})();`,
+      `(function(){try{var t=localStorage.getItem("pantoken:docs:theme")||"rebrand";var d=document.documentElement;d.dataset.pantokenTheme=t;d.dataset.pantokenInstance="docs";if(t!=="rebrand")d.classList.remove("dark");}catch(e){}})();`,
     ],
     // Same before-paint-restore technique, for the sidebar show/hide toggle (see Layout.vue).
     sidebarToggleHead({

@@ -28,6 +28,10 @@
     "./style.canvas.lean.css": "./dist/style.canvas.lean.css",
     "./style.canvas-high-contrast.css": "./dist/style.canvas-high-contrast.css",
     "./style.canvas-high-contrast.lean.css": "./dist/style.canvas-high-contrast.lean.css",
+    "./properties.css": "./dist/properties.css",
+    "./properties.lean.css": "./dist/properties.lean.css",
+    "./scope.css": "./dist/scope.css",
+    "./scope.lean.css": "./dist/scope.lean.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {

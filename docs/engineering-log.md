@@ -205,6 +205,42 @@ does. Pendo puts the guide's layout class (`._pendo-guide-walkthrough_`) on that
 the root through `:scope`, never through a bare class. Because the build also emits an unscoped
 variant, string-matching tests cannot catch this — verify root-targeting rules in a browser.
 
+### A diffed theme block is only safe when exactly one can apply
+
+**Symptom** — After moving theme blocks off `:root` so a subtree could pick its own theme, a `canvas`
+scope nested inside a `canvasHighContrast` scope rendered with high-contrast colours for most tokens.
+
+**Root cause** — The docs sheet emitted non-default themes as only the tokens whose value _differs_
+from the default, letting the shared majority fall through to the base `:root` block. That is correct
+when exactly one theme block can ever match. Once any element can root a theme, the omitted tokens no
+longer fall through to the base — they inherit from the **enclosing scope**, which may be a different
+theme.
+
+**Fix / rule** — Partition tokens by whether they actually vary across the emitted theme set.
+Invariant tokens go in a shared base block once; varying tokens must be repeated **in full** in every
+theme block. Assert the blocks declare identical token sets — that parity is the nesting-safety
+invariant, and losing it reintroduces the bug silently. Related: never run `applyMinify(css,
+{ flatten: true })` over a scoped sheet, because flattening rewrites `@property` into _unlayered_
+`:root` declarations, and unlayered declarations outrank every cascade layer — including
+`@layer pantoken.theme`.
+
+### Reading `document.documentElement` is what desynchronises two instances
+
+**Symptom** — The docs site and the embedded canvas-theme-editor preview constantly fought over the
+active theme and light/dark mode: toggling one changed the other, and a reload restored whichever had
+written last.
+
+**Root cause** — Every mechanism was document-global. State lived in `<html>` datasets, storage used
+bare `pantoken-theme`/`pantoken-color` keys shared by both, theme broadcasts swept _every_ iframe on
+the page, and the demo runner decided its scheme by reading
+`window.parent.document.documentElement.classList.contains("dark")`.
+
+**Fix / rule** — Never read the document root to decide what theme or scheme applies; resolve from
+the element you actually care about (`resolveScope`/`resolveScheme` in `@pantoken/scope`). Namespace
+storage keys by instance (`pantoken:<instanceId>:<field>`). Scope any frame broadcast to your own
+scope element's subtree and skip frames owned by another instance, and tag messages with
+`instanceId` so receivers can reject someone else's. See `docs/conventions/scoping.md`.
+
 ## CI / release
 
 ### The Version PR needs a PAT to trigger CI — and an unset secret hard-fails checkout
