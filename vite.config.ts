@@ -176,7 +176,7 @@ export default defineConfig({
       "snyk:code": {
         command: "node scripts/quality/snyk-code-gate.ts",
       },
-      // Fallow gate: dead-code = error, health = grade A, duplicates = advisory. Needs generated
+      // Fallow gate: dead-code = error, health = grade A, duplicates = thresholded. Needs generated
       // output (build:all) so the CSS-codegen sources and workspace graph resolve.
       "health:fallow": {
         command: "node scripts/quality/fallow-health-gate.ts",

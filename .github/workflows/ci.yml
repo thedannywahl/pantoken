@@ -276,7 +276,7 @@ jobs:
       - name: Materialize generated output
         run: vp run -r build
       # The same policy on PRs and main: dead-code = error, health floored at grade B, dead-code
-      # regression vs the committed baseline, duplication advisory. We deliberately don't use
+      # regression vs the committed baseline, duplication thresholded. We deliberately don't use
       # `fallow audit` here — it bundles duplication into its verdict with no opt-out, which would
       # gate duplication against policy. fallow analysis is sub-second, so running it over the whole
       # workspace (rather than scoping to changed files) costs nothing beyond the build that already ran.
@@ -284,7 +284,7 @@ jobs:
       # above enforces policy) and don't belong in the security code-scanning dashboard, which gates
       # PR checks on any error-level result. CodeQL owns code scanning; fallow findings surface in
       # this job's log and are enforced by `health:fallow`.
-      - name: Fallow gate (dead-code error, grade-B health floor, dupes advisory)
+      - name: Fallow gate (dead-code error, grade-B health floor, dupes thresholded)
         run: vp run health:fallow
       - name: Generate health badge
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
