@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-22 21:58+0000\n"
+"PO-Revision-Date: 2026-09-23 12:20+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -80,6 +80,42 @@ msgstr "Etiqueta per lectors de pantalla"
 msgctxt "tinymce.strings:iconsMenuText"
 msgid "Icon"
 msgstr "Icona"
+
+#: renderers/tinymce/src/i18n.json#iconsDialogTitle
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:iconsDialogTitle"
+msgid "Insert icon"
+msgstr "Insereix una icona"
+
+#: renderers/tinymce/src/i18n.json#iconsSearchPlaceholder
+#, no-c-format
+msgctxt "tinymce.strings:iconsSearchPlaceholder"
+msgid "Search icons…"
+msgstr "Cercar icones…"
+
+#: renderers/tinymce/src/i18n.json#iconsSearchLabel
+#, no-c-format
+msgctxt "tinymce.strings:iconsSearchLabel"
+msgid "Search icons"
+msgstr "Cercar icones"
+
+#: renderers/tinymce/src/i18n.json#iconsAllSources
+#, no-c-format
+msgctxt "tinymce.strings:iconsAllSources"
+msgid "All"
+msgstr "Tots"
+
+#: renderers/tinymce/src/i18n.json#iconsResultCount
+#, no-c-format
+msgctxt "tinymce.strings:iconsResultCount"
+msgid "{{count}} icons"
+msgstr "{{count}} icones"
+
+#: renderers/tinymce/src/i18n.json#iconsNoResults
+#, no-c-format
+msgctxt "tinymce.strings:iconsNoResults"
+msgid "No icons match your search."
+msgstr "Cap icona coincideix amb la teva cerca."
 
 #: renderers/tinymce/src/i18n.json#iconsToolbarText
 #, no-c-format

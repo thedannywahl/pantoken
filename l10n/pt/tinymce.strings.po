@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-21 21:24+0000\n"
+"PO-Revision-Date: 2026-09-23 12:38+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -80,6 +80,42 @@ msgstr "Rótulo para leitor de tela"
 msgctxt "tinymce.strings:iconsMenuText"
 msgid "Icon"
 msgstr "Ícone"
+
+#: renderers/tinymce/src/i18n.json#iconsDialogTitle
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:iconsDialogTitle"
+msgid "Insert icon"
+msgstr "Inserir um ícone"
+
+#: renderers/tinymce/src/i18n.json#iconsSearchPlaceholder
+#, no-c-format
+msgctxt "tinymce.strings:iconsSearchPlaceholder"
+msgid "Search icons…"
+msgstr "Pesquisar ícones…"
+
+#: renderers/tinymce/src/i18n.json#iconsSearchLabel
+#, no-c-format
+msgctxt "tinymce.strings:iconsSearchLabel"
+msgid "Search icons"
+msgstr "Pesquisar ícones"
+
+#: renderers/tinymce/src/i18n.json#iconsAllSources
+#, no-c-format
+msgctxt "tinymce.strings:iconsAllSources"
+msgid "All"
+msgstr "Todos"
+
+#: renderers/tinymce/src/i18n.json#iconsResultCount
+#, no-c-format
+msgctxt "tinymce.strings:iconsResultCount"
+msgid "{{count}} icons"
+msgstr "{{count}} ícones"
+
+#: renderers/tinymce/src/i18n.json#iconsNoResults
+#, no-c-format
+msgctxt "tinymce.strings:iconsNoResults"
+msgid "No icons match your search."
+msgstr "Nenhum ícone corresponde à sua pesquisa."
 
 #: renderers/tinymce/src/i18n.json#iconsToolbarText
 #, no-c-format
@@ -213,6 +249,12 @@ msgctxt "tinymce.strings:insertButton"
 msgid "Insert"
 msgstr "Inserir"
 
+#: renderers/tinymce/src/i18n.json#replaceButton
+#, no-c-format
+msgctxt "tinymce.strings:replaceButton"
+msgid "Replace"
+msgstr "Substituir"
+
 #: renderers/tinymce/src/i18n.json#cancelButton
 #, no-c-format
 msgctxt "tinymce.strings:cancelButton"
@@ -224,12 +266,6 @@ msgstr "Cancelar"
 msgctxt "tinymce.strings:logoAltSuffix"
 msgid "logo"
 msgstr "logotipo"
-
-#: renderers/tinymce/src/i18n.json#sourceToggleTooltip
-#, no-c-format
-msgctxt "tinymce.strings:sourceToggleTooltip"
-msgid "Source code"
-msgstr "Código-fonte"
 
 #: renderers/tinymce/src/i18n.json#templatesConfirmReplace
 #, no-c-format
@@ -350,3 +386,333 @@ msgstr "As cores devem usar valores hexadecimais de três ou seis dígitos."
 msgctxt "tinymce.strings:placeholdAltFallback"
 msgid "{{width}} by {{height}} placeholder image"
 msgstr "{{width}} por {{height}} imagem de espaço reservado"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:a11yToolbarText"
+msgid "Check accessibility"
+msgstr "Verificar acessibilidade"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:a11yToolbarTooltip"
+msgid "Check the content for accessibility issues"
+msgstr "Verifique o conteúdo em busca de problemas de acessibilidade"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yMenuText
+#, no-c-format
+msgctxt "tinymce.strings:a11yMenuText"
+msgid "Check accessibility"
+msgstr "Verificar acessibilidade"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:a11yDialogTitle"
+msgid "Accessibility checker"
+msgstr "Verificador de acessibilidade"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yNoIssues
+#, no-c-format
+msgctxt "tinymce.strings:a11yNoIssues"
+msgid "No accessibility issues found."
+msgstr "Nenhum problema de acessibilidade encontrado."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yIssueCount
+#, no-c-format
+msgctxt "tinymce.strings:a11yIssueCount"
+msgid "{{count}} accessibility issue(s) found."
+msgstr "{{count}} problema(s) de acessibilidade encontrado(s)."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yStatusbarIssueCount
+#, no-c-format
+msgctxt "tinymce.strings:a11yStatusbarIssueCount"
+msgid "{{count}} accessibility issues"
+msgstr "{{count}} problemas de acessibilidade"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yIssueLabel
+#, no-c-format
+msgctxt "tinymce.strings:a11yIssueLabel"
+msgid "Issue"
+msgstr "Problema"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yCloseButton
+#, no-c-format
+msgctxt "tinymce.strings:a11yCloseButton"
+msgid "Close"
+msgstr "Fechar"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yImageAltMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yImageAltMessage"
+msgid "Images must have alternative text."
+msgstr "Imagens devem ter texto alternativo."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yImageAltWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yImageAltWhy"
+msgid "Screen readers need an alt attribute to describe an image or identify it as decorative."
+msgstr "Leitores de tela precisam de um atributo alt para descrever a imagem ou identificá-la como decorativa."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yImageAltFilenameMessage"
+msgid "Image alternative text should describe the image, not repeat its filename."
+msgstr "O texto alternativo da imagem deve descrever a imagem, não repetir o nome do arquivo."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yImageAltFilenameWhy"
+msgid "A filename rarely gives screen reader users useful information about an image."
+msgstr "Um nome de arquivo raramente fornece informações úteis sobre uma imagem para usuários de leitores de tela."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yImageAltLengthMessage"
+msgid "Image alternative text should be 125 characters or fewer."
+msgstr "O texto alternativo da imagem deve ter 125 caracteres ou menos."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yImageAltLengthWhy"
+msgid "Short descriptions are easier to understand and navigate with assistive technology."
+msgstr "Descrições curtas são mais fáceis de entender e navegar com tecnologia assistiva."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yHeadingSequenceMessage"
+msgid "Heading levels should not skip levels."
+msgstr "Os níveis de cabeçalho não devem pular níveis."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yHeadingSequenceWhy"
+msgid "A logical heading outline helps people navigate content with assistive technology."
+msgstr "Uma hierarquia lógica de cabeçalhos ajuda as pessoas a navegar pelo conteúdo com tecnologia assistiva."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yTableHeaderMessage"
+msgid "Tables must include header cells."
+msgstr "Tabelas devem incluir células de cabeçalho."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yTableHeaderWhy"
+msgid "Header cells give screen readers the context needed to understand table data."
+msgstr "Células de cabeçalho dão aos leitores de tela o contexto necessário para entender os dados da tabela."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yTableCaptionMessage"
+msgid "Tables should include a caption."
+msgstr "Tabelas devem incluir uma legenda."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yTableCaptionWhy"
+msgid "A caption identifies a table's purpose before a screen reader enters its cells."
+msgstr "Uma legenda identifica o propósito da tabela antes que um leitor de tela entre em suas células."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yTableHeaderScopeMessage"
+msgid "Table header cells should declare their scope."
+msgstr "As células de cabeçalho da tabela devem declarar seu escopo."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yTableHeaderScopeWhy"
+msgid "The scope attribute lets assistive technology associate headers with data cells."
+msgstr "O atributo scope permite que a tecnologia assistiva associe cabeçalhos às células de dados."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yAdjacentLinksMessage"
+msgid "Adjacent links with the same destination should be combined."
+msgstr "Links adjacentes com o mesmo destino devem ser combinados."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yAdjacentLinksWhy"
+msgid "Repeated links create unnecessary stops for keyboard and screen reader users."
+msgstr "Links repetidos criam paradas desnecessárias para usuários de teclado e leitores de tela."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yHeadingStartMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yHeadingStartMessage"
+msgid "The first heading should be an h2."
+msgstr "O primeiro cabeçalho deve ser um h2."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yHeadingStartWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yHeadingStartWhy"
+msgid "The editor's document title is supplied outside the editable content."
+msgstr "O título do documento do editor é fornecido fora do conteúdo editável."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yListStructureMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yListStructureMessage"
+msgid "List items must be contained by an ordered or unordered list."
+msgstr "Itens de lista devem estar contidos por uma lista ordenada ou não ordenada."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yListStructureWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yListStructureWhy"
+msgid "Assistive technology relies on list structure to announce item counts and position."
+msgstr "A tecnologia assistiva depende da estrutura de listas para anunciar a contagem e a posição dos itens."
+
+#: plugins/tinymce/codemirror/src/i18n.json#sourceToggleTooltip
+#, no-c-format
+msgctxt "tinymce.strings:sourceToggleTooltip"
+msgid "Source code"
+msgstr "Código-fonte"
+
+#: plugins/tinymce/codemirror/src/i18n.json#sourceFormatTooltip
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:sourceFormatTooltip"
+msgid "Format code"
+msgstr "Código-fonte"
+
+#: plugins/tinymce/save/src/i18n.json#saveToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:saveToolbarText"
+msgid "Presets"
+msgstr "Predefinições"
+
+#: plugins/tinymce/save/src/i18n.json#saveToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:saveToolbarTooltip"
+msgid "Manage saved presets"
+msgstr "Gerenciar predefinições salvas"
+
+#: plugins/tinymce/save/src/i18n.json#saveAction
+#, no-c-format
+msgctxt "tinymce.strings:saveAction"
+msgid "Save"
+msgstr "Salvar"
+
+#: plugins/tinymce/save/src/i18n.json#saveAsAction
+#, no-c-format
+msgctxt "tinymce.strings:saveAsAction"
+msgid "Save as..."
+msgstr "Salvar como..."
+
+#: plugins/tinymce/save/src/i18n.json#openAction
+#, no-c-format
+msgctxt "tinymce.strings:openAction"
+msgid "Open..."
+msgstr "Abrir..."
+
+#: plugins/tinymce/save/src/i18n.json#deleteAction
+#, no-c-format
+msgctxt "tinymce.strings:deleteAction"
+msgid "Delete..."
+msgstr "Excluir..."
+
+#: plugins/tinymce/save/src/i18n.json#saveAsDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:saveAsDialogTitle"
+msgid "Save preset"
+msgstr "Salvar predefinição"
+
+#: plugins/tinymce/save/src/i18n.json#presetNameLabel
+#, no-c-format
+msgctxt "tinymce.strings:presetNameLabel"
+msgid "Name"
+msgstr "Nome"
+
+#: plugins/tinymce/save/src/i18n.json#openDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:openDialogTitle"
+msgid "Open preset"
+msgstr "Abrir predefinição"
+
+#: plugins/tinymce/save/src/i18n.json#deleteDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:deleteDialogTitle"
+msgid "Delete preset"
+msgstr "Excluir predefinição"
+
+#: plugins/tinymce/save/src/i18n.json#presetLabel
+#, no-c-format
+msgctxt "tinymce.strings:presetLabel"
+msgid "Preset"
+msgstr "Predefinição"
+
+#: plugins/tinymce/save/src/i18n.json#confirmOverwrite
+#, no-c-format
+msgctxt "tinymce.strings:confirmOverwrite"
+msgid "A preset named “{{name}}” already exists. Replace it?"
+msgstr "Uma predefinição chamada “{{name}}” já existe. Substituí-la?"
+
+#: plugins/tinymce/save/src/i18n.json#confirmDiscard
+#, no-c-format
+msgctxt "tinymce.strings:confirmDiscard"
+msgid "Open “{{name}}” and discard the current unsaved changes?"
+msgstr "Abrir “{{name}}” e descartar as alterações atuais não salvas?"
+
+#: plugins/tinymce/save/src/i18n.json#confirmDelete
+#, no-c-format
+msgctxt "tinymce.strings:confirmDelete"
+msgid "Delete “{{name}}”? This cannot be undone."
+msgstr "Excluir “{{name}}”? Isto não pode ser desfeito."
+
+#: plugins/tinymce/save/src/i18n.json#emptyPresets
+#, no-c-format
+msgctxt "tinymce.strings:emptyPresets"
+msgid "No saved presets are available."
+msgstr "Nenhuma predefinição salva está disponível."
+
+#: plugins/tinymce/save/src/i18n.json#invalidName
+#, no-c-format
+msgctxt "tinymce.strings:invalidName"
+msgid "Enter a preset name."
+msgstr "Digite um nome para a predefinição."
+
+#: plugins/tinymce/save/src/i18n.json#invalidPreset
+#, no-c-format
+msgctxt "tinymce.strings:invalidPreset"
+msgid "This preset is invalid and could not be opened."
+msgstr "Esta predefinição é inválida e não pôde ser aberta."
+
+#: plugins/tinymce/save/src/i18n.json#storageReadError
+#, no-c-format
+msgctxt "tinymce.strings:storageReadError"
+msgid "Saved presets could not be read from this browser."
+msgstr "As predefinições salvas não puderam ser lidas deste navegador."
+
+#: plugins/tinymce/save/src/i18n.json#storageWriteError
+#, no-c-format
+msgctxt "tinymce.strings:storageWriteError"
+msgid "The preset could not be saved in this browser."
+msgstr "A predefinição não pôde ser salva neste navegador."
+
+#: plugins/tinymce/save/src/i18n.json#storageDeleteError
+#, no-c-format
+msgctxt "tinymce.strings:storageDeleteError"
+msgid "The preset could not be deleted from this browser."
+msgstr "A predefinição não pôde ser excluída deste navegador."
+
+#: plugins/tinymce/save/src/i18n.json#presetSaveButton
+#, no-c-format
+msgctxt "tinymce.strings:presetSaveButton"
+msgid "Save"
+msgstr "Salvar"
+
+#: plugins/tinymce/save/src/i18n.json#presetOpenButton
+#, no-c-format
+msgctxt "tinymce.strings:presetOpenButton"
+msgid "Open"
+msgstr "Abrir"
+
+#: plugins/tinymce/save/src/i18n.json#presetDeleteButton
+#, no-c-format
+msgctxt "tinymce.strings:presetDeleteButton"
+msgid "Delete"
+msgstr "Excluir"
+
+#: plugins/tinymce/save/src/i18n.json#presetCancelButton
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:presetCancelButton"
+msgid "Cancel"
+msgstr "Cancelar"
