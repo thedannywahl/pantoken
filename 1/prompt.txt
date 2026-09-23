@@ -17,3 +17,7 @@ continue
 Type '{ type: "label"; label: string; }' is not assignable to type 'BodyComponentSpec'.
   Property 'items' is missing in type '{ type: "label"; label: string; }' but required in type 'LabelSpec'.
 tinymce.d.ts(724, 5): 'items' is declared here.
+
+---
+
+Parameter 'file' implicitly has an 'any' type.
