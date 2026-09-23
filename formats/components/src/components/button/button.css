@@ -64,6 +64,7 @@
     cursor: pointer;
     background: var(--instui-color-background-interactive-action-primary-base);
     color: var(--instui-color-text-interactive-action-primary-base);
+    text-decoration: none;
   }
 
   &:hover {
