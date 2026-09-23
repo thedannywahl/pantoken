@@ -83,3 +83,37 @@ code {
     padding-right: 1rem;
   }
 }
+
+// Matches the chrome's dark scheme — the editable content otherwise stays light-only forever,
+// since (unlike the chrome skin) this stylesheet is never recompiled against dark-mode tokens.
+:root[data-pantoken-scheme="dark"] {
+  body {
+    background-color: #1e1e1e;
+    color: #ddd;
+  }
+
+  table[border]:not([border="0"]):not([style*="border-color"]) th,
+  table[border]:not([border="0"]):not([style*="border-color"]) td {
+    border-color: #555;
+  }
+
+  figure figcaption {
+    color: #aaa;
+  }
+
+  hr {
+    border-color: #555;
+  }
+
+  code {
+    background-color: #2d2d2d;
+  }
+
+  .mce-content-body:not([dir="rtl"]) blockquote {
+    border-left-color: #555;
+  }
+
+  .mce-content-body[dir="rtl"] blockquote {
+    border-right-color: #555;
+  }
+}

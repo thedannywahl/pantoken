@@ -452,6 +452,10 @@ function applyEditorTheme(editor: Editor | undefined): void {
     editorDocument.head.append(editorContentStyle);
   }
   editorContentStyle.textContent = css.content;
+  // The content CSS's dark rules key off this attribute on the iframe's own root, which doesn't
+  // inherit it from the host document.
+  editorDocument.documentElement.dataset.pantokenScheme =
+    document.documentElement.dataset.pantokenScheme;
 }
 
 /** Re-themes the chrome's token variant + light/dark scheme — never the preview or the tray. */

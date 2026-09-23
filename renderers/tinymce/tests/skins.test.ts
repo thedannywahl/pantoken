@@ -14,11 +14,17 @@ test("generates every published theme skin and content stylesheet", () => {
   }
 });
 
-test("keeps dark mode in Next Gen UI only", () => {
+test("keeps dark mode in Next Gen only", () => {
   const nextGenUi = readFileSync(resolve(generatedRoot, "next-gen/skin.css"), "utf8");
   expect(nextGenUi).toContain(':root[data-pantoken-scheme="dark"]');
 
-  for (const file of SKIN_FILES.filter((file) => !file.endsWith("next-gen/skin.css"))) {
+  // The editable content is hand-authored with its own dark block (not run through the
+  // token-driven `scopeDarkMode()` pass the chrome skin uses) — still Next Gen only, since
+  // canvas/canvas-high-contrast are single-scheme themes.
+  const nextGenContent = readFileSync(resolve(generatedRoot, "next-gen/content.css"), "utf8");
+  expect(nextGenContent).toContain(':root[data-pantoken-scheme="dark"]');
+
+  for (const file of SKIN_FILES.filter((file) => !file.startsWith("next-gen/"))) {
     expect(readFileSync(resolve(generatedRoot, file), "utf8")).not.toContain(
       'data-pantoken-scheme="dark"',
     );
