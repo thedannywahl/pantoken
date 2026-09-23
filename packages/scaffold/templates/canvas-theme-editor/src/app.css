@@ -208,10 +208,6 @@
   gap: 0.125rem;
 }
 
-#preview-fullscreen-toggle {
-  margin-inline-start: 1rem;
-}
-
 /* Overlays the current window/iframe viewport — not the OS-level Fullscreen API — matching
    TinyMCE's own fullscreen plugin. !important overrides the width picker's inline flex/width. */
 .preview-pane.-fullscreen {
@@ -262,15 +258,17 @@ html:has(.preview-pane.-fullscreen) body {
 }
 
 .preview-header {
+  display: flex;
+  justify-content: flex-start;
   border-bottom: 1px solid #ccc;
   width: 100%;
-  margin-top: 0.5rem;
-  margin-inline-start: 1rem;
-  margin-inline-end: 1rem;
+  padding: 0.5rem 1rem;
 }
 
 .preview-footer {
+  display: flex;
+  justify-content: flex-end;
   border-top: 1px solid #ccc;
-  align-self: end;
   width: 100%;
+  padding: 0.5rem 1rem;
 }

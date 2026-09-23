@@ -15,12 +15,12 @@ import "@pantoken/components/icons/check.css";
 import "@pantoken/components/icons/download.css";
 import "@pantoken/components/icons/sliders-horizontal.css"; // app.html's -icon-sliders-horizontal button modifier
 import "@pantoken/components/icons/circle-question-mark.css"; // app.html's -icon-circle-question-mark button modifier
-import "@pantoken/components/icons/layout-panel-left.css"; // app.html's layout-direction toggle, row state
-import "@pantoken/components/icons/layout-panel-top.css"; // app.html's layout-direction toggle, column state
+import "@pantoken/components/icons/rows-2.css"; // app.html's layout-direction toggle, row state
+import "@pantoken/components/icons/columns-2.css"; // app.html's layout-direction toggle, column state
 import "@pantoken/components/icons/monitor.css"; // app.html's preview-width-picker, large
 import "@pantoken/components/icons/tablet.css"; // app.html's preview-width-picker, medium
 import "@pantoken/components/icons/smartphone.css"; // app.html's preview-width-picker, small
-import "@pantoken/components/icons/expand.css"; // app.html's preview-fullscreen-toggle, off state
+import "@pantoken/components/icons/maximize.css"; // app.html's preview-fullscreen-toggle, off state
 import "@pantoken/components/icons/minimize.css"; // app.html's preview-fullscreen-toggle, on state
 import adaptiveTokensCss from "@pantoken/css/style.lean.css?inline";
 import rebrandLightTokensCss from "@pantoken/css/style.rebrand.light.lean.css?inline";
@@ -816,8 +816,8 @@ const contentEl = document.querySelector<HTMLElement>(".content")!;
 layoutDirectionToggle.addEventListener("click", () => {
   const row = layoutDirectionToggle.getAttribute("aria-pressed") !== "true";
   layoutDirectionToggle.setAttribute("aria-pressed", String(row));
-  layoutDirectionToggle.classList.toggle("-icon-layout-panel-left", row);
-  layoutDirectionToggle.classList.toggle("-icon-layout-panel-top", !row);
+  layoutDirectionToggle.classList.toggle("-icon-rows-2", row);
+  layoutDirectionToggle.classList.toggle("-icon-columns-2", !row);
   contentEl.style.flexDirection = row ? "row" : "column";
   contentEl.dataset.layout = row ? "row" : "column";
   persistPreferences();
@@ -825,8 +825,8 @@ layoutDirectionToggle.addEventListener("click", () => {
 if (preferences.layout === "row" || preferences.layout === "column") {
   const row = preferences.layout === "row";
   layoutDirectionToggle.setAttribute("aria-pressed", String(row));
-  layoutDirectionToggle.classList.toggle("-icon-layout-panel-left", row);
-  layoutDirectionToggle.classList.toggle("-icon-layout-panel-top", !row);
+  layoutDirectionToggle.classList.toggle("-icon-rows-2", row);
+  layoutDirectionToggle.classList.toggle("-icon-columns-2", !row);
   contentEl.style.flexDirection = row ? "row" : "column";
   contentEl.dataset.layout = row ? "row" : "column";
 }
