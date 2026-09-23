@@ -1,0 +1,9 @@
+in canvas-theme-editor scaffold the CDN picker allows none in local dev, we should also allow it in prod, but keep "none" as the default in local dev.  In prod "none" means that all the referenced css is inlined into the css file and all the referenced js is inlined into the js file instead of using `@import` for the CDN reference file.
+
+---
+
+Read-only investigation only; do not edit files. In /Users/dwahl/Scripts/pantoken, follow the mandatory first action from .entire/graph-agent.md: run `entire graph search --repo . --profile full --query "canvas-theme-editor scaffold CDN picker none local dev production inline referenced CSS JavaScript instead of CDN imports"` before any grep/find/read to locate code. Then inspect the top hit and nearby call sites/tests/templates. Determine: (1) where the CDN picker options and local-vs-prod defaults are defined, (2) how `none` currently behaves in local dev, (3) the production path that emits CSS/JS and uses @import/CDN reference files, (4) exact files/symbols likely needing changes, including whether packages/scaffold/.dev/canvas-theme-editor is a mirrored scratch app, (5) focused tests/build commands and any changeset/security/docs implications. Return a concise evidence-backed implementation plan recommendation with file paths and symbols/line references. Do not modify anything.
+
+---
+
+Start implementation
