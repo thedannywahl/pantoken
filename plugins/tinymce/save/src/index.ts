@@ -167,12 +167,15 @@ function defaultEquals<State>(left: State, right: State): boolean {
 }
 
 function slugifyExportName(name: string): string {
-  const clean = name
+  const normalized = name
     .trim()
     .toLocaleLowerCase()
-    .replace(/[^a-z0-9]+/gu, "-")
-    .replace(/^-+/u, "")
-    .replace(/-+$/u, "");
+    .replace(/[^a-z0-9]+/gu, "-");
+  let start = 0;
+  while (start < normalized.length && normalized.charCodeAt(start) === 45) start += 1;
+  let end = normalized.length;
+  while (end > start && normalized.charCodeAt(end - 1) === 45) end -= 1;
+  const clean = normalized.slice(start, end);
   return clean || "preset";
 }
 
