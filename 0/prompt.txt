@@ -1,0 +1,5 @@
+the deprecations timelines are too long. something that gets deprecated in a patch upstream, should be removed in the upstream minor bump, not the major bump.
+
+---
+
+deprecations is a generated file, we need to fix its generator.
