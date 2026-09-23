@@ -48,34 +48,36 @@
       <textarea id="editor"><div data-pantoken-color="navy"><p></p></div></textarea>
     </div>
     <div class="pane preview-pane">
-      <div class="preview-width-picker" role="group" aria-label="{{previewWidthGroupLabel}}">
-        <button
-          type="button"
-          class="instui-button -size-sm -color-tertiary -toggle -icon-monitor -without-background -without-border"
-          aria-pressed="true"
-          aria-label="{{previewWidthLargeLabel}}"
-          data-preview-width="large"
-        >
-          <span class="instui-screen-reader-content">{{previewWidthLargeLabel}}</span>
-        </button>
-        <button
-          type="button"
-          class="instui-button -size-sm -color-tertiary -toggle -icon-tablet -without-background -without-border"
-          aria-pressed="false"
-          aria-label="{{previewWidthMediumLabel}}"
-          data-preview-width="medium"
-        >
-          <span class="instui-screen-reader-content">{{previewWidthMediumLabel}}</span>
-        </button>
-        <button
-          type="button"
-          class="instui-button -size-sm -color-tertiary -toggle -icon-smartphone -without-background -without-border"
-          aria-pressed="false"
-          aria-label="{{previewWidthSmallLabel}}"
-          data-preview-width="small"
-        >
-          <span class="instui-screen-reader-content">{{previewWidthSmallLabel}}</span>
-        </button>
+      <div class="preview-header">
+        <div class="preview-width-picker" role="group" aria-label="{{previewWidthGroupLabel}}">
+          <button
+            type="button"
+            class="instui-button -size-sm -color-tertiary -toggle -icon-monitor -without-background -without-border"
+            aria-pressed="true"
+            aria-label="{{previewWidthLargeLabel}}"
+            data-preview-width="large"
+          >
+            <span class="instui-screen-reader-content">{{previewWidthLargeLabel}}</span>
+          </button>
+          <button
+            type="button"
+            class="instui-button -size-sm -color-tertiary -toggle -icon-tablet -without-background -without-border"
+            aria-pressed="false"
+            aria-label="{{previewWidthMediumLabel}}"
+            data-preview-width="medium"
+          >
+            <span class="instui-screen-reader-content">{{previewWidthMediumLabel}}</span>
+          </button>
+          <button
+            type="button"
+            class="instui-button -size-sm -color-tertiary -toggle -icon-smartphone -without-background -without-border"
+            aria-pressed="false"
+            aria-label="{{previewWidthSmallLabel}}"
+            data-preview-width="small"
+          >
+            <span class="instui-screen-reader-content">{{previewWidthSmallLabel}}</span>
+          </button>
+        </div>
       </div>
       <iframe id="preview" title="{{previewFrameTitle}}"></iframe>
       <div class="preview-footer">

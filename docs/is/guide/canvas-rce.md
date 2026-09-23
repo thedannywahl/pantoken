@@ -1,5 +1,5 @@
 ---
-title: Canvas: Fjarstýrð kóðakeyrsla
+title: "Canvas: Fjarstýrð kóðakeyrsla"
 layout: page
 ---
 

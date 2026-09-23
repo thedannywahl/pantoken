@@ -22,7 +22,7 @@ msgstr "# Arkitektúr\n\npantoken hefur eitt verkefni: leysa hönnunar-tákn og 
 #: guide/canvas-rce.md
 #, no-c-format
 msgid "---\ntitle: Canvas RCE\nlayout: page\n---\n\n<CanvasRcePage />\n"
-msgstr "---\ntitle: Canvas: Fjarstýrð kóðakeyrsla\nlayout: page\n---\n\n<CanvasRcePage />\n"
+msgstr "---\ntitle: \"Canvas: Fjarstýrð kóðakeyrsla\"\nlayout: page\n---\n\n<CanvasRcePage />\n"
 
 #: guide/cdn-picker.md
 #, no-c-format

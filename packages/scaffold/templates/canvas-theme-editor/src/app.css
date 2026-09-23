@@ -190,7 +190,7 @@
 .preview-pane {
   flex: 0 1 auto;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0;
   min-width: 0;
   min-height: 0;
   border: 2px solid var(--instui-color-stroke-base);
@@ -206,8 +206,6 @@
   display: flex;
   align-self: flex-start;
   gap: 0.125rem;
-  margin-top: 0.5rem;
-  margin-inline-start: 1rem;
 }
 
 #preview-fullscreen-toggle {
@@ -248,9 +246,7 @@ html:has(.preview-pane.-fullscreen) body {
 
 /* Width is set inline (large/medium/small); height grows with content — see updatePreview(). */
 #preview {
-  border-width: 1px 0;
-  border-style: solid;
-  border-color: #ccc;
+  border: 0 none;
   overflow: hidden;
   width: 100%;
   margin-inline: auto;
@@ -265,6 +261,16 @@ html:has(.preview-pane.-fullscreen) body {
   border-radius: 0;
 }
 
+.preview-header {
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-inline-start: 1rem;
+  margin-inline-end: 1rem;
+}
+
 .preview-footer {
+  border-top: 1px solid #ccc;
   align-self: end;
+  width: 100%;
 }

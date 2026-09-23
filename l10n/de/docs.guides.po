@@ -22,7 +22,7 @@ msgstr "# Architektur\n\npantoken hat eine Aufgabe: Instructures Design-Token un
 #: guide/canvas-rce.md
 #, no-c-format
 msgid "---\ntitle: Canvas RCE\nlayout: page\n---\n\n<CanvasRcePage />\n"
-msgstr "---\ntitle: Canvas: Remote-Code-Ausführung (RCE)\nlayout: page\n---\n\n<CanvasRcePage />\n"
+msgstr "---\ntitle: \"Canvas: Remote-Code-Ausführung (RCE)\"\nlayout: page\n---\n\n<CanvasRcePage />\n"
 
 #: guide/cdn-picker.md
 #, no-c-format

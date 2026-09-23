@@ -1,5 +1,5 @@
 ---
-title: Canvas: etäkoodin suoritus (RCE)
+title: "Canvas: etäkoodin suoritus (RCE)"
 layout: page
 ---
 

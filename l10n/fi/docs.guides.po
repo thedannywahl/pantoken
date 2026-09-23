@@ -22,7 +22,7 @@ msgstr "# Arkkitehtuuri\n\npantokenilla on yksi tehtävä: ratkaista Instructure
 #: guide/canvas-rce.md
 #, no-c-format
 msgid "---\ntitle: Canvas RCE\nlayout: page\n---\n\n<CanvasRcePage />\n"
-msgstr "---\ntitle: Canvas: etäkoodin suoritus (RCE)\nlayout: page\n---\n\n<CanvasRcePage />\n"
+msgstr "---\ntitle: \"Canvas: etäkoodin suoritus (RCE)\"\nlayout: page\n---\n\n<CanvasRcePage />\n"
 
 #: guide/cdn-picker.md
 #, no-c-format
