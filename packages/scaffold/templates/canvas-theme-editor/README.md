@@ -44,8 +44,8 @@ This opens a Vite dev server with:
   alignment/edit toolbar on selected images), **Word count** (status bar), **Autosave** (drafts
   persist to the browser's `localStorage`), and **Presets** (explicit named snapshots).
 - A **preview** pane underneath, showing the editor's content with the current CSS/JS tab's
-  stylesheet/script applied plus real CDN `<link>` tags for any picker-inserted icon/component/logo
-  assets, wrapped to match Canvas's own content-area background and max width — a faithful "what
+  stylesheet/script applied plus CDN `<link>` tags or inlined styles for picker-inserted
+  icon/component assets, wrapped to match Canvas's own content-area background and max width — a faithful "what
   this will look like once uploaded to Canvas" check, updated live as you type or edit the theme.
 - The **Edit theme** tray's **Config** tab holds the CDN provider/theme/mode selects and
   **Download theme.css** / **Download theme.js** links; its **CSS**/**JS** tabs start blank —

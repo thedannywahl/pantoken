@@ -59,13 +59,18 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain("getUsedIconCdnFiles");
   expect(main).toContain("syncIconAssetsFromEditor();");
   expect(main).toContain("...currentAssets]");
-  expect(main).toContain("const onMissingAsset = () => refreshAll();");
+  expect(main).toContain("const onMissingAsset = () => void refreshAll();");
   expect(main).toContain('"/node_modules/@pantoken/plugin-logos/dist/*.png"');
   expect(main).toContain("buildFileUrl(file, providerSelect.value)");
   expect(main).toContain("buildAssetUrl: buildSelectedAssetUrl");
   expect(main).toContain("createA11yPlugin");
   expect(main).toContain("createSourceTogglePlugin");
   expect(main).toContain("if (isLocalPreview) {");
+  expect(main).toContain("localProviderOption.value = LOCAL_PROVIDER_ID;");
+  expect(main).toContain("async function inlineAssetCss");
+  expect(main).toContain("const dynamicCss = await inlineAssetCss(currentAssets);");
+  expect(main).toContain("if (selection.provider !== LOCAL_PROVIDER_ID) {");
+  expect(main).toContain("let refreshGeneration = 0;");
   expect(main).toContain("providerSelect.value = LOCAL_PROVIDER_ID;");
   for (const theme of ["next-gen", "canvas", "canvas-high-contrast"]) {
     expect(main).toContain(`@pantoken/tinymce/skins/${theme}/skin.css?inline`);
@@ -117,7 +122,7 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain("activeEditor.resetContent(editorHtml);");
   expect(main).toContain("sourceToggle.replaceAll(editorHtml)");
   expect(main).toContain('selector: "",');
-  expect(main).toContain("<html><head><style>${themeCss}");
+  expect(main).toContain("<head><style>${themeCss}");
   expect(main).not.toContain('<html data-pantoken-color="${selectedColor}">');
   expect(appHtml).toContain('<div data-pantoken-color="navy"><p></p></div>');
   expect(main).toContain('autosave_interval: "30s"');
