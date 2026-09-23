@@ -1,0 +1,92 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M37R5P0KD8J4YGJTFSZ9WGF3",
+  "session_id": "a2084136-5d65-417c-8aa2-a815ebe80a3c",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-23T18:24:15.145181Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 2,
+  "save_step_count": 3,
+  "files_touched": [
+    "packages/scaffold/src/locale.ts",
+    "packages/scaffold/tests/locale.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "46812724c689",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 3
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-23T18:24:15.130511Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 103,
+    "human_modified": 16,
+    "human_removed": 0,
+    "total_committed": 103,
+    "total_lines_changed": 119,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 7,
+      "agent_lines_removed": 7
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 516,
+      "user_lines_removed": 28,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".changeset/tinymce-save-new-export-import.md": 5,
+        "SECURITY.md": 4,
+        "docs/package.json": 1,
+        "docs/scripts/stage-tinymce-save-schema.ts": 13,
+        "packages/scaffold/src/locale.ts": 94,
+        "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl": 26,
+        "packages/scaffold/tests/locale.test.ts": 8,
+        "plugins/pantoken/layouts/src/layouts/about-me/layout.html": 7,
+        "plugins/tinymce/save/README.md": 4,
+        "plugins/tinymce/save/src/i18n.json": 19,
+        "plugins/tinymce/save/src/index.ts": 209,
+        "plugins/tinymce/save/src/strings.ts": 10,
+        "plugins/tinymce/save/tests/index.test.ts": 100,
+        "plugins/tinymce/save/tinymce-save.export.schema.json": 16
+      },
+      "user_removed_per_file": {
+        "SECURITY.md": 2,
+        "docs/package.json": 1,
+        "packages/scaffold/src/locale.ts": 2,
+        "plugins/pantoken/layouts/src/layouts/about-me/layout.html": 7,
+        "plugins/tinymce/save/README.md": 2,
+        "plugins/tinymce/save/src/index.ts": 14
+      }
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 34,
+      "user_lines_removed": 0,
+      "agent_lines_added": 482,
+      "agent_lines_removed": 28,
+      "user_added_per_file": {
+        ".changeset/tinymce-save-new-export-import.md": 5,
+        "docs/scripts/stage-tinymce-save-schema.ts": 13,
+        "plugins/tinymce/save/tinymce-save.export.schema.json": 16
+      }
+    }
+  ]
+}
