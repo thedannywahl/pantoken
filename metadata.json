@@ -1,0 +1,55 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M37F0K542RS071XW6CF87RN5",
+  "strategy": "manual-commit",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 2,
+  "files_touched": [
+    "l10n/ar/scaffold.readme.po",
+    "l10n/ca/scaffold.readme.po",
+    "l10n/cy/scaffold.readme.po",
+    "l10n/da/scaffold.readme.po",
+    "l10n/de/scaffold.readme.po",
+    "l10n/el/scaffold.readme.po",
+    "l10n/en-AU/scaffold.readme.po",
+    "l10n/en-CA/scaffold.readme.po",
+    "l10n/en-GB/scaffold.readme.po",
+    "l10n/en/scaffold.readme.po",
+    "l10n/es/scaffold.readme.po",
+    "l10n/fa/scaffold.readme.po",
+    "l10n/fi/scaffold.readme.po",
+    "l10n/fr-CA/scaffold.readme.po",
+    "l10n/fr/scaffold.readme.po",
+    "l10n/ga/scaffold.readme.po",
+    "l10n/he/scaffold.readme.po",
+    "l10n/hi/scaffold.readme.po",
+    "l10n/ht/scaffold.readme.po",
+    "l10n/hu/scaffold.readme.po",
+    "l10n/hy/scaffold.readme.po",
+    "l10n/id/scaffold.readme.po",
+    "l10n/is/scaffold.readme.po",
+    "l10n/it/scaffold.readme.po",
+    "l10n/ja/scaffold.readme.po",
+    "l10n/ko/scaffold.readme.po",
+    "l10n/mi/scaffold.readme.po",
+    "l10n/ms/scaffold.readme.po",
+    "l10n/nb/scaffold.readme.po",
+    "l10n/scaffold.readme.pot"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
