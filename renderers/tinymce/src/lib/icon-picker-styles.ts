@@ -34,23 +34,35 @@ const PAINTER_CSS = `
   mask: var(--pantoken-glyph) center / contain no-repeat;
 }`;
 
-/** Layout for the picker chrome. Deliberately self-contained so no Oxide collection styles apply. */
+/**
+ * Layout for the picker chrome. Deliberately self-contained so no Oxide collection styles apply.
+ *
+ * TinyMCE's skin ships `.tox :not(svg):not(rect) { color: inherit; font-family: inherit; ... }`,
+ * which — because this dialog is a descendant of `.tox` — outguns any of these unscoped,
+ * single-class rules on specificity ((0,1,2) beats a plain class's (0,1,0)). Search/tab/grid borders
+ * use `currentColor`, so a washed-out inherited `color` made them look invisible; forcing a real,
+ * scheme-adaptive `color` here fixes all of them at once. `!important` on `overflow`/`height` guards
+ * against the same reset capping this at "so tall it pushes the dialog's own Cancel/Insert buttons
+ * off-screen" — see the tinymce-codemirror package for the same class of fix.
+ */
 const LAYOUT_CSS = `
 .${PICKER_ROOT_CLASS} {
   display: flex;
   flex-direction: column;
   gap: 8px;
   min-height: 0;
-  height: 60vh;
+  height: min(60vh, 420px) !important;
+  overflow: hidden !important;
+  color: CanvasText !important;
 }
 .${PICKER_ROOT_CLASS}__search {
   width: 100%;
   box-sizing: border-box;
   padding: 6px 8px;
   font: inherit;
-  color: inherit;
+  color: inherit !important;
   background: transparent;
-  border: 1px solid currentColor;
+  border: 1px solid currentColor !important;
   border-radius: 4px;
   opacity: 0.999;
 }
@@ -58,21 +70,23 @@ const LAYOUT_CSS = `
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
+  flex: none;
 }
 .${PICKER_ROOT_CLASS}__tab {
   padding: 4px 10px;
   font: inherit;
   font-size: 0.85em;
-  color: inherit;
+  color: inherit !important;
   cursor: pointer;
   background: transparent;
-  border: 1px solid currentColor;
+  border: 1px solid currentColor !important;
   border-radius: 999px;
   opacity: 0.65;
 }
 .${PICKER_ROOT_CLASS}__tab[aria-selected="true"] {
   font-weight: 600;
   opacity: 1;
+  background: color-mix(in srgb, currentColor 12%, transparent);
 }
 .${PICKER_ROOT_CLASS}__grid {
   display: grid;
@@ -81,8 +95,8 @@ const LAYOUT_CSS = `
   gap: 4px;
   min-height: 0;
   padding: 4px;
-  overflow-y: auto;
-  border: 1px solid currentColor;
+  overflow-y: auto !important;
+  border: 1px solid currentColor !important;
   border-radius: 4px;
 }
 .${PICKER_ROOT_CLASS}__tile {
@@ -92,7 +106,7 @@ const LAYOUT_CSS = `
   aspect-ratio: 1;
   padding: 0;
   font-size: 20px;
-  color: inherit;
+  color: inherit !important;
   cursor: pointer;
   background: transparent;
   border: 1px solid transparent;
@@ -100,13 +114,18 @@ const LAYOUT_CSS = `
 }
 .${PICKER_ROOT_CLASS}__tile:hover,
 .${PICKER_ROOT_CLASS}__tile:focus-visible {
-  border-color: currentColor;
+  border-color: currentColor !important;
+}
+.${PICKER_ROOT_CLASS}__tile.is-selected {
+  border-color: currentColor !important;
+  background: color-mix(in srgb, currentColor 18%, transparent);
 }
 .${PICKER_ROOT_CLASS}__sentinel {
   grid-column: 1 / -1;
   height: 1px;
 }
 .${PICKER_ROOT_CLASS}__status {
+  flex: none;
   font-size: 0.8em;
   opacity: 0.7;
 }

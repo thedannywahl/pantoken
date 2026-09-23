@@ -70,9 +70,21 @@ test("searching narrows the grid and reports an empty state", async () => {
   vi.useRealTimers();
 });
 
-test("clicking a tile reports the icon it was built from", () => {
-  const { root, onPick } = mount();
-  tiles(root)[2].click();
+test("clicking a tile selects it; double-clicking inserts it", () => {
+  document.body.innerHTML = renderPickerShell("picker");
+  const root = document.getElementById("picker")!;
+  const onPick = vi.fn();
+  const onSelect = vi.fn();
+  const picker = mountIconPicker(root, icons, { strings, onPick, onSelect });
+
+  const tile = Array.from(root.querySelectorAll<HTMLButtonElement>(".pantoken-ip__tile"))[2];
+  tile.click();
+  expect(onPick).not.toHaveBeenCalled();
+  expect(onSelect).toHaveBeenCalledWith(icons[2]);
+  expect(picker.getSelected()).toBe(icons[2]);
+  expect(tile.classList.contains("is-selected")).toBe(true);
+
+  tile.dispatchEvent(new MouseEvent("dblclick", { bubbles: true }));
   expect(onPick).toHaveBeenCalledWith(icons[2]);
 });
 

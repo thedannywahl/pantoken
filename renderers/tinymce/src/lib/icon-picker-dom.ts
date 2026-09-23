@@ -26,12 +26,17 @@ export interface IconPickerStrings {
 /** Options for {@link mountIconPicker}. */
 export interface IconPickerOptions {
   strings: IconPickerStrings;
+  /** Double-click (or Enter) on a tile: insert it immediately and close the dialog. */
   onPick: (icon: TaggedIcon) => void;
+  /** Single click (or arrow-key navigation) on a tile: mark it selected for the Insert button. */
+  onSelect?: (icon: TaggedIcon | undefined) => void;
 }
 
 /** A mounted picker; call `destroy` when the dialog closes. */
 export interface MountedIconPicker {
   destroy: () => void;
+  /** The currently selected (single-clicked) icon, if any. */
+  getSelected: () => TaggedIcon | undefined;
 }
 
 /**
@@ -104,9 +109,17 @@ export function mountIconPicker(
   let matches: TaggedIcon[] = [];
   let rendered = 0;
   let activeIndex = 0;
+  let selectedIndex: number | undefined;
 
   const tileAt = (index: number): HTMLButtonElement | null =>
     grid.children.item(index) as HTMLButtonElement | null;
+
+  function setSelected(index: number | undefined): void {
+    if (selectedIndex !== undefined) tileAt(selectedIndex)?.classList.remove("is-selected");
+    selectedIndex = index;
+    if (index !== undefined) tileAt(index)?.classList.add("is-selected");
+    options.onSelect?.(index !== undefined ? matches[index] : undefined);
+  }
 
   function setActive(index: number, focus: boolean): void {
     const clamped = Math.max(0, Math.min(index, rendered - 1));
@@ -143,6 +156,8 @@ export function mountIconPicker(
     matches = filterIcons(icons, search.value, source);
     rendered = 0;
     activeIndex = 0;
+    selectedIndex = undefined;
+    options.onSelect?.(undefined);
     grid.replaceChildren(sentinel);
     status.textContent =
       matches.length === 0
@@ -182,9 +197,16 @@ export function mountIconPicker(
   const onGridClick = (event: Event): void => {
     const tile = (event.target as HTMLElement).closest<HTMLElement>(`.${PICKER_ROOT_CLASS}__tile`);
     const index = tile?.dataset.index;
-    if (index !== undefined) options.onPick(matches[Number(index)]);
+    if (index !== undefined) setSelected(Number(index));
   };
   grid.addEventListener("click", onGridClick);
+
+  const onGridDblClick = (event: Event): void => {
+    const tile = (event.target as HTMLElement).closest<HTMLElement>(`.${PICKER_ROOT_CLASS}__tile`);
+    const index = tile?.dataset.index;
+    if (index !== undefined) options.onPick(matches[Number(index)]);
+  };
+  grid.addEventListener("dblclick", onGridDblClick);
 
   function columnCount(): number {
     const tile = tileAt(0);
@@ -203,6 +225,12 @@ export function mountIconPicker(
     if (event.key === "Home" || event.key === "End") {
       event.preventDefault();
       setActive(event.key === "Home" ? 0 : rendered - 1, true);
+      return;
+    }
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      const icon = matches[activeIndex];
+      if (icon) options.onPick(icon);
       return;
     }
     const delta = step[event.key];
@@ -226,8 +254,10 @@ export function mountIconPicker(
       search.removeEventListener("input", onSearch);
       tabs.removeEventListener("click", onTabClick);
       grid.removeEventListener("click", onGridClick);
+      grid.removeEventListener("dblclick", onGridDblClick);
       grid.removeEventListener("keydown", onGridKeydown);
       root.replaceChildren();
     },
+    getSelected: () => (selectedIndex !== undefined ? matches[selectedIndex] : undefined),
   };
 }

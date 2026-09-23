@@ -57,7 +57,7 @@ function insertIcon(editor: Editor, icon: TaggedIcon, options: IconsPickerOption
 }
 
 function openIconsDialog(editor: Editor, options: IconsPickerOptions): void {
-  let picker: { destroy: () => void } | undefined;
+  let picker: { destroy: () => void; getSelected: () => TaggedIcon | undefined } | undefined;
 
   const dialog = editor.windowManager.open({
     title: TINYMCE_STRINGS.iconsDialogTitle,
@@ -68,7 +68,21 @@ function openIconsDialog(editor: Editor, options: IconsPickerOptions): void {
         { type: "htmlpanel", html: renderPickerShell(PICKER_ROOT_ID), presets: "presentation" },
       ],
     },
-    buttons: [{ type: "cancel", text: TINYMCE_STRINGS.cancelButton }],
+    buttons: [
+      { type: "cancel", text: TINYMCE_STRINGS.cancelButton },
+      {
+        type: "submit",
+        name: "insert",
+        text: TINYMCE_STRINGS.insertButton,
+        primary: true,
+        enabled: false,
+      },
+    ],
+    onSubmit: (api) => {
+      const icon = picker?.getSelected();
+      if (icon) insertIcon(editor, icon, options);
+      api.close();
+    },
     onClose: () => picker?.destroy(),
   });
 
@@ -85,6 +99,7 @@ function openIconsDialog(editor: Editor, options: IconsPickerOptions): void {
       resultCount: TINYMCE_STRINGS.iconsResultCount,
       emptyMessage: TINYMCE_STRINGS.iconsNoResults,
     },
+    onSelect: (icon) => dialog.setEnabled("insert", icon !== undefined),
     onPick: (icon) => {
       insertIcon(editor, icon, options);
       dialog.close();

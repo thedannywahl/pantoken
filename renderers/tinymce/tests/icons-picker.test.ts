@@ -29,9 +29,10 @@ function createMockEditor() {
   const mocks = {
     addCommand: vi.fn((name: string, handler: () => void) => commands.set(name, handler)),
     close: vi.fn(),
+    setEnabled: vi.fn(),
     insertContent: vi.fn(),
     setRng: vi.fn(),
-    open: vi.fn(() => ({ close: mocks.close })),
+    open: vi.fn(() => ({ close: mocks.close, setEnabled: mocks.setEnabled })),
     addButton: vi.fn(),
     addMenuItem: vi.fn(),
     addAutocompleter: vi.fn(),
@@ -107,7 +108,9 @@ test("opening the picker injects the preview stylesheets once", () => {
 test("picking an icon inserts it, tracks its CSS asset, and closes the dialog", () => {
   const { editor, mocks, currentAssets } = setup();
   const root = openPicker(editor, mocks.open);
-  root.querySelector<HTMLButtonElement>(".pantoken-ip__tile")!.click();
+  root
+    .querySelector<HTMLButtonElement>(".pantoken-ip__tile")!
+    .dispatchEvent(new MouseEvent("dblclick", { bubbles: true }));
 
   expect(mocks.insertContent).toHaveBeenCalledWith(
     '<span class="instui-icon -icon-heart" aria-hidden="true"></span>',
@@ -126,7 +129,9 @@ test("picking an icon in source view routes the insert to the CodeMirror doc", (
   };
   createIconsPlugin({ icons: mockIcons, currentAssets: [] })(editor);
   const root = openPicker(editor, mocks.open);
-  root.querySelector<HTMLButtonElement>(".pantoken-ip__tile")!.click();
+  root
+    .querySelector<HTMLButtonElement>(".pantoken-ip__tile")!
+    .dispatchEvent(new MouseEvent("dblclick", { bubbles: true }));
 
   expect(insertAtCursor).toHaveBeenCalledWith(
     '<span class="instui-icon -icon-heart" aria-hidden="true"></span>',

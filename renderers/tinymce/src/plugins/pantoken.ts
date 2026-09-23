@@ -24,7 +24,8 @@ export const PANTOKEN_PLUGIN_NAME = "pantoken";
 /** Toolbar menu-button name to pass in TinyMCE's `toolbar` init option. */
 export const PANTOKEN_TOOLBAR_NAME = "pantoken";
 
-const PANTOKEN_ICON =
+/** Pantoken's own logomark, reused for the toolbar menu button and any host UI that wants it. */
+export const PANTOKEN_ICON =
   '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><svg x="4" y="4" width="16" height="16" viewBox="101.782 121.756 123.284 123.284"><path d="M222 386V589H331C400 589 442 550 442 487C442 426 400 386 331 386ZM348 267C488 267 581 359 581 488C581 616 488 709 348 709H83V0H221V267Z" transform="translate(100 238) scale(.156 -.156)"/><circle cx="200" cy="225.5" r="13.9"/></svg></svg>';
 
 /** Configuration for the content plugins composed by {@link createPantokenPlugin}. */

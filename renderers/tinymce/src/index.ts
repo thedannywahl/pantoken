@@ -24,6 +24,7 @@ export {
 
 export {
   createPantokenPlugin,
+  PANTOKEN_ICON,
   PANTOKEN_PLUGIN_NAME,
   PANTOKEN_TOOLBAR_NAME,
   type PantokenPluginOptions,
