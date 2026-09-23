@@ -1,0 +1,26 @@
+scope allowing the canvas-theme-editor scaffold to have the preview open in a popup so the user can have just the editor in one window and just the preview in another - the preview should auto-matically go to its fullscreen layout, and when in a pop up clicking the 'minimize' footer button or the close on the browser chrome should close and return it to its previous position (columns/rows)
+
+---
+
+Planning-only, read-only exploration in /Users/dwahl/Scripts/pantoken. Do not edit files. Thoroughness: thorough. User wants to scope allowing the canvas-theme-editor scaffold preview to open in a separate popup window, automatically use fullscreen preview layout there, and when the popup's in-app Minimize footer button is clicked OR browser chrome closes the popup, return preview to its prior editor layout position (columns/rows).
+
+Follow repo instructions: first run `entire status`, then the mandatory first location search `entire graph search --repo . --profile full --query "canvas theme editor scaffold preview popup fullscreen minimize close restore columns rows"`; inspect .entire/graph-agent.md if needed. Also check git/checkpoint history for key files and explain relevant checkpoints where available (JSON/no-pager).
+
+Research and report:
+1. Exact current source files/symbols controlling preview layout modes, fullscreen/minimize footer, editor columns/rows, state persistence, responsive behavior, and scaffold generation/tests.
+2. Current state transitions and DOM/component architecture; identify nearest analogous window/open/close lifecycle patterns in this repo if any.
+3. Browser implementation constraints: popup blocked handling, window.open feature/name choice, detecting browser-chrome close (beforeunload/pagehide/poll/opener), same-origin assumptions, state synchronization and ownership, cleanup, duplicate popups, opener reload/close, and accessibility/control labeling. Tie recommendations to the existing app architecture, not generic advice.
+4. Focused automated tests and manual browser checks that fit existing tooling. Identify exact package scripts/vite tasks/commands.
+5. User-visible docs/demo/generated-template/changeset implications, including whether source and generated copies both exist.
+6. Ambiguities requiring user choice, especially what UI command opens the popup, meaning of 'previous position (columns/rows)', whether popup dimensions should be persisted, and whether the original editor should show a placeholder/control while detached.
+7. Give a recommended implementation design, exact files likely modified, dependencies/order, scope exclusions, and risks.
+
+Return concise but sufficiently detailed findings with workspace-relative paths and symbol names. Clearly distinguish checkpoint-backed intent from code inference.
+
+---
+
+Start implementation
+
+---
+
+Try Again
