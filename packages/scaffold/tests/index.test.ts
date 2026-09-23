@@ -41,7 +41,7 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(appHtml).toContain('popovertargetaction="hide"');
   expect(appHtml).toContain('aria-label="{{closeLabel}}"');
   expect(appHtml).not.toContain("theme-picker__item");
-  expect(main.match(/selectToggleButton\(themeButtons, themeButton\);/g)).toHaveLength(2);
+  expect(main.match(/selectToggleButton\(themeButtons, themeButton\);/g)).toHaveLength(3);
   expect(main).toContain("selectToggleButton(themeButtons, button);");
   expect(main).not.toContain("selectButton(themeButtons");
   expect(main).toContain(
