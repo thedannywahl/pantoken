@@ -14,7 +14,6 @@ export {
   SCOPE_LAYERS,
   THEME_ATTR,
   colorClass,
-  colorScopeSelector,
   isScheme,
   schemeClass,
   schemeScopeSelector,

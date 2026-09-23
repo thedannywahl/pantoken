@@ -75,6 +75,10 @@
     "tools/demo/runner/*.css",
     "plugins/pantoken/custom-components/src/**/*.css",
     "plugins/pantoken/layouts/src/**/*.css",
+    // Copied into the generated Canvas RCE app by docs/scripts/build-canvas-rce.ts.
+    "docs/scripts/canvas-rce-iframe-height.js",
+    // Imported by main.ts.tmpl after the scaffold strips the .tmpl suffix in the generated app.
+    "packages/scaffold/templates/canvas-theme-editor/src/preferences.ts",
     // Every scaffold template's CSS is only ever imported from a sibling *.ts/*.tmpl entry that
     // itself lives under templates/ — fallow doesn't trace those as real entry points (the scaffold
     // strips the .tmpl suffix at scaffold-time, same as the /src/main.ts convention below), and the
