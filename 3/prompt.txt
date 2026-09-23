@@ -1,0 +1,53 @@
+continuing previous work on renderers/tinymce and canvas-theme-editor scaffold both embed and standalone app mode:
+
+* my system is dark and it says 'system' but it's loading light. swapping to explicit light or dark and then setting it back to system it appears dark.
+* the 'navy' color should be indicated as the default, right now it's nothing.
+* change the top left logo from a swatch with the pantoken logo, to a link decorated with the `instui-button` in primary color and swap the glyph between black and white depending on light/dark. the link should open pantoken.app in a new tab/window.
+* a primary button in tinymce modal in dark mode is still white on white
+* a selected icon in the icons picker should have an indicator that it is the active selection
+* in side-by-side mode the desktop view may be narrower than the tablet view b/c the preview pane gets 50% of the view width.
+* the displayed glyph in the tinymce editor for an icon should be selectable so users can change the color, size, delete it, etc.
+* clicking off the theme or language picker or pushing `esc` should close it
+* the accessibility checker icon is black in dark mode, the other icons swap.
+* in column mode the user should be able to resize the editor to make it taller, but it has a fixed max-height.  in rows mode this does not happen.
+
+---
+
+Explore the workspace /Users/dwahl/Scripts/pantoken, specifically packages/scaffold/templates/canvas-theme-editor/ (the standalone/embed app for previewing pantoken themes). I need to understand the following areas of the codebase in detail (read actual file contents, don't just list files):
+
+1. Theme mode switching logic: how does the app implement "system" vs "light" vs "dark" theme selection? Look for a theme picker component/store (likely in src/), how it applies `data-theme` or `color-scheme` or `prefers-color-scheme` media query listeners, and where the bug might be: user's OS is dark, app shows "system" selected but renders light; switching to explicit light/dark and back to system then correctly shows dark. This smells like a stale/uninitialized matchMedia listener or the initial computed value not being reactive on load.
+
+2. The color/theme picker: how are color options like "navy" listed/rendered? Is there a currently-selected/default indicator (checkmark, border, etc.) for the active choice? Find where the picker renders options and current selection.
+
+3. Top-left logo: find the current logo element (likely an `<img>` or button in a header/nav component) that shows a "swatch" with the pantoken logo. Find its file, current markup and CSS classes used (should use @pantoken/components e.g. instui-button primary variant), and any existing icon-swapping pattern used elsewhere in the app for light/dark glyph variants (search for prefers-color-scheme or data-theme usage swapping icon/glyph elsewhere, e.g. accessibility checker icon issue below might reveal the established swap pattern).
+
+4. Side-by-side / column vs row layout mode: find the CSS/layout code controlling "side-by-side" (desktop/tablet/mobile preview) with the preview pane getting 50% width, and the "column mode" vs "rows mode" resize behavior with a fixed max-height in column mode. Find the CSS file(s) and relevant class names/selectors controlling grid/flex layout, resize handles, and max-height rules.
+
+5. Theme picker / language picker dropdown: find how these dropdowns are implemented (native <select>? custom popover/dialog with `popover` attribute or Invoker Commands API?) and whether there's existing click-outside or Escape-key handling logic anywhere in the app that could be reused/extended.
+
+Report back:
+- Full relative file paths for each area
+- Key function/component names and line numbers
+- Relevant existing CSS class names and file paths
+- Any existing patterns for light/dark glyph swapping already established in the code
+- Your best understanding of root cause for the "system theme shows light but should show dark" bug
+
+---
+
+Start implementation
+
+---
+
+you manually write a changeset for this.
+
+---
+
+a few more issues:
+* the theme color swatches in standalone/pwa mode's header should be hard-coded to light/dark values like the version in the tray, otherwise the blue/navy swatches get remapped.
+* exporting a package is always called 'canvas-theme.zip' and exporting is always 'untitled.json' - we should use the name of the open save file.
+* I removed the span for the copy confirmation, we can remove the interactivity for it too.
+
+---
+
+and a final issue:
+/tools/canvas-rce/ endpoint 404s in vitepress but /tools/canvas-rce/index.html serves correctly.
