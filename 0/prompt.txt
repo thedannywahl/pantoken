@@ -1,0 +1,80 @@
+[plugins/tinymce/save/src/index.ts](https://github.com/thedannywahl/pantoken/pull/178/files/6fb16e9a2e24b744409726b9d5b6d182ebda5499#diff-46364e263317022a7328aadf302d3218f3cf078b10d94d95e1d7e2bdf4938644)
+```
+const clean = name
+
+            
+          
+          
+
+              
+
+              
+
+            
+                  .trim()
+
+            
+          
+          
+
+              
+
+              
+
+            
+                  .toLocaleLowerCase()
+
+            
+          
+          
+
+              
+
+              
+
+            
+                  .replace(/[^a-z0-9]+/gu, "-")
+
+            
+          
+          
+
+              
+
+              
+
+            
+                  .replace(/^-+/u, "")
+
+            
+          
+          
+
+              
+
+              
+
+            
+                  .replace(/-+$/u, "");
+
+            
+          
+    
+
+  
+    
+        
+  
+
+  
+  
+  
+### github-advanced-security commented 2 minutes ago
+![@github-advanced-security](https://avatars.githubusercontent.com/in/57789?v=4&size=48)
+
+github-advanced-securitybot
+[](https://github.com/thedannywahl/pantoken/pull/178#discussion_r4086024364)
+```
+### CodeQL / Polynomial regular expression used on uncontrolled data
+
+This [regular expression](https://github.com/thedannywahl/pantoken/pull/1) that depends on [library input](https://github.com/thedannywahl/pantoken/pull/2) may run slow on strings with many repetitions of '-'.
