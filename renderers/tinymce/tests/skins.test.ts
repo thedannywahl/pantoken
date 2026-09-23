@@ -33,7 +33,7 @@ test("uses Oxide convention skin entrypoints with theme variable overrides", () 
     ["canvas-high-contrast", "--instui-color-stroke-base"],
   ] as const) {
     const source = readFileSync(resolve(sourceRoot, theme, "skin.less"), "utf8");
-    expect(source).toContain("@import 'src/less/theme/theme';");
+    expect(source).toContain('@import "src/less/theme/theme";');
     expect(source).toContain("src/less/generated/");
     const generatedName = theme === "next-gen" ? "next-gen-light" : theme;
     const generated = readFileSync(

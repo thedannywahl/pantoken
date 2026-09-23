@@ -264,5 +264,5 @@ test("renders a passed-in locale, falling back to English for missing translatio
   const heroItem = dialogSpec.body.items[0].items.find(
     (item: { value: string }) => item.value === "hero",
   );
-  expect(heroItem).toEqual({ value: "hero", text: "Hero" });
+  expect(heroItem).toEqual({ value: "hero", text: "Kiemelt rész" });
 });

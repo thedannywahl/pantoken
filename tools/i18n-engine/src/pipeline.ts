@@ -101,7 +101,10 @@ function reportPotStaleness(
 
 /** Normalize whole-file Markdown translations to the formatter's stable paragraph indentation. */
 export function normalizeWholeFileMarkdown(content: string): string {
-  return content.trim().replace(/^ (?=\S)/gmu, "");
+  return content
+    .trim()
+    .replace(/^ (?=\S)/gmu, "")
+    .replace(/[ \t]+$/gmu, "");
 }
 
 /** Every known, non-excluded locale across every tier (before a space narrows it further). */
