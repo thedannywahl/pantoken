@@ -1,0 +1,50 @@
+we need a bigger fix/approach to having multiple instances of pantoken in an app page. we're constantly fighting between docs and canvas-theme-editor scaffold's preview iframe.  causing inheritance, sync, desync issues.  what we need to be able to support:
+* multiple active themes
+* multiple active color schemes
+* a way to auto-detect/resolve inheritance
+* a way to manually config to avoid collision in the first place
+
+---
+
+Read-only exploration of /Users/dwahl/Scripts/pantoken.
+
+GOAL: Map the canvas-theme-editor scaffold and its preview iframe, plus the docs site demo embedding, since the two "fight" over pantoken theming.
+
+Report on:
+1. platforms/canvas-theme-editor — full file listing and purpose of each file. What it generates, what CSS/JS it ships, how a user theme is expressed (JSON? CSS vars?), and how it is applied.
+2. packages/scaffold and packages/scaffold-base — what templates exist, especially any canvas-theme-editor / preview template. Where an iframe (`<iframe`, `srcdoc`, `contentDocument`, `postMessage`) is created and what gets injected into it.
+3. docs/.vitepress and docs/demos — how live component demos are rendered. In an iframe or inline? How is demo CSS scoped away from the docs site's own chrome styles? Look for any `.vitepress/theme` custom CSS, `@pantoken/components` imports, and any scoping wrapper class.
+4. Search the repo for existing workarounds/hacks around this conflict: grep for terms like "iframe", "isolat", "scope", "collide", "conflict", "leak", "bleed", "desync", "inherit" in docs/engineering-log.md, docs/conventions/*.md, and source comments.
+5. Any build-time option that rewrites the CSS custom property prefix (e.g. `--instui-` → something else) — in formats/css, plugins/postcss, packages/core, packages/cli.
+
+Return a structured report with workspace-relative paths, line numbers, and short snippets. Do NOT edit anything.
+
+---
+
+Read-only exploration of /Users/dwahl/Scripts/pantoken. I am planning a refactor to support multiple pantoken theme/color-scheme scopes on one page. I need exact implementation detail.
+
+Report precisely (paths + line numbers + real code snippets):
+
+1. formats/css: full src file listing. For `to-css.ts`, `emit.ts`, `theme-variants.ts`, `foundation.ts`, `index.ts` — show the exported API signatures (`toCss`, `ToCssOptions`, `themedCss`, `emit*`), how `scope` option is threaded, how `@property` rules vs declarations are separated (is there already a split?), and how `light-dark()` values are produced/flattened. Also list every built CSS file the package publishes (check package.json `exports` and the build script / tsdown config) — e.g. `index.css`, `*.lean.css`, per-theme files.
+
+2. How `light-dark()` gets lowered: search for any Vite/lightningcss/postcss config that transforms `light-dark()` or sets browser targets (vite.config.base.ts, docs/.vitepress/config, tsdown configs, plugins/postcss/*).
+
+3. docs/.vitepress/theme/theme.ts — show the FULL file contents (or at least all exported functions and their line ranges). Also docs/.vitepress/theme/index.ts and docs/scripts/site-themes.ts in full.
+
+4. tools/demo/src/srcdoc.ts and tools/demo/runner/main.ts — the theme/postMessage-related sections with line numbers.
+
+5. packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl — the theme application + preview iframe wiring sections, with line numbers. And platforms/canvas-theme-editor/src/build-theme.ts exported API.
+
+6. Repo conventions for adding a NEW package: pick a recent small package (e.g. formats/interactions or packages/plugin-kit) and report its package.json shape, tsdown/build config, tsconfig, test setup, and what central files must be updated when adding a package (pnpm-workspace.yaml, root tsconfig references, packages/pantoken + packages/flat-pantoken barrels, docs nav/api config, compatibility.json, .changeset). List the exact files.
+
+7. formats/interactions/src — how behaviors + IIFE entry points are structured, and whether there is an existing DOM-walking/ancestor-resolution helper I could reuse.
+
+Do NOT edit anything. Be exhaustive but structured.
+
+---
+
+Start implementation
+
+---
+
+finish the phases.
