@@ -1,0 +1,1 @@
+if the canvas-theme-editor isn't importing pantoken prose styles let's add it so we don't have to declare as many helper classes here in layouts.  If it is using it already, then just simplify this code.
