@@ -1,0 +1,792 @@
+[Terminal 7429763f-3904-4ce3-a97b-1a55a7131d1d notification: command completed with exit code 1. The terminal has been cleaned up.]
+Terminal output:
+nt": {^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3376685Z ^[[36;1m    "result": "success",^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3377198Z ^[[36;1m    "outputs": {}^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3377665Z ^[[36;1m  },^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3378771Z ^[[36;1m  "upstream-changes": {^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3379314Z ^[[36;1m    "result": "success",^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3379835Z ^[[36;1m    "outputs": {^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3380313Z ^[[36;1m      "upstream": "true"^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3380821Z ^[[36;1m    }^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3381228Z ^[[36;1m  },^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3381678Z ^[[36;1m  "upstream-drift": {^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3382190Z ^[[36;1m    "result": "success",^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3382719Z ^[[36;1m    "outputs": {}^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3383188Z ^[[36;1m  },^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3383620Z ^[[36;1m  "docs-changes": {^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3384137Z ^[[36;1m    "result": "success",^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3384658Z ^[[36;1m    "outputs": {^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3385145Z ^[[36;1m      "docs": "true"^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3385618Z ^[[36;1m    }^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3386025Z ^[[36;1m  },^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3386445Z ^[[36;1m  "docs": {^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3386902Z ^[[36;1m    "result": "success",^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3387439Z ^[[36;1m    "outputs": {}^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3387907Z ^[[36;1m  },^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3388692Z ^[[36;1m  "i18n-changes": {^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3389193Z ^[[36;1m    "result": "success",^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3389709Z ^[[36;1m    "outputs": {^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3390184Z ^[[36;1m      "i18n": "true"^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3390665Z ^[[36;1m    }^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3391210Z ^[[36;1m  },^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3391632Z ^[[36;1m  "i18n-drift": {^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3392120Z ^[[36;1m    "result": "success",^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3392641Z ^[[36;1m    "outputs": {}^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3393320Z ^[[36;1m  }^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3393728Z ^[[36;1m}'^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3394131Z ^[[36;1mexit 1^[[0m
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3911133Z shell: /usr/bin/bash -e {0}
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3912599Z env:
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3913507Z   VP_TASK_CACHE: node_modules/.vite/task-cache
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3914645Z   VP_CACHE_KEY_PREFIX: vp-taskcache-
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.3915667Z ##[endgroup]
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4207143Z A required CI job failed or was cancelled:
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4207825Z {
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4208863Z   "build": {
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4209565Z     "result": "success",
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4210075Z     "outputs": {}
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4210510Z   },
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4210901Z   "typecheck": {
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4211346Z     "result": "success",
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4211820Z     "outputs": {}
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4212238Z   },
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4212654Z   "test": {
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4213061Z     "result": "success",
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4213527Z     "outputs": {}
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4213947Z   },
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4214384Z   "coverage": {
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4214827Z     "result": "success",
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4215301Z     "outputs": {}
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4215718Z   },
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4216093Z   "fallow": {
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4216578Z     "result": "success",
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4217059Z     "outputs": {}
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4217513Z   },
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4217919Z   "lint": {
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4218610Z     "result": "success",
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4219090Z     "outputs": {}
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4219570Z   },
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4220021Z   "publint": {
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4220458Z     "result": "success",
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4220924Z     "outputs": {}
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4221401Z   },
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4221865Z   "attw": {
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4222314Z     "result": "cancelled",
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4222829Z     "outputs": {}
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4223243Z   },
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4223699Z   "repository": {
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4224140Z     "result": "success",
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4224637Z     "outputs": {}
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4225132Z   },
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4225522Z   "commitlint": {
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4225992Z     "result": "success",
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4226469Z     "outputs": {}
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4226928Z   },
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4227340Z   "upstream-changes": {
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4227825Z     "result": "success",
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4228681Z     "outputs": {
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4229408Z       "upstream": "true"
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4229887Z     }
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4230307Z   },
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4230739Z   "upstream-drift": {
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4231236Z     "result": "success",
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4231827Z     "outputs": {}
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4232391Z   },
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4232797Z   "docs-changes": {
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4233242Z     "result": "success",
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4233737Z     "outputs": {
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4234164Z       "docs": "true"
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4234589Z     }
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4234967Z   },
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4235348Z   "docs": {
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4235768Z     "result": "success",
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4236235Z     "outputs": {}
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4236655Z   },
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4237079Z   "i18n-changes": {
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4237550Z     "result": "success",
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4238207Z     "outputs": {
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4238645Z       "i18n": "true"
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4239082Z     }
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4239454Z   },
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4239847Z   "i18n-drift": {
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4240276Z     "result": "success",
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4240730Z     "outputs": {}
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4241139Z   }
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4241514Z }
+ci-gate Verify no CI job failed 2026-09-23T18:36:10.4259246Z ##[error]Process completed with exit code 1.
+pantoken on tinymce-utility ≡ via  26.10.0 
+➜  GH_PAGER=cat gh api repos/thedannywahl/pantoken/actions/runs/35902648954/jobs --paginate --jq '.jobs[] | [.name, .status, (.conclusion // "pending"), .id] | @tsv'
+commitlint      completed       success 107322581003
+docs-changes    completed       success 107322581442
+build   completed       success 107322581457
+upstream-changes        completed       success 107322581530
+i18n-changes    completed       success 107322581569
+repository      completed       success 107322581582
+entire-checkpoint-linkage       completed       success 107322581637
+benchmarks      completed       success 107323293695
+publint completed       success 107323293719
+coverage        completed       success 107323293721
+typecheck       completed       success 107323293759
+lint    completed       success 107323293760
+test    completed       success 107323293810
+docs    completed       success 107323293856
+fallow  completed       success 107323293906
+attw    completed       cancelled       107323293921
+upstream-drift  completed       success 107323293940
+i18n-drift      completed       success 107323294212
+ci-gate completed       failure 107325596146
+pantoken on tinymce-utility ≡ via  26.10.0 
+➜  GH_PAGER=cat gh api repos/thedannywahl/pantoken/commits/d7b06f93f/check-runs --jq '.check_runs[] | select(.name | test("CodSpeed|codecov|coverage|fallow|test|publint|i18n"; "i")) | [.name, .status, (.conclusion // "pending"), .details_url] | @tsv'
+CodSpeed Performance Analysis   completed       success https://app.codspeed.io/thedannywahl/pantoken/branches/tinymce-utility?utm_source=github&utm_medium=check&utm_content=details
+codecov/project/docs    completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/project/scripts completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/project/tools   completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/project/plugins completed       failure https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/project/platforms       completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/project/bundlers        completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/project/renderers       completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/patch/web-components    completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/project/web-components  completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/patch/format: tokens    completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/project/format: tokens  completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/patch/format: icons     completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/project/format: icons   completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/patch/format: css       completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/project/format: css     completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/patch/format: components        completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/project/format: components      completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/patch/cli       completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/project/cli     completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/patch/plugin-kit        completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/project/plugin-kit      completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/patch/utils     completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/project/utils   completed       failure https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/patch/core      completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/project/core    completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/patch/design    completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/project/design  completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+codecov/patch/ai        completed       success https://app.codecov.io/gh/thedannywahl/pantoken/pull/178
+pantoken on tinymce-utility ≡ via  26.10.0 
+➜  git status --short --branch && git --no-pager log -5 --oneline --decorate
+## tinymce-utility...origin/tinymce-utility
+a5a7fd32b (HEAD -> tinymce-utility, origin/tinymce-utility) feat(tinymce-save): add New, Export, and Import
+87f703a68 feat(scaffold): add standalone canvas theme editor app shell
+d7b06f93f chore: remove fallow dead code
+52db8133a fix(scaffold): resolve browser locale detection
+2712d9f27 ci: give codspeed benchmarks unique names
+pantoken on tinymce-utility ≡ via  26.10.0 
+➜  GH_PAGER=cat gh api repos/thedannywahl/pantoken/pulls/178 --jq '[.head.sha, .head.ref, .mergeable_state] | @tsv'
+a5a7fd32b6e8e0885a641068feb980e2b35feaef        tinymce-utility blocked
+pantoken on tinymce-utility ≡  ~2 via  26.10.0 
+➜  GH_PAGER=cat gh api repos/thedannywahl/pantoken/commits/a5a7fd32b/check-runs --jq '.check_runs[] | [.id, .name, .status, (.conclusion // "pending"), .details_url] | @tsv'
+107325958560    changeset-gate  in_progress     pending https://github.com/thedannywahl/pantoken/actions/runs/35903566068/job/107325958560
+107325635691    docs-and-internal-only  completed       skipped https://github.com/thedannywahl/pantoken/actions/runs/35903566068/job/107325635691
+107325635269    docs-changes    completed       success https://github.com/thedannywahl/pantoken/actions/runs/35903565911/job/107325635269
+107325635042    upstream-changes        completed       success https://github.com/thedannywahl/pantoken/actions/runs/35903565911/job/107325635042
+107325635022    commitlint      in_progress     pending https://github.com/thedannywahl/pantoken/actions/runs/35903565911/job/107325635022
+107325635011    build   in_progress     pending https://github.com/thedannywahl/pantoken/actions/runs/35903565911/job/107325635011
+107325634979    i18n-changes    completed       success https://github.com/thedannywahl/pantoken/actions/runs/35903565911/job/107325634979
+107325634917    entire-checkpoint-linkage       completed       success https://github.com/thedannywahl/pantoken/actions/runs/35903565911/job/107325634917
+107325634676    repository      completed       success https://github.com/thedannywahl/pantoken/actions/runs/35903565911/job/107325634676
+107325633600    require-changeset       completed       success https://github.com/thedannywahl/pantoken/actions/runs/35903566068/job/107325633600
+107325510318    github-advanced-security        in_progress     pending https://github.com/thedannywahl/pantoken/actions/runs/35903572216/job/107325510318
+107325484105    guard   completed       success https://github.com/thedannywahl/pantoken/actions/runs/35903565980/job/107325484105
+107325483894    detect-release-impact   completed       success https://github.com/thedannywahl/pantoken/actions/runs/35903566068/job/107325483894
+107325483342    Analyze (javascript-typescript) in_progress     pending https://github.com/thedannywahl/pantoken/actions/runs/35903565891/job/107325483342
+pantoken on tinymce-utility ≡  ~2 via  26.10.0 
+➜  GH_PAGER=cat gh api repos/thedannywahl/pantoken/commits/d7b06f93f/check-runs --jq '.check_runs[] | select(.name == "codecov/project/plugins" or .name == "codecov/project/utils") | {id, name, conclusion, output}'
+{
+  "conclusion": "failure",
+  "id": 107325411629,
+  "name": "codecov/project/plugins",
+  "output": {
+    "annotations_count": 0,
+    "annotations_url": "https://api.github.com/repos/thedannywahl/pantoken/check-runs/107325411629/annotations",
+    "summary": "[View this Pull Request on Codecov](https://app.codecov.io/gh/thedannywahl/pantoken/pull/178?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=checks&utm_campaign=pr+comments&utm_term=Danny+Wahl)\n\n92.00% (-5.16%) compared to c036a03",
+    "text": null,
+    "title": "92.00% (-5.16%) compared to c036a03"
+  }
+}
+{
+  "conclusion": "failure",
+  "id": 107325126578,
+  "name": "codecov/project/utils",
+  "output": {
+    "annotations_count": 0,
+    "annotations_url": "https://api.github.com/repos/thedannywahl/pantoken/check-runs/107325126578/annotations",
+    "summary": "[View this Pull Request on Codecov](https://app.codecov.io/gh/thedannywahl/pantoken/pull/178?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=checks&utm_campaign=pr+comments&utm_term=Danny+Wahl)\n\n83.42% (-14.08%) compared to c036a03",
+    "text": null,
+    "title": "83.42% (-14.08%) compared to c036a03"
+  }
+}
+pantoken on tinymce-utility ≡  ~2 via  26.10.0 
+➜  git diff --name-status c036a03...a5a7fd32b -- 'plugins/**' 'packages/utils/**'
+M       packages/utils/package.json
+M       packages/utils/src/index.ts
+A       packages/utils/src/scope.ts
+M       packages/utils/vite.config.ts
+M       plugins/pantoken/custom-theme-colors/README.md
+M       plugins/pantoken/custom-theme-colors/package.json
+M       plugins/pantoken/custom-theme-colors/scripts/generate.ts
+M       plugins/pantoken/custom-theme-colors/src/index.ts
+M       plugins/pantoken/custom-theme-colors/tests/index.test.ts
+M       plugins/pantoken/custom-theme-colors/vite.config.ts
+M       plugins/pantoken/layouts/README.md
+M       plugins/pantoken/layouts/package.json
+M       plugins/pantoken/layouts/scripts/component-styles.ts
+A       plugins/pantoken/layouts/scripts/generate.test.ts
+M       plugins/pantoken/layouts/scripts/generate.ts
+A       plugins/pantoken/layouts/scripts/lib/locales.ts
+M       plugins/pantoken/layouts/src/index.ts
+A       plugins/pantoken/layouts/src/layouts/about-me/about-me.ts
+A       plugins/pantoken/layouts/src/layouts/about-me/i18n.json
+A       plugins/pantoken/layouts/src/layouts/about-me/layout.html
+M       plugins/pantoken/layouts/src/layouts/callout/callout.ts
+A       plugins/pantoken/layouts/src/layouts/callout/i18n.json
+A       plugins/pantoken/layouts/src/layouts/callout/layout.html
+A       plugins/pantoken/layouts/src/layouts/course-home/course-home.ts
+A       plugins/pantoken/layouts/src/layouts/course-home/i18n.json
+A       plugins/pantoken/layouts/src/layouts/course-home/layout.html
+A       plugins/pantoken/layouts/src/layouts/footer/footer.ts
+A       plugins/pantoken/layouts/src/layouts/footer/i18n.json
+A       plugins/pantoken/layouts/src/layouts/footer/layout.html
+A       plugins/pantoken/layouts/src/layouts/header/header.ts
+A       plugins/pantoken/layouts/src/layouts/header/i18n.json
+A       plugins/pantoken/layouts/src/layouts/header/layout.html
+M       plugins/pantoken/layouts/src/layouts/hero/hero.ts
+A       plugins/pantoken/layouts/src/layouts/hero/i18n.json
+A       plugins/pantoken/layouts/src/layouts/hero/layout.html
+M       plugins/pantoken/layouts/src/layouts/index.ts
+A       plugins/pantoken/layouts/src/layouts/page-layout.ts
+A       plugins/pantoken/layouts/src/layouts/page-layout/i18n.json
+D       plugins/pantoken/layouts/src/layouts/pages/callout.ts
+D       plugins/pantoken/layouts/src/layouts/pages/hero.ts
+D       plugins/pantoken/layouts/src/layouts/pages/index.ts
+D       plugins/pantoken/layouts/src/layouts/pages/page-layout.ts
+D       plugins/pantoken/layouts/src/layouts/pages/rubric-note.ts
+D       plugins/pantoken/layouts/src/layouts/pages/testimonial.ts
+D       plugins/pantoken/layouts/src/layouts/pages/two-column.ts
+A       plugins/pantoken/layouts/src/layouts/rubric-note/i18n.json
+A       plugins/pantoken/layouts/src/layouts/rubric-note/layout.html
+M       plugins/pantoken/layouts/src/layouts/rubric-note/rubric-note.ts
+A       plugins/pantoken/layouts/src/layouts/syllabus/i18n.json
+A       plugins/pantoken/layouts/src/layouts/syllabus/layout.html
+A       plugins/pantoken/layouts/src/layouts/syllabus/syllabus.ts
+A       plugins/pantoken/layouts/src/layouts/testimonial/i18n.json
+A       plugins/pantoken/layouts/src/layouts/testimonial/layout.html
+M       plugins/pantoken/layouts/src/layouts/testimonial/testimonial.ts
+A       plugins/pantoken/layouts/src/layouts/two-column/i18n.json
+A       plugins/pantoken/layouts/src/layouts/two-column/layout.html
+M       plugins/pantoken/layouts/src/layouts/two-column/two-column.ts
+A       plugins/pantoken/layouts/src/layouts/wrapper/i18n.json
+A       plugins/pantoken/layouts/src/lib/render-layout.ts
+A       plugins/pantoken/layouts/src/lib/runtime-css.ts
+M       plugins/pantoken/layouts/tests/index.test.ts
+A       plugins/pantoken/layouts/tests/lib/render-layout.test.ts
+A       plugins/pantoken/layouts/tests/lib/runtime-css.test.ts
+M       plugins/pantoken/layouts/vite.config.ts
+M       plugins/pantoken/logos/package.json
+M       plugins/pantoken/logos/scripts/generate.ts
+M       plugins/pantoken/logos/src/index.ts
+M       plugins/pantoken/logos/tests/index.test.ts
+M       plugins/pantoken/logos/vite.config.ts
+A       plugins/pantoken/lucide-lab/package.json
+A       plugins/pantoken/lucide-lab/scripts/generate-manifest.ts
+A       plugins/pantoken/lucide-lab/scripts/generate.ts
+A       plugins/pantoken/lucide-lab/scripts/post-pack.ts
+A       plugins/pantoken/lucide-lab/src/index.ts
+A       plugins/pantoken/lucide-lab/tests/index.test.ts
+A       plugins/pantoken/lucide-lab/vite.config.ts
+M       plugins/pantoken/simple-icons/src/index.ts
+M       plugins/pantoken/simple-icons/tests/index.test.ts
+A       plugins/tinymce/a11y/README.md
+A       plugins/tinymce/a11y/package.json
+A       plugins/tinymce/a11y/src/i18n.json
+A       plugins/tinymce/a11y/src/index.ts
+A       plugins/tinymce/a11y/src/strings.ts
+A       plugins/tinymce/a11y/tests/index.test.ts
+A       plugins/tinymce/a11y/tsconfig.json
+A       plugins/tinymce/a11y/vite.config.ts
+A       plugins/tinymce/codemirror/README.md
+A       plugins/tinymce/codemirror/package.json
+A       plugins/tinymce/codemirror/src/i18n.json
+A       plugins/tinymce/codemirror/src/index.ts
+A       plugins/tinymce/codemirror/src/strings.ts
+A       plugins/tinymce/codemirror/tests/source-toggle.test.ts
+A       plugins/tinymce/codemirror/tsconfig.json
+A       plugins/tinymce/codemirror/vite.config.ts
+A       plugins/tinymce/placehold/README.md
+A       plugins/tinymce/placehold/package.json
+A       plugins/tinymce/placehold/src/i18n.json
+A       plugins/tinymce/placehold/src/index.ts
+A       plugins/tinymce/placehold/src/strings.ts
+A       plugins/tinymce/placehold/tests/index.test.ts
+A       plugins/tinymce/placehold/tsconfig.json
+A       plugins/tinymce/placehold/vite.config.ts
+A       plugins/tinymce/save/README.md
+A       plugins/tinymce/save/package.json
+A       plugins/tinymce/save/src/i18n.json
+A       plugins/tinymce/save/src/index.ts
+A       plugins/tinymce/save/src/strings.ts
+A       plugins/tinymce/save/tests/index.test.ts
+A       plugins/tinymce/save/tinymce-save.export.schema.json
+A       plugins/tinymce/save/vite.config.ts
+A       plugins/vitepress/side-bar-toggle/README.md
+A       plugins/vitepress/side-bar-toggle/package.json
+A       plugins/vitepress/side-bar-toggle/src/SidebarToggle.vue
+A       plugins/vitepress/side-bar-toggle/src/index.ts
+A       plugins/vitepress/side-bar-toggle/src/inline-script.ts
+A       plugins/vitepress/side-bar-toggle/src/style.css
+A       plugins/vitepress/side-bar-toggle/src/useSidebarVisibility.ts
+A       plugins/vitepress/side-bar-toggle/tests/SidebarToggle.test.ts
+A       plugins/vitepress/side-bar-toggle/tests/inline-script.test.ts
+A       plugins/vitepress/side-bar-toggle/tests/useSidebarVisibility.test.ts
+A       plugins/vitepress/side-bar-toggle/tsconfig.json
+A       plugins/vitepress/side-bar-toggle/vite.config.ts
+pantoken on tinymce-utility ≡  ~2 via  26.10.0 
+➜  git status --short
+ M platforms/canvas-theme-editor/src/build-theme.ts
+ M platforms/canvas-theme-editor/tests/index.test.ts
+pantoken on tinymce-utility ≡  ~2 via  26.10.0 
+➜  vp test --run packages/utils/tests/scope.test.ts
+VITE+ - The Unified Toolchain for the Web
+
+
+ RUN  v5.0.1 /Users/dwahl/Scripts/pantoken
+
+
+ Test Files  1 passed (1)
+      Tests  9 passed (9)
+   Start at  12:37:45
+   Duration  112ms (transform 48%, setup 30%, import 10%, worker 6%, tests 6%)
+
+pantoken on tinymce-utility ≡  ?1 ~12 via  26.10.0 
+➜  GH_PAGER=cat gh api repos/thedannywahl/pantoken/actions/runs/35902648954/artifacts --jq '.artifacts[] | [.id, .name, .archive_download_url] | @tsv'
+10770235834     upstream-drift-report   https://api.github.com/repos/thedannywahl/pantoken/actions/artifacts/10770235834/zip
+pantoken on tinymce-utility ≡  ?1 ~12 via  26.10.0 
+➜  git status --short
+ M platforms/canvas-theme-editor/src/build-theme.ts
+ M platforms/canvas-theme-editor/tests/index.test.ts
+ M plugins/pantoken/layouts/src/layouts/about-me/layout.html
+ M plugins/pantoken/layouts/src/layouts/callout/layout.html
+ M plugins/pantoken/layouts/src/layouts/course-home/layout.html
+ M plugins/pantoken/layouts/src/layouts/footer/layout.html
+ M plugins/pantoken/layouts/src/layouts/header/layout.html
+ M plugins/pantoken/layouts/src/layouts/hero/layout.html
+ M plugins/pantoken/layouts/src/layouts/rubric-note/layout.html
+ M plugins/pantoken/layouts/src/layouts/syllabus/layout.html
+ M plugins/pantoken/layouts/src/layouts/two-column/layout.html
+ M plugins/pantoken/layouts/tests/index.test.ts
+?? packages/utils/tests/scope.test.ts
+pantoken on tinymce-utility ≡  ?1 ~12 via  26.10.0 
+➜  vp test --run --coverage --coverage.include='plugins/*/*/src/**' plugins
+VITE+ - The Unified Toolchain for the Web
+
+
+ RUN  v5.0.1 /Users/dwahl/Scripts/pantoken
+      Coverage enabled with v8
+
+
+ Test Files  47 passed (47)
+      Tests  351 passed (351)
+   Start at  12:38:08
+   Duration  4.32s (import 34%, tests 31%, transform 17%, setup 7%, environment 6%, worker 5%)
+
+    Isolate  47 workers spawned · ~206ms startup each (spawn + environment, per file)
+             at least ~870ms faster with isolate: false — reuses workers across files instead of one per file
+
+ % Coverage report from v8
+
+=============================== Coverage summary ===============================
+Statements   : 88.28% ( 1538/1742 )
+Branches     : 78.05% ( 708/907 )
+Functions    : 91.17% ( 403/442 )
+Lines        : 90.81% ( 1404/1546 )
+================================================================================
+pantoken on tinymce-utility ≡  ?2 ~12 via  26.10.0 
+➜  node --input-type=module -e 'import fs from "node:fs"; const report=JSON.parse(fs.readFileSync("coverage/coverage-final.json","utf8")); const rows=Object.entries(report).filter(([file])=>file.includes("/plugins/")).map(([file,data])=>{const statements=Object.values(data.s); const functions=Object.values(data.f); const lines=new Map(); for(const [id,count] of Object.entries(data.s)) lines.set(data.statementMap[id].start.line,(lines.get(data.statementMap[id].start.line)||0)+count); const hit=[...lines.values()].filter(Boolean).length; return [((hit/lines.size)*100).toFixed(1), hit, lines.size, functions.filter(Boolean).length, functions.length, file.replace(process.cwd()+"/","")]}).sort((a,b)=>Number(a[0])-Number(b[0])); console.log(rows.slice(0,30).map(row=>row.join("\t")).join("\n"));'
+100.0   5       5       5       5       plugins/pantoken/colors/src/index.ts
+100.0   4       4       2       2       plugins/pantoken/custom-components/src/index.ts
+NaN     0       0       0       0       plugins/pantoken/custom-components/src/components/index.ts
+NaN     0       0       0       0       plugins/pantoken/custom-components/src/components/agent-shell/agent-shell.css
+100.0   1       1       1       1       plugins/pantoken/custom-components/src/components/agent-shell/agent-shell.ts
+NaN     0       0       0       0       plugins/pantoken/custom-components/src/components/agent-shell/index.ts
+NaN     0       0       0       0       plugins/pantoken/custom-components/src/components/ai-gradient/ai-gradient.css
+100.0   1       1       1       1       plugins/pantoken/custom-components/src/components/ai-gradient/index.ts
+NaN     0       0       0       0       plugins/pantoken/custom-components/src/components/banner/banner.css
+100.0   1       1       1       1       plugins/pantoken/custom-components/src/components/banner/index.ts
+NaN     0       0       0       0       plugins/pantoken/custom-components/src/components/card/card.css
+100.0   1       1       1       1       plugins/pantoken/custom-components/src/components/card/card.ts
+NaN     0       0       0       0       plugins/pantoken/custom-components/src/components/card/index.ts
+100.0   1       1       0       0       plugins/pantoken/custom-components/src/lib/sentinel.ts
+100.0   11      11      6       6       plugins/pantoken/custom-icons/src/index.ts
+100.0   96      96      25      25      plugins/pantoken/custom-theme-colors/src/index.ts
+100.0   31      31      16      16      plugins/pantoken/deprecations/src/index.ts
+100.0   4       4       2       2       plugins/pantoken/layouts/src/index.ts
+100.0   5       5       2       2       plugins/pantoken/layouts/src/layouts/index.ts
+NaN     0       0       0       0       plugins/pantoken/layouts/src/layouts/page-layout.ts
+100.0   1       1       0       0       plugins/pantoken/layouts/src/layouts/about-me/about-me.ts
+NaN     0       0       0       0       plugins/pantoken/layouts/src/layouts/callout/callout.css
+66.7    2       3       1       2       plugins/pantoken/layouts/src/layouts/callout/callout.ts
+100.0   1       1       0       0       plugins/pantoken/layouts/src/layouts/course-home/course-home.ts
+100.0   1       1       0       0       plugins/pantoken/layouts/src/layouts/footer/footer.ts
+100.0   1       1       0       0       plugins/pantoken/layouts/src/layouts/header/header.ts
+NaN     0       0       0       0       plugins/pantoken/layouts/src/layouts/hero/hero.css
+66.7    2       3       1       2       plugins/pantoken/layouts/src/layouts/hero/hero.ts
+NaN     0       0       0       0       plugins/pantoken/layouts/src/layouts/page-layout/page-layout.css
+100.0   2       2       2       2       plugins/pantoken/layouts/src/layouts/page-layout/page-layout.ts
+pantoken on tinymce-utility ≡  ?2 ~12 via  26.10.0 
+➜  node --input-type=module -e 'import fs from "node:fs"; const report=JSON.parse(fs.readFileSync("coverage/coverage-final.json","utf8")); const rows=Object.entries(report).filter(([file])=>file.includes("/plugins/")).map(([file,data])=>{const lines=new Map(); for(const [id,count] of Object.entries(data.s)) lines.set(data.statementMap[id].start.line,(lines.get(data.statementMap[id].start.line)||0)+count); const hit=[...lines.values()].filter(Boolean).length; return lines.size ? [(hit/lines.size)*100, hit, lines.size, file.replace(process.cwd()+"/","")] : null}).filter(Boolean).sort((a,b)=>a[0]-b[0]); console.log(rows.slice(0,25).map(([pct,hit,total,file])=>`${pct.toFixed(1)}\t${hit}/${total}\t${file}`).join("\n"));'
+66.7    2/3     plugins/pantoken/layouts/src/layouts/callout/callout.ts
+66.7    2/3     plugins/pantoken/layouts/src/layouts/hero/hero.ts
+73.8    177/240 plugins/tinymce/save/src/index.ts
+80.0    8/10    plugins/vitepress/side-bar-toggle/src/inline-script.ts
+83.1    226/272 plugins/tinymce/a11y/src/index.ts
+83.9    26/31   plugins/pantoken/layouts/src/lib/runtime-css.ts
+87.5    56/64   plugins/vite/workspace-orchestrator/src/file-server.ts
+90.1    64/71   plugins/pantoken/layouts/src/lib/html-template.ts
+91.4    32/35   plugins/pantoken/lucide-lab/src/index.ts
+95.2    20/21   plugins/pantoken/layouts/src/lib/slot-labels.ts
+97.3    73/75   plugins/postcss/theme-custom-media/src/index.ts
+97.7    127/130 plugins/tinymce/codemirror/src/index.ts
+100.0   5/5     plugins/pantoken/colors/src/index.ts
+100.0   4/4     plugins/pantoken/custom-components/src/index.ts
+100.0   1/1     plugins/pantoken/custom-components/src/components/agent-shell/agent-shell.ts
+100.0   1/1     plugins/pantoken/custom-components/src/components/ai-gradient/index.ts
+100.0   1/1     plugins/pantoken/custom-components/src/components/banner/index.ts
+100.0   1/1     plugins/pantoken/custom-components/src/components/card/card.ts
+100.0   1/1     plugins/pantoken/custom-components/src/lib/sentinel.ts
+100.0   11/11   plugins/pantoken/custom-icons/src/index.ts
+100.0   96/96   plugins/pantoken/custom-theme-colors/src/index.ts
+100.0   31/31   plugins/pantoken/deprecations/src/index.ts
+100.0   4/4     plugins/pantoken/layouts/src/index.ts
+100.0   5/5     plugins/pantoken/layouts/src/layouts/index.ts
+100.0   1/1     plugins/pantoken/layouts/src/layouts/about-me/about-me.ts
+pantoken on tinymce-utility ≡  ?2 ~12 via  26.10.0 
+➜  node --input-type=module -e 'import fs from "node:fs"; const report=JSON.parse(fs.readFileSync("coverage/coverage-final.json","utf8")); const [file,data]=Object.entries(report).find(([file])=>file.endsWith("plugins/tinymce/save/src/index.ts")); const lines=new Map(); for(const [id,count] of Object.entries(data.s)){const line=data.statementMap[id].start.line; lines.set(line,(lines.get(line)||0)+count)} console.log([...lines].filter(([,count])=>!count).map(([line])=>line).join(","));'
+202,208,209,220,221,222,223,224,226,227,233,234,244,245,278,279,288,297,303,304,312,315,316,329,330,358,359,372,373,409,440,441,442,443,444,445,446,449,450,451,452,454,457,458,461,462,467,483,484,487,488,500,504,521,522,527,532,538,544,549,554,559,562
+pantoken on tinymce-utility ≡  ?2 ~12 via  26.10.0 
+➜  vp test --run packages/utils/tests/scope.test.ts plugins/tinymce/save/tests/index.test.ts
+VITE+ - The Unified Toolchain for the Web
+
+
+ RUN  v5.0.1 /Users/dwahl/Scripts/pantoken
+
+
+ Test Files  2 passed (2)
+      Tests  19 passed (19)
+   Start at  12:39:00
+   Duration  357ms (environment 48%, tests 34%, transform 10%, setup 5%, import 2%, worker 1%)
+
+pantoken on tinymce-utility ≡  ~2 |  +2 ~12 via  26.10.0 
+➜  vp test --run --coverage --coverage.include='plugins/*/*/src/**' plugins && vp test --run --coverage --coverage.include='packages/utils/src/**' packages/utils/tests
+VITE+ - The Unified Toolchain for the Web
+
+
+ RUN  v5.0.1 /Users/dwahl/Scripts/pantoken
+      Coverage enabled with v8
+
+
+ Test Files  47 passed (47)
+      Tests  352 passed (352)
+   Start at  12:39:13
+   Duration  5.66s (tests 32%, transform 26%, import 24%, environment 7%, setup 6%, worker 6%)
+
+  Transform  transforming modules took 7.78s · 26% of tracked time, re-done on every run
+             persist transforms across runs with fsModuleCache: true
+             learn more: https://vitest.dev/guide/improving-performance#caching-between-reruns
+
+ % Coverage report from v8
+
+=============================== Coverage summary ===============================
+Statements   : 88.86% ( 1548/1742 )
+Branches     : 78.05% ( 708/907 )
+Functions    : 92.98% ( 411/442 )
+Lines        : 91.46% ( 1414/1546 )
+================================================================================
+VITE+ - The Unified Toolchain for the Web
+
+
+ RUN  v5.0.1 /Users/dwahl/Scripts/pantoken
+      Coverage enabled with v8
+
+
+ Test Files  10 passed (10)
+      Tests  51 passed (51)
+   Start at  12:39:19
+   Duration  400ms (transform 28%, setup 24%, worker 23%, import 19%, tests 5%)
+
+ % Coverage report from v8
+
+=============================== Coverage summary ===============================
+Statements   : 94.88% ( 167/176 )
+Branches     : 86.95% ( 60/69 )
+Functions    : 98.36% ( 60/61 )
+Lines        : 97.27% ( 143/147 )
+================================================================================
+pantoken on tinymce-utility ≡  ~1 |  +2 ~12 via  26.10.0 
+➜  git status --short && git --no-pager diff --cached --name-only && git --no-pager diff -- packages/utils/tests/scope.test.ts plugins/tinymce/save/tests/index.test.ts
+A  .changeset/canvas-prose-layouts.md
+M  platforms/canvas-theme-editor/src/build-theme.ts
+M  platforms/canvas-theme-editor/tests/index.test.ts
+M  plugins/pantoken/layouts/src/layouts/about-me/layout.html
+M  plugins/pantoken/layouts/src/layouts/callout/layout.html
+M  plugins/pantoken/layouts/src/layouts/course-home/layout.html
+M  plugins/pantoken/layouts/src/layouts/footer/layout.html
+M  plugins/pantoken/layouts/src/layouts/header/layout.html
+M  plugins/pantoken/layouts/src/layouts/hero/layout.html
+M  plugins/pantoken/layouts/src/layouts/rubric-note/layout.html
+M  plugins/pantoken/layouts/src/layouts/syllabus/layout.html
+M  plugins/pantoken/layouts/src/layouts/two-column/layout.html
+M  plugins/pantoken/layouts/tests/index.test.ts
+ M plugins/tinymce/save/tests/index.test.ts
+?? packages/utils/tests/scope.test.ts
+.changeset/canvas-prose-layouts.md
+platforms/canvas-theme-editor/src/build-theme.ts
+platforms/canvas-theme-editor/tests/index.test.ts
+plugins/pantoken/layouts/src/layouts/about-me/layout.html
+plugins/pantoken/layouts/src/layouts/callout/layout.html
+plugins/pantoken/layouts/src/layouts/course-home/layout.html
+plugins/pantoken/layouts/src/layouts/footer/layout.html
+plugins/pantoken/layouts/src/layouts/header/layout.html
+plugins/pantoken/layouts/src/layouts/hero/layout.html
+plugins/pantoken/layouts/src/layouts/rubric-note/layout.html
+plugins/pantoken/layouts/src/layouts/syllabus/layout.html
+plugins/pantoken/layouts/src/layouts/two-column/layout.html
+plugins/pantoken/layouts/tests/index.test.ts
+diff --git a/plugins/tinymce/save/tests/index.test.ts b/plugins/tinymce/save/tests/index.test.ts
+index 17fe4fb3e..cd3b74f9a 100644
+--- a/plugins/tinymce/save/tests/index.test.ts
++++ b/plugins/tinymce/save/tests/index.test.ts
+@@ -139,6 +139,53 @@ describe("createSavePlugin", () => {
+     );
+   });
+ 
++  test("routes every preset menu action and enables stored-preset actions", () => {
++    const target = editor();
++    createSavePlugin({
++      capture: () => ({ html: "content" }),
++      restore: vi.fn(),
++      reset: vi.fn(),
++      isValid: (state): state is { html: string } => typeof state === "object" && state !== null,
++      storage: storage(),
++    })(target as never);
++
++    const menu = target.ui.registry.addMenuButton.mock.calls[0]?.[1] as {
++      fetch: (success: (items: { enabled?: boolean; onAction: () => void }[]) => void) => void;
++    };
++    const initial = vi.fn();
++    menu.fetch(initial);
++    const initialItems = initial.mock.calls[0]![0];
++    expect(initialItems).toHaveLength(7);
++    expect(initialItems.slice(0, 4).map(({ enabled }) => enabled)).toEqual([
++      false,
++      undefined,
++      false,
++      false,
++    ]);
++
++    for (const item of initialItems) item.onAction();
++    expect(target.execCommand.mock.calls.map(([name]) => name)).toEqual([
++      SAVE_COMMAND,
++      SAVE_AS_COMMAND,
++      OPEN_COMMAND,
++      DELETE_COMMAND,
++      NEW_COMMAND,
++      EXPORT_COMMAND,
++      IMPORT_COMMAND,
++    ]);
++
++    command(target, SAVE_AS_COMMAND)();
++    submitDialog(target, { name: "Draft" });
++    const populated = vi.fn();
++    menu.fetch(populated);
++    expect(populated.mock.calls[0]![0].slice(0, 4).map(({ enabled }) => enabled)).toEqual([
++      true,
++      undefined,
++      true,
++      true,
++    ]);
++  });
++
+   test("saves, opens, and deletes aggregate state without clearing it", async () => {
+     const target = editor();
+     const targetStorage = storage();
+pantoken on tinymce-utility ≡  ?1 ~1 |  +1 ~12 via  26.10.0 
+➜  vp test --run packages/utils/tests/scope.test.ts plugins/tinymce/save/tests/index.test.ts && vp run @pantoken/tinymce-save#check
+VITE+ - The Unified Toolchain for the Web
+
+
+ RUN  v5.0.1 /Users/dwahl/Scripts/pantoken
+
+
+ Test Files  2 passed (2)
+      Tests  19 passed (19)
+   Start at  12:39:39
+   Duration  487ms (environment 50%, tests 26%, transform 13%, setup 6%, import 5%, worker 1%)
+
+VITE+ - The Unified Toolchain for the Web
+
+~/plugins/tinymce/save$ vp check ○ cache miss: untracked env config changed, executing
+pass: All 8 files are correctly formatted (323ms, 10 threads)
+pass: Found no warnings, lint errors, or type errors in 4 files (1.3s, 10 threads)
+
+pantoken on tinymce-utility ↑1  ?1 ~1 via  26.10.0 
+➜  git status --short --branch && git --no-pager log -4 --oneline --decorate
+## tinymce-utility...origin/tinymce-utility [ahead 1]
+ M plugins/tinymce/save/tests/index.test.ts
+?? packages/utils/tests/scope.test.ts
+52dac3f3f (HEAD -> tinymce-utility) feat(layouts): simplify HTML structure and improve semantic markup across various layouts
+a5a7fd32b (origin/tinymce-utility) feat(tinymce-save): add New, Export, and Import
+87f703a68 feat(scaffold): add standalone canvas theme editor app shell
+d7b06f93f chore: remove fallow dead code
+pantoken on tinymce-utility ↑1  ?1 ~1 via  26.10.0 
+➜  git add -- plugins/tinymce/save/tests/index.test.ts packages/utils/tests/scope.test.ts && git commit -m "test: restore plugin and utils coverage" -- plugins/tinymce/save/tests/index.test.ts packages/utils/tests/scope.test.ts && git status --short --branch
+⋯ Backing up original state…
+✔ Done backing up original state (6f645078c)!
+⋯ Running tasks for staged files…
+    * — 2 files
+      ⋯ vp check --fix
+
+✔ vp check --fix
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[tinymce-utility 9641b692d] test: restore plugin and utils coverage
+ 2 files changed, 118 insertions(+)
+ create mode 100644 packages/utils/tests/scope.test.ts
+## tinymce-utility...origin/tinymce-utility [ahead 2]
+pantoken on tinymce-utility ↑2 via  26.10.0 
+➜  git push origin tinymce-utility
+[entire] Pushing 17 checkpoint ref(s) to origin.....
+[entire] Checkpoint ref push failed; retrying 17 ref(s) individually.................................. pushed 2 of 17
+[entire] Warning: checkpoint ref refs/entire/checkpoints/XH/01M21TJT8380QGAN5HE219V2XH remains queued (showing one rejection):
+remote: error: GH013: Repository rule violations found for refs/entire/checkpoints/XH/01M21TJT8380QGAN5HE219V2XH.        
+remote: 
+remote: - GITHUB PUSH PROTECTION        
+remote:   —————————————————————————————————————————        
+remote:     Resolve the following violations before pushing again        
+remote: 
+remote:     - Push cannot contain secrets        
+remote: 
+remote:             
+remote:      (?) Learn how to resolve a blocked push        
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        
+remote:   […]         
+remote:            path: 0/full.jsonl:85        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/thedannywahl/pantoken/security/secret-scanning/unblock-secret/3Jjjz7iJntvok4F3Z6zTOY6c8OV        
+remote:             
+remote:             
+remote:       —— npm Access Token ——————————————————————————————————        
+remote:        locations:        
+remote:          - commit: ba86be9f5c2f0711eaf2dafa5591b6899d35078a        
+remote:            path: 0/full.jsonl:136        
+remote:          - commit: 63572045a1cd0544545fceac266949e1b4037585        
+remote:            path: 0/full.jsonl:136        
+remote:             
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        
+remote:        https://github.com/thedannywahl/pantoken/security/secret-scanning/unblock-secret/3Jjjz5m98SyIeh6JIJZUevtkb4N        
+remote:             
+remote: 
+remote: 
+error: failed to push some refs to 'https://github.com/thedannywahl/pantoken.git'
+To https://github.com/thedannywahl/pantoken.git
+!       refs/entire/checkpoints/XH/01M21TJT8380QGAN5HE219V2XH:refs/entire/checkpoints/XH/01M21TJT8380QGAN5HE219V2XH     [remote rejected] (push declined due to repository rule violations)
+Done
+Enumerating objects: 83, done.
+Counting objects: 100% (83/83), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (44/44), done.
+Writing objects: 100% (46/46), 8.62 KiB | 4.31 MiB/s, done.
+Total 46 (delta 31), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (31/31), completed with 29 local objects.
+To https://github.com/thedannywahl/pantoken.git
+   a5a7fd32b..9641b692d  tinymce-utility -> tinymce-utility
+pantoken on tinymce-utility ≡ via  26.10.0 
+➜  GH_PAGER=cat gh api repos/thedannywahl/pantoken/commits/9641b692d/check-runs --jq '.check_runs[] | [.name, .status, (.conclusion // "pending"), .details_url] | @tsv'
+Analyze (javascript-typescript) queued  pending https://github.com/thedannywahl/pantoken/actions/runs/35904152361/job/107327468801
+guard   queued  pending https://github.com/thedannywahl/pantoken/actions/runs/35904152329/job/107327468683
+detect-release-impact   queued  pending https://github.com/thedannywahl/pantoken/actions/runs/35904152450/job/107327468504
+pantoken on tinymce-utility ≡ via  26.10.0 
+➜  GH_PAGER=cat gh api 'repos/thedannywahl/pantoken/actions/runs?branch=tinymce-utility&event=pull_request&per_page=10' --jq '.workflow_runs[] | select(.head_sha == "9641b692de77aa82ce5de2742b55a89af69953a2" or (.head_sha | startswith("9641b692d"))) | [.id, .name, .status, (.conclusion // "pending")] | @tsv'
+35904152450     Changeset check in_progress     pending
+35904152329     Guard release automation        completed       success
+35904152361     CodeQL  in_progress     pending
+35904152328     CI      pending pending
+pantoken on tinymce-utility ≡  ~1 via  26.10.0 
+➜  GH_FORCE_TTY=0 TERM=dumb NO_COLOR=1 GH_PAGER=cat gh run watch 35904152328 --exit-status --compact > /tmp/pr178-final-ci-watch.log 2>&1
+pantoken on tinymce-utility ≡ via  26.10.0 x 
+➜  GH_PAGER=cat gh api repos/thedannywahl/pantoken/actions/runs/35904152328 --jq '[.status, (.conclusion // "pending"), .head_sha, .html_url] | @tsv'
+completed       cancelled       9641b692d3c54afb387e69c0994f813940331901       https://github.com/thedannywahl/pantoken/actions/runs/35904152328
+pantoken on tinymce-utility ≡  ~2 via  26.10.0 
+➜  git status --short --branch && git --no-pager log -5 --oneline --decorate
+## tinymce-utility...origin/tinymce-utility
+M  compatibility.json
+M  docs/compatibility.md
+6fb16e9a2 (HEAD -> tinymce-utility, origin/tinymce-utility) fix(tinymce-save): improve slugification by refining leading and trailing hyphen removal
+9641b692d test: restore plugin and utils coverage
+52dac3f3f feat(layouts): simplify HTML structure and improve semantic markup across various layouts
+a5a7fd32b feat(tinymce-save): add New, Export, and Import
+87f703a68 feat(scaffold): add standalone canvas theme editor app shell
+pantoken on tinymce-utility ≡  ~2 via  26.10.0 
+➜  GH_PAGER=cat gh api repos/thedannywahl/pantoken/pulls/178 --jq '[.head.sha, .head.ref, .mergeable_state] | @tsv'
+6fb16e9a2e24b744409726b9d5b6d182ebda5499        tinymce-utility blocked
+pantoken on tinymce-utility ≡  ~2 via  26.10.0 
+➜  GH_PAGER=cat gh api 'repos/thedannywahl/pantoken/actions/runs?branch=tinymce-utility&event=pull_request&per_page=10' --jq '.workflow_runs[] | select(.head_sha | startswith("6fb16e9a2")) | [.id, .name, .status, (.conclusion // "pending")] | @tsv'
+35904316958     Guard release automation        completed       success
+35904316922     CodeQL  in_progress     pending
+35904316938     Changeset check in_progress     pending
+35904317034     CI      in_progress     pending
+pantoken on tinymce-utility ↑1 via  26.10.0 
+➜  GH_FORCE_TTY=0 TERM=dumb NO_COLOR=1 GH_PAGER=cat gh run watch 35904317034 --exit-status --compact > /tmp/pr178-current-ci-watch.log 2>&1
+pantoken on tinymce-utility ≡ via  26.10.0 x 
+➜  GH_PAGER=cat gh api repos/thedannywahl/pantoken/actions/runs/35904317034 --jq '[.status, (.conclusion // "pending"), .head_sha] | @tsv'
+completed       cancelled       6fb16e9a2e24b744409726b9d5b6d182ebda5499
+pantoken on tinymce-utility ≡ via  26.10.0 
+➜  git status --short --branch && git --no-pager log -3 --oneline --decorate && GH_PAGER=cat gh api repos/thedannywahl/pantoken/pulls/178 --jq '.head.sha'
+## tinymce-utility...origin/tinymce-utility
+6a1b24b93 (HEAD -> tinymce-utility, origin/tinymce-utility) chore(compatibility): update package versions to 11.7.7 and document new deprecations
+6fb16e9a2 fix(tinymce-save): improve slugification by refining leading and trailing hyphen removal
+9641b692d test: restore plugin and utils coverage
+6a1b24b9300ab03ef3015bd5c6ce3677f720607c
+pantoken on tinymce-utility ≡ via  26.10.0 
+➜  GH_PAGER=cat gh api 'repos/thedannywahl/pantoken/actions/runs?branch=tinymce-utility&event=pull_request&per_page=10' --jq '.workflow_runs[] | select(.head_sha | startswith("6a1b24b93")) | [.id, .name, .status, (.conclusion // "pending")] | @tsv'
+35904535318     CodeQL  in_progress     pending
+35904535298     Guard release automation        completed       success
+35904535292     CI      in_progress     pending
+35904535293     Changeset check in_progress     pending
+pantoken on tinymce-utility ≡ via  26.10.0 
+➜  GH_FORCE_TTY=0 TERM=dumb NO_COLOR=1 GH_PAGER=cat gh run watch 35904535292 --exit-status --compact > /tmp/pr178-latest-ci-watch.log 2>&1
+pantoken on tinymce-utility ≡  ~1 via  26.10.0 x 
+➜  GH_PAGER=cat gh api repos/thedannywahl/pantoken/actions/runs/35904535292 --jq '[.status, (.conclusion // "pending"), .head_sha] | @tsv'
+completed       cancelled       6a1b24b9300ab03ef3015bd5c6ce3677f720607c
+pantoken on tinymce-utility ≡  ~1 via  26.10.0 
+➜  git status --short --branch && git --no-pager log -3 --oneline --decorate && GH_PAGER=cat gh api repos/thedannywahl/pantoken/pulls/178 --jq '.head.sha'
+## tinymce-utility...origin/tinymce-utility
+ M plugins/tinymce/save/src/index.ts
+ea63a4889 (HEAD -> tinymce-utility, origin/tinymce-utility) feat(dependencies): add lucide package to documentation dependencies
+6a1b24b93 chore(compatibility): update package versions to 11.7.7 and document new deprecations
+6fb16e9a2 fix(tinymce-save): improve slugification by refining leading and trailing hyphen removal
+ea63a4889e11c125a415d637c6927fc1a0a35518
+pantoken on tinymce-utility ≡  ~1 via  26.10.0 
+➜  GH_PAGER=cat gh api 'repos/thedannywahl/pantoken/actions/runs?branch=tinymce-utility&event=pull_request&per_page=10' --jq '.workflow_runs[] | select(.head_sha | startswith("ea63a4889")) | [.id, .name, .status, (.conclusion // "pending")] | @tsv'
+35904800976     CodeQL  in_progress     pending
+35904800957     Guard release automation        completed       success
+35904800975     Changeset check in_progress     pending
+35904801005     CI      in_progress     pending
+pantoken on tinymce-utility ≡  ~1 via  26.10.0 
+➜  GH_FORCE_TTY=0 TERM=dumb NO_COLOR=1 GH_PAGER=cat gh run watch 35904801005 --exit-status --compact > /tmp/pr178-ea63-ci-watch.log 2>&1
+
+---
+
+Codecov is failing CI for some reason, it looks like coverage is good.
+
+---
+
+how do we remediate?
