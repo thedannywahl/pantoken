@@ -1,0 +1,35 @@
+the pantoken web app manifest has a few issues:
+in firefox PWAs (via extension):
+    * localhost:5173/tools/canvas-rce/index.html
+    * recommended title is "Canvas Theme Editor" it should just be "Pantoken"
+    * it doesn't have a dock icon on a mac (so it just uses the plugins 'c' from the first letter) and the icon url is not pre-filled.
+in Chrome: 
+  * the title is suggested as "Canvas RCE | Pantoken" it should just be "Pantoken"
+  * the icon seems to be favicon or apple-touch-icon but it is oversized (no padding) in the mac dock.
+general:
+    * the active theme color should style the browser chrome if possible.
+    * the active theme should color the dock icon if possible.
+
+---
+
+Thorough read-only discovery for planning. In /Users/dwahl/Scripts/pantoken, investigate the reported web app manifest issues for localhost:5173/tools/canvas-rce/index.html. First read /Users/dwahl/Scripts/pantoken/.entire/graph-agent.md and follow it. Trace where the manifest is authored/generated/injected for docs/tool pages, how name/short_name/start_url/scope/icons/theme_color are determined, and where page title/favicon/apple-touch-icon come from. Identify exact files/symbols and analogous tests or generated outputs. Also inspect relevant package scripts/vite tasks for generation and validation. Do not edit. Return concise findings, uncertainties, and likely smallest implementation path.
+
+---
+
+Medium read-only discovery for planning in /Users/dwahl/Scripts/pantoken. First read .entire/graph-agent.md. Inspect the exact canvas-theme-editor index.html, public manifest and icon assets, generated scaffold files/tests, docs build scripts/tasks, and current docs public generated output if tracked. Determine current manifest name/short_name/title/icon dimensions and whether SVG has padding. Find the narrowest tests/commands to validate source scaffold and docs PWA output. Note if generated files must be regenerated. Do not edit; return exact paths/symbols/commands and any conflicts with repo instructions.
+
+---
+
+Medium read-only discovery for planning in /Users/dwahl/Scripts/pantoken. First read .entire/graph-agent.md. Focus on packages/scaffold/templates/canvas-theme-editor: trace active theme selection/state and how CSS variables/colors are applied. Determine a reliable theme color value for HTML meta[name=theme-color], whether it changes live, and whether any theme color/icon assets are generated. Inspect tests. Also research from repository code/config only whether dynamic manifest icon updates are attempted anywhere. Return exact files/symbols and recommended integration points; do not edit.
+
+---
+
+Quick read-only discovery in /Users/dwahl/Scripts/pantoken. Follow .entire/graph-agent.md. Find existing Pantoken logo/app icon assets suitable for a PWA/macOS dock, especially square PNG/SVG files and favicon/apple-touch icon generation patterns. Compare their artwork/padding/colors with packages/scaffold/templates/canvas-theme-editor/public/icon.svg. Identify whether an existing script/library can rasterize SVG into 192x192, 512x512, and apple-touch dimensions, and where generated binary assets normally live. Also inspect package dependencies for sharp or equivalent. Return exact paths and recommendation; no edits.
+
+---
+
+Quick read-only investigation in /Users/dwahl/Scripts/pantoken. Follow .entire/graph-agent.md. For canvas-theme-editor, identify the exact computed CSS custom properties that change with selected PantokenColorNamespace and are suitable for (a) browser theme-color / chrome background and (b) an accent/background for a dynamically generated favicon. Inspect plugin-custom-theme-colors CSS/source and app CSS. Confirm whether getComputedStyle immediately after applyChromeTheme/applyChromeColor will return concrete rgb/hex or unresolved light-dark/var values, and whether requestAnimationFrame is needed. Return exact token names and evidence. No edits.
+
+---
+
+Start implementation
