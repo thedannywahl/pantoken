@@ -14,7 +14,10 @@
   min-block-size: 1em;
 }
 
-[class*="-icon-"]::before {
+// Requires `.instui-icon` alongside the `-icon-<name>` modifier — a bare substring match on
+// `[class*="-icon-"]` also catches unrelated compound classes like TinyMCE's own
+// `tox-icon-<name>`, painting a blank mask square since those never set `--pantoken-glyph`.
+.instui-icon[class*="-icon-"]::before {
   content: "";
   display: inline-block;
   inline-size: 1em;

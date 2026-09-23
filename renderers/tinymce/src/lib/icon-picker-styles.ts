@@ -21,7 +21,7 @@ const PAINTER_CSS = `
 .${PICKER_ROOT_CLASS} .instui-icon {
   display: inline-flex;
 }
-.${PICKER_ROOT_CLASS} [class*="-icon-"]::before {
+.${PICKER_ROOT_CLASS} .instui-icon[class*="-icon-"]::before {
   content: "";
   display: inline-block;
   inline-size: 1em;
