@@ -30,13 +30,64 @@ function normalizeTag(raw: string): string {
  * @returns The registry's canonical spelling, or `undefined` when nothing matches
  */
 export function resolveSupportedLocale(tag: string): string | undefined {
-  const subtags = normalizeTag(tag).split("-");
+  const normalized = normalizeTag(tag);
+  const subtags = normalized.split("-");
   for (let length = subtags.length; length > 0; length -= 1) {
     const candidate = subtags.slice(0, length).join("-").toLowerCase();
     const match = SUPPORTED_LOCALES.find((locale) => locale.toLowerCase() === candidate);
     if (match) return match;
   }
-  return undefined;
+
+  const baseLanguage = subtags[0]?.toLowerCase();
+  if (!baseLanguage) return undefined;
+
+  const languageMatches = SUPPORTED_LOCALES.filter(
+    (locale) => locale.split("-")[0].toLowerCase() === baseLanguage,
+  );
+  if (languageMatches.length === 0) return undefined;
+
+  try {
+    const intlLocale = new Intl.Locale(normalized);
+    const script = intlLocale.script?.toLowerCase();
+    if (script) {
+      const scriptMatch = languageMatches.find((locale) =>
+        locale.toLowerCase().includes(`-${script}`),
+      );
+      if (scriptMatch) return scriptMatch;
+    }
+
+    if (baseLanguage === "zh") {
+      const region = intlLocale.region?.toUpperCase();
+      if (region === "TW" || region === "HK" || region === "MO") {
+        const scriptMatch = languageMatches.find((locale) =>
+          locale.toLowerCase().endsWith("-hant"),
+        );
+        if (scriptMatch) return scriptMatch;
+      }
+      if (region === "CN" || region === "SG") {
+        const scriptMatch = languageMatches.find((locale) =>
+          locale.toLowerCase().endsWith("-hans"),
+        );
+        if (scriptMatch) return scriptMatch;
+      }
+    }
+
+    const region = intlLocale.region?.toLowerCase();
+    if (region) {
+      const regionMatch = languageMatches.find((locale) =>
+        locale
+          .toLowerCase()
+          .split("-")
+          .slice(1)
+          .some((part) => part.toLowerCase() === region),
+      );
+      if (regionMatch) return regionMatch;
+    }
+  } catch {
+    // Some locales may not be valid under Intl.Locale; fall through to the first supported match.
+  }
+
+  return languageMatches[0];
 }
 
 /** The base text direction for `locale`, defaulting to `ltr` for anything unrecognized. */
@@ -100,6 +151,45 @@ export function detectLocale(options: {
 
   // 4. Default to English
   return "en";
+}
+
+/**
+ * Resolves a browser's preferred languages in order using the supported locale registry.
+ *
+ * The browser may send a full regional tag (`fr-CA`, `zh-Hant-TW`) or a region-only value
+ * without any locale we support. We walk the ordered list, accept the closest supported match,
+ * and fall back to English when no browser preference resolves.
+ */
+export function detectBrowserLocale(
+  locales?: Iterable<string> | string | null,
+  fallback = "en",
+): string {
+  const values = typeof locales === "string" ? [locales] : locales ? Array.from(locales) : [];
+
+  if (values.length === 0) {
+    if (typeof navigator !== "undefined") {
+      const nav = navigator as Navigator & { userLanguage?: string };
+      const candidates = [...(nav.languages ?? []), nav.language, nav.userLanguage].filter(
+        (value): value is string => typeof value === "string" && value.length > 0,
+      );
+      values.push(...candidates);
+    }
+
+    if (values.length === 0 && typeof Intl !== "undefined") {
+      try {
+        values.push(Intl.DateTimeFormat().resolvedOptions().locale);
+      } catch {
+        // Ignore unavailable Intl support.
+      }
+    }
+  }
+
+  for (const candidate of values) {
+    const resolved = candidate ? resolveSupportedLocale(candidate) : undefined;
+    if (resolved) return resolved;
+  }
+
+  return resolveSupportedLocale(fallback) ?? fallback;
 }
 
 /**
