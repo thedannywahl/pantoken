@@ -1,0 +1,80 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M37AE1ZKSBHEC3ECYEKSSB18",
+  "session_id": "24611565-22f1-4de8-8a60-f978c0000be7",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-23T14:24:09.307733Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    ".changeset/canvas-theme-editor-preview-dark-mode-toggle.md",
+    "packages/scaffold/templates/canvas-theme-editor/src/app.css",
+    "packages/scaffold/templates/canvas-theme-editor/src/app.html",
+    "packages/scaffold/templates/canvas-theme-editor/src/i18n.json",
+    "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "679fc4caad11",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-23T14:24:09.295197Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 26,
+    "human_removed": 9,
+    "total_committed": 0,
+    "total_lines_changed": 35,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 92,
+      "user_lines_removed": 11,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".changeset/canvas-theme-editor-preview-dark-mode-toggle.md": 8,
+        "formats/css/vite.config.ts": 5,
+        "packages/scaffold/templates/canvas-theme-editor/src/app.css": 2,
+        "packages/scaffold/templates/canvas-theme-editor/src/app.html": 10,
+        "packages/scaffold/templates/canvas-theme-editor/src/i18n.json": 1,
+        "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl": 66
+      },
+      "user_removed_per_file": {
+        "packages/scaffold/templates/canvas-theme-editor/src/app.css": 1,
+        "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl": 10
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 26,
+      "user_lines_removed": 24,
+      "agent_lines_added": 88,
+      "agent_lines_removed": 13,
+      "user_added_per_file": {
+        "packages/scaffold/templates/canvas-theme-editor/src/app.html": 6,
+        "packages/scaffold/templates/canvas-theme-editor/src/i18n.json": 1,
+        "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl": 19
+      },
+      "user_removed_per_file": {
+        "packages/scaffold/templates/canvas-theme-editor/src/app.html": 2,
+        "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl": 22
+      }
+    }
+  ]
+}

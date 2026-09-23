@@ -1,0 +1,13 @@
+we need to simplify layouts, at first they were intended to be cssdoc scaffolds, but those haven't proved to be much utility, so instead we'll focus on actual html snippets.  these should be reorganized into simply
+src/layouts/<layout>
+and it should contain an html file, a ts file that consumes and exports the html (similar to how formats/components does with css), and an translation file
+
+the rollup layouts package should resolve all the layout translation strings for continued i18n support.
+
+---
+
+Planning only, read-only. In /Users/dwahl/Scripts/pantoken, investigate analogous patterns to reuse for the proposed layouts migration: formats/components CSS consumption/export style (TS modules consuming CSS), translation aggregation/resolution in docs/plugins/pantoken/rollup layouts package, and package build constraints for HTML raw imports or generated declarations. Follow repo instructions, including .entire/graph-agent.md if needed. Return concise findings with specific files/symbols and recommended pattern to mirror. Do not edit files.
+
+---
+
+Planning only, read-only. In /Users/dwahl/Scripts/pantoken, investigate the current layouts implementation for plugins/pantoken/layouts. Follow repo instructions, including .entire/graph-agent.md if you need code location. Focus on: current directory structure under plugins/pantoken/layouts/src/layouts, how individual layout records are defined (especially rubric-note.ts), how translations are represented today, package entry points/build config/tests/docs references, and any generated cssdoc/scaffold assumptions that would be affected by reorganizing to src/layouts/<layout>/{layout html file, ts exporter, translation file}. Return concise findings with specific files/symbols and blockers/ambiguities. Do not edit files.
