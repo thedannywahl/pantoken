@@ -7,7 +7,6 @@
         class="instui-button -color-secondary -icon-rows-2"
         aria-pressed="false"
         aria-label="{{layoutDirectionLabel}}"
-        label="{{layoutDirectionLabel}}"
       >
         <span class="instui-screen-reader-content">{{layoutDirectionLabel}}</span>
       </button>
@@ -36,11 +35,15 @@
   <div class="description">{{pageDescription}}</div>
 
   <div class="controls --my-lg">
-    <button type="button" id="download-package" class="instui-button -icon-download">
-      <span class="instui-screen-reader-content">{{downloadPackageLabel}}</span>
+    <button type="button" id="download-package" class="instui-button">
+      <span class="instui-icon -icon-file-archive" aria-hidden="true"></span
+      >{{downloadPackageLabel}}
     </button>
-    <button type="button" id="copy-html" class="instui-button -color-secondary -icon-copy">
-      <span class="instui-screen-reader-content">{{copyHtmlLabel}}</span>
+    <button type="button" id="download-html" class="instui-button -color-secondary">
+      <span class="instui-icon -icon-download" aria-hidden="true"></span>{{downloadHtmlLabel}}
+    </button>
+    <button type="button" id="copy-html" class="instui-button -color-secondary">
+      <span class="instui-icon -icon-copy" aria-hidden="true"></span><span>{{copyHtmlLabel}}</span>
     </button>
     <span id="copy-status" role="status"></span>
   </div>
@@ -79,6 +82,16 @@
             <span class="instui-screen-reader-content">{{previewWidthSmallLabel}}</span>
           </button>
         </div>
+        <button
+          type="button"
+          id="preview-scheme-toggle"
+          class="instui-button -size-sm -color-tertiary -toggle -icon-moon -without-background -without-border"
+          aria-pressed="false"
+          aria-label="{{previewSchemeToggleLabel}}"
+          disabled
+        >
+          <span class="instui-screen-reader-content">{{previewSchemeToggleLabel}}</span>
+        </button>
       </div>
       <iframe id="preview" title="{{previewFrameTitle}}"></iframe>
       <div class="preview-footer">

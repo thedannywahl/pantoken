@@ -17,6 +17,8 @@
   "previewWidthLargeLabel": { "message": "Large", "translate": "always" },
   "previewWidthMediumLabel": { "message": "Medium", "translate": "always" },
   "previewWidthSmallLabel": { "message": "Small", "translate": "always" },
+  "previewSchemeToggleLabel": { "message": "Preview dark mode", "translate": "always" },
+  "downloadHtmlLabel": { "message": "Download HTML", "translate": "always" },
   "themeTrayAriaLabel": { "message": "Theme settings", "translate": "always" },
   "tabConfigLabel": {
     "message": "Config",

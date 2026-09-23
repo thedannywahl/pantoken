@@ -13,6 +13,7 @@ import "@pantoken/components/icons/copy.css";
 import "@pantoken/components/icons/x.css";
 import "@pantoken/components/icons/check.css";
 import "@pantoken/components/icons/download.css";
+import "@pantoken/components/icons/file-archive.css";
 import "@pantoken/components/icons/sliders-horizontal.css"; // app.html's -icon-sliders-horizontal button modifier
 import "@pantoken/components/icons/circle-question-mark.css"; // app.html's -icon-circle-question-mark button modifier
 import "@pantoken/components/icons/rows-2.css"; // app.html's layout-direction toggle, row state
@@ -22,6 +23,8 @@ import "@pantoken/components/icons/tablet.css"; // app.html's preview-width-pick
 import "@pantoken/components/icons/smartphone.css"; // app.html's preview-width-picker, small
 import "@pantoken/components/icons/maximize.css"; // app.html's preview-fullscreen-toggle, off state
 import "@pantoken/components/icons/minimize.css"; // app.html's preview-fullscreen-toggle, on state
+import "@pantoken/components/icons/moon.css"; // app.html's preview-scheme-toggle, light state
+import "@pantoken/components/icons/sun.css"; // app.html's preview-scheme-toggle, dark state
 import adaptiveTokensCss from "@pantoken/css/style.lean.css?inline";
 import rebrandLightTokensCss from "@pantoken/css/style.rebrand.light.lean.css?inline";
 import canvasTokensCss from "@pantoken/css/style.canvas.lean.css?inline";
@@ -170,6 +173,18 @@ const LOCAL_COMPONENT_CSS = [
   CUSTOM_THEME_COLORS_CSS,
   fontsCss,
 ].join("\n");
+// pantoken's token sheets express dark mode as `light-dark()`, which lightningcss (this bundle's
+// minifier) downlevels to two OS-preference-gated control variables — fine for theme.css (a real
+// Canvas page can't force a scheme anyway), but it means `color-scheme`/`data-pantoken-scheme`
+// alone can't force the *preview's* scheme against the visitor's own OS setting. This block
+// re-derives those two control variables from `data-pantoken-scheme` so the preview's light/dark
+// toggle actually overrides it. `--lightningcss-light`/`-dark` are lightningcss's fixed,
+// undocumented-but-stable names for this downlevel — see the vendored `--lightningcss-*` custom
+// properties in @pantoken/css's built output.
+const PREVIEW_SCHEME_FORCE_CSS = `
+[data-pantoken-scheme="light"] { --lightningcss-light: initial; --lightningcss-dark: ; }
+[data-pantoken-scheme="dark"] { --lightningcss-light: ; --lightningcss-dark: initial; }
+`;
 
 /** Minimal `{{key}}` substitution — every key must exist in `strings`, values are inserted raw. */
 function render(template: string, strings: Record<string, string>): string {
@@ -262,7 +277,7 @@ function applyParentTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
   document.documentElement.dataset.pantokenScheme = mode;
   const themeButton = [...themeButtons].find((button) => button.dataset.theme === theme);
   if (themeButton) selectToggleButton(themeButtons, themeButton);
-  includeDarkModeRow.hidden = theme !== "rebrand";
+  syncDarkModeAvailability();
   applyEditorTheme(activeEditor);
   void refreshAll();
 }
@@ -462,6 +477,7 @@ const previewWidthButtons = document.querySelectorAll<HTMLButtonElement>(
 );
 const includeDarkModeRow = document.getElementById("include-dark-mode-row")!;
 const includeDarkModeCheckbox = document.querySelector<HTMLInputElement>("#include-dark-mode")!;
+const previewSchemeToggle = document.querySelector<HTMLButtonElement>("#preview-scheme-toggle")!;
 const previewFrame = document.querySelector<HTMLIFrameElement>("#preview")!;
 const previewPane = document.querySelector<HTMLElement>(".preview-pane")!;
 const downloadCss = document.querySelector<HTMLAnchorElement>("#download-theme-css")!;
@@ -653,8 +669,8 @@ function restoreCanvasThemePreset(preset: CanvasThemePreset): void {
   selectedTheme = preset.theme;
   const themeButton = [...themeButtons].find((button) => button.dataset.theme === preset.theme);
   if (themeButton) selectToggleButton(themeButtons, themeButton);
-  includeDarkModeRow.hidden = selectedTheme !== "rebrand";
   includeDarkModeCheckbox.checked = preset.mode === "adaptive";
+  syncDarkModeAvailability();
   providerSelect.value = preset.cdnProvider;
   selectThemeColor(preset.color);
   replaceEditorDocument(cssEditorView, preset.customCss);
@@ -680,6 +696,10 @@ function currentSelection(): { provider: string; theme: ThemeVariant; mode: Them
   };
 }
 
+/** `css`/`js` are theme.css/theme.js's actual downloadable content and the live preview's styling
+ * alike — both follow the visitor's/browser's own dark-mode preference, same as a real Canvas
+ * page would. The preview's manual light/dark toggle overrides that via `PREVIEW_SCHEME_FORCE_CSS`
+ * (see `updatePreview`), not by swapping this CSS. */
 async function buildCurrentTheme(): Promise<{ css: string; js: string }> {
   const selection = currentSelection();
   if (selection.provider !== LOCAL_PROVIDER_ID) {
@@ -718,11 +738,30 @@ function selectToggleButton(buttons: NodeListOf<HTMLButtonElement>, target: HTML
   for (const button of buttons) button.setAttribute("aria-pressed", String(button === target));
 }
 
+/** Only "rebrand" ships a dark scheme — canvas/canvasHighContrast are single-scheme themes. */
+function syncDarkModeAvailability(): void {
+  const supportsDarkMode = selectedTheme === "rebrand";
+  includeDarkModeRow.hidden = !supportsDarkMode;
+  includeDarkModeCheckbox.disabled = !supportsDarkMode;
+  if (!supportsDarkMode) includeDarkModeCheckbox.checked = false;
+  syncPreviewSchemeToggleAvailability();
+}
+
+/** The preview's own light/dark switch only makes sense once "include dark mode" is on. */
+function syncPreviewSchemeToggleAvailability(): void {
+  previewSchemeToggle.disabled = !includeDarkModeCheckbox.checked;
+  if (previewSchemeToggle.disabled) {
+    previewDarkOverride = false;
+    previewSchemeToggle.setAttribute("aria-pressed", "false");
+    previewSchemeToggle.classList.replace("-icon-sun", "-icon-moon");
+  }
+}
+
 themeButtons.forEach((button) => {
   button.addEventListener("click", () => {
     selectedTheme = button.dataset.theme as ThemeVariant;
     selectToggleButton(themeButtons, button);
-    includeDarkModeRow.hidden = selectedTheme !== "rebrand";
+    syncDarkModeAvailability();
     applyEditorTheme(activeEditor);
     void refreshAll();
   });
@@ -787,6 +826,16 @@ if (
     applyPreviewWidth();
   }
 }
+
+let previewDarkOverride = false;
+syncDarkModeAvailability();
+previewSchemeToggle.addEventListener("click", () => {
+  previewDarkOverride = !previewDarkOverride;
+  previewSchemeToggle.setAttribute("aria-pressed", String(previewDarkOverride));
+  previewSchemeToggle.classList.toggle("-icon-moon", !previewDarkOverride);
+  previewSchemeToggle.classList.toggle("-icon-sun", previewDarkOverride);
+  void refreshAll();
+});
 
 const previewFullscreenToggle = document.querySelector<HTMLButtonElement>(
   "#preview-fullscreen-toggle",
@@ -857,7 +906,10 @@ function persistPreferences(): void {
 }
 
 
-includeDarkModeCheckbox.addEventListener("change", refreshAll);
+includeDarkModeCheckbox.addEventListener("change", () => {
+  syncPreviewSchemeToggleAvailability();
+  void refreshAll();
+});
 
 /** Debounce helper — the preview pane only needs to refresh a beat after typing settles. */
 function debounce<Args extends unknown[]>(fn: (...args: Args) => void, ms: number) {
@@ -882,7 +934,7 @@ function updatePreview(theme: { css: string; js: string }): void {
   // Canvas's own theme already frames the RCE content area — the picker's border would double up.
   previewFrame.style.borderColor =
     selectedTheme === "canvas" || selectedTheme === "canvasHighContrast" ? "transparent" : "";
-  const themeCss = [theme.css, cssEditorView.state.doc.toString()]
+  const themeCss = [theme.css, PREVIEW_SCHEME_FORCE_CSS, cssEditorView.state.doc.toString()]
     .filter(Boolean)
     .join("\n");
   const themeJs = [theme.js, jsEditorView.state.doc.toString()]
@@ -897,7 +949,9 @@ function updatePreview(theme: { css: string; js: string }): void {
   // scheme, and color outright rather than inheriting anything from the editor chrome around it.
   // That's what lets the preview sit in light Canvas while the chrome sits in dark rebrand.
   const previewScheme =
-    selectedTheme === "rebrand" && includeDarkModeCheckbox.checked ? "dark" : "light";
+    selectedTheme === "rebrand" && includeDarkModeCheckbox.checked && previewDarkOverride
+      ? "dark"
+      : "light";
   previewFrame.srcdoc = `<!doctype html><html data-pantoken-boundary data-pantoken-instance="${EDITOR_INSTANCE}-preview" data-pantoken-theme="${selectedTheme}" data-pantoken-scheme="${previewScheme}" data-pantoken-color="${selectedColor}" style="color-scheme:${previewScheme}"><head><style>${themeCss}
 ${CUSTOM_THEME_COLORS_CSS}</style><style>#wrapper{padding:32px;}#content{padding:36px 48px 48px;min-height:20rem;margin:0 auto;border-radius:12px;}@media not all and (min-width: 768px) {
   #wrapper{padding:24px;}#content{padding-left:12px;padding-right:12px;min-height:16rem;border-radius:8px;}</style></head><body>
