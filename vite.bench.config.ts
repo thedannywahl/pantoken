@@ -7,9 +7,26 @@
 // specifiers those sources use resolve to built `dist/`, so `vp run -r build` must run first.
 import { defineConfig } from "vite-plus";
 
+const codSpeedExecArgv = process.env.CODSPEED_ENV
+  ? [
+      "--interpreted-frames-native-stack",
+      "--allow-natives-syntax",
+      "--hash-seed=1",
+      "--random-seed=1",
+      "--no-opt",
+      "--predictable",
+      "--predictable-gc-schedule",
+      "--expose-gc",
+      "--no-concurrent-sweeping",
+      "--max-old-space-size=4096",
+    ]
+  : [];
+
 export default defineConfig({
   test: {
+    execArgv: codSpeedExecArgv,
     include: ["bench/*.bench.ts"],
+    pool: "forks",
     testTimeout: 120_000,
   },
 });
