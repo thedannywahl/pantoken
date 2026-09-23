@@ -1,0 +1,51 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M374W5C2CDAQBBY9F1EGAWJX",
+  "session_id": "ff9ac143-656a-442e-8721-4eb3e6e36f43",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-23T12:46:59.854433Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "save_step_count": 2,
+  "files_touched": [],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "d29b75279683",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 5
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 833,
+      "user_lines_removed": 101,
+      "agent_lines_added": 13395,
+      "agent_lines_removed": 333,
+      "user_added_per_file": {
+        "l10n/vi/tinymce.strings.po": 70,
+        "l10n/zh-Hans/tinymce.strings.po": 373,
+        "l10n/zh-Hant/tinymce.strings.po": 390
+      },
+      "user_removed_per_file": {
+        "l10n/vi/tinymce.strings.po": 87,
+        "l10n/zh-Hans/tinymce.strings.po": 7,
+        "l10n/zh-Hant/tinymce.strings.po": 7
+      }
+    }
+  ]
+}
