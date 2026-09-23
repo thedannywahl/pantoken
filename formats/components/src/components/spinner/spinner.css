@@ -1,12 +1,15 @@
 /**
  * @component spinner
  * @selector .pfx-spinner
- * @summary An animated loading ring; give it role="status" and an aria-label.
- * @remarks `-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color.
+ * @summary An animated loading ring or AI spinner; give it role="status" and an aria-label.
+ * @remarks `-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color. The AI variants replace the ring with the centred `ai-spinner` glyph while keeping the same size scale.
  * @modifier -size-xs — Extra-small.
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
  * @modifier -color-inverse — On a dark surface.
+ * @modifier -color-ai — Rotating AI-gradient star.
+ * @modifier -color-ai-on-color — Rotating on-colour AI star for a coloured or dark surface.
+ * @animation pantoken-spinner-rotate — Rotates the ring, or the AI star at the slower 2.25-second cadence.
  * @a11y Give the spinner role="status" and an aria-label so screen readers announce it as a live loading status.
  * @example
  * ```html
@@ -39,6 +42,27 @@
 
     &.-color-inverse {
       border-top-color: var(--instui-component-spinner-inverse-color);
+    }
+
+    &.-color-ai,
+    &.-color-ai-on-color {
+      border: 0;
+      border-radius: 0;
+      animation-duration: 2.25s;
+      -webkit-mask: var(--instui-icon-ai-spinner) center / contain no-repeat;
+      mask: var(--instui-icon-ai-spinner) center / contain no-repeat;
+    }
+
+    &.-color-ai {
+      background: linear-gradient(
+        to bottom,
+        var(--instui-color-stroke-ai-top-gradient),
+        var(--instui-color-stroke-ai-bottom-gradient)
+      );
+    }
+
+    &.-color-ai-on-color {
+      background: var(--instui-color-icon-on-color);
     }
   }
 }

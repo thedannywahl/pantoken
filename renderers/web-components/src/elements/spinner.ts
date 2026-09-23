@@ -2,8 +2,8 @@ import { spinnerCss } from "@pantoken/components";
 import type { ElementDefinition } from "../lib/context.ts";
 
 /**
- * `<instui-spinner>` — a loading spinner with `role="status"`. Purely presentational; size and
- * colour follow the CSS tokens.
+ * `<instui-spinner>` — a loading spinner with `role="status"`. `variant="ai"` and
+ * `variant="ai-on-color"` select the rotating AI star; size and colour follow the CSS tokens.
  *
  * @example
  * ```html
@@ -16,6 +16,7 @@ export const spinner: ElementDefinition = {
     ctx.wrapper(
       "instui-spinner",
       spinnerCss(ctx.I),
-      () => `<span class="instui-spinner" role="status" part="spinner"></span>`,
+      (host) =>
+        `<span class="${ctx.variantClass("spinner", host)}" role="status" part="spinner"></span>`,
     ),
 };

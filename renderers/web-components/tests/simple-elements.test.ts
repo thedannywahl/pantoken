@@ -62,6 +62,19 @@ test("spinner renders a status span", () => {
   expect(span?.className).toBe("instui-spinner");
 });
 
+test("spinner maps AI variants to color modifiers", () => {
+  const ai = mount(`<instui-spinner variant="ai"></instui-spinner>`, "instui-spinner");
+  const onColor = mount(
+    `<instui-spinner variant="ai-on-color"></instui-spinner>`,
+    "instui-spinner",
+  );
+
+  expect(ai.shadowRoot?.querySelector("span")?.className).toBe("instui-spinner -color-ai");
+  expect(onColor.shadowRoot?.querySelector("span")?.className).toBe(
+    "instui-spinner -color-ai-on-color",
+  );
+});
+
 test("avatar composes color/size/shape modifiers from attributes", () => {
   const el = mount(
     `<instui-avatar variant="green" size="lg" shape="rectangle">AB</instui-avatar>`,

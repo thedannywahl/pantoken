@@ -83,7 +83,7 @@ export const THEME_SELECTOR_DEFAULTS: ThemeSelectorStrings = {
   rebrand: "Next gen",
   canvas: "Canvas",
   canvasHighContrast: "Canvas high contrast",
-  colorLabel: "Color scheme",
+  colorLabel: "Theme color",
   navy: "Navy",
   blue: "Blue",
   green: "Green",

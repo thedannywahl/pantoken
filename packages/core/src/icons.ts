@@ -100,6 +100,26 @@ function readBidirectional(uiIconsRoot: string): Set<string> {
 
 const BIDI_HEURISTIC = /(^|-)(arrow|chevron|left|right|start|end|back|forward|next|previous)(-|$)/;
 
+// The centred star used by InstUI 11.7.7's AI Spinner, sourced from igniteai-logo.svg without its sparkle.
+const AI_SPINNER_SVG =
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.0621 2.53451C11.3843 1.66389 12.6157 1.66389 12.9379 2.53451L15.0815 8.32767C15.1828 8.60139 15.3986 8.8172 15.6723 8.91848L21.4655 11.0621C22.3361 11.3843 22.3361 12.6157 21.4655 12.9379L15.6723 15.0815C15.3986 15.1828 15.1828 15.3986 15.0815 15.6723L12.9379 21.4655C12.6157 22.3361 11.3843 22.3361 11.0621 21.4655L8.91849 15.6723C8.8172 15.3986 8.60139 15.1828 8.32767 15.0815L2.53451 12.9379C1.66389 12.6157 1.66389 11.3843 2.53451 11.0621L8.32767 8.91849C8.60139 8.8172 8.8172 8.60139 8.91848 8.32767L11.0621 2.53451Z"/></svg>';
+
+function supplementalInstuiGlyphs(): IconToken[] {
+  return [
+    {
+      name: "--instui-icon-ai-spinner",
+      value: svgToDataUri(AI_SPINNER_SVG),
+      meta: {
+        kind: "icon",
+        source: "custom",
+        style: "Custom",
+        viewBox: "0 0 24 24",
+        bidirectional: false,
+      },
+    },
+  ];
+}
+
 function readCustomGlyphs(uiIconsRoot: string, bidi: Set<string>): IconToken[] {
   const out: IconToken[] = [];
   const dir = join(uiIconsRoot, "svg/Custom");
@@ -203,6 +223,9 @@ export function collectIcons(options: CollectIconsOptions = {}): IconLayer {
   if (uiIconsRoot && includeInstui) {
     // Custom overrides Lucide on name collisions.
     for (const t of readCustomGlyphs(uiIconsRoot, bidi)) byName.set(t.name, t);
+  }
+  if (includeInstui) {
+    for (const t of supplementalInstuiGlyphs()) byName.set(t.name, t);
   }
 
   const glyphs = [...byName.values()].sort((a, b) => (a.name < b.name ? -1 : 1));

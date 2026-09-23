@@ -4,63 +4,77 @@
     {
       "token": "--instui-icon-angry",
       "deprecatedIn": "ui@11.7.6",
-      "removeIn": "ui@12.0.0",
+      "removeIn": "ui@11.8.0",
       "note": "The upstream icon was removed and has no pantoken implementation reference."
     },
     {
       "token": "--instui-icon-annoyed",
       "deprecatedIn": "ui@11.7.6",
-      "removeIn": "ui@12.0.0",
+      "removeIn": "ui@11.8.0",
       "note": "The upstream icon was removed and has no pantoken implementation reference."
     },
     {
       "token": "--instui-icon-frown",
       "deprecatedIn": "ui@11.7.6",
-      "removeIn": "ui@12.0.0",
+      "removeIn": "ui@11.8.0",
       "note": "The upstream icon was removed and has no pantoken implementation reference."
     },
     {
       "token": "--instui-icon-laugh",
       "deprecatedIn": "ui@11.7.6",
-      "removeIn": "ui@12.0.0",
+      "removeIn": "ui@11.8.0",
       "note": "The upstream icon was removed and has no pantoken implementation reference."
     },
     {
       "token": "--instui-icon-meh",
       "deprecatedIn": "ui@11.7.6",
-      "removeIn": "ui@12.0.0",
+      "removeIn": "ui@11.8.0",
       "note": "The upstream icon was removed and has no pantoken implementation reference."
     },
     {
       "token": "--instui-icon-podcast",
       "deprecatedIn": "ui@11.7.6",
-      "removeIn": "ui@12.0.0",
+      "removeIn": "ui@11.8.0",
       "note": "The upstream icon was removed and has no pantoken implementation reference."
     },
     {
       "token": "--instui-icon-smile",
       "deprecatedIn": "ui@11.7.6",
-      "removeIn": "ui@12.0.0",
+      "removeIn": "ui@11.8.0",
       "note": "The upstream icon was removed and has no pantoken implementation reference."
     },
     {
       "token": "--instui-icon-smile-plus",
       "deprecatedIn": "ui@11.7.6",
-      "removeIn": "ui@12.0.0",
+      "removeIn": "ui@11.8.0",
       "note": "The upstream icon was removed and has no pantoken implementation reference."
     },
     {
       "token": "--instui-icon-trash-2",
       "deprecatedIn": "ui@11.7.6",
-      "removeIn": "ui@12.0.0",
+      "removeIn": "ui@11.8.0",
       "note": "The upstream icon was removed and has no pantoken implementation reference."
     },
     {
       "token": "--instui-icon-history",
       "deprecatedIn": "ui@11.7.6",
-      "removeIn": "ui@12.0.0",
+      "removeIn": "ui@11.8.0",
       "replacement": "--instui-icon-rotate-ccw-clock",
       "note": "The upstream icon was renamed."
+    },
+    {
+      "token": "--instui-component-side-nav-bar-new-insitution-logo-gap",
+      "deprecatedIn": "ui@11.7.7",
+      "removeIn": "ui@11.8.0",
+      "replacement": "--instui-component-side-nav-bar-new-institution-logo-gap",
+      "note": "The upstream token corrected the institution spelling."
+    },
+    {
+      "token": "--instui-component-side-nav-bar-new-insitution-logo-padding",
+      "deprecatedIn": "ui@11.7.7",
+      "removeIn": "ui@11.8.0",
+      "replacement": "--instui-component-side-nav-bar-new-institution-logo-padding",
+      "note": "The upstream token corrected the institution spelling."
     }
   ]
 }

@@ -44,6 +44,12 @@
       "style": "Custom",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-ai-spinner": {
+      "hash": "8563d40d7615fbf3",
+      "source": "custom",
+      "style": "Custom",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-air-vent": {
       "hash": "fcbe628307de3eff",
       "source": "lucide",
@@ -9951,7 +9957,7 @@
     },
     "uiIcons": {
       "package": "@instructure/ui-icons",
-      "resolved": "11.7.6"
+      "resolved": "11.7.7"
     }
   },
   "themes": {
@@ -11569,6 +11575,18 @@
         "refersTo": "--instui-primitive-color-honey-honey20",
         "syntax": "*",
         "value": "var(--instui-primitive-color-honey-honey20)"
+      },
+      "--instui-color-background-skeleton-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-grey-grey70",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-grey-grey70)"
+      },
+      "--instui-color-background-skeleton-shimmer-color": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-grey-grey50",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-grey-grey50)"
       },
       "--instui-color-background-success": {
         "inherits": true,
@@ -21593,12 +21611,26 @@
         "value": "var(--instui-color-icon-on-color)"
       },
       "--instui-component-side-nav-bar-new-insitution-logo-gap": {
+        "deprecated": true,
+        "inherits": true,
+        "refersTo": "--instui-component-side-nav-bar-new-institution-logo-gap",
+        "syntax": "*",
+        "value": "var(--instui-component-side-nav-bar-new-institution-logo-gap)"
+      },
+      "--instui-component-side-nav-bar-new-insitution-logo-padding": {
+        "deprecated": true,
+        "inherits": true,
+        "refersTo": "--instui-component-side-nav-bar-new-institution-logo-padding",
+        "syntax": "*",
+        "value": "var(--instui-component-side-nav-bar-new-institution-logo-padding)"
+      },
+      "--instui-component-side-nav-bar-new-institution-logo-gap": {
         "inherits": true,
         "refersTo": "--instui-spacing-space-md",
         "syntax": "*",
         "value": "var(--instui-spacing-space-md)"
       },
-      "--instui-component-side-nav-bar-new-insitution-logo-padding": {
+      "--instui-component-side-nav-bar-new-institution-logo-padding": {
         "inherits": true,
         "refersTo": "--instui-spacing-space-sm",
         "syntax": "*",
@@ -21825,6 +21857,126 @@
         "inherits": true,
         "syntax": "*",
         "value": "5.25rem"
+      },
+      "--instui-component-skeleton-loader-avatar-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-full",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-full)"
+      },
+      "--instui-component-skeleton-loader-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-skeleton-background-color",
+        "syntax": "*",
+        "value": "var(--instui-color-background-skeleton-background-color)"
+      },
+      "--instui-component-skeleton-loader-bezier": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.42, 0, 0.58, 1"
+      },
+      "--instui-component-skeleton-loader-duration": {
+        "inherits": true,
+        "syntax": "<time>",
+        "value": "1500ms"
+      },
+      "--instui-component-skeleton-loader-image-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-md",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-md)"
+      },
+      "--instui-component-skeleton-loader-motion": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "ease-in-out"
+      },
+      "--instui-component-skeleton-loader-shimmer-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-skeleton-shimmer-color",
+        "syntax": "*",
+        "value": "var(--instui-color-background-skeleton-shimmer-color)"
+      },
+      "--instui-component-skeleton-loader-text-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-sm",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-sm)"
+      },
+      "--instui-component-skeleton-loader-text-height-lg": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-xl",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-xl)"
+      },
+      "--instui-component-skeleton-loader-text-height-md": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "1.5rem"
+      },
+      "--instui-component-skeleton-loader-text-height-sm": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-lg",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-lg)"
+      },
+      "--instui-component-skeleton-loader-text-height-xl": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "2rem"
+      },
+      "--instui-component-skeleton-loader-text-height-xs": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-base",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-base)"
+      },
+      "--instui-component-skeleton-loader-text-height-xxl": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text2xl",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text2xl)"
+      },
+      "--instui-component-skeleton-loader-text-height-xxs": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-xs",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-xs)"
+      },
+      "--instui-component-skeleton-loader-text-padding-lg": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.21875rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-md": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.1875rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-sm": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.15625rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xl": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.25rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xs": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.125rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xxl": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.28125rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xxs": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.1875rem"
       },
       "--instui-component-slider-checkerboard-background-image": {
         "inherits": true,
@@ -28285,6 +28437,18 @@
         "refersTo": "--instui-primitive-color-honey-honey20",
         "syntax": "*",
         "value": "var(--instui-primitive-color-honey-honey20)"
+      },
+      "--instui-color-background-skeleton-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-grey-grey100",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-grey-grey100)"
+      },
+      "--instui-color-background-skeleton-shimmer-color": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-grey-grey80",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-grey-grey80)"
       },
       "--instui-color-background-success": {
         "inherits": true,
@@ -38309,12 +38473,26 @@
         "value": "var(--instui-color-icon-on-color)"
       },
       "--instui-component-side-nav-bar-new-insitution-logo-gap": {
+        "deprecated": true,
+        "inherits": true,
+        "refersTo": "--instui-component-side-nav-bar-new-institution-logo-gap",
+        "syntax": "*",
+        "value": "var(--instui-component-side-nav-bar-new-institution-logo-gap)"
+      },
+      "--instui-component-side-nav-bar-new-insitution-logo-padding": {
+        "deprecated": true,
+        "inherits": true,
+        "refersTo": "--instui-component-side-nav-bar-new-institution-logo-padding",
+        "syntax": "*",
+        "value": "var(--instui-component-side-nav-bar-new-institution-logo-padding)"
+      },
+      "--instui-component-side-nav-bar-new-institution-logo-gap": {
         "inherits": true,
         "refersTo": "--instui-spacing-space-md",
         "syntax": "*",
         "value": "var(--instui-spacing-space-md)"
       },
-      "--instui-component-side-nav-bar-new-insitution-logo-padding": {
+      "--instui-component-side-nav-bar-new-institution-logo-padding": {
         "inherits": true,
         "refersTo": "--instui-spacing-space-sm",
         "syntax": "*",
@@ -38541,6 +38719,126 @@
         "inherits": true,
         "syntax": "*",
         "value": "5.25rem"
+      },
+      "--instui-component-skeleton-loader-avatar-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-full",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-full)"
+      },
+      "--instui-component-skeleton-loader-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-skeleton-background-color",
+        "syntax": "*",
+        "value": "var(--instui-color-background-skeleton-background-color)"
+      },
+      "--instui-component-skeleton-loader-bezier": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.42, 0, 0.58, 1"
+      },
+      "--instui-component-skeleton-loader-duration": {
+        "inherits": true,
+        "syntax": "<time>",
+        "value": "1500ms"
+      },
+      "--instui-component-skeleton-loader-image-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-md",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-md)"
+      },
+      "--instui-component-skeleton-loader-motion": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "ease-in-out"
+      },
+      "--instui-component-skeleton-loader-shimmer-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-skeleton-shimmer-color",
+        "syntax": "*",
+        "value": "var(--instui-color-background-skeleton-shimmer-color)"
+      },
+      "--instui-component-skeleton-loader-text-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-sm",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-sm)"
+      },
+      "--instui-component-skeleton-loader-text-height-lg": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-xl",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-xl)"
+      },
+      "--instui-component-skeleton-loader-text-height-md": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "1.5rem"
+      },
+      "--instui-component-skeleton-loader-text-height-sm": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-lg",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-lg)"
+      },
+      "--instui-component-skeleton-loader-text-height-xl": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "2rem"
+      },
+      "--instui-component-skeleton-loader-text-height-xs": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-base",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-base)"
+      },
+      "--instui-component-skeleton-loader-text-height-xxl": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text2xl",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text2xl)"
+      },
+      "--instui-component-skeleton-loader-text-height-xxs": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-xs",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-xs)"
+      },
+      "--instui-component-skeleton-loader-text-padding-lg": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.21875rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-md": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.1875rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-sm": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.15625rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xl": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.25rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xs": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.125rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xxl": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.28125rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xxs": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.1875rem"
       },
       "--instui-component-slider-checkerboard-background-image": {
         "inherits": true,
@@ -45002,6 +45300,18 @@
         "syntax": "*",
         "themed": true,
         "value": "light-dark(var(--instui-primitive-color-honey-honey20), var(--instui-primitive-color-honey-honey160))"
+      },
+      "--instui-color-background-skeleton-background-color": {
+        "inherits": true,
+        "syntax": "*",
+        "themed": true,
+        "value": "light-dark(var(--instui-primitive-color-grey-grey70), var(--instui-primitive-color-grey-grey110))"
+      },
+      "--instui-color-background-skeleton-shimmer-color": {
+        "inherits": true,
+        "syntax": "*",
+        "themed": true,
+        "value": "light-dark(var(--instui-primitive-color-grey-grey50), var(--instui-primitive-color-grey-grey90))"
       },
       "--instui-color-background-success": {
         "inherits": true,
@@ -54930,9 +55240,9 @@
       },
       "--instui-component-side-nav-bar-item-selected-background-color": {
         "inherits": true,
-        "refersTo": "--instui-color-institutional-brand-primary",
+        "refersTo": "--instui-color-background-brand",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-primary)"
+        "value": "var(--instui-color-background-brand)"
       },
       "--instui-component-side-nav-bar-item-selected-font-color": {
         "inherits": true,
@@ -55059,12 +55369,26 @@
         "value": "var(--instui-color-icon-interactive-action-primary-on-color-base)"
       },
       "--instui-component-side-nav-bar-new-insitution-logo-gap": {
+        "deprecated": true,
+        "inherits": true,
+        "refersTo": "--instui-component-side-nav-bar-new-institution-logo-gap",
+        "syntax": "*",
+        "value": "var(--instui-component-side-nav-bar-new-institution-logo-gap)"
+      },
+      "--instui-component-side-nav-bar-new-insitution-logo-padding": {
+        "deprecated": true,
+        "inherits": true,
+        "refersTo": "--instui-component-side-nav-bar-new-institution-logo-padding",
+        "syntax": "*",
+        "value": "var(--instui-component-side-nav-bar-new-institution-logo-padding)"
+      },
+      "--instui-component-side-nav-bar-new-institution-logo-gap": {
         "inherits": true,
         "refersTo": "--instui-spacing-space-md",
         "syntax": "*",
         "value": "var(--instui-spacing-space-md)"
       },
-      "--instui-component-side-nav-bar-new-insitution-logo-padding": {
+      "--instui-component-side-nav-bar-new-institution-logo-padding": {
         "inherits": true,
         "refersTo": "--instui-spacing-space-sm",
         "syntax": "*",
@@ -55297,6 +55621,126 @@
         "inherits": true,
         "syntax": "*",
         "value": "5.875rem"
+      },
+      "--instui-component-skeleton-loader-avatar-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-full",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-full)"
+      },
+      "--instui-component-skeleton-loader-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-skeleton-background-color",
+        "syntax": "*",
+        "value": "var(--instui-color-background-skeleton-background-color)"
+      },
+      "--instui-component-skeleton-loader-bezier": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.42, 0, 0.58, 1"
+      },
+      "--instui-component-skeleton-loader-duration": {
+        "inherits": true,
+        "syntax": "<time>",
+        "value": "1500ms"
+      },
+      "--instui-component-skeleton-loader-image-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-md",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-md)"
+      },
+      "--instui-component-skeleton-loader-motion": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "ease-in-out"
+      },
+      "--instui-component-skeleton-loader-shimmer-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-skeleton-shimmer-color",
+        "syntax": "*",
+        "value": "var(--instui-color-background-skeleton-shimmer-color)"
+      },
+      "--instui-component-skeleton-loader-text-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-sm",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-sm)"
+      },
+      "--instui-component-skeleton-loader-text-height-lg": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-xl",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-xl)"
+      },
+      "--instui-component-skeleton-loader-text-height-md": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "1.5rem"
+      },
+      "--instui-component-skeleton-loader-text-height-sm": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-lg",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-lg)"
+      },
+      "--instui-component-skeleton-loader-text-height-xl": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "2rem"
+      },
+      "--instui-component-skeleton-loader-text-height-xs": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-base",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-base)"
+      },
+      "--instui-component-skeleton-loader-text-height-xxl": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text2xl",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text2xl)"
+      },
+      "--instui-component-skeleton-loader-text-height-xxs": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-xs",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-xs)"
+      },
+      "--instui-component-skeleton-loader-text-padding-lg": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.21875rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-md": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.1875rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-sm": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.15625rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xl": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.25rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xs": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.125rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xxl": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.28125rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xxs": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.1875rem"
       },
       "--instui-component-slider-checkerboard-background-image": {
         "inherits": true,

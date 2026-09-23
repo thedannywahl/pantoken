@@ -37,6 +37,19 @@ test("a Custom (Instructure-authored) glyph is present and sourced", () => {
   expect(logo?.source).toBe("custom");
 });
 
+test("the AI spinner star is available from the standard icon library", () => {
+  const aiSpinner = getIcon("ai-spinner");
+
+  expect(aiSpinner).toMatchObject({
+    name: "ai-spinner",
+    source: "custom",
+    viewBox: "0 0 24 24",
+    bidirectional: false,
+  });
+  expect(aiSpinner?.svg).toContain("M11.0621 2.53451");
+  expect(customIcons).toContainEqual(aiSpinner);
+});
+
 test("sanitizeSvg strips script elements from decoded SVG", () => {
   const dirty = `<svg><script>alert(1)</script><path d="M0 0"/></svg>`;
   expect(sanitizeSvg(dirty)).not.toContain("<script");
