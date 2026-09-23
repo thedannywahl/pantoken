@@ -14,6 +14,11 @@ export default extendBase({
       "style.canvas.lean": "generated/style.canvas.lean.css",
       "style.canvas-high-contrast": "generated/style.canvas-high-contrast.css",
       "style.canvas-high-contrast.lean": "generated/style.canvas-high-contrast.lean.css",
+      properties: "generated/properties.css",
+      "properties.lean": "generated/properties.lean.css",
+      scope: "generated/scope.css",
+      "scope.lean": "generated/scope.lean.css",
+      schemes: "generated/schemes.css",
     },
     css: { splitting: true, target: false, minify: true, modules: false, inject: false },
     // Exports are hand-managed so the static `./style.css` export survives.
