@@ -44,10 +44,11 @@ export function observeScope(
   });
 
   // Observing the root subtree rather than the ancestor chain keeps this correct when the target is
-  // moved, and when a scope element is inserted between it and an existing ancestor.
+  // moved, and when a scope element is inserted between it and an existing ancestor. `class` is in
+  // the filter because a scope can be declared by class as well as by attribute.
   observer.observe(target.ownerDocument.documentElement, {
     attributes: true,
-    attributeFilter: [...SCOPE_ATTRS],
+    attributeFilter: [...SCOPE_ATTRS, "class"],
     subtree: true,
   });
 

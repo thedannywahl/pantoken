@@ -10,6 +10,7 @@
  */
 import {
   BOUNDARY_ATTR,
+  BOUNDARY_CLASS,
   COLOR_ATTR,
   DEFAULT_INSTANCE,
   INSTANCE_ATTR,
@@ -23,6 +24,33 @@ function attr(el: Element, name: string): string | undefined {
   const value = el.getAttribute(name);
   return value === null || value === "" ? undefined : value;
 }
+
+/**
+ * The value a `.--pantoken-<kind>-<value>` class encodes, if the element carries one.
+ *
+ * The emitter pairs every scope attribute with a class twin for hosts that strip `data-*`, so
+ * resolution has to read both or the runtime and the stylesheet disagree about what's in effect.
+ */
+function fromClass(el: Element, kind: string): string | undefined {
+  const prefix = `--pantoken-${kind}-`;
+  for (const cls of el.classList) {
+    if (cls.startsWith(prefix) && cls.length > prefix.length) return cls.slice(prefix.length);
+  }
+  return undefined;
+}
+
+const readTheme = (el: Element): string | undefined =>
+  attr(el, THEME_ATTR) ?? fromClass(el, "theme");
+const readColor = (el: Element): string | undefined =>
+  attr(el, COLOR_ATTR) ?? fromClass(el, "color");
+
+function readScheme(el: Element): Scheme | undefined {
+  const value = attr(el, SCHEME_ATTR) ?? fromClass(el, "scheme");
+  return isScheme(value) ? value : undefined;
+}
+
+const isBoundary = (el: Element): boolean =>
+  el.hasAttribute(BOUNDARY_ATTR) || el.classList.contains(BOUNDARY_CLASS);
 
 /**
  * Resolve the scope in effect for `start` by walking up its ancestors.
@@ -49,17 +77,17 @@ export function resolveScope(start: Element | null): ResolvedScope {
   for (let el: Element | null = start; el; el = el.parentElement) {
     let declared = false;
 
-    const nextTheme = attr(el, THEME_ATTR);
+    const nextTheme = readTheme(el);
     if (theme === undefined && nextTheme !== undefined) {
       theme = nextTheme;
       declared = true;
     }
-    const nextScheme = attr(el, SCHEME_ATTR);
-    if (scheme === undefined && isScheme(nextScheme)) {
+    const nextScheme = readScheme(el);
+    if (scheme === undefined && nextScheme !== undefined) {
       scheme = nextScheme;
       declared = true;
     }
-    const nextColor = attr(el, COLOR_ATTR);
+    const nextColor = readColor(el);
     if (color === undefined && nextColor !== undefined) {
       color = nextColor;
       declared = true;
@@ -73,7 +101,7 @@ export function resolveScope(start: Element | null): ResolvedScope {
     if (declared && element === null) element = el;
 
     // The boundary element's own attributes count; nothing above it does.
-    if (el.hasAttribute(BOUNDARY_ATTR)) {
+    if (isBoundary(el)) {
       bounded = true;
       break;
     }

@@ -1,5 +1,6 @@
 // @vitest-environment happy-dom
 import { expect, test } from "vite-plus/test";
+import { colorClass, schemeClass, themeClass } from "../src/contract.ts";
 import { resolveInstance, resolveScheme, resolveScope } from "../src/resolve.ts";
 
 function mount(html: string): HTMLElement {
@@ -106,4 +107,65 @@ test("two subtrees can resolve to different schemes at the same time", () => {
 
 test("resolveScope tolerates a null element", () => {
   expect(resolveScope(null).element).toBeNull();
+});
+
+test("class twins resolve exactly like the attributes they mirror", () => {
+  mount(`
+    <div class="--pantoken-theme-canvas --pantoken-color-sea">
+      <div class="--pantoken-scheme-dark"><span id="x"></span></div>
+    </div>
+  `);
+  expect(resolveScope(document.querySelector("#x"))).toMatchObject({
+    theme: "canvas",
+    color: "sea",
+    scheme: "dark",
+  });
+});
+
+test("an attribute wins over a class on the same element", () => {
+  mount(
+    `<div data-pantoken-theme="rebrand" class="--pantoken-theme-canvas"><span id="x"></span></div>`,
+  );
+  expect(resolveScope(document.querySelector("#x")).theme).toBe("rebrand");
+});
+
+test("a nearer class scope overrides a further attribute scope", () => {
+  mount(`
+    <div data-pantoken-theme="rebrand">
+      <div class="--pantoken-theme-canvas"><span id="x"></span></div>
+    </div>
+  `);
+  expect(resolveScope(document.querySelector("#x")).theme).toBe("canvas");
+});
+
+test("the boundary class stops resolution like the attribute does", () => {
+  mount(`
+    <div data-pantoken-theme="rebrand" data-pantoken-color="navy">
+      <div class="--pantoken-boundary --pantoken-theme-canvas"><span id="x"></span></div>
+    </div>
+  `);
+  const scope = resolveScope(document.querySelector("#x"));
+  expect(scope.theme).toBe("canvas");
+  expect(scope.bounded).toBe(true);
+  expect(scope.color).toBeUndefined();
+});
+
+test("unrelated classes and an invalid scheme class are ignored", () => {
+  mount(`
+    <div class="instui-view --pantoken-scheme-sepia --elevation-resting"><span id="x"></span></div>
+  `);
+  const scope = resolveScope(document.querySelector("#x"));
+  expect(scope.scheme).toBeUndefined();
+  expect(scope.theme).toBeUndefined();
+});
+
+test("the class a scope writes is the class resolution reads", () => {
+  mount(
+    `<div class="${themeClass("canvasHighContrast")} ${schemeClass("light")} ${colorClass("plum")}"><span id="x"></span></div>`,
+  );
+  expect(resolveScope(document.querySelector("#x"))).toMatchObject({
+    theme: "canvasHighContrast",
+    scheme: "light",
+    color: "plum",
+  });
 });

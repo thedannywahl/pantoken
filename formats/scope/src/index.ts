@@ -19,13 +19,17 @@
  */
 export {
   BOUNDARY_ATTR,
+  BOUNDARY_CLASS,
   COLOR_ATTR,
   DEFAULT_INSTANCE,
   INSTANCE_ATTR,
   SCHEME_ATTR,
   SCOPE_ATTRS,
   THEME_ATTR,
+  colorClass,
   isScheme,
+  schemeClass,
+  themeClass,
 } from "./contract.ts";
 export type { ResolvedScope, Scheme, ScopeConfig } from "./contract.ts";
 

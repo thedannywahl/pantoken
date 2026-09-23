@@ -13,13 +13,21 @@ Theming is now a property of a **subtree**, not of the page.
 Five attributes, defined once in `packages/utils/src/scope.ts` and exposed at the dependency-free
 `@pantoken/utils/scope` entry. `@pantoken/css` selects on them; `@pantoken/scope` writes them.
 
-| Attribute                | Meaning                                                    |
-| ------------------------ | ---------------------------------------------------------- |
-| `data-pantoken-theme`    | Roots a theme scope. Matches **any** element, not `:root`. |
-| `data-pantoken-scheme`   | Pins the subtree to `light` or `dark`.                     |
-| `data-pantoken-color`    | Selects a custom brand color.                              |
-| `data-pantoken-boundary` | Ancestor resolution stops here.                            |
-| `data-pantoken-instance` | Names the owning instance.                                 |
+| Attribute                | Class twin                 | Meaning                                                    |
+| ------------------------ | -------------------------- | ---------------------------------------------------------- |
+| `data-pantoken-theme`    | `.--pantoken-theme-<key>`  | Roots a theme scope. Matches **any** element, not `:root`. |
+| `data-pantoken-scheme`   | `.--pantoken-scheme-<key>` | Pins the subtree to `light` or `dark`.                     |
+| `data-pantoken-color`    | `.--pantoken-color-<key>`  | Selects a custom brand color.                              |
+| `data-pantoken-boundary` | `.--pantoken-boundary`     | Ancestor resolution stops here.                            |
+| `data-pantoken-instance` | —                          | Names the owning instance.                                 |
+
+Every selector is emitted in both forms, because some hosts sanitize `data-*` out of authored
+content but leave `class` alone — Canvas RCE being the one that forced it. The class twin follows the
+repo's global-modifier convention and is repeated three times for (0,3,0) specificity, so a scope
+class outranks any component-modifier compound that sets tokens.
+
+The attribute wins when both sit on one element. `resolveScope` reads both, so the runtime and the
+stylesheet never disagree about what is in effect.
 
 Declarations land in four cascade layers, lowest first:
 
@@ -38,8 +46,10 @@ Load these two instead of a single `style.*.css` when more than one theme must b
 - `@pantoken/css/properties.css` — the `@property` registrations. **Load once per document.**
   Registrations are document-global: a second copy silently redefines every token's initial value for
   the whole page. `ensureProperties()` makes a repeat call a no-op.
-- `@pantoken/css/scope.css` — a shared base block plus one complete token block per theme.
-- `@pantoken/css/schemes.css` — optional `[data-pantoken-scheme]` forcing blocks; see below.
+- `@pantoken/css/scope.css` — a shared base block plus one complete token block per theme. Includes
+  the scheme pins below.
+- `@pantoken/css/schemes.css` — just the scheme pins (343 bytes), for layering onto a sheet that
+  didn't bundle them.
 
 A single-theme page should keep using `style.lean.css`; it is much smaller.
 
@@ -57,16 +67,25 @@ invariant, and breaking it reintroduces the bug silently.
 
 ## Color schemes
 
-`color-scheme` is an inherited CSS property, so it already resolves `light-dark()` per subtree. A
-scope sets it directly, which is why a light subtree and a dark subtree can coexist. In almost every
-case that is all you need.
+`color-scheme` is an ordinary inherited CSS property, so one rule keyed to the scope selector
+resolves `light-dark()` for everything below it:
 
-`[data-pantoken-scheme]` blocks flatten every `light-dark()` token to the chosen branch. They are
-**opt-in** (`multiScopeCss({ schemes: true })`, or the standalone `@pantoken/css/schemes.css`)
-because they duplicate what `color-scheme` already does and cost ~87kb uncompressed. Load them only
-where a scope can set an attribute but not a style — Canvas RCE content is the case that needs them.
+```css
+@layer pantoken.scheme {
+  [data-pantoken-scheme="dark"],
+  :where(*).--pantoken-scheme-dark... {
+    color-scheme: dark;
+  }
+}
+```
 
-`createScope` sets both the attribute and the property, so either mechanism works.
+That is the entire mechanism, and it is why a light subtree and a dark subtree can coexist. Nothing
+needs an inline style, so a host that can only add a class or an attribute still gets per-subtree
+schemes.
+
+An earlier version of this sheet re-declared every themed token flattened to one branch — 87 kb to do
+what the browser already does from a single declaration. If you find yourself generating a per-token
+override table for a scheme, that's the mistake.
 
 ## Sizing
 
@@ -75,7 +94,8 @@ Measured over the three shipped themes, lean (no icons):
 |                                                         | bytes | gzip |
 | ------------------------------------------------------- | ----: | ---: |
 | `style.lean.css` (one theme)                            | 285 K | 25 K |
-| `properties.lean.css` + `scope.lean.css` (three themes) | 569 K | 46 K |
+| `properties.lean.css` + `scope.lean.css` (three themes) | 572 K | 47 K |
+| `schemes.css`                                           |   343 |  143 |
 
 Of 2,921 tokens, only **786 vary across themes** — the other 73% are emitted once, in the shared base
 block and the `@property` registrations. The repetition that remains is irreducible: custom

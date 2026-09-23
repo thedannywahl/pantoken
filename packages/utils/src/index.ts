@@ -62,15 +62,22 @@ export type {
 // (writes it). Also at the dependency-free `@pantoken/utils/scope` entry for browser consumers.
 export {
   BOUNDARY_ATTR,
+  BOUNDARY_CLASS,
   COLOR_ATTR,
   INSTANCE_ATTR,
   SCHEME_ATTR,
   SCOPE_ATTRS,
   SCOPE_LAYERS,
   THEME_ATTR,
+  colorClass,
   colorScopeSelector,
+  colorScopeSelectors,
   isScheme,
+  schemeClass,
   schemeScopeSelector,
+  schemeScopeSelectors,
+  themeClass,
   themeScopeSelector,
+  themeScopeSelectors,
 } from "./scope.ts";
 export type { Scheme } from "./scope.ts";

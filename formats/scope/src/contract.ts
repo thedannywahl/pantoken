@@ -6,15 +6,19 @@
  */
 export {
   BOUNDARY_ATTR,
+  BOUNDARY_CLASS,
   COLOR_ATTR,
   INSTANCE_ATTR,
   SCHEME_ATTR,
   SCOPE_ATTRS,
   SCOPE_LAYERS,
   THEME_ATTR,
+  colorClass,
   colorScopeSelector,
   isScheme,
+  schemeClass,
   schemeScopeSelector,
+  themeClass,
   themeScopeSelector,
 } from "@pantoken/utils/scope";
 export type { Scheme } from "@pantoken/utils/scope";

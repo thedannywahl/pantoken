@@ -66,15 +66,13 @@ export function defaultThemeCssAssets(
   scoped = false,
 ): CdnFile[] {
   // Scoped mode swaps the single-theme sheet for the registrations/declarations pair, so a Canvas
-  // page that embeds content carrying its own `data-pantoken-theme` renders it in that theme rather
-  // than forcing everything to this one. `schemes.css` comes along because RCE authors can set an
-  // attribute on a content wrapper but not `color-scheme`, which is what would otherwise resolve
-  // `light-dark()` for that subtree.
+  // page that embeds content carrying its own `data-pantoken-theme` (or `.--pantoken-theme-*`, for
+  // RCE content where `data-*` gets sanitized) renders it in that theme rather than forcing
+  // everything to this one. `scope.css` carries the light/dark `color-scheme` pins too.
   const tokens: CdnFile[] = scoped
     ? [
         { package: "@pantoken/css", path: "dist/properties.lean.css" },
         { package: "@pantoken/css", path: "dist/scope.lean.css" },
-        { package: "@pantoken/css", path: "dist/schemes.css" },
       ]
     : [tokenSheetFile(theme, mode)];
   return [

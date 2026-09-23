@@ -22,29 +22,30 @@ test("the docs theme sheet carries the component foundation variables", () => {
 test("theme blocks are element-scoped, so a nested subtree can pick its own theme", () => {
   const css = siteThemesCss();
 
-  expect(css).toContain('[data-pantoken-theme="canvas"] {');
-  expect(css).toContain('[data-pantoken-theme="canvasHighContrast"] {');
+  expect(css).toContain('[data-pantoken-theme="canvas"],');
+  expect(css).toContain('[data-pantoken-theme="canvasHighContrast"],');
   // A `:root`-anchored theme block could only ever apply once per document.
   expect(css).not.toContain(":root[data-pantoken-theme=");
 });
 
-test("no scheme forcing blocks: the docs scope pins color-scheme itself", () => {
+test("scheme pins are a single color-scheme declaration, not a token table", () => {
   const css = siteThemesCss();
 
-  // `color-scheme` is inherited, so setting it on the scope element already resolves `light-dark()`
-  // for that subtree. The forcing blocks are ~87kb of pure duplication here.
-  expect(css).not.toContain("@layer pantoken.scheme");
-  expect(css).not.toContain('[data-pantoken-scheme="dark"]');
+  expect(css).toContain("color-scheme: dark;");
+  expect(css).toContain('[data-pantoken-scheme="dark"]');
+  // `color-scheme` is inherited, so the browser resolves `light-dark()` for the whole subtree.
+  const block = css.slice(css.indexOf('[data-pantoken-scheme="dark"]'));
+  expect(block.slice(0, block.indexOf("}"))).not.toContain("--instui-");
 });
 
 test("every varying token is declared in every theme block", () => {
   const css = siteThemesCss();
   const names = (theme: string): string[] => {
-    const start = css.indexOf(`  [data-pantoken-theme="${theme}"] {`);
+    const start = css.indexOf(`  [data-pantoken-theme="${theme}"],`);
     return css
       .slice(start, css.indexOf("\n  }", start))
       .split("\n")
-      .flatMap((line) => line.match(/^\s+(--[\w-]+):/)?.[1] ?? [])
+      .flatMap((line) => line.match(/^\s+(--instui-[\w-]+):/)?.[1] ?? [])
       .sort();
   };
 

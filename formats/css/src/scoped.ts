@@ -15,26 +15,38 @@
  * @module
  */
 import { toCss } from "./to-css.ts";
-import { schemeOverrideTokens, themedTokens } from "./theme-variants.ts";
+import { themedTokens } from "./theme-variants.ts";
 import {
   BOUNDARY_ATTR,
+  BOUNDARY_CLASS,
   COLOR_ATTR,
   SCHEME_ATTR,
   SCOPE_LAYERS,
   THEME_ATTR,
+  colorClass,
+  schemeClass,
   schemeScopeSelector,
+  schemeScopeSelectors,
+  themeClass,
   themeScopeSelector,
+  themeScopeSelectors,
 } from "@pantoken/utils";
 import type { Scheme } from "./theme-variants.ts";
 import type { PantokenPlugin, Theme } from "@pantoken/model";
 
 export {
   BOUNDARY_ATTR,
+  BOUNDARY_CLASS,
   COLOR_ATTR,
   SCHEME_ATTR,
   THEME_ATTR,
+  colorClass,
+  schemeClass,
   schemeScopeSelector,
+  schemeScopeSelectors,
+  themeClass,
   themeScopeSelector,
+  themeScopeSelectors,
 };
 
 /** Cascade layers this module emits into, in ascending precedence order. */
@@ -61,7 +73,8 @@ export function propertiesCss(theme: Theme, options: ScopedCssOptions = {}): str
 }
 
 /**
- * One theme's complete token set, scoped to any element carrying `data-pantoken-theme="<theme>"`.
+ * One theme's complete token set, scoped to any element carrying `data-pantoken-theme="<theme>"` or
+ * the equivalent `.--pantoken-theme-<theme>` class.
  *
  * Every token is emitted as a declaration — including the concrete ones that would normally become
  * `@property` initial-values — because an initial-value is document-global and cannot vary per scope.
@@ -69,7 +82,7 @@ export function propertiesCss(theme: Theme, options: ScopedCssOptions = {}): str
 export function scopedThemeCss(theme: Theme, options: ScopedCssOptions = {}): string {
   const { includeIcons = true, plugins = [] } = options;
   return toCss(themedTokens(theme, { includeIcons }), {
-    scope: themeScopeSelector(theme),
+    scope: themeScopeSelectors(theme),
     layer: "pantoken.theme",
     emit: "declarations",
     declareAll: true,
@@ -78,45 +91,35 @@ export function scopedThemeCss(theme: Theme, options: ScopedCssOptions = {}): st
 }
 
 /**
- * The forcing block for a pinned color scheme: every `light-dark()` token flattened to the requested
- * branch, scoped to `[data-pantoken-theme="<theme>"][data-pantoken-scheme="<scheme>"]`.
+ * Pin a subtree's color scheme.
  *
- * Usually redundant. `color-scheme` is an inherited property, so setting it on a scope element
- * already resolves `light-dark()` for that subtree, and it is supported by exactly the browsers that
- * support `light-dark()` in the first place. These blocks exist for consumers that can set an
- * attribute but *not* a style — Canvas RCE content being the case that needs them — and they are
- * bulky, so they are opt-in.
+ * `color-scheme` is an ordinary inherited property, so one rule keyed to the scope attribute (or its
+ * class twin) resolves every `light-dark()` token below it. No token needs flattening: this sheet is
+ * a couple of hundred bytes, not the ~87kb an explicit per-token override table would cost.
  */
-export function scopedSchemeCss(theme: Theme, scheme: Scheme): string {
-  const selector = `${themeScopeSelector(theme)}${schemeScopeSelector(scheme)}`;
-  const pairs = [
-    `color-scheme: ${scheme};`,
-    ...schemeOverrideTokens(theme, scheme).map((t) => `${t.name}: ${t.value};`),
-  ];
+export function scopedSchemeCss(scheme: Scheme): string {
   return [
     "@layer pantoken.scheme {",
-    `  ${selector} {`,
-    ...pairs.map((pair) => `    ${pair}`),
+    `  ${schemeScopeSelectors(scheme)} {`,
+    `    color-scheme: ${scheme};`,
     "  }",
     "}",
   ].join("\n");
 }
 
 /**
- * Every theme's light and dark forcing blocks, as a standalone sheet that layers on top of
- * {@link multiScopeCss}. Load it only where a scope can't set `color-scheme` itself.
+ * The light and dark scheme pins, as a standalone sheet. Theme-independent — the scheme only decides
+ * which branch of `light-dark()` wins, which the browser does for us.
  *
  * @example
  * ```ts
  * import { schemesCss } from "@pantoken/css";
  *
- * schemesCss(["rebrand", "canvas"]);
+ * schemesCss();
  * ```
  */
-export function schemesCss(themes: readonly Theme[]): string {
-  return themes
-    .flatMap((theme) => [scopedSchemeCss(theme, "light"), scopedSchemeCss(theme, "dark")])
-    .join("\n\n");
+export function schemesCss(): string {
+  return [scopedSchemeCss("light"), scopedSchemeCss("dark")].join("\n\n");
 }
 
 /** Options for {@link multiScopeCss}. */
@@ -125,17 +128,13 @@ export interface MultiScopeCssOptions extends ScopedCssOptions {
   themes: readonly Theme[];
   /** The theme whose concrete tokens back the one-time `@property` registrations. */
   defaultTheme: Theme;
-  /**
-   * Inline the `[data-pantoken-scheme]` forcing blocks (default `false`). Leave them out unless the
-   * consumer cannot set `color-scheme` on a scope element; see {@link scopedSchemeCss}. They are
-   * also available on their own via {@link schemesCss}.
-   */
+  /** Include the light/dark `color-scheme` pins (default `true`; see {@link schemesCss}). */
   schemes?: boolean;
 }
 
 /**
  * The complete multi-scope sheet: layer order, one set of `@property` registrations, a shared base
- * block, a token block per theme, and light/dark forcing blocks.
+ * block, a token block per theme, and the light/dark `color-scheme` pins.
  *
  * Tokens are partitioned by whether their value actually varies across `themes`. Invariant tokens go
  * in the shared base block once; varying tokens are repeated in full in *every* theme block. That
@@ -150,7 +149,7 @@ export interface MultiScopeCssOptions extends ScopedCssOptions {
  * ```
  */
 export function multiScopeCss(options: MultiScopeCssOptions): string {
-  const { themes, defaultTheme, schemes = false, includeIcons = true, plugins = [] } = options;
+  const { themes, defaultTheme, schemes = true, includeIcons = true, plugins = [] } = options;
 
   const perTheme = new Map(themes.map((t) => [t, themedTokens(t, { includeIcons })]));
   const varying = new Set<string>();
@@ -176,16 +175,16 @@ export function multiScopeCss(options: MultiScopeCssOptions): string {
     const tokens = (perTheme.get(theme) ?? []).filter((t) => varying.has(t.name));
     blocks.push(
       toCss(tokens, {
-        scope: themeScopeSelector(theme),
+        scope: themeScopeSelectors(theme),
         layer: "pantoken.theme",
         emit: "declarations",
         declareAll: true,
       }),
     );
-    if (schemes) {
-      blocks.push(scopedSchemeCss(theme, "light"), scopedSchemeCss(theme, "dark"));
-    }
   }
+
+  // Theme-independent, and small enough that omitting it would never be worth the footgun.
+  if (schemes) blocks.push(schemesCss());
 
   return blocks.filter(Boolean).join("\n\n");
 }

@@ -25,18 +25,24 @@ export { darkBranch, lightBranch, schemeOverrideTokens, themedTokens } from "./t
 export type { Scheme } from "./theme-variants.ts";
 export {
   BOUNDARY_ATTR,
+  BOUNDARY_CLASS,
   COLOR_ATTR,
   LAYERS,
   SCHEME_ATTR,
   THEME_ATTR,
+  colorClass,
   layerOrderCss,
   multiScopeCss,
   propertiesCss,
+  schemeClass,
   schemeScopeSelector,
+  schemeScopeSelectors,
   schemesCss,
   scopedSchemeCss,
   scopedThemeCss,
+  themeClass,
   themeScopeSelector,
+  themeScopeSelectors,
 } from "./scoped.ts";
 export type { MultiScopeCssOptions, ScopedCssOptions } from "./scoped.ts";
 

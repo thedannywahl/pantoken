@@ -70,4 +70,4 @@ write(
   "scope.lean.css",
   multiScopeCss({ ...scopeOptions, includeIcons: false, plugins: [foundationPlugin] }),
 );
-write("schemes.css", schemesCss(SCOPE_THEMES));
+write("schemes.css", schemesCss());

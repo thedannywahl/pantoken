@@ -3,14 +3,19 @@ import { toCss } from "../src/to-css.ts";
 import { darkBranch, lightBranch, schemeOverrideTokens } from "../src/theme-variants.ts";
 import {
   LAYERS,
+  colorClass,
   layerOrderCss,
   multiScopeCss,
   propertiesCss,
+  schemeClass,
   schemeScopeSelector,
+  schemeScopeSelectors,
   schemesCss,
   scopedSchemeCss,
   scopedThemeCss,
+  themeClass,
   themeScopeSelector,
+  themeScopeSelectors,
 } from "../src/scoped.ts";
 import type { Token } from "@pantoken/model";
 
@@ -95,35 +100,41 @@ test("propertiesCss carries registrations only; scopedThemeCss carries declarati
 
   const scoped = scopedThemeCss("canvas", { includeIcons: false });
   expect(scoped).not.toMatch(/@property\s+--instui-/);
-  expect(scoped).toContain('[data-pantoken-theme="canvas"] {');
+  expect(scoped).toContain('[data-pantoken-theme="canvas"],');
 });
 
-test("a scheme block pins color-scheme and forces the matching branch", () => {
-  const dark = scopedSchemeCss("rebrand", "dark");
+test("a scheme pin is one color-scheme declaration, not a flattened token table", () => {
+  const dark = scopedSchemeCss("dark");
   expect(dark).toContain("@layer pantoken.scheme {");
-  expect(dark).toContain('[data-pantoken-theme="rebrand"][data-pantoken-scheme="dark"] {');
+  expect(dark).toContain('[data-pantoken-scheme="dark"]');
   expect(dark).toContain("color-scheme: dark;");
-  expect(dark).not.toContain("light-dark(");
+  // The browser resolves `light-dark()` from the inherited color-scheme; re-declaring every themed
+  // token here would be ~87kb of duplicated work.
+  expect(dark).not.toContain("--instui-");
+  expect(dark.length).toBeLessThan(500);
 });
 
-test("forcing blocks are opt-in, since color-scheme already covers the common case", () => {
-  const shared = { themes: ["rebrand"] as const, defaultTheme: "rebrand" as const };
-  expect(multiScopeCss({ ...shared, includeIcons: false })).not.toContain("@layer pantoken.scheme");
-  expect(multiScopeCss({ ...shared, includeIcons: false, schemes: true })).toContain(
-    "@layer pantoken.scheme",
-  );
+test("scheme pins are theme-independent and shipped by default", () => {
+  const sheet = multiScopeCss({
+    themes: ["rebrand"],
+    defaultTheme: "rebrand",
+    includeIcons: false,
+  });
+  expect(sheet).toContain("@layer pantoken.scheme");
+  expect(schemesCss()).toContain("color-scheme: light;");
+  expect(schemesCss()).toContain("color-scheme: dark;");
 });
 
-test("schemesCss stands alone so it can layer onto a scope sheet", () => {
-  const sheet = schemesCss(["rebrand", "canvas"]);
-  for (const theme of ["rebrand", "canvas"]) {
-    for (const scheme of ["light", "dark"]) {
-      expect(sheet).toContain(
-        `[data-pantoken-theme="${theme}"][data-pantoken-scheme="${scheme}"] {`,
-      );
-    }
-  }
-  expect(sheet).not.toMatch(/@property\s+--/);
+test("every scope selector has a class twin for hosts that strip data attributes", () => {
+  expect(themeScopeSelectors("canvas")).toContain('[data-pantoken-theme="canvas"]');
+  expect(themeScopeSelectors("canvas")).toContain(".--pantoken-theme-canvas");
+  expect(schemeScopeSelectors("dark")).toContain(".--pantoken-scheme-dark");
+  expect(themeClass("canvas")).toBe("--pantoken-theme-canvas");
+  expect(schemeClass("dark")).toBe("--pantoken-scheme-dark");
+  expect(colorClass("sea")).toBe("--pantoken-color-sea");
+
+  const scoped = scopedThemeCss("canvas", { includeIcons: false });
+  expect(scoped).toContain(".--pantoken-theme-canvas");
 });
 
 test("every theme block declares the identical varying token set", () => {
@@ -134,13 +145,13 @@ test("every theme block declares the identical varying token set", () => {
   });
 
   const names = (theme: string): string[] => {
-    const start = sheet.indexOf(`  [data-pantoken-theme="${theme}"] {`);
+    const start = sheet.indexOf(`  [data-pantoken-theme="${theme}"],`);
     expect(start).toBeGreaterThan(-1);
     const end = sheet.indexOf("\n  }", start);
     return sheet
       .slice(start, end)
       .split("\n")
-      .flatMap((line) => line.match(/^\s+(--[\w-]+):/)?.[1] ?? [])
+      .flatMap((line) => line.match(/^\s+(--instui-[\w-]+):/)?.[1] ?? [])
       .sort();
   };
 
