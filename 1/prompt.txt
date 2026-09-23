@@ -1,0 +1,18 @@
+after the size button group I want a light/dark toggle that toggles the color scheme of the preview.
+1. we need to set the tray's "include dark mode" to disabled/off if the theme is set to 'canvas' or 'canvas-high-contrast' because only rebrand supports dark mode.
+2. this toggle should be disabled/off unless "include dark mode" is active.
+
+---
+
+Continue: "Continue to iterate?"
+
+---
+
+the toggle doesn't work you can view it at:
+http://localhost:5173/guide/canvas-rce
+
+neither the preview wrapper/iframe content nor the actual tinymce content injected into the preview are changing color schemes which toggling the button.
+
+---
+
+add a changeset and a conventional commit for your changes, ignoring other unstaged changed files.
