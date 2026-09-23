@@ -1,0 +1,26 @@
+,-[plugins/tinymce/save/tests/index.test.ts:119:22]
+ 118 |         const target = editor();
+ 119 | ,->     createSavePlugin({
+ 120 | |         capture: () => ({ html: "" }),
+ 121 | |         restore: vi.fn(),
+ 122 | |         isValid: (state): state is { html: string } => typeof state === "object" && state !== null,
+ 123 | |         storage: storage(),
+ 124 | `->     })(target as never);
+ 125 |     
+     `----
+
+  x typescript(TS2741): Property 'reset' is missing in type '{ capture: () => { html: string; }; restore: Mock<(state: { html: string; }) => void>; isValid: (state: unknown) => state is { html: string; }; storage: { values: Map<string, string>; getItem: (key: string) => string | null; setItem: (key: string, value: string) => Map<...>; }; }' but required in type 'SavePluginOptions<{ html:
+  | string; }>'.
+     ,-[plugins/tinymce/save/tests/index.test.ts:148:34]
+ 147 |         });
+ 148 | ,->     const api = createSavePlugin({
+ 149 | |         capture: () => current,
+ 150 | |         restore,
+ 151 | |         isValid: (state): state is { html: string } =>
+ 152 | |           typeof state === "object" &&
+ 153 | |           state !== null &&
+ 154 | |           typeof (state as { html?: unknown }).html === "string",
+ 155 | |         storage: targetStorage,
+ 156 | `->     })(target as never);
+ 157 |     
+     `----
