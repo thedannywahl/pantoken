@@ -52,3 +52,7 @@ finish the phases.
 ---
 
 add a changeset and a conventional commit for your work ignoring other unstaged changes
+
+---
+
+now explain to me why multiple instances are so heavy.  it seems that if we have a single instace of the styles then scopes should be able to reuse that without interfering with each other's declarations.
