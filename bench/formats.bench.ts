@@ -77,7 +77,7 @@ describe("themedTokens", () => {
 
 describe("toScss", () => {
   test("rebrand (light)", async () => {
-    await runBench("rebrand (light)", () => {
+    await runBench("toScss: rebrand (light)", () => {
       toScss(rebrandLean, { mode: "light" });
     });
   });
@@ -85,7 +85,7 @@ describe("toScss", () => {
 
 describe("toDtcg", () => {
   test("rebrand (light)", async () => {
-    await runBench("rebrand (light)", () => {
+    await runBench("toDtcg: rebrand (light)", () => {
       toDtcg(rebrandLean, "light");
     });
   });
