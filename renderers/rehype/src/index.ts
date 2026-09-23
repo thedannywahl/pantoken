@@ -2,9 +2,9 @@
  * `@pantoken/rehype` — render `:icon:` codes as inline SVG.
  *
  * The plugin walks hast text nodes and replaces `:code:` tokens with an inline SVG element,
- * resolving each code through a chain: plugin `rehype` resolvers first, then any explicit
- * `resolve`, then the built-in `@pantoken/icons` set. It ports `rehype-instui-markdown` onto the
- * shared icon manifest.
+ * resolving each code through a chain: any explicit `resolve`, then the built-in
+ * `@pantoken/icons` set, then plugin `rehype` resolvers. It ports `rehype-instui-markdown` onto
+ * the shared icon manifest.
  *
  * @module
  * @experimental
@@ -17,7 +17,7 @@ import type { IconEntry, IconResolver, PantokenPlugin } from "@pantoken/model";
 export interface RehypeOptions {
   /** An explicit resolver, tried before the built-in pantoken icon set. */
   resolve?: IconResolver;
-  /** Plugins whose `rehype` hooks contribute resolvers (tried first). */
+  /** Plugins whose `rehype` hooks contribute resolvers (tried last, after the built-in set). */
   plugins?: readonly PantokenPlugin[];
   /** The class name applied to the emitted wrapper (default: `pantoken-icon`). */
   className?: string;

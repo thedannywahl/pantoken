@@ -121,13 +121,14 @@ export const resolve: IconResolver = (code) => {
 export interface IconResolverChainOptions {
   /** An explicit resolver, tried before the built-in pantoken icon set. */
   resolve?: IconResolver;
-  /** Plugins whose `rehype` hooks contribute resolvers (tried first). */
+  /** Plugins whose `rehype` hooks contribute resolvers (tried last, after the built-in set). */
   plugins?: readonly PantokenPlugin[];
 }
 
 /**
- * Build the shared icon-resolver chain: plugin `rehype` resolvers first, then an explicit
- * `resolve`, then the built-in pantoken icon set. Used by `@pantoken/rehype` and
+ * Build the shared icon-resolver chain: an explicit `resolve` first, then the built-in pantoken
+ * icon set, then plugin `rehype` resolvers (so a plugin can add codes the built-in set doesn't
+ * know, but never shadow a built-in icon name). Used by `@pantoken/rehype` and
  * `@pantoken/markdown-it` so the resolution order stays identical across renderers.
  *
  * @example
@@ -140,12 +141,12 @@ export interface IconResolverChainOptions {
  */
 export function buildIconResolverChain(options: IconResolverChainOptions): IconResolver {
   const resolvers: IconResolver[] = [];
+  if (options.resolve) resolvers.push(options.resolve);
+  resolvers.push(resolve);
   for (const plugin of options.plugins ?? []) {
     const contributed = plugin.rehype?.({ resolve });
     if (contributed?.resolve) resolvers.push(contributed.resolve);
   }
-  if (options.resolve) resolvers.push(options.resolve);
-  resolvers.push(resolve);
   return (code) => {
     for (const resolver of resolvers) {
       const hit = resolver(code);

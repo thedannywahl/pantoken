@@ -60,7 +60,7 @@ test("resolve() returns an IconEntry for known codes and undefined otherwise", (
   expect(resolve("not-a-real-icon")).toBeUndefined();
 });
 
-test("buildIconResolverChain prefers plugin resolvers, then explicit resolver", () => {
+test("buildIconResolverChain falls through to plugin resolvers for unknown codes", () => {
   const pluginHit = { name: "plugin", svg: "<svg/>", source: "custom" as const };
   const explicitHit = { name: "explicit", svg: "<svg/>", source: "custom" as const };
 
@@ -86,6 +86,26 @@ test("buildIconResolverChain prefers plugin resolvers, then explicit resolver", 
 
   expect(chain("brand-icon")?.name).toBe("plugin");
   expect(chain("fallback-icon")?.name).toBe("explicit");
+});
+
+test("buildIconResolverChain prefers the built-in icon over a colliding plugin resolver", () => {
+  const chain = buildIconResolverChain({
+    plugins: [
+      {
+        name: "plugin-resolver",
+        rehype: () => ({
+          resolve(code) {
+            return code === "arrow-left"
+              ? { name: "arrow-left", svg: "<svg/>", source: "custom" }
+              : undefined;
+          },
+        }),
+      },
+    ],
+  });
+
+  expect(chain("arrow-left")?.svg).toBe(getIcon("arrow-left")?.svg);
+  expect(chain("arrow-left")?.svg).not.toBe("<svg/>");
 });
 
 test("buildIconResolverChain falls through to built-in resolver", () => {

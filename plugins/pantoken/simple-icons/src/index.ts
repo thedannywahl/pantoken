@@ -150,12 +150,19 @@ export function simpleIcons(options: SimpleIconsOptions = {}): PantokenPlugin {
             "e.g. simpleIcons({ registry: await import('simple-icons'), slugs: [...] })",
         );
       }
+      const existingNames = new Set(tokens.map((t) => t.name));
       const additions: TokenInput[] = [];
       for (const slug of slugs) {
         const icon = lookup(registry, slug);
         if (!icon) continue;
+        const name = `${prefix}${slug}`;
+        // Brand glyphs never displace an existing icon (e.g. InstUI/Lucide's `x`).
+        if (existingNames.has(name)) {
+          console.warn(`[pantoken] plugin-simple-icons: icon "${slug}" already exists — skipping.`);
+          continue;
+        }
         additions.push({
-          name: `${prefix}${slug}`,
+          name,
           value: `url('data:image/svg+xml;utf8,${encodeURIComponent(svgOf(icon))}')`,
           syntax: "<image>",
           meta: { kind: "icon" },

@@ -112,12 +112,24 @@ export function lucideLab(options: LucideLabOptions = {}): PantokenPlugin {
         );
       }
       const selected = entries(registry).filter((icon) => !names || names.includes(icon.name));
-      const additions: TokenInput[] = selected.map((icon) => ({
-        name: `${prefix}${icon.name}`,
-        value: toDataUri(svgOf(icon.nodes)),
-        syntax: "<image>",
-        meta: { kind: "icon" },
-      }));
+      const existingNames = new Set(tokens.map((t) => t.name));
+      const additions: TokenInput[] = [];
+      for (const icon of selected) {
+        const name = `${prefix}${icon.name}`;
+        // Lab glyphs never displace an existing icon (e.g. InstUI/Lucide's core set).
+        if (existingNames.has(name)) {
+          console.warn(
+            `[pantoken] plugin-lucide-lab: icon "${icon.name}" already exists — skipping.`,
+          );
+          continue;
+        }
+        additions.push({
+          name,
+          value: toDataUri(svgOf(icon.nodes)),
+          syntax: "<image>",
+          meta: { kind: "icon" },
+        });
+      }
       return [...tokens, ...additions.map((token) => defineToken(token))];
     },
   });

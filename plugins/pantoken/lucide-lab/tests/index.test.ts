@@ -43,6 +43,28 @@ test("ignores an unknown requested name", () => {
   expect(out).toEqual([]);
 });
 
+test("token hook skips an icon whose token name already exists", () => {
+  const warn = console.warn;
+  const warnings: unknown[] = [];
+  console.warn = (...args: unknown[]) => warnings.push(args);
+  try {
+    const existing = {
+      name: "--instui-icon-burger",
+      syntax: "<image>" as const,
+      inherits: true,
+      value: "url('builtin')",
+    };
+    const out = lucideLab({ registry, names: ["burger"] }).tokens?.({
+      tokens: [existing],
+      theme: "rebrand",
+    });
+    expect(out).toEqual([existing]);
+    expect(warnings).toHaveLength(1);
+  } finally {
+    console.warn = warn;
+  }
+});
+
 test("token hook without a registry throws a helpful error", () => {
   expect(() => lucideLab({ names: ["burger"] }).tokens?.({ tokens: [], theme: "rebrand" })).toThrow(
     /registry/,
