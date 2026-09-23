@@ -37,3 +37,738 @@ Start implementation
 ---
 
 Try Again
+
+---
+
+stage your changes (ignoring other changes) add a changeset and do a conventional comit.
+
+---
+
+[Terminal f23ee84c-483e-47e9-b23a-bcce13517020 notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on tinymce-utility ≡  ?6 ~52 |  +1 ~3 via  26.10.0 
+➜  git add -- docs/scripts/build-canvas-rce.ts docs/scripts/canvas-rce-pwa.ts docs/scripts/canvas-rce-pwa.test.ts .changeset/pantoken-canvas-rce-pwa.md && git add -p -- packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl
+diff --git a/packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl b/packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl
+index adaec3b18..5dc815ad0 100644
+--- a/packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl
++++ b/packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl
+@@ -44,7 +44,6 @@ import "@pantoken/plugin-layouts/layouts.css";
+ import "./app.css";
+ import appHtml from "./app.html?raw";
+ import { STRINGS } from "./strings.ts";
+-import { LOCALE_STRINGS } from "./locale-strings.ts";
+ import tinymce from "tinymce";
+ import "tinymce/models/dom/model";
+ import "tinymce/themes/silver/theme";
+(1/20) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -133,6 +132,8 @@ import {
+   createSavePlugin,
+   SAVE_PLUGIN_NAME,
+   SAVE_TOOLBAR_NAME,
++  slugifyExportName,
++  type SavePluginApi,
+ } from "@pantoken/tinymce-save";
+ import { loadPreferences, savePreferences } from "./preferences.ts";
+ 
+(2/20) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -147,11 +148,12 @@ const HOST_INSTANCE = "docs";
+ const CANVAS_CONTENT_MAX_WIDTH = "59.25rem";
+ // All 13 `[data-pantoken-color="…"]` color-remap rules, computed once — editable Canvas content,
+ // the shell, and the preview can each own an independent color scope. `resetSelector`
+-// pins the theme tray's own subtree (buttons, swatches) back to true colors, immune to whatever
+-// color the chrome (below) currently has active — see plugins/pantoken/custom-theme-colors.
++// pins the theme tray's own subtree (buttons, swatches) and the standalone shell's header (its
++// color menu swatches) back to true colors, immune to whatever color the chrome currently has
++// active — see plugins/pantoken/custom-theme-colors.
+ const CUSTOM_THEME_COLORS_CSS = customThemeColorsCss(undefined, {
+   selector: "",
+-  resetSelector: "#theme-tray",
++  resetSelector: "#theme-tray, #canvas-rce-shell",
+ });
+ // The scaffold's own chrome (toolbar, buttons outside the tray) mirrors the embedding docs page's
+ // active theme and color — entirely independent of the preview and the tray, which drive their own
+(3/20) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,s,e,p,P,?]? n
+@@ -159,15 +161,6 @@ const CUSTOM_THEME_COLORS_CSS = customThemeColorsCss(undefined, {
+ // color change overrides the theme's root token declarations.
+ const chromeThemeStyle = document.createElement("style");
+ document.head.append(chromeThemeStyle);
+-// lightningcss downlevels light-dark() to only follow the OS preference (see
+-// PREVIEW_SCHEME_FORCE_CSS below for the full story) — without this, the chrome ignores an
+-// explicit light/dark pick whenever it conflicts with the visitor's own OS setting.
+-const chromeSchemeForceStyle = document.createElement("style");
+-chromeSchemeForceStyle.textContent = `
+-[data-pantoken-scheme="light"] { --lightningcss-light: initial; --lightningcss-dark: ; }
+-[data-pantoken-scheme="dark"] { --lightningcss-light: ; --lightningcss-dark: initial; }
+-`;
+-document.head.append(chromeSchemeForceStyle);
+ const customThemeColorsStyle = document.createElement("style");
+ customThemeColorsStyle.textContent = CUSTOM_THEME_COLORS_CSS;
+ document.head.append(customThemeColorsStyle);
+(4/20) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -204,83 +197,45 @@ function render(template: string, strings: Record<string, string>): string {
+   return template.replace(/\{\{(\w+)\}\}/g, (match, key: string) => strings[key] ?? match);
+ }
+ 
+-/** Attributes `render()` ever fills with translated text (besides text nodes). */
+-const TRANSLATABLE_ATTRS = ["aria-label", "title"];
+-
+-// TinyMCE and the CodeMirror source/CSS/JS editors inject their own DOM as children of these
+-// containers after the initial render, diverging from a freshly re-rendered copy — descending into
+-// them here would walk the two trees out of alignment for everything downstream.
+-const PATCH_SKIP_SELECTOR = ".editor-pane, #css-editor, #js-editor";
+-
+-function createPatchWalker(root: Node): TreeWalker {
+-  return document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, (node) =>
+-    node.nodeType === Node.ELEMENT_NODE && (node as Element).matches(PATCH_SKIP_SELECTOR)
+-      ? NodeFilter.FILTER_REJECT
+-      : NodeFilter.FILTER_ACCEPT,
+-  );
+-}
+-
+-/**
+- * Patches `root`'s text and translatable attributes to match `next` in place, leaving every
+- * element's identity (and any listeners attached to it) untouched — re-rendering `appHtml` wholesale
+- * and swapping `innerHTML` would orphan the ids/listeners the rest of this module already wired up
+- * to the original elements. Safe because `render()` never changes markup structure, only inserts
+- * plain text, so `root` and `next` are always structurally identical trees (outside the skipped,
+- * dynamically-mounted editor containers).
+- */
+-function patchTranslatedText(root: Element, next: Element): void {
+-  const liveWalker = createPatchWalker(root);
+-  const nextWalker = createPatchWalker(next);
+-  let liveNode: Node | null = root;
+-  let nextNode: Node | null = next;
+-  do {
+-    if (liveNode.nodeType === Node.TEXT_NODE && nextNode!.nodeType === Node.TEXT_NODE) {
+-      if (liveNode.textContent !== nextNode!.textContent) liveNode.textContent = nextNode!.textContent;
+-    } else if (liveNode.nodeType === Node.ELEMENT_NODE && nextNode!.nodeType === Node.ELEMENT_NODE) {
+-      for (const attr of TRANSLATABLE_ATTRS) {
+-        const value = (nextNode as Element).getAttribute(attr);
+-        if (value !== null && (liveNode as Element).getAttribute(attr) !== value) {
+-          (liveNode as Element).setAttribute(attr, value);
+-        }
+-      }
+-    }
+-    liveNode = liveWalker.nextNode();
+-    nextNode = nextWalker.nextNode();
+-  } while (liveNode && nextNode);
+-}
+-
+-/** Swaps the page's translated text/labels to `locale`, falling back to English per-key. */
+-function applyLocale(locale: string): void {
+-  const strings = { ...STRINGS, ...(LOCALE_STRINGS[locale] ?? {}) };
+-  const next = document.createElement("div");
+-  next.innerHTML = render(appHtml, strings);
+-  const liveRoot = document.querySelector<HTMLDivElement>("#app")!.firstElementChild;
+-  const nextRoot = next.firstElementChild;
+-  if (liveRoot && nextRoot) patchTranslatedText(liveRoot, nextRoot);
+-}
+-
+ function createShellIcon(icon: Parameters<typeof createElement>[0]): SVGSVGElement {
+-  // lucide's icons are plain node data, not components — createElement renders them.
+   const svg = createElement(icon, { width: 16, height: 16, "stroke-width": 2 });
+   svg.classList.add("canvas-rce-shell__icon");
+   return svg;
+ }
+ 
+-function setupStandaloneAppShell(): void {
+-  if (window.self !== window.top || document.getElementById("canvas-rce-shell")) return;
+-
+-  document.body.classList.add("canvas-rce-shell-enabled");
+-  document.title = "Canvas Theme Editor";
+-
++function syncBrowserMetadata(): void {
+   const themeColorMeta =
+     document.querySelector<HTMLMetaElement>('meta[name="theme-color"]') ??
+     document.createElement("meta");
+   themeColorMeta.name = "theme-color";
+-  themeColorMeta.content = window.matchMedia("(prefers-color-scheme: dark)").matches
+-    ? "#0d1b2a"
+-    : "#f5f5f5";
++  const backgroundColor = getComputedStyle(document.documentElement).backgroundColor;
++  if (backgroundColor) themeColorMeta.content = backgroundColor;
+   if (!themeColorMeta.parentElement) document.head.append(themeColorMeta);
+ 
++  const favicon = document.querySelector<HTMLLinkElement>(
++    'link[rel="icon"][data-pantoken-themed-icon]',
++  );
++  if (!favicon) return;
++  const accentColor = getComputedStyle(document.documentElement)
++    .getPropertyValue("--instui-primitive-color-navy-navy100")
++    .trim();
++  if (!accentColor) return;
++  const mark = PANTOKEN_ICON.replace(
++    "<svg ",
++    '<svg x="32" y="32" width="64" height="64" ',
++  ).replaceAll(/fill="[^"]+"/gu, 'fill="#fff"');
++  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="24" fill="${accentColor}"/>${mark}</svg>`;
++  favicon.href = `data:image/svg+xml,${encodeURIComponent(svg)}`;
++}
++
++function setupStandaloneAppShell(): void {
++  if (window.self !== window.top || document.getElementById("canvas-rce-shell")) return;
++
++  document.body.classList.add("canvas-rce-shell-enabled");
++  document.title =
++    document.querySelector<HTMLMetaElement>('meta[name="application-name"]')?.content ||
++    "Canvas Theme Editor";
++
+   const shell = document.createElement("header");
+   shell.id = "canvas-rce-shell";
+   shell.className = "canvas-rce-shell";
+(5/20) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,s,e,p,P,?]? s
+Split into 5 hunks.
+@@ -204,59 +197,4 @@ function render(template: string, strings: Record<string, string>): string {
+   return template.replace(/\{\{(\w+)\}\}/g, (match, key: string) => strings[key] ?? match);
+ }
+ 
+-/** Attributes `render()` ever fills with translated text (besides text nodes). */
+-const TRANSLATABLE_ATTRS = ["aria-label", "title"];
+-
+-// TinyMCE and the CodeMirror source/CSS/JS editors inject their own DOM as children of these
+-// containers after the initial render, diverging from a freshly re-rendered copy — descending into
+-// them here would walk the two trees out of alignment for everything downstream.
+-const PATCH_SKIP_SELECTOR = ".editor-pane, #css-editor, #js-editor";
+-
+-function createPatchWalker(root: Node): TreeWalker {
+-  return document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, (node) =>
+-    node.nodeType === Node.ELEMENT_NODE && (node as Element).matches(PATCH_SKIP_SELECTOR)
+-      ? NodeFilter.FILTER_REJECT
+-      : NodeFilter.FILTER_ACCEPT,
+-  );
+-}
+-
+-/**
+- * Patches `root`'s text and translatable attributes to match `next` in place, leaving every
+- * element's identity (and any listeners attached to it) untouched — re-rendering `appHtml` wholesale
+- * and swapping `innerHTML` would orphan the ids/listeners the rest of this module already wired up
+- * to the original elements. Safe because `render()` never changes markup structure, only inserts
+- * plain text, so `root` and `next` are always structurally identical trees (outside the skipped,
+- * dynamically-mounted editor containers).
+- */
+-function patchTranslatedText(root: Element, next: Element): void {
+-  const liveWalker = createPatchWalker(root);
+-  const nextWalker = createPatchWalker(next);
+-  let liveNode: Node | null = root;
+-  let nextNode: Node | null = next;
+-  do {
+-    if (liveNode.nodeType === Node.TEXT_NODE && nextNode!.nodeType === Node.TEXT_NODE) {
+-      if (liveNode.textContent !== nextNode!.textContent) liveNode.textContent = nextNode!.textContent;
+-    } else if (liveNode.nodeType === Node.ELEMENT_NODE && nextNode!.nodeType === Node.ELEMENT_NODE) {
+-      for (const attr of TRANSLATABLE_ATTRS) {
+-        const value = (nextNode as Element).getAttribute(attr);
+-        if (value !== null && (liveNode as Element).getAttribute(attr) !== value) {
+-          (liveNode as Element).setAttribute(attr, value);
+-        }
+-      }
+-    }
+-    liveNode = liveWalker.nextNode();
+-    nextNode = nextWalker.nextNode();
+-  } while (liveNode && nextNode);
+-}
+-
+-/** Swaps the page's translated text/labels to `locale`, falling back to English per-key. */
+-function applyLocale(locale: string): void {
+-  const strings = { ...STRINGS, ...(LOCALE_STRINGS[locale] ?? {}) };
+-  const next = document.createElement("div");
+-  next.innerHTML = render(appHtml, strings);
+-  const liveRoot = document.querySelector<HTMLDivElement>("#app")!.firstElementChild;
+-  const nextRoot = next.firstElementChild;
+-  if (liveRoot && nextRoot) patchTranslatedText(liveRoot, nextRoot);
+-}
+-
+ function createShellIcon(icon: Parameters<typeof createElement>[0]): SVGSVGElement {
+(5/24) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -262,7 +200,6 @@
+ function createShellIcon(icon: Parameters<typeof createElement>[0]): SVGSVGElement {
+-  // lucide's icons are plain node data, not components — createElement renders them.
+   const svg = createElement(icon, { width: 16, height: 16, "stroke-width": 2 });
+   svg.classList.add("canvas-rce-shell__icon");
+   return svg;
+ }
+ 
+(6/24) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -264,15 +201,10 @@
+   const svg = createElement(icon, { width: 16, height: 16, "stroke-width": 2 });
+   svg.classList.add("canvas-rce-shell__icon");
+   return svg;
+ }
+ 
+-function setupStandaloneAppShell(): void {
+-  if (window.self !== window.top || document.getElementById("canvas-rce-shell")) return;
+-
+-  document.body.classList.add("canvas-rce-shell-enabled");
+-  document.title = "Canvas Theme Editor";
+-
++function syncBrowserMetadata(): void {
+   const themeColorMeta =
+     document.querySelector<HTMLMetaElement>('meta[name="theme-color"]') ??
+     document.createElement("meta");
+   themeColorMeta.name = "theme-color";
+(7/24) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+@@ -275,9 +207,8 @@
+   const themeColorMeta =
+     document.querySelector<HTMLMetaElement>('meta[name="theme-color"]') ??
+     document.createElement("meta");
+   themeColorMeta.name = "theme-color";
+-  themeColorMeta.content = window.matchMedia("(prefers-color-scheme: dark)").matches
+-    ? "#0d1b2a"
+-    : "#f5f5f5";
++  const backgroundColor = getComputedStyle(document.documentElement).backgroundColor;
++  if (backgroundColor) themeColorMeta.content = backgroundColor;
+   if (!themeColorMeta.parentElement) document.head.append(themeColorMeta);
+ 
+(8/24) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+@@ -282,5 +213,29 @@
+   if (!themeColorMeta.parentElement) document.head.append(themeColorMeta);
+ 
++  const favicon = document.querySelector<HTMLLinkElement>(
++    'link[rel="icon"][data-pantoken-themed-icon]',
++  );
++  if (!favicon) return;
++  const accentColor = getComputedStyle(document.documentElement)
++    .getPropertyValue("--instui-primitive-color-navy-navy100")
++    .trim();
++  if (!accentColor) return;
++  const mark = PANTOKEN_ICON.replace(
++    "<svg ",
++    '<svg x="32" y="32" width="64" height="64" ',
++  ).replaceAll(/fill="[^"]+"/gu, 'fill="#fff"');
++  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="24" fill="${accentColor}"/>${mark}</svg>`;
++  favicon.href = `data:image/svg+xml,${encodeURIComponent(svg)}`;
++}
++
++function setupStandaloneAppShell(): void {
++  if (window.self !== window.top || document.getElementById("canvas-rce-shell")) return;
++
++  document.body.classList.add("canvas-rce-shell-enabled");
++  document.title =
++    document.querySelector<HTMLMetaElement>('meta[name="application-name"]')?.content ||
++    "Canvas Theme Editor";
++
+   const shell = document.createElement("header");
+   shell.id = "canvas-rce-shell";
+   shell.className = "canvas-rce-shell";
+(9/24) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+@@ -290,7 +245,7 @@ function setupStandaloneAppShell(): void {
+ 
+   const brandMark = document.createElement("div");
+   brandMark.className = "canvas-rce-shell__brand-mark";
+-  brandMark.innerHTML = PANTOKEN_ICON;
++  brandMark.append(createShellIcon(Palette));
+ 
+   const brandText = document.createElement("div");
+   const eyebrow = document.createElement("span");
+(10/24) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -348,7 +303,6 @@ function setupStandaloneAppShell(): void {
+     }
+     option.addEventListener("click", () => {
+       document.documentElement.lang = locale;
+-      applyLocale(locale);
+       localeLabel.textContent = label;
+       localeMenu.removeAttribute("open");
+       for (const candidate of localePanel.querySelectorAll<HTMLButtonElement>(
+(11/24) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -395,7 +349,6 @@ function setupStandaloneAppShell(): void {
+     mark.className = "canvas-rce-shell__mark";
+     mark.append(createShellIcon(icon));
+     option.append(text, mark);
+-    if (appearance === "system") option.classList.add("is-selected");
+     option.addEventListener("click", () => {
+       const selectedMode =
+         appearance === "system"
+(12/24) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -409,9 +362,6 @@ function setupStandaloneAppShell(): void {
+       if (typeof applyChromeTheme === "function") {
+         applyChromeTheme(selectedTheme ?? "rebrand", selectedMode as "light" | "dark");
+       }
+-      // The editor's own content only picks up the new scheme once told — otherwise the app
+-      // chrome goes dark but the TinyMCE editing surface stays light.
+-      applyEditorTheme(activeEditor);
+       for (const candidate of themePanel.querySelectorAll<HTMLButtonElement>("[data-appearance]")) {
+         candidate.classList.toggle("is-selected", candidate.dataset.appearance === appearance);
+       }
+(13/24) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -426,20 +376,25 @@ function setupStandaloneAppShell(): void {
+   colorTitle.className = "canvas-rce-shell__group-title";
+   colorTitle.textContent = "Color";
+   colorGroup.append(colorTitle);
+-  for (const color of COLOR_KEYS) {
++  for (const [color, label] of [
++    ["navy", "Navy"],
++    ["blue", "Blue"],
++    ["green", "Green"],
++    ["red", "Red"],
++    ["orange", "Orange"],
++    ["grey", "Grey"],
++    ["plum", "Plum"],
++  ] as const) {
+     const option = document.createElement("button");
+     option.type = "button";
+     option.className = "canvas-rce-shell__option";
+     option.dataset.color = color;
+-    const swatch = document.createElement("span");
+-    swatch.className = "theme-picker__swatch";
+-    swatch.dataset.swatch = color;
+     const text = document.createElement("span");
+-    text.textContent = color.charAt(0).toUpperCase() + color.slice(1);
++    text.textContent = label;
+     const mark = document.createElement("span");
+     mark.className = "canvas-rce-shell__mark";
+     mark.append(createShellIcon(Check));
+-    option.append(swatch, text, mark);
++    option.append(text, mark);
+     option.addEventListener("click", () => {
+       if (isThemeColor(color)) {
+         applyChromeColor(color);
+(14/24) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,s,e,p,P,?]? n
+@@ -461,9 +416,6 @@ function setupStandaloneAppShell(): void {
+ }
+ 
+ document.querySelector<HTMLDivElement>("#app")!.innerHTML = render(appHtml, STRINGS);
+-// A project scaffolded for a non-English locale ships English `STRINGS` regardless (only this
+-// runtime overlay is translated) — apply whatever locale the page already declares on load.
+-if (document.documentElement.lang) applyLocale(document.documentElement.lang);
+ const interactionsScript = document.createElement("script");
+ interactionsScript.src = interactionsIifeUrl;
+ document.head.append(interactionsScript);
+(15/24) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -478,27 +430,12 @@ const localLogoUrls = import.meta.glob<string>(
+   "/node_modules/@pantoken/plugin-logos/dist/*.png",
+   { eager: true, import: "default", query: "?url" },
+ );
+-// The bundle sheets (picker preview) and per-icon sheets (inserted content) for the four icon
+-// sources — without these, "none"/local CDN mode still fell back to a remote fetch, which 404s
+-// for any package (like plugin-lucide-lab) not yet published.
+-const localIconCssUrls = import.meta.glob<string>(
+-  [
+-    "/node_modules/@pantoken/components/dist/icons/*.css",
+-    "/node_modules/@pantoken/plugin-custom-icons/dist/icons/*.css",
+-    "/node_modules/@pantoken/plugin-simple-icons/dist/icons/*.css",
+-    "/node_modules/@pantoken/plugin-simple-icons/dist/simple-icons.css",
+-    "/node_modules/@pantoken/plugin-lucide-lab/dist/icons/*.css",
+-    "/node_modules/@pantoken/plugin-lucide-lab/dist/lucide-lab.css",
+-  ],
+-  { eager: true, import: "default", query: "?url" },
+-);
+ 
+ function buildSelectedAssetUrl(file: CdnFile): string {
+   if (providerSelect.value !== LOCAL_PROVIDER_ID) {
+     return buildFileUrl(file, providerSelect.value);
+   }
+-  const key = `/node_modules/${file.package}/${file.path}`;
+-  const localUrl = localLogoUrls[key] ?? localIconCssUrls[key];
++  const localUrl = localLogoUrls[`/node_modules/${file.package}/${file.path}`];
+   return localUrl ?? buildFileUrl(file);
+ }
+ 
+(16/24) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,s,e,p,P,?]? n
+@@ -554,12 +491,14 @@ function applyChromeTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
+   const scheme = theme === "rebrand" ? mode : "light";
+   document.documentElement.dataset.pantokenTheme = theme;
+   document.documentElement.style.colorScheme = scheme;
++  syncBrowserMetadata();
+ }
+ 
+ /** Re-colors the chrome only — the tray's `#theme-tray` reset scope keeps it (and the preview,
+  * which reads `selectedColor` directly) immune to this. */
+ function applyChromeColor(color: PantokenColorNamespace): void {
+   document.documentElement.dataset.pantokenColor = color;
++  syncBrowserMetadata();
+ }
+ 
+ function applyParentTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
+(17/24) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,s,e,p,P,?]? y
+@@ -657,13 +596,11 @@ const registerPantokenPlugin = (async () => {
+         model: componentModel as any,
+         currentAssets,
+         onMissingAsset,
+-        buildAssetUrl: buildSelectedAssetUrl,
+       },
+       icons: {
+         icons: allIcons,
+         currentAssets,
+         onMissingAsset,
+-        buildAssetUrl: buildSelectedAssetUrl,
+       },
+       logos: {
+         logos,
+(18/24) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,s,e,p,P,?]? n
+@@ -780,7 +717,6 @@ const downloadJs = document.querySelector<HTMLAnchorElement>("#download-theme-js
+ const downloadPackageButton = document.querySelector<HTMLButtonElement>("#download-package")!;
+ const downloadHtmlButton = document.querySelector<HTMLButtonElement>("#download-html")!;
+ const copyButton = document.querySelector<HTMLButtonElement>("#copy-html")!;
+-const copyStatus = document.querySelector<HTMLElement>("#copy-status")!;
+ 
+ let activeEditor: Editor | undefined;
+ let cssObjectUrl: string | undefined;
+(19/24) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -893,7 +829,7 @@ async function inlineAssetCss(assets: readonly CdnFile[]): Promise<string[]> {
+     assets.map(async (asset) => {
+       const key = assetKey(asset);
+       if (inlineAssetContents.has(key)) return;
+-      const response = await fetch(buildSelectedAssetUrl(asset));
++      const response = await fetch(buildFileUrl(asset));
+       if (!response.ok) {
+         throw new Error(`Unable to inline ${asset.package}/${asset.path}: ${response.status}`);
+       }
+(20/24) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -1375,6 +1311,17 @@ function downloadBlob(blob: Blob, filename: string): void {
+   setTimeout(() => URL.revokeObjectURL(objectUrl), 0);
+ }
+ 
++/** The currently open/saved preset's name, if any — downloads use it so the file the author is
++ * actually working on isn't always exported as a generic "canvas-theme"/"untitled". */
++function activePresetName(): string | undefined {
++  const savePlugin = activeEditor?.plugins[SAVE_PLUGIN_NAME] as
++    | SavePluginApi<CanvasThemePreset>
++    | undefined;
++  const activeId = savePlugin?.activePresetId;
++  if (!activeId) return undefined;
++  return savePlugin.list().find((preset) => preset.id === activeId)?.name;
++}
++
+ async function refreshAll(): Promise<void> {
+   const generation = ++refreshGeneration;
+   try {
+(21/24) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -1410,7 +1357,7 @@ providerSelect.addEventListener("change", () => {
+ downloadHtmlButton.addEventListener("click", () => {
+   downloadBlob(
+     new Blob([getNormalizedEditorHtml()], { type: "text/html;charset=utf-8" }),
+-    "index.html",
++    `${slugifyExportName(activePresetName() ?? "index")}.html`,
+   );
+ });
+ 
+(22/24) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -1424,7 +1371,10 @@ downloadPackageButton.addEventListener("click", () => {
+         "theme.css": strToU8(files.css),
+         "theme.js": strToU8(files.js),
+       });
+-      downloadBlob(new Blob([archive], { type: "application/zip" }), "canvas-theme.zip");
++      downloadBlob(
++        new Blob([archive], { type: "application/zip" }),
++        `${slugifyExportName(activePresetName() ?? "canvas-theme")}.zip`,
++      );
+     })
+     .catch((error) => {
+       console.error("Unable to build the theme package", error);
+(23/24) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -1435,9 +1385,7 @@ downloadPackageButton.addEventListener("click", () => {
+ });
+ 
+ copyButton.addEventListener("click", () => {
+-  void navigator.clipboard.writeText(getNormalizedEditorHtml()).then(() => {
+-    copyStatus.textContent = "Copied. Paste into the Canvas Rich Content Editor HTML view.";
+-  });
++  void navigator.clipboard.writeText(getNormalizedEditorHtml());
+ });
+ 
+ registerPantokenIconPack(tinymce.IconManager);
+(24/24) Stage this hunk [y,n,q,a,d,K,J,g,/,e,p,P,?]? n
+
+---
+
+[Terminal 2c010f36-5997-44d4-abe7-5166ab7f0b44 notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on tinymce-utility ≡  ?3 ~61 |  +4 ~5 via  26.10.0 
+➜  git add -p -- packages/scaffold/tests/index.test.ts
+diff --git a/packages/scaffold/tests/index.test.ts b/packages/scaffold/tests/index.test.ts
+index 6dae5abae..95609722d 100644
+--- a/packages/scaffold/tests/index.test.ts
++++ b/packages/scaffold/tests/index.test.ts
+@@ -40,6 +40,8 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
+   expect(appHtml).toContain('class="instui-close-button -size-sm theme-tray__close"');
+   expect(appHtml).toContain('popovertargetaction="hide"');
+   expect(appHtml).toContain('aria-label="{{closeLabel}}"');
++  expect(appHtml).toContain('id="preview-popup-toggle"');
++  expect(appHtml).toContain('aria-label="{{previewPopupLabel}}"');
+   expect(appHtml).not.toContain("theme-picker__item");
+   expect(main.match(/selectToggleButton\(themeButtons, themeButton\);/g)).toHaveLength(3);
+   expect(main).toContain("selectToggleButton(themeButtons, button);");
+(1/6) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -63,13 +65,6 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
+   expect(main).toContain('"/node_modules/@pantoken/plugin-logos/dist/*.png"');
+   expect(main).toContain("buildFileUrl(file, providerSelect.value)");
+   expect(main).toContain("buildAssetUrl: buildSelectedAssetUrl");
+-  // "none"/local CDN mode must resolve icon CSS locally too, not just logos — otherwise inserting
+-  // an icon still 404s against an unpublished package.
+-  expect(main).toContain('"/node_modules/@pantoken/plugin-lucide-lab/dist/icons/*.css"');
+-  expect(main).toContain('"/node_modules/@pantoken/plugin-lucide-lab/dist/lucide-lab.css"');
+-  expect(main).toContain("localLogoUrls[key] ?? localIconCssUrls[key]");
+-  expect(main).toContain("fetch(buildSelectedAssetUrl(asset))");
+-  expect(main).not.toContain("fetch(buildFileUrl(asset))");
+   expect(main).toContain("createA11yPlugin");
+   expect(main).toContain("createSourceTogglePlugin");
+   expect(main).toContain("if (isLocalPreview) {");
+(2/6) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -101,19 +96,22 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
+   expect(main).toContain(
+     "toolbar: `${SAVE_TOOLBAR_NAME} undo redo | pantoken | fontsize blocks | bold italic underline",
+   );
+-  // lucide's vanilla package exports icon node data, not components — createElement renders it.
+-  // Calling an icon directly as a function only surfaces when the standalone app shell actually
+-  // builds (accessed outside the docs iframe), so this regressed silently once before.
+   expect(main).toContain(
+     'import { Check, ChevronDown, createElement, Languages, MoonStar, Palette, SunMedium } from "lucide";',
+   );
+-  expect(main).toContain("createElement(icon, { width: 16, height: 16, ");
++  expect(main).toContain('createElement(icon, { width: 16, height: 16, "stroke-width": 2 })');
+   expect(main).not.toContain("icon({ size: 16, strokeWidth: 2 })");
+   expect(main).not.toContain("pantokenA11y");
+   expect(main).toContain("let previewMutationObserver: MutationObserver | undefined");
+   expect(main).toContain("previewFrame.contentDocument?.documentElement");
+   expect(main).toContain("previewMutationObserver.observe(root");
+   expect(main).toContain("previewFrame.style.height");
++  expect(main).toContain("function openPreviewPopup(): void {");
++  expect(main).toContain("function restorePreviewFromPopup(");
++  expect(main).toContain("previewAnchor.after(previewPane);");
++  expect(main).toContain("previewPopup.closed");
++  expect(main).toContain('popup.addEventListener("pagehide"');
++  expect(main).toContain('window.addEventListener("beforeunload"');
+   expect(main).toContain('if (!href?.startsWith("#")) return;');
+   expect(main).toContain("event.preventDefault();");
+   expect(main).toContain("previewDocument.getElementById(fragment)");
+(3/6) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,s,e,p,P,?]? n
+@@ -126,26 +124,15 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
+   expect(main).not.toContain('includeDarkModeCheckbox.checked = mode === "dark";');
+   expect(main).toContain("document.documentElement.dataset.pantokenScheme = mode;");
+   expect(main).toContain("applyEditorTheme(activeEditor);");
+-  // The standalone shell's appearance menu must also push the new scheme into the editor's own
+-  // content, not just the chrome — otherwise TinyMCE stays light while the app goes dark.
+   expect(main).toContain(
+-    'applyChromeTheme(selectedTheme ?? "rebrand", selectedMode as "light" | "dark");',
++    "document.querySelector<HTMLMetaElement>('meta[name=\"application-name\"]')",
+   );
+-  expect(
+-    main.indexOf('applyChromeTheme(selectedTheme ?? "rebrand", selectedMode as "light" | "dark");'),
+-  ).toBeLessThan(main.lastIndexOf("applyEditorTheme(activeEditor);"));
+-  // "System" is the default appearance selection; it previously showed nothing selected.
+-  expect(main).toContain('if (appearance === "system") option.classList.add("is-selected");');
+-  // The color menu renders every pantoken color (not a hardcoded 7-item subset) with the same
+-  // swatch disc the theme-tray picker already uses.
+-  expect(main).toContain("for (const color of COLOR_KEYS) {");
+-  expect(main).toContain('swatch.className = "theme-picker__swatch";');
+-  expect(main).toContain("swatch.dataset.swatch = color;");
+-  expect(main).not.toContain('["navy", "Navy"],');
+-  // The brand mark is pantoken's own logomark, colored with the active theme color — not a
+-  // generic palette icon on a hardcoded gradient.
+-  expect(main).toContain("brandMark.innerHTML = PANTOKEN_ICON;");
+-  expect(main).not.toContain("brandMark.append(createShellIcon(Palette));");
++  expect(main).toContain("document.querySelector<HTMLMetaElement>('meta[name=\"theme-color\"]')");
++  expect(main).toContain("getComputedStyle(document.documentElement).backgroundColor");
++  expect(main).toContain('link[rel="icon"][data-pantoken-themed-icon]');
++  expect(main).toContain("PANTOKEN_ICON,");
++  expect(main).toContain('getPropertyValue("--instui-primitive-color-navy-navy100")');
++  expect(main.match(/syncBrowserMetadata\(\);/g)).toHaveLength(2);
+   expect(main).toContain("refreshAll();");
+   expect(main).toContain("interface CanvasThemePreset");
+   expect(main).toContain("readonly theme: ThemeVariant;");
+(4/6) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,s,e,p,P,?]? s
+Split into 3 hunks.
+@@ -126,6 +124,4 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
+   expect(main).not.toContain('includeDarkModeCheckbox.checked = mode === "dark";');
+   expect(main).toContain("document.documentElement.dataset.pantokenScheme = mode;");
+   expect(main).toContain("applyEditorTheme(activeEditor);");
+-  // The standalone shell's appearance menu must also push the new scheme into the editor's own
+-  // content, not just the chrome — otherwise TinyMCE stays light while the app goes dark.
+   expect(main).toContain(
+(4/8) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -131,3 +127,3 @@
+   expect(main).toContain(
+-    'applyChromeTheme(selectedTheme ?? "rebrand", selectedMode as "light" | "dark");',
++    "document.querySelector<HTMLMetaElement>('meta[name=\"application-name\"]')",
+   );
+(5/8) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -133,19 +129,10 @@
+   );
+-  expect(
+-    main.indexOf('applyChromeTheme(selectedTheme ?? "rebrand", selectedMode as "light" | "dark");'),
+-  ).toBeLessThan(main.lastIndexOf("applyEditorTheme(activeEditor);"));
+-  // "System" is the default appearance selection; it previously showed nothing selected.
+-  expect(main).toContain('if (appearance === "system") option.classList.add("is-selected");');
+-  // The color menu renders every pantoken color (not a hardcoded 7-item subset) with the same
+-  // swatch disc the theme-tray picker already uses.
+-  expect(main).toContain("for (const color of COLOR_KEYS) {");
+-  expect(main).toContain('swatch.className = "theme-picker__swatch";');
+-  expect(main).toContain("swatch.dataset.swatch = color;");
+-  expect(main).not.toContain('["navy", "Navy"],');
+-  // The brand mark is pantoken's own logomark, colored with the active theme color — not a
+-  // generic palette icon on a hardcoded gradient.
+-  expect(main).toContain("brandMark.innerHTML = PANTOKEN_ICON;");
+-  expect(main).not.toContain("brandMark.append(createShellIcon(Palette));");
++  expect(main).toContain("document.querySelector<HTMLMetaElement>('meta[name=\"theme-color\"]')");
++  expect(main).toContain("getComputedStyle(document.documentElement).backgroundColor");
++  expect(main).toContain('link[rel="icon"][data-pantoken-themed-icon]');
++  expect(main).toContain("PANTOKEN_ICON,");
++  expect(main).toContain('getPropertyValue("--instui-primitive-color-navy-navy100")');
++  expect(main.match(/syncBrowserMetadata\(\);/g)).toHaveLength(2);
+   expect(main).toContain("refreshAll();");
+   expect(main).toContain("interface CanvasThemePreset");
+   expect(main).toContain("readonly theme: ThemeVariant;");
+(6/8) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -189,27 +176,6 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
+   expect(readFileSync(join(target, "src/app.css"), "utf8")).not.toContain(
+     "background: var(--instui-color-background-primary, #fff);",
+   );
+-  {
+-    const appCss = readFileSync(join(target, "src/app.css"), "utf8");
+-    // The standalone shell is a top header, not the scaffold-base wrapper layout's app-shell side
+-    // nav — body.canvas-rce-shell-enabled must override that class's row direction to a column so
+-    // the header stacks above #app instead of sitting beside it.
+-    expect(appCss).toContain(
+-      "body.canvas-rce-shell-enabled {\n  display: flex;\n  flex-direction: column;",
+-    );
+-    // Redundant once the standalone shell's own brand mark is showing.
+-    expect(appCss).toContain(
+-      "body.canvas-rce-shell-enabled .title,\nbody.canvas-rce-shell-enabled .description {\n  display: none;\n}",
+-    );
+-  }
+-  // lightningcss downlevels light-dark() to only follow the OS preference, so without a chrome
+-  // override the page text/UI silently uses dark-mode colors while the chosen appearance is light.
+-  expect(main).toContain(
+-    '[data-pantoken-scheme="light"] { --lightningcss-light: initial; --lightningcss-dark: ; }',
+-  );
+-  expect(main.indexOf("document.head.append(chromeThemeStyle)")).toBeLessThan(
+-    main.indexOf("document.head.append(chromeSchemeForceStyle)"),
+-  );
+   expect(main).not.toContain('tinymce.PluginManager.add("pantoken_components"');
+   expect(main).not.toContain('tinymce.PluginManager.add("pantoken_source_toggle"');
+   expect(existsSync(join(target, "src/preferences.ts"))).toBe(true);
+(7/8) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -234,33 +200,6 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
+   expect(pkg).toContain('"@pantoken/tinymce-save": "latest"');
+   expect(pkg).toContain('"fflate": "catalog:"');
+   expect(pkg).not.toContain("{{projectName}}");
+-  // Real translated overrides for whichever of this platform's UI strings the CLI catalog also
+-  // tracks (msgctxt `cli.scaffold:<platform>.<key>`) — a missing key/locale falls back to English.
+-  expect(main).toContain('import { LOCALE_STRINGS } from "./locale-strings.ts";');
+-  expect(existsSync(join(target, "src/locale-strings.ts"))).toBe(true);
+-  const localeStrings = readFileSync(join(target, "src/locale-strings.ts"), "utf8");
+-  expect(localeStrings).toContain(
+-    "export const LOCALE_STRINGS: Record<string, Record<string, string>>",
+-  );
+-  // Not just an empty shell — real translated overrides must actually be present for at least one
+-  // locale that has translated CLI catalog entries under this platform's msgctxt keys.
+-  expect(
+-    Object.keys(JSON.parse(localeStrings.slice(localeStrings.indexOf("= ") + 2, -2))).length,
+-  ).toBeGreaterThan(0);
+-  // Re-rendering to a detached tree and patching text/attrs in place (rather than swapping
+-  // innerHTML wholesale) keeps every wired-up element's identity and listeners intact.
+-  expect(main).toContain("function patchTranslatedText(root: Element, next: Element): void {");
+-  expect(main).toContain("function createPatchWalker(root: Node): TreeWalker {");
+-  // TinyMCE/CodeMirror inject their own DOM into these containers after the initial render,
+-  // diverging from a freshly re-rendered copy — walking into them would misalign the two trees.
+-  expect(main).toContain('const PATCH_SKIP_SELECTOR = ".editor-pane, #css-editor, #js-editor";');
+-  expect(main).toContain("function applyLocale(locale: string): void {");
+-  expect(main).toContain("applyLocale(locale);");
+-  // A project scaffolded for a non-English locale still ships English `STRINGS` (only this
+-  // runtime overlay is translated), so the declared `<html lang>` must be applied on load too.
+-  expect(main).toContain(
+-    "if (document.documentElement.lang) applyLocale(document.documentElement.lang);",
+-  );
+ });
+ 
+ test("canvas-theme-editor keeps other tinymce config keys when persisting a11y settings", async () => {
+(8/8) Stage this hunk [y,n,q,a,d,K,J,g,/,e,p,P,?]? n
