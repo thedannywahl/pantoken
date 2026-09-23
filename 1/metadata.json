@@ -1,0 +1,64 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M376HN85TKJKJR28693YTBET",
+  "session_id": "2ea56849-9245-47b7-ade1-f901bca59259",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-23T13:16:12.877589Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "docs/conventions/scoping.md",
+    "docs/engineering-log.md",
+    "formats/css/tests/manual/scope-test.html"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "623931116022",
+  "checkpoint_transcript_start": 120,
+  "transcript_lines_at_start": 120,
+  "compact_transcript_start": 18,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "skill_events_version": 1,
+  "skill_events": [
+    {
+      "id": "prompt-skill-copilot-cli-docs-2026-09-23T00:03:43.01Z",
+      "event_type": "prompt_invocation",
+      "skill": {
+        "name": "docs"
+      },
+      "source": {
+        "agent": "copilot-cli",
+        "signal": "prompt_slash_command",
+        "confidence": "explicit"
+      },
+      "turn_id": "623931116022",
+      "timestamp": "2026-09-23T00:03:43.01Z",
+      "native": {
+        "command": "/docs"
+      },
+      "collapse": {
+        "target": "user_message",
+        "label": "/docs",
+        "default_collapsed": true
+      }
+    }
+  ],
+  "initial_attribution": {
+    "calculated_at": "2026-09-23T13:16:12.86385Z",
+    "agent_lines": 264,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 264,
+    "total_lines_changed": 264,
+    "agent_percentage": 100,
+    "metric_version": 2
+  }
+}
