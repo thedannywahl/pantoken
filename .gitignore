@@ -89,3 +89,4 @@ docs/.vitepress/.temp/
 .release-plan.json
 .release-plan.md
 .release-packages.txt
+.vitest/

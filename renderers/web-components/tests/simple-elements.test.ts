@@ -6,6 +6,8 @@ register();
 
 afterEach(() => {
   vi.useRealTimers();
+  vi.restoreAllMocks();
+  vi.unstubAllGlobals();
   document.body.innerHTML = "";
 });
 
@@ -247,7 +249,6 @@ test("truncate sets --lines when given, omits the style otherwise", () => {
 });
 
 test("truncate lines=auto computes --lines from available height", () => {
-  const originalResizeObserver = globalThis.ResizeObserver;
   class TestResizeObserver {
     readonly #cb: ResizeObserverCallback;
     constructor(cb: ResizeObserverCallback) {
@@ -259,7 +260,7 @@ test("truncate lines=auto computes --lines from available height", () => {
     disconnect(): void {}
     unobserve(_target: Element): void {}
   }
-  globalThis.ResizeObserver = TestResizeObserver as unknown as typeof ResizeObserver;
+  vi.stubGlobal("ResizeObserver", TestResizeObserver);
   const rect = {
     x: 0,
     y: 0,
@@ -271,34 +272,26 @@ test("truncate lines=auto computes --lines from available height", () => {
     height: 60,
     toJSON: () => ({}),
   } as DOMRect;
-  const rectSpy = vi
-    .spyOn(HTMLElement.prototype, "getBoundingClientRect")
-    .mockImplementation(function (this: HTMLElement): DOMRect {
-      if (this.tagName === "INSTUI-TRUNCATE") {
-        return Object.assign(Object.create(Object.getPrototypeOf(rect)), rect, {
-          height: 0,
-          bottom: 0,
-        }) as DOMRect;
-      }
-      return rect;
-    });
-  const styleSpy = vi
-    .spyOn(window, "getComputedStyle")
-    .mockImplementation(
-      () => ({ lineHeight: "20px", fontSize: "16px" }) as unknown as CSSStyleDeclaration,
-    );
-  try {
-    const el = mount(
-      `<div><instui-truncate lines="auto">Long text</instui-truncate></div>`,
-      "instui-truncate",
-    );
-    const span = el.shadowRoot?.querySelector<HTMLElement>("span");
-    expect(span?.style.getPropertyValue("--lines")).toBe("3");
-  } finally {
-    rectSpy.mockRestore();
-    styleSpy.mockRestore();
-    globalThis.ResizeObserver = originalResizeObserver;
-  }
+  vi.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockImplementation(function (
+    this: HTMLElement,
+  ): DOMRect {
+    if (this.tagName === "INSTUI-TRUNCATE") {
+      return Object.assign(Object.create(Object.getPrototypeOf(rect)), rect, {
+        height: 0,
+        bottom: 0,
+      }) as DOMRect;
+    }
+    return rect;
+  });
+  vi.spyOn(window, "getComputedStyle").mockImplementation(
+    () => ({ lineHeight: "20px", fontSize: "16px" }) as unknown as CSSStyleDeclaration,
+  );
+  const el = mount(
+    `<div><instui-truncate lines="auto">Long text</instui-truncate></div>`,
+    "instui-truncate",
+  );
+  const span = el.shadowRoot?.querySelector<HTMLElement>("span");
+  expect(span?.style.getPropertyValue("--lines")).toBe("3");
 });
 
 test("truncate ignores invalid lines values", () => {

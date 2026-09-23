@@ -9941,9 +9941,9 @@
   },
   "provenance": {
     "designTokens": {
-      "commit": "3c6a96cca75529937fabefd4db2c57524e8c0be4",
+      "commit": "0a323b62c7486e65de57a06d70bdf0cdf209187f",
       "package": "@instructure/instructure-design-tokens",
-      "ref": "v1.9.0"
+      "ref": "v2.0.0"
     },
     "lucide": {
       "package": "lucide",
@@ -13086,13 +13086,6 @@
         "syntax": "*",
         "value": "var(--instui-spacing-space-xl)"
       },
-      "--instui-component-alert-background": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-component-alert-info-background",
-        "syntax": "*",
-        "value": "var(--instui-component-alert-info-background)"
-      },
       "--instui-component-alert-border-radius": {
         "inherits": true,
         "refersTo": "--instui-border-radius-lg",
@@ -13119,13 +13112,6 @@
         "inherits": true,
         "syntax": "*",
         "value": "0.5rem"
-      },
-      "--instui-component-alert-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-text-base",
-        "syntax": "*",
-        "value": "var(--instui-color-text-base)"
       },
       "--instui-component-alert-content-font-family": {
         "inherits": true,
@@ -13192,13 +13178,6 @@
         "refersTo": "--instui-color-background-error",
         "syntax": "*",
         "value": "var(--instui-color-background-error)"
-      },
-      "--instui-component-alert-icon-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-icon-on-color",
-        "syntax": "*",
-        "value": "var(--instui-color-icon-on-color)"
       },
       "--instui-component-alert-icon-padding-left": {
         "inherits": true,
@@ -13720,20 +13699,6 @@
         "inherits": true,
         "syntax": "*",
         "value": "0.75rem"
-      },
-      "--instui-component-banner-ai-background-bottom-gradient-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient",
-        "syntax": "*",
-        "value": "var(--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient)"
-      },
-      "--instui-component-banner-ai-background-top-gradient-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-top-gradient",
-        "syntax": "*",
-        "value": "var(--instui-color-background-interactive-action-ai-secondary-active-top-gradient)"
       },
       "--instui-component-banner-border-color": {
         "inherits": true,
@@ -19343,13 +19308,6 @@
         "refersTo": "--instui-color-text-accent-aurora",
         "syntax": "*",
         "value": "var(--instui-color-text-accent-aurora)"
-      },
-      "--instui-component-pill-background-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-component-pill-neutral-background-color",
-        "syntax": "*",
-        "value": "var(--instui-component-pill-neutral-background-color)"
       },
       "--instui-component-pill-base-border-color": {
         "inherits": true,
@@ -29844,13 +29802,6 @@
         "syntax": "*",
         "value": "var(--instui-spacing-space-xl)"
       },
-      "--instui-component-alert-background": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-component-alert-info-background",
-        "syntax": "*",
-        "value": "var(--instui-component-alert-info-background)"
-      },
       "--instui-component-alert-border-radius": {
         "inherits": true,
         "refersTo": "--instui-border-radius-lg",
@@ -29877,13 +29828,6 @@
         "inherits": true,
         "syntax": "*",
         "value": "0.5rem"
-      },
-      "--instui-component-alert-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-text-base",
-        "syntax": "*",
-        "value": "var(--instui-color-text-base)"
       },
       "--instui-component-alert-content-font-family": {
         "inherits": true,
@@ -29950,13 +29894,6 @@
         "refersTo": "--instui-color-background-error",
         "syntax": "*",
         "value": "var(--instui-color-background-error)"
-      },
-      "--instui-component-alert-icon-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-icon-on-color",
-        "syntax": "*",
-        "value": "var(--instui-color-icon-on-color)"
       },
       "--instui-component-alert-icon-padding-left": {
         "inherits": true,
@@ -30478,20 +30415,6 @@
         "inherits": true,
         "syntax": "*",
         "value": "0.75rem"
-      },
-      "--instui-component-banner-ai-background-bottom-gradient-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient",
-        "syntax": "*",
-        "value": "var(--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient)"
-      },
-      "--instui-component-banner-ai-background-top-gradient-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-top-gradient",
-        "syntax": "*",
-        "value": "var(--instui-color-background-interactive-action-ai-secondary-active-top-gradient)"
       },
       "--instui-component-banner-border-color": {
         "inherits": true,
@@ -36101,13 +36024,6 @@
         "refersTo": "--instui-color-text-accent-aurora",
         "syntax": "*",
         "value": "var(--instui-color-text-accent-aurora)"
-      },
-      "--instui-component-pill-background-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-component-pill-neutral-background-color",
-        "syntax": "*",
-        "value": "var(--instui-component-pill-neutral-background-color)"
       },
       "--instui-component-pill-base-border-color": {
         "inherits": true,
@@ -46605,13 +46521,6 @@
         "syntax": "*",
         "value": "var(--instui-spacing-space-xl)"
       },
-      "--instui-component-alert-background": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-component-alert-info-background",
-        "syntax": "*",
-        "value": "var(--instui-component-alert-info-background)"
-      },
       "--instui-component-alert-border-radius": {
         "inherits": true,
         "refersTo": "--instui-border-radius-lg",
@@ -46638,13 +46547,6 @@
         "inherits": true,
         "syntax": "*",
         "value": "0.5rem"
-      },
-      "--instui-component-alert-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-text-base",
-        "syntax": "*",
-        "value": "var(--instui-color-text-base)"
       },
       "--instui-component-alert-content-font-family": {
         "inherits": true,
@@ -46711,13 +46613,6 @@
         "refersTo": "--instui-color-background-error",
         "syntax": "*",
         "value": "var(--instui-color-background-error)"
-      },
-      "--instui-component-alert-icon-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-icon-on-color",
-        "syntax": "*",
-        "value": "var(--instui-color-icon-on-color)"
       },
       "--instui-component-alert-icon-padding-left": {
         "inherits": true,
@@ -47239,20 +47134,6 @@
         "inherits": true,
         "syntax": "*",
         "value": "0.75rem"
-      },
-      "--instui-component-banner-ai-background-bottom-gradient-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient",
-        "syntax": "*",
-        "value": "var(--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient)"
-      },
-      "--instui-component-banner-ai-background-top-gradient-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-top-gradient",
-        "syntax": "*",
-        "value": "var(--instui-color-background-interactive-action-ai-secondary-active-top-gradient)"
       },
       "--instui-component-banner-border-color": {
         "inherits": true,
@@ -52884,13 +52765,6 @@
         "refersTo": "--instui-color-text-accent-aurora",
         "syntax": "*",
         "value": "var(--instui-color-text-accent-aurora)"
-      },
-      "--instui-component-pill-background-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-component-pill-neutral-background-color",
-        "syntax": "*",
-        "value": "var(--instui-component-pill-neutral-background-color)"
       },
       "--instui-component-pill-base-border-color": {
         "inherits": true,

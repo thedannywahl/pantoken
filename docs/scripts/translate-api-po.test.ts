@@ -7,14 +7,16 @@ const mocks = vi.hoisted(() => ({
   refreshCoverageReports: vi.fn(),
   serializePo: vi.fn(() => ""),
   writeCatalog: vi.fn(),
-  AiTranslationAdapter: vi.fn(),
+  translateBatch: vi.fn(),
   refreshApiPot: vi.fn(),
 }));
 
 vi.mock("node:fs", () => ({ readFileSync: vi.fn(() => "") }));
 vi.mock("@pantoken/i18n-engine", () => mocks);
 vi.mock("./api-translation.ts", () => ({
-  AiTranslationAdapter: mocks.AiTranslationAdapter,
+  AiTranslationAdapter: class {
+    translateBatch = mocks.translateBatch;
+  },
 }));
 vi.mock("./refresh-api-pot.ts", () => ({ refreshApiPot: mocks.refreshApiPot }));
 
@@ -63,9 +65,7 @@ test("passes only requested API units to the provider", async () => {
       references: [],
     },
   ]);
-  mocks.AiTranslationAdapter.mockImplementation(function adapterFactory() {
-    return { translateBatch };
-  });
+  mocks.translateBatch.mockImplementation(translateBatch);
   process.env.DOCS_TRANSLATION_UNITS = JSON.stringify([
     { msgctxt: "docs.api:prose", msgid: "One block" },
   ]);

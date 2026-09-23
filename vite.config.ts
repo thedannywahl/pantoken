@@ -1,14 +1,10 @@
 import { defineConfig } from "vite-plus";
-import { fileURLToPath } from "node:url";
-import { dirname } from "node:path";
-
-const __dir = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   test: {
     // Reads FC_NUM_RUNS to adjust fast-check iteration counts without changing test source.
     // Default: 100 (fast). Stress runs (vp run property:stress): 10 000.
-    setupFiles: [`${__dir}/scripts/quality/fast-check-setup.ts`],
+    setupFiles: ["./scripts/quality/fast-check-setup.ts"],
     // Default (5000ms) is too tight for a full-suite local run (277 files) where module transform/
     // import contends for CPU; slower CI/gh runners need the same headroom.
     testTimeout: 20_000,

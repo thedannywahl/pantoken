@@ -4,6 +4,7 @@ import { initTruncateAuto, syncTruncateAutoLines } from "../src/behaviors/trunca
 
 afterEach(() => {
   vi.restoreAllMocks();
+  vi.unstubAllGlobals();
   document.body.innerHTML = "";
 });
 
@@ -35,22 +36,17 @@ test("syncTruncateAutoLines computes floor(availableHeight/lineHeight)", () => {
   const host = document.querySelector<HTMLElement>(".host")!;
   const parent = document.querySelector<HTMLElement>(".parent")!;
   parent.appendChild(host);
-  const rectSpy = mockRects(0, 60);
-  const styleSpy = vi
-    .spyOn(window, "getComputedStyle")
-    .mockImplementation(
-      () => ({ lineHeight: "20px", fontSize: "16px" }) as unknown as CSSStyleDeclaration,
-    );
+  mockRects(0, 60);
+  vi.spyOn(window, "getComputedStyle").mockImplementation(
+    () => ({ lineHeight: "20px", fontSize: "16px" }) as unknown as CSSStyleDeclaration,
+  );
 
   syncTruncateAutoLines(host, host);
 
   expect(host.style.getPropertyValue("--lines")).toBe("3");
-  rectSpy.mockRestore();
-  styleSpy.mockRestore();
 });
 
 test("initTruncateAuto wires resize and slotchange listeners, cleanup detaches", () => {
-  const originalResizeObserver = globalThis.ResizeObserver;
   let callback: ResizeObserverCallback | undefined;
   let disconnectCalls = 0;
   class TestResizeObserver {
@@ -63,30 +59,22 @@ test("initTruncateAuto wires resize and slotchange listeners, cleanup detaches",
     }
     unobserve(_target: Element): void {}
   }
-  globalThis.ResizeObserver = TestResizeObserver as unknown as typeof ResizeObserver;
+  vi.stubGlobal("ResizeObserver", TestResizeObserver);
 
   document.body.innerHTML = '<div class="parent"><div class="instui-truncate host"></div></div>';
   const host = document.querySelector<HTMLElement>(".host")!;
   const slot = document.createElement("slot");
-  const rectSpy = mockRects(0, 40);
-  const styleSpy = vi
-    .spyOn(window, "getComputedStyle")
-    .mockImplementation(
-      () => ({ lineHeight: "10px", fontSize: "16px" }) as unknown as CSSStyleDeclaration,
-    );
+  mockRects(0, 40);
+  vi.spyOn(window, "getComputedStyle").mockImplementation(
+    () => ({ lineHeight: "10px", fontSize: "16px" }) as unknown as CSSStyleDeclaration,
+  );
 
-  try {
-    const handle = initTruncateAuto(host, host, { slot });
-    expect(host.style.getPropertyValue("--lines")).toBe("4");
-    callback?.([], {} as ResizeObserver);
-    expect(host.style.getPropertyValue("--lines")).toBe("4");
-    slot.dispatchEvent(new Event("slotchange"));
-    expect(host.style.getPropertyValue("--lines")).toBe("4");
-    handle.cleanup();
-    expect(disconnectCalls).toBe(1);
-  } finally {
-    rectSpy.mockRestore();
-    styleSpy.mockRestore();
-    globalThis.ResizeObserver = originalResizeObserver;
-  }
+  const handle = initTruncateAuto(host, host, { slot });
+  expect(host.style.getPropertyValue("--lines")).toBe("4");
+  callback?.([], {} as ResizeObserver);
+  expect(host.style.getPropertyValue("--lines")).toBe("4");
+  slot.dispatchEvent(new Event("slotchange"));
+  expect(host.style.getPropertyValue("--lines")).toBe("4");
+  handle.cleanup();
+  expect(disconnectCalls).toBe(1);
 });

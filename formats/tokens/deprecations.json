@@ -2,48 +2,6 @@
   "version": 1,
   "entries": [
     {
-      "token": "--instui-component-alert-background",
-      "deprecatedIn": "design-tokens@v1.9.0",
-      "removeIn": "design-tokens@v2.0.0",
-      "replacement": "--instui-component-alert-info-background",
-      "note": "The generic alert background was replaced by status-specific backgrounds."
-    },
-    {
-      "token": "--instui-component-alert-color",
-      "deprecatedIn": "design-tokens@v1.9.0",
-      "removeIn": "design-tokens@v2.0.0",
-      "replacement": "--instui-color-text-base",
-      "note": "The generic alert text color now uses the shared base text color."
-    },
-    {
-      "token": "--instui-component-alert-icon-color",
-      "deprecatedIn": "design-tokens@v1.9.0",
-      "removeIn": "design-tokens@v2.0.0",
-      "replacement": "--instui-color-icon-on-color",
-      "note": "The alert icon color now uses the shared on-color icon color."
-    },
-    {
-      "token": "--instui-component-banner-ai-background-bottom-gradient-color",
-      "deprecatedIn": "design-tokens@v1.9.0",
-      "removeIn": "design-tokens@v2.0.0",
-      "value": "var(--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient)",
-      "note": "The upstream AI banner gradient token was removed without a canonical replacement."
-    },
-    {
-      "token": "--instui-component-banner-ai-background-top-gradient-color",
-      "deprecatedIn": "design-tokens@v1.9.0",
-      "removeIn": "design-tokens@v2.0.0",
-      "value": "var(--instui-color-background-interactive-action-ai-secondary-active-top-gradient)",
-      "note": "The upstream AI banner gradient token was removed without a canonical replacement."
-    },
-    {
-      "token": "--instui-component-pill-background-color",
-      "deprecatedIn": "design-tokens@v1.9.0",
-      "removeIn": "design-tokens@v2.0.0",
-      "replacement": "--instui-component-pill-neutral-background-color",
-      "note": "The generic pill background was replaced by the neutral status background."
-    },
-    {
       "token": "--instui-icon-angry",
       "deprecatedIn": "ui@11.7.6",
       "removeIn": "ui@12.0.0",
