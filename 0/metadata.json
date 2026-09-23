@@ -1,0 +1,52 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M37BW33WB2KCPGKCQR1E8JEJ",
+  "session_id": "24611565-22f1-4de8-8a60-f978c0000be7",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-23T14:49:17.47743Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "save_step_count": 2,
+  "files_touched": [
+    "packages/scaffold/templates/canvas-theme-editor/README.md",
+    "packages/scaffold/templates/canvas-theme-editor/package.json",
+    "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
+    "packages/scaffold/tests/index.test.ts",
+    "pnpm-workspace.yaml"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "3ccf3ae522bd",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 3
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-23T14:49:17.462302Z",
+    "agent_lines": 82,
+    "agent_removed": 10,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 82,
+    "total_lines_changed": 92,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
+}
