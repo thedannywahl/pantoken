@@ -171,7 +171,8 @@ function slugifyExportName(name: string): string {
     .trim()
     .toLocaleLowerCase()
     .replace(/[^a-z0-9]+/gu, "-")
-    .replace(/^-+|-+$/gu, "");
+    .replace(/^-+/u, "")
+    .replace(/-+$/u, "");
   return clean || "preset";
 }
 
