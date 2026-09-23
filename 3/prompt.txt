@@ -1,0 +1,1 @@
+again the preview theme color is broken in the preview. the appropriate `<div data-pantoken-color="honey">` is being injected in the iframe, but it's not actually applying the color to the content.
