@@ -1,0 +1,10 @@
+the upgrade to vitest5 broke the codspeed config, ci now finds no benchmarks:
+https://app.codspeed.io/thedannywahl/pantoken/branches/tinymce-utility
+
+---
+
+Continue: "Continue to iterate?"
+
+---
+
+there's a PR for vitest5 support in codspeed, so mark down that when it's released we need to swap back: https://github.com/CodSpeedHQ/codspeed-node/pull/86
