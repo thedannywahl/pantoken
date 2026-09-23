@@ -10,6 +10,7 @@ import {
 test("THEME_CSS imports pantoken's CDN-hosted tokens, components, and fonts", () => {
   expect(THEME_CSS).toContain("npm/@pantoken/css/dist/style.rebrand.light.lean.css");
   expect(THEME_CSS).toContain("npm/@pantoken/components/dist/components.css");
+  expect(THEME_CSS).toContain("npm/@pantoken/components/dist/prose.css");
   expect(THEME_CSS).toContain(
     "npm/@pantoken/plugin-custom-theme-colors/dist/custom-theme-colors.scoped.css",
   );

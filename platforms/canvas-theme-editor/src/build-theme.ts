@@ -78,6 +78,7 @@ export function defaultThemeCssAssets(
   return [
     ...tokens,
     { package: "@pantoken/components", path: "dist/base.css" },
+    { package: "@pantoken/components", path: "dist/prose.css" },
     { package: "@pantoken/components", path: "dist/component-icons.css" },
     { package: "@pantoken/components", path: "dist/components.css" },
     { package: "@pantoken/components", path: "dist/utilities.css" },

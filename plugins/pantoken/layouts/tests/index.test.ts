@@ -96,6 +96,6 @@ test("image placeholders are provider-neutral and use the image component marker
       altText: "A photo of the instructor",
     },
   ]);
-  expect(aboutMe?.html).toContain('class="instui-img"');
+  expect(aboutMe?.html).toMatch(/class="[^"]*\binstui-img\b/);
   expect(aboutMe?.html).toContain('data-pantoken-image-placeholder="instructor-photo"');
 });
