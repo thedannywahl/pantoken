@@ -73,6 +73,7 @@ import {
   type ThemeMode,
   type ThemeVariant,
 } from "@pantoken/canvas-theme-editor";
+import { Check, ChevronDown, Languages, MoonStar, Palette, SunMedium } from "lucide";
 // Inlined (not CDN-fetched) so the live preview's color swap never depends on a network round trip.
 import {
   COLOR_KEYS,
@@ -190,6 +191,208 @@ const PREVIEW_SCHEME_FORCE_CSS = `
 /** Minimal `{{key}}` substitution — every key must exist in `strings`, values are inserted raw. */
 function render(template: string, strings: Record<string, string>): string {
   return template.replace(/\{\{(\w+)\}\}/g, (match, key: string) => strings[key] ?? match);
+}
+
+function createShellIcon(
+  icon: (props: { size?: number; strokeWidth?: number }) => SVGSVGElement,
+): SVGSVGElement {
+  const svg = icon({ size: 16, strokeWidth: 2 });
+  svg.classList.add("canvas-rce-shell__icon");
+  return svg;
+}
+
+function setupStandaloneAppShell(): void {
+  if (window.self !== window.top || document.getElementById("canvas-rce-shell")) return;
+
+  document.body.classList.add("canvas-rce-shell-enabled");
+  document.title = "Canvas Theme Editor";
+
+  const themeColorMeta =
+    document.querySelector<HTMLMetaElement>('meta[name="theme-color"]') ??
+    document.createElement("meta");
+  themeColorMeta.name = "theme-color";
+  themeColorMeta.content = window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "#0d1b2a"
+    : "#f5f5f5";
+  if (!themeColorMeta.parentElement) document.head.append(themeColorMeta);
+
+  const shell = document.createElement("header");
+  shell.id = "canvas-rce-shell";
+  shell.className = "canvas-rce-shell";
+
+  const brand = document.createElement("div");
+  brand.className = "canvas-rce-shell__brand";
+
+  const brandMark = document.createElement("div");
+  brandMark.className = "canvas-rce-shell__brand-mark";
+  brandMark.append(createShellIcon(Palette));
+
+  const brandText = document.createElement("div");
+  const eyebrow = document.createElement("span");
+  eyebrow.className = "canvas-rce-shell__eyebrow";
+  eyebrow.textContent = "Pantoken";
+  const title = document.createElement("strong");
+  title.textContent = "Canvas Theme Editor";
+  brandText.append(eyebrow, title);
+  brand.append(brandMark, brandText);
+
+  const actions = document.createElement("div");
+  actions.className = "canvas-rce-shell__actions";
+
+  const localeMenu = document.createElement("details");
+  localeMenu.className = "canvas-rce-shell__menu";
+  const localeSummary = document.createElement("summary");
+  localeSummary.className = "canvas-rce-shell__summary";
+  localeSummary.append(createShellIcon(Languages));
+  const localeLabel = document.createElement("span");
+  localeLabel.className = "canvas-rce-shell__label";
+  const localeLocale = (
+    document.documentElement.lang || navigator.languages?.[0] || navigator.language || "en-US"
+  ).trim();
+  let localeText = "English";
+  try {
+    localeText = new Intl.DisplayNames(["en"], { type: "language" }).of(localeLocale) ?? localeText;
+  } catch {
+    localeText = localeLocale.split("-")[0].toUpperCase();
+  }
+  localeLabel.textContent = localeText;
+  localeSummary.append(localeLabel, createShellIcon(ChevronDown));
+
+  const localePanel = document.createElement("div");
+  localePanel.className = "canvas-rce-shell__panel";
+  for (const [locale, label] of [
+    ["en", "English"],
+    ["fr", "Français"],
+    ["es", "Español"],
+    ["pt", "Português"],
+    ["hu", "Magyar"],
+    ["zh-Hant", "繁體中文"],
+  ] as const) {
+    const option = document.createElement("button");
+    option.type = "button";
+    option.className = "canvas-rce-shell__option";
+    option.dataset.locale = locale;
+    const optionLabel = document.createElement("span");
+    optionLabel.textContent = label;
+    const optionMark = document.createElement("span");
+    optionMark.className = "canvas-rce-shell__mark";
+    optionMark.append(createShellIcon(Check));
+    option.append(optionLabel, optionMark);
+    if (document.documentElement.lang === locale || (!document.documentElement.lang && locale === "en")) {
+      option.classList.add("is-selected");
+    }
+    option.addEventListener("click", () => {
+      document.documentElement.lang = locale;
+      localeLabel.textContent = label;
+      localeMenu.removeAttribute("open");
+      for (const candidate of localePanel.querySelectorAll<HTMLButtonElement>(
+        ".canvas-rce-shell__option",
+      )) {
+        candidate.classList.toggle("is-selected", candidate.dataset.locale === locale);
+      }
+    });
+    localePanel.append(option);
+  }
+  localeMenu.append(localeSummary, localePanel);
+
+  const themeMenu = document.createElement("details");
+  themeMenu.className = "canvas-rce-shell__menu";
+  const themeSummary = document.createElement("summary");
+  themeSummary.className = "canvas-rce-shell__summary";
+  themeSummary.append(createShellIcon(Palette));
+  const themeLabel = document.createElement("span");
+  themeLabel.className = "canvas-rce-shell__label";
+  themeLabel.textContent = "Theme";
+  themeSummary.append(themeLabel, createShellIcon(ChevronDown));
+
+  const themePanel = document.createElement("div");
+  themePanel.className = "canvas-rce-shell__panel";
+
+  const appearanceGroup = document.createElement("div");
+  appearanceGroup.className = "canvas-rce-shell__group";
+  const appearanceTitle = document.createElement("span");
+  appearanceTitle.className = "canvas-rce-shell__group-title";
+  appearanceTitle.textContent = "Appearance";
+  appearanceGroup.append(appearanceTitle);
+  for (const [appearance, label, icon] of [
+    ["system", "System", SunMedium],
+    ["light", "Light", SunMedium],
+    ["dark", "Dark", MoonStar],
+  ] as const) {
+    const option = document.createElement("button");
+    option.type = "button";
+    option.className = "canvas-rce-shell__option";
+    option.dataset.appearance = appearance;
+    const text = document.createElement("span");
+    text.textContent = label;
+    const mark = document.createElement("span");
+    mark.className = "canvas-rce-shell__mark";
+    mark.append(createShellIcon(icon));
+    option.append(text, mark);
+    option.addEventListener("click", () => {
+      const selectedMode =
+        appearance === "system"
+          ? window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light"
+          : appearance;
+      document.body.dataset.appearanceMode = appearance;
+      document.documentElement.style.colorScheme = selectedMode;
+      document.documentElement.dataset.pantokenScheme = selectedMode;
+      if (typeof applyChromeTheme === "function") {
+        applyChromeTheme(selectedTheme ?? "rebrand", selectedMode as "light" | "dark");
+      }
+      for (const candidate of themePanel.querySelectorAll<HTMLButtonElement>("[data-appearance]")) {
+        candidate.classList.toggle("is-selected", candidate.dataset.appearance === appearance);
+      }
+      themeMenu.removeAttribute("open");
+    });
+    appearanceGroup.append(option);
+  }
+
+  const colorGroup = document.createElement("div");
+  colorGroup.className = "canvas-rce-shell__group";
+  const colorTitle = document.createElement("span");
+  colorTitle.className = "canvas-rce-shell__group-title";
+  colorTitle.textContent = "Color";
+  colorGroup.append(colorTitle);
+  for (const [color, label] of [
+    ["navy", "Navy"],
+    ["blue", "Blue"],
+    ["green", "Green"],
+    ["red", "Red"],
+    ["orange", "Orange"],
+    ["grey", "Grey"],
+    ["plum", "Plum"],
+  ] as const) {
+    const option = document.createElement("button");
+    option.type = "button";
+    option.className = "canvas-rce-shell__option";
+    option.dataset.color = color;
+    const text = document.createElement("span");
+    text.textContent = label;
+    const mark = document.createElement("span");
+    mark.className = "canvas-rce-shell__mark";
+    mark.append(createShellIcon(Check));
+    option.append(text, mark);
+    option.addEventListener("click", () => {
+      if (isThemeColor(color)) {
+        applyChromeColor(color);
+        document.documentElement.dataset.pantokenColor = color;
+      }
+      for (const candidate of themePanel.querySelectorAll<HTMLButtonElement>("[data-color]")) {
+        candidate.classList.toggle("is-selected", candidate.dataset.color === color);
+      }
+      themeMenu.removeAttribute("open");
+    });
+    colorGroup.append(option);
+  }
+
+  themePanel.append(appearanceGroup, colorGroup);
+  themeMenu.append(themeSummary, themePanel);
+  actions.append(localeMenu, themeMenu);
+  shell.append(brand, actions);
+  document.body.prepend(shell);
 }
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = render(appHtml, STRINGS);
@@ -443,6 +646,7 @@ tinymce.PluginManager.add(
   createSavePlugin<CanvasThemePreset>({
     capture: captureCanvasThemePreset,
     restore: restoreCanvasThemePreset,
+    reset: resetCanvasThemePreset,
     isValid: isCanvasThemePreset,
   }),
 );
@@ -496,6 +700,7 @@ let jsObjectUrl: string | undefined;
 // docs-driven theme/color tracked separately by `applyChromeTheme`/`applyChromeColor` above.
 let selectedTheme: ThemeVariant = "rebrand";
 let selectedColor: PantokenColorNamespace = "navy";
+setupStandaloneAppShell();
 
 interface CanvasThemePreset {
   readonly version: 1;
@@ -664,6 +869,31 @@ function isCanvasThemePreset(value: unknown): value is CanvasThemePreset {
 
 function replaceEditorDocument(view: EditorView, content: string): void {
   view.dispatch({ changes: { from: 0, to: view.state.doc.length, insert: content } });
+}
+
+function resetCanvasThemePreset(): void {
+  selectedTheme = "rebrand";
+  const themeButton = [...themeButtons].find((button) => button.dataset.theme === selectedTheme);
+  if (themeButton) selectToggleButton(themeButtons, themeButton);
+  includeDarkModeCheckbox.checked = false;
+  syncDarkModeAvailability();
+  providerSelect.value = isLocalPreview ? LOCAL_PROVIDER_ID : DEFAULT_CDN_PROVIDER_ID;
+  selectThemeColor("navy");
+  replaceEditorDocument(cssEditorView, "");
+  replaceEditorDocument(jsEditorView, "");
+
+  if (activeEditor) {
+    const nextHtml = normalizeEditorHtml("", "navy");
+    activeEditor.resetContent(nextHtml);
+    const sourceToggle = activeEditor.plugins[SOURCE_TOGGLE_PLUGIN_NAME] as
+      | SourceTogglePluginApi
+      | undefined;
+    if (sourceToggle?.isSourceMode()) sourceToggle.replaceAll(nextHtml);
+  }
+
+  syncThemeColorFromEditor();
+  applyEditorTheme(activeEditor);
+  void refreshAll();
 }
 
 function restoreCanvasThemePreset(preset: CanvasThemePreset): void {

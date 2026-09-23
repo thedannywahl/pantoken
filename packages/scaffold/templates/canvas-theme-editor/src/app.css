@@ -1,16 +1,189 @@
 /* Layout for this scaffold's own authoring UI (not part of any Canvas-pasted RCE content). */
 
+:root {
+  color-scheme: light dark;
+}
+
 :where(html) {
-  background-color: transparent;
+  background-color: var(--instui-color-background-primary, Canvas);
 }
 
 :where(body) {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--instui-color-background-primary, Canvas);
+  color: var(--instui-color-text-primary, inherit);
+}
+
+body:not(.canvas-rce-shell-enabled) {
   padding: 1.5rem 3rem;
+}
+
+body.canvas-rce-shell-enabled {
+  padding: 0;
 }
 
 #app {
   margin: 0 auto;
   width: 100%;
+}
+
+body.canvas-rce-shell-enabled #app {
+  padding: 1.5rem 3rem 2rem;
+}
+
+.canvas-rce-shell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-block-end: 1px solid var(--instui-color-stroke-base, rgba(0, 0, 0, 0.12));
+  background: color-mix(in srgb, var(--instui-color-background-primary, Canvas) 92%, transparent);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 10;
+}
+
+.canvas-rce-shell__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.canvas-rce-shell__brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.625rem;
+  background: linear-gradient(
+    135deg,
+    var(--instui-color-brand, #0a5dc2),
+    var(--instui-color-accent, #5b8def)
+  );
+  color: white;
+}
+
+.canvas-rce-shell__eyebrow {
+  display: block;
+  font-size: 0.625rem;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.canvas-rce-shell__brand strong {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.canvas-rce-shell__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.canvas-rce-shell__menu {
+  position: relative;
+}
+
+.canvas-rce-shell__menu summary {
+  list-style: none;
+}
+
+.canvas-rce-shell__menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.canvas-rce-shell__summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--instui-color-stroke-base, rgba(0, 0, 0, 0.12));
+  border-radius: 999px;
+  background: var(--instui-color-background-secondary, rgba(0, 0, 0, 0.02));
+  color: inherit;
+  cursor: pointer;
+  user-select: none;
+}
+
+.canvas-rce-shell__summary .canvas-rce-shell__icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.canvas-rce-shell__label {
+  white-space: nowrap;
+}
+
+.canvas-rce-shell__panel {
+  position: absolute;
+  inset-block-start: calc(100% + 0.5rem);
+  inset-inline-end: 0;
+  min-width: 12rem;
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid var(--instui-color-stroke-base, rgba(0, 0, 0, 0.12));
+  border-radius: 0.75rem;
+  background: var(--instui-color-background-primary, Canvas);
+  box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.15);
+  z-index: 20;
+}
+
+.canvas-rce-shell__group {
+  display: grid;
+  gap: 0.375rem;
+}
+
+.canvas-rce-shell__group-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.canvas-rce-shell__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.5rem 0.625rem;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.canvas-rce-shell__option:hover,
+.canvas-rce-shell__option:focus-visible {
+  border-color: var(--instui-color-stroke-base, rgba(0, 0, 0, 0.12));
+  background: var(--instui-color-background-secondary, rgba(0, 0, 0, 0.02));
+}
+
+.canvas-rce-shell__option.is-selected {
+  border-color: var(--instui-color-stroke-base, rgba(0, 0, 0, 0.12));
+  background: var(--instui-color-background-secondary, rgba(0, 0, 0, 0.02));
+}
+
+.canvas-rce-shell__option .canvas-rce-shell__mark {
+  width: 1rem;
+  height: 1rem;
+  opacity: 0;
+}
+
+.canvas-rce-shell__option.is-selected .canvas-rce-shell__mark {
+  opacity: 1;
 }
 
 .wrapper {

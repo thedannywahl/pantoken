@@ -20,7 +20,8 @@
     "@pantoken/tinymce-codemirror": "latest",
     "@pantoken/tinymce-placehold": "latest",
     "@pantoken/tinymce-save": "latest",
-    "fflate": "catalog:"
+    "fflate": "catalog:",
+    "lucide": "latest"
   },
   "devDependencies": {
     "@codemirror/lang-css": "catalog:",
