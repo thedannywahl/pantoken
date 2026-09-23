@@ -1,0 +1,406 @@
+in canvas-theme-editor scaffold the CDN picker allows none in local dev, we should also allow it in prod, but keep "none" as the default in local dev.  In prod "none" means that all the referenced css is inlined into the css file and all the referenced js is inlined into the js file instead of using `@import` for the CDN reference file.
+
+---
+
+Read-only investigation only; do not edit files. In /Users/dwahl/Scripts/pantoken, follow the mandatory first action from .entire/graph-agent.md: run `entire graph search --repo . --profile full --query "canvas-theme-editor scaffold CDN picker none local dev production inline referenced CSS JavaScript instead of CDN imports"` before any grep/find/read to locate code. Then inspect the top hit and nearby call sites/tests/templates. Determine: (1) where the CDN picker options and local-vs-prod defaults are defined, (2) how `none` currently behaves in local dev, (3) the production path that emits CSS/JS and uses @import/CDN reference files, (4) exact files/symbols likely needing changes, including whether packages/scaffold/.dev/canvas-theme-editor is a mirrored scratch app, (5) focused tests/build commands and any changeset/security/docs implications. Return a concise evidence-backed implementation plan recommendation with file paths and symbols/line references. Do not modify anything.
+
+---
+
+Start implementation
+
+---
+
+add a changeset and a conventional commit for your work, ignoring other unstaged changes
+
+---
+
+[Terminal a23ae091-a09c-4477-b80a-33e7930eda35 notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on tinymce-utility ↑1  ?1 ~39 |  +19 ~25 via  26.9.0 
+➜  git add -p -- packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl
+diff --git a/packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl b/packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl
+index d05871ad3..6f2d33325 100644
+--- a/packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl
++++ b/packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl
+@@ -79,7 +79,7 @@ import { basicSetup, EditorView } from "codemirror";
+ import { css } from "@codemirror/lang-css";
+ import { html } from "@codemirror/lang-html";
+ import { javascript } from "@codemirror/lang-javascript";
+-import { buildFileUrl, buildFileUrls, type CdnFile } from "@pantoken/cdn";
++import { buildFileUrl, type CdnFile } from "@pantoken/cdn";
+ import {
+   CONTENT_CLASSES_PLUGIN_NAME,
+   createContentClassesPlugin,
+(1/25) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+@@ -129,6 +129,11 @@ import { loadPreferences, savePreferences } from "./preferences.ts";
+ 
+ // Shared with the toolbar's source-view editor so both stay the same size.
+ const EDITOR_HEIGHT_PX = 400;
++// This app's pantoken instance, and the one it accepts theme messages from. Two pantoken instances
++// can share a page (this editor embedded in the docs site being the case that forced the issue), so
++// both sides tag their messages and ignore anything addressed elsewhere.
++const EDITOR_INSTANCE = "canvas-theme-editor";
++const HOST_INSTANCE = "docs";
+ // Canvas's content area caps out at this width — the preview mirrors that constraint.
+ const CANVAS_CONTENT_MAX_WIDTH = "59.25rem";
+ // All 13 `[data-pantoken-color="…"]` color-remap rules, computed once — editable Canvas content,
+(2/25) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -176,8 +181,10 @@ document.head.append(interactionsScript);
+ 
+ // Shared CSS assets array — tracks stylesheets for dynamic injection and generated theme CSS.
+ const currentAssets: CdnFile[] = [];
+-const onMissingAsset = () => refreshAll();
++const onMissingAsset = () => void refreshAll();
+ let availableIcons: TaggedIcon[] = [];
++const inlineAssetContents = new Map<string, string>();
++let refreshGeneration = 0;
+ const localLogoUrls = import.meta.glob<string>(
+   "/node_modules/@pantoken/plugin-logos/dist/*.png",
+   { eager: true, import: "default", query: "?url" },
+(3/25) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,s,e,p,P,?]? y
+@@ -188,8 +195,7 @@ function buildSelectedAssetUrl(file: CdnFile): string {
+     return buildFileUrl(file, providerSelect.value);
+   }
+   const localUrl = localLogoUrls[`/node_modules/${file.package}/${file.path}`];
+-  if (!localUrl) throw new Error(`Missing local package asset: ${file.package}/${file.path}`);
+-  return localUrl;
++  return localUrl ?? buildFileUrl(file);
+ }
+ 
+ const editorThemeCss: Record<
+(4/25) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+@@ -237,7 +243,9 @@ function applyChromeTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
+         : adaptiveTokensCss;
+   // Pins `light-dark()` resolution to the docs page's explicit mode instead of the OS preference —
+   // single-scheme themes (canvas/canvasHighContrast) only ever render light.
+-  document.documentElement.style.colorScheme = theme === "rebrand" ? mode : "light";
++  const scheme = theme === "rebrand" ? mode : "light";
++  document.documentElement.dataset.pantokenTheme = theme;
++  document.documentElement.style.colorScheme = scheme;
+ }
+ 
+ /** Re-colors the chrome only — the tray's `#theme-tray` reset scope keeps it (and the preview,
+(5/25) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -254,15 +262,26 @@ function applyParentTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
+   if (themeButton) selectToggleButton(themeButtons, themeButton);
+   includeDarkModeRow.hidden = theme !== "rebrand";
+   applyEditorTheme(activeEditor);
+-  refreshAll();
++  void refreshAll();
+ }
+ 
++// This app is its own pantoken instance. Claiming the root stops an embedding page's scope from
++// being mistaken for ours, and stops our own preview/tray scopes from being re-themed by it.
++document.documentElement.dataset.pantokenInstance = EDITOR_INSTANCE;
+ applyChromeTheme("rebrand", "light");
+ applyChromeColor("navy");
+ 
+ window.addEventListener("message", (event) => {
+   if (event.source !== window.parent || event.origin !== window.location.origin) return;
+-  const data = event.data as { type?: unknown; theme?: unknown; mode?: unknown; color?: unknown };
++  const data = event.data as {
++    type?: unknown;
++    theme?: unknown;
++    mode?: unknown;
++    color?: unknown;
++    instanceId?: unknown;
++  };
++  // A message tagged for a different instance belongs to another pantoken on the host page.
++  if (typeof data?.instanceId === "string" && data.instanceId !== HOST_INSTANCE) return;
+   if (data?.type === "pantoken-demo-color") {
+     if (isThemeColor(data.color)) applyChromeColor(data.color);
+     return;
+(6/25) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,s,e,p,P,?]? s
+Split into 3 hunks.
+@@ -254,6 +262,6 @@ function applyParentTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
+   if (themeButton) selectToggleButton(themeButtons, themeButton);
+   includeDarkModeRow.hidden = theme !== "rebrand";
+   applyEditorTheme(activeEditor);
+-  refreshAll();
++  void refreshAll();
+ }
+ 
+(6/27) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+@@ -258,7 +266,10 @@
+ }
+ 
++// This app is its own pantoken instance. Claiming the root stops an embedding page's scope from
++// being mistaken for ours, and stops our own preview/tray scopes from being re-themed by it.
++document.documentElement.dataset.pantokenInstance = EDITOR_INSTANCE;
+ applyChromeTheme("rebrand", "light");
+ applyChromeColor("navy");
+ 
+ window.addEventListener("message", (event) => {
+   if (event.source !== window.parent || event.origin !== window.location.origin) return;
+(7/27) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -260,9 +271,17 @@
+ applyChromeTheme("rebrand", "light");
+ applyChromeColor("navy");
+ 
+ window.addEventListener("message", (event) => {
+   if (event.source !== window.parent || event.origin !== window.location.origin) return;
+-  const data = event.data as { type?: unknown; theme?: unknown; mode?: unknown; color?: unknown };
++  const data = event.data as {
++    type?: unknown;
++    theme?: unknown;
++    mode?: unknown;
++    color?: unknown;
++    instanceId?: unknown;
++  };
++  // A message tagged for a different instance belongs to another pantoken on the host page.
++  if (typeof data?.instanceId === "string" && data.instanceId !== HOST_INSTANCE) return;
+   if (data?.type === "pantoken-demo-color") {
+     if (isThemeColor(data.color)) applyChromeColor(data.color);
+     return;
+(8/27) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -360,7 +379,7 @@ const registerPantokenPlugin = (async () => {
+         },
+         onInsert: () => {
+           applyThemeColor(selectedColor, false);
+-          refreshAll();
++          void refreshAll();
+         },
+       },
+     }),
+(9/27) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+@@ -369,7 +388,7 @@ const registerPantokenPlugin = (async () => {
+ 
+ tinymce.PluginManager.add(
+   PLACEHOLD_PLUGIN_NAME,
+-  createPlaceholdPlugin({ onInsert: () => refreshAll() }),
++  createPlaceholdPlugin({ onInsert: () => void refreshAll() }),
+ );
+ tinymce.PluginManager.add(CONTENT_CLASSES_PLUGIN_NAME, createContentClassesPlugin());
+ tinymce.PluginManager.add(A11Y_PLUGIN_NAME, createA11yPlugin({ display: "footer" }));
+(10/27) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+@@ -389,10 +408,10 @@ tinymce.PluginManager.add(
+     ],
+     onChange: () => {
+       syncThemeColorFromEditor();
+-      if (syncIconAssetsFromEditor()) updateDownloads();
++      if (syncIconAssetsFromEditor()) void refreshAll();
+       debouncedUpdatePreview();
+     },
+-    onToggle: () => refreshAll(),
++    onToggle: () => void refreshAll(),
+   }),
+ );
+ // Fullscreen, find-and-replace, and visual blocks ship as toolbar-only controls upstream — these
+(11/27) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,s,e,p,P,?]? y
+@@ -411,12 +430,10 @@ tinymce.PluginManager.add(
+ );
+ 
+ const providerSelect = document.querySelector<HTMLSelectElement>("#cdn-provider")!;
+-if (isLocalPreview) {
+-  const option = document.createElement("option");
+-  option.value = LOCAL_PROVIDER_ID;
+-  option.textContent = STRINGS.localProviderLabel;
+-  providerSelect.append(option);
+-}
++const localProviderOption = document.createElement("option");
++localProviderOption.value = LOCAL_PROVIDER_ID;
++localProviderOption.textContent = STRINGS.localProviderLabel;
++providerSelect.append(localProviderOption);
+ for (const [id, provider] of Object.entries(CDN_PROVIDERS)) {
+   const option = document.createElement("option");
+   option.value = id;
+(12/27) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+@@ -535,7 +552,7 @@ function applyThemeColor(color: PantokenColorNamespace, refresh = true): void {
+       activeEditor.undoManager.transact(() => activeEditor!.setContent(nextHtml));
+     }
+   }
+-  if (refresh) updatePreview();
++  if (refresh) void refreshAll();
+ }
+ 
+ /** Reads the author's current HTML from whichever view (WYSIWYG or raw source) is active. */
+(13/27) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+@@ -555,6 +572,21 @@ function assetKey(asset: CdnFile): string {
+   return `${asset.package}:${asset.path}`;
+ }
+ 
++async function inlineAssetCss(assets: readonly CdnFile[]): Promise<string[]> {
++  await Promise.all(
++    assets.map(async (asset) => {
++      const key = assetKey(asset);
++      if (inlineAssetContents.has(key)) return;
++      const response = await fetch(buildFileUrl(asset));
++      if (!response.ok) {
++        throw new Error(`Unable to inline ${asset.package}/${asset.path}: ${response.status}`);
++      }
++      inlineAssetContents.set(key, await response.text());
++    }),
++  );
++  return assets.map((asset) => inlineAssetContents.get(assetKey(asset))!);
++}
++
+ function syncIconAssetsFromEditor(): boolean {
+   const content = parseEditorHtml(getEditorHtml()).content;
+   const iconAssetKeys = new Set(availableIcons.map((icon) => assetKey(getIconCdnFile(icon))));
+(14/27) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+@@ -590,7 +622,7 @@ function isThemeMode(value: unknown): value is ThemeMode {
+ function isCdnProvider(value: unknown): value is string {
+   return (
+     typeof value === "string" &&
+-    (Object.hasOwn(CDN_PROVIDERS, value) || (isLocalPreview && value === LOCAL_PROVIDER_ID))
++    (Object.hasOwn(CDN_PROVIDERS, value) || value === LOCAL_PROVIDER_ID)
+   );
+ }
+ 
+(15/27) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+@@ -635,7 +667,7 @@ function restoreCanvasThemePreset(preset: CanvasThemePreset): void {
+   syncThemeColorFromEditor();
+ 
+   applyEditorTheme(activeEditor);
+-  refreshAll();
++  void refreshAll();
+ }
+ 
+ function currentSelection(): { provider: string; theme: ThemeVariant; mode: ThemeMode } {
+(16/27) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+@@ -646,9 +678,9 @@ function currentSelection(): { provider: string; theme: ThemeVariant; mode: Them
+   };
+ }
+ 
+-function buildCurrentTheme(): { css: string; js: string } {
++async function buildCurrentTheme(): Promise<{ css: string; js: string }> {
+   const selection = currentSelection();
+-  if (!isLocalPreview || selection.provider !== LOCAL_PROVIDER_ID) {
++  if (selection.provider !== LOCAL_PROVIDER_ID) {
+     return buildTheme({
+       ...selection,
+       css: [...defaultThemeCssAssets(selection.theme, selection.mode), ...currentAssets],
+(17/27) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,s,e,p,P,?]? y
+@@ -663,12 +695,9 @@ function buildCurrentTheme(): { css: string; js: string } {
+         : selection.mode === "adaptive"
+           ? adaptiveTokensCss
+           : rebrandLightTokensCss;
++  const dynamicCss = await inlineAssetCss(currentAssets);
+   return {
+-    css: [
+-      ...buildFileUrls(currentAssets).map((url) => `@import url("${url}");`),
+-      tokensCss,
+-      LOCAL_COMPONENT_CSS,
+-    ].join("\n"),
++    css: [tokensCss, LOCAL_COMPONENT_CSS, ...dynamicCss].join("\n"),
+     js: localInteractionsJs,
+   };
+ }
+(18/27) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,s,e,p,P,?]? y
+@@ -693,7 +722,7 @@ themeButtons.forEach((button) => {
+     selectToggleButton(themeButtons, button);
+     includeDarkModeRow.hidden = selectedTheme !== "rebrand";
+     applyEditorTheme(activeEditor);
+-    refreshAll();
++    void refreshAll();
+   });
+ });
+ 
+(19/27) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+@@ -846,15 +875,15 @@ function debounce<Args extends unknown[]>(fn: (...args: Args) => void, ms: numbe
+  * not a fixed viewport height, so the iframe (resized to match in `resizePreviewFrame`) grows to
+  * fit instead of scrolling internally.
+  */
+-function updatePreview(): void {
++function updatePreview(theme: { css: string; js: string }): void {
+   if (!activeEditor) return;
+   // Canvas's own theme already frames the RCE content area — the picker's border would double up.
+   previewFrame.style.borderColor =
+     selectedTheme === "canvas" || selectedTheme === "canvasHighContrast" ? "transparent" : "";
+-  const themeCss = [buildCurrentTheme().css, cssEditorView.state.doc.toString()]
++  const themeCss = [theme.css, cssEditorView.state.doc.toString()]
+     .filter(Boolean)
+     .join("\n");
+-  const themeJs = [buildCurrentTheme().js, jsEditorView.state.doc.toString()]
++  const themeJs = [theme.js, jsEditorView.state.doc.toString()]
+     .filter(Boolean)
+     .join("\n");
+   // Elevation is a rebrand-only affordance — Canvas's own themes don't use drop-shadow surfaces.
+(20/27) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,s,e,p,P,?]? y
+@@ -862,7 +891,12 @@ function updatePreview(): void {
+     selectedTheme === "rebrand"
+       ? "instui-view -background-primary --elevation-resting"
+       : "instui-view -background-primary";
+-  previewFrame.srcdoc = `<!doctype html><html><head><style>${themeCss}
++  // The preview is a srcdoc document, so it's a hard scope boundary: it declares its own theme,
++  // scheme, and color outright rather than inheriting anything from the editor chrome around it.
++  // That's what lets the preview sit in light Canvas while the chrome sits in dark rebrand.
++  const previewScheme =
++    selectedTheme === "rebrand" && includeDarkModeCheckbox.checked ? "dark" : "light";
++  previewFrame.srcdoc = `<!doctype html><html data-pantoken-boundary data-pantoken-instance="${EDITOR_INSTANCE}-preview" data-pantoken-theme="${selectedTheme}" data-pantoken-scheme="${previewScheme}" data-pantoken-color="${selectedColor}" style="color-scheme:${previewScheme}"><head><style>${themeCss}
+ ${CUSTOM_THEME_COLORS_CSS}</style><style>#wrapper{padding:32px;}#content{padding:36px 48px 48px;min-height:20rem;margin:0 auto;border-radius:12px;}@media not all and (min-width: 768px) {
+   #wrapper{padding:24px;}#content{padding-left:12px;padding-right:12px;min-height:16rem;border-radius:8px;}</style></head><body>
+     <div id="wrapper" class="instui-view"><div id="content" class="${contentClass}" style="max-width: ${CANVAS_CONTENT_MAX_WIDTH};">
+(21/27) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? n
+@@ -871,7 +905,7 @@ ${CUSTOM_THEME_COLORS_CSS}</style><style>#wrapper{padding:32px;}#content{padding
+     <script>${themeJs}</script>
+   </body></html>`;
+ }
+-const debouncedUpdatePreview = debounce(updatePreview, 300);
++const debouncedUpdatePreview = debounce(() => void refreshAll(), 300);
+ 
+ // Keep the same-origin preview frame at its content height; the docs embedding page separately
+ // receives its own postMessage height updates from `canvas-rce-iframe-height.js`.
+(22/27) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+@@ -930,8 +964,8 @@ previewFrame.addEventListener("load", () => {
+ 
+ /** Regenerates the downloadable theme.css/theme.js blobs, appending the author's custom CSS/JS
+  * tab content onto the generated preset for the chosen provider/theme/mode. */
+-function updateDownloads(): void {
+-  const { css: presetCss, js: presetJs } = buildCurrentTheme();
++function updateDownloads(theme: { css: string; js: string }): void {
++  const { css: presetCss, js: presetJs } = theme;
+   const generatedCss = [presetCss, cssEditorView.state.doc.toString()].filter(Boolean).join("\n");
+   const generatedJs = [presetJs, jsEditorView.state.doc.toString()].filter(Boolean).join("\n");
+   if (cssObjectUrl) URL.revokeObjectURL(cssObjectUrl);
+(23/27) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+@@ -942,9 +976,16 @@ function updateDownloads(): void {
+   downloadJs.href = jsObjectUrl;
+ }
+ 
+-function refreshAll(): void {
+-  updatePreview();
+-  updateDownloads();
++async function refreshAll(): Promise<void> {
++  const generation = ++refreshGeneration;
++  try {
++    const theme = await buildCurrentTheme();
++    if (generation !== refreshGeneration) return;
++    updatePreview(theme);
++    updateDownloads(theme);
++  } catch (error) {
++    console.error("Unable to build the selected theme", error);
++  }
+ }
+ 
+ // CSS/JS editors start blank — anything typed here is appended to the generated preset (in both
+(24/27) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+@@ -963,7 +1004,7 @@ const jsEditorView = createEditor(
+ );
+ 
+ providerSelect.addEventListener("change", () => {
+-  refreshAll();
++  void refreshAll();
+   persistPreferences();
+ });
+ 
+(25/27) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+@@ -1015,7 +1056,7 @@ void registerPantokenPlugin.then(() =>
+       setup(editor: Editor): void {
+         editor.on("input change Undo Redo SetContent", () => {
+           syncThemeColorFromEditor();
+-          if (syncIconAssetsFromEditor()) updateDownloads();
++          if (syncIconAssetsFromEditor()) void refreshAll();
+           debouncedUpdatePreview();
+         });
+       },
+(26/27) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+@@ -1028,6 +1069,6 @@ void registerPantokenPlugin.then(() =>
+         ? "dark"
+         : "light";
+       applyEditorTheme(activeEditor);
+-      refreshAll();
++      void refreshAll();
+     }),
+ );
+(27/27) Stage this hunk [y,n,q,a,d,K,J,g,/,e,p,P,?]? y
