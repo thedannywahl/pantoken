@@ -139,6 +139,50 @@ describe("createSavePlugin", () => {
     );
   });
 
+  test("routes every preset menu action and enables stored-preset actions", () => {
+    const target = editor();
+    createSavePlugin({
+      capture: () => ({ html: "content" }),
+      restore: vi.fn(),
+      reset: vi.fn(),
+      isValid: (state): state is { html: string } => typeof state === "object" && state !== null,
+      storage: storage(),
+    })(target as never);
+
+    const menu = target.ui.registry.addMenuButton.mock.calls[0]?.[1] as {
+      fetch: (success: (items: { enabled?: boolean; onAction: () => void }[]) => void) => void;
+    };
+    const initial = vi.fn();
+    menu.fetch(initial);
+    const initialItems = initial.mock.calls[0]![0];
+    expect(initialItems).toHaveLength(7);
+    expect(initialItems.slice(0, 4).map((item: { enabled?: boolean }) => item.enabled)).toEqual([
+      false,
+      undefined,
+      false,
+      false,
+    ]);
+
+    for (const item of initialItems) item.onAction();
+    expect(target.execCommand.mock.calls.map(([name]) => name)).toEqual([
+      SAVE_COMMAND,
+      SAVE_AS_COMMAND,
+      OPEN_COMMAND,
+      DELETE_COMMAND,
+      NEW_COMMAND,
+      EXPORT_COMMAND,
+      IMPORT_COMMAND,
+    ]);
+
+    command(target, SAVE_AS_COMMAND)();
+    submitDialog(target, { name: "Draft" });
+    const populated = vi.fn();
+    menu.fetch(populated);
+    expect(
+      populated.mock.calls[0]![0].slice(0, 4).map((item: { enabled?: boolean }) => item.enabled),
+    ).toEqual([true, undefined, true, true]);
+  });
+
   test("saves, opens, and deletes aggregate state without clearing it", async () => {
     const target = editor();
     const targetStorage = storage();
