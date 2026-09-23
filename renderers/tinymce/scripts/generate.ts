@@ -29,6 +29,8 @@ const LESS_TOKEN_VARIABLES = [
   ["color-success", "--instui-color-background-success"],
   ["color-warning", "--instui-color-background-warning"],
   ["color-active", "--instui-color-background-interactive-action-primary-active"],
+  ["color-active-text", "--instui-color-text-interactive-action-primary-active"],
+  ["color-active-icon", "--instui-color-icon-interactive-action-primary-active"],
   ["border-color", "--instui-color-stroke-base"],
   ["border-color-light", "--instui-color-stroke-base"],
   ["text-color", "--instui-color-text-base"],

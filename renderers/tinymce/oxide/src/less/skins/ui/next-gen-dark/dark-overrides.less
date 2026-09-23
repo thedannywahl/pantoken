@@ -1,0 +1,30 @@
+//
+// Toolbar-button and menu-item "active" states derive their background from `@color-tint`
+// (`--instui-color-background-brand`), which resolves to a light, near-white value in dark mode —
+// paired with the shared `@color-black`/`@color-white` text primitives (also both light in dark
+// mode), this produces light-on-light. Override with the actual active-surface token pair, which
+// is designed to stay high-contrast regardless of scheme.
+//
+
+.tox {
+  .tox-tbtn--enabled,
+  .tox-tbtn--enabled:hover,
+  .tox-tbtn--enabled:focus,
+  .tox-tbtn--active,
+  .tox-tbtn:active {
+    background: @color-active;
+    color: @color-active-text;
+
+    svg {
+      fill: @color-active-icon;
+    }
+  }
+
+  // Unlike `--enabled` (hover), which derives from `@menu-background-color` and stays correctly
+  // dark, `--active` (the currently-selected item, e.g. the current block format) derives from
+  // `@color-tint` and needs the same override as the toolbar button above.
+  .tox-collection--list .tox-collection__item--active:not(.tox-collection__item--state-disabled) {
+    background-color: @color-active;
+    color: @color-active-text;
+  }
+}

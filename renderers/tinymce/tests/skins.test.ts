@@ -31,6 +31,29 @@ test("keeps dark mode in Next Gen only", () => {
   }
 });
 
+test("corrects toolbar-button and menu-item active states for dark mode", () => {
+  // `.tox-tbtn--enabled/--active` and `.tox-collection__item--active` both derive from
+  // `@color-tint`, which resolves light in dark mode — without the override in
+  // `next-gen-dark/dark-overrides.less` they'd render light text on a light background.
+  const nextGenUi = readFileSync(resolve(generatedRoot, "next-gen/skin.css"), "utf8");
+  expect(nextGenUi).toContain(
+    ':root[data-pantoken-scheme="dark"] .tox .tox-tbtn--enabled,\n' +
+      ':root[data-pantoken-scheme="dark"] .tox .tox-tbtn--enabled:hover,\n' +
+      ':root[data-pantoken-scheme="dark"] .tox .tox-tbtn--enabled:focus,\n' +
+      ':root[data-pantoken-scheme="dark"] .tox .tox-tbtn--active,\n' +
+      ':root[data-pantoken-scheme="dark"] .tox .tox-tbtn:active {\n' +
+      "  background: #D5E2F6;\n" +
+      "  color: #1D354F;\n" +
+      "}",
+  );
+  expect(nextGenUi).toContain(
+    ':root[data-pantoken-scheme="dark"] .tox .tox-collection--list .tox-collection__item--active:not(.tox-collection__item--state-disabled) {\n' +
+      "  background-color: #D5E2F6;\n" +
+      "  color: #1D354F;\n" +
+      "}",
+  );
+});
+
 test("uses Oxide convention skin entrypoints with theme variable overrides", () => {
   const sourceRoot = resolve(import.meta.dirname, "../oxide/src/less/skins/ui");
   for (const [theme, color] of [
