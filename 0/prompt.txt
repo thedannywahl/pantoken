@@ -1,0 +1,895 @@
+[Terminal 272aca58-fc6b-4494-a131-36151291b51a notification: command completed with exit code 1. The terminal has been cleaned up.]
+Terminal output:
+ 64 │ }
+    ╰────
+
+  × typescript(TS2307): Cannot find module 'tinymce' or its corresponding type declarations.
+   ╭─[renderers/tinymce/src/plugins/components.ts:7:29]
+ 6 │  */
+ 7 │ import type { Editor } from "tinymce";
+   ·                             ─────────
+ 8 │ import type { CdnFile } from "@pantoken/cdn";
+   ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/cdn' or its corresponding type declarations.
+   ╭─[renderers/tinymce/src/plugins/components.ts:8:30]
+ 7 │ import type { Editor } from "tinymce";
+ 8 │ import type { CdnFile } from "@pantoken/cdn";
+   ·                              ───────────────
+ 9 │ import type { CssDocEntry } from "../cssdoc/model.js";
+   ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/cdn' or its corresponding type declarations.
+   ╭─[renderers/tinymce/src/lib/icon-picker-styles.ts:7:30]
+ 6 │  */
+ 7 │ import { buildFileUrl } from "@pantoken/cdn";
+   ·                              ───────────────
+ 8 │ import { buildIconTokenCss, ICON_BUNDLE_CDN_FILES, type TaggedIcon } from "../icons.js";
+   ╰────
+
+  × typescript(TS2307): Cannot find module 'tinymce' or its corresponding type declarations.
+   ╭─[renderers/tinymce/src/plugins/icons.ts:7:29]
+ 6 │  */
+ 7 │ import type { Editor } from "tinymce";
+   ·                             ─────────
+ 8 │ import type { CdnFile } from "@pantoken/cdn";
+   ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/cdn' or its corresponding type declarations.
+   ╭─[renderers/tinymce/src/plugins/icons.ts:8:30]
+ 7 │ import type { Editor } from "tinymce";
+ 8 │ import type { CdnFile } from "@pantoken/cdn";
+   ·                              ───────────────
+ 9 │ import {
+   ╰────
+
+  × typescript(TS7006): Parameter 'pattern' implicitly has an 'any' type.
+     ╭─[renderers/tinymce/src/plugins/icons.ts:106:13]
+ 105 │     highlightOn: ["pantoken-icon-name"],
+ 106 │     fetch: (pattern, maxResults) => {
+     ·             ───────
+ 107 │       const doc = editor.getContainer().ownerDocument;
+     ╰────
+
+  × typescript(TS7006): Parameter 'maxResults' implicitly has an 'any' type.
+     ╭─[renderers/tinymce/src/plugins/icons.ts:106:22]
+ 105 │     highlightOn: ["pantoken-icon-name"],
+ 106 │     fetch: (pattern, maxResults) => {
+     ·                      ──────────
+ 107 │       const doc = editor.getContainer().ownerDocument;
+     ╰────
+
+  × typescript(TS7006): Parameter 'api' implicitly has an 'any' type.
+     ╭─[renderers/tinymce/src/plugins/icons.ts:133:16]
+ 132 │     },
+ 133 │     onAction: (api, rng, value) => {
+     ·                ───
+ 134 │       const icon = byValue.get(value);
+     ╰────
+
+  × typescript(TS7006): Parameter 'rng' implicitly has an 'any' type.
+     ╭─[renderers/tinymce/src/plugins/icons.ts:133:21]
+ 132 │     },
+ 133 │     onAction: (api, rng, value) => {
+     ·                     ───
+ 134 │       const icon = byValue.get(value);
+     ╰────
+
+  × typescript(TS7006): Parameter 'value' implicitly has an 'any' type.
+     ╭─[renderers/tinymce/src/plugins/icons.ts:133:26]
+ 132 │     },
+ 133 │     onAction: (api, rng, value) => {
+     ·                          ─────
+ 134 │       const icon = byValue.get(value);
+     ╰────
+
+  × typescript(TS2307): Cannot find module 'tinymce' or its corresponding type declarations.
+   ╭─[renderers/tinymce/src/plugins/layouts.ts:8:29]
+ 7 │  */
+ 8 │ import type { Editor } from "tinymce";
+   ·                             ─────────
+ 9 │ import {
+   ╰────
+
+  × typescript(TS7006): Parameter 'placeholder' implicitly has an 'any' type.
+    ╭─[renderers/tinymce/src/plugins/layouts.ts:53:35]
+ 52 │   const placeholders = new Map(
+ 53 │     layout.imagePlaceholders.map((placeholder) => [placeholder.key, placeholder]),
+    ·                                   ───────────
+ 54 │   );
+    ╰────
+
+  × typescript(TS2339): Property 'altText' does not exist on type '{}'.
+    ╭─[renderers/tinymce/src/plugins/layouts.ts:68:61]
+ 67 │     image.setAttribute("src", attributes.src);
+ 68 │     image.setAttribute("alt", attributes.alt ?? placeholder.altText ?? "");
+    ·                                                             ───────
+ 69 │     image.setAttribute("width", String(attributes.width ?? placeholder.width));
+    ╰────
+
+  × typescript(TS2339): Property 'width' does not exist on type '{}'.
+    ╭─[renderers/tinymce/src/plugins/layouts.ts:69:72]
+ 68 │     image.setAttribute("alt", attributes.alt ?? placeholder.altText ?? "");
+ 69 │     image.setAttribute("width", String(attributes.width ?? placeholder.width));
+    ·                                                                        ─────
+ 70 │     image.setAttribute("height", String(attributes.height ?? placeholder.height));
+    ╰────
+
+  × typescript(TS2339): Property 'height' does not exist on type '{}'.
+    ╭─[renderers/tinymce/src/plugins/layouts.ts:70:74]
+ 69 │     image.setAttribute("width", String(attributes.width ?? placeholder.width));
+ 70 │     image.setAttribute("height", String(attributes.height ?? placeholder.height));
+    ·                                                                          ──────
+ 71 │     image.removeAttribute("data-pantoken-image-placeholder");
+    ╰────
+
+  × typescript(TS7006): Parameter 'layout' implicitly has an 'any' type.
+    ╭─[renderers/tinymce/src/plugins/layouts.ts:87:40]
+ 86 │   const { layouts = pageLayoutTemplates, onInsert, resolveImage, locale = "en" } = options;
+ 87 │   const resolvedLayouts = layouts.map((layout) => renderPageLayout(layout, locale));
+    ·                                        ──────
+ 88 │   return function pantokenLayoutsPlugin(editor: Editor) {
+    ╰────
+
+  × typescript(TS7006): Parameter 'l' implicitly has an 'any' type.
+     ╭─[renderers/tinymce/src/plugins/layouts.ts:99:43]
+  98 │               label: TINYMCE_STRINGS.layoutsSelectLabel,
+  99 │               items: resolvedLayouts.map((l) => ({ value: l.name, text: l.title })),
+     ·                                           ─
+ 100 │             },
+     ╰────
+
+  × typescript(TS7006): Parameter 'api' implicitly has an 'any' type.
+     ╭─[renderers/tinymce/src/plugins/layouts.ts:109:20]
+ 108 │         ],
+ 109 │         onSubmit: (api): void => {
+     ·                    ───
+ 110 │           const { layout } = api.getData() as { layout: string };
+     ╰────
+
+  × typescript(TS7006): Parameter 'l' implicitly has an 'any' type.
+     ╭─[renderers/tinymce/src/plugins/layouts.ts:111:48]
+ 110 │           const { layout } = api.getData() as { layout: string };
+ 111 │           const chosen = resolvedLayouts.find((l) => l.name === layout);
+     ·                                                ─
+ 112 │           api.close();
+     ╰────
+
+  × typescript(TS7006): Parameter 'api' implicitly has an 'any' type.
+     ╭─[renderers/tinymce/src/plugins/layouts.ts:117:20]
+ 116 │         },
+ 117 │         onAction: (api, details): void => {
+     ·                    ───
+ 118 │           if (details.name !== "replace") return;
+     ╰────
+
+  × typescript(TS7006): Parameter 'details' implicitly has an 'any' type.
+     ╭─[renderers/tinymce/src/plugins/layouts.ts:117:25]
+ 116 │         },
+ 117 │         onAction: (api, details): void => {
+     ·                         ───────
+ 118 │           if (details.name !== "replace") return;
+     ╰────
+
+  × typescript(TS7006): Parameter 'l' implicitly has an 'any' type.
+     ╭─[renderers/tinymce/src/plugins/layouts.ts:120:48]
+ 119 │           const { layout } = api.getData() as { layout: string };
+ 120 │           const chosen = resolvedLayouts.find((l) => l.name === layout);
+     ·                                                ─
+ 121 │           api.close();
+     ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/plugin-logos' or its corresponding type declarations.
+   ╭─[renderers/tinymce/src/logos.ts:7:75]
+ 6 │  */
+ 7 │ export { type LogoMeta, type Product, getLogoMeta, logos, products } from "@pantoken/plugin-logos";
+   ·                                                                           ────────────────────────
+   ╰────
+
+  × typescript(TS2307): Cannot find module 'tinymce' or its corresponding type declarations.
+   ╭─[renderers/tinymce/src/plugins/logos.ts:8:29]
+ 7 │  */
+ 8 │ import type { Editor } from "tinymce";
+   ·                             ─────────
+ 9 │ import { buildFileUrl } from "@pantoken/cdn";
+   ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/cdn' or its corresponding type declarations.
+    ╭─[renderers/tinymce/src/plugins/logos.ts:9:30]
+  8 │ import type { Editor } from "tinymce";
+  9 │ import { buildFileUrl } from "@pantoken/cdn";
+    ·                              ───────────────
+ 10 │ import type { CdnFile } from "@pantoken/cdn";
+    ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/cdn' or its corresponding type declarations.
+    ╭─[renderers/tinymce/src/plugins/logos.ts:10:30]
+  9 │ import { buildFileUrl } from "@pantoken/cdn";
+ 10 │ import type { CdnFile } from "@pantoken/cdn";
+    ·                              ───────────────
+ 11 │ import { getLogoMeta } from "../logos.js";
+    ╰────
+
+  × typescript(TS2307): Cannot find module 'tinymce' or its corresponding type declarations.
+   ╭─[renderers/tinymce/src/plugins/pantoken.ts:6:33]
+ 5 │  */
+ 6 │ import type { Editor, Ui } from "tinymce";
+   ·                                 ─────────
+ 7 │ import {
+   ╰────
+
+  × typescript(TS7006): Parameter 'success' implicitly has an 'any' type.
+    ╭─[renderers/tinymce/src/plugins/pantoken.ts:54:15]
+ 53 │       tooltip: "Pantoken",
+ 54 │       fetch: (success): void => {
+    ·               ───────
+ 55 │         const items: Ui.Menu.MenuItemSpec[] = [
+    ╰────
+
+  × typescript(TS2307): Cannot find module 'tinymce' or its corresponding type declarations.
+   ╭─[renderers/tinymce/src/plugins/fullscreen-footer.ts:5:29]
+ 4 │  */
+ 5 │ import type { Editor } from "tinymce";
+   ·                             ─────────
+ 6 │ 
+   ╰────
+
+  × typescript(TS7006): Parameter 'event' implicitly has an 'any' type.
+    ╭─[renderers/tinymce/src/plugins/fullscreen-footer.ts:44:42]
+ 43 │     editor.on("PostRender", attachFooter);
+ 44 │     editor.on("FullscreenStateChanged", (event) => {
+    ·                                          ─────
+ 45 │       button?.setAttribute("aria-pressed", String(Boolean((event as { state?: boolean }).state)));
+    ╰────
+
+  × typescript(TS2307): Cannot find module 'tinymce' or its corresponding type declarations.
+   ╭─[renderers/tinymce/src/plugins/searchreplace-footer.ts:5:29]
+ 4 │  */
+ 5 │ import type { Editor } from "tinymce";
+   ·                             ─────────
+ 6 │ 
+   ╰────
+
+  × typescript(TS2307): Cannot find module 'tinymce' or its corresponding type declarations.
+   ╭─[renderers/tinymce/src/plugins/visualblocks-footer.ts:5:29]
+ 4 │  */
+ 5 │ import type { Editor } from "tinymce";
+   ·                             ─────────
+ 6 │ 
+   ╰────
+
+  × typescript(TS7006): Parameter 'event' implicitly has an 'any' type.
+     ╭─[renderers/tinymce/src/plugins/visualblocks-footer.ts:104:32]
+ 103 │     editor.on("init", injectOutlineStyle);
+ 104 │     editor.on("VisualBlocks", (event) => {
+     ·                                ─────
+ 105 │       setButtonState(Boolean((event as { state?: boolean }).state));
+     ╰────
+
+  × typescript(TS2307): Cannot find module 'tinymce' or its corresponding type declarations.
+   ╭─[renderers/tinymce/src/plugins/sup-sub.ts:5:33]
+ 4 │  */
+ 5 │ import type { Editor, Ui } from "tinymce";
+   ·                                 ─────────
+ 6 │ 
+   ╰────
+
+  × typescript(TS7006): Parameter 'success' implicitly has an 'any' type.
+    ╭─[renderers/tinymce/src/plugins/sup-sub.ts:22:15]
+ 21 │       tooltip: "Superscript / subscript",
+ 22 │       fetch: (success): void => {
+    ·               ───────
+ 23 │         const items: Ui.Menu.NestedMenuItemContents[] = [
+    ╰────
+
+  × typescript(TS2307): Cannot find module '@codemirror/lint' or its corresponding type declarations.
+   ╭─[renderers/tinymce/src/codemirror/lint.ts:8:36]
+ 7 │  */
+ 8 │ import { linter, Diagnostic } from "@codemirror/lint";
+   ·                                    ──────────────────
+ 9 │ import type { EditorView } from "@codemirror/view";
+   ╰────
+
+  × typescript(TS2307): Cannot find module '@codemirror/view' or its corresponding type declarations.
+    ╭─[renderers/tinymce/src/codemirror/lint.ts:9:33]
+  8 │ import { linter, Diagnostic } from "@codemirror/lint";
+  9 │ import type { EditorView } from "@codemirror/view";
+    ·                                 ──────────────────
+ 10 │ import type { CssDocEntry } from "../cssdoc/model.js";
+    ╰────
+
+  × typescript(TS2307): Cannot find module '@codemirror/autocomplete' or its corresponding type declarations.
+   ╭─[renderers/tinymce/src/codemirror/autocomplete.ts:8:44]
+ 7 │  */
+ 8 │ import { autocompletion, Completion } from "@codemirror/autocomplete";
+   ·                                            ──────────────────────────
+ 9 │ import type { CompletionContext } from "@codemirror/autocomplete";
+   ╰────
+
+  × typescript(TS2307): Cannot find module '@codemirror/autocomplete' or its corresponding type declarations.
+    ╭─[renderers/tinymce/src/codemirror/autocomplete.ts:9:40]
+  8 │ import { autocompletion, Completion } from "@codemirror/autocomplete";
+  9 │ import type { CompletionContext } from "@codemirror/autocomplete";
+    ·                                        ──────────────────────────
+ 10 │ import type { CssDocEntry } from "../cssdoc/model.js";
+    ╰────
+
+  × typescript(TS2307): Cannot find module '@codemirror/state' or its corresponding type declarations.
+   ╭─[renderers/tinymce/tests/autocomplete.test.ts:5:29]
+ 4 │ import { expect, test } from "vite-plus/test";
+ 5 │ import { EditorState } from "@codemirror/state";
+   ·                             ───────────────────
+ 6 │ import { EditorView } from "@codemirror/view";
+   ╰────
+
+  × typescript(TS2307): Cannot find module '@codemirror/view' or its corresponding type declarations.
+   ╭─[renderers/tinymce/tests/autocomplete.test.ts:6:28]
+ 5 │ import { EditorState } from "@codemirror/state";
+ 6 │ import { EditorView } from "@codemirror/view";
+   ·                            ──────────────────
+ 7 │ import { completionStatus, currentCompletions, startCompletion } from "@codemirror/autocomplete";
+   ╰────
+
+  × typescript(TS2307): Cannot find module '@codemirror/autocomplete' or its corresponding type declarations.
+   ╭─[renderers/tinymce/tests/autocomplete.test.ts:7:71]
+ 6 │ import { EditorView } from "@codemirror/view";
+ 7 │ import { completionStatus, currentCompletions, startCompletion } from "@codemirror/autocomplete";
+   ·                                                                       ──────────────────────────
+ 8 │ import type { CssDocEntry } from "../src/cssdoc/model.js";
+   ╰────
+
+  × typescript(TS7006): Parameter 'c' implicitly has an 'any' type.
+    ╭─[renderers/tinymce/tests/autocomplete.test.ts:35:54]
+ 34 │ 
+ 35 │   const labels = currentCompletions(view.state).map((c) => c.label);
+    ·                                                      ─
+ 36 │   expect(labels).toContain("button");
+    ╰────
+
+  × typescript(TS7006): Parameter 'c' implicitly has an 'any' type.
+    ╭─[renderers/tinymce/tests/autocomplete.test.ts:47:54]
+ 46 │ 
+ 47 │   const labels = currentCompletions(view.state).map((c) => c.label);
+    ·                                                      ─
+ 48 │   expect(labels.length).toBeGreaterThan(0);
+    ╰────
+
+  × typescript(TS7006): Parameter 'm' implicitly has an 'any' type.
+     ╭─[renderers/tinymce/tests/autocomplete.test.ts:121:37]
+ 120 │   expect(component!.modifiers.length).toBeGreaterThan(0);
+ 121 │   expect(component!.modifiers.some((m) => m.name.includes("color"))).toBe(true);
+     ·                                     ─
+ 122 │ });
+     ╰────
+
+  × typescript(TS2307): Cannot find module 'tinymce' or its corresponding type declarations.
+   ╭─[renderers/tinymce/tests/components-picker.test.ts:5:29]
+ 4 │ import { expect, test, vi } from "vite-plus/test";
+ 5 │ import type { Editor } from "tinymce";
+   ·                             ─────────
+ 6 │ import { createComponentsPlugin } from "../src/plugins/components.js";
+   ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/cdn' or its corresponding type declarations.
+   ╭─[renderers/tinymce/tests/icon-picker-styles.test.ts:8:42]
+ 7 │ vi.mock("@pantoken/cdn", async (importOriginal) => ({
+ 8 │   ...(await importOriginal<typeof import("@pantoken/cdn")>()),
+   ·                                          ───────────────
+ 9 │   buildFileUrl: (file: { package: string }) => `data:text/css,/*${file.package}*/`,
+   ╰────
+
+  × typescript(TS2307): Cannot find module 'tinymce' or its corresponding type declarations.
+   ╭─[renderers/tinymce/tests/icons-picker.test.ts:5:29]
+ 4 │ import { expect, test, vi } from "vite-plus/test";
+ 5 │ import type { Editor } from "tinymce";
+   ·                             ─────────
+ 6 │ import type { TaggedIcon } from "../src/icons.js";
+   ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/cdn' or its corresponding type declarations.
+    ╭─[renderers/tinymce/tests/icons-picker.test.ts:11:42]
+ 10 │ vi.mock("@pantoken/cdn", async (importOriginal) => ({
+ 11 │   ...(await importOriginal<typeof import("@pantoken/cdn")>()),
+    ·                                          ───────────────
+ 12 │   buildFileUrl: (file: { package: string; path?: string }) => `data:text/css,/*${file.package}*/`,
+    ╰────
+
+  × typescript(TS2307): Cannot find module '@codemirror/state' or its corresponding type declarations.
+   ╭─[renderers/tinymce/tests/lint.test.ts:5:29]
+ 4 │ import { expect, test } from "vite-plus/test";
+ 5 │ import { EditorState } from "@codemirror/state";
+   ·                             ───────────────────
+ 6 │ import { EditorView } from "@codemirror/view";
+   ╰────
+
+  × typescript(TS2307): Cannot find module '@codemirror/view' or its corresponding type declarations.
+   ╭─[renderers/tinymce/tests/lint.test.ts:6:28]
+ 5 │ import { EditorState } from "@codemirror/state";
+ 6 │ import { EditorView } from "@codemirror/view";
+   ·                            ──────────────────
+ 7 │ import { diagnosticCount, forceLinting, forEachDiagnostic } from "@codemirror/lint";
+   ╰────
+
+  × typescript(TS2307): Cannot find module '@codemirror/lint' or its corresponding type declarations.
+   ╭─[renderers/tinymce/tests/lint.test.ts:7:66]
+ 6 │ import { EditorView } from "@codemirror/view";
+ 7 │ import { diagnosticCount, forceLinting, forEachDiagnostic } from "@codemirror/lint";
+   ·                                                                  ──────────────────
+ 8 │ import { validateClassToken } from "../src/cssdoc/model.js";
+   ╰────
+
+  × typescript(TS7006): Parameter 'd' implicitly has an 'any' type.
+    ╭─[renderers/tinymce/tests/lint.test.ts:24:34]
+ 23 │   const messages: string[] = [];
+ 24 │   forEachDiagnostic(view.state, (d) => messages.push(d.message));
+    ·                                  ─
+ 25 │   expect(messages.some((m) => m.includes("Unknown component"))).toBe(true);
+    ╰────
+
+  × typescript(TS2307): Cannot find module 'tinymce' or its corresponding type declarations.
+   ╭─[renderers/tinymce/tests/logos-picker.test.ts:5:29]
+ 4 │ import { expect, test, vi } from "vite-plus/test";
+ 5 │ import type { Editor } from "tinymce";
+   ·                             ─────────
+ 6 │ import type { LogoMeta, Product } from "../src/logos.js";
+   ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/cdn' or its corresponding type declarations.
+    ╭─[renderers/tinymce/tests/logos-picker.test.ts:10:42]
+  9 │ vi.mock("@pantoken/cdn", async (importOriginal) => ({
+ 10 │   ...(await importOriginal<typeof import("@pantoken/cdn")>()),
+    ·                                          ───────────────
+ 11 │   buildFileUrl: (file: { package: string; path?: string }) =>
+    ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/cdn' or its corresponding type declarations.
+    ╭─[renderers/tinymce/tests/pantoken.test.ts:13:42]
+ 12 │ vi.mock("@pantoken/cdn", async (importOriginal) => ({
+ 13 │   ...(await importOriginal<typeof import("@pantoken/cdn")>()),
+    ·                                          ───────────────
+ 14 │   buildFileUrl: (file: { package: string; path?: string }) => `data:text/css,/*${file.package}*/`,
+    ╰────
+
+  × typescript(TS7031): Binding element 'title' implicitly has an 'any' type.
+    ╭─[renderers/tinymce/tests/templates.test.ts:21:52]
+ 20 │ test("defaults to the bundled page layouts", () => {
+ 21 │   expect(pageTemplates).toEqual(pageLayouts.map(({ title, html }) => ({ title, content: html })));
+    ·                                                    ─────
+ 22 │ 
+    ╰────
+
+  × typescript(TS7031): Binding element 'html' implicitly has an 'any' type.
+    ╭─[renderers/tinymce/tests/templates.test.ts:21:59]
+ 20 │ test("defaults to the bundled page layouts", () => {
+ 21 │   expect(pageTemplates).toEqual(pageLayouts.map(({ title, html }) => ({ title, content: html })));
+    ·                                                           ────
+ 22 │ 
+    ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/components' or its corresponding type declarations.
+   ╭─[renderers/vitepress/scripts/generate.ts:3:26]
+ 2 │ import { join, resolve } from "node:path";
+ 3 │ import { proseCss } from "@pantoken/components";
+   ·                          ──────────────────────
+ 4 │ import { toVitePressCss } from "../src/index.ts";
+   ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/tokens' or its corresponding type declarations.
+   ╭─[renderers/vitepress/tests/index.test.ts:2:24]
+ 1 │ import { expect, test } from "vite-plus/test";
+ 2 │ import { tokens } from "@pantoken/tokens";
+   ·                        ──────────────────
+ 3 │ import { unknownReferences } from "@pantoken/utils";
+   ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/utils' or its corresponding type declarations.
+   ╭─[renderers/vitepress/tests/index.test.ts:3:35]
+ 2 │ import { tokens } from "@pantoken/tokens";
+ 3 │ import { unknownReferences } from "@pantoken/utils";
+   ·                                   ─────────────────
+ 4 │ import { VITEPRESS_TO_INSTUI, toVitePressCss } from "../src/index.ts";
+   ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/tokens' or its corresponding type declarations.
+    ╭─[tools/upstream-diff/lib.ts:21:35]
+ 20 │ import { createHash } from "node:crypto";
+ 21 │ import type { Theme, Token } from "@pantoken/tokens";
+    ·                                   ──────────────────
+ 22 │ import type { Provenance } from "@pantoken/tokens/meta";
+    ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/tokens/meta' or its corresponding type declarations.
+    ╭─[tools/upstream-diff/lib.ts:22:33]
+ 21 │ import type { Theme, Token } from "@pantoken/tokens";
+ 22 │ import type { Provenance } from "@pantoken/tokens/meta";
+    ·                                 ───────────────────────
+ 23 │ 
+    ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/tokens/meta' or its corresponding type declarations.
+    ╭─[tools/upstream-diff/index.ts:28:28]
+ 27 │ import { join, resolve } from "node:path";
+ 28 │ import { provenance } from "@pantoken/tokens/meta";
+    ·                            ───────────────────────
+ 29 │ import { themes } from "@pantoken/tokens";
+    ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/tokens' or its corresponding type declarations.
+    ╭─[tools/upstream-diff/index.ts:29:24]
+ 28 │ import { provenance } from "@pantoken/tokens/meta";
+ 29 │ import { themes } from "@pantoken/tokens";
+    ·                        ──────────────────
+ 30 │ import { dueForRemoval, ledgerCovers } from "@pantoken/plugin-deprecations";
+    ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/plugin-deprecations' or its corresponding type declarations.
+    ╭─[tools/upstream-diff/index.ts:30:45]
+ 29 │ import { themes } from "@pantoken/tokens";
+ 30 │ import { dueForRemoval, ledgerCovers } from "@pantoken/plugin-deprecations";
+    ·                                             ───────────────────────────────
+ 31 │ import type { DeprecationLedger } from "@pantoken/model";
+    ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/model' or its corresponding type declarations.
+    ╭─[tools/upstream-diff/index.ts:31:40]
+ 30 │ import { dueForRemoval, ledgerCovers } from "@pantoken/plugin-deprecations";
+ 31 │ import type { DeprecationLedger } from "@pantoken/model";
+    ·                                        ─────────────────
+ 32 │ import {
+    ╰────
+
+  × typescript(TS7006): Parameter 'e' implicitly has an 'any' type.
+     ╭─[tools/upstream-diff/index.ts:131:10]
+ 130 │       .map(
+ 131 │         (e) =>
+     ·          ─
+ 132 │           `- \`${e.token}\` — removeIn \`${e.removeIn}\` reached; retire the entry and cut a consumer minor.`,
+     ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/tokens' or its corresponding type declarations.
+   ╭─[tools/upstream-diff/index.test.ts:3:35]
+ 2 │ import { buildManifest, type Manifest } from "./lib.ts";
+ 3 │ import type { Theme, Token } from "@pantoken/tokens";
+   ·                                   ──────────────────
+ 4 │ import type { Provenance } from "@pantoken/tokens/meta";
+   ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/tokens/meta' or its corresponding type declarations.
+   ╭─[tools/upstream-diff/index.test.ts:4:33]
+ 3 │ import type { Theme, Token } from "@pantoken/tokens";
+ 4 │ import type { Provenance } from "@pantoken/tokens/meta";
+   ·                                 ───────────────────────
+ 5 │ 
+   ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/tokens' or its corresponding type declarations.
+    ╭─[tools/upstream-diff/index.test.ts:45:16]
+ 44 │ 
+ 45 │ vi.mock(import("@pantoken/tokens"), () => ({
+    ·                ──────────────────
+ 46 │   get themes() {
+    ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/tokens/meta' or its corresponding type declarations.
+    ╭─[tools/upstream-diff/index.test.ts:50:16]
+ 49 │ }));
+ 50 │ vi.mock(import("@pantoken/tokens/meta"), () => ({
+    ·                ───────────────────────
+ 51 │   get provenance() {
+    ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/tokens/meta' or its corresponding type declarations.
+    ╭─[tools/upstream-diff/lib.test.ts:12:33]
+ 11 │ } from "./lib.ts";
+ 12 │ import type { Provenance } from "@pantoken/tokens/meta";
+    ·                                 ───────────────────────
+ 13 │ import type { Theme, Token } from "@pantoken/tokens";
+    ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/tokens' or its corresponding type declarations.
+    ╭─[tools/upstream-diff/lib.test.ts:13:35]
+ 12 │ import type { Provenance } from "@pantoken/tokens/meta";
+ 13 │ import type { Theme, Token } from "@pantoken/tokens";
+    ·                                   ──────────────────
+ 14 │ 
+    ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/tokens' or its corresponding type declarations.
+    ╭─[tools/validate-generated/index.ts:16:24]
+ 15 │ import { join, resolve } from "node:path";
+ 16 │ import { tokens } from "@pantoken/tokens";
+    ·                        ──────────────────
+ 17 │ import { danglingReferences, unknownReferences } from "@pantoken/utils";
+    ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/utils' or its corresponding type declarations.
+    ╭─[tools/validate-generated/index.ts:17:55]
+ 16 │ import { tokens } from "@pantoken/tokens";
+ 17 │ import { danglingReferences, unknownReferences } from "@pantoken/utils";
+    ·                                                       ─────────────────
+ 18 │ import { matchWildcardFiles } from "./match-wildcard.ts";
+    ╰────
+
+  × typescript(TS7006): Parameter 'ref' implicitly has an 'any' type.
+     ╭─[tools/validate-generated/index.ts:247:60]
+ 246 │   for (const [stage, css] of stages) {
+ 247 │     const unknown = unknownReferences(css, tokens).filter((ref) => !isLocalRef(ref));
+     ·                                                            ───
+ 248 │     if (unknown.length) {
+     ╰────
+
+  × typescript(TS2307): Cannot find module '@pantoken/utils' or its corresponding type declarations.
+    ╭─[tools/validate-generated/index.test.ts:79:16]
+ 78 │ vi.mock("@pantoken/tokens", () => ({ tokens: {} }));
+ 79 │ vi.mock(import("@pantoken/utils"), () => ({
+    ·                ─────────────────
+ 80 │   danglingReferences: () => state.dangling,
+    ╰────
+
+  ⚠ typescript(no-redundant-type-constituents): 'SharedTranslationMemory' is an 'error' type that acts as 'any' and overrides all other types in this union type.
+    ╭─[docs/scripts/translation-memory.ts:87:10]
+ 86 │   private constructor(
+ 87 │     mem: SharedTranslationMemory | undefined,
+    ·          ───────────────────────
+ 88 │     poPath?: string,
+    ╰────
+
+  ⚠ typescript(no-redundant-type-constituents): 'Token' is an 'error' type that acts as 'any' and overrides all other types in this union type.
+     ╭─[docs/scripts/build-css-api.ts:123:36]
+ 122 │  */
+ 123 │ function hasConcretesSyntax(token: Token | undefined): boolean {
+     ·                                    ─────
+ 124 │   return !!(token?.syntax && token.syntax !== "*");
+     ╰────
+
+  ⚠ typescript(no-redundant-type-constituents): 'Token' is an 'error' type that acts as 'any' and overrides all other types in this union type.
+     ╭─[docs/scripts/build-css-api.ts:131:10]
+ 130 │ function getNextChainToken(
+ 131 │   token: Token | undefined,
+     ·          ─────
+ 132 │   lookup: Map<string, Token>,
+     ╰────
+
+  ⚠ typescript(no-redundant-type-constituents): 'Token' is an 'error' type that acts as 'any' and overrides all other types in this union type.
+     ╭─[docs/scripts/build-css-api.ts:134:4]
+ 133 │   seen: Set<string>,
+ 134 │ ): Token | undefined {
+     ·    ─────
+ 135 │   if (!token?.refersTo || seen.has(token.refersTo)) return undefined;
+     ╰────
+
+  ⚠ typescript(no-redundant-type-constituents): 'Token' is an 'error' type that acts as 'any' and overrides all other types in this union type.
+     ╭─[docs/scripts/build-css-api.ts:143:37]
+ 142 │  */
+ 143 │ function inferFromTokenValue(token: Token | undefined): string | undefined {
+     ·                                     ─────
+ 144 │   return token?.value ? inferSyntax(token.value) : undefined;
+     ╰────
+
+  ⚠ typescript(no-redundant-type-constituents): 'Token' is an 'error' type that acts as 'any' and overrides all other types in this union type.
+     ╭─[docs/scripts/build-css-api.ts:152:10]
+ 151 │ function walkTokenChain(
+ 152 │   token: Token | undefined,
+     ·          ─────
+ 153 │   lookup: Map<string, Token>,
+     ╰────
+
+  ⚠ typescript(no-redundant-type-constituents): 'FlattenPropertyOptions' is an 'error' type that acts as 'any' and overrides all other types in this union type.
+    ╭─[renderers/pendo/src/build.ts:74:23]
+ 73 │    */
+ 74 │   flatten?: boolean | FlattenPropertyOptions;
+    ·                       ──────────────────────
+ 75 │   /**
+    ╰────
+
+  ⚠ typescript(no-redundant-type-constituents): 'MangleCustomPropsOptions' is an 'error' type that acts as 'any' and overrides all other types in this union type.
+    ╭─[renderers/pendo/src/build.ts:80:22]
+ 79 │    */
+ 80 │   mangle?: boolean | MangleCustomPropsOptions;
+    ·                      ────────────────────────
+ 81 │ }
+    ╰────
+
+  ⚠ typescript(no-redundant-type-constituents): 'PantokenPlugin' is an 'error' type that acts as 'any' and overrides all other types in this union type.
+    ╭─[packages/plugin-kit/src/sandbox.ts:42:10]
+ 41 │ export function isSandboxed(
+ 42 │   input: PantokenPlugin | SandboxedPluginEntry,
+    ·          ──────────────
+ 43 │ ): input is SandboxedPluginEntry {
+    ╰────
+
+  ⚠ typescript(no-redundant-type-constituents): 'FlattenPropertyOptions' is an 'error' type that acts as 'any' and overrides all other types in this union type.
+    ╭─[plugins/postcss/props-minify/src/index.ts:72:23]
+ 71 │    */
+ 72 │   flatten?: boolean | FlattenPropertyOptions;
+    ·                       ──────────────────────
+ 73 │   /**
+    ╰────
+
+  ⚠ typescript(no-redundant-type-constituents): 'MangleCustomPropsOptions' is an 'error' type that acts as 'any' and overrides all other types in this union type.
+    ╭─[plugins/postcss/props-minify/src/index.ts:84:22]
+ 83 │    */
+ 84 │   mangle?: boolean | MangleCustomPropsOptions;
+    ·                      ────────────────────────
+ 85 │ }
+    ╰────
+
+  ⚠ typescript(no-redundant-type-constituents): 'CdnProvider' is an 'error' type that acts as 'any' and overrides all other types in this union type.
+    ╭─[renderers/tinymce/src/content-css.ts:19:23]
+ 18 │   assets: readonly CdnFile[],
+ 19 │   provider?: string | CdnProvider,
+    ·                       ───────────
+ 20 │ ): string[] {
+    ╰────
+
+  ⚠ typescript(restrict-template-expressions): Invalid type used in template literal expression.
+    ╭─[renderers/tinymce/scripts/generate.ts:53:60]
+ 52 │     const value = resolved.get(tokenName);
+ 53 │     if (!value) throw new Error(`Missing ${tokenName} in ${theme} ${mode} token IR`);
+    ·                                                            ──┬───
+    ·                                                              ╰── Type: string | number | symbol
+ 54 │     return `@${lessName}: ${value}; // ${tokenName}`;
+    ╰────
+
+  ⚠ typescript(no-base-to-string): 'value' will use Object's default stringification format ('[object Object]') when stringified.
+    ╭─[renderers/tinymce/scripts/generate.ts:54:29]
+ 53 │     if (!value) throw new Error(`Missing ${tokenName} in ${theme} ${mode} token IR`);
+ 54 │     return `@${lessName}: ${value}; // ${tokenName}`;
+    ·                             ─────
+ 55 │   });
+    ╰────
+  help: Consider picking a property (e.g. `user.name`), using a formatter (or `JSON.stringify`), or implementing a custom `toString()`/`toLocaleString()` on the type.
+
+  ⚠ typescript(restrict-template-expressions): Invalid type used in template literal expression.
+    ╭─[renderers/tinymce/scripts/generate.ts:54:29]
+ 53 │     if (!value) throw new Error(`Missing ${tokenName} in ${theme} ${mode} token IR`);
+ 54 │     return `@${lessName}: ${value}; // ${tokenName}`;
+    ·                             ──┬───
+    ·                               ╰── Type: {}
+ 55 │   });
+    ╰────
+
+  ⚠ typescript(no-redundant-type-constituents): 'SourceTogglePluginApi' is an 'error' type that acts as 'any' and overrides all other types in this union type.
+    ╭─[renderers/tinymce/src/lib/insertion-target.ts:15:49]
+ 14 │ 
+ 15 │ function getSourceTogglePlugin(editor: Editor): SourceTogglePluginApi | undefined {
+    ·                                                 ─────────────────────
+ 16 │   return (editor.plugins as Record<string, unknown> | undefined)?.[SOURCE_TOGGLE_PLUGIN_NAME] as
+    ╰────
+
+  ⚠ typescript(no-redundant-type-constituents): 'SourceTogglePluginApi' is an 'error' type that acts as 'any' and overrides all other types in this union type.
+    ╭─[renderers/tinymce/src/lib/insertion-target.ts:17:7]
+ 16 │   return (editor.plugins as Record<string, unknown> | undefined)?.[SOURCE_TOGGLE_PLUGIN_NAME] as
+ 17 │     | SourceTogglePluginApi
+    ·       ─────────────────────
+ 18 │     | undefined;
+    ╰────
+
+  ⚠ typescript(no-redundant-type-constituents): 'CssDocEntry' is an 'error' type that acts as 'any' and overrides all other types in this union type.
+    ╭─[renderers/tinymce/src/cssdoc/model.ts:25:42]
+ 24 │  */
+ 25 │ export function findEntry(name: string): CssDocEntry | undefined {
+    ·                                          ───────────
+ 26 │   return INDEX_BY_NAME.get(name);
+    ╰────
+
+  × typescript(tsconfig-error): Invalid tsconfig
+  help: Cannot find type definition file for 'node'.
+
+  × typescript(tsconfig-error): Invalid tsconfig
+  help: Cannot find type definition file for 'node'.
+
+  × typescript(tsconfig-error): Invalid tsconfig
+  help: Cannot find type definition file for 'node'.
+
+  × typescript(tsconfig-error): Invalid tsconfig
+  help: Cannot find type definition file for 'node'.
+
+  × typescript(tsconfig-error): Invalid tsconfig
+  help: Cannot find type definition file for 'node'.
+
+  × typescript(tsconfig-error): Invalid tsconfig
+  help: Cannot find type definition file for 'node'.
+
+  × typescript(tsconfig-error): Invalid tsconfig
+  help: Cannot find type definition file for 'node'.
+
+  × typescript(tsconfig-error): Invalid tsconfig
+  help: Cannot find type definition file for 'node'.
+
+  × typescript(tsconfig-error): Invalid tsconfig
+  help: Cannot find type definition file for 'node'.
+
+  × typescript(tsconfig-error): Invalid tsconfig
+  help: Cannot find type definition file for 'node'.
+
+  × typescript(tsconfig-error): Invalid tsconfig
+  help: Cannot find type definition file for 'node'.
+
+  × typescript(tsconfig-error): Invalid tsconfig
+  help: Cannot find type definition file for 'node'.
+
+  × typescript(tsconfig-error): Invalid tsconfig
+  help: Cannot find type definition file for 'node'.
+
+  × typescript(tsconfig-error): Invalid tsconfig
+  help: Cannot find type definition file for 'node'.
+
+  × typescript(tsconfig-error): Invalid tsconfig
+  help: Cannot find type definition file for 'node'.
+
+  × typescript(tsconfig-error): Invalid tsconfig
+  help: Cannot find type definition file for 'node'.
+
+  × typescript(tsconfig-error): Invalid tsconfig
+  help: Cannot find type definition file for 'node'.
+
+Found 410 errors and 18 warnings in 1750 files (1.7s, 10 threads)
+pantoken-pr178-verify on detached at d7b06f9 ≢ via  26.10.0 x 
+➜  cd /Users/dwahl/Scripts/pantoken && git worktree remove --force /tmp/pantoken-pr178-verify
+pantoken on tinymce-utility ↑1  ?3 ~8 via  26.10.0 
+➜  GH_PAGER=cat gh api repos/thedannywahl/pantoken/commits/d7b06f93f/check-runs --jq '.check_runs[] | [.name, .status, (.conclusion // "pending"), .details_url] | @tsv'
+docs-and-internal-only  completed       skipped https://github.com/thedannywahl/pantoken/actions/runs/35902649081/job/107322582180
+entire-checkpoint-linkage       completed       success https://github.com/thedannywahl/pantoken/actions/runs/35902648954/job/107322581637
+repository      in_progress     pending https://github.com/thedannywahl/pantoken/actions/runs/35902648954/job/107322581582
+i18n-changes    completed       success https://github.com/thedannywahl/pantoken/actions/runs/35902648954/job/107322581569
+upstream-changes        completed       success https://github.com/thedannywahl/pantoken/actions/runs/35902648954/job/107322581530
+build   in_progress     pending https://github.com/thedannywahl/pantoken/actions/runs/35902648954/job/107322581457
+docs-changes    completed       success https://github.com/thedannywahl/pantoken/actions/runs/35902648954/job/107322581442
+commitlint      in_progress     pending https://github.com/thedannywahl/pantoken/actions/runs/35902648954/job/107322581003
+require-changeset       in_progress     pending https://github.com/thedannywahl/pantoken/actions/runs/35902649081/job/107322580605
+github-advanced-security        in_progress     pending https://github.com/thedannywahl/pantoken/actions/runs/35902660208/job/107322475775
+Analyze (javascript-typescript) in_progress     pending https://github.com/thedannywahl/pantoken/actions/runs/35902648862/job/107322431725
+guard   completed       success https://github.com/thedannywahl/pantoken/actions/runs/35902649090/job/107322431612
+detect-release-impact   completed       success https://github.com/thedannywahl/pantoken/actions/runs/35902649081/job/107322431402
+pantoken on tinymce-utility ↑1  ?3 ~8 via  26.10.0 
+➜  GH_PAGER=cat gh api repos/thedannywahl/pantoken/actions/jobs/107322581457 --jq '{status, conclusion, started_at, steps: [.steps[] | {name, status, conclusion}]}'
+{
+  "conclusion": null,
+  "started_at": "2026-09-23T18:28:24Z",
+  "status": "in_progress",
+  "steps": [
+    {
+      "conclusion": "success",
+      "name": "Set up job",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "name": "Checkout code",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "name": "Set up Vite+",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "name": "Restore/save vp task cache",
+      "status": "completed"
+    },
+    {
+      "conclusion": null,
+      "name": "Build all packages",
+      "status": "in_progress"
+    },
+    {
+      "conclusion": null,
+      "name": "Post Restore/save vp task cache",
+      "status": "pending"
+    },
+    {
+      "conclusion": null,
+      "name": "Post Set up Vite+",
+      "status": "pending"
+    },
+    {
+      "conclusion": null,
+      "name": "Post Checkout code",
+      "status": "pending"
+    }
+  ]
+}
+pantoken on tinymce-utility ↑1  ?3 ~8 via  26.10.0 
+➜  GH_FORCE_TTY=0 TERM=dumb NO_COLOR=1 GH_PAGER=cat gh run watch 35902648954 --exit-status --compact > /tmp/pr178-ci-watch.log 2>&1
