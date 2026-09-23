@@ -1,0 +1,7 @@
+after the size button group I want a light/dark toggle that toggles the color scheme of the preview.
+1. we need to set the tray's "include dark mode" to disabled/off if the theme is set to 'canvas' or 'canvas-high-contrast' because only rebrand supports dark mode.
+2. this toggle should be disabled/off unless "include dark mode" is active.
+
+---
+
+Continue: "Continue to iterate?"
