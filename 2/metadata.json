@@ -1,0 +1,39 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M37G4CSS8DH2Q0YXEXGTH4TG",
+  "session_id": "ace850c9-ca6d-4d38-bc66-8113a6060139",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-23T16:03:45.168744Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 3,
+  "save_step_count": 1,
+  "files_touched": [
+    "vite.bench.config.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "329c1a91c09b",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 3
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-23T16:03:45.161445Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 114,
+    "human_modified": 9,
+    "human_removed": 0,
+    "total_committed": 114,
+    "total_lines_changed": 214,
+    "agent_percentage": 0,
+    "metric_version": 2
+  }
+}
