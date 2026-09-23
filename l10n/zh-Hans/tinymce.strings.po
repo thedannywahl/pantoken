@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-23 17:53+0000\n"
+"PO-Revision-Date: 2026-09-23 23:25+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -128,6 +128,48 @@ msgstr "图标"
 msgctxt "tinymce.strings:iconsToolbarTooltip"
 msgid "Insert an icon"
 msgstr "插入图标"
+
+#: renderers/tinymce/src/i18n.json#iconContextColorTooltip
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:iconContextColorTooltip"
+msgid "Icon color"
+msgstr "背景颜色"
+
+#: renderers/tinymce/src/i18n.json#iconContextSizeTooltip
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:iconContextSizeTooltip"
+msgid "Icon size"
+msgstr "图标"
+
+#: renderers/tinymce/src/i18n.json#iconContextSizeSmall
+#, no-c-format
+msgctxt "tinymce.strings:iconContextSizeSmall"
+msgid "Small"
+msgstr "小"
+
+#: renderers/tinymce/src/i18n.json#iconContextSizeMedium
+#, no-c-format
+msgctxt "tinymce.strings:iconContextSizeMedium"
+msgid "Medium"
+msgstr "中"
+
+#: renderers/tinymce/src/i18n.json#iconContextSizeLarge
+#, no-c-format
+msgctxt "tinymce.strings:iconContextSizeLarge"
+msgid "Large"
+msgstr "大"
+
+#: renderers/tinymce/src/i18n.json#iconContextSizeExtraLarge
+#, no-c-format
+msgctxt "tinymce.strings:iconContextSizeExtraLarge"
+msgid "Extra large"
+msgstr "超大"
+
+#: renderers/tinymce/src/i18n.json#iconContextDeleteTooltip
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:iconContextDeleteTooltip"
+msgid "Delete icon"
+msgstr "删除"
 
 #: renderers/tinymce/src/i18n.json#layoutsConfirmReplace
 #, no-c-format
@@ -615,6 +657,24 @@ msgctxt "tinymce.strings:deleteAction"
 msgid "Delete..."
 msgstr "删除…"
 
+#: plugins/tinymce/save/src/i18n.json#newAction
+#, no-c-format
+msgctxt "tinymce.strings:newAction"
+msgid "New"
+msgstr "新建"
+
+#: plugins/tinymce/save/src/i18n.json#exportAction
+#, no-c-format
+msgctxt "tinymce.strings:exportAction"
+msgid "Export..."
+msgstr "导出..."
+
+#: plugins/tinymce/save/src/i18n.json#importAction
+#, no-c-format
+msgctxt "tinymce.strings:importAction"
+msgid "Import..."
+msgstr "导入..."
+
 #: plugins/tinymce/save/src/i18n.json#saveAsDialogTitle
 #, no-c-format
 msgctxt "tinymce.strings:saveAsDialogTitle"
@@ -638,6 +698,30 @@ msgstr "打开预设"
 msgctxt "tinymce.strings:deleteDialogTitle"
 msgid "Delete preset"
 msgstr "删除预设"
+
+#: plugins/tinymce/save/src/i18n.json#newDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:newDialogTitle"
+msgid "New document"
+msgstr "新建文档"
+
+#: plugins/tinymce/save/src/i18n.json#newDialogMessage
+#, no-c-format
+msgctxt "tinymce.strings:newDialogMessage"
+msgid "This clears the current editor content and config. Save the current work first?"
+msgstr "这会清除当前编辑器的内容和配置。先保存当前工作吗？"
+
+#: plugins/tinymce/save/src/i18n.json#newDialogSaveButton
+#, no-c-format
+msgctxt "tinymce.strings:newDialogSaveButton"
+msgid "Save & clear"
+msgstr "保存并清除"
+
+#: plugins/tinymce/save/src/i18n.json#newDialogDiscardButton
+#, no-c-format
+msgctxt "tinymce.strings:newDialogDiscardButton"
+msgid "Discard"
+msgstr "放弃"
 
 #: plugins/tinymce/save/src/i18n.json#presetLabel
 #, no-c-format
@@ -663,6 +747,12 @@ msgctxt "tinymce.strings:confirmDelete"
 msgid "Delete “{{name}}”? This cannot be undone."
 msgstr "删除 “{{name}}”？此操作无法撤销。"
 
+#: plugins/tinymce/save/src/i18n.json#confirmImportOverwrite
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:confirmImportOverwrite"
+msgid "Import “{{name}}” and overwrite the current editor content and config?"
+msgstr "打开 “{{name}}” 并放弃当前未保存的更改？"
+
 #: plugins/tinymce/save/src/i18n.json#emptyPresets
 #, no-c-format
 msgctxt "tinymce.strings:emptyPresets"
@@ -681,6 +771,12 @@ msgctxt "tinymce.strings:invalidPreset"
 msgid "This preset is invalid and could not be opened."
 msgstr "此预设无效，无法打开。"
 
+#: plugins/tinymce/save/src/i18n.json#importInvalidFile
+#, no-c-format
+msgctxt "tinymce.strings:importInvalidFile"
+msgid "The selected file is not a valid pantoken TinyMCE export."
+msgstr "所选文件不是有效的 pantoken TinyMCE 导出。"
+
 #: plugins/tinymce/save/src/i18n.json#storageReadError
 #, no-c-format
 msgctxt "tinymce.strings:storageReadError"
@@ -698,6 +794,12 @@ msgstr "无法在此浏览器中保存预设。"
 msgctxt "tinymce.strings:storageDeleteError"
 msgid "The preset could not be deleted from this browser."
 msgstr "无法从此浏览器中删除预设。"
+
+#: plugins/tinymce/save/src/i18n.json#exportDefaultName
+#, no-c-format
+msgctxt "tinymce.strings:exportDefaultName"
+msgid "untitled"
+msgstr "未命名"
 
 #: plugins/tinymce/save/src/i18n.json#presetSaveButton
 #, no-c-format

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-23 17:46+0000\n"
+"PO-Revision-Date: 2026-09-23 23:17+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -128,6 +128,48 @@ msgstr "Εικονίδια"
 msgctxt "tinymce.strings:iconsToolbarTooltip"
 msgid "Insert an icon"
 msgstr "Εισαγωγή εικονιδίου"
+
+#: renderers/tinymce/src/i18n.json#iconContextColorTooltip
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:iconContextColorTooltip"
+msgid "Icon color"
+msgstr "Χρώμα φόντου"
+
+#: renderers/tinymce/src/i18n.json#iconContextSizeTooltip
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:iconContextSizeTooltip"
+msgid "Icon size"
+msgstr "Εικονίδια"
+
+#: renderers/tinymce/src/i18n.json#iconContextSizeSmall
+#, no-c-format
+msgctxt "tinymce.strings:iconContextSizeSmall"
+msgid "Small"
+msgstr "Μικρό"
+
+#: renderers/tinymce/src/i18n.json#iconContextSizeMedium
+#, no-c-format
+msgctxt "tinymce.strings:iconContextSizeMedium"
+msgid "Medium"
+msgstr "Μεσαίο"
+
+#: renderers/tinymce/src/i18n.json#iconContextSizeLarge
+#, no-c-format
+msgctxt "tinymce.strings:iconContextSizeLarge"
+msgid "Large"
+msgstr "Μεγάλο"
+
+#: renderers/tinymce/src/i18n.json#iconContextSizeExtraLarge
+#, no-c-format
+msgctxt "tinymce.strings:iconContextSizeExtraLarge"
+msgid "Extra large"
+msgstr "Εξτρα μεγάλο"
+
+#: renderers/tinymce/src/i18n.json#iconContextDeleteTooltip
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:iconContextDeleteTooltip"
+msgid "Delete icon"
+msgstr "Διαγραφή"
 
 #: renderers/tinymce/src/i18n.json#layoutsConfirmReplace
 #, no-c-format
@@ -615,6 +657,24 @@ msgctxt "tinymce.strings:deleteAction"
 msgid "Delete..."
 msgstr "Διαγραφή..."
 
+#: plugins/tinymce/save/src/i18n.json#newAction
+#, no-c-format
+msgctxt "tinymce.strings:newAction"
+msgid "New"
+msgstr "Νέο"
+
+#: plugins/tinymce/save/src/i18n.json#exportAction
+#, no-c-format
+msgctxt "tinymce.strings:exportAction"
+msgid "Export..."
+msgstr "Εξαγωγή..."
+
+#: plugins/tinymce/save/src/i18n.json#importAction
+#, no-c-format
+msgctxt "tinymce.strings:importAction"
+msgid "Import..."
+msgstr "Εισαγωγή..."
+
 #: plugins/tinymce/save/src/i18n.json#saveAsDialogTitle
 #, no-c-format
 msgctxt "tinymce.strings:saveAsDialogTitle"
@@ -638,6 +698,30 @@ msgstr "Άνοιγμα προεπιλογής"
 msgctxt "tinymce.strings:deleteDialogTitle"
 msgid "Delete preset"
 msgstr "Διαγραφή προεπιλογής"
+
+#: plugins/tinymce/save/src/i18n.json#newDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:newDialogTitle"
+msgid "New document"
+msgstr "Νέο έγγραφο"
+
+#: plugins/tinymce/save/src/i18n.json#newDialogMessage
+#, no-c-format
+msgctxt "tinymce.strings:newDialogMessage"
+msgid "This clears the current editor content and config. Save the current work first?"
+msgstr "Αυτό θα διαγράψει το τρέχον περιεχόμενο και τις ρυθμίσεις του επεξεργαστή. Να αποθηκευτεί πρώτα η τρέχουσα εργασία;"
+
+#: plugins/tinymce/save/src/i18n.json#newDialogSaveButton
+#, no-c-format
+msgctxt "tinymce.strings:newDialogSaveButton"
+msgid "Save & clear"
+msgstr "Αποθήκευση & εκκαθάριση"
+
+#: plugins/tinymce/save/src/i18n.json#newDialogDiscardButton
+#, no-c-format
+msgctxt "tinymce.strings:newDialogDiscardButton"
+msgid "Discard"
+msgstr "Απόρριψη"
 
 #: plugins/tinymce/save/src/i18n.json#presetLabel
 #, no-c-format
@@ -663,6 +747,12 @@ msgctxt "tinymce.strings:confirmDelete"
 msgid "Delete “{{name}}”? This cannot be undone."
 msgstr "Διαγραφή της “{{name}}”; Αυτό δεν μπορεί να αναιρεθεί."
 
+#: plugins/tinymce/save/src/i18n.json#confirmImportOverwrite
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:confirmImportOverwrite"
+msgid "Import “{{name}}” and overwrite the current editor content and config?"
+msgstr "Να ανοίξει η “{{name}}” και να απορριφθούν οι τρέχουσες μη αποθηκευμένες αλλαγές;"
+
 #: plugins/tinymce/save/src/i18n.json#emptyPresets
 #, no-c-format
 msgctxt "tinymce.strings:emptyPresets"
@@ -681,6 +771,12 @@ msgctxt "tinymce.strings:invalidPreset"
 msgid "This preset is invalid and could not be opened."
 msgstr "Αυτή η προεπιλογή είναι άκυρη και δεν μπόρεσε να ανοιχτεί."
 
+#: plugins/tinymce/save/src/i18n.json#importInvalidFile
+#, no-c-format
+msgctxt "tinymce.strings:importInvalidFile"
+msgid "The selected file is not a valid pantoken TinyMCE export."
+msgstr "Το επιλεγμένο αρχείο δεν είναι έγκυρη εξαγωγή pantoken TinyMCE."
+
 #: plugins/tinymce/save/src/i18n.json#storageReadError
 #, no-c-format
 msgctxt "tinymce.strings:storageReadError"
@@ -698,6 +794,12 @@ msgstr "Η προεπιλογή δεν μπόρεσε να αποθηκευτε�
 msgctxt "tinymce.strings:storageDeleteError"
 msgid "The preset could not be deleted from this browser."
 msgstr "Η προεπιλογή δεν μπόρεσε να διαγραφεί από αυτόν τον περιηγητή."
+
+#: plugins/tinymce/save/src/i18n.json#exportDefaultName
+#, no-c-format
+msgctxt "tinymce.strings:exportDefaultName"
+msgid "untitled"
+msgstr "χωρίς τίτλο"
 
 #: plugins/tinymce/save/src/i18n.json#presetSaveButton
 #, no-c-format

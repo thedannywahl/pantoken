@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-23 16:31+0000\n"
+"PO-Revision-Date: 2026-09-23 23:18+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -8932,7 +8932,7 @@ msgstr ""
 #: renderers/tinymce/src/functions/buildIconMarkup.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The decorative icon markup retained in editor content after a picker selection."
+msgid "The decorative icon markup retained in editor content after a picker selection. A zero-width\nspace keeps the span from being genuinely empty — TinyMCE's schema strips empty inline elements\non `setContent()` (e.g. toggling from source view back to WYSIWYG), which would otherwise\nsilently delete this CSS-painted glyph. `contenteditable=\"false\"` makes TinyMCE treat it as a\nselectable noneditable object (fake-selection painting, backspace-to-delete, and the context\ntoolbar registered in `lib/icon-context-toolbar.ts`) instead of plain inline text."
 msgstr ""
 
 #: renderers/tinymce/src/functions/createComponentsPlugin.md
@@ -9545,6 +9545,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Commands exposed for hosts that want explicit pantoken-aware toolbar actions."
+msgstr ""
+
+#: renderers/tinymce/src/variables/PANTOKEN_ICON.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pantoken's own logomark, reused for the toolbar menu button and any host UI that wants it."
 msgstr ""
 
 #: renderers/tinymce/src/variables/PANTOKEN_ICON_PACK_NAME.md
