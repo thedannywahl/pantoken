@@ -74,3 +74,13 @@ test("writes prose.css via applyMinify", () => {
 test("writes select.css via applyMinify", () => {
   expect(writtenFiles()).toContain("select.css");
 });
+
+test("does not rewrite the generated records sheet when its contents are unchanged", async () => {
+  vi.resetModules();
+  vi.clearAllMocks();
+  readFileSync.mockReturnValue("/* components */");
+
+  await import(MODULE_PATH);
+
+  expect(writtenFiles()).not.toContain("_records.css");
+});

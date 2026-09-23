@@ -227,3 +227,33 @@ test("observeScope reports an ancestor retheming and stops on demand", async () 
 
   expect(seen).toEqual(["canvas"]);
 });
+
+test("observeScope ignores unrelated mutations and recognizes class scopes", async () => {
+  document.body.innerHTML = `<div id="outer"><span id="x"></span></div>`;
+  const outer = document.querySelector("#outer") as HTMLElement;
+  const target = document.querySelector("#x") as HTMLElement;
+  const seen: (string | undefined)[] = [];
+  const stop = observeScope(target, (scope) => seen.push(scope.theme));
+
+  outer.setAttribute("title", "unrelated");
+  await Promise.resolve();
+  outer.classList.add("--pantoken-theme-canvas");
+  await Promise.resolve();
+  stop();
+
+  expect(seen).toEqual(["canvas"]);
+});
+
+test("observeScope returns a no-op stop when MutationObserver is unavailable", () => {
+  const host = fresh();
+  const view = host.ownerDocument.defaultView!;
+  const observer = view.MutationObserver;
+  Object.defineProperty(view, "MutationObserver", { configurable: true, value: undefined });
+
+  const stop = observeScope(host, () => {
+    throw new Error("listener should not run");
+  });
+  stop();
+
+  Object.defineProperty(view, "MutationObserver", { configurable: true, value: observer });
+});

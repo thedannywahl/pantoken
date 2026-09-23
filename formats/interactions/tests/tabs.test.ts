@@ -45,6 +45,42 @@ test("keyboard navigation selects and focuses the next enabled tab", () => {
   expect(tabs[1].getAttribute("aria-selected")).toBe("true");
 });
 
+test("keyboard controls skip disabled tabs and activate the focused tab", () => {
+  const { host } = setup();
+  const tabs = host.querySelectorAll<HTMLButtonElement>('[role="tab"]');
+  tabs[1].disabled = true;
+  const third = document.createElement("button");
+  third.setAttribute("role", "tab");
+  third.setAttribute("aria-controls", "missing");
+  host.querySelector('[role="tablist"]')?.append(third);
+
+  tabs[0].dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowLeft", bubbles: true }));
+  expect(document.activeElement).toBe(third);
+
+  third.dispatchEvent(new KeyboardEvent("keydown", { key: "Home", bubbles: true }));
+  expect(document.activeElement).toBe(tabs[0]);
+  tabs[0].dispatchEvent(new KeyboardEvent("keydown", { key: "End", bubbles: true }));
+  expect(document.activeElement).toBe(third);
+
+  const activate = new KeyboardEvent("keydown", { key: " ", bubbles: true, cancelable: true });
+  third.dispatchEvent(activate);
+  expect(activate.defaultPrevented).toBe(true);
+  expect(third.getAttribute("aria-selected")).toBe("true");
+  expect(tabs[0].getAttribute("aria-selected")).toBe("false");
+});
+
+test("ignores disabled tabs and events outside its tablist", () => {
+  const { host } = setup();
+  const tabs = host.querySelectorAll<HTMLButtonElement>('[role="tab"]');
+  tabs[1].disabled = true;
+
+  tabs[1].click();
+  host.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
+
+  expect(tabs[0].getAttribute("aria-selected")).toBe("true");
+  expect(tabs[1].getAttribute("aria-selected")).toBe("false");
+});
+
 test("cleanup removes tab listeners", () => {
   const { host, handle } = setup();
   const tabs = host.querySelectorAll<HTMLButtonElement>('[role="tab"]');
