@@ -1,0 +1,353 @@
+continue
+
+---
+
+you were hung in an interactive shell.
+
+---
+
+here's the failures:
+```
+✗ fallow dead-code gate failed
+
+    
+
+  
+
+  
+
+    
+    
+      
+      
+      ✓ fallow health: 82.9 (B)
+
+    
+
+  
+
+    
+      
+      
+      ✗ fallow regression gate: findings grew beyond fallow-baseline.json
+
+    
+
+  
+
+    
+      
+      
+      ── Unused Code ─────────────────────────────────────
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      ● Unused files (2)
+
+    
+
+  
+
+    
+      
+      
+        docs/scripts/canvas-rce-iframe-height.js
+
+    
+
+  
+
+    
+      
+      
+        packages/scaffold/templates/canvas-theme-editor/src/preferences.ts
+
+    
+
+  
+
+    
+      
+      
+        Files not reachable from any entry point — [https://docs.fallow.tools/explanations/dead-code#unused-files](https://docs.fallow.tools/explanations/dead-code#unused-files)
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      ● Unused exports (3)
+
+    
+
+  
+
+    
+      
+      
+        renderers/tinymce/src/lib/insertion-target.ts (2)
+
+    
+
+  
+
+    
+      
+      
+          :22 isSourceModeActive
+
+    
+
+  
+
+    
+      
+      
+          :51 insertHtmlIntoSourceViewOnly
+
+    
+
+  
+
+    
+      
+      
+        formats/scope/src/contract.ts
+
+    
+
+  
+
+    
+      
+      
+          :17 colorScopeSelector (re-export)
+
+    
+
+  
+
+    
+      
+      
+        Exported symbols with no known consumers — [https://docs.fallow.tools/explanations/dead-code#unused-exports](https://docs.fallow.tools/explanations/dead-code#unused-exports)
+
+    
+
+  
+
+    
+      
+      
+        To auto-fix: fallow fix --dry-run
+
+    
+
+  
+
+    
+      
+      
+        To suppress: // fallow-ignore-next-line unused-export
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      ── Dependencies ─────────────────────────────────────
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      ● Unused dependencies (1)
+
+    
+
+  
+
+    
+      
+      
+        @codemirror/view (plugins/tinymce/codemirror/package.json; imported in renderers/tinymce)
+
+    
+
+  
+
+    
+      
+      
+        Listed in dependencies but never imported — [https://docs.fallow.tools/explanations/dead-code#unused-dependencies](https://docs.fallow.tools/explanations/dead-code#unused-dependencies)
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      ✓ fallow duplication: within the .fallowrc threshold
+✗ tinymce.strings: 44 blocking drift finding(s) across 2 file(s):
+  [tinymce.strings] renderers/tinymce/src/i18n.json — 43 in 43 locale(s)
+    locales: ar, ca, cy, da, de, el, +37 more
+    - Untranslated: "sourceFormatErrorMessage" (English: Couldn't format the source code — check for unclosed tags or)
+Error: tinymce.strings: 43 untranslated/drifted unit(s) across 43 locale(s) (ar, ca, cy, da, de, el, en-AU, en-CA, …). Fix with `i18n extract tinymce.strings && i18n translate tinymce.strings`.
+    - Untranslated: "sourceFormatErrorMessage" (English: Couldn't format the source code — check for unclosed tags or)
+    - Untranslated: "sourceFormatErrorMessage" (English: Couldn't format the source code — check for unclosed tags or)
+  [tinymce.strings] l10n/tinymce.strings.pot — 1 in 1 locale(s)
+    locales: en
+    - Stale catalog template: l10n/tinymce.strings.pot is missing 1 and carries 0 stale unit(s). Re-extract it.
+
+Blocking translation drift. Run `i18n extract tinymce.strings && i18n translate tinymce.strings` locally, then commit the updated translation cache. Loosen or tighten what blocks in `i18n.config.json`.
+Error: tinymce.strings: 1 untranslated/drifted unit(s) across 1 locale(s) (en). Fix with `i18n extract tinymce.strings && i18n translate tinymce.strings`.
+
+---
+vp run: 2/172 cache hit (1%), 9.46s saved, 1 failed. @pantoken/vitepress-sidebar-toggle#build (and 9 more) not cached because they modified their inputs. (Run `vp run --last-details` for full details)
+Error: Process completed with exit code 1.
+```
+
+Do not run translations yourself, give me a one-liner to fix the drift and I'll run it.
+
+---
+
+that is not a valid one-liner because i18n isn't a binary
+
+---
+
+do we need to update i18n config? why does tinymce.strings keep needing to be extracted?
+
+---
+
+➜ node i18n.mjs --config i18n.config.json extract tinymce.strings && node i18n.mjs --config i18n.config.json translate tinymce.strings --provider claude
+
+
+node:internal/modules/cjs/loader:1595
+  throw err;
+  ^
+
+Error: Cannot find module '/Users/dwahl/Scripts/pantoken/i18n.mjs'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1591:15)
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1145:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1169:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1196:12)
+    at Module._load (node:internal/modules/cjs/loader:1368:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+    at node:internal/main/run_main_module:33:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v26.10.0
+
+---
+
+how do I run it from the repo root?
+
+---
+
+➜ node i18n.mjs --config i18n.config.json extract tinymce.strings && node i18n.mjs --config i18n.config.json translate tinymce.strings --provider claude
+
+
+node:internal/modules/cjs/loader:1595
+  throw err;
+  ^
+
+Error: Cannot find module '/Users/dwahl/Scripts/pantoken/i18n.mjs'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1591:15)
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1145:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1169:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1196:12)
+    at Module._load (node:internal/modules/cjs/loader:1368:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+    at node:internal/main/run_main_module:33:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v26.10.0
+pantoken on tinymce-utility ≡  ~1 via  26.10.0 x
+➜ pwd
+/Users/dwahl/Scripts/pantoken
+
+---
+
+CodSpeed / CodSpeed Performance Analysis
+
+      
+    failed
+    5 minutes ago in 0s
+
+    
+
+      
+          
+## Found the same benchmark multiple times, this is not supported yet
+
+        
+            
+## Unable to generate the performance report
+
+At least one benchmark was run multiple times in your benchmarking workflow. This could be because you used a matrix that runs your benchmarks multiple times.
+
+This behavior is not yet supported, so CodSpeed was unable to generate a performance report. Please check [the documentation](https://codspeed.io/docs/features/sharded-benchmarks?utm_source=github&utm_medium=check&utm_content=error) for additional context.
