@@ -36,8 +36,10 @@ pantoken is a design-token transformation and distribution system. It converts I
   may contain HTML, CSS, JavaScript, and host application state; they are schema-validated before
   restoration but are not sanitized. localStorage is not secret or synchronized storage, and other
   scripts on the same origin can read or alter it. Blocked storage and quota failures leave the
-  working document unchanged. Opening a preset containing custom JavaScript intentionally executes
-  that code in the host editor's existing preview context.
+  working document unchanged. Import/export actions read and write portable JSON files only through
+  a browser-initiated user selection flow; they do not contact the network. Opening a preset
+  containing custom JavaScript intentionally executes that code in the host editor's existing
+  preview context.
 - The public shadcn registry is an HTTPS distribution channel for package dependencies, CSS
   configuration, and usage metadata. Registry schema validation checks structure, not code quality
   or project suitability. Inspect an item with `shadcn view`, review the resulting diff, and pin

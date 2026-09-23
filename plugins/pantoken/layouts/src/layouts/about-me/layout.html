@@ -1,24 +1,18 @@
-<main id="about-me" class="instui-view --padding-large">
+<div id="about-me" class="instui-view --padding-large">
   <img
-    class="instui-img"
+    class="instui-img --border-radius-full"
     data-pantoken-image-placeholder="instructor-photo"
     width="240"
     height="240"
   />
-  <h1 class="instui-heading">{{aboutMe.heading}}</h1>
+  <h2 class="instui-heading">{{aboutMe.heading}}</h2>
   <p class="instui-text">{{aboutMe.intro}}</p>
   <h2 class="instui-heading">{{aboutMe.reachHeading}}</h2>
   <ul class="instui-list">
-    <li class="instui-list-item">
-      <strong>{{aboutMe.emailLabel}}</strong> {{aboutMe.emailPlaceholder}}
-    </li>
-    <li class="instui-list-item">
-      <strong>{{aboutMe.officeLabel}}</strong> {{aboutMe.officePlaceholder}}
-    </li>
-    <li class="instui-list-item">
-      <strong>{{aboutMe.responseLabel}}</strong> {{aboutMe.responsePlaceholder}}
-    </li>
+    <li><strong>{{aboutMe.emailLabel}}</strong> {{aboutMe.emailPlaceholder}}</li>
+    <li><strong>{{aboutMe.officeLabel}}</strong> {{aboutMe.officePlaceholder}}</li>
+    <li><strong>{{aboutMe.responseLabel}}</strong> {{aboutMe.responsePlaceholder}}</li>
   </ul>
   <h2 class="instui-heading">{{aboutMe.officeHoursHeading}}</h2>
   <p class="instui-text">{{aboutMe.officeHoursText}}</p>
-</main>
+</div>

@@ -6,10 +6,20 @@
   "saveAsAction": { "message": "Save as...", "translate": "always" },
   "openAction": { "message": "Open...", "translate": "always" },
   "deleteAction": { "message": "Delete...", "translate": "always" },
+  "newAction": { "message": "New", "translate": "always" },
+  "exportAction": { "message": "Export...", "translate": "always" },
+  "importAction": { "message": "Import...", "translate": "always" },
   "saveAsDialogTitle": { "message": "Save preset", "translate": "always" },
   "presetNameLabel": { "message": "Name", "translate": "always" },
   "openDialogTitle": { "message": "Open preset", "translate": "always" },
   "deleteDialogTitle": { "message": "Delete preset", "translate": "always" },
+  "newDialogTitle": { "message": "New document", "translate": "always" },
+  "newDialogMessage": {
+    "message": "This clears the current editor content and config. Save the current work first?",
+    "translate": "always"
+  },
+  "newDialogSaveButton": { "message": "Save & clear", "translate": "always" },
+  "newDialogDiscardButton": { "message": "Discard", "translate": "always" },
   "presetLabel": { "message": "Preset", "translate": "always" },
   "confirmOverwrite": {
     "message": "A preset named “{{name}}” already exists. Replace it?",
@@ -23,10 +33,18 @@
     "message": "Delete “{{name}}”? This cannot be undone.",
     "translate": "always"
   },
+  "confirmImportOverwrite": {
+    "message": "Import “{{name}}” and overwrite the current editor content and config?",
+    "translate": "always"
+  },
   "emptyPresets": { "message": "No saved presets are available.", "translate": "always" },
   "invalidName": { "message": "Enter a preset name.", "translate": "always" },
   "invalidPreset": {
     "message": "This preset is invalid and could not be opened.",
+    "translate": "always"
+  },
+  "importInvalidFile": {
+    "message": "The selected file is not a valid pantoken TinyMCE export.",
     "translate": "always"
   },
   "storageReadError": {
@@ -41,6 +59,7 @@
     "message": "The preset could not be deleted from this browser.",
     "translate": "always"
   },
+  "exportDefaultName": { "message": "untitled", "translate": "always" },
   "presetSaveButton": { "message": "Save", "translate": "always" },
   "presetOpenButton": { "message": "Open", "translate": "always" },
   "presetDeleteButton": { "message": "Delete", "translate": "always" },

@@ -1,8 +1,9 @@
 # @pantoken/tinymce-save
 
 Named TinyMCE presets stored in the current browser origin. The plugin adds one toolbar menu with
-**Save**, **Save as...**, **Open...**, and **Delete...** commands. It is separate from TinyMCE's
-Autosave plugin: Autosave recovers transient drafts, while this plugin manages explicit snapshots.
+**Save**, **Save as...**, **Open...**, **Delete...**, **New**, **Export...**, and **Import...**
+commands. It is separate from TinyMCE's Autosave plugin: Autosave recovers transient drafts, while
+this plugin manages explicit snapshots and portable import/export.
 
 ## Usage
 
@@ -19,6 +20,7 @@ tinymce.PluginManager.add(
   createSavePlugin<DocumentPreset>({
     capture: () => ({ html: tinymce.activeEditor?.getContent() ?? "" }),
     restore: ({ html }) => tinymce.activeEditor?.resetContent(html),
+    reset: () => tinymce.activeEditor?.resetContent(""),
     isValid: (value): value is DocumentPreset =>
       typeof value === "object" &&
       value !== null &&

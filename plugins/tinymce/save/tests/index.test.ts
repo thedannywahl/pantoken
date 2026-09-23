@@ -4,6 +4,9 @@
 import { describe, expect, test, vi } from "vite-plus/test";
 import {
   DELETE_COMMAND,
+  EXPORT_COMMAND,
+  IMPORT_COMMAND,
+  NEW_COMMAND,
   OPEN_COMMAND,
   SAVE_AS_COMMAND,
   SAVE_COMMAND,
@@ -116,6 +119,7 @@ describe("createSavePlugin", () => {
     createSavePlugin({
       capture: () => ({ html: "" }),
       restore: vi.fn(),
+      reset: vi.fn(),
       isValid: (state): state is { html: string } => typeof state === "object" && state !== null,
       storage: storage(),
     })(target as never);
@@ -125,6 +129,9 @@ describe("createSavePlugin", () => {
       SAVE_AS_COMMAND,
       OPEN_COMMAND,
       DELETE_COMMAND,
+      NEW_COMMAND,
+      EXPORT_COMMAND,
+      IMPORT_COMMAND,
     ]);
     expect(target.ui.registry.addMenuButton).toHaveBeenCalledWith(
       SAVE_TOOLBAR_NAME,
@@ -142,6 +149,7 @@ describe("createSavePlugin", () => {
     const api = createSavePlugin({
       capture: () => current,
       restore,
+      reset: vi.fn(),
       isValid: (state): state is { html: string } =>
         typeof state === "object" &&
         state !== null &&
@@ -177,6 +185,7 @@ describe("createSavePlugin", () => {
     createSavePlugin({
       capture: () => current,
       restore: vi.fn(),
+      reset: vi.fn(),
       isValid: (state): state is { html: string } => typeof state === "object" && state !== null,
       storage: targetStorage,
     })(target as never);
@@ -194,5 +203,114 @@ describe("createSavePlugin", () => {
     expect(JSON.parse(targetStorage.values.get(SAVE_STORAGE_KEY)!).presets[0].state).toEqual({
       html: "first",
     });
+  });
+
+  test("new clears the editor after discard or save", async () => {
+    const target = editor();
+    const targetStorage = storage();
+    let current = { html: "before" };
+    const reset = vi.fn(() => {
+      current = { html: "" };
+    });
+    createSavePlugin({
+      capture: () => current,
+      restore: vi.fn(),
+      reset,
+      isValid: (state): state is { html: string } =>
+        typeof state === "object" &&
+        state !== null &&
+        typeof (state as { html?: unknown }).html === "string",
+      storage: targetStorage,
+    })(target as never);
+
+    current = { html: "dirty" };
+    command(target, NEW_COMMAND)();
+    const config = target.windowManager.open.mock.calls.at(-1)?.[0] as {
+      onAction: (api: { close: () => void }, details: { name: string }) => void;
+      onSubmit: (api: { close: () => void }) => void;
+    };
+    config.onAction({ close: vi.fn() }, { name: "discard" });
+    expect(reset).toHaveBeenCalled();
+    expect(current).toEqual({ html: "" });
+
+    current = { html: "later" };
+    command(target, NEW_COMMAND)();
+    const saveDialog = target.windowManager.open.mock.calls.at(-1)?.[0] as {
+      onSubmit: (api: { close: () => void; getData: () => Record<string, string> }) => void;
+    };
+    saveDialog.onSubmit({ close: vi.fn(), getData: () => ({}) });
+    const secondDialog = target.windowManager.open.mock.calls.at(-1)?.[0] as {
+      onSubmit: (api: { close: () => void; getData: () => Record<string, string> }) => void;
+    };
+    secondDialog.onSubmit({ close: vi.fn(), getData: () => ({ name: "Saved" }) });
+    expect(target.windowManager.open).toHaveBeenCalled();
+    expect(current).toEqual({ html: "" });
+  });
+
+  test("exports a portable JSON envelope and imports a valid file", async () => {
+    const target = editor();
+    const targetStorage = storage();
+    const restore = vi.fn();
+    const reset = vi.fn();
+    const api = createSavePlugin({
+      capture: () => ({ html: "content" }),
+      restore,
+      reset,
+      isValid: (state): state is { html: string } =>
+        typeof state === "object" &&
+        state !== null &&
+        typeof (state as { html?: unknown }).html === "string",
+      storage: targetStorage,
+    })(target as never);
+
+    command(target, SAVE_AS_COMMAND)();
+    submitDialog(target, { name: "Exported" });
+    const url = "blob:example";
+    const click = vi.fn();
+    const createObjectURL = vi.spyOn(URL, "createObjectURL").mockReturnValue(url as never);
+    const revoke = vi.spyOn(URL, "revokeObjectURL").mockImplementation(() => undefined);
+    const anchor = {
+      click,
+      remove: vi.fn(),
+      setAttribute: vi.fn(),
+      style: {},
+    } as unknown as HTMLAnchorElement;
+    vi.spyOn(document, "createElement").mockImplementation((tagName: string) => {
+      if (tagName === "a") return anchor;
+      return document.createElementNS("http://www.w3.org/1999/xhtml", tagName) as HTMLElement;
+    });
+
+    command(target, EXPORT_COMMAND)();
+    expect(createObjectURL).toHaveBeenCalledTimes(1);
+    expect(click).toHaveBeenCalledTimes(1);
+    await vi.waitFor(() => expect(revoke).toHaveBeenCalledWith(url));
+
+    const payload = {
+      $schema: "https://pantoken.app/schemas/tinymce-save.export.schema.json",
+      version: 1,
+      exportedAt: new Date().toISOString(),
+      name: "Exported",
+      state: { html: "content" },
+    };
+    const file = new File([JSON.stringify(payload)], "preset.json", { type: "application/json" });
+    const showOpenFilePicker = vi
+      .fn()
+      .mockResolvedValue([{ getFile: vi.fn().mockResolvedValue(file) }]);
+    Object.defineProperty(window, "showOpenFilePicker", {
+      value: showOpenFilePicker,
+      configurable: true,
+    });
+    command(target, IMPORT_COMMAND)();
+    await vi.waitFor(() => expect(target.windowManager.confirm).toHaveBeenCalled());
+    const overwrite = target.windowManager.confirm.mock.calls.at(-1)?.[1] as (
+      value: boolean,
+    ) => void;
+    overwrite(true);
+    await vi.waitFor(() => expect(restore).toHaveBeenCalledWith({ html: "content" }));
+    expect(api.activePresetId).toBeUndefined();
+
+    createObjectURL.mockRestore();
+    revoke.mockRestore();
+    vi.restoreAllMocks();
   });
 });

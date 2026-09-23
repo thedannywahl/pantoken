@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pantoken.app/schemas/tinymce-save.export.schema.json",
+  "title": "pantoken TinyMCE save export",
+  "description": "Portable JSON export for @pantoken/tinymce-save snapshots.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "version", "exportedAt", "name", "state"],
+  "properties": {
+    "$schema": { "type": "string", "format": "uri-reference" },
+    "version": { "const": 1 },
+    "exportedAt": { "type": "string", "format": "date-time" },
+    "name": { "type": "string", "minLength": 1 },
+    "state": {}
+  }
+}

@@ -13,10 +13,18 @@ export const SAVE_AS_COMMAND = "pantokenSavePresetAs";
 export const OPEN_COMMAND = "pantokenOpenPreset";
 /** Deletes a named preset without clearing the current document. */
 export const DELETE_COMMAND = "pantokenDeletePreset";
+/** Clears the current editor state back to the caller's defaults. */
+export const NEW_COMMAND = "pantokenNewPreset";
+/** Exports the current editor state and config as a portable JSON file. */
+export const EXPORT_COMMAND = "pantokenExportPreset";
+/** Imports a portable JSON file and overwrites the current editor state and config. */
+export const IMPORT_COMMAND = "pantokenImportPreset";
 /** Default storage namespace, intentionally separate from TinyMCE Autosave. */
 export const SAVE_STORAGE_KEY = "pantoken-tinymce-save-presets";
 
 const STORAGE_VERSION = 1;
+const EXPORT_ENVELOPE_VERSION = 1;
+const EXPORT_SCHEMA_URL = "https://pantoken.app/schemas/tinymce-save.export.schema.json";
 
 /** A caller-owned state saved under a stable ID and user-visible name. */
 export interface SavePreset<State> {
@@ -25,6 +33,15 @@ export interface SavePreset<State> {
   readonly state: State;
   readonly createdAt: string;
   readonly updatedAt: string;
+}
+
+/** Portable JSON export payload used for Save/Import flows. */
+export interface SaveExportEnvelope<State> {
+  readonly $schema: string;
+  readonly version: typeof EXPORT_ENVELOPE_VERSION;
+  readonly exportedAt: string;
+  readonly name: string;
+  readonly state: State;
 }
 
 interface SavePresetEnvelope<State> {
@@ -131,6 +148,7 @@ export function createSaveRepository<State>(
 export interface SavePluginOptions<State> {
   readonly capture: () => State;
   readonly restore: (state: State) => void | Promise<void>;
+  readonly reset: () => void | Promise<void>;
   readonly isValid: (state: unknown) => state is State;
   readonly strings?: Partial<SaveStrings>;
   readonly storage?: SaveStorage;
@@ -146,6 +164,27 @@ export interface SavePluginApi<State> {
 
 function defaultEquals<State>(left: State, right: State): boolean {
   return JSON.stringify(left) === JSON.stringify(right);
+}
+
+function slugifyExportName(name: string): string {
+  const clean = name
+    .trim()
+    .toLocaleLowerCase()
+    .replace(/[^a-z0-9]+/gu, "-")
+    .replace(/^-+|-+$/gu, "");
+  return clean || "preset";
+}
+
+function downloadBlob(blob: Blob, filename: string): void {
+  if (typeof document === "undefined") return;
+  const objectUrl = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = objectUrl;
+  anchor.download = filename;
+  document.body.append(anchor);
+  anchor.click();
+  anchor.remove();
+  setTimeout(() => URL.revokeObjectURL(objectUrl), 0);
 }
 
 /** Builds the TinyMCE preset management plugin. */
@@ -172,7 +211,23 @@ export function createSavePlugin<State>(
       return result.value;
     };
 
-    const saveAs = (name: string): void => {
+    const persistCurrent = (onSaved?: () => void): void => {
+      const active = readPresets().find((preset) => preset.id === activePresetId);
+      if (!active) {
+        openSaveAsDialog(onSaved);
+        return;
+      }
+      const state = options.capture();
+      const result = repository.put(active.name, state);
+      if (!result.ok) {
+        notify(strings.storageWriteError);
+        return;
+      }
+      baseline = state;
+      onSaved?.();
+    };
+
+    const saveAs = (name: string, onSaved?: () => void): void => {
       const displayName = name.trim();
       if (!displayName) {
         editor.windowManager.alert(strings.invalidName);
@@ -191,6 +246,7 @@ export function createSavePlugin<State>(
         }
         activePresetId = result.value.id;
         baseline = state;
+        onSaved?.();
       };
       if (!existing) {
         persist();
@@ -204,7 +260,7 @@ export function createSavePlugin<State>(
       );
     };
 
-    const openSaveAsDialog = (): void => {
+    const openSaveAsDialog = (onSaved?: () => void): void => {
       editor.windowManager.open({
         title: strings.saveAsDialogTitle,
         body: {
@@ -223,24 +279,23 @@ export function createSavePlugin<State>(
             return;
           }
           api.close();
-          saveAs(name);
+          saveAs(name, onSaved);
         },
       });
     };
 
     const save = (): void => {
-      const active = readPresets().find((preset) => preset.id === activePresetId);
-      if (!active) {
-        openSaveAsDialog();
-        return;
+      persistCurrent();
+    };
+
+    const resetCurrent = async (): Promise<void> => {
+      try {
+        await Promise.resolve(options.reset());
+        activePresetId = undefined;
+        baseline = options.capture();
+      } catch {
+        notify(strings.invalidPreset);
       }
-      const state = options.capture();
-      const result = repository.put(active.name, state);
-      if (!result.ok) {
-        notify(strings.storageWriteError);
-        return;
-      }
-      baseline = state;
     };
 
     const restorePreset = (preset: SavePreset<State>): void => {
@@ -324,10 +379,141 @@ export function createSavePlugin<State>(
       });
     };
 
+    const performNew = (): void => {
+      if (!equals(options.capture(), baseline)) {
+        editor.windowManager.open({
+          title: strings.newDialogTitle,
+          body: {
+            type: "panel",
+            items: [{ type: "htmlpanel", html: strings.newDialogMessage }],
+          },
+          buttons: [
+            { type: "cancel", text: strings.presetCancelButton },
+            { type: "custom", name: "discard", text: strings.newDialogDiscardButton },
+            { type: "submit", text: strings.newDialogSaveButton, primary: true },
+          ],
+          onSubmit: (api): void => {
+            api.close();
+            persistCurrent(() => {
+              void resetCurrent();
+            });
+          },
+          onAction: (api, details): void => {
+            if (details.name !== "discard") return;
+            api.close();
+            void resetCurrent();
+          },
+        });
+        return;
+      }
+      void resetCurrent();
+    };
+
+    const performExport = (): void => {
+      const state = options.capture();
+      const active = readPresets().find((preset) => preset.id === activePresetId);
+      const envelope: SaveExportEnvelope<State> = {
+        $schema: EXPORT_SCHEMA_URL,
+        version: EXPORT_ENVELOPE_VERSION,
+        exportedAt: new Date().toISOString(),
+        name: active?.name || strings.exportDefaultName,
+        state,
+      };
+      const blob = new Blob([JSON.stringify(envelope, null, 2)], { type: "application/json" });
+      downloadBlob(blob, `${slugifyExportName(envelope.name)}.json`);
+    };
+
+    const readImportFile = async (): Promise<string> => {
+      if (
+        typeof window !== "undefined" &&
+        "showOpenFilePicker" in window &&
+        typeof window.showOpenFilePicker === "function"
+      ) {
+        const [handle] = await window.showOpenFilePicker({
+          multiple: false,
+          types: [{ description: "JSON files", accept: { "application/json": [".json"] } }],
+        });
+        const file: File = await handle.getFile();
+        return await file.text();
+      }
+
+      return await new Promise<string>((resolve, reject) => {
+        const input = document.createElement("input");
+        input.type = "file";
+        input.accept = ".json,application/json";
+        input.style.display = "none";
+        document.body.append(input);
+        input.addEventListener(
+          "change",
+          () => {
+            const file = input.files?.[0];
+            if (!file) {
+              reject(new Error("No file selected"));
+              return;
+            }
+            file
+              .text()
+              .then((text) => {
+                input.remove();
+                resolve(text);
+              })
+              .catch((error) => {
+                input.remove();
+                reject(error);
+              });
+          },
+          { once: true },
+        );
+        input.click();
+      });
+    };
+
+    const performImport = async (): Promise<void> => {
+      try {
+        const raw = await readImportFile();
+        const parsed = JSON.parse(raw) as Partial<SaveExportEnvelope<unknown>>;
+        if (
+          typeof parsed !== "object" ||
+          parsed === null ||
+          parsed.version !== EXPORT_ENVELOPE_VERSION ||
+          typeof parsed.exportedAt !== "string" ||
+          typeof parsed.name !== "string" ||
+          !Object.hasOwn(parsed, "state")
+        ) {
+          notify(strings.importInvalidFile);
+          return;
+        }
+        if (!options.isValid(parsed.state)) {
+          notify(strings.importInvalidFile);
+          return;
+        }
+        const state = parsed.state;
+        editor.windowManager.confirm(
+          formatSaveString(strings.confirmImportOverwrite, { name: parsed.name }),
+          (confirmed) => {
+            if (!confirmed) return;
+            void Promise.resolve(options.restore(state))
+              .then(() => {
+                activePresetId = undefined;
+                baseline = state;
+              })
+              .catch(() => notify(strings.invalidPreset));
+          },
+        );
+      } catch {
+        notify(strings.importInvalidFile);
+      }
+    };
+
     editor.addCommand(SAVE_COMMAND, save);
-    editor.addCommand(SAVE_AS_COMMAND, openSaveAsDialog);
+    editor.addCommand(SAVE_AS_COMMAND, () => openSaveAsDialog());
     editor.addCommand(OPEN_COMMAND, () => openSelectionDialog("open"));
     editor.addCommand(DELETE_COMMAND, () => openSelectionDialog("delete"));
+    editor.addCommand(NEW_COMMAND, performNew);
+    editor.addCommand(EXPORT_COMMAND, performExport);
+    editor.addCommand(IMPORT_COMMAND, () => {
+      void performImport();
+    });
     editor.ui.registry.addMenuButton(SAVE_TOOLBAR_NAME, {
       icon: "save",
       tooltip: strings.saveToolbarTooltip,
@@ -356,6 +542,21 @@ export function createSavePlugin<State>(
             text: strings.deleteAction,
             enabled: hasPresets,
             onAction: () => editor.execCommand(DELETE_COMMAND),
+          },
+          {
+            type: "menuitem",
+            text: strings.newAction,
+            onAction: () => editor.execCommand(NEW_COMMAND),
+          },
+          {
+            type: "menuitem",
+            text: strings.exportAction,
+            onAction: () => editor.execCommand(EXPORT_COMMAND),
+          },
+          {
+            type: "menuitem",
+            text: strings.importAction,
+            onAction: () => editor.execCommand(IMPORT_COMMAND),
           },
         ];
         success(items);
