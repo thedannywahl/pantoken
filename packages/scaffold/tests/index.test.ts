@@ -63,6 +63,13 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain('"/node_modules/@pantoken/plugin-logos/dist/*.png"');
   expect(main).toContain("buildFileUrl(file, providerSelect.value)");
   expect(main).toContain("buildAssetUrl: buildSelectedAssetUrl");
+  // "none"/local CDN mode must resolve icon CSS locally too, not just logos — otherwise inserting
+  // an icon still 404s against an unpublished package.
+  expect(main).toContain('"/node_modules/@pantoken/plugin-lucide-lab/dist/icons/*.css"');
+  expect(main).toContain('"/node_modules/@pantoken/plugin-lucide-lab/dist/lucide-lab.css"');
+  expect(main).toContain("localLogoUrls[key] ?? localIconCssUrls[key]");
+  expect(main).toContain("fetch(buildSelectedAssetUrl(asset))");
+  expect(main).not.toContain("fetch(buildFileUrl(asset))");
   expect(main).toContain("createA11yPlugin");
   expect(main).toContain("createSourceTogglePlugin");
   expect(main).toContain("if (isLocalPreview) {");
@@ -119,6 +126,26 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).not.toContain('includeDarkModeCheckbox.checked = mode === "dark";');
   expect(main).toContain("document.documentElement.dataset.pantokenScheme = mode;");
   expect(main).toContain("applyEditorTheme(activeEditor);");
+  // The standalone shell's appearance menu must also push the new scheme into the editor's own
+  // content, not just the chrome — otherwise TinyMCE stays light while the app goes dark.
+  expect(main).toContain(
+    'applyChromeTheme(selectedTheme ?? "rebrand", selectedMode as "light" | "dark");',
+  );
+  expect(
+    main.indexOf('applyChromeTheme(selectedTheme ?? "rebrand", selectedMode as "light" | "dark");'),
+  ).toBeLessThan(main.lastIndexOf("applyEditorTheme(activeEditor);"));
+  // "System" is the default appearance selection; it previously showed nothing selected.
+  expect(main).toContain('if (appearance === "system") option.classList.add("is-selected");');
+  // The color menu renders every pantoken color (not a hardcoded 7-item subset) with the same
+  // swatch disc the theme-tray picker already uses.
+  expect(main).toContain("for (const color of COLOR_KEYS) {");
+  expect(main).toContain('swatch.className = "theme-picker__swatch";');
+  expect(main).toContain("swatch.dataset.swatch = color;");
+  expect(main).not.toContain('["navy", "Navy"],');
+  // The brand mark is pantoken's own logomark, colored with the active theme color — not a
+  // generic palette icon on a hardcoded gradient.
+  expect(main).toContain("brandMark.innerHTML = PANTOKEN_ICON;");
+  expect(main).not.toContain("brandMark.append(createShellIcon(Palette));");
   expect(main).toContain("refreshAll();");
   expect(main).toContain("interface CanvasThemePreset");
   expect(main).toContain("readonly theme: ThemeVariant;");

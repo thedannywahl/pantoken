@@ -70,12 +70,8 @@ body.canvas-rce-shell-enabled .description {
   width: 2rem;
   height: 2rem;
   border-radius: 0.625rem;
-  background: linear-gradient(
-    135deg,
-    var(--instui-color-brand, #0a5dc2),
-    var(--instui-color-accent, #5b8def)
-  );
-  color: white;
+  background: var(--instui-color-background-brand, var(--instui-color-brand, #0a5dc2));
+  color: var(--instui-color-text-on-color, white);
 }
 
 .canvas-rce-shell__eyebrow {
@@ -138,9 +134,11 @@ body.canvas-rce-shell-enabled .description {
   inset-block-start: calc(100% + 0.5rem);
   inset-inline-end: 0;
   min-width: 12rem;
+  max-height: min(70vh, 24rem);
   display: grid;
   gap: 0.5rem;
   padding: 0.75rem;
+  overflow-y: auto;
   border: 1px solid var(--instui-color-stroke-base, rgba(0, 0, 0, 0.12));
   border-radius: 0.75rem;
   background: var(--instui-color-background-primary, Canvas);

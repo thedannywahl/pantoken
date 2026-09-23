@@ -102,6 +102,7 @@ import {
   listUtilities,
   loadAllIcons,
   logos,
+  PANTOKEN_ICON,
   PANTOKEN_ICON_PACK_NAME,
   products,
   registerPantokenIconPack,
@@ -233,7 +234,7 @@ function setupStandaloneAppShell(): void {
 
   const brandMark = document.createElement("div");
   brandMark.className = "canvas-rce-shell__brand-mark";
-  brandMark.append(createShellIcon(Palette));
+  brandMark.innerHTML = PANTOKEN_ICON;
 
   const brandText = document.createElement("div");
   const eyebrow = document.createElement("span");
@@ -337,6 +338,7 @@ function setupStandaloneAppShell(): void {
     mark.className = "canvas-rce-shell__mark";
     mark.append(createShellIcon(icon));
     option.append(text, mark);
+    if (appearance === "system") option.classList.add("is-selected");
     option.addEventListener("click", () => {
       const selectedMode =
         appearance === "system"
@@ -350,6 +352,9 @@ function setupStandaloneAppShell(): void {
       if (typeof applyChromeTheme === "function") {
         applyChromeTheme(selectedTheme ?? "rebrand", selectedMode as "light" | "dark");
       }
+      // The editor's own content only picks up the new scheme once told — otherwise the app
+      // chrome goes dark but the TinyMCE editing surface stays light.
+      applyEditorTheme(activeEditor);
       for (const candidate of themePanel.querySelectorAll<HTMLButtonElement>("[data-appearance]")) {
         candidate.classList.toggle("is-selected", candidate.dataset.appearance === appearance);
       }
@@ -364,25 +369,20 @@ function setupStandaloneAppShell(): void {
   colorTitle.className = "canvas-rce-shell__group-title";
   colorTitle.textContent = "Color";
   colorGroup.append(colorTitle);
-  for (const [color, label] of [
-    ["navy", "Navy"],
-    ["blue", "Blue"],
-    ["green", "Green"],
-    ["red", "Red"],
-    ["orange", "Orange"],
-    ["grey", "Grey"],
-    ["plum", "Plum"],
-  ] as const) {
+  for (const color of COLOR_KEYS) {
     const option = document.createElement("button");
     option.type = "button";
     option.className = "canvas-rce-shell__option";
     option.dataset.color = color;
+    const swatch = document.createElement("span");
+    swatch.className = "theme-picker__swatch";
+    swatch.dataset.swatch = color;
     const text = document.createElement("span");
-    text.textContent = label;
+    text.textContent = color.charAt(0).toUpperCase() + color.slice(1);
     const mark = document.createElement("span");
     mark.className = "canvas-rce-shell__mark";
     mark.append(createShellIcon(Check));
-    option.append(text, mark);
+    option.append(swatch, text, mark);
     option.addEventListener("click", () => {
       if (isThemeColor(color)) {
         applyChromeColor(color);
@@ -418,12 +418,27 @@ const localLogoUrls = import.meta.glob<string>(
   "/node_modules/@pantoken/plugin-logos/dist/*.png",
   { eager: true, import: "default", query: "?url" },
 );
+// The bundle sheets (picker preview) and per-icon sheets (inserted content) for the four icon
+// sources — without these, "none"/local CDN mode still fell back to a remote fetch, which 404s
+// for any package (like plugin-lucide-lab) not yet published.
+const localIconCssUrls = import.meta.glob<string>(
+  [
+    "/node_modules/@pantoken/components/dist/icons/*.css",
+    "/node_modules/@pantoken/plugin-custom-icons/dist/icons/*.css",
+    "/node_modules/@pantoken/plugin-simple-icons/dist/icons/*.css",
+    "/node_modules/@pantoken/plugin-simple-icons/dist/simple-icons.css",
+    "/node_modules/@pantoken/plugin-lucide-lab/dist/icons/*.css",
+    "/node_modules/@pantoken/plugin-lucide-lab/dist/lucide-lab.css",
+  ],
+  { eager: true, import: "default", query: "?url" },
+);
 
 function buildSelectedAssetUrl(file: CdnFile): string {
   if (providerSelect.value !== LOCAL_PROVIDER_ID) {
     return buildFileUrl(file, providerSelect.value);
   }
-  const localUrl = localLogoUrls[`/node_modules/${file.package}/${file.path}`];
+  const key = `/node_modules/${file.package}/${file.path}`;
+  const localUrl = localLogoUrls[key] ?? localIconCssUrls[key];
   return localUrl ?? buildFileUrl(file);
 }
 
@@ -582,11 +597,13 @@ const registerPantokenPlugin = (async () => {
         model: componentModel as any,
         currentAssets,
         onMissingAsset,
+        buildAssetUrl: buildSelectedAssetUrl,
       },
       icons: {
         icons: allIcons,
         currentAssets,
         onMissingAsset,
+        buildAssetUrl: buildSelectedAssetUrl,
       },
       logos: {
         logos,
@@ -816,7 +833,7 @@ async function inlineAssetCss(assets: readonly CdnFile[]): Promise<string[]> {
     assets.map(async (asset) => {
       const key = assetKey(asset);
       if (inlineAssetContents.has(key)) return;
-      const response = await fetch(buildFileUrl(asset));
+      const response = await fetch(buildSelectedAssetUrl(asset));
       if (!response.ok) {
         throw new Error(`Unable to inline ${asset.package}/${asset.path}: ${response.status}`);
       }
