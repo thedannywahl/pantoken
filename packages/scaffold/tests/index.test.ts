@@ -92,7 +92,7 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain("createSavePlugin<CanvasThemePreset>");
   expect(main).toContain("SAVE_PLUGIN_NAME");
   expect(main).toContain(
-    "toolbar: `undo redo | pantoken ${SAVE_TOOLBAR_NAME} | fontsize blocks | bold italic underline",
+    "toolbar: `${SAVE_TOOLBAR_NAME} undo redo | pantoken | fontsize blocks | bold italic underline",
   );
   expect(main).not.toContain("pantokenA11y");
   expect(main).toContain("let previewMutationObserver: MutationObserver | undefined");
