@@ -1,0 +1,442 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-23 14:32+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.title
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.title"
+msgid "About me"
+msgstr "私について"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.heading
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.heading"
+msgid "About your instructor"
+msgstr "担当教員について"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.intro
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.intro"
+msgid "Share a brief introduction, your role, and what you hope students take away from this course."
+msgstr "簡単な自己紹介、役割、および受講生にこのコースから得てほしいことを共有してください。"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.reachHeading
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.reachHeading"
+msgid "How to reach me"
+msgstr "連絡方法"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.emailLabel
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.emailLabel"
+msgid "Email:"
+msgstr "メール："
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.emailPlaceholder
+#, no-c-format, x-translate-never
+msgctxt "layouts.strings:aboutMe.emailPlaceholder"
+msgid "instructor@example.edu"
+msgstr "instructor@example.edu"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.officeLabel
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.officeLabel"
+msgid "Office:"
+msgstr "職員室："
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.officePlaceholder
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.officePlaceholder"
+msgid "Add your office location or virtual meeting link."
+msgstr "オフィスの所在地またはオンライン会議リンクを追加してください。"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.responseLabel
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.responseLabel"
+msgid "Response time:"
+msgstr "返答時間："
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.responsePlaceholder
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.responsePlaceholder"
+msgid "Add when students can expect a reply."
+msgstr "受講生が返信を期待できる時間を追加してください。"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.officeHoursHeading
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.officeHoursHeading"
+msgid "Office hours"
+msgstr "オフィスアワー"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.officeHoursText
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.officeHoursText"
+msgid "Add your recurring office hours and explain how students can meet with you."
+msgstr "定期的なオフィスアワーを追加し、受講生がどのように面会できるかを説明してください。"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.instructorPhotoAlt
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.instructorPhotoAlt"
+msgid "A photo of the instructor"
+msgstr "担当教員の写真"
+
+#: plugins/pantoken/layouts/src/layouts/callout/i18n.json#callout.title
+#, no-c-format
+msgctxt "layouts.strings:callout.title"
+msgid "Callout"
+msgstr "注意書き"
+
+#: plugins/pantoken/layouts/src/layouts/callout/i18n.json#callout.noteLabel
+#, no-c-format
+msgctxt "layouts.strings:callout.noteLabel"
+msgid "Note:"
+msgstr "注："
+
+#: plugins/pantoken/layouts/src/layouts/callout/i18n.json#callout.noteText
+#, no-c-format
+msgctxt "layouts.strings:callout.noteText"
+msgid "Replace this callout with an important reminder for students."
+msgstr "この注意書きを受講生への重要なリマインダーに置き換えてください。"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.title
+#, no-c-format
+msgctxt "layouts.strings:courseHome.title"
+msgid "Course home"
+msgstr "コースホーム"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.welcomeHeading
+#, no-c-format
+msgctxt "layouts.strings:courseHome.welcomeHeading"
+msgid "Welcome to the course"
+msgstr "コースへようこそ"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.welcomeText
+#, no-c-format
+msgctxt "layouts.strings:courseHome.welcomeText"
+msgid "Give students a warm welcome and explain what they should do first."
+msgstr "受講生に温かく歓迎をし、最初に何をすべきかを説明してください。"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.startHeading
+#, no-c-format
+msgctxt "layouts.strings:courseHome.startHeading"
+msgid "Start here"
+msgstr "ここから始める"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.reviewHeaderLink
+#, no-c-format
+msgctxt "layouts.strings:courseHome.reviewHeaderLink"
+msgid "Review the course header and navigation"
+msgstr "コースヘッダーとナビゲーションを確認する"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.readSyllabusLink
+#, no-c-format
+msgctxt "layouts.strings:courseHome.readSyllabusLink"
+msgid "Read the syllabus"
+msgstr "シラバスを読む"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.meetInstructorLink
+#, no-c-format
+msgctxt "layouts.strings:courseHome.meetInstructorLink"
+msgid "Meet your instructor"
+msgstr "担当教員に会う"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.openModuleText
+#, no-c-format
+msgctxt "layouts.strings:courseHome.openModuleText"
+msgid "Open the first module or activity."
+msgstr "最初のモジュールまたはアクティビティを開いてください。"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.thisWeekHeading
+#, no-c-format
+msgctxt "layouts.strings:courseHome.thisWeekHeading"
+msgid "This week"
+msgstr "今週"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.thisWeekText
+#, no-c-format
+msgctxt "layouts.strings:courseHome.thisWeekText"
+msgid "Add the current focus, important dates, readings, or actions students should see first."
+msgstr "現在の焦点、重要な日付、教材、または受講生が最初に見るべき行動を追加してください。"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.needHelpHeading
+#, no-c-format
+msgctxt "layouts.strings:courseHome.needHelpHeading"
+msgid "Need help?"
+msgstr "助けが必要ですか？"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.needHelpPrefix
+#, no-c-format
+msgctxt "layouts.strings:courseHome.needHelpPrefix"
+msgid "Point students to the"
+msgstr "受講生を次へ案内してください"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.needHelpLinkText
+#, no-c-format
+msgctxt "layouts.strings:courseHome.needHelpLinkText"
+msgid "course contact and support information"
+msgstr "コースの連絡先およびサポート情報"
+
+#: plugins/pantoken/layouts/src/layouts/footer/i18n.json#footer.title
+#, no-c-format
+msgctxt "layouts.strings:footer.title"
+msgid "Footer"
+msgstr "フッター"
+
+#: plugins/pantoken/layouts/src/layouts/footer/i18n.json#footer.questionsHeading
+#, no-c-format
+msgctxt "layouts.strings:footer.questionsHeading"
+msgid "Questions or need help?"
+msgstr "質問やサポートが必要ですか？"
+
+#: plugins/pantoken/layouts/src/layouts/footer/i18n.json#footer.questionsText
+#, no-c-format
+msgctxt "layouts.strings:footer.questionsText"
+msgid "Add office hours, contact details, support links, or accessibility information here."
+msgstr "ここにオフィスアワー、連絡先情報、サポートリンク、またはアクセシビリティ情報を追加してください。"
+
+#: plugins/pantoken/layouts/src/layouts/footer/i18n.json#footer.emailPlaceholder
+#, no-c-format, x-translate-never
+msgctxt "layouts.strings:footer.emailPlaceholder"
+msgid "instructor@example.edu"
+msgstr "instructor@example.edu"
+
+#: plugins/pantoken/layouts/src/layouts/footer/i18n.json#footer.courseInfoText
+#, no-c-format
+msgctxt "layouts.strings:footer.courseInfoText"
+msgid "Course code · Term · Department"
+msgstr "コースコード · 学期 · 学部"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.title
+#, no-c-format
+msgctxt "layouts.strings:header.title"
+msgid "Header"
+msgstr "ヘッダー"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.courseCodeTerm
+#, no-c-format
+msgctxt "layouts.strings:header.courseCodeTerm"
+msgid "COURSE CODE · TERM"
+msgstr "COURSE CODE · TERM"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.courseTitle
+#, no-c-format
+msgctxt "layouts.strings:header.courseTitle"
+msgid "Course title"
+msgstr "コースタイトル"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.description
+#, no-c-format
+msgctxt "layouts.strings:header.description"
+msgid "A short description of the course or page goes here."
+msgstr "ここにコースやページの短い説明を追加してください。"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.navHome
+#, no-c-format
+msgctxt "layouts.strings:header.navHome"
+msgid "Home"
+msgstr "ホーム"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.navSyllabus
+#, no-c-format
+msgctxt "layouts.strings:header.navSyllabus"
+msgid "Syllabus"
+msgstr "シラバス"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.navAboutInstructor
+#, no-c-format
+msgctxt "layouts.strings:header.navAboutInstructor"
+msgid "About the instructor"
+msgstr "担当教員について"
+
+#: plugins/pantoken/layouts/src/layouts/hero/i18n.json#hero.title
+#, no-c-format
+msgctxt "layouts.strings:hero.title"
+msgid "Hero"
+msgstr "ヒーロー"
+
+#: plugins/pantoken/layouts/src/layouts/hero/i18n.json#hero.heading
+#, no-c-format
+msgctxt "layouts.strings:hero.heading"
+msgid "Welcome to the course"
+msgstr "コースへようこそ"
+
+#: plugins/pantoken/layouts/src/layouts/hero/i18n.json#hero.intro
+#, no-c-format
+msgctxt "layouts.strings:hero.intro"
+msgid "A short introduction goes here. Replace this text and the heading above."
+msgstr "ここに短い紹介文を入れてください。このテキストと上の見出しを置き換えてください。"
+
+#: plugins/pantoken/layouts/src/layouts/hero/i18n.json#hero.cta
+#, no-c-format
+msgctxt "layouts.strings:hero.cta"
+msgid "Get started"
+msgstr "始める"
+
+#: plugins/pantoken/layouts/src/layouts/rubric-note/i18n.json#rubricNote.title
+#, no-c-format
+msgctxt "layouts.strings:rubricNote.title"
+msgid "Rubric note"
+msgstr "評価基準についての注意"
+
+#: plugins/pantoken/layouts/src/layouts/rubric-note/i18n.json#rubricNote.heading
+#, no-c-format
+msgctxt "layouts.strings:rubricNote.heading"
+msgid "Grading note"
+msgstr "採点に関する注意"
+
+#: plugins/pantoken/layouts/src/layouts/rubric-note/i18n.json#rubricNote.text
+#, no-c-format
+msgctxt "layouts.strings:rubricNote.text"
+msgid "Explain how this assignment is graded, referencing the rubric below."
+msgstr "以下のルーブリックを参照して、この課題がどのように採点されるかを説明してください。"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.title
+#, no-c-format
+msgctxt "layouts.strings:syllabus.title"
+msgid "Syllabus"
+msgstr "シラバス"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.heading
+#, no-c-format
+msgctxt "layouts.strings:syllabus.heading"
+msgid "Course syllabus"
+msgstr "コースシラバス"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.intro
+#, no-c-format
+msgctxt "layouts.strings:syllabus.intro"
+msgid "Add a concise overview of the course, who it is for, and what students will learn."
+msgstr "コースの簡潔な概要、対象者、および受講生が学ぶ内容を追加してください。"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.outcomesHeading
+#, no-c-format
+msgctxt "layouts.strings:syllabus.outcomesHeading"
+msgid "Learning outcomes"
+msgstr "学習成果"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.outcome1
+#, no-c-format
+msgctxt "layouts.strings:syllabus.outcome1"
+msgid "Describe the first outcome."
+msgstr "最初の成果を説明してください。"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.outcome2
+#, no-c-format
+msgctxt "layouts.strings:syllabus.outcome2"
+msgid "Apply the second outcome."
+msgstr "2つ目の成果を適用してください。"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.outcome3
+#, no-c-format
+msgctxt "layouts.strings:syllabus.outcome3"
+msgid "Create or demonstrate the third outcome."
+msgstr "3つ目の成果を作成または実演してください。"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.infoHeading
+#, no-c-format
+msgctxt "layouts.strings:syllabus.infoHeading"
+msgid "Course information"
+msgstr "コース情報"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.scheduleLabel
+#, no-c-format
+msgctxt "layouts.strings:syllabus.scheduleLabel"
+msgid "Schedule:"
+msgstr "スケジュール："
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.schedulePlaceholder
+#, no-c-format
+msgctxt "layouts.strings:syllabus.schedulePlaceholder"
+msgid "Add meeting times or the course rhythm."
+msgstr "授業時間やコースのリズムを追加してください。"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.gradingLabel
+#, no-c-format
+msgctxt "layouts.strings:syllabus.gradingLabel"
+msgid "Grading:"
+msgstr "採点："
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.gradingPlaceholder
+#, no-c-format
+msgctxt "layouts.strings:syllabus.gradingPlaceholder"
+msgid "Add grading categories and weights."
+msgstr "採点カテゴリと配点を追加してください。"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.materialsLabel
+#, no-c-format
+msgctxt "layouts.strings:syllabus.materialsLabel"
+msgid "Materials:"
+msgstr "教材："
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.materialsPlaceholder
+#, no-c-format
+msgctxt "layouts.strings:syllabus.materialsPlaceholder"
+msgid "Add required books, tools, or access notes."
+msgstr "必須の書籍、ツール、またはアクセスに関する注意を追加してください。"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.policiesHeading
+#, no-c-format
+msgctxt "layouts.strings:syllabus.policiesHeading"
+msgid "Policies and support"
+msgstr "方針とサポート"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.policiesText
+#, no-c-format
+msgctxt "layouts.strings:syllabus.policiesText"
+msgid "Add attendance, late work, accessibility, academic integrity, and support information here."
+msgstr "出席、遅刻課題、アクセシビリティ、学術誠実性、およびサポート情報をここに追加してください。"
+
+#: plugins/pantoken/layouts/src/layouts/testimonial/i18n.json#testimonial.title
+#, no-c-format
+msgctxt "layouts.strings:testimonial.title"
+msgid "Testimonial"
+msgstr "推薦の言葉"
+
+#: plugins/pantoken/layouts/src/layouts/testimonial/i18n.json#testimonial.quote
+#, no-c-format
+msgctxt "layouts.strings:testimonial.quote"
+msgid "\"Replace this with a quote from a student or alum.\""
+msgstr "「これを学生や卒業生の引用に置き換えてください。」"
+
+#: plugins/pantoken/layouts/src/layouts/testimonial/i18n.json#testimonial.attribution
+#, no-c-format
+msgctxt "layouts.strings:testimonial.attribution"
+msgid "— Name, Program"
+msgstr "— 名前、プログラム"
+
+#: plugins/pantoken/layouts/src/layouts/two-column/i18n.json#twoColumn.title
+#, no-c-format
+msgctxt "layouts.strings:twoColumn.title"
+msgid "Two column"
+msgstr "2カラム"
+
+#: plugins/pantoken/layouts/src/layouts/two-column/i18n.json#twoColumn.leftHeading
+#, no-c-format
+msgctxt "layouts.strings:twoColumn.leftHeading"
+msgid "Left column"
+msgstr "左の列"
+
+#: plugins/pantoken/layouts/src/layouts/two-column/i18n.json#twoColumn.leftText
+#, no-c-format
+msgctxt "layouts.strings:twoColumn.leftText"
+msgid "Describe the first topic here."
+msgstr "ここに最初のトピックを説明してください。"
+
+#: plugins/pantoken/layouts/src/layouts/two-column/i18n.json#twoColumn.rightHeading
+#, no-c-format
+msgctxt "layouts.strings:twoColumn.rightHeading"
+msgid "Right column"
+msgstr "右の列"
+
+#: plugins/pantoken/layouts/src/layouts/two-column/i18n.json#twoColumn.rightText
+#, no-c-format
+msgctxt "layouts.strings:twoColumn.rightText"
+msgid "Describe the second topic here."
+msgstr "ここに2番目のトピックを説明してください。"

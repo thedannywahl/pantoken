@@ -1,0 +1,9 @@
+{
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
+  "callout.title": { "message": "Callout", "translate": "always" },
+  "callout.noteLabel": { "message": "Note:", "translate": "always" },
+  "callout.noteText": {
+    "message": "Replace this callout with an important reminder for students.",
+    "translate": "always"
+  }
+}

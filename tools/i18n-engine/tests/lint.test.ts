@@ -1,8 +1,9 @@
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, test } from "vite-plus/test";
 import { runLint } from "../src/lint.ts";
+import type { I18nConfig } from "../src/config.ts";
 
 const root = new URL("../../../", import.meta.url).pathname;
 const tempDirs: string[] = [];
@@ -13,10 +14,14 @@ afterEach(() => {
 
 describe("runLint", () => {
   test("accepts the repository localization contract", async () => {
+    const config = JSON.parse(readFileSync(join(root, "i18n.config.json"), "utf8")) as I18nConfig;
+    const locales = readdirSync(join(root, "l10n"), { withFileTypes: true }).filter((entry) =>
+      entry.isDirectory(),
+    );
     const result = await runLint(join(root, "i18n.config.json"));
-    expect(result.checkedSpaces).toBe(10);
-    expect(result.checkedLocales).toBe(44);
-    expect(result.checkedCatalogs).toBe(440);
+    expect(result.checkedSpaces).toBe(config.requiredSpaces.length);
+    expect(result.checkedLocales).toBe(locales.length);
+    expect(result.checkedCatalogs).toBe(config.requiredSpaces.length * locales.length);
   }, 20_000);
 
   test("rejects a required space missing from the config", async () => {

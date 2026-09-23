@@ -1,0 +1,442 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-23 14:34+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.title
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.title"
+msgid "About me"
+msgstr "Om meg"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.heading
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.heading"
+msgid "About your instructor"
+msgstr "Om din instruktør"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.intro
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.intro"
+msgid "Share a brief introduction, your role, and what you hope students take away from this course."
+msgstr "Del en kort introduksjon, din rolle, og hva du håper studentene tar med seg fra dette kurset."
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.reachHeading
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.reachHeading"
+msgid "How to reach me"
+msgstr "Hvordan nå meg"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.emailLabel
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.emailLabel"
+msgid "Email:"
+msgstr "E-post:"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.emailPlaceholder
+#, no-c-format, x-translate-never
+msgctxt "layouts.strings:aboutMe.emailPlaceholder"
+msgid "instructor@example.edu"
+msgstr "instructor@example.edu"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.officeLabel
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.officeLabel"
+msgid "Office:"
+msgstr "Kontor:"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.officePlaceholder
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.officePlaceholder"
+msgid "Add your office location or virtual meeting link."
+msgstr "Legg til kontorstedet ditt eller lenke til virtuelt møte."
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.responseLabel
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.responseLabel"
+msgid "Response time:"
+msgstr "Svarstid:"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.responsePlaceholder
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.responsePlaceholder"
+msgid "Add when students can expect a reply."
+msgstr "Legg til når studentene kan forvente svar."
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.officeHoursHeading
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.officeHoursHeading"
+msgid "Office hours"
+msgstr "Kontortid"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.officeHoursText
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.officeHoursText"
+msgid "Add your recurring office hours and explain how students can meet with you."
+msgstr "Legg til dine faste kontortider og forklar hvordan studentene kan møte deg."
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.instructorPhotoAlt
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.instructorPhotoAlt"
+msgid "A photo of the instructor"
+msgstr "Et foto av instruktøren"
+
+#: plugins/pantoken/layouts/src/layouts/callout/i18n.json#callout.title
+#, no-c-format
+msgctxt "layouts.strings:callout.title"
+msgid "Callout"
+msgstr "Utheving"
+
+#: plugins/pantoken/layouts/src/layouts/callout/i18n.json#callout.noteLabel
+#, no-c-format
+msgctxt "layouts.strings:callout.noteLabel"
+msgid "Note:"
+msgstr "Merk:"
+
+#: plugins/pantoken/layouts/src/layouts/callout/i18n.json#callout.noteText
+#, no-c-format
+msgctxt "layouts.strings:callout.noteText"
+msgid "Replace this callout with an important reminder for students."
+msgstr "Erstatt denne uthevingen med en viktig påminnelse for studentene."
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.title
+#, no-c-format
+msgctxt "layouts.strings:courseHome.title"
+msgid "Course home"
+msgstr "Kursforside"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.welcomeHeading
+#, no-c-format
+msgctxt "layouts.strings:courseHome.welcomeHeading"
+msgid "Welcome to the course"
+msgstr "Velkommen til kurset"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.welcomeText
+#, no-c-format
+msgctxt "layouts.strings:courseHome.welcomeText"
+msgid "Give students a warm welcome and explain what they should do first."
+msgstr "Gi studentene en varm velkomst og forklar hva de bør gjøre først."
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.startHeading
+#, no-c-format
+msgctxt "layouts.strings:courseHome.startHeading"
+msgid "Start here"
+msgstr "Start her"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.reviewHeaderLink
+#, no-c-format
+msgctxt "layouts.strings:courseHome.reviewHeaderLink"
+msgid "Review the course header and navigation"
+msgstr "Gå gjennom kursoverskriften og navigasjonen"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.readSyllabusLink
+#, no-c-format
+msgctxt "layouts.strings:courseHome.readSyllabusLink"
+msgid "Read the syllabus"
+msgstr "Les pensum"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.meetInstructorLink
+#, no-c-format
+msgctxt "layouts.strings:courseHome.meetInstructorLink"
+msgid "Meet your instructor"
+msgstr "Møt din instruktør"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.openModuleText
+#, no-c-format
+msgctxt "layouts.strings:courseHome.openModuleText"
+msgid "Open the first module or activity."
+msgstr "Åpne den første modulen eller aktiviteten."
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.thisWeekHeading
+#, no-c-format
+msgctxt "layouts.strings:courseHome.thisWeekHeading"
+msgid "This week"
+msgstr "Denne uken"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.thisWeekText
+#, no-c-format
+msgctxt "layouts.strings:courseHome.thisWeekText"
+msgid "Add the current focus, important dates, readings, or actions students should see first."
+msgstr "Legg til dagens fokus, viktige datoer, lesestoff eller handlinger studentene bør se først."
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.needHelpHeading
+#, no-c-format
+msgctxt "layouts.strings:courseHome.needHelpHeading"
+msgid "Need help?"
+msgstr "Trenger du hjelp?"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.needHelpPrefix
+#, no-c-format
+msgctxt "layouts.strings:courseHome.needHelpPrefix"
+msgid "Point students to the"
+msgstr "Vis studentene til"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.needHelpLinkText
+#, no-c-format
+msgctxt "layouts.strings:courseHome.needHelpLinkText"
+msgid "course contact and support information"
+msgstr "kurskontakt- og supportinformasjon"
+
+#: plugins/pantoken/layouts/src/layouts/footer/i18n.json#footer.title
+#, no-c-format
+msgctxt "layouts.strings:footer.title"
+msgid "Footer"
+msgstr "Bunntekst"
+
+#: plugins/pantoken/layouts/src/layouts/footer/i18n.json#footer.questionsHeading
+#, no-c-format
+msgctxt "layouts.strings:footer.questionsHeading"
+msgid "Questions or need help?"
+msgstr "Spørsmål eller trenger hjelp?"
+
+#: plugins/pantoken/layouts/src/layouts/footer/i18n.json#footer.questionsText
+#, no-c-format
+msgctxt "layouts.strings:footer.questionsText"
+msgid "Add office hours, contact details, support links, or accessibility information here."
+msgstr "Legg til kontortider, kontaktinformasjon, støttelenker eller informasjon om tilgjengelighet her."
+
+#: plugins/pantoken/layouts/src/layouts/footer/i18n.json#footer.emailPlaceholder
+#, no-c-format, x-translate-never
+msgctxt "layouts.strings:footer.emailPlaceholder"
+msgid "instructor@example.edu"
+msgstr "instructor@example.edu"
+
+#: plugins/pantoken/layouts/src/layouts/footer/i18n.json#footer.courseInfoText
+#, no-c-format
+msgctxt "layouts.strings:footer.courseInfoText"
+msgid "Course code · Term · Department"
+msgstr "Kurskode · Semester · Avdeling"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.title
+#, no-c-format
+msgctxt "layouts.strings:header.title"
+msgid "Header"
+msgstr "Header"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.courseCodeTerm
+#, no-c-format
+msgctxt "layouts.strings:header.courseCodeTerm"
+msgid "COURSE CODE · TERM"
+msgstr "KURSKODE · SEMESTER"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.courseTitle
+#, no-c-format
+msgctxt "layouts.strings:header.courseTitle"
+msgid "Course title"
+msgstr "Kurstittel"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.description
+#, no-c-format
+msgctxt "layouts.strings:header.description"
+msgid "A short description of the course or page goes here."
+msgstr "En kort beskrivelse av kurset eller siden legges her."
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.navHome
+#, no-c-format
+msgctxt "layouts.strings:header.navHome"
+msgid "Home"
+msgstr "Hjem"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.navSyllabus
+#, no-c-format
+msgctxt "layouts.strings:header.navSyllabus"
+msgid "Syllabus"
+msgstr "Pensum"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.navAboutInstructor
+#, no-c-format
+msgctxt "layouts.strings:header.navAboutInstructor"
+msgid "About the instructor"
+msgstr "Om instruktøren"
+
+#: plugins/pantoken/layouts/src/layouts/hero/i18n.json#hero.title
+#, no-c-format
+msgctxt "layouts.strings:hero.title"
+msgid "Hero"
+msgstr "Hero"
+
+#: plugins/pantoken/layouts/src/layouts/hero/i18n.json#hero.heading
+#, no-c-format
+msgctxt "layouts.strings:hero.heading"
+msgid "Welcome to the course"
+msgstr "Velkommen til kurset"
+
+#: plugins/pantoken/layouts/src/layouts/hero/i18n.json#hero.intro
+#, no-c-format
+msgctxt "layouts.strings:hero.intro"
+msgid "A short introduction goes here. Replace this text and the heading above."
+msgstr "En kort introduksjon legges her. Erstatt denne teksten og overskriften over."
+
+#: plugins/pantoken/layouts/src/layouts/hero/i18n.json#hero.cta
+#, no-c-format
+msgctxt "layouts.strings:hero.cta"
+msgid "Get started"
+msgstr "Kom i gang"
+
+#: plugins/pantoken/layouts/src/layouts/rubric-note/i18n.json#rubricNote.title
+#, no-c-format
+msgctxt "layouts.strings:rubricNote.title"
+msgid "Rubric note"
+msgstr "Rubrikkmerknad"
+
+#: plugins/pantoken/layouts/src/layouts/rubric-note/i18n.json#rubricNote.heading
+#, no-c-format
+msgctxt "layouts.strings:rubricNote.heading"
+msgid "Grading note"
+msgstr "Vurderingsmerknad"
+
+#: plugins/pantoken/layouts/src/layouts/rubric-note/i18n.json#rubricNote.text
+#, no-c-format
+msgctxt "layouts.strings:rubricNote.text"
+msgid "Explain how this assignment is graded, referencing the rubric below."
+msgstr "Forklar hvordan denne oppgaven vurderes, med henvisning til rubrikken nedenfor."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.title
+#, no-c-format
+msgctxt "layouts.strings:syllabus.title"
+msgid "Syllabus"
+msgstr "Pensum"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.heading
+#, no-c-format
+msgctxt "layouts.strings:syllabus.heading"
+msgid "Course syllabus"
+msgstr "Kursplan"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.intro
+#, no-c-format
+msgctxt "layouts.strings:syllabus.intro"
+msgid "Add a concise overview of the course, who it is for, and what students will learn."
+msgstr "Legg til en kortfattet oversikt over kurset, hvem det er for, og hva studentene vil lære."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.outcomesHeading
+#, no-c-format
+msgctxt "layouts.strings:syllabus.outcomesHeading"
+msgid "Learning outcomes"
+msgstr "Læringsmål"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.outcome1
+#, no-c-format
+msgctxt "layouts.strings:syllabus.outcome1"
+msgid "Describe the first outcome."
+msgstr "Beskriv det første læringsmålet."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.outcome2
+#, no-c-format
+msgctxt "layouts.strings:syllabus.outcome2"
+msgid "Apply the second outcome."
+msgstr "Bruk det andre læringsmålet."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.outcome3
+#, no-c-format
+msgctxt "layouts.strings:syllabus.outcome3"
+msgid "Create or demonstrate the third outcome."
+msgstr "Lag eller demonstrer det tredje læringsmålet."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.infoHeading
+#, no-c-format
+msgctxt "layouts.strings:syllabus.infoHeading"
+msgid "Course information"
+msgstr "Kursinformasjon"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.scheduleLabel
+#, no-c-format
+msgctxt "layouts.strings:syllabus.scheduleLabel"
+msgid "Schedule:"
+msgstr "Timeplan:"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.schedulePlaceholder
+#, no-c-format
+msgctxt "layouts.strings:syllabus.schedulePlaceholder"
+msgid "Add meeting times or the course rhythm."
+msgstr "Legg til møtetider eller kursrytme."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.gradingLabel
+#, no-c-format
+msgctxt "layouts.strings:syllabus.gradingLabel"
+msgid "Grading:"
+msgstr "Vurdering:"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.gradingPlaceholder
+#, no-c-format
+msgctxt "layouts.strings:syllabus.gradingPlaceholder"
+msgid "Add grading categories and weights."
+msgstr "Legg til vurderingskategorier og vekter."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.materialsLabel
+#, no-c-format
+msgctxt "layouts.strings:syllabus.materialsLabel"
+msgid "Materials:"
+msgstr "Materialer:"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.materialsPlaceholder
+#, no-c-format
+msgctxt "layouts.strings:syllabus.materialsPlaceholder"
+msgid "Add required books, tools, or access notes."
+msgstr "Legg til obligatoriske bøker, verktøy eller tilgangsnotater."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.policiesHeading
+#, no-c-format
+msgctxt "layouts.strings:syllabus.policiesHeading"
+msgid "Policies and support"
+msgstr "Retningslinjer og støtte"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.policiesText
+#, no-c-format
+msgctxt "layouts.strings:syllabus.policiesText"
+msgid "Add attendance, late work, accessibility, academic integrity, and support information here."
+msgstr "Legg til informasjon om frammøte, innlevering etter frist, tilgjengelighet, akademisk integritet og støtte her."
+
+#: plugins/pantoken/layouts/src/layouts/testimonial/i18n.json#testimonial.title
+#, no-c-format
+msgctxt "layouts.strings:testimonial.title"
+msgid "Testimonial"
+msgstr "Utsagn"
+
+#: plugins/pantoken/layouts/src/layouts/testimonial/i18n.json#testimonial.quote
+#, no-c-format
+msgctxt "layouts.strings:testimonial.quote"
+msgid "\"Replace this with a quote from a student or alum.\""
+msgstr "\"Erstatt dette med et sitat fra en student eller alumn.\""
+
+#: plugins/pantoken/layouts/src/layouts/testimonial/i18n.json#testimonial.attribution
+#, no-c-format
+msgctxt "layouts.strings:testimonial.attribution"
+msgid "— Name, Program"
+msgstr "— Navn, Program"
+
+#: plugins/pantoken/layouts/src/layouts/two-column/i18n.json#twoColumn.title
+#, no-c-format
+msgctxt "layouts.strings:twoColumn.title"
+msgid "Two column"
+msgstr "To kolonner"
+
+#: plugins/pantoken/layouts/src/layouts/two-column/i18n.json#twoColumn.leftHeading
+#, no-c-format
+msgctxt "layouts.strings:twoColumn.leftHeading"
+msgid "Left column"
+msgstr "Venstre kolonne"
+
+#: plugins/pantoken/layouts/src/layouts/two-column/i18n.json#twoColumn.leftText
+#, no-c-format
+msgctxt "layouts.strings:twoColumn.leftText"
+msgid "Describe the first topic here."
+msgstr "Beskriv det første emnet her."
+
+#: plugins/pantoken/layouts/src/layouts/two-column/i18n.json#twoColumn.rightHeading
+#, no-c-format
+msgctxt "layouts.strings:twoColumn.rightHeading"
+msgid "Right column"
+msgstr "Høyre kolonne"
+
+#: plugins/pantoken/layouts/src/layouts/two-column/i18n.json#twoColumn.rightText
+#, no-c-format
+msgctxt "layouts.strings:twoColumn.rightText"
+msgid "Describe the second topic here."
+msgstr "Beskriv det andre emnet her."

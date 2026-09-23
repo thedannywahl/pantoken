@@ -1,0 +1,31 @@
+{
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
+  "aboutMe.title": { "message": "About me", "translate": "always" },
+  "aboutMe.heading": { "message": "About your instructor", "translate": "always" },
+  "aboutMe.intro": {
+    "message": "Share a brief introduction, your role, and what you hope students take away from this course.",
+    "translate": "always"
+  },
+  "aboutMe.reachHeading": { "message": "How to reach me", "translate": "always" },
+  "aboutMe.emailLabel": { "message": "Email:", "translate": "always" },
+  "aboutMe.emailPlaceholder": { "message": "instructor@example.edu", "translate": "never" },
+  "aboutMe.officeLabel": { "message": "Office:", "translate": "always" },
+  "aboutMe.officePlaceholder": {
+    "message": "Add your office location or virtual meeting link.",
+    "translate": "always"
+  },
+  "aboutMe.responseLabel": { "message": "Response time:", "translate": "always" },
+  "aboutMe.responsePlaceholder": {
+    "message": "Add when students can expect a reply.",
+    "translate": "always"
+  },
+  "aboutMe.officeHoursHeading": { "message": "Office hours", "translate": "always" },
+  "aboutMe.officeHoursText": {
+    "message": "Add your recurring office hours and explain how students can meet with you.",
+    "translate": "always"
+  },
+  "aboutMe.instructorPhotoAlt": {
+    "message": "A photo of the instructor",
+    "translate": "always"
+  }
+}

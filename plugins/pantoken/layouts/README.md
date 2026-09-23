@@ -1,8 +1,9 @@
 # @pantoken/plugin-layouts
 
-Layout composition records for downstream consumers.
+Layout snippets and composition records for downstream consumers.
 
-This package provides layout-level CSS records for `wrapper`, `callout`, `hero`, `page-layout`,
+This package provides localized `PageLayout` HTML snippets for Canvas and other content editors.
+It also keeps layout-level CSS records for `wrapper`, `callout`, `hero`, `page-layout`,
 `rubric-note`, `testimonial`, and `two-column` compositions.
 
 ## Install
@@ -14,6 +15,14 @@ npm i @pantoken/plugin-layouts
 Also available as `pantoken/layouts`.
 
 ## Usage
+
+Use the bundled HTML snippets when you need ready-to-insert page content:
+
+```ts
+import { pageLayoutTemplates, renderPageLayout } from "@pantoken/plugin-layouts";
+
+const layouts = pageLayoutTemplates.map((layout) => renderPageLayout(layout, "en-GB"));
+```
 
 Use the plugin to append layout rules to token CSS output:
 
@@ -42,7 +51,9 @@ import "@pantoken/plugin-layouts/hero.css";
 - `layouts(options?)` — returns a CSS plugin with `position: "append" | "prepend"`.
 - `<name>Rules(prefix?)` — returns one layout's CSS text.
 - `<name>Template(prefix?)` — returns canonical HTML for one layout.
-- `pageLayouts` — starter page records for Canvas and other content editors.
+- `pageLayouts` — English-rendered starter page records for Canvas and other content editors.
+- `pageLayoutTemplates` — unresolved starter page records with `{{key}}` text placeholders.
+- `renderPageLayout(layout, locale?)` — resolves a starter page record with `layouts.strings`.
 - `PageLayoutImagePlaceholder` — provider-neutral image intent that consumers can materialize.
 - `./layouts.css` — aggregate stylesheet export.
 - `./<name>.css` — per-layout stylesheet exports.

@@ -1,10 +1,27 @@
+import { readdirSync, readFileSync } from "node:fs";
+import { join, resolve } from "node:path";
 import { expect, test } from "vite-plus/test";
-import i18nSource from "../../src/i18n.json" with { type: "json" };
 import { pageLayouts, pageLayoutTemplates, renderPageLayout } from "../../src/index.ts";
 import type { PageLayout } from "../../src/index.ts";
 
 const TOKEN_PATTERN = /\{\{([\w.]+)\}\}/gu;
-const i18nKeys = new Set(Object.keys(i18nSource).filter((key) => key !== "$schema"));
+
+function layoutI18nKeys(): Set<string> {
+  const layoutsDir = resolve(import.meta.dirname, "../../src/layouts");
+  const keys = new Set<string>();
+  for (const entry of readdirSync(layoutsDir, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const raw = JSON.parse(
+      readFileSync(join(layoutsDir, entry.name, "i18n.json"), "utf8"),
+    ) as Record<string, unknown>;
+    for (const key of Object.keys(raw)) {
+      if (key !== "$schema") keys.add(key);
+    }
+  }
+  return keys;
+}
+
+const i18nKeys = layoutI18nKeys();
 
 function tokensIn(layout: PageLayout): Set<string> {
   const tokens = new Set<string>();
@@ -19,7 +36,7 @@ function tokensIn(layout: PageLayout): Set<string> {
   return tokens;
 }
 
-test("every {{key}} token in a layout template exists in src/i18n.json", () => {
+test("every {{key}} token in a layout template exists in its layout i18n source", () => {
   for (const layout of pageLayoutTemplates) {
     for (const token of tokensIn(layout)) {
       expect(i18nKeys.has(token)).toBe(true);
@@ -27,7 +44,7 @@ test("every {{key}} token in a layout template exists in src/i18n.json", () => {
   }
 });
 
-test("every src/i18n.json key is referenced by a layout template", () => {
+test("every layout i18n key is referenced by a layout template", () => {
   const referenced = new Set<string>();
   for (const layout of pageLayoutTemplates) {
     for (const token of tokensIn(layout)) referenced.add(token);

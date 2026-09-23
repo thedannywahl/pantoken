@@ -84,7 +84,18 @@
     },
     "layouts.strings": {
       "kind": "messages",
-      "source": "plugins/pantoken/layouts/src/i18n.json"
+      "source": "plugins/pantoken/layouts/src/layouts/about-me/i18n.json",
+      "sourceMerge": [
+        "plugins/pantoken/layouts/src/layouts/callout/i18n.json",
+        "plugins/pantoken/layouts/src/layouts/course-home/i18n.json",
+        "plugins/pantoken/layouts/src/layouts/footer/i18n.json",
+        "plugins/pantoken/layouts/src/layouts/header/i18n.json",
+        "plugins/pantoken/layouts/src/layouts/hero/i18n.json",
+        "plugins/pantoken/layouts/src/layouts/rubric-note/i18n.json",
+        "plugins/pantoken/layouts/src/layouts/syllabus/i18n.json",
+        "plugins/pantoken/layouts/src/layouts/testimonial/i18n.json",
+        "plugins/pantoken/layouts/src/layouts/two-column/i18n.json"
+      ]
     },
     "scaffold.readme": {
       "kind": "content",

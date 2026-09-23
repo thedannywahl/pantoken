@@ -1,4 +1,4 @@
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, test } from "vite-plus/test";
@@ -64,8 +64,12 @@ describe("writeCoverageReport", () => {
   test("reports every configured surface and locale", () => {
     const output = outputPath();
     const report = writeCoverageReport(config, join(root, "i18n.config.json"), { output });
-    expect(report.rows).toHaveLength(430);
-    expect(JSON.parse(readFileSync(output, "utf8")).rows).toHaveLength(430);
+    const locales = readdirSync(join(root, "l10n"), { withFileTypes: true }).filter((entry) =>
+      entry.isDirectory(),
+    );
+    const expectedRows = config.requiredSpaces.length * (locales.length - 1);
+    expect(report.rows).toHaveLength(expectedRows);
+    expect(JSON.parse(readFileSync(output, "utf8")).rows).toHaveLength(expectedRows);
   }, 20_000);
 
   test("filters rows by policy and surface", () => {

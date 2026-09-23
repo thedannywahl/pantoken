@@ -1,0 +1,37 @@
+{
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
+  "syllabus.title": { "message": "Syllabus", "translate": "always" },
+  "syllabus.heading": { "message": "Course syllabus", "translate": "always" },
+  "syllabus.intro": {
+    "message": "Add a concise overview of the course, who it is for, and what students will learn.",
+    "translate": "always"
+  },
+  "syllabus.outcomesHeading": { "message": "Learning outcomes", "translate": "always" },
+  "syllabus.outcome1": { "message": "Describe the first outcome.", "translate": "always" },
+  "syllabus.outcome2": { "message": "Apply the second outcome.", "translate": "always" },
+  "syllabus.outcome3": {
+    "message": "Create or demonstrate the third outcome.",
+    "translate": "always"
+  },
+  "syllabus.infoHeading": { "message": "Course information", "translate": "always" },
+  "syllabus.scheduleLabel": { "message": "Schedule:", "translate": "always" },
+  "syllabus.schedulePlaceholder": {
+    "message": "Add meeting times or the course rhythm.",
+    "translate": "always"
+  },
+  "syllabus.gradingLabel": { "message": "Grading:", "translate": "always" },
+  "syllabus.gradingPlaceholder": {
+    "message": "Add grading categories and weights.",
+    "translate": "always"
+  },
+  "syllabus.materialsLabel": { "message": "Materials:", "translate": "always" },
+  "syllabus.materialsPlaceholder": {
+    "message": "Add required books, tools, or access notes.",
+    "translate": "always"
+  },
+  "syllabus.policiesHeading": { "message": "Policies and support", "translate": "always" },
+  "syllabus.policiesText": {
+    "message": "Add attendance, late work, accessibility, academic integrity, and support information here.",
+    "translate": "always"
+  }
+}

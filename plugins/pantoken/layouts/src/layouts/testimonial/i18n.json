@@ -1,0 +1,9 @@
+{
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
+  "testimonial.title": { "message": "Testimonial", "translate": "always" },
+  "testimonial.quote": {
+    "message": "\"Replace this with a quote from a student or alum.\"",
+    "translate": "always"
+  },
+  "testimonial.attribution": { "message": "— Name, Program", "translate": "always" }
+}

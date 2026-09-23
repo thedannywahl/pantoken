@@ -5,7 +5,7 @@
  * \@module
  */
 import { MESSAGES } from "../../generated/locales/index.ts";
-import type { PageLayout } from "../layouts/pages/page-layout.ts";
+import type { PageLayout } from "../layouts/page-layout.ts";
 
 const TOKEN_PATTERN = /\{\{([\w.]+)\}\}/gu;
 

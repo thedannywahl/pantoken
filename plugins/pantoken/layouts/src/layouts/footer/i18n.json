@@ -1,0 +1,14 @@
+{
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
+  "footer.title": { "message": "Footer", "translate": "always" },
+  "footer.questionsHeading": { "message": "Questions or need help?", "translate": "always" },
+  "footer.questionsText": {
+    "message": "Add office hours, contact details, support links, or accessibility information here.",
+    "translate": "always"
+  },
+  "footer.emailPlaceholder": { "message": "instructor@example.edu", "translate": "never" },
+  "footer.courseInfoText": {
+    "message": "Course code · Term · Department",
+    "translate": "always"
+  }
+}

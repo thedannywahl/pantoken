@@ -62,7 +62,8 @@ export default defineConfig({
         "**/*.d.ts",
         // Ships as raw source for the consumer's Vue compiler; V8's parser can't instrument SFCs.
         "plugins/vitepress/side-bar-toggle/src/SidebarToggle.vue",
-        // Data files, not executable code — nothing for v8 to instrument.
+        // Data files and raw snippets, not executable code — nothing for v8 to instrument.
+        "**/*.html",
         "**/*.json",
         // Type-only package — no runtime statements to cover, so it can't meet an 85% floor.
         "packages/model/**",
