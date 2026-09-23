@@ -48,3 +48,7 @@ Start implementation
 ---
 
 finish the phases.
+
+---
+
+add a changeset and a conventional commit for your work ignoring other unstaged changes
