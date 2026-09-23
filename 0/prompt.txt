@@ -15,3 +15,7 @@ Planning only, read-only. In /Users/dwahl/Scripts/pantoken, investigate the curr
 ---
 
 Start implementation
+
+---
+
+stage your changes and add a changeset and conventional commit, ignoring other unstaged files.
