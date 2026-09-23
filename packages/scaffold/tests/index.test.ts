@@ -94,6 +94,14 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain(
     "toolbar: `${SAVE_TOOLBAR_NAME} undo redo | pantoken | fontsize blocks | bold italic underline",
   );
+  // lucide's vanilla package exports icon node data, not components — createElement renders it.
+  // Calling an icon directly as a function only surfaces when the standalone app shell actually
+  // builds (accessed outside the docs iframe), so this regressed silently once before.
+  expect(main).toContain(
+    'import { Check, ChevronDown, createElement, Languages, MoonStar, Palette, SunMedium } from "lucide";',
+  );
+  expect(main).toContain("createElement(icon, { width: 16, height: 16, ");
+  expect(main).not.toContain("icon({ size: 16, strokeWidth: 2 })");
   expect(main).not.toContain("pantokenA11y");
   expect(main).toContain("let previewMutationObserver: MutationObserver | undefined");
   expect(main).toContain("previewFrame.contentDocument?.documentElement");

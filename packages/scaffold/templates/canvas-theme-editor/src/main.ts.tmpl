@@ -73,7 +73,7 @@ import {
   type ThemeMode,
   type ThemeVariant,
 } from "@pantoken/canvas-theme-editor";
-import { Check, ChevronDown, Languages, MoonStar, Palette, SunMedium } from "lucide";
+import { Check, ChevronDown, createElement, Languages, MoonStar, Palette, SunMedium } from "lucide";
 // Inlined (not CDN-fetched) so the live preview's color swap never depends on a network round trip.
 import {
   COLOR_KEYS,
@@ -193,10 +193,9 @@ function render(template: string, strings: Record<string, string>): string {
   return template.replace(/\{\{(\w+)\}\}/g, (match, key: string) => strings[key] ?? match);
 }
 
-function createShellIcon(
-  icon: (props: { size?: number; strokeWidth?: number }) => SVGSVGElement,
-): SVGSVGElement {
-  const svg = icon({ size: 16, strokeWidth: 2 });
+function createShellIcon(icon: Parameters<typeof createElement>[0]): SVGSVGElement {
+  // lucide's icons are plain node data, not components — createElement renders them.
+  const svg = createElement(icon, { width: 16, height: 16, "stroke-width": 2 });
   svg.classList.add("canvas-rce-shell__icon");
   return svg;
 }
