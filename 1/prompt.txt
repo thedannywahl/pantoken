@@ -1,0 +1,23 @@
+/docs$ node scripts/build-canvas-rce.ts
+✗ Build failed in 883ms
+node:internal/modules/run_main:111
+    triggerUncaughtException(
+    ^
+
+Build failed with 1 error:
+
+[MISSING_EXPORT] "PANTOKEN_ICONS_DATABASE_ID" is not exported by "../renderers/tinymce/dist/index.mjs".
+ - Missing export in .vitepress/cache/canvas-rce-src/src/main.ts at 4130..4156
+
+    at aggregateBindingErrorsIntoJsError (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_0af29a7fe375e7f2714b24cabd6be3aa/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-CGhV1ebk.mjs:48:18)
+    at unwrapBindingResult (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_0af29a7fe375e7f2714b24cabd6be3aa/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-CGhV1ebk.mjs:18:128)
+    at #build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_0af29a7fe375e7f2714b24cabd6be3aa/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/rolldown-DZGaRc5R.mjs:133:34)
+    at async buildEnvironment (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_0af29a7fe375e7f2714b24cabd6be3aa/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:39599:66)
+    at async Object.build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.3_@arethetypeswrong+core@0.18.5_@types+node@26.6.1_jit_0af29a7fe375e7f2714b24cabd6be3aa/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40020:19)
+    at async file:///Users/dwahl/Scripts/pantoken/docs/scripts/build-canvas-rce.ts:51:1 {
+  errors: [Getter/Setter]
+}
+
+Node.js v26.10.0
+
+---
