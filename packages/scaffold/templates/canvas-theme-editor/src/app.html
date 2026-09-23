@@ -1,5 +1,25 @@
 <div class="container">
   <div class="header">
+    <div class="title">
+      <span class="instui-heading -level-h1">{{pageTitle}}</span>
+    </div>
+  </div>
+  <div class="description">{{pageDescription}}</div>
+
+  <div class="controls --my-lg">
+    <div class="control-group">
+      <button type="button" id="download-package" class="instui-button">
+        <span class="instui-icon -icon-file-archive" aria-hidden="true"></span
+        >{{downloadPackageLabel}}
+      </button>
+      <button type="button" id="download-html" class="instui-button -color-secondary">
+        <span class="instui-icon -icon-download" aria-hidden="true"></span>{{downloadHtmlLabel}}
+      </button>
+      <button type="button" id="copy-html" class="instui-button -color-secondary">
+        <span class="instui-icon -icon-copy" aria-hidden="true"></span
+        ><span>{{copyHtmlLabel}}</span>
+      </button>
+    </div>
     <div class="utilities">
       <button
         type="button"
@@ -28,24 +48,6 @@
         <span class="instui-screen-reader-content">{{editThemeLabel}}</span>
       </button>
     </div>
-    <div class="title">
-      <span class="instui-heading -level-h1">{{pageTitle}}</span>
-    </div>
-  </div>
-  <div class="description">{{pageDescription}}</div>
-
-  <div class="controls --my-lg">
-    <button type="button" id="download-package" class="instui-button">
-      <span class="instui-icon -icon-file-archive" aria-hidden="true"></span
-      >{{downloadPackageLabel}}
-    </button>
-    <button type="button" id="download-html" class="instui-button -color-secondary">
-      <span class="instui-icon -icon-download" aria-hidden="true"></span>{{downloadHtmlLabel}}
-    </button>
-    <button type="button" id="copy-html" class="instui-button -color-secondary">
-      <span class="instui-icon -icon-copy" aria-hidden="true"></span><span>{{copyHtmlLabel}}</span>
-    </button>
-    <span id="copy-status" role="status"></span>
   </div>
   <div class="content">
     <div class="pane editor-pane">

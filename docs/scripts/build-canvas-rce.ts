@@ -11,12 +11,13 @@
  *
  * @module
  */
-import { copyFileSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { copyFileSync, cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { build } from "vite";
 import { scaffoldProject } from "../../packages/scaffold/src/index.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
+const repoRoot = join(docsRoot, "..");
 // Already-ignored (see .gitignore's `docs/.vitepress/cache/`), so no new ignore rule is needed.
 const renderDir = join(docsRoot, ".vitepress", "cache", "canvas-rce-src");
 const outDir = join(docsRoot, "public", "tools", "canvas-rce");
@@ -29,6 +30,23 @@ await scaffoldProject("canvas-theme-editor", renderDir, {
   mode: "light",
   packageManager: "npm",
 });
+
+// This render dir is never `npm install`ed, so the icon pickers' "None"/local CDN mode (which reads
+// `import.meta.glob("/node_modules/@pantoken/*/dist/...")`) would otherwise find nothing and always
+// fall back to a remote CDN fetch — 404ing for a package (like plugin-lucide-lab) not yet published.
+// Vendoring the real, already-built dist output here is enough; Vite's glob just reads the
+// filesystem, no package.json/module resolution involved.
+const localIconPackages: Record<string, string> = {
+  "@pantoken/components": join(repoRoot, "formats/components"),
+  "@pantoken/plugin-custom-icons": join(repoRoot, "plugins/pantoken/custom-icons"),
+  "@pantoken/plugin-simple-icons": join(repoRoot, "plugins/pantoken/simple-icons"),
+  "@pantoken/plugin-lucide-lab": join(repoRoot, "plugins/pantoken/lucide-lab"),
+};
+for (const [name, packageDir] of Object.entries(localIconPackages)) {
+  const dest = join(renderDir, "node_modules", name, "dist");
+  mkdirSync(dest, { recursive: true });
+  cpSync(join(packageDir, "dist"), dest, { recursive: true });
+}
 
 // Docs-only iframe auto-sizing: added here, after rendering, so the published starter template has
 // no embedding-specific code. Copied into the render project's `public/` so Vite ships it verbatim

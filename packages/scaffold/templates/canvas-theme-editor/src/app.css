@@ -33,7 +33,7 @@ body.canvas-rce-shell-enabled {
 }
 
 body.canvas-rce-shell-enabled #app {
-  padding: 1.5rem 3rem 2rem;
+  padding: 1rem 3rem;
 }
 
 /* Redundant with the shell's own brand mark once it's showing. */
@@ -344,6 +344,7 @@ body.canvas-rce-shell-enabled .description {
 .controls {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.5rem;
 }
 

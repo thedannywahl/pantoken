@@ -44,6 +44,7 @@ import "@pantoken/plugin-layouts/layouts.css";
 import "./app.css";
 import appHtml from "./app.html?raw";
 import { STRINGS } from "./strings.ts";
+import { LOCALE_STRINGS } from "./locale-strings.ts";
 import tinymce from "tinymce";
 import "tinymce/models/dom/model";
 import "tinymce/themes/silver/theme";
@@ -203,6 +204,61 @@ function render(template: string, strings: Record<string, string>): string {
   return template.replace(/\{\{(\w+)\}\}/g, (match, key: string) => strings[key] ?? match);
 }
 
+/** Attributes `render()` ever fills with translated text (besides text nodes). */
+const TRANSLATABLE_ATTRS = ["aria-label", "title"];
+
+// TinyMCE and the CodeMirror source/CSS/JS editors inject their own DOM as children of these
+// containers after the initial render, diverging from a freshly re-rendered copy — descending into
+// them here would walk the two trees out of alignment for everything downstream.
+const PATCH_SKIP_SELECTOR = ".editor-pane, #css-editor, #js-editor";
+
+function createPatchWalker(root: Node): TreeWalker {
+  return document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, (node) =>
+    node.nodeType === Node.ELEMENT_NODE && (node as Element).matches(PATCH_SKIP_SELECTOR)
+      ? NodeFilter.FILTER_REJECT
+      : NodeFilter.FILTER_ACCEPT,
+  );
+}
+
+/**
+ * Patches `root`'s text and translatable attributes to match `next` in place, leaving every
+ * element's identity (and any listeners attached to it) untouched — re-rendering `appHtml` wholesale
+ * and swapping `innerHTML` would orphan the ids/listeners the rest of this module already wired up
+ * to the original elements. Safe because `render()` never changes markup structure, only inserts
+ * plain text, so `root` and `next` are always structurally identical trees (outside the skipped,
+ * dynamically-mounted editor containers).
+ */
+function patchTranslatedText(root: Element, next: Element): void {
+  const liveWalker = createPatchWalker(root);
+  const nextWalker = createPatchWalker(next);
+  let liveNode: Node | null = root;
+  let nextNode: Node | null = next;
+  do {
+    if (liveNode.nodeType === Node.TEXT_NODE && nextNode!.nodeType === Node.TEXT_NODE) {
+      if (liveNode.textContent !== nextNode!.textContent) liveNode.textContent = nextNode!.textContent;
+    } else if (liveNode.nodeType === Node.ELEMENT_NODE && nextNode!.nodeType === Node.ELEMENT_NODE) {
+      for (const attr of TRANSLATABLE_ATTRS) {
+        const value = (nextNode as Element).getAttribute(attr);
+        if (value !== null && (liveNode as Element).getAttribute(attr) !== value) {
+          (liveNode as Element).setAttribute(attr, value);
+        }
+      }
+    }
+    liveNode = liveWalker.nextNode();
+    nextNode = nextWalker.nextNode();
+  } while (liveNode && nextNode);
+}
+
+/** Swaps the page's translated text/labels to `locale`, falling back to English per-key. */
+function applyLocale(locale: string): void {
+  const strings = { ...STRINGS, ...(LOCALE_STRINGS[locale] ?? {}) };
+  const next = document.createElement("div");
+  next.innerHTML = render(appHtml, strings);
+  const liveRoot = document.querySelector<HTMLDivElement>("#app")!.firstElementChild;
+  const nextRoot = next.firstElementChild;
+  if (liveRoot && nextRoot) patchTranslatedText(liveRoot, nextRoot);
+}
+
 function createShellIcon(icon: Parameters<typeof createElement>[0]): SVGSVGElement {
   // lucide's icons are plain node data, not components — createElement renders them.
   const svg = createElement(icon, { width: 16, height: 16, "stroke-width": 2 });
@@ -292,6 +348,7 @@ function setupStandaloneAppShell(): void {
     }
     option.addEventListener("click", () => {
       document.documentElement.lang = locale;
+      applyLocale(locale);
       localeLabel.textContent = label;
       localeMenu.removeAttribute("open");
       for (const candidate of localePanel.querySelectorAll<HTMLButtonElement>(
@@ -404,6 +461,9 @@ function setupStandaloneAppShell(): void {
 }
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = render(appHtml, STRINGS);
+// A project scaffolded for a non-English locale ships English `STRINGS` regardless (only this
+// runtime overlay is translated) — apply whatever locale the page already declares on load.
+if (document.documentElement.lang) applyLocale(document.documentElement.lang);
 const interactionsScript = document.createElement("script");
 interactionsScript.src = interactionsIifeUrl;
 document.head.append(interactionsScript);

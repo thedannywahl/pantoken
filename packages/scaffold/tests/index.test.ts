@@ -234,6 +234,33 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(pkg).toContain('"@pantoken/tinymce-save": "latest"');
   expect(pkg).toContain('"fflate": "catalog:"');
   expect(pkg).not.toContain("{{projectName}}");
+  // Real translated overrides for whichever of this platform's UI strings the CLI catalog also
+  // tracks (msgctxt `cli.scaffold:<platform>.<key>`) — a missing key/locale falls back to English.
+  expect(main).toContain('import { LOCALE_STRINGS } from "./locale-strings.ts";');
+  expect(existsSync(join(target, "src/locale-strings.ts"))).toBe(true);
+  const localeStrings = readFileSync(join(target, "src/locale-strings.ts"), "utf8");
+  expect(localeStrings).toContain(
+    "export const LOCALE_STRINGS: Record<string, Record<string, string>>",
+  );
+  // Not just an empty shell — real translated overrides must actually be present for at least one
+  // locale that has translated CLI catalog entries under this platform's msgctxt keys.
+  expect(
+    Object.keys(JSON.parse(localeStrings.slice(localeStrings.indexOf("= ") + 2, -2))).length,
+  ).toBeGreaterThan(0);
+  // Re-rendering to a detached tree and patching text/attrs in place (rather than swapping
+  // innerHTML wholesale) keeps every wired-up element's identity and listeners intact.
+  expect(main).toContain("function patchTranslatedText(root: Element, next: Element): void {");
+  expect(main).toContain("function createPatchWalker(root: Node): TreeWalker {");
+  // TinyMCE/CodeMirror inject their own DOM into these containers after the initial render,
+  // diverging from a freshly re-rendered copy — walking into them would misalign the two trees.
+  expect(main).toContain('const PATCH_SKIP_SELECTOR = ".editor-pane, #css-editor, #js-editor";');
+  expect(main).toContain("function applyLocale(locale: string): void {");
+  expect(main).toContain("applyLocale(locale);");
+  // A project scaffolded for a non-English locale still ships English `STRINGS` (only this
+  // runtime overlay is translated), so the declared `<html lang>` must be applied on load too.
+  expect(main).toContain(
+    "if (document.documentElement.lang) applyLocale(document.documentElement.lang);",
+  );
 });
 
 test("canvas-theme-editor keeps other tinymce config keys when persisting a11y settings", async () => {
