@@ -1,0 +1,95 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M37PXJ1WVJ05QE5G5ATNA5FP",
+  "session_id": "fda80301-676b-4412-a3b7-8c7f900cd2bf",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-23T18:02:20.192314Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 6,
+  "save_step_count": 6,
+  "files_touched": [],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "29fabfe13677",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 6
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 75,
+      "user_lines_removed": 12,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".changeset/fix-docs-appearance-toggle.md": 5,
+        ".changeset/tinymce-component-picker-exclusions.md": 5,
+        ".github/workflows/ci.yml": 1,
+        "docs/.vitepress/theme/index.ts": 1,
+        "renderers/tinymce/src/plugins/components.ts": 20,
+        "renderers/tinymce/tests/components-picker.test.ts": 43
+      },
+      "user_removed_per_file": {
+        ".github/workflows/ci.yml": 1,
+        "docs/.vitepress/theme/index.ts": 2,
+        "renderers/tinymce/tests/components-picker.test.ts": 9
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 6,
+      "user_lines_removed": 6,
+      "agent_lines_added": 1,
+      "agent_lines_removed": 1,
+      "user_added_per_file": {
+        "plugins/pantoken/layouts/src/layouts/about-me/layout.html": 6
+      },
+      "user_removed_per_file": {
+        "plugins/pantoken/layouts/src/layouts/about-me/layout.html": 6
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 7,
+      "agent_lines_removed": 7
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 7,
+      "agent_lines_removed": 7
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 7,
+      "agent_lines_removed": 7
+    },
+    {
+      "checkpoint_number": 6,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 7,
+      "agent_lines_removed": 7
+    },
+    {
+      "checkpoint_number": 7,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 7,
+      "agent_lines_removed": 7
+    }
+  ]
+}
