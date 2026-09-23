@@ -357,4 +357,112 @@ describe("createSavePlugin", () => {
     revoke.mockRestore();
     vi.restoreAllMocks();
   });
+
+  test("reports malformed, invalid, and failed preset imports", async () => {
+    const target = editor();
+    const restore = vi.fn().mockRejectedValue(new Error("restore failed"));
+    createSavePlugin({
+      capture: () => ({ html: "current" }),
+      restore,
+      reset: vi.fn(),
+      isValid: (state): state is { html: string } =>
+        typeof state === "object" &&
+        state !== null &&
+        typeof (state as { html?: unknown }).html === "string",
+      storage: storage(),
+    })(target as never);
+
+    const showOpenFilePicker = vi.fn();
+    Object.defineProperty(window, "showOpenFilePicker", {
+      value: showOpenFilePicker,
+      configurable: true,
+    });
+
+    showOpenFilePicker.mockResolvedValueOnce([
+      { getFile: vi.fn().mockResolvedValue(new File(["not json"], "broken.json")) },
+    ]);
+    command(target, IMPORT_COMMAND)();
+    await vi.waitFor(() => expect(target.notificationManager.open).toHaveBeenCalledTimes(1));
+
+    const invalidPayload = {
+      version: 1,
+      exportedAt: new Date().toISOString(),
+      name: "Invalid",
+      state: { text: "not accepted" },
+    };
+    showOpenFilePicker.mockResolvedValueOnce([
+      {
+        getFile: vi
+          .fn()
+          .mockResolvedValue(new File([JSON.stringify(invalidPayload)], "invalid.json")),
+      },
+    ]);
+    command(target, IMPORT_COMMAND)();
+    await vi.waitFor(() => expect(target.notificationManager.open).toHaveBeenCalledTimes(2));
+
+    const validPayload = {
+      version: 1,
+      exportedAt: new Date().toISOString(),
+      name: "Rejected",
+      state: { html: "imported" },
+    };
+    showOpenFilePicker.mockResolvedValueOnce([
+      {
+        getFile: vi.fn().mockResolvedValue(new File([JSON.stringify(validPayload)], "valid.json")),
+      },
+    ]);
+    command(target, IMPORT_COMMAND)();
+    await vi.waitFor(() => expect(target.windowManager.confirm).toHaveBeenCalledTimes(1));
+    const confirmImport = target.windowManager.confirm.mock.calls[0]?.[1] as (
+      confirmed: boolean,
+    ) => void;
+    confirmImport(true);
+    await vi.waitFor(() => expect(restore).toHaveBeenCalledWith({ html: "imported" }));
+    await vi.waitFor(() => expect(target.notificationManager.open).toHaveBeenCalledTimes(3));
+
+    delete (window as { showOpenFilePicker?: unknown }).showOpenFilePicker;
+  });
+
+  test("imports from the native file-input fallback", async () => {
+    const target = editor();
+    const restore = vi.fn();
+    createSavePlugin({
+      capture: () => ({ html: "current" }),
+      restore,
+      reset: vi.fn(),
+      isValid: (state): state is { html: string } =>
+        typeof state === "object" &&
+        state !== null &&
+        typeof (state as { html?: unknown }).html === "string",
+      storage: storage(),
+    })(target as never);
+
+    delete (window as { showOpenFilePicker?: unknown }).showOpenFilePicker;
+    const payload = {
+      version: 1,
+      exportedAt: new Date().toISOString(),
+      name: "Fallback",
+      state: { html: "imported" },
+    };
+    const input = document.createElement("input");
+    Object.defineProperty(input, "files", {
+      value: [new File([JSON.stringify(payload)], "fallback.json")],
+      configurable: true,
+    });
+    vi.spyOn(input, "click").mockImplementation(() => input.dispatchEvent(new Event("change")));
+    const createElement = document.createElement.bind(document);
+    vi.spyOn(document, "createElement").mockImplementation((tagName: string) =>
+      tagName === "input" ? input : createElement(tagName),
+    );
+
+    command(target, IMPORT_COMMAND)();
+    await vi.waitFor(() => expect(target.windowManager.confirm).toHaveBeenCalledTimes(1));
+    const confirmImport = target.windowManager.confirm.mock.calls[0]?.[1] as (
+      confirmed: boolean,
+    ) => void;
+    confirmImport(true);
+    await vi.waitFor(() => expect(restore).toHaveBeenCalledWith({ html: "imported" }));
+
+    vi.restoreAllMocks();
+  });
 });
