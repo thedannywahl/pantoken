@@ -1,0 +1,44 @@
+we need to finish the migration to vitest5, here's the output from `vp migrate`:
+```
+  - Vitest v5: 11 review items
+
+docs/scripts/translate-api-po.test.ts
+  66:3 REVIEW [class-mock] Review constructor mock implementations and their inherited prototypes.
+    Docs: https://vitest.dev/guide/migration/#class-mocks-keep-prototype-methods
+
+formats/interactions/tests/truncate.test.ts
+  23:10 REVIEW [class-mock] Review constructor mock implementations and their inherited prototypes.
+    Docs: https://vitest.dev/guide/migration/#class-mocks-keep-prototype-methods
+  66:3 REVIEW [dom-global] In jsdom/happy-dom, global assignment also updates the window; review this DOM override.
+    Docs: https://vitest.dev/guide/migration/#dom-environment-global-assignments-now-update-the-underlying-window
+  90:5 REVIEW [dom-global] In jsdom/happy-dom, global assignment also updates the window; review this DOM override.
+    Docs: https://vitest.dev/guide/migration/#dom-environment-global-assignments-now-update-the-underlying-window
+
+packages/plugin-kit/tests/sandbox-error-paths.test.ts
+  17:22 REVIEW [class-mock] Review constructor mock implementations and their inherited prototypes.
+    Docs: https://vitest.dev/guide/migration/#class-mocks-keep-prototype-methods
+
+renderers/web-components/tests/simple-elements.test.ts
+  262:3 REVIEW [dom-global] In jsdom/happy-dom, global assignment also updates the window; review this DOM override.
+    Docs: https://vitest.dev/guide/migration/#dom-environment-global-assignments-now-update-the-underlying-window
+  274:19 REVIEW [class-mock] Review constructor mock implementations and their inherited prototypes.
+    Docs: https://vitest.dev/guide/migration/#class-mocks-keep-prototype-methods
+  300:5 REVIEW [dom-global] In jsdom/happy-dom, global assignment also updates the window; review this DOM override.
+    Docs: https://vitest.dev/guide/migration/#dom-environment-global-assignments-now-update-the-underlying-window
+
+vite.config.ts
+  16:17 REVIEW [global-api-ownership] Resolve setupFiles before migrating global APIs. A setup entry cannot be resolved safely from the scanned files.
+    Docs: https://viteplus.dev/guide/vitest-v5#resolve-migration-findings
+  37:7 REVIEW [coverage-patterns] Compare v4/v5 resolved coverage.include file sets; v5 matches relative paths more precisely.
+    Docs: https://vitest.dev/guide/migration/#coverage-include-and-exclude-match-more-precisely
+  61:7 REVIEW [coverage-patterns] Compare v4/v5 resolved coverage.exclude file sets; v5 matches relative paths more precisely.
+    Docs: https://vitest.dev/guide/migration/#coverage-include-and-exclude-match-more-precisely
+```
+
+---
+
+Read-only, medium thoroughness. In /Users/dwahl/Scripts/pantoken, investigate the Vitest v5 migration findings in: docs/scripts/translate-api-po.test.ts line 66, formats/interactions/tests/truncate.test.ts lines 23, 66, 90, packages/plugin-kit/tests/sandbox-error-paths.test.ts line 17, renderers/web-components/tests/simple-elements.test.ts lines 262, 274, 300. First follow .entire/graph-agent.md (run required graph search if applicable). Inspect focused source, relevant imports/setup/nearby patterns and tests. Report for each: current behavior, v5 semantic risk, smallest correct concrete implementation change, exact files/symbols, focused validation command. Do not edit.
+
+---
+
+Start implementation
