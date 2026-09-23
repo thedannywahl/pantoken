@@ -11,3 +11,7 @@ Planning only, read-only. In /Users/dwahl/Scripts/pantoken, investigate analogou
 ---
 
 Planning only, read-only. In /Users/dwahl/Scripts/pantoken, investigate the current layouts implementation for plugins/pantoken/layouts. Follow repo instructions, including .entire/graph-agent.md if you need code location. Focus on: current directory structure under plugins/pantoken/layouts/src/layouts, how individual layout records are defined (especially rubric-note.ts), how translations are represented today, package entry points/build config/tests/docs references, and any generated cssdoc/scaffold assumptions that would be affected by reorganizing to src/layouts/<layout>/{layout html file, ts exporter, translation file}. Return concise findings with specific files/symbols and blockers/ambiguities. Do not edit files.
+
+---
+
+Start implementation
