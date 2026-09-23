@@ -37,6 +37,25 @@ interface ComponentRecord {
   examples: string[];
 }
 
+const COMPONENT_PICKER_EXCLUDED_COMPONENTS = new Set([
+  "agent-shell",
+  "date-input",
+  "date-time-input",
+  "drawer-layout",
+  "file-drop",
+  "form-field",
+  "form-field-messages",
+  "in-place-edit",
+  "input-group",
+  "number-input",
+  "range-input",
+  "side-nav-bar",
+  "simple-select",
+  "text-area",
+  "text-input",
+  "tray",
+]);
+
 function normalizeExample(example: string): string {
   const fencedHtml = example.match(/```(?:html)?\s*([\s\S]*?)```/iu);
   return (fencedHtml?.[1] ?? example).trim();
@@ -89,6 +108,7 @@ function buildComponentList(model: CssDocEntry[]): ComponentRecord[] {
   for (const entry of model) {
     const kind = entry.kind as string;
     if (kind !== "component" && kind !== "custom-component") continue;
+    if (COMPONENT_PICKER_EXCLUDED_COMPONENTS.has(entry.name)) continue;
 
     list.push({
       name: entry.name,

@@ -90,7 +90,7 @@ test("toolbar button opens dialog when clicked", () => {
   expect(editor.windowManager.open).toHaveBeenCalled();
 });
 
-test("picker lists components and custom components without a search field", () => {
+test("picker lists eligible components and custom components without a search field", () => {
   const editor = createMockEditor();
   const plugin = createComponentsPlugin({
     model: [
@@ -98,6 +98,36 @@ test("picker lists components and custom components without a search field", () 
       {
         name: "agent-shell",
         className: ".instui-agent-shell",
+        kind: "custom-component",
+        examples: [],
+      },
+      {
+        name: "date-input",
+        className: ".instui-date-input",
+        kind: "component",
+        examples: [],
+      },
+      {
+        name: "text-input",
+        className: ".instui-text-input",
+        kind: "component",
+        examples: [],
+      },
+      {
+        name: "icon-button",
+        className: ".instui-icon-button",
+        kind: "component",
+        examples: [],
+      },
+      {
+        name: "future-panel",
+        className: ".instui-future-panel",
+        kind: "component",
+        examples: [],
+      },
+      {
+        name: "editor-card",
+        className: ".instui-editor-card",
         kind: "custom-component",
         examples: [],
       },
@@ -120,12 +150,16 @@ test("picker lists components and custom components without a search field", () 
   expect(items).toHaveLength(1);
   expect(items[0].name).toBe("component");
   expect(items[0].items.map((item: { value: string }) => item.value)).toEqual([
-    "agent-shell",
     "button",
+    "editor-card",
+    "future-panel",
+    "icon-button",
   ]);
   expect(items[0].items.map((item: { text: string }) => item.text)).toEqual([
-    "agent-shell",
     "button",
+    "editor-card",
+    "future-panel",
+    "icon-button",
   ]);
 });
 
@@ -227,12 +261,12 @@ test("component example inserts only the HTML from a fenced example", () => {
   const plugin = createComponentsPlugin({
     model: [
       {
-        name: "agent-shell",
-        className: ".instui-agent-shell",
+        name: "editor-card",
+        className: ".instui-editor-card",
         kind: "custom-component",
-        description: "A surface container for AI agents.",
+        description: "A surface container for editor content.",
         examples: [
-          '-nocard ```html\n<div class="instui-agent-shell --p-md">\n  <p>Content here.</p>\n</div>\n```',
+          '-nocard ```html\n<div class="instui-editor-card --p-md">\n  <p>Content here.</p>\n</div>\n```',
         ],
         modifiers: [],
       },
@@ -246,12 +280,12 @@ test("component example inserts only the HTML from a fenced example", () => {
 
   const openCall = (editor.windowManager.open as any).mock.calls[0];
   openCall[0].onSubmit({
-    getData: vi.fn().mockReturnValue({ component: "agent-shell" }),
+    getData: vi.fn().mockReturnValue({ component: "editor-card" }),
     close: vi.fn(),
   });
 
   const insertContent = (editor as unknown as Record<string, unknown>).insertContent;
   expect(insertContent).toHaveBeenCalledWith(
-    '<div class="instui-agent-shell --p-md">\n  <p>Content here.</p>\n</div>',
+    '<div class="instui-editor-card --p-md">\n  <p>Content here.</p>\n</div>',
   );
 });

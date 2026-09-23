@@ -113,7 +113,7 @@ jobs:
       - name: Generate English API documentation
         run: vp run @pantoken/docs#docs:api:en
       - name: Test all packages
-        run: vp run -r test
+        run: vp test
 
   # Continuous performance testing for the transform pipeline, run inside the CI gate so it reuses the
   # `build` job's cached task outputs instead of rebuilding from scratch. Advisory only — a CodSpeed

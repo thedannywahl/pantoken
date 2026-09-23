@@ -54,7 +54,6 @@ import {
   DOCS_INSTANCE,
   applyColor,
   applyTheme,
-  broadcastTheme,
   getActiveScheme,
   getStoredColor,
   getStoredTheme,
@@ -192,7 +191,7 @@ export default {
       applyColor(getStoredColor());
 
       const appearanceObserver = new MutationObserver(() => {
-        broadcastTheme(getStoredTheme(), getStoredColor());
+        applyTheme(getStoredTheme());
       });
       appearanceObserver.observe(document.documentElement, {
         attributes: true,
