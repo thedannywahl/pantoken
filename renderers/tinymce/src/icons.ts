@@ -227,16 +227,23 @@ export function getIconImageSrc(icon: TaggedIcon, root?: Element): string | unde
 }
 
 /**
- * A `:root` rule declaring every glyph token this package carries inline, so picker previews for
- * components and custom icons paint with no network request.
+ * A `:root` rule declaring every glyph token this package carries inline, plus the `.-icon-<name>`
+ * painter mapping each published per-icon stylesheet also carries — without it, `--pantoken-glyph`
+ * is never set for these icons and the shared painter (in the picker or inserted content) renders a
+ * blank square. So picker previews for components and custom icons paint with no network request.
  */
 export function buildIconTokenCss(icons: readonly TaggedIcon[]): string {
   const declarations: string[] = [];
+  const classRules: string[] = [];
   for (const icon of icons) {
     const value = getIconTokenValue(icon);
-    if (value) declarations.push(`${COMPONENT_ICON_TOKEN_PREFIX}${icon.name}:${value}`);
+    if (!value) continue;
+    declarations.push(`${COMPONENT_ICON_TOKEN_PREFIX}${icon.name}:${value}`);
+    classRules.push(
+      `.-icon-${icon.name}{--pantoken-glyph:var(${COMPONENT_ICON_TOKEN_PREFIX}${icon.name})}`,
+    );
   }
-  return `:root{${declarations.join(";")}}`;
+  return `:root{${declarations.join(";")}}\n${classRules.join("\n")}`;
 }
 
 /** Match `query` against an icon's name, source label, and description; blank matches everything. */

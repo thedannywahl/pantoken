@@ -5,6 +5,7 @@
  * \@module
  */
 import { buildFileUrl } from "@pantoken/cdn";
+import type { CdnFile } from "@pantoken/cdn";
 import { buildIconTokenCss, ICON_BUNDLE_CDN_FILES, type TaggedIcon } from "../icons.js";
 
 /** Marks the elements this module owns so each is injected at most once per document. */
@@ -142,6 +143,7 @@ export function injectPickerStyles(
   doc: Document,
   icons: readonly TaggedIcon[],
   provider?: string,
+  buildAssetUrl?: (file: CdnFile) => string,
 ): void {
   appendStyle(doc, "chrome", `${PAINTER_CSS}\n${LAYOUT_CSS}`);
   appendStyle(doc, "tokens", buildIconTokenCss(icons));
@@ -149,7 +151,7 @@ export function injectPickerStyles(
     appendOnce(doc, file.package, () => {
       const link = doc.createElement("link");
       link.rel = "stylesheet";
-      link.href = buildFileUrl(file, provider);
+      link.href = (buildAssetUrl ?? ((f: CdnFile) => buildFileUrl(f, provider)))(file);
       return link;
     });
   }

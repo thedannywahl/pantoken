@@ -128,6 +128,10 @@ test("buildIconTokenCss declares only the glyphs this package carries inline", (
   const css = buildIconTokenCss(icons);
   expect(css).toContain("--instui-icon-pantoken:url(");
   expect(css).not.toContain("--instui-icon-github");
+  // Without this, `--pantoken-glyph` (what the shared painter actually reads) is never set for
+  // these icons, so they render as blank squares wherever the painter applies.
+  expect(css).toContain(".-icon-pantoken{--pantoken-glyph:var(--instui-icon-pantoken)}");
+  expect(css).not.toContain(".-icon-github{");
 });
 
 test("getUsedIconCdnFiles deduplicates icon classes and drops deleted icons", () => {

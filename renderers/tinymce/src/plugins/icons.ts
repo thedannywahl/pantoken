@@ -44,6 +44,8 @@ export interface IconsPickerOptions {
   registerUi?: boolean;
   /** CDN provider for the glyph sheets the picker preview needs. */
   provider?: string;
+  /** Resolve an icon's CSS file to a local or CDN URL. Takes precedence over `provider`. */
+  buildAssetUrl?: (file: CdnFile) => string;
   /** Autocompleter trigger string (default {@link DEFAULT_ICON_TRIGGER}). */
   trigger?: string;
 }
@@ -74,7 +76,7 @@ function openIconsDialog(editor: Editor, options: IconsPickerOptions): void {
   const root = doc.getElementById(PICKER_ROOT_ID);
   if (!root) return;
 
-  injectPickerStyles(doc, options.icons, options.provider);
+  injectPickerStyles(doc, options.icons, options.provider, options.buildAssetUrl);
   picker = mountIconPicker(root, options.icons, {
     strings: {
       searchPlaceholder: TINYMCE_STRINGS.iconsSearchPlaceholder,
@@ -105,7 +107,7 @@ function registerAutocompleter(editor: Editor, options: IconsPickerOptions): voi
     highlightOn: ["pantoken-icon-name"],
     fetch: (pattern, maxResults) => {
       const doc = editor.getContainer().ownerDocument;
-      injectPickerStyles(doc, options.icons, options.provider);
+      injectPickerStyles(doc, options.icons, options.provider, options.buildAssetUrl);
       return Promise.resolve(
         filterIcons(options.icons, pattern)
           .slice(0, maxResults)

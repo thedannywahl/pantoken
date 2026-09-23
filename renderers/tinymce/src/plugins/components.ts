@@ -19,6 +19,8 @@ export interface ComponentsPickerOptions {
   model: CssDocEntry[];
   currentAssets: CdnFile[];
   onMissingAsset?: MissingAssetHandler;
+  /** Resolve a component's CSS file to a local or CDN URL. Defaults to the default CDN provider. */
+  buildAssetUrl?: (file: CdnFile) => string;
   /** Register this picker's standalone toolbar button and menu item. */
   registerUi?: boolean;
 }

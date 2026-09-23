@@ -8,7 +8,7 @@
  *
  * \@module
  */
-import { buildFileUrls } from "@pantoken/cdn";
+import { buildFileUrl, buildFileUrls } from "@pantoken/cdn";
 import type { CdnFile, CdnProvider } from "@pantoken/cdn";
 import type { Editor } from "tinymce";
 import type { MissingAssetHandler } from "./types.js";
@@ -42,12 +42,17 @@ export function injectContentStylesheet(editor: Editor, url: string): void {
 export function trackAndInjectAsset(
   editor: Editor,
   cssFile: CdnFile,
-  target: { currentAssets: CdnFile[]; onMissingAsset?: MissingAssetHandler },
+  target: {
+    currentAssets: CdnFile[];
+    onMissingAsset?: MissingAssetHandler;
+    /** Resolve the CSS file to a local or CDN URL. Defaults to the default CDN provider. */
+    buildAssetUrl?: (file: CdnFile) => string;
+  },
 ): void {
   if (!target.currentAssets.find((a) => a.path === cssFile.path)) {
     target.currentAssets.push(cssFile);
     target.onMissingAsset?.(cssFile);
   }
-  const cssUrl = `https://unpkg.com/${cssFile.package}@latest/${cssFile.path}`;
+  const cssUrl = (target.buildAssetUrl ?? buildFileUrl)(cssFile);
   injectContentStylesheet(editor, cssUrl);
 }
