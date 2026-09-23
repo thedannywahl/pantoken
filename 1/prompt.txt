@@ -1,0 +1,21 @@
+I added another button here "download package" which should be the html file, the css file, and the js file in a zip. we need to wire that in, and make sure that  the download html button still works to just download the standalone html file.
+
+---
+
+Planning-only, read-only exploration in /Users/dwahl/Scripts/pantoken. Do not edit files. Thoroughness: medium. Follow repo instructions: first run `entire graph search --repo . --profile full --query "wire canvas theme editor download package zip containing html css and js while preserving standalone html download"`, then inspect the top relevant source. Also run `entire status`, and check git log/checkpoint trailers for key files; use `entire explain` where available to capture recorded intent. Trace packages/scaffold/templates/canvas-theme-editor/src/app.html buttons into the exact application handlers and build/download helpers. Find tests covering standalone HTML download, CSS/JS generation, template interpolation, and any existing ZIP creation/download precedent or dependency in this monorepo. Determine generated/mirrored files that must be regenerated, applicable package scripts/vite tasks and focused validation commands. Note whether user-visible change needs i18n/l10n, docs, ai assets, security docs, and changeset under repo rules. Return: (1) controlling symbols and call flow, (2) concrete files/lines likely modified, (3) recommended implementation design and filename/archive layout based on existing patterns, (4) tests/validation, (5) ambiguities or blockers, (6) checkpoint-backed intent versus code inference. Do not implement.
+
+---
+
+Planning-only, read-only exploration in /Users/dwahl/Scripts/pantoken. Do not edit. Thoroughness: quick. Focus narrowly on packages/scaffold canvas-theme-editor generation/testing and dependency conventions. Inspect packages/scaffold/package.json, vite.config tasks relevant to generate/test, packages/scaffold/tests around canvas-theme-editor, pnpm-workspace.yaml catalog, template README, i18n labels, and source code around current generated CSS/JS artifacts. Search for existing browser download helpers and object URL cleanup elsewhere. Determine: exact generate and focused test commands; generated tracked files; whether template deps belong dependencies vs devDependencies; current current filename conventions; whether template main.ts can be unit-tested or scaffold build is the practical test; and whether ASSURANCE/SECURITY/AI/docs need changes for this narrowly added local ZIP export. Also verify latest suitable ZIP package version via authoritative package metadata only if command access is available, but do not make changes. Return concise evidence with paths/symbols and distinguish facts from recommendation.
+
+---
+
+is jszip the best package?  compare other viable alternatives like fflate, uzip, pako, etc. we're looking for modern, supported, and compatible with the existing workspace.
+
+---
+
+Planning-only, read-only research. Do not edit files. Evaluate browser-side ZIP creation libraries for /Users/dwahl/Scripts/pantoken Canvas Theme Editor scaffold, which needs to create one ZIP containing exactly three in-memory UTF-8 text files under Vite/Vite+ and modern browsers, with a Node-free browser runtime. Compare at minimum JSZip, fflate, UZIP/uzip, pako, @zip.js/zip.js, and client-zip. Use current authoritative npm registry metadata and upstream repositories/docs where available; do not rely on model memory for versions. Assess: latest version/date or visible maintenance signals, minified/gzip package or bundle size where verifiable, dependency count, ESM/browser compatibility, API complexity for this use, async/non-blocking/streaming options, compression, TypeScript types, license, and known compatibility/security concerns. Also inspect this repo's toolchain/browser conventions and dependency catalog to judge fit. Recommend one option and explain tradeoffs. Return source URLs and clearly mark unverifiable claims. No code changes.
+
+---
+
+Start implementation
