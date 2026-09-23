@@ -370,6 +370,9 @@ catalogs:
     fast-check:
       specifier: ^4.10.2
       version: 4.10.2
+    fflate:
+      specifier: ^0.8.3
+      version: 0.8.3
     happy-dom:
       specifier: ^20.14.5
       version: 20.14.5
@@ -900,6 +903,9 @@ importers:
       codemirror:
         specifier: 'catalog:'
         version: 6.0.2
+      fflate:
+        specifier: 'catalog:'
+        version: 0.8.3
       markdown-it:
         specifier: 'catalog:'
         version: 15.0.2
@@ -6831,10 +6837,6 @@ packages:
 
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
-
-  bingo-fs@0.5.6:
-    resolution: {integrity: sha512-af4FUCgSQ9cKv9p9umRAjZNHHcipJhMbhSJ7YNNrRv8as4OQNG+XnpUp4gja8JVJ8CWpdTL8FlF2XkO9Y6WN3Q==}
-    engines: {node: '>=18'}
 
   bingo-fs@0.5.7:
     resolution: {integrity: sha512-unn80/qC5BZlppL1HLrveT+RGXYFDXW/shM/CgDFHGIKuIvVJlnq66XKhY7B2H/vceLsow4r15Jhd/6gfuR56g==}
@@ -13719,8 +13721,6 @@ snapshots:
     dependencies:
       file-uri-to-path: 1.0.0
 
-  bingo-fs@0.5.6: {}
-
   bingo-fs@0.5.7: {}
 
   bingo-requests@0.5.6:
@@ -13742,7 +13742,7 @@ snapshots:
 
   bingo-systems@0.6.0:
     dependencies:
-      bingo-fs: 0.5.6
+      bingo-fs: 0.5.7
       execa: 9.6.1
       get-github-auth-token: 0.1.2
       octokit: 5.0.5

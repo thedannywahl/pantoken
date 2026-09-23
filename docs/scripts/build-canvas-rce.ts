@@ -52,5 +52,17 @@ await build({
   root: renderDir,
   base: "/tools/canvas-rce/",
   logLevel: "warn",
+  resolve: {
+    alias: {
+      "@pantoken/interactions/interactions.iife.js": join(
+        docsRoot,
+        "..",
+        "formats",
+        "interactions",
+        "dist",
+        "interactions.iife.js",
+      ),
+    },
+  },
   build: { outDir, emptyOutDir: true },
 });

@@ -91,6 +91,7 @@
     "@resvg/resvg-js": "catalog:",
     "@types/node": "catalog:",
     "codemirror": "catalog:",
+    "fflate": "catalog:",
     "markdown-it": "catalog:",
     "mermaid": "catalog:",
     "oxc-minify": "catalog:",
