@@ -31,3 +31,7 @@ Report back:
 - Relevant existing CSS class names and file paths
 - Any existing patterns for light/dark glyph swapping already established in the code
 - Your best understanding of root cause for the "system theme shows light but should show dark" bug
+
+---
+
+Start implementation
