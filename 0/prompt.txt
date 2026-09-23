@@ -1,0 +1,11 @@
+[plugins/tinymce/save/src/index.ts](https://github.com/thedannywahl/pantoken/pull/178/files/a5a7fd32b6e8e0885a641068feb980e2b35feaef#diff-46364e263317022a7328aadf302d3218f3cf078b10d94d95e1d7e2bdf4938644)
+```
+ const clean = name
+    .trim()
+    .toLocaleLowerCase()
+    .replace(/[^a-z0-9]+/gu, "-")
+    .replace(/^-+|-+$/gu, "");
+```
+### CodeQL / Polynomial regular expression used on uncontrolled data
+
+This [regular expression](https://github.com/thedannywahl/pantoken/pull/1) that depends on [library input](https://github.com/thedannywahl/pantoken/pull/2) may run slow on strings with many repetitions of '-'.
