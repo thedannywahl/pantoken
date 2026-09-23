@@ -1,0 +1,64 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M386Y7D79FD0MJ1SH4RQ34ND",
+  "session_id": "08650c9d-7167-4af6-ba94-086b9ad77801",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-23T22:42:22.676697Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "save_step_count": 2,
+  "files_touched": [],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "f1db24d47ec2",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 3
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 26,
+      "user_lines_removed": 2,
+      "agent_lines_added": 420,
+      "agent_lines_removed": 128,
+      "user_added_per_file": {
+        "renderers/tinymce/src/lib/icon-picker-styles.ts": 14,
+        "renderers/tinymce/tests/icons-picker.test.ts": 4,
+        "renderers/tinymce/tests/icons.test.ts": 1,
+        "renderers/tinymce/tests/pantoken.test.ts": 7
+      },
+      "user_removed_per_file": {
+        "renderers/tinymce/tests/icons.test.ts": 1,
+        "renderers/tinymce/tests/pantoken.test.ts": 1
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 227,
+      "user_lines_removed": 172,
+      "agent_lines_added": 604,
+      "agent_lines_removed": 133,
+      "user_added_per_file": {
+        "l10n/docs.api.pot": 8,
+        "packages/scaffold/templates/canvas-theme-editor/src/app.css": 11,
+        "packages/scaffold/templates/canvas-theme-editor/src/app.html": 16,
+        "packages/scaffold/templates/canvas-theme-editor/src/i18n.json": 11,
+        "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl": 168,
+        "packages/scaffold/tests/index.test.ts": 13
+      },
+      "user_removed_per_file": {
+        "l10n/docs.api.pot": 2,
+        "packages/scaffold/templates/canvas-theme-editor/src/app.html": 1,
+        "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl": 169
+      }
+    }
+  ]
+}
