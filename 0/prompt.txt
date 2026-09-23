@@ -1,0 +1,36 @@
+upgrade path to instui 11.7.7
+https://github.com/instructure/instructure-ui/commit/cb3bd2953f89f72a6d3a06c338a217eedce1a392
+
+implementing all upstream changes, and specifically capturing ai-spinner icon for the icon library.
+
+---
+
+Quick discovery only; do not edit. In /Users/dwahl/Scripts/pantoken, trace exactly how upstream Instructure UI versions, token data, and icon assets are ingested/generated/released. Identify concrete files, scripts, package version sources, tests, generated artifacts, and closest prior upgrade commit/pattern. Focus especially on where an icon such as ai-spinner would enter the icon library. Read relevant repo instructions (including .entire/graph-agent.md) first. Return concise findings with full paths, symbols, and recommended validation commands.
+
+---
+
+Medium discovery only; do not edit. Determine the precise minimal implementation path for exposing a new Pantoken icon named ai-spinner, based on the upstream InstUI 11.7.7 commit cb3bd2953f89f72a6d3a06c338a217eedce1a392. Inspect existing custom icon additions in pantoken: source locations, naming, SVG validation, generated formats, tests/docs/demos/changesets. Inspect installed/upstream ui-icons assets if accessible and determine whether an existing igniteai-logo SVG can source the path or whether the spinner path needs a dedicated source file. Report exact full paths/symbols and any ambiguity about icon semantics or animation.
+
+---
+
+Medium discovery only; do not edit. In Pantoken, find the semantic components implementation, tests, docs/demos, and interactions/web components that correspond to InstUI Spinner. Compare its current variants and behavior to upstream InstUI v11.7.7 commit cb3bd2953f89f72a6d3a06c338a217eedce1a392 (ai and ai-on-color spinner variants). Identify exact files/symbols and whether Pantoken should implement these upstream spinner changes for parity. Also identify all cataloged @instructure/ui-* packages that are installed and whether bumping only ui-icons versus all packages to 11.7.7 has lockfile/compatibility implications. Return evidence-grounded recommended scope and tests/validation.
+
+---
+
+Thorough focused discovery; do not edit. Determine how @pantoken/icons, @pantoken/tokens, @pantoken/components icon painter, and optional @pantoken/plugin-custom-icons relate. User requests capturing upstream InstUI 11.7.7's ai-spinner icon 'for the icon library.' Recommend the exact correct ownership: extend packages/core collectIcons as a Pantoken supplemental InstUI icon, add it to optional custom-icons plugin, or another route. Verify generation and downstream public exports. Find precedent for upstream-derived-but-not-distributed standalone glyphs. Identify exact files/symbols/tests/docs/changeset requirements and all relevant planned updates. Also discover which Pantoken spinner CSS tokens exist for an AI gradient and on-color treatment; report whether tokens are already upstream token data or must be represented via raw CSS.
+
+---
+
+Quick focused discovery only; do not edit. Find the authoritative source CSS/TS records in Pantoken that implement existing `-color-ai` / AI-gradient visual treatments (e.g. button/avatar/heading), identify exact gradient token names and mask/pseudo patterns reusable for spinner. Also check how web component element definitions expose host attributes/classes and whether spinner can support ai variants without JS or must change renderer markup/accessibility. Return concise paths/symbols and direct recommendation.
+
+---
+
+before we add the ai-spinner glyph, make sure it's not actually just an aliast for an existing path.
+
+---
+
+Thorough read-only investigation. Determine whether the exact centered star path used by InstUI v11.7.7's AISpinnerIcon.tsx (commit cb3bd2953f89f72a6d3a06c338a217eedce1a392) is geometrically identical to, or a directly reusable subset of, any existing Pantoken standard icons (the collected @instructure/ui-icons Custom glyphs/Lucide icons), optional custom-icons plugin SVGs, or existing generated token SVGs. Inspect installed node_modules and repository sources as needed. Identify exact matching icon names and whether a match is full SVG vs partial path. Explain whether `ai-spinner` needs a new canonical glyph, a semantic alias to an existing glyph, or can reuse an existing multi-path icon with no new asset. Do not edit. Include exact paths and evidence.
+
+---
+
+Start implementation
