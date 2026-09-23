@@ -106,7 +106,9 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain(
     'previewFrame.contentDocument?.addEventListener("click", handlePreviewLinkClick);',
   );
-  expect(main).toContain('includeDarkModeCheckbox.checked = mode === "dark";');
+  // The docs page's dark/light mode re-themes the chrome only — it must never drive the
+  // "include dark mode" checkbox, which is an independent authoring choice.
+  expect(main).not.toContain('includeDarkModeCheckbox.checked = mode === "dark";');
   expect(main).toContain("document.documentElement.dataset.pantokenScheme = mode;");
   expect(main).toContain("applyEditorTheme(activeEditor);");
   expect(main).toContain("refreshAll();");

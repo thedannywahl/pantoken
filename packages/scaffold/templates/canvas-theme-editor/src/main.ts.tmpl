@@ -477,7 +477,8 @@ function applyChromeColor(color: PantokenColorNamespace): void {
 
 function applyParentTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
   selectedTheme = theme;
-  includeDarkModeCheckbox.checked = mode === "dark";
+  // The docs page's own light/dark mode re-themes the chrome only — "include dark mode" is an
+  // independent authoring choice about what ships with the exported theme, not a mirror of it.
   document.documentElement.dataset.pantokenScheme = mode;
   const themeButton = [...themeButtons].find((button) => button.dataset.theme === theme);
   if (themeButton) selectToggleButton(themeButtons, themeButton);
