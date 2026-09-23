@@ -1,0 +1,57 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M37560KEVM177TDZ3VMYK614",
+  "strategy": "manual-commit",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 2,
+  "files_touched": [
+    "l10n/ar/tinymce.strings.po",
+    "l10n/ca/tinymce.strings.po",
+    "l10n/cy/tinymce.strings.po",
+    "l10n/da/tinymce.strings.po",
+    "l10n/de/tinymce.strings.po",
+    "l10n/el/tinymce.strings.po",
+    "l10n/en-AU/tinymce.strings.po",
+    "l10n/en-CA/tinymce.strings.po",
+    "l10n/en-GB/tinymce.strings.po",
+    "l10n/en/tinymce.strings.po",
+    "l10n/es/tinymce.strings.po",
+    "l10n/fa/tinymce.strings.po",
+    "l10n/fi/tinymce.strings.po",
+    "l10n/fr-CA/tinymce.strings.po",
+    "l10n/fr/tinymce.strings.po",
+    "l10n/ga/tinymce.strings.po",
+    "l10n/he/tinymce.strings.po",
+    "l10n/hi/tinymce.strings.po",
+    "l10n/ht/tinymce.strings.po",
+    "l10n/hu/tinymce.strings.po",
+    "l10n/hy/tinymce.strings.po",
+    "l10n/id/tinymce.strings.po",
+    "l10n/is/tinymce.strings.po",
+    "l10n/it/tinymce.strings.po",
+    "l10n/ja/tinymce.strings.po",
+    "l10n/ko/tinymce.strings.po",
+    "l10n/mi/tinymce.strings.po",
+    "l10n/ms/tinymce.strings.po",
+    "l10n/nb/tinymce.strings.po",
+    "l10n/nl/tinymce.strings.po",
+    "l10n/nn/tinymce.strings.po",
+    "l10n/pl/tinymce.strings.po"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
