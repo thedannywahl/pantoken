@@ -51,7 +51,6 @@ import "tinymce/plugins/fullscreen";
 import "tinymce/plugins/quickbars";
 import "tinymce/plugins/searchreplace";
 import "tinymce/plugins/wordcount";
-import "tinymce/plugins/emoticons";
 import "tinymce/plugins/table";
 import "tinymce/plugins/media";
 import "tinymce/plugins/visualblocks";
@@ -97,7 +96,6 @@ import {
   loadAllIcons,
   logos,
   PANTOKEN_ICON_PACK_NAME,
-  PANTOKEN_ICONS_DATABASE_ID,
   products,
   registerPantokenIconPack,
   pantokenHtmlLinter,
@@ -982,7 +980,7 @@ void registerPantokenPlugin.then(() =>
     .init({
       selector: "#editor",
       plugins:
-        "pantoken pantoken_content_classes placehold pantoken_a11y pantoken_save pantoken_sup_sub pantoken_source_toggle pantoken_fullscreen_footer pantoken_searchreplace_footer pantoken_visualblocks_footer image link lists table media autosave fullscreen quickbars searchreplace wordcount emoticons visualblocks",
+        "pantoken pantoken_content_classes placehold pantoken_a11y pantoken_save pantoken_sup_sub pantoken_source_toggle pantoken_fullscreen_footer pantoken_searchreplace_footer pantoken_visualblocks_footer image link lists table media autosave fullscreen quickbars searchreplace wordcount visualblocks",
       toolbar: `undo redo | pantoken ${SAVE_TOOLBAR_NAME} | fontsize blocks | bold italic underline forecolor backcolor ${SUP_SUB_TOOLBAR_NAME} | link image placehold | align | bullist numlist | removeformat table media`,
       menubar: false,
       theme: "silver",
@@ -1000,11 +998,6 @@ void registerPantokenPlugin.then(() =>
       // find & replace) — the breadcrumb is dropped rather than added as a sixth item.
       elementpath: false,
       block_formats: "Paragraph=p;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6",
-      // The icons picker pre-registers its own database under this id (see @pantoken/tinymce's
-      // icons plugin) — the url is never fetched since the id is already cached by the time the
-      // `emoticons` plugin initializes (it comes after `pantoken` in the `plugins` list above).
-      emoticons_database_id: PANTOKEN_ICONS_DATABASE_ID,
-      emoticons_database_url: "about:blank",
       // Hides the image dialog's Upload tab so only a remote http/https URL can be inserted — no
       // local file picker, no base64 data-URI embedding.
       image_uploadtab: false,
