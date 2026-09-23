@@ -224,6 +224,30 @@ invariant, and losing it reintroduces the bug silently. Related: never run `appl
 `:root` declarations, and unlayered declarations outrank every cascade layer — including
 `@layer pantoken.theme`.
 
+### A scheme override table is 87kb of work the browser already does
+
+**Symptom** — The multi-scope sheet carried six `[data-pantoken-scheme]` blocks, each re-declaring
+every `light-dark()` token flattened to one branch: 87kb, 15% of the sheet.
+
+**Root cause** — The reasoning was "Canvas RCE can't set `color-scheme`", which confused _can't set an
+inline style_ with _can't have the property set at all_. `color-scheme` is an ordinary CSS property;
+a stylesheet rule sets it, and Canvas loads a stylesheet.
+
+**Fix / rule** — One rule per scheme is the whole mechanism, because `color-scheme` is inherited and
+`light-dark()` resolves against the _consuming descendant's_ computed value, not the element the
+token was declared on:
+
+```css
+[data-pantoken-scheme="dark"] {
+  color-scheme: dark;
+}
+```
+
+87kb became 343 bytes. Browser-verified via `formats/css/tests/manual/scope-test.html` — a string
+test can't catch this class of mistake, because the wrong version also produces correct-looking CSS.
+When a sheet starts enumerating per-token overrides for something the cascade already inherits, stop
+and check whether one declaration would do.
+
 ### Reading `document.documentElement` is what desynchronises two instances
 
 **Symptom** — The docs site and the embedded canvas-theme-editor preview constantly fought over the

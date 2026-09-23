@@ -87,6 +87,11 @@ An earlier version of this sheet re-declared every themed token flattened to one
 what the browser already does from a single declaration. If you find yourself generating a per-token
 override table for a scheme, that's the mistake.
 
+The behaviour this rests on — that `light-dark()` inside a custom property resolves against the
+_consuming descendant's_ inherited `color-scheme`, not the element the token was declared on — is
+browser-verified by `formats/css/tests/manual/scope-test.html`. Re-run that page after any change to
+the scoped emitters; unit tests can only check the emitted strings, not the cascade.
+
 ## Sizing
 
 Measured over the three shipped themes, lean (no icons):

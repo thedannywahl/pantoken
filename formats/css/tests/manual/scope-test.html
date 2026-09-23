@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>pantoken scope test</title>
+
+    <!-- The two-sheet multi-scope pair. Registrations once, then the per-theme token blocks
+         (scope.lean.css also carries the light/dark color-scheme pins). -->
+    <link rel="stylesheet" href="../../generated/properties.lean.css" />
+    <link rel="stylesheet" href="../../generated/scope.lean.css" />
+
+    <style>
+      body {
+        font:
+          14px/1.5 ui-monospace,
+          monospace;
+        margin: 0;
+        padding: 24px;
+        background: #f6f6f6;
+      }
+      h1 {
+        font-size: 16px;
+      }
+      h2 {
+        font-size: 13px;
+        margin: 24px 0 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 8px;
+      }
+
+      /* Every probe paints the same two tokens, so any difference between probes comes purely
+         from the scope it sits in. */
+      .probe {
+        background-color: var(--instui-color-background-base);
+        color: var(--instui-color-text-base);
+        border: 2px solid var(--instui-color-stroke-base);
+        border-radius: var(--instui-border-radius-md);
+        min-height: var(--instui-size-interactive-height-sm);
+        padding: 12px 16px;
+        min-width: 200px;
+      }
+      .probe b {
+        display: block;
+        font-size: 12px;
+        opacity: 0.75;
+      }
+
+      #results {
+        margin-top: 24px;
+        border-top: 1px solid #ccc;
+        padding-top: 16px;
+      }
+      .pass {
+        color: #0a7d32;
+      }
+      .fail {
+        color: #b3001b;
+        font-weight: bold;
+      }
+      .note {
+        color: #555;
+        font-style: italic;
+      }
+      table {
+        border-collapse: collapse;
+        font-size: 12px;
+      }
+      td {
+        padding: 2px 10px 2px 0;
+        vertical-align: top;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>pantoken multi-scope check</h1>
+    <p class="note">
+      Run <code>vp run generate</code> in <code>formats/css</code> first — this page loads the
+      sheets from <code>../../generated/</code>, which is gitignored. Open it over
+      <code>file://</code>; no server needed.
+    </p>
+    <p class="note">
+      Tests the CSS layer only. Boundaries and instance resolution are runtime concepts in
+      <code>@pantoken/scope</code> and are not exercised here.
+    </p>
+
+    <h2>1 — sibling scopes: different themes AND different schemes, at once</h2>
+    <div class="row">
+      <div data-pantoken-theme="rebrand" data-pantoken-scheme="light">
+        <div class="probe" id="a"><b>rebrand / light</b>attribute form</div>
+      </div>
+      <div data-pantoken-theme="rebrand" data-pantoken-scheme="dark">
+        <div class="probe" id="b"><b>rebrand / dark</b>attribute form</div>
+      </div>
+      <div data-pantoken-theme="canvas" data-pantoken-scheme="light">
+        <div class="probe" id="c"><b>canvas / light</b>attribute form</div>
+      </div>
+      <div data-pantoken-theme="canvasHighContrast" data-pantoken-scheme="light">
+        <div class="probe" id="d"><b>canvasHighContrast / light</b>attribute form</div>
+      </div>
+    </div>
+
+    <h2>2 — nesting: inherit, then override</h2>
+    <div class="row">
+      <div data-pantoken-theme="canvas" data-pantoken-scheme="light">
+        <div class="probe">
+          <b>canvas / light (outer)</b>
+          <div class="probe" id="e"><b>no attributes</b>should inherit canvas/light</div>
+          <div data-pantoken-theme="rebrand" data-pantoken-scheme="dark">
+            <div class="probe" id="f"><b>rebrand / dark</b>nested inside canvas/light</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2>3 — class twins (for hosts that strip data-*)</h2>
+    <div class="row">
+      <div class="--pantoken-theme-rebrand --pantoken-scheme-dark">
+        <div class="probe" id="g"><b>rebrand / dark</b>class form</div>
+      </div>
+      <div class="--pantoken-theme-canvas --pantoken-scheme-light">
+        <div class="probe" id="h"><b>canvas / light</b>class form</div>
+      </div>
+    </div>
+
+    <h2>4 — scheme only, theme inherited from an ancestor</h2>
+    <div class="row">
+      <div data-pantoken-theme="rebrand">
+        <div class="probe">
+          <b>rebrand (no scheme)</b>
+          <div data-pantoken-scheme="light">
+            <div class="probe" id="i"><b>+ light</b></div>
+          </div>
+          <div data-pantoken-scheme="dark">
+            <div class="probe" id="j"><b>+ dark</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="results"></div>
+
+    <script>
+      const bg = (id) => getComputedStyle(document.getElementById(id)).backgroundColor;
+      const height = (id) => getComputedStyle(document.getElementById(id)).minHeight;
+      // canvas and canvasHighContrast share background and height; stroke-base is where they differ.
+      const border = (id) => getComputedStyle(document.getElementById(id)).borderTopColor;
+
+      const checks = [
+        [
+          "light-dark() resolves per subtree, not per document",
+          "THE load-bearing assumption: the token is declared once at :root, and only the " +
+            "inherited color-scheme differs between these two probes.",
+          () => bg("a") !== bg("b"),
+          () => `light=${bg("a")} dark=${bg("b")}`,
+        ],
+        [
+          "two schemes are live in one document simultaneously",
+          "Neither probe had to win; both render their own scheme at the same time.",
+          () => bg("b") !== bg("c") && bg("a") !== bg("b"),
+          () => `rebrand/dark=${bg("b")} canvas/light=${bg("c")}`,
+        ],
+        [
+          "themes differ from each other",
+          "A token that varies across themes must actually differ.",
+          () => height("a") !== height("c"),
+          () => `rebrand=${height("a")} canvas=${height("c")}`,
+        ],
+        [
+          "canvasHighContrast is distinct from canvas",
+          "These two share background and height, so the check has to look at the stroke token.",
+          () => border("d") !== border("c"),
+          () => `chc=${border("d")} canvas=${border("c")}`,
+        ],
+        [
+          "an unscoped descendant inherits its ancestor scope",
+          "",
+          () => bg("e") === bg("c") && height("e") === height("c") && border("e") === border("c"),
+          () => `inner=${bg("e")} expected(canvas/light)=${bg("c")}`,
+        ],
+        [
+          "a nested scope fully overrides the enclosing one",
+          "This is what complete theme blocks buy: no token leaks in from the outer theme.",
+          () => bg("f") === bg("b") && height("f") === height("b"),
+          () => `nested=${bg("f")}/${height("f")} expected(rebrand/dark)=${bg("b")}/${height("b")}`,
+        ],
+        [
+          "class twins behave identically to attributes",
+          "",
+          () => bg("g") === bg("b") && bg("h") === bg("c") && height("g") === height("b"),
+          () =>
+            `class rebrand/dark=${bg("g")} attr=${bg("b")} | class canvas=${bg("h")} attr=${bg("c")}`,
+        ],
+        [
+          "scheme resolves independently of theme",
+          "Only data-pantoken-scheme is set on these; the theme comes from an ancestor.",
+          () => bg("i") !== bg("j") && height("i") === height("a"),
+          () => `light=${bg("i")} dark=${bg("j")} height=${height("i")}`,
+        ],
+      ];
+
+      let failed = 0;
+      const rows = checks
+        .map(([name, why, test, detail]) => {
+          let ok = false;
+          let info = "";
+          try {
+            ok = test();
+            info = detail();
+          } catch (e) {
+            info = String(e);
+          }
+          if (!ok) failed += 1;
+          return `<tr>
+            <td class="${ok ? "pass" : "fail"}">${ok ? "PASS" : "FAIL"}</td>
+            <td><div>${name}</div>${why ? `<div class="note">${why}</div>` : ""}
+                <div style="color:#777">${info}</div></td>
+          </tr>`;
+        })
+        .join("");
+
+      document.getElementById("results").innerHTML =
+        `<h2>${failed === 0 ? "All checks passed" : failed + " check(s) FAILED"}</h2>` +
+        `<table>${rows}</table>` +
+        `<p class="note">Re-run with your OS set to the opposite appearance — every result should be
+         identical, because each scope pins its own color-scheme rather than following the system.</p>`;
+    </script>
+  </body>
+</html>
