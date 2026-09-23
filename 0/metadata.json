@@ -1,0 +1,60 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M3772A2QZAXEDVQYJPECAZ9K",
+  "session_id": "142940bb-3927-4efd-8cdd-7ebcae33139e",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-23T13:25:18.749561Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "packages/scaffold/templates/canvas-theme-editor/src/app.css",
+    "packages/scaffold/templates/canvas-theme-editor/src/app.html",
+    "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "4c52b96d6cf1",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-23T13:25:18.745574Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 13,
+    "human_removed": 9,
+    "total_committed": 2,
+    "total_lines_changed": 22,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 6,
+      "user_lines_removed": 13,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "packages/scaffold/templates/canvas-theme-editor/src/app.css": 4,
+        "packages/scaffold/templates/canvas-theme-editor/src/app.html": 1,
+        "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl": 1
+      },
+      "user_removed_per_file": {
+        "packages/scaffold/templates/canvas-theme-editor/src/app.css": 11,
+        "packages/scaffold/templates/canvas-theme-editor/src/app.html": 1,
+        "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl": 1
+      }
+    }
+  ]
+}

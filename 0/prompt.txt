@@ -1,0 +1,1 @@
+I want the items in the footer to be aligned to the end.
