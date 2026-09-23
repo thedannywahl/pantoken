@@ -15,6 +15,7 @@ import { copyFileSync, cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } 
 import { join } from "node:path";
 import { build } from "vite";
 import { scaffoldProject } from "../../packages/scaffold/src/index.ts";
+import { configureCanvasRcePwa } from "./canvas-rce-pwa.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
 const repoRoot = join(docsRoot, "..");
@@ -64,6 +65,11 @@ writeFileSync(
     "</body>",
     `  <script src="/iframe-height.js"></script>\n  </body>`,
   ),
+);
+
+configureCanvasRcePwa(
+  renderDir,
+  join(repoRoot, "plugins", "pantoken", "logos", "assets", "logos", "pantoken", "icon-color.svg"),
 );
 
 await build({
