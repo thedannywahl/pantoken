@@ -1,0 +1,17 @@
+AssertionError: expected { value: 'hero', text: 'Kiemelt rész' } to deeply equal { value: 'hero', text: 'Hero' }
+
+---
+
+AssertionError: expected { value: 'hero', text: 'Kiemelt rész' } to deeply equal { value: 'hero', text: 'Hero' }
+
+---
+
+AssertionError: expected '@import "src/less/theme/theme";\n@imp…' to contain '@import \'src/less/theme/theme\';'
+
+---
+
+AssertionError: expected 0 to be greater than 0
+
+---
+
+AssertionError: expected '# Complementos\n\nUn complemento de p…' to be '# Complementos\n\nUn complemento de p…' // Object.is equality

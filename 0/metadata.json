@@ -1,0 +1,90 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M37EWVF5VSX42EVD5FDX62WG",
+  "session_id": "b174b767-0cc7-44c5-85b2-dc6b3fd1d46e",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-23T15:42:08.295057Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 2,
+  "save_step_count": 2,
+  "files_touched": [
+    "formats/css/scripts/generate.test.ts",
+    "renderers/tinymce/tests/layouts.test.ts",
+    "renderers/tinymce/tests/skins.test.ts",
+    "tools/i18n-engine/src/pipeline.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "b2a8292d45e6",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-23T15:42:08.286933Z",
+    "agent_lines": 0,
+    "agent_removed": 1,
+    "human_added": 3,
+    "human_modified": 5,
+    "human_removed": 0,
+    "total_committed": 4,
+    "total_lines_changed": 9,
+    "agent_percentage": 11.11111111111111,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 2,
+      "user_lines_removed": 2,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "docs/.vitepress/theme/theme.ts": 1,
+        "renderers/tinymce/tests/layouts.test.ts": 1
+      },
+      "user_removed_per_file": {
+        "docs/.vitepress/theme/theme.ts": 1,
+        "renderers/tinymce/tests/layouts.test.ts": 1
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 139,
+      "user_lines_removed": 75,
+      "agent_lines_added": 2,
+      "agent_lines_removed": 2,
+      "user_added_per_file": {
+        "formats/css/scripts/generate.test.ts": 3,
+        "l10n/ar/scaffold.readme.po": 19,
+        "l10n/ca/scaffold.readme.po": 19,
+        "l10n/cy/scaffold.readme.po": 19,
+        "l10n/da/scaffold.readme.po": 19,
+        "l10n/de/scaffold.readme.po": 19,
+        "l10n/el/scaffold.readme.po": 19,
+        "l10n/en/scaffold.readme.po": 19,
+        "l10n/scaffold.readme.pot": 2,
+        "renderers/tinymce/tests/skins.test.ts": 1
+      },
+      "user_removed_per_file": {
+        "formats/css/scripts/generate.test.ts": 2,
+        "l10n/ar/scaffold.readme.po": 10,
+        "l10n/ca/scaffold.readme.po": 10,
+        "l10n/cy/scaffold.readme.po": 10,
+        "l10n/da/scaffold.readme.po": 10,
+        "l10n/de/scaffold.readme.po": 10,
+        "l10n/el/scaffold.readme.po": 10,
+        "l10n/en/scaffold.readme.po": 10,
+        "l10n/scaffold.readme.pot": 2,
+        "renderers/tinymce/tests/skins.test.ts": 1
+      }
+    }
+  ]
+}
