@@ -1,0 +1,74 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M374MBNZAZKD9HT590JQ0GKQ",
+  "session_id": "ff9ac143-656a-442e-8721-4eb3e6e36f43",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-23T12:42:44.415995Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "packages/scaffold/templates/canvas-theme-editor/README.md",
+    "packages/scaffold/templates/canvas-theme-editor/src/i18n.json",
+    "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
+    "packages/scaffold/tests/index.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "359dff66b408",
+  "checkpoint_transcript_start": 1486,
+  "transcript_lines_at_start": 1486,
+  "compact_transcript_start": 250,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 4
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-23T12:42:44.379724Z",
+    "agent_lines": 92,
+    "agent_removed": 46,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 92,
+    "total_lines_changed": 138,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 1581,
+      "user_lines_removed": 116,
+      "agent_lines_added": 11627,
+      "agent_lines_removed": 344,
+      "user_added_per_file": {
+        "l10n/sl/tinymce.strings.po": 70,
+        "l10n/sv/tinymce.strings.po": 373,
+        "l10n/th/tinymce.strings.po": 373,
+        "l10n/tr/tinymce.strings.po": 373,
+        "l10n/uk/tinymce.strings.po": 392
+      },
+      "user_removed_per_file": {
+        "l10n/sl/tinymce.strings.po": 87,
+        "l10n/sv/tinymce.strings.po": 7,
+        "l10n/th/tinymce.strings.po": 7,
+        "l10n/tr/tinymce.strings.po": 7,
+        "l10n/uk/tinymce.strings.po": 8
+      }
+    }
+  ]
+}
