@@ -1,0 +1,20 @@
+bench/run-bench.ts
+
+N/A
+
+N/A425.8 ms
+
+Name: all sources
+Source file: [bench/run-bench.ts](https://github.com/thedannywahl/pantoken/blob/d77b890140c07d5d76f222bb54e246f2a1f00d44/bench%2Frun-bench.ts)
+Threshold: 10% (global)
+Mode: CPU Simulation
+
+[](https://codspeed.io/docs/instruments/cpu)
+
+Name: all sources
+Source file: [bench/run-bench.ts](https://github.com/thedannywahl/pantoken/blob/d77b890140c07d5d76f222bb54e246f2a1f00d44/bench%2Frun-bench.ts)
+Threshold: 10% (global)
+Mode: CPU Simulation
+
+[](https://codspeed.io/docs/instruments/cpu)
+This benchmark contains 9911 system calls, totalling 90.2 ms of execution time. Since they cannot be consistently instrumented, those calls are not included in the measure. Please switch to [the Walltime instrument to accurately measure system calls](https://codspeed.io/docs/instruments/walltime). Learn more [about measurement and system calls](https://codspeed.io/docs/instruments/cpu#system-calls).
