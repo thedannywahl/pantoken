@@ -168,10 +168,13 @@ export function humanizeIconName(name: string): string {
 }
 
 /**
- * The decorative icon markup retained in editor content after a picker selection.
+ * The decorative icon markup retained in editor content after a picker selection. A zero-width
+ * space keeps the span from being genuinely empty — TinyMCE's schema strips empty inline elements
+ * on `setContent()` (e.g. toggling from source view back to WYSIWYG), which would otherwise
+ * silently delete this CSS-painted glyph.
  */
 export function buildIconMarkup(icon: TaggedIcon): string {
-  return `<span class="instui-icon -icon-${icon.name}" aria-hidden="true"></span>`;
+  return `<span class="instui-icon -icon-${icon.name}" aria-hidden="true">\u200B</span>`;
 }
 
 /**

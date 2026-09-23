@@ -66,7 +66,7 @@ test("humanizeIconName turns hyphens into spaces", () => {
 test("buildIconMarkup renders a decorative icon", () => {
   const icon: TaggedIcon = { name: "heart", source: "components" };
   expect(buildIconMarkup(icon)).toBe(
-    '<span class="instui-icon -icon-heart" aria-hidden="true"></span>',
+    '<span class="instui-icon -icon-heart" aria-hidden="true">\u200B</span>',
   );
 });
 

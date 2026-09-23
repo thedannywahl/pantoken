@@ -113,7 +113,7 @@ test("picking an icon inserts it, tracks its CSS asset, and closes the dialog", 
     .dispatchEvent(new MouseEvent("dblclick", { bubbles: true }));
 
   expect(mocks.insertContent).toHaveBeenCalledWith(
-    '<span class="instui-icon -icon-heart" aria-hidden="true"></span>',
+    '<span class="instui-icon -icon-heart" aria-hidden="true">\u200B</span>',
   );
   expect(currentAssets).toEqual([
     { package: "@pantoken/plugin-simple-icons", path: "dist/icons/heart.css" },
@@ -134,7 +134,7 @@ test("picking an icon in source view routes the insert to the CodeMirror doc", (
     .dispatchEvent(new MouseEvent("dblclick", { bubbles: true }));
 
   expect(insertAtCursor).toHaveBeenCalledWith(
-    '<span class="instui-icon -icon-heart" aria-hidden="true"></span>',
+    '<span class="instui-icon -icon-heart" aria-hidden="true">\u200B</span>',
   );
   expect(mocks.insertContent).not.toHaveBeenCalled();
 });
@@ -185,7 +185,7 @@ test("autocompleter onAction inserts the selected icon", async () => {
 
   expect(mocks.setRng).toHaveBeenCalledWith(range);
   expect(mocks.insertContent).toHaveBeenCalledWith(
-    '<span class="instui-icon -icon-heart" aria-hidden="true"></span>',
+    '<span class="instui-icon -icon-heart" aria-hidden="true">\u200B</span>',
   );
   expect(hide).toHaveBeenCalled();
 });
