@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-23 12:31+0000\n"
+"PO-Revision-Date: 2026-09-23 17:49+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -572,6 +572,12 @@ msgstr "Upprunakóði"
 msgctxt "tinymce.strings:sourceFormatTooltip"
 msgid "Format code"
 msgstr "Upprunakóði"
+
+#: plugins/tinymce/codemirror/src/i18n.json#sourceFormatErrorMessage
+#, no-c-format
+msgctxt "tinymce.strings:sourceFormatErrorMessage"
+msgid "Couldn't format the source code — check for unclosed tags or other syntax errors."
+msgstr "Gat ekki sniðið upprunakóðann — athugaðu hvort einhver ólokin merki séu til eða aðrar sintaksvillur."
 
 #: plugins/tinymce/save/src/i18n.json#saveToolbarText
 #, no-c-format

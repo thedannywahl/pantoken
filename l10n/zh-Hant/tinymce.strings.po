@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-23 12:44+0000\n"
+"PO-Revision-Date: 2026-09-23 17:53+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -572,6 +572,12 @@ msgstr "原始程式碼"
 msgctxt "tinymce.strings:sourceFormatTooltip"
 msgid "Format code"
 msgstr "原始程式碼"
+
+#: plugins/tinymce/codemirror/src/i18n.json#sourceFormatErrorMessage
+#, no-c-format
+msgctxt "tinymce.strings:sourceFormatErrorMessage"
+msgid "Couldn't format the source code — check for unclosed tags or other syntax errors."
+msgstr "無法格式化原始程式碼 — 請檢查是否有未關閉的標籤或其他語法錯誤。"
 
 #: plugins/tinymce/save/src/i18n.json#saveToolbarText
 #, no-c-format
