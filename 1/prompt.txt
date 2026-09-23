@@ -1,0 +1,30 @@
+tinymce doesn't generate an html page and so we should build an exclude list of components that shouldn't be exposed in the picker.  exclude so that any new components added in the future are registered by default.
+
+---
+
+Read-only exploration. In the pantoken repo, investigate how TinyMCE exposes components in its picker and where component registration/picker generation is controlled. Start from renderers/tinymce/src/plugins/components.ts. If the local entire graph is available to you, use `entire graph search --repo . --profile full --query "TinyMCE component picker should exclude components that need generated HTML pages"` first, then focused source reads. Find analogous include/exclude patterns or tests/docs for TinyMCE/component pickers. Return: (1) controlling files and symbols, (2) current behavior, (3) recommended minimal change to make an exclude list so future components register by default, (4) tests or verification commands likely needed, (5) any ambiguities/blockers. Do not edit files.
+
+---
+
+exclude components:
+* date-input
+* date-time-input
+* text-input
+* text-area
+* agent-shell
+* drawer-layout
+* file-drop
+* form-field
+* form-field-messages
+* in-place-edit
+* input-group
+* number-input
+* range-input
+* side-nav-bar
+* simple-select
+* tray
+pages is not in components (only web-components) so it's not included icon-button and button (all variants) should be included b/c we allow adding custom js/css and can add commands.
+
+---
+
+Start implementation

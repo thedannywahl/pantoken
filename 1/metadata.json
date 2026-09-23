@@ -1,0 +1,55 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M37KKBXJKW576DGTKDPD76GN",
+  "session_id": "955308fd-7d42-47bc-ad92-59ca02e665c9",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-23T17:04:20.649733Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/fix-css-export-builds.md",
+    "formats/css/vite.config.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "e4f9c80a4f7a",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-23T17:04:20.640953Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 10,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 10,
+    "total_lines_changed": 10,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 6,
+      "user_lines_removed": 2,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".changeset/fix-docs-appearance-toggle.md": 5,
+        "docs/.vitepress/theme/index.ts": 1
+      },
+      "user_removed_per_file": {
+        "docs/.vitepress/theme/index.ts": 2
+      }
+    }
+  ]
+}
