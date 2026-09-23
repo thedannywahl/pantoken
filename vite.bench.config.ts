@@ -24,7 +24,9 @@ const codSpeedExecArgv = process.env.CODSPEED_ENV
 
 export default defineConfig({
   test: {
-    execArgv: codSpeedExecArgv,
+    // CodSpeed injects profiler arguments into the parent process. Vitest replaces them when
+    // forwarding `execArgv` to forks, so retain them before adding our deterministic flags.
+    execArgv: [...process.execArgv, ...codSpeedExecArgv],
     include: ["bench/*.bench.ts"],
     pool: "forks",
     testTimeout: 120_000,
