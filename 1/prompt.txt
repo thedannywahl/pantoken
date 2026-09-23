@@ -1,0 +1,4 @@
+Run vp run gate:repository
+$ node scripts/release/check-repository-metadata.ts
+Repository metadata check failed for publishable packages:
+- @pantoken/plugin-lucide-lab (plugins/pantoken/lucide-lab/package.json): sideEffects is null, expected ["**/*.css"]
