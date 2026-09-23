@@ -1,13 +1,10 @@
-# Plugin
+# Plugins
 
-Một plugin pantoken mở rộng đầu ra token hoặc CSS mà không cần fork package. Bạn xây dựng nó với
-`definePlugin` từ `@pantoken/plugin-kit`, sau đó truyền nó vào `buildTokens` hoặc `toCss`.
+Một plugin pantoken mở rộng đầu ra token hoặc CSS mà không cần fork gói. Xây dựng plugin bằng `definePlugin` từ `@pantoken/plugin-kit`, sau đó truyền nó cho `buildTokens` hoặc `toCss`.
 
-## Viết một plugin
+## Tạo plugin
 
-Cung cấp cho `definePlugin` các hook bạn triển khai. Nó trả về một plugin bình thường, được gắn nhãn với
-các khả năng suy ra từ những hook đó. Một plugin có thể mở rộng IR (`tokens`, `icons`), đầu ra CSS
-(`css`), hoặc cả hai.
+Cung cấp cho `definePlugin` các hook bạn hiện thực hóa. Nó trả về một plugin bình thường, được gắn nhãn với các năng lực suy ra từ những hook đó. Một plugin có thể mở rộng IR (`tokens`, `icons`), đầu ra CSS (`css`), hoặc cả hai.
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -20,15 +17,13 @@ export const brand = () =>
   });
 ```
 
-## Đăng ký nhận biết năng lực
+## Đăng ký theo năng lực
 
-`buildTokens` và `toCss` chạy `checkPlugins` trên các plugin bạn truyền vào. Nó cảnh báo — không bao giờ ném —
-khi một plugin không có hook phù hợp cho giai đoạn nó được đăng ký, vì vậy một plugin chỉ cho token được truyền
-vào `toCss` sẽ bị bỏ qua với một ghi chú thay vì im lặng không làm gì.
+`buildTokens` và `toCss` chạy `checkPlugins` trên các plugin bạn truyền vào. Chúng cảnh báo — không bao giờ ném lỗi — khi một plugin không có hook phù hợp cho giai đoạn nó được đăng ký, vì vậy một plugin chỉ dành cho token được truyền cho `toCss` sẽ bị bỏ qua kèm thông báo thay vì im lặng không làm gì.
 
-## Kết hợp plugin
+## Ghép nối plugin
 
-Xây dựng trên một plugin khác với `extendPlugin`, hoặc kết hợp các plugin ngang hàng với `mergePlugin`:
+Xây dựng chồng lên một plugin khác với `extendPlugin`, hoặc kết hợp các plugin ngang hàng với `mergePlugin`:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -37,13 +32,11 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Các hook cùng giai đoạn hợp thành: `tokens` chạy base rồi thêm vào, `css` hợp nhất hai
-đóng góp, và `icons` chạy cả hai.
+Các hook cùng giai đoạn có thể ghép: `tokens` chạy base rồi chạy phần thêm, `css` hợp nhất hai đóng góp, và `icons` chạy cả hai.
 
 ## Xác thực đầu ra của plugin
 
-Chạy các kiểm tra drift dùng chung từ `@pantoken/utils` trên đầu ra của plugin trong test của nó, để một
-lỗi gõ hoặc đổi tên token sẽ thất bại nhanh và tại chỗ:
+Chạy các kiểm tra drift chia sẻ từ `@pantoken/utils` trên đầu ra của chính plugin trong bài test của nó, để một lỗi đánh máy hoặc token bị đổi tên sẽ thất bại nhanh và cục bộ:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -58,16 +51,26 @@ expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 
 ## Các plugin được đóng gói
 
-- `@pantoken/plugin-simple-icons` — gắn nhãn biểu tượng từ simple-icons, đăng ký như các token icon.
-- `@pantoken/plugin-logos` — logo sản phẩm Instructure dưới dạng SVG, data URI, và `--instui-logo-*`
-  token hình ảnh.
+- `@pantoken/plugin-simple-icons` — gắn nhãn biểu tượng từ simple-icons, đăng ký như token icon.
+- `@pantoken/plugin-lucide-lab` — biểu tượng Lucide Lab, đăng ký như token hình ảnh `--instui-icon-*`.
+- `@pantoken/plugin-logos` — logo sản phẩm Instructure dưới dạng SVG, data URI, và token hình ảnh `--instui-logo-*`.
 - `@pantoken/plugin-prune-custom-props` — một plugin PostCSS (không phải plugin pantoken) loại bỏ
   các custom property không dùng tới khỏi stylesheet.
 
-Một vài thứ trước đây là plugin giờ được ship trong `@pantoken/components`, vì rất nhiều component cần
-chúng ngay khi dùng: bóng nâng cao (elevation) (`--instui-elevation-*`, trong `components.css`), vòng
-outline khi focus (trong `base.css` — mọi phần tử có thể nhận focus sẽ có khi pantoken quản lý trang), và phông chữ thương hiệu Instructure
-(Atkinson Hyperlegible Next: `base.css` áp dụng `--instui-font-family-base`; phần chọn tham gia
-`@pantoken/components/fonts.css` tải các woff2 `@font-face`).
+Registry của Lucide Lab có thể được nạp theo lazy, sau đó truyền cho hook token đồng bộ:
+
+```ts
+import { buildTokens } from "@pantoken/core/build";
+import { defaultRegistry, lucideLab } from "@pantoken/plugin-lucide-lab";
+
+const registry = await defaultRegistry();
+buildTokens({
+  theme: "rebrand",
+  plugins: [lucideLab({ registry, names: ["burger", "at-sign-circle"] })],
+});
+```
+
+Một vài thứ từng là plugin giờ được giao kèm trong `@pantoken/components`, vì nhiều component cần chúng sẵn: bóng nâng (elevation) (`--instui-elevation-*`, trong `components.css`), vòng focus-outline
+(in trong `base.css` — mọi phần có thể nhận focus sẽ được áp dụng khi pantoken kiểm soát trang), và font thương hiệu Instructure (Atkinson Hyperlegible Next: `base.css` áp dụng `--instui-font-family-base`; tuỳ chọn `@pantoken/components/fonts.css` nạp các woff2 `@font-face`).
 
 Xem [API reference](/api/) cho các export của từng plugin.

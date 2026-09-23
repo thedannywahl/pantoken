@@ -1,10 +1,12 @@
 # Vtičniki
 
-Pantoken vtičnik razširi izhod tokenov ali CSS brez forkanja paketa. Zgradite ga z `definePlugin` iz `@pantoken/plugin-kit`, nato pa ga podajte `buildTokens` ali `toCss`.
+Pantoken vtičnik razširi izhod tokenov ali CSS brez razvejitve paketa. Narejen je z
+`definePlugin` iz `@pantoken/plugin-kit`, nato pa ga posredujete `buildTokens` ali `toCss`.
 
-## Ustvarite vtičnik
+## Avtor vtičnika
 
-Podajte `definePlugin` kljuke, ki jih implementirate. Vrne običajen vtičnik, označen s sposobnostmi, izpeljanimi iz teh kljuk. Vtičnik lahko razširi IR (`tokens`, `icons`), izhod CSS (`css`), ali oboje.
+Dajte `definePlugin` kuke, ki jih implementirate. Vrne običajen vtičnik, označen s
+sposobnostmi, izpeljanimi iz teh kuk. Vtičnik lahko razširi IR (`tokens`, `icons`), izhod CSS (`css`), ali oboje.
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -19,11 +21,11 @@ export const brand = () =>
 
 ## Registracija, ki upošteva sposobnosti
 
-`buildTokens` in `toCss` zaženejo `checkPlugins` nad vtičniki, ki jih podate. Opozori — nikoli ne vrže napake — ko vtičnik nima ustrezne kljuke za fazo, v kateri je registriran, zato se vtičnik, ki je samo za tokene in je podan `toCss`, preskoči z opombo namesto da bi tiho nič naredil.
+`buildTokens` in `toCss` zaženeta `checkPlugins` nad vtičniki, ki jih posredujete. Opozori — nikoli ne vrže izjeme — kadar vtičnik nima ujemajočega se kuka za fazo, v kateri je registriran, zato se vtičnik, ki je samo za tokene in ga posredujete `toCss`, preskoči z opombo namesto da bi tiho ne naredil ničesar.
 
 ## Sestavljanje vtičnikov
 
-Zgradite na vrhu drugega vtičnika z `extendPlugin`, ali združite sorodnike z `mergePlugin`:
+Zgradite na vrhu drugega vtičnika z `extendPlugin`, ali združite vršnjake z `mergePlugin`:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -32,11 +34,11 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Kljuke iste faze se sestavljajo: `tokens` zažene osnovni nato dodatek, `css` združi oba prispevka, in `icons` zažene oba.
+Kuki iste faze se sestavljajo: `tokens` zažene osnovo, nato dodatek, `css` združi oba prispevka, in `icons` zažene oba.
 
-## Preverite izhod vašega vtičnika
+## Preverite izhod svojega vtičnika
 
-Zaženite skupne drift preverbe iz `@pantoken/utils` nad izhodom vašega vtičnika v njegovem testu, tako da tipkarska napaka ali preimenovan token hitro in lokalno odpove:
+Zaženite deljene kontrole drift iz `@pantoken/utils` nad izhodom vašega vtičnika v njegovem testu, tako da tipkarska napaka ali preimenovan token hitro in lokalno povzroči napako:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -51,12 +53,29 @@ expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 
 ## Vgrajeni vtičniki
 
-- `@pantoken/plugin-simple-icons` — blagovne ikone iz simple-icons, registrirane kot ikonni tokeni.
-- `@pantoken/plugin-logos` — Instructure produktne logotipe kot SVG, podatkovne URI in `--instui-logo-*`
-  slikovne tokene.
+- `@pantoken/plugin-simple-icons` — znamke ikon iz simple-icons, registrirane kot ikonotni tokeni.
+- `@pantoken/plugin-lucide-lab` — ikone Lucide Lab, registrirane kot `--instui-icon-*` image tokeni.
+- `@pantoken/plugin-logos` — Instructure logotipi produktov kot SVG, data URI-ji in `--instui-logo-*`
+  image tokeni.
 - `@pantoken/plugin-prune-custom-props` — PostCSS vtičnik (ni pantoken vtičnik), ki odstrani
-  neuporabljena uporabniška svojstva iz slogovnega lista.
+  neuporabljene prilagojene lastnosti iz sloga.
 
-Nekaj stvari, ki so bile prej vtičniki, zdaj izhaja iz `@pantoken/components`, saj jih tako veliko komponent potrebuje privzeto: sence elevacije (`--instui-elevation-*`, v `components.css`), obroček fokus-obrobe (v `base.css` — vsak fokusabilen element ga dobi, ko pantoken upravlja stran), in Instructure blagovne pisave (Atkinson Hyperlegible Next: `base.css` uporablja `--instui-font-family-base`; izbirni `@pantoken/components/fonts.css` naloži `@font-face` woff2 datoteke).
+Registrijo Lucide Lab je mogoče naložiti lenobno (lazy), nato pa jo posredovati sinhronemu token kuku:
 
-Poglejte [API referenco](/api/) za izvoze posameznih vtičnikov.
+```ts
+import { buildTokens } from "@pantoken/core/build";
+import { defaultRegistry, lucideLab } from "@pantoken/plugin-lucide-lab";
+
+const registry = await defaultRegistry();
+buildTokens({
+  theme: "rebrand",
+  plugins: [lucideLab({ registry, names: ["burger", "at-sign-circle"] })],
+});
+```
+
+Nekatere stvari, ki so bile prej vtičniki, zdaj prihajajo v `@pantoken/components`, saj jih toliko komponent potrebuje takoj: sence višine (`--instui-elevation-*`, v `components.css`), obroček fokus-obrobe
+(in `base.css` — vsak fokusabilni element ga dobi, ko pantoken upravlja stran), in Instructure znamčne
+pisave (Atkinson Hyperlegible Next: `base.css` uporablja `--instui-font-family-base`; izbirni
+`@pantoken/components/fonts.css` naloži `@font-face` woff2 datoteke).
+
+Poglejte [API reference](/api/) za izvoze vsakega vtičnika.

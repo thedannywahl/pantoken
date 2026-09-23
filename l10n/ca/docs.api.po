@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-18 02:02+0000\n"
+"PO-Revision-Date: 2026-09-23 02:57+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -863,7 +863,7 @@ msgid "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/ma
 msgstr "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/avatar/avatar.css)"
 
 #: css/avatar.md css/close-button.md css/in-place-edit.md css/modal.md
-#: css/tooltip.md
+#: css/tabs.md css/tooltip.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "This component's CSS renders and works on its own; pair it with `@pantoken/interactions` to add the interactive behavior. See the [modifier table below](#modifiers)."
@@ -7252,6 +7252,24 @@ msgid "The Overview tab's content shows here."
 msgstr "El contingut de la pestanya Visió general es mostra aquí."
 
 #: css/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The Details tab's content shows here."
+msgstr "El contingut de la pestanya Visió general es mostra aquí."
+
+#: css/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The Disabled tab's content won't be visible."
+msgstr "El contingut de la pestanya Visió general es mostra aquí."
+
+#: css/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The History tab's content shows here."
+msgstr "El contingut de la pestanya Visió general es mostra aquí."
+
+#: css/tabs.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Keep the tab list on one line and let it scroll horizontally instead of wrapping, hiding the scrollbar."
@@ -7737,7 +7755,7 @@ msgctxt "docs.api:prose"
 msgid "**Source:** [toggle-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/toggle-group/toggle-group.css)"
 msgstr "**Source:** [toggle-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/toggle-group/toggle-group.css)"
 
-#: css/toggle-group.md
+#: css/toggle-group.md renderers/web-components/src/variables/tabs.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Advanced settings"
@@ -9093,6 +9111,12 @@ msgctxt "docs.api:prose"
 msgid "Also emit the deprecated InstUI-prop glyph aliases (`-render-icon-<name>`, `-render-custom-icon-<name>`)\nas functional aliases of `-icon-<name>`. Off by default — turning it on roughly doubles the sheet, so\nenable it only when you need markup written against the old `renderIcon`/`renderCustomIcon` prop names\nto keep rendering. The shipped `icons.css` is built with this on."
 msgstr "Emet també els alias de glif de propietat InstUI deprecats (`-render-icon-&lt;name&gt;`, `-render-custom-icon-&lt;name&gt;`)\ncom a alias funcionals de `-icon-&lt;name&gt;`. Desactivat per defecte — activar-lo duplica aproximadament la mida del full, per tant\nactiveu-lo només quan necessiteu que el marcat escrit amb els noms de propietat antigus `renderIcon`/`renderCustomIcon` continuï representant-se correctament. El `icons.css` enviat es construeix amb aquesta opció activada."
 
+#: formats/components/src/interfaces/IconGlyphsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Icon name → `--instui-icon-<name>` data-URI value. When given, the sheet also declares those\ncustom properties in `:root`, making it self-contained: the glyphs paint without a separate\ntoken sheet loaded alongside. Omit to emit the lean mapping-only sheet."
+msgstr "Nom de la icona → `--instui-icon-<name>` data-URI value. Quan s'especifica, la fulla també declara aquestes\npropietats personalitzades a `:root`, fent-la autosuficient: els glifs es pinten sense una fulla\nde tokens separada carregada al costat. Ometre per emetre la fulla exclusiva de mapeig minimalista."
+
 #: formats/components/src/interfaces/ProseOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9124,6 +9148,12 @@ msgstr "Cada nivell d'elevació i alias emès com a `--instui-elevation-&lt;name
 msgctxt "docs.api:prose"
 msgid "The elements the ring applies to by default (the common interactive/focusable elements)."
 msgstr "Els elements als quals s'aplica l'anell per defecte (els elements interactius/enfocables comuns)."
+
+#: formats/components/src/variables/aiGradientCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The AI gradient utility as a standalone, header-wrapped stylesheet."
+msgstr "La utilitat de degradat d'IA com a full d'estils independent, envoltat per una capçalera."
 
 #: formats/components/src/variables/alertCss.md
 #, no-c-format
@@ -9928,9 +9958,9 @@ msgid "Icon name → hex codepoint (e.g. `\"e001\"`)."
 msgstr "Nom de l'icona → punt de codi hex (p. ex. `\"e001\"`)."
 
 #: formats/icons/src/functions/buildIconResolverChain.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Build the shared icon-resolver chain: plugin `rehype` resolvers first, then an explicit\n`resolve`, then the built-in pantoken icon set. Used by `@pantoken/rehype` and\n`@pantoken/markdown-it` so the resolution order stays identical across renderers."
+msgid "Build the shared icon-resolver chain: an explicit `resolve` first, then the built-in pantoken\nicon set, then plugin `rehype` resolvers (so a plugin can add codes the built-in set doesn't\nknow, but never shadow a built-in icon name). Used by `@pantoken/rehype` and\n`@pantoken/markdown-it` so the resolution order stays identical across renderers."
 msgstr "Construir la cadena compartida de resolució d'icones: els resolvedors del plugin `rehype` primer, després un `resolve` explícit, després el conjunt d'icones pantoken integrat. Utilitzat per `@pantoken/rehype` i `@pantoken/markdown-it` perquè l'ordre de resolució es mantingui idèntic entre els processadors."
 
 #: formats/icons/src/functions/getIcon.md
@@ -9966,9 +9996,9 @@ msgstr "Un resolver explícit, provat abans del conjunt d'icones pantoken integr
 
 #: formats/icons/src/interfaces/IconResolverChainOptions.md
 #: renderers/rehype/src/interfaces/RehypeOptions.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Plugins whose `rehype` hooks contribute resolvers (tried first)."
+msgid "Plugins whose `rehype` hooks contribute resolvers (tried last, after the built-in set)."
 msgstr "Els plugins els ganxos `rehype` dels quals contribueixen resolvedors (provats primer)."
 
 #: formats/icons/src/interfaces/PantokenIcon.md
@@ -10013,6 +10043,12 @@ msgctxt "docs.api:prose"
 msgid "The glyph origin."
 msgstr "L'origen del glif."
 
+#: formats/icons/src/variables/customIcons.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every Instructure-authored custom icon."
+msgstr "**Restringeix només als glifos autors d'Instructure**"
+
 #: formats/icons/src/variables/icons.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -10024,6 +10060,12 @@ msgstr "Cada icona pantoken, ordenada pel nom."
 msgctxt "docs.api:prose"
 msgid "Every pantoken icon, keyed by name."
 msgstr "Cada icona pantoken, indexada pel nom."
+
+#: formats/icons/src/variables/lucideIcons.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every canonical Lucide icon."
+msgstr "Cada icona Lucide canònica."
 
 #: formats/icons/src/variables/resolve.md
 #, no-c-format
@@ -10114,6 +10156,12 @@ msgstr "El temps d'espera és una opció de mil·lisegons explícita o la propie
 msgctxt "docs.api:prose"
 msgid "Wire open/close commands plus width-based responsive overlay switching onto a host: any\ncollapsible side panel (e.g. a drawer's tray) can import this interaction rather than each\ncomponent reimplementing it."
 msgstr "Connecta comandos d'obrir/tancar més canvi de capa de superposició responsiu basat en amplada a un host: qualsevol panell lateral col·lapsible (per exemple, la safata d'un calaix) pot importar aquesta interacció en lloc que cada component la reimplementi."
+
+#: formats/interactions/src/functions/initTabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Wire a tablist and its controlled panels inside a host element."
+msgstr "Enllaçar una tablist i els seus panells controlats dins d'un element host."
 
 #: formats/interactions/src/functions/initTooltip.md
 #, no-c-format
@@ -10373,6 +10421,12 @@ msgstr "Mil·lisegons fins a la desestimació. Per defecte al `--timeout` calcul
 msgctxt "docs.api:prose"
 msgid "Exit treatment. Defaults to `\"fade\"`, matching InstUI Alert."
 msgstr "Tractament de sortida. Per defecte a `\"fade\"`, coincidint amb InstUI Alert."
+
+#: formats/interactions/src/interfaces/TabsHandle.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Controls the listeners installed by [initTabs](../functions/initTabs.md)."
+msgstr "Manegador retornat per [initTooltip](../functions/initTooltip.md)."
 
 #: formats/interactions/src/interfaces/TooltipHandle.md
 #, no-c-format
@@ -13245,7 +13299,7 @@ msgstr "Crea el connector d'icones personalitzades."
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Generate CSS rules for all custom theme color choices by remapping primitive color scale steps\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`), while preserving explicitly\nnamed blue accents and semantic status intents."
+msgid "Generate CSS rules for all custom theme color choices by remapping primitive color scale steps\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`) and relinking literal\nbrand hex values that upstream flattened away from those primitives, while preserving explicitly\nnamed blue accents and semantic status intents."
 msgstr "Genera regles CSS per a totes les opcions de color del tema personalitzat remapejant els passos de l'escala de colors primitiva\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`), mantenint explícitament\nels tokens anomenats d'accent blau."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
@@ -13284,6 +13338,24 @@ msgctxt "docs.api:prose"
 msgid "Renames and re-exports [customThemeColors](functions/customThemeColors.md)"
 msgstr "Reanomena i reexporta [customIcons](functions/customIcons.md)"
 
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [customThemeColorsCss](../functions/customThemeColorsCss.md)."
+msgstr "Opcions per al connector [customIcons](../functions/customIcons.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selector prefix the conditional `[data-pantoken-color=\"…\"]` rules are scoped under. Defaults to\n`:root`. Two callers can each pass a different selector (e.g. `:root` for a page's chrome and\n`#some-tray` for a nested widget) to run independent, non-interfering color instances on the\nsame page — each toggles its own attribute on its own element instead of sharing `:root`."
+msgstr "Prefix del selector sota el qual s'encapsulen les regles condicionals `[data-pantoken-color=\"…\"]`. Per defecte\n`:root`. Dos invocadors poden passar cada un un selector diferent (p. ex. `:root` per la chrome d'una pàgina i\n`#some-tray` per un widget anidat)) per executar instàncies de color independents i sense interferències a la\nmateixa pàgina — cada una commuta el seu propi atribut al seu element en lloc de compartir `:root`."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "An additional selector whose subtree should always render the true, unremapped colors,\nregardless of what an ancestor's `[data-pantoken-color]` scope currently has active. Emits one\nunconditional rule pinning every token this plugin can override back to its own base value —\ne.g. a color-swatch legend nested inside an already-themed page needs its reference swatches to\nstay constant rather than inherit the ancestor's remap."
+msgstr "Un selector addicional el subarbre del qual sempre hauria de representar els colors reals, no remapejats,\nindependentment del que tingui actiu actualment l'abast `[data-pantoken-color]` d'un avantpassat. Emet una \nregla incondicional que fixa cada token que aquest complement pot anul·lar al seu valor base —\np. ex., una llegenda d'espaiadors de color anidada dins d'una pàgina ja temàtica necessita que les mostres de referència es mantinguin constants en comptes d'heretar el remapeig de l'avantpassat."
+
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13295,6 +13367,18 @@ msgstr "Opcions per al connector [customIcons](../functions/customIcons.md)."
 msgctxt "docs.api:prose"
 msgid "Optional token array or map to resolve primitive step color values from."
 msgstr "Matriu o mapa de tokens opcional d'on resoldre els valors de color dels passos primitius."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selector prefix for the conditional rules — see [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+msgstr "Prefix del selector per a les regles condicionals — vegeu [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Always-true-color subtree — see [CustomThemeColorsCssOptions.resetSelector](CustomThemeColorsCssOptions.md#resetselector)."
+msgstr "Subarbre de color sempre vertader — vegeu [CustomThemeColorsCssOptions.resetSelector](CustomThemeColorsCssOptions.md#resetselector)."
 
 #: plugins/pantoken/custom-theme-colors/src/type-aliases/PantokenColorNamespace.md
 #, no-c-format
@@ -13476,6 +13560,12 @@ msgctxt "docs.api:prose"
 msgid "Generate an HTML template for the page-layout layout."
 msgstr "Genera una plantilla HTML per al layout page-layout."
 
+#: plugins/pantoken/layouts/src/functions/renderPageLayout.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Render `layout`'s `{{key}}` tokens for `locale` (default `\"en\"`), falling back to English."
+msgstr "Renderitza els tokens `layout` de `layout` per a `{{key}}` (per defecte `locale`), fent retrocés a l'anglès."
+
 #: plugins/pantoken/layouts/src/functions/rubricNoteRules.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13564,11 +13654,66 @@ msgctxt "docs.api:prose"
 msgid "Raw HTML for the layout, built from `@pantoken/components` classes."
 msgstr "HTML brut per al disseny, construït a partir de classes `@pantoken/components`."
 
-#: plugins/pantoken/layouts/src/variables/pageLayouts.md
-#: renderers/tinymce/src/variables/pageLayouts.md
+#: plugins/pantoken/layouts/src/interfaces/PageLayout.md
+#: renderers/tinymce/src/interfaces/PageLayout.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "All bundled starter page layouts, sorted by title."
+msgid "Image slots that consumers may materialize without provider-specific URLs."
+msgstr "Espais d'imatge que els consumidors poden materialitzar sense URL específiques del proveïdor."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A provider-neutral image slot declared by a starter page layout."
+msgstr "Un espai d'imatge neutre respecte al proveïdor declarat per un layout de pàgina inicial."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Stable key matching the `data-pantoken-image-placeholder` HTML marker."
+msgstr "Clau estable que fa coincidir el marcador HTML `data-pantoken-image-placeholder`."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Suggested intrinsic width in pixels."
+msgstr "Amplada intrínseca suggerida en píxels."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Suggested intrinsic height in pixels."
+msgstr "Alçada intrínseca suggerida en píxels."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Accessible name; omit it for a decorative image."
+msgstr "Nom accessible; ometeu-lo per a una imatge decorativa."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional text a consumer may render into its placeholder asset."
+msgstr "Text opcional que un consumidor pot renderitzar dins del seu actiu de marcador."
+
+#: plugins/pantoken/layouts/src/variables/pageLayoutTemplates.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`{{key}}`-templated layouts, unresolved — pass to [renderPageLayout](../functions/renderPageLayout.md) for another locale."
+msgstr "`{{key}}`-templated layouts, unresolved — passeu-los a [renderPageLayout](../functions/renderPageLayout.md) per a una altra localització."
+
+#: plugins/pantoken/layouts/src/variables/pageLayouts.md
+#: renderers/tinymce/src/variables/pageLayouts.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "All bundled starter page layouts, English-rendered by default, sorted by title."
 msgstr "Tots els dissenys de pàgina inicial agrupats, ordenats per títol."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
@@ -13578,6 +13723,7 @@ msgid "Get a logo as a base64 `data:image/svg+xml` URI."
 msgstr "Obtén un logotip com a URI `data:image/svg+xml` base64."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13585,6 +13731,7 @@ msgid "The product."
 msgstr "El producte."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13592,6 +13739,7 @@ msgid "The layout (default `\"horizontal\"`)."
 msgstr "El disseny (per defecte `\"horizontal\"`)."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13599,6 +13747,7 @@ msgid "The color treatment (default `\"full-color\"`)."
 msgstr "El tractament del color (per defecte `\"full-color\"`)."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13616,6 +13765,24 @@ msgstr "L'URI de dades, o `undefined` si aquesta combinació no existeix."
 msgctxt "docs.api:prose"
 msgid "**Use a logo as an \\<img\\> src**"
 msgstr "**Utilitza un logotip com a src \\<img\\>**"
+
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Get a logo's metadata, including the rasterized PNG's `width`/`height` — for consumers that need\nto build a `dist/<name>.png` path (e.g. via `@pantoken/cdn`) or size an `<img>` without parsing SVG."
+msgstr "Obteniu les metadades d'un logotip, incloent l'amplada/altura del PNG rasteritzat `width`/`height` — per a consumidors que necessiten\nconstruir un `dist/<name>.png` path (p. ex. via `@pantoken/cdn`)) o dimensionar un `<img>` sense analitzar l'SVG."
+
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [LogoMeta](../interfaces/LogoMeta.md), or `undefined` if that combination doesn't exist."
+msgstr "La cadena SVG, o `undefined` si aquesta combinació no existeix."
+
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "**Build a PNG CDN path for a logo**"
+msgstr "**Construeix un preajust a partir d'una IR personalitzada**"
 
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
@@ -13732,6 +13899,20 @@ msgctxt "docs.api:prose"
 msgid "The path within `assets/logos`, e.g. `\"canvas/horizontal-full-color.svg\"`."
 msgstr "El camí dins de `assets/logos`, per exemple `\"canvas/horizontal-full-color.svg\"`."
 
+#: plugins/pantoken/logos/src/interfaces/LogoMeta.md
+#: renderers/tinymce/src/interfaces/LogoMeta.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The rasterized PNG's display width in CSS pixels (fixed per layout group, not the SVG's own size)."
+msgstr "Amplada de visualització del PNG rasteritzat en píxels CSS (fixa per grup de layout, no la mida pròpia de l'SVG))."
+
+#: plugins/pantoken/logos/src/interfaces/LogoMeta.md
+#: renderers/tinymce/src/interfaces/LogoMeta.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The rasterized PNG's display height in CSS pixels, derived from the SVG's `viewBox` aspect ratio."
+msgstr "Alçada de visualització del PNG rasteritzat en píxels CSS, derivada de la relació d'aspecte del `viewBox` del `viewBox` de l'SVG."
+
 #: plugins/pantoken/logos/src/interfaces/LogosOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13801,6 +13982,85 @@ msgstr "**Incrustar els tokens del logotip a una pàgina**"
 msgctxt "docs.api:prose"
 msgid "The products that have logos."
 msgstr "Els productes que tenen logos."
+
+#: plugins/pantoken/lucide-lab/src/functions/defaultRegistry.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Lazily import the published Lucide Lab icon registry."
+msgstr "Importa de manera mandrosa el registre d'icones publicat de Lucide Lab."
+
+#: plugins/pantoken/lucide-lab/src/functions/lucideLab.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Create the Lucide Lab icon plugin."
+msgstr "Crea el connector Simple Icons."
+
+#: plugins/pantoken/lucide-lab/src/functions/lucideLab.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "[LucideLabOptions](../interfaces/LucideLabOptions.md). Pass a registry for synchronous token-stage use."
+msgstr "[SimpleIconsOptions](../interfaces/SimpleIconsOptions.md). Passa un `registry` per evitar la importació tardana (p. ex., en ús de fase de token, on els ganxos són síncrons)."
+
+#: plugins/pantoken/lucide-lab/src/functions/lucideLab.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "A token-capable pantoken plugin."
+msgstr "El connector de Vite de pantoken."
+
+#: plugins/pantoken/lucide-lab/src/functions/svgOf.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Convert a Lucide Lab icon-node array into standalone SVG markup."
+msgstr "Converteix una matriu d'icon-nodes de Lucide Lab en marcació SVG independent."
+
+#: plugins/pantoken/lucide-lab/src/functions/toKebab.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Convert a Lucide Lab export name to its kebab-case token name."
+msgstr "Converteix un nom d'exportació de Lucide Lab al seu nom de token en kebab-case."
+
+#: plugins/pantoken/lucide-lab/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Renames and re-exports [lucideLab](functions/lucideLab.md)"
+msgstr "Reanomena i re-exporta [stacking](functions/stacking.md)"
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for the [lucideLab](../functions/lucideLab.md) plugin."
+msgstr "Opcions per al connector [layouts](../functions/layouts.md)."
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Icon names to emit as `<image>` tokens (default: every icon in the registry)."
+msgstr "Noms d'icones per emetreLet com a tokens `&lt;image&gt;` (per defecte: totes les icones de tercers)."
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The Lucide Lab registry (required by the synchronous token hook)."
+msgstr "El registre Lucide Lab (requerit pel hook de token sincrònic))."
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#: plugins/pantoken/simple-icons/src/interfaces/SimpleIconsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The token-name prefix (default: `--instui-icon-`)."
+msgstr "El prefix del nom de token (per defecte: `--instui-icon-`)."
+
+#: plugins/pantoken/lucide-lab/src/type-aliases/LucideLabNode.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "One SVG element in a Lucide icon-node array."
+msgstr "Un element SVG en una matriu d'icon-nodes de Lucide."
+
+#: plugins/pantoken/lucide-lab/src/type-aliases/LucideLabRegistry.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A registry of named Lucide Lab icon-node arrays."
+msgstr "Un registre de matrius d'icon-nodes de Lucide Lab amb nom."
 
 #: plugins/pantoken/primitives/src/functions/primitivesCss.md
 #, no-c-format
@@ -13963,12 +14223,6 @@ msgstr "Slugs de marca per emetre com a tokens `&lt;image&gt;` en la capa de tok
 msgctxt "docs.api:prose"
 msgid "The Simple Icons registry (default: the `simple-icons` package, loaded lazily)."
 msgstr "El registre de Simple Icons (per defecte: el paquet `simple-icons`, carregat tardanament)."
-
-#: plugins/pantoken/simple-icons/src/interfaces/SimpleIconsOptions.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The token-name prefix (default: `--instui-icon-`)."
-msgstr "El prefix del nom de token (per defecte: `--instui-icon-`)."
 
 #: plugins/pantoken/simple-icons/src/type-aliases/SimpleIconsRegistry.md
 #, no-c-format
@@ -15790,9 +16044,9 @@ msgid "`@pantoken/rehype` — render `:icon:` codes as inline SVG."
 msgstr "`@pantoken/rehype` — renderitzar codis `:icon:` com a SVG en línia."
 
 #: renderers/rehype/src/index.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "The plugin walks hast text nodes and replaces `:code:` tokens with an inline SVG element,\nresolving each code through a chain: plugin `rehype` resolvers first, then any explicit\n`resolve`, then the built-in `@pantoken/icons` set. It ports `rehype-instui-markdown` onto the\nshared icon manifest."
+msgid "The plugin walks hast text nodes and replaces `:code:` tokens with an inline SVG element,\nresolving each code through a chain: any explicit `resolve`, then the built-in\n`@pantoken/icons` set, then plugin `rehype` resolvers. It ports `rehype-instui-markdown` onto\nthe shared icon manifest."
 msgstr "El plugin camina pels nodes de text hast i reemplaça tokens `:code:` amb un element SVG en línia,\nresol cada codi a través d'una cadena: resolvedors del plugin `rehype` primer, després qualsevol\n`resolve` explícit, després el conjunt `@pantoken/icons` integrat. Trasllada `rehype-instui-markdown` al\nmanifest d'icones compartit."
 
 #: renderers/rehype/src/index.md
@@ -15972,6 +16226,12 @@ msgctxt "docs.api:prose"
 msgid "A Svelte action's return shape."
 msgstr "La forma de retorn d'una acció de Svelte."
 
+#: renderers/tinymce/src/functions/buildIconMarkup.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The decorative icon markup retained in editor content after a picker selection."
+msgstr "La marcació d'icona decorativa que es conserva en el contingut de l'editor després d'una selecció del selector."
+
 #: renderers/tinymce/src/functions/createComponentsPlugin.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -15983,6 +16243,18 @@ msgstr "Crea la fàbrica del connector del selector de components.\nRetorna una 
 msgctxt "docs.api:prose"
 msgid "Usage:\n  tinymce.PluginManager.add(\n    \"pantokenComponents\",\n    createComponentsPlugin(`{ model, currentAssets, onMissingAsset }`)\n  );"
 msgstr "Ús:\n  tinymce.PluginManager.add(\n    \"pantokenComponents\",\n    createComponentsPlugin(`{ model, currentAssets, onMissingAsset }`)\n  );"
+
+#: renderers/tinymce/src/functions/createContentClassesPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build an opt-in plugin that adds pantoken classes to TinyMCE-authored content."
+msgstr "Construeix un complement opt-in que afegeix classes pantoken al contingut creat amb TinyMCE."
+
+#: renderers/tinymce/src/functions/createFullscreenFooterPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a footer-only button that toggles TinyMCE's fullscreen mode."
+msgstr "Crea un botó només al peu que commuta el mode de pantalla completa de TinyMCE."
 
 #: renderers/tinymce/src/functions/createIconsPlugin.md
 #, no-c-format
@@ -16002,11 +16274,47 @@ msgctxt "docs.api:prose"
 msgid "Create the logos picker plugin factory.\nReturns a function suitable for `tinymce.PluginManager.add()`."
 msgstr "Crea la fàbrica del connector del selector de logotips.\nRetorna una funció adequada per a `tinymce.PluginManager.add()`."
 
+#: renderers/tinymce/src/functions/createPantokenPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a single pantoken toolbar menu that opens each composed plugin."
+msgstr "Crea un únic menú de barra d'eines pantoken que obre cada complement composat."
+
+#: renderers/tinymce/src/functions/createSearchReplaceFooterPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a footer-only button that opens TinyMCE's search & replace dialog."
+msgstr "Crea un botó només al peu que obre el diàleg de cerca i substitució de TinyMCE."
+
+#: renderers/tinymce/src/functions/createSupSubPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a single toolbar menu button toggling superscript or subscript."
+msgstr "Crea un únic botó de menú de barra d'eines que commuta superíndex o subíndex."
+
 #: renderers/tinymce/src/functions/createTemplatesPlugin.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Builds the `tinymce.PluginManager.add` callback for the \"Insert template\" plugin."
 msgstr "Construeix la devolució de crida `tinymce.PluginManager.add` per al connector \"Inserir plantilla\"."
+
+#: renderers/tinymce/src/functions/createVisualBlocksFooterPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a footer-only button that toggles TinyMCE's visual blocks outlines."
+msgstr "Crea un botó només al peu que commuta els contorns de blocs visuals de TinyMCE."
+
+#: renderers/tinymce/src/functions/filterIcons.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Narrow `icons` to those matching `query` and, when given, a single `source`."
+msgstr "Redueix `icons` a aquells que coincideixen amb `query` i, quan s'especifica, a una sola `source`."
+
+#: renderers/tinymce/src/functions/filterIcons.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`TaggedIcon`](../interfaces/TaggedIcon.md)[]"
+msgstr "només de lectura [`Token`](../interfaces/Token.md)[]"
 
 #: renderers/tinymce/src/functions/findEntry.md
 #, no-c-format
@@ -16020,11 +16328,35 @@ msgctxt "docs.api:prose"
 msgid "Compute the CdnFile for an icon given its source.\nReturns `{ package, path }` for use with @pantoken/cdn's buildFileUrl."
 msgstr "Calcula el CdnFile per a una icona donada la seva font.\nRetorna `{ package, path }` per a ús amb buildFileUrl de @pantoken/cdn."
 
+#: renderers/tinymce/src/functions/getIconImageSrc.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A `data:` URI usable as an `<img src>` for the icon, for sources this package bundles; for the\nrest it reads the custom property back off `root`, which resolves once the source's glyph sheet\nhas loaded. Returns `undefined` when neither path yields a glyph."
+msgstr "Una URI `data:` que es pot utilitzar com a `<img src>` per a la icona, per a les fonts que empaqueta aquest paquet; per a la resta llegeix la propietat personalitzada de `root`, que es resol un cop s'ha carregat la fulla de glifs de la font. Retorna `undefined` quan cap de les dues rutes no proporciona un glif."
+
 #: renderers/tinymce/src/functions/getModifierSuggestions.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Get all modifier suggestions for a component/utility, filtered by an optional prefix.\nReturns array of `{ name, prop, value?, description }` objects."
 msgstr "Obté totes les suggerències de modificadors per a un component/utilitat, filtrat per un prefix opcional.\nRetorna matriu d'objectes `{ name, prop, value?, description }`."
+
+#: renderers/tinymce/src/functions/getUsedIconCdnFiles.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve the icon stylesheets used by `-icon-*` classes below `root`.\nExisting assets break ties when multiple providers expose the same icon name."
+msgstr "Resol les fulles d'estil d'icona utilitzades per les classes `-icon-*` sota `root`.\n Els actius existents trenquen empats quan diversos proveïdors exposen el mateix nom d'icona."
+
+#: renderers/tinymce/src/functions/getUsedIconCdnFiles.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[] = `[]`"
+msgstr "de només lectura [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[]"
+
+#: renderers/tinymce/src/functions/humanizeIconName.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Turn a hyphenated icon slug into a readable label, e.g. `circle-question-mark` → `circle question mark`."
+msgstr "Converteix un slug d'icona amb guions en una etiqueta llegible, p. ex., `circle-question-mark` → `circle question mark`."
 
 #: renderers/tinymce/src/functions/injectContentStylesheet.md
 #, no-c-format
@@ -16050,11 +16382,11 @@ msgctxt "docs.api:prose"
 msgid "Load and merge all available icons from both sources.\nReturns a sorted array tagged with the source package."
 msgstr "Carrega i fusiona totes les icones disponibles de les dues fonts.\nRetorna una matriu ordenada etiquetada amb el paquet de font."
 
-#: renderers/tinymce/src/functions/loadAllIcons.md
+#: renderers/tinymce/src/functions/materializeLayout.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "NOTE: Component icon names are derived from the model's `-icon-*` modifier.\nThis needs to be populated from either `docs/public/icon-manifest.json` (if consumable)\nor a manifest published alongside formats/components model.json.\nFor now, only simple-icons are included."
-msgstr "NOTA: Els noms d'icones de components es deriven del modificador `-icon-*` del model.\nAixò ha de poblar-se de `docs/public/icon-manifest.json` (si és consumible)\no un manifest publicat juntament amb formats/components model.json.\nPer ara, només s'inclouen simple-icons."
+msgid "Materialize declared layout image slots without embedding a provider URL in the layout."
+msgstr "Materialitza els espais d'imatge declarats del layout sense incrustar una URL del proveïdor al layout."
 
 #: renderers/tinymce/src/functions/pantokenContentCssUrls.md
 #, no-c-format
@@ -16092,11 +16424,29 @@ msgctxt "docs.api:prose"
 msgid "Usage:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlLinter({ model }),\n    ],\n  });"
 msgstr "Ús:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlLinter({ model }),\n    ],\n  });"
 
+#: renderers/tinymce/src/functions/registerPantokenIconPack.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Register a TinyMCE icon pack whose complete key set mirrors the installed default pack while\nevery rendered glyph comes from Pantoken's InstUI/Lucide icon tokens."
+msgstr "Registra un paquet d'icones de TinyMCE el conjunt complet de claus del qual reflecteix el paquet predeterminat instal·lat mentre\ncada glif renderitzat prové dels tokens d'icona InstUI/Lucide de Pantoken."
+
 #: renderers/tinymce/src/functions/validateClassToken.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Validate a pantoken class token (e.g., \"instui-button\", \"instui-button.-color-primary\").\nReturns an array of validation errors (empty if valid)."
 msgstr "Valida un token de classe de pantoken (p. ex., \"instui-button\", \"instui-button.-color-primary\").\nRetorna una matriu d'errors de validació (buida si és vàlid)."
+
+#: renderers/tinymce/src/interfaces/ContentClassesPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [createContentClassesPlugin](../functions/createContentClassesPlugin.md)."
+msgstr "Opcions per a [createLayoutsPlugin](../functions/createLayoutsPlugin.md)."
+
+#: renderers/tinymce/src/interfaces/ContentClassesPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Prefix used by pantoken component classes."
+msgstr "HTML brut per al disseny, construït a partir de classes `@pantoken/components`."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -16362,6 +16712,12 @@ msgctxt "docs.api:prose"
 msgid "Content of registered custom (block) tags, keyed by tag name without its `@`. Populated only for\ntags added via configuration; unregistered unknown tags are ignored. Absent when none were found."
 msgstr "Contingut de les etiquetes personalitzades (bloc) registrades, clau pel nom de l'etiqueta sense la seva `@`. Poblat només per\netiquetes afegides via configuració; les etiquetes desconegudes no registrades s'ignoren. Absent quan no es va trobar cap."
 
+#: renderers/tinymce/src/interfaces/LayoutImageAttributes.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Image attributes returned by a consumer-specific layout image resolver."
+msgstr "Atributs d'imatge retornats per un resolutor d'imatges de maquetació específic del consumidor."
+
 #: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -16369,10 +16725,22 @@ msgid "Options for [createLayoutsPlugin](../functions/createLayoutsPlugin.md)."
 msgstr "Opcions per a [createLayoutsPlugin](../functions/createLayoutsPlugin.md)."
 
 #: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The page layouts offered in the \"Insert layout\" picker. Defaults to the bundled layouts."
+msgstr "Els dissenys de pàgina oferts al selector \"Inserir disseny\". Per defecte a [pageLayouts](../variables/pageLayouts.md)."
+
+#: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The page layouts offered in the \"Insert layout\" picker. Defaults to [pageLayouts](../variables/pageLayouts.md)."
-msgstr "Els dissenys de pàgina oferts al selector \"Inserir disseny\". Per defecte a [pageLayouts](../variables/pageLayouts.md)."
+msgid "BCP47 locale to render layout text in. Defaults to `\"en\"`."
+msgstr "Configuració regional BCP47 per renderitzar el text de la maquetació. Per defecte és `\"en\"`."
+
+#: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolves a layout image slot into a consumer-specific image URL."
+msgstr "Resol un espai d'imatge de maquetació en una URL d'imatge específica del consumidor."
 
 #: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
 #, no-c-format
@@ -16380,11 +16748,83 @@ msgctxt "docs.api:prose"
 msgid "Called after a layout is inserted (e.g. to refresh a live preview)."
 msgstr "Cridat després d'inserir un disseny (p. ex. per refrescar una vista previa en directe)."
 
+#: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Register this picker's standalone toolbar button and menu item."
+msgstr "Registra el botó independent de la barra d'eines i l'element del menú d'aquest selector."
+
+#: renderers/tinymce/src/interfaces/PantokenPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Configuration for the content plugins composed by [createPantokenPlugin](../functions/createPantokenPlugin.md)."
+msgstr "Opcions per a [createLayoutsPlugin](../functions/createLayoutsPlugin.md)."
+
 #: renderers/tinymce/src/interfaces/TaggedIcon.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Icon with source attribution for tracking which package it comes from."
 msgstr "Icona amb atribució de font per al seguiment de quin paquet prové."
+
+#: renderers/tinymce/src/interfaces/TinymceStrings.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "All user-visible strings emitted by the TinyMCE integration."
+msgstr "Totes les cadenes visibles per a l'usuari emeses pel conjunt d'elements del component web."
+
+#: renderers/tinymce/src/type-aliases/LayoutImageResolver.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolves a provider-neutral layout image slot for a particular consumer."
+msgstr "Resol un espai d'imatge de maquetació neutral respecte al proveïdor per a un consumidor concret."
+
+#: renderers/tinymce/src/type-aliases/PantokenFontSize.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Semantic text sizes accepted by the pantoken font-size command."
+msgstr "Mides de text semàntiques acceptades per la comanda pantoken font-size."
+
+#: renderers/tinymce/src/variables/CONTENT_CLASSES_PLUGIN_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Plugin name to pass in TinyMCE's `plugins` option."
+msgstr "El nom del connector a passar a les opcions d'inicialització `plugins`/`toolbar` de TinyMCE."
+
+#: renderers/tinymce/src/variables/DEFAULT_ICON_TRIGGER.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Autocompleter trigger. Two colons rather than one so the stock `emoticons` plugin — which claims\n`:` and would otherwise have several thousand icons merged into its results — keeps working."
+msgstr "Trucador de l'autocompletat. Dos dos-punts en lloc d'un perquè el complement estàndard `emoticons` — que reclama\n`:` `:` i que, en cas contrari, tindria diversos milers d'icones fusionades en els seus resultats — continua funcionant."
+
+#: renderers/tinymce/src/variables/FULLSCREEN_FOOTER_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/PANTOKEN_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/SEARCHREPLACE_FOOTER_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/SUP_SUB_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/VISUALBLOCKS_FOOTER_PLUGIN_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Plugin name to pass in TinyMCE's `plugins` init option."
+msgstr "El nom del connector a passar a les opcions d'inicialització `plugins`/`toolbar` de TinyMCE."
+
+#: renderers/tinymce/src/variables/FULLSCREEN_FOOTER_STATUSBAR_NAME.md
+#: renderers/tinymce/src/variables/SEARCHREPLACE_FOOTER_STATUSBAR_NAME.md
+#: renderers/tinymce/src/variables/VISUALBLOCKS_FOOTER_STATUSBAR_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The footer/statusbar control name registered by this plugin."
+msgstr "El nom del botó de la barra d'eines/element de menú registrat per aquest connector."
+
+#: renderers/tinymce/src/variables/ICONS_COMMAND.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Command that opens the icons picker."
+msgstr "Comanda que obre el selector d'icones."
+
+#: renderers/tinymce/src/variables/ICON_SOURCES.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The icon sources, in the order the picker lists them."
+msgstr "Les fonts d'icones, en l'ordre en què el selector les llista."
 
 #: renderers/tinymce/src/variables/LAYOUTS_PLUGIN_NAME.md
 #, no-c-format
@@ -16397,6 +16837,43 @@ msgstr "El nom del connector a passar a les opcions d'inicialització `plugins`/
 msgctxt "docs.api:prose"
 msgid "The toolbar button/menu item name registered by this plugin."
 msgstr "El nom del botó de la barra d'eines/element de menú registrat per aquest connector."
+
+#: renderers/tinymce/src/variables/PANTOKEN_COMMANDS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Commands exposed for hosts that want explicit pantoken-aware toolbar actions."
+msgstr "Comandes exposades per a amfitrions que vulguin accions explícites a la barra d'eines compatibles amb pantoken."
+
+#: renderers/tinymce/src/variables/PANTOKEN_ICON_PACK_NAME.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TinyMCE icon-pack id to pass as the editor's `icons` option."
+msgstr "Id del paquet d'icones de TinyMCE per passar com a opció `icons` de l'editor."
+
+#: renderers/tinymce/src/variables/PANTOKEN_TOOLBAR_NAME.md
+#: renderers/tinymce/src/variables/SUP_SUB_TOOLBAR_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Toolbar menu-button name to pass in TinyMCE's `toolbar` init option."
+msgstr "El nom del connector a passar a les opcions d'inicialització `plugins`/`toolbar` de TinyMCE."
+
+#: renderers/tinymce/src/variables/SOURCE_LABELS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Human label shown as a picker tab and an autocompleter row caption, per icon source."
+msgstr "Etiqueta visible mostrada com a pestanya del selector i com a llegenda de fila de l'autocompletador, per font d'icona."
+
+#: renderers/tinymce/src/variables/TINYMCE_STRINGS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "English defaults for TinyMCE integration UI strings."
+msgstr "Valors per defecte en anglès per a les cadenes d'interfície d'integració de TinyMCE."
+
+#: renderers/tinymce/src/variables/pageTemplates.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The bundled page layouts exposed through the template picker."
+msgstr "Les disposicions de pàgina agrupades exposades mitjançant el selector de plantilles."
 
 #: renderers/vitepress/src/index.md
 #, no-c-format
@@ -17400,6 +17877,30 @@ msgctxt "docs.api:prose"
 msgid "Swedish (Svenska) locale bundle."
 msgstr "Paquet de localització sueca (Svenska)."
 
+#: renderers/web-components/src/variables/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`<instui-tabs>` — a light-DOM tabbed panel set. It keeps the existing `.instui-tabs` CSS contract\nintact while adding selection, panel visibility, and keyboard behavior through the shared tabs\ninteraction. Load `@pantoken/components/components.css` for the tab visuals."
+msgstr "`<instui-tabs>` — un conjunt de panells amb pestanyes en el DOM lleuger. Manté el contracte CSS existent `.instui-tabs` intacte mentre afegeix selecció, visibilitat de panells i comportament de teclat mitjançant la interacció de pestanyes compartida. Carrega `@pantoken/components/components.css` per als visuals de les pestanyes."
+
+#: renderers/web-components/src/variables/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "General"
+msgstr "General"
+
+#: renderers/web-components/src/variables/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Advanced"
+msgstr "Configuració avançada"
+
+#: renderers/web-components/src/variables/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "General settings"
+msgstr "Generat amb"
+
 #: renderers/web-components/src/variables/tag.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -17806,6 +18307,11 @@ msgstr "La cadena de font Stylus."
 msgctxt "docs.api:prose"
 msgid "A hoverable \"view fullscreen\" button, overlaid on a demo/example frame the same way VitePress's own\ncode-block \"copy\" button reveals on hover. Purely markup — wire a delegated click handler in your\nhost page (`button.closest(...).querySelector(\"iframe\")?.requestFullscreen()`; see the pantoken docs\ntheme for the reference wiring) and style the reveal-on-hover with `@pantoken/demo/demo.css`."
 msgstr "Un botó \"veure a pantalla completa\" sobre el qual es pot passar el ratolí, superposat en un marc de demostració/exemple de la mateixa manera que el botó de \"copia\" del bloc de codi propi de\nVitePress es revela en passar-hi el ratolí. Només marques — connecta un gestor de clic delegat a la teva\npàgina amfitriona (`button.closest(...).querySelector(\"iframe\")?.requestFullscreen()`; consulta el tema de la documentació de pantoken\nper al cablejat de referència) i estila la revelació en passar-hi el ratolí amb `@pantoken/demo/demo.css`."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "NOTE: Component icon names are derived from the model's `-icon-*` modifier.\nThis needs to be populated from either `docs/public/icon-manifest.json` (if consumable)\nor a manifest published alongside formats/components model.json.\nFor now, only simple-icons are included."
+#~ msgstr "NOTA: Els noms d'icones de components es deriven del modificador `-icon-*` del model.\nAixò ha de poblar-se de `docs/public/icon-manifest.json` (si és consumible)\no un manifest publicat juntament amb formats/components model.json.\nPer ara, només s'inclouen simple-icons."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -27897,10 +28403,6 @@ msgstr "Un botó \"veure a pantalla completa\" sobre el qual es pot passar el ra
 #~ msgstr "Font"
 
 #~ msgctxt "docs.api:text"
-#~ msgid "Generated using"
-#~ msgstr "Generat amb"
-
-#~ msgctxt "docs.api:text"
 #~ msgid "API reference"
 #~ msgstr "Referència de l'API"
 
@@ -28003,9 +28505,3 @@ msgstr "Un botó \"veure a pantalla completa\" sobre el qual es pot passar el ra
 #~ msgctxt "docs.api:text"
 #~ msgid "BuildIconFontOptions"
 #~ msgstr "BuildIconFontOptions"
-
-#: formats/components/src/variables/aiGradientCss.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The AI gradient utility as a standalone, header-wrapped stylesheet."
-msgstr "La utilitat de degradat d'IA com a full d'estils independent, envoltat per una capçalera."

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-18 00:03+0000\n"
+"PO-Revision-Date: 2026-09-23 03:40+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -9,961 +9,997 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: und\n"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#description
 #, no-c-format
 msgctxt "docs.chrome:description"
 msgid "Instructure design tokens and icons, reshaped for every platform and framework."
 msgstr "Tocynnau a eiconau dylunio Instructure, wedi'u hail-lunio ar gyfer pob llwyfan a fframwaith."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#nav.guide
 #, no-c-format
 msgctxt "docs.chrome:nav.guide"
 msgid "Guide"
 msgstr "Canllaw"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#nav.css
 #, no-c-format
 msgctxt "docs.chrome:nav.css"
 msgid "CSS"
 msgstr "CSS"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#nav.api
 #, no-c-format
 msgctxt "docs.chrome:nav.api"
 msgid "API"
 msgstr "API"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.intro
 #, no-c-format
 msgctxt "docs.chrome:sidebar.intro"
 msgid "Introduction"
 msgstr "Cyflwyniad"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.guides
 #, no-c-format
 msgctxt "docs.chrome:sidebar.guides"
 msgid "Guides"
 msgstr "Canllawiau"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.utilities
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:sidebar.utilities"
 msgid "Utilities"
 msgstr "Cyfleustiau"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.gettingStarted
 #, no-c-format
 msgctxt "docs.chrome:sidebar.gettingStarted"
 msgid "Getting started"
 msgstr "Dechrau"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.architecture
 #, no-c-format
 msgctxt "docs.chrome:sidebar.architecture"
 msgid "Architecture"
 msgstr "Pensaernïaeth"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.components
 #, no-c-format
 msgctxt "docs.chrome:sidebar.components"
 msgid "Components"
 msgstr "Cydrannau"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.cdn
 #, no-c-format
 msgctxt "docs.chrome:sidebar.cdn"
 msgid "CDN & distribution"
 msgstr "CDN a dosbarthu"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.cdnPicker
 #, no-c-format
 msgctxt "docs.chrome:sidebar.cdnPicker"
 msgid "CDN picker"
 msgstr "Dewiswr CDN"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.registry
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:sidebar.registry"
 msgid "shadcn/ui Registry"
 msgstr "Cofrestr"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.agentTools
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:sidebar.agentTools"
 msgid "Agent Tools"
 msgstr "Offer"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.canvasRce
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:sidebar.canvasRce"
+msgid "Canvas RCE"
+msgstr "Canvas"
+
+#: docs/.vitepress/i18n.json#sidebar.cli
 #, no-c-format
 msgctxt "docs.chrome:sidebar.cli"
 msgid "The pantoken CLI"
 msgstr "CLI pantoken"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.plugins
 #, no-c-format
 msgctxt "docs.chrome:sidebar.plugins"
 msgid "Plugins"
 msgstr "Plwgins"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.generated
 #, no-c-format
 msgctxt "docs.chrome:sidebar.generated"
 msgid "Generated output"
 msgstr "Allbwn wedi'i greu"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.api
 #, no-c-format
 msgctxt "docs.chrome:sidebar.api"
 msgid "API reference"
 msgstr "Cyfeiriadur API"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.css
 #, no-c-format
 msgctxt "docs.chrome:sidebar.css"
 msgid "CSS"
 msgstr "CSS"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.ai
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.ai"
 msgid "AI"
 msgstr "AI"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.bundlers
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.bundlers"
 msgid "Bundlers"
 msgstr "Bundlwyr"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.design
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.design"
 msgid "Design"
 msgstr "Dylunio"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.formats
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.formats"
 msgid "Formats"
 msgstr "Fformatau"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.packages
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.packages"
 msgid "Packages"
 msgstr "Pecynnau"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.platforms
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.platforms"
 msgid "Platforms"
 msgstr "Platformau"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.plugins
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.plugins"
 msgid "Plugins"
 msgstr "Plwgins"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.renderers
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.renderers"
 msgid "Renderers"
 msgstr "Rhedegwyr"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.tools
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.tools"
 msgid "Tools"
 msgstr "Offer"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#platformPicker.label
 #, no-c-format
 msgctxt "docs.chrome:platformPicker.label"
 msgid "Choose a platform"
 msgstr "Dewiswch lwyfan"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiOverview
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiOverview"
 msgid "Overview"
 msgstr "Trosolwg"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#editText
 #, no-c-format
 msgctxt "docs.chrome:editText"
 msgid "Edit this page on GitHub"
 msgstr "Golygu'r dudalen hon ar GitHub"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#demoTabs.result
 #, no-c-format
 msgctxt "docs.chrome:demoTabs.result"
 msgid "Result"
 msgstr "Canlyniad"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#demoTabs.html
 #, no-c-format
 msgctxt "docs.chrome:demoTabs.html"
 msgid "HTML"
 msgstr "HTML"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#demoTabs.css
 #, no-c-format
 msgctxt "docs.chrome:demoTabs.css"
 msgid "CSS"
 msgstr "CSS"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#demoTabs.js
 #, no-c-format
 msgctxt "docs.chrome:demoTabs.js"
 msgid "JS"
 msgstr "JS"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#themeSelector.label
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.label"
 msgid "Select theme"
 msgstr "Dewis thema"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#themeSelector.rebrand
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.rebrand"
 msgid "Next gen"
 msgstr "Next gen"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#themeSelector.canvas
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.canvas"
 msgid "Canvas"
 msgstr "Canvas"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#themeSelector.canvasHighContrast
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.canvasHighContrast"
 msgid "Canvas high contrast"
 msgstr "Canvas high contrast"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.themeLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeLabel"
 msgid "Theme"
 msgstr "Thema"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.themeRebrand
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeRebrand"
 msgid "Next gen"
 msgstr "Next gen"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.themeCanvas
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeCanvas"
 msgid "Canvas"
 msgstr "Canvas"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.themeCanvasHighContrast
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeCanvasHighContrast"
 msgid "Canvas high contrast"
 msgstr "Canvas high contrast"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.modeLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.modeLabel"
 msgid "Rebrand mode"
 msgstr "Modd ailfrandio"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.modeAdaptive
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.modeAdaptive"
 msgid "Light + dark"
 msgstr "Ysgafn + tywyll"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.modeLightOnly
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.modeLightOnly"
 msgid "Light only"
 msgstr "Yn unig ysgafn"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.includeDarkMode
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.includeDarkMode"
 msgid "Include dark mode"
 msgstr "Cynnwys modd tywyll"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.providerLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.providerLabel"
 msgid "CDN provider"
 msgstr "Darparwr CDN"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.componentsLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.componentsLabel"
 msgid "Components"
 msgstr "Cydrannau"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.allComponents
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.allComponents"
 msgid "All components"
 msgstr "Pob cydran"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.formatLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.formatLabel"
 msgid "Output"
 msgstr "Allbwn"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.formatLink
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.formatLink"
 msgid "<link>"
 msgstr "<link>"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.formatImport
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.formatImport"
 msgid "@import"
 msgstr "@import"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.includeBase
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.includeBase"
 msgid "Base"
 msgstr "Sylfaen"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.baseInfoLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfoLabel"
 msgid "About the base reset"
 msgstr "Am y reset sylfaenol"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.baseInfo
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfo"
 msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
 msgstr "Ail-osod byd-eang dewisol: box-sizing, arwyneb y dudalen, lliw testun sylfaen a ffont, cynllun-liw, a rhagosodiadau dolen."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.includeUtilities
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.includeUtilities"
 msgid "Utilities"
 msgstr "Cyfleustiau"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.utilitiesInfoLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfoLabel"
 msgid "About the utility classes"
 msgstr "Am y dosbarthiadau cyfleus"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.utilitiesInfo
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
 msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
 msgstr "Haen o ddosbarthiadau traws-dorfol dewisol: rhifyn View, lleoliad ar raddfa tocynnau, a gor-ysgrifennu lliwiau semantig."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.copy
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.copy"
 msgid "Copy"
 msgstr "Copïo"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.copied
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.copied"
 msgid "Copied"
 msgstr "Wedi'i gopi"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.empty
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.empty"
 msgid "Select one or more components to build a URL."
 msgstr "Dewis un neu fwy o gydrannau i adeiladu URL."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.fontsNote
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.fontsNote"
 msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
 msgstr "Mae ffontiau'n llwytho ar wahân — ychwanegwch <link> i @pantoken/components/fonts.css pan fydd eu hangen."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.iconsNote
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.iconsNote"
 msgid "component-icons.css is included because a selected component uses icons."
 msgstr "Mae component-icons.css wedi'i gynnwys oherwydd bod cydran a ddewiswyd yn defnyddio eiconau."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.copied
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.copied"
 msgid "Copied"
 msgstr "Wedi'i gopi"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.cliInstall
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.cliInstall"
 msgid "CLI install"
 msgstr "Gosod CLI"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.aiInstall
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.aiInstall"
 msgid "AI install"
 msgstr "Gosod AI"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.pauseAnimation
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.pauseAnimation"
 msgid "Pause animation"
 msgstr "Paus animeiddio"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.playAnimation
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.playAnimation"
 msgid "Resume animation"
 msgstr "Ailgychwyn animeiddio"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.agentPrompt
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
 msgid "\"Set up pantoken in this project using create.pantoken.app/SKILL.md.\""
 msgstr "\"Sefydlwch pantoken (github.com/thedannywahl/pantoken) yn y prosiect hwn gan ddefnyddio create.pantoken.app/SKILL.md.\""
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.title
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.title"
 msgid "shadcn/ui Registry"
 msgstr "Cofrestr"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.subtitle
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.subtitle"
 msgid "Compatible components, themes, and behavior hooks conforming to the shadcn/ui registry specification. Add items directly to your shadcn/ui project via CLI."
 msgstr "Cydnawsol gydrannau, themâu, a chlogiynnau ymddygiad sy'n cydymffurfio â manyleb cofrestr shadcn/ui. Ychwanegu eitemau'n uniongyrchol i'ch prosiect shadcn/ui drwy'r CLI."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.tabAll
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.tabAll"
 msgid "All"
 msgstr "Pob"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.tabComponents
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.tabComponents"
 msgid "Components"
 msgstr "Cydrannau"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.tabThemes
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.tabThemes"
 msgid "Themes"
 msgstr "Thema"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.tabHooks
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.tabHooks"
 msgid "Hooks"
 msgstr "Hooks"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.searchPlaceholder
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.searchPlaceholder"
 msgid "Filter components, themes, hooks…"
 msgstr "Hidlo gydrannau, themâu, hooks…"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.cliLabel
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.cliLabel"
 msgid "CLI:"
 msgstr "CLI:"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.copy
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.copy"
 msgid "Copy"
 msgstr "Copïo"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.copied
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.copied"
 msgid "Copied"
 msgstr "Wedi'i gopi"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.depsLabel
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.depsLabel"
 msgid "Deps:"
 msgstr "Deps:"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.previewDetails
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.previewDetails"
 msgid "Preview details"
 msgstr "Manylion rhagolwg"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.previewTokens
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.previewTokens"
 msgid "Token mappings (light)"
 msgstr "Mapiadau tocyn (light)"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.viewJson
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.viewJson"
 msgid "JSON"
 msgstr "JSON"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.emptyTitle
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.emptyTitle"
 msgid "No registry items match your search."
 msgstr "Dim eitemau cofrestr sy'n cyfateb i'ch chwiliad."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.emptyReset
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.emptyReset"
 msgid "Reset Filters"
 msgstr "Ailosod chwiliad"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#canvasRce.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:canvasRce.title"
+msgid "Canvas RCE"
+msgstr "Canvas"
+
+#: docs/.vitepress/i18n.json#canvasRce.description
+#, no-c-format
+msgctxt "docs.chrome:canvasRce.description"
+msgid "A live preview of pantoken's Canvas LMS Rich Content Editor template: a TinyMCE-based editor with starter layouts, a live preview pane, and hand-editable theme.css/theme.js output."
+msgstr "Rhagolwg byw ar dempled Golygydd Cynnwys Cyfoethog Canvas LMS pantoken: golygydd sy'n seiliedig ar TinyMCE gyda trefniadau cychwynnol, panel rhagolwg byw, ac allbwn theme.css/theme.js a ellir ei olygu â llaw."
+
+#: docs/.vitepress/i18n.json#canvasRce.openInNewTab
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:canvasRce.openInNewTab"
+msgid "Open in a new tab"
+msgstr "Agor yn {{agent}}"
+
+#: docs/.vitepress/i18n.json#canvasRce.runLocally
+#, no-c-format
+msgctxt "docs.chrome:canvasRce.runLocally"
+msgid "Run locally: npx create-pantoken-app canvas-theme-editor"
+msgstr "Rhedeg yn lleol: npx create-pantoken-app canvas-theme-editor"
+
+#: docs/.vitepress/i18n.json#agentTools.title
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.title"
 msgid "Agent Tools"
 msgstr "Offer"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.subtitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.subtitle"
 msgid "Pick a Pantoken agent workflow, generate the command or launch URL, and give your assistant the files it needs to stop guessing."
 msgstr "Dewiswch lif gwaith asiant Pantoken, cynhyrchwch y gorchymyn neu URL lansio, a rhoi'r ffeiliau i'ch cynorthwyydd er mwyn peidio â dyfalu."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.providerLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.providerLabel"
 msgid "Agent"
 msgstr "Asiant"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.packageManagerLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.packageManagerLabel"
 msgid "Runner"
 msgstr "Rhedegwr"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.copy
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.copy"
 msgid "Copy"
 msgstr "Copïo"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.download
 #, no-c-format
 msgctxt "docs.chrome:agentTools.download"
 msgid "Download"
 msgstr "Lawrlwytho"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.copied
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.copied"
 msgid "Copied"
 msgstr "Wedi'i gopi"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.open
 #, no-c-format
 msgctxt "docs.chrome:agentTools.open"
 msgid "Open"
 msgstr "Agor"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.openInAgent
 #, no-c-format
 msgctxt "docs.chrome:agentTools.openInAgent"
 msgid "Open in {{agent}}"
 msgstr "Agor yn {{agent}}"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.openUnavailable
 #, no-c-format
 msgctxt "docs.chrome:agentTools.openUnavailable"
 msgid "This agent does not publish a stable launch URL. Use Copy for the CLI prompt."
 msgstr "Nid yw'r asiant hwn yn cyhoeddi URL lansio sefydlog. Defnyddiwch Copïo ar gyfer y prompt CLI."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.tabBootstrap
 #, no-c-format
 msgctxt "docs.chrome:agentTools.tabBootstrap"
 msgid "Bootstrap"
 msgstr "Bootstrap"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.tabInstall
 #, no-c-format
 msgctxt "docs.chrome:agentTools.tabInstall"
 msgid "Install assets"
 msgstr "Gosod asedau"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.tabRegistry
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.tabRegistry"
 msgid "Registry"
 msgstr "Cofrestr"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.tabDocs
 #, no-c-format
 msgctxt "docs.chrome:agentTools.tabDocs"
 msgid "Agent docs"
 msgstr "Dogfennau asiant"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.bootstrapTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.bootstrapTitle"
 msgid "Bootstrap a project"
 msgstr "Sefydlu prosiect"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.bootstrapDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.bootstrapDescription"
 msgid "Scaffold a starter with Pantoken wired in and install the repo-local agent assets in the same pass."
 msgstr "Creu deunydd cychwyn gyda Pantoken wedi'i integreiddio a gosod asedau asiant lleol y repo yn yr un cam."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.platformLabel
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.platformLabel"
 msgid "Platform"
 msgstr "Platformau"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.directoryLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.directoryLabel"
 msgid "Directory"
 msgstr "Cyfeiriadur"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.installTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installTitle"
 msgid "Add agent guidance to a repo"
 msgstr "Ychwanegu canllawiau asiant i repo"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.installDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installDescription"
 msgid "Install AGENTS.md, llms.txt, editor rules, and Claude skills into an existing project that already uses or is about to use Pantoken."
 msgstr "Gosodwch AGENTS.md, llms.txt, rheolau golygydd, a sgiliau Claude i mewn i brosiect presennol sy'n defnyddio neu sydd ar fin defnyddio Pantoken."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.toolLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.toolLabel"
 msgid "Asset set"
 msgstr "Set asedau"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.writesLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.writesLabel"
 msgid "Writes"
 msgstr "Ysgrifennu"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryTitle
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.registryTitle"
 msgid "Work with the shadcn/ui registry"
 msgstr "Cofrestr"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryDescription"
 msgid "Point an agent at Pantoken's indexed registry so it can search, inspect, and add CSS-backed registry items instead of inventing package names."
 msgstr "Pwyntiwch asiant at gofrestr Mynegai Pantoken fel y gall chwilio, archwilio, ac ychwanegu eitemau cofrestr wedi'u cefnogi gan CSS yn lle dyfeisio enwau pecynnau."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryActionLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryActionLabel"
 msgid "Action"
 msgstr "Gweithred"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryItemLabel
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.registryItemLabel"
 msgid "Registry item"
 msgstr "Cofrestr"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.docsTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsTitle"
 msgid "Agent-readable documentation"
 msgstr "Dogfennau sy'n ddarllenadwy gan asiant"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.docsDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsDescription"
 msgid "Pantoken publishes fetchable documentation and manifests for assistants that can browse URLs or read raw Markdown."
 msgstr "Mae Pantoken yn cyhoeddi dogfennau a maniffestau y gellir eu hachub ar gyfer cynorthwywyr sy'n gallu pori URLau neu ddarllen Markdown crai."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.installPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installPrompt"
 msgid "Install Pantoken agent guidance in this repository. Use {{command}}, then summarize the files written and when future agents should read them."
 msgstr "Gosod canllawiau asiant Pantoken yn y cronfa ddata hon. Defnyddiwch {{command}}, yna crynhowch y ffeiliau a ysgrifennwyd a phryd y dylai asiantau dyfodol eu darllen."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryPrompt"
 msgid "Use the Pantoken shadcn registry for this project. Fetch https://pantoken.app/r/registry.json, then run {{command}} if the project uses shadcn or has components.json. Registry items install CSS and metadata, not React components."
 msgstr "Defnyddiwch gofrestr shadcn Pantoken ar gyfer y prosiect hwn. Achoswch https://pantoken.app/r/registry.json, yna rhedwch {{command}} os yw'r prosiect yn defnyddio shadcn neu os oes components.json. Mae eitemau'r gofrestr yn gosod CSS a metadata, nid cydrannau React."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.docsPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsPrompt"
 msgid "Fetch https://pantoken.app/llms.txt first. When a page is needed, prefer its raw Markdown URL by adding .md to the clean docs path, and use Pantoken manifests for component capabilities, CDN plugins, demos, and registry items."
 msgstr "Achoswch https://pantoken.app/llms.txt yn gyntaf. Pan fo tudalen yn angenrheidiol, dewiswch ei URL Markdown crai trwy ychwanegu .md i'r llwybr dogfennau glân, a defnyddiwch fâniffestau Pantoken ar gyfer galluogrwydd cydrannau, ategion CDN, demos, ac eitemau cofrestr."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.docsCommand
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsCommand"
 msgid "Fetch https://pantoken.app/llms.txt, then follow links to the pages and manifests relevant to this task."
 msgstr "Achoswch https://pantoken.app/llms.txt, yna dilynwch y dolenni i'r tudalennau a'r maniffestau sydd yn berthnasol i'r dasg hon."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.createDomainTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.createDomainTitle"
 msgid "Bootstrap skill URL"
 msgstr "URL sgil bootstrap"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.createDomainDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.createDomainDescription"
 msgid "The short public URL any URL-capable agent can fetch to set up Pantoken."
 msgstr "Y URL cyhoeddus byr y gall unrhyw asiant sydd ag allu i gael URL ei achub i sefydlu Pantoken."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.llmsTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsTitle"
 msgid "Site index"
 msgstr "Mynegai safle"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.llmsDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsDescription"
 msgid "Canonical English documentation index for agents and LLM-aware clients."
 msgstr "Mynegai dogfennau Saesneg canonig ar gyfer asiantau a chleientiaid sy'n ymwybodol o LLM."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.llmsFullTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsFullTitle"
 msgid "Full site context"
 msgstr "Cyd-destun llawn y safle"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.llmsFullDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsFullDescription"
 msgid "Expanded LLM context for agents that need the complete documentation set."
 msgstr "Cyd-destun LLM estynedig ar gyfer asiantau sy'n angen y set gyflawn o ddogfennau."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.pageMdTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.pageMdTitle"
 msgid "Raw Markdown pages"
 msgstr "Tudalennau Markdown crai"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.pageMdDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.pageMdDescription"
 msgid "Every docs HTML page advertises a raw Markdown alternate link."
 msgstr "Mae pob tudalen HTML o'r dogfennau yn hysbysebu dolen amgen Markdown crai."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryManifestTitle
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.registryManifestTitle"
 msgid "Registry manifest"
 msgstr "Cofrestr"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryManifestDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryManifestDescription"
 msgid "shadcn-compatible index of Pantoken CSS registry items."
 msgstr "Mynegai sy'n gydnaws â shadcn o eitemau cofrestr CSS Pantoken."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.capabilitiesTitle
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.capabilitiesTitle"
 msgid "Component capabilities"
 msgstr "Cydrannau"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.capabilitiesDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.capabilitiesDescription"
 msgid "Machine-readable map of component CSS, JavaScript, icon, and dependency needs."
 msgstr "Map peiriant-ddarllenadwy o anghenion CSS, JavaScript, eiconau, a dibyniaethau cydrannau."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.pluginsTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.pluginsTitle"
 msgid "CDN plugin manifest"
 msgstr "Maniffest ategyn CDN"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.pluginsDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.pluginsDescription"
 msgid "Plugin styles available to CDN and standalone mockup workflows."
 msgstr "Arddulliau ategyn sydd ar gael i lifoedd gwaith CDN a mockup hunan-ynysedig."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.apiCatalogTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.apiCatalogTitle"
 msgid "API catalog"
 msgstr "Catalog API"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.apiCatalogDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.apiCatalogDescription"
 msgid "Machine-readable linkset for Pantoken's agent-readable resources."
 msgstr "Set ddolenni peiriant-ddarllenadwy ar gyfer adnoddau Pantoken sy'n ddarllenadwy gan asiantau."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.vscodeCustomDataTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.vscodeCustomDataTitle"
 msgid "VS Code custom data"
 msgstr "Data arferol VS Code"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.vscodeCustomDataDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.vscodeCustomDataDescription"
 msgid "HTML classes and CSS custom properties for VS Code IntelliSense."
 msgstr "Dosbarthiadau HTML a phropertyau arferol CSS ar gyfer IntelliSense VS Code."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.outlineLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.outlineLabel"
 msgid "On this page"
 msgstr "Ar y dudalen hon"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.docFooterPrev
 #, no-c-format
 msgctxt "docs.chrome:chrome.docFooterPrev"
 msgid "Previous page"
 msgstr "Dudalen flaenorol"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.docFooterNext
 #, no-c-format
 msgctxt "docs.chrome:chrome.docFooterNext"
 msgid "Next page"
 msgstr "Dudalen nesaf"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.darkModeSwitchLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.darkModeSwitchLabel"
 msgid "Appearance"
 msgstr "Ymddangosiad"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.lightModeSwitchTitle
 #, no-c-format
 msgctxt "docs.chrome:chrome.lightModeSwitchTitle"
 msgid "Switch to light theme"
 msgstr "Newid i'r thema ysgafn"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.darkModeSwitchTitle
 #, no-c-format
 msgctxt "docs.chrome:chrome.darkModeSwitchTitle"
 msgid "Switch to dark theme"
 msgstr "Newid i'r thema tywyll"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.sidebarMenuLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.sidebarMenuLabel"
 msgid "Menu"
 msgstr "Dewislen"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.returnToTopLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.returnToTopLabel"
 msgid "Return to top"
 msgstr "Dychwelyd i'r top"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.langMenuLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.langMenuLabel"
 msgid "Change language"
 msgstr "Newid iaith"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.sidebarToggleLabel
+#, no-c-format
+msgctxt "docs.chrome:chrome.sidebarToggleLabel"
+msgid "Toggle sidebar"
+msgstr "Toglo'r bar ochr"
+
+#: docs/.vitepress/i18n.json#chrome.lastUpdatedText
 #, no-c-format
 msgctxt "docs.chrome:chrome.lastUpdatedText"
 msgid "Last updated"
 msgstr "Diweddarwyd ddiwethaf"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.agentShellPrompt
 #, no-c-format
 msgctxt "docs.chrome:chrome.agentShellPrompt"
 msgid "What would you like to build today?"
 msgstr "Beth hoffech chi adeiladu heddiw?"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.notFound.code
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.code"
 msgid "404"
 msgstr "404"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.notFound.title
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.title"
 msgid "PAGE NOT FOUND"
 msgstr "DUDALEN WEDI'I CHAEL DOD I BEN"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.notFound.quote
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.quote"
 msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
 msgstr "Ond os na fyddwch yn newid eich cyfeiriad, ac os byddwch yn parhau i edrych, efallai y byddech yn cyrraedd lle rydych wedi'i anelu."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.notFound.linkLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.linkLabel"
 msgid "go to home"
 msgstr "mynd adref"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.notFound.linkText
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.linkText"
 msgid "Take me home"
 msgstr "Dewch â mi adref"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.buttonText
 #, no-c-format
 msgctxt "docs.chrome:search.buttonText"
 msgid "Search"
 msgstr "Chwilio"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.displayDetails
 #, no-c-format
 msgctxt "docs.chrome:search.displayDetails"
 msgid "Display detailed list"
 msgstr "Dangos rhestr fanwl"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.resetButtonTitle
 #, no-c-format
 msgctxt "docs.chrome:search.resetButtonTitle"
 msgid "Reset search"
 msgstr "Ailosod chwiliad"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.backButtonTitle
 #, no-c-format
 msgctxt "docs.chrome:search.backButtonTitle"
 msgid "Close search"
 msgstr "Cau chwiliad"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.noResultsText
 #, no-c-format
 msgctxt "docs.chrome:search.noResultsText"
 msgid "No results for"
 msgstr "Dim canlyniadau ar gyfer"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.footerSelect
 #, no-c-format
 msgctxt "docs.chrome:search.footerSelect"
 msgid "to select"
 msgstr "i ddewis"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.footerNavigate
 #, no-c-format
 msgctxt "docs.chrome:search.footerNavigate"
 msgid "to navigate"
 msgstr "i lywio"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.footerClose
 #, no-c-format
 msgctxt "docs.chrome:search.footerClose"
 msgid "to close"

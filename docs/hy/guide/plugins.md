@@ -1,13 +1,10 @@
 # Պլագիններ
 
-pantoken պլագինը ընդլայնում է token կամ CSS ելքը՝ առանց փաթեթը ֆորք անելու: Այն կառուցում եք
-`definePlugin`-ով `@pantoken/plugin-kit`-ից, հետո փոխանցում `buildTokens`-ին կամ `toCss`-ին:
+pantoken պլագինը ընդլայնում է տոկենի կամ CSS-ի արտահանումը առանց փաթեթը ֆորկ անելու։ Պլագին ստեղծվում է `definePlugin`-ով `@pantoken/plugin-kit`-ից, այնուհետև փոխանցվում է `buildTokens`-ին կամ `toCss`-ին։
 
-## Պլագին հեղինակել
+## Ստեղծել պլագին
 
-Տվեք `definePlugin` այն hooks-ները, որոնք իրականացնում եք: Այն վերադարձնում է սովորական պլագին, որը մարկավորվում է այն
-կարողություններով, որոնք ստացվում են այդ hooks-ներից: Պլագինը կարող է ընդլայնել IR-ն (`tokens`, `icons`), CSS
-ելքը (`css`) կամ երկուսը միաժամանակ:
+Տվեք `definePlugin`-ին այն հուկերը, որոնք իրականացնեք։ Այն վերադարձնում է սովորական պլագին, որը բրենդավորված է այդ հուկերից ենթադրված կարողություններով։ Պլագինը կարող է ընդլայնել IR-ը (`tokens`, `icons`), CSS-ի արտահանումը (`css`), կամ երկուսն էլ։
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -20,15 +17,13 @@ export const brand = () =>
   });
 ```
 
-## Կարողունակություն-խնայող գրանցում
+## Կարողունակությունների գիտակցող գրանցում
 
-`buildTokens`-ը և `toCss`-ը կատարում են `checkPlugins`-ը այն պլագինների վրա, որոնք փոխանցում եք: Այն զգուշացնում է — երբեք չգցում է բացառություն —
-երբ պլագինը չունի համապատասխան hook այն փուլում, որտեղ գրանցվել է, այնպես որ միայն token-ների համար նախատեսված պլագինը, որը փոխանցվում է
-`toCss`-ին, կգերազերծվի նշումով՝ ոչ թե լուռ ոչինչ չանելով:
+`buildTokens`-ն և `toCss`-ն চালում են `checkPlugins` այն պլագինների վրա, որոնք դուք փոխանցում եք։ Դա զգուշացնում է — երբեք չի նետում բացառություն — երբ պլագինի համար չկան համապատասխան հուկեր այն փուլին, որի համար դա գրանցված է, այնպես որ միայն տոկեն-պլագինը, որը փոխանցվել է `toCss`-ին, կբացառվի նշմամբ փոխարենը լռելյայն ոչ մի բան չարելու։
 
-## Պլագինների կոմպոզիցիա
+## Շարադրել (Compose) պլագիններ
 
-Շարունակեք մյուս պլագինի վրա `extendPlugin`-ով, կամ միացրեք հավասարները `mergePlugin`-ով:
+Շարադրման համար օգտագործեք `extendPlugin`, կամ միացրեք համամասնակից պլագիններ `mergePlugin`-ով՝
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -37,13 +32,11 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Մի փուլում գտնվող hooks-ները կոմպոզում են. `tokens`-ը իրականացնում է base-ը, ապա addition-ը, `css`-ը համախմբում է երկու
-դիմացկունները, և `icons`-ը երկուսը էլ փորձում է:
+Սակայն նույն փուլի հուկերը համակցվում են՝ `tokens`-ը շարունակում է հիմքը, այնուհետև ավելացվածը, `css`-ը միաձուլում է երկու նպաստները, և `icons`-ը չգրանցված` երկուսն էլ է աշխատացնում։
 
-## Պլագինի ելքի վավերացում
+## Վավերացնել ձեր պլագինի ելքը
 
-Ընթացքում միացրեք ընդհանուր drift ստուգումները `@pantoken/utils`-ից ձեր պլագինի սեփական ելքի վրա իր թեստում, որպեսզի
-տառասխալը կամ վերանվանված token-ը անհետաձգելիորեն խախտվի տեղում:
+Շարադրված drift-չեքերը աշխատեցրեք `@pantoken/utils`-ից ձեր պլագինի սեփական ելքի վրա նրա թեստում, որպեսզի տառասխալը կամ տոկենի անվան փոխումը արագ և տեղայնորեն ձախողվի։
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -56,18 +49,26 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## Բունդլացված պլագինները
+## Փաթեթավորված պլագինները
 
-- `@pantoken/plugin-simple-icons` — նշանավորում է icons-ները simple-icons-ից, գրանցված որպես icon tokens:
-- `@pantoken/plugin-logos` — Instructure արտադրանքի լոգոներ՝ որպես SVG-ներ, data URI-ներ և `--instui-logo-*`
-  image tokens:
-- `@pantoken/plugin-prune-custom-props` — PostCSS պլագին (ոչ pantoken պլագին), որը հեռացնում է
-  չկիրառված custom properties-ը stylesheet-ից:
+- `@pantoken/plugin-simple-icons` — simple-icons-ից բրենդային նշաններ, գրանցված որպես icon tokens։
+- `@pantoken/plugin-lucide-lab` — Lucide Lab նշաններ, գրանցված որպես `--instui-icon-*` image tokens։
+- `@pantoken/plugin-logos` — Instructure արտադրանքի լոգոներ՝ որպես SVG-ներ, data URI-ներ և `--instui-logo-*` image tokens։
+- `@pantoken/plugin-prune-custom-props` — PostCSS պլագին (ոչ pantoken պլագին), որը հանում է չկիրառվող custom properties-ը դրոշմագրությունից։
 
-Մի քանի բան, որոնք նախկինում եղել են պլագիններ, հիմա ներմուծվում են `@pantoken/components`-ում, քանի որ շատ կոմպոնենտներ դրանք անհրաժեշտ են
-դուրսի դեպքում՝ elevation ստվերներ (`--instui-elevation-*`, `components.css`-ում), focus-outline
-ring (__`base.css`-ում — ամեն focusable էլ դա ստանում է, երբ pantoken ղեկավարվում է էջով), և Instructure-ի բրենդային
-տառատեսակները (Atkinson Hyperlegible Next: `base.css` կիրառում է `--instui-font-family-base`; պարտադիր չլինող
-`@pantoken/components/fonts.css` բեռնում է `@font-face` woff2-ները):
+Lucide Lab-ի ռեգիստրի կարելի է լազիորեն բեռնել, ապա փոխանցել սինխրոն տոկեն հукуին։
 
-Տես [API reference](/api/) յուրաքանչյուր պլագինի экспорт-ների համար:
+```ts
+import { buildTokens } from "@pantoken/core/build";
+import { defaultRegistry, lucideLab } from "@pantoken/plugin-lucide-lab";
+
+const registry = await defaultRegistry();
+buildTokens({
+  theme: "rebrand",
+  plugins: [lucideLab({ registry, names: ["burger", "at-sign-circle"] })],
+});
+```
+
+Քանի-որ շատ կոմպոնենտներ պահանջում են դրանք տիարից դուրս, մի քանիսը, որոնք նախկինում եղել են պլագիններ, այժմ առաքվում են `@pantoken/components`-ով՝ ներառյալ elevation ստվերներն (`--instui-elevation-*`, `components.css`), ֆոկուսի շրջապատման օղակը (focus-outline՝ `base.css`-ում — յուրաքանչյուր ֆոկուսվողը այն ստանում է, երբ pantoken-ն է էջի տերը), և Instructure բրենդային шрифտերը (Atkinson Hyperlegible Next։ `base.css` կիրառում է `--instui-font-family-base`; ոչ պարտադիր `@pantoken/components/fonts.css` բեռնում է `@font-face` woff2-երը)։
+
+Յուրաքանչյուր պլագինի արտահանումները տես [API reference](/api/) էջում։

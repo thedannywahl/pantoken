@@ -1,10 +1,10 @@
 # الإضافات
 
-يمد ملحق pantoken مخرجات الرموز أو CSS بدون تفرع حزمة. تُبنى واحدة باستخدام `definePlugin` من `@pantoken/plugin-kit`، ثم تُمرر إلى `buildTokens` أو `toCss`.
+تمدد إضافة pantoken مخرجات الرموز أو CSS بدون تفرع لحزمة. تُبنى واحدة باستخدام `definePlugin` من `@pantoken/plugin-kit`، ثم تُمرَّر إلى `buildTokens` أو `toCss`.
 
-## تأليف ملحق
+## كتابة إضافة
 
-زوّد `definePlugin` بالخطافات (hooks) التي تنفذها. يُرجع ملحقًا عاديًا، معوّماً بالقدرات المستدلّة من تلك الخطافات. يمكن للملحق توسيع تمثيل IR (`tokens`, `icons`), مخرجات CSS (`css`), أو كليهما.
+زوِّد `definePlugin` بالخطافات التي تنفذها. يُرجع إضافة عادية، معنونة بالإمكانات المستنتجة من تلك الخطافات. يمكن للإضافة توسيع IR (`tokens`, `icons`), مخرجات CSS (`css`), أو كليهما.
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -17,13 +17,13 @@ export const brand = () =>
   });
 ```
 
-## التسجيل الواعي بالقدرات
+## التسجيل المدرك للإمكانات
 
-تشغّل `buildTokens` و `toCss` `checkPlugins` على الإضافات التي تمررها. يعطي تحذيرًا — لا يرمي خطأ — عندما لا يحتوي الملحق على خطاف مطابق للمرحلة التي تم تسجيله فيها، لذلك يتم تخطي ملحق مخصص للرموز فقط مرّر إلى `toCss` مع ملاحظة بدلًا من أن يفعل لا شيء بصمت.
+تشغّل `buildTokens` و `toCss` `checkPlugins` على الإضافات التي تمررها. يحذّر — لا يرمي استثناء — عندما لا يكون للإضافة خطاف مطابق للمرحلة التي سُجلت فيها، لذا تُتجاوز إضافة مخصصة للرموز فقط والممررة إلى `toCss` مع ملاحظة بدلاً من أن تظل صامتة وتفعل لا شيء.
 
 ## تركيب الإضافات
 
-ابنِ فوق ملحق آخر باستخدام `extendPlugin`، أو ادمج الأقران باستخدام `mergePlugin`:
+ابنِ فوق إضافة أخرى باستخدام `extendPlugin`، أو اجمع الزملاء مع `mergePlugin`:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -32,11 +32,11 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-تتألف الخطافات في نفس المرحلة: يشغّل `tokens` الأساسي ثم الإضافة، يدمج `css` المساهمتين، و `icons` يشغّل كليهما.
+تتألف خطافات نفس المرحلة: يُشغّل `tokens` الأساسي ثم الإضافة، يدمج `css` المساهمتين، ويشغّل `icons` كلاهما.
 
-## التحقق من مخرجات الملحق
+## تحقق من مخرجات الإضافة
 
-شغّل فحوصات الانحراف المشتركة من `@pantoken/utils` على مخرجات ملحقك في اختباره، حتى يفشل الإملاء الخاطئ أو إعادة تسمية رمز بسرعة ومحليًا:
+شغّل فحوص الانحراف المشتركة من `@pantoken/utils` على مخرجات إضافتك في اختبارها، حتى يفشل خطأ مطبعي أو رمز معاد تسميته بسرعة ومحلياً:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -51,10 +51,26 @@ expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 
 ## الإضافات المجمعة
 
-- `@pantoken/plugin-simple-icons` — يوسم الأيقونات من simple-icons كرموز أيقونة.
-- `@pantoken/plugin-logos` — شعارات منتجات Instructure كـ SVGs، بيانات URI، و `--instui-logo-*` رموز صورة.
-- `@pantoken/plugin-prune-custom-props` — إضافة PostCSS (ليست ملحق pantoken) تحذف الخصائص المخصصة غير المستخدمة من ورقة الأنماط.
+- `@pantoken/plugin-simple-icons` — يوسم الأيقونات من simple-icons، مسجلة كرموز أيقونة.
+- `@pantoken/plugin-lucide-lab` — أيقونات Lucide Lab، مسجلة كرموز صورة `--instui-icon-*`.
+- `@pantoken/plugin-logos` — شعارات منتجات Instructure كـ SVG وبيانات URI و
+  رموز صورة `--instui-logo-*`.
+- `@pantoken/plugin-prune-custom-props` — إضافة PostCSS (ليست إضافة pantoken) التي تزيل
+  الخصائص المخصصة غير المستخدمة من ورقة الأنماط.
 
-بعض الأشياء التي كانت سابقًا إضافات تُشحن الآن في `@pantoken/components`، لأن العديد من المكونات تحتاجها جاهزة: ظلال الارتفاع (`--instui-elevation-*`, في `components.css`), حلقة مخطط التركيز (في `base.css` — تحصل كل عناصر التركيز على ذلك عندما يمتلك pantoken الصفحة)، وخطوط علامة Instructure التجارية (Atkinson Hyperlegible Next: يطبّق `base.css` `--instui-font-family-base`; التحميل الاختياري `@pantoken/components/fonts.css` يحمل ملفات woff2 الخاصة بـ `@font-face`).
+يمكن تحميل سجل Lucide Lab كسيري مؤجّل، ثم تمريره إلى خطاف الرموز المتزامن:
 
-انظر [مرجع API](/api/) لتصديرات كل ملحق.
+```ts
+import { buildTokens } from "@pantoken/core/build";
+import { defaultRegistry, lucideLab } from "@pantoken/plugin-lucide-lab";
+
+const registry = await defaultRegistry();
+buildTokens({
+  theme: "rebrand",
+  plugins: [lucideLab({ registry, names: ["burger", "at-sign-circle"] })],
+});
+```
+
+بعض الأشياء التي كانت إضافات أصبحت الآن تُشحن في `@pantoken/components`، لأن العديد من المكونات تحتاجها جاهزة: ظلال الارتقاء (`--instui-elevation-*`, في `components.css`), حلقة محيط التركيز (في `base.css` — يحصل كل عنصر قابل للتركيز عليها عندما يملك pantoken الصفحة)، وخطوط العلامة التجارية Instructure (Atkinson Hyperlegible Next: يُطبق `base.css` `--instui-font-family-base`; التحميل الاختياري `@pantoken/components/fonts.css` يحمل ملفات woff2s الخاصة بـ `@font-face`).
+
+انظر [المرجع البرمجي](/api/) لصادرات كل إضافة.

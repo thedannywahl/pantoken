@@ -1,13 +1,12 @@
 # Plugins
 
-Et pantoken-plugin udvider token- eller CSS-outputtet uden at forgrene et package. Du bygger et med
-`definePlugin` fra `@pantoken/plugin-kit`, og giver det derefter til `buildTokens` eller `toCss`.
+En pantoken-plugin udvider token- eller CSS-output uden at oprette en separat pakke. Den bygges med
+`definePlugin` fra `@pantoken/plugin-kit`, og sendes derefter til `buildTokens` eller `toCss`.
 
-## Opret et plugin
+## Opret en plugin
 
-Giv `definePlugin` de hooks, du implementerer. Den returnerer et normalt plugin, mærket med de
-kapabiliteter, der udledes fra disse hooks. Et plugin kan udvide IR'en (`tokens`, `icons`), CSS-
-outputtet (`css`), eller begge dele.
+Giv `definePlugin` de hooks, du implementerer. Den returnerer en normal plugin, mærket med de
+kapabiliteter, der udledes fra disse hooks. En plugin kan udvide IR'en (`tokens`, `icons`), CSS-outputtet (`css`), eller begge dele.
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -20,15 +19,15 @@ export const brand = () =>
   });
 ```
 
-## Kapabilitets-bevidst registrering
+## Kapabilitetsbevidst registrering
 
-`buildTokens` og `toCss` kører `checkPlugins` over de plugins, du passerer. Den advarer — den kaster aldrig —
-når et plugin ikke har et matchende hook for den fase, det er registreret i, så et kun-token-plugin givet til
-`toCss` bliver sprunget over med en note i stedet for at gøre ingenting uden varsel.
+`buildTokens` og `toCss` kører `checkPlugins` over de plugins, du afleverer. Den advarer — den kaster aldrig —
+når en plugin ikke har et matchende hook til det stadie, den er registreret i, så en kun-token-plugin sendt
+til `toCss` bliver sprunget over med en note i stedet for at lade den ingenting gøre uden at sige noget.
 
 ## Komponer plugins
 
-Byg oven på et andet plugin med `extendPlugin`, eller kombiner jævnbyrdige med `mergePlugin`:
+Byg ovenpå en anden plugin med `extendPlugin`, eller kombiner jævnbyrdige med `mergePlugin`:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -37,12 +36,12 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Hooks i samme fase komponereres: `tokens` kører først base og derefter tilføjelsen, `css` merger de to
+Hooks på samme stadie kan komponeres: `tokens` kører base'en og så tilføjelsen, `css` fletter de to
 bidrag, og `icons` kører begge.
 
-## Validér dit plugins output
+## Valider din plugins output
 
-Kør de delte drift-checks fra `@pantoken/utils` over dit plugins eget output i dets test, så en
+Kør de delte driftchecks fra `@pantoken/utils` over din plugins eget output i dens test, så en
 tastefejl eller et omdøbt token fejler hurtigt og lokalt:
 
 ```ts
@@ -56,18 +55,32 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## De bundtede plugins
+## De medfølgende plugins
 
-- `@pantoken/plugin-simple-icons` — brand-ikoner fra simple-icons, registreret som icon-tokens.
-- `@pantoken/plugin-logos` — Instructure-produktlogoer som SVG'er, data-URI'er og `--instui-logo-*`
+- `@pantoken/plugin-simple-icons` — brandikoner fra simple-icons, registreret som icon-tokens.
+- `@pantoken/plugin-lucide-lab` — Lucide Lab-ikoner, registreret som `--instui-icon-*` image-tokens.
+- `@pantoken/plugin-logos` — Instructure produktlogoer som SVG'er, data-URI'er og `--instui-logo-*`
   image-tokens.
-- `@pantoken/plugin-prune-custom-props` — en PostCSS-plugin (ikke et pantoken-plugin), der fjerner
+- `@pantoken/plugin-prune-custom-props` — en PostCSS-plugin (ikke en pantoken-plugin), som fjerner
   ubrugte custom properties fra et stylesheet.
 
-Et par ting, som tidligere var plugins, leveres nu i `@pantoken/components`, da så mange komponenter behøver
-dem ud af boksen: elevation-skuggere (`--instui-elevation-*`, i `components.css`), fokus-outline-
-ringen (i `base.css` — alle fokuserbare får den, når pantoken ejer siden), og Instructure-brandets
-fonte (Atkinson Hyperlegible Next: `base.css` anvender `--instui-font-family-base`; det valgfrie
-`@pantoken/components/fonts.css` loader `@font-face` woff2-filerne).
+Lucide Labs register kan indlæses ladt, og derefter sendes til den synkrone token-hook:
 
-Se [API reference](/api/) for hvert plugins exports.
+```ts
+import { buildTokens } from "@pantoken/core/build";
+import { defaultRegistry, lucideLab } from "@pantoken/plugin-lucide-lab";
+
+const registry = await defaultRegistry();
+buildTokens({
+  theme: "rebrand",
+  plugins: [lucideLab({ registry, names: ["burger", "at-sign-circle"] })],
+});
+```
+
+Nogle få ting, der plejede at være plugins, leveres nu i `@pantoken/components`, da så mange komponenter har
+brug for dem som standard: elevation-skuggere (`--instui-elevation-*`, i `components.css`), fokus-outline
+ringen (i `base.css` — alle fokusérbare får den, når pantoken ejer siden), og Instructure brand-
+skrifttyperne (Atkinson Hyperlegible Next: `base.css` anvender `--instui-font-family-base`; den valgfrie
+`@pantoken/components/fonts.css` indlæser `@font-face` woff2'erne).
+
+Se [API-reference](/api/) for hver plugins eksporter.

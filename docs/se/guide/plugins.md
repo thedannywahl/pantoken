@@ -1,10 +1,10 @@
 # Pluginat
 
-Pantoken-plugin leat geavahit token- dahje CSS-juvleriid jápmán maidne go leat ii forkán paket'a. Don čájeha nu `definePlugin` dala `@pantoken/plugin-kit`, de geavahát das `buildTokens` dahje `toCss`.
+Pantoken-plugin čuojá tokena dahje CSS-dávdnat ođđa paketii leat don leat maid bargat. Daddá don `definePlugin` ja `@pantoken/plugin-kit`, gos borjehahttá `buildTokens` dahje `toCss`.
 
-## Buorrehus plugin
+## Geavahit plugin
 
-Geavahát `definePlugin` hookaid mii don čuovvut. Dat vuolggeálmmá plugin, mii lea bránndahttán capability-llat mii leat álgit vuosttaldat hálddažat. Plugin sáhttá geavahit IR (`tokens`, `icons`), CSS-juvleriid (`css`), dahje båda.
+Láhpa `definePlugin` hookat mii don implementejeaddji. Son boađehahttá normaalta plugin, brandahta capacidades mii leat deduvvan dahje hookaid. Plugin sáhttá ovddidit IR (`tokens`, `icons`), CSS-dávdnat (`css`), dahje vuosttas.
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -17,13 +17,13 @@ export const brand = () =>
   });
 ```
 
-## Capability-čujuhusregistrereapmi
+## Máhttunvuohta-bargu registrerejuvvan
 
-`buildTokens` ja `toCss` roahppa `checkPlugins` pluginain mii don sidjat. Son varrá — ii álggahuvvo — gos plugin iid maŋŋebealde hook'a stagingis mii das registrerehii, nuvttá token-ain ođđa plugin mii leat sidjan `toCss` lea gávdnoheapmárkkin maŋimuš dahje čuohppat álgguheapmi.
+`buildTokens` ja `toCss` vuođđá `checkPlugins` pluginain maid don daddá. Son vai skávva — das ii vuoigat riŋgat — go plugin eat leat bargguid hook vuoigŋain registrerejuvvon steagasiin, nu ahte token-ovttas plugin mii daddá `toCss` leat skuorrat mii hástalusa buot ii leat deaŧalaš.
 
-## Komposea pluginat
+## Komposiht pluginat
 
-Bargá eatnama pluginin boahtte ovtta `extendPlugin` dahje buoridit peerraheapmi `mergePlugin`:
+Barggat ráhkis eará plugin lohkat `extendPlugin`, dahje čađa peerain `mergePlugin`:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -32,11 +32,11 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Sami-stage hook'at compose'ra: `tokens` roahppá basá ja dahje addit, `css` bargga duoraga dahje máŋggašuheapmi, ja `icons` roahppá båda.
+Sama steaža hookat compose: `tokens` ráhkad báse ja ovtta, `css` mearrá duhkke kontribuššonat, ja `icons` ráhkad buot.
 
-## Validere plugin-jes output
+## Válddát plugin dearvvašdávdna
 
-Rohket drift-check'sa mii leat `@pantoken/utils` pluginain ovddasvástádusis testas, nu go typo dahje tokena čájehallat fássá dahje gávdnoheapmi:
+Vuođđá geavahuvvon drift-checkaid `@pantoken/utils` plugin-iid dearvvašdávdnain testas, nu galggašii typoj dahje borramuš token vel leat ožžon:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -49,13 +49,28 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## Bundler-pluginat
+## Buolldaš pluginat
 
-- `@pantoken/plugin-simple-icons` — brándaa ikonat leat simple-icons-binna, registrerejuvvo ikon-tokenain.
-- `@pantoken/plugin-logos` — Instructure-produkt logosat SVG:s, data-URI:s ja `--instui-logo-*`
-  image-tokenain.
-- `@pantoken/plugin-prune-custom-props` — PostCSS-plugin (ii lea pantoken-plugin) mii čuodá hástalit custom-properties stilistii.
+- `@pantoken/plugin-simple-icons` — brand-ikonat dahje simple-icons, registrerejuvvon ikontokenna.
+- `@pantoken/plugin-lucide-lab` — Lucide Lab ikonat, registrerejuvvon `--instui-icon-*` image-tokenna.
+- `@pantoken/plugin-logos` — Instructure-produktlogoat SVG:s, data-URI:dat ja `--instui-logo-*`
+  image-tokenna.
+- `@pantoken/plugin-prune-custom-props` — PostCSS-plugin (ii leat pantoken-plugin) mii borrá
+  ii-geavahit custom-propertie:t stylesheeta:s.
 
-Muhtun birra mii oaidnigon pluginnaid dál leat sáhttán `@pantoken/components`: elevasuvnnan skávvot (`--instui-elevation-*`, `components.css`), fokus-outline-ringi (`base.css` — buot fokus-eahkesat geavahát das go pantoken leat govvidit sivvii), ja Instructure-bránda font'at (Atkinson Hyperlegible Next: `base.css` čájeha `--instui-font-family-base`; opt-in `@pantoken/components/fonts.css` lohkká `@font-face` woff2-siid).
+Lucide Lab registrer sáhttá leat lueddejuvvon lazihkkal, maid daddá synchronoššeahttun token-hooki:
 
-Lávkát [API-referenssa](/api/) buot pluginna exporttain.
+```ts
+import { buildTokens } from "@pantoken/core/build";
+import { defaultRegistry, lucideLab } from "@pantoken/plugin-lucide-lab";
+
+const registry = await defaultRegistry();
+buildTokens({
+  theme: "rebrand",
+  plugins: [lucideLab({ registry, names: ["burger", "at-sign-circle"] })],
+});
+```
+
+Muorrát mii leat oaidná pluginain dan guhkkin dál háliidit `@pantoken/components`, go muitalusat dahje komponentat háliidaid dárbbas: elevation-shadowat (`--instui-elevation-*`, `components.css`), fokus-outline ring ( `base.css` — buot fokusmáhttit fertet soadá go pantoken ovddidii sáddet báiki), ja Instructure brand-fonddat (Atkinson Hyperlegible Next: `base.css` čuovvo `--instui-font-family-base`; opt-in `@pantoken/components/fonts.css` luedda `@font-face` woff2:s).
+
+Oahpásat [API-referenssa](/api/) buot plugin-exportain.

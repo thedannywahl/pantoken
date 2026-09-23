@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-18 02:02+0000\n"
+"PO-Revision-Date: 2026-09-23 03:14+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -863,7 +863,7 @@ msgid "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/ma
 msgstr "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/avatar/avatar.css)"
 
 #: css/avatar.md css/close-button.md css/in-place-edit.md css/modal.md
-#: css/tooltip.md
+#: css/tabs.md css/tooltip.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "This component's CSS renders and works on its own; pair it with `@pantoken/interactions` to add the interactive behavior. See the [modifier table below](#modifiers)."
@@ -7252,6 +7252,24 @@ msgid "The Overview tab's content shows here."
 msgstr "«Ամփոփում» ներդիրի պարունակությունը ցուցադրվում է այստեղ."
 
 #: css/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The Details tab's content shows here."
+msgstr "«Ամփոփում» ներդիրի պարունակությունը ցուցադրվում է այստեղ."
+
+#: css/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The Disabled tab's content won't be visible."
+msgstr "«Ամփոփում» ներդիրի պարունակությունը ցուցադրվում է այստեղ."
+
+#: css/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The History tab's content shows here."
+msgstr "«Ամփոփում» ներդիրի պարունակությունը ցուցադրվում է այստեղ."
+
+#: css/tabs.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Keep the tab list on one line and let it scroll horizontally instead of wrapping, hiding the scrollbar."
@@ -7737,7 +7755,7 @@ msgctxt "docs.api:prose"
 msgid "**Source:** [toggle-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/toggle-group/toggle-group.css)"
 msgstr "**Source:** [toggle-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/toggle-group/toggle-group.css)"
 
-#: css/toggle-group.md
+#: css/toggle-group.md renderers/web-components/src/variables/tabs.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Advanced settings"
@@ -9093,6 +9111,12 @@ msgctxt "docs.api:prose"
 msgid "Also emit the deprecated InstUI-prop glyph aliases (`-render-icon-<name>`, `-render-custom-icon-<name>`)\nas functional aliases of `-icon-<name>`. Off by default — turning it on roughly doubles the sheet, so\nenable it only when you need markup written against the old `renderIcon`/`renderCustomIcon` prop names\nto keep rendering. The shipped `icons.css` is built with this on."
 msgstr "Նաև արտահանել հնացած InstUI-prop glyph ալիասները (`-render-icon-<name>`, `-render-custom-icon-<name>`)\nորպես ֆունկցիոնալ ալիասներ՝ `-icon-<name>`-ի համար։ Նախնականաբար անջատված է — այն միացնելը մոտավորապես կրկնապատկում է թերթիկը, ուստի\nայն միացրեք միայն այն ժամանակ, երբ ձեզ պետք է markup, որը գրել են հին `renderIcon`/`renderCustomIcon` prop անունների դեմ,\nռենդերինգը պահպանելու համար։ Առաքվող `icons.css` կառուցված է այս օպցիայի միացմամբ։"
 
+#: formats/components/src/interfaces/IconGlyphsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Icon name → `--instui-icon-<name>` data-URI value. When given, the sheet also declares those\ncustom properties in `:root`, making it self-contained: the glyphs paint without a separate\ntoken sheet loaded alongside. Omit to emit the lean mapping-only sheet."
+msgstr "Icon name → `--instui-icon-<name>` data-URI արժեք։ Երբ տրված է, թերթը նաև հայտարարում է այդ\nհատիիվ հատկությունները `:root`-ում, նոյնականորեն ինքնուրույն դարձնելով այն՝ նշանները ներկվում են առանց նույնական տեքստային թերթի առանձին ներբեռնումի։ Թող անցկացնել՝ արտածելու համար միայն անցկացման-մեփման թերթը։"
+
 #: formats/components/src/interfaces/ProseOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9124,6 +9148,12 @@ msgstr "Յուրաքանչյուր բարձրության մակարդակն ո�
 msgctxt "docs.api:prose"
 msgid "The elements the ring applies to by default (the common interactive/focusable elements)."
 msgstr "Այն տարրերը, որոնց վրա շրջանակը կիրառվում է նախնական՝ կանխորոշված կարգով (համատարած ինտերակտիվ/ֆոկուս ունենալու համար նախատեսված տարրեր)."
+
+#: formats/components/src/variables/aiGradientCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The AI gradient utility as a standalone, header-wrapped stylesheet."
+msgstr "AI գրադիենտի գործիքը՝ որպես առանձին, վերնագրով փաթաթված ոճաթերթ."
 
 #: formats/components/src/variables/alertCss.md
 #, no-c-format
@@ -9928,9 +9958,9 @@ msgid "Icon name → hex codepoint (e.g. `\"e001\"`)."
 msgstr "Պատկերանշանի անուն → հեքս կոդային կետ (օրինակ՝ `\"e001\"`)."
 
 #: formats/icons/src/functions/buildIconResolverChain.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Build the shared icon-resolver chain: plugin `rehype` resolvers first, then an explicit\n`resolve`, then the built-in pantoken icon set. Used by `@pantoken/rehype` and\n`@pantoken/markdown-it` so the resolution order stays identical across renderers."
+msgid "Build the shared icon-resolver chain: an explicit `resolve` first, then the built-in pantoken\nicon set, then plugin `rehype` resolvers (so a plugin can add codes the built-in set doesn't\nknow, but never shadow a built-in icon name). Used by `@pantoken/rehype` and\n`@pantoken/markdown-it` so the resolution order stays identical across renderers."
 msgstr "Կառուցել կիսված պատկերակ-լուծիչ շղթա. խրթի `rehype` լուծիչներ առաջինը, ապա հստակ\n`resolve`, ապա ներկառուցված pantoken պատկերակային հավաքածուն: Օգտագործվում է `@pantoken/rehype` և\n`@pantoken/markdown-it` կողմից, որպեսզի լուծման կարգը մնա միատեսակ բոլոր վերականգնողների միջև:"
 
 #: formats/icons/src/functions/getIcon.md
@@ -9966,9 +9996,9 @@ msgstr "Մանրամասն լուծիչ, որը փորձարկվում է ներ
 
 #: formats/icons/src/interfaces/IconResolverChainOptions.md
 #: renderers/rehype/src/interfaces/RehypeOptions.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Plugins whose `rehype` hooks contribute resolvers (tried first)."
+msgid "Plugins whose `rehype` hooks contribute resolvers (tried last, after the built-in set)."
 msgstr "Պլագիններ, որոնց `rehype` hook-ները ներդրում են լուծիչներ (փորձարկվում են առաջին հերթին)."
 
 #: formats/icons/src/interfaces/PantokenIcon.md
@@ -10013,6 +10043,12 @@ msgctxt "docs.api:prose"
 msgid "The glyph origin."
 msgstr "Գլիֆի ծագումը։"
 
+#: formats/icons/src/variables/customIcons.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every Instructure-authored custom icon."
+msgstr "**Սահմանափակեք միայն Instructure-authored glyphs-ով**"
+
 #: formats/icons/src/variables/icons.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -10024,6 +10060,12 @@ msgstr "Յուրաքանչյուր pantoken պատկերակ, տեսակավոր
 msgctxt "docs.api:prose"
 msgid "Every pantoken icon, keyed by name."
 msgstr "Յուրաքանչյուր pantoken պատկերակ, բանալի անվանմամբ:"
+
+#: formats/icons/src/variables/lucideIcons.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every canonical Lucide icon."
+msgstr "Յուրաքանչյուր կանոնական Lucide պատկերակ։"
 
 #: formats/icons/src/variables/resolve.md
 #, no-c-format
@@ -10114,6 +10156,12 @@ msgstr "Ժամանակաչափը կարող է լինել հստակ միլիվ�
 msgctxt "docs.api:prose"
 msgid "Wire open/close commands plus width-based responsive overlay switching onto a host: any\ncollapsible side panel (e.g. a drawer's tray) can import this interaction rather than each\ncomponent reimplementing it."
 msgstr "Միացնել բաց/փակ հրամանները և լայնության հիման վրա պատասխանող օվերլեյի ավտոմատ փոխարկումը հոստի վրա. ցանկացած քողարկվող կողային վահանակ (օրինակ՝ drawer-ի տրեյ) կարող է ներկրել այս փոխազդեցությունը՝ փոխարենը այն յուրաքանչյուր կոմպոնենտով առանձին իրականացնելու։"
+
+#: formats/interactions/src/functions/initTabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Wire a tablist and its controlled panels inside a host element."
+msgstr "Կապել tablist-ը և դրա վերահսկվող պանելները հյուրընկալող տարրի ներսում։"
 
 #: formats/interactions/src/functions/initTooltip.md
 #, no-c-format
@@ -10373,6 +10421,12 @@ msgstr "Միլիվայրկյաններ մինչև փակումը։ Լռելյա�
 msgctxt "docs.api:prose"
 msgid "Exit treatment. Defaults to `\"fade\"`, matching InstUI Alert."
 msgstr "Ելքի վերաբերումը։ Լռելյայն՝ `\"fade\"`, համընկնում է InstUI Alert-ի հետ։"
+
+#: formats/interactions/src/interfaces/TabsHandle.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Controls the listeners installed by [initTabs](../functions/initTabs.md)."
+msgstr "[initTooltip](../functions/initTooltip.md)-ից վերադարձված handle-ը։"
 
 #: formats/interactions/src/interfaces/TooltipHandle.md
 #, no-c-format
@@ -13245,7 +13299,7 @@ msgstr "Ստեղծել custom-icons plugin-ը."
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Generate CSS rules for all custom theme color choices by remapping primitive color scale steps\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`), while preserving explicitly\nnamed blue accents and semantic status intents."
+msgid "Generate CSS rules for all custom theme color choices by remapping primitive color scale steps\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`) and relinking literal\nbrand hex values that upstream flattened away from those primitives, while preserving explicitly\nnamed blue accents and semantic status intents."
 msgstr "Ստեղծել CSS կանոններ բոլոր հարմարեցված թեմայի գույնի ընտրանքների համար՝ վերանշանակելով պրիմիտիվ գույնային սանդղակի քայլերը\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`), միաժամանակ պահպանելով հստակ անվանված կապույտ (blue) ակցենտ տոկենները\n."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
@@ -13284,6 +13338,24 @@ msgctxt "docs.api:prose"
 msgid "Renames and re-exports [customThemeColors](functions/customThemeColors.md)"
 msgstr "Փոխանվանակում և կրկնաարտահանում է [customIcons](functions/customIcons.md)"
 
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [customThemeColorsCss](../functions/customThemeColorsCss.md)."
+msgstr "Ընտրանքներ [customIcons](../functions/customIcons.md) հավելման համար."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selector prefix the conditional `[data-pantoken-color=\"…\"]` rules are scoped under. Defaults to\n`:root`. Two callers can each pass a different selector (e.g. `:root` for a page's chrome and\n`#some-tray` for a nested widget) to run independent, non-interfering color instances on the\nsame page — each toggles its own attribute on its own element instead of sharing `:root`."
+msgstr "Selector նախածանցը, որի տակ պատկանում են պայմանական `[data-pantoken-color=\"…\"]` կանոնները։ Ստանդարտը՝ `:root`-ն է։ Երկու կանչողները կարող են տալ տարբեր սելեկտորներ (օր.՝ `:root` էջի chrome-ի համար և `#some-tray` ներդրված widget-ի համար)՝ նույն էջում գործարկել անկախ, չխոչընդոտող գույնի օրինակներ — յուրաքանչյուրը պատասխանում է իր հատկանիշը իր տարրի վրա, փոխարենը գոլորշացնելու `:root`-ը։"
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "An additional selector whose subtree should always render the true, unremapped colors,\nregardless of what an ancestor's `[data-pantoken-color]` scope currently has active. Emits one\nunconditional rule pinning every token this plugin can override back to its own base value —\ne.g. a color-swatch legend nested inside an already-themed page needs its reference swatches to\nstay constant rather than inherit the ancestor's remap."
+msgstr "Լրացուցիչ սելեկտոր, որի ենթատենյակն պետք է միշտ ցույց տա իսկական, չվերափոխված գույները՝ անկախ նրանից, թե ինչ է ակտիվ տատաղի `[data-pantoken-color]` սահմանափակումը։ Ստեղծում է մեկ անպայման կանոն, որը ամրագրում է այս plugin-ի կողմէ վերափոխվող յուրաքանչյուր տոկենը դեպի իր սկզբնական արժեքը — օրինակ, գույների նմուշների լեգենդը, որը ներդրված է արդեն թեմավորված էջի ներսում, պետք է պահպանվի անփոփոխ, ոչ թե ժառանգի նախնյակի վերալոքումը։"
+
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13295,6 +13367,18 @@ msgstr "Ընտրանքներ [customIcons](../functions/customIcons.md) հավե
 msgctxt "docs.api:prose"
 msgid "Optional token array or map to resolve primitive step color values from."
 msgstr "Ընտրովի տոկենների զանգված կամ քարտեզ, որի հիմքով լուծվում են պրիմիտիվ քայլերի գույնի արժեքները."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selector prefix for the conditional rules — see [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+msgstr "Սելեկտորի նախածանցը պայմանական կանոնների համար — դիտեք [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)।"
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Always-true-color subtree — see [CustomThemeColorsCssOptions.resetSelector](CustomThemeColorsCssOptions.md#resetselector)."
+msgstr "Ամեն անգամ իսկացված գույնի ենթատենյակ — դիտեք [CustomThemeColorsCssOptions.resetSelector](CustomThemeColorsCssOptions.md#resetselector)।"
 
 #: plugins/pantoken/custom-theme-colors/src/type-aliases/PantokenColorNamespace.md
 #, no-c-format
@@ -13476,6 +13560,12 @@ msgctxt "docs.api:prose"
 msgid "Generate an HTML template for the page-layout layout."
 msgstr "HTML կաղապար ստեղծել page-layout դասավորության համար."
 
+#: plugins/pantoken/layouts/src/functions/renderPageLayout.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Render `layout`'s `{{key}}` tokens for `locale` (default `\"en\"`), falling back to English."
+msgstr "Render `layout`'s `{{key}}` tokens for `locale` (ստանդարտ `\"en\"`)), առաջին հերթին վերադարձով դեպի անգլերեն։"
+
 #: plugins/pantoken/layouts/src/functions/rubricNoteRules.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13564,11 +13654,66 @@ msgctxt "docs.api:prose"
 msgid "Raw HTML for the layout, built from `@pantoken/components` classes."
 msgstr "Դիզայնի համար մաքուր HTML՝ կառուցված `@pantoken/components` դասերից։"
 
-#: plugins/pantoken/layouts/src/variables/pageLayouts.md
-#: renderers/tinymce/src/variables/pageLayouts.md
+#: plugins/pantoken/layouts/src/interfaces/PageLayout.md
+#: renderers/tinymce/src/interfaces/PageLayout.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "All bundled starter page layouts, sorted by title."
+msgid "Image slots that consumers may materialize without provider-specific URLs."
+msgstr "Պատկերների slot-ներ, որ սպառողները կարող են իրականացնել առանց հավելված-ռեսուրսի հատուկ URL-ների։"
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A provider-neutral image slot declared by a starter page layout."
+msgstr "Սկսարար էջի սխեմայով հայտարարված պրովայդեր-նեյտրալ պատկեր slot։"
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Stable key matching the `data-pantoken-image-placeholder` HTML marker."
+msgstr "Կայուն բանալի, որը համապատասխան է `data-pantoken-image-placeholder` HTML նշանին։"
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Suggested intrinsic width in pixels."
+msgstr "Առաջարկվող ներքին լայնությունը՝ պիքսելներով։"
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Suggested intrinsic height in pixels."
+msgstr "Առաջարկվող ներքին բարձրությունը՝ պիքսելներով։"
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Accessible name; omit it for a decorative image."
+msgstr "Մուտք օրինաչափ անվանում; հանեք այն, եթե պատկերակը զարդարիչ է։"
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional text a consumer may render into its placeholder asset."
+msgstr "Ընտրյալ տեքստ, որը սպառողը կարող է արտապատկերել իր placeholder ակտիվում։"
+
+#: plugins/pantoken/layouts/src/variables/pageLayoutTemplates.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`{{key}}`-templated layouts, unresolved — pass to [renderPageLayout](../functions/renderPageLayout.md) for another locale."
+msgstr "`{{key}}`-թեմփլեյթավորված դասավորություններ, առանց լուծման — ուղարկել [renderPageLayout](../functions/renderPageLayout.md)-ին այլ տեղայնացման համար։"
+
+#: plugins/pantoken/layouts/src/variables/pageLayouts.md
+#: renderers/tinymce/src/variables/pageLayouts.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "All bundled starter page layouts, English-rendered by default, sorted by title."
 msgstr "Բոլոր փաթեթավորված սկիզբային էջերի դասավորությունները, դասավորված ըստ վերնագրի."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
@@ -13578,6 +13723,7 @@ msgid "Get a logo as a base64 `data:image/svg+xml` URI."
 msgstr "Ստանալ լոգո որպես base64 `data:image/svg+xml` URI."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13585,6 +13731,7 @@ msgid "The product."
 msgstr "Ապրանքը."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13592,6 +13739,7 @@ msgid "The layout (default `\"horizontal\"`)."
 msgstr "Կարգավորումը (ստանդարտ `\"horizontal\"`)."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13599,6 +13747,7 @@ msgid "The color treatment (default `\"full-color\"`)."
 msgstr "Գույնի ձևավորումը (ստանդարտ `\"full-color\"`)."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13616,6 +13765,24 @@ msgstr "Data URI-ն, կամ `undefined` եթե այդ համադրություն
 msgctxt "docs.api:prose"
 msgid "**Use a logo as an \\<img\\> src**"
 msgstr "**Օգտագործել լոգոն որպես \\<img\\> src**"
+
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Get a logo's metadata, including the rasterized PNG's `width`/`height` — for consumers that need\nto build a `dist/<name>.png` path (e.g. via `@pantoken/cdn`) or size an `<img>` without parsing SVG."
+msgstr "Ստանալ լոգոյի մետատվյալները, ներառյալ ռաստերացված PNG-ի `width`/`height` — սպառողների համար, որոնք պետք է կառուցեն `dist/<name>.png` ճանապարհ (օր.՝ `@pantoken/cdn`)) կամ չափաբաշխեն `<img>` առանց SVG-ի վերլուծության։"
+
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [LogoMeta](../interfaces/LogoMeta.md), or `undefined` if that combination doesn't exist."
+msgstr "SVG տողը, կամ `undefined` եթե այդ կոմբինացիան գոյություն չունի."
+
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "**Build a PNG CDN path for a logo**"
+msgstr "**Կառուցել preset custom IR-ից:**"
 
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
@@ -13732,6 +13899,20 @@ msgctxt "docs.api:prose"
 msgid "The path within `assets/logos`, e.g. `\"canvas/horizontal-full-color.svg\"`."
 msgstr "Ճանապարհը `assets/logos`-ի ներսում, օրինակ՝ `\"canvas/horizontal-full-color.svg\"`."
 
+#: plugins/pantoken/logos/src/interfaces/LogoMeta.md
+#: renderers/tinymce/src/interfaces/LogoMeta.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The rasterized PNG's display width in CSS pixels (fixed per layout group, not the SVG's own size)."
+msgstr "Ռաստերացված PNG-ի ցուցադրվող լայնությունը CSS պիքսելներով (կայուն՝ ըստ դասավորության խմբի, ոչ SVG-ի սեփական չափը)։"
+
+#: plugins/pantoken/logos/src/interfaces/LogoMeta.md
+#: renderers/tinymce/src/interfaces/LogoMeta.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The rasterized PNG's display height in CSS pixels, derived from the SVG's `viewBox` aspect ratio."
+msgstr "Ռաստերացված PNG-ի ցուցադրվող բարձրությունը CSS պիքսելներով, ստացված SVG-ի `viewBox`-ի կողմնային հարաբերությունից։"
+
 #: plugins/pantoken/logos/src/interfaces/LogosOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13801,6 +13982,85 @@ msgstr "**Էջում ներառել լոգոյի տոկենները**"
 msgctxt "docs.api:prose"
 msgid "The products that have logos."
 msgstr "Ապրանքները, որոնք ունեն լոգոներ."
+
+#: plugins/pantoken/lucide-lab/src/functions/defaultRegistry.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Lazily import the published Lucide Lab icon registry."
+msgstr "Տուժաբար ներկրել հրապարակված Lucide Lab պատկերակների ցանկը։"
+
+#: plugins/pantoken/lucide-lab/src/functions/lucideLab.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Create the Lucide Lab icon plugin."
+msgstr "Ստեղծել Simple Icons plugin-ը։"
+
+#: plugins/pantoken/lucide-lab/src/functions/lucideLab.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "[LucideLabOptions](../interfaces/LucideLabOptions.md). Pass a registry for synchronous token-stage use."
+msgstr "[SimpleIconsOptions](../interfaces/SimpleIconsOptions.md). Փոխանցեք `registry`, որպեսզի խուսափեք lazy ներմուծումից (օր. token-stage օգտագործման դեպքում, որտեղ hooks-ները սինխրոն են)."
+
+#: plugins/pantoken/lucide-lab/src/functions/lucideLab.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "A token-capable pantoken plugin."
+msgstr "Pantoken Vite plugin-ը:"
+
+#: plugins/pantoken/lucide-lab/src/functions/svgOf.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Convert a Lucide Lab icon-node array into standalone SVG markup."
+msgstr "Փոխարկել Lucide Lab icon-node զանգվածը ինքնուրույն SVG նշման տեքստի։"
+
+#: plugins/pantoken/lucide-lab/src/functions/toKebab.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Convert a Lucide Lab export name to its kebab-case token name."
+msgstr "Փոխարկել Lucide Lab-ի արտահանման անունը դրա kebab-case տոկենի անվան։"
+
+#: plugins/pantoken/lucide-lab/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Renames and re-exports [lucideLab](functions/lucideLab.md)"
+msgstr "Վերանվանվում է և վերաարտահանվում է [stacking](functions/stacking.md)"
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for the [lucideLab](../functions/lucideLab.md) plugin."
+msgstr "Ընտրանքներ [layouts](../functions/layouts.md) հավելման համար."
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Icon names to emit as `<image>` tokens (default: every icon in the registry)."
+msgstr "Պատկերակի անուններ, որոնք պետք է արտահանվեն որպես `<image>` տոկեններ (ստանդարտը՝ բոլոր վենդորացված պատկերակները)."
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The Lucide Lab registry (required by the synchronous token hook)."
+msgstr "Lucide Lab ցանկը (պահանջվում է synchronous token hook-ի կողմից)։"
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#: plugins/pantoken/simple-icons/src/interfaces/SimpleIconsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The token-name prefix (default: `--instui-icon-`)."
+msgstr "Տոկենի անվան նախածանցը (ստանդարտ՝ `--instui-icon-`)."
+
+#: plugins/pantoken/lucide-lab/src/type-aliases/LucideLabNode.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "One SVG element in a Lucide icon-node array."
+msgstr "Մեկ SVG տարր Lucide icon-node զանգվածում։"
+
+#: plugins/pantoken/lucide-lab/src/type-aliases/LucideLabRegistry.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A registry of named Lucide Lab icon-node arrays."
+msgstr "Անվանված Lucide Lab icon-node զանգվածների ցանկ։"
 
 #: plugins/pantoken/primitives/src/functions/primitivesCss.md
 #, no-c-format
@@ -13963,12 +14223,6 @@ msgstr "Բրենդի սլագներ, որոնք պետք է արտացոլվեն
 msgctxt "docs.api:prose"
 msgid "The Simple Icons registry (default: the `simple-icons` package, loaded lazily)."
 msgstr "Simple Icons ռեգիստրը (ստանդարտ՝ `simple-icons` փաթեթը, որը բեռնվում է հետաձգված կերպով)."
-
-#: plugins/pantoken/simple-icons/src/interfaces/SimpleIconsOptions.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The token-name prefix (default: `--instui-icon-`)."
-msgstr "Տոկենի անվան նախածանցը (ստանդարտ՝ `--instui-icon-`)."
 
 #: plugins/pantoken/simple-icons/src/type-aliases/SimpleIconsRegistry.md
 #, no-c-format
@@ -15790,9 +16044,9 @@ msgid "`@pantoken/rehype` — render `:icon:` codes as inline SVG."
 msgstr "`@pantoken/rehype` — `:icon:` կոդերը ռենդերել որպես inline SVG."
 
 #: renderers/rehype/src/index.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "The plugin walks hast text nodes and replaces `:code:` tokens with an inline SVG element,\nresolving each code through a chain: plugin `rehype` resolvers first, then any explicit\n`resolve`, then the built-in `@pantoken/icons` set. It ports `rehype-instui-markdown` onto the\nshared icon manifest."
+msgid "The plugin walks hast text nodes and replaces `:code:` tokens with an inline SVG element,\nresolving each code through a chain: any explicit `resolve`, then the built-in\n`@pantoken/icons` set, then plugin `rehype` resolvers. It ports `rehype-instui-markdown` onto\nthe shared icon manifest."
 msgstr "Նյութի plugin‑ը անցնում է տեքստային հանգույցներով և փոխարինում է `:code:` տոկենները inline SVG տարրով,\nյուրաքանչյուր կոդը լուծում է մի շղթայով՝ նախ plugin-ի `rehype` լուծիչները, ապա ցանկացած հստակ նշված\n`resolve`, և վերջապես ներծրագործված `@pantoken/icons` հավաքածուն։ Այն տեղափոխում է `rehype-instui-markdown`‑ը համօգտագործվող սիմվոլների մանիվեստ:"
 
 #: renderers/rehype/src/index.md
@@ -15972,6 +16226,12 @@ msgctxt "docs.api:prose"
 msgid "A Svelte action's return shape."
 msgstr "Svelte գործողության վերադարձի ձևը:"
 
+#: renderers/tinymce/src/functions/buildIconMarkup.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The decorative icon markup retained in editor content after a picker selection."
+msgstr "Զարդարիչ պատկերակի նշումը, որը պահպանվում է խմբագրիչի բովանդակության մեջ ընտրիչի ընտրությունից հետո։"
+
 #: renderers/tinymce/src/functions/createComponentsPlugin.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -15983,6 +16243,18 @@ msgstr "Ստեղծում է կոմպոնենտների ընտրիչի պլագի
 msgctxt "docs.api:prose"
 msgid "Usage:\n  tinymce.PluginManager.add(\n    \"pantokenComponents\",\n    createComponentsPlugin(`{ model, currentAssets, onMissingAsset }`)\n  );"
 msgstr "Օգտագործում:\n  tinymce.PluginManager.add(\n    \"pantokenComponents\",\n    createComponentsPlugin(`{ model, currentAssets, onMissingAsset }`)\n  );"
+
+#: renderers/tinymce/src/functions/createContentClassesPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build an opt-in plugin that adds pantoken classes to TinyMCE-authored content."
+msgstr "Կառուցել opt-in plugin, որը ավելացնում է pantoken դասերը TinyMCE-ով հեղինակած բովանդակությանը։"
+
+#: renderers/tinymce/src/functions/createFullscreenFooterPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a footer-only button that toggles TinyMCE's fullscreen mode."
+msgstr "Ստեղծել ստորագրության միայն կոճակ, որը տոգլում է TinyMCE-ի fullscreen ռեժիմը։"
 
 #: renderers/tinymce/src/functions/createIconsPlugin.md
 #, no-c-format
@@ -16002,11 +16274,47 @@ msgctxt "docs.api:prose"
 msgid "Create the logos picker plugin factory.\nReturns a function suitable for `tinymce.PluginManager.add()`."
 msgstr "Ստեղծեք լոգոների ընտրիչի պլագին-ֆաբրիկան։\nՎերադարձնում է ֆունկցիա, որը հարմար է `tinymce.PluginManager.add()`-ի համար։"
 
+#: renderers/tinymce/src/functions/createPantokenPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a single pantoken toolbar menu that opens each composed plugin."
+msgstr "Ստեղծել մեկ pantoken toolbar մենյու, որը բացում է յուրաքանչյուր կոմպոզեց plugin-ը։"
+
+#: renderers/tinymce/src/functions/createSearchReplaceFooterPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a footer-only button that opens TinyMCE's search & replace dialog."
+msgstr "Ստեղծել ստորագրության միայն կոճակ, որը բացում է TinyMCE-ի Search & Replace երկխոսությունը։"
+
+#: renderers/tinymce/src/functions/createSupSubPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a single toolbar menu button toggling superscript or subscript."
+msgstr "Ստեղծել մեկ toolbar մենյու կոճակ՝ superscript-ը կամ subscript-ը տոգլելու համար։"
+
 #: renderers/tinymce/src/functions/createTemplatesPlugin.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Builds the `tinymce.PluginManager.add` callback for the \"Insert template\" plugin."
 msgstr "Կառուցում է `tinymce.PluginManager.add` callback-ը \"Տեղադրել ձևանմուշ\" վարձատրյալի համար:"
+
+#: renderers/tinymce/src/functions/createVisualBlocksFooterPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a footer-only button that toggles TinyMCE's visual blocks outlines."
+msgstr "Ստեղծել ստորագրության միայն կոճակ, որը տոգլում է TinyMCE-ի visual blocks-ի окրագծումները։"
+
+#: renderers/tinymce/src/functions/filterIcons.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Narrow `icons` to those matching `query` and, when given, a single `source`."
+msgstr "Աղեղջել `icons`-ը այնպես, որ համապատասխանեն `query`-ին և, երբ տրված է, մեկ `source`-ին։"
+
+#: renderers/tinymce/src/functions/filterIcons.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`TaggedIcon`](../interfaces/TaggedIcon.md)[]"
+msgstr "միայն ընթերցման [`Token`](../interfaces/Token.md)[]"
 
 #: renderers/tinymce/src/functions/findEntry.md
 #, no-c-format
@@ -16020,11 +16328,35 @@ msgctxt "docs.api:prose"
 msgid "Compute the CdnFile for an icon given its source.\nReturns `{ package, path }` for use with @pantoken/cdn's buildFileUrl."
 msgstr "Հաշվարկել CdnFile-ը պատկերի համար, հաշվի առնելով դրա աղբյուրը:\nվերադարձնում է `{ package, path }` @pantoken/cdn-ի buildFileUrl-ի հետ օգտագործման համար:"
 
+#: renderers/tinymce/src/functions/getIconImageSrc.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A `data:` URI usable as an `<img src>` for the icon, for sources this package bundles; for the\nrest it reads the custom property back off `root`, which resolves once the source's glyph sheet\nhas loaded. Returns `undefined` when neither path yields a glyph."
+msgstr "Մեկ `data:` URI, որը կիրառելի է որպես `<img src>` պատկերակի համար, այն աղբյուրների համար, որոնց այս փաթեթը փաթեթավորում է; մնացածների համար նայել դարձելը կկարդա թաքույց հատկությունը `root`, որը լուծվում է երբ աղբյուրի գլիֆ թերթը ներբեռնվի։ Վերադարձնում է `undefined`, երբ ոչ մեկը ճանապարհները գլիֆ չեն վերադարձնում։"
+
 #: renderers/tinymce/src/functions/getModifierSuggestions.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Get all modifier suggestions for a component/utility, filtered by an optional prefix.\nReturns array of `{ name, prop, value?, description }` objects."
 msgstr "Ստացեք բոլոր փոփոխիչի առաջարկները կոմպոնենտի/հարմարանքի համար, ֆիլտրացված ըստ ոչ պարտադիր նախադրյալի։\nՎերադարձնում է `{ name, prop, value?, description }` օբյեկտների զանգված։"
+
+#: renderers/tinymce/src/functions/getUsedIconCdnFiles.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve the icon stylesheets used by `-icon-*` classes below `root`.\nExisting assets break ties when multiple providers expose the same icon name."
+msgstr "Փոխել `-icon-*` դասերի կողմից օգտագործված պատկերակի stylesheets-ները `root`-ից ներքև։ Ունի առկա ակտիվները մեխում են կապերը, երբ մի քանի պրովայդերներ բացում են նույն պատկերակի անունը։"
+
+#: renderers/tinymce/src/functions/getUsedIconCdnFiles.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[] = `[]`"
+msgstr "միայն կարդալ [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[]"
+
+#: renderers/tinymce/src/functions/humanizeIconName.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Turn a hyphenated icon slug into a readable label, e.g. `circle-question-mark` → `circle question mark`."
+msgstr "Փոխել շեշտաձևված (hyphenated) պատկերակային slug-ն ընթեռնելի տիտղոսի, օրինակ՝ `circle-question-mark` → `circle question mark`։"
 
 #: renderers/tinymce/src/functions/injectContentStylesheet.md
 #, no-c-format
@@ -16050,11 +16382,11 @@ msgctxt "docs.api:prose"
 msgid "Load and merge all available icons from both sources.\nReturns a sorted array tagged with the source package."
 msgstr "Բեռնեք և միավորեք երկու աղբյուրներից բոլոր διαθέσιմիտ պատկերակները։\nՎերադարձի՝ կարգավորված զանգված՝ նշագրված աղբյուրի փաթեթով։"
 
-#: renderers/tinymce/src/functions/loadAllIcons.md
+#: renderers/tinymce/src/functions/materializeLayout.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "NOTE: Component icon names are derived from the model's `-icon-*` modifier.\nThis needs to be populated from either `docs/public/icon-manifest.json` (if consumable)\nor a manifest published alongside formats/components model.json.\nFor now, only simple-icons are included."
-msgstr "ՆՇՄԱՑՈՒՄ: Կոմպոնենտի պատկերակների անունները ստացվում են մոդելի `-icon-*` փոփոխիչից։\nԱյն պետք է լրացվի կամ `docs/public/icon-manifest.json`-ով (եթե օգտագործելի է)\nկամ formats/components model.json-ի հետ միասին հրապարակված մանիֆեստով։\nԱյս պահին ներառված են միայն simple-icons։"
+msgid "Materialize declared layout image slots without embedding a provider URL in the layout."
+msgstr "Մատերիալիզացնել հայտարարված layout նկարների slot-ները առանց պրովայդեր URL-ն ուղարկելու դասավորության մեջ։"
 
 #: renderers/tinymce/src/functions/pantokenContentCssUrls.md
 #, no-c-format
@@ -16092,11 +16424,29 @@ msgctxt "docs.api:prose"
 msgid "Usage:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlLinter({ model }),\n    ],\n  });"
 msgstr "Օգտագործում:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlLinter({ model }),\n    ],\n  });"
 
+#: renderers/tinymce/src/functions/registerPantokenIconPack.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Register a TinyMCE icon pack whose complete key set mirrors the installed default pack while\nevery rendered glyph comes from Pantoken's InstUI/Lucide icon tokens."
+msgstr "Գրանցեք TinyMCE իկոնների փաթեթ, որի ամբողջական բանալիների հավաքը համընկնում է տեղադրված լռելյայն փաթեթի հետ while\nevery rendered glyph comes from Pantoken's InstUI/Lucide icon tokens."
+
 #: renderers/tinymce/src/functions/validateClassToken.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Validate a pantoken class token (e.g., \"instui-button\", \"instui-button.-color-primary\").\nReturns an array of validation errors (empty if valid)."
 msgstr "Ստուգել pantoken դասային token (օր.՝ \"instui-button\", \"instui-button.-color-primary\"):\nվերադարձնում է ստուգման սխալների զանգված (դատարկ, եթե վավեր):"
+
+#: renderers/tinymce/src/interfaces/ContentClassesPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [createContentClassesPlugin](../functions/createContentClassesPlugin.md)."
+msgstr "Ընտրանքներ [createLayoutsPlugin](../functions/createLayoutsPlugin.md)-ի համար."
+
+#: renderers/tinymce/src/interfaces/ContentClassesPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Prefix used by pantoken component classes."
+msgstr "Դիզայնի համար մաքուր HTML՝ կառուցված `@pantoken/components` դասերից։"
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -16362,6 +16712,12 @@ msgctxt "docs.api:prose"
 msgid "Content of registered custom (block) tags, keyed by tag name without its `@`. Populated only for\ntags added via configuration; unregistered unknown tags are ignored. Absent when none were found."
 msgstr "Գրանցված հարմարեցված (բլոկ) թեգերի բովանդակությունը, բանալի է թեգի անվամբ՝ առանց նրա `@`. Լցվում է միայն կոնֆիգուրացիայով ավելացված\nթեգերի համար; չգրանցված, անծանոթ թեգերը անտեսվում են. Առկա չէ, եթե ոչինչ չի գտնվել."
 
+#: renderers/tinymce/src/interfaces/LayoutImageAttributes.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Image attributes returned by a consumer-specific layout image resolver."
+msgstr "Նկարի հատկանիշներ, որոնք վերադարձվում են սպառող-առանձնացված layout image resolver-ի կողմից."
+
 #: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -16369,10 +16725,22 @@ msgid "Options for [createLayoutsPlugin](../functions/createLayoutsPlugin.md)."
 msgstr "Ընտրանքներ [createLayoutsPlugin](../functions/createLayoutsPlugin.md)-ի համար."
 
 #: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The page layouts offered in the \"Insert layout\" picker. Defaults to the bundled layouts."
+msgstr "Էջի դասավորությունները, որոնք առաջարկվում են «Ներմուծել դասավորություն» ընտրիչում. Նախադրվածը՝ [pageLayouts](../variables/pageLayouts.md)."
+
+#: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The page layouts offered in the \"Insert layout\" picker. Defaults to [pageLayouts](../variables/pageLayouts.md)."
-msgstr "Էջի դասավորությունները, որոնք առաջարկվում են «Ներմուծել դասավորություն» ընտրիչում. Նախադրվածը՝ [pageLayouts](../variables/pageLayouts.md)."
+msgid "BCP47 locale to render layout text in. Defaults to `\"en\"`."
+msgstr "BCP47 տեղայնացում, որով ցուցադրվում է layout-ի տեքստը։ Լռելյայնը՝ `\"en\"`."
+
+#: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolves a layout image slot into a consumer-specific image URL."
+msgstr "Փոխակերպում է layout-ի նկարի slot-ը սպառող-առանձնացված նկարի URL-ի։"
 
 #: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
 #, no-c-format
@@ -16380,11 +16748,83 @@ msgctxt "docs.api:prose"
 msgid "Called after a layout is inserted (e.g. to refresh a live preview)."
 msgstr "Կոչվում է այն բանից հետո, երբ դասավորությունը տեղադրվում է (օր.՝ կենդանի նախադիտումը թարմացնելու համար)."
 
+#: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Register this picker's standalone toolbar button and menu item."
+msgstr "Գրանցեք այս ընտրիչի առանձին գործիքագոտու կոճակը եւ մենյուի տարրը։"
+
+#: renderers/tinymce/src/interfaces/PantokenPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Configuration for the content plugins composed by [createPantokenPlugin](../functions/createPantokenPlugin.md)."
+msgstr "Ընտրանքներ [createLayoutsPlugin](../functions/createLayoutsPlugin.md)-ի համար."
+
 #: renderers/tinymce/src/interfaces/TaggedIcon.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Icon with source attribution for tracking which package it comes from."
 msgstr "Իկոն՝ աղբյուրի վերագրումով՝ պարզելու համար, թե որ փաթեթից է այն գալիս։"
+
+#: renderers/tinymce/src/interfaces/TinymceStrings.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "All user-visible strings emitted by the TinyMCE integration."
+msgstr "Վեբ-կոմպոնենտների էլեմենտների հավաքածուի կողմից արտացույցվող բոլոր օգտագործողի տեսանելի տողերը։"
+
+#: renderers/tinymce/src/type-aliases/LayoutImageResolver.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolves a provider-neutral layout image slot for a particular consumer."
+msgstr "Փոխակերպում է պրովայդեր-նեյտրոնալ layout նկարի slot-ը կոնկրետ սպառողի համար։"
+
+#: renderers/tinymce/src/type-aliases/PantokenFontSize.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Semantic text sizes accepted by the pantoken font-size command."
+msgstr "Սեմանտիկ տեքստային չափեր, որոնք ընդունում է pantoken-ի font-size հրամանը։"
+
+#: renderers/tinymce/src/variables/CONTENT_CLASSES_PLUGIN_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Plugin name to pass in TinyMCE's `plugins` option."
+msgstr "Լցվածքի անունը, որ հարկ է փոխանցել TinyMCE-ի `plugins`/`toolbar` նախասկզբի ընտրանքներում:"
+
+#: renderers/tinymce/src/variables/DEFAULT_ICON_TRIGGER.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Autocompleter trigger. Two colons rather than one so the stock `emoticons` plugin — which claims\n`:` and would otherwise have several thousand icons merged into its results — keeps working."
+msgstr "Autocompleter-ի ակտիվացուցիչ։ Երկու երկընթաց, մեկի փոխարեն, որպեսզի ստանդարտ `emoticons` plugin — որը պահանջում է\n`:` և հակառակ դեպքում հազարավոր իկոններ կհամախմբվեն նրա արդյունքներում — շարունակում է աշխատել։"
+
+#: renderers/tinymce/src/variables/FULLSCREEN_FOOTER_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/PANTOKEN_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/SEARCHREPLACE_FOOTER_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/SUP_SUB_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/VISUALBLOCKS_FOOTER_PLUGIN_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Plugin name to pass in TinyMCE's `plugins` init option."
+msgstr "Լցվածքի անունը, որ հարկ է փոխանցել TinyMCE-ի `plugins`/`toolbar` նախասկզբի ընտրանքներում:"
+
+#: renderers/tinymce/src/variables/FULLSCREEN_FOOTER_STATUSBAR_NAME.md
+#: renderers/tinymce/src/variables/SEARCHREPLACE_FOOTER_STATUSBAR_NAME.md
+#: renderers/tinymce/src/variables/VISUALBLOCKS_FOOTER_STATUSBAR_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The footer/statusbar control name registered by this plugin."
+msgstr "Այս plugin‑ը գրանցած գործիքագոտու կոճակի/մենյու տարրի անունը։"
+
+#: renderers/tinymce/src/variables/ICONS_COMMAND.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Command that opens the icons picker."
+msgstr "Հրաման, որը բացում է իկոնների ընտրիչը։"
+
+#: renderers/tinymce/src/variables/ICON_SOURCES.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The icon sources, in the order the picker lists them."
+msgstr "Իկոնների աղբյուրները՝ այն կարգով, որով ընտրիչը դրանք ցուցադրում է։"
 
 #: renderers/tinymce/src/variables/LAYOUTS_PLUGIN_NAME.md
 #, no-c-format
@@ -16397,6 +16837,43 @@ msgstr "Լցվածքի անունը, որ հարկ է փոխանցել TinyMCE-�
 msgctxt "docs.api:prose"
 msgid "The toolbar button/menu item name registered by this plugin."
 msgstr "Այս plugin‑ը գրանցած գործիքագոտու կոճակի/մենյու տարրի անունը։"
+
+#: renderers/tinymce/src/variables/PANTOKEN_COMMANDS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Commands exposed for hosts that want explicit pantoken-aware toolbar actions."
+msgstr "Հոսթերի համար տրամադրված հրամաններ` նրանց համար, ովքեր ուզում են հստակ pantoken-ազնորոշված գործիքագոտու գործողություններ։"
+
+#: renderers/tinymce/src/variables/PANTOKEN_ICON_PACK_NAME.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TinyMCE icon-pack id to pass as the editor's `icons` option."
+msgstr "TinyMCE իկոն-փաթեթի id, որը պետք է փոխանցվի խմբագրի `icons` option."
+
+#: renderers/tinymce/src/variables/PANTOKEN_TOOLBAR_NAME.md
+#: renderers/tinymce/src/variables/SUP_SUB_TOOLBAR_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Toolbar menu-button name to pass in TinyMCE's `toolbar` init option."
+msgstr "Լցվածքի անունը, որ հարկ է փոխանցել TinyMCE-ի `plugins`/`toolbar` նախասկզբի ընտրանքներում:"
+
+#: renderers/tinymce/src/variables/SOURCE_LABELS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Human label shown as a picker tab and an autocompleter row caption, per icon source."
+msgstr "Մարդկային պիտակը, որը ցուցադրվում է որպես ընտրչի ներդիր և autocompleter տողի վերնագիր՝ յուրաքանչյուր իկոն-աղբյուրի համար։"
+
+#: renderers/tinymce/src/variables/TINYMCE_STRINGS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "English defaults for TinyMCE integration UI strings."
+msgstr "TinyMCE ինտեգրման UI տողերի անգլերեն լռելյայն արժեքներ։"
+
+#: renderers/tinymce/src/variables/pageTemplates.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The bundled page layouts exposed through the template picker."
+msgstr "Փաթեթավորված էջի դասավորություններ, որոնք մատչելի են template ընտրիչի միջոցով։"
 
 #: renderers/vitepress/src/index.md
 #, no-c-format
@@ -17400,6 +17877,30 @@ msgctxt "docs.api:prose"
 msgid "Swedish (Svenska) locale bundle."
 msgstr "Շվեդերեն (Svenska) տեղայնացման փաթեթ։"
 
+#: renderers/web-components/src/variables/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`<instui-tabs>` — a light-DOM tabbed panel set. It keeps the existing `.instui-tabs` CSS contract\nintact while adding selection, panel visibility, and keyboard behavior through the shared tabs\ninteraction. Load `@pantoken/components/components.css` for the tab visuals."
+msgstr "`<instui-tabs>` — լայթ-DOM ներդիրային պանելների հավաք։ Այն պահպանում է գոյություն ունեցող `.instui-tabs` CSS պայմանագիրը անփոփոխ՝ միևնույն ժամանակ ավելացնելով ընտրության, պանելների տեսանելիության և ստեղնաշարի վարքի հնարավորությունները՝ ընդհանուր tabs ինտերակցիայի միջոցով։ Բեռնեք `@pantoken/components/components.css` ներդիրների տեսքի համար։"
+
+#: renderers/web-components/src/variables/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "General"
+msgstr "Ընդհանուր"
+
+#: renderers/web-components/src/variables/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Advanced"
+msgstr "Ընդլայնված կարգավորումներ"
+
+#: renderers/web-components/src/variables/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "General settings"
+msgstr "Ստացված՝ օգտագործելով"
+
 #: renderers/web-components/src/variables/tag.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -17806,6 +18307,11 @@ msgstr "Stylus աղբյուրի տողը."
 msgctxt "docs.api:prose"
 msgid "A hoverable \"view fullscreen\" button, overlaid on a demo/example frame the same way VitePress's own\ncode-block \"copy\" button reveals on hover. Purely markup — wire a delegated click handler in your\nhost page (`button.closest(...).querySelector(\"iframe\")?.requestFullscreen()`; see the pantoken docs\ntheme for the reference wiring) and style the reveal-on-hover with `@pantoken/demo/demo.css`."
 msgstr "Շարժական «դիտել ամբողջ էկրանում» կոճակ, դրված դեմո/օրինակ շրջանակի վրա նույն կերպ, որ VitePress-ի սեփական\nկոդային բլոկի «պատճեն» կոճակը բացահայտվում է շարժնից վրա։ Պարզապես մարկապ — տեղադրեք պատվիրված կլիկ պահարար ձեր\nհյուսեցյալ էջում (`button.closest(...).querySelector(\"iframe\")?.requestFullscreen()`; տե՛ս pantoken բաց\nթեմայի տեղեկանիշ միացումը) և ոճավորեք շարժնից-վրա-բացահայտում `@pantoken/demo/demo.css`-ով:"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "NOTE: Component icon names are derived from the model's `-icon-*` modifier.\nThis needs to be populated from either `docs/public/icon-manifest.json` (if consumable)\nor a manifest published alongside formats/components model.json.\nFor now, only simple-icons are included."
+#~ msgstr "ՆՇՄԱՑՈՒՄ: Կոմպոնենտի պատկերակների անունները ստացվում են մոդելի `-icon-*` փոփոխիչից։\nԱյն պետք է լրացվի կամ `docs/public/icon-manifest.json`-ով (եթե օգտագործելի է)\nկամ formats/components model.json-ի հետ միասին հրապարակված մանիֆեստով։\nԱյս պահին ներառված են միայն simple-icons։"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -24642,10 +25148,6 @@ msgstr "Շարժական «դիտել ամբողջ էկրանում» կոճակ
 #~ msgstr "Աղբյուր"
 
 #~ msgctxt "docs.api:text"
-#~ msgid "Generated using"
-#~ msgstr "Ստացված՝ օգտագործելով"
-
-#~ msgctxt "docs.api:text"
 #~ msgid "API reference"
 #~ msgstr "API حوالագիր"
 
@@ -24748,9 +25250,3 @@ msgstr "Շարժական «դիտել ամբողջ էկրանում» կոճակ
 #~ msgctxt "docs.api:text"
 #~ msgid "BuildIconFontOptions"
 #~ msgstr "BuildIconFontOptions"
-
-#: formats/components/src/variables/aiGradientCss.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The AI gradient utility as a standalone, header-wrapped stylesheet."
-msgstr "AI գրադիենտի գործիքը՝ որպես առանձին, վերնագրով փաթաթված ոճաթերթ."

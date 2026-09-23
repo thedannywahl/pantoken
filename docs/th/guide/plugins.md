@@ -1,11 +1,11 @@
 # ปลั๊กอิน
 
-ปลั๊กอิน pantoken ขยายเอาต์พุตของโทเค็นหรือ CSS โดยไม่ต้องแยกเป็นแพ็กเกจใหม่ สร้างปลั๊กอินด้วย
-`definePlugin` จาก `@pantoken/plugin-kit` แล้วส่งมันไปที่ `buildTokens` หรือ `toCss`.
+ปลั๊กอินของ pantoken ขยายผลลัพธ์โทเค็นหรือ CSS โดยไม่ต้องแยกเป็นแพ็กเกจใหม่ สร้างปลั๊กอินด้วย
+`definePlugin` จาก `@pantoken/plugin-kit` แล้วส่งให้กับ `buildTokens` หรือ `toCss`。
 
 ## เขียนปลั๊กอิน
 
-ให้ `definePlugin` รับ hooks ที่คุณใช้งาน มันจะคืนค่าปลั๊กอินปกติ พร้อมแบรนด์ความสามารถที่อนุมานได้จาก hooks เหล่านั้น ปลั๊กอินสามารถขยาย IR (`tokens`, `icons`), เอาต์พุต CSS (`css`), หรือทั้งสองอย่าง
+ให้ `definePlugin` ด้วยฮุคที่คุณลงมือทำ มันจะคืนปลั๊กอินปกติที่ติดแบรนด์ด้วยความสามารถที่อนุมานจากฮุคเหล่านั้น ปลั๊กอินสามารถขยาย IR (`tokens`, `icons`), ผลลัพธ์ CSS (`css`), หรือทั้งสองอย่างได้
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -18,13 +18,13 @@ export const brand = () =>
   });
 ```
 
-## การลงทะเบียนที่ตระหนักถึงความสามารถ
+## การลงทะเบียนที่รับรู้ความสามารถ
 
-`buildTokens` และ `toCss` รัน `checkPlugins` บนปลั๊กอินที่คุณส่งเข้าไป มันจะแจ้งเตือน — แต่ไม่เคยโยนข้อผิดพลาด — เมื่อปลั๊กอินไม่มี hook ที่ตรงกับขั้นตอนที่มันถูกลงทะเบียน ดังนั้นปลั๊กอินที่มีเฉพาะโทเค็นแต่ถูกส่งไปยัง `toCss` จะถูกข้ามพร้อมโน้ตแทนการไม่ทำอะไรโดยเงียบ ๆ
+`buildTokens` และ `toCss` จะรัน `checkPlugins` เหนือปลั๊กอินที่คุณส่งเข้าไป มันจะแจ้งเตือน — แต่ไม่เคยขว้างข้อยกเว้น — เมื่อปลั๊กอินไม่มีฮุคที่ตรงกับสเตจที่ลงทะเบียนไว้ ดังนั้นปลั๊กอินที่มีเฉพาะโทเค็นแต่ส่งให้กับ `toCss` จะถูกข้ามพร้อมบันทึกแทนที่จะทำงานเงียบ ๆ โดยไม่ทำอะไร
 
 ## ประกอบปลั๊กอิน
 
-สร้างทับบนปลั๊กอินอื่นด้วย `extendPlugin` หรือรวมเพื่อนร่วมขั้นตอนด้วย `mergePlugin`:
+สร้างขึ้นบนปลั๊กอินอื่นด้วย `extendPlugin` หรือรวมเพื่อนร่วมชั้นด้วย `mergePlugin`:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -33,11 +33,11 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-hooks ของขั้นตอนเดียวกันสามารถประกอบกันได้: `tokens` จะรันฐานก่อนแล้วค่อยรันส่วนเสริม, `css` จะรวมสองการมีส่วนร่วมกัน, และ `icons` จะรันทั้งสองแบบ
+ฮุคในสเตจเดียวกันประกอบได้: `tokens` จะรันฐานแล้วตามด้วยส่วนเสริม, `css` รวมสองการมีส่วนร่วม, และ `icons` จะรันทั้งสองอัน
 
-## ตรวจสอบเอาต์พุตของปลั๊กอินของคุณ
+## ตรวจสอบผลลัพธ์ของปลั๊กอินของคุณ
 
-รันการตรวจสอบ drift ที่แชร์จาก `@pantoken/utils` กับเอาต์พุตของปลั๊กอินของคุณในการทดสอบของมัน เพื่อให้พิมพ์ผิดหรือการเปลี่ยนชื่อโทเค็นล้มเหลวอย่างรวดเร็วและภายในเครื่อง:
+รันการตรวจสอบ drift ร่วมจาก `@pantoken/utils` เหนือผลลัพธ์ของปลั๊กอินในเทสต์ของมันเอง เพื่อให้การพิมพ์ผิดหรือการเปลี่ยนชื่อโทเค็นทำให้ล้มเหลวเร็วและท้องถิ่น:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -52,11 +52,26 @@ expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 
 ## ปลั๊กอินที่มาพร้อมแพ็กเกจ
 
-- `@pantoken/plugin-simple-icons` — แบรนด์ไอคอนจาก simple-icons ลงทะเบียนเป็นโทเค็นไอคอน
-- `@pantoken/plugin-logos` — โลโก้ผลิตภัณฑ์ Instructure เป็น SVG, data URI และ `--instui-logo-*`
-  โทเค็นรูปภาพ
-- `@pantoken/plugin-prune-custom-props` — ปลั๊กอิน PostCSS (ไม่ใช่ปลั๊กอิน pantoken) ที่ตัด custom properties ที่ไม่ได้ใช้จากสไตล์ชีต
+- `@pantoken/plugin-simple-icons` — ติดแบรนด์ไอคอนจาก simple-icons, ลงทะเบียนเป็นโทเค็นไอคอน
+- `@pantoken/plugin-lucide-lab` — ไอคอน Lucide Lab, ลงทะเบียนเป็น `--instui-icon-*` โทเค็นภาพ
+- `@pantoken/plugin-logos` — โลโก้ผลิตภัณฑ์ Instructure เป็น SVG, data URI, และ `--instui-logo-*`
+  โทเค็นภาพ
+- `@pantoken/plugin-prune-custom-props` — ปลั๊กอิน PostCSS (ไม่ใช่ปลั๊กอิน pantoken) ที่ตัด
+  custom properties ที่ไม่ได้ใช้จากสไตล์ชีต
 
-มีบางอย่างที่เคยเป็นปลั๊กอินตอนนี้ถูกบรรจุใน `@pantoken/components` เพราะหลายคอมโพเนนต์ต้องการโดยตรง: เงายกพื้น (`--instui-elevation-*`, ใน `components.css`), วงแหวน focus-outline (ใน `base.css` — ทุกองค์ประกอบที่สามารถโฟกัสจะได้รับเมื่อ pantoken เป็นเจ้าของหน้า), และฟอนต์แบรนด์ Instructure (Atkinson Hyperlegible Next: `base.css` ใช้ `--instui-font-family-base`; ตัวเลือกแบบ opt-in `@pantoken/components/fonts.css` โหลด `@font-face` woff2s)
+รีจิสทรีของ Lucide Lab สามารถโหลดแบบ lazy แล้วส่งให้กับฮุคโทเค็นเชิงซิงโครนัส:
 
-ดู [API reference](/api/) สำหรับการส่งออกของแต่ละปลั๊กอิน.
+```ts
+import { buildTokens } from "@pantoken/core/build";
+import { defaultRegistry, lucideLab } from "@pantoken/plugin-lucide-lab";
+
+const registry = await defaultRegistry();
+buildTokens({
+  theme: "rebrand",
+  plugins: [lucideLab({ registry, names: ["burger", "at-sign-circle"] })],
+});
+```
+
+สิ่งบางอย่างที่เคยเป็นปลั๊กอินตอนนี้รวมมาพร้อมใน `@pantoken/components` แล้ว เพราะมีหลายคอมโพเนนต์ต้องการโดยดีฟอลต์: เงายก (elevation shadows) (`--instui-elevation-*`, ใน `components.css`), วงแหวนรอบโฟกัส (focus-outline ring) (ใน `base.css` — ทุกองค์ประกอบที่โฟกัสได้จะได้รับเมื่อ pantoken ครอบครองหน้า), และฟอนต์แบรนด์ Instructure (Atkinson Hyperlegible Next: `base.css` ใช้ `--instui-font-family-base`; ตัวเลือกเสริม `@pantoken/components/fonts.css` โหลดไฟล์ woff2 ของ `@font-face`)
+
+ดู [API reference](/api/) สำหรับการส่งออกของแต่ละปลั๊กอิน

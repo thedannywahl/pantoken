@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-18 00:13+0000\n"
+"PO-Revision-Date: 2026-09-23 03:50+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -9,961 +9,997 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: und\n"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#description
 #, no-c-format
 msgctxt "docs.chrome:description"
 msgid "Instructure design tokens and icons, reshaped for every platform and framework."
 msgstr "Tokens thiết kế và biểu tượng của Instructure, được tái tạo cho mọi nền tảng và framework."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#nav.guide
 #, no-c-format
 msgctxt "docs.chrome:nav.guide"
 msgid "Guide"
 msgstr "Hướng dẫn"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#nav.css
 #, no-c-format
 msgctxt "docs.chrome:nav.css"
 msgid "CSS"
 msgstr "CSS"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#nav.api
 #, no-c-format
 msgctxt "docs.chrome:nav.api"
 msgid "API"
 msgstr "API"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.intro
 #, no-c-format
 msgctxt "docs.chrome:sidebar.intro"
 msgid "Introduction"
 msgstr "Giới thiệu"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.guides
 #, no-c-format
 msgctxt "docs.chrome:sidebar.guides"
 msgid "Guides"
 msgstr "Hướng dẫn"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.utilities
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:sidebar.utilities"
 msgid "Utilities"
 msgstr "Tiện ích"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.gettingStarted
 #, no-c-format
 msgctxt "docs.chrome:sidebar.gettingStarted"
 msgid "Getting started"
 msgstr "Bắt đầu"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.architecture
 #, no-c-format
 msgctxt "docs.chrome:sidebar.architecture"
 msgid "Architecture"
 msgstr "Kiến trúc"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.components
 #, no-c-format
 msgctxt "docs.chrome:sidebar.components"
 msgid "Components"
 msgstr "Các thành phần"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.cdn
 #, no-c-format
 msgctxt "docs.chrome:sidebar.cdn"
 msgid "CDN & distribution"
 msgstr "CDN & phân phối"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.cdnPicker
 #, no-c-format
 msgctxt "docs.chrome:sidebar.cdnPicker"
 msgid "CDN picker"
 msgstr "Bộ chọn CDN"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.registry
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:sidebar.registry"
 msgid "shadcn/ui Registry"
 msgstr "Đăng ký"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.agentTools
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:sidebar.agentTools"
 msgid "Agent Tools"
 msgstr "Công cụ"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.canvasRce
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:sidebar.canvasRce"
+msgid "Canvas RCE"
+msgstr "Canvas"
+
+#: docs/.vitepress/i18n.json#sidebar.cli
 #, no-c-format
 msgctxt "docs.chrome:sidebar.cli"
 msgid "The pantoken CLI"
 msgstr "CLI pantoken"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.plugins
 #, no-c-format
 msgctxt "docs.chrome:sidebar.plugins"
 msgid "Plugins"
 msgstr "Plugin"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.generated
 #, no-c-format
 msgctxt "docs.chrome:sidebar.generated"
 msgid "Generated output"
 msgstr "Đầu ra tạo ra"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.api
 #, no-c-format
 msgctxt "docs.chrome:sidebar.api"
 msgid "API reference"
 msgstr "Tài liệu API"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.css
 #, no-c-format
 msgctxt "docs.chrome:sidebar.css"
 msgid "CSS"
 msgstr "CSS"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.ai
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.ai"
 msgid "AI"
 msgstr "AI"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.bundlers
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.bundlers"
 msgid "Bundlers"
 msgstr "Bundlers"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.design
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.design"
 msgid "Design"
 msgstr "Thiết kế"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.formats
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.formats"
 msgid "Formats"
 msgstr "Định dạng"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.packages
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.packages"
 msgid "Packages"
 msgstr "Gói"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.platforms
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.platforms"
 msgid "Platforms"
 msgstr "Nền tảng"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.plugins
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.plugins"
 msgid "Plugins"
 msgstr "Plugin"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.renderers
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.renderers"
 msgid "Renderers"
 msgstr "Công cụ kết xuất"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.tools
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.tools"
 msgid "Tools"
 msgstr "Công cụ"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#platformPicker.label
 #, no-c-format
 msgctxt "docs.chrome:platformPicker.label"
 msgid "Choose a platform"
 msgstr "Chọn nền tảng"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiOverview
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiOverview"
 msgid "Overview"
 msgstr "Tổng quan"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#editText
 #, no-c-format
 msgctxt "docs.chrome:editText"
 msgid "Edit this page on GitHub"
 msgstr "Chỉnh sửa trang này trên GitHub"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#demoTabs.result
 #, no-c-format
 msgctxt "docs.chrome:demoTabs.result"
 msgid "Result"
 msgstr "Kết quả"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#demoTabs.html
 #, no-c-format
 msgctxt "docs.chrome:demoTabs.html"
 msgid "HTML"
 msgstr "HTML"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#demoTabs.css
 #, no-c-format
 msgctxt "docs.chrome:demoTabs.css"
 msgid "CSS"
 msgstr "CSS"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#demoTabs.js
 #, no-c-format
 msgctxt "docs.chrome:demoTabs.js"
 msgid "JS"
 msgstr "JS"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#themeSelector.label
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.label"
 msgid "Select theme"
 msgstr "Chọn chủ đề"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#themeSelector.rebrand
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.rebrand"
 msgid "Next gen"
 msgstr "Next gen"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#themeSelector.canvas
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.canvas"
 msgid "Canvas"
 msgstr "Canvas"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#themeSelector.canvasHighContrast
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.canvasHighContrast"
 msgid "Canvas high contrast"
 msgstr "Canvas high contrast"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.themeLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeLabel"
 msgid "Theme"
 msgstr "Chủ đề"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.themeRebrand
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeRebrand"
 msgid "Next gen"
 msgstr "Next gen"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.themeCanvas
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeCanvas"
 msgid "Canvas"
 msgstr "Canvas"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.themeCanvasHighContrast
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeCanvasHighContrast"
 msgid "Canvas high contrast"
 msgstr "Canvas high contrast"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.modeLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.modeLabel"
 msgid "Rebrand mode"
 msgstr "Chế độ đổi thương hiệu"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.modeAdaptive
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.modeAdaptive"
 msgid "Light + dark"
 msgstr "Sáng + tối"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.modeLightOnly
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.modeLightOnly"
 msgid "Light only"
 msgstr "Chỉ sáng"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.includeDarkMode
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.includeDarkMode"
 msgid "Include dark mode"
 msgstr "Bao gồm chế độ tối"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.providerLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.providerLabel"
 msgid "CDN provider"
 msgstr "Nhà cung cấp CDN"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.componentsLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.componentsLabel"
 msgid "Components"
 msgstr "Các thành phần"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.allComponents
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.allComponents"
 msgid "All components"
 msgstr "Tất cả thành phần"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.formatLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.formatLabel"
 msgid "Output"
 msgstr "Đầu ra"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.formatLink
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.formatLink"
 msgid "<link>"
 msgstr "<link>"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.formatImport
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.formatImport"
 msgid "@import"
 msgstr "@import"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.includeBase
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.includeBase"
 msgid "Base"
 msgstr "Cơ sở"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.baseInfoLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfoLabel"
 msgid "About the base reset"
 msgstr "Về thiết lập lại cơ sở"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.baseInfo
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfo"
 msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
 msgstr "Thiết lập lại toàn cục chọn tham gia: box-sizing, bề mặt trang, màu chữ cơ bản và font, color-scheme, và mặc định cho liên kết."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.includeUtilities
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.includeUtilities"
 msgid "Utilities"
 msgstr "Tiện ích"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.utilitiesInfoLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfoLabel"
 msgid "About the utility classes"
 msgstr "Về các lớp tiện ích"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.utilitiesInfo
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
 msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
 msgstr "Một lớp các lớp cắt ngang chọn tham gia: một primitive View, khoảng cách theo thang token, và ghi đè màu có ý nghĩa."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.copy
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.copy"
 msgid "Copy"
 msgstr "Sao chép"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.copied
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.copied"
 msgid "Copied"
 msgstr "Đã sao chép"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.empty
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.empty"
 msgid "Select one or more components to build a URL."
 msgstr "Chọn một hoặc nhiều thành phần để tạo URL."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.fontsNote
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.fontsNote"
 msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
 msgstr "Font được tải riêng — thêm một <link> tới @pantoken/components/fonts.css khi cần."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.iconsNote
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.iconsNote"
 msgid "component-icons.css is included because a selected component uses icons."
 msgstr "component-icons.css được bao gồm vì một thành phần được chọn sử dụng biểu tượng."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.copied
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.copied"
 msgid "Copied"
 msgstr "Đã sao chép"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.cliInstall
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.cliInstall"
 msgid "CLI install"
 msgstr "Cài đặt CLI"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.aiInstall
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.aiInstall"
 msgid "AI install"
 msgstr "Cài đặt AI"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.pauseAnimation
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.pauseAnimation"
 msgid "Pause animation"
 msgstr "Tạm dừng hoạt ảnh"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.playAnimation
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.playAnimation"
 msgid "Resume animation"
 msgstr "Tiếp tục hoạt ảnh"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.agentPrompt
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
 msgid "\"Set up pantoken in this project using create.pantoken.app/SKILL.md.\""
 msgstr "\"Thiết lập pantoken (github.com/thedannywahl/pantoken) trong dự án này bằng create.pantoken.app/SKILL.md.\""
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.title
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.title"
 msgid "shadcn/ui Registry"
 msgstr "Đăng ký"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.subtitle
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.subtitle"
 msgid "Compatible components, themes, and behavior hooks conforming to the shadcn/ui registry specification. Add items directly to your shadcn/ui project via CLI."
 msgstr "Các component, theme và hook hành vi tương thích tuân theo đặc tả registry của shadcn/ui. Thêm mục trực tiếp vào dự án shadcn/ui của bạn qua CLI."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.tabAll
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.tabAll"
 msgid "All"
 msgstr "Tất cả"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.tabComponents
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.tabComponents"
 msgid "Components"
 msgstr "Các thành phần"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.tabThemes
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.tabThemes"
 msgid "Themes"
 msgstr "Chủ đề"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.tabHooks
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.tabHooks"
 msgid "Hooks"
 msgstr "Hooks"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.searchPlaceholder
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.searchPlaceholder"
 msgid "Filter components, themes, hooks…"
 msgstr "Lọc component, theme, hook…"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.cliLabel
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.cliLabel"
 msgid "CLI:"
 msgstr "CLI:"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.copy
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.copy"
 msgid "Copy"
 msgstr "Sao chép"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.copied
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.copied"
 msgid "Copied"
 msgstr "Đã sao chép"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.depsLabel
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.depsLabel"
 msgid "Deps:"
 msgstr "Phụ thuộc:"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.previewDetails
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.previewDetails"
 msgid "Preview details"
 msgstr "Chi tiết xem trước"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.previewTokens
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.previewTokens"
 msgid "Token mappings (light)"
 msgstr "Ánh xạ token (light)"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.viewJson
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.viewJson"
 msgid "JSON"
 msgstr "JSON"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.emptyTitle
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.emptyTitle"
 msgid "No registry items match your search."
 msgstr "Không có mục registry nào khớp với tìm kiếm của bạn."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.emptyReset
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.emptyReset"
 msgid "Reset Filters"
 msgstr "Đặt lại tìm kiếm"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#canvasRce.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:canvasRce.title"
+msgid "Canvas RCE"
+msgstr "Canvas"
+
+#: docs/.vitepress/i18n.json#canvasRce.description
+#, no-c-format
+msgctxt "docs.chrome:canvasRce.description"
+msgid "A live preview of pantoken's Canvas LMS Rich Content Editor template: a TinyMCE-based editor with starter layouts, a live preview pane, and hand-editable theme.css/theme.js output."
+msgstr "Bản xem trước trực tiếp của mẫu Canvas LMS Rich Content Editor của pantoken: một trình soạn thảo dựa trên TinyMCE với các bố cục khởi đầu, một khung xem trước trực tiếp và đầu ra theme.css/theme.js có thể chỉnh sửa thủ công."
+
+#: docs/.vitepress/i18n.json#canvasRce.openInNewTab
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:canvasRce.openInNewTab"
+msgid "Open in a new tab"
+msgstr "Mở trong {{agent}}"
+
+#: docs/.vitepress/i18n.json#canvasRce.runLocally
+#, no-c-format
+msgctxt "docs.chrome:canvasRce.runLocally"
+msgid "Run locally: npx create-pantoken-app canvas-theme-editor"
+msgstr "Chạy cục bộ: npx create-pantoken-app canvas-theme-editor"
+
+#: docs/.vitepress/i18n.json#agentTools.title
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.title"
 msgid "Agent Tools"
 msgstr "Công cụ"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.subtitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.subtitle"
 msgid "Pick a Pantoken agent workflow, generate the command or launch URL, and give your assistant the files it needs to stop guessing."
 msgstr "Chọn một luồng tác vụ agent của Pantoken, tạo lệnh hoặc URL khởi chạy, và cung cấp cho trợ lý các tệp nó cần để ngừng đoán mò."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.providerLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.providerLabel"
 msgid "Agent"
 msgstr "Tác nhân"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.packageManagerLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.packageManagerLabel"
 msgid "Runner"
 msgstr "Trình chạy"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.copy
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.copy"
 msgid "Copy"
 msgstr "Sao chép"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.download
 #, no-c-format
 msgctxt "docs.chrome:agentTools.download"
 msgid "Download"
 msgstr "Tải xuống"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.copied
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.copied"
 msgid "Copied"
 msgstr "Đã sao chép"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.open
 #, no-c-format
 msgctxt "docs.chrome:agentTools.open"
 msgid "Open"
 msgstr "Mở"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.openInAgent
 #, no-c-format
 msgctxt "docs.chrome:agentTools.openInAgent"
 msgid "Open in {{agent}}"
 msgstr "Mở trong {{agent}}"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.openUnavailable
 #, no-c-format
 msgctxt "docs.chrome:agentTools.openUnavailable"
 msgid "This agent does not publish a stable launch URL. Use Copy for the CLI prompt."
 msgstr "Agent này không xuất bản URL khởi chạy ổn định. Dùng Sao chép để lấy lời nhắc CLI."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.tabBootstrap
 #, no-c-format
 msgctxt "docs.chrome:agentTools.tabBootstrap"
 msgid "Bootstrap"
 msgstr "Khởi tạo"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.tabInstall
 #, no-c-format
 msgctxt "docs.chrome:agentTools.tabInstall"
 msgid "Install assets"
 msgstr "Cài đặt tài sản"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.tabRegistry
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.tabRegistry"
 msgid "Registry"
 msgstr "Đăng ký"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.tabDocs
 #, no-c-format
 msgctxt "docs.chrome:agentTools.tabDocs"
 msgid "Agent docs"
 msgstr "Tài liệu agent"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.bootstrapTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.bootstrapTitle"
 msgid "Bootstrap a project"
 msgstr "Khởi tạo một dự án"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.bootstrapDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.bootstrapDescription"
 msgid "Scaffold a starter with Pantoken wired in and install the repo-local agent assets in the same pass."
 msgstr "Tạo khuôn mẫu khởi đầu với Pantoken được tích hợp và cài đặt các tài sản agent trong repo trong cùng một bước."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.platformLabel
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.platformLabel"
 msgid "Platform"
 msgstr "Nền tảng"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.directoryLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.directoryLabel"
 msgid "Directory"
 msgstr "Thư mục"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.installTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installTitle"
 msgid "Add agent guidance to a repo"
 msgstr "Thêm hướng dẫn agent vào repo"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.installDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installDescription"
 msgid "Install AGENTS.md, llms.txt, editor rules, and Claude skills into an existing project that already uses or is about to use Pantoken."
 msgstr "Cài đặt AGENTS.md, llms.txt, quy tắc trình soạn thảo và kỹ năng Claude vào một dự án hiện có đang sử dụng hoặc sắp sử dụng Pantoken."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.toolLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.toolLabel"
 msgid "Asset set"
 msgstr "Bộ tài sản"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.writesLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.writesLabel"
 msgid "Writes"
 msgstr "Ghi"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryTitle
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.registryTitle"
 msgid "Work with the shadcn/ui registry"
 msgstr "Đăng ký"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryDescription"
 msgid "Point an agent at Pantoken's indexed registry so it can search, inspect, and add CSS-backed registry items instead of inventing package names."
 msgstr "Trỏ agent tới registry đã được lập chỉ mục của Pantoken để nó có thể tìm kiếm, kiểm tra và thêm các mục registry có hỗ trợ CSS thay vì tự tạo tên package."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryActionLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryActionLabel"
 msgid "Action"
 msgstr "Hành động"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryItemLabel
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.registryItemLabel"
 msgid "Registry item"
 msgstr "Đăng ký"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.docsTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsTitle"
 msgid "Agent-readable documentation"
 msgstr "Tài liệu đọc được bởi agent"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.docsDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsDescription"
 msgid "Pantoken publishes fetchable documentation and manifests for assistants that can browse URLs or read raw Markdown."
 msgstr "Pantoken xuất bản tài liệu và manifest có thể truy xuất cho các trợ lý có thể duyệt URL hoặc đọc Markdown thô."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.installPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installPrompt"
 msgid "Install Pantoken agent guidance in this repository. Use {{command}}, then summarize the files written and when future agents should read them."
 msgstr "Cài đặt hướng dẫn agent Pantoken trong repository này. Dùng {{command}}, sau đó tóm tắt các tệp đã ghi và khi nào các agent tương lai nên đọc chúng."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryPrompt"
 msgid "Use the Pantoken shadcn registry for this project. Fetch https://pantoken.app/r/registry.json, then run {{command}} if the project uses shadcn or has components.json. Registry items install CSS and metadata, not React components."
 msgstr "Sử dụng registry shadcn của Pantoken cho dự án này. Lấy https://pantoken.app/r/registry.json, sau đó chạy {{command}} nếu dự án dùng shadcn hoặc có components.json. Các mục registry cài đặt CSS và metadata, không phải các component React."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.docsPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsPrompt"
 msgid "Fetch https://pantoken.app/llms.txt first. When a page is needed, prefer its raw Markdown URL by adding .md to the clean docs path, and use Pantoken manifests for component capabilities, CDN plugins, demos, and registry items."
 msgstr "Lấy https://pantoken.app/llms.txt trước. Khi cần một trang, ưu tiên URL Markdown thô của nó bằng cách thêm .md vào đường dẫn tài liệu sạch, và dùng manifest của Pantoken cho khả năng component, plugin CDN, demo và các mục registry."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.docsCommand
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsCommand"
 msgid "Fetch https://pantoken.app/llms.txt, then follow links to the pages and manifests relevant to this task."
 msgstr "Lấy https://pantoken.app/llms.txt, sau đó theo các liên kết đến các trang và manifest liên quan đến nhiệm vụ này."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.createDomainTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.createDomainTitle"
 msgid "Bootstrap skill URL"
 msgstr "URL khởi tạo skill"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.createDomainDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.createDomainDescription"
 msgid "The short public URL any URL-capable agent can fetch to set up Pantoken."
 msgstr "URL công khai ngắn mà bất kỳ agent nào có khả năng truy xuất URL cũng có thể lấy để thiết lập Pantoken."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.llmsTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsTitle"
 msgid "Site index"
 msgstr "Chỉ mục trang"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.llmsDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsDescription"
 msgid "Canonical English documentation index for agents and LLM-aware clients."
 msgstr "Chỉ mục tài liệu tiếng Anh chuẩn cho các agent và client nhận biết LLM."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.llmsFullTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsFullTitle"
 msgid "Full site context"
 msgstr "Ngữ cảnh toàn bộ trang"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.llmsFullDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsFullDescription"
 msgid "Expanded LLM context for agents that need the complete documentation set."
 msgstr "Mở rộng ngữ cảnh LLM cho các agent cần toàn bộ bộ tài liệu."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.pageMdTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.pageMdTitle"
 msgid "Raw Markdown pages"
 msgstr "Các trang Markdown thô"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.pageMdDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.pageMdDescription"
 msgid "Every docs HTML page advertises a raw Markdown alternate link."
 msgstr "Mỗi trang HTML tài liệu đều công bố một liên kết thay thế đến Markdown thô."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryManifestTitle
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.registryManifestTitle"
 msgid "Registry manifest"
 msgstr "Đăng ký"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryManifestDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryManifestDescription"
 msgid "shadcn-compatible index of Pantoken CSS registry items."
 msgstr "Chỉ mục tương thích shadcn của các mục registry CSS của Pantoken."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.capabilitiesTitle
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.capabilitiesTitle"
 msgid "Component capabilities"
 msgstr "Các thành phần"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.capabilitiesDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.capabilitiesDescription"
 msgid "Machine-readable map of component CSS, JavaScript, icon, and dependency needs."
 msgstr "Bản đồ có thể đọc bởi máy về nhu cầu CSS, JavaScript, biểu tượng và phụ thuộc của component."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.pluginsTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.pluginsTitle"
 msgid "CDN plugin manifest"
 msgstr "Manifest plugin CDN"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.pluginsDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.pluginsDescription"
 msgid "Plugin styles available to CDN and standalone mockup workflows."
 msgstr "Các style plugin có sẵn cho workflow CDN và mockup độc lập."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.apiCatalogTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.apiCatalogTitle"
 msgid "API catalog"
 msgstr "Danh mục API"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.apiCatalogDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.apiCatalogDescription"
 msgid "Machine-readable linkset for Pantoken's agent-readable resources."
 msgstr "Tập hợp liên kết có thể đọc bởi máy cho các tài nguyên của Pantoken mà agent có thể đọc."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.vscodeCustomDataTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.vscodeCustomDataTitle"
 msgid "VS Code custom data"
 msgstr "Dữ liệu tùy chỉnh VS Code"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.vscodeCustomDataDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.vscodeCustomDataDescription"
 msgid "HTML classes and CSS custom properties for VS Code IntelliSense."
 msgstr "Các lớp HTML và thuộc tính tùy chỉnh CSS cho IntelliSense của VS Code."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.outlineLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.outlineLabel"
 msgid "On this page"
 msgstr "Trên trang này"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.docFooterPrev
 #, no-c-format
 msgctxt "docs.chrome:chrome.docFooterPrev"
 msgid "Previous page"
 msgstr "Trang trước"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.docFooterNext
 #, no-c-format
 msgctxt "docs.chrome:chrome.docFooterNext"
 msgid "Next page"
 msgstr "Trang tiếp"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.darkModeSwitchLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.darkModeSwitchLabel"
 msgid "Appearance"
 msgstr "Giao diện"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.lightModeSwitchTitle
 #, no-c-format
 msgctxt "docs.chrome:chrome.lightModeSwitchTitle"
 msgid "Switch to light theme"
 msgstr "Chuyển sang chủ đề sáng"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.darkModeSwitchTitle
 #, no-c-format
 msgctxt "docs.chrome:chrome.darkModeSwitchTitle"
 msgid "Switch to dark theme"
 msgstr "Chuyển sang chủ đề tối"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.sidebarMenuLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.sidebarMenuLabel"
 msgid "Menu"
 msgstr "Trình đơn"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.returnToTopLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.returnToTopLabel"
 msgid "Return to top"
 msgstr "Trở về đầu trang"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.langMenuLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.langMenuLabel"
 msgid "Change language"
 msgstr "Thay đổi ngôn ngữ"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.sidebarToggleLabel
+#, no-c-format
+msgctxt "docs.chrome:chrome.sidebarToggleLabel"
+msgid "Toggle sidebar"
+msgstr "Chuyển đổi thanh bên"
+
+#: docs/.vitepress/i18n.json#chrome.lastUpdatedText
 #, no-c-format
 msgctxt "docs.chrome:chrome.lastUpdatedText"
 msgid "Last updated"
 msgstr "Cập nhật lần cuối"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.agentShellPrompt
 #, no-c-format
 msgctxt "docs.chrome:chrome.agentShellPrompt"
 msgid "What would you like to build today?"
 msgstr "Hôm nay bạn muốn xây dựng gì?"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.notFound.code
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.code"
 msgid "404"
 msgstr "404"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.notFound.title
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.title"
 msgid "PAGE NOT FOUND"
 msgstr "KHÔNG TÌM THẤY TRANG"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.notFound.quote
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.quote"
 msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
 msgstr "Nhưng nếu bạn không thay đổi hướng đi của mình, và nếu bạn tiếp tục tìm kiếm, bạn có thể kết thúc ở nơi bạn đang hướng tới."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.notFound.linkLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.linkLabel"
 msgid "go to home"
 msgstr "đi tới trang chủ"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.notFound.linkText
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.linkText"
 msgid "Take me home"
 msgstr "Đưa tôi về nhà"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.buttonText
 #, no-c-format
 msgctxt "docs.chrome:search.buttonText"
 msgid "Search"
 msgstr "Tìm kiếm"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.displayDetails
 #, no-c-format
 msgctxt "docs.chrome:search.displayDetails"
 msgid "Display detailed list"
 msgstr "Hiển thị danh sách chi tiết"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.resetButtonTitle
 #, no-c-format
 msgctxt "docs.chrome:search.resetButtonTitle"
 msgid "Reset search"
 msgstr "Đặt lại tìm kiếm"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.backButtonTitle
 #, no-c-format
 msgctxt "docs.chrome:search.backButtonTitle"
 msgid "Close search"
 msgstr "Đóng tìm kiếm"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.noResultsText
 #, no-c-format
 msgctxt "docs.chrome:search.noResultsText"
 msgid "No results for"
 msgstr "Không có kết quả cho"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.footerSelect
 #, no-c-format
 msgctxt "docs.chrome:search.footerSelect"
 msgid "to select"
 msgstr "để chọn"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.footerNavigate
 #, no-c-format
 msgctxt "docs.chrome:search.footerNavigate"
 msgid "to navigate"
 msgstr "để điều hướng"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.footerClose
 #, no-c-format
 msgctxt "docs.chrome:search.footerClose"
 msgid "to close"

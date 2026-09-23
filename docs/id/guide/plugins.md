@@ -1,13 +1,10 @@
 # Plugin
 
-Plugin pantoken memperluas keluaran token atau CSS tanpa me-fork paket. Anda membuatnya dengan
-`definePlugin` dari `@pantoken/plugin-kit`, lalu meneruskannya ke `buildTokens` atau `toCss`.
+Plugin pantoken memperluas output token atau CSS tanpa me-fork paket. Buat satu dengan `definePlugin` dari `@pantoken/plugin-kit`, lalu serahkan ke `buildTokens` atau `toCss`.
 
 ## Menulis plugin
 
-Berikan `definePlugin` hook yang Anda implementasikan. Ini mengembalikan plugin normal, diberi merek dengan
-kapabilitas yang disimpulkan dari hook tersebut. Sebuah plugin dapat memperluas IR (`tokens`, `icons`), keluaran CSS
-(`css`), atau keduanya.
+Berikan `definePlugin` hook yang Anda implementasikan. Itu mengembalikan plugin normal, diberi merek dengan kapabilitas yang diinferensi dari hook tersebut. Sebuah plugin dapat memperluas IR (`tokens`, `icons`), output CSS (`css`), atau keduanya.
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -20,11 +17,9 @@ export const brand = () =>
   });
 ```
 
-## Pendaftaran yang sadar kapabilitas
+## Registrasi yang sadar kapabilitas
 
-`buildTokens` dan `toCss` menjalankan `checkPlugins` pada plugin yang Anda berikan. Ini memberikan peringatan — tidak pernah melempar —
-ketika sebuah plugin tidak memiliki hook yang cocok untuk tahap tempat ia didaftarkan, jadi plugin yang hanya token yang diteruskan
-ke `toCss` dilewati dengan catatan daripada diam-diam tidak melakukan apa-apa.
+`buildTokens` dan `toCss` menjalankan `checkPlugins` pada plugin yang Anda berikan. Ia memperingatkan — tidak pernah melempar — ketika sebuah plugin tidak memiliki hook yang cocok untuk tahap tempat ia didaftarkan, jadi plugin hanya-token yang diberikan ke `toCss` akan dilewati dengan catatan daripada diam-diam tidak melakukan apa-apa.
 
 ## Menggabungkan plugin
 
@@ -37,13 +32,11 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Hook pada tahap yang sama dapat tersusun: `tokens` menjalankan basis lalu tambahan, `css` menggabungkan dua
-kontribusi, dan `icons` menjalankan keduanya.
+Hook tahap-sama dapat dikomposisi: `tokens` menjalankan base kemudian tambahan, `css` menggabungkan kedua kontribusi, dan `icons` menjalankan keduanya.
 
-## Validasi keluaran plugin Anda
+## Validasi output plugin Anda
 
-Jalankan pemeriksaan drift bersama dari `@pantoken/utils` pada keluaran plugin Anda sendiri dalam testnya, sehingga
-kesalahan ketik atau token yang diubah namanya gagal cepat dan secara lokal:
+Jalankan pemeriksaan drift bersama dari `@pantoken/utils` pada output plugin Anda sendiri dalam test-nya, sehingga salah ketik atau token yang diganti nama gagal cepat dan secara lokal:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -56,17 +49,26 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## Plugin bawaan
+## Plugin yang dibundel
 
-- `@pantoken/plugin-simple-icons` — memberi merek ikon dari simple-icons, didaftarkan sebagai token ikon.
-- `@pantoken/plugin-logos` — logo produk Instructure sebagai SVG, data URI, dan `--instui-logo-*`
-  token gambar.
-- `@pantoken/plugin-prune-custom-props` — sebuah plugin PostCSS (bukan plugin pantoken) yang menghapus
-  custom property yang tidak terpakai dari stylesheet.
+- `@pantoken/plugin-simple-icons` — merek ikon dari simple-icons, didaftarkan sebagai token ikon.
+- `@pantoken/plugin-lucide-lab` — ikon Lucide Lab, didaftarkan sebagai token gambar `--instui-icon-*`.
+- `@pantoken/plugin-logos` — logo produk Instructure sebagai SVG, data URI, dan token gambar `--instui-logo-*`.
+- `@pantoken/plugin-prune-custom-props` — plugin PostCSS (bukan plugin pantoken) yang menghapus properti kustom yang tidak terpakai dari stylesheet.
 
-Beberapa hal yang dulu berupa plugin sekarang dikirimkan dalam `@pantoken/components`, karena begitu banyak komponen membutuhkan
-mereka secara default: bayangan elevasi (`--instui-elevation-*`, dalam `components.css`), cincin outline fokus
-(di `base.css` — setiap elemen yang dapat difokus akan mendapatkannya ketika pantoken mengelola halaman), dan font merek Instructure
-(Atkinson Hyperlegible Next: `base.css` menerapkan `--instui-font-family-base`; `@pantoken/components/fonts.css` opsional memuat `@font-face` woff2s).
+Registri Lucide Lab dapat dimuat secara malas, lalu diberikan ke hook token sinkron:
+
+```ts
+import { buildTokens } from "@pantoken/core/build";
+import { defaultRegistry, lucideLab } from "@pantoken/plugin-lucide-lab";
+
+const registry = await defaultRegistry();
+buildTokens({
+  theme: "rebrand",
+  plugins: [lucideLab({ registry, names: ["burger", "at-sign-circle"] })],
+});
+```
+
+Beberapa hal yang dulunya plugin sekarang dikirimkan di `@pantoken/components`, karena begitu banyak komponen memerlukannya langsung: bayangan elevasi (`--instui-elevation-*`, di `components.css`), cincin fokus-outline (di `base.css` — setiap elemen yang dapat difokuskan mendapatkannya ketika pantoken mengendalikan halaman), dan font merek Instructure (Atkinson Hyperlegible Next: `base.css` menerapkan `--instui-font-family-base`; opsi `@pantoken/components/fonts.css` memuat woff2 `@font-face`).
 
 Lihat [referensi API](/api/) untuk ekspor masing-masing plugin.

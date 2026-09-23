@@ -1,10 +1,10 @@
-# Viðbætur
+# Viðbætur (Plugins)
 
-Pantoken-viðbót útvíkkar token- eða CSS-úttak án þess að afrita pakkann. Þú býrð eina með `definePlugin` frá `@pantoken/plugin-kit`, og sendir hana síðan til `buildTokens` eða `toCss`.
+Pantoken viðbót (plugin) framlengir token- eða CSS-útgang án þess að forka pakka. Búið er til eina með `definePlugin` frá `@pantoken/plugin-kit`, og síðan send hana til `buildTokens` eða `toCss`.
 
 ## Skrifa viðbót
 
-Gefðu `definePlugin` þær hook-aðgerðir sem þú útfærir. Hún skilar venjulegri viðbót, merkt með þeim hæfileikum sem dregnir eru af þeim hook-um. Viðbót getur útvíkkað IR-ið (`tokens`, `icons`), CSS-úttakið (`css`), eða bæði.
+Gefðu `definePlugin` þau hooks sem þú innleiðir. Hún skilar venjulegri viðbót, merkt með þeim hæfileikum sem dregnir eru af þessum hooks. Viðbót getur framlengt IR-ið (`tokens`, `icons`), CSS-útganginn (`css`), eða bæði.
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -17,11 +17,11 @@ export const brand = () =>
   });
 ```
 
-## Skráning með eiginleikavitund
+## Skráning með hæfileikavitund
 
-`buildTokens` og `toCss` keyra `checkPlugins` yfir þær viðbætur sem þú sendir inn. Hún gefur viðvörun — hún kastar aldri undantekningu — þegar viðbót hefur engan samsvarandi hook fyrir þann stig sem hún er skráð í, svo token-only viðbót sem send er til `toCss` er sleppt með athugasemd frekar en að gera ekkert þegjandi.
+`buildTokens` og `toCss` keyra `checkPlugins` yfir viðbætur sem þú sendir inn. Hún gefur viðvörun — hún kastar aldrei — þegar viðbót hefur enga samsvarandi hook fyrir þann stig þar sem hún er skráð, svo token-aðeins viðbót sem send er til `toCss` er sleppt með skýringartekstu frekar en að gera ekkert þögult.
 
-## Setja saman viðbætur
+## Samsetja viðbætur
 
 Byggðu ofan á aðra viðbót með `extendPlugin`, eða sameina jafningja með `mergePlugin`:
 
@@ -32,11 +32,11 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Hook-ar á sama stigi samsetjast: `tokens` keyrir grunninn og síðan viðbótina, `css` sameinar tvær framlagningar, og `icons` keyrir báða.
+Hooks á sama stigi samsetjast: `tokens` keyrir grunninn og síðan viðbótina, `css` sameinar tvær framlagningar, og `icons` keyrir báða.
 
-## Staðfesta úttak viðbótarinnar
+## Staðfesta útgang viðbótarinnar
 
-Keyrðu sameiginlegar "drift" athuganir frá `@pantoken/utils` yfir eigið úttak viðbótarinnar í prófunum hennar, svo stafsetningarvilla eða endurnefnd token bilar hratt og staðbundið:
+Keyrðu sameiginlegar drift-prófanir frá `@pantoken/utils` yfir útgang viðbótarinnar í prófi hennar, svo stafsetningarvilla eða endurnefndur token detekti og bregðist hratt og staðbundið:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -49,14 +49,28 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## Innbyggðar viðbætur
+## Innbyggðu viðbæturnar
 
-- `@pantoken/plugin-simple-icons` — merkir tákn frá simple-icons sem icon tokens.
-- `@pantoken/plugin-logos` — Instructure vöruheildir sem SVG, data URI og `--instui-logo-*`
-  image tokens.
+- `@pantoken/plugin-simple-icons` — merkjagjöf (branding) fyrir tákn úr simple-icons, skráð sem icon-tokens.
+- `@pantoken/plugin-lucide-lab` — Lucide Lab tákn, skráð sem `--instui-icon-*` image-tokens.
+- `@pantoken/plugin-logos` — Instructure vörumerkjamerki sem SVG, data-URI og `--instui-logo-*`
+  image-tokens.
 - `@pantoken/plugin-prune-custom-props` — PostCSS-viðbót (ekki pantoken-viðbót) sem fjarlægir
-  ónotaðar custom properties úr stílblaði.
+  ónotaðar sérsniðnar eigindir úr stílblaði.
 
-Nokkur atriði sem áður voru viðbætur fylgja nú `@pantoken/components`, þar sem margar íhlutir þurfa þau strax úr kassanum: hæðarskuggar (`--instui-elevation-*`, í `components.css`), fokus-útlínuhringurinn (í `base.css` — hver sem er með fókus fær hann þegar pantoken á síðuna), og Instructure vörumerkjafontarnir (Atkinson Hyperlegible Next: `base.css` beitir `--instui-font-family-base`; valkvætt `@pantoken/components/fonts.css` hleður `@font-face` woff2-skrám).
+Lucide Lab skrásetningin má hlaða línulega (lazily), og síðan senda til samstillts token-hook:
 
-Sjá [API heimildina](/api/) fyrir útflutning hvers viðbótar.
+```ts
+import { buildTokens } from "@pantoken/core/build";
+import { defaultRegistry, lucideLab } from "@pantoken/plugin-lucide-lab";
+
+const registry = await defaultRegistry();
+buildTokens({
+  theme: "rebrand",
+  plugins: [lucideLab({ registry, names: ["burger", "at-sign-circle"] })],
+});
+```
+
+Nokkur atriði sem áður voru viðbætur eru nú send í `@pantoken/components`, þar sem svo margir hlutar þurfa þau tilbúin: hæðarskuggar (elevation) (`--instui-elevation-*`, í `components.css`), focus-outline hringurinn (í `base.css` — hver sem er sem tekur við fókus fær hann þegar pantoken á síðuna), og Instructure vörumerkjafontarnir (Atkinson Hyperlegible Next: `base.css` beitir `--instui-font-family-base`; valfrjálsa `@pantoken/components/fonts.css` hleður `@font-face` woff2-skrám).
+
+Sjáðu [API tilvísunina](/api/) fyrir útflutning hvers plugins.

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-18 00:13+0000\n"
+"PO-Revision-Date: 2026-09-23 03:50+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -9,961 +9,997 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: und\n"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#description
 #, no-c-format
 msgctxt "docs.chrome:description"
 msgid "Instructure design tokens and icons, reshaped for every platform and framework."
 msgstr "Instructure 的设计代币和图标，针对每个平台和框架重新塑形。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#nav.guide
 #, no-c-format
 msgctxt "docs.chrome:nav.guide"
 msgid "Guide"
 msgstr "指南"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#nav.css
 #, no-c-format
 msgctxt "docs.chrome:nav.css"
 msgid "CSS"
 msgstr "CSS"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#nav.api
 #, no-c-format
 msgctxt "docs.chrome:nav.api"
 msgid "API"
 msgstr "API"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.intro
 #, no-c-format
 msgctxt "docs.chrome:sidebar.intro"
 msgid "Introduction"
 msgstr "介绍"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.guides
 #, no-c-format
 msgctxt "docs.chrome:sidebar.guides"
 msgid "Guides"
 msgstr "指南"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.utilities
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:sidebar.utilities"
 msgid "Utilities"
 msgstr "实用工具"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.gettingStarted
 #, no-c-format
 msgctxt "docs.chrome:sidebar.gettingStarted"
 msgid "Getting started"
 msgstr "入门"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.architecture
 #, no-c-format
 msgctxt "docs.chrome:sidebar.architecture"
 msgid "Architecture"
 msgstr "架构"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.components
 #, no-c-format
 msgctxt "docs.chrome:sidebar.components"
 msgid "Components"
 msgstr "组件"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.cdn
 #, no-c-format
 msgctxt "docs.chrome:sidebar.cdn"
 msgid "CDN & distribution"
 msgstr "CDN 与分发"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.cdnPicker
 #, no-c-format
 msgctxt "docs.chrome:sidebar.cdnPicker"
 msgid "CDN picker"
 msgstr "CDN 选择器"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.registry
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:sidebar.registry"
 msgid "shadcn/ui Registry"
 msgstr "注册表"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.agentTools
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:sidebar.agentTools"
 msgid "Agent Tools"
 msgstr "工具"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.canvasRce
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:sidebar.canvasRce"
+msgid "Canvas RCE"
+msgstr "Canvas"
+
+#: docs/.vitepress/i18n.json#sidebar.cli
 #, no-c-format
 msgctxt "docs.chrome:sidebar.cli"
 msgid "The pantoken CLI"
 msgstr "pantoken CLI"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.plugins
 #, no-c-format
 msgctxt "docs.chrome:sidebar.plugins"
 msgid "Plugins"
 msgstr "插件"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.generated
 #, no-c-format
 msgctxt "docs.chrome:sidebar.generated"
 msgid "Generated output"
 msgstr "生成的输出"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.api
 #, no-c-format
 msgctxt "docs.chrome:sidebar.api"
 msgid "API reference"
 msgstr "API 参考"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.css
 #, no-c-format
 msgctxt "docs.chrome:sidebar.css"
 msgid "CSS"
 msgstr "CSS"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.ai
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.ai"
 msgid "AI"
 msgstr "AI"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.bundlers
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.bundlers"
 msgid "Bundlers"
 msgstr "打包工具"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.design
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.design"
 msgid "Design"
 msgstr "设计"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.formats
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.formats"
 msgid "Formats"
 msgstr "格式"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.packages
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.packages"
 msgid "Packages"
 msgstr "包"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.platforms
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.platforms"
 msgid "Platforms"
 msgstr "平台"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.plugins
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.plugins"
 msgid "Plugins"
 msgstr "插件"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.renderers
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.renderers"
 msgid "Renderers"
 msgstr "渲染器"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.tools
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.tools"
 msgid "Tools"
 msgstr "工具"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#platformPicker.label
 #, no-c-format
 msgctxt "docs.chrome:platformPicker.label"
 msgid "Choose a platform"
 msgstr "选择平台"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiOverview
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiOverview"
 msgid "Overview"
 msgstr "概览"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#editText
 #, no-c-format
 msgctxt "docs.chrome:editText"
 msgid "Edit this page on GitHub"
 msgstr "在 GitHub 上编辑此页面"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#demoTabs.result
 #, no-c-format
 msgctxt "docs.chrome:demoTabs.result"
 msgid "Result"
 msgstr "结果"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#demoTabs.html
 #, no-c-format
 msgctxt "docs.chrome:demoTabs.html"
 msgid "HTML"
 msgstr "HTML"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#demoTabs.css
 #, no-c-format
 msgctxt "docs.chrome:demoTabs.css"
 msgid "CSS"
 msgstr "CSS"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#demoTabs.js
 #, no-c-format
 msgctxt "docs.chrome:demoTabs.js"
 msgid "JS"
 msgstr "JS"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#themeSelector.label
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.label"
 msgid "Select theme"
 msgstr "选择主题"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#themeSelector.rebrand
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.rebrand"
 msgid "Next gen"
 msgstr "Next gen"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#themeSelector.canvas
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.canvas"
 msgid "Canvas"
 msgstr "Canvas"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#themeSelector.canvasHighContrast
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.canvasHighContrast"
 msgid "Canvas high contrast"
 msgstr "Canvas high contrast"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.themeLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeLabel"
 msgid "Theme"
 msgstr "主题"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.themeRebrand
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeRebrand"
 msgid "Next gen"
 msgstr "Next gen"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.themeCanvas
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeCanvas"
 msgid "Canvas"
 msgstr "Canvas"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.themeCanvasHighContrast
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeCanvasHighContrast"
 msgid "Canvas high contrast"
 msgstr "Canvas high contrast"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.modeLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.modeLabel"
 msgid "Rebrand mode"
 msgstr "重塑模式"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.modeAdaptive
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.modeAdaptive"
 msgid "Light + dark"
 msgstr "浅色 + 深色"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.modeLightOnly
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.modeLightOnly"
 msgid "Light only"
 msgstr "仅浅色"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.includeDarkMode
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.includeDarkMode"
 msgid "Include dark mode"
 msgstr "包含深色模式"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.providerLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.providerLabel"
 msgid "CDN provider"
 msgstr "CDN 提供商"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.componentsLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.componentsLabel"
 msgid "Components"
 msgstr "组件"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.allComponents
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.allComponents"
 msgid "All components"
 msgstr "所有组件"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.formatLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.formatLabel"
 msgid "Output"
 msgstr "输出"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.formatLink
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.formatLink"
 msgid "<link>"
 msgstr "<link>"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.formatImport
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.formatImport"
 msgid "@import"
 msgstr "@import"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.includeBase
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.includeBase"
 msgid "Base"
 msgstr "基础"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.baseInfoLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfoLabel"
 msgid "About the base reset"
 msgstr "关于基础重置"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.baseInfo
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfo"
 msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
 msgstr "可选的全局重置：box-sizing、页面表面、基础文本颜色和字体、color-scheme，以及链接默认样式。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.includeUtilities
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.includeUtilities"
 msgid "Utilities"
 msgstr "实用工具"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.utilitiesInfoLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfoLabel"
 msgid "About the utility classes"
 msgstr "关于实用类"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.utilitiesInfo
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
 msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
 msgstr "一组可选的跨轴类：View 原语、基于代币刻度的间距，以及语义颜色覆盖。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.copy
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.copy"
 msgid "Copy"
 msgstr "复制"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.copied
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.copied"
 msgid "Copied"
 msgstr "已复制"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.empty
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.empty"
 msgid "Select one or more components to build a URL."
 msgstr "选择一个或多个组件以构建 URL。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.fontsNote
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.fontsNote"
 msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
 msgstr "字体单独加载 — 需要字体时，请向 @pantoken/components/fonts.css 添加一个 <link>。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.iconsNote
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.iconsNote"
 msgid "component-icons.css is included because a selected component uses icons."
 msgstr "component-icons.css 已包含，因为所选组件使用了图标。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.copied
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.copied"
 msgid "Copied"
 msgstr "已复制"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.cliInstall
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.cliInstall"
 msgid "CLI install"
 msgstr "CLI 安装"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.aiInstall
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.aiInstall"
 msgid "AI install"
 msgstr "AI 安装"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.pauseAnimation
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.pauseAnimation"
 msgid "Pause animation"
 msgstr "暂停动画"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.playAnimation
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.playAnimation"
 msgid "Resume animation"
 msgstr "恢复动画"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.agentPrompt
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
 msgid "\"Set up pantoken in this project using create.pantoken.app/SKILL.md.\""
 msgstr "\"在此项目中使用 create.pantoken.app/SKILL.md 设置 pantoken (github.com/thedannywahl/pantoken)。\""
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.title
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.title"
 msgid "shadcn/ui Registry"
 msgstr "注册表"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.subtitle
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.subtitle"
 msgid "Compatible components, themes, and behavior hooks conforming to the shadcn/ui registry specification. Add items directly to your shadcn/ui project via CLI."
 msgstr "兼容的组件、主题和行为钩子，符合 shadcn/ui 注册表规范。通过 CLI 将条目直接添加到你的 shadcn/ui 项目中。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.tabAll
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.tabAll"
 msgid "All"
 msgstr "全部"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.tabComponents
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.tabComponents"
 msgid "Components"
 msgstr "组件"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.tabThemes
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.tabThemes"
 msgid "Themes"
 msgstr "主题"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.tabHooks
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.tabHooks"
 msgid "Hooks"
 msgstr "钩子"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.searchPlaceholder
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.searchPlaceholder"
 msgid "Filter components, themes, hooks…"
 msgstr "筛选组件、主题、钩子…"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.cliLabel
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.cliLabel"
 msgid "CLI:"
 msgstr "CLI:"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.copy
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.copy"
 msgid "Copy"
 msgstr "复制"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.copied
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.copied"
 msgid "Copied"
 msgstr "已复制"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.depsLabel
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.depsLabel"
 msgid "Deps:"
 msgstr "依赖:"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.previewDetails
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.previewDetails"
 msgid "Preview details"
 msgstr "预览详情"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.previewTokens
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.previewTokens"
 msgid "Token mappings (light)"
 msgstr "令牌映射 (light)"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.viewJson
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.viewJson"
 msgid "JSON"
 msgstr "JSON"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.emptyTitle
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.emptyTitle"
 msgid "No registry items match your search."
 msgstr "没有注册表项目匹配你的搜索。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.emptyReset
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.emptyReset"
 msgid "Reset Filters"
 msgstr "重置搜索"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#canvasRce.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:canvasRce.title"
+msgid "Canvas RCE"
+msgstr "Canvas"
+
+#: docs/.vitepress/i18n.json#canvasRce.description
+#, no-c-format
+msgctxt "docs.chrome:canvasRce.description"
+msgid "A live preview of pantoken's Canvas LMS Rich Content Editor template: a TinyMCE-based editor with starter layouts, a live preview pane, and hand-editable theme.css/theme.js output."
+msgstr "pantoken 的 Canvas LMS 富内容编辑器模板的实时预览：基于 TinyMCE 的编辑器，包含入门布局、实时预览面板，以及可手工编辑的 theme.css/theme.js 输出。"
+
+#: docs/.vitepress/i18n.json#canvasRce.openInNewTab
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:canvasRce.openInNewTab"
+msgid "Open in a new tab"
+msgstr "在 {{agent}} 中打开"
+
+#: docs/.vitepress/i18n.json#canvasRce.runLocally
+#, no-c-format
+msgctxt "docs.chrome:canvasRce.runLocally"
+msgid "Run locally: npx create-pantoken-app canvas-theme-editor"
+msgstr "本地运行: npx create-pantoken-app canvas-theme-editor"
+
+#: docs/.vitepress/i18n.json#agentTools.title
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.title"
 msgid "Agent Tools"
 msgstr "工具"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.subtitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.subtitle"
 msgid "Pick a Pantoken agent workflow, generate the command or launch URL, and give your assistant the files it needs to stop guessing."
 msgstr "选择一个 Pantoken 代理工作流，生成命令或启动 URL，并向你的助手提供所需文件，避免猜测。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.providerLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.providerLabel"
 msgid "Agent"
 msgstr "代理"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.packageManagerLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.packageManagerLabel"
 msgid "Runner"
 msgstr "运行器"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.copy
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.copy"
 msgid "Copy"
 msgstr "复制"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.download
 #, no-c-format
 msgctxt "docs.chrome:agentTools.download"
 msgid "Download"
 msgstr "下载"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.copied
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.copied"
 msgid "Copied"
 msgstr "已复制"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.open
 #, no-c-format
 msgctxt "docs.chrome:agentTools.open"
 msgid "Open"
 msgstr "打开"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.openInAgent
 #, no-c-format
 msgctxt "docs.chrome:agentTools.openInAgent"
 msgid "Open in {{agent}}"
 msgstr "在 {{agent}} 中打开"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.openUnavailable
 #, no-c-format
 msgctxt "docs.chrome:agentTools.openUnavailable"
 msgid "This agent does not publish a stable launch URL. Use Copy for the CLI prompt."
 msgstr "该代理未发布稳定的启动 URL。请使用“复制”获取 CLI 提示。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.tabBootstrap
 #, no-c-format
 msgctxt "docs.chrome:agentTools.tabBootstrap"
 msgid "Bootstrap"
 msgstr "引导"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.tabInstall
 #, no-c-format
 msgctxt "docs.chrome:agentTools.tabInstall"
 msgid "Install assets"
 msgstr "安装资源"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.tabRegistry
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.tabRegistry"
 msgid "Registry"
 msgstr "注册表"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.tabDocs
 #, no-c-format
 msgctxt "docs.chrome:agentTools.tabDocs"
 msgid "Agent docs"
 msgstr "代理文档"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.bootstrapTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.bootstrapTitle"
 msgid "Bootstrap a project"
 msgstr "引导项目"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.bootstrapDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.bootstrapDescription"
 msgid "Scaffold a starter with Pantoken wired in and install the repo-local agent assets in the same pass."
 msgstr "搭建一个已集成 Pantoken 的入门脚手架，并在同一次操作中安装仓库本地的代理资源。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.platformLabel
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.platformLabel"
 msgid "Platform"
 msgstr "平台"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.directoryLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.directoryLabel"
 msgid "Directory"
 msgstr "目录"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.installTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installTitle"
 msgid "Add agent guidance to a repo"
 msgstr "向仓库添加代理指导"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.installDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installDescription"
 msgid "Install AGENTS.md, llms.txt, editor rules, and Claude skills into an existing project that already uses or is about to use Pantoken."
 msgstr "在已使用或将要使用 Pantoken 的现有项目中安装 AGENTS.md、llms.txt、编辑器规则和 Claude 技能。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.toolLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.toolLabel"
 msgid "Asset set"
 msgstr "资源集"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.writesLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.writesLabel"
 msgid "Writes"
 msgstr "写入"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryTitle
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.registryTitle"
 msgid "Work with the shadcn/ui registry"
 msgstr "注册表"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryDescription"
 msgid "Point an agent at Pantoken's indexed registry so it can search, inspect, and add CSS-backed registry items instead of inventing package names."
 msgstr "将代理指向 Pantoken 的索引注册表，以便它可以搜索、检查并添加以 CSS 为后端的注册表条目，而不是随意发明包名。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryActionLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryActionLabel"
 msgid "Action"
 msgstr "操作"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryItemLabel
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.registryItemLabel"
 msgid "Registry item"
 msgstr "注册表"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.docsTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsTitle"
 msgid "Agent-readable documentation"
 msgstr "代理可读文档"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.docsDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsDescription"
 msgid "Pantoken publishes fetchable documentation and manifests for assistants that can browse URLs or read raw Markdown."
 msgstr "Pantoken 发布可抓取的文档和清单，供能浏览 URL 或读取原始 Markdown 的助手使用。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.installPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installPrompt"
 msgid "Install Pantoken agent guidance in this repository. Use {{command}}, then summarize the files written and when future agents should read them."
 msgstr "在此仓库中安装 Pantoken 代理指导。使用 {{command}}，然后总结写入的文件以及未来代理何时应读取它们。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryPrompt"
 msgid "Use the Pantoken shadcn registry for this project. Fetch https://pantoken.app/r/registry.json, then run {{command}} if the project uses shadcn or has components.json. Registry items install CSS and metadata, not React components."
 msgstr "为此项目使用 Pantoken 的 shadcn 注册表。先获取 https://pantoken.app/r/registry.json，如果项目使用 shadcn 或包含 components.json，则运行 {{command}}。注册表条目安装的是 CSS 和元数据，不是 React 组件。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.docsPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsPrompt"
 msgid "Fetch https://pantoken.app/llms.txt first. When a page is needed, prefer its raw Markdown URL by adding .md to the clean docs path, and use Pantoken manifests for component capabilities, CDN plugins, demos, and registry items."
 msgstr "先获取 https://pantoken.app/llms.txt。当需要页面时，优先使用其原始 Markdown URL（在干净的文档路径后添加 .md），并使用 Pantoken 清单来获取组件能力、CDN 插件、演示和注册表条目。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.docsCommand
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsCommand"
 msgid "Fetch https://pantoken.app/llms.txt, then follow links to the pages and manifests relevant to this task."
 msgstr "获取 https://pantoken.app/llms.txt，然后按照链接访问与此任务相关的页面和清单。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.createDomainTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.createDomainTitle"
 msgid "Bootstrap skill URL"
 msgstr "引导技能 URL"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.createDomainDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.createDomainDescription"
 msgid "The short public URL any URL-capable agent can fetch to set up Pantoken."
 msgstr "任何支持 URL 的代理都可以抓取的简短公共 URL，用于设置 Pantoken。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.llmsTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsTitle"
 msgid "Site index"
 msgstr "站点索引"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.llmsDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsDescription"
 msgid "Canonical English documentation index for agents and LLM-aware clients."
 msgstr "面向代理和具备 LLM 感知的客户端的权威英文文档索引。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.llmsFullTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsFullTitle"
 msgid "Full site context"
 msgstr "完整站点上下文"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.llmsFullDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsFullDescription"
 msgid "Expanded LLM context for agents that need the complete documentation set."
 msgstr "需要完整文档集的代理的扩展 LLM 上下文。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.pageMdTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.pageMdTitle"
 msgid "Raw Markdown pages"
 msgstr "原始 Markdown 页面"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.pageMdDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.pageMdDescription"
 msgid "Every docs HTML page advertises a raw Markdown alternate link."
 msgstr "每个文档 HTML 页面都声明了一个原始 Markdown 的替代链接。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryManifestTitle
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.registryManifestTitle"
 msgid "Registry manifest"
 msgstr "注册表"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryManifestDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryManifestDescription"
 msgid "shadcn-compatible index of Pantoken CSS registry items."
 msgstr "与 shadcn 兼容的 Pantoken CSS 注册表条目的索引。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.capabilitiesTitle
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.capabilitiesTitle"
 msgid "Component capabilities"
 msgstr "组件"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.capabilitiesDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.capabilitiesDescription"
 msgid "Machine-readable map of component CSS, JavaScript, icon, and dependency needs."
 msgstr "组件 CSS、JavaScript、图标和依赖需求的机器可读映射。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.pluginsTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.pluginsTitle"
 msgid "CDN plugin manifest"
 msgstr "CDN 插件清单"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.pluginsDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.pluginsDescription"
 msgid "Plugin styles available to CDN and standalone mockup workflows."
 msgstr "可用于 CDN 和独立原型工作流的插件样式。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.apiCatalogTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.apiCatalogTitle"
 msgid "API catalog"
 msgstr "API 目录"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.apiCatalogDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.apiCatalogDescription"
 msgid "Machine-readable linkset for Pantoken's agent-readable resources."
 msgstr "面向代理可读资源的机器可读链接集。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.vscodeCustomDataTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.vscodeCustomDataTitle"
 msgid "VS Code custom data"
 msgstr "VS Code 自定义数据"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.vscodeCustomDataDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.vscodeCustomDataDescription"
 msgid "HTML classes and CSS custom properties for VS Code IntelliSense."
 msgstr "供 VS Code 智能感知使用的 HTML 类和 CSS 自定义属性。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.outlineLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.outlineLabel"
 msgid "On this page"
 msgstr "本页目录"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.docFooterPrev
 #, no-c-format
 msgctxt "docs.chrome:chrome.docFooterPrev"
 msgid "Previous page"
 msgstr "上一页"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.docFooterNext
 #, no-c-format
 msgctxt "docs.chrome:chrome.docFooterNext"
 msgid "Next page"
 msgstr "下一页"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.darkModeSwitchLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.darkModeSwitchLabel"
 msgid "Appearance"
 msgstr "外观"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.lightModeSwitchTitle
 #, no-c-format
 msgctxt "docs.chrome:chrome.lightModeSwitchTitle"
 msgid "Switch to light theme"
 msgstr "切换到浅色主题"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.darkModeSwitchTitle
 #, no-c-format
 msgctxt "docs.chrome:chrome.darkModeSwitchTitle"
 msgid "Switch to dark theme"
 msgstr "切换到深色主题"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.sidebarMenuLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.sidebarMenuLabel"
 msgid "Menu"
 msgstr "菜单"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.returnToTopLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.returnToTopLabel"
 msgid "Return to top"
 msgstr "返回顶部"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.langMenuLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.langMenuLabel"
 msgid "Change language"
 msgstr "切换语言"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.sidebarToggleLabel
+#, no-c-format
+msgctxt "docs.chrome:chrome.sidebarToggleLabel"
+msgid "Toggle sidebar"
+msgstr "切换侧边栏"
+
+#: docs/.vitepress/i18n.json#chrome.lastUpdatedText
 #, no-c-format
 msgctxt "docs.chrome:chrome.lastUpdatedText"
 msgid "Last updated"
 msgstr "最近更新"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.agentShellPrompt
 #, no-c-format
 msgctxt "docs.chrome:chrome.agentShellPrompt"
 msgid "What would you like to build today?"
 msgstr "今天想要构建什么？"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.notFound.code
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.code"
 msgid "404"
 msgstr "404"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.notFound.title
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.title"
 msgid "PAGE NOT FOUND"
 msgstr "页面未找到"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.notFound.quote
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.quote"
 msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
 msgstr "但如果你不改变方向，并且继续前进，你可能会到达你正朝着的地方。"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.notFound.linkLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.linkLabel"
 msgid "go to home"
 msgstr "转到首页"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.notFound.linkText
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.linkText"
 msgid "Take me home"
 msgstr "带我回家"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.buttonText
 #, no-c-format
 msgctxt "docs.chrome:search.buttonText"
 msgid "Search"
 msgstr "搜索"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.displayDetails
 #, no-c-format
 msgctxt "docs.chrome:search.displayDetails"
 msgid "Display detailed list"
 msgstr "显示详细列表"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.resetButtonTitle
 #, no-c-format
 msgctxt "docs.chrome:search.resetButtonTitle"
 msgid "Reset search"
 msgstr "重置搜索"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.backButtonTitle
 #, no-c-format
 msgctxt "docs.chrome:search.backButtonTitle"
 msgid "Close search"
 msgstr "关闭搜索"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.noResultsText
 #, no-c-format
 msgctxt "docs.chrome:search.noResultsText"
 msgid "No results for"
 msgstr "没有结果："
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.footerSelect
 #, no-c-format
 msgctxt "docs.chrome:search.footerSelect"
 msgid "to select"
 msgstr "选择"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.footerNavigate
 #, no-c-format
 msgctxt "docs.chrome:search.footerNavigate"
 msgid "to navigate"
 msgstr "导航"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.footerClose
 #, no-c-format
 msgctxt "docs.chrome:search.footerClose"
 msgid "to close"

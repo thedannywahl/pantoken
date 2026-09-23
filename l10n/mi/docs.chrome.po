@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-18 00:09+0000\n"
+"PO-Revision-Date: 2026-09-23 03:46+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -9,961 +9,997 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: und\n"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#description
 #, no-c-format
 msgctxt "docs.chrome:description"
 msgid "Instructure design tokens and icons, reshaped for every platform and framework."
 msgstr "Ngā tohu hoahoa me ngā tohu ā-ata a Instructure, kua āhua hurihia mō ia papaaho me ia anga."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#nav.guide
 #, no-c-format
 msgctxt "docs.chrome:nav.guide"
 msgid "Guide"
 msgstr "Aratohu"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#nav.css
 #, no-c-format
 msgctxt "docs.chrome:nav.css"
 msgid "CSS"
 msgstr "CSS"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#nav.api
 #, no-c-format
 msgctxt "docs.chrome:nav.api"
 msgid "API"
 msgstr "API"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.intro
 #, no-c-format
 msgctxt "docs.chrome:sidebar.intro"
 msgid "Introduction"
 msgstr "Kupu Whakataki"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.guides
 #, no-c-format
 msgctxt "docs.chrome:sidebar.guides"
 msgid "Guides"
 msgstr "Ngā Aratohu"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.utilities
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:sidebar.utilities"
 msgid "Utilities"
 msgstr "Āwhina"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.gettingStarted
 #, no-c-format
 msgctxt "docs.chrome:sidebar.gettingStarted"
 msgid "Getting started"
 msgstr "Tīmata"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.architecture
 #, no-c-format
 msgctxt "docs.chrome:sidebar.architecture"
 msgid "Architecture"
 msgstr "Hanga"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.components
 #, no-c-format
 msgctxt "docs.chrome:sidebar.components"
 msgid "Components"
 msgstr "Rauemi"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.cdn
 #, no-c-format
 msgctxt "docs.chrome:sidebar.cdn"
 msgid "CDN & distribution"
 msgstr "CDN me te tohatoha"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.cdnPicker
 #, no-c-format
 msgctxt "docs.chrome:sidebar.cdnPicker"
 msgid "CDN picker"
 msgstr "Kaiwhiri CDN"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.registry
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:sidebar.registry"
 msgid "shadcn/ui Registry"
 msgstr "Rēhita"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.agentTools
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:sidebar.agentTools"
 msgid "Agent Tools"
 msgstr "Taputapu"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.canvasRce
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:sidebar.canvasRce"
+msgid "Canvas RCE"
+msgstr "Canvas"
+
+#: docs/.vitepress/i18n.json#sidebar.cli
 #, no-c-format
 msgctxt "docs.chrome:sidebar.cli"
 msgid "The pantoken CLI"
 msgstr "Te CLI pantoken"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.plugins
 #, no-c-format
 msgctxt "docs.chrome:sidebar.plugins"
 msgid "Plugins"
 msgstr "Ngā mono"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.generated
 #, no-c-format
 msgctxt "docs.chrome:sidebar.generated"
 msgid "Generated output"
 msgstr "Putanga i hangaia"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.api
 #, no-c-format
 msgctxt "docs.chrome:sidebar.api"
 msgid "API reference"
 msgstr "Tohu API"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.css
 #, no-c-format
 msgctxt "docs.chrome:sidebar.css"
 msgid "CSS"
 msgstr "CSS"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.ai
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.ai"
 msgid "AI"
 msgstr "AI"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.bundlers
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.bundlers"
 msgid "Bundlers"
 msgstr "Kaihipi"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.design
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.design"
 msgid "Design"
 msgstr "Hoahoa"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.formats
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.formats"
 msgid "Formats"
 msgstr "Hōmitanga"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.packages
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.packages"
 msgid "Packages"
 msgstr "Kohinga"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.platforms
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.platforms"
 msgid "Platforms"
 msgstr "Pokapū"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.plugins
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.plugins"
 msgid "Plugins"
 msgstr "Ngā mono"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.renderers
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.renderers"
 msgid "Renderers"
 msgstr "Kaihōhonu"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiGroups.tools
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiGroups.tools"
 msgid "Tools"
 msgstr "Taputapu"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#platformPicker.label
 #, no-c-format
 msgctxt "docs.chrome:platformPicker.label"
 msgid "Choose a platform"
 msgstr "Kōwhiria he papanga"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#sidebar.apiOverview
 #, no-c-format
 msgctxt "docs.chrome:sidebar.apiOverview"
 msgid "Overview"
 msgstr "Rāritenga"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#editText
 #, no-c-format
 msgctxt "docs.chrome:editText"
 msgid "Edit this page on GitHub"
 msgstr "Whakatika i tēnei whārangi i GitHub"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#demoTabs.result
 #, no-c-format
 msgctxt "docs.chrome:demoTabs.result"
 msgid "Result"
 msgstr "Hua"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#demoTabs.html
 #, no-c-format
 msgctxt "docs.chrome:demoTabs.html"
 msgid "HTML"
 msgstr "HTML"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#demoTabs.css
 #, no-c-format
 msgctxt "docs.chrome:demoTabs.css"
 msgid "CSS"
 msgstr "CSS"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#demoTabs.js
 #, no-c-format
 msgctxt "docs.chrome:demoTabs.js"
 msgid "JS"
 msgstr "JS"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#themeSelector.label
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.label"
 msgid "Select theme"
 msgstr "Tīpako kaupapa tae"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#themeSelector.rebrand
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.rebrand"
 msgid "Next gen"
 msgstr "Next gen"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#themeSelector.canvas
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.canvas"
 msgid "Canvas"
 msgstr "Canvas"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#themeSelector.canvasHighContrast
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.canvasHighContrast"
 msgid "Canvas high contrast"
 msgstr "Canvas high contrast"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.themeLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeLabel"
 msgid "Theme"
 msgstr "Kaupapa"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.themeRebrand
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeRebrand"
 msgid "Next gen"
 msgstr "Next gen"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.themeCanvas
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeCanvas"
 msgid "Canvas"
 msgstr "Canvas"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.themeCanvasHighContrast
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeCanvasHighContrast"
 msgid "Canvas high contrast"
 msgstr "Canvas high contrast"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.modeLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.modeLabel"
 msgid "Rebrand mode"
 msgstr "Aratau whakakānga ingoa"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.modeAdaptive
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.modeAdaptive"
 msgid "Light + dark"
 msgstr "Mārama + pō"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.modeLightOnly
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.modeLightOnly"
 msgid "Light only"
 msgstr "Mārama anake"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.includeDarkMode
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.includeDarkMode"
 msgid "Include dark mode"
 msgstr "Tāpirihia te aratau pō"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.providerLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.providerLabel"
 msgid "CDN provider"
 msgstr "Kaiwhakarato CDN"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.componentsLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.componentsLabel"
 msgid "Components"
 msgstr "Rauemi"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.allComponents
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.allComponents"
 msgid "All components"
 msgstr "Ngā rauemi katoa"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.formatLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.formatLabel"
 msgid "Output"
 msgstr "Putanga"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.formatLink
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.formatLink"
 msgid "<link>"
 msgstr "<link>"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.formatImport
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.formatImport"
 msgid "@import"
 msgstr "@import"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.includeBase
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.includeBase"
 msgid "Base"
 msgstr "Takenga"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.baseInfoLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfoLabel"
 msgid "About the base reset"
 msgstr "Mō te whakatikatika taketake"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.baseInfo
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfo"
 msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
 msgstr "Te whakatikatika ā-ao whiriwhiri: box-sizing, te papamuri whārangi, tae tuhinga taketake me te momo momotuhi, color-scheme, me ngā tautuhi hono."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.includeUtilities
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.includeUtilities"
 msgid "Utilities"
 msgstr "Āwhina"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.utilitiesInfoLabel
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfoLabel"
 msgid "About the utility classes"
 msgstr "Mō ngā akonga āwhina"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.utilitiesInfo
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
 msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
 msgstr "He paparanga whakauru kōwhiri: he tūemi Tirohanga, he wāhi mō te whakatakotoranga āwhina i runga i te tōra token, me ngā whakakapi tae tūtohu."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.copy
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.copy"
 msgid "Copy"
 msgstr "Tārua"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.copied
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.copied"
 msgid "Copied"
 msgstr "Kua tāruatia"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.empty
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.empty"
 msgid "Select one or more components to build a URL."
 msgstr "Tīpakohia kotahi, kotahi atu rānei ngā rauemi hei hanga i tētahi URL."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.fontsNote
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.fontsNote"
 msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
 msgstr "Ka uta wehe ngā momotuhi — tāpirihia he <link> ki @pantoken/components/fonts.css mēnā e hiahiatia ana."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#cdnPicker.iconsNote
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.iconsNote"
 msgid "component-icons.css is included because a selected component uses icons."
 msgstr "Kei roto te component-icons.css nā te mea e whakamahi ana tētahi waahanga kua tīpakohia i ngā āta."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.copied
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.copied"
 msgid "Copied"
 msgstr "Kua tāruatia"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.cliInstall
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.cliInstall"
 msgid "CLI install"
 msgstr "Tāuta CLI"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.aiInstall
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.aiInstall"
 msgid "AI install"
 msgstr "Tāuta AI"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.pauseAnimation
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.pauseAnimation"
 msgid "Pause animation"
 msgstr "Whārepu animation"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.playAnimation
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.playAnimation"
 msgid "Resume animation"
 msgstr "Whakapārewahia te animation"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#getStartedTabs.agentPrompt
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
 msgid "\"Set up pantoken in this project using create.pantoken.app/SKILL.md.\""
 msgstr "\"Tautuhia pantoken (github.com/thedannywahl/pantoken) ki tēnei kaupapa mā create.pantoken.app/SKILL.md.\""
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.title
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.title"
 msgid "shadcn/ui Registry"
 msgstr "Rēhita"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.subtitle
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.subtitle"
 msgid "Compatible components, themes, and behavior hooks conforming to the shadcn/ui registry specification. Add items directly to your shadcn/ui project via CLI."
 msgstr "Ngā wāhanga, ngā kaupapa, me ngā hooks whanonga e hāngai ana ki te whakaritenga rehita shadcn/ui. Tāpirihia ngā tūemi ki tō kaupapa shadcn/ui mā te CLI."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.tabAll
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.tabAll"
 msgid "All"
 msgstr "Katoa"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.tabComponents
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.tabComponents"
 msgid "Components"
 msgstr "Rauemi"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.tabThemes
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.tabThemes"
 msgid "Themes"
 msgstr "Kaupapa"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.tabHooks
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.tabHooks"
 msgid "Hooks"
 msgstr "Ngā hooks"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.searchPlaceholder
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.searchPlaceholder"
 msgid "Filter components, themes, hooks…"
 msgstr "Tātari i ngā wāhanga, kaupapa, hooks…"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.cliLabel
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.cliLabel"
 msgid "CLI:"
 msgstr "CLI:"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.copy
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.copy"
 msgid "Copy"
 msgstr "Tārua"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.copied
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.copied"
 msgid "Copied"
 msgstr "Kua tāruatia"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.depsLabel
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.depsLabel"
 msgid "Deps:"
 msgstr "Ngā whakawhirinaki:"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.previewDetails
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.previewDetails"
 msgid "Preview details"
 msgstr "Arokite taipitopito"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.previewTokens
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.previewTokens"
 msgid "Token mappings (light)"
 msgstr "Ngā mapi tohu (light)"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.viewJson
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.viewJson"
 msgid "JSON"
 msgstr "JSON"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.emptyTitle
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.emptyTitle"
 msgid "No registry items match your search."
 msgstr "Kāore he tūemi rehita e ōrite ana ki tāu rapu."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#registryBrowser.emptyReset
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:registryBrowser.emptyReset"
 msgid "Reset Filters"
 msgstr "Tautuhi anō rapu"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#canvasRce.title
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:canvasRce.title"
+msgid "Canvas RCE"
+msgstr "Canvas"
+
+#: docs/.vitepress/i18n.json#canvasRce.description
+#, no-c-format
+msgctxt "docs.chrome:canvasRce.description"
+msgid "A live preview of pantoken's Canvas LMS Rich Content Editor template: a TinyMCE-based editor with starter layouts, a live preview pane, and hand-editable theme.css/theme.js output."
+msgstr "He whakaaturanga ora o te tauira Canvas LMS Rich Content Editor o pantoken: he etita i runga i te TinyMCE me ngā whakarōpūtanga tīmata, he pane whakaaturanga ora, me te putanga theme.css/theme.js ka taea te whakatika ā-ringa."
+
+#: docs/.vitepress/i18n.json#canvasRce.openInNewTab
+#, fuzzy, no-c-format
+msgctxt "docs.chrome:canvasRce.openInNewTab"
+msgid "Open in a new tab"
+msgstr "Tuwhera i roto i te {{agent}}"
+
+#: docs/.vitepress/i18n.json#canvasRce.runLocally
+#, no-c-format
+msgctxt "docs.chrome:canvasRce.runLocally"
+msgid "Run locally: npx create-pantoken-app canvas-theme-editor"
+msgstr "Mahi ā-roto: npx create-pantoken-app canvas-theme-editor"
+
+#: docs/.vitepress/i18n.json#agentTools.title
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.title"
 msgid "Agent Tools"
 msgstr "Taputapu"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.subtitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.subtitle"
 msgid "Pick a Pantoken agent workflow, generate the command or launch URL, and give your assistant the files it needs to stop guessing."
 msgstr "Tīpakohia tētahi rere‑mahi kaiāgentu Pantoken, hangaia te whakahau rānei te URL whakarewa, ā, homai ki tō āwhina ngā kōnae e hiahiatia ana kia kore ai e whakapae noa."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.providerLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.providerLabel"
 msgid "Agent"
 msgstr "Kaiāgentu"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.packageManagerLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.packageManagerLabel"
 msgid "Runner"
 msgstr "Kai‑whakahaere"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.copy
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.copy"
 msgid "Copy"
 msgstr "Tārua"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.download
 #, no-c-format
 msgctxt "docs.chrome:agentTools.download"
 msgid "Download"
 msgstr "Tikiake"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.copied
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.copied"
 msgid "Copied"
 msgstr "Kua tāruatia"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.open
 #, no-c-format
 msgctxt "docs.chrome:agentTools.open"
 msgid "Open"
 msgstr "Tuwhera"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.openInAgent
 #, no-c-format
 msgctxt "docs.chrome:agentTools.openInAgent"
 msgid "Open in {{agent}}"
 msgstr "Tuwhera i roto i te {{agent}}"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.openUnavailable
 #, no-c-format
 msgctxt "docs.chrome:agentTools.openUnavailable"
 msgid "This agent does not publish a stable launch URL. Use Copy for the CLI prompt."
 msgstr "Kāore tēnei kaiāgentu e whakaputa ana i tētahi URL whakarewa pumau. Whakamahia te Tārua mō te whakatūpato CLI."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.tabBootstrap
 #, no-c-format
 msgctxt "docs.chrome:agentTools.tabBootstrap"
 msgid "Bootstrap"
 msgstr "Whakawātea"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.tabInstall
 #, no-c-format
 msgctxt "docs.chrome:agentTools.tabInstall"
 msgid "Install assets"
 msgstr "Tāuta āwhina"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.tabRegistry
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.tabRegistry"
 msgid "Registry"
 msgstr "Rēhita"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.tabDocs
 #, no-c-format
 msgctxt "docs.chrome:agentTools.tabDocs"
 msgid "Agent docs"
 msgstr "Tuhinga kaiāgentu"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.bootstrapTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.bootstrapTitle"
 msgid "Bootstrap a project"
 msgstr "Whakawātea he kaupapa"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.bootstrapDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.bootstrapDescription"
 msgid "Scaffold a starter with Pantoken wired in and install the repo-local agent assets in the same pass."
 msgstr "Whakaritea he tīmata me te hononga Pantoken kua tautuhia, ā, tāuta ngā rawa kaiāgentu o te repo i taua tukanga kotahi."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.platformLabel
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.platformLabel"
 msgid "Platform"
 msgstr "Pokapū"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.directoryLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.directoryLabel"
 msgid "Directory"
 msgstr "Kōpaki"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.installTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installTitle"
 msgid "Add agent guidance to a repo"
 msgstr "Tāpiri aratohu kaiāgentu ki tētahi repo"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.installDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installDescription"
 msgid "Install AGENTS.md, llms.txt, editor rules, and Claude skills into an existing project that already uses or is about to use Pantoken."
 msgstr "Tāutahia te AGENTS.md, llms.txt, ture etita, me ngā pūkenga Claude ki roto i tētahi kaupapa kei te whakamahi rānei, kei te kōwhiri rānei ki te whakamahi i Pantoken."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.toolLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.toolLabel"
 msgid "Asset set"
 msgstr "Kōpaki rawa"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.writesLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.writesLabel"
 msgid "Writes"
 msgstr "Tuhia"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryTitle
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.registryTitle"
 msgid "Work with the shadcn/ui registry"
 msgstr "Rēhita"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryDescription"
 msgid "Point an agent at Pantoken's indexed registry so it can search, inspect, and add CSS-backed registry items instead of inventing package names."
 msgstr "Arahina tētahi kaiāgentu ki te rēhita whai tohu a Pantoken kia taea ai te rapu, te tirotiro, me te tāpiri i ngā āhuatanga rēhita ā‑CSS, kaua ki te waihanga ingoa mō ngā mōkī."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryActionLabel
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryActionLabel"
 msgid "Action"
 msgstr "Mahi"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryItemLabel
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.registryItemLabel"
 msgid "Registry item"
 msgstr "Rēhita"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.docsTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsTitle"
 msgid "Agent-readable documentation"
 msgstr "Tuhinga tuhituhi e pānuihia ana e te kaiāgentu"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.docsDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsDescription"
 msgid "Pantoken publishes fetchable documentation and manifests for assistants that can browse URLs or read raw Markdown."
 msgstr "Ka whakaputaina e Pantoken he tuhinga me ngā manifest e taea te tiki mā te āwhina e pānui ana i ngā URL, i te raw Markdown rānei."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.installPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installPrompt"
 msgid "Install Pantoken agent guidance in this repository. Use {{command}}, then summarize the files written and when future agents should read them."
 msgstr "Tāuta ngā aratohu kaiāgentu Pantoken i tēnei putunga. Whakamahia te {{command}}, ā, whakaahuatia ngā kōnae kua tuhia me te wā e tika ana kia pānuitia e ngā kaiāgentu ā muri ake."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryPrompt"
 msgid "Use the Pantoken shadcn registry for this project. Fetch https://pantoken.app/r/registry.json, then run {{command}} if the project uses shadcn or has components.json. Registry items install CSS and metadata, not React components."
 msgstr "Whakamahia te rēhita shadcn a Pantoken mō tēnei kaupapa. Tikiake https://pantoken.app/r/registry.json, ā, katahi ka whakahaere i te {{command}} mēnā ka whakamahia e te kaupapa te shadcn, ā, mēnā he components.json. Ka tāuta ngā taonga rēhita i ngā CSS me te metadata, ehara i ngā waahanga React."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.docsPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsPrompt"
 msgid "Fetch https://pantoken.app/llms.txt first. When a page is needed, prefer its raw Markdown URL by adding .md to the clean docs path, and use Pantoken manifests for component capabilities, CDN plugins, demos, and registry items."
 msgstr "Tikiake https://pantoken.app/llms.txt tuatahi. Mēnā e hiahiatia ana he whārangi, whakamahia te URL Markdown mata mā te tāpiri .md ki te ara tuhinga ma, ā, whakamahia ngā manifest a Pantoken mō ngā āheinga wahanga, ngā pūtirotiro CDN, ngā whakaaturanga, me ngā taonga rēhita."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.docsCommand
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsCommand"
 msgid "Fetch https://pantoken.app/llms.txt, then follow links to the pages and manifests relevant to this task."
 msgstr "Tikiake https://pantoken.app/llms.txt, ā, whai i ngā hononga ki ngā whārangi me ngā manifest e hāngai ana ki tēnei mahi."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.createDomainTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.createDomainTitle"
 msgid "Bootstrap skill URL"
 msgstr "URL pūkenga whakawātea"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.createDomainDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.createDomainDescription"
 msgid "The short public URL any URL-capable agent can fetch to set up Pantoken."
 msgstr "Te URL tūmatanui poto e taea e tētahi kaiāgentu katoa te tiki hei whakarite i te Pantoken."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.llmsTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsTitle"
 msgid "Site index"
 msgstr "Rārangi pae"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.llmsDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsDescription"
 msgid "Canonical English documentation index for agents and LLM-aware clients."
 msgstr "Te rārangi tuhinga Pākehā matua mō ngā kaiāgentu me ngā kiritaki e mōhio ana ki ngā LLM."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.llmsFullTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsFullTitle"
 msgid "Full site context"
 msgstr "Horopaki pae katoa"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.llmsFullDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsFullDescription"
 msgid "Expanded LLM context for agents that need the complete documentation set."
 msgstr "Horopaki LLM whānui mō ngā kaiāgentu e hiahia ana ki te huaputa katoa o ngā tuhinga."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.pageMdTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.pageMdTitle"
 msgid "Raw Markdown pages"
 msgstr "Ngā whārangi Markdown mata"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.pageMdDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.pageMdDescription"
 msgid "Every docs HTML page advertises a raw Markdown alternate link."
 msgstr "Ka pānuitia e ia whārangi HTML o ngā tuhinga he hono rerekē ki te Markdown mata."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryManifestTitle
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.registryManifestTitle"
 msgid "Registry manifest"
 msgstr "Rēhita"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.registryManifestDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryManifestDescription"
 msgid "shadcn-compatible index of Pantoken CSS registry items."
 msgstr "Tautuhinga rēhita Pantoken e hototahi ana ki shadcn mō ngā taonga CSS."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.capabilitiesTitle
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:agentTools.capabilitiesTitle"
 msgid "Component capabilities"
 msgstr "Rauemi"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.capabilitiesDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.capabilitiesDescription"
 msgid "Machine-readable map of component CSS, JavaScript, icon, and dependency needs."
 msgstr "Mahere e taea te pānuihia e mīhini mō ngā hiahia CSS, JavaScript, āhuatanga pūāhua, me ngā whakawhirinaki o ngā wahanga."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.pluginsTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.pluginsTitle"
 msgid "CDN plugin manifest"
 msgstr "Manifest pūtirotiro CDN"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.pluginsDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.pluginsDescription"
 msgid "Plugin styles available to CDN and standalone mockup workflows."
 msgstr "Ngā āhuatanga kōwhiringa e wātea ana ki ngā whakawhitinga CDN me ngā rere‑mahi whakaata motuhake."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.apiCatalogTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.apiCatalogTitle"
 msgid "API catalog"
 msgstr "Katalog API"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.apiCatalogDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.apiCatalogDescription"
 msgid "Machine-readable linkset for Pantoken's agent-readable resources."
 msgstr "Rārangi hono e taea te pānuihia e mīhini mō ngā rauemi a Pantoken e pānuitia ana e ngā kaiāgentu."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.vscodeCustomDataTitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.vscodeCustomDataTitle"
 msgid "VS Code custom data"
 msgstr "Raraunga ritenga VS Code"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#agentTools.vscodeCustomDataDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.vscodeCustomDataDescription"
 msgid "HTML classes and CSS custom properties for VS Code IntelliSense."
 msgstr "Ngā kara o HTML me ngā taonga ritenga CSS mō te IntelliSense o VS Code."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.outlineLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.outlineLabel"
 msgid "On this page"
 msgstr "I tēnei whārangi"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.docFooterPrev
 #, no-c-format
 msgctxt "docs.chrome:chrome.docFooterPrev"
 msgid "Previous page"
 msgstr "Whārangi o mua"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.docFooterNext
 #, no-c-format
 msgctxt "docs.chrome:chrome.docFooterNext"
 msgid "Next page"
 msgstr "Whārangi e whai ake nei"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.darkModeSwitchLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.darkModeSwitchLabel"
 msgid "Appearance"
 msgstr "Āhua"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.lightModeSwitchTitle
 #, no-c-format
 msgctxt "docs.chrome:chrome.lightModeSwitchTitle"
 msgid "Switch to light theme"
 msgstr "Huri ki te kaupapa mārama"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.darkModeSwitchTitle
 #, no-c-format
 msgctxt "docs.chrome:chrome.darkModeSwitchTitle"
 msgid "Switch to dark theme"
 msgstr "Huri ki te kaupapa pō"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.sidebarMenuLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.sidebarMenuLabel"
 msgid "Menu"
 msgstr "Tahua"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.returnToTopLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.returnToTopLabel"
 msgid "Return to top"
 msgstr "Hoki ki te tihi"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.langMenuLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.langMenuLabel"
 msgid "Change language"
 msgstr "Huri reo"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.sidebarToggleLabel
+#, no-c-format
+msgctxt "docs.chrome:chrome.sidebarToggleLabel"
+msgid "Toggle sidebar"
+msgstr "Tāhuri te pae taha"
+
+#: docs/.vitepress/i18n.json#chrome.lastUpdatedText
 #, no-c-format
 msgctxt "docs.chrome:chrome.lastUpdatedText"
 msgid "Last updated"
 msgstr "I whakahoutia mutunga kē"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.agentShellPrompt
 #, no-c-format
 msgctxt "docs.chrome:chrome.agentShellPrompt"
 msgid "What would you like to build today?"
 msgstr "He aha tāu e hiahia ana ki te hanga i tēnei rā?"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.notFound.code
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.code"
 msgid "404"
 msgstr "404"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.notFound.title
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.title"
 msgid "PAGE NOT FOUND"
 msgstr "KORE WHĀRANGI I TE KITENGA"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.notFound.quote
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.quote"
 msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
 msgstr "Engari mēnā kāore koe e huri i tō aronga, ā, me noho tonu koe ki te rapu, ka mutu koe i te wahi e ū ana tō haere."
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.notFound.linkLabel
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.linkLabel"
 msgid "go to home"
 msgstr "haere ki te whārangi kāinga"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#chrome.notFound.linkText
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.linkText"
 msgid "Take me home"
 msgstr "Hoki ki te kāinga"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.buttonText
 #, no-c-format
 msgctxt "docs.chrome:search.buttonText"
 msgid "Search"
 msgstr "Rapua"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.displayDetails
 #, no-c-format
 msgctxt "docs.chrome:search.displayDetails"
 msgid "Display detailed list"
 msgstr "Whakaatu rārangi taipitopito"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.resetButtonTitle
 #, no-c-format
 msgctxt "docs.chrome:search.resetButtonTitle"
 msgid "Reset search"
 msgstr "Tautuhi anō rapu"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.backButtonTitle
 #, no-c-format
 msgctxt "docs.chrome:search.backButtonTitle"
 msgid "Close search"
 msgstr "Katia te rapu"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.noResultsText
 #, no-c-format
 msgctxt "docs.chrome:search.noResultsText"
 msgid "No results for"
 msgstr "Kāore he hua mō"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.footerSelect
 #, no-c-format
 msgctxt "docs.chrome:search.footerSelect"
 msgid "to select"
 msgstr "kia tīpakohia"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.footerNavigate
 #, no-c-format
 msgctxt "docs.chrome:search.footerNavigate"
 msgid "to navigate"
 msgstr "kia whakatere"
 
-#: docs/.vitepress/i18n.json
+#: docs/.vitepress/i18n.json#search.footerClose
 #, no-c-format
 msgctxt "docs.chrome:search.footerClose"
 msgid "to close"

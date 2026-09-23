@@ -1,12 +1,12 @@
 # Πρόσθετα (Plugins)
 
-Ένα πρόσθετο pantoken επεκτείνει την έξοδο token ή CSS χωρίς να διακλαδίζει ένα πακέτο. Το φτιάχνετε με
-`definePlugin` από `@pantoken/plugin-kit`, στη συνέχεια το δίνετε σε `buildTokens` ή `toCss`.
+Ένα πρόσθετο pantoken επεκτείνει την έξοδο token ή CSS χωρίς να κάνει fork ενός πακέτου. Το φτιάχνετε με
+`definePlugin` από `@pantoken/plugin-kit`, και μετά το περνάτε σε `buildTokens` ή `toCss`.
 
-## Δημιουργία ενός πρόσθετου
+## Δημιουργία προσθέτου
 
-Δώστε στο `definePlugin` τα hooks που υλοποιείτε. Επιστρέφει ένα κανονικό πρόσθετο, με την
-επωνυμία των δυνατοτήτων που συναγάγονται από αυτά τα hooks. Ένα πρόσθετο μπορεί να επεκτείνει το IR (`tokens`, `icons`), την έξοδο CSS
+Δώστε στο `definePlugin` τα hooks που υλοποιείτε. Επιστρέφει ένα κανονικό πρόσθετο, με σήμανση των
+δυνατοτήτων που εξαχθούν από αυτά τα hooks. Ένα πρόσθετο μπορεί να επεκτείνει το IR (`tokens`, `icons`), την έξοδο CSS
 (`css`), ή και τα δύο.
 
 ```ts
@@ -22,13 +22,13 @@ export const brand = () =>
 
 ## Εγγραφή με επίγνωση δυνατοτήτων
 
-`buildTokens` και `toCss` τρέχουν `checkPlugins` πάνω από τα πρόσθετα που περνάτε. Ειδοποιεί — δεν ρίχνει ποτέ —
-όταν ένα πρόσθετο δεν έχει ταιριαστό hook για το στάδιο στο οποίο εγγράφεται, έτσι ένα πρόσθετο μόνο για token που περνάει
-σε `toCss` παραλείπεται με μια σημείωση αντί να μην κάνει τίποτα σιωπηρά.
+`buildTokens` και `toCss` εκτελούν `checkPlugins` πάνω από τα πρόσθετα που περνάτε. Προειδοποιεί — ποτέ δεν πετάει εξαίρεση —
+όταν ένα πρόσθετο δεν έχει αντίστοιχο hook για το στάδιο στο οποίο καταχωρείται, οπότε ένα πρόσθετο μόνο για tokens που περνάει
+σε `toCss` παραλείπεται με σημείωση αντί να μην κάνει τίποτα σιωπηλά.
 
-## Σύνθεση προσθέτων
+## Συνθέστε πρόσθετα
 
-Χτίστε πάνω σε άλλο πρόσθετο με `extendPlugin`, ή συγχωνεύστε ομότιμα με `mergePlugin`:
+Χτίστε πάνω σε άλλο πρόσθετο με `extendPlugin`, ή συνδυάστε ομότιμα με `mergePlugin`:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -37,13 +37,13 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Τα hooks του ίδιου σταδίου συντίθενται: `tokens` τρέχει πρώτα τη βάση και μετά το πρόσθετο, `css` συγχωνεύει τις δύο
+Τα hooks στο ίδιο στάδιο συντίθενται: `tokens` τρέχει πρώτα τη βάση και μετά το πρόσθετο, `css` συγχωνεύει τις δύο
 συνεισφορές, και `icons` τρέχει και τα δύο.
 
-## Επικύρωση της εξόδου του πρόσθετού σας
+## Επικυρώστε την έξοδο του προσθέτου σας
 
-Τρέξτε τους κοινόχρηστους ελέγχους drift από `@pantoken/utils` πάνω στην έξοδο του πρόσθετού σας στο τεστ του, ώστε ένα
-τυπογραφικό λάθος ή ένα μετονομασμένο token να αποτύχει γρήγορα και τοπικά:
+Τρέξτε τους κοινόχρηστους ελέγχους drift από `@pantoken/utils` πάνω στην έξοδο του προσθέτου σας στο test του, έτσι ώστε ένα
+τυπογραφικό λάθος ή ένα μετονομασμένο token να αποτυγχάνουν γρήγορα και τοπικά:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -56,18 +56,32 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## Τα ενσωματωμένα πρόσθετα
+## Τα παρεχόμενα πρόσθετα
 
-- `@pantoken/plugin-simple-icons` — brand icons από simple-icons, εγγεγραμμένα ως icon tokens.
-- `@pantoken/plugin-logos` — λογότυπα προϊόντων Instructure ως SVG, data URIs, και `--instui-logo-*`
+- `@pantoken/plugin-simple-icons` — εικονίδια brand από το simple-icons, καταχωρημένα ως icon tokens.
+- `@pantoken/plugin-lucide-lab` — εικονίδια Lucide Lab, καταχωρημένα ως `--instui-icon-*` image tokens.
+- `@pantoken/plugin-logos` — λογότυπα προϊόντων Instructure ως SVGs, data URIs, και `--instui-logo-*`
   image tokens.
-- `@pantoken/plugin-prune-custom-props` — ένα PostCSS plugin (όχι pantoken plugin) που αφαιρεί
-  αχρησιμοποίητες custom properties από ένα stylesheet.
+- `@pantoken/plugin-prune-custom-props` — ένα PostCSS plugin (όχι πρόσθετο pantoken) που αφαιρεί
+  μη χρησιμοποιημένες custom properties από ένα stylesheet.
 
-Μερικά πράγματα που παλαιότερα ήταν πρόσθετα τώρα αποστέλλονται στο `@pantoken/components`, αφού τόσα πολλά components τα χρειάζονται
-έτοιμα: οι σκιές ανύψωσης (`--instui-elevation-*`, στο `components.css`), το δαχτυλίδι focus-outline
-(στο `base.css` — κάθε στοιχείο που μπορεί να λάβει focus το αποκτά όταν το pantoken ελέγχει τη σελίδα), και οι γραμματοσειρές
-επωνυμίας Instructure (Atkinson Hyperlegible Next: `base.css` εφαρμόζει `--instui-font-family-base`; το opt-in
-`@pantoken/components/fonts.css` φορτώνει τα `@font-face` woff2s).
+Το registry του Lucide Lab μπορεί να φορτωθεί αργά (lazy), και μετά να περαστεί στο σύγχρονο token hook:
 
-Δείτε την [API reference](/api/) για τα exports κάθε πρόσθετου.
+```ts
+import { buildTokens } from "@pantoken/core/build";
+import { defaultRegistry, lucideLab } from "@pantoken/plugin-lucide-lab";
+
+const registry = await defaultRegistry();
+buildTokens({
+  theme: "rebrand",
+  plugins: [lucideLab({ registry, names: ["burger", "at-sign-circle"] })],
+});
+```
+
+Λίγα πράγματα που παλαιότερα ήταν πρόσθετα τώρα περιλαμβάνονται στο `@pantoken/components`, αφού τόσα πολλά components τα χρειάζονται
+έξω από το κουτί: σκιές ανύψωσης (`--instui-elevation-*`, στο `components.css`), ο δακτύλιος focus-outline
+(στο `base.css` — κάθε στοιχείο με δυνατότητα focus το λαμβάνει όταν το pantoken κατέχει τη σελίδα), και οι γραμματοσειρές του brand
+Instructure (Atkinson Hyperlegible Next: `base.css` εφαρμόζει `--instui-font-family-base`; το opt-in
+`@pantoken/components/fonts.css` φορτώνει τα `@font-face` woff2).
+
+Δείτε την [API reference](/api/) για τα exports κάθε προσθέτου.

@@ -1,10 +1,10 @@
 # Breiseáin
 
-Síneann breiseán pantoken as an aschur tóicín nó CSS gan pacáiste a fhréamhadh. Tógann tú ceann le `definePlugin` ó `@pantoken/plugin-kit`, ansin passa é chuig `buildTokens` nó `toCss`.
+Leathnaíonn breiseán pantoken aschur token nó CSS gan pacáiste a fhóraic. Tógann tú ceann le `definePlugin` ó `@pantoken/plugin-kit`, ansin pasálann tú é chuig `buildTokens` nó `toCss`.
 
-## Údar breiseáin
+## Cruthaigh breiseán
 
-Tabhair na hooks a chuireann tú i bhfeidhm do `definePlugin`. Fillfidh sé breiseán gnáth, brandaithe leis na cumais a réitítear ó na hooks sin. Is féidir le breiseán an IR a shíneadh (`tokens`, `icons`), aschur an CSS (`css`), nó an dá rud.
+Tabhair na hooks a impleménóidh tú do `definePlugin`. Fillfidh sé breiseán gnáth, marcáilte leis na cumais a mheastear ó na hooks sin. Is féidir le breiseán an IR a leathnú (`tokens`, `icons`), aschur CSS a leathnú (`css`), nó an dá rud a dhéanamh.
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -17,13 +17,13 @@ export const brand = () =>
   });
 ```
 
-## Clárú a thuigeann cumais
+## Clárú atá eolach ar chumasanna
 
-Ritheann `buildTokens` agus `toCss` `checkPlugins` thar na breiseáin a ritheann tú. Rabhraíonn sé — ní chaithtear é riamh — nuair nach bhfuil hook comhfhreagrach ag breiseán don chéim ina bhfuil sé cláraithe, mar sin scipeáiltear breiseán atá dírithe ar thóicíní amháin a ritheadh chuig `toCss` le nóta seachas gan ghá a dhéanamh gan fhuaim.
+Ritheann `buildTokens` agus `toCss` `checkPlugins` thar na breiseáin a thugann tú. Tugann sé foláireamh — ní thógann sé earráid — nuair nach bhfuil hook oiriúnach ag breiseán don chéim ina bhfuil sé cláraithe, mar sin scipeáiltear breiseán atá dírithe ar thokens amháin a pasáladh chuig `toCss` le nóta seachas gan aon rud a dhéanamh go ciúin.
 
-## Comhcheangal breiseáin
+## Comhcheangail breiseáin
 
-Tóg ar bharr breiseán eile le `extendPlugin`, nó cumais a chomhcheangal le comhghleacaithe le `mergePlugin`:
+Tóg ar bhonn breiseán eile le `extendPlugin`, nó comhcheangail comhghleacaithe le `mergePlugin`:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -32,11 +32,11 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Comhcheanglaíonn hooks den chéim chéanna: rithann `tokens` an bonn ansin an breiseán breise, comhtháthaíonn `css` an dá rannchuidiú, agus rithann `icons` an dá cheann.
+Comhcheanglaíonn hooks den chéim chéanna: ritheann `tokens` an bunáit agus ansin an breis, cuireann `css` na ranníocaí le chéile, agus ritheann `icons` an dá cheann.
 
-## Bailíochtú aschur do bhreiseáin
+## Bailíochtú aschuir do bhreiseáin
 
-Rith na seiceálacha drift roinnte ó `@pantoken/utils` thar aschur do bhreiseáin féin ina thástáil, ionas go n-eascróidh botún litrithe nó tóicín athainmnithe go tapa agus go háitiúil:
+Rith na seiceálacha drift roinnte ó `@pantoken/utils` thar aschur do bhreiseáin féin ina thriail, ionas go theipfidh litriú mícheart nó token athainmnithe go tapa agus go háitiúil:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -49,12 +49,26 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## Na breiseáin phacáistithe
+## Na breiseáin bhundáilte
 
-- `@pantoken/plugin-simple-icons` — siombailí branda ó simple-icons, cláraithe mar thóicíní íocón.
-- `@pantoken/plugin-logos` — lógónna táirgí Instructure mar SVGanna, URIs sonraí, agus tóicíní íomhá `--instui-logo-*`.
-- `@pantoken/plugin-prune-custom-props` — breiseán PostCSS (ní breiseán pantoken é) a tharraingíonn airíonna saincheaptha neamhúsáidte as stíleáil.
+- `@pantoken/plugin-simple-icons` — brandaigh deilbhíní ó simple-icons, cláraithe mar token deilbhín.
+- `@pantoken/plugin-lucide-lab` — deilbhíní Lucide Lab, cláraithe mar `--instui-icon-*` image tokens.
+- `@pantoken/plugin-logos` — lógónna táirgí Instructure mar SVGanna, URIanna sonraí, agus `--instui-logo-*` image tokens.
+- `@pantoken/plugin-prune-custom-props` — breiseán PostCSS (ní breiseán pantoken) a dhíbriseann airíonna saincheaptha neamhúsáidte ó stíleabhait.
 
-Tá cúpla rud a bhíodh mar bhreiseáin anois á n-uaslódáil i `@pantoken/components`, ós rud é go dteastaíonn iad ó go leor comhpháirteanna amuigh den bhosca: scáthanna uainíochta (`--instui-elevation-*`, in `components.css`), fáinne téad fócas (in `base.css` — faigheann gach eilimint in-ghníomhach é nuair a bhainfidh pantoken leis an leathanach), agus na clóanna branda Instructure (Atkinson Hyperlegible Next: chuirtear i bhfeidhm `base.css` `--instui-font-family-base`; lódálann an roghnach `@pantoken/components/fonts.css` na woff2s `@font-face`).
+Is féidir clárclár Lucide Lab a luchtú go moille, ansin é a phasáil chuig an hook token sioncrónach:
 
-Féach an [API reference](/api/) le haghaidh onnmhairíochtaí gach breiseáin.
+```ts
+import { buildTokens } from "@pantoken/core/build";
+import { defaultRegistry, lucideLab } from "@pantoken/plugin-lucide-lab";
+
+const registry = await defaultRegistry();
+buildTokens({
+  theme: "rebrand",
+  plugins: [lucideLab({ registry, names: ["burger", "at-sign-circle"] })],
+});
+```
+
+Tá cúpla rud a bhíodh ina mbreiseáin anois á bpacáistiú i `@pantoken/components`, ós rud é go bhfuil an-chuid comhdhéanamh ag teastáil uathu as an mbosca: scáthanna ardaithe (`--instui-elevation-*`, i `components.css`), an fáinne focus-outline (i `base.css` — faigheann gach eilimint fócasaithe é nuair atá pantoken i seilbh an leathanaigh), agus na clóanna branda Instructure (Atkinson Hyperlegible Next: cuireann `base.css` i bhfeidhm `--instui-font-family-base`; luchtóidh an roghnach `@pantoken/components/fonts.css` na woff2s `@font-face`).
+
+Féach an [tagairt API](/api/) do onnmhairí gach breiseáin.

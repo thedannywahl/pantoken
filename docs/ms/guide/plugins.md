@@ -1,12 +1,12 @@
 # Pemalam
 
-Pemalam pantoken meluaskan keluaran token atau CSS tanpa memecah pakej. Anda bina satu dengan
-`definePlugin` dari `@pantoken/plugin-kit`, kemudian serahkan kepada `buildTokens` atau `toCss`.
+Pemalam pantoken meluaskan output token atau CSS tanpa memecah pakej. Anda bina satu dengan
+`definePlugin` dari `@pantoken/plugin-kit`, kemudian pass ia ke `buildTokens` atau `toCss`.
 
 ## Menulis pemalam
 
-Berikan `definePlugin` hook yang anda laksanakan. Ia mengembalikan pemalam biasa, berjenama dengan
-keupayaan yang disimpulkan dari hook tersebut. Pemalam boleh meluaskan IR (`tokens`, `icons`), keluaran CSS
+Berikan `definePlugin` hak kait (hooks) yang anda laksanakan. Ia mengembalikan pemalam biasa, berjenama dengan
+keupayaan yang ditentukan daripada hak kait tersebut. Pemalam boleh meluaskan IR (`tokens`, `icons`), output CSS
 (`css`), atau kedua-duanya.
 
 ```ts
@@ -20,13 +20,13 @@ export const brand = () =>
   });
 ```
 
-## Pendaftaran yang sedar-keupayaan
+## Pendaftaran berkesedaran-keupayaan
 
-`buildTokens` dan `toCss` menjalankan `checkPlugins` ke atas pemalam yang anda serahkan. Ia memberi amaran — ia tidak pernah melempar —
-apabila pemalam tidak mempunyai hook yang sepadan untuk peringkat ia didaftarkan, jadi pemalam hanya-token yang diserahkan
-kepada `toCss` diabaikan dengan nota dan bukannya diam-diam tidak melakukan apa-apa.
+`buildTokens` dan `toCss` menjalankan `checkPlugins` ke atas pemalam yang anda pass. Ia memberi amaran — ia tidak pernah melempar —
+apabila pemalam tidak mempunyai hak kait yang sepadan untuk peringkat ia didaftarkan, jadi pemalam hanya-token yang passed
+ke `toCss` akan dilangkau dengan nota dan bukannya tidak melakukan apa-apa secara senyap.
 
-## Gabungkan pemalam
+## Menggabungkan pemalam
 
 Bina di atas pemalam lain dengan `extendPlugin`, atau gabungkan rakan sebaya dengan `mergePlugin`:
 
@@ -37,13 +37,13 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Hook peringkat-sama bergabung: `tokens` menjalankan pangkalan kemudian penambahan, `css` menggabungkan dua
-sumbangan itu, dan `icons` menjalankan kedua-duanya.
+Hak kait pada peringkat yang sama boleh digabungkan: `tokens` menjalankan asas kemudian tambahan, `css` menggabungkan kedua-dua
+sumbangan, dan `icons` menjalankan kedua-duanya.
 
-## Sahkan keluaran pemalam anda
+## Sahkan output pemalam anda
 
-Jalankan pemeriksaan drift berkongsi dari `@pantoken/utils` ke atas keluaran pemalam anda sendiri dalam ujinya, supaya
-kesalahan taip atau token yang ditukar nama gagal dengan cepat dan secara setempat:
+Jalankan pemeriksaan drift kongsi dari `@pantoken/utils` ke atas output pemalam anda sendiri dalam ujiannya, supaya
+salah eja atau token yang ditukar nama gagal dengan cepat dan secara tempatan:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -58,11 +58,25 @@ expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 
 ## Pemalam terbundel
 
-- `@pantoken/plugin-simple-icons` — menjenama ikon dari simple-icons, didaftarkan sebagai token ikon.
+- `@pantoken/plugin-simple-icons` — ikon jenama dari simple-icons, didaftarkan sebagai token ikon.
+- `@pantoken/plugin-lucide-lab` — ikon Lucide Lab, didaftarkan sebagai token imej `--instui-icon-*`.
 - `@pantoken/plugin-logos` — logo produk Instructure sebagai SVG, URI data, dan token imej `--instui-logo-*`.
-- `@pantoken/plugin-prune-custom-props` — pemalam PostCSS (bukan pemalam pantoken) yang membuang
+- `@pantoken/plugin-prune-custom-props` — pemalam PostCSS (bukan pemalam pantoken) yang mengeluarkan
   properti tersuai yang tidak digunakan dari helaian gaya.
 
-Beberapa perkara yang dahulu merupakan pemalam kini dihantar dalam `@pantoken/components`, kerana begitu banyak komponen memerlukannya terus daripada kotak: bayang-bayang elevasi (`--instui-elevation-*`, dalam `components.css`), cincin garisan fokus (dalam `base.css` — setiap elemen boleh fokus menerimanya apabila pantoken mengawal halaman), dan fon jenama Instructure (Atkinson Hyperlegible Next: `base.css` menggunakan `--instui-font-family-base`; pilihan `@pantoken/components/fonts.css` memuatkan woff2s `@font-face`).
+Registry Lucide Lab boleh dimuatkan secara malas, kemudian dipass ke hak kait token segerak:
+
+```ts
+import { buildTokens } from "@pantoken/core/build";
+import { defaultRegistry, lucideLab } from "@pantoken/plugin-lucide-lab";
+
+const registry = await defaultRegistry();
+buildTokens({
+  theme: "rebrand",
+  plugins: [lucideLab({ registry, names: ["burger", "at-sign-circle"] })],
+});
+```
+
+Beberapa perkara yang dahulu adalah pemalam kini dihantar dalam `@pantoken/components`, kerana begitu banyak komponen memerlukannya secara lalai: bayang ketinggian (`--instui-elevation-*`, dalam `components.css`), cincin garisan fokus-outline (dalam `base.css` — setiap elemen boleh-fokus mendapatkannya apabila pantoken mengawal halaman), dan fon jenama Instructure (Atkinson Hyperlegible Next: `base.css` menerapkan `--instui-font-family-base`; `@pantoken/components/fonts.css` pilihan memuatkan woff2 `@font-face`).
 
 Lihat [rujukan API](/api/) untuk eksport setiap pemalam.

@@ -1,10 +1,10 @@
-# Mono
+# Mōhanga
 
-Ka whanui te mono o pantoken i te putanga token, putanga CSS rānei me te kore e hanga i tētahi pākete hou. Ka hangaia tētahi mā `definePlugin` mai i `@pantoken/plugin-kit`, katahi ka tukuna ki `buildTokens` rānei `toCss`.
+He whānui ake te mono pantoken (plugin) i ngā tohu (tokens) rānei i te putanga CSS me te kore whakakapinga (fork) i tētahi kete. Ka hangaia tētahi mā `definePlugin` nō `@pantoken/plugin-kit`, ā, ka tukuna ki `buildTokens` rānei `toCss`.
 
 ## Tuhia he mono
 
-Homai ki `definePlugin` ngā hooks e whakauru ana koe. Ka whakahokia mai he mono noa, kua tohu āna āheinga i whakatau i ngā hooks rā. Ka taea e tētahi mono te whanui i te IR (`tokens`, `icons`), te putanga CSS (`css`), rānei ko ngā taipitopito e rua.
+Homai ki `definePlugin` ngā pūtau (hooks) ka mahia e koe. Ka hoki mai he mono noa, ā, kua tohu i ngā āheatanga i kitea i aua pūtau. Ka taea e tētahi mono te whakawhānui i te IR (`tokens`, `icons`), te putanga CSS (`css`), rānei ngā rāua tahi.
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -17,13 +17,13 @@ export const brand = () =>
   });
 ```
 
-## Rēhitatanga e mōhio ana ki ngā āheinga
+## Rehitatanga mō te mōhiotanga āheatanga
 
-Ka whakahaere a `buildTokens` me `toCss` i a `checkPlugins` i runga i ngā mono ka tukuna e koe. Ka whakatūpato — kāore e whiua — mēnā kāore he hook e hāngai ana ki te wāhanga i rēhitatia ai te mono, nō reira ka whakararuraru te mono-token anake ka tukuna ki `toCss` mā te tuhipoka, kaua ko te noho mokowā.
+Ka whakahaerea e `buildTokens` me `toCss` te `checkPlugins` i runga i ngā mono ka tukuna e koe. Ka whakatūpato — kāore rawa e whakatārewa (throw) — mēnā kāore he pūtau e hāngai ana ki te taahinga (stage) i rehitatia ai, nā reira ka kauwhakāritia tētahi mono-takirua-tokens (token-only plugin) ka tukuna ki `toCss` me tētahi whakamārama hei utu mō te kore mahi ā-roro (silently doing nothing).
 
 ## Whakakotahitia ngā mono
 
-Hangaia he whakawhānui i runga i tētahi mono kē mā `extendPlugin`, kia whakakotahitia rānei ngā hoa mā `mergePlugin`:
+Hangaia i runga i tētahi mono kē mā `extendPlugin`, kia hono rānei ngā hoa mā `mergePlugin`:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -32,11 +32,11 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Ka whakakotahi ngā hooks o te wāhanga kotahi: ka whakahaere tuatahi te `tokens` i te turanga ā muri ake i te tāpiritanga, ka whakamōhio te `css` i ngā koha e rua, ā ka whakahaere rānei te `icons` i ngā mea e rua.
+Ka whakakotahitia ngā pūtau o taua taahinga: ka whakahaere tuatahi te pūtake, katahi ka te tāpiritanga mā `tokens`, ka whakakotahi ngā koha e rua mā `css`, ā, ka whakahaere rāua e rua mā `icons`.
 
-## Whakamātauria ngā putanga o tō mono
+## Whakamana i te putanga o tō mono
 
-Whakahaerehia ngā tirohanga drift tūturu mai i `@pantoken/utils` i runga i ngā putanga o tō mono i roto i ōna whakamātautau, kia tere te kitea me te rohe mēnā he hapa tuhi, he ingoa token kua hurihia rānei:
+Mahia ngā tirohanga drift e wātea ana i `@pantoken/utils` ki runga i te putanga o tō mono i roto i āna whakamātautau, kia tere tonu te hinga o tētahi hapa tuhituhi rānei te ingoa token kua huri:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -49,12 +49,27 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## Ngā mono kua kapi
+## Ngā mono kua piri wātea
 
-- `@pantoken/plugin-simple-icons` — tohu waitohu mai i simple-icons, kua rēhitatia hei ngā token ā-tahua.
-- `@pantoken/plugin-logos` — ngā tohu hua Instructure hei SVG, URI raraunga, me ngā token whakaahua `--instui-logo-*`.
-- `@pantoken/plugin-prune-custom-props` — he mono PostCSS (ehara i te mono pantoken) e tango ana i ngā rawa ritenga-kāore i whakamahia i roto i tētahi tauira taitara.
+- `@pantoken/plugin-simple-icons` — tohu ā-mata (brand icons) mai i simple-icons, kua rehitatia hei tohu icon.
+- `@pantoken/plugin-lucide-lab` — tohu Lucide Lab, kua rehitatia hei `--instui-icon-*` tohu ā-whakaahua (image tokens).
+- `@pantoken/plugin-logos` — tohu hua Instructure hei SVG, URI raraunga, me ngā `--instui-logo-*`
+  tohu ā-whakaahua.
+- `@pantoken/plugin-prune-custom-props` — he mono PostCSS (ehara i te mono pantoken) e tango ana i ngā rawa kore whakamahia o ngā rawa ritenga (custom properties) i tētahi takai kāri (stylesheet).
 
-He kōrero poto nō ētahi mea i noho hei mono, ināianei ka kawea i roto i `@pantoken/components`, i te mea he maha ngā wāhanga e hiahiatia ana i ngā taiao kē: ngā ārai atarangi elevation (`--instui-elevation-*`, i roto i `components.css`), te mekameka ā-āhua focus-outline (i roto i `base.css` — ka whakawhiwhia ki ia mea ka taea te aro kaua rānei mēnā ko pantoken te kaitiaki o te whārangi), me ngā momotuhi waitohu o Instructure (Atkinson Hyperlegible Next: `base.css` e tono ana i `--instui-font-family-base`; ko te kōwhiringa ake `@pantoken/components/fonts.css` e uta ana i ngā woff2s o `@font-face`).
+Ka taea te uta whakaroa (lazy) i te rēhita o Lucide Lab, ā, ka tukuna ki te pūtau token sync:
 
-Tirohia te [tuhinga API](/api/) mō ngā kaweake o ia mono.
+```ts
+import { buildTokens } from "@pantoken/core/build";
+import { defaultRegistry, lucideLab } from "@pantoken/plugin-lucide-lab";
+
+const registry = await defaultRegistry();
+buildTokens({
+  theme: "rebrand",
+  plugins: [lucideLab({ registry, names: ["burger", "at-sign-circle"] })],
+});
+```
+
+He rārangi kōrero: kua tāpirihia ki `@pantoken/components` ētahi mea i mua i noho hei mono, nō te mea e hia rau ngā wāhanga e hiahiatia ana ēnei mai i te tīmatanga: ngā ātaahua ānau pikinga (elevation shadows) (`--instui-elevation-*`, kei roto i `components.css`), te porotaka arotahi (focus-outline) (kei roto i `base.css` — ka whiwhi ia mea ka taea te aro katoa ina rangatiratia e pantoken te whārangi), me ngā momotuhi ā-takakau Instructure (Atkinson Hyperlegible Next: `base.css` tāpaea `--instui-font-family-base`; ko te kōwhiringa `@pantoken/components/fonts.css` ka uta i ngā woff2 `@font-face`).
+
+Tirohia te [tohutoro API](/api/) mō ngā kaweake (exports) o ia mono.

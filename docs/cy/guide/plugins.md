@@ -1,13 +1,13 @@
-# Ategion
+# Plwyfau
 
-Ategyn pantoken yn estyn y allbwn token neu CSS heb fforkio pecyn. Adeiladwch un gyda
+Mae plwg pantoken yn estyn y token neu allbwn CSS heb forcio pecyn. Adeiladair un gyda
 `definePlugin` o `@pantoken/plugin-kit`, yna pasiwch ef i `buildTokens` neu `toCss`.
 
-## Ysgrifennu ategyn
+## Awturwch blwg
 
-Rhowch i `definePlugin` y hooks rydych yn eu gweithredu. Mae'n dychwelyd ategyn arferol, wedi'i frandio gyda'r
-capasiti a amcangyfrifwyd o'r hooks hynny. Gall ategyn estyn y IR (`tokens`, `icons`), yr allbwn CSS
-(`css`), neu'r ddau.
+Rhowch i `definePlugin` y clystyrau (hooks) rydych chi’n eu gweithredu. Mae’n dychwelyd plwg arferol, wedi’i frandio gyda’r
+galluoedd a ganfuwyd o’r clystyrau hynny. Gall plwg estyn y IR (`tokens`, `icons`), allbwn y CSS
+(`css`), neu’r ddau.
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -20,15 +20,15 @@ export const brand = () =>
   });
 ```
 
-## Cofrestru sy'n ymwybodol o alluoedd
+## Cofrestru sy’n ymwybodol o alluoedd
 
-`buildTokens` a `toCss` yn rhedeg `checkPlugins` dros yr ategion a basiwch. Mae'n rhybuddio — byth yn taflu —
-pan nad oes hook cyfatebol gan ategyn ar gyfer y cam y mae wedi'i gofrestru ynddo, felly ategyn sy'n unig-token a basiwyd
-i `toCss` yw ei basio heibio gyda nodyn yn hytrach na ddim ei wneud yn ddienw.
+Mae `buildTokens` a `toCss` yn rhedeg `checkPlugins` dros y phlwygiau rydych chi’n eu pasio. Mae’n rhybuddio — ni wnaiff byth daro —
+pan nad oes clustyn cyd-fynd gyda’r cam y mae plwg wedi’i gofrestru ynddo, felly caiff plwg sy’n ymwneud â thoken yn unig a gafodd ei basio
+i `toCss` ei hepgor gyda nodyn yn hytrach na pheidio wneud dim yn dawel.
 
-## Cyfansoddi ategion
+## Cyfuno phlwygiau
 
-Adeiladu ar ben ategyn arall gyda `extendPlugin`, neu gyfuno cydymaith gyda `mergePlugin`:
+Adeiladwch ar ben plwg arall gyda `extendPlugin`, neu gyfuniwch gymrodyr gyda `mergePlugin`:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -37,13 +37,13 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Mae hooks ar yr un cam yn cyfansoddi: `tokens` yn rhedeg y sylfaen yna'r ychwanegiad, `css` yn uno'r ddwy
-chyfraniad, a `icons` yn rhedeg y ddau.
+Mae clystyrau ar yr un cam yn cyfuno: mae `tokens` yn rhedeg y sail yna ychwanegiad, mae `css` yn uno’r ddwy
+chyfraniad, ac mae `icons` yn rhedeg y ddau.
 
-## Dilysu allbwn eich ategyn
+## Dilyswch allbwn eich plwg
 
-Rhedwch y gwiriadau drifft rhannol o `@pantoken/utils` dros allbwn eich ategyn eich hun yn ei brofion, fel y
-methiant o achos sillafu neu enwi token yn newid yn methu'n gyflym ac yn lleol:
+Rhedwch y gwiriadau drift rhannol o `@pantoken/utils` dros allbwn eich plwg eich hun yn ei brof, fel y bydd
+camdeip neu enwi token yn methu’n gyflym ac yn lleol:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -56,15 +56,29 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## Y ategion wedi'u bundio
+## Yr plwgiau wedi’u pecynnu
 
-- `@pantoken/plugin-simple-icons` — brandio eiconau o simple-icons, wedi'u cofrestru fel tokenau eicon.
-- `@pantoken/plugin-logos` — logoau cynnyrch Instructure fel SVGs, URI data, a thokenau delwedd `--instui-logo-*`.
-- `@pantoken/plugin-prune-custom-props` — ategyn PostCSS (nid ategyn pantoken) sy'n tynnu
-  eiddo arferol heb ei ddefnyddio o arddullfaen.
+- `@pantoken/plugin-simple-icons` — brand eiconau o simple-icons, wedi’u cofrestru fel tokenau eicon.
+- `@pantoken/plugin-lucide-lab` — eiconau Lucide Lab, wedi’u cofrestru fel tokenau delwedd `--instui-icon-*`.
+- `@pantoken/plugin-logos` — logos cynnyrch Instructure fel SVGs, URI data, a thokenau delwedd `--instui-logo-*`.
+- `@pantoken/plugin-prune-custom-props` — plwg PostCSS (nid plwg pantoken) sy’n tynnu
+  eiddo arfer wedi’u difetha o sheet steilio.
 
-Ychydig o bethau a werthodd fel ategion yn awr yn cael eu llongio yn `@pantoken/components`, gan fod cymaint o gydrannau yn eu hangen allan o'r blwch: cysgodion codiad (`--instui-elevation-*`, yn `components.css`), y cylch amgylch-ffocws
-(yn `base.css` — mae pob elfen y gellir ei ffocysu yn ei gael pan fo pantoken yn berchen ar y dudalen), a'r ffynonellau brand Instructure
-(Atkinson Hyperlegible Next: mae `base.css` yn cymhwyso `--instui-font-family-base`; mae'r `@pantoken/components/fonts.css` dewisol yn llwytho'r `@font-face` woff2s).
+Gellir llwytho’r gofrestr Lucide Lab yn hwyr, yna ei basio i’r clustyn token synchronic:
 
-Gweler yr [adroddiad API](/api/) ar gyfer allforion pob ategyn.
+```ts
+import { buildTokens } from "@pantoken/core/build";
+import { defaultRegistry, lucideLab } from "@pantoken/plugin-lucide-lab";
+
+const registry = await defaultRegistry();
+buildTokens({
+  theme: "rebrand",
+  plugins: [lucideLab({ registry, names: ["burger", "at-sign-circle"] })],
+});
+```
+
+Ychydig o bethau a fu’n blwgion erbyn hyn yn dod yn rhan o `@pantoken/components`, gan fod cymaint o gydrannau yn eu angen allan o’r bocs: cysgodion codiad (`--instui-elevation-*`, yn `components.css`), y rîng llinell-canol ffocws
+(mewn `base.css` — mae pob elfen y gellir ei ffocuso yn ei gael pan fo pantoken yn berchen ar y dudalen), a’r ffontiau brand Instructure
+(Atkinson Hyperlegible Next: mae `base.css` yn cymhwyso `--instui-font-family-base`; mae’r `@pantoken/components/fonts.css` dewisol yn llwytho’r woff2s `@font-face`).
+
+Gweler y [cyfeirlyfr API](/api/) am allfeydd pob plwg.
