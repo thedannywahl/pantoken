@@ -1,0 +1,5 @@
+new features to add:
+* New (basically clears the editor and resets the config) - with prompt to save existing
+* export takes the active editor/config (which is saved in localstorage) and writes it to a portable format (whichever is the best fit JSON, YAML, TOML, other?)
+* import - imports a valid export file, with warning that it will overwrite the existing editor content and config
+the schema should be published on pantoken.app/schemas/ along with the other schemas for validating the import/export files.
