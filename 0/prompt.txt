@@ -5,3 +5,10 @@ after the size button group I want a light/dark toggle that toggles the color sc
 ---
 
 Continue: "Continue to iterate?"
+
+---
+
+the toggle doesn't work you can view it at:
+http://localhost:5173/guide/canvas-rce
+
+neither the preview wrapper/iframe content nor the actual tinymce content injected into the preview are changing color schemes which toggling the button.
