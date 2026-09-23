@@ -132,8 +132,6 @@ catalog:
   vscode-languageclient: ^10.1.0
   vscode-languageserver: ^10.1.0
   vscode-languageserver-textdocument: ^1.0.12
-  # Continuous performance testing — the vitest bench harness reported to CodSpeed.
-  "@codspeed/vitest-plugin": ^5.7.1
   bingo-stratum: ^0.6.2
   zod: ^4.4.3
   # @pantoken/tinymce + canvas-theme-editor scaffold — tracks the current tinymce major, not
@@ -154,6 +152,10 @@ catalog:
   "@lezer/highlight": ^1.2.3
   prettier: ^3.9.9
   vitest: 5.0.1
+  # Continuous performance testing — Tinybench runs inside Vitest's TypeScript host and reports to CodSpeed.
+  # Swap back to @codspeed/vitest-plugin when CodSpeedHQ/codspeed-node#86 is released.
+  "@codspeed/tinybench-plugin": ^5.7.1
+  tinybench: ^6.2.0
 overrides:
   vite@*: "catalog:"
   # next 16.2.10 (auto-installed as @pantoken/next's optional peer) has 3 High CVEs; 16.2.11 patches

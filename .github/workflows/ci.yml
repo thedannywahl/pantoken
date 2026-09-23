@@ -149,7 +149,7 @@ jobs:
         uses: CodSpeedHQ/action@373d6868929f444bc08d901fd0eb0ad52a8875ea # v5.2.1
         with:
           mode: simulation
-          run: VP_NODE_VERSION=22.18.0 vp test bench --run --config vite.bench.config.ts
+          run: VP_NODE_VERSION=22.18.0 vp test --run --config vite.bench.config.ts
 
   coverage:
     needs: build

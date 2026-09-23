@@ -40,7 +40,7 @@ vp install
 
    ```sh
    vp run -r build
-   vp exec vitest bench --run --config vite.bench.config.ts
+   vp test --run --config vite.bench.config.ts
    ```
 
    CI runs the same command through [CodSpeed](https://codspeed.io) on every PR and reports the

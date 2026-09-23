@@ -3,6 +3,7 @@
 // `toCss` walks the IR twice (typed `@property` registrations plus scoped declarations), while
 // `toScss` and `toDtcg` each flatten the whole reference graph before emitting.
 import { test, describe } from "vite-plus/test";
+import { runBench } from "./run-bench.ts";
 import { buildCssFile } from "../formats/css/src/emit.ts";
 import { themedTokens } from "../formats/css/src/theme-variants.ts";
 import { toCss } from "../formats/css/src/to-css.ts";
@@ -22,76 +23,76 @@ const declarations: [string, string][] = rebrandLean
   .map((t) => [t.name, t.value]);
 
 describe("toCss", () => {
-  test("rebrand (full sheet, with icons)", async ({ bench }) => {
-    await bench("rebrand (full sheet, with icons)", () => {
+  test("rebrand (full sheet, with icons)", async () => {
+    await runBench("rebrand (full sheet, with icons)", () => {
       toCss(rebrand);
-    }).run();
+    });
   });
 
-  test("rebrand (lean sheet, no icons)", async ({ bench }) => {
-    await bench("rebrand (lean sheet, no icons)", () => {
+  test("rebrand (lean sheet, no icons)", async () => {
+    await runBench("rebrand (lean sheet, no icons)", () => {
       toCss(rebrandLean);
-    }).run();
+    });
   });
 
-  test("rebrand (lean sheet, foundation plugin)", async ({ bench }) => {
-    await bench("rebrand (lean sheet, foundation plugin)", () => {
+  test("rebrand (lean sheet, foundation plugin)", async () => {
+    await runBench("rebrand (lean sheet, foundation plugin)", () => {
       toCss(rebrandLean, { plugins: [foundationPlugin] });
-    }).run();
+    });
   });
 
-  test("canvas (lean sheet, scoped)", async ({ bench }) => {
-    await bench("canvas (lean sheet, scoped)", () => {
+  test("canvas (lean sheet, scoped)", async () => {
+    await runBench("canvas (lean sheet, scoped)", () => {
       toCss(canvas, { scope: '[class*="instui"]' });
-    }).run();
+    });
   });
 });
 
 describe("buildCssFile", () => {
-  test("properties + declarations", async ({ bench }) => {
-    await bench("properties + declarations", () => {
+  test("properties + declarations", async () => {
+    await runBench("properties + declarations", () => {
       buildCssFile({
         comments: [],
         scope: ":root",
         properties,
         sections: [{ pairs: declarations }],
       });
-    }).run();
+    });
   });
 });
 
 describe("themedTokens", () => {
-  test("rebrand light-only, no icons", async ({ bench }) => {
-    await bench("rebrand light-only, no icons", () => {
+  test("rebrand light-only, no icons", async () => {
+    await runBench("rebrand light-only, no icons", () => {
       themedTokens("rebrand", { includeIcons: false, lightOnly: true });
-    }).run();
+    });
   });
 
-  test("canvasHighContrast, icons filtered out", async ({ bench }) => {
-    await bench("canvasHighContrast, icons filtered out", () => {
+  test("canvasHighContrast, icons filtered out", async () => {
+    await runBench("canvasHighContrast, icons filtered out", () => {
       themedTokens("canvasHighContrast", { includeIcons: false });
-    }).run();
+    });
   });
 });
 
 describe("toScss", () => {
-  test("rebrand (light)", async ({ bench }) => {
-    await bench("rebrand (light)", () => {
+  test("rebrand (light)", async () => {
+    await runBench("rebrand (light)", () => {
       toScss(rebrandLean, { mode: "light" });
-    }).run();
+    });
   });
 });
 
 describe("toDtcg", () => {
-  test("rebrand (light)", async ({ bench }) => {
-    await bench("rebrand (light)", () => {
+  test("rebrand (light)", async () => {
+    await runBench("rebrand (light)", () => {
       toDtcg(rebrandLean, "light");
-    }).run();
+    });
   });
 
-  test("rebrand (dark)", async ({ bench }) => {
-    await bench("rebrand (dark)", () => {
+  test("rebrand (dark)", async () => {
+    await runBench("rebrand (dark)", () => {
       toDtcg(rebrandLean, "dark");
-    }).run();
+    });
   });
 });

@@ -22,7 +22,7 @@
     "@arethetypeswrong/cli": "catalog:",
     "@changesets/cli": "catalog:",
     "@codecov/vite-plugin": "catalog:",
-    "@codspeed/vitest-plugin": "catalog:",
+    "@codspeed/tinybench-plugin": "catalog:",
     "@commitlint/cli": "catalog:",
     "@commitlint/config-conventional": "catalog:",
     "@cssdoc/cli": "catalog:",
@@ -36,6 +36,7 @@
     "publint": "catalog:",
     "snyk": "catalog:",
     "stylelint": "catalog:",
+    "tinybench": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:",
     "vitest": "catalog:"
