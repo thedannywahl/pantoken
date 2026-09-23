@@ -1,0 +1,13 @@
+0.6.2 is the latest version of bingo-stratum, evaluate the changes and build an upgrade plan, if there are no updates needed just say so and we can bump the version here.
+
+---
+
+Planning-only research for /Users/dwahl/Scripts/pantoken. Investigate the current use of bingo-stratum, package metadata/version constraints, lockfile state, and any tests or scripts that exercise it. Also research what changed between bingo-stratum 0.5.13 and 0.6.2 using available repository context or web sources if possible. Do not edit files. Return: (1) usage locations and roles, (2) upgrade-relevant breaking changes/new requirements, (3) recommended validation steps, (4) ambiguities needing user decision. Be concise but cite workspace-relative file paths and symbols/lines where possible.
+
+---
+
+Start implementation
+
+---
+
+Start implementation

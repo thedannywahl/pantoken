@@ -1,0 +1,110 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M37DQFNRQWY7A1C7ZFCDPTAX",
+  "session_id": "ace850c9-ca6d-4d38-bc66-8113a6060139",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-23T15:21:44.76501Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 3,
+  "save_step_count": 3,
+  "files_touched": [
+    ".changeset/bright-bingo-stratum.md",
+    ".gitignore",
+    "bench/core.bench.ts",
+    "bench/formats.bench.ts",
+    "bench/utils.bench.ts",
+    "docs/scripts/translate-api-po.test.ts",
+    "formats/interactions/tests/truncate.test.ts",
+    "packages/plugin-kit/tests/sandbox-error-paths.test.ts",
+    "packages/scaffold-base/package.json",
+    "plugins/tinymce/codemirror/package.json",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    "renderers/web-components/tests/simple-elements.test.ts",
+    "vite.config.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "329c1a91c09b",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 3
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-23T15:21:44.758581Z",
+    "agent_lines": 0,
+    "agent_removed": 215,
+    "human_added": 0,
+    "human_modified": 166,
+    "human_removed": 1569,
+    "total_committed": 191,
+    "total_lines_changed": 2120,
+    "agent_percentage": 10.141509433962264,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 1655,
+      "user_lines_removed": 1641,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".gitignore": 1,
+        "bench/core.bench.ts": 21,
+        "bench/formats.bench.ts": 21,
+        "bench/utils.bench.ts": 19,
+        "bundlers/vite/package.json": 1,
+        "plugins/tinymce/codemirror/package.json": 6,
+        "plugins/vite/workspace-orchestrator/package.json": 1,
+        "pnpm-lock.yaml": 1541,
+        "pnpm-workspace.yaml": 20,
+        "tools/demo/vite.runner.config.ts": 7,
+        "tools/upstream-diff/vite.config.ts": 7,
+        "vite.bench.config.ts": 5,
+        "vite.config.ts": 5
+      },
+      "user_removed_per_file": {
+        "bench/core.bench.ts": 21,
+        "bench/formats.bench.ts": 21,
+        "bench/utils.bench.ts": 19,
+        "bundlers/vite/package.json": 1,
+        "plugins/tinymce/codemirror/package.json": 6,
+        "plugins/vite/workspace-orchestrator/package.json": 1,
+        "pnpm-lock.yaml": 1552,
+        "pnpm-workspace.yaml": 20
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 1,
+      "user_lines_removed": 1,
+      "agent_lines_added": 1652,
+      "agent_lines_removed": 1638,
+      "user_added_per_file": {
+        "pnpm-workspace.yaml": 1
+      },
+      "user_removed_per_file": {
+        "pnpm-workspace.yaml": 1
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 0,
+      "user_lines_removed": 10,
+      "agent_lines_added": 1821,
+      "agent_lines_removed": 1830,
+      "user_removed_per_file": {
+        "tools/demo/vite.runner.config.ts": 5,
+        "tools/upstream-diff/vite.config.ts": 5
+      }
+    }
+  ]
+}
