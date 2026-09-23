@@ -157,6 +157,15 @@ const CUSTOM_THEME_COLORS_CSS = customThemeColorsCss(undefined, {
 // color change overrides the theme's root token declarations.
 const chromeThemeStyle = document.createElement("style");
 document.head.append(chromeThemeStyle);
+// lightningcss downlevels light-dark() to only follow the OS preference (see
+// PREVIEW_SCHEME_FORCE_CSS below for the full story) — without this, the chrome ignores an
+// explicit light/dark pick whenever it conflicts with the visitor's own OS setting.
+const chromeSchemeForceStyle = document.createElement("style");
+chromeSchemeForceStyle.textContent = `
+[data-pantoken-scheme="light"] { --lightningcss-light: initial; --lightningcss-dark: ; }
+[data-pantoken-scheme="dark"] { --lightningcss-light: ; --lightningcss-dark: initial; }
+`;
+document.head.append(chromeSchemeForceStyle);
 const customThemeColorsStyle = document.createElement("style");
 customThemeColorsStyle.textContent = CUSTOM_THEME_COLORS_CSS;
 document.head.append(customThemeColorsStyle);

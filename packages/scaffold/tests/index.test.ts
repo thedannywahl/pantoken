@@ -162,6 +162,27 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(readFileSync(join(target, "src/app.css"), "utf8")).not.toContain(
     "background: var(--instui-color-background-primary, #fff);",
   );
+  {
+    const appCss = readFileSync(join(target, "src/app.css"), "utf8");
+    // The standalone shell is a top header, not the scaffold-base wrapper layout's app-shell side
+    // nav — body.canvas-rce-shell-enabled must override that class's row direction to a column so
+    // the header stacks above #app instead of sitting beside it.
+    expect(appCss).toContain(
+      "body.canvas-rce-shell-enabled {\n  display: flex;\n  flex-direction: column;",
+    );
+    // Redundant once the standalone shell's own brand mark is showing.
+    expect(appCss).toContain(
+      "body.canvas-rce-shell-enabled .title,\nbody.canvas-rce-shell-enabled .description {\n  display: none;\n}",
+    );
+  }
+  // lightningcss downlevels light-dark() to only follow the OS preference, so without a chrome
+  // override the page text/UI silently uses dark-mode colors while the chosen appearance is light.
+  expect(main).toContain(
+    '[data-pantoken-scheme="light"] { --lightningcss-light: initial; --lightningcss-dark: ; }',
+  );
+  expect(main.indexOf("document.head.append(chromeThemeStyle)")).toBeLessThan(
+    main.indexOf("document.head.append(chromeSchemeForceStyle)"),
+  );
   expect(main).not.toContain('tinymce.PluginManager.add("pantoken_components"');
   expect(main).not.toContain('tinymce.PluginManager.add("pantoken_source_toggle"');
   expect(existsSync(join(target, "src/preferences.ts"))).toBe(true);

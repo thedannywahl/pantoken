@@ -19,7 +19,11 @@ body:not(.canvas-rce-shell-enabled) {
   padding: 1.5rem 3rem;
 }
 
+/* Overrides the scaffold-base wrapper layout's app-shell ROW class (side nav + content) — this
+   shell is a top header, not a side nav, so the body needs to stack it above #app instead. */
 body.canvas-rce-shell-enabled {
+  display: flex;
+  flex-direction: column;
   padding: 0;
 }
 
@@ -30,6 +34,12 @@ body.canvas-rce-shell-enabled {
 
 body.canvas-rce-shell-enabled #app {
   padding: 1.5rem 3rem 2rem;
+}
+
+/* Redundant with the shell's own brand mark once it's showing. */
+body.canvas-rce-shell-enabled .title,
+body.canvas-rce-shell-enabled .description {
+  display: none;
 }
 
 .canvas-rce-shell {
