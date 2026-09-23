@@ -1,0 +1,142 @@
+Read-only, quick exploration in /Users/dwahl/Scripts/pantoken. Find existing tests for canvas-rce embedded docs messaging, generated scaffold theme functions, or browser-oriented theme switching. Identify the smallest established test location/pattern to cover: custom color style cascade order and TinyMCE theme switching without blanking. Also inspect git history/checkpoints only if immediately available, but do not edit. Return exact files and recommended assertions.
+
+---
+
+Read-only, medium exploration in /Users/dwahl/Scripts/pantoken. Determine the correct supported way in this repo to switch an already initialized TinyMCE editor among next-gen/canvas/canvas-high-contrast skins. Inspect @pantoken/tinymce code/tests/docs/history and TinyMCE integration patterns. Specifically determine whether appending/removing global skin.css links can hide/remove `.tox-tinymce`, whether multiple skins use conflicting selectors, and whether editor reinitialization or scoped skin classes/attributes are required. Return evidence with exact paths and concrete recommendation; do not edit.
+
+---
+
+Read-only quick exploration in /Users/dwahl/Scripts/pantoken. Inspect the current generated docs Canvas RCE bundle/build output if present, or source build config, to determine what URLs the imported TinyMCE skin.css?url files become in docs/public/tools/canvas-rce and whether theme switching can request missing assets. Check manifests/files if available. Do not build or edit. Report exact asset filenames/URLs and whether canvas/canvas-high-contrast skin/content assets exist.
+
+---
+
+Read-only quick. Inspect current packages/scaffold/templates/canvas-theme-editor/src/app.css and .dev counterpart changes relevant to concurrent work. Report whether anything affects theme/color or TinyMCE beyond close-button layout. Do not edit.
+
+---
+
+Read-only quick. In /Users/dwahl/Scripts/pantoken, identify the shortest command to serve the already-generated VitePress docs without rerunning all docs assets, on a specified port/strictPort. Inspect configs/scripts only. Return exact command and guide URL. Do not edit or run.
+
+---
+
+Read-only quick. Search current tests for patterns asserting order of code snippets/style append calls in materialized scaffold main.ts. Recommend exact assertions to pin customThemeColorsStyle after chromeThemeStyle and skin link swap sequencing if those become fixes. Do not edit.
+
+---
+
+Read-only quick in /Users/dwahl/Scripts/pantoken. Confirm exact direct command from repo root to run VitePress dev for docs on port 5175 strict, using repo toolchain conventions (vp/vpx/vpr, no raw pnpm). Inspect available scripts/config. Return one exact command only plus expected guide URL.
+
+---
+
+Read-only quick. In docs theme components, identify accessible labels/roles for theme and color controls used on /guide/canvas-rce, including exact button/select names for rebrand, canvas, canvas high contrast, and color choices. Return selectors/labels to automate browser reproduction. Do not edit.
+
+---
+
+Read-only quick correction. Inspect the VitePress docs header/theme picker component, not scaffold app.html. Return exact component path and accessible roles/labels/select options for changing global theme and global color on the docs page. Do not edit.
+
+---
+
+Read-only quick. Inspect root vite.config.ts docs:dev task and dependencies to estimate whether `vp run docs:dev -- --port 5175 --strictPort` forwards args correctly or whether a direct package-qualified task is safer. Return exact safest command. Do not run/edit.
+
+---
+
+Read-only quick. Confirm whether `cd docs && vp exec vitepress dev --port 5175 --strictPort` is valid in this Vite+ repo and resolves the local vitepress binary/config. Return yes/no and corrected exact command if needed. Do not run.
+
+---
+
+Read-only quick. Before running docs/scripts/build-canvas-rce.ts, identify whether it writes only ignored/generated docs paths or any tracked files. Return output directories and gitignored status. Do not run.
+
+---
+
+Return only: ready
+
+---
+
+Read-only quick. Return exact command from repo root to run only docs/scripts/build-canvas-rce.ts using repo conventions. One line only.
+
+---
+
+No further exploration needed. Return done.
+
+---
+
+One sentence: any caveat to running node docs/scripts/build-canvas-rce.ts now?
+
+---
+
+Read-only quick: check whether packages/scaffold/generated/scaffolds.ts currently contains `theme-tray__close` and `.theme-picker [data-theme]`. Return yes/no only.
+
+---
+
+Return exactly: node docs/scripts/build-canvas-rce.ts
+
+---
+
+Return done.
+
+---
+
+Return done.
+
+---
+
+Return done.
+
+---
+
+Execution task in /Users/dwahl/Scripts/pantoken. Do not edit tracked source. Run `node docs/scripts/build-canvas-rce.ts`. Then start the docs VitePress dev server in the background from the docs directory on port 5175 strict, using `vp exec vitepress dev --port 5175 --strictPort`, redirecting logs to /tmp/pantoken-docs-5175.log and recording PID in /tmp/pantoken-docs-5175.pid. Wait up to 30 seconds for http://localhost:5175/guide/canvas-rce to respond. Return whether build succeeded, server PID, response status, and any relevant log tail. Do not stop the server if it starts.
+
+---
+
+Read-only architecture check. Evaluate this proposed minimal fix in packages/scaffold canvas-theme-editor main.ts.tmpl: (1) append chromeThemeStyle before customThemeColorsStyle so equal-specificity [data-pantoken-color] remaps win; (2) replace editor skin/content links load-safely by appending candidate links, removing current links only in candidate load handlers, retaining current links on error, and using a monotonically increasing request id to discard stale candidates. Identify any flaw, especially initial TinyMCE visibility, rapid switching, ownerDocument, or content iframe lifecycle. Return concise recommendation. Do not edit.
+
+---
+
+Read-only quick. Confirm Vite TypeScript typing in this repo supports importing @pantoken/tinymce exported CSS with `?inline`, analogous to existing component CSS imports. Identify any declaration file needed. Return concise yes/no evidence. Do not edit.
+
+---
+
+Read-only correction. Inspect the materialized canvas-theme-editor tsconfig and Vite client type declarations actually used. Determine whether generic `*.css?inline` imports compile (they already exist in main.ts). Do not infer from package files. Return corrected finding.
+
+---
+
+Return done.
+
+---
+
+Return concise exact assertions to add to packages/scaffold/tests/index.test.ts for: all six @pantoken/tinymce skin/content imports use ?inline; main contains editorSkinStyle/editorContentStyle textContent assignment; no editorSkinLink?.remove; chromeThemeStyle head append precedes customThemeColorsStyle head append. No edits.
+
+---
+
+Do not edit. Return done.
+
+---
+
+Return done.
+
+---
+
+WRITE CODE in /Users/dwahl/Scripts/pantoken. Implement the two root-cause fixes in the current working tree, preserving all existing/uncommitted user changes.
+
+Files:
+- packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl
+- packages/scaffold/tests/index.test.ts
+- .changeset/use-pantoken-tray-controls.md (update existing note)
+
+Required changes:
+1. Chrome color cascade: currently customThemeColorsStyle is appended before chromeThemeStyle, so later equal-specificity root token declarations overwrite color remaps. Keep CUSTOM_THEME_COLORS_CSS generation unchanged, but create/append chromeThemeStyle first and customThemeColorsStyle second. Update comments accurately. The tray reset behavior and preview independence must remain unchanged.
+2. TinyMCE blanking: replace the six @pantoken/tinymce skin/content CSS `?url` imports with `?inline` string imports. Change editorThemeUrls to an editorThemeCss record (or equivalent) holding skin/content CSS text. Replace editorSkinLink/editorContentLink with stable HTMLStyleElement references. applyEditorTheme must synchronously set UI skin CSS in a document.head style element and content CSS in the current editor.getDoc().head style element. If the editor iframe document changes, remove the old content style and create one in the current document. Do not remove the active UI style before setting replacement text. Keep `skin:false` and `content_css:false`. Parent theme changes must continue to call applyEditorTheme(activeEditor). Do not change preview behavior or selectedColor.
+3. Tests in packages/scaffold/tests/index.test.ts, inside the existing canvas-theme-editor materialization test:
+- Assert chromeThemeStyle is appended before customThemeColorsStyle.
+- Assert all six tinymce CSS imports are `?inline` (the existing three ?url expectations should be updated/expanded).
+- Assert generated main contains editorSkinStyle/editorContentStyle textContent assignments and ownerDocument protection, and no `editorSkinLink?.remove()` / `editorContentLink?.remove()`.
+Keep tests focused and resilient.
+4. Update existing changeset wording to mention embedded docs theme/color synchronization and preventing TinyMCE blanking.
+
+Before editing, read current contents/diff because user/formatter edits occurred. Use apply_patch, not destructive commands. After first edit, run the focused materialization test for `canvas-theme-editor is a known, template-only platform (no preset)`. If it fails, repair locally and rerun. Then run formatter only on changed files if available. Do not run full coverage. Do not commit. Return exact changed files and test result.
+
+---
+
+Start implementation
+
+---
+
+add a changeset and a conventional commit for your files, ignoring other unstaged changes.
