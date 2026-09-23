@@ -67,9 +67,18 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain("createSourceTogglePlugin");
   expect(main).toContain("if (isLocalPreview) {");
   expect(main).toContain("providerSelect.value = LOCAL_PROVIDER_ID;");
-  expect(main).toContain("@pantoken/tinymce/skins/next-gen/skin.css?url");
-  expect(main).toContain("@pantoken/tinymce/skins/canvas/skin.css?url");
-  expect(main).toContain("@pantoken/tinymce/skins/canvas-high-contrast/skin.css?url");
+  for (const theme of ["next-gen", "canvas", "canvas-high-contrast"]) {
+    expect(main).toContain(`@pantoken/tinymce/skins/${theme}/skin.css?inline`);
+    expect(main).toContain(`@pantoken/tinymce/skins/${theme}/content.css?inline`);
+  }
+  expect(main.indexOf("document.head.append(chromeThemeStyle)")).toBeLessThan(
+    main.indexOf("document.head.append(customThemeColorsStyle)"),
+  );
+  expect(main).toContain("editorSkinStyle.textContent = css.skin;");
+  expect(main).toContain("editorContentStyle.textContent = css.content;");
+  expect(main).toContain("editorContentStyle.ownerDocument !== editorDocument");
+  expect(main).not.toContain("editorSkinLink?.remove()");
+  expect(main).not.toContain("editorContentLink?.remove()");
   expect(main).not.toContain("tinymce/skins/ui/oxide/skin.css");
   expect(main).toContain(
     '"pantoken pantoken_content_classes placehold pantoken_a11y pantoken_save pantoken_sup_sub pantoken_source_toggle pantoken_fullscreen_footer pantoken_searchreplace_footer pantoken_visualblocks_footer image link lists',

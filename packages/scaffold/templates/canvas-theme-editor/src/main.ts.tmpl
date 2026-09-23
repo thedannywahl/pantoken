@@ -55,12 +55,12 @@ import "tinymce/plugins/emoticons";
 import "tinymce/plugins/table";
 import "tinymce/plugins/media";
 import "tinymce/plugins/visualblocks";
-import nextGenSkinUrl from "@pantoken/tinymce/skins/next-gen/skin.css?url";
-import nextGenContentUrl from "@pantoken/tinymce/skins/next-gen/content.css?url";
-import canvasSkinUrl from "@pantoken/tinymce/skins/canvas/skin.css?url";
-import canvasContentUrl from "@pantoken/tinymce/skins/canvas/content.css?url";
-import canvasHighContrastSkinUrl from "@pantoken/tinymce/skins/canvas-high-contrast/skin.css?url";
-import canvasHighContrastContentUrl from "@pantoken/tinymce/skins/canvas-high-contrast/content.css?url";
+import nextGenSkinCss from "@pantoken/tinymce/skins/next-gen/skin.css?inline";
+import nextGenContentCss from "@pantoken/tinymce/skins/next-gen/content.css?inline";
+import canvasSkinCss from "@pantoken/tinymce/skins/canvas/skin.css?inline";
+import canvasContentCss from "@pantoken/tinymce/skins/canvas/content.css?inline";
+import canvasHighContrastSkinCss from "@pantoken/tinymce/skins/canvas-high-contrast/skin.css?inline";
+import canvasHighContrastContentCss from "@pantoken/tinymce/skins/canvas-high-contrast/content.css?inline";
 import {
   buildTheme,
   CDN_PROVIDERS,
@@ -141,14 +141,15 @@ const CUSTOM_THEME_COLORS_CSS = customThemeColorsCss(undefined, {
   selector: "",
   resetSelector: "#theme-tray",
 });
+// The scaffold's own chrome (toolbar, buttons outside the tray) mirrors the embedding docs page's
+// active theme and color — entirely independent of the preview and the tray, which drive their own
+// theme/color separately below. The color remaps follow this theme block in the cascade so a parent
+// color change overrides the theme's root token declarations.
+const chromeThemeStyle = document.createElement("style");
+document.head.append(chromeThemeStyle);
 const customThemeColorsStyle = document.createElement("style");
 customThemeColorsStyle.textContent = CUSTOM_THEME_COLORS_CSS;
 document.head.append(customThemeColorsStyle);
-// The scaffold's own chrome (toolbar, buttons outside the tray) mirrors the embedding docs page's
-// active theme and color — entirely independent of the preview and the tray, which drive their own
-// theme/color separately below.
-const chromeThemeStyle = document.createElement("style");
-document.head.append(chromeThemeStyle);
 const preferences = loadPreferences();
 const LOCAL_PROVIDER_ID = "none";
 // `import.meta.env.DEV` is baked in at build time, so it's `false` for any `vite build` output —
@@ -193,20 +194,21 @@ function buildSelectedAssetUrl(file: CdnFile): string {
   return localUrl;
 }
 
-const editorThemeUrls: Record<
+const editorThemeCss: Record<
   ThemeVariant,
   { skin: string; content: string }
 > = {
-  rebrand: { skin: nextGenSkinUrl, content: nextGenContentUrl },
-  canvas: { skin: canvasSkinUrl, content: canvasContentUrl },
+  rebrand: { skin: nextGenSkinCss, content: nextGenContentCss },
+  canvas: { skin: canvasSkinCss, content: canvasContentCss },
   canvasHighContrast: {
-    skin: canvasHighContrastSkinUrl,
-    content: canvasHighContrastContentUrl,
+    skin: canvasHighContrastSkinCss,
+    content: canvasHighContrastContentCss,
   },
 };
 
-let editorSkinLink: HTMLLinkElement | undefined;
-let editorContentLink: HTMLLinkElement | undefined;
+const editorSkinStyle = document.createElement("style");
+document.head.append(editorSkinStyle);
+let editorContentStyle: HTMLStyleElement | undefined;
 
 function isThemeColor(color: unknown): color is PantokenColorNamespace {
   return typeof color === "string" && (COLOR_KEYS as readonly string[]).includes(color);
@@ -214,20 +216,17 @@ function isThemeColor(color: unknown): color is PantokenColorNamespace {
 
 /** Applies the selected static skin to TinyMCE's chrome and iframe document. */
 function applyEditorTheme(editor: Editor | undefined): void {
-  const urls = editorThemeUrls[selectedTheme];
-  editorSkinLink?.remove();
-  editorContentLink?.remove();
-
-  editorSkinLink = document.createElement("link");
-  editorSkinLink.rel = "stylesheet";
-  editorSkinLink.href = urls.skin;
-  document.head.append(editorSkinLink);
+  const css = editorThemeCss[selectedTheme];
+  editorSkinStyle.textContent = css.skin;
 
   if (!editor) return;
-  editorContentLink = editor.getDoc().createElement("link");
-  editorContentLink.rel = "stylesheet";
-  editorContentLink.href = urls.content;
-  editor.getDoc().head.append(editorContentLink);
+  const editorDocument = editor.getDoc();
+  if (!editorContentStyle || editorContentStyle.ownerDocument !== editorDocument) {
+    editorContentStyle?.remove();
+    editorContentStyle = editorDocument.createElement("style");
+    editorDocument.head.append(editorContentStyle);
+  }
+  editorContentStyle.textContent = css.content;
 }
 
 /** Re-themes the chrome's token variant + light/dark scheme — never the preview or the tray. */
@@ -254,7 +253,7 @@ function applyParentTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
   includeDarkModeCheckbox.checked = mode === "dark";
   document.documentElement.dataset.pantokenScheme = mode;
   const themeButton = [...themeButtons].find((button) => button.dataset.theme === theme);
-  if (themeButton) selectButton(themeButtons, themeButton);
+  if (themeButton) selectToggleButton(themeButtons, themeButton);
   includeDarkModeRow.hidden = theme !== "rebrand";
   applyEditorTheme(activeEditor);
   refreshAll();
@@ -437,7 +436,7 @@ if (
   providerSelect.value = preferences.cdnProvider;
 }
 
-const themeButtons = document.querySelectorAll<HTMLButtonElement>(".theme-picker__item[data-theme]");
+const themeButtons = document.querySelectorAll<HTMLButtonElement>(".theme-picker [data-theme]");
 const colorButtons = document.querySelectorAll<HTMLButtonElement>(
   ".theme-picker__color-item[data-color]",
 );
@@ -621,7 +620,7 @@ function restoreCanvasThemePreset(preset: CanvasThemePreset): void {
 
   selectedTheme = preset.theme;
   const themeButton = [...themeButtons].find((button) => button.dataset.theme === preset.theme);
-  if (themeButton) selectButton(themeButtons, themeButton);
+  if (themeButton) selectToggleButton(themeButtons, themeButton);
   includeDarkModeRow.hidden = selectedTheme !== "rebrand";
   includeDarkModeCheckbox.checked = preset.mode === "adaptive";
   providerSelect.value = preset.cdnProvider;
@@ -693,7 +692,7 @@ function selectToggleButton(buttons: NodeListOf<HTMLButtonElement>, target: HTML
 themeButtons.forEach((button) => {
   button.addEventListener("click", () => {
     selectedTheme = button.dataset.theme as ThemeVariant;
-    selectButton(themeButtons, button);
+    selectToggleButton(themeButtons, button);
     includeDarkModeRow.hidden = selectedTheme !== "rebrand";
     applyEditorTheme(activeEditor);
     refreshAll();
@@ -896,10 +895,33 @@ function resizePreviewFrame(): void {
   const height = Math.ceil(Math.max(root.getBoundingClientRect().height, body.offsetHeight + margins));
   previewFrame.style.height = `${height + PREVIEW_BORDER_PX}px`;
 }
+
+function handlePreviewLinkClick(event: MouseEvent): void {
+  if (event.defaultPrevented) return;
+  const anchor = (event.target as Element | null)?.closest("a[href]");
+  const href = anchor?.getAttribute("href")?.trim();
+  if (!href?.startsWith("#")) return;
+
+  event.preventDefault();
+  let fragment: string;
+  try {
+    fragment = decodeURIComponent(href.slice(1));
+  } catch {
+    return;
+  }
+  if (!fragment) return;
+
+  const previewDocument = event.currentTarget as Document;
+  const target =
+    previewDocument.getElementById(fragment) ?? previewDocument.getElementsByName(fragment)[0];
+  target?.scrollIntoView();
+}
+
 previewFrame.addEventListener("load", () => {
   previewResizeObserver?.disconnect();
   previewMutationObserver?.disconnect();
   resizePreviewFrame();
+  previewFrame.contentDocument?.addEventListener("click", handlePreviewLinkClick);
   const root = previewFrame.contentDocument?.documentElement;
   if (!root) return;
   previewResizeObserver = new ResizeObserver(resizePreviewFrame);
