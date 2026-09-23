@@ -24,6 +24,7 @@ function fakeEditor(content: string) {
     on: vi.fn((name: string, callback: (event?: unknown) => void) => listeners.set(name, callback)),
     getContent: vi.fn(() => content),
     setContent: vi.fn(),
+    notificationManager: { open: vi.fn() },
   };
   return { editor, listeners };
 }
@@ -157,6 +158,19 @@ test("format pretty-prints the current doc via prettier", async () => {
   expect(api.getContent()).not.toBe("<div><p>hi</p></div>");
 });
 
+test("entering source mode auto-formats the mirrored content", async () => {
+  const { editor } = fakeEditor("<div><p>hi</p></div>");
+  const plugin = createSourceTogglePlugin({ height: 200 });
+  const api = plugin(editor as never);
+  toggleOn(editor);
+
+  // toggle() fires format() without awaiting it, so flush the pending promise chain.
+  await new Promise((resolve) => setTimeout(resolve, 0));
+
+  expect(api.getContent()).toContain("\n");
+  expect(api.getContent()).not.toBe("<div><p>hi</p></div>");
+});
+
 test("registers a format button disabled outside of source mode", () => {
   const { editor } = fakeEditor("<p>x</p>");
   const plugin = createSourceTogglePlugin({ height: 200 });
@@ -220,6 +234,20 @@ test("installs syntax highlighting styles for HTML tokens", () => {
   expect(styles).toContain("#0000ff");
 });
 
+test("highlight and theme colors are !important, so they survive TinyMCE's `.tox :not(svg):not(rect)` reset", () => {
+  const { editor } = fakeEditor('<div class="example">content</div>');
+  const plugin = createSourceTogglePlugin({ height: 200 });
+  plugin(editor as never);
+  toggleOn(editor);
+
+  const styles = Array.from(document.head.querySelectorAll("style"))
+    .map((style) => style.textContent)
+    .join("\n");
+
+  expect(styles).toContain("#800000 !important");
+  expect(styles).toMatch(/#ffffff\s*!important/);
+});
+
 /** A fake editor supporting multiple listeners per event and a statusbar container, for
  * exercising the footer-display mode. */
 function footerEditor(content: string) {
@@ -241,11 +269,12 @@ function footerEditor(content: string) {
     getContainer: vi.fn(() => container),
     getContent: vi.fn(() => content),
     setContent: vi.fn(),
+    notificationManager: { open: vi.fn() },
   };
   return { editor, listeners };
 }
 
-test("display: 'footer' registers no toolbar controls, only a footer toggle button", () => {
+test("display: 'footer' registers no toolbar controls, only footer toggle and format buttons", () => {
   const { editor, listeners } = footerEditor("<p>hi</p>");
   const plugin = createSourceTogglePlugin({ height: 200, display: "footer" });
   const api = plugin(editor as never);
@@ -260,12 +289,20 @@ test("display: 'footer' registers no toolbar controls, only a footer toggle butt
   expect(button).not.toBeNull();
   expect(button?.getAttribute("aria-pressed")).toBe("false");
 
+  const formatButton = editor
+    .getContainer()
+    .querySelector<HTMLButtonElement>(`#${SOURCE_FORMAT_TOOLBAR_NAME}`);
+  expect(formatButton).not.toBeNull();
+  expect(formatButton?.disabled).toBe(true);
+
   button?.click();
   expect(api.isSourceMode()).toBe(true);
   expect(button?.getAttribute("aria-pressed")).toBe("true");
+  expect(formatButton?.disabled).toBe(false);
 
   for (const handler of listeners.get("remove") ?? []) handler();
   expect(button?.isConnected).toBe(false);
+  expect(formatButton?.isConnected).toBe(false);
 });
 
 test("display: 'both' registers the toolbar toggle and the footer button together", () => {
