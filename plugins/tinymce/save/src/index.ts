@@ -166,7 +166,9 @@ function defaultEquals<State>(left: State, right: State): boolean {
   return JSON.stringify(left) === JSON.stringify(right);
 }
 
-function slugifyExportName(name: string): string {
+/** A preset (or export) display name, safe as a filesystem/URL filename. Exported so hosts can
+ * build a matching filename for their own downloads (e.g. a theme package zip). */
+export function slugifyExportName(name: string): string {
   const normalized = name
     .trim()
     .toLocaleLowerCase()

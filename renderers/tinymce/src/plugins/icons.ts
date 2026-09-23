@@ -19,6 +19,7 @@ import { trackAndInjectAsset } from "../content-css.js";
 import { insertHtml } from "../lib/insertion-target.js";
 import { injectPickerStyles } from "../lib/icon-picker-styles.js";
 import { mountIconPicker, renderPickerShell } from "../lib/icon-picker-dom.js";
+import { registerIconContextToolbar } from "../lib/icon-context-toolbar.js";
 import { TINYMCE_STRINGS } from "../strings.js";
 
 /** Command that opens the icons picker. */
@@ -168,6 +169,7 @@ export function createIconsPlugin(options: IconsPickerOptions): (editor: Editor)
     const openDialog = (): void => openIconsDialog(editor, options);
     editor.addCommand(ICONS_COMMAND, openDialog);
     registerAutocompleter(editor, options);
+    registerIconContextToolbar(editor);
 
     if (options.registerUi === false) return;
 

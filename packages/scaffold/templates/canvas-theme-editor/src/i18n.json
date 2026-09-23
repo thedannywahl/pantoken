@@ -18,6 +18,17 @@
   "previewWidthMediumLabel": { "message": "Medium", "translate": "always" },
   "previewWidthSmallLabel": { "message": "Small", "translate": "always" },
   "previewSchemeToggleLabel": { "message": "Preview dark mode", "translate": "always" },
+  "previewPopupLabel": { "message": "Open preview in a popup", "translate": "always" },
+  "previewPopupTitle": { "message": "Canvas content preview", "translate": "always" },
+  "previewPopupBlockedMessage": {
+    "message": "The preview popup was blocked. Allow popups for this site and try again.",
+    "translate": "always"
+  },
+  "previewFullscreenLabel": { "message": "Show preview fullscreen", "translate": "always" },
+  "previewPopupReturnLabel": {
+    "message": "Return preview to the editor",
+    "translate": "always"
+  },
   "downloadHtmlLabel": { "message": "Download HTML", "translate": "always" },
   "themeTrayAriaLabel": { "message": "Theme settings", "translate": "always" },
   "tabConfigLabel": {

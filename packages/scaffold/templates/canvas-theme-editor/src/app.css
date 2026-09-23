@@ -16,7 +16,7 @@
 }
 
 body:not(.canvas-rce-shell-enabled) {
-  padding: 1.5rem 3rem;
+  padding: 1.5rem 3rem 3rem;
 }
 
 /* Overrides the scaffold-base wrapper layout's app-shell ROW class (side nav + content) — this
@@ -63,15 +63,10 @@ body.canvas-rce-shell-enabled .description {
   min-width: 0;
 }
 
+/* instui-button -color-primary owns the fill/glyph contrast (including its dark-mode swap) —
+   this only pins the icon-only link's size so it doesn't stretch inside the brand row. */
 .canvas-rce-shell__brand-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 0.625rem;
-  background: var(--instui-color-background-brand, var(--instui-color-brand, #0a5dc2));
-  color: var(--instui-color-text-on-color, white);
+  flex-shrink: 0;
 }
 
 .canvas-rce-shell__eyebrow {
@@ -360,9 +355,11 @@ body.canvas-rce-shell-enabled .description {
 }
 
 /* min-height (not height) so TinyMCE's own resize handle can grow the editor, not just shrink it.
-   flex:1 1 0 + min-width:0 so it fills whatever row space the preview pane doesn't claim. */
+   flex:0 1 auto so it stays content-sized in stacked layout — flex:1 1 0 here would give it a
+   flex-basis of 0 with no free space to grow into (the column has no fixed height), capping how
+   tall TinyMCE's own resize handle can make it. Row layout restores equal-width sharing below. */
 .editor-pane {
-  flex: 1 1 0;
+  flex: 0 1 auto;
   min-height: 25rem;
   min-width: 0;
 }
@@ -377,6 +374,10 @@ body.canvas-rce-shell-enabled .description {
   min-height: 0;
   border: 2px solid var(--instui-color-stroke-base);
   border-radius: 10px;
+}
+
+.content[data-layout="row"] .editor-pane {
+  flex: 1 1 0;
 }
 
 .content[data-layout="row"] .preview-pane {
@@ -451,7 +452,18 @@ html:has(.preview-pane.-fullscreen) body {
 .preview-footer {
   display: flex;
   justify-content: flex-end;
+  gap: 0.125rem;
   border-top: 1px solid #ccc;
   width: 100%;
   padding: 0.5rem 1rem;
+}
+
+body.preview-popup {
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+body.preview-popup #preview-popup-toggle {
+  display: none;
 }

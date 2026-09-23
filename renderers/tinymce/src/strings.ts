@@ -22,6 +22,13 @@ export interface TinymceStrings {
   iconsNoResults: string;
   iconsToolbarText: string;
   iconsToolbarTooltip: string;
+  iconContextColorTooltip: string;
+  iconContextSizeTooltip: string;
+  iconContextSizeSmall: string;
+  iconContextSizeMedium: string;
+  iconContextSizeLarge: string;
+  iconContextSizeExtraLarge: string;
+  iconContextDeleteTooltip: string;
   layoutsConfirmReplace: string;
   layoutsDialogTitle: string;
   layoutsMenuText: string;

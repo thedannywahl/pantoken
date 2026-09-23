@@ -22,6 +22,7 @@ test("composes all content plugins behind one pantoken menu button", () => {
     addIcon: vi.fn(),
     addMenuButton: vi.fn(),
     addAutocompleter: vi.fn(),
+    addContextToolbar: vi.fn(),
   };
   const editor = {
     editorManager: { Resource: { add: vi.fn() } },
@@ -42,7 +43,11 @@ test("composes all content plugins behind one pantoken menu button", () => {
   plugin(editor as never);
 
   expect(PANTOKEN_PLUGIN_NAME).toBe("pantoken");
-  expect(registry.addButton).not.toHaveBeenCalled();
+  // The icons plugin's own context toolbar (color/delete buttons) registers regardless of
+  // `registerUi: false` — only each sub-plugin's own insert-toolbar button must stay suppressed.
+  expect(registry.addButton).not.toHaveBeenCalledWith("pantokenComponents", expect.anything());
+  expect(registry.addButton).not.toHaveBeenCalledWith("pantokenIcons", expect.anything());
+  expect(registry.addButton).not.toHaveBeenCalledWith("pantokenLogos", expect.anything());
   expect(registry.addMenuItem).not.toHaveBeenCalled();
   expect(registry.addIcon).toHaveBeenCalledWith(
     PANTOKEN_TOOLBAR_NAME,
@@ -54,7 +59,12 @@ test("composes all content plugins behind one pantoken menu button", () => {
   );
 
   const success = vi.fn();
-  registry.addMenuButton.mock.calls[0]?.[1].fetch(success);
+  // The icons plugin's own context-toolbar size menu also calls `addMenuButton` — find the
+  // pantoken meta menu button by name rather than assuming call order.
+  const pantokenMenuButtonCall = registry.addMenuButton.mock.calls.find(
+    (call) => call[0] === PANTOKEN_TOOLBAR_NAME,
+  );
+  pantokenMenuButtonCall?.[1].fetch(success);
   const items = success.mock.calls[0]?.[0];
   expect(items.map((item: { text: string }) => item.text)).toEqual([
     "Components",

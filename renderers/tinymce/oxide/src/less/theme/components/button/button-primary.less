@@ -8,7 +8,12 @@
 @button-background-image: none;
 @button-background-position: 0 0;
 @button-background-repeat: repeat;
-@button-text-color: contrast(@button-background-color, @color-black, @color-white);
+// Not `contrast(@button-background-color, @color-black, @color-white)`: `@color-black`/
+// `@color-white` are generic page-text tokens that flip with the scheme independently of
+// `@color-tint` — in dark mode `@color-tint` flips to a near-white pill and *both* candidates are
+// also light, so `contrast()` picks one of two low-contrast options. `@color-tint-text` pairs
+// directly with `@color-tint`'s own light/dark flip, so it always contrasts.
+@button-text-color: @color-tint-text;
 @button-border-color: @button-background-color;
 
 @button-disabled-background-color: @button-background-color;

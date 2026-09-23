@@ -687,6 +687,10 @@ export function createA11yPlugin(
         icon.setAttribute("viewBox", "0 0 24 24");
         icon.setAttribute("width", "16");
         icon.setAttribute("height", "16");
+        // Other toolbar/statusbar icons inherit the button's (scheme-aware) text color the same
+        // way — without this the SVG default fill (black) stays black in dark mode while every
+        // other icon swaps.
+        icon.setAttribute("fill", "currentColor");
         const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
         path.setAttribute("d", A11Y_STATUSBAR_ICON_PATH);
         path.setAttribute("fill-rule", "nonzero");

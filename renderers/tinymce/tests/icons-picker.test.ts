@@ -36,6 +36,8 @@ function createMockEditor() {
     addButton: vi.fn(),
     addMenuItem: vi.fn(),
     addAutocompleter: vi.fn(),
+    addMenuButton: vi.fn(),
+    addContextToolbar: vi.fn(),
   };
   const editor = {
     addCommand: mocks.addCommand,
@@ -50,6 +52,8 @@ function createMockEditor() {
         addButton: mocks.addButton,
         addMenuItem: mocks.addMenuItem,
         addAutocompleter: mocks.addAutocompleter,
+        addMenuButton: mocks.addMenuButton,
+        addContextToolbar: mocks.addContextToolbar,
       },
     },
   } as unknown as Editor;
@@ -80,7 +84,7 @@ function openPicker(editor: Editor, open: ReturnType<typeof vi.fn>): HTMLElement
 
 test("the toolbar button and menu item both open the picker dialog", () => {
   const { mocks } = setup();
-  const button = mocks.addButton.mock.calls[0][1];
+  const button = mocks.addButton.mock.calls.find((call) => call[0] === "pantokenIcons")![1];
   button.onAction();
   expect(mocks.open).toHaveBeenCalledTimes(1);
 
@@ -91,7 +95,9 @@ test("the toolbar button and menu item both open the picker dialog", () => {
 
 test("registerUi: false skips the standalone toolbar button/menu item but keeps the command", () => {
   const { mocks } = setup({ registerUi: false });
-  expect(mocks.addButton).not.toHaveBeenCalled();
+  // The icon context toolbar's color/delete buttons register regardless of `registerUi` — only
+  // the picker's own standalone toolbar button/menu item are suppressed.
+  expect(mocks.addButton).not.toHaveBeenCalledWith("pantokenIcons", expect.anything());
   expect(mocks.addMenuItem).not.toHaveBeenCalled();
   expect(mocks.addCommand).toHaveBeenCalledWith(ICONS_COMMAND, expect.any(Function));
 });
@@ -113,7 +119,7 @@ test("picking an icon inserts it, tracks its CSS asset, and closes the dialog", 
     .dispatchEvent(new MouseEvent("dblclick", { bubbles: true }));
 
   expect(mocks.insertContent).toHaveBeenCalledWith(
-    '<span class="instui-icon -icon-heart" aria-hidden="true">\u200B</span>',
+    '<span class="instui-icon -icon-heart" contenteditable="false" aria-hidden="true">\u200B</span>',
   );
   expect(currentAssets).toEqual([
     { package: "@pantoken/plugin-simple-icons", path: "dist/icons/heart.css" },
@@ -134,7 +140,7 @@ test("picking an icon in source view routes the insert to the CodeMirror doc", (
     .dispatchEvent(new MouseEvent("dblclick", { bubbles: true }));
 
   expect(insertAtCursor).toHaveBeenCalledWith(
-    '<span class="instui-icon -icon-heart" aria-hidden="true">\u200B</span>',
+    '<span class="instui-icon -icon-heart" contenteditable="false" aria-hidden="true">\u200B</span>',
   );
   expect(mocks.insertContent).not.toHaveBeenCalled();
 });
@@ -185,7 +191,7 @@ test("autocompleter onAction inserts the selected icon", async () => {
 
   expect(mocks.setRng).toHaveBeenCalledWith(range);
   expect(mocks.insertContent).toHaveBeenCalledWith(
-    '<span class="instui-icon -icon-heart" aria-hidden="true">\u200B</span>',
+    '<span class="instui-icon -icon-heart" contenteditable="false" aria-hidden="true">\u200B</span>',
   );
   expect(hide).toHaveBeenCalled();
 });

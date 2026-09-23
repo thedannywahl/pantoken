@@ -24,6 +24,11 @@ const LESS_TOKEN_VARIABLES = [
   ["base-value", "--instui-font-size-text-base"],
   ["color-black", "--instui-color-text-base"],
   ["color-tint", "--instui-color-background-brand"],
+  // The primary button's text color specifically — unlike `color-black`/`color-white` (generic
+  // page-text tokens that flip with the scheme independent of `color-tint`), this pairs with
+  // `color-tint`'s own light/dark flip so the two always contrast, even where dark mode swaps
+  // the brand color to a near-white pill.
+  ["color-tint-text", "--instui-color-text-interactive-action-primary-base"],
   ["color-white", "--instui-color-text-on-color"],
   ["color-error", "--instui-color-background-error"],
   ["color-success", "--instui-color-background-success"],

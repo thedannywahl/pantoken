@@ -38,6 +38,13 @@
   "iconsNoResults": { "message": "No icons match your search.", "translate": "always" },
   "iconsToolbarText": { "message": "Icons", "translate": "always" },
   "iconsToolbarTooltip": { "message": "Insert an icon", "translate": "always" },
+  "iconContextColorTooltip": { "message": "Icon color", "translate": "always" },
+  "iconContextSizeTooltip": { "message": "Icon size", "translate": "always" },
+  "iconContextSizeSmall": { "message": "Small", "translate": "always" },
+  "iconContextSizeMedium": { "message": "Medium", "translate": "always" },
+  "iconContextSizeLarge": { "message": "Large", "translate": "always" },
+  "iconContextSizeExtraLarge": { "message": "Extra large", "translate": "always" },
+  "iconContextDeleteTooltip": { "message": "Delete icon", "translate": "always" },
   "layoutsConfirmReplace": {
     "message": "Replace the current content with the \"{{title}}\" layout?",
     "translate": "always"

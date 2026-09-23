@@ -21,6 +21,7 @@ import "@pantoken/components/icons/columns-2.css"; // app.html's layout-directio
 import "@pantoken/components/icons/monitor.css"; // app.html's preview-width-picker, large
 import "@pantoken/components/icons/tablet.css"; // app.html's preview-width-picker, medium
 import "@pantoken/components/icons/smartphone.css"; // app.html's preview-width-picker, small
+import "@pantoken/components/icons/app-window.css"; // app.html's preview popup button
 import "@pantoken/components/icons/maximize.css"; // app.html's preview-fullscreen-toggle, off state
 import "@pantoken/components/icons/minimize.css"; // app.html's preview-fullscreen-toggle, on state
 import "@pantoken/components/icons/moon.css"; // app.html's preview-scheme-toggle, light state
@@ -44,7 +45,6 @@ import "@pantoken/plugin-layouts/layouts.css";
 import "./app.css";
 import appHtml from "./app.html?raw";
 import { STRINGS } from "./strings.ts";
-import { LOCALE_STRINGS } from "./locale-strings.ts";
 import tinymce from "tinymce";
 import "tinymce/models/dom/model";
 import "tinymce/themes/silver/theme";
@@ -133,6 +133,8 @@ import {
   createSavePlugin,
   SAVE_PLUGIN_NAME,
   SAVE_TOOLBAR_NAME,
+  slugifyExportName,
+  type SavePluginApi,
 } from "@pantoken/tinymce-save";
 import { loadPreferences, savePreferences } from "./preferences.ts";
 
@@ -147,11 +149,12 @@ const HOST_INSTANCE = "docs";
 const CANVAS_CONTENT_MAX_WIDTH = "59.25rem";
 // All 13 `[data-pantoken-color="…"]` color-remap rules, computed once — editable Canvas content,
 // the shell, and the preview can each own an independent color scope. `resetSelector`
-// pins the theme tray's own subtree (buttons, swatches) back to true colors, immune to whatever
-// color the chrome (below) currently has active — see plugins/pantoken/custom-theme-colors.
+// pins the theme tray's own subtree (buttons, swatches) and the standalone shell's header (its
+// color menu swatches) back to true colors, immune to whatever color the chrome currently has
+// active — see plugins/pantoken/custom-theme-colors.
 const CUSTOM_THEME_COLORS_CSS = customThemeColorsCss(undefined, {
   selector: "",
-  resetSelector: "#theme-tray",
+  resetSelector: "#theme-tray, #canvas-rce-shell",
 });
 // The scaffold's own chrome (toolbar, buttons outside the tray) mirrors the embedding docs page's
 // active theme and color — entirely independent of the preview and the tray, which drive their own
@@ -159,19 +162,16 @@ const CUSTOM_THEME_COLORS_CSS = customThemeColorsCss(undefined, {
 // color change overrides the theme's root token declarations.
 const chromeThemeStyle = document.createElement("style");
 document.head.append(chromeThemeStyle);
-// lightningcss downlevels light-dark() to only follow the OS preference (see
-// PREVIEW_SCHEME_FORCE_CSS below for the full story) — without this, the chrome ignores an
-// explicit light/dark pick whenever it conflicts with the visitor's own OS setting.
-const chromeSchemeForceStyle = document.createElement("style");
-chromeSchemeForceStyle.textContent = `
-[data-pantoken-scheme="light"] { --lightningcss-light: initial; --lightningcss-dark: ; }
-[data-pantoken-scheme="dark"] { --lightningcss-light: ; --lightningcss-dark: initial; }
-`;
-document.head.append(chromeSchemeForceStyle);
 const customThemeColorsStyle = document.createElement("style");
 customThemeColorsStyle.textContent = CUSTOM_THEME_COLORS_CSS;
 document.head.append(customThemeColorsStyle);
 const preferences = loadPreferences();
+let previewPopup: Window | null = null;
+let previewPopupCloseTimer: number | undefined;
+let previewPopupStylePairs: Array<{
+  source: HTMLStyleElement;
+  clone: HTMLStyleElement;
+}> = [];
 const LOCAL_PROVIDER_ID = "none";
 // `import.meta.env.DEV` is baked in at build time, so it's `false` for any `vite build` output —
 // including docs' Canvas RCE preview, which is always built for production yet only ever served on
@@ -204,63 +204,26 @@ function render(template: string, strings: Record<string, string>): string {
   return template.replace(/\{\{(\w+)\}\}/g, (match, key: string) => strings[key] ?? match);
 }
 
-/** Attributes `render()` ever fills with translated text (besides text nodes). */
-const TRANSLATABLE_ATTRS = ["aria-label", "title"];
-
-// TinyMCE and the CodeMirror source/CSS/JS editors inject their own DOM as children of these
-// containers after the initial render, diverging from a freshly re-rendered copy — descending into
-// them here would walk the two trees out of alignment for everything downstream.
-const PATCH_SKIP_SELECTOR = ".editor-pane, #css-editor, #js-editor";
-
-function createPatchWalker(root: Node): TreeWalker {
-  return document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, (node) =>
-    node.nodeType === Node.ELEMENT_NODE && (node as Element).matches(PATCH_SKIP_SELECTOR)
-      ? NodeFilter.FILTER_REJECT
-      : NodeFilter.FILTER_ACCEPT,
-  );
-}
-
-/**
- * Patches `root`'s text and translatable attributes to match `next` in place, leaving every
- * element's identity (and any listeners attached to it) untouched — re-rendering `appHtml` wholesale
- * and swapping `innerHTML` would orphan the ids/listeners the rest of this module already wired up
- * to the original elements. Safe because `render()` never changes markup structure, only inserts
- * plain text, so `root` and `next` are always structurally identical trees (outside the skipped,
- * dynamically-mounted editor containers).
- */
-function patchTranslatedText(root: Element, next: Element): void {
-  const liveWalker = createPatchWalker(root);
-  const nextWalker = createPatchWalker(next);
-  let liveNode: Node | null = root;
-  let nextNode: Node | null = next;
-  do {
-    if (liveNode.nodeType === Node.TEXT_NODE && nextNode!.nodeType === Node.TEXT_NODE) {
-      if (liveNode.textContent !== nextNode!.textContent) liveNode.textContent = nextNode!.textContent;
-    } else if (liveNode.nodeType === Node.ELEMENT_NODE && nextNode!.nodeType === Node.ELEMENT_NODE) {
-      for (const attr of TRANSLATABLE_ATTRS) {
-        const value = (nextNode as Element).getAttribute(attr);
-        if (value !== null && (liveNode as Element).getAttribute(attr) !== value) {
-          (liveNode as Element).setAttribute(attr, value);
-        }
-      }
-    }
-    liveNode = liveWalker.nextNode();
-    nextNode = nextWalker.nextNode();
-  } while (liveNode && nextNode);
-}
-
-/** Swaps the page's translated text/labels to `locale`, falling back to English per-key. */
-function applyLocale(locale: string): void {
-  const strings = { ...STRINGS, ...(LOCALE_STRINGS[locale] ?? {}) };
-  const next = document.createElement("div");
-  next.innerHTML = render(appHtml, strings);
-  const liveRoot = document.querySelector<HTMLDivElement>("#app")!.firstElementChild;
-  const nextRoot = next.firstElementChild;
-  if (liveRoot && nextRoot) patchTranslatedText(liveRoot, nextRoot);
+function syncPreviewPopupChrome(): void {
+  if (!previewPopup || previewPopup.closed) return;
+  const popupDocument = previewPopup.document;
+  for (const { source, clone } of previewPopupStylePairs) clone.textContent = source.textContent;
+  for (const attribute of [
+    "lang",
+    "dir",
+    "data-pantoken-instance",
+    "data-pantoken-theme",
+    "data-pantoken-scheme",
+    "data-pantoken-color",
+  ]) {
+    const value = document.documentElement.getAttribute(attribute);
+    if (value === null) popupDocument.documentElement.removeAttribute(attribute);
+    else popupDocument.documentElement.setAttribute(attribute, value);
+  }
+  popupDocument.documentElement.style.colorScheme = document.documentElement.style.colorScheme;
 }
 
 function createShellIcon(icon: Parameters<typeof createElement>[0]): SVGSVGElement {
-  // lucide's icons are plain node data, not components — createElement renders them.
   const svg = createElement(icon, { width: 16, height: 16, "stroke-width": 2 });
   svg.classList.add("canvas-rce-shell__icon");
   return svg;
@@ -308,7 +271,7 @@ function setupStandaloneAppShell(): void {
 
   const brandMark = document.createElement("div");
   brandMark.className = "canvas-rce-shell__brand-mark";
-  brandMark.innerHTML = PANTOKEN_ICON;
+  brandMark.append(createShellIcon(Palette));
 
   const brandText = document.createElement("div");
   const eyebrow = document.createElement("span");
@@ -366,7 +329,6 @@ function setupStandaloneAppShell(): void {
     }
     option.addEventListener("click", () => {
       document.documentElement.lang = locale;
-      applyLocale(locale);
       localeLabel.textContent = label;
       localeMenu.removeAttribute("open");
       for (const candidate of localePanel.querySelectorAll<HTMLButtonElement>(
@@ -413,7 +375,6 @@ function setupStandaloneAppShell(): void {
     mark.className = "canvas-rce-shell__mark";
     mark.append(createShellIcon(icon));
     option.append(text, mark);
-    if (appearance === "system") option.classList.add("is-selected");
     option.addEventListener("click", () => {
       const selectedMode =
         appearance === "system"
@@ -427,9 +388,6 @@ function setupStandaloneAppShell(): void {
       if (typeof applyChromeTheme === "function") {
         applyChromeTheme(selectedTheme ?? "rebrand", selectedMode as "light" | "dark");
       }
-      // The editor's own content only picks up the new scheme once told — otherwise the app
-      // chrome goes dark but the TinyMCE editing surface stays light.
-      applyEditorTheme(activeEditor);
       for (const candidate of themePanel.querySelectorAll<HTMLButtonElement>("[data-appearance]")) {
         candidate.classList.toggle("is-selected", candidate.dataset.appearance === appearance);
       }
@@ -444,20 +402,25 @@ function setupStandaloneAppShell(): void {
   colorTitle.className = "canvas-rce-shell__group-title";
   colorTitle.textContent = "Color";
   colorGroup.append(colorTitle);
-  for (const color of COLOR_KEYS) {
+  for (const [color, label] of [
+    ["navy", "Navy"],
+    ["blue", "Blue"],
+    ["green", "Green"],
+    ["red", "Red"],
+    ["orange", "Orange"],
+    ["grey", "Grey"],
+    ["plum", "Plum"],
+  ] as const) {
     const option = document.createElement("button");
     option.type = "button";
     option.className = "canvas-rce-shell__option";
     option.dataset.color = color;
-    const swatch = document.createElement("span");
-    swatch.className = "theme-picker__swatch";
-    swatch.dataset.swatch = color;
     const text = document.createElement("span");
-    text.textContent = color.charAt(0).toUpperCase() + color.slice(1);
+    text.textContent = label;
     const mark = document.createElement("span");
     mark.className = "canvas-rce-shell__mark";
     mark.append(createShellIcon(Check));
-    option.append(swatch, text, mark);
+    option.append(text, mark);
     option.addEventListener("click", () => {
       if (isThemeColor(color)) {
         applyChromeColor(color);
@@ -479,9 +442,6 @@ function setupStandaloneAppShell(): void {
 }
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = render(appHtml, STRINGS);
-// A project scaffolded for a non-English locale ships English `STRINGS` regardless (only this
-// runtime overlay is translated) — apply whatever locale the page already declares on load.
-if (document.documentElement.lang) applyLocale(document.documentElement.lang);
 const interactionsScript = document.createElement("script");
 interactionsScript.src = interactionsIifeUrl;
 document.head.append(interactionsScript);
@@ -496,27 +456,12 @@ const localLogoUrls = import.meta.glob<string>(
   "/node_modules/@pantoken/plugin-logos/dist/*.png",
   { eager: true, import: "default", query: "?url" },
 );
-// The bundle sheets (picker preview) and per-icon sheets (inserted content) for the four icon
-// sources — without these, "none"/local CDN mode still fell back to a remote fetch, which 404s
-// for any package (like plugin-lucide-lab) not yet published.
-const localIconCssUrls = import.meta.glob<string>(
-  [
-    "/node_modules/@pantoken/components/dist/icons/*.css",
-    "/node_modules/@pantoken/plugin-custom-icons/dist/icons/*.css",
-    "/node_modules/@pantoken/plugin-simple-icons/dist/icons/*.css",
-    "/node_modules/@pantoken/plugin-simple-icons/dist/simple-icons.css",
-    "/node_modules/@pantoken/plugin-lucide-lab/dist/icons/*.css",
-    "/node_modules/@pantoken/plugin-lucide-lab/dist/lucide-lab.css",
-  ],
-  { eager: true, import: "default", query: "?url" },
-);
 
 function buildSelectedAssetUrl(file: CdnFile): string {
   if (providerSelect.value !== LOCAL_PROVIDER_ID) {
     return buildFileUrl(file, providerSelect.value);
   }
-  const key = `/node_modules/${file.package}/${file.path}`;
-  const localUrl = localLogoUrls[key] ?? localIconCssUrls[key];
+  const localUrl = localLogoUrls[`/node_modules/${file.package}/${file.path}`];
   return localUrl ?? buildFileUrl(file);
 }
 
@@ -573,6 +518,7 @@ function applyChromeTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
   document.documentElement.dataset.pantokenTheme = theme;
   document.documentElement.style.colorScheme = scheme;
   syncBrowserMetadata();
+  syncPreviewPopupChrome();
 }
 
 /** Re-colors the chrome only — the tray's `#theme-tray` reset scope keeps it (and the preview,
@@ -580,6 +526,7 @@ function applyChromeTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
 function applyChromeColor(color: PantokenColorNamespace): void {
   document.documentElement.dataset.pantokenColor = color;
   syncBrowserMetadata();
+  syncPreviewPopupChrome();
 }
 
 function applyParentTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
@@ -592,6 +539,7 @@ function applyParentTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
   syncDarkModeAvailability();
   applyEditorTheme(activeEditor);
   void refreshAll();
+  syncPreviewPopupChrome();
 }
 
 // This app is its own pantoken instance. Claiming the root stops an embedding page's scope from
@@ -677,13 +625,11 @@ const registerPantokenPlugin = (async () => {
         model: componentModel as any,
         currentAssets,
         onMissingAsset,
-        buildAssetUrl: buildSelectedAssetUrl,
       },
       icons: {
         icons: allIcons,
         currentAssets,
         onMissingAsset,
-        buildAssetUrl: buildSelectedAssetUrl,
       },
       logos: {
         logos,
@@ -800,7 +746,6 @@ const downloadJs = document.querySelector<HTMLAnchorElement>("#download-theme-js
 const downloadPackageButton = document.querySelector<HTMLButtonElement>("#download-package")!;
 const downloadHtmlButton = document.querySelector<HTMLButtonElement>("#download-html")!;
 const copyButton = document.querySelector<HTMLButtonElement>("#copy-html")!;
-const copyStatus = document.querySelector<HTMLElement>("#copy-status")!;
 
 let activeEditor: Editor | undefined;
 let cssObjectUrl: string | undefined;
@@ -913,7 +858,7 @@ async function inlineAssetCss(assets: readonly CdnFile[]): Promise<string[]> {
     assets.map(async (asset) => {
       const key = assetKey(asset);
       if (inlineAssetContents.has(key)) return;
-      const response = await fetch(buildSelectedAssetUrl(asset));
+      const response = await fetch(buildFileUrl(asset));
       if (!response.ok) {
         throw new Error(`Unable to inline ${asset.package}/${asset.path}: ${response.status}`);
       }
@@ -1183,23 +1128,130 @@ previewSchemeToggle.addEventListener("click", () => {
 const previewFullscreenToggle = document.querySelector<HTMLButtonElement>(
   "#preview-fullscreen-toggle",
 )!;
-previewFullscreenToggle.addEventListener("click", () => {
-  const fullscreen = previewFullscreenToggle.getAttribute("aria-pressed") !== "true";
+const previewPopupToggle = document.querySelector<HTMLButtonElement>("#preview-popup-toggle")!;
+const previewFullscreenLabel = document.querySelector<HTMLElement>("#preview-fullscreen-label")!;
+const previewPopupReturnLabel = document.querySelector<HTMLElement>(
+  "#preview-popup-return-label",
+)!;
+const previewPopupTitle = document.querySelector<HTMLElement>("#preview-popup-title")!;
+const previewPopupBlockedMessage = document.querySelector<HTMLElement>(
+  "#preview-popup-blocked-message",
+)!;
+const previewAnchor = document.createComment("preview-pane-anchor");
+previewPane.before(previewAnchor);
+let previewWasFullscreen = false;
+let restoringPreview = false;
+
+function setPreviewFullscreen(fullscreen: boolean): void {
   previewFullscreenToggle.setAttribute("aria-pressed", String(fullscreen));
-  previewFullscreenToggle.classList.toggle("-icon-expand", !fullscreen);
+  previewFullscreenToggle.classList.toggle("-icon-maximize", !fullscreen);
   previewFullscreenToggle.classList.toggle("-icon-minimize", fullscreen);
   previewPane.classList.toggle("-fullscreen", fullscreen);
   applyPreviewWidth();
   resizePreviewFrame();
+}
+
+function setPreviewPopupLabels(detached: boolean): void {
+  previewFullscreenLabel.hidden = detached;
+  previewPopupReturnLabel.hidden = !detached;
+  previewFullscreenToggle.setAttribute(
+    "aria-label",
+    (detached ? previewPopupReturnLabel : previewFullscreenLabel).textContent?.trim() ?? "",
+  );
+}
+
+function restorePreviewFromPopup(closePopup = true): void {
+  if (restoringPreview || previewPane.ownerDocument === document) return;
+  restoringPreview = true;
+  const popup = previewPopup;
+  if (previewPopupCloseTimer !== undefined) window.clearInterval(previewPopupCloseTimer);
+  previewPopupCloseTimer = undefined;
+  previewPopup = null;
+  previewPopupStylePairs = [];
+  document.adoptNode(previewPane);
+  previewAnchor.after(previewPane);
+  setPreviewPopupLabels(false);
+  setPreviewFullscreen(previewWasFullscreen);
+  if (closePopup && popup && !popup.closed) popup.close();
+  restoringPreview = false;
+  previewPopupToggle.focus();
+}
+
+function openPreviewPopup(): void {
+  if (previewPopup && !previewPopup.closed) {
+    previewPopup.focus();
+    return;
+  }
+
+  const width = Math.max(320, Math.min(1200, window.screen.availWidth - 80));
+  const height = Math.max(320, Math.min(900, window.screen.availHeight - 80));
+  const left = Math.max(
+    0,
+    (window.screen.availLeft ?? 0) + (window.screen.availWidth - width) / 2,
+  );
+  const top = Math.max(
+    0,
+    (window.screen.availTop ?? 0) + (window.screen.availHeight - height) / 2,
+  );
+  const popup = window.open(
+    "",
+    "pantoken-canvas-preview",
+    `popup=yes,width=${width},height=${height},left=${Math.round(left)},top=${Math.round(top)}`,
+  );
+  if (!popup) {
+    window.alert(previewPopupBlockedMessage.textContent?.trim() ?? "Preview popup blocked.");
+    return;
+  }
+
+  previewPopup = popup;
+  previewWasFullscreen = previewPane.classList.contains("-fullscreen");
+  const popupDocument = popup.document;
+  popupDocument.head.replaceChildren();
+  popupDocument.body.replaceChildren();
+  popupDocument.title = previewPopupTitle.textContent?.trim() ?? "Preview";
+  popupDocument.body.className = "preview-popup";
+  previewPopupStylePairs = [];
+  for (const source of document.head.querySelectorAll<HTMLLinkElement | HTMLStyleElement>(
+    'link[rel="stylesheet"], style',
+  )) {
+    const clone = source.cloneNode(true) as HTMLLinkElement | HTMLStyleElement;
+    if (source instanceof HTMLLinkElement && clone instanceof HTMLLinkElement) {
+      clone.href = source.href;
+    }
+    popupDocument.head.append(clone);
+    if (source instanceof HTMLStyleElement && clone instanceof HTMLStyleElement) {
+      previewPopupStylePairs.push({ source, clone });
+    }
+  }
+  syncPreviewPopupChrome();
+  popupDocument.body.append(previewPane);
+  setPreviewPopupLabels(true);
+  setPreviewFullscreen(true);
+  popup.addEventListener("pagehide", () => restorePreviewFromPopup(false), { once: true });
+  previewPopupCloseTimer = window.setInterval(() => {
+    if (previewPopup?.closed) restorePreviewFromPopup(false);
+  }, 500);
+  popup.focus();
+}
+
+previewPopupToggle.addEventListener("click", openPreviewPopup);
+previewFullscreenToggle.addEventListener("click", () => {
+  if (previewPane.ownerDocument !== document) {
+    restorePreviewFromPopup();
+    return;
+  }
+  const fullscreen = previewFullscreenToggle.getAttribute("aria-pressed") !== "true";
+  setPreviewFullscreen(fullscreen);
   persistPreferences();
 });
 if (preferences.previewFullscreen === true) {
-  previewFullscreenToggle.setAttribute("aria-pressed", "true");
-  previewFullscreenToggle.classList.toggle("-icon-expand", false);
-  previewFullscreenToggle.classList.toggle("-icon-minimize", true);
-  previewPane.classList.toggle("-fullscreen", true);
-  applyPreviewWidth();
+  setPreviewFullscreen(true);
 }
+
+window.addEventListener("beforeunload", () => {
+  if (previewPopupCloseTimer !== undefined) window.clearInterval(previewPopupCloseTimer);
+  previewPopup?.close();
+});
 
 const layoutDirectionToggle = document.querySelector<HTMLButtonElement>(
   "#layout-direction-toggle",
@@ -1395,6 +1447,17 @@ function downloadBlob(blob: Blob, filename: string): void {
   setTimeout(() => URL.revokeObjectURL(objectUrl), 0);
 }
 
+/** The currently open/saved preset's name, if any — downloads use it so the file the author is
+ * actually working on isn't always exported as a generic "canvas-theme"/"untitled". */
+function activePresetName(): string | undefined {
+  const savePlugin = activeEditor?.plugins[SAVE_PLUGIN_NAME] as
+    | SavePluginApi<CanvasThemePreset>
+    | undefined;
+  const activeId = savePlugin?.activePresetId;
+  if (!activeId) return undefined;
+  return savePlugin.list().find((preset) => preset.id === activeId)?.name;
+}
+
 async function refreshAll(): Promise<void> {
   const generation = ++refreshGeneration;
   try {
@@ -1430,7 +1493,7 @@ providerSelect.addEventListener("change", () => {
 downloadHtmlButton.addEventListener("click", () => {
   downloadBlob(
     new Blob([getNormalizedEditorHtml()], { type: "text/html;charset=utf-8" }),
-    "index.html",
+    `${slugifyExportName(activePresetName() ?? "index")}.html`,
   );
 });
 
@@ -1444,7 +1507,10 @@ downloadPackageButton.addEventListener("click", () => {
         "theme.css": strToU8(files.css),
         "theme.js": strToU8(files.js),
       });
-      downloadBlob(new Blob([archive], { type: "application/zip" }), "canvas-theme.zip");
+      downloadBlob(
+        new Blob([archive], { type: "application/zip" }),
+        `${slugifyExportName(activePresetName() ?? "canvas-theme")}.zip`,
+      );
     })
     .catch((error) => {
       console.error("Unable to build the theme package", error);
@@ -1455,9 +1521,7 @@ downloadPackageButton.addEventListener("click", () => {
 });
 
 copyButton.addEventListener("click", () => {
-  void navigator.clipboard.writeText(getNormalizedEditorHtml()).then(() => {
-    copyStatus.textContent = "Copied. Paste into the Canvas Rich Content Editor HTML view.";
-  });
+  void navigator.clipboard.writeText(getNormalizedEditorHtml());
 });
 
 registerPantokenIconPack(tinymce.IconManager);

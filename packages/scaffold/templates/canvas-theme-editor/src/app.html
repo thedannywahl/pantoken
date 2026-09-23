@@ -99,12 +99,27 @@
       <div class="preview-footer">
         <button
           type="button"
+          id="preview-popup-toggle"
+          class="instui-button -size-sm -color-tertiary -icon-app-window -without-background -without-border"
+          aria-label="{{previewPopupLabel}}"
+        >
+          <span class="instui-screen-reader-content">{{previewPopupLabel}}</span>
+          <span id="preview-popup-title" hidden>{{previewPopupTitle}}</span>
+          <span id="preview-popup-blocked-message" hidden>{{previewPopupBlockedMessage}}</span>
+        </button>
+        <button
+          type="button"
           id="preview-fullscreen-toggle"
           class="instui-button -size-sm -color-tertiary -toggle -icon-maximize -without-background -without-border"
           aria-pressed="false"
           aria-label="{{previewFullscreenLabel}}"
         >
-          <span class="instui-screen-reader-content">{{previewFullscreenLabel}}</span>
+          <span id="preview-fullscreen-label" class="instui-screen-reader-content"
+            >{{previewFullscreenLabel}}</span
+          >
+          <span id="preview-popup-return-label" class="instui-screen-reader-content" hidden
+            >{{previewPopupReturnLabel}}</span
+          >
         </button>
       </div>
     </div>

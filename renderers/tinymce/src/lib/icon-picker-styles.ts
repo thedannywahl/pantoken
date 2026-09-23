@@ -103,6 +103,7 @@ const LAYOUT_CSS = `
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
   aspect-ratio: 1;
   padding: 0;
   font-size: 20px;
@@ -119,6 +120,19 @@ const LAYOUT_CSS = `
 .${PICKER_ROOT_CLASS}__tile.is-selected {
   border-color: currentColor !important;
   background: color-mix(in srgb, currentColor 18%, transparent);
+}
+/* A hovered tile borrows the same border as a selected one, so the border alone can't tell them
+   apart once the mouse moves elsewhere \u2014 this corner dot persists regardless of hover state. */
+.${PICKER_ROOT_CLASS}__tile.is-selected::after {
+  content: "";
+  position: absolute;
+  inset-block-end: 3px;
+  inset-inline-end: 3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 0 2px Canvas;
 }
 .${PICKER_ROOT_CLASS}__sentinel {
   grid-column: 1 / -1;

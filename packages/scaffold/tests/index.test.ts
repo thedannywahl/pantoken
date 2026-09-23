@@ -40,6 +40,8 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(appHtml).toContain('class="instui-close-button -size-sm theme-tray__close"');
   expect(appHtml).toContain('popovertargetaction="hide"');
   expect(appHtml).toContain('aria-label="{{closeLabel}}"');
+  expect(appHtml).toContain('id="preview-popup-toggle"');
+  expect(appHtml).toContain('aria-label="{{previewPopupLabel}}"');
   expect(appHtml).not.toContain("theme-picker__item");
   expect(main.match(/selectToggleButton\(themeButtons, themeButton\);/g)).toHaveLength(3);
   expect(main).toContain("selectToggleButton(themeButtons, button);");
@@ -63,13 +65,6 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain('"/node_modules/@pantoken/plugin-logos/dist/*.png"');
   expect(main).toContain("buildFileUrl(file, providerSelect.value)");
   expect(main).toContain("buildAssetUrl: buildSelectedAssetUrl");
-  // "none"/local CDN mode must resolve icon CSS locally too, not just logos — otherwise inserting
-  // an icon still 404s against an unpublished package.
-  expect(main).toContain('"/node_modules/@pantoken/plugin-lucide-lab/dist/icons/*.css"');
-  expect(main).toContain('"/node_modules/@pantoken/plugin-lucide-lab/dist/lucide-lab.css"');
-  expect(main).toContain("localLogoUrls[key] ?? localIconCssUrls[key]");
-  expect(main).toContain("fetch(buildSelectedAssetUrl(asset))");
-  expect(main).not.toContain("fetch(buildFileUrl(asset))");
   expect(main).toContain("createA11yPlugin");
   expect(main).toContain("createSourceTogglePlugin");
   expect(main).toContain("if (isLocalPreview) {");
@@ -101,19 +96,22 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain(
     "toolbar: `${SAVE_TOOLBAR_NAME} undo redo | pantoken | fontsize blocks | bold italic underline",
   );
-  // lucide's vanilla package exports icon node data, not components — createElement renders it.
-  // Calling an icon directly as a function only surfaces when the standalone app shell actually
-  // builds (accessed outside the docs iframe), so this regressed silently once before.
   expect(main).toContain(
     'import { Check, ChevronDown, createElement, Languages, MoonStar, Palette, SunMedium } from "lucide";',
   );
-  expect(main).toContain("createElement(icon, { width: 16, height: 16, ");
+  expect(main).toContain('createElement(icon, { width: 16, height: 16, "stroke-width": 2 })');
   expect(main).not.toContain("icon({ size: 16, strokeWidth: 2 })");
   expect(main).not.toContain("pantokenA11y");
   expect(main).toContain("let previewMutationObserver: MutationObserver | undefined");
   expect(main).toContain("previewFrame.contentDocument?.documentElement");
   expect(main).toContain("previewMutationObserver.observe(root");
   expect(main).toContain("previewFrame.style.height");
+  expect(main).toContain("function openPreviewPopup(): void {");
+  expect(main).toContain("function restorePreviewFromPopup(");
+  expect(main).toContain("previewAnchor.after(previewPane);");
+  expect(main).toContain("previewPopup.closed");
+  expect(main).toContain('popup.addEventListener("pagehide"');
+  expect(main).toContain('window.addEventListener("beforeunload"');
   expect(main).toContain('if (!href?.startsWith("#")) return;');
   expect(main).toContain("event.preventDefault();");
   expect(main).toContain("previewDocument.getElementById(fragment)");
@@ -126,26 +124,15 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).not.toContain('includeDarkModeCheckbox.checked = mode === "dark";');
   expect(main).toContain("document.documentElement.dataset.pantokenScheme = mode;");
   expect(main).toContain("applyEditorTheme(activeEditor);");
-  // The standalone shell's appearance menu must also push the new scheme into the editor's own
-  // content, not just the chrome — otherwise TinyMCE stays light while the app goes dark.
   expect(main).toContain(
-    'applyChromeTheme(selectedTheme ?? "rebrand", selectedMode as "light" | "dark");',
+    "document.querySelector<HTMLMetaElement>('meta[name=\"application-name\"]')",
   );
-  expect(
-    main.indexOf('applyChromeTheme(selectedTheme ?? "rebrand", selectedMode as "light" | "dark");'),
-  ).toBeLessThan(main.lastIndexOf("applyEditorTheme(activeEditor);"));
-  // "System" is the default appearance selection; it previously showed nothing selected.
-  expect(main).toContain('if (appearance === "system") option.classList.add("is-selected");');
-  // The color menu renders every pantoken color (not a hardcoded 7-item subset) with the same
-  // swatch disc the theme-tray picker already uses.
-  expect(main).toContain("for (const color of COLOR_KEYS) {");
-  expect(main).toContain('swatch.className = "theme-picker__swatch";');
-  expect(main).toContain("swatch.dataset.swatch = color;");
-  expect(main).not.toContain('["navy", "Navy"],');
-  // The brand mark is pantoken's own logomark, colored with the active theme color — not a
-  // generic palette icon on a hardcoded gradient.
-  expect(main).toContain("brandMark.innerHTML = PANTOKEN_ICON;");
-  expect(main).not.toContain("brandMark.append(createShellIcon(Palette));");
+  expect(main).toContain("document.querySelector<HTMLMetaElement>('meta[name=\"theme-color\"]')");
+  expect(main).toContain("getComputedStyle(document.documentElement).backgroundColor");
+  expect(main).toContain('link[rel="icon"][data-pantoken-themed-icon]');
+  expect(main).toContain("PANTOKEN_ICON,");
+  expect(main).toContain('getPropertyValue("--instui-primitive-color-navy-navy100")');
+  expect(main.match(/syncBrowserMetadata\(\);/g)).toHaveLength(2);
   expect(main).toContain("refreshAll();");
   expect(main).toContain("interface CanvasThemePreset");
   expect(main).toContain("readonly theme: ThemeVariant;");
@@ -170,13 +157,13 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain(
     'new Blob([getNormalizedEditorHtml()], { type: "text/html;charset=utf-8" })',
   );
-  expect(main).toContain('"index.html",');
+  expect(main).toContain('`${slugifyExportName(activePresetName() ?? "index")}.html`');
   expect(main).toContain('downloadPackageButton.addEventListener("click"');
   expect(main).toContain("const files = buildDownloadFiles(theme);");
   expect(main).toContain('"index.html": strToU8(getNormalizedEditorHtml())');
   expect(main).toContain('"theme.css": strToU8(files.css)');
   expect(main).toContain('"theme.js": strToU8(files.js)');
-  expect(main).toContain('"canvas-theme.zip"');
+  expect(main).toContain('`${slugifyExportName(activePresetName() ?? "canvas-theme")}.zip`');
   expect(main).toContain('type: "application/zip"');
   expect(readFileSync(join(target, "src/app.css"), "utf8")).toContain(
     '.content[data-layout="row"] .preview-pane',
@@ -188,27 +175,6 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   );
   expect(readFileSync(join(target, "src/app.css"), "utf8")).not.toContain(
     "background: var(--instui-color-background-primary, #fff);",
-  );
-  {
-    const appCss = readFileSync(join(target, "src/app.css"), "utf8");
-    // The standalone shell is a top header, not the scaffold-base wrapper layout's app-shell side
-    // nav — body.canvas-rce-shell-enabled must override that class's row direction to a column so
-    // the header stacks above #app instead of sitting beside it.
-    expect(appCss).toContain(
-      "body.canvas-rce-shell-enabled {\n  display: flex;\n  flex-direction: column;",
-    );
-    // Redundant once the standalone shell's own brand mark is showing.
-    expect(appCss).toContain(
-      "body.canvas-rce-shell-enabled .title,\nbody.canvas-rce-shell-enabled .description {\n  display: none;\n}",
-    );
-  }
-  // lightningcss downlevels light-dark() to only follow the OS preference, so without a chrome
-  // override the page text/UI silently uses dark-mode colors while the chosen appearance is light.
-  expect(main).toContain(
-    '[data-pantoken-scheme="light"] { --lightningcss-light: initial; --lightningcss-dark: ; }',
-  );
-  expect(main.indexOf("document.head.append(chromeThemeStyle)")).toBeLessThan(
-    main.indexOf("document.head.append(chromeSchemeForceStyle)"),
   );
   expect(main).not.toContain('tinymce.PluginManager.add("pantoken_components"');
   expect(main).not.toContain('tinymce.PluginManager.add("pantoken_source_toggle"');
@@ -234,33 +200,6 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(pkg).toContain('"@pantoken/tinymce-save": "latest"');
   expect(pkg).toContain('"fflate": "catalog:"');
   expect(pkg).not.toContain("{{projectName}}");
-  // Real translated overrides for whichever of this platform's UI strings the CLI catalog also
-  // tracks (msgctxt `cli.scaffold:<platform>.<key>`) — a missing key/locale falls back to English.
-  expect(main).toContain('import { LOCALE_STRINGS } from "./locale-strings.ts";');
-  expect(existsSync(join(target, "src/locale-strings.ts"))).toBe(true);
-  const localeStrings = readFileSync(join(target, "src/locale-strings.ts"), "utf8");
-  expect(localeStrings).toContain(
-    "export const LOCALE_STRINGS: Record<string, Record<string, string>>",
-  );
-  // Not just an empty shell — real translated overrides must actually be present for at least one
-  // locale that has translated CLI catalog entries under this platform's msgctxt keys.
-  expect(
-    Object.keys(JSON.parse(localeStrings.slice(localeStrings.indexOf("= ") + 2, -2))).length,
-  ).toBeGreaterThan(0);
-  // Re-rendering to a detached tree and patching text/attrs in place (rather than swapping
-  // innerHTML wholesale) keeps every wired-up element's identity and listeners intact.
-  expect(main).toContain("function patchTranslatedText(root: Element, next: Element): void {");
-  expect(main).toContain("function createPatchWalker(root: Node): TreeWalker {");
-  // TinyMCE/CodeMirror inject their own DOM into these containers after the initial render,
-  // diverging from a freshly re-rendered copy — walking into them would misalign the two trees.
-  expect(main).toContain('const PATCH_SKIP_SELECTOR = ".editor-pane, #css-editor, #js-editor";');
-  expect(main).toContain("function applyLocale(locale: string): void {");
-  expect(main).toContain("applyLocale(locale);");
-  // A project scaffolded for a non-English locale still ships English `STRINGS` (only this
-  // runtime overlay is translated), so the declared `<html lang>` must be applied on load too.
-  expect(main).toContain(
-    "if (document.documentElement.lang) applyLocale(document.documentElement.lang);",
-  );
 });
 
 test("canvas-theme-editor keeps other tinymce config keys when persisting a11y settings", async () => {

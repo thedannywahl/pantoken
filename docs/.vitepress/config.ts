@@ -1,6 +1,7 @@
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { type DefaultTheme, defineConfig } from "vitepress";
+import type { Plugin } from "vite";
 import { workspaceOrchestrator } from "@pantoken/vite-workspace-orchestrator";
 import {
   demoMarkdownIt,
@@ -530,6 +531,28 @@ const searchLocales = Object.fromEntries(
 const base = process.env.DOCS_BASE ?? "/";
 const outDir = process.env.DOCS_OUT_DIR;
 
+// `public/tools/canvas-rce/` is a nested static bundle (see @pantoken/docs#canvas-rce above), not a
+// VitePress page — so `/tools/canvas-rce/index.html` reaches it via Vite's public-dir static serving,
+// but the bare directory URL (`/tools/canvas-rce` or `/tools/canvas-rce/`, the conventional way to
+// link to a static site's index) never resolves: VitePress's own clean-URL page router runs first,
+// finds no matching page for it, and 404s before Vite's static middleware gets a chance to serve the
+// nested index.html. `enforce: "pre"` runs this ahead of that router so the rewrite always wins.
+const serveCanvasRceDirectory: Plugin = {
+  name: "pantoken:serve-canvas-rce-directory",
+  enforce: "pre",
+  apply: "serve",
+  configureServer(server) {
+    const canvasRcePath = `${base.replace(/\/$/, "")}/tools/canvas-rce`;
+    server.middlewares.use((req, _res, next) => {
+      const url = req.url?.split("?")[0];
+      if (url === canvasRcePath || url === `${canvasRcePath}/`) {
+        req.url = `${canvasRcePath}/index.html`;
+      }
+      next();
+    });
+  },
+};
+
 // VitePress SSR-renders pages with `buildConcurrency` (default 64) in flight at once, and every
 // in-flight page holds its rendered HTML, head tags, and Vue SSR context alive. At ~39k pages
 // (43 locales x the generated API tree) that peak is what pushes the 16 GB deploy runner past
@@ -845,7 +868,7 @@ export default defineConfig({
   vite: {
     // Emit llms.txt (an agent-legible index) and llms-full.txt (the whole site as one document) so AI
     // agents can read the guides and generated API reference without scraping HTML.
-    plugins: [orchestrator, ...llmsTxtPlugins],
+    plugins: [serveCanvasRceDirectory, orchestrator, ...llmsTxtPlugins],
     resolve: {
       alias: [
         {

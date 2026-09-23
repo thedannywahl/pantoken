@@ -47,6 +47,9 @@ This opens a Vite dev server with:
   stylesheet/script applied plus CDN `<link>` tags or inlined styles for picker-inserted
   icon/component assets, wrapped to match Canvas's own content-area background and max width — a faithful "what
   this will look like once uploaded to Canvas" check, updated live as you type or edit the theme.
+  Use the preview footer's pop-out button to move the live preview into its own fullscreen window
+  while keeping only the editor in the original window. The popup's minimize button or browser
+  close button returns the preview to its previous row, column, or fullscreen position.
 - The **Edit theme** tray's **Config** tab holds the CDN provider/theme/mode selects and
   **Download theme.css** / **Download theme.js** links; its **CSS**/**JS** tabs start blank —
   anything you add there is appended to the generated `theme.css`/`theme.js`, both in the live
