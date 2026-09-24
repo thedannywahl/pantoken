@@ -1,0 +1,1 @@
+either some things weren't committed or there's a regression.  in standalone mode several of the previous issues are reintroduced or were not remediated.
