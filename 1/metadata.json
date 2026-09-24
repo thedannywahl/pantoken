@@ -1,16 +1,18 @@
 {
   "cli_version": "0.11.2",
   "checkpoint_id": "01M38CB4BT8A9BE8A1YM0C8HT1",
+  "session_id": "fb2a77f6-a8ae-42e3-ae93-187dce2f9189",
   "strategy": "manual-commit",
+  "created_at": "2026-09-24T00:16:56.194706Z",
   "branch": "tinymce-utility",
-  "checkpoints_count": 2,
+  "checkpoints_count": 1,
+  "save_step_count": 1,
   "files_touched": [
     "l10n/ar/scaffold.readme.po",
     "l10n/ca/scaffold.readme.po",
     "l10n/cy/scaffold.readme.po",
     "l10n/da/scaffold.readme.po",
     "l10n/de/scaffold.readme.po",
-    "l10n/docs.api.pot",
     "l10n/el/scaffold.readme.po",
     "l10n/en-AU/scaffold.readme.po",
     "l10n/en-CA/scaffold.readme.po",
@@ -52,27 +54,47 @@
     "l10n/zh-Hans/scaffold.readme.po",
     "l10n/zh-Hant/scaffold.readme.po"
   ],
-  "sessions": [
-    {
-      "metadata": "/0/metadata.json",
-      "transcript": "/0/full.jsonl",
-      "compact_transcript": "/0/transcript.jsonl",
-      "content_hash": "/0/content_hash.txt",
-      "prompt": "/0/prompt.txt"
-    },
-    {
-      "metadata": "/1/metadata.json",
-      "transcript": "/1/full.jsonl",
-      "compact_transcript": "/1/transcript.jsonl",
-      "content_hash": "/1/content_hash.txt",
-      "prompt": "/1/prompt.txt"
-    }
-  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "649ec1eed4b3",
+  "checkpoint_transcript_start": 1570,
+  "transcript_lines_at_start": 1570,
+  "compact_transcript_start": 302,
   "token_usage": {
     "input_tokens": 0,
     "cache_creation_tokens": 0,
     "cache_read_tokens": 0,
     "output_tokens": 0,
     "api_call_count": 0
-  }
+  },
+  "session_metrics": {
+    "turn_count": 5
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-24T00:16:56.076319Z",
+    "agent_lines": 266,
+    "agent_removed": 2,
+    "human_added": 31567,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 31833,
+    "total_lines_changed": 125458,
+    "agent_percentage": 0.21361730619011943,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 1,
+      "user_lines_removed": 1,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "l10n/docs.api.pot": 1
+      },
+      "user_removed_per_file": {
+        "l10n/docs.api.pot": 1
+      }
+    }
+  ]
 }
