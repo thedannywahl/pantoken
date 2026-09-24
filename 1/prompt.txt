@@ -1,0 +1,23 @@
+tinymce contrast checker didn't pick this text up:
+```
+  <span
+    class="instui-icon -icon-face-slightly-smiling"
+    style="font-size: 2em; color: #fefc78;"
+    contenteditable="false"
+    aria-hidden="true"
+    >​</span
+  >
+  ```
+  and the contrast should be checking against light & dark when 'include dark mode' is checked.
+
+---
+
+In this pantoken repo, find the TinyMCE contrast checker feature/plugin implementation. I need to understand:
+
+1. Where is the contrast checker code located (likely under formats/, plugins/, or a tinymce-specific package)? Search for terms like "contrast", "contrast checker", "WCAG", "luminance", "include dark mode", "dark mode".
+2. How does the contrast checker currently scan/select elements in the editor content to check for text contrast issues (what selector/logic determines which elements are "text" elements to check)? Does it handle elements like `<span>` with inline `style="color: ..."` and a `contenteditable="false"` attribute, and icon-font spans (e.g. class `instui-icon` or `-icon-*`)?
+3. Where/how is the "include dark mode" checkbox/toggle implemented, and how does the code decide what background/foreground colors to test the contrast against (light theme colors vs dark theme colors)? Does it actually run the check twice (once for light values, once for dark values) when that toggle is on, or does it just switch which single set of colors it uses?
+4. What determines whether an element counts as "text with visible content" vs decorative/empty content — e.g. does it check for `textContent.trim().length` or similar, which would exclude a span whose only child is a zero-width space or empty, even though the span is rendering an icon glyph via a CSS ::before generated content using color?
+5. Any existing tests for the contrast checker (path to test files) and how they set up sample HTML fixtures.
+
+Report back for each: exact file paths (relative to repo root), key function/variable names, and relevant code snippets (with line numbers) showing the current selection logic and dark-mode handling logic. Also note any config file or constants listing which CSS properties/selectors are considered "text" vs "icon" nodes. This is a read-only research task — do not modify any files.
