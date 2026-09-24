@@ -70,6 +70,16 @@ writeFileSync(
 configureCanvasRcePwa(
   renderDir,
   join(repoRoot, "plugins", "pantoken", "logos", "assets", "logos", "pantoken", "icon-color.svg"),
+  join(
+    repoRoot,
+    "plugins",
+    "pantoken",
+    "logos",
+    "assets",
+    "logos",
+    "pantoken",
+    "icon-reversed.svg",
+  ),
 );
 
 await build({

@@ -106,9 +106,10 @@ test("opening the picker injects the preview stylesheets once", () => {
   const { editor, mocks } = setup();
   openPicker(editor, mocks.open);
   const owned = document.head.querySelectorAll("[data-pantoken-icon-picker]");
-  // Two <style> elements (chrome + inline glyph tokens) plus one <link> per CDN-backed source.
-  expect(owned).toHaveLength(4);
-  expect(document.head.querySelectorAll("style[data-pantoken-icon-picker]")).toHaveLength(2);
+  // Three <style> elements (chrome + autocomplete + inline glyph tokens) plus one <link> per
+  // CDN-backed source.
+  expect(owned).toHaveLength(5);
+  expect(document.head.querySelectorAll("style[data-pantoken-icon-picker]")).toHaveLength(3);
 });
 
 test("picking an icon inserts it, tracks its CSS asset, and closes the dialog", () => {
@@ -158,7 +159,7 @@ test("the autocompleter trigger is configurable", () => {
   expect(mocks.addAutocompleter.mock.calls[0][1].trigger).toBe(";");
 });
 
-test("autocompleter rows carry the icon name and its source label", async () => {
+test("autocompleter rows carry just the icon name, not a source label", async () => {
   const { mocks } = setup();
   const spec = mocks.addAutocompleter.mock.calls[0][1];
   const results = await spec.fetch("hear", 10);
@@ -166,7 +167,7 @@ test("autocompleter rows carry the icon name and its source label", async () => 
   const texts = results[0].items[0].items
     .filter((item: { type: string }) => item.type === "cardtext")
     .map((item: { text: string }) => item.text);
-  expect(texts).toEqual(["heart", "Simple Icons"]);
+  expect(texts).toEqual(["heart"]);
 });
 
 test("autocompleter rows show a glyph resolved from the injected source stylesheet", async () => {
@@ -179,6 +180,7 @@ test("autocompleter rows show a glyph resolved from the injected source styleshe
   const [row] = await spec.fetch("heart", 10);
   const image = row.items[0].items.find((item: { type: string }) => item.type === "cardimage");
   expect(image.src).toBe("data:image/svg+xml;charset=utf-8,%3Csvg%3E%3C/svg%3E");
+  expect(image.classes).toContain("pantoken-icon-glyph");
   document.documentElement.style.removeProperty("--instui-icon-heart");
 });
 

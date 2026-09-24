@@ -560,18 +560,25 @@ const a11yRuntimeConfig: A11yCheckConfig = {
   },
 };
 
-/** Re-themes the chrome's token variant + light/dark scheme — never the preview or the tray. */
+/** Re-themes the chrome's token variant + light/dark scheme — the tray and shell are regular app
+ * chrome and inherit this too; only the preview `srcdoc` has its own independent theme/scheme. */
 function applyChromeTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
-  chromeThemeStyle.textContent =
+  const tokensCss =
     theme === "canvas"
       ? canvasTokensCss
       : theme === "canvasHighContrast"
         ? canvasHighContrastTokensCss
         : adaptiveTokensCss;
+  // Without `PREVIEW_SCHEME_FORCE_CSS`, the chrome's own buttons/text stay pinned to the OS
+  // `prefers-color-scheme` (see that constant's comment) even though `colorScheme` below is set
+  // explicitly — only the native-CSS background rules that key off `color-scheme` directly would
+  // follow the toggle, leaving everything else stuck on the OS default.
+  chromeThemeStyle.textContent = [tokensCss, PREVIEW_SCHEME_FORCE_CSS].join("\n");
   // Pins `light-dark()` resolution to the docs page's explicit mode instead of the OS preference —
   // single-scheme themes (canvas/canvasHighContrast) only ever render light.
   const scheme = theme === "rebrand" ? mode : "light";
   document.documentElement.dataset.pantokenTheme = theme;
+  document.documentElement.dataset.pantokenScheme = scheme;
   document.documentElement.style.colorScheme = scheme;
   syncBrowserMetadata();
   syncPreviewPopupChrome();
@@ -1244,6 +1251,7 @@ function restorePreviewFromPopup(closePopup = true): void {
   if (closePopup && popup && !popup.closed) popup.close();
   restoringPreview = false;
   previewPopupToggle.focus();
+  layoutDirectionToggle.disabled = false;
 }
 
 function openPreviewPopup(): void {
@@ -1296,6 +1304,7 @@ function openPreviewPopup(): void {
   popupDocument.body.append(previewPane);
   setPreviewPopupLabels(true);
   setPreviewFullscreen(true);
+  layoutDirectionToggle.disabled = true;
   popup.addEventListener("pagehide", () => restorePreviewFromPopup(false), { once: true });
   previewPopupCloseTimer = window.setInterval(() => {
     if (previewPopup?.closed) restorePreviewFromPopup(false);
@@ -1325,19 +1334,9 @@ window.addEventListener("beforeunload", () => {
 const layoutDirectionToggle = document.querySelector<HTMLButtonElement>(
   "#layout-direction-toggle",
 )!;
-const contentEl = document.querySelector<HTMLElement>(".content")!;
-layoutDirectionToggle.addEventListener("click", () => {
-  const row = layoutDirectionToggle.getAttribute("aria-pressed") !== "true";
-  layoutDirectionToggle.setAttribute("aria-pressed", String(row));
-  layoutDirectionToggle.classList.toggle("-icon-rows-2", row);
-  layoutDirectionToggle.classList.toggle("-icon-columns-2", !row);
-  contentEl.style.flexDirection = row ? "row" : "column";
-  contentEl.dataset.layout = row ? "row" : "column";
-  applyPreviewWidth();
-  persistPreferences();
-});
-if (preferences.layout === "row" || preferences.layout === "column") {
-  const row = preferences.layout === "row";
+const contentEl = document.querySelector<HTMLElement>(".panes")!;
+/** Applies (and reflects in the toggle button) row vs. column pane arrangement. */
+function applyLayoutDirection(row: boolean): void {
   layoutDirectionToggle.setAttribute("aria-pressed", String(row));
   layoutDirectionToggle.classList.toggle("-icon-rows-2", row);
   layoutDirectionToggle.classList.toggle("-icon-columns-2", !row);
@@ -1345,6 +1344,13 @@ if (preferences.layout === "row" || preferences.layout === "column") {
   contentEl.dataset.layout = row ? "row" : "column";
   applyPreviewWidth();
 }
+layoutDirectionToggle.addEventListener("click", () => {
+  applyLayoutDirection(layoutDirectionToggle.getAttribute("aria-pressed") !== "true");
+  persistPreferences();
+});
+// Row is the default first-visit layout — matches the toggle's default markup (aria-pressed="true",
+// the rows-2 icon) so there's no dead first click reconciling a mismatched initial state.
+applyLayoutDirection(preferences.layout !== "column");
 
 /** Saves this app's current layout/preview/CDN provider settings for the next visit. */
 function persistPreferences(): void {

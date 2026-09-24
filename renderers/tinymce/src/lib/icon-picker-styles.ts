@@ -14,6 +14,24 @@ const OWNED_ATTRIBUTE = "data-pantoken-icon-picker";
 /** Root class the dialog markup carries; scopes the glyph painter so it can't leak into the host page. */
 export const PICKER_ROOT_CLASS = "pantoken-ip";
 
+/** Class on the `::name` autocompleter's row glyph `<img>` (added via its `classes` field). */
+export const AUTOCOMPLETE_GLYPH_CLASS = "pantoken-icon-glyph";
+
+/**
+ * Pins the autocompleter row glyph to the editor's line-height. Without this, sources whose SVGs
+ * carry no explicit `width`/`height` (Simple Icons only declares a `viewBox`) fall back to the
+ * browser's default replaced-element size — hugely larger than every other source, and blurry from
+ * the browser then downscaling that oversized raster into the row.
+ */
+const AUTOCOMPLETE_CSS = `
+.${AUTOCOMPLETE_GLYPH_CLASS} {
+  width: 1.2em;
+  height: 1.2em;
+  object-fit: contain;
+  flex: none;
+  vertical-align: middle;
+}`;
+
 /**
  * The glyph painter, scoped to the picker. Mirrors the canonical `icon` utility in
  * `@pantoken/components` (`src/utilities/icon/icon.css`) — keep the two in sync.
@@ -179,6 +197,7 @@ export function injectPickerStyles(
   buildAssetUrl?: (file: CdnFile) => string,
 ): void {
   appendStyle(doc, "chrome", `${PAINTER_CSS}\n${LAYOUT_CSS}`);
+  appendStyle(doc, "autocomplete", AUTOCOMPLETE_CSS);
   appendStyle(doc, "tokens", buildIconTokenCss(icons));
   for (const file of ICON_BUNDLE_CDN_FILES) {
     appendOnce(doc, file.package, () => {

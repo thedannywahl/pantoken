@@ -6,6 +6,7 @@
     "translate": "always"
   },
   "editThemeLabel": { "message": "Edit theme", "translate": "always" },
+  "layoutDirectionLabel": { "message": "Switch layout orientation", "translate": "always" },
   "helpAriaLabel": {
     "message": "Help",
     "translate": "optional"

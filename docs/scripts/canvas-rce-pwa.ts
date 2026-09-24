@@ -14,9 +14,9 @@ function replaceRequired(source: string, search: string, replacement: string): s
   return source.replace(search, replacement);
 }
 
-function appIconSvg(logoSvg: string): string {
+function appIconSvg(logoSvg: string, backgroundColor: string): string {
   const mark = replaceRequired(logoSvg, "<svg ", '<svg x="32" y="32" width="64" height="64" ');
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" fill="${BACKGROUND_COLOR}"/>${mark}</svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" fill="${backgroundColor}"/>${mark}</svg>`;
 }
 
 function writePng(svg: string, size: number, path: string): void {
@@ -25,7 +25,11 @@ function writePng(svg: string, size: number, path: string): void {
 }
 
 /** Apply Pantoken install metadata and icons to the docs-only Canvas RCE render directory. */
-export function configureCanvasRcePwa(renderDir: string, logoPath: string): void {
+export function configureCanvasRcePwa(
+  renderDir: string,
+  logoPath: string,
+  reversedLogoPath: string,
+): void {
   const indexPath = join(renderDir, "index.html");
   let html = readFileSync(indexPath, "utf8");
   html = replaceRequired(
@@ -38,8 +42,10 @@ export function configureCanvasRcePwa(renderDir: string, logoPath: string): void
     html,
     '<link rel="manifest" href="/manifest.webmanifest" />',
     `<link rel="manifest" href="/manifest.webmanifest" />
-    <link rel="icon" href="/icon-192.png" sizes="192x192" type="image/png" data-pantoken-themed-icon />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />`,
+    <link rel="icon" href="/icon-192.png" sizes="192x192" type="image/png" media="(prefers-color-scheme: light)" data-pantoken-themed-icon />
+    <link rel="icon" href="/icon-192-dark.png" sizes="192x192" type="image/png" media="(prefers-color-scheme: dark)" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" media="(prefers-color-scheme: light)" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon-dark.png" sizes="180x180" media="(prefers-color-scheme: dark)" />`,
   );
   writeFileSync(indexPath, html);
 
@@ -55,7 +61,10 @@ export function configureCanvasRcePwa(renderDir: string, logoPath: string): void
     background_color: BACKGROUND_COLOR,
     theme_color: THEME_COLOR,
     // Desktop Chrome doesn't apply manifest icon updates after installation. Keep these fixed and
-    // let the document's opt-in favicon reflect live theme-color changes instead.
+    // let the document's opt-in favicon reflect live theme-color changes instead. Manifest icons
+    // don't reliably support per-icon `media` queries across browsers, so this stays on the light
+    // set — the `<link>` tags above (which OS-level "add to dock"/shortcut features actually read
+    // live) are what pick the dark-contrasting variant.
     icons: ICON_SIZES.map((size) => ({
       src: `${APP_BASE}icon-${size}.png`,
       sizes: `${size}x${size}`,
@@ -65,9 +74,17 @@ export function configureCanvasRcePwa(renderDir: string, logoPath: string): void
   });
   writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
 
-  const iconSvg = appIconSvg(readFileSync(logoPath, "utf8"));
+  const iconSvg = appIconSvg(readFileSync(logoPath, "utf8"), BACKGROUND_COLOR);
   for (const size of ICON_SIZES) {
     writePng(iconSvg, size, join(publicDir, `icon-${size}.png`));
   }
   writePng(iconSvg, 180, join(publicDir, "apple-touch-icon.png"));
+
+  // Dark-dock-safe variant: the reversed (light) mark on the same dark navy used for theme-color,
+  // so a dock/taskbar shortcut icon installed under a dark OS appearance doesn't render dark-on-dark.
+  const iconSvgDark = appIconSvg(readFileSync(reversedLogoPath, "utf8"), THEME_COLOR);
+  for (const size of ICON_SIZES) {
+    writePng(iconSvgDark, size, join(publicDir, `icon-${size}-dark.png`));
+  }
+  writePng(iconSvgDark, 180, join(publicDir, "apple-touch-icon-dark.png"));
 }

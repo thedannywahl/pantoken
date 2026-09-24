@@ -11,13 +11,12 @@ import {
   filterIcons,
   getIconCdnFile,
   getIconImageSrc,
-  SOURCE_LABELS,
   type TaggedIcon,
 } from "../icons.js";
 import type { MissingAssetHandler } from "../types.js";
 import { trackAndInjectAsset } from "../content-css.js";
 import { insertHtml } from "../lib/insertion-target.js";
-import { injectPickerStyles } from "../lib/icon-picker-styles.js";
+import { AUTOCOMPLETE_GLYPH_CLASS, injectPickerStyles } from "../lib/icon-picker-styles.js";
 import { mountIconPicker, renderPickerShell } from "../lib/icon-picker-dom.js";
 import { registerIconContextToolbar } from "../lib/icon-context-toolbar.js";
 import { TINYMCE_STRINGS } from "../strings.js";
@@ -138,9 +137,17 @@ function registerAutocompleter(editor: Editor, options: IconsPickerOptions): voi
                   type: "cardcontainer" as const,
                   direction: "horizontal" as const,
                   items: [
-                    ...(src ? [{ type: "cardimage" as const, src, alt: "" }] : []),
+                    ...(src
+                      ? [
+                          {
+                            type: "cardimage" as const,
+                            src,
+                            alt: "",
+                            classes: [AUTOCOMPLETE_GLYPH_CLASS],
+                          },
+                        ]
+                      : []),
                     { type: "cardtext" as const, text: icon.name, name: "pantoken-icon-name" },
-                    { type: "cardtext" as const, text: SOURCE_LABELS[icon.source] },
                   ],
                 },
               ],

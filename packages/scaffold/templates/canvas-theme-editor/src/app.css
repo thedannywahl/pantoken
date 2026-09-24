@@ -344,7 +344,10 @@ body.canvas-rce-shell-enabled #app-mode {
   gap: 0.5rem;
 }
 
-.content {
+/* Named distinctly from the generic scaffold-base wrapper layout's `.container .content` — that
+   shared selector otherwise wins on specificity and silently forces `flex-direction: row` here
+   without ever setting `data-layout`, so the row-only sizing rules below never activate. */
+.panes {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -377,11 +380,11 @@ body.canvas-rce-shell-enabled #app-mode {
   border-radius: 10px;
 }
 
-.content[data-layout="row"] .editor-pane {
+.panes[data-layout="row"] .editor-pane {
   flex: 1 1 0;
 }
 
-.content[data-layout="row"] .preview-pane {
+.panes[data-layout="row"] .preview-pane {
   flex: 1 1 0;
   align-self: flex-start;
 }

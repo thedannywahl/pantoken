@@ -197,12 +197,12 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   // chrome currently has active.
   expect(main).toContain('resetSelector: "#theme-tray, #canvas-rce-shell"');
   expect(readFileSync(join(target, "src/app.css"), "utf8")).toContain(
-    '.content[data-layout="row"] .preview-pane',
+    '.panes[data-layout="row"] .preview-pane',
   );
   // Stacked layout must size the editor pane by content (so TinyMCE's own resize handle can grow
   // it freely) — `flex: 1 1 0` here gave it a zero flex-basis with no free space to grow into.
   expect(readFileSync(join(target, "src/app.css"), "utf8")).toContain(
-    '.content[data-layout="row"] .editor-pane {\n  flex: 1 1 0;\n}',
+    '.panes[data-layout="row"] .editor-pane {\n  flex: 1 1 0;\n}',
   );
   // The fullscreen overlay's background must adapt to dark mode like every other background in
   // this file — a hardcoded `#fff` fallback showed white chrome behind a dark-mode preview.

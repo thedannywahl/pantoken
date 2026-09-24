@@ -22,12 +22,12 @@ test("injecting installs the painter, the inline tokens, and one sheet per CDN-b
 
   const styles = document.head.querySelectorAll("style[data-pantoken-icon-picker]");
   const links = document.head.querySelectorAll("link[data-pantoken-icon-picker]");
-  expect(styles).toHaveLength(2);
+  expect(styles).toHaveLength(3);
   expect(links).toHaveLength(2);
   expect(styles[0].textContent).toContain(
     `.${PICKER_ROOT_CLASS} .instui-icon[class*="-icon-"]::before`,
   );
-  expect(styles[1].textContent).toContain("--instui-icon-pantoken:url(");
+  expect(styles[2].textContent).toContain("--instui-icon-pantoken:url(");
 });
 
 test("the painter never applies outside the picker root", () => {
@@ -44,5 +44,5 @@ test("repeated injection is a no-op", () => {
   injectPickerStyles(document, icons);
   injectPickerStyles(document, icons);
   injectPickerStyles(document, icons);
-  expect(document.head.querySelectorAll("[data-pantoken-icon-picker]")).toHaveLength(4);
+  expect(document.head.querySelectorAll("[data-pantoken-icon-picker]")).toHaveLength(5);
 });
