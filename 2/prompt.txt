@@ -1,0 +1,1 @@
+the dev server from `vpr docs:dev` now has a loop or a memory leak or something, it doesn't load and is non-responsive, investigate and remediate.
