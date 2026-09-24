@@ -82,7 +82,9 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
     main.indexOf("document.head.append(customThemeColorsStyle)"),
   );
   expect(main).toContain("editorSkinStyle.textContent = css.skin;");
-  expect(main).toContain("editorContentStyle.textContent = css.content;");
+  expect(main).toContain(
+    'editorContentStyle.textContent = [css.content, PREVIEW_SCHEME_FORCE_CSS].join("\\n");',
+  );
   expect(main).toContain("editorContentStyle.ownerDocument !== editorDocument");
   expect(main).not.toContain("editorSkinLink?.remove()");
   expect(main).not.toContain("editorContentLink?.remove()");
@@ -90,7 +92,7 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain(
     '"pantoken pantoken_content_classes placehold pantoken_a11y pantoken_save pantoken_sup_sub pantoken_source_toggle pantoken_fullscreen_footer pantoken_searchreplace_footer pantoken_visualblocks_footer image link lists',
   );
-  expect(main).toContain('createA11yPlugin({ display: "footer" })');
+  expect(main).toContain('createA11yPlugin({ display: "footer", config: a11yRuntimeConfig })');
   expect(main).toContain("createSavePlugin<CanvasThemePreset>");
   expect(main).toContain("SAVE_PLUGIN_NAME");
   expect(main).toContain(

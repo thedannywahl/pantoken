@@ -128,6 +128,8 @@ import {
 import {
   A11Y_PLUGIN_NAME,
   createA11yPlugin,
+  type A11yCheckConfig,
+  type A11yColorScheme,
 } from "@pantoken/tinymce-a11y";
 import {
   createSavePlugin,
@@ -525,12 +527,37 @@ function applyEditorTheme(editor: Editor | undefined): void {
     editorContentStyle = editorDocument.createElement("style");
     editorDocument.head.append(editorContentStyle);
   }
-  editorContentStyle.textContent = css.content;
+  editorContentStyle.textContent = [css.content, PREVIEW_SCHEME_FORCE_CSS].join("\n");
   // The content CSS's dark rules key off this attribute on the iframe's own root, which doesn't
   // inherit it from the host document.
   editorDocument.documentElement.dataset.pantokenScheme =
     document.documentElement.dataset.pantokenScheme;
 }
+
+/** Temporarily overrides the editing iframe's scheme so the a11y checker can test contrast under
+ * both light and dark; the next `applyEditorTheme` call restores the chrome-mirrored value. */
+function forceEditorColorScheme(scheme: A11yColorScheme): void {
+  if (!activeEditor) return;
+  activeEditor.getDoc().documentElement.dataset.pantokenScheme = scheme;
+}
+
+function getEditorColorScheme(): A11yColorScheme {
+  return activeEditor?.getDoc().documentElement.dataset.pantokenScheme === "dark"
+    ? "dark"
+    : "light";
+}
+
+/** Only "rebrand" ships a dark scheme (`syncDarkModeAvailability` hides/disables the checkbox for
+ * the others), so the a11y checker only ever tests both schemes for it. */
+const a11yRuntimeConfig: A11yCheckConfig = {
+  setColorScheme: forceEditorColorScheme,
+  getColorScheme: getEditorColorScheme,
+  get colorSchemes(): readonly A11yColorScheme[] {
+    return selectedTheme === "rebrand" && includeDarkModeCheckbox.checked
+      ? ["light", "dark"]
+      : ["light"];
+  },
+};
 
 /** Re-themes the chrome's token variant + light/dark scheme — never the preview or the tray. */
 function applyChromeTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
@@ -696,7 +723,10 @@ tinymce.PluginManager.add(
   createPlaceholdPlugin({ onInsert: () => void refreshAll() }),
 );
 tinymce.PluginManager.add(CONTENT_CLASSES_PLUGIN_NAME, createContentClassesPlugin());
-tinymce.PluginManager.add(A11Y_PLUGIN_NAME, createA11yPlugin({ display: "footer" }));
+tinymce.PluginManager.add(
+  A11Y_PLUGIN_NAME,
+  createA11yPlugin({ display: "footer", config: a11yRuntimeConfig }),
+);
 tinymce.PluginManager.add(SUP_SUB_PLUGIN_NAME, createSupSubPlugin());
 
 // Toggles between TinyMCE's WYSIWYG view and a syntax-highlighted CodeMirror source view, reusing

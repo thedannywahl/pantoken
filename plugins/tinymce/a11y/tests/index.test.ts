@@ -309,3 +309,80 @@ describe("createA11yPlugin", () => {
     expect(contrastIssues.some((issue) => issue.rule.id === "contrast")).toBe(true);
   });
 });
+
+describe("contrast rule edge cases", () => {
+  test("passes high-contrast hex colors instead of always failing (hex channels must parse as base 16)", async () => {
+    const body = document.createElement("main");
+    body.innerHTML = `<p style="background:#000;color:#fff">High contrast</p>`;
+
+    const issues = await scanAccessibility(body, { config: { contrastThreshold: "4.5:1" } });
+
+    expect(issues.some((issue) => issue.rule.id === "contrast")).toBe(false);
+  });
+
+  test("flags an icon span with no text content, using the ancestor's background", async () => {
+    const body = document.createElement("main");
+    body.innerHTML = `
+      <div style="background:#fefc78">
+        <span class="instui-icon -icon-face-slightly-smiling" style="color:#fefc78"></span>
+      </div>
+    `;
+
+    const issues = await scanAccessibility(body, { config: { contrastThreshold: "4.5:1" } });
+
+    expect(issues.some((issue) => issue.rule.id === "contrast")).toBe(true);
+  });
+
+  test("skips a non-icon element with no text content", async () => {
+    const body = document.createElement("main");
+    body.innerHTML = `<div style="background:#fefc78"><span style="color:#fefc78"></span></div>`;
+
+    const issues = await scanAccessibility(body, { config: { contrastThreshold: "4.5:1" } });
+
+    expect(issues.some((issue) => issue.rule.id === "contrast")).toBe(false);
+  });
+
+  test("resolves an inherited background from an ancestor instead of requiring it on the same element", async () => {
+    const body = document.createElement("main");
+    body.innerHTML = `
+      <div style="background:#fff">
+        <div><p style="color:#777">Low contrast text</p></div>
+      </div>
+    `;
+
+    const issues = await scanAccessibility(body, { config: { contrastThreshold: "4.5:1" } });
+
+    expect(issues.some((issue) => issue.rule.id === "contrast")).toBe(true);
+  });
+
+  test("does not flag an element when no ancestor resolves an opaque background", async () => {
+    const body = document.createElement("main");
+    body.innerHTML = `<p style="color:#777">Low contrast text</p>`;
+
+    const issues = await scanAccessibility(body, { config: { contrastThreshold: "4.5:1" } });
+
+    expect(issues.some((issue) => issue.rule.id === "contrast")).toBe(false);
+  });
+
+  test("checks contrast under every configured color scheme and reports which one failed", async () => {
+    const body = document.createElement("main");
+    body.innerHTML = `<p style="background:#fff;color:#777">Text</p>`;
+    let scheme: "light" | "dark" = "light";
+
+    const issues = await scanAccessibility(body, {
+      config: {
+        contrastThreshold: "4.5:1",
+        colorSchemes: ["light", "dark"],
+        getColorScheme: () => scheme,
+        setColorScheme: (next) => {
+          scheme = next;
+          body.querySelector("p")!.style.color = next === "dark" ? "#000" : "#777";
+        },
+      },
+    });
+
+    const contrastIssue = issues.find((issue) => issue.rule.id === "contrast");
+    expect(contrastIssue?.detail).toBe("Fails in light mode");
+    expect(scheme).toBe("light");
+  });
+});

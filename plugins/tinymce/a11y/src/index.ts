@@ -23,10 +23,19 @@ export interface A11yPersistedSettings {
   enabledRules?: Record<string, boolean>;
 }
 
+/** A CSS color-scheme the contrast rule can be asked to check against. */
+export type A11yColorScheme = "light" | "dark";
+
 /** Configuration passed to every accessibility rule. */
 export interface A11yCheckConfig extends A11yPersistedSettings {
   /** Disable the contrast rules when the editor's content styles are unavailable. */
   disableContrastCheck?: boolean;
+  /** Schemes the contrast rule checks each element under; defaults to whatever is currently rendered. */
+  colorSchemes?: readonly A11yColorScheme[];
+  /** Forces the checked document to render the given scheme; required when `colorSchemes` has more than one entry. */
+  setColorScheme?: (scheme: A11yColorScheme) => void;
+  /** Reads the document's current scheme, used to restore it once the contrast rule has checked every scheme. */
+  getColorScheme?: () => A11yColorScheme;
   readonly [key: string]: unknown;
 }
 
@@ -46,12 +55,16 @@ export interface A11yRule {
   appliesTo(element: Element): boolean;
   test(element: Element, context: A11yRuleContext): boolean | Promise<boolean>;
   fix?(element: Element, context: A11yRuleContext): void | Promise<void>;
+  /** Extra per-instance context for a failed element, computed only when `test` fails. */
+  detail?(element: Element, context: A11yRuleContext): string | undefined;
 }
 
 /** A failed rule and the editor element that caused it. */
 export interface A11yIssue {
   readonly element: Element;
   readonly rule: A11yRule;
+  /** Per-instance context `rule.message` can't express, e.g. which color scheme(s) failed contrast. */
+  readonly detail?: string;
 }
 
 /** Options accepted by {@link scanAccessibility}. */
@@ -120,9 +133,9 @@ function parseCssColor(rawColor: string | null): [number, number, number] | null
             .join("")
         : hex;
     return [
-      parseColorChannel(`0x${expanded.slice(0, 2)}`),
-      parseColorChannel(`0x${expanded.slice(2, 4)}`),
-      parseColorChannel(`0x${expanded.slice(4, 6)}`),
+      Number.parseInt(expanded.slice(0, 2), 16),
+      Number.parseInt(expanded.slice(2, 4), 16),
+      Number.parseInt(expanded.slice(4, 6), 16),
     ];
   }
 
@@ -217,6 +230,53 @@ function getContrastThreshold(config: Readonly<A11yCheckConfig> | undefined): nu
     : 4.5;
 }
 
+/** Matches the `[class*="-icon-"]` painter selector in `formats/components/src/utilities/icon/icon.css`. */
+function isIconElement(element: Element): boolean {
+  return element.matches('[class*="-icon-"]');
+}
+
+function isTransparentColor(color: string): boolean {
+  return color === "" || color === "transparent" || color === "rgba(0, 0, 0, 0)";
+}
+
+/** Real content almost never sets its own `background-color` — walk up to the nearest ancestor
+ * (including `documentElement`) that resolves one instead of requiring it on the same element. */
+function getEffectiveBackgroundColor(element: Element): string | null {
+  for (let node: Element | null = element; node; node = node.parentElement) {
+    if (!(node instanceof HTMLElement)) continue;
+    const bg = node.style.backgroundColor || window.getComputedStyle(node).backgroundColor;
+    if (!isTransparentColor(bg)) return bg;
+  }
+  return null;
+}
+
+function checkContrastOnce(element: HTMLElement, config: Readonly<A11yCheckConfig>): boolean {
+  const threshold = getContrastThreshold(config);
+  const color = element.style.color || window.getComputedStyle(element).color;
+  const bg = getEffectiveBackgroundColor(element);
+  return contrastRatio(color, bg) >= threshold;
+}
+
+/** Checks contrast once per configured scheme (defaulting to whatever is currently rendered),
+ * restoring the original scheme afterward. */
+function checkContrastAcrossSchemes(
+  element: HTMLElement,
+  config: Readonly<A11yCheckConfig>,
+): { pass: boolean; failedSchemes: readonly A11yColorScheme[] } {
+  const schemes = config.colorSchemes;
+  const setScheme = config.setColorScheme;
+  if (!schemes || schemes.length <= 1 || !setScheme) {
+    return { pass: checkContrastOnce(element, config), failedSchemes: [] };
+  }
+  const originalScheme = config.getColorScheme?.();
+  const failedSchemes = schemes.filter((scheme) => {
+    setScheme(scheme);
+    return !checkContrastOnce(element, config);
+  });
+  if (originalScheme) setScheme(originalScheme);
+  return { pass: failedSchemes.length === 0, failedSchemes };
+}
+
 function createA11yRules(strings: A11yStrings): readonly A11yRule[] {
   const contrastRule: A11yRule = {
     id: "contrast",
@@ -228,20 +288,20 @@ function createA11yRules(strings: A11yStrings): readonly A11yRule[] {
       if (!(element instanceof HTMLElement)) return false;
       if (element.closest("img, svg, canvas, video, object, embed")) return false;
       const text = element.textContent?.trim() ?? "";
-      if (text.length === 0) return false;
-      const style = window.getComputedStyle(element);
-      const color = element.style.color || style.color;
-      const bg = element.style.backgroundColor || style.backgroundColor;
-      return color !== "" && bg !== "" && color !== "rgba(0, 0, 0, 0)" && bg !== "rgba(0, 0, 0, 0)";
+      if (text.length === 0 && !isIconElement(element)) return false;
+      const color = element.style.color || window.getComputedStyle(element).color;
+      const bg = getEffectiveBackgroundColor(element);
+      return color !== "" && bg !== null && color !== "rgba(0, 0, 0, 0)";
     },
     test: (element, context) => {
       if (!(element instanceof HTMLElement)) return true;
-      const threshold = getContrastThreshold(context.config);
-      const style = window.getComputedStyle(element);
-      const color = element.style.color || style.color;
-      const bg = element.style.backgroundColor || style.backgroundColor;
-      const ratio = contrastRatio(color, bg);
-      return ratio >= threshold;
+      return checkContrastAcrossSchemes(element, context.config).pass;
+    },
+    detail: (element, context) => {
+      if (!(element instanceof HTMLElement)) return undefined;
+      const { failedSchemes } = checkContrastAcrossSchemes(element, context.config);
+      if (failedSchemes.length === 0) return undefined;
+      return `Fails in ${failedSchemes.join(" and ")} mode`;
     },
   };
 
@@ -429,7 +489,9 @@ export async function scanAccessibility(
         return rules
           .filter((rule) => rule.appliesTo(element))
           .map(async (rule) => {
-            if (!(await rule.test(element, context))) issues.push({ element, rule });
+            if (!(await rule.test(element, context))) {
+              issues.push({ element, rule, detail: rule.detail?.(element, context) });
+            }
           });
       }),
     );
@@ -476,7 +538,7 @@ function openResultsDialog(
 
   const items = issues.map((issue, index) => ({
     value: String(index),
-    text: `${strings.a11yIssueLabel} ${index + 1}: ${issue.rule.message}`,
+    text: `${strings.a11yIssueLabel} ${index + 1}: ${issue.rule.message}${issue.detail ? ` (${issue.detail})` : ""}`,
   }));
   const persisted = loadPersistedA11ySettings();
   const settings = {
