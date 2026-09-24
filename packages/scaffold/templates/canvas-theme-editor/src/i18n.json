@@ -10,6 +10,7 @@
     "message": "Help",
     "translate": "optional"
   },
+  "appModeLabel": { "message": "Open web app", "translate": "always" },
   "copyHtmlLabel": { "message": "Copy HTML", "translate": "always" },
   "downloadPackageLabel": { "message": "Download package", "translate": "always" },
   "previewFrameTitle": { "message": "Styled preview", "translate": "always" },
