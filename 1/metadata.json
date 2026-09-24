@@ -1,0 +1,43 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M38MN5BXMNSRSN2Y78HBECPZ",
+  "session_id": "41a49809-006d-499f-a82b-d69f125a5e5f",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-24T02:42:14.700959Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "l10n/ar/docs.api.po",
+    "l10n/ca/docs.api.po",
+    "l10n/da/docs.api.po",
+    "l10n/hy/docs.api.po",
+    "l10n/nl/docs.api.po"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "5fc9f6ddd203",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-24T02:42:14.687306Z",
+    "agent_lines": 265,
+    "agent_removed": 73,
+    "human_added": 102643,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 102908,
+    "total_lines_changed": 431810,
+    "agent_percentage": 0.07827516731895973,
+    "metric_version": 2
+  }
+}
