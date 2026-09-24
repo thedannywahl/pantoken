@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-24 00:13+0000\n"
+"PO-Revision-Date: 2026-09-24 00:24+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2877,20 +2877,20 @@ msgstr "`true` صحيح عندما قام هذا الاستدعاء بإجراء
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The scope registered for `instanceId` in `doc`, if any."
-msgstr "The scope registered for `instanceId` in `doc`, if any."
+msgstr "النطاق المسجل لـ `instanceId` في `doc`, إن وُجد."
 
 #: formats/scope/src/functions/hasProperties.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "True when a registrations sheet with `id` is already present in `doc`."
-msgstr "True when a registrations sheet with `id` is already present in `doc`."
+msgstr "صحيح عندما تكون ورقة تسجيل تحتوي على `id` موجودة بالفعل في `doc`."
 
 #: formats/scope/src/functions/isScheme.md
 #: packages/utils/src/functions/isScheme.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Narrow an arbitrary value to a [Scheme](../type-aliases/Scheme.md)."
-msgstr "Narrow an arbitrary value to a [Scheme](../type-aliases/Scheme.md)."
+msgstr "قَيِّد قيمةً عشوائيةً إلى [Scheme](../type-aliases/Scheme.md)."
 
 #: formats/scope/src/functions/observeScope.md
 #, no-c-format
@@ -2974,13 +2974,13 @@ msgstr "خالٍ من Node حسب التصميم: يُوزَّع إلى المت
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Re-exports [BOUNDARY_ATTR](../../css/src/variables/BOUNDARY_ATTR.md)"
-msgstr "Re-exports [BOUNDARY_ATTR](../../css/src/variables/BOUNDARY_ATTR.md)"
+msgstr "إعادة تصدير [BOUNDARY_ATTR](../../css/src/variables/BOUNDARY_ATTR.md)"
 
 #: formats/scope/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Re-exports [BOUNDARY_CLASS](../../css/src/variables/BOUNDARY_CLASS.md)"
-msgstr "Re-exports [BOUNDARY_CLASS](../../css/src/variables/BOUNDARY_CLASS.md)"
+msgstr "إعادة تصدير [BOUNDARY_CLASS](../../css/src/variables/BOUNDARY_CLASS.md)"
 
 #: formats/scope/src/index.md
 #, fuzzy, no-c-format
@@ -3028,13 +3028,13 @@ msgstr "خيارات لـ [toGpl](../functions/toGpl.md)."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The instance to accept messages for (default [DEFAULT\\_INSTANCE](../variables/DEFAULT_INSTANCE.md))."
-msgstr "The instance to accept messages for (default [DEFAULT\\_INSTANCE](../variables/DEFAULT_INSTANCE.md))."
+msgstr "المثيل الذي سيتم قبول الرسائل له (الافتراضي [DEFAULT\\_INSTANCE](../variables/DEFAULT_INSTANCE.md))."
 
 #: formats/scope/src/interfaces/ConnectScopeOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The element to apply received state to (default `document.documentElement`)."
-msgstr "The element to apply received state to (default `document.documentElement`)."
+msgstr "العنصر الذي سيتم تطبيق الحالة المستلمة عليه (الافتراضي `document.documentElement`)."
 
 #: formats/scope/src/interfaces/ConnectScopeOptions.md
 #, fuzzy, no-c-format
@@ -3145,7 +3145,7 @@ msgstr "ادمج تكوينًا جزئيًا. مرّر `null` لحقل لمسح�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Resolve the effective scope for a descendant (defaults to this scope's own element)."
-msgstr "Resolve the effective scope for a descendant (defaults to this scope's own element)."
+msgstr "حدد النطاق الفعّال لعنصر تابع (افتراضيًا يكون عنصر هذا النطاق نفسه element)."
 
 #: formats/scope/src/interfaces/PantokenScope.md
 #, no-c-format
@@ -11249,12 +11249,12 @@ msgstr "زر قابل للتحويم \"عرض بملء الشاشة\"، مغطى
 #~ msgid "Give an image avatar a meaningful `alt` (the person's name), not a generic \"avatar\"; for initials-only avatars, prefer real name content (bare text, data-initials, .name, or .first-name/.last-name) over pre-abbreviated letters, so assistive tech announces the real name."
 #~ msgstr "أعطِ الصورة الرمزية القائمة على صورة `alt` ذات معنى (اسم الشخص)، لا \"avatar\" عامة؛ لصور الحروف الأولى فقط، فضّل محتوى الاسم الحقيقي (نص عادي، data-initials، .name، أو .first-name/.last-name) على الحروف المختصرة مسبقًا، حتى تُعلن تقنيات المساعدة الاسم الحقيقي."
 
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "LH"
 #~ msgstr "LH"
 
-#, fuzzy, no-c-format
+#, fuzzy, no-c-format, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid "AI"
 #~ msgstr "AI"
@@ -11267,17 +11267,17 @@ msgstr "زر قابل للتحويم \"عرض بملء الشاشة\"، مغطى
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Miguel Sanchez"
-#~ msgstr "Miguel Sanchez"
+#~ msgstr "ميغيل سانشيز"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Miguel"
-#~ msgstr "Miguel"
+#~ msgstr "ميغيل"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Sanchez"
-#~ msgstr "Sanchez"
+#~ msgstr "سانشيز"
 
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16187,7 +16187,7 @@ msgstr "زر قابل للتحويم \"عرض بملء الشاشة\"، مغطى
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Calendar"
-#~ msgstr "calendar"
+#~ msgstr "التقويم"
 
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -17117,7 +17117,7 @@ msgstr "زر قابل للتحويم \"عرض بملء الشاشة\"، مغطى
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Syllabus.pdf"
-#~ msgstr " Syllabus.pdf"
+#~ msgstr " المنهج الدراسي.pdf"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -17127,17 +17127,17 @@ msgstr "زر قابل للتحويم \"عرض بملء الشاشة\"، مغطى
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Reading.pdf"
-#~ msgstr " Reading.pdf"
+#~ msgstr " القراءة.pdf"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Slides.pptx"
-#~ msgstr " Slides.pptx"
+#~ msgstr " الشرائح.pptx"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Rubric.docx"
-#~ msgstr " Rubric.docx"
+#~ msgstr " معيار التقييم.docx"
 
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -37009,3 +37009,67 @@ msgstr "two-column"
 msgctxt "docs.api:text"
 msgid "wrapper"
 msgstr "wrapper"
+
+msgctxt "docs.api:prose"
+msgid "An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "حلقة تحميل متحركة أو مؤشر دوار ذكاء اصطناعي؛ امنحها role=\"status\" و aria-label."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-spinner` — An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "`.instui-spinner` — حلقة تحميل متحركة أو مؤشر دوران للذكاء الاصطناعي; امنحها role=\"status\" و aria-label."
+
+msgctxt "docs.api:prose"
+msgid "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color. The AI variants replace the ring with the centred `ai-spinner` glyph while keeping the same size scale."
+msgstr "`-color-inverse` يعيد رسم مقطع الحد العلوي المتحرك فقط، وليس المسار بأكمله، لذا يظل مقروءًا بشكل صحيح على بطاقة داكنة دون الحاجة إلى لون مسار منفصل. تستبدل متغيرات الذكاء الاصطناعي الحلقة بالرمز `ai-spinner` المتمركز مع الحفاظ على نفس مقياس الحجم."
+
+msgctxt "docs.api:prose"
+msgid "Rotating AI-gradient star."
+msgstr "نجمة متدرجة للذكاء الاصطناعي تدور."
+
+msgctxt "docs.api:prose"
+msgid "Rotating on-colour AI star for a coloured or dark surface."
+msgstr "نجمة ذكاء اصطناعي ملونة دوارة لسطح ملون أو داكن."
+
+msgctxt "docs.api:prose"
+msgid "Rotates the ring, or the AI star at the slower 2.25-second cadence."
+msgstr "تدور الحلقة، أو نجمة الذكاء الاصطناعي بإيقاع أبطأ يبلغ 2.25 ثانية."
+
+msgctxt "docs.api:prose"
+msgid "The decorative icon markup retained in editor content after a picker selection. A zero-width\nspace keeps the span from being genuinely empty — TinyMCE's schema strips empty inline elements\non `setContent()` (e.g. toggling from source view back to WYSIWYG), which would otherwise\nsilently delete this CSS-painted glyph. `contenteditable=\"false\"` makes TinyMCE treat it as a\nselectable noneditable object (fake-selection painting, backspace-to-delete, and the context\ntoolbar registered in `lib/icon-context-toolbar.ts`) instead of plain inline text."
+msgstr "شيفرة أيقونة زخرفية تُحتفظ بها داخل محتوى المحرر بعد اختيار من المحدد. مسافة بعرض صفري\n تحافظ على العنصر span من كونه فارغًا تمامًا — مخطط TinyMCE يزيل العناصر المُضمّنة الفارغة\nعند `setContent()` (مثلاً التبديل من عرض المصدر إلى WYSIWYG)، والذي بخلاف ذلك\n سيمحو هذه العلامة المرسومة بـCSS بصمت. `contenteditable=\"false\"` يجعل TinyMCE يتعامل معها ككائن غير قابل للتحرير قابل للاختيار\n (طلاء اختيار مزيف، حذف بالـBackspace، وشريط أدوات السياق\n المسجّل في `lib/icon-context-toolbar.ts`) بدلاً من نص مُضمّن عادي.)"
+
+msgctxt "docs.api:prose"
+msgid "Pantoken's own logomark, reused for the toolbar menu button and any host UI that wants it."
+msgstr "شعار Pantoken الخاص، يعاد استخدامه لزر قائمة شريط الأدوات وأي واجهة مستخدم للمضيف ترغَب به."
+
+msgctxt "docs.api:text"
+msgid "Interfaces"
+msgstr "الواجهات"
+
+msgctxt "docs.api:text"
+msgid "Functions"
+msgstr "الدوال"
+
+msgctxt "docs.api:text"
+msgid "Variables"
+msgstr "المتغيرات"
+
+msgctxt "docs.api:text"
+msgid "Type Aliases"
+msgstr "الأسماء المستعارة للنوع"
+
+msgctxt "docs.api:text"
+msgid "Classes"
+msgstr "الفئات"
+
+msgctxt "docs.api:text"
+msgid "Components"
+msgstr "المكونات"
+
+msgctxt "docs.api:text"
+msgid "Utilities"
+msgstr "الأدوات المساعدة"
+
+msgctxt "docs.api:text"
+msgid "Rules"
+msgstr "القواعد"

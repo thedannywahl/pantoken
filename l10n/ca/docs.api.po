@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-24 00:14+0000\n"
+"PO-Revision-Date: 2026-09-24 00:30+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2877,13 +2877,13 @@ msgstr "`true` quan aquesta crida va realitzar la injecció."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The scope registered for `instanceId` in `doc`, if any."
-msgstr "The scope registered for `instanceId` in `doc`, if any."
+msgstr "L'abast registrat per a `instanceId` a `doc`, si n'hi ha."
 
 #: formats/scope/src/functions/hasProperties.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "True when a registrations sheet with `id` is already present in `doc`."
-msgstr "True when a registrations sheet with `id` is already present in `doc`."
+msgstr "Cert quan un full de registres amb `id` ja és present a `doc`."
 
 #: formats/scope/src/functions/isScheme.md
 #: packages/utils/src/functions/isScheme.md
@@ -2896,7 +2896,7 @@ msgstr "Redueix un valor arbitrari a una [Scheme](../type-aliases/Scheme.md)."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Call `listener` whenever the scope resolved for `target` changes, including when an ancestor's\nattributes change."
-msgstr "Call `listener` whenever the scope resolved for `target` changes, including when an ancestor's\nattributes change."
+msgstr "Crida `listener` cada cop que l'abast resolt per `target` canviï, incloent-hi quan els atributs d'un avantpassat\n canviïn."
 
 #: formats/scope/src/functions/observeScope.md
 #, fuzzy, no-c-format
@@ -2932,7 +2932,7 @@ msgstr "Never reads `document.documentElement` — aquesta lectura global és ex
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Resolve the scope in effect for `start` by walking up its ancestors."
-msgstr "Resolve the scope in effect for `start` by walking up its ancestors."
+msgstr "Resol l'abast en vigor per a `start` recorrent els seus avantpassats."
 
 #: formats/scope/src/functions/resolveScope.md
 #, no-c-format
@@ -3145,7 +3145,7 @@ msgstr "Fusiona una configuració parcial. Passa `null` per a un camp per esborr
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Resolve the effective scope for a descendant (defaults to this scope's own element)."
-msgstr "Resolve the effective scope for a descendant (defaults to this scope's own element)."
+msgstr "Resol l'àmbit efectiu per a un descendent (per defecte, l'element propi d'aquest àmbit)."
 
 #: formats/scope/src/interfaces/PantokenScope.md
 #, no-c-format
@@ -14987,7 +14987,7 @@ msgstr "Un botó \"veure a pantalla completa\" sobre el qual es pot passar el ra
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Pastel"
-#~ msgstr "Pastel"
+#~ msgstr "Pastís"
 
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -15427,17 +15427,17 @@ msgstr "Un botó \"veure a pantalla completa\" sobre el qual es pot passar el ra
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Small"
-#~ msgstr " Small"
+#~ msgstr " Petit"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Medium"
-#~ msgstr " Medium"
+#~ msgstr " Mitjà"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Large"
-#~ msgstr " Large"
+#~ msgstr " Gran"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -17117,7 +17117,7 @@ msgstr "Un botó \"veure a pantalla completa\" sobre el qual es pot passar el ra
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Syllabus.pdf"
-#~ msgstr " Syllabus.pdf"
+#~ msgstr " Síl·labus.pdf"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -17127,17 +17127,17 @@ msgstr "Un botó \"veure a pantalla completa\" sobre el qual es pot passar el ra
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Reading.pdf"
-#~ msgstr " Reading.pdf"
+#~ msgstr " Lectura.pdf"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Slides.pptx"
-#~ msgstr " Slides.pptx"
+#~ msgstr " Diapositives.pptx"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Rubric.docx"
-#~ msgstr " Rubric.docx"
+#~ msgstr " Rúbrica.docx"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -28362,3 +28362,35 @@ msgstr "checkbox"
 msgctxt "docs.api:text"
 msgid "ai-gradient"
 msgstr "ai-gradient"
+
+msgctxt "docs.api:prose"
+msgid "An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "Un anell de càrrega animat o un spinner d'IA; assigna-li role=\"status\" i un aria-label."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-spinner` — An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "`.instui-spinner` — Un anell de càrrega animat o un spinner d'IA; proporcioneu-li role=\"status\" i un aria-label."
+
+msgctxt "docs.api:prose"
+msgid "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color. The AI variants replace the ring with the centred `ai-spinner` glyph while keeping the same size scale."
+msgstr "`-color-inverse` només repinta el segment animat de la vora superior, no tota la pista, així que encara es llegeix correctament en una targeta fosca sense necessitat d'un color de pista separat. Les variants d'IA substitueixen l'anell pel glif centrat `ai-spinner` mantenint la mateixa escala de mida."
+
+msgctxt "docs.api:prose"
+msgid "Rotating AI-gradient star."
+msgstr "Estrella giratòria amb degradat d'IA."
+
+msgctxt "docs.api:prose"
+msgid "Rotating on-colour AI star for a coloured or dark surface."
+msgstr "Estrella d'IA giratòria amb el color corresponent per a una superfície acolorida o fosca."
+
+msgctxt "docs.api:prose"
+msgid "Rotates the ring, or the AI star at the slower 2.25-second cadence."
+msgstr "Fa girar l'anell, o l'estrella d'IA amb la cadència més lenta de 2.25 segons."
+
+msgctxt "docs.api:prose"
+msgid "The decorative icon markup retained in editor content after a picker selection. A zero-width\nspace keeps the span from being genuinely empty — TinyMCE's schema strips empty inline elements\non `setContent()` (e.g. toggling from source view back to WYSIWYG), which would otherwise\nsilently delete this CSS-painted glyph. `contenteditable=\"false\"` makes TinyMCE treat it as a\nselectable noneditable object (fake-selection painting, backspace-to-delete, and the context\ntoolbar registered in `lib/icon-context-toolbar.ts`) instead of plain inline text."
+msgstr "El marcatge d'icona decorativa que es conserva al contingut de l'editor després d'una selecció del selector. Un espai d'amplada zero\nevita que l'span estigui realment buit — l'esquema de TinyMCE elimina els elements inline buits\na `setContent()` (p. ex. alternar de la vista de codi font de nou a WYSIWYG), que d'altra manera\nesborraria silenciosament aquest glif pintat amb CSS. `contenteditable=\"false\"` fa que TinyMCE el tracti com un\nobjecte no editable seleccionable (pintat de selecció falsa, suprimit amb retrocés, i la barra d'eines de context\nregistrada a `lib/icon-context-toolbar.ts`) en lloc de text inline senzill."
+
+msgctxt "docs.api:prose"
+msgid "Pantoken's own logomark, reused for the toolbar menu button and any host UI that wants it."
+msgstr "El logotip propi de Pantoken, reutilitzat per al botó del menú de la barra d'eines i qualsevol interfície d'usuari host que el vulgui."

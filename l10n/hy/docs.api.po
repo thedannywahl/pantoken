@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-24 00:14+0000\n"
+"PO-Revision-Date: 2026-09-24 00:27+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2883,7 +2883,7 @@ msgstr "The scope registered for `instanceId` in `doc`, եթե կա։"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "True when a registrations sheet with `id` is already present in `doc`."
-msgstr "True when a registrations sheet with `id` is already present in `doc`."
+msgstr "Ճիշտ է, երբ `id` ունեցող գրանցումների թերթը արդեն առկա է `doc`."
 
 #: formats/scope/src/functions/isScheme.md
 #: packages/utils/src/functions/isScheme.md
@@ -2974,13 +2974,13 @@ msgstr "Node-ազատ դիզայնով՝ սա ուղարկվում է առանձ
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Re-exports [BOUNDARY_ATTR](../../css/src/variables/BOUNDARY_ATTR.md)"
-msgstr "Re-exports [BOUNDARY_ATTR](../../css/src/variables/BOUNDARY_ATTR.md)"
+msgstr "Վերարտահանվում է [BOUNDARY_ATTR](../../css/src/variables/BOUNDARY_ATTR.md)"
 
 #: formats/scope/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Re-exports [BOUNDARY_CLASS](../../css/src/variables/BOUNDARY_CLASS.md)"
-msgstr "Re-exports [BOUNDARY_CLASS](../../css/src/variables/BOUNDARY_CLASS.md)"
+msgstr "Վերարտահանվում է [BOUNDARY_CLASS](../../css/src/variables/BOUNDARY_CLASS.md)"
 
 #: formats/scope/src/index.md
 #, fuzzy, no-c-format
@@ -4655,7 +4655,7 @@ msgstr "Պարաբերելի-դեպք տողը փոխակերպել camelCase-ի
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The selector matching any element using custom brand color `color`."
-msgstr "The selector matching any element using custom brand color `color`."
+msgstr "Ընտրիչը, որը համապատասխանեցնում է ցանկացած տարրին, որը օգտագործում է հարմարեցված բրենդային գույնը `color`."
 
 #: packages/utils/src/functions/colorScopeSelectors.md
 #, no-c-format
@@ -5851,7 +5851,7 @@ msgstr "Կառուցեք քարտի դրվածքի CSS (doc մեկնաբանու
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build the AI gradient utility CSS as a global modifier layer for custom surfaces.\nThe selectors intentionally stay on the bare `--*` modifier form, so they can be reused anywhere\nwithout being tied to the shared InstUI component contract."
-msgstr "Build the AI gradient utility CSS as a global modifier layer for custom surfaces.\nThe selectors intentionally stay on the bare `--*` modifier form, so they can be reused anywhere\nwithout being tied to the shared InstUI component contract."
+msgstr "Ստեղծել AI gradient utility CSS` որպես գլոբալ մոդիֆիկատորի շերտ հատուկ մակերեսների համար.\nԸնտրիչները դիտմամբ մնում են պարզ `--*` մոդիֆիկատորի տեսքով, որպեսզի դրանք հնարավոր լինի վերօգտագործել ամենուր\nառանց կապված լինելու համօգտագործվող InstUI կոմպոնենտի պայմանագրի հետ."
 
 #: plugins/pantoken/custom-components/src/functions/bannerRules.md
 #, no-c-format
@@ -16432,17 +16432,17 @@ msgstr "Շարժական «դիտել ամբողջ էկրանում» կոճակ
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "The Shawshank Redemption"
-#~ msgstr "The Shawshank Redemption"
+#~ msgstr "Շոուշենկի փրկությունը"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "The Godfather"
-#~ msgstr "The Godfather"
+#~ msgstr "Կնքահայրը"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "The Godfather: Part II"
-#~ msgstr "The Godfather: Part II"
+#~ msgstr "Կնքահայրը՝ Մաս II"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -17117,7 +17117,7 @@ msgstr "Շարժական «դիտել ամբողջ էկրանում» կոճակ
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Syllabus.pdf"
-#~ msgstr " Syllabus.pdf"
+#~ msgstr " Ուսումնական ծրագիր.pdf"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -17127,17 +17127,17 @@ msgstr "Շարժական «դիտել ամբողջ էկրանում» կոճակ
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Reading.pdf"
-#~ msgstr " Reading.pdf"
+#~ msgstr " Կարդացումներ.pdf"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Slides.pptx"
-#~ msgstr " Slides.pptx"
+#~ msgstr " Ներկայացում.pptx"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Rubric.docx"
-#~ msgstr " Rubric.docx"
+#~ msgstr " Գնահատման ուղեցույց.docx"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -25107,3 +25107,35 @@ msgstr "checkbox"
 msgctxt "docs.api:text"
 msgid "ai-gradient"
 msgstr "ai-gradient"
+
+msgctxt "docs.api:prose"
+msgid "An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "Անիմացված բեռման օղակ կամ AI սպիններ; տվեք նրան role=\"status\" և aria-label."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-spinner` — An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "`.instui-spinner` — Անիմացված բեռնման օղակ կամ AI սպիններ; տրամադրեք նրան role=\"status\" և aria-label։"
+
+msgctxt "docs.api:prose"
+msgid "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color. The AI variants replace the ring with the centred `ai-spinner` glyph while keeping the same size scale."
+msgstr "`-color-inverse` միայն վերագծում է անիմացված վերին եզրաբիծը, ոչ ամբողջ ուղին, այնպես որ այն դեռ ճիշտ է ընթեռնվում մուգ քարտի վրա առանց առանձին ուղու գույնի անհրաժեշտության։ AI տարբերակները օղակը փոխարինում են կենտրոնացված `ai-spinner` գլիֆով, իսկ չափսը պահպանվում է։"
+
+msgctxt "docs.api:prose"
+msgid "Rotating AI-gradient star."
+msgstr "Պտտվող AI-գրադիենտ աստղ։"
+
+msgctxt "docs.api:prose"
+msgid "Rotating on-colour AI star for a coloured or dark surface."
+msgstr "Նույն գույնի վրա պտտվող AI-աստղ՝ գունավոր կամ մուգ մակերեսի համար։"
+
+msgctxt "docs.api:prose"
+msgid "Rotates the ring, or the AI star at the slower 2.25-second cadence."
+msgstr "Պտտեցնում է օղակը, կամ AI-աստղը դանդաղ 2.25-վայրկյանանոց ռիթմով։"
+
+msgctxt "docs.api:prose"
+msgid "The decorative icon markup retained in editor content after a picker selection. A zero-width\nspace keeps the span from being genuinely empty — TinyMCE's schema strips empty inline elements\non `setContent()` (e.g. toggling from source view back to WYSIWYG), which would otherwise\nsilently delete this CSS-painted glyph. `contenteditable=\"false\"` makes TinyMCE treat it as a\nselectable noneditable object (fake-selection painting, backspace-to-delete, and the context\ntoolbar registered in `lib/icon-context-toolbar.ts`) instead of plain inline text."
+msgstr "The decorative icon markup retained in editor content after a picker selection. Զրո-լայնության\nտարածքը պահպանում է span-ը իրականում դատարկ չլինելուց — TinyMCE-ի սխեման ջնջում է դատարկ inline տարրերը\non `setContent()` (օրինակ՝ աղբյուրի դիտմանից վերադարձ WYSIWYG), որը այլապես\n այս CSS-ով ներկված գլիֆը լուռ կերպով կջնջեր։ `contenteditable=\"false\"` ստիպում է TinyMCE-ին վերաբերվել նրան որպես\nընտրելի՝ չխմբագրվող օբյեկտի (կեղծ-ընտրության ներկում, backspace-ով ջնջելու վարք և կոնտեքստային\ntoolbar, որը գրանցված է `lib/icon-context-toolbar.ts`) ի փոխարեն՝ պարզ inline տեքստի)."
+
+msgctxt "docs.api:prose"
+msgid "Pantoken's own logomark, reused for the toolbar menu button and any host UI that wants it."
+msgstr "Pantoken-ի սեփական լոգոմարկը, որը կրկնօրինակում է գործիքագոտու մենյուի կոճակի համար և ցանկացած հոստային UI-ի համար, որը ցանկանում է այն։"

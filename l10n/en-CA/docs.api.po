@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-24 00:15+0000\n"
+"PO-Revision-Date: 2026-09-24 00:39+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -29222,3 +29222,41 @@ msgstr "lucideLab"
 msgctxt "docs.api:text"
 msgid "ai-gradient"
 msgstr "ai-gradient"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "`.instui-spinner` — An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "`.instui-spinner` — An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+
+msgctxt "docs.api:prose"
+msgid "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color. The AI variants replace the ring with the centred `ai-spinner` glyph while keeping the same size scale."
+msgstr "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track colour. The AI variants replace the ring with the centred `ai-spinner` glyph while keeping the same size scale."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Rotating AI-gradient star."
+msgstr "Rotating AI-gradient star."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Rotating on-colour AI star for a coloured or dark surface."
+msgstr "Rotating on-colour AI star for a coloured or dark surface."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Rotates the ring, or the AI star at the slower 2.25-second cadence."
+msgstr "Rotates the ring, or the AI star at the slower 2.25-second cadence."
+
+msgctxt "docs.api:prose"
+msgid "The decorative icon markup retained in editor content after a picker selection. A zero-width\nspace keeps the span from being genuinely empty — TinyMCE's schema strips empty inline elements\non `setContent()` (e.g. toggling from source view back to WYSIWYG), which would otherwise\nsilently delete this CSS-painted glyph. `contenteditable=\"false\"` makes TinyMCE treat it as a\nselectable noneditable object (fake-selection painting, backspace-to-delete, and the context\ntoolbar registered in `lib/icon-context-toolbar.ts`) instead of plain inline text."
+msgstr "The decorative icon markup retained in editor content after a picker selection. A zero-width\nspace keeps the span from being genuinely empty — TinyMCE's schema strips empty inline elements\non `setContent()` (e.g. toggling from source view back to WYSIWYG), which would otherwise\nsilently delete this CSS-painted glyph. `contenteditable=\"false\"` makes TinyMCE treat it as a\nselectable non-editable object (fake-selection painting, backspace-to-delete, and the context\ntoolbar registered in `lib/icon-context-toolbar.ts`) instead of plain inline text."
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "Pantoken's own logomark, reused for the toolbar menu button and any host UI that wants it."
+msgstr "Pantoken's own logomark, reused for the toolbar menu button and any host UI that wants it."

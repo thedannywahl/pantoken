@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-24 00:14+0000\n"
+"PO-Revision-Date: 2026-09-24 00:33+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2877,7 +2877,7 @@ msgstr "`true` når dette kald udførte injektionen."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The scope registered for `instanceId` in `doc`, if any."
-msgstr "The scope registered for `instanceId` in `doc`, if any."
+msgstr "Det scope, der er registreret for `instanceId` i `doc`, hvis nogen."
 
 #: formats/scope/src/functions/hasProperties.md
 #, no-c-format
@@ -2974,13 +2974,13 @@ msgstr "Node-fri efter design: dette udsendes til browseren."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Re-exports [BOUNDARY_ATTR](../../css/src/variables/BOUNDARY_ATTR.md)"
-msgstr "Re-exports [BOUNDARY_ATTR](../../css/src/variables/BOUNDARY_ATTR.md)"
+msgstr "Geneksporterer [BOUNDARY_ATTR](../../css/src/variables/BOUNDARY_ATTR.md)"
 
 #: formats/scope/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Re-exports [BOUNDARY_CLASS](../../css/src/variables/BOUNDARY_CLASS.md)"
-msgstr "Re-exports [BOUNDARY_CLASS](../../css/src/variables/BOUNDARY_CLASS.md)"
+msgstr "Geneksporterer [BOUNDARY_CLASS](../../css/src/variables/BOUNDARY_CLASS.md)"
 
 #: formats/scope/src/index.md
 #, fuzzy, no-c-format
@@ -3145,7 +3145,7 @@ msgstr "Merge en delvis konfiguration ind. Angiv `null` for et felt for at rydde
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Resolve the effective scope for a descendant (defaults to this scope's own element)."
-msgstr "Resolve the effective scope for a descendant (defaults to this scope's own element)."
+msgstr "Bestem det effektive omfang for en efterkommer (som standard er dette scopes eget element)."
 
 #: formats/scope/src/interfaces/PantokenScope.md
 #, no-c-format
@@ -11117,7 +11117,7 @@ msgstr "En svævende \"se fuld skærm\" knap, overlejret på en demo/eksempel-ra
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Ok"
-#~ msgstr "Ok"
+#~ msgstr "Okay"
 
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -12587,7 +12587,7 @@ msgstr "En svævende \"se fuld skærm\" knap, overlejret på en demo/eksempel-ra
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Navigation"
-#~ msgstr "Navigation"
+#~ msgstr "Navigering"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -15202,7 +15202,7 @@ msgstr "En svævende \"se fuld skærm\" knap, overlejret på en demo/eksempel-ra
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Score"
-#~ msgstr "Score"
+#~ msgstr "Resultat"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16432,17 +16432,17 @@ msgstr "En svævende \"se fuld skærm\" knap, overlejret på en demo/eksempel-ra
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "The Shawshank Redemption"
-#~ msgstr "The Shawshank Redemption"
+#~ msgstr "Frelseren fra Shawshank"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "The Godfather"
-#~ msgstr "The Godfather"
+#~ msgstr "Gudfaderen"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "The Godfather: Part II"
-#~ msgstr "The Godfather: Part II"
+#~ msgstr "Gudfaderen: Del II"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -17117,7 +17117,7 @@ msgstr "En svævende \"se fuld skærm\" knap, overlejret på en demo/eksempel-ra
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Syllabus.pdf"
-#~ msgstr " Syllabus.pdf"
+#~ msgstr " Undervisningsplan.pdf"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -17127,17 +17127,17 @@ msgstr "En svævende \"se fuld skærm\" knap, overlejret på en demo/eksempel-ra
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Reading.pdf"
-#~ msgstr " Reading.pdf"
+#~ msgstr " Læsemateriale.pdf"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Slides.pptx"
-#~ msgstr " Slides.pptx"
+#~ msgstr " Dias.pptx"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Rubric.docx"
-#~ msgstr " Rubric.docx"
+#~ msgstr " Vurderingskriterier.docx"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -28362,3 +28362,35 @@ msgstr "checkbox"
 msgctxt "docs.api:text"
 msgid "ai-gradient"
 msgstr "ai-gradient"
+
+msgctxt "docs.api:prose"
+msgid "An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "En animeret indlæsningsring eller AI-spinner; giv den role=\"status\" og en aria-label."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-spinner` — An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "`.instui-spinner` — En animeret indlæsningsring eller AI-spinner; giv den role=\"status\" og en aria-label."
+
+msgctxt "docs.api:prose"
+msgid "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color. The AI variants replace the ring with the centred `ai-spinner` glyph while keeping the same size scale."
+msgstr "`-color-inverse` male kun det animerede øverste kantsegment om, ikke hele sporet, så det stadig læses korrekt på et mørkt kort uden at have brug for en separat sporfarve. AI-varianterne erstatter ringen med det centrerede `ai-spinner` glyf, samtidig med at den bevarer samme størrelsesskala."
+
+msgctxt "docs.api:prose"
+msgid "Rotating AI-gradient star."
+msgstr "Roterende AI-gradientstjerne."
+
+msgctxt "docs.api:prose"
+msgid "Rotating on-colour AI star for a coloured or dark surface."
+msgstr "Roterende AI-stjerne i samme farve til en farvet eller mørk overflade."
+
+msgctxt "docs.api:prose"
+msgid "Rotates the ring, or the AI star at the slower 2.25-second cadence."
+msgstr "Roterer ringen, eller AI-stjernen ved den langsommere kadence på 2,25 sekunder."
+
+msgctxt "docs.api:prose"
+msgid "The decorative icon markup retained in editor content after a picker selection. A zero-width\nspace keeps the span from being genuinely empty — TinyMCE's schema strips empty inline elements\non `setContent()` (e.g. toggling from source view back to WYSIWYG), which would otherwise\nsilently delete this CSS-painted glyph. `contenteditable=\"false\"` makes TinyMCE treat it as a\nselectable noneditable object (fake-selection painting, backspace-to-delete, and the context\ntoolbar registered in `lib/icon-context-toolbar.ts`) instead of plain inline text."
+msgstr "Den dekorative ikonmarkup, der bevares i editorindhold efter et valg i pickeren. Et nul-bredde\nmellemrum forhindrer spanet i at være ægte tomt — TinyMCE's skema fjerner tomme inline-elementer\npå `setContent()` (f.eks. skift fra kildevisning tilbage til WYSIWYG), hvilket ellers ville\nstille slette denne CSS-malede glyf. `contenteditable=\"false\"` får TinyMCE til at behandle det som et\nvalgbart ikke-redigerbart objekt (falsk-udvalgs-maling, backspace-for-at-slette og den kontekst\nværktøjslinje registreret i `lib/icon-context-toolbar.ts`) i stedet for almindelig inline-tekst."
+
+msgctxt "docs.api:prose"
+msgid "Pantoken's own logomark, reused for the toolbar menu button and any host UI that wants it."
+msgstr "Pantoken's eget logomærke, genbrugt til værktøjslinjens menuknap og enhver host UI, der ønsker det."

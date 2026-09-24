@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-24 00:15+0000\n"
+"PO-Revision-Date: 2026-09-24 00:36+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -11567,7 +11567,7 @@ msgstr "Een hoverbare \"volledig scherm weergeven\"-knop, overgelegd op een demo
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "OK"
-#~ msgstr "OK"
+#~ msgstr "Oké"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -15397,7 +15397,7 @@ msgstr "Een hoverbare \"volledig scherm weergeven\"-knop, overgelegd op een demo
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "link"
-#~ msgstr "link"
+#~ msgstr "koppeling"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -15432,7 +15432,7 @@ msgstr "Een hoverbare \"volledig scherm weergeven\"-knop, overgelegd op een demo
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Medium"
-#~ msgstr " Medium"
+#~ msgstr " Gemiddeld"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16432,17 +16432,17 @@ msgstr "Een hoverbare \"volledig scherm weergeven\"-knop, overgelegd op een demo
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "The Shawshank Redemption"
-#~ msgstr "The Shawshank Redemption"
+#~ msgstr "De verlossing van Shawshank"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "The Godfather"
-#~ msgstr "The Godfather"
+#~ msgstr "De peetvader"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "The Godfather: Part II"
-#~ msgstr "The Godfather: Part II"
+#~ msgstr "De peetvader: Deel II"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -17114,12 +17114,12 @@ msgstr "Een hoverbare \"volledig scherm weergeven\"-knop, overgelegd op een demo
 #~ msgid " Course files"
 #~ msgstr " Cursusbestanden"
 
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid " Syllabus.pdf"
 #~ msgstr " Syllabus.pdf"
 
-#, no-c-format
+#, no-c-format, pantoken-verbatim
 #~ msgctxt "docs.api:prose"
 #~ msgid " Week 1"
 #~ msgstr " Week 1"
@@ -17127,17 +17127,17 @@ msgstr "Een hoverbare \"volledig scherm weergeven\"-knop, overgelegd op een demo
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Reading.pdf"
-#~ msgstr " Reading.pdf"
+#~ msgstr " Leesmateriaal.pdf"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Slides.pptx"
-#~ msgstr " Slides.pptx"
+#~ msgstr " Presentatie.pptx"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Rubric.docx"
-#~ msgstr " Rubric.docx"
+#~ msgstr " Beoordelingsrubriek.docx"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -28358,3 +28358,35 @@ msgstr "checkbox"
 msgctxt "docs.api:text"
 msgid "ai-gradient"
 msgstr "ai-gradient"
+
+msgctxt "docs.api:prose"
+msgid "An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "Een geanimeerde laadring of AI-spinner; geef het role=\"status\" en een aria-label."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-spinner` — An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "`.instui-spinner` — Een geanimeerde laadring of AI-spinner; geef het role=\"status\" en een aria-label."
+
+msgctxt "docs.api:prose"
+msgid "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color. The AI variants replace the ring with the centred `ai-spinner` glyph while keeping the same size scale."
+msgstr "`-color-inverse` verft alleen het geanimeerde bovenste randsegment opnieuw, niet de hele baan, zodat het op een donkere kaart nog steeds goed leesbaar blijft zonder dat er een aparte baankleur nodig is. De AI-varianten vervangen de ring door het gecentreerde `ai-spinner` glyf terwijl ze dezelfde schaalgrootte behouden."
+
+msgctxt "docs.api:prose"
+msgid "Rotating AI-gradient star."
+msgstr "Draaiende AI-gradient-ster."
+
+msgctxt "docs.api:prose"
+msgid "Rotating on-colour AI star for a coloured or dark surface."
+msgstr "Draaiende AI-ster in kleur voor een gekleurde of donkere ondergrond."
+
+msgctxt "docs.api:prose"
+msgid "Rotates the ring, or the AI star at the slower 2.25-second cadence."
+msgstr "Draait de ring, of de AI-ster met het langzamere 2.25-seconden ritme."
+
+msgctxt "docs.api:prose"
+msgid "The decorative icon markup retained in editor content after a picker selection. A zero-width\nspace keeps the span from being genuinely empty — TinyMCE's schema strips empty inline elements\non `setContent()` (e.g. toggling from source view back to WYSIWYG), which would otherwise\nsilently delete this CSS-painted glyph. `contenteditable=\"false\"` makes TinyMCE treat it as a\nselectable noneditable object (fake-selection painting, backspace-to-delete, and the context\ntoolbar registered in `lib/icon-context-toolbar.ts`) instead of plain inline text."
+msgstr "De decoratieve pictogram-markup die in de editorinhoud behouden blijft na een picker-selectie. Een zero-width\nspace voorkomt dat de span echt leeg is — TinyMCE's schema verwijdert lege inline-elementen\nop `setContent()` (bijv. schakelen van bronweergave terug naar WYSIWYG), wat anders\ndit CSS-geschilderde glyph stilletjes zou verwijderen. `contenteditable=\"false\"` zorgt ervoor dat TinyMCE het behandelt als een\nselecteerbaar niet-bewerkbaar object (fake-selection painting, backspace-to-delete, en de context\ntoolbar geregistreerd in `lib/icon-context-toolbar.ts`) in plaats van gewone inline-tekst."
+
+msgctxt "docs.api:prose"
+msgid "Pantoken's own logomark, reused for the toolbar menu button and any host UI that wants it."
+msgstr "Het eigen logomerk van Pantoken, hergebruikt voor de werkbalkmenu-knop en elke host-UI die erom vraagt."

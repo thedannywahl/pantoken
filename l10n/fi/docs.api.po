@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-24 00:15+0000\n"
+"PO-Revision-Date: 2026-09-24 00:41+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -11117,7 +11117,7 @@ msgstr "Hiirellä aktivoituva \"view fullscreen\" -painike, sijoitettuna demo-/e
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Ok"
-#~ msgstr "OK"
+#~ msgstr "Hyvä"
 
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16432,17 +16432,17 @@ msgstr "Hiirellä aktivoituva \"view fullscreen\" -painike, sijoitettuna demo-/e
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "The Shawshank Redemption"
-#~ msgstr "The Shawshank Redemption"
+#~ msgstr "Rita Hayworth – pelastusrangaistus"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "The Godfather"
-#~ msgstr "The Godfather"
+#~ msgstr "Kummisetä"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "The Godfather: Part II"
-#~ msgstr "The Godfather: Part II"
+#~ msgstr "Kummisetä – osa II"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -17117,7 +17117,7 @@ msgstr "Hiirellä aktivoituva \"view fullscreen\" -painike, sijoitettuna demo-/e
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Syllabus.pdf"
-#~ msgstr " Syllabus.pdf"
+#~ msgstr " Opetussuunnitelma.pdf"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -17127,17 +17127,17 @@ msgstr "Hiirellä aktivoituva \"view fullscreen\" -painike, sijoitettuna demo-/e
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Reading.pdf"
-#~ msgstr " Reading.pdf"
+#~ msgstr " Lukeminen.pdf"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Slides.pptx"
-#~ msgstr " Slides.pptx"
+#~ msgstr " Kalvot.pptx"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid " Rubric.docx"
-#~ msgstr " Rubric.docx"
+#~ msgstr " Arviointikriteerit.docx"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -28362,3 +28362,35 @@ msgstr "lucideLab"
 msgctxt "docs.api:text"
 msgid "ai-gradient"
 msgstr "ai-gradient"
+
+msgctxt "docs.api:prose"
+msgid "An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "Animoitu latausrengas tai AI-spinneri; anna sille role=\"status\" ja aria-label."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-spinner` — An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "`.instui-spinner` — Animoitu latausrengas tai AI-spinner; anna sille role=\"status\" ja aria-label."
+
+msgctxt "docs.api:prose"
+msgid "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color. The AI variants replace the ring with the centred `ai-spinner` glyph while keeping the same size scale."
+msgstr "`-color-inverse` maalaa uudelleen vain animoidun yläreunan segmentin, ei koko raitaa, joten se näkyy oikein tummalla kortilla ilman erillistä raitaväriä. AI-variantit korvaavat renkaan keskitetyllä `ai-spinner` kuvakkeella säilyttäen saman kokoskaalan."
+
+msgctxt "docs.api:prose"
+msgid "Rotating AI-gradient star."
+msgstr "Pyörivä AI-liukuvärinen tähti."
+
+msgctxt "docs.api:prose"
+msgid "Rotating on-colour AI star for a coloured or dark surface."
+msgstr "Pyörivä samansävyinen AI-tähti värilliselle tai tummalle pinnalle."
+
+msgctxt "docs.api:prose"
+msgid "Rotates the ring, or the AI star at the slower 2.25-second cadence."
+msgstr "Kääntää rengasta tai AI-tähteä hitaammalla 2,25 sekunnin tahdilla."
+
+msgctxt "docs.api:prose"
+msgid "The decorative icon markup retained in editor content after a picker selection. A zero-width\nspace keeps the span from being genuinely empty — TinyMCE's schema strips empty inline elements\non `setContent()` (e.g. toggling from source view back to WYSIWYG), which would otherwise\nsilently delete this CSS-painted glyph. `contenteditable=\"false\"` makes TinyMCE treat it as a\nselectable noneditable object (fake-selection painting, backspace-to-delete, and the context\ntoolbar registered in `lib/icon-context-toolbar.ts`) instead of plain inline text."
+msgstr "Koristeellisen kuvakkeen merkintäkoodi, joka säilyy editorin sisällössä valitsimen valinnan jälkeen. Nolla leveä\nspace estää spanin olemasta aidosti tyhjä — TinyMCE:n skeema poistaa tyhjät inline-elementit\non `setContent()` (esim. vaihdettaessa lähdenäkymästä takaisin WYSIWYG), jolloin tämä CSS:llä maalattu merkki muuten\nhiljaisesti poistettaisiin. `contenteditable=\"false\"` saa TinyMCE:n käsittelemään sen valittavana muokkaamattomana objektina (feikkivalinnan maalaus, backspace-poisto, ja kontekstin\ntoolbar rekisteröity `lib/icon-context-toolbar.ts`) sen sijaan, että se olisi tavallinen inline-teksti."
+
+msgctxt "docs.api:prose"
+msgid "Pantoken's own logomark, reused for the toolbar menu button and any host UI that wants it."
+msgstr "Pantokenin oma logomerkki, jota käytetään uudelleen työkalurivin valikkopainikkeessa ja missä tahansa isännän käyttöliittymässä, joka sen haluaa."

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-23 16:37+0000\n"
+"PO-Revision-Date: 2026-09-24 02:26+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2974,13 +2974,13 @@ msgstr "ปราศจาก Node โดยออกแบบ: ส่งไป�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Re-exports [BOUNDARY_ATTR](../../css/src/variables/BOUNDARY_ATTR.md)"
-msgstr "Re-exports [BOUNDARY_ATTR](../../css/src/variables/BOUNDARY_ATTR.md)"
+msgstr "ส่งออกซ้ำ [BOUNDARY_ATTR](../../css/src/variables/BOUNDARY_ATTR.md)"
 
 #: formats/scope/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Re-exports [BOUNDARY_CLASS](../../css/src/variables/BOUNDARY_CLASS.md)"
-msgstr "Re-exports [BOUNDARY_CLASS](../../css/src/variables/BOUNDARY_CLASS.md)"
+msgstr "ส่งออกซ้ำ [BOUNDARY_CLASS](../../css/src/variables/BOUNDARY_CLASS.md)"
 
 #: formats/scope/src/index.md
 #, fuzzy, no-c-format
@@ -11062,7 +11062,7 @@ msgstr "ปุ่ม \"ดูแบบเต็มจอ\" ที่แสดง
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/ai-gradient/index.ts)"
-#~ msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/gap/index.ts)"
+#~ msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/ai-gradient/index.ts)"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -12247,7 +12247,7 @@ msgstr "ปุ่ม \"ดูแบบเต็มจอ\" ที่แสดง
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Checkbox\n"
-#~ msgstr "checkbox"
+#~ msgstr "ช่องทำเครื่องหมาย\n"
 
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -27811,3 +27811,583 @@ msgstr "ปุ่ม \"ดูแบบเต็มจอ\" ที่แสดง
 #~ msgctxt "docs.api:text"
 #~ msgid "BuildIconFontOptions"
 #~ msgstr "BuildIconFontOptions"
+
+msgctxt "docs.api:prose"
+msgid "An AI action."
+msgstr "การดำเนินการโดย AI."
+
+msgctxt "docs.api:prose"
+msgid "A destructive action."
+msgstr "การดำเนินการที่ทำลายล้าง."
+
+msgctxt "docs.api:prose"
+msgid "Dark (inverse) colour scheme."
+msgstr "มืด (inverse) โทนสี."
+
+msgctxt "docs.api:prose"
+msgid "An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "วงแหวนโหลดเคลื่อนไหวหรือสปินเนอร์ AI; ให้ตั้ง role=\"status\" และ aria-label."
+
+msgctxt "docs.api:prose"
+msgid "`.instui-spinner` — An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "`.instui-spinner` — วงแหวนโหลดที่เคลื่อนไหวหรือสปินเนอร์ AI; ให้กำหนด role=\"status\" และ aria-label."
+
+msgctxt "docs.api:prose"
+msgid "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color. The AI variants replace the ring with the centred `ai-spinner` glyph while keeping the same size scale."
+msgstr "`-color-inverse` จะวาดเฉพาะส่วนขอบด้านบนที่เคลื่อนไหวใหม่ ไม่ใช่ทั้งร่อง (track) ดังนั้นจึงยังอ่านได้ถูกต้องบนการ์ดสีเข้มโดยไม่ต้องมีสีร่องแยกต่างหาก ตัวแปร AI จะแทนที่วงแหวนด้วยสัญลักษณ์ `ai-spinner` ที่อยู่กึ่งกลาง โดยคงสเกลขนาดเท่าเดิม."
+
+msgctxt "docs.api:prose"
+msgid "Rotating AI-gradient star."
+msgstr "ดาวไล่ระดับสี AI ที่กำลังหมุนอยู่."
+
+msgctxt "docs.api:prose"
+msgid "Rotating on-colour AI star for a coloured or dark surface."
+msgstr "ดาว AI โทนสีเดียวที่หมุน สำหรับพื้นผิวที่มีสีหรือพื้นผิวสีเข้ม."
+
+msgctxt "docs.api:prose"
+msgid "Rotates the ring, or the AI star at the slower 2.25-second cadence."
+msgstr "หมุนวงแหวน หรือดาว AI ด้วยจังหวะที่ช้ากว่า คือ 2.25 วินาทีต่อรอบ."
+
+msgctxt "docs.api:prose"
+msgid "The decorative icon markup retained in editor content after a picker selection. A zero-width\nspace keeps the span from being genuinely empty — TinyMCE's schema strips empty inline elements\non `setContent()` (e.g. toggling from source view back to WYSIWYG), which would otherwise\nsilently delete this CSS-painted glyph. `contenteditable=\"false\"` makes TinyMCE treat it as a\nselectable noneditable object (fake-selection painting, backspace-to-delete, and the context\ntoolbar registered in `lib/icon-context-toolbar.ts`) instead of plain inline text."
+msgstr "มาร์กอัปไอคอนเชิงตกแต่งที่คงไว้ในเนื้อหาโปรแกรมแก้ไขหลังจากเลือกจากตัวเลือก ช่องว่างความกว้างเป็นศูนย์\nช่วยป้องกันไม่ให้สแปนกลายเป็นค่าว่างจริง ๆ — สคีมาของ TinyMCE จะเอาองค์ประกอบอินไลน์ที่ว่างเปล่าออก\nเมื่อ `setContent()` (เช่น การสลับจากมุมมองซอร์สกลับไปยัง WYSIWYG) ซึ่งมิฉะนั้นจะ\nลบสัญลักษณ์ที่วาดด้วย CSS นี้อย่างเงียบ ๆ. `contenteditable=\"false\"` ทำให้ TinyMCE ถือเป็น\nวัตถุที่เลือกได้แต่ไม่แก้ไขได้ (การวาดการเลือกปลอม การกด Backspace เพื่อลบ และแถบเครื่องมือบริบท\nที่ลงทะเบียนใน `lib/icon-context-toolbar.ts`) แทนที่จะเป็นข้อความอินไลน์ธรรมดา)"
+
+msgctxt "docs.api:prose"
+msgid "Pantoken's own logomark, reused for the toolbar menu button and any host UI that wants it."
+msgstr "เครื่องหมายโลโก้ของ Pantoken เอง ถูกนำกลับมาใช้ใหม่สำหรับปุ่มเมนูบนแถบเครื่องมือและอินเทอร์เฟซโฮสต์ใดๆ ที่ต้องการมัน."
+
+msgctxt "docs.api:text"
+msgid "RunnerLabels"
+msgstr "RunnerLabels"
+
+msgctxt "docs.api:text"
+msgid "shadcnTailwindV4Css"
+msgstr "shadcnTailwindV4Css"
+
+msgctxt "docs.api:text"
+msgid "toShadcnTailwindV4Css"
+msgstr "toShadcnTailwindV4Css"
+
+msgctxt "docs.api:text"
+msgid "PageLayoutImagePlaceholder"
+msgstr "PageLayoutImagePlaceholder"
+
+msgctxt "docs.api:text"
+msgid "ContentClassesPluginOptions"
+msgstr "ContentClassesPluginOptions"
+
+msgctxt "docs.api:text"
+msgid "LayoutImageAttributes"
+msgstr "LayoutImageAttributes"
+
+msgctxt "docs.api:text"
+msgid "PantokenPluginOptions"
+msgstr "PantokenPluginOptions"
+
+msgctxt "docs.api:text"
+msgid "TinymceStrings"
+msgstr "TinymceStrings"
+
+msgctxt "docs.api:text"
+msgid "PantokenFontSize"
+msgstr "PantokenFontSize"
+
+msgctxt "docs.api:text"
+msgid "LayoutImageResolver"
+msgstr "LayoutImageResolver"
+
+msgctxt "docs.api:text"
+msgid "PANTOKEN_ICON_PACK_NAME"
+msgstr "PANTOKEN_ICON_PACK_NAME"
+
+msgctxt "docs.api:text"
+msgid "ICON_SOURCES"
+msgstr "ICON_SOURCES"
+
+msgctxt "docs.api:text"
+msgid "SOURCE_LABELS"
+msgstr "SOURCE_LABELS"
+
+msgctxt "docs.api:text"
+msgid "CONTENT_CLASSES_PLUGIN_NAME"
+msgstr "CONTENT_CLASSES_PLUGIN_NAME"
+
+msgctxt "docs.api:text"
+msgid "PANTOKEN_COMMANDS"
+msgstr "PANTOKEN_COMMANDS"
+
+msgctxt "docs.api:text"
+msgid "FULLSCREEN_FOOTER_PLUGIN_NAME"
+msgstr "FULLSCREEN_FOOTER_PLUGIN_NAME"
+
+msgctxt "docs.api:text"
+msgid "FULLSCREEN_FOOTER_STATUSBAR_NAME"
+msgstr "FULLSCREEN_FOOTER_STATUSBAR_NAME"
+
+msgctxt "docs.api:text"
+msgid "ICONS_COMMAND"
+msgstr "ICONS_COMMAND"
+
+msgctxt "docs.api:text"
+msgid "DEFAULT_ICON_TRIGGER"
+msgstr "DEFAULT_ICON_TRIGGER"
+
+msgctxt "docs.api:text"
+msgid "PANTOKEN_PLUGIN_NAME"
+msgstr "PANTOKEN_PLUGIN_NAME"
+
+msgctxt "docs.api:text"
+msgid "PANTOKEN_TOOLBAR_NAME"
+msgstr "PANTOKEN_TOOLBAR_NAME"
+
+msgctxt "docs.api:text"
+msgid "PANTOKEN_ICON"
+msgstr "PANTOKEN_ICON"
+
+msgctxt "docs.api:text"
+msgid "SEARCHREPLACE_FOOTER_PLUGIN_NAME"
+msgstr "SEARCHREPLACE_FOOTER_PLUGIN_NAME"
+
+msgctxt "docs.api:text"
+msgid "SEARCHREPLACE_FOOTER_STATUSBAR_NAME"
+msgstr "SEARCHREPLACE_FOOTER_STATUSBAR_NAME"
+
+msgctxt "docs.api:text"
+msgid "SUP_SUB_PLUGIN_NAME"
+msgstr "SUP_SUB_PLUGIN_NAME"
+
+msgctxt "docs.api:text"
+msgid "SUP_SUB_TOOLBAR_NAME"
+msgstr "SUP_SUB_TOOLBAR_NAME"
+
+msgctxt "docs.api:text"
+msgid "pageTemplates"
+msgstr "pageTemplates"
+
+msgctxt "docs.api:text"
+msgid "VISUALBLOCKS_FOOTER_PLUGIN_NAME"
+msgstr "VISUALBLOCKS_FOOTER_PLUGIN_NAME"
+
+msgctxt "docs.api:text"
+msgid "VISUALBLOCKS_FOOTER_STATUSBAR_NAME"
+msgstr "VISUALBLOCKS_FOOTER_STATUSBAR_NAME"
+
+msgctxt "docs.api:text"
+msgid "TINYMCE_STRINGS"
+msgstr "TINYMCE_STRINGS"
+
+msgctxt "docs.api:text"
+msgid "registerPantokenIconPack"
+msgstr "registerPantokenIconPack"
+
+msgctxt "docs.api:text"
+msgid "getUsedIconCdnFiles"
+msgstr "getUsedIconCdnFiles"
+
+msgctxt "docs.api:text"
+msgid "humanizeIconName"
+msgstr "humanizeIconName"
+
+msgctxt "docs.api:text"
+msgid "buildIconMarkup"
+msgstr "buildIconMarkup"
+
+msgctxt "docs.api:text"
+msgid "getIconImageSrc"
+msgstr "getIconImageSrc"
+
+msgctxt "docs.api:text"
+msgid "filterIcons"
+msgstr "filterIcons"
+
+msgctxt "docs.api:text"
+msgid "createContentClassesPlugin"
+msgstr "createContentClassesPlugin"
+
+msgctxt "docs.api:text"
+msgid "createFullscreenFooterPlugin"
+msgstr "createFullscreenFooterPlugin"
+
+msgctxt "docs.api:text"
+msgid "materializeLayout"
+msgstr "materializeLayout"
+
+msgctxt "docs.api:text"
+msgid "createPantokenPlugin"
+msgstr "createPantokenPlugin"
+
+msgctxt "docs.api:text"
+msgid "createSearchReplaceFooterPlugin"
+msgstr "createSearchReplaceFooterPlugin"
+
+msgctxt "docs.api:text"
+msgid "createSupSubPlugin"
+msgstr "createSupSubPlugin"
+
+msgctxt "docs.api:text"
+msgid "createVisualBlocksFooterPlugin"
+msgstr "createVisualBlocksFooterPlugin"
+
+msgctxt "docs.api:text"
+msgid "ensureComponentsJsonRegistry"
+msgstr "ensureComponentsJsonRegistry"
+
+msgctxt "docs.api:text"
+msgid "resolveRegistryItemNames"
+msgstr "resolveRegistryItemNames"
+
+msgctxt "docs.api:text"
+msgid "runAdd"
+msgstr "runAdd"
+
+msgctxt "docs.api:text"
+msgid "runCreate"
+msgstr "runCreate"
+
+msgctxt "docs.api:text"
+msgid "Scheme"
+msgstr "Scheme"
+
+msgctxt "docs.api:text"
+msgid "THEME_ATTR"
+msgstr "THEME_ATTR"
+
+msgctxt "docs.api:text"
+msgid "SCHEME_ATTR"
+msgstr "SCHEME_ATTR"
+
+msgctxt "docs.api:text"
+msgid "COLOR_ATTR"
+msgstr "COLOR_ATTR"
+
+msgctxt "docs.api:text"
+msgid "BOUNDARY_ATTR"
+msgstr "BOUNDARY_ATTR"
+
+msgctxt "docs.api:text"
+msgid "INSTANCE_ATTR"
+msgstr "INSTANCE_ATTR"
+
+msgctxt "docs.api:text"
+msgid "SCOPE_ATTRS"
+msgstr "SCOPE_ATTRS"
+
+msgctxt "docs.api:text"
+msgid "SCOPE_LAYERS"
+msgstr "SCOPE_LAYERS"
+
+msgctxt "docs.api:text"
+msgid "BOUNDARY_CLASS"
+msgstr "BOUNDARY_CLASS"
+
+msgctxt "docs.api:text"
+msgid "isScheme"
+msgstr "isScheme"
+
+msgctxt "docs.api:text"
+msgid "themeClass"
+msgstr "themeClass"
+
+msgctxt "docs.api:text"
+msgid "schemeClass"
+msgstr "schemeClass"
+
+msgctxt "docs.api:text"
+msgid "colorClass"
+msgstr "colorClass"
+
+msgctxt "docs.api:text"
+msgid "themeScopeSelector"
+msgstr "themeScopeSelector"
+
+msgctxt "docs.api:text"
+msgid "schemeScopeSelector"
+msgstr "schemeScopeSelector"
+
+msgctxt "docs.api:text"
+msgid "colorScopeSelector"
+msgstr "colorScopeSelector"
+
+msgctxt "docs.api:text"
+msgid "themeScopeSelectors"
+msgstr "themeScopeSelectors"
+
+msgctxt "docs.api:text"
+msgid "schemeScopeSelectors"
+msgstr "schemeScopeSelectors"
+
+msgctxt "docs.api:text"
+msgid "colorScopeSelectors"
+msgstr "colorScopeSelectors"
+
+msgctxt "docs.api:text"
+msgid "aiGradientCss"
+msgstr "aiGradientCss"
+
+msgctxt "docs.api:text"
+msgid "ScopedCssOptions"
+msgstr "ScopedCssOptions"
+
+msgctxt "docs.api:text"
+msgid "MultiScopeCssOptions"
+msgstr "MultiScopeCssOptions"
+
+msgctxt "docs.api:text"
+msgid "CssEmitTarget"
+msgstr "CssEmitTarget"
+
+msgctxt "docs.api:text"
+msgid "LAYERS"
+msgstr "LAYERS"
+
+msgctxt "docs.api:text"
+msgid "layerOrderCss"
+msgstr "layerOrderCss"
+
+msgctxt "docs.api:text"
+msgid "propertiesCss"
+msgstr "propertiesCss"
+
+msgctxt "docs.api:text"
+msgid "scopedThemeCss"
+msgstr "scopedThemeCss"
+
+msgctxt "docs.api:text"
+msgid "scopedSchemeCss"
+msgstr "scopedSchemeCss"
+
+msgctxt "docs.api:text"
+msgid "schemesCss"
+msgstr "schemesCss"
+
+msgctxt "docs.api:text"
+msgid "multiScopeCss"
+msgstr "multiScopeCss"
+
+msgctxt "docs.api:text"
+msgid "lightBranch"
+msgstr "lightBranch"
+
+msgctxt "docs.api:text"
+msgid "darkBranch"
+msgstr "darkBranch"
+
+msgctxt "docs.api:text"
+msgid "schemeOverrideTokens"
+msgstr "schemeOverrideTokens"
+
+msgctxt "docs.api:text"
+msgid "themedTokens"
+msgstr "themedTokens"
+
+msgctxt "docs.api:text"
+msgid "lucideIcons"
+msgstr "lucideIcons"
+
+msgctxt "docs.api:text"
+msgid "TabsHandle"
+msgstr "TabsHandle"
+
+msgctxt "docs.api:text"
+msgid "initTabs"
+msgstr "initTabs"
+
+msgctxt "docs.api:text"
+msgid "scope"
+msgstr "scope"
+
+msgctxt "docs.api:text"
+msgid "ScopeConfig"
+msgstr "ScopeConfig"
+
+msgctxt "docs.api:text"
+msgid "ResolvedScope"
+msgstr "ResolvedScope"
+
+msgctxt "docs.api:text"
+msgid "ScopeMessage"
+msgstr "ScopeMessage"
+
+msgctxt "docs.api:text"
+msgid "CreateScopeOptions"
+msgstr "CreateScopeOptions"
+
+msgctxt "docs.api:text"
+msgid "PantokenScope"
+msgstr "PantokenScope"
+
+msgctxt "docs.api:text"
+msgid "ConnectScopeOptions"
+msgstr "ConnectScopeOptions"
+
+msgctxt "docs.api:text"
+msgid "DEFAULT_INSTANCE"
+msgstr "DEFAULT_INSTANCE"
+
+msgctxt "docs.api:text"
+msgid "ensureProperties"
+msgstr "ensureProperties"
+
+msgctxt "docs.api:text"
+msgid "hasProperties"
+msgstr "hasProperties"
+
+msgctxt "docs.api:text"
+msgid "observeScope"
+msgstr "observeScope"
+
+msgctxt "docs.api:text"
+msgid "resolveScope"
+msgstr "resolveScope"
+
+msgctxt "docs.api:text"
+msgid "resolveInstance"
+msgstr "resolveInstance"
+
+msgctxt "docs.api:text"
+msgid "resolveScheme"
+msgstr "resolveScheme"
+
+msgctxt "docs.api:text"
+msgid "getScope"
+msgstr "getScope"
+
+msgctxt "docs.api:text"
+msgid "createScope"
+msgstr "createScope"
+
+msgctxt "docs.api:text"
+msgid "connectScope"
+msgstr "connectScope"
+
+msgctxt "docs.api:text"
+msgid "agentShellRules"
+msgstr "agentShellRules"
+
+msgctxt "docs.api:text"
+msgid "aiGradientRules"
+msgstr "aiGradientRules"
+
+msgctxt "docs.api:text"
+msgid "custom-theme-colors"
+msgstr "custom-theme-colors"
+
+msgctxt "docs.api:text"
+msgid "CustomThemeColorsOptions"
+msgstr "CustomThemeColorsOptions"
+
+msgctxt "docs.api:text"
+msgid "CustomThemeColorsCssOptions"
+msgstr "CustomThemeColorsCssOptions"
+
+msgctxt "docs.api:text"
+msgid "PantokenColorNamespace"
+msgstr "PantokenColorNamespace"
+
+msgctxt "docs.api:text"
+msgid "COLOR_KEYS"
+msgstr "COLOR_KEYS"
+
+msgctxt "docs.api:text"
+msgid "customThemeColorsCss"
+msgstr "customThemeColorsCss"
+
+msgctxt "docs.api:text"
+msgid "customThemeColors"
+msgstr "customThemeColors"
+
+msgctxt "docs.api:text"
+msgid "pageLayoutTemplates"
+msgstr "pageLayoutTemplates"
+
+msgctxt "docs.api:text"
+msgid "calloutRules"
+msgstr "calloutRules"
+
+msgctxt "docs.api:text"
+msgid "calloutTemplate"
+msgstr "calloutTemplate"
+
+msgctxt "docs.api:text"
+msgid "heroRules"
+msgstr "heroRules"
+
+msgctxt "docs.api:text"
+msgid "heroTemplate"
+msgstr "heroTemplate"
+
+msgctxt "docs.api:text"
+msgid "pageLayoutRules"
+msgstr "pageLayoutRules"
+
+msgctxt "docs.api:text"
+msgid "pageLayoutTemplate"
+msgstr "pageLayoutTemplate"
+
+msgctxt "docs.api:text"
+msgid "rubricNoteRules"
+msgstr "rubricNoteRules"
+
+msgctxt "docs.api:text"
+msgid "rubricNoteTemplate"
+msgstr "rubricNoteTemplate"
+
+msgctxt "docs.api:text"
+msgid "testimonialRules"
+msgstr "testimonialRules"
+
+msgctxt "docs.api:text"
+msgid "testimonialTemplate"
+msgstr "testimonialTemplate"
+
+msgctxt "docs.api:text"
+msgid "twoColumnRules"
+msgstr "twoColumnRules"
+
+msgctxt "docs.api:text"
+msgid "twoColumnTemplate"
+msgstr "twoColumnTemplate"
+
+msgctxt "docs.api:text"
+msgid "wrapperTemplate"
+msgstr "wrapperTemplate"
+
+msgctxt "docs.api:text"
+msgid "renderPageLayout"
+msgstr "renderPageLayout"
+
+msgctxt "docs.api:text"
+msgid "getLogoMeta"
+msgstr "getLogoMeta"
+
+msgctxt "docs.api:text"
+msgid "lucide-lab"
+msgstr "lucide-lab"
+
+msgctxt "docs.api:text"
+msgid "LucideLabOptions"
+msgstr "LucideLabOptions"
+
+msgctxt "docs.api:text"
+msgid "LucideLabNode"
+msgstr "LucideLabNode"
+
+msgctxt "docs.api:text"
+msgid "LucideLabRegistry"
+msgstr "LucideLabRegistry"
+
+msgctxt "docs.api:text"
+msgid "svgOf"
+msgstr "svgOf"
+
+msgctxt "docs.api:text"
+msgid "lucideLab"
+msgstr "lucideLab"
+
+msgctxt "docs.api:text"
+msgid "checkbox"
+msgstr "checkbox"
+
+msgctxt "docs.api:text"
+msgid "ai-gradient"
+msgstr "ai-gradient"
