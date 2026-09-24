@@ -1,0 +1,32 @@
+~/docs$ node scripts/build-canvas-rce.ts
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✗ Build failed in 745ms
+node:internal/modules/run_main:111
+    triggerUncaughtException(
+    ^
+
+Build failed with 1 error:
+
+Error: [vite+]: Rolldown failed to resolve import "lucide" from "/Users/dwahl/Scripts/pantoken/docs/.vitepress/cache/canvas-rce-src/src/main.ts".
+This is most likely unintended because it can break your application at runtime.
+If you do want to externalize this module explicitly add it to
+`build.rolldownOptions.external`
+    at viteLog (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._aea8bf67e934076c486e73b9de7669c8/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:39701:57)
+    at onRollupLog (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._aea8bf67e934076c486e73b9de7669c8/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:39734:7)
+    at onLog (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._aea8bf67e934076c486e73b9de7669c8/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:39498:4)
+    at file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._aea8bf67e934076c486e73b9de7669c8/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/create-bundler-option-wxuQPB7F.mjs:48:26
+    at logger (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._aea8bf67e934076c486e73b9de7669c8/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/create-bundler-option-wxuQPB7F.mjs:39:3)
+    at aggregateBindingErrorsIntoJsError (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._aea8bf67e934076c486e73b9de7669c8/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-CGhV1ebk.mjs:48:18)
+    at unwrapBindingResult (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._aea8bf67e934076c486e73b9de7669c8/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-CGhV1ebk.mjs:18:128)
+    at #build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._aea8bf67e934076c486e73b9de7669c8/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/rolldown-DZGaRc5R.mjs:133:34)
+    at async buildEnvironment (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._aea8bf67e934076c486e73b9de7669c8/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:39608:66)
+    at async Object.build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._aea8bf67e934076c486e73b9de7669c8/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:40029:19)
+    at async file:///Users/dwahl/Scripts/pantoken/docs/scripts/build-canvas-rce.ts:51:1 {
+  errors: [Getter/Setter]
+}
+
+Node.js v26.10.0
