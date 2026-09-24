@@ -1,0 +1,1 @@
+don't run translations, it causes a memory leak in vscode. instead analyze the gap and provide me a one-liner that I can run.
