@@ -1,0 +1,39 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M39Y12VG4ACDKME8VCM3QD5F",
+  "strategy": "manual-commit",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/canvas-rce-icon-picker-glyph-sizing.md",
+    ".changeset/canvas-rce-scheme-layout-and-dock-icon-fixes.md",
+    "docs/scripts/build-canvas-rce.ts",
+    "docs/scripts/canvas-rce-pwa.test.ts",
+    "docs/scripts/canvas-rce-pwa.ts",
+    "packages/scaffold/templates/canvas-theme-editor/src/app.css",
+    "packages/scaffold/templates/canvas-theme-editor/src/app.html",
+    "packages/scaffold/templates/canvas-theme-editor/src/i18n.json",
+    "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
+    "packages/scaffold/tests/index.test.ts",
+    "renderers/tinymce/src/lib/icon-picker-styles.ts",
+    "renderers/tinymce/src/plugins/icons.ts",
+    "renderers/tinymce/tests/icon-picker-styles.test.ts",
+    "renderers/tinymce/tests/icons-picker.test.ts"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}

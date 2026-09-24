@@ -1,0 +1,26 @@
+Start implementation
+
+---
+
+add to the list of refinements:
+the icon picker typeahead:
+
+---
+
+add to the list of refinements:
+the icon picker typeahead simple-icons are way larger than the other icon groups, the color contrast is not accurate, and we don't need to include the set.  simply <glyph> title works.
+
+---
+
+add to the list of refinements:
+the icon picker typeahead (`::<name>`) simple-icons are way larger than the other icon groups, the color contrast is not accurate, and we don't need to include the set.  simply <glyph> title works.
+
+---
+
+I don't know why this is getting so complex.  vitepress docs has a light/dark toggle, theme picker, and color picker, that should apply everywhere except the preview srcdoc.  in app mode we have a reimplementation of that picker since the vitepress header isn't on the page.
+
+in the canvas-theme-editor scaffold tray there's a 2nd theme picker and color picker, and the preview pane's header has a light/dark toggle- this 2nd instance controls the preview pane's srcdoc.
+
+---
+
+the tray itself is absolutely part of the standard app interface "everything" and should follow the docs theme/appearance/color.  it simply contains the controls that set the display of the prevew pane srcdoc, but it is part of the docs "everything"
