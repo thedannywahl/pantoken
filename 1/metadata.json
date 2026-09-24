@@ -1,0 +1,69 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M39Y12VG4ACDKME8VCM3QD5F",
+  "session_id": "b67bdeb1-0f46-46ea-b1e5-1cf0c71ba941",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-24T14:45:05.920263Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "docs/scripts/build-canvas-rce.ts",
+    "docs/scripts/canvas-rce-pwa.test.ts",
+    "docs/scripts/canvas-rce-pwa.ts",
+    "packages/scaffold/templates/canvas-theme-editor/src/app.css",
+    "packages/scaffold/templates/canvas-theme-editor/src/app.html",
+    "packages/scaffold/templates/canvas-theme-editor/src/i18n.json",
+    "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
+    "renderers/tinymce/src/lib/icon-picker-styles.ts",
+    "renderers/tinymce/src/plugins/icons.ts",
+    "renderers/tinymce/tests/icon-picker-styles.test.ts",
+    "renderers/tinymce/tests/icons-picker.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "3724c530375e",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-24T14:45:05.906444Z",
+    "agent_lines": 82,
+    "agent_removed": 22,
+    "human_added": 8,
+    "human_modified": 20,
+    "human_removed": 0,
+    "total_committed": 108,
+    "total_lines_changed": 132,
+    "agent_percentage": 78.78787878787878,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 27,
+      "user_lines_removed": 18,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "packages/scaffold/templates/canvas-theme-editor/src/app.css": 6,
+        "packages/scaffold/templates/canvas-theme-editor/src/app.html": 2,
+        "packages/scaffold/templates/canvas-theme-editor/src/i18n.json": 1,
+        "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl": 18
+      },
+      "user_removed_per_file": {
+        "packages/scaffold/templates/canvas-theme-editor/src/app.css": 3,
+        "packages/scaffold/templates/canvas-theme-editor/src/app.html": 2,
+        "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl": 13
+      }
+    }
+  ]
+}

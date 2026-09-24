@@ -1,0 +1,23 @@
+we had previously taken the logos set and tried to rasterize them to png so they could be inserted into the editor and served via CDN because tinymce doesn't support inline svgs and because icon glyphs are aspect ratio 1 / 1.  I'm wondering if we could do a different kind of glyph on `-logo-*` instead of `-icon-*` as a custom component that maintains the aspect ratio of the logo so we can continue to use them as mask/glyphs but with the correct resolution.
+
+---
+
+In the pantoken monorepo (/Users/dwahl/Scripts/pantoken), I need thorough research to plan a new "-logo-*" CSS glyph component that's like the existing icon glyph/mask system but preserves the source SVG's aspect ratio (icons are always 1:1, logos are not).
+
+Please investigate and report back with:
+
+1. The exact icon utility CSS source: read formats/components/src/utilities/icon/icon.css and formats/components/src/utilities/icon-glyphs/index.ts in full. Explain the mask-based painter mechanism, the `-icon-<name>` modifier class convention, how width/height/aspect-ratio are set (or not) on the icon utility, and how `iconGlyphsCss()` generates the `:root` tokens.
+
+2. Find the "logo" plugin: locate `plugin-logos` package (likely under plugins/ or formats/ - search for "plugin-logos" or "logos"). Read its source fully: how CSS is generated per product/layout/colorMode, what selectors it uses, whether it currently uses mask/background technique or `<img>` element, how aspect ratio is currently handled (padding-top hack? explicit width/height? intrinsic size via `aspect-ratio` CSS?), and where the SVG source data comes from (is there a `@pantoken/logos` or similar package with viewBox/aspect ratio metadata per logo?).
+
+3. Read renderers/tinymce/src/plugins/logos.ts and renderers/tinymce/src/plugins/icons.ts in full to understand insertion behavior differences already noted: icons use `<i class="instui-icon -icon-{name}">`, logos use `<img class="pantoken-logo" data-product... src="about:blank">`. I want to know exactly why logos currently use an <img> approach instead of the icon's mask/class approach, and what CSS variant selectors exist (data-product, data-layout, data-color-mode attribute selectors) — quote actual code.
+
+4. Check for any existing "aspect ratio" or "viewBox" metadata already resolved into the IR for logos (search @pantoken/model or @pantoken/core for logo-related types, check formats/tokens or wherever <image> tokens or logo tokens are defined) — specifically whether individual logo width/height ratios are available at token-generation time so CSS could bake per-logo `aspect-ratio` or `width`/`height` custom properties.
+
+5. Look for any existing docs describing this (docs/conventions/authoring.md, docs/architecture/overview.md, or docs/engineering-log.md) mentioning logos, icons, aspect ratio, PNG rasterization, or CDN/TinyMCE limitations, and quote relevant sections.
+
+6. Check whether formats/components has a general "modifier convention" pattern (defineComponent/defineUtility) that a new `-logo-*` utility should follow, per docs/conventions/authoring.md (read that file fully too).
+
+7. Check ASSURANCE.md and SECURITY.md for any existing language about SVG sanitization / CDN / mask usage that would be relevant to extending this pattern to logos (to see if security docs would need updates).
+
+Report back with: full relevant code snippets (not just summaries), exact file paths with line numbers, and a clear explanation of the current logo CSS/PNG rasterization approach vs the icon CSS mask approach, plus any per-logo aspect-ratio/viewBox data already available. This is a research-only task — do not modify any files.

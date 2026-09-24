@@ -3,7 +3,7 @@
   "checkpoint_id": "01M39Y12VG4ACDKME8VCM3QD5F",
   "strategy": "manual-commit",
   "branch": "tinymce-utility",
-  "checkpoints_count": 1,
+  "checkpoints_count": 2,
   "files_touched": [
     ".changeset/canvas-rce-icon-picker-glyph-sizing.md",
     ".changeset/canvas-rce-scheme-layout-and-dock-icon-fixes.md",
@@ -27,6 +27,13 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
