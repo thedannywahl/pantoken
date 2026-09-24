@@ -1,0 +1,30 @@
+further canvas-theme-editor scaffold refinements (preview: http://localhost:5174/tools/canvas-rce, http://localhost:5174/guide/canvas-rce)
+* in guide and tool mode, when the popup is active the smartphone/tablet/monitor icon buttons are an off-white color on a white background in light mode.  They appear correctly when the preview pane is in the guide.
+* in guide and tool mode, when the popup is active, the preview pane placeholder can be collapsed, we don't need to maintain a large blank space where it will be re-inserted.
+* in guide and tool mode when the popup is active the column/row utility switcher button should be disabled.
+* in tool mode when the interface theme (not the preview theme in the tray) is in light mode, only the page background changes colors, text and buttons and other interface elements stay in dark mode leaving light-on-light
+* in tool mode the tray and its contents always stay in dark mode, regardless of interface theme settings.
+* in web app and tools mode if there's no local storage yet, the app displays in row mode by default instead of column mode- and the layout toggle shows 'rows' so clicking it once does nothing, then clicking the 'columns' button switches it to columns.
+* in webapp mode the dock icon on a mac is dark on dark, we we should the icon-reversed version on the dark background
+
+---
+
+I need deep context on the `platforms/canvas-theme-editor` package (or wherever "canvas-rce" tool/guide preview lives) in this pantoken monorepo, at /Users/dwahl/Scripts/pantoken.
+
+Please research and report back on:
+
+1. Overall directory structure of the canvas-theme-editor package (or canvas-rce related code) — list key files/folders.
+2. Where the "popup" preview feature lives - specifically: a floating/popup preview pane that shows smartphone/tablet/monitor device-size toggle icon buttons. Find the component(s) rendering these device icon buttons, and how their styling (colors) is determined - especially any light/dark mode conditional CSS or theme-aware classes. Look for why the icon buttons might render as off-white on white background in light mode when a "popup" is active, vs. correctly colored when preview pane is docked/guide mode.
+3. Find the preview pane placeholder / reserved space logic - when a popup mode is active, is there a placeholder or spacer element that maintains blank space in the layout? Find the component and CSS responsible.
+4. Find the "column/row utility switcher" button (likely a layout toggle for column vs row layout of the tool). Find its component, and determine how enabling/disabling it works (e.g. disabled prop wiring), and where popup active state could be threaded in to disable it.
+5. Find how "interface theme" (light/dark mode of the tool's own UI chrome, distinct from the "preview theme" selector inside a tray/drawer) is implemented. Look for a theme context/provider, CSS custom properties, or data-attributes (e.g. `data-theme`, `.dark`, `.light`) controlling interface chrome components. Investigate why in tool mode, switching interface theme to light might only change the page background but leave text/buttons/other elements in dark-mode styling (look for hardcoded dark-mode colors not conditioned on the interface theme).
+6. Find the "tray" component (a drawer/sidebar containing preview theme controls etc.) and how it currently is styled - confirm whether it's forced to dark mode regardless of interface theme, or if it currently follows interface theme (the request wants it forced dark always).
+7. Find where the app initializes layout mode (column vs row) from localStorage - specifically default behavior when no localStorage value exists yet. Find the "layout toggle" button component and understand: what's the current default when localStorage is empty, and why clicking once might do nothing (e.g. default state doesn't match what the toggle's icon represents, so first click sets state equal to current state).
+8. Find where the Mac app icon / dock icon assets are configured for the "webapp" mode (likely a manifest.json / apple-touch-icon or an Electron/Tauri/PWA config). Look for both a normal icon and an "icon-reversed" (light-on-dark or dark-on-light) variant, and how favicon/manifest icons are wired up currently, to determine where to add logic for dark dock icon backgrounds needing the reversed icon variant.
+
+For each area, give me:
+- Full file paths
+- Relevant code snippets (component names, function names, CSS selectors/classes)
+- Your best understanding of the root cause of each described bug
+
+This is for planning purposes only — do NOT make any file edits. Report back with a thorough, organized summary covering all 7 points above (note: request has 7 bullet items, some might map to overlapping code areas).
