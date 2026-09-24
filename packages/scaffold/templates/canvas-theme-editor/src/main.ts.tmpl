@@ -269,9 +269,13 @@ function setupStandaloneAppShell(): void {
   const brand = document.createElement("div");
   brand.className = "canvas-rce-shell__brand";
 
-  const brandMark = document.createElement("div");
-  brandMark.className = "canvas-rce-shell__brand-mark";
-  brandMark.append(createShellIcon(Palette));
+  const brandMark = document.createElement("a");
+  brandMark.className = "instui-button -color-primary -shape-square canvas-rce-shell__brand-mark";
+  brandMark.href = "https://pantoken.app/";
+  brandMark.target = "_blank";
+  brandMark.rel = "noopener noreferrer";
+  brandMark.setAttribute("aria-label", "Pantoken (opens pantoken.app in a new tab)");
+  brandMark.innerHTML = PANTOKEN_ICON;
 
   const brandText = document.createElement("div");
   const eyebrow = document.createElement("span");
@@ -360,6 +364,26 @@ function setupStandaloneAppShell(): void {
   appearanceTitle.className = "canvas-rce-shell__group-title";
   appearanceTitle.textContent = "Appearance";
   appearanceGroup.append(appearanceTitle);
+  // Shared by the click handler below and the initial "system" application at the end of this
+  // function — without running it once eagerly, a dark-mode OS loads with "system" marked
+  // selected but the light scheme still applied, until the user clicks another option and back.
+  const applyAppearance = (appearance: "system" | "light" | "dark"): void => {
+    const selectedMode =
+      appearance === "system"
+        ? window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light"
+        : appearance;
+    document.body.dataset.appearanceMode = appearance;
+    document.documentElement.style.colorScheme = selectedMode;
+    document.documentElement.dataset.pantokenScheme = selectedMode;
+    if (typeof applyChromeTheme === "function") {
+      applyChromeTheme(selectedTheme ?? "rebrand", selectedMode as "light" | "dark");
+    }
+    for (const candidate of themePanel.querySelectorAll<HTMLButtonElement>("[data-appearance]")) {
+      candidate.classList.toggle("is-selected", candidate.dataset.appearance === appearance);
+    }
+  };
   for (const [appearance, label, icon] of [
     ["system", "System", SunMedium],
     ["light", "Light", SunMedium],
@@ -375,22 +399,9 @@ function setupStandaloneAppShell(): void {
     mark.className = "canvas-rce-shell__mark";
     mark.append(createShellIcon(icon));
     option.append(text, mark);
+    if (appearance === "system") option.classList.add("is-selected");
     option.addEventListener("click", () => {
-      const selectedMode =
-        appearance === "system"
-          ? window.matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light"
-          : appearance;
-      document.body.dataset.appearanceMode = appearance;
-      document.documentElement.style.colorScheme = selectedMode;
-      document.documentElement.dataset.pantokenScheme = selectedMode;
-      if (typeof applyChromeTheme === "function") {
-        applyChromeTheme(selectedTheme ?? "rebrand", selectedMode as "light" | "dark");
-      }
-      for (const candidate of themePanel.querySelectorAll<HTMLButtonElement>("[data-appearance]")) {
-        candidate.classList.toggle("is-selected", candidate.dataset.appearance === appearance);
-      }
+      applyAppearance(appearance);
       themeMenu.removeAttribute("open");
     });
     appearanceGroup.append(option);
@@ -402,25 +413,23 @@ function setupStandaloneAppShell(): void {
   colorTitle.className = "canvas-rce-shell__group-title";
   colorTitle.textContent = "Color";
   colorGroup.append(colorTitle);
-  for (const [color, label] of [
-    ["navy", "Navy"],
-    ["blue", "Blue"],
-    ["green", "Green"],
-    ["red", "Red"],
-    ["orange", "Orange"],
-    ["grey", "Grey"],
-    ["plum", "Plum"],
-  ] as const) {
+  for (const color of COLOR_KEYS) {
     const option = document.createElement("button");
     option.type = "button";
     option.className = "canvas-rce-shell__option";
     option.dataset.color = color;
+    const swatch = document.createElement("span");
+    swatch.className = "theme-picker__swatch";
+    swatch.dataset.swatch = color;
     const text = document.createElement("span");
-    text.textContent = label;
+    text.textContent = color.charAt(0).toUpperCase() + color.slice(1);
     const mark = document.createElement("span");
     mark.className = "canvas-rce-shell__mark";
     mark.append(createShellIcon(Check));
-    option.append(text, mark);
+    option.append(swatch, text, mark);
+    // "navy" is the app's actual default (see `selectedColor`/`applyChromeColor("navy")` below) —
+    // without this the picker showed no color as selected until the user picked one explicitly.
+    if (color === "navy") option.classList.add("is-selected");
     option.addEventListener("click", () => {
       if (isThemeColor(color)) {
         applyChromeColor(color);
@@ -439,6 +448,25 @@ function setupStandaloneAppShell(): void {
   actions.append(localeMenu, themeMenu);
   shell.append(brand, actions);
   document.body.prepend(shell);
+
+  // Native <details> doesn't close on its own for either of these — without this a click
+  // elsewhere on the page, or Escape, leaves the panel open.
+  const shellMenus = [localeMenu, themeMenu];
+  document.addEventListener("click", (event) => {
+    for (const menu of shellMenus) {
+      if (menu.open && !menu.contains(event.target as Node)) menu.removeAttribute("open");
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    for (const menu of shellMenus) {
+      if (!menu.open) continue;
+      menu.removeAttribute("open");
+      menu.querySelector<HTMLElement>("summary")?.focus();
+    }
+  });
+
+  applyAppearance("system");
 }
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = render(appHtml, STRINGS);
@@ -1082,8 +1110,18 @@ function applyPreviewWidth(): void {
   const fullscreen = previewPane.classList.contains("-fullscreen");
   previewPane.style.removeProperty("flex");
   previewPane.style.removeProperty("width");
+  previewPane.style.removeProperty("min-width");
   previewFrame.style.removeProperty("max-width");
-  if (selectedPreviewWidth === "large") return;
+  if (selectedPreviewWidth === "large") {
+    // In row layout, "large" only got a 50/50 flex share of `.content`'s width — on a narrow
+    // window that's smaller than "medium"'s own fixed `--instui-breakpoints-md`, so the
+    // "desktop" preview could render narrower than the "tablet" one. A `--instui-breakpoints-lg`
+    // floor guarantees desktop is always at least as wide as the next size down.
+    if (!fullscreen && document.querySelector(".content")?.getAttribute("data-layout") === "row") {
+      previewPane.style.minWidth = "var(--instui-breakpoints-lg)";
+    }
+    return;
+  }
   if (fullscreen) {
     previewFrame.style.maxWidth = PREVIEW_WIDTHS[selectedPreviewWidth];
   } else {
@@ -1264,6 +1302,7 @@ layoutDirectionToggle.addEventListener("click", () => {
   layoutDirectionToggle.classList.toggle("-icon-columns-2", !row);
   contentEl.style.flexDirection = row ? "row" : "column";
   contentEl.dataset.layout = row ? "row" : "column";
+  applyPreviewWidth();
   persistPreferences();
 });
 if (preferences.layout === "row" || preferences.layout === "column") {
@@ -1273,6 +1312,7 @@ if (preferences.layout === "row" || preferences.layout === "column") {
   layoutDirectionToggle.classList.toggle("-icon-columns-2", !row);
   contentEl.style.flexDirection = row ? "row" : "column";
   contentEl.dataset.layout = row ? "row" : "column";
+  applyPreviewWidth();
 }
 
 /** Saves this app's current layout/preview/CDN provider settings for the next visit. */

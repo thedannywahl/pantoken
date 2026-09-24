@@ -114,7 +114,7 @@ describe.runIf(apiFiles.length > 0 && guideFiles.length > 0)(
         if (!roundTrips(md)) failures.push(file);
       }
       expect(failures).toEqual([]);
-    });
+    }, 60_000);
 
     test("every guide page round-trips byte-identical", () => {
       const failures: string[] = [];

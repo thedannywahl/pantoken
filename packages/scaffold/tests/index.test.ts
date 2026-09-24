@@ -165,8 +165,42 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain('"theme.js": strToU8(files.js)');
   expect(main).toContain('`${slugifyExportName(activePresetName() ?? "canvas-theme")}.zip`');
   expect(main).toContain('type: "application/zip"');
+  // The standalone shell's brand mark is a link to pantoken.app, styled as a primary icon button
+  // (not a plain div) so its glyph gets the button's own light/dark contrast handling.
+  expect(main).toContain('brandMark.href = "https://pantoken.app/";');
+  expect(main).toContain('brandMark.target = "_blank";');
+  expect(main).toContain('rel = "noopener noreferrer"');
+  expect(main).toContain(
+    'brandMark.className = "instui-button -color-primary -shape-square canvas-rce-shell__brand-mark"',
+  );
+  // "System" appearance must actually compute and apply the OS scheme once eagerly on load — a
+  // dark OS previously loaded light until the user clicked another option and back to "system".
+  expect(main).toContain("const applyAppearance = (appearance:");
+  expect(main).toContain('applyAppearance("system");');
+  expect(main).toContain('if (appearance === "system") option.classList.add("is-selected");');
+  // The color menu renders every pantoken color (not a hardcoded 7-item subset) with the same
+  // swatch disc the theme-tray picker already uses, and marks the app's actual default selected.
+  expect(main).toContain("for (const color of COLOR_KEYS) {");
+  expect(main).toContain('swatch.className = "theme-picker__swatch";');
+  expect(main).toContain('if (color === "navy") option.classList.add("is-selected");');
+  expect(main).not.toContain('["navy", "Navy"],');
+  // Native <details> doesn't close on outside click/Escape on its own.
+  expect(main).toContain('document.addEventListener("click", (event) => {');
+  expect(main).toContain('event.key !== "Escape"');
+  // "Large" only got a 50/50 flex share in row layout, so it could render narrower than the fixed
+  // "medium"/"small" widths on a narrow window — this floor guarantees it never does.
+  expect(main).toContain('previewPane.style.minWidth = "var(--instui-breakpoints-lg)";');
+  // The standalone shell's header swatches must be immune to the chrome's active color remap,
+  // same as the theme tray — otherwise the navy/blue swatches get remapped to whatever color the
+  // chrome currently has active.
+  expect(main).toContain('resetSelector: "#theme-tray, #canvas-rce-shell"');
   expect(readFileSync(join(target, "src/app.css"), "utf8")).toContain(
     '.content[data-layout="row"] .preview-pane',
+  );
+  // Stacked layout must size the editor pane by content (so TinyMCE's own resize handle can grow
+  // it freely) — `flex: 1 1 0` here gave it a zero flex-basis with no free space to grow into.
+  expect(readFileSync(join(target, "src/app.css"), "utf8")).toContain(
+    '.content[data-layout="row"] .editor-pane {\n  flex: 1 1 0;\n}',
   );
   // The fullscreen overlay's background must adapt to dark mode like every other background in
   // this file — a hardcoded `#fff` fallback showed white chrome behind a dark-mode preview.
