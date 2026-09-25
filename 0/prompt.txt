@@ -1,0 +1,23 @@
+renderers/tinymce and plugins/tinymce/codemirror:
+* is it possible to auto-suggest in the html editor the modifiers like we have in vscode?
+* in tiny editor mode, which a user clicks onto a component (i.e. button) can the floating toolbar have a modifiers dropdown that displays the primary modifiers available (color, size, shape, etc.) for each component(or nested parent componet)?
+
+---
+
+Read-only discovery, thorough. In /Users/dwahl/Scripts/pantoken, investigate adding a context/floating toolbar dropdown in TinyMCE visual editor when selection/caret is on a pantoken component or nested child, showing primary modifiers grouped by properties such as color/size/shape and applying them safely. Mandatory repo workflow: first run `entire status`, then `entire graph search --repo . --profile full --query "TinyMCE floating context toolbar component modifier dropdown selection nested parent"`; inspect top result with focused reads. Trace renderers/tinymce and plugins/tinymce APIs, existing TinyMCE toolbar/context toolbar/menu patterns, component metadata source (including which modifiers are primary vs boolean/deprecated/aliases), DOM selection-to-component ownership logic, tests/demos/docs, security implications, and checkpoint intent via git log/checkpoint trailers + `entire explain` where available. Do not edit anything. Return feasibility, recommended UX/data architecture, exact symbols/files likely changed, edge cases and decisions needing user input, verification commands, and label checkpoint-backed vs code-inferred findings.
+
+---
+
+Read-only discovery, medium thoroughness. In /Users/dwahl/Scripts/pantoken, investigate whether plugins/tinymce/codemirror (and renderers/tinymce as relevant) can provide HTML class/modifier auto-suggestions comparable to the repo's VS Code experience. Mandatory repo workflow: first run `entire status`, then `entire graph search --repo . --profile full --query "TinyMCE CodeMirror HTML editor modifier autocomplete using component metadata like VS Code"`; inspect the top result with focused reads. Identify exact package entry points, CodeMirror version/extensions, current HTML language support, the source/generator of VS Code modifier completion metadata, whether reusable structured metadata already exists, analogous tests, and historical intent via git log/checkpoint trailers + `entire explain` where available. Do not edit anything. Return: feasibility, recommended architecture, exact symbols/files to change, tests/validation commands, blockers/ambiguities, and clearly label checkpoint-backed vs code-inferred findings.
+
+---
+
+Start implementation
+
+---
+
+Try Again
+
+---
+
+continue

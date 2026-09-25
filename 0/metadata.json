@@ -1,0 +1,57 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M3CDCQYHDGQ0K2MFQ7ZA7JA4",
+  "session_id": "a7a538e5-084e-4645-94fa-585023889140",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-25T13:52:03.848901Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "save_step_count": 2,
+  "files_touched": [
+    "packages/scaffold/templates/canvas-theme-editor/src/app.html",
+    "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
+    "plugins/pantoken/custom-components/README.md",
+    "plugins/pantoken/custom-components/scripts/build-entries.ts",
+    "plugins/pantoken/custom-components/scripts/generate.ts",
+    "plugins/pantoken/custom-components/src/components/index.ts",
+    "plugins/pantoken/custom-components/src/index.ts",
+    "plugins/pantoken/custom-components/tests/index.test.ts",
+    "plugins/pantoken/custom-components/vite.config.ts",
+    "renderers/tinymce/src/lib/icon-picker-styles.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "d7013cce5ce8",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 5
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-25T13:52:03.834762Z",
+    "agent_lines": 240,
+    "agent_removed": 65,
+    "human_added": 469,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 709,
+    "total_lines_changed": 774,
+    "agent_percentage": 39.405684754521964,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
+}
