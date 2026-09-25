@@ -82,6 +82,8 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
         run: vp run -r build
+      - name: Generate docs theme curve
+        run: node docs/scripts/site-themes.ts
       - name: Typecheck
         run: vp check
 

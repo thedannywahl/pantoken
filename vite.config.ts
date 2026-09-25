@@ -136,7 +136,7 @@ export default defineConfig({
         command: "vp run -r build",
       },
       "check:all": {
-        command: "vp check",
+        command: "node docs/scripts/site-themes.ts && vp check",
         dependsOn: ["build:all"],
       },
       "test:all": {

@@ -105,7 +105,7 @@ function inGamut(rgb: readonly number[]): boolean {
  * @param color - The OKLCH color.
  * @returns Lowercase `#rrggbb`.
  */
-export function oklchToHex(color: Oklch): string {
+function oklchToHex(color: Oklch): string {
   let rgb = oklchToLinearRgb(color);
   if (!inGamut(rgb)) {
     let low = 0;
