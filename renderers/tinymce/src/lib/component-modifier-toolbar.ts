@@ -60,6 +60,14 @@ function selectedContext(
   return resolveComponentContext(editor.selection.getNode(), editor.getBody(), model);
 }
 
+function isNestedMenuItem(
+  item: Ui.Menu.NestedMenuItemContents | undefined,
+): item is Ui.Menu.NestedMenuItemSpec {
+  return (
+    typeof item === "object" && item !== null && "type" in item && item.type === "nestedmenuitem"
+  );
+}
+
 function mutateClasses(
   editor: Editor,
   mutation: (element: Element) => void,
@@ -174,11 +182,15 @@ function menuItems(
       type: "nestedmenuitem",
       text: TINYMCE_STRINGS.componentModifiersUtilities,
       getSubmenuItems: () =>
-        [...utilities.entries()].map(([name, modifiers]) => ({
-          type: "nestedmenuitem",
-          text: humanize(name),
-          getSubmenuItems: () => groupedItems(editor, model, modifiers),
-        })),
+        [...utilities.entries()].map(([name, modifiers]) => {
+          const items = groupedItems(editor, model, modifiers);
+          return {
+            type: "nestedmenuitem",
+            text: humanize(name),
+            getSubmenuItems: () =>
+              items.length === 1 && isNestedMenuItem(items[0]) ? items[0].getSubmenuItems() : items,
+          };
+        }),
     });
   }
   return componentItems;

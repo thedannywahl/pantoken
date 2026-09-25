@@ -16,8 +16,14 @@ const model = [
     kind: "component",
     summary: "A button.",
     modifiers: [
-      { name: "-color-primary", prop: "color", value: "primary" },
       { name: "-color-secondary", prop: "color", value: "secondary" },
+      {
+        name: "-size-small",
+        prop: "size",
+        value: "small",
+        description: "Small. Long-form alias of `-size-sm`.",
+      },
+      { name: "-color-primary", prop: "color", value: "primary" },
       { name: "-size-sm", prop: "size", value: "sm" },
       { name: "-icon-*", prop: "icon", pattern: true },
     ],
@@ -72,9 +78,20 @@ test("suggests complete component classes after instui-", async () => {
 
 test("suggests separate component modifiers from the component in the same attribute", async () => {
   const labels = await labelsFor(buttonMarkup("instui-button", "-co|"));
-  expect(labels).toContain("-color-primary");
-  expect(labels).toContain("-color-secondary");
+  expect(labels.slice(0, 2)).toEqual(["-color-primary", "-color-secondary"]);
   expect(labels).not.toContain("-icon-*");
+});
+
+test("suggests semantically sorted canonical modifiers only", async () => {
+  const labels = await labelsFor(buttonMarkup("instui-button", "-|"));
+  expect(labels).toEqual([
+    "-color-primary",
+    "-color-secondary",
+    "-size-sm",
+    "--display-flex",
+    "--display-grid",
+  ]);
+  expect(labels).not.toContain("-size-small");
 });
 
 test("suggests global utility modifiers", async () => {

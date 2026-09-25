@@ -47,6 +47,7 @@ import "./app.css";
 import appHtml from "./app.html?raw";
 import { STRINGS } from "./strings.ts";
 import { LOCALE_STRINGS } from "./locale-strings.ts";
+import { LOCALE_DIRS } from "./locale-dirs.ts";
 import tinymce from "tinymce";
 import "tinymce/models/dom/model";
 import "tinymce/themes/silver/theme";
@@ -366,7 +367,7 @@ function setupStandaloneAppShell(): void {
   themeSummary.append(createShellIcon(Palette));
   const themeLabel = document.createElement("span");
   themeLabel.className = "canvas-rce-shell__label";
-  themeLabel.textContent = "Theme";
+  themeLabel.textContent = activeStrings.themeLabel;
   themeSummary.append(themeLabel, createShellIcon(ChevronDown));
 
   const themePanel = document.createElement("div");
@@ -378,7 +379,7 @@ function setupStandaloneAppShell(): void {
   appearanceGroup.className = "canvas-rce-shell__group";
   const appearanceTitle = document.createElement("span");
   appearanceTitle.className = "canvas-rce-shell__group-title";
-  appearanceTitle.textContent = "Appearance";
+  appearanceTitle.textContent = activeStrings.appearanceLabel;
   appearanceGroup.append(appearanceTitle);
   // Shared by the click handler below and the initial application at the end of this function.
   const applyAppearance = (appearance: "light" | "dark"): void => {
@@ -393,8 +394,8 @@ function setupStandaloneAppShell(): void {
     }
   };
   for (const [appearance, label, icon] of [
-    ["light", "Light", SunMedium],
-    ["dark", "Dark", MoonStar],
+    ["light", activeStrings.appearanceLightLabel, SunMedium],
+    ["dark", activeStrings.appearanceDarkLabel, MoonStar],
   ] as const) {
     const option = document.createElement("button");
     option.type = "button";
@@ -424,7 +425,7 @@ function setupStandaloneAppShell(): void {
   colorGroup.className = "canvas-rce-shell__group";
   const colorTitle = document.createElement("span");
   colorTitle.className = "canvas-rce-shell__group-title";
-  colorTitle.textContent = "Color";
+  colorTitle.textContent = activeStrings.colorLabel;
   colorGroup.append(colorTitle);
   for (const color of COLOR_KEYS) {
     const option = document.createElement("button");
@@ -435,7 +436,8 @@ function setupStandaloneAppShell(): void {
     swatch.className = "theme-picker__swatch";
     swatch.dataset.swatch = color;
     const text = document.createElement("span");
-    text.textContent = color.charAt(0).toUpperCase() + color.slice(1);
+    const colorKey = `color${color.charAt(0).toUpperCase()}${color.slice(1)}Label`;
+    text.textContent = activeStrings[colorKey] ?? color.charAt(0).toUpperCase() + color.slice(1);
     const mark = document.createElement("span");
     mark.className = "canvas-rce-shell__mark";
     mark.append(createShellIcon(Check));
@@ -499,11 +501,7 @@ const activeLocale = loadLocale();
 // A missing key/locale in `LOCALE_STRINGS` falls back to English — see generate.ts's own comment.
 const activeStrings: Record<string, string> = { ...STRINGS, ...LOCALE_STRINGS[activeLocale] };
 document.documentElement.lang = activeLocale;
-try {
-  document.documentElement.dir = new Intl.Locale(activeLocale).textInfo?.direction ?? "ltr";
-} catch {
-  // Unknown/malformed locale tag — leave `dir` at its default.
-}
+document.documentElement.dir = LOCALE_DIRS[activeLocale] ?? "ltr";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = render(appHtml, activeStrings);
 const interactionsScript = document.createElement("script");
@@ -814,7 +812,7 @@ tinymce.PluginManager.add(
 const providerSelect = document.querySelector<HTMLSelectElement>("#cdn-provider")!;
 const localProviderOption = document.createElement("option");
 localProviderOption.value = LOCAL_PROVIDER_ID;
-localProviderOption.textContent = STRINGS.localProviderLabel;
+localProviderOption.textContent = activeStrings.localProviderLabel;
 providerSelect.append(localProviderOption);
 for (const [id, provider] of Object.entries(CDN_PROVIDERS)) {
   const option = document.createElement("option");
@@ -1260,6 +1258,9 @@ const previewFullscreenToggle = document.querySelector<HTMLButtonElement>(
 )!;
 const previewPopupToggle = document.querySelector<HTMLButtonElement>("#preview-popup-toggle")!;
 const previewFullscreenLabel = document.querySelector<HTMLElement>("#preview-fullscreen-label")!;
+const previewFullscreenTooltip = document.querySelector<HTMLElement>(
+  "#preview-fullscreen-toggle-tip",
+)!;
 const previewPopupReturnLabel = document.querySelector<HTMLElement>(
   "#preview-popup-return-label",
 )!;
@@ -1284,10 +1285,12 @@ function setPreviewFullscreen(fullscreen: boolean): void {
 function setPreviewPopupLabels(detached: boolean): void {
   previewFullscreenLabel.hidden = detached;
   previewPopupReturnLabel.hidden = !detached;
+  const label = (detached ? previewPopupReturnLabel : previewFullscreenLabel).textContent?.trim() ?? "";
   previewFullscreenToggle.setAttribute(
     "aria-label",
-    (detached ? previewPopupReturnLabel : previewFullscreenLabel).textContent?.trim() ?? "",
+    label,
   );
+  previewFullscreenTooltip.textContent = label;
 }
 
 function restorePreviewFromPopup(closePopup = true): void {

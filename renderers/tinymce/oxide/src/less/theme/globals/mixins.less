@@ -1,7 +1,8 @@
 .keyboard-focus-outline-mixin(@_inset: ~"") {
   border-radius: @toolbar-button-border-radius;
   bottom: 0;
-  box-shadow: 0 0 0 @keyboard-focus-outline-width @keyboard-focus-outline-color @_inset;
+  box-shadow: 0 0 0 @keyboard-focus-outline-width
+    var(--instui-color-stroke-interactive-focus-ring-base, @keyboard-focus-outline-color) @_inset;
   content: "";
   left: 0;
   position: absolute;

@@ -66,9 +66,11 @@ function modifierCompletions(
   entry: CssDocEntry,
   model: readonly CssDocEntry[],
   existing: Set<string>,
+  partial: string,
 ): Completion[] {
   return getApplicableModifiers(entry.name, model)
     .filter(({ modifier }) => !existing.has(modifier.name))
+    .filter(({ modifier }) => modifier.name.startsWith(partial))
     .map(({ modifier, source, scope }) => ({
       label: modifier.name,
       detail: scope === "utility" ? `${source.name} · ${modifier.prop}` : modifier.prop,
@@ -103,7 +105,8 @@ export function pantokenHtmlCompletion(options: AutocompleteOptions) {
 
         return {
           from,
-          options: modifierCompletions(component, options.model, existing),
+          options: modifierCompletions(component, options.model, existing, partial),
+          filter: false,
           validFor: /-{1,2}[\w-]*/u,
         };
       },

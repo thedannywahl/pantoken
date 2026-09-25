@@ -157,8 +157,7 @@ test("groups and applies global utility modifiers", () => {
   const { editor, mocks } = createMockEditor(child, body);
   const utilities = fetchMenu(editor, mocks).find((item) => item.text === "Utilities");
   const layout = utilities.getSubmenuItems().find((item: any) => item.text === "Layout");
-  const display = layout.getSubmenuItems().find((item: any) => item.text === "Display");
-  const flex = display.getSubmenuItems().find((item: any) => item.text === "Flex");
+  const flex = layout.getSubmenuItems().find((item: any) => item.text === "Flex");
 
   flex.onAction();
   expect(component.classList.contains("--display-grid")).toBe(false);

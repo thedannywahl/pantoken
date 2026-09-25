@@ -52,6 +52,18 @@ test("corrects toolbar-button and menu-item active states for dark mode", () => 
       "  color: #1D354F;\n" +
       "}",
   );
+  expect(nextGenUi).toContain(
+    ':root[data-pantoken-scheme="dark"] .tox .tox-tooltip__body {\n' +
+      "  background-color: #10141A;\n" +
+      "  color: #F2F4F5;\n" +
+      "}",
+  );
+});
+
+test("uses the live Pantoken focus token for pseudo focus rings", () => {
+  const nextGenUi = readFileSync(resolve(generatedRoot, "next-gen/skin.css"), "utf8");
+  expect(nextGenUi).toContain("var(--instui-color-stroke-interactive-focus-ring-base, #2B7ABC)");
+  expect(nextGenUi).toContain("var(--instui-color-stroke-interactive-focus-ring-base, #4798E3)");
 });
 
 test("uses Oxide convention skin entrypoints with theme variable overrides", () => {

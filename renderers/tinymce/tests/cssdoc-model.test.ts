@@ -39,8 +39,17 @@ test("getApplicableModifiers returns canonical component modifiers followed by g
       className: ".instui-button",
       kind: "component",
       modifiers: [
+        {
+          name: "-size-small",
+          prop: "size",
+          value: "small",
+          description: "Small. Long-form alias of `-size-sm`.",
+        },
+        { name: "-size-sm", prop: "size", value: "sm" },
+        { name: "-color-secondary", prop: "color", value: "secondary" },
         { name: "-color-primary", prop: "color", value: "primary" },
         { name: "-legacy", prop: "legacy", deprecated: { canonical: "-current" } },
+        { name: "-alias", prop: "legacy", alias: { canonical: "-current" } },
         { name: "-icon-*", prop: "icon", pattern: true },
         { name: "-scripted", prop: "scripted", interaction: true },
       ],
@@ -51,8 +60,9 @@ test("getApplicableModifiers returns canonical component modifiers followed by g
       kind: "utility",
       global: true,
       modifiers: [
-        { name: "--display-flex", prop: "display", value: "flex" },
         { name: "-color-primary", prop: "color", value: "duplicate" },
+        { name: "--display-grid", prop: "display", value: "grid" },
+        { name: "--display-flex", prop: "display", value: "flex" },
       ],
     },
   ] as any;
@@ -61,7 +71,10 @@ test("getApplicableModifiers returns canonical component modifiers followed by g
     getApplicableModifiers("button", model).map(({ modifier, scope }) => [modifier.name, scope]),
   ).toEqual([
     ["-color-primary", "component"],
+    ["-color-secondary", "component"],
+    ["-size-sm", "component"],
     ["--display-flex", "utility"],
+    ["--display-grid", "utility"],
   ]);
 });
 

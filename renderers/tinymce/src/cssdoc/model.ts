@@ -46,8 +46,27 @@ export function findEntryByClassToken(
   );
 }
 
+function isLongFormAlias(modifier: CssModifier): boolean {
+  return modifier.description?.includes("Long-form alias of") ?? false;
+}
+
 function isCanonicalConcreteModifier(modifier: CssModifier): boolean {
-  return !(modifier.pattern || modifier.deprecated || modifier.alias || modifier.interaction);
+  return !(
+    modifier.pattern ||
+    modifier.deprecated ||
+    modifier.alias ||
+    modifier.interaction ||
+    isLongFormAlias(modifier)
+  );
+}
+
+function modifierSortKey(modifier: CssModifier): string {
+  return [modifier.prop, modifier.value ?? "", modifier.name].join("\0");
+}
+
+function compareApplicableModifiers(a: ApplicableModifier, b: ApplicableModifier): number {
+  if (a.scope !== b.scope) return a.scope === "component" ? -1 : 1;
+  return modifierSortKey(a.modifier).localeCompare(modifierSortKey(b.modifier));
 }
 
 /**
@@ -78,7 +97,7 @@ export function getApplicableModifiers(
     }
   }
 
-  return applicable;
+  return applicable.sort(compareApplicableModifiers);
 }
 
 /**
