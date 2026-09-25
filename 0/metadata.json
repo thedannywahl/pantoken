@@ -1,0 +1,44 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M3DDHR702Y30B7KX5N7HYQJ8",
+  "session_id": "ba47da3e-8456-4cf4-a412-daa8e67158e0",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-25T23:14:01.895203Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "docs/engineering-log.md"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "a46d9cc490a5",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-25T23:14:01.889287Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 1,
+    "human_removed": 0,
+    "total_committed": 0,
+    "total_lines_changed": 1,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
+}
