@@ -1,0 +1,11 @@
+I need an email template using pantoken, but all the styles need to be inlined. It is an invitation to sign up to test the official Canvas MCP server. users are receiving this because they indicated they're interested in the community. it should specifically call out that it's experimental and they'll get early access to testing. the single CTA is "Sign up" (https://forms.gle/jXYJN6NNQFnaYCPa8) which should be a link styled like instui-button.
+below that shoudl be something like
+```
+Not interested in actively participating but want to stay
+                informed about updates?
+                [Follow along](https://community.instructure.com/en/group/70-canvas-mcp).
+```
+
+---
+
+Start implementation
