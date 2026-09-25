@@ -87,7 +87,7 @@ buildTokens({
 (Atkinson Hyperlegible Next: `base.css` ใช้ `--instui-font-family-base`; ส่วน opt-in
 `@pantoken/components/fonts.css` โหลด `@font-face` woff2s)
 
-## สีธีม
+## สีธีม {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` ผลิตบล็อก `[data-pantoken-color="…"]` หนึ่งบล็อกต่อพาเล็ตต์
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

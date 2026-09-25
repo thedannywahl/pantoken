@@ -86,7 +86,7 @@ chúng sẵn sàng: bóng nâng (elevation shadows) (`--instui-elevation-*`, tro
 (trong `base.css` — mọi phần có thể nhận focus sẽ có khi pantoken sở hữu trang), và font thương hiệu Instructure
 (Atkinson Hyperlegible Next: `base.css` áp dụng `--instui-font-family-base`; tùy chọn `@pantoken/components/fonts.css` nạp các `@font-face` woff2s).
 
-## Màu chủ đề
+## Màu chủ đề {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` phát ra một khối `[data-pantoken-color="…"]` cho mỗi palette
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

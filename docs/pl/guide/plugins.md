@@ -79,7 +79,7 @@ buildTokens({
 Kilka rzeczy, które kiedyś były wtyczkami, teraz wysyłane są w `@pantoken/components`, ponieważ wiele komponentów potrzebuje ich domyślnie: cienie elewacji (`--instui-elevation-*`, w `components.css`), obwódka focus-outline
 (in w `base.css` — każdy element fokusowalny ją otrzymuje, gdy pantoken kontroluje stronę), oraz fonty marki Instructure (Atkinson Hyperlegible Next: `base.css` stosuje `--instui-font-family-base`; opcjonalny `@pantoken/components/fonts.css` ładuje `@font-face` woff2s).
 
-## Kolory motywu
+## Kolory motywu {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` emituje jeden blok `[data-pantoken-color="…"]` na paletę
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

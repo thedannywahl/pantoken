@@ -76,7 +76,7 @@ buildTokens({
 
 Декілька речей, які раніше були плагінами, тепер постачаються в `@pantoken/components`, оскільки багатьом компонентам вони потрібні «з коробки»: тіні піднесення (`--instui-elevation-*`, в `components.css`), кільце контуру фокусу (в `base.css` — кожен фокусований елемент його отримує, коли pantoken контролює сторінку), і бренд-шрифти Instructure (Atkinson Hyperlegible Next: `base.css` застосовує `--instui-font-family-base`; опційний `@pantoken/components/fonts.css` завантажує `@font-face` woff2-файли).
 
-## Кольори теми
+## Кольори теми {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` виводить один блок `[data-pantoken-color="…"]` на палітру
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

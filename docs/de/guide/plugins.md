@@ -72,7 +72,7 @@ buildTokens({
 
 Einige Dinge, die früher Plugins waren, werden jetzt in `@pantoken/components` ausgeliefert, da so viele Komponenten sie standardmäßig benötigen: Elevation-Schatten (`--instui-elevation-*`, in `components.css`), der Focus-Outline-Ring (in `base.css` — jede fokussierbare Komponente erhält ihn, wenn pantoken die Seite besitzt) und die Instructure-Markenfonts (Atkinson Hyperlegible Next: `base.css` wendet `--instui-font-family-base` an; das opt-in `@pantoken/components/fonts.css` lädt die `@font-face` woff2s).
 
-## Theme-Farben
+## Theme-Farben {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` erzeugt einen `[data-pantoken-color="…"]` Block pro Palette
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

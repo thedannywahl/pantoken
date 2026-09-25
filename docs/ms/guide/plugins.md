@@ -72,7 +72,7 @@ buildTokens({
 
 Beberapa perkara yang dulu merupakan pemalam kini dihantar dalam `@pantoken/components`, kerana begitu banyak komponen memerlukannya secara lalai: bayang-bayang elevasi (`--instui-elevation-*`, dalam `components.css`), cincin fokus-outline (dalam `base.css` — setiap elemen boleh-fokus akan menerimanya apabila pantoken menguasai halaman), dan fon jenama Instructure (Atkinson Hyperlegible Next: `base.css` mengenakan `--instui-font-family-base`; pilihan opt-in `@pantoken/components/fonts.css` memuatkan woff2 `@font-face`).
 
-## Warna tema
+## Warna tema {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` mengeluarkan satu blok `[data-pantoken-color="…"]` bagi setiap palet
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

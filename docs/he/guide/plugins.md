@@ -73,7 +73,7 @@ buildTokens({
 
 כמה דברים שהיו פעם תוספים עכשיו כלולים ב־`@pantoken/components`, כי כל כך הרבה רכיבים זקוקים להם כברירת מחדל: צללי elevation (`--instui-elevation-*`, בתוך `components.css`), טבעת ה‑focus‑outline (ב־`base.css` — כל פריט שניתן למקד מקבל אותה כש‑pantoken שולט בדף), וגופני המותג של Instructure (Atkinson Hyperlegible Next: `base.css` מחיל `--instui-font-family-base`; ה‑opt‑in `@pantoken/components/fonts.css` טוען את ה‑woff2s של `@font-face`).
 
-## צבעי תמה
+## צבעי תמה {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` פולג חוסם `[data-pantoken-color="…"]` אחד לכל פלטה
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

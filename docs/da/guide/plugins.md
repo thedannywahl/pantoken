@@ -86,7 +86,7 @@ ringen (i `base.css` — alle fokuserbare får den, når pantoken ejer siden), o
 fonte (Atkinson Hyperlegible Next: `base.css` anvender `--instui-font-family-base`; den opt-in
 `@pantoken/components/fonts.css` indlæser `@font-face` woff2'erne).
 
-## Tema-farver
+## Tema-farver {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` emitterer ét `[data-pantoken-color="…"]` blok per palette
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

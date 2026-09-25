@@ -75,7 +75,7 @@ buildTokens({
 
 Ko ētahi mea i mua he tāpiritanga ā, kua whakaurua inaianei ki `@pantoken/components`, nā te nui o ngā wāhanga e hiahiatia ana i te pūkete: ngā atarangi whītanga elevation (`--instui-elevation-*`, i roto i `components.css`), te porowhita ā-roa ā-aro (focus-outline) (i roto i `base.css` — ka riro ki ia mea ka taea te aro), me ngā momotuhi waitohu Instructure (Atkinson Hyperlegible Next: `base.css` ka tono `--instui-font-family-base`; ko te kōwhiri `@pantoken/components/fonts.css` ka uta i ngā woff2 `@font-face`).
 
-## Ngā tae kaupapa
+## Ngā tae kaupapa {#theme-colors}
 
 Ka whakaputa te `@pantoken/plugin-custom-theme-colors` i tētahi poraka `[data-pantoken-color="…"]` mō ia taupoki
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

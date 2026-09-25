@@ -85,7 +85,7 @@ Ein del ting som tidlegare var pluginar, blir no leverte i `@pantoken/components
 dei direkte: elevation-skyggar (`--instui-elevation-*`, i `components.css`), focus-outline-ringen (i `base.css` — alle fokusbare får han når pantoken eig sida), og Instructure-brand-fontane (Atkinson Hyperlegible Next: `base.css` gjev `--instui-font-family-base`; det valfrie
 `@pantoken/components/fonts.css` lastar dei `@font-face` woff2-ane).
 
-## Tema-fargar
+## Tema-fargar {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` emitterer ein `[data-pantoken-color="…"]` blokk per palett
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

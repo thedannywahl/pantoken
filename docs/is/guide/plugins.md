@@ -74,7 +74,7 @@ buildTokens({
 
 Nokkur atriði sem áður voru viðbætur eru nú hluti af `@pantoken/components`, þar sem svo margar íhlutir þurfa þær upphaflega: hæðarskuggar (`--instui-elevation-*`, í `components.css`), fókus-útlínuhringurinn (í `base.css` — hver færanlegur hlutur fær hann þegar pantoken á síðuna), og Instructure merkisletur (Atkinson Hyperlegible Next: `base.css` beitir `--instui-font-family-base`; valfrjálsa `@pantoken/components/fonts.css` hleður `@font-face` woff2-skrám).
 
-## Þema-litir
+## Þema-litir {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` sendir út einn `[data-pantoken-color="…"]` kubb fyrir hvert litasafn
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

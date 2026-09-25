@@ -72,7 +72,7 @@ buildTokens({
 
 一些以前作为插件发布的功能现在随 `@pantoken/components` 一起出货，因为许多组件需要开箱即用：高程阴影（`--instui-elevation-*`，位于 `components.css` 中）、焦点外轮廓环（位于 `base.css` 中 —— 当 pantoken 管理页面时每个可聚焦元素都会获得它）以及 Instructure 品牌字体（Atkinson Hyperlegible Next：`base.css` 应用 `--instui-font-family-base`；可选的 `@pantoken/components/fonts.css` 会加载 `@font-face` woff2s）。
 
-## 主题色
+## 主题色 {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` 为每个调色板发出一个 `[data-pantoken-color="…"]` 块（`navy`、`blue`、`green`、`red`、`orange`、`grey`、`plum`、`violet`、`stone`、`sky`、`honey`、`sea`、`aurora`）。每个块将品牌原语（`--instui-primitive-color-navy-*` 和 `-blue-*`）指向所选的调色板。它还通过 `color-mix()` 重新推导上游被扁平为字面十六进制的品牌表面，保留其烘焙的 alpha。语义状态颜色、显式的蓝色强调和高程阴影保持不变。在 [基于色板的主题演示](https://stackblitz.com/edit/vitejs-vite-sg9oy7ln?file=index.html) 中试用。
 

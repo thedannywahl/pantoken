@@ -72,11 +72,11 @@ buildTokens({
 
 Որոշ բաներ, որոնք նախկինում եղել են պլագիններ, հիմա դառնում են մաս `@pantoken/components`-ի, քանի որ շատ կոմպոնենտներ դրանք պահանջում են ըստ տուփից. բարձրության ստվերներ (`--instui-elevation-*`, `components.css`-ում), focus-outline օղակը (`base.css`-ում — յուրաքանչյուր ֆոկուսացվող ստանում է այն, երբ pantoken-ը Վերահսկում է էջը), և Instructure բրենդի տառատեսակները (Atkinson Hyperlegible Next: `base.css` կիրառվում է `--instui-font-family-base`-ը; օպտ-ին `@pantoken/components/fonts.css` բեռնում է `@font-face` woff2-երը)։
 
-## Թեմայի գույները
+## Թեմայի գույները {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors`-ը յուրաքանչյուր palette-ի համար արտածում է մեկ `[data-pantoken-color="…"]` բլոկ
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,
-`aurora`)։ Յուրաքանչյուր բլոկը ուղղված է բրենդի primitives-ներին (`--instui-primitive-color-navy-*` և `-blue-*`) ընտրված palette-ի վրա։ Այն նույնպես վերա-հաշվում է բրենդի մակերեսները, որոնք upstream-ը ենթարկեց հաստատուն hex-երի, պահելով դրանց baked alpha-ն `color-mix()`-ի միջոցով։ Semantic status գույները, հստակ կապույտ ակցենտները և բարձրության ստվերները չեն փոխվում։ Փորձիր դա [swatch-ապահովված theming demo]-ում (https://stackblitz.com/edit/vitejs-vite-sg9oy7ln?file=index.html)։
+`aurora`)։ Յուրաքանչյուր բլոկը ուղղված է բրենդի primitives-ներին (`--instui-primitive-color-navy-*` և `-blue-*`) ընտրված palette-ի վրա։ Այն նույնպես վերա-հաշվում է բրենդի մակերեսները, որոնք upstream-ը ենթարկեց հաստատուն hex-երի, պահելով դրանց baked alpha-ն `color-mix()`-ի միջոցով։ Semantic status գույները, հստակ կապույտ ակցենտները և բարձրության ստվերները չեն փոխվում։ Փորձիր դա [swatch-ապահովված theming demo-ում](https://stackblitz.com/edit/vitejs-vite-sg9oy7ln?file=index.html)։
 
 ```html
 <html data-pantoken-color="sea"></html>

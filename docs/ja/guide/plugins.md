@@ -72,7 +72,7 @@ buildTokens({
 
 以前はプラグインだったもののうち、今では多くのコンポーネントが標準で必要とするため `@pantoken/components` に含まれるものがいくつかあります：エレベーションシャドウ（`--instui-elevation-*`、`components.css` 内）、フォーカスアウトラインリング（`base.css` 内 — pantoken がページを管理しているときはすべてのフォーカス可能要素に適用されます）、および Instructure ブランドフォント（Atkinson Hyperlegible Next: `base.css` が `--instui-font-family-base` を適用します；オプトインの `@pantoken/components/fonts.css` は `@font-face` の woff2 をロードします）。
 
-## テーマカラー
+## テーマカラー {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` はパレットごとに 1 つの `[data-pantoken-color="…"]` ブロックを出力します（`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`, `aurora`）。各ブロックはブランドのプリミティブ（`--instui-primitive-color-navy-*` と `-blue-*`）を選択したパレットに向けます。また、上流でリテラル HEX に平坦化されていたブランド表面を再派生し、`color-mix()` を通してベイク済みのアルファを保持します。セマンティックなステータスカラー、明示的な青アクセント、およびエレベーションシャドウはそのまま残ります。次の [スウォッチベースのテーマデモ](https://stackblitz.com/edit/vitejs-vite-sg9oy7ln?file=index.html) で試してみてください。
 

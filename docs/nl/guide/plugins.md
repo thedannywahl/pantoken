@@ -86,7 +86,7 @@ ring (in `base.css` — elke focusable krijgt deze wanneer pantoken de pagina be
 (Atkinson Hyperlegible Next: `base.css` past `--instui-font-family-base` toe; de opt-in
 `@pantoken/components/fonts.css` laadt de `@font-face` woff2-bestanden).
 
-## Themakleuren
+## Themakleuren {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` genereert één `[data-pantoken-color="…"]` blok per palet
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

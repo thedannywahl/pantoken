@@ -86,7 +86,7 @@ anhais an oiread sin comhpháirteanna as an mbosca: scáthanna ardaithe (`--inst
 (Atkinson Hyperlegible Next: cuireann `base.css` i bhfeidhm `--instui-font-family-base`; luchtóidh an rogha `@pantoken/components/fonts.css` na
 woff2anna `@font-face`).
 
-## Dathanna téama
+## Dathanna téama {#theme-colors}
 
 Seolann `@pantoken/plugin-custom-theme-colors` bloc `[data-pantoken-color="…"]` amháin in aghaidh na pailéad
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

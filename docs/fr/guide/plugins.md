@@ -85,7 +85,7 @@ besoin par défaut : les ombres d'élévation (`--instui-elevation-*`, dans `com
 (dans `base.css` — chaque élément focusable l'obtient lorsque pantoken contrôle la page), et les polices de marque Instructure
 (Atkinson Hyperlegible Next : `base.css` applique `--instui-font-family-base` ; l'option `@pantoken/components/fonts.css` charge les woff2s `@font-face`).
 
-## Couleurs du thème
+## Couleurs du thème {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` émet un bloc `[data-pantoken-color="…"]` par palette
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

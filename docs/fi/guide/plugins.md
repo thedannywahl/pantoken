@@ -75,7 +75,7 @@ buildTokens({
 
 Muutama aiemmin laajennuksena toimitettu osa sisältyy nyt `@pantoken/components`:ään, koska niin monet komponentit tarvitsevat niitä oletuksena: elevation-varjot (`--instui-elevation-*`, `components.css`), focus-outline-sormus ( `base.css` — jokainen fokusoitava saa sen, kun pantoken omistaa sivun), ja Instructuren brändi-fontit (Atkinson Hyperlegible Next: `base.css` soveltaa `--instui-font-family-base`; opt-in `@pantoken/components/fonts.css` lataa `@font-face` woff2-tiedostot).
 
-## Teemavärit
+## Teemavärit {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` tuottaa yhden `[data-pantoken-color="…"]`-lohkotuksen per paletti
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

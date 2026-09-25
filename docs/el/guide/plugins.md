@@ -84,7 +84,7 @@ buildTokens({
 Μερικά πράγματα που παλιά ήταν πρόσθετα τώρα περιλαμβάνονται στο `@pantoken/components`, αφού τόσα πολλά components τα χρειάζονται εκτός του κουτιού: σκιά ανύψωσης (`--instui-elevation-*`, σε `components.css`), ο δακτύλιος focus-outline (σε `base.css` — κάθε στοιχείο με δυνατότητα focus τον παίρνει όταν το pantoken έχει την ιδιοκτησία της σελίδας), και οι γραμματοσειρές επωνυμίας Instructure (Atkinson Hyperlegible Next: `base.css` εφαρμόζει `--instui-font-family-base`; το opt-in
 `@pantoken/components/fonts.css` φορτώνει τα `@font-face` woff2s).
 
-## Χρώματα θέματος
+## Χρώματα θέματος {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` εκπέμπει ένα `[data-pantoken-color="…"]` μπλοκ ανά παλέτα
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

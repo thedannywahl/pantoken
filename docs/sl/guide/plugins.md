@@ -87,7 +87,7 @@ ring (v `base.css` — vsaka fokusabilna dobi to, ko pantoken upravlja stran), i
 pisave (Atkinson Hyperlegible Next: `base.css` uporablja `--instui-font-family-base`; opcijski
 `@pantoken/components/fonts.css` naloži `@font-face` woff2 datoteke).
 
-## Barve teme
+## Barve teme {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` odda en `[data-pantoken-color="…"]` blok na paleto
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

@@ -86,7 +86,7 @@ en ont besoin immédiatement : ombres d'élévation (`--instui-elevation-*`, dan
 (Atkinson Hyperlegible Next : `base.css` applique `--instui-font-family-base` ; le chargement opt-in
 `@pantoken/components/fonts.css` charge les woff2 `@font-face`).
 
-## Couleurs de thème
+## Couleurs de thème {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` émet un bloc `[data-pantoken-color="…"]` par palette
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

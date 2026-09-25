@@ -81,7 +81,7 @@ buildTokens({
 
 Ychydig o bethau a oedd yn plug-ins yn y gorffennol sy'n cael eu cynnwys yn awr yn `@pantoken/components`, gan fod cymaint o gydrannau yn eu hangen allan o'r bocs: cysgodion codiad (`--instui-elevation-*`, yn `components.css`), y cylch amlinell ffocws (yn `base.css` — mae pob elfen y gellir ei ffocysu yn ei chael pan fo pantoken yn berchen ar y dudalen), a'r ffontiau brand Instructure (Atkinson Hyperlegible Next: mae `base.css` yn cymhwyso `--instui-font-family-base`; mae `@pantoken/components/fonts.css` dewisol yn llwytho'r woff2s `@font-face`).
 
-## Lliwiau thema
+## Lliwiau thema {#theme-colors}
 
 Mae `@pantoken/plugin-custom-theme-colors` yn allbynnu un bloc `[data-pantoken-color="…"]` fesul palet
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

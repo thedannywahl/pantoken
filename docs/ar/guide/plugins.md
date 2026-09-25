@@ -72,7 +72,7 @@ buildTokens({
 
 بعض الأشياء التي كانت سابقاً إضافات تُشحن الآن داخل `@pantoken/components`، لأن العديد من المكونات تحتاجها مباشرة: ظلال الارتفاع (`--instui-elevation-*`, في `components.css`), حلقة مخطط التركيز (في `base.css` — كل عنصر قابل للتركيز يحصل عليها عندما تملك pantoken الصفحة)، وخطوط علامة Instructure التجارية (Atkinson Hyperlegible Next: يطبّق `base.css` `--instui-font-family-base`; و `@pantoken/components/fonts.css` الاختياري يحمل ملفات woff2s لـ `@font-face`).
 
-## ألوان السمة
+## ألوان السمة {#theme-colors}
 
 يصدر `@pantoken/plugin-custom-theme-colors` كتلة `[data-pantoken-color="…"]` واحدة لكل لوحة ألوان
 (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,

@@ -72,7 +72,7 @@ buildTokens({
 
 कुछ चीज़ें जो पहले प्लगइन्स हुआ करती थीं अब `@pantoken/components` में शिप होती हैं, क्योंकि बहुत से कॉम्पोनेंट्स को बॉक्स से बाहर वे चाहिए: एलेवेशन शैडोज़ (`--instui-elevation-*`, `components.css` में), फ़ोकस-आउटलाइन रिंग (`base.css` में — जब pantoken पेज का मालिक होता है तो हर फोकस-योग्य को यह मिलता है), और Instructure ब्रांड फोंट्स (Atkinson Hyperlegible Next: `base.css` `--instui-font-family-base` लागू करता है; ऑप्ट-इन `@pantoken/components/fonts.css` `@font-face` woff2s लोड करता है)।
 
-## थीम रंग
+## थीम रंग {#theme-colors}
 
 `@pantoken/plugin-custom-theme-colors` प्रत्येक पैलेट के लिए एक `[data-pantoken-color="…"]` ब्लॉक उत्पन्न करता है (`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`, `aurora`)। प्रत्येक ब्लॉक ब्रांड प्रिमिटिव्स (`--instui-primitive-color-navy-*` और `-blue-*`) को चुनी हुई पैलेट की ओर इशारा करता है। यह उन ब्रांड सरफेसेस को भी पुनः व्युत्पन्न करता है जिन्हें अपस्ट्रीम ने लिटेरल हेक्स में फ्लैटन कर दिया था, और `color-mix()` के माध्यम से उनके बेक्ड अल्फा को बनाए रखता है। सेमांटिक स्टेट्स कलर, स्पष्ट नीले एक्सेंट और एलेवेशन शैडो जस के तस रहते हैं। इसे
 [स्वैच-आधारित थीमिंग डेमो](https://stackblitz.com/edit/vitejs-vite-sg9oy7ln?file=index.html) में आज़माएँ।
