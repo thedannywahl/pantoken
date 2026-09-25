@@ -19,6 +19,20 @@
 import { definePlugin } from "@pantoken/plugin-kit";
 import { byTheme } from "@pantoken/tokens";
 import type { PantokenPlugin, Token } from "@pantoken/model";
+import {
+  buildReferenceCurve,
+  deriveScale,
+  type CustomColorScale,
+  type ReferenceCurve,
+} from "./custom-scale.ts";
+
+export {
+  deriveScale,
+  isHexColor,
+  parseHexColor,
+  type CustomColorScale,
+  type ReferenceCurve,
+} from "./custom-scale.ts";
 
 /** The 13 available color namespaces for site theme color selection. */
 export const COLOR_KEYS = [
@@ -37,8 +51,11 @@ export const COLOR_KEYS = [
   "aurora",
 ] as const;
 
+/** The color namespace whose scale is derived from an arbitrary hex rather than shipped. */
+export const CUSTOM_COLOR_KEY = "custom";
+
 /** A supported custom theme color namespace. */
-export type PantokenColorNamespace = (typeof COLOR_KEYS)[number];
+export type PantokenColorNamespace = (typeof COLOR_KEYS)[number] | typeof CUSTOM_COLOR_KEY;
 
 /** Options for the {@link customThemeColors} plugin. */
 export interface CustomThemeColorsOptions {
@@ -48,6 +65,8 @@ export interface CustomThemeColorsOptions {
   selector?: string;
   /** Always-true-color subtree — see {@link CustomThemeColorsCssOptions.resetSelector}. */
   resetSelector?: string;
+  /** Brand hex for the `custom` scale — see {@link CustomThemeColorsCssOptions.custom}. */
+  custom?: string;
 }
 
 const PRIMITIVE_STEPS = [
@@ -220,10 +239,192 @@ export interface CustomThemeColorsCssOptions {
    * stay constant rather than inherit the ancestor's remap.
    */
   resetSelector?: string;
+  /**
+   * A brand hex (`#rgb`/`#rrggbb`) to derive the `custom` scale from. When set, a
+   * `[data-pantoken-color="custom"]` rule is appended — see {@link customColorCss}.
+   */
+  custom?: string;
 }
 
 /** Sentinel scale that never matches a real color namespace, so every affected token is selected. */
 const RESET_SCALE = "\0";
+
+function toTokenMap(tokens?: readonly Token[] | Map<string, string>): Map<string, string> {
+  const tokenMap = new Map<string, string>();
+  if (tokens instanceof Map) {
+    for (const [k, v] of tokens.entries()) tokenMap.set(k, v);
+  } else if (Array.isArray(tokens)) {
+    for (const t of tokens) tokenMap.set(t.name, t.value);
+  } else {
+    for (const t of byTheme("rebrand")) tokenMap.set(t.name, t.value);
+  }
+  return tokenMap;
+}
+
+function familyStepHexes(tokenMap: Map<string, string>, family: string): Map<number, string> {
+  const hexes = new Map<number, string>();
+  for (const step of PRIMITIVE_STEPS) {
+    const value = tokenMap.get(`--instui-primitive-color-${family}-${family}${step}`);
+    const parsed = value ? parseColorLiteral(value.trim()) : undefined;
+    if (parsed && parsed.alpha >= 1) hexes.set(step, parsed.hex);
+  }
+  return hexes;
+}
+
+/**
+ * The per-step lightness curve and chroma shape the `custom` scale is derived against, computed
+ * from the 13 shipped families. JSON-safe, so a build can ship it to a browser that pairs it with
+ * the dependency-free `@pantoken/plugin-custom-theme-colors/scale` entry.
+ *
+ * @param tokens - Optional token array or map to read the reference families from.
+ * @returns The {@link ReferenceCurve}.
+ */
+export function customColorReferenceCurve(
+  tokens?: readonly Token[] | Map<string, string>,
+): ReferenceCurve {
+  const tokenMap = toTokenMap(tokens);
+  return buildReferenceCurve(
+    COLOR_KEYS.map((family) => familyStepHexes(tokenMap, family)),
+    PRIMITIVE_STEPS,
+  );
+}
+
+/**
+ * Derive the `custom` primitive scale from a brand hex. The input is anchored at the step whose
+ * reference lightness (the mean OKLCH lightness of the 13 shipped families) is nearest its own,
+ * then every step is rebuilt at its reference lightness with the input's hue — so the anchor step
+ * lands close to, but not necessarily exactly on, the input.
+ *
+ * @param hex - A `#rgb`/`#rrggbb` brand color.
+ * @param tokens - Optional token array or map to read the reference families from.
+ * @returns The {@link CustomColorScale}.
+ * @throws TypeError when `hex` isn't a valid hex color.
+ */
+export function deriveCustomColorScale(
+  hex: string,
+  tokens?: readonly Token[] | Map<string, string>,
+): CustomColorScale {
+  return deriveScale(hex, customColorReferenceCurve(tokens));
+}
+
+interface ScaleContext {
+  tokenMap: Map<string, string>;
+  preservedTokens: string[];
+  preservedNames: Set<string>;
+  primitiveHexIndex: Map<string, { family: string; step: number }>;
+  getPreservedValue: (tokenName: string) => string;
+}
+
+function scaleContext(tokenMap: Map<string, string>): ScaleContext {
+  const preservedTokens = [
+    ...new Set([
+      ...PRESERVED_BLUE_ACCENT_TOKENS,
+      ...[...tokenMap.keys()].filter((name) => STATUS_INTENT_TOKEN.test(name)),
+    ]),
+  ];
+  return {
+    tokenMap,
+    preservedTokens,
+    preservedNames: new Set(preservedTokens),
+    primitiveHexIndex: buildPrimitiveHexIndex(tokenMap),
+    getPreservedValue(tokenName) {
+      const raw = tokenMap.get(tokenName);
+      if (!raw) return "";
+      return raw.replace(/var\((--instui-primitive-color-blue-blue\d+)\)/g, (_m, prim) => {
+        return tokenMap.get(prim) ?? _m;
+      });
+    },
+  };
+}
+
+function scaleRule(
+  ctx: ScaleContext,
+  selector: string,
+  scale: string,
+  primitiveDecls: string[] = [],
+): string {
+  // Self-referencing var() (e.g. navy remapped to navy) is a guaranteed-invalid circular custom
+  // property per the CSS spec, which computes as transparent — skip the no-op remap instead.
+  const navyOverrides =
+    scale === "navy"
+      ? ""
+      : PRIMITIVE_STEPS.map(
+          (step) =>
+            `  --instui-primitive-color-navy-navy${step}: var(--instui-primitive-color-${scale}-${scale}${step});`,
+        ).join("\n");
+
+  const blueOverrides =
+    scale === "blue"
+      ? ""
+      : PRIMITIVE_STEPS.map(
+          (step) =>
+            `  --instui-primitive-color-blue-blue${step}: var(--instui-primitive-color-${scale}-${scale}${step});`,
+        ).join("\n");
+
+  const opacityOverride = `  --instui-primitive-color-navy-opacity10: color-mix(in srgb, var(--instui-primitive-color-${scale}-${scale}170) 10%, transparent);`;
+
+  const preservedValues = ctx.preservedTokens
+    .map((name) => {
+      const val = ctx.getPreservedValue(name);
+      return val ? `  ${name}: ${val};` : "";
+    })
+    .filter(Boolean)
+    .join("\n");
+
+  const relinkedValues = [...ctx.tokenMap.entries()]
+    .map(([name, value]) => {
+      if (ctx.preservedNames.has(name) || name.startsWith("--instui-primitive-color-")) return "";
+      if (RELINK_EXCLUDED.test(name)) return "";
+      const relinked = relinkLiteralColors(value, ctx.primitiveHexIndex, scale);
+      return relinked ? `  ${name}: ${relinked};` : "";
+    })
+    .filter(Boolean)
+    .join("\n");
+
+  const primitives = primitiveDecls.length ? `${primitiveDecls.join("\n")}\n` : "";
+  return `${selector}[data-pantoken-color="${scale}"] {\n${primitives}${navyOverrides}\n${blueOverrides}\n${opacityOverride}\n${preservedValues}\n${relinkedValues}\n}`;
+}
+
+/** Options for {@link customColorCss}. */
+export interface CustomColorCssOptions {
+  /** Optional token array or map for the reference families and relinked tokens. */
+  tokens?: readonly Token[] | Map<string, string>;
+  /** Selector prefix — see {@link CustomThemeColorsCssOptions.selector}. */
+  selector?: string;
+}
+
+/**
+ * Generate the `[data-pantoken-color="custom"]` rule for a brand hex: it declares the derived
+ * `--instui-primitive-color-custom-custom*` steps and remaps the brand primitives onto them, exactly
+ * like the shipped scales.
+ *
+ * @param hex - A `#rgb`/`#rrggbb` brand color.
+ * @param options - {@link CustomColorCssOptions}.
+ * @returns The CSS rule.
+ * @throws TypeError when `hex` isn't a valid hex color.
+ */
+export function customColorCss(hex: string, options: CustomColorCssOptions = {}): string {
+  const { selector = ":root" } = options;
+  const tokenMap = toTokenMap(options.tokens);
+  const scale = deriveCustomColorScale(hex, tokenMap);
+  const primitiveDecls = [...scale.steps].map(
+    ([step, value]) =>
+      `  --instui-primitive-color-${CUSTOM_COLOR_KEY}-${CUSTOM_COLOR_KEY}${step}: ${value};`,
+  );
+  return scaleRule(scaleContext(tokenMap), selector, CUSTOM_COLOR_KEY, primitiveDecls);
+}
+
+/**
+ * The `[data-pantoken-color="custom"]` remap rule without the derived primitives, for pages that
+ * set `--instui-primitive-color-custom-custom*` themselves at runtime (e.g. from a color picker).
+ *
+ * @param options - {@link CustomColorCssOptions}.
+ * @returns The CSS rule.
+ */
+export function customColorRemapCss(options: CustomColorCssOptions = {}): string {
+  const { selector = ":root" } = options;
+  return scaleRule(scaleContext(toTokenMap(options.tokens)), selector, CUSTOM_COLOR_KEY);
+}
 
 /**
  * Generate CSS rules for all custom theme color choices by remapping primitive color scale steps
@@ -239,75 +440,14 @@ export function customThemeColorsCss(
   tokens?: readonly Token[] | Map<string, string>,
   options: CustomThemeColorsCssOptions = {},
 ): string {
-  const { selector = ":root", resetSelector } = options;
-  const tokenMap = new Map<string, string>();
+  const { selector = ":root", resetSelector, custom } = options;
+  const tokenMap = toTokenMap(tokens);
+  const ctx = scaleContext(tokenMap);
+  const { preservedTokens, preservedNames, primitiveHexIndex, getPreservedValue } = ctx;
 
-  if (tokens instanceof Map) {
-    for (const [k, v] of tokens.entries()) tokenMap.set(k, v);
-  } else if (Array.isArray(tokens)) {
-    for (const t of tokens) tokenMap.set(t.name, t.value);
-  } else {
-    for (const t of byTheme("rebrand")) tokenMap.set(t.name, t.value);
-  }
-
-  const preservedTokens = [
-    ...PRESERVED_BLUE_ACCENT_TOKENS,
-    ...[...tokenMap.keys()].filter((name) => STATUS_INTENT_TOKEN.test(name)),
-  ];
-  const preservedNames = new Set<string>(preservedTokens);
-  const primitiveHexIndex = buildPrimitiveHexIndex(tokenMap);
-
-  function getPreservedValue(tokenName: string): string {
-    const raw = tokenMap.get(tokenName);
-    if (!raw) return "";
-    return raw.replace(/var\((--instui-primitive-color-blue-blue\d+)\)/g, (_m, prim) => {
-      return tokenMap.get(prim) ?? _m;
-    });
-  }
-
-  const rules = COLOR_KEYS.map((c) => {
-    const scale = c;
-
-    // Self-referencing var() (e.g. navy remapped to navy) is a guaranteed-invalid circular custom
-    // property per the CSS spec, which computes as transparent — skip the no-op remap instead.
-    const navyOverrides =
-      scale === "navy"
-        ? ""
-        : PRIMITIVE_STEPS.map(
-            (step) =>
-              `  --instui-primitive-color-navy-navy${step}: var(--instui-primitive-color-${scale}-${scale}${step});`,
-          ).join("\n");
-
-    const blueOverrides =
-      scale === "blue"
-        ? ""
-        : PRIMITIVE_STEPS.map(
-            (step) =>
-              `  --instui-primitive-color-blue-blue${step}: var(--instui-primitive-color-${scale}-${scale}${step});`,
-          ).join("\n");
-
-    const opacityOverride = `  --instui-primitive-color-navy-opacity10: color-mix(in srgb, var(--instui-primitive-color-${scale}-${scale}170) 10%, transparent);`;
-
-    const preservedValues = [...new Set(preservedTokens)]
-      .map((name) => {
-        const val = getPreservedValue(name);
-        return val ? `  ${name}: ${val};` : "";
-      })
-      .filter(Boolean)
-      .join("\n");
-
-    const relinkedValues = [...tokenMap.entries()]
-      .map(([name, value]) => {
-        if (preservedNames.has(name) || name.startsWith("--instui-primitive-color-")) return "";
-        if (RELINK_EXCLUDED.test(name)) return "";
-        const relinked = relinkLiteralColors(value, primitiveHexIndex, scale);
-        return relinked ? `  ${name}: ${relinked};` : "";
-      })
-      .filter(Boolean)
-      .join("\n");
-
-    return `${selector}[data-pantoken-color="${c}"] {\n${navyOverrides}\n${blueOverrides}\n${opacityOverride}\n${preservedValues}\n${relinkedValues}\n}`;
-  }).join("\n\n");
+  const scaleRules = COLOR_KEYS.map((c) => scaleRule(ctx, selector, c));
+  if (custom !== undefined) scaleRules.push(customColorCss(custom, { tokens: tokenMap, selector }));
+  const rules = scaleRules.join("\n\n");
 
   if (!resetSelector) return rules;
 
@@ -327,7 +467,7 @@ export function customThemeColorsCss(
       "--instui-primitive-color-navy-opacity10",
       tokenMap.get("--instui-primitive-color-navy-opacity10"),
     ],
-    ...[...new Set(preservedTokens)].map((name): [string, string | undefined] => [
+    ...preservedTokens.map((name): [string, string | undefined] => [
       name,
       getPreservedValue(name) || undefined,
     ]),
@@ -362,6 +502,7 @@ export function customThemeColors(options: CustomThemeColorsOptions = {}): Panto
       append: customThemeColorsCss(options.tokens ?? ctx?.tokens, {
         selector: options.selector,
         resetSelector: options.resetSelector,
+        custom: options.custom,
       }),
     }),
   });

@@ -169,6 +169,8 @@ export interface UiStrings {
     honey?: string;
     sea?: string;
     aurora?: string;
+    custom?: string;
+    customColorInputLabel?: string;
   };
   // The interactive CDN combine-URL builder on the CDN guide page (see theme/components/CdnPicker.vue
   // and theme/cdn.ts). Component names and the generated URL are not translated.

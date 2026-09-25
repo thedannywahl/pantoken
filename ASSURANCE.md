@@ -134,6 +134,9 @@ Security-relevant entry points include:
 - Script fonts fetched at documentation-build time by the social-card renderer.
 - CDN provider/version/package/path values passed to `@pantoken/cdn`'s URL builders (consumed by
   `@pantoken/canvas-theme-editor`'s `buildTheme` and, in future, the docs CDN picker).
+- A brand hex color passed to `@pantoken/plugin-custom-theme-colors` (`custom`, `customColorCss`),
+  entered by a Canvas admin in the theme editor or restored from a saved preset, and written into
+  generated CSS.
 - Public shadcn registry JSON consumed by `shadcn list`, `search`, `view`, and `add`; installation
   may add package dependencies and mutate the consumer's configured global CSS file.
 - Dependency updates, pull requests, GitHub Actions workflows, and the release workflow.
@@ -287,6 +290,10 @@ TinyMCE named presets use a versioned localStorage envelope and require the host
 validate caller-owned state before restoring it. Blocked, malformed, or full browser storage fails
 without replacing the working document.
 HTML attributes are escaped at the output boundary.
+Custom brand colors accept only `#rgb` or `#rrggbb`; anything else throws before derivation, and the
+CSS written out contains only the derived `#rrggbb` values, never the raw input. Demo frames and the
+Canvas theme editor accept a posted custom scale or hex only when every value matches that pattern,
+since the runner writes the scale into a generated `srcdoc` attribute.
 
 ## Common implementation weaknesses and countermeasures
 

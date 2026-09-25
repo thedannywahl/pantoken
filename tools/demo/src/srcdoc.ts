@@ -29,24 +29,29 @@ export interface ExampleSrcdocOptions {
 // string — target "*" on the way out; the host's own trust check happens on receipt) and applies the
 // reply's theme, color, and scheme onto its own root as scope attributes. `color-scheme` is set
 // alongside `data-pantoken-scheme` because that property, not the attribute, is what resolves
-// `light-dark()`. Then reports the rendered body height whenever it changes, so the embedding page
-// can size the iframe to its content instead of a fixed box. Mirrors the `/play` runner's own
-// request-theme boot and size-reporter (tools/demo/runner/main.ts).
+// `light-dark()`. A `custom` color also carries its 20 derived primitives, which are applied only when
+// every entry is a plain `#rrggbb`. Then reports the rendered body height whenever it changes, so the
+// embedding page can size the iframe to its content instead of a fixed box. Mirrors the `/play`
+// runner's own request-theme boot and size-reporter (tools/demo/runner/main.ts).
 const BOOT_SCRIPT = `<script>(function(){
 var p=window.parent;
 var d=document.documentElement;
+var H=/^#[0-9a-f]{6}$/i;
 function r(){p.postMessage({type:"pantoken-demo-size",height:Math.ceil(document.body.getBoundingClientRect().height)},"*");}
 function s(m){if(m==="light"||m==="dark"){d.dataset.pantokenScheme=m;d.style.colorScheme=m;}}
+function c(v){if(Array.isArray(v)&&v.length===20&&v.every(function(x){return typeof x==="string"&&H.test(x);})){v.forEach(function(x,i){d.style.setProperty("--instui-primitive-color-custom-custom"+(i+1)*10,x);});}}
 addEventListener("message",function(e){
   if(e&&e.data){
     if(e.data.instanceId){d.dataset.pantokenInstance=e.data.instanceId;}
     if(e.data.type==="pantoken-demo-theme"){
       if(e.data.theme){d.dataset.pantokenTheme=e.data.theme;}
       if(e.data.color){d.dataset.pantokenColor=e.data.color;}
+      c(e.data.customScale);
       s(e.data.mode);
     }
     if(e.data.type==="pantoken-demo-color"){
       if(e.data.color){d.dataset.pantokenColor=e.data.color;}
+      c(e.data.customScale);
     }
   }
 });

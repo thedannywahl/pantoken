@@ -18,7 +18,11 @@ import { dirname, join } from "node:path";
 // token-value edit — or a `toCss` emitter change — re-themes every preview live once this reruns.
 import { multiScopeCss } from "../../formats/css/src/scoped.ts";
 import { foundationPlugin } from "../../formats/css/src/foundation.ts";
-import { customThemeColors } from "../../plugins/pantoken/custom-theme-colors/src/index.ts";
+import {
+  customColorReferenceCurve,
+  customColorRemapCss,
+  customThemeColors,
+} from "../../plugins/pantoken/custom-theme-colors/src/index.ts";
 import { byTheme, themes } from "../../formats/tokens/src/index.ts";
 
 type ThemeKey = keyof typeof themes;
@@ -91,7 +95,27 @@ export function siteThemesCss(): string {
 }`;
   }).join("\n\n");
 
-  return [base, defaultLogoDot, heroSiteRules].join("\n\n");
+  // The custom scale's primitives and hero image are set at runtime from the reader's hex (see
+  // theme/custom-color.ts); everything else can reference the primitives statically.
+  const customRules = `${customColorRemapCss()}
+
+:root[data-pantoken-color="custom"] {
+  --pantoken-logo-dot-color: light-dark(var(--instui-primitive-color-custom-custom120), var(--instui-primitive-color-custom-custom50));
+  --vp-home-bg-color: var(--instui-primitive-color-custom-custom200);
+  --vp-home-hero-name-color: var(--instui-primitive-color-custom-custom50);
+  --vp-home-hero-name-background: linear-gradient(135deg, var(--instui-primitive-color-custom-custom30), var(--instui-primitive-color-custom-custom60));
+  --vp-button-brand-bg: var(--instui-primitive-color-custom-custom40);
+  --vp-button-brand-hover-bg: var(--instui-primitive-color-custom-custom30);
+  --vp-button-brand-active-bg: var(--instui-primitive-color-custom-custom30);
+  --vp-button-brand-text: var(--instui-primitive-color-custom-custom190);
+  --vp-button-brand-hover-text: var(--instui-primitive-color-custom-custom190);
+  --vp-button-brand-active-text: var(--instui-primitive-color-custom-custom190);
+  --vp-button-brand-border: var(--instui-primitive-color-custom-custom40);
+  --vp-button-brand-hover-border: var(--instui-primitive-color-custom-custom30);
+  --vp-button-brand-active-border: var(--instui-primitive-color-custom-custom30);
+}`;
+
+  return [base, defaultLogoDot, heroSiteRules, customRules].join("\n\n");
 }
 
 /** Write the theme sheet imported by VitePress and mirror it for the isolated demo runner. */
@@ -101,6 +125,10 @@ export function writeSiteThemes(): string {
   mkdirSync(dirname(out), { recursive: true });
   const css = siteThemesCss();
   writeFileSync(out, css);
+  writeFileSync(
+    join(dirname(out), "custom-color-curve.json"),
+    `${JSON.stringify(customColorReferenceCurve(byTheme(DEFAULT_THEME)))}\n`,
+  );
 
   // Mirror into demos-assets so the `/play` runner loads the same token sheet. The theme imports `out`
   // directly (module-graph HMR); this copy is what the iframes fetch by URL. mkdirSync keeps a clean-tree

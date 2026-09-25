@@ -308,6 +308,14 @@
     "message": "Aurora",
     "translate": "always"
   },
+  "canvas-theme-editor.colorCustomLabel": {
+    "message": "Custom",
+    "translate": "always"
+  },
+  "canvas-theme-editor.customColorInputLabel": {
+    "message": "Brand color (hex)",
+    "translate": "always"
+  },
   "canvas-theme-editor.downloadCssLabel": {
     "message": "Download theme.css",
     "translate": "always"

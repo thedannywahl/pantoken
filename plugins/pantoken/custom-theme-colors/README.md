@@ -22,6 +22,38 @@ editable subtree can own its color scheme:
 <div data-pantoken-color="sea">...</div>
 ```
 
+## Custom brand color
+
+Pass any `#rgb`/`#rrggbb` as `custom` to add a `[data-pantoken-color="custom"]` scale derived
+from it:
+
+```ts
+customThemeColors({ custom: "#cccccc" });
+// or, standalone:
+customColorCss("#cccccc", { selector: "" });
+deriveCustomColorScale("#cccccc"); // { anchorStep: 40, steps: Map { 10 => "#f3f3f3", … } }
+```
+
+Each step's lightness is the mean OKLCH lightness of the 13 shipped families at that step, so the
+custom scale shares their spacing between white and black. The input lands on the step with the
+nearest lightness and is snapped to it, so `#cccccc` becomes `custom-40` at `#c9c9c9`. Every other
+step keeps the input's hue, with chroma following the families' average chroma curve and reduced
+where needed to stay inside sRGB. Anything that isn't a valid hex throws a `TypeError`.
+
+To derive in the browser without shipping the token set, precompute the curve at build time and
+pair it with the dependency-free `/scale` entry. `customColorRemapCss()` emits the static remap
+rule, and the page only has to set the 20 `--instui-primitive-color-custom-custom*` values:
+
+```ts
+// build time
+const curve = customColorReferenceCurve();
+const css = customColorRemapCss();
+
+// browser
+import { deriveScale } from "@pantoken/plugin-custom-theme-colors/scale";
+const { steps } = deriveScale("#e62429", curve);
+```
+
 ## Preservation Policy
 
 Custom color selection remaps the brand primitives (`navy` and `blue`). Upstream flattens some

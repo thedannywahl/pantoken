@@ -28,6 +28,16 @@ test("theme blocks are element-scoped, so a nested subtree can pick its own them
   expect(css).not.toContain(":root[data-pantoken-theme=");
 });
 
+test("the custom color remaps statically and leaves its primitives to the runtime", () => {
+  const css = siteThemesCss();
+
+  expect(css).toContain(
+    "--instui-primitive-color-navy-navy10: var(--instui-primitive-color-custom-custom10);",
+  );
+  expect(css).toContain("--vp-button-brand-bg: var(--instui-primitive-color-custom-custom40);");
+  expect(css).not.toMatch(/--instui-primitive-color-custom-custom10:/u);
+});
+
 test("scheme pins are a single color-scheme declaration, not a token table", () => {
   const css = siteThemesCss();
 

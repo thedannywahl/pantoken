@@ -90,6 +90,11 @@ editable attribute, and you can change it directly in the HTML source view to an
 namespace, such as `sea`. Keep the page content inside the wrapper so the uploaded `theme.css` can
 scope the selected color to that Canvas page.
 
+Pick **Custom** to enter your own brand hex. The editor derives a full color scale from it, anchored
+at the step with the closest lightness, and writes that
+scale into the downloaded `theme.css`. A `theme.css` carries only one custom color, so every
+`data-pantoken-color="custom"` wrapper on the account uses it.
+
 Use the **Placeholder image** button to insert a PNG from
 [`placehold.co`](https://placehold.co/) with custom dimensions, colors, visible text, and alt text.
 The preview and the resulting Canvas page need network access to `https://placehold.co` to render

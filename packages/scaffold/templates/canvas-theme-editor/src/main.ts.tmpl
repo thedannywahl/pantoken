@@ -81,7 +81,11 @@ import { Check, ChevronDown, createElement, Languages, MoonStar, Palette, SunMed
 // Inlined (not CDN-fetched) so the live preview's color swap never depends on a network round trip.
 import {
   COLOR_KEYS,
+  CUSTOM_COLOR_KEY,
+  customColorCss,
   customThemeColorsCss,
+  isHexColor,
+  parseHexColor,
   type PantokenColorNamespace,
 } from "@pantoken/plugin-custom-theme-colors";
 import type { Editor } from "tinymce";
@@ -172,6 +176,19 @@ document.head.append(chromeThemeStyle);
 const customThemeColorsStyle = document.createElement("style");
 customThemeColorsStyle.textContent = CUSTOM_THEME_COLORS_CSS;
 document.head.append(customThemeColorsStyle);
+// The chrome's own `custom` scale, independent of the tray's; empty unless the chrome is on custom.
+const chromeCustomColorStyle = document.createElement("style");
+document.head.append(chromeCustomColorStyle);
+// Seeded with navy100 so switching to Custom starts from the default brand color.
+const DEFAULT_CUSTOM_COLOR = "#4c79aa";
+let chromeCustomColor = DEFAULT_CUSTOM_COLOR;
+let syncShellCustomColor: (() => void) | undefined;
+
+/** Fill the Custom swatch's center with a picked hex; the untouched default leaves it empty. */
+function syncCustomSwatch(swatch: HTMLElement, hex: string): void {
+  if (hex === DEFAULT_CUSTOM_COLOR) swatch.style.removeProperty("--custom-swatch-fill");
+  else swatch.style.setProperty("--custom-swatch-fill", hex);
+}
 const preferences = loadPreferences();
 let previewPopup: Window | null = null;
 let previewPopupCloseTimer: number | undefined;
@@ -427,7 +444,7 @@ function setupStandaloneAppShell(): void {
   colorTitle.className = "canvas-rce-shell__group-title";
   colorTitle.textContent = activeStrings.colorLabel;
   colorGroup.append(colorTitle);
-  for (const color of COLOR_KEYS) {
+  for (const color of [...COLOR_KEYS, CUSTOM_COLOR_KEY]) {
     const option = document.createElement("button");
     option.type = "button";
     option.className = "canvas-rce-shell__option";
@@ -446,17 +463,57 @@ function setupStandaloneAppShell(): void {
     // without this the picker showed no color as selected until the user picked one explicitly.
     if (color === "navy") option.classList.add("is-selected");
     option.addEventListener("click", () => {
-      if (isThemeColor(color)) {
-        applyChromeColor(color);
-        document.documentElement.dataset.pantokenColor = color;
-      }
-      for (const candidate of themePanel.querySelectorAll<HTMLButtonElement>("[data-color]")) {
-        candidate.classList.toggle("is-selected", candidate.dataset.color === color);
-      }
-      themeMenu.removeAttribute("open");
+      applyChromeColor(color);
+      // Custom stays open so the hex field below is reachable.
+      if (color !== CUSTOM_COLOR_KEY) themeMenu.removeAttribute("open");
     });
     colorGroup.append(option);
   }
+
+  const customRow = document.createElement("div");
+  customRow.className = "theme-picker__custom canvas-rce-shell__custom";
+  customRow.hidden = true;
+  const customLabel = document.createElement("label");
+  customLabel.htmlFor = "canvas-rce-shell-custom-hex";
+  customLabel.textContent = activeStrings.customColorInputLabel;
+  const customInputs = document.createElement("div");
+  customInputs.className = "theme-picker__custom-inputs";
+  const customPicker = document.createElement("input");
+  customPicker.type = "color";
+  customPicker.setAttribute("aria-label", activeStrings.customColorInputLabel);
+  const customHex = document.createElement("input");
+  customHex.type = "text";
+  customHex.id = "canvas-rce-shell-custom-hex";
+  customHex.className = "instui-text-input -size-sm";
+  customHex.maxLength = 7;
+  customHex.spellcheck = false;
+  customHex.autocomplete = "off";
+  customInputs.append(customPicker, customHex);
+  customRow.append(customLabel, customInputs);
+  colorGroup.append(customRow);
+
+  const onShellCustomInput = (value: string): void => {
+    const valid = isHexColor(value);
+    customHex.classList.toggle("-invalid", !valid);
+    customHex.toggleAttribute("aria-invalid", !valid);
+    if (valid) applyChromeColor(CUSTOM_COLOR_KEY, value);
+  };
+  customPicker.addEventListener("input", () => onShellCustomInput(customPicker.value));
+  customHex.addEventListener("input", () => onShellCustomInput(customHex.value));
+
+  syncShellCustomColor = () => {
+    const color = document.documentElement.dataset.pantokenColor;
+    for (const candidate of themePanel.querySelectorAll<HTMLButtonElement>("[data-color]")) {
+      candidate.classList.toggle("is-selected", candidate.dataset.color === color);
+    }
+    customRow.hidden = color !== CUSTOM_COLOR_KEY;
+    customPicker.value = chromeCustomColor;
+    if (!isHexColor(customHex.value) || parseHexColor(customHex.value) !== chromeCustomColor) {
+      customHex.value = chromeCustomColor;
+    }
+    syncCustomSwatch(colorGroup.querySelector('[data-swatch="custom"]')!, chromeCustomColor);
+  };
+  syncShellCustomColor();
 
   themePanelScroll.append(appearanceGroup, colorGroup);
   themePanel.append(themePanelScroll);
@@ -547,6 +604,11 @@ document.head.append(editorSkinStyle);
 let editorContentStyle: HTMLStyleElement | undefined;
 
 function isThemeColor(color: unknown): color is PantokenColorNamespace {
+  return color === CUSTOM_COLOR_KEY || isShippedColor(color);
+}
+
+/** The docs host only ever offers the 13 shipped scales, so the chrome never takes `custom`. */
+function isShippedColor(color: unknown): color is (typeof COLOR_KEYS)[number] {
   return typeof color === "string" && (COLOR_KEYS as readonly string[]).includes(color);
 }
 
@@ -620,10 +682,20 @@ function applyChromeTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
 
 /** Re-colors the chrome only — the tray's `#theme-tray` reset scope keeps it (and the preview,
  * which reads `selectedColor` directly) immune to this. */
-function applyChromeColor(color: PantokenColorNamespace): void {
+function applyChromeColor(color: PantokenColorNamespace, customHex?: string): void {
+  if (customHex !== undefined) chromeCustomColor = parseHexColor(customHex);
+  chromeCustomColorStyle.textContent =
+    color === CUSTOM_COLOR_KEY ? customColorCss(chromeCustomColor) : "";
   document.documentElement.dataset.pantokenColor = color;
+  syncShellCustomColor?.();
   syncBrowserMetadata();
   syncPreviewPopupChrome();
+}
+
+/** A host color message: a shipped scale, or `custom` with a valid hex. */
+function applyHostColor(color: unknown, customHex: unknown): void {
+  if (isShippedColor(color)) applyChromeColor(color);
+  else if (color === CUSTOM_COLOR_KEY && isHexColor(customHex)) applyChromeColor(color, customHex);
 }
 
 function applyParentTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
@@ -653,12 +725,13 @@ window.addEventListener("message", (event) => {
     theme?: unknown;
     mode?: unknown;
     color?: unknown;
+    customColor?: unknown;
     instanceId?: unknown;
   };
   // A message tagged for a different instance belongs to another pantoken on the host page.
   if (typeof data?.instanceId === "string" && data.instanceId !== HOST_INSTANCE) return;
   if (data?.type === "pantoken-demo-color") {
-    if (isThemeColor(data.color)) applyChromeColor(data.color);
+    applyHostColor(data.color, data.customColor);
     return;
   }
   if (data?.type !== "pantoken-demo-theme") return;
@@ -672,7 +745,7 @@ window.addEventListener("message", (event) => {
   }
   applyChromeTheme(data.theme, data.mode);
   applyParentTheme(data.theme, data.mode);
-  if (isThemeColor(data.color)) applyChromeColor(data.color);
+  applyHostColor(data.color, data.customColor);
 });
 
 window.parent.postMessage({ type: "pantoken-demo-request-theme" }, window.location.origin);
@@ -835,6 +908,12 @@ const themeButtons = document.querySelectorAll<HTMLButtonElement>(".theme-picker
 const colorButtons = document.querySelectorAll<HTMLButtonElement>(
   ".theme-picker__color-item[data-color]",
 );
+const customColorRow = document.querySelector<HTMLElement>("#custom-color-row")!;
+const customColorPicker = document.querySelector<HTMLInputElement>("#custom-color-picker")!;
+const customColorHex = document.querySelector<HTMLInputElement>("#custom-color-hex")!;
+const customColorSwatch = document.querySelector<HTMLElement>(
+  '.theme-picker__color-item [data-swatch="custom"]',
+)!;
 const previewWidthButtons = document.querySelectorAll<HTMLButtonElement>(
   ".preview-width-picker [data-preview-width]",
 );
@@ -857,12 +936,14 @@ let jsObjectUrl: string | undefined;
 // docs-driven theme/color tracked separately by `applyChromeTheme`/`applyChromeColor` above.
 let selectedTheme: ThemeVariant = "rebrand";
 let selectedColor: PantokenColorNamespace = "navy";
+let selectedCustomColor = DEFAULT_CUSTOM_COLOR;
 setupStandaloneAppShell();
 
 interface CanvasThemePreset {
   readonly version: 1;
   readonly theme: ThemeVariant;
   readonly color: PantokenColorNamespace;
+  readonly customColor?: string;
   readonly mode: ThemeMode;
   readonly cdnProvider: string;
   readonly customCss: string;
@@ -874,7 +955,44 @@ function selectThemeColor(color: PantokenColorNamespace): void {
   selectedColor = color;
   const colorButton = [...colorButtons].find((button) => button.dataset.color === color);
   if (colorButton) selectButton(colorButtons, colorButton);
+  customColorRow.hidden = color !== CUSTOM_COLOR_KEY;
 }
+
+/** Stores a validated custom hex and reflects it in the tray. */
+function setCustomColor(hex: string): void {
+  selectedCustomColor = parseHexColor(hex);
+  customColorPicker.value = selectedCustomColor;
+  const typed = customColorHex.value;
+  if (!isHexColor(typed) || parseHexColor(typed) !== selectedCustomColor) {
+    customColorHex.value = selectedCustomColor;
+  }
+  customColorHex.classList.remove("-invalid");
+  customColorHex.removeAttribute("aria-invalid");
+  syncCustomSwatch(customColorSwatch, selectedCustomColor);
+}
+
+/** The `custom` scale's rule, only while it's the selected color. */
+function selectedCustomColorCss(): string {
+  return selectedColor === CUSTOM_COLOR_KEY
+    ? customColorCss(selectedCustomColor, { selector: "" })
+    : "";
+}
+
+const debouncedCustomColorRefresh = debounce(() => void refreshAll(), 150);
+
+function onCustomColorInput(value: string): void {
+  if (!isHexColor(value)) {
+    customColorHex.classList.add("-invalid");
+    customColorHex.setAttribute("aria-invalid", "true");
+    return;
+  }
+  setCustomColor(value);
+  if (selectedColor === CUSTOM_COLOR_KEY) debouncedCustomColorRefresh();
+}
+
+customColorPicker.addEventListener("input", () => onCustomColorInput(customColorPicker.value));
+customColorHex.addEventListener("input", () => onCustomColorInput(customColorHex.value));
+setCustomColor(DEFAULT_CUSTOM_COLOR);
 
 function parseEditorHtml(html: string): HTMLTemplateElement {
   const template = document.createElement("template");
@@ -990,6 +1108,7 @@ function captureCanvasThemePreset(): CanvasThemePreset {
     version: 1,
     theme: selectedTheme,
     color: selectedColor,
+    customColor: selectedCustomColor,
     mode: includeDarkModeCheckbox.checked ? "adaptive" : "light",
     cdnProvider: providerSelect.value,
     customCss: cssEditorView.state.doc.toString(),
@@ -1020,6 +1139,7 @@ function isCanvasThemePreset(value: unknown): value is CanvasThemePreset {
     preset.version === 1 &&
     isThemeVariant(preset.theme) &&
     isThemeColor(preset.color) &&
+    (preset.customColor === undefined || isHexColor(preset.customColor)) &&
     isThemeMode(preset.mode) &&
     isCdnProvider(preset.cdnProvider) &&
     typeof preset.customCss === "string" &&
@@ -1040,6 +1160,7 @@ function resetCanvasThemePreset(): void {
   syncDarkModeAvailability();
   providerSelect.value = isLocalPreview ? LOCAL_PROVIDER_ID : DEFAULT_CDN_PROVIDER_ID;
   selectThemeColor("navy");
+  setCustomColor(DEFAULT_CUSTOM_COLOR);
   replaceEditorDocument(cssEditorView, "");
   replaceEditorDocument(jsEditorView, "");
 
@@ -1067,6 +1188,7 @@ function restoreCanvasThemePreset(preset: CanvasThemePreset): void {
   syncDarkModeAvailability();
   providerSelect.value = preset.cdnProvider;
   selectThemeColor(preset.color);
+  setCustomColor(preset.customColor ?? DEFAULT_CUSTOM_COLOR);
   replaceEditorDocument(cssEditorView, preset.customCss);
   replaceEditorDocument(jsEditorView, preset.customJs);
 
@@ -1096,11 +1218,13 @@ function currentSelection(): { provider: string; theme: ThemeVariant; mode: Them
  * (see `updatePreview`), not by swapping this CSS. */
 async function buildCurrentTheme(): Promise<{ css: string; js: string }> {
   const selection = currentSelection();
+  const customCss = selectedCustomColorCss();
   if (selection.provider !== LOCAL_PROVIDER_ID) {
-    return buildTheme({
+    const theme = buildTheme({
       ...selection,
       css: [...defaultThemeCssAssets(selection.theme, selection.mode), ...currentAssets],
     });
+    return { ...theme, css: [theme.css, customCss].filter(Boolean).join("\n") };
   }
 
   const tokensCss =
@@ -1113,7 +1237,7 @@ async function buildCurrentTheme(): Promise<{ css: string; js: string }> {
           : rebrandLightTokensCss;
   const dynamicCss = await inlineAssetCss(currentAssets);
   return {
-    css: [tokensCss, LOCAL_COMPONENT_CSS, ...dynamicCss].join("\n"),
+    css: [tokensCss, LOCAL_COMPONENT_CSS, ...dynamicCss, customCss].filter(Boolean).join("\n"),
     js: localInteractionsJs,
   };
 }

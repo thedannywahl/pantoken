@@ -73,6 +73,8 @@
   "colorHoneyLabel": { "message": "Honey", "translate": "always" },
   "colorSeaLabel": { "message": "Sea", "translate": "always" },
   "colorAuroraLabel": { "message": "Aurora", "translate": "always" },
+  "colorCustomLabel": { "message": "Custom", "translate": "always" },
+  "customColorInputLabel": { "message": "Brand color (hex)", "translate": "always" },
   "downloadCssLabel": {
     "message": "Download theme.css",
     "translate": "optional"

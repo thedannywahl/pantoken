@@ -201,6 +201,11 @@ body.canvas-rce-shell-enabled #app-mode {
   opacity: 1;
 }
 
+.theme-picker__custom.canvas-rce-shell__custom {
+  max-width: none;
+  padding: 0.25rem 0.625rem 0;
+}
+
 .wrapper {
   margin: var(--instui-spacing-padding-container-lg) var(--instui-spacing-padding-container-lg);
 }
@@ -350,6 +355,40 @@ body.canvas-rce-shell-enabled #app-mode {
 
 .theme-picker__swatch[data-swatch="aurora"] {
   background-color: var(--instui-primitive-color-aurora-aurora70);
+}
+
+/* A rainbow ring sets Custom apart from the palettes; the center shows the picked hex, if any. */
+.theme-picker__swatch[data-swatch="custom"] {
+  background:
+    radial-gradient(closest-side, var(--custom-swatch-fill, Canvas) 55%, transparent 60%),
+    conic-gradient(red, yellow, lime, cyan, blue, magenta, red);
+}
+
+.theme-picker__custom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  max-width: 14rem;
+}
+
+.theme-picker__custom[hidden] {
+  display: none;
+}
+
+.theme-picker__custom-inputs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-picker__custom-inputs input[type="color"] {
+  flex: none;
+  inline-size: 2rem;
+  block-size: 2rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
 }
 
 .code-editor {

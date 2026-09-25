@@ -184,9 +184,9 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain('applyAppearance("light");');
   expect(main).toContain('if (appearance === "light") option.classList.add("is-selected");');
   expect(main).not.toContain('"system"');
-  // The color menu renders every pantoken color (not a hardcoded 7-item subset) with the same
-  // swatch disc the theme-tray picker already uses, and marks the app's actual default selected.
-  expect(main).toContain("for (const color of COLOR_KEYS) {");
+  // The color menu renders every pantoken color (not a hardcoded 7-item subset) plus Custom, with the
+  // same swatch disc the theme-tray picker already uses, and marks the app's actual default selected.
+  expect(main).toContain("for (const color of [...COLOR_KEYS, CUSTOM_COLOR_KEY]) {");
   expect(main).toContain('swatch.className = "theme-picker__swatch";');
   expect(main).toContain('if (color === "navy") option.classList.add("is-selected");');
   expect(main).not.toContain('["navy", "Navy"],');

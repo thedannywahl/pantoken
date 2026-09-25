@@ -15,6 +15,14 @@
  * postMessage — the embedded demos).
  */
 import { createScope, type PantokenScope } from "@pantoken/scope";
+import {
+  applyCustomColorStyle,
+  customScaleValues,
+  DEFAULT_CUSTOM_COLOR,
+  deriveDocsCustomScale,
+  isHexColor,
+  parseHexColor,
+} from "./custom-color";
 
 /** One selectable site-wide palette. */
 export type PantokenTheme = "rebrand" | "canvas" | "canvasHighContrast";
@@ -36,7 +44,8 @@ export type PantokenColor =
   | "sky"
   | "honey"
   | "sea"
-  | "aurora";
+  | "aurora"
+  | "custom";
 
 /** One palette choice in the theme selector: its {@link PantokenTheme} key and display label. */
 export interface ThemeOption {
@@ -75,6 +84,8 @@ export interface ThemeSelectorStrings {
   honey: string;
   sea: string;
   aurora: string;
+  custom: string;
+  customColorInputLabel: string;
 }
 
 /** English defaults, also the fallback when a locale doesn't localize the selector. */
@@ -97,6 +108,8 @@ export const THEME_SELECTOR_DEFAULTS: ThemeSelectorStrings = {
   honey: "Honey",
   sea: "Sea",
   aurora: "Aurora",
+  custom: "Custom",
+  customColorInputLabel: "Brand color (hex)",
 };
 
 /** The selectable themes, in menu order. Labels are localized at render time (see {@link ThemeSelectorStrings}). */
@@ -131,6 +144,7 @@ export const DOCS_INSTANCE = "docs";
 
 const STORAGE_KEY = `pantoken:${DOCS_INSTANCE}:theme`;
 const STORAGE_COLOR_KEY = `pantoken:${DOCS_INSTANCE}:color`;
+const STORAGE_CUSTOM_COLOR_KEY = `pantoken:${DOCS_INSTANCE}:custom-color`;
 
 let scope: PantokenScope | null = null;
 
@@ -143,11 +157,15 @@ let scope: PantokenScope | null = null;
  */
 export function docsScope(): PantokenScope | null {
   if (typeof document === "undefined") return null;
-  scope ??= createScope(document.documentElement, {
-    instanceId: DOCS_INSTANCE,
-    theme: getStoredTheme(),
-    color: getStoredColor(),
-  });
+  if (!scope) {
+    const color = getStoredColor();
+    if (color === "custom") applyCustomColorStyle(deriveDocsCustomScale(getCustomColor()));
+    scope = createScope(document.documentElement, {
+      instanceId: DOCS_INSTANCE,
+      theme: getStoredTheme(),
+      color,
+    });
+  }
   return scope;
 }
 
@@ -169,7 +187,36 @@ export function getStoredTheme(): PantokenTheme {
 export function getStoredColor(): PantokenColor {
   if (typeof localStorage === "undefined") return "navy";
   const value = localStorage.getItem(STORAGE_COLOR_KEY);
+  if (value === "custom") return "custom";
   return COLORS.some((c) => c.key === value) ? (value as PantokenColor) : "navy";
+}
+
+/** The persisted custom brand hex, normalized to `#rrggbb` (default navy100). */
+function getStoredCustomColor(): string {
+  try {
+    const value = localStorage.getItem(STORAGE_CUSTOM_COLOR_KEY);
+    return isHexColor(value) ? parseHexColor(value) : DEFAULT_CUSTOM_COLOR;
+  } catch {
+    return DEFAULT_CUSTOM_COLOR;
+  }
+}
+
+let activeCustomColor: string | null = null;
+
+/** The active custom brand hex, `#rrggbb`. */
+export function getCustomColor(): string {
+  activeCustomColor ??= getStoredCustomColor();
+  return activeCustomColor;
+}
+
+/** The custom-color fields demo frames need, present only while `custom` is active. */
+export function customColorPayload(color: PantokenColor): {
+  customColor?: string;
+  customScale?: string[];
+} {
+  if (color !== "custom") return {};
+  const customColor = getCustomColor();
+  return { customColor, customScale: customScaleValues(deriveDocsCustomScale(customColor)) };
 }
 
 // The reader's light/dark choice while on rebrand, remembered across a detour through a single-scheme
@@ -222,6 +269,7 @@ export function broadcastTheme(
         instanceId: DOCS_INSTANCE,
         theme,
         color,
+        ...customColorPayload(color),
         mode: getActiveScheme(),
       },
       themeTargetOrigin(frame),
@@ -234,7 +282,12 @@ export function broadcastColor(color: PantokenColor): void {
   if (typeof document === "undefined") return;
   for (const frame of ownedFrames()) {
     frame.contentWindow?.postMessage(
-      { type: "pantoken-demo-color", instanceId: DOCS_INSTANCE, color },
+      {
+        type: "pantoken-demo-color",
+        instanceId: DOCS_INSTANCE,
+        color,
+        ...customColorPayload(color),
+      },
       themeTargetOrigin(frame),
     );
   }
@@ -288,10 +341,20 @@ export function applyTheme(theme: PantokenTheme): void {
 }
 
 /**
- * Apply a color scheme: update the scope, persist it, and broadcast to the demos.
+ * Apply a color scheme: update the scope, persist it, and broadcast to the demos. `customColor` sets
+ * (and persists) the brand hex behind the `custom` scale.
  */
-export function applyColor(color: PantokenColor): void {
+export function applyColor(color: PantokenColor, customColor?: string): void {
   if (typeof document === "undefined") return;
+  if (customColor !== undefined) {
+    activeCustomColor = parseHexColor(customColor);
+    try {
+      localStorage.setItem(STORAGE_CUSTOM_COLOR_KEY, activeCustomColor);
+    } catch {
+      // Private mode / storage disabled — the color still applies for this session.
+    }
+  }
+  applyCustomColorStyle(color === "custom" ? deriveDocsCustomScale(getCustomColor()) : null);
   docsScope()?.set({ color });
   persistColor(color);
   broadcastColor(color);

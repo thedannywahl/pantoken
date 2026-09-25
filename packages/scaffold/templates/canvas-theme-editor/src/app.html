@@ -415,6 +415,38 @@
           >
             <span class="theme-picker__swatch" data-swatch="aurora"></span>
           </button>
+          <button
+            type="button"
+            class="theme-picker__color-item"
+            role="menuitemradio"
+            aria-checked="false"
+            data-color="custom"
+            aria-label="{{colorCustomLabel}}"
+            title="{{colorCustomLabel}}"
+          >
+            <span class="theme-picker__swatch" data-swatch="custom"></span>
+          </button>
+        </div>
+        <div class="theme-picker__custom" id="custom-color-row" hidden>
+          <label for="custom-color-hex">{{customColorInputLabel}}</label>
+          <div class="theme-picker__custom-inputs">
+            <input
+              type="color"
+              id="custom-color-picker"
+              aria-label="{{customColorInputLabel}}"
+              value="#4c79aa"
+            />
+            <input
+              type="text"
+              class="instui-text-input -size-sm"
+              id="custom-color-hex"
+              value="#4c79aa"
+              pattern="#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})"
+              maxlength="7"
+              spellcheck="false"
+              autocomplete="off"
+            />
+          </div>
         </div>
         <label class="instui-checkbox -variant-toggle" id="include-dark-mode-row">
           <input type="checkbox" id="include-dark-mode" />
