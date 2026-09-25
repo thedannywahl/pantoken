@@ -1,0 +1,144 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M3CDCQYHDGQ0K2MFQ7ZA7JA4",
+  "session_id": "d66686c8-9c3f-4e6e-a190-703da24ae554",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-25T13:52:04.074656Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 6,
+  "save_step_count": 6,
+  "files_touched": [
+    ".changeset/button-set-seamed-group.md",
+    "packages/scaffold/templates/canvas-theme-editor/src/app.html",
+    "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
+    "plugins/pantoken/custom-components/README.md",
+    "plugins/pantoken/custom-components/scripts/build-entries.ts",
+    "plugins/pantoken/custom-components/scripts/generate.ts",
+    "plugins/pantoken/custom-components/src/components/button-set/button-set.css",
+    "plugins/pantoken/custom-components/src/components/button-set/button-set.ts",
+    "plugins/pantoken/custom-components/src/components/button-set/index.ts",
+    "plugins/pantoken/custom-components/src/components/index.ts",
+    "plugins/pantoken/custom-components/src/index.ts",
+    "plugins/pantoken/custom-components/tests/index.test.ts",
+    "plugins/pantoken/custom-components/vite.config.ts",
+    "renderers/tinymce/src/lib/icon-picker-styles.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "f463802e7423",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 6
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-25T13:52:04.057579Z",
+    "agent_lines": 141,
+    "agent_removed": 0,
+    "human_added": 12,
+    "human_modified": 530,
+    "human_removed": 0,
+    "total_committed": 438,
+    "total_lines_changed": 683,
+    "agent_percentage": 20.644216691068813,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 63,
+      "user_lines_removed": 1,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "formats/components/src/index.ts": 1,
+        "formats/components/src/utilities/index.ts": 2,
+        "formats/components/src/utilities/logo/index.ts": 11,
+        "formats/components/src/utilities/logo/logo.css": 28,
+        "formats/components/tests/parity.test.ts": 1,
+        "formats/components/tests/public-surface.test.ts": 1,
+        "formats/components/tests/utilities/logo.test.ts": 19
+      },
+      "user_removed_per_file": {
+        "formats/components/tests/parity.test.ts": 1
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 5,
+      "user_lines_removed": 5,
+      "agent_lines_added": 121,
+      "agent_lines_removed": 85,
+      "user_added_per_file": {
+        "plugins/pantoken/logos/scripts/generate.ts": 5
+      },
+      "user_removed_per_file": {
+        "plugins/pantoken/logos/scripts/generate.ts": 5
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 267,
+      "agent_lines_removed": 183
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 14,
+      "user_lines_removed": 14,
+      "agent_lines_added": 833,
+      "agent_lines_removed": 186,
+      "user_added_per_file": {
+        "plugins/pantoken/custom-components/src/components/logo/logo.css": 14
+      },
+      "user_removed_per_file": {
+        "plugins/pantoken/custom-components/src/components/logo/logo.css": 14
+      }
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 14,
+      "user_lines_removed": 14,
+      "agent_lines_added": 855,
+      "agent_lines_removed": 195,
+      "user_added_per_file": {
+        "plugins/pantoken/custom-components/src/components/logo/logo.css": 14
+      },
+      "user_removed_per_file": {
+        "plugins/pantoken/custom-components/src/components/logo/logo.css": 14
+      }
+    },
+    {
+      "checkpoint_number": 6,
+      "user_lines_added": 259,
+      "user_lines_removed": 299,
+      "agent_lines_added": 855,
+      "agent_lines_removed": 195,
+      "user_added_per_file": {
+        "plugins/pantoken/custom-components/src/components/button-set/button-set.css": 245,
+        "plugins/pantoken/custom-components/src/components/logo/logo.css": 14
+      },
+      "user_removed_per_file": {
+        "plugins/pantoken/custom-components/src/components/button-set/button-set.css": 285,
+        "plugins/pantoken/custom-components/src/components/logo/logo.css": 14
+      }
+    },
+    {
+      "checkpoint_number": 7,
+      "user_lines_added": 6,
+      "user_lines_removed": 0,
+      "agent_lines_added": 910,
+      "agent_lines_removed": 227,
+      "user_added_per_file": {
+        ".changeset/button-set-seamed-group.md": 6
+      }
+    }
+  ]
+}

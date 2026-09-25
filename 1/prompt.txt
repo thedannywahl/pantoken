@@ -1,0 +1,76 @@
+I want a custom component that implements a seamed button group of instui-button components.  basically a wrapper that only has button component children with no border radius or gap between them. the buttons should still take all the regular button modifiers.
+
+---
+
+In the pantoken repo (packages/components... actually formats/components), I need to understand conventions for authoring a new CSS component in `@pantoken/components` (path: formats/components/src/). Specifically:
+
+1. Read formats/components/src/components/button.ts (or wherever the button component record lives) fully — understand its structure, modifiers (size, color, etc.), and how `defineComponent` is used.
+2. Look for any existing "group" style component (e.g. button-group, checkbox-group, radio-group, toggle-group, segmented control) in formats/components/src/components/ or formats/components/src/utilities/ or formats/components/src/rules/ — read its full source if it exists.
+3. Read formats/components/src/lib/ helper files (e.g. defineComponent.ts, withAliases.ts, withSizeAliases.ts, and any bucket index.ts registries) to understand what a "record" object looks like (name, css, deprecated aliases, modifiers, doc metadata).
+4. Find how @scope / child-combinator scoping for nested element classes is implemented in this codebase (search for "@scope" in formats/components/src). Show an example component that scopes styles to nested children (e.g. button group scoping to child .instui-button elements, or something like a card component scoping child elements).
+5. Find the bucket registry files (index.ts in components/utilities/rules/declarations folders) to see how a new component record gets registered.
+6. Find how tests are authored for components — look at formats/components/tests/ or similar, find a test for an existing component with modifiers, and find any "drift-checked test" pattern mentioned in AGENTS.md.
+7. Find how demos are authored — look for a demos folder for components (docs/demos or similar) and show an example demo file structure for a component like button.
+8. Find how guides are authored — look in docs/ for a guide markdown file about an existing component (e.g. button guide) to see structure/frontmatter.
+9. Check formats/components/README.md or similar for the modifier convention documentation (RSCSS compounds like `.instui-button.-color-secondary`, boolean modifiers, default-on booleans inverted like `-without-*`).
+10. Check package.json scripts in formats/components/ for how to run `vp check --fix`, tests, `check:publish` etc for this package specifically.
+
+Report back with:
+- Full path and relevant content of button.ts component record
+- Any existing group/composite component pattern (full content if found)
+- The defineComponent/defineUtility helper signatures
+- An example of @scope usage with nested child selectors, full CSS
+- The registry index.ts pattern (how to add a new record)
+- Test file example structure for a component
+- Demo file example structure
+- Guide markdown example structure
+- Any specific gotchas about css tagging (css`...`) and prettier-ignore comments
+
+---
+
+button group should also carry the modifiers of buttons so it can define all of them:
+```
+.instui-button-group.-size-sm.-toggle
+   .instui-button
+   .instui-button
+```
+and then the buttons can override still:
+```
+.instui-button-group.-color-secondary
+  .instui-button.-icon-x
+  .instui-button.-color-primary.-icon-checkmark
+```
+
+---
+
+Start implementation
+
+---
+
+now in app.html change the download zip / download html / copy html into seamed icon buttons.
+
+---
+
+make them all primary
+
+---
+
+* the icon picker still has some icons not loaded (I think our custom icons) and others are still too large.
+* the highlighted icon in the icon picker background is too dark, or the icon swatch should be switch to on-color in light mode, and vice versa in dark mode.
+* changing the interface to dark in either gudie or tools mode should change the tinymce content to doark mode too.  it's only the preview pane srcdoc that stays the same unless its controls or tray controls change it.
+* loading /tools/canvas-rce/ works quickly in localhost
+* loading /guide/canvas-rce/ still has memory issues and doesn't load correct.
+
+---
+
+In the pantoken repo (renderers/tinymce and docs), I need context on four things. Do read-only exploration (grep/read files), do NOT edit anything.
+
+1. ICON PICKER RENDERING: Find the TinyMCE icon picker implementation (likely in renderers/tinymce/src, search for "icon-picker" or "iconPicker" or "custom-picker"). Find where it lists/loads icon glyph names to render swatches — especially how it handles "custom icons" (search for "custom-icons" or "lucide-lab" or "simple-icons" plugin packages under plugins/pantoken/). I need to understand: (a) why some icons might not be loading in the picker (e.g. a glyph name mismatch, a missing token, or a filtered exclusion list — search for "component-picker-exclusions" or similar), and (b) why some icon swatches render "too large" — look for CSS controlling icon swatch size in the picker (search for icon picker CSS classes, swatch sizing, grid-template, width/height on icon buttons within the picker template/HTML).
+
+2. ICON PICKER HIGHLIGHT CONTRAST: Find the CSS for the "selected"/"highlighted" state of an icon swatch in the icon picker (search for "is-selected", "aria-checked", "highlighted", "active" combined with icon picker class names). I need to understand what background color it uses when highlighted, and whether there's an "-on-color" convention used elsewhere in this codebase (search formats/components or the tinymce renderer for "-on-color" usage) that could apply to fix low-contrast text/icon-on-highlighted-background in light vs dark mode.
+
+3. DARK MODE SYNCING TO TINYMCE CONTENT: Find where the app (renderers/tinymce demo app, or docs/scripts/build-canvas-rce.ts, or docs/public canvas-rce standalone shell) toggles between light/dark mode for the "guide" (docs-embedded) vs "tools" (standalone) modes. Search for "dark-mode", "color-scheme", "prefers-color-scheme", "iframe.contentDocument", "srcdoc" in renderers/tinymce and docs/ and packages/scaffold. I need to find: where the outer UI's dark-mode toggle happens, and where/whether it propagates that state into the actual TinyMCE editor's content iframe (as opposed to only the separate live-preview pane's srcdoc). Look especially for any function that sets a dark-mode class/attribute on the TinyMCE content iframe body, and whether that function is called from the same place that toggles the app UI's dark mode, or only from separate preview/tray controls.
+
+4. GUIDE VS TOOLS CANVAS-RCE LOADING: Find how /tools/canvas-rce/ and /guide/canvas-rce/ are built/served differently. Look at docs/scripts/build-canvas-rce.ts, docs/public for canvas-rce assets, and any vitepress page under docs/ (guide/canvas-rce or similar) that embeds the tool via iframe vs the standalone /tools/ page. I need to understand why /guide/canvas-rce/ might have "memory issues" and load incorrectly while /tools/canvas-rce/ loads fine — e.g., is /guide/ loading it in an iframe pointing at a duplicate heavy bundle, or double-loading TinyMCE, or not being lazy/code-split, or being embedded via a different (slower) mechanism than /tools/? Look for any repo memory/engineering-log notes on this (docs/engineering-log.md, search for "canvas-rce" "memory" or "guide").
+
+Report back with, for each of the 4 areas: exact file paths and line numbers/snippets, and a clear diagnosis of the likely root cause (or state clearly if you couldn't find enough evidence for a diagnosis). Be thorough but concise — prioritize actionable file:line references over general summary.
