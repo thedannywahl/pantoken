@@ -1,0 +1,5 @@
+this scaffold needs a favicon.ico.
+
+---
+
+this scaffold needs a favicon
