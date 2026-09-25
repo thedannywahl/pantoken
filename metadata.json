@@ -1,0 +1,39 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M3CSFPJHR0QWG0WYJGMA68Q3",
+  "strategy": "manual-commit",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 9,
+  "files_touched": [
+    ".changeset/canvas-rce-icon-picker-glyph-sizing.md",
+    ".changeset/canvas-rce-scheme-layout-and-dock-icon-fixes.md",
+    ".changeset/canvas-theme-editor-favicon.md",
+    ".changeset/components-tooltip-icon-button-sizing.md",
+    "docs/scripts/build-canvas-rce.ts",
+    "formats/components/src/components/button/button.css",
+    "formats/components/src/components/tooltip/tooltip.css",
+    "formats/components/tests/components/button.test.ts",
+    "formats/components/tests/components/tooltip.test.ts",
+    "packages/scaffold/scripts/generate.ts",
+    "packages/scaffold/src/i18n.json",
+    "packages/scaffold/templates/canvas-theme-editor/index.html",
+    "packages/scaffold/templates/canvas-theme-editor/src/app.css",
+    "packages/scaffold/templates/canvas-theme-editor/src/app.html"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}

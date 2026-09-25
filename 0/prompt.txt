@@ -1,0 +1,1458 @@
+[Terminal 414e01a5-effc-4c8d-a965-f0e77c2c61e7 notification: command completed with exit code 6. The terminal has been cleaned up.]
+Terminal output:
+pantoken on tinymce-utility ↑1 via  26.10.0 
+➜  ps aux | grep -iE "vite|node" | grep -v grep | awk '{print $2, $4, $11, $12, $13, $14}' | sort -k2 -rn | head -20
+23600 3.0 /Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper
+22412 0.7 /Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper
+23544 0.5 /Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper.app/Contents/MacOS/Code
+23948 0.4 /Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node /Users/dwahl/Scripts/pantoken/.worktrees/vitepress-assets-shards/packages/create-pantoken-app/node_modules/.bin/../vite-plus/bin/oxlint --lsp 
+20776 0.4 node /Users/dwahl/Scripts/pantoken/docs/node_modules/.bin/../vitepress/bin/vitepress.js dev 
+23601 0.3 /Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper.app/Contents/MacOS/Code
+23599 0.3 /Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper.app/Contents/MacOS/Code
+23543 0.3 /Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper.app/Contents/MacOS/Code
+23814 0.2 /Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper
+23636 0.2 /Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper
+35509 0.1 /Applications/Utilities/Adobe Creative Cloud Experience/CCXProcess/CCXProcess.app/Contents/MacOS/Creative
+25843 0.1 /Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper
+23796 0.1 /Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper
+20448 0.1 /Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node /Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vite-plus@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.2_@vitest+coverage-_96779dd98a22c906304c74947eeafb8c/node_modules/vite-plus/dist/bin.js run docs:dev
+75183 0.0 /Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node /Users/dwahl/Scripts/pantoken/.worktrees/vitepress-assets-shards/node_modules/.pnpm/tinypool@2.1.0/node_modules/tinypool/dist/entry/process.js  
+23966 0.0 /Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper
+23947 0.0 /Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node /Users/dwahl/Scripts/pantoken/.worktrees/vitepress-assets-shards/packages/create-pantoken-app/node_modules/.bin/../vite-plus/bin/oxfmt --lsp 
+23810 0.0 /Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper
+23751 0.0 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar.unpacked/@github/copilot-sdk-darwin-arm64/prebuilds/darwin-arm64/copilot-runtime --headless
+22434 0.0 /bin/sh .vite-hooks/_/post-commit  
+pantoken on tinymce-utility ↑1 via  26.10.0 
+➜  ps -o pid,rss,vsz,%cpu,%mem,command -p 20776,20448 2>/dev/null; echo "---"; vm_stat | head -10
+  PID    RSS      VSZ  %CPU %MEM COMMAND
+20448  11648 458354384   0.0  0.1 /Users/dwahl/.local/share/vite-plus/js_runtime
+20776  27280 458586256   0.1  0.2 node /Users/dwahl/Scripts/pantoken/docs/node_m
+---
+Mach Virtual Memory Statistics: (page size of 16384 bytes)
+Pages free:                                     5677.
+Pages active:                                 261532.
+Pages inactive:                               238039.
+Pages speculative:                             22466.
+Pages throttled:                                   0.
+Pages wired down:                             159295.
+Pages purgeable:                                 216.
+"Translation faults":                     6612042105.
+Pages copy-on-write:                       103517717.
+pantoken on tinymce-utility ↑1 via  26.10.0 
+➜  curl -sS -m 5 -o /dev/null -w "HTTP %{http_code} in %{time_total}s\n" http://localhost:5173/ || echo "curl failed/timed out"
+HTTP 200 in 0.018936s
+pantoken on tinymce-utility ↑1 via  26.10.0 
+➜  ps aux | grep -E "vitepress|docs:dev|canvas-rce" | grep -v grep
+dwahl            20776   0.0  0.2 458586256  28480 s000  S+    8:42AM   0:09.13 node /Users/dwahl/Scripts/pantoken/docs/node_modules/.bin/../vitepress/bin/vitepress.js dev
+dwahl            20448   0.0  0.1 458352288  12928 s000  S+    8:42AM   0:11.55 /Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node /Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vite-plus@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6.2_@vitest+coverage-_96779dd98a22c906304c74947eeafb8c/node_modules/vite-plus/dist/bin.js run docs:dev
+dwahl            20446   0.0  0.0 435330816   4480 s000  S+    8:42AM   0:00.01 vpr docs:dev
+dwahl            75183   0.0  0.0 436173216   6752   ??  S     4:34PM   0:00.66 /Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node /Users/dwahl/Scripts/pantoken/.worktrees/vitepress-assets-shards/node_modules/.pnpm/tinypool@2.1.0/node_modules/tinypool/dist/entry/process.js
+dwahl            23948   0.0  0.2 503629040  27200   ??  S     3:49PM   0:14.64 /Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node /Users/dwahl/Scripts/pantoken/.worktrees/vitepress-assets-shards/packages/create-pantoken-app/node_modules/.bin/../vite-plus/bin/oxlint --lsp
+dwahl            23947   0.0  0.1 456376672   8400   ??  S     3:49PM   0:01.47 /Users/dwahl/.local/share/vite-plus/js_runtime/node/26.10.0/bin/node /Users/dwahl/Scripts/pantoken/.worktrees/vitepress-assets-shards/packages/create-pantoken-app/node_modules/.bin/../vite-plus/bin/oxfmt --lsp
+pantoken on tinymce-utility ↑1 via  26.10.0 
+➜  for p in /guide/canvas-rce /tools/canvas-rce/ /tools/canvas-rce/index.html; do echo -n "$p: "; curl -sS -m 8 -o /dev/null -w "HTTP %{http_code} in %{time_total}s\n" "http://localhost:5173$p"\; done
+> done
+/guide/canvas-rce: HTTP 200 in 0.039153s
+curl: (6) Could not resolve host: done
+HTTP 000 in 0.073428s
+/tools/canvas-rce/: HTTP 200 in 0.059400s
+curl: (6) Could not resolve host: done
+HTTP 000 in 0.003819s
+/tools/canvas-rce/index.html: HTTP 200 in 0.002409s
+curl: (6) Could not resolve host: done
+HTTP 000 in 0.001301s
+
+---
+
+let's just get rid of 'system' in the tool mode, it's causing more issues than it's worth. default to light.
+
+---
+
+something's still making a call to a CDN even when set to 'none' on /tools/canvas-rce
+```
+https://cdn.jsdelivr.net/npm/@pantoken/plugin-lucide-lab/dist/lucide-lab.css
+```
+
+---
+
+[Terminal 0be1a70c-57f4-44a0-b47e-a7df53e439b6 notification: command may be waiting for input — assess the output below.]
+This note is not a signal to end the turn — pick one of the actions below and continue.
+  1. If the output clearly ends with a non-secret input prompt (Continue? (y/n), Enter selection, etc. — a normal shell prompt like `$` or `#` does NOT count), determine the answer and immediately call send_to_terminal with id="0be1a70c-57f4-44a0-b47e-a7df53e439b6" (which returns the next few lines of output). Repeat one prompt at a time. Never guess passwords, passphrases, tokens, or other secrets — if the prompt requires a secret you do not have, inform the user and stop.
+  2. If the command may still be producing output or the shell prompt has not returned, call get_terminal_output with id="0be1a70c-57f4-44a0-b47e-a7df53e439b6" to continue polling.
+Terminal output:
+l
+10:44:36 AM [vitepress] (client) page reload public/pt-BR/demos/truncate.html
+10:44:36 AM [vitepress] (client) page reload public/pt-BR/demos/view.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/alert.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/avatar.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/badge.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/base.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/billboard.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/breadcrumb.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/button.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/byline.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/calendar.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/checkbox.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/close-button.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/color-utilities.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/components.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/context-view.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/date-time-inputs.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/drawer-layout.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/elevation.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/file-drop.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/focus-outline.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/form-field-group.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/form-field.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/form-messages.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/gap.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/heading.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/icon.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/img.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/in-place-edit.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/layout.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/link.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/list.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/mask.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/menu.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/metric.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/modal.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/number-input.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/pagination.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/pendo.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/pill.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/popover.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/progress-circle.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/progress.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/prose.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/radio-input-group.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/radio.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/range-input.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/rating.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/responsive.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/screen-reader-content.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/side-nav-bar.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/simple-select.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/spacing.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/spinner.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/table.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/tabs.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/tag.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/text-area.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/text-input.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/text.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/toggle-details.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/toggle-group.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/token-utilities.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/tooltip.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/tray.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/tree-browser.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/truncate.html
+10:44:36 AM [vitepress] (client) page reload public/ru/demos/view.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/alert.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/avatar.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/badge.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/base.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/billboard.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/breadcrumb.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/button.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/byline.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/calendar.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/checkbox.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/close-button.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/color-utilities.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/components.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/context-view.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/date-time-inputs.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/drawer-layout.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/elevation.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/file-drop.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/focus-outline.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/form-field-group.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/form-field.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/form-messages.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/gap.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/heading.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/icon.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/img.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/in-place-edit.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/layout.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/link.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/list.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/mask.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/menu.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/metric.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/modal.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/number-input.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/pagination.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/pendo.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/pill.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/popover.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/progress-circle.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/progress.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/prose.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/radio-input-group.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/radio.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/range-input.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/rating.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/responsive.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/screen-reader-content.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/side-nav-bar.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/simple-select.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/spacing.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/spinner.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/table.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/tabs.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/tag.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/text-area.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/text-input.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/text.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/toggle-details.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/toggle-group.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/token-utilities.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/tooltip.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/tray.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/tree-browser.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/truncate.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hans/demos/view.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/alert.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/avatar.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/badge.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/base.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/billboard.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/breadcrumb.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/button.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/byline.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/calendar.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/checkbox.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/close-button.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/color-utilities.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/components.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/context-view.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/date-time-inputs.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/drawer-layout.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/elevation.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/file-drop.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/focus-outline.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/form-field-group.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/form-field.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/form-messages.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/gap.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/heading.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/icon.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/img.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/in-place-edit.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/layout.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/link.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/list.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/mask.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/menu.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/metric.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/modal.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/number-input.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/pagination.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/pendo.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/pill.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/popover.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/progress-circle.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/progress.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/prose.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/radio-input-group.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/radio.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/range-input.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/rating.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/responsive.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/screen-reader-content.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/side-nav-bar.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/simple-select.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/spacing.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/spinner.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/table.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/tabs.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/tag.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/text-area.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/text-input.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/text.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/toggle-details.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/toggle-group.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/token-utilities.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/tooltip.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/tray.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/tree-browser.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/truncate.html
+10:44:36 AM [vitepress] (client) page reload public/sl/demos/view.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/alert.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/avatar.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/badge.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/base.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/billboard.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/breadcrumb.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/button.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/byline.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/calendar.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/checkbox.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/close-button.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/color-utilities.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/components.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/context-view.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/date-time-inputs.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/drawer-layout.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/elevation.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/file-drop.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/focus-outline.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/form-field-group.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/form-field.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/form-messages.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/gap.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/heading.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/icon.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/img.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/in-place-edit.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/layout.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/link.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/list.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/mask.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/menu.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/metric.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/modal.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/number-input.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/pagination.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/pendo.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/pill.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/popover.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/progress-circle.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/progress.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/prose.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/radio-input-group.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/radio.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/range-input.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/rating.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/responsive.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/screen-reader-content.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/side-nav-bar.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/simple-select.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/spacing.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/spinner.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/table.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/tabs.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/tag.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/text-area.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/text-input.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/text.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/toggle-details.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/toggle-group.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/token-utilities.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/tooltip.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/tray.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/tree-browser.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/truncate.html
+10:44:36 AM [vitepress] (client) page reload public/es/demos/view.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/alert.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/avatar.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/badge.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/base.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/billboard.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/breadcrumb.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/button.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/byline.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/calendar.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/checkbox.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/close-button.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/color-utilities.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/components.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/context-view.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/date-time-inputs.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/drawer-layout.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/elevation.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/file-drop.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/focus-outline.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/form-field-group.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/form-field.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/form-messages.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/gap.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/heading.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/icon.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/img.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/in-place-edit.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/layout.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/link.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/list.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/mask.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/menu.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/metric.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/modal.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/number-input.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/pagination.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/pendo.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/pill.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/popover.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/progress-circle.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/progress.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/prose.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/radio-input-group.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/radio.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/range-input.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/rating.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/responsive.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/screen-reader-content.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/side-nav-bar.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/simple-select.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/spacing.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/spinner.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/table.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/tabs.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/tag.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/text-area.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/text-input.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/text.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/toggle-details.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/toggle-group.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/token-utilities.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/tooltip.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/tray.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/tree-browser.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/truncate.html
+10:44:36 AM [vitepress] (client) page reload public/sv/demos/view.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/alert.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/avatar.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/badge.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/base.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/billboard.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/breadcrumb.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/button.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/byline.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/calendar.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/checkbox.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/close-button.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/color-utilities.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/components.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/context-view.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/date-time-inputs.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/drawer-layout.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/elevation.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/file-drop.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/focus-outline.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/form-field-group.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/form-field.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/form-messages.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/gap.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/heading.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/icon.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/img.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/in-place-edit.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/layout.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/link.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/list.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/mask.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/menu.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/metric.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/modal.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/number-input.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/pagination.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/pendo.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/pill.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/popover.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/progress-circle.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/progress.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/prose.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/radio-input-group.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/radio.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/range-input.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/rating.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/responsive.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/screen-reader-content.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/side-nav-bar.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/simple-select.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/spacing.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/spinner.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/table.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/tabs.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/tag.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/text-area.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/text-input.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/text.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/toggle-details.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/toggle-group.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/token-utilities.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/tooltip.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/tray.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/tree-browser.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/truncate.html
+10:44:36 AM [vitepress] (client) page reload public/th/demos/view.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/alert.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/avatar.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/badge.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/base.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/billboard.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/breadcrumb.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/button.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/byline.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/calendar.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/checkbox.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/close-button.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/color-utilities.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/components.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/context-view.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/date-time-inputs.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/drawer-layout.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/elevation.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/file-drop.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/focus-outline.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/form-field-group.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/form-field.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/form-messages.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/gap.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/heading.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/icon.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/img.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/in-place-edit.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/layout.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/link.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/list.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/mask.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/menu.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/metric.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/modal.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/number-input.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/pagination.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/pendo.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/pill.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/popover.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/progress-circle.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/progress.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/prose.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/radio-input-group.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/radio.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/range-input.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/rating.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/responsive.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/screen-reader-content.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/side-nav-bar.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/simple-select.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/spacing.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/spinner.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/table.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/tabs.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/tag.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/text-area.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/text-input.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/text.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/toggle-details.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/toggle-group.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/token-utilities.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/tooltip.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/tray.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/tree-browser.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/truncate.html
+10:44:36 AM [vitepress] (client) page reload public/zh-Hant/demos/view.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/alert.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/avatar.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/badge.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/base.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/billboard.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/breadcrumb.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/button.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/byline.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/calendar.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/checkbox.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/close-button.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/color-utilities.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/components.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/context-view.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/date-time-inputs.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/drawer-layout.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/elevation.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/file-drop.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/focus-outline.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/form-field-group.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/form-field.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/form-messages.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/gap.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/heading.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/icon.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/img.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/in-place-edit.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/layout.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/link.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/list.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/mask.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/menu.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/metric.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/modal.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/number-input.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/pagination.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/pendo.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/pill.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/popover.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/progress-circle.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/progress.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/prose.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/radio-input-group.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/radio-input-group.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/radio.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/range-input.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/rating.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/responsive.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/screen-reader-content.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/side-nav-bar.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/simple-select.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/spacing.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/spinner.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/table.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/tabs.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/tag.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/text-area.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/text-input.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/text.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/toggle-details.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/toggle-group.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/token-utilities.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/tooltip.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/tray.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/tree-browser.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/truncate.html
+10:44:36 AM [vitepress] (client) page reload public/tr/demos/view.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/alert.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/avatar.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/badge.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/base.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/billboard.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/breadcrumb.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/button.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/byline.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/calendar.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/checkbox.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/close-button.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/color-utilities.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/components.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/context-view.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/date-time-inputs.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/drawer-layout.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/elevation.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/file-drop.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/focus-outline.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/form-field-group.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/form-field.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/form-messages.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/gap.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/heading.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/icon.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/img.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/in-place-edit.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/layout.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/link.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/list.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/mask.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/menu.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/metric.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/modal.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/number-input.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/pagination.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/pendo.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/pill.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/popover.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/progress-circle.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/progress.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/prose.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/radio-input-group.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/radio.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/range-input.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/rating.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/responsive.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/screen-reader-content.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/side-nav-bar.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/simple-select.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/spacing.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/spinner.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/table.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/tabs.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/tag.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/text-area.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/text-input.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/text.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/toggle-details.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/toggle-group.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/token-utilities.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/tooltip.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/tray.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/tree-browser.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/truncate.html
+10:44:36 AM [vitepress] (client) page reload public/uk/demos/view.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/alert.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/avatar.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/badge.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/base.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/billboard.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/breadcrumb.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/button.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/byline.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/calendar.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/checkbox.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/close-button.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/color-utilities.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/components.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/context-view.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/date-time-inputs.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/drawer-layout.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/elevation.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/file-drop.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/focus-outline.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/form-field-group.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/form-field.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/form-messages.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/gap.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/heading.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/icon.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/img.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/in-place-edit.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/layout.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/link.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/list.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/mask.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/menu.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/metric.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/modal.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/number-input.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/pagination.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/pendo.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/pill.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/popover.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/progress-circle.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/progress.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/prose.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/radio-input-group.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/radio.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/range-input.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/rating.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/responsive.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/screen-reader-content.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/side-nav-bar.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/simple-select.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/spacing.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/spinner.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/table.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/tabs.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/tag.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/text-area.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/text-input.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/text.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/toggle-details.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/toggle-group.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/token-utilities.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/tooltip.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/tray.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/tree-browser.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/truncate.html
+10:44:36 AM [vitepress] (client) page reload public/vi/demos/view.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/alert.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/avatar.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/badge.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/base.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/billboard.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/breadcrumb.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/button.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/byline.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/calendar.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/checkbox.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/close-button.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/color-utilities.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/components.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/context-view.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/date-time-inputs.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/drawer-layout.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/elevation.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/file-drop.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/focus-outline.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/form-field-group.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/form-field.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/form-messages.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/gap.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/heading.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/icon.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/img.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/in-place-edit.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/layout.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/link.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/list.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/mask.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/menu.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/metric.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/modal.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/number-input.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/pagination.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/pendo.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/pendo.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/pill.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/popover.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/progress-circle.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/progress.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/prose.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/radio-input-group.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/radio.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/range-input.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/rating.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/responsive.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/screen-reader-content.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/side-nav-bar.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/simple-select.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/spacing.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/spinner.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/table.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/tabs.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/tag.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/text-area.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/text-input.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/text.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/toggle-details.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/toggle-group.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/token-utilities.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/tooltip.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/tray.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/tree-browser.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/truncate.html
+10:44:36 AM [vitepress] (client) page reload public/cy/demos/view.html
+10:44:42 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:44:42 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:44:44 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:44:44 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:44:44 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:44:45 AM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+10:44:45 AM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+10:44:46 AM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+10:44:59 AM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+10:45:02 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:45:07 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:45:07 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:45:07 AM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — done.
+10:45:07 AM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+10:45:14 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:45:14 AM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+10:45:14 AM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[PLUGIN_TIMINGS] Plugin hooks ran for 2.6s of this 5.1s build (52%).
+2 hooks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
+  - vite:asset load (3 calls)
+  - vite:css transform (3872 calls)
+See https://rolldown.rs/reference/InputOptions.checks#plugintimings for more details.
+
+10:45:35 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:45:36 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:45:36 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:45:36 AM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+10:45:39 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:45:39 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:45:40 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:45:40 AM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — done.
+10:45:40 AM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+10:45:43 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:45:51 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:45:51 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+10:45:55 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:45:55 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:45:55 AM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — done.
+10:45:55 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:46:06 AM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+10:46:07 AM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+10:46:08 AM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+node:fs:1589
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: ENOTEMPTY, Directory not empty: '/Users/dwahl/Scripts/pantoken/docs/.vitepress/cache/canvas-rce-src'
+    at rmSync (node:fs:1589:18)
+    at file:///Users/dwahl/Scripts/pantoken/docs/scripts/build-canvas-rce.ts:26:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async node:internal/modules/esm/loader:650:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5) {
+  errno: 66,
+  code: 'ENOTEMPTY',
+  path: '/Users/dwahl/Scripts/pantoken/docs/.vitepress/cache/canvas-rce-src',
+  syscall: 'rm'
+}
+
+Node.js v26.10.0
+10:46:08 AM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — build failed (exit 1).
+10:46:15 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:46:15 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:46:17 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:46:17 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:46:18 AM [vitepress] (client) page reload public/tools/canvas-rce/index.html
+10:46:25 AM [vitepress] 
+[orchestrator] @pantoken/plugin-custom-components#styles — building…
+10:46:25 AM [vitepress] 
+[orchestrator] @pantoken/scaffold#generate — building…
+✓ custom-components: wrote /custom-components/src/generated/component-styles.ts (6 record(s))
+10:46:25 AM [vitepress] [orchestrator] @pantoken/plugin-custom-components#styles — done.
+10:46:25 AM [vitepress] 
+[orchestrator] @pantoken/plugin-custom-components#styles — building…
+✓ custom-components: wrote /custom-components/src/generated/component-styles.ts (6 record(s))
+10:46:26 AM [vitepress] [orchestrator] @pantoken/plugin-custom-components#styles — done.
+10:46:26 AM [vitepress] 
+[orchestrator] @pantoken/plugin-custom-components — building…
+✓ custom-components: wrote custom-components.css + _records.css
+10:46:26 AM [vitepress] [orchestrator] @pantoken/plugin-custom-components — done.
+✓ inlined scaffold templates for 8 platforms
+✓ inlined 9 agent assets
+10:46:26 AM [vitepress] 
+[orchestrator] @pantoken/docs#docs:api:css — building…
+10:46:26 AM [vitepress] 
+[orchestrator] @pantoken/docs#plugin-assets — building…
+✓ inlined localized scaffold files for 44 locale(s)
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ emitted locale registry for 44 locales
+10:46:26 AM [vitepress] [orchestrator] @pantoken/scaffold#generate — done.
+✓ plugin-assets: staged 3 sheet(s) to public/demos-assets/
+10:46:26 AM [vitepress] [orchestrator] @pantoken/docs#plugin-assets — done.
+10:46:26 AM [vitepress] 
+[orchestrator] @pantoken/docs#canvas-rce — building…
+node:fs:1589
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: ENOTEMPTY, Directory not empty: '/Users/dwahl/Scripts/pantoken/docs/.vitepress/cache/canvas-rce-src'
+    at rmSync (node:fs:1589:18)
+    at file:///Users/dwahl/Scripts/pantoken/docs/scripts/build-canvas-rce.ts:26:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async node:internal/modules/esm/loader:650:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5) {
+  errno: 66,
+  code: 'ENOTEMPTY',
+  path: '/Users/dwahl/Scripts/pantoken/docs/.vitepress/cache/canvas-rce-src',
+  syscall: 'rm'
+}
+
+Node.js v26.10.0
+10:46:28 AM [vitepress] [orchestrator] @pantoken/docs#canvas-rce — build failed (exit 1).
+✓ CSS API: wrote 105 record page(s) to api/css/ + merged the CSS section into the TypeDoc sidebar
+10:46:29 AM [vitepress] [orchestrator] @pantoken/docs#docs:api:css — done.
+
+---
+
+a fresh `vpr generate && vpr docs:dev` still fails to load the root vitepress app and throws console warnings and errors if it gets that far into loading - but is always a white page and continuously loading.
+only /tools/canvas-rce/ loads quickly.
+ tools & webapp mode language switcher still only have 5 languages in the lang picker and switching locales doesn't actually update the strings on the page.
+
+---
+
+a fresh `vpr generate && vpr docs:dev` on localhost:5173 on firefox still fails to load the root vitepress app and throws console warnings and errors if it gets that far into loading - but is always a white page and continuously loading. It loads in Chrome and Safari.
+only /tools/canvas-rce/ loads quickly.
+ tools & webapp mode language switcher still only have 5 languages in the lang picker and switching locales doesn't actually update the strings on the page.
+ it should start in default column (stacked) tiny & preview now a single row.
+
+---
+
+here's some error logs, but I don't know which browser triggered them:
+```
+[vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPBadge.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/Layout.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPButton.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPFeatures.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPHomeSponsors.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPHomeContent.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPImage.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPNavBarSearch.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPSocialLink.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPSocialLinks.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPTeamMembers.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPTeamPage.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPTeamPageSection.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPTeamPageTitle.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPBackdrop.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPContent.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPFooter.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPLocalNav.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPNav.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPSidebar.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPSkipLink.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPFeature.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPNavBarAskAiButton.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPNavBarSearchButton.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPTeamMembersItem.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/NotFound.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPDoc.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPHome.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:06 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPLocalNavOutlineDropdown.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPNavBar.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPNavScreen.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPSidebarGroup.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPDocAside.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPDocFooter.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPDocOutlineItem.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPNavBarAppearance.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPNavBarHamburger.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPNavBarMenu.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPNavBarSocialLinks.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPNavBarTitle.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPNavBarTranslations.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPNavScreenAppearance.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPNavScreenTranslations.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPSidebarItem.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPDocAsideOutline.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPDocFooterLastUpdated.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPSwitchAppearance.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPFlyout.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPNavBarMenuLink.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPMenuLink.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPNavScreenMenuGroup.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPNavScreenMenuLink.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPSwitch.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPMenu.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPNavScreenMenuGroupLink.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPNavScreenMenuGroupSection.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+11:49:07 AM [vitepress] Internal server error: ENOENT: no such file or directory, open '/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress@2.0.0-alpha.19_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_axios@1.20.0__8879a22da46e4070489882d2e2fb2ddb/node_modules/vitepress/dist/client/theme-default/components/VPMenuGroup.vue'
+      at Object.readFileSync (node:fs:620:20)
+      at getDescriptor (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:80:72)
+      at LoadPluginContext.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@vitejs+plugin-vue@6.0.9_@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core_65637c1820d96dc5c3ad031f70655d58/node_modules/@vitejs/plugin-vue/dist/index.mjs:1753:25)
+      at EnvironmentPluginContainer.load (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:11092:56)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@1.0.0-rc.0_@arethetypeswrong+core@0.18.5_@types+node@26.6._89570a38af0762c8bc6719ee0eb509cf/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/chunks/node.js:25102:21)
+    ```
+
+---
+
+* tinymce dark mode toolbar buttons tooltip/hover labels are white text on a light grey background
+* the pseudo-focus ring should be light/dark and theme color aware
+* the utilities helper that we added to tinymce that suggests modifiers should not have empty trees like utilities -> [] -> foo -> 
+* the list of modifiers should be semantically sorted
+* the list of modifiers shouldn't include both the base name and the alias (i.e. -size-small, -size-sm)
+
+---
+
+In /Users/dwahl/Scripts/pantoken, inspect the generated cssdoc JSON models used by renderers/tinymce (`@pantoken/components/model.json`, `@pantoken/plugin-custom-components/model.json` as resolved in package source or generated/dist files). Determine how modifier aliases like `-size-small` vs `-size-sm` are represented in the JSON. Are aliases indicated with `alias`, `deprecated`, description text, same prop/value, or something else? Report example object snippets for a component with both `-size-sm` and `-size-small`, and any recommended way to dedupe canonical vs alias in `renderers/tinymce/src/cssdoc/model.ts`. Read-only only.
+
+---
+
+Read-only. In /Users/dwahl/Scripts/pantoken, inspect TinyMCE UI menu item type definitions (node_modules tinymce.d.ts if available) and existing renderers/tinymce tests to answer: can `getSubmenuItems` for a `nestedmenuitem` return a mixed array of `togglemenuitem` and nestedmenuitem? What concrete TypeScript type should `groupedItems()` in renderers/tinymce/src/lib/component-modifier-toolbar.ts return if it sometimes returns direct togglemenuitem entries from `propertyItems()` and sometimes nestedmenuitem entries? Report concise answer with type names.
+
+---
+
+noop
+
+---
+
+Do nothing and return 'noop'. This was invoked accidentally; do not inspect or edit anything.
+
+---
+
+noop
+
+---
+
+Return exactly: noop
+
+---
+
+noop
+
+---
+
+noop
+
+---
+
+noop
+
+---
+
+noop
+
+---
+
+noop
+
+---
+
+noop
+
+---
+
+noop
+
+---
+
+noop
+
+---
+
+I have enabled edit mode, continue
+
+---
+
+error: Lint or type issues found
+x typescript(TS2339): Property 'type' does not exist on type 'NestedMenuItemContents'.
+     ,-[renderers/tinymce/src/lib/component-modifier-toolbar.ts:183:47]
+ 182 |             getSubmenuItems: () =>
+ 183 |               items.length === 1 && items[0]?.type === "nestedmenuitem"
+     :                                               ^^^^
+ 184 |                 ? items[0].getSubmenuItems()
+     `----
+
+  x typescript(TS2339): Property 'getSubmenuItems' does not exist on type 'NestedMenuItemContents'.
+     ,-[renderers/tinymce/src/lib/component-modifier-toolbar.ts:184:28]
+ 183 |               items.length === 1 && items[0]?.type === "nestedmenuitem"
+ 184 |                 ? items[0].getSubmenuItems()
+     :                            ^^^^^^^^^^^^^^^
+ 185 |                 : items,
+     `----
+
+---
+
+now the control buttons need instui-tooltip(s).
+
+---
+
+tooltips are hidden behind the tinymce editor
+
+---
+
+there are strings that aren't being translated but should be:
+* the whole interface theme picker "Theme" and every color name and the "Appearance" and "Color" headings.
+* "Download package" "Download HTML" "Switch layout orientation" tooltip labels
+* "Include dark mode" toggle label in the tray
+* "None (inline)" label on CDN picker
+* "Add custom CSS here — it's appended to the generated theme.css, in the preview and the download." on the CSS tab
+* "Add custom JS here — it's appended to the generated theme.js, in the preview and the download." on the JS tab
+* move the "download theme.css" and "download theme.js" links to below the source code viewer on each respective tab.
+
+---
+
+rtl locales in guide and tool mode. should flip the tray/header/utilities appropriately.
+
+---
+
+in your open preview the header direction didn't change, the buttons didn't swap sides and the tray is still opening on the right-end of the window.
+
+---
+
+when you adjusted the button/tooltip z-index it's now higher than the language picker / theme picker.
+
+---
+
+adding the tooltips changes the size of the button from 40x40 to 54x40, but it shouldn't have any affect.  this may be an upstream issue in formats/components.
+
+---
+
+and it changes the seamed buttons to 49x40
