@@ -9,6 +9,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { generateMessageBundles, loadConfig } from "@pantoken/i18n-engine";
+import { LOCALES } from "../../../../renderers/web-components/src/lib/locales.ts";
 import { runtimeCss } from "../src/lib/runtime-css.ts";
 import { wrapperRules } from "../src/layouts/wrapper/wrapper.ts";
 import { calloutRules } from "../src/layouts/callout/callout.ts";
@@ -17,7 +18,6 @@ import { pageLayoutRules } from "../src/layouts/page-layout/page-layout.ts";
 import { rubricNoteRules } from "../src/layouts/rubric-note/rubric-note.ts";
 import { testimonialRules } from "../src/layouts/testimonial/testimonial.ts";
 import { twoColumnRules } from "../src/layouts/two-column/two-column.ts";
-import { LOCALES } from "./lib/locales.ts";
 
 const root = resolve(import.meta.dirname, "..");
 const outDir = resolve(import.meta.dirname, "../generated");
