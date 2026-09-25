@@ -1,0 +1,40 @@
+failing test in CI:
+```
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tools/i18n-engine/tests/pipeline-guides.test.ts > docs.guides PO migration > renders every localized guide byte-for-byte from its whole-file PO entry
+AssertionError: expected '# Plwgins\n\nMae plwg pantoken yn est…' to be '# Plwgins\n\nMae plwg pantoken yn est…' // Object.is equality
+
+- Expected
++ Received
+
+@@ -103,11 +103,11 @@
+
+  1. **Crwba cyfeirnod.** Mae goleuedd targed pob cam yn gyfartaledd goleuedd OKLCH y 13
+     palet ar y cam hwnnw, gyda 0 wedi'i sefydlu ar wyn a 210 ar ddu. Felly mae lleoliad y graddfa wedi'i bersonoli
+     yn cyfateb i leoliad y paletau a anfonwyd.
+  2. **Anchâr.** Mae'r mewnbwn yn disgyn ar y cam y mae goleuedd targed y cam hwnnw yn agosaf at ei un ei hun, yna'n plygu i
+-    'r union oleuedd hwnnw. Mae `#cccccc` yn dod yn `custom-40` ar `#c9c9c9`: yn agos at y mewnbwn, ond nid
++   'r union oleuedd hwnnw. Mae `#cccccc` yn dod yn `custom-40` ar `#c9c9c9`: yn agos at y mewnbwn, ond nid
+     bob tro'n union yr un peth. Mae "agosaf" yn golygu'r cam agosaf ar y crwba, nid y lliw palet presennol agosaf.
+  3. **Llenwi.** Mae pob cam arall yn cadw cwmpas y mewnbwn. Mae ei atgyrffiad yn dilyn crwba cyffredin y paletau o ran yr ankâr, ac mae'n cael ei leihau yn unig pan fydd lliw y tu allan i sRGB.
+
+  Dim ond `#rgb` a `#rrggbb` sy'n cael eu derbyn; mae popeth arall yn taflu `TypeError`, felly ni all hex o ffurflen fewnbynnu fewnosod CSS.
+
+
+ ❯ tools/i18n-engine/tests/pipeline-guides.test.ts:26:92
+     24|         const source = readFileSync(join(root, "docs", file), "utf8");
+     25|         const translated = translations.get(source) ?? "";
+     26|         expect(normalizeWholeFileMarkdown(translated === "" ? source :…
+       |                                                                                            ^
+     27|           readFileSync(join(root, "docs", locale, file), "utf8"),
+     28|         );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 354 passed (355)
+      Tests  1 failed | 2659 passed (2660)
+   Start at  21:54:33
+   Duration  70.99s (import 46%, tests 30%, transform 10%, environment 6%, worker 4%, setup 4%)
+```
