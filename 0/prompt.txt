@@ -1,0 +1,11 @@
+the tooltip placement in rtl is offset to the left of the element by several em instead of staying underneath it.
+
+---
+
+the underlying issue is in the component itself:
+scope (.instui-tooltip) {
+  :scope > .tip {
+    translate(-50%)
+  }
+
+  should be 50% in rtl.
