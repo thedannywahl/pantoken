@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-25 14:27+0000\n"
+"PO-Revision-Date: 2026-09-25 21:21+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -14158,6 +14158,66 @@ msgctxt "docs.api:prose"
 msgid "Every vendored custom icon, sorted by name."
 msgstr "Pob eicon arfer wedi'i gynnwys (vendored), wedi’i drefnu yn ôl yr enw."
 
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Generate the `[data-pantoken-color=\"custom\"]` rule for a brand hex: it declares the derived\n`--instui-primitive-color-custom-custom*` steps and remaps the brand primitives onto them, exactly\nlike the shipped scales."
+msgstr "Generate the `[data-pantoken-color=\"custom\"]` rheol ar gyfer hex brand: mae’n datgan y camau \n`--instui-primitive-color-custom-custom*` a’n ail-raddech y prenffyrdd brand arnynt, yn union\nfel y graddfeydd a anfonwyd."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A `#rgb`/`#rrggbb` brand color."
+msgstr "A `#rgb`/`#rrggbb` lliw brand."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorRemapCss.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The CSS rule."
+msgstr "Llinyn rheolau CSS."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TypeError when `hex` isn't a valid hex color."
+msgstr "TypeError pan nad yw `hex` yn liw hex dilys."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The per-step lightness curve and chroma shape the `custom` scale is derived against, computed\nfrom the 13 shipped families. JSON-safe, so a build can ship it to a browser that pairs it with\nthe dependency-free `@pantoken/plugin-custom-theme-colors/scale` entry."
+msgstr "The per-step lightness curve and chroma shape the `custom` graddfa a dderbyniwyd, wedi’i gyfrifo\no’r 13 teulu a anfonwyd. JSON-safe, felly gall adeilad ei anfon at borwr sy’n ei bâr gyda\ny mynediad di-ddibyniaeth `@pantoken/plugin-custom-theme-colors/scale`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`Token`](../../../../../packages/core/src/interfaces/Token.md)[] \\| `Map`\\<`string`, `string`\\>"
+msgstr "darllen-yn-unig [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional token array or map to read the reference families from."
+msgstr "Arae tokenau dewisol neu fap i ddatrys gwerthoedd lliw camau cynradd ohono."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [ReferenceCurve](../interfaces/ReferenceCurve.md)."
+msgstr "Un [ResolvedDemo](../interfaces/ResolvedDemo.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorRemapCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The `[data-pantoken-color=\"custom\"]` remap rule without the derived primitives, for pages that\nset `--instui-primitive-color-custom-custom*` themselves at runtime (e.g. from a color picker)."
+msgstr "The `[data-pantoken-color=\"custom\"]` rheol ail-raddeinio heb y prenffyrdd a dderbir, ar gyfer tudalennau sy’n\ngosod `--instui-primitive-color-custom-custom*` eu hunain yn amser-rhedeg (er enghraifft o ddewisydd lliw))."
+
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColors.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -14171,12 +14231,6 @@ msgid "Generate CSS rules for all custom theme color choices by remapping primit
 msgstr "Generadu rheolau CSS ar gyfer pob dewis lliw thema wedi'u haddasu trwy ailfapio camau graddfa lliw cynradd\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`), tra'n cadw\ntokenau accent glas a enwyd yn benodol."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
-#, fuzzy, no-c-format
-msgctxt "docs.api:prose"
-msgid "readonly [`Token`](../../../../../packages/core/src/interfaces/Token.md)[] \\| `Map`\\<`string`, `string`\\>"
-msgstr "darllen-yn-unig [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
-
-#: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Optional token array or map for primitive step color lookups."
@@ -14187,6 +14241,79 @@ msgstr "Arae tokenau dewisol neu fap ar gyfer chwiliadau camau lliw cynradd."
 msgctxt "docs.api:prose"
 msgid "Generated CSS rules string."
 msgstr "Llinyn rheolau CSS."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Derive the `custom` primitive scale from a brand hex. The input is anchored at the step whose\nreference lightness (the mean OKLCH lightness of the 13 shipped families) is nearest its own,\nthen every step is rebuilt at its reference lightness with the input's hue — so the anchor step\nlands close to, but not necessarily exactly on, the input."
+msgstr "Derive the `custom` graddfa prenffyrdd o hex brand. Mae’r mewnbwn wedi’i angori ar y cam y mae ei\noleuedd cyfeirnod (golledd OKLCH cyfartalog y 13 teulu a anfonwyd)) yn agosaf at ei hun,\nac yna caiff pob cam ei adeiladu eto ar ei oleuedd cyfeirnod gyda’r lliw o’r mewnbwn — felly mae’r cam angori\nyn gorwedd yn agos at, ond nid yn hanfodol yn union ar, y mewnbwn."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [CustomColorScale](../interfaces/CustomColorScale.md)."
+msgstr "The [CustomColorScale](../interfaces/CustomColorScale.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Derive a full primitive scale from one hex: anchor it at the step with the nearest reference\nlightness, then rebuild every step at its reference lightness with the input's hue and a chroma\nscaled by the reference shape."
+msgstr "Derive a full primitive scale from one hex: anchor it at the step with the nearest reference\noleuedd, then rebuild every step at its reference lightness with the input's hue and a chroma\nwedi’i raddio gan siâp y cyfeirnod."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A hex color accepted by [parseHexColor](parseHexColor.md)."
+msgstr "A hex color accepted by [parseHexColor](parseHexColor.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Output of buildReferenceCurve."
+msgstr "Allbwn buildReferenceCurve."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Whether a value is a valid [parseHexColor](parseHexColor.md) input."
+msgstr "P'un ai a yw gwerth yn fewnbwn dilys i [parseHexColor](parseHexColor.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The value to check."
+msgstr "Y palet."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`true` for `#rgb`/`#rrggbb` strings."
+msgstr "`true` ar gyfer `#rgb`/`#rrggbb` llinynnau."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Validate and normalize a user-supplied hex color. This is the only entry point for untrusted\ninput into generated CSS, so anything but `#rgb`/`#rrggbb` is rejected."
+msgstr "Dilysu a normalu lliw hex a gyflwynwyd gan y defnyddiwr. Dyma’r unig bwynt mynediad ar gyfer mewnbwn anghyfrifol i CSS a gynhyrchir, felly caiff popeth heblaw `#rgb`/`#rrggbb` ei wrthod."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A hex color, with or without the leading `#`."
+msgstr "A hex color, with or without the leading `#`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Lowercase `#rrggbb`."
+msgstr "Llawr-werth `#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TypeError when `input` isn't a 3- or 6-digit hex color."
+msgstr "TypeError pan nad yw `input` yn liw hex 3- neu 6-digyd."
 
 #: plugins/pantoken/custom-theme-colors/src/index.md
 #, fuzzy, no-c-format
@@ -14206,6 +14333,48 @@ msgctxt "docs.api:prose"
 msgid "Renames and re-exports [customThemeColors](functions/customThemeColors.md)"
 msgstr "Ail-enwi ac ailallforio [customIcons](functions/customIcons.md)"
 
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [customColorCss](../functions/customColorCss.md)."
+msgstr "Opsiynau ar gyfer y plugin [customIcons](../functions/customIcons.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional token array or map for the reference families and relinked tokens."
+msgstr "Arae tokenau dewisol neu fap ar gyfer chwiliadau camau lliw cynradd."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selector prefix — see [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+msgstr "Rhagffix dewiswr ar gyfer y rheolau amodol — gweler [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A derived custom primitive scale."
+msgstr "Graddfa prenffyrdd costum a ddeilliodd."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The validated input, normalized to lowercase `#rrggbb`."
+msgstr "Y mewnbwn a wedi’i ddilysu, wedi’i normalu i lawr-werth `#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The step whose reference lightness is nearest the input's."
+msgstr "Y cam y mae ei oleuedd cyfeirnod yn agosaf at oleuedd y mewnbwn."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every primitive step mapped to its derived `#rrggbb`."
+msgstr "Pob cam prenffyrdd wedi’i fapio i’w `#rrggbb` a ddeilliodd."
+
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -14223,6 +14392,12 @@ msgstr "Selector prefix the conditional `[data-pantoken-color=\"…\"]` rheolau 
 msgctxt "docs.api:prose"
 msgid "An additional selector whose subtree should always render the true, unremapped colors,\nregardless of what an ancestor's `[data-pantoken-color]` scope currently has active. Emits one\nunconditional rule pinning every token this plugin can override back to its own base value —\ne.g. a color-swatch legend nested inside an already-themed page needs its reference swatches to\nstay constant rather than inherit the ancestor's remap."
 msgstr "Dewiswr ychwanegol y dylai ei is-bren bob amser rendro'r lliwiau gwir, heb eu hail-ffurfio,\npa bynnag beth sydd gan gynarydd ei gyfnod `[data-pantoken-color]` ar waith ar hyn o bryd. Mae'n alluogi un reol amodol sy'n clymu pob token y gall y plug-in hwn ei oresgyn yn ôl i'w werth sylfaenol ei hun —\ne.e. mae angen i legend swatch lliw wedi'i fewnosod o fewn tudalen sydd eisoes wedi'i themateiddio gadw ei swatches cyfeirnod yn gyson yn hytrach na herwyddo ail-ffurfio'r cynarydd."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A brand hex (`#rgb`/`#rrggbb`) to derive the `custom` scale from. When set, a\n`[data-pantoken-color=\"custom\"]` rule is appended — see [customColorCss](../functions/customColorCss.md)."
+msgstr "A brand hex (`#rgb`/`#rrggbb`)) i ddeillio’r `custom` graddfa ohoni. Pan bennir, caiff\n`[data-pantoken-color=\"custom\"]` rheol ei hychwanegu — gweler [customColorCss](../functions/customColorCss.md)."
 
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
 #, fuzzy, no-c-format
@@ -14248,6 +14423,18 @@ msgctxt "docs.api:prose"
 msgid "Always-true-color subtree — see [CustomThemeColorsCssOptions.resetSelector](CustomThemeColorsCssOptions.md#resetselector)."
 msgstr "Is-bren lliw sy'n bob amser-wir — gweler [CustomThemeColorsCssOptions.resetSelector](CustomThemeColorsCssOptions.md#resetselector)."
 
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Brand hex for the `custom` scale — see [CustomThemeColorsCssOptions.custom](CustomThemeColorsCssOptions.md#custom)."
+msgstr "Rhagffix dewiswr ar gyfer y rheolau amodol — gweler [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/ReferenceCurve.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Per-step reference lightness and normalized chroma, index-aligned with `steps`. JSON-safe."
+msgstr "Oleuedd cyfeirnod pob cam a chroma wedi’i normalu, wedi’u rhestru’n gyson gyda `steps`. JSON-safe."
+
 #: plugins/pantoken/custom-theme-colors/src/type-aliases/PantokenColorNamespace.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -14259,6 +14446,12 @@ msgstr "Namespace lliw thema wedi'i haddasu a gefnogir."
 msgctxt "docs.api:prose"
 msgid "The 13 available color namespaces for site theme color selection."
 msgstr "Y 13 namespace lliw sydd ar gael ar gyfer dewis lliw thema'r safle."
+
+#: plugins/pantoken/custom-theme-colors/src/variables/CUSTOM_COLOR_KEY.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The color namespace whose scale is derived from an arbitrary hex rather than shipped."
+msgstr "Y enw gofod lliw y mae ei raddfa yn deillio o hex arbennig yn hytrach na’r rhai a anfonwyd."
 
 #: plugins/pantoken/deprecations/src/functions/compareVersions.md
 #, no-c-format

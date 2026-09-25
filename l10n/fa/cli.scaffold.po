@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-25 16:31+0000\n"
+"PO-Revision-Date: 2026-09-25 20:50+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -470,6 +470,18 @@ msgstr "دریایی"
 msgctxt "cli.scaffold:canvas-theme-editor.colorAuroraLabel"
 msgid "Aurora"
 msgstr "شفق"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorCustomLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorCustomLabel"
+msgid "Custom"
+msgstr "سفارشی"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.customColorInputLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.customColorInputLabel"
+msgid "Brand color (hex)"
+msgstr "رنگ برند (هگز)"
 
 #: packages/scaffold/src/i18n.json#canvas-theme-editor.downloadCssLabel
 #, no-c-format

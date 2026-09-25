@@ -1,10 +1,13 @@
 # Breiseáin
 
-Leathnaíonn breiseán pantoken aschur token nó CSS gan pacáiste a fhóraic. Tógann tú ceann le `definePlugin` ó `@pantoken/plugin-kit`, ansin pasálann tú é chuig `buildTokens` nó `toCss`.
+Cuireann breiseán pantoken síneadh ar an aschur token nó CSS gan pacáiste a dhifreáil. Tógann tú ceann le
+`definePlugin` ó `@pantoken/plugin-kit`, ansin pasálann tú é chuig `buildTokens` nó `toCss`.
 
-## Cruthaigh breiseán
+## Údar breiseáin
 
-Tabhair na hooks a impleménóidh tú do `definePlugin`. Fillfidh sé breiseán gnáth, marcáilte leis na cumais a mheastear ó na hooks sin. Is féidir le breiseán an IR a leathnú (`tokens`, `icons`), aschur CSS a leathnú (`css`), nó an dá rud a dhéanamh.
+Tabhair na hooks a chuirtear i gcrích do `definePlugin`. Fillfidh sé breiseán gnáth, brandaithe leis na
+cumais a bhfuil tomhas orthu ó na hooks sin. Is féidir le breiseán an IR a shíneadh (`tokens`, `icons`), an aschur CSS
+(`css`), nó an dá rud.
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -17,13 +20,15 @@ export const brand = () =>
   });
 ```
 
-## Clárú atá eolach ar chumasanna
+## Clárlú feasach-ar-chumas
 
-Ritheann `buildTokens` agus `toCss` `checkPlugins` thar na breiseáin a thugann tú. Tugann sé foláireamh — ní thógann sé earráid — nuair nach bhfuil hook oiriúnach ag breiseán don chéim ina bhfuil sé cláraithe, mar sin scipeáiltear breiseán atá dírithe ar thokens amháin a pasáladh chuig `toCss` le nóta seachas gan aon rud a dhéanamh go ciúin.
+Ritheann `buildTokens` agus `toCss` `checkPlugins` thar na breiseáin a gcuireann tú isteach. Rabhraíonn sé — ní chumann sé earráid —
+nuair nach bhfuil hook aonair ag breiseán don chéim ina bhfuil sé cláraithe, mar sin déantar breiseán atá dírithe ar thóicn amháin a
+scipeáil le nóta nuair a chuirtear é chuig `toCss` seachas gan gníomh a dhéanamh go ciúin.
 
-## Comhcheangail breiseáin
+## Comhcheangal breiseán
 
-Tóg ar bhonn breiseán eile le `extendPlugin`, nó comhcheangail comhghleacaithe le `mergePlugin`:
+Tóg ar bharr breiseán eile le `extendPlugin`, nó cumasc comhghleacaithe le `mergePlugin`:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -32,11 +37,13 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Comhcheanglaíonn hooks den chéim chéanna: ritheann `tokens` an bunáit agus ansin an breis, cuireann `css` na ranníocaí le chéile, agus ritheann `icons` an dá cheann.
+Comhcheanglaítear hooks an chéid: rithfidh `tokens` an bunpháirt agus ansin an breiseán, ghiarálann `css` an dá
+chion, agus rithfidh `icons` an bheirt.
 
-## Bailíochtú aschuir do bhreiseáin
+## Bailíochtú aschur do bhreiseáin
 
-Rith na seiceálacha drift roinnte ó `@pantoken/utils` thar aschur do bhreiseáin féin ina thriail, ionas go theipfidh litriú mícheart nó token athainmnithe go tapa agus go háitiúil:
+Rith na seiceáilí drift comónta ó `@pantoken/utils` thar aschur do bhreiseáin féin ina thástáil, ionas go
+mbeifí ag dul ar stailc tapa áitiúil má tá litriú mícheart nó má tá ainm token athainmnithe:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -49,14 +56,18 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## Na breiseáin bhundáilte
+## Na breiseáin atá pacáistithe
 
-- `@pantoken/plugin-simple-icons` — brandaigh deilbhíní ó simple-icons, cláraithe mar token deilbhín.
-- `@pantoken/plugin-lucide-lab` — deilbhíní Lucide Lab, cláraithe mar `--instui-icon-*` image tokens.
-- `@pantoken/plugin-logos` — lógónna táirgí Instructure mar SVGanna, URIanna sonraí, agus `--instui-logo-*` image tokens.
-- `@pantoken/plugin-prune-custom-props` — breiseán PostCSS (ní breiseán pantoken) a dhíbriseann airíonna saincheaptha neamhúsáidte ó stíleabhait.
+- `@pantoken/plugin-simple-icons` — brandaíonn sé icons ó simple-icons, cláraithe mar icon tokens.
+- `@pantoken/plugin-lucide-lab` — Lucide Lab icons, cláraithe mar `--instui-icon-*` image tokens.
+- `@pantoken/plugin-logos` — lógóanna táirgí Instructure mar SVGanna, URIanna sonraí, agus `--instui-logo-*`
+  image tokens.
+- `@pantoken/plugin-prune-custom-props` — breiseán PostCSS (ní breiseán pantoken é) a tharraingíonn as maoine saincheaptha neamhúsáidte ó stíleáil.
+- `@pantoken/plugin-custom-theme-colors` — athbrandaíonn sé leathanach trí thréith amháin a shocrú
+  (`data-pantoken-color`) chuig ceann de 13 pailéad, nó chuig `custom` do aon hex branda. Féach
+  [Dathanna téama](#theme-colors).
 
-Is féidir clárclár Lucide Lab a luchtú go moille, ansin é a phasáil chuig an hook token sioncrónach:
+Is féidir clárlann Lucide Lab a luchtú go mall, ansin í a phasáil chuig an hook token comhthráthach:
 
 ```ts
 import { buildTokens } from "@pantoken/core/build";
@@ -69,6 +80,77 @@ buildTokens({
 });
 ```
 
-Tá cúpla rud a bhíodh ina mbreiseáin anois á bpacáistiú i `@pantoken/components`, ós rud é go bhfuil an-chuid comhdhéanamh ag teastáil uathu as an mbosca: scáthanna ardaithe (`--instui-elevation-*`, i `components.css`), an fáinne focus-outline (i `base.css` — faigheann gach eilimint fócasaithe é nuair atá pantoken i seilbh an leathanaigh), agus na clóanna branda Instructure (Atkinson Hyperlegible Next: cuireann `base.css` i bhfeidhm `--instui-font-family-base`; luchtóidh an roghnach `@pantoken/components/fonts.css` na woff2s `@font-face`).
+Cúpla ruda atáodh mar bhreiseáin anois a sheachadtar i `@pantoken/components`, ós rud é go dteastaíonn iad ó
+anhais an oiread sin comhpháirteanna as an mbosca: scáthanna ardaithe (`--instui-elevation-*`, i `components.css`), an fáinne comhthimpeall-fócas
+(i `base.css` — faigheann gach eilimint fócasála é nuair a bhíonn pantoken ag úinéireacht an leathanaigh), agus na clónna branda Instructure
+(Atkinson Hyperlegible Next: cuireann `base.css` i bhfeidhm `--instui-font-family-base`; luchtóidh an rogha `@pantoken/components/fonts.css` na
+woff2anna `@font-face`).
+
+## Dathanna téama
+
+Seolann `@pantoken/plugin-custom-theme-colors` bloc `[data-pantoken-color="…"]` amháin in aghaidh na pailéad
+(`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,
+`aurora`). Treoraíonn gach bloc na primitives branda (`--instui-primitive-color-navy-*` agus `-blue-*`)
+ata orthu chuig an pailéad roghnaithe. Déanann sé ath-shamhlaiú ar na dromchlaí branda a dhéanfadh upstream a flatáil go hex litriúil,
+ag coimeád a n-alpha bácáilte trí `color-mix()`. Fanann dathanna stádais shéamseamach, béimí gorma shonraithe, agus
+scáthanna ardaithe ina n-áit. Bain triail astu sa
+[demo téamúcháin bunaithe ar swatch](https://stackblitz.com/edit/vitejs-vite-sg9oy7ln?file=index.html).
+
+```html
+<html data-pantoken-color="sea"></html>
+```
+
+### Dath branda saincheaptha
+
+Socraigh `data-pantoken-color="custom"` chun athbranda a dhéanamh ón aon hex, mar an príomh-dath a chlóscríobhann riarthóir Canvas
+sa Chomhéadain Theama. Tá pantoken ag díriú scála iomlán 10–200 `--instui-primitive-color-custom-*`
+óna:
+
+1. **Cuair cleachta.** Is é solúbthacht sprioc gach céim meán-solúbthachta OKLCH na 13
+   pailéad ag an gcéim sin, le 0 sáraithe ag bán agus 210 ag dubh. Mar sin oireann spásáil an scála saincheaptha
+   le spásáil na pailéad a sheolfar.
+2. **Cloch.** Luíochann an ionchur ar an gcéim a bhfuil solúbthacht spriocnaithe chomh cóngarach dá sholas féin, ansin
+   scuabann sé chuig an solúbthacht sin go cruinn. Éiríonn `#cccccc` mar `custom-40` ag `#c9c9c9`: cóngarach don ionchur, ach ní
+   i gcónaí comhionann. Ciallaíonn "is cóngaraí" an céim is cóngaraí ar an gcuar, ní an dath pailéad atá ann cheana.
+3. **Líon.** Coinníonn gach céim eile hue an ionchuir. Leanann a shátáiteacht cuar shátáiteach mheán na pailéad i gcoibhneas leis an gcloch, agus laghdaítear í ach amháin nuair a thiteann dath lasmuigh de sRGB.
+
+Glacann sé le `#rgb` agus `#rrggbb` amháin; throwann aon rud eile `TypeError`, mar sin ní féidir le hex ón bhfoirm
+CSS a instealladh.
+
+Ag am an tógála, seol an riail iomlán leis na primitives díorthaithe curtha i láthair cheana:
+
+```ts
+import { customColorCss, customThemeColors } from "@pantoken/plugin-custom-theme-colors";
+
+customThemeColors({ custom: "#e62429" }); // as a plugin, alongside the 13 palettes
+customColorCss("#e62429"); // or the custom rule on its own
+```
+
+Chun an dath a roghnú ag rith-am gan an tacar token a sheachadadh, réamh-ríomh an cuar agus an riail ath-mhapa ag am an tógála. Ansin bain úsáid as an iontráil neamh-spleách ar `/scale` sa bhrabhsálaí, agus socraigh na 20
+primitives díorthaithe amháin:
+
+```ts
+// Build time
+import {
+  customColorReferenceCurve,
+  customColorRemapCss,
+} from "@pantoken/plugin-custom-theme-colors";
+
+const curve = customColorReferenceCurve(); // JSON-safe
+const remapCss = customColorRemapCss(); // ship alongside the palette stylesheet
+```
+
+```ts
+// Browser
+import { deriveScale } from "@pantoken/plugin-custom-theme-colors/scale";
+
+const { anchorStep, steps } = deriveScale(input.value, curve);
+style.textContent = `:root[data-pantoken-color="custom"] { ${[...steps]
+  .map(([step, hex]) => `--instui-primitive-color-custom-custom${step}: ${hex};`)
+  .join(" ")} }`;
+document.documentElement.dataset.pantokenColor = "custom";
+```
+
+Oibríonn roghnóir téama shuíomh na ndoiciméad, eagarthóir téama Canvas, agus an demo thuas ar an mbealach seo.
 
 Féach an [tagairt API](/api/) do onnmhairí gach breiseáin.
