@@ -1,5 +1,39 @@
 # @pantoken/plugin-custom-components
 
+## 0.5.0
+
+### Minor Changes
+
+- f475012: Add a `button-set` component: a seamed (flush, zero-gap, outer-corners-only) row of buttons whose
+  own chained modifiers (color, size, shape, toggle, condensed, without-background/border,
+  display-block) default onto every child `.pfx-button` that doesn't carry its own modifier in the
+  same category — a button's own modifier class always wins.
+
+  Make Canvas Theme Editor's download actions a primary seamed icon-button set, synchronize its
+  preview scheme with the app appearance, and improve TinyMCE icon picker glyph sizing and selected
+  tile contrast.
+
+- f475012: Replace logo PNG rasterization with an aspect-ratio-aware `-logo-<name>` mask glyph, mirroring the
+  `icon` painter but without squashing non-square logos into a 1:1 box.
+
+  - `@pantoken/plugin-custom-components` adds a new `logo` utility (`.instui-logo` + the shared
+    `[class*="-logo-"]::before` painter) that reads a per-logo `--pantoken-logo-aspect` custom property
+    instead of assuming a 1em square.
+  - `@pantoken/plugin-logos` no longer rasterizes PNGs or ships a `./*.png` export (dropping the
+    `@resvg/resvg-js` build dependency). Its generated `.-icon-<name>` glyph classes are renamed to
+    `.-logo-<name>` and now carry `--pantoken-logo-aspect` derived from each logo's own SVG `viewBox`.
+    `LogoMeta.width`/`height` now describe that natural `viewBox` size, not a rasterized display size.
+  - `@pantoken/tinymce`'s logos picker inserts a mask-painted `<span class="instui-logo -logo-<name>"
+role="img" aria-label="…">` instead of a CDN-hosted `<img>`, using the same CSS asset-tracking
+    (`trackAndInjectAsset`) the icons picker already relies on for Canvas RCE compatibility.
+  - The Canvas theme editor scaffold template resolves the logo's `.css` export (not `.png`) for its
+    local/offline preview mode, and re-syncs `-logo-*` classes found in loaded editor content the same
+    way it already does for `-icon-*` classes.
+
+### Patch Changes
+
+- @pantoken/plugin-kit@0.3.2
+
 ## 0.4.1
 
 ### Patch Changes

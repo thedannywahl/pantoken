@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 0.6.0
+
+### Minor Changes
+
+- f475012: Ship the complete canonical Lucide icon catalog alongside Instructure's custom icons. Custom glyphs
+  continue to win same-name collisions, token provenance now records the direct Lucide version, and
+  `@pantoken/icons` exports `lucideIcons` and `customIcons` views in addition to the unified `icons`
+  collection.
+- f475012: Upgrade the vendored Instructure UI sources to 11.7.7. Add the canonical `ai-spinner` icon and AI Spinner variants, including `variant="ai"` and `variant="ai-on-color"` on the web component. Mark Spinner as requiring icon CSS in the CDN capability manifest.
+- f475012: Upgrade the vendored Instructure design tokens to v2.0.0 and retire the six compatibility shims whose upstream removal milestones were reached.
+
 ## 0.5.0
 
 ### Minor Changes

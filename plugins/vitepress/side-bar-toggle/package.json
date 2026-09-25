@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/vitepress-sidebar-toggle",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "VitePress plugin: a persistent show/hide toggle for the whole sidebar, with localStorage persistence and no flash of the wrong state.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

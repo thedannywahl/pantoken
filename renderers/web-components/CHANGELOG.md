@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## 0.7.0
+
+### Minor Changes
+
+- f475012: Add shared tab selection and keyboard interaction, including the `<instui-tabs>` web component.
+- f475012: Upgrade the vendored Instructure UI sources to 11.7.7. Add the canonical `ai-spinner` icon and AI Spinner variants, including `variant="ai"` and `variant="ai-on-color"` on the web component. Mark Spinner as requiring icon CSS in the CDN capability manifest.
+
+### Patch Changes
+
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+  - @pantoken/interactions@0.4.0
+  - @pantoken/scaffold-base@0.3.3
+  - @pantoken/icons@0.3.0
+  - @pantoken/components@1.3.0
+
 ## 0.6.9
 
 ### Patch Changes

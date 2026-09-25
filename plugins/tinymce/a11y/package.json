@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/tinymce-a11y",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "TinyMCE accessibility checker plugin with configurable DOM rules.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

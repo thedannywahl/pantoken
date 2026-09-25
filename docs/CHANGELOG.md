@@ -1,5 +1,54 @@
 # CHANGELOG
 
+## 0.5.11
+
+### Patch Changes
+
+- f475012: Fix the Agent Tools install-tab asset title/description to stack as a flex column instead of a row
+  (missing `flex-direction: column` on `.agent-tools-page__asset-heading`).
+- f475012: Fix the Canvas RCE iframe build so the rendered scaffold can resolve its local archive helper and
+  interactions bundle during the docs asset build.
+- f475012: More canvas theme editor fixes:
+
+  - The standalone shell header's theme color swatches no longer get remapped to the currently
+    active chrome color — they show the true navy/blue/etc. colors, matching the theme tray.
+  - The "Download package" and "Download HTML" buttons name the file after the currently open/saved
+    preset instead of always "canvas-theme.zip"/"index.html". `@pantoken/tinymce-save` now exports
+    `slugifyExportName` so hosts can build a matching filename.
+  - Removed the copy-to-clipboard confirmation message's now-dead DOM reference (the status span was
+    removed from the markup) — copying still works, it just no longer tries to update a status
+    message.
+  - Fixed `/tools/canvas-rce/` (and `/tools/canvas-rce` with no trailing slash) 404ing in `vitepress
+dev` — only the exact `/tools/canvas-rce/index.html` URL used to resolve.
+
+- f475012: Apply the docs toolbar color selection inside the embedded Canvas RCE iframe so its pantoken chrome and live preview follow the selected `data-pantoken-color` scheme.
+- f475012: Add a "Canvas RCE" utility page (`/guide/canvas-rce`) alongside the CDN Picker and Agent Tools
+  pages, embedding the `canvas-theme-editor` scaffold's live TinyMCE split-pane editor/preview via
+  iframe. A new `docs/scripts/build-canvas-rce.ts` renders the scaffold template with
+  `@pantoken/scaffold` and builds it into a static bundle served at `/tools/canvas-rce/`.
+- f475012: Add a sidebar show/hide toggle to the nav bar, powered by the new `@pantoken/vitepress-sidebar-toggle`
+  plugin. Hiding the sidebar gives page content the full width; the toggle's state persists across
+  navigation and reload. The label is translated through the existing `docs.chrome` catalog like every
+  other VitePress chrome string.
+- f475012: Fix the docs appearance toggle so switching between light and dark updates the Pantoken theme scope as well as VitePress's `dark` class.
+- f475012: Publish the `i18n.source.schema.json` and `i18n.config.schema.json` JSON schemas at
+  `https://pantoken.app/schemas/`, the `$id`/`$schema` URLs already referenced from every package and
+  template `i18n.json` file. A new `docs/scripts/stage-i18n-schemas.ts` step (wired into `docs:assets`)
+  copies them from `tools/i18n-engine/` into `public/schemas/` at build time.
+- f475012: Quote translated guide frontmatter titles that contain YAML mapping colons so VitePress can index
+  localized pages for search.
+- f475012: Synchronize the persistent sidebar state with VitePress's narrow-viewport menu, and only show the
+  standalone toggle once that built-in menu is hidden. Add navbar `placement` and custom show/hide icon
+  class options to `sidebarToggleHead()`, with automatic RTL icon mirroring.
+- f475012: Fix inconsistent heading/paragraph spacing on the Agent Tools page: `instui-heading` and
+  `instui-text` don't carry their own margin, so section intros, the hero, and doc-tab link cards were
+  leaning on ambient (and inconsistent) browser/`vp-doc` margins. Every heading/paragraph pair now zeroes
+  its own margin (`--m-0`) and gets spacing from an explicit `--gap-*` utility on its flex wrapper instead.
+- f475012: Keep the Canvas RCE scaffold's TinyMCE editor and live preview in sync with the embedding docs site's light or dark theme.
+- f475012: Rework `AgentToolsPage.vue` to use `@pantoken/components` classes (`instui-list`, `instui-view`
+  modifiers, and the `--gap-*`/`--display-*`/`--m*` global utilities) in place of hand-rolled BEM
+  flex/grid layout CSS, and remove leftover dead CSS rules from an earlier version of the page.
+
 ## 0.5.10
 
 ### Patch Changes

@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## 0.3.0
+
+### Minor Changes
+
+- f475012: Ship the complete canonical Lucide icon catalog alongside Instructure's custom icons. Custom glyphs
+  continue to win same-name collisions, token provenance now records the direct Lucide version, and
+  `@pantoken/icons` exports `lucideIcons` and `customIcons` views in addition to the unified `icons`
+  collection.
+- f475012: Upgrade the vendored Instructure UI sources to 11.7.7. Add the canonical `ai-spinner` icon and AI Spinner variants, including `variant="ai"` and `variant="ai-on-color"` on the web component. Mark Spinner as requiring icon CSS in the CDN capability manifest.
+
+### Patch Changes
+
+- f475012: Fix InstUI/Lucide icons losing to same-named simple-icons or Lucide Lab glyphs (e.g. the `x` close
+  icon vs. the X/Twitter brand logo). `@pantoken/plugin-simple-icons` and `@pantoken/plugin-lucide-lab`
+  now skip (and warn on) a slug/name that already exists in the token IR instead of overwriting it, and
+  `buildIconResolverChain` now tries the built-in icon set before plugin `rehype` resolvers so a
+  colliding `:code:` resolves to the built-in icon.
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+  - @pantoken/tokens@0.6.0
+  - @pantoken/utils@1.1.0
+
 ## 0.2.4
 
 ### Patch Changes

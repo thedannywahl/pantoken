@@ -1,5 +1,24 @@
 # @pantoken/plugin-layouts
 
+## 0.5.0
+
+### Minor Changes
+
+- f475012: Route starter page layout titles, prose, and image alt text through the i18n pipeline (new `layouts.strings` catalog). `@pantoken/plugin-layouts` gains `renderPageLayout(layout, locale)` and `pageLayoutTemplates` (unresolved `{{key}}` templates); `pageLayouts` stays English-rendered by default for backward compatibility. `@pantoken/tinymce`'s `createLayoutsPlugin` gains a `locale` option that renders the "Insert layout" picker and inserted HTML in the requested locale, falling back to English for untranslated strings.
+- f475012: Reorganize bundled page layouts into per-layout HTML snippet folders with local translation sources while preserving the existing `pageLayouts`, `pageLayoutTemplates`, and `renderPageLayout` APIs.
+
+### Patch Changes
+
+- f475012: Add Canvas starter layouts for course headers, footers, instructor profiles, syllabi, and course home pages.
+
+  Add provider-neutral image placeholders that TinyMCE consumers can resolve before inserting content.
+
+- f475012: Load pantoken's prose stylesheet in the Canvas theme and simplify starter layouts to use semantic
+  headings, paragraphs, and lists where the prose styles provide their presentation.
+- f475012: Publish browser-valid layout CSS by keeping cssdoc-rich generated sheets for docs/model parsing while packing runtime-clean CSS exports.
+- f475012: Generate layout translations from the canonical supported-locale registry instead of a copied table, keeping locale bundles in sync when supported languages change.
+- @pantoken/plugin-kit@0.3.2
+
 ## 0.4.0
 
 ### Minor Changes

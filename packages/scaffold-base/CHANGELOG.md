@@ -1,5 +1,18 @@
 # @pantoken/scaffold-base
 
+## 0.3.3
+
+### Patch Changes
+
+- f475012: Update the scaffold base to bingo-stratum 0.6.2 and its Zod 4-compatible dependency set.
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+  - @pantoken/plugin-layouts@0.5.0
+
 ## 0.3.2
 
 ### Patch Changes

@@ -1,5 +1,305 @@
 # @pantoken/scaffold
 
+## 1.5.0
+
+### Minor Changes
+
+- f475012: Add a pantoken TinyMCE meta plugin that groups components, icons, logos, layouts, and templates under one pantoken-icon toolbar menu, and use it in the Canvas theme editor scaffold while keeping source view separate.
+- f475012: Add standalone HTML and combined ZIP downloads to the Canvas Theme Editor scaffold.
+- f475012: Add a `custom` color scale derived from any brand hex. `deriveCustomColorScale()` puts the input on
+  the step with the nearest perceptual lightness, using the mean OKLCH curve of the 13 shipped families
+  from white (0) to black (210). It snaps the input to that step's lightness, then fills in every
+  other step with the input's hue. `customColorCss()` and the new `custom` option emit a
+  `[data-pantoken-color="custom"]` rule. The Canvas theme editor adds a Custom swatch with a hex field
+  and includes the rule in the preview, presets, and the
+  downloaded `theme.css`.
+
+  The editor's header color menu also offers Custom. A new dependency-free
+  `@pantoken/plugin-custom-theme-colors/scale` entry, plus `customColorReferenceCurve()` and
+  `customColorRemapCss()`, lets a browser derive the scale without the token set. Demo frames from
+  `@pantoken/demo` apply a posted `customScale` (20 `#rrggbb` values) to the `custom` color.
+
+- f475012: Add merged message-source support to the localization pipeline and add a TinyMCE Placehold PNG
+  image plugin to the Canvas theme editor scaffold.
+- f475012: Add opt-in pantoken-aware TinyMCE commands and automatic component classes for authored content.
+  Apply the image component class to placeholder and product-logo images, and enable the integration
+  in the Canvas theme editor scaffold.
+- f475012: `canvas-theme-editor` scaffold: added TinyMCE's image (URL-only, no upload/base64), autosave
+  (localStorage), fullscreen, quickbars, search and replace, and word count plugins to the local
+  authoring editor's toolbar.
+- f475012: `@pantoken/tinymce` gains three new plugins: `createSupSubPlugin` (a combined
+  superscript/subscript toolbar dropdown), `createFullscreenFooterPlugin`, and
+  `createSearchReplaceFooterPlugin` (footer/statusbar buttons for TinyMCE's native
+  fullscreen and search & replace, which otherwise ship as toolbar-only controls).
+
+  `@pantoken/tinymce-codemirror`'s `createSourceTogglePlugin` accepts a new `display`
+  option (`"toolbar" | "footer" | "both"`, defaulting to `"toolbar"`) so the source-view
+  toggle can be registered in TinyMCE's footer/statusbar instead of (or alongside) the
+  toolbar.
+
+  `@pantoken/tinymce-a11y`'s footer checker button is now prepended, not appended, to
+  the statusbar so it consistently leads (before word count) instead of landing wherever
+  DOM order happened to put it.
+
+  `canvas-theme-editor` scaffold: reordered the local authoring editor's toolbar into
+  undo/redo, the pantoken menu, font size/heading pickers, inline formatting (including
+  color and superscript/subscript), link/image/placeholder-image, text align, lists, and
+  clear formatting/table/embed groups. The accessibility checker, word count, source-view
+  toggle, fullscreen, and find & replace all moved out of the toolbar into the footer/
+  status bar (in that order), and the element-path breadcrumb is now hidden.
+
+- f475012: Wire the TinyMCE accessibility checker into generated canvas-theme-editor projects.
+
+### Patch Changes
+
+- f475012: Add shared tab selection and keyboard interaction, including the `<instui-tabs>` web component.
+- f475012: Add TinyMCE 8 UI and content skins for Next Gen, Canvas, and Canvas High Contrast. Next Gen's UI skin supports light and dark modes while all content skins remain light-only.
+- f475012: Improve browser locale detection for the generated Canvas Theme Editor by resolving browser language preferences against the supported locale registry, including region and script fallbacks such as `fr-CA` and `zh-TW`. This keeps standalone editor instances aligned with the user's system language when the docs shell is no longer controlling locale.
+- f475012: Add a `button-set` component: a seamed (flush, zero-gap, outer-corners-only) row of buttons whose
+  own chained modifiers (color, size, shape, toggle, condensed, without-background/border,
+  display-block) default onto every child `.pfx-button` that doesn't carry its own modifier in the
+  same category — a button's own modifier class always wins.
+
+  Make Canvas Theme Editor's download actions a primary seamed icon-button set, synchronize its
+  preview scheme with the app appearance, and improve TinyMCE icon picker glyph sizing and selected
+  tile contrast.
+
+- f475012: Add an element-scoped custom theme color stylesheet and make Canvas Theme Editor pages keep their selected `data-pantoken-color` on an editable outer content wrapper.
+- f475012: Add Canvas starter layouts for course headers, footers, instructor profiles, syllabi, and course home pages.
+
+  Add provider-neutral image placeholders that TinyMCE consumers can resolve before inserting content.
+
+- f475012: Several canvas theme editor and TinyMCE dark-mode/UX fixes:
+
+  - The standalone shell's "System" appearance now applies immediately on load instead of only after picking another option and switching back — a dark OS no longer starts the app in light mode.
+  - The Color menu marks "Navy" as selected by default, matching the app's actual starting color.
+  - The brand mark is now a link to pantoken.app (opens in a new tab), styled as a primary icon button so its glyph contrasts correctly in both light and dark mode.
+  - The desktop preview width no longer renders narrower than the tablet preset in side-by-side layout.
+  - The Theme and Language menus close when you click outside them or press Escape.
+  - In stacked layout, the editor pane is no longer capped below its resized height — TinyMCE's own resize handle can grow it freely, matching side-by-side layout.
+  - Fixed a TinyMCE dialog bug where the primary button rendered white text on a white background in dark mode.
+  - The icons picker's selected tile now shows a persistent indicator that doesn't disappear when you stop hovering it.
+  - Inserted icon glyphs are now selectable in the editor, with a context toolbar to change their color or size, or delete them.
+  - Fixed the accessibility checker's statusbar icon staying black in dark mode instead of matching the other icons.
+
+- f475012: Fix the canvas theme editor scaffold's "include dark mode" checkbox flipping on its own when the host page's own light/dark mode changes — it now only reflects the author's own choice of whether dark CSS ships with the exported theme.
+- f475012: Fix the canvas theme editor scaffold's preview pane keeping a white header/footer background in fullscreen while in dark mode — the background color now falls back to the `Canvas` system color, matching every other background in the scaffold's chrome.
+- f475012: More canvas theme editor fixes:
+
+  - The standalone shell header's theme color swatches no longer get remapped to the currently
+    active chrome color — they show the true navy/blue/etc. colors, matching the theme tray.
+  - The "Download package" and "Download HTML" buttons name the file after the currently open/saved
+    preset instead of always "canvas-theme.zip"/"index.html". `@pantoken/tinymce-save` now exports
+    `slugifyExportName` so hosts can build a matching filename.
+  - Removed the copy-to-clipboard confirmation message's now-dead DOM reference (the status span was
+    removed from the markup) — copying still works, it just no longer tries to update a status
+    message.
+  - Fixed `/tools/canvas-rce/` (and `/tools/canvas-rce` with no trailing slash) 404ing in `vitepress
+dev` — only the exact `/tools/canvas-rce/index.html` URL used to resolve.
+
+- f475012: Fix two remaining canvas-theme-editor limitations: the locale switcher now actually swaps UI
+  strings (title, description, labels, help modal) using real translations from the CLI's PO
+  catalogs, falling back to English per-key when a locale/key has no translation yet; and it applies
+  whatever locale the page was scaffolded for on load, not just when the switcher is used. Swapping
+  happens by patching text/attributes into a live-rendered DOM tree in place (skipping the
+  TinyMCE/CodeMirror-mounted panes), so wired-up listeners and editor state survive the switch.
+- f475012: Fix several issues in the `canvas-theme-editor` scaffold's live preview tool:
+
+  - Navy and blue color schemes rendered fully transparent — `customThemeColorsCss()` emitted a
+    self-referencing (circular, guaranteed-invalid) custom property when a color remapped to its own
+    primitive scale.
+  - The tray's Config/CSS/JS tabs didn't work in the built docs site — `@pantoken/interactions`'s
+    IIFE was loaded via a fire-and-forget dynamic `import()`, which a production bundler can
+    tree-shake away from a `"sideEffects": false` package. It's now loaded via a real `<script>` tag.
+  - The scaffold's source-view (code) toggle was a second, drifted reimplementation of
+    `@pantoken/tinymce`'s `createSourceTogglePlugin` — now newly exported from `@pantoken/tinymce`
+    and reused directly instead of being duplicated.
+  - The editor and preview panes had fixed heights, so TinyMCE's resize handle could only shrink the
+    editor, and preview content overflowed into an internally-scrolling iframe. The editor pane now
+    uses `min-height`, and the preview iframe grows to match its content's measured height with no
+    scrollbar.
+  - Added a large/medium/small preview-width toggle (100% / `--instui-breakpoints-lg` /
+    `--instui-breakpoints-md`) above the preview pane.
+  - Added missing standard toolbar buttons/plugins: bold, italic, underline, undo, redo, bullet/
+    numbered lists, and link.
+
+- f475012: Move Save to the front of the canvas theme editor scaffold's toolbar (Save Undo Redo | pantoken | ...) instead of sharing a group with the pantoken menu.
+- f475012: Fix several issues in the `canvas-theme-editor` scaffold:
+
+  - The preview's device-width (monitor/tablet/smartphone) buttons, popup toggle, and other chrome
+    controls stayed pinned to the OS `prefers-color-scheme` instead of the explicit interface theme
+    toggle — most visible as near-invisible off-white icons in light mode, especially once the
+    preview was detached into its own popup window.
+  - Detaching the preview into a popup left a large blank gap where it used to sit. Its two-pane
+    layout container shared the `.container`/`.content` classnames with `@pantoken/plugin-layouts`'
+    shared wrapper-layout utility CSS, which silently forced `flex-direction: row` without ever
+    setting the `data-layout` attribute the per-pane `flex-grow` rules key off — renamed the
+    container to `.panes` to escape the collision.
+  - The layout (row/column) toggle stayed enabled while the preview was popped out, even though
+    layout has no effect on a detached preview.
+  - With no stored preference, the app started in column layout while the toggle's icon and
+    `aria-pressed` implied row — first click was a no-op. The toggle's default markup now matches
+    the actual column default so the first click always does something.
+  - The layout toggle's `aria-label` had no matching i18n key and rendered the literal
+    `{{layoutDirectionLabel}}` placeholder.
+  - The installed webapp's dock/shortcut icon had no dark-appearance variant, so a dark macOS dock
+    could render it dark-on-dark. Added a `prefers-color-scheme: dark`-matched icon/apple-touch-icon
+    pair built from the existing reversed brand mark.
+  - The standalone app shell's "System" appearance option added complexity (matching the OS
+    preference, keeping it in sync) without matching benefit — removed it, so the appearance picker
+    is just Light/Dark and defaults to light.
+  - Choosing the "None (inline)" CDN provider still fetched the icon picker's Simple Icons/Lucide Lab
+    glyph sheets from jsDelivr — the icons plugin was never given the same local-asset resolver the
+    logos plugin already used, and that resolver's own glob only covered `plugin-logos` in the first
+    place. The docs-only Canvas RCE build now also copies vendored package metadata so package export
+    subpaths like `@pantoken/components/icons/copy.css` resolve after local dist refreshes.
+  - The standalone app shell's language picker only ever listed 6 hardcoded locales, and choosing one
+    only set `lang` — it never actually swapped any UI strings. It now lists every locale the scaffold
+    has real translations for (from the already-generated `locale-strings.ts`), and persists + reloads
+    with the chosen locale's strings merged over the English defaults.
+  - Icon-only control buttons now use `instui-tooltip` bubbles in addition to screen-reader labels,
+    so pointer and keyboard users get visible labels for the download/copy, utility, and preview
+    controls. The tool surface also raises those tooltip bubbles above TinyMCE's editor chrome.
+  - RTL locales now set the scaffolded app's document direction from the generated locale registry,
+    flip the standalone shell, utilities, preview controls, and place the tray/close affordance on the
+    appropriate side.
+
+- f475012: Several fixes to the canvas theme editor scaffold:
+
+  - The editor's own content now follows the app chrome's dark/light appearance (previously only the chrome, not the TinyMCE editing surface, went dark).
+  - "None"/local CDN mode now resolves icon CSS assets (per-icon and bundle stylesheets, across all four icon sources) from local node_modules instead of always falling back to a remote CDN fetch.
+  - The standalone shell's Appearance menu defaults to "System" instead of showing nothing selected.
+  - The Color menu now shows all 13 pantoken colors (previously a hardcoded 7) with the same swatch discs used elsewhere, and long color/locale lists scroll within the dropdown instead of overflowing off-screen.
+  - The brand mark uses pantoken's own logomark instead of a generic palette icon, colored with the active theme color instead of a hardcoded gradient.
+
+- f475012: Fix the canvas theme editor scaffold's standalone app shell (shown when the scaffolded app is opened directly, outside the docs' embedding iframe) throwing on load because its Lucide icons were called as functions instead of rendered with Lucide's `createElement` helper — this silently broke every script that ran after it, including TinyMCE initialization and the download/copy buttons.
+- f475012: Fix three standalone-mode layout/theming bugs in the canvas theme editor scaffold's app shell (shown when the scaffolded app is opened directly, outside the docs' embedding iframe):
+
+  - the shell header rendered as a left-side column instead of a top header, because it inherited the scaffold-base wrapper layout's app-shell row class
+  - explicitly picking Light or Dark appearance was silently overridden by the visitor's OS preference (a lightningcss `light-dark()` downlevel quirk), leaving dark-mode text and UI colors on a light background
+  - the redundant page title and description are now hidden once the shell's own brand mark is showing
+
+- f475012: Apply the docs toolbar color selection inside the embedded Canvas RCE iframe so its pantoken chrome and live preview follow the selected `data-pantoken-color` scheme.
+- f475012: The canvas-theme-editor scaffold's accessibility checker now checks contrast against both light and
+  dark rendering when "Include dark mode" is checked (rebrand theme only), reusing the preview's
+  scheme-forcing mechanism against the editing iframe.
+- f475012: canvas-theme-editor scaffold: the "Edit theme" tray's CSS/JS tabs now start blank instead of
+  pre-populated with the generated `theme.css`/`theme.js`. Anything you add is appended to the
+  generated preset in both the live preview and the downloaded files, so custom overrides survive
+  Config select changes instead of needing a "Regenerate from config" step.
+- f475012: Add the Canvas theme editor's existing SVG icon as a favicon in generated scaffold projects.
+- f475012: Fix the canvas-theme-editor starter's local-vs-CDN default detection: `import.meta.env.DEV` is baked to `false` for any `vite build` output, so a production-built preview served on localhost (e.g. the docs site's Canvas RCE page) always defaulted to a CDN provider instead of local assets. Now also checks the hostname at runtime, so any localhost preview correctly defaults to local assets.
+- f475012: The `canvas-theme-editor` scaffold now remembers the author's editor/preview layout direction, preview width, preview fullscreen state, and chosen CDN provider across page reloads, persisted to `localStorage`.
+- f475012: canvas-theme-editor: add a light/dark toggle to the preview header for switching the live
+  preview's color scheme. "Include dark mode" is now disabled (and unchecked) for the Canvas and
+  Canvas High Contrast themes, since only the rebrand theme supports dark mode, and the new preview
+  toggle is disabled unless "Include dark mode" is on. The preview now also forces the chosen scheme
+  regardless of the visitor's own OS/browser dark-mode preference, working around lightningcss's
+  `light-dark()` downlevel (which otherwise only follows `prefers-color-scheme`).
+- f475012: Let Canvas theme editor projects move the live preview into a separate fullscreen popup. Minimizing
+  or closing the popup returns the same preview to its previous row, column, or fullscreen position.
+- f475012: `canvas-theme-editor` scaffold: expanded the TinyMCE editor's quickbars contextual toolbars —
+  text selection now mirrors the fixed toolbar's formatting controls (bold/italic/underline,
+  colors, superscript/subscript, link, align, remove format), inserting now offers image/table/
+  media/placeholder shortcuts, and selecting an image surfaces an alignment and edit toolbar.
+- f475012: Simplify the `canvas-theme-editor` scaffold's page layout to a fixed header/description/controls/
+  content stack — the editor pane sits above the preview pane with no resize handle, orientation
+  toggle, pane-swap, or fullscreen controls. The TinyMCE editable area and the srcdoc preview now
+  both load the real CDN CSS for the selected provider/theme/mode (and any picker-inserted
+  component/icon/logo assets), instead of TinyMCE's editable area having no pantoken styling at all.
+- f475012: Add a standalone app shell for the generated Canvas Theme Editor: it now renders a browser-style top frame in standalone tabs, includes a proper web app manifest and theme metadata, and keeps the iframe-based docs preview unchanged. The shell includes Lucide locale and palette controls with a color and appearance dropdown, and it uses the system color scheme for the page background when opened as a web app.
+- f475012: Keep fragment-only links inside the canvas-theme-editor preview so valid targets scroll within the preview and missing targets no longer load another copy of the editor in its iframe.
+- f475012: Decouple the `canvas-theme-editor` scaffold's chrome from its preview:
+
+  - The docs page's active theme (rebrand/canvas/canvas high contrast) and color now restyle the
+    scaffold's own chrome (toolbar, buttons outside the tray) — previously only the color synced, and
+    only the tray's active-button highlight, not the chrome itself.
+  - The tray's theme/color pickers only drive the live preview now. Picking a theme/color in the tray
+    no longer touches the docs-driven chrome, and the docs page's theme/color broadcasts no longer
+    touch the tray's selection or the preview.
+  - The tray itself (its buttons and the 13 reference color swatches) always renders true, unremapped
+    colors, regardless of which color the chrome currently has active — previously the swatches (and
+    the tray's own controls) visually shifted to match whatever color was active site-wide.
+
+  `@pantoken/plugin-custom-theme-colors`'s `customThemeColorsCss()` (and the `customThemeColors()`
+  plugin) gained two options to support this: `selector` scopes the conditional
+  `[data-pantoken-color="…"]` rules to something other than `:root`, so more than one independently
+  themed instance can run on the same page; `resetSelector` emits an unconditional block pinning a
+  subtree back to its true base colors, immune to any ancestor's active color scope.
+
+- f475012: Load canvas theme editor interactions after mounting the app template so its tab panels initialize.
+- f475012: Size the Canvas theme editor's fullscreen overlays to the viewport instead of the document, so
+  toggling preview or TinyMCE fullscreen no longer leaves vertical scrollbars when the app is embedded
+  in a content-height iframe.
+- f475012: Allow the canvas-theme-editor's `None (inline)` provider in production previews and downloads. Keep it as the local-development default while retaining jsDelivr as the production default, and inline dynamically referenced pantoken stylesheets into generated theme CSS.
+- f475012: Add a development-only `None (local)` provider to the `canvas-theme-editor` scaffold so previews
+  can load theme CSS and interactions from the current workspace without publishing packages first.
+- f475012: Replace logo PNG rasterization with an aspect-ratio-aware `-logo-<name>` mask glyph, mirroring the
+  `icon` painter but without squashing non-square logos into a 1:1 box.
+
+  - `@pantoken/plugin-custom-components` adds a new `logo` utility (`.instui-logo` + the shared
+    `[class*="-logo-"]::before` painter) that reads a per-logo `--pantoken-logo-aspect` custom property
+    instead of assuming a 1em square.
+  - `@pantoken/plugin-logos` no longer rasterizes PNGs or ships a `./*.png` export (dropping the
+    `@resvg/resvg-js` build dependency). Its generated `.-icon-<name>` glyph classes are renamed to
+    `.-logo-<name>` and now carry `--pantoken-logo-aspect` derived from each logo's own SVG `viewBox`.
+    `LogoMeta.width`/`height` now describe that natural `viewBox` size, not a rasterized display size.
+  - `@pantoken/tinymce`'s logos picker inserts a mask-painted `<span class="instui-logo -logo-<name>"
+role="img" aria-label="…">` instead of a CDN-hosted `<img>`, using the same CSS asset-tracking
+    (`trackAndInjectAsset`) the icons picker already relies on for Canvas RCE compatibility.
+  - The Canvas theme editor scaffold template resolves the logo's `.css` export (not `.png`) for its
+    local/offline preview mode, and re-syncs `-logo-*` classes found in loaded editor content the same
+    way it already does for `-icon-*` classes.
+
+- f475012: Keep Canvas Theme Editor browser chrome and its opt-in app icon synchronized with the active theme.
+- f475012: Rename the available `rebrand` theme label to `Next gen` in the theme selectors and scaffolded Canvas Theme Editor.
+- f475012: Suppress template-only TypeScript diagnostics in the `canvas-theme-editor` starter source while
+  retaining type checking in the materialized starter project.
+- f475012: Keep the Canvas RCE scaffold's TinyMCE editor and live preview in sync with the embedding docs site's light or dark theme.
+- f475012: Split the `canvas-theme-editor` scaffold's Config tab into a **Theme** section (theme buttons, a 13-swatch
+  color picker, and a dark-mode toggle shown only for the rebrand theme) and a **CDN** section (provider
+  select), patterned after the docs site's theme selector. All three theme controls refresh the live
+  preview immediately.
+
+  `buildThemeCss()`/`defaultThemeCssAssets()` now always import `@pantoken/plugin-custom-theme-colors`'s
+  `custom-theme-colors.css`, so the generated `theme.css` supports the same `data-pantoken-color` attribute
+  remap the color picker toggles — a no-op unless that attribute is set.
+
+- f475012: Add a dark-mode variant for TinyMCE's editable content in the Next Gen skin — the editor body previously stayed light even when the surrounding chrome went dark. The canvas theme editor scaffold now propagates its scheme onto the editor's own iframe document so the new dark content rules take effect.
+- f475012: Replace the TinyMCE icons picker's emoticons-database backing with a purpose-built dialog. The
+  previous approach relied on `@pantoken/components`' `icons.css`, which maps `-icon-<name>` classes to
+  `--instui-icon-*` tokens it never defines, so every Instructure UI glyph painted as a solid square;
+  TinyMCE's emoticon grid also sized its cells for single characters, which broke the layout for wide
+  brand glyphs. The picker now owns its markup, tabs by source, filters as you type, and renders in
+  chunks as you scroll.
+
+  Glyph previews for the sources this package already bundles are declared from in-memory token data,
+  so opening the dialog costs two stylesheet requests rather than one per icon. A new `::name`
+  autocompleter inserts an icon without leaving the keyboard; the trigger is configurable and defaults
+  to `::` so the stock `emoticons` plugin can still claim `:`. Consumers no longer need to register the
+  `emoticons` plugin or set `emoticons_database_id`, and `PANTOKEN_ICONS_DATABASE_ID`,
+  `buildEmoticonsDatabase`, and `matchInsertedIcon` are gone.
+
+  The Oxide content skins now carry the icon painter, so an inserted icon is visible, selectable,
+  deletable, and recolorable in the editing surface without the host adding `components.css` to
+  `content_css`.
+
+- f475012: Add a reusable TinyMCE toolbar menu for saving, opening, updating, and deleting named browser-local
+  presets. Update the Canvas theme editor scaffold to snapshot its theme, color, mode, CDN provider,
+  custom CSS and JavaScript, and editor HTML independently from TinyMCE Autosave.
+- f475012: Track icon stylesheets from Canvas theme editor HTML, deduplicate repeated icons, and remove unused icon imports from generated theme CSS.
+- f475012: Upgrade the peer dependency and catalog pin from TinyMCE 5 to TinyMCE 8. Self-hosted consumers must now set a `license_key` option (`"gpl"` for the open-source license, or a commercial key) when calling `tinymce.init()`.
+- f475012: Use pantoken button, checkbox toggle, simple-select, and close-button components for the canvas theme editor scaffold's tray controls. Keep its chrome color synchronized with the embedding docs theme picker, and switch TinyMCE themes synchronously so Canvas skins do not blank the editor.
+- f475012: `@pantoken/tinymce` gains `createVisualBlocksFooterPlugin` (`pantoken_visualblocks_footer`), a
+  footer/statusbar button for TinyMCE's native `visualblocks` plugin, which otherwise ships as a
+  toolbar-only toggle. Also injects the dashed-outline CSS the plugin needs into the editor's
+  content document, since that CSS normally ships with the default Oxide skin's content.css and is
+  missing when a custom skin (like this scaffold's) is used instead.
+
+  `canvas-theme-editor` scaffold: registers TinyMCE's `visualblocks` plugin and surfaces its toggle
+  in the footer/status bar alongside the accessibility checker, word count, source-view toggle,
+  fullscreen, and find & replace controls.
+
 ## 1.4.0
 
 ### Minor Changes
