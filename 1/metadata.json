@@ -1,0 +1,60 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M3DCKH1WT1RETPJSEPJHEPBZ",
+  "session_id": "e7d7727b-5eac-4f38-91a1-6352cbbdfbcb",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-25T22:57:32.222619Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 3,
+  "save_step_count": 2,
+  "files_touched": [
+    ".github/secret_scanning.yml",
+    ".vite-hooks/commit-msg.pre-entire",
+    "ASSURANCE.md",
+    "SECURITY.md",
+    "docs/engineering-log.md",
+    "package.json"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "d9bf5756aa99",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 3
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-25T22:57:32.207324Z",
+    "agent_lines": 41,
+    "agent_removed": 7,
+    "human_added": 17,
+    "human_modified": 19,
+    "human_removed": 0,
+    "total_committed": 77,
+    "total_lines_changed": 84,
+    "agent_percentage": 57.14285714285714,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 70,
+      "agent_lines_removed": 7
+    }
+  ]
+}
