@@ -62,8 +62,11 @@ body.canvas-rce-shell-enabled #app-mode {
     transparent
   );
   backdrop-filter: blur(12px);
+  position: relative;
   inset-block-start: 0;
-  z-index: 10;
+  /* backdrop-filter makes this a stacking context, so the panel's z-index is capped at this one:
+     it must clear the .controls tooltips (30/40) but stay below the fullscreen preview (100). */
+  z-index: 50;
 }
 
 .canvas-rce-shell__brand {
