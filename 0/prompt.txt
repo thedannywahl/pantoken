@@ -21,3 +21,7 @@ Try Again
 ---
 
 continue
+
+---
+
+stage your changes and add a changeset and do a conventional commit, ignore other unstaged files as there are other agents working.
