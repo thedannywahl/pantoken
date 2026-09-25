@@ -1,0 +1,16 @@
+.controls .instui-tooltip z-index is 30 and .canvas-rce-shell__panel z-index is 60, but when the panel is visible (menu open) the buttons still display "over" the menu. it visually looks like the layer order top to bottom is:
+.canvas-rce-shell__option
+.controls .instui-tooltip
+.canvas-rce-shell__panel
+
+but the hover order is:
+
+.controls .instui-tooltip
+.canvas-rce-shell__option
+.canvas-rce-shell__panel
+
+the actual order (both over and non-hover) should be:
+
+.canvas-rce-shell__option
+.canvas-rce-shell__panel
+.controls .instui-tooltip
