@@ -1,394 +1,580 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 22:59+0000\n"
+"PO-Revision-Date: 2026-09-25 16:28+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
-"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#promptPlatform
 #, no-c-format
 msgctxt "cli.scaffold:promptPlatform"
 msgid "Select a platform to scaffold:"
 msgstr "اختر منصة للإنشاء:"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#promptDir
 #, no-c-format
 msgctxt "cli.scaffold:promptDir"
 msgid "Target directory:"
 msgstr "الدليل الهدف:"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#promptAiAssets
 #, no-c-format
 msgctxt "cli.scaffold:promptAiAssets"
 msgid "Add AI agent assets (AGENTS.md, editor/Copilot rules)?"
 msgstr "إضافة أصول وكيل الذكاء الاصطناعي (AGENTS.md، قواعد المحرر/Copilot)؟"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#spinnerStart
 #, no-c-format
 msgctxt "cli.scaffold:spinnerStart"
 msgid "Scaffolding..."
 msgstr "جارٍ الإنشاء..."
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#spinnerStop
 #, no-c-format
 msgctxt "cli.scaffold:spinnerStop"
 msgid "Done scaffolding."
 msgstr "اكتمل الإنشاء."
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#wroteFile
 #, no-c-format
 msgctxt "cli.scaffold:wroteFile"
 msgid "✓ {{path}}"
 msgstr "✓ {{path}}"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#nextStepsHeading
 #, no-c-format
 msgctxt "cli.scaffold:nextStepsHeading"
 msgid "Next steps:"
 msgstr "الخطوات التالية:"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#nextStepsNav
 #, no-c-format
 msgctxt "cli.scaffold:nextStepsNav"
 msgid "cd {{dir}}"
 msgstr "cd {{dir}}"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#nextStepsInstall
 #, no-c-format
 msgctxt "cli.scaffold:nextStepsInstall"
 msgid "Install dependencies: {{command}}"
 msgstr "تثبيت التبعيات: {{command}}"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#nextStepsDevServer
 #, no-c-format
 msgctxt "cli.scaffold:nextStepsDevServer"
 msgid "Start the dev server (if your template has one)"
 msgstr "شغّل خادم التطوير (إذا كان القالب يحتوي واحدًا)"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#getStartedHeading
 #, fuzzy, no-c-format
 msgctxt "cli.scaffold:getStartedHeading"
 msgid "Get started:"
 msgstr "الخطوات التالية:"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#installSpinnerStart
 #, fuzzy, no-c-format
 msgctxt "cli.scaffold:installSpinnerStart"
 msgid "Installing dependencies..."
 msgstr "تثبيت التبعيات: {{command}}"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#installSpinnerStop
 #, no-c-format
 msgctxt "cli.scaffold:installSpinnerStop"
 msgid "Dependencies installed."
 msgstr "تم تثبيت التبعيات."
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#installSpinnerFailed
 #, fuzzy, no-c-format
 msgctxt "cli.scaffold:installSpinnerFailed"
 msgid "Failed to install dependencies:"
 msgstr "تثبيت التبعيات: {{command}}"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#notesHeading
 #, no-c-format
 msgctxt "cli.scaffold:notesHeading"
 msgid "Note:"
 msgstr "ملاحظة:"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#caveatsHeading
 #, no-c-format
 msgctxt "cli.scaffold:caveatsHeading"
 msgid "Caveat:"
 msgstr "تنبيه:"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#errorMissingPlatform
 #, no-c-format
 msgctxt "cli.scaffold:errorMissingPlatform"
 msgid "Missing required argument \"platform\". Expected one of: {{platforms}}"
 msgstr "الوسيط المطلوب \"platform\" مفقود. متوقع أحد القيم: {{platforms}}"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#cancelled
 #, no-c-format
 msgctxt "cli.scaffold:cancelled"
 msgid "Cancelled."
 msgstr "تم الإلغاء."
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#helpPlatformDescription
 #, no-c-format
 msgctxt "cli.scaffold:helpPlatformDescription"
-msgid ""
-"Platform to scaffold ({{platforms}}; \"html\" is an alias for "
-"\"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
-msgstr ""
-"المنصة التي سيتم إنشاؤها ({{platforms}}؛ \"html\" مرادف لـ \"components\"، "
-"\"theme-editor\" مرادف لـ \"canvas-theme-editor\")"
+msgid "Platform to scaffold ({{platforms}}; \"html\" is an alias for \"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
+msgstr "المنصة التي سيتم إنشاؤها ({{platforms}}؛ \"html\" مرادف لـ \"components\"، \"theme-editor\" مرادف لـ \"canvas-theme-editor\")"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#helpDirDescription
 #, no-c-format
 msgctxt "cli.scaffold:helpDirDescription"
 msgid "Target directory (prompts interactively on a TTY if omitted)"
 msgstr "الدليل الهدف (يُطلب تفاعليًا في TTY إذا تُرك فارغًا)"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#helpYesDescription
 #, no-c-format
 msgctxt "cli.scaffold:helpYesDescription"
-msgid ""
-"Never prompt; error instead of prompting for a missing platform/directory"
+msgid "Never prompt; error instead of prompting for a missing platform/directory"
 msgstr "عدم المطالبة إطلاقًا؛ عرض خطأ بدل المطالبة عند فقدان المنصة/الدليل"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#helpNoAiDescription
 #, no-c-format
 msgctxt "cli.scaffold:helpNoAiDescription"
 msgid "Skip installing AI agent assets after scaffolding"
 msgstr "تخطي تثبيت أصول وكيل الذكاء الاصطناعي بعد الإنشاء"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#helpLangDescription
 #, no-c-format
 msgctxt "cli.scaffold:helpLangDescription"
 msgid "Override the auto-detected display language (e.g. \"hu\")"
 msgstr "تجاوز لغة العرض المكتشفة تلقائيًا (مثال: \"hu\")"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.nextSteps.0
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.0"
 msgid "cd {{dir}}"
 msgstr "cd {{dir}}"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.nextSteps.1
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.1"
 msgid "{{install}}"
 msgstr "{{install}}"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.nextSteps.2
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.2"
 msgid "{{dev}}"
 msgstr "{{dev}}"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.notes
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.notes"
-msgid ""
-"Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / "
-"JavaScript) so pantoken's classes are available on every page."
-msgstr ""
-"حمّل theme.css و theme.js إلى محرر السمات في Canvas (Advanced → CSS / "
-"JavaScript) حتى تكون فئات pantoken متاحة في كل صفحة."
+msgid "Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / JavaScript) so pantoken's classes are available on every page."
+msgstr "حمّل theme.css و theme.js إلى محرر السمات في Canvas (Advanced → CSS / JavaScript) حتى تكون فئات pantoken متاحة في كل صفحة."
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.caveats
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.caveats"
-msgid ""
-"Canvas sanitizes pasted HTML server-side — always verify content pasted from "
-"the RCE preview in Canvas."
-msgstr ""
-"يقوم Canvas بتصفية HTML الملصوق على مستوى الخادم — تحقق دائمًا من المحتوى "
-"الملصوق من معاينة RCE داخل Canvas."
+msgid "Canvas sanitizes pasted HTML server-side — always verify content pasted from the RCE preview in Canvas."
+msgstr "يقوم Canvas بتصفية HTML الملصوق على مستوى الخادم — تحقق دائمًا من المحتوى الملصوق من معاينة RCE داخل Canvas."
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.pageTitle
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.pageTitle"
 msgid "RCE template authoring"
 msgstr "إنشاء قوالب RCE"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.pageDescription
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.pageDescription"
-msgid ""
-"Author Canvas RCE page templates styled with pantoken, with a live preview."
+msgid "Author Canvas RCE page templates styled with pantoken, with a live preview."
 msgstr "أنشئ قوالب صفحات Canvas RCE منمقة باستخدام pantoken، مع معاينة مباشرة."
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.editThemeLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.editThemeLabel"
 msgid "Edit theme"
 msgstr "تعديل السمة"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.layoutDirectionLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.layoutDirectionLabel"
+msgid "Switch layout orientation"
+msgstr "تبديل اتجاه التخطيط"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.helpAriaLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpAriaLabel"
 msgid "Help"
 msgstr "مساعدة"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.appModeLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.appModeLabel"
+msgid "Open web app"
+msgstr "فتح تطبيق الويب"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.copyHtmlLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.copyHtmlLabel"
 msgid "Copy HTML"
 msgstr "نسخ HTML"
 
-#: packages/scaffold/src/i18n.json
-#, no-c-format
-msgctxt "cli.scaffold:canvas-theme-editor.editorPaneLabel"
-msgid "Editor"
-msgstr "المحرر"
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.downloadPackageLabel
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.downloadPackageLabel"
+msgid "Download package"
+msgstr "تحميل theme.js"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.downloadHtmlLabel
 #, no-c-format
-msgctxt "cli.scaffold:canvas-theme-editor.previewPaneLabel"
-msgid "Preview"
-msgstr "المعاينة"
+msgctxt "cli.scaffold:canvas-theme-editor.downloadHtmlLabel"
+msgid "Download HTML"
+msgstr "تنزيل HTML"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.previewFrameTitle
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.previewFrameTitle"
 msgid "Styled preview"
 msgstr "معاينة منمقة"
 
-#: packages/scaffold/src/i18n.json
-#, no-c-format
-msgctxt "cli.scaffold:canvas-theme-editor.fullscreenEditorAriaLabel"
-msgid "Fullscreen editor"
-msgstr "محرر ملء الشاشة"
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.previewWidthGroupLabel
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.previewWidthGroupLabel"
+msgid "Preview width"
+msgstr "المعاينة"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.previewWidthLargeLabel
 #, no-c-format
-msgctxt "cli.scaffold:canvas-theme-editor.fullscreenPreviewAriaLabel"
-msgid "Fullscreen preview"
-msgstr "معاينة ملء الشاشة"
+msgctxt "cli.scaffold:canvas-theme-editor.previewWidthLargeLabel"
+msgid "Large"
+msgstr "كبير"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.previewWidthMediumLabel
 #, no-c-format
-msgctxt "cli.scaffold:canvas-theme-editor.resizePanesAriaLabel"
-msgid "Resize editor and preview"
-msgstr "تغيير حجم المحرر والمعاينة"
+msgctxt "cli.scaffold:canvas-theme-editor.previewWidthMediumLabel"
+msgid "Medium"
+msgstr "متوسط"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.previewWidthSmallLabel
 #, no-c-format
-msgctxt "cli.scaffold:canvas-theme-editor.stackVerticallyLabel"
-msgid "Stack vertically"
-msgstr "رتب عموديًا"
+msgctxt "cli.scaffold:canvas-theme-editor.previewWidthSmallLabel"
+msgid "Small"
+msgstr "صغير"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.previewSchemeToggleLabel
 #, no-c-format
-msgctxt "cli.scaffold:canvas-theme-editor.stackSideBySideLabel"
-msgid "Stack side by side"
-msgstr "رتب جنبًا إلى جنب"
+msgctxt "cli.scaffold:canvas-theme-editor.previewSchemeToggleLabel"
+msgid "Preview dark mode"
+msgstr "معاينة الوضع الداكن"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.previewPopupLabel
 #, no-c-format
-msgctxt "cli.scaffold:canvas-theme-editor.swapPanesLabel"
-msgid "Swap panes"
-msgstr "تبديل الألواح"
+msgctxt "cli.scaffold:canvas-theme-editor.previewPopupLabel"
+msgid "Open preview in a popup"
+msgstr "فتح المعاينة في نافذة منبثقة"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.previewPopupTitle
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.previewPopupTitle"
+msgid "Canvas content preview"
+msgstr "معاينة محتوى اللوحة"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.previewPopupBlockedMessage
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.previewPopupBlockedMessage"
+msgid "The preview popup was blocked. Allow popups for this site and try again."
+msgstr "تم حظر النافذة المنبثقة للمعاينة. قم بالسماح بالنوافذ المنبثقة لهذا الموقع وحاول مرة أخرى."
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.previewFullscreenLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.previewFullscreenLabel"
+msgid "Show preview fullscreen"
+msgstr "عرض المعاينة بملء الشاشة"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.previewPopupReturnLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.previewPopupReturnLabel"
+msgid "Return preview to the editor"
+msgstr "إعادة المعاينة إلى المحرر"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.themeTrayAriaLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.themeTrayAriaLabel"
 msgid "Theme settings"
 msgstr "إعدادات السمة"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.tabConfigLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.tabConfigLabel"
 msgid "Config"
 msgstr "الإعداد"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.tabCssLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.tabCssLabel"
 msgid "CSS"
 msgstr "CSS"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.tabJsLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.tabJsLabel"
 msgid "JS"
 msgstr "JS"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.cdnProviderLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.cdnProviderLabel"
 msgid "CDN provider"
 msgstr "مزود CDN"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.localProviderLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.localProviderLabel"
+msgid "None (inline)"
+msgstr "لا شيء (ضمن السطر)"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.cdnSectionLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.cdnSectionLabel"
+msgid "CDN"
+msgstr ""
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.themeLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.themeLabel"
 msgid "Theme"
 msgstr "السمة"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.appearanceLabel
 #, no-c-format
-msgctxt "cli.scaffold:canvas-theme-editor.modeLabel"
-msgid "Mode"
-msgstr "الوضع"
+msgctxt "cli.scaffold:canvas-theme-editor.appearanceLabel"
+msgid "Appearance"
+msgstr "المظهر"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.appearanceLightLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.appearanceLightLabel"
+msgid "Light"
+msgstr "فاتح"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.appearanceDarkLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.appearanceDarkLabel"
+msgid "Dark"
+msgstr "داكن"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.themeRebrandLabel
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.themeRebrandLabel"
+msgid "Next gen"
+msgstr "الخطوات التالية:"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.themeCanvasLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.themeCanvasLabel"
+msgid "Canvas"
+msgstr "اللوحة"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.themeCanvasHighContrastLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.themeCanvasHighContrastLabel"
+msgid "Canvas high contrast"
+msgstr "اللوحة بتباين مرتفع"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.includeDarkModeLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.includeDarkModeLabel"
+msgid "Include dark mode"
+msgstr "تضمين الوضع الداكن"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorLabel"
+msgid "Color scheme"
+msgstr "مخطط الألوان"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorNavyLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorNavyLabel"
+msgid "Navy"
+msgstr "كحلي"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorBlueLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorBlueLabel"
+msgid "Blue"
+msgstr "أزرق"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorGreenLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorGreenLabel"
+msgid "Green"
+msgstr "أخضر"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorRedLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorRedLabel"
+msgid "Red"
+msgstr "أحمر"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorOrangeLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorOrangeLabel"
+msgid "Orange"
+msgstr "برتقالي"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorGreyLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorGreyLabel"
+msgid "Grey"
+msgstr "رمادي"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorPlumLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorPlumLabel"
+msgid "Plum"
+msgstr "برقوقي"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorVioletLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorVioletLabel"
+msgid "Violet"
+msgstr "بنفسجي"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorStoneLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorStoneLabel"
+msgid "Stone"
+msgstr "حجري"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorSkyLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorSkyLabel"
+msgid "Sky"
+msgstr "سماوي"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorHoneyLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorHoneyLabel"
+msgid "Honey"
+msgstr "عسلي"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorSeaLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorSeaLabel"
+msgid "Sea"
+msgstr "بحري"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorAuroraLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorAuroraLabel"
+msgid "Aurora"
+msgstr "أورورا"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.downloadCssLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.downloadCssLabel"
 msgid "Download theme.css"
 msgstr "تحميل theme.css"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.downloadJsLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.downloadJsLabel"
 msgid "Download theme.js"
 msgstr "تحميل theme.js"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.cssPanelHintLabel
 #, no-c-format
-msgctxt "cli.scaffold:canvas-theme-editor.regenerateLabel"
-msgid "Regenerate from config"
-msgstr "إعادة التوليد من الإعداد"
+msgctxt "cli.scaffold:canvas-theme-editor.cssPanelHintLabel"
+msgid "Add custom CSS here — it's appended to the generated theme.css, in the preview and the download."
+msgstr "أضف CSS مخصصًا هنا — سيتم إلحاقه بملف theme.css الذي تم إنشاؤه، في المعاينة وعند التنزيل."
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.jsPanelHintLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.jsPanelHintLabel"
+msgid "Add custom JS here — it's appended to the generated theme.js, in the preview and the download."
+msgstr "أضف JS مخصصًا هنا — سيتم إلحاقه بملف theme.js الذي تم إنشاؤه، في المعاينة وعند التنزيل."
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.helpModalTitle
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpModalTitle"
 msgid "How to use this page"
 msgstr "كيفية استخدام هذه الصفحة"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.helpModalBody1
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody1"
-msgid ""
-"Pick a starter template, edit it like you would in the Canvas Rich Content "
-"Editor, then click <strong>Copy HTML</strong> and paste the result into a "
-"Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted "
-"HTML server-side — this preview doesn't attempt to replicate that, so always "
-"verify the pasted result in Canvas."
-msgstr ""
-"اختر قالب بداية، عدّله كما تفعل في محرر المحتوى الغني Canvas، ثم انقر "
-"<strong>نسخ HTML</strong> والصق النتيجة في صفحة Canvas (انتقل أولًا إلى عرض "
-"محرر HTML). يقوم Canvas بتصفية HTML الملصوق على مستوى الخادم — هذه المعاينة "
-"لا تحاول محاكاة ذلك، لذا تحقق دائمًا من النتيجة الملصوقة داخل Canvas."
+msgid "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas."
+msgstr "اختر قالب بداية، عدّله كما تفعل في محرر المحتوى الغني Canvas، ثم انقر <strong>نسخ HTML</strong> والصق النتيجة في صفحة Canvas (انتقل أولًا إلى عرض محرر HTML). يقوم Canvas بتصفية HTML الملصوق على مستوى الخادم — هذه المعاينة لا تحاول محاكاة ذلك، لذا تحقق دائمًا من النتيجة الملصوقة داخل Canvas."
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.helpModalBody2
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody2"
-msgid ""
-"Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, "
-"and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> "
-"before downloading them."
-msgstr ""
-"استخدم <strong>تعديل السمة</strong> لتغيير مزود CDN أو السمة أو الوضع، "
-"ولتحرير الملفات المولدة <code>theme.css</code>/<code>theme.js</code يدويًا "
-"قبل تحميلها."
+msgid "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them."
+msgstr "استخدم <strong>تعديل السمة</strong> لتغيير مزود CDN أو السمة أو الوضع، ولتحرير الملفات المولدة <code>theme.css</code>/<code>theme.js</code يدويًا قبل تحميلها."
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.closeLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.closeLabel"
 msgid "Close"
 msgstr "إغلاق"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#nextStepsDependencies
 #, fuzzy, no-c-format
 msgctxt "cli.scaffold:nextStepsDependencies"
-msgid ""
-"2. Installing dependencies (npm install, pnpm install, yarn install or bun "
-"install)"
-msgstr ""
-"2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun "
-"install)"
+msgid "2. Installing dependencies (npm install, pnpm install, yarn install or bun install)"
+msgstr "2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun install)"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#nextStepsInstallGeneric
 #, fuzzy, no-c-format
 msgctxt "cli.scaffold:nextStepsInstallGeneric"
 msgid "2. Installing dependencies"
 msgstr "تثبيت التبعيات: {{command}}"
+
+#, no-c-format
+#~ msgctxt "cli.scaffold:canvas-theme-editor.editorPaneLabel"
+#~ msgid "Editor"
+#~ msgstr "المحرر"
+
+#, no-c-format
+#~ msgctxt "cli.scaffold:canvas-theme-editor.fullscreenEditorAriaLabel"
+#~ msgid "Fullscreen editor"
+#~ msgstr "محرر ملء الشاشة"
+
+#, no-c-format
+#~ msgctxt "cli.scaffold:canvas-theme-editor.fullscreenPreviewAriaLabel"
+#~ msgid "Fullscreen preview"
+#~ msgstr "معاينة ملء الشاشة"
+
+#, no-c-format
+#~ msgctxt "cli.scaffold:canvas-theme-editor.resizePanesAriaLabel"
+#~ msgid "Resize editor and preview"
+#~ msgstr "تغيير حجم المحرر والمعاينة"
+
+#, no-c-format
+#~ msgctxt "cli.scaffold:canvas-theme-editor.stackVerticallyLabel"
+#~ msgid "Stack vertically"
+#~ msgstr "رتب عموديًا"
+
+#, no-c-format
+#~ msgctxt "cli.scaffold:canvas-theme-editor.stackSideBySideLabel"
+#~ msgid "Stack side by side"
+#~ msgstr "رتب جنبًا إلى جنب"
+
+#, no-c-format
+#~ msgctxt "cli.scaffold:canvas-theme-editor.swapPanesLabel"
+#~ msgid "Swap panes"
+#~ msgstr "تبديل الألواح"
+
+#, no-c-format
+#~ msgctxt "cli.scaffold:canvas-theme-editor.modeLabel"
+#~ msgid "Mode"
+#~ msgstr "الوضع"
+
+#, no-c-format
+#~ msgctxt "cli.scaffold:canvas-theme-editor.regenerateLabel"
+#~ msgid "Regenerate from config"
+#~ msgstr "إعادة التوليد من الإعداد"
 
 #, no-c-format
 #~ msgctxt "cli.scaffold:nextStepsInstallGeneric"

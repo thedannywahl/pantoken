@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-24 00:13+0000\n"
+"PO-Revision-Date: 2026-09-25 14:24+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -727,6 +727,7 @@ msgstr ""
 
 #: css/alert.md
 #: css/banner.md
+#: css/button-set.md
 #: renderers/web-components/src/variables/modal.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -1693,6 +1694,152 @@ msgctxt "docs.api:prose"
 msgid "Small. @affects breadcrumb.link — Scales the crumb separator's spacing to match. Long-form alias of `-size-sm`."
 msgstr ""
 
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`.instui-button-set` — A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead."
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Left"
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Right"
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Confirm"
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the AI gradient treatment."
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the lower-emphasis AI treatment."
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the destructive color."
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the primary color."
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the secondary color."
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the success color."
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the tertiary (text-style) color."
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to tighter padding."
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Lay every unmodified child out full-width."
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child for placement on a coloured surface."
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to a round icon button."
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to a square icon button."
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to large."
+msgstr ""
+
+#: css/button-set.md
+#: css/button.md
+#: css/close-button.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "(default) medium size."
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to small."
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the pressed-state toggle treatment."
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to no fill."
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to no border."
+msgstr ""
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "- [button](/api/css/button.md) — The child control this wraps."
+msgstr ""
+
 #: css/button.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -1811,13 +1958,6 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A square icon button."
-msgstr ""
-
-#: css/button.md
-#: css/close-button.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "(default) medium size."
 msgstr ""
 
 #: css/button.md
@@ -3594,6 +3734,12 @@ msgstr ""
 #: css/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
+msgstr ""
+
+#: css/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "A media object: a hero figure beside a title and description."
 msgstr ""
 
@@ -4026,6 +4172,12 @@ msgstr ""
 #: css/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "The logo system: `.instui-logo` sizing plus the shared `-logo-<name>` painter that masks a product logo (in `currentColor`) before any element, preserving the logo's own aspect ratio instead of a fixed 1:1 box."
+msgstr ""
+
+#: css/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "A global, dual copy of the `mask` component's overlay modifiers — `--mask-overlay`, `--mask-fullscreen`, `--mask-blur` — usable bare or chained onto any component, without wrapping in a `.instui-mask` element."
 msgstr ""
 
@@ -4434,6 +4586,24 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Remove markers and padding."
+msgstr ""
+
+#: css/logo.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`.instui-logo` — The logo system: `.instui-logo` sizing plus the shared `-logo-<name>` painter that masks a product logo (in `currentColor`) before any element, preserving the logo's own aspect ratio instead of a fixed 1:1 box."
+msgstr ""
+
+#: css/logo.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A logo is meaningful, not decorative — give the host element `role=\"img\"` and an `aria-label` naming the product; never mark it `aria-hidden`."
+msgstr ""
+
+#: css/logo.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Set the glyph token (`--pantoken-glyph`) and its aspect ratio (`--pantoken-logo-aspect`), then render both via the shared painter (for example `-logo-canvas-horizontal-color`, from `@pantoken/plugin-logos`)."
 msgstr ""
 
 #: css/logos.md
@@ -14088,6 +14258,12 @@ msgctxt "docs.api:prose"
 msgid "Build the banner layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.\nDefaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
 msgstr ""
 
+#: plugins/pantoken/custom-components/src/functions/buttonSetRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build the button-set layout CSS (doc comment + rules), substituting `prefix` for the `pfx-`\nsentinel. Defaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
+msgstr ""
+
 #: plugins/pantoken/custom-components/src/functions/customComponents.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -14101,6 +14277,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) with a `css` hook."
+msgstr ""
+
+#: plugins/pantoken/custom-components/src/functions/logoRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build the logo utility CSS as an aspect-ratio-aware mask painter for `@pantoken/plugin-logos`'\n`-logo-<name>` glyph classes, substituting `prefix` for the `pfx-` sentinel."
 msgstr ""
 
 #: plugins/pantoken/custom-components/src/index.md
@@ -14682,7 +14864,7 @@ msgstr ""
 #: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Get a logo's metadata, including the rasterized PNG's `width`/`height` — for consumers that need\nto build a `dist/<name>.png` path (e.g. via `@pantoken/cdn`) or size an `<img>` without parsing SVG."
+msgid "Get a logo's metadata, including its natural `viewBox` `width`/`height` — for consumers that need\nthe logo's real aspect ratio (e.g. to set `aspect-ratio` or `width`/`height` on an `<img>`) without\nparsing SVG themselves."
 msgstr ""
 
 #: plugins/pantoken/logos/src/functions/getLogoMeta.md
@@ -14694,7 +14876,7 @@ msgstr ""
 #: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "**Build a PNG CDN path for a logo**"
+msgid "**Read a logo's aspect ratio**"
 msgstr ""
 
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
@@ -14748,7 +14930,7 @@ msgstr ""
 #: plugins/pantoken/logos/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "It vendors the SVG logos from Instructure's UX guidelines for Canvas, Mastery, Parchment,\nInstructure, LearnPlatform, and Ignite AI, in the standard layouts (horizontal, stacked, icon)\nand color modes (full-color, color, dark, reversed, and so on). Each logo is available three ways:\nthe raw SVG ([getLogoSvg](functions/getLogoSvg.md)), a data URI ([getLogoDataUri](functions/getLogoDataUri.md)), and a\n`--instui-logo-<product>-<layout>-<mode>` image token in `@pantoken/plugin-logos/logos.css`."
+msgid "It vendors the SVG logos from Instructure's UX guidelines for Canvas, Mastery, Parchment,\nInstructure, LearnPlatform, and Ignite AI, in the standard layouts (horizontal, stacked, icon)\nand color modes (full-color, color, dark, reversed, and so on). Each logo is available three ways:\nthe raw SVG ([getLogoSvg](functions/getLogoSvg.md)), a data URI ([getLogoDataUri](functions/getLogoDataUri.md)), and a\n`--instui-logo-<product>-<layout>-<mode>` image token plus a `.-logo-<product>-<layout>-<mode>`\nmask-glyph class (sized by that logo's own aspect ratio) in `@pantoken/plugin-logos/logos.css`."
 msgstr ""
 
 #: plugins/pantoken/logos/src/index.md
@@ -14816,14 +14998,14 @@ msgstr ""
 #: renderers/tinymce/src/interfaces/LogoMeta.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The rasterized PNG's display width in CSS pixels (fixed per layout group, not the SVG's own size)."
+msgid "The SVG's natural `viewBox` width, used with [height](#height) to derive `--pantoken-logo-aspect`."
 msgstr ""
 
 #: plugins/pantoken/logos/src/interfaces/LogoMeta.md
 #: renderers/tinymce/src/interfaces/LogoMeta.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The rasterized PNG's display height in CSS pixels, derived from the SVG's `viewBox` aspect ratio."
+msgid "The SVG's natural `viewBox` height, used with [width](#width) to derive `--pantoken-logo-aspect`."
 msgstr ""
 
 #: plugins/pantoken/logos/src/interfaces/LogosOptions.md
@@ -17147,6 +17329,12 @@ msgctxt "docs.api:prose"
 msgid "The decorative icon markup retained in editor content after a picker selection. A zero-width\nspace keeps the span from being genuinely empty — TinyMCE's schema strips empty inline elements\non `setContent()` (e.g. toggling from source view back to WYSIWYG), which would otherwise\nsilently delete this CSS-painted glyph. `contenteditable=\"false\"` makes TinyMCE treat it as a\nselectable noneditable object (fake-selection painting, backspace-to-delete, and the context\ntoolbar registered in `lib/icon-context-toolbar.ts`) instead of plain inline text."
 msgstr ""
 
+#: renderers/tinymce/src/functions/buildLogoMarkup.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The logo markup retained in editor content after a picker selection — same\nzero-width-space/`contenteditable=\"false\"` noneditable-object technique as `icons.ts`'s\n`buildIconMarkup`. Unlike a decorative icon, a logo names a real product, so it carries\n`role=\"img\"` + `aria-label` instead of `aria-hidden`."
+msgstr ""
+
 #: renderers/tinymce/src/functions/createComponentsPlugin.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -17249,6 +17437,12 @@ msgctxt "docs.api:prose"
 msgid "A `data:` URI usable as an `<img src>` for the icon, for sources this package bundles; for the\nrest it reads the custom property back off `root`, which resolves once the source's glyph sheet\nhas loaded. Returns `undefined` when neither path yields a glyph."
 msgstr ""
 
+#: renderers/tinymce/src/functions/getLogoCdnFile.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve a logo's stylesheet: the `.-logo-<name>` mask painter plus its `--instui-logo-<name>` token."
+msgstr ""
+
 #: renderers/tinymce/src/functions/getModifierSuggestions.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -17265,6 +17459,18 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[] = `[]`"
+msgstr ""
+
+#: renderers/tinymce/src/functions/getUsedLogoCdnFiles.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve the logo stylesheets used by `-logo-*` classes below `root`."
+msgstr ""
+
+#: renderers/tinymce/src/functions/getUsedLogoCdnFiles.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[] = `logos`"
 msgstr ""
 
 #: renderers/tinymce/src/functions/humanizeIconName.md
@@ -17318,13 +17524,7 @@ msgstr ""
 #: renderers/tinymce/src/functions/pantokenHtmlCompletion.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Create a CodeMirror 6 autocomplete extension for pantoken HTML.\nProvides completions for component names and their modifiers."
-msgstr ""
-
-#: renderers/tinymce/src/functions/pantokenHtmlCompletion.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Usage:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlCompletion({ model }),\n    ],\n  });"
+msgid "Create a CodeMirror 6 completion extension for pantoken classes in HTML `class` attributes."
 msgstr ""
 
 #: renderers/tinymce/src/functions/pantokenHtmlLinter.md

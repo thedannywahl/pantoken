@@ -1,393 +1,580 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-11 23:09+0000\n"
+"PO-Revision-Date: 2026-09-25 16:41+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
-"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#promptPlatform
 #, no-c-format
 msgctxt "cli.scaffold:promptPlatform"
 msgid "Select a platform to scaffold:"
 msgstr "選擇要產生樣板的平台："
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#promptDir
 #, no-c-format
 msgctxt "cli.scaffold:promptDir"
 msgid "Target directory:"
 msgstr "目標目錄："
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#promptAiAssets
 #, no-c-format
 msgctxt "cli.scaffold:promptAiAssets"
 msgid "Add AI agent assets (AGENTS.md, editor/Copilot rules)?"
 msgstr "新增 AI 代理資產（AGENTS.md、editor/Copilot 規則）？"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#spinnerStart
 #, no-c-format
 msgctxt "cli.scaffold:spinnerStart"
 msgid "Scaffolding..."
 msgstr "正在產生樣板…"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#spinnerStop
 #, no-c-format
 msgctxt "cli.scaffold:spinnerStop"
 msgid "Done scaffolding."
 msgstr "樣板產生完成。"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#wroteFile
 #, no-c-format
 msgctxt "cli.scaffold:wroteFile"
 msgid "✓ {{path}}"
 msgstr "✓ {{path}}"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#nextStepsHeading
 #, no-c-format
 msgctxt "cli.scaffold:nextStepsHeading"
 msgid "Next steps:"
 msgstr "下一步："
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#nextStepsNav
 #, no-c-format
 msgctxt "cli.scaffold:nextStepsNav"
 msgid "cd {{dir}}"
 msgstr "cd {{dir}}"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#nextStepsInstall
 #, no-c-format
 msgctxt "cli.scaffold:nextStepsInstall"
 msgid "Install dependencies: {{command}}"
 msgstr "安裝相依套件：{{command}}"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#nextStepsDevServer
 #, no-c-format
 msgctxt "cli.scaffold:nextStepsDevServer"
 msgid "Start the dev server (if your template has one)"
 msgstr "啟動開發伺服器（若範本有提供）"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#getStartedHeading
 #, fuzzy, no-c-format
 msgctxt "cli.scaffold:getStartedHeading"
 msgid "Get started:"
 msgstr "下一步："
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#installSpinnerStart
 #, fuzzy, no-c-format
 msgctxt "cli.scaffold:installSpinnerStart"
 msgid "Installing dependencies..."
 msgstr "安裝相依套件：{{command}}"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#installSpinnerStop
 #, no-c-format
 msgctxt "cli.scaffold:installSpinnerStop"
 msgid "Dependencies installed."
 msgstr "已安裝相依套件。"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#installSpinnerFailed
 #, fuzzy, no-c-format
 msgctxt "cli.scaffold:installSpinnerFailed"
 msgid "Failed to install dependencies:"
 msgstr "安裝相依套件：{{command}}"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#notesHeading
 #, no-c-format
 msgctxt "cli.scaffold:notesHeading"
 msgid "Note:"
 msgstr "注意："
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#caveatsHeading
 #, no-c-format
 msgctxt "cli.scaffold:caveatsHeading"
 msgid "Caveat:"
 msgstr "注意事項："
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#errorMissingPlatform
 #, no-c-format
 msgctxt "cli.scaffold:errorMissingPlatform"
 msgid "Missing required argument \"platform\". Expected one of: {{platforms}}"
 msgstr "遺漏必要參數 \"platform\"。預期其中一項：{{platforms}}"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#cancelled
 #, no-c-format
 msgctxt "cli.scaffold:cancelled"
 msgid "Cancelled."
 msgstr "已取消。"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#helpPlatformDescription
 #, no-c-format
 msgctxt "cli.scaffold:helpPlatformDescription"
-msgid ""
-"Platform to scaffold ({{platforms}}; \"html\" is an alias for "
-"\"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
-msgstr ""
-"要產生樣板的平台（{{platforms}}；\"html\" 為 \"components\" 的別名，\"theme-"
-"editor\" 為 \"canvas-theme-editor\" 的別名）"
+msgid "Platform to scaffold ({{platforms}}; \"html\" is an alias for \"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
+msgstr "要產生樣板的平台（{{platforms}}；\"html\" 為 \"components\" 的別名，\"theme-editor\" 為 \"canvas-theme-editor\" 的別名）"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#helpDirDescription
 #, no-c-format
 msgctxt "cli.scaffold:helpDirDescription"
 msgid "Target directory (prompts interactively on a TTY if omitted)"
 msgstr "目標目錄（若省略且為 TTY，會以互動方式提示）"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#helpYesDescription
 #, no-c-format
 msgctxt "cli.scaffold:helpYesDescription"
-msgid ""
-"Never prompt; error instead of prompting for a missing platform/directory"
+msgid "Never prompt; error instead of prompting for a missing platform/directory"
 msgstr "永不提示；若缺少 platform 或目錄則報錯"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#helpNoAiDescription
 #, no-c-format
 msgctxt "cli.scaffold:helpNoAiDescription"
 msgid "Skip installing AI agent assets after scaffolding"
 msgstr "在腳手架建立後跳過安裝 AI 代理資產"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#helpLangDescription
 #, no-c-format
 msgctxt "cli.scaffold:helpLangDescription"
 msgid "Override the auto-detected display language (e.g. \"hu\")"
 msgstr "覆寫自動偵測的顯示語言（例如 \"hu\"）"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.nextSteps.0
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.0"
 msgid "cd {{dir}}"
 msgstr "cd {{dir}}"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.nextSteps.1
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.1"
 msgid "{{install}}"
 msgstr "{{install}}"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.nextSteps.2
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.2"
 msgid "{{dev}}"
 msgstr "{{dev}}"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.notes
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.notes"
-msgid ""
-"Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / "
-"JavaScript) so pantoken's classes are available on every page."
-msgstr ""
-"將 theme.css 與 theme.js 上傳至 Canvas 的主題編輯器（Advanced → CSS / "
-"JavaScript），以便 pantoken 的類別在每個頁面上可用。"
+msgid "Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / JavaScript) so pantoken's classes are available on every page."
+msgstr "將 theme.css 與 theme.js 上傳至 Canvas 的主題編輯器（Advanced → CSS / JavaScript），以便 pantoken 的類別在每個頁面上可用。"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.caveats
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.caveats"
-msgid ""
-"Canvas sanitizes pasted HTML server-side — always verify content pasted from "
-"the RCE preview in Canvas."
-msgstr ""
-"Canvas 會在伺服器端清理貼上的 HTML — 一定要在 Canvas 中驗證從 RCE 預覽貼上的"
-"內容。"
+msgid "Canvas sanitizes pasted HTML server-side — always verify content pasted from the RCE preview in Canvas."
+msgstr "Canvas 會在伺服器端清理貼上的 HTML — 一定要在 Canvas 中驗證從 RCE 預覽貼上的內容。"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.pageTitle
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.pageTitle"
 msgid "RCE template authoring"
 msgstr "RCE 範本撰寫"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.pageDescription
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.pageDescription"
-msgid ""
-"Author Canvas RCE page templates styled with pantoken, with a live preview."
+msgid "Author Canvas RCE page templates styled with pantoken, with a live preview."
 msgstr "撰寫使用 pantoken 樣式的 Canvas RCE 頁面範本，並提供即時預覽。"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.editThemeLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.editThemeLabel"
 msgid "Edit theme"
 msgstr "編輯主題"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.layoutDirectionLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.layoutDirectionLabel"
+msgid "Switch layout orientation"
+msgstr "切換佈局方向"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.helpAriaLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpAriaLabel"
 msgid "Help"
 msgstr "說明"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.appModeLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.appModeLabel"
+msgid "Open web app"
+msgstr "開啟網頁應用程式"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.copyHtmlLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.copyHtmlLabel"
 msgid "Copy HTML"
 msgstr "複製 HTML"
 
-#: packages/scaffold/src/i18n.json
-#, no-c-format
-msgctxt "cli.scaffold:canvas-theme-editor.editorPaneLabel"
-msgid "Editor"
-msgstr "編輯器"
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.downloadPackageLabel
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.downloadPackageLabel"
+msgid "Download package"
+msgstr "下載 theme.js"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.downloadHtmlLabel
 #, no-c-format
-msgctxt "cli.scaffold:canvas-theme-editor.previewPaneLabel"
-msgid "Preview"
-msgstr "預覽"
+msgctxt "cli.scaffold:canvas-theme-editor.downloadHtmlLabel"
+msgid "Download HTML"
+msgstr "下載 HTML"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.previewFrameTitle
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.previewFrameTitle"
 msgid "Styled preview"
 msgstr "樣式化預覽"
 
-#: packages/scaffold/src/i18n.json
-#, no-c-format
-msgctxt "cli.scaffold:canvas-theme-editor.fullscreenEditorAriaLabel"
-msgid "Fullscreen editor"
-msgstr "全螢幕編輯器"
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.previewWidthGroupLabel
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.previewWidthGroupLabel"
+msgid "Preview width"
+msgstr "預覽"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.previewWidthLargeLabel
 #, no-c-format
-msgctxt "cli.scaffold:canvas-theme-editor.fullscreenPreviewAriaLabel"
-msgid "Fullscreen preview"
-msgstr "全螢幕預覽"
+msgctxt "cli.scaffold:canvas-theme-editor.previewWidthLargeLabel"
+msgid "Large"
+msgstr "大"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.previewWidthMediumLabel
 #, no-c-format
-msgctxt "cli.scaffold:canvas-theme-editor.resizePanesAriaLabel"
-msgid "Resize editor and preview"
-msgstr "調整編輯器與預覽大小"
+msgctxt "cli.scaffold:canvas-theme-editor.previewWidthMediumLabel"
+msgid "Medium"
+msgstr "中"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.previewWidthSmallLabel
 #, no-c-format
-msgctxt "cli.scaffold:canvas-theme-editor.stackVerticallyLabel"
-msgid "Stack vertically"
-msgstr "垂直堆疊"
+msgctxt "cli.scaffold:canvas-theme-editor.previewWidthSmallLabel"
+msgid "Small"
+msgstr "小"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.previewSchemeToggleLabel
 #, no-c-format
-msgctxt "cli.scaffold:canvas-theme-editor.stackSideBySideLabel"
-msgid "Stack side by side"
-msgstr "並排顯示"
+msgctxt "cli.scaffold:canvas-theme-editor.previewSchemeToggleLabel"
+msgid "Preview dark mode"
+msgstr "預覽深色模式"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.previewPopupLabel
 #, no-c-format
-msgctxt "cli.scaffold:canvas-theme-editor.swapPanesLabel"
-msgid "Swap panes"
-msgstr "交換面板"
+msgctxt "cli.scaffold:canvas-theme-editor.previewPopupLabel"
+msgid "Open preview in a popup"
+msgstr "在彈出視窗中開啟預覽"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.previewPopupTitle
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.previewPopupTitle"
+msgid "Canvas content preview"
+msgstr "畫布內容預覽"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.previewPopupBlockedMessage
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.previewPopupBlockedMessage"
+msgid "The preview popup was blocked. Allow popups for this site and try again."
+msgstr "預覽彈出視窗已被阻擋。請允許此網站的彈出視窗後再試一次。"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.previewFullscreenLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.previewFullscreenLabel"
+msgid "Show preview fullscreen"
+msgstr "以全螢幕顯示預覽"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.previewPopupReturnLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.previewPopupReturnLabel"
+msgid "Return preview to the editor"
+msgstr "將預覽返回編輯器"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.themeTrayAriaLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.themeTrayAriaLabel"
 msgid "Theme settings"
 msgstr "主題設定"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.tabConfigLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.tabConfigLabel"
 msgid "Config"
 msgstr "設定"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.tabCssLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.tabCssLabel"
 msgid "CSS"
 msgstr "CSS"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.tabJsLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.tabJsLabel"
 msgid "JS"
 msgstr "JS"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.cdnProviderLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.cdnProviderLabel"
 msgid "CDN provider"
 msgstr "CDN 提供者"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.localProviderLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.localProviderLabel"
+msgid "None (inline)"
+msgstr "無（內嵌）"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.cdnSectionLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.cdnSectionLabel"
+msgid "CDN"
+msgstr ""
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.themeLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.themeLabel"
 msgid "Theme"
 msgstr "主題"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.appearanceLabel
 #, no-c-format
-msgctxt "cli.scaffold:canvas-theme-editor.modeLabel"
-msgid "Mode"
-msgstr "模式"
+msgctxt "cli.scaffold:canvas-theme-editor.appearanceLabel"
+msgid "Appearance"
+msgstr "外觀"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.appearanceLightLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.appearanceLightLabel"
+msgid "Light"
+msgstr "淺色"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.appearanceDarkLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.appearanceDarkLabel"
+msgid "Dark"
+msgstr "深色"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.themeRebrandLabel
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.themeRebrandLabel"
+msgid "Next gen"
+msgstr "下一步："
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.themeCanvasLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.themeCanvasLabel"
+msgid "Canvas"
+msgstr "畫布"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.themeCanvasHighContrastLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.themeCanvasHighContrastLabel"
+msgid "Canvas high contrast"
+msgstr "畫布（高對比）"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.includeDarkModeLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.includeDarkModeLabel"
+msgid "Include dark mode"
+msgstr "包含深色模式"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorLabel"
+msgid "Color scheme"
+msgstr "配色方案"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorNavyLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorNavyLabel"
+msgid "Navy"
+msgstr "藏青"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorBlueLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorBlueLabel"
+msgid "Blue"
+msgstr "藍色"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorGreenLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorGreenLabel"
+msgid "Green"
+msgstr "綠色"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorRedLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorRedLabel"
+msgid "Red"
+msgstr "紅色"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorOrangeLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorOrangeLabel"
+msgid "Orange"
+msgstr "橙色"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorGreyLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorGreyLabel"
+msgid "Grey"
+msgstr "灰色"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorPlumLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorPlumLabel"
+msgid "Plum"
+msgstr "梅紫"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorVioletLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorVioletLabel"
+msgid "Violet"
+msgstr "紫羅蘭"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorStoneLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorStoneLabel"
+msgid "Stone"
+msgstr "石色"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorSkyLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorSkyLabel"
+msgid "Sky"
+msgstr "天藍"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorHoneyLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorHoneyLabel"
+msgid "Honey"
+msgstr "蜂蜜色"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorSeaLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorSeaLabel"
+msgid "Sea"
+msgstr "海色"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.colorAuroraLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.colorAuroraLabel"
+msgid "Aurora"
+msgstr "極光"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.downloadCssLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.downloadCssLabel"
 msgid "Download theme.css"
 msgstr "下載 theme.css"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.downloadJsLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.downloadJsLabel"
 msgid "Download theme.js"
 msgstr "下載 theme.js"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.cssPanelHintLabel
 #, no-c-format
-msgctxt "cli.scaffold:canvas-theme-editor.regenerateLabel"
-msgid "Regenerate from config"
-msgstr "由設定重新產生"
+msgctxt "cli.scaffold:canvas-theme-editor.cssPanelHintLabel"
+msgid "Add custom CSS here — it's appended to the generated theme.css, in the preview and the download."
+msgstr "在此新增自訂 CSS — 會附加到生成的 theme.css 中，並會出現在預覽與下載中。"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.jsPanelHintLabel
+#, no-c-format
+msgctxt "cli.scaffold:canvas-theme-editor.jsPanelHintLabel"
+msgid "Add custom JS here — it's appended to the generated theme.js, in the preview and the download."
+msgstr "在此新增自訂 JS — 會附加到生成的 theme.js 中，並會出現在預覽與下載中。"
+
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.helpModalTitle
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpModalTitle"
 msgid "How to use this page"
 msgstr "如何使用此頁面"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.helpModalBody1
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody1"
-msgid ""
-"Pick a starter template, edit it like you would in the Canvas Rich Content "
-"Editor, then click <strong>Copy HTML</strong> and paste the result into a "
-"Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted "
-"HTML server-side — this preview doesn't attempt to replicate that, so always "
-"verify the pasted result in Canvas."
-msgstr ""
-"選擇一個起始範本，像在 Canvas 富文本編輯器中編輯，然後點選 <strong>複製 "
-"HTML</strong> 並將結果貼到 Canvas 頁面（先切換到 HTML 編輯檢視）。Canvas 會在"
-"伺服器端清理貼上的 HTML — 此預覽不會嘗試複製該流程，請務必在 Canvas 中驗證貼"
-"上的結果。"
+msgid "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas."
+msgstr "選擇一個起始範本，像在 Canvas 富文本編輯器中編輯，然後點選 <strong>複製 HTML</strong> 並將結果貼到 Canvas 頁面（先切換到 HTML 編輯檢視）。Canvas 會在伺服器端清理貼上的 HTML — 此預覽不會嘗試複製該流程，請務必在 Canvas 中驗證貼上的結果。"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.helpModalBody2
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody2"
-msgid ""
-"Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, "
-"and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> "
-"before downloading them."
-msgstr ""
-"使用 <strong>編輯主題</strong> 來變更 CDN 提供者、主題或模式，並在下載前手動"
-"編輯產生的 <code>theme.css</code>/<code>theme.js</code>。"
+msgid "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them."
+msgstr "使用 <strong>編輯主題</strong> 來變更 CDN 提供者、主題或模式，並在下載前手動編輯產生的 <code>theme.css</code>/<code>theme.js</code>。"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#canvas-theme-editor.closeLabel
 #, no-c-format
 msgctxt "cli.scaffold:canvas-theme-editor.closeLabel"
 msgid "Close"
 msgstr "關閉"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#nextStepsDependencies
 #, fuzzy, no-c-format
 msgctxt "cli.scaffold:nextStepsDependencies"
-msgid ""
-"2. Installing dependencies (npm install, pnpm install, yarn install or bun "
-"install)"
-msgstr ""
-"2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun "
-"install)"
+msgid "2. Installing dependencies (npm install, pnpm install, yarn install or bun install)"
+msgstr "2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun install)"
 
-#: packages/scaffold/src/i18n.json
+#: packages/scaffold/src/i18n.json#nextStepsInstallGeneric
 #, fuzzy, no-c-format
 msgctxt "cli.scaffold:nextStepsInstallGeneric"
 msgid "2. Installing dependencies"
 msgstr "安裝相依套件：{{command}}"
+
+#, no-c-format
+#~ msgctxt "cli.scaffold:canvas-theme-editor.editorPaneLabel"
+#~ msgid "Editor"
+#~ msgstr "編輯器"
+
+#, no-c-format
+#~ msgctxt "cli.scaffold:canvas-theme-editor.fullscreenEditorAriaLabel"
+#~ msgid "Fullscreen editor"
+#~ msgstr "全螢幕編輯器"
+
+#, no-c-format
+#~ msgctxt "cli.scaffold:canvas-theme-editor.fullscreenPreviewAriaLabel"
+#~ msgid "Fullscreen preview"
+#~ msgstr "全螢幕預覽"
+
+#, no-c-format
+#~ msgctxt "cli.scaffold:canvas-theme-editor.resizePanesAriaLabel"
+#~ msgid "Resize editor and preview"
+#~ msgstr "調整編輯器與預覽大小"
+
+#, no-c-format
+#~ msgctxt "cli.scaffold:canvas-theme-editor.stackVerticallyLabel"
+#~ msgid "Stack vertically"
+#~ msgstr "垂直堆疊"
+
+#, no-c-format
+#~ msgctxt "cli.scaffold:canvas-theme-editor.stackSideBySideLabel"
+#~ msgid "Stack side by side"
+#~ msgstr "並排顯示"
+
+#, no-c-format
+#~ msgctxt "cli.scaffold:canvas-theme-editor.swapPanesLabel"
+#~ msgid "Swap panes"
+#~ msgstr "交換面板"
+
+#, no-c-format
+#~ msgctxt "cli.scaffold:canvas-theme-editor.modeLabel"
+#~ msgid "Mode"
+#~ msgstr "模式"
+
+#, no-c-format
+#~ msgctxt "cli.scaffold:canvas-theme-editor.regenerateLabel"
+#~ msgid "Regenerate from config"
+#~ msgstr "由設定重新產生"
 
 #, no-c-format
 #~ msgctxt "cli.scaffold:nextStepsInstallGeneric"
