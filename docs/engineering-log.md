@@ -118,7 +118,7 @@ level, not just the module under test.
 **Fix / rule** — Leave `isolate` at its Vitest default (`true`) given how many files here mock Node
 built-ins. Revisit only if the repo moves those mocks to a shared, single-instance strategy (e.g.
 injecting fs/child_process as parameters instead of module-level mocks) across all 28+ files. See
-https://vitest.dev/guide/improving-performance#test-isolation.
+[Improving Performance](https://vitest.dev/guide/improving-performance#test-isolation).
 
 ## Browser / bundling
 
