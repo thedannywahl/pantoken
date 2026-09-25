@@ -61,6 +61,8 @@
   },
   "devDependencies": {
     "@codemirror/autocomplete": "catalog:",
+    "@codemirror/lang-html": "catalog:",
+    "@codemirror/language": "catalog:",
     "@codemirror/lint": "catalog:",
     "@codemirror/state": "catalog:",
     "@codemirror/view": "catalog:",
@@ -75,6 +77,7 @@
   },
   "peerDependencies": {
     "@codemirror/autocomplete": "^6.20.3",
+    "@codemirror/language": "^6.12.4",
     "@codemirror/lint": "^6.9.7",
     "@codemirror/view": "^6.0.0",
     "tinymce": "^8.0"

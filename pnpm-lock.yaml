@@ -232,6 +232,9 @@ catalogs:
     '@codemirror/lang-javascript':
       specifier: ^6.2.5
       version: 6.2.5
+    '@codemirror/language':
+      specifier: ^6.12.4
+      version: 6.12.4
     '@codemirror/lint':
       specifier: ^6.9.7
       version: 6.9.7
@@ -2287,9 +2290,6 @@ importers:
       '@pantoken/plugin-kit':
         specifier: workspace:*
         version: link:../../../packages/plugin-kit
-      '@resvg/resvg-js':
-        specifier: 'catalog:'
-        version: 2.6.2
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -3312,6 +3312,12 @@ importers:
       '@codemirror/autocomplete':
         specifier: 'catalog:'
         version: 6.20.3
+      '@codemirror/lang-html':
+        specifier: 'catalog:'
+        version: 6.4.12
+      '@codemirror/language':
+        specifier: 'catalog:'
+        version: 6.12.4
       '@codemirror/lint':
         specifier: 'catalog:'
         version: 6.9.7

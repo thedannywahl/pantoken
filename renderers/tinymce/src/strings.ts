@@ -11,6 +11,10 @@ export interface TinymceStrings {
   componentsMenuText: string;
   componentsToolbarText: string;
   componentsToolbarTooltip: string;
+  componentModifiersDefault: string;
+  componentModifiersOptions: string;
+  componentModifiersTooltip: string;
+  componentModifiersUtilities: string;
   iconLabelDialogTitle: string;
   iconLabelInputLabel: string;
   iconsMenuText: string;

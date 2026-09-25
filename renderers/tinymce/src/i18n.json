@@ -21,6 +21,13 @@
     "message": "Insert a pantoken component",
     "translate": "always"
   },
+  "componentModifiersDefault": { "message": "Default", "translate": "always" },
+  "componentModifiersOptions": { "message": "Options", "translate": "always" },
+  "componentModifiersTooltip": {
+    "message": "Change component modifiers",
+    "translate": "always"
+  },
+  "componentModifiersUtilities": { "message": "Utilities", "translate": "always" },
   "iconLabelDialogTitle": { "message": "Icon label", "translate": "always" },
   "iconLabelInputLabel": {
     "message": "Screen reader label",

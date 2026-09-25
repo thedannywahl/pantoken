@@ -4,12 +4,22 @@
  *
  * \@module
  */
-import type { CssDocEntry } from "@cssdoc/core";
+import type { CssDocEntry, CssModifier } from "@cssdoc/core";
 import componentsModel from "@pantoken/components/model.json" with { type: "json" };
 import customComponentsModel from "@pantoken/plugin-custom-components/model.json" with { type: "json" };
 import { formatTinymceString, TINYMCE_STRINGS } from "../strings.js";
 
 export type { CssDocEntry } from "@cssdoc/core";
+
+/** A concrete modifier and the model record that makes it applicable to a component. */
+export interface ApplicableModifier {
+  /** The canonical modifier metadata. */
+  modifier: CssModifier;
+  /** The component or global utility that declares the modifier. */
+  source: CssDocEntry;
+  /** Whether the modifier belongs directly to the component or comes from a global utility. */
+  scope: "component" | "utility";
+}
 
 // Merged model: core components + utilities + custom-components (card, agent-shell, banner).
 const MERGED_MODEL = [...componentsModel, ...customComponentsModel] as CssDocEntry[];
@@ -24,6 +34,51 @@ const INDEX_BY_NAME = new Map<string, CssDocEntry>(
  */
 export function findEntry(name: string): CssDocEntry | undefined {
   return INDEX_BY_NAME.get(name);
+}
+
+/** Find an entry in a supplied model by its unpunctuated class token. */
+export function findEntryByClassToken(
+  classToken: string,
+  model: readonly CssDocEntry[] = MERGED_MODEL,
+): CssDocEntry | undefined {
+  return model.find(
+    (entry) => entry.className.startsWith(".") && entry.className.slice(1) === classToken,
+  );
+}
+
+function isCanonicalConcreteModifier(modifier: CssModifier): boolean {
+  return !(modifier.pattern || modifier.deprecated || modifier.alias || modifier.interaction);
+}
+
+/**
+ * Collect the canonical modifiers that can be applied to an entry: its own modifiers first,
+ * followed by modifiers from globally applicable utility records.
+ */
+export function getApplicableModifiers(
+  entryName: string,
+  model: readonly CssDocEntry[] = MERGED_MODEL,
+): ApplicableModifier[] {
+  const entry = model.find((candidate) => candidate.name === entryName);
+  if (!entry) return [];
+
+  const seen = new Set<string>();
+  const applicable: ApplicableModifier[] = [];
+  const addModifiers = (source: CssDocEntry, scope: ApplicableModifier["scope"]): void => {
+    for (const modifier of source.modifiers ?? []) {
+      if (!isCanonicalConcreteModifier(modifier) || seen.has(modifier.name)) continue;
+      seen.add(modifier.name);
+      applicable.push({ modifier, source, scope });
+    }
+  };
+
+  addModifiers(entry, "component");
+  for (const utility of model) {
+    if (utility.kind === "utility" && utility.global && utility !== entry) {
+      addModifiers(utility, "utility");
+    }
+  }
+
+  return applicable;
 }
 
 /**

@@ -10,6 +10,7 @@ import type { CssDocEntry } from "../cssdoc/model.js";
 import type { MissingAssetHandler } from "../types.js";
 import { trackAndInjectAsset } from "../content-css.js";
 import { insertHtml } from "../lib/insertion-target.js";
+import { registerComponentModifierToolbar } from "../lib/component-modifier-toolbar.js";
 import { TINYMCE_STRINGS } from "../strings.js";
 
 /**
@@ -80,6 +81,7 @@ export function createComponentsPlugin(options: ComponentsPickerOptions): (edito
     // Build a list of available components.
     const componentList = buildComponentList(options.model);
     const openDialog = (): void => openComponentsDialog(editor, componentList, options);
+    registerComponentModifierToolbar(editor, options.model);
 
     if (options.registerUi === false) {
       editor.addCommand(COMPONENTS_COMMAND, openDialog);

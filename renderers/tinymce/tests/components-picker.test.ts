@@ -21,6 +21,8 @@ function createMockEditor(): Editor {
 
   const mockUiRegistry = {
     addButton: vi.fn(),
+    addContextToolbar: vi.fn(),
+    addMenuButton: vi.fn(),
     addMenuItem: vi.fn(),
   };
 
@@ -67,6 +69,10 @@ test("createComponentsPlugin registers toolbar button and menu item", () => {
   );
   expect(editor.ui.registry.addMenuItem).toHaveBeenCalledWith(
     "pantokenComponents",
+    expect.any(Object),
+  );
+  expect(editor.ui.registry.addContextToolbar).toHaveBeenCalledWith(
+    "pantokenComponentModifiersContext",
     expect.any(Object),
   );
 });

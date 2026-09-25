@@ -4,6 +4,8 @@
 import { expect, test } from "vite-plus/test";
 import {
   findEntry,
+  findEntryByClassToken,
+  getApplicableModifiers,
   getModifierSuggestions,
   listComponents,
   listUtilities,
@@ -19,6 +21,48 @@ test("findEntry returns a component entry by name", () => {
 
 test("findEntry returns undefined for unknown entries", () => {
   expect(findEntry("nonexistent")).toBeUndefined();
+});
+
+test("findEntryByClassToken resolves hyphenated component classes in a supplied model", () => {
+  const model = [
+    { name: "close-button", className: ".instui-close-button", kind: "component" },
+  ] as any;
+
+  expect(findEntryByClassToken("instui-close-button", model)?.name).toBe("close-button");
+  expect(findEntryByClassToken("instui-missing", model)).toBeUndefined();
+});
+
+test("getApplicableModifiers returns canonical component modifiers followed by global utilities", () => {
+  const model = [
+    {
+      name: "button",
+      className: ".instui-button",
+      kind: "component",
+      modifiers: [
+        { name: "-color-primary", prop: "color", value: "primary" },
+        { name: "-legacy", prop: "legacy", deprecated: { canonical: "-current" } },
+        { name: "-icon-*", prop: "icon", pattern: true },
+        { name: "-scripted", prop: "scripted", interaction: true },
+      ],
+    },
+    {
+      name: "layout",
+      className: ".--display-flex",
+      kind: "utility",
+      global: true,
+      modifiers: [
+        { name: "--display-flex", prop: "display", value: "flex" },
+        { name: "-color-primary", prop: "color", value: "duplicate" },
+      ],
+    },
+  ] as any;
+
+  expect(
+    getApplicableModifiers("button", model).map(({ modifier, scope }) => [modifier.name, scope]),
+  ).toEqual([
+    ["-color-primary", "component"],
+    ["--display-flex", "utility"],
+  ]);
 });
 
 test("listComponents returns only component entries", () => {
