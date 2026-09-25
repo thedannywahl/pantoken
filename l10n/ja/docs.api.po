@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-25 14:44+0000\n"
+"PO-Revision-Date: 2026-09-25 21:34+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -14158,6 +14158,66 @@ msgctxt "docs.api:prose"
 msgid "Every vendored custom icon, sorted by name."
 msgstr "名前順に並べられたすべてのベンダー提供カスタムアイコン。"
 
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Generate the `[data-pantoken-color=\"custom\"]` rule for a brand hex: it declares the derived\n`--instui-primitive-color-custom-custom*` steps and remaps the brand primitives onto them, exactly\nlike the shipped scales."
+msgstr "Generate the `[data-pantoken-color=\"custom\"]` ルールをブランドの16進カラーから生成します: これは派生した\n`--instui-primitive-color-custom-custom*` ステップを宣言し、ブランドのプリミティブをそれらに再マッピングします。まさに配布されているスケールと同様です。"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A `#rgb`/`#rrggbb` brand color."
+msgstr "A `#rgb`/`#rrggbb` ブランドカラー。"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorRemapCss.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The CSS rule."
+msgstr "CSSルールの文字列。"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TypeError when `hex` isn't a valid hex color."
+msgstr "TypeError — `hex` が有効な16進カラーでない場合に投げられます。"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The per-step lightness curve and chroma shape the `custom` scale is derived against, computed\nfrom the 13 shipped families. JSON-safe, so a build can ship it to a browser that pairs it with\nthe dependency-free `@pantoken/plugin-custom-theme-colors/scale` entry."
+msgstr "The per-step lightness curve and chroma shape the `custom` スケールを導出するために使われます。計算は配布されている13のファミリーから行われます。JSONセーフなので、ビルドはそれを依存のない `@pantoken/plugin-custom-theme-colors/scale` エントリと組み合わせるブラウザへ送ることができます。"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`Token`](../../../../../packages/core/src/interfaces/Token.md)[] \\| `Map`\\<`string`, `string`\\>"
+msgstr "読み取り専用 [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional token array or map to read the reference families from."
+msgstr "プリミティブステップの色値を解決するためのオプショントークン配列またはマップ."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [ReferenceCurve](../interfaces/ReferenceCurve.md)."
+msgstr "1つの [ResolvedDemo](../interfaces/ResolvedDemo.md)。"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorRemapCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The `[data-pantoken-color=\"custom\"]` remap rule without the derived primitives, for pages that\nset `--instui-primitive-color-custom-custom*` themselves at runtime (e.g. from a color picker)."
+msgstr "The `[data-pantoken-color=\"custom\"]` 再マップルール（派生プリミティブを含まない）で、ページがランタイムで `--instui-primitive-color-custom-custom*` を自分で設定する場合（例: カラーピッカーから）に使用します。\n)."
+
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColors.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -14171,12 +14231,6 @@ msgid "Generate CSS rules for all custom theme color choices by remapping primit
 msgstr "基本的なカラースケールのステップを再マッピングして、すべてのカスタムテーマのカラーチョイスに対するCSSルールを生成します\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`), 明示的に\n名前付けされた青のアクセントトークンを保持します."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
-#, fuzzy, no-c-format
-msgctxt "docs.api:prose"
-msgid "readonly [`Token`](../../../../../packages/core/src/interfaces/Token.md)[] \\| `Map`\\<`string`, `string`\\>"
-msgstr "読み取り専用 [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
-
-#: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Optional token array or map for primitive step color lookups."
@@ -14187,6 +14241,79 @@ msgstr "プリミティブステップの色参照のためのオプショント
 msgctxt "docs.api:prose"
 msgid "Generated CSS rules string."
 msgstr "CSSルールの文字列。"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Derive the `custom` primitive scale from a brand hex. The input is anchored at the step whose\nreference lightness (the mean OKLCH lightness of the 13 shipped families) is nearest its own,\nthen every step is rebuilt at its reference lightness with the input's hue — so the anchor step\nlands close to, but not necessarily exactly on, the input."
+msgstr "Derive the `custom` プリミティブスケールをブランドの16進カラーから導出します。入力は、その参照明度（配布されている13ファミリーの平均OKLCH明度）に最も近いステップにアンカーされ、各ステップは入力の色相で参照明度に沿って再構築されます。したがってアンカーステップは入力に近づきますが、必ずしも完全に一致するとは限りません。\n)"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [CustomColorScale](../interfaces/CustomColorScale.md)."
+msgstr "The [CustomColorScale](../interfaces/CustomColorScale.md)。"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Derive a full primitive scale from one hex: anchor it at the step with the nearest reference\nlightness, then rebuild every step at its reference lightness with the input's hue and a chroma\nscaled by the reference shape."
+msgstr "1つの16進値から完全なプリミティブスケールを導出します: 最も近い参照明度を持つステップにアンカーし、次に各ステップを入力の色相と参照シェイプでスケーリングされた彩度（chroma）で参照明度に再構築します。"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A hex color accepted by [parseHexColor](parseHexColor.md)."
+msgstr "A hex color accepted by [parseHexColor](parseHexColor.md)。"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Output of buildReferenceCurve."
+msgstr "buildReferenceCurve の出力。"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Whether a value is a valid [parseHexColor](parseHexColor.md) input."
+msgstr "値が [parseHexColor](parseHexColor.md) の入力として有効かどうか。"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The value to check."
+msgstr "パレット。"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`true` for `#rgb`/`#rrggbb` strings."
+msgstr "`true` は `#rgb`/`#rrggbb` 形式の文字列に対して `true` を返します。"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Validate and normalize a user-supplied hex color. This is the only entry point for untrusted\ninput into generated CSS, so anything but `#rgb`/`#rrggbb` is rejected."
+msgstr "ユーザー提供の16進カラーを検証して正規化します。これは生成されたCSSへの未検証入力の唯一の入口なので、``#rgb`/`#rrggbb`` 以外は拒否されます。"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A hex color, with or without the leading `#`."
+msgstr "先頭の `#` の有無にかかわらない16進カラー。"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Lowercase `#rrggbb`."
+msgstr "小文字の `#rrggbb`。"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TypeError when `input` isn't a 3- or 6-digit hex color."
+msgstr "TypeError — `input` が3桁または6桁の16進カラーでない場合に発生します。"
 
 #: plugins/pantoken/custom-theme-colors/src/index.md
 #, fuzzy, no-c-format
@@ -14206,6 +14333,48 @@ msgctxt "docs.api:prose"
 msgid "Renames and re-exports [customThemeColors](functions/customThemeColors.md)"
 msgstr "[customIcons](functions/customIcons.md) の名前を変更し再エクスポートします"
 
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [customColorCss](../functions/customColorCss.md)."
+msgstr " [customIcons](../functions/customIcons.md) プラグインのオプション。"
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional token array or map for the reference families and relinked tokens."
+msgstr "プリミティブステップの色参照のためのオプショントークン配列またはマップ."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selector prefix — see [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+msgstr "条件付きルールのセレクタ接頭辞 — 詳しくは [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector) を参照してください。"
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A derived custom primitive scale."
+msgstr "導出されたカスタムプリミティブスケール。"
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The validated input, normalized to lowercase `#rrggbb`."
+msgstr "検証された入力。小文字の `#rrggbb` に正規化されています。`#rrggbb`。"
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The step whose reference lightness is nearest the input's."
+msgstr "入力に最も近い参照明度を持つステップ。"
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every primitive step mapped to its derived `#rrggbb`."
+msgstr "各プリミティブステップが導出された `#rrggbb` にマップされています。`#rrggbb`。"
+
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -14223,6 +14392,12 @@ msgstr "条件付き `[data-pantoken-color=\"…\"]` ルールがスコープさ
 msgctxt "docs.api:prose"
 msgid "An additional selector whose subtree should always render the true, unremapped colors,\nregardless of what an ancestor's `[data-pantoken-color]` scope currently has active. Emits one\nunconditional rule pinning every token this plugin can override back to its own base value —\ne.g. a color-swatch legend nested inside an already-themed page needs its reference swatches to\nstay constant rather than inherit the ancestor's remap."
 msgstr "祖先の `[data-pantoken-color]` スコープが現在何を有効にしていても、そのサブツリーが常に元の（リマップされていない）色をレンダリングすべき追加のセレクタ。プラグインが上書きできるすべてのトークンをそれぞれのベース値に戻す一つの無条件のルールを出力する — 例：既にテーマが適用されたページにネストされたカラースウォッチ凡例は、参照スウォッチが祖先のリマップを継承するのではなく一定に保たれる必要がある。"
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A brand hex (`#rgb`/`#rrggbb`) to derive the `custom` scale from. When set, a\n`[data-pantoken-color=\"custom\"]` rule is appended — see [customColorCss](../functions/customColorCss.md)."
+msgstr "カスタムスケールを導出するためのブランド16進値（``#rgb`/`#rrggbb`)`）。設定されると、`[data-pantoken-color=\"custom\"]` ルールが追記されます — 詳細は [customColorCss](../functions/customColorCss.md を参照してください。\n`[data-pantoken-color=\"custom\"]`。"
 
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
 #, fuzzy, no-c-format
@@ -14248,6 +14423,18 @@ msgctxt "docs.api:prose"
 msgid "Always-true-color subtree — see [CustomThemeColorsCssOptions.resetSelector](CustomThemeColorsCssOptions.md#resetselector)."
 msgstr "常に true と評価されるカラーのサブツリー — 詳しくは [CustomThemeColorsCssOptions.resetSelector](CustomThemeColorsCssOptions.md#resetselector) を参照してください。"
 
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Brand hex for the `custom` scale — see [CustomThemeColorsCssOptions.custom](CustomThemeColorsCssOptions.md#custom)."
+msgstr "条件付きルールのセレクタ接頭辞 — 詳しくは [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector) を参照してください。"
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/ReferenceCurve.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Per-step reference lightness and normalized chroma, index-aligned with `steps`. JSON-safe."
+msgstr "各ステップごとの参照明度と正規化された彩度（chroma）。`steps` とインデックスが整合しています。JSONセーフです。`steps`。"
+
 #: plugins/pantoken/custom-theme-colors/src/type-aliases/PantokenColorNamespace.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -14259,6 +14446,12 @@ msgstr "サポートされているカスタムテーマのカラーネームス
 msgctxt "docs.api:prose"
 msgid "The 13 available color namespaces for site theme color selection."
 msgstr "サイトのテーマカラー選択で利用可能な13のカラーネームスペース."
+
+#: plugins/pantoken/custom-theme-colors/src/variables/CUSTOM_COLOR_KEY.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The color namespace whose scale is derived from an arbitrary hex rather than shipped."
+msgstr "スケールが配布済みのものではなく任意の16進値から導出されるカラーネームスペース。"
 
 #: plugins/pantoken/deprecations/src/functions/compareVersions.md
 #, no-c-format

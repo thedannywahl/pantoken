@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-25 15:13+0000\n"
+"PO-Revision-Date: 2026-09-25 21:47+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -14158,6 +14158,66 @@ msgctxt "docs.api:prose"
 msgid "Every vendored custom icon, sorted by name."
 msgstr "Mỗi biểu tượng tùy chỉnh được đóng gói, sắp xếp theo tên."
 
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Generate the `[data-pantoken-color=\"custom\"]` rule for a brand hex: it declares the derived\n`--instui-primitive-color-custom-custom*` steps and remaps the brand primitives onto them, exactly\nlike the shipped scales."
+msgstr "Tạo quy tắc `[data-pantoken-color=\"custom\"]` cho một mã hex thương hiệu: quy tắc này khai báo các bước dẫn xuất `--instui-primitive-color-custom-custom*` và ánh xạ lại các primitive của thương hiệu lên những bước đó, giống hệt như các thang màu được phát hành."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A `#rgb`/`#rrggbb` brand color."
+msgstr "Một màu thương hiệu `#rgb`/`#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorRemapCss.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The CSS rule."
+msgstr "Chuỗi quy tắc CSS."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TypeError when `hex` isn't a valid hex color."
+msgstr "TypeError khi `hex` không phải là màu hex hợp lệ."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The per-step lightness curve and chroma shape the `custom` scale is derived against, computed\nfrom the 13 shipped families. JSON-safe, so a build can ship it to a browser that pairs it with\nthe dependency-free `@pantoken/plugin-custom-theme-colors/scale` entry."
+msgstr "Đường cong độ sáng theo từng bước và hình dạng độ bão hòa màu mà thang `custom` được suy ra dựa trên, được tính từ 13 họ được đóng gói. An toàn với JSON, nên một bản build có thể gửi nó tới trình duyệt và ghép nó với mục `@pantoken/plugin-custom-theme-colors/scale`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`Token`](../../../../../packages/core/src/interfaces/Token.md)[] \\| `Map`\\<`string`, `string`\\>"
+msgstr "chỉ đọc [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional token array or map to read the reference families from."
+msgstr "Mảng hoặc bản đồ token tùy chọn để phân giải giá trị màu theo bước nguyên thủy từ đó."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [ReferenceCurve](../interfaces/ReferenceCurve.md)."
+msgstr "Một [ResolvedDemo](../interfaces/ResolvedDemo.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorRemapCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The `[data-pantoken-color=\"custom\"]` remap rule without the derived primitives, for pages that\nset `--instui-primitive-color-custom-custom*` themselves at runtime (e.g. from a color picker)."
+msgstr "Quy tắc remap `[data-pantoken-color=\"custom\"]` không bao gồm các primitive được suy ra, dành cho các trang tự thiết lập `--instui-primitive-color-custom-custom*` tại thời gian chạy (ví dụ: từ bộ chọn màu)."
+
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColors.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -14171,12 +14231,6 @@ msgid "Generate CSS rules for all custom theme color choices by remapping primit
 msgstr "Tạo các quy tắc CSS cho tất cả lựa chọn màu chủ đề tùy chỉnh bằng cách ánh xạ lại các bước thang màu nguyên thủy\n(`--instui-primitive-color-navy-*` và `--instui-primitive-color-blue-*`), đồng thời giữ nguyên rõ ràng các\ntoken nhấn màu xanh được đặt tên."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
-#, fuzzy, no-c-format
-msgctxt "docs.api:prose"
-msgid "readonly [`Token`](../../../../../packages/core/src/interfaces/Token.md)[] \\| `Map`\\<`string`, `string`\\>"
-msgstr "chỉ đọc [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
-
-#: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Optional token array or map for primitive step color lookups."
@@ -14187,6 +14241,79 @@ msgstr "Mảng hoặc bản đồ token tùy chọn để tra cứu màu theo b�
 msgctxt "docs.api:prose"
 msgid "Generated CSS rules string."
 msgstr "Chuỗi quy tắc CSS."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Derive the `custom` primitive scale from a brand hex. The input is anchored at the step whose\nreference lightness (the mean OKLCH lightness of the 13 shipped families) is nearest its own,\nthen every step is rebuilt at its reference lightness with the input's hue — so the anchor step\nlands close to, but not necessarily exactly on, the input."
+msgstr "Phát sinh thang nguyên thủy `custom` từ một màu hex thương hiệu. Giá trị đầu vào được neo ở bước có độ sáng tham chiếu (độ sáng trung bình OKLCH của 13 họ màu được phát hành) gần nhất với độ sáng của chính nó, rồi mỗi bước được tái tạo lại tại độ sáng tham chiếu của nó với sắc độ của đầu vào — nên bước neo sẽ nằm gần, nhưng không nhất thiết trùng chính xác với, màu đầu vào."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [CustomColorScale](../interfaces/CustomColorScale.md)."
+msgstr "Giao diện [CustomColorScale](../interfaces/CustomColorScale.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Derive a full primitive scale from one hex: anchor it at the step with the nearest reference\nlightness, then rebuild every step at its reference lightness with the input's hue and a chroma\nscaled by the reference shape."
+msgstr "Tạo ra một thang primitive đầy đủ từ một mã hex: neo nó tại bước có độ sáng tham chiếu gần nhất, sau đó xây dựng lại mỗi bước ở độ sáng tham chiếu của nó với sắc độ (hue) của đầu vào và chroma (độ bão hòa) được tỉ lệ theo hình dạng tham chiếu."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A hex color accepted by [parseHexColor](parseHexColor.md)."
+msgstr "Một màu hex được [parseHexColor](parseHexColor.md) chấp nhận."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Output of buildReferenceCurve."
+msgstr "Đầu ra của buildReferenceCurve."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Whether a value is a valid [parseHexColor](parseHexColor.md) input."
+msgstr "Giá trị có phải là đầu vào hợp lệ cho [parseHexColor](parseHexColor.md) hay không?"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The value to check."
+msgstr "Bảng màu."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`true` for `#rgb`/`#rrggbb` strings."
+msgstr "`true` cho các chuỗi `#rgb`/`#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Validate and normalize a user-supplied hex color. This is the only entry point for untrusted\ninput into generated CSS, so anything but `#rgb`/`#rrggbb` is rejected."
+msgstr "Xác thực và chuẩn hóa một màu hex do người dùng cung cấp. Đây là điểm nhập duy nhất cho dữ liệu đầu vào không đáng tin cậy vào CSS được tạo, vì vậy mọi thứ không phải `#rgb`/`#rrggbb` sẽ bị từ chối."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A hex color, with or without the leading `#`."
+msgstr "Một màu hex, có hoặc không có dấu `#` ở đầu."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Lowercase `#rrggbb`."
+msgstr "Viết thường `#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TypeError when `input` isn't a 3- or 6-digit hex color."
+msgstr "TypeError xảy ra khi `input` không phải là màu hex 3 chữ số hoặc 6 chữ số."
 
 #: plugins/pantoken/custom-theme-colors/src/index.md
 #, fuzzy, no-c-format
@@ -14206,6 +14333,48 @@ msgctxt "docs.api:prose"
 msgid "Renames and re-exports [customThemeColors](functions/customThemeColors.md)"
 msgstr "Đổi tên và xuất lại [customIcons](functions/customIcons.md)"
 
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [customColorCss](../functions/customColorCss.md)."
+msgstr "Tùy chọn cho plugin [customIcons](../functions/customIcons.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional token array or map for the reference families and relinked tokens."
+msgstr "Mảng hoặc bản đồ token tùy chọn để tra cứu màu theo bước nguyên thủy."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selector prefix — see [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+msgstr "Tiền tố selector cho các quy tắc có điều kiện — xem [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A derived custom primitive scale."
+msgstr "Một thang nguyên thủy tùy chỉnh được dẫn xuất."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The validated input, normalized to lowercase `#rrggbb`."
+msgstr "Đầu vào đã được xác thực, được chuẩn hóa thành chữ thường `#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The step whose reference lightness is nearest the input's."
+msgstr "Bước có độ sáng tham chiếu gần nhất với độ sáng của đầu vào."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every primitive step mapped to its derived `#rrggbb`."
+msgstr "Mỗi bước nguyên thủy được ánh xạ tới `#rrggbb` dẫn xuất của nó."
+
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -14223,6 +14392,12 @@ msgstr "Selector prefix the conditional `[data-pantoken-color=\"…\"]` rules ar
 msgctxt "docs.api:prose"
 msgid "An additional selector whose subtree should always render the true, unremapped colors,\nregardless of what an ancestor's `[data-pantoken-color]` scope currently has active. Emits one\nunconditional rule pinning every token this plugin can override back to its own base value —\ne.g. a color-swatch legend nested inside an already-themed page needs its reference swatches to\nstay constant rather than inherit the ancestor's remap."
 msgstr "An additional selector whose subtree should always render the true, unremapped colors,\nbất kể phạm vi `[data-pantoken-color]` của tổ tiên đang kích hoạt gì. Phát ra một quy tắc không điều kiện cố định mọi token mà plugin này có thể ghi đè về giá trị cơ bản của chính nó — ví dụ, một chú giải màu (color-swatch legend) lồng bên trong một trang đã được theme cần các swatch tham chiếu giữ nguyên thay vì kế thừa phép remap của tổ tiên."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A brand hex (`#rgb`/`#rrggbb`) to derive the `custom` scale from. When set, a\n`[data-pantoken-color=\"custom\"]` rule is appended — see [customColorCss](../functions/customColorCss.md)."
+msgstr "Hex thương hiệu (`#rgb`/`#rrggbb`) để suy ra thang `custom`. Khi được thiết lập, một quy tắc `[data-pantoken-color=\"custom\"]` sẽ được thêm vào — xem [customColorCss](../functions/customColorCss.md)."
 
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
 #, fuzzy, no-c-format
@@ -14248,6 +14423,18 @@ msgctxt "docs.api:prose"
 msgid "Always-true-color subtree — see [CustomThemeColorsCssOptions.resetSelector](CustomThemeColorsCssOptions.md#resetselector)."
 msgstr "Cây con luôn dùng màu thực — xem [CustomThemeColorsCssOptions.resetSelector](CustomThemeColorsCssOptions.md#resetselector)."
 
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Brand hex for the `custom` scale — see [CustomThemeColorsCssOptions.custom](CustomThemeColorsCssOptions.md#custom)."
+msgstr "Tiền tố selector cho các quy tắc có điều kiện — xem [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/ReferenceCurve.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Per-step reference lightness and normalized chroma, index-aligned with `steps`. JSON-safe."
+msgstr "Độ sáng tham chiếu theo từng bước và chroma đã chuẩn hóa, căn theo chỉ số với `steps`. Tương thích JSON."
+
 #: plugins/pantoken/custom-theme-colors/src/type-aliases/PantokenColorNamespace.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -14259,6 +14446,12 @@ msgstr "Một không gian tên màu chủ đề tùy chỉnh được hỗ trợ
 msgctxt "docs.api:prose"
 msgid "The 13 available color namespaces for site theme color selection."
 msgstr "13 không gian tên màu có sẵn để lựa chọn màu chủ đề trang."
+
+#: plugins/pantoken/custom-theme-colors/src/variables/CUSTOM_COLOR_KEY.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The color namespace whose scale is derived from an arbitrary hex rather than shipped."
+msgstr "Không gian tên màu có thang màu được suy ra từ một mã hex tùy ý thay vì thang được cung cấp."
 
 #: plugins/pantoken/deprecations/src/functions/compareVersions.md
 #, no-c-format

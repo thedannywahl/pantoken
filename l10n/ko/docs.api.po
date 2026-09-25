@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-25 14:44+0000\n"
+"PO-Revision-Date: 2026-09-25 21:35+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -14158,6 +14158,66 @@ msgctxt "docs.api:prose"
 msgid "Every vendored custom icon, sorted by name."
 msgstr "이름 순으로 정렬된 모든 벤더 제공 사용자 정의 아이콘."
 
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Generate the `[data-pantoken-color=\"custom\"]` rule for a brand hex: it declares the derived\n`--instui-primitive-color-custom-custom*` steps and remaps the brand primitives onto them, exactly\nlike the shipped scales."
+msgstr "브랜드 헥스에 대한 `[data-pantoken-color=\"custom\"]` 규칙을 생성합니다: 파생된\n`--instui-primitive-color-custom-custom*` 단계를 선언하고 브랜드 프리미티브를 정확히 제공된 스케일과 같이 그것들에 재매핑합니다\n."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A `#rgb`/`#rrggbb` brand color."
+msgstr "`#rgb`/`#rrggbb` 브랜드 색상."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorRemapCss.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The CSS rule."
+msgstr "CSS 규칙 문자열."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TypeError when `hex` isn't a valid hex color."
+msgstr "TypeError: `hex`이(가) 유효한 헥스 색상이 아닐 때."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The per-step lightness curve and chroma shape the `custom` scale is derived against, computed\nfrom the 13 shipped families. JSON-safe, so a build can ship it to a browser that pairs it with\nthe dependency-free `@pantoken/plugin-custom-theme-colors/scale` entry."
+msgstr "단계별 명도 곡선과 채도 형태는 `custom` 스케일이 파생되는 방식을 결정하며, 13개 제공 패밀리에서 계산됩니다\n. JSON 안전 형태이므로, 빌드는 이를 브라우저에 전달하여 의존성 없는 `@pantoken/plugin-custom-theme-colors/scale` 엔트리와 함께 사용할 수 있습니다\n."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`Token`](../../../../../packages/core/src/interfaces/Token.md)[] \\| `Map`\\<`string`, `string`\\>"
+msgstr "읽기 전용 [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional token array or map to read the reference families from."
+msgstr "기본 단계 색상 값을 참조하기 위한 선택적 토큰 배열 또는 맵입니다."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [ReferenceCurve](../interfaces/ReferenceCurve.md)."
+msgstr "하나의 [ResolvedDemo](../interfaces/ResolvedDemo.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorRemapCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The `[data-pantoken-color=\"custom\"]` remap rule without the derived primitives, for pages that\nset `--instui-primitive-color-custom-custom*` themselves at runtime (e.g. from a color picker)."
+msgstr "`[data-pantoken-color=\"custom\"]` 재매핑 규칙(파생 프리미티브 없이) — 런타임에 `--instui-primitive-color-custom-custom*`을(를) 직접 설정하는 페이지용(예: 색 선택기)입니다\n."
+
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColors.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -14171,12 +14231,6 @@ msgid "Generate CSS rules for all custom theme color choices by remapping primit
 msgstr "기본 색상 스케일 단계를 재매핑하여 모든 사용자 정의 테마 색상 선택에 대한 CSS 규칙을 생성합니다\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`), 명시적으로\n이름이 지정된 파란색 강조 토큰은 보존합니다."
 
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
-#, fuzzy, no-c-format
-msgctxt "docs.api:prose"
-msgid "readonly [`Token`](../../../../../packages/core/src/interfaces/Token.md)[] \\| `Map`\\<`string`, `string`\\>"
-msgstr "읽기 전용 [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
-
-#: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Optional token array or map for primitive step color lookups."
@@ -14187,6 +14241,79 @@ msgstr "기본 단계 색상 조회를 위한 선택적 토큰 배열 또는 맵
 msgctxt "docs.api:prose"
 msgid "Generated CSS rules string."
 msgstr "CSS 규칙 문자열."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Derive the `custom` primitive scale from a brand hex. The input is anchored at the step whose\nreference lightness (the mean OKLCH lightness of the 13 shipped families) is nearest its own,\nthen every step is rebuilt at its reference lightness with the input's hue — so the anchor step\nlands close to, but not necessarily exactly on, the input."
+msgstr "브랜드 헥스에서 `custom` 프리미티브 스케일을 파생합니다. 입력은 참조 명도(13개 제공 패밀리의 평균 OKLCH 명도)가 자기 것과 가장 가까운 단계에 고정된 뒤, 모든 단계가 해당 참조 명도에서 입력의 색상(hue)으로 재구성됩니다 — 따라서 앵커 단계는 입력값에 가깝게 위치하지만 반드시 입력과 정확히 일치하지는 않을 수 있습니다."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [CustomColorScale](../interfaces/CustomColorScale.md)."
+msgstr "해당 [CustomColorScale](../interfaces/CustomColorScale.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Derive a full primitive scale from one hex: anchor it at the step with the nearest reference\nlightness, then rebuild every step at its reference lightness with the input's hue and a chroma\nscaled by the reference shape."
+msgstr "하나의 헥스에서 전체 프리미티브 스케일을 파생합니다: 참조 명도가 가장 가까운 단계에 앵커한 후, 입력의 색상(hue)과 참조 형태로 스케일된 채도로 각 단계를 해당 참조 명도에서 재구성합니다."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A hex color accepted by [parseHexColor](parseHexColor.md)."
+msgstr "[parseHexColor](parseHexColor.md)에서 허용되는 헥스 색상."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Output of buildReferenceCurve."
+msgstr "buildReferenceCurve의 출력."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Whether a value is a valid [parseHexColor](parseHexColor.md) input."
+msgstr "값이 유효한 [parseHexColor](parseHexColor.md) 입력인지 여부."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The value to check."
+msgstr "팔레트."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`true` for `#rgb`/`#rrggbb` strings."
+msgstr "`true` 문자열인 경우 `true`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Validate and normalize a user-supplied hex color. This is the only entry point for untrusted\ninput into generated CSS, so anything but `#rgb`/`#rrggbb` is rejected."
+msgstr "사용자가 제공한 헥스 색상을 검증하고 정규화합니다. 생성된 CSS로 들어가는 신뢰할 수 없는 입력에 대한 유일한 진입점이므로, `#rgb`/`#rrggbb` 형식이 아닌 것은 거부됩니다\n."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A hex color, with or without the leading `#`."
+msgstr "선행 `#`의 유무와 상관없는 헥스 색상 `#`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Lowercase `#rrggbb`."
+msgstr "소문자 `#rrggbb` `#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TypeError when `input` isn't a 3- or 6-digit hex color."
+msgstr "TypeError: `input`이(가) 3자리 또는 6자리 헥스 색상이 아닐 때."
 
 #: plugins/pantoken/custom-theme-colors/src/index.md
 #, fuzzy, no-c-format
@@ -14206,6 +14333,48 @@ msgctxt "docs.api:prose"
 msgid "Renames and re-exports [customThemeColors](functions/customThemeColors.md)"
 msgstr "이름을 바꾸고 [customIcons](functions/customIcons.md)를 재내보냅니다."
 
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [customColorCss](../functions/customColorCss.md)."
+msgstr "The [customIcons](../functions/customIcons.md) 플러그인에 대한 옵션."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional token array or map for the reference families and relinked tokens."
+msgstr "기본 단계 색상 조회를 위한 선택적 토큰 배열 또는 맵입니다."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selector prefix — see [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+msgstr "조건부 규칙의 선택자 접두사 — 자세한 내용은 [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)를 참조하세요."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A derived custom primitive scale."
+msgstr "파생된 커스텀 프리미티브 스케일."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The validated input, normalized to lowercase `#rrggbb`."
+msgstr "검증된 입력 — 소문자 `#rrggbb`로 정규화됨 `#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The step whose reference lightness is nearest the input's."
+msgstr "참조 명도가 입력값에 가장 가까운 단계."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every primitive step mapped to its derived `#rrggbb`."
+msgstr "각 프리미티브 단계가 파생된 `#rrggbb`에 매핑됩니다 `#rrggbb`."
+
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -14223,6 +14392,12 @@ msgstr "조건부 `[data-pantoken-color=\"…\"]` 규칙이 범위화되는 선�
 msgctxt "docs.api:prose"
 msgid "An additional selector whose subtree should always render the true, unremapped colors,\nregardless of what an ancestor's `[data-pantoken-color]` scope currently has active. Emits one\nunconditional rule pinning every token this plugin can override back to its own base value —\ne.g. a color-swatch legend nested inside an already-themed page needs its reference swatches to\nstay constant rather than inherit the ancestor's remap."
 msgstr "후손 트리가 조상 요소의 `[data-pantoken-color]` 범위에 어떤 값이 활성화되어 있든 상관없이 항상 진짜(재매핑되지 않은) 색상을 렌더해야 하는 추가 선택자입니다. 이 플러그인이 재정의할 수 있는 모든 토큰을 자체 기본값으로 고정하는 단일 무조건 규칙을 생성합니다 — 예: 이미 테마가 적용된 페이지 안에 중첩된 색상 견본 범례는 참조 견본이 조상의 재매핑을 상속받지 않고 일정하게 유지되어야 합니다."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A brand hex (`#rgb`/`#rrggbb`) to derive the `custom` scale from. When set, a\n`[data-pantoken-color=\"custom\"]` rule is appended — see [customColorCss](../functions/customColorCss.md)."
+msgstr "`custom` 스케일을 파생하기 위한 브랜드 헥스(`#rgb`/`#rrggbb`)입니다. 설정하면 `[data-pantoken-color=\"custom\"]` 규칙이 추가됩니다 — 자세한 내용은 [customColorCss](../functions/customColorCss.md)를 참조하세요."
 
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
 #, fuzzy, no-c-format
@@ -14248,6 +14423,18 @@ msgctxt "docs.api:prose"
 msgid "Always-true-color subtree — see [CustomThemeColorsCssOptions.resetSelector](CustomThemeColorsCssOptions.md#resetselector)."
 msgstr "항상 실제 색상이 사용되는 하위 트리 — 자세한 내용은 [CustomThemeColorsCssOptions.resetSelector](CustomThemeColorsCssOptions.md#resetselector)를 참조하세요."
 
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Brand hex for the `custom` scale — see [CustomThemeColorsCssOptions.custom](CustomThemeColorsCssOptions.md#custom)."
+msgstr "조건부 규칙의 선택자 접두사 — 자세한 내용은 [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)를 참조하세요."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/ReferenceCurve.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Per-step reference lightness and normalized chroma, index-aligned with `steps`. JSON-safe."
+msgstr "단계별 참조 명도와 정규화된 채도(인덱스가 `steps`와 정렬됨). JSON 안전 형식입니다."
+
 #: plugins/pantoken/custom-theme-colors/src/type-aliases/PantokenColorNamespace.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -14259,6 +14446,12 @@ msgstr "지원되는 사용자 정의 테마 색상 네임스페이스입니다.
 msgctxt "docs.api:prose"
 msgid "The 13 available color namespaces for site theme color selection."
 msgstr "사이트 테마 색상 선택에 사용 가능한 13개 색상 네임스페이스입니다."
+
+#: plugins/pantoken/custom-theme-colors/src/variables/CUSTOM_COLOR_KEY.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The color namespace whose scale is derived from an arbitrary hex rather than shipped."
+msgstr "스케일이 제공된 것 대신 임의의 헥스에서 파생되는 색상 네임스페이스."
 
 #: plugins/pantoken/deprecations/src/functions/compareVersions.md
 #, no-c-format
