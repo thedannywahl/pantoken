@@ -7,6 +7,7 @@ This package currently ships:
 - `card` rules (the plugin output)
 - `banner` rules (the plugin output)
 - `agent-shell` rules (the plugin output)
+- `button-set` rules (the plugin output)
 
 ## Install
 
@@ -46,8 +47,9 @@ import "@pantoken/plugin-custom-components/card.css";
 - `cardRules(prefix?)` — returns the card rules as CSS text.
 - `bannerRules(prefix?)` — returns the banner rules as CSS text.
 - `agentShellRules(prefix?)` — returns the agent-shell rules as CSS text.
+- `buttonSetRules(prefix?)` — returns the button-set rules as CSS text.
 - `./custom-components.css` — aggregate stylesheet export.
-- `./card.css`, `./banner.css`, `./agent-shell.css` — per-component stylesheet exports.
+- `./card.css`, `./banner.css`, `./agent-shell.css`, `./button-set.css` — per-component stylesheet exports.
 
 ## cssdoc
 

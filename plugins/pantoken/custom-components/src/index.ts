@@ -16,8 +16,22 @@
  */
 import { definePlugin } from "@pantoken/plugin-kit";
 import type { PantokenPlugin } from "@pantoken/model";
-import { agentShellRules, aiGradientRules, bannerRules, cardRules } from "./components/index.ts";
-export { agentShellRules, aiGradientRules, bannerRules, cardRules } from "./components/index.ts";
+import {
+  agentShellRules,
+  aiGradientRules,
+  bannerRules,
+  buttonSetRules,
+  cardRules,
+  logoRules,
+} from "./components/index.ts";
+export {
+  agentShellRules,
+  aiGradientRules,
+  bannerRules,
+  buttonSetRules,
+  cardRules,
+  logoRules,
+} from "./components/index.ts";
 
 /** Options for the {@link customComponents} plugin. */
 export interface CustomComponentsOptions {
@@ -33,7 +47,14 @@ export interface CustomComponentsOptions {
  */
 export function customComponents(options: CustomComponentsOptions = {}): PantokenPlugin {
   const position = options.position ?? "append";
-  const rules = [cardRules(), agentShellRules(), aiGradientRules(), bannerRules()].join("\n");
+  const rules = [
+    cardRules(),
+    agentShellRules(),
+    aiGradientRules(),
+    bannerRules(),
+    buttonSetRules(),
+    logoRules(),
+  ].join("\n");
 
   return definePlugin({
     name: "@pantoken/plugin-custom-components",

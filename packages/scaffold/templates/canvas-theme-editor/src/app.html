@@ -7,17 +7,30 @@
   <div class="description">{{pageDescription}}</div>
 
   <div class="controls --my-lg">
-    <div class="control-group">
-      <button type="button" id="download-package" class="instui-button">
-        <span class="instui-icon -icon-file-archive" aria-hidden="true"></span
-        >{{downloadPackageLabel}}
+    <div class="control-group instui-button-set">
+      <button
+        type="button"
+        id="download-package"
+        class="instui-button -icon-file-archive"
+        aria-label="{{downloadPackageLabel}}"
+      >
+        <span class="instui-screen-reader-content">{{downloadPackageLabel}}</span>
       </button>
-      <button type="button" id="download-html" class="instui-button -color-secondary">
-        <span class="instui-icon -icon-download" aria-hidden="true"></span>{{downloadHtmlLabel}}
+      <button
+        type="button"
+        id="download-html"
+        class="instui-button -icon-download"
+        aria-label="{{downloadHtmlLabel}}"
+      >
+        <span class="instui-screen-reader-content">{{downloadHtmlLabel}}</span>
       </button>
-      <button type="button" id="copy-html" class="instui-button -color-secondary">
-        <span class="instui-icon -icon-copy" aria-hidden="true"></span
-        ><span>{{copyHtmlLabel}}</span>
+      <button
+        type="button"
+        id="copy-html"
+        class="instui-button -icon-copy"
+        aria-label="{{copyHtmlLabel}}"
+      >
+        <span class="instui-screen-reader-content">{{copyHtmlLabel}}</span>
       </button>
     </div>
     <div class="utilities">
@@ -31,8 +44,8 @@
       <button
         type="button"
         id="layout-direction-toggle"
-        class="instui-button -color-secondary -icon-rows-2"
-        aria-pressed="true"
+        class="instui-button -color-secondary -icon-columns-2"
+        aria-pressed="false"
         aria-label="{{layoutDirectionLabel}}"
       >
         <span class="instui-screen-reader-content">{{layoutDirectionLabel}}</span>

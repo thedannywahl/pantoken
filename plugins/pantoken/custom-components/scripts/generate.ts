@@ -11,7 +11,9 @@ import {
   agentShellRules,
   aiGradientRules,
   bannerRules,
+  buttonSetRules,
   cardRules,
+  logoRules,
 } from "../src/components/index.ts";
 
 const outDir = resolve(import.meta.dirname, "../generated");
@@ -20,12 +22,16 @@ const allInstui = [
   agentShellRules("instui-"),
   aiGradientRules("instui-"),
   bannerRules("instui-"),
+  buttonSetRules("instui-"),
+  logoRules("instui-"),
 ].join("\n");
 const allPfx = [
   cardRules("pfx-"),
   agentShellRules("pfx-"),
   aiGradientRules("pfx-"),
   bannerRules("pfx-"),
+  buttonSetRules("pfx-"),
+  logoRules("pfx-"),
 ].join("\n");
 mkdirSync(outDir, { recursive: true });
 writeFileSync(join(outDir, "custom-components.css"), `${allInstui}\n`);

@@ -46,6 +46,7 @@ import "@pantoken/plugin-layouts/layouts.css";
 import "./app.css";
 import appHtml from "./app.html?raw";
 import { STRINGS } from "./strings.ts";
+import { LOCALE_STRINGS } from "./locale-strings.ts";
 import tinymce from "tinymce";
 import "tinymce/models/dom/model";
 import "tinymce/themes/silver/theme";
@@ -100,6 +101,8 @@ import {
   FULLSCREEN_FOOTER_PLUGIN_NAME,
   getIconCdnFile,
   getUsedIconCdnFiles,
+  getLogoCdnFile,
+  getUsedLogoCdnFiles,
   listComponents,
   listUtilities,
   loadAllIcons,
@@ -304,7 +307,8 @@ function setupStandaloneAppShell(): void {
   ).trim();
   let localeText = "English";
   try {
-    localeText = new Intl.DisplayNames(["en"], { type: "language" }).of(localeLocale) ?? localeText;
+    // Names itself, in its own script (matching the picker's own option labels below).
+    localeText = new Intl.DisplayNames([localeLocale], { type: "language" }).of(localeLocale) ?? localeText;
   } catch {
     localeText = localeLocale.split("-")[0].toUpperCase();
   }
@@ -313,20 +317,19 @@ function setupStandaloneAppShell(): void {
 
   const localePanel = document.createElement("div");
   localePanel.className = "canvas-rce-shell__panel";
-  for (const [locale, label] of [
-    ["en", "English"],
-    ["fr", "Français"],
-    ["es", "Español"],
-    ["pt", "Português"],
-    ["hu", "Magyar"],
-    ["zh-Hant", "繁體中文"],
-  ] as const) {
+  const availableLocales = ["en", ...Object.keys(LOCALE_STRINGS).sort()];
+  const localeDisplayNames = new Intl.DisplayNames(availableLocales, { type: "language" });
+  for (const locale of availableLocales) {
     const option = document.createElement("button");
     option.type = "button";
     option.className = "canvas-rce-shell__option";
     option.dataset.locale = locale;
     const optionLabel = document.createElement("span");
-    optionLabel.textContent = label;
+    // Each locale names itself, in its own script — matching the summary's own display name.
+    optionLabel.textContent =
+      new Intl.DisplayNames([locale], { type: "language" }).of(locale) ??
+      localeDisplayNames.of(locale) ??
+      locale;
     const optionMark = document.createElement("span");
     optionMark.className = "canvas-rce-shell__mark";
     optionMark.append(createShellIcon(Check));
@@ -335,14 +338,19 @@ function setupStandaloneAppShell(): void {
       option.classList.add("is-selected");
     }
     option.addEventListener("click", () => {
-      document.documentElement.lang = locale;
-      localeLabel.textContent = label;
-      localeMenu.removeAttribute("open");
-      for (const candidate of localePanel.querySelectorAll<HTMLButtonElement>(
-        ".canvas-rce-shell__option",
-      )) {
-        candidate.classList.toggle("is-selected", candidate.dataset.locale === locale);
+      if (locale === document.documentElement.lang) {
+        localeMenu.removeAttribute("open");
+        return;
       }
+      try {
+        localStorage.setItem(LOCALE_STORAGE_KEY, locale);
+      } catch {
+        // Private mode / storage disabled — the reload below still applies it for this load.
+      }
+      // The app's own strings are only ever resolved once, at the initial `render()` call — a
+      // reload re-runs that with the newly persisted locale instead of trying to re-render (and
+      // re-initialize TinyMCE, the popup, etc.) in place.
+      window.location.reload();
     });
     localePanel.append(option);
   }
@@ -367,28 +375,19 @@ function setupStandaloneAppShell(): void {
   appearanceTitle.className = "canvas-rce-shell__group-title";
   appearanceTitle.textContent = "Appearance";
   appearanceGroup.append(appearanceTitle);
-  // Shared by the click handler below and the initial "system" application at the end of this
-  // function — without running it once eagerly, a dark-mode OS loads with "system" marked
-  // selected but the light scheme still applied, until the user clicks another option and back.
-  const applyAppearance = (appearance: "system" | "light" | "dark"): void => {
-    const selectedMode =
-      appearance === "system"
-        ? window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light"
-        : appearance;
+  // Shared by the click handler below and the initial application at the end of this function.
+  const applyAppearance = (appearance: "light" | "dark"): void => {
     document.body.dataset.appearanceMode = appearance;
-    document.documentElement.style.colorScheme = selectedMode;
-    document.documentElement.dataset.pantokenScheme = selectedMode;
+    document.documentElement.style.colorScheme = appearance;
+    document.documentElement.dataset.pantokenScheme = appearance;
     if (typeof applyChromeTheme === "function") {
-      applyChromeTheme(selectedTheme ?? "rebrand", selectedMode as "light" | "dark");
+      applyChromeTheme(selectedTheme ?? "rebrand", appearance);
     }
     for (const candidate of themePanel.querySelectorAll<HTMLButtonElement>("[data-appearance]")) {
       candidate.classList.toggle("is-selected", candidate.dataset.appearance === appearance);
     }
   };
   for (const [appearance, label, icon] of [
-    ["system", "System", SunMedium],
     ["light", "Light", SunMedium],
     ["dark", "Dark", MoonStar],
   ] as const) {
@@ -402,9 +401,15 @@ function setupStandaloneAppShell(): void {
     mark.className = "canvas-rce-shell__mark";
     mark.append(createShellIcon(icon));
     option.append(text, mark);
-    if (appearance === "system") option.classList.add("is-selected");
+    if (appearance === "light") option.classList.add("is-selected");
     option.addEventListener("click", () => {
       applyAppearance(appearance);
+      // The editor content and the live preview both default to following the app's own
+      // appearance — only guide mode (via `applyParentTheme`) did this before; tools mode's own
+      // shell toggle left both stuck on their prior scheme until a tray/preview control changed.
+      applyEditorTheme(activeEditor);
+      syncPreviewSchemeToAppearance(appearance);
+      void refreshAll();
       themeMenu.removeAttribute("open");
     });
     appearanceGroup.append(option);
@@ -469,10 +474,32 @@ function setupStandaloneAppShell(): void {
     }
   });
 
-  applyAppearance("system");
+  applyAppearance("light");
 }
 
-document.querySelector<HTMLDivElement>("#app")!.innerHTML = render(appHtml, STRINGS);
+/** Persists the shell's own locale choice — never the authored content's own `lang`/`dir`. */
+const LOCALE_STORAGE_KEY = "pantoken-canvas-theme-editor-locale";
+
+/** Reads the persisted locale choice, tolerating missing/corrupt/blocked storage. */
+function loadLocale(): string {
+  try {
+    return localStorage.getItem(LOCALE_STORAGE_KEY) || "en";
+  } catch {
+    return "en";
+  }
+}
+
+const activeLocale = loadLocale();
+// A missing key/locale in `LOCALE_STRINGS` falls back to English — see generate.ts's own comment.
+const activeStrings: Record<string, string> = { ...STRINGS, ...LOCALE_STRINGS[activeLocale] };
+document.documentElement.lang = activeLocale;
+try {
+  document.documentElement.dir = new Intl.Locale(activeLocale).textInfo?.direction ?? "ltr";
+} catch {
+  // Unknown/malformed locale tag — leave `dir` at its default.
+}
+
+document.querySelector<HTMLDivElement>("#app")!.innerHTML = render(appHtml, activeStrings);
 const interactionsScript = document.createElement("script");
 interactionsScript.src = interactionsIifeUrl;
 document.head.append(interactionsScript);
@@ -483,8 +510,11 @@ const onMissingAsset = () => void refreshAll();
 let availableIcons: TaggedIcon[] = [];
 const inlineAssetContents = new Map<string, string>();
 let refreshGeneration = 0;
-const localLogoUrls = import.meta.glob<string>(
-  "/node_modules/@pantoken/plugin-logos/dist/*.png",
+// Covers `plugin-logos` (a real dependency for any scaffolded project) and the icon packages
+// `build-canvas-rce.ts` vendors into `node_modules` purely so this docs-hosted preview's "None
+// (inline)" provider doesn't have to hit a CDN for `::name` autocomplete/picker glyphs.
+const localAssetUrls = import.meta.glob<string>(
+  "/node_modules/@pantoken/plugin-{logos,simple-icons,lucide-lab,custom-icons}/dist/**/*.css",
   { eager: true, import: "default", query: "?url" },
 );
 
@@ -492,7 +522,7 @@ function buildSelectedAssetUrl(file: CdnFile): string {
   if (providerSelect.value !== LOCAL_PROVIDER_ID) {
     return buildFileUrl(file, providerSelect.value);
   }
-  const localUrl = localLogoUrls[`/node_modules/${file.package}/${file.path}`];
+  const localUrl = localAssetUrls[`/node_modules/${file.package}/${file.path}`];
   return localUrl ?? buildFileUrl(file);
 }
 
@@ -600,6 +630,7 @@ function applyParentTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
   const themeButton = [...themeButtons].find((button) => button.dataset.theme === theme);
   if (themeButton) selectToggleButton(themeButtons, themeButton);
   syncDarkModeAvailability();
+  syncPreviewSchemeToAppearance(mode);
   applyEditorTheme(activeEditor);
   void refreshAll();
   syncPreviewPopupChrome();
@@ -693,6 +724,7 @@ const registerPantokenPlugin = (async () => {
         icons: allIcons,
         currentAssets,
         onMissingAsset,
+        buildAssetUrl: buildSelectedAssetUrl,
       },
       logos: {
         logos,
@@ -937,9 +969,13 @@ async function inlineAssetCss(assets: readonly CdnFile[]): Promise<string[]> {
 function syncIconAssetsFromEditor(): boolean {
   const content = parseEditorHtml(getEditorHtml()).content;
   const iconAssetKeys = new Set(availableIcons.map((icon) => assetKey(getIconCdnFile(icon))));
-  const nonIconAssets = currentAssets.filter((asset) => !iconAssetKeys.has(assetKey(asset)));
+  const logoAssetKeys = new Set(logos.map((logo) => assetKey(getLogoCdnFile(logo))));
+  const nonSyncedAssets = currentAssets.filter(
+    (asset) => !iconAssetKeys.has(assetKey(asset)) && !logoAssetKeys.has(assetKey(asset)),
+  );
   const usedIconAssets = getUsedIconCdnFiles(content, availableIcons, currentAssets);
-  const nextAssets = [...nonIconAssets, ...usedIconAssets];
+  const usedLogoAssets = getUsedLogoCdnFiles(content, logos);
+  const nextAssets = [...nonSyncedAssets, ...usedIconAssets, ...usedLogoAssets];
   const changed = currentAssets.map(assetKey).join("\n") !== nextAssets.map(assetKey).join("\n");
   if (changed) currentAssets.splice(0, currentAssets.length, ...nextAssets);
   return changed;
@@ -1193,6 +1229,18 @@ if (
 
 let previewDarkOverride = false;
 syncDarkModeAvailability();
+
+/** Makes the preview's own light/dark display follow an app-wide appearance change (its "include
+ * dark mode" export checkbox stays untouched); the user can still flip it back independently
+ * afterward via `previewSchemeToggle`. No-op while the current theme has no dark preview to show. */
+function syncPreviewSchemeToAppearance(mode: "light" | "dark"): void {
+  if (!includeDarkModeCheckbox.checked) return;
+  previewDarkOverride = mode === "dark";
+  previewSchemeToggle.setAttribute("aria-pressed", String(previewDarkOverride));
+  previewSchemeToggle.classList.toggle("-icon-moon", !previewDarkOverride);
+  previewSchemeToggle.classList.toggle("-icon-sun", previewDarkOverride);
+}
+
 previewSchemeToggle.addEventListener("click", () => {
   previewDarkOverride = !previewDarkOverride;
   previewSchemeToggle.setAttribute("aria-pressed", String(previewDarkOverride));
@@ -1348,9 +1396,10 @@ layoutDirectionToggle.addEventListener("click", () => {
   applyLayoutDirection(layoutDirectionToggle.getAttribute("aria-pressed") !== "true");
   persistPreferences();
 });
-// Row is the default first-visit layout — matches the toggle's default markup (aria-pressed="true",
-// the rows-2 icon) so there's no dead first click reconciling a mismatched initial state.
-applyLayoutDirection(preferences.layout !== "column");
+// Column (stacked) is the default first-visit layout — matches the toggle's default markup
+// (aria-pressed="false", the columns-2 icon) so there's no dead first click reconciling a
+// mismatched initial state.
+applyLayoutDirection(preferences.layout === "row");
 
 /** Saves this app's current layout/preview/CDN provider settings for the next visit. */
 function persistPreferences(): void {

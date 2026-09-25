@@ -21,15 +21,17 @@ export const AUTOCOMPLETE_GLYPH_CLASS = "pantoken-icon-glyph";
  * Pins the autocompleter row glyph to the editor's line-height. Without this, sources whose SVGs
  * carry no explicit `width`/`height` (Simple Icons only declares a `viewBox`) fall back to the
  * browser's default replaced-element size — hugely larger than every other source, and blurry from
- * the browser then downscaling that oversized raster into the row.
+ * the browser then downscaling that oversized raster into the row. `!important` is required: Oxide's
+ * own `.tox-collection` image rules outgun a plain single class on specificity, the same battle the
+ * `LAYOUT_CSS` comment below describes for color/border.
  */
 const AUTOCOMPLETE_CSS = `
 .${AUTOCOMPLETE_GLYPH_CLASS} {
-  width: 1.2em;
-  height: 1.2em;
-  object-fit: contain;
-  flex: none;
-  vertical-align: middle;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  object-fit: contain !important;
+  flex: none !important;
+  vertical-align: middle !important;
 }`;
 
 /**
@@ -137,7 +139,16 @@ const LAYOUT_CSS = `
 }
 .${PICKER_ROOT_CLASS}__tile.is-selected {
   border-color: currentColor !important;
-  background: color-mix(in srgb, currentColor 18%, transparent);
+  /*
+   * A currentColor-based color-mix() couldn't tell light from dark scheme apart, so the
+   * highlight background and the (also currentColor) glyph on top of it sometimes landed at
+   * nearly the same value — e.g. a dark glyph on a background barely lighter than the page.
+   * AccentColor/AccentColorText are paired system colors the browser guarantees sufficient
+   * contrast between, and (unlike this package's own instui design tokens) are always available
+   * here without needing the host page to have loaded anything.
+   */
+  background: AccentColor;
+  color: AccentColorText !important;
 }
 /* A hovered tile borrows the same border as a selected one, so the border alone can't tell them
    apart once the mouse moves elsewhere \u2014 this corner dot persists regardless of hover state. */
