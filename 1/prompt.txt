@@ -1,0 +1,45 @@
+center the sign up button
+
+---
+
+instead of "Expect rough edges and changes as we go. " "We want your input and feedback as we build"
+
+---
+
+now how do I send this html-based email using gmail?
+
+---
+
+what about with 'Mail' on my mac?
+
+---
+
+I'll have to do a light and dark logo
+
+---
+
+can I use an svg?
+
+---
+
+let's remove dark mode for simplicity
+
+---
+
+this is the image I want to use, can we hotlink from a google site? https://sites.google.com/u/0/sitesv-images-rt/REDACTED
+
+---
+
+okay, here's the final source: https://www.instructure.com/sites/default/files/image/2025-08/InstructureSignatureLogo_0.png
+
+---
+
+now give me the steps to send it as an email using apple mail.
+
+---
+
+okay, we need to move the header image into the body because it has a solid white background.
+
+---
+
+update the sign up button to tertiary colors, in gmail the link displays as blue text.
