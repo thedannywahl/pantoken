@@ -1,0 +1,49 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M3CDRBN6B5K4598GX56WNDPA",
+  "session_id": "a7a538e5-084e-4645-94fa-585023889140",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-25T13:58:24.457136Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    ".changeset/canvas-rce-scheme-layout-and-dock-icon-fixes.md",
+    "packages/scaffold/tests/index.test.ts",
+    "plugins/pantoken/logos/package.json",
+    "plugins/pantoken/logos/scripts/generate.test.ts",
+    "plugins/pantoken/logos/scripts/generate.ts",
+    "plugins/pantoken/logos/src/index.ts",
+    "plugins/pantoken/logos/vite.config.ts",
+    "renderers/tinymce/src/index.ts",
+    "renderers/tinymce/src/logos.ts",
+    "renderers/tinymce/src/plugins/logos.ts",
+    "renderers/tinymce/tests/logos-picker.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "d7013cce5ce8",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 5
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-25T13:58:24.440592Z",
+    "agent_lines": 159,
+    "agent_removed": 139,
+    "human_added": 74,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 233,
+    "total_lines_changed": 378,
+    "agent_percentage": 78.83597883597884,
+    "metric_version": 2
+  }
+}
