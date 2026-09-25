@@ -1,0 +1,201 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M3CD295ZYNDDTV5VQZP366GF",
+  "session_id": "a7a538e5-084e-4645-94fa-585023889140",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-25T13:46:22.147702Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 4,
+  "save_step_count": 4,
+  "files_touched": [
+    ".changeset/tinymce-component-modifier-assistance.md",
+    "l10n/ar/tinymce.strings.po",
+    "l10n/ca/tinymce.strings.po",
+    "l10n/cy/tinymce.strings.po",
+    "l10n/da/tinymce.strings.po",
+    "l10n/de/tinymce.strings.po",
+    "l10n/el/tinymce.strings.po",
+    "l10n/en-AU/tinymce.strings.po",
+    "l10n/en-CA/tinymce.strings.po",
+    "l10n/en-GB/tinymce.strings.po",
+    "l10n/en/tinymce.strings.po",
+    "l10n/es/tinymce.strings.po",
+    "l10n/fa/tinymce.strings.po",
+    "l10n/fi/tinymce.strings.po",
+    "l10n/fr-CA/tinymce.strings.po",
+    "l10n/fr/tinymce.strings.po",
+    "l10n/ga/tinymce.strings.po",
+    "l10n/he/tinymce.strings.po",
+    "l10n/hi/tinymce.strings.po",
+    "l10n/ht/tinymce.strings.po",
+    "l10n/hu/tinymce.strings.po",
+    "l10n/hy/tinymce.strings.po",
+    "l10n/id/tinymce.strings.po",
+    "l10n/is/tinymce.strings.po",
+    "l10n/it/tinymce.strings.po",
+    "l10n/ja/tinymce.strings.po",
+    "l10n/ko/tinymce.strings.po",
+    "l10n/mi/tinymce.strings.po",
+    "l10n/ms/tinymce.strings.po",
+    "l10n/nb/tinymce.strings.po",
+    "l10n/nl/tinymce.strings.po",
+    "l10n/nn/tinymce.strings.po",
+    "l10n/pl/tinymce.strings.po",
+    "l10n/pt-BR/tinymce.strings.po",
+    "l10n/pt/tinymce.strings.po",
+    "l10n/ru/tinymce.strings.po",
+    "l10n/se/tinymce.strings.po",
+    "l10n/sl/tinymce.strings.po",
+    "l10n/sv/tinymce.strings.po",
+    "l10n/th/tinymce.strings.po",
+    "l10n/tinymce.strings.pot",
+    "l10n/tr/tinymce.strings.po",
+    "l10n/uk/tinymce.strings.po",
+    "l10n/vi/tinymce.strings.po",
+    "l10n/zh-Hans/tinymce.strings.po",
+    "l10n/zh-Hant/tinymce.strings.po",
+    "pnpm-lock.yaml",
+    "renderers/tinymce/package.json",
+    "renderers/tinymce/src/codemirror/autocomplete.ts",
+    "renderers/tinymce/src/cssdoc/model.ts",
+    "renderers/tinymce/src/i18n.json",
+    "renderers/tinymce/src/lib/component-modifier-toolbar.ts",
+    "renderers/tinymce/src/plugins/components.ts",
+    "renderers/tinymce/src/strings.ts",
+    "renderers/tinymce/tests/autocomplete.test.ts",
+    "renderers/tinymce/tests/component-modifier-toolbar.test.ts",
+    "renderers/tinymce/tests/components-picker.test.ts",
+    "renderers/tinymce/tests/cssdoc-model.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "d7013cce5ce8",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 4
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-25T13:46:22.131338Z",
+    "agent_lines": 1737,
+    "agent_removed": 202,
+    "human_added": 0,
+    "human_modified": 4,
+    "human_removed": 0,
+    "total_committed": 1740,
+    "total_lines_changed": 1943,
+    "agent_percentage": 99.79413278435409,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 852,
+      "user_lines_removed": 202,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".changeset/button-set-seamed-group.md": 8,
+        ".changeset/canvas-rce-scheme-layout-and-dock-icon-fixes.md": 7,
+        ".changeset/logo-mask-aspect-ratio.md": 23,
+        "packages/scaffold/templates/canvas-theme-editor/src/app.html": 22,
+        "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl": 41,
+        "packages/scaffold/tests/index.test.ts": 9,
+        "plugins/pantoken/custom-components/README.md": 3,
+        "plugins/pantoken/custom-components/scripts/build-entries.ts": 9,
+        "plugins/pantoken/custom-components/scripts/generate.ts": 6,
+        "plugins/pantoken/custom-components/src/components/button-set/button-set.css": 418,
+        "plugins/pantoken/custom-components/src/components/button-set/button-set.ts": 10,
+        "plugins/pantoken/custom-components/src/components/button-set/index.ts": 1,
+        "plugins/pantoken/custom-components/src/components/index.ts": 2,
+        "plugins/pantoken/custom-components/src/components/logo/index.ts": 10,
+        "plugins/pantoken/custom-components/src/components/logo/logo.css": 28,
+        "plugins/pantoken/custom-components/src/index.ts": 24,
+        "plugins/pantoken/custom-components/tests/index.test.ts": 61,
+        "plugins/pantoken/custom-components/tests/logo.test.ts": 13,
+        "plugins/pantoken/custom-components/vite.config.ts": 2,
+        "plugins/pantoken/logos/package.json": 1,
+        "plugins/pantoken/logos/scripts/generate.test.ts": 18,
+        "plugins/pantoken/logos/scripts/generate.ts": 10,
+        "plugins/pantoken/logos/src/index.ts": 9,
+        "plugins/pantoken/logos/vite.config.ts": 1,
+        "renderers/tinymce/src/index.ts": 1,
+        "renderers/tinymce/src/lib/icon-picker-styles.ts": 18,
+        "renderers/tinymce/src/logos.ts": 43,
+        "renderers/tinymce/src/plugins/logos.ts": 13,
+        "renderers/tinymce/tests/logos-picker.test.ts": 41
+      },
+      "user_removed_per_file": {
+        ".changeset/local-logo-exports.md": 6,
+        ".changeset/logo-png-canvas-rce.md": 17,
+        "packages/scaffold/templates/canvas-theme-editor/src/app.html": 9,
+        "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl": 21,
+        "packages/scaffold/tests/index.test.ts": 5,
+        "plugins/pantoken/custom-components/README.md": 1,
+        "plugins/pantoken/custom-components/scripts/build-entries.ts": 1,
+        "plugins/pantoken/custom-components/src/index.ts": 3,
+        "plugins/pantoken/logos/package.json": 3,
+        "plugins/pantoken/logos/scripts/generate.ts": 52,
+        "plugins/pantoken/logos/src/index.ts": 7,
+        "plugins/pantoken/logos/vite.config.ts": 16,
+        "renderers/tinymce/src/index.ts": 1,
+        "renderers/tinymce/src/lib/icon-picker-styles.ts": 7,
+        "renderers/tinymce/src/logos.ts": 2,
+        "renderers/tinymce/src/plugins/logos.ts": 26,
+        "renderers/tinymce/tests/logos-picker.test.ts": 25
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 910,
+      "agent_lines_removed": 227
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 1,
+      "user_lines_removed": 1,
+      "agent_lines_added": 2653,
+      "agent_lines_removed": 432,
+      "user_added_per_file": {
+        ".changeset/tinymce-component-modifier-assistance.md": 1
+      },
+      "user_removed_per_file": {
+        ".changeset/tinymce-component-modifier-assistance.md": 1
+      }
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 1,
+      "user_lines_removed": 1,
+      "agent_lines_added": 2653,
+      "agent_lines_removed": 432,
+      "user_added_per_file": {
+        ".changeset/tinymce-component-modifier-assistance.md": 1
+      },
+      "user_removed_per_file": {
+        ".changeset/tinymce-component-modifier-assistance.md": 1
+      }
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 1,
+      "user_lines_removed": 1,
+      "agent_lines_added": 2653,
+      "agent_lines_removed": 432,
+      "user_added_per_file": {
+        ".changeset/tinymce-component-modifier-assistance.md": 1
+      },
+      "user_removed_per_file": {
+        ".changeset/tinymce-component-modifier-assistance.md": 1
+      }
+    }
+  ]
+}
