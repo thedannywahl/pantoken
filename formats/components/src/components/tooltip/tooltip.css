@@ -32,6 +32,7 @@
 
     > .tip {
       position: absolute;
+      inline-size: max-content;
       z-index: 1;
       inset-block-end: 100%;
       inset-inline-start: 50%;

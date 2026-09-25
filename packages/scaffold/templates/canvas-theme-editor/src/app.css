@@ -5,14 +5,20 @@
 }
 
 :where(html) {
-  background-color: var(--instui-color-background-primary, Canvas);
+  background-color: light-dark(
+    var(--instui-color-background-container),
+    var(--instui-color-background-page)
+  );
 }
 
 :where(body) {
   min-height: 100vh;
   margin: 0;
-  background: var(--instui-color-background-primary, Canvas);
-  color: var(--instui-color-text-primary, inherit);
+  background: light-dark(
+    var(--instui-color-background-container),
+    var(--instui-color-background-page)
+  );
+  color: var(--instui-color-text-base, inherit);
 }
 
 body:not(.canvas-rce-shell-enabled) {
@@ -50,9 +56,12 @@ body.canvas-rce-shell-enabled #app-mode {
   gap: 1rem;
   padding: 0.75rem 1.5rem;
   border-block-end: 1px solid var(--instui-color-stroke-base, rgba(0, 0, 0, 0.12));
-  background: color-mix(in srgb, var(--instui-color-background-primary, Canvas) 92%, transparent);
+  background: color-mix(
+    in srgb,
+    light-dark(var(--instui-color-background-container), var(--instui-color-background-page)) 92%,
+    transparent
+  );
   backdrop-filter: blur(12px);
-  position: sticky;
   inset-block-start: 0;
   z-index: 10;
 }
@@ -122,9 +131,12 @@ body.canvas-rce-shell-enabled #app-mode {
   overflow: hidden;
   border: 1px solid var(--instui-color-stroke-base, rgba(0, 0, 0, 0.12));
   border-radius: 0.75rem;
-  background: var(--instui-color-background-primary, Canvas);
+  background: light-dark(
+    var(--instui-color-background-container),
+    var(--instui-color-background-page)
+  );
   box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.15);
-  z-index: 20;
+  z-index: 60;
 }
 
 .canvas-rce-shell__panel-scroll {
@@ -198,6 +210,16 @@ body.canvas-rce-shell-enabled #app-mode {
   display: flex;
   justify-content: flex-end;
   gap: var(--instui-component-shared-tokens-spacing-gap-buttons);
+}
+
+.controls .instui-tooltip,
+.preview-pane .instui-tooltip {
+  z-index: 30;
+}
+
+.controls .instui-tooltip > .tip,
+.preview-pane .instui-tooltip > .tip {
+  z-index: 40;
 }
 
 /* The open/close chevrons point at the tray's edge, so RTL needs the mirror-image glyph, not a flip. */
@@ -401,7 +423,10 @@ body.canvas-rce-shell-enabled #app-mode {
   height: 100vh !important;
   margin: 0 !important;
   padding: 0;
-  background: var(--instui-color-background-primary, Canvas);
+  background: light-dark(
+    var(--instui-color-background-container),
+    var(--instui-color-background-page)
+  );
   overflow: hidden;
   border: 0 none;
   border-radius: 0;

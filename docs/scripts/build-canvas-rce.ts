@@ -35,8 +35,8 @@ await scaffoldProject("canvas-theme-editor", renderDir, {
 // This render dir is never `npm install`ed, so the icon pickers' "None"/local CDN mode (which reads
 // `import.meta.glob("/node_modules/@pantoken/*/dist/...")`) would otherwise find nothing and always
 // fall back to a remote CDN fetch — 404ing for a package (like plugin-lucide-lab) not yet published.
-// Vendoring the real, already-built dist output here is enough; Vite's glob just reads the
-// filesystem, no package.json/module resolution involved.
+// Vendoring the real, already-built dist output here is enough for the local CDN glob. Copy
+// package.json too, because the app entry also imports package subpaths through each export map.
 const localIconPackages: Record<string, string> = {
   "@pantoken/components": join(repoRoot, "formats/components"),
   "@pantoken/plugin-custom-icons": join(repoRoot, "plugins/pantoken/custom-icons"),
@@ -44,9 +44,11 @@ const localIconPackages: Record<string, string> = {
   "@pantoken/plugin-lucide-lab": join(repoRoot, "plugins/pantoken/lucide-lab"),
 };
 for (const [name, packageDir] of Object.entries(localIconPackages)) {
-  const dest = join(renderDir, "node_modules", name, "dist");
+  const packageRoot = join(renderDir, "node_modules", name);
+  const dest = join(packageRoot, "dist");
   mkdirSync(dest, { recursive: true });
   cpSync(join(packageDir, "dist"), dest, { recursive: true });
+  copyFileSync(join(packageDir, "package.json"), join(packageRoot, "package.json"));
 }
 
 // Docs-only iframe auto-sizing: added here, after rendering, so the published starter template has
@@ -87,16 +89,31 @@ await build({
   base: "/tools/canvas-rce/",
   logLevel: "warn",
   resolve: {
-    alias: {
-      "@pantoken/interactions/interactions.iife.js": join(
-        docsRoot,
-        "..",
-        "formats",
-        "interactions",
-        "dist",
-        "interactions.iife.js",
-      ),
-    },
+    alias: [
+      {
+        find: /^@pantoken\/components\/icons\/(.*)\.css$/u,
+        replacement: join(
+          renderDir,
+          "node_modules",
+          "@pantoken",
+          "components",
+          "dist",
+          "icons",
+          "$1.css",
+        ),
+      },
+      {
+        find: "@pantoken/interactions/interactions.iife.js",
+        replacement: join(
+          docsRoot,
+          "..",
+          "formats",
+          "interactions",
+          "dist",
+          "interactions.iife.js",
+        ),
+      },
+    ],
   },
   build: { outDir, emptyOutDir: true },
 });

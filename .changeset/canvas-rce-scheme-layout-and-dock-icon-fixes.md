@@ -29,8 +29,15 @@ Fix several issues in the `canvas-theme-editor` scaffold:
 - Choosing the "None (inline)" CDN provider still fetched the icon picker's Simple Icons/Lucide Lab
   glyph sheets from jsDelivr — the icons plugin was never given the same local-asset resolver the
   logos plugin already used, and that resolver's own glob only covered `plugin-logos` in the first
-  place.
+  place. The docs-only Canvas RCE build now also copies vendored package metadata so package export
+  subpaths like `@pantoken/components/icons/copy.css` resolve after local dist refreshes.
 - The standalone app shell's language picker only ever listed 6 hardcoded locales, and choosing one
   only set `lang` — it never actually swapped any UI strings. It now lists every locale the scaffold
   has real translations for (from the already-generated `locale-strings.ts`), and persists + reloads
   with the chosen locale's strings merged over the English defaults.
+- Icon-only control buttons now use `instui-tooltip` bubbles in addition to screen-reader labels,
+  so pointer and keyboard users get visible labels for the download/copy, utility, and preview
+  controls. The tool surface also raises those tooltip bubbles above TinyMCE's editor chrome.
+- RTL locales now set the scaffolded app's document direction from the generated locale registry,
+  flip the standalone shell, utilities, preview controls, and place the tray/close affordance on the
+  appropriate side.

@@ -124,16 +124,72 @@
     "message": "Edit theme",
     "translate": "always"
   },
+  "canvas-theme-editor.layoutDirectionLabel": {
+    "message": "Switch layout orientation",
+    "translate": "always"
+  },
   "canvas-theme-editor.helpAriaLabel": {
     "message": "Help",
+    "translate": "always"
+  },
+  "canvas-theme-editor.appModeLabel": {
+    "message": "Open web app",
     "translate": "always"
   },
   "canvas-theme-editor.copyHtmlLabel": {
     "message": "Copy HTML",
     "translate": "always"
   },
+  "canvas-theme-editor.downloadPackageLabel": {
+    "message": "Download package",
+    "translate": "always"
+  },
+  "canvas-theme-editor.downloadHtmlLabel": {
+    "message": "Download HTML",
+    "translate": "always"
+  },
   "canvas-theme-editor.previewFrameTitle": {
     "message": "Styled preview",
+    "translate": "always"
+  },
+  "canvas-theme-editor.previewWidthGroupLabel": {
+    "message": "Preview width",
+    "translate": "always"
+  },
+  "canvas-theme-editor.previewWidthLargeLabel": {
+    "message": "Large",
+    "translate": "always"
+  },
+  "canvas-theme-editor.previewWidthMediumLabel": {
+    "message": "Medium",
+    "translate": "always"
+  },
+  "canvas-theme-editor.previewWidthSmallLabel": {
+    "message": "Small",
+    "translate": "always"
+  },
+  "canvas-theme-editor.previewSchemeToggleLabel": {
+    "message": "Preview dark mode",
+    "translate": "always"
+  },
+  "canvas-theme-editor.previewPopupLabel": {
+    "message": "Open preview in a popup",
+    "translate": "always"
+  },
+  "canvas-theme-editor.previewPopupTitle": {
+    "message": "Canvas content preview",
+    "translate": "always"
+  },
+  "canvas-theme-editor.previewPopupBlockedMessage": {
+    "message": "The preview popup was blocked. Allow popups for this site and try again.",
+    "translate": "always"
+  },
+  "canvas-theme-editor.previewFullscreenLabel": {
+    "message": "Show preview fullscreen",
+    "translate": "always"
+  },
+  "canvas-theme-editor.previewPopupReturnLabel": {
+    "message": "Return preview to the editor",
     "translate": "always"
   },
   "canvas-theme-editor.themeTrayAriaLabel": {
@@ -156,12 +212,100 @@
     "message": "CDN provider",
     "translate": "always"
   },
+  "canvas-theme-editor.localProviderLabel": {
+    "message": "None (inline)",
+    "translate": "always"
+  },
+  "canvas-theme-editor.cdnSectionLabel": {
+    "message": "CDN",
+    "translate": "never"
+  },
   "canvas-theme-editor.themeLabel": {
     "message": "Theme",
     "translate": "always"
   },
-  "canvas-theme-editor.modeLabel": {
-    "message": "Mode",
+  "canvas-theme-editor.appearanceLabel": {
+    "message": "Appearance",
+    "translate": "always"
+  },
+  "canvas-theme-editor.appearanceLightLabel": {
+    "message": "Light",
+    "translate": "always"
+  },
+  "canvas-theme-editor.appearanceDarkLabel": {
+    "message": "Dark",
+    "translate": "always"
+  },
+  "canvas-theme-editor.themeRebrandLabel": {
+    "message": "Next gen",
+    "translate": "always"
+  },
+  "canvas-theme-editor.themeCanvasLabel": {
+    "message": "Canvas",
+    "translate": "always"
+  },
+  "canvas-theme-editor.themeCanvasHighContrastLabel": {
+    "message": "Canvas high contrast",
+    "translate": "always"
+  },
+  "canvas-theme-editor.includeDarkModeLabel": {
+    "message": "Include dark mode",
+    "translate": "always"
+  },
+  "canvas-theme-editor.colorLabel": {
+    "message": "Color scheme",
+    "translate": "always"
+  },
+  "canvas-theme-editor.colorNavyLabel": {
+    "message": "Navy",
+    "translate": "always"
+  },
+  "canvas-theme-editor.colorBlueLabel": {
+    "message": "Blue",
+    "translate": "always"
+  },
+  "canvas-theme-editor.colorGreenLabel": {
+    "message": "Green",
+    "translate": "always"
+  },
+  "canvas-theme-editor.colorRedLabel": {
+    "message": "Red",
+    "translate": "always"
+  },
+  "canvas-theme-editor.colorOrangeLabel": {
+    "message": "Orange",
+    "translate": "always"
+  },
+  "canvas-theme-editor.colorGreyLabel": {
+    "message": "Grey",
+    "translate": "always"
+  },
+  "canvas-theme-editor.colorPlumLabel": {
+    "message": "Plum",
+    "translate": "always"
+  },
+  "canvas-theme-editor.colorVioletLabel": {
+    "message": "Violet",
+    "translate": "always"
+  },
+  "canvas-theme-editor.colorStoneLabel": {
+    "message": "Stone",
+    "translate": "always"
+  },
+  "canvas-theme-editor.colorSkyLabel": {
+    "message": "Sky",
+    "translate": "always"
+  },
+  "canvas-theme-editor.colorHoneyLabel": {
+    "message": "Honey",
+    "translate": "always"
+  },
+  "canvas-theme-editor.colorSeaLabel": {
+    "message": "Sea",
+    "translate": "always"
+  },
+  "canvas-theme-editor.colorAuroraLabel": {
+    "message": "Aurora",
     "translate": "always"
   },
   "canvas-theme-editor.downloadCssLabel": {
@@ -172,8 +316,12 @@
     "message": "Download theme.js",
     "translate": "always"
   },
-  "canvas-theme-editor.regenerateLabel": {
-    "message": "Regenerate from config",
+  "canvas-theme-editor.cssPanelHintLabel": {
+    "message": "Add custom CSS here — it's appended to the generated theme.css, in the preview and the download.",
+    "translate": "always"
+  },
+  "canvas-theme-editor.jsPanelHintLabel": {
+    "message": "Add custom JS here — it's appended to the generated theme.js, in the preview and the download.",
     "translate": "always"
   },
   "canvas-theme-editor.helpModalTitle": {
