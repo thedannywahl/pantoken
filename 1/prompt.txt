@@ -74,3 +74,11 @@ In the pantoken repo (renderers/tinymce and docs), I need context on four things
 4. GUIDE VS TOOLS CANVAS-RCE LOADING: Find how /tools/canvas-rce/ and /guide/canvas-rce/ are built/served differently. Look at docs/scripts/build-canvas-rce.ts, docs/public for canvas-rce assets, and any vitepress page under docs/ (guide/canvas-rce or similar) that embeds the tool via iframe vs the standalone /tools/ page. I need to understand why /guide/canvas-rce/ might have "memory issues" and load incorrectly while /tools/canvas-rce/ loads fine — e.g., is /guide/ loading it in an iframe pointing at a duplicate heavy bundle, or double-loading TinyMCE, or not being lazy/code-split, or being embedded via a different (slower) mechanism than /tools/? Look for any repo memory/engineering-log notes on this (docs/engineering-log.md, search for "canvas-rce" "memory" or "guide").
 
 Report back with, for each of the 4 areas: exact file paths and line numbers/snippets, and a clear diagnosis of the likely root cause (or state clearly if you couldn't find enough evidence for a diagnosis). Be thorough but concise — prioritize actionable file:line references over general summary.
+
+---
+
+stage your files and add a changeset and conventional commit, ignoring other changes in the repo as there are other agents working.
+
+---
+
+that git add puts you in an interactive shell about staging the hunk.
