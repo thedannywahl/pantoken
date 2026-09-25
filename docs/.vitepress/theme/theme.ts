@@ -1,14 +1,34 @@
 /**
  * Shared state for the site-wide pantoken theme (rebrand / canvas / canvas high contrast). The palette
  * selector in the nav and the theme bootstrap in `index.ts` both go through {@link applyTheme}, so the
- * `<html data-pantoken-theme>` attribute, the `pantoken-theme` localStorage key, the light/dark gating,
- * and the demo-iframe broadcast stay in sync.
+ * scope attributes, the namespaced storage keys, the light/dark gating, and the demo-iframe broadcast
+ * stay in sync.
  *
- * `site-themes.css` scopes each theme's tokens to `:root[data-pantoken-theme="…"]`; toggling the
- * attribute re-themes the whole site (VitePress chrome via the `@pantoken/vitepress` bridge, the live
- * `@example` blocks, and — over postMessage — the embedded demos).
+ * The state lives in a named `@pantoken/scope` instance (`docs`) rather than in bare
+ * `document.documentElement` writes and unnamespaced storage keys. That is what lets an embedded
+ * preview — the canvas-theme-editor scaffold, say — run its own theme and color scheme on the same
+ * page without the two clobbering each other.
+ *
+ * `site-themes.css` keys each theme's tokens to `[data-pantoken-theme="…"]` on *any* element, so the
+ * scope element re-themes its own subtree; here that element is `<html>`, which re-themes the whole
+ * site (VitePress chrome via the `@pantoken/vitepress` bridge, the live `@example` blocks, and — over
+ * postMessage — the embedded demos).
  */
+import { createScope, type PantokenScope } from "@pantoken/scope";
+import {
+  applyCustomColorStyle,
+  customScaleValues,
+  DEFAULT_CUSTOM_COLOR,
+  deriveDocsCustomScale,
+  isHexColor,
+  parseHexColor,
+} from "./custom-color";
+
+/** One selectable site-wide palette. */
 export type PantokenTheme = "rebrand" | "canvas" | "canvasHighContrast";
+
+/** The active VitePress appearance mode used by the embedded Canvas RCE. */
+export type PantokenScheme = "light" | "dark";
 
 /** One selectable color choice for site-wide brand token remapping. */
 export type PantokenColor =
@@ -24,7 +44,8 @@ export type PantokenColor =
   | "sky"
   | "honey"
   | "sea"
-  | "aurora";
+  | "aurora"
+  | "custom";
 
 /** One palette choice in the theme selector: its {@link PantokenTheme} key and display label. */
 export interface ThemeOption {
@@ -63,15 +84,17 @@ export interface ThemeSelectorStrings {
   honey: string;
   sea: string;
   aurora: string;
+  custom: string;
+  customColorInputLabel: string;
 }
 
 /** English defaults, also the fallback when a locale doesn't localize the selector. */
 export const THEME_SELECTOR_DEFAULTS: ThemeSelectorStrings = {
   label: "Theme",
-  rebrand: "Rebrand",
+  rebrand: "Next gen",
   canvas: "Canvas",
   canvasHighContrast: "Canvas high contrast",
-  colorLabel: "Color scheme",
+  colorLabel: "Theme color",
   navy: "Navy",
   blue: "Blue",
   green: "Green",
@@ -85,11 +108,13 @@ export const THEME_SELECTOR_DEFAULTS: ThemeSelectorStrings = {
   honey: "Honey",
   sea: "Sea",
   aurora: "Aurora",
+  custom: "Custom",
+  customColorInputLabel: "Brand color (hex)",
 };
 
 /** The selectable themes, in menu order. Labels are localized at render time (see {@link ThemeSelectorStrings}). */
 export const THEMES: readonly ThemeOption[] = [
-  { key: "rebrand", label: "Rebrand" },
+  { key: "rebrand", label: "Next gen" },
   { key: "canvas", label: "Canvas" },
   { key: "canvasHighContrast", label: "Canvas high contrast" },
 ];
@@ -114,8 +139,42 @@ export const COLORS: readonly ColorOption[] = [
 /** Only rebrand ships light/dark values; the others are single-scheme. */
 export const supportsScheme = (theme: PantokenTheme): boolean => theme === "rebrand";
 
-const STORAGE_KEY = "pantoken-theme";
-const STORAGE_COLOR_KEY = "pantoken-color";
+/** The instance this site owns. An embedded preview must use a different one. */
+export const DOCS_INSTANCE = "docs";
+
+const STORAGE_KEY = `pantoken:${DOCS_INSTANCE}:theme`;
+const STORAGE_COLOR_KEY = `pantoken:${DOCS_INSTANCE}:color`;
+const STORAGE_CUSTOM_COLOR_KEY = `pantoken:${DOCS_INSTANCE}:custom-color`;
+
+let scope: PantokenScope | null = null;
+
+/**
+ * The docs' own scope, created on first use.
+ *
+ * Rooted at `<html>` so it themes the whole site, but named — anything that declares its own scope
+ * further down the tree (a preview pane, an embedded editor) overrides it for its own subtree and
+ * keeps its own persisted state.
+ */
+export function docsScope(): PantokenScope | null {
+  if (typeof document === "undefined") return null;
+  if (!scope) {
+    const color = getStoredColor();
+    if (color === "custom") applyCustomColorStyle(deriveDocsCustomScale(getCustomColor()));
+    scope = createScope(document.documentElement, {
+      instanceId: DOCS_INSTANCE,
+      theme: getStoredTheme(),
+      color,
+    });
+  }
+  return scope;
+}
+
+/** Reads the active VitePress appearance class. */
+export function getActiveScheme(): PantokenScheme {
+  return typeof document !== "undefined" && document.documentElement.classList.contains("dark")
+    ? "dark"
+    : "light";
+}
 
 /** The persisted theme (default `rebrand`). */
 export function getStoredTheme(): PantokenTheme {
@@ -128,7 +187,36 @@ export function getStoredTheme(): PantokenTheme {
 export function getStoredColor(): PantokenColor {
   if (typeof localStorage === "undefined") return "navy";
   const value = localStorage.getItem(STORAGE_COLOR_KEY);
+  if (value === "custom") return "custom";
   return COLORS.some((c) => c.key === value) ? (value as PantokenColor) : "navy";
+}
+
+/** The persisted custom brand hex, normalized to `#rrggbb` (default navy100). */
+function getStoredCustomColor(): string {
+  try {
+    const value = localStorage.getItem(STORAGE_CUSTOM_COLOR_KEY);
+    return isHexColor(value) ? parseHexColor(value) : DEFAULT_CUSTOM_COLOR;
+  } catch {
+    return DEFAULT_CUSTOM_COLOR;
+  }
+}
+
+let activeCustomColor: string | null = null;
+
+/** The active custom brand hex, `#rrggbb`. */
+export function getCustomColor(): string {
+  activeCustomColor ??= getStoredCustomColor();
+  return activeCustomColor;
+}
+
+/** The custom-color fields demo frames need, present only while `custom` is active. */
+export function customColorPayload(color: PantokenColor): {
+  customColor?: string;
+  customScale?: string[];
+} {
+  if (color !== "custom") return {};
+  const customColor = getCustomColor();
+  return { customColor, customScale: customScaleValues(deriveDocsCustomScale(customColor)) };
 }
 
 // The reader's light/dark choice while on rebrand, remembered across a detour through a single-scheme
@@ -152,16 +240,38 @@ function themeTargetOrigin(frame: HTMLIFrameElement): string {
   }
 }
 
+/**
+ * The demo frames this instance owns: those inside its scope element, minus any sitting inside a
+ * *different* instance's scope. Without that second filter an embedded preview's own frames would be
+ * re-themed by the docs chrome, which is the collision this whole mechanism exists to stop.
+ */
+function ownedFrames(): HTMLIFrameElement[] {
+  const root = docsScope()?.element ?? document.documentElement;
+  return [
+    ...root.querySelectorAll<HTMLIFrameElement>(".pantoken-demo__frame, .canvas-rce-page__frame"),
+  ].filter((frame) => {
+    const owner = frame.closest("[data-pantoken-instance]");
+    return !owner || owner.getAttribute("data-pantoken-instance") === DOCS_INSTANCE;
+  });
+}
+
 /** Post the active theme to every embedded demo runner so it re-themes its rendered result. */
 export function broadcastTheme(
   theme: PantokenTheme,
   color: PantokenColor = getStoredColor(),
 ): void {
   if (typeof document === "undefined") return;
-  for (const frame of document.querySelectorAll<HTMLIFrameElement>(".pantoken-demo__frame")) {
+  for (const frame of ownedFrames()) {
     // deepcode ignore TooPermissiveCorsPostMessage: "*" only targets opaque-origin sandboxed frames (no concrete origin can match); a real-src frame gets its own origin, and the payload is a non-sensitive theme name.
     frame.contentWindow?.postMessage(
-      { type: "pantoken-demo-theme", theme, color },
+      {
+        type: "pantoken-demo-theme",
+        instanceId: DOCS_INSTANCE,
+        theme,
+        color,
+        ...customColorPayload(color),
+        mode: getActiveScheme(),
+      },
       themeTargetOrigin(frame),
     );
   }
@@ -170,9 +280,14 @@ export function broadcastTheme(
 /** Post the active color scheme to every embedded demo runner. */
 export function broadcastColor(color: PantokenColor): void {
   if (typeof document === "undefined") return;
-  for (const frame of document.querySelectorAll<HTMLIFrameElement>(".pantoken-demo__frame")) {
+  for (const frame of ownedFrames()) {
     frame.contentWindow?.postMessage(
-      { type: "pantoken-demo-color", color },
+      {
+        type: "pantoken-demo-color",
+        instanceId: DOCS_INSTANCE,
+        color,
+        ...customColorPayload(color),
+      },
       themeTargetOrigin(frame),
     );
   }
@@ -211,25 +326,36 @@ function syncSchemeClass(html: HTMLElement, theme: PantokenTheme): void {
 }
 
 /**
- * Apply a theme: set the root attribute, persist it, gate light/dark (single-scheme themes force
- * light and hide the appearance toggle via CSS), and broadcast to the demos.
+ * Apply a theme: update the scope, persist it, gate light/dark (single-scheme themes force light and
+ * hide the appearance toggle via CSS), and broadcast to the demos.
  */
 export function applyTheme(theme: PantokenTheme): void {
   if (typeof document === "undefined") return;
   const html = document.documentElement;
-  html.dataset.pantokenTheme = theme;
-  persistTheme(theme);
   syncSchemeClass(html, theme);
+  // Pin the scheme rather than leaving it to the OS: VitePress's `.dark` class is this instance's
+  // scheme input, and pinning is what lets a nested scope choose the opposite one.
+  docsScope()?.set({ theme, scheme: supportsScheme(theme) ? getActiveScheme() : "light" });
+  persistTheme(theme);
   broadcastTheme(theme, getStoredColor());
 }
 
 /**
- * Apply a color scheme: set the root attribute, persist it, and broadcast to the demos.
+ * Apply a color scheme: update the scope, persist it, and broadcast to the demos. `customColor` sets
+ * (and persists) the brand hex behind the `custom` scale.
  */
-export function applyColor(color: PantokenColor): void {
+export function applyColor(color: PantokenColor, customColor?: string): void {
   if (typeof document === "undefined") return;
-  const html = document.documentElement;
-  html.dataset.pantokenColor = color;
+  if (customColor !== undefined) {
+    activeCustomColor = parseHexColor(customColor);
+    try {
+      localStorage.setItem(STORAGE_CUSTOM_COLOR_KEY, activeCustomColor);
+    } catch {
+      // Private mode / storage disabled — the color still applies for this session.
+    }
+  }
+  applyCustomColorStyle(color === "custom" ? deriveDocsCustomScale(getCustomColor()) : null);
+  docsScope()?.set({ color });
   persistColor(color);
   broadcastColor(color);
 }

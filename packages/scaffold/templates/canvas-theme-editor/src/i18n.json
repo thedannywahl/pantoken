@@ -1,32 +1,37 @@
 {
   "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
-  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
   "pageTitle": { "message": "RCE template authoring", "translate": "always" },
   "pageDescription": {
     "message": "Author Canvas RCE page templates styled with pantoken, with a live preview.",
     "translate": "always"
   },
   "editThemeLabel": { "message": "Edit theme", "translate": "always" },
+  "layoutDirectionLabel": { "message": "Switch layout orientation", "translate": "always" },
   "helpAriaLabel": {
     "message": "Help",
     "translate": "optional"
   },
+  "appModeLabel": { "message": "Open web app", "translate": "always" },
   "copyHtmlLabel": { "message": "Copy HTML", "translate": "always" },
-  "editorPaneLabel": {
-    "message": "Editor",
-    "translate": "optional"
-  },
-  "previewPaneLabel": {
-    "message": "Preview",
-    "translate": "optional"
-  },
+  "downloadPackageLabel": { "message": "Download package", "translate": "always" },
   "previewFrameTitle": { "message": "Styled preview", "translate": "always" },
-  "fullscreenEditorAriaLabel": { "message": "Fullscreen editor", "translate": "always" },
-  "fullscreenPreviewAriaLabel": { "message": "Fullscreen preview", "translate": "always" },
-  "resizePanesAriaLabel": { "message": "Resize editor and preview", "translate": "always" },
-  "stackVerticallyLabel": { "message": "Stack vertically", "translate": "always" },
-  "stackSideBySideLabel": { "message": "Stack side by side", "translate": "always" },
-  "swapPanesLabel": { "message": "Swap panes", "translate": "always" },
+  "previewWidthGroupLabel": { "message": "Preview width", "translate": "always" },
+  "previewWidthLargeLabel": { "message": "Large", "translate": "always" },
+  "previewWidthMediumLabel": { "message": "Medium", "translate": "always" },
+  "previewWidthSmallLabel": { "message": "Small", "translate": "always" },
+  "previewSchemeToggleLabel": { "message": "Preview dark mode", "translate": "always" },
+  "previewPopupLabel": { "message": "Open preview in a popup", "translate": "always" },
+  "previewPopupTitle": { "message": "Canvas content preview", "translate": "always" },
+  "previewPopupBlockedMessage": {
+    "message": "The preview popup was blocked. Allow popups for this site and try again.",
+    "translate": "always"
+  },
+  "previewFullscreenLabel": { "message": "Show preview fullscreen", "translate": "always" },
+  "previewPopupReturnLabel": {
+    "message": "Return preview to the editor",
+    "translate": "always"
+  },
+  "downloadHtmlLabel": { "message": "Download HTML", "translate": "always" },
   "themeTrayAriaLabel": { "message": "Theme settings", "translate": "always" },
   "tabConfigLabel": {
     "message": "Config",
@@ -41,14 +46,35 @@
     "translate": "never"
   },
   "cdnProviderLabel": { "message": "CDN provider", "translate": "always" },
-  "themeLabel": {
-    "message": "Theme",
+  "localProviderLabel": { "message": "None (inline)", "translate": "always" },
+  "cdnSectionLabel": { "message": "CDN", "translate": "never" },
+  "themeLabel": { "message": "Theme", "translate": "always" },
+  "appearanceLabel": { "message": "Appearance", "translate": "always" },
+  "appearanceLightLabel": { "message": "Light", "translate": "always" },
+  "appearanceDarkLabel": { "message": "Dark", "translate": "always" },
+  "themeRebrandLabel": { "message": "Next gen", "translate": "optional" },
+  "themeCanvasLabel": { "message": "Canvas", "translate": "optional" },
+  "themeCanvasHighContrastLabel": {
+    "message": "Canvas high contrast",
     "translate": "optional"
   },
-  "modeLabel": {
-    "message": "Mode",
-    "translate": "optional"
-  },
+  "includeDarkModeLabel": { "message": "Include dark mode", "translate": "always" },
+  "colorLabel": { "message": "Color scheme", "translate": "always" },
+  "colorNavyLabel": { "message": "Navy", "translate": "always" },
+  "colorBlueLabel": { "message": "Blue", "translate": "always" },
+  "colorGreenLabel": { "message": "Green", "translate": "always" },
+  "colorRedLabel": { "message": "Red", "translate": "always" },
+  "colorOrangeLabel": { "message": "Orange", "translate": "always" },
+  "colorGreyLabel": { "message": "Grey", "translate": "always" },
+  "colorPlumLabel": { "message": "Plum", "translate": "always" },
+  "colorVioletLabel": { "message": "Violet", "translate": "always" },
+  "colorStoneLabel": { "message": "Stone", "translate": "always" },
+  "colorSkyLabel": { "message": "Sky", "translate": "always" },
+  "colorHoneyLabel": { "message": "Honey", "translate": "always" },
+  "colorSeaLabel": { "message": "Sea", "translate": "always" },
+  "colorAuroraLabel": { "message": "Aurora", "translate": "always" },
+  "colorCustomLabel": { "message": "Custom", "translate": "always" },
+  "customColorInputLabel": { "message": "Brand color (hex)", "translate": "always" },
   "downloadCssLabel": {
     "message": "Download theme.css",
     "translate": "optional"
@@ -57,14 +83,21 @@
     "message": "Download theme.js",
     "translate": "optional"
   },
-  "regenerateLabel": { "message": "Regenerate from config", "translate": "always" },
+  "cssPanelHintLabel": {
+    "message": "Add custom CSS here — it's appended to the generated theme.css, in the preview and the download.",
+    "translate": "always"
+  },
+  "jsPanelHintLabel": {
+    "message": "Add custom JS here — it's appended to the generated theme.js, in the preview and the download.",
+    "translate": "always"
+  },
   "helpModalTitle": { "message": "How to use this page", "translate": "always" },
   "helpModalBody1": {
     "message": "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas.",
     "translate": "always"
   },
   "helpModalBody2": {
-    "message": "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them.",
+    "message": "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to add custom CSS/JS that's appended to the generated <code>theme.css</code>/<code>theme.js</code> before downloading them.",
     "translate": "always"
   },
   "closeLabel": { "message": "Close", "translate": "always" }

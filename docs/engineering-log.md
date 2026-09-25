@@ -100,6 +100,26 @@ pointed at the wrong depth; a plain reinstall reported "up to date" and didn't r
 
 **Fix / rule** — `rm -rf <moved>/*/node_modules && pnpm install` to force a relink.
 
+### `isolate: false` causes intermittent cross-file mock pollution — don't enable it
+
+**Symptom** — CI's Vitest summary suggests `isolate: false` would save ~15s (2756 modules
+re-evaluated 15958 times). Tempting, but trialing it locally caused a different test file to fail
+about 1 in every 4 full-suite runs (`sandbox-error-paths.test.ts`, `file-server.test.ts`,
+`shim.test.ts` each failed on separate runs), each time in code that mocks a Node built-in
+(`node:worker_threads`, `node:fs`, `node:child_process`).
+
+**Root cause** — 28+ test files across the repo call `vi.mock("node:fs"/"node:child_process"/etc,
+...)`. With `isolate: false`, the module registry is shared across test files within a worker, so
+whichever file's mock (or the real built-in) got cached first for that worker can leak into a
+later file that expected its own mock factory to apply — a `vi.resetModules()` before a dynamic
+re-import doesn't fully protect against this because the collision happens at the built-in module
+level, not just the module under test.
+
+**Fix / rule** — Leave `isolate` at its Vitest default (`true`) given how many files here mock Node
+built-ins. Revisit only if the repo moves those mocks to a shared, single-instance strategy (e.g.
+injecting fs/child_process as parameters instead of module-level mocks) across all 28+ files. See
+[Improving Performance](https://vitest.dev/guide/improving-performance#test-isolation).
+
 ## Browser / bundling
 
 ### A postcss-based value import kills the browser client
@@ -204,6 +224,66 @@ does. Pendo puts the guide's layout class (`._pendo-guide-walkthrough_`) on that
 `:is(:scope, [class*="instui"])._pendo-guide-walkthrough_…`. More generally: inside `@scope`, reach
 the root through `:scope`, never through a bare class. Because the build also emits an unscoped
 variant, string-matching tests cannot catch this — verify root-targeting rules in a browser.
+
+### A diffed theme block is only safe when exactly one can apply
+
+**Symptom** — After moving theme blocks off `:root` so a subtree could pick its own theme, a `canvas`
+scope nested inside a `canvasHighContrast` scope rendered with high-contrast colours for most tokens.
+
+**Root cause** — The docs sheet emitted non-default themes as only the tokens whose value _differs_
+from the default, letting the shared majority fall through to the base `:root` block. That is correct
+when exactly one theme block can ever match. Once any element can root a theme, the omitted tokens no
+longer fall through to the base — they inherit from the **enclosing scope**, which may be a different
+theme.
+
+**Fix / rule** — Partition tokens by whether they actually vary across the emitted theme set.
+Invariant tokens go in a shared base block once; varying tokens must be repeated **in full** in every
+theme block. Assert the blocks declare identical token sets — that parity is the nesting-safety
+invariant, and losing it reintroduces the bug silently. Related: never run `applyMinify(css,
+{ flatten: true })` over a scoped sheet, because flattening rewrites `@property` into _unlayered_
+`:root` declarations, and unlayered declarations outrank every cascade layer — including
+`@layer pantoken.theme`.
+
+### A scheme override table is 87kb of work the browser already does
+
+**Symptom** — The multi-scope sheet carried six `[data-pantoken-scheme]` blocks, each re-declaring
+every `light-dark()` token flattened to one branch: 87kb, 15% of the sheet.
+
+**Root cause** — The reasoning was "Canvas RCE can't set `color-scheme`", which confused _can't set an
+inline style_ with _can't have the property set at all_. `color-scheme` is an ordinary CSS property;
+a stylesheet rule sets it, and Canvas loads a stylesheet.
+
+**Fix / rule** — One rule per scheme is the whole mechanism, because `color-scheme` is inherited and
+`light-dark()` resolves against the _consuming descendant's_ computed value, not the element the
+token was declared on:
+
+```css
+[data-pantoken-scheme="dark"] {
+  color-scheme: dark;
+}
+```
+
+87kb became 343 bytes. Browser-verified via `formats/css/tests/manual/scope-test.html` — a string
+test can't catch this class of mistake, because the wrong version also produces correct-looking CSS.
+When a sheet starts enumerating per-token overrides for something the cascade already inherits, stop
+and check whether one declaration would do.
+
+### Reading `document.documentElement` is what desynchronises two instances
+
+**Symptom** — The docs site and the embedded canvas-theme-editor preview constantly fought over the
+active theme and light/dark mode: toggling one changed the other, and a reload restored whichever had
+written last.
+
+**Root cause** — Every mechanism was document-global. State lived in `<html>` datasets, storage used
+bare `pantoken-theme`/`pantoken-color` keys shared by both, theme broadcasts swept _every_ iframe on
+the page, and the demo runner decided its scheme by reading
+`window.parent.document.documentElement.classList.contains("dark")`.
+
+**Fix / rule** — Never read the document root to decide what theme or scheme applies; resolve from
+the element you actually care about (`resolveScope`/`resolveScheme` in `@pantoken/scope`). Namespace
+storage keys by instance (`pantoken:<instanceId>:<field>`). Scope any frame broadcast to your own
+scope element's subtree and skip frames owned by another instance, and tag messages with
+`instanceId` so receivers can reject someone else's. See `docs/conventions/scoping.md`.
 
 ## CI / release
 

@@ -4,7 +4,30 @@
 import { expect, test, vi } from "vite-plus/test";
 import type { Editor } from "tinymce";
 import type { LogoMeta, Product } from "../src/logos.js";
-import { createLogosPlugin, generateLogoHtml, insertLogo } from "../src/plugins/logos.js";
+import { buildLogoMarkup, getLogoCdnFile } from "../src/logos.js";
+import { createLogosPlugin, insertLogo } from "../src/plugins/logos.js";
+
+vi.mock("@pantoken/cdn", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@pantoken/cdn")>()),
+  buildFileUrl: (file: { package: string; path?: string }) =>
+    `https://cdn.example/${file.package}/${file.path}`,
+}));
+
+vi.mock("../src/logos.js", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("../src/logos.js")>()),
+  getLogoMeta: (product: string, layout: string, colorMode: string) =>
+    product === "canvas" && layout === "horizontal" && colorMode === "color"
+      ? {
+          product: "canvas",
+          layout: "horizontal",
+          colorMode: "color",
+          name: "canvas-horizontal-color",
+          path: "canvas/horizontal-color.svg",
+          width: 478,
+          height: 121,
+        }
+      : undefined,
+}));
 
 // Mock editor object
 function createMockEditor(): Editor {
@@ -93,7 +116,7 @@ test("dialog includes product selection", () => {
   expect(productSelectbox.items).toHaveLength(3);
 });
 
-test("dialog includes layout and color-mode selection", () => {
+test("dialog includes layout and color-mode selection with only real enum values", () => {
   const editor = createMockEditor();
   const plugin = createLogosPlugin({
     logos: mockLogos,
@@ -115,34 +138,13 @@ test("dialog includes layout and color-mode selection", () => {
 
   expect(layoutSelectbox).toBeDefined();
   expect(colorModeSelectbox).toBeDefined();
+  // Regression guard: these dropdowns used to offer "vertical"/"monochrome", values that don't
+  // exist in any real logo asset (see plugins/pantoken/logos' LogoLayout/LogoColorMode unions).
+  expect(layoutSelectbox.items.map((i: any) => i.value)).toEqual(["horizontal", "stacked"]);
+  expect(colorModeSelectbox.items.map((i: any) => i.value)).toEqual(["color", "light"]);
 });
 
-test("CSS file is tracked when logo is inserted", () => {
-  const editor = createMockEditor();
-  const currentAssets = [] as any[];
-  const onMissingAsset = vi.fn();
-
-  const plugin = createLogosPlugin({
-    logos: mockLogos,
-    products: mockProducts,
-    currentAssets,
-    onMissingAsset,
-  });
-
-  plugin(editor);
-
-  const addButtonCall = (editor.ui.registry.addButton as any).mock.calls[0];
-  const buttonConfig = addButtonCall[1];
-  buttonConfig.onAction();
-
-  const openCall = (editor.windowManager.open as any).mock.calls[0];
-  const dialogConfig = openCall[0];
-
-  // Verify onSubmit callback exists.
-  expect(dialogConfig.onSubmit).toBeDefined();
-});
-
-test("selecting product/layout/color-mode updates the dialog state without throwing", () => {
+test("dialog initializes to the first product and default variant", () => {
   const editor = createMockEditor();
   const plugin = createLogosPlugin({
     logos: mockLogos,
@@ -158,16 +160,15 @@ test("selecting product/layout/color-mode updates the dialog state without throw
 
   const openCall = (editor.windowManager.open as any).mock.calls[0];
   const dialogConfig = openCall[0];
-  const productSelectbox = dialogConfig.body.items.find((item: any) => item.name === "product");
-  const layoutSelectbox = dialogConfig.body.items.find((item: any) => item.name === "layout");
-  const colorModeSelectbox = dialogConfig.body.items.find((item: any) => item.name === "colorMode");
 
-  expect(() => productSelectbox.onChange({})).not.toThrow();
-  expect(() => layoutSelectbox.onChange({ target: { value: "vertical" } })).not.toThrow();
-  expect(() => colorModeSelectbox.onChange({ target: { value: "monochrome" } })).not.toThrow();
+  expect(dialogConfig.initialData).toEqual({
+    product: "canvas",
+    layout: "horizontal",
+    colorMode: "color",
+  });
 });
 
-test("Insert button starts disabled because no product is preselected", () => {
+test("Insert button starts enabled when a product is available", () => {
   const editor = createMockEditor();
   const plugin = createLogosPlugin({
     logos: mockLogos,
@@ -184,55 +185,121 @@ test("Insert button starts disabled because no product is preselected", () => {
   const openCall = (editor.windowManager.open as any).mock.calls[0];
   const dialogConfig = openCall[0];
   const insertButton = dialogConfig.buttons.find((b: any) => b.text === "Insert");
-  expect(insertButton.disabled).toBe(true);
+  expect(insertButton.enabled).toBe(true);
 });
 
-test("generateLogoHtml renders an <img> tag encoding the variant", () => {
-  const html = generateLogoHtml("canvas", "horizontal", "color");
-  expect(html).toContain('data-product="canvas"');
-  expect(html).toContain('data-layout="horizontal"');
-  expect(html).toContain('data-color-mode="color"');
-});
-
-test("insertLogo inserts HTML, tracks the CSS asset, and injects the stylesheet", () => {
+test("Insert button starts disabled when no product is available", () => {
   const editor = createMockEditor();
-  const currentAssets: any[] = [];
-  const onMissingAsset = vi.fn();
-
-  insertLogo(editor, "canvas", "horizontal", "color", {
+  const plugin = createLogosPlugin({
     logos: mockLogos,
-    products: mockProducts,
-    currentAssets,
-    onMissingAsset,
+    products: [],
+    currentAssets: [],
   });
 
-  const insertContent = (editor as unknown as { insertContent: (html: string) => void })
-    .insertContent;
-  expect(insertContent).toHaveBeenCalledWith(expect.stringContaining('data-product="canvas"'));
-  expect(currentAssets).toEqual([
-    { package: "@pantoken/plugin-logos", path: "dist/canvas-horizontal-color.css" },
-  ]);
-  expect(onMissingAsset).toHaveBeenCalledWith({
+  plugin(editor);
+
+  const addButtonCall = (editor.ui.registry.addButton as any).mock.calls[0];
+  const buttonConfig = addButtonCall[1];
+  buttonConfig.onAction();
+
+  const openCall = (editor.windowManager.open as any).mock.calls[0];
+  const dialogConfig = openCall[0];
+  const insertButton = dialogConfig.buttons.find((b: any) => b.text === "Insert");
+  expect(insertButton.enabled).toBe(false);
+});
+
+test("buildLogoMarkup renders a mask-painted, non-decorative glyph", () => {
+  const meta: LogoMeta = {
+    product: "canvas",
+    layout: "horizontal",
+    colorMode: "color",
+    name: "canvas-horizontal-color",
+    path: "canvas/horizontal-color.svg",
+    width: 478,
+    height: 121,
+  };
+  const html = buildLogoMarkup(meta);
+  expect(html).toBe(
+    '<span class="instui-logo -logo-canvas-horizontal-color" contenteditable="false" role="img" aria-label="canvas logo">\u200B</span>',
+  );
+  expect(html).not.toContain("<svg");
+  expect(html).not.toContain("about:blank");
+  expect(html).not.toContain("aria-hidden");
+});
+
+test("getLogoCdnFile resolves the logo's mask-painter stylesheet", () => {
+  const meta: LogoMeta = {
+    product: "canvas",
+    layout: "horizontal",
+    colorMode: "color",
+    name: "canvas-horizontal-color",
+    path: "canvas/horizontal-color.svg",
+    width: 478,
+    height: 121,
+  };
+  expect(getLogoCdnFile(meta)).toEqual({
     package: "@pantoken/plugin-logos",
     path: "dist/canvas-horizontal-color.css",
   });
 });
 
-test("insertLogo does not duplicate an already-tracked CSS asset", () => {
+test("insertLogo inserts a mask-painted glyph and tracks/injects its stylesheet", () => {
   const editor = createMockEditor();
-  const cssFile = { package: "@pantoken/plugin-logos", path: "dist/canvas-horizontal-color.css" };
-  const currentAssets: any[] = [cssFile];
-  const onMissingAsset = vi.fn();
+  const currentAssets: { package: string; path: string }[] = [];
 
-  insertLogo(editor, "canvas", "horizontal", "color", {
-    logos: mockLogos,
-    products: mockProducts,
-    currentAssets,
-    onMissingAsset,
+  insertLogo(editor, "canvas", "horizontal", "color", { currentAssets });
+
+  const insertContent = (editor as unknown as { insertContent: (html: string) => void })
+    .insertContent;
+  expect(insertContent).toHaveBeenCalledWith(
+    expect.stringContaining('class="instui-logo -logo-canvas-horizontal-color"'),
+  );
+  expect(currentAssets).toEqual([
+    { package: "@pantoken/plugin-logos", path: "dist/canvas-horizontal-color.css" },
+  ]);
+});
+
+test("insertLogo delegates the logo package export to the caller's asset URL builder", () => {
+  const editor = createMockEditor();
+  const buildAssetUrl = vi.fn(() => "/local/canvas-horizontal-color.css");
+
+  insertLogo(editor, "canvas", "horizontal", "color", { currentAssets: [], buildAssetUrl });
+
+  expect(buildAssetUrl).toHaveBeenCalledWith({
+    package: "@pantoken/plugin-logos",
+    path: "dist/canvas-horizontal-color.css",
   });
+  const insertContent = (editor as unknown as { insertContent: (html: string) => void })
+    .insertContent;
+  expect(insertContent).toHaveBeenCalledWith(
+    expect.stringContaining('class="instui-logo -logo-canvas-horizontal-color"'),
+  );
+});
 
-  expect(currentAssets).toHaveLength(1);
-  expect(onMissingAsset).not.toHaveBeenCalled();
+test("insertLogo writes into the CodeMirror doc while the source view is active", () => {
+  const editor = createMockEditor();
+  const insertAtCursor = vi.fn();
+  (editor as unknown as Record<string, unknown>).plugins = {
+    pantoken_source_toggle: { isSourceMode: () => true, insertAtCursor },
+  };
+
+  insertLogo(editor, "canvas", "horizontal", "color", { currentAssets: [] });
+
+  expect(insertAtCursor).toHaveBeenCalledWith(
+    expect.stringContaining('class="instui-logo -logo-canvas-horizontal-color"'),
+  );
+  const insertContent = (editor as unknown as Record<string, unknown>).insertContent;
+  expect(insertContent).not.toHaveBeenCalled();
+});
+
+test("insertLogo no-ops when the product/layout/colorMode combination has no matching logo", () => {
+  const editor = createMockEditor();
+
+  insertLogo(editor, "canvas", "stacked", "light", { currentAssets: [] });
+
+  const insertContent = (editor as unknown as { insertContent: (html: string) => void })
+    .insertContent;
+  expect(insertContent).not.toHaveBeenCalled();
 });
 
 test("submitting the dialog without a selected product just closes it", () => {
@@ -251,11 +318,48 @@ test("submitting the dialog without a selected product just closes it", () => {
 
   const openCall = (editor.windowManager.open as any).mock.calls[0];
   const dialogConfig = openCall[0];
-  const api = { close: vi.fn() };
+  const api = {
+    close: vi.fn(),
+    getData: vi.fn().mockReturnValue({ product: "", layout: "horizontal", colorMode: "color" }),
+  };
   dialogConfig.onSubmit(api);
 
   const insertContent = (editor as unknown as { insertContent: (html: string) => void })
     .insertContent;
   expect(insertContent).not.toHaveBeenCalled();
+  expect(api.close).toHaveBeenCalled();
+});
+
+test("submitting the dialog inserts the selected logo variant", () => {
+  const editor = createMockEditor();
+  const plugin = createLogosPlugin({
+    logos: mockLogos,
+    products: mockProducts,
+    currentAssets: [],
+  });
+
+  plugin(editor);
+
+  const addButtonCall = (editor.ui.registry.addButton as any).mock.calls[0];
+  const buttonConfig = addButtonCall[1];
+  buttonConfig.onAction();
+
+  const openCall = (editor.windowManager.open as any).mock.calls[0];
+  const dialogConfig = openCall[0];
+  const api = {
+    close: vi.fn(),
+    getData: vi.fn().mockReturnValue({
+      product: "canvas",
+      layout: "horizontal",
+      colorMode: "color",
+    }),
+  };
+  dialogConfig.onSubmit(api);
+
+  const insertContent = (editor as unknown as { insertContent: (html: string) => void })
+    .insertContent;
+  expect(insertContent).toHaveBeenCalledWith(
+    expect.stringContaining('class="instui-logo -logo-canvas-horizontal-color"'),
+  );
   expect(api.close).toHaveBeenCalled();
 });

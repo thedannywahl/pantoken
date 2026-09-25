@@ -8,16 +8,61 @@
 
 // Phase 1: content-CSS wiring.
 export { injectContentStylesheet, pantokenContentCssUrls } from "./content-css.js";
+export { PANTOKEN_ICON_PACK_NAME, registerPantokenIconPack } from "./icon-pack.js";
+export { TINYMCE_STRINGS, type TinymceStrings } from "./strings.js";
 
 // Phase 2: templates plugin.
-export { createTemplatesPlugin } from "./plugins/templates.js";
+export { createTemplatesPlugin, pageTemplates } from "./plugins/templates.js";
+
+export {
+  CONTENT_CLASSES_PLUGIN_NAME,
+  createContentClassesPlugin,
+  PANTOKEN_COMMANDS,
+  type ContentClassesPluginOptions,
+  type PantokenFontSize,
+} from "./plugins/content-classes.js";
+
+export {
+  createPantokenPlugin,
+  PANTOKEN_ICON,
+  PANTOKEN_PLUGIN_NAME,
+  PANTOKEN_TOOLBAR_NAME,
+  type PantokenPluginOptions,
+} from "./plugins/pantoken.js";
+
+export {
+  createFullscreenFooterPlugin,
+  FULLSCREEN_FOOTER_PLUGIN_NAME,
+  FULLSCREEN_FOOTER_STATUSBAR_NAME,
+} from "./plugins/fullscreen-footer.js";
+
+export {
+  createSearchReplaceFooterPlugin,
+  SEARCHREPLACE_FOOTER_PLUGIN_NAME,
+  SEARCHREPLACE_FOOTER_STATUSBAR_NAME,
+} from "./plugins/searchreplace-footer.js";
+
+export {
+  createVisualBlocksFooterPlugin,
+  VISUALBLOCKS_FOOTER_PLUGIN_NAME,
+  VISUALBLOCKS_FOOTER_STATUSBAR_NAME,
+} from "./plugins/visualblocks-footer.js";
+
+export {
+  createSupSubPlugin,
+  SUP_SUB_PLUGIN_NAME,
+  SUP_SUB_TOOLBAR_NAME,
+} from "./plugins/sup-sub.js";
 
 // Layouts: starter page layouts sourced from @pantoken/plugin-layouts, alongside Components/Icons/Logos.
-export { type PageLayout, pageLayouts } from "./layouts.js";
+export { type PageLayout, type PageLayoutImagePlaceholder, pageLayouts } from "./layouts.js";
 export {
   createLayoutsPlugin,
   LAYOUTS_PLUGIN_NAME,
   LAYOUTS_TOOLBAR_NAME,
+  materializeLayout,
+  type LayoutImageAttributes,
+  type LayoutImageResolver,
   type LayoutsPluginOptions,
 } from "./plugins/layouts.js";
 
@@ -31,13 +76,23 @@ export {
   validateClassToken,
   type CssDocEntry,
 } from "./cssdoc/model.js";
-export { getIconCdnFile, loadAllIcons } from "./icons.js";
+export {
+  buildIconMarkup,
+  filterIcons,
+  getIconCdnFile,
+  getIconImageSrc,
+  getUsedIconCdnFiles,
+  humanizeIconName,
+  ICON_SOURCES,
+  loadAllIcons,
+  SOURCE_LABELS,
+} from "./icons.js";
 export type { LogoMeta, Product } from "./logos.js";
-export { logos, products } from "./logos.js";
+export { buildLogoMarkup, getLogoCdnFile, getUsedLogoCdnFiles, logos, products } from "./logos.js";
 
 // Phase 3A/B/C: picker plugins.
 export { createComponentsPlugin } from "./plugins/components.js";
-export { createIconsPlugin } from "./plugins/icons.js";
+export { createIconsPlugin, DEFAULT_ICON_TRIGGER, ICONS_COMMAND } from "./plugins/icons.js";
 export { createLogosPlugin } from "./plugins/logos.js";
 
 // Phase 4/5: CodeMirror extensions.

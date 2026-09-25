@@ -1,9 +1,9 @@
 # @pantoken/core
 
 The pantoken transformer. It performs the first and only source transformation: it reads
-`@instructure/instructure-design-tokens` and `@instructure/ui-icons`, resolves the Tokens Studio
-graph, and produces the canonical `@property`-aligned token IR that every other pantoken package
-consumes.
+`@instructure/instructure-design-tokens`, the complete canonical `lucide` catalog, and Instructure's
+custom glyphs from `@instructure/ui-icons`; resolves the Tokens Studio graph; and produces the
+canonical `@property`-aligned token IR that every other pantoken package consumes.
 
 ## Install
 
@@ -48,7 +48,8 @@ buildTokens({ theme: "rebrand", plugins: [focus] });
 
 - Resolves `{path.to.token}` references into `var(...)` pointers, preserving the token graph.
 - Merges light and dark colours into `light-dark()` only where they differ.
-- Rolls icons in as `<image>` tokens with metadata (source, bidirectional, viewBox).
+- Rolls canonical Lucide icons and Instructure custom glyphs into `<image>` tokens with metadata
+  (source, bidirectional, viewBox); custom glyphs win same-name collisions.
 - Sniffs the CSS `@property` `syntax` for every concrete value.
 - Honors Tokens Studio `modify` extensions (darken, lighten, alpha) on concrete colours, and
   preserves reference-valued modifiers as metadata for the native lineage.
@@ -66,8 +67,8 @@ buildTokens({ theme: "rebrand", plugins: [focus] });
 - **`defineToken(input): Token`** — build a full `Token` from partial input (defaults `syntax` and
   `inherits`). **`dedupeByName`**, **`runTokenPlugins`**, **`runIconPlugins`** — the plugin-stage
   runners.
-- **`collectIcons(options): IconLayer`** — read glyphs from `@instructure/ui-icons` as `<image>`
-  tokens plus the icon-colour special values.
+- **`collectIcons(options): IconLayer`** — read canonical glyphs from `lucide` and custom glyphs from
+  `@instructure/ui-icons` as `<image>` tokens plus the icon-colour special values.
 - **`decodeIconSvg`, `getIconSvgs`, `toVectorDrawable`, `toXcodeImageset`, `flutterIconManifest`** —
   native icon-asset emitters (decode a data-URI SVG, then convert to Android VectorDrawable, an
   Xcode imageset, or a Flutter manifest).

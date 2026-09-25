@@ -50,6 +50,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
     gap: var(--instui-spacing-space-xs);
     min-height: var(--instui-component-base-button-medium-height);
     padding: var(--instui-spacing-space-xs)
@@ -63,6 +64,7 @@
     cursor: pointer;
     background: var(--instui-color-background-interactive-action-primary-base);
     color: var(--instui-color-text-interactive-action-primary-base);
+    text-decoration: none;
   }
 
   &:hover {
@@ -472,7 +474,10 @@
   &.-size-sm:is(
       .-shape-square,
       [class*="-icon-"]:not(:has(> *)),
-      [class*="-icon-"]:has(> .pfx-screen-reader-content:only-child)
+      [class*="-icon-"]:has(> .pfx-screen-reader-content:only-child),
+      [class*="-icon-"]:has(> .pfx-screen-reader-content):has(> .tip):not(
+          :has(> :not(.pfx-screen-reader-content):not(.tip))
+        )
     ) {
     inline-size: var(--instui-component-base-button-small-height);
   }
@@ -486,7 +491,10 @@
   &.-size-md:is(
       .-shape-square,
       [class*="-icon-"]:not(:has(> *)),
-      [class*="-icon-"]:has(> .pfx-screen-reader-content:only-child)
+      [class*="-icon-"]:has(> .pfx-screen-reader-content:only-child),
+      [class*="-icon-"]:has(> .pfx-screen-reader-content):has(> .tip):not(
+          :has(> :not(.pfx-screen-reader-content):not(.tip))
+        )
     ) {
     inline-size: var(--instui-component-base-button-medium-height);
   }
@@ -500,14 +508,20 @@
   &.-size-lg:is(
       .-shape-square,
       [class*="-icon-"]:not(:has(> *)),
-      [class*="-icon-"]:has(> .pfx-screen-reader-content:only-child)
+      [class*="-icon-"]:has(> .pfx-screen-reader-content:only-child),
+      [class*="-icon-"]:has(> .pfx-screen-reader-content):has(> .tip):not(
+          :has(> :not(.pfx-screen-reader-content):not(.tip))
+        )
     ) {
     inline-size: var(--instui-component-base-button-large-height);
   }
 
   &.-shape-square,
   &[class*="-icon-"]:not(:has(> *)),
-  &[class*="-icon-"]:has(> .pfx-screen-reader-content:only-child) {
+  &[class*="-icon-"]:has(> .pfx-screen-reader-content:only-child),
+  &[class*="-icon-"]:has(> .pfx-screen-reader-content):has(> .tip):not(
+      :has(> :not(.pfx-screen-reader-content):not(.tip))
+    ) {
     padding: var(--instui-spacing-space-xs);
     aspect-ratio: 1;
   }
@@ -539,7 +553,10 @@
   &.-shape-square[class*="-icon-"]::before,
   &.-shape-circle[class*="-icon-"]::before,
   &[class*="-icon-"]:not(:has(> *))::before,
-  &[class*="-icon-"]:has(> .pfx-screen-reader-content:only-child)::before {
+  &[class*="-icon-"]:has(> .pfx-screen-reader-content:only-child)::before,
+  &[class*="-icon-"]:has(> .pfx-screen-reader-content):has(> .tip):not(
+      :has(> :not(.pfx-screen-reader-content):not(.tip))
+    )::before {
     inline-size: 1.25em;
     block-size: 1.25em;
     margin-inline-end: 0;

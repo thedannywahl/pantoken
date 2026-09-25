@@ -7,15 +7,20 @@
  * @part .list — The row of tabs.
  * @a11y Wire the tab list with role="tablist", each tab with role="tab" and aria-selected, and each panel with role="tabpanel".
  * @example
+ * ```html
  * <div class="pfx-tabs">
  *   <div class="list" role="tablist" aria-label="Default tabs">
- *     <button class="tab -selected" role="tab" aria-selected="true">Overview</button>
- *     <button class="tab" role="tab" aria-selected="false">Details</button>
- *     <button class="tab -disabled" role="tab" aria-disabled="true" disabled>Disabled</button>
- *     <button class="tab" role="tab" aria-selected="false">History</button>
+ *     <button class="tab -selected" role="tab" aria-selected="true" aria-controls="overview-panel">Overview</button>
+ *     <button class="tab" role="tab" aria-selected="false" aria-controls="details-panel">Details</button>
+ *     <button class="tab -disabled" role="tab" aria-disabled="true" aria-controls="disabled-panel" disabled>Disabled</button>
+ *     <button class="tab" role="tab" aria-selected="false" aria-controls="history-panel">History</button>
  *   </div>
- *   <div class="panel" role="tabpanel">The Overview tab's content shows here.</div>
+ *   <div class="panel" id="overview-panel" role="tabpanel">The Overview tab's content shows here.</div>
+ *   <div class="panel" id="details-panel" role="tabpanel" hidden>The Details tab's content shows here.</div>
+ *   <div class="panel" id="disabled-panel" role="tabpanel" hidden>The Disabled tab's content won't be visible.</div>
+ *   <div class="panel" id="history-panel" role="tabpanel" hidden>The History tab's content shows here.</div>
  * </div>
+ * ```
  * @structure
  * .pfx-tabs {
  *   .list {

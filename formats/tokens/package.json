@@ -41,6 +41,7 @@
     "@pantoken/plugin-deprecations": "workspace:*",
     "@pantoken/utils": "workspace:*",
     "@types/node": "catalog:",
+    "lucide": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"

@@ -1,14 +1,10 @@
 import { defineConfig } from "vite-plus";
-import { fileURLToPath } from "node:url";
-import { dirname } from "node:path";
-
-const __dir = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   test: {
     // Reads FC_NUM_RUNS to adjust fast-check iteration counts without changing test source.
     // Default: 100 (fast). Stress runs (vp run property:stress): 10 000.
-    setupFiles: [`${__dir}/scripts/quality/fast-check-setup.ts`],
+    setupFiles: ["./scripts/quality/fast-check-setup.ts"],
     // Default (5000ms) is too tight for a full-suite local run (277 files) where module transform/
     // import contends for CPU; slower CI/gh runners need the same headroom.
     testTimeout: 20_000,
@@ -60,7 +56,10 @@ export default defineConfig({
         "**/dist/**",
         "**/*.config.*",
         "**/*.d.ts",
-        // Data files, not executable code — nothing for v8 to instrument.
+        // Ships as raw source for the consumer's Vue compiler; V8's parser can't instrument SFCs.
+        "plugins/vitepress/side-bar-toggle/src/SidebarToggle.vue",
+        // Data files and raw snippets, not executable code — nothing for v8 to instrument.
+        "**/*.html",
         "**/*.json",
         // Type-only package — no runtime statements to cover, so it can't meet an 85% floor.
         "packages/model/**",
@@ -137,7 +136,7 @@ export default defineConfig({
         command: "vp run -r build",
       },
       "check:all": {
-        command: "vp check",
+        command: "node docs/scripts/site-themes.ts && vp check",
         dependsOn: ["build:all"],
       },
       "test:all": {
@@ -177,7 +176,7 @@ export default defineConfig({
       "snyk:code": {
         command: "node scripts/quality/snyk-code-gate.ts",
       },
-      // Fallow gate: dead-code = error, health = grade A, duplicates = advisory. Needs generated
+      // Fallow gate: dead-code = error, health = grade A, duplicates = thresholded. Needs generated
       // output (build:all) so the CSS-codegen sources and workspace graph resolve.
       "health:fallow": {
         command: "node scripts/quality/fallow-health-gate.ts",
@@ -259,6 +258,14 @@ export default defineConfig({
         command: "vp run @pantoken/web-components#extract",
         cache: false,
       },
+      "tinymce:extract": {
+        command: "vp run @pantoken/tinymce#extract",
+        cache: false,
+      },
+      "layouts:extract": {
+        command: "vp run @pantoken/plugin-layouts#extract",
+        cache: false,
+      },
       "cli:extract": {
         command: "vp run @pantoken/scaffold#extract && vp run @pantoken/ai#extract",
         cache: false,
@@ -275,7 +282,13 @@ export default defineConfig({
       },
       "i18n:extract": {
         command: "true",
-        dependsOn: ["ui:extract", "cli:extract", "docs:extract"],
+        dependsOn: [
+          "ui:extract",
+          "tinymce:extract",
+          "layouts:extract",
+          "cli:extract",
+          "docs:extract",
+        ],
         cache: false,
       },
       // UI (web-components) string localization.
@@ -301,6 +314,56 @@ export default defineConfig({
       },
       "ui:translate:force:copilot": {
         command: "vp run @pantoken/web-components#translate:force:copilot",
+        cache: false,
+      },
+      // TinyMCE string localization.
+      "tinymce:translate": {
+        command: "vp run @pantoken/tinymce#translate",
+        cache: false,
+      },
+      "tinymce:translate:agy": {
+        command: "vp run @pantoken/tinymce#translate:agy",
+        cache: false,
+      },
+      "tinymce:translate:copilot": {
+        command: "vp run @pantoken/tinymce#translate:copilot",
+        cache: false,
+      },
+      "tinymce:translate:force": {
+        command: "vp run @pantoken/tinymce#translate:force",
+        cache: false,
+      },
+      "tinymce:translate:force:agy": {
+        command: "vp run @pantoken/tinymce#translate:force:agy",
+        cache: false,
+      },
+      "tinymce:translate:force:copilot": {
+        command: "vp run @pantoken/tinymce#translate:force:copilot",
+        cache: false,
+      },
+      // Layouts (plugins/pantoken/layouts) string localization.
+      "layouts:translate": {
+        command: "vp run @pantoken/plugin-layouts#translate",
+        cache: false,
+      },
+      "layouts:translate:agy": {
+        command: "vp run @pantoken/plugin-layouts#translate:agy",
+        cache: false,
+      },
+      "layouts:translate:copilot": {
+        command: "vp run @pantoken/plugin-layouts#translate:copilot",
+        cache: false,
+      },
+      "layouts:translate:force": {
+        command: "vp run @pantoken/plugin-layouts#translate:force",
+        cache: false,
+      },
+      "layouts:translate:force:agy": {
+        command: "vp run @pantoken/plugin-layouts#translate:force:agy",
+        cache: false,
+      },
+      "layouts:translate:force:copilot": {
+        command: "vp run @pantoken/plugin-layouts#translate:force:copilot",
         cache: false,
       },
       // Docs locale translation (both claude and agy variants).
@@ -359,17 +422,35 @@ export default defineConfig({
       // Umbrella tasks for all translation domains.
       "i18n:translate": {
         command: "true",
-        dependsOn: ["ui:translate", "docs:translate", "cli:translate"],
+        dependsOn: [
+          "ui:translate",
+          "tinymce:translate",
+          "layouts:translate",
+          "docs:translate",
+          "cli:translate",
+        ],
         cache: false,
       },
       "i18n:translate:agy": {
         command: "true",
-        dependsOn: ["ui:translate:agy", "docs:translate:agy", "cli:translate:agy"],
+        dependsOn: [
+          "ui:translate:agy",
+          "tinymce:translate:agy",
+          "layouts:translate:agy",
+          "docs:translate:agy",
+          "cli:translate:agy",
+        ],
         cache: false,
       },
       "i18n:translate:copilot": {
         command: "true",
-        dependsOn: ["ui:translate:copilot", "docs:translate:copilot", "cli:translate:copilot"],
+        dependsOn: [
+          "ui:translate:copilot",
+          "tinymce:translate:copilot",
+          "layouts:translate:copilot",
+          "docs:translate:copilot",
+          "cli:translate:copilot",
+        ],
         cache: false,
       },
       // Bypasses every domain's translation-memory cache — retranslates and overwrites everything,
@@ -377,7 +458,13 @@ export default defineConfig({
       // DOCS_TRANSLATION_FORCE / I18N_TRANSLATION_FORCE in the respective translation pipelines.
       "i18n:translate:force": {
         command: "true",
-        dependsOn: ["ui:translate:force", "docs:translate:force", "cli:translate:force"],
+        dependsOn: [
+          "ui:translate:force",
+          "tinymce:translate:force",
+          "layouts:translate:force",
+          "docs:translate:force",
+          "cli:translate:force",
+        ],
         cache: false,
       },
       // Same as i18n:translate:force but routed through the agy adapter wrapper.
@@ -385,6 +472,8 @@ export default defineConfig({
         command: "true",
         dependsOn: [
           "ui:translate:force:agy",
+          "tinymce:translate:force:agy",
+          "layouts:translate:force:agy",
           "docs:translate:force:agy",
           "cli:translate:force:agy",
         ],
@@ -395,6 +484,8 @@ export default defineConfig({
         command: "true",
         dependsOn: [
           "ui:translate:force:copilot",
+          "tinymce:translate:force:copilot",
+          "layouts:translate:force:copilot",
           "docs:translate:force:copilot",
           "cli:translate:force:copilot",
         ],
@@ -405,7 +496,7 @@ export default defineConfig({
       // tree and is included in the all-surface task below.
       "i18n:check:drift": {
         command:
-          "vp run @pantoken/translation-adapters#build && vp run @pantoken/i18n-engine#build && vp run @pantoken/web-components#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift",
+          "vp run @pantoken/translation-adapters#build && vp run @pantoken/i18n-engine#build && vp run @pantoken/web-components#check:drift && vp run @pantoken/tinymce#check:drift && vp run @pantoken/plugin-layouts#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift",
       },
       "i18n:drift:fix": {
         command: "node scripts/i18n-drift-fix.ts --provider claude",
@@ -452,7 +543,7 @@ export default defineConfig({
       // Publishing must also validate generated API prose, which is not present in a clean checkout
       // until the English API build runs.
       "gate:i18n": {
-        command: "vp run @pantoken/docs#docs:api:en && vp run i18n:check:drift:all",
+        command: "vp run @pantoken/docs#docs:api:en:build && vp run i18n:check:drift:all",
         dependsOn: ["build:all"],
       },
       "i18n:bundles:build": {

@@ -34,7 +34,8 @@
     "@instructure/ui-icons": "catalog:",
     "@pantoken/model": "workspace:*",
     "@pantoken/plugin-kit": "workspace:*",
-    "@pantoken/utils": "workspace:*"
+    "@pantoken/utils": "workspace:*",
+    "lucide": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:",

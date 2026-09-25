@@ -21,6 +21,8 @@ function createMockEditor(): Editor {
 
   const mockUiRegistry = {
     addButton: vi.fn(),
+    addContextToolbar: vi.fn(),
+    addMenuButton: vi.fn(),
     addMenuItem: vi.fn(),
   };
 
@@ -69,6 +71,10 @@ test("createComponentsPlugin registers toolbar button and menu item", () => {
     "pantokenComponents",
     expect.any(Object),
   );
+  expect(editor.ui.registry.addContextToolbar).toHaveBeenCalledWith(
+    "pantokenComponentModifiersContext",
+    expect.any(Object),
+  );
 });
 
 test("toolbar button opens dialog when clicked", () => {
@@ -88,6 +94,79 @@ test("toolbar button opens dialog when clicked", () => {
   buttonConfig.onAction();
 
   expect(editor.windowManager.open).toHaveBeenCalled();
+});
+
+test("picker lists eligible components and custom components without a search field", () => {
+  const editor = createMockEditor();
+  const plugin = createComponentsPlugin({
+    model: [
+      ...mockModel,
+      {
+        name: "agent-shell",
+        className: ".instui-agent-shell",
+        kind: "custom-component",
+        examples: [],
+      },
+      {
+        name: "date-input",
+        className: ".instui-date-input",
+        kind: "component",
+        examples: [],
+      },
+      {
+        name: "text-input",
+        className: ".instui-text-input",
+        kind: "component",
+        examples: [],
+      },
+      {
+        name: "icon-button",
+        className: ".instui-icon-button",
+        kind: "component",
+        examples: [],
+      },
+      {
+        name: "future-panel",
+        className: ".instui-future-panel",
+        kind: "component",
+        examples: [],
+      },
+      {
+        name: "editor-card",
+        className: ".instui-editor-card",
+        kind: "custom-component",
+        examples: [],
+      },
+      {
+        name: "spacing",
+        className: ".instui-spacing",
+        kind: "utility",
+        examples: [],
+      },
+    ] as any,
+    currentAssets: [],
+  });
+
+  plugin(editor);
+  (editor.ui.registry.addButton as any).mock.calls[0][1].onAction();
+
+  const dialogConfig = (editor.windowManager.open as any).mock.calls[0][0];
+  const items = dialogConfig.body.items;
+
+  expect(items).toHaveLength(1);
+  expect(items[0].name).toBe("component");
+  expect(items[0].items.map((item: { value: string }) => item.value)).toEqual([
+    "button",
+    "editor-card",
+    "future-panel",
+    "icon-button",
+  ]);
+  expect(items[0].items.map((item: { text: string }) => item.text)).toEqual([
+    "button",
+    "editor-card",
+    "future-panel",
+    "icon-button",
+  ]);
 });
 
 test("onMissingAsset callback is invoked when component is inserted", () => {
@@ -157,4 +236,62 @@ test("component example is inserted into editor", () => {
   // Verify insertContent was called with the example HTML.
   const insertContent = (editor as unknown as Record<string, unknown>).insertContent;
   expect(insertContent).toHaveBeenCalledWith('<button class="instui-button">Click me</button>');
+});
+
+test("component example is written into the CodeMirror doc while the source view is active", () => {
+  const editor = createMockEditor();
+  const insertAtCursor = vi.fn();
+  (editor as unknown as Record<string, unknown>).plugins = {
+    pantoken_source_toggle: { isSourceMode: () => true, insertAtCursor },
+  };
+  const plugin = createComponentsPlugin({
+    model: mockModel as any,
+    currentAssets: [],
+  });
+
+  plugin(editor);
+  (editor.ui.registry.addButton as any).mock.calls[0][1].onAction();
+  const dialogConfig = (editor.windowManager.open as any).mock.calls[0][0];
+  dialogConfig.onSubmit({
+    getData: vi.fn().mockReturnValue({ component: "button" }),
+    close: vi.fn(),
+  });
+
+  expect(insertAtCursor).toHaveBeenCalledWith('<button class="instui-button">Click me</button>');
+  const insertContent = (editor as unknown as Record<string, unknown>).insertContent;
+  expect(insertContent).not.toHaveBeenCalled();
+});
+
+test("component example inserts only the HTML from a fenced example", () => {
+  const editor = createMockEditor();
+  const plugin = createComponentsPlugin({
+    model: [
+      {
+        name: "editor-card",
+        className: ".instui-editor-card",
+        kind: "custom-component",
+        description: "A surface container for editor content.",
+        examples: [
+          '-nocard ```html\n<div class="instui-editor-card --p-md">\n  <p>Content here.</p>\n</div>\n```',
+        ],
+        modifiers: [],
+      },
+    ] as any,
+    currentAssets: [],
+  });
+
+  plugin(editor);
+  const addButtonCall = (editor.ui.registry.addButton as any).mock.calls[0];
+  addButtonCall[1].onAction();
+
+  const openCall = (editor.windowManager.open as any).mock.calls[0];
+  openCall[0].onSubmit({
+    getData: vi.fn().mockReturnValue({ component: "editor-card" }),
+    close: vi.fn(),
+  });
+
+  const insertContent = (editor as unknown as Record<string, unknown>).insertContent;
+  expect(insertContent).toHaveBeenCalledWith(
+    '<div class="instui-editor-card --p-md">\n  <p>Content here.</p>\n</div>',
+  );
 });

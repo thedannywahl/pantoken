@@ -12,9 +12,9 @@
  *
  * `check` auto-heals (writes the baseline itself, no `--bless` needed) when the drift ISN'T from an
  * upstream bump — e.g. a `formats/tokens/known-syntax-issues.json` patch rewriting a token's value.
- * Provenance (design-tokens ref/commit, ui-icons version) unchanged means there's no upstream commit to
- * review, so the change was already reviewed as a normal PR diff; only a real provenance change (or an
- * enforcement failure) still requires a manual `vp run upgrade:bless`.
+ * Provenance (design-tokens ref/commit, ui-icons version, Lucide version) unchanged means there's no
+ * upstream change to review, so the change was already reviewed as a normal PR diff; only a real
+ * provenance change (or an enforcement failure) still requires a manual `vp run upgrade:bless`.
  *
  * Bless also enforces the deprecation lifecycle: a bump that DROPS an upstream token can't be blessed
  * until that token has a `deprecations.json` entry (so no removal ships silently), and once a
@@ -99,7 +99,7 @@ function tryBless(previous: Manifest | undefined): boolean {
   mkdirSync(resolve(here, "baseline"), { recursive: true });
   writeFileSync(baselinePath, serializeManifest(current));
   console.log(
-    `✓ blessed baseline: design-tokens ${provenance.designTokens.ref}@${provenance.designTokens.commit.slice(0, 7)}, ui-icons ${provenance.uiIcons.resolved}`,
+    `✓ blessed baseline: design-tokens ${provenance.designTokens.ref}@${provenance.designTokens.commit.slice(0, 7)}, ui-icons ${provenance.uiIcons.resolved}, lucide ${provenance.lucide.resolved}`,
   );
   return true;
 }

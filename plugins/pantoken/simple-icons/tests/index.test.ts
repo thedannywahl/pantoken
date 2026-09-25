@@ -34,6 +34,29 @@ test("rehype hook resolves brand codes at render", () => {
   expect(resolver?.("nope")).toBeUndefined();
 });
 
+test("token hook skips a slug whose token name already exists", () => {
+  const warn = console.warn;
+  const warnings: unknown[] = [];
+  console.warn = (...args: unknown[]) => warnings.push(args);
+  try {
+    const plugin = simpleIcons({
+      registry: { ...registry, siX: { title: "X", slug: "x", path: "M0 0z" } },
+      slugs: ["x"],
+    });
+    const existing = {
+      name: "--instui-icon-x",
+      syntax: "<image>" as const,
+      inherits: true,
+      value: "url('builtin')",
+    };
+    const out = plugin.tokens?.({ tokens: [existing], theme: "rebrand" });
+    expect(out).toEqual([existing]);
+    expect(warnings).toHaveLength(1);
+  } finally {
+    console.warn = warn;
+  }
+});
+
 test("token hook without a registry throws a helpful error", () => {
   expect(() =>
     simpleIcons({ slugs: ["github"] }).tokens?.({

@@ -1,0 +1,22 @@
+@media print {
+  .mce-content-body {
+    .mce-placeholder,
+    [data-mce-bogus="all"] {
+      display: none !important;
+    }
+
+    [data-mce-bogus]:not([data-mce-bogus="all"]) {
+      display: contents !important;
+    }
+
+    .mce-visual-caret {
+      display: none !important;
+    }
+
+    [data-mce-selected],
+    *:focus,
+    .mce-edit-focus {
+      outline: none !important;
+    }
+  }
+}

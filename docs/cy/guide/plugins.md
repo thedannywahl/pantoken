@@ -1,12 +1,12 @@
-# Ategion
+# Plwgins
 
-Ategyn pantoken yn estyn y allbwn token neu CSS heb fforkio pecyn. Adeiladwch un gyda
+Mae plwg pantoken yn estyn allbwn token neu CSS heb forcio pecyn. Adeiladwch un gyda
 `definePlugin` o `@pantoken/plugin-kit`, yna pasiwch ef i `buildTokens` neu `toCss`.
 
-## Ysgrifennu ategyn
+## Awdur plug-in
 
-Rhowch i `definePlugin` y hooks rydych yn eu gweithredu. Mae'n dychwelyd ategyn arferol, wedi'i frandio gyda'r
-capasiti a amcangyfrifwyd o'r hooks hynny. Gall ategyn estyn y IR (`tokens`, `icons`), yr allbwn CSS
+Rhowch i `definePlugin` yr hooks rydych chi'n eu gweithredu. Mae'n dychwelyd plug-in arferol, wedi'i frandio gyda'r
+galluedd a amcangyfrifwyd o'r hooks hynny. Gall plug-in ehangu'r IR (`tokens`, `icons`), allbwn y CSS
 (`css`), neu'r ddau.
 
 ```ts
@@ -20,15 +20,14 @@ export const brand = () =>
   });
 ```
 
-## Cofrestru sy'n ymwybodol o alluoedd
+## Cofrestru sy'n ymwybodol o allu
 
-`buildTokens` a `toCss` yn rhedeg `checkPlugins` dros yr ategion a basiwch. Mae'n rhybuddio — byth yn taflu —
-pan nad oes hook cyfatebol gan ategyn ar gyfer y cam y mae wedi'i gofrestru ynddo, felly ategyn sy'n unig-token a basiwyd
-i `toCss` yw ei basio heibio gyda nodyn yn hytrach na ddim ei wneud yn ddienw.
+Mae `buildTokens` a `toCss` yn rhedeg `checkPlugins` dros y plug-ins rydych yn eu pasio. Mae'n rhybuddio — ni fydd byth yn taflu —
+pan nad oes hook yn cyfateb i'r cam y'i cofrestrwyd ynddo, felly caiff plug-in sy'n token-yn-unig a gafodd ei basio i `toCss` ei hepgor gyda nodyn yn lle peidio â gwneud dim yn dawel.
 
-## Cyfansoddi ategion
+## Cyfansoddi plug-ins
 
-Adeiladu ar ben ategyn arall gyda `extendPlugin`, neu gyfuno cydymaith gyda `mergePlugin`:
+Adeiladwch ar ben plug-in arall gyda `extendPlugin`, neu gyfuniwch gymheiriaid gyda `mergePlugin`:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -37,13 +36,13 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Mae hooks ar yr un cam yn cyfansoddi: `tokens` yn rhedeg y sylfaen yna'r ychwanegiad, `css` yn uno'r ddwy
-chyfraniad, a `icons` yn rhedeg y ddau.
+Mae hooks un-cam yn cyfansoddi: mae `tokens` yn rhedeg y sylfaen yna'r atodiad, mae `css` yn uno'r ddau
+gyfraniad, ac mae `icons` yn rhedeg y ddau.
 
-## Dilysu allbwn eich ategyn
+## Dilyswch allbwn eich plug-in
 
-Rhedwch y gwiriadau drifft rhannol o `@pantoken/utils` dros allbwn eich ategyn eich hun yn ei brofion, fel y
-methiant o achos sillafu neu enwi token yn newid yn methu'n gyflym ac yn lleol:
+Rhedwch y gwiriadau drift rhannol o `@pantoken/utils` dros allbwn eich plug-in eich hun yn ei brofiad, fel y bydd
+teipograffeg neu botyn token a ail-enwyd yn methu'n gyflym ac yn leol:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -56,15 +55,96 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## Y ategion wedi'u bundio
+## Y plug-ins bundled
 
-- `@pantoken/plugin-simple-icons` — brandio eiconau o simple-icons, wedi'u cofrestru fel tokenau eicon.
-- `@pantoken/plugin-logos` — logoau cynnyrch Instructure fel SVGs, URI data, a thokenau delwedd `--instui-logo-*`.
-- `@pantoken/plugin-prune-custom-props` — ategyn PostCSS (nid ategyn pantoken) sy'n tynnu
-  eiddo arferol heb ei ddefnyddio o arddullfaen.
+- `@pantoken/plugin-simple-icons` — brand icons o simple-icons, cofrestredig fel tokenau eicon.
+- `@pantoken/plugin-lucide-lab` — eiconau Lucide Lab, cofrestredig fel tokenau delwedd `--instui-icon-*`.
+- `@pantoken/plugin-logos` — logos cynnyrch Instructure fel SVGs, URIau data, a tokenau delwedd `--instui-logo-*`.
+- `@pantoken/plugin-prune-custom-props` — plug-in PostCSS (nid plug-in pantoken) sy'n tynnu
+  perchnogion wedi'u marcio fel arall heb eu defnyddio o daflen arddull.
+- `@pantoken/plugin-custom-theme-colors` — ail-frandio tudalen trwy osod un priodoledd
+  (`data-pantoken-color`) i un o 13 palet, neu i `custom` ar gyfer unrhyw hex brand. Gweler
+  [Lliwiau Thema](#theme-colors).
 
-Ychydig o bethau a werthodd fel ategion yn awr yn cael eu llongio yn `@pantoken/components`, gan fod cymaint o gydrannau yn eu hangen allan o'r blwch: cysgodion codiad (`--instui-elevation-*`, yn `components.css`), y cylch amgylch-ffocws
-(yn `base.css` — mae pob elfen y gellir ei ffocysu yn ei gael pan fo pantoken yn berchen ar y dudalen), a'r ffynonellau brand Instructure
-(Atkinson Hyperlegible Next: mae `base.css` yn cymhwyso `--instui-font-family-base`; mae'r `@pantoken/components/fonts.css` dewisol yn llwytho'r `@font-face` woff2s).
+Gellir llwytho cofrestriad Lucide Lab yn hwyr, yna ei basio i'r hook token sy'n sync:
 
-Gweler yr [adroddiad API](/api/) ar gyfer allforion pob ategyn.
+```ts
+import { buildTokens } from "@pantoken/core/build";
+import { defaultRegistry, lucideLab } from "@pantoken/plugin-lucide-lab";
+
+const registry = await defaultRegistry();
+buildTokens({
+  theme: "rebrand",
+  plugins: [lucideLab({ registry, names: ["burger", "at-sign-circle"] })],
+});
+```
+
+Ychydig o bethau a oedd yn plug-ins yn y gorffennol sy'n cael eu cynnwys yn awr yn `@pantoken/components`, gan fod cymaint o gydrannau yn eu hangen allan o'r bocs: cysgodion codiad (`--instui-elevation-*`, yn `components.css`), y cylch amlinell ffocws (yn `base.css` — mae pob elfen y gellir ei ffocysu yn ei chael pan fo pantoken yn berchen ar y dudalen), a'r ffontiau brand Instructure (Atkinson Hyperlegible Next: mae `base.css` yn cymhwyso `--instui-font-family-base`; mae `@pantoken/components/fonts.css` dewisol yn llwytho'r woff2s `@font-face`).
+
+## Lliwiau thema {#theme-colors}
+
+Mae `@pantoken/plugin-custom-theme-colors` yn allbynnu un bloc `[data-pantoken-color="…"]` fesul palet
+(`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,
+`aurora`). Mae pob bloc yn pwyntio'r rhagluniau brand (`--instui-primitive-color-navy-*` a `-blue-*`)
+at y palet a ddewiswyd. Mae hefyd yn ail-aflewyrchu'r arwynebau brand a gafodd eu llunio i hexau llythrennol gan yr upstream,
+gan gadw eu alfa pobedig drwy `color-mix()`. Mae lliwiau statws semantaidd, accent glas eglur, a
+cysgodion codiad yn aros yn eu lle. Rhowch gynnig arno yn y
+[demo themio seiliedig ar swatch](https://stackblitz.com/edit/vitejs-vite-sg9oy7ln?file=index.html).
+
+```html
+<html data-pantoken-color="sea"></html>
+```
+
+### Lliw brand wedi'i bersonoli
+
+Gosodwch `data-pantoken-color="custom"` i ail-frandio o unrhyw hex, megis y lliw primary y mae gweinyddwr Canvas
+yn ei deipio i mewn i Olynyddwr y Thema. Mae pantoken yn deillio graddfa gyflawn 10–200 `--instui-primitive-color-custom-*`
+ohono:
+
+1. **Crwba cyfeirnod.** Mae goleuedd targed pob cam yn gyfartaledd goleuedd OKLCH y 13
+   palet ar y cam hwnnw, gyda 0 wedi'i sefydlu ar wyn a 210 ar ddu. Felly mae lleoliad y graddfa wedi'i bersonoli
+   yn cyfateb i leoliad y paletau a anfonwyd.
+2. **Anchâr.** Mae'r mewnbwn yn disgyn ar y cam y mae goleuedd targed y cam hwnnw yn agosaf at ei un ei hun, yna'n plygu i
+   'r union oleuedd hwnnw. Mae `#cccccc` yn dod yn `custom-40` ar `#c9c9c9`: yn agos at y mewnbwn, ond nid
+   bob tro'n union yr un peth. Mae "agosaf" yn golygu'r cam agosaf ar y crwba, nid y lliw palet presennol agosaf.
+3. **Llenwi.** Mae pob cam arall yn cadw cwmpas y mewnbwn. Mae ei atgyrffiad yn dilyn crwba cyffredin y paletau o ran yr ankâr, ac mae'n cael ei leihau yn unig pan fydd lliw y tu allan i sRGB.
+
+Dim ond `#rgb` a `#rrggbb` sy'n cael eu derbyn; mae popeth arall yn taflu `TypeError`, felly ni all hex o ffurflen fewnbynnu fewnosod CSS.
+
+Amser adeiladu, allbynwch y rheol gyfan gyda'r rhagluniau deilliedig eisoes wedi'u datgan:
+
+```ts
+import { customColorCss, customThemeColors } from "@pantoken/plugin-custom-theme-colors";
+
+customThemeColors({ custom: "#e62429" }); // as a plugin, alongside the 13 palettes
+customColorCss("#e62429"); // or the custom rule on its own
+```
+
+I ddewis y lliw ar amser rhedeg heb longio'r set token, rhag-enwogwch y crwba a'r rheol ail-lunio wrth adeg adeiladu. Yna defnyddio'r mewnbwn dibyniaeth-amhrwm `/scale` yn y porwr, a gosod dim ond y 20
+rhaglun derive:
+
+```ts
+// Build time
+import {
+  customColorReferenceCurve,
+  customColorRemapCss,
+} from "@pantoken/plugin-custom-theme-colors";
+
+const curve = customColorReferenceCurve(); // JSON-safe
+const remapCss = customColorRemapCss(); // ship alongside the palette stylesheet
+```
+
+```ts
+// Browser
+import { deriveScale } from "@pantoken/plugin-custom-theme-colors/scale";
+
+const { anchorStep, steps } = deriveScale(input.value, curve);
+style.textContent = `:root[data-pantoken-color="custom"] { ${[...steps]
+  .map(([step, hex]) => `--instui-primitive-color-custom-custom${step}: ${hex};`)
+  .join(" ")} }`;
+document.documentElement.dataset.pantokenColor = "custom";
+```
+
+Mae dewiswr thema safle'r ddogfen, olynydd thema Canvas, a'r demo uchod i gyd yn gweithio fel hyn.
+
+Gweler yr [Cyfeirlyfr API](/api/) ar gyfer allforion pob plug-in.

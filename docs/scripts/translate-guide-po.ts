@@ -12,6 +12,7 @@ import {
   writeCatalog,
 } from "@pantoken/i18n-engine";
 import { AiTranslationAdapter } from "./api-translation.ts";
+import { sanitizeGuideFrontmatter } from "./guide-frontmatter.ts";
 import { reassemble, segmentMarkdown } from "./segment-markdown.ts";
 import { parseRequestedGuideFiles } from "./translation-scope.ts";
 import { NON_ROOT_LOCALES, parseRequestedLocales } from "../.vitepress/i18n.ts";
@@ -55,15 +56,17 @@ for (const locale of locales) {
       continue;
     }
     let promptIndex = 0;
-    const localized = reassemble(segmentMarkdown(translated), (text) => {
-      const prompt = promptBodies[promptIndex];
-      if (prompt !== undefined && text === prompt) {
-        const result = promptTranslations[`prompt:${promptIndex}`] ?? text;
-        promptIndex++;
-        return result;
-      }
-      return text;
-    });
+    const localized = sanitizeGuideFrontmatter(
+      reassemble(segmentMarkdown(translated), (text) => {
+        const prompt = promptBodies[promptIndex];
+        if (prompt !== undefined && text === prompt) {
+          const result = promptTranslations[`prompt:${promptIndex}`] ?? text;
+          promptIndex++;
+          return result;
+        }
+        return text;
+      }),
+    );
     if (localized.trim().length === 0) {
       console.warn(`  ! ${locale} ${file}: empty translation, not cached`);
       continue;

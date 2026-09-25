@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Authors starter page templates against pantoken's classes: TinyMCE for editing (pinned/
  * configured to match instructure/canvas-lms's own RCE — see README), a custom "Insert template"
@@ -5,101 +6,751 @@
  * provider/theme/mode. The page shell itself is built with pantoken (wrapper layout, tray, modal,
  * tabs) so this authoring tool dogfoods the same library it's previewing.
  */
-import "@pantoken/css/style.rebrand.light.lean.css"; // this app's own chrome always uses this theme, independent of the preview's chosen theme
-import "@pantoken/components/base.css";
 import "@pantoken/components/components.css";
+import "@pantoken/components/utilities.css";
+import "@pantoken/components/base.css";
+import "@pantoken/components/icons/copy.css";
+import "@pantoken/components/icons/app-window-mac.css";
+import "@pantoken/components/icons/x.css";
+import "@pantoken/components/icons/check.css";
+import "@pantoken/components/icons/download.css";
+import "@pantoken/components/icons/file-archive.css";
+import "@pantoken/components/icons/sliders-horizontal.css"; // app.html's -icon-sliders-horizontal button modifier
+import "@pantoken/components/icons/circle-question-mark.css"; // app.html's -icon-circle-question-mark button modifier
+import "@pantoken/components/icons/rows-2.css"; // app.html's layout-direction toggle, row state
+import "@pantoken/components/icons/columns-2.css"; // app.html's layout-direction toggle, column state
+import "@pantoken/components/icons/monitor.css"; // app.html's preview-width-picker, large
+import "@pantoken/components/icons/tablet.css"; // app.html's preview-width-picker, medium
+import "@pantoken/components/icons/smartphone.css"; // app.html's preview-width-picker, small
+import "@pantoken/components/icons/app-window.css"; // app.html's preview popup button
+import "@pantoken/components/icons/maximize.css"; // app.html's preview-fullscreen-toggle, off state
+import "@pantoken/components/icons/minimize.css"; // app.html's preview-fullscreen-toggle, on state
+import "@pantoken/components/icons/moon.css"; // app.html's preview-scheme-toggle, light state
+import "@pantoken/components/icons/sun.css"; // app.html's preview-scheme-toggle, dark state
+import adaptiveTokensCss from "@pantoken/css/style.lean.css?inline";
+import rebrandLightTokensCss from "@pantoken/css/style.rebrand.light.lean.css?inline";
+import canvasTokensCss from "@pantoken/css/style.canvas.lean.css?inline";
+import canvasHighContrastTokensCss from "@pantoken/css/style.canvas-high-contrast.lean.css?inline";
+import baseCss from "@pantoken/components/base.css?inline";
+import componentIconsCss from "@pantoken/components/component-icons.css?inline";
+import componentsCss from "@pantoken/components/components.css?inline";
+import utilitiesCss from "@pantoken/components/utilities.css?inline";
+import fontsCss from "@pantoken/components/fonts.css?inline";
+import localInteractionsJs from "@pantoken/interactions/interactions.iife.js?raw";
+// A resolved asset URL for a real <script> tag — a dynamic import() of a pure side-effect module
+// from a "sideEffects": false package can get tree-shaken out of a production bundle.
+import interactionsIifeUrl from "@pantoken/interactions/interactions.iife.js?url";
+
+import "@pantoken/plugin-custom-components/custom-components.css";
 import "@pantoken/plugin-layouts/layouts.css";
 import "./app.css";
 import appHtml from "./app.html?raw";
 import { STRINGS } from "./strings.ts";
+import { LOCALE_STRINGS } from "./locale-strings.ts";
+import { LOCALE_DIRS } from "./locale-dirs.ts";
 import tinymce from "tinymce";
+import "tinymce/models/dom/model";
 import "tinymce/themes/silver/theme";
 import "tinymce/icons/default";
-// canvas-lms injects its skin CSS as a raw string via a custom mechanism (RCEWrapper.tsx's
-// injectTinySkin()) — out of scope here; plain side-effect imports achieve the same look.
-import "tinymce/skins/ui/oxide/skin.css";
-import "tinymce/skins/ui/oxide/content.css";
-import "tinymce/skins/content/default/content.css";
+import "tinymce/plugins/image";
+import "tinymce/plugins/link";
+import "tinymce/plugins/lists";
+import "tinymce/plugins/autosave";
+import "tinymce/plugins/fullscreen";
+import "tinymce/plugins/quickbars";
+import "tinymce/plugins/searchreplace";
+import "tinymce/plugins/wordcount";
+import "tinymce/plugins/table";
+import "tinymce/plugins/media";
+import "tinymce/plugins/visualblocks";
+import nextGenSkinCss from "@pantoken/tinymce/skins/next-gen/skin.css?inline";
+import nextGenContentCss from "@pantoken/tinymce/skins/next-gen/content.css?inline";
+import canvasSkinCss from "@pantoken/tinymce/skins/canvas/skin.css?inline";
+import canvasContentCss from "@pantoken/tinymce/skins/canvas/content.css?inline";
+import canvasHighContrastSkinCss from "@pantoken/tinymce/skins/canvas-high-contrast/skin.css?inline";
+import canvasHighContrastContentCss from "@pantoken/tinymce/skins/canvas-high-contrast/content.css?inline";
 import {
   buildTheme,
-  buildThemeCss,
-  buildThemeJs,
   CDN_PROVIDERS,
   DEFAULT_CDN_PROVIDER_ID,
+  defaultThemeCssAssets,
   type ThemeMode,
   type ThemeVariant,
 } from "@pantoken/canvas-theme-editor";
-import type { Editor, Ui } from "tinymce";
+import { Check, ChevronDown, createElement, Languages, MoonStar, Palette, SunMedium } from "lucide";
+// Inlined (not CDN-fetched) so the live preview's color swap never depends on a network round trip.
+import {
+  COLOR_KEYS,
+  CUSTOM_COLOR_KEY,
+  customColorCss,
+  customThemeColorsCss,
+  isHexColor,
+  parseHexColor,
+  type PantokenColorNamespace,
+} from "@pantoken/plugin-custom-theme-colors";
+import type { Editor } from "tinymce";
 import { basicSetup, EditorView } from "codemirror";
 import { css } from "@codemirror/lang-css";
 import { html } from "@codemirror/lang-html";
 import { javascript } from "@codemirror/lang-javascript";
-import type { CdnFile } from "@pantoken/cdn";
+import { strToU8, zipSync } from "fflate";
+import { buildFileUrl, type CdnFile } from "@pantoken/cdn";
 import {
-  createLayoutsPlugin,
-  createComponentsPlugin,
-  createIconsPlugin,
-  createLogosPlugin,
+  CONTENT_CLASSES_PLUGIN_NAME,
+  createContentClassesPlugin,
+  createFullscreenFooterPlugin,
+  createPantokenPlugin,
+  createSearchReplaceFooterPlugin,
+  createSupSubPlugin,
+  createVisualBlocksFooterPlugin,
+  FULLSCREEN_FOOTER_PLUGIN_NAME,
+  getIconCdnFile,
+  getUsedIconCdnFiles,
+  getLogoCdnFile,
+  getUsedLogoCdnFiles,
   listComponents,
   listUtilities,
   loadAllIcons,
   logos,
+  PANTOKEN_ICON,
+  PANTOKEN_ICON_PACK_NAME,
   products,
+  registerPantokenIconPack,
   pantokenHtmlLinter,
   pantokenHtmlCompletion,
+  SEARCHREPLACE_FOOTER_PLUGIN_NAME,
+  SUP_SUB_PLUGIN_NAME,
+  SUP_SUB_TOOLBAR_NAME,
+  VISUALBLOCKS_FOOTER_PLUGIN_NAME,
+  type TaggedIcon,
 } from "@pantoken/tinymce";
+import {
+  createSourceTogglePlugin,
+  SOURCE_TOGGLE_PLUGIN_NAME,
+  type SourceTogglePluginApi,
+} from "@pantoken/tinymce-codemirror";
+import {
+  buildPlaceholdImage,
+  createPlaceholdPlugin,
+  PLACEHOLD_PLUGIN_NAME,
+} from "@pantoken/tinymce-placehold";
+import {
+  A11Y_PLUGIN_NAME,
+  createA11yPlugin,
+  type A11yCheckConfig,
+  type A11yColorScheme,
+} from "@pantoken/tinymce-a11y";
+import {
+  createSavePlugin,
+  SAVE_PLUGIN_NAME,
+  SAVE_TOOLBAR_NAME,
+  slugifyExportName,
+  type SavePluginApi,
+} from "@pantoken/tinymce-save";
+import { loadPreferences, savePreferences } from "./preferences.ts";
 
 // Shared with the toolbar's source-view editor so both stay the same size.
 const EDITOR_HEIGHT_PX = 400;
+// This app's pantoken instance, and the one it accepts theme messages from. Two pantoken instances
+// can share a page (this editor embedded in the docs site being the case that forced the issue), so
+// both sides tag their messages and ignore anything addressed elsewhere.
+const EDITOR_INSTANCE = "canvas-theme-editor";
+const HOST_INSTANCE = "docs";
 // Canvas's content area caps out at this width — the preview mirrors that constraint.
 const CANVAS_CONTENT_MAX_WIDTH = "59.25rem";
+// All 13 `[data-pantoken-color="…"]` color-remap rules, computed once — editable Canvas content,
+// the shell, and the preview can each own an independent color scope. `resetSelector`
+// pins the theme tray's own subtree (buttons, swatches) and the standalone shell's header (its
+// color menu swatches) back to true colors, immune to whatever color the chrome currently has
+// active — see plugins/pantoken/custom-theme-colors.
+const CUSTOM_THEME_COLORS_CSS = customThemeColorsCss(undefined, {
+  selector: "",
+  resetSelector: "#theme-tray, #canvas-rce-shell",
+});
+// The scaffold's own chrome (toolbar, buttons outside the tray) mirrors the embedding docs page's
+// active theme and color — entirely independent of the preview and the tray, which drive their own
+// theme/color separately below. The color remaps follow this theme block in the cascade so a parent
+// color change overrides the theme's root token declarations.
+const chromeThemeStyle = document.createElement("style");
+document.head.append(chromeThemeStyle);
+const customThemeColorsStyle = document.createElement("style");
+customThemeColorsStyle.textContent = CUSTOM_THEME_COLORS_CSS;
+document.head.append(customThemeColorsStyle);
+// The chrome's own `custom` scale, independent of the tray's; empty unless the chrome is on custom.
+const chromeCustomColorStyle = document.createElement("style");
+document.head.append(chromeCustomColorStyle);
+// Seeded with navy100 so switching to Custom starts from the default brand color.
+const DEFAULT_CUSTOM_COLOR = "#4c79aa";
+let chromeCustomColor = DEFAULT_CUSTOM_COLOR;
+let syncShellCustomColor: (() => void) | undefined;
+
+/** Fill the Custom swatch's center with a picked hex; the untouched default leaves it empty. */
+function syncCustomSwatch(swatch: HTMLElement, hex: string): void {
+  if (hex === DEFAULT_CUSTOM_COLOR) swatch.style.removeProperty("--custom-swatch-fill");
+  else swatch.style.setProperty("--custom-swatch-fill", hex);
+}
+const preferences = loadPreferences();
+let previewPopup: Window | null = null;
+let previewPopupCloseTimer: number | undefined;
+let previewPopupStylePairs: Array<{
+  source: HTMLStyleElement;
+  clone: HTMLStyleElement;
+}> = [];
+const LOCAL_PROVIDER_ID = "none";
+// `import.meta.env.DEV` is baked in at build time, so it's `false` for any `vite build` output —
+// including docs' Canvas RCE preview, which is always built for production yet only ever served on
+// localhost. Fall back to a hostname check so a local, non-CDN preview is detected either way.
+const isLocalPreview =
+  import.meta.env.DEV || ["localhost", "127.0.0.1", "[::1]"].includes(window.location.hostname);
+const LOCAL_COMPONENT_CSS = [
+  baseCss,
+  componentIconsCss,
+  componentsCss,
+  utilitiesCss,
+  CUSTOM_THEME_COLORS_CSS,
+  fontsCss,
+].join("\n");
+// pantoken's token sheets express dark mode as `light-dark()`, which lightningcss (this bundle's
+// minifier) downlevels to two OS-preference-gated control variables — fine for theme.css (a real
+// Canvas page can't force a scheme anyway), but it means `color-scheme`/`data-pantoken-scheme`
+// alone can't force the *preview's* scheme against the visitor's own OS setting. This block
+// re-derives those two control variables from `data-pantoken-scheme` so the preview's light/dark
+// toggle actually overrides it. `--lightningcss-light`/`-dark` are lightningcss's fixed,
+// undocumented-but-stable names for this downlevel — see the vendored `--lightningcss-*` custom
+// properties in @pantoken/css's built output.
+const PREVIEW_SCHEME_FORCE_CSS = `
+[data-pantoken-scheme="light"] { --lightningcss-light: initial; --lightningcss-dark: ; }
+[data-pantoken-scheme="dark"] { --lightningcss-light: ; --lightningcss-dark: initial; }
+`;
 
 /** Minimal `{{key}}` substitution — every key must exist in `strings`, values are inserted raw. */
 function render(template: string, strings: Record<string, string>): string {
   return template.replace(/\{\{(\w+)\}\}/g, (match, key: string) => strings[key] ?? match);
 }
 
-document.querySelector<HTMLDivElement>("#app")!.innerHTML = render(appHtml, STRINGS);
-
-// Tabs (Config | CSS | JS) — the .instui-tabs record is CSS-only; wiring selection is the
-// consumer's job, same as the component's own documented @example.
-const tabButtons = document.querySelectorAll<HTMLButtonElement>('.instui-tabs [role="tab"]');
-for (const tab of tabButtons) {
-  tab.addEventListener("click", (): void => {
-    for (const other of tabButtons) {
-      const selected = other === tab;
-      other.classList.toggle("-selected", selected);
-      other.setAttribute("aria-selected", String(selected));
-      const panel = document.getElementById(other.getAttribute("aria-controls")!);
-      if (panel) panel.hidden = !selected;
-    }
-  });
+function syncPreviewPopupChrome(): void {
+  if (!previewPopup || previewPopup.closed) return;
+  const popupDocument = previewPopup.document;
+  for (const { source, clone } of previewPopupStylePairs) clone.textContent = source.textContent;
+  for (const attribute of [
+    "lang",
+    "dir",
+    "data-pantoken-instance",
+    "data-pantoken-theme",
+    "data-pantoken-scheme",
+    "data-pantoken-color",
+  ]) {
+    const value = document.documentElement.getAttribute(attribute);
+    if (value === null) popupDocument.documentElement.removeAttribute(attribute);
+    else popupDocument.documentElement.setAttribute(attribute, value);
+  }
+  popupDocument.documentElement.style.colorScheme = document.documentElement.style.colorScheme;
 }
 
-// Shared CSS assets array — tracks stylesheet URLs for dynamic injection into WYSIWYG editor.
-// Each picker plugin calls onMissingAsset to add new assets, and they're injected when an item is inserted.
+function createShellIcon(icon: Parameters<typeof createElement>[0]): SVGSVGElement {
+  const svg = createElement(icon, { width: 16, height: 16, "stroke-width": 2 });
+  svg.classList.add("canvas-rce-shell__icon");
+  return svg;
+}
+
+function syncBrowserMetadata(): void {
+  const themeColorMeta =
+    document.querySelector<HTMLMetaElement>('meta[name="theme-color"]') ??
+    document.createElement("meta");
+  themeColorMeta.name = "theme-color";
+  const backgroundColor = getComputedStyle(document.documentElement).backgroundColor;
+  if (backgroundColor) themeColorMeta.content = backgroundColor;
+  if (!themeColorMeta.parentElement) document.head.append(themeColorMeta);
+
+  const favicon = document.querySelector<HTMLLinkElement>(
+    'link[rel="icon"][data-pantoken-themed-icon]',
+  );
+  if (!favicon) return;
+  const accentColor = getComputedStyle(document.documentElement)
+    .getPropertyValue("--instui-primitive-color-navy-navy100")
+    .trim();
+  if (!accentColor) return;
+  const mark = PANTOKEN_ICON.replace(
+    "<svg ",
+    '<svg x="32" y="32" width="64" height="64" ',
+  ).replaceAll(/fill="[^"]+"/gu, 'fill="#fff"');
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="24" fill="${accentColor}"/>${mark}</svg>`;
+  favicon.href = `data:image/svg+xml,${encodeURIComponent(svg)}`;
+}
+
+function setupStandaloneAppShell(): void {
+  if (window.self !== window.top || document.getElementById("canvas-rce-shell")) return;
+
+  document.body.classList.add("canvas-rce-shell-enabled");
+  document.title =
+    document.querySelector<HTMLMetaElement>('meta[name="application-name"]')?.content ||
+    "Canvas Theme Editor";
+
+  const shell = document.createElement("header");
+  shell.id = "canvas-rce-shell";
+  shell.className = "canvas-rce-shell";
+
+  const brand = document.createElement("div");
+  brand.className = "canvas-rce-shell__brand";
+
+  const brandMark = document.createElement("a");
+  brandMark.className = "instui-button -color-primary -shape-square canvas-rce-shell__brand-mark";
+  brandMark.href = "https://pantoken.app/";
+  brandMark.target = "_blank";
+  brandMark.rel = "noopener noreferrer";
+  brandMark.setAttribute("aria-label", "Pantoken (opens pantoken.app in a new tab)");
+  brandMark.innerHTML = PANTOKEN_ICON;
+
+  const brandText = document.createElement("div");
+  const eyebrow = document.createElement("span");
+  eyebrow.className = "canvas-rce-shell__eyebrow";
+  eyebrow.textContent = "Pantoken";
+  const title = document.createElement("strong");
+  title.textContent = "Canvas Theme Editor";
+  brandText.append(eyebrow, title);
+  brand.append(brandMark, brandText);
+
+  const actions = document.createElement("div");
+  actions.className = "canvas-rce-shell__actions";
+
+  const localeMenu = document.createElement("details");
+  localeMenu.className = "canvas-rce-shell__menu";
+  const localeSummary = document.createElement("summary");
+  localeSummary.className = "canvas-rce-shell__summary instui-button -color-tertiary";
+  localeSummary.append(createShellIcon(Languages));
+  const localeLabel = document.createElement("span");
+  localeLabel.className = "canvas-rce-shell__label";
+  const localeLocale = (
+    document.documentElement.lang || navigator.languages?.[0] || navigator.language || "en-US"
+  ).trim();
+  let localeText = "English";
+  try {
+    // Names itself, in its own script (matching the picker's own option labels below).
+    localeText = new Intl.DisplayNames([localeLocale], { type: "language" }).of(localeLocale) ?? localeText;
+  } catch {
+    localeText = localeLocale.split("-")[0].toUpperCase();
+  }
+  localeLabel.textContent = localeText;
+  localeSummary.append(localeLabel, createShellIcon(ChevronDown));
+
+  const localePanel = document.createElement("div");
+  localePanel.className = "canvas-rce-shell__panel";
+  const localePanelScroll = document.createElement("div");
+  localePanelScroll.className = "canvas-rce-shell__panel-scroll";
+  const availableLocales = ["en", ...Object.keys(LOCALE_STRINGS).sort()];
+  const localeDisplayNames = new Intl.DisplayNames(availableLocales, { type: "language" });
+  for (const locale of availableLocales) {
+    const option = document.createElement("button");
+    option.type = "button";
+    option.className = "canvas-rce-shell__option";
+    option.dataset.locale = locale;
+    const optionLabel = document.createElement("span");
+    // Each locale names itself, in its own script — matching the summary's own display name.
+    optionLabel.textContent =
+      new Intl.DisplayNames([locale], { type: "language" }).of(locale) ??
+      localeDisplayNames.of(locale) ??
+      locale;
+    const optionMark = document.createElement("span");
+    optionMark.className = "canvas-rce-shell__mark";
+    optionMark.append(createShellIcon(Check));
+    option.append(optionLabel, optionMark);
+    if (document.documentElement.lang === locale || (!document.documentElement.lang && locale === "en")) {
+      option.classList.add("is-selected");
+    }
+    option.addEventListener("click", () => {
+      if (locale === document.documentElement.lang) {
+        localeMenu.removeAttribute("open");
+        return;
+      }
+      try {
+        localStorage.setItem(LOCALE_STORAGE_KEY, locale);
+      } catch {
+        // Private mode / storage disabled — the reload below still applies it for this load.
+      }
+      // The app's own strings are only ever resolved once, at the initial `render()` call — a
+      // reload re-runs that with the newly persisted locale instead of trying to re-render (and
+      // re-initialize TinyMCE, the popup, etc.) in place.
+      window.location.reload();
+    });
+    localePanelScroll.append(option);
+  }
+  localePanel.append(localePanelScroll);
+  localeMenu.append(localeSummary, localePanel);
+
+  const themeMenu = document.createElement("details");
+  themeMenu.className = "canvas-rce-shell__menu";
+  const themeSummary = document.createElement("summary");
+  themeSummary.className = "canvas-rce-shell__summary instui-button -color-tertiary";
+  themeSummary.append(createShellIcon(Palette));
+  const themeLabel = document.createElement("span");
+  themeLabel.className = "canvas-rce-shell__label";
+  themeLabel.textContent = activeStrings.themeLabel;
+  themeSummary.append(themeLabel, createShellIcon(ChevronDown));
+
+  const themePanel = document.createElement("div");
+  themePanel.className = "canvas-rce-shell__panel";
+  const themePanelScroll = document.createElement("div");
+  themePanelScroll.className = "canvas-rce-shell__panel-scroll";
+
+  const appearanceGroup = document.createElement("div");
+  appearanceGroup.className = "canvas-rce-shell__group";
+  const appearanceTitle = document.createElement("span");
+  appearanceTitle.className = "canvas-rce-shell__group-title";
+  appearanceTitle.textContent = activeStrings.appearanceLabel;
+  appearanceGroup.append(appearanceTitle);
+  // Shared by the click handler below and the initial application at the end of this function.
+  const applyAppearance = (appearance: "light" | "dark"): void => {
+    document.body.dataset.appearanceMode = appearance;
+    document.documentElement.style.colorScheme = appearance;
+    document.documentElement.dataset.pantokenScheme = appearance;
+    if (typeof applyChromeTheme === "function") {
+      applyChromeTheme(selectedTheme ?? "rebrand", appearance);
+    }
+    for (const candidate of themePanel.querySelectorAll<HTMLButtonElement>("[data-appearance]")) {
+      candidate.classList.toggle("is-selected", candidate.dataset.appearance === appearance);
+    }
+  };
+  for (const [appearance, label, icon] of [
+    ["light", activeStrings.appearanceLightLabel, SunMedium],
+    ["dark", activeStrings.appearanceDarkLabel, MoonStar],
+  ] as const) {
+    const option = document.createElement("button");
+    option.type = "button";
+    option.className = "canvas-rce-shell__option";
+    option.dataset.appearance = appearance;
+    const text = document.createElement("span");
+    text.textContent = label;
+    const mark = document.createElement("span");
+    mark.className = "canvas-rce-shell__mark";
+    mark.append(createShellIcon(icon));
+    option.append(text, mark);
+    if (appearance === "light") option.classList.add("is-selected");
+    option.addEventListener("click", () => {
+      applyAppearance(appearance);
+      // The editor content and the live preview both default to following the app's own
+      // appearance — only guide mode (via `applyParentTheme`) did this before; tools mode's own
+      // shell toggle left both stuck on their prior scheme until a tray/preview control changed.
+      applyEditorTheme(activeEditor);
+      syncPreviewSchemeToAppearance(appearance);
+      void refreshAll();
+      themeMenu.removeAttribute("open");
+    });
+    appearanceGroup.append(option);
+  }
+
+  const colorGroup = document.createElement("div");
+  colorGroup.className = "canvas-rce-shell__group";
+  const colorTitle = document.createElement("span");
+  colorTitle.className = "canvas-rce-shell__group-title";
+  colorTitle.textContent = activeStrings.colorLabel;
+  colorGroup.append(colorTitle);
+  for (const color of [...COLOR_KEYS, CUSTOM_COLOR_KEY]) {
+    const option = document.createElement("button");
+    option.type = "button";
+    option.className = "canvas-rce-shell__option";
+    option.dataset.color = color;
+    const swatch = document.createElement("span");
+    swatch.className = "theme-picker__swatch";
+    swatch.dataset.swatch = color;
+    const text = document.createElement("span");
+    const colorKey = `color${color.charAt(0).toUpperCase()}${color.slice(1)}Label`;
+    text.textContent = activeStrings[colorKey] ?? color.charAt(0).toUpperCase() + color.slice(1);
+    const mark = document.createElement("span");
+    mark.className = "canvas-rce-shell__mark";
+    mark.append(createShellIcon(Check));
+    option.append(swatch, text, mark);
+    // "navy" is the app's actual default (see `selectedColor`/`applyChromeColor("navy")` below) —
+    // without this the picker showed no color as selected until the user picked one explicitly.
+    if (color === "navy") option.classList.add("is-selected");
+    option.addEventListener("click", () => {
+      applyChromeColor(color);
+      // Custom stays open so the hex field below is reachable.
+      if (color !== CUSTOM_COLOR_KEY) themeMenu.removeAttribute("open");
+    });
+    colorGroup.append(option);
+  }
+
+  const customRow = document.createElement("div");
+  customRow.className = "theme-picker__custom canvas-rce-shell__custom";
+  customRow.hidden = true;
+  const customLabel = document.createElement("label");
+  customLabel.htmlFor = "canvas-rce-shell-custom-hex";
+  customLabel.textContent = activeStrings.customColorInputLabel;
+  const customInputs = document.createElement("div");
+  customInputs.className = "theme-picker__custom-inputs";
+  const customPicker = document.createElement("input");
+  customPicker.type = "color";
+  customPicker.setAttribute("aria-label", activeStrings.customColorInputLabel);
+  const customHex = document.createElement("input");
+  customHex.type = "text";
+  customHex.id = "canvas-rce-shell-custom-hex";
+  customHex.className = "instui-text-input -size-sm";
+  customHex.maxLength = 7;
+  customHex.spellcheck = false;
+  customHex.autocomplete = "off";
+  customInputs.append(customPicker, customHex);
+  customRow.append(customLabel, customInputs);
+  colorGroup.append(customRow);
+
+  const onShellCustomInput = (value: string): void => {
+    const valid = isHexColor(value);
+    customHex.classList.toggle("-invalid", !valid);
+    customHex.toggleAttribute("aria-invalid", !valid);
+    if (valid) applyChromeColor(CUSTOM_COLOR_KEY, value);
+  };
+  customPicker.addEventListener("input", () => onShellCustomInput(customPicker.value));
+  customHex.addEventListener("input", () => onShellCustomInput(customHex.value));
+
+  syncShellCustomColor = () => {
+    const color = document.documentElement.dataset.pantokenColor;
+    for (const candidate of themePanel.querySelectorAll<HTMLButtonElement>("[data-color]")) {
+      candidate.classList.toggle("is-selected", candidate.dataset.color === color);
+    }
+    customRow.hidden = color !== CUSTOM_COLOR_KEY;
+    customPicker.value = chromeCustomColor;
+    if (!isHexColor(customHex.value) || parseHexColor(customHex.value) !== chromeCustomColor) {
+      customHex.value = chromeCustomColor;
+    }
+    syncCustomSwatch(colorGroup.querySelector('[data-swatch="custom"]')!, chromeCustomColor);
+  };
+  syncShellCustomColor();
+
+  themePanelScroll.append(appearanceGroup, colorGroup);
+  themePanel.append(themePanelScroll);
+  themeMenu.append(themeSummary, themePanel);
+  actions.append(localeMenu, themeMenu);
+  shell.append(brand, actions);
+  document.body.prepend(shell);
+
+  // Native <details> doesn't close on its own for either of these — without this a click
+  // elsewhere on the page, or Escape, leaves the panel open.
+  const shellMenus = [localeMenu, themeMenu];
+  document.addEventListener("click", (event) => {
+    for (const menu of shellMenus) {
+      if (menu.open && !menu.contains(event.target as Node)) menu.removeAttribute("open");
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    for (const menu of shellMenus) {
+      if (!menu.open) continue;
+      menu.removeAttribute("open");
+      menu.querySelector<HTMLElement>("summary")?.focus();
+    }
+  });
+
+  applyAppearance("light");
+}
+
+/** Persists the shell's own locale choice — never the authored content's own `lang`/`dir`. */
+const LOCALE_STORAGE_KEY = "pantoken-canvas-theme-editor-locale";
+
+/** Reads the persisted locale choice, tolerating missing/corrupt/blocked storage. */
+function loadLocale(): string {
+  try {
+    return localStorage.getItem(LOCALE_STORAGE_KEY) || "en";
+  } catch {
+    return "en";
+  }
+}
+
+const activeLocale = loadLocale();
+// A missing key/locale in `LOCALE_STRINGS` falls back to English — see generate.ts's own comment.
+const activeStrings: Record<string, string> = { ...STRINGS, ...LOCALE_STRINGS[activeLocale] };
+document.documentElement.lang = activeLocale;
+document.documentElement.dir = LOCALE_DIRS[activeLocale] ?? "ltr";
+
+document.querySelector<HTMLDivElement>("#app")!.innerHTML = render(appHtml, activeStrings);
+const interactionsScript = document.createElement("script");
+interactionsScript.src = interactionsIifeUrl;
+document.head.append(interactionsScript);
+
+// Shared CSS assets array — tracks stylesheets for dynamic injection and generated theme CSS.
 const currentAssets: CdnFile[] = [];
-const onMissingAsset = (asset: CdnFile) => {
-  currentAssets.push(asset);
-  // In a real app, you'd also trigger a download/export of the aggregated theme.css here.
+const onMissingAsset = () => void refreshAll();
+let availableIcons: TaggedIcon[] = [];
+const inlineAssetContents = new Map<string, string>();
+let refreshGeneration = 0;
+// Covers `plugin-logos` (a real dependency for any scaffolded project) and the icon packages
+// `build-canvas-rce.ts` vendors into `node_modules` purely so this docs-hosted preview's "None
+// (inline)" provider doesn't have to hit a CDN for `::name` autocomplete/picker glyphs.
+const localAssetUrls = import.meta.glob<string>(
+  "/node_modules/@pantoken/plugin-{logos,simple-icons,lucide-lab,custom-icons}/dist/**/*.css",
+  { eager: true, import: "default", query: "?url" },
+);
+
+function buildSelectedAssetUrl(file: CdnFile): string {
+  if (providerSelect.value !== LOCAL_PROVIDER_ID) {
+    return buildFileUrl(file, providerSelect.value);
+  }
+  const localUrl = localAssetUrls[`/node_modules/${file.package}/${file.path}`];
+  return localUrl ?? buildFileUrl(file);
+}
+
+const editorThemeCss: Record<
+  ThemeVariant,
+  { skin: string; content: string }
+> = {
+  rebrand: { skin: nextGenSkinCss, content: nextGenContentCss },
+  canvas: { skin: canvasSkinCss, content: canvasContentCss },
+  canvasHighContrast: {
+    skin: canvasHighContrastSkinCss,
+    content: canvasHighContrastContentCss,
+  },
 };
 
-// Register the Layouts plugin (replaces whole document on layout selection), sourced from
-// pantoken's own bundled starter page layouts (@pantoken/plugin-layouts).
-const layoutsPlugin = createLayoutsPlugin();
-tinymce.PluginManager.add("pantoken_layouts", function (editor: Editor) {
-  layoutsPlugin(editor);
-  // Wire the layout selection to also update the source view and refresh preview.
-  const originalInsertContent = editor.insertContent;
-  editor.insertContent = function (value: string) {
-    originalInsertContent.call(this, value);
-    replaceSourceDoc(editor.getContent());
-    refreshAll();
+const editorSkinStyle = document.createElement("style");
+document.head.append(editorSkinStyle);
+let editorContentStyle: HTMLStyleElement | undefined;
+
+function isThemeColor(color: unknown): color is PantokenColorNamespace {
+  return color === CUSTOM_COLOR_KEY || isShippedColor(color);
+}
+
+/** The docs host only ever offers the 13 shipped scales, so the chrome never takes `custom`. */
+function isShippedColor(color: unknown): color is (typeof COLOR_KEYS)[number] {
+  return typeof color === "string" && (COLOR_KEYS as readonly string[]).includes(color);
+}
+
+/** Applies the selected static skin to TinyMCE's chrome and iframe document. */
+function applyEditorTheme(editor: Editor | undefined): void {
+  const css = editorThemeCss[selectedTheme];
+  editorSkinStyle.textContent = css.skin;
+
+  if (!editor) return;
+  const editorDocument = editor.getDoc();
+  if (!editorContentStyle || editorContentStyle.ownerDocument !== editorDocument) {
+    editorContentStyle?.remove();
+    editorContentStyle = editorDocument.createElement("style");
+    editorDocument.head.append(editorContentStyle);
+  }
+  editorContentStyle.textContent = [css.content, PREVIEW_SCHEME_FORCE_CSS].join("\n");
+  // The content CSS's dark rules key off this attribute on the iframe's own root, which doesn't
+  // inherit it from the host document.
+  editorDocument.documentElement.dataset.pantokenScheme =
+    document.documentElement.dataset.pantokenScheme;
+}
+
+/** Temporarily overrides the editing iframe's scheme so the a11y checker can test contrast under
+ * both light and dark; the next `applyEditorTheme` call restores the chrome-mirrored value. */
+function forceEditorColorScheme(scheme: A11yColorScheme): void {
+  if (!activeEditor) return;
+  activeEditor.getDoc().documentElement.dataset.pantokenScheme = scheme;
+}
+
+function getEditorColorScheme(): A11yColorScheme {
+  return activeEditor?.getDoc().documentElement.dataset.pantokenScheme === "dark"
+    ? "dark"
+    : "light";
+}
+
+/** Only "rebrand" ships a dark scheme (`syncDarkModeAvailability` hides/disables the checkbox for
+ * the others), so the a11y checker only ever tests both schemes for it. */
+const a11yRuntimeConfig: A11yCheckConfig = {
+  setColorScheme: forceEditorColorScheme,
+  getColorScheme: getEditorColorScheme,
+  get colorSchemes(): readonly A11yColorScheme[] {
+    return selectedTheme === "rebrand" && includeDarkModeCheckbox.checked
+      ? ["light", "dark"]
+      : ["light"];
+  },
+};
+
+/** Re-themes the chrome's token variant + light/dark scheme — the tray and shell are regular app
+ * chrome and inherit this too; only the preview `srcdoc` has its own independent theme/scheme. */
+function applyChromeTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
+  const tokensCss =
+    theme === "canvas"
+      ? canvasTokensCss
+      : theme === "canvasHighContrast"
+        ? canvasHighContrastTokensCss
+        : adaptiveTokensCss;
+  // Without `PREVIEW_SCHEME_FORCE_CSS`, the chrome's own buttons/text stay pinned to the OS
+  // `prefers-color-scheme` (see that constant's comment) even though `colorScheme` below is set
+  // explicitly — only the native-CSS background rules that key off `color-scheme` directly would
+  // follow the toggle, leaving everything else stuck on the OS default.
+  chromeThemeStyle.textContent = [tokensCss, PREVIEW_SCHEME_FORCE_CSS].join("\n");
+  // Pins `light-dark()` resolution to the docs page's explicit mode instead of the OS preference —
+  // single-scheme themes (canvas/canvasHighContrast) only ever render light.
+  const scheme = theme === "rebrand" ? mode : "light";
+  document.documentElement.dataset.pantokenTheme = theme;
+  document.documentElement.dataset.pantokenScheme = scheme;
+  document.documentElement.style.colorScheme = scheme;
+  syncBrowserMetadata();
+  syncPreviewPopupChrome();
+}
+
+/** Re-colors the chrome only — the tray's `#theme-tray` reset scope keeps it (and the preview,
+ * which reads `selectedColor` directly) immune to this. */
+function applyChromeColor(color: PantokenColorNamespace, customHex?: string): void {
+  if (customHex !== undefined) chromeCustomColor = parseHexColor(customHex);
+  chromeCustomColorStyle.textContent =
+    color === CUSTOM_COLOR_KEY ? customColorCss(chromeCustomColor) : "";
+  document.documentElement.dataset.pantokenColor = color;
+  syncShellCustomColor?.();
+  syncBrowserMetadata();
+  syncPreviewPopupChrome();
+}
+
+/** A host color message: a shipped scale, or `custom` with a valid hex. */
+function applyHostColor(color: unknown, customHex: unknown): void {
+  if (isShippedColor(color)) applyChromeColor(color);
+  else if (color === CUSTOM_COLOR_KEY && isHexColor(customHex)) applyChromeColor(color, customHex);
+}
+
+function applyParentTheme(theme: ThemeVariant, mode: "light" | "dark"): void {
+  selectedTheme = theme;
+  // The docs page's own light/dark mode re-themes the chrome only — "include dark mode" is an
+  // independent authoring choice about what ships with the exported theme, not a mirror of it.
+  document.documentElement.dataset.pantokenScheme = mode;
+  const themeButton = [...themeButtons].find((button) => button.dataset.theme === theme);
+  if (themeButton) selectToggleButton(themeButtons, themeButton);
+  syncDarkModeAvailability();
+  syncPreviewSchemeToAppearance(mode);
+  applyEditorTheme(activeEditor);
+  void refreshAll();
+  syncPreviewPopupChrome();
+}
+
+// This app is its own pantoken instance. Claiming the root stops an embedding page's scope from
+// being mistaken for ours, and stops our own preview/tray scopes from being re-themed by it.
+document.documentElement.dataset.pantokenInstance = EDITOR_INSTANCE;
+applyChromeTheme("rebrand", "light");
+applyChromeColor("navy");
+
+window.addEventListener("message", (event) => {
+  if (event.source !== window.parent || event.origin !== window.location.origin) return;
+  const data = event.data as {
+    type?: unknown;
+    theme?: unknown;
+    mode?: unknown;
+    color?: unknown;
+    customColor?: unknown;
+    instanceId?: unknown;
   };
-  return {};
+  // A message tagged for a different instance belongs to another pantoken on the host page.
+  if (typeof data?.instanceId === "string" && data.instanceId !== HOST_INSTANCE) return;
+  if (data?.type === "pantoken-demo-color") {
+    applyHostColor(data.color, data.customColor);
+    return;
+  }
+  if (data?.type !== "pantoken-demo-theme") return;
+  if (
+    (data.theme !== "rebrand" &&
+      data.theme !== "canvas" &&
+      data.theme !== "canvasHighContrast") ||
+    (data.mode !== "light" && data.mode !== "dark")
+  ) {
+    return;
+  }
+  applyChromeTheme(data.theme, data.mode);
+  applyParentTheme(data.theme, data.mode);
+  applyHostColor(data.color, data.customColor);
 });
 
-/** Creates a CodeMirror editor for the given language, wired to call `onChange` on edits. */
+window.parent.postMessage({ type: "pantoken-demo-request-theme" }, window.location.origin);
+
+/** Creates a CodeMirror editor for the given language, wired to call `onChange` on user edits. */
 function createEditor(
   container: HTMLElement,
   lang: "html" | "css" | "javascript",
@@ -131,131 +782,788 @@ function createEditor(
   });
 }
 
-/** Replaces an editor's full document contents. */
-function replaceEditorDoc(view: EditorView, content: string): void {
-  view.dispatch({ changes: { from: 0, to: view.state.doc.length, insert: content } });
-}
-
-/** Lazily creates the CodeMirror instance (HTML syntax highlighting) alongside the hidden iframe. */
-function ensureSourceView(editor: Editor): EditorView {
-  if (sourceView) return sourceView;
-  const container = document.createElement("div");
-  container.style.cssText = `display: none; width: 100%; height: ${EDITOR_HEIGHT_PX}px; box-sizing: border-box; overflow: auto; border: 1px solid #ccc; font-size: 13px;`;
-  editor.contentAreaContainer.insertAdjacentElement("afterend", container);
-  sourceContainer = container;
-  sourceView = createEditor(container, "html", "", debouncedUpdatePreview);
-  return sourceView;
-}
-
-/** Replaces the CodeMirror document's full contents, if the source view has been created. */
-function replaceSourceDoc(content: string): void {
-  if (!sourceView) return;
-  replaceEditorDoc(sourceView, content);
-}
-
-// Register the three pantoken pickers (components, icons, logos) as TinyMCE plugins.
-// Each picker has its own toolbar button and manages CSS asset tracking. tinymce.init() below
-// awaits this promise first — plugin names must be registered before init() resolves them.
-const registerPickerPlugins = (async () => {
+// Register one pantoken plugin that composes components, icons, logos, layouts, and templates
+// behind a single toolbar menu. tinymce.init() waits until the icon catalog is available.
+const registerPantokenPlugin = (async () => {
   const componentModel = [...listComponents(), ...listUtilities()];
   const allIcons = await loadAllIcons();
-  
-  const componentsPlugin = createComponentsPlugin({
-    model: componentModel as any,
-    currentAssets,
-    onMissingAsset,
-  });
-  tinymce.PluginManager.add("pantoken_components", componentsPlugin);
-  
-  const iconsPlugin = createIconsPlugin({
-    icons: allIcons,
-    currentAssets,
-    onMissingAsset,
-  });
-  tinymce.PluginManager.add("pantoken_icons", iconsPlugin);
-  
-  const logosPlugin = createLogosPlugin({
-    logos,
-    products,
-    currentAssets,
-    onMissingAsset,
-  });
-  tinymce.PluginManager.add("pantoken_logos", logosPlugin);
+  availableIcons = allIcons;
+
+  tinymce.PluginManager.add(
+    "pantoken",
+    createPantokenPlugin({
+      components: {
+        model: componentModel as any,
+        currentAssets,
+        onMissingAsset,
+      },
+      icons: {
+        icons: allIcons,
+        currentAssets,
+        onMissingAsset,
+        buildAssetUrl: buildSelectedAssetUrl,
+      },
+      logos: {
+        logos,
+        products,
+        currentAssets,
+        onMissingAsset,
+        buildAssetUrl: buildSelectedAssetUrl,
+      },
+      layouts: {
+        resolveImage: (placeholder) => {
+          const image = buildPlaceholdImage({
+            width: placeholder.width,
+            height: placeholder.height,
+            backgroundColor: "#eeeeee",
+            textColor: "#31343c",
+            text: placeholder.text,
+          });
+          return {
+            src: image.url,
+            alt: placeholder.altText ?? "",
+            width: image.width,
+            height: image.height,
+          };
+        },
+        onInsert: () => {
+          applyThemeColor(selectedColor, false);
+          void refreshAll();
+        },
+      },
+    }),
+  );
 })();
 
-// Toggles between TinyMCE's WYSIWYG view and a syntax-highlighted CodeMirror source view.
-// The source view also includes pantoken linter (validation) and autocomplete (IntelliSense).
-tinymce.PluginManager.add("pantoken_source_toggle", function (editor: Editor) {
-  const toggle = (api: Ui.Toolbar.ToolbarToggleButtonInstanceApi) => {
-    sourceMode = !sourceMode;
-    api.setActive(sourceMode);
-    const view = ensureSourceView(editor);
-    const contentArea = editor.contentAreaContainer;
-    if (sourceMode) {
-      replaceSourceDoc(editor.getContent());
-      contentArea.style.display = "none";
-      sourceContainer!.style.display = "block";
-      view.focus();
-    } else {
-      contentArea.style.display = "";
-      sourceContainer!.style.display = "none";
-      editor.setContent(view.state.doc.toString());
-    }
-    refreshAll();
-  };
+tinymce.PluginManager.add(
+  PLACEHOLD_PLUGIN_NAME,
+  createPlaceholdPlugin({ onInsert: () => void refreshAll() }),
+);
+tinymce.PluginManager.add(CONTENT_CLASSES_PLUGIN_NAME, createContentClassesPlugin());
+tinymce.PluginManager.add(
+  A11Y_PLUGIN_NAME,
+  createA11yPlugin({ display: "footer", config: a11yRuntimeConfig }),
+);
+tinymce.PluginManager.add(SUP_SUB_PLUGIN_NAME, createSupSubPlugin());
 
-  editor.ui.registry.addToggleButton("sourcecode", {
-    icon: "sourcecode",
-    tooltip: "Source code",
-    onAction: toggle,
-  });
-
-  return {};
-});
+// Toggles between TinyMCE's WYSIWYG view and a syntax-highlighted CodeMirror source view, reusing
+// the shared renderer's implementation (live preview + pantoken lint/autocomplete) instead of a
+// second, drifted reimplementation.
+tinymce.PluginManager.add(
+  SOURCE_TOGGLE_PLUGIN_NAME,
+  createSourceTogglePlugin({
+    height: EDITOR_HEIGHT_PX,
+    display: "footer",
+    extensions: [
+      pantokenHtmlLinter({ model: [...listComponents(), ...listUtilities()] as any }),
+      pantokenHtmlCompletion({ model: [...listComponents(), ...listUtilities()] as any }),
+    ],
+    onChange: () => {
+      syncThemeColorFromEditor();
+      if (syncIconAssetsFromEditor()) void refreshAll();
+      debouncedUpdatePreview();
+    },
+    onToggle: () => void refreshAll(),
+  }),
+);
+// Fullscreen, find-and-replace, and visual blocks ship as toolbar-only controls upstream — these
+// footer-only wrappers surface all three from the statusbar instead, alongside word count and the
+// a11y checker.
+tinymce.PluginManager.add(FULLSCREEN_FOOTER_PLUGIN_NAME, createFullscreenFooterPlugin());
+tinymce.PluginManager.add(SEARCHREPLACE_FOOTER_PLUGIN_NAME, createSearchReplaceFooterPlugin());
+tinymce.PluginManager.add(VISUALBLOCKS_FOOTER_PLUGIN_NAME, createVisualBlocksFooterPlugin());
+tinymce.PluginManager.add(
+  SAVE_PLUGIN_NAME,
+  createSavePlugin<CanvasThemePreset>({
+    capture: captureCanvasThemePreset,
+    restore: restoreCanvasThemePreset,
+    reset: resetCanvasThemePreset,
+    isValid: isCanvasThemePreset,
+  }),
+);
 
 const providerSelect = document.querySelector<HTMLSelectElement>("#cdn-provider")!;
+const localProviderOption = document.createElement("option");
+localProviderOption.value = LOCAL_PROVIDER_ID;
+localProviderOption.textContent = activeStrings.localProviderLabel;
+providerSelect.append(localProviderOption);
 for (const [id, provider] of Object.entries(CDN_PROVIDERS)) {
   const option = document.createElement("option");
   option.value = id;
   option.textContent = provider.label;
   providerSelect.append(option);
 }
-providerSelect.value = DEFAULT_CDN_PROVIDER_ID;
+providerSelect.value = import.meta.env.DEV ? LOCAL_PROVIDER_ID : DEFAULT_CDN_PROVIDER_ID;
+if (isLocalPreview) {
+  providerSelect.value = LOCAL_PROVIDER_ID;
+}
+if (
+  preferences.cdnProvider &&
+  [...providerSelect.options].some((option) => option.value === preferences.cdnProvider)
+) {
+  providerSelect.value = preferences.cdnProvider;
+}
 
-const themeSelect = document.querySelector<HTMLSelectElement>("#theme-variant")!;
-const modeSelect = document.querySelector<HTMLSelectElement>("#theme-mode")!;
+const themeButtons = document.querySelectorAll<HTMLButtonElement>(".theme-picker [data-theme]");
+const colorButtons = document.querySelectorAll<HTMLButtonElement>(
+  ".theme-picker__color-item[data-color]",
+);
+const customColorRow = document.querySelector<HTMLElement>("#custom-color-row")!;
+const customColorPicker = document.querySelector<HTMLInputElement>("#custom-color-picker")!;
+const customColorHex = document.querySelector<HTMLInputElement>("#custom-color-hex")!;
+const customColorSwatch = document.querySelector<HTMLElement>(
+  '.theme-picker__color-item [data-swatch="custom"]',
+)!;
+const previewWidthButtons = document.querySelectorAll<HTMLButtonElement>(
+  ".preview-width-picker [data-preview-width]",
+);
+const includeDarkModeRow = document.getElementById("include-dark-mode-row")!;
+const includeDarkModeCheckbox = document.querySelector<HTMLInputElement>("#include-dark-mode")!;
+const previewSchemeToggle = document.querySelector<HTMLButtonElement>("#preview-scheme-toggle")!;
 const previewFrame = document.querySelector<HTMLIFrameElement>("#preview")!;
+const previewPane = document.querySelector<HTMLElement>(".preview-pane")!;
 const downloadCss = document.querySelector<HTMLAnchorElement>("#download-theme-css")!;
 const downloadJs = document.querySelector<HTMLAnchorElement>("#download-theme-js")!;
+const downloadPackageButton = document.querySelector<HTMLButtonElement>("#download-package")!;
+const downloadHtmlButton = document.querySelector<HTMLButtonElement>("#download-html")!;
 const copyButton = document.querySelector<HTMLButtonElement>("#copy-html")!;
-const copyStatus = document.querySelector<HTMLElement>("#copy-status")!;
-const regenerateCssButton = document.querySelector<HTMLButtonElement>("#regenerate-css")!;
-const regenerateJsButton = document.querySelector<HTMLButtonElement>("#regenerate-js")!;
 
 let activeEditor: Editor | undefined;
 let cssObjectUrl: string | undefined;
 let jsObjectUrl: string | undefined;
-let sourceView: EditorView | undefined;
-let sourceContainer: HTMLDivElement | undefined;
-let sourceMode = false;
-// Once the author hand-edits the CSS/JS tab, config-select changes no longer overwrite it —
-// they only re-enable "Regenerate from config" so the edit isn't silently discarded.
-let cssDirty = false;
-let jsDirty = false;
+
+// Only the tray (below) and the preview it drives read these — the chrome has its own,
+// docs-driven theme/color tracked separately by `applyChromeTheme`/`applyChromeColor` above.
+let selectedTheme: ThemeVariant = "rebrand";
+let selectedColor: PantokenColorNamespace = "navy";
+let selectedCustomColor = DEFAULT_CUSTOM_COLOR;
+setupStandaloneAppShell();
+
+interface CanvasThemePreset {
+  readonly version: 1;
+  readonly theme: ThemeVariant;
+  readonly color: PantokenColorNamespace;
+  readonly customColor?: string;
+  readonly mode: ThemeMode;
+  readonly cdnProvider: string;
+  readonly customCss: string;
+  readonly customJs: string;
+  readonly editorHtml: string;
+}
+
+function selectThemeColor(color: PantokenColorNamespace): void {
+  selectedColor = color;
+  const colorButton = [...colorButtons].find((button) => button.dataset.color === color);
+  if (colorButton) selectButton(colorButtons, colorButton);
+  customColorRow.hidden = color !== CUSTOM_COLOR_KEY;
+}
+
+/** Stores a validated custom hex and reflects it in the tray. */
+function setCustomColor(hex: string): void {
+  selectedCustomColor = parseHexColor(hex);
+  customColorPicker.value = selectedCustomColor;
+  const typed = customColorHex.value;
+  if (!isHexColor(typed) || parseHexColor(typed) !== selectedCustomColor) {
+    customColorHex.value = selectedCustomColor;
+  }
+  customColorHex.classList.remove("-invalid");
+  customColorHex.removeAttribute("aria-invalid");
+  syncCustomSwatch(customColorSwatch, selectedCustomColor);
+}
+
+/** The `custom` scale's rule, only while it's the selected color. */
+function selectedCustomColorCss(): string {
+  return selectedColor === CUSTOM_COLOR_KEY
+    ? customColorCss(selectedCustomColor, { selector: "" })
+    : "";
+}
+
+const debouncedCustomColorRefresh = debounce(() => void refreshAll(), 150);
+
+function onCustomColorInput(value: string): void {
+  if (!isHexColor(value)) {
+    customColorHex.classList.add("-invalid");
+    customColorHex.setAttribute("aria-invalid", "true");
+    return;
+  }
+  setCustomColor(value);
+  if (selectedColor === CUSTOM_COLOR_KEY) debouncedCustomColorRefresh();
+}
+
+customColorPicker.addEventListener("input", () => onCustomColorInput(customColorPicker.value));
+customColorHex.addEventListener("input", () => onCustomColorInput(customColorHex.value));
+setCustomColor(DEFAULT_CUSTOM_COLOR);
+
+function parseEditorHtml(html: string): HTMLTemplateElement {
+  const template = document.createElement("template");
+  template.innerHTML = html;
+  return template;
+}
+
+function findColorWrapper(content: DocumentFragment): HTMLElement | undefined {
+  const wrapper = content.firstElementChild as HTMLElement | null;
+  if (!wrapper?.hasAttribute("data-pantoken-color")) return undefined;
+  const hasContentOutsideWrapper = [...content.childNodes].some(
+    (node) => node !== wrapper && (node.nodeType !== Node.TEXT_NODE || node.textContent?.trim()),
+  );
+  return hasContentOutsideWrapper ? undefined : wrapper;
+}
+
+function normalizeEditorHtml(html: string, fallbackColor: PantokenColorNamespace): string {
+  const template = parseEditorHtml(html);
+  let wrapper = findColorWrapper(template.content);
+  if (!wrapper) {
+    wrapper = document.createElement("div");
+    wrapper.dataset.pantokenColor = fallbackColor;
+    wrapper.append(...template.content.childNodes);
+    template.content.append(wrapper);
+  } else if (!isThemeColor(wrapper.dataset.pantokenColor)) {
+    wrapper.dataset.pantokenColor = fallbackColor;
+  }
+  return template.innerHTML;
+}
+
+function editorHtmlColor(html: string): PantokenColorNamespace | undefined {
+  const wrapper = findColorWrapper(parseEditorHtml(html).content);
+  const color = wrapper?.dataset.pantokenColor;
+  return isThemeColor(color) ? color : undefined;
+}
+
+function setEditorHtmlColor(html: string, color: PantokenColorNamespace): string {
+  const template = parseEditorHtml(normalizeEditorHtml(html, color));
+  findColorWrapper(template.content)!.dataset.pantokenColor = color;
+  return template.innerHTML;
+}
+
+function syncThemeColorFromEditor(): void {
+  const color = editorHtmlColor(getEditorHtml());
+  if (color) selectThemeColor(color);
+}
+
+function applyThemeColor(color: PantokenColorNamespace, refresh = true): void {
+  selectThemeColor(color);
+  if (activeEditor) {
+    const sourceToggle = activeEditor.plugins[SOURCE_TOGGLE_PLUGIN_NAME] as
+      | SourceTogglePluginApi
+      | undefined;
+    const nextHtml = setEditorHtmlColor(getEditorHtml(), color);
+    if (sourceToggle?.isSourceMode()) {
+      sourceToggle.replaceAll(nextHtml);
+    } else {
+      activeEditor.undoManager.transact(() => activeEditor!.setContent(nextHtml));
+    }
+  }
+  if (refresh) void refreshAll();
+}
 
 /** Reads the author's current HTML from whichever view (WYSIWYG or raw source) is active. */
 function getEditorHtml(): string {
-  if (sourceMode && sourceView) return sourceView.state.doc.toString();
+  const sourceToggle = activeEditor?.plugins[SOURCE_TOGGLE_PLUGIN_NAME] as
+    | SourceTogglePluginApi
+    | undefined;
+  if (sourceToggle?.isSourceMode()) return sourceToggle.getContent();
   return activeEditor?.getContent() ?? "";
+}
+
+function getNormalizedEditorHtml(): string {
+  return normalizeEditorHtml(getEditorHtml(), selectedColor);
+}
+
+function assetKey(asset: CdnFile): string {
+  return `${asset.package}:${asset.path}`;
+}
+
+async function inlineAssetCss(assets: readonly CdnFile[]): Promise<string[]> {
+  await Promise.all(
+    assets.map(async (asset) => {
+      const key = assetKey(asset);
+      if (inlineAssetContents.has(key)) return;
+      const response = await fetch(buildFileUrl(asset));
+      if (!response.ok) {
+        throw new Error(`Unable to inline ${asset.package}/${asset.path}: ${response.status}`);
+      }
+      inlineAssetContents.set(key, await response.text());
+    }),
+  );
+  return assets.map((asset) => inlineAssetContents.get(assetKey(asset))!);
+}
+
+function syncIconAssetsFromEditor(): boolean {
+  const content = parseEditorHtml(getEditorHtml()).content;
+  const iconAssetKeys = new Set(availableIcons.map((icon) => assetKey(getIconCdnFile(icon))));
+  const logoAssetKeys = new Set(logos.map((logo) => assetKey(getLogoCdnFile(logo))));
+  const nonSyncedAssets = currentAssets.filter(
+    (asset) => !iconAssetKeys.has(assetKey(asset)) && !logoAssetKeys.has(assetKey(asset)),
+  );
+  const usedIconAssets = getUsedIconCdnFiles(content, availableIcons, currentAssets);
+  const usedLogoAssets = getUsedLogoCdnFiles(content, logos);
+  const nextAssets = [...nonSyncedAssets, ...usedIconAssets, ...usedLogoAssets];
+  const changed = currentAssets.map(assetKey).join("\n") !== nextAssets.map(assetKey).join("\n");
+  if (changed) currentAssets.splice(0, currentAssets.length, ...nextAssets);
+  return changed;
+}
+
+function captureCanvasThemePreset(): CanvasThemePreset {
+  return {
+    version: 1,
+    theme: selectedTheme,
+    color: selectedColor,
+    customColor: selectedCustomColor,
+    mode: includeDarkModeCheckbox.checked ? "adaptive" : "light",
+    cdnProvider: providerSelect.value,
+    customCss: cssEditorView.state.doc.toString(),
+    customJs: jsEditorView.state.doc.toString(),
+    editorHtml: getNormalizedEditorHtml(),
+  };
+}
+
+function isThemeVariant(value: unknown): value is ThemeVariant {
+  return value === "rebrand" || value === "canvas" || value === "canvasHighContrast";
+}
+
+function isThemeMode(value: unknown): value is ThemeMode {
+  return value === "light" || value === "adaptive";
+}
+
+function isCdnProvider(value: unknown): value is string {
+  return (
+    typeof value === "string" &&
+    (Object.hasOwn(CDN_PROVIDERS, value) || value === LOCAL_PROVIDER_ID)
+  );
+}
+
+function isCanvasThemePreset(value: unknown): value is CanvasThemePreset {
+  if (typeof value !== "object" || value === null) return false;
+  const preset = value as Partial<CanvasThemePreset>;
+  return (
+    preset.version === 1 &&
+    isThemeVariant(preset.theme) &&
+    isThemeColor(preset.color) &&
+    (preset.customColor === undefined || isHexColor(preset.customColor)) &&
+    isThemeMode(preset.mode) &&
+    isCdnProvider(preset.cdnProvider) &&
+    typeof preset.customCss === "string" &&
+    typeof preset.customJs === "string" &&
+    typeof preset.editorHtml === "string"
+  );
+}
+
+function replaceEditorDocument(view: EditorView, content: string): void {
+  view.dispatch({ changes: { from: 0, to: view.state.doc.length, insert: content } });
+}
+
+function resetCanvasThemePreset(): void {
+  selectedTheme = "rebrand";
+  const themeButton = [...themeButtons].find((button) => button.dataset.theme === selectedTheme);
+  if (themeButton) selectToggleButton(themeButtons, themeButton);
+  includeDarkModeCheckbox.checked = false;
+  syncDarkModeAvailability();
+  providerSelect.value = isLocalPreview ? LOCAL_PROVIDER_ID : DEFAULT_CDN_PROVIDER_ID;
+  selectThemeColor("navy");
+  setCustomColor(DEFAULT_CUSTOM_COLOR);
+  replaceEditorDocument(cssEditorView, "");
+  replaceEditorDocument(jsEditorView, "");
+
+  if (activeEditor) {
+    const nextHtml = normalizeEditorHtml("", "navy");
+    activeEditor.resetContent(nextHtml);
+    const sourceToggle = activeEditor.plugins[SOURCE_TOGGLE_PLUGIN_NAME] as
+      | SourceTogglePluginApi
+      | undefined;
+    if (sourceToggle?.isSourceMode()) sourceToggle.replaceAll(nextHtml);
+  }
+
+  syncThemeColorFromEditor();
+  applyEditorTheme(activeEditor);
+  void refreshAll();
+}
+
+function restoreCanvasThemePreset(preset: CanvasThemePreset): void {
+  if (!activeEditor || !isCanvasThemePreset(preset)) throw new TypeError("invalid-preset");
+
+  selectedTheme = preset.theme;
+  const themeButton = [...themeButtons].find((button) => button.dataset.theme === preset.theme);
+  if (themeButton) selectToggleButton(themeButtons, themeButton);
+  includeDarkModeCheckbox.checked = preset.mode === "adaptive";
+  syncDarkModeAvailability();
+  providerSelect.value = preset.cdnProvider;
+  selectThemeColor(preset.color);
+  setCustomColor(preset.customColor ?? DEFAULT_CUSTOM_COLOR);
+  replaceEditorDocument(cssEditorView, preset.customCss);
+  replaceEditorDocument(jsEditorView, preset.customJs);
+
+  const editorHtml = normalizeEditorHtml(preset.editorHtml, preset.color);
+  activeEditor.resetContent(editorHtml);
+  const sourceToggle = activeEditor.plugins[SOURCE_TOGGLE_PLUGIN_NAME] as
+    | SourceTogglePluginApi
+    | undefined;
+  if (sourceToggle?.isSourceMode()) sourceToggle.replaceAll(editorHtml);
+  syncThemeColorFromEditor();
+
+  applyEditorTheme(activeEditor);
+  void refreshAll();
 }
 
 function currentSelection(): { provider: string; theme: ThemeVariant; mode: ThemeMode } {
   return {
     provider: providerSelect.value,
-    theme: themeSelect.value as ThemeVariant,
-    mode: modeSelect.value as ThemeMode,
+    theme: selectedTheme,
+    mode: includeDarkModeCheckbox.checked ? "adaptive" : "light",
   };
 }
+
+/** `css`/`js` are theme.css/theme.js's actual downloadable content and the live preview's styling
+ * alike — both follow the visitor's/browser's own dark-mode preference, same as a real Canvas
+ * page would. The preview's manual light/dark toggle overrides that via `PREVIEW_SCHEME_FORCE_CSS`
+ * (see `updatePreview`), not by swapping this CSS. */
+async function buildCurrentTheme(): Promise<{ css: string; js: string }> {
+  const selection = currentSelection();
+  const customCss = selectedCustomColorCss();
+  if (selection.provider !== LOCAL_PROVIDER_ID) {
+    const theme = buildTheme({
+      ...selection,
+      css: [...defaultThemeCssAssets(selection.theme, selection.mode), ...currentAssets],
+    });
+    return { ...theme, css: [theme.css, customCss].filter(Boolean).join("\n") };
+  }
+
+  const tokensCss =
+    selection.theme === "canvas"
+      ? canvasTokensCss
+      : selection.theme === "canvasHighContrast"
+        ? canvasHighContrastTokensCss
+        : selection.mode === "adaptive"
+          ? adaptiveTokensCss
+          : rebrandLightTokensCss;
+  const dynamicCss = await inlineAssetCss(currentAssets);
+  return {
+    css: [tokensCss, LOCAL_COMPONENT_CSS, ...dynamicCss, customCss].filter(Boolean).join("\n"),
+    js: localInteractionsJs,
+  };
+}
+
+/** Marks the clicked button as selected within its `role="group"` (theme or color pickers). */
+function selectButton(buttons: NodeListOf<HTMLButtonElement>, target: HTMLButtonElement): void {
+  for (const button of buttons) {
+    const selected = button === target;
+    button.classList.toggle("-selected", selected);
+    button.setAttribute("aria-checked", String(selected));
+  }
+}
+
+/** Marks the clicked instui-button `-toggle` as pressed within its `role="group"` (preview width). */
+function selectToggleButton(buttons: NodeListOf<HTMLButtonElement>, target: HTMLButtonElement): void {
+  for (const button of buttons) button.setAttribute("aria-pressed", String(button === target));
+}
+
+/** Only "rebrand" ships a dark scheme — canvas/canvasHighContrast are single-scheme themes. */
+function syncDarkModeAvailability(): void {
+  const supportsDarkMode = selectedTheme === "rebrand";
+  includeDarkModeRow.hidden = !supportsDarkMode;
+  includeDarkModeCheckbox.disabled = !supportsDarkMode;
+  if (!supportsDarkMode) includeDarkModeCheckbox.checked = false;
+  syncPreviewSchemeToggleAvailability();
+}
+
+/** The preview's own light/dark switch only makes sense once "include dark mode" is on. */
+function syncPreviewSchemeToggleAvailability(): void {
+  previewSchemeToggle.disabled = !includeDarkModeCheckbox.checked;
+  if (previewSchemeToggle.disabled) {
+    previewDarkOverride = false;
+    previewSchemeToggle.setAttribute("aria-pressed", "false");
+    previewSchemeToggle.classList.replace("-icon-sun", "-icon-moon");
+  }
+}
+
+themeButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    selectedTheme = button.dataset.theme as ThemeVariant;
+    selectToggleButton(themeButtons, button);
+    syncDarkModeAvailability();
+    applyEditorTheme(activeEditor);
+    void refreshAll();
+  });
+});
+
+colorButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const color = button.dataset.color;
+    if (isThemeColor(color)) applyThemeColor(color);
+  });
+});
+
+// Canvas's own responsive breakpoints for course content, reused as-is from pantoken's tokens —
+// "large" is unconstrained (the current default), matching the desktop RCE width.
+const PREVIEW_WIDTHS: Record<string, string> = {
+  medium: "var(--instui-breakpoints-md)",
+  small: "var(--instui-breakpoints-sm)",
+};
+
+let selectedPreviewWidth = "large";
+
+/**
+ * In row layout, the *pane's* width is constrained so the editor pane's flex:1 can claim
+ * whatever space a fixed-width (medium/small) preview gives up. In fullscreen the pane is
+ * forced to fill the viewport (app.css's `!important` overlay), so there's no sibling to
+ * reclaim space from — the constraint has to move to the iframe itself instead, centered
+ * via app.css's `margin-inline: auto`.
+ */
+function applyPreviewWidth(): void {
+  const fullscreen = previewPane.classList.contains("-fullscreen");
+  previewPane.style.removeProperty("flex");
+  previewPane.style.removeProperty("width");
+  previewPane.style.removeProperty("min-width");
+  previewFrame.style.removeProperty("max-width");
+  if (selectedPreviewWidth === "large") {
+    // In row layout, "large" only got a 50/50 flex share of `.content`'s width — on a narrow
+    // window that's smaller than "medium"'s own fixed `--instui-breakpoints-md`, so the
+    // "desktop" preview could render narrower than the "tablet" one. A `--instui-breakpoints-lg`
+    // floor guarantees desktop is always at least as wide as the next size down.
+    if (!fullscreen && document.querySelector(".content")?.getAttribute("data-layout") === "row") {
+      previewPane.style.minWidth = "var(--instui-breakpoints-lg)";
+    }
+    return;
+  }
+  if (fullscreen) {
+    previewFrame.style.maxWidth = PREVIEW_WIDTHS[selectedPreviewWidth];
+  } else {
+    previewPane.style.flex = "0 0 auto";
+    previewPane.style.width = PREVIEW_WIDTHS[selectedPreviewWidth];
+  }
+}
+
+previewWidthButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    selectToggleButton(previewWidthButtons, button);
+    selectedPreviewWidth = button.dataset.previewWidth!;
+    applyPreviewWidth();
+    persistPreferences();
+  });
+});
+if (
+  preferences.previewWidth &&
+  ["large", "medium", "small"].includes(preferences.previewWidth) &&
+  preferences.previewWidth !== "large"
+) {
+  const savedWidthButton = [...previewWidthButtons].find(
+    (button) => button.dataset.previewWidth === preferences.previewWidth,
+  );
+  if (savedWidthButton) {
+    selectToggleButton(previewWidthButtons, savedWidthButton);
+    selectedPreviewWidth = preferences.previewWidth;
+    applyPreviewWidth();
+  }
+}
+
+let previewDarkOverride = false;
+syncDarkModeAvailability();
+
+/** Makes the preview's own light/dark display follow an app-wide appearance change (its "include
+ * dark mode" export checkbox stays untouched); the user can still flip it back independently
+ * afterward via `previewSchemeToggle`. No-op while the current theme has no dark preview to show. */
+function syncPreviewSchemeToAppearance(mode: "light" | "dark"): void {
+  if (!includeDarkModeCheckbox.checked) return;
+  previewDarkOverride = mode === "dark";
+  previewSchemeToggle.setAttribute("aria-pressed", String(previewDarkOverride));
+  previewSchemeToggle.classList.toggle("-icon-moon", !previewDarkOverride);
+  previewSchemeToggle.classList.toggle("-icon-sun", previewDarkOverride);
+}
+
+previewSchemeToggle.addEventListener("click", () => {
+  previewDarkOverride = !previewDarkOverride;
+  previewSchemeToggle.setAttribute("aria-pressed", String(previewDarkOverride));
+  previewSchemeToggle.classList.toggle("-icon-moon", !previewDarkOverride);
+  previewSchemeToggle.classList.toggle("-icon-sun", previewDarkOverride);
+  void refreshAll();
+});
+
+const previewFullscreenToggle = document.querySelector<HTMLButtonElement>(
+  "#preview-fullscreen-toggle",
+)!;
+const previewPopupToggle = document.querySelector<HTMLButtonElement>("#preview-popup-toggle")!;
+const previewFullscreenLabel = document.querySelector<HTMLElement>("#preview-fullscreen-label")!;
+const previewFullscreenTooltip = document.querySelector<HTMLElement>(
+  "#preview-fullscreen-toggle-tip",
+)!;
+const previewPopupReturnLabel = document.querySelector<HTMLElement>(
+  "#preview-popup-return-label",
+)!;
+const previewPopupTitle = document.querySelector<HTMLElement>("#preview-popup-title")!;
+const previewPopupBlockedMessage = document.querySelector<HTMLElement>(
+  "#preview-popup-blocked-message",
+)!;
+const previewAnchor = document.createComment("preview-pane-anchor");
+previewPane.before(previewAnchor);
+let previewWasFullscreen = false;
+let restoringPreview = false;
+
+function setPreviewFullscreen(fullscreen: boolean): void {
+  previewFullscreenToggle.setAttribute("aria-pressed", String(fullscreen));
+  previewFullscreenToggle.classList.toggle("-icon-maximize", !fullscreen);
+  previewFullscreenToggle.classList.toggle("-icon-minimize", fullscreen);
+  previewPane.classList.toggle("-fullscreen", fullscreen);
+  applyPreviewWidth();
+  resizePreviewFrame();
+}
+
+function setPreviewPopupLabels(detached: boolean): void {
+  previewFullscreenLabel.hidden = detached;
+  previewPopupReturnLabel.hidden = !detached;
+  const label = (detached ? previewPopupReturnLabel : previewFullscreenLabel).textContent?.trim() ?? "";
+  previewFullscreenToggle.setAttribute(
+    "aria-label",
+    label,
+  );
+  previewFullscreenTooltip.textContent = label;
+}
+
+function restorePreviewFromPopup(closePopup = true): void {
+  if (restoringPreview || previewPane.ownerDocument === document) return;
+  restoringPreview = true;
+  const popup = previewPopup;
+  if (previewPopupCloseTimer !== undefined) window.clearInterval(previewPopupCloseTimer);
+  previewPopupCloseTimer = undefined;
+  previewPopup = null;
+  previewPopupStylePairs = [];
+  document.adoptNode(previewPane);
+  previewAnchor.after(previewPane);
+  setPreviewPopupLabels(false);
+  setPreviewFullscreen(previewWasFullscreen);
+  if (closePopup && popup && !popup.closed) popup.close();
+  restoringPreview = false;
+  previewPopupToggle.focus();
+  layoutDirectionToggle.disabled = false;
+}
+
+function openPreviewPopup(): void {
+  if (previewPopup && !previewPopup.closed) {
+    previewPopup.focus();
+    return;
+  }
+
+  const width = Math.max(320, Math.min(1200, window.screen.availWidth - 80));
+  const height = Math.max(320, Math.min(900, window.screen.availHeight - 80));
+  const left = Math.max(
+    0,
+    (window.screen.availLeft ?? 0) + (window.screen.availWidth - width) / 2,
+  );
+  const top = Math.max(
+    0,
+    (window.screen.availTop ?? 0) + (window.screen.availHeight - height) / 2,
+  );
+  const popup = window.open(
+    "",
+    "pantoken-canvas-preview",
+    `popup=yes,width=${width},height=${height},left=${Math.round(left)},top=${Math.round(top)}`,
+  );
+  if (!popup) {
+    window.alert(previewPopupBlockedMessage.textContent?.trim() ?? "Preview popup blocked.");
+    return;
+  }
+
+  previewPopup = popup;
+  previewWasFullscreen = previewPane.classList.contains("-fullscreen");
+  const popupDocument = popup.document;
+  popupDocument.head.replaceChildren();
+  popupDocument.body.replaceChildren();
+  popupDocument.title = previewPopupTitle.textContent?.trim() ?? "Preview";
+  popupDocument.body.className = "preview-popup";
+  previewPopupStylePairs = [];
+  for (const source of document.head.querySelectorAll<HTMLLinkElement | HTMLStyleElement>(
+    'link[rel="stylesheet"], style',
+  )) {
+    const clone = source.cloneNode(true) as HTMLLinkElement | HTMLStyleElement;
+    if (source instanceof HTMLLinkElement && clone instanceof HTMLLinkElement) {
+      clone.href = source.href;
+    }
+    popupDocument.head.append(clone);
+    if (source instanceof HTMLStyleElement && clone instanceof HTMLStyleElement) {
+      previewPopupStylePairs.push({ source, clone });
+    }
+  }
+  syncPreviewPopupChrome();
+  popupDocument.body.append(previewPane);
+  setPreviewPopupLabels(true);
+  setPreviewFullscreen(true);
+  layoutDirectionToggle.disabled = true;
+  popup.addEventListener("pagehide", () => restorePreviewFromPopup(false), { once: true });
+  previewPopupCloseTimer = window.setInterval(() => {
+    if (previewPopup?.closed) restorePreviewFromPopup(false);
+  }, 500);
+  popup.focus();
+}
+
+previewPopupToggle.addEventListener("click", openPreviewPopup);
+previewFullscreenToggle.addEventListener("click", () => {
+  if (previewPane.ownerDocument !== document) {
+    restorePreviewFromPopup();
+    return;
+  }
+  const fullscreen = previewFullscreenToggle.getAttribute("aria-pressed") !== "true";
+  setPreviewFullscreen(fullscreen);
+  persistPreferences();
+});
+if (preferences.previewFullscreen === true) {
+  setPreviewFullscreen(true);
+}
+
+window.addEventListener("beforeunload", () => {
+  if (previewPopupCloseTimer !== undefined) window.clearInterval(previewPopupCloseTimer);
+  previewPopup?.close();
+});
+
+const layoutDirectionToggle = document.querySelector<HTMLButtonElement>(
+  "#layout-direction-toggle",
+)!;
+const contentEl = document.querySelector<HTMLElement>(".panes")!;
+/** Applies (and reflects in the toggle button) row vs. column pane arrangement. */
+function applyLayoutDirection(row: boolean): void {
+  layoutDirectionToggle.setAttribute("aria-pressed", String(row));
+  layoutDirectionToggle.classList.toggle("-icon-rows-2", row);
+  layoutDirectionToggle.classList.toggle("-icon-columns-2", !row);
+  contentEl.style.flexDirection = row ? "row" : "column";
+  contentEl.dataset.layout = row ? "row" : "column";
+  applyPreviewWidth();
+}
+layoutDirectionToggle.addEventListener("click", () => {
+  applyLayoutDirection(layoutDirectionToggle.getAttribute("aria-pressed") !== "true");
+  persistPreferences();
+});
+// Column (stacked) is the default first-visit layout — matches the toggle's default markup
+// (aria-pressed="false", the columns-2 icon) so there's no dead first click reconciling a
+// mismatched initial state.
+applyLayoutDirection(preferences.layout === "row");
+
+/** Saves this app's current layout/preview/CDN provider settings for the next visit. */
+function persistPreferences(): void {
+  const mergedTinymceConfig = {
+    ...(preferences.tinymceConfig ?? {}),
+    a11y: {
+      ...((preferences.tinymceConfig as Record<string, unknown> | undefined)?.a11y as Record<
+        string,
+        unknown
+      > | null),
+      highlightIssues: true,
+      contrastThreshold: "4.5:1",
+      enabledRules: {},
+    },
+  };
+
+  savePreferences({
+    ...preferences,
+    layout: contentEl.dataset.layout === "row" ? "row" : "column",
+    previewWidth: selectedPreviewWidth as "large" | "medium" | "small",
+    previewFullscreen: previewPane.classList.contains("-fullscreen"),
+    cdnProvider: providerSelect.value,
+    tinymceConfig: mergedTinymceConfig,
+  });
+}
+
+
+includeDarkModeCheckbox.addEventListener("change", () => {
+  syncPreviewSchemeToggleAvailability();
+  void refreshAll();
+});
 
 /** Debounce helper — the preview pane only needs to refresh a beat after typing settles. */
 function debounce<Args extends unknown[]>(fn: (...args: Args) => void, ms: number) {
@@ -270,210 +1578,266 @@ function debounce<Args extends unknown[]>(fn: (...args: Args) => void, ms: numbe
  * Renders the editor's current HTML with the CSS/JS tab's *current editable text* embedded
  * directly (not linked from the CDN) — so hand-edits in those tabs show up in the preview too.
  * The body content is wrapped to match Canvas's own content-area background and max width.
+ * The editable outer `data-pantoken-color` wrapper, plus the inlined `CUSTOM_THEME_COLORS_CSS`,
+ * remaps brand colors instantly — a no-op for the default "navy" scheme. `#content`'s height is a min,
+ * not a fixed viewport height, so the iframe (resized to match in `resizePreviewFrame`) grows to
+ * fit instead of scrolling internally.
  */
-function updatePreview(): void {
+function updatePreview(theme: { css: string; js: string }): void {
   if (!activeEditor) return;
-  const themeCss = cssEditorView.state.doc.toString();
-  const themeJs = jsEditorView.state.doc.toString();
-  previewFrame.srcdoc = `<!doctype html><html><head><style>${themeCss}</style></head><body>
-    <div class="instui-view -background-primary" style="max-width: ${CANVAS_CONTENT_MAX_WIDTH}; margin-inline: auto;">
-      ${getEditorHtml()}
-    </div>
+  // Canvas's own theme already frames the RCE content area — the picker's border would double up.
+  previewFrame.style.borderColor =
+    selectedTheme === "canvas" || selectedTheme === "canvasHighContrast" ? "transparent" : "";
+  const themeCss = [theme.css, PREVIEW_SCHEME_FORCE_CSS, cssEditorView.state.doc.toString()]
+    .filter(Boolean)
+    .join("\n");
+  const themeJs = [theme.js, jsEditorView.state.doc.toString()]
+    .filter(Boolean)
+    .join("\n");
+  // Elevation is a rebrand-only affordance — Canvas's own themes don't use drop-shadow surfaces.
+  const contentClass =
+    selectedTheme === "rebrand"
+      ? "instui-view -background-primary --elevation-resting"
+      : "instui-view -background-primary";
+  // The preview is a srcdoc document, so it's a hard scope boundary: it declares its own theme,
+  // scheme, and color outright rather than inheriting anything from the editor chrome around it.
+  // That's what lets the preview sit in light Canvas while the chrome sits in dark rebrand.
+  const previewScheme =
+    selectedTheme === "rebrand" && includeDarkModeCheckbox.checked && previewDarkOverride
+      ? "dark"
+      : "light";
+  previewFrame.srcdoc = `<!doctype html><html data-pantoken-boundary data-pantoken-instance="${EDITOR_INSTANCE}-preview" data-pantoken-theme="${selectedTheme}" data-pantoken-scheme="${previewScheme}" data-pantoken-color="${selectedColor}" style="color-scheme:${previewScheme}"><head><style>${themeCss}
+${CUSTOM_THEME_COLORS_CSS}</style><style>#wrapper{padding:32px;}#content{padding:36px 48px 48px;min-height:20rem;margin:0 auto;border-radius:12px;}@media not all and (min-width: 768px) {
+  #wrapper{padding:24px;}#content{padding-left:12px;padding-right:12px;min-height:16rem;border-radius:8px;}</style></head><body>
+    <div id="wrapper" class="instui-view"><div id="content" class="${contentClass}" style="max-width: ${CANVAS_CONTENT_MAX_WIDTH};">
+      ${getNormalizedEditorHtml()}
+    </div></div>
     <script>${themeJs}</script>
   </body></html>`;
 }
-const debouncedUpdatePreview = debounce(updatePreview, 300);
+const debouncedUpdatePreview = debounce(() => void refreshAll(), 300);
 
-/** Regenerates the downloadable theme.css/theme.js blobs for the chosen provider/theme/mode. */
-function updateDownloads(): void {
-  const { provider, theme, mode } = currentSelection();
-  const { css: generatedCss, js: generatedJs } = buildTheme({ provider, theme, mode });
+// Keep the same-origin preview frame at its content height; the docs embedding page separately
+// receives its own postMessage height updates from `canvas-rce-iframe-height.js`.
+let previewResizeObserver: ResizeObserver | undefined;
+let previewMutationObserver: MutationObserver | undefined;
+const PREVIEW_BORDER_PX = 2;
+function resizePreviewFrame(): void {
+  // Fullscreen pins the pane to the viewport, so the frame flexes to fill it (app.css) rather than
+  // growing past it — a content-height frame would push the overlay into a scrollbar.
+  if (previewPane.classList.contains("-fullscreen")) {
+    previewFrame.style.removeProperty("height");
+    return;
+  }
+  const root = previewFrame.contentDocument?.documentElement;
+  const body = previewFrame.contentDocument?.body;
+  if (!root || !body) return;
+  const style = getComputedStyle(body);
+  const margins = Number.parseFloat(style.marginTop) + Number.parseFloat(style.marginBottom);
+  const height = Math.ceil(Math.max(root.getBoundingClientRect().height, body.offsetHeight + margins));
+  previewFrame.style.height = `${height + PREVIEW_BORDER_PX}px`;
+}
+
+function handlePreviewLinkClick(event: MouseEvent): void {
+  if (event.defaultPrevented) return;
+  const anchor = (event.target as Element | null)?.closest("a[href]");
+  const href = anchor?.getAttribute("href")?.trim();
+  if (!href?.startsWith("#")) return;
+
+  event.preventDefault();
+  let fragment: string;
+  try {
+    fragment = decodeURIComponent(href.slice(1));
+  } catch {
+    return;
+  }
+  if (!fragment) return;
+
+  const previewDocument = event.currentTarget as Document;
+  const target =
+    previewDocument.getElementById(fragment) ?? previewDocument.getElementsByName(fragment)[0];
+  target?.scrollIntoView();
+}
+
+previewFrame.addEventListener("load", () => {
+  previewResizeObserver?.disconnect();
+  previewMutationObserver?.disconnect();
+  resizePreviewFrame();
+  previewFrame.contentDocument?.addEventListener("click", handlePreviewLinkClick);
+  const root = previewFrame.contentDocument?.documentElement;
+  if (!root) return;
+  previewResizeObserver = new ResizeObserver(resizePreviewFrame);
+  previewResizeObserver.observe(root);
+  previewMutationObserver = new MutationObserver(resizePreviewFrame);
+  previewMutationObserver.observe(root, { childList: true, subtree: true, attributes: true });
+});
+
+function buildDownloadFiles(theme: { css: string; js: string }): {
+  css: string;
+  js: string;
+} {
+  const { css: presetCss, js: presetJs } = theme;
+  return {
+    css: [presetCss, cssEditorView.state.doc.toString()].filter(Boolean).join("\n"),
+    js: [presetJs, jsEditorView.state.doc.toString()].filter(Boolean).join("\n"),
+  };
+}
+
+/** Regenerates the downloadable theme.css/theme.js blobs, appending the author's custom CSS/JS
+ * tab content onto the generated preset for the chosen provider/theme/mode. */
+function updateDownloads(theme: { css: string; js: string }): void {
+  const files = buildDownloadFiles(theme);
   if (cssObjectUrl) URL.revokeObjectURL(cssObjectUrl);
   if (jsObjectUrl) URL.revokeObjectURL(jsObjectUrl);
-  cssObjectUrl = URL.createObjectURL(new Blob([generatedCss], { type: "text/css" }));
-  jsObjectUrl = URL.createObjectURL(new Blob([generatedJs], { type: "text/javascript" }));
+  cssObjectUrl = URL.createObjectURL(new Blob([files.css], { type: "text/css" }));
+  jsObjectUrl = URL.createObjectURL(new Blob([files.js], { type: "text/javascript" }));
   downloadCss.href = cssObjectUrl;
   downloadJs.href = jsObjectUrl;
 }
 
-/** Re-seeds the CSS/JS editors from the current config, unless the author has hand-edited them. */
-function updateThemeEditors(): void {
-  const { provider, theme, mode } = currentSelection();
-  if (!cssDirty) replaceEditorDoc(cssEditorView, buildThemeCss({ provider, theme, mode }));
-  if (!jsDirty) replaceEditorDoc(jsEditorView, buildThemeJs({ provider, theme, mode }));
+function downloadBlob(blob: Blob, filename: string): void {
+  const objectUrl = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = objectUrl;
+  anchor.download = filename;
+  document.body.append(anchor);
+  anchor.click();
+  anchor.remove();
+  setTimeout(() => URL.revokeObjectURL(objectUrl), 0);
 }
 
-function refreshAll(): void {
-  updateThemeEditors();
-  updatePreview();
-  updateDownloads();
+/** The currently open/saved preset's name, if any — downloads use it so the file the author is
+ * actually working on isn't always exported as a generic "canvas-theme"/"untitled". */
+function activePresetName(): string | undefined {
+  const savePlugin = activeEditor?.plugins[SAVE_PLUGIN_NAME] as
+    | SavePluginApi<CanvasThemePreset>
+    | undefined;
+  const activeId = savePlugin?.activePresetId;
+  if (!activeId) return undefined;
+  return savePlugin.list().find((preset) => preset.id === activeId)?.name;
 }
 
-// CSS/JS editors, seeded from the initial config selection.
+async function refreshAll(): Promise<void> {
+  const generation = ++refreshGeneration;
+  try {
+    const theme = await buildCurrentTheme();
+    if (generation !== refreshGeneration) return;
+    updatePreview(theme);
+    updateDownloads(theme);
+  } catch (error) {
+    console.error("Unable to build the selected theme", error);
+  }
+}
+
+// CSS/JS editors start blank — anything typed here is appended to the generated preset (in both
+// the preview and the downloaded files) rather than replacing it.
 const cssEditorView = createEditor(
   document.querySelector<HTMLElement>("#css-editor")!,
   "css",
-  buildThemeCss(currentSelection()),
-  () => {
-    cssDirty = true;
-    regenerateCssButton.hidden = false;
-    debouncedUpdatePreview();
-  },
+  "",
+  () => debouncedUpdatePreview(),
 );
 const jsEditorView = createEditor(
   document.querySelector<HTMLElement>("#js-editor")!,
   "javascript",
-  buildThemeJs(currentSelection()),
-  () => {
-    jsDirty = true;
-    regenerateJsButton.hidden = false;
-    debouncedUpdatePreview();
-  },
+  "",
+  () => debouncedUpdatePreview(),
 );
 
-regenerateCssButton.addEventListener("click", () => {
-  replaceEditorDoc(cssEditorView, buildThemeCss(currentSelection()));
-  cssDirty = false;
-  regenerateCssButton.hidden = true;
-  debouncedUpdatePreview();
-});
-regenerateJsButton.addEventListener("click", () => {
-  replaceEditorDoc(jsEditorView, buildThemeJs(currentSelection()));
-  jsDirty = false;
-  regenerateJsButton.hidden = true;
-  debouncedUpdatePreview();
+providerSelect.addEventListener("change", () => {
+  void refreshAll();
+  persistPreferences();
 });
 
-providerSelect.addEventListener("change", refreshAll);
-themeSelect.addEventListener("change", refreshAll);
-modeSelect.addEventListener("change", refreshAll);
+downloadHtmlButton.addEventListener("click", () => {
+  downloadBlob(
+    new Blob([getNormalizedEditorHtml()], { type: "text/html;charset=utf-8" }),
+    `${slugifyExportName(activePresetName() ?? "index")}.html`,
+  );
+});
+
+downloadPackageButton.addEventListener("click", () => {
+  downloadPackageButton.disabled = true;
+  void buildCurrentTheme()
+    .then((theme) => {
+      const files = buildDownloadFiles(theme);
+      const archive = zipSync({
+        "index.html": strToU8(getNormalizedEditorHtml()),
+        "theme.css": strToU8(files.css),
+        "theme.js": strToU8(files.js),
+      });
+      downloadBlob(
+        new Blob([archive], { type: "application/zip" }),
+        `${slugifyExportName(activePresetName() ?? "canvas-theme")}.zip`,
+      );
+    })
+    .catch((error) => {
+      console.error("Unable to build the theme package", error);
+    })
+    .finally(() => {
+      downloadPackageButton.disabled = false;
+    });
+});
 
 copyButton.addEventListener("click", () => {
-  void navigator.clipboard.writeText(getEditorHtml()).then(() => {
-    copyStatus.textContent = "Copied. Paste into the Canvas Rich Content Editor HTML view.";
-  });
+  void navigator.clipboard.writeText(getNormalizedEditorHtml());
 });
 
-// --- Editor/preview split-pane: orientation toggle, drag-resize, drag-to-swap, fullscreen. ---
-const splitPane = document.querySelector<HTMLElement>("#split-pane")!;
-const splitHandle = document.querySelector<HTMLElement>("#split-handle")!;
-const editorPane = document.querySelector<HTMLElement>("#editor-pane")!;
-const previewPane = document.querySelector<HTMLElement>("#preview-pane")!;
-const orientationButton = document.querySelector<HTMLButtonElement>("#toggle-orientation")!;
-const swapButton = document.querySelector<HTMLButtonElement>("#swap-panes")!;
+registerPantokenIconPack(tinymce.IconManager);
 
-let orientation: "row" | "column" = "row";
-
-function setPaneFlexBasis(fraction: number): void {
-  const clamped = Math.min(0.85, Math.max(0.15, fraction));
-  editorPane.style.flexBasis = `${clamped * 100}%`;
-  previewPane.style.flexBasis = `${(1 - clamped) * 100}%`;
-}
-
-orientationButton.addEventListener("click", () => {
-  orientation = orientation === "row" ? "column" : "row";
-  splitPane.classList.toggle("-orientation-column", orientation === "column");
-  splitHandle.setAttribute("aria-orientation", orientation === "row" ? "vertical" : "horizontal");
-  orientationButton.textContent =
-    orientation === "row" ? STRINGS.stackVerticallyLabel : STRINGS.stackSideBySideLabel;
-  setPaneFlexBasis(0.5);
-});
-
-/** Reorders the editor/preview panes (used by both the drag gesture and the fallback button). */
-function swapPanes(): void {
-  const parent = editorPane.parentElement!;
-  const firstIsEditor = parent.firstElementChild === editorPane;
-  if (firstIsEditor) parent.insertBefore(previewPane, editorPane);
-  else parent.insertBefore(editorPane, previewPane);
-}
-swapButton.addEventListener("click", swapPanes);
-
-// Drag-resize the split via the handle.
-splitHandle.addEventListener("pointerdown", (event) => {
-  splitHandle.classList.add("-dragging");
-  splitHandle.setPointerCapture(event.pointerId);
-  const onMove = (moveEvent: PointerEvent): void => {
-    const rect = splitPane.getBoundingClientRect();
-    const fraction =
-      orientation === "row"
-        ? (moveEvent.clientX - rect.left) / rect.width
-        : (moveEvent.clientY - rect.top) / rect.height;
-    setPaneFlexBasis(fraction);
-  };
-  const onUp = (): void => {
-    splitHandle.classList.remove("-dragging");
-    splitHandle.removeEventListener("pointermove", onMove);
-    splitHandle.removeEventListener("pointerup", onUp);
-  };
-  splitHandle.addEventListener("pointermove", onMove);
-  splitHandle.addEventListener("pointerup", onUp);
-});
-
-// Drag a pane's toolbar onto the other pane to swap their order (a pointer-based reorder gesture;
-// `swapButton` above is the keyboard-accessible equivalent for anyone who can't drag).
-for (const handle of document.querySelectorAll<HTMLElement>("[data-pane-handle]")) {
-  const paneId = handle.dataset.paneHandle!;
-  const pane = document.getElementById(paneId)!;
-  const otherPane = pane === editorPane ? previewPane : editorPane;
-
-  handle.addEventListener("pointerdown", (event: PointerEvent): void => {
-    handle.classList.add("-dragging");
-    handle.setPointerCapture(event.pointerId);
-    const onMove = (moveEvent: PointerEvent): void => {
-      const rect = otherPane.getBoundingClientRect();
-      const over =
-        moveEvent.clientX >= rect.left &&
-        moveEvent.clientX <= rect.right &&
-        moveEvent.clientY >= rect.top &&
-        moveEvent.clientY <= rect.bottom;
-      otherPane.classList.toggle("-drop-target", over);
-    };
-    const onUp = (upEvent: PointerEvent): void => {
-      handle.classList.remove("-dragging");
-      const droppedOnOther = otherPane.classList.contains("-drop-target");
-      otherPane.classList.remove("-drop-target");
-      if (droppedOnOther) swapPanes();
-      handle.removeEventListener("pointermove", onMove);
-      handle.removeEventListener("pointerup", onUp);
-      void upEvent;
-    };
-    handle.addEventListener("pointermove", onMove);
-    handle.addEventListener("pointerup", onUp);
-  });
-}
-
-// Per-pane fullscreen toggle.
-for (const button of document.querySelectorAll<HTMLButtonElement>(".pane-fullscreen")) {
-  const pane = document.getElementById(button.dataset.pane!)!;
-  button.addEventListener("click", (): void => {
-    if (document.fullscreenElement === pane) void document.exitFullscreen();
-    else void pane.requestFullscreen();
-  });
-}
-
-void registerPickerPlugins.then(() =>
+void registerPantokenPlugin.then(() =>
   tinymce
     .init({
       selector: "#editor",
-      // Load all five plugin modules: layouts, source-toggle (custom), and three pickers (from @pantoken/tinymce).
-      plugins: "pantoken_layouts pantoken_source_toggle pantoken_components pantoken_icons pantoken_logos",
-      // Toolbar includes the layouts button, source-view toggle, and the three picker buttons.
-      toolbar: "pantokenLayouts sourcecode | pantokenComponents pantokenIcons pantokenLogos",
+      plugins:
+        "pantoken pantoken_content_classes placehold pantoken_a11y pantoken_save pantoken_sup_sub pantoken_source_toggle pantoken_fullscreen_footer pantoken_searchreplace_footer pantoken_visualblocks_footer image link lists table media autosave fullscreen quickbars searchreplace wordcount visualblocks",
+      toolbar: `${SAVE_TOOLBAR_NAME} undo redo | pantoken | fontsize blocks | bold italic underline forecolor backcolor ${SUP_SUB_TOOLBAR_NAME} | link image placehold | align | bullist numlist | removeformat table media`,
       menubar: false,
       theme: "silver",
+      icons: PANTOKEN_ICON_PACK_NAME,
       branding: false,
+      // Self-hosted TinyMCE 6+ requires a license_key; "gpl" opts into the GPL license terms.
+      license_key: "gpl",
       browser_spellcheck: true,
       convert_urls: false,
       toolbar_mode: "floating",
       height: EDITOR_HEIGHT_PX,
       skin: false,
       content_css: false,
+      // Not part of the footer's fixed control set (a11y, word count, html editor, fullscreen,
+      // find & replace) — the breadcrumb is dropped rather than added as a sixth item.
+      elementpath: false,
+      block_formats: "Paragraph=p;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6",
+      // Hides the image dialog's Upload tab so only a remote http/https URL can be inserted — no
+      // local file picker, no base64 data-URI embedding.
+      image_uploadtab: false,
+      image_advtab: true,
+      // TinyMCE's autosave plugin persists drafts to localStorage by default.
+      autosave_ask_before_unload: true,
+      autosave_interval: "30s",
+      autosave_retention: "30m",
+      autosave_restore_when_empty: false,
+      // Mirrors the fixed toolbar's own formatting groups so the contextual popup never offers a
+      // control the fixed toolbar lacks.
+      quickbars_selection_toolbar: `bold italic underline forecolor backcolor ${SUP_SUB_TOOLBAR_NAME} | link | align | removeformat`,
+      quickbars_insert_toolbar: "quickimage quicktable media placehold",
+      quickbars_image_toolbar: "alignleft aligncenter alignright | image",
       setup(editor: Editor): void {
-        editor.on("input change Undo Redo SetContent", () => debouncedUpdatePreview());
+        editor.on("input change Undo Redo SetContent", () => {
+          syncThemeColorFromEditor();
+          if (syncIconAssetsFromEditor()) void refreshAll();
+          debouncedUpdatePreview();
+        });
       },
     })
     .then((editors: Editor[]) => {
       activeEditor = editors[0];
-      refreshAll();
+      syncThemeColorFromEditor();
+      syncIconAssetsFromEditor();
+      document.documentElement.dataset.pantokenScheme = includeDarkModeCheckbox.checked
+        ? "dark"
+        : "light";
+      applyEditorTheme(activeEditor);
+      void refreshAll();
     }),
 );

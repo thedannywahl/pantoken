@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-18 02:02+0000\n"
+"PO-Revision-Date: 2026-09-25 21:35+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -644,7 +644,7 @@ msgstr "`.--background-ai-horizontal` — 맞춤 표면용 AI 강조 그라디�
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/ai-gradient/index.ts)"
-msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/gap/index.ts)"
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/ai-gradient/index.ts)"
 
 #: css/ai-gradient.md
 #, no-c-format
@@ -718,7 +718,8 @@ msgctxt "docs.api:prose"
 msgid "\n  Oops! You're using the \"error\" color.\n  "
 msgstr "\n  축하합니다! 당신은 \"success\" 색상을 사용하고 있습니다.\n  "
 
-#: css/alert.md css/banner.md renderers/web-components/src/variables/modal.md
+#: css/alert.md css/banner.md css/button-set.md
+#: renderers/web-components/src/variables/modal.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Cancel"
@@ -863,7 +864,7 @@ msgid "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/ma
 msgstr "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/avatar/avatar.css)"
 
 #: css/avatar.md css/close-button.md css/in-place-edit.md css/modal.md
-#: css/tooltip.md
+#: css/tabs.md css/tooltip.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "This component's CSS renders and works on its own; pair it with `@pantoken/interactions` to add the interactive behavior. See the [modifier table below](#modifiers)."
@@ -891,25 +892,25 @@ msgstr "AI"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Dr. Nguyen Van Thoc"
-msgstr "Dr. Nguyen Van Thoc"
+msgstr "박사 Nguyen Van Thoc"
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Miguel Sanchez"
-msgstr "Miguel Sanchez"
+msgstr "미겔 산체스"
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Miguel"
-msgstr "Miguel"
+msgstr "미겔"
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Sanchez"
-msgstr "Sanchez"
+msgstr "산체스"
 
 #: css/avatar.md
 #, no-c-format
@@ -1597,6 +1598,150 @@ msgctxt "docs.api:prose"
 msgid "Small. @affects breadcrumb.link — Scales the crumb separator's spacing to match. Long-form alias of `-size-sm`."
 msgstr "Small. @affects breadcrumb.link — 크럼 구분자의 간격을 맞추어 축소합니다. `-size-sm` 의 장문 별칭입니다."
 
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`.instui-button-set` — A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
+msgstr "`.instui-button-set` — 솔기(맞붙음, 간격 0)의 버튼 행으로, 외부 두 모서리만 둥글게 처리됩니다."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead."
+msgstr "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) 그룹 내 같은 범주의 수식자를 갖지 않은 모든 하위 `.instui-button`에 대한 기본값을 설정합니다 — 버튼 자체의 수식자 클래스가 항상 그룹의 기본값보다 우선합니다. `-icon-*` 는 항상 버튼별 설정이며; 그룹에서 읽어오지 않습니다. 사용 중단된 버튼 별칭들 (`-ghost`, `-color-primary-inverse`)\n) 은 그룹 수준 수식자로 지원되지 않습니다 — 대신 정식 대체값인\n  (`-color-tertiary`, `-on-color`)) 를 사용하세요."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Left"
+msgstr "왼쪽"
+
+#: css/button-set.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Right"
+msgstr "light"
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Confirm"
+msgstr "확인"
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the AI gradient treatment."
+msgstr "수정되지 않은 모든 하위 항목의 기본값을 AI 그라디언트 처리로 설정합니다."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the lower-emphasis AI treatment."
+msgstr "수정되지 않은 모든 하위 항목의 기본값을 낮은 강조의 AI 처리로 설정합니다."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the destructive color."
+msgstr "수정되지 않은 모든 하위 항목의 기본값을 파괴적 색상으로 설정합니다."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the primary color."
+msgstr "수정되지 않은 모든 하위 항목의 기본값을 기본 색상으로 설정합니다."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the secondary color."
+msgstr "수정되지 않은 모든 하위 항목의 기본값을 보조 색상으로 설정합니다."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the success color."
+msgstr "수정되지 않은 모든 하위 항목의 기본값을 성공 색상으로 설정합니다."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the tertiary (text-style) color."
+msgstr "수정되지 않은 모든 하위 항목의 기본값을 3차(텍스트 스타일) 색상으로 설정합니다."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to tighter padding."
+msgstr "수정되지 않은 모든 하위 항목의 기본값을 더 좁은 패딩으로 설정합니다."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Lay every unmodified child out full-width."
+msgstr "수정되지 않은 모든 하위 항목을 전체 너비로 배치합니다."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child for placement on a coloured surface."
+msgstr "수정되지 않은 모든 하위 항목의 기본값을 색상이 있는 표면에 배치하도록 설정합니다."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to a round icon button."
+msgstr "수정되지 않은 모든 하위 항목의 기본값을 둥근 아이콘 버튼으로 설정합니다."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to a square icon button."
+msgstr "수정되지 않은 모든 하위 항목의 기본값을 정사각형 아이콘 버튼으로 설정합니다."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to large."
+msgstr "수정되지 않은 모든 하위 항목의 기본값을 크게 설정합니다."
+
+#: css/button-set.md css/button.md css/close-button.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "(default) medium size."
+msgstr "(기본) 중간 크기입니다."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to small."
+msgstr "수정되지 않은 모든 하위 항목의 기본값을 작게 설정합니다."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the pressed-state toggle treatment."
+msgstr "수정되지 않은 모든 하위 항목의 기본값을 누른 상태 토글 처리로 설정합니다."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to no fill."
+msgstr "수정되지 않은 모든 하위 항목의 기본값을 채우기 없음으로 설정합니다."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to no border."
+msgstr "수정되지 않은 모든 하위 항목의 기본값을 테두리 없음으로 설정합니다."
+
+#: css/button-set.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "- [button](/api/css/button.md) — The child control this wraps."
+msgstr "- [close-button](/api/css/close-button.md) — 아이콘 전용 닫기 버튼."
+
 #: css/button.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -1716,12 +1861,6 @@ msgstr "둥근 아이콘 버튼입니다."
 msgctxt "docs.api:prose"
 msgid "A square icon button."
 msgstr "정사각형 아이콘 버튼입니다."
-
-#: css/button.md css/close-button.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "(default) medium size."
-msgstr "(기본) 중간 크기입니다."
 
 #: css/button.md css/close-button.md
 #, no-c-format
@@ -3463,6 +3602,12 @@ msgstr "토큰 팔레트에서 스타일링된 접근성 있는 액션 컨트롤
 #: css/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
+msgstr "솔기(맞붙음, 간격 0)의 버튼 행으로, 외부 두 모서리만 둥글게 처리됩니다."
+
+#: css/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "A media object: a hero figure beside a title and description."
 msgstr "타이틀과 설명 옆에 배치된 미디어 오브젝트: 히어로 피겨."
 
@@ -3733,8 +3878,8 @@ msgstr "텍스트 입력의 상태와 크기에 맞춘 캐럿이 있는 스타�
 #: css/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "An animated loading ring; give it role=\"status\" and an aria-label."
-msgstr "애니메이션 로딩 링; role=\"status\"와 aria-label을 지정해 사용."
+msgid "An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "애니메이션 로딩 링 또는 AI 스피너입니다; role=\"status\"와 aria-label을 지정하세요."
 
 #: css/index.md
 #, no-c-format
@@ -3891,6 +4036,12 @@ msgstr "아이콘 시스템: `.instui-icon` 크기와 요소 앞에서 글리프
 msgctxt "docs.api:prose"
 msgid "Display and text-align utilities — `.--display-<value>` and `.--text-align-<value>` — as composable, global classes, usable bare or chained onto any component."
 msgstr "디스플레이 및 텍스트 정렬 유틸리티 — `.--display-<value>` 및 `.--text-align-<value>` — 구성 가능한 전역 클래스로, 단독 또는 다른 컴포넌트에 체인하여 사용 가능."
+
+#: css/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The logo system: `.instui-logo` sizing plus the shared `-logo-<name>` painter that masks a product logo (in `currentColor`) before any element, preserving the logo's own aspect ratio instead of a fixed 1:1 box."
+msgstr "아이콘 시스템: `.instui-icon` 크기와 요소 앞에서 글리프를 마스킹하는 공유 `-icon-<name>` 페인터(`currentColor`) 포함."
 
 #: css/index.md
 #, no-c-format
@@ -4295,6 +4446,24 @@ msgstr "작음. @affects list.item — 항목 간격을 이에 맞게 조정합�
 msgctxt "docs.api:prose"
 msgid "Remove markers and padding."
 msgstr "마커 및 패딩을 제거합니다."
+
+#: css/logo.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "`.instui-logo` — The logo system: `.instui-logo` sizing plus the shared `-logo-<name>` painter that masks a product logo (in `currentColor`) before any element, preserving the logo's own aspect ratio instead of a fixed 1:1 box."
+msgstr "`.instui-icon` — 아이콘 시스템: `.instui-icon` 크기 규격과, 어떤 요소보다 먼저 글리프(`currentColor`)를 마스크하는 공유 `-icon-<name>` 페인터를 포함합니다."
+
+#: css/logo.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A logo is meaningful, not decorative — give the host element `role=\"img\"` and an `aria-label` naming the product; never mark it `aria-hidden`."
+msgstr "로고는 장식이 아니라 의미가 있으므로 — 호스트 요소에 `role=\"img\"` 와 제품명을 담은 `aria-label` 을 부여하세요; `aria-hidden` 으로 표시해서는 안 됩니다."
+
+#: css/logo.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Set the glyph token (`--pantoken-glyph`) and its aspect ratio (`--pantoken-logo-aspect`), then render both via the shared painter (for example `-logo-canvas-horizontal-color`, from `@pantoken/plugin-logos`)."
+msgstr "글리프 토큰(`--pantoken-glyph`)을 설정하고, 공유 페인터(예: `-icon-search`)를 통해 렌더링하세요."
 
 #: css/logos.md
 #, no-c-format
@@ -6959,14 +7128,14 @@ msgstr "짧은 표기, 레거시-긴 표기, 완전 긴 표기 방식에 걸친 
 #: css/spinner.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "`.instui-spinner` — An animated loading ring; give it role=\"status\" and an aria-label."
-msgstr "`.instui-spinner` — 애니메이션 로딩 링입니다; role=\"status\"와 aria-label을 지정하세요."
+msgid "`.instui-spinner` — An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "`.instui-spinner` — 애니메이션 로딩 링 또는 AI 스피너; role=\"status\" 및 aria-label을 지정하세요."
 
 #: css/spinner.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color."
-msgstr "`-color-inverse`은(는) 애니메이션된 상단 테두리 부분만 다시 칠하며 트랙 전체를 다시 그리지는 않습니다. 따라서 별도의 트랙 색상이 없어도 어두운 카드에서 올바르게 표시됩니다."
+msgid "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color. The AI variants replace the ring with the centred `ai-spinner` glyph while keeping the same size scale."
+msgstr "`-color-inverse`는 애니메이션이 적용된 상단 테두리 부분만 다시 그리며 트랙 전체를 다시 그리지 않으므로 별도의 트랙 색상이 없어도 어두운 카드에서 올바르게 표시됩니다. AI 변형은 링을 중앙에 있는 `ai-spinner` 글리프로 교체하되 동일한 크기 비율을 유지합니다."
 
 #: css/spinner.md
 #, no-c-format
@@ -6979,6 +7148,18 @@ msgstr "**Source:** [spinner.css](https://github.com/thedannywahl/pantoken/blob/
 msgctxt "docs.api:prose"
 msgid "Give the spinner role=\"status\" and an aria-label so screen readers announce it as a live loading status."
 msgstr "스피너에 role=\"status\"와 aria-label을 지정하여 화면 읽기 도구가 이를 실시간 로딩 상태로 안내하도록 하세요."
+
+#: css/spinner.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rotating AI-gradient star."
+msgstr "회전하는 AI 그라디언트 별."
+
+#: css/spinner.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rotating on-colour AI star for a coloured or dark surface."
+msgstr "색상이 있는 또는 어두운 표면용 회전하는 온-컬러 AI 별."
 
 #: css/spinner.md
 #, no-c-format
@@ -6997,6 +7178,12 @@ msgstr "초소형. `-size-xs`의 긴 형식 별칭입니다."
 msgctxt "docs.api:prose"
 msgid "Extra-small."
 msgstr "초소형."
+
+#: css/spinner.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rotates the ring, or the AI star at the slower 2.25-second cadence."
+msgstr "링을 회전시키거나 AI 별을 더 느린 2.25초 주기로 회전시킵니다."
 
 #: css/stacking.md
 #, no-c-format
@@ -7249,6 +7436,24 @@ msgstr "기록"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The Overview tab's content shows here."
+msgstr "개요 탭의 내용이 여기에 표시됩니다."
+
+#: css/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The Details tab's content shows here."
+msgstr "개요 탭의 내용이 여기에 표시됩니다."
+
+#: css/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The Disabled tab's content won't be visible."
+msgstr "개요 탭의 내용이 여기에 표시됩니다."
+
+#: css/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The History tab's content shows here."
 msgstr "개요 탭의 내용이 여기에 표시됩니다."
 
 #: css/tabs.md
@@ -7737,7 +7942,7 @@ msgctxt "docs.api:prose"
 msgid "**Source:** [toggle-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/toggle-group/toggle-group.css)"
 msgstr "**Source:** [toggle-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/toggle-group/toggle-group.css)"
 
-#: css/toggle-group.md
+#: css/toggle-group.md renderers/web-components/src/variables/tabs.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Advanced settings"
@@ -7957,7 +8162,7 @@ msgstr " 강의 자료"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid " Syllabus.pdf"
-msgstr " Syllabus.pdf"
+msgstr " 강의 계획서.pdf"
 
 #: css/tree-browser.md
 #, no-c-format
@@ -7969,19 +8174,19 @@ msgstr " 1주차"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid " Reading.pdf"
-msgstr " Reading.pdf"
+msgstr " 읽기 자료.pdf"
 
 #: css/tree-browser.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid " Slides.pptx"
-msgstr " Slides.pptx"
+msgstr " 슬라이드.pptx"
 
 #: css/tree-browser.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid " Rubric.docx"
-msgstr " Rubric.docx"
+msgstr " 평가 기준.docx"
 
 #: css/tree-browser.md
 #, no-c-format
@@ -9093,6 +9298,12 @@ msgctxt "docs.api:prose"
 msgid "Also emit the deprecated InstUI-prop glyph aliases (`-render-icon-<name>`, `-render-custom-icon-<name>`)\nas functional aliases of `-icon-<name>`. Off by default — turning it on roughly doubles the sheet, so\nenable it only when you need markup written against the old `renderIcon`/`renderCustomIcon` prop names\nto keep rendering. The shipped `icons.css` is built with this on."
 msgstr "Also emit the deprecated InstUI-prop glyph aliases (`-render-icon-&lt;name&gt;`, `-render-custom-icon-&lt;name&gt;`)\nas functional aliases of `-icon-&lt;name&gt;`. Off by default — turning it on roughly doubles the sheet, so\nenable it only when you need markup written against the old `renderIcon`/`renderCustomIcon` prop names\nto keep rendering. The shipped `icons.css` is built with this on."
 
+#: formats/components/src/interfaces/IconGlyphsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Icon name → `--instui-icon-<name>` data-URI value. When given, the sheet also declares those\ncustom properties in `:root`, making it self-contained: the glyphs paint without a separate\ntoken sheet loaded alongside. Omit to emit the lean mapping-only sheet."
+msgstr "아이콘 이름 → `--instui-icon-<name>` 데이터 URI 값. 제공되면 시트는 해당\n커스텀 속성을 `:root`에 선언하여 자체 포함형이 됩니다: 글리프는 별도의 토큰 시트를 함께 로드하지 않고도 렌더됩니다. 가벼운 매핑 전용 시트를 내보내려면 생략하세요."
+
 #: formats/components/src/interfaces/ProseOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9124,6 +9335,12 @@ msgstr "Every elevation level and alias emitted as `--instui-elevation-&lt;name&
 msgctxt "docs.api:prose"
 msgid "The elements the ring applies to by default (the common interactive/focusable elements)."
 msgstr "링이 기본적으로 적용되는 요소들(일반적인 인터랙티브/포커스 가능한 요소들)."
+
+#: formats/components/src/variables/aiGradientCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The AI gradient utility as a standalone, header-wrapped stylesheet."
+msgstr "헤더로 래핑된 독립형 스타일시트로서의 AI 그라데이션 유틸리티."
 
 #: formats/components/src/variables/alertCss.md
 #, no-c-format
@@ -9659,6 +9876,106 @@ msgctxt "docs.api:prose"
 msgid "**Wrap a section in a CSS cascade layer**"
 msgstr "**섹션을 CSS 캐스케이드 레이어로 래핑합니다**"
 
+#: formats/css/src/functions/darkBranch.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The dark branch of a `light-dark()` value, or `null` when the value isn't one."
+msgstr "값이 `light-dark()`인 경우 그 어두운 분기이고, 값이 그렇지 않으면 `null`입니다."
+
+#: formats/css/src/functions/lightBranch.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The light branch of a `light-dark()` value, or `null` when the value isn't one."
+msgstr "값이 `light-dark()`인 경우 그 밝은 분기이고, 값이 그렇지 않으면 `null`입니다."
+
+#: formats/css/src/functions/multiScopeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The complete multi-scope sheet: layer order, one set of `@property` registrations, a shared base\nblock, a token block per theme, and the light/dark `color-scheme` pins."
+msgstr "완전한 다중 스코프 시트: 레이어 순서, 한 벌의 `@property` 등록, 공유된 베이스\n블록, 테마별 토큰 블록, 그리고 밝음/어둠 `color-scheme` 핀."
+
+#: formats/css/src/functions/multiScopeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Tokens are partitioned by whether their value actually varies across `themes`. Invariant tokens go\nin the shared base block once; varying tokens are repeated in full in *every* theme block. That\nsecond half is what makes nesting safe — a theme block that omitted a varying token would inherit\nthe enclosing scope's value for it."
+msgstr "토큰은 값이 실제로 `themes`에 따라 달라지는지 여부로 분리됩니다. 불변 토큰은 공유된 베이스 블록에 한 번 들어가고; 가변 토큰은 *모든* 테마 블록에 완전하게 반복됩니다. 그 두 번째 부분이 중첩을 안전하게 만드는 이유입니다 — 가변 토큰을 생략한 테마 블록은 해당 토큰에 대해 둘러싼 스코프의 값을 상속받습니다."
+
+#: formats/css/src/functions/propertiesCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The document-global `@property` registrations, with no declarations. Load this once per document;\nevery theme sheet below is declarations only, so loading a second theme cannot clobber it."
+msgstr "선언 없이 문서 전역의 `@property` 등록입니다. 문서당 한 번만 로드하십시오; 아래의 모든 테마 시트는 선언만 포함하므로 두 번째 테마를 로드해도 이를 덮어쓸 수 없습니다."
+
+#: formats/css/src/functions/schemeOverrideTokens.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The tokens whose value actually changes when a theme is pinned to `scheme` — i.e. the ones written\nwith `light-dark()`. This is the minimal forcing block for `[data-pantoken-scheme]`."
+msgstr "테마가 `scheme`에 고정될 때 실제로 값이 변경되는 토큰들 — 즉 `light-dark()`로 작성된 토큰들입니다. 이것이 `[data-pantoken-scheme]`에 대한 최소 강제 블록입니다."
+
+#: formats/css/src/functions/schemeScopeSelector.md
+#: packages/utils/src/functions/schemeScopeSelector.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The selector matching any element pinned to `scheme`."
+msgstr "`scheme`에 고정된 모든 요소와 일치하는 선택자입니다."
+
+#: formats/css/src/functions/schemeScopeSelectors.md
+#: packages/utils/src/functions/schemeScopeSelectors.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Both forms of the scheme scope selector, as a selector list."
+msgstr "스킴(scope) 선택자의 두 형태를 선택자 목록으로 나열한 것입니다."
+
+#: formats/css/src/functions/schemesCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The light and dark scheme pins, as a standalone sheet. Theme-independent — the scheme only decides\nwhich branch of `light-dark()` wins, which the browser does for us."
+msgstr "독립형 시트로서의 밝음 및 어둠 스킴 핀입니다. 테마에 무관하며 — 스킴은 `light-dark()`의 어느 분기가 적용될지 결정할 뿐이고, 브라우저가 이를 처리합니다."
+
+#: formats/css/src/functions/scopedSchemeCss.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pin a subtree's color scheme."
+msgstr "다크(반전) 색상 구성."
+
+#: formats/css/src/functions/scopedSchemeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`color-scheme` is an ordinary inherited property, so one rule keyed to the scope attribute (or its\nclass twin) resolves every `light-dark()` token below it. No token needs flattening: this sheet is\na couple of hundred bytes, not the ~87kb an explicit per-token override table would cost."
+msgstr "`color-scheme`은 일반적인 상속 속성이므로, 스코프 속성(또는 그 클래스 쌍)에 키를 건 하나의 규칙이 그 아래의 모든 `light-dark()` 토큰을 해결합니다. 토큰을 평탄화할 필요가 없습니다: 이 시트는 수백 바이트에 불과하며, 토큰별 명시적 오버라이드 테이블이 차지할 약 87kb가 아닙니다."
+
+#: formats/css/src/functions/scopedThemeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "One theme's complete token set, scoped to any element carrying `data-pantoken-theme=\"<theme>\"` or\nthe equivalent `.--pantoken-theme-<theme>` class."
+msgstr "하나의 테마에 대한 전체 토큰 세트로, `data-pantoken-theme=\"<theme>\"`를 가진 요소나 동등한 `.--pantoken-theme-<theme>` 클래스가 적용된 요소에 스코프됩니다."
+
+#: formats/css/src/functions/scopedThemeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every token is emitted as a declaration — including the concrete ones that would normally become\n`@property` initial-values — because an initial-value is document-global and cannot vary per scope."
+msgstr "모든 토큰은 선언으로 출력됩니다 — 통상적으로 `@property` 초기값이 될 구체적 토큰들도 포함됩니다 — 초기값은 문서 전역이어서 스코프별로 달라질 수 없기 때문입니다."
+
+#: formats/css/src/functions/themeScopeSelector.md
+#: packages/utils/src/functions/themeScopeSelector.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The selector matching any element that roots `theme`."
+msgstr "`theme`를 루트로 하는 모든 요소와 일치하는 선택자입니다."
+
+#: formats/css/src/functions/themeScopeSelectors.md
+#: packages/utils/src/functions/themeScopeSelectors.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Both forms of the theme scope selector, as a selector list."
+msgstr "테마 스코프 선택자의 두 형태를 선택자 목록으로 나열한 것입니다."
+
+#: formats/css/src/functions/themedTokens.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a theme token set with optional icon removal and light/dark collapse."
+msgstr "아이콘 제거와 밝음/어둠 병합을 선택적으로 적용하여 테마 토큰 세트를 빌드합니다."
+
 #: formats/css/src/functions/toCss.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9713,6 +10030,50 @@ msgctxt "docs.api:prose"
 msgid "Plain layer name (e.g. `\"pantoken\"`), no `@` prefix. Omit to skip the wrapper."
 msgstr "일반 레이어 이름(예: `\"pantoken\"`), `@` 접두사 없음. 래퍼를 건너뛰려면 생략하세요."
 
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [multiScopeCss](../functions/multiScopeCss.md)."
+msgstr "[toCss](../functions/toCss.md)에 대한 옵션입니다."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#: formats/css/src/interfaces/ScopedCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Drop the `--instui-icon-*` glyph tokens (default `false`)."
+msgstr "`--instui-*` 레이어의 소스 테마 (기본값 `\"rebrand\"`)."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#: formats/css/src/interfaces/ScopedCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Plugins whose `css` hooks run after the base CSS is built."
+msgstr "`css` 훅이 기본 CSS 빌드 후에 실행되는 플러그인들 (기본값: 없음)."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Themes to emit scope blocks for."
+msgstr "스코프 블록을 생성할 테마들입니다."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The theme whose concrete tokens back the one-time `@property` registrations."
+msgstr "미리 만들어진 `rebrand` 스타일시트 문자열(타입: 구체 토큰을 `@property` 등록으로)."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Include the light/dark `color-scheme` pins (default `true`; see [schemesCss](../functions/schemesCss.md))."
+msgstr "밝음/어둠 `color-scheme` 핀을 포함합니다(기본값 `true`; 자세한 내용은 [schemesCss](../functions/schemesCss.md)를 참조하세요)."
+
+#: formats/css/src/interfaces/ScopedCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options shared by the scoped emitters."
+msgstr "유틸리티 클래스 이미터들이 공유하는 옵션입니다."
+
 #: formats/css/src/interfaces/ToCssOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9726,10 +10087,95 @@ msgid "The selector scoped declarations are emitted under (default `\":root\"`).
 msgstr "스코프된 선택자 선언은 (기본값 `\":root\"`) 아래에 내보내집니다."
 
 #: formats/css/src/interfaces/ToCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Plain cascade layer name wrapping the declarations (no `@` prefix). Omit to skip the wrapper."
+msgstr "일반 레이어 이름(예: `\"pantoken\"`), `@` 접두사 없음. 래퍼를 건너뛰려면 생략하세요."
+
+#: formats/css/src/interfaces/ToCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Which half of the sheet to emit (default `\"all\"`)."
+msgstr "생성할 테마 (기본값: `\"rebrand\"`)."
+
+#: formats/css/src/interfaces/ToCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Emit every token as a declaration rather than routing concrete tokens to `@property`. Required\nfor a theme block that can nest inside another theme's subtree: an incomplete block would\ninherit the enclosing theme's values for the tokens it omits."
+msgstr "구체적 토큰을 `@property`로 라우팅하는 대신 모든 토큰을 선언으로 출력합니다. 이는 다른 테마의 서브트리 안에 중첩될 수 있는 테마 블록에 필요합니다: 불완전한 블록은 생략한 토큰들에 대해 둘러싼 테마의 값을 상속받게 됩니다."
+
+#: formats/css/src/interfaces/ToCssOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Plugins whose `css` hooks run after the base CSS is built (default: none)."
 msgstr "`css` 훅이 기본 CSS 빌드 후에 실행되는 플러그인들 (기본값: 없음)."
+
+#: formats/css/src/type-aliases/CssEmitTarget.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Which half of the sheet to emit."
+msgstr "시트의 어느 쪽 절반을 출력할지입니다."
+
+#: formats/css/src/type-aliases/CssEmitTarget.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`@property` registrations are document-global — the last registration of a given name wins for the\nwhole document — so two full sheets on one page fight over every concrete token. Emitting\nregistrations once (`\"properties\"`) and each theme as declarations only (`\"declarations\"`) lets\nseveral themes coexist."
+msgstr "`@property` 등록은 문서 전역입니다 — 주어진 이름의 마지막 등록이 문서 전체에 대해 우선하므로 — 한 페이지에 두 개의 전체 시트가 있으면 모든 구체적 토큰을 놓고 충돌합니다. 등록은 한 번만 출력(`\"properties\"`)하고, 각 테마는 선언만으로 출력(`\"declarations\"`)하면 여러 테마가 공존할 수 있습니다."
+
+#: formats/css/src/type-aliases/Scheme.md
+#: formats/scope/src/type-aliases/Scheme.md
+#: packages/utils/src/type-aliases/Scheme.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A color scheme a scope can be pinned to."
+msgstr "스코프가 고정될 수 있는 색상 스킴입니다."
+
+#: formats/css/src/variables/BOUNDARY_ATTR.md
+#: packages/utils/src/variables/BOUNDARY_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute marking a scope that ancestor resolution must not cross."
+msgstr "조상 해결(ancestor resolution)이 넘지 말아야 할 스코프를 표시하는 속성입니다."
+
+#: formats/css/src/variables/BOUNDARY_CLASS.md
+#: packages/utils/src/variables/BOUNDARY_CLASS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Class equivalent of `data-pantoken-boundary`."
+msgstr "`data-pantoken-boundary`의 클래스 동등물입니다."
+
+#: formats/css/src/variables/COLOR_ATTR.md
+#: packages/utils/src/variables/COLOR_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute that selects a custom brand color."
+msgstr "사용자 정의 브랜드 색상을 선택하는 속성입니다."
+
+#: formats/css/src/variables/LAYERS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Cascade layers this module emits into, in ascending precedence order."
+msgstr "이 모듈이 출력하는 캐스케이드 레이어들로, 우선순위가 낮은 것부터 높은 것 순으로 나열됩니다."
+
+#: formats/css/src/variables/SCHEME_ATTR.md
+#: packages/utils/src/variables/SCHEME_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute that pins a subtree to a color scheme."
+msgstr "서브트리를 색상 스킴에 고정하는 속성입니다."
+
+#: formats/css/src/variables/THEME_ATTR.md
+#: packages/utils/src/variables/THEME_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute that roots a theme scope. Matches any element, not just `:root`."
+msgstr "테마 스코프를 루트로 지정하는 속성입니다. `:root`뿐 아니라 모든 요소와 일치합니다."
+
+#: formats/css/src/variables/colorClass.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Class equivalent of `data-pantoken-color`."
+msgstr "`data-pantoken-color`의 클래스 동등물입니다."
 
 #: formats/css/src/variables/css.md
 #, no-c-format
@@ -9742,6 +10188,18 @@ msgstr "미리 만들어진 `rebrand` 스타일시트 문자열(타입: 구체 �
 msgctxt "docs.api:prose"
 msgid "The lean `rebrand` stylesheet string — the full sheet minus the `--instui-icon-*` glyph tokens (the\n~1,777 icon data-URIs that make up most of [css](css.md)). Roughly a sixth the size over the wire; the\nrecommended foundation for CDN/embed delivery. Components reference only a handful of icons, shipped\nseparately as `@pantoken/components`'s `component-icons.css`; consumers who use `var(--instui-icon-*)`\nbroadly should load the full [css](css.md) (or the `icons.css` glyph sheet). See\n`@pantoken/css/style.lean.css`."
 msgstr "간결한 `rebrand` 스타일시트 문자열 — 전체 시트에서 `--instui-icon-*` 글리프 토큰(대부분의 [css](css.md)를 구성하는 약 1,777개의 아이콘 데이터 URI)을 뺀 것. 전송 크기는 대략 6분의 1 수준이며, CDN/임베드 전송을 위한 권장 기반입니다. 컴포넌트는 소수의 아이콘만 참조하며, 이는 별도로 `@pantoken/components`의 `component-icons.css`로 제공됩니다; `var(--instui-icon-*)`를 광범위하게 사용하는 소비자는 전체 [css](css.md)(또는 `icons.css` 글리프 시트)를 로드해야 합니다. 자세한 내용은 `@pantoken/css/style.lean.css`을 참조하세요."
+
+#: formats/css/src/variables/schemeClass.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Class equivalent of `data-pantoken-scheme`."
+msgstr "`data-pantoken-scheme`의 클래스 동등물입니다."
+
+#: formats/css/src/variables/themeClass.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Class equivalents of the scope attributes, for hosts that sanitize `data-*` but allow `class` —\nCanvas RCE content being the one that forced them. They follow the repo's global-modifier naming\n(`.--name`), and the emitter pairs each attribute selector with its class twin."
+msgstr "스코프 속성들의 클래스 등가물로, `data-*`를 정제(sanitize)하지만 `class`는 허용하는 호스트들을 위한 것입니다 — Canvas RCE 콘텐츠가 이를 강제한 사례입니다. 이들은 리포지토리의 글로벌-모디파이어 명명(`.--name`)을 따르며, 이미터는 각 속성 선택자와 그 클래스 쌍을 페어로 만듭니다."
 
 #: formats/dtcg/src/functions/byTheme.md
 #, no-c-format
@@ -9928,9 +10386,9 @@ msgid "Icon name → hex codepoint (e.g. `\"e001\"`)."
 msgstr "아이콘 이름 → 16진수 코드포인트 (예: `\"e001\"`)."
 
 #: formats/icons/src/functions/buildIconResolverChain.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Build the shared icon-resolver chain: plugin `rehype` resolvers first, then an explicit\n`resolve`, then the built-in pantoken icon set. Used by `@pantoken/rehype` and\n`@pantoken/markdown-it` so the resolution order stays identical across renderers."
+msgid "Build the shared icon-resolver chain: an explicit `resolve` first, then the built-in pantoken\nicon set, then plugin `rehype` resolvers (so a plugin can add codes the built-in set doesn't\nknow, but never shadow a built-in icon name). Used by `@pantoken/rehype` and\n`@pantoken/markdown-it` so the resolution order stays identical across renderers."
 msgstr "공유 아이콘 해석기 체인을 구성합니다: 먼저 플러그인 `rehype` 해석기들, 그 다음 명시적인\n`resolve`, 그 다음 내장된 pantoken 아이콘 세트. `@pantoken/rehype`와\n`@pantoken/markdown-it`에서 사용되며 렌더러 전반에 걸쳐 해석 순서가 동일하게 유지됩니다."
 
 #: formats/icons/src/functions/getIcon.md
@@ -9966,9 +10424,9 @@ msgstr "내장된 pantoken 아이콘 세트보다 먼저 시도되는 명시적 
 
 #: formats/icons/src/interfaces/IconResolverChainOptions.md
 #: renderers/rehype/src/interfaces/RehypeOptions.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Plugins whose `rehype` hooks contribute resolvers (tried first)."
+msgid "Plugins whose `rehype` hooks contribute resolvers (tried last, after the built-in set)."
 msgstr "플러그인의 `rehype` 훅이 리졸버를 제공하는 플러그인들(먼저 시도됨)."
 
 #: formats/icons/src/interfaces/PantokenIcon.md
@@ -10013,6 +10471,12 @@ msgctxt "docs.api:prose"
 msgid "The glyph origin."
 msgstr "글리프의 원점."
 
+#: formats/icons/src/variables/customIcons.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every Instructure-authored custom icon."
+msgstr "**Instructure가 작성한 글리프만 허용합니다**"
+
 #: formats/icons/src/variables/icons.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -10024,6 +10488,12 @@ msgstr "이름순으로 정렬된 모든 pantoken 아이콘."
 msgctxt "docs.api:prose"
 msgid "Every pantoken icon, keyed by name."
 msgstr "이름을 키로 사용하는 모든 pantoken 아이콘."
+
+#: formats/icons/src/variables/lucideIcons.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every canonical Lucide icon."
+msgstr "모든 정식 Lucide 아이콘."
 
 #: formats/icons/src/variables/resolve.md
 #, no-c-format
@@ -10114,6 +10584,12 @@ msgstr "타임아웃은 명시적인 밀리초 옵션이거나 타겟의 계산�
 msgctxt "docs.api:prose"
 msgid "Wire open/close commands plus width-based responsive overlay switching onto a host: any\ncollapsible side panel (e.g. a drawer's tray) can import this interaction rather than each\ncomponent reimplementing it."
 msgstr "호스트에 열기/닫기 명령과 너비 기반의 반응형 오버레이 전환을 연결합니다: 모든\n접이식 사이드 패널(예: 드로어의 트레이)은 이 상호작용을 가져다 사용할 수 있으며 각\n컴포넌트가 이를 재구현할 필요가 없습니다."
+
+#: formats/interactions/src/functions/initTabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Wire a tablist and its controlled panels inside a host element."
+msgstr "호스트 요소 안에 탭리스트와 해당 제어 패널을 연결합니다."
 
 #: formats/interactions/src/functions/initTooltip.md
 #, no-c-format
@@ -10374,6 +10850,12 @@ msgctxt "docs.api:prose"
 msgid "Exit treatment. Defaults to `\"fade\"`, matching InstUI Alert."
 msgstr "종료 처리. 기본값은 InstUI Alert와 일치하는 `\"fade\"`입니다."
 
+#: formats/interactions/src/interfaces/TabsHandle.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Controls the listeners installed by [initTabs](../functions/initTabs.md)."
+msgstr "[initTooltip](../functions/initTooltip.md)에서 반환된 핸들입니다."
+
 #: formats/interactions/src/interfaces/TooltipHandle.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -10508,6 +10990,410 @@ msgstr "[toLess](../functions/toLess.md)에 대한 옵션입니다."
 msgctxt "docs.api:prose"
 msgid "The ready-made `rebrand` Less variable set."
 msgstr "미리 준비된 `rebrand` Less 변수 세트."
+
+#: formats/scope/src/functions/connectScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Run inside a frame: ask the host page's scope for its state and follow it."
+msgstr "프레임 내부에서 실행: 호스트 페이지의 스코프에 상태를 요청하고 그것을 따릅니다."
+
+#: formats/scope/src/functions/connectScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The frame gets its own scope element, so it can be told to render a different theme or scheme than\nthe host — it is not inheriting ambiently."
+msgstr "프레임은 자체 스코프 요소를 가지므로, 호스트와 다른 테마나 스킴을 렌더하도록 지정할 수 있습니다 — 주변 환경을 통해 자동으로 상속받는 것이 아닙니다."
+
+#: formats/scope/src/functions/connectScope.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "A disconnect function."
+msgstr "파괴적 액션입니다."
+
+#: formats/scope/src/functions/createScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Create a scope rooted at `element`."
+msgstr "`element`를 루트로 하는 스코프를 생성합니다."
+
+#: formats/scope/src/functions/createScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "**Two independent themes on one page**"
+msgstr "**한 페이지에 독립된 두 테마**"
+
+#: formats/scope/src/functions/ensureProperties.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inject `css` into `doc` once. A second call with the same `id` does nothing, whichever instance\nmakes it."
+msgstr "`css`를 `doc`에 한 번 주입합니다. 동일한 `id`로 두 번째 호출을 해도 아무 영향이 없으며, 어느 인스턴스가 호출했든 마찬가지입니다."
+
+#: formats/scope/src/functions/ensureProperties.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The registrations sheet, e.g. `@pantoken/css/properties.css`."
+msgstr "npm 패키지 이름, 예: `\"@pantoken/components\"`."
+
+#: formats/scope/src/functions/ensureProperties.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`id` distinguishes unrelated sheets; `doc` defaults to the current document."
+msgstr "`id` 관련 없는 시트를 구분합니다; `doc` 기본값은 현재 문서입니다."
+
+#: formats/scope/src/functions/ensureProperties.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`true` when this call performed the injection."
+msgstr "`true` 이 호출이 인젝션을 수행한 경우 `true`입니다."
+
+#: formats/scope/src/functions/getScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The scope registered for `instanceId` in `doc`, if any."
+msgstr "The scope registered for `instanceId` in `doc`, 있는 경우."
+
+#: formats/scope/src/functions/hasProperties.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "True when a registrations sheet with `id` is already present in `doc`."
+msgstr "이미 `doc` 에 `id` 를 가진 등록 시트가 있을 때 `True`입니다."
+
+#: formats/scope/src/functions/isScheme.md
+#: packages/utils/src/functions/isScheme.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Narrow an arbitrary value to a [Scheme](../type-aliases/Scheme.md)."
+msgstr "임의의 값을 [Scheme](../type-aliases/Scheme.md) 로 좁힙니다."
+
+#: formats/scope/src/functions/observeScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Call `listener` whenever the scope resolved for `target` changes, including when an ancestor's\nattributes change."
+msgstr "Call `listener` 대상의 범위가 변경될 때마다 호출하세요, 조상 요소의\n속성이 변경될 때도 포함됩니다."
+
+#: formats/scope/src/functions/observeScope.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "A stop function."
+msgstr "AI 액션입니다."
+
+#: formats/scope/src/functions/resolveInstance.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The instance that owns `start`, falling back to [DEFAULT\\_INSTANCE](../variables/DEFAULT_INSTANCE.md)."
+msgstr "The instance that owns `start`, 기본값은 [DEFAULT\\_INSTANCE](../variables/DEFAULT_INSTANCE.md) 입니다."
+
+#: formats/scope/src/functions/resolveInstance.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use this to decide whether an event or message is yours before acting on it."
+msgstr "조치하기 전에 이벤트나 메시지가 자신에게 속하는지 결정하는 데 사용하세요."
+
+#: formats/scope/src/functions/resolveScheme.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The effective color scheme for `start`: an explicit pin if any ancestor set one, otherwise the\n`color-scheme` the element actually computes to, otherwise the OS preference."
+msgstr "The effective color scheme for `start`: 조상 중 누군가 명시적으로 고정한 값이 있으면 그 값, 그렇지 않으면 요소가 실제로 계산하는\n`color-scheme` `color-scheme`, 없으면 OS 환경설정입니다."
+
+#: formats/scope/src/functions/resolveScheme.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Never reads `document.documentElement` — that global read is exactly what desynchronises two\ninstances on one page."
+msgstr "Never reads `document.documentElement` — 해당 전역 읽기는 한 페이지에서 두 인스턴스를 비동기화하는 원인입니다."
+
+#: formats/scope/src/functions/resolveScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve the scope in effect for `start` by walking up its ancestors."
+msgstr "Resolve the scope in effect for `start` 를 조상들을 따라 올라가며 결정합니다."
+
+#: formats/scope/src/functions/resolveScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The element to resolve for. Its own attributes participate."
+msgstr "해결 대상 요소입니다. 해당 요소의 속성들도 참여합니다."
+
+#: formats/scope/src/functions/resolveScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [ResolvedScope](../interfaces/ResolvedScope.md); fields no ancestor declared are left `undefined`."
+msgstr "The [ResolvedScope](../interfaces/ResolvedScope.md); 조상에서 선언하지 않은 필드는 `undefined`로 남습니다."
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "`@pantoken/scope` — run several pantoken themes and color schemes in one document."
+msgstr "`@pantoken/core` — pantoken 변환기."
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pantoken's CSS keys themes to a `data-pantoken-theme` attribute that matches *any* element, not\njust `:root`, so theming is a property of a subtree rather than of the page. This package is the\nruntime half of that contract:"
+msgstr "Pantoken의 CSS는 테마를 모든 요소에 매칭되는 `data-pantoken-theme` 속성으로 키잉하므로, 단순히 `:root`가 아니라 서브트리의 속성으로 테마가 작동합니다. 이 패키지는 그 계약의 런타임 절반입니다:"
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "- [resolveScope](functions/resolveScope.md) walks up from an element to find the theme, scheme, and color in effect —\n  the auto-detection half.\n- [createScope](functions/createScope.md) declares a scope explicitly, with its own persisted state and its own frame\n  message channel — the manual-configuration half that stops two instances colliding.\n- [ensureProperties](functions/ensureProperties.md) injects the document-global `@property` registrations once, however\n  many instances ask for them."
+msgstr "- - [resolveScope](functions/resolveScope.md) 요소에서 위로 올라가 적용 중인 테마, 스킴, 색을 찾습니다 — 자동 감지 부분입니다.\n- \n- [createScope](functions/createScope.md) 명시적으로 스코프를 선언하며 자체 영속 상태와 프레임 메시지 채널을 가집니다 — 두 인스턴스 충돌을 막는 수동 구성 부분입니다.\n- \n- [ensureProperties](functions/ensureProperties.md) 문서 전역 `@property` 등록을 한 번 주입합니다; 여러 인스턴스가 요청하더라도 한 번만 주입됩니다."
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Node-free by design: this ships to the browser."
+msgstr "설계상 Node 의존성이 없습니다: 브라우저에 배포됩니다."
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [BOUNDARY_ATTR](../../css/src/variables/BOUNDARY_ATTR.md)"
+msgstr "다시 내보냄 [BOUNDARY_ATTR](../../css/src/variables/BOUNDARY_ATTR.md)"
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [BOUNDARY_CLASS](../../css/src/variables/BOUNDARY_CLASS.md)"
+msgstr "다시 내보냄 [BOUNDARY_CLASS](../../css/src/variables/BOUNDARY_CLASS.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [COLOR_ATTR](../../css/src/variables/COLOR_ATTR.md)"
+msgstr "다시 내보냅니다 [Mode](../../core/src/type-aliases/Mode.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [SCHEME_ATTR](../../css/src/variables/SCHEME_ATTR.md)"
+msgstr "다시 내보냅니다 [Mode](../../core/src/type-aliases/Mode.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [THEME_ATTR](../../css/src/variables/THEME_ATTR.md)"
+msgstr "다시 내보냅니다 [Mode](../../core/src/type-aliases/Mode.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [colorClass](../../css/src/variables/colorClass.md)"
+msgstr "다시 내보냅니다 [Mode](../../core/src/type-aliases/Mode.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [schemeClass](../../css/src/variables/schemeClass.md)"
+msgstr "[Theme](../../../packages/core/src/type-aliases/Theme.md)를 재내보냅니다"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [themeClass](../../css/src/variables/themeClass.md)"
+msgstr "[Theme](../../../packages/core/src/type-aliases/Theme.md)를 재내보냅니다"
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [connectScope](../functions/connectScope.md)."
+msgstr "[toGpl](../functions/toGpl.md)의 옵션."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The instance to accept messages for (default [DEFAULT\\_INSTANCE](../variables/DEFAULT_INSTANCE.md))."
+msgstr "메시지를 수신할 인스턴스 (기본값 [DEFAULT\\_INSTANCE](../variables/DEFAULT_INSTANCE.md) 입니다)."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The element to apply received state to (default `document.documentElement`)."
+msgstr "수신한 상태를 적용할 요소 (기본값 `document.documentElement`입니다)."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The window to talk to (default `window.parent`)."
+msgstr "폰트 패밀리 이름 (기본값 `\"PanTokens\"`)."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The origin the host must have. Pass `\"*\"` only for an opaque-origin `srcdoc` document."
+msgstr "호스트가 가져야 하는 origin입니다. 불투명 origin의 `srcdoc` 문서에만 `\"*\"` 를 전달하세요."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Called after each applied update."
+msgstr "각 적용된 업데이트 이후에 호출됩니다."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [createScope](../functions/createScope.md)."
+msgstr "[aggregate](../functions/aggregate.md)의 옵션."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#: formats/scope/src/interfaces/ResolvedScope.md
+#: formats/scope/src/interfaces/ScopeConfig.md
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Theme key, e.g. `\"rebrand\"`. Matched by `[data-pantoken-theme=\"…\"]`."
+msgstr "테마 키 예: `\"rebrand\"`. `[data-pantoken-theme=\"…\"]` 로 매칭됩니다."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#: formats/scope/src/interfaces/ResolvedScope.md
+#: formats/scope/src/interfaces/ScopeConfig.md
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pinned color scheme. Omit to follow the OS preference."
+msgstr "고정된 컬러 스킴입니다. OS 환경설정을 따르려면 생략하세요."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#: formats/scope/src/interfaces/ResolvedScope.md
+#: formats/scope/src/interfaces/ScopeConfig.md
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Custom brand color key."
+msgstr "사용자 지정 브랜드 색상 키입니다."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Identifier distinguishing this pantoken instance from others on the page. Scopes, storage keys,\nand frame messages are all keyed by it."
+msgstr "이 pantoken 인스턴스를 페이지의 다른 인스턴스와 구분하는 식별자입니다. 스코프, 저장 키,\n및 프레임 메시지들이 이 식별자로 키화됩니다."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Stop ancestor resolution at this element, so nothing outside can theme what is inside. Use for\na preview pane that must not inherit the surrounding app's theme."
+msgstr "이 요소에서 조상 해석을 중단하여 외부가 내부의 테마를 결정하지 못하게 합니다. 주변 앱의 테마를 상속하면 안 되는 미리보기 창에 사용하세요."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Persist and restore state. Pass `false` to keep the scope in-memory only (default `true`)."
+msgstr "상태를 영구 저장하고 복원합니다. 스코프를 메모리 전용으로 유지하려면 `false` 를 전달하세요 (기본값 `true`)."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Storage backend (default `localStorage`, silently skipped when unavailable)."
+msgstr "스토리지 백엔드 (기본값 `localStorage`, 사용 불가하면 조용히 건너뜁니다)."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A live scope bound to one element."
+msgstr "하나의 요소에 바인딩된 라이브 스코프입니다."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The element carrying the scope attributes."
+msgstr "스코프 속성을 지닌 요소입니다."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The instance this scope belongs to."
+msgstr "로고가 속한 제품."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The scope's own configuration — what it declares, not what it inherits."
+msgstr "스코프 자체의 구성 — 스코프가 선언한 내용이며 상속된 내용이 아닙니다."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Merge a partial configuration in. Pass `null` for a field to clear it and inherit again."
+msgstr "부분 구성값을 병합합니다. 필드를 지우고 다시 상속하려면 해당 필드에 `null` 을 전달하세요."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve the effective scope for a descendant (defaults to this scope's own element)."
+msgstr "하위 요소에 대한 적용되는 스코프를 해석합니다 (기본값은 이 스코프의 자체 요소입니다)."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Send this scope's state to `frame` and keep it in sync. Returns a detach function."
+msgstr "이 스코프의 상태를 `frame` 으로 전송하고 동기 상태를 유지합니다. 분리(detach) 함수가 반환됩니다."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Observe changes. Returns an unsubscribe function."
+msgstr "변경을 관찰합니다. 구독 취소(unsubscribe) 함수가 반환됩니다."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Remove the attributes, detach frames, and unregister."
+msgstr "속성을 제거하고, 프레임을 분리하며, 등록을 해제합니다."
+
+#: formats/scope/src/interfaces/ResolvedScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A [ScopeConfig](ScopeConfig.md) resolved against the DOM, plus where each part came from."
+msgstr "DOM에 대해 해석된 [ScopeConfig](ScopeConfig.md) 와 각 부분의 출처 정보입니다."
+
+#: formats/scope/src/interfaces/ResolvedScope.md
+#: formats/scope/src/interfaces/ScopeConfig.md
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Identifier of the pantoken instance that owns this scope."
+msgstr "이 스코프를 소유한 pantoken 인스턴스의 식별자입니다."
+
+#: formats/scope/src/interfaces/ResolvedScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The nearest element that declared any scope attribute, or `null` when none did."
+msgstr "가장 가까운 스코프 속성을 선언한 요소, 없으면 `null` 입니다."
+
+#: formats/scope/src/interfaces/ResolvedScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "True when resolution stopped at a `data-pantoken-boundary` element."
+msgstr "`data-pantoken-boundary` 요소에서 해석이 중단되었을 때 `True` 입니다."
+
+#: formats/scope/src/interfaces/ScopeConfig.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The resolvable state of a scope. Every field is optional — an unset field inherits."
+msgstr "스코프의 해석 가능한 상태입니다. 모든 필드는 선택적이며 — 설정되지 않은 필드는 상속됩니다."
+
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The message envelope exchanged between a scope and its attached frames."
+msgstr "스코프와 연결된 프레임들 사이에서 교환되는 메시지 봉투(엔벨로프)입니다."
+
+#: formats/scope/src/variables/DEFAULT_INSTANCE.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The default instance id, used when a scope does not name one."
+msgstr "스코프가 명시하지 않았을 때 사용하는 기본 인스턴스 ID입니다."
+
+#: formats/scope/src/variables/INSTANCE_ATTR.md
+#: packages/utils/src/variables/INSTANCE_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute carrying the owning instance id, so sibling instances can tell scopes apart."
+msgstr "소유 인스턴스 ID를 전달하는 속성으로, 형제 인스턴스들이 스코프를 구분할 수 있게 합니다."
+
+#: formats/scope/src/variables/SCOPE_ATTRS.md
+#: packages/utils/src/variables/SCOPE_ATTRS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every attribute that participates in scope resolution."
+msgstr "스코프 해결에 참여하는 모든 속성."
 
 #: formats/scss/src/functions/toScss.md
 #, no-c-format
@@ -10807,13 +11693,13 @@ msgstr "**특정 형식으로 테마 스와치 팔레트를 생성**"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Run the `pantoken add <item>` command, delegating to `shadcn add @pantoken/<item>`."
-msgstr "Run the `pantoken add <item>` command, delegating to `shadcn add @pantoken/<item>`."
+msgstr "다음 명령 `pantoken add <item>`를 실행하고, `shadcn add @pantoken/<item>`에 위임합니다."
 
 #: packages/cli/src/functions/runCreate.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Run the `pantoken create <platform>` command, delegating to `@pantoken/scaffold/cli`."
-msgstr "Run the `pantoken create <platform>` command, delegating to `@pantoken/scaffold/cli`."
+msgstr "다음 `pantoken create <platform>` 명령을 실행하고, `@pantoken/scaffold/cli`로 위임합니다."
 
 #: packages/cli/src/index.md
 #, no-c-format
@@ -11937,6 +12823,18 @@ msgctxt "docs.api:prose"
 msgid "Convert a kebab-case string to camelCase (`color-background-brand` → `colorBackgroundBrand`)."
 msgstr "kebab-case 문자열을 camelCase로 변환 (`color-background-brand` → `colorBackgroundBrand`)."
 
+#: packages/utils/src/functions/colorScopeSelector.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The selector matching any element using custom brand color `color`."
+msgstr "사용자 지정 브랜드 색상 `color`를 사용하는 모든 요소와 일치하는 선택자 `color`."
+
+#: packages/utils/src/functions/colorScopeSelectors.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Both forms of the color scope selector, as a selector list."
+msgstr "선택자 목록으로서 색상 스코프 선택자의 두 형태."
+
 #: packages/utils/src/functions/colorUtilitiesCss.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -12135,6 +13033,12 @@ msgctxt "docs.api:prose"
 msgid "A `light-dark(<light>, <dark>)` value; capture groups 1 and 2 are the two branches."
 msgstr "A `light-dark(&lt;light&gt;, &lt;dark&gt;)` value; capture groups 1 and 2 are the two branches."
 
+#: packages/utils/src/variables/SCOPE_LAYERS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Cascade layers the scoped sheets emit into, in ascending precedence order."
+msgstr "스코프된 시트가 배치되는 캐스케이드 레이어로, 우선순위가 낮은 것에서 높은 것 순(오름차순)입니다."
+
 #: packages/utils/src/variables/SPACING_AUTO_STEP.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -12309,6 +13213,12 @@ msgstr "리브랜드 토큰 모드. 기본값은 `\"light\"`입니다. `rebrand`
 msgctxt "docs.api:prose"
 msgid "Component-style sheets. Defaults to [defaultThemeCssAssets](../functions/defaultThemeCssAssets.md) for `theme`/`mode`."
 msgstr "컴포넌트 스타일 시트. `theme`/`mode`에 대해서는 기본값이 [defaultThemeCssAssets](../functions/defaultThemeCssAssets.md)입니다."
+
+#: platforms/canvas-theme-editor/src/interfaces/BuildThemeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Ship the multi-scope token pair instead of a single baked theme, so several themes and color\nschemes can be active in one Canvas page. Larger; only worth it when that's actually needed."
+msgstr "단일로 미리 만들어진 테마 대신 다중 스코프 토큰 쌍을 배포하여 여러 테마와 색상\n스킴이 하나의 Canvas 페이지에서 활성화될 수 있게 합니다. 용량이 더 커서 실제로 필요할 때만 사용할 가치가 있습니다."
 
 #: platforms/canvas-theme-editor/src/interfaces/BuildThemeOptions.md
 #, no-c-format
@@ -13121,6 +14031,12 @@ msgctxt "docs.api:prose"
 msgid "Build the banner layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.\nDefaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
 msgstr "배너 레이아웃 CSS(문서 주석 + 규칙)를 생성하되 `prefix`을 `pfx-` 식별자 대신 대체합니다.\n배포되는 스타일시트의 기본값은 `\"instui-\"`이며, 접두사 없는 빌드를 위해서는 `\"\"`을 전달하세요."
 
+#: plugins/pantoken/custom-components/src/functions/buttonSetRules.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build the button-set layout CSS (doc comment + rules), substituting `prefix` for the `pfx-`\nsentinel. Defaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
+msgstr "배너 레이아웃 CSS(문서 주석 + 규칙)를 생성하되 `prefix`을 `pfx-` 식별자 대신 대체합니다.\n배포되는 스타일시트의 기본값은 `\"instui-\"`이며, 접두사 없는 빌드를 위해서는 `\"\"`을 전달하세요."
+
 #: plugins/pantoken/custom-components/src/functions/customComponents.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13135,6 +14051,12 @@ msgstr "custom-components 플러그인을 만듭니다."
 msgctxt "docs.api:prose"
 msgid "A [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) with a `css` hook."
 msgstr "[PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md)에 `css` 훅이 있는."
+
+#: plugins/pantoken/custom-components/src/functions/logoRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build the logo utility CSS as an aspect-ratio-aware mask painter for `@pantoken/plugin-logos`'\n`-logo-<name>` glyph classes, substituting `prefix` for the `pfx-` sentinel."
+msgstr "로고 유틸리티 CSS를 종횡비를 인식하는 마스크 페인터로 작성하여 `@pantoken/plugin-logos`'의 `-logo-<name>` 글리프 클래스에 적용하고, `pfx-` 표시기 대신 `prefix` 를 대체하여 사용하세요."
 
 #: plugins/pantoken/custom-components/src/index.md
 #, no-c-format
@@ -13236,6 +14158,66 @@ msgctxt "docs.api:prose"
 msgid "Every vendored custom icon, sorted by name."
 msgstr "이름 순으로 정렬된 모든 벤더 제공 사용자 정의 아이콘."
 
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Generate the `[data-pantoken-color=\"custom\"]` rule for a brand hex: it declares the derived\n`--instui-primitive-color-custom-custom*` steps and remaps the brand primitives onto them, exactly\nlike the shipped scales."
+msgstr "브랜드 헥스에 대한 `[data-pantoken-color=\"custom\"]` 규칙을 생성합니다: 파생된\n`--instui-primitive-color-custom-custom*` 단계를 선언하고 브랜드 프리미티브를 정확히 제공된 스케일과 같이 그것들에 재매핑합니다\n."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A `#rgb`/`#rrggbb` brand color."
+msgstr "`#rgb`/`#rrggbb` 브랜드 색상."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorRemapCss.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The CSS rule."
+msgstr "CSS 규칙 문자열."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TypeError when `hex` isn't a valid hex color."
+msgstr "TypeError: `hex`이(가) 유효한 헥스 색상이 아닐 때."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The per-step lightness curve and chroma shape the `custom` scale is derived against, computed\nfrom the 13 shipped families. JSON-safe, so a build can ship it to a browser that pairs it with\nthe dependency-free `@pantoken/plugin-custom-theme-colors/scale` entry."
+msgstr "단계별 명도 곡선과 채도 형태는 `custom` 스케일이 파생되는 방식을 결정하며, 13개 제공 패밀리에서 계산됩니다\n. JSON 안전 형태이므로, 빌드는 이를 브라우저에 전달하여 의존성 없는 `@pantoken/plugin-custom-theme-colors/scale` 엔트리와 함께 사용할 수 있습니다\n."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`Token`](../../../../../packages/core/src/interfaces/Token.md)[] \\| `Map`\\<`string`, `string`\\>"
+msgstr "읽기 전용 [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional token array or map to read the reference families from."
+msgstr "기본 단계 색상 값을 참조하기 위한 선택적 토큰 배열 또는 맵입니다."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [ReferenceCurve](../interfaces/ReferenceCurve.md)."
+msgstr "하나의 [ResolvedDemo](../interfaces/ResolvedDemo.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorRemapCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The `[data-pantoken-color=\"custom\"]` remap rule without the derived primitives, for pages that\nset `--instui-primitive-color-custom-custom*` themselves at runtime (e.g. from a color picker)."
+msgstr "`[data-pantoken-color=\"custom\"]` 재매핑 규칙(파생 프리미티브 없이) — 런타임에 `--instui-primitive-color-custom-custom*`을(를) 직접 설정하는 페이지용(예: 색 선택기)입니다\n."
+
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColors.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13245,14 +14227,8 @@ msgstr "custom-icons 플러그인을 만듭니다."
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Generate CSS rules for all custom theme color choices by remapping primitive color scale steps\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`), while preserving explicitly\nnamed blue accents and semantic status intents."
+msgid "Generate CSS rules for all custom theme color choices by remapping primitive color scale steps\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`) and relinking literal\nbrand hex values that upstream flattened away from those primitives, while preserving explicitly\nnamed blue accents and semantic status intents."
 msgstr "기본 색상 스케일 단계를 재매핑하여 모든 사용자 정의 테마 색상 선택에 대한 CSS 규칙을 생성합니다\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`), 명시적으로\n이름이 지정된 파란색 강조 토큰은 보존합니다."
-
-#: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
-#, fuzzy, no-c-format
-msgctxt "docs.api:prose"
-msgid "readonly [`Token`](../../../../../packages/core/src/interfaces/Token.md)[] \\| `Map`\\<`string`, `string`\\>"
-msgstr "읽기 전용 [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
 
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
 #, no-c-format
@@ -13265,6 +14241,79 @@ msgstr "기본 단계 색상 조회를 위한 선택적 토큰 배열 또는 맵
 msgctxt "docs.api:prose"
 msgid "Generated CSS rules string."
 msgstr "CSS 규칙 문자열."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Derive the `custom` primitive scale from a brand hex. The input is anchored at the step whose\nreference lightness (the mean OKLCH lightness of the 13 shipped families) is nearest its own,\nthen every step is rebuilt at its reference lightness with the input's hue — so the anchor step\nlands close to, but not necessarily exactly on, the input."
+msgstr "브랜드 헥스에서 `custom` 프리미티브 스케일을 파생합니다. 입력은 참조 명도(13개 제공 패밀리의 평균 OKLCH 명도)가 자기 것과 가장 가까운 단계에 고정된 뒤, 모든 단계가 해당 참조 명도에서 입력의 색상(hue)으로 재구성됩니다 — 따라서 앵커 단계는 입력값에 가깝게 위치하지만 반드시 입력과 정확히 일치하지는 않을 수 있습니다."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [CustomColorScale](../interfaces/CustomColorScale.md)."
+msgstr "해당 [CustomColorScale](../interfaces/CustomColorScale.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Derive a full primitive scale from one hex: anchor it at the step with the nearest reference\nlightness, then rebuild every step at its reference lightness with the input's hue and a chroma\nscaled by the reference shape."
+msgstr "하나의 헥스에서 전체 프리미티브 스케일을 파생합니다: 참조 명도가 가장 가까운 단계에 앵커한 후, 입력의 색상(hue)과 참조 형태로 스케일된 채도로 각 단계를 해당 참조 명도에서 재구성합니다."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A hex color accepted by [parseHexColor](parseHexColor.md)."
+msgstr "[parseHexColor](parseHexColor.md)에서 허용되는 헥스 색상."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Output of buildReferenceCurve."
+msgstr "buildReferenceCurve의 출력."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Whether a value is a valid [parseHexColor](parseHexColor.md) input."
+msgstr "값이 유효한 [parseHexColor](parseHexColor.md) 입력인지 여부."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The value to check."
+msgstr "팔레트."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`true` for `#rgb`/`#rrggbb` strings."
+msgstr "`true` 문자열인 경우 `true`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Validate and normalize a user-supplied hex color. This is the only entry point for untrusted\ninput into generated CSS, so anything but `#rgb`/`#rrggbb` is rejected."
+msgstr "사용자가 제공한 헥스 색상을 검증하고 정규화합니다. 생성된 CSS로 들어가는 신뢰할 수 없는 입력에 대한 유일한 진입점이므로, `#rgb`/`#rrggbb` 형식이 아닌 것은 거부됩니다\n."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A hex color, with or without the leading `#`."
+msgstr "선행 `#`의 유무와 상관없는 헥스 색상 `#`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Lowercase `#rrggbb`."
+msgstr "소문자 `#rrggbb` `#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TypeError when `input` isn't a 3- or 6-digit hex color."
+msgstr "TypeError: `input`이(가) 3자리 또는 6자리 헥스 색상이 아닐 때."
 
 #: plugins/pantoken/custom-theme-colors/src/index.md
 #, fuzzy, no-c-format
@@ -13284,6 +14333,72 @@ msgctxt "docs.api:prose"
 msgid "Renames and re-exports [customThemeColors](functions/customThemeColors.md)"
 msgstr "이름을 바꾸고 [customIcons](functions/customIcons.md)를 재내보냅니다."
 
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [customColorCss](../functions/customColorCss.md)."
+msgstr "The [customIcons](../functions/customIcons.md) 플러그인에 대한 옵션."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional token array or map for the reference families and relinked tokens."
+msgstr "기본 단계 색상 조회를 위한 선택적 토큰 배열 또는 맵입니다."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selector prefix — see [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+msgstr "조건부 규칙의 선택자 접두사 — 자세한 내용은 [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)를 참조하세요."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A derived custom primitive scale."
+msgstr "파생된 커스텀 프리미티브 스케일."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The validated input, normalized to lowercase `#rrggbb`."
+msgstr "검증된 입력 — 소문자 `#rrggbb`로 정규화됨 `#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The step whose reference lightness is nearest the input's."
+msgstr "참조 명도가 입력값에 가장 가까운 단계."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every primitive step mapped to its derived `#rrggbb`."
+msgstr "각 프리미티브 단계가 파생된 `#rrggbb`에 매핑됩니다 `#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [customThemeColorsCss](../functions/customThemeColorsCss.md)."
+msgstr "The [customIcons](../functions/customIcons.md) 플러그인에 대한 옵션."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selector prefix the conditional `[data-pantoken-color=\"…\"]` rules are scoped under. Defaults to\n`:root`. Two callers can each pass a different selector (e.g. `:root` for a page's chrome and\n`#some-tray` for a nested widget) to run independent, non-interfering color instances on the\nsame page — each toggles its own attribute on its own element instead of sharing `:root`."
+msgstr "조건부 `[data-pantoken-color=\"…\"]` 규칙이 범위화되는 선택자 접두사입니다. 기본값은\n`:root`입니다. 두 호출자는 각자 다른 선택자를 전달할 수 있습니다(예: 페이지의 크롬에는 `:root`, 중첩된 위젯에는\n`#some-tray`) — 같은 페이지에서 독립적이고 상호 간섭이 없는 색상 인스턴스를 실행하려면 각자가 자신의 요소에서 자신의 속성을 토글하고 `:root`를 공유하지 않습니다."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "An additional selector whose subtree should always render the true, unremapped colors,\nregardless of what an ancestor's `[data-pantoken-color]` scope currently has active. Emits one\nunconditional rule pinning every token this plugin can override back to its own base value —\ne.g. a color-swatch legend nested inside an already-themed page needs its reference swatches to\nstay constant rather than inherit the ancestor's remap."
+msgstr "후손 트리가 조상 요소의 `[data-pantoken-color]` 범위에 어떤 값이 활성화되어 있든 상관없이 항상 진짜(재매핑되지 않은) 색상을 렌더해야 하는 추가 선택자입니다. 이 플러그인이 재정의할 수 있는 모든 토큰을 자체 기본값으로 고정하는 단일 무조건 규칙을 생성합니다 — 예: 이미 테마가 적용된 페이지 안에 중첩된 색상 견본 범례는 참조 견본이 조상의 재매핑을 상속받지 않고 일정하게 유지되어야 합니다."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A brand hex (`#rgb`/`#rrggbb`) to derive the `custom` scale from. When set, a\n`[data-pantoken-color=\"custom\"]` rule is appended — see [customColorCss](../functions/customColorCss.md)."
+msgstr "`custom` 스케일을 파생하기 위한 브랜드 헥스(`#rgb`/`#rrggbb`)입니다. 설정하면 `[data-pantoken-color=\"custom\"]` 규칙이 추가됩니다 — 자세한 내용은 [customColorCss](../functions/customColorCss.md)를 참조하세요."
+
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13296,6 +14411,30 @@ msgctxt "docs.api:prose"
 msgid "Optional token array or map to resolve primitive step color values from."
 msgstr "기본 단계 색상 값을 참조하기 위한 선택적 토큰 배열 또는 맵입니다."
 
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selector prefix for the conditional rules — see [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+msgstr "조건부 규칙의 선택자 접두사 — 자세한 내용은 [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)를 참조하세요."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Always-true-color subtree — see [CustomThemeColorsCssOptions.resetSelector](CustomThemeColorsCssOptions.md#resetselector)."
+msgstr "항상 실제 색상이 사용되는 하위 트리 — 자세한 내용은 [CustomThemeColorsCssOptions.resetSelector](CustomThemeColorsCssOptions.md#resetselector)를 참조하세요."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Brand hex for the `custom` scale — see [CustomThemeColorsCssOptions.custom](CustomThemeColorsCssOptions.md#custom)."
+msgstr "조건부 규칙의 선택자 접두사 — 자세한 내용은 [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)를 참조하세요."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/ReferenceCurve.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Per-step reference lightness and normalized chroma, index-aligned with `steps`. JSON-safe."
+msgstr "단계별 참조 명도와 정규화된 채도(인덱스가 `steps`와 정렬됨). JSON 안전 형식입니다."
+
 #: plugins/pantoken/custom-theme-colors/src/type-aliases/PantokenColorNamespace.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13307,6 +14446,12 @@ msgstr "지원되는 사용자 정의 테마 색상 네임스페이스입니다.
 msgctxt "docs.api:prose"
 msgid "The 13 available color namespaces for site theme color selection."
 msgstr "사이트 테마 색상 선택에 사용 가능한 13개 색상 네임스페이스입니다."
+
+#: plugins/pantoken/custom-theme-colors/src/variables/CUSTOM_COLOR_KEY.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The color namespace whose scale is derived from an arbitrary hex rather than shipped."
+msgstr "스케일이 제공된 것 대신 임의의 헥스에서 파생되는 색상 네임스페이스."
 
 #: plugins/pantoken/deprecations/src/functions/compareVersions.md
 #, no-c-format
@@ -13476,6 +14621,12 @@ msgctxt "docs.api:prose"
 msgid "Generate an HTML template for the page-layout layout."
 msgstr "page-layout 레이아웃용 HTML 템플릿을 생성합니다."
 
+#: plugins/pantoken/layouts/src/functions/renderPageLayout.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Render `layout`'s `{{key}}` tokens for `locale` (default `\"en\"`), falling back to English."
+msgstr "지정된 `locale`(기본값 `\"en\"`)에 대해 `layout`의 `{{key}}` 토큰을 렌더링합니다. 로케일에 해당하는 항목이 없으면 영어로 대체됩니다."
+
 #: plugins/pantoken/layouts/src/functions/rubricNoteRules.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13545,9 +14696,9 @@ msgstr "시작용 페이지 레이아웃: 기존 컴포넌트의 단순한 조�
 
 #: plugins/pantoken/layouts/src/interfaces/PageLayout.md
 #: renderers/tinymce/src/interfaces/PageLayout.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Stable id, matches the source filename (e.g. `\"hero\"`)."
+msgid "Stable id, matches the source folder name, e.g. `\"hero\"`."
 msgstr "안정적인 ID로 소스 파일명과 일치함(예: `\"hero\"`)."
 
 #: plugins/pantoken/layouts/src/interfaces/PageLayout.md
@@ -13564,11 +14715,66 @@ msgctxt "docs.api:prose"
 msgid "Raw HTML for the layout, built from `@pantoken/components` classes."
 msgstr "레이아웃의 원시 HTML로, `@pantoken/components` 클래스들로 구성됨."
 
-#: plugins/pantoken/layouts/src/variables/pageLayouts.md
-#: renderers/tinymce/src/variables/pageLayouts.md
+#: plugins/pantoken/layouts/src/interfaces/PageLayout.md
+#: renderers/tinymce/src/interfaces/PageLayout.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "All bundled starter page layouts, sorted by title."
+msgid "Image slots that consumers may materialize without provider-specific URLs."
+msgstr "컨슈머가 공급자별 URL 없이도 구현할 수 있는 이미지 슬롯입니다."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A provider-neutral image slot declared by a starter page layout."
+msgstr "스타터 페이지 레이아웃이 선언한 공급자 중립적 이미지 슬롯입니다."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Stable key matching the `data-pantoken-image-placeholder` HTML marker."
+msgstr "`data-pantoken-image-placeholder` HTML 마커와 일치하는 안정적인 키입니다."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Suggested intrinsic width in pixels."
+msgstr "권장 내부 너비(픽셀 단위)."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Suggested intrinsic height in pixels."
+msgstr "권장 내부 높이(픽셀 단위)."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Accessible name; omit it for a decorative image."
+msgstr "접근 가능한 이름; 장식용 이미지인 경우 생략하세요."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional text a consumer may render into its placeholder asset."
+msgstr "컨슈머가 플레이스홀더 자산 안에 렌더링할 수 있는 선택적 텍스트입니다."
+
+#: plugins/pantoken/layouts/src/variables/pageLayoutTemplates.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`{{key}}`-templated layouts, unresolved — pass to [renderPageLayout](../functions/renderPageLayout.md) for another locale."
+msgstr "`{{key}}` 템플릿 레이아웃(해결되지 않음) — 다른 로케일로 처리하려면 [renderPageLayout](../functions/renderPageLayout.md)에 전달하세요."
+
+#: plugins/pantoken/layouts/src/variables/pageLayouts.md
+#: renderers/tinymce/src/variables/pageLayouts.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "All bundled starter page layouts, English-rendered by default, sorted by title."
 msgstr "제목 순으로 정렬된 모든 번들된 스타터(시작) 페이지 레이아웃."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
@@ -13578,6 +14784,7 @@ msgid "Get a logo as a base64 `data:image/svg+xml` URI."
 msgstr "로고를 base64 `data:image/svg+xml` URI로 가져옵니다."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13585,6 +14792,7 @@ msgid "The product."
 msgstr "제품."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13592,6 +14800,7 @@ msgid "The layout (default `\"horizontal\"`)."
 msgstr "레이아웃(기본값 `\"horizontal\"`)."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13599,6 +14808,7 @@ msgid "The color treatment (default `\"full-color\"`)."
 msgstr "색상 처리(기본값 `\"full-color\"`)."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13616,6 +14826,24 @@ msgstr "데이터 URI 또는 해당 조합이 존재하지 않으면 `undefined`
 msgctxt "docs.api:prose"
 msgid "**Use a logo as an \\<img\\> src**"
 msgstr "**로고를 \\<img\\> src로 사용**"
+
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Get a logo's metadata, including its natural `viewBox` `width`/`height` — for consumers that need\nthe logo's real aspect ratio (e.g. to set `aspect-ratio` or `width`/`height` on an `<img>`) without\nparsing SVG themselves."
+msgstr "로고의 메타데이터를 가져옵니다. 여기에는 래스터화된 PNG의 `width`/`height`가 포함됩니다 — 예: `dist/<name>.png` 경로를 생성해야 하는 컨슈머(예: `@pantoken/cdn`를 통해)나 SVG를 파싱하지 않고 `<img>`의 크기를 지정해야 하는 경우를 위해 유용합니다."
+
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [LogoMeta](../interfaces/LogoMeta.md), or `undefined` if that combination doesn't exist."
+msgstr "SVG 문자열, 또는 해당 조합이 존재하지 않으면 `undefined`."
+
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "**Read a logo's aspect ratio**"
+msgstr "**Read a logo's aspect ratio**"
 
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
@@ -13666,9 +14894,9 @@ msgid "`@pantoken/plugin-logos` — Instructure product logos as SVGs, data URIs
 msgstr "`@pantoken/plugin-logos` — Instructure 제품 로고를 SVG, 데이터 URI 및 이미지 토큰으로 제공합니다."
 
 #: plugins/pantoken/logos/src/index.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "It vendors the SVG logos from Instructure's UX guidelines for Canvas, Mastery, Parchment,\nInstructure, LearnPlatform, and Ignite AI, in the standard layouts (horizontal, stacked, icon)\nand color modes (full-color, color, dark, reversed, and so on). Each logo is available three ways:\nthe raw SVG ([getLogoSvg](functions/getLogoSvg.md)), a data URI ([getLogoDataUri](functions/getLogoDataUri.md)), and a\n`--instui-logo-<product>-<layout>-<mode>` image token in `@pantoken/plugin-logos/logos.css`."
+msgid "It vendors the SVG logos from Instructure's UX guidelines for Canvas, Mastery, Parchment,\nInstructure, LearnPlatform, and Ignite AI, in the standard layouts (horizontal, stacked, icon)\nand color modes (full-color, color, dark, reversed, and so on). Each logo is available three ways:\nthe raw SVG ([getLogoSvg](functions/getLogoSvg.md)), a data URI ([getLogoDataUri](functions/getLogoDataUri.md)), and a\n`--instui-logo-<product>-<layout>-<mode>` image token plus a `.-logo-<product>-<layout>-<mode>`\nmask-glyph class (sized by that logo's own aspect ratio) in `@pantoken/plugin-logos/logos.css`."
 msgstr "It vendors the SVG logos from Instructure's UX guidelines for Canvas, Mastery, Parchment,\nInstructure, LearnPlatform, and Ignite AI, in the standard layouts (horizontal, stacked, icon)\nand color modes (full-color, color, dark, reversed, and so on). Each logo is available three ways:\nthe raw SVG ([getLogoSvg](functions/getLogoSvg.md)), a data URI ([getLogoDataUri](functions/getLogoDataUri.md)), and a\n`--instui-logo-&lt;product&gt;-&lt;layout&gt;-&lt;mode&gt;` image token in `@pantoken/plugin-logos/logos.css`."
 
 #: plugins/pantoken/logos/src/index.md
@@ -13731,6 +14959,20 @@ msgstr "토큰/이름 어간, 예: `\"canvas-horizontal-full-color\"`."
 msgctxt "docs.api:prose"
 msgid "The path within `assets/logos`, e.g. `\"canvas/horizontal-full-color.svg\"`."
 msgstr "`assets/logos` 내 경로, 예: `\"canvas/horizontal-full-color.svg\"`."
+
+#: plugins/pantoken/logos/src/interfaces/LogoMeta.md
+#: renderers/tinymce/src/interfaces/LogoMeta.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The SVG's natural `viewBox` width, used with [height](#height) to derive `--pantoken-logo-aspect`."
+msgstr "SVG의 원래 `viewBox` 너비로, [height](#height)와 함께 `--pantoken-logo-aspect` 를 계산하는 데 사용됩니다."
+
+#: plugins/pantoken/logos/src/interfaces/LogoMeta.md
+#: renderers/tinymce/src/interfaces/LogoMeta.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The SVG's natural `viewBox` height, used with [width](#width) to derive `--pantoken-logo-aspect`."
+msgstr "SVG의 원래 `viewBox` 높이로, [width](#width)와 함께 `--pantoken-logo-aspect` 를 계산하는 데 사용됩니다."
 
 #: plugins/pantoken/logos/src/interfaces/LogosOptions.md
 #, no-c-format
@@ -13801,6 +15043,85 @@ msgstr "**로고 토큰을 페이지에 인라인으로 삽입하기**"
 msgctxt "docs.api:prose"
 msgid "The products that have logos."
 msgstr "로고가 있는 제품들."
+
+#: plugins/pantoken/lucide-lab/src/functions/defaultRegistry.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Lazily import the published Lucide Lab icon registry."
+msgstr "게시된 Lucide Lab 아이콘 레지스트리를 지연(최소한으로) 가져옵니다."
+
+#: plugins/pantoken/lucide-lab/src/functions/lucideLab.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Create the Lucide Lab icon plugin."
+msgstr "Simple Icons 플러그인을 만듭니다."
+
+#: plugins/pantoken/lucide-lab/src/functions/lucideLab.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "[LucideLabOptions](../interfaces/LucideLabOptions.md). Pass a registry for synchronous token-stage use."
+msgstr "[SimpleIconsOptions](../interfaces/SimpleIconsOptions.md). 지연 가져오기를 피하려면 `registry`를 전달하세요 (예: 후크가 동기적인\n  token-stage 사용에서)."
+
+#: plugins/pantoken/lucide-lab/src/functions/lucideLab.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "A token-capable pantoken plugin."
+msgstr "pantoken Vite 플러그인입니다."
+
+#: plugins/pantoken/lucide-lab/src/functions/svgOf.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Convert a Lucide Lab icon-node array into standalone SVG markup."
+msgstr "Lucide Lab 아이콘 노드 배열을 독립 실행형 SVG 마크업으로 변환합니다."
+
+#: plugins/pantoken/lucide-lab/src/functions/toKebab.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Convert a Lucide Lab export name to its kebab-case token name."
+msgstr "Lucide Lab의 내보낸 이름을 케밥 케이스(kebab-case) 토큰 이름으로 변환합니다."
+
+#: plugins/pantoken/lucide-lab/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Renames and re-exports [lucideLab](functions/lucideLab.md)"
+msgstr "이름을 변경하고 재내보냅니다 [stacking](functions/stacking.md)"
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for the [lucideLab](../functions/lucideLab.md) plugin."
+msgstr "[layouts](../functions/layouts.md) 플러그인에 대한 옵션."
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Icon names to emit as `<image>` tokens (default: every icon in the registry)."
+msgstr "Icon names to emit as `&lt;image&gt;` tokens (default: all vendored icons)."
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The Lucide Lab registry (required by the synchronous token hook)."
+msgstr "Lucide Lab 레지스트리(동기 토큰 훅에서 필요함)."
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#: plugins/pantoken/simple-icons/src/interfaces/SimpleIconsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The token-name prefix (default: `--instui-icon-`)."
+msgstr "토큰 이름 접두사(기본값: `--instui-icon-`)."
+
+#: plugins/pantoken/lucide-lab/src/type-aliases/LucideLabNode.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "One SVG element in a Lucide icon-node array."
+msgstr "Lucide 아이콘 노드 배열의 하나의 SVG 요소."
+
+#: plugins/pantoken/lucide-lab/src/type-aliases/LucideLabRegistry.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A registry of named Lucide Lab icon-node arrays."
+msgstr "명명된 Lucide Lab 아이콘 노드 배열들의 레지스트리입니다."
 
 #: plugins/pantoken/primitives/src/functions/primitivesCss.md
 #, no-c-format
@@ -13963,12 +15284,6 @@ msgstr "Brand slugs to emit as `&lt;image&gt;` tokens at the token layer (defaul
 msgctxt "docs.api:prose"
 msgid "The Simple Icons registry (default: the `simple-icons` package, loaded lazily)."
 msgstr "Simple Icons 레지스트리(기본값: `simple-icons` 패키지, 지연 로드됨)."
-
-#: plugins/pantoken/simple-icons/src/interfaces/SimpleIconsOptions.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The token-name prefix (default: `--instui-icon-`)."
-msgstr "토큰 이름 접두사(기본값: `--instui-icon-`)."
 
 #: plugins/pantoken/simple-icons/src/type-aliases/SimpleIconsRegistry.md
 #, no-c-format
@@ -15790,9 +17105,9 @@ msgid "`@pantoken/rehype` — render `:icon:` codes as inline SVG."
 msgstr "`@pantoken/rehype` — `:icon:` 코드를 인라인 SVG로 렌더링합니다."
 
 #: renderers/rehype/src/index.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "The plugin walks hast text nodes and replaces `:code:` tokens with an inline SVG element,\nresolving each code through a chain: plugin `rehype` resolvers first, then any explicit\n`resolve`, then the built-in `@pantoken/icons` set. It ports `rehype-instui-markdown` onto the\nshared icon manifest."
+msgid "The plugin walks hast text nodes and replaces `:code:` tokens with an inline SVG element,\nresolving each code through a chain: any explicit `resolve`, then the built-in\n`@pantoken/icons` set, then plugin `rehype` resolvers. It ports `rehype-instui-markdown` onto\nthe shared icon manifest."
 msgstr "플러그인은 hast 텍스트 노드를 순회하며 `:code:` 토큰을 인라인 SVG 요소로 교체합니다,\n각 코드는 다음 순서의 체인을 통해 해결됩니다: 먼저 플러그인 `rehype` 리졸버들, 그다음 명시적인\n`resolve`, 마지막으로 내장된 `@pantoken/icons` 세트. 그것은 `rehype-instui-markdown`을(를)\n공유 아이콘 매니페스트로 이전합니다."
 
 #: renderers/rehype/src/index.md
@@ -15972,6 +17287,18 @@ msgctxt "docs.api:prose"
 msgid "A Svelte action's return shape."
 msgstr "Svelte 액션의 반환 형태."
 
+#: renderers/tinymce/src/functions/buildIconMarkup.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The decorative icon markup retained in editor content after a picker selection. A zero-width\nspace keeps the span from being genuinely empty — TinyMCE's schema strips empty inline elements\non `setContent()` (e.g. toggling from source view back to WYSIWYG), which would otherwise\nsilently delete this CSS-painted glyph. `contenteditable=\"false\"` makes TinyMCE treat it as a\nselectable noneditable object (fake-selection painting, backspace-to-delete, and the context\ntoolbar registered in `lib/icon-context-toolbar.ts`) instead of plain inline text."
+msgstr "선택기에서 선택한 후 편집기 콘텐츠에 남아 있는 장식용 아이콘 마크업입니다. 제로-폭\n공백은 span이 실제로 비어 있지 않도록 유지합니다 — TinyMCE의 스키마는 빈 인라인 요소를 제거합니다\n `setContent()` (예: 소스 보기에서 WYSIWYG)으로 전환할 때, 그렇지 않으면 이 CSS로 그려진 글리프를\n조용히 삭제했을 것입니다). `contenteditable=\"false\"`은 TinyMCE가 이를\n선택 가능한 비편집 가능 객체로 취급하게 만듭니다(가짜 선택 표시, 백스페이스로 삭제, 그리고 컨텍스트\n도구 모음이 `lib/icon-context-toolbar.ts`)에 등록되는 방식) — 일반 인라인 텍스트 대신."
+
+#: renderers/tinymce/src/functions/buildLogoMarkup.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The logo markup retained in editor content after a picker selection — same\nzero-width-space/`contenteditable=\"false\"` noneditable-object technique as `icons.ts`'s\n`buildIconMarkup`. Unlike a decorative icon, a logo names a real product, so it carries\n`role=\"img\"` + `aria-label` instead of `aria-hidden`."
+msgstr "픽커 선택 후 에디터 콘텐츠에 남는 로고 마크업 — `icons.ts` 의 `buildIconMarkup` 에서 사용되는 것과 같은 제로-폭-스페이스/`contenteditable=\"false\"` 비편집 객체 기법입니다. 장식용 아이콘과 달리 로고는 실제 제품명을 가지므로 `aria-hidden` 대신 `role=\"img\"` + `aria-label` 을 포함합니다."
+
 #: renderers/tinymce/src/functions/createComponentsPlugin.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -15983,6 +17310,18 @@ msgstr "컴포넌트 선택기 플러그인 팩토리를 생성합니다.\n`tiny
 msgctxt "docs.api:prose"
 msgid "Usage:\n  tinymce.PluginManager.add(\n    \"pantokenComponents\",\n    createComponentsPlugin(`{ model, currentAssets, onMissingAsset }`)\n  );"
 msgstr "사용법:\n  tinymce.PluginManager.add(\n    \"pantokenComponents\",\n    createComponentsPlugin(`{ model, currentAssets, onMissingAsset }`)\n  );"
+
+#: renderers/tinymce/src/functions/createContentClassesPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build an opt-in plugin that adds pantoken classes to TinyMCE-authored content."
+msgstr "TinyMCE로 작성된 콘텐츠에 pantoken 클래스를 추가하는 옵트인 플러그인을 만듭니다."
+
+#: renderers/tinymce/src/functions/createFullscreenFooterPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a footer-only button that toggles TinyMCE's fullscreen mode."
+msgstr "TinyMCE의 전체화면 모드를 토글하는 푸터 전용 버튼을 만듭니다."
 
 #: renderers/tinymce/src/functions/createIconsPlugin.md
 #, no-c-format
@@ -16002,11 +17341,47 @@ msgctxt "docs.api:prose"
 msgid "Create the logos picker plugin factory.\nReturns a function suitable for `tinymce.PluginManager.add()`."
 msgstr "로고 선택기 플러그인 팩토리를 생성합니다.\n`tinymce.PluginManager.add()`에 적합한 함수를 반환합니다."
 
+#: renderers/tinymce/src/functions/createPantokenPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a single pantoken toolbar menu that opens each composed plugin."
+msgstr "각 합성 플러그인을 여는 단일 pantoken 툴바 메뉴를 만듭니다."
+
+#: renderers/tinymce/src/functions/createSearchReplaceFooterPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a footer-only button that opens TinyMCE's search & replace dialog."
+msgstr "TinyMCE의 찾기 및 바꾸기 대화상자를 여는 푸터 전용 버튼을 만듭니다."
+
+#: renderers/tinymce/src/functions/createSupSubPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a single toolbar menu button toggling superscript or subscript."
+msgstr "윗첨자 또는 아래첨자를 토글하는 단일 툴바 메뉴 버튼을 만듭니다."
+
 #: renderers/tinymce/src/functions/createTemplatesPlugin.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Builds the `tinymce.PluginManager.add` callback for the \"Insert template\" plugin."
 msgstr " \"Insert template\" 플러그인을 위한 `tinymce.PluginManager.add` 콜백을 빌드합니다."
+
+#: renderers/tinymce/src/functions/createVisualBlocksFooterPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a footer-only button that toggles TinyMCE's visual blocks outlines."
+msgstr "TinyMCE의 시각적 블록 윤곽 표시를 토글하는 푸터 전용 버튼을 만듭니다."
+
+#: renderers/tinymce/src/functions/filterIcons.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Narrow `icons` to those matching `query` and, when given, a single `source`."
+msgstr "`icons`을 `query`와 일치하는 항목으로 좁히고, 제공된 경우 단일 `source`로도 필터링합니다."
+
+#: renderers/tinymce/src/functions/filterIcons.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`TaggedIcon`](../interfaces/TaggedIcon.md)[]"
+msgstr "읽기 전용 [`Token`](../interfaces/Token.md)[]"
 
 #: renderers/tinymce/src/functions/findEntry.md
 #, no-c-format
@@ -16020,11 +17395,53 @@ msgctxt "docs.api:prose"
 msgid "Compute the CdnFile for an icon given its source.\nReturns `{ package, path }` for use with @pantoken/cdn's buildFileUrl."
 msgstr "아이콘의 소스를 받아 CdnFile을 계산합니다.\n`{ package, path }`을 @pantoken/cdn의 buildFileUrl에서 사용하기 위해 반환합니다."
 
+#: renderers/tinymce/src/functions/getIconImageSrc.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A `data:` URI usable as an `<img src>` for the icon, for sources this package bundles; for the\nrest it reads the custom property back off `root`, which resolves once the source's glyph sheet\nhas loaded. Returns `undefined` when neither path yields a glyph."
+msgstr "이 패키지가 번들하는 소스에 대해 아이콘의 `<img src>`로 사용할 수 있는 `data:` URI입니다; 그 외의 경우에는 소스의 글리프 시트가 로드된 이후에 해결되는 `root`의 커스텀 속성에서 읽어옵니다. 어느 경로에서도 글리프를 찾지 못하면 `undefined`를 반환합니다."
+
+#: renderers/tinymce/src/functions/getLogoCdnFile.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve a logo's stylesheet: the `.-logo-<name>` mask painter plus its `--instui-logo-<name>` token."
+msgstr "로고 스타일시트를 해석하면: `.-logo-<name>` 마스크 페인터와 해당 `--instui-logo-<name>` 토큰이 생성됩니다."
+
 #: renderers/tinymce/src/functions/getModifierSuggestions.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Get all modifier suggestions for a component/utility, filtered by an optional prefix.\nReturns array of `{ name, prop, value?, description }` objects."
 msgstr "컴포넌트/유틸리티에 대한 모든 modifier 제안을 가져오며, 선택적 접두사로 필터링됩니다.\n`{ name, prop, value?, description }` 객체들의 배열을 반환합니다."
+
+#: renderers/tinymce/src/functions/getUsedIconCdnFiles.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve the icon stylesheets used by `-icon-*` classes below `root`.\nExisting assets break ties when multiple providers expose the same icon name."
+msgstr "`root` 아래에서 `-icon-*` 클래스들이 사용하는 아이콘 스타일시트를 확인합니다. 여러 제공자가 동일한 아이콘 이름을 노출할 때 기존 자산이 우선순위를 결정합니다."
+
+#: renderers/tinymce/src/functions/getUsedIconCdnFiles.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[] = `[]`"
+msgstr "읽기 전용 [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[]"
+
+#: renderers/tinymce/src/functions/getUsedLogoCdnFiles.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve the logo stylesheets used by `-logo-*` classes below `root`."
+msgstr "루트 아래의 `-logo-*` 클래스에서 사용하는 로고 스타일시트를 해석합니다."
+
+#: renderers/tinymce/src/functions/getUsedLogoCdnFiles.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[] = `logos`"
+msgstr "읽기 전용 [`Token`](../interfaces/Token.md)[]"
+
+#: renderers/tinymce/src/functions/humanizeIconName.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Turn a hyphenated icon slug into a readable label, e.g. `circle-question-mark` → `circle question mark`."
+msgstr "하이픈으로 연결된 아이콘 슬러그를 읽기 쉬운 레이블로 변환합니다. 예: `circle-question-mark` → `circle question mark`."
 
 #: renderers/tinymce/src/functions/injectContentStylesheet.md
 #, no-c-format
@@ -16050,11 +17467,11 @@ msgctxt "docs.api:prose"
 msgid "Load and merge all available icons from both sources.\nReturns a sorted array tagged with the source package."
 msgstr "두 소스에서 사용 가능한 모든 아이콘을 불러와 병합합니다.\n출처 패키지로 태그된 정렬된 배열을 반환합니다."
 
-#: renderers/tinymce/src/functions/loadAllIcons.md
+#: renderers/tinymce/src/functions/materializeLayout.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "NOTE: Component icon names are derived from the model's `-icon-*` modifier.\nThis needs to be populated from either `docs/public/icon-manifest.json` (if consumable)\nor a manifest published alongside formats/components model.json.\nFor now, only simple-icons are included."
-msgstr "참고: 컴포넌트 아이콘 이름은 모델의 `-icon-*` 수정자에서 파생됩니다.\n이는 `docs/public/icon-manifest.json`(사용 가능할 경우) 또는 formats/components model.json와 함께 게시된 매니페스트 중 하나에서 채워져야 합니다.\n현재는 simple-icons만 포함됩니다."
+msgid "Materialize declared layout image slots without embedding a provider URL in the layout."
+msgstr "레이아웃에 공급자 URL을 포함시키지 않고 선언된 레이아웃 이미지 슬롯을 실체화합니다."
 
 #: renderers/tinymce/src/functions/pantokenContentCssUrls.md
 #, no-c-format
@@ -16069,16 +17486,10 @@ msgid "readonly [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interf
 msgstr "읽기 전용 [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[]"
 
 #: renderers/tinymce/src/functions/pantokenHtmlCompletion.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Create a CodeMirror 6 autocomplete extension for pantoken HTML.\nProvides completions for component names and their modifiers."
-msgstr "pantoken HTML용 CodeMirror 6 자동완성 확장 기능을 생성합니다.\n구성요소 이름과 해당 모디파이어(수식자)에 대한 완성을 제공합니다."
-
-#: renderers/tinymce/src/functions/pantokenHtmlCompletion.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Usage:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlCompletion({ model }),\n    ],\n  });"
-msgstr "사용법:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlCompletion({ model }),\n    ],\n  });"
+msgid "Create a CodeMirror 6 completion extension for pantoken classes in HTML `class` attributes."
+msgstr "pantoken HTML용 CodeMirror 6 린터 확장을 생성합니다.\n`.instui-*` 토큰을 포함하는 class 속성을 검증합니다."
 
 #: renderers/tinymce/src/functions/pantokenHtmlLinter.md
 #, no-c-format
@@ -16092,11 +17503,29 @@ msgctxt "docs.api:prose"
 msgid "Usage:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlLinter({ model }),\n    ],\n  });"
 msgstr "사용법:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlLinter({ model }),\n    ],\n  });"
 
+#: renderers/tinymce/src/functions/registerPantokenIconPack.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Register a TinyMCE icon pack whose complete key set mirrors the installed default pack while\nevery rendered glyph comes from Pantoken's InstUI/Lucide icon tokens."
+msgstr "설치된 기본 팩과 전체 키 세트가 동일하지만\n렌더된 모든 글리프는 Pantoken의 InstUI/Lucide 아이콘 토큰에서 가져오는 TinyMCE 아이콘 팩을 등록합니다."
+
 #: renderers/tinymce/src/functions/validateClassToken.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Validate a pantoken class token (e.g., \"instui-button\", \"instui-button.-color-primary\").\nReturns an array of validation errors (empty if valid)."
 msgstr "pantoken 클래스 토큰(예: \"instui-button\", \"instui-button.-color-primary\")을 검증합니다.\n유효한 경우 빈 배열을 반환하는 유효성 검사 오류들의 배열을 반환합니다."
+
+#: renderers/tinymce/src/interfaces/ContentClassesPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [createContentClassesPlugin](../functions/createContentClassesPlugin.md)."
+msgstr "[createLayoutsPlugin](../functions/createLayoutsPlugin.md)에 대한 옵션."
+
+#: renderers/tinymce/src/interfaces/ContentClassesPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Prefix used by pantoken component classes."
+msgstr "레이아웃의 원시 HTML로, `@pantoken/components` 클래스들로 구성됨."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -16362,6 +17791,12 @@ msgctxt "docs.api:prose"
 msgid "Content of registered custom (block) tags, keyed by tag name without its `@`. Populated only for\ntags added via configuration; unregistered unknown tags are ignored. Absent when none were found."
 msgstr "등록된 사용자 정의(블록) 태그의 내용으로, 키는 태그 이름에서 `@`를 제외한 형태입니다. 구성(configuration)을 통해 추가된 태그에 대해서만\n채워집니다; 등록되지 않은 알 수 없는 태그는 무시됩니다. 발견된 항목이 없으면 존재하지 않습니다."
 
+#: renderers/tinymce/src/interfaces/LayoutImageAttributes.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Image attributes returned by a consumer-specific layout image resolver."
+msgstr "소비자별 레이아웃 이미지 리졸버가 반환하는 이미지 속성입니다."
+
 #: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -16369,10 +17804,22 @@ msgid "Options for [createLayoutsPlugin](../functions/createLayoutsPlugin.md)."
 msgstr "[createLayoutsPlugin](../functions/createLayoutsPlugin.md)에 대한 옵션."
 
 #: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The page layouts offered in the \"Insert layout\" picker. Defaults to the bundled layouts."
+msgstr "'Insert layout' 선택기에서 제공되는 페이지 레이아웃입니다. 기본값은 [pageLayouts](../variables/pageLayouts.md)입니다."
+
+#: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The page layouts offered in the \"Insert layout\" picker. Defaults to [pageLayouts](../variables/pageLayouts.md)."
-msgstr "'Insert layout' 선택기에서 제공되는 페이지 레이아웃입니다. 기본값은 [pageLayouts](../variables/pageLayouts.md)입니다."
+msgid "BCP47 locale to render layout text in. Defaults to `\"en\"`."
+msgstr "레이아웃 텍스트를 렌더링할 BCP47 로케일입니다. 기본값은 `\"en\"`."
+
+#: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolves a layout image slot into a consumer-specific image URL."
+msgstr "레이아웃 이미지 슬롯을 소비자별 이미지 URL로 해결합니다."
 
 #: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
 #, no-c-format
@@ -16380,11 +17827,83 @@ msgctxt "docs.api:prose"
 msgid "Called after a layout is inserted (e.g. to refresh a live preview)."
 msgstr "레이아웃이 삽입된 후 호출됩니다(예: 라이브 미리보기를 새로 고치기 위해)."
 
+#: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Register this picker's standalone toolbar button and menu item."
+msgstr "이 선택기의 독립형 툴바 버튼과 메뉴 항목을 등록합니다."
+
+#: renderers/tinymce/src/interfaces/PantokenPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Configuration for the content plugins composed by [createPantokenPlugin](../functions/createPantokenPlugin.md)."
+msgstr "[createLayoutsPlugin](../functions/createLayoutsPlugin.md)에 대한 옵션."
+
 #: renderers/tinymce/src/interfaces/TaggedIcon.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Icon with source attribution for tracking which package it comes from."
 msgstr "어떤 패키지에서 왔는지 추적하기 위한 출처 표기가 있는 아이콘."
+
+#: renderers/tinymce/src/interfaces/TinymceStrings.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "All user-visible strings emitted by the TinyMCE integration."
+msgstr "웹 컴포넌트 요소 세트에서 표시되는 모든 사용자 가시 문자열."
+
+#: renderers/tinymce/src/type-aliases/LayoutImageResolver.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolves a provider-neutral layout image slot for a particular consumer."
+msgstr "특정 소비자를 위해 공급자 중립적인 레이아웃 이미지 슬롯을 해결합니다."
+
+#: renderers/tinymce/src/type-aliases/PantokenFontSize.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Semantic text sizes accepted by the pantoken font-size command."
+msgstr "pantoken font-size 명령에서 허용되는 의미적 텍스트 크기입니다."
+
+#: renderers/tinymce/src/variables/CONTENT_CLASSES_PLUGIN_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Plugin name to pass in TinyMCE's `plugins` option."
+msgstr "TinyMCE의 `plugins`/`toolbar` 초기화 옵션에 전달할 플러그인 이름."
+
+#: renderers/tinymce/src/variables/DEFAULT_ICON_TRIGGER.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Autocompleter trigger. Two colons rather than one so the stock `emoticons` plugin — which claims\n`:` and would otherwise have several thousand icons merged into its results — keeps working."
+msgstr "자동완성 트리거. 한 개 대신 콜론 두 개를 사용하므로 기본 `emoticons` 플러그인이\n`:` `:` 를 사용한다고 주장하고, 그렇지 않으면 수천 개의 아이콘이 결과에 병합될 수 있기 때문에 계속 작동합니다."
+
+#: renderers/tinymce/src/variables/FULLSCREEN_FOOTER_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/PANTOKEN_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/SEARCHREPLACE_FOOTER_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/SUP_SUB_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/VISUALBLOCKS_FOOTER_PLUGIN_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Plugin name to pass in TinyMCE's `plugins` init option."
+msgstr "TinyMCE의 `plugins`/`toolbar` 초기화 옵션에 전달할 플러그인 이름."
+
+#: renderers/tinymce/src/variables/FULLSCREEN_FOOTER_STATUSBAR_NAME.md
+#: renderers/tinymce/src/variables/SEARCHREPLACE_FOOTER_STATUSBAR_NAME.md
+#: renderers/tinymce/src/variables/VISUALBLOCKS_FOOTER_STATUSBAR_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The footer/statusbar control name registered by this plugin."
+msgstr "이 플러그인이 등록한 툴바 버튼/메뉴 항목의 이름."
+
+#: renderers/tinymce/src/variables/ICONS_COMMAND.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Command that opens the icons picker."
+msgstr "아이콘 선택기를 여는 명령입니다."
+
+#: renderers/tinymce/src/variables/ICON_SOURCES.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The icon sources, in the order the picker lists them."
+msgstr "선택기에 표시되는 순서대로의 아이콘 소스입니다."
 
 #: renderers/tinymce/src/variables/LAYOUTS_PLUGIN_NAME.md
 #, no-c-format
@@ -16397,6 +17916,49 @@ msgstr "TinyMCE의 `plugins`/`toolbar` 초기화 옵션에 전달할 플러그�
 msgctxt "docs.api:prose"
 msgid "The toolbar button/menu item name registered by this plugin."
 msgstr "이 플러그인이 등록한 툴바 버튼/메뉴 항목의 이름."
+
+#: renderers/tinymce/src/variables/PANTOKEN_COMMANDS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Commands exposed for hosts that want explicit pantoken-aware toolbar actions."
+msgstr "명시적인 pantoken 인식 툴바 동작을 원하는 호스트에 노출되는 명령들입니다."
+
+#: renderers/tinymce/src/variables/PANTOKEN_ICON.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pantoken's own logomark, reused for the toolbar menu button and any host UI that wants it."
+msgstr "Pantoken의 고유 로고마크로, 도구 모음 메뉴 버튼과 이를 원하는 모든 호스트 UI에 재사용됩니다."
+
+#: renderers/tinymce/src/variables/PANTOKEN_ICON_PACK_NAME.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TinyMCE icon-pack id to pass as the editor's `icons` option."
+msgstr "에디터의 `icons` 옵션으로 전달할 TinyMCE 아이콘 팩 ID입니다."
+
+#: renderers/tinymce/src/variables/PANTOKEN_TOOLBAR_NAME.md
+#: renderers/tinymce/src/variables/SUP_SUB_TOOLBAR_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Toolbar menu-button name to pass in TinyMCE's `toolbar` init option."
+msgstr "TinyMCE의 `plugins`/`toolbar` 초기화 옵션에 전달할 플러그인 이름."
+
+#: renderers/tinymce/src/variables/SOURCE_LABELS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Human label shown as a picker tab and an autocompleter row caption, per icon source."
+msgstr "각 아이콘 소스별로 선택기 탭과 자동완성 행 캡션으로 표시되는 사람용 레이블입니다."
+
+#: renderers/tinymce/src/variables/TINYMCE_STRINGS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "English defaults for TinyMCE integration UI strings."
+msgstr "TinyMCE 통합 UI 문자열의 영어 기본값입니다."
+
+#: renderers/tinymce/src/variables/pageTemplates.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The bundled page layouts exposed through the template picker."
+msgstr "템플릿 선택기를 통해 제공되는 번들된 페이지 레이아웃입니다."
 
 #: renderers/vitepress/src/index.md
 #, no-c-format
@@ -17389,9 +18951,9 @@ msgid "Slovenian (Slovenščina) locale bundle."
 msgstr "슬로베니아어 (Slovenščina) 로케일 번들."
 
 #: renderers/web-components/src/variables/spinner.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "`<instui-spinner>` — a loading spinner with `role=\"status\"`. Purely presentational; size and\ncolour follow the CSS tokens."
+msgid "`<instui-spinner>` — a loading spinner with `role=\"status\"`. `variant=\"ai\"` and\n`variant=\"ai-on-color\"` select the rotating AI star; size and colour follow the CSS tokens."
 msgstr "`&lt;instui-spinner&gt;` — a loading spinner with `role=\"status\"`. Purely presentational; size and\ncolour follow the CSS tokens."
 
 #: renderers/web-components/src/variables/sv.md
@@ -17399,6 +18961,30 @@ msgstr "`&lt;instui-spinner&gt;` — a loading spinner with `role=\"status\"`. P
 msgctxt "docs.api:prose"
 msgid "Swedish (Svenska) locale bundle."
 msgstr "스웨덴어 (Svenska) 로케일 번들."
+
+#: renderers/web-components/src/variables/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`<instui-tabs>` — a light-DOM tabbed panel set. It keeps the existing `.instui-tabs` CSS contract\nintact while adding selection, panel visibility, and keyboard behavior through the shared tabs\ninteraction. Load `@pantoken/components/components.css` for the tab visuals."
+msgstr "`<instui-tabs>` — 경량 DOM 탭 패널 세트입니다. 기존 `.instui-tabs` CSS 계약\n을 유지하면서 선택, 패널 가시성 및 키보드 동작을 공유 탭\n 상호작용을 통해 추가합니다. 탭 시각적 요소를 위해 `@pantoken/components/components.css` 를 로드하세요."
+
+#: renderers/web-components/src/variables/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "General"
+msgstr "일반"
+
+#: renderers/web-components/src/variables/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Advanced"
+msgstr "고급 설정"
+
+#: renderers/web-components/src/variables/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "General settings"
+msgstr "생성 도구"
 
 #: renderers/web-components/src/variables/tag.md
 #, no-c-format
@@ -17806,6 +19392,56 @@ msgstr "Stylus 소스 문자열."
 msgctxt "docs.api:prose"
 msgid "A hoverable \"view fullscreen\" button, overlaid on a demo/example frame the same way VitePress's own\ncode-block \"copy\" button reveals on hover. Purely markup — wire a delegated click handler in your\nhost page (`button.closest(...).querySelector(\"iframe\")?.requestFullscreen()`; see the pantoken docs\ntheme for the reference wiring) and style the reveal-on-hover with `@pantoken/demo/demo.css`."
 msgstr "호버할 수 있는 \"전체 화면 보기\" 버튼으로, VitePress 자체의\ncode-block \"copy\" 버튼이 호버 시 드러나는 방식과 동일하게 데모/예제 프레임 위에 오버레이됩니다. 순수한 마크업입니다 — 호스트 페이지에서 위임된 클릭 핸들러를 연결하세요 (`button.closest(...).querySelector(\"iframe\")?.requestFullscreen()`; pantoken 문서의\ntheme에서 참조 연결을 확인할 수 있습니다) 그리고 호버 시 드러나는 표시를 `@pantoken/demo/demo.css`로 스타일링하세요."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "**Build a PNG CDN path for a logo**"
+#~ msgstr "**커스텀 IR로부터 프리셋 생성하기**"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The rasterized PNG's display width in CSS pixels (fixed per layout group, not the SVG's own size)."
+#~ msgstr "래스터화된 PNG의 표시 너비(레이아웃 그룹별로 고정된 CSS 픽셀, SVG 자체 크기가 아님)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The rasterized PNG's display height in CSS pixels, derived from the SVG's `viewBox` aspect ratio."
+#~ msgstr "SVG의 `viewBox` 종횡비에서 유도된 래스터화된 PNG의 표시 높이( CSS 픽셀 단위)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The decorative icon markup retained in editor content after a picker selection."
+#~ msgstr "픽커 선택 후 에디터 콘텐츠에 남는 장식용 아이콘 마크업입니다."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Create a CodeMirror 6 autocomplete extension for pantoken HTML.\nProvides completions for component names and their modifiers."
+#~ msgstr "pantoken HTML용 CodeMirror 6 자동완성 확장 기능을 생성합니다.\n구성요소 이름과 해당 모디파이어(수식자)에 대한 완성을 제공합니다."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Usage:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlCompletion({ model }),\n    ],\n  });"
+#~ msgstr "사용법:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlCompletion({ model }),\n    ],\n  });"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "An animated loading ring; give it role=\"status\" and an aria-label."
+#~ msgstr "애니메이션 로딩 링; role=\"status\"와 aria-label을 지정해 사용."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "`.instui-spinner` — An animated loading ring; give it role=\"status\" and an aria-label."
+#~ msgstr "`.instui-spinner` — 애니메이션 로딩 링입니다; role=\"status\"와 aria-label을 지정하세요."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color."
+#~ msgstr "`-color-inverse`은(는) 애니메이션된 상단 테두리 부분만 다시 칠하며 트랙 전체를 다시 그리지는 않습니다. 따라서 별도의 트랙 색상이 없어도 어두운 카드에서 올바르게 표시됩니다."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "NOTE: Component icon names are derived from the model's `-icon-*` modifier.\nThis needs to be populated from either `docs/public/icon-manifest.json` (if consumable)\nor a manifest published alongside formats/components model.json.\nFor now, only simple-icons are included."
+#~ msgstr "참고: 컴포넌트 아이콘 이름은 모델의 `-icon-*` 수정자에서 파생됩니다.\n이는 `docs/public/icon-manifest.json`(사용 가능할 경우) 또는 formats/components model.json와 함께 게시된 매니페스트 중 하나에서 채워져야 합니다.\n현재는 simple-icons만 포함됩니다."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -24829,10 +26465,6 @@ msgstr "호버할 수 있는 \"전체 화면 보기\" 버튼으로, VitePress �
 #~ msgstr "email"
 
 #~ msgctxt "docs.api:text"
-#~ msgid "light"
-#~ msgstr "light"
-
-#~ msgctxt "docs.api:text"
 #~ msgid "dark"
 #~ msgstr "dark"
 
@@ -27897,10 +29529,6 @@ msgstr "호버할 수 있는 \"전체 화면 보기\" 버튼으로, VitePress �
 #~ msgstr "출처"
 
 #~ msgctxt "docs.api:text"
-#~ msgid "Generated using"
-#~ msgstr "생성 도구"
-
-#~ msgctxt "docs.api:text"
 #~ msgid "API reference"
 #~ msgstr "API 참조"
 
@@ -28004,8 +29632,538 @@ msgstr "호버할 수 있는 \"전체 화면 보기\" 버튼으로, VitePress �
 #~ msgid "BuildIconFontOptions"
 #~ msgstr "BuildIconFontOptions"
 
-#: formats/components/src/variables/aiGradientCss.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The AI gradient utility as a standalone, header-wrapped stylesheet."
-msgstr "헤더로 래핑된 독립형 스타일시트로서의 AI 그라데이션 유틸리티."
+#~ msgctxt "docs.api:text"
+#~ msgid "RunnerLabels"
+#~ msgstr "RunnerLabels"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "shadcnTailwindV4Css"
+#~ msgstr "shadcnTailwindV4Css"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toShadcnTailwindV4Css"
+#~ msgstr "toShadcnTailwindV4Css"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PageLayoutImagePlaceholder"
+#~ msgstr "PageLayoutImagePlaceholder"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ContentClassesPluginOptions"
+#~ msgstr "ContentClassesPluginOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LayoutImageAttributes"
+#~ msgstr "LayoutImageAttributes"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenPluginOptions"
+#~ msgstr "PantokenPluginOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TinymceStrings"
+#~ msgstr "TinymceStrings"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenFontSize"
+#~ msgstr "PantokenFontSize"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LayoutImageResolver"
+#~ msgstr "LayoutImageResolver"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_ICON_PACK_NAME"
+#~ msgstr "PANTOKEN_ICON_PACK_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ICON_SOURCES"
+#~ msgstr "ICON_SOURCES"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SOURCE_LABELS"
+#~ msgstr "SOURCE_LABELS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CONTENT_CLASSES_PLUGIN_NAME"
+#~ msgstr "CONTENT_CLASSES_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_COMMANDS"
+#~ msgstr "PANTOKEN_COMMANDS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "FULLSCREEN_FOOTER_PLUGIN_NAME"
+#~ msgstr "FULLSCREEN_FOOTER_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "FULLSCREEN_FOOTER_STATUSBAR_NAME"
+#~ msgstr "FULLSCREEN_FOOTER_STATUSBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ICONS_COMMAND"
+#~ msgstr "ICONS_COMMAND"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "DEFAULT_ICON_TRIGGER"
+#~ msgstr "DEFAULT_ICON_TRIGGER"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_PLUGIN_NAME"
+#~ msgstr "PANTOKEN_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_TOOLBAR_NAME"
+#~ msgstr "PANTOKEN_TOOLBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_ICON"
+#~ msgstr "PANTOKEN_ICON"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SEARCHREPLACE_FOOTER_PLUGIN_NAME"
+#~ msgstr "SEARCHREPLACE_FOOTER_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SEARCHREPLACE_FOOTER_STATUSBAR_NAME"
+#~ msgstr "SEARCHREPLACE_FOOTER_STATUSBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SUP_SUB_PLUGIN_NAME"
+#~ msgstr "SUP_SUB_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SUP_SUB_TOOLBAR_NAME"
+#~ msgstr "SUP_SUB_TOOLBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pageTemplates"
+#~ msgstr "pageTemplates"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "VISUALBLOCKS_FOOTER_PLUGIN_NAME"
+#~ msgstr "VISUALBLOCKS_FOOTER_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "VISUALBLOCKS_FOOTER_STATUSBAR_NAME"
+#~ msgstr "VISUALBLOCKS_FOOTER_STATUSBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TINYMCE_STRINGS"
+#~ msgstr "TINYMCE_STRINGS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "registerPantokenIconPack"
+#~ msgstr "registerPantokenIconPack"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getUsedIconCdnFiles"
+#~ msgstr "getUsedIconCdnFiles"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "humanizeIconName"
+#~ msgstr "humanizeIconName"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "buildIconMarkup"
+#~ msgstr "buildIconMarkup"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getIconImageSrc"
+#~ msgstr "getIconImageSrc"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "filterIcons"
+#~ msgstr "filterIcons"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createContentClassesPlugin"
+#~ msgstr "createContentClassesPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createFullscreenFooterPlugin"
+#~ msgstr "createFullscreenFooterPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "materializeLayout"
+#~ msgstr "materializeLayout"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createPantokenPlugin"
+#~ msgstr "createPantokenPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createSearchReplaceFooterPlugin"
+#~ msgstr "createSearchReplaceFooterPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createSupSubPlugin"
+#~ msgstr "createSupSubPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createVisualBlocksFooterPlugin"
+#~ msgstr "createVisualBlocksFooterPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ensureComponentsJsonRegistry"
+#~ msgstr "ensureComponentsJsonRegistry"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveRegistryItemNames"
+#~ msgstr "resolveRegistryItemNames"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "runAdd"
+#~ msgstr "runAdd"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "runCreate"
+#~ msgstr "runCreate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Scheme"
+#~ msgstr "Scheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "THEME_ATTR"
+#~ msgstr "THEME_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SCHEME_ATTR"
+#~ msgstr "SCHEME_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "COLOR_ATTR"
+#~ msgstr "COLOR_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "BOUNDARY_ATTR"
+#~ msgstr "BOUNDARY_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "INSTANCE_ATTR"
+#~ msgstr "INSTANCE_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SCOPE_ATTRS"
+#~ msgstr "SCOPE_ATTRS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SCOPE_LAYERS"
+#~ msgstr "SCOPE_LAYERS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "BOUNDARY_CLASS"
+#~ msgstr "BOUNDARY_CLASS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "isScheme"
+#~ msgstr "isScheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "themeClass"
+#~ msgstr "themeClass"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemeClass"
+#~ msgstr "schemeClass"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "colorClass"
+#~ msgstr "colorClass"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "themeScopeSelector"
+#~ msgstr "themeScopeSelector"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemeScopeSelector"
+#~ msgstr "schemeScopeSelector"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "colorScopeSelector"
+#~ msgstr "colorScopeSelector"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "themeScopeSelectors"
+#~ msgstr "themeScopeSelectors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemeScopeSelectors"
+#~ msgstr "schemeScopeSelectors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "colorScopeSelectors"
+#~ msgstr "colorScopeSelectors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "aiGradientCss"
+#~ msgstr "aiGradientCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ScopedCssOptions"
+#~ msgstr "ScopedCssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "MultiScopeCssOptions"
+#~ msgstr "MultiScopeCssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CssEmitTarget"
+#~ msgstr "CssEmitTarget"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LAYERS"
+#~ msgstr "LAYERS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "layerOrderCss"
+#~ msgstr "layerOrderCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "propertiesCss"
+#~ msgstr "propertiesCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "scopedThemeCss"
+#~ msgstr "scopedThemeCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "scopedSchemeCss"
+#~ msgstr "scopedSchemeCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemesCss"
+#~ msgstr "schemesCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "multiScopeCss"
+#~ msgstr "multiScopeCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "lightBranch"
+#~ msgstr "lightBranch"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "darkBranch"
+#~ msgstr "darkBranch"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemeOverrideTokens"
+#~ msgstr "schemeOverrideTokens"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "themedTokens"
+#~ msgstr "themedTokens"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "lucideIcons"
+#~ msgstr "lucideIcons"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TabsHandle"
+#~ msgstr "TabsHandle"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "initTabs"
+#~ msgstr "initTabs"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "scope"
+#~ msgstr "scope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ScopeConfig"
+#~ msgstr "ScopeConfig"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ResolvedScope"
+#~ msgstr "ResolvedScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ScopeMessage"
+#~ msgstr "ScopeMessage"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CreateScopeOptions"
+#~ msgstr "CreateScopeOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenScope"
+#~ msgstr "PantokenScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ConnectScopeOptions"
+#~ msgstr "ConnectScopeOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "DEFAULT_INSTANCE"
+#~ msgstr "DEFAULT_INSTANCE"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ensureProperties"
+#~ msgstr "ensureProperties"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "hasProperties"
+#~ msgstr "hasProperties"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "observeScope"
+#~ msgstr "observeScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveScope"
+#~ msgstr "resolveScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveInstance"
+#~ msgstr "resolveInstance"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveScheme"
+#~ msgstr "resolveScheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getScope"
+#~ msgstr "getScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createScope"
+#~ msgstr "createScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "connectScope"
+#~ msgstr "connectScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "agentShellRules"
+#~ msgstr "agentShellRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "aiGradientRules"
+#~ msgstr "aiGradientRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "custom-theme-colors"
+#~ msgstr "custom-theme-colors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CustomThemeColorsOptions"
+#~ msgstr "CustomThemeColorsOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CustomThemeColorsCssOptions"
+#~ msgstr "CustomThemeColorsCssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenColorNamespace"
+#~ msgstr "PantokenColorNamespace"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "COLOR_KEYS"
+#~ msgstr "COLOR_KEYS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "customThemeColorsCss"
+#~ msgstr "customThemeColorsCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "customThemeColors"
+#~ msgstr "customThemeColors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pageLayoutTemplates"
+#~ msgstr "pageLayoutTemplates"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "calloutRules"
+#~ msgstr "calloutRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "calloutTemplate"
+#~ msgstr "calloutTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "heroRules"
+#~ msgstr "heroRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "heroTemplate"
+#~ msgstr "heroTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pageLayoutRules"
+#~ msgstr "pageLayoutRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pageLayoutTemplate"
+#~ msgstr "pageLayoutTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "rubricNoteRules"
+#~ msgstr "rubricNoteRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "rubricNoteTemplate"
+#~ msgstr "rubricNoteTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "testimonialRules"
+#~ msgstr "testimonialRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "testimonialTemplate"
+#~ msgstr "testimonialTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "twoColumnRules"
+#~ msgstr "twoColumnRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "twoColumnTemplate"
+#~ msgstr "twoColumnTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "wrapperTemplate"
+#~ msgstr "wrapperTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "renderPageLayout"
+#~ msgstr "renderPageLayout"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getLogoMeta"
+#~ msgstr "getLogoMeta"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "lucide-lab"
+#~ msgstr "lucide-lab"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LucideLabOptions"
+#~ msgstr "LucideLabOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LucideLabNode"
+#~ msgstr "LucideLabNode"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LucideLabRegistry"
+#~ msgstr "LucideLabRegistry"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "svgOf"
+#~ msgstr "svgOf"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "lucideLab"
+#~ msgstr "lucideLab"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "checkbox"
+#~ msgstr "checkbox"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ai-gradient"
+#~ msgstr "ai-gradient"

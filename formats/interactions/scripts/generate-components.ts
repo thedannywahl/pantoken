@@ -39,6 +39,7 @@ const ALL_COMPONENTS = [
   "drawer-layout",
   "date-input",
   "date-time-input",
+  "tabs",
 ];
 
 // Components with hand-authored entry points — the generator skips these.
@@ -51,6 +52,7 @@ const BEHAVIORAL_COMPONENTS = new Set([
   "in-place-edit",
   "progress-circle",
   "truncate",
+  "tabs",
 ]);
 
 // Components that require command event handling

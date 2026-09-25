@@ -32,6 +32,7 @@
 
     > .tip {
       position: absolute;
+      inline-size: max-content;
       z-index: 1;
       inset-block-end: 100%;
       inset-inline-start: 50%;
@@ -50,6 +51,11 @@
       pointer-events: none;
       transition: opacity 0.15s ease;
 
+      /* translateX is physical while the inset is logical, so RTL needs the opposite sign to stay centered. */
+      &:dir(rtl) {
+        transform: translateX(50%);
+      }
+
       /* Placement (authored on the .tip itself, matching the web-component): default is top; these move the
          bubble to the other sides. */
       &.-placement-bottom {
@@ -62,7 +68,8 @@
         inset-inline: auto 100%;
         top: 50%;
         transform: translateY(-50%);
-        margin: 0 var(--instui-spacing-space-xs) 0 0;
+        margin: 0;
+        margin-inline-end: var(--instui-spacing-space-xs);
       }
 
       &.-placement-end {
@@ -70,7 +77,8 @@
         inset-inline: 100% auto;
         top: 50%;
         transform: translateY(-50%);
-        margin: 0 0 0 var(--instui-spacing-space-xs);
+        margin: 0;
+        margin-inline-start: var(--instui-spacing-space-xs);
       }
     }
 

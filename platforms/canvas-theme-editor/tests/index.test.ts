@@ -10,6 +10,10 @@ import {
 test("THEME_CSS imports pantoken's CDN-hosted tokens, components, and fonts", () => {
   expect(THEME_CSS).toContain("npm/@pantoken/css/dist/style.rebrand.light.lean.css");
   expect(THEME_CSS).toContain("npm/@pantoken/components/dist/components.css");
+  expect(THEME_CSS).toContain("npm/@pantoken/components/dist/prose.css");
+  expect(THEME_CSS).toContain(
+    "npm/@pantoken/plugin-custom-theme-colors/dist/custom-theme-colors.scoped.css",
+  );
   expect(THEME_CSS).toContain("https://cdn.jsdelivr.net/npm/@pantoken/components/dist/fonts.css");
 });
 
@@ -48,6 +52,12 @@ test("buildTheme falls back to English for any string a caller's override omits"
 
 test("buildTheme defaults to the rebrand/light token sheet", () => {
   expect(buildThemeCss()).toContain("npm/@pantoken/css/dist/style.rebrand.light.lean.css");
+});
+
+test("buildThemeCss always imports the custom-theme-colors color-remap sheet", () => {
+  expect(buildThemeCss({ theme: "canvas" })).toContain(
+    "npm/@pantoken/plugin-custom-theme-colors/dist/custom-theme-colors.scoped.css",
+  );
 });
 
 test("buildTheme honors theme/mode for every @pantoken/css lean sheet variant", () => {

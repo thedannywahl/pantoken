@@ -1,16 +1,37 @@
 /**
- * TinyMCE icons picker plugin.
- * Provides a large icon grid for inserting component icons or simple-icons brand icons.
- * Supports pagination for the \~4700-icon collection.
+ * TinyMCE icons picker plugin: a dialog that browses every pantoken icon source, plus an
+ * autocompleter for inserting one by name without leaving the keyboard.
  *
  * \@module
  */
 import type { Editor } from "tinymce";
 import type { CdnFile } from "@pantoken/cdn";
-import type { TaggedIcon } from "../icons.js";
-import { getIconCdnFile } from "../icons.js";
+import {
+  buildIconMarkup,
+  filterIcons,
+  getIconCdnFile,
+  getIconImageSrc,
+  type TaggedIcon,
+} from "../icons.js";
 import type { MissingAssetHandler } from "../types.js";
 import { trackAndInjectAsset } from "../content-css.js";
+import { insertHtml } from "../lib/insertion-target.js";
+import { AUTOCOMPLETE_GLYPH_CLASS, injectPickerStyles } from "../lib/icon-picker-styles.js";
+import { mountIconPicker, renderPickerShell } from "../lib/icon-picker-dom.js";
+import { registerIconContextToolbar } from "../lib/icon-context-toolbar.js";
+import { TINYMCE_STRINGS } from "../strings.js";
+
+/** Command that opens the icons picker. */
+export const ICONS_COMMAND = "pantokenOpenIcons";
+
+/**
+ * Autocompleter trigger. Two colons rather than one so the stock `emoticons` plugin — which claims
+ * `:` and would otherwise have several thousand icons merged into its results — keeps working.
+ */
+export const DEFAULT_ICON_TRIGGER = "::";
+
+/** Element id the dialog shell carries, so the mount step can find it in the top-level document. */
+const PICKER_ROOT_ID = "pantoken-icon-picker";
 
 /**
  * Configuration options for the icons picker plugin.
@@ -19,9 +40,130 @@ export interface IconsPickerOptions {
   icons: TaggedIcon[];
   currentAssets: CdnFile[];
   onMissingAsset?: MissingAssetHandler;
+  /** Register this picker's standalone toolbar button and menu item. */
+  registerUi?: boolean;
+  /** CDN provider for the glyph sheets the picker preview needs. */
+  provider?: string;
+  /** Resolve an icon's CSS file to a local or CDN URL. Takes precedence over `provider`. */
+  buildAssetUrl?: (file: CdnFile) => string;
+  /** Autocompleter trigger string (default {@link DEFAULT_ICON_TRIGGER}). */
+  trigger?: string;
 }
 
-const ICONS_PER_PAGE = 50; // Adjust for performance
+/** Insert an icon and make sure the editor's content area has the CSS to paint it. */
+function insertIcon(editor: Editor, icon: TaggedIcon, options: IconsPickerOptions): void {
+  insertHtml(editor, buildIconMarkup(icon));
+  trackAndInjectAsset(editor, getIconCdnFile(icon), options);
+}
+
+function openIconsDialog(editor: Editor, options: IconsPickerOptions): void {
+  let picker: { destroy: () => void; getSelected: () => TaggedIcon | undefined } | undefined;
+
+  const dialog = editor.windowManager.open({
+    title: TINYMCE_STRINGS.iconsDialogTitle,
+    size: "large",
+    body: {
+      type: "panel",
+      items: [
+        { type: "htmlpanel", html: renderPickerShell(PICKER_ROOT_ID), presets: "presentation" },
+      ],
+    },
+    buttons: [
+      { type: "cancel", text: TINYMCE_STRINGS.cancelButton },
+      {
+        type: "submit",
+        name: "insert",
+        text: TINYMCE_STRINGS.insertButton,
+        primary: true,
+        enabled: false,
+      },
+    ],
+    onSubmit: (api) => {
+      const icon = picker?.getSelected();
+      if (icon) insertIcon(editor, icon, options);
+      api.close();
+    },
+    onClose: () => picker?.destroy(),
+  });
+
+  const doc = editor.getContainer().ownerDocument;
+  const root = doc.getElementById(PICKER_ROOT_ID);
+  if (!root) return;
+
+  injectPickerStyles(doc, options.icons, options.provider, options.buildAssetUrl);
+  picker = mountIconPicker(root, options.icons, {
+    strings: {
+      searchPlaceholder: TINYMCE_STRINGS.iconsSearchPlaceholder,
+      searchLabel: TINYMCE_STRINGS.iconsSearchLabel,
+      allSourcesLabel: TINYMCE_STRINGS.iconsAllSources,
+      resultCount: TINYMCE_STRINGS.iconsResultCount,
+      emptyMessage: TINYMCE_STRINGS.iconsNoResults,
+    },
+    onSelect: (icon) => dialog.setEnabled("insert", icon !== undefined),
+    onPick: (icon) => {
+      insertIcon(editor, icon, options);
+      dialog.close();
+    },
+  });
+}
+
+/**
+ * Register the `::name` autocompleter. Rows show the real glyph where one can be resolved — either
+ * from this package's bundled token data or, for the CDN-backed sources, by reading the custom
+ * property back off the stylesheets {@link injectPickerStyles} installed.
+ */
+function registerAutocompleter(editor: Editor, options: IconsPickerOptions): void {
+  const byValue = new Map(options.icons.map((icon) => [`${icon.source}:${icon.name}`, icon]));
+
+  editor.ui.registry.addAutocompleter("pantokenIcons", {
+    trigger: options.trigger ?? DEFAULT_ICON_TRIGGER,
+    minChars: 2,
+    columns: 1,
+    highlightOn: ["pantoken-icon-name"],
+    fetch: (pattern, maxResults) => {
+      const doc = editor.getContainer().ownerDocument;
+      injectPickerStyles(doc, options.icons, options.provider, options.buildAssetUrl);
+      return Promise.resolve(
+        filterIcons(options.icons, pattern)
+          .slice(0, maxResults)
+          .map((icon) => {
+            const src = getIconImageSrc(icon, doc.documentElement);
+            return {
+              type: "cardmenuitem" as const,
+              value: `${icon.source}:${icon.name}`,
+              label: icon.name,
+              items: [
+                {
+                  type: "cardcontainer" as const,
+                  direction: "horizontal" as const,
+                  items: [
+                    ...(src
+                      ? [
+                          {
+                            type: "cardimage" as const,
+                            src,
+                            alt: "",
+                            classes: [AUTOCOMPLETE_GLYPH_CLASS],
+                          },
+                        ]
+                      : []),
+                    { type: "cardtext" as const, text: icon.name, name: "pantoken-icon-name" },
+                  ],
+                },
+              ],
+            };
+          }),
+      );
+    },
+    onAction: (api, rng, value) => {
+      const icon = byValue.get(value);
+      if (!icon) return;
+      editor.selection.setRng(rng);
+      insertIcon(editor, icon, options);
+      api.hide();
+    },
+  });
+}
 
 /**
  * Create the icons picker plugin factory.
@@ -31,137 +173,22 @@ export function createIconsPlugin(options: IconsPickerOptions): (editor: Editor)
   // TinyMCE always instantiates plugins with `new Plugin(editor, ...)` — must be a constructible
   // function expression, not an arrow function (arrows throw "is not a constructor").
   return function pantokenIconsPlugin(editor: Editor) {
-    // Register the toolbar button.
+    const openDialog = (): void => openIconsDialog(editor, options);
+    editor.addCommand(ICONS_COMMAND, openDialog);
+    registerAutocompleter(editor, options);
+    registerIconContextToolbar(editor);
+
+    if (options.registerUi === false) return;
+
     editor.ui.registry.addButton("pantokenIcons", {
-      text: "Icons",
-      tooltip: "Insert an icon",
-      onAction: () => openIconsDialog(editor, options),
+      text: TINYMCE_STRINGS.iconsToolbarText,
+      tooltip: TINYMCE_STRINGS.iconsToolbarTooltip,
+      onAction: openDialog,
     });
 
-    // Register a menu item.
     editor.ui.registry.addMenuItem("pantokenIcons", {
-      text: "Icon",
-      onAction: () => openIconsDialog(editor, options),
+      text: TINYMCE_STRINGS.iconsMenuText,
+      onAction: openDialog,
     });
   };
-}
-
-/**
- * Open the icons picker dialog.
- */
-function openIconsDialog(editor: Editor, options: IconsPickerOptions): void {
-  let currentPage = 0;
-  let filteredIcons = options.icons;
-  let selectedIcon: TaggedIcon | undefined;
-
-  // Dialog body: search box, icon grid, pagination.
-  const _dialog = editor.windowManager.open({
-    title: "Insert Icon",
-    body: {
-      type: "panel",
-      items: [
-        {
-          type: "input",
-          name: "search",
-          label: "Search",
-          placeholder: "e.g., heart, star, menu",
-          onChange: (api: any) => {
-            const searchTerm = (api.target as HTMLInputElement).value.toLowerCase();
-            filteredIcons = options.icons.filter((icon) =>
-              icon.name.toLowerCase().includes(searchTerm),
-            );
-            currentPage = 0;
-            // In a real implementation, re-render the icon grid here.
-          },
-        } as any,
-        {
-          type: "htmlpanel",
-          html: renderIconGrid(filteredIcons, currentPage, ICONS_PER_PAGE, (icon: TaggedIcon) => {
-            selectedIcon = icon;
-          }),
-        },
-      ],
-    },
-    buttons: [
-      {
-        text: "Insert",
-        type: "submit",
-        primary: true,
-        disabled: !selectedIcon,
-      },
-      {
-        text: "Cancel",
-        type: "cancel",
-      },
-    ],
-    onSubmit: (api) => {
-      if (selectedIcon) {
-        insertIcon(editor, selectedIcon, options);
-      }
-      api.close();
-    },
-  });
-}
-
-/**
- * Render an HTML grid of icons for the current page.
- */
-export function renderIconGrid(
-  icons: TaggedIcon[],
-  page: number,
-  perPage: number,
-  _onSelect: (icon: TaggedIcon) => void,
-): string {
-  const start = page * perPage;
-  const end = start + perPage;
-  const pageIcons = icons.slice(start, end);
-
-  let html = '<div style="display: grid; grid-template-columns: repeat(10, 1fr); gap: 8px;">';
-
-  for (const icon of pageIcons) {
-    html += `<button style="padding: 8px; cursor: pointer; font-size: 12px;" title="${icon.name}">${icon.name}</button>`;
-  }
-
-  html += "</div>";
-
-  // Pagination info.
-  const totalPages = Math.ceil(icons.length / perPage);
-  html += `<div style="margin-top: 8px; text-align: center; font-size: 12px;">Page ${page + 1} of ${totalPages} (${icons.length} icons)</div>`;
-
-  return html;
-}
-
-/**
- * Insert the selected icon into the editor.
- */
-export function insertIcon(editor: Editor, icon: TaggedIcon, options: IconsPickerOptions): void {
-  // Generate the HTML snippet based on icon source.
-  const html = generateIconHtml(icon);
-
-  // Insert the HTML into the editor.
-  editor.insertContent(html);
-
-  // Get the CDN file for this icon and track it.
-  const cssFile = getIconCdnFile(icon);
-  trackAndInjectAsset(editor, cssFile, options);
-}
-
-/**
- * Generate the HTML snippet for inserting an icon.
- * For component icons, use an `<i class="instui-icon-...">` element.
- * For simple-icons, use a similar convention with a class prefix.
- */
-export function generateIconHtml(icon: TaggedIcon): string {
-  switch (icon.source) {
-    case "components":
-      // Component icons use `-icon-{name}` modifier convention.
-      return `<i class="instui-icon -icon-${icon.name}"></i>`;
-
-    case "simple-icons":
-      // Simple-icons use the icon slug as a class.
-      return `<i class="simple-icon-${icon.name}"></i>`;
-
-    default:
-      return "";
-  }
 }

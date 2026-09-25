@@ -1,19 +1,20 @@
 {
-  "checkpoints": {
-    "primary": {
-      "type": "git-refs"
-    }
-  },
-  "commit_linking": "always",
   "enabled": true,
+  "telemetry": false,
   "redaction": {
     "pii": {
       "enabled": true,
       "email": true,
       "phone": true
+    },
+    "custom_redactions": {
+      "npm-authtoken-line": "(?i)//[^/\\s]*registry[^/\\s]*/?:_authToken\\s*=\\s*\\S+",
+      "npm-token-env": "(?i)\\bNPM_TOKEN\\s*[=:]\\s*[\"']?[A-Za-z0-9_\\-]{16,}"
+    },
+    "goredact": {
+      "enabled": true
     }
   },
-  "review_default_profile": "general",
   "review_profiles": {
     "general": {
       "task": "Review this change for correctness, regressions, API design, missing tests, maintainability, and user-facing behavior changes. Return only real, actionable defects with concrete evidence and an exact code pointer. No praise, summaries, speculation, style preferences, or nice-to-have refactors.",
@@ -27,5 +28,14 @@
       }
     }
   },
-  "telemetry": false
+  "review_default_profile": "general",
+  "commit_linking": "always",
+  "summary_generation": {
+    "provider": "claude-code"
+  },
+  "checkpoints": {
+    "primary": {
+      "type": "git-refs"
+    }
+  }
 }

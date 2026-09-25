@@ -10,8 +10,10 @@ const DOC = `/**
  */`;
 
 const sheet = `${DOC}\n${customThemeColorsCss()}\n`;
+const scopedSheet = `${DOC}\n${customThemeColorsCss(undefined, { selector: "" })}\n`;
 
 const outDir = resolve(import.meta.dirname, "../generated");
 mkdirSync(outDir, { recursive: true });
 writeFileSync(join(outDir, "custom-theme-colors.css"), sheet);
-console.log(`✓ custom-theme-colors: wrote custom-theme-colors.css`);
+writeFileSync(join(outDir, "custom-theme-colors.scoped.css"), scopedSheet);
+console.log(`✓ custom-theme-colors: wrote root and scoped CSS`);

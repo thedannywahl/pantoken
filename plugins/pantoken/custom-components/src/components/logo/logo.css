@@ -1,0 +1,28 @@
+/**
+ * @utility logo
+ * @selector .pfx-logo
+ * @summary The logo system: `.instui-logo` sizing plus the shared `-logo-<name>` painter that masks a product logo (in `currentColor`) before any element, preserving the logo's own aspect ratio instead of a fixed 1:1 box.
+ * @global
+ * @modifier -logo-* — Set the glyph token (`--pantoken-glyph`) and its aspect ratio (`--pantoken-logo-aspect`), then render both via the shared painter (for example `-logo-canvas-horizontal-color`, from `@pantoken/plugin-logos`).
+ * @a11y A logo is meaningful, not decorative — give the host element `role="img"` and an `aria-label` naming the product; never mark it `aria-hidden`.
+ * @example
+ * <span class="instui-logo -logo-canvas-horizontal-color" role="img" aria-label="Canvas logo"></span>
+ */
+@scope (.pfx-logo) {
+  & {
+    display: inline-flex;
+  }
+}
+
+[class*="-logo-"]::before {
+  content: "";
+  display: inline-block;
+  inline-size: 8em;
+  aspect-ratio: var(--pantoken-logo-aspect, 1);
+  block-size: auto;
+  flex: none;
+  vertical-align: -0.125em;
+  background: currentColor;
+  -webkit-mask: var(--pantoken-glyph) center / contain no-repeat;
+  mask: var(--pantoken-glyph) center / contain no-repeat;
+}

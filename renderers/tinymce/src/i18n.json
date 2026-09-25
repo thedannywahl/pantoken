@@ -1,0 +1,89 @@
+{
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
+  "autocompleteModifierDetail": { "message": "modifier", "translate": "always" },
+  "classValidationIncompleteComponent": {
+    "message": "Incomplete component name after '{{prefix}}'",
+    "translate": "always"
+  },
+  "classValidationTokenPrefix": {
+    "message": "Token must start with '{{prefix}}'",
+    "translate": "always"
+  },
+  "classValidationUnknownComponent": {
+    "message": "Unknown component/utility: '{{componentName}}'",
+    "translate": "always"
+  },
+  "componentsDialogTitle": { "message": "Insert Component", "translate": "always" },
+  "componentsListLabel": { "message": "Components", "translate": "always" },
+  "componentsMenuText": { "message": "Component", "translate": "always" },
+  "componentsToolbarText": { "message": "Components", "translate": "always" },
+  "componentsToolbarTooltip": {
+    "message": "Insert a pantoken component",
+    "translate": "always"
+  },
+  "componentModifiersDefault": { "message": "Default", "translate": "always" },
+  "componentModifiersOptions": { "message": "Options", "translate": "always" },
+  "componentModifiersTooltip": {
+    "message": "Change component modifiers",
+    "translate": "always"
+  },
+  "componentModifiersUtilities": { "message": "Utilities", "translate": "always" },
+  "iconLabelDialogTitle": { "message": "Icon label", "translate": "always" },
+  "iconLabelInputLabel": {
+    "message": "Screen reader label",
+    "translate": "always"
+  },
+  "iconsMenuText": { "message": "Icon", "translate": "always" },
+  "iconsDialogTitle": { "message": "Insert icon", "translate": "always" },
+  "iconsSearchPlaceholder": { "message": "Search icons…", "translate": "always" },
+  "iconsSearchLabel": { "message": "Search icons", "translate": "always" },
+  "iconsAllSources": { "message": "All", "translate": "always" },
+  "iconsResultCount": {
+    "message": "{{count}} icons",
+    "translate": "always"
+  },
+  "iconsNoResults": { "message": "No icons match your search.", "translate": "always" },
+  "iconsToolbarText": { "message": "Icons", "translate": "always" },
+  "iconsToolbarTooltip": { "message": "Insert an icon", "translate": "always" },
+  "iconContextColorTooltip": { "message": "Icon color", "translate": "always" },
+  "iconContextSizeTooltip": { "message": "Icon size", "translate": "always" },
+  "iconContextSizeSmall": { "message": "Small", "translate": "always" },
+  "iconContextSizeMedium": { "message": "Medium", "translate": "always" },
+  "iconContextSizeLarge": { "message": "Large", "translate": "always" },
+  "iconContextSizeExtraLarge": { "message": "Extra large", "translate": "always" },
+  "iconContextDeleteTooltip": { "message": "Delete icon", "translate": "always" },
+  "layoutsConfirmReplace": {
+    "message": "Replace the current content with the \"{{title}}\" layout?",
+    "translate": "always"
+  },
+  "layoutsDialogTitle": { "message": "Insert layout", "translate": "always" },
+  "layoutsMenuText": { "message": "Layout…", "translate": "always" },
+  "layoutsSelectLabel": { "message": "Starter layout", "translate": "always" },
+  "layoutsToolbarText": { "message": "Layouts", "translate": "always" },
+  "layoutsToolbarTooltip": { "message": "Insert a starter layout", "translate": "always" },
+  "logosToolbarText": { "message": "Logos", "translate": "always" },
+  "logosToolbarTooltip": { "message": "Insert a logo", "translate": "always" },
+  "logosMenuText": { "message": "Logo", "translate": "always" },
+  "logosDialogTitle": { "message": "Insert Logo", "translate": "always" },
+  "logosProductLabel": { "message": "Product", "translate": "always" },
+  "logosLayoutLabel": { "message": "Layout", "translate": "always" },
+  "logosLayoutHorizontal": { "message": "Horizontal", "translate": "always" },
+  "logosLayoutVertical": { "message": "Vertical", "translate": "always" },
+  "logosLayoutStacked": { "message": "Stacked", "translate": "always" },
+  "logosColorModeLabel": { "message": "Color Mode", "translate": "always" },
+  "logosColorModeColor": { "message": "Color", "translate": "always" },
+  "logosColorModeMonochrome": { "message": "Monochrome", "translate": "always" },
+  "logosColorModeLight": { "message": "Light", "translate": "always" },
+  "insertButton": { "message": "Insert", "translate": "always" },
+  "replaceButton": { "message": "Replace", "translate": "always" },
+  "cancelButton": { "message": "Cancel", "translate": "always" },
+  "logoAltSuffix": { "message": "logo", "translate": "always" },
+  "templatesConfirmReplace": {
+    "message": "Replace the current content with the \"{{title}}\" template?",
+    "translate": "always"
+  },
+  "templatesDialogTitle": { "message": "Insert template", "translate": "always" },
+  "templatesMenuText": { "message": "Insert template…", "translate": "always" },
+  "templatesSelectLabel": { "message": "Starter template", "translate": "always" },
+  "templatesToolbarText": { "message": "Templates", "translate": "always" }
+}

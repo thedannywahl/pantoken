@@ -22,6 +22,8 @@ export default extendBase({
       card: "generated/card.css",
       "agent-shell": "generated/agent-shell.css",
       banner: "generated/banner.css",
+      "button-set": "generated/button-set.css",
+      logo: "generated/logo.css",
     },
     css: { splitting: true, target: false, minify: true, modules: false, inject: false },
     exports: false,

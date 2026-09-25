@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-18 02:02+0000\n"
+"PO-Revision-Date: 2026-09-25 21:32+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -644,7 +644,7 @@ msgstr "`.--background-ai-horizontal` — AI-accent gradiens segédeszközök eg
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/ai-gradient/index.ts)"
-msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/gap/index.ts)"
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/ai-gradient/index.ts)"
 
 #: css/ai-gradient.md
 #, no-c-format
@@ -718,7 +718,8 @@ msgctxt "docs.api:prose"
 msgid "\n  Oops! You're using the \"error\" color.\n  "
 msgstr "\n  Gratulálunk! A \"success\" színt használod.\n  "
 
-#: css/alert.md css/banner.md renderers/web-components/src/variables/modal.md
+#: css/alert.md css/banner.md css/button-set.md
+#: renderers/web-components/src/variables/modal.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Cancel"
@@ -863,7 +864,7 @@ msgid "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/ma
 msgstr "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/avatar/avatar.css)"
 
 #: css/avatar.md css/close-button.md css/in-place-edit.md css/modal.md
-#: css/tooltip.md
+#: css/tabs.md css/tooltip.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "This component's CSS renders and works on its own; pair it with `@pantoken/interactions` to add the interactive behavior. See the [modifier table below](#modifiers)."
@@ -1597,6 +1598,150 @@ msgctxt "docs.api:prose"
 msgid "Small. @affects breadcrumb.link — Scales the crumb separator's spacing to match. Long-form alias of `-size-sm`."
 msgstr "Kicsi. @affects breadcrumb.link — A morzsaelválasztó távolságát igazítja. A `-size-sm` hosszabb formájú aliasa."
 
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`.instui-button-set` — A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
+msgstr "`.instui-button-set` — Egy illesztett (szoros, hézagmentes) gombsor, amelynek csak a két külső sarka van lekerekítve."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead."
+msgstr "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) alapértelmezést ad minden olyan gyermek `.instui-button`-nek\n  `.instui-button`, amelynek nincs ugyanabban a kategóriában saját módosítója — a gomb saját módosító osztálya mindig érvényesül a csoport alapértelmezettje felett. `-icon-*` mindig gombonként érvényes; soha nem olvassa a csoportból. A már nem támogatott gombaliasok (`-ghost`, `-color-primary-inverse`)\n) nem használhatók csoportszintű módosítóként — helyette használja ezek kanonikus helyettesítőit\n  (`-color-tertiary`, `-on-color`))."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Left"
+msgstr "Bal"
+
+#: css/button-set.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Right"
+msgstr "light"
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Confirm"
+msgstr "Megerősítés"
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the AI gradient treatment."
+msgstr "Állítsa alapértelmezettként minden módosítatlan gyermeknél az AI gradiens kezelést."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the lower-emphasis AI treatment."
+msgstr "Állítsa alapértelmezettként minden módosítatlan gyermeknél az alacsonyabb hangsúlyú AI megjelenést."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the destructive color."
+msgstr "Állítsa alapértelmezettként minden módosítatlan gyermeknél a destruktív (figyelmeztető) színt."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the primary color."
+msgstr "Állítsa alapértelmezettként minden módosítatlan gyermeknél az elsődleges színt."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the secondary color."
+msgstr "Állítsa alapértelmezettként minden módosítatlan gyermeknél a másodlagos színt."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the success color."
+msgstr "Állítsa alapértelmezettként minden módosítatlan gyermeknél a siker (pozitív) színt."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the tertiary (text-style) color."
+msgstr "Állítsa alapértelmezettként minden módosítatlan gyermeknél a harmadik (szöveg-stílusú) színt."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to tighter padding."
+msgstr "Állítsa alapértelmezettként minden módosítatlan gyermeknél a szorosabb belső térközt (padding)."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Lay every unmodified child out full-width."
+msgstr "Helyezze minden módosítatlan gyermeket teljes szélességűre."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child for placement on a coloured surface."
+msgstr "Állítsa alapértelmezettként minden módosítatlan gyermeket színes felületre történő elhelyezésre."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to a round icon button."
+msgstr "Állítsa alapértelmezettként minden módosítatlan gyermeket kerek ikon-gombra."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to a square icon button."
+msgstr "Állítsa alapértelmezettként minden módosítatlan gyermeket négyzet alakú ikon-gombra."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to large."
+msgstr "Állítsa alapértelmezettként minden módosítatlan gyermeket nagy méretre."
+
+#: css/button-set.md css/button.md css/close-button.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "(default) medium size."
+msgstr "(alapértelmezett) közepes méret."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to small."
+msgstr "Állítsa alapértelmezettként minden módosítatlan gyermeket kicsi méretre."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the pressed-state toggle treatment."
+msgstr "Állítsa alapértelmezettként minden módosítatlan gyermeket a lenyomott állapotú toggle megjelenítésre."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to no fill."
+msgstr "Állítsa alapértelmezettként minden módosítatlan gyermeket kitöltés nélküli megjelenésre."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to no border."
+msgstr "Állítsa alapértelmezettként minden módosítatlan gyermeket keret nélküli megjelenésre."
+
+#: css/button-set.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "- [button](/api/css/button.md) — The child control this wraps."
+msgstr "[close-button](/api/css/close-button.md) — Csak ikont tartalmazó bezáró gomb."
+
 #: css/button.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -1716,12 +1861,6 @@ msgstr "Kerek ikon gomb."
 msgctxt "docs.api:prose"
 msgid "A square icon button."
 msgstr "Egy négyzet alakú ikon gomb."
-
-#: css/button.md css/close-button.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "(default) medium size."
-msgstr "(alapértelmezett) közepes méret."
 
 #: css/button.md css/close-button.md
 #, no-c-format
@@ -2105,7 +2244,7 @@ msgstr "A natív `<input type=\"checkbox\">` vezérli a `:checked`, `:indetermin
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "Checkbox\n"
-msgstr "checkbox"
+msgstr "Jelölőnégyzet\n"
 
 #: css/checkbox.md
 #, fuzzy, no-c-format
@@ -3463,6 +3602,12 @@ msgstr "Egy akadálymentes műveletvezérlő, a token-palettából származó st
 #: css/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
+msgstr "Egy illesztett (szoros, hézagmentes) gombsor, amelynek csak a két külső sarka van lekerekítve."
+
+#: css/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "A media object: a hero figure beside a title and description."
 msgstr "Egy médiaobjektum: egy kiemelt figura a cím és a leírás mellett."
 
@@ -3733,8 +3878,8 @@ msgstr "Egy stílusos natív `<select>` jelölőnyíllal, amely megfelel a szöv
 #: css/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "An animated loading ring; give it role=\"status\" and an aria-label."
-msgstr "Egy animált betöltőgyűrű; adj neki role=\"status\" és egy aria-label attribútumot."
+msgid "An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "Egy animált betöltési gyűrű vagy AI spinner; add meg neki a role=\"status\" és egy aria-label attribútumot."
 
 #: css/index.md
 #, no-c-format
@@ -3891,6 +4036,12 @@ msgstr "Ikonrendszer: a `.instui-icon` méretezése és a megosztott `-icon-<nam
 msgctxt "docs.api:prose"
 msgid "Display and text-align utilities — `.--display-<value>` and `.--text-align-<value>` — as composable, global classes, usable bare or chained onto any component."
 msgstr "Megjelenítési és szövegigazítási segédosztályok — `.--display-<value>` és `.--text-align-<value>` — kompozit, globális osztályokként, önállóan vagy bármely komponenshez láncolva használhatók."
+
+#: css/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The logo system: `.instui-logo` sizing plus the shared `-logo-<name>` painter that masks a product logo (in `currentColor`) before any element, preserving the logo's own aspect ratio instead of a fixed 1:1 box."
+msgstr "Ikonrendszer: a `.instui-icon` méretezése és a megosztott `-icon-<name>` festő, amely egy piktogramot maszkol (a `currentColor` színében) bármely elem elé."
 
 #: css/index.md
 #, no-c-format
@@ -4295,6 +4446,24 @@ msgstr "Kicsi. @affects list.item — A tételközöket ennek megfelelően mére
 msgctxt "docs.api:prose"
 msgid "Remove markers and padding."
 msgstr "Jelölők és belső margó eltávolítása."
+
+#: css/logo.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "`.instui-logo` — The logo system: `.instui-logo` sizing plus the shared `-logo-<name>` painter that masks a product logo (in `currentColor`) before any element, preserving the logo's own aspect ratio instead of a fixed 1:1 box."
+msgstr ".instui-icon — Az ikonrendszer: a `.instui-icon` méretezése és a közös `-icon-<name>` festő, amely egy glypht maszkol (a `currentColor` színben) bármely elem előtt."
+
+#: css/logo.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A logo is meaningful, not decorative — give the host element `role=\"img\"` and an `aria-label` naming the product; never mark it `aria-hidden`."
+msgstr "A logó jelentéssel bíró, nem díszítő elem — adjon a host elemnek `role=\"img\"` attribútumot és egy `aria-label`-t, amely megnevezi a terméket; soha ne jelölje `aria-hidden`-nel."
+
+#: css/logo.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Set the glyph token (`--pantoken-glyph`) and its aspect ratio (`--pantoken-logo-aspect`), then render both via the shared painter (for example `-logo-canvas-horizontal-color`, from `@pantoken/plugin-logos`)."
+msgstr "Állítsa be a glif tokent (`--pantoken-glyph`), és jelenítse meg a megosztott festővel (például `-icon-search`)."
 
 #: css/logos.md
 #, no-c-format
@@ -6959,14 +7128,14 @@ msgstr "Padding segédosztályok a rövid, a régi-hosszú és a teljesen hossz�
 #: css/spinner.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "`.instui-spinner` — An animated loading ring; give it role=\"status\" and an aria-label."
-msgstr ".instui-spinner — Egy animált betöltő gyűrű; adj neki role=\"status\" attribútumot és egy aria-labelt."
+msgid "`.instui-spinner` — An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "`.instui-spinner` — Egy animált betöltőgyűrű vagy AI-pörgettyű; adj neki role=\"status\" és egy aria-labelt."
 
 #: css/spinner.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color."
-msgstr "`-color-inverse` csak az animált felső szegmens színét festi újra, nem az egész sávot, így sötét kártyán is jól olvasható külön sávszín nélkül."
+msgid "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color. The AI variants replace the ring with the centred `ai-spinner` glyph while keeping the same size scale."
+msgstr "`-color-inverse` csak az animált felső peremszeletet festi újra, nem az egész pályát, így egy sötét kártyán is helyesen olvasható külön pályaszín megadása nélkül. Az AI-változatok a gyűrűt a középre helyezett `ai-spinner` jelre cserélik, miközben megtartják ugyanazt a méretskálát."
 
 #: css/spinner.md
 #, no-c-format
@@ -6979,6 +7148,18 @@ msgstr "**Source:** [spinner.css](https://github.com/thedannywahl/pantoken/blob/
 msgctxt "docs.api:prose"
 msgid "Give the spinner role=\"status\" and an aria-label so screen readers announce it as a live loading status."
 msgstr "Add meg a spinnernek a role=\"status\" attribútumot és egy aria-labelt, hogy a képernyőolvasók élő betöltési állapotként jelentsék."
+
+#: css/spinner.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rotating AI-gradient star."
+msgstr "Forgó AI-gradiens csillag."
+
+#: css/spinner.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rotating on-colour AI star for a coloured or dark surface."
+msgstr "Forgó, azonos színű AI-csillag színes vagy sötét felülethez."
 
 #: css/spinner.md
 #, no-c-format
@@ -6997,6 +7178,12 @@ msgstr "Extra kicsi. A `-size-xs` hosszabb alakja."
 msgctxt "docs.api:prose"
 msgid "Extra-small."
 msgstr "Extra kicsi."
+
+#: css/spinner.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rotates the ring, or the AI star at the slower 2.25-second cadence."
+msgstr "Megforgatja a gyűrűt, vagy az AI-csillagot a lassabb, 2,25 másodperces ütemben."
 
 #: css/stacking.md
 #, no-c-format
@@ -7249,6 +7436,24 @@ msgstr "Előzmények"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The Overview tab's content shows here."
+msgstr "Itt jelenik meg az Áttekintés lap tartalma."
+
+#: css/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The Details tab's content shows here."
+msgstr "Itt jelenik meg az Áttekintés lap tartalma."
+
+#: css/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The Disabled tab's content won't be visible."
+msgstr "Itt jelenik meg az Áttekintés lap tartalma."
+
+#: css/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The History tab's content shows here."
 msgstr "Itt jelenik meg az Áttekintés lap tartalma."
 
 #: css/tabs.md
@@ -7737,7 +7942,7 @@ msgctxt "docs.api:prose"
 msgid "**Source:** [toggle-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/toggle-group/toggle-group.css)"
 msgstr "**Source:** [toggle-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/toggle-group/toggle-group.css)"
 
-#: css/toggle-group.md
+#: css/toggle-group.md renderers/web-components/src/variables/tabs.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Advanced settings"
@@ -9093,6 +9298,12 @@ msgctxt "docs.api:prose"
 msgid "Also emit the deprecated InstUI-prop glyph aliases (`-render-icon-<name>`, `-render-custom-icon-<name>`)\nas functional aliases of `-icon-<name>`. Off by default — turning it on roughly doubles the sheet, so\nenable it only when you need markup written against the old `renderIcon`/`renderCustomIcon` prop names\nto keep rendering. The shipped `icons.css` is built with this on."
 msgstr "A DEPRECATED InstUI-prop glyph aliasok (`-render-icon-&lt;name&gt;`, `-render-custom-icon-&lt;name&gt;`) is\nkibocsátandók, mint a `-icon-&lt;name&gt;` funkcionális aliasai. Alapértelmezés szerint kikapcsolva — bekapcsolása megközelítőleg megduplázza az lapot, ezért\ncsakis akkor engedélyezd, ha szükséged van a régi `renderIcon`/`renderCustomIcon` prop nevekre írt jelölésre\na renderelés fenntartásához. A szállított `icons.css` ezzel bekapcsolva van felépítve."
 
+#: formats/components/src/interfaces/IconGlyphsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Icon name → `--instui-icon-<name>` data-URI value. When given, the sheet also declares those\ncustom properties in `:root`, making it self-contained: the glyphs paint without a separate\ntoken sheet loaded alongside. Omit to emit the lean mapping-only sheet."
+msgstr "Ikon neve → `--instui-icon-<name>` data-URI érték. Ha megadva, a stíluslap azokat a \negyedi tulajdonságokat is deklarálja `:root`, így önmagában használható: a glyphek megjelennek külön token-lap betöltése nélkül. Hagyd ki a vékony, csak leképezést tartalmazó lap kibocsátásához."
+
 #: formats/components/src/interfaces/ProseOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9124,6 +9335,12 @@ msgstr "Minden emelkedési szint és alias `--instui-elevation-&lt;name&gt;` kib
 msgctxt "docs.api:prose"
 msgid "The elements the ring applies to by default (the common interactive/focusable elements)."
 msgstr "Az elemek, amelyekre a gyűrű alapértelmezés szerint vonatkozik (az általános interaktív/fókuszálható elemek)."
+
+#: formats/components/src/variables/aiGradientCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The AI gradient utility as a standalone, header-wrapped stylesheet."
+msgstr "Az AI gradiens segédprogram önálló, fejlécbe csomagolt stíluslapként."
 
 #: formats/components/src/variables/alertCss.md
 #, no-c-format
@@ -9659,6 +9876,106 @@ msgctxt "docs.api:prose"
 msgid "**Wrap a section in a CSS cascade layer**"
 msgstr "**Szekció becsomagolása CSS kaszkád rétegbe**"
 
+#: formats/css/src/functions/darkBranch.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The dark branch of a `light-dark()` value, or `null` when the value isn't one."
+msgstr "A `light-dark()` érték sötét ága, vagy `null`, ha az érték nem az."
+
+#: formats/css/src/functions/lightBranch.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The light branch of a `light-dark()` value, or `null` when the value isn't one."
+msgstr "A `light-dark()` érték világos ága, vagy `null`, ha az érték nem az."
+
+#: formats/css/src/functions/multiScopeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The complete multi-scope sheet: layer order, one set of `@property` registrations, a shared base\nblock, a token block per theme, and the light/dark `color-scheme` pins."
+msgstr "A teljes több-scope lap: rétegsorrend, egy sor `@property` regisztráció, egy megosztott alap\nblock, egy token-blokk témánként, és a világos/sötét `color-scheme` rögzítők."
+
+#: formats/css/src/functions/multiScopeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Tokens are partitioned by whether their value actually varies across `themes`. Invariant tokens go\nin the shared base block once; varying tokens are repeated in full in *every* theme block. That\nsecond half is what makes nesting safe — a theme block that omitted a varying token would inherit\nthe enclosing scope's value for it."
+msgstr "A tokenok aszerint vannak felosztva, hogy az értékük ténylegesen változik-e a `themes`. Az invariáns tokenek egyszer bekerülnek a megosztott alapblokkba\n; a változó tokenek teljes egészében ismétlődnek *minden* témablokkban. Ez a\n második rész teszi biztonságossá a beágyazást — egy témablokk, amely kihagy egy változó tokent, az őt körülvevő scope értékét örökölné\n."
+
+#: formats/css/src/functions/propertiesCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The document-global `@property` registrations, with no declarations. Load this once per document;\nevery theme sheet below is declarations only, so loading a second theme cannot clobber it."
+msgstr "A dokumentumra globális `@property` regisztrációk, deklarációk nélkül. Töltsd be ezt oldalanként egyszer;\n az alábbi minden témalap csak deklarációkat tartalmaz, így egy második téma betöltése nem írhatja felül."
+
+#: formats/css/src/functions/schemeOverrideTokens.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The tokens whose value actually changes when a theme is pinned to `scheme` — i.e. the ones written\nwith `light-dark()`. This is the minimal forcing block for `[data-pantoken-scheme]`."
+msgstr "Azok a tokenek, amelyek értéke ténylegesen megváltozik, amikor egy témát a `scheme`-hez rögzítenek — azaz azok, amelyeket\n `light-dark()` használatával írtak. Ez a minimális kényszerítő blokk a `[data-pantoken-scheme]` számára."
+
+#: formats/css/src/functions/schemeScopeSelector.md
+#: packages/utils/src/functions/schemeScopeSelector.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The selector matching any element pinned to `scheme`."
+msgstr "A szelektor, amely minden, a `scheme`-hez rögzített elemet megegyeztet."
+
+#: formats/css/src/functions/schemeScopeSelectors.md
+#: packages/utils/src/functions/schemeScopeSelectors.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Both forms of the scheme scope selector, as a selector list."
+msgstr "A scheme scope szelektor mindkét alakja, szelektorlistaként."
+
+#: formats/css/src/functions/schemesCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The light and dark scheme pins, as a standalone sheet. Theme-independent — the scheme only decides\nwhich branch of `light-dark()` wins, which the browser does for us."
+msgstr "A világos és sötét scheme rögzítők, különálló lapként. Témától függetlenek — a scheme csak azt dönti el,\n hogy a `light-dark()` ág nyer, amit a böngésző intéz helyettünk."
+
+#: formats/css/src/functions/scopedSchemeCss.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pin a subtree's color scheme."
+msgstr "Sötét (inverz) színséma."
+
+#: formats/css/src/functions/scopedSchemeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`color-scheme` is an ordinary inherited property, so one rule keyed to the scope attribute (or its\nclass twin) resolves every `light-dark()` token below it. No token needs flattening: this sheet is\na couple of hundred bytes, not the ~87kb an explicit per-token override table would cost."
+msgstr "`color-scheme` egy szokványos öröklődő tulajdonság, így egy szabály, amely a scope attribútumra (vagy annak\n osztály-párjára)) hivatkozik, megold minden `light-dark()` tokent alatta. Egy tokennak sem kell flattenelés: ez a lap\n néhány száz bájt, nem az a ~87kb, amit egy expliciten tokenenkénti felülírástáblázat jelentene."
+
+#: formats/css/src/functions/scopedThemeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "One theme's complete token set, scoped to any element carrying `data-pantoken-theme=\"<theme>\"` or\nthe equivalent `.--pantoken-theme-<theme>` class."
+msgstr "Egy téma teljes tokenkészlete, bármely olyan elemre korlátozva, amely `data-pantoken-theme=\"<theme>\"` vagy\n az egyenértékű `.--pantoken-theme-<theme>` osztályt hordoz."
+
+#: formats/css/src/functions/scopedThemeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every token is emitted as a declaration — including the concrete ones that would normally become\n`@property` initial-values — because an initial-value is document-global and cannot vary per scope."
+msgstr "Minden token deklarációként kerül kibocsátásra — beleértve azokat a konkrétokat is, amelyek normálisan \n`@property` kezdeti értékekké válnának — mert egy kezdeti érték dokumentumglobális és nem változhat scope-onként."
+
+#: formats/css/src/functions/themeScopeSelector.md
+#: packages/utils/src/functions/themeScopeSelector.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The selector matching any element that roots `theme`."
+msgstr "A szelektor, amely minden olyan elemet megegyeztet, amely `theme` gyökeret képez a témához."
+
+#: formats/css/src/functions/themeScopeSelectors.md
+#: packages/utils/src/functions/themeScopeSelectors.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Both forms of the theme scope selector, as a selector list."
+msgstr "A theme scope szelektor mindkét formája, szelektorlistaként."
+
+#: formats/css/src/functions/themedTokens.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a theme token set with optional icon removal and light/dark collapse."
+msgstr "Tématoken-készlet létrehozása opcionális ikoneltávolítással és világos/sötét összevonással."
+
 #: formats/css/src/functions/toCss.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9713,6 +10030,50 @@ msgctxt "docs.api:prose"
 msgid "Plain layer name (e.g. `\"pantoken\"`), no `@` prefix. Omit to skip the wrapper."
 msgstr "Egyszerű réteg neve (pl. `\"pantoken\"`), nincs `@` előtag. Kihagyás a wrapper kihagyásához."
 
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [multiScopeCss](../functions/multiScopeCss.md)."
+msgstr "A [toCss](../functions/toCss.md) lehetőségei."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#: formats/css/src/interfaces/ScopedCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Drop the `--instui-icon-*` glyph tokens (default `false`)."
+msgstr "Az `--instui-*` réteg forrásteája (alapértelmezés `\"rebrand\"`)."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#: formats/css/src/interfaces/ScopedCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Plugins whose `css` hooks run after the base CSS is built."
+msgstr "Bővítmények, amelyeknek a `css` hook-ja az alapvető CSS összeállítása után fut (alapértelmezett: nincs)."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Themes to emit scope blocks for."
+msgstr "Témák, amelyekhez scope-blokkokat kell kibocsátani."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The theme whose concrete tokens back the one-time `@property` registrations."
+msgstr "Az elkészített `rebrand` stílrulap karakterlánc (beírva: konkrét tokenek `@property` regisztrációként)."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Include the light/dark `color-scheme` pins (default `true`; see [schemesCss](../functions/schemesCss.md))."
+msgstr "Tartalmazza a világos/sötét `color-scheme` rögzítőket (alapértelmezett `true`; lásd [schemesCss](../functions/schemesCss.md)))."
+
+#: formats/css/src/interfaces/ScopedCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options shared by the scoped emitters."
+msgstr "A segédprogram-osztály kibocsátók által megosztott lehetőségek."
+
 #: formats/css/src/interfaces/ToCssOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9726,10 +10087,95 @@ msgid "The selector scoped declarations are emitted under (default `\":root\"`).
 msgstr "A szelektort, amelyen a hatókörrel rendelkező deklarációk kibocsátásra kerülnek (alapértelmezett `\":root\"`)."
 
 #: formats/css/src/interfaces/ToCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Plain cascade layer name wrapping the declarations (no `@` prefix). Omit to skip the wrapper."
+msgstr "Egyszerű réteg neve (pl. `\"pantoken\"`), nincs `@` előtag. Kihagyás a wrapper kihagyásához."
+
+#: formats/css/src/interfaces/ToCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Which half of the sheet to emit (default `\"all\"`)."
+msgstr "A kibocsátandó téma (alapértelmezett: `\"rebrand\"`)."
+
+#: formats/css/src/interfaces/ToCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Emit every token as a declaration rather than routing concrete tokens to `@property`. Required\nfor a theme block that can nest inside another theme's subtree: an incomplete block would\ninherit the enclosing theme's values for the tokens it omits."
+msgstr "Minden tokent deklarációként kibocsátani ahelyett, hogy a konkrét tokeneket `@property`-hoz irányítanánk. Szükséges egy olyan témablokkhoz, amely beágyazható egy másik téma al-fájába: egy hiányos blokk az általa kihagyott tokenekre a környező téma értékeit örökölné."
+
+#: formats/css/src/interfaces/ToCssOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Plugins whose `css` hooks run after the base CSS is built (default: none)."
 msgstr "Bővítmények, amelyeknek a `css` hook-ja az alapvető CSS összeállítása után fut (alapértelmezett: nincs)."
+
+#: formats/css/src/type-aliases/CssEmitTarget.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Which half of the sheet to emit."
+msgstr "A lap melyik felét kell kibocsátani."
+
+#: formats/css/src/type-aliases/CssEmitTarget.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`@property` registrations are document-global — the last registration of a given name wins for the\nwhole document — so two full sheets on one page fight over every concrete token. Emitting\nregistrations once (`\"properties\"`) and each theme as declarations only (`\"declarations\"`) lets\nseveral themes coexist."
+msgstr "`@property` regisztrációk dokumentumglobálisak — egy adott név utolsó regisztrációja érvényes az\n egész dokumentumra — így két teljes lap egy oldalon minden konkrét token miatt verseng. Ha a regisztrációkat egyszer kibocsátjuk (`\"properties\"`)) és minden témát csak deklarációként (`\"declarations\"`)), több téma együttélése lehetséges\n."
+
+#: formats/css/src/type-aliases/Scheme.md
+#: formats/scope/src/type-aliases/Scheme.md
+#: packages/utils/src/type-aliases/Scheme.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A color scheme a scope can be pinned to."
+msgstr "Egy színséma, amelyhez egy scope rögzíthető."
+
+#: formats/css/src/variables/BOUNDARY_ATTR.md
+#: packages/utils/src/variables/BOUNDARY_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute marking a scope that ancestor resolution must not cross."
+msgstr "Attribútum, amely egy olyan scope-ot jelöl, amelyen az ősi feloldás nem haladhat át."
+
+#: formats/css/src/variables/BOUNDARY_CLASS.md
+#: packages/utils/src/variables/BOUNDARY_CLASS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Class equivalent of `data-pantoken-boundary`."
+msgstr "A `data-pantoken-boundary` osztály egyenértéke."
+
+#: formats/css/src/variables/COLOR_ATTR.md
+#: packages/utils/src/variables/COLOR_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute that selects a custom brand color."
+msgstr "Attribútum, amely egy egyedi márkaszínt választ ki."
+
+#: formats/css/src/variables/LAYERS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Cascade layers this module emits into, in ascending precedence order."
+msgstr "A kaszkádrétegek, amelyekbe ez a modul kibocsát — növekvő precedencia sorrendben."
+
+#: formats/css/src/variables/SCHEME_ATTR.md
+#: packages/utils/src/variables/SCHEME_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute that pins a subtree to a color scheme."
+msgstr "Attribútum, amely egy al-fát egy színsémához rögzít."
+
+#: formats/css/src/variables/THEME_ATTR.md
+#: packages/utils/src/variables/THEME_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute that roots a theme scope. Matches any element, not just `:root`."
+msgstr "Attribútum, amely egy téma scope-ot gyökeresít. Bármely elemmel egyezik, nem csak a `:root`-val."
+
+#: formats/css/src/variables/colorClass.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Class equivalent of `data-pantoken-color`."
+msgstr "A `data-pantoken-color` osztály egyenértéke."
 
 #: formats/css/src/variables/css.md
 #, no-c-format
@@ -9742,6 +10188,18 @@ msgstr "Az elkészített `rebrand` stílrulap karakterlánc (beírva: konkrét t
 msgctxt "docs.api:prose"
 msgid "The lean `rebrand` stylesheet string — the full sheet minus the `--instui-icon-*` glyph tokens (the\n~1,777 icon data-URIs that make up most of [css](css.md)). Roughly a sixth the size over the wire; the\nrecommended foundation for CDN/embed delivery. Components reference only a handful of icons, shipped\nseparately as `@pantoken/components`'s `component-icons.css`; consumers who use `var(--instui-icon-*)`\nbroadly should load the full [css](css.md) (or the `icons.css` glyph sheet). See\n`@pantoken/css/style.lean.css`."
 msgstr "A lean `rebrand` stílrulap karakterlánc — a teljes lap mínusz a `--instui-icon-*` glyph tokenok (az\n~1,777 ikon data-URI, amely a [css](css.md) legtöbbjét alkotja). Nagyjából hatoda a méretnek a hálózaton; az\najánlott alap a CDN/beágyazás szállításához. A komponensek csak egy maroknyi ikont hivatkoznak meg, szállított\nkülön-külön, mint `@pantoken/components`'s `component-icons.css`; a fogyasztók, akik széles körben használnak `var(--instui-icon-*)`\na teljes [css](css.md) betöltésére van szükségük (vagy a `icons.css` glyph lap). Lásd\n`@pantoken/css/style.lean.css`."
+
+#: formats/css/src/variables/schemeClass.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Class equivalent of `data-pantoken-scheme`."
+msgstr "A `data-pantoken-scheme` osztály egyenértéke."
+
+#: formats/css/src/variables/themeClass.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Class equivalents of the scope attributes, for hosts that sanitize `data-*` but allow `class` —\nCanvas RCE content being the one that forced them. They follow the repo's global-modifier naming\n(`.--name`), and the emitter pairs each attribute selector with its class twin."
+msgstr "A scope attribútumok osztály-egyenértékei olyan hostok számára, amelyek megtisztítják a `data-*`-okat, de engedik az `class`-t — a Canvas RCE tartalom volt az, ami kényszerítette őket. Követik a repo globális-módosító elnevezését\n ( `.--name``.--name`) ), és az emitter minden attribútum-szelektort párosít az osztály párjával."
 
 #: formats/dtcg/src/functions/byTheme.md
 #, no-c-format
@@ -9928,9 +10386,9 @@ msgid "Icon name → hex codepoint (e.g. `\"e001\"`)."
 msgstr "Ikon név → hexadecimális kódpont (pl. `\"e001\"`)."
 
 #: formats/icons/src/functions/buildIconResolverChain.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Build the shared icon-resolver chain: plugin `rehype` resolvers first, then an explicit\n`resolve`, then the built-in pantoken icon set. Used by `@pantoken/rehype` and\n`@pantoken/markdown-it` so the resolution order stays identical across renderers."
+msgid "Build the shared icon-resolver chain: an explicit `resolve` first, then the built-in pantoken\nicon set, then plugin `rehype` resolvers (so a plugin can add codes the built-in set doesn't\nknow, but never shadow a built-in icon name). Used by `@pantoken/rehype` and\n`@pantoken/markdown-it` so the resolution order stays identical across renderers."
 msgstr "A megosztott ikonfeloldó lánc felépítése: először a beépülő modul `rehype` feloldói, majd egy explicit\n`resolve`, végül a beépített pantoken ikonkészlet. A(z) `@pantoken/rehype` és a(z)\n`@pantoken/markdown-it` használja, így a feloldási sorrend azonos marad a renderelők között."
 
 #: formats/icons/src/functions/getIcon.md
@@ -9966,9 +10424,9 @@ msgstr "Egy explicit feloldó, amely a beépített pantoken ikon készlet előtt
 
 #: formats/icons/src/interfaces/IconResolverChainOptions.md
 #: renderers/rehype/src/interfaces/RehypeOptions.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Plugins whose `rehype` hooks contribute resolvers (tried first)."
+msgid "Plugins whose `rehype` hooks contribute resolvers (tried last, after the built-in set)."
 msgstr "Pluginok, amelyek `rehype` hookai feloldókat járulnak hozzá (először próbálva)."
 
 #: formats/icons/src/interfaces/PantokenIcon.md
@@ -10013,6 +10471,12 @@ msgctxt "docs.api:prose"
 msgid "The glyph origin."
 msgstr "A gliffa eredete."
 
+#: formats/icons/src/variables/customIcons.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every Instructure-authored custom icon."
+msgstr "**Korlátozza az Instructure által szerzett karakterkészletekre**"
+
 #: formats/icons/src/variables/icons.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -10024,6 +10488,12 @@ msgstr "Minden pantoken ikon, név szerint rendezve."
 msgctxt "docs.api:prose"
 msgid "Every pantoken icon, keyed by name."
 msgstr "Minden pantoken ikon, név szerint indexelve."
+
+#: formats/icons/src/variables/lucideIcons.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every canonical Lucide icon."
+msgstr "Minden kanonikus Lucide ikon."
 
 #: formats/icons/src/variables/resolve.md
 #, no-c-format
@@ -10114,6 +10584,12 @@ msgstr "Az időkorlát (timeout) egy explicit ezredmásodpercben megadott opció
 msgctxt "docs.api:prose"
 msgid "Wire open/close commands plus width-based responsive overlay switching onto a host: any\ncollapsible side panel (e.g. a drawer's tray) can import this interaction rather than each\ncomponent reimplementing it."
 msgstr "Nyitási/zárási parancsok és szélességalapú reszponzív overlay-váltás hozzákapcsolása egy gazdaelemhez: bármely\nösszecsukható oldalsó panel (pl. egy fiók tálcája) importálhatja ezt az interakciót ahelyett, hogy minden\negyes komponens újra megvalósítaná azt."
+
+#: formats/interactions/src/functions/initTabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Wire a tablist and its controlled panels inside a host element."
+msgstr "Kösd össze a fül-listát és az általa vezérelt paneljeit egy host elemen belül."
 
 #: formats/interactions/src/functions/initTooltip.md
 #, no-c-format
@@ -10374,6 +10850,12 @@ msgctxt "docs.api:prose"
 msgid "Exit treatment. Defaults to `\"fade\"`, matching InstUI Alert."
 msgstr "Kilépési kezelés. Alapértelmezett értéke `\"fade\"`, amely megfelel az InstUI Alert működésének."
 
+#: formats/interactions/src/interfaces/TabsHandle.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Controls the listeners installed by [initTabs](../functions/initTabs.md)."
+msgstr "A(z) [initTooltip](../functions/initTooltip.md) által visszaadott kezelő (handle)."
+
 #: formats/interactions/src/interfaces/TooltipHandle.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -10508,6 +10990,410 @@ msgstr "Lehetőségek a [toLess](../functions/toLess.md) számára."
 msgctxt "docs.api:prose"
 msgid "The ready-made `rebrand` Less variable set."
 msgstr "Az előkészített `rebrand` Less változókészlet."
+
+#: formats/scope/src/functions/connectScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Run inside a frame: ask the host page's scope for its state and follow it."
+msgstr "Futtasson egy frame-en belül: kérdezze le a host oldal scope-jának állapotát, és kövesse azt."
+
+#: formats/scope/src/functions/connectScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The frame gets its own scope element, so it can be told to render a different theme or scheme than\nthe host — it is not inheriting ambiently."
+msgstr "A frame saját scope elemet kap, így meg lehet neki mondani, hogy más témát vagy sémát jelenítsen meg, mint a\n host — nem örököl automatikusan."
+
+#: formats/scope/src/functions/connectScope.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "A disconnect function."
+msgstr "Visszafordíthatatlan művelet."
+
+#: formats/scope/src/functions/createScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Create a scope rooted at `element`."
+msgstr "Hozz létre egy scope-ot, amely `element` gyökerezik."
+
+#: formats/scope/src/functions/createScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "**Two independent themes on one page**"
+msgstr "**Két független téma egy oldalon**"
+
+#: formats/scope/src/functions/ensureProperties.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inject `css` into `doc` once. A second call with the same `id` does nothing, whichever instance\nmakes it."
+msgstr "Injektálja a `css`-t a `doc`-be egyszer. Egy második hívás ugyanazzal az `id`-mal nem csinál semmit, bármelyik példány is tegye meg\n."
+
+#: formats/scope/src/functions/ensureProperties.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The registrations sheet, e.g. `@pantoken/css/properties.css`."
+msgstr "Az npm-csomagnév, pl. `\"@pantoken/components\"`."
+
+#: formats/scope/src/functions/ensureProperties.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`id` distinguishes unrelated sheets; `doc` defaults to the current document."
+msgstr "`id` megkülönbözteti a nem kapcsolódó lapokat; `doc` alapértelmezés szerint az aktuális dokumentum."
+
+#: formats/scope/src/functions/ensureProperties.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`true` when this call performed the injection."
+msgstr "`true` akkor, amikor ez a hívás végezte az injektálást."
+
+#: formats/scope/src/functions/getScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The scope registered for `instanceId` in `doc`, if any."
+msgstr "A `instanceId` számára a `doc`-ben regisztrált scope, ha van ilyen."
+
+#: formats/scope/src/functions/hasProperties.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "True when a registrations sheet with `id` is already present in `doc`."
+msgstr "Igaz, ha egy `id` azonosítójú regisztrációs lap már jelen van a `doc`-ben."
+
+#: formats/scope/src/functions/isScheme.md
+#: packages/utils/src/functions/isScheme.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Narrow an arbitrary value to a [Scheme](../type-aliases/Scheme.md)."
+msgstr "Szűkíts egy tetszőleges értéket egy [Scheme](../type-aliases/Scheme.md)-re."
+
+#: formats/scope/src/functions/observeScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Call `listener` whenever the scope resolved for `target` changes, including when an ancestor's\nattributes change."
+msgstr "Hívja meg `listener`-t, amikor a `target`-hoz rendelt scope változik, beleértve azt az esetet is, amikor egy ős attribútumai\n megváltoznak."
+
+#: formats/scope/src/functions/observeScope.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "A stop function."
+msgstr "Egy MI‑művelet."
+
+#: formats/scope/src/functions/resolveInstance.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The instance that owns `start`, falling back to [DEFAULT\\_INSTANCE](../variables/DEFAULT_INSTANCE.md)."
+msgstr "Az az instance, amelyiké `start`; ha nincs, visszatér a [DEFAULT\\_INSTANCE](../variables/DEFAULT_INSTANCE.md)-re."
+
+#: formats/scope/src/functions/resolveInstance.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use this to decide whether an event or message is yours before acting on it."
+msgstr "Ezzel dönthető el, hogy egy esemény vagy üzenet a tiéd-e, mielőtt reagálsz rá."
+
+#: formats/scope/src/functions/resolveScheme.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The effective color scheme for `start`: an explicit pin if any ancestor set one, otherwise the\n`color-scheme` the element actually computes to, otherwise the OS preference."
+msgstr "A `start`-hoz érvényes színséma: explicit rögzítés, ha bármelyik ős beállított egyet, különben az a\n`color-scheme` `color-scheme`, amelyre az elem ténylegesen számítódik, különben az operációs rendszer preferenciája."
+
+#: formats/scope/src/functions/resolveScheme.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Never reads `document.documentElement` — that global read is exactly what desynchronises two\ninstances on one page."
+msgstr "Soha nem olvassa a `document.documentElement`-t — ez a globális olvasás pontosan az, ami két instance szinkronját felbontja ugyanazon az oldalon."
+
+#: formats/scope/src/functions/resolveScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve the scope in effect for `start` by walking up its ancestors."
+msgstr "Oldja fel a `start` számára érvényes scope-ot az ősök mentén felfelé haladva."
+
+#: formats/scope/src/functions/resolveScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The element to resolve for. Its own attributes participate."
+msgstr "Az az elem, amelyre feloldást végzünk. Saját attribútumai is részt vesznek."
+
+#: formats/scope/src/functions/resolveScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [ResolvedScope](../interfaces/ResolvedScope.md); fields no ancestor declared are left `undefined`."
+msgstr "A [ResolvedScope](../interfaces/ResolvedScope.md); azok a mezők, amelyeket egy ős sem deklarált, `undefined` maradnak."
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "`@pantoken/scope` — run several pantoken themes and color schemes in one document."
+msgstr "`@pantoken/core` — a pantoken transzformátor."
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pantoken's CSS keys themes to a `data-pantoken-theme` attribute that matches *any* element, not\njust `:root`, so theming is a property of a subtree rather than of the page. This package is the\nruntime half of that contract:"
+msgstr "A Pantoken CSS a témákat egy `data-pantoken-theme` attribútumhoz köti, amely bármely *any* elemre illeszkedik, nem csak a\n `:root`-ra__; így a theming egy részfa tulajdonsága ahelyett, hogy az oldalé lenne. Ez a csomag a szerződés futásidejű fele:"
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "- [resolveScope](functions/resolveScope.md) walks up from an element to find the theme, scheme, and color in effect —\n  the auto-detection half.\n- [createScope](functions/createScope.md) declares a scope explicitly, with its own persisted state and its own frame\n  message channel — the manual-configuration half that stops two instances colliding.\n- [ensureProperties](functions/ensureProperties.md) injects the document-global `@property` registrations once, however\n  many instances ask for them."
+msgstr "- [resolveScope](functions/resolveScope.md) felfelé halad egy elem ősai között, hogy megtalálja az érvényes theme-et, scheme-et és színt —\n  az automatikus érzékelés fele.\n- [createScope](functions/createScope.md) kifejezetten deklarál egy scope-ot, saját perzisztált állapottal és saját frame\n  üzenetcsatornával — a kézi konfiguráció fele, ami megakadályozza két instance ütközését.\n- [ensureProperties](functions/ensureProperties.md) egyszer injektálja a dokumentumra vonatkozó `@property` regisztrációkat, bármennyi instance is kérje azokat."
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Node-free by design: this ships to the browser."
+msgstr "Node-mentes tervezésű: ez a böngészőbe szállítva használatos."
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [BOUNDARY_ATTR](../../css/src/variables/BOUNDARY_ATTR.md)"
+msgstr "Újra-exportálja a [BOUNDARY_ATTR](../../css/src/variables/BOUNDARY_ATTR.md)-et"
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [BOUNDARY_CLASS](../../css/src/variables/BOUNDARY_CLASS.md)"
+msgstr "Újra-exportálja a [BOUNDARY_CLASS](../../css/src/variables/BOUNDARY_CLASS.md)-t"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [COLOR_ATTR](../../css/src/variables/COLOR_ATTR.md)"
+msgstr "Újra exportálja [Mode](../../core/src/type-aliases/Mode.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [SCHEME_ATTR](../../css/src/variables/SCHEME_ATTR.md)"
+msgstr "Újra exportálja [Mode](../../core/src/type-aliases/Mode.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [THEME_ATTR](../../css/src/variables/THEME_ATTR.md)"
+msgstr "Újra exportálja [Mode](../../core/src/type-aliases/Mode.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [colorClass](../../css/src/variables/colorClass.md)"
+msgstr "Újra exportálja [Mode](../../core/src/type-aliases/Mode.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [schemeClass](../../css/src/variables/schemeClass.md)"
+msgstr "Újra exportálja a [Theme](../../../packages/core/src/type-aliases/Theme.md) típusra mutató hivatkozást"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [themeClass](../../css/src/variables/themeClass.md)"
+msgstr "Újra exportálja a [Theme](../../../packages/core/src/type-aliases/Theme.md) típusra mutató hivatkozást"
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [connectScope](../functions/connectScope.md)."
+msgstr "A [toGpl](../functions/toGpl.md) lehetőségei."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The instance to accept messages for (default [DEFAULT\\_INSTANCE](../variables/DEFAULT_INSTANCE.md))."
+msgstr "Az az instance, amelyik fogadja az üzeneteket (alapértelmezett: [DEFAULT\\_INSTANCE](../variables/DEFAULT_INSTANCE.md)))."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The element to apply received state to (default `document.documentElement`)."
+msgstr "Az az elem, amelyre az érkezett állapotot alkalmazzák (alapértelmezett: `document.documentElement`))."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The window to talk to (default `window.parent`)."
+msgstr "A betűcsalád neve (alapértelmezett `\"PanTokens\"`)."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The origin the host must have. Pass `\"*\"` only for an opaque-origin `srcdoc` document."
+msgstr "Az az origin, amellyel a hostnak rendelkeznie kell. Adj meg `\"*\"`-t csak egy átlátszatlan (opaque-origin) `srcdoc` srcdoc dokumentumhoz."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Called after each applied update."
+msgstr "Minden alkalmazott frissítés után meghívva."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [createScope](../functions/createScope.md)."
+msgstr "Az [aggregate](../functions/aggregate.md) lehetőségei."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#: formats/scope/src/interfaces/ResolvedScope.md
+#: formats/scope/src/interfaces/ScopeConfig.md
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Theme key, e.g. `\"rebrand\"`. Matched by `[data-pantoken-theme=\"…\"]`."
+msgstr "Téma kulcs, pl. `\"rebrand\"`. Illeszkedik a `[data-pantoken-theme=\"…\"]` szelektorral."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#: formats/scope/src/interfaces/ResolvedScope.md
+#: formats/scope/src/interfaces/ScopeConfig.md
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pinned color scheme. Omit to follow the OS preference."
+msgstr "Rögzített színséma. Hagyja el, ha az OS preferenciát akarja követni."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#: formats/scope/src/interfaces/ResolvedScope.md
+#: formats/scope/src/interfaces/ScopeConfig.md
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Custom brand color key."
+msgstr "Egyedi brand szín kulcs."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Identifier distinguishing this pantoken instance from others on the page. Scopes, storage keys,\nand frame messages are all keyed by it."
+msgstr "Az az azonosító, amely megkülönbözteti ezt a pantoken instance-ot a többitől az oldalon. A scope-ok, tárolási kulcsok,\n és a frame üzenetek mind ezzel az azonosítóval vannak kulcsolva."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Stop ancestor resolution at this element, so nothing outside can theme what is inside. Use for\na preview pane that must not inherit the surrounding app's theme."
+msgstr "Állítsa le az ősök feloldását ennél az elemnél, így semmi kívülről nem themelheti a belsőt. Használja olyan\n előnézeti panelhez, amelynek nem szabad örökölnie a környező alkalmazás témáját."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Persist and restore state. Pass `false` to keep the scope in-memory only (default `true`)."
+msgstr "Állapot perzisztálása és visszaállítása. Adjon át `false`-t, hogy a scope csak memóriában maradjon (alapértelmezett: `true`))."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Storage backend (default `localStorage`, silently skipped when unavailable)."
+msgstr "Tároló backend (alapértelmezett: `localStorage`, amely néma módon kihagyásra kerül, ha nem érhető el))."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A live scope bound to one element."
+msgstr "Egy élő scope, amely egy elemhez kötött."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The element carrying the scope attributes."
+msgstr "Az az elem, amely a scope attribútumokat hordozza."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The instance this scope belongs to."
+msgstr "A termék, amelyhez a logó tartozik."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The scope's own configuration — what it declares, not what it inherits."
+msgstr "A scope saját konfigurációja — amit deklarál, nem az, amit örököl."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Merge a partial configuration in. Pass `null` for a field to clear it and inherit again."
+msgstr "Olvasszon be egy részleges konfigurációt. Adjon át `null`-t egy mező törléséhez, hogy újra örököljön."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve the effective scope for a descendant (defaults to this scope's own element)."
+msgstr "Oldja fel a hatályos scope-ot egy leszármazott számára (alapértelmezés szerint ez a scope saját eleme))."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Send this scope's state to `frame` and keep it in sync. Returns a detach function."
+msgstr "Küldje el ennek a scope-nak az állapotát `frame`-re, és tartsa szinkronban. Visszaad egy detach függvényt."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Observe changes. Returns an unsubscribe function."
+msgstr "Figyelje a változásokat. Visszaad egy leiratkozó függvényt."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Remove the attributes, detach frames, and unregister."
+msgstr "Távolítsa el az attribútumokat, szakadjon le a frame-ekről, és regisztráljon ki."
+
+#: formats/scope/src/interfaces/ResolvedScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A [ScopeConfig](ScopeConfig.md) resolved against the DOM, plus where each part came from."
+msgstr "Egy [ScopeConfig](ScopeConfig.md), DOM-hoz képest feloldva, valamint hogy az egyes részek honnan származnak."
+
+#: formats/scope/src/interfaces/ResolvedScope.md
+#: formats/scope/src/interfaces/ScopeConfig.md
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Identifier of the pantoken instance that owns this scope."
+msgstr "A pantoken instance azonosítója, amely ennek a scope-nak a tulajdonosa."
+
+#: formats/scope/src/interfaces/ResolvedScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The nearest element that declared any scope attribute, or `null` when none did."
+msgstr "A legközelebbi elem, amely bármely scope attribútumot deklarálta, vagy `null`, ha egyik sem."
+
+#: formats/scope/src/interfaces/ResolvedScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "True when resolution stopped at a `data-pantoken-boundary` element."
+msgstr "Igaz, amikor a feloldás egy `data-pantoken-boundary` elemnél állt meg."
+
+#: formats/scope/src/interfaces/ScopeConfig.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The resolvable state of a scope. Every field is optional — an unset field inherits."
+msgstr "Egy scope feloldható állapota. Minden mező opcionális — egy beállítatlan mező örököl."
+
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The message envelope exchanged between a scope and its attached frames."
+msgstr "Az üzenetboríték, amelyet egy scope és a hozzá csatolt frame-ek cserélnek."
+
+#: formats/scope/src/variables/DEFAULT_INSTANCE.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The default instance id, used when a scope does not name one."
+msgstr "Az alapértelmezett instance azonosító, amelyet akkor használnak, ha egy scope nem nevez meg egyet."
+
+#: formats/scope/src/variables/INSTANCE_ATTR.md
+#: packages/utils/src/variables/INSTANCE_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute carrying the owning instance id, so sibling instances can tell scopes apart."
+msgstr "Attribútum, amely a tulajdonos példány azonosítóját hordozza, hogy a testvérpéldányok meg tudják különböztetni a scope-okat."
+
+#: formats/scope/src/variables/SCOPE_ATTRS.md
+#: packages/utils/src/variables/SCOPE_ATTRS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every attribute that participates in scope resolution."
+msgstr "Minden attribútum, amely részt vesz a scope feloldásában."
 
 #: formats/scss/src/functions/toScss.md
 #, no-c-format
@@ -11937,6 +12823,18 @@ msgctxt "docs.api:prose"
 msgid "Convert a kebab-case string to camelCase (`color-background-brand` → `colorBackgroundBrand`)."
 msgstr "Alakítson kebab-case stringet camelCase-re (`color-background-brand` → `colorBackgroundBrand`)."
 
+#: packages/utils/src/functions/colorScopeSelector.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The selector matching any element using custom brand color `color`."
+msgstr "A szelektor, amely bármely, az egyedi márkaszínt `color` használó elemhez illeszkedik `color`."
+
+#: packages/utils/src/functions/colorScopeSelectors.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Both forms of the color scope selector, as a selector list."
+msgstr "A szín scope szelektor mindkét formája, választólista formájában."
+
 #: packages/utils/src/functions/colorUtilitiesCss.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -12135,6 +13033,12 @@ msgctxt "docs.api:prose"
 msgid "A `light-dark(<light>, <dark>)` value; capture groups 1 and 2 are the two branches."
 msgstr "Egy `light-dark(&lt;light&gt;, &lt;dark&gt;)` érték; az 1. és 2. rögzítési csoport a két ág."
 
+#: packages/utils/src/variables/SCOPE_LAYERS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Cascade layers the scoped sheets emit into, in ascending precedence order."
+msgstr "A kaszkád rétegek, amelyekbe a scoped stíluslapok kerülnek, növekvő precedencia-sorrendben."
+
 #: packages/utils/src/variables/SPACING_AUTO_STEP.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -12309,6 +13213,12 @@ msgstr "Rebrand token mód. Alapértelmezett értéke: `\"light\"`. A(z) `rebran
 msgctxt "docs.api:prose"
 msgid "Component-style sheets. Defaults to [defaultThemeCssAssets](../functions/defaultThemeCssAssets.md) for `theme`/`mode`."
 msgstr "Komponensstílus-lapok. Alapértelmezés szerint [defaultThemeCssAssets](../functions/defaultThemeCssAssets.md) a(z) `theme`/`mode` esetén."
+
+#: platforms/canvas-theme-editor/src/interfaces/BuildThemeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Ship the multi-scope token pair instead of a single baked theme, so several themes and color\nschemes can be active in one Canvas page. Larger; only worth it when that's actually needed."
+msgstr "Szállítsa a több-scope token párt egyetlen elkészített téma helyett, hogy több téma és szín\nsémák legyenek aktívak egy Canvas oldalon. Nagyobb; csak akkor éri meg, ha tényleg szükséges."
 
 #: platforms/canvas-theme-editor/src/interfaces/BuildThemeOptions.md
 #, no-c-format
@@ -13121,6 +14031,12 @@ msgctxt "docs.api:prose"
 msgid "Build the banner layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.\nDefaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
 msgstr "A banner elrendezési CSS felépítése (dokumentációs megjegyzés + szabályok), a(z) `pfx-` őrszemet a(z) `prefix` értékkel helyettesítve.\nAlapértelmezés szerint `\"instui-\"` a mellékelt stíluslaphoz; előtag nélküli buildhez adja át a(z) `\"\"` értéket."
 
+#: plugins/pantoken/custom-components/src/functions/buttonSetRules.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build the button-set layout CSS (doc comment + rules), substituting `prefix` for the `pfx-`\nsentinel. Defaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
+msgstr "A banner elrendezési CSS felépítése (dokumentációs megjegyzés + szabályok), a(z) `pfx-` őrszemet a(z) `prefix` értékkel helyettesítve.\nAlapértelmezés szerint `\"instui-\"` a mellékelt stíluslaphoz; előtag nélküli buildhez adja át a(z) `\"\"` értéket."
+
 #: plugins/pantoken/custom-components/src/functions/customComponents.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13135,6 +14051,12 @@ msgstr "A custom-components bővítmény létrehozása."
 msgctxt "docs.api:prose"
 msgid "A [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) with a `css` hook."
 msgstr "Egy [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) a `css` horoggal."
+
+#: plugins/pantoken/custom-components/src/functions/logoRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build the logo utility CSS as an aspect-ratio-aware mask painter for `@pantoken/plugin-logos`'\n`-logo-<name>` glyph classes, substituting `prefix` for the `pfx-` sentinel."
+msgstr "Építse fel a logó segéd-CSS-t arányérzékeny maszkfestőként az `@pantoken/plugin-logos`'\n`-logo-<name>` `-logo-<name>` glif osztályokhoz, a `pfx-` jelző helyett a `prefix`-et használva."
 
 #: plugins/pantoken/custom-components/src/index.md
 #, no-c-format
@@ -13236,6 +14158,66 @@ msgctxt "docs.api:prose"
 msgid "Every vendored custom icon, sorted by name."
 msgstr "Minden vendored egyedi ikon, név szerint rendezve."
 
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Generate the `[data-pantoken-color=\"custom\"]` rule for a brand hex: it declares the derived\n`--instui-primitive-color-custom-custom*` steps and remaps the brand primitives onto them, exactly\nlike the shipped scales."
+msgstr "Generate the `[data-pantoken-color=\"custom\"]` szabályt egy márka hexhez: deklarálja a származtatott\n`--instui-primitive-color-custom-custom*` lépéseket és pontosan ráirányítja rájuk a márka primitívjeit,\nmint a szállított skálák."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A `#rgb`/`#rrggbb` brand color."
+msgstr "A `#rgb`/`#rrggbb` márkaszín."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorRemapCss.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The CSS rule."
+msgstr "A CSS szabályok karakterlánca."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TypeError when `hex` isn't a valid hex color."
+msgstr "TypeError amikor `hex` nem érvényes hex szín."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The per-step lightness curve and chroma shape the `custom` scale is derived against, computed\nfrom the 13 shipped families. JSON-safe, so a build can ship it to a browser that pairs it with\nthe dependency-free `@pantoken/plugin-custom-theme-colors/scale` entry."
+msgstr "The per-step lightness curve and chroma shape the `custom` skála származtatásának alapja, kiszámítva\na 13 szállított családból. JSON-kompatibilis, így egy build elküldheti a böngészőnek, amely párosítja azt a függőségmentes\nbejegyzéssel: `@pantoken/plugin-custom-theme-colors/scale`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`Token`](../../../../../packages/core/src/interfaces/Token.md)[] \\| `Map`\\<`string`, `string`\\>"
+msgstr "csak olvasható [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional token array or map to read the reference families from."
+msgstr "Opcionális tokentömb vagy térkép, amiből feloldhatók a primitív lépés színértékei."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [ReferenceCurve](../interfaces/ReferenceCurve.md)."
+msgstr "Egy [ResolvedDemo](../interfaces/ResolvedDemo.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorRemapCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The `[data-pantoken-color=\"custom\"]` remap rule without the derived primitives, for pages that\nset `--instui-primitive-color-custom-custom*` themselves at runtime (e.g. from a color picker)."
+msgstr "The `[data-pantoken-color=\"custom\"]` átiró szabály a származtatott primitívek nélkül, olyan oldalak számára, amelyek\nmaguk állítják be futásidőben a `--instui-primitive-color-custom-custom*` értéket (pl. színválasztóból))."
+
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColors.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13245,14 +14227,8 @@ msgstr "A custom-icons plugin létrehozása."
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Generate CSS rules for all custom theme color choices by remapping primitive color scale steps\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`), while preserving explicitly\nnamed blue accents and semantic status intents."
+msgid "Generate CSS rules for all custom theme color choices by remapping primitive color scale steps\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`) and relinking literal\nbrand hex values that upstream flattened away from those primitives, while preserving explicitly\nnamed blue accents and semantic status intents."
 msgstr "Generál CSS-szabályokat minden egyedi téma színválasztáshoz az alapvető színskála lépéseinek átmappelésével\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`), miközben megőrzi kifejezetten\nnevű kék kiemelő tokeneket."
-
-#: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
-#, fuzzy, no-c-format
-msgctxt "docs.api:prose"
-msgid "readonly [`Token`](../../../../../packages/core/src/interfaces/Token.md)[] \\| `Map`\\<`string`, `string`\\>"
-msgstr "csak olvasható [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
 
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
 #, no-c-format
@@ -13265,6 +14241,79 @@ msgstr "Opcionális tokentömb vagy térkép a primitív lépés színkeresések
 msgctxt "docs.api:prose"
 msgid "Generated CSS rules string."
 msgstr "A CSS szabályok karakterlánca."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Derive the `custom` primitive scale from a brand hex. The input is anchored at the step whose\nreference lightness (the mean OKLCH lightness of the 13 shipped families) is nearest its own,\nthen every step is rebuilt at its reference lightness with the input's hue — so the anchor step\nlands close to, but not necessarily exactly on, the input."
+msgstr "Derive the `custom` primitív skálát egy márka hexből. A bemenetet ahhoz a lépéshez rögzítjük, amelynek\nreferencia világossága (a 13 szállított család átlagos OKLCH világossága)) a legközelebb áll a bemenet világosságához,\naztán minden lépést újraépítünk a referencia világosságán a bemenet árnyalatával — így a rögzítő lépés\nközel esik a bemenethez, de nem feltétlenül pontosan azonos vele."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [CustomColorScale](../interfaces/CustomColorScale.md)."
+msgstr "The [CustomColorScale](../interfaces/CustomColorScale.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Derive a full primitive scale from one hex: anchor it at the step with the nearest reference\nlightness, then rebuild every step at its reference lightness with the input's hue and a chroma\nscaled by the reference shape."
+msgstr "Derive a full primitive scale from one hex: anchor it at the step with the nearest reference\nlightness, then rebuild every step at its reference lightness with the input's hue and a chroma\nscaled by the reference shape."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A hex color accepted by [parseHexColor](parseHexColor.md)."
+msgstr "A hex szín, amelyet elfogad a [parseHexColor](parseHexColor.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Output of buildReferenceCurve."
+msgstr "A buildReferenceCurve kimenete."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Whether a value is a valid [parseHexColor](parseHexColor.md) input."
+msgstr "Egy érték érvényessége mint [parseHexColor](parseHexColor.md) bemenet."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The value to check."
+msgstr "A paletta."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`true` for `#rgb`/`#rrggbb` strings."
+msgstr "`true` igaz `#rgb`/`#rrggbb` stringekre."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Validate and normalize a user-supplied hex color. This is the only entry point for untrusted\ninput into generated CSS, so anything but `#rgb`/`#rrggbb` is rejected."
+msgstr "Validate and normalize a user-supplied hex color. This is the only entry point for untrusted\ninput into generated CSS, so anything but `#rgb`/`#rrggbb` elutasításra kerül."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A hex color, with or without the leading `#`."
+msgstr "A hex szín, a vezető `#`-jellel vagy nélküle."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Lowercase `#rrggbb`."
+msgstr "Kisbetűs `#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TypeError when `input` isn't a 3- or 6-digit hex color."
+msgstr "TypeError amikor `input` nem egy 3 vagy 6 jegyű hex szín."
 
 #: plugins/pantoken/custom-theme-colors/src/index.md
 #, fuzzy, no-c-format
@@ -13284,6 +14333,72 @@ msgctxt "docs.api:prose"
 msgid "Renames and re-exports [customThemeColors](functions/customThemeColors.md)"
 msgstr "Átnevezi és újra exportálja a [customIcons](functions/customIcons.md) függvényt"
 
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [customColorCss](../functions/customColorCss.md)."
+msgstr "Beállítások a [customIcons](../functions/customIcons.md) pluginhoz."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional token array or map for the reference families and relinked tokens."
+msgstr "Opcionális tokentömb vagy térkép a primitív lépés színkeresésekhez."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selector prefix — see [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+msgstr "Kiválasztó előtag a feltételes szabályokhoz — lásd [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A derived custom primitive scale."
+msgstr "Egy származtatott egyedi primitív skála."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The validated input, normalized to lowercase `#rrggbb`."
+msgstr "A validált bemenet, normalizálva kisbetűs `#rrggbb` formára."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The step whose reference lightness is nearest the input's."
+msgstr "Az a lépés, amelynek referencia világossága a legközelebb áll a bemenetéhez."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every primitive step mapped to its derived `#rrggbb`."
+msgstr "Minden primitív lépés leképezve a származtatott `#rrggbb` értékére."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [customThemeColorsCss](../functions/customThemeColorsCss.md)."
+msgstr "Beállítások a [customIcons](../functions/customIcons.md) pluginhoz."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selector prefix the conditional `[data-pantoken-color=\"…\"]` rules are scoped under. Defaults to\n`:root`. Two callers can each pass a different selector (e.g. `:root` for a page's chrome and\n`#some-tray` for a nested widget) to run independent, non-interfering color instances on the\nsame page — each toggles its own attribute on its own element instead of sharing `:root`."
+msgstr "A kiválasztó előtagja, amely alá a feltételes `[data-pantoken-color=\"…\"]` szabályok tartoznak. Alapértelmezett:\n`:root`. Két hívó különböző kiválasztót adhat meg (pl. `:root` egy oldal keretéhez és\n`#some-tray` egy beágyazott widgethez), hogy ugyanazon oldalon független, egymást nem zavaró színpéldányokat futtassanak — mindegyik a saját elemén kapcsolgatja a saját attribútumát a `:root` megosztása helyett."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "An additional selector whose subtree should always render the true, unremapped colors,\nregardless of what an ancestor's `[data-pantoken-color]` scope currently has active. Emits one\nunconditional rule pinning every token this plugin can override back to its own base value —\ne.g. a color-swatch legend nested inside an already-themed page needs its reference swatches to\nstay constant rather than inherit the ancestor's remap."
+msgstr "Egy további kiválasztó, amelynek alárendeltje mindig a valódi, újramappelés nélküli színeket jelenítse meg,\nfüggetlenül attól, hogy egy ős `[data-pantoken-color]` hatókör éppen mit aktívál. Egy feltétel nélküli szabályt bocsát ki, amely minden, ezt a plugint felülírható tokenre visszabillenti az alapértékét —\npl. egy színminták legendája, amely egy már témázott oldalon belül található, a referencia-mintáinak állandónak kell maradniuk, nem pedig az ős újramappelését örökölniük."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A brand hex (`#rgb`/`#rrggbb`) to derive the `custom` scale from. When set, a\n`[data-pantoken-color=\"custom\"]` rule is appended — see [customColorCss](../functions/customColorCss.md)."
+msgstr "A brand hex (`#rgb`/`#rrggbb`)) amelyből a `custom` skála származik. Ha meg van adva, egy\n`[data-pantoken-color=\"custom\"]` szabály kerül hozzáfűzésre — lásd [customColorCss](../functions/customColorCss.md)."
+
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13296,6 +14411,30 @@ msgctxt "docs.api:prose"
 msgid "Optional token array or map to resolve primitive step color values from."
 msgstr "Opcionális tokentömb vagy térkép, amiből feloldhatók a primitív lépés színértékei."
 
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selector prefix for the conditional rules — see [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+msgstr "Kiválasztó előtag a feltételes szabályokhoz — lásd [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Always-true-color subtree — see [CustomThemeColorsCssOptions.resetSelector](CustomThemeColorsCssOptions.md#resetselector)."
+msgstr "Mindig valódi színeket megjelenítő alfaág — lásd [CustomThemeColorsCssOptions.resetSelector](CustomThemeColorsCssOptions.md#resetselector)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Brand hex for the `custom` scale — see [CustomThemeColorsCssOptions.custom](CustomThemeColorsCssOptions.md#custom)."
+msgstr "Kiválasztó előtag a feltételes szabályokhoz — lásd [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/ReferenceCurve.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Per-step reference lightness and normalized chroma, index-aligned with `steps`. JSON-safe."
+msgstr "Léptenkénti referencia világosság és normalizált chroma, index szerint igazítva a `steps`-hoz. JSON-kompatibilis."
+
 #: plugins/pantoken/custom-theme-colors/src/type-aliases/PantokenColorNamespace.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13307,6 +14446,12 @@ msgstr "Egy támogatott egyedi téma színnévtér."
 msgctxt "docs.api:prose"
 msgid "The 13 available color namespaces for site theme color selection."
 msgstr "A 13 elérhető színnévtér a webhely témaszín-kiválasztásához."
+
+#: plugins/pantoken/custom-theme-colors/src/variables/CUSTOM_COLOR_KEY.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The color namespace whose scale is derived from an arbitrary hex rather than shipped."
+msgstr "Az a színnévtér, amelynek skálája tetszőleges hex értékből származik a szállított skálák helyett."
 
 #: plugins/pantoken/deprecations/src/functions/compareVersions.md
 #, no-c-format
@@ -13476,6 +14621,12 @@ msgctxt "docs.api:prose"
 msgid "Generate an HTML template for the page-layout layout."
 msgstr "HTML-sablont generál a page-layout elrendezéshez."
 
+#: plugins/pantoken/layouts/src/functions/renderPageLayout.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Render `layout`'s `{{key}}` tokens for `locale` (default `\"en\"`), falling back to English."
+msgstr "A `layout` `layout` `{{key}}` tokenjeit renderelje a `locale` számára (alapértelmezett `\"en\"`)), angolra visszaeséssel."
+
 #: plugins/pantoken/layouts/src/functions/rubricNoteRules.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13545,9 +14696,9 @@ msgstr "Kezdő oldalelrendezés: meglévő komponensek egyszerű kompozíciója,
 
 #: plugins/pantoken/layouts/src/interfaces/PageLayout.md
 #: renderers/tinymce/src/interfaces/PageLayout.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Stable id, matches the source filename (e.g. `\"hero\"`)."
+msgid "Stable id, matches the source folder name, e.g. `\"hero\"`."
 msgstr "Stabil azonosító, megegyezik a forrásfájl nevével (pl. `\"hero\"`)."
 
 #: plugins/pantoken/layouts/src/interfaces/PageLayout.md
@@ -13564,11 +14715,66 @@ msgctxt "docs.api:prose"
 msgid "Raw HTML for the layout, built from `@pantoken/components` classes."
 msgstr "Nyers HTML az elrendezéshez, `@pantoken/components` osztályokból felépítve."
 
-#: plugins/pantoken/layouts/src/variables/pageLayouts.md
-#: renderers/tinymce/src/variables/pageLayouts.md
+#: plugins/pantoken/layouts/src/interfaces/PageLayout.md
+#: renderers/tinymce/src/interfaces/PageLayout.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "All bundled starter page layouts, sorted by title."
+msgid "Image slots that consumers may materialize without provider-specific URLs."
+msgstr "Képhelyek, amelyeket a fogyasztók megvalósíthatnak szolgáltató-specifikus URL nélkül."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A provider-neutral image slot declared by a starter page layout."
+msgstr "Egy szolgáltató-semleges képhely, amelyet egy induló oldallelrendezés deklarál."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Stable key matching the `data-pantoken-image-placeholder` HTML marker."
+msgstr "Stabil kulcs, amely megegyezik a `data-pantoken-image-placeholder` HTML jelölővel."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Suggested intrinsic width in pixels."
+msgstr "Ajánlott belső szélesség pixelekben."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Suggested intrinsic height in pixels."
+msgstr "Ajánlott belső magasság pixelekben."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Accessible name; omit it for a decorative image."
+msgstr "Hozzáférhető név; hagyd ki díszítő képnél."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional text a consumer may render into its placeholder asset."
+msgstr "Opcionális szöveg, amelyet a fogyasztó megjeleníthet a helyőrző eszközben."
+
+#: plugins/pantoken/layouts/src/variables/pageLayoutTemplates.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`{{key}}`-templated layouts, unresolved — pass to [renderPageLayout](../functions/renderPageLayout.md) for another locale."
+msgstr "`{{key}}`-sablonos elrendezések, feloldatlanok — add át a [renderPageLayout](../functions/renderPageLayout.md)-nek más nyelvhez."
+
+#: plugins/pantoken/layouts/src/variables/pageLayouts.md
+#: renderers/tinymce/src/variables/pageLayouts.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "All bundled starter page layouts, English-rendered by default, sorted by title."
 msgstr "Az összes mellékelt kezdő oldalelrendezés, cím szerint rendezve."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
@@ -13578,6 +14784,7 @@ msgid "Get a logo as a base64 `data:image/svg+xml` URI."
 msgstr "Szerezzen be egy logót base64 `data:image/svg+xml` URI-ként."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13585,6 +14792,7 @@ msgid "The product."
 msgstr "A termék."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13592,6 +14800,7 @@ msgid "The layout (default `\"horizontal\"`)."
 msgstr "Az elrendezés (alapértelmezés: `\"horizontal\"`)."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13599,6 +14808,7 @@ msgid "The color treatment (default `\"full-color\"`)."
 msgstr "A szín kezelés (alapértelmezés: `\"full-color\"`)."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13616,6 +14826,24 @@ msgstr "Az adat URI, vagy `undefined`, ha ez a kombináció nem létezik."
 msgctxt "docs.api:prose"
 msgid "**Use a logo as an \\<img\\> src**"
 msgstr "**Logó használata \\<img\\> src-ként**"
+
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Get a logo's metadata, including its natural `viewBox` `width`/`height` — for consumers that need\nthe logo's real aspect ratio (e.g. to set `aspect-ratio` or `width`/`height` on an `<img>`) without\nparsing SVG themselves."
+msgstr "Szerezd meg egy logó metaadatait, beleértve a raszterizált PNG `width`/`height` értékeit — azoknak a fogyasztóknak, akiknek létre kell hozniuk egy `dist/<name>.png` útvonalat (pl. `@pantoken/cdn`)) vagy méretezniük kell egy `<img>`-et anélkül, hogy az SVG-t parszolnák."
+
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [LogoMeta](../interfaces/LogoMeta.md), or `undefined` if that combination doesn't exist."
+msgstr "Az SVG karakterlánc, vagy `undefined`, ha ez a kombináció nem létezik."
+
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "**Read a logo's aspect ratio**"
+msgstr "**Olvassa le a logó képarányát**"
 
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
@@ -13666,9 +14894,9 @@ msgid "`@pantoken/plugin-logos` — Instructure product logos as SVGs, data URIs
 msgstr "`@pantoken/plugin-logos` — Instructure terméklogók SVG-ként, adat URI-ként és képjelként."
 
 #: plugins/pantoken/logos/src/index.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "It vendors the SVG logos from Instructure's UX guidelines for Canvas, Mastery, Parchment,\nInstructure, LearnPlatform, and Ignite AI, in the standard layouts (horizontal, stacked, icon)\nand color modes (full-color, color, dark, reversed, and so on). Each logo is available three ways:\nthe raw SVG ([getLogoSvg](functions/getLogoSvg.md)), a data URI ([getLogoDataUri](functions/getLogoDataUri.md)), and a\n`--instui-logo-<product>-<layout>-<mode>` image token in `@pantoken/plugin-logos/logos.css`."
+msgid "It vendors the SVG logos from Instructure's UX guidelines for Canvas, Mastery, Parchment,\nInstructure, LearnPlatform, and Ignite AI, in the standard layouts (horizontal, stacked, icon)\nand color modes (full-color, color, dark, reversed, and so on). Each logo is available three ways:\nthe raw SVG ([getLogoSvg](functions/getLogoSvg.md)), a data URI ([getLogoDataUri](functions/getLogoDataUri.md)), and a\n`--instui-logo-<product>-<layout>-<mode>` image token plus a `.-logo-<product>-<layout>-<mode>`\nmask-glyph class (sized by that logo's own aspect ratio) in `@pantoken/plugin-logos/logos.css`."
 msgstr "Az Instructure UX irányelveiből származó SVG logókat szállít a Canvas, Mastery, Parchment, Instructure, LearnPlatform és Ignite AI számára standard elrendezésekben (vízszintes, egymásra rakott, ikon) és szín módokban (teljes szín, szín, sötét, fordított és így tovább). Minden logó három módon érhető el: a nyers SVG ([getLogoSvg](functions/getLogoSvg.md)), egy adat URI ([getLogoDataUri](functions/getLogoDataUri.md)), és egy `--instui-logo-&lt;product&gt;-&lt;layout&gt;-&lt;mode&gt;` képjel a `@pantoken/plugin-logos/logos.css` terén."
 
 #: plugins/pantoken/logos/src/index.md
@@ -13731,6 +14959,20 @@ msgstr "A token/név gyöke, pl. `\"canvas-horizontal-full-color\"`."
 msgctxt "docs.api:prose"
 msgid "The path within `assets/logos`, e.g. `\"canvas/horizontal-full-color.svg\"`."
 msgstr "Az útvonal a `assets/logos` terén, pl. `\"canvas/horizontal-full-color.svg\"`."
+
+#: plugins/pantoken/logos/src/interfaces/LogoMeta.md
+#: renderers/tinymce/src/interfaces/LogoMeta.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The SVG's natural `viewBox` width, used with [height](#height) to derive `--pantoken-logo-aspect`."
+msgstr "Az SVG természetes `viewBox` szélessége, amelyet a [height](#height)-tel együtt használnak `--pantoken-logo-aspect` kiszámításához."
+
+#: plugins/pantoken/logos/src/interfaces/LogoMeta.md
+#: renderers/tinymce/src/interfaces/LogoMeta.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The SVG's natural `viewBox` height, used with [width](#width) to derive `--pantoken-logo-aspect`."
+msgstr "Az SVG természetes `viewBox` magassága, amelyet a [width](#width)-szal együtt használnak `--pantoken-logo-aspect` kiszámításához."
 
 #: plugins/pantoken/logos/src/interfaces/LogosOptions.md
 #, no-c-format
@@ -13801,6 +15043,85 @@ msgstr "**Ágyazza be a logó jeleket egy oldalba**"
 msgctxt "docs.api:prose"
 msgid "The products that have logos."
 msgstr "Az olyan termékek, amelyeknek logójuk van."
+
+#: plugins/pantoken/lucide-lab/src/functions/defaultRegistry.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Lazily import the published Lucide Lab icon registry."
+msgstr "Lustán importáld a publikált Lucide Lab ikon-regisztert."
+
+#: plugins/pantoken/lucide-lab/src/functions/lucideLab.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Create the Lucide Lab icon plugin."
+msgstr "A Simple Icons bővítmény létrehozása."
+
+#: plugins/pantoken/lucide-lab/src/functions/lucideLab.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "[LucideLabOptions](../interfaces/LucideLabOptions.md). Pass a registry for synchronous token-stage use."
+msgstr "[SimpleIconsOptions](../interfaces/SimpleIconsOptions.md). Adjon át egy `registry`-et, hogy elkerülje a lusta importálást (például token-stage használatban, ahol a horogok szinkronok)."
+
+#: plugins/pantoken/lucide-lab/src/functions/lucideLab.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "A token-capable pantoken plugin."
+msgstr "A pantoken Vite bővítmény."
+
+#: plugins/pantoken/lucide-lab/src/functions/svgOf.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Convert a Lucide Lab icon-node array into standalone SVG markup."
+msgstr "Alakítsd át a Lucide Lab ikon-csomópont tömböt önálló SVG jelöléssé."
+
+#: plugins/pantoken/lucide-lab/src/functions/toKebab.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Convert a Lucide Lab export name to its kebab-case token name."
+msgstr "Alakítsd át a Lucide Lab export nevét kebab-case token-névre."
+
+#: plugins/pantoken/lucide-lab/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Renames and re-exports [lucideLab](functions/lucideLab.md)"
+msgstr "A [stacking](functions/stacking.md) átnevezése és újraexportálása"
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for the [lucideLab](../functions/lucideLab.md) plugin."
+msgstr "Beállítások a [layouts](../functions/layouts.md) bővítményhez."
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Icon names to emit as `<image>` tokens (default: every icon in the registry)."
+msgstr "Ikonnevek, amelyeket `&lt;image&gt;` tokenekként kell kibocsátani (alapértelmezett: az összes vendored ikon)."
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The Lucide Lab registry (required by the synchronous token hook)."
+msgstr "A Lucide Lab regisztere (szükséges a szinkron token hookhoz))."
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#: plugins/pantoken/simple-icons/src/interfaces/SimpleIconsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The token-name prefix (default: `--instui-icon-`)."
+msgstr "A tokennév előtag (alapértelmezett: `--instui-icon-`)."
+
+#: plugins/pantoken/lucide-lab/src/type-aliases/LucideLabNode.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "One SVG element in a Lucide icon-node array."
+msgstr "Egy SVG elem egy Lucide ikon-csomópont tömbben."
+
+#: plugins/pantoken/lucide-lab/src/type-aliases/LucideLabRegistry.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A registry of named Lucide Lab icon-node arrays."
+msgstr "Névre szóló Lucide Lab ikon-csomópont tömbök regisztere."
 
 #: plugins/pantoken/primitives/src/functions/primitivesCss.md
 #, no-c-format
@@ -13963,12 +15284,6 @@ msgstr "Márka slugok kibocsátása `&lt;image&gt;` tokenként a token rétegben
 msgctxt "docs.api:prose"
 msgid "The Simple Icons registry (default: the `simple-icons` package, loaded lazily)."
 msgstr "A Simple Icons regiszter (alapértelmezett: a `simple-icons` csomag, lusta betöltés)."
-
-#: plugins/pantoken/simple-icons/src/interfaces/SimpleIconsOptions.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The token-name prefix (default: `--instui-icon-`)."
-msgstr "A tokennév előtag (alapértelmezett: `--instui-icon-`)."
 
 #: plugins/pantoken/simple-icons/src/type-aliases/SimpleIconsRegistry.md
 #, no-c-format
@@ -15790,9 +17105,9 @@ msgid "`@pantoken/rehype` — render `:icon:` codes as inline SVG."
 msgstr "`@pantoken/rehype` — `:icon:` kódok renderelése inline SVG-ként."
 
 #: renderers/rehype/src/index.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "The plugin walks hast text nodes and replaces `:code:` tokens with an inline SVG element,\nresolving each code through a chain: plugin `rehype` resolvers first, then any explicit\n`resolve`, then the built-in `@pantoken/icons` set. It ports `rehype-instui-markdown` onto the\nshared icon manifest."
+msgid "The plugin walks hast text nodes and replaces `:code:` tokens with an inline SVG element,\nresolving each code through a chain: any explicit `resolve`, then the built-in\n`@pantoken/icons` set, then plugin `rehype` resolvers. It ports `rehype-instui-markdown` onto\nthe shared icon manifest."
 msgstr "A plugin a hast szövegcsomópontokat járja és az `:code:` tokeneket inline SVG elemmel helyettesíti, minden kódot egy láncen keresztül feloldva: először a plugin `rehype` feloldói, majd bármilyen explicit `resolve`, majd a beépített `@pantoken/icons` készlet. Az `rehype-instui-markdown`-t a megosztott ikon manifestumra portolja."
 
 #: renderers/rehype/src/index.md
@@ -15972,6 +17287,18 @@ msgctxt "docs.api:prose"
 msgid "A Svelte action's return shape."
 msgstr "Egy Svelte művelet visszatérési alakja."
 
+#: renderers/tinymce/src/functions/buildIconMarkup.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The decorative icon markup retained in editor content after a picker selection. A zero-width\nspace keeps the span from being genuinely empty — TinyMCE's schema strips empty inline elements\non `setContent()` (e.g. toggling from source view back to WYSIWYG), which would otherwise\nsilently delete this CSS-painted glyph. `contenteditable=\"false\"` makes TinyMCE treat it as a\nselectable noneditable object (fake-selection painting, backspace-to-delete, and the context\ntoolbar registered in `lib/icon-context-toolbar.ts`) instead of plain inline text."
+msgstr "A dekoratív ikon jelölése, amely a szerkesztő tartalmában megmarad egy kiválasztó választása után. Egy nullaszélességű\nszóköz megakadályozza, hogy a span valóban üres legyen — a TinyMCE séma eltávolítja az üres inline elemeket\non `setContent()` (például a forrásnézetről visszaváltás WYSIWYG-re), ami egyébként\nnémán törölné ezt a CSS-sel festett glifot. `contenteditable=\"false\"` arra készteti a TinyMCE-t, hogy kiválasztható, nem szerkeszthető objektumként kezelje (hamis kiválasztás megjelenítése, backspace-szal történő törlés, és a kontextus\neszköztár, amely regisztrálva van `lib/icon-context-toolbar.ts`) a sima inline szöveg helyett)."
+
+#: renderers/tinymce/src/functions/buildLogoMarkup.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The logo markup retained in editor content after a picker selection — same\nzero-width-space/`contenteditable=\"false\"` noneditable-object technique as `icons.ts`'s\n`buildIconMarkup`. Unlike a decorative icon, a logo names a real product, so it carries\n`role=\"img\"` + `aria-label` instead of `aria-hidden`."
+msgstr "A kiválasztó választása után a szerkesztő tartalmában megőrzött logó-jelölés — ugyanaz a zéró szélességű szóköz/`contenteditable=\"false\"` nemszerkeszthető objektum technika, mint az `icons.ts` `buildIconMarkup`-jában. A díszítő ikontól eltérően a logó egy valós terméket nevez meg, ezért `role=\"img\"` + `aria-label` attribútumot visel `aria-hidden` helyett."
+
 #: renderers/tinymce/src/functions/createComponentsPlugin.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -15983,6 +17310,18 @@ msgstr "Létrehozza a komponensválasztó plugin factoryt.\nEgy `tinymce.PluginM
 msgctxt "docs.api:prose"
 msgid "Usage:\n  tinymce.PluginManager.add(\n    \"pantokenComponents\",\n    createComponentsPlugin(`{ model, currentAssets, onMissingAsset }`)\n  );"
 msgstr "Használat:\n  tinymce.PluginManager.add(\n    \"pantokenComponents\",\n    createComponentsPlugin(`{ model, currentAssets, onMissingAsset }`)\n  );"
+
+#: renderers/tinymce/src/functions/createContentClassesPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build an opt-in plugin that adds pantoken classes to TinyMCE-authored content."
+msgstr "Építs egy választható plugint, amely pantoken osztályokat ad a TinyMCE-vel készített tartalomhoz."
+
+#: renderers/tinymce/src/functions/createFullscreenFooterPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a footer-only button that toggles TinyMCE's fullscreen mode."
+msgstr "Készíts egy csak-lábjegyzet gombot, amely kapcsolgatja a TinyMCE teljes képernyős módját."
 
 #: renderers/tinymce/src/functions/createIconsPlugin.md
 #, no-c-format
@@ -16002,11 +17341,47 @@ msgctxt "docs.api:prose"
 msgid "Create the logos picker plugin factory.\nReturns a function suitable for `tinymce.PluginManager.add()`."
 msgstr "Létrehozza a logóválasztó plugin factoryt.\nEgy `tinymce.PluginManager.add()` számára megfelelő függvényt ad vissza."
 
+#: renderers/tinymce/src/functions/createPantokenPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a single pantoken toolbar menu that opens each composed plugin."
+msgstr "Készíts egyetlen pantoken eszköztár menüt, amely megnyitja az egyes összetett plugineket."
+
+#: renderers/tinymce/src/functions/createSearchReplaceFooterPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a footer-only button that opens TinyMCE's search & replace dialog."
+msgstr "Készíts egy csak-lábjegyzet gombot, amely megnyitja a TinyMCE keresés és csere párbeszédét."
+
+#: renderers/tinymce/src/functions/createSupSubPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a single toolbar menu button toggling superscript or subscript."
+msgstr "Készíts egy eszköztár-menü gombot, amely felső- és alsóindexet kapcsolgat."
+
 #: renderers/tinymce/src/functions/createTemplatesPlugin.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Builds the `tinymce.PluginManager.add` callback for the \"Insert template\" plugin."
 msgstr "Felépíti a(z) `tinymce.PluginManager.add` visszahívást (callbacket) az \"Insert template\" pluginhoz."
+
+#: renderers/tinymce/src/functions/createVisualBlocksFooterPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a footer-only button that toggles TinyMCE's visual blocks outlines."
+msgstr "Készíts egy csak-lábjegyzet gombot, amely kapcsolgatja a TinyMCE vizuális blokkok körvonalait."
+
+#: renderers/tinymce/src/functions/filterIcons.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Narrow `icons` to those matching `query` and, when given, a single `source`."
+msgstr "Szűkítsd le az `icons`-t azokra, amelyek megfelelnek a `query`-nek és opcionálisan egyetlen `source` forrást is megadva."
+
+#: renderers/tinymce/src/functions/filterIcons.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`TaggedIcon`](../interfaces/TaggedIcon.md)[]"
+msgstr "csak olvasható [`Token`](../interfaces/Token.md)[]"
 
 #: renderers/tinymce/src/functions/findEntry.md
 #, no-c-format
@@ -16020,11 +17395,53 @@ msgctxt "docs.api:prose"
 msgid "Compute the CdnFile for an icon given its source.\nReturns `{ package, path }` for use with @pantoken/cdn's buildFileUrl."
 msgstr "Kiszámítja egy ikon CdnFile-ját a forrása alapján.\n`{ package, path }` értéket ad vissza a(z) @pantoken/cdn buildFileUrl függvényével való használatra."
 
+#: renderers/tinymce/src/functions/getIconImageSrc.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A `data:` URI usable as an `<img src>` for the icon, for sources this package bundles; for the\nrest it reads the custom property back off `root`, which resolves once the source's glyph sheet\nhas loaded. Returns `undefined` when neither path yields a glyph."
+msgstr "Egy `data:` URI, amely `<img src>`-ként használható az ikonhoz azoknál a forrásoknál, amelyeket ez a csomag tartalmaz; a többi esetben a `root` egyedi tulajdonságát olvassa vissza a `root`-ról, amely feloldódik, miután a forrás glypheket tartalmazó stíluslapja betöltődött. `undefined`-t ad vissza, ha egyik út sem szolgáltat glypheket."
+
+#: renderers/tinymce/src/functions/getLogoCdnFile.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve a logo's stylesheet: the `.-logo-<name>` mask painter plus its `--instui-logo-<name>` token."
+msgstr "Oldja fel egy logó stíluslapját: a `.-logo-<name>` maszkfestőt és a hozzá tartozó `--instui-logo-<name>` tokent."
+
 #: renderers/tinymce/src/functions/getModifierSuggestions.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Get all modifier suggestions for a component/utility, filtered by an optional prefix.\nReturns array of `{ name, prop, value?, description }` objects."
 msgstr "Lekéri egy komponens/utility összes módosítójavaslatát, egy opcionális előtag alapján szűrve.\n`{ name, prop, value?, description }` objektumok tömbjét adja vissza."
+
+#: renderers/tinymce/src/functions/getUsedIconCdnFiles.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve the icon stylesheets used by `-icon-*` classes below `root`.\nExisting assets break ties when multiple providers expose the same icon name."
+msgstr "Oldd fel az `-icon-*` osztályok által a `root` alatt használt ikon stíluslapokat.\nA meglévő eszközök eldöntik a kérdést, ha több szolgáltató is ugyanazt az ikonnevet szolgáltatja."
+
+#: renderers/tinymce/src/functions/getUsedIconCdnFiles.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[] = `[]`"
+msgstr "csak olvasható [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[]"
+
+#: renderers/tinymce/src/functions/getUsedLogoCdnFiles.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve the logo stylesheets used by `-logo-*` classes below `root`."
+msgstr "Oldja fel a `root` alatt használt, `-logo-*` osztályokhoz tartozó logó stíluslapokat."
+
+#: renderers/tinymce/src/functions/getUsedLogoCdnFiles.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[] = `logos`"
+msgstr "csak olvasható [`Token`](../interfaces/Token.md)[]"
+
+#: renderers/tinymce/src/functions/humanizeIconName.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Turn a hyphenated icon slug into a readable label, e.g. `circle-question-mark` → `circle question mark`."
+msgstr "Alakítsd át a kötőjeles ikon-slugot olvasható címkévé, pl. `circle-question-mark` → `circle question mark`."
 
 #: renderers/tinymce/src/functions/injectContentStylesheet.md
 #, no-c-format
@@ -16050,11 +17467,11 @@ msgctxt "docs.api:prose"
 msgid "Load and merge all available icons from both sources.\nReturns a sorted array tagged with the source package."
 msgstr "Betölti és egyesíti az összes elérhető ikont mindkét forrásból.\nA forráscsomaggal felcímkézett rendezett tömböt ad vissza."
 
-#: renderers/tinymce/src/functions/loadAllIcons.md
+#: renderers/tinymce/src/functions/materializeLayout.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "NOTE: Component icon names are derived from the model's `-icon-*` modifier.\nThis needs to be populated from either `docs/public/icon-manifest.json` (if consumable)\nor a manifest published alongside formats/components model.json.\nFor now, only simple-icons are included."
-msgstr "MEGJEGYZÉS: A komponensikonok nevei a modell `-icon-*` módosítójából származnak.\nEzt vagy a(z) `docs/public/icon-manifest.json` elemből kell feltölteni (ha felhasználható),\nvagy a formats/components model.json mellett közzétett manifesztből.\nEgyelőre csak a simple-icons van beépítve."
+msgid "Materialize declared layout image slots without embedding a provider URL in the layout."
+msgstr "Valósítsd meg a deklarált elrendezés-képhelyeket anélkül, hogy beágyaznál egy szolgáltató URL-jét az elrendezésbe."
 
 #: renderers/tinymce/src/functions/pantokenContentCssUrls.md
 #, no-c-format
@@ -16069,16 +17486,10 @@ msgid "readonly [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interf
 msgstr "csak olvasható [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[]"
 
 #: renderers/tinymce/src/functions/pantokenHtmlCompletion.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Create a CodeMirror 6 autocomplete extension for pantoken HTML.\nProvides completions for component names and their modifiers."
-msgstr "Létrehoz egy CodeMirror 6 automatikus kiegészítés (autocomplete) kiterjesztést a pantoken HTML-hez.\nKiegészítéseket biztosít a komponensnevekhez és azok módosítóihoz."
-
-#: renderers/tinymce/src/functions/pantokenHtmlCompletion.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Usage:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlCompletion({ model }),\n    ],\n  });"
-msgstr "Használat:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlCompletion({ model }),\n    ],\n  });"
+msgid "Create a CodeMirror 6 completion extension for pantoken classes in HTML `class` attributes."
+msgstr "Létrehoz egy CodeMirror 6 linter kiterjesztést a pantoken HTML-hez.\nÉrvényesíti a(z) `.instui-*` tokeneket tartalmazó class attribútumokat."
 
 #: renderers/tinymce/src/functions/pantokenHtmlLinter.md
 #, no-c-format
@@ -16092,11 +17503,29 @@ msgctxt "docs.api:prose"
 msgid "Usage:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlLinter({ model }),\n    ],\n  });"
 msgstr "Használat:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlLinter({ model }),\n    ],\n  });"
 
+#: renderers/tinymce/src/functions/registerPantokenIconPack.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Register a TinyMCE icon pack whose complete key set mirrors the installed default pack while\nevery rendered glyph comes from Pantoken's InstUI/Lucide icon tokens."
+msgstr "Regisztráljon egy TinyMCE ikoncsomagot, amelynek teljes kulcskészlete megegyezik a telepített alapértelmezett csomagével, miközben\nminden megjelenített glifa a Pantoken's InstUI/Lucide ikon-tokenjeiből származik."
+
 #: renderers/tinymce/src/functions/validateClassToken.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Validate a pantoken class token (e.g., \"instui-button\", \"instui-button.-color-primary\").\nReturns an array of validation errors (empty if valid)."
 msgstr "Érvényesít egy pantoken class tokent (pl. \"instui-button\", \"instui-button.-color-primary\").\nVisszaadja az érvényesítési hibák tömbjét (üres, ha érvényes)."
+
+#: renderers/tinymce/src/interfaces/ContentClassesPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [createContentClassesPlugin](../functions/createContentClassesPlugin.md)."
+msgstr "Beállítások a [createLayoutsPlugin](../functions/createLayoutsPlugin.md) számára."
+
+#: renderers/tinymce/src/interfaces/ContentClassesPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Prefix used by pantoken component classes."
+msgstr "Nyers HTML az elrendezéshez, `@pantoken/components` osztályokból felépítve."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -16362,6 +17791,12 @@ msgctxt "docs.api:prose"
 msgid "Content of registered custom (block) tags, keyed by tag name without its `@`. Populated only for\ntags added via configuration; unregistered unknown tags are ignored. Absent when none were found."
 msgstr "Regisztrált egyéni (blokk) címkék tartalma, címkenév szerint kulcsozva a(z) `@` nélkül. Csak a\nkonfiguráción keresztül hozzáadott címkék esetén feltöltve; a nem regisztrált ismeretlen címkék figyelmen kívül lesznek hagyva. Hiányzik, ha egy sem található."
 
+#: renderers/tinymce/src/interfaces/LayoutImageAttributes.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Image attributes returned by a consumer-specific layout image resolver."
+msgstr "Kép attribútumok, amelyeket egy fogyasztóhoz specifikus elrendezéskép-felbontó ad vissza."
+
 #: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -16369,10 +17804,22 @@ msgid "Options for [createLayoutsPlugin](../functions/createLayoutsPlugin.md)."
 msgstr "Beállítások a [createLayoutsPlugin](../functions/createLayoutsPlugin.md) számára."
 
 #: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The page layouts offered in the \"Insert layout\" picker. Defaults to the bundled layouts."
+msgstr "A \"Insert layout\" választóban felkínált oldalelrendezések. Alapértelmezett értéke [pageLayouts](../variables/pageLayouts.md)."
+
+#: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The page layouts offered in the \"Insert layout\" picker. Defaults to [pageLayouts](../variables/pageLayouts.md)."
-msgstr "A \"Insert layout\" választóban felkínált oldalelrendezések. Alapértelmezett értéke [pageLayouts](../variables/pageLayouts.md)."
+msgid "BCP47 locale to render layout text in. Defaults to `\"en\"`."
+msgstr "A BCP47 helyi beállítás, amelyben az elrendezés szövegét megjelenítik. Alapértelmezett: `\"en\"`."
+
+#: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolves a layout image slot into a consumer-specific image URL."
+msgstr "Egy elrendezési képhelyet felold egy fogyasztó-specifikus kép-URL-re."
 
 #: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
 #, no-c-format
@@ -16380,11 +17827,83 @@ msgctxt "docs.api:prose"
 msgid "Called after a layout is inserted (e.g. to refresh a live preview)."
 msgstr "Egy elrendezés beszúrása után hívódik meg (pl. az élő előnézet frissítéséhez)."
 
+#: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Register this picker's standalone toolbar button and menu item."
+msgstr "Regisztrálja ennek a választónak az önálló eszköztárgombját és menüpontját."
+
+#: renderers/tinymce/src/interfaces/PantokenPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Configuration for the content plugins composed by [createPantokenPlugin](../functions/createPantokenPlugin.md)."
+msgstr "Beállítások a [createLayoutsPlugin](../functions/createLayoutsPlugin.md) számára."
+
 #: renderers/tinymce/src/interfaces/TaggedIcon.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Icon with source attribution for tracking which package it comes from."
 msgstr "Ikon forrás-hozzárendeléssel annak nyomon követésére, hogy melyik csomagból származik."
+
+#: renderers/tinymce/src/interfaces/TinymceStrings.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "All user-visible strings emitted by the TinyMCE integration."
+msgstr "A web-component elemkészlet által kibocsátott összes felhasználó által látható karaktersorozat."
+
+#: renderers/tinymce/src/type-aliases/LayoutImageResolver.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolves a provider-neutral layout image slot for a particular consumer."
+msgstr "Felold egy szolgáltató-semleges elrendezési képhelyet egy adott fogyasztó számára."
+
+#: renderers/tinymce/src/type-aliases/PantokenFontSize.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Semantic text sizes accepted by the pantoken font-size command."
+msgstr "Szemantikus szövegméretek, amelyeket a pantoken font-size parancs elfogad."
+
+#: renderers/tinymce/src/variables/CONTENT_CLASSES_PLUGIN_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Plugin name to pass in TinyMCE's `plugins` option."
+msgstr "A bővítmény neve, amelyet a TinyMCE `plugins`/`toolbar` inicializálási beállításaiban kell átadni."
+
+#: renderers/tinymce/src/variables/DEFAULT_ICON_TRIGGER.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Autocompleter trigger. Two colons rather than one so the stock `emoticons` plugin — which claims\n`:` and would otherwise have several thousand icons merged into its results — keeps working."
+msgstr "Autokompletáló indító. Két kettőspont az egy helyett, így az alapértelmezett `emoticons` bővítmény — amely\n`:` `:`-t igényel, és egyébként több ezer ikont olvasztana össze az eredményeiben — továbbra is működik."
+
+#: renderers/tinymce/src/variables/FULLSCREEN_FOOTER_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/PANTOKEN_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/SEARCHREPLACE_FOOTER_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/SUP_SUB_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/VISUALBLOCKS_FOOTER_PLUGIN_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Plugin name to pass in TinyMCE's `plugins` init option."
+msgstr "A bővítmény neve, amelyet a TinyMCE `plugins`/`toolbar` inicializálási beállításaiban kell átadni."
+
+#: renderers/tinymce/src/variables/FULLSCREEN_FOOTER_STATUSBAR_NAME.md
+#: renderers/tinymce/src/variables/SEARCHREPLACE_FOOTER_STATUSBAR_NAME.md
+#: renderers/tinymce/src/variables/VISUALBLOCKS_FOOTER_STATUSBAR_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The footer/statusbar control name registered by this plugin."
+msgstr "A bővítmény által regisztrált eszköztárgomb/menüelem neve."
+
+#: renderers/tinymce/src/variables/ICONS_COMMAND.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Command that opens the icons picker."
+msgstr "Parancs, amely megnyitja az ikonválasztót."
+
+#: renderers/tinymce/src/variables/ICON_SOURCES.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The icon sources, in the order the picker lists them."
+msgstr "Az ikonforrások, abban a sorrendben, ahogy a választó felsorolja őket."
 
 #: renderers/tinymce/src/variables/LAYOUTS_PLUGIN_NAME.md
 #, no-c-format
@@ -16397,6 +17916,49 @@ msgstr "A bővítmény neve, amelyet a TinyMCE `plugins`/`toolbar` inicializál�
 msgctxt "docs.api:prose"
 msgid "The toolbar button/menu item name registered by this plugin."
 msgstr "A bővítmény által regisztrált eszköztárgomb/menüelem neve."
+
+#: renderers/tinymce/src/variables/PANTOKEN_COMMANDS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Commands exposed for hosts that want explicit pantoken-aware toolbar actions."
+msgstr "Parancsok, amelyeket a hosztok számára tesznek elérhetővé, ha kifejezett, pantoken-érzékeny eszköztár-műveleteket szeretnének."
+
+#: renderers/tinymce/src/variables/PANTOKEN_ICON.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pantoken's own logomark, reused for the toolbar menu button and any host UI that wants it."
+msgstr "A Pantoken saját logója, újrahasznosítva a tálca menü gombjához és bármely host felhasználói felülethez, amely azt igényli."
+
+#: renderers/tinymce/src/variables/PANTOKEN_ICON_PACK_NAME.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TinyMCE icon-pack id to pass as the editor's `icons` option."
+msgstr "TinyMCE ikoncsomag-azonosító, amelyet a szerkesztő `icons` opciójaként kell átadni."
+
+#: renderers/tinymce/src/variables/PANTOKEN_TOOLBAR_NAME.md
+#: renderers/tinymce/src/variables/SUP_SUB_TOOLBAR_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Toolbar menu-button name to pass in TinyMCE's `toolbar` init option."
+msgstr "A bővítmény neve, amelyet a TinyMCE `plugins`/`toolbar` inicializálási beállításaiban kell átadni."
+
+#: renderers/tinymce/src/variables/SOURCE_LABELS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Human label shown as a picker tab and an autocompleter row caption, per icon source."
+msgstr "Emberi címke, amelyet választófülként és autokompletáló sorcímként mutatnak forrásonként."
+
+#: renderers/tinymce/src/variables/TINYMCE_STRINGS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "English defaults for TinyMCE integration UI strings."
+msgstr "Angol alapértelmezések a TinyMCE integráció felhasználói felületének sztringjeihez."
+
+#: renderers/tinymce/src/variables/pageTemplates.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The bundled page layouts exposed through the template picker."
+msgstr "A beépített oldalelrendezések, amelyeket a sablonválasztó tesz elérhetővé."
 
 #: renderers/vitepress/src/index.md
 #, no-c-format
@@ -17389,9 +18951,9 @@ msgid "Slovenian (Slovenščina) locale bundle."
 msgstr "Szlovén (Slovenščina) lokalizációs csomag."
 
 #: renderers/web-components/src/variables/spinner.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "`<instui-spinner>` — a loading spinner with `role=\"status\"`. Purely presentational; size and\ncolour follow the CSS tokens."
+msgid "`<instui-spinner>` — a loading spinner with `role=\"status\"`. `variant=\"ai\"` and\n`variant=\"ai-on-color\"` select the rotating AI star; size and colour follow the CSS tokens."
 msgstr "`&lt;instui-spinner&gt;` — egy betöltési pörgő `role=\"status\"`-el. Tisztán megjelenítési; a méret és szín\na CSS tokenekhez igazodik."
 
 #: renderers/web-components/src/variables/sv.md
@@ -17399,6 +18961,30 @@ msgstr "`&lt;instui-spinner&gt;` — egy betöltési pörgő `role=\"status\"`-e
 msgctxt "docs.api:prose"
 msgid "Swedish (Svenska) locale bundle."
 msgstr "Svéd (Svenska) nyelvi csomag."
+
+#: renderers/web-components/src/variables/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`<instui-tabs>` — a light-DOM tabbed panel set. It keeps the existing `.instui-tabs` CSS contract\nintact while adding selection, panel visibility, and keyboard behavior through the shared tabs\ninteraction. Load `@pantoken/components/components.css` for the tab visuals."
+msgstr "`<instui-tabs>` — egy light-DOM fülös panelkészlet. Megőrzi a meglévő `.instui-tabs` CSS-szerződést\n épségben, miközben kiválasztást, panel-láthatóságot és billentyűzet-működést ad hozzá a megosztott tabs\n interakción keresztül. Töltse be `@pantoken/components/components.css` a fülek vizuális megjelenítéséhez."
+
+#: renderers/web-components/src/variables/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "General"
+msgstr "Általános"
+
+#: renderers/web-components/src/variables/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Advanced"
+msgstr "Speciális beállítások"
+
+#: renderers/web-components/src/variables/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "General settings"
+msgstr "Generálva ezzel"
 
 #: renderers/web-components/src/variables/tag.md
 #, no-c-format
@@ -17806,6 +19392,56 @@ msgstr "A Stylus forráskód karakterlánc."
 msgctxt "docs.api:prose"
 msgid "A hoverable \"view fullscreen\" button, overlaid on a demo/example frame the same way VitePress's own\ncode-block \"copy\" button reveals on hover. Purely markup — wire a delegated click handler in your\nhost page (`button.closest(...).querySelector(\"iframe\")?.requestFullscreen()`; see the pantoken docs\ntheme for the reference wiring) and style the reveal-on-hover with `@pantoken/demo/demo.css`."
 msgstr "Egy rámutatáskor megjelenő \"teljes képernyős nézet\" gomb, amely ugyanúgy jelenik meg a demó-/példakereten, ahogyan a VitePress saját\nkódblokk-\"másolás\" gombja megjelenik rámutatáskor. Tisztán markup — kössön be egy delegált kattintáskezelőt a\ngazdaoldalán (`button.closest(...).querySelector(\"iframe\")?.requestFullscreen()`; a referencia bekötéshez lásd a pantoken dokumentációs\ntémáját), és formázza a rámutatáskori megjelenést a(z) `@pantoken/demo/demo.css` használatával."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "**Build a PNG CDN path for a logo**"
+#~ msgstr "**Egy előbeállítás felépítése egy egyéni IR-ből**"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The rasterized PNG's display width in CSS pixels (fixed per layout group, not the SVG's own size)."
+#~ msgstr "A raszterizált PNG megjelenítési szélessége CSS pixelekben (elrendezéscsoportonként rögzített, nem az SVG saját mérete))."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The rasterized PNG's display height in CSS pixels, derived from the SVG's `viewBox` aspect ratio."
+#~ msgstr "A raszterizált PNG megjelenítési magassága CSS pixelekben, az SVG `viewBox` arányából származtatva."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The decorative icon markup retained in editor content after a picker selection."
+#~ msgstr "A díszítő ikon jelölése, amely a szerkesztő tartalmában megmarad egy választó használata után."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Create a CodeMirror 6 autocomplete extension for pantoken HTML.\nProvides completions for component names and their modifiers."
+#~ msgstr "Létrehoz egy CodeMirror 6 automatikus kiegészítés (autocomplete) kiterjesztést a pantoken HTML-hez.\nKiegészítéseket biztosít a komponensnevekhez és azok módosítóihoz."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Usage:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlCompletion({ model }),\n    ],\n  });"
+#~ msgstr "Használat:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlCompletion({ model }),\n    ],\n  });"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "An animated loading ring; give it role=\"status\" and an aria-label."
+#~ msgstr "Egy animált betöltőgyűrű; adj neki role=\"status\" és egy aria-label attribútumot."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "`.instui-spinner` — An animated loading ring; give it role=\"status\" and an aria-label."
+#~ msgstr ".instui-spinner — Egy animált betöltő gyűrű; adj neki role=\"status\" attribútumot és egy aria-labelt."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color."
+#~ msgstr "`-color-inverse` csak az animált felső szegmens színét festi újra, nem az egész sávot, így sötét kártyán is jól olvasható külön sávszín nélkül."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "NOTE: Component icon names are derived from the model's `-icon-*` modifier.\nThis needs to be populated from either `docs/public/icon-manifest.json` (if consumable)\nor a manifest published alongside formats/components model.json.\nFor now, only simple-icons are included."
+#~ msgstr "MEGJEGYZÉS: A komponensikonok nevei a modell `-icon-*` módosítójából származnak.\nEzt vagy a(z) `docs/public/icon-manifest.json` elemből kell feltölteni (ha felhasználható),\nvagy a formats/components model.json mellett közzétett manifesztből.\nEgyelőre csak a simple-icons van beépítve."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -25689,10 +27325,6 @@ msgstr "Egy rámutatáskor megjelenő \"teljes képernyős nézet\" gomb, amely 
 #~ msgstr "email"
 
 #~ msgctxt "docs.api:text"
-#~ msgid "light"
-#~ msgstr "light"
-
-#~ msgctxt "docs.api:text"
 #~ msgid "dark"
 #~ msgstr "dark"
 
@@ -28757,10 +30389,6 @@ msgstr "Egy rámutatáskor megjelenő \"teljes képernyős nézet\" gomb, amely 
 #~ msgstr "Forrás"
 
 #~ msgctxt "docs.api:text"
-#~ msgid "Generated using"
-#~ msgstr "Generálva ezzel"
-
-#~ msgctxt "docs.api:text"
 #~ msgid "API reference"
 #~ msgstr "API referencia"
 
@@ -28864,8 +30492,538 @@ msgstr "Egy rámutatáskor megjelenő \"teljes képernyős nézet\" gomb, amely 
 #~ msgid "BuildIconFontOptions"
 #~ msgstr "BuildIconFontOptions"
 
-#: formats/components/src/variables/aiGradientCss.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The AI gradient utility as a standalone, header-wrapped stylesheet."
-msgstr "Az AI gradiens segédprogram önálló, fejlécbe csomagolt stíluslapként."
+#~ msgctxt "docs.api:text"
+#~ msgid "RunnerLabels"
+#~ msgstr "RunnerLabels"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "shadcnTailwindV4Css"
+#~ msgstr "shadcnTailwindV4Css"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toShadcnTailwindV4Css"
+#~ msgstr "toShadcnTailwindV4Css"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PageLayoutImagePlaceholder"
+#~ msgstr "PageLayoutImagePlaceholder"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ContentClassesPluginOptions"
+#~ msgstr "ContentClassesPluginOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LayoutImageAttributes"
+#~ msgstr "LayoutImageAttributes"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenPluginOptions"
+#~ msgstr "PantokenPluginOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TinymceStrings"
+#~ msgstr "TinymceStrings"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenFontSize"
+#~ msgstr "PantokenFontSize"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LayoutImageResolver"
+#~ msgstr "LayoutImageResolver"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_ICON_PACK_NAME"
+#~ msgstr "PANTOKEN_ICON_PACK_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ICON_SOURCES"
+#~ msgstr "ICON_SOURCES"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SOURCE_LABELS"
+#~ msgstr "SOURCE_LABELS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CONTENT_CLASSES_PLUGIN_NAME"
+#~ msgstr "CONTENT_CLASSES_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_COMMANDS"
+#~ msgstr "PANTOKEN_COMMANDS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "FULLSCREEN_FOOTER_PLUGIN_NAME"
+#~ msgstr "FULLSCREEN_FOOTER_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "FULLSCREEN_FOOTER_STATUSBAR_NAME"
+#~ msgstr "FULLSCREEN_FOOTER_STATUSBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ICONS_COMMAND"
+#~ msgstr "ICONS_COMMAND"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "DEFAULT_ICON_TRIGGER"
+#~ msgstr "DEFAULT_ICON_TRIGGER"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_PLUGIN_NAME"
+#~ msgstr "PANTOKEN_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_TOOLBAR_NAME"
+#~ msgstr "PANTOKEN_TOOLBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_ICON"
+#~ msgstr "PANTOKEN_ICON"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SEARCHREPLACE_FOOTER_PLUGIN_NAME"
+#~ msgstr "SEARCHREPLACE_FOOTER_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SEARCHREPLACE_FOOTER_STATUSBAR_NAME"
+#~ msgstr "SEARCHREPLACE_FOOTER_STATUSBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SUP_SUB_PLUGIN_NAME"
+#~ msgstr "SUP_SUB_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SUP_SUB_TOOLBAR_NAME"
+#~ msgstr "SUP_SUB_TOOLBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pageTemplates"
+#~ msgstr "pageTemplates"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "VISUALBLOCKS_FOOTER_PLUGIN_NAME"
+#~ msgstr "VISUALBLOCKS_FOOTER_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "VISUALBLOCKS_FOOTER_STATUSBAR_NAME"
+#~ msgstr "VISUALBLOCKS_FOOTER_STATUSBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TINYMCE_STRINGS"
+#~ msgstr "TINYMCE_STRINGS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "registerPantokenIconPack"
+#~ msgstr "registerPantokenIconPack"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getUsedIconCdnFiles"
+#~ msgstr "getUsedIconCdnFiles"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "humanizeIconName"
+#~ msgstr "humanizeIconName"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "buildIconMarkup"
+#~ msgstr "buildIconMarkup"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getIconImageSrc"
+#~ msgstr "getIconImageSrc"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "filterIcons"
+#~ msgstr "filterIcons"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createContentClassesPlugin"
+#~ msgstr "createContentClassesPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createFullscreenFooterPlugin"
+#~ msgstr "createFullscreenFooterPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "materializeLayout"
+#~ msgstr "materializeLayout"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createPantokenPlugin"
+#~ msgstr "createPantokenPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createSearchReplaceFooterPlugin"
+#~ msgstr "createSearchReplaceFooterPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createSupSubPlugin"
+#~ msgstr "createSupSubPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createVisualBlocksFooterPlugin"
+#~ msgstr "createVisualBlocksFooterPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ensureComponentsJsonRegistry"
+#~ msgstr "ensureComponentsJsonRegistry"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveRegistryItemNames"
+#~ msgstr "resolveRegistryItemNames"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "runAdd"
+#~ msgstr "runAdd"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "runCreate"
+#~ msgstr "runCreate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Scheme"
+#~ msgstr "Scheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "THEME_ATTR"
+#~ msgstr "THEME_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SCHEME_ATTR"
+#~ msgstr "SCHEME_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "COLOR_ATTR"
+#~ msgstr "COLOR_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "BOUNDARY_ATTR"
+#~ msgstr "BOUNDARY_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "INSTANCE_ATTR"
+#~ msgstr "INSTANCE_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SCOPE_ATTRS"
+#~ msgstr "SCOPE_ATTRS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SCOPE_LAYERS"
+#~ msgstr "SCOPE_LAYERS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "BOUNDARY_CLASS"
+#~ msgstr "BOUNDARY_CLASS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "isScheme"
+#~ msgstr "isScheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "themeClass"
+#~ msgstr "themeClass"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemeClass"
+#~ msgstr "schemeClass"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "colorClass"
+#~ msgstr "colorClass"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "themeScopeSelector"
+#~ msgstr "themeScopeSelector"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemeScopeSelector"
+#~ msgstr "schemeScopeSelector"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "colorScopeSelector"
+#~ msgstr "colorScopeSelector"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "themeScopeSelectors"
+#~ msgstr "themeScopeSelectors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemeScopeSelectors"
+#~ msgstr "schemeScopeSelectors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "colorScopeSelectors"
+#~ msgstr "colorScopeSelectors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "aiGradientCss"
+#~ msgstr "aiGradientCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ScopedCssOptions"
+#~ msgstr "ScopedCssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "MultiScopeCssOptions"
+#~ msgstr "MultiScopeCssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CssEmitTarget"
+#~ msgstr "CssEmitTarget"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LAYERS"
+#~ msgstr "LAYERS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "layerOrderCss"
+#~ msgstr "layerOrderCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "propertiesCss"
+#~ msgstr "propertiesCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "scopedThemeCss"
+#~ msgstr "scopedThemeCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "scopedSchemeCss"
+#~ msgstr "scopedSchemeCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemesCss"
+#~ msgstr "schemesCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "multiScopeCss"
+#~ msgstr "multiScopeCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "lightBranch"
+#~ msgstr "lightBranch"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "darkBranch"
+#~ msgstr "darkBranch"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemeOverrideTokens"
+#~ msgstr "schemeOverrideTokens"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "themedTokens"
+#~ msgstr "themedTokens"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "lucideIcons"
+#~ msgstr "lucideIcons"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TabsHandle"
+#~ msgstr "TabsHandle"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "initTabs"
+#~ msgstr "initTabs"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "scope"
+#~ msgstr "scope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ScopeConfig"
+#~ msgstr "ScopeConfig"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ResolvedScope"
+#~ msgstr "ResolvedScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ScopeMessage"
+#~ msgstr "ScopeMessage"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CreateScopeOptions"
+#~ msgstr "CreateScopeOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenScope"
+#~ msgstr "PantokenScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ConnectScopeOptions"
+#~ msgstr "ConnectScopeOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "DEFAULT_INSTANCE"
+#~ msgstr "DEFAULT_INSTANCE"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ensureProperties"
+#~ msgstr "ensureProperties"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "hasProperties"
+#~ msgstr "hasProperties"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "observeScope"
+#~ msgstr "observeScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveScope"
+#~ msgstr "resolveScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveInstance"
+#~ msgstr "resolveInstance"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveScheme"
+#~ msgstr "resolveScheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getScope"
+#~ msgstr "getScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createScope"
+#~ msgstr "createScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "connectScope"
+#~ msgstr "connectScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "agentShellRules"
+#~ msgstr "agentShellRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "aiGradientRules"
+#~ msgstr "aiGradientRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "custom-theme-colors"
+#~ msgstr "custom-theme-colors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CustomThemeColorsOptions"
+#~ msgstr "CustomThemeColorsOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CustomThemeColorsCssOptions"
+#~ msgstr "CustomThemeColorsCssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenColorNamespace"
+#~ msgstr "PantokenColorNamespace"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "COLOR_KEYS"
+#~ msgstr "COLOR_KEYS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "customThemeColorsCss"
+#~ msgstr "customThemeColorsCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "customThemeColors"
+#~ msgstr "customThemeColors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pageLayoutTemplates"
+#~ msgstr "pageLayoutTemplates"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "calloutRules"
+#~ msgstr "calloutRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "calloutTemplate"
+#~ msgstr "calloutTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "heroRules"
+#~ msgstr "heroRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "heroTemplate"
+#~ msgstr "heroTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pageLayoutRules"
+#~ msgstr "pageLayoutRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pageLayoutTemplate"
+#~ msgstr "pageLayoutTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "rubricNoteRules"
+#~ msgstr "rubricNoteRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "rubricNoteTemplate"
+#~ msgstr "rubricNoteTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "testimonialRules"
+#~ msgstr "testimonialRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "testimonialTemplate"
+#~ msgstr "testimonialTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "twoColumnRules"
+#~ msgstr "twoColumnRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "twoColumnTemplate"
+#~ msgstr "twoColumnTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "wrapperTemplate"
+#~ msgstr "wrapperTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "renderPageLayout"
+#~ msgstr "renderPageLayout"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getLogoMeta"
+#~ msgstr "getLogoMeta"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "lucide-lab"
+#~ msgstr "lucide-lab"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LucideLabOptions"
+#~ msgstr "LucideLabOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LucideLabNode"
+#~ msgstr "LucideLabNode"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LucideLabRegistry"
+#~ msgstr "LucideLabRegistry"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "svgOf"
+#~ msgstr "svgOf"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "lucideLab"
+#~ msgstr "lucideLab"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "checkbox"
+#~ msgstr "checkbox"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ai-gradient"
+#~ msgstr "ai-gradient"

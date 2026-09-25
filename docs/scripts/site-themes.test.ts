@@ -17,8 +17,59 @@ test("the docs theme sheet carries the component foundation variables", () => {
 
   expect(css).toContain("--instui-elevation-above:");
   expect(css).toContain("--instui-focus-outline-color:");
-  expect(css).toContain(':root[data-pantoken-theme="canvas"]');
-  expect(css).toContain(':root[data-pantoken-theme="canvasHighContrast"]');
+});
+
+test("theme blocks are element-scoped, so a nested subtree can pick its own theme", () => {
+  const css = siteThemesCss();
+
+  expect(css).toContain('[data-pantoken-theme="canvas"],');
+  expect(css).toContain('[data-pantoken-theme="canvasHighContrast"],');
+  // A `:root`-anchored theme block could only ever apply once per document.
+  expect(css).not.toContain(":root[data-pantoken-theme=");
+});
+
+test("the custom color remaps statically and leaves its primitives to the runtime", () => {
+  const css = siteThemesCss();
+
+  expect(css).toContain(
+    "--instui-primitive-color-navy-navy10: var(--instui-primitive-color-custom-custom10);",
+  );
+  expect(css).toContain("--vp-button-brand-bg: var(--instui-primitive-color-custom-custom40);");
+  expect(css).not.toMatch(/--instui-primitive-color-custom-custom10:/u);
+});
+
+test("scheme pins are a single color-scheme declaration, not a token table", () => {
+  const css = siteThemesCss();
+
+  expect(css).toContain("color-scheme: dark;");
+  expect(css).toContain('[data-pantoken-scheme="dark"]');
+  // `color-scheme` is inherited, so the browser resolves `light-dark()` for the whole subtree.
+  const block = css.slice(css.indexOf('[data-pantoken-scheme="dark"]'));
+  expect(block.slice(0, block.indexOf("}"))).not.toContain("--instui-");
+});
+
+test("every varying token is declared in every theme block", () => {
+  const css = siteThemesCss();
+  const names = (theme: string): string[] => {
+    const start = css.indexOf(`  [data-pantoken-theme="${theme}"],`);
+    return css
+      .slice(start, css.indexOf("\n  }", start))
+      .split("\n")
+      .flatMap((line) => line.match(/^\s+(--instui-[\w-]+):/)?.[1] ?? [])
+      .sort();
+  };
+
+  const rebrand = names("rebrand");
+  expect(rebrand.length).toBeGreaterThan(0);
+  // A token missing from one block would inherit the enclosing scope's value when nested.
+  expect(names("canvas")).toEqual(rebrand);
+  expect(names("canvasHighContrast")).toEqual(rebrand);
+});
+
+test("properties are registered once, so a second sheet cannot clobber them", () => {
+  const registered = siteThemesCss().match(/@property\s+(--[\w-]+)/g) ?? [];
+  expect(registered.length).toBeGreaterThan(0);
+  expect(registered.length).toBe(new Set(registered).size);
 });
 
 test("writeSiteThemes writes theme CSS to vitepress theme and demos-assets", () => {

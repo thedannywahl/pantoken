@@ -9,7 +9,7 @@
  *
  * @module
  */
-import { globSync, readFileSync } from "node:fs";
+import { globSync, readFileSync, writeFileSync } from "node:fs";
 import { join, relative } from "node:path";
 import { refreshCoverageReports, serializePot, writeCatalog } from "@pantoken/i18n-engine";
 import { collectUnits, isCatalogedApiUnit, segmentMarkdown } from "./segment-markdown.ts";
@@ -19,7 +19,7 @@ const repoRoot = join(docsRoot, "..");
 const enApiDir = join(docsRoot, "api");
 
 /** Rebuild `l10n/docs.api.pot` from the current `docs/api` tree and refresh its coverage reports. */
-export const refreshApiPot = (): void => {
+export const refreshApiPot = ({ force = false }: { force?: boolean } = {}): void => {
   const units = globSync("**/*.md", { cwd: enApiDir })
     .sort()
     .flatMap((file) =>
@@ -34,6 +34,9 @@ export const refreshApiPot = (): void => {
           translate: "always" as const,
         })),
     );
-  writeCatalog(join(repoRoot, "l10n", "docs.api.pot"), serializePot(units, ["no-c-format"]));
+  const catalogPath = join(repoRoot, "l10n", "docs.api.pot");
+  const catalog = serializePot(units, ["no-c-format"]);
+  if (force) writeFileSync(catalogPath, catalog);
+  else writeCatalog(catalogPath, catalog);
   refreshCoverageReports(join(repoRoot, "i18n.config.json"));
 };

@@ -38,7 +38,6 @@ export { danglingReferences, extractInstuiRefs, tokenNames, unknownReferences } 
 
 // kebab-case → camelCase.
 export { camelCase } from "./case.ts";
-
 // Hex-colour parsing.
 export { parseHexColor } from "./color.ts";
 export type { Rgba } from "./color.ts";
@@ -58,3 +57,27 @@ export type {
   TokenUtilityGroup,
   UtilityOptions,
 } from "./utility-css.ts";
+
+// The scope attribute contract shared by `@pantoken/css` (selects on it) and `@pantoken/scope`
+// (writes it). Also at the dependency-free `@pantoken/utils/scope` entry for browser consumers.
+export {
+  BOUNDARY_ATTR,
+  BOUNDARY_CLASS,
+  COLOR_ATTR,
+  INSTANCE_ATTR,
+  SCHEME_ATTR,
+  SCOPE_ATTRS,
+  SCOPE_LAYERS,
+  THEME_ATTR,
+  colorClass,
+  colorScopeSelector,
+  colorScopeSelectors,
+  isScheme,
+  schemeClass,
+  schemeScopeSelector,
+  schemeScopeSelectors,
+  themeClass,
+  themeScopeSelector,
+  themeScopeSelectors,
+} from "./scope.ts";
+export type { Scheme } from "./scope.ts";

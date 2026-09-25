@@ -1,9 +1,27 @@
 import { expect, test } from "vite-plus/test";
-import { buildIconResolverChain, getIcon, icons, resolve } from "../src/index.ts";
+import {
+  buildIconResolverChain,
+  customIcons,
+  getIcon,
+  icons,
+  lucideIcons,
+  resolve,
+} from "../src/index.ts";
 import { sanitizeSvg } from "@pantoken/utils";
 
 test("exposes the full icon set derived from the IR", () => {
   expect(icons.length).toBeGreaterThan(500);
+});
+
+test("exposes exhaustive source-specific icon collections", () => {
+  expect(lucideIcons.length).toBeGreaterThan(1800);
+  expect(customIcons.length).toBeGreaterThan(50);
+  expect(lucideIcons.every((icon) => icon.source === "lucide")).toBe(true);
+  expect(customIcons.every((icon) => icon.source === "custom")).toBe(true);
+  expect(lucideIcons.length + customIcons.length).toBe(icons.length);
+  expect(new Set([...lucideIcons, ...customIcons].map((icon) => icon.name)).size).toBe(
+    icons.length,
+  );
 });
 
 test("arrow-left is bidirectional and decodes to inline SVG", () => {
@@ -17,6 +35,19 @@ test("a Custom (Instructure-authored) glyph is present and sourced", () => {
   const logo = getIcon("canvas-logo");
   expect(logo).toBeDefined();
   expect(logo?.source).toBe("custom");
+});
+
+test("the AI spinner star is available from the standard icon library", () => {
+  const aiSpinner = getIcon("ai-spinner");
+
+  expect(aiSpinner).toMatchObject({
+    name: "ai-spinner",
+    source: "custom",
+    viewBox: "0 0 24 24",
+    bidirectional: false,
+  });
+  expect(aiSpinner?.svg).toContain("M11.0621 2.53451");
+  expect(customIcons).toContainEqual(aiSpinner);
 });
 
 test("sanitizeSvg strips script elements from decoded SVG", () => {
@@ -42,7 +73,7 @@ test("resolve() returns an IconEntry for known codes and undefined otherwise", (
   expect(resolve("not-a-real-icon")).toBeUndefined();
 });
 
-test("buildIconResolverChain prefers plugin resolvers, then explicit resolver", () => {
+test("buildIconResolverChain falls through to plugin resolvers for unknown codes", () => {
   const pluginHit = { name: "plugin", svg: "<svg/>", source: "custom" as const };
   const explicitHit = { name: "explicit", svg: "<svg/>", source: "custom" as const };
 
@@ -68,6 +99,26 @@ test("buildIconResolverChain prefers plugin resolvers, then explicit resolver", 
 
   expect(chain("brand-icon")?.name).toBe("plugin");
   expect(chain("fallback-icon")?.name).toBe("explicit");
+});
+
+test("buildIconResolverChain prefers the built-in icon over a colliding plugin resolver", () => {
+  const chain = buildIconResolverChain({
+    plugins: [
+      {
+        name: "plugin-resolver",
+        rehype: () => ({
+          resolve(code) {
+            return code === "arrow-left"
+              ? { name: "arrow-left", svg: "<svg/>", source: "custom" }
+              : undefined;
+          },
+        }),
+      },
+    ],
+  });
+
+  expect(chain("arrow-left")?.svg).toBe(getIcon("arrow-left")?.svg);
+  expect(chain("arrow-left")?.svg).not.toBe("<svg/>");
 });
 
 test("buildIconResolverChain falls through to built-in resolver", () => {

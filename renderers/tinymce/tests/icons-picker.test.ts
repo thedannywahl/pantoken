@@ -4,266 +4,203 @@
 import { expect, test, vi } from "vite-plus/test";
 import type { Editor } from "tinymce";
 import type { TaggedIcon } from "../src/icons.js";
-import {
-  createIconsPlugin,
-  generateIconHtml,
-  insertIcon,
-  renderIconGrid,
-} from "../src/plugins/icons.js";
+import { createIconsPlugin, DEFAULT_ICON_TRIGGER, ICONS_COMMAND } from "../src/plugins/icons.js";
 
-// Mock editor object
-function createMockEditor(): Editor {
-  const mockHead = document.createElement("div");
-  const mockDoc = {
-    head: mockHead,
-    createElement: (tag: string) => document.createElement(tag),
-  };
+// Avoid happy-dom actually fetching the injected top-level bundle <link>s over the network.
+vi.mock("@pantoken/cdn", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@pantoken/cdn")>()),
+  buildFileUrl: (file: { package: string; path?: string }) => `data:text/css,/*${file.package}*/`,
+}));
 
-  const mockWindowManager = {
-    open: vi.fn().mockReturnValue({
-      close: vi.fn(),
-    }),
-  };
-
-  const mockUiRegistry = {
-    addButton: vi.fn(),
-    addMenuItem: vi.fn(),
-  };
-
-  return {
-    windowManager: mockWindowManager,
-    ui: { registry: mockUiRegistry },
-    insertContent: vi.fn(),
-    getDoc: vi.fn().mockReturnValue(mockDoc),
-  } as unknown as Editor;
-}
-
-// Mock icon data
 const mockIcons: TaggedIcon[] = [
   { name: "heart", source: "simple-icons", description: "Heart icon" },
-  { name: "star", source: "simple-icons", description: "Star icon" },
-  { name: "menu", source: "simple-icons", description: "Menu icon" },
   { name: "close", source: "components", description: "Close icon" },
 ];
 
-test("createIconsPlugin registers toolbar button and menu item", () => {
-  const editor = createMockEditor();
-  const plugin = createIconsPlugin({
+/** A minimal `Editor`-shaped stub backed by a real happy-dom document. */
+function createMockEditor() {
+  document.head.innerHTML = "";
+  document.body.innerHTML = "";
+  const contentDoc = document.implementation.createHTMLDocument("");
+  const commands = new Map<string, () => void>();
+  const container = document.createElement("div");
+  document.body.append(container);
+  // Held separately from the editor so assertions never reference an unbound method off it.
+  const mocks = {
+    addCommand: vi.fn((name: string, handler: () => void) => commands.set(name, handler)),
+    close: vi.fn(),
+    setEnabled: vi.fn(),
+    insertContent: vi.fn(),
+    setRng: vi.fn(),
+    open: vi.fn(() => ({ close: mocks.close, setEnabled: mocks.setEnabled })),
+    addButton: vi.fn(),
+    addMenuItem: vi.fn(),
+    addAutocompleter: vi.fn(),
+    addMenuButton: vi.fn(),
+    addContextToolbar: vi.fn(),
+  };
+  const editor = {
+    addCommand: mocks.addCommand,
+    execCommand: vi.fn((name: string) => commands.get(name)?.()),
+    getContainer: () => container,
+    getDoc: () => contentDoc,
+    insertContent: mocks.insertContent,
+    selection: { setRng: mocks.setRng },
+    windowManager: { open: mocks.open },
+    ui: {
+      registry: {
+        addButton: mocks.addButton,
+        addMenuItem: mocks.addMenuItem,
+        addAutocompleter: mocks.addAutocompleter,
+        addMenuButton: mocks.addMenuButton,
+        addContextToolbar: mocks.addContextToolbar,
+      },
+    },
+  } as unknown as Editor;
+  return { editor, mocks };
+}
+
+function setup(overrides: Partial<Parameters<typeof createIconsPlugin>[0]> = {}) {
+  const { editor, mocks } = createMockEditor();
+  const currentAssets: TaggedIcon[] = [];
+  createIconsPlugin({
     icons: mockIcons,
-    currentAssets: [],
-  });
+    currentAssets: currentAssets as never,
+    ...overrides,
+  })(editor);
+  return { editor, mocks, currentAssets };
+}
 
-  plugin(editor);
+/** Open the dialog and return the mounted picker root. */
+function openPicker(editor: Editor, open: ReturnType<typeof vi.fn>): HTMLElement {
+  editor.execCommand(ICONS_COMMAND);
+  const spec = open.mock.calls[0][0];
+  document.body.insertAdjacentHTML("beforeend", spec.body.items[0].html);
+  // The plugin looks the shell up by id after `open` returns, so re-run it now that it exists.
+  open.mockClear();
+  editor.execCommand(ICONS_COMMAND);
+  return document.getElementById("pantoken-icon-picker")!;
+}
 
-  expect(editor.ui.registry.addButton).toHaveBeenCalledWith("pantokenIcons", expect.any(Object));
-  expect(editor.ui.registry.addMenuItem).toHaveBeenCalledWith("pantokenIcons", expect.any(Object));
+test("the toolbar button and menu item both open the picker dialog", () => {
+  const { mocks } = setup();
+  const button = mocks.addButton.mock.calls.find((call) => call[0] === "pantokenIcons")![1];
+  button.onAction();
+  expect(mocks.open).toHaveBeenCalledTimes(1);
+
+  const menuItem = mocks.addMenuItem.mock.calls[0][1];
+  menuItem.onAction();
+  expect(mocks.open).toHaveBeenCalledTimes(2);
 });
 
-test("toolbar button opens dialog when clicked", () => {
-  const editor = createMockEditor();
-  const plugin = createIconsPlugin({
-    icons: mockIcons,
-    currentAssets: [],
-  });
-
-  plugin(editor);
-
-  const addButtonCall = (editor.ui.registry.addButton as any).mock.calls[0];
-  const buttonConfig = addButtonCall[1];
-
-  buttonConfig.onAction();
-
-  expect(editor.windowManager.open).toHaveBeenCalled();
+test("registerUi: false skips the standalone toolbar button/menu item but keeps the command", () => {
+  const { mocks } = setup({ registerUi: false });
+  // The icon context toolbar's color/delete buttons register regardless of `registerUi` — only
+  // the picker's own standalone toolbar button/menu item are suppressed.
+  expect(mocks.addButton).not.toHaveBeenCalledWith("pantokenIcons", expect.anything());
+  expect(mocks.addMenuItem).not.toHaveBeenCalled();
+  expect(mocks.addCommand).toHaveBeenCalledWith(ICONS_COMMAND, expect.any(Function));
 });
 
-test("icon is inserted into editor when selected", () => {
-  const editor = createMockEditor();
-  const currentAssets = [] as any[];
-
-  const plugin = createIconsPlugin({
-    icons: mockIcons,
-    currentAssets,
-  });
-
-  plugin(editor);
-
-  // Get button config and open dialog.
-  const addButtonCall = (editor.ui.registry.addButton as any).mock.calls[0];
-  const buttonConfig = addButtonCall[1];
-  buttonConfig.onAction();
-
-  // Get dialog config.
-  const openCall = (editor.windowManager.open as any).mock.calls[0];
-  const dialogConfig = openCall[0];
-
-  // Note: In this test, we can't easily simulate icon selection via the htmlpanel.
-  // Instead, we'd need to manually trigger the onSubmit with a selected icon state.
-  // For now, just verify the dialog was opened.
-  expect(dialogConfig.title).toBe("Insert Icon");
+test("opening the picker injects the preview stylesheets once", () => {
+  const { editor, mocks } = setup();
+  openPicker(editor, mocks.open);
+  const owned = document.head.querySelectorAll("[data-pantoken-icon-picker]");
+  // Three <style> elements (chrome + autocomplete + inline glyph tokens) plus one <link> per
+  // CDN-backed source.
+  expect(owned).toHaveLength(5);
+  expect(document.head.querySelectorAll("style[data-pantoken-icon-picker]")).toHaveLength(3);
 });
 
-test("CSS file is tracked when icon is inserted", () => {
-  const editor = createMockEditor();
-  const currentAssets = [] as any[];
-  const onMissingAsset = vi.fn();
+test("picking an icon inserts it, tracks its CSS asset, and closes the dialog", () => {
+  const { editor, mocks, currentAssets } = setup();
+  const root = openPicker(editor, mocks.open);
+  root
+    .querySelector<HTMLButtonElement>(".pantoken-ip__tile")!
+    .dispatchEvent(new MouseEvent("dblclick", { bubbles: true }));
 
-  const plugin = createIconsPlugin({
-    icons: mockIcons,
-    currentAssets,
-    onMissingAsset,
-  });
-
-  plugin(editor);
-
-  const addButtonCall = (editor.ui.registry.addButton as any).mock.calls[0];
-  const buttonConfig = addButtonCall[1];
-  buttonConfig.onAction();
-
-  const openCall = (editor.windowManager.open as any).mock.calls[0];
-  const dialogConfig = openCall[0];
-
-  // Manually call onSubmit (simulating icon insertion).
-  // In a real test, we'd click a rendered icon button, but that's complex with htmlpanel.
-  // For now, we verify the callback structure exists.
-  expect(dialogConfig.onSubmit).toBeDefined();
-  expect(dialogConfig.buttons).toBeDefined();
-});
-
-test("search filter updates displayed icons", () => {
-  const editor = createMockEditor();
-  const plugin = createIconsPlugin({
-    icons: mockIcons,
-    currentAssets: [],
-  });
-
-  plugin(editor);
-
-  const addButtonCall = (editor.ui.registry.addButton as any).mock.calls[0];
-  const buttonConfig = addButtonCall[1];
-  buttonConfig.onAction();
-
-  const openCall = (editor.windowManager.open as any).mock.calls[0];
-  const dialogConfig = openCall[0];
-
-  // Verify search input exists
-  const searchInput = dialogConfig.body.items.find((item: any) => item.name === "search");
-  expect(searchInput).toBeDefined();
-  expect(searchInput.type).toBe("input");
-
-  // Invoking the search filter narrows the underlying icon list without throwing.
-  expect(() => searchInput.onChange({ target: { value: "heart" } })).not.toThrow();
-});
-
-test("dialog buttons are disabled until an icon is selected", () => {
-  const editor = createMockEditor();
-  const plugin = createIconsPlugin({
-    icons: mockIcons,
-    currentAssets: [],
-  });
-
-  plugin(editor);
-
-  const addButtonCall = (editor.ui.registry.addButton as any).mock.calls[0];
-  const buttonConfig = addButtonCall[1];
-  buttonConfig.onAction();
-
-  const openCall = (editor.windowManager.open as any).mock.calls[0];
-  const dialogConfig = openCall[0];
-  const insertButton = dialogConfig.buttons.find((b: any) => b.text === "Insert");
-  expect(insertButton.disabled).toBe(true);
-});
-
-test("renders an empty icon grid without throwing when no icons are provided", () => {
-  const editor = createMockEditor();
-  const plugin = createIconsPlugin({
-    icons: [],
-    currentAssets: [],
-  });
-
-  plugin(editor);
-
-  const addButtonCall = (editor.ui.registry.addButton as any).mock.calls[0];
-  const buttonConfig = addButtonCall[1];
-  expect(() => buttonConfig.onAction()).not.toThrow();
-
-  const openCall = (editor.windowManager.open as any).mock.calls[0];
-  const dialogConfig = openCall[0];
-  const grid = dialogConfig.body.items.find((item: any) => item.type === "htmlpanel");
-  expect(grid.html).toContain("0 icons");
-});
-
-test("generateIconHtml renders a component icon modifier", () => {
-  expect(generateIconHtml({ name: "heart", source: "components" })).toBe(
-    '<i class="instui-icon -icon-heart"></i>',
+  expect(mocks.insertContent).toHaveBeenCalledWith(
+    '<span class="instui-icon -icon-heart" contenteditable="false" aria-hidden="true">\u200B</span>',
   );
-});
-
-test("generateIconHtml renders a simple-icons class", () => {
-  expect(generateIconHtml({ name: "github", source: "simple-icons" })).toBe(
-    '<i class="simple-icon-github"></i>',
-  );
-});
-
-test("renderIconGrid paginates and reports the total icon count", () => {
-  const html = renderIconGrid(mockIcons, 0, 2, () => {});
-  expect(html).toContain("Page 1 of 2");
-  expect(html).toContain(`${mockIcons.length} icons`);
-  expect(html).toContain(mockIcons[0]!.name);
-});
-
-test("insertIcon inserts HTML, tracks the CSS asset, and injects the stylesheet", () => {
-  const editor = createMockEditor();
-  const currentAssets: any[] = [];
-  const onMissingAsset = vi.fn();
-  const icon: TaggedIcon = { name: "heart", source: "components" };
-
-  insertIcon(editor, icon, { icons: mockIcons, currentAssets, onMissingAsset });
-
-  const insertContent = (editor as unknown as { insertContent: (html: string) => void })
-    .insertContent;
-  expect(insertContent).toHaveBeenCalledWith('<i class="instui-icon -icon-heart"></i>');
   expect(currentAssets).toEqual([
-    { package: "@pantoken/components", path: "dist/icons/heart.css" },
+    { package: "@pantoken/plugin-simple-icons", path: "dist/icons/heart.css" },
   ]);
-  expect(onMissingAsset).toHaveBeenCalledWith({
-    package: "@pantoken/components",
-    path: "dist/icons/heart.css",
-  });
+  expect(mocks.close).toHaveBeenCalled();
 });
 
-test("insertIcon does not duplicate an already-tracked CSS asset", () => {
-  const editor = createMockEditor();
-  const cssFile = { package: "@pantoken/components", path: "dist/icons/heart.css" };
-  const currentAssets: any[] = [cssFile];
-  const onMissingAsset = vi.fn();
-  const icon: TaggedIcon = { name: "heart", source: "components" };
+test("picking an icon in source view routes the insert to the CodeMirror doc", () => {
+  const insertAtCursor = vi.fn();
+  const { editor, mocks } = createMockEditor();
+  (editor as unknown as Record<string, unknown>).plugins = {
+    pantoken_source_toggle: { isSourceMode: () => true, insertAtCursor },
+  };
+  createIconsPlugin({ icons: mockIcons, currentAssets: [] })(editor);
+  const root = openPicker(editor, mocks.open);
+  root
+    .querySelector<HTMLButtonElement>(".pantoken-ip__tile")!
+    .dispatchEvent(new MouseEvent("dblclick", { bubbles: true }));
 
-  insertIcon(editor, icon, { icons: mockIcons, currentAssets, onMissingAsset });
-
-  expect(currentAssets).toHaveLength(1);
-  expect(onMissingAsset).not.toHaveBeenCalled();
+  expect(insertAtCursor).toHaveBeenCalledWith(
+    '<span class="instui-icon -icon-heart" contenteditable="false" aria-hidden="true">\u200B</span>',
+  );
+  expect(mocks.insertContent).not.toHaveBeenCalled();
 });
 
-test("submitting the dialog without a selected icon just closes it", () => {
-  const editor = createMockEditor();
-  const plugin = createIconsPlugin({
-    icons: mockIcons,
-    currentAssets: [],
-  });
+test("the autocompleter defaults to a trigger the emoticons plugin does not claim", () => {
+  const { mocks } = setup();
+  const [name, spec] = mocks.addAutocompleter.mock.calls[0];
+  expect(name).toBe("pantokenIcons");
+  expect(spec.trigger).toBe(DEFAULT_ICON_TRIGGER);
+  expect(spec.trigger).not.toBe(":");
+});
 
-  plugin(editor);
+test("the autocompleter trigger is configurable", () => {
+  const { mocks } = setup({ trigger: ";" });
+  expect(mocks.addAutocompleter.mock.calls[0][1].trigger).toBe(";");
+});
 
-  const addButtonCall = (editor.ui.registry.addButton as any).mock.calls[0];
-  const buttonConfig = addButtonCall[1];
-  buttonConfig.onAction();
+test("autocompleter rows carry just the icon name, not a source label", async () => {
+  const { mocks } = setup();
+  const spec = mocks.addAutocompleter.mock.calls[0][1];
+  const results = await spec.fetch("hear", 10);
+  expect(results).toHaveLength(1);
+  const texts = results[0].items[0].items
+    .filter((item: { type: string }) => item.type === "cardtext")
+    .map((item: { text: string }) => item.text);
+  expect(texts).toEqual(["heart"]);
+});
 
-  const openCall = (editor.windowManager.open as any).mock.calls[0];
-  const dialogConfig = openCall[0];
-  const api = { close: vi.fn() };
-  dialogConfig.onSubmit(api);
+test("autocompleter rows show a glyph resolved from the injected source stylesheet", async () => {
+  const { mocks } = setup();
+  document.documentElement.style.setProperty(
+    "--instui-icon-heart",
+    "url('data:image/svg+xml;utf8,%3Csvg%3E%3C/svg%3E')",
+  );
+  const spec = mocks.addAutocompleter.mock.calls[0][1];
+  const [row] = await spec.fetch("heart", 10);
+  const image = row.items[0].items.find((item: { type: string }) => item.type === "cardimage");
+  expect(image.src).toBe("data:image/svg+xml;charset=utf-8,%3Csvg%3E%3C/svg%3E");
+  expect(image.classes).toContain("pantoken-icon-glyph");
+  document.documentElement.style.removeProperty("--instui-icon-heart");
+});
 
-  const insertContent = (editor as unknown as { insertContent: (html: string) => void })
-    .insertContent;
-  expect(insertContent).not.toHaveBeenCalled();
-  expect(api.close).toHaveBeenCalled();
+test("autocompleter onAction inserts the selected icon", async () => {
+  const { mocks } = setup();
+  const spec = mocks.addAutocompleter.mock.calls[0][1];
+  const hide = vi.fn();
+  const range = {} as Range;
+  spec.onAction({ hide }, range, "simple-icons:heart");
+
+  expect(mocks.setRng).toHaveBeenCalledWith(range);
+  expect(mocks.insertContent).toHaveBeenCalledWith(
+    '<span class="instui-icon -icon-heart" contenteditable="false" aria-hidden="true">\u200B</span>',
+  );
+  expect(hide).toHaveBeenCalled();
+});
+
+test("autocompleter onAction ignores a value that is not a known icon", () => {
+  const { mocks } = setup();
+  const spec = mocks.addAutocompleter.mock.calls[0][1];
+  spec.onAction({ hide: vi.fn() }, {} as Range, "nope:nope");
+  expect(mocks.insertContent).not.toHaveBeenCalled();
 });

@@ -44,6 +44,12 @@
       "style": "Custom",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-ai-spinner": {
+      "hash": "8563d40d7615fbf3",
+      "source": "custom",
+      "style": "Custom",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-air-vent": {
       "hash": "fcbe628307de3eff",
       "source": "lucide",
@@ -81,11 +87,6 @@
     },
     "--instui-icon-alarm-smoke": {
       "hash": "b56be42a81f5a812",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-album": {
-      "hash": "867126da1809e83a",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -1067,6 +1068,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-book-bookmark": {
+      "hash": "ee9e7ae0ecfdc00f",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-book-check": {
       "hash": "d977264082665a7d",
       "source": "lucide",
@@ -1109,11 +1115,6 @@
     },
     "--instui-icon-book-lock": {
       "hash": "5b9c4c62b20369f2",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-book-marked": {
-      "hash": "b1b444e297632f73",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -1325,7 +1326,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-broccoli": {
-      "hash": "35572bbb7a338bc8",
+      "hash": "23618ae4892c9c97",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -1374,8 +1375,13 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-building-2": {
+    "--instui-icon-building-complex": {
       "hash": "72b5916a5d95c62d",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-building-complex-plus": {
+      "hash": "b14ac5853885798d",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -1449,6 +1455,12 @@
     },
     "--instui-icon-calendar-check-2": {
       "hash": "f0cebe8bf8e6f969",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-calendar-chevrons-right": {
+      "bidirectional": true,
+      "hash": "cec5f3886c6d5dfd",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -1631,6 +1643,16 @@
     },
     "--instui-icon-carrot": {
       "hash": "e1180bc8400061bf",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-carton": {
+      "hash": "bbbe2e84272e2bed",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-carton-off": {
+      "hash": "40e154dda947bc72",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2081,6 +2103,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-circle-dashed-check": {
+      "hash": "2787b96195a77fca",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-circle-divide": {
       "hash": "00348ac2c634a9bb",
       "source": "lucide",
@@ -2256,6 +2283,21 @@
     },
     "--instui-icon-clapperboard": {
       "hash": "35a378685b34000c",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-clef-alto": {
+      "hash": "38ea2c098a31b6c9",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-clef-bass": {
+      "hash": "6e11b552d3433779",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-clef-treble": {
+      "hash": "58c2418d92f2be71",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2650,7 +2692,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-computer": {
-      "hash": "e5ec3192fa20c14c",
+      "hash": "ff037825f34ad668",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2690,7 +2732,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-cookie": {
-      "hash": "257a60b8055fc0a3",
+      "hash": "aef4200445775f28",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2816,22 +2858,22 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-credit-card": {
-      "hash": "3d4058b620cb07c4",
+      "hash": "0600053e38a1153f",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-credit-card-check": {
-      "hash": "89eb3c458caf2c5a",
+      "hash": "a519c68b3a8ca85b",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-credit-card-minus": {
-      "hash": "fce04353fb454262",
+      "hash": "4bdddff84499427b",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-credit-card-plus": {
-      "hash": "16b90f2e0df0f5b9",
+      "hash": "5993d417c0803d3d",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2841,7 +2883,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-credit-card-x": {
-      "hash": "8bd687eaa08c633e",
+      "hash": "3492f0755ab8677b",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -2877,6 +2919,11 @@
     },
     "--instui-icon-cup-soda": {
       "hash": "419a03466980f8ee",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-cupcake": {
+      "hash": "74de3f78b8ed31e8",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -3084,6 +3131,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-dome": {
+      "hash": "d8916596fb77149f",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-donut": {
       "hash": "ab3dd6498dd71d45",
       "source": "lucide",
@@ -3099,8 +3151,13 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-door-closed-package": {
+      "hash": "e4780457aa07ad78",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-door-open": {
-      "hash": "a4ec0f57d310d24d",
+      "hash": "477737b53230f402",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -3250,6 +3307,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-equal-approximately-not": {
+      "hash": "e464b5f3ab9f3ce3",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-equal-not": {
       "hash": "0062003546d40b37",
       "source": "lucide",
@@ -3361,6 +3423,11 @@
       "hash": "a1c760aa87a093be",
       "source": "custom",
       "style": "Custom",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-faucet": {
+      "hash": "121b6e73942abb30",
+      "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-feather": {
@@ -3767,16 +3834,6 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
-    "--instui-icon-flip-horizontal-2": {
-      "hash": "d7174c07b15216f2",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
-    "--instui-icon-flip-vertical-2": {
-      "hash": "7fa478602069fd62",
-      "source": "lucide",
-      "viewBox": "0 0 24 24"
-    },
     "--instui-icon-flower": {
       "hash": "012655e439d9db58",
       "source": "lucide",
@@ -3813,7 +3870,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-folder-bookmark": {
-      "hash": "ca7eb73e129af91b",
+      "hash": "c21401a98c65e198",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4060,6 +4117,16 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-gap-horizontal": {
+      "hash": "3ac4deb1950042c9",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-gap-vertical": {
+      "hash": "6ee7ff5bc5b0f5eb",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-gauge": {
       "hash": "754a14bda8d4968c",
       "source": "lucide",
@@ -4204,6 +4271,11 @@
     },
     "--instui-icon-globe-check": {
       "hash": "ddfa508f9267e35e",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-globe-code": {
+      "hash": "cf94cdd0c95c5023",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4560,6 +4632,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-hourglass-cog": {
+      "hash": "f8723c78eea77d9e",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-house": {
       "hash": "e338cbddca45d001",
       "source": "lucide",
@@ -4585,6 +4662,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-houses": {
+      "hash": "e0a52a5b436edea6",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-ice-cream-bowl": {
       "hash": "34aa657f628589b4",
       "source": "lucide",
@@ -4596,12 +4678,12 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-id-card": {
-      "hash": "4aec3bb229363b85",
+      "hash": "819bdf12e03c2408",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-id-card-lanyard": {
-      "hash": "3d4cfff9f42567ce",
+      "hash": "1c46bf103cb6f93f",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4731,6 +4813,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-iv-bag": {
+      "hash": "d9d0eff1db4be4a4",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-japanese-yen": {
       "hash": "7fb12614d0b5f45f",
       "source": "lucide",
@@ -4778,6 +4865,11 @@
     },
     "--instui-icon-keyboard-off": {
       "hash": "753e5a250471925b",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-lambda": {
+      "hash": "dceb01ddc8bd2940",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -4895,6 +4987,18 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-layout-arrow-down": {
+      "bidirectional": true,
+      "hash": "2a90b0e9bc2a4463",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-layout-arrow-right": {
+      "bidirectional": true,
+      "hash": "6142d01f18ca6dd3",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-layout-dashboard": {
       "hash": "f565742b29d808ef",
       "source": "lucide",
@@ -4942,7 +5046,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-lectern": {
-      "hash": "472346f01e3db7ad",
+      "hash": "5a2f14930669a84e",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -5658,6 +5762,11 @@
       "style": "Custom",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-messages-circle": {
+      "hash": "ca4953a1527559bf",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-messages-square": {
       "hash": "b48df071bae3b109",
       "source": "lucide",
@@ -5793,6 +5902,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-monitor-pc": {
+      "hash": "c00b16c50bdd1f50",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-monitor-play": {
       "hash": "9f5b1b0751ec8d46",
       "source": "lucide",
@@ -5907,6 +6021,16 @@
     "--instui-icon-mouse-right": {
       "bidirectional": true,
       "hash": "d552755be0ac5f23",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-mouth": {
+      "hash": "76f514d1cf3cf855",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-mouth-off": {
+      "hash": "055846d501e53f9d",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -6026,6 +6150,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-nepali-rupee": {
+      "hash": "70fb8643962bc57c",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-network": {
       "hash": "fcbeb62dd623a2e4",
       "source": "lucide",
@@ -6048,6 +6177,11 @@
     },
     "--instui-icon-notebook": {
       "hash": "05c8accd088d3cb5",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-notebook-dot": {
+      "hash": "adce7ea192c491aa",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -6338,6 +6472,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-park": {
+      "hash": "81b80230d7691930",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-parking-meter": {
       "hash": "9c8b922b1b40676c",
       "source": "lucide",
@@ -6569,6 +6708,11 @@
     },
     "--instui-icon-plane-takeoff": {
       "hash": "fb2ba76d1ee139fe",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-plant-pot": {
+      "hash": "94c82e07541f8212",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7047,6 +7191,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-rotate-cw-clock": {
+      "hash": "7a340016079c1f23",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-rotate-cw-fading-clock": {
       "hash": "1df9d94a02ec27ef",
       "source": "lucide",
@@ -7128,7 +7277,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-satellite-dish": {
-      "hash": "ef644a6b11da97a4",
+      "hash": "0128162d695ea18c",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7153,7 +7302,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-save-off": {
-      "hash": "b1ebbc3af9e370e5",
+      "hash": "19a5094065b89d87",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -7897,6 +8046,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-square-bookmark": {
+      "hash": "51a5378adb2820ff",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-square-bottom-dashed-scissors": {
       "hash": "80f26897804ef15b",
       "source": "lucide",
@@ -7981,6 +8135,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-square-dashed-plus": {
+      "hash": "ff440aa8f4a8bafe",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-square-dashed-text": {
       "hash": "726ee01ddc5166ff",
       "source": "lucide",
@@ -7988,6 +8147,16 @@
     },
     "--instui-icon-square-dashed-top-solid": {
       "hash": "73712bed9d3c405f",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-dashed-x": {
+      "hash": "37735416f85f45c9",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-square-dashed-x-corner": {
+      "hash": "66d788ca8a46fb03",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -8459,7 +8628,7 @@
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-table-2": {
-      "hash": "615f4bd774594464",
+      "hash": "0a445c8b8db47468",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -8766,6 +8935,11 @@
       "style": "Custom",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-tic-tac-toe": {
+      "hash": "c6ee6fab091f5f7a",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-ticket": {
       "hash": "c0908117aad91367",
       "source": "lucide",
@@ -8864,6 +9038,16 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-toothbrush": {
+      "hash": "695c7835afb0ac62",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-toothbrush-sparkles": {
+      "hash": "2b0ca6caffac8128",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-tornado": {
       "hash": "63655689f11767da",
       "source": "lucide",
@@ -8944,6 +9128,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-trash-off": {
+      "hash": "3038c2ce47e012ff",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-tree-deciduous": {
       "hash": "1b8a666857a14479",
       "source": "lucide",
@@ -9000,6 +9189,16 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-triangles-centerline-dashed-horizontal": {
+      "hash": "b3e4efff4d735b4e",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-triangles-centerline-dashed-vertical": {
+      "hash": "49ba033b83288ef3",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-trophy": {
       "hash": "6c039ebdc161d084",
       "source": "lucide",
@@ -9012,6 +9211,11 @@
     },
     "--instui-icon-truck-electric": {
       "hash": "e9540735f9dbfde1",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-tube-lotion": {
+      "hash": "5f6a334b53c79728",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -9150,6 +9354,11 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-user-group": {
+      "hash": "ccac9b29a6e7a759",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-user-key": {
       "hash": "aab1bfd2bdd1de41",
       "source": "lucide",
@@ -9206,6 +9415,11 @@
     },
     "--instui-icon-user-round-cog": {
       "hash": "cc7687872f89cb07",
+      "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-user-round-group": {
+      "hash": "f4956f7b31daf5c6",
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
@@ -9733,13 +9947,17 @@
   },
   "provenance": {
     "designTokens": {
-      "commit": "3c6a96cca75529937fabefd4db2c57524e8c0be4",
+      "commit": "0a323b62c7486e65de57a06d70bdf0cdf209187f",
       "package": "@instructure/instructure-design-tokens",
-      "ref": "v1.9.0"
+      "ref": "v2.0.0"
+    },
+    "lucide": {
+      "package": "lucide",
+      "resolved": "1.47.0"
     },
     "uiIcons": {
       "package": "@instructure/ui-icons",
-      "resolved": "11.7.6"
+      "resolved": "11.7.7"
     }
   },
   "themes": {
@@ -11358,6 +11576,18 @@
         "syntax": "*",
         "value": "var(--instui-primitive-color-honey-honey20)"
       },
+      "--instui-color-background-skeleton-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-grey-grey70",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-grey-grey70)"
+      },
+      "--instui-color-background-skeleton-shimmer-color": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-grey-grey50",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-grey-grey50)"
+      },
       "--instui-color-background-success": {
         "inherits": true,
         "refersTo": "--instui-primitive-color-green-green100",
@@ -12874,13 +13104,6 @@
         "syntax": "*",
         "value": "var(--instui-spacing-space-xl)"
       },
-      "--instui-component-alert-background": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-component-alert-info-background",
-        "syntax": "*",
-        "value": "var(--instui-component-alert-info-background)"
-      },
       "--instui-component-alert-border-radius": {
         "inherits": true,
         "refersTo": "--instui-border-radius-lg",
@@ -12907,13 +13130,6 @@
         "inherits": true,
         "syntax": "*",
         "value": "0.5rem"
-      },
-      "--instui-component-alert-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-text-base",
-        "syntax": "*",
-        "value": "var(--instui-color-text-base)"
       },
       "--instui-component-alert-content-font-family": {
         "inherits": true,
@@ -12980,13 +13196,6 @@
         "refersTo": "--instui-color-background-error",
         "syntax": "*",
         "value": "var(--instui-color-background-error)"
-      },
-      "--instui-component-alert-icon-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-icon-on-color",
-        "syntax": "*",
-        "value": "var(--instui-color-icon-on-color)"
       },
       "--instui-component-alert-icon-padding-left": {
         "inherits": true,
@@ -13508,20 +13717,6 @@
         "inherits": true,
         "syntax": "*",
         "value": "0.75rem"
-      },
-      "--instui-component-banner-ai-background-bottom-gradient-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient",
-        "syntax": "*",
-        "value": "var(--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient)"
-      },
-      "--instui-component-banner-ai-background-top-gradient-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-top-gradient",
-        "syntax": "*",
-        "value": "var(--instui-color-background-interactive-action-ai-secondary-active-top-gradient)"
       },
       "--instui-component-banner-border-color": {
         "inherits": true,
@@ -19132,13 +19327,6 @@
         "syntax": "*",
         "value": "var(--instui-color-text-accent-aurora)"
       },
-      "--instui-component-pill-background-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-component-pill-neutral-background-color",
-        "syntax": "*",
-        "value": "var(--instui-component-pill-neutral-background-color)"
-      },
       "--instui-component-pill-base-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-stroke-base",
@@ -21423,12 +21611,26 @@
         "value": "var(--instui-color-icon-on-color)"
       },
       "--instui-component-side-nav-bar-new-insitution-logo-gap": {
+        "deprecated": true,
+        "inherits": true,
+        "refersTo": "--instui-component-side-nav-bar-new-institution-logo-gap",
+        "syntax": "*",
+        "value": "var(--instui-component-side-nav-bar-new-institution-logo-gap)"
+      },
+      "--instui-component-side-nav-bar-new-insitution-logo-padding": {
+        "deprecated": true,
+        "inherits": true,
+        "refersTo": "--instui-component-side-nav-bar-new-institution-logo-padding",
+        "syntax": "*",
+        "value": "var(--instui-component-side-nav-bar-new-institution-logo-padding)"
+      },
+      "--instui-component-side-nav-bar-new-institution-logo-gap": {
         "inherits": true,
         "refersTo": "--instui-spacing-space-md",
         "syntax": "*",
         "value": "var(--instui-spacing-space-md)"
       },
-      "--instui-component-side-nav-bar-new-insitution-logo-padding": {
+      "--instui-component-side-nav-bar-new-institution-logo-padding": {
         "inherits": true,
         "refersTo": "--instui-spacing-space-sm",
         "syntax": "*",
@@ -21655,6 +21857,126 @@
         "inherits": true,
         "syntax": "*",
         "value": "5.25rem"
+      },
+      "--instui-component-skeleton-loader-avatar-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-full",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-full)"
+      },
+      "--instui-component-skeleton-loader-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-skeleton-background-color",
+        "syntax": "*",
+        "value": "var(--instui-color-background-skeleton-background-color)"
+      },
+      "--instui-component-skeleton-loader-bezier": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.42, 0, 0.58, 1"
+      },
+      "--instui-component-skeleton-loader-duration": {
+        "inherits": true,
+        "syntax": "<time>",
+        "value": "1500ms"
+      },
+      "--instui-component-skeleton-loader-image-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-md",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-md)"
+      },
+      "--instui-component-skeleton-loader-motion": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "ease-in-out"
+      },
+      "--instui-component-skeleton-loader-shimmer-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-skeleton-shimmer-color",
+        "syntax": "*",
+        "value": "var(--instui-color-background-skeleton-shimmer-color)"
+      },
+      "--instui-component-skeleton-loader-text-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-sm",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-sm)"
+      },
+      "--instui-component-skeleton-loader-text-height-lg": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-xl",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-xl)"
+      },
+      "--instui-component-skeleton-loader-text-height-md": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "1.5rem"
+      },
+      "--instui-component-skeleton-loader-text-height-sm": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-lg",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-lg)"
+      },
+      "--instui-component-skeleton-loader-text-height-xl": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "2rem"
+      },
+      "--instui-component-skeleton-loader-text-height-xs": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-base",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-base)"
+      },
+      "--instui-component-skeleton-loader-text-height-xxl": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text2xl",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text2xl)"
+      },
+      "--instui-component-skeleton-loader-text-height-xxs": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-xs",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-xs)"
+      },
+      "--instui-component-skeleton-loader-text-padding-lg": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.21875rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-md": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.1875rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-sm": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.15625rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xl": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.25rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xs": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.125rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xxl": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.28125rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xxs": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.1875rem"
       },
       "--instui-component-slider-checkerboard-background-image": {
         "inherits": true,
@@ -28116,6 +28438,18 @@
         "syntax": "*",
         "value": "var(--instui-primitive-color-honey-honey20)"
       },
+      "--instui-color-background-skeleton-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-grey-grey100",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-grey-grey100)"
+      },
+      "--instui-color-background-skeleton-shimmer-color": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-grey-grey80",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-grey-grey80)"
+      },
       "--instui-color-background-success": {
         "inherits": true,
         "refersTo": "--instui-primitive-color-green-green140",
@@ -29632,13 +29966,6 @@
         "syntax": "*",
         "value": "var(--instui-spacing-space-xl)"
       },
-      "--instui-component-alert-background": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-component-alert-info-background",
-        "syntax": "*",
-        "value": "var(--instui-component-alert-info-background)"
-      },
       "--instui-component-alert-border-radius": {
         "inherits": true,
         "refersTo": "--instui-border-radius-lg",
@@ -29665,13 +29992,6 @@
         "inherits": true,
         "syntax": "*",
         "value": "0.5rem"
-      },
-      "--instui-component-alert-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-text-base",
-        "syntax": "*",
-        "value": "var(--instui-color-text-base)"
       },
       "--instui-component-alert-content-font-family": {
         "inherits": true,
@@ -29738,13 +30058,6 @@
         "refersTo": "--instui-color-background-error",
         "syntax": "*",
         "value": "var(--instui-color-background-error)"
-      },
-      "--instui-component-alert-icon-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-icon-on-color",
-        "syntax": "*",
-        "value": "var(--instui-color-icon-on-color)"
       },
       "--instui-component-alert-icon-padding-left": {
         "inherits": true,
@@ -30266,20 +30579,6 @@
         "inherits": true,
         "syntax": "*",
         "value": "0.75rem"
-      },
-      "--instui-component-banner-ai-background-bottom-gradient-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient",
-        "syntax": "*",
-        "value": "var(--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient)"
-      },
-      "--instui-component-banner-ai-background-top-gradient-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-top-gradient",
-        "syntax": "*",
-        "value": "var(--instui-color-background-interactive-action-ai-secondary-active-top-gradient)"
       },
       "--instui-component-banner-border-color": {
         "inherits": true,
@@ -35890,13 +36189,6 @@
         "syntax": "*",
         "value": "var(--instui-color-text-accent-aurora)"
       },
-      "--instui-component-pill-background-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-component-pill-neutral-background-color",
-        "syntax": "*",
-        "value": "var(--instui-component-pill-neutral-background-color)"
-      },
       "--instui-component-pill-base-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-stroke-base",
@@ -38181,12 +38473,26 @@
         "value": "var(--instui-color-icon-on-color)"
       },
       "--instui-component-side-nav-bar-new-insitution-logo-gap": {
+        "deprecated": true,
+        "inherits": true,
+        "refersTo": "--instui-component-side-nav-bar-new-institution-logo-gap",
+        "syntax": "*",
+        "value": "var(--instui-component-side-nav-bar-new-institution-logo-gap)"
+      },
+      "--instui-component-side-nav-bar-new-insitution-logo-padding": {
+        "deprecated": true,
+        "inherits": true,
+        "refersTo": "--instui-component-side-nav-bar-new-institution-logo-padding",
+        "syntax": "*",
+        "value": "var(--instui-component-side-nav-bar-new-institution-logo-padding)"
+      },
+      "--instui-component-side-nav-bar-new-institution-logo-gap": {
         "inherits": true,
         "refersTo": "--instui-spacing-space-md",
         "syntax": "*",
         "value": "var(--instui-spacing-space-md)"
       },
-      "--instui-component-side-nav-bar-new-insitution-logo-padding": {
+      "--instui-component-side-nav-bar-new-institution-logo-padding": {
         "inherits": true,
         "refersTo": "--instui-spacing-space-sm",
         "syntax": "*",
@@ -38413,6 +38719,126 @@
         "inherits": true,
         "syntax": "*",
         "value": "5.25rem"
+      },
+      "--instui-component-skeleton-loader-avatar-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-full",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-full)"
+      },
+      "--instui-component-skeleton-loader-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-skeleton-background-color",
+        "syntax": "*",
+        "value": "var(--instui-color-background-skeleton-background-color)"
+      },
+      "--instui-component-skeleton-loader-bezier": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.42, 0, 0.58, 1"
+      },
+      "--instui-component-skeleton-loader-duration": {
+        "inherits": true,
+        "syntax": "<time>",
+        "value": "1500ms"
+      },
+      "--instui-component-skeleton-loader-image-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-md",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-md)"
+      },
+      "--instui-component-skeleton-loader-motion": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "ease-in-out"
+      },
+      "--instui-component-skeleton-loader-shimmer-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-skeleton-shimmer-color",
+        "syntax": "*",
+        "value": "var(--instui-color-background-skeleton-shimmer-color)"
+      },
+      "--instui-component-skeleton-loader-text-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-sm",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-sm)"
+      },
+      "--instui-component-skeleton-loader-text-height-lg": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-xl",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-xl)"
+      },
+      "--instui-component-skeleton-loader-text-height-md": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "1.5rem"
+      },
+      "--instui-component-skeleton-loader-text-height-sm": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-lg",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-lg)"
+      },
+      "--instui-component-skeleton-loader-text-height-xl": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "2rem"
+      },
+      "--instui-component-skeleton-loader-text-height-xs": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-base",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-base)"
+      },
+      "--instui-component-skeleton-loader-text-height-xxl": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text2xl",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text2xl)"
+      },
+      "--instui-component-skeleton-loader-text-height-xxs": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-xs",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-xs)"
+      },
+      "--instui-component-skeleton-loader-text-padding-lg": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.21875rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-md": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.1875rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-sm": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.15625rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xl": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.25rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xs": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.125rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xxl": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.28125rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xxs": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.1875rem"
       },
       "--instui-component-slider-checkerboard-background-image": {
         "inherits": true,
@@ -44875,6 +45301,18 @@
         "themed": true,
         "value": "light-dark(var(--instui-primitive-color-honey-honey20), var(--instui-primitive-color-honey-honey160))"
       },
+      "--instui-color-background-skeleton-background-color": {
+        "inherits": true,
+        "syntax": "*",
+        "themed": true,
+        "value": "light-dark(var(--instui-primitive-color-grey-grey70), var(--instui-primitive-color-grey-grey110))"
+      },
+      "--instui-color-background-skeleton-shimmer-color": {
+        "inherits": true,
+        "syntax": "*",
+        "themed": true,
+        "value": "light-dark(var(--instui-primitive-color-grey-grey50), var(--instui-primitive-color-grey-grey90))"
+      },
       "--instui-color-background-success": {
         "inherits": true,
         "refersTo": "--instui-primitive-color-green-green100",
@@ -46393,13 +46831,6 @@
         "syntax": "*",
         "value": "var(--instui-spacing-space-xl)"
       },
-      "--instui-component-alert-background": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-component-alert-info-background",
-        "syntax": "*",
-        "value": "var(--instui-component-alert-info-background)"
-      },
       "--instui-component-alert-border-radius": {
         "inherits": true,
         "refersTo": "--instui-border-radius-lg",
@@ -46426,13 +46857,6 @@
         "inherits": true,
         "syntax": "*",
         "value": "0.5rem"
-      },
-      "--instui-component-alert-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-text-base",
-        "syntax": "*",
-        "value": "var(--instui-color-text-base)"
       },
       "--instui-component-alert-content-font-family": {
         "inherits": true,
@@ -46499,13 +46923,6 @@
         "refersTo": "--instui-color-background-error",
         "syntax": "*",
         "value": "var(--instui-color-background-error)"
-      },
-      "--instui-component-alert-icon-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-icon-on-color",
-        "syntax": "*",
-        "value": "var(--instui-color-icon-on-color)"
       },
       "--instui-component-alert-icon-padding-left": {
         "inherits": true,
@@ -47027,20 +47444,6 @@
         "inherits": true,
         "syntax": "*",
         "value": "0.75rem"
-      },
-      "--instui-component-banner-ai-background-bottom-gradient-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient",
-        "syntax": "*",
-        "value": "var(--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient)"
-      },
-      "--instui-component-banner-ai-background-top-gradient-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-top-gradient",
-        "syntax": "*",
-        "value": "var(--instui-color-background-interactive-action-ai-secondary-active-top-gradient)"
       },
       "--instui-component-banner-border-color": {
         "inherits": true,
@@ -52673,13 +53076,6 @@
         "syntax": "*",
         "value": "var(--instui-color-text-accent-aurora)"
       },
-      "--instui-component-pill-background-color": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-component-pill-neutral-background-color",
-        "syntax": "*",
-        "value": "var(--instui-component-pill-neutral-background-color)"
-      },
       "--instui-component-pill-base-border-color": {
         "inherits": true,
         "syntax": "*",
@@ -54844,9 +55240,9 @@
       },
       "--instui-component-side-nav-bar-item-selected-background-color": {
         "inherits": true,
-        "refersTo": "--instui-color-institutional-brand-primary",
+        "refersTo": "--instui-color-background-brand",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-primary)"
+        "value": "var(--instui-color-background-brand)"
       },
       "--instui-component-side-nav-bar-item-selected-font-color": {
         "inherits": true,
@@ -54973,12 +55369,26 @@
         "value": "var(--instui-color-icon-interactive-action-primary-on-color-base)"
       },
       "--instui-component-side-nav-bar-new-insitution-logo-gap": {
+        "deprecated": true,
+        "inherits": true,
+        "refersTo": "--instui-component-side-nav-bar-new-institution-logo-gap",
+        "syntax": "*",
+        "value": "var(--instui-component-side-nav-bar-new-institution-logo-gap)"
+      },
+      "--instui-component-side-nav-bar-new-insitution-logo-padding": {
+        "deprecated": true,
+        "inherits": true,
+        "refersTo": "--instui-component-side-nav-bar-new-institution-logo-padding",
+        "syntax": "*",
+        "value": "var(--instui-component-side-nav-bar-new-institution-logo-padding)"
+      },
+      "--instui-component-side-nav-bar-new-institution-logo-gap": {
         "inherits": true,
         "refersTo": "--instui-spacing-space-md",
         "syntax": "*",
         "value": "var(--instui-spacing-space-md)"
       },
-      "--instui-component-side-nav-bar-new-insitution-logo-padding": {
+      "--instui-component-side-nav-bar-new-institution-logo-padding": {
         "inherits": true,
         "refersTo": "--instui-spacing-space-sm",
         "syntax": "*",
@@ -55211,6 +55621,126 @@
         "inherits": true,
         "syntax": "*",
         "value": "5.875rem"
+      },
+      "--instui-component-skeleton-loader-avatar-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-full",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-full)"
+      },
+      "--instui-component-skeleton-loader-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-skeleton-background-color",
+        "syntax": "*",
+        "value": "var(--instui-color-background-skeleton-background-color)"
+      },
+      "--instui-component-skeleton-loader-bezier": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.42, 0, 0.58, 1"
+      },
+      "--instui-component-skeleton-loader-duration": {
+        "inherits": true,
+        "syntax": "<time>",
+        "value": "1500ms"
+      },
+      "--instui-component-skeleton-loader-image-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-md",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-md)"
+      },
+      "--instui-component-skeleton-loader-motion": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "ease-in-out"
+      },
+      "--instui-component-skeleton-loader-shimmer-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-skeleton-shimmer-color",
+        "syntax": "*",
+        "value": "var(--instui-color-background-skeleton-shimmer-color)"
+      },
+      "--instui-component-skeleton-loader-text-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-sm",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-sm)"
+      },
+      "--instui-component-skeleton-loader-text-height-lg": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-xl",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-xl)"
+      },
+      "--instui-component-skeleton-loader-text-height-md": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "1.5rem"
+      },
+      "--instui-component-skeleton-loader-text-height-sm": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-lg",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-lg)"
+      },
+      "--instui-component-skeleton-loader-text-height-xl": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "2rem"
+      },
+      "--instui-component-skeleton-loader-text-height-xs": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-base",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-base)"
+      },
+      "--instui-component-skeleton-loader-text-height-xxl": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text2xl",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text2xl)"
+      },
+      "--instui-component-skeleton-loader-text-height-xxs": {
+        "inherits": true,
+        "refersTo": "--instui-font-size-text-xs",
+        "syntax": "*",
+        "value": "var(--instui-font-size-text-xs)"
+      },
+      "--instui-component-skeleton-loader-text-padding-lg": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.21875rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-md": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.1875rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-sm": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.15625rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xl": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.25rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xs": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.125rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xxl": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.28125rem"
+      },
+      "--instui-component-skeleton-loader-text-padding-xxs": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.1875rem"
       },
       "--instui-component-slider-checkerboard-background-image": {
         "inherits": true,

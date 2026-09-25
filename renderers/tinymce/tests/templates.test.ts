@@ -1,9 +1,11 @@
 import { expect, test, vi } from "vite-plus/test";
 import {
   createTemplatesPlugin,
+  pageTemplates,
   TEMPLATES_PLUGIN_NAME,
   TEMPLATES_TOOLBAR_NAME,
 } from "../src/plugins/templates.js";
+import { pageLayouts } from "../src/layouts.js";
 import type { StarterTemplate } from "../src/types.js";
 
 const templates: StarterTemplate[] = [
@@ -13,6 +15,22 @@ const templates: StarterTemplate[] = [
 
 test("exposes the plugin name used in TinyMCE's init options", () => {
   expect(TEMPLATES_PLUGIN_NAME).toBe("pantoken_templates");
+});
+
+test("defaults to the bundled page layouts", () => {
+  expect(pageTemplates).toEqual(pageLayouts.map(({ title, html }) => ({ title, content: html })));
+
+  const editor = fakeEditor();
+  const plugin = createTemplatesPlugin();
+  plugin(editor as never);
+
+  const openAction = editor.ui.registry.addButton.mock.calls[0]?.[1].onAction as () => void;
+  openAction();
+
+  const dialogSpec = editor.windowManager.open.mock.calls[0]?.[0];
+  expect(dialogSpec.body.items[0].items).toEqual(
+    pageTemplates.map(({ title }) => ({ value: title, text: title })),
+  );
 });
 
 /** A minimal `Editor`-shaped stub recording the calls this plugin makes. */
@@ -39,7 +57,7 @@ test("registers a toolbar button and menu item listing every template", () => {
 
   expect(editor.ui.registry.addButton).toHaveBeenCalledWith(
     TEMPLATES_TOOLBAR_NAME,
-    expect.objectContaining({ text: "Insert template" }),
+    expect.objectContaining({ text: "Templates" }),
   );
   expect(editor.ui.registry.addMenuItem).toHaveBeenCalledWith(
     TEMPLATES_TOOLBAR_NAME,
@@ -73,6 +91,28 @@ test("confirming the dialog replaces the document with the chosen template", () 
 
   expect(editor.setContent).toHaveBeenCalledWith("<div>callout</div>");
   expect(onInsert).toHaveBeenCalledWith(templates[1]);
+});
+
+test("replaces the CodeMirror doc instead while the source view is active", () => {
+  const editor = fakeEditor();
+  const replaceAll = vi.fn();
+  (editor as unknown as Record<string, unknown>).plugins = {
+    pantoken_source_toggle: { isSourceMode: () => true, replaceAll },
+  };
+  const plugin = createTemplatesPlugin({ templates });
+  plugin(editor as never);
+
+  const openAction = editor.ui.registry.addButton.mock.calls[0]?.[1].onAction as () => void;
+  openAction();
+  const dialogSpec = editor.windowManager.open.mock.calls[0]?.[0];
+  dialogSpec.onSubmit({ getData: () => ({ template: "Callout" }), close: vi.fn() });
+  const confirmCallback = editor.windowManager.confirm.mock.calls[0]?.[1] as (
+    confirmed: boolean,
+  ) => void;
+  confirmCallback(true);
+
+  expect(replaceAll).toHaveBeenCalledWith("<div>callout</div>");
+  expect(editor.setContent).not.toHaveBeenCalled();
 });
 
 test("declining the confirm does not modify the editor", () => {

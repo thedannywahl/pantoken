@@ -1,130 +1,115 @@
 /**
- * CodeMirror HTML autocomplete extension for pantoken tokens.
- * Provides completions for component names, modifiers, and modifier values.
- * Activates when typing `.instui-` in a class attribute.
+ * CodeMirror HTML autocomplete extension for pantoken component and modifier classes.
  *
  * \@module
  */
-import { autocompletion, Completion } from "@codemirror/autocomplete";
-import type { CompletionContext } from "@codemirror/autocomplete";
+import { autocompletion, type Completion, type CompletionContext } from "@codemirror/autocomplete";
+import { syntaxTree } from "@codemirror/language";
 import type { CssDocEntry } from "../cssdoc/model.js";
-import { listComponents, listUtilities, getModifierSuggestions } from "../cssdoc/model.js";
+import { findEntryByClassToken, getApplicableModifiers } from "../cssdoc/model.js";
 
-/**
- * Configuration options for the pantoken HTML autocomplete extension.
- */
+/** Configuration options for the pantoken HTML autocomplete extension. */
 export interface AutocompleteOptions {
+  /** Cssdoc component and global utility records available to the editor. */
   model: CssDocEntry[];
 }
 
-/**
- * Create a CodeMirror 6 autocomplete extension for pantoken HTML.
- * Provides completions for component names and their modifiers.
- *
- * Usage:
- *   new EditorView(\{
- *     extensions: [
- *       basicSetup,
- *       html(),
- *       pantokenHtmlCompletion(\{ model \}),
- *     ],
- *   \});
- */
+interface ClassContext {
+  from: number;
+  partial: string;
+  tokens: string[];
+}
+
+function classContextAt(context: CompletionContext): ClassContext | undefined {
+  let node: ReturnType<typeof syntaxTree>["topNode"] | null = syntaxTree(
+    context.state,
+  ).resolveInner(context.pos, -1);
+  while (node && node.name !== "Attribute") node = node.parent;
+  if (!node) return undefined;
+
+  const attribute = context.state.sliceDoc(node.from, node.to);
+  const match = /^class\s*=\s*(["'])([\s\S]*)$/u.exec(attribute);
+  if (!match) return undefined;
+
+  const valueStart = node.from + attribute.indexOf(match[1]) + 1;
+  const valueEnd = valueStart + match[2].replace(new RegExp(`${match[1]}$`, "u"), "").length;
+  if (context.pos < valueStart || context.pos > valueEnd) return undefined;
+
+  const valueBeforeCursor = context.state.sliceDoc(valueStart, context.pos);
+  const partial = /[^\s]*$/u.exec(valueBeforeCursor)?.[0] ?? "";
+  const fullValue = context.state.sliceDoc(valueStart, valueEnd);
+  return {
+    from: context.pos - partial.length,
+    partial,
+    tokens: fullValue.split(/\s+/u).filter(Boolean),
+  };
+}
+
+function isComponentEntry(entry: CssDocEntry): boolean {
+  const kind = entry.kind as string;
+  return kind === "component" || kind === "custom-component";
+}
+
+function componentCompletions(model: readonly CssDocEntry[], existing: Set<string>): Completion[] {
+  return model
+    .filter((entry) => entry.className.startsWith(".instui-"))
+    .map((entry) => ({
+      label: entry.className.slice(1),
+      detail: entry.kind,
+      type: "class",
+      info: entry.summary ?? "",
+    }))
+    .filter((completion) => !existing.has(completion.label));
+}
+
+function modifierCompletions(
+  entry: CssDocEntry,
+  model: readonly CssDocEntry[],
+  existing: Set<string>,
+  partial: string,
+): Completion[] {
+  return getApplicableModifiers(entry.name, model)
+    .filter(({ modifier }) => !existing.has(modifier.name))
+    .filter(({ modifier }) => modifier.name.startsWith(partial))
+    .map(({ modifier, source, scope }) => ({
+      label: modifier.name,
+      detail: scope === "utility" ? `${source.name} · ${modifier.prop}` : modifier.prop,
+      type: "class",
+      info: modifier.description ?? source.summary ?? "",
+    }));
+}
+
+/** Create a CodeMirror 6 completion extension for pantoken classes in HTML `class` attributes. */
 export function pantokenHtmlCompletion(options: AutocompleteOptions) {
   return autocompletion({
     override: [
       (context: CompletionContext) => {
-        // Check if we're in a class attribute.
-        const { state, pos } = context;
-        const line = state.doc.lineAt(pos);
-        const lineText = line.text;
-        const posInLine = pos - line.from;
+        const classContext = classContextAt(context);
+        if (!classContext) return null;
 
-        // Check if we're inside a class="..." or class='...'
-        const classMatch = /class=["']([^"']*)/g.exec(lineText);
-        if (!classMatch || posInLine < classMatch.index + classMatch[0].length) {
-          return null; // Not in a class attribute
+        const { from, partial, tokens } = classContext;
+        const existing = new Set(tokens.filter((token) => token !== partial));
+        if (partial.startsWith("instui-")) {
+          return {
+            from,
+            options: componentCompletions(options.model, existing),
+            validFor: /instui-[\w-]*/u,
+          };
         }
 
-        // Extract the partial class string being typed.
-        const classString = classMatch[1];
-        const lastSpace = classString.lastIndexOf(" ");
-        const partial = lastSpace === -1 ? classString : classString.slice(lastSpace + 1);
-
-        // Only provide completions for instui-* tokens.
-        if (!partial.startsWith("instui-")) {
-          return null;
-        }
-
-        // Generate completions based on the partial token.
-        const completions = generateCompletions(partial, options.model);
-
-        // Anchor `from` at the last "-" boundary (or right after "instui-" for a bare component
-        // name), not at the start of the whole typed token — CodeMirror's default fuzzy matcher
-        // filters options against the text between `from` and `pos`, and none of our option
-        // labels include the "instui-" prefix or earlier segments.
-        const lastDash = partial.lastIndexOf("-");
-        const matchLength = partial.length - (lastDash + 1);
+        if (!partial.startsWith("-")) return null;
+        const component = tokens
+          .map((token) => findEntryByClassToken(token, options.model))
+          .find((entry): entry is CssDocEntry => Boolean(entry && isComponentEntry(entry)));
+        if (!component) return null;
 
         return {
-          from: pos - matchLength,
-          options: completions,
+          from,
+          options: modifierCompletions(component, options.model, existing, partial),
+          filter: false,
+          validFor: /-{1,2}[\w-]*/u,
         };
       },
     ],
   });
-}
-
-/**
- * Generate completion suggestions for a partial pantoken token.
- * Handles three cases:
- * 1. `instui-` → component/utility names
- * 2. `instui-button-` → modifier suggestions for that component
- * 3. `instui-button.-color-` → values for that modifier
- */
-function generateCompletions(partial: string, _model: CssDocEntry[]): Completion[] {
-  const completions: Completion[] = [];
-
-  // Case 1: Completing component name (instui-abc...)
-  if (!partial.includes("-", "instui-".length)) {
-    // Extract what's being typed after "instui-"
-    const prefix = partial.slice("instui-".length).toLowerCase();
-
-    // Get all components and utilities that match the prefix.
-    const allItems = [...listComponents(), ...listUtilities()];
-    for (const item of allItems) {
-      if (item.name.toLowerCase().startsWith(prefix)) {
-        completions.push({
-          label: item.name,
-          detail: item.kind,
-          type: "class",
-          info: (item as any).description || "",
-        });
-      }
-    }
-
-    return completions;
-  }
-
-  // Case 2/3: Completing modifiers (instui-button-...)
-  const parts = partial.split("-");
-  const componentName = parts[1]; // e.g., "button" from "instui-button-..."
-
-  // If we have a valid component, provide modifier suggestions.
-  const mods = getModifierSuggestions(componentName);
-  for (const mod of mods) {
-    // Provide modifier completions like "-color-" or "-color-primary"
-    const modPrefix = mod.value
-      ? `${mod.name}-`.split("-").slice(0, 2).join("-") // e.g., "-color-"
-      : mod.name;
-
-    completions.push({
-      label: modPrefix,
-      detail: mod.prop || "modifier",
-      type: "class",
-      info: mod.description || "",
-    });
-  }
-
-  return completions;
 }

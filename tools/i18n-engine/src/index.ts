@@ -71,6 +71,8 @@ export {
 export {
   parseMessageSource,
   extractMessagesSpace,
+  extractMessagesSources,
+  type MessageSourceLocation,
   type MessageSource,
   type MessageSourceEntry,
   type MessageUnit,

@@ -1,128 +1,121 @@
 /**
  * @vitest-environment happy-dom
  */
-import { expect, test } from "vite-plus/test";
+import { completionStatus, currentCompletions, startCompletion } from "@codemirror/autocomplete";
+import { html } from "@codemirror/lang-html";
 import { EditorState } from "@codemirror/state";
 import { EditorView } from "@codemirror/view";
-import { completionStatus, currentCompletions, startCompletion } from "@codemirror/autocomplete";
+import { expect, test } from "vite-plus/test";
 import type { CssDocEntry } from "../src/cssdoc/model.js";
 import { pantokenHtmlCompletion } from "../src/codemirror/autocomplete.js";
 
-/** Builds a detached `EditorView` positioned at `pos` with the real completion extension. */
-function completionView(doc: string, pos: number): EditorView {
-  const state = EditorState.create({
-    doc,
-    selection: { anchor: pos },
-    extensions: [pantokenHtmlCompletion({ model: [] })],
-  });
-  return new EditorView({ state, parent: document.body });
-}
-
-/** Waits for the async completion source to resolve before asserting on results. */
-async function waitForCompletions(view: EditorView): Promise<void> {
-  for (let i = 0; i < 20 && completionStatus(view.state) === "pending"; i++) {
-    await new Promise((resolve) => setTimeout(resolve, 10));
-  }
-}
-
-test("pantokenHtmlCompletion suggests component/utility names after 'instui-'", async () => {
-  const doc = '<button class="instui-b">';
-  const pos = doc.indexOf('"instui-b') + '"instui-b'.length;
-  const view = completionView(doc, pos);
-  startCompletion(view);
-  await waitForCompletions(view);
-
-  const labels = currentCompletions(view.state).map((c) => c.label);
-  expect(labels).toContain("button");
-  view.destroy();
-});
-
-test("pantokenHtmlCompletion suggests modifiers once a component name is complete", async () => {
-  const doc = '<button class="instui-button-">';
-  const pos = doc.indexOf('"instui-button-') + '"instui-button-'.length;
-  const view = completionView(doc, pos);
-  startCompletion(view);
-  await waitForCompletions(view);
-
-  const labels = currentCompletions(view.state).map((c) => c.label);
-  expect(labels.length).toBeGreaterThan(0);
-  view.destroy();
-});
-
-test("pantokenHtmlCompletion returns no completions outside a class attribute", async () => {
-  const doc = "<p>instui-button</p>";
-  const pos = doc.indexOf("instui-button") + "instui-button".length;
-  const view = completionView(doc, pos);
-  startCompletion(view);
-  await waitForCompletions(view);
-
-  expect(currentCompletions(view.state)).toHaveLength(0);
-  view.destroy();
-});
-
-// Mock model with components
-const mockModel: CssDocEntry[] = [
+const model = [
   {
     name: "button",
     className: ".instui-button",
     kind: "component",
-    description: "A button component",
-    examples: ['<button class="instui-button">Click</button>'],
+    summary: "A button.",
     modifiers: [
-      { name: "-color-primary", prop: "color", value: "primary" },
       { name: "-color-secondary", prop: "color", value: "secondary" },
-      { name: "-size-small", prop: "size", value: "small" },
+      {
+        name: "-size-small",
+        prop: "size",
+        value: "small",
+        description: "Small. Long-form alias of `-size-sm`.",
+      },
+      { name: "-color-primary", prop: "color", value: "primary" },
+      { name: "-size-sm", prop: "size", value: "sm" },
+      { name: "-icon-*", prop: "icon", pattern: true },
     ],
-  } as any,
+  },
   {
-    name: "badge",
-    className: ".instui-badge",
+    name: "close-button",
+    className: ".instui-close-button",
+    kind: "component",
+    modifiers: [{ name: "-size-sm", prop: "size", value: "sm" }],
+  },
+  {
+    name: "layout",
+    className: ".--display-flex",
     kind: "utility",
-    description: "A badge utility",
-    examples: ['<span class="instui-badge">New</span>'],
-    modifiers: [],
-  } as any,
-];
+    global: true,
+    modifiers: [
+      { name: "--display-flex", prop: "display", value: "flex" },
+      { name: "--display-grid", prop: "display", value: "grid" },
+    ],
+  },
+] as CssDocEntry[];
 
-test("autocomplete can find components matching prefix", () => {
-  // Manually test the component matching logic
-  const prefix = "bu"; // User typed "instui-bu..."
-  const components = mockModel.filter((c) => c.name.toLowerCase().startsWith(prefix));
-  expect(components.length).toBeGreaterThan(0);
-  expect(components.some((c) => c.name === "button")).toBe(true);
+function completionView(doc: string, marker = "|"): EditorView {
+  const pos = doc.indexOf(marker);
+  const cleanDoc = doc.replace(marker, "");
+  const state = EditorState.create({
+    doc: cleanDoc,
+    selection: { anchor: pos },
+    extensions: [html(), pantokenHtmlCompletion({ model })],
+  });
+  return new EditorView({ state, parent: document.body });
+}
+
+async function labelsFor(doc: string): Promise<string[]> {
+  const view = completionView(doc);
+  startCompletion(view);
+  for (let index = 0; index < 20 && completionStatus(view.state) === "pending"; index += 1) {
+    await new Promise((resolve) => setTimeout(resolve, 10));
+  }
+  const labels = currentCompletions(view.state).map((completion) => completion.label);
+  view.destroy();
+  return labels;
+}
+
+function buttonMarkup(...classTokens: string[]): string {
+  return `<button class="${classTokens.join(" ")}">`;
+}
+
+test("suggests complete component classes after instui-", async () => {
+  expect(await labelsFor('<button class="instui-b|">')).toContain("instui-button");
 });
 
-test("autocomplete filters out non-matching components", () => {
-  const prefix = "card";
-  const components = mockModel.filter((c) => c.name.toLowerCase().startsWith(prefix));
-  expect(components).toHaveLength(0);
+test("suggests separate component modifiers from the component in the same attribute", async () => {
+  const labels = await labelsFor(buttonMarkup("instui-button", "-co|"));
+  expect(labels.slice(0, 2)).toEqual(["-color-primary", "-color-secondary"]);
+  expect(labels).not.toContain("-icon-*");
 });
 
-test("autocomplete includes utilities in completions", () => {
-  const prefix = "ba";
-  const components = mockModel.filter((c) => c.name.toLowerCase().startsWith(prefix));
-  expect(components.some((c) => c.kind === "utility")).toBe(true);
+test("suggests semantically sorted canonical modifiers only", async () => {
+  const labels = await labelsFor(buttonMarkup("instui-button", "-|"));
+  expect(labels).toEqual([
+    "-color-primary",
+    "-color-secondary",
+    "-size-sm",
+    "--display-flex",
+    "--display-grid",
+  ]);
+  expect(labels).not.toContain("-size-small");
 });
 
-test("autocomplete can extract component name from partial token", () => {
-  const partial = "instui-button-";
-  const parts = partial.split("-");
-  const componentName = parts[1]; // Should be "button"
-  expect(componentName).toBe("button");
-  const component = mockModel.find((c) => c.name === componentName);
-  expect(component).toBeDefined();
+test("suggests global utility modifiers", async () => {
+  expect(await labelsFor(buttonMarkup("instui-button", "--dis|"))).toContain("--display-flex");
 });
 
-test("autocomplete can suggest modifiers for a component", () => {
-  const component = mockModel.find((c) => c.name === "button");
-  expect(component).toBeDefined();
-  expect(component!.modifiers).toBeDefined();
-  expect(component!.modifiers.length).toBeGreaterThan(0);
-  expect(component!.modifiers.some((m) => m.name.includes("color"))).toBe(true);
+test("resolves hyphenated component names", async () => {
+  expect(await labelsFor(buttonMarkup("instui-close-button", "-si|"))).toContain("-size-sm");
 });
 
-test("autocomplete ignores components without modifiers", () => {
-  const component = mockModel.find((c) => c.name === "badge");
-  expect(component).toBeDefined();
-  expect(component!.modifiers).toHaveLength(0);
+test("supports multiline class attributes", async () => {
+  expect(await labelsFor('<button\n class="instui-button\n -si|">')).toContain("-size-sm");
+});
+
+test("does not suggest a modifier already present", async () => {
+  const labels = await labelsFor(buttonMarkup("instui-button", "-color-primary", "-co|"));
+  expect(labels).not.toContain("-color-primary");
+  expect(labels).toContain("-color-secondary");
+});
+
+test("returns no modifier completions without a known component", async () => {
+  expect(await labelsFor(buttonMarkup("custom-button", "-co|"))).toHaveLength(0);
+});
+
+test("returns no completions outside a class attribute", async () => {
+  expect(await labelsFor("<p>instui-b|</p>")).toHaveLength(0);
 });

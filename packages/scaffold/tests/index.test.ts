@@ -31,12 +31,227 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(existsSync(join(target, "theme.js"))).toBe(true);
   expect(existsSync(join(target, "index.html"))).toBe(true);
   expect(existsSync(join(target, "src/main.ts"))).toBe(true);
+  const main = readFileSync(join(target, "src/main.ts"), "utf8");
+  const appHtml = readFileSync(join(target, "src/app.html"), "utf8");
+  expect(appHtml.match(/class="instui-button -size-sm -color-secondary -toggle"/g)).toHaveLength(3);
+  expect(appHtml).toContain('aria-pressed="true"');
+  expect(appHtml).toContain('class="instui-checkbox -variant-toggle"');
+  expect(appHtml).toContain('class="instui-simple-select" id="cdn-provider"');
+  expect(appHtml).toContain('class="instui-close-button -size-sm theme-tray__close"');
+  expect(appHtml).toContain('popovertargetaction="hide"');
+  expect(appHtml).toContain('aria-label="{{closeLabel}}"');
+  expect(appHtml).toContain('id="preview-popup-toggle"');
+  expect(appHtml).toContain('aria-label="{{previewPopupLabel}}"');
+  expect(appHtml).not.toContain("theme-picker__item");
+  expect(main.match(/selectToggleButton\(themeButtons, themeButton\);/g)).toHaveLength(3);
+  expect(main).toContain("selectToggleButton(themeButtons, button);");
+  expect(main).not.toContain("selectButton(themeButtons");
+  expect(main).toContain(
+    'document.querySelectorAll<HTMLButtonElement>(".theme-picker [data-theme]")',
+  );
+  expect(main.indexOf('document.querySelector<HTMLDivElement>("#app")!')).toBeLessThan(
+    main.indexOf("interactionsScript.src = interactionsIifeUrl"),
+  );
+  expect(main).toContain("createPlaceholdPlugin");
+  expect(main).toContain("resolveImage: (placeholder) => {");
+  expect(main).toContain("src: image.url");
+  expect(main).toContain('alt: placeholder.altText ?? ""');
+  expect(main).toContain("createContentClassesPlugin");
+  expect(main).toContain("CONTENT_CLASSES_PLUGIN_NAME");
+  expect(main).toContain("getUsedIconCdnFiles");
+  expect(main).toContain("getUsedLogoCdnFiles");
+  expect(main).toContain("syncIconAssetsFromEditor();");
+  expect(main).toContain("...currentAssets]");
+  expect(main).toContain("const onMissingAsset = () => void refreshAll();");
+  expect(main).toContain(
+    '"/node_modules/@pantoken/plugin-{logos,simple-icons,lucide-lab,custom-icons}/dist/**/*.css"',
+  );
+  expect(main).toContain("buildFileUrl(file, providerSelect.value)");
+  expect(main).toContain("buildAssetUrl: buildSelectedAssetUrl");
+  expect(main).toContain("createA11yPlugin");
+  expect(main).toContain("createSourceTogglePlugin");
+  expect(main).toContain("if (isLocalPreview) {");
+  expect(main).toContain("localProviderOption.value = LOCAL_PROVIDER_ID;");
+  expect(main).toContain("async function inlineAssetCss");
+  expect(main).toContain("const dynamicCss = await inlineAssetCss(currentAssets);");
+  expect(main).toContain("if (selection.provider !== LOCAL_PROVIDER_ID) {");
+  expect(main).toContain("let refreshGeneration = 0;");
+  expect(main).toContain("providerSelect.value = LOCAL_PROVIDER_ID;");
+  for (const theme of ["next-gen", "canvas", "canvas-high-contrast"]) {
+    expect(main).toContain(`@pantoken/tinymce/skins/${theme}/skin.css?inline`);
+    expect(main).toContain(`@pantoken/tinymce/skins/${theme}/content.css?inline`);
+  }
+  expect(main.indexOf("document.head.append(chromeThemeStyle)")).toBeLessThan(
+    main.indexOf("document.head.append(customThemeColorsStyle)"),
+  );
+  expect(main).toContain("editorSkinStyle.textContent = css.skin;");
+  expect(main).toContain(
+    'editorContentStyle.textContent = [css.content, PREVIEW_SCHEME_FORCE_CSS].join("\\n");',
+  );
+  expect(main).toContain("editorContentStyle.ownerDocument !== editorDocument");
+  expect(main).not.toContain("editorSkinLink?.remove()");
+  expect(main).not.toContain("editorContentLink?.remove()");
+  expect(main).not.toContain("tinymce/skins/ui/oxide/skin.css");
+  expect(main).toContain(
+    '"pantoken pantoken_content_classes placehold pantoken_a11y pantoken_save pantoken_sup_sub pantoken_source_toggle pantoken_fullscreen_footer pantoken_searchreplace_footer pantoken_visualblocks_footer image link lists',
+  );
+  expect(main).toContain('createA11yPlugin({ display: "footer", config: a11yRuntimeConfig })');
+  expect(main).toContain("createSavePlugin<CanvasThemePreset>");
+  expect(main).toContain("SAVE_PLUGIN_NAME");
+  expect(main).toContain(
+    "toolbar: `${SAVE_TOOLBAR_NAME} undo redo | pantoken | fontsize blocks | bold italic underline",
+  );
+  expect(main).toContain(
+    'import { Check, ChevronDown, createElement, Languages, MoonStar, Palette, SunMedium } from "lucide";',
+  );
+  expect(main).toContain('createElement(icon, { width: 16, height: 16, "stroke-width": 2 })');
+  expect(main).not.toContain("icon({ size: 16, strokeWidth: 2 })");
+  expect(main).not.toContain("pantokenA11y");
+  expect(main).toContain("let previewMutationObserver: MutationObserver | undefined");
+  expect(main).toContain("previewFrame.contentDocument?.documentElement");
+  expect(main).toContain("previewMutationObserver.observe(root");
+  expect(main).toContain("previewFrame.style.height");
+  expect(main).toContain("function openPreviewPopup(): void {");
+  expect(main).toContain("function restorePreviewFromPopup(");
+  expect(main).toContain("previewAnchor.after(previewPane);");
+  expect(main).toContain("previewPopup.closed");
+  expect(main).toContain('popup.addEventListener("pagehide"');
+  expect(main).toContain('window.addEventListener("beforeunload"');
+  expect(main).toContain('if (!href?.startsWith("#")) return;');
+  expect(main).toContain("event.preventDefault();");
+  expect(main).toContain("previewDocument.getElementById(fragment)");
+  expect(main).toContain("previewDocument.getElementsByName(fragment)[0]");
+  expect(main).toContain(
+    'previewFrame.contentDocument?.addEventListener("click", handlePreviewLinkClick);',
+  );
+  // The docs page's dark/light mode re-themes the chrome only — it must never drive the
+  // "include dark mode" checkbox, which is an independent authoring choice.
+  expect(main).not.toContain('includeDarkModeCheckbox.checked = mode === "dark";');
+  expect(main).toContain("document.documentElement.dataset.pantokenScheme = mode;");
+  expect(main).toContain("applyEditorTheme(activeEditor);");
+  expect(main).toContain(
+    "document.querySelector<HTMLMetaElement>('meta[name=\"application-name\"]')",
+  );
+  expect(main).toContain("document.querySelector<HTMLMetaElement>('meta[name=\"theme-color\"]')");
+  expect(main).toContain("getComputedStyle(document.documentElement).backgroundColor");
+  expect(main).toContain('link[rel="icon"][data-pantoken-themed-icon]');
+  expect(main).toContain("PANTOKEN_ICON,");
+  expect(main).toContain('getPropertyValue("--instui-primitive-color-navy-navy100")');
+  expect(main.match(/syncBrowserMetadata\(\);/g)).toHaveLength(2);
+  expect(main).toContain("refreshAll();");
+  expect(main).toContain("interface CanvasThemePreset");
+  expect(main).toContain("readonly theme: ThemeVariant;");
+  expect(main).toContain("readonly color: PantokenColorNamespace;");
+  expect(main).toContain("readonly mode: ThemeMode;");
+  expect(main).toContain("readonly cdnProvider: string;");
+  expect(main).toContain("readonly customCss: string;");
+  expect(main).toContain("readonly customJs: string;");
+  expect(main).toContain("readonly editorHtml: string;");
+  expect(main).toContain("normalizeEditorHtml(preset.editorHtml, preset.color)");
+  expect(main).toContain("activeEditor.resetContent(editorHtml);");
+  expect(main).toContain("sourceToggle.replaceAll(editorHtml)");
+  expect(main).toContain('selector: "",');
+  expect(main).toContain("<head><style>${themeCss}");
+  expect(main).not.toContain('<html data-pantoken-color="${selectedColor}">');
+  expect(appHtml).toContain('<div data-pantoken-color="navy"><p></p></div>');
+  expect(main).toContain('autosave_interval: "30s"');
+  expect(main).toContain('import { strToU8, zipSync } from "fflate";');
+  expect(main).toContain('document.querySelector<HTMLButtonElement>("#download-package")!');
+  expect(main).toContain('document.querySelector<HTMLButtonElement>("#download-html")!');
+  expect(main).toContain('downloadHtmlButton.addEventListener("click"');
+  expect(main).toContain(
+    'new Blob([getNormalizedEditorHtml()], { type: "text/html;charset=utf-8" })',
+  );
+  expect(main).toContain('`${slugifyExportName(activePresetName() ?? "index")}.html`');
+  expect(main).toContain('downloadPackageButton.addEventListener("click"');
+  expect(main).toContain("const files = buildDownloadFiles(theme);");
+  expect(main).toContain('"index.html": strToU8(getNormalizedEditorHtml())');
+  expect(main).toContain('"theme.css": strToU8(files.css)');
+  expect(main).toContain('"theme.js": strToU8(files.js)');
+  expect(main).toContain('`${slugifyExportName(activePresetName() ?? "canvas-theme")}.zip`');
+  expect(main).toContain('type: "application/zip"');
+  // The standalone shell's brand mark is a link to pantoken.app, styled as a primary icon button
+  // (not a plain div) so its glyph gets the button's own light/dark contrast handling.
+  expect(main).toContain('brandMark.href = "https://pantoken.app/";');
+  expect(main).toContain('brandMark.target = "_blank";');
+  expect(main).toContain('rel = "noopener noreferrer"');
+  expect(main).toContain(
+    'brandMark.className = "instui-button -color-primary -shape-square canvas-rce-shell__brand-mark"',
+  );
+  // The standalone shell's appearance picker only offers Light/Dark (no "System") and defaults to
+  // light — auto-following the OS scheme caused more confusion than it was worth.
+  expect(main).toContain("const applyAppearance = (appearance:");
+  expect(main).toContain('applyAppearance("light");');
+  expect(main).toContain('if (appearance === "light") option.classList.add("is-selected");');
+  expect(main).not.toContain('"system"');
+  // The color menu renders every pantoken color (not a hardcoded 7-item subset) plus Custom, with the
+  // same swatch disc the theme-tray picker already uses, and marks the app's actual default selected.
+  expect(main).toContain("for (const color of [...COLOR_KEYS, CUSTOM_COLOR_KEY]) {");
+  expect(main).toContain('swatch.className = "theme-picker__swatch";');
+  expect(main).toContain('if (color === "navy") option.classList.add("is-selected");');
+  expect(main).not.toContain('["navy", "Navy"],');
+  // Native <details> doesn't close on outside click/Escape on its own.
+  expect(main).toContain('document.addEventListener("click", (event) => {');
+  expect(main).toContain('event.key !== "Escape"');
+  // "Large" only got a 50/50 flex share in row layout, so it could render narrower than the fixed
+  // "medium"/"small" widths on a narrow window — this floor guarantees it never does.
+  expect(main).toContain('previewPane.style.minWidth = "var(--instui-breakpoints-lg)";');
+  // The standalone shell's header swatches must be immune to the chrome's active color remap,
+  // same as the theme tray — otherwise the navy/blue swatches get remapped to whatever color the
+  // chrome currently has active.
+  expect(main).toContain('resetSelector: "#theme-tray, #canvas-rce-shell"');
+  expect(readFileSync(join(target, "src/app.css"), "utf8")).toContain(
+    '.panes[data-layout="row"] .preview-pane',
+  );
+  // Stacked layout must size the editor pane by content (so TinyMCE's own resize handle can grow
+  // it freely) — `flex: 1 1 0` here gave it a zero flex-basis with no free space to grow into.
+  expect(readFileSync(join(target, "src/app.css"), "utf8")).toContain(
+    '.panes[data-layout="row"] .editor-pane {\n  flex: 1 1 0;\n}',
+  );
+  // The fullscreen overlay's background must adapt to dark mode like every other background in
+  // this file — a hardcoded `#fff` fallback showed white chrome behind a dark-mode preview.
+  expect(readFileSync(join(target, "src/app.css"), "utf8")).toMatch(
+    /background:\s*light-dark\(\s*var\(--instui-color-background-container\),\s*var\(--instui-color-background-page\)\s*\);/,
+  );
+  expect(readFileSync(join(target, "src/app.css"), "utf8")).not.toContain(
+    "background: var(--instui-color-background-primary, #fff);",
+  );
+  expect(main).not.toContain('tinymce.PluginManager.add("pantoken_components"');
+  expect(main).not.toContain('tinymce.PluginManager.add("pantoken_source_toggle"');
+  expect(existsSync(join(target, "src/preferences.ts"))).toBe(true);
+  expect(main).toContain('import { loadPreferences, savePreferences } from "./preferences.ts";');
+  expect(main).toContain("const preferences = loadPreferences();");
+  expect(main).toContain("function persistPreferences(): void {");
+  const preferences = readFileSync(join(target, "src/preferences.ts"), "utf8");
+  expect(preferences).toContain("pantoken-canvas-theme-editor-preferences");
+  expect(preferences).toContain("export function loadPreferences(");
+  expect(preferences).toContain("export function savePreferences(");
   expect(readFileSync(join(target, "theme.css"), "utf8")).toContain(
     "@pantoken/css/dist/style.rebrand.light.lean.css",
   );
+  expect(readFileSync(join(target, "theme.css"), "utf8")).toContain(
+    "@pantoken/plugin-custom-theme-colors/dist/custom-theme-colors.scoped.css",
+  );
   const pkg = readFileSync(join(target, "package.json"), "utf8");
   expect(pkg).toContain('"name": "my-app"');
+  expect(pkg).toContain('"@pantoken/tinymce-placehold": "latest"');
+  expect(pkg).toContain('"@pantoken/plugin-logos": "latest"');
+  expect(pkg).toContain('"@pantoken/tinymce-a11y": "latest"');
+  expect(pkg).toContain('"@pantoken/tinymce-save": "latest"');
+  expect(pkg).toContain('"fflate": "catalog:"');
   expect(pkg).not.toContain("{{projectName}}");
+});
+
+test("canvas-theme-editor keeps other tinymce config keys when persisting a11y settings", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-canvas-prefs-"));
+  const target = join(dir, "my-app");
+  await scaffoldProject("canvas-theme-editor", target);
+  const preferences = readFileSync(join(target, "src/preferences.ts"), "utf8");
+  expect(preferences).toContain("const current = loadPreferences();");
+  expect(preferences).toContain(
+    '...(typeof current.tinymceConfig === "object" && current.tinymceConfig !== null',
+  );
+  expect(preferences).toContain("tinymceConfig: nextTinymceConfig,");
 });
 
 test("canvas-theme-editor's theme.css/theme.js honor --cdn/--theme at scaffold time", async () => {
@@ -46,6 +261,9 @@ test("canvas-theme-editor's theme.css/theme.js honor --cdn/--theme at scaffold t
   const themeCss = readFileSync(join(target, "theme.css"), "utf8");
   expect(themeCss).toContain("unpkg.com");
   expect(themeCss).toContain("style.canvas.lean.css");
+  expect(themeCss).toContain(
+    "@pantoken/plugin-custom-theme-colors/dist/custom-theme-colors.scoped.css",
+  );
 });
 
 test("theme-editor is accepted as an alias for canvas-theme-editor", async () => {

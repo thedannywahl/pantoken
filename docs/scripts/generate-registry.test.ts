@@ -124,10 +124,12 @@ test("base and themes install their required CSS in dependency order", () => {
   const catalog = buildRegistryCatalog();
   const base = catalog.items.find(({ name }) => name === "base");
   const canvas = catalog.items.find(({ name }) => name === "theme-canvas");
+  const nextGen = catalog.items.find(({ name }) => name === "theme-rebrand");
   expect(base?.css).toHaveProperty('@import "@pantoken/css/style.css"');
   expect(base?.css).toHaveProperty('@import "@pantoken/shadcn/tailwind-v4.css"');
   expect(canvas?.registryDependencies).toContain("@pantoken/base");
   expect(canvas?.css).toHaveProperty('@import "@pantoken/css/style.canvas.css"');
+  expect(nextGen?.title).toBe("Instructure Next gen Theme");
 });
 
 test("publishes applicable plugin CSS without build-tool plugins", () => {

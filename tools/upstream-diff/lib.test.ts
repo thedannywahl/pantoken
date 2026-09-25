@@ -15,6 +15,7 @@ import type { Theme, Token } from "@pantoken/tokens";
 const prov = (ref: string, icons: string): Provenance => ({
   designTokens: { package: "@instructure/instructure-design-tokens", ref, commit: "abcdef0" },
   uiIcons: { package: "@instructure/ui-icons", resolved: icons },
+  lucide: { package: "lucide", resolved: "1.46.0" },
 });
 
 const tok = (name: string, value: string, extra: Partial<Token> = {}): Token => ({

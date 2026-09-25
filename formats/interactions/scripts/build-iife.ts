@@ -2,7 +2,8 @@
  * Build standalone IIFE bundles for `@pantoken/interactions`.
  *
  * Generates:
- * - `dist/interactions.iife.js` — all interactions in one file
+ * - `dist/interactions.iife.js` — the manual API (from `src/index.ts`) plus every component's
+ *   auto-init side effect, so a single `<script>` wires up every `.instui-*` component on the page
  * - `dist/<name>.iife.js` per component — individual component interactions for CDN use
  *
  * Runs after `vp pack` in the build task.
@@ -44,6 +45,7 @@ const ALL_COMPONENTS = [
   "drawer-layout",
   "date-input",
   "date-time-input",
+  "tabs",
 ];
 
 function toCamelCase(name: string): string {
@@ -51,8 +53,23 @@ function toCamelCase(name: string): string {
 }
 
 const root = resolve(import.meta.dirname, "..");
+const entriesDir = resolve(root, "generated/iife-entries");
+mkdirSync(entriesDir, { recursive: true });
 
 // ── Full interactions bundle ────────────────────────────────────────────────────────────────
+// Re-exports the manual API and imports every component's auto-init side effect, so this single
+// bundle both exposes `initTabs`/etc. and wires up every `.instui-*` component on its own.
+
+const combinedEntryPath = resolve(entriesDir, "interactions.ts");
+writeFileSync(
+  combinedEntryPath,
+  [
+    `export * from ${JSON.stringify(resolve(root, "src/index.ts"))};`,
+    ...ALL_COMPONENTS.map(
+      (name) => `import ${JSON.stringify(resolve(root, "src/components", `${name}.ts`))};`,
+    ),
+  ].join("\n") + "\n",
+);
 
 await build({
   configFile: false,
@@ -63,13 +80,16 @@ await build({
     emptyOutDir: false,
     minify: true,
     lib: {
-      entry: resolve(root, "src/index.ts"),
+      entry: combinedEntryPath,
       formats: ["iife"],
       name: "PantokenInteractions",
       fileName: () => "interactions.iife.js",
     },
     rollupOptions: {
       external: [],
+      // Each component import exists for its document-level initialization side effect; don't let
+      // tree-shaking erase it because nothing references its (nonexistent) exports.
+      treeshake: false,
     },
   },
 });
@@ -77,9 +97,6 @@ await build({
 console.log("✓ interactions: wrote dist/interactions.iife.js");
 
 // ── Per-component bundles ───────────────────────────────────────────────────────────────────
-
-const entriesDir = resolve(root, "generated/iife-entries");
-mkdirSync(entriesDir, { recursive: true });
 
 for (const name of ALL_COMPONENTS) {
   const entryPath = resolve(entriesDir, `${name}.ts`);

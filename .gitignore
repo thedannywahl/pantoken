@@ -31,6 +31,7 @@ dist-ssr
 packages/scaffold/.dev/
 
 # Docs site build output (TypeDoc API markdown, VitePress cache, generated nav logos; reproduced by `docs:build`).
+docs/--port/
 docs/api/
 docs/*/api/
 docs/.vitepress/cache/
@@ -89,3 +90,4 @@ docs/.vitepress/.temp/
 .release-plan.json
 .release-plan.md
 .release-packages.txt
+.vitest/

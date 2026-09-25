@@ -31,12 +31,26 @@ pantoken is a design-token transformation and distribution system. It converts I
 - Browser component configuration, including numeric attributes and CSS custom properties such as ProgressBar's `min`/`value-now`/`value-max`, Alert's `--timeout`, and ProgressCircle's `--animation-delay`, is application-controlled. Web components and interaction helpers validate expected numeric ranges, but applications remain responsible for deciding which elements may be updated, dismissed, or animated.
 - pantoken plugins execute with the privileges of the Node.js build or application process that loads them. Plugin structure is validated by `validatePlugin` (non-empty name, function hooks, no unrecognised keys) and plugin output is validated at the IR boundary before it enters the token graph. Full execution sandboxing is planned. Only trusted plugins and configuration should be used.
 - The CLI validates `--theme`, `--class`, and `--format` inputs against allowlists at parse time; unknown flags are rejected immediately. The CLI warns when the output path escapes the current working directory but still writes to the caller-selected location.
+- `@pantoken/plugin-custom-theme-colors` accepts an arbitrary brand color for its `custom` scale (as the Canvas theme editor's Custom swatch does). Only `#rgb`/`#rrggbb` is accepted, and anything else throws a `TypeError`. The generated CSS contains only derived `#rrggbb` values, never the raw input string. Posted `customScale`/`customColor` values in demo and editor frames are dropped unless every entry is a plain hex.
 - Repository translation sources are trusted input. Entries marked `verbatim: "required"` bypass external translation adapters and are copied exactly into locale caches; `allow` only permits a model response to match the source.
+- `@pantoken/tinymce-save` persists trusted author snapshots in origin-local localStorage. Presets
+  may contain HTML, CSS, JavaScript, and host application state; they are schema-validated before
+  restoration but are not sanitized. localStorage is not secret or synchronized storage, and other
+  scripts on the same origin can read or alter it. Blocked storage and quota failures leave the
+  working document unchanged. Import/export actions read and write portable JSON files only through
+  a browser-initiated user selection flow; they do not contact the network. Opening a preset
+  containing custom JavaScript intentionally executes that code in the host editor's existing
+  preview context.
 - The public shadcn registry is an HTTPS distribution channel for package dependencies, CSS
   configuration, and usage metadata. Registry schema validation checks structure, not code quality
   or project suitability. Inspect an item with `shadcn view`, review the resulting diff, and pin
   package versions for durable applications. npm provenance covers installed packages but does not
   sign the mutable JSON served from `pantoken.app`.
+- Agent coding sessions are checkpointed by Entire and pushed to this repository as git objects
+  under `refs/entire/checkpoints/*`. Transcripts are redacted at capture time for known credential
+  formats and for email and phone PII, but they are still a record of contributor terminal and
+  editor activity. Do not paste live credentials into an agent session; use environment variables
+  and short-lived tokens instead. Redaction configuration lives in `.entire/settings.json`.
 
 ## Reporting a vulnerability
 

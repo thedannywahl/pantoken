@@ -2,7 +2,8 @@
 // once per token. The reference resolver dominates the native lineage (`toScss`, `toDtcg` and
 // `toStyleDictionary` all start with `resolveTokens`), and the drift / self-containment checks scan a
 // whole generated stylesheet, so both are measured against the real IR and real CSS, not fixtures.
-import { bench, describe } from "vite-plus/test";
+import { test, describe } from "vite-plus/test";
+import { runBench } from "./run-bench.ts";
 import {
   colorUtilitiesCss,
   danglingReferences,
@@ -51,45 +52,63 @@ const svg =
   '<path d="M1 1L23 23" onclick="x()"/><g><path d="M4 4h16v16H4z"/></g></svg>';
 
 describe("reference resolution", () => {
-  bench("resolveTokens (full IR, light)", () => {
-    resolveTokens(ir, { mode: "light" });
+  test("resolveTokens (full IR, light)", async () => {
+    await runBench("resolveTokens (full IR, light)", () => {
+      resolveTokens(ir, { mode: "light" });
+    });
   });
 
-  bench("resolveTokens (full IR, light-dark preserved)", () => {
-    resolveTokens(ir);
+  test("resolveTokens (full IR, light-dark preserved)", async () => {
+    await runBench("resolveTokens (full IR, light-dark preserved)", () => {
+      resolveTokens(ir);
+    });
   });
 
-  bench("makeResolver — one chained value", () => {
-    resolve(chainedValue);
+  test("makeResolver — one chained value", async () => {
+    await runBench("makeResolver — one chained value", () => {
+      resolve(chainedValue);
+    });
   });
 });
 
 describe("drift checks", () => {
-  bench("extractInstuiRefs (whole stylesheet)", () => {
-    extractInstuiRefs(sheet);
+  test("extractInstuiRefs (whole stylesheet)", async () => {
+    await runBench("extractInstuiRefs (whole stylesheet)", () => {
+      extractInstuiRefs(sheet);
+    });
   });
 
-  bench("danglingReferences (whole stylesheet)", () => {
-    danglingReferences(sheet);
+  test("danglingReferences (whole stylesheet)", async () => {
+    await runBench("danglingReferences (whole stylesheet)", () => {
+      danglingReferences(sheet);
+    });
   });
 
-  bench("unknownReferences (stylesheet vs IR)", () => {
-    unknownReferences(sheet, ir);
+  test("unknownReferences (stylesheet vs IR)", async () => {
+    await runBench("unknownReferences (stylesheet vs IR)", () => {
+      unknownReferences(sheet, ir);
+    });
   });
 });
 
 describe("utility emitters", () => {
-  bench("colorUtilitiesCss", () => {
-    colorUtilitiesCss(colorNames, { prefix: "instui" });
+  test("colorUtilitiesCss", async () => {
+    await runBench("colorUtilitiesCss", () => {
+      colorUtilitiesCss(colorNames, { prefix: "instui" });
+    });
   });
 
-  bench("tokenUtilitiesCss", () => {
-    tokenUtilitiesCss(utilityGroups, { prefix: "instui" });
+  test("tokenUtilitiesCss", async () => {
+    await runBench("tokenUtilitiesCss", () => {
+      tokenUtilitiesCss(utilityGroups, { prefix: "instui" });
+    });
   });
 });
 
 describe("sanitizeSvg", () => {
-  bench("strip scripts and event handlers", () => {
-    sanitizeSvg(svg);
+  test("strip scripts and event handlers", async () => {
+    await runBench("strip scripts and event handlers", () => {
+      sanitizeSvg(svg);
+    });
   });
 });

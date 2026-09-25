@@ -18,6 +18,7 @@
   "exports": {
     ".": "./dist/index.mjs",
     "./token-syntax": "./dist/token-syntax.mjs",
+    "./scope": "./dist/scope.mjs",
     "./package.json": "./package.json"
   },
   "publishConfig": {

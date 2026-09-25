@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-18 02:02+0000\n"
+"PO-Revision-Date: 2026-09-25 21:47+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -644,7 +644,7 @@ msgstr "`.--background-ai-horizontal` — Trợ giúp gradient điểm nhấn AI
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/ai-gradient/index.ts)"
-msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/gap/index.ts)"
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/ai-gradient/index.ts)"
 
 #: css/ai-gradient.md
 #, no-c-format
@@ -718,7 +718,8 @@ msgctxt "docs.api:prose"
 msgid "\n  Oops! You're using the \"error\" color.\n  "
 msgstr "\n  Xin chúc mừng! Bạn đang sử dụng màu \"success\".\n  "
 
-#: css/alert.md css/banner.md renderers/web-components/src/variables/modal.md
+#: css/alert.md css/banner.md css/button-set.md
+#: renderers/web-components/src/variables/modal.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Cancel"
@@ -863,7 +864,7 @@ msgid "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/ma
 msgstr "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/avatar/avatar.css)"
 
 #: css/avatar.md css/close-button.md css/in-place-edit.md css/modal.md
-#: css/tooltip.md
+#: css/tabs.md css/tooltip.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "This component's CSS renders and works on its own; pair it with `@pantoken/interactions` to add the interactive behavior. See the [modifier table below](#modifiers)."
@@ -1597,6 +1598,150 @@ msgctxt "docs.api:prose"
 msgid "Small. @affects breadcrumb.link — Scales the crumb separator's spacing to match. Long-form alias of `-size-sm`."
 msgstr "Nhỏ. @affects breadcrumb.link — Điều chỉnh khoảng cách của bộ phân tách giữa các mục cho phù hợp. Tên đầy đủ thay thế của `-size-sm`."
 
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`.instui-button-set` — A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
+msgstr "`.instui-button-set` — Một hàng nút liền mạch (khít, không khe), với chỉ hai góc ngoài cùng được bo tròn."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead."
+msgstr "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) đặt mặc định cho mọi phần tử con\n  `.instui-button` `.instui-button` không có modifier riêng trong cùng hạng mục — lớp modifier của chính nút luôn thắng mặc định của nhóm. `-icon-*` luôn áp dụng theo từng nút; nó\n  không bao giờ được đọc từ nhóm. Các bí danh nút đã bị bỏ (`-ghost`, `-color-primary-inverse`) (`-ghost`, `-color-primary-inverse`)\n) không được hỗ trợ làm modifier ở cấp nhóm — hãy dùng thay thế chuẩn của chúng\n  (`-color-tertiary`, `-on-color`) thay vào đó)."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Left"
+msgstr "Trái"
+
+#: css/button-set.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Right"
+msgstr "light"
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Confirm"
+msgstr "Xác nhận"
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the AI gradient treatment."
+msgstr "Đặt mặc định cho mọi phần tử con không được sửa đổi thành kiểu gradient AI."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the lower-emphasis AI treatment."
+msgstr "Đặt mặc định cho mọi phần tử con không được sửa đổi thành kiểu AI có nhấn mạnh thấp hơn."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the destructive color."
+msgstr "Đặt mặc định cho mọi phần tử con không được sửa đổi thành màu tiêu huỷ (destructive)."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the primary color."
+msgstr "Đặt mặc định cho mọi phần tử con không được sửa đổi thành màu chính (primary)."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the secondary color."
+msgstr "Đặt mặc định cho mọi phần tử con không được sửa đổi thành màu phụ (secondary)."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the success color."
+msgstr "Đặt mặc định cho mọi phần tử con không được sửa đổi thành màu thành công (success)."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the tertiary (text-style) color."
+msgstr "Đặt mặc định cho mọi phần tử con không được sửa đổi thành màu bậc ba (kiểu văn bản) )."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to tighter padding."
+msgstr "Đặt mặc định cho mọi phần tử con không được sửa đổi thành padding chặt hơn."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Lay every unmodified child out full-width."
+msgstr "Bố trí mọi phần tử con không được sửa đổi chiếm toàn chiều rộng."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child for placement on a coloured surface."
+msgstr "Đặt mặc định cho mọi phần tử con không được sửa đổi để đặt trên nền có màu."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to a round icon button."
+msgstr "Đặt mặc định cho mọi phần tử con không được sửa đổi thành nút biểu tượng tròn."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to a square icon button."
+msgstr "Đặt mặc định cho mọi phần tử con không được sửa đổi thành nút biểu tượng vuông."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to large."
+msgstr "Đặt mặc định cho mọi phần tử con không được sửa đổi thành kích thước lớn."
+
+#: css/button-set.md css/button.md css/close-button.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "(default) medium size."
+msgstr "(mặc định) kích thước trung bình."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to small."
+msgstr "Đặt mặc định cho mọi phần tử con không được sửa đổi thành kích thước nhỏ."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the pressed-state toggle treatment."
+msgstr "Đặt mặc định cho mọi phần tử con không được sửa đổi thành kiểu chuyển đổi trạng thái nhấn (pressed-state)."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to no fill."
+msgstr "Đặt mặc định cho mọi phần tử con không được sửa đổi thành không có nền (no fill)."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to no border."
+msgstr "Đặt mặc định cho mọi phần tử con không được sửa đổi thành không có viền."
+
+#: css/button-set.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "- [button](/api/css/button.md) — The child control this wraps."
+msgstr "- [close-button](/api/css/close-button.md) — Nút đóng chỉ có icon."
+
 #: css/button.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -1655,7 +1800,7 @@ msgstr "Một hành động AI nhấn mạnh thấp hơn."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A destructive action."
-msgstr "Một hành động có tính chất phá hủy."
+msgstr "Một hành động hủy hoại."
 
 #: css/button.md
 #, no-c-format
@@ -1716,12 +1861,6 @@ msgstr "Một nút icon dạng tròn."
 msgctxt "docs.api:prose"
 msgid "A square icon button."
 msgstr "Một nút icon dạng vuông."
-
-#: css/button.md css/close-button.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "(default) medium size."
-msgstr "(mặc định) kích thước trung bình."
 
 #: css/button.md css/close-button.md
 #, no-c-format
@@ -2335,7 +2474,7 @@ msgstr "Chế độ xem ngữ cảnh đóng khung một hộp chú thích bằng
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Dark (inverse) colour scheme."
-msgstr "Bảng màu tối (đảo ngược)."
+msgstr "Tối (inverse) bảng màu."
 
 #: css/context-view.md css/popover.md
 #, no-c-format
@@ -3463,6 +3602,12 @@ msgstr "Một điều khiển hành động truy cập được, được kiểu
 #: css/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
+msgstr "A seamed (flush, zero-gap) hàng nút, với chỉ hai góc ngoài cùng được bo tròn."
+
+#: css/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "A media object: a hero figure beside a title and description."
 msgstr "Một đối tượng media: một hình lớn bên cạnh tiêu đề và mô tả."
 
@@ -3733,8 +3878,8 @@ msgstr "Một `<select>` gốc được định kiểu với mũi tên caret, kh
 #: css/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "An animated loading ring; give it role=\"status\" and an aria-label."
-msgstr "Một vòng tải động; gán role=\"status\" và một aria-label."
+msgid "An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "Một vòng tải động hoặc spinner AI; đặt thuộc tính role=\"status\" và aria-label."
 
 #: css/index.md
 #, no-c-format
@@ -3891,6 +4036,12 @@ msgstr "Hệ thống biểu tượng: kích thước `.instui-icon` cộng bộ 
 msgctxt "docs.api:prose"
 msgid "Display and text-align utilities — `.--display-<value>` and `.--text-align-<value>` — as composable, global classes, usable bare or chained onto any component."
 msgstr "Tiện ích hiển thị và canh lề chữ — `.--display-<value>` và `.--text-align-<value>` — như các lớp toàn cục có thể kết hợp, dùng trơ hoặc nối chuỗi lên bất kỳ thành phần nào."
+
+#: css/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The logo system: `.instui-logo` sizing plus the shared `-logo-<name>` painter that masks a product logo (in `currentColor`) before any element, preserving the logo's own aspect ratio instead of a fixed 1:1 box."
+msgstr "Hệ thống biểu tượng: kích thước `.instui-icon` cộng bộ vẽ chung `-icon-<name>` che phủ glyph (trong `currentColor`) trước bất kỳ phần tử nào."
 
 #: css/index.md
 #, no-c-format
@@ -4295,6 +4446,24 @@ msgstr "Nhỏ. @affects list.item — Tỉ lệ khoảng cách giữa các phầ
 msgctxt "docs.api:prose"
 msgid "Remove markers and padding."
 msgstr "Loại bỏ dấu đầu dòng và khoảng đệm."
+
+#: css/logo.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "`.instui-logo` — The logo system: `.instui-logo` sizing plus the shared `-logo-<name>` painter that masks a product logo (in `currentColor`) before any element, preserving the logo's own aspect ratio instead of a fixed 1:1 box."
+msgstr "`.instui-icon` — Hệ thống biểu tượng: kích thước `.instui-icon` cùng bộ vẽ chung `-icon-<name>` che một ký tự đồ họa (trong `currentColor`) trước bất kỳ phần tử nào."
+
+#: css/logo.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A logo is meaningful, not decorative — give the host element `role=\"img\"` and an `aria-label` naming the product; never mark it `aria-hidden`."
+msgstr "A logo is meaningful, not decorative — gán cho phần tử chủ `role=\"img\"` và một `aria-label` đặt tên sản phẩm; không bao giờ đánh dấu nó là `aria-hidden`."
+
+#: css/logo.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Set the glyph token (`--pantoken-glyph`) and its aspect ratio (`--pantoken-logo-aspect`), then render both via the shared painter (for example `-logo-canvas-horizontal-color`, from `@pantoken/plugin-logos`)."
+msgstr "Đặt token ký tự (`--pantoken-glyph`) và hiển thị nó qua bộ vẽ chung (ví dụ `-icon-search`)."
 
 #: css/logos.md
 #, no-c-format
@@ -5400,7 +5569,7 @@ msgstr "Bị chặn"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Pastel"
-msgstr "Pastel"
+msgstr "Màu pastel"
 
 #: css/pill.md
 #, fuzzy, no-c-format
@@ -6959,14 +7128,14 @@ msgstr "Các tiện ích padding theo dạng viết tắt, dạng dài cũ và d
 #: css/spinner.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "`.instui-spinner` — An animated loading ring; give it role=\"status\" and an aria-label."
-msgstr "`.instui-spinner` — Một vòng tải động; gán role=\"status\" và aria-label."
+msgid "`.instui-spinner` — An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "`.instui-spinner` — Một vòng tải hoạt hình hoặc trình quay AI; đặt role=\"status\" và một aria-label."
 
 #: css/spinner.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color."
-msgstr "`-color-inverse` chỉ tô lại đoạn viền trên có hoạt ảnh, không phải toàn bộ đường chạy, nên nó vẫn hiển thị đúng trên thẻ tối mà không cần màu đường chạy riêng."
+msgid "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color. The AI variants replace the ring with the centred `ai-spinner` glyph while keeping the same size scale."
+msgstr "`-color-inverse` chỉ vẽ lại đoạn viền trên đang hoạt hình, không phải toàn bộ đường dẫn, vì vậy nó vẫn được đọc chính xác trên một thẻ tối mà không cần một màu đường dẫn riêng. Các biến thể AI thay thế vòng bằng ký tự `ai-spinner` được căn giữa trong khi giữ cùng tỉ lệ kích thước."
 
 #: css/spinner.md
 #, no-c-format
@@ -6979,6 +7148,18 @@ msgstr "**Source:** [spinner.css](https://github.com/thedannywahl/pantoken/blob/
 msgctxt "docs.api:prose"
 msgid "Give the spinner role=\"status\" and an aria-label so screen readers announce it as a live loading status."
 msgstr "Gán role=\"status\" và aria-label cho vòng tải để trình đọc màn hình thông báo nó là trạng thái đang tải trực tiếp."
+
+#: css/spinner.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rotating AI-gradient star."
+msgstr "Ngôi sao gradient AI đang quay."
+
+#: css/spinner.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rotating on-colour AI star for a coloured or dark surface."
+msgstr "Ngôi sao AI đồng màu đang quay, dành cho bề mặt có màu hoặc nền tối."
 
 #: css/spinner.md
 #, no-c-format
@@ -6997,6 +7178,12 @@ msgstr "Cực nhỏ. Bí danh đầy đủ của `-size-xs`."
 msgctxt "docs.api:prose"
 msgid "Extra-small."
 msgstr "Cực nhỏ."
+
+#: css/spinner.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rotates the ring, or the AI star at the slower 2.25-second cadence."
+msgstr "Xoay vòng, hoặc xoay ngôi sao AI với nhịp chậm hơn 2.25 giây."
 
 #: css/stacking.md
 #, no-c-format
@@ -7140,19 +7327,19 @@ msgstr "Đánh giá"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The Shawshank Redemption"
-msgstr "The Shawshank Redemption"
+msgstr "Chuộc tội ở Shawshank"
 
 #: css/table.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The Godfather"
-msgstr "The Godfather"
+msgstr "Bố già"
 
 #: css/table.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The Godfather: Part II"
-msgstr "The Godfather: Part II"
+msgstr "Bố già: Phần II"
 
 #: css/table.md
 #, no-c-format
@@ -7249,6 +7436,24 @@ msgstr "Lịch sử"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The Overview tab's content shows here."
+msgstr "Nội dung của tab Tổng quan hiển thị ở đây."
+
+#: css/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The Details tab's content shows here."
+msgstr "Nội dung của tab Tổng quan hiển thị ở đây."
+
+#: css/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The Disabled tab's content won't be visible."
+msgstr "Nội dung của tab Tổng quan hiển thị ở đây."
+
+#: css/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The History tab's content shows here."
 msgstr "Nội dung của tab Tổng quan hiển thị ở đây."
 
 #: css/tabs.md
@@ -7737,7 +7942,7 @@ msgctxt "docs.api:prose"
 msgid "**Source:** [toggle-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/toggle-group/toggle-group.css)"
 msgstr "**Source:** [toggle-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/toggle-group/toggle-group.css)"
 
-#: css/toggle-group.md
+#: css/toggle-group.md renderers/web-components/src/variables/tabs.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Advanced settings"
@@ -9093,6 +9298,12 @@ msgctxt "docs.api:prose"
 msgid "Also emit the deprecated InstUI-prop glyph aliases (`-render-icon-<name>`, `-render-custom-icon-<name>`)\nas functional aliases of `-icon-<name>`. Off by default — turning it on roughly doubles the sheet, so\nenable it only when you need markup written against the old `renderIcon`/`renderCustomIcon` prop names\nto keep rendering. The shipped `icons.css` is built with this on."
 msgstr "Also emit the deprecated InstUI-prop glyph aliases (`-render-icon-&lt;name&gt;`, `-render-custom-icon-&lt;name&gt;`)\nas functional aliases of `-icon-&lt;name&gt;`. Off by default — turning it on roughly doubles the sheet, so\nenable it only when you need markup written against the old `renderIcon`/`renderCustomIcon` prop names\nto keep rendering. The shipped `icons.css` is built with this on."
 
+#: formats/components/src/interfaces/IconGlyphsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Icon name → `--instui-icon-<name>` data-URI value. When given, the sheet also declares those\ncustom properties in `:root`, making it self-contained: the glyphs paint without a separate\ntoken sheet loaded alongside. Omit to emit the lean mapping-only sheet."
+msgstr "Icon name → `--instui-icon-<name>` data-URI value. Khi cung cấp, sheet cũng khai báo những\ncustom properties trong `:root`, làm cho nó tự chứa: các glyph được vẽ mà không cần một\ntoken sheet riêng được nạp kèm. Bỏ qua để xuất sheet chỉ-mapping gọn nhẹ."
+
 #: formats/components/src/interfaces/ProseOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9124,6 +9335,12 @@ msgstr "Every elevation level and alias emitted as `--instui-elevation-&lt;name&
 msgctxt "docs.api:prose"
 msgid "The elements the ring applies to by default (the common interactive/focusable elements)."
 msgstr "Các phần tử mà ring áp dụng theo mặc định (các phần tử tương tác/khả năng lấy tiêu điểm phổ biến)."
+
+#: formats/components/src/variables/aiGradientCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The AI gradient utility as a standalone, header-wrapped stylesheet."
+msgstr "Tiện ích gradient AI như một stylesheet độc lập, được bọc bởi header."
 
 #: formats/components/src/variables/alertCss.md
 #, no-c-format
@@ -9659,6 +9876,106 @@ msgctxt "docs.api:prose"
 msgid "**Wrap a section in a CSS cascade layer**"
 msgstr "**Bao bọc một phần trong lớp xếp tầng (cascade) của CSS**"
 
+#: formats/css/src/functions/darkBranch.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The dark branch of a `light-dark()` value, or `null` when the value isn't one."
+msgstr "Nhánh tối của một `light-dark()` value, hoặc `null` khi giá trị không phải vậy."
+
+#: formats/css/src/functions/lightBranch.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The light branch of a `light-dark()` value, or `null` when the value isn't one."
+msgstr "Nhánh sáng của một `light-dark()` value, hoặc `null` khi giá trị không phải vậy."
+
+#: formats/css/src/functions/multiScopeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The complete multi-scope sheet: layer order, one set of `@property` registrations, a shared base\nblock, a token block per theme, and the light/dark `color-scheme` pins."
+msgstr "Tệp nhiều phạm vi hoàn chỉnh: thứ tự lớp, một bộ `@property` registrations, một khối cơ sở chia sẻ\nblock, một khối token cho mỗi chủ đề, và các chốt `color-scheme` light/dark."
+
+#: formats/css/src/functions/multiScopeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Tokens are partitioned by whether their value actually varies across `themes`. Invariant tokens go\nin the shared base block once; varying tokens are repeated in full in *every* theme block. That\nsecond half is what makes nesting safe — a theme block that omitted a varying token would inherit\nthe enclosing scope's value for it."
+msgstr "Các token được phân vùng dựa trên việc giá trị của chúng có thực sự thay đổi giữa các `themes` hay không. Các token không đổi được đặt vào khối cơ sở chia sẻ một lần; các token thay đổi được lặp lại đầy đủ trong *mỗi* khối theme. Phần thứ hai đó khiến việc lồng nhau an toàn — một khối theme nếu bỏ sót token thay đổi sẽ kế thừa giá trị của phạm vi bao quanh cho token đó."
+
+#: formats/css/src/functions/propertiesCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The document-global `@property` registrations, with no declarations. Load this once per document;\nevery theme sheet below is declarations only, so loading a second theme cannot clobber it."
+msgstr "Các `@property` registrations toàn cục tài liệu, không kèm khai báo. Tải cái này một lần cho mỗi tài liệu;\nmỗi tệp theme bên dưới chỉ là khai báo, vì vậy việc tải theme thứ hai không thể ghi đè nó."
+
+#: formats/css/src/functions/schemeOverrideTokens.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The tokens whose value actually changes when a theme is pinned to `scheme` — i.e. the ones written\nwith `light-dark()`. This is the minimal forcing block for `[data-pantoken-scheme]`."
+msgstr "Các token có giá trị thực sự thay đổi khi một theme bị ghim vào `scheme` — tức là những token được viết\nvới `light-dark()`. Đây là khối ép tối thiểu cho `[data-pantoken-scheme]` [data-pantoken-scheme]."
+
+#: formats/css/src/functions/schemeScopeSelector.md
+#: packages/utils/src/functions/schemeScopeSelector.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The selector matching any element pinned to `scheme`."
+msgstr "Bộ chọn khớp với bất kỳ phần tử nào được ghim vào `scheme`."
+
+#: formats/css/src/functions/schemeScopeSelectors.md
+#: packages/utils/src/functions/schemeScopeSelectors.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Both forms of the scheme scope selector, as a selector list."
+msgstr "Cả hai dạng của bộ chọn phạm vi scheme, dưới dạng danh sách selector."
+
+#: formats/css/src/functions/schemesCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The light and dark scheme pins, as a standalone sheet. Theme-independent — the scheme only decides\nwhich branch of `light-dark()` wins, which the browser does for us."
+msgstr "Các chốt scheme light và dark, dưới dạng một tệp độc lập. Không phụ thuộc theme — scheme chỉ quyết định\nnhánh nào của `light-dark()` thắng, việc đó trình duyệt xử lý cho chúng ta."
+
+#: formats/css/src/functions/scopedSchemeCss.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pin a subtree's color scheme."
+msgstr "Bảng màu tối (đảo ngược)."
+
+#: formats/css/src/functions/scopedSchemeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`color-scheme` is an ordinary inherited property, so one rule keyed to the scope attribute (or its\nclass twin) resolves every `light-dark()` token below it. No token needs flattening: this sheet is\na couple of hundred bytes, not the ~87kb an explicit per-token override table would cost."
+msgstr "`color-scheme` là một thuộc tính kế thừa thông thường, nên một quy tắc dựa trên thuộc tính scope (hoặc bản sao class của nó)\ngiải quyết mọi `light-dark()` token )light-dark() bên dưới. Không cần làm phẳng token: tệp này chỉ vài trăm byte, không phải ~87kb của một bảng ghi đè theo token rõ ràng."
+
+#: formats/css/src/functions/scopedThemeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "One theme's complete token set, scoped to any element carrying `data-pantoken-theme=\"<theme>\"` or\nthe equivalent `.--pantoken-theme-<theme>` class."
+msgstr "Tập token hoàn chỉnh của một theme, được phạm vi hóa cho bất kỳ phần tử nào mang `data-pantoken-theme=\"<theme>\"` hoặc\nbản tương đương `.--pantoken-theme-<theme>` class."
+
+#: formats/css/src/functions/scopedThemeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every token is emitted as a declaration — including the concrete ones that would normally become\n`@property` initial-values — because an initial-value is document-global and cannot vary per scope."
+msgstr "Mỗi token được phát ra dưới dạng khai báo — bao gồm cả các token cụ thể mà thông thường sẽ trở thành\n`@property` initial-values — bởi vì một initial-value là toàn cục tài liệu và không thể thay đổi theo phạm vi."
+
+#: formats/css/src/functions/themeScopeSelector.md
+#: packages/utils/src/functions/themeScopeSelector.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The selector matching any element that roots `theme`."
+msgstr "Bộ chọn khớp với bất kỳ phần tử nào là gốc của `theme` theme."
+
+#: formats/css/src/functions/themeScopeSelectors.md
+#: packages/utils/src/functions/themeScopeSelectors.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Both forms of the theme scope selector, as a selector list."
+msgstr "Cả hai dạng của bộ chọn phạm vi theme, dưới dạng danh sách selector."
+
+#: formats/css/src/functions/themedTokens.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a theme token set with optional icon removal and light/dark collapse."
+msgstr "Xây dựng một tập token theme với tùy chọn loại bỏ biểu tượng và gộp light/dark."
+
 #: formats/css/src/functions/toCss.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9713,6 +10030,50 @@ msgctxt "docs.api:prose"
 msgid "Plain layer name (e.g. `\"pantoken\"`), no `@` prefix. Omit to skip the wrapper."
 msgstr "Tên lớp thuần túy (ví dụ `\"pantoken\"`), không có tiền tố `@`. Bỏ qua để không sử dụng phần bao bọc."
 
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [multiScopeCss](../functions/multiScopeCss.md)."
+msgstr "Tùy chọn cho [toCss](../functions/toCss.md)."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#: formats/css/src/interfaces/ScopedCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Drop the `--instui-icon-*` glyph tokens (default `false`)."
+msgstr "Theme để lấy lớp `--instui-*` từ (mặc định `\"rebrand\"`)."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#: formats/css/src/interfaces/ScopedCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Plugins whose `css` hooks run after the base CSS is built."
+msgstr "Các plugin có hook `css` chạy sau khi CSS cơ sở được xây dựng (mặc định: none)."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Themes to emit scope blocks for."
+msgstr "Các theme để phát ra các khối phạm vi."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The theme whose concrete tokens back the one-time `@property` registrations."
+msgstr "Chuỗi stylesheet `rebrand` đã sẵn sàng (kiểu: token cụ thể dưới dạng đăng ký `@property`)."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Include the light/dark `color-scheme` pins (default `true`; see [schemesCss](../functions/schemesCss.md))."
+msgstr "Bao gồm các chốt `color-scheme` light/dark (mặc định `true`; xem [schemesCss](../functions/schemesCss.md)))."
+
+#: formats/css/src/interfaces/ScopedCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options shared by the scoped emitters."
+msgstr "Các tùy chọn được chia sẻ bởi các emitter tạo lớp tiện ích."
+
 #: formats/css/src/interfaces/ToCssOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9726,10 +10087,95 @@ msgid "The selector scoped declarations are emitted under (default `\":root\"`).
 msgstr "Các khai báo có phạm vi selector được xuất dưới (mặc định `\":root\"`)."
 
 #: formats/css/src/interfaces/ToCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Plain cascade layer name wrapping the declarations (no `@` prefix). Omit to skip the wrapper."
+msgstr "Tên lớp thuần túy (ví dụ `\"pantoken\"`), không có tiền tố `@`. Bỏ qua để không sử dụng phần bao bọc."
+
+#: formats/css/src/interfaces/ToCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Which half of the sheet to emit (default `\"all\"`)."
+msgstr "Chủ đề để phát sinh (mặc định: `\"rebrand\"`)."
+
+#: formats/css/src/interfaces/ToCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Emit every token as a declaration rather than routing concrete tokens to `@property`. Required\nfor a theme block that can nest inside another theme's subtree: an incomplete block would\ninherit the enclosing theme's values for the tokens it omits."
+msgstr "Phát mỗi token như một khai báo thay vì định tuyến các token cụ thể tới `@property`. Bắt buộc\ncho một khối theme có thể lồng trong cây con của theme khác: một khối không đầy đủ sẽ\nkế thừa các giá trị của theme bao quanh cho các token mà nó bỏ sót."
+
+#: formats/css/src/interfaces/ToCssOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Plugins whose `css` hooks run after the base CSS is built (default: none)."
 msgstr "Các plugin có hook `css` chạy sau khi CSS cơ sở được xây dựng (mặc định: none)."
+
+#: formats/css/src/type-aliases/CssEmitTarget.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Which half of the sheet to emit."
+msgstr "Nửa nào của tệp để phát ra."
+
+#: formats/css/src/type-aliases/CssEmitTarget.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`@property` registrations are document-global — the last registration of a given name wins for the\nwhole document — so two full sheets on one page fight over every concrete token. Emitting\nregistrations once (`\"properties\"`) and each theme as declarations only (`\"declarations\"`) lets\nseveral themes coexist."
+msgstr "`@property` registrations là toàn cục tài liệu — đăng ký cuối cùng của một tên nhất định thắng cho\ntoàn bộ tài liệu — vì vậy hai tệp đầy đủ trên cùng một trang sẽ tranh chấp mọi token cụ thể. Phát registrations một lần (`\"properties\"`)) và mỗi theme chỉ là khai báo (`\"declarations\"`)) cho phép\nnhiều theme cùng tồn tại."
+
+#: formats/css/src/type-aliases/Scheme.md
+#: formats/scope/src/type-aliases/Scheme.md
+#: packages/utils/src/type-aliases/Scheme.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A color scheme a scope can be pinned to."
+msgstr "Một color scheme mà một phạm vi có thể được ghim vào."
+
+#: formats/css/src/variables/BOUNDARY_ATTR.md
+#: packages/utils/src/variables/BOUNDARY_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute marking a scope that ancestor resolution must not cross."
+msgstr "Thuộc tính đánh dấu một phạm vi mà việc phân giải tổ tiên không được vượt qua."
+
+#: formats/css/src/variables/BOUNDARY_CLASS.md
+#: packages/utils/src/variables/BOUNDARY_CLASS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Class equivalent of `data-pantoken-boundary`."
+msgstr "Bản tương đương class của `data-pantoken-boundary`."
+
+#: formats/css/src/variables/COLOR_ATTR.md
+#: packages/utils/src/variables/COLOR_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute that selects a custom brand color."
+msgstr "Thuộc tính chọn một màu thương hiệu tùy chỉnh."
+
+#: formats/css/src/variables/LAYERS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Cascade layers this module emits into, in ascending precedence order."
+msgstr "Các lớp cascade mà mô-đun này phát vào, theo thứ tự ưu tiên tăng dần."
+
+#: formats/css/src/variables/SCHEME_ATTR.md
+#: packages/utils/src/variables/SCHEME_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute that pins a subtree to a color scheme."
+msgstr "Thuộc tính ghim một cây con vào một color scheme."
+
+#: formats/css/src/variables/THEME_ATTR.md
+#: packages/utils/src/variables/THEME_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute that roots a theme scope. Matches any element, not just `:root`."
+msgstr "Thuộc tính định gốc cho một phạm vi theme. Khớp với bất kỳ phần tử nào, không chỉ `:root`."
+
+#: formats/css/src/variables/colorClass.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Class equivalent of `data-pantoken-color`."
+msgstr "Bản tương đương class của `data-pantoken-color`."
 
 #: formats/css/src/variables/css.md
 #, no-c-format
@@ -9742,6 +10188,18 @@ msgstr "Chuỗi stylesheet `rebrand` đã sẵn sàng (kiểu: token cụ thể 
 msgctxt "docs.api:prose"
 msgid "The lean `rebrand` stylesheet string — the full sheet minus the `--instui-icon-*` glyph tokens (the\n~1,777 icon data-URIs that make up most of [css](css.md)). Roughly a sixth the size over the wire; the\nrecommended foundation for CDN/embed delivery. Components reference only a handful of icons, shipped\nseparately as `@pantoken/components`'s `component-icons.css`; consumers who use `var(--instui-icon-*)`\nbroadly should load the full [css](css.md) (or the `icons.css` glyph sheet). See\n`@pantoken/css/style.lean.css`."
 msgstr "Chuỗi stylesheet gọn nhẹ `rebrand` — toàn bộ sheet trừ các token glyph `--instui-icon-*` (khoảng ~1,777 data-URI biểu tượng chiếm phần lớn của [css](css.md)). Khoảng một phần sáu kích thước khi truyền; nền tảng được khuyến nghị cho phân phối qua CDN/embed. Các component chỉ tham chiếu vài biểu tượng, được đóng gói riêng như `@pantoken/components`'s `component-icons.css`; những người dùng `var(--instui-icon-*)` rộng rãi nên tải đầy đủ [css](css.md) (hoặc sheet glyph `icons.css`). Xem `@pantoken/css/style.lean.css`."
+
+#: formats/css/src/variables/schemeClass.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Class equivalent of `data-pantoken-scheme`."
+msgstr "Bản tương đương class của `data-pantoken-scheme`."
+
+#: formats/css/src/variables/themeClass.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Class equivalents of the scope attributes, for hosts that sanitize `data-*` but allow `class` —\nCanvas RCE content being the one that forced them. They follow the repo's global-modifier naming\n(`.--name`), and the emitter pairs each attribute selector with its class twin."
+msgstr "Các bản tương đương class của các thuộc tính phạm vi, dành cho các host loại bỏ `data-*` nhưng cho phép `class` —\nnội dung Canvas RCE là lý do buộc phải có chúng. Chúng tuân theo quy ước đặt tên trình chỉnh sửa toàn cục của repo\n(`.--name`)), và emitter ghép mỗi selector thuộc tính với bản sao class của nó."
 
 #: formats/dtcg/src/functions/byTheme.md
 #, no-c-format
@@ -9928,9 +10386,9 @@ msgid "Icon name → hex codepoint (e.g. `\"e001\"`)."
 msgstr "Tên biểu tượng → điểm mã hex (ví dụ `\"e001\"`)."
 
 #: formats/icons/src/functions/buildIconResolverChain.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Build the shared icon-resolver chain: plugin `rehype` resolvers first, then an explicit\n`resolve`, then the built-in pantoken icon set. Used by `@pantoken/rehype` and\n`@pantoken/markdown-it` so the resolution order stays identical across renderers."
+msgid "Build the shared icon-resolver chain: an explicit `resolve` first, then the built-in pantoken\nicon set, then plugin `rehype` resolvers (so a plugin can add codes the built-in set doesn't\nknow, but never shadow a built-in icon name). Used by `@pantoken/rehype` and\n`@pantoken/markdown-it` so the resolution order stays identical across renderers."
 msgstr "Xây dựng chuỗi trình phân giải biểu tượng chung: trước tiên là các trình phân giải plugin `rehype`, sau đó là một\n`resolve` rõ ràng, rồi đến tập biểu tượng pantoken tích hợp sẵn. Được `@pantoken/rehype` và\n`@pantoken/markdown-it` sử dụng để thứ tự phân giải giữ nguyên giữa các bộ kết xuất."
 
 #: formats/icons/src/functions/getIcon.md
@@ -9966,9 +10424,9 @@ msgstr "Một bộ phân giải rõ ràng, được thử trước bộ biểu t
 
 #: formats/icons/src/interfaces/IconResolverChainOptions.md
 #: renderers/rehype/src/interfaces/RehypeOptions.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Plugins whose `rehype` hooks contribute resolvers (tried first)."
+msgid "Plugins whose `rehype` hooks contribute resolvers (tried last, after the built-in set)."
 msgstr "Các plugin mà hook `rehype` của chúng đóng góp các bộ phân giải (được thử trước)."
 
 #: formats/icons/src/interfaces/PantokenIcon.md
@@ -10013,6 +10471,12 @@ msgctxt "docs.api:prose"
 msgid "The glyph origin."
 msgstr "Nguồn gốc glyph."
 
+#: formats/icons/src/variables/customIcons.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every Instructure-authored custom icon."
+msgstr "**Chỉ giới hạn ở các glyph do Instructure tạo**"
+
 #: formats/icons/src/variables/icons.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -10024,6 +10488,12 @@ msgstr "Mọi biểu tượng pantoken, được sắp xếp theo tên."
 msgctxt "docs.api:prose"
 msgid "Every pantoken icon, keyed by name."
 msgstr "Mỗi biểu tượng pantoken, được lập chỉ mục theo tên."
+
+#: formats/icons/src/variables/lucideIcons.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every canonical Lucide icon."
+msgstr "Mọi biểu tượng Lucide chính thức."
 
 #: formats/icons/src/variables/resolve.md
 #, no-c-format
@@ -10114,6 +10584,12 @@ msgstr "Thời gian chờ là một tuỳ chọn rõ ràng tính bằng mili gi�
 msgctxt "docs.api:prose"
 msgid "Wire open/close commands plus width-based responsive overlay switching onto a host: any\ncollapsible side panel (e.g. a drawer's tray) can import this interaction rather than each\ncomponent reimplementing it."
 msgstr "Kết nối các lệnh mở/đóng cùng với chuyển đổi lớp phủ đáp ứng dựa trên chiều rộng vào một host: bất kỳ\nbảng bên có thể thu gọn nào (ví dụ: khay của ngăn kéo) có thể nhập tương tác này thay vì mỗi\nthành phần tự triển khai lại nó."
+
+#: formats/interactions/src/functions/initTabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Wire a tablist and its controlled panels inside a host element."
+msgstr "Kết nối một tablist và các bảng điều khiển do nó điều khiển bên trong một phần tử host."
 
 #: formats/interactions/src/functions/initTooltip.md
 #, no-c-format
@@ -10374,6 +10850,12 @@ msgctxt "docs.api:prose"
 msgid "Exit treatment. Defaults to `\"fade\"`, matching InstUI Alert."
 msgstr "Cách xử lý khi thoát. Mặc định là `\"fade\"`, tương ứng với InstUI Alert."
 
+#: formats/interactions/src/interfaces/TabsHandle.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Controls the listeners installed by [initTabs](../functions/initTabs.md)."
+msgstr "Handle được trả về bởi [initTooltip](../functions/initTooltip.md)."
+
 #: formats/interactions/src/interfaces/TooltipHandle.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -10508,6 +10990,410 @@ msgstr "Tùy chọn cho [toLess](../functions/toLess.md)."
 msgctxt "docs.api:prose"
 msgid "The ready-made `rebrand` Less variable set."
 msgstr "Bộ biến Less `rebrand` có sẵn."
+
+#: formats/scope/src/functions/connectScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Run inside a frame: ask the host page's scope for its state and follow it."
+msgstr "Chạy bên trong một frame: hỏi phạm vi của trang host về trạng thái của nó và tuân theo."
+
+#: formats/scope/src/functions/connectScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The frame gets its own scope element, so it can be told to render a different theme or scheme than\nthe host — it is not inheriting ambiently."
+msgstr "Frame có phần tử scope riêng, nên nó có thể được bảo hiển thị một theme hoặc scheme khác với host — nó không kế thừa một cách ngẫu nhiên từ môi trường xung quanh."
+
+#: formats/scope/src/functions/connectScope.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "A disconnect function."
+msgstr "Một hành động có tính chất phá hủy."
+
+#: formats/scope/src/functions/createScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Create a scope rooted at `element`."
+msgstr "Tạo một phạm vi có gốc tại `element`."
+
+#: formats/scope/src/functions/createScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "**Two independent themes on one page**"
+msgstr "**Hai theme độc lập trên một trang**"
+
+#: formats/scope/src/functions/ensureProperties.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inject `css` into `doc` once. A second call with the same `id` does nothing, whichever instance\nmakes it."
+msgstr "Chèn `css` vào `doc` một lần. Lần gọi thứ hai với cùng `id` sẽ không làm gì, bất kể thể hiện nào\ngọi nó."
+
+#: formats/scope/src/functions/ensureProperties.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The registrations sheet, e.g. `@pantoken/css/properties.css`."
+msgstr "Tên gói npm, ví dụ `\"@pantoken/components\"`."
+
+#: formats/scope/src/functions/ensureProperties.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`id` distinguishes unrelated sheets; `doc` defaults to the current document."
+msgstr "`id` phân biệt các sheets không liên quan; `doc` mặc định là tài liệu hiện tại."
+
+#: formats/scope/src/functions/ensureProperties.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`true` when this call performed the injection."
+msgstr "`true` khi lời gọi này đã thực hiện việc chèn."
+
+#: formats/scope/src/functions/getScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The scope registered for `instanceId` in `doc`, if any."
+msgstr "The scope registered for `instanceId` in `doc`, nếu có."
+
+#: formats/scope/src/functions/hasProperties.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "True when a registrations sheet with `id` is already present in `doc`."
+msgstr "True khi một registrations sheet với `id` đã có trong `doc`."
+
+#: formats/scope/src/functions/isScheme.md
+#: packages/utils/src/functions/isScheme.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Narrow an arbitrary value to a [Scheme](../type-aliases/Scheme.md)."
+msgstr "Thu hẹp một giá trị bất kỳ thành [Scheme](../type-aliases/Scheme.md)."
+
+#: formats/scope/src/functions/observeScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Call `listener` whenever the scope resolved for `target` changes, including when an ancestor's\nattributes change."
+msgstr "Gọi `listener` bất cứ khi nào scope được giải quyết cho `target` thay đổi, bao gồm khi\n các thuộc tính của ancestor thay đổi."
+
+#: formats/scope/src/functions/observeScope.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "A stop function."
+msgstr "Một hành động AI."
+
+#: formats/scope/src/functions/resolveInstance.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The instance that owns `start`, falling back to [DEFAULT\\_INSTANCE](../variables/DEFAULT_INSTANCE.md)."
+msgstr "The instance that owns `start`, nếu không có sẽ dùng lại [DEFAULT\\_INSTANCE](../variables/DEFAULT_INSTANCE.md)."
+
+#: formats/scope/src/functions/resolveInstance.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use this to decide whether an event or message is yours before acting on it."
+msgstr "Dùng điều này để quyết định liệu một sự kiện hoặc tin nhắn có thuộc về bạn trước khi xử lý nó."
+
+#: formats/scope/src/functions/resolveScheme.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The effective color scheme for `start`: an explicit pin if any ancestor set one, otherwise the\n`color-scheme` the element actually computes to, otherwise the OS preference."
+msgstr "The effective color scheme for `start`: một giá trị ghim rõ ràng nếu bất kỳ ancestor nào đặt, nếu không thì\n`color-scheme` `color-scheme` mà phần tử thực sự tính được, nếu không thì dùng tùy chọn của OS."
+
+#: formats/scope/src/functions/resolveScheme.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Never reads `document.documentElement` — that global read is exactly what desynchronises two\ninstances on one page."
+msgstr "Never đọc `document.documentElement` — việc đọc toàn cục đó chính là điều khiến hai instance bị mất đồng bộ trên cùng một trang."
+
+#: formats/scope/src/functions/resolveScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve the scope in effect for `start` by walking up its ancestors."
+msgstr "Giải quyết scope đang có hiệu lực cho `start` bằng cách đi lên các ancestor của nó."
+
+#: formats/scope/src/functions/resolveScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The element to resolve for. Its own attributes participate."
+msgstr "Phần tử cần được giải quyết. Các thuộc tính của chính nó cũng tham gia."
+
+#: formats/scope/src/functions/resolveScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [ResolvedScope](../interfaces/ResolvedScope.md); fields no ancestor declared are left `undefined`."
+msgstr "The [ResolvedScope](../interfaces/ResolvedScope.md); các trường mà không có ancestor nào khai báo sẽ để `undefined`."
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "`@pantoken/scope` — run several pantoken themes and color schemes in one document."
+msgstr "`@pantoken/core` — bộ biến đổi pantoken."
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pantoken's CSS keys themes to a `data-pantoken-theme` attribute that matches *any* element, not\njust `:root`, so theming is a property of a subtree rather than of the page. This package is the\nruntime half of that contract:"
+msgstr "Pantoken's CSS gắn theme vào một thuộc tính `data-pantoken-theme` `data-pantoken-theme` khớp với *any* phần tử, không chỉ\n `:root`, vì vậy theming là thuộc tính của một cây con thay vì của toàn trang. Gói này là nửa runtime của hợp đồng đó:"
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "- [resolveScope](functions/resolveScope.md) walks up from an element to find the theme, scheme, and color in effect —\n  the auto-detection half.\n- [createScope](functions/createScope.md) declares a scope explicitly, with its own persisted state and its own frame\n  message channel — the manual-configuration half that stops two instances colliding.\n- [ensureProperties](functions/ensureProperties.md) injects the document-global `@property` registrations once, however\n  many instances ask for them."
+msgstr "- [resolveScope](functions/resolveScope.md) đi lên từ một phần tử để tìm theme, scheme, và màu đang có hiệu lực —\n  phần tự phát hiện.\n- [createScope](functions/createScope.md) khai báo một scope một cách rõ ràng, với trạng thái được lưu của riêng nó và kênh\n  message frame riêng — phần cấu hình thủ công ngăn hai instance va chạm.\n- [ensureProperties](functions/ensureProperties.md) chèn các đăng ký `@property` toàn tài liệu một lần, bất kể\n  bao nhiêu instance yêu cầu chúng."
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Node-free by design: this ships to the browser."
+msgstr "Không dùng Node theo thiết kế: gói này được phân phối tới trình duyệt."
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [BOUNDARY_ATTR](../../css/src/variables/BOUNDARY_ATTR.md)"
+msgstr "Tái xuất [BOUNDARY_ATTR](../../css/src/variables/BOUNDARY_ATTR.md)"
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [BOUNDARY_CLASS](../../css/src/variables/BOUNDARY_CLASS.md)"
+msgstr "Tái xuất [BOUNDARY_CLASS](../../css/src/variables/BOUNDARY_CLASS.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [COLOR_ATTR](../../css/src/variables/COLOR_ATTR.md)"
+msgstr "Xuất lại [Mode](../../core/src/type-aliases/Mode.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [SCHEME_ATTR](../../css/src/variables/SCHEME_ATTR.md)"
+msgstr "Xuất lại [Mode](../../core/src/type-aliases/Mode.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [THEME_ATTR](../../css/src/variables/THEME_ATTR.md)"
+msgstr "Xuất lại [Mode](../../core/src/type-aliases/Mode.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [colorClass](../../css/src/variables/colorClass.md)"
+msgstr "Xuất lại [Mode](../../core/src/type-aliases/Mode.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [schemeClass](../../css/src/variables/schemeClass.md)"
+msgstr "Xuất lại [Theme](../../../packages/core/src/type-aliases/Theme.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [themeClass](../../css/src/variables/themeClass.md)"
+msgstr "Xuất lại [Theme](../../../packages/core/src/type-aliases/Theme.md)"
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [connectScope](../functions/connectScope.md)."
+msgstr "Tùy chọn cho [toGpl](../functions/toGpl.md)."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The instance to accept messages for (default [DEFAULT\\_INSTANCE](../variables/DEFAULT_INSTANCE.md))."
+msgstr "The instance để nhận tin nhắn cho (mặc định [DEFAULT\\_INSTANCE](../variables/DEFAULT_INSTANCE.md)))."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The element to apply received state to (default `document.documentElement`)."
+msgstr "Phần tử để áp dụng trạng thái nhận được (mặc định `document.documentElement`))."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The window to talk to (default `window.parent`)."
+msgstr "Tên phông chữ (mặc định `\"PanTokens\"`)."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The origin the host must have. Pass `\"*\"` only for an opaque-origin `srcdoc` document."
+msgstr "Nguồn gốc mà host phải có. Chỉ truyền `\"*\"` cho một tài liệu `srcdoc` có nguồn gốc mờ (opaque-origin)."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Called after each applied update."
+msgstr "Được gọi sau mỗi lần cập nhật áp dụng."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [createScope](../functions/createScope.md)."
+msgstr "Tùy chọn cho [aggregate](../functions/aggregate.md)."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#: formats/scope/src/interfaces/ResolvedScope.md
+#: formats/scope/src/interfaces/ScopeConfig.md
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Theme key, e.g. `\"rebrand\"`. Matched by `[data-pantoken-theme=\"…\"]`."
+msgstr "Khoá theme, ví dụ `\"rebrand\"`. Khớp bởi `[data-pantoken-theme=\"…\"]`."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#: formats/scope/src/interfaces/ResolvedScope.md
+#: formats/scope/src/interfaces/ScopeConfig.md
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pinned color scheme. Omit to follow the OS preference."
+msgstr "Scheme màu được ghim. Bỏ qua để theo tùy chọn của OS."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#: formats/scope/src/interfaces/ResolvedScope.md
+#: formats/scope/src/interfaces/ScopeConfig.md
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Custom brand color key."
+msgstr "Khoá màu thương hiệu tuỳ chỉnh."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Identifier distinguishing this pantoken instance from others on the page. Scopes, storage keys,\nand frame messages are all keyed by it."
+msgstr "Định danh phân biệt instance pantoken này với các instance khác trên trang. Scopes, khoá lưu trữ,\nvà các message frame đều được khoá bởi giá trị này."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Stop ancestor resolution at this element, so nothing outside can theme what is inside. Use for\na preview pane that must not inherit the surrounding app's theme."
+msgstr "Dừng việc giải quyết từ ancestor tại phần tử này, để không có thứ gì bên ngoài có thể áp theme vào bên trong. Dùng cho\n một khung preview không được kế thừa theme của ứng dụng xung quanh."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Persist and restore state. Pass `false` to keep the scope in-memory only (default `true`)."
+msgstr "Lưu và khôi phục trạng thái. Truyền `false` để giữ scope chỉ trong bộ nhớ (mặc định `true`))."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Storage backend (default `localStorage`, silently skipped when unavailable)."
+msgstr "Backend lưu trữ (mặc định `localStorage`, bị bỏ qua im lặng khi không khả dụng))."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A live scope bound to one element."
+msgstr "Một scope trực tiếp ràng buộc với một phần tử."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The element carrying the scope attributes."
+msgstr "Phần tử mang các thuộc tính scope."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The instance this scope belongs to."
+msgstr "Sản phẩm mà logo thuộc về."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The scope's own configuration — what it declares, not what it inherits."
+msgstr "Cấu hình riêng của scope — những gì nó khai báo, không phải những gì nó kế thừa."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Merge a partial configuration in. Pass `null` for a field to clear it and inherit again."
+msgstr "Gộp một cấu hình từng phần vào. Truyền `null` cho một trường để xoá nó và kế thừa lại."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve the effective scope for a descendant (defaults to this scope's own element)."
+msgstr "Giải quyết scope hiệu lực cho một phần tử con (mặc định là phần tử của chính scope này))."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Send this scope's state to `frame` and keep it in sync. Returns a detach function."
+msgstr "Gửi trạng thái của scope này tới `frame` và giữ đồng bộ. Trả về một hàm detach."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Observe changes. Returns an unsubscribe function."
+msgstr "Quan sát các thay đổi. Trả về một hàm unsubscribe."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Remove the attributes, detach frames, and unregister."
+msgstr "Xoá các thuộc tính, tách frames, và hủy đăng ký."
+
+#: formats/scope/src/interfaces/ResolvedScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A [ScopeConfig](ScopeConfig.md) resolved against the DOM, plus where each part came from."
+msgstr "A [ScopeConfig](ScopeConfig.md) được giải quyết so với DOM, cùng nguồn gốc của từng phần."
+
+#: formats/scope/src/interfaces/ResolvedScope.md
+#: formats/scope/src/interfaces/ScopeConfig.md
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Identifier of the pantoken instance that owns this scope."
+msgstr "Định danh của instance pantoken sở hữu scope này."
+
+#: formats/scope/src/interfaces/ResolvedScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The nearest element that declared any scope attribute, or `null` when none did."
+msgstr "Phần tử gần nhất đã khai báo bất kỳ thuộc tính scope nào, hoặc `null` khi không có."
+
+#: formats/scope/src/interfaces/ResolvedScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "True when resolution stopped at a `data-pantoken-boundary` element."
+msgstr "True khi việc giải quyết dừng lại ở một phần tử `data-pantoken-boundary`."
+
+#: formats/scope/src/interfaces/ScopeConfig.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The resolvable state of a scope. Every field is optional — an unset field inherits."
+msgstr "Trạng thái có thể giải quyết của một scope. Mỗi trường là tuỳ chọn — trường không được đặt sẽ kế thừa."
+
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The message envelope exchanged between a scope and its attached frames."
+msgstr "Phong thư tin nhắn được trao đổi giữa một scope và các frame đính kèm của nó."
+
+#: formats/scope/src/variables/DEFAULT_INSTANCE.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The default instance id, used when a scope does not name one."
+msgstr "ID instance mặc định, dùng khi một scope không đặt tên."
+
+#: formats/scope/src/variables/INSTANCE_ATTR.md
+#: packages/utils/src/variables/INSTANCE_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute carrying the owning instance id, so sibling instances can tell scopes apart."
+msgstr "Thuộc tính chứa id của thể hiện sở hữu, để các thể hiện cùng cấp có thể phân biệt phạm vi."
+
+#: formats/scope/src/variables/SCOPE_ATTRS.md
+#: packages/utils/src/variables/SCOPE_ATTRS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every attribute that participates in scope resolution."
+msgstr "Mọi thuộc tính tham gia vào việc phân giải phạm vi."
 
 #: formats/scss/src/functions/toScss.md
 #, no-c-format
@@ -11937,6 +12823,18 @@ msgctxt "docs.api:prose"
 msgid "Convert a kebab-case string to camelCase (`color-background-brand` → `colorBackgroundBrand`)."
 msgstr "Chuyển một chuỗi kebab-case sang camelCase (`color-background-brand` → `colorBackgroundBrand`)."
 
+#: packages/utils/src/functions/colorScopeSelector.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The selector matching any element using custom brand color `color`."
+msgstr "Trình chọn khớp với bất kỳ phần tử nào sử dụng màu thương hiệu tùy chỉnh `color`."
+
+#: packages/utils/src/functions/colorScopeSelectors.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Both forms of the color scope selector, as a selector list."
+msgstr "Cả hai dạng của bộ chọn phạm vi màu, dưới dạng một danh sách bộ chọn."
+
 #: packages/utils/src/functions/colorUtilitiesCss.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -12135,6 +13033,12 @@ msgctxt "docs.api:prose"
 msgid "A `light-dark(<light>, <dark>)` value; capture groups 1 and 2 are the two branches."
 msgstr "A `light-dark(&lt;light&gt;, &lt;dark&gt;)` value; capture groups 1 and 2 are the two branches."
 
+#: packages/utils/src/variables/SCOPE_LAYERS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Cascade layers the scoped sheets emit into, in ascending precedence order."
+msgstr "Các lớp cascade mà các stylesheet có phạm vi phát ra vào, theo thứ tự độ ưu tiên tăng dần."
+
 #: packages/utils/src/variables/SPACING_AUTO_STEP.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -12309,6 +13213,12 @@ msgstr "Chế độ token tái thương hiệu. Mặc định là `\"light\"`. B
 msgctxt "docs.api:prose"
 msgid "Component-style sheets. Defaults to [defaultThemeCssAssets](../functions/defaultThemeCssAssets.md) for `theme`/`mode`."
 msgstr "Các bảng kiểu cho component. Mặc định là [defaultThemeCssAssets](../functions/defaultThemeCssAssets.md) cho `theme`/`mode`."
+
+#: platforms/canvas-theme-editor/src/interfaces/BuildThemeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Ship the multi-scope token pair instead of a single baked theme, so several themes and color\nschemes can be active in one Canvas page. Larger; only worth it when that's actually needed."
+msgstr "Gửi cặp token đa-phạm-vi thay vì một chủ đề đã nướng duy nhất, để một vài chủ đề và sơ đồ\nmàu có thể hoạt động trên một trang Canvas. Kích thước lớn hơn; chỉ xứng đáng khi thực sự cần thiết."
 
 #: platforms/canvas-theme-editor/src/interfaces/BuildThemeOptions.md
 #, no-c-format
@@ -13121,6 +14031,12 @@ msgctxt "docs.api:prose"
 msgid "Build the banner layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.\nDefaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
 msgstr "Xây dựng CSS bố cục banner (chú thích tài liệu + các quy tắc), thay thế `pfx-` bằng `prefix`.\nMặc định là `\"instui-\"` cho stylesheet được phát hành; truyền `\"\"` để xây dựng bản không có tiền tố."
 
+#: plugins/pantoken/custom-components/src/functions/buttonSetRules.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build the button-set layout CSS (doc comment + rules), substituting `prefix` for the `pfx-`\nsentinel. Defaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
+msgstr "Xây dựng CSS bố cục banner (chú thích tài liệu + các quy tắc), thay thế `pfx-` bằng `prefix`.\nMặc định là `\"instui-\"` cho stylesheet được phát hành; truyền `\"\"` để xây dựng bản không có tiền tố."
+
 #: plugins/pantoken/custom-components/src/functions/customComponents.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13135,6 +14051,12 @@ msgstr "Tạo plugin custom-components."
 msgctxt "docs.api:prose"
 msgid "A [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) with a `css` hook."
 msgstr "Một [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) với một hook `css`."
+
+#: plugins/pantoken/custom-components/src/functions/logoRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build the logo utility CSS as an aspect-ratio-aware mask painter for `@pantoken/plugin-logos`'\n`-logo-<name>` glyph classes, substituting `prefix` for the `pfx-` sentinel."
+msgstr "Build the logo utility CSS as an aspect-ratio-aware mask painter for `@pantoken/plugin-logos`'\n`-logo-<name>` lớp glyph `-logo-<name>`, thay `prefix` cho dấu hiệu `pfx-`."
 
 #: plugins/pantoken/custom-components/src/index.md
 #, no-c-format
@@ -13236,6 +14158,66 @@ msgctxt "docs.api:prose"
 msgid "Every vendored custom icon, sorted by name."
 msgstr "Mỗi biểu tượng tùy chỉnh được đóng gói, sắp xếp theo tên."
 
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Generate the `[data-pantoken-color=\"custom\"]` rule for a brand hex: it declares the derived\n`--instui-primitive-color-custom-custom*` steps and remaps the brand primitives onto them, exactly\nlike the shipped scales."
+msgstr "Tạo quy tắc `[data-pantoken-color=\"custom\"]` cho một mã hex thương hiệu: quy tắc này khai báo các bước dẫn xuất `--instui-primitive-color-custom-custom*` và ánh xạ lại các primitive của thương hiệu lên những bước đó, giống hệt như các thang màu được phát hành."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A `#rgb`/`#rrggbb` brand color."
+msgstr "Một màu thương hiệu `#rgb`/`#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorRemapCss.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The CSS rule."
+msgstr "Chuỗi quy tắc CSS."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TypeError when `hex` isn't a valid hex color."
+msgstr "TypeError khi `hex` không phải là màu hex hợp lệ."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The per-step lightness curve and chroma shape the `custom` scale is derived against, computed\nfrom the 13 shipped families. JSON-safe, so a build can ship it to a browser that pairs it with\nthe dependency-free `@pantoken/plugin-custom-theme-colors/scale` entry."
+msgstr "Đường cong độ sáng theo từng bước và hình dạng độ bão hòa màu mà thang `custom` được suy ra dựa trên, được tính từ 13 họ được đóng gói. An toàn với JSON, nên một bản build có thể gửi nó tới trình duyệt và ghép nó với mục `@pantoken/plugin-custom-theme-colors/scale`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`Token`](../../../../../packages/core/src/interfaces/Token.md)[] \\| `Map`\\<`string`, `string`\\>"
+msgstr "chỉ đọc [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional token array or map to read the reference families from."
+msgstr "Mảng hoặc bản đồ token tùy chọn để phân giải giá trị màu theo bước nguyên thủy từ đó."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [ReferenceCurve](../interfaces/ReferenceCurve.md)."
+msgstr "Một [ResolvedDemo](../interfaces/ResolvedDemo.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorRemapCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The `[data-pantoken-color=\"custom\"]` remap rule without the derived primitives, for pages that\nset `--instui-primitive-color-custom-custom*` themselves at runtime (e.g. from a color picker)."
+msgstr "Quy tắc remap `[data-pantoken-color=\"custom\"]` không bao gồm các primitive được suy ra, dành cho các trang tự thiết lập `--instui-primitive-color-custom-custom*` tại thời gian chạy (ví dụ: từ bộ chọn màu)."
+
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColors.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13245,14 +14227,8 @@ msgstr "Tạo plugin custom-icons."
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Generate CSS rules for all custom theme color choices by remapping primitive color scale steps\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`), while preserving explicitly\nnamed blue accents and semantic status intents."
+msgid "Generate CSS rules for all custom theme color choices by remapping primitive color scale steps\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`) and relinking literal\nbrand hex values that upstream flattened away from those primitives, while preserving explicitly\nnamed blue accents and semantic status intents."
 msgstr "Tạo các quy tắc CSS cho tất cả lựa chọn màu chủ đề tùy chỉnh bằng cách ánh xạ lại các bước thang màu nguyên thủy\n(`--instui-primitive-color-navy-*` và `--instui-primitive-color-blue-*`), đồng thời giữ nguyên rõ ràng các\ntoken nhấn màu xanh được đặt tên."
-
-#: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
-#, fuzzy, no-c-format
-msgctxt "docs.api:prose"
-msgid "readonly [`Token`](../../../../../packages/core/src/interfaces/Token.md)[] \\| `Map`\\<`string`, `string`\\>"
-msgstr "chỉ đọc [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
 
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
 #, no-c-format
@@ -13265,6 +14241,79 @@ msgstr "Mảng hoặc bản đồ token tùy chọn để tra cứu màu theo b�
 msgctxt "docs.api:prose"
 msgid "Generated CSS rules string."
 msgstr "Chuỗi quy tắc CSS."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Derive the `custom` primitive scale from a brand hex. The input is anchored at the step whose\nreference lightness (the mean OKLCH lightness of the 13 shipped families) is nearest its own,\nthen every step is rebuilt at its reference lightness with the input's hue — so the anchor step\nlands close to, but not necessarily exactly on, the input."
+msgstr "Phát sinh thang nguyên thủy `custom` từ một màu hex thương hiệu. Giá trị đầu vào được neo ở bước có độ sáng tham chiếu (độ sáng trung bình OKLCH của 13 họ màu được phát hành) gần nhất với độ sáng của chính nó, rồi mỗi bước được tái tạo lại tại độ sáng tham chiếu của nó với sắc độ của đầu vào — nên bước neo sẽ nằm gần, nhưng không nhất thiết trùng chính xác với, màu đầu vào."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [CustomColorScale](../interfaces/CustomColorScale.md)."
+msgstr "Giao diện [CustomColorScale](../interfaces/CustomColorScale.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Derive a full primitive scale from one hex: anchor it at the step with the nearest reference\nlightness, then rebuild every step at its reference lightness with the input's hue and a chroma\nscaled by the reference shape."
+msgstr "Tạo ra một thang primitive đầy đủ từ một mã hex: neo nó tại bước có độ sáng tham chiếu gần nhất, sau đó xây dựng lại mỗi bước ở độ sáng tham chiếu của nó với sắc độ (hue) của đầu vào và chroma (độ bão hòa) được tỉ lệ theo hình dạng tham chiếu."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A hex color accepted by [parseHexColor](parseHexColor.md)."
+msgstr "Một màu hex được [parseHexColor](parseHexColor.md) chấp nhận."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Output of buildReferenceCurve."
+msgstr "Đầu ra của buildReferenceCurve."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Whether a value is a valid [parseHexColor](parseHexColor.md) input."
+msgstr "Giá trị có phải là đầu vào hợp lệ cho [parseHexColor](parseHexColor.md) hay không?"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The value to check."
+msgstr "Bảng màu."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`true` for `#rgb`/`#rrggbb` strings."
+msgstr "`true` cho các chuỗi `#rgb`/`#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Validate and normalize a user-supplied hex color. This is the only entry point for untrusted\ninput into generated CSS, so anything but `#rgb`/`#rrggbb` is rejected."
+msgstr "Xác thực và chuẩn hóa một màu hex do người dùng cung cấp. Đây là điểm nhập duy nhất cho dữ liệu đầu vào không đáng tin cậy vào CSS được tạo, vì vậy mọi thứ không phải `#rgb`/`#rrggbb` sẽ bị từ chối."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A hex color, with or without the leading `#`."
+msgstr "Một màu hex, có hoặc không có dấu `#` ở đầu."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Lowercase `#rrggbb`."
+msgstr "Viết thường `#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TypeError when `input` isn't a 3- or 6-digit hex color."
+msgstr "TypeError xảy ra khi `input` không phải là màu hex 3 chữ số hoặc 6 chữ số."
 
 #: plugins/pantoken/custom-theme-colors/src/index.md
 #, fuzzy, no-c-format
@@ -13284,6 +14333,72 @@ msgctxt "docs.api:prose"
 msgid "Renames and re-exports [customThemeColors](functions/customThemeColors.md)"
 msgstr "Đổi tên và xuất lại [customIcons](functions/customIcons.md)"
 
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [customColorCss](../functions/customColorCss.md)."
+msgstr "Tùy chọn cho plugin [customIcons](../functions/customIcons.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional token array or map for the reference families and relinked tokens."
+msgstr "Mảng hoặc bản đồ token tùy chọn để tra cứu màu theo bước nguyên thủy."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selector prefix — see [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+msgstr "Tiền tố selector cho các quy tắc có điều kiện — xem [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A derived custom primitive scale."
+msgstr "Một thang nguyên thủy tùy chỉnh được dẫn xuất."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The validated input, normalized to lowercase `#rrggbb`."
+msgstr "Đầu vào đã được xác thực, được chuẩn hóa thành chữ thường `#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The step whose reference lightness is nearest the input's."
+msgstr "Bước có độ sáng tham chiếu gần nhất với độ sáng của đầu vào."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every primitive step mapped to its derived `#rrggbb`."
+msgstr "Mỗi bước nguyên thủy được ánh xạ tới `#rrggbb` dẫn xuất của nó."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [customThemeColorsCss](../functions/customThemeColorsCss.md)."
+msgstr "Tùy chọn cho plugin [customIcons](../functions/customIcons.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selector prefix the conditional `[data-pantoken-color=\"…\"]` rules are scoped under. Defaults to\n`:root`. Two callers can each pass a different selector (e.g. `:root` for a page's chrome and\n`#some-tray` for a nested widget) to run independent, non-interfering color instances on the\nsame page — each toggles its own attribute on its own element instead of sharing `:root`."
+msgstr "Selector prefix the conditional `[data-pantoken-color=\"…\"]` rules are scoped under. Mặc định là\n`:root`. Hai caller có thể truyền mỗi người một selector khác nhau (ví dụ `:root` cho chrome của trang và\n`#some-tray` cho một widget lồng nhau) để chạy các instance màu độc lập, không can nhiễu trên cùng một trang — mỗi instance bật/tắt thuộc tính của chính nó trên phần tử của nó thay vì chia sẻ `:root`."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "An additional selector whose subtree should always render the true, unremapped colors,\nregardless of what an ancestor's `[data-pantoken-color]` scope currently has active. Emits one\nunconditional rule pinning every token this plugin can override back to its own base value —\ne.g. a color-swatch legend nested inside an already-themed page needs its reference swatches to\nstay constant rather than inherit the ancestor's remap."
+msgstr "An additional selector whose subtree should always render the true, unremapped colors,\nbất kể phạm vi `[data-pantoken-color]` của tổ tiên đang kích hoạt gì. Phát ra một quy tắc không điều kiện cố định mọi token mà plugin này có thể ghi đè về giá trị cơ bản của chính nó — ví dụ, một chú giải màu (color-swatch legend) lồng bên trong một trang đã được theme cần các swatch tham chiếu giữ nguyên thay vì kế thừa phép remap của tổ tiên."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A brand hex (`#rgb`/`#rrggbb`) to derive the `custom` scale from. When set, a\n`[data-pantoken-color=\"custom\"]` rule is appended — see [customColorCss](../functions/customColorCss.md)."
+msgstr "Hex thương hiệu (`#rgb`/`#rrggbb`) để suy ra thang `custom`. Khi được thiết lập, một quy tắc `[data-pantoken-color=\"custom\"]` sẽ được thêm vào — xem [customColorCss](../functions/customColorCss.md)."
+
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13296,6 +14411,30 @@ msgctxt "docs.api:prose"
 msgid "Optional token array or map to resolve primitive step color values from."
 msgstr "Mảng hoặc bản đồ token tùy chọn để phân giải giá trị màu theo bước nguyên thủy từ đó."
 
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selector prefix for the conditional rules — see [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+msgstr "Tiền tố selector cho các quy tắc có điều kiện — xem [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Always-true-color subtree — see [CustomThemeColorsCssOptions.resetSelector](CustomThemeColorsCssOptions.md#resetselector)."
+msgstr "Cây con luôn dùng màu thực — xem [CustomThemeColorsCssOptions.resetSelector](CustomThemeColorsCssOptions.md#resetselector)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Brand hex for the `custom` scale — see [CustomThemeColorsCssOptions.custom](CustomThemeColorsCssOptions.md#custom)."
+msgstr "Tiền tố selector cho các quy tắc có điều kiện — xem [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/ReferenceCurve.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Per-step reference lightness and normalized chroma, index-aligned with `steps`. JSON-safe."
+msgstr "Độ sáng tham chiếu theo từng bước và chroma đã chuẩn hóa, căn theo chỉ số với `steps`. Tương thích JSON."
+
 #: plugins/pantoken/custom-theme-colors/src/type-aliases/PantokenColorNamespace.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13307,6 +14446,12 @@ msgstr "Một không gian tên màu chủ đề tùy chỉnh được hỗ trợ
 msgctxt "docs.api:prose"
 msgid "The 13 available color namespaces for site theme color selection."
 msgstr "13 không gian tên màu có sẵn để lựa chọn màu chủ đề trang."
+
+#: plugins/pantoken/custom-theme-colors/src/variables/CUSTOM_COLOR_KEY.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The color namespace whose scale is derived from an arbitrary hex rather than shipped."
+msgstr "Không gian tên màu có thang màu được suy ra từ một mã hex tùy ý thay vì thang được cung cấp."
 
 #: plugins/pantoken/deprecations/src/functions/compareVersions.md
 #, no-c-format
@@ -13476,6 +14621,12 @@ msgctxt "docs.api:prose"
 msgid "Generate an HTML template for the page-layout layout."
 msgstr "Tạo một mẫu HTML cho bố cục page-layout."
 
+#: plugins/pantoken/layouts/src/functions/renderPageLayout.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Render `layout`'s `{{key}}` tokens for `locale` (default `\"en\"`), falling back to English."
+msgstr "Hiển thị các token `{{key}}` của `layout` cho `locale` (mặc định `\"en\"`), nếu thiếu thì dùng tiếng Anh."
+
 #: plugins/pantoken/layouts/src/functions/rubricNoteRules.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13545,9 +14696,9 @@ msgstr "Bố cục trang khởi đầu: một tổ hợp đơn giản của các
 
 #: plugins/pantoken/layouts/src/interfaces/PageLayout.md
 #: renderers/tinymce/src/interfaces/PageLayout.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Stable id, matches the source filename (e.g. `\"hero\"`)."
+msgid "Stable id, matches the source folder name, e.g. `\"hero\"`."
 msgstr "ID ổn định, khớp với tên tệp nguồn (ví dụ `\"hero\"`)."
 
 #: plugins/pantoken/layouts/src/interfaces/PageLayout.md
@@ -13564,11 +14715,66 @@ msgctxt "docs.api:prose"
 msgid "Raw HTML for the layout, built from `@pantoken/components` classes."
 msgstr "HTML thô cho bố cục, được xây dựng từ các lớp `@pantoken/components`."
 
-#: plugins/pantoken/layouts/src/variables/pageLayouts.md
-#: renderers/tinymce/src/variables/pageLayouts.md
+#: plugins/pantoken/layouts/src/interfaces/PageLayout.md
+#: renderers/tinymce/src/interfaces/PageLayout.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "All bundled starter page layouts, sorted by title."
+msgid "Image slots that consumers may materialize without provider-specific URLs."
+msgstr "Các slot hình ảnh mà consumer có thể hiện thực hóa mà không cần URL cụ thể của nhà cung cấp."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A provider-neutral image slot declared by a starter page layout."
+msgstr "Một slot hình ảnh trung lập nhà cung cấp được khai báo bởi layout trang khởi tạo."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Stable key matching the `data-pantoken-image-placeholder` HTML marker."
+msgstr "Khóa ổn định khớp với marker HTML `data-pantoken-image-placeholder`."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Suggested intrinsic width in pixels."
+msgstr "Chiều rộng nội tại đề xuất tính bằng pixel."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Suggested intrinsic height in pixels."
+msgstr "Chiều cao nội tại đề xuất tính bằng pixel."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Accessible name; omit it for a decorative image."
+msgstr "Tên có thể truy cập; bỏ qua nếu là hình trang trí."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional text a consumer may render into its placeholder asset."
+msgstr "Văn bản tùy chọn mà consumer có thể hiển thị trong asset placeholder của nó."
+
+#: plugins/pantoken/layouts/src/variables/pageLayoutTemplates.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`{{key}}`-templated layouts, unresolved — pass to [renderPageLayout](../functions/renderPageLayout.md) for another locale."
+msgstr "`{{key}}`-templated layouts, chưa được giải — chuyển cho [renderPageLayout](../functions/renderPageLayout.md) để lấy cho ngôn ngữ khác."
+
+#: plugins/pantoken/layouts/src/variables/pageLayouts.md
+#: renderers/tinymce/src/variables/pageLayouts.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "All bundled starter page layouts, English-rendered by default, sorted by title."
 msgstr "Tất cả các bố cục trang khởi động được đóng gói, sắp xếp theo tiêu đề."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
@@ -13578,6 +14784,7 @@ msgid "Get a logo as a base64 `data:image/svg+xml` URI."
 msgstr "Lấy logo dưới dạng URI `data:image/svg+xml` base64."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13585,6 +14792,7 @@ msgid "The product."
 msgstr "Sản phẩm."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13592,6 +14800,7 @@ msgid "The layout (default `\"horizontal\"`)."
 msgstr "Bố cục (mặc định `\"horizontal\"`)."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13599,6 +14808,7 @@ msgid "The color treatment (default `\"full-color\"`)."
 msgstr "Phối màu (mặc định `\"full-color\"`)."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13616,6 +14826,24 @@ msgstr "URI dữ liệu, hoặc `undefined` nếu kết hợp đó không tồn 
 msgctxt "docs.api:prose"
 msgid "**Use a logo as an \\<img\\> src**"
 msgstr "**Sử dụng logo làm thuộc tính src của \\<img\\>**"
+
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Get a logo's metadata, including its natural `viewBox` `width`/`height` — for consumers that need\nthe logo's real aspect ratio (e.g. to set `aspect-ratio` or `width`/`height` on an `<img>`) without\nparsing SVG themselves."
+msgstr "Lấy metadata của logo, bao gồm `width`/`height` của PNG đã raster — cho các consumer cần\nxây dựng đường dẫn `dist/<name>.png` (ví dụ qua `@pantoken/cdn`) hoặc tính kích thước một `<img>` mà không phải phân tích SVG."
+
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [LogoMeta](../interfaces/LogoMeta.md), or `undefined` if that combination doesn't exist."
+msgstr "Chuỗi SVG, hoặc `undefined` nếu kết hợp đó không tồn tại."
+
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "**Read a logo's aspect ratio**"
+msgstr "**Đọc tỷ lệ khung hình của logo**"
 
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
@@ -13666,9 +14894,9 @@ msgid "`@pantoken/plugin-logos` — Instructure product logos as SVGs, data URIs
 msgstr "`@pantoken/plugin-logos` — Logo sản phẩm Instructure dưới dạng SVG, URI dữ liệu, và token hình ảnh."
 
 #: plugins/pantoken/logos/src/index.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "It vendors the SVG logos from Instructure's UX guidelines for Canvas, Mastery, Parchment,\nInstructure, LearnPlatform, and Ignite AI, in the standard layouts (horizontal, stacked, icon)\nand color modes (full-color, color, dark, reversed, and so on). Each logo is available three ways:\nthe raw SVG ([getLogoSvg](functions/getLogoSvg.md)), a data URI ([getLogoDataUri](functions/getLogoDataUri.md)), and a\n`--instui-logo-<product>-<layout>-<mode>` image token in `@pantoken/plugin-logos/logos.css`."
+msgid "It vendors the SVG logos from Instructure's UX guidelines for Canvas, Mastery, Parchment,\nInstructure, LearnPlatform, and Ignite AI, in the standard layouts (horizontal, stacked, icon)\nand color modes (full-color, color, dark, reversed, and so on). Each logo is available three ways:\nthe raw SVG ([getLogoSvg](functions/getLogoSvg.md)), a data URI ([getLogoDataUri](functions/getLogoDataUri.md)), and a\n`--instui-logo-<product>-<layout>-<mode>` image token plus a `.-logo-<product>-<layout>-<mode>`\nmask-glyph class (sized by that logo's own aspect ratio) in `@pantoken/plugin-logos/logos.css`."
 msgstr "It vendors the SVG logos from Instructure's UX guidelines for Canvas, Mastery, Parchment,\nInstructure, LearnPlatform, and Ignite AI, in the standard layouts (horizontal, stacked, icon)\nand color modes (full-color, color, dark, reversed, and so on). Each logo is available three ways:\nthe raw SVG ([getLogoSvg](functions/getLogoSvg.md)), a data URI ([getLogoDataUri](functions/getLogoDataUri.md)), and a\n`--instui-logo-&lt;product&gt;-&lt;layout&gt;-&lt;mode&gt;` image token in `@pantoken/plugin-logos/logos.css`."
 
 #: plugins/pantoken/logos/src/index.md
@@ -13731,6 +14959,20 @@ msgstr "Gốc token/tên, ví dụ `\"canvas-horizontal-full-color\"`."
 msgctxt "docs.api:prose"
 msgid "The path within `assets/logos`, e.g. `\"canvas/horizontal-full-color.svg\"`."
 msgstr "Đường dẫn bên trong `assets/logos`, ví dụ `\"canvas/horizontal-full-color.svg\"`."
+
+#: plugins/pantoken/logos/src/interfaces/LogoMeta.md
+#: renderers/tinymce/src/interfaces/LogoMeta.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The SVG's natural `viewBox` width, used with [height](#height) to derive `--pantoken-logo-aspect`."
+msgstr "Chiều rộng `viewBox` tự nhiên của SVG, dùng cùng với [height](#height) để suy ra `--pantoken-logo-aspect`."
+
+#: plugins/pantoken/logos/src/interfaces/LogoMeta.md
+#: renderers/tinymce/src/interfaces/LogoMeta.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The SVG's natural `viewBox` height, used with [width](#width) to derive `--pantoken-logo-aspect`."
+msgstr "Chiều cao `viewBox` tự nhiên của SVG, dùng cùng với [width](#width) để suy ra `--pantoken-logo-aspect`."
 
 #: plugins/pantoken/logos/src/interfaces/LogosOptions.md
 #, no-c-format
@@ -13801,6 +15043,85 @@ msgstr "**Chèn trực tiếp các token logo vào một trang**"
 msgctxt "docs.api:prose"
 msgid "The products that have logos."
 msgstr "Những sản phẩm có logo."
+
+#: plugins/pantoken/lucide-lab/src/functions/defaultRegistry.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Lazily import the published Lucide Lab icon registry."
+msgstr "Nhập khẩu chậm (lazy) registry icon Lucide Lab đã phát hành."
+
+#: plugins/pantoken/lucide-lab/src/functions/lucideLab.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Create the Lucide Lab icon plugin."
+msgstr "Tạo plugin Simple Icons."
+
+#: plugins/pantoken/lucide-lab/src/functions/lucideLab.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "[LucideLabOptions](../interfaces/LucideLabOptions.md). Pass a registry for synchronous token-stage use."
+msgstr "[SimpleIconsOptions](../interfaces/SimpleIconsOptions.md). Truyền một `registry` để tránh import lười (ví dụ trong\n  token-stage, nơi các hooks là đồng bộ)."
+
+#: plugins/pantoken/lucide-lab/src/functions/lucideLab.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "A token-capable pantoken plugin."
+msgstr "Plugin Vite của pantoken."
+
+#: plugins/pantoken/lucide-lab/src/functions/svgOf.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Convert a Lucide Lab icon-node array into standalone SVG markup."
+msgstr "Chuyển mảng icon-node Lucide Lab thành markup SVG độc lập."
+
+#: plugins/pantoken/lucide-lab/src/functions/toKebab.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Convert a Lucide Lab export name to its kebab-case token name."
+msgstr "Chuyển tên export của Lucide Lab sang tên token dạng kebab-case."
+
+#: plugins/pantoken/lucide-lab/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Renames and re-exports [lucideLab](functions/lucideLab.md)"
+msgstr "Đổi tên và xuất lại [stacking](functions/stacking.md)"
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for the [lucideLab](../functions/lucideLab.md) plugin."
+msgstr "Tùy chọn cho plugin [layouts](../functions/layouts.md)."
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Icon names to emit as `<image>` tokens (default: every icon in the registry)."
+msgstr "Icon names to emit as `&lt;image&gt;` tokens (default: all vendored icons)."
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The Lucide Lab registry (required by the synchronous token hook)."
+msgstr "Registry Lucide Lab (bắt buộc cho hook token đồng bộ)."
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#: plugins/pantoken/simple-icons/src/interfaces/SimpleIconsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The token-name prefix (default: `--instui-icon-`)."
+msgstr "Tiền tố tên token (mặc định: `--instui-icon-`)."
+
+#: plugins/pantoken/lucide-lab/src/type-aliases/LucideLabNode.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "One SVG element in a Lucide icon-node array."
+msgstr "Một phần tử SVG trong mảng icon-node của Lucide."
+
+#: plugins/pantoken/lucide-lab/src/type-aliases/LucideLabRegistry.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A registry of named Lucide Lab icon-node arrays."
+msgstr "Một registry các mảng icon-node có tên của Lucide Lab."
 
 #: plugins/pantoken/primitives/src/functions/primitivesCss.md
 #, no-c-format
@@ -13963,12 +15284,6 @@ msgstr "Brand slugs to emit as `&lt;image&gt;` tokens at the token layer (defaul
 msgctxt "docs.api:prose"
 msgid "The Simple Icons registry (default: the `simple-icons` package, loaded lazily)."
 msgstr "Đăng ký Simple Icons (mặc định: gói `simple-icons`, được tải khi cần)."
-
-#: plugins/pantoken/simple-icons/src/interfaces/SimpleIconsOptions.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The token-name prefix (default: `--instui-icon-`)."
-msgstr "Tiền tố tên token (mặc định: `--instui-icon-`)."
 
 #: plugins/pantoken/simple-icons/src/type-aliases/SimpleIconsRegistry.md
 #, no-c-format
@@ -15790,9 +17105,9 @@ msgid "`@pantoken/rehype` — render `:icon:` codes as inline SVG."
 msgstr "`@pantoken/rehype` — kết xuất `:icon:` thành SVG nội tuyến."
 
 #: renderers/rehype/src/index.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "The plugin walks hast text nodes and replaces `:code:` tokens with an inline SVG element,\nresolving each code through a chain: plugin `rehype` resolvers first, then any explicit\n`resolve`, then the built-in `@pantoken/icons` set. It ports `rehype-instui-markdown` onto the\nshared icon manifest."
+msgid "The plugin walks hast text nodes and replaces `:code:` tokens with an inline SVG element,\nresolving each code through a chain: any explicit `resolve`, then the built-in\n`@pantoken/icons` set, then plugin `rehype` resolvers. It ports `rehype-instui-markdown` onto\nthe shared icon manifest."
 msgstr "Plugin duyệt các hast text nodes và thay thế các token `:code:` bằng một phần tử SVG nội tuyến,\ngiải quyết mỗi mã thông qua một chuỗi: trước tiên là các bộ giải `rehype` của plugin, sau đó bất kỳ\n`resolve` rõ ràng nào, rồi đến tập hợp `@pantoken/icons` tích hợp sẵn. Nó chuyển `rehype-instui-markdown` lên\nmanifest biểu tượng dùng chung."
 
 #: renderers/rehype/src/index.md
@@ -15972,6 +17287,18 @@ msgctxt "docs.api:prose"
 msgid "A Svelte action's return shape."
 msgstr "Cấu trúc trả về của một action Svelte."
 
+#: renderers/tinymce/src/functions/buildIconMarkup.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The decorative icon markup retained in editor content after a picker selection. A zero-width\nspace keeps the span from being genuinely empty — TinyMCE's schema strips empty inline elements\non `setContent()` (e.g. toggling from source view back to WYSIWYG), which would otherwise\nsilently delete this CSS-painted glyph. `contenteditable=\"false\"` makes TinyMCE treat it as a\nselectable noneditable object (fake-selection painting, backspace-to-delete, and the context\ntoolbar registered in `lib/icon-context-toolbar.ts`) instead of plain inline text."
+msgstr "Đoạn đánh dấu biểu tượng trang trí được giữ lại trong nội dung trình soạn thảo sau khi chọn từ bộ chọn. Một zero-width\nspace giữ cho span không bị trống hoàn toàn — schema của TinyMCE sẽ loại bỏ các phần tử nội tuyến rỗng\non `setContent()` (ví dụ khi chuyển từ chế độ xem nguồn trở lại WYSIWYG), điều mà nếu không sẽ\nâm thầm xóa glyph được vẽ bằng CSS này). `contenteditable=\"false\"` khiến TinyMCE coi nó như một\nđối tượng không thể chỉnh sửa nhưng có thể chọn được (vẽ lựa chọn giả, xóa bằng phím backspace, và \nthanh công cụ ngữ cảnh được đăng ký trong `lib/icon-context-toolbar.ts`) thay vì văn bản nội tuyến thuần túy)."
+
+#: renderers/tinymce/src/functions/buildLogoMarkup.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The logo markup retained in editor content after a picker selection — same\nzero-width-space/`contenteditable=\"false\"` noneditable-object technique as `icons.ts`'s\n`buildIconMarkup`. Unlike a decorative icon, a logo names a real product, so it carries\n`role=\"img\"` + `aria-label` instead of `aria-hidden`."
+msgstr "The logo markup retained in editor content after a picker selection — same\nzero-width-space/`contenteditable=\"false\"` kỹ thuật đối tượng không chỉnh sửa `contenteditable=\"false\"` như trong `icons.ts`'s `buildIconMarkup`. Không giống biểu tượng trang trí, logo đặt tên cho một sản phẩm thực, vì vậy nó mang `role=\"img\"` + `aria-label` thay vì `aria-hidden`."
+
 #: renderers/tinymce/src/functions/createComponentsPlugin.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -15983,6 +17310,18 @@ msgstr "Tạo factory plugin bộ chọn thành phần.\nTrả về một hàm p
 msgctxt "docs.api:prose"
 msgid "Usage:\n  tinymce.PluginManager.add(\n    \"pantokenComponents\",\n    createComponentsPlugin(`{ model, currentAssets, onMissingAsset }`)\n  );"
 msgstr "Sử dụng:\n  tinymce.PluginManager.add(\n    \"pantokenComponents\",\n    createComponentsPlugin(`{ model, currentAssets, onMissingAsset }`)\n  );"
+
+#: renderers/tinymce/src/functions/createContentClassesPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build an opt-in plugin that adds pantoken classes to TinyMCE-authored content."
+msgstr "Xây dựng plugin tùy chọn thêm lớp pantoken vào nội dung soạn thảo bằng TinyMCE."
+
+#: renderers/tinymce/src/functions/createFullscreenFooterPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a footer-only button that toggles TinyMCE's fullscreen mode."
+msgstr "Tạo nút chỉ-hiện-thị ở chân trang để chuyển đổi chế độ toàn màn hình của TinyMCE."
 
 #: renderers/tinymce/src/functions/createIconsPlugin.md
 #, no-c-format
@@ -16002,11 +17341,47 @@ msgctxt "docs.api:prose"
 msgid "Create the logos picker plugin factory.\nReturns a function suitable for `tinymce.PluginManager.add()`."
 msgstr "Tạo factory plugin cho bộ chọn logo.\nTrả về một hàm phù hợp cho `tinymce.PluginManager.add()`."
 
+#: renderers/tinymce/src/functions/createPantokenPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a single pantoken toolbar menu that opens each composed plugin."
+msgstr "Tạo một menu thanh công cụ pantoken duy nhất mở từng plugin được ghép."
+
+#: renderers/tinymce/src/functions/createSearchReplaceFooterPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a footer-only button that opens TinyMCE's search & replace dialog."
+msgstr "Tạo nút chỉ-hiện-thị ở chân trang để mở hộp thoại tìm và thay thế của TinyMCE."
+
+#: renderers/tinymce/src/functions/createSupSubPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a single toolbar menu button toggling superscript or subscript."
+msgstr "Tạo một nút menu thanh công cụ duy nhất để chuyển đổi chỉ số trên hoặc chỉ số dưới."
+
 #: renderers/tinymce/src/functions/createTemplatesPlugin.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Builds the `tinymce.PluginManager.add` callback for the \"Insert template\" plugin."
 msgstr "Xây dựng callback `tinymce.PluginManager.add` cho plugin \"Insert template\"."
+
+#: renderers/tinymce/src/functions/createVisualBlocksFooterPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a footer-only button that toggles TinyMCE's visual blocks outlines."
+msgstr "Tạo nút chỉ-hiện-thị ở chân trang để chuyển đổi đường viền visual blocks của TinyMCE."
+
+#: renderers/tinymce/src/functions/filterIcons.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Narrow `icons` to those matching `query` and, when given, a single `source`."
+msgstr "Thu hẹp `icons` xuống những cái khớp `query` và, nếu được cung cấp, một `source` duy nhất."
+
+#: renderers/tinymce/src/functions/filterIcons.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`TaggedIcon`](../interfaces/TaggedIcon.md)[]"
+msgstr "chỉ đọc [`Token`](../interfaces/Token.md)[]"
 
 #: renderers/tinymce/src/functions/findEntry.md
 #, no-c-format
@@ -16020,11 +17395,53 @@ msgctxt "docs.api:prose"
 msgid "Compute the CdnFile for an icon given its source.\nReturns `{ package, path }` for use with @pantoken/cdn's buildFileUrl."
 msgstr "Tính toán CdnFile cho một biểu tượng dựa trên nguồn của nó.\nTrả về `{ package, path }` để sử dụng với buildFileUrl của @pantoken/cdn."
 
+#: renderers/tinymce/src/functions/getIconImageSrc.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A `data:` URI usable as an `<img src>` for the icon, for sources this package bundles; for the\nrest it reads the custom property back off `root`, which resolves once the source's glyph sheet\nhas loaded. Returns `undefined` when neither path yields a glyph."
+msgstr "Một URI `data:` có thể dùng làm `src` cho `<img>` của icon, đối với các nguồn mà gói này đóng gói; còn lại thì đọc custom property từ `root`, property đó sẽ có giá trị khi glyph sheet của nguồn đã được nạp. Trả về `undefined` khi cả hai cách đều không trả về glyph."
+
+#: renderers/tinymce/src/functions/getLogoCdnFile.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve a logo's stylesheet: the `.-logo-<name>` mask painter plus its `--instui-logo-<name>` token."
+msgstr "Giải quyết stylesheet của logo: bộ vẽ mặt nạ `.-logo-<name>` cùng với token `--instui-logo-<name>` của nó."
+
 #: renderers/tinymce/src/functions/getModifierSuggestions.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Get all modifier suggestions for a component/utility, filtered by an optional prefix.\nReturns array of `{ name, prop, value?, description }` objects."
 msgstr "Lấy tất cả gợi ý modifier cho một component/utility, được lọc theo tiền tố tùy chọn.\nTrả về mảng các đối tượng `{ name, prop, value?, description }`."
+
+#: renderers/tinymce/src/functions/getUsedIconCdnFiles.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve the icon stylesheets used by `-icon-*` classes below `root`.\nExisting assets break ties when multiple providers expose the same icon name."
+msgstr "Xác định các stylesheet icon được `-icon-*` classes sử dụng bên dưới `root`.\nCác asset hiện có sẽ quyết định khi nhiều nhà cung cấp cùng cung cấp cùng một tên icon."
+
+#: renderers/tinymce/src/functions/getUsedIconCdnFiles.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[] = `[]`"
+msgstr "chỉ đọc [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[]"
+
+#: renderers/tinymce/src/functions/getUsedLogoCdnFiles.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve the logo stylesheets used by `-logo-*` classes below `root`."
+msgstr "Giải quyết các stylesheet logo được sử dụng bởi các lớp `-logo-*` dưới `root`."
+
+#: renderers/tinymce/src/functions/getUsedLogoCdnFiles.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[] = `logos`"
+msgstr "chỉ đọc [`Token`](../interfaces/Token.md)[]"
+
+#: renderers/tinymce/src/functions/humanizeIconName.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Turn a hyphenated icon slug into a readable label, e.g. `circle-question-mark` → `circle question mark`."
+msgstr "Chuyển một slug icon có dấu gạch ngang thành nhãn dễ đọc, ví dụ `circle-question-mark` → `circle question mark`."
 
 #: renderers/tinymce/src/functions/injectContentStylesheet.md
 #, no-c-format
@@ -16050,11 +17467,11 @@ msgctxt "docs.api:prose"
 msgid "Load and merge all available icons from both sources.\nReturns a sorted array tagged with the source package."
 msgstr "Tải và hợp nhất tất cả các biểu tượng có sẵn từ cả hai nguồn.\nTrả về một mảng đã sắp xếp được gắn nhãn bằng gói nguồn."
 
-#: renderers/tinymce/src/functions/loadAllIcons.md
+#: renderers/tinymce/src/functions/materializeLayout.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "NOTE: Component icon names are derived from the model's `-icon-*` modifier.\nThis needs to be populated from either `docs/public/icon-manifest.json` (if consumable)\nor a manifest published alongside formats/components model.json.\nFor now, only simple-icons are included."
-msgstr "LƯU Ý: Tên biểu tượng thành phần được suy ra từ modifier `-icon-*` của mô hình.\nĐiều này cần được điền từ `docs/public/icon-manifest.json` (nếu có thể sử dụng)\nhoặc một manifest được xuất bản cùng với formats/components model.json.\nHiện tại, chỉ bao gồm simple-icons."
+msgid "Materialize declared layout image slots without embedding a provider URL in the layout."
+msgstr "Hiện thực hóa các slot hình ảnh đã khai báo mà không nhúng URL nhà cung cấp vào layout."
 
 #: renderers/tinymce/src/functions/pantokenContentCssUrls.md
 #, no-c-format
@@ -16069,16 +17486,10 @@ msgid "readonly [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interf
 msgstr "chỉ đọc [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[]"
 
 #: renderers/tinymce/src/functions/pantokenHtmlCompletion.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Create a CodeMirror 6 autocomplete extension for pantoken HTML.\nProvides completions for component names and their modifiers."
-msgstr "Tạo một phần mở rộng tự hoàn thành (autocomplete) cho CodeMirror 6 dành cho pantoken HTML.\nCung cấp gợi ý hoàn thành cho tên component và các modifier của chúng."
-
-#: renderers/tinymce/src/functions/pantokenHtmlCompletion.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Usage:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlCompletion({ model }),\n    ],\n  });"
-msgstr "Cách sử dụng:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlCompletion({ model }),\n    ],\n  });"
+msgid "Create a CodeMirror 6 completion extension for pantoken classes in HTML `class` attributes."
+msgstr "Tạo một phần mở rộng linter CodeMirror 6 cho pantoken HTML.\nXác thực các thuộc tính class chứa token `.instui-*`."
 
 #: renderers/tinymce/src/functions/pantokenHtmlLinter.md
 #, no-c-format
@@ -16092,11 +17503,29 @@ msgctxt "docs.api:prose"
 msgid "Usage:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlLinter({ model }),\n    ],\n  });"
 msgstr "Sử dụng:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlLinter({ model }),\n    ],\n  });"
 
+#: renderers/tinymce/src/functions/registerPantokenIconPack.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Register a TinyMCE icon pack whose complete key set mirrors the installed default pack while\nevery rendered glyph comes from Pantoken's InstUI/Lucide icon tokens."
+msgstr "Đăng ký một gói biểu tượng TinyMCE có toàn bộ tập khóa phản chiếu gói mặc định đã cài đặt trong khi\nmọi ký tự (glyph) được kết xuất đều đến từ các token biểu tượng InstUI/Lucide của Pantoken."
+
 #: renderers/tinymce/src/functions/validateClassToken.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Validate a pantoken class token (e.g., \"instui-button\", \"instui-button.-color-primary\").\nReturns an array of validation errors (empty if valid)."
 msgstr "Xác thực một token lớp pantoken (ví dụ, \"instui-button\", \"instui-button.-color-primary\").\nTrả về một mảng các lỗi xác thực (rỗng nếu hợp lệ)."
+
+#: renderers/tinymce/src/interfaces/ContentClassesPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [createContentClassesPlugin](../functions/createContentClassesPlugin.md)."
+msgstr "Tùy chọn cho [createLayoutsPlugin](../functions/createLayoutsPlugin.md)."
+
+#: renderers/tinymce/src/interfaces/ContentClassesPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Prefix used by pantoken component classes."
+msgstr "HTML thô cho bố cục, được xây dựng từ các lớp `@pantoken/components`."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -16362,6 +17791,12 @@ msgctxt "docs.api:prose"
 msgid "Content of registered custom (block) tags, keyed by tag name without its `@`. Populated only for\ntags added via configuration; unregistered unknown tags are ignored. Absent when none were found."
 msgstr "Nội dung của các thẻ tùy chỉnh (block) đã đăng ký, được lập chỉ mục theo tên thẻ mà không bao gồm `@`. Chỉ được điền cho\ncác thẻ được thêm thông qua cấu hình; các thẻ chưa đăng ký sẽ bị bỏ qua. Không có khi không tìm thấy thẻ nào."
 
+#: renderers/tinymce/src/interfaces/LayoutImageAttributes.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Image attributes returned by a consumer-specific layout image resolver."
+msgstr "Các thuộc tính hình ảnh được trả về bởi một bộ phân giải (resolver) ảnh layout dành cho người tiêu dùng cụ thể."
+
 #: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -16369,10 +17804,22 @@ msgid "Options for [createLayoutsPlugin](../functions/createLayoutsPlugin.md)."
 msgstr "Tùy chọn cho [createLayoutsPlugin](../functions/createLayoutsPlugin.md)."
 
 #: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The page layouts offered in the \"Insert layout\" picker. Defaults to the bundled layouts."
+msgstr "Các bố cục trang được cung cấp trong bộ chọn \"Insert layout\". Mặc định là [pageLayouts](../variables/pageLayouts.md)."
+
+#: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The page layouts offered in the \"Insert layout\" picker. Defaults to [pageLayouts](../variables/pageLayouts.md)."
-msgstr "Các bố cục trang được cung cấp trong bộ chọn \"Insert layout\". Mặc định là [pageLayouts](../variables/pageLayouts.md)."
+msgid "BCP47 locale to render layout text in. Defaults to `\"en\"`."
+msgstr "Ngôn ngữ BCP47 để hiển thị văn bản layout. Mặc định là `\"en\"`."
+
+#: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolves a layout image slot into a consumer-specific image URL."
+msgstr "Chuyển một slot ảnh layout thành URL hình ảnh dành riêng cho người tiêu dùng."
 
 #: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
 #, no-c-format
@@ -16380,11 +17827,83 @@ msgctxt "docs.api:prose"
 msgid "Called after a layout is inserted (e.g. to refresh a live preview)."
 msgstr "Được gọi sau khi một bố cục được chèn (ví dụ: để làm mới xem trước trực tiếp)."
 
+#: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Register this picker's standalone toolbar button and menu item."
+msgstr "Đăng ký nút thanh công cụ độc lập và mục menu của trình chọn này."
+
+#: renderers/tinymce/src/interfaces/PantokenPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Configuration for the content plugins composed by [createPantokenPlugin](../functions/createPantokenPlugin.md)."
+msgstr "Tùy chọn cho [createLayoutsPlugin](../functions/createLayoutsPlugin.md)."
+
 #: renderers/tinymce/src/interfaces/TaggedIcon.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Icon with source attribution for tracking which package it comes from."
 msgstr "Biểu tượng kèm ghi nguồn để theo dõi nó đến từ gói nào."
+
+#: renderers/tinymce/src/interfaces/TinymceStrings.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "All user-visible strings emitted by the TinyMCE integration."
+msgstr "Tất cả các chuỗi hiển thị cho người dùng do tập hợp phần tử web-component phát ra."
+
+#: renderers/tinymce/src/type-aliases/LayoutImageResolver.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolves a provider-neutral layout image slot for a particular consumer."
+msgstr "Giải quyết một slot ảnh layout trung lập nhà cung cấp cho một người tiêu dùng cụ thể."
+
+#: renderers/tinymce/src/type-aliases/PantokenFontSize.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Semantic text sizes accepted by the pantoken font-size command."
+msgstr "Các kích thước văn bản mang ý nghĩa ngữ nghĩa được lệnh pantoken font-size chấp nhận."
+
+#: renderers/tinymce/src/variables/CONTENT_CLASSES_PLUGIN_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Plugin name to pass in TinyMCE's `plugins` option."
+msgstr "Tên plugin để truyền trong tùy chọn init `plugins`/`toolbar` của TinyMCE."
+
+#: renderers/tinymce/src/variables/DEFAULT_ICON_TRIGGER.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Autocompleter trigger. Two colons rather than one so the stock `emoticons` plugin — which claims\n`:` and would otherwise have several thousand icons merged into its results — keeps working."
+msgstr "Kích hoạt autocompleter. Dùng hai dấu hai chấm thay vì một cho nên plugin mặc định `emoticons` — vốn tuyên bố\n`:` và nếu không sẽ có vài nghìn biểu tượng bị gộp vào kết quả của nó — vẫn hoạt động."
+
+#: renderers/tinymce/src/variables/FULLSCREEN_FOOTER_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/PANTOKEN_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/SEARCHREPLACE_FOOTER_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/SUP_SUB_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/VISUALBLOCKS_FOOTER_PLUGIN_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Plugin name to pass in TinyMCE's `plugins` init option."
+msgstr "Tên plugin để truyền trong tùy chọn init `plugins`/`toolbar` của TinyMCE."
+
+#: renderers/tinymce/src/variables/FULLSCREEN_FOOTER_STATUSBAR_NAME.md
+#: renderers/tinymce/src/variables/SEARCHREPLACE_FOOTER_STATUSBAR_NAME.md
+#: renderers/tinymce/src/variables/VISUALBLOCKS_FOOTER_STATUSBAR_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The footer/statusbar control name registered by this plugin."
+msgstr "Tên nút thanh công cụ/mục menu do plugin này đăng ký."
+
+#: renderers/tinymce/src/variables/ICONS_COMMAND.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Command that opens the icons picker."
+msgstr "Lệnh mở trình chọn biểu tượng."
+
+#: renderers/tinymce/src/variables/ICON_SOURCES.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The icon sources, in the order the picker lists them."
+msgstr "Các nguồn biểu tượng, theo thứ tự mà trình chọn liệt kê chúng."
 
 #: renderers/tinymce/src/variables/LAYOUTS_PLUGIN_NAME.md
 #, no-c-format
@@ -16397,6 +17916,49 @@ msgstr "Tên plugin để truyền trong tùy chọn init `plugins`/`toolbar` c�
 msgctxt "docs.api:prose"
 msgid "The toolbar button/menu item name registered by this plugin."
 msgstr "Tên nút thanh công cụ/mục menu do plugin này đăng ký."
+
+#: renderers/tinymce/src/variables/PANTOKEN_COMMANDS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Commands exposed for hosts that want explicit pantoken-aware toolbar actions."
+msgstr "Các lệnh được cung cấp cho host muốn các hành động thanh công cụ rõ ràng và có nhận thức về pantoken."
+
+#: renderers/tinymce/src/variables/PANTOKEN_ICON.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pantoken's own logomark, reused for the toolbar menu button and any host UI that wants it."
+msgstr "Biểu tượng logo riêng của Pantoken, được tái sử dụng cho nút menu trên thanh công cụ và bất kỳ giao diện người dùng host nào cần nó."
+
+#: renderers/tinymce/src/variables/PANTOKEN_ICON_PACK_NAME.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TinyMCE icon-pack id to pass as the editor's `icons` option."
+msgstr "ID gói biểu tượng TinyMCE để truyền làm tùy chọn `icons` của trình soạn thảo."
+
+#: renderers/tinymce/src/variables/PANTOKEN_TOOLBAR_NAME.md
+#: renderers/tinymce/src/variables/SUP_SUB_TOOLBAR_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Toolbar menu-button name to pass in TinyMCE's `toolbar` init option."
+msgstr "Tên plugin để truyền trong tùy chọn init `plugins`/`toolbar` của TinyMCE."
+
+#: renderers/tinymce/src/variables/SOURCE_LABELS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Human label shown as a picker tab and an autocompleter row caption, per icon source."
+msgstr "Nhãn hiển thị dành cho con người, xuất hiện như tab của trình chọn và chú thích hàng autocompleter, theo từng nguồn biểu tượng."
+
+#: renderers/tinymce/src/variables/TINYMCE_STRINGS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "English defaults for TinyMCE integration UI strings."
+msgstr "Các giá trị mặc định bằng tiếng Anh cho các chuỗi giao diện khi tích hợp TinyMCE."
+
+#: renderers/tinymce/src/variables/pageTemplates.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The bundled page layouts exposed through the template picker."
+msgstr "Các bố cục trang được đóng gói và phơi bày thông qua trình chọn mẫu."
 
 #: renderers/vitepress/src/index.md
 #, no-c-format
@@ -17389,9 +18951,9 @@ msgid "Slovenian (Slovenščina) locale bundle."
 msgstr "Gói ngôn ngữ Slovenia (Slovenščina)."
 
 #: renderers/web-components/src/variables/spinner.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "`<instui-spinner>` — a loading spinner with `role=\"status\"`. Purely presentational; size and\ncolour follow the CSS tokens."
+msgid "`<instui-spinner>` — a loading spinner with `role=\"status\"`. `variant=\"ai\"` and\n`variant=\"ai-on-color\"` select the rotating AI star; size and colour follow the CSS tokens."
 msgstr "`&lt;instui-spinner&gt;` — a loading spinner with `role=\"status\"`. Purely presentational; size and\ncolour follow the CSS tokens."
 
 #: renderers/web-components/src/variables/sv.md
@@ -17399,6 +18961,30 @@ msgstr "`&lt;instui-spinner&gt;` — a loading spinner with `role=\"status\"`. P
 msgctxt "docs.api:prose"
 msgid "Swedish (Svenska) locale bundle."
 msgstr "Gói ngôn ngữ Thụy Điển (Svenska)."
+
+#: renderers/web-components/src/variables/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`<instui-tabs>` — a light-DOM tabbed panel set. It keeps the existing `.instui-tabs` CSS contract\nintact while adding selection, panel visibility, and keyboard behavior through the shared tabs\ninteraction. Load `@pantoken/components/components.css` for the tab visuals."
+msgstr "`<instui-tabs>` — một bộ bảng điều khiển có tab trong light-DOM. Nó giữ nguyên hợp đồng CSS `.instui-tabs` trong khi thêm chức năng lựa chọn, khả năng hiển thị bảng và hành vi bàn phím thông qua tương tác tabs dùng chung. Tải `@pantoken/components/components.css` để có phần hiển thị tab."
+
+#: renderers/web-components/src/variables/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "General"
+msgstr "Chung"
+
+#: renderers/web-components/src/variables/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Advanced"
+msgstr "Cài đặt nâng cao"
+
+#: renderers/web-components/src/variables/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "General settings"
+msgstr "Tạo bằng"
 
 #: renderers/web-components/src/variables/tag.md
 #, no-c-format
@@ -17806,6 +19392,56 @@ msgstr "Chuỗi nguồn Stylus."
 msgctxt "docs.api:prose"
 msgid "A hoverable \"view fullscreen\" button, overlaid on a demo/example frame the same way VitePress's own\ncode-block \"copy\" button reveals on hover. Purely markup — wire a delegated click handler in your\nhost page (`button.closest(...).querySelector(\"iframe\")?.requestFullscreen()`; see the pantoken docs\ntheme for the reference wiring) and style the reveal-on-hover with `@pantoken/demo/demo.css`."
 msgstr "Một nút \"xem toàn màn hình\" hiện khi rê chuột, phủ lên khung demo/ví dụ cùng cách nút \"sao chép\" của VitePress trên\ncode-block hiển thị khi rê chuột. Chỉ là markup — gắn một trình xử lý click được ủy quyền trong\ntrang chứa của bạn (`button.closest(...).querySelector(\"iframe\")?.requestFullscreen()`; xem chủ đề tài liệu pantoken\nđể biết cấu hình tham chiếu) và tạo kiểu cho hiệu ứng hiện khi rê bằng `@pantoken/demo/demo.css`."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "**Build a PNG CDN path for a logo**"
+#~ msgstr "**Tạo preset từ IR tùy chỉnh**"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The rasterized PNG's display width in CSS pixels (fixed per layout group, not the SVG's own size)."
+#~ msgstr "Chiều rộng hiển thị của PNG đã raster tính bằng pixel CSS (cố định theo nhóm layout, không phải kích thước riêng của SVG)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The rasterized PNG's display height in CSS pixels, derived from the SVG's `viewBox` aspect ratio."
+#~ msgstr "Chiều cao hiển thị của PNG đã raster tính bằng pixel CSS, được dẫn xuất từ tỷ lệ khung nhìn (`viewBox`) của SVG."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The decorative icon markup retained in editor content after a picker selection."
+#~ msgstr "Markup icon trang trí được giữ lại trong nội dung trình soạn sau khi chọn từ picker."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Create a CodeMirror 6 autocomplete extension for pantoken HTML.\nProvides completions for component names and their modifiers."
+#~ msgstr "Tạo một phần mở rộng tự hoàn thành (autocomplete) cho CodeMirror 6 dành cho pantoken HTML.\nCung cấp gợi ý hoàn thành cho tên component và các modifier của chúng."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Usage:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlCompletion({ model }),\n    ],\n  });"
+#~ msgstr "Cách sử dụng:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlCompletion({ model }),\n    ],\n  });"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "An animated loading ring; give it role=\"status\" and an aria-label."
+#~ msgstr "Một vòng tải động; gán role=\"status\" và một aria-label."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "`.instui-spinner` — An animated loading ring; give it role=\"status\" and an aria-label."
+#~ msgstr "`.instui-spinner` — Một vòng tải động; gán role=\"status\" và aria-label."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color."
+#~ msgstr "`-color-inverse` chỉ tô lại đoạn viền trên có hoạt ảnh, không phải toàn bộ đường chạy, nên nó vẫn hiển thị đúng trên thẻ tối mà không cần màu đường chạy riêng."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "NOTE: Component icon names are derived from the model's `-icon-*` modifier.\nThis needs to be populated from either `docs/public/icon-manifest.json` (if consumable)\nor a manifest published alongside formats/components model.json.\nFor now, only simple-icons are included."
+#~ msgstr "LƯU Ý: Tên biểu tượng thành phần được suy ra từ modifier `-icon-*` của mô hình.\nĐiều này cần được điền từ `docs/public/icon-manifest.json` (nếu có thể sử dụng)\nhoặc một manifest được xuất bản cùng với formats/components model.json.\nHiện tại, chỉ bao gồm simple-icons."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -24829,10 +26465,6 @@ msgstr "Một nút \"xem toàn màn hình\" hiện khi rê chuột, phủ lên k
 #~ msgstr "email"
 
 #~ msgctxt "docs.api:text"
-#~ msgid "light"
-#~ msgstr "light"
-
-#~ msgctxt "docs.api:text"
 #~ msgid "dark"
 #~ msgstr "dark"
 
@@ -27897,10 +29529,6 @@ msgstr "Một nút \"xem toàn màn hình\" hiện khi rê chuột, phủ lên k
 #~ msgstr "Nguồn"
 
 #~ msgctxt "docs.api:text"
-#~ msgid "Generated using"
-#~ msgstr "Tạo bằng"
-
-#~ msgctxt "docs.api:text"
 #~ msgid "API reference"
 #~ msgstr "Tham khảo API"
 
@@ -28004,8 +29632,538 @@ msgstr "Một nút \"xem toàn màn hình\" hiện khi rê chuột, phủ lên k
 #~ msgid "BuildIconFontOptions"
 #~ msgstr "BuildIconFontOptions"
 
-#: formats/components/src/variables/aiGradientCss.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The AI gradient utility as a standalone, header-wrapped stylesheet."
-msgstr "Tiện ích gradient AI như một stylesheet độc lập, được bọc bởi header."
+#~ msgctxt "docs.api:text"
+#~ msgid "RunnerLabels"
+#~ msgstr "RunnerLabels"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "shadcnTailwindV4Css"
+#~ msgstr "shadcnTailwindV4Css"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toShadcnTailwindV4Css"
+#~ msgstr "toShadcnTailwindV4Css"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PageLayoutImagePlaceholder"
+#~ msgstr "PageLayoutImagePlaceholder"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ContentClassesPluginOptions"
+#~ msgstr "ContentClassesPluginOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LayoutImageAttributes"
+#~ msgstr "LayoutImageAttributes"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenPluginOptions"
+#~ msgstr "PantokenPluginOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TinymceStrings"
+#~ msgstr "TinymceStrings"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenFontSize"
+#~ msgstr "PantokenFontSize"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LayoutImageResolver"
+#~ msgstr "LayoutImageResolver"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_ICON_PACK_NAME"
+#~ msgstr "PANTOKEN_ICON_PACK_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ICON_SOURCES"
+#~ msgstr "ICON_SOURCES"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SOURCE_LABELS"
+#~ msgstr "SOURCE_LABELS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CONTENT_CLASSES_PLUGIN_NAME"
+#~ msgstr "CONTENT_CLASSES_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_COMMANDS"
+#~ msgstr "PANTOKEN_COMMANDS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "FULLSCREEN_FOOTER_PLUGIN_NAME"
+#~ msgstr "FULLSCREEN_FOOTER_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "FULLSCREEN_FOOTER_STATUSBAR_NAME"
+#~ msgstr "FULLSCREEN_FOOTER_STATUSBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ICONS_COMMAND"
+#~ msgstr "ICONS_COMMAND"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "DEFAULT_ICON_TRIGGER"
+#~ msgstr "DEFAULT_ICON_TRIGGER"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_PLUGIN_NAME"
+#~ msgstr "PANTOKEN_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_TOOLBAR_NAME"
+#~ msgstr "PANTOKEN_TOOLBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_ICON"
+#~ msgstr "PANTOKEN_ICON"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SEARCHREPLACE_FOOTER_PLUGIN_NAME"
+#~ msgstr "SEARCHREPLACE_FOOTER_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SEARCHREPLACE_FOOTER_STATUSBAR_NAME"
+#~ msgstr "SEARCHREPLACE_FOOTER_STATUSBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SUP_SUB_PLUGIN_NAME"
+#~ msgstr "SUP_SUB_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SUP_SUB_TOOLBAR_NAME"
+#~ msgstr "SUP_SUB_TOOLBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pageTemplates"
+#~ msgstr "pageTemplates"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "VISUALBLOCKS_FOOTER_PLUGIN_NAME"
+#~ msgstr "VISUALBLOCKS_FOOTER_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "VISUALBLOCKS_FOOTER_STATUSBAR_NAME"
+#~ msgstr "VISUALBLOCKS_FOOTER_STATUSBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TINYMCE_STRINGS"
+#~ msgstr "TINYMCE_STRINGS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "registerPantokenIconPack"
+#~ msgstr "registerPantokenIconPack"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getUsedIconCdnFiles"
+#~ msgstr "getUsedIconCdnFiles"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "humanizeIconName"
+#~ msgstr "humanizeIconName"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "buildIconMarkup"
+#~ msgstr "buildIconMarkup"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getIconImageSrc"
+#~ msgstr "getIconImageSrc"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "filterIcons"
+#~ msgstr "filterIcons"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createContentClassesPlugin"
+#~ msgstr "createContentClassesPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createFullscreenFooterPlugin"
+#~ msgstr "createFullscreenFooterPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "materializeLayout"
+#~ msgstr "materializeLayout"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createPantokenPlugin"
+#~ msgstr "createPantokenPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createSearchReplaceFooterPlugin"
+#~ msgstr "createSearchReplaceFooterPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createSupSubPlugin"
+#~ msgstr "createSupSubPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createVisualBlocksFooterPlugin"
+#~ msgstr "createVisualBlocksFooterPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ensureComponentsJsonRegistry"
+#~ msgstr "ensureComponentsJsonRegistry"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveRegistryItemNames"
+#~ msgstr "resolveRegistryItemNames"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "runAdd"
+#~ msgstr "runAdd"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "runCreate"
+#~ msgstr "runCreate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Scheme"
+#~ msgstr "Scheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "THEME_ATTR"
+#~ msgstr "THEME_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SCHEME_ATTR"
+#~ msgstr "SCHEME_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "COLOR_ATTR"
+#~ msgstr "COLOR_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "BOUNDARY_ATTR"
+#~ msgstr "BOUNDARY_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "INSTANCE_ATTR"
+#~ msgstr "INSTANCE_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SCOPE_ATTRS"
+#~ msgstr "SCOPE_ATTRS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SCOPE_LAYERS"
+#~ msgstr "SCOPE_LAYERS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "BOUNDARY_CLASS"
+#~ msgstr "BOUNDARY_CLASS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "isScheme"
+#~ msgstr "isScheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "themeClass"
+#~ msgstr "themeClass"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemeClass"
+#~ msgstr "schemeClass"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "colorClass"
+#~ msgstr "colorClass"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "themeScopeSelector"
+#~ msgstr "themeScopeSelector"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemeScopeSelector"
+#~ msgstr "schemeScopeSelector"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "colorScopeSelector"
+#~ msgstr "colorScopeSelector"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "themeScopeSelectors"
+#~ msgstr "themeScopeSelectors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemeScopeSelectors"
+#~ msgstr "schemeScopeSelectors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "colorScopeSelectors"
+#~ msgstr "colorScopeSelectors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "aiGradientCss"
+#~ msgstr "aiGradientCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ScopedCssOptions"
+#~ msgstr "ScopedCssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "MultiScopeCssOptions"
+#~ msgstr "MultiScopeCssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CssEmitTarget"
+#~ msgstr "CssEmitTarget"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LAYERS"
+#~ msgstr "LAYERS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "layerOrderCss"
+#~ msgstr "layerOrderCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "propertiesCss"
+#~ msgstr "propertiesCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "scopedThemeCss"
+#~ msgstr "scopedThemeCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "scopedSchemeCss"
+#~ msgstr "scopedSchemeCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemesCss"
+#~ msgstr "schemesCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "multiScopeCss"
+#~ msgstr "multiScopeCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "lightBranch"
+#~ msgstr "lightBranch"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "darkBranch"
+#~ msgstr "darkBranch"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemeOverrideTokens"
+#~ msgstr "schemeOverrideTokens"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "themedTokens"
+#~ msgstr "themedTokens"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "lucideIcons"
+#~ msgstr "lucideIcons"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TabsHandle"
+#~ msgstr "TabsHandle"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "initTabs"
+#~ msgstr "initTabs"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "scope"
+#~ msgstr "scope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ScopeConfig"
+#~ msgstr "ScopeConfig"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ResolvedScope"
+#~ msgstr "ResolvedScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ScopeMessage"
+#~ msgstr "ScopeMessage"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CreateScopeOptions"
+#~ msgstr "CreateScopeOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenScope"
+#~ msgstr "PantokenScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ConnectScopeOptions"
+#~ msgstr "ConnectScopeOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "DEFAULT_INSTANCE"
+#~ msgstr "DEFAULT_INSTANCE"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ensureProperties"
+#~ msgstr "ensureProperties"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "hasProperties"
+#~ msgstr "hasProperties"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "observeScope"
+#~ msgstr "observeScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveScope"
+#~ msgstr "resolveScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveInstance"
+#~ msgstr "resolveInstance"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveScheme"
+#~ msgstr "resolveScheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getScope"
+#~ msgstr "getScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createScope"
+#~ msgstr "createScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "connectScope"
+#~ msgstr "connectScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "agentShellRules"
+#~ msgstr "agentShellRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "aiGradientRules"
+#~ msgstr "aiGradientRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "custom-theme-colors"
+#~ msgstr "custom-theme-colors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CustomThemeColorsOptions"
+#~ msgstr "CustomThemeColorsOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CustomThemeColorsCssOptions"
+#~ msgstr "CustomThemeColorsCssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenColorNamespace"
+#~ msgstr "PantokenColorNamespace"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "COLOR_KEYS"
+#~ msgstr "COLOR_KEYS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "customThemeColorsCss"
+#~ msgstr "customThemeColorsCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "customThemeColors"
+#~ msgstr "customThemeColors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pageLayoutTemplates"
+#~ msgstr "pageLayoutTemplates"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "calloutRules"
+#~ msgstr "calloutRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "calloutTemplate"
+#~ msgstr "calloutTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "heroRules"
+#~ msgstr "heroRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "heroTemplate"
+#~ msgstr "heroTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pageLayoutRules"
+#~ msgstr "pageLayoutRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pageLayoutTemplate"
+#~ msgstr "pageLayoutTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "rubricNoteRules"
+#~ msgstr "rubricNoteRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "rubricNoteTemplate"
+#~ msgstr "rubricNoteTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "testimonialRules"
+#~ msgstr "testimonialRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "testimonialTemplate"
+#~ msgstr "testimonialTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "twoColumnRules"
+#~ msgstr "twoColumnRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "twoColumnTemplate"
+#~ msgstr "twoColumnTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "wrapperTemplate"
+#~ msgstr "wrapperTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "renderPageLayout"
+#~ msgstr "renderPageLayout"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getLogoMeta"
+#~ msgstr "getLogoMeta"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "lucide-lab"
+#~ msgstr "lucide-lab"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LucideLabOptions"
+#~ msgstr "LucideLabOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LucideLabNode"
+#~ msgstr "LucideLabNode"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LucideLabRegistry"
+#~ msgstr "LucideLabRegistry"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "svgOf"
+#~ msgstr "svgOf"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "lucideLab"
+#~ msgstr "lucideLab"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "checkbox"
+#~ msgstr "checkbox"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ai-gradient"
+#~ msgstr "ai-gradient"

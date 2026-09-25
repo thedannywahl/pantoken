@@ -1,7 +1,13 @@
 /**
  * Layouts data: direct re-export from \@pantoken/plugin-layouts.
- * Provides the bundled starter page layouts (hero, callout, testimonial, two-column, rubric note).
+ * Provides the bundled starter page layouts and their provider-neutral image slot metadata.
  *
  * \@module
  */
-export { type PageLayout, pageLayouts } from "@pantoken/plugin-layouts";
+export {
+  type PageLayout,
+  type PageLayoutImagePlaceholder,
+  pageLayouts,
+  pageLayoutTemplates,
+  renderPageLayout,
+} from "@pantoken/plugin-layouts";

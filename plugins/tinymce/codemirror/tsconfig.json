@@ -1,0 +1,7 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["es2023", "dom"]
+  },
+  "exclude": ["vite.config.ts", "vite.config.*.ts", "vite.runner.config.ts"]
+}

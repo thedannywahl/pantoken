@@ -8,7 +8,9 @@
  * - `generated/logos.css` — a `--instui-logo-<product>-<layout>-<mode>` custom property per logo,
  *   each set to a `url(data:image/svg+xml;base64,…)` image token, plus a typed `@property` registration
  *   per token (a `<url>` syntax and the data URI as `initial-value`) that the docs CSS-API table reads
- *   into its Type and Default columns.
+ *   into its Type and Default columns, plus a `.-logo-<name>` glyph class (the `@pantoken/plugin-custom-components`
+ *   `logo` utility's painter) carrying that logo's own `--pantoken-logo-aspect` from its `viewBox`, so
+ *   it renders undistorted instead of squashed into the `icon` utility's 1:1 box.
  *
  * SVGs are small, so they're inlined as data URIs — the stylesheet is self-contained and the tokens
  * work anywhere `var()` does (`background-image`, `mask`, `content`).
@@ -77,6 +79,15 @@ interface LogoMeta {
   lang?: string;
   name: string;
   path: string;
+  width: number;
+  height: number;
+}
+
+/** Parse an SVG's `viewBox` into its natural `[width, height]`, or `undefined` if absent/malformed. */
+function parseViewBox(svg: string): [number, number] | undefined {
+  const match = /viewBox="[\d.-]+\s+[\d.-]+\s+([\d.]+)\s+([\d.]+)"/u.exec(svg);
+  if (!match) return undefined;
+  return [Number.parseFloat(match[1]), Number.parseFloat(match[2])];
 }
 
 /**
@@ -118,6 +129,8 @@ for (const product of PRODUCTS) {
     const parsed = parseStem(file.replace(/\.svg$/u, ""));
     if (!parsed) continue;
     const name = `${product}-${parsed.layout}-${parsed.colorMode}${parsed.lang ? `-${parsed.lang}` : ""}`;
+    const svg = readFileSync(join(logosDir, product, file), "utf8");
+    const [width, height] = parseViewBox(svg) ?? [1, 1];
     logos.push({
       product,
       layout: parsed.layout,
@@ -125,11 +138,15 @@ for (const product of PRODUCTS) {
       ...(parsed.lang ? { lang: parsed.lang } : {}),
       name,
       path: `${product}/${file}`,
+      width,
+      height,
     });
-    svgs[name] = readFileSync(join(logosDir, product, file), "utf8");
+    svgs[name] = svg;
   }
 }
 logos.sort((a, b) => a.name.localeCompare(b.name));
+
+mkdirSync(outDir, { recursive: true });
 
 /**
  * Encode a raw SVG string as a `data:image/svg+xml;base64,…` data URI.
@@ -145,11 +162,12 @@ export const dataUri = (svg: string): string =>
 const uriByName = new Map(logos.map((l) => [l.name, `url("${dataUri(svgs[l.name])}")`]));
 
 // Every logo asset is a solid-fill SVG (a single flat color, or `currentColor`), so each one is
-// maskable — pair it with the shared `-icon-<name>` painter (formats/components' `icon` utility,
-// same convention as the InstUI icon set, Simple Icons, and custom-icons) so e.g.
-// `-icon-canvas-icon-reversed` masks `--instui-logo-canvas-icon-reversed` in `currentColor`.
+// maskable — pair it with the `@pantoken/plugin-custom-components` `logo` utility's painter (same
+// mask technique as the `icon` utility in `@pantoken/components`, but the `-logo-<name>` painter reads
+// `--pantoken-logo-aspect` instead of assuming a 1:1 box), so e.g. `-logo-canvas-icon-reversed` masks
+// `--instui-logo-canvas-icon-reversed` in `currentColor`, sized by that logo's own `viewBox` aspect ratio.
 const glyphRule = (l: LogoMeta): string =>
-  `.-icon-${l.name} { --pantoken-glyph: var(--instui-logo-${l.name}); }`;
+  `.-logo-${l.name} { --pantoken-glyph: var(--instui-logo-${l.name}); --pantoken-logo-aspect: ${l.width} / ${l.height}; }`;
 
 const logosCss = [
   "/* Instructure product logos as image tokens (pantoken logos plugin) — generated, do not edit. */",
@@ -189,7 +207,6 @@ const PROPERTY_RULES = logos
   )
   .join("\n");
 
-mkdirSync(outDir, { recursive: true });
 // `:root` values lead (so plain imports get the tokens first), then the doc record, then the `@property`
 // registrations — mirroring the stacking sheet's order so cssdoc folds the registrations into the record.
 writeFileSync(join(outDir, "logos.css"), `${logosCss}${DOC}\n${PROPERTY_RULES}\n`);

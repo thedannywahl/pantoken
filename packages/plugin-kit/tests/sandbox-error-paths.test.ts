@@ -3,7 +3,6 @@
  * These require module-level mocks of node:worker_threads and node:child_process, so they live in
  * a separate file where vi.mock() hoisting applies cleanly.
  */
-import { EventEmitter } from "node:events";
 import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
@@ -12,23 +11,30 @@ import type { SandboxedPluginEntry } from "../src/sandbox.ts";
 
 // ── module-level mocks (hoisted by vitest) ──────────────────────────────────
 
+const mocks = vi.hoisted(() => ({ workerOutcome: "error" as "error" | "exit" }));
+
 vi.mock("node:worker_threads", () => {
-  let callCount = 0;
-  const fakeWorker = vi.fn().mockImplementation(function (this: {
-    once: (event: string, cb: (...args: unknown[]) => void) => void;
-  }) {
-    const em = new EventEmitter();
-    this.once = em.once.bind(em);
-    callCount++;
-    if (callCount % 2 === 0) {
-      // Even calls: emit 'exit' with non-zero code (covers the exit handler branch).
-      setImmediate(() => em.emit("exit", 2));
-    } else {
-      // Odd calls: emit 'error' event (covers the error handler).
-      setImmediate(() => em.emit("error", new Error("worker-error-event")));
+  class FakeWorker {
+    readonly #handlers = new Map<string, (...args: unknown[]) => void>();
+
+    constructor() {
+      if (mocks.workerOutcome === "exit") {
+        setImmediate(() => this.#emit("exit", 2));
+      } else {
+        setImmediate(() => this.#emit("error", new Error("worker-error-event")));
+      }
     }
-  });
-  return { Worker: fakeWorker };
+
+    once(event: string, handler: (...args: unknown[]) => void): this {
+      this.#handlers.set(event, handler);
+      return this;
+    }
+
+    #emit(event: string, ...args: unknown[]): void {
+      this.#handlers.get(event)?.(...args);
+    }
+  }
+  return { Worker: FakeWorker };
 });
 
 vi.mock("node:child_process", () => {
@@ -40,6 +46,7 @@ vi.mock("node:child_process", () => {
 afterEach(() => vi.restoreAllMocks());
 
 test("runPluginHook(thread) rejects when the Worker emits an error event", async () => {
+  mocks.workerOutcome = "error";
   const { runPluginHook } = await import("../src/sandbox.ts");
   const dir = mkdtempSync(join(tmpdir(), "pantoken-pk-err-ev-"));
   try {
@@ -52,6 +59,7 @@ test("runPluginHook(thread) rejects when the Worker emits an error event", async
 });
 
 test("runPluginHook(thread) rejects when the Worker exits with non-zero code", async () => {
+  mocks.workerOutcome = "exit";
   const { runPluginHook } = await import("../src/sandbox.ts");
   const dir = mkdtempSync(join(tmpdir(), "pantoken-pk-exit-"));
   try {

@@ -7,6 +7,7 @@ knowledge map. Each persona below pairs with deeper docs:
 - Components → `docs/conventions/authoring.md`
 - Interactions → `docs/conventions/interactions.md`
 - Web components → `docs/conventions/web-components.md`
+- Multiple themes/color schemes in one document → `docs/conventions/scoping.md`
 - Build, release, docs site → `docs/conventions/build-and-docs.md`
 - Known gotchas → `docs/engineering-log.md`
 

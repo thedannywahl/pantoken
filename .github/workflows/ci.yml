@@ -82,6 +82,8 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
         run: vp run -r build
+      - name: Generate docs theme curve
+        run: node docs/scripts/site-themes.ts
       - name: Typecheck
         run: vp check
 
@@ -113,7 +115,7 @@ jobs:
       - name: Generate English API documentation
         run: vp run @pantoken/docs#docs:api:en
       - name: Test all packages
-        run: vp run -r test
+        run: vp test
 
   # Continuous performance testing for the transform pipeline, run inside the CI gate so it reuses the
   # `build` job's cached task outputs instead of rebuilding from scratch. Advisory only — a CodSpeed
@@ -148,8 +150,8 @@ jobs:
       - name: Run benchmarks
         uses: CodSpeedHQ/action@373d6868929f444bc08d901fd0eb0ad52a8875ea # v5.2.1
         with:
-          mode: simulation
-          run: VP_NODE_VERSION=22.18.0 vp test bench --run --config vite.bench.config.ts
+          mode: walltime
+          run: VP_NODE_VERSION=22.18.0 vp test --run --config vite.bench.config.ts
 
   coverage:
     needs: build
@@ -276,7 +278,7 @@ jobs:
       - name: Materialize generated output
         run: vp run -r build
       # The same policy on PRs and main: dead-code = error, health floored at grade B, dead-code
-      # regression vs the committed baseline, duplication advisory. We deliberately don't use
+      # regression vs the committed baseline, duplication thresholded. We deliberately don't use
       # `fallow audit` here — it bundles duplication into its verdict with no opt-out, which would
       # gate duplication against policy. fallow analysis is sub-second, so running it over the whole
       # workspace (rather than scoping to changed files) costs nothing beyond the build that already ran.
@@ -284,7 +286,7 @@ jobs:
       # above enforces policy) and don't belong in the security code-scanning dashboard, which gates
       # PR checks on any error-level result. CodeQL owns code scanning; fallow findings surface in
       # this job's log and are enforced by `health:fallow`.
-      - name: Fallow gate (dead-code error, grade-B health floor, dupes advisory)
+      - name: Fallow gate (dead-code error, grade-B health floor, dupes thresholded)
         run: vp run health:fallow
       - name: Generate health badge
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
+  "twoColumn.title": { "message": "Two column", "translate": "always" },
+  "twoColumn.leftHeading": { "message": "Left column", "translate": "always" },
+  "twoColumn.leftText": { "message": "Describe the first topic here.", "translate": "always" },
+  "twoColumn.rightHeading": { "message": "Right column", "translate": "always" },
+  "twoColumn.rightText": { "message": "Describe the second topic here.", "translate": "always" }
+}

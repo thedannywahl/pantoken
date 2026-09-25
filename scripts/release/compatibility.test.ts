@@ -79,6 +79,7 @@ test.skipIf(!existsSync(metaPath))(
 
     expect(a.upstream["@instructure/instructure-design-tokens"]?.feeds).toBe("token-ir");
     expect(a.upstream["@instructure/ui-icons"]?.feeds).toBe("icons");
+    expect(a.upstream.lucide?.feeds).toBe("icons");
     expect(a.upstream["@instructure/ui-heading"]?.feeds).toBe("instui-react");
     expect(a.consumers.length).toBeGreaterThan(0);
     expectWellFormedConsumers(a.consumers);

@@ -4,6 +4,8 @@
 import { expect, test } from "vite-plus/test";
 import {
   findEntry,
+  findEntryByClassToken,
+  getApplicableModifiers,
   getModifierSuggestions,
   listComponents,
   listUtilities,
@@ -19,6 +21,61 @@ test("findEntry returns a component entry by name", () => {
 
 test("findEntry returns undefined for unknown entries", () => {
   expect(findEntry("nonexistent")).toBeUndefined();
+});
+
+test("findEntryByClassToken resolves hyphenated component classes in a supplied model", () => {
+  const model = [
+    { name: "close-button", className: ".instui-close-button", kind: "component" },
+  ] as any;
+
+  expect(findEntryByClassToken("instui-close-button", model)?.name).toBe("close-button");
+  expect(findEntryByClassToken("instui-missing", model)).toBeUndefined();
+});
+
+test("getApplicableModifiers returns canonical component modifiers followed by global utilities", () => {
+  const model = [
+    {
+      name: "button",
+      className: ".instui-button",
+      kind: "component",
+      modifiers: [
+        {
+          name: "-size-small",
+          prop: "size",
+          value: "small",
+          description: "Small. Long-form alias of `-size-sm`.",
+        },
+        { name: "-size-sm", prop: "size", value: "sm" },
+        { name: "-color-secondary", prop: "color", value: "secondary" },
+        { name: "-color-primary", prop: "color", value: "primary" },
+        { name: "-legacy", prop: "legacy", deprecated: { canonical: "-current" } },
+        { name: "-alias", prop: "legacy", alias: { canonical: "-current" } },
+        { name: "-icon-*", prop: "icon", pattern: true },
+        { name: "-scripted", prop: "scripted", interaction: true },
+      ],
+    },
+    {
+      name: "layout",
+      className: ".--display-flex",
+      kind: "utility",
+      global: true,
+      modifiers: [
+        { name: "-color-primary", prop: "color", value: "duplicate" },
+        { name: "--display-grid", prop: "display", value: "grid" },
+        { name: "--display-flex", prop: "display", value: "flex" },
+      ],
+    },
+  ] as any;
+
+  expect(
+    getApplicableModifiers("button", model).map(({ modifier, scope }) => [modifier.name, scope]),
+  ).toEqual([
+    ["-color-primary", "component"],
+    ["-color-secondary", "component"],
+    ["-size-sm", "component"],
+    ["--display-flex", "utility"],
+    ["--display-grid", "utility"],
+  ]);
 });
 
 test("listComponents returns only component entries", () => {
@@ -61,6 +118,11 @@ test("validateClassToken accepts valid component tokens", () => {
   const errors = validateClassToken("instui-button");
   // Should not have an "unknown component" error.
   expect(errors.filter((e) => e.includes("Unknown component"))).toHaveLength(0);
+});
+
+test("validateClassToken accepts hyphenated component names", () => {
+  expect(validateClassToken("instui-agent-shell")).toEqual([]);
+  expect(validateClassToken("instui-close-button")).toEqual([]);
 });
 
 test("validateClassToken detects unknown components", () => {

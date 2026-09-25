@@ -1,0 +1,92 @@
+{
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
+  "a11yToolbarText": { "message": "Check accessibility", "translate": "always" },
+  "a11yToolbarTooltip": {
+    "message": "Check the content for accessibility issues",
+    "translate": "always"
+  },
+  "a11yMenuText": { "message": "Check accessibility", "translate": "always" },
+  "a11yDialogTitle": { "message": "Accessibility checker", "translate": "always" },
+  "a11yNoIssues": { "message": "No accessibility issues found.", "translate": "always" },
+  "a11yIssueCount": { "message": "{{count}} accessibility issue(s) found.", "translate": "always" },
+  "a11yStatusbarIssueCount": { "message": "{{count}} accessibility issues", "translate": "always" },
+  "a11yIssueLabel": { "message": "Issue", "translate": "always" },
+  "a11yCloseButton": { "message": "Close", "translate": "always" },
+  "a11yImageAltMessage": { "message": "Images must have alternative text.", "translate": "always" },
+  "a11yImageAltWhy": {
+    "message": "Screen readers need an alt attribute to describe an image or identify it as decorative.",
+    "translate": "always"
+  },
+  "a11yImageAltFilenameMessage": {
+    "message": "Image alternative text should describe the image, not repeat its filename.",
+    "translate": "always"
+  },
+  "a11yImageAltFilenameWhy": {
+    "message": "A filename rarely gives screen reader users useful information about an image.",
+    "translate": "always"
+  },
+  "a11yImageAltLengthMessage": {
+    "message": "Image alternative text should be 125 characters or fewer.",
+    "translate": "always"
+  },
+  "a11yImageAltLengthWhy": {
+    "message": "Short descriptions are easier to understand and navigate with assistive technology.",
+    "translate": "always"
+  },
+  "a11yHeadingSequenceMessage": {
+    "message": "Heading levels should not skip levels.",
+    "translate": "always"
+  },
+  "a11yHeadingSequenceWhy": {
+    "message": "A logical heading outline helps people navigate content with assistive technology.",
+    "translate": "always"
+  },
+  "a11yTableHeaderMessage": {
+    "message": "Tables must include header cells.",
+    "translate": "always"
+  },
+  "a11yTableHeaderWhy": {
+    "message": "Header cells give screen readers the context needed to understand table data.",
+    "translate": "always"
+  },
+  "a11yTableCaptionMessage": {
+    "message": "Tables should include a caption.",
+    "translate": "always"
+  },
+  "a11yTableCaptionWhy": {
+    "message": "A caption identifies a table's purpose before a screen reader enters its cells.",
+    "translate": "always"
+  },
+  "a11yTableHeaderScopeMessage": {
+    "message": "Table header cells should declare their scope.",
+    "translate": "always"
+  },
+  "a11yTableHeaderScopeWhy": {
+    "message": "The scope attribute lets assistive technology associate headers with data cells.",
+    "translate": "always"
+  },
+  "a11yAdjacentLinksMessage": {
+    "message": "Adjacent links with the same destination should be combined.",
+    "translate": "always"
+  },
+  "a11yAdjacentLinksWhy": {
+    "message": "Repeated links create unnecessary stops for keyboard and screen reader users.",
+    "translate": "always"
+  },
+  "a11yHeadingStartMessage": {
+    "message": "The first heading should be an h2.",
+    "translate": "always"
+  },
+  "a11yHeadingStartWhy": {
+    "message": "The editor's document title is supplied outside the editable content.",
+    "translate": "always"
+  },
+  "a11yListStructureMessage": {
+    "message": "List items must be contained by an ordered or unordered list.",
+    "translate": "always"
+  },
+  "a11yListStructureWhy": {
+    "message": "Assistive technology relies on list structure to announce item counts and position.",
+    "translate": "always"
+  }
+}

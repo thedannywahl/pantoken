@@ -74,8 +74,13 @@ test("button icon modifiers center the glyph and add the expected gap", () => {
 
 test("icon-only buttons automatically use square icon-button geometry", () => {
   const css = buttonCss({ prefix: "instui" });
+  const selectors = css.replace(/\s+/g, "");
   expect(css).toContain('&[class*="-icon-"]:not(:has(> *))');
   expect(css).toContain('&[class*="-icon-"]:has(> .instui-screen-reader-content:only-child)');
+  expect(selectors).toContain(
+    '&[class*="-icon-"]:has(>.instui-screen-reader-content):has(>.tip):not(:has(>:not(.instui-screen-reader-content):not(.tip)))',
+  );
+  expect(css).toContain("box-sizing: border-box");
   expect(css).toContain("aspect-ratio: 1");
   expect(css).toContain("inline-size: 1.25em");
   expect(css).toContain("margin-inline-end: 0");

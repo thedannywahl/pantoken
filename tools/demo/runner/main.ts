@@ -53,9 +53,14 @@ const HOST_ORIGIN = ((): string => {
 // A manual override (set by the host's light/dark toggle) wins over the inherited scheme; null means
 // "follow the embedding page".
 let schemeOverride: "light" | "dark" | null = null;
+// The scheme the host told us about, via `pantoken-demo-theme`/`pantoken-demo-scheme`. Preferred over
+// any read of the parent document: with several pantoken instances on a page, the parent's root
+// `.dark` class belongs to whichever instance owns the chrome, not necessarily the one that owns us.
+let hostScheme: "light" | "dark" | null = null;
 
-/** The inherited scheme: the embedding page's `.dark`, else system (when opened top-level). */
+/** The inherited scheme: what the host reported, else the parent's `.dark`, else system. */
 function isDark(): boolean {
+  if (hostScheme) return hostScheme === "dark";
   try {
     if (window.parent && window.parent !== window) {
       return window.parent.document.documentElement.classList.contains("dark");
@@ -177,6 +182,8 @@ interface RunnerCtx {
   booting: boolean;
   currentTheme: string;
   currentColor: string;
+  /** Derived `custom` primitives, lightest first; empty unless the host sent a valid scale. */
+  customScale: string[];
   activeCode: PartKey | null;
   resultContentHeight: number;
   userResized: boolean;
@@ -322,6 +329,7 @@ function createRunnerContext(
     booting: true,
     currentTheme: "rebrand",
     currentColor: "navy",
+    customScale: [],
     activeCode: parts[0] ?? null,
     resultContentHeight: 0,
     userResized: false,
@@ -355,8 +363,9 @@ function render(ctx: RunnerCtx): void {
   // It also listens for `pantoken-demo-freeze`: while the reader drags the runner's resize handle, the
   // runner asks it to hide its own scrollbar so it doesn't flicker as the height recomputes.
   const sizeReporter = `<script>(function(){var p=window.parent;function r(){p.postMessage({type:"pantoken-demo-result-size",height:Math.ceil(document.body.getBoundingClientRect().height)},"*");}addEventListener("load",r);if(window.ResizeObserver){new ResizeObserver(r).observe(document.body);}addEventListener("message",function(e){if(e&&e.data&&e.data.type==="pantoken-demo-freeze"){document.documentElement.style.overflow=e.data.value?"hidden":"";}});r();})()</script>`;
+  const customStyle = customScaleStyle(ctx.customScale);
   ctx.resultFrame.srcdoc =
-    `<!doctype html><html dir="${isRtl() ? "rtl" : "ltr"}" data-pantoken-theme="${ctx.currentTheme}" data-pantoken-color="${ctx.currentColor}" style="color-scheme:${scheme}"><head><meta charset="utf-8">${links}${gutter}` +
+    `<!doctype html><html dir="${isRtl() ? "rtl" : "ltr"}" data-pantoken-theme="${ctx.currentTheme}" data-pantoken-color="${ctx.currentColor}" style="color-scheme:${scheme}${customStyle}"><head><meta charset="utf-8">${links}${gutter}` +
     `<style>${ctx.original.css}</style></head><body class="pantoken-prose">${safeHtml}` +
     `<script>${ctx.original.js}</script>${sizeReporter}</body></html>`;
 }
@@ -376,11 +385,32 @@ function setTheme(ctx: RunnerCtx, name: string): void {
 }
 
 /** Switch the token color scheme on the chrome and result, then re-render. */
-function setColor(ctx: RunnerCtx, name: string): void {
-  if (name === ctx.currentColor) return;
+function setColor(ctx: RunnerCtx, name: string, customScale: unknown): void {
+  const scale = isCustomScale(customScale) ? customScale : [];
+  if (name === ctx.currentColor && scale.join() === ctx.customScale.join()) return;
   ctx.currentColor = name;
+  ctx.customScale = scale;
   document.documentElement.dataset.pantokenColor = name;
+  scale.forEach((hex, i) => {
+    document.documentElement.style.setProperty(`${CUSTOM_PRIMITIVE}${(i + 1) * 10}`, hex);
+  });
   render(ctx);
+}
+
+const CUSTOM_PRIMITIVE = "--instui-primitive-color-custom-custom";
+const HEX6 = /^#[0-9a-f]{6}$/iu;
+
+/** A host-posted `custom` scale: exactly 20 plain `#rrggbb` values, since they land in markup. */
+function isCustomScale(value: unknown): value is string[] {
+  return (
+    Array.isArray(value) &&
+    value.length === 20 &&
+    value.every((hex) => typeof hex === "string" && HEX6.test(hex))
+  );
+}
+
+function customScaleStyle(scale: readonly string[]): string {
+  return scale.map((hex, i) => `;${CUSTOM_PRIMITIVE}${(i + 1) * 10}:${hex}`).join("");
 }
 
 /** Show only the code pane for `key` (or none), toggling the active data attribute. */
@@ -582,6 +612,9 @@ interface DemoMessage {
   height?: number;
   theme?: string;
   color?: string;
+  customScale?: unknown;
+  mode?: string;
+  instanceId?: string;
 }
 
 /**
@@ -599,13 +632,15 @@ const MESSAGE_HANDLERS: Record<string, (ctx: RunnerCtx, data: DemoMessage) => vo
     applyTheme(ctx);
   },
   "pantoken-demo-theme": (ctx, data) => {
+    // The host's scheme is authoritative; it knows which instance owns this frame.
+    if (data.mode === "light" || data.mode === "dark") hostScheme = data.mode;
     if (typeof data.theme === "string") setTheme(ctx, data.theme);
-    if (typeof data.color === "string") setColor(ctx, data.color);
+    if (typeof data.color === "string") setColor(ctx, data.color, data.customScale);
     ctx.resolveTheme?.();
     ctx.resolveTheme = undefined;
   },
   "pantoken-demo-color": (ctx, data) => {
-    if (typeof data.color === "string") setColor(ctx, data.color);
+    if (typeof data.color === "string") setColor(ctx, data.color, data.customScale);
   },
   "pantoken-demo-result-size": (ctx, data) => {
     if (typeof data.height !== "number") return;

@@ -11,12 +11,21 @@
     "directory": "renderers/tinymce"
   },
   "files": [
-    "dist"
+    "dist",
+    "src/i18n.json"
   ],
   "type": "module",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
     ".": "./dist/index.mjs",
+    "./skins/next-gen/skin.css": "./dist/skins/next-gen/skin.css",
+    "./skins/next-gen/content.css": "./dist/skins/next-gen/content.css",
+    "./skins/canvas/skin.css": "./dist/skins/canvas/skin.css",
+    "./skins/canvas/content.css": "./dist/skins/canvas/content.css",
+    "./skins/canvas-high-contrast/skin.css": "./dist/skins/canvas-high-contrast/skin.css",
+    "./skins/canvas-high-contrast/content.css": "./dist/skins/canvas-high-contrast/content.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -24,7 +33,16 @@
     "provenance": true
   },
   "scripts": {
+    "generate": "node scripts/generate.ts",
     "dev": "vp pack --watch",
+    "extract": "node ../../tools/i18n-engine/bin/i18n.mjs --config ../../i18n.config.json extract tinymce.strings",
+    "translate": "node ../../tools/i18n-engine/bin/i18n.mjs --config ../../i18n.config.json translate tinymce.strings --provider claude",
+    "translate:agy": "node ../../tools/i18n-engine/bin/i18n.mjs --config ../../i18n.config.json translate tinymce.strings --provider agy",
+    "translate:copilot": "node ../../tools/i18n-engine/bin/i18n.mjs --config ../../i18n.config.json translate tinymce.strings --provider copilot",
+    "translate:force": "node ../../tools/i18n-engine/bin/i18n.mjs --config ../../i18n.config.json translate tinymce.strings --provider claude --force",
+    "translate:force:agy": "node ../../tools/i18n-engine/bin/i18n.mjs --config ../../i18n.config.json translate tinymce.strings --provider agy --force",
+    "translate:force:copilot": "node ../../tools/i18n-engine/bin/i18n.mjs --config ../../i18n.config.json translate tinymce.strings --provider copilot --force",
+    "check:drift": "node ../../tools/i18n-engine/bin/i18n.mjs --config ../../i18n.config.json check tinymce.strings",
     "test": "vp test",
     "check": "vp check"
   },
@@ -33,18 +51,25 @@
     "@pantoken/cdn": "workspace:*",
     "@pantoken/components": "workspace:*",
     "@pantoken/plugin-custom-components": "workspace:*",
+    "@pantoken/plugin-custom-icons": "workspace:*",
     "@pantoken/plugin-layouts": "workspace:*",
     "@pantoken/plugin-logos": "workspace:*",
-    "@pantoken/plugin-simple-icons": "workspace:*"
+    "@pantoken/plugin-lucide-lab": "workspace:*",
+    "@pantoken/plugin-simple-icons": "workspace:*",
+    "@pantoken/tinymce-codemirror": "workspace:*",
+    "@pantoken/tokens": "workspace:*"
   },
   "devDependencies": {
     "@codemirror/autocomplete": "catalog:",
     "@codemirror/lang-html": "catalog:",
+    "@codemirror/language": "catalog:",
     "@codemirror/lint": "catalog:",
     "@codemirror/state": "catalog:",
     "@codemirror/view": "catalog:",
+    "@pantoken/utils": "workspace:*",
     "@types/node": "catalog:",
-    "codemirror": "catalog:",
+    "less": "catalog:",
+    "postcss": "catalog:",
     "tinymce": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
@@ -52,12 +77,10 @@
   },
   "peerDependencies": {
     "@codemirror/autocomplete": "^6.20.3",
-    "@codemirror/lang-html": "^6.4.12",
+    "@codemirror/language": "^6.12.4",
     "@codemirror/lint": "^6.9.7",
-    "@codemirror/state": "^6.7.1",
     "@codemirror/view": "^6.0.0",
-    "codemirror": "^6.0.2",
-    "tinymce": "^5.9"
+    "tinymce": "^8.0"
   },
   "engines": {
     "node": ">=22.18.0"

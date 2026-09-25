@@ -1,6 +1,8 @@
 import { SENTINEL } from "../../lib/sentinel.ts";
 import { rubricNote } from "../../generated/component-styles.ts";
+import { rubricNoteHtml } from "../../generated/layout-html.ts";
 import { htmlTemplate } from "../../lib/html-template.ts";
+import type { PageLayout } from "../page-layout.ts";
 
 /**
  * Build the rubric-note layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.
@@ -16,3 +18,10 @@ export function rubricNoteRules(prefix = "instui-"): string {
 export function rubricNoteTemplate(prefix = "instui-"): string {
   return htmlTemplate(rubricNoteRules(prefix), { prefix, layoutName: "rubric-note" });
 }
+
+/** Bordered note explaining grading criteria, meant to sit above a rubric. */
+export const rubricNoteLayout: PageLayout = {
+  name: "rubric-note",
+  title: "{{rubricNote.title}}",
+  html: rubricNoteHtml,
+};

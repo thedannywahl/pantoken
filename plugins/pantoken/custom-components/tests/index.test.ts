@@ -6,8 +6,10 @@ import {
   agentShellRules,
   aiGradientRules,
   bannerRules,
+  buttonSetRules,
   cardRules,
   customComponents,
+  logoRules,
 } from "../src/index.ts";
 
 const cssOf = (plugin: ReturnType<typeof customComponents>): string => {
@@ -76,6 +78,65 @@ test("every custom component appears in the plugin css output", () => {
   expect(css).toContain(agentShellRules());
   expect(css).toContain(bannerRules());
   expect(css).toContain(aiGradientRules());
+  expect(css).toContain(logoRules());
+  expect(css).toContain(buttonSetRules());
+});
+
+test("buttonSetRules emits prefixed and unprefixed selectors", () => {
+  expect(buttonSetRules()).toContain(".instui-button-set");
+  expect(buttonSetRules("my-")).toContain(".my-button-set");
+  expect(buttonSetRules("")).toContain(".button-set {");
+});
+
+test("button-set is seamed: no gap, squared interior corners, one border per seam", () => {
+  const css = buttonSetRules("instui-");
+  expect(css).toContain(".instui-button-set {");
+  expect(css).toContain("gap: 0");
+  expect(css).toContain(".instui-button-set > .instui-button {");
+  expect(css).toContain("border-radius: 0");
+  expect(css).toContain(".instui-button-set > .instui-button:not(:first-child)");
+  expect(css).toContain("border-inline-start: 0");
+  expect(css).toContain(".instui-button-set > .instui-button:first-child");
+  expect(css).toContain(
+    "border-start-start-radius: var(--instui-component-base-button-border-radius)",
+  );
+  expect(css).toContain(".instui-button-set > .instui-button:last-child");
+  expect(css).toContain(
+    "border-start-end-radius: var(--instui-component-base-button-border-radius)",
+  );
+});
+
+test("button-set cascades -size-sm and -toggle defaults to unmodified children", () => {
+  const css = buttonSetRules("instui-");
+  expect(css).toContain('.instui-button-set.-size-sm > .instui-button:not([class*="-size-"])');
+  expect(css).toContain("var(--instui-component-base-button-small-height)");
+  expect(css).toContain(
+    '.instui-button-set.-toggle > .instui-button:not(.-toggle)[aria-pressed="true"]',
+  );
+  expect(css).toContain("var(--instui-color-background-interactive-action-secondary-active)");
+});
+
+test("button-set cascades -color-secondary to unmodified children only", () => {
+  const css = buttonSetRules("instui-");
+  expect(css).toContain(
+    '.instui-button-set.-color-secondary > .instui-button:not([class*="-color-"])',
+  );
+  expect(css).toContain("var(--instui-component-base-button-secondary-background)");
+  // A button's own -color-* class is excluded from every cascaded rule, so button.css's
+  // higher-specificity same-element rule for `.instui-button.-color-primary` still applies.
+  expect(css).not.toContain(".instui-button-set.-color-secondary > .instui-button.-color-primary");
+});
+
+test("button-set never cascades -icon-* from the group", () => {
+  const css = buttonSetRules("instui-");
+  expect(css).not.toMatch(/\.instui-button-set\.-icon-/u);
+});
+
+test("button-set references only real tokens per theme", () => {
+  for (const theme of ["rebrand", "canvas", "canvasHighContrast"] as const) {
+    const drift = unknownReferences(buttonSetRules("instui-"), byTheme(theme));
+    expect(drift).toEqual([]);
+  }
 });
 
 test("aiGradientRules emits AI border/background helpers in the plugin API", () => {

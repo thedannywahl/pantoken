@@ -226,6 +226,24 @@ describe("generated logos.css", () => {
     expect(css).toContain('url("data:image/svg+xml;base64,');
   });
 
+  test("emits a -logo-* glyph class with the viewBox aspect ratio, not the -icon-* painter", async () => {
+    vi.resetModules();
+    vi.clearAllMocks();
+    vi.spyOn(console, "log").mockImplementation(() => {});
+    readdirSync.mockImplementation((dir: unknown) => {
+      if (String(dir).endsWith("/canvas")) return ["horizontal-color.svg"];
+      throw new Error("ENOENT");
+    });
+    readFileSync.mockReturnValue('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 79"/>');
+    await import(MODULE_PATH);
+
+    const css = writtenContent("logos.css");
+    expect(css).toContain(
+      ".-logo-canvas-horizontal-color { --pantoken-glyph: var(--instui-logo-canvas-horizontal-color); --pantoken-logo-aspect: 310 / 79; }",
+    );
+    expect(css).not.toContain(".-icon-canvas-horizontal-color");
+  });
+
   test("emits @property registrations for typed token docs", async () => {
     vi.resetModules();
     vi.clearAllMocks();

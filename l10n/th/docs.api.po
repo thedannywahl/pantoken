@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-18 02:02+0000\n"
+"PO-Revision-Date: 2026-09-25 21:41+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -644,7 +644,7 @@ msgstr "`.--background-ai-horizontal` — ตัวช่วยไล่สี�
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/ai-gradient/index.ts)"
-msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/gap/index.ts)"
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/ai-gradient/index.ts)"
 
 #: css/ai-gradient.md
 #, no-c-format
@@ -718,7 +718,8 @@ msgctxt "docs.api:prose"
 msgid "\n  Oops! You're using the \"error\" color.\n  "
 msgstr "\n  ขอแสดงความยินดี! คุณกำลังใช้สี \"success\".\n  "
 
-#: css/alert.md css/banner.md renderers/web-components/src/variables/modal.md
+#: css/alert.md css/banner.md css/button-set.md
+#: renderers/web-components/src/variables/modal.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Cancel"
@@ -863,7 +864,7 @@ msgid "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/ma
 msgstr "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/avatar/avatar.css)"
 
 #: css/avatar.md css/close-button.md css/in-place-edit.md css/modal.md
-#: css/tooltip.md
+#: css/tabs.md css/tooltip.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "This component's CSS renders and works on its own; pair it with `@pantoken/interactions` to add the interactive behavior. See the [modifier table below](#modifiers)."
@@ -1597,6 +1598,150 @@ msgctxt "docs.api:prose"
 msgid "Small. @affects breadcrumb.link — Scales the crumb separator's spacing to match. Long-form alias of `-size-sm`."
 msgstr "ขนาดเล็ก @affects breadcrumb.link — ปรับระยะห่างของตัวคั่นเศษให้สอดคล้อง คำพ้องรูปยาวของ `-size-sm`"
 
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`.instui-button-set` — A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
+msgstr "`.instui-button-set` — A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead."
+msgstr "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Left"
+msgstr "ซ้าย"
+
+#: css/button-set.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Right"
+msgstr "light"
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Confirm"
+msgstr "ยืนยัน"
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the AI gradient treatment."
+msgstr "ตั้งค่าเริ่มต้นให้แต่ละลูกที่ไม่ได้ปรับเป็นรูปแบบไล่ระดับสีของ AI."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the lower-emphasis AI treatment."
+msgstr "ตั้งค่าเริ่มต้นให้แต่ละลูกที่ไม่ได้ปรับเป็นรูปแบบ AI ที่มีความเน้นต่ำกว่า."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the destructive color."
+msgstr "ตั้งค่าเริ่มต้นให้แต่ละลูกที่ไม่ได้ปรับเป็นสีที่ใช้สำหรับการกระทำทำลาย/เป็นอันตราย."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the primary color."
+msgstr "ตั้งค่าเริ่มต้นให้แต่ละลูกที่ไม่ได้ปรับเป็นสีหลัก."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the secondary color."
+msgstr "ตั้งค่าเริ่มต้นให้แต่ละลูกที่ไม่ได้ปรับเป็นสีรอง."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the success color."
+msgstr "ตั้งค่าเริ่มต้นให้แต่ละลูกที่ไม่ได้ปรับเป็นสีแสดงความสำเร็จ."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the tertiary (text-style) color."
+msgstr "ตั้งค่าเริ่มต้นให้แต่ละลูกที่ไม่ได้ปรับเป็นสีเทียทิเรียรี (สไตล์ข้อความ)."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to tighter padding."
+msgstr "ตั้งค่าเริ่มต้นให้แต่ละลูกที่ไม่ได้ปรับมีระยะขอบด้านใน (padding) ที่กระชับขึ้น."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Lay every unmodified child out full-width."
+msgstr "จัดวางแต่ละลูกที่ไม่ได้ปรับให้มีความกว้างเต็มพื้นที่."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child for placement on a coloured surface."
+msgstr "ตั้งค่าเริ่มต้นให้แต่ละลูกที่ไม่ได้ปรับสำหรับการวางบนพื้นผิวที่มีสี."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to a round icon button."
+msgstr "ตั้งค่าเริ่มต้นให้แต่ละลูกที่ไม่ได้ปรับเป็นปุ่มไอคอนทรงกลม."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to a square icon button."
+msgstr "ตั้งค่าเริ่มต้นให้แต่ละลูกที่ไม่ได้ปรับเป็นปุ่มไอคอนทรงสี่เหลี่ยม."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to large."
+msgstr "ตั้งค่าเริ่มต้นให้แต่ละลูกที่ไม่ได้ปรับเป็นขนาดใหญ่."
+
+#: css/button-set.md css/button.md css/close-button.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "(default) medium size."
+msgstr "(ค่าเริ่มต้น) ขนาดกลาง."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to small."
+msgstr "ตั้งค่าเริ่มต้นให้แต่ละลูกที่ไม่ได้ปรับเป็นขนาดเล็ก."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the pressed-state toggle treatment."
+msgstr "ตั้งค่าเริ่มต้นให้แต่ละลูกที่ไม่ได้ปรับเป็นรูปแบบสวิตช์ที่แสดงสถานะกด."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to no fill."
+msgstr "ตั้งค่าเริ่มต้นให้แต่ละลูกที่ไม่ได้ปรับเป็นแบบไม่มีพื้น (no fill)."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to no border."
+msgstr "ตั้งค่าเริ่มต้นให้แต่ละลูกที่ไม่ได้ปรับเป็นแบบไม่มีเส้นขอบ."
+
+#: css/button-set.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "- [button](/api/css/button.md) — The child control this wraps."
+msgstr "- [close-button](/api/css/close-button.md) — ปุ่มปิดที่เป็นไอคอนเท่านั้น."
+
 #: css/button.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -1643,7 +1788,7 @@ msgstr "ตัวห่อกลุ่มจัดวางปุ่มข้า
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "An AI action."
-msgstr "แอ็กชัน AI."
+msgstr "การดำเนินการโดย AI."
 
 #: css/button.md
 #, no-c-format
@@ -1655,7 +1800,7 @@ msgstr "แอ็กชัน AI ที่เน้นระดับต่ำ�
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A destructive action."
-msgstr "แอ็กชันที่เป็นการทำลาย (destructive)."
+msgstr "การดำเนินการที่ทำลายล้าง."
 
 #: css/button.md
 #, no-c-format
@@ -1716,12 +1861,6 @@ msgstr "ปุ่มไอคอนทรงกลม."
 msgctxt "docs.api:prose"
 msgid "A square icon button."
 msgstr "ปุ่มไอคอนทรงสี่เหลี่ยม."
-
-#: css/button.md css/close-button.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "(default) medium size."
-msgstr "(ค่าเริ่มต้น) ขนาดกลาง."
 
 #: css/button.md css/close-button.md
 #, no-c-format
@@ -2105,7 +2244,7 @@ msgstr "`<input type=\"checkbox\">` ดั้งเดิมขับเคล�
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "Checkbox\n"
-msgstr "checkbox"
+msgstr "ช่องทำเครื่องหมาย\n"
 
 #: css/checkbox.md
 #, fuzzy, no-c-format
@@ -2335,7 +2474,7 @@ msgstr "มุมมองบริบทจัดกรอบคอลเอา
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Dark (inverse) colour scheme."
-msgstr "โทนสีแบบมืด (กลับด้าน)."
+msgstr "มืด (inverse) โทนสี."
 
 #: css/context-view.md css/popover.md
 #, no-c-format
@@ -3463,6 +3602,12 @@ msgstr "คอนโทรลการกระทำที่เข้าถึ
 #: css/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
+msgstr "A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
+
+#: css/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "A media object: a hero figure beside a title and description."
 msgstr "สื่อวัตถุ: รูปฮีโร่เคียงข้างชื่อเรื่องและคำอธิบาย"
 
@@ -3733,8 +3878,8 @@ msgstr "`<select>` แบบเนทีฟที่มีสไตล์พร�
 #: css/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "An animated loading ring; give it role=\"status\" and an aria-label."
-msgstr "วงโหลดที่เคลื่อนไหวได้; ใส่ role=\"status\" และ aria-label ให้ด้วย"
+msgid "An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "วงแหวนโหลดเคลื่อนไหวหรือสปินเนอร์ AI; ให้ตั้ง role=\"status\" และ aria-label."
 
 #: css/index.md
 #, no-c-format
@@ -3891,6 +4036,12 @@ msgstr "ระบบไอคอน: ขนาด `.instui-icon` บวกตั
 msgctxt "docs.api:prose"
 msgid "Display and text-align utilities — `.--display-<value>` and `.--text-align-<value>` — as composable, global classes, usable bare or chained onto any component."
 msgstr "ยูทิลิตี้การแสดงผลและการจัดแนวข้อความ — `.--display-<value>` และ `.--text-align-<value>` — ในรูปแบบคลาสทั่วโลกที่ประกอบได้ ใช้ได้เปล่าหรือเชนบนคอมโพเนนต์ใดก็ได้"
+
+#: css/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The logo system: `.instui-logo` sizing plus the shared `-logo-<name>` painter that masks a product logo (in `currentColor`) before any element, preserving the logo's own aspect ratio instead of a fixed 1:1 box."
+msgstr "ระบบไอคอน: ขนาด `.instui-icon` บวกตัวเพนเตอร์ร่วม `-icon-<name>` ที่มาสก์กริฟ (ใน `currentColor`) ก่อนองค์ประกอบใดๆ"
 
 #: css/index.md
 #, no-c-format
@@ -4295,6 +4446,24 @@ msgstr "ขนาดเล็ก. @affects list.item — ปรับสเก�
 msgctxt "docs.api:prose"
 msgid "Remove markers and padding."
 msgstr "เอาเครื่องหมายและช่องว่างภายใน (padding) ออก"
+
+#: css/logo.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "`.instui-logo` — The logo system: `.instui-logo` sizing plus the shared `-logo-<name>` painter that masks a product logo (in `currentColor`) before any element, preserving the logo's own aspect ratio instead of a fixed 1:1 box."
+msgstr "`.instui-icon` — ระบบไอคอน: ขนาด `.instui-icon` พร้อมตัววาดร่วม `-icon-<name>` ที่มาส์กรูปสัญลักษณ์ (ใน `currentColor`) ก่อนองค์ประกอบใดๆ"
+
+#: css/logo.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A logo is meaningful, not decorative — give the host element `role=\"img\"` and an `aria-label` naming the product; never mark it `aria-hidden`."
+msgstr "A logo is meaningful, not decorative — give the host element `role=\"img\"` and an `aria-label` naming the product; never mark it `aria-hidden`."
+
+#: css/logo.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Set the glyph token (`--pantoken-glyph`) and its aspect ratio (`--pantoken-logo-aspect`), then render both via the shared painter (for example `-logo-canvas-horizontal-color`, from `@pantoken/plugin-logos`)."
+msgstr "ตั้งค่าโทเค็นรูปสัญลักษณ์ (`--pantoken-glyph`) แล้วเรนเดอร์ผ่านตัววาดร่วม (เช่น `-icon-search`)"
 
 #: css/logos.md
 #, no-c-format
@@ -6959,14 +7128,14 @@ msgstr "ยูทิลิตี้แพดดิ้งในรูปแบบ
 #: css/spinner.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "`.instui-spinner` — An animated loading ring; give it role=\"status\" and an aria-label."
-msgstr "`.instui-spinner` — วงแสดงการโหลดแบบเคลื่อนไหว; กำหนด role=\"status\" และ aria-label ให้มัน."
+msgid "`.instui-spinner` — An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "`.instui-spinner` — วงแหวนโหลดที่เคลื่อนไหวหรือสปินเนอร์ AI; ให้กำหนด role=\"status\" และ aria-label."
 
 #: css/spinner.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color."
-msgstr "`-color-inverse` จะทาสีเฉพาะส่วนขอบบนที่เคลื่อนไหว ไม่ใช่ทั้งแทร็ก ดังนั้นยังอ่านได้ถูกต้องบนการ์ดสีเข้มโดยไม่ต้องมีสีแทร็กแยกต่างหาก."
+msgid "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color. The AI variants replace the ring with the centred `ai-spinner` glyph while keeping the same size scale."
+msgstr "`-color-inverse` จะวาดเฉพาะส่วนขอบด้านบนที่เคลื่อนไหวใหม่ ไม่ใช่ทั้งร่อง (track) ดังนั้นจึงยังอ่านได้ถูกต้องบนการ์ดสีเข้มโดยไม่ต้องมีสีร่องแยกต่างหาก ตัวแปร AI จะแทนที่วงแหวนด้วยสัญลักษณ์ `ai-spinner` ที่อยู่กึ่งกลาง โดยคงสเกลขนาดเท่าเดิม."
 
 #: css/spinner.md
 #, no-c-format
@@ -6979,6 +7148,18 @@ msgstr "**Source:** [spinner.css](https://github.com/thedannywahl/pantoken/blob/
 msgctxt "docs.api:prose"
 msgid "Give the spinner role=\"status\" and an aria-label so screen readers announce it as a live loading status."
 msgstr "กำหนด role=\"status\" และ aria-label ให้กับ spinner เพื่อให้โปรแกรมอ่านหน้าจอประกาศเป็นสถานะการโหลดแบบสด."
+
+#: css/spinner.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rotating AI-gradient star."
+msgstr "ดาวไล่ระดับสี AI ที่กำลังหมุนอยู่."
+
+#: css/spinner.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rotating on-colour AI star for a coloured or dark surface."
+msgstr "ดาว AI โทนสีเดียวที่หมุน สำหรับพื้นผิวที่มีสีหรือพื้นผิวสีเข้ม."
 
 #: css/spinner.md
 #, no-c-format
@@ -6997,6 +7178,12 @@ msgstr "ขนาดเล็กพิเศษ คำพ้องรูปแ�
 msgctxt "docs.api:prose"
 msgid "Extra-small."
 msgstr "ขนาดเล็กพิเศษ."
+
+#: css/spinner.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rotates the ring, or the AI star at the slower 2.25-second cadence."
+msgstr "หมุนวงแหวน หรือดาว AI ด้วยจังหวะที่ช้ากว่า คือ 2.25 วินาทีต่อรอบ."
 
 #: css/stacking.md
 #, no-c-format
@@ -7249,6 +7436,24 @@ msgstr "ประวัติ"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The Overview tab's content shows here."
+msgstr "เนื้อหาในแท็บภาพรวมจะแสดงที่นี่."
+
+#: css/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The Details tab's content shows here."
+msgstr "เนื้อหาในแท็บภาพรวมจะแสดงที่นี่."
+
+#: css/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The Disabled tab's content won't be visible."
+msgstr "เนื้อหาในแท็บภาพรวมจะแสดงที่นี่."
+
+#: css/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The History tab's content shows here."
 msgstr "เนื้อหาในแท็บภาพรวมจะแสดงที่นี่."
 
 #: css/tabs.md
@@ -7737,7 +7942,7 @@ msgctxt "docs.api:prose"
 msgid "**Source:** [toggle-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/toggle-group/toggle-group.css)"
 msgstr "**Source:** [toggle-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/toggle-group/toggle-group.css)"
 
-#: css/toggle-group.md
+#: css/toggle-group.md renderers/web-components/src/variables/tabs.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Advanced settings"
@@ -9093,6 +9298,12 @@ msgctxt "docs.api:prose"
 msgid "Also emit the deprecated InstUI-prop glyph aliases (`-render-icon-<name>`, `-render-custom-icon-<name>`)\nas functional aliases of `-icon-<name>`. Off by default — turning it on roughly doubles the sheet, so\nenable it only when you need markup written against the old `renderIcon`/`renderCustomIcon` prop names\nto keep rendering. The shipped `icons.css` is built with this on."
 msgstr "Also emit the deprecated InstUI-prop glyph aliases (`-render-icon-&lt;name&gt;`, `-render-custom-icon-&lt;name&gt;`)\nas functional aliases of `-icon-&lt;name&gt;`. Off by default — turning it on roughly doubles the sheet, so\nenable it only when you need markup written against the old `renderIcon`/`renderCustomIcon` prop names\nto keep rendering. The shipped `icons.css` is built with this on."
 
+#: formats/components/src/interfaces/IconGlyphsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Icon name → `--instui-icon-<name>` data-URI value. When given, the sheet also declares those\ncustom properties in `:root`, making it self-contained: the glyphs paint without a separate\ntoken sheet loaded alongside. Omit to emit the lean mapping-only sheet."
+msgstr "ชื่อไอคอน → `--instui-icon-<name>` ค่าประเภท data-URI. เมื่อกำหนดไว้ ชีตจะประกาศคุณสมบัติแบบกำหนดเองเหล่านั้น\nใน `:root` ทำให้เป็นเอกเทศ: กราฟิกถูกวาดโดยไม่ต้องมีชีตโทเค็นแยกโหลดมาพร้อมกัน ปล่อยว่างเพื่อส่งออกเฉพาะชีตแม็ปปิ้งที่เบา"
+
 #: formats/components/src/interfaces/ProseOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9124,6 +9335,12 @@ msgstr "Every elevation level and alias emitted as `--instui-elevation-&lt;name&
 msgctxt "docs.api:prose"
 msgid "The elements the ring applies to by default (the common interactive/focusable elements)."
 msgstr "องค์ประกอบที่วงแหวนถูกนำไปใช้โดยค่าเริ่มต้น (องค์ประกอบทั่วไปที่สามารถโต้ตอบ/รับโฟกัสได้)"
+
+#: formats/components/src/variables/aiGradientCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The AI gradient utility as a standalone, header-wrapped stylesheet."
+msgstr "ยูทิลิตี้ไล่ระดับสีของ AI ในรูปแบบสไตล์ชีตแบบสแตนด์อโลน ที่ห่อหุ้มด้วย header."
 
 #: formats/components/src/variables/alertCss.md
 #, no-c-format
@@ -9659,6 +9876,106 @@ msgctxt "docs.api:prose"
 msgid "**Wrap a section in a CSS cascade layer**"
 msgstr "**ห่อส่วนในเลเยอร์ cascade ของ CSS**"
 
+#: formats/css/src/functions/darkBranch.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The dark branch of a `light-dark()` value, or `null` when the value isn't one."
+msgstr "สาขาแบบมืดของค่า `light-dark()`, หรือ `null` เมื่อค่านั้นไม่ใช่ค่าแบบนั้น."
+
+#: formats/css/src/functions/lightBranch.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The light branch of a `light-dark()` value, or `null` when the value isn't one."
+msgstr "สาขาแบบสว่างของค่า `light-dark()`, หรือ `null` เมื่อค่านั้นไม่ใช่ค่าแบบนั้น."
+
+#: formats/css/src/functions/multiScopeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The complete multi-scope sheet: layer order, one set of `@property` registrations, a shared base\nblock, a token block per theme, and the light/dark `color-scheme` pins."
+msgstr "ชีทมัลติสโคปแบบสมบูรณ์: ลำดับเลเยอร์, ชุดเดียวของการลงทะเบียน `@property`, บล็อกฐานที่ใช้ร่วมกัน\nblock, บล็อกโทเค็นต่อธีม และพิน `color-scheme` แบบสว่าง/มืด."
+
+#: formats/css/src/functions/multiScopeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Tokens are partitioned by whether their value actually varies across `themes`. Invariant tokens go\nin the shared base block once; varying tokens are repeated in full in *every* theme block. That\nsecond half is what makes nesting safe — a theme block that omitted a varying token would inherit\nthe enclosing scope's value for it."
+msgstr "โทเค็นถูกแบ่งตามว่าค่าของมันเปลี่ยนแปลงจริงข้าม `themes` หรือไม่. โทเค็นที่ไม่เปลี่ยนจะไปไว้ในบล็อกฐานที่ใช้ร่วมกันเพียงครั้งเดียว; โทเค็นที่เปลี่ยนจะถูกทำซ้ำเต็มรูปแบบในบล็อกธีม*ทุก*บล็อก. ส่วนที่สองนี้ทำให้การซ้อนปลอดภัย — บล็อกธีมที่ละเว้นโทเค็นที่เปลี่ยนจะสืบทอดค่าจากสโคปรอบนอกแทน."
+
+#: formats/css/src/functions/propertiesCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The document-global `@property` registrations, with no declarations. Load this once per document;\nevery theme sheet below is declarations only, so loading a second theme cannot clobber it."
+msgstr "การลงทะเบียน `@property` ในระดับเอกสาร ทั้งหมดโดยไม่มีการประกาศ โหลดอันนี้หนึ่งครั้งต่อเอกสาร;\nแต่ละชีทธีมด้านล่างเป็นเพียงการประกาศ ดังนั้นการโหลดธีมที่สองจะไม่เขียนทับมันได้."
+
+#: formats/css/src/functions/schemeOverrideTokens.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The tokens whose value actually changes when a theme is pinned to `scheme` — i.e. the ones written\nwith `light-dark()`. This is the minimal forcing block for `[data-pantoken-scheme]`."
+msgstr "โทเค็นที่ค่าจริง ๆ เปลี่ยนเมื่อธีมถูกปักไว้กับ `scheme` — คือพวกที่เขียนด้วย\n `light-dark()`. นี่คือบล็อกการบังคับขั้นต่ำสำหรับ `[data-pantoken-scheme]`."
+
+#: formats/css/src/functions/schemeScopeSelector.md
+#: packages/utils/src/functions/schemeScopeSelector.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The selector matching any element pinned to `scheme`."
+msgstr "ตัวเลือกที่จับคู่กับองค์ประกอบใด ๆ ที่ถูกปักไว้กับ `scheme`."
+
+#: formats/css/src/functions/schemeScopeSelectors.md
+#: packages/utils/src/functions/schemeScopeSelectors.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Both forms of the scheme scope selector, as a selector list."
+msgstr "ทั้งสองรูปแบบของตัวเลือกสโคปของสคีม ในรูปแบบรายการตัวเลือก."
+
+#: formats/css/src/functions/schemesCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The light and dark scheme pins, as a standalone sheet. Theme-independent — the scheme only decides\nwhich branch of `light-dark()` wins, which the browser does for us."
+msgstr "พินสคีมแบบสว่างและมืด ในรูปแบบชีทแยกต่างหาก. ไม่ขึ้นกับธีม — สคีมเพียงตัดสินว่าแขนงไหนของ `light-dark()` จะชนะ ซึ่งเป็นสิ่งที่เบราเซอร์ทำให้เรา."
+
+#: formats/css/src/functions/scopedSchemeCss.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pin a subtree's color scheme."
+msgstr "โทนสีแบบมืด (กลับด้าน)."
+
+#: formats/css/src/functions/scopedSchemeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`color-scheme` is an ordinary inherited property, so one rule keyed to the scope attribute (or its\nclass twin) resolves every `light-dark()` token below it. No token needs flattening: this sheet is\na couple of hundred bytes, not the ~87kb an explicit per-token override table would cost."
+msgstr "`color-scheme` เป็นพร็อพเพอร์ตี้ที่สืบทอดปกติ ดังนั้นกฎเพียงข้อเดียวที่ผูกกับแอตทริบิวต์สโคป (หรือคลาสที่เทียบเท่า)\nจะแก้ไขโทเค็น `light-dark()` ทุกตัวด้านล่างได้. ไม่มีความจำเป็นต้องแปะค่าโทเค็น: ชีทนี้มีขนาดไม่กี่ร้อยไบต์ ไม่ใช่ประมาณ ~87kb ที่ต้องใช้ตารางการเขียนทับต่อโทเค็นอย่างชัดเจน."
+
+#: formats/css/src/functions/scopedThemeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "One theme's complete token set, scoped to any element carrying `data-pantoken-theme=\"<theme>\"` or\nthe equivalent `.--pantoken-theme-<theme>` class."
+msgstr "ชุดโทเค็นครบชุดของธีมหนึ่ง ๆ ที่มีสโคปกับองค์ประกอบใด ๆ ที่มี `data-pantoken-theme=\"<theme>\"` หรือ\nคลาสเทียบเท่า `.--pantoken-theme-<theme>`."
+
+#: formats/css/src/functions/scopedThemeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every token is emitted as a declaration — including the concrete ones that would normally become\n`@property` initial-values — because an initial-value is document-global and cannot vary per scope."
+msgstr "โทเค็นทุกตัวถูกปล่อยออกมาเป็นการประกาศ — รวมถึงโทเค็นเชิงคอนกรีตที่โดยปกติจะกลายเป็นค่าตั้งต้นของ \n`@property` — เพราะค่าตั้งต้นเป็นระดับเอกสารและไม่สามารถเปลี่ยนแปลงตามสโคปได้."
+
+#: formats/css/src/functions/themeScopeSelector.md
+#: packages/utils/src/functions/themeScopeSelector.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The selector matching any element that roots `theme`."
+msgstr "ตัวเลือกที่จับคู่กับองค์ประกอบใด ๆ ที่เป็นรากของ `theme`."
+
+#: formats/css/src/functions/themeScopeSelectors.md
+#: packages/utils/src/functions/themeScopeSelectors.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Both forms of the theme scope selector, as a selector list."
+msgstr "ทั้งสองรูปแบบของตัวเลือกสโคปธีม ในรูปแบบรายการตัวเลือก."
+
+#: formats/css/src/functions/themedTokens.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a theme token set with optional icon removal and light/dark collapse."
+msgstr "สร้างชุดโทเค็นธีมพร้อมตัวเลือกการลบไอคอนและการยุบแบบสว่าง/มืด."
+
 #: formats/css/src/functions/toCss.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9713,6 +10030,50 @@ msgctxt "docs.api:prose"
 msgid "Plain layer name (e.g. `\"pantoken\"`), no `@` prefix. Omit to skip the wrapper."
 msgstr "ชื่อเลเยอร์แบบธรรมดา (เช่น `\"pantoken\"`) ไม่มีคำนำหน้า `@`. เว้นไว้เพื่อข้ามตัวห่อ"
 
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [multiScopeCss](../functions/multiScopeCss.md)."
+msgstr "ตัวเลือกสำหรับ [toCss](../functions/toCss.md)."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#: formats/css/src/interfaces/ScopedCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Drop the `--instui-icon-*` glyph tokens (default `false`)."
+msgstr "ธีมที่จะนำชั้น `--instui-*` มาใช้ (ค่าเริ่มต้น `\"rebrand\"`)."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#: formats/css/src/interfaces/ScopedCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Plugins whose `css` hooks run after the base CSS is built."
+msgstr "ปลั๊กอินที่ฮุก `css` ของพวกมันทำงานหลังจากสร้าง CSS พื้นฐานแล้ว (ค่าเริ่มต้น: ไม่มี)."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Themes to emit scope blocks for."
+msgstr "ธีมที่จะสร้างบล็อกสโคปสำหรับ."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The theme whose concrete tokens back the one-time `@property` registrations."
+msgstr "สตริงสไตล์ชีทสำเร็จรูป `rebrand` (ระบุชนิด: โทเค็นคอนกรีตในฐานะการลงทะเบียน `@property`)"
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Include the light/dark `color-scheme` pins (default `true`; see [schemesCss](../functions/schemesCss.md))."
+msgstr "รวมพิน `color-scheme` แบบสว่าง/มืด (ค่าเริ่มต้น `true`; ดู [schemesCss](../functions/schemesCss.md)))."
+
+#: formats/css/src/interfaces/ScopedCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options shared by the scoped emitters."
+msgstr "ตัวเลือกที่ใช้ร่วมกันโดยตัวส่งออกของ utility-class."
+
 #: formats/css/src/interfaces/ToCssOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9726,10 +10087,95 @@ msgid "The selector scoped declarations are emitted under (default `\":root\"`).
 msgstr "ประกาศที่มีขอบเขตตัวเลือกจะถูกสร้างภายใต้ (ค่าเริ่มต้น `\":root\"`)."
 
 #: formats/css/src/interfaces/ToCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Plain cascade layer name wrapping the declarations (no `@` prefix). Omit to skip the wrapper."
+msgstr "ชื่อเลเยอร์แบบธรรมดา (เช่น `\"pantoken\"`) ไม่มีคำนำหน้า `@`. เว้นไว้เพื่อข้ามตัวห่อ"
+
+#: formats/css/src/interfaces/ToCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Which half of the sheet to emit (default `\"all\"`)."
+msgstr "ธีมที่จะสร้าง (ค่าเริ่มต้น: `\"rebrand\"`)."
+
+#: formats/css/src/interfaces/ToCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Emit every token as a declaration rather than routing concrete tokens to `@property`. Required\nfor a theme block that can nest inside another theme's subtree: an incomplete block would\ninherit the enclosing theme's values for the tokens it omits."
+msgstr "ปล่อยโทเค็นทุกตัวเป็นการประกาศแทนการส่งโทเค็นเชิงคอนกรีตไปยัง `@property`. จำเป็นสำหรับบล็อกธีมที่สามารถซ้อนอยู่ภายในซับทรีของธีมอื่น: บล็อกที่ไม่สมบูรณ์จะสืบทอดค่าของธีมรอบนอกสำหรับโทเค็นที่มันละเว้น."
+
+#: formats/css/src/interfaces/ToCssOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Plugins whose `css` hooks run after the base CSS is built (default: none)."
 msgstr "ปลั๊กอินที่ฮุก `css` ของพวกมันทำงานหลังจากสร้าง CSS พื้นฐานแล้ว (ค่าเริ่มต้น: ไม่มี)."
+
+#: formats/css/src/type-aliases/CssEmitTarget.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Which half of the sheet to emit."
+msgstr "จะส่งออกครึ่งใดของชีท."
+
+#: formats/css/src/type-aliases/CssEmitTarget.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`@property` registrations are document-global — the last registration of a given name wins for the\nwhole document — so two full sheets on one page fight over every concrete token. Emitting\nregistrations once (`\"properties\"`) and each theme as declarations only (`\"declarations\"`) lets\nseveral themes coexist."
+msgstr "การลงทะเบียน `@property` เป็นระดับเอกสาร — การลงทะเบียนครั้งสุดท้ายของชื่อนั้นจะชนะสำหรับทั้งเอกสาร — ดังนั้นสองชีทเต็มบนหน้าเดียวจะชนกันในทุกโทเค็นเชิงคอนกรีต. การปล่อยการลงทะเบียนเพียงครั้งเดียว (`\"properties\"`)) และแต่ละธีมเป็นเพียงการประกาศ (`\"declarations\"`)) ช่วยให้หลายธีมสามารถอยู่ร่วมกันได้."
+
+#: formats/css/src/type-aliases/Scheme.md
+#: formats/scope/src/type-aliases/Scheme.md
+#: packages/utils/src/type-aliases/Scheme.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A color scheme a scope can be pinned to."
+msgstr "สคีมสีที่สโคปสามารถถูกปักไว้กับ."
+
+#: formats/css/src/variables/BOUNDARY_ATTR.md
+#: packages/utils/src/variables/BOUNDARY_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute marking a scope that ancestor resolution must not cross."
+msgstr "แอตทริบิวต์ที่ทำเครื่องหมายสโคปที่การแก้ไขแอนเซสเตอร์ต้องไม่ข้าม."
+
+#: formats/css/src/variables/BOUNDARY_CLASS.md
+#: packages/utils/src/variables/BOUNDARY_CLASS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Class equivalent of `data-pantoken-boundary`."
+msgstr "เทียบเท่าคลาสของ `data-pantoken-boundary`."
+
+#: formats/css/src/variables/COLOR_ATTR.md
+#: packages/utils/src/variables/COLOR_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute that selects a custom brand color."
+msgstr "แอตทริบิวต์ที่เลือกสีแบรนด์แบบกำหนดเอง."
+
+#: formats/css/src/variables/LAYERS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Cascade layers this module emits into, in ascending precedence order."
+msgstr "เลเยอร์คาสเคดที่โมดูลนี้ส่งออกในลำดับความสำคัญเพิ่มขึ้น."
+
+#: formats/css/src/variables/SCHEME_ATTR.md
+#: packages/utils/src/variables/SCHEME_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute that pins a subtree to a color scheme."
+msgstr "แอตทริบิวต์ที่ปักซับทรีให้กับสคีมสี."
+
+#: formats/css/src/variables/THEME_ATTR.md
+#: packages/utils/src/variables/THEME_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute that roots a theme scope. Matches any element, not just `:root`."
+msgstr "แอตทริบิวต์ที่เป็นรากของสโคปธีม. จับคู่กับองค์ประกอบใด ๆ ไม่ใช่เฉพาะ `:root` เท่านั้น."
+
+#: formats/css/src/variables/colorClass.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Class equivalent of `data-pantoken-color`."
+msgstr "เทียบเท่าคลาสของ `data-pantoken-color`."
 
 #: formats/css/src/variables/css.md
 #, no-c-format
@@ -9742,6 +10188,18 @@ msgstr "สตริงสไตล์ชีทสำเร็จรูป `rebr
 msgctxt "docs.api:prose"
 msgid "The lean `rebrand` stylesheet string — the full sheet minus the `--instui-icon-*` glyph tokens (the\n~1,777 icon data-URIs that make up most of [css](css.md)). Roughly a sixth the size over the wire; the\nrecommended foundation for CDN/embed delivery. Components reference only a handful of icons, shipped\nseparately as `@pantoken/components`'s `component-icons.css`; consumers who use `var(--instui-icon-*)`\nbroadly should load the full [css](css.md) (or the `icons.css` glyph sheet). See\n`@pantoken/css/style.lean.css`."
 msgstr "สตริงสไตล์ชีตกระทัดรัด `rebrand` — แผ่นเต็มโดยตัดทอนโทเค็นกlyph `--instui-icon-*` ออก (ประมาณ\n~1,777 data-URI ของไอคอนที่ประกอบเป็นส่วนใหญ่ของ [css](css.md)). ขนาดโดยรวมทางเครือข่ายประมาณหนึ่งในหก; เป็น\nพื้นฐานที่แนะนำสำหรับการส่งผ่าน CDN/ฝัง. คอมโพเนนต์อ้างอิงเพียงไม่กี่ไอคอนเท่านั้น ซึ่งจัดส่งแยกเป็น `@pantoken/components`'s `component-icons.css`; ผู้ใช้ที่ใช้ `var(--instui-icon-*)`\nอย่างกว้างขวางควรโหลด [css](css.md) ฉบับเต็ม (หรือสไตล์ชีตกlyph `icons.css`). ดู\n`@pantoken/css/style.lean.css`."
+
+#: formats/css/src/variables/schemeClass.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Class equivalent of `data-pantoken-scheme`."
+msgstr "เทียบเท่าคลาสของ `data-pantoken-scheme`."
+
+#: formats/css/src/variables/themeClass.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Class equivalents of the scope attributes, for hosts that sanitize `data-*` but allow `class` —\nCanvas RCE content being the one that forced them. They follow the repo's global-modifier naming\n(`.--name`), and the emitter pairs each attribute selector with its class twin."
+msgstr "เทียบเท่าคลาสของแอตทริบิวต์สโคป สำหรับโฮสต์ที่ทำความสะอาด `data-*` แต่ยอมให้ `class` —\nเนื้อหา Canvas RCE เป็นเหตุผลที่บังคับใช้พวกมัน. พวกมันปฏิบัติตามการตั้งชื่อ global-modifier ของรีโป (`.--name`), และเอมิตเตอร์จะจับคู่แต่ละตัวเลือกแอตทริบิวต์กับคลาสที่เทียบเท่า."
 
 #: formats/dtcg/src/functions/byTheme.md
 #, no-c-format
@@ -9928,9 +10386,9 @@ msgid "Icon name → hex codepoint (e.g. `\"e001\"`)."
 msgstr "ชื่อไอคอน → จุดโค้ดแบบเลขฐานสิบหก (เช่น `\"e001\"`)"
 
 #: formats/icons/src/functions/buildIconResolverChain.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Build the shared icon-resolver chain: plugin `rehype` resolvers first, then an explicit\n`resolve`, then the built-in pantoken icon set. Used by `@pantoken/rehype` and\n`@pantoken/markdown-it` so the resolution order stays identical across renderers."
+msgid "Build the shared icon-resolver chain: an explicit `resolve` first, then the built-in pantoken\nicon set, then plugin `rehype` resolvers (so a plugin can add codes the built-in set doesn't\nknow, but never shadow a built-in icon name). Used by `@pantoken/rehype` and\n`@pantoken/markdown-it` so the resolution order stays identical across renderers."
 msgstr "สร้างโซ่ตัวแก้ไอคอนร่วม: ตัวแก้ของปลั๊กอิน `rehype` ก่อน ตามด้วย `resolve` ที่ระบุไว้ แล้วจึงชุดไอคอน pantoken ที่ติดมาในตัว. ใช้โดย `@pantoken/rehype` และ\n`@pantoken/markdown-it` เพื่อให้ลำดับการแก้ยังคงเหมือนกันข้ามตัวเรนเดอร์"
 
 #: formats/icons/src/functions/getIcon.md
@@ -9966,9 +10424,9 @@ msgstr "ตัวแก้ (resolver) ที่ระบุอย่างชั
 
 #: formats/icons/src/interfaces/IconResolverChainOptions.md
 #: renderers/rehype/src/interfaces/RehypeOptions.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Plugins whose `rehype` hooks contribute resolvers (tried first)."
+msgid "Plugins whose `rehype` hooks contribute resolvers (tried last, after the built-in set)."
 msgstr "ปลั๊กอินที่ฮุก `rehype` ของพวกเขามีส่วนในการให้ resolver (จะถูกลองก่อน)."
 
 #: formats/icons/src/interfaces/PantokenIcon.md
@@ -10013,6 +10471,12 @@ msgctxt "docs.api:prose"
 msgid "The glyph origin."
 msgstr "ที่มาของ glyph."
 
+#: formats/icons/src/variables/customIcons.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every Instructure-authored custom icon."
+msgstr "**จำกัดเฉพาะสัญลักษณ์ (glyph) ที่เขียนโดย Instructure เท่านั้น**"
+
 #: formats/icons/src/variables/icons.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -10024,6 +10488,12 @@ msgstr "ไอคอน pantoken ทุกชิ้น จัดเรียง�
 msgctxt "docs.api:prose"
 msgid "Every pantoken icon, keyed by name."
 msgstr "ไอคอน pantoken ทุกไอคอน จัดเก็บโดยใช้ชื่อเป็นคีย์"
+
+#: formats/icons/src/variables/lucideIcons.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every canonical Lucide icon."
+msgstr "ไอคอน Lucide ทุกไอคอนตามมาตรฐาน"
 
 #: formats/icons/src/variables/resolve.md
 #, no-c-format
@@ -10114,6 +10584,12 @@ msgstr "timeout เป็นตัวเลือกแบบมิลลิว�
 msgctxt "docs.api:prose"
 msgid "Wire open/close commands plus width-based responsive overlay switching onto a host: any\ncollapsible side panel (e.g. a drawer's tray) can import this interaction rather than each\ncomponent reimplementing it."
 msgstr "เชื่อมต่อคำสั่งเปิด/ปิด รวมถึงการสลับโอเวอร์เลย์ที่ตอบสนองตามความกว้างไปยังโฮสต์: any\nแผงด้านข้างที่พับ/ขยายได้ใดๆ (เช่น ถาดของลิ้นชัก) สามารถนำเข้าการโต้ตอบนี้ได้ แทนที่แต่ละ\nคอมโพเนนต์จะต้องนำไปใช้อีกครั้ง"
+
+#: formats/interactions/src/functions/initTabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Wire a tablist and its controlled panels inside a host element."
+msgstr "เชื่อมต่อ tablist และพาเนลที่ควบคุมไว้ภายในองค์ประกอบโฮสต์"
 
 #: formats/interactions/src/functions/initTooltip.md
 #, no-c-format
@@ -10374,6 +10850,12 @@ msgctxt "docs.api:prose"
 msgid "Exit treatment. Defaults to `\"fade\"`, matching InstUI Alert."
 msgstr "พฤติกรรมเมื่อออก ค่าเริ่มต้นคือ `\"fade\"` ซึ่งสอดคล้องกับ InstUI Alert."
 
+#: formats/interactions/src/interfaces/TabsHandle.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Controls the listeners installed by [initTabs](../functions/initTabs.md)."
+msgstr "ฮันเดิลที่ส่งกลับโดย [initTooltip](../functions/initTooltip.md)."
+
 #: formats/interactions/src/interfaces/TooltipHandle.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -10508,6 +10990,410 @@ msgstr "ตัวเลือกสำหรับ [toLess](../functions/toLess.
 msgctxt "docs.api:prose"
 msgid "The ready-made `rebrand` Less variable set."
 msgstr "ชุดตัวแปร Less สำเร็จรูป `rebrand`"
+
+#: formats/scope/src/functions/connectScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Run inside a frame: ask the host page's scope for its state and follow it."
+msgstr "รันภายในเฟรม: ขอสถานะจากสโคปของโฮสต์เพจและทำตามนั้น."
+
+#: formats/scope/src/functions/connectScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The frame gets its own scope element, so it can be told to render a different theme or scheme than\nthe host — it is not inheriting ambiently."
+msgstr "เฟรมได้รับองค์ประกอบสโคปของตัวเอง จึงสามารถสั่งให้เรนเดอร์ธีมหรือสคีมที่ต่างจากโฮสต์ได้ — มันไม่ได้สืบทอดแบบแอมเบียนท์."
+
+#: formats/scope/src/functions/connectScope.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "A disconnect function."
+msgstr "แอ็กชันที่เป็นการทำลาย (destructive)."
+
+#: formats/scope/src/functions/createScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Create a scope rooted at `element`."
+msgstr "สร้างสโคปที่มีรากเป็น `element`."
+
+#: formats/scope/src/functions/createScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "**Two independent themes on one page**"
+msgstr "**ธีมสองชุดที่เป็นอิสระบนหน้าเดียวกัน****"
+
+#: formats/scope/src/functions/ensureProperties.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inject `css` into `doc` once. A second call with the same `id` does nothing, whichever instance\nmakes it."
+msgstr "ฉีด `css` ลงใน `doc` หนึ่งครั้ง. การเรียกครั้งที่สองด้วย `id` เดียวกันจะไม่ทำอะไร ไม่ว่าตัวใดจะเป็นผู้เรียก\n."
+
+#: formats/scope/src/functions/ensureProperties.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The registrations sheet, e.g. `@pantoken/css/properties.css`."
+msgstr "ชื่อแพ็กเกจ npm เช่น `\"@pantoken/components\"`."
+
+#: formats/scope/src/functions/ensureProperties.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`id` distinguishes unrelated sheets; `doc` defaults to the current document."
+msgstr "`id` แยกชีทที่ไม่เกี่ยวข้องกัน; `doc` ตั้งค่าดีฟอลต์เป็นเอกสารปัจจุบัน."
+
+#: formats/scope/src/functions/ensureProperties.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`true` when this call performed the injection."
+msgstr "`true` เมื่อการเรียกนี้ทำการฉีดข้อมูล."
+
+#: formats/scope/src/functions/getScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The scope registered for `instanceId` in `doc`, if any."
+msgstr "The scope registered for `instanceId` in `doc`, หากมี."
+
+#: formats/scope/src/functions/hasProperties.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "True when a registrations sheet with `id` is already present in `doc`."
+msgstr "True เมื่อชีทการลงทะเบียนที่มี `id` มีอยู่แล้วใน `doc`."
+
+#: formats/scope/src/functions/isScheme.md
+#: packages/utils/src/functions/isScheme.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Narrow an arbitrary value to a [Scheme](../type-aliases/Scheme.md)."
+msgstr "จำกัดค่าที่สุ่มให้เป็น [Scheme](../type-aliases/Scheme.md)."
+
+#: formats/scope/src/functions/observeScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Call `listener` whenever the scope resolved for `target` changes, including when an ancestor's\nattributes change."
+msgstr "เรียก `listener` ทุกครั้งเมื่อสโคปที่แก้ไขสำหรับ `target` เปลี่ยนแปลง รวมถึงเมื่อคุณสมบัติของบรรพบุรุษ\n เปลี่ยนแปลง."
+
+#: formats/scope/src/functions/observeScope.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "A stop function."
+msgstr "แอ็กชัน AI."
+
+#: formats/scope/src/functions/resolveInstance.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The instance that owns `start`, falling back to [DEFAULT\\_INSTANCE](../variables/DEFAULT_INSTANCE.md)."
+msgstr "อินสแตนซ์ที่เป็นเจ้าของ `start` โดยถอยกลับไปที่ [DEFAULT\\_INSTANCE](../variables/DEFAULT_INSTANCE.md)."
+
+#: formats/scope/src/functions/resolveInstance.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use this to decide whether an event or message is yours before acting on it."
+msgstr "ใช้สิ่งนี้เพื่อตัดสินว่าเหตุการณ์หรือข้อความเป็นของคุณก่อนที่จะดำเนินการแก้ไข."
+
+#: formats/scope/src/functions/resolveScheme.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The effective color scheme for `start`: an explicit pin if any ancestor set one, otherwise the\n`color-scheme` the element actually computes to, otherwise the OS preference."
+msgstr "โทนสีที่มีผลสำหรับ `start`: พินที่ระบุโดยตรงถ้าบรรพบุรุษคนใดตั้งค่าไว้ มิฉะนั้นเป็น\n`color-scheme` `color-scheme` ที่องค์ประกอบคำนวณได้จริง มิฉะนั้นใช้การตั้งค่าที่ระบบปฏิบัติการต้องการ."
+
+#: formats/scope/src/functions/resolveScheme.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Never reads `document.documentElement` — that global read is exactly what desynchronises two\ninstances on one page."
+msgstr "ไม่อ่าน `document.documentElement` เลย — การอ่านค่าระดับโลกนั้นคือสาเหตุที่ทำให้สองอินสแตนซ์บนหน้าเดียวกันไม่ซิงค์กัน."
+
+#: formats/scope/src/functions/resolveScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve the scope in effect for `start` by walking up its ancestors."
+msgstr "แก้ไขสโคปที่มีผลสำหรับ `start` โดยไต่ขึ้นไปตามบรรพบุรุษ."
+
+#: formats/scope/src/functions/resolveScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The element to resolve for. Its own attributes participate."
+msgstr "องค์ประกอบที่ต้องแก้ไขเพื่อ; คุณสมบัติของมันเองมีส่วนร่วมด้วย."
+
+#: formats/scope/src/functions/resolveScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [ResolvedScope](../interfaces/ResolvedScope.md); fields no ancestor declared are left `undefined`."
+msgstr "The [ResolvedScope](../interfaces/ResolvedScope.md); ฟิลด์ที่ไม่มีบรรพบุรุษประกาศจะยังคงเป็น `undefined`."
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "`@pantoken/scope` — run several pantoken themes and color schemes in one document."
+msgstr "`@pantoken/core` — ตัวแปลง pantoken."
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pantoken's CSS keys themes to a `data-pantoken-theme` attribute that matches *any* element, not\njust `:root`, so theming is a property of a subtree rather than of the page. This package is the\nruntime half of that contract:"
+msgstr "กุญแจธีมของ CSS ของ Pantoken แมตช์กับแอตทริบิวต์ `data-pantoken-theme` ที่ตรงกับ *any* องค์ประกอบ ไม่ใช่แค่ `:root` เท่านั้น ดังนั้นการจัดธีมจึงเป็นคุณสมบัติของซับทรีมากกว่าของหน้าเดียว แพ็กเกจนี้เป็นครึ่งหนึ่งของสัญญานั้นในฝั่งรันไทม์:"
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "- [resolveScope](functions/resolveScope.md) walks up from an element to find the theme, scheme, and color in effect —\n  the auto-detection half.\n- [createScope](functions/createScope.md) declares a scope explicitly, with its own persisted state and its own frame\n  message channel — the manual-configuration half that stops two instances colliding.\n- [ensureProperties](functions/ensureProperties.md) injects the document-global `@property` registrations once, however\n  many instances ask for them."
+msgstr "- [resolveScope](functions/resolveScope.md) ไต่ขึ้นจากองค์ประกอบเพื่อค้นหาธีม scheme และสีที่มีผล —\n  ส่วนที่ตรวจจับอัตโนมัติ.\n- [createScope](functions/createScope.md) ประกาศสโคปโดยชัดเจน พร้อมสถานะที่เก็บถาวรของตัวเองและช่องข้อความเฟรมของตัวเอง\n  — ส่วนการกำหนดค่าด้วยมือที่ป้องกันไม่ให้สองอินสแตนซ์ชนกัน.\n- [ensureProperties](functions/ensureProperties.md) ฉีดการลงทะเบียน `@property` ระดับเอกสารครั้งเดียว ไม่ว่าจะมีอินสแตนซ์กี่ตัวขอพวกมันก็ตาม."
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Node-free by design: this ships to the browser."
+msgstr "ปราศจาก Node โดยออกแบบ: ส่งไปยังเบราว์เซอร์."
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [BOUNDARY_ATTR](../../css/src/variables/BOUNDARY_ATTR.md)"
+msgstr "ส่งออกซ้ำ [BOUNDARY_ATTR](../../css/src/variables/BOUNDARY_ATTR.md)"
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [BOUNDARY_CLASS](../../css/src/variables/BOUNDARY_CLASS.md)"
+msgstr "ส่งออกซ้ำ [BOUNDARY_CLASS](../../css/src/variables/BOUNDARY_CLASS.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [COLOR_ATTR](../../css/src/variables/COLOR_ATTR.md)"
+msgstr "ส่งออกซ้ำ [Mode](../../core/src/type-aliases/Mode.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [SCHEME_ATTR](../../css/src/variables/SCHEME_ATTR.md)"
+msgstr "ส่งออกซ้ำ [Mode](../../core/src/type-aliases/Mode.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [THEME_ATTR](../../css/src/variables/THEME_ATTR.md)"
+msgstr "ส่งออกซ้ำ [Mode](../../core/src/type-aliases/Mode.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [colorClass](../../css/src/variables/colorClass.md)"
+msgstr "ส่งออกซ้ำ [Mode](../../core/src/type-aliases/Mode.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [schemeClass](../../css/src/variables/schemeClass.md)"
+msgstr "ส่งออกซ้ำ [Theme](../../../packages/core/src/type-aliases/Theme.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [themeClass](../../css/src/variables/themeClass.md)"
+msgstr "ส่งออกซ้ำ [Theme](../../../packages/core/src/type-aliases/Theme.md)"
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [connectScope](../functions/connectScope.md)."
+msgstr "ตัวเลือกสำหรับ [toGpl](../functions/toGpl.md)."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The instance to accept messages for (default [DEFAULT\\_INSTANCE](../variables/DEFAULT_INSTANCE.md))."
+msgstr "อินสแตนซ์ที่จะรับข้อความ (ดีฟอลต์ [DEFAULT\\_INSTANCE](../variables/DEFAULT_INSTANCE.md)))."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The element to apply received state to (default `document.documentElement`)."
+msgstr "องค์ประกอบที่จะใช้สถานะที่ได้รับกับ (ดีฟอลต์ `document.documentElement`))."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The window to talk to (default `window.parent`)."
+msgstr "ชื่อฟอนต์แฟมิลี (ค่าเริ่มต้น `\"PanTokens\"`)."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The origin the host must have. Pass `\"*\"` only for an opaque-origin `srcdoc` document."
+msgstr "ต้นกำเนิดที่โฮสต์ต้องมี ส่งค่า `\"*\"` เฉพาะสำหรับเอกสาร `srcdoc` ที่มีต้นกำเนิดทึบเท่านั้น `srcdoc`."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Called after each applied update."
+msgstr "ถูกเรียกหลังการใช้การอัปเดตแต่ละครั้ง."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [createScope](../functions/createScope.md)."
+msgstr "ตัวเลือกสำหรับ [aggregate](../functions/aggregate.md)."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#: formats/scope/src/interfaces/ResolvedScope.md
+#: formats/scope/src/interfaces/ScopeConfig.md
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Theme key, e.g. `\"rebrand\"`. Matched by `[data-pantoken-theme=\"…\"]`."
+msgstr "คีย์ธีม เช่น `\"rebrand\"`. ตรงกับ `[data-pantoken-theme=\"…\"]`."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#: formats/scope/src/interfaces/ResolvedScope.md
+#: formats/scope/src/interfaces/ScopeConfig.md
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pinned color scheme. Omit to follow the OS preference."
+msgstr "พินโทนสีไว้ หากไม่ระบุจะตามค่าที่ระบบปฏิบัติการต้องการ."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#: formats/scope/src/interfaces/ResolvedScope.md
+#: formats/scope/src/interfaces/ScopeConfig.md
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Custom brand color key."
+msgstr "คีย์สีแบรนด์ที่กำหนดเอง."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Identifier distinguishing this pantoken instance from others on the page. Scopes, storage keys,\nand frame messages are all keyed by it."
+msgstr "ตัวระบุที่แยกแยะอินสแตนซ์ pantoken นี้จากอินสแตนซ์อื่นบนหน้า สโคป คีย์การจัดเก็บ,\n และข้อความเฟรมทั้งหมดใช้คีย์นี้."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Stop ancestor resolution at this element, so nothing outside can theme what is inside. Use for\na preview pane that must not inherit the surrounding app's theme."
+msgstr "หยุดการแก้ไขจากบรรพบุรุษที่องค์ประกอบนี้ เพื่อให้สิ่งภายนอกไม่สามารถกำหนดธีมภายใน ใช้สำหรับ\n แผงตัวอย่างที่ต้องไม่สืบทอดธีมจากแอปโดยรอบ."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Persist and restore state. Pass `false` to keep the scope in-memory only (default `true`)."
+msgstr "บันทึกและกู้คืนสถานะ ส่งค่า `false` เพื่อเก็บสโคปไว้ในหน่วยความจำเท่านั้น (ดีฟอลต์ `true`))."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Storage backend (default `localStorage`, silently skipped when unavailable)."
+msgstr "แบ็กเอนด์การจัดเก็บ (ดีฟอลต์ `localStorage`, ข้ามแบบเงียบๆ เมื่อไม่พร้อมใช้งาน))."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A live scope bound to one element."
+msgstr "สโคปแบบสดที่ผูกกับองค์ประกอบเดียว."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The element carrying the scope attributes."
+msgstr "องค์ประกอบที่มีแอตทริบิวต์ของสโคป."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The instance this scope belongs to."
+msgstr "ผลิตภัณฑ์ที่โลโก้นี้เป็นของ"
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The scope's own configuration — what it declares, not what it inherits."
+msgstr "การกำหนดค่าของสโคปเอง — สิ่งที่มันประกาศ ไม่ใช่สิ่งที่มันสืบทอดมา."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Merge a partial configuration in. Pass `null` for a field to clear it and inherit again."
+msgstr "รวมการกำหนดค่าแบบบางส่วน ส่งค่า `null` สำหรับฟิลด์เพื่อเคลียร์และสืบทอดอีกครั้ง."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve the effective scope for a descendant (defaults to this scope's own element)."
+msgstr "แก้ไขสโคปที่มีผลสำหรับทายาท (ดีฟอลต์เป็นองค์ประกอบของสโคปนี้เอง))."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Send this scope's state to `frame` and keep it in sync. Returns a detach function."
+msgstr "ส่งสถานะของสโคปนี้ไปยัง `frame` และเก็บให้ซิงค์กัน ส่งกลับฟังก์ชันสำหรับยกเลิกการผูก."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Observe changes. Returns an unsubscribe function."
+msgstr "สังเกตการเปลี่ยนแปลง ส่งกลับฟังก์ชันยกเลิกการสมัคร."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Remove the attributes, detach frames, and unregister."
+msgstr "ลบแอตทริบิวต์ ยกเลิกการผูกเฟรม และยกเลิกการลงทะเบียน."
+
+#: formats/scope/src/interfaces/ResolvedScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A [ScopeConfig](ScopeConfig.md) resolved against the DOM, plus where each part came from."
+msgstr "A [ScopeConfig](ScopeConfig.md) ที่แก้ไขกับ DOM รวมทั้งมาจากส่วนใดบ้าง."
+
+#: formats/scope/src/interfaces/ResolvedScope.md
+#: formats/scope/src/interfaces/ScopeConfig.md
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Identifier of the pantoken instance that owns this scope."
+msgstr "ตัวระบุของอินสแตนซ์ pantoken ที่เป็นเจ้าของสโคปนี้."
+
+#: formats/scope/src/interfaces/ResolvedScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The nearest element that declared any scope attribute, or `null` when none did."
+msgstr "องค์ประกอบที่ใกล้ที่สุดที่ประกาศแอตทริบิวต์สโคปใดๆ หรือ `null` เมื่อไม่มี."
+
+#: formats/scope/src/interfaces/ResolvedScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "True when resolution stopped at a `data-pantoken-boundary` element."
+msgstr "True เมื่อการแก้ไขหยุดที่องค์ประกอบ `data-pantoken-boundary` `data-pantoken-boundary`."
+
+#: formats/scope/src/interfaces/ScopeConfig.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The resolvable state of a scope. Every field is optional — an unset field inherits."
+msgstr "สถานะที่สามารถแก้ไขได้ของสโคป ฟิลด์ทุกตัวเป็นทางเลือก — ฟิลด์ที่ไม่ได้ตั้งค่าจะสืบทอดค่า."
+
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The message envelope exchanged between a scope and its attached frames."
+msgstr "ซองข้อความที่แลกเปลี่ยนระหว่างสโคปกับเฟรมที่ผูกอยู่กับมัน."
+
+#: formats/scope/src/variables/DEFAULT_INSTANCE.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The default instance id, used when a scope does not name one."
+msgstr "ไอดีอินสแตนซ์ดีฟอลต์ ใช้เมื่อสโคปไม่ได้ระบุชื่อ."
+
+#: formats/scope/src/variables/INSTANCE_ATTR.md
+#: packages/utils/src/variables/INSTANCE_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute carrying the owning instance id, so sibling instances can tell scopes apart."
+msgstr "แอตทริบิวต์ที่เก็บรหัสของอินสแตนซ์เจ้าของ เพื่อให้อินสแตนซ์พี่น้องสามารถแยกความแตกต่างของสโคปได้."
+
+#: formats/scope/src/variables/SCOPE_ATTRS.md
+#: packages/utils/src/variables/SCOPE_ATTRS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every attribute that participates in scope resolution."
+msgstr "แอตทริบิวต์ทุกตัวที่มีส่วนร่วมในการระบุสโคป."
 
 #: formats/scss/src/functions/toScss.md
 #, no-c-format
@@ -11937,6 +12823,18 @@ msgctxt "docs.api:prose"
 msgid "Convert a kebab-case string to camelCase (`color-background-brand` → `colorBackgroundBrand`)."
 msgstr "แปลงสตริงแบบ kebab-case ให้เป็น camelCase (`color-background-brand` → `colorBackgroundBrand`)."
 
+#: packages/utils/src/functions/colorScopeSelector.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The selector matching any element using custom brand color `color`."
+msgstr "ตัวเลือกที่ตรงกับองค์ประกอบใดๆ ที่ใช้สีแบรนด์แบบกำหนดเอง `color`."
+
+#: packages/utils/src/functions/colorScopeSelectors.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Both forms of the color scope selector, as a selector list."
+msgstr "ทั้งสองรูปแบบของตัวเลือกสโคปสี ในรูปแบบรายการเซเลกเตอร์."
+
 #: packages/utils/src/functions/colorUtilitiesCss.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -12135,6 +13033,12 @@ msgctxt "docs.api:prose"
 msgid "A `light-dark(<light>, <dark>)` value; capture groups 1 and 2 are the two branches."
 msgstr "A `light-dark(&lt;light&gt;, &lt;dark&gt;)` value; capture groups 1 and 2 are the two branches."
 
+#: packages/utils/src/variables/SCOPE_LAYERS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Cascade layers the scoped sheets emit into, in ascending precedence order."
+msgstr "ชั้นของแคสเคดที่ชีทแบบมีสโคปส่งออกไป ตามลำดับความสำคัญจากต่ำไปสูง."
+
 #: packages/utils/src/variables/SPACING_AUTO_STEP.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -12309,6 +13213,12 @@ msgstr "โหมดโทเค็นสำหรับการรีแบร
 msgctxt "docs.api:prose"
 msgid "Component-style sheets. Defaults to [defaultThemeCssAssets](../functions/defaultThemeCssAssets.md) for `theme`/`mode`."
 msgstr "ไฟล์สไตล์รูปแบบคอมโพเนนต์ ค่าเริ่มต้นคือ [defaultThemeCssAssets](../functions/defaultThemeCssAssets.md) สำหรับ `theme`/`mode`."
+
+#: platforms/canvas-theme-editor/src/interfaces/BuildThemeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Ship the multi-scope token pair instead of a single baked theme, so several themes and color\nschemes can be active in one Canvas page. Larger; only worth it when that's actually needed."
+msgstr "ส่งมอบคู่โทเค็นหลายสโคปแทนธีมที่ผสานแล้วเพียงชุดเดียว เพื่อให้หลายธีมและสี\nรูปแบบสามารถใช้งานพร้อมกันในหน้า Canvas เดียวได้. ใหญ่กว่า; คุ้มค่าเฉพาะเมื่อจำเป็นจริงๆ."
 
 #: platforms/canvas-theme-editor/src/interfaces/BuildThemeOptions.md
 #, no-c-format
@@ -13121,6 +14031,12 @@ msgctxt "docs.api:prose"
 msgid "Build the banner layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.\nDefaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
 msgstr "สร้าง CSS ของเค้าโครงแบนเนอร์ (คอมเมนต์เอกสาร + กฎต่างๆ) โดยแทนที่เซนทิเนล `pfx-` ด้วย `prefix`.\nค่าเริ่มต้นคือ `\"instui-\"` สำหรับไฟล์สไตล์ชีตที่จัดส่ง; ส่งค่า `\"\"` เพื่อให้ได้การสร้างแบบไม่มีคำนำหน้า."
 
+#: plugins/pantoken/custom-components/src/functions/buttonSetRules.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build the button-set layout CSS (doc comment + rules), substituting `prefix` for the `pfx-`\nsentinel. Defaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
+msgstr "สร้าง CSS ของเค้าโครงแบนเนอร์ (คอมเมนต์เอกสาร + กฎต่างๆ) โดยแทนที่เซนทิเนล `pfx-` ด้วย `prefix`.\nค่าเริ่มต้นคือ `\"instui-\"` สำหรับไฟล์สไตล์ชีตที่จัดส่ง; ส่งค่า `\"\"` เพื่อให้ได้การสร้างแบบไม่มีคำนำหน้า."
+
 #: plugins/pantoken/custom-components/src/functions/customComponents.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13135,6 +14051,12 @@ msgstr "สร้างปลั๊กอิน custom-components."
 msgctxt "docs.api:prose"
 msgid "A [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) with a `css` hook."
 msgstr "เป็น [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) ที่มี hook `css`."
+
+#: plugins/pantoken/custom-components/src/functions/logoRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build the logo utility CSS as an aspect-ratio-aware mask painter for `@pantoken/plugin-logos`'\n`-logo-<name>` glyph classes, substituting `prefix` for the `pfx-` sentinel."
+msgstr "Build the logo utility CSS as an aspect-ratio-aware mask painter for `@pantoken/plugin-logos`'\n`-logo-<name>` glyph classes, substituting `prefix` for the `pfx-` sentinel."
 
 #: plugins/pantoken/custom-components/src/index.md
 #, no-c-format
@@ -13236,6 +14158,66 @@ msgctxt "docs.api:prose"
 msgid "Every vendored custom icon, sorted by name."
 msgstr "ไอคอนกำหนดเองที่รวมมาไว้ทั้งหมด เรียงตามชื่อ"
 
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Generate the `[data-pantoken-color=\"custom\"]` rule for a brand hex: it declares the derived\n`--instui-primitive-color-custom-custom*` steps and remaps the brand primitives onto them, exactly\nlike the shipped scales."
+msgstr "สร้างกฎ `[data-pantoken-color=\"custom\"]` สำหรับแบรนด์เฮ็กซ์: จะประกาศขั้นตอนที่ได้มา\n`--instui-primitive-color-custom-custom*` และแม็ปรูปแบบ primitive ของแบรนด์ไปยังขั้นตอนเหล่านั้น ให้ตรงกับสเกลที่จัดส่ง\n."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A `#rgb`/`#rrggbb` brand color."
+msgstr "สีแบรนด์ `#rgb`/`#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorRemapCss.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The CSS rule."
+msgstr "สตริงกฎ CSS."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TypeError when `hex` isn't a valid hex color."
+msgstr "TypeError เมื่อ `hex` ไม่ใช่สีเฮ็กซ์ที่ถูกต้อง."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The per-step lightness curve and chroma shape the `custom` scale is derived against, computed\nfrom the 13 shipped families. JSON-safe, so a build can ship it to a browser that pairs it with\nthe dependency-free `@pantoken/plugin-custom-theme-colors/scale` entry."
+msgstr "เส้นความสว่างต่อขั้นและรูปร่างโครมาเป็นพื้นฐานที่สเกล `custom` ถูกสกัดออกมา คำนวณจาก 13 ตระกูลที่จัดส่งมา ปลอดภัยสำหรับ JSON ดังนั้นการสร้างสามารถส่งให้เบราว์เซอร์ที่จับคู่มันกับ\nรายการที่ไร้การพึ่งพา `@pantoken/plugin-custom-theme-colors/scale` ได้."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`Token`](../../../../../packages/core/src/interfaces/Token.md)[] \\| `Map`\\<`string`, `string`\\>"
+msgstr "อ่านอย่างเดียว [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional token array or map to read the reference families from."
+msgstr "อาร์เรย์หรือแผนที่โทเค็นแบบเลือกได้เพื่อดึงค่าของสีขั้น primitive."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [ReferenceCurve](../interfaces/ReferenceCurve.md)."
+msgstr "เป็น [ResolvedDemo](../interfaces/ResolvedDemo.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorRemapCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The `[data-pantoken-color=\"custom\"]` remap rule without the derived primitives, for pages that\nset `--instui-primitive-color-custom-custom*` themselves at runtime (e.g. from a color picker)."
+msgstr "กฎการแม็ปซ้ำ `[data-pantoken-color=\"custom\"]` โดยไม่รวม primitive ที่ได้มา สำหรับหน้าเพจที่ตั้งค่า\n`--instui-primitive-color-custom-custom*` ด้วยตัวเองขณะรันไทม์ (เช่น จากตัวเลือกสี))."
+
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColors.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13245,14 +14227,8 @@ msgstr "สร้างปลั๊กอิน custom-icons."
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Generate CSS rules for all custom theme color choices by remapping primitive color scale steps\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`), while preserving explicitly\nnamed blue accents and semantic status intents."
+msgid "Generate CSS rules for all custom theme color choices by remapping primitive color scale steps\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`) and relinking literal\nbrand hex values that upstream flattened away from those primitives, while preserving explicitly\nnamed blue accents and semantic status intents."
 msgstr "สร้างกฎ CSS สำหรับตัวเลือกสีธีมแบบกำหนดเองทั้งหมดโดยแมปขั้นสี primitive ใหม่\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`), ขณะเดียวกันยังคงรักษาโทเค็นสีน้ำเงินแบบเน้นที่ตั้งชื่อไว้อย่างชัดเจนไว้\n."
-
-#: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
-#, fuzzy, no-c-format
-msgctxt "docs.api:prose"
-msgid "readonly [`Token`](../../../../../packages/core/src/interfaces/Token.md)[] \\| `Map`\\<`string`, `string`\\>"
-msgstr "อ่านอย่างเดียว [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
 
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
 #, no-c-format
@@ -13265,6 +14241,79 @@ msgstr "อาร์เรย์หรือแผนที่โทเค็น
 msgctxt "docs.api:prose"
 msgid "Generated CSS rules string."
 msgstr "สตริงกฎ CSS."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Derive the `custom` primitive scale from a brand hex. The input is anchored at the step whose\nreference lightness (the mean OKLCH lightness of the 13 shipped families) is nearest its own,\nthen every step is rebuilt at its reference lightness with the input's hue — so the anchor step\nlands close to, but not necessarily exactly on, the input."
+msgstr "สกัดสเกล primitive `custom` จากแบรนด์เฮ็กซ์ อินพุตจะยึดที่ขั้นตอนซึ่งมีความสว่างอ้างอิง (ค่าเฉลี่ย OKLCH ของ 13 ตระกูลที่จัดส่ง) ที่ใกล้เคียงกับความสว่างของอินพุตที่สุด แล้วแต่ละขั้นตอนจะถูกสร้างใหม่ที่ความสว่างอ้างอิงของมันโดยใช้ฮิวของอินพุต — ดังนั้นขั้นยึดจึงอยู่ใกล้กับอินพุต แต่ไม่จำเป็นต้องตรงกับอินพุตอย่างสมบูรณ์\n."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [CustomColorScale](../interfaces/CustomColorScale.md)."
+msgstr "The [CustomColorScale](../interfaces/CustomColorScale.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Derive a full primitive scale from one hex: anchor it at the step with the nearest reference\nlightness, then rebuild every step at its reference lightness with the input's hue and a chroma\nscaled by the reference shape."
+msgstr "สกัดสเกล primitive เต็มรูปแบบจากเฮ็กซ์หนึ่งค่า: ยึดที่ขั้นตอนที่มีความสว่างอ้างอิงใกล้ที่สุด แล้วสร้างทุกขั้นตอนใหม่ที่ความสว่างอ้างอิงของมันโดยใช้ฮิวของอินพุตและโครมาที่ปรับสัดส่วนตามรูปร่างอ้างอิง\n."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A hex color accepted by [parseHexColor](parseHexColor.md)."
+msgstr "สีเฮ็กซ์ที่ยอมรับโดย [parseHexColor](parseHexColor.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Output of buildReferenceCurve."
+msgstr "ผลลัพธ์ของ buildReferenceCurve."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Whether a value is a valid [parseHexColor](parseHexColor.md) input."
+msgstr "เป็นหรือไม่ที่ค่าจะเป็นอินพุตที่ถูกต้องสำหรับ [parseHexColor](parseHexColor.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The value to check."
+msgstr "ชุดสี"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`true` for `#rgb`/`#rrggbb` strings."
+msgstr "`true` สำหรับสตริง `#rgb`/`#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Validate and normalize a user-supplied hex color. This is the only entry point for untrusted\ninput into generated CSS, so anything but `#rgb`/`#rrggbb` is rejected."
+msgstr "ตรวจสอบและปรับให้เป็นรูปแบบปกติสำหรับสีเฮ็กซ์ที่ผู้ใช้ให้มา นี่เป็นทางเข้าเดียวสำหรับอินพุตที่ไม่ไว้วางใจสู่ CSS ที่สร้างขึ้น ดังนั้นทุกอย่างที่ไม่ใช่ `#rgb`/`#rrggbb` จะถูกปฏิเสธ\n."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A hex color, with or without the leading `#`."
+msgstr "สีเฮ็กซ์ โดยมีหรือไม่มีก่อนหน้าเป็น `#`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Lowercase `#rrggbb`."
+msgstr "ตัวพิมพ์เล็ก `#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TypeError when `input` isn't a 3- or 6-digit hex color."
+msgstr "TypeError เมื่อ `input` ไม่ใช่สีเฮ็กซ์ 3 หลักหรือ 6 หลัก."
 
 #: plugins/pantoken/custom-theme-colors/src/index.md
 #, fuzzy, no-c-format
@@ -13284,6 +14333,72 @@ msgctxt "docs.api:prose"
 msgid "Renames and re-exports [customThemeColors](functions/customThemeColors.md)"
 msgstr "เปลี่ยนชื่อและส่งออกซ้ำ [customIcons](functions/customIcons.md)"
 
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [customColorCss](../functions/customColorCss.md)."
+msgstr "ตัวเลือกสำหรับปลั๊กอิน [customIcons](../functions/customIcons.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional token array or map for the reference families and relinked tokens."
+msgstr "อาร์เรย์หรือแผนที่โทเค็นแบบเลือกได้สำหรับการค้นค่าสีขั้น primitive."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selector prefix — see [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+msgstr "คำนำตัวเลือกสำหรับกฎเงื่อนไข — ดู [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)"
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A derived custom primitive scale."
+msgstr "สเกล primitive แบบ custom ที่ได้มา."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The validated input, normalized to lowercase `#rrggbb`."
+msgstr "อินพุตที่ผ่านการตรวจสอบ ปรับเป็นรูปแบบตัวพิมพ์เล็ก `#rrggbb``#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The step whose reference lightness is nearest the input's."
+msgstr "ขั้นตอนที่มีความสว่างอ้างอิงใกล้เคียงกับของอินพุตที่สุด."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every primitive step mapped to its derived `#rrggbb`."
+msgstr "ทุกขั้นตอน primitive ถูกแม็ปไปยัง `#rrggbb` ที่ได้มา`#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [customThemeColorsCss](../functions/customThemeColorsCss.md)."
+msgstr "ตัวเลือกสำหรับปลั๊กอิน [customIcons](../functions/customIcons.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selector prefix the conditional `[data-pantoken-color=\"…\"]` rules are scoped under. Defaults to\n`:root`. Two callers can each pass a different selector (e.g. `:root` for a page's chrome and\n`#some-tray` for a nested widget) to run independent, non-interfering color instances on the\nsame page — each toggles its own attribute on its own element instead of sharing `:root`."
+msgstr "คำนำตัวเลือกที่ใช้เป็นสโคปสำหรับกฎเงื่อนไข `[data-pantoken-color=\"…\"]` ค่าเริ่มต้นคือ\n`:root`. ผู้เรียกสองรายสามารถส่งตัวเลือกต่างกันได้ (เช่น `:root` สำหรับ chrome ของหน้า และ\n`#some-tray` สำหรับวิดเจ็ตที่ฝังอยู่) เพื่อรันอินสแตนซ์สีที่เป็นอิสระและไม่รบกวนกันบนหน้าเดียวกัน — แต่ละอันจะสลับแอตทริบิวต์ของตัวเองบนองค์ประกอบของตน แทนการแชร์ `:root`"
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "An additional selector whose subtree should always render the true, unremapped colors,\nregardless of what an ancestor's `[data-pantoken-color]` scope currently has active. Emits one\nunconditional rule pinning every token this plugin can override back to its own base value —\ne.g. a color-swatch legend nested inside an already-themed page needs its reference swatches to\nstay constant rather than inherit the ancestor's remap."
+msgstr "ตัวเลือกเพิ่มเติมที่ subtree ของมันควรจะแสดงสีที่แท้จริงและไม่ถูกแม็ปใหม่เสมอ ไม่ว่าจะมีสโคป `[data-pantoken-color]` ของบรรพบุรุษเปิดใช้งานอะไรอยู่ก็ตาม ออกกฎไม่ผูกเงื่อนไขหนึ่งอันที่ตรึงโทเค็นทั้งหมดที่ปลั๊กอินนี้สามารถเขียนทับกลับสู่ค่าพื้นฐานของมันเอง — เช่น ตำนานตัวอย่างสีที่ฝังอยู่ภายในหน้าที่มีธีมแล้ว จะต้องให้สว็อตช์อ้างอิงคงที่ แทนการสืบทอดการแม็ปจากบรรพบุรุษ"
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A brand hex (`#rgb`/`#rrggbb`) to derive the `custom` scale from. When set, a\n`[data-pantoken-color=\"custom\"]` rule is appended — see [customColorCss](../functions/customColorCss.md)."
+msgstr "แบรนด์เฮ็กซ์ (`#rgb`/`#rrggbb`)) เพื่อสกัดสเกล `custom` เมื่อตั้งค่าไว้ จะมีการต่อท้ายกฎ\n`[data-pantoken-color=\"custom\"]` — ดู [customColorCss](../functions/customColorCss.md)."
+
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13296,6 +14411,30 @@ msgctxt "docs.api:prose"
 msgid "Optional token array or map to resolve primitive step color values from."
 msgstr "อาร์เรย์หรือแผนที่โทเค็นแบบเลือกได้เพื่อดึงค่าของสีขั้น primitive."
 
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selector prefix for the conditional rules — see [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+msgstr "คำนำตัวเลือกสำหรับกฎเงื่อนไข — ดู [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)"
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Always-true-color subtree — see [CustomThemeColorsCssOptions.resetSelector](CustomThemeColorsCssOptions.md#resetselector)."
+msgstr "subtree ที่แสดงสีแท้เสมอ — ดู [CustomThemeColorsCssOptions.resetSelector](CustomThemeColorsCssOptions.md#resetselector)"
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Brand hex for the `custom` scale — see [CustomThemeColorsCssOptions.custom](CustomThemeColorsCssOptions.md#custom)."
+msgstr "คำนำตัวเลือกสำหรับกฎเงื่อนไข — ดู [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)"
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/ReferenceCurve.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Per-step reference lightness and normalized chroma, index-aligned with `steps`. JSON-safe."
+msgstr "ความสว่างอ้างอิงต่อขั้นและโครมาที่ปรับให้เป็นมาตรฐาน จัดแนวตามดัชนีกับ `steps`. ปลอดภัยสำหรับ JSON."
+
 #: plugins/pantoken/custom-theme-colors/src/type-aliases/PantokenColorNamespace.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13307,6 +14446,12 @@ msgstr "namespace สีธีมแบบกำหนดเองที่ร�
 msgctxt "docs.api:prose"
 msgid "The 13 available color namespaces for site theme color selection."
 msgstr "พื้นที่ชื่อสีทั้ง 13 ที่มีให้สำหรับการเลือกสีธีมของเว็บไซต์."
+
+#: plugins/pantoken/custom-theme-colors/src/variables/CUSTOM_COLOR_KEY.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The color namespace whose scale is derived from an arbitrary hex rather than shipped."
+msgstr "เนมสเปซสีซึ่งสเกลของมันถูกสกัดจากเฮ็กซ์ใดๆ แทนที่จะเป็นสเกลที่จัดส่งมา."
 
 #: plugins/pantoken/deprecations/src/functions/compareVersions.md
 #, no-c-format
@@ -13476,6 +14621,12 @@ msgctxt "docs.api:prose"
 msgid "Generate an HTML template for the page-layout layout."
 msgstr "สร้างเทมเพลต HTML สำหรับเลย์เอาต์ page-layout."
 
+#: plugins/pantoken/layouts/src/functions/renderPageLayout.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Render `layout`'s `{{key}}` tokens for `locale` (default `\"en\"`), falling back to English."
+msgstr "เรนเดอร์โทเค็น `{{key}}` ของ `layout` สำหรับ `locale` (ค่าเริ่มต้น `\"en\"`)), หากไม่มีให้ถอยกลับเป็นภาษาอังกฤษ"
+
 #: plugins/pantoken/layouts/src/functions/rubricNoteRules.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13545,9 +14696,9 @@ msgstr "เลย์เอาต์หน้าเริ่มต้น: กา�
 
 #: plugins/pantoken/layouts/src/interfaces/PageLayout.md
 #: renderers/tinymce/src/interfaces/PageLayout.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Stable id, matches the source filename (e.g. `\"hero\"`)."
+msgid "Stable id, matches the source folder name, e.g. `\"hero\"`."
 msgstr "ไอดีคงที่ ตรงกับชื่อไฟล์ต้นทาง (เช่น `\"hero\"`)"
 
 #: plugins/pantoken/layouts/src/interfaces/PageLayout.md
@@ -13564,11 +14715,66 @@ msgctxt "docs.api:prose"
 msgid "Raw HTML for the layout, built from `@pantoken/components` classes."
 msgstr "โค้ด HTML ดิบสำหรับเลย์เอาต์ สร้างจากคลาส `@pantoken/components`"
 
-#: plugins/pantoken/layouts/src/variables/pageLayouts.md
-#: renderers/tinymce/src/variables/pageLayouts.md
+#: plugins/pantoken/layouts/src/interfaces/PageLayout.md
+#: renderers/tinymce/src/interfaces/PageLayout.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "All bundled starter page layouts, sorted by title."
+msgid "Image slots that consumers may materialize without provider-specific URLs."
+msgstr "ตำแหน่งภาพที่ผู้ใช้ (consumer) อาจสร้างได้โดยไม่ต้องมี URL ของผู้ให้บริการเฉพาะ"
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A provider-neutral image slot declared by a starter page layout."
+msgstr "ตำแหน่งภาพเป็นกลาง-ผู้ให้บริการที่ประกาศโดยเลย์เอาต์หน้าเริ่มต้น"
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Stable key matching the `data-pantoken-image-placeholder` HTML marker."
+msgstr "คีย์ที่คงที่ซึ่งตรงกับตัวบ่งชี้ HTML `data-pantoken-image-placeholder`"
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Suggested intrinsic width in pixels."
+msgstr "ความกว้างเชิงเนื้อแท้ที่แนะนำเป็นพิกเซล"
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Suggested intrinsic height in pixels."
+msgstr "ความสูงเชิงเนื้อแท้ที่แนะนำเป็นพิกเซล"
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Accessible name; omit it for a decorative image."
+msgstr "ชื่อที่เข้าถึงได้; ไม่ต้องใส่สำหรับภาพที่เป็นเพียงการตกแต่ง"
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional text a consumer may render into its placeholder asset."
+msgstr "ข้อความทางเลือกที่ consumer อาจเรนเดอร์ลงในทรัพย์สินตัวแทน (placeholder) ได้"
+
+#: plugins/pantoken/layouts/src/variables/pageLayoutTemplates.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`{{key}}`-templated layouts, unresolved — pass to [renderPageLayout](../functions/renderPageLayout.md) for another locale."
+msgstr "`{{key}}`-templated layouts ที่ยังไม่แก้ค่า — ส่งต่อไปที่ [renderPageLayout](../functions/renderPageLayout.md) เพื่อใช้กับโลเคลอื่น"
+
+#: plugins/pantoken/layouts/src/variables/pageLayouts.md
+#: renderers/tinymce/src/variables/pageLayouts.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "All bundled starter page layouts, English-rendered by default, sorted by title."
 msgstr "เค้าโครงหน้าเริ่มต้นที่รวมมาให้ทั้งหมด จัดเรียงตามชื่อเรื่อง"
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
@@ -13578,6 +14784,7 @@ msgid "Get a logo as a base64 `data:image/svg+xml` URI."
 msgstr "รับโลโก้เป็น URI แบบ base64 `data:image/svg+xml`."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13585,6 +14792,7 @@ msgid "The product."
 msgstr "ผลิตภัณฑ์."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13592,6 +14800,7 @@ msgid "The layout (default `\"horizontal\"`)."
 msgstr "เค้าโครง (ค่าเริ่มต้น `\"horizontal\"`)."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13599,6 +14808,7 @@ msgid "The color treatment (default `\"full-color\"`)."
 msgstr "การแต่งสี (ค่าเริ่มต้น `\"full-color\"`)."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13616,6 +14826,24 @@ msgstr "data URI, หรือ `undefined` หากการรวมกัน�
 msgctxt "docs.api:prose"
 msgid "**Use a logo as an \\<img\\> src**"
 msgstr "**ใช้โลโก้เป็น \\<img\\> src**"
+
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Get a logo's metadata, including its natural `viewBox` `width`/`height` — for consumers that need\nthe logo's real aspect ratio (e.g. to set `aspect-ratio` or `width`/`height` on an `<img>`) without\nparsing SVG themselves."
+msgstr "รับเมตาดาต้าของโลโก รวมถึง `width`/`height` ของ PNG ที่ได้นั้น — สำหรับ consumer ที่ต้อง\nสร้างเส้นทาง `dist/<name>.png` (เช่น ผ่าน `@pantoken/cdn`)) หรือกำหนดขนาด `<img>` โดยไม่ต้องแยกวิเคราะห์ SVG"
+
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [LogoMeta](../interfaces/LogoMeta.md), or `undefined` if that combination doesn't exist."
+msgstr "สตริง SVG หรือ `undefined` หากการรวมกันนั้นไม่มีอยู่"
+
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "**Read a logo's aspect ratio**"
+msgstr "**Read a logo's aspect ratio**"
 
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
@@ -13666,9 +14894,9 @@ msgid "`@pantoken/plugin-logos` — Instructure product logos as SVGs, data URIs
 msgstr "`@pantoken/plugin-logos` — โลโก้ผลิตภัณฑ์ของ Instructure ในรูปแบบ SVGs, data URIs และโทเค็นรูปภาพ"
 
 #: plugins/pantoken/logos/src/index.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "It vendors the SVG logos from Instructure's UX guidelines for Canvas, Mastery, Parchment,\nInstructure, LearnPlatform, and Ignite AI, in the standard layouts (horizontal, stacked, icon)\nand color modes (full-color, color, dark, reversed, and so on). Each logo is available three ways:\nthe raw SVG ([getLogoSvg](functions/getLogoSvg.md)), a data URI ([getLogoDataUri](functions/getLogoDataUri.md)), and a\n`--instui-logo-<product>-<layout>-<mode>` image token in `@pantoken/plugin-logos/logos.css`."
+msgid "It vendors the SVG logos from Instructure's UX guidelines for Canvas, Mastery, Parchment,\nInstructure, LearnPlatform, and Ignite AI, in the standard layouts (horizontal, stacked, icon)\nand color modes (full-color, color, dark, reversed, and so on). Each logo is available three ways:\nthe raw SVG ([getLogoSvg](functions/getLogoSvg.md)), a data URI ([getLogoDataUri](functions/getLogoDataUri.md)), and a\n`--instui-logo-<product>-<layout>-<mode>` image token plus a `.-logo-<product>-<layout>-<mode>`\nmask-glyph class (sized by that logo's own aspect ratio) in `@pantoken/plugin-logos/logos.css`."
 msgstr "It vendors the SVG logos from Instructure's UX guidelines for Canvas, Mastery, Parchment,\nInstructure, LearnPlatform, and Ignite AI, in the standard layouts (horizontal, stacked, icon)\nand color modes (full-color, color, dark, reversed, and so on). Each logo is available three ways:\nthe raw SVG ([getLogoSvg](functions/getLogoSvg.md)), a data URI ([getLogoDataUri](functions/getLogoDataUri.md)), and a\n`--instui-logo-&lt;product&gt;-&lt;layout&gt;-&lt;mode&gt;` image token in `@pantoken/plugin-logos/logos.css`."
 
 #: plugins/pantoken/logos/src/index.md
@@ -13731,6 +14959,20 @@ msgstr "รากของโทเค็น/ชื่อ เช่น `\"canvas
 msgctxt "docs.api:prose"
 msgid "The path within `assets/logos`, e.g. `\"canvas/horizontal-full-color.svg\"`."
 msgstr "เส้นทางภายใน `assets/logos` เช่น `\"canvas/horizontal-full-color.svg\"`"
+
+#: plugins/pantoken/logos/src/interfaces/LogoMeta.md
+#: renderers/tinymce/src/interfaces/LogoMeta.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The SVG's natural `viewBox` width, used with [height](#height) to derive `--pantoken-logo-aspect`."
+msgstr "The SVG's natural `viewBox` width, used with [height](#height) to derive `--pantoken-logo-aspect`."
+
+#: plugins/pantoken/logos/src/interfaces/LogoMeta.md
+#: renderers/tinymce/src/interfaces/LogoMeta.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The SVG's natural `viewBox` height, used with [width](#width) to derive `--pantoken-logo-aspect`."
+msgstr "The SVG's natural `viewBox` height, used with [width](#width) to derive `--pantoken-logo-aspect`."
 
 #: plugins/pantoken/logos/src/interfaces/LogosOptions.md
 #, no-c-format
@@ -13801,6 +15043,85 @@ msgstr "**ฝังโทเค็นโลโก้ลงในหน้าเ�
 msgctxt "docs.api:prose"
 msgid "The products that have logos."
 msgstr "ผลิตภัณฑ์ที่มีโลโก้"
+
+#: plugins/pantoken/lucide-lab/src/functions/defaultRegistry.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Lazily import the published Lucide Lab icon registry."
+msgstr "นำเข้ารีจิสทรีไอคอน Lucide Lab ที่เผยแพร่อย่าง lazy"
+
+#: plugins/pantoken/lucide-lab/src/functions/lucideLab.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Create the Lucide Lab icon plugin."
+msgstr "สร้างปลั๊กอิน Simple Icons."
+
+#: plugins/pantoken/lucide-lab/src/functions/lucideLab.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "[LucideLabOptions](../interfaces/LucideLabOptions.md). Pass a registry for synchronous token-stage use."
+msgstr "[SimpleIconsOptions](../interfaces/SimpleIconsOptions.md). ส่งค่า `registry` เพื่อหลีกเลี่ยงการนำเข้าแบบ lazy (เช่น ใน\n  token-stage ที่ hooks ทำงานแบบ synchronous)."
+
+#: plugins/pantoken/lucide-lab/src/functions/lucideLab.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "A token-capable pantoken plugin."
+msgstr "ปลั๊กอิน Vite ของ pantoken."
+
+#: plugins/pantoken/lucide-lab/src/functions/svgOf.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Convert a Lucide Lab icon-node array into standalone SVG markup."
+msgstr "แปลงอาร์เรย์โหนดไอคอนของ Lucide Lab ให้เป็นมาร์กอัป SVG แบบสแตนด์อะโลน"
+
+#: plugins/pantoken/lucide-lab/src/functions/toKebab.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Convert a Lucide Lab export name to its kebab-case token name."
+msgstr "แปลงชื่อส่งออกของ Lucide Lab เป็นชื่อโทเค็นแบบ kebab-case"
+
+#: plugins/pantoken/lucide-lab/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Renames and re-exports [lucideLab](functions/lucideLab.md)"
+msgstr "เปลี่ยนชื่อและส่งออกซ้ำ [stacking](functions/stacking.md)"
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for the [lucideLab](../functions/lucideLab.md) plugin."
+msgstr "ตัวเลือกสำหรับปลั๊กอิน [layouts](../functions/layouts.md)."
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Icon names to emit as `<image>` tokens (default: every icon in the registry)."
+msgstr "Icon names to emit as `&lt;image&gt;` tokens (default: all vendored icons)."
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The Lucide Lab registry (required by the synchronous token hook)."
+msgstr "รีจิสทรีของ Lucide Lab (จำเป็นสำหรับ synchronous token hook))"
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#: plugins/pantoken/simple-icons/src/interfaces/SimpleIconsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The token-name prefix (default: `--instui-icon-`)."
+msgstr "พรีฟิกซ์ของชื่อโทเค็น (ค่าเริ่มต้น: `--instui-icon-`)."
+
+#: plugins/pantoken/lucide-lab/src/type-aliases/LucideLabNode.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "One SVG element in a Lucide icon-node array."
+msgstr "องค์ประกอบ SVG หนึ่งชิ้นในอาร์เรย์โหนดไอคอนของ Lucide"
+
+#: plugins/pantoken/lucide-lab/src/type-aliases/LucideLabRegistry.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A registry of named Lucide Lab icon-node arrays."
+msgstr "รีจิสทรีของอาร์เรย์โหนดไอคอน Lucide Lab ที่มีชื่อ"
 
 #: plugins/pantoken/primitives/src/functions/primitivesCss.md
 #, no-c-format
@@ -13963,12 +15284,6 @@ msgstr "Brand slugs to emit as `&lt;image&gt;` tokens at the token layer (defaul
 msgctxt "docs.api:prose"
 msgid "The Simple Icons registry (default: the `simple-icons` package, loaded lazily)."
 msgstr "รีจิสทรี Simple Icons (ค่าเริ่มต้น: แพ็กเกจ `simple-icons`, จะถูกโหลดเมื่อจำเป็น)."
-
-#: plugins/pantoken/simple-icons/src/interfaces/SimpleIconsOptions.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The token-name prefix (default: `--instui-icon-`)."
-msgstr "พรีฟิกซ์ของชื่อโทเค็น (ค่าเริ่มต้น: `--instui-icon-`)."
 
 #: plugins/pantoken/simple-icons/src/type-aliases/SimpleIconsRegistry.md
 #, no-c-format
@@ -15790,9 +17105,9 @@ msgid "`@pantoken/rehype` — render `:icon:` codes as inline SVG."
 msgstr "`@pantoken/rehype` — แสดงโค้ด `:icon:` เป็น SVG แบบอินไลน์."
 
 #: renderers/rehype/src/index.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "The plugin walks hast text nodes and replaces `:code:` tokens with an inline SVG element,\nresolving each code through a chain: plugin `rehype` resolvers first, then any explicit\n`resolve`, then the built-in `@pantoken/icons` set. It ports `rehype-instui-markdown` onto the\nshared icon manifest."
+msgid "The plugin walks hast text nodes and replaces `:code:` tokens with an inline SVG element,\nresolving each code through a chain: any explicit `resolve`, then the built-in\n`@pantoken/icons` set, then plugin `rehype` resolvers. It ports `rehype-instui-markdown` onto\nthe shared icon manifest."
 msgstr "ปลั๊กอินจะเดินผ่านโหนดข้อความของ hast และแทนที่โทเค็น `:code:` ด้วยองค์ประกอบ SVG แบบอินไลน์,\nแก้ไขโค้ดแต่ละรายการผ่านลำดับการแก้: เริ่มจากตัวแก้ของปลั๊กอิน `rehype` ก่อน, แล้วตัวใดๆ ที่ระบุไว้ชัดเจน `resolve`, แล้วชุดที่มีมาให้ในตัว `@pantoken/icons`. มันพอร์ต `rehype-instui-markdown` ไปยัง manifest ไอคอนร่วม."
 
 #: renderers/rehype/src/index.md
@@ -15972,6 +17287,18 @@ msgctxt "docs.api:prose"
 msgid "A Svelte action's return shape."
 msgstr "โครงสร้างการคืนค่าของ Svelte action."
 
+#: renderers/tinymce/src/functions/buildIconMarkup.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The decorative icon markup retained in editor content after a picker selection. A zero-width\nspace keeps the span from being genuinely empty — TinyMCE's schema strips empty inline elements\non `setContent()` (e.g. toggling from source view back to WYSIWYG), which would otherwise\nsilently delete this CSS-painted glyph. `contenteditable=\"false\"` makes TinyMCE treat it as a\nselectable noneditable object (fake-selection painting, backspace-to-delete, and the context\ntoolbar registered in `lib/icon-context-toolbar.ts`) instead of plain inline text."
+msgstr "มาร์กอัปไอคอนเชิงตกแต่งที่คงไว้ในเนื้อหาโปรแกรมแก้ไขหลังจากเลือกจากตัวเลือก ช่องว่างความกว้างเป็นศูนย์\nช่วยป้องกันไม่ให้สแปนกลายเป็นค่าว่างจริง ๆ — สคีมาของ TinyMCE จะเอาองค์ประกอบอินไลน์ที่ว่างเปล่าออก\nเมื่อ `setContent()` (เช่น การสลับจากมุมมองซอร์สกลับไปยัง WYSIWYG) ซึ่งมิฉะนั้นจะ\nลบสัญลักษณ์ที่วาดด้วย CSS นี้อย่างเงียบ ๆ. `contenteditable=\"false\"` ทำให้ TinyMCE ถือเป็น\nวัตถุที่เลือกได้แต่ไม่แก้ไขได้ (การวาดการเลือกปลอม การกด Backspace เพื่อลบ และแถบเครื่องมือบริบท\nที่ลงทะเบียนใน `lib/icon-context-toolbar.ts`) แทนที่จะเป็นข้อความอินไลน์ธรรมดา)"
+
+#: renderers/tinymce/src/functions/buildLogoMarkup.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The logo markup retained in editor content after a picker selection — same\nzero-width-space/`contenteditable=\"false\"` noneditable-object technique as `icons.ts`'s\n`buildIconMarkup`. Unlike a decorative icon, a logo names a real product, so it carries\n`role=\"img\"` + `aria-label` instead of `aria-hidden`."
+msgstr "The logo markup retained in editor content after a picker selection — same\nzero-width-space/`contenteditable=\"false\"` noneditable-object technique as `icons.ts`'s\n`buildIconMarkup`. Unlike a decorative icon, a logo names a real product, so it carries\n`role=\"img\"` + `aria-label` instead of `aria-hidden`."
+
 #: renderers/tinymce/src/functions/createComponentsPlugin.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -15983,6 +17310,18 @@ msgstr "สร้าง factory สำหรับปลั๊กอินตั
 msgctxt "docs.api:prose"
 msgid "Usage:\n  tinymce.PluginManager.add(\n    \"pantokenComponents\",\n    createComponentsPlugin(`{ model, currentAssets, onMissingAsset }`)\n  );"
 msgstr "การใช้งาน:\n  tinymce.PluginManager.add(\n    \"pantokenComponents\",\n    createComponentsPlugin(`{ model, currentAssets, onMissingAsset }`)\n  );"
+
+#: renderers/tinymce/src/functions/createContentClassesPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build an opt-in plugin that adds pantoken classes to TinyMCE-authored content."
+msgstr "สร้างปลั๊กอินแบบ opt-in ที่เพิ่มคลาส pantoken ให้กับเนื้อหาที่เขียนด้วย TinyMCE"
+
+#: renderers/tinymce/src/functions/createFullscreenFooterPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a footer-only button that toggles TinyMCE's fullscreen mode."
+msgstr "สร้างปุ่มเฉพาะฟุตเตอร์ที่สลับโหมดเต็มจอของ TinyMCE"
 
 #: renderers/tinymce/src/functions/createIconsPlugin.md
 #, no-c-format
@@ -16002,11 +17341,47 @@ msgctxt "docs.api:prose"
 msgid "Create the logos picker plugin factory.\nReturns a function suitable for `tinymce.PluginManager.add()`."
 msgstr "สร้าง factory ของปลั๊กอินตัวเลือกโลโก้。\nคืนค่าฟังก์ชันที่เหมาะสำหรับ `tinymce.PluginManager.add()`."
 
+#: renderers/tinymce/src/functions/createPantokenPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a single pantoken toolbar menu that opens each composed plugin."
+msgstr "สร้างเมนู toolbar เดียวของ pantoken ที่เปิดแต่ละปลั๊กอินที่ประกอบกัน"
+
+#: renderers/tinymce/src/functions/createSearchReplaceFooterPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a footer-only button that opens TinyMCE's search & replace dialog."
+msgstr "สร้างปุ่มเฉพาะฟุตเตอร์ที่เปิดไดอะล็อกค้นหาและแทนที่ของ TinyMCE"
+
+#: renderers/tinymce/src/functions/createSupSubPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a single toolbar menu button toggling superscript or subscript."
+msgstr "สร้างปุ่มเมนูบน toolbar เดียวที่สลับแบบ superscript หรือ subscript"
+
 #: renderers/tinymce/src/functions/createTemplatesPlugin.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Builds the `tinymce.PluginManager.add` callback for the \"Insert template\" plugin."
 msgstr "สร้าง callback `tinymce.PluginManager.add` สำหรับปลั๊กอิน \"Insert template\"."
+
+#: renderers/tinymce/src/functions/createVisualBlocksFooterPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a footer-only button that toggles TinyMCE's visual blocks outlines."
+msgstr "สร้างปุ่มเฉพาะฟุตเตอร์ที่สลับกรอบแสดงบล็อกของ TinyMCE"
+
+#: renderers/tinymce/src/functions/filterIcons.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Narrow `icons` to those matching `query` and, when given, a single `source`."
+msgstr "กรอง `icons` ให้เหลือเฉพาะที่ตรงกับ `query` และเมื่อกำหนด จะกรองตาม `source` เดียว"
+
+#: renderers/tinymce/src/functions/filterIcons.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`TaggedIcon`](../interfaces/TaggedIcon.md)[]"
+msgstr "อ่านอย่างเดียว [`Token`](../interfaces/Token.md)[]"
 
 #: renderers/tinymce/src/functions/findEntry.md
 #, no-c-format
@@ -16020,11 +17395,53 @@ msgctxt "docs.api:prose"
 msgid "Compute the CdnFile for an icon given its source.\nReturns `{ package, path }` for use with @pantoken/cdn's buildFileUrl."
 msgstr "คำนวณ CdnFile สำหรับไอคอนโดยใช้แหล่งที่มา\nส่งคืน `{ package, path }` เพื่อใช้กับ buildFileUrl ของ @pantoken/cdn."
 
+#: renderers/tinymce/src/functions/getIconImageSrc.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A `data:` URI usable as an `<img src>` for the icon, for sources this package bundles; for the\nrest it reads the custom property back off `root`, which resolves once the source's glyph sheet\nhas loaded. Returns `undefined` when neither path yields a glyph."
+msgstr "URI ประเภท `data:` ที่ใช้งานได้เป็น `<img src>` สำหรับไอคอน สำหรับแหล่งข้อมูลที่แพ็กเกจนี้รวมมาให้; สำหรับส่วนที่เหลือจะอ่านคุณสมบัติแบบกำหนดเองจาก `root` ซึ่งจะถูกแก้เมื่อชีตกริฟที่มาของแหล่งนั้นโหลดแล้ว คืนค่า `undefined` เมื่อไม่มีเส้นทางใดให้กราฟิก"
+
+#: renderers/tinymce/src/functions/getLogoCdnFile.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve a logo's stylesheet: the `.-logo-<name>` mask painter plus its `--instui-logo-<name>` token."
+msgstr "Resolve a logo's stylesheet: the `.-logo-<name>` mask painter plus its `--instui-logo-<name>` token."
+
 #: renderers/tinymce/src/functions/getModifierSuggestions.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Get all modifier suggestions for a component/utility, filtered by an optional prefix.\nReturns array of `{ name, prop, value?, description }` objects."
 msgstr "ดึงคำแนะนำตัวแก้ไข (modifier) ทั้งหมดสำหรับ component/utility โดยกรองด้วย prefix ที่เป็นทางเลือก\nคืนค่าอาร์เรย์ของวัตถุ `{ name, prop, value?, description }`"
+
+#: renderers/tinymce/src/functions/getUsedIconCdnFiles.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve the icon stylesheets used by `-icon-*` classes below `root`.\nExisting assets break ties when multiple providers expose the same icon name."
+msgstr "แก้ไขสไตล์ชีตไอคอนที่ใช้โดยคลาส `-icon-*` ใต้ `root`.\n ทรัพยากรที่มีอยู่จะเป็นตัวตัดสินเมื่อผู้ให้บริการหลายรายเผยแพร่ชื่อไอคอนเดียวกัน"
+
+#: renderers/tinymce/src/functions/getUsedIconCdnFiles.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[] = `[]`"
+msgstr "อ่านอย่างเดียว [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[]"
+
+#: renderers/tinymce/src/functions/getUsedLogoCdnFiles.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve the logo stylesheets used by `-logo-*` classes below `root`."
+msgstr "Resolve the logo stylesheets used by `-logo-*` classes below `root`."
+
+#: renderers/tinymce/src/functions/getUsedLogoCdnFiles.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[] = `logos`"
+msgstr "อ่านอย่างเดียว [`Token`](../interfaces/Token.md)[]"
+
+#: renderers/tinymce/src/functions/humanizeIconName.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Turn a hyphenated icon slug into a readable label, e.g. `circle-question-mark` → `circle question mark`."
+msgstr "แปลงสลักชื่อไอคอนแบบมีขีดกลางให้เป็นป้ายที่อ่านได้ เช่น `circle-question-mark` → `circle question mark`"
 
 #: renderers/tinymce/src/functions/injectContentStylesheet.md
 #, no-c-format
@@ -16050,11 +17467,11 @@ msgctxt "docs.api:prose"
 msgid "Load and merge all available icons from both sources.\nReturns a sorted array tagged with the source package."
 msgstr "โหลดและรวมไอคอนที่มีทั้งหมดจากทั้งสองแหล่ง\nส่งกลับอาร์เรย์ที่เรียงลำดับแล้วและติดแท็กด้วยแพ็กเกจต้นทาง."
 
-#: renderers/tinymce/src/functions/loadAllIcons.md
+#: renderers/tinymce/src/functions/materializeLayout.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "NOTE: Component icon names are derived from the model's `-icon-*` modifier.\nThis needs to be populated from either `docs/public/icon-manifest.json` (if consumable)\nor a manifest published alongside formats/components model.json.\nFor now, only simple-icons are included."
-msgstr "หมายเหตุ: ชื่อไอคอนของคอมโพเนนต์ได้มาจากตัวแก้ไขของโมเดล `-icon-*`\nค่านี้ต้องถูกเติมมาจากทั้ง `docs/public/icon-manifest.json` (ถ้าสามารถใช้งานได้)\nหรือจาก manifest ที่เผยแพร่ควบคู่กับ formats/components model.json.\nตอนนี้รวมไว้เฉพาะ simple-icons เท่านั้น."
+msgid "Materialize declared layout image slots without embedding a provider URL in the layout."
+msgstr "สร้างตำแหน่งภาพที่ประกาศในเลย์เอาต์โดยไม่ฝัง URL ของผู้ให้บริการลงในเลย์เอาต์"
 
 #: renderers/tinymce/src/functions/pantokenContentCssUrls.md
 #, no-c-format
@@ -16069,16 +17486,10 @@ msgid "readonly [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interf
 msgstr "อ่านอย่างเดียว [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[]"
 
 #: renderers/tinymce/src/functions/pantokenHtmlCompletion.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Create a CodeMirror 6 autocomplete extension for pantoken HTML.\nProvides completions for component names and their modifiers."
-msgstr "สร้างส่วนขยายการเติมข้อความอัตโนมัติของ CodeMirror 6 สำหรับ pantoken HTML.\nให้คำแนะนำการเติมสำหรับชื่อคอมโพเนนต์และม็อดิฟายเออร์ของแต่ละคอมโพเนนต์."
-
-#: renderers/tinymce/src/functions/pantokenHtmlCompletion.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "Usage:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlCompletion({ model }),\n    ],\n  });"
-msgstr "การใช้งาน:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlCompletion({ model }),\n    ],\n  });"
+msgid "Create a CodeMirror 6 completion extension for pantoken classes in HTML `class` attributes."
+msgstr "สร้างส่วนขยาย linter ของ CodeMirror 6 สำหรับ pantoken HTML。\nตรวจสอบความถูกต้องของแอตทริบิวต์ class ที่มีโทเค็น `.instui-*`"
 
 #: renderers/tinymce/src/functions/pantokenHtmlLinter.md
 #, no-c-format
@@ -16092,11 +17503,29 @@ msgctxt "docs.api:prose"
 msgid "Usage:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlLinter({ model }),\n    ],\n  });"
 msgstr "การใช้งาน:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlLinter({ model }),\n    ],\n  });"
 
+#: renderers/tinymce/src/functions/registerPantokenIconPack.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Register a TinyMCE icon pack whose complete key set mirrors the installed default pack while\nevery rendered glyph comes from Pantoken's InstUI/Lucide icon tokens."
+msgstr "ลงทะเบียนไอคอนแพ็กของ TinyMCE ที่ชุดคีย์ทั้งหมดสะท้อนแพ็กเริ่มต้นที่ติดตั้ง ในขณะที่\nevery rendered glyph comes from Pantoken's InstUI/Lucide icon tokens."
+
 #: renderers/tinymce/src/functions/validateClassToken.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Validate a pantoken class token (e.g., \"instui-button\", \"instui-button.-color-primary\").\nReturns an array of validation errors (empty if valid)."
 msgstr "ตรวจสอบความถูกต้องของ pantoken class token (เช่น \"instui-button\", \"instui-button.-color-primary\").\nส่งคืนอาร์เรย์ของข้อผิดพลาดการตรวจสอบ (ว่างถ้าถูกต้อง)."
+
+#: renderers/tinymce/src/interfaces/ContentClassesPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [createContentClassesPlugin](../functions/createContentClassesPlugin.md)."
+msgstr "ตัวเลือกสำหรับ [createLayoutsPlugin](../functions/createLayoutsPlugin.md)."
+
+#: renderers/tinymce/src/interfaces/ContentClassesPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Prefix used by pantoken component classes."
+msgstr "โค้ด HTML ดิบสำหรับเลย์เอาต์ สร้างจากคลาส `@pantoken/components`"
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, no-c-format
@@ -16362,6 +17791,12 @@ msgctxt "docs.api:prose"
 msgid "Content of registered custom (block) tags, keyed by tag name without its `@`. Populated only for\ntags added via configuration; unregistered unknown tags are ignored. Absent when none were found."
 msgstr "เนื้อหาของแท็กกำหนดเอง (แบบบล็อก) ที่ลงทะเบียนไว้ จัดเก็บโดยใช้ชื่อแท็กเป็นคีย์โดยไม่รวม `@`. จะถูกเติมเฉพาะสำหรับ\nแท็กที่เพิ่มผ่านการกำหนดค่า; แท็กที่ไม่ได้ลงทะเบียนหรือไม่รู้จักจะถูกละไว้เมื่อไม่พบแท็กใดๆ."
 
+#: renderers/tinymce/src/interfaces/LayoutImageAttributes.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Image attributes returned by a consumer-specific layout image resolver."
+msgstr "คุณลักษณะของรูปภาพที่ส่งคืนโดยตัวแก้ไขภาพเลย์เอาต์ที่เฉพาะสำหรับผู้บริโภค."
+
 #: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -16369,10 +17804,22 @@ msgid "Options for [createLayoutsPlugin](../functions/createLayoutsPlugin.md)."
 msgstr "ตัวเลือกสำหรับ [createLayoutsPlugin](../functions/createLayoutsPlugin.md)."
 
 #: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The page layouts offered in the \"Insert layout\" picker. Defaults to the bundled layouts."
+msgstr "เลย์เอาต์ของหน้าในตัวเลือก \"แทรกเลย์เอาต์\" ค่าเริ่มต้นคือ [pageLayouts](../variables/pageLayouts.md)."
+
+#: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "The page layouts offered in the \"Insert layout\" picker. Defaults to [pageLayouts](../variables/pageLayouts.md)."
-msgstr "เลย์เอาต์ของหน้าในตัวเลือก \"แทรกเลย์เอาต์\" ค่าเริ่มต้นคือ [pageLayouts](../variables/pageLayouts.md)."
+msgid "BCP47 locale to render layout text in. Defaults to `\"en\"`."
+msgstr "ภูมิภาค BCP47 สำหรับการเรนเดอร์ข้อความเลย์เอาต์ ค่าเริ่มต้นคือ `\"en\"`."
+
+#: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolves a layout image slot into a consumer-specific image URL."
+msgstr "แปลงสล็อตรูปภาพเลย์เอาต์เป็น URL รูปภาพที่เฉพาะสำหรับผู้บริโภค."
 
 #: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
 #, no-c-format
@@ -16380,11 +17827,83 @@ msgctxt "docs.api:prose"
 msgid "Called after a layout is inserted (e.g. to refresh a live preview)."
 msgstr "เรียกหลังจากแทรกเลย์เอาต์แล้ว (เช่น เพื่อรีเฟรชตัวอย่างแบบเรียลไทม์)."
 
+#: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Register this picker's standalone toolbar button and menu item."
+msgstr "ลงทะเบียนปุ่มแถบเครื่องมือแบบสแตนด์อโลนและรายการเมนูของตัวเลือกนี้."
+
+#: renderers/tinymce/src/interfaces/PantokenPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Configuration for the content plugins composed by [createPantokenPlugin](../functions/createPantokenPlugin.md)."
+msgstr "ตัวเลือกสำหรับ [createLayoutsPlugin](../functions/createLayoutsPlugin.md)."
+
 #: renderers/tinymce/src/interfaces/TaggedIcon.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Icon with source attribution for tracking which package it comes from."
 msgstr "ไอคอนที่มีการระบุแหล่งที่มาเพื่อใช้ติดตามว่ามาจากแพ็กเกจใด"
+
+#: renderers/tinymce/src/interfaces/TinymceStrings.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "All user-visible strings emitted by the TinyMCE integration."
+msgstr "สตริงที่มองเห็นได้โดยผู้ใช้ทั้งหมดที่ถูกส่งออกโดยชุดองค์ประกอบเว็บคอมโพเนนต์."
+
+#: renderers/tinymce/src/type-aliases/LayoutImageResolver.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolves a provider-neutral layout image slot for a particular consumer."
+msgstr "แก้ไขสล็อตรูปภาพเลย์เอาต์ที่เป็นกลางต่อผู้ให้บริการสำหรับผู้บริโภคเฉพาะ."
+
+#: renderers/tinymce/src/type-aliases/PantokenFontSize.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Semantic text sizes accepted by the pantoken font-size command."
+msgstr "ขนาดข้อความเชิงความหมายที่คำสั่ง pantoken font-size ยอมรับ."
+
+#: renderers/tinymce/src/variables/CONTENT_CLASSES_PLUGIN_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Plugin name to pass in TinyMCE's `plugins` option."
+msgstr "ชื่อของปลั๊กอินที่ต้องส่งในตัวเลือก init ของ TinyMCE `plugins`/`toolbar`."
+
+#: renderers/tinymce/src/variables/DEFAULT_ICON_TRIGGER.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Autocompleter trigger. Two colons rather than one so the stock `emoticons` plugin — which claims\n`:` and would otherwise have several thousand icons merged into its results — keeps working."
+msgstr "ทริกเกอร์ตัวเติมคำอัตโนมัติ สองเครื่องหมายโคลอนแทนที่จะเป็นหนึ่ง เพื่อให้ปลั๊กอินมาตรฐาน `emoticons` — ซึ่งอ้างสิทธิ์\n`:` และถ้าไม่เป็นเช่นนั้นจะมีไอคอนหลายพันรายการผสานเข้ากับผลลัพธ์ของมัน — ยังคงทำงานได้."
+
+#: renderers/tinymce/src/variables/FULLSCREEN_FOOTER_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/PANTOKEN_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/SEARCHREPLACE_FOOTER_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/SUP_SUB_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/VISUALBLOCKS_FOOTER_PLUGIN_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Plugin name to pass in TinyMCE's `plugins` init option."
+msgstr "ชื่อของปลั๊กอินที่ต้องส่งในตัวเลือก init ของ TinyMCE `plugins`/`toolbar`."
+
+#: renderers/tinymce/src/variables/FULLSCREEN_FOOTER_STATUSBAR_NAME.md
+#: renderers/tinymce/src/variables/SEARCHREPLACE_FOOTER_STATUSBAR_NAME.md
+#: renderers/tinymce/src/variables/VISUALBLOCKS_FOOTER_STATUSBAR_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The footer/statusbar control name registered by this plugin."
+msgstr "ชื่อปุ่มแถบเครื่องมือ/รายการเมนูที่ปลั๊กอินนี้ลงทะเบียนไว้"
+
+#: renderers/tinymce/src/variables/ICONS_COMMAND.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Command that opens the icons picker."
+msgstr "คำสั่งที่เปิดตัวเลือกไอคอน."
+
+#: renderers/tinymce/src/variables/ICON_SOURCES.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The icon sources, in the order the picker lists them."
+msgstr "แหล่งที่มาของไอคอน ตามลำดับที่ตัวเลือกแสดงรายการ."
 
 #: renderers/tinymce/src/variables/LAYOUTS_PLUGIN_NAME.md
 #, no-c-format
@@ -16397,6 +17916,49 @@ msgstr "ชื่อของปลั๊กอินที่ต้องส่
 msgctxt "docs.api:prose"
 msgid "The toolbar button/menu item name registered by this plugin."
 msgstr "ชื่อปุ่มแถบเครื่องมือ/รายการเมนูที่ปลั๊กอินนี้ลงทะเบียนไว้"
+
+#: renderers/tinymce/src/variables/PANTOKEN_COMMANDS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Commands exposed for hosts that want explicit pantoken-aware toolbar actions."
+msgstr "คำสั่งที่เปิดเผยสำหรับโฮสต์ที่ต้องการการกระทำบนแถบเครื่องมือที่รองรับ pantoken อย่างชัดเจน."
+
+#: renderers/tinymce/src/variables/PANTOKEN_ICON.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pantoken's own logomark, reused for the toolbar menu button and any host UI that wants it."
+msgstr "เครื่องหมายโลโก้ของ Pantoken เอง ถูกนำกลับมาใช้ใหม่สำหรับปุ่มเมนูบนแถบเครื่องมือและอินเทอร์เฟซโฮสต์ใดๆ ที่ต้องการมัน."
+
+#: renderers/tinymce/src/variables/PANTOKEN_ICON_PACK_NAME.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TinyMCE icon-pack id to pass as the editor's `icons` option."
+msgstr "รหัสไอคอนแพ็กของ TinyMCE ที่จะส่งเป็นตัวเลือกของตัวแก้ไข `icons` option."
+
+#: renderers/tinymce/src/variables/PANTOKEN_TOOLBAR_NAME.md
+#: renderers/tinymce/src/variables/SUP_SUB_TOOLBAR_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Toolbar menu-button name to pass in TinyMCE's `toolbar` init option."
+msgstr "ชื่อของปลั๊กอินที่ต้องส่งในตัวเลือก init ของ TinyMCE `plugins`/`toolbar`."
+
+#: renderers/tinymce/src/variables/SOURCE_LABELS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Human label shown as a picker tab and an autocompleter row caption, per icon source."
+msgstr "ป้ายกำกับที่อ่านได้โดยมนุษย์ซึ่งแสดงเป็นแท็บของตัวเลือกและคำบรรยายแถวของตัวเติมคำอัตโนมัติ ต่อแต่ละแหล่งที่มาของไอคอน."
+
+#: renderers/tinymce/src/variables/TINYMCE_STRINGS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "English defaults for TinyMCE integration UI strings."
+msgstr "ค่าตั้งต้นภาษาอังกฤษสำหรับสตริง UI การผสานรวม TinyMCE."
+
+#: renderers/tinymce/src/variables/pageTemplates.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The bundled page layouts exposed through the template picker."
+msgstr "เลย์เอาต์หน้าที่รวมอยู่ซึ่งแสดงผ่านตัวเลือกเทมเพลต."
 
 #: renderers/vitepress/src/index.md
 #, no-c-format
@@ -17389,9 +18951,9 @@ msgid "Slovenian (Slovenščina) locale bundle."
 msgstr "ชุดภาษาสำหรับสโลวีเนีย (Slovenščina)."
 
 #: renderers/web-components/src/variables/spinner.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "`<instui-spinner>` — a loading spinner with `role=\"status\"`. Purely presentational; size and\ncolour follow the CSS tokens."
+msgid "`<instui-spinner>` — a loading spinner with `role=\"status\"`. `variant=\"ai\"` and\n`variant=\"ai-on-color\"` select the rotating AI star; size and colour follow the CSS tokens."
 msgstr "`&lt;instui-spinner&gt;` — a loading spinner with `role=\"status\"`. Purely presentational; size and\ncolour follow the CSS tokens."
 
 #: renderers/web-components/src/variables/sv.md
@@ -17399,6 +18961,30 @@ msgstr "`&lt;instui-spinner&gt;` — a loading spinner with `role=\"status\"`. P
 msgctxt "docs.api:prose"
 msgid "Swedish (Svenska) locale bundle."
 msgstr "บันเดิล locale ภาษา สวีเดน (Svenska)."
+
+#: renderers/web-components/src/variables/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`<instui-tabs>` — a light-DOM tabbed panel set. It keeps the existing `.instui-tabs` CSS contract\nintact while adding selection, panel visibility, and keyboard behavior through the shared tabs\ninteraction. Load `@pantoken/components/components.css` for the tab visuals."
+msgstr "`<instui-tabs>` — ชุดพาเนลแบบแท็บใน light-DOM ซึ่งรักษาสัญญา CSS ที่มีอยู่ `.instui-tabs` ไว้ขณะที่เพิ่มการเลือก การมองเห็นพาเนล และพฤติกรรมแป้นพิมพ์ผ่านการโต้ตอบแท็บร่วมกัน\ninteraction. โหลด `@pantoken/components/components.css` สำหรับภาพลักษณ์ของแท็บ."
+
+#: renderers/web-components/src/variables/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "General"
+msgstr "ทั่วไป"
+
+#: renderers/web-components/src/variables/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Advanced"
+msgstr "การตั้งค่าขั้นสูง"
+
+#: renderers/web-components/src/variables/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "General settings"
+msgstr "สร้างด้วย"
 
 #: renderers/web-components/src/variables/tag.md
 #, no-c-format
@@ -17806,6 +19392,56 @@ msgstr "สตริงต้นฉบับของ Stylus."
 msgctxt "docs.api:prose"
 msgid "A hoverable \"view fullscreen\" button, overlaid on a demo/example frame the same way VitePress's own\ncode-block \"copy\" button reveals on hover. Purely markup — wire a delegated click handler in your\nhost page (`button.closest(...).querySelector(\"iframe\")?.requestFullscreen()`; see the pantoken docs\ntheme for the reference wiring) and style the reveal-on-hover with `@pantoken/demo/demo.css`."
 msgstr "ปุ่ม \"ดูแบบเต็มจอ\" ที่แสดงเมื่อเอาเมาส์วางไว้ (hoverable) วางทับบนกรอบตัวอย่าง/เดโม ในลักษณะเดียวกับปุ่ม \"คัดลอก\" ของ code-block ของ VitePress ที่ปรากฏเมื่อเอาเมาส์วาง Purely markup — เชื่อม handler การคลิกแบบ delegated ในหน้าฮอสท์ของคุณ (`button.closest(...).querySelector(\"iframe\")?.requestFullscreen()`; ดูเอกสาร pantoken\ntheme สำหรับตัวอย่างการเชื่อมต่อ) และจัดสไตล์การแสดงเมื่อ hover ด้วย `@pantoken/demo/demo.css`."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "**Build a PNG CDN path for a logo**"
+#~ msgstr "**สร้าง preset จาก IR ที่กำหนดเอง**"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The rasterized PNG's display width in CSS pixels (fixed per layout group, not the SVG's own size)."
+#~ msgstr "ความกว้างการแสดงผลของ PNG ที่ได้นั้นเป็นพิกเซล CSS (กำหนดคงที่ต่อกลุ่มเลย์เอาต์ ไม่ใช่ขนาดของ SVG เอง))"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The rasterized PNG's display height in CSS pixels, derived from the SVG's `viewBox` aspect ratio."
+#~ msgstr "ความสูงการแสดงผลของ PNG ที่ได้นั้นเป็นพิกเซล CSS ซึ่งได้จากอัตราส่วนมุมมอง (`viewBox`) ของ SVG `viewBox`"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The decorative icon markup retained in editor content after a picker selection."
+#~ msgstr "มาร์กอัปไอคอนสำหรับการตกแต่งที่ยังคงอยู่ในเนื้อหา editor หลังการเลือกจาก picker"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Create a CodeMirror 6 autocomplete extension for pantoken HTML.\nProvides completions for component names and their modifiers."
+#~ msgstr "สร้างส่วนขยายการเติมข้อความอัตโนมัติของ CodeMirror 6 สำหรับ pantoken HTML.\nให้คำแนะนำการเติมสำหรับชื่อคอมโพเนนต์และม็อดิฟายเออร์ของแต่ละคอมโพเนนต์."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Usage:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlCompletion({ model }),\n    ],\n  });"
+#~ msgstr "การใช้งาน:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlCompletion({ model }),\n    ],\n  });"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "An animated loading ring; give it role=\"status\" and an aria-label."
+#~ msgstr "วงโหลดที่เคลื่อนไหวได้; ใส่ role=\"status\" และ aria-label ให้ด้วย"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "`.instui-spinner` — An animated loading ring; give it role=\"status\" and an aria-label."
+#~ msgstr "`.instui-spinner` — วงแสดงการโหลดแบบเคลื่อนไหว; กำหนด role=\"status\" และ aria-label ให้มัน."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color."
+#~ msgstr "`-color-inverse` จะทาสีเฉพาะส่วนขอบบนที่เคลื่อนไหว ไม่ใช่ทั้งแทร็ก ดังนั้นยังอ่านได้ถูกต้องบนการ์ดสีเข้มโดยไม่ต้องมีสีแทร็กแยกต่างหาก."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "NOTE: Component icon names are derived from the model's `-icon-*` modifier.\nThis needs to be populated from either `docs/public/icon-manifest.json` (if consumable)\nor a manifest published alongside formats/components model.json.\nFor now, only simple-icons are included."
+#~ msgstr "หมายเหตุ: ชื่อไอคอนของคอมโพเนนต์ได้มาจากตัวแก้ไขของโมเดล `-icon-*`\nค่านี้ต้องถูกเติมมาจากทั้ง `docs/public/icon-manifest.json` (ถ้าสามารถใช้งานได้)\nหรือจาก manifest ที่เผยแพร่ควบคู่กับ formats/components model.json.\nตอนนี้รวมไว้เฉพาะ simple-icons เท่านั้น."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -24829,10 +26465,6 @@ msgstr "ปุ่ม \"ดูแบบเต็มจอ\" ที่แสดง
 #~ msgstr "email"
 
 #~ msgctxt "docs.api:text"
-#~ msgid "light"
-#~ msgstr "light"
-
-#~ msgctxt "docs.api:text"
 #~ msgid "dark"
 #~ msgstr "dark"
 
@@ -27897,10 +29529,6 @@ msgstr "ปุ่ม \"ดูแบบเต็มจอ\" ที่แสดง
 #~ msgstr "ที่มา"
 
 #~ msgctxt "docs.api:text"
-#~ msgid "Generated using"
-#~ msgstr "สร้างด้วย"
-
-#~ msgctxt "docs.api:text"
 #~ msgid "API reference"
 #~ msgstr "เอกสารอ้างอิง API"
 
@@ -28004,8 +29632,538 @@ msgstr "ปุ่ม \"ดูแบบเต็มจอ\" ที่แสดง
 #~ msgid "BuildIconFontOptions"
 #~ msgstr "BuildIconFontOptions"
 
-#: formats/components/src/variables/aiGradientCss.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The AI gradient utility as a standalone, header-wrapped stylesheet."
-msgstr "ยูทิลิตี้ไล่ระดับสีของ AI ในรูปแบบสไตล์ชีตแบบสแตนด์อโลน ที่ห่อหุ้มด้วย header."
+#~ msgctxt "docs.api:text"
+#~ msgid "RunnerLabels"
+#~ msgstr "RunnerLabels"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "shadcnTailwindV4Css"
+#~ msgstr "shadcnTailwindV4Css"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toShadcnTailwindV4Css"
+#~ msgstr "toShadcnTailwindV4Css"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PageLayoutImagePlaceholder"
+#~ msgstr "PageLayoutImagePlaceholder"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ContentClassesPluginOptions"
+#~ msgstr "ContentClassesPluginOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LayoutImageAttributes"
+#~ msgstr "LayoutImageAttributes"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenPluginOptions"
+#~ msgstr "PantokenPluginOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TinymceStrings"
+#~ msgstr "TinymceStrings"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenFontSize"
+#~ msgstr "PantokenFontSize"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LayoutImageResolver"
+#~ msgstr "LayoutImageResolver"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_ICON_PACK_NAME"
+#~ msgstr "PANTOKEN_ICON_PACK_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ICON_SOURCES"
+#~ msgstr "ICON_SOURCES"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SOURCE_LABELS"
+#~ msgstr "SOURCE_LABELS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CONTENT_CLASSES_PLUGIN_NAME"
+#~ msgstr "CONTENT_CLASSES_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_COMMANDS"
+#~ msgstr "PANTOKEN_COMMANDS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "FULLSCREEN_FOOTER_PLUGIN_NAME"
+#~ msgstr "FULLSCREEN_FOOTER_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "FULLSCREEN_FOOTER_STATUSBAR_NAME"
+#~ msgstr "FULLSCREEN_FOOTER_STATUSBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ICONS_COMMAND"
+#~ msgstr "ICONS_COMMAND"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "DEFAULT_ICON_TRIGGER"
+#~ msgstr "DEFAULT_ICON_TRIGGER"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_PLUGIN_NAME"
+#~ msgstr "PANTOKEN_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_TOOLBAR_NAME"
+#~ msgstr "PANTOKEN_TOOLBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_ICON"
+#~ msgstr "PANTOKEN_ICON"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SEARCHREPLACE_FOOTER_PLUGIN_NAME"
+#~ msgstr "SEARCHREPLACE_FOOTER_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SEARCHREPLACE_FOOTER_STATUSBAR_NAME"
+#~ msgstr "SEARCHREPLACE_FOOTER_STATUSBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SUP_SUB_PLUGIN_NAME"
+#~ msgstr "SUP_SUB_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SUP_SUB_TOOLBAR_NAME"
+#~ msgstr "SUP_SUB_TOOLBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pageTemplates"
+#~ msgstr "pageTemplates"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "VISUALBLOCKS_FOOTER_PLUGIN_NAME"
+#~ msgstr "VISUALBLOCKS_FOOTER_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "VISUALBLOCKS_FOOTER_STATUSBAR_NAME"
+#~ msgstr "VISUALBLOCKS_FOOTER_STATUSBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TINYMCE_STRINGS"
+#~ msgstr "TINYMCE_STRINGS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "registerPantokenIconPack"
+#~ msgstr "registerPantokenIconPack"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getUsedIconCdnFiles"
+#~ msgstr "getUsedIconCdnFiles"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "humanizeIconName"
+#~ msgstr "humanizeIconName"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "buildIconMarkup"
+#~ msgstr "buildIconMarkup"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getIconImageSrc"
+#~ msgstr "getIconImageSrc"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "filterIcons"
+#~ msgstr "filterIcons"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createContentClassesPlugin"
+#~ msgstr "createContentClassesPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createFullscreenFooterPlugin"
+#~ msgstr "createFullscreenFooterPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "materializeLayout"
+#~ msgstr "materializeLayout"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createPantokenPlugin"
+#~ msgstr "createPantokenPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createSearchReplaceFooterPlugin"
+#~ msgstr "createSearchReplaceFooterPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createSupSubPlugin"
+#~ msgstr "createSupSubPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createVisualBlocksFooterPlugin"
+#~ msgstr "createVisualBlocksFooterPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ensureComponentsJsonRegistry"
+#~ msgstr "ensureComponentsJsonRegistry"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveRegistryItemNames"
+#~ msgstr "resolveRegistryItemNames"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "runAdd"
+#~ msgstr "runAdd"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "runCreate"
+#~ msgstr "runCreate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Scheme"
+#~ msgstr "Scheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "THEME_ATTR"
+#~ msgstr "THEME_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SCHEME_ATTR"
+#~ msgstr "SCHEME_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "COLOR_ATTR"
+#~ msgstr "COLOR_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "BOUNDARY_ATTR"
+#~ msgstr "BOUNDARY_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "INSTANCE_ATTR"
+#~ msgstr "INSTANCE_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SCOPE_ATTRS"
+#~ msgstr "SCOPE_ATTRS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SCOPE_LAYERS"
+#~ msgstr "SCOPE_LAYERS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "BOUNDARY_CLASS"
+#~ msgstr "BOUNDARY_CLASS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "isScheme"
+#~ msgstr "isScheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "themeClass"
+#~ msgstr "themeClass"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemeClass"
+#~ msgstr "schemeClass"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "colorClass"
+#~ msgstr "colorClass"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "themeScopeSelector"
+#~ msgstr "themeScopeSelector"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemeScopeSelector"
+#~ msgstr "schemeScopeSelector"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "colorScopeSelector"
+#~ msgstr "colorScopeSelector"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "themeScopeSelectors"
+#~ msgstr "themeScopeSelectors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemeScopeSelectors"
+#~ msgstr "schemeScopeSelectors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "colorScopeSelectors"
+#~ msgstr "colorScopeSelectors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "aiGradientCss"
+#~ msgstr "aiGradientCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ScopedCssOptions"
+#~ msgstr "ScopedCssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "MultiScopeCssOptions"
+#~ msgstr "MultiScopeCssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CssEmitTarget"
+#~ msgstr "CssEmitTarget"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LAYERS"
+#~ msgstr "LAYERS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "layerOrderCss"
+#~ msgstr "layerOrderCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "propertiesCss"
+#~ msgstr "propertiesCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "scopedThemeCss"
+#~ msgstr "scopedThemeCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "scopedSchemeCss"
+#~ msgstr "scopedSchemeCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemesCss"
+#~ msgstr "schemesCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "multiScopeCss"
+#~ msgstr "multiScopeCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "lightBranch"
+#~ msgstr "lightBranch"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "darkBranch"
+#~ msgstr "darkBranch"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemeOverrideTokens"
+#~ msgstr "schemeOverrideTokens"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "themedTokens"
+#~ msgstr "themedTokens"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "lucideIcons"
+#~ msgstr "lucideIcons"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TabsHandle"
+#~ msgstr "TabsHandle"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "initTabs"
+#~ msgstr "initTabs"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "scope"
+#~ msgstr "scope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ScopeConfig"
+#~ msgstr "ScopeConfig"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ResolvedScope"
+#~ msgstr "ResolvedScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ScopeMessage"
+#~ msgstr "ScopeMessage"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CreateScopeOptions"
+#~ msgstr "CreateScopeOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenScope"
+#~ msgstr "PantokenScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ConnectScopeOptions"
+#~ msgstr "ConnectScopeOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "DEFAULT_INSTANCE"
+#~ msgstr "DEFAULT_INSTANCE"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ensureProperties"
+#~ msgstr "ensureProperties"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "hasProperties"
+#~ msgstr "hasProperties"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "observeScope"
+#~ msgstr "observeScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveScope"
+#~ msgstr "resolveScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveInstance"
+#~ msgstr "resolveInstance"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveScheme"
+#~ msgstr "resolveScheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getScope"
+#~ msgstr "getScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createScope"
+#~ msgstr "createScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "connectScope"
+#~ msgstr "connectScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "agentShellRules"
+#~ msgstr "agentShellRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "aiGradientRules"
+#~ msgstr "aiGradientRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "custom-theme-colors"
+#~ msgstr "custom-theme-colors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CustomThemeColorsOptions"
+#~ msgstr "CustomThemeColorsOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CustomThemeColorsCssOptions"
+#~ msgstr "CustomThemeColorsCssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenColorNamespace"
+#~ msgstr "PantokenColorNamespace"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "COLOR_KEYS"
+#~ msgstr "COLOR_KEYS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "customThemeColorsCss"
+#~ msgstr "customThemeColorsCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "customThemeColors"
+#~ msgstr "customThemeColors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pageLayoutTemplates"
+#~ msgstr "pageLayoutTemplates"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "calloutRules"
+#~ msgstr "calloutRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "calloutTemplate"
+#~ msgstr "calloutTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "heroRules"
+#~ msgstr "heroRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "heroTemplate"
+#~ msgstr "heroTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pageLayoutRules"
+#~ msgstr "pageLayoutRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pageLayoutTemplate"
+#~ msgstr "pageLayoutTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "rubricNoteRules"
+#~ msgstr "rubricNoteRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "rubricNoteTemplate"
+#~ msgstr "rubricNoteTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "testimonialRules"
+#~ msgstr "testimonialRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "testimonialTemplate"
+#~ msgstr "testimonialTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "twoColumnRules"
+#~ msgstr "twoColumnRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "twoColumnTemplate"
+#~ msgstr "twoColumnTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "wrapperTemplate"
+#~ msgstr "wrapperTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "renderPageLayout"
+#~ msgstr "renderPageLayout"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getLogoMeta"
+#~ msgstr "getLogoMeta"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "lucide-lab"
+#~ msgstr "lucide-lab"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LucideLabOptions"
+#~ msgstr "LucideLabOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LucideLabNode"
+#~ msgstr "LucideLabNode"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LucideLabRegistry"
+#~ msgstr "LucideLabRegistry"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "svgOf"
+#~ msgstr "svgOf"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "lucideLab"
+#~ msgstr "lucideLab"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "checkbox"
+#~ msgstr "checkbox"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ai-gradient"
+#~ msgstr "ai-gradient"

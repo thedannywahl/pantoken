@@ -1,4 +1,4 @@
-import { afterEach, beforeAll, expect, test, vi } from "vite-plus/test";
+import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test";
 
 const writeFileSync = vi.fn();
 const mkdirSync = vi.fn();
@@ -8,7 +8,8 @@ vi.mock("node:fs", () => ({ mkdirSync, writeFileSync }));
 
 const MODULE_PATH = new URL("./generate.ts", import.meta.url).pathname;
 
-beforeAll(async () => {
+beforeEach(async () => {
+  vi.resetModules();
   vi.clearAllMocks();
   vi.spyOn(console, "log").mockImplementation(() => {});
   await import(MODULE_PATH);

@@ -2,6 +2,7 @@ import { expect, test } from "vite-plus/test";
 import { capabilitiesOf } from "@pantoken/plugin-kit";
 import {
   getLogoDataUri,
+  getLogoMeta,
   getLogoSvg,
   logos,
   logosCss,
@@ -44,6 +45,27 @@ test("getLogoDataUri encodes an SVG data URI", () => {
 test("logos.css defines image tokens", () => {
   expect(logosCss).toContain("--instui-logo-canvas-");
   expect(logosCss).toContain('url("data:image/svg+xml;base64,');
+});
+
+test("logo metadata carries a positive width/height for every logo", () => {
+  for (const logo of logos) {
+    expect(logo.width).toBeGreaterThan(0);
+    expect(logo.height).toBeGreaterThan(0);
+  }
+});
+
+test("getLogoMeta resolves width/height for a real logo and undefined otherwise", () => {
+  const meta = getLogoMeta("canvas", "horizontal", "color");
+  expect(meta?.name).toBe("canvas-horizontal-color");
+  expect(meta?.width).toBeGreaterThan(0);
+  expect(meta?.height).toBeGreaterThan(0);
+  expect(getLogoMeta("canvas", "stacked", "full-color-bg")).toBeUndefined();
+});
+
+test("icon-mark layouts render narrower than horizontal/stacked layouts", () => {
+  const icon = getLogoMeta("canvas", "icon", "color");
+  const horizontal = getLogoMeta("canvas", "horizontal", "color");
+  expect(icon?.width).toBeLessThan(horizontal!.width);
 });
 
 test("the plugin's css hook contributes the image tokens", () => {

@@ -1,6 +1,7 @@
 import { expect, test } from "vite-plus/test";
 import {
   createLocaleLookup,
+  detectBrowserLocale,
   detectLocale,
   localeDirection,
   resolveSupportedLocale,
@@ -71,6 +72,13 @@ test("detectLocale narrows an unsupported region to its supported base language"
 
 test("detectLocale ignores an unsupported ambient locale rather than emitting it", () => {
   expect(detectLocale({ env: { LANG: "zz_ZZ.UTF-8" }, intl: () => "" })).toBe("en");
+});
+
+test("detectBrowserLocale respects browser language order and resolves supported regional fallbacks", () => {
+  expect(detectBrowserLocale(["fr-CA", "en-US"])).toBe("fr-CA");
+  expect(detectBrowserLocale(["zh-TW", "en-US"])).toBe("zh-Hant");
+  expect(detectBrowserLocale(["es-MX", "en-US"])).toBe("es");
+  expect(detectBrowserLocale(["zz-ZZ", "en-US"])).toBe("en");
 });
 
 // ---------------------------------------------------------------------------

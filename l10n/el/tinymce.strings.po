@@ -1,0 +1,850 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-23 23:17+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
+
+#: renderers/tinymce/src/i18n.json#autocompleteModifierDetail
+#, no-c-format
+msgctxt "tinymce.strings:autocompleteModifierDetail"
+msgid "modifier"
+msgstr "τροποποιητής"
+
+#: renderers/tinymce/src/i18n.json#classValidationIncompleteComponent
+#, no-c-format
+msgctxt "tinymce.strings:classValidationIncompleteComponent"
+msgid "Incomplete component name after '{{prefix}}'"
+msgstr "Ελλιπές όνομα συνιστώσας μετά το '{{prefix}}'"
+
+#: renderers/tinymce/src/i18n.json#classValidationTokenPrefix
+#, no-c-format
+msgctxt "tinymce.strings:classValidationTokenPrefix"
+msgid "Token must start with '{{prefix}}'"
+msgstr "Το token πρέπει να ξεκινά με '{{prefix}}'"
+
+#: renderers/tinymce/src/i18n.json#classValidationUnknownComponent
+#, no-c-format
+msgctxt "tinymce.strings:classValidationUnknownComponent"
+msgid "Unknown component/utility: '{{componentName}}'"
+msgstr "Άγνωστη συνιστώσα/βοηθητικό: '{{componentName}}'"
+
+#: renderers/tinymce/src/i18n.json#componentsDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:componentsDialogTitle"
+msgid "Insert Component"
+msgstr "Εισαγωγή Συνιστώσας"
+
+#: renderers/tinymce/src/i18n.json#componentsListLabel
+#, no-c-format
+msgctxt "tinymce.strings:componentsListLabel"
+msgid "Components"
+msgstr "Συνιστώσες"
+
+#: renderers/tinymce/src/i18n.json#componentsMenuText
+#, no-c-format
+msgctxt "tinymce.strings:componentsMenuText"
+msgid "Component"
+msgstr "Συνιστώσα"
+
+#: renderers/tinymce/src/i18n.json#componentsToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:componentsToolbarText"
+msgid "Components"
+msgstr "Συνιστώσες"
+
+#: renderers/tinymce/src/i18n.json#componentsToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:componentsToolbarTooltip"
+msgid "Insert a pantoken component"
+msgstr "Εισαγωγή συνιστώσας pantoken"
+
+#: renderers/tinymce/src/i18n.json#iconLabelDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:iconLabelDialogTitle"
+msgid "Icon label"
+msgstr "Ετικέτα εικονιδίου"
+
+#: renderers/tinymce/src/i18n.json#iconLabelInputLabel
+#, no-c-format
+msgctxt "tinymce.strings:iconLabelInputLabel"
+msgid "Screen reader label"
+msgstr "Ετικέτα για αναγνώστη οθόνης"
+
+#: renderers/tinymce/src/i18n.json#iconsMenuText
+#, no-c-format
+msgctxt "tinymce.strings:iconsMenuText"
+msgid "Icon"
+msgstr "Εικονίδιο"
+
+#: renderers/tinymce/src/i18n.json#iconsDialogTitle
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:iconsDialogTitle"
+msgid "Insert icon"
+msgstr "Εισαγωγή εικονιδίου"
+
+#: renderers/tinymce/src/i18n.json#iconsSearchPlaceholder
+#, no-c-format
+msgctxt "tinymce.strings:iconsSearchPlaceholder"
+msgid "Search icons…"
+msgstr "Αναζήτηση εικονιδίων…"
+
+#: renderers/tinymce/src/i18n.json#iconsSearchLabel
+#, no-c-format
+msgctxt "tinymce.strings:iconsSearchLabel"
+msgid "Search icons"
+msgstr "Αναζήτηση εικονιδίων"
+
+#: renderers/tinymce/src/i18n.json#iconsAllSources
+#, no-c-format
+msgctxt "tinymce.strings:iconsAllSources"
+msgid "All"
+msgstr "Όλα"
+
+#: renderers/tinymce/src/i18n.json#iconsResultCount
+#, no-c-format
+msgctxt "tinymce.strings:iconsResultCount"
+msgid "{{count}} icons"
+msgstr "{{count}} εικονίδια"
+
+#: renderers/tinymce/src/i18n.json#iconsNoResults
+#, no-c-format
+msgctxt "tinymce.strings:iconsNoResults"
+msgid "No icons match your search."
+msgstr "Κανένα εικονίδιο δεν ταιριάζει στην αναζήτησή σας."
+
+#: renderers/tinymce/src/i18n.json#iconsToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:iconsToolbarText"
+msgid "Icons"
+msgstr "Εικονίδια"
+
+#: renderers/tinymce/src/i18n.json#iconsToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:iconsToolbarTooltip"
+msgid "Insert an icon"
+msgstr "Εισαγωγή εικονιδίου"
+
+#: renderers/tinymce/src/i18n.json#iconContextColorTooltip
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:iconContextColorTooltip"
+msgid "Icon color"
+msgstr "Χρώμα φόντου"
+
+#: renderers/tinymce/src/i18n.json#iconContextSizeTooltip
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:iconContextSizeTooltip"
+msgid "Icon size"
+msgstr "Εικονίδια"
+
+#: renderers/tinymce/src/i18n.json#iconContextSizeSmall
+#, no-c-format
+msgctxt "tinymce.strings:iconContextSizeSmall"
+msgid "Small"
+msgstr "Μικρό"
+
+#: renderers/tinymce/src/i18n.json#iconContextSizeMedium
+#, no-c-format
+msgctxt "tinymce.strings:iconContextSizeMedium"
+msgid "Medium"
+msgstr "Μεσαίο"
+
+#: renderers/tinymce/src/i18n.json#iconContextSizeLarge
+#, no-c-format
+msgctxt "tinymce.strings:iconContextSizeLarge"
+msgid "Large"
+msgstr "Μεγάλο"
+
+#: renderers/tinymce/src/i18n.json#iconContextSizeExtraLarge
+#, no-c-format
+msgctxt "tinymce.strings:iconContextSizeExtraLarge"
+msgid "Extra large"
+msgstr "Εξτρα μεγάλο"
+
+#: renderers/tinymce/src/i18n.json#iconContextDeleteTooltip
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:iconContextDeleteTooltip"
+msgid "Delete icon"
+msgstr "Διαγραφή"
+
+#: renderers/tinymce/src/i18n.json#layoutsConfirmReplace
+#, no-c-format
+msgctxt "tinymce.strings:layoutsConfirmReplace"
+msgid "Replace the current content with the \"{{title}}\" layout?"
+msgstr "Να αντικατασταθεί το τρέχον περιεχόμενο με τη διάταξη \"{{title}}\"?"
+
+#: renderers/tinymce/src/i18n.json#layoutsDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:layoutsDialogTitle"
+msgid "Insert layout"
+msgstr "Εισαγωγή διάταξης"
+
+#: renderers/tinymce/src/i18n.json#layoutsMenuText
+#, no-c-format
+msgctxt "tinymce.strings:layoutsMenuText"
+msgid "Layout…"
+msgstr "Διάταξη…"
+
+#: renderers/tinymce/src/i18n.json#layoutsSelectLabel
+#, no-c-format
+msgctxt "tinymce.strings:layoutsSelectLabel"
+msgid "Starter layout"
+msgstr "Διάταξη εκκίνησης"
+
+#: renderers/tinymce/src/i18n.json#layoutsToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:layoutsToolbarText"
+msgid "Layouts"
+msgstr "Διατάξεις"
+
+#: renderers/tinymce/src/i18n.json#layoutsToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:layoutsToolbarTooltip"
+msgid "Insert a starter layout"
+msgstr "Εισαγωγή διάταξης εκκίνησης"
+
+#: renderers/tinymce/src/i18n.json#logosToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:logosToolbarText"
+msgid "Logos"
+msgstr "Λογότυπα"
+
+#: renderers/tinymce/src/i18n.json#logosToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:logosToolbarTooltip"
+msgid "Insert a logo"
+msgstr "Εισαγωγή λογότυπου"
+
+#: renderers/tinymce/src/i18n.json#logosMenuText
+#, no-c-format
+msgctxt "tinymce.strings:logosMenuText"
+msgid "Logo"
+msgstr "Λογότυπο"
+
+#: renderers/tinymce/src/i18n.json#logosDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:logosDialogTitle"
+msgid "Insert Logo"
+msgstr "Εισαγωγή λογότυπου"
+
+#: renderers/tinymce/src/i18n.json#logosProductLabel
+#, no-c-format
+msgctxt "tinymce.strings:logosProductLabel"
+msgid "Product"
+msgstr "Προϊόν"
+
+#: renderers/tinymce/src/i18n.json#logosLayoutLabel
+#, no-c-format
+msgctxt "tinymce.strings:logosLayoutLabel"
+msgid "Layout"
+msgstr "Διάταξη"
+
+#: renderers/tinymce/src/i18n.json#logosLayoutHorizontal
+#, no-c-format
+msgctxt "tinymce.strings:logosLayoutHorizontal"
+msgid "Horizontal"
+msgstr "Οριζόντιο"
+
+#: renderers/tinymce/src/i18n.json#logosLayoutVertical
+#, no-c-format
+msgctxt "tinymce.strings:logosLayoutVertical"
+msgid "Vertical"
+msgstr "Κάθετο"
+
+#: renderers/tinymce/src/i18n.json#logosLayoutStacked
+#, no-c-format
+msgctxt "tinymce.strings:logosLayoutStacked"
+msgid "Stacked"
+msgstr "Στοιβαγμένο"
+
+#: renderers/tinymce/src/i18n.json#logosColorModeLabel
+#, no-c-format
+msgctxt "tinymce.strings:logosColorModeLabel"
+msgid "Color Mode"
+msgstr "Λειτουργία Χρώματος"
+
+#: renderers/tinymce/src/i18n.json#logosColorModeColor
+#, no-c-format
+msgctxt "tinymce.strings:logosColorModeColor"
+msgid "Color"
+msgstr "Χρώμα"
+
+#: renderers/tinymce/src/i18n.json#logosColorModeMonochrome
+#, no-c-format
+msgctxt "tinymce.strings:logosColorModeMonochrome"
+msgid "Monochrome"
+msgstr "Μονόχρωμο"
+
+#: renderers/tinymce/src/i18n.json#logosColorModeLight
+#, no-c-format
+msgctxt "tinymce.strings:logosColorModeLight"
+msgid "Light"
+msgstr "Φωτεινό"
+
+#: renderers/tinymce/src/i18n.json#insertButton
+#, no-c-format
+msgctxt "tinymce.strings:insertButton"
+msgid "Insert"
+msgstr "Εισαγωγή"
+
+#: renderers/tinymce/src/i18n.json#replaceButton
+#, no-c-format
+msgctxt "tinymce.strings:replaceButton"
+msgid "Replace"
+msgstr "Αντικατάσταση"
+
+#: renderers/tinymce/src/i18n.json#cancelButton
+#, no-c-format
+msgctxt "tinymce.strings:cancelButton"
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: renderers/tinymce/src/i18n.json#logoAltSuffix
+#, no-c-format
+msgctxt "tinymce.strings:logoAltSuffix"
+msgid "logo"
+msgstr "λογότυπο"
+
+#: renderers/tinymce/src/i18n.json#templatesConfirmReplace
+#, no-c-format
+msgctxt "tinymce.strings:templatesConfirmReplace"
+msgid "Replace the current content with the \"{{title}}\" template?"
+msgstr "Να αντικατασταθεί το τρέχον περιεχόμενο με το πρότυπο \"{{title}}\"?"
+
+#: renderers/tinymce/src/i18n.json#templatesDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:templatesDialogTitle"
+msgid "Insert template"
+msgstr "Εισαγωγή προτύπου"
+
+#: renderers/tinymce/src/i18n.json#templatesMenuText
+#, no-c-format
+msgctxt "tinymce.strings:templatesMenuText"
+msgid "Insert template…"
+msgstr "Εισαγωγή προτύπου…"
+
+#: renderers/tinymce/src/i18n.json#templatesSelectLabel
+#, no-c-format
+msgctxt "tinymce.strings:templatesSelectLabel"
+msgid "Starter template"
+msgstr "Πρότυπο εκκίνησης"
+
+#: renderers/tinymce/src/i18n.json#templatesToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:templatesToolbarText"
+msgid "Templates"
+msgstr "Πρότυπα"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:placeholdToolbarText"
+msgid "Placeholder"
+msgstr "Δείκτης κράτησης"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:placeholdToolbarTooltip"
+msgid "Insert a placeholder image"
+msgstr "Εισαγωγή εικόνας δείκτη κράτησης"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdMenuText
+#, no-c-format
+msgctxt "tinymce.strings:placeholdMenuText"
+msgid "Placeholder image…"
+msgstr "Εικόνα δείκτη κράτησης…"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:placeholdDialogTitle"
+msgid "Insert placeholder image"
+msgstr "Εισαγωγή εικόνας δείκτη κράτησης"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdWidthLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdWidthLabel"
+msgid "Width"
+msgstr "Πλάτος"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdHeightLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdHeightLabel"
+msgid "Height"
+msgstr "Ύψος"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdBackgroundColorLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdBackgroundColorLabel"
+msgid "Background color"
+msgstr "Χρώμα φόντου"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdTextColorLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdTextColorLabel"
+msgid "Text color"
+msgstr "Χρώμα κειμένου"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdTextLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdTextLabel"
+msgid "Text"
+msgstr "Κείμενο"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdAltTextLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdAltTextLabel"
+msgid "Alt text"
+msgstr "Εναλλακτικό κείμενο"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdInsertButton
+#, no-c-format
+msgctxt "tinymce.strings:placeholdInsertButton"
+msgid "Insert"
+msgstr "Εισαγωγή"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdCancelButton
+#, no-c-format
+msgctxt "tinymce.strings:placeholdCancelButton"
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdInvalidDimensions
+#, no-c-format
+msgctxt "tinymce.strings:placeholdInvalidDimensions"
+msgid "Width and height must be whole numbers from 10 through 4000."
+msgstr "Το πλάτος και το ύψος πρέπει να είναι ακέραιοι αριθμοί από 10 έως 4000."
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdInvalidColor
+#, no-c-format
+msgctxt "tinymce.strings:placeholdInvalidColor"
+msgid "Colors must use three- or six-digit hexadecimal values."
+msgstr "Τα χρώματα πρέπει να χρησιμοποιούν δεκαεξαδικές τιμές τριών ή έξι ψηφίων."
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdAltFallback
+#, no-c-format
+msgctxt "tinymce.strings:placeholdAltFallback"
+msgid "{{width}} by {{height}} placeholder image"
+msgstr "{{width}} επί {{height}} εικόνα δείκτη κράτησης"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:a11yToolbarText"
+msgid "Check accessibility"
+msgstr "Έλεγχος προσβασιμότητας"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:a11yToolbarTooltip"
+msgid "Check the content for accessibility issues"
+msgstr "Έλεγχος του περιεχομένου για προβλήματα προσβασιμότητας"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yMenuText
+#, no-c-format
+msgctxt "tinymce.strings:a11yMenuText"
+msgid "Check accessibility"
+msgstr "Έλεγχος προσβασιμότητας"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:a11yDialogTitle"
+msgid "Accessibility checker"
+msgstr "Ελεγκτής προσβασιμότητας"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yNoIssues
+#, no-c-format
+msgctxt "tinymce.strings:a11yNoIssues"
+msgid "No accessibility issues found."
+msgstr "Δεν βρέθηκαν προβλήματα προσβασιμότητας."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yIssueCount
+#, no-c-format
+msgctxt "tinymce.strings:a11yIssueCount"
+msgid "{{count}} accessibility issue(s) found."
+msgstr "Βρέθηκε {{count}} θέμα(τα) προσβασιμότητας."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yStatusbarIssueCount
+#, no-c-format
+msgctxt "tinymce.strings:a11yStatusbarIssueCount"
+msgid "{{count}} accessibility issues"
+msgstr "{{count}} ζητήματα προσβασιμότητας"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yIssueLabel
+#, no-c-format
+msgctxt "tinymce.strings:a11yIssueLabel"
+msgid "Issue"
+msgstr "Πρόβλημα"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yCloseButton
+#, no-c-format
+msgctxt "tinymce.strings:a11yCloseButton"
+msgid "Close"
+msgstr "Κλείσιμο"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yImageAltMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yImageAltMessage"
+msgid "Images must have alternative text."
+msgstr "Οι εικόνες πρέπει να έχουν εναλλακτικό κείμενο."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yImageAltWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yImageAltWhy"
+msgid "Screen readers need an alt attribute to describe an image or identify it as decorative."
+msgstr "Οι αναγνώστες οθόνης χρειάζονται το attribute alt για να περιγράψουν μια εικόνα ή να την αναγνωρίσουν ως διακοσμητική."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yImageAltFilenameMessage"
+msgid "Image alternative text should describe the image, not repeat its filename."
+msgstr "Το εναλλακτικό κείμενο εικόνας πρέπει να περιγράφει την εικόνα, όχι να επαναλαμβάνει το όνομα αρχείου της."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yImageAltFilenameWhy"
+msgid "A filename rarely gives screen reader users useful information about an image."
+msgstr "Ένα όνομα αρχείου σπάνια δίνει χρήσιμη πληροφορία για τις εικόνες στους χρήστες αναγνωστών οθόνης."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yImageAltLengthMessage"
+msgid "Image alternative text should be 125 characters or fewer."
+msgstr "Το εναλλακτικό κείμενο εικόνας πρέπει να έχει 125 χαρακτήρες ή λιγότερους."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yImageAltLengthWhy"
+msgid "Short descriptions are easier to understand and navigate with assistive technology."
+msgstr "Σύντομες περιγραφές είναι ευκολότερες στην κατανόηση και την πλοήγηση με βοηθητική τεχνολογία."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yHeadingSequenceMessage"
+msgid "Heading levels should not skip levels."
+msgstr "Τα επίπεδα επικεφαλίδων δεν πρέπει να παραλείπουν επίπεδα."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yHeadingSequenceWhy"
+msgid "A logical heading outline helps people navigate content with assistive technology."
+msgstr "Ένα λογικό περίγραμμα επικεφαλίδων βοηθάει τους ανθρώπους να πλοηγηθούν στο περιεχόμενο με βοηθητική τεχνολογία."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yTableHeaderMessage"
+msgid "Tables must include header cells."
+msgstr "Οι πίνακες πρέπει να περιλαμβάνουν κελια κεφαλίδων."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yTableHeaderWhy"
+msgid "Header cells give screen readers the context needed to understand table data."
+msgstr "Τα κελιά κεφαλίδας δίνουν στους αναγνώστες οθόνης το πλαίσιο που χρειάζονται για να κατανοήσουν τα δεδομένα του πίνακα."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yTableCaptionMessage"
+msgid "Tables should include a caption."
+msgstr "Οι πίνακες θα πρέπει να περιλαμβάνουν υπότιτλο (caption)."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yTableCaptionWhy"
+msgid "A caption identifies a table's purpose before a screen reader enters its cells."
+msgstr "Ένας υπότιτλος προσδιορίζει τον σκοπό ενός πίνακα πριν ένας αναγνώστης οθόνης εισέλθει στα κελιά του."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yTableHeaderScopeMessage"
+msgid "Table header cells should declare their scope."
+msgstr "Τα κελιά κεφαλίδας πίνακα θα πρέπει να δηλώνουν το scope τους."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yTableHeaderScopeWhy"
+msgid "The scope attribute lets assistive technology associate headers with data cells."
+msgstr "Το attribute scope επιτρέπει στην βοηθητική τεχνολογία να συσχετίζει τις κεφαλίδες με τα κελιά δεδομένων."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yAdjacentLinksMessage"
+msgid "Adjacent links with the same destination should be combined."
+msgstr "Γειτονικοί σύνδεσμοι με τον ίδιο προορισμό θα πρέπει να συνενώνονται."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yAdjacentLinksWhy"
+msgid "Repeated links create unnecessary stops for keyboard and screen reader users."
+msgstr "Οι επαναλαμβανόμενοι σύνδεσμοι δημιουργούν περιττές στάσεις για χρήστες πληκτρολογίου και αναγνωστών οθόνης."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yHeadingStartMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yHeadingStartMessage"
+msgid "The first heading should be an h2."
+msgstr "Η πρώτη επικεφαλίδα θα πρέπει να είναι h2."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yHeadingStartWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yHeadingStartWhy"
+msgid "The editor's document title is supplied outside the editable content."
+msgstr "Ο τίτλος του εγγράφου του επεξεργαστή παρέχεται εκτός του επεξεργάσιμου περιεχομένου."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yListStructureMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yListStructureMessage"
+msgid "List items must be contained by an ordered or unordered list."
+msgstr "Τα στοιχεία λίστας πρέπει να περιέχονται σε διατεταγμένη ή αδιάτακτη λίστα."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yListStructureWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yListStructureWhy"
+msgid "Assistive technology relies on list structure to announce item counts and position."
+msgstr "Η βοηθητική τεχνολογία βασίζεται στη δομή λίστας για να ανακοινώνει τον αριθμό των στοιχείων και τη θέση τους."
+
+#: plugins/tinymce/codemirror/src/i18n.json#sourceToggleTooltip
+#, no-c-format
+msgctxt "tinymce.strings:sourceToggleTooltip"
+msgid "Source code"
+msgstr "Πηγαίος κώδικας"
+
+#: plugins/tinymce/codemirror/src/i18n.json#sourceFormatTooltip
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:sourceFormatTooltip"
+msgid "Format code"
+msgstr "Πηγαίος κώδικας"
+
+#: plugins/tinymce/codemirror/src/i18n.json#sourceFormatErrorMessage
+#, no-c-format
+msgctxt "tinymce.strings:sourceFormatErrorMessage"
+msgid "Couldn't format the source code — check for unclosed tags or other syntax errors."
+msgstr "Δεν ήταν δυνατή η μορφοποίηση του πηγαίου κώδικα — ελέγξτε για μη κλειστές ετικέτες ή άλλα σφάλματα σύνταξης."
+
+#: plugins/tinymce/save/src/i18n.json#saveToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:saveToolbarText"
+msgid "Presets"
+msgstr "Προεπιλογές"
+
+#: plugins/tinymce/save/src/i18n.json#saveToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:saveToolbarTooltip"
+msgid "Manage saved presets"
+msgstr "Διαχείριση αποθηκευμένων προεπιλογών"
+
+#: plugins/tinymce/save/src/i18n.json#saveAction
+#, no-c-format
+msgctxt "tinymce.strings:saveAction"
+msgid "Save"
+msgstr "Αποθήκευση"
+
+#: plugins/tinymce/save/src/i18n.json#saveAsAction
+#, no-c-format
+msgctxt "tinymce.strings:saveAsAction"
+msgid "Save as..."
+msgstr "Αποθήκευση ως..."
+
+#: plugins/tinymce/save/src/i18n.json#openAction
+#, no-c-format
+msgctxt "tinymce.strings:openAction"
+msgid "Open..."
+msgstr "Άνοιγμα..."
+
+#: plugins/tinymce/save/src/i18n.json#deleteAction
+#, no-c-format
+msgctxt "tinymce.strings:deleteAction"
+msgid "Delete..."
+msgstr "Διαγραφή..."
+
+#: plugins/tinymce/save/src/i18n.json#newAction
+#, no-c-format
+msgctxt "tinymce.strings:newAction"
+msgid "New"
+msgstr "Νέο"
+
+#: plugins/tinymce/save/src/i18n.json#exportAction
+#, no-c-format
+msgctxt "tinymce.strings:exportAction"
+msgid "Export..."
+msgstr "Εξαγωγή..."
+
+#: plugins/tinymce/save/src/i18n.json#importAction
+#, no-c-format
+msgctxt "tinymce.strings:importAction"
+msgid "Import..."
+msgstr "Εισαγωγή..."
+
+#: plugins/tinymce/save/src/i18n.json#saveAsDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:saveAsDialogTitle"
+msgid "Save preset"
+msgstr "Αποθήκευση προεπιλογής"
+
+#: plugins/tinymce/save/src/i18n.json#presetNameLabel
+#, no-c-format
+msgctxt "tinymce.strings:presetNameLabel"
+msgid "Name"
+msgstr "Όνομα"
+
+#: plugins/tinymce/save/src/i18n.json#openDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:openDialogTitle"
+msgid "Open preset"
+msgstr "Άνοιγμα προεπιλογής"
+
+#: plugins/tinymce/save/src/i18n.json#deleteDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:deleteDialogTitle"
+msgid "Delete preset"
+msgstr "Διαγραφή προεπιλογής"
+
+#: plugins/tinymce/save/src/i18n.json#newDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:newDialogTitle"
+msgid "New document"
+msgstr "Νέο έγγραφο"
+
+#: plugins/tinymce/save/src/i18n.json#newDialogMessage
+#, no-c-format
+msgctxt "tinymce.strings:newDialogMessage"
+msgid "This clears the current editor content and config. Save the current work first?"
+msgstr "Αυτό θα διαγράψει το τρέχον περιεχόμενο και τις ρυθμίσεις του επεξεργαστή. Να αποθηκευτεί πρώτα η τρέχουσα εργασία;"
+
+#: plugins/tinymce/save/src/i18n.json#newDialogSaveButton
+#, no-c-format
+msgctxt "tinymce.strings:newDialogSaveButton"
+msgid "Save & clear"
+msgstr "Αποθήκευση & εκκαθάριση"
+
+#: plugins/tinymce/save/src/i18n.json#newDialogDiscardButton
+#, no-c-format
+msgctxt "tinymce.strings:newDialogDiscardButton"
+msgid "Discard"
+msgstr "Απόρριψη"
+
+#: plugins/tinymce/save/src/i18n.json#presetLabel
+#, no-c-format
+msgctxt "tinymce.strings:presetLabel"
+msgid "Preset"
+msgstr "Προεπιλογή"
+
+#: plugins/tinymce/save/src/i18n.json#confirmOverwrite
+#, no-c-format
+msgctxt "tinymce.strings:confirmOverwrite"
+msgid "A preset named “{{name}}” already exists. Replace it?"
+msgstr "Υπάρχει ήδη μια προεπιλογή με όνομα “{{name}}”. Να την αντικαταστήσει;"
+
+#: plugins/tinymce/save/src/i18n.json#confirmDiscard
+#, no-c-format
+msgctxt "tinymce.strings:confirmDiscard"
+msgid "Open “{{name}}” and discard the current unsaved changes?"
+msgstr "Να ανοίξει η “{{name}}” και να απορριφθούν οι τρέχουσες μη αποθηκευμένες αλλαγές;"
+
+#: plugins/tinymce/save/src/i18n.json#confirmDelete
+#, no-c-format
+msgctxt "tinymce.strings:confirmDelete"
+msgid "Delete “{{name}}”? This cannot be undone."
+msgstr "Διαγραφή της “{{name}}”; Αυτό δεν μπορεί να αναιρεθεί."
+
+#: plugins/tinymce/save/src/i18n.json#confirmImportOverwrite
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:confirmImportOverwrite"
+msgid "Import “{{name}}” and overwrite the current editor content and config?"
+msgstr "Να ανοίξει η “{{name}}” και να απορριφθούν οι τρέχουσες μη αποθηκευμένες αλλαγές;"
+
+#: plugins/tinymce/save/src/i18n.json#emptyPresets
+#, no-c-format
+msgctxt "tinymce.strings:emptyPresets"
+msgid "No saved presets are available."
+msgstr "Δεν υπάρχουν διαθέσιμες αποθηκευμένες προεπιλογές."
+
+#: plugins/tinymce/save/src/i18n.json#invalidName
+#, no-c-format
+msgctxt "tinymce.strings:invalidName"
+msgid "Enter a preset name."
+msgstr "Εισάγετε ένα όνομα προεπιλογής."
+
+#: plugins/tinymce/save/src/i18n.json#invalidPreset
+#, no-c-format
+msgctxt "tinymce.strings:invalidPreset"
+msgid "This preset is invalid and could not be opened."
+msgstr "Αυτή η προεπιλογή είναι άκυρη και δεν μπόρεσε να ανοιχτεί."
+
+#: plugins/tinymce/save/src/i18n.json#importInvalidFile
+#, no-c-format
+msgctxt "tinymce.strings:importInvalidFile"
+msgid "The selected file is not a valid pantoken TinyMCE export."
+msgstr "Το επιλεγμένο αρχείο δεν είναι έγκυρη εξαγωγή pantoken TinyMCE."
+
+#: plugins/tinymce/save/src/i18n.json#storageReadError
+#, no-c-format
+msgctxt "tinymce.strings:storageReadError"
+msgid "Saved presets could not be read from this browser."
+msgstr "Οι αποθηκευμένες προεπιλογές δεν μπόρεσαν να διαβαστούν από αυτόν τον περιηγητή."
+
+#: plugins/tinymce/save/src/i18n.json#storageWriteError
+#, no-c-format
+msgctxt "tinymce.strings:storageWriteError"
+msgid "The preset could not be saved in this browser."
+msgstr "Η προεπιλογή δεν μπόρεσε να αποθηκευτεί σε αυτόν τον περιηγητή."
+
+#: plugins/tinymce/save/src/i18n.json#storageDeleteError
+#, no-c-format
+msgctxt "tinymce.strings:storageDeleteError"
+msgid "The preset could not be deleted from this browser."
+msgstr "Η προεπιλογή δεν μπόρεσε να διαγραφεί από αυτόν τον περιηγητή."
+
+#: plugins/tinymce/save/src/i18n.json#exportDefaultName
+#, no-c-format
+msgctxt "tinymce.strings:exportDefaultName"
+msgid "untitled"
+msgstr "χωρίς τίτλο"
+
+#: plugins/tinymce/save/src/i18n.json#presetSaveButton
+#, no-c-format
+msgctxt "tinymce.strings:presetSaveButton"
+msgid "Save"
+msgstr "Αποθήκευση"
+
+#: plugins/tinymce/save/src/i18n.json#presetOpenButton
+#, no-c-format
+msgctxt "tinymce.strings:presetOpenButton"
+msgid "Open"
+msgstr "Άνοιγμα"
+
+#: plugins/tinymce/save/src/i18n.json#presetDeleteButton
+#, no-c-format
+msgctxt "tinymce.strings:presetDeleteButton"
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#: plugins/tinymce/save/src/i18n.json#presetCancelButton
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:presetCancelButton"
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersDefault
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersDefault"
+msgid "Default"
+msgstr "Προεπιλογή"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersOptions
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersOptions"
+msgid "Options"
+msgstr "Επιλογές"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersTooltip
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersTooltip"
+msgid "Change component modifiers"
+msgstr "Αλλαγή τροποποιητών συστατικού"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersUtilities
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersUtilities"
+msgid "Utilities"
+msgstr "Βοηθητικά"

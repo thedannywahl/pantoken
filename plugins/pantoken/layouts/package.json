@@ -31,7 +31,15 @@
   "scripts": {
     "dev": "vp run generate && vp pack --watch",
     "test": "vp run generate && vp test",
-    "check": "vp run generate && vp check"
+    "check": "vp run generate && vp check && vp run check:drift",
+    "extract": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" extract layouts.strings",
+    "translate": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate layouts.strings --provider claude",
+    "translate:agy": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate layouts.strings --provider agy",
+    "translate:copilot": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate layouts.strings --provider copilot",
+    "translate:force": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate layouts.strings --provider claude --force",
+    "translate:force:agy": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate layouts.strings --provider agy --force",
+    "translate:force:copilot": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate layouts.strings --provider copilot --force",
+    "check:drift": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" check layouts.strings"
   },
   "dependencies": {
     "@pantoken/model": "workspace:*",
@@ -39,6 +47,7 @@
   },
   "devDependencies": {
     "@pantoken/cssdoc-model": "workspace:*",
+    "@pantoken/i18n-engine": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",

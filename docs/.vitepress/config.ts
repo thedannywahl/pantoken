@@ -1,6 +1,7 @@
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { type DefaultTheme, defineConfig } from "vitepress";
+import type { Plugin } from "vite";
 import { workspaceOrchestrator } from "@pantoken/vite-workspace-orchestrator";
 import {
   demoMarkdownIt,
@@ -10,6 +11,7 @@ import {
 } from "@pantoken/demo";
 import llmstxt from "vitepress-plugin-llms";
 import type { HeadConfig } from "vitepress";
+import { sidebarToggleHead } from "@pantoken/vitepress-sidebar-toggle";
 import { partitionApiSidebar } from "./api-sidebar.js";
 import { LOCALE_THEMES, NON_LATIN_LOCALES, NON_ROOT_LOCALES, type DocsLocale } from "./i18n.js";
 import { mermaidPlugin } from "./plugins/vitepress-mermaid/index.js";
@@ -241,14 +243,37 @@ const orchestrator = workspaceOrchestrator({
       build: ["node", "scripts/build-css-api.ts"],
       dependents: [],
     },
+    {
+      // Re-inline every scaffold template into generated/scaffolds.ts (the single source
+      // `scaffoldProject` reads — see packages/scaffold/src/index.ts) BEFORE the canvas-rce node
+      // below re-renders from it. Without this cascade, an edit to the canvas-theme-editor template
+      // would rebuild the static bundle from a stale generated/scaffolds.ts (the same staleness bug
+      // `scaffold:dev`'s own `regenerate()` step exists to avoid).
+      name: "@pantoken/scaffold#generate",
+      dir: at("packages/scaffold"),
+      watchPaths: [at("packages/scaffold/templates"), at("packages/scaffold/src")],
+      build: ["node", "scripts/generate.ts"],
+      dependents: ["@pantoken/docs#canvas-rce"],
+    },
+    {
+      // Re-render the canvas-theme-editor scaffold template and build it into the static bundle the
+      // "Canvas RCE" utility page embeds via iframe (public/tools/canvas-rce/). Dependent-only —
+      // triggered by `@pantoken/scaffold#generate` above so it always rebuilds from freshly
+      // regenerated templates, never a stale copy.
+      name: "@pantoken/docs#canvas-rce",
+      dir: at("docs"),
+      watchPaths: [],
+      build: ["node", "scripts/build-canvas-rce.ts"],
+      dependents: [],
+    },
   ],
   outputWatchPaths: [
-    // The generated CSS the theme imports via `@fs` — bridged into HMR. (Web components are imported from
-    // source now, so their `dist` no longer needs bridging; the plugin/demo sheets land in public/ and
-    // reload on their own.)
+    // Generated CSS imported via `@fs` and the Canvas RCE static iframe bundle — bridged into Vite's
+    // watcher. (Web components are imported from source now, so their `dist` no longer needs bridging.)
     at("formats/css/generated"),
     at("formats/components/generated"),
     at("plugins/pantoken/custom-components/generated"),
+    at("docs/public/tools/canvas-rce"),
   ],
 });
 
@@ -402,6 +427,10 @@ const localesConfig = Object.fromEntries(
                 text: locale.sidebar.agentTools,
                 link: `${locale.guidePrefix}agent-tools`,
               },
+              {
+                text: locale.sidebar.canvasRce,
+                link: `${locale.guidePrefix}canvas-rce`,
+              },
             ],
           },
         ],
@@ -451,6 +480,8 @@ const localesConfig = Object.fromEntries(
           sidebarMenuLabel: locale.chrome.sidebarMenuLabel,
           returnToTopLabel: locale.chrome.returnToTopLabel,
           langMenuLabel: locale.chrome.langMenuLabel,
+          // Read by the sidebar show/hide toggle (Layout.vue) via `useData().theme`.
+          sidebarToggleLabel: locale.chrome.sidebarToggleLabel,
           // `lastUpdated: true` is set globally below, so localize its label here.
           lastUpdated: { text: locale.chrome.lastUpdatedText },
           notFound: locale.chrome.notFound,
@@ -499,6 +530,28 @@ const searchLocales = Object.fromEntries(
 // building for alternative environments (for example, a project-site path on github.io).
 const base = process.env.DOCS_BASE ?? "/";
 const outDir = process.env.DOCS_OUT_DIR;
+
+// `public/tools/canvas-rce/` is a nested static bundle (see @pantoken/docs#canvas-rce above), not a
+// VitePress page — so `/tools/canvas-rce/index.html` reaches it via Vite's public-dir static serving,
+// but the bare directory URL (`/tools/canvas-rce` or `/tools/canvas-rce/`, the conventional way to
+// link to a static site's index) never resolves: VitePress's own clean-URL page router runs first,
+// finds no matching page for it, and 404s before Vite's static middleware gets a chance to serve the
+// nested index.html. `enforce: "pre"` runs this ahead of that router so the rewrite always wins.
+const serveCanvasRceDirectory: Plugin = {
+  name: "pantoken:serve-canvas-rce-directory",
+  enforce: "pre",
+  apply: "serve",
+  configureServer(server) {
+    const canvasRcePath = `${base.replace(/\/$/, "")}/tools/canvas-rce`;
+    server.middlewares.use((req, _res, next) => {
+      const url = req.url?.split("?")[0];
+      if (url === canvasRcePath || url === `${canvasRcePath}/`) {
+        req.url = `${canvasRcePath}/index.html`;
+      }
+      next();
+    });
+  },
+};
 
 // VitePress SSR-renders pages with `buildConcurrency` (default 64) in flight at once, and every
 // in-flight page holds its rendered HTML, head tags, and Vue SSR context alive. At ~39k pages
@@ -698,13 +751,21 @@ export default defineConfig({
   // via the theme instead.
   head: [
     // Apply the stored pantoken theme before first paint (no flash). The palette selector in the nav
-    // writes `pantoken-theme`; non-rebrand themes have no light/dark, so drop `.dark` for them.
+    // writes the same instance-namespaced key; non-rebrand themes have no light/dark, so drop `.dark`
+    // for them. The `data-pantoken-instance` marker is what tells an embedded preview which scope
+    // owns `<html>`.
     [
       "script",
       {},
-      `(function(){try{var t=localStorage.getItem("pantoken-theme")||"rebrand";var d=document.documentElement;d.dataset.pantokenTheme=t;if(t!=="rebrand")d.classList.remove("dark");}catch(e){}})();`,
+      `(function(){try{var t=localStorage.getItem("pantoken:docs:theme")||"rebrand";var d=document.documentElement;d.dataset.pantokenTheme=t;d.dataset.pantokenInstance="docs";if(t!=="rebrand")d.classList.remove("dark");}catch(e){}})();`,
     ],
+    // Same before-paint-restore technique, for the sidebar show/hide toggle (see Layout.vue).
+    sidebarToggleHead({
+      placement: "start",
+      icons: { show: "-icon-panel-left-open", hide: "-icon-panel-left-close" },
+    }),
     // `favicon.ico` is also requested at the site root by browsers that ignore the declared icon.
+
     ["link", { rel: "icon", type: "image/x-icon", sizes: "any", href: `${base}favicon.ico` }],
     ["link", { rel: "icon", type: "image/png", href: `${base}favicon.png` }],
     ["link", { rel: "stylesheet", href: `${base}demos-assets/focus-outline.css` }],
@@ -807,7 +868,7 @@ export default defineConfig({
   vite: {
     // Emit llms.txt (an agent-legible index) and llms-full.txt (the whole site as one document) so AI
     // agents can read the guides and generated API reference without scraping HTML.
-    plugins: [orchestrator, ...llmsTxtPlugins],
+    plugins: [serveCanvasRceDirectory, orchestrator, ...llmsTxtPlugins],
     resolve: {
       alias: [
         {

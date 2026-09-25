@@ -6,6 +6,7 @@ import {
   applyColor,
   applyTheme,
   COLORS,
+  getCustomColor,
   getStoredColor,
   getStoredTheme,
   THEME_SELECTOR_DEFAULTS,
@@ -14,9 +15,17 @@ import {
   type PantokenTheme,
   type ThemeSelectorStrings,
 } from "../theme";
+import { DEFAULT_CUSTOM_COLOR, isHexColor, parseHexColor } from "../custom-color";
 
 const currentTheme = ref<PantokenTheme>("rebrand");
 const currentColor = ref<PantokenColor>("navy");
+const customColor = ref(DEFAULT_CUSTOM_COLOR);
+const customInput = ref(DEFAULT_CUSTOM_COLOR);
+const customInvalid = ref(false);
+// The untouched default leaves the ring's center empty so it can't pass for a palette swatch.
+const customSwatchStyle = computed(() =>
+  customColor.value === DEFAULT_CUSTOM_COLOR ? {} : { "--custom-swatch-fill": customColor.value },
+);
 
 const emit = defineEmits<{ "theme-change": [theme: PantokenTheme] }>();
 
@@ -62,6 +71,15 @@ function selectColor(c: PantokenColor): void {
   applyColor(c);
 }
 
+function onCustomInput(value: string): void {
+  customInput.value = value;
+  customInvalid.value = !isHexColor(value);
+  if (customInvalid.value) return;
+  customColor.value = parseHexColor(value);
+  currentColor.value = "custom";
+  applyColor("custom", customColor.value);
+}
+
 function swatchColor(key: PantokenColor): string {
   const preserved = PRESERVED_SWATCH_COLORS[key as keyof typeof PRESERVED_SWATCH_COLORS];
   if (preserved) return preserved[currentTheme.value];
@@ -79,6 +97,8 @@ function swatchColor(key: PantokenColor): string {
 onMounted(() => {
   currentTheme.value = getStoredTheme();
   currentColor.value = getStoredColor();
+  customColor.value = getCustomColor();
+  customInput.value = customColor.value;
 });
 </script>
 
@@ -112,6 +132,42 @@ onMounted(() => {
     >
       <span class="theme-picker__swatch" :style="{ backgroundColor: swatchColor(c.key) }" />
     </button>
+    <button
+      class="theme-picker__color-item"
+      type="button"
+      role="menuitemradio"
+      :aria-checked="currentColor === 'custom'"
+      :aria-label="strings.custom"
+      :title="strings.custom"
+      @click="selectColor('custom')"
+    >
+      <span class="theme-picker__swatch theme-picker__swatch--custom" :style="customSwatchStyle" />
+    </button>
+  </div>
+  <div v-if="currentColor === 'custom'" class="theme-picker__custom">
+    <label class="theme-picker__custom-label" for="theme-picker-custom-hex">
+      {{ strings.customColorInputLabel }}
+    </label>
+    <div class="theme-picker__custom-inputs">
+      <input
+        type="color"
+        :value="customColor"
+        :aria-label="strings.customColorInputLabel"
+        @input="onCustomInput(($event.target as HTMLInputElement).value)"
+      />
+      <input
+        id="theme-picker-custom-hex"
+        class="theme-picker__custom-hex"
+        type="text"
+        maxlength="7"
+        spellcheck="false"
+        autocomplete="off"
+        :value="customInput"
+        :aria-invalid="customInvalid || undefined"
+        @input="onCustomInput(($event.target as HTMLInputElement).value)"
+        @keydown.stop
+      />
+    </div>
   </div>
   <template v-if="showAppearance">
     <div class="theme-picker__divider" />
@@ -190,6 +246,52 @@ onMounted(() => {
   border-radius: 50%;
   display: block;
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+/* A rainbow ring sets Custom apart from the palettes; the center shows the picked hex, if any. */
+.theme-picker__swatch--custom {
+  background:
+    radial-gradient(closest-side, var(--custom-swatch-fill, var(--vp-c-bg)) 55%, transparent 60%),
+    conic-gradient(red, yellow, lime, cyan, blue, magenta, red);
+}
+.theme-picker__custom {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 8px 0;
+}
+.theme-picker__custom-label {
+  margin: 0;
+  font-size: 12px;
+  color: var(--vp-c-text-2);
+}
+.theme-picker__custom-inputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.theme-picker__custom-inputs input[type="color"] {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.theme-picker__custom-hex {
+  flex: 1;
+  min-width: 0;
+  height: 28px;
+  padding: 0 8px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  font-family: var(--vp-font-family-mono);
+  font-size: 13px;
+  color: var(--vp-c-text-1);
+  background: var(--vp-c-bg);
+}
+.theme-picker__custom-hex[aria-invalid="true"] {
+  border-color: var(--vp-c-danger-1);
 }
 .theme-picker__appearance {
   display: flex;

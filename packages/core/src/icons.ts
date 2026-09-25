@@ -61,13 +61,13 @@ function resolvePackageDir(packageId: string): string | undefined {
   }
 }
 
-// lucide-react's default SVG attributes (dist/esm/defaultAttributes.js), applied to every icon.
+// Lucide's default SVG attributes, applied to every icon.
 const LUCIDE_SVG_ATTRS =
   'xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" ' +
   'fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
 
 function lucideModuleToSvg(source: string): string | undefined {
-  const match = source.match(/const __iconNode = (\[[\s\S]*?\]);/);
+  const match = source.match(/const [A-Za-z_$][\w$]* = (\[[\s\S]*?\]);/);
   if (!match) return undefined;
   const json = match[1].replace(/([{,]\s*)([A-Za-z_]\w*)\s*:/g, '$1"$2":');
   const nodes = JSON.parse(json) as [string, Record<string, string | number>][];
@@ -100,6 +100,26 @@ function readBidirectional(uiIconsRoot: string): Set<string> {
 
 const BIDI_HEURISTIC = /(^|-)(arrow|chevron|left|right|start|end|back|forward|next|previous)(-|$)/;
 
+// The centred star used by InstUI 11.7.7's AI Spinner, sourced from igniteai-logo.svg without its sparkle.
+const AI_SPINNER_SVG =
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.0621 2.53451C11.3843 1.66389 12.6157 1.66389 12.9379 2.53451L15.0815 8.32767C15.1828 8.60139 15.3986 8.8172 15.6723 8.91848L21.4655 11.0621C22.3361 11.3843 22.3361 12.6157 21.4655 12.9379L15.6723 15.0815C15.3986 15.1828 15.1828 15.3986 15.0815 15.6723L12.9379 21.4655C12.6157 22.3361 11.3843 22.3361 11.0621 21.4655L8.91849 15.6723C8.8172 15.3986 8.60139 15.1828 8.32767 15.0815L2.53451 12.9379C1.66389 12.6157 1.66389 11.3843 2.53451 11.0621L8.32767 8.91849C8.60139 8.8172 8.8172 8.60139 8.91848 8.32767L11.0621 2.53451Z"/></svg>';
+
+function supplementalInstuiGlyphs(): IconToken[] {
+  return [
+    {
+      name: "--instui-icon-ai-spinner",
+      value: svgToDataUri(AI_SPINNER_SVG),
+      meta: {
+        kind: "icon",
+        source: "custom",
+        style: "Custom",
+        viewBox: "0 0 24 24",
+        bidirectional: false,
+      },
+    },
+  ];
+}
+
 function readCustomGlyphs(uiIconsRoot: string, bidi: Set<string>): IconToken[] {
   const out: IconToken[] = [];
   const dir = join(uiIconsRoot, "svg/Custom");
@@ -122,11 +142,7 @@ function readCustomGlyphs(uiIconsRoot: string, bidi: Set<string>): IconToken[] {
   return out;
 }
 
-/**
- * Read an ESM module by base name, tolerating a `.js` or `.mjs` extension. lucide-react shipped its
- * ESM as `.js` through ~1.7 and switched to `.mjs` by ~1.23, and `@instructure/ui-icons` has depended
- * on both across the 11.7.x line — so an upstream bump can flip the extension out from under us.
- */
+/** Read an ESM module by base name, tolerating a `.js` or `.mjs` extension. */
 function readEsmModule(dir: string, base: string): string | undefined {
   for (const ext of [".mjs", ".js"]) {
     const file = join(dir, `${base}${ext}`);
@@ -135,41 +151,18 @@ function readEsmModule(dir: string, base: string): string | undefined {
   return undefined;
 }
 
-function readLucideGlyphs(uiIconsRoot: string, bidi: Set<string>): IconToken[] {
+function readLucideGlyphs(lucideRoot: string, bidi: Set<string>): IconToken[] {
   const out: IconToken[] = [];
-  let lucideDir: string;
-  try {
-    const requireFromUi = createRequire(join(uiIconsRoot, "package.json"));
-    lucideDir = dirname(requireFromUi.resolve("lucide-react/package.json"));
-  } catch {
-    return out;
-  }
-
-  const genIndex = join(uiIconsRoot, "es/generated/lucide/index.js");
-  if (!existsSync(genIndex)) return out;
-  const wrapped = new Set(
-    [
-      ...readFileSync(genIndex, "utf8").matchAll(/wrapLucideIcon\((?:Lucide\.)?([A-Za-z0-9]+)\)/g),
-    ].map((m) => m[1]),
+  const esmDir = join(lucideRoot, "dist/esm");
+  const index = readEsmModule(esmDir, "iconsAndAliases");
+  if (!index) return out;
+  // Multiple export names may point at one module. Emit its canonical filename once, not aliases.
+  const files = new Set(
+    [...index.matchAll(/from ['"]\.\/icons\/([a-z0-9-]+)\.m?js['"]/g)].map((match) => match[1]),
   );
 
-  const mainIndex = readEsmModule(join(lucideDir, "dist/esm"), "lucide-react");
-  if (!mainIndex) return out;
-  const nameToFile = new Map<string, string>();
-  for (const line of mainIndex.matchAll(
-    /export \{([^}]+)\} from '\.\/icons\/([a-z0-9-]+)\.m?js'/g,
-  )) {
-    for (const exp of line[1].matchAll(/default as ([A-Za-z0-9]+)/g)) {
-      nameToFile.set(exp[1], line[2]);
-    }
-  }
-
-  const iconsDir = join(lucideDir, "dist/esm/icons");
-  const seen = new Set<string>();
-  for (const name of wrapped) {
-    const file = nameToFile.get(name);
-    if (!file || seen.has(file)) continue;
-    seen.add(file);
+  const iconsDir = join(esmDir, "icons");
+  for (const file of files) {
     const source = readEsmModule(iconsDir, file);
     const svg = source ? lucideModuleToSvg(source) : undefined;
     if (svg) {
@@ -213,20 +206,26 @@ export function collectIcons(options: CollectIconsOptions = {}): IconLayer {
   const { includeInstui = true, includeLucide = true } = options;
 
   const uiIconsRoot = resolvePackageDir("@instructure/ui-icons");
-  if ((includeInstui || includeLucide) && !uiIconsRoot) {
-    console.warn("@instructure/ui-icons not found — skipping icon glyph extraction");
-    return { glyphs: [], colors: iconColorTokens() };
+  const lucideRoot = resolvePackageDir("lucide");
+  if (includeInstui && !uiIconsRoot) {
+    console.warn("@instructure/ui-icons not found — skipping Instructure custom icon extraction");
+  }
+  if (includeLucide && !lucideRoot) {
+    console.warn("lucide not found — skipping Lucide icon extraction");
   }
 
   const bidi = uiIconsRoot ? readBidirectional(uiIconsRoot) : new Set<string>();
   const byName = new Map<string, IconToken>();
 
-  if (uiIconsRoot && includeLucide) {
-    for (const t of readLucideGlyphs(uiIconsRoot, bidi)) byName.set(t.name, t);
+  if (lucideRoot && includeLucide) {
+    for (const t of readLucideGlyphs(lucideRoot, bidi)) byName.set(t.name, t);
   }
   if (uiIconsRoot && includeInstui) {
     // Custom overrides Lucide on name collisions.
     for (const t of readCustomGlyphs(uiIconsRoot, bidi)) byName.set(t.name, t);
+  }
+  if (includeInstui) {
+    for (const t of supplementalInstuiGlyphs()) byName.set(t.name, t);
   }
 
   const glyphs = [...byName.values()].sort((a, b) => (a.name < b.name ? -1 : 1));

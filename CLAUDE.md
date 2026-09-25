@@ -41,6 +41,7 @@ the linked docs only when a task calls for them.
 | Understand the monorepo, the pipeline, and why `@pantoken/model` exists            | `docs/architecture/overview.md`      |
 | Author or extend a component (records, the modifier convention, aliases, `@scope`) | `docs/conventions/authoring.md`      |
 | Work on the web components (shadow CSS, `register()`/prefix, the JS-behavior tier) | `docs/conventions/web-components.md` |
+| Run more than one theme or color scheme in a single document                       | `docs/conventions/scoping.md`        |
 | Build, lint, release, or work on the docs site + i18n + cssdoc integration         | `docs/conventions/build-and-docs.md` |
 | Avoid re-solving a known bug or gotcha                                             | `docs/engineering-log.md`            |
 | Amend the security assurance case after adding a new input surface or control      | `ASSURANCE.md`, `SECURITY.md`        |

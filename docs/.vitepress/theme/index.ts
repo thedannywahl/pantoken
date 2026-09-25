@@ -24,13 +24,17 @@ import "../../../formats/components/generated/utilities.css";
 import "../../../formats/components/generated/icons.css";
 import "../../../plugins/pantoken/custom-components/generated/custom-components.css";
 import "../../../plugins/pantoken/custom-icons/generated/custom-icons.css";
+import "../../../plugins/pantoken/lucide-lab/generated/lucide-lab.css";
 import "@pantoken/components/fonts.css";
 import VitePressMermaid from "../plugins/vitepress-mermaid/index.vue";
 import CdnPicker from "./components/CdnPicker.vue";
 import CdnPickerPage from "./components/CdnPickerPage.vue";
 import AgentToolsPage from "./components/AgentToolsPage.vue";
+import CanvasRcePage from "./components/CanvasRcePage.vue";
 import GetStartedTabs from "./components/GetStartedTabs.vue";
 import RegistryBrowser from "./components/RegistryBrowser.vue";
+import SidebarToggle from "@pantoken/vitepress-sidebar-toggle/SidebarToggle.vue";
+import "@pantoken/vitepress-sidebar-toggle/style.css";
 // Import register() from the web-components SOURCE, not `@pantoken/web-components` (dist). The dist
 // bundle is only rebuilt by `vp pack`, which can't run nested under vitepress — so a package import
 // would freeze element behaviour + shadow CSS at the last pack. The source graph is Node-free (no
@@ -46,13 +50,28 @@ import "@pantoken/demo/demo.css";
 import "@pantoken/demo/card.css";
 import "./pantoken.css";
 import Layout from "./Layout.vue";
-import { applyColor, applyTheme, getStoredColor, getStoredTheme } from "./theme";
+import {
+  DOCS_INSTANCE,
+  applyColor,
+  applyTheme,
+  customColorPayload,
+  getActiveScheme,
+  getStoredColor,
+  getStoredTheme,
+} from "./theme";
 
 /** Reply to a booting runner with the stored theme and color, targeting the frame's own origin. */
 function replyWithTheme(event: MessageEvent): void {
   // "*" only for an opaque sandboxed frame, which can't match a specific target origin.
   (event.source as Window | null)?.postMessage(
-    { type: "pantoken-demo-theme", theme: getStoredTheme(), color: getStoredColor() },
+    {
+      type: "pantoken-demo-theme",
+      instanceId: DOCS_INSTANCE,
+      theme: getStoredTheme(),
+      color: getStoredColor(),
+      ...customColorPayload(getStoredColor()),
+      mode: getActiveScheme(),
+    },
     event.origin === "null" ? "*" : event.origin,
   );
 }
@@ -141,8 +160,11 @@ export default {
     ctx.app.component("CdnPicker", CdnPicker);
     ctx.app.component("CdnPickerPage", CdnPickerPage);
     ctx.app.component("AgentToolsPage", AgentToolsPage);
+    ctx.app.component("CanvasRcePage", CanvasRcePage);
     ctx.app.component("GetStartedTabs", GetStartedTabs);
     ctx.app.component("RegistryBrowser", RegistryBrowser);
+    // The whole-sidebar show/hide toggle (see Layout.vue) — @pantoken/vitepress-sidebar-toggle.
+    ctx.app.component("SidebarToggle", SidebarToggle);
 
     // Register the pantoken custom elements so the `@example` blocks on the web-components API pages
     // render live (the elements inline their own CSS; the token sheet above colours them). A no-op
@@ -169,6 +191,14 @@ export default {
       // class and broadcasts the theme to any demos already on the page.
       applyTheme(getStoredTheme());
       applyColor(getStoredColor());
+
+      const appearanceObserver = new MutationObserver(() => {
+        applyTheme(getStoredTheme());
+      });
+      appearanceObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
 
       // The runner (inside each figure's iframe) posts the height it wants — its toolbar plus the body
       // (which hugs the demo by default, capped at 30rem, or whatever height the reader dragged it to).

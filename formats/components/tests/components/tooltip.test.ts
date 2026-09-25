@@ -9,10 +9,12 @@ test("tooltip: emits exactly one well-formed cssdoc record with no token drift",
 
 test("tooltip shows a .tip bubble on hover/focus with placements", () => {
   const css = tooltipCss({ prefix: "instui" });
+  const selectors = css.replace(/\s+/g, "");
   expect(css).toContain("@scope (.instui-tooltip)");
-  expect(css).toContain("> .tip {");
-  expect(css).toContain("&:hover > .tip,");
-  expect(css).toContain("&:focus-within > .tip");
+  expect(selectors).toContain(">.tip{");
+  expect(css).toContain("inline-size: max-content;");
+  expect(selectors).toContain("&:hover>.tip,");
+  expect(selectors).toContain("&:focus-within>.tip");
   // Placement modifiers live on the .tip itself (matching the web-component + demo markup).
   expect(css).toContain("&.-placement-bottom");
   expect(css).toContain("var(--instui-component-tooltip-padding)");

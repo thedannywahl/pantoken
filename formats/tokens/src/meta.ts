@@ -2,8 +2,9 @@
  * `@pantoken/tokens/meta` — upstream provenance for the vendored IR.
  *
  * Records the pinned ref + resolved commit of the GitHub-only design-tokens source and the resolved
- * version of `@instructure/ui-icons`. This is the single source the upgrade pipeline (the drift diff
- * and the compatibility manifest) reads to know exactly what upstream this build was vendored from.
+ * versions of `@instructure/ui-icons` and Lucide. This is the single source the upgrade pipeline
+ * (the drift diff and the compatibility manifest) reads to know exactly what upstream this build was
+ * vendored from.
  *
  * @module
  */
@@ -27,6 +28,13 @@ export interface Provenance {
     /** The resolved semver version. */
     resolved: string;
   };
+  /** The Lucide source (feeds the canonical Lucide icon layer). */
+  lucide: {
+    /** The upstream package name. */
+    package: string;
+    /** The resolved semver version. */
+    resolved: string;
+  };
 }
 
 /**
@@ -38,6 +46,7 @@ export interface Provenance {
  *
  * provenance.designTokens.ref; // "v1.5.0"
  * provenance.uiIcons.resolved;  // "11.7.4"
+ * provenance.lucide.resolved;   // "1.47.0"
  * ```
  */
 export const provenance: Provenance = metaJson;

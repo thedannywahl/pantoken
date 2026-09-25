@@ -1,0 +1,9 @@
+{
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
+  "rubricNote.title": { "message": "Rubric note", "translate": "always" },
+  "rubricNote.heading": { "message": "Grading note", "translate": "always" },
+  "rubricNote.text": {
+    "message": "Explain how this assignment is graded, referencing the rubric below.",
+    "translate": "always"
+  }
+}

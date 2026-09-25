@@ -1,0 +1,10 @@
+{
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
+  "hero.title": { "message": "Hero", "translate": "always" },
+  "hero.heading": { "message": "Welcome to the course", "translate": "always" },
+  "hero.intro": {
+    "message": "A short introduction goes here. Replace this text and the heading above.",
+    "translate": "always"
+  },
+  "hero.cta": { "message": "Get started", "translate": "always" }
+}

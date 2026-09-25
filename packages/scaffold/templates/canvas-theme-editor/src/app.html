@@ -1,75 +1,201 @@
 <div class="container">
   <div class="header">
-    <div class="info">
-      <div class="title">{{pageTitle}}</div>
-      <div class="description">{{pageDescription}}</div>
+    <div class="title">
+      <span class="instui-heading -level-h1">{{pageTitle}}</span>
     </div>
-    <div class="actions">
-      <button class="instui-button" type="button" popovertarget="theme-tray">
-        {{editThemeLabel}}
+  </div>
+  <div class="description">{{pageDescription}}</div>
+
+  <div class="controls --my-lg">
+    <div class="control-group instui-button-set">
+      <button
+        type="button"
+        id="download-package"
+        class="instui-button instui-tooltip -icon-file-archive"
+        aria-label="{{downloadPackageLabel}}"
+        aria-describedby="download-package-tip"
+      >
+        <span class="instui-screen-reader-content">{{downloadPackageLabel}}</span>
+        <span class="tip -placement-bottom" id="download-package-tip" role="tooltip"
+          >{{downloadPackageLabel}}</span
+        >
       </button>
       <button
-        class="instui-button -color-secondary"
+        type="button"
+        id="download-html"
+        class="instui-button instui-tooltip -icon-download"
+        aria-label="{{downloadHtmlLabel}}"
+        aria-describedby="download-html-tip"
+      >
+        <span class="instui-screen-reader-content">{{downloadHtmlLabel}}</span>
+        <span class="tip -placement-bottom" id="download-html-tip" role="tooltip"
+          >{{downloadHtmlLabel}}</span
+        >
+      </button>
+      <button
+        type="button"
+        id="copy-html"
+        class="instui-button instui-tooltip -icon-copy"
+        aria-label="{{copyHtmlLabel}}"
+        aria-describedby="copy-html-tip"
+      >
+        <span class="instui-screen-reader-content">{{copyHtmlLabel}}</span>
+        <span class="tip -placement-bottom" id="copy-html-tip" role="tooltip"
+          >{{copyHtmlLabel}}</span
+        >
+      </button>
+    </div>
+    <div class="utilities">
+      <a
+        href="/tools/canvas-rce/"
+        target="_blank"
+        id="app-mode"
+        class="instui-button instui-tooltip -color-secondary -icon-app-window-mac"
+        aria-describedby="app-mode-tip"
+        ><span class="instui-screen-reader-content">{{appModeLabel}}</span
+        ><span class="tip -placement-bottom" id="app-mode-tip" role="tooltip"
+          >{{appModeLabel}}</span
+        ></a
+      >
+      <button
+        type="button"
+        id="layout-direction-toggle"
+        class="instui-button instui-tooltip -color-secondary -icon-columns-2"
+        aria-pressed="false"
+        aria-label="{{layoutDirectionLabel}}"
+        aria-describedby="layout-direction-toggle-tip"
+      >
+        <span class="instui-screen-reader-content">{{layoutDirectionLabel}}</span>
+        <span class="tip -placement-bottom" id="layout-direction-toggle-tip" role="tooltip"
+          >{{layoutDirectionLabel}}</span
+        >
+      </button>
+      <button
+        class="instui-button instui-tooltip -color-secondary -icon-circle-question-mark"
         type="button"
         command="show-modal"
         commandfor="help-modal"
         aria-label="{{helpAriaLabel}}"
+        aria-describedby="help-tip"
       >
-        ?
+        <span class="instui-screen-reader-content">{{helpAriaLabel}}</span>
+        <span class="tip -placement-bottom" id="help-tip" role="tooltip">{{helpAriaLabel}}</span>
+      </button>
+      <button
+        class="instui-button instui-tooltip -color-secondary -icon-sliders-horizontal"
+        type="button"
+        popovertarget="theme-tray"
+        aria-label="{{editThemeLabel}}"
+        aria-describedby="edit-theme-tip"
+      >
+        <span class="instui-screen-reader-content">{{editThemeLabel}}</span>
+        <span class="tip -placement-bottom" id="edit-theme-tip" role="tooltip"
+          >{{editThemeLabel}}</span
+        >
       </button>
     </div>
   </div>
-  <div class="content">
-    <slot name="content" class="main">
-      <p>
-        <button type="button" id="copy-html">{{copyHtmlLabel}}</button>
-        <span id="copy-status" role="status"></span>
-      </p>
-      <div class="split-pane" id="split-pane">
-        <div class="pane editor-pane" id="editor-pane">
-          <div class="pane-toolbar" data-pane-handle="editor-pane">
-            <span>{{editorPaneLabel}}</span>
-            <button
-              type="button"
-              class="pane-fullscreen"
-              data-pane="editor-pane"
-              aria-label="{{fullscreenEditorAriaLabel}}"
+  <div class="panes">
+    <div class="pane editor-pane">
+      <textarea id="editor"><div data-pantoken-color="navy"><p></p></div></textarea>
+    </div>
+    <div class="pane preview-pane">
+      <div class="preview-header">
+        <div class="preview-width-picker" role="group" aria-label="{{previewWidthGroupLabel}}">
+          <button
+            type="button"
+            class="instui-button instui-tooltip -size-sm -color-tertiary -toggle -icon-monitor -without-background -without-border"
+            aria-pressed="true"
+            aria-label="{{previewWidthLargeLabel}}"
+            aria-describedby="preview-width-large-tip"
+            data-preview-width="large"
+          >
+            <span class="instui-screen-reader-content">{{previewWidthLargeLabel}}</span>
+            <span class="tip -placement-bottom" id="preview-width-large-tip" role="tooltip"
+              >{{previewWidthLargeLabel}}</span
             >
-              ⤢
-            </button>
-          </div>
-          <textarea id="editor"></textarea>
-        </div>
-        <div
-          class="split-handle"
-          id="split-handle"
-          role="separator"
-          aria-orientation="vertical"
-          aria-label="{{resizePanesAriaLabel}}"
-          tabindex="0"
-        ></div>
-        <div class="pane preview-pane" id="preview-pane">
-          <div class="pane-toolbar" data-pane-handle="preview-pane">
-            <span>{{previewPaneLabel}}</span>
-            <button
-              type="button"
-              class="pane-fullscreen"
-              data-pane="preview-pane"
-              aria-label="{{fullscreenPreviewAriaLabel}}"
+          </button>
+          <button
+            type="button"
+            class="instui-button instui-tooltip -size-sm -color-tertiary -toggle -icon-tablet -without-background -without-border"
+            aria-pressed="false"
+            aria-label="{{previewWidthMediumLabel}}"
+            aria-describedby="preview-width-medium-tip"
+            data-preview-width="medium"
+          >
+            <span class="instui-screen-reader-content">{{previewWidthMediumLabel}}</span>
+            <span class="tip -placement-bottom" id="preview-width-medium-tip" role="tooltip"
+              >{{previewWidthMediumLabel}}</span
             >
-              ⤢
-            </button>
-          </div>
-          <iframe id="preview" title="{{previewFrameTitle}}"></iframe>
+          </button>
+          <button
+            type="button"
+            class="instui-button instui-tooltip -size-sm -color-tertiary -toggle -icon-smartphone -without-background -without-border"
+            aria-pressed="false"
+            aria-label="{{previewWidthSmallLabel}}"
+            aria-describedby="preview-width-small-tip"
+            data-preview-width="small"
+          >
+            <span class="instui-screen-reader-content">{{previewWidthSmallLabel}}</span>
+            <span class="tip -placement-bottom" id="preview-width-small-tip" role="tooltip"
+              >{{previewWidthSmallLabel}}</span
+            >
+          </button>
         </div>
+        <button
+          type="button"
+          id="preview-scheme-toggle"
+          class="instui-button instui-tooltip -size-sm -color-tertiary -toggle -icon-moon -without-background -without-border"
+          aria-pressed="false"
+          aria-label="{{previewSchemeToggleLabel}}"
+          aria-describedby="preview-scheme-toggle-tip"
+          disabled
+        >
+          <span class="instui-screen-reader-content">{{previewSchemeToggleLabel}}</span>
+          <span class="tip -placement-bottom" id="preview-scheme-toggle-tip" role="tooltip"
+            >{{previewSchemeToggleLabel}}</span
+          >
+        </button>
       </div>
-      <p class="split-controls">
-        <button type="button" id="toggle-orientation">{{stackVerticallyLabel}}</button>
-        <button type="button" id="swap-panes">{{swapPanesLabel}}</button>
-      </p>
-    </slot>
+      <iframe id="preview" title="{{previewFrameTitle}}"></iframe>
+      <div class="preview-footer">
+        <button
+          type="button"
+          id="preview-popup-toggle"
+          class="instui-button instui-tooltip -size-sm -color-tertiary -icon-app-window -without-background -without-border"
+          aria-label="{{previewPopupLabel}}"
+          aria-describedby="preview-popup-toggle-tip"
+        >
+          <span class="instui-screen-reader-content">{{previewPopupLabel}}</span>
+          <span class="tip" id="preview-popup-toggle-tip" role="tooltip"
+            >{{previewPopupLabel}}</span
+          >
+          <span id="preview-popup-title" hidden>{{previewPopupTitle}}</span>
+          <span id="preview-popup-blocked-message" hidden>{{previewPopupBlockedMessage}}</span>
+        </button>
+        <button
+          type="button"
+          id="preview-fullscreen-toggle"
+          class="instui-button instui-tooltip -size-sm -color-tertiary -toggle -icon-maximize -without-background -without-border"
+          aria-pressed="false"
+          aria-label="{{previewFullscreenLabel}}"
+          aria-describedby="preview-fullscreen-toggle-tip"
+        >
+          <span id="preview-fullscreen-label" class="instui-screen-reader-content"
+            >{{previewFullscreenLabel}}</span
+          >
+          <span class="tip" id="preview-fullscreen-toggle-tip" role="tooltip"
+            >{{previewFullscreenLabel}}</span
+          >
+          <span id="preview-popup-return-label" class="instui-screen-reader-content" hidden
+            >{{previewPopupReturnLabel}}</span
+          >
+        </button>
+      </div>
+    </div>
   </div>
 </div>
+
 <div
   class="instui-tray -placement-end -size-md"
   popover
@@ -109,38 +235,241 @@
         {{tabJsLabel}}
       </button>
     </div>
+    <button
+      class="instui-close-button -size-sm theme-tray__close"
+      type="button"
+      popovertarget="theme-tray"
+      popovertargetaction="hide"
+      aria-label="{{closeLabel}}"
+    ></button>
     <div class="panel" role="tabpanel" id="panel-config" aria-labelledby="tab-config">
-      <label>
-        {{cdnProviderLabel}}
-        <select id="cdn-provider"></select>
-      </label>
-      <label>
-        {{themeLabel}}
-        <select id="theme-variant">
-          <option value="rebrand">rebrand</option>
-          <option value="canvas">canvas</option>
-          <option value="canvasHighContrast">canvasHighContrast</option>
-        </select>
-      </label>
-      <label>
-        {{modeLabel}}
-        <select id="theme-mode">
-          <option value="light">light</option>
-          <option value="adaptive">adaptive</option>
-        </select>
-      </label>
-      <p>
-        <a id="download-theme-css" download="theme.css">{{downloadCssLabel}}</a>
-        <a id="download-theme-js" download="theme.js">{{downloadJsLabel}}</a>
-      </p>
+      <div class="config-section">
+        <span class="instui-heading -level-h3">{{themeLabel}}</span>
+        <div class="theme-picker" role="group" aria-label="{{themeLabel}}">
+          <button
+            type="button"
+            class="instui-button -size-sm -color-secondary -toggle"
+            aria-pressed="true"
+            data-theme="rebrand"
+          >
+            {{themeRebrandLabel}}
+          </button>
+          <button
+            type="button"
+            class="instui-button -size-sm -color-secondary -toggle"
+            aria-pressed="false"
+            data-theme="canvas"
+          >
+            {{themeCanvasLabel}}
+          </button>
+          <button
+            type="button"
+            class="instui-button -size-sm -color-secondary -toggle"
+            aria-pressed="false"
+            data-theme="canvasHighContrast"
+          >
+            {{themeCanvasHighContrastLabel}}
+          </button>
+        </div>
+        <div class="theme-picker__colors" role="group" aria-label="{{colorLabel}}">
+          <button
+            type="button"
+            class="theme-picker__color-item -selected"
+            role="menuitemradio"
+            aria-checked="true"
+            data-color="navy"
+            aria-label="{{colorNavyLabel}}"
+            title="{{colorNavyLabel}}"
+          >
+            <span class="theme-picker__swatch" data-swatch="navy"></span>
+          </button>
+          <button
+            type="button"
+            class="theme-picker__color-item"
+            role="menuitemradio"
+            aria-checked="false"
+            data-color="blue"
+            aria-label="{{colorBlueLabel}}"
+            title="{{colorBlueLabel}}"
+          >
+            <span class="theme-picker__swatch" data-swatch="blue"></span>
+          </button>
+          <button
+            type="button"
+            class="theme-picker__color-item"
+            role="menuitemradio"
+            aria-checked="false"
+            data-color="green"
+            aria-label="{{colorGreenLabel}}"
+            title="{{colorGreenLabel}}"
+          >
+            <span class="theme-picker__swatch" data-swatch="green"></span>
+          </button>
+          <button
+            type="button"
+            class="theme-picker__color-item"
+            role="menuitemradio"
+            aria-checked="false"
+            data-color="red"
+            aria-label="{{colorRedLabel}}"
+            title="{{colorRedLabel}}"
+          >
+            <span class="theme-picker__swatch" data-swatch="red"></span>
+          </button>
+          <button
+            type="button"
+            class="theme-picker__color-item"
+            role="menuitemradio"
+            aria-checked="false"
+            data-color="orange"
+            aria-label="{{colorOrangeLabel}}"
+            title="{{colorOrangeLabel}}"
+          >
+            <span class="theme-picker__swatch" data-swatch="orange"></span>
+          </button>
+          <button
+            type="button"
+            class="theme-picker__color-item"
+            role="menuitemradio"
+            aria-checked="false"
+            data-color="grey"
+            aria-label="{{colorGreyLabel}}"
+            title="{{colorGreyLabel}}"
+          >
+            <span class="theme-picker__swatch" data-swatch="grey"></span>
+          </button>
+          <button
+            type="button"
+            class="theme-picker__color-item"
+            role="menuitemradio"
+            aria-checked="false"
+            data-color="plum"
+            aria-label="{{colorPlumLabel}}"
+            title="{{colorPlumLabel}}"
+          >
+            <span class="theme-picker__swatch" data-swatch="plum"></span>
+          </button>
+          <button
+            type="button"
+            class="theme-picker__color-item"
+            role="menuitemradio"
+            aria-checked="false"
+            data-color="violet"
+            aria-label="{{colorVioletLabel}}"
+            title="{{colorVioletLabel}}"
+          >
+            <span class="theme-picker__swatch" data-swatch="violet"></span>
+          </button>
+          <button
+            type="button"
+            class="theme-picker__color-item"
+            role="menuitemradio"
+            aria-checked="false"
+            data-color="stone"
+            aria-label="{{colorStoneLabel}}"
+            title="{{colorStoneLabel}}"
+          >
+            <span class="theme-picker__swatch" data-swatch="stone"></span>
+          </button>
+          <button
+            type="button"
+            class="theme-picker__color-item"
+            role="menuitemradio"
+            aria-checked="false"
+            data-color="sky"
+            aria-label="{{colorSkyLabel}}"
+            title="{{colorSkyLabel}}"
+          >
+            <span class="theme-picker__swatch" data-swatch="sky"></span>
+          </button>
+          <button
+            type="button"
+            class="theme-picker__color-item"
+            role="menuitemradio"
+            aria-checked="false"
+            data-color="honey"
+            aria-label="{{colorHoneyLabel}}"
+            title="{{colorHoneyLabel}}"
+          >
+            <span class="theme-picker__swatch" data-swatch="honey"></span>
+          </button>
+          <button
+            type="button"
+            class="theme-picker__color-item"
+            role="menuitemradio"
+            aria-checked="false"
+            data-color="sea"
+            aria-label="{{colorSeaLabel}}"
+            title="{{colorSeaLabel}}"
+          >
+            <span class="theme-picker__swatch" data-swatch="sea"></span>
+          </button>
+          <button
+            type="button"
+            class="theme-picker__color-item"
+            role="menuitemradio"
+            aria-checked="false"
+            data-color="aurora"
+            aria-label="{{colorAuroraLabel}}"
+            title="{{colorAuroraLabel}}"
+          >
+            <span class="theme-picker__swatch" data-swatch="aurora"></span>
+          </button>
+          <button
+            type="button"
+            class="theme-picker__color-item"
+            role="menuitemradio"
+            aria-checked="false"
+            data-color="custom"
+            aria-label="{{colorCustomLabel}}"
+            title="{{colorCustomLabel}}"
+          >
+            <span class="theme-picker__swatch" data-swatch="custom"></span>
+          </button>
+        </div>
+        <div class="theme-picker__custom" id="custom-color-row" hidden>
+          <label for="custom-color-hex">{{customColorInputLabel}}</label>
+          <div class="theme-picker__custom-inputs">
+            <input
+              type="color"
+              id="custom-color-picker"
+              aria-label="{{customColorInputLabel}}"
+              value="#4c79aa"
+            />
+            <input
+              type="text"
+              class="instui-text-input -size-sm"
+              id="custom-color-hex"
+              value="#4c79aa"
+              pattern="#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})"
+              maxlength="7"
+              spellcheck="false"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+        <label class="instui-checkbox -variant-toggle" id="include-dark-mode-row">
+          <input type="checkbox" id="include-dark-mode" />
+          {{includeDarkModeLabel}}
+        </label>
+      </div>
+      <div class="config-section">
+        <span class="instui-heading -level-h3">{{cdnSectionLabel}}</span>
+        <label for="cdn-provider">
+          {{cdnProviderLabel}}
+          <select class="instui-simple-select" id="cdn-provider"></select>
+        </label>
+      </div>
     </div>
     <div class="panel" role="tabpanel" id="panel-css" hidden aria-labelledby="tab-css">
-      <p><button type="button" id="regenerate-css" hidden>{{regenerateLabel}}</button></p>
+      <p>{{cssPanelHintLabel}}</p>
       <div id="css-editor" class="code-editor"></div>
+      <p><a id="download-theme-css" download="theme.css">{{downloadCssLabel}}</a></p>
     </div>
     <div class="panel" role="tabpanel" id="panel-js" hidden aria-labelledby="tab-js">
-      <p><button type="button" id="regenerate-js" hidden>{{regenerateLabel}}</button></p>
+      <p>{{jsPanelHintLabel}}</p>
       <div id="js-editor" class="code-editor"></div>
+      <p><a id="download-theme-js" download="theme.js">{{downloadJsLabel}}</a></p>
     </div>
   </div>
 </div>

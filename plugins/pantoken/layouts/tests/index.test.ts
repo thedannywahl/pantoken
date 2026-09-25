@@ -12,6 +12,7 @@ import {
   wrapperRules,
 } from "../src/index.ts";
 import { SENTINEL } from "../src/lib/sentinel.ts";
+import { runtimeCss } from "../src/lib/runtime-css.ts";
 
 const cssOf = (plugin: ReturnType<typeof layouts>): string => {
   const out = plugin.css?.({ tokens: [], css: "" });
@@ -55,14 +56,46 @@ test("every layout appears in the plugin css payload", () => {
     testimonialRules,
     twoColumnRules,
   ]) {
-    expect(css).toContain(rules());
+    expect(css).toContain(runtimeCss(rules()));
   }
+});
+
+test("plugin css payload is runtime-safe", () => {
+  const css = cssOf(layouts());
+  expect(css).not.toContain("@component");
+  expect(css).not.toMatch(/:(?:optional|one-or-more)\b/u);
 });
 
 test("pageLayouts exposes the bundled starter page layouts", () => {
   const names = pageLayouts.map((layout) => layout.name).sort((a, b) => a.localeCompare(b));
-  expect(names).toEqual(["callout", "hero", "rubric-note", "testimonial", "two-column"]);
+  expect(names).toEqual([
+    "about-me",
+    "callout",
+    "course-home",
+    "footer",
+    "header",
+    "hero",
+    "rubric-note",
+    "syllabus",
+    "testimonial",
+    "two-column",
+  ]);
   for (const layout of pageLayouts) {
     expect(layout.html).toContain("instui-");
+    expect(layout.html).not.toContain("placehold.co");
   }
+});
+
+test("image placeholders are provider-neutral and use the image component marker", () => {
+  const aboutMe = pageLayouts.find((layout) => layout.name === "about-me");
+  expect(aboutMe?.imagePlaceholders).toEqual([
+    {
+      key: "instructor-photo",
+      width: 240,
+      height: 240,
+      altText: "A photo of the instructor",
+    },
+  ]);
+  expect(aboutMe?.html).toMatch(/class="[^"]*\binstui-img\b/);
+  expect(aboutMe?.html).toContain('data-pantoken-image-placeholder="instructor-photo"');
 });

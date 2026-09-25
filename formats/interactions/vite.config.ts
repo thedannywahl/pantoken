@@ -32,6 +32,7 @@ const ALL_COMPONENTS = [
   "drawer-layout",
   "date-input",
   "date-time-input",
+  "tabs",
 ];
 
 // Components that require command event handling

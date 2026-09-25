@@ -1,0 +1,31 @@
+{
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
+  "courseHome.title": { "message": "Course home", "translate": "always" },
+  "courseHome.welcomeHeading": { "message": "Welcome to the course", "translate": "always" },
+  "courseHome.welcomeText": {
+    "message": "Give students a warm welcome and explain what they should do first.",
+    "translate": "always"
+  },
+  "courseHome.startHeading": { "message": "Start here", "translate": "always" },
+  "courseHome.reviewHeaderLink": {
+    "message": "Review the course header and navigation",
+    "translate": "always"
+  },
+  "courseHome.readSyllabusLink": { "message": "Read the syllabus", "translate": "always" },
+  "courseHome.meetInstructorLink": { "message": "Meet your instructor", "translate": "always" },
+  "courseHome.openModuleText": {
+    "message": "Open the first module or activity.",
+    "translate": "always"
+  },
+  "courseHome.thisWeekHeading": { "message": "This week", "translate": "always" },
+  "courseHome.thisWeekText": {
+    "message": "Add the current focus, important dates, readings, or actions students should see first.",
+    "translate": "always"
+  },
+  "courseHome.needHelpHeading": { "message": "Need help?", "translate": "always" },
+  "courseHome.needHelpPrefix": { "message": "Point students to the", "translate": "always" },
+  "courseHome.needHelpLinkText": {
+    "message": "course contact and support information",
+    "translate": "always"
+  }
+}

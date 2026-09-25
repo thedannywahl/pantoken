@@ -1,0 +1,850 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-23 23:21+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
+
+#: renderers/tinymce/src/i18n.json#autocompleteModifierDetail
+#, no-c-format
+msgctxt "tinymce.strings:autocompleteModifierDetail"
+msgid "modifier"
+msgstr "modificatore"
+
+#: renderers/tinymce/src/i18n.json#classValidationIncompleteComponent
+#, no-c-format
+msgctxt "tinymce.strings:classValidationIncompleteComponent"
+msgid "Incomplete component name after '{{prefix}}'"
+msgstr "Nome del componente incompleto dopo '{{prefix}}'"
+
+#: renderers/tinymce/src/i18n.json#classValidationTokenPrefix
+#, no-c-format
+msgctxt "tinymce.strings:classValidationTokenPrefix"
+msgid "Token must start with '{{prefix}}'"
+msgstr "Il token deve iniziare con '{{prefix}}'"
+
+#: renderers/tinymce/src/i18n.json#classValidationUnknownComponent
+#, no-c-format
+msgctxt "tinymce.strings:classValidationUnknownComponent"
+msgid "Unknown component/utility: '{{componentName}}'"
+msgstr "Componente/utility sconosciuto: '{{componentName}}'"
+
+#: renderers/tinymce/src/i18n.json#componentsDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:componentsDialogTitle"
+msgid "Insert Component"
+msgstr "Inserisci componente"
+
+#: renderers/tinymce/src/i18n.json#componentsListLabel
+#, no-c-format
+msgctxt "tinymce.strings:componentsListLabel"
+msgid "Components"
+msgstr "Componenti"
+
+#: renderers/tinymce/src/i18n.json#componentsMenuText
+#, no-c-format
+msgctxt "tinymce.strings:componentsMenuText"
+msgid "Component"
+msgstr "Componente"
+
+#: renderers/tinymce/src/i18n.json#componentsToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:componentsToolbarText"
+msgid "Components"
+msgstr "Componenti"
+
+#: renderers/tinymce/src/i18n.json#componentsToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:componentsToolbarTooltip"
+msgid "Insert a pantoken component"
+msgstr "Inserisci un componente pantoken"
+
+#: renderers/tinymce/src/i18n.json#iconLabelDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:iconLabelDialogTitle"
+msgid "Icon label"
+msgstr "Etichetta dell'icona"
+
+#: renderers/tinymce/src/i18n.json#iconLabelInputLabel
+#, no-c-format
+msgctxt "tinymce.strings:iconLabelInputLabel"
+msgid "Screen reader label"
+msgstr "Etichetta per lettore di schermo"
+
+#: renderers/tinymce/src/i18n.json#iconsMenuText
+#, no-c-format
+msgctxt "tinymce.strings:iconsMenuText"
+msgid "Icon"
+msgstr "Icona"
+
+#: renderers/tinymce/src/i18n.json#iconsDialogTitle
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:iconsDialogTitle"
+msgid "Insert icon"
+msgstr "Inserisci un'icona"
+
+#: renderers/tinymce/src/i18n.json#iconsSearchPlaceholder
+#, no-c-format
+msgctxt "tinymce.strings:iconsSearchPlaceholder"
+msgid "Search icons…"
+msgstr "Cerca icone…"
+
+#: renderers/tinymce/src/i18n.json#iconsSearchLabel
+#, no-c-format
+msgctxt "tinymce.strings:iconsSearchLabel"
+msgid "Search icons"
+msgstr "Cerca icone"
+
+#: renderers/tinymce/src/i18n.json#iconsAllSources
+#, no-c-format
+msgctxt "tinymce.strings:iconsAllSources"
+msgid "All"
+msgstr "Tutte"
+
+#: renderers/tinymce/src/i18n.json#iconsResultCount
+#, no-c-format
+msgctxt "tinymce.strings:iconsResultCount"
+msgid "{{count}} icons"
+msgstr "{{count}} icone"
+
+#: renderers/tinymce/src/i18n.json#iconsNoResults
+#, no-c-format
+msgctxt "tinymce.strings:iconsNoResults"
+msgid "No icons match your search."
+msgstr "Nessuna icona corrisponde alla tua ricerca."
+
+#: renderers/tinymce/src/i18n.json#iconsToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:iconsToolbarText"
+msgid "Icons"
+msgstr "Icone"
+
+#: renderers/tinymce/src/i18n.json#iconsToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:iconsToolbarTooltip"
+msgid "Insert an icon"
+msgstr "Inserisci un'icona"
+
+#: renderers/tinymce/src/i18n.json#iconContextColorTooltip
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:iconContextColorTooltip"
+msgid "Icon color"
+msgstr "Colore di sfondo"
+
+#: renderers/tinymce/src/i18n.json#iconContextSizeTooltip
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:iconContextSizeTooltip"
+msgid "Icon size"
+msgstr "Icone"
+
+#: renderers/tinymce/src/i18n.json#iconContextSizeSmall
+#, no-c-format
+msgctxt "tinymce.strings:iconContextSizeSmall"
+msgid "Small"
+msgstr "Piccolo"
+
+#: renderers/tinymce/src/i18n.json#iconContextSizeMedium
+#, no-c-format
+msgctxt "tinymce.strings:iconContextSizeMedium"
+msgid "Medium"
+msgstr "Medio"
+
+#: renderers/tinymce/src/i18n.json#iconContextSizeLarge
+#, no-c-format
+msgctxt "tinymce.strings:iconContextSizeLarge"
+msgid "Large"
+msgstr "Grande"
+
+#: renderers/tinymce/src/i18n.json#iconContextSizeExtraLarge
+#, no-c-format
+msgctxt "tinymce.strings:iconContextSizeExtraLarge"
+msgid "Extra large"
+msgstr "Extra grande"
+
+#: renderers/tinymce/src/i18n.json#iconContextDeleteTooltip
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:iconContextDeleteTooltip"
+msgid "Delete icon"
+msgstr "Elimina"
+
+#: renderers/tinymce/src/i18n.json#layoutsConfirmReplace
+#, no-c-format
+msgctxt "tinymce.strings:layoutsConfirmReplace"
+msgid "Replace the current content with the \"{{title}}\" layout?"
+msgstr "Sostituire il contenuto corrente con il layout \"{{title}}\"?"
+
+#: renderers/tinymce/src/i18n.json#layoutsDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:layoutsDialogTitle"
+msgid "Insert layout"
+msgstr "Inserisci layout"
+
+#: renderers/tinymce/src/i18n.json#layoutsMenuText
+#, no-c-format
+msgctxt "tinymce.strings:layoutsMenuText"
+msgid "Layout…"
+msgstr "Layout…"
+
+#: renderers/tinymce/src/i18n.json#layoutsSelectLabel
+#, no-c-format
+msgctxt "tinymce.strings:layoutsSelectLabel"
+msgid "Starter layout"
+msgstr "Layout iniziale"
+
+#: renderers/tinymce/src/i18n.json#layoutsToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:layoutsToolbarText"
+msgid "Layouts"
+msgstr "Layout"
+
+#: renderers/tinymce/src/i18n.json#layoutsToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:layoutsToolbarTooltip"
+msgid "Insert a starter layout"
+msgstr "Inserisci un layout iniziale"
+
+#: renderers/tinymce/src/i18n.json#logosToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:logosToolbarText"
+msgid "Logos"
+msgstr "Loghi"
+
+#: renderers/tinymce/src/i18n.json#logosToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:logosToolbarTooltip"
+msgid "Insert a logo"
+msgstr "Inserisci un logo"
+
+#: renderers/tinymce/src/i18n.json#logosMenuText
+#, no-c-format
+msgctxt "tinymce.strings:logosMenuText"
+msgid "Logo"
+msgstr "Logo"
+
+#: renderers/tinymce/src/i18n.json#logosDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:logosDialogTitle"
+msgid "Insert Logo"
+msgstr "Inserisci logo"
+
+#: renderers/tinymce/src/i18n.json#logosProductLabel
+#, no-c-format
+msgctxt "tinymce.strings:logosProductLabel"
+msgid "Product"
+msgstr "Prodotto"
+
+#: renderers/tinymce/src/i18n.json#logosLayoutLabel
+#, no-c-format
+msgctxt "tinymce.strings:logosLayoutLabel"
+msgid "Layout"
+msgstr "Layout"
+
+#: renderers/tinymce/src/i18n.json#logosLayoutHorizontal
+#, no-c-format
+msgctxt "tinymce.strings:logosLayoutHorizontal"
+msgid "Horizontal"
+msgstr "Orizzontale"
+
+#: renderers/tinymce/src/i18n.json#logosLayoutVertical
+#, no-c-format
+msgctxt "tinymce.strings:logosLayoutVertical"
+msgid "Vertical"
+msgstr "Verticale"
+
+#: renderers/tinymce/src/i18n.json#logosLayoutStacked
+#, no-c-format
+msgctxt "tinymce.strings:logosLayoutStacked"
+msgid "Stacked"
+msgstr "Impilato"
+
+#: renderers/tinymce/src/i18n.json#logosColorModeLabel
+#, no-c-format
+msgctxt "tinymce.strings:logosColorModeLabel"
+msgid "Color Mode"
+msgstr "Modalità colore"
+
+#: renderers/tinymce/src/i18n.json#logosColorModeColor
+#, no-c-format
+msgctxt "tinymce.strings:logosColorModeColor"
+msgid "Color"
+msgstr "Colore"
+
+#: renderers/tinymce/src/i18n.json#logosColorModeMonochrome
+#, no-c-format
+msgctxt "tinymce.strings:logosColorModeMonochrome"
+msgid "Monochrome"
+msgstr "Monocromatico"
+
+#: renderers/tinymce/src/i18n.json#logosColorModeLight
+#, no-c-format
+msgctxt "tinymce.strings:logosColorModeLight"
+msgid "Light"
+msgstr "Chiaro"
+
+#: renderers/tinymce/src/i18n.json#insertButton
+#, no-c-format
+msgctxt "tinymce.strings:insertButton"
+msgid "Insert"
+msgstr "Inserisci"
+
+#: renderers/tinymce/src/i18n.json#replaceButton
+#, no-c-format
+msgctxt "tinymce.strings:replaceButton"
+msgid "Replace"
+msgstr "Sostituisci"
+
+#: renderers/tinymce/src/i18n.json#cancelButton
+#, no-c-format
+msgctxt "tinymce.strings:cancelButton"
+msgid "Cancel"
+msgstr "Annulla"
+
+#: renderers/tinymce/src/i18n.json#logoAltSuffix
+#, no-c-format
+msgctxt "tinymce.strings:logoAltSuffix"
+msgid "logo"
+msgstr "logo"
+
+#: renderers/tinymce/src/i18n.json#templatesConfirmReplace
+#, no-c-format
+msgctxt "tinymce.strings:templatesConfirmReplace"
+msgid "Replace the current content with the \"{{title}}\" template?"
+msgstr "Sostituire il contenuto corrente con il template \"{{title}}\"?"
+
+#: renderers/tinymce/src/i18n.json#templatesDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:templatesDialogTitle"
+msgid "Insert template"
+msgstr "Inserisci template"
+
+#: renderers/tinymce/src/i18n.json#templatesMenuText
+#, no-c-format
+msgctxt "tinymce.strings:templatesMenuText"
+msgid "Insert template…"
+msgstr "Inserisci template…"
+
+#: renderers/tinymce/src/i18n.json#templatesSelectLabel
+#, no-c-format
+msgctxt "tinymce.strings:templatesSelectLabel"
+msgid "Starter template"
+msgstr "Template iniziale"
+
+#: renderers/tinymce/src/i18n.json#templatesToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:templatesToolbarText"
+msgid "Templates"
+msgstr "Template"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:placeholdToolbarText"
+msgid "Placeholder"
+msgstr "Segnaposto"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:placeholdToolbarTooltip"
+msgid "Insert a placeholder image"
+msgstr "Inserisci un'immagine segnaposto"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdMenuText
+#, no-c-format
+msgctxt "tinymce.strings:placeholdMenuText"
+msgid "Placeholder image…"
+msgstr "Immagine segnaposto…"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:placeholdDialogTitle"
+msgid "Insert placeholder image"
+msgstr "Inserisci immagine segnaposto"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdWidthLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdWidthLabel"
+msgid "Width"
+msgstr "Larghezza"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdHeightLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdHeightLabel"
+msgid "Height"
+msgstr "Altezza"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdBackgroundColorLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdBackgroundColorLabel"
+msgid "Background color"
+msgstr "Colore di sfondo"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdTextColorLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdTextColorLabel"
+msgid "Text color"
+msgstr "Colore del testo"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdTextLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdTextLabel"
+msgid "Text"
+msgstr "Testo"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdAltTextLabel
+#, no-c-format
+msgctxt "tinymce.strings:placeholdAltTextLabel"
+msgid "Alt text"
+msgstr "Testo alternativo"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdInsertButton
+#, no-c-format
+msgctxt "tinymce.strings:placeholdInsertButton"
+msgid "Insert"
+msgstr "Inserisci"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdCancelButton
+#, no-c-format
+msgctxt "tinymce.strings:placeholdCancelButton"
+msgid "Cancel"
+msgstr "Annulla"
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdInvalidDimensions
+#, no-c-format
+msgctxt "tinymce.strings:placeholdInvalidDimensions"
+msgid "Width and height must be whole numbers from 10 through 4000."
+msgstr "La larghezza e l'altezza devono essere numeri interi da 10 a 4000."
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdInvalidColor
+#, no-c-format
+msgctxt "tinymce.strings:placeholdInvalidColor"
+msgid "Colors must use three- or six-digit hexadecimal values."
+msgstr "I colori devono usare valori esadecimali a tre o sei cifre."
+
+#: plugins/tinymce/placehold/src/i18n.json#placeholdAltFallback
+#, no-c-format
+msgctxt "tinymce.strings:placeholdAltFallback"
+msgid "{{width}} by {{height}} placeholder image"
+msgstr "{{width}} per {{height}} immagine segnaposto"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:a11yToolbarText"
+msgid "Check accessibility"
+msgstr "Controlla accessibilità"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:a11yToolbarTooltip"
+msgid "Check the content for accessibility issues"
+msgstr "Controlla il contenuto per problemi di accessibilità"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yMenuText
+#, no-c-format
+msgctxt "tinymce.strings:a11yMenuText"
+msgid "Check accessibility"
+msgstr "Controlla accessibilità"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:a11yDialogTitle"
+msgid "Accessibility checker"
+msgstr "Controllore di accessibilità"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yNoIssues
+#, no-c-format
+msgctxt "tinymce.strings:a11yNoIssues"
+msgid "No accessibility issues found."
+msgstr "Nessun problema di accessibilità rilevato."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yIssueCount
+#, no-c-format
+msgctxt "tinymce.strings:a11yIssueCount"
+msgid "{{count}} accessibility issue(s) found."
+msgstr "{{count}} problema(i) di accessibilità rilevato(i)."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yStatusbarIssueCount
+#, no-c-format
+msgctxt "tinymce.strings:a11yStatusbarIssueCount"
+msgid "{{count}} accessibility issues"
+msgstr "{{count}} problemi di accessibilità"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yIssueLabel
+#, no-c-format
+msgctxt "tinymce.strings:a11yIssueLabel"
+msgid "Issue"
+msgstr "Problema"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yCloseButton
+#, no-c-format
+msgctxt "tinymce.strings:a11yCloseButton"
+msgid "Close"
+msgstr "Chiudi"
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yImageAltMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yImageAltMessage"
+msgid "Images must have alternative text."
+msgstr "Le immagini devono avere un testo alternativo."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yImageAltWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yImageAltWhy"
+msgid "Screen readers need an alt attribute to describe an image or identify it as decorative."
+msgstr "I lettori di schermo necessitano di un attributo alt per descrivere un'immagine o identificarla come decorativa."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yImageAltFilenameMessage"
+msgid "Image alternative text should describe the image, not repeat its filename."
+msgstr "Il testo alternativo dell'immagine dovrebbe descriverla, non ripetere il nome del file."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yImageAltFilenameWhy"
+msgid "A filename rarely gives screen reader users useful information about an image."
+msgstr "Un nome file raramente fornisce informazioni utili agli utenti di lettori di schermo."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yImageAltLengthMessage"
+msgid "Image alternative text should be 125 characters or fewer."
+msgstr "Il testo alternativo dell'immagine dovrebbe essere di 125 caratteri o meno."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yImageAltLengthWhy"
+msgid "Short descriptions are easier to understand and navigate with assistive technology."
+msgstr "Le descrizioni brevi sono più facili da comprendere e navigare con tecnologie assistive."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yHeadingSequenceMessage"
+msgid "Heading levels should not skip levels."
+msgstr "I livelli dei titoli non devono saltare livelli."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yHeadingSequenceWhy"
+msgid "A logical heading outline helps people navigate content with assistive technology."
+msgstr "Una struttura logica dei titoli aiuta le persone a navigare il contenuto con tecnologie assistive."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yTableHeaderMessage"
+msgid "Tables must include header cells."
+msgstr "Le tabelle devono includere celle di intestazione."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yTableHeaderWhy"
+msgid "Header cells give screen readers the context needed to understand table data."
+msgstr "Le celle di intestazione forniscono ai lettori di schermo il contesto necessario per comprendere i dati della tabella."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yTableCaptionMessage"
+msgid "Tables should include a caption."
+msgstr "Le tabelle dovrebbero includere una didascalia."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yTableCaptionWhy"
+msgid "A caption identifies a table's purpose before a screen reader enters its cells."
+msgstr "Una didascalia identifica lo scopo di una tabella prima che un lettore di schermo entri nelle sue celle."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yTableHeaderScopeMessage"
+msgid "Table header cells should declare their scope."
+msgstr "Le celle di intestazione della tabella dovrebbero dichiarare il loro ambito."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yTableHeaderScopeWhy"
+msgid "The scope attribute lets assistive technology associate headers with data cells."
+msgstr "L'attributo scope permette alla tecnologia assistiva di associare le intestazioni alle celle dei dati."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yAdjacentLinksMessage"
+msgid "Adjacent links with the same destination should be combined."
+msgstr "I link adiacenti con la stessa destinazione dovrebbero essere combinati."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yAdjacentLinksWhy"
+msgid "Repeated links create unnecessary stops for keyboard and screen reader users."
+msgstr "I link ripetuti creano soste inutili per gli utenti da tastiera e per i lettori di schermo."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yHeadingStartMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yHeadingStartMessage"
+msgid "The first heading should be an h2."
+msgstr "Il primo titolo dovrebbe essere un h2."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yHeadingStartWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yHeadingStartWhy"
+msgid "The editor's document title is supplied outside the editable content."
+msgstr "Il titolo del documento dell'editor è fornito al di fuori del contenuto modificabile."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yListStructureMessage
+#, no-c-format
+msgctxt "tinymce.strings:a11yListStructureMessage"
+msgid "List items must be contained by an ordered or unordered list."
+msgstr "Gli elementi di elenco devono essere contenuti in un elenco ordinato o non ordinato."
+
+#: plugins/tinymce/a11y/src/i18n.json#a11yListStructureWhy
+#, no-c-format
+msgctxt "tinymce.strings:a11yListStructureWhy"
+msgid "Assistive technology relies on list structure to announce item counts and position."
+msgstr "La tecnologia assistiva si basa sulla struttura degli elenchi per annunciare il numero di elementi e la posizione."
+
+#: plugins/tinymce/codemirror/src/i18n.json#sourceToggleTooltip
+#, no-c-format
+msgctxt "tinymce.strings:sourceToggleTooltip"
+msgid "Source code"
+msgstr "Codice sorgente"
+
+#: plugins/tinymce/codemirror/src/i18n.json#sourceFormatTooltip
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:sourceFormatTooltip"
+msgid "Format code"
+msgstr "Codice sorgente"
+
+#: plugins/tinymce/codemirror/src/i18n.json#sourceFormatErrorMessage
+#, no-c-format
+msgctxt "tinymce.strings:sourceFormatErrorMessage"
+msgid "Couldn't format the source code — check for unclosed tags or other syntax errors."
+msgstr "Impossibile formattare il codice sorgente — controlla che non ci siano tag non chiusi o altri errori di sintassi."
+
+#: plugins/tinymce/save/src/i18n.json#saveToolbarText
+#, no-c-format
+msgctxt "tinymce.strings:saveToolbarText"
+msgid "Presets"
+msgstr "Preimpostazioni"
+
+#: plugins/tinymce/save/src/i18n.json#saveToolbarTooltip
+#, no-c-format
+msgctxt "tinymce.strings:saveToolbarTooltip"
+msgid "Manage saved presets"
+msgstr "Gestisci le preimpostazioni salvate"
+
+#: plugins/tinymce/save/src/i18n.json#saveAction
+#, no-c-format
+msgctxt "tinymce.strings:saveAction"
+msgid "Save"
+msgstr "Salva"
+
+#: plugins/tinymce/save/src/i18n.json#saveAsAction
+#, no-c-format
+msgctxt "tinymce.strings:saveAsAction"
+msgid "Save as..."
+msgstr "Salva come..."
+
+#: plugins/tinymce/save/src/i18n.json#openAction
+#, no-c-format
+msgctxt "tinymce.strings:openAction"
+msgid "Open..."
+msgstr "Apri..."
+
+#: plugins/tinymce/save/src/i18n.json#deleteAction
+#, no-c-format
+msgctxt "tinymce.strings:deleteAction"
+msgid "Delete..."
+msgstr "Elimina..."
+
+#: plugins/tinymce/save/src/i18n.json#newAction
+#, no-c-format
+msgctxt "tinymce.strings:newAction"
+msgid "New"
+msgstr "Nuovo"
+
+#: plugins/tinymce/save/src/i18n.json#exportAction
+#, no-c-format
+msgctxt "tinymce.strings:exportAction"
+msgid "Export..."
+msgstr "Esporta..."
+
+#: plugins/tinymce/save/src/i18n.json#importAction
+#, no-c-format
+msgctxt "tinymce.strings:importAction"
+msgid "Import..."
+msgstr "Importa..."
+
+#: plugins/tinymce/save/src/i18n.json#saveAsDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:saveAsDialogTitle"
+msgid "Save preset"
+msgstr "Salva preimpostazione"
+
+#: plugins/tinymce/save/src/i18n.json#presetNameLabel
+#, no-c-format
+msgctxt "tinymce.strings:presetNameLabel"
+msgid "Name"
+msgstr "Nome"
+
+#: plugins/tinymce/save/src/i18n.json#openDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:openDialogTitle"
+msgid "Open preset"
+msgstr "Apri preimpostazione"
+
+#: plugins/tinymce/save/src/i18n.json#deleteDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:deleteDialogTitle"
+msgid "Delete preset"
+msgstr "Elimina preimpostazione"
+
+#: plugins/tinymce/save/src/i18n.json#newDialogTitle
+#, no-c-format
+msgctxt "tinymce.strings:newDialogTitle"
+msgid "New document"
+msgstr "Nuovo documento"
+
+#: plugins/tinymce/save/src/i18n.json#newDialogMessage
+#, no-c-format
+msgctxt "tinymce.strings:newDialogMessage"
+msgid "This clears the current editor content and config. Save the current work first?"
+msgstr "Questo cancella il contenuto e la configurazione dell'editor corrente. Salvare prima il lavoro corrente?"
+
+#: plugins/tinymce/save/src/i18n.json#newDialogSaveButton
+#, no-c-format
+msgctxt "tinymce.strings:newDialogSaveButton"
+msgid "Save & clear"
+msgstr "Salva e cancella"
+
+#: plugins/tinymce/save/src/i18n.json#newDialogDiscardButton
+#, no-c-format
+msgctxt "tinymce.strings:newDialogDiscardButton"
+msgid "Discard"
+msgstr "Scarta"
+
+#: plugins/tinymce/save/src/i18n.json#presetLabel
+#, no-c-format
+msgctxt "tinymce.strings:presetLabel"
+msgid "Preset"
+msgstr "Preimpostazione"
+
+#: plugins/tinymce/save/src/i18n.json#confirmOverwrite
+#, no-c-format
+msgctxt "tinymce.strings:confirmOverwrite"
+msgid "A preset named “{{name}}” already exists. Replace it?"
+msgstr "Esiste già una preimpostazione chiamata “{{name}}”. Sostituirla?"
+
+#: plugins/tinymce/save/src/i18n.json#confirmDiscard
+#, no-c-format
+msgctxt "tinymce.strings:confirmDiscard"
+msgid "Open “{{name}}” and discard the current unsaved changes?"
+msgstr "Aprire “{{name}}” e scartare le modifiche non salvate correnti?"
+
+#: plugins/tinymce/save/src/i18n.json#confirmDelete
+#, no-c-format
+msgctxt "tinymce.strings:confirmDelete"
+msgid "Delete “{{name}}”? This cannot be undone."
+msgstr "Eliminare “{{name}}”? Questa operazione non può essere annullata."
+
+#: plugins/tinymce/save/src/i18n.json#confirmImportOverwrite
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:confirmImportOverwrite"
+msgid "Import “{{name}}” and overwrite the current editor content and config?"
+msgstr "Aprire “{{name}}” e scartare le modifiche non salvate correnti?"
+
+#: plugins/tinymce/save/src/i18n.json#emptyPresets
+#, no-c-format
+msgctxt "tinymce.strings:emptyPresets"
+msgid "No saved presets are available."
+msgstr "Non sono disponibili preimpostazioni salvate."
+
+#: plugins/tinymce/save/src/i18n.json#invalidName
+#, no-c-format
+msgctxt "tinymce.strings:invalidName"
+msgid "Enter a preset name."
+msgstr "Inserisci un nome per la preimpostazione."
+
+#: plugins/tinymce/save/src/i18n.json#invalidPreset
+#, no-c-format
+msgctxt "tinymce.strings:invalidPreset"
+msgid "This preset is invalid and could not be opened."
+msgstr "Questa preimpostazione non è valida e non può essere aperta."
+
+#: plugins/tinymce/save/src/i18n.json#importInvalidFile
+#, no-c-format
+msgctxt "tinymce.strings:importInvalidFile"
+msgid "The selected file is not a valid pantoken TinyMCE export."
+msgstr "Il file selezionato non è un'esportazione pantoken TinyMCE valida."
+
+#: plugins/tinymce/save/src/i18n.json#storageReadError
+#, no-c-format
+msgctxt "tinymce.strings:storageReadError"
+msgid "Saved presets could not be read from this browser."
+msgstr "Le preimpostazioni salvate non possono essere lette da questo browser."
+
+#: plugins/tinymce/save/src/i18n.json#storageWriteError
+#, no-c-format
+msgctxt "tinymce.strings:storageWriteError"
+msgid "The preset could not be saved in this browser."
+msgstr "La preimpostazione non può essere salvata in questo browser."
+
+#: plugins/tinymce/save/src/i18n.json#storageDeleteError
+#, no-c-format
+msgctxt "tinymce.strings:storageDeleteError"
+msgid "The preset could not be deleted from this browser."
+msgstr "La preimpostazione non può essere eliminata da questo browser."
+
+#: plugins/tinymce/save/src/i18n.json#exportDefaultName
+#, no-c-format
+msgctxt "tinymce.strings:exportDefaultName"
+msgid "untitled"
+msgstr "senza titolo"
+
+#: plugins/tinymce/save/src/i18n.json#presetSaveButton
+#, no-c-format
+msgctxt "tinymce.strings:presetSaveButton"
+msgid "Save"
+msgstr "Salva"
+
+#: plugins/tinymce/save/src/i18n.json#presetOpenButton
+#, no-c-format
+msgctxt "tinymce.strings:presetOpenButton"
+msgid "Open"
+msgstr "Apri"
+
+#: plugins/tinymce/save/src/i18n.json#presetDeleteButton
+#, no-c-format
+msgctxt "tinymce.strings:presetDeleteButton"
+msgid "Delete"
+msgstr "Elimina"
+
+#: plugins/tinymce/save/src/i18n.json#presetCancelButton
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:presetCancelButton"
+msgid "Cancel"
+msgstr "Annulla"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersDefault
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersDefault"
+msgid "Default"
+msgstr "Predefinito"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersOptions
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersOptions"
+msgid "Options"
+msgstr "Opzioni"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersTooltip
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersTooltip"
+msgid "Change component modifiers"
+msgstr "Modifica i modificatori del componente"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersUtilities
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersUtilities"
+msgid "Utilities"
+msgstr "Utilità"

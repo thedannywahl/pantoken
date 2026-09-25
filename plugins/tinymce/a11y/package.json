@@ -1,0 +1,45 @@
+{
+  "name": "@pantoken/tinymce-a11y",
+  "version": "0.1.0",
+  "description": "TinyMCE accessibility checker plugin with configurable DOM rules.",
+  "homepage": "https://pantoken.app",
+  "bugs": "https://github.com/thedannywahl/pantoken/issues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git",
+    "directory": "plugins/tinymce/a11y"
+  },
+  "files": [
+    "dist",
+    "src/i18n.json"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "tinymce": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "tinymce": "^8.0"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  }
+}

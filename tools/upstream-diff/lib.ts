@@ -392,7 +392,7 @@ export function toMarkdownReport(diff: UpstreamDiff): string {
   const { before, after, buckets, summary } = diff;
   const heading = summary.total === 0 ? "No upstream drift" : `${summary.total} upstream change(s)`;
   const provLine = (p: UpstreamDiff["before"]): string =>
-    `design-tokens \`${p.designTokens.ref}\`@\`${p.designTokens.commit.slice(0, 7)}\`, ui-icons \`${p.uiIcons.resolved}\``;
+    `design-tokens \`${p.designTokens.ref}\`@\`${p.designTokens.commit.slice(0, 7)}\`, ui-icons \`${p.uiIcons.resolved}\`, lucide \`${p.lucide?.resolved ?? "unrecorded"}\``;
 
   const sections: [string, TokenChange[]][] = [
     ["Removed tokens (deprecation candidates)", buckets.removedTokens],

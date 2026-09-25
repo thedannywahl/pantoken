@@ -25,6 +25,7 @@ import {
   twoColumnRules,
   wrapperRules,
 } from "./layouts/index.ts";
+import { runtimeCss } from "./lib/runtime-css.ts";
 export {
   calloutRules,
   calloutTemplate,
@@ -41,7 +42,13 @@ export {
   wrapperRules,
   wrapperTemplate,
 } from "./layouts/index.ts";
-export { pageLayouts, type PageLayout } from "./layouts/index.ts";
+export {
+  pageLayouts,
+  pageLayoutTemplates,
+  renderPageLayout,
+  type PageLayout,
+  type PageLayoutImagePlaceholder,
+} from "./layouts/index.ts";
 
 /** Options for the {@link layouts} plugin. */
 export interface LayoutsOptions {
@@ -59,15 +66,17 @@ export interface LayoutsOptions {
  */
 export function layouts(options: LayoutsOptions = {}): PantokenPlugin {
   const position = options.position ?? "append";
-  const rules = [
-    wrapperRules(),
-    calloutRules(),
-    heroRules(),
-    pageLayoutRules(),
-    rubricNoteRules(),
-    testimonialRules(),
-    twoColumnRules(),
-  ].join("\n\n");
+  const rules = runtimeCss(
+    [
+      wrapperRules(),
+      calloutRules(),
+      heroRules(),
+      pageLayoutRules(),
+      rubricNoteRules(),
+      testimonialRules(),
+      twoColumnRules(),
+    ].join("\n\n"),
+  );
   return definePlugin({
     name: "@pantoken/plugin-layouts",
     css: () => ({ marker: "pantoken:layouts", [position]: rules }),

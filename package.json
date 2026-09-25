@@ -16,13 +16,13 @@
     "check:attw": "vp run gate:attw",
     "security:snyk": "vp run snyk:scan",
     "security:code": "vp run snyk:code",
-    "prepare": "vp config"
+    "prepare": "vp config && sh scripts/quality/restore-entire-hooks.sh"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "catalog:",
     "@changesets/cli": "catalog:",
     "@codecov/vite-plugin": "catalog:",
-    "@codspeed/vitest-plugin": "catalog:",
+    "@codspeed/tinybench-plugin": "catalog:",
     "@commitlint/cli": "catalog:",
     "@commitlint/config-conventional": "catalog:",
     "@cssdoc/cli": "catalog:",
@@ -36,6 +36,7 @@
     "publint": "catalog:",
     "snyk": "catalog:",
     "stylelint": "catalog:",
+    "tinybench": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:",
     "vitest": "catalog:"

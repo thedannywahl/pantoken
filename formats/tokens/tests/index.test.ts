@@ -45,4 +45,6 @@ test("raw Tokens Studio JSON and provenance are vendored", () => {
   // is unreliable — stuck at 1.0.0 across tags — so the commit, not the version, is the provenance).
   expect(provenance.designTokens.commit).toMatch(/^[0-9a-f]{7,40}$/u);
   expect(provenance.uiIcons.package).toBe("@instructure/ui-icons");
+  expect(provenance.lucide.package).toBe("lucide");
+  expect(provenance.lucide.resolved).toMatch(/^\d+\.\d+\.\d+$/u);
 });

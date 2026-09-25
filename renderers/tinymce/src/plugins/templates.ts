@@ -1,49 +1,62 @@
 /**
  * A custom `tinymce.PluginManager.add` plugin — modeled on TinyMCE's stock `template` plugin's UX
  * (toolbar button + "Insert template" menu item, dialog listing title), but replaces the whole
- * document (with a confirm) instead of the stock plugin's insert-at-cursor behavior. Templates are
- * supplied by the caller — this package doesn't ship any of its own.
+ * document (with a confirm) instead of the stock plugin's insert-at-cursor behavior. Templates
+ * default to the bundled page layouts and can be replaced by the caller.
  *
- * @module
+ * \@module
  */
 import type { Editor } from "tinymce";
+import { pageLayouts } from "../layouts.js";
 import type { StarterTemplate } from "../types.js";
+import { replaceContent } from "../lib/insertion-target.js";
+import { formatTinymceString, TINYMCE_STRINGS } from "../strings.js";
 
 /** Options for {@link createTemplatesPlugin}. */
 export interface TemplatesPluginOptions {
   /** The starter templates offered in the "Insert template" picker. */
-  templates: readonly StarterTemplate[];
+  templates?: readonly StarterTemplate[];
   /** Called after a template is inserted (e.g. to refresh a live preview). */
   onInsert?: (template: StarterTemplate) => void;
+  /** Register this picker's standalone toolbar button and menu item. */
+  registerUi?: boolean;
 }
 
 /** The plugin name to pass in TinyMCE's `plugins`/`toolbar` init options. */
 export const TEMPLATES_PLUGIN_NAME = "pantoken_templates";
 /** The toolbar button/menu item name registered by this plugin. */
 export const TEMPLATES_TOOLBAR_NAME = "pantokenTemplates";
+/** Command that opens the templates picker. */
+export const TEMPLATES_COMMAND = "pantokenOpenTemplates";
+
+/** The bundled page layouts exposed through the template picker. */
+export const pageTemplates: readonly StarterTemplate[] = pageLayouts.map(({ title, html }) => ({
+  title,
+  content: html,
+}));
 
 /** Builds the `tinymce.PluginManager.add` callback for the "Insert template" plugin. */
-export function createTemplatesPlugin(options: TemplatesPluginOptions) {
-  const { templates, onInsert } = options;
+export function createTemplatesPlugin(options: TemplatesPluginOptions = {}) {
+  const { templates = pageTemplates, onInsert } = options;
   return function pantokenTemplatesPlugin(editor: Editor) {
     const openDialog = (): void => {
       editor.windowManager.open({
-        title: "Insert template",
+        title: TINYMCE_STRINGS.templatesDialogTitle,
         body: {
           type: "panel",
           items: [
             {
               type: "selectbox",
               name: "template",
-              label: "Starter template",
+              label: TINYMCE_STRINGS.templatesSelectLabel,
               items: templates.map((t) => ({ value: t.title, text: t.title })),
             },
           ],
         },
         initialData: { template: templates[0]?.title ?? "" },
         buttons: [
-          { type: "cancel", text: "Cancel" },
-          { type: "submit", text: "Insert", primary: true },
+          { type: "cancel", text: TINYMCE_STRINGS.cancelButton },
+          { type: "submit", text: TINYMCE_STRINGS.insertButton, primary: true },
         ],
         onSubmit: (api): void => {
           const { template } = api.getData() as { template: string };
@@ -51,10 +64,12 @@ export function createTemplatesPlugin(options: TemplatesPluginOptions) {
           api.close();
           if (!chosen) return;
           editor.windowManager.confirm(
-            `Replace the current content with the "${chosen.title}" template?`,
+            formatTinymceString(TINYMCE_STRINGS.templatesConfirmReplace, {
+              title: chosen.title,
+            }),
             (confirmed: boolean): void => {
               if (!confirmed) return;
-              editor.setContent(chosen.content);
+              replaceContent(editor, chosen.content);
               onInsert?.(chosen);
             },
           );
@@ -62,12 +77,17 @@ export function createTemplatesPlugin(options: TemplatesPluginOptions) {
       });
     };
 
+    if (options.registerUi === false) {
+      editor.addCommand(TEMPLATES_COMMAND, openDialog);
+      return {};
+    }
+
     editor.ui.registry.addButton(TEMPLATES_TOOLBAR_NAME, {
-      text: "Insert template",
+      text: TINYMCE_STRINGS.templatesToolbarText,
       onAction: openDialog,
     });
     editor.ui.registry.addMenuItem(TEMPLATES_TOOLBAR_NAME, {
-      text: "Insert template…",
+      text: TINYMCE_STRINGS.templatesMenuText,
       onAction: openDialog,
     });
 

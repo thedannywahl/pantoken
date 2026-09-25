@@ -13,8 +13,18 @@
     "@pantoken/cdn": "latest",
     "@pantoken/components": "latest",
     "@pantoken/css": "latest",
+    "@pantoken/plugin-custom-icons": "latest",
     "@pantoken/plugin-layouts": "latest",
-    "@pantoken/tinymce": "latest"
+    "@pantoken/plugin-logos": "latest",
+    "@pantoken/plugin-lucide-lab": "latest",
+    "@pantoken/plugin-simple-icons": "latest",
+    "@pantoken/tinymce": "latest",
+    "@pantoken/tinymce-a11y": "latest",
+    "@pantoken/tinymce-codemirror": "latest",
+    "@pantoken/tinymce-placehold": "latest",
+    "@pantoken/tinymce-save": "latest",
+    "fflate": "catalog:",
+    "lucide": "latest"
   },
   "devDependencies": {
     "@codemirror/lang-css": "catalog:",

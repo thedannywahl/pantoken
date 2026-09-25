@@ -4,6 +4,7 @@ import { Ajv2020, type ValidateFunction } from "ajv/dist/2020.js";
 import { checkPoFile } from "./gettext.ts";
 import { parsePo } from "./po.ts";
 import { parseConfig, type I18nConfig } from "./config.ts";
+import { extractMessagesSources } from "./extract-messages.ts";
 
 const GETTEXT_CHECK_CONCURRENCY = 8;
 
@@ -95,13 +96,28 @@ export async function runLint(configPath = "i18n.config.json"): Promise<LintResu
       continue;
     }
     if (space.kind === "messages") {
-      const sourcePath = join(configDir, space.source);
-      if (!existsSync(sourcePath)) errors.push(`${spaceId}: source does not exist: ${sourcePath}`);
-      else
+      const sources = [space.source, ...(space.sourceMerge ?? [])];
+      for (const source of sources) {
+        const sourcePath = join(configDir, source);
+        if (!existsSync(sourcePath)) {
+          errors.push(`${spaceId}: source does not exist: ${sourcePath}`);
+          continue;
+        }
         for (const file of sourceFiles(sourcePath)) {
           if (!existsSync(file)) errors.push(`${spaceId}: source does not exist: ${file}`);
           else validateJson(ajv, sourceValidator, file, errors);
         }
+      }
+      if (sources.every((source) => existsSync(join(configDir, source)))) {
+        try {
+          extractMessagesSources(
+            sources.map((source) => ({ path: join(configDir, source), reference: source })),
+            spaceId,
+          );
+        } catch (error) {
+          errors.push(`${spaceId}: ${error instanceof Error ? error.message : String(error)}`);
+        }
+      }
     }
     if (space.kind === "content") {
       if (space.transientRender) continue;

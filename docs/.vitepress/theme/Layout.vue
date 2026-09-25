@@ -12,8 +12,12 @@ const { Layout } = DefaultTheme;
       Flexbox ordering (see <style>) repositions it right after .translations (order 1). Hidden at
       768–1280 px where VPNavBarExtra (kebab) takes over. The appearance toggle now lives inside
       ThemeSelector's ThemeColorPicker instead of its own nav-bar slot.
+
+      SidebarToggle is a direct content-body flex item so its configured `start` placement can move
+      it before search. It appears at ≥960px, where VitePress hides its own local-nav menu.
     -->
     <template #nav-bar-content-after>
+      <SidebarToggle />
       <div class="VPNavBarThemeSelector">
         <ThemeSelector />
       </div>

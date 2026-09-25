@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-18 02:02+0000\n"
+"PO-Revision-Date: 2026-09-25 21:20+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -644,7 +644,7 @@ msgstr "`.--background-ai-horizontal` — مساعدات تدرج بلون مم�
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/ai-gradient/index.ts)"
-msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/gap/index.ts)"
+msgstr "**Source:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/ai-gradient/index.ts)"
 
 #: css/ai-gradient.md
 #, no-c-format
@@ -718,7 +718,8 @@ msgctxt "docs.api:prose"
 msgid "\n  Oops! You're using the \"error\" color.\n  "
 msgstr "\n  تهانينا! أنت تستخدم لون \"success\".\n  "
 
-#: css/alert.md css/banner.md renderers/web-components/src/variables/modal.md
+#: css/alert.md css/banner.md css/button-set.md
+#: renderers/web-components/src/variables/modal.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Cancel"
@@ -863,7 +864,7 @@ msgid "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/ma
 msgstr "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/avatar/avatar.css)"
 
 #: css/avatar.md css/close-button.md css/in-place-edit.md css/modal.md
-#: css/tooltip.md
+#: css/tabs.md css/tooltip.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "This component's CSS renders and works on its own; pair it with `@pantoken/interactions` to add the interactive behavior. See the [modifier table below](#modifiers)."
@@ -897,19 +898,19 @@ msgstr "د. Nguyen Van Thoc"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Miguel Sanchez"
-msgstr "Miguel Sanchez"
+msgstr "ميغيل سانشيز"
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Miguel"
-msgstr "Miguel"
+msgstr "ميغيل"
 
 #: css/avatar.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Sanchez"
-msgstr "Sanchez"
+msgstr "سانشيز"
 
 #: css/avatar.md
 #, fuzzy, no-c-format
@@ -1597,6 +1598,150 @@ msgctxt "docs.api:prose"
 msgid "Small. @affects breadcrumb.link — Scales the crumb separator's spacing to match. Long-form alias of `-size-sm`."
 msgstr "صغير. @affects breadcrumb.link — يضبط تباعد فاصل فتات الخبز للمطابقة. اسم بديل طويل لـ `-size-sm`."
 
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`.instui-button-set` — A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
+msgstr "`.instui-button-set` — صف أزرار متلاصق (محاذي، بلا فواصل)،) مع تقويس الزاويتين الخارجيتين فقط."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead."
+msgstr "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`)) تحدد الافتراضي لكل عنصر فرعي\n  `.instui-button` `.instui-button` لا يحمل معدلًا خاصًا به في نفس الفئة — فصنف المُعدِّل الخاص بالزر يفوق دائمًا افتراض المجموعة. `-icon-*` دائمًا لكل زر؛ لا يُقرأ أبدًا من المجموعة. الأسماء المستبدلة المهجورة للأزرار (`-ghost`, `-color-primary-inverse`)\n) غير مدعومة كمعدِّلات على مستوى المجموعة — استخدم بدائلها الرسمية\n  (`-color-tertiary`, `-on-color`)) بدلاً من ذلك."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Left"
+msgstr "يسار"
+
+#: css/button-set.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Right"
+msgstr "light"
+
+#: css/button-set.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Confirm"
+msgstr "### config"
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the AI gradient treatment."
+msgstr "تعيين كل عنصر فرعي غير معدل افتراضيًا إلى معالجة التدرج الذكي (AI)."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the lower-emphasis AI treatment."
+msgstr "تعيين كل عنصر فرعي غير معدل افتراضيًا إلى معالجة الذكاء الاصطناعي ذات التأكيد الأقل."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the destructive color."
+msgstr "تعيين كل عنصر فرعي غير معدل افتراضيًا إلى اللون التحتي (المدمّر)."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the primary color."
+msgstr "تعيين كل عنصر فرعي غير معدل افتراضيًا إلى اللون الأساسي."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the secondary color."
+msgstr "تعيين كل عنصر فرعي غير معدل افتراضيًا إلى اللون الثانوي."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the success color."
+msgstr "تعيين كل عنصر فرعي غير معدل افتراضيًا إلى لون النجاح."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the tertiary (text-style) color."
+msgstr "تعيين كل عنصر فرعي غير معدل افتراضيًا إلى اللون الثلاثي (نمط النص))."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to tighter padding."
+msgstr "تعيين كل عنصر فرعي غير معدل افتراضيًا إلى مسافة داخلية أصغر."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Lay every unmodified child out full-width."
+msgstr "عرض كل عنصر فرعي غير معدل بعرض كامل."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child for placement on a coloured surface."
+msgstr "تعيين كل عنصر فرعي غير معدل افتراضيًا ليتم وضعه على سطح ملون."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to a round icon button."
+msgstr "تعيين كل عنصر فرعي غير معدل افتراضيًا إلى زر أيقونة دائري."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to a square icon button."
+msgstr "تعيين كل عنصر فرعي غير معدل افتراضيًا إلى زر أيقونة مربع."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to large."
+msgstr "تعيين كل عنصر فرعي غير معدل افتراضيًا إلى كبير."
+
+#: css/button-set.md css/button.md css/close-button.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "(default) medium size."
+msgstr "(الافتراضي) حجم متوسط."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to small."
+msgstr "تعيين كل عنصر فرعي غير معدل افتراضيًا إلى صغير."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to the pressed-state toggle treatment."
+msgstr "تعيين كل عنصر فرعي غير معدل افتراضيًا إلى معاملة تبديل حالة الضغط."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to no fill."
+msgstr "تعيين كل عنصر فرعي غير معدل افتراضيًا إلى بدون تعبئة."
+
+#: css/button-set.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Default every unmodified child to no border."
+msgstr "تعيين كل عنصر فرعي غير معدل افتراضيًا إلى بدون حد."
+
+#: css/button-set.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "- [button](/api/css/button.md) — The child control this wraps."
+msgstr "- [close-button](/api/css/close-button.md) — زر إغلاق أيقوني فقط."
+
 #: css/button.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -1716,12 +1861,6 @@ msgstr "زر أيقونة دائري."
 msgctxt "docs.api:prose"
 msgid "A square icon button."
 msgstr "زر أيقونة مربع."
-
-#: css/button.md css/close-button.md
-#, fuzzy, no-c-format
-msgctxt "docs.api:prose"
-msgid "(default) medium size."
-msgstr "(الافتراضي) حجم متوسط."
 
 #: css/button.md css/close-button.md
 #, fuzzy, no-c-format
@@ -3461,6 +3600,12 @@ msgid "An accessible action control, styled from the token palette; primary by d
 msgstr "عنصر تحكم فعل قابل للوصول، مصمم من لوحة الرموز؛ أساسي بشكل افتراضي."
 
 #: css/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
+msgstr "صف أزرار متلاصق (محاذي، بلا فواصل))، مع تقويس الزاويتين الخارجيتين فقط."
+
+#: css/index.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "A media object: a hero figure beside a title and description."
@@ -3731,10 +3876,10 @@ msgid "A styled native `<select>` with a caret, matching the text-input states a
 msgstr "`.instui-simple-select` — `<select>` أصلية مُنسَّقة ذات مؤشر، تتطابق مع حالات وأحجام حقل النص."
 
 #: css/index.md
-#, fuzzy, no-c-format
+#, no-c-format
 msgctxt "docs.api:prose"
-msgid "An animated loading ring; give it role=\"status\" and an aria-label."
-msgstr "حلقة تحميل متحركة؛ امنحها role=\"status\" و aria-label."
+msgid "An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "حلقة تحميل متحركة أو مؤشر دوار ذكاء اصطناعي؛ امنحها role=\"status\" و aria-label."
 
 #: css/index.md
 #, fuzzy, no-c-format
@@ -3891,6 +4036,12 @@ msgstr "نظام الأيقونات: أحجام `.instui-icon` زائد الرا
 msgctxt "docs.api:prose"
 msgid "Display and text-align utilities — `.--display-<value>` and `.--text-align-<value>` — as composable, global classes, usable bare or chained onto any component."
 msgstr "`.--display-flex` — أدوات العرض ومحاذاة النص — `.--display-<value>` و `.--text-align-<value>` — كصفوف عالمية قابلة للتركيب، قابلة للاستخدام بمفردها أو مرتبطة بأي مكوّن."
+
+#: css/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The logo system: `.instui-logo` sizing plus the shared `-logo-<name>` painter that masks a product logo (in `currentColor`) before any element, preserving the logo's own aspect ratio instead of a fixed 1:1 box."
+msgstr "نظام الأيقونات: أحجام `.instui-icon` زائد الراسم المشترك `-icon-<name>` الذي يقنع غليف (في `currentColor`) قبل أي عنصر."
 
 #: css/index.md
 #, no-c-format
@@ -4295,6 +4446,24 @@ msgstr "صغير. @affects list.item — يغير مقياس تباعد العن
 msgctxt "docs.api:prose"
 msgid "Remove markers and padding."
 msgstr "إزالة العلامات والحشوة."
+
+#: css/logo.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "`.instui-logo` — The logo system: `.instui-logo` sizing plus the shared `-logo-<name>` painter that masks a product logo (in `currentColor`) before any element, preserving the logo's own aspect ratio instead of a fixed 1:1 box."
+msgstr "`.instui-icon` — نظام الأيقونات: قياسات `.instui-icon` بالإضافة إلى الراسم المشترك `-icon-<name>` الذي يقنع الغليف (في `currentColor`) قبل أي عنصر."
+
+#: css/logo.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A logo is meaningful, not decorative — give the host element `role=\"img\"` and an `aria-label` naming the product; never mark it `aria-hidden`."
+msgstr "الشعار ذو معنى وليس زخرفي — امنح عنصر المضيف `role=\"img\"` ووسم `aria-label` يسمي المنتج؛ لا تضعه أبدًا على أنه `aria-hidden`."
+
+#: css/logo.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Set the glyph token (`--pantoken-glyph`) and its aspect ratio (`--pantoken-logo-aspect`), then render both via the shared painter (for example `-logo-canvas-horizontal-color`, from `@pantoken/plugin-logos`)."
+msgstr "عيّن توكن الغليف (`--pantoken-glyph`) ورسمه عبر الراسم المشترك (على سبيل المثال `-icon-search`)."
 
 #: css/logos.md
 #, no-c-format
@@ -6840,7 +7009,7 @@ msgstr "عنون `<nav>` بواسطة aria-label بحيث يتم الإعلان 
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "Calendar"
-msgstr "calendar"
+msgstr "التقويم"
 
 #: css/side-nav-bar.md renderers/web-components/src/variables/drilldown.md
 #, fuzzy, no-c-format
@@ -6959,14 +7128,14 @@ msgstr "أدوات الحشو بصيغ قصيرة، وصيغ طويلة قديم
 #: css/spinner.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "`.instui-spinner` — An animated loading ring; give it role=\"status\" and an aria-label."
-msgstr "`.instui-spinner` — حلقة تحميل متحركة؛ امنحها role=\"status\" و aria-label."
+msgid "`.instui-spinner` — An animated loading ring or AI spinner; give it role=\"status\" and an aria-label."
+msgstr "`.instui-spinner` — حلقة تحميل متحركة أو مؤشر دوران للذكاء الاصطناعي; امنحها role=\"status\" و aria-label."
 
 #: css/spinner.md
-#, fuzzy, no-c-format
+#, no-c-format
 msgctxt "docs.api:prose"
-msgid "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color."
-msgstr "`-color-inverse` يعيد طلاء مقطع الحد العلوي المتحرك فقط، وليس المسار بأكمله، لذا لا يزال يظهر بشكل صحيح على بطاقة داكنة دون الحاجة إلى لون مسار منفصل."
+msgid "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color. The AI variants replace the ring with the centred `ai-spinner` glyph while keeping the same size scale."
+msgstr "`-color-inverse` يعيد رسم مقطع الحد العلوي المتحرك فقط، وليس المسار بأكمله، لذا يظل مقروءًا بشكل صحيح على بطاقة داكنة دون الحاجة إلى لون مسار منفصل. تستبدل متغيرات الذكاء الاصطناعي الحلقة بالرمز `ai-spinner` المتمركز مع الحفاظ على نفس مقياس الحجم."
 
 #: css/spinner.md
 #, no-c-format
@@ -6979,6 +7148,18 @@ msgstr "**Source:** [spinner.css](https://github.com/thedannywahl/pantoken/blob/
 msgctxt "docs.api:prose"
 msgid "Give the spinner role=\"status\" and an aria-label so screen readers announce it as a live loading status."
 msgstr "امنح المؤشر role=\"status\" و aria-label حتى تُعلن قارئات الشاشة عنه كحالة تحميل مباشرة."
+
+#: css/spinner.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rotating AI-gradient star."
+msgstr "نجمة متدرجة للذكاء الاصطناعي تدور."
+
+#: css/spinner.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rotating on-colour AI star for a coloured or dark surface."
+msgstr "نجمة ذكاء اصطناعي ملونة دوارة لسطح ملون أو داكن."
 
 #: css/spinner.md
 #, fuzzy, no-c-format
@@ -6997,6 +7178,12 @@ msgstr "صغير جدًا. اسم مُطوّل مرادف لـ `-size-xs`."
 msgctxt "docs.api:prose"
 msgid "Extra-small."
 msgstr "صغير جدًا."
+
+#: css/spinner.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Rotates the ring, or the AI star at the slower 2.25-second cadence."
+msgstr "تدور الحلقة، أو نجمة الذكاء الاصطناعي بإيقاع أبطأ يبلغ 2.25 ثانية."
 
 #: css/stacking.md
 #, no-c-format
@@ -7249,6 +7436,24 @@ msgstr "السجل"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The Overview tab's content shows here."
+msgstr "يظهر محتوى علامة التبويب «نظرة عامة» هنا."
+
+#: css/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The Details tab's content shows here."
+msgstr "يظهر محتوى علامة التبويب «نظرة عامة» هنا."
+
+#: css/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The Disabled tab's content won't be visible."
+msgstr "يظهر محتوى علامة التبويب «نظرة عامة» هنا."
+
+#: css/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The History tab's content shows here."
 msgstr "يظهر محتوى علامة التبويب «نظرة عامة» هنا."
 
 #: css/tabs.md
@@ -7737,7 +7942,7 @@ msgctxt "docs.api:prose"
 msgid "**Source:** [toggle-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/toggle-group/toggle-group.css)"
 msgstr "**Source:** [toggle-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/toggle-group/toggle-group.css)"
 
-#: css/toggle-group.md
+#: css/toggle-group.md renderers/web-components/src/variables/tabs.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Advanced settings"
@@ -7957,7 +8162,7 @@ msgstr " ملفات المقرر الدراسي"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid " Syllabus.pdf"
-msgstr " Syllabus.pdf"
+msgstr " المنهج الدراسي.pdf"
 
 #: css/tree-browser.md
 #, no-c-format
@@ -7969,19 +8174,19 @@ msgstr " الأسبوع 1"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid " Reading.pdf"
-msgstr " Reading.pdf"
+msgstr " القراءة.pdf"
 
 #: css/tree-browser.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid " Slides.pptx"
-msgstr " Slides.pptx"
+msgstr " الشرائح.pptx"
 
 #: css/tree-browser.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid " Rubric.docx"
-msgstr " Rubric.docx"
+msgstr " معيار التقييم.docx"
 
 #: css/tree-browser.md
 #, fuzzy, no-c-format
@@ -9093,6 +9298,12 @@ msgctxt "docs.api:prose"
 msgid "Also emit the deprecated InstUI-prop glyph aliases (`-render-icon-<name>`, `-render-custom-icon-<name>`)\nas functional aliases of `-icon-<name>`. Off by default — turning it on roughly doubles the sheet, so\nenable it only when you need markup written against the old `renderIcon`/`renderCustomIcon` prop names\nto keep rendering. The shipped `icons.css` is built with this on."
 msgstr "أضف أيضاً إصدار أسماء الرموز المهجورة لخاصية InstUI (`-render-icon-<name>`, `-render-custom-icon-<name>`) كأسماء بديلة وظيفية لـ `-icon-<name>`. معطلة افتراضياً — فتمكينها يضاعف حجم الورقة تقريباً، لذا فعّلها فقط عندما تحتاج إلى شيفرة تعليمية مكتوبة باسمَي الخاصية القديمين `renderIcon`/`renderCustomIcon` للحفاظ على العرض. الإصدار الموزع `icons.css` مُنشأ مع تمكين هذا الخيار."
 
+#: formats/components/src/interfaces/IconGlyphsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Icon name → `--instui-icon-<name>` data-URI value. When given, the sheet also declares those\ncustom properties in `:root`, making it self-contained: the glyphs paint without a separate\ntoken sheet loaded alongside. Omit to emit the lean mapping-only sheet."
+msgstr "اسم الأيقونة → `--instui-icon-<name>` قيمة data-URI. عند التوفير، تصفح الأوراق أيضاً تلك\nالخصائص المخصصة في `:root`، مما يجعلها مكتفية ذاتياً: تُعرض الرموز دون ورقة توكن منفصلة محملة بجانبها. احذفها لإصدار ورقة مخطط خفيفة مخصصة للترابط فقط."
+
 #: formats/components/src/interfaces/ProseOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9124,6 +9335,12 @@ msgstr "يتم إصدار كل مستوى ارتفاع وكل اسم مستعا�
 msgctxt "docs.api:prose"
 msgid "The elements the ring applies to by default (the common interactive/focusable elements)."
 msgstr "العناصر التي ينطبق عليها الخاتم افتراضيًا (العناصر التفاعلية/القابلة للتركيز الشائعة)."
+
+#: formats/components/src/variables/aiGradientCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The AI gradient utility as a standalone, header-wrapped stylesheet."
+msgstr "أداة التدرج اللوني الخاصة بالذكاء الاصطناعي كملف أنماط مستقل مغلف برأس."
 
 #: formats/components/src/variables/alertCss.md
 #, fuzzy, no-c-format
@@ -9659,6 +9876,106 @@ msgctxt "docs.api:prose"
 msgid "**Wrap a section in a CSS cascade layer**"
 msgstr "**غلف قسمًا في طبقة تدرج CSS**"
 
+#: formats/css/src/functions/darkBranch.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The dark branch of a `light-dark()` value, or `null` when the value isn't one."
+msgstr "الفرع الداكن من قيمة `light-dark()`، أو `null` عندما لا تكون القيمة كذلك."
+
+#: formats/css/src/functions/lightBranch.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The light branch of a `light-dark()` value, or `null` when the value isn't one."
+msgstr "الفرع الفاتح من قيمة `light-dark()`، أو `null` عندما لا تكون القيمة كذلك."
+
+#: formats/css/src/functions/multiScopeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The complete multi-scope sheet: layer order, one set of `@property` registrations, a shared base\nblock, a token block per theme, and the light/dark `color-scheme` pins."
+msgstr "ورقة النطاقات المتعددة الكاملة: ترتيب الطبقات، مجموعة واحدة من `@property` التسجيلات، قاعدة مشتركة\nblock، كتلة توكن لكل سمة، ودبابيس `color-scheme` الفاتح/الداكن."
+
+#: formats/css/src/functions/multiScopeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Tokens are partitioned by whether their value actually varies across `themes`. Invariant tokens go\nin the shared base block once; varying tokens are repeated in full in *every* theme block. That\nsecond half is what makes nesting safe — a theme block that omitted a varying token would inherit\nthe enclosing scope's value for it."
+msgstr "يتم تقسيم التوكنات بحسب ما إذا كانت قيمتها تختلف فعليًا عبر `themes`. التوكنات الثابتة توضع\nفي كتلة القاعدة المشتركة مرة واحدة؛ التوكنات المتغيرة تتكرر بالكامل في *كل* كتلة سمة. تلك\n النصف الثاني هو ما يجعل التعشيق آمنًا — كتلة السمة التي تحذف توكنًا متغيرًا سترث\nقيمة النطاق المحيط له."
+
+#: formats/css/src/functions/propertiesCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The document-global `@property` registrations, with no declarations. Load this once per document;\nevery theme sheet below is declarations only, so loading a second theme cannot clobber it."
+msgstr "تسجيلات `@property` على مستوى المستند، بدون إعلانات. حمّل هذا مرة واحدة لكل مستند؛\nكل ورقة سمة أدناه تحتوي على إعلانات فقط، لذا لا يمكن لتحميل سمة ثانية أن تتجاوزها."
+
+#: formats/css/src/functions/schemeOverrideTokens.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The tokens whose value actually changes when a theme is pinned to `scheme` — i.e. the ones written\nwith `light-dark()`. This is the minimal forcing block for `[data-pantoken-scheme]`."
+msgstr "التوكنات التي تتغير قيمتها فعليًا عندما تثبت السمة على `scheme` — أي تلك المكتوبة\nبـ `light-dark()`. هذا هو كتلة الإجبار الأدنى لـ `[data-pantoken-scheme]`."
+
+#: formats/css/src/functions/schemeScopeSelector.md
+#: packages/utils/src/functions/schemeScopeSelector.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The selector matching any element pinned to `scheme`."
+msgstr "المحدد الذي يطابق أي عنصر مثبت على `scheme`."
+
+#: formats/css/src/functions/schemeScopeSelectors.md
+#: packages/utils/src/functions/schemeScopeSelectors.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Both forms of the scheme scope selector, as a selector list."
+msgstr "كلا صورتَي محدد نطاق المخطط، كقائمة محددات."
+
+#: formats/css/src/functions/schemesCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The light and dark scheme pins, as a standalone sheet. Theme-independent — the scheme only decides\nwhich branch of `light-dark()` wins, which the browser does for us."
+msgstr "دبابيس المخطط الفاتح والداكن، كـ ورقة مستقلة. مستقلة عن السمة — يقرر المخطط أي فرع من `light-dark()` يفوز، وهذا ما يقوم به المتصفح نيابةً عنا."
+
+#: formats/css/src/functions/scopedSchemeCss.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pin a subtree's color scheme."
+msgstr "نمط ألوان داكن (عكسي)."
+
+#: formats/css/src/functions/scopedSchemeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`color-scheme` is an ordinary inherited property, so one rule keyed to the scope attribute (or its\nclass twin) resolves every `light-dark()` token below it. No token needs flattening: this sheet is\na couple of hundred bytes, not the ~87kb an explicit per-token override table would cost."
+msgstr "`color-scheme` خاصية موروثة عادية، لذا فإن قاعدة واحدة مرتبطة بسمَة النطاق (أو شقيقتها بالـ\nclass)) تحل كل `light-dark()` التوكنات أسفله. لا حاجة لتسطيح أي توكن: هذه الورقة\nبضع مئات من البايتات، وليست ~87kb التي ستكلفها جدول تجاوز صريح لكل توكن."
+
+#: formats/css/src/functions/scopedThemeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "One theme's complete token set, scoped to any element carrying `data-pantoken-theme=\"<theme>\"` or\nthe equivalent `.--pantoken-theme-<theme>` class."
+msgstr "مجموعة التوكنات الكاملة لسمة واحدة، مقيّدة بأي عنصر يحمل `data-pantoken-theme=\"<theme>\"` أو\nالشبيه `.--pantoken-theme-<theme>` class."
+
+#: formats/css/src/functions/scopedThemeCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every token is emitted as a declaration — including the concrete ones that would normally become\n`@property` initial-values — because an initial-value is document-global and cannot vary per scope."
+msgstr "يُصدر كل توكن كإعلان — بما في ذلك القيم الملموسة التي عادةً ما تصبح\n`@property` قيمًا ابتدائية لـ@property — لأن القيمة الابتدائية على مستوى المستند ولا يمكن أن تختلف بحسب النطاق."
+
+#: formats/css/src/functions/themeScopeSelector.md
+#: packages/utils/src/functions/themeScopeSelector.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The selector matching any element that roots `theme`."
+msgstr "المحدد الذي يطابق أي عنصر يؤسس `theme` للسمة."
+
+#: formats/css/src/functions/themeScopeSelectors.md
+#: packages/utils/src/functions/themeScopeSelectors.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Both forms of the theme scope selector, as a selector list."
+msgstr "كلا صورتَي محدد نطاق السمة، كقائمة محددات."
+
+#: formats/css/src/functions/themedTokens.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a theme token set with optional icon removal and light/dark collapse."
+msgstr "بناء مجموعة توكنات سمة مع خيار إزالة الأيقونات وطي الفاتح/الداكن."
+
 #: formats/css/src/functions/toCss.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -9713,6 +10030,50 @@ msgctxt "docs.api:prose"
 msgid "Plain layer name (e.g. `\"pantoken\"`), no `@` prefix. Omit to skip the wrapper."
 msgstr "اسم طبقة عادي (مثال: `\"pantoken\"`), بدون بادئة `@`. اتركه لتخطي الغلاف."
 
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [multiScopeCss](../functions/multiScopeCss.md)."
+msgstr "خيارات لـ [toCss](../functions/toCss.md)."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#: formats/css/src/interfaces/ScopedCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Drop the `--instui-icon-*` glyph tokens (default `false`)."
+msgstr "السمة التي تؤخذ منها طبقة `--instui-*` (الافتراضي `\"rebrand\"`)."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#: formats/css/src/interfaces/ScopedCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Plugins whose `css` hooks run after the base CSS is built."
+msgstr "الإضافات التي تعمل مقابس `css` الخاصة بها بعد بناء CSS الأساسي (الافتراضي: لا شيء)."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Themes to emit scope blocks for."
+msgstr "السمات التي ستصدر لها كتل نطاق."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The theme whose concrete tokens back the one-time `@property` registrations."
+msgstr "السلسلة الجاهزة لورقة الأنماط `rebrand` (مُصنفة: الرموز الملموسة كـ `@property` تسجيلات)."
+
+#: formats/css/src/interfaces/MultiScopeCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Include the light/dark `color-scheme` pins (default `true`; see [schemesCss](../functions/schemesCss.md))."
+msgstr "تضمين دبابيس `color-scheme` الفاتح/الداكن (الافتراضي `true`; انظر [schemesCss](../functions/schemesCss.md)))."
+
+#: formats/css/src/interfaces/ScopedCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options shared by the scoped emitters."
+msgstr "خيارات مشتركة بين مُرسِلات فئات الأدوات."
+
 #: formats/css/src/interfaces/ToCssOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -9728,8 +10089,93 @@ msgstr "يتم إصدار التصريحات ذات نطاق المحدد تحت
 #: formats/css/src/interfaces/ToCssOptions.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
+msgid "Plain cascade layer name wrapping the declarations (no `@` prefix). Omit to skip the wrapper."
+msgstr "اسم طبقة عادي (مثال: `\"pantoken\"`), بدون بادئة `@`. اتركه لتخطي الغلاف."
+
+#: formats/css/src/interfaces/ToCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Which half of the sheet to emit (default `\"all\"`)."
+msgstr "السمة التي ستصدر (الافتراضي: `\"rebrand\"`)."
+
+#: formats/css/src/interfaces/ToCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Emit every token as a declaration rather than routing concrete tokens to `@property`. Required\nfor a theme block that can nest inside another theme's subtree: an incomplete block would\ninherit the enclosing theme's values for the tokens it omits."
+msgstr "أصدر كل توكن كإعلان بدلًا من توجيه التوكنات الملموسة إلى `@property`. مطلوب\n لكتلة سمة يمكن أن تتعشّق داخل شجرة سمة أخرى: الكتلة الناقصة سترث\nقيم السمة الحاوية للتوكنات التي تحذفها."
+
+#: formats/css/src/interfaces/ToCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
 msgid "Plugins whose `css` hooks run after the base CSS is built (default: none)."
 msgstr "الإضافات التي تعمل مقابس `css` الخاصة بها بعد بناء CSS الأساسي (الافتراضي: لا شيء)."
+
+#: formats/css/src/type-aliases/CssEmitTarget.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Which half of the sheet to emit."
+msgstr "أي نصف من الورقة يصدر."
+
+#: formats/css/src/type-aliases/CssEmitTarget.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`@property` registrations are document-global — the last registration of a given name wins for the\nwhole document — so two full sheets on one page fight over every concrete token. Emitting\nregistrations once (`\"properties\"`) and each theme as declarations only (`\"declarations\"`) lets\nseveral themes coexist."
+msgstr "`@property` التسجيلات على مستوى المستند — آخر تسجيل لاسم معين يفوز للمستند بأكمله — لذا فإن ورقتين كاملتين على صفحة واحدة تتصارعان على كل توكن ملموس. إصدار\nالتسجيلات مرة واحدة (`\"properties\"`)) وكل سمة كإعلانات فقط (`\"declarations\"`)) يسمح\nبتعايش عدة سمات."
+
+#: formats/css/src/type-aliases/Scheme.md
+#: formats/scope/src/type-aliases/Scheme.md
+#: packages/utils/src/type-aliases/Scheme.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A color scheme a scope can be pinned to."
+msgstr "مخطط ألوان يمكن تثبيت نطاق عليه."
+
+#: formats/css/src/variables/BOUNDARY_ATTR.md
+#: packages/utils/src/variables/BOUNDARY_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute marking a scope that ancestor resolution must not cross."
+msgstr "سمَة تشير إلى نطاق يجب ألا يعبره حل السلف."
+
+#: formats/css/src/variables/BOUNDARY_CLASS.md
+#: packages/utils/src/variables/BOUNDARY_CLASS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Class equivalent of `data-pantoken-boundary`."
+msgstr "معادل الفئة لـ `data-pantoken-boundary`."
+
+#: formats/css/src/variables/COLOR_ATTR.md
+#: packages/utils/src/variables/COLOR_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute that selects a custom brand color."
+msgstr "سمَة تختار لون علامة تجارية مخصص."
+
+#: formats/css/src/variables/LAYERS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Cascade layers this module emits into, in ascending precedence order."
+msgstr "طبقات التتابع التي يصدرها هذا الموديول بترتيب تصاعدي للأسبقية."
+
+#: formats/css/src/variables/SCHEME_ATTR.md
+#: packages/utils/src/variables/SCHEME_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute that pins a subtree to a color scheme."
+msgstr "سمَة تثبت شجرة فرعية على مخطط ألوان."
+
+#: formats/css/src/variables/THEME_ATTR.md
+#: packages/utils/src/variables/THEME_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute that roots a theme scope. Matches any element, not just `:root`."
+msgstr "سمَة تؤسس نطاق سمة. تطابق أي عنصر، ليس فقط `:root`."
+
+#: formats/css/src/variables/colorClass.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Class equivalent of `data-pantoken-color`."
+msgstr "معادل الفئة لـ `data-pantoken-color`."
 
 #: formats/css/src/variables/css.md
 #, fuzzy, no-c-format
@@ -9742,6 +10188,18 @@ msgstr "السلسلة الجاهزة لورقة الأنماط `rebrand` (مُ�
 msgctxt "docs.api:prose"
 msgid "The lean `rebrand` stylesheet string — the full sheet minus the `--instui-icon-*` glyph tokens (the\n~1,777 icon data-URIs that make up most of [css](css.md)). Roughly a sixth the size over the wire; the\nrecommended foundation for CDN/embed delivery. Components reference only a handful of icons, shipped\nseparately as `@pantoken/components`'s `component-icons.css`; consumers who use `var(--instui-icon-*)`\nbroadly should load the full [css](css.md) (or the `icons.css` glyph sheet). See\n`@pantoken/css/style.lean.css`."
 msgstr "سلسلة ورقة الأنماط الخفيفة `rebrand` — الورقة الكاملة بدون توكنات الرموز `--instui-icon-*` (حوالي\n~1,777 من بيانات URI للرموز التي تشكل معظم [css](css.md)). تقارب سدس الحجم عند النقل؛ الأساس الموصى به لتسليم عبر CDN/التضمين. تشير المكونات إلى عدد قليل فقط من الأيقونات، المشحونة بشكل منفصل كـ `@pantoken/components`'s `component-icons.css`; المستهلكون الذين يستخدمون `var(--instui-icon-*)` على نطاق واسع يجب أن يحملوا الـ [css](css.md) الكامل (أو ورقة الرموز `icons.css`). انظر\n`@pantoken/css/style.lean.css`."
+
+#: formats/css/src/variables/schemeClass.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Class equivalent of `data-pantoken-scheme`."
+msgstr "معادل الفئة لـ `data-pantoken-scheme`."
+
+#: formats/css/src/variables/themeClass.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Class equivalents of the scope attributes, for hosts that sanitize `data-*` but allow `class` —\nCanvas RCE content being the one that forced them. They follow the repo's global-modifier naming\n(`.--name`), and the emitter pairs each attribute selector with its class twin."
+msgstr "معادلات الفئة لسمات النطاق، للمضيفين الذين يقومون بتطهير `data-*` ولكن يسمحون بالـ `class` —\nمحتوى Canvas RCE كان السبب في فرضها. تتبع تسمية المعدل العام في المستودع\n(`.--name`))، ويقرن المصدِر كل محدد سمة مع شقيقته من الفئة."
 
 #: formats/dtcg/src/functions/byTheme.md
 #, fuzzy, no-c-format
@@ -9928,9 +10386,9 @@ msgid "Icon name → hex codepoint (e.g. `\"e001\"`)."
 msgstr "اسم الأيقونة → قيمة نقطة الكود السداسية (مثال `\"e001\"`)."
 
 #: formats/icons/src/functions/buildIconResolverChain.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Build the shared icon-resolver chain: plugin `rehype` resolvers first, then an explicit\n`resolve`, then the built-in pantoken icon set. Used by `@pantoken/rehype` and\n`@pantoken/markdown-it` so the resolution order stays identical across renderers."
+msgid "Build the shared icon-resolver chain: an explicit `resolve` first, then the built-in pantoken\nicon set, then plugin `rehype` resolvers (so a plugin can add codes the built-in set doesn't\nknow, but never shadow a built-in icon name). Used by `@pantoken/rehype` and\n`@pantoken/markdown-it` so the resolution order stays identical across renderers."
 msgstr "بناء سلسلة مُحلّل الأيقونات المشتركة: محلِّلات الإضافة `rehype` أولاً، ثم `resolve` الصريح، ثم مجموعة أيقونات pantoken المدمجة. تُستخدم بواسطة `@pantoken/rehype` و\n`@pantoken/markdown-it` بحيث يظل ترتيب الحلول متماثلاً عبر العارضين."
 
 #: formats/icons/src/functions/getIcon.md
@@ -9968,7 +10426,7 @@ msgstr "مُحِل صريح يُجرَّب قبل مجموعة أيقونات pa
 #: renderers/rehype/src/interfaces/RehypeOptions.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Plugins whose `rehype` hooks contribute resolvers (tried first)."
+msgid "Plugins whose `rehype` hooks contribute resolvers (tried last, after the built-in set)."
 msgstr "الإضافات التي تُسهم خطاطيف `rehype` الخاصة بها في المُحِلات (تُجرَّب أولاً)."
 
 #: formats/icons/src/interfaces/PantokenIcon.md
@@ -10013,6 +10471,12 @@ msgctxt "docs.api:prose"
 msgid "The glyph origin."
 msgstr "أصل الشكل الرمزي."
 
+#: formats/icons/src/variables/customIcons.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every Instructure-authored custom icon."
+msgstr "**تقييد إلى الرموز التي ألفتها Instructure فقط**"
+
 #: formats/icons/src/variables/icons.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -10024,6 +10488,12 @@ msgstr "كل أيقونات pantoken، مرتبة حسب الاسم."
 msgctxt "docs.api:prose"
 msgid "Every pantoken icon, keyed by name."
 msgstr "كل أيقونة pantoken، مفهرسة حسب الاسم."
+
+#: formats/icons/src/variables/lucideIcons.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every canonical Lucide icon."
+msgstr "كل أيقونة Lucide القانونية."
 
 #: formats/icons/src/variables/resolve.md
 #, fuzzy, no-c-format
@@ -10114,6 +10584,12 @@ msgstr "المهلة عبارة عن خيار صريح بالملي ثانية �
 msgctxt "docs.api:prose"
 msgid "Wire open/close commands plus width-based responsive overlay switching onto a host: any\ncollapsible side panel (e.g. a drawer's tray) can import this interaction rather than each\ncomponent reimplementing it."
 msgstr "ربط أوامر الفتح/الإغلاق بالإضافة إلى تبديل تراكب متجاوب يعتمد على العرض إلى مضيف: أي\nلوحة جانبية قابلة للطي (مثل صينية الدرج) يمكنها استيراد هذا التفاعل بدلًا من أن يعيد كل\nمكوّن تنفيذها."
+
+#: formats/interactions/src/functions/initTabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Wire a tablist and its controlled panels inside a host element."
+msgstr "وصل قائمة علامات التبويب ولوحاتها المتحكم بها داخل عنصر المستضيف."
 
 #: formats/interactions/src/functions/initTooltip.md
 #, fuzzy, no-c-format
@@ -10374,6 +10850,12 @@ msgctxt "docs.api:prose"
 msgid "Exit treatment. Defaults to `\"fade\"`, matching InstUI Alert."
 msgstr "معاملة الخروج. القيم الافتراضية هي `\"fade\"`، مطابق لـ InstUI Alert."
 
+#: formats/interactions/src/interfaces/TabsHandle.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Controls the listeners installed by [initTabs](../functions/initTabs.md)."
+msgstr "المقبض الذي تُعيده [initTooltip](../functions/initTooltip.md)."
+
 #: formats/interactions/src/interfaces/TooltipHandle.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -10508,6 +10990,410 @@ msgstr "خيارات لـ [toLess](../functions/toLess.md)."
 msgctxt "docs.api:prose"
 msgid "The ready-made `rebrand` Less variable set."
 msgstr "المجموعة الجاهزة `rebrand` من متغيرات Less"
+
+#: formats/scope/src/functions/connectScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Run inside a frame: ask the host page's scope for its state and follow it."
+msgstr "تشغيل داخل إطار: اطلب حالة نطاق صفحة المضيف واتبعها."
+
+#: formats/scope/src/functions/connectScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The frame gets its own scope element, so it can be told to render a different theme or scheme than\nthe host — it is not inheriting ambiently."
+msgstr "الإطار يحصل على عنصر نطاق خاص به، لذا يمكن إخبارُه بعرض سمة أو مخطط مختلف عن المضيف — فهو لا يرث بشكل محيطي."
+
+#: formats/scope/src/functions/connectScope.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "A disconnect function."
+msgstr "إجراء مدمّر."
+
+#: formats/scope/src/functions/createScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Create a scope rooted at `element`."
+msgstr "إنشاء نطاق مؤسس عند `element`."
+
+#: formats/scope/src/functions/createScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "**Two independent themes on one page**"
+msgstr "**موضوعان مستقلان على صفحة واحدة**"
+
+#: formats/scope/src/functions/ensureProperties.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inject `css` into `doc` once. A second call with the same `id` does nothing, whichever instance\nmakes it."
+msgstr "حقن `css` في `doc` مرة واحدة. نداء ثانٍ بنفس `id` لا يفعل شيئًا، أيًا كانت النسخة\nالتي قامت به."
+
+#: formats/scope/src/functions/ensureProperties.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The registrations sheet, e.g. `@pantoken/css/properties.css`."
+msgstr "اسم حزمة npm، على سبيل المثال `\"@pantoken/components\"`."
+
+#: formats/scope/src/functions/ensureProperties.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`id` distinguishes unrelated sheets; `doc` defaults to the current document."
+msgstr "`id` يميّز الأوراق غير المرتبطة; `doc` يُعيّن افتراضيًا إلى المستند الحالي."
+
+#: formats/scope/src/functions/ensureProperties.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`true` when this call performed the injection."
+msgstr "`true` صحيح عندما قام هذا الاستدعاء بإجراء الحقن."
+
+#: formats/scope/src/functions/getScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The scope registered for `instanceId` in `doc`, if any."
+msgstr "النطاق المسجل لـ `instanceId` في `doc`, إن وُجد."
+
+#: formats/scope/src/functions/hasProperties.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "True when a registrations sheet with `id` is already present in `doc`."
+msgstr "صحيح عندما تكون ورقة تسجيل تحتوي على `id` موجودة بالفعل في `doc`."
+
+#: formats/scope/src/functions/isScheme.md
+#: packages/utils/src/functions/isScheme.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Narrow an arbitrary value to a [Scheme](../type-aliases/Scheme.md)."
+msgstr "قَيِّد قيمةً عشوائيةً إلى [Scheme](../type-aliases/Scheme.md)."
+
+#: formats/scope/src/functions/observeScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Call `listener` whenever the scope resolved for `target` changes, including when an ancestor's\nattributes change."
+msgstr "Call `listener` whenever the scope resolved for `target` يتغير، بما في ذلك عندما تتغير\nattributes أحد الأسلاف."
+
+#: formats/scope/src/functions/observeScope.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "A stop function."
+msgstr "customIcons"
+
+#: formats/scope/src/functions/resolveInstance.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The instance that owns `start`, falling back to [DEFAULT\\_INSTANCE](../variables/DEFAULT_INSTANCE.md)."
+msgstr "The instance that owns `start`, مع الرجوع إلى [DEFAULT\\_INSTANCE](../variables/DEFAULT_INSTANCE.md) عند الحاجة."
+
+#: formats/scope/src/functions/resolveInstance.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use this to decide whether an event or message is yours before acting on it."
+msgstr "استخدم هذا لتقرير ما إذا كان حدث أو رسالة تخصك قبل التعامل معها."
+
+#: formats/scope/src/functions/resolveScheme.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The effective color scheme for `start`: an explicit pin if any ancestor set one, otherwise the\n`color-scheme` the element actually computes to, otherwise the OS preference."
+msgstr "The effective color scheme for `start`: تثبيت صريح إذا حدده أي من الأسلاف، وإلا فـ\n`color-scheme` `color-scheme` الذي يحسبه العنصر فعلًا، وإلا تفضيل نظام التشغيل."
+
+#: formats/scope/src/functions/resolveScheme.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Never reads `document.documentElement` — that global read is exactly what desynchronises two\ninstances on one page."
+msgstr "Never reads `document.documentElement` — تلك القراءة العالمية هي بالضبط ما يسبّب عدم تزامن مثيلين على نفس الصفحة."
+
+#: formats/scope/src/functions/resolveScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve the scope in effect for `start` by walking up its ancestors."
+msgstr "Resolve the scope in effect for `start` عن طريق الصعود عبر الأسلاف."
+
+#: formats/scope/src/functions/resolveScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The element to resolve for. Its own attributes participate."
+msgstr "العنصر الذي سيتم حل النطاق له. تشارك سماته الخاصة."
+
+#: formats/scope/src/functions/resolveScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [ResolvedScope](../interfaces/ResolvedScope.md); fields no ancestor declared are left `undefined`."
+msgstr "The [ResolvedScope](../interfaces/ResolvedScope.md); تُترك الحقول التي لم يصرّح بها أي سلف على حالها `undefined`."
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "`@pantoken/scope` — run several pantoken themes and color schemes in one document."
+msgstr "`@pantoken/core` — محول pantoken."
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pantoken's CSS keys themes to a `data-pantoken-theme` attribute that matches *any* element, not\njust `:root`, so theming is a property of a subtree rather than of the page. This package is the\nruntime half of that contract:"
+msgstr "Pantoken's CSS keys themes to a `data-pantoken-theme` سمة تطابق *any* عنصرًا، وليس\nفقط `:root`، لذا فإن تطبيق السمات (theming) هو خاصية لشجرة فرعية بدلاً من الصفحة بأكملها. هذه الحزمة هي\nالنصف الزمني للتنفيذ من ذلك العقد:"
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "- [resolveScope](functions/resolveScope.md) walks up from an element to find the theme, scheme, and color in effect —\n  the auto-detection half.\n- [createScope](functions/createScope.md) declares a scope explicitly, with its own persisted state and its own frame\n  message channel — the manual-configuration half that stops two instances colliding.\n- [ensureProperties](functions/ensureProperties.md) injects the document-global `@property` registrations once, however\n  many instances ask for them."
+msgstr "- [resolveScope](functions/resolveScope.md) يصعد من العنصر لإيجاد السمة، والمخطط، واللون الجاري تطبيقه —\n  نصف الكشف التلقائي.\n- [createScope](functions/createScope.md) يعلن نطاقًا صراحةً، مع حالته المستمرة وقناة رسائل الإطار الخاصة به\n  — نصف التكوين اليدوي الذي يمنع تصادم مثالين.\n- [ensureProperties](functions/ensureProperties.md) يحقن تسجيلات `@property` الخاصة بالمستند مرة واحدة، مهما\n  كان عدد الأمثلة التي تطلبها."
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Node-free by design: this ships to the browser."
+msgstr "خالٍ من Node حسب التصميم: يُوزَّع إلى المتصفح."
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [BOUNDARY_ATTR](../../css/src/variables/BOUNDARY_ATTR.md)"
+msgstr "إعادة تصدير [BOUNDARY_ATTR](../../css/src/variables/BOUNDARY_ATTR.md)"
+
+#: formats/scope/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [BOUNDARY_CLASS](../../css/src/variables/BOUNDARY_CLASS.md)"
+msgstr "إعادة تصدير [BOUNDARY_CLASS](../../css/src/variables/BOUNDARY_CLASS.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [COLOR_ATTR](../../css/src/variables/COLOR_ATTR.md)"
+msgstr "إعادة تصدير [Mode](../../core/src/type-aliases/Mode.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [SCHEME_ATTR](../../css/src/variables/SCHEME_ATTR.md)"
+msgstr "إعادة تصدير [Mode](../../core/src/type-aliases/Mode.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [THEME_ATTR](../../css/src/variables/THEME_ATTR.md)"
+msgstr "إعادة تصدير [Mode](../../core/src/type-aliases/Mode.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [colorClass](../../css/src/variables/colorClass.md)"
+msgstr "إعادة تصدير [Mode](../../core/src/type-aliases/Mode.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [schemeClass](../../css/src/variables/schemeClass.md)"
+msgstr "يعيد تصدير [Theme](../../../packages/core/src/type-aliases/Theme.md)"
+
+#: formats/scope/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Re-exports [themeClass](../../css/src/variables/themeClass.md)"
+msgstr "يعيد تصدير [Theme](../../../packages/core/src/type-aliases/Theme.md)"
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [connectScope](../functions/connectScope.md)."
+msgstr "خيارات لـ [toGpl](../functions/toGpl.md)."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The instance to accept messages for (default [DEFAULT\\_INSTANCE](../variables/DEFAULT_INSTANCE.md))."
+msgstr "المثيل الذي سيتم قبول الرسائل له (الافتراضي [DEFAULT\\_INSTANCE](../variables/DEFAULT_INSTANCE.md))."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The element to apply received state to (default `document.documentElement`)."
+msgstr "العنصر الذي سيتم تطبيق الحالة المستلمة عليه (الافتراضي `document.documentElement`)."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The window to talk to (default `window.parent`)."
+msgstr "اسم عائلة الخط (الافتراضي `\"PanTokens\"`)."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The origin the host must have. Pass `\"*\"` only for an opaque-origin `srcdoc` document."
+msgstr "The origin the host must have. Pass `\"*\"` فقط لمستند `srcdoc` ذو أصل معتم."
+
+#: formats/scope/src/interfaces/ConnectScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Called after each applied update."
+msgstr "يُستدعى بعد كل تحديث مُطبَّق."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [createScope](../functions/createScope.md)."
+msgstr "خيارات لـ [aggregate](../functions/aggregate.md)."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#: formats/scope/src/interfaces/ResolvedScope.md
+#: formats/scope/src/interfaces/ScopeConfig.md
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Theme key, e.g. `\"rebrand\"`. Matched by `[data-pantoken-theme=\"…\"]`."
+msgstr "مفتاح السمة، مثال: `\"rebrand\"`. يتم مطابقته بواسطة `[data-pantoken-theme=\"…\"]`."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#: formats/scope/src/interfaces/ResolvedScope.md
+#: formats/scope/src/interfaces/ScopeConfig.md
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pinned color scheme. Omit to follow the OS preference."
+msgstr "مخطط لون مثبت. احذف لتتبع تفضيل نظام التشغيل."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#: formats/scope/src/interfaces/ResolvedScope.md
+#: formats/scope/src/interfaces/ScopeConfig.md
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Custom brand color key."
+msgstr "مفتاح لون العلامة المخصصة."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Identifier distinguishing this pantoken instance from others on the page. Scopes, storage keys,\nand frame messages are all keyed by it."
+msgstr "معرّف يميّز مثيل pantoken هذا عن غيره على الصفحة. تُفهرَس به النطاقات ومفاتيح التخزين\nوالرسائل بين الإطارات."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Stop ancestor resolution at this element, so nothing outside can theme what is inside. Use for\na preview pane that must not inherit the surrounding app's theme."
+msgstr "أوقف حل الأسلاف عند هذا العنصر، بحيث لا يستطيع أي شيء خارجي تعيين سمة لما بداخله. استخدمه\nلوحة معاينة لا يجب أن ترث سمة التطبيق المحيط."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Persist and restore state. Pass `false` to keep the scope in-memory only (default `true`)."
+msgstr "احتفظ بالحالة واستعدها. مرّر `false` للحفاظ على النطاق في الذاكرة فقط (الافتراضي `true`))."
+
+#: formats/scope/src/interfaces/CreateScopeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Storage backend (default `localStorage`, silently skipped when unavailable)."
+msgstr "خلفية التخزين (الافتراضي `localStorage`، تُتخطى بهدوء عند عدم توفرها))."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A live scope bound to one element."
+msgstr "نطاق حي مرتبط بعنصر واحد."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The element carrying the scope attributes."
+msgstr "العنصر الحامل لسمات النطاق."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The instance this scope belongs to."
+msgstr "المنتج الذي ينتمي إليه الشعار."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The scope's own configuration — what it declares, not what it inherits."
+msgstr "تكوين النطاق نفسه — ما يعلنه، وليس ما يرثه."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Merge a partial configuration in. Pass `null` for a field to clear it and inherit again."
+msgstr "ادمج تكوينًا جزئيًا. مرّر `null` لحقل لمسحه واستعادة الوراثة."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve the effective scope for a descendant (defaults to this scope's own element)."
+msgstr "حدد النطاق الفعّال لعنصر تابع (افتراضيًا يكون عنصر هذا النطاق نفسه element)."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Send this scope's state to `frame` and keep it in sync. Returns a detach function."
+msgstr "Send this scope's state to `frame` واحتفظ بمزامنتها. يُعيد دالة فصل (detach)."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Observe changes. Returns an unsubscribe function."
+msgstr "راقب التغييرات. يعيد دالة إلغاء الاشتراك."
+
+#: formats/scope/src/interfaces/PantokenScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Remove the attributes, detach frames, and unregister."
+msgstr "أزل السمات، افصل الإطارات، وإلغاء التسجيل."
+
+#: formats/scope/src/interfaces/ResolvedScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A [ScopeConfig](ScopeConfig.md) resolved against the DOM, plus where each part came from."
+msgstr "A [ScopeConfig](ScopeConfig.md) محلولة مقابل DOM، بالإضافة إلى مصدر كل جزء."
+
+#: formats/scope/src/interfaces/ResolvedScope.md
+#: formats/scope/src/interfaces/ScopeConfig.md
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Identifier of the pantoken instance that owns this scope."
+msgstr "معرّف مثيل pantoken الذي يملك هذا النطاق."
+
+#: formats/scope/src/interfaces/ResolvedScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The nearest element that declared any scope attribute, or `null` when none did."
+msgstr "The nearest element that declared any scope attribute, or `null` عندما لا يوجد."
+
+#: formats/scope/src/interfaces/ResolvedScope.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "True when resolution stopped at a `data-pantoken-boundary` element."
+msgstr "True when resolution stopped at a `data-pantoken-boundary` عنصر."
+
+#: formats/scope/src/interfaces/ScopeConfig.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The resolvable state of a scope. Every field is optional — an unset field inherits."
+msgstr "حالة النطاق القابلة للحل. كل حقل اختياري — الحقل غير المضبوط يرث القيمة."
+
+#: formats/scope/src/interfaces/ScopeMessage.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The message envelope exchanged between a scope and its attached frames."
+msgstr "مغلف الرسالة المتبادل بين النطاق وإطاره الملتحق."
+
+#: formats/scope/src/variables/DEFAULT_INSTANCE.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The default instance id, used when a scope does not name one."
+msgstr "معرّف المثال الافتراضي، يُستخدم عندما لا يسمي النطاق واحدًا."
+
+#: formats/scope/src/variables/INSTANCE_ATTR.md
+#: packages/utils/src/variables/INSTANCE_ATTR.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Attribute carrying the owning instance id, so sibling instances can tell scopes apart."
+msgstr "سمة تحمل معرف النسخة المالكة، حتى تتمكن النسخ الشقيقة من تمييز النطاقات."
+
+#: formats/scope/src/variables/SCOPE_ATTRS.md
+#: packages/utils/src/variables/SCOPE_ATTRS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every attribute that participates in scope resolution."
+msgstr "كل سمة تشارك في حل النطاق."
 
 #: formats/scss/src/functions/toScss.md
 #, fuzzy, no-c-format
@@ -11937,6 +12823,18 @@ msgctxt "docs.api:prose"
 msgid "Convert a kebab-case string to camelCase (`color-background-brand` → `colorBackgroundBrand`)."
 msgstr "حوّل سلسلة بصيغة kebab-case إلى camelCase (`color-background-brand` → `colorBackgroundBrand`)."
 
+#: packages/utils/src/functions/colorScopeSelector.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The selector matching any element using custom brand color `color`."
+msgstr "المحدد الذي يطابق أي عنصر يستخدم لون العلامة التجارية المخصص `color`."
+
+#: packages/utils/src/functions/colorScopeSelectors.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Both forms of the color scope selector, as a selector list."
+msgstr "كلا شكلَي محدد نطاق اللون، كقائمة محددات."
+
 #: packages/utils/src/functions/colorUtilitiesCss.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -12135,6 +13033,12 @@ msgctxt "docs.api:prose"
 msgid "A `light-dark(<light>, <dark>)` value; capture groups 1 and 2 are the two branches."
 msgstr "قيمة `light-dark(<light>, <dark>)`; مجموعتا الالتقاط 1 و2 هما الفرعان."
 
+#: packages/utils/src/variables/SCOPE_LAYERS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Cascade layers the scoped sheets emit into, in ascending precedence order."
+msgstr "الطبقات التي تُضمّن فيها الأوراق ذات النطاق، بترتيب أسبقية تصاعدي."
+
 #: packages/utils/src/variables/SPACING_AUTO_STEP.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -12309,6 +13213,12 @@ msgstr "وضع إعادة العلامة لتوكنات. القيمة الافت
 msgctxt "docs.api:prose"
 msgid "Component-style sheets. Defaults to [defaultThemeCssAssets](../functions/defaultThemeCssAssets.md) for `theme`/`mode`."
 msgstr "أوراق أنماط المكونات. القيمة الافتراضية [defaultThemeCssAssets](../functions/defaultThemeCssAssets.md) لـ `theme`/`mode`."
+
+#: platforms/canvas-theme-editor/src/interfaces/BuildThemeOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Ship the multi-scope token pair instead of a single baked theme, so several themes and color\nschemes can be active in one Canvas page. Larger; only worth it when that's actually needed."
+msgstr "اشحن زوج الرموز متعدد النطاقات بدلاً من سمة مدمجة واحدة، حتى يمكن أن تكون عدة سمات والألوان\nمخططات نشطة في صفحة Canvas واحدة. أكبر حجماً؛ يستحق ذلك فقط عندما يكون ذلك ضروريًا بالفعل."
 
 #: platforms/canvas-theme-editor/src/interfaces/BuildThemeOptions.md
 #, no-c-format
@@ -13121,6 +14031,12 @@ msgctxt "docs.api:prose"
 msgid "Build the banner layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.\nDefaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
 msgstr "بناء CSS لتخطيط البانر (تعليق توثيقي + قواعد)، مع استبدال `prefix` بالعنصر الحارس `pfx-`.\nالقيمة الافتراضية هي `\"instui-\"` لملف الأنماط الموزَّع؛ مرّر `\"\"` لبناء بدون بادئات."
 
+#: plugins/pantoken/custom-components/src/functions/buttonSetRules.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build the button-set layout CSS (doc comment + rules), substituting `prefix` for the `pfx-`\nsentinel. Defaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
+msgstr "بناء CSS لتخطيط البانر (تعليق توثيقي + قواعد)، مع استبدال `prefix` بالعنصر الحارس `pfx-`.\nالقيمة الافتراضية هي `\"instui-\"` لملف الأنماط الموزَّع؛ مرّر `\"\"` لبناء بدون بادئات."
+
 #: plugins/pantoken/custom-components/src/functions/customComponents.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13135,6 +14051,12 @@ msgstr "إنشاء الإضافة custom-components."
 msgctxt "docs.api:prose"
 msgid "A [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) with a `css` hook."
 msgstr "إضافة [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) مع هوك `css`."
+
+#: plugins/pantoken/custom-components/src/functions/logoRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build the logo utility CSS as an aspect-ratio-aware mask painter for `@pantoken/plugin-logos`'\n`-logo-<name>` glyph classes, substituting `prefix` for the `pfx-` sentinel."
+msgstr "قم ببناء CSS أداة الشعار كـ ماسك مدرك لنسبة الأبعاد لفئات الرموز الخاصة بـ `@pantoken/plugin-logos`'\n`-logo-<name>` `-logo-<name>`، مع استبدال `prefix` بالمرشد `pfx-`."
 
 #: plugins/pantoken/custom-components/src/index.md
 #, fuzzy, no-c-format
@@ -13236,6 +14158,66 @@ msgctxt "docs.api:prose"
 msgid "Every vendored custom icon, sorted by name."
 msgstr "كل أيقونة مخصصة مُورَّدة، مرتَّبة حسب الاسم."
 
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Generate the `[data-pantoken-color=\"custom\"]` rule for a brand hex: it declares the derived\n`--instui-primitive-color-custom-custom*` steps and remaps the brand primitives onto them, exactly\nlike the shipped scales."
+msgstr "Generate the `[data-pantoken-color=\"custom\"]` قاعدة لِـ brand hex: تُعلِن خطوات \n`--instui-primitive-color-custom-custom*` المشتقة وتعِيد خرْط العلامة التجارية الأصلية عليها، تمامًا\nكما المقاييس المشحونة."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A `#rgb`/`#rrggbb` brand color."
+msgstr "A `#rgb`/`#rrggbb` لون للعلامة التجارية."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorRemapCss.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The CSS rule."
+msgstr "سلسلة قواعد CSS."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TypeError when `hex` isn't a valid hex color."
+msgstr "TypeError عندما `hex` ليس لونًا سداسيًا صالحًا."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The per-step lightness curve and chroma shape the `custom` scale is derived against, computed\nfrom the 13 shipped families. JSON-safe, so a build can ship it to a browser that pairs it with\nthe dependency-free `@pantoken/plugin-custom-theme-colors/scale` entry."
+msgstr "The per-step lightness curve and chroma shape the `custom` المشتقة، محسوبة\nمن العائلات الثلاث عشرة المشحونة. آمنة كـ JSON، لذا يمكن للبِناء شحنها إلى متصفح يُقرِنها مع\nالمدخل الخالي من الاعتماد `@pantoken/plugin-custom-theme-colors/scale`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`Token`](../../../../../packages/core/src/interfaces/Token.md)[] \\| `Map`\\<`string`, `string`\\>"
+msgstr "للقراءة فقط [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional token array or map to read the reference families from."
+msgstr "مصفوفة أو خريطة رموز اختيارية لتحديد قيم ألوان خطوات المقياس الأولية منها."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorReferenceCurve.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [ReferenceCurve](../interfaces/ReferenceCurve.md)."
+msgstr "عنصر من نوع [ResolvedDemo](../interfaces/ResolvedDemo.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/customColorRemapCss.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The `[data-pantoken-color=\"custom\"]` remap rule without the derived primitives, for pages that\nset `--instui-primitive-color-custom-custom*` themselves at runtime (e.g. from a color picker)."
+msgstr "The `[data-pantoken-color=\"custom\"]` قاعدة إعادة التعيين بدون البدائيات المشتقة، للصفحات التي\nتُعيّن `--instui-primitive-color-custom-custom*` بنفسها وقت التشغيل (مثلاً من منتقِ اللون))."
+
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColors.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13245,14 +14227,8 @@ msgstr "إنشاء الإضافة custom-icons."
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Generate CSS rules for all custom theme color choices by remapping primitive color scale steps\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`), while preserving explicitly\nnamed blue accents and semantic status intents."
+msgid "Generate CSS rules for all custom theme color choices by remapping primitive color scale steps\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`) and relinking literal\nbrand hex values that upstream flattened away from those primitives, while preserving explicitly\nnamed blue accents and semantic status intents."
 msgstr "توليد قواعد CSS لجميع خيارات ألوان السمة المخصصة عن طريق إعادة تعيين خطوات مقياس الألوان الأولية\n(`--instui-primitive-color-navy-*` and `--instui-primitive-color-blue-*`), مع الحفاظ صراحةً على رموز تمييز اللون الأزرق المسماة\n."
-
-#: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
-#, fuzzy, no-c-format
-msgctxt "docs.api:prose"
-msgid "readonly [`Token`](../../../../../packages/core/src/interfaces/Token.md)[] \\| `Map`\\<`string`, `string`\\>"
-msgstr "للقراءة فقط [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
 
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColorsCss.md
 #, no-c-format
@@ -13265,6 +14241,79 @@ msgstr "مصفوفة أو خريطة رموز اختيارية لعمليات ب
 msgctxt "docs.api:prose"
 msgid "Generated CSS rules string."
 msgstr "سلسلة قواعد CSS."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Derive the `custom` primitive scale from a brand hex. The input is anchored at the step whose\nreference lightness (the mean OKLCH lightness of the 13 shipped families) is nearest its own,\nthen every step is rebuilt at its reference lightness with the input's hue — so the anchor step\nlands close to, but not necessarily exactly on, the input."
+msgstr "Derive the `custom` مقياس البدائيات 'custom' من brand hex. يُثبَّت الإدخال على الخطوة التي\nمرجع إضاءتها (متوسط إضاءة OKLCH للعائلات الثلاث عشرة المشحونة)) أقرب إلى إضاءتها الخاصة،\nثم تُعاد بناء كل خطوة عند إضاءتها المرجعية بلون الإدخال — لذلك تكون خطوة المرساة\nقريبة من الإدخال، لكن ليس بالضرورة متطابقة معه تمامًا."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveCustomColorScale.md
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [CustomColorScale](../interfaces/CustomColorScale.md)."
+msgstr "The [CustomColorScale](../interfaces/CustomColorScale.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Derive a full primitive scale from one hex: anchor it at the step with the nearest reference\nlightness, then rebuild every step at its reference lightness with the input's hue and a chroma\nscaled by the reference shape."
+msgstr "Derive a full primitive scale from one hex: anchor it at the step with the nearest reference\nإضاءة، ثم أعد بناء كل خطوة عند إضاءتها المرجعية بلون الإدخال وشدة تشبع تُقاس\nبالاعتماد على شكل المرجع."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A hex color accepted by [parseHexColor](parseHexColor.md)."
+msgstr "A hex color accepted by [parseHexColor](parseHexColor.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Output of buildReferenceCurve."
+msgstr "مخرجات buildReferenceCurve."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Whether a value is a valid [parseHexColor](parseHexColor.md) input."
+msgstr "Whether a value is a valid [parseHexColor](parseHexColor.md) إدخال."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The value to check."
+msgstr "لوحة الألوان."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`true` for `#rgb`/`#rrggbb` strings."
+msgstr "`true` للقيم `#rgb`/`#rrggbb` نصية."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Validate and normalize a user-supplied hex color. This is the only entry point for untrusted\ninput into generated CSS, so anything but `#rgb`/`#rrggbb` is rejected."
+msgstr "Validate and normalize a user-supplied hex color. This is the only entry point for untrusted\nالإدخال إلى CSS المُولّد، لذلك يُرْفَض كل ما هو غير `#rgb`/`#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A hex color, with or without the leading `#`."
+msgstr "A hex color, with or without the leading `#`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Lowercase `#rrggbb`."
+msgstr "Lowercase `#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/functions/parseHexColor.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TypeError when `input` isn't a 3- or 6-digit hex color."
+msgstr "TypeError عندما `input` ليس لونًا سداسيًا مكوّنًا من 3 أو 6 خانات."
 
 #: plugins/pantoken/custom-theme-colors/src/index.md
 #, fuzzy, no-c-format
@@ -13284,6 +14333,72 @@ msgctxt "docs.api:prose"
 msgid "Renames and re-exports [customThemeColors](functions/customThemeColors.md)"
 msgstr "يعيد تسمية ويُعيد تصدير [customIcons](functions/customIcons.md)"
 
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [customColorCss](../functions/customColorCss.md)."
+msgstr "خيارات للمكوّن الإضافي [customIcons](../functions/customIcons.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional token array or map for the reference families and relinked tokens."
+msgstr "مصفوفة أو خريطة رموز اختيارية لعمليات بحث ألوان خطوات مقياس الألوان الأولية."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selector prefix — see [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+msgstr "بادئة المحدد للقواعد الشرطية — انظر [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A derived custom primitive scale."
+msgstr "مقياس بدائيات 'custom' مشتق."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The validated input, normalized to lowercase `#rrggbb`."
+msgstr "The validated input, normalized to lowercase `#rrggbb`."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The step whose reference lightness is nearest the input's."
+msgstr "الخطوة التي يكون مرجع إضاءتها الأقرب إلى إضاءة الإدخال."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomColorScale.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Every primitive step mapped to its derived `#rrggbb`."
+msgstr "كل خطوة من البدائيات مُرقمة إلى `#rrggbb` المشتق."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [customThemeColorsCss](../functions/customThemeColorsCss.md)."
+msgstr "خيارات للمكوّن الإضافي [customIcons](../functions/customIcons.md)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selector prefix the conditional `[data-pantoken-color=\"…\"]` rules are scoped under. Defaults to\n`:root`. Two callers can each pass a different selector (e.g. `:root` for a page's chrome and\n`#some-tray` for a nested widget) to run independent, non-interfering color instances on the\nsame page — each toggles its own attribute on its own element instead of sharing `:root`."
+msgstr "بادئة المحدد التي تُضمَّن تحتها قواعد `[data-pantoken-color=\"…\"]` الشرطية. الافتراضي هو\n`:root`. يمكن لمُستدعين اثنين أن يمررا كلٌ منهما محددًا مختلفًا (مثلاً `:root` لواجهة الصفحة و\n`#some-tray` لويدجت متداخل) لتشغيل نُسخ ألوان مستقلة وغير متداخلة على نفس الصفحة — كلٌ يبدِّل سِمَته على عنصره الخاص بدلاً من مشاركة `:root`."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "An additional selector whose subtree should always render the true, unremapped colors,\nregardless of what an ancestor's `[data-pantoken-color]` scope currently has active. Emits one\nunconditional rule pinning every token this plugin can override back to its own base value —\ne.g. a color-swatch legend nested inside an already-themed page needs its reference swatches to\nstay constant rather than inherit the ancestor's remap."
+msgstr "محدد إضافي يجب أن تعرض شجرته دومًا الألوان الحقيقية غير المعادِ خرائطها،\nبغض النظر عما يفعله نطاق `[data-pantoken-color]` لأي عنصر سلف حالياً. يصدر قاعدة غير مشروطة تثبت كل توكن يمكن لهذا البرنامج المساعد أن يتجاوزها إلى قيمتها الأساسية —\nمثلاً، يحتاج مفتاح عينات الألوان الموجود داخل صفحة مُطبَّق لها ثيم مسبقًا أن تبقى عينات المرجع ثابتة بدل أن ترث إعادة الخرائط من السلف."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A brand hex (`#rgb`/`#rrggbb`) to derive the `custom` scale from. When set, a\n`[data-pantoken-color=\"custom\"]` rule is appended — see [customColorCss](../functions/customColorCss.md)."
+msgstr "A brand hex (`#rgb`/`#rrggbb`)) لاشتقاق مقياس `custom`. عند التعيين، تُضاف قاعدة\n`[data-pantoken-color=\"custom\"]` — انظر [customColorCss](../functions/customColorCss.md)."
+
 #: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13296,6 +14411,30 @@ msgctxt "docs.api:prose"
 msgid "Optional token array or map to resolve primitive step color values from."
 msgstr "مصفوفة أو خريطة رموز اختيارية لتحديد قيم ألوان خطوات المقياس الأولية منها."
 
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selector prefix for the conditional rules — see [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+msgstr "بادئة المحدد للقواعد الشرطية — انظر [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Always-true-color subtree — see [CustomThemeColorsCssOptions.resetSelector](CustomThemeColorsCssOptions.md#resetselector)."
+msgstr "شجرة الألوان الحقيقية دائمًا — انظر [CustomThemeColorsCssOptions.resetSelector](CustomThemeColorsCssOptions.md#resetselector)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/CustomThemeColorsOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Brand hex for the `custom` scale — see [CustomThemeColorsCssOptions.custom](CustomThemeColorsCssOptions.md#custom)."
+msgstr "بادئة المحدد للقواعد الشرطية — انظر [CustomThemeColorsCssOptions.selector](CustomThemeColorsCssOptions.md#selector)."
+
+#: plugins/pantoken/custom-theme-colors/src/interfaces/ReferenceCurve.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Per-step reference lightness and normalized chroma, index-aligned with `steps`. JSON-safe."
+msgstr "Per-step reference lightness and normalized chroma, index-aligned with `steps`. آمنة كـ JSON."
+
 #: plugins/pantoken/custom-theme-colors/src/type-aliases/PantokenColorNamespace.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -13307,6 +14446,12 @@ msgstr "مساحة أسماء ألوان سمة مخصصة مدعومة."
 msgctxt "docs.api:prose"
 msgid "The 13 available color namespaces for site theme color selection."
 msgstr "مساحات أسماء الألوان الثلاثة عشر المتاحة لاختيار ألوان سمة الموقع."
+
+#: plugins/pantoken/custom-theme-colors/src/variables/CUSTOM_COLOR_KEY.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The color namespace whose scale is derived from an arbitrary hex rather than shipped."
+msgstr "مساحة الألوان التي يُستخرج مقياسها من hex عشوائي بدلًا من المقياس المشحون."
 
 #: plugins/pantoken/deprecations/src/functions/compareVersions.md
 #, fuzzy, no-c-format
@@ -13476,6 +14621,12 @@ msgctxt "docs.api:prose"
 msgid "Generate an HTML template for the page-layout layout."
 msgstr "إنشاء قالب HTML لتخطيط الصفحة."
 
+#: plugins/pantoken/layouts/src/functions/renderPageLayout.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Render `layout`'s `{{key}}` tokens for `locale` (default `\"en\"`), falling back to English."
+msgstr "عرض توكنات `layout` الخاصة بـ `layout` لِـ `locale` (الافتراضي `\"en\"`))، مع الرجوع إلى الإنجليزية عند الحاجة."
+
 #: plugins/pantoken/layouts/src/functions/rubricNoteRules.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13547,7 +14698,7 @@ msgstr "تخطيط صفحة ابتدائي: تركيب بسيط من المكو�
 #: renderers/tinymce/src/interfaces/PageLayout.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Stable id, matches the source filename (e.g. `\"hero\"`)."
+msgid "Stable id, matches the source folder name, e.g. `\"hero\"`."
 msgstr "معرّف ثابت، يطابق اسم ملف المصدر (مثل `\"hero\"`)."
 
 #: plugins/pantoken/layouts/src/interfaces/PageLayout.md
@@ -13564,11 +14715,66 @@ msgctxt "docs.api:prose"
 msgid "Raw HTML for the layout, built from `@pantoken/components` classes."
 msgstr "HTML خام للتخطيط، مبني من الفئات `@pantoken/components`."
 
+#: plugins/pantoken/layouts/src/interfaces/PageLayout.md
+#: renderers/tinymce/src/interfaces/PageLayout.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Image slots that consumers may materialize without provider-specific URLs."
+msgstr "مواقع الصور التي قد يقوم المستهلكون بتجسيدها دون الحاجة إلى عناوين URL مخصَّصة لمزود."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A provider-neutral image slot declared by a starter page layout."
+msgstr "موقع صورة محايد للمزود يُعلن عنه تخطيط صفحة ابتدائية."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Stable key matching the `data-pantoken-image-placeholder` HTML marker."
+msgstr "مفتاح ثابت يطابق وسم HTML `data-pantoken-image-placeholder`."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Suggested intrinsic width in pixels."
+msgstr "العرض الجوهري المقترح بالبكسل."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Suggested intrinsic height in pixels."
+msgstr "الارتفاع الجوهري المقترح بالبكسل."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Accessible name; omit it for a decorative image."
+msgstr "اسم قابل للوصول؛ اتركه فارغًا للصورة الزخرفية."
+
+#: plugins/pantoken/layouts/src/interfaces/PageLayoutImagePlaceholder.md
+#: renderers/tinymce/src/interfaces/PageLayoutImagePlaceholder.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional text a consumer may render into its placeholder asset."
+msgstr "نص اختياري يمكن للمستهلك عرضه داخل أصل العنصر النائب."
+
+#: plugins/pantoken/layouts/src/variables/pageLayoutTemplates.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`{{key}}`-templated layouts, unresolved — pass to [renderPageLayout](../functions/renderPageLayout.md) for another locale."
+msgstr "`{{key}}`-المخططات بالقالب، غير مُحلَّة — مرِّرها إلى [renderPageLayout](../functions/renderPageLayout.md) للغة/محليّة أخرى."
+
 #: plugins/pantoken/layouts/src/variables/pageLayouts.md
 #: renderers/tinymce/src/variables/pageLayouts.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "All bundled starter page layouts, sorted by title."
+msgid "All bundled starter page layouts, English-rendered by default, sorted by title."
 msgstr "جميع تخطيطات صفحات البداية المضمّنة، مرتبة حسب العنوان."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
@@ -13578,6 +14784,7 @@ msgid "Get a logo as a base64 `data:image/svg+xml` URI."
 msgstr "الحصول على شعار كـ URI `data:image/svg+xml` بصيغة base64."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13585,6 +14792,7 @@ msgid "The product."
 msgstr "المنتج."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13592,6 +14800,7 @@ msgid "The layout (default `\"horizontal\"`)."
 msgstr "التخطيط (الافتراضي `\"horizontal\"`)."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13599,6 +14808,7 @@ msgid "The color treatment (default `\"full-color\"`)."
 msgstr "نمط اللون (الافتراضي `\"full-color\"`)."
 
 #: plugins/pantoken/logos/src/functions/getLogoDataUri.md
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -13616,6 +14826,24 @@ msgstr "سلسلة SVG، أو `undefined` إذا لم يوجد هذا التكو
 msgctxt "docs.api:prose"
 msgid "**Use a logo as an \\<img\\> src**"
 msgstr "**استخدم شعارًا كمصدر \\<img\\>**"
+
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Get a logo's metadata, including its natural `viewBox` `width`/`height` — for consumers that need\nthe logo's real aspect ratio (e.g. to set `aspect-ratio` or `width`/`height` on an `<img>`) without\nparsing SVG themselves."
+msgstr "الحصول على بيانات التعريف لشعار، بما في ذلك `width`/`height` الخاص بصيغة PNG المرسومة نقطيًا — للمستهلكين الذين يحتاجون\nلبناء مسار `dist/<name>.png` (مثلاً عبر `@pantoken/cdn`)) أو لتحديد حجم عنصر `<img>` دون تحليل SVG."
+
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The [LogoMeta](../interfaces/LogoMeta.md), or `undefined` if that combination doesn't exist."
+msgstr "سلسلة SVG، أو `undefined` إذا لم يوجد هذا التكوين."
+
+#: plugins/pantoken/logos/src/functions/getLogoMeta.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "**Read a logo's aspect ratio**"
+msgstr "**اقرأ نسبة أبعاد الشعار**"
 
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, fuzzy, no-c-format
@@ -13668,7 +14896,7 @@ msgstr "`@pantoken/plugin-logos` — شعارات منتجات Instructure بص�
 #: plugins/pantoken/logos/src/index.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "It vendors the SVG logos from Instructure's UX guidelines for Canvas, Mastery, Parchment,\nInstructure, LearnPlatform, and Ignite AI, in the standard layouts (horizontal, stacked, icon)\nand color modes (full-color, color, dark, reversed, and so on). Each logo is available three ways:\nthe raw SVG ([getLogoSvg](functions/getLogoSvg.md)), a data URI ([getLogoDataUri](functions/getLogoDataUri.md)), and a\n`--instui-logo-<product>-<layout>-<mode>` image token in `@pantoken/plugin-logos/logos.css`."
+msgid "It vendors the SVG logos from Instructure's UX guidelines for Canvas, Mastery, Parchment,\nInstructure, LearnPlatform, and Ignite AI, in the standard layouts (horizontal, stacked, icon)\nand color modes (full-color, color, dark, reversed, and so on). Each logo is available three ways:\nthe raw SVG ([getLogoSvg](functions/getLogoSvg.md)), a data URI ([getLogoDataUri](functions/getLogoDataUri.md)), and a\n`--instui-logo-<product>-<layout>-<mode>` image token plus a `.-logo-<product>-<layout>-<mode>`\nmask-glyph class (sized by that logo's own aspect ratio) in `@pantoken/plugin-logos/logos.css`."
 msgstr "يقوم بتوزيع شعارات SVG من إرشادات تجربة المستخدم الخاصة بـ Instructure لكل من Canvas وMastery وParchment وInstructure وLearnPlatform وIgnite AI، بالتخطيطات القياسية (أفقي، مكدس، رمز) وأنماط الألوان (ملون بالكامل، ملون، داكن، معكوس، وما إلى ذلك). كل شعار متاح بثلاث طرق: الملف SVG الخام ([getLogoSvg](functions/getLogoSvg.md))، وdata URI ([getLogoDataUri](functions/getLogoDataUri.md))، و`--instui-logo-<product>-<layout>-<mode>` image token في `@pantoken/plugin-logos/logos.css`."
 
 #: plugins/pantoken/logos/src/index.md
@@ -13731,6 +14959,20 @@ msgstr "المسار داخل `assets/logos`، على سبيل المثال `\"c
 msgctxt "docs.api:prose"
 msgid "The path within `assets/logos`, e.g. `\"canvas/horizontal-full-color.svg\"`."
 msgstr "المسار داخل `assets/logos`، على سبيل المثال `\"canvas/horizontal-full-color.svg\"`."
+
+#: plugins/pantoken/logos/src/interfaces/LogoMeta.md
+#: renderers/tinymce/src/interfaces/LogoMeta.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The SVG's natural `viewBox` width, used with [height](#height) to derive `--pantoken-logo-aspect`."
+msgstr "عرض `viewBox` الطبيعي لملف SVG، يُستخدم مع [height](#height) لاشتقاق `--pantoken-logo-aspect`."
+
+#: plugins/pantoken/logos/src/interfaces/LogoMeta.md
+#: renderers/tinymce/src/interfaces/LogoMeta.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The SVG's natural `viewBox` height, used with [width](#width) to derive `--pantoken-logo-aspect`."
+msgstr "ارتفاع `viewBox` الطبيعي لملف SVG، يُستخدم مع [width](#width) لاشتقاق `--pantoken-logo-aspect`."
 
 #: plugins/pantoken/logos/src/interfaces/LogosOptions.md
 #, no-c-format
@@ -13801,6 +15043,85 @@ msgstr "**ضمّن رموز الشعار داخل صفحة**"
 msgctxt "docs.api:prose"
 msgid "The products that have logos."
 msgstr "المنتجات التي لديها شعارات."
+
+#: plugins/pantoken/lucide-lab/src/functions/defaultRegistry.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Lazily import the published Lucide Lab icon registry."
+msgstr "استيراد كسول لسجل أيقونات Lucide Lab المنشور."
+
+#: plugins/pantoken/lucide-lab/src/functions/lucideLab.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Create the Lucide Lab icon plugin."
+msgstr "إنشاء المكوّن الإضافي Simple Icons."
+
+#: plugins/pantoken/lucide-lab/src/functions/lucideLab.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "[LucideLabOptions](../interfaces/LucideLabOptions.md). Pass a registry for synchronous token-stage use."
+msgstr "[SimpleIconsOptions](../interfaces/SimpleIconsOptions.md). مرّر `registry` لتجنّب الاستيراد الكسول (مثلاً في\n  استخدام token-stage، حيث الخطافات متزامنة)."
+
+#: plugins/pantoken/lucide-lab/src/functions/lucideLab.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "A token-capable pantoken plugin."
+msgstr "ملحق Vite الخاص بـ pantoken."
+
+#: plugins/pantoken/lucide-lab/src/functions/svgOf.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Convert a Lucide Lab icon-node array into standalone SVG markup."
+msgstr "تحويل مصفوفة عقدة أيقونة Lucide Lab إلى ترميز SVG مستقل."
+
+#: plugins/pantoken/lucide-lab/src/functions/toKebab.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Convert a Lucide Lab export name to its kebab-case token name."
+msgstr "تحويل اسم تصدير Lucide Lab إلى اسم توكن بنمط kebab-case."
+
+#: plugins/pantoken/lucide-lab/src/index.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Renames and re-exports [lucideLab](functions/lucideLab.md)"
+msgstr "يعيد تسمية ويعيد تصدير [stacking](functions/stacking.md)"
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for the [lucideLab](../functions/lucideLab.md) plugin."
+msgstr "خيارات الملحق [layouts](../functions/layouts.md)."
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Icon names to emit as `<image>` tokens (default: every icon in the registry)."
+msgstr "أسماء الأيقونات التي تُصدَر كرموز `<image>` (الافتراضي: جميع الأيقونات المورَّدة)."
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The Lucide Lab registry (required by the synchronous token hook)."
+msgstr "سجل Lucide Lab (مطلوب بواسطة هوك التوكن المتزامن))."
+
+#: plugins/pantoken/lucide-lab/src/interfaces/LucideLabOptions.md
+#: plugins/pantoken/simple-icons/src/interfaces/SimpleIconsOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The token-name prefix (default: `--instui-icon-`)."
+msgstr "بادئة اسم الرمز (الافتراضي: `--instui-icon-`)."
+
+#: plugins/pantoken/lucide-lab/src/type-aliases/LucideLabNode.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "One SVG element in a Lucide icon-node array."
+msgstr "عنصر SVG واحد في مصفوفة عقدة أيقونة Lucide."
+
+#: plugins/pantoken/lucide-lab/src/type-aliases/LucideLabRegistry.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A registry of named Lucide Lab icon-node arrays."
+msgstr "سجل لمصفوفات عقد أيقونات Lucide Lab المُسماة."
 
 #: plugins/pantoken/primitives/src/functions/primitivesCss.md
 #, no-c-format
@@ -13963,12 +15284,6 @@ msgstr "سلاجز العلامة التجارية لتصديرها كرموز `
 msgctxt "docs.api:prose"
 msgid "The Simple Icons registry (default: the `simple-icons` package, loaded lazily)."
 msgstr "سجل Simple Icons (الافتراضي: الحزمة `simple-icons`، تُحمّل عند الطلب)."
-
-#: plugins/pantoken/simple-icons/src/interfaces/SimpleIconsOptions.md
-#, fuzzy, no-c-format
-msgctxt "docs.api:prose"
-msgid "The token-name prefix (default: `--instui-icon-`)."
-msgstr "بادئة اسم الرمز (الافتراضي: `--instui-icon-`)."
 
 #: plugins/pantoken/simple-icons/src/type-aliases/SimpleIconsRegistry.md
 #, fuzzy, no-c-format
@@ -15790,9 +17105,9 @@ msgid "`@pantoken/rehype` — render `:icon:` codes as inline SVG."
 msgstr "`@pantoken/rehype` — عرض رموز `:icon:` كـ SVG مضمن."
 
 #: renderers/rehype/src/index.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "The plugin walks hast text nodes and replaces `:code:` tokens with an inline SVG element,\nresolving each code through a chain: plugin `rehype` resolvers first, then any explicit\n`resolve`, then the built-in `@pantoken/icons` set. It ports `rehype-instui-markdown` onto the\nshared icon manifest."
+msgid "The plugin walks hast text nodes and replaces `:code:` tokens with an inline SVG element,\nresolving each code through a chain: any explicit `resolve`, then the built-in\n`@pantoken/icons` set, then plugin `rehype` resolvers. It ports `rehype-instui-markdown` onto\nthe shared icon manifest."
 msgstr "تتجول الإضافة في عقد نصية سريعة (hast text nodes) وتستبدل رموز `:code:` بعنصر SVG مضمن،\nمحلِّلة كل رمز عبر سلسلة: مخدمات حل `rehype` الخاصة بالإضافة أولًا، ثم أي\n`resolve` صريحة، ثم مجموعة `@pantoken/icons` المضمنة. تنقل `rehype-instui-markdown` إلى\nقائمة الأيقونات المشتركة."
 
 #: renderers/rehype/src/index.md
@@ -15972,6 +17287,18 @@ msgctxt "docs.api:prose"
 msgid "A Svelte action's return shape."
 msgstr "بنية الإرجاع لإجراء Svelte."
 
+#: renderers/tinymce/src/functions/buildIconMarkup.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The decorative icon markup retained in editor content after a picker selection. A zero-width\nspace keeps the span from being genuinely empty — TinyMCE's schema strips empty inline elements\non `setContent()` (e.g. toggling from source view back to WYSIWYG), which would otherwise\nsilently delete this CSS-painted glyph. `contenteditable=\"false\"` makes TinyMCE treat it as a\nselectable noneditable object (fake-selection painting, backspace-to-delete, and the context\ntoolbar registered in `lib/icon-context-toolbar.ts`) instead of plain inline text."
+msgstr "شيفرة أيقونة زخرفية تُحتفظ بها داخل محتوى المحرر بعد اختيار من المحدد. مسافة بعرض صفري\n تحافظ على العنصر span من كونه فارغًا تمامًا — مخطط TinyMCE يزيل العناصر المُضمّنة الفارغة\nعند `setContent()` (مثلاً التبديل من عرض المصدر إلى WYSIWYG)، والذي بخلاف ذلك\n سيمحو هذه العلامة المرسومة بـCSS بصمت. `contenteditable=\"false\"` يجعل TinyMCE يتعامل معها ككائن غير قابل للتحرير قابل للاختيار\n (طلاء اختيار مزيف، حذف بالـBackspace، وشريط أدوات السياق\n المسجّل في `lib/icon-context-toolbar.ts`) بدلاً من نص مُضمّن عادي.)"
+
+#: renderers/tinymce/src/functions/buildLogoMarkup.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The logo markup retained in editor content after a picker selection — same\nzero-width-space/`contenteditable=\"false\"` noneditable-object technique as `icons.ts`'s\n`buildIconMarkup`. Unlike a decorative icon, a logo names a real product, so it carries\n`role=\"img\"` + `aria-label` instead of `aria-hidden`."
+msgstr "علامة الشعار المحتفظ بها في محتوى المحرر بعد اختيار من المختار — نفس\nتقنية المسافة صفر العرض/`contenteditable=\"false\"` للكائن غير القابل للتحرير كما في`contenteditable=\"false\"` `icons.ts` و`buildIconMarkup`. خلافًا للأيقونة الزخرفية، يسمي الشعار منتجًا حقيقيًا، لذا يحمل `role=\"img\"` + `aria-label` بدلًا من `aria-hidden`."
+
 #: renderers/tinymce/src/functions/createComponentsPlugin.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
@@ -15983,6 +17310,18 @@ msgstr "إنشاء مصنع ملحق أداة اختيار المكونات.\nي
 msgctxt "docs.api:prose"
 msgid "Usage:\n  tinymce.PluginManager.add(\n    \"pantokenComponents\",\n    createComponentsPlugin(`{ model, currentAssets, onMissingAsset }`)\n  );"
 msgstr "الاستخدام:\n  tinymce.PluginManager.add(\n    \"pantokenComponents\",\n    createComponentsPlugin(`{ model, currentAssets, onMissingAsset }`)\n  );"
+
+#: renderers/tinymce/src/functions/createContentClassesPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build an opt-in plugin that adds pantoken classes to TinyMCE-authored content."
+msgstr "بناء مكوّن إضافي اختياري يضيف فئات pantoken إلى المحتوى المؤلف بواسطة TinyMCE."
+
+#: renderers/tinymce/src/functions/createFullscreenFooterPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a footer-only button that toggles TinyMCE's fullscreen mode."
+msgstr "إنشاء زر في تذييل الصفحة فقط يبدّل وضع ملء الشاشة في TinyMCE."
 
 #: renderers/tinymce/src/functions/createIconsPlugin.md
 #, fuzzy, no-c-format
@@ -16002,11 +17341,47 @@ msgctxt "docs.api:prose"
 msgid "Create the logos picker plugin factory.\nReturns a function suitable for `tinymce.PluginManager.add()`."
 msgstr "إنشاء مُنشئ المكوّن الإضافي لاختيار الشعارات.\nيعيد دالة مناسبة لـ `tinymce.PluginManager.add()`."
 
+#: renderers/tinymce/src/functions/createPantokenPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a single pantoken toolbar menu that opens each composed plugin."
+msgstr "إنشاء قائمة أدوات pantoken واحدة تفتح كل مكوّن مُركّب."
+
+#: renderers/tinymce/src/functions/createSearchReplaceFooterPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a footer-only button that opens TinyMCE's search & replace dialog."
+msgstr "إنشاء زر في التذييل فقط يفتح مربع حوار البحث والاستبدال في TinyMCE."
+
+#: renderers/tinymce/src/functions/createSupSubPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a single toolbar menu button toggling superscript or subscript."
+msgstr "إنشاء زر قائمة أدوات واحد يبدّل بين مرتفع الأس أو منخفض الأس."
+
 #: renderers/tinymce/src/functions/createTemplatesPlugin.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "Builds the `tinymce.PluginManager.add` callback for the \"Insert template\" plugin."
 msgstr "يبني دالة الاستدعاء `tinymce.PluginManager.add` لملحق \"Insert template\"."
+
+#: renderers/tinymce/src/functions/createVisualBlocksFooterPlugin.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build a footer-only button that toggles TinyMCE's visual blocks outlines."
+msgstr "إنشاء زر في التذييل فقط يبدّل مخططات الكتل المرئية في TinyMCE."
+
+#: renderers/tinymce/src/functions/filterIcons.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Narrow `icons` to those matching `query` and, when given, a single `source`."
+msgstr "تضييق `icons` إلى تلك المطابقة لـ `query` وعند التوفّر، مصدر واحد `source`."
+
+#: renderers/tinymce/src/functions/filterIcons.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`TaggedIcon`](../interfaces/TaggedIcon.md)[]"
+msgstr "للقراءة فقط [`Token`](../interfaces/Token.md)[]"
 
 #: renderers/tinymce/src/functions/findEntry.md
 #, fuzzy, no-c-format
@@ -16020,11 +17395,53 @@ msgctxt "docs.api:prose"
 msgid "Compute the CdnFile for an icon given its source.\nReturns `{ package, path }` for use with @pantoken/cdn's buildFileUrl."
 msgstr "احسب CdnFile لأيقونة بناءً على مصدرها.\nيُرجع `{ package, path }` لاستخدامه مع buildFileUrl الخاص بـ @pantoken/cdn."
 
+#: renderers/tinymce/src/functions/getIconImageSrc.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A `data:` URI usable as an `<img src>` for the icon, for sources this package bundles; for the\nrest it reads the custom property back off `root`, which resolves once the source's glyph sheet\nhas loaded. Returns `undefined` when neither path yields a glyph."
+msgstr "مُعرّف URI بنمط `data:` قابل للاستخدام كـ `<img src>` لـالأيقونة، للمصادر التي يجمعها هذا الحزمة؛ بالنسبة للباقي يقرأ الخاصية المخصصة من `root`، والتي تُحَلّ عند تحميل ورقة الرموز للمصدر\n. تُرجع `undefined` عندما لا تُنتج أيتا المسارات رمزًا."
+
+#: renderers/tinymce/src/functions/getLogoCdnFile.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve a logo's stylesheet: the `.-logo-<name>` mask painter plus its `--instui-logo-<name>` token."
+msgstr "حل ورقة أنماط الشعار: مرسّم القناع `.-logo-<name>` بالإضافة إلى الرمز `--instui-logo-<name>`."
+
 #: renderers/tinymce/src/functions/getModifierSuggestions.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "Get all modifier suggestions for a component/utility, filtered by an optional prefix.\nReturns array of `{ name, prop, value?, description }` objects."
 msgstr "الحصول على جميع اقتراحات المُعدِّل لمكوّن/أداة مساعدة، مُفلترة بواسطة بادئة اختيارية.\nتعيد مصفوفة من كائنات `{ name, prop, value?, description }`."
+
+#: renderers/tinymce/src/functions/getUsedIconCdnFiles.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve the icon stylesheets used by `-icon-*` classes below `root`.\nExisting assets break ties when multiple providers expose the same icon name."
+msgstr "حل أوراق أنماط الأيقونات المستخدمة بواسطة أصناف `-icon-*` تحت `root`.\nالأصول الموجودة تكسر التعادلات عندما يكشف مزودون متعددون عن نفس اسم الأيقونة."
+
+#: renderers/tinymce/src/functions/getUsedIconCdnFiles.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[] = `[]`"
+msgstr "قراءة فقط [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[]"
+
+#: renderers/tinymce/src/functions/getUsedLogoCdnFiles.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve the logo stylesheets used by `-logo-*` classes below `root`."
+msgstr "حل أوراق أنماط الشعارات المستخدمة بواسطة فئات `-logo-*` أسفل `root`."
+
+#: renderers/tinymce/src/functions/getUsedLogoCdnFiles.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[] = `logos`"
+msgstr "للقراءة فقط [`Token`](../interfaces/Token.md)[]"
+
+#: renderers/tinymce/src/functions/humanizeIconName.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Turn a hyphenated icon slug into a readable label, e.g. `circle-question-mark` → `circle question mark`."
+msgstr "حوّل معرف أيقونة مع فاصلات واصلة إلى تسمية قابلة للقراءة، مثلاً `circle-question-mark` → `circle question mark`."
 
 #: renderers/tinymce/src/functions/injectContentStylesheet.md
 #, no-c-format
@@ -16050,11 +17467,11 @@ msgctxt "docs.api:prose"
 msgid "Load and merge all available icons from both sources.\nReturns a sorted array tagged with the source package."
 msgstr "تحميل ودمج جميع الأيقونات المتاحة من كلا المصدرين.\nيعيد مصفوفة مرتبة موسومة بحزمة المصدر."
 
-#: renderers/tinymce/src/functions/loadAllIcons.md
-#, fuzzy, no-c-format
+#: renderers/tinymce/src/functions/materializeLayout.md
+#, no-c-format
 msgctxt "docs.api:prose"
-msgid "NOTE: Component icon names are derived from the model's `-icon-*` modifier.\nThis needs to be populated from either `docs/public/icon-manifest.json` (if consumable)\nor a manifest published alongside formats/components model.json.\nFor now, only simple-icons are included."
-msgstr "ملاحظة: تُشتق أسماء أيقونات المكونات من معامل `-icon-*` في النموذج.\nيجب تعبئته إما من `docs/public/icon-manifest.json` (إذا كان قابلاً للاستهلاك)\nأو من ملف manifeste منشور بجانب formats/components model.json.\nفي الوقت الحالي، مُدرَجة فقط simple-icons."
+msgid "Materialize declared layout image slots without embedding a provider URL in the layout."
+msgstr "تجسيد مواقع صور التخطيط المعلنة دون تضمين عنوان URL لمزود داخل التخطيط."
 
 #: renderers/tinymce/src/functions/pantokenContentCssUrls.md
 #, no-c-format
@@ -16071,14 +17488,8 @@ msgstr "قراءة فقط [`CdnFile`](../../../../platforms/canvas-theme-editor/
 #: renderers/tinymce/src/functions/pantokenHtmlCompletion.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Create a CodeMirror 6 autocomplete extension for pantoken HTML.\nProvides completions for component names and their modifiers."
-msgstr "إنشاء امتداد إكمال تلقائي لـ CodeMirror 6 لـ pantoken HTML.\nيوفر اقتراحات لإكمال أسماء المكونات والمعدِّلات الخاصة بها."
-
-#: renderers/tinymce/src/functions/pantokenHtmlCompletion.md
-#, fuzzy, no-c-format
-msgctxt "docs.api:prose"
-msgid "Usage:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlCompletion({ model }),\n    ],\n  });"
-msgstr "الاستخدام:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlCompletion({ model }),\n    ],\n  });"
+msgid "Create a CodeMirror 6 completion extension for pantoken classes in HTML `class` attributes."
+msgstr "امتداد linter لـ CodeMirror 6 من أجل pantoken HTML.\nيتحقق من سمات class التي تحتوي على توكنات `.instui-*`."
 
 #: renderers/tinymce/src/functions/pantokenHtmlLinter.md
 #, fuzzy, no-c-format
@@ -16092,11 +17503,29 @@ msgctxt "docs.api:prose"
 msgid "Usage:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlLinter({ model }),\n    ],\n  });"
 msgstr "الاستخدام:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlLinter({ model }),\n    ],\n  });"
 
+#: renderers/tinymce/src/functions/registerPantokenIconPack.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Register a TinyMCE icon pack whose complete key set mirrors the installed default pack while\nevery rendered glyph comes from Pantoken's InstUI/Lucide icon tokens."
+msgstr "سجّل حزمة أيقونات TinyMCE حيث تطابق مجموعة المفاتيح الكاملة الحزمة الافتراضية المثبتة بينما\nكل رمز معروض يأتي من رموز الأيقونات InstUI/Lucide الخاصة بـ Pantoken."
+
 #: renderers/tinymce/src/functions/validateClassToken.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "Validate a pantoken class token (e.g., \"instui-button\", \"instui-button.-color-primary\").\nReturns an array of validation errors (empty if valid)."
 msgstr "تحقق من رمز فئة pantoken (مثل \"instui-button\"، \"instui-button.-color-primary\").\nيعيد مصفوفة من أخطاء التحقق (فارغة إذا كانت صالحة)."
+
+#: renderers/tinymce/src/interfaces/ContentClassesPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for [createContentClassesPlugin](../functions/createContentClassesPlugin.md)."
+msgstr "خيارات لـ [createLayoutsPlugin](../functions/createLayoutsPlugin.md)."
+
+#: renderers/tinymce/src/interfaces/ContentClassesPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Prefix used by pantoken component classes."
+msgstr "HTML خام للتخطيط، مبني من الفئات `@pantoken/components`."
 
 #: renderers/tinymce/src/interfaces/CssDocEntry.md
 #, fuzzy, no-c-format
@@ -16362,6 +17791,12 @@ msgctxt "docs.api:prose"
 msgid "Content of registered custom (block) tags, keyed by tag name without its `@`. Populated only for\ntags added via configuration; unregistered unknown tags are ignored. Absent when none were found."
 msgstr "محتوى الوسوم المخصصة المسجلة (الكتل)، مفهرس باسم الوسم بدون `@`. يُملأ فقط ل\nالوسوم المضافة عبر التكوين؛ تُتجاهل الوسوم غير المسجلة وغير المعروفة. يكون غائبًا عندما لا يُعثر على أي منها."
 
+#: renderers/tinymce/src/interfaces/LayoutImageAttributes.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Image attributes returned by a consumer-specific layout image resolver."
+msgstr "سمات الصورة التي يعيدها مُحلّل صور التخطيط المخصص للمستهلك."
+
 #: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -16371,8 +17806,20 @@ msgstr "خيارات لـ [createLayoutsPlugin](../functions/createLayoutsPlugin
 #: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "The page layouts offered in the \"Insert layout\" picker. Defaults to [pageLayouts](../variables/pageLayouts.md)."
+msgid "The page layouts offered in the \"Insert layout\" picker. Defaults to the bundled layouts."
 msgstr "تخطيطات الصفحات المعروضة في مُحدد \"إدراج تخطيط\". الافتراضي هو [pageLayouts](../variables/pageLayouts.md)."
+
+#: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "BCP47 locale to render layout text in. Defaults to `\"en\"`."
+msgstr "لغة BCP47 لعرض نص التخطيط بها. الافتراضي `\"en\"`."
+
+#: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolves a layout image slot into a consumer-specific image URL."
+msgstr "يحوّل موضع صورة التخطيط إلى عنوان URL للصورة مخصّص للمستهلك."
 
 #: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
 #, fuzzy, no-c-format
@@ -16380,11 +17827,83 @@ msgctxt "docs.api:prose"
 msgid "Called after a layout is inserted (e.g. to refresh a live preview)."
 msgstr "يتم استدعاؤه بعد إدراج تخطيط (مثلاً لتحديث المعاينة الحية)."
 
+#: renderers/tinymce/src/interfaces/LayoutsPluginOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Register this picker's standalone toolbar button and menu item."
+msgstr "سجّل زر شريط الأدوات والعنصر في القائمة الخاص بهذا المُختار."
+
+#: renderers/tinymce/src/interfaces/PantokenPluginOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Configuration for the content plugins composed by [createPantokenPlugin](../functions/createPantokenPlugin.md)."
+msgstr "خيارات لـ [createLayoutsPlugin](../functions/createLayoutsPlugin.md)."
+
 #: renderers/tinymce/src/interfaces/TaggedIcon.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
 msgid "Icon with source attribution for tracking which package it comes from."
 msgstr "أيقونة مع إسناد المصدر لتتبع الحزمة التي أتت منها."
+
+#: renderers/tinymce/src/interfaces/TinymceStrings.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "All user-visible strings emitted by the TinyMCE integration."
+msgstr "جميع النصوص المرئية للمستخدم الصادرة عن مجموعة عناصر مكوّن الويب."
+
+#: renderers/tinymce/src/type-aliases/LayoutImageResolver.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolves a provider-neutral layout image slot for a particular consumer."
+msgstr "يحلّ موضع صورة التخطيط المحايد بالنسبة للمزوّد لمستهلك معيّن."
+
+#: renderers/tinymce/src/type-aliases/PantokenFontSize.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Semantic text sizes accepted by the pantoken font-size command."
+msgstr "أحجام النص الدلالية المقبولة من الأمر pantoken font-size."
+
+#: renderers/tinymce/src/variables/CONTENT_CLASSES_PLUGIN_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Plugin name to pass in TinyMCE's `plugins` option."
+msgstr "اسم المكوّن الإضافي لتمريره في خيارات التهيئة الخاصة بـ TinyMCE `plugins`/`toolbar`."
+
+#: renderers/tinymce/src/variables/DEFAULT_ICON_TRIGGER.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Autocompleter trigger. Two colons rather than one so the stock `emoticons` plugin — which claims\n`:` and would otherwise have several thousand icons merged into its results — keeps working."
+msgstr "مُحفّز الإكمال التلقائي. نقطتان بدل واحدة حتى يظل الملحق الافتراضي `emoticons` — الذي يطالب\n`:` بـ\n`:` والذي وإلا لاندمجت عدة آلاف من الأيقونات في نتائجه — يظل يعمل."
+
+#: renderers/tinymce/src/variables/FULLSCREEN_FOOTER_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/PANTOKEN_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/SEARCHREPLACE_FOOTER_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/SUP_SUB_PLUGIN_NAME.md
+#: renderers/tinymce/src/variables/VISUALBLOCKS_FOOTER_PLUGIN_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Plugin name to pass in TinyMCE's `plugins` init option."
+msgstr "اسم المكوّن الإضافي لتمريره في خيارات التهيئة الخاصة بـ TinyMCE `plugins`/`toolbar`."
+
+#: renderers/tinymce/src/variables/FULLSCREEN_FOOTER_STATUSBAR_NAME.md
+#: renderers/tinymce/src/variables/SEARCHREPLACE_FOOTER_STATUSBAR_NAME.md
+#: renderers/tinymce/src/variables/VISUALBLOCKS_FOOTER_STATUSBAR_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "The footer/statusbar control name registered by this plugin."
+msgstr "اسم زر شريط الأدوات/عنصر القائمة المسجَّل بواسطة هذه الإضافة."
+
+#: renderers/tinymce/src/variables/ICONS_COMMAND.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Command that opens the icons picker."
+msgstr "الأمر الذي يفتح مُختار الأيقونات."
+
+#: renderers/tinymce/src/variables/ICON_SOURCES.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The icon sources, in the order the picker lists them."
+msgstr "مصادر الأيقونات، بالترتيب الذي يسردها به المُختار."
 
 #: renderers/tinymce/src/variables/LAYOUTS_PLUGIN_NAME.md
 #, fuzzy, no-c-format
@@ -16397,6 +17916,49 @@ msgstr "اسم المكوّن الإضافي لتمريره في خيارات ا
 msgctxt "docs.api:prose"
 msgid "The toolbar button/menu item name registered by this plugin."
 msgstr "اسم زر شريط الأدوات/عنصر القائمة المسجَّل بواسطة هذه الإضافة."
+
+#: renderers/tinymce/src/variables/PANTOKEN_COMMANDS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Commands exposed for hosts that want explicit pantoken-aware toolbar actions."
+msgstr "الأوامر المعروضة للمضيفين الذين يرغبون في إجراءات شريط أدوات صريحة تدعم pantoken."
+
+#: renderers/tinymce/src/variables/PANTOKEN_ICON.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pantoken's own logomark, reused for the toolbar menu button and any host UI that wants it."
+msgstr "شعار Pantoken الخاص، يعاد استخدامه لزر قائمة شريط الأدوات وأي واجهة مستخدم للمضيف ترغَب به."
+
+#: renderers/tinymce/src/variables/PANTOKEN_ICON_PACK_NAME.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "TinyMCE icon-pack id to pass as the editor's `icons` option."
+msgstr "معرّف حزمة أيقونات TinyMCE لتمريره كخيار `icons` للمحرّر."
+
+#: renderers/tinymce/src/variables/PANTOKEN_TOOLBAR_NAME.md
+#: renderers/tinymce/src/variables/SUP_SUB_TOOLBAR_NAME.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Toolbar menu-button name to pass in TinyMCE's `toolbar` init option."
+msgstr "اسم المكوّن الإضافي لتمريره في خيارات التهيئة الخاصة بـ TinyMCE `plugins`/`toolbar`."
+
+#: renderers/tinymce/src/variables/SOURCE_LABELS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Human label shown as a picker tab and an autocompleter row caption, per icon source."
+msgstr "العلامة النصية المعروضة كعلامة تبويب في المُختار وكعنوان صف في الإكمال التلقائي، لكل مصدر أيقونات."
+
+#: renderers/tinymce/src/variables/TINYMCE_STRINGS.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "English defaults for TinyMCE integration UI strings."
+msgstr "الإعدادات الافتراضية باللغة الإنجليزية لسلاسل واجهة التكامل مع TinyMCE."
+
+#: renderers/tinymce/src/variables/pageTemplates.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The bundled page layouts exposed through the template picker."
+msgstr "تخطيطات الصفحات المضمّنة المعروضة عبر مُختار القوالب."
 
 #: renderers/vitepress/src/index.md
 #, fuzzy, no-c-format
@@ -17391,7 +18953,7 @@ msgstr "حزمة اللغة السلوفينية (Slovenščina)."
 #: renderers/web-components/src/variables/spinner.md
 #, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "`<instui-spinner>` — a loading spinner with `role=\"status\"`. Purely presentational; size and\ncolour follow the CSS tokens."
+msgid "`<instui-spinner>` — a loading spinner with `role=\"status\"`. `variant=\"ai\"` and\n`variant=\"ai-on-color\"` select the rotating AI star; size and colour follow the CSS tokens."
 msgstr "`&lt;instui-spinner&gt;` — مؤشر تحميل مع `role=\"status\"`. عرضي بحت؛ الحجم و\nاللون يتبعان رموز CSS."
 
 #: renderers/web-components/src/variables/sv.md
@@ -17399,6 +18961,30 @@ msgstr "`&lt;instui-spinner&gt;` — مؤشر تحميل مع `role=\"status\"`.
 msgctxt "docs.api:prose"
 msgid "Swedish (Svenska) locale bundle."
 msgstr "حزمة إعدادات اللغة السويدية (Svenska)."
+
+#: renderers/web-components/src/variables/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`<instui-tabs>` — a light-DOM tabbed panel set. It keeps the existing `.instui-tabs` CSS contract\nintact while adding selection, panel visibility, and keyboard behavior through the shared tabs\ninteraction. Load `@pantoken/components/components.css` for the tab visuals."
+msgstr "`<instui-tabs>` — مجموعة لوحات مُبوبة في DOM خفيف. تحافظ على عقد CSS الحالي `.instui-tabs` `.instui-tabs` سليمًا أثناء إضافة ميزة التحديد، ظهور اللوحات، وسلوك لوحة المفاتيح عبر تفاعل علامات التبويب المشتركة. حمّل `@pantoken/components/components.css` للحصول على مظهر علامات التبويب."
+
+#: renderers/web-components/src/variables/tabs.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "General"
+msgstr "عام"
+
+#: renderers/web-components/src/variables/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Advanced"
+msgstr "إعدادات متقدمة"
+
+#: renderers/web-components/src/variables/tabs.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "General settings"
+msgstr "تم إنشاؤه باستخدام"
 
 #: renderers/web-components/src/variables/tag.md
 #, fuzzy, no-c-format
@@ -17806,6 +19392,56 @@ msgstr "سلسلة مصدر Stylus."
 msgctxt "docs.api:prose"
 msgid "A hoverable \"view fullscreen\" button, overlaid on a demo/example frame the same way VitePress's own\ncode-block \"copy\" button reveals on hover. Purely markup — wire a delegated click handler in your\nhost page (`button.closest(...).querySelector(\"iframe\")?.requestFullscreen()`; see the pantoken docs\ntheme for the reference wiring) and style the reveal-on-hover with `@pantoken/demo/demo.css`."
 msgstr "زر قابل للتحويم \"عرض بملء الشاشة\"، مغطى فوق إطار العرض/المثال بنفس الطريقة التي يظهر بها زر \"نسخ\" الخاص بـ VitePress عند التحويم.\nمجرد وسم — اربط معالج نقر مفوض في صفحة المضيف الخاصة بك (`button.closest(...).querySelector(\"iframe\")?.requestFullscreen()`; راجع theme مستندات pantoken للوصل المرجعي) وقم بتنسيق الإظهار عند التحويم باستخدام `@pantoken/demo/demo.css`."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "**Build a PNG CDN path for a logo**"
+#~ msgstr "**بناء إعداد مسبق من IR مخصص**"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The rasterized PNG's display width in CSS pixels (fixed per layout group, not the SVG's own size)."
+#~ msgstr "عرض PNG المرسوم نقطيًا في بكسلات CSS (ثابت لكل مجموعة تخطيط، وليس حجم SVG نفسه))."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The rasterized PNG's display height in CSS pixels, derived from the SVG's `viewBox` aspect ratio."
+#~ msgstr "ارتفاع PNG المرسوم نقطيًا في بكسلات CSS، مشتق من نسبة أبعاد `viewBox` الخاصة بـ SVG `viewBox`."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The decorative icon markup retained in editor content after a picker selection."
+#~ msgstr "ترميز الأيقونة الزخرفية المحتفظ به داخل محتوى المحرر بعد اختيار من المُحدد."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Create a CodeMirror 6 autocomplete extension for pantoken HTML.\nProvides completions for component names and their modifiers."
+#~ msgstr "إنشاء امتداد إكمال تلقائي لـ CodeMirror 6 لـ pantoken HTML.\nيوفر اقتراحات لإكمال أسماء المكونات والمعدِّلات الخاصة بها."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Usage:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlCompletion({ model }),\n    ],\n  });"
+#~ msgstr "الاستخدام:\n  new EditorView({\n    extensions: [\n      basicSetup,\n      html(),\n      pantokenHtmlCompletion({ model }),\n    ],\n  });"
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "An animated loading ring; give it role=\"status\" and an aria-label."
+#~ msgstr "حلقة تحميل متحركة؛ امنحها role=\"status\" و aria-label."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "`.instui-spinner` — An animated loading ring; give it role=\"status\" and an aria-label."
+#~ msgstr "`.instui-spinner` — حلقة تحميل متحركة؛ امنحها role=\"status\" و aria-label."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "`-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color."
+#~ msgstr "`-color-inverse` يعيد طلاء مقطع الحد العلوي المتحرك فقط، وليس المسار بأكمله، لذا لا يزال يظهر بشكل صحيح على بطاقة داكنة دون الحاجة إلى لون مسار منفصل."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "NOTE: Component icon names are derived from the model's `-icon-*` modifier.\nThis needs to be populated from either `docs/public/icon-manifest.json` (if consumable)\nor a manifest published alongside formats/components model.json.\nFor now, only simple-icons are included."
+#~ msgstr "ملاحظة: تُشتق أسماء أيقونات المكونات من معامل `-icon-*` في النموذج.\nيجب تعبئته إما من `docs/public/icon-manifest.json` (إذا كان قابلاً للاستهلاك)\nأو من ملف manifeste منشور بجانب formats/components model.json.\nفي الوقت الحالي، مُدرَجة فقط simple-icons."
 
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -26547,10 +28183,6 @@ msgstr "زر قابل للتحويم \"عرض بملء الشاشة\"، مغطى
 #~ msgstr "إنشاء مكوّن إضافي لـ pantoken يقوم بإصدار قواعد تأليف التخطيط."
 
 #, fuzzy, no-c-format
-#~ msgid "config"
-#~ msgstr "### config"
-
-#, fuzzy, no-c-format
 #~ msgid "The plugin "
 #~ msgstr "الإضافة التي سيتم توسيعها."
 
@@ -27563,10 +29195,6 @@ msgstr "زر قابل للتحويم \"عرض بملء الشاشة\"، مغطى
 #~ msgstr "كائن السمة، مفهرس بأسماء الرموز بصيغة camelCase."
 
 #, fuzzy, no-c-format
-#~ msgid "light"
-#~ msgstr "light"
-
-#, fuzzy, no-c-format
 #~ msgid "dark"
 #~ msgstr "dark"
 
@@ -28521,10 +30149,6 @@ msgstr "زر قابل للتحويم \"عرض بملء الشاشة\"، مغطى
 #, fuzzy, no-c-format
 #~ msgid " / logos"
 #~ msgstr "logos"
-
-#, fuzzy, no-c-format
-#~ msgid "As a pantoken plugin, the "
-#~ msgstr "ملحق Vite الخاص بـ pantoken."
 
 #, fuzzy, no-c-format
 #~ msgid "LogoMeta"
@@ -31191,10 +32815,6 @@ msgstr "زر قابل للتحويم \"عرض بملء الشاشة\"، مغطى
 #~ msgstr "الدوال"
 
 #, fuzzy, no-c-format
-#~ msgid "CSS custom functions ("
-#~ msgstr "customIcons"
-
-#, fuzzy, no-c-format
 #~ msgid "animations"
 #~ msgstr "التحريكات"
 
@@ -33556,10 +35176,6 @@ msgstr "زر قابل للتحويم \"عرض بملء الشاشة\"، مغطى
 #~ msgstr "توقيع"
 
 #~ msgctxt "docs.api:text"
-#~ msgid "Generated using"
-#~ msgstr "تم إنشاؤه باستخدام"
-
-#~ msgctxt "docs.api:text"
 #~ msgid "Start here"
 #~ msgstr "ابدأ من هنا"
 
@@ -33567,8 +35183,3662 @@ msgstr "زر قابل للتحويم \"عرض بملء الشاشة\"، مغطى
 #~ msgid "Browse by group"
 #~ msgstr "تصفح حسب المجموعة"
 
-#: formats/components/src/variables/aiGradientCss.md
-#, no-c-format
-msgctxt "docs.api:prose"
-msgid "The AI gradient utility as a standalone, header-wrapped stylesheet."
-msgstr "أداة التدرج اللوني الخاصة بالذكاء الاصطناعي كملف أنماط مستقل مغلف برأس."
+#~ msgctxt "docs.api:text"
+#~ msgid "tools"
+#~ msgstr "tools"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "aggregate"
+#~ msgstr "aggregate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Target"
+#~ msgstr "Target"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "AggregateOptions"
+#~ msgstr "AggregateOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "discoverTargets"
+#~ msgstr "discoverTargets"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "demo"
+#~ msgstr "demo"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "RunnerLabels"
+#~ msgstr "RunnerLabels"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ResolveOptions"
+#~ msgstr "ResolveOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ResolvedDemo"
+#~ msgstr "ResolvedDemo"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LiveExampleOptions"
+#~ msgstr "LiveExampleOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "DemoMarkdownItOptions"
+#~ msgstr "DemoMarkdownItOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ExampleSrcdocOptions"
+#~ msgstr "ExampleSrcdocOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "FULLSCREEN_BUTTON_HTML"
+#~ msgstr "FULLSCREEN_BUTTON_HTML"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveDemo"
+#~ msgstr "resolveDemo"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "renderDemoFigure"
+#~ msgstr "renderDemoFigure"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "demoMarkdownIt"
+#~ msgstr "demoMarkdownIt"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "escapeSrcdoc"
+#~ msgstr "escapeSrcdoc"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "buildExampleSrcdoc"
+#~ msgstr "buildExampleSrcdoc"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ai"
+#~ msgstr "ai"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pantoken-ai"
+#~ msgstr "pantoken-ai"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "AgentTool"
+#~ msgstr "AgentTool"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ScaffoldPlatform"
+#~ msgstr "ScaffoldPlatform"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "AGENTS_MD"
+#~ msgstr "AGENTS_MD"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LLMS_TXT"
+#~ msgstr "LLMS_TXT"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "AGENT_TOOLS"
+#~ msgstr "AGENT_TOOLS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SCAFFOLD_PLATFORMS"
+#~ msgstr "SCAFFOLD_PLATFORMS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "scaffoldAndInit"
+#~ msgstr "scaffoldAndInit"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "installAgentAssets"
+#~ msgstr "installAgentAssets"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "isScaffoldPlatform"
+#~ msgstr "isScaffoldPlatform"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "scaffoldProject"
+#~ msgstr "scaffoldProject"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "platforms"
+#~ msgstr "platforms"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "android"
+#~ msgstr "android"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "GenerateAndroidOptions"
+#~ msgstr "GenerateAndroidOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toAndroid"
+#~ msgstr "toAndroid"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "generateAndroid"
+#~ msgstr "generateAndroid"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "canvas-theme-editor"
+#~ msgstr "canvas-theme-editor"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ThemeStrings"
+#~ msgstr "ThemeStrings"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "BuildThemeOptions"
+#~ msgstr "BuildThemeOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CdnFile"
+#~ msgstr "CdnFile"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CdnProvider"
+#~ msgstr "CdnProvider"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ThemeVariant"
+#~ msgstr "ThemeVariant"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ThemeMode"
+#~ msgstr "ThemeMode"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "THEME_CSS"
+#~ msgstr "THEME_CSS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "THEME_JS"
+#~ msgstr "THEME_JS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ENGLISH_THEME_STRINGS"
+#~ msgstr "ENGLISH_THEME_STRINGS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "DEFAULT_THEME_CSS_ASSETS"
+#~ msgstr "DEFAULT_THEME_CSS_ASSETS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "DEFAULT_THEME_FONT_ASSETS"
+#~ msgstr "DEFAULT_THEME_FONT_ASSETS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "DEFAULT_THEME_JS_ASSETS"
+#~ msgstr "DEFAULT_THEME_JS_ASSETS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CDN_PROVIDERS"
+#~ msgstr "CDN_PROVIDERS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "DEFAULT_CDN_PROVIDER_ID"
+#~ msgstr "DEFAULT_CDN_PROVIDER_ID"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "defaultThemeCssAssets"
+#~ msgstr "defaultThemeCssAssets"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "buildThemeCss"
+#~ msgstr "buildThemeCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "buildThemeJs"
+#~ msgstr "buildThemeJs"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "buildTheme"
+#~ msgstr "buildTheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "compose"
+#~ msgstr "compose"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "GenerateComposeOptions"
+#~ msgstr "GenerateComposeOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toCompose"
+#~ msgstr "toCompose"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "generateCompose"
+#~ msgstr "generateCompose"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "drupal"
+#~ msgstr "drupal"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "DrupalFile"
+#~ msgstr "DrupalFile"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ToDrupalThemeOptions"
+#~ msgstr "ToDrupalThemeOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "machineName"
+#~ msgstr "machineName"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toDrupalTheme"
+#~ msgstr "toDrupalTheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "email"
+#~ msgstr "email"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "light"
+#~ msgstr "light"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "dark"
+#~ msgstr "dark"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "emailTokens"
+#~ msgstr "emailTokens"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "flutter"
+#~ msgstr "flutter"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "GenerateFlutterOptions"
+#~ msgstr "GenerateFlutterOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toFlutter"
+#~ msgstr "toFlutter"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "generateFlutter"
+#~ msgstr "generateFlutter"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "hugo"
+#~ msgstr "hugo"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "HugoFile"
+#~ msgstr "HugoFile"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toHugoAssets"
+#~ msgstr "toHugoAssets"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "jekyll"
+#~ msgstr "jekyll"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "JekyllFile"
+#~ msgstr "JekyllFile"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toJekyllAssets"
+#~ msgstr "toJekyllAssets"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "rust"
+#~ msgstr "rust"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "RustOptions"
+#~ msgstr "RustOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "RustFormat"
+#~ msgstr "RustFormat"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toRust"
+#~ msgstr "toRust"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "generateRust"
+#~ msgstr "generateRust"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "swift"
+#~ msgstr "swift"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "GenerateSwiftOptions"
+#~ msgstr "GenerateSwiftOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toSwift"
+#~ msgstr "toSwift"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "generateSwift"
+#~ msgstr "generateSwift"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "vanilla"
+#~ msgstr "vanilla"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ToVanillaOptions"
+#~ msgstr "ToVanillaOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Mode"
+#~ msgstr "Mode"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "variables"
+#~ msgstr "variables"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "VANILLA_TO_INSTUI"
+#~ msgstr "VANILLA_TO_INSTUI"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toVanillaVariables"
+#~ msgstr "toVanillaVariables"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "wordpress"
+#~ msgstr "wordpress"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ThemeJson"
+#~ msgstr "ThemeJson"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ToThemeJsonOptions"
+#~ msgstr "ToThemeJsonOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "themeJson"
+#~ msgstr "themeJson"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toThemeJson"
+#~ msgstr "toThemeJson"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "renderers"
+#~ msgstr "renderers"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "angular"
+#~ msgstr "angular"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "registerPantokenElements"
+#~ msgstr "registerPantokenElements"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "readToken"
+#~ msgstr "readToken"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "register"
+#~ msgstr "register"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "astro"
+#~ msgstr "astro"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "HeadEntry"
+#~ msgstr "HeadEntry"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "StarlightPluginLike"
+#~ msgstr "StarlightPluginLike"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "InstUIOptions"
+#~ msgstr "InstUIOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pantokenCss"
+#~ msgstr "pantokenCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "InstUI"
+#~ msgstr "InstUI"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "bootstrap"
+#~ msgstr "bootstrap"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ToBootstrapCssOptions"
+#~ msgstr "ToBootstrapCssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "BOOTSTRAP_TO_INSTUI"
+#~ msgstr "BOOTSTRAP_TO_INSTUI"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "bootstrapCss"
+#~ msgstr "bootstrapCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toBootstrapCss"
+#~ msgstr "toBootstrapCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "css-in-js"
+#~ msgstr "css-in-js"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ToStyledThemeOptions"
+#~ msgstr "ToStyledThemeOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "StyledTheme"
+#~ msgstr "StyledTheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pantokenTheme"
+#~ msgstr "pantokenTheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toThemeKey"
+#~ msgstr "toThemeKey"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toStyledTheme"
+#~ msgstr "toStyledTheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "docusaurus"
+#~ msgstr "docusaurus"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ToDocusaurusCssOptions"
+#~ msgstr "ToDocusaurusCssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "INFIMA_TO_INSTUI"
+#~ msgstr "INFIMA_TO_INSTUI"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "docusaurusCss"
+#~ msgstr "docusaurusCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toDocusaurusCss"
+#~ msgstr "toDocusaurusCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "foundation"
+#~ msgstr "foundation"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ToFoundationSettingsOptions"
+#~ msgstr "ToFoundationSettingsOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ToFoundationCssOptions"
+#~ msgstr "ToFoundationCssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "FOUNDATION_TO_INSTUI"
+#~ msgstr "FOUNDATION_TO_INSTUI"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "foundationSettings"
+#~ msgstr "foundationSettings"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "foundationCss"
+#~ msgstr "foundationCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toFoundationSettings"
+#~ msgstr "toFoundationSettings"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toFoundationCss"
+#~ msgstr "toFoundationCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "markdown-it"
+#~ msgstr "markdown-it"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "MarkdownItOptions"
+#~ msgstr "MarkdownItOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PROSE_CLASS"
+#~ msgstr "PROSE_CLASS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pantokenMarkdownIt"
+#~ msgstr "pantokenMarkdownIt"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "mintlify"
+#~ msgstr "mintlify"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "MintlifyColors"
+#~ msgstr "MintlifyColors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "MintlifyBackground"
+#~ msgstr "MintlifyBackground"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "MintlifyTheme"
+#~ msgstr "MintlifyTheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "docsJson"
+#~ msgstr "docsJson"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toMintlifyConfig"
+#~ msgstr "toMintlifyConfig"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "mui"
+#~ msgstr "mui"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "MuiPaletteColor"
+#~ msgstr "MuiPaletteColor"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenThemeOptions"
+#~ msgstr "PantokenThemeOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "lightTheme"
+#~ msgstr "lightTheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "darkTheme"
+#~ msgstr "darkTheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toMuiTheme"
+#~ msgstr "toMuiTheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pendo"
+#~ msgstr "pendo"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "BuildPendoCssOptions"
+#~ msgstr "BuildPendoCssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "AddScopeOptions"
+#~ msgstr "AddScopeOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pendoCss"
+#~ msgstr "pendoCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LAYER_ORDER"
+#~ msgstr "LAYER_ORDER"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "COMPONENTS"
+#~ msgstr "COMPONENTS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "addImportant"
+#~ msgstr "addImportant"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "addScope"
+#~ msgstr "addScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "buildPendoCss"
+#~ msgstr "buildPendoCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "react"
+#~ msgstr "react"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "IconProps"
+#~ msgstr "IconProps"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TokenProviderProps"
+#~ msgstr "TokenProviderProps"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "useToken"
+#~ msgstr "useToken"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Icon"
+#~ msgstr "Icon"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TokenProvider"
+#~ msgstr "TokenProvider"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "react-markdown"
+#~ msgstr "react-markdown"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "InstuiMarkdownRenderOptions"
+#~ msgstr "InstuiMarkdownRenderOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "InstuiMarkdownProps"
+#~ msgstr "InstuiMarkdownProps"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "AlertMarker"
+#~ msgstr "AlertMarker"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "instuiMarkdownComponents"
+#~ msgstr "instuiMarkdownComponents"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createInstuiMarkdownComponents"
+#~ msgstr "createInstuiMarkdownComponents"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "buildIconResolver"
+#~ msgstr "buildIconResolver"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "parseAlertMarker"
+#~ msgstr "parseAlertMarker"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "isColorValue"
+#~ msgstr "isColorValue"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "rehypeColorCodes"
+#~ msgstr "rehypeColorCodes"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "rehypeGithubAlerts"
+#~ msgstr "rehypeGithubAlerts"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "InstuiMarkdown"
+#~ msgstr "InstuiMarkdown"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "react-native"
+#~ msgstr "react-native"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "RNTokenValue"
+#~ msgstr "RNTokenValue"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tokensForScheme"
+#~ msgstr "tokensForScheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "rehype"
+#~ msgstr "rehype"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "RehypeOptions"
+#~ msgstr "RehypeOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "rehypePantokenIcons"
+#~ msgstr "rehypePantokenIcons"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "shadcn"
+#~ msgstr "shadcn"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ToShadcnCssOptions"
+#~ msgstr "ToShadcnCssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "shadcnCss"
+#~ msgstr "shadcnCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "shadcnTailwindV4Css"
+#~ msgstr "shadcnTailwindV4Css"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SHADCN_TO_INSTUI"
+#~ msgstr "SHADCN_TO_INSTUI"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toShadcnCss"
+#~ msgstr "toShadcnCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toShadcnTailwindV4Css"
+#~ msgstr "toShadcnTailwindV4Css"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "storybook"
+#~ msgstr "storybook"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "StorybookTheme"
+#~ msgstr "StorybookTheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pantokenStorybookTheme"
+#~ msgstr "pantokenStorybookTheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "svelte"
+#~ msgstr "svelte"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ActionResult"
+#~ msgstr "ActionResult"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "icon"
+#~ msgstr "icon"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "registerLocalized"
+#~ msgstr "registerLocalized"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tinymce"
+#~ msgstr "tinymce"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CssDocEntry"
+#~ msgstr "CssDocEntry"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PageLayoutImagePlaceholder"
+#~ msgstr "PageLayoutImagePlaceholder"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PageLayout"
+#~ msgstr "PageLayout"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LogoMeta"
+#~ msgstr "LogoMeta"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TaggedIcon"
+#~ msgstr "TaggedIcon"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ContentClassesPluginOptions"
+#~ msgstr "ContentClassesPluginOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LayoutsPluginOptions"
+#~ msgstr "LayoutsPluginOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LayoutImageAttributes"
+#~ msgstr "LayoutImageAttributes"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenPluginOptions"
+#~ msgstr "PantokenPluginOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TinymceStrings"
+#~ msgstr "TinymceStrings"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Product"
+#~ msgstr "Product"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenFontSize"
+#~ msgstr "PantokenFontSize"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LayoutImageResolver"
+#~ msgstr "LayoutImageResolver"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pageLayouts"
+#~ msgstr "pageLayouts"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "logos"
+#~ msgstr "logos"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "products"
+#~ msgstr "products"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_ICON_PACK_NAME"
+#~ msgstr "PANTOKEN_ICON_PACK_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ICON_SOURCES"
+#~ msgstr "ICON_SOURCES"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SOURCE_LABELS"
+#~ msgstr "SOURCE_LABELS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CONTENT_CLASSES_PLUGIN_NAME"
+#~ msgstr "CONTENT_CLASSES_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_COMMANDS"
+#~ msgstr "PANTOKEN_COMMANDS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "FULLSCREEN_FOOTER_PLUGIN_NAME"
+#~ msgstr "FULLSCREEN_FOOTER_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "FULLSCREEN_FOOTER_STATUSBAR_NAME"
+#~ msgstr "FULLSCREEN_FOOTER_STATUSBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ICONS_COMMAND"
+#~ msgstr "ICONS_COMMAND"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "DEFAULT_ICON_TRIGGER"
+#~ msgstr "DEFAULT_ICON_TRIGGER"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LAYOUTS_PLUGIN_NAME"
+#~ msgstr "LAYOUTS_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LAYOUTS_TOOLBAR_NAME"
+#~ msgstr "LAYOUTS_TOOLBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_PLUGIN_NAME"
+#~ msgstr "PANTOKEN_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_TOOLBAR_NAME"
+#~ msgstr "PANTOKEN_TOOLBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PANTOKEN_ICON"
+#~ msgstr "PANTOKEN_ICON"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SEARCHREPLACE_FOOTER_PLUGIN_NAME"
+#~ msgstr "SEARCHREPLACE_FOOTER_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SEARCHREPLACE_FOOTER_STATUSBAR_NAME"
+#~ msgstr "SEARCHREPLACE_FOOTER_STATUSBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SUP_SUB_PLUGIN_NAME"
+#~ msgstr "SUP_SUB_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SUP_SUB_TOOLBAR_NAME"
+#~ msgstr "SUP_SUB_TOOLBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pageTemplates"
+#~ msgstr "pageTemplates"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "VISUALBLOCKS_FOOTER_PLUGIN_NAME"
+#~ msgstr "VISUALBLOCKS_FOOTER_PLUGIN_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "VISUALBLOCKS_FOOTER_STATUSBAR_NAME"
+#~ msgstr "VISUALBLOCKS_FOOTER_STATUSBAR_NAME"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TINYMCE_STRINGS"
+#~ msgstr "TINYMCE_STRINGS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pantokenHtmlCompletion"
+#~ msgstr "pantokenHtmlCompletion"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pantokenHtmlLinter"
+#~ msgstr "pantokenHtmlLinter"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pantokenContentCssUrls"
+#~ msgstr "pantokenContentCssUrls"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "injectContentStylesheet"
+#~ msgstr "injectContentStylesheet"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "findEntry"
+#~ msgstr "findEntry"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "listComponents"
+#~ msgstr "listComponents"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "listUtilities"
+#~ msgstr "listUtilities"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getModifierSuggestions"
+#~ msgstr "getModifierSuggestions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "validateClassToken"
+#~ msgstr "validateClassToken"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "registerPantokenIconPack"
+#~ msgstr "registerPantokenIconPack"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "loadAllIcons"
+#~ msgstr "loadAllIcons"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getIconCdnFile"
+#~ msgstr "getIconCdnFile"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getUsedIconCdnFiles"
+#~ msgstr "getUsedIconCdnFiles"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "humanizeIconName"
+#~ msgstr "humanizeIconName"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "buildIconMarkup"
+#~ msgstr "buildIconMarkup"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getIconImageSrc"
+#~ msgstr "getIconImageSrc"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "filterIcons"
+#~ msgstr "filterIcons"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createComponentsPlugin"
+#~ msgstr "createComponentsPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createContentClassesPlugin"
+#~ msgstr "createContentClassesPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createFullscreenFooterPlugin"
+#~ msgstr "createFullscreenFooterPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createIconsPlugin"
+#~ msgstr "createIconsPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "materializeLayout"
+#~ msgstr "materializeLayout"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createLayoutsPlugin"
+#~ msgstr "createLayoutsPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createLogosPlugin"
+#~ msgstr "createLogosPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createPantokenPlugin"
+#~ msgstr "createPantokenPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createSearchReplaceFooterPlugin"
+#~ msgstr "createSearchReplaceFooterPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createSupSubPlugin"
+#~ msgstr "createSupSubPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createTemplatesPlugin"
+#~ msgstr "createTemplatesPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createVisualBlocksFooterPlugin"
+#~ msgstr "createVisualBlocksFooterPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "vitepress"
+#~ msgstr "vitepress"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ToVitePressCssOptions"
+#~ msgstr "ToVitePressCssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "VITEPRESS_TO_INSTUI"
+#~ msgstr "VITEPRESS_TO_INSTUI"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "vue"
+#~ msgstr "vue"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenVue"
+#~ msgstr "PantokenVue"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "iconSvg"
+#~ msgstr "iconSvg"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "web-components"
+#~ msgstr "web-components"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CommandEventish"
+#~ msgstr "CommandEventish"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LocaleSet"
+#~ msgstr "LocaleSet"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ElementRegistry"
+#~ msgstr "ElementRegistry"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "RegisterContext"
+#~ msgstr "RegisterContext"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ElementDefinition"
+#~ msgstr "ElementDefinition"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LocaleInfo"
+#~ msgstr "LocaleInfo"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "RegisterContextOptions"
+#~ msgstr "RegisterContextOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "WebComponentStrings"
+#~ msgstr "WebComponentStrings"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LocaleBundle"
+#~ msgstr "LocaleBundle"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "alert"
+#~ msgstr "alert"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "avatar"
+#~ msgstr "avatar"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "badge"
+#~ msgstr "badge"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "button"
+#~ msgstr "button"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "calendar"
+#~ msgstr "calendar"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "contextView"
+#~ msgstr "contextView"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "dateInput"
+#~ msgstr "dateInput"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "dateTimeInput"
+#~ msgstr "dateTimeInput"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "drawerLayout"
+#~ msgstr "drawerLayout"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "drilldown"
+#~ msgstr "drilldown"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "iconButton"
+#~ msgstr "iconButton"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "img"
+#~ msgstr "img"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "inPlaceEdit"
+#~ msgstr "inPlaceEdit"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "DEFINITIONS"
+#~ msgstr "DEFINITIONS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "metric"
+#~ msgstr "metric"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "modal"
+#~ msgstr "modal"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pages"
+#~ msgstr "pages"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pill"
+#~ msgstr "pill"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "popover"
+#~ msgstr "popover"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "progressCircle"
+#~ msgstr "progressCircle"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "progress"
+#~ msgstr "progress"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "rating"
+#~ msgstr "rating"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "sideNavBar"
+#~ msgstr "sideNavBar"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "spinner"
+#~ msgstr "spinner"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tabs"
+#~ msgstr "tabs"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tag"
+#~ msgstr "tag"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toggleButton"
+#~ msgstr "toggleButton"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tooltip"
+#~ msgstr "tooltip"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tray"
+#~ msgstr "tray"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "treeBrowser"
+#~ msgstr "treeBrowser"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "truncate"
+#~ msgstr "truncate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ELEMENTS"
+#~ msgstr "ELEMENTS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "NESTED_DEPS"
+#~ msgstr "NESTED_DEPS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ICON_ELEMENTS"
+#~ msgstr "ICON_ELEMENTS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LOCALES"
+#~ msgstr "LOCALES"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "DEFAULT_PREFIX"
+#~ msgstr "DEFAULT_PREFIX"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ENGLISH_STRINGS"
+#~ msgstr "ENGLISH_STRINGS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ar"
+#~ msgstr "ar"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ca"
+#~ msgstr "ca"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "cy"
+#~ msgstr "cy"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "da"
+#~ msgstr "da"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "de"
+#~ msgstr "de"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "el"
+#~ msgstr "el"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "enAU"
+#~ msgstr "enAU"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "enCA"
+#~ msgstr "enCA"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "enGB"
+#~ msgstr "enGB"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "en"
+#~ msgstr "en"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "es"
+#~ msgstr "es"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "fa"
+#~ msgstr "fa"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "fi"
+#~ msgstr "fi"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "frCA"
+#~ msgstr "frCA"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "fr"
+#~ msgstr "fr"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ga"
+#~ msgstr "ga"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "he"
+#~ msgstr "he"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "hi"
+#~ msgstr "hi"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ht"
+#~ msgstr "ht"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "hu"
+#~ msgstr "hu"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "hy"
+#~ msgstr "hy"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "id"
+#~ msgstr "id"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "is"
+#~ msgstr "is"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "it"
+#~ msgstr "it"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ja"
+#~ msgstr "ja"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ko"
+#~ msgstr "ko"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "mi"
+#~ msgstr "mi"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ms"
+#~ msgstr "ms"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "nb"
+#~ msgstr "nb"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "nl"
+#~ msgstr "nl"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "nn"
+#~ msgstr "nn"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pl"
+#~ msgstr "pl"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ptBR"
+#~ msgstr "ptBR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pt"
+#~ msgstr "pt"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ru"
+#~ msgstr "ru"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "se"
+#~ msgstr "se"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "sl"
+#~ msgstr "sl"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "sv"
+#~ msgstr "sv"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "th"
+#~ msgstr "th"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tr"
+#~ msgstr "tr"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "uk"
+#~ msgstr "uk"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "vi"
+#~ msgstr "vi"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "zhHans"
+#~ msgstr "zhHans"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "zhHant"
+#~ msgstr "zhHant"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getDir"
+#~ msgstr "getDir"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createLocaleSet"
+#~ msgstr "createLocaleSet"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "noopIconSvg"
+#~ msgstr "noopIconSvg"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "buildRegisterContext"
+#~ msgstr "buildRegisterContext"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "formatMessage"
+#~ msgstr "formatMessage"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "isolate"
+#~ msgstr "isolate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "formatNumber"
+#~ msgstr "formatNumber"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "formatDate"
+#~ msgstr "formatDate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "formatList"
+#~ msgstr "formatList"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "formatRelativeTime"
+#~ msgstr "formatRelativeTime"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveFirstDay"
+#~ msgstr "resolveFirstDay"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "makeStrings"
+#~ msgstr "makeStrings"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "defineBundle"
+#~ msgstr "defineBundle"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "packages"
+#~ msgstr "packages"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "cli"
+#~ msgstr "cli"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CliArgs"
+#~ msgstr "CliArgs"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "parseArgs"
+#~ msgstr "parseArgs"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ensureComponentsJsonRegistry"
+#~ msgstr "ensureComponentsJsonRegistry"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveRegistryItemNames"
+#~ msgstr "resolveRegistryItemNames"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "runAdd"
+#~ msgstr "runAdd"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "runCreate"
+#~ msgstr "runCreate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "run"
+#~ msgstr "run"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "core"
+#~ msgstr "core"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "VectorDrawableOptions"
+#~ msgstr "VectorDrawableOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "AssetFile"
+#~ msgstr "AssetFile"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CollectIconsOptions"
+#~ msgstr "CollectIconsOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "IconToken"
+#~ msgstr "IconToken"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "IconLayer"
+#~ msgstr "IconLayer"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Leaf"
+#~ msgstr "Leaf"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SdLeaf"
+#~ msgstr "SdLeaf"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TokenModify"
+#~ msgstr "TokenModify"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TokenMeta"
+#~ msgstr "TokenMeta"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Token"
+#~ msgstr "Token"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TokenInput"
+#~ msgstr "TokenInput"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "IconEntry"
+#~ msgstr "IconEntry"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CssContribution"
+#~ msgstr "CssContribution"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TokenHookContext"
+#~ msgstr "TokenHookContext"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "IconHookContext"
+#~ msgstr "IconHookContext"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CssHookContext"
+#~ msgstr "CssHookContext"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "RehypeHookContext"
+#~ msgstr "RehypeHookContext"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenPlugin"
+#~ msgstr "PantokenPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Theme"
+#~ msgstr "Theme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "IconResolver"
+#~ msgstr "IconResolver"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ICON_COLOR_SPECIAL_VALUES"
+#~ msgstr "ICON_COLOR_SPECIAL_VALUES"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "applyModify"
+#~ msgstr "applyModify"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "decodeIconSvg"
+#~ msgstr "decodeIconSvg"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getIconSvgs"
+#~ msgstr "getIconSvgs"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toVectorDrawable"
+#~ msgstr "toVectorDrawable"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toXcodeImageset"
+#~ msgstr "toXcodeImageset"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "flutterIconManifest"
+#~ msgstr "flutterIconManifest"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "collectIcons"
+#~ msgstr "collectIcons"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "defineToken"
+#~ msgstr "defineToken"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "dedupeByName"
+#~ msgstr "dedupeByName"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "runTokenPlugins"
+#~ msgstr "runTokenPlugins"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "runIconPlugins"
+#~ msgstr "runIconPlugins"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "collectLeaves"
+#~ msgstr "collectLeaves"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "referenceToVarName"
+#~ msgstr "referenceToVarName"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveValue"
+#~ msgstr "resolveValue"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "varName"
+#~ msgstr "varName"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveReferences"
+#~ msgstr "resolveReferences"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toStyleDictionary"
+#~ msgstr "toStyleDictionary"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toKebab"
+#~ msgstr "toKebab"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "cssSyntaxForValue"
+#~ msgstr "cssSyntaxForValue"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "isContextual"
+#~ msgstr "isContextual"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "model"
+#~ msgstr "model"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "DeprecationEntry"
+#~ msgstr "DeprecationEntry"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "DeprecationLedger"
+#~ msgstr "DeprecationLedger"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PropertyRule"
+#~ msgstr "PropertyRule"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "UpstreamRef"
+#~ msgstr "UpstreamRef"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "plugin-kit"
+#~ msgstr "plugin-kit"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Stage"
+#~ msgstr "Stage"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "definePlugin"
+#~ msgstr "definePlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "isFactoried"
+#~ msgstr "isFactoried"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "validatePlugin"
+#~ msgstr "validatePlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "capabilitiesOf"
+#~ msgstr "capabilitiesOf"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "checkPlugins"
+#~ msgstr "checkPlugins"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "extendPlugin"
+#~ msgstr "extendPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "mergePlugin"
+#~ msgstr "mergePlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "makeResolver"
+#~ msgstr "makeResolver"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveTokens"
+#~ msgstr "resolveTokens"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "utils"
+#~ msgstr "utils"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Rgba"
+#~ msgstr "Rgba"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SpacingStep"
+#~ msgstr "SpacingStep"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "UtilityOptions"
+#~ msgstr "UtilityOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ColorUtilityNames"
+#~ msgstr "ColorUtilityNames"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TokenUtilityGroup"
+#~ msgstr "TokenUtilityGroup"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Scheme"
+#~ msgstr "Scheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ColorUtilityEntry"
+#~ msgstr "ColorUtilityEntry"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ELEVATION_NAMES"
+#~ msgstr "ELEVATION_NAMES"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "FOCUSABLE_SELECTOR"
+#~ msgstr "FOCUSABLE_SELECTOR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LIGHT_DARK_RE"
+#~ msgstr "LIGHT_DARK_RE"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "THEME_ATTR"
+#~ msgstr "THEME_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SCHEME_ATTR"
+#~ msgstr "SCHEME_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "COLOR_ATTR"
+#~ msgstr "COLOR_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "BOUNDARY_ATTR"
+#~ msgstr "BOUNDARY_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "INSTANCE_ATTR"
+#~ msgstr "INSTANCE_ATTR"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SCOPE_ATTRS"
+#~ msgstr "SCOPE_ATTRS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SCOPE_LAYERS"
+#~ msgstr "SCOPE_LAYERS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "BOUNDARY_CLASS"
+#~ msgstr "BOUNDARY_CLASS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SPACING_STEPS"
+#~ msgstr "SPACING_STEPS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SPACING_AUTO_STEP"
+#~ msgstr "SPACING_AUTO_STEP"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "camelCase"
+#~ msgstr "camelCase"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "parseHexColor"
+#~ msgstr "parseHexColor"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "elevationDeclarations"
+#~ msgstr "elevationDeclarations"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "focusOutlineDeclarations"
+#~ msgstr "focusOutlineDeclarations"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "focusOutlineRules"
+#~ msgstr "focusOutlineRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "extractInstuiRefs"
+#~ msgstr "extractInstuiRefs"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tokenNames"
+#~ msgstr "tokenNames"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "unknownReferences"
+#~ msgstr "unknownReferences"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "danglingReferences"
+#~ msgstr "danglingReferences"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "isScheme"
+#~ msgstr "isScheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "themeClass"
+#~ msgstr "themeClass"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemeClass"
+#~ msgstr "schemeClass"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "colorClass"
+#~ msgstr "colorClass"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "themeScopeSelector"
+#~ msgstr "themeScopeSelector"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemeScopeSelector"
+#~ msgstr "schemeScopeSelector"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "colorScopeSelector"
+#~ msgstr "colorScopeSelector"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "themeScopeSelectors"
+#~ msgstr "themeScopeSelectors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemeScopeSelectors"
+#~ msgstr "schemeScopeSelectors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "colorScopeSelectors"
+#~ msgstr "colorScopeSelectors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "sanitizeSvg"
+#~ msgstr "sanitizeSvg"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "globalModifierSelector"
+#~ msgstr "globalModifierSelector"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "colorUtilitiesCss"
+#~ msgstr "colorUtilitiesCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tokenUtilitiesCss"
+#~ msgstr "tokenUtilitiesCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "formats"
+#~ msgstr "formats"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "components"
+#~ msgstr "components"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ComponentOptions"
+#~ msgstr "ComponentOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ProseOptions"
+#~ msgstr "ProseOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "IconGlyphsOptions"
+#~ msgstr "IconGlyphsOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "alertCss"
+#~ msgstr "alertCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "avatarCss"
+#~ msgstr "avatarCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "badgeCss"
+#~ msgstr "badgeCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "billboardCss"
+#~ msgstr "billboardCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "breadcrumbCss"
+#~ msgstr "breadcrumbCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "breadcrumbLinkCss"
+#~ msgstr "breadcrumbLinkCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "buttonCss"
+#~ msgstr "buttonCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "bylineCss"
+#~ msgstr "bylineCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "calendarCss"
+#~ msgstr "calendarCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "calendarDayCss"
+#~ msgstr "calendarDayCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "checkboxCss"
+#~ msgstr "checkboxCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "closeButtonCss"
+#~ msgstr "closeButtonCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "contextViewCss"
+#~ msgstr "contextViewCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "drawerLayoutCss"
+#~ msgstr "drawerLayoutCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "drawerLayoutContentCss"
+#~ msgstr "drawerLayoutContentCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "drawerLayoutTrayCss"
+#~ msgstr "drawerLayoutTrayCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "fileDropCss"
+#~ msgstr "fileDropCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "formFieldGroupCss"
+#~ msgstr "formFieldGroupCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "formFieldMessagesCss"
+#~ msgstr "formFieldMessagesCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "formFieldCss"
+#~ msgstr "formFieldCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "headingCss"
+#~ msgstr "headingCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "imgCss"
+#~ msgstr "imgCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "inPlaceEditCss"
+#~ msgstr "inPlaceEditCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "inputGroupCss"
+#~ msgstr "inputGroupCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "linkCss"
+#~ msgstr "linkCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "listCss"
+#~ msgstr "listCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "listItemCss"
+#~ msgstr "listItemCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "maskCss"
+#~ msgstr "maskCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "menuCss"
+#~ msgstr "menuCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "menuGroupCss"
+#~ msgstr "menuGroupCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "menuItemCss"
+#~ msgstr "menuItemCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "menuSeparatorCss"
+#~ msgstr "menuSeparatorCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "metricCss"
+#~ msgstr "metricCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "modalCss"
+#~ msgstr "modalCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "modalBodyCss"
+#~ msgstr "modalBodyCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "modalFooterCss"
+#~ msgstr "modalFooterCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "modalHeaderCss"
+#~ msgstr "modalHeaderCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "numberInputCss"
+#~ msgstr "numberInputCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "paginationCss"
+#~ msgstr "paginationCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "paginationPageCss"
+#~ msgstr "paginationPageCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pillCss"
+#~ msgstr "pillCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "popoverCss"
+#~ msgstr "popoverCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "progressCircleCss"
+#~ msgstr "progressCircleCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "progressCss"
+#~ msgstr "progressCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "radioInputGroupCss"
+#~ msgstr "radioInputGroupCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "radioCss"
+#~ msgstr "radioCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "rangeInputCss"
+#~ msgstr "rangeInputCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ratingCss"
+#~ msgstr "ratingCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "sideNavBarCss"
+#~ msgstr "sideNavBarCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "sideNavBarItemCss"
+#~ msgstr "sideNavBarItemCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "simpleSelectCss"
+#~ msgstr "simpleSelectCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "spinnerCss"
+#~ msgstr "spinnerCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tableCss"
+#~ msgstr "tableCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tableBodyCss"
+#~ msgstr "tableBodyCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tableCellCss"
+#~ msgstr "tableCellCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tableColHeaderCss"
+#~ msgstr "tableColHeaderCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tableHeadCss"
+#~ msgstr "tableHeadCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tableRowHeaderCss"
+#~ msgstr "tableRowHeaderCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tableRowCss"
+#~ msgstr "tableRowCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tabsCss"
+#~ msgstr "tabsCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tabsPanelCss"
+#~ msgstr "tabsPanelCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tabsTabCss"
+#~ msgstr "tabsTabCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tagCss"
+#~ msgstr "tagCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "textAreaCss"
+#~ msgstr "textAreaCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "textInputCss"
+#~ msgstr "textInputCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "textCss"
+#~ msgstr "textCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toggleDetailsCss"
+#~ msgstr "toggleDetailsCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toggleGroupCss"
+#~ msgstr "toggleGroupCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tooltipCss"
+#~ msgstr "tooltipCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "trayCss"
+#~ msgstr "trayCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "treeBrowserCss"
+#~ msgstr "treeBrowserCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "viewCss"
+#~ msgstr "viewCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "aiGradientCss"
+#~ msgstr "aiGradientCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "cursorUtilitiesCss"
+#~ msgstr "cursorUtilitiesCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "gapCss"
+#~ msgstr "gapCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "iconCss"
+#~ msgstr "iconCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "layoutUtilitiesCss"
+#~ msgstr "layoutUtilitiesCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "maskUtilityCss"
+#~ msgstr "maskUtilityCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "overflowUtilitiesCss"
+#~ msgstr "overflowUtilitiesCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "positionUtilitiesCss"
+#~ msgstr "positionUtilitiesCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "responsiveUtilitiesCss"
+#~ msgstr "responsiveUtilitiesCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "screenReaderContentCss"
+#~ msgstr "screenReaderContentCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "spacingUtilitiesCss"
+#~ msgstr "spacingUtilitiesCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "stackingUtilityCss"
+#~ msgstr "stackingUtilityCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "transitionCss"
+#~ msgstr "transitionCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "truncateCss"
+#~ msgstr "truncateCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "visualDebugCss"
+#~ msgstr "visualDebugCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "selectCss"
+#~ msgstr "selectCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "elevationCss"
+#~ msgstr "elevationCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "focusOutlineCss"
+#~ msgstr "focusOutlineCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "baseCss"
+#~ msgstr "baseCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "componentsCss"
+#~ msgstr "componentsCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "proseCss"
+#~ msgstr "proseCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "iconGlyphsCss"
+#~ msgstr "iconGlyphsCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "css"
+#~ msgstr "css"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CssSection"
+#~ msgstr "CssSection"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ScopedCssOptions"
+#~ msgstr "ScopedCssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "MultiScopeCssOptions"
+#~ msgstr "MultiScopeCssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ToCssOptions"
+#~ msgstr "ToCssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CssEmitTarget"
+#~ msgstr "CssEmitTarget"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "leanCss"
+#~ msgstr "leanCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LAYERS"
+#~ msgstr "LAYERS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "buildCssFile"
+#~ msgstr "buildCssFile"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "layerOrderCss"
+#~ msgstr "layerOrderCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "propertiesCss"
+#~ msgstr "propertiesCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "scopedThemeCss"
+#~ msgstr "scopedThemeCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "scopedSchemeCss"
+#~ msgstr "scopedSchemeCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemesCss"
+#~ msgstr "schemesCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "multiScopeCss"
+#~ msgstr "multiScopeCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "lightBranch"
+#~ msgstr "lightBranch"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "darkBranch"
+#~ msgstr "darkBranch"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "schemeOverrideTokens"
+#~ msgstr "schemeOverrideTokens"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "themedTokens"
+#~ msgstr "themedTokens"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toCss"
+#~ msgstr "toCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "dtcg"
+#~ msgstr "dtcg"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "DtcgNode"
+#~ msgstr "DtcgNode"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "themes"
+#~ msgstr "themes"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "byTheme"
+#~ msgstr "byTheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toDtcg"
+#~ msgstr "toDtcg"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "icon-font"
+#~ msgstr "icon-font"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "IconFontResult"
+#~ msgstr "IconFontResult"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "BuildIconFontOptions"
+#~ msgstr "BuildIconFontOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "GlyphPath"
+#~ msgstr "GlyphPath"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "buildIconFont"
+#~ msgstr "buildIconFont"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "svgToGlyphPath"
+#~ msgstr "svgToGlyphPath"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "icons"
+#~ msgstr "icons"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenIcon"
+#~ msgstr "PantokenIcon"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "IconResolverChainOptions"
+#~ msgstr "IconResolverChainOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "lucideIcons"
+#~ msgstr "lucideIcons"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "customIcons"
+#~ msgstr "customIcons"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "iconsByName"
+#~ msgstr "iconsByName"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolve"
+#~ msgstr "resolve"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getIcon"
+#~ msgstr "getIcon"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "buildIconResolverChain"
+#~ msgstr "buildIconResolverChain"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "interactions"
+#~ msgstr "interactions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ProgressCircleOptions"
+#~ msgstr "ProgressCircleOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ProgressCircleHandle"
+#~ msgstr "ProgressCircleHandle"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "RemoveOptions"
+#~ msgstr "RemoveOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "RemoveHandle"
+#~ msgstr "RemoveHandle"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TabsHandle"
+#~ msgstr "TabsHandle"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TooltipOptions"
+#~ msgstr "TooltipOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TooltipHandle"
+#~ msgstr "TooltipHandle"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TruncateAutoOptions"
+#~ msgstr "TruncateAutoOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TruncateAutoHandle"
+#~ msgstr "TruncateAutoHandle"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CommandHandler"
+#~ msgstr "CommandHandler"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "OnCommand"
+#~ msgstr "OnCommand"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SPACING_ATTRS"
+#~ msgstr "SPACING_ATTRS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "initCloseButton"
+#~ msgstr "initCloseButton"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "initInPlaceEdit"
+#~ msgstr "initInPlaceEdit"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "initModal"
+#~ msgstr "initModal"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "initProgressCircle"
+#~ msgstr "initProgressCircle"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "initRemove"
+#~ msgstr "initRemove"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "initResponsiveOverlay"
+#~ msgstr "initResponsiveOverlay"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "initTabs"
+#~ msgstr "initTabs"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "initTooltip"
+#~ msgstr "initTooltip"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "syncTruncateAutoLines"
+#~ msgstr "syncTruncateAutoLines"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "initTruncateAuto"
+#~ msgstr "initTruncateAuto"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "makeOnCommand"
+#~ msgstr "makeOnCommand"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "syncInvoker"
+#~ msgstr "syncInvoker"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveSpace"
+#~ msgstr "resolveSpace"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "spacingValue"
+#~ msgstr "spacingValue"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "applySpacing"
+#~ msgstr "applySpacing"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "less"
+#~ msgstr "less"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ToLessOptions"
+#~ msgstr "ToLessOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toLess"
+#~ msgstr "toLess"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "scope"
+#~ msgstr "scope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ScopeConfig"
+#~ msgstr "ScopeConfig"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ResolvedScope"
+#~ msgstr "ResolvedScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ScopeMessage"
+#~ msgstr "ScopeMessage"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CreateScopeOptions"
+#~ msgstr "CreateScopeOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenScope"
+#~ msgstr "PantokenScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ConnectScopeOptions"
+#~ msgstr "ConnectScopeOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "DEFAULT_INSTANCE"
+#~ msgstr "DEFAULT_INSTANCE"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ensureProperties"
+#~ msgstr "ensureProperties"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "hasProperties"
+#~ msgstr "hasProperties"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "observeScope"
+#~ msgstr "observeScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveScope"
+#~ msgstr "resolveScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveInstance"
+#~ msgstr "resolveInstance"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "resolveScheme"
+#~ msgstr "resolveScheme"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getScope"
+#~ msgstr "getScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "createScope"
+#~ msgstr "createScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "connectScope"
+#~ msgstr "connectScope"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "scss"
+#~ msgstr "scss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ToScssOptions"
+#~ msgstr "ToScssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toScss"
+#~ msgstr "toScss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "stylus"
+#~ msgstr "stylus"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ToStylusOptions"
+#~ msgstr "ToStylusOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toStylus"
+#~ msgstr "toStylus"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tokens"
+#~ msgstr "tokens"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "rebrandTokens"
+#~ msgstr "rebrandTokens"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "canvasTokens"
+#~ msgstr "canvasTokens"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "canvasHighContrastTokens"
+#~ msgstr "canvasHighContrastTokens"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "figma"
+#~ msgstr "figma"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "FigmaColor"
+#~ msgstr "FigmaColor"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "FigmaVariable"
+#~ msgstr "FigmaVariable"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "FigmaVariablesPayload"
+#~ msgstr "FigmaVariablesPayload"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ToFigmaOptions"
+#~ msgstr "ToFigmaOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toFigmaColor"
+#~ msgstr "toFigmaColor"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toFigmaVariables"
+#~ msgstr "toFigmaVariables"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "swatches"
+#~ msgstr "swatches"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ToGplOptions"
+#~ msgstr "ToGplOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Swatch"
+#~ msgstr "Swatch"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Rgb"
+#~ msgstr "Rgb"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SketchPalette"
+#~ msgstr "SketchPalette"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ToSvgOptions"
+#~ msgstr "ToSvgOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toAse"
+#~ msgstr "toAse"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toGpl"
+#~ msgstr "toGpl"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "hexToRgb"
+#~ msgstr "hexToRgb"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toSwatches"
+#~ msgstr "toSwatches"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toSketchPalette"
+#~ msgstr "toSketchPalette"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toSvg"
+#~ msgstr "toSvg"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "bundlers"
+#~ msgstr "bundlers"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "next"
+#~ msgstr "next"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "NextConfigLike"
+#~ msgstr "NextConfigLike"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "WithPantokenOptions"
+#~ msgstr "WithPantokenOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "INSTUI_TRANSPILE_PACKAGES"
+#~ msgstr "INSTUI_TRANSPILE_PACKAGES"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "withPantoken"
+#~ msgstr "withPantoken"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "panda"
+#~ msgstr "panda"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PandaToken"
+#~ msgstr "PandaToken"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PandaSemanticToken"
+#~ msgstr "PandaSemanticToken"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PandaPreset"
+#~ msgstr "PandaPreset"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PandaCategory"
+#~ msgstr "PandaCategory"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pantokenPreset"
+#~ msgstr "pantokenPreset"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toPandaPreset"
+#~ msgstr "toPandaPreset"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "postcss"
+#~ msgstr "postcss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenPostcssOptions"
+#~ msgstr "PantokenPostcssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pantoken"
+#~ msgstr "pantoken"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tailwind"
+#~ msgstr "tailwind"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TailwindPreset"
+#~ msgstr "TailwindPreset"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenPresetOptions"
+#~ msgstr "PantokenPresetOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "vite"
+#~ msgstr "vite"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenViteOptions"
+#~ msgstr "PantokenViteOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "webpack"
+#~ msgstr "webpack"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenWebpackPlugin"
+#~ msgstr "PantokenWebpackPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenWebpackOptions"
+#~ msgstr "PantokenWebpackOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "plugins"
+#~ msgstr "plugins"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "colors"
+#~ msgstr "colors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CssColor"
+#~ msgstr "CssColor"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "alpha"
+#~ msgstr "alpha"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "darken"
+#~ msgstr "darken"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "lighten"
+#~ msgstr "lighten"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "overlayColors"
+#~ msgstr "overlayColors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "onColor"
+#~ msgstr "onColor"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "custom-components"
+#~ msgstr "custom-components"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CustomComponentsOptions"
+#~ msgstr "CustomComponentsOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "agentShellRules"
+#~ msgstr "agentShellRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "aiGradientRules"
+#~ msgstr "aiGradientRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "bannerRules"
+#~ msgstr "bannerRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "cardRules"
+#~ msgstr "cardRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "customComponents"
+#~ msgstr "customComponents"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "custom-icons"
+#~ msgstr "custom-icons"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CustomIcon"
+#~ msgstr "CustomIcon"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CustomIconsOptions"
+#~ msgstr "CustomIconsOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "custom-theme-colors"
+#~ msgstr "custom-theme-colors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CustomThemeColorsOptions"
+#~ msgstr "CustomThemeColorsOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "CustomThemeColorsCssOptions"
+#~ msgstr "CustomThemeColorsCssOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PantokenColorNamespace"
+#~ msgstr "PantokenColorNamespace"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "COLOR_KEYS"
+#~ msgstr "COLOR_KEYS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "customThemeColorsCss"
+#~ msgstr "customThemeColorsCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "customThemeColors"
+#~ msgstr "customThemeColors"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "deprecations"
+#~ msgstr "deprecations"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "UpstreamVersions"
+#~ msgstr "UpstreamVersions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ParsedRef"
+#~ msgstr "ParsedRef"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "shimValue"
+#~ msgstr "shimValue"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "shimEntries"
+#~ msgstr "shimEntries"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ledgerCovers"
+#~ msgstr "ledgerCovers"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "parseUpstreamRef"
+#~ msgstr "parseUpstreamRef"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "compareVersions"
+#~ msgstr "compareVersions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "dueForRemoval"
+#~ msgstr "dueForRemoval"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "describeLifecycle"
+#~ msgstr "describeLifecycle"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "deprecationShims"
+#~ msgstr "deprecationShims"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "layouts"
+#~ msgstr "layouts"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LayoutsOptions"
+#~ msgstr "LayoutsOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pageLayoutTemplates"
+#~ msgstr "pageLayoutTemplates"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "calloutRules"
+#~ msgstr "calloutRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "calloutTemplate"
+#~ msgstr "calloutTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "heroRules"
+#~ msgstr "heroRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "heroTemplate"
+#~ msgstr "heroTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pageLayoutRules"
+#~ msgstr "pageLayoutRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pageLayoutTemplate"
+#~ msgstr "pageLayoutTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "rubricNoteRules"
+#~ msgstr "rubricNoteRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "rubricNoteTemplate"
+#~ msgstr "rubricNoteTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "testimonialRules"
+#~ msgstr "testimonialRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "testimonialTemplate"
+#~ msgstr "testimonialTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "twoColumnRules"
+#~ msgstr "twoColumnRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "twoColumnTemplate"
+#~ msgstr "twoColumnTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "wrapperRules"
+#~ msgstr "wrapperRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "wrapperTemplate"
+#~ msgstr "wrapperTemplate"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "renderPageLayout"
+#~ msgstr "renderPageLayout"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LogosOptions"
+#~ msgstr "LogosOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LogoLayout"
+#~ msgstr "LogoLayout"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LogoColorMode"
+#~ msgstr "LogoColorMode"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LogoLang"
+#~ msgstr "LogoLang"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "logosCss"
+#~ msgstr "logosCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getLogoSvg"
+#~ msgstr "getLogoSvg"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getLogoDataUri"
+#~ msgstr "getLogoDataUri"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "getLogoMeta"
+#~ msgstr "getLogoMeta"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "logosPlugin"
+#~ msgstr "logosPlugin"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "lucide-lab"
+#~ msgstr "lucide-lab"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LucideLabOptions"
+#~ msgstr "LucideLabOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LucideLabNode"
+#~ msgstr "LucideLabNode"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "LucideLabRegistry"
+#~ msgstr "LucideLabRegistry"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "svgOf"
+#~ msgstr "svgOf"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "defaultRegistry"
+#~ msgstr "defaultRegistry"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "lucideLab"
+#~ msgstr "lucideLab"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "primitives"
+#~ msgstr "primitives"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PrimitiveTokenNames"
+#~ msgstr "PrimitiveTokenNames"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PrimitivesOptions"
+#~ msgstr "PrimitivesOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "primitivesCss"
+#~ msgstr "primitivesCss"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "simple-icons"
+#~ msgstr "simple-icons"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SimpleIcon"
+#~ msgstr "SimpleIcon"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SimpleIconsOptions"
+#~ msgstr "SimpleIconsOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "SimpleIconsRegistry"
+#~ msgstr "SimpleIconsRegistry"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toExportName"
+#~ msgstr "toExportName"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "simpleIcons"
+#~ msgstr "simpleIcons"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "stacking"
+#~ msgstr "stacking"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "StackingOptions"
+#~ msgstr "StackingOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "STACKING_LEVELS"
+#~ msgstr "STACKING_LEVELS"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "transition"
+#~ msgstr "transition"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "TransitionOptions"
+#~ msgstr "TransitionOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "visual-debug"
+#~ msgstr "visual-debug"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "VisualDebugOptions"
+#~ msgstr "VisualDebugOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "VISUAL_DEBUG_RULES"
+#~ msgstr "VISUAL_DEBUG_RULES"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "visualDebugRules"
+#~ msgstr "visualDebugRules"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "visualDebug"
+#~ msgstr "visualDebug"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "flatten-property"
+#~ msgstr "flatten-property"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "FlattenPropertyOptions"
+#~ msgstr "FlattenPropertyOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "flattenProperty"
+#~ msgstr "flattenProperty"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "mangle-custom-props"
+#~ msgstr "mangle-custom-props"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "MangleCustomPropsOptions"
+#~ msgstr "MangleCustomPropsOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "MangleMethod"
+#~ msgstr "MangleMethod"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "mangleCustomProps"
+#~ msgstr "mangleCustomProps"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "props-minify"
+#~ msgstr "props-minify"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "PropsMinifyOptions"
+#~ msgstr "PropsMinifyOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pruneCustomProps"
+#~ msgstr "pruneCustomProps"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "applyMinify"
+#~ msgstr "applyMinify"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "prune-custom-props"
+#~ msgstr "prune-custom-props"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "theme-custom-media"
+#~ msgstr "theme-custom-media"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ThemeCustomMediaOptions"
+#~ msgstr "ThemeCustomMediaOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "themeCustomMedia"
+#~ msgstr "themeCustomMedia"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "typedoc"
+#~ msgstr "typedoc"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "DEMO_TAG"
+#~ msgstr "DEMO_TAG"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "DEMO_FENCE"
+#~ msgstr "DEMO_FENCE"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toDemoFence"
+#~ msgstr "toDemoFence"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "rewriteComment"
+#~ msgstr "rewriteComment"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "load"
+#~ msgstr "load"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "workspace-orchestrator"
+#~ msgstr "workspace-orchestrator"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "UpstreamNode"
+#~ msgstr "UpstreamNode"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "FileServerEntry"
+#~ msgstr "FileServerEntry"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "OrchestratorOptions"
+#~ msgstr "OrchestratorOptions"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "matchesFilters"
+#~ msgstr "matchesFilters"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "workspaceOrchestrator"
+#~ msgstr "workspaceOrchestrator"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "agent-shell"
+#~ msgstr "agent-shell"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "banner"
+#~ msgstr "banner"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "billboard"
+#~ msgstr "billboard"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "breadcrumb"
+#~ msgstr "breadcrumb"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "link"
+#~ msgstr "link"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "byline"
+#~ msgstr "byline"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "card"
+#~ msgstr "card"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "checkbox"
+#~ msgstr "checkbox"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "close-button"
+#~ msgstr "close-button"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "context-view"
+#~ msgstr "context-view"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "drawer-layout"
+#~ msgstr "drawer-layout"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "content"
+#~ msgstr "content"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "file-drop"
+#~ msgstr "file-drop"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "form-field"
+#~ msgstr "form-field"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "form-field-group"
+#~ msgstr "form-field-group"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "form-field-messages"
+#~ msgstr "form-field-messages"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "heading"
+#~ msgstr "heading"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "in-place-edit"
+#~ msgstr "in-place-edit"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "input-group"
+#~ msgstr "input-group"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "list"
+#~ msgstr "list"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "item"
+#~ msgstr "item"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "mask"
+#~ msgstr "mask"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "menu"
+#~ msgstr "menu"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "group"
+#~ msgstr "group"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "separator"
+#~ msgstr "separator"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "body"
+#~ msgstr "body"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "number-input"
+#~ msgstr "number-input"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "pagination"
+#~ msgstr "pagination"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "progress-circle"
+#~ msgstr "progress-circle"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "radio"
+#~ msgstr "radio"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "radio-input-group"
+#~ msgstr "radio-input-group"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "range-input"
+#~ msgstr "range-input"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "side-nav-bar"
+#~ msgstr "side-nav-bar"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "simple-select"
+#~ msgstr "simple-select"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "table"
+#~ msgstr "table"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "row"
+#~ msgstr "row"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "row-header"
+#~ msgstr "row-header"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "panel"
+#~ msgstr "panel"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "text"
+#~ msgstr "text"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "text-area"
+#~ msgstr "text-area"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "text-input"
+#~ msgstr "text-input"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toggle-details"
+#~ msgstr "toggle-details"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "toggle-group"
+#~ msgstr "toggle-group"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "tree-browser"
+#~ msgstr "tree-browser"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "view"
+#~ msgstr "view"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "ai-gradient"
+#~ msgstr "ai-gradient"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "color"
+#~ msgstr "color"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "cursor"
+#~ msgstr "cursor"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "gap"
+#~ msgstr "gap"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "layout"
+#~ msgstr "layout"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "maskglobal"
+#~ msgstr "maskglobal"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "overflow"
+#~ msgstr "overflow"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "position"
+#~ msgstr "position"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "responsive"
+#~ msgstr "responsive"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "screen-reader-content"
+#~ msgstr "screen-reader-content"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "spacing"
+#~ msgstr "spacing"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "base"
+#~ msgstr "base"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "prose"
+#~ msgstr "prose"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Plugins"
+#~ msgstr "Plugins"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "callout"
+#~ msgstr "callout"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "hero"
+#~ msgstr "hero"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "page-layout"
+#~ msgstr "page-layout"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "rubric-note"
+#~ msgstr "rubric-note"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "testimonial"
+#~ msgstr "testimonial"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "two-column"
+#~ msgstr "two-column"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "wrapper"
+#~ msgstr "wrapper"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Interfaces"
+#~ msgstr "الواجهات"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Functions"
+#~ msgstr "الدوال"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Variables"
+#~ msgstr "المتغيرات"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Type Aliases"
+#~ msgstr "الأسماء المستعارة للنوع"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Classes"
+#~ msgstr "الفئات"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Components"
+#~ msgstr "المكونات"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Utilities"
+#~ msgstr "الأدوات المساعدة"
+
+#~ msgctxt "docs.api:text"
+#~ msgid "Rules"
+#~ msgstr "القواعد"

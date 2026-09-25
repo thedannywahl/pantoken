@@ -1,8 +1,9 @@
 /**
  * The glyph-token half of the icon system: one `.<prefix>-icon-<name>` class per icon that points
- * `--pantoken-glyph` at the matching `--instui-icon-<name>` token. Bespoke (no cssdoc record, not in
- * the UTILITIES registry) and shipped as its own large `icons.css`. The painter half — the shared
- * `::before` that masks the glyph — is the documented `icon` utility.
+ * `--pantoken-glyph` at the matching `--instui-icon-<name>` token, optionally declaring those token
+ * values too. Bespoke (no cssdoc record, not in the UTILITIES registry) and shipped as its own large
+ * `icons.css`. The painter half — the shared `::before` that masks the glyph — is the documented
+ * `icon` utility.
  *
  * @module
  */
@@ -17,6 +18,12 @@ export interface IconGlyphsOptions extends ComponentOptions {
    * to keep rendering. The shipped `icons.css` is built with this on.
    */
   deprecatedAliases?: boolean;
+  /**
+   * Icon name → `--instui-icon-<name>` data-URI value. When given, the sheet also declares those
+   * custom properties in `:root`, making it self-contained: the glyphs paint without a separate
+   * token sheet loaded alongside. Omit to emit the lean mapping-only sheet.
+   */
+  values?: Readonly<Record<string, string>>;
 }
 
 /**
@@ -56,5 +63,15 @@ export function iconGlyphsCss(names: readonly string[], options: IconGlyphsOptio
   const rules = names
     .map((name) => `${selectors(name)} { --pantoken-glyph: var(--instui-icon-${name}); }`)
     .join("\n");
-  return `/* InstUI icon glyphs (@pantoken/components) — prefix: ${prefix} */\n${rules}\n`;
+  const header = `/* InstUI icon glyphs (@pantoken/components) — prefix: ${prefix} */\n`;
+  if (!options.values) return `${header}${rules}\n`;
+  const tokens = names
+    .map((name) => {
+      const value = options.values?.[name];
+      if (value === undefined)
+        throw new Error(`iconGlyphsCss: no value supplied for icon "${name}"`);
+      return `  --instui-icon-${name}: ${value};`;
+    })
+    .join("\n");
+  return `${header}:root {\n${tokens}\n}\n${rules}\n`;
 }

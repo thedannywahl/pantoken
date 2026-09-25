@@ -306,15 +306,14 @@ async function copy(value: string, key: string): Promise<void> {
 
 <template>
   <div class="agent-tools-page instui-view">
-    <header class="agent-tools-page__hero">
-      <span class="instui-pill -icon-sparkles agent-tools-page__hero-pill">@pantoken/ai</span>
-      <h1 class="instui-heading -level-h1 -variant-title-page agent-tools-page__title">
+    <header class="agent-tools-page__hero --display-flex --gap-sm --mb-lg">
+      <h1 class="instui-heading -level-h1 -variant-title-page agent-tools-page__title --m-0">
         {{ t.title }}
       </h1>
-      <p class="instui-text -color-secondary agent-tools-page__subtitle">{{ t.subtitle }}</p>
+      <p class="instui-text -color-secondary agent-tools-page__subtitle --m-0">{{ t.subtitle }}</p>
     </header>
 
-    <div class="instui-tabs agent-tools-page__tabs">
+    <div class="instui-tabs --mb-xl">
       <div class="list" role="tablist">
         <button
           class="tab"
@@ -342,10 +341,13 @@ async function copy(value: string, key: string): Promise<void> {
         </button>
       </div>
       <div class="panel" role="tabpanel">
-        <section v-if="activeTab === 'bootstrap'" class="agent-tools-page__panel">
-          <div>
-            <h2 class="instui-heading -level-h2 --my-md">{{ t.bootstrapTitle }}</h2>
-            <p class="instui-text -color-secondary">{{ t.bootstrapDescription }}</p>
+        <section
+          v-if="activeTab === 'bootstrap'"
+          class="agent-tools-page__panel --display-flex --gap-md"
+        >
+          <div class="agent-tools-page__intro --display-flex --gap-sm --mt-md">
+            <h2 class="instui-heading -level-h2 --m-0">{{ t.bootstrapTitle }}</h2>
+            <p class="instui-text -color-secondary --m-0">{{ t.bootstrapDescription }}</p>
           </div>
           <div
             class="agent-tools-page__prompt-wrapper instui-view --border-radius-lg --padding-xs --background-ai-horizontal"
@@ -391,10 +393,13 @@ async function copy(value: string, key: string): Promise<void> {
           </div>
         </section>
 
-        <section v-else-if="activeTab === 'install'" class="agent-tools-page__panel">
-          <div>
-            <h2 class="instui-heading -level-h2">{{ t.installTitle }}</h2>
-            <p class="instui-text -color-secondary">{{ t.installDescription }}</p>
+        <section
+          v-else-if="activeTab === 'install'"
+          class="agent-tools-page__panel --display-flex --gap-md"
+        >
+          <div class="agent-tools-page__intro --display-flex --gap-sm --mt-md">
+            <h2 class="instui-heading -level-h2 --m-0">{{ t.installTitle }}</h2>
+            <p class="instui-text -color-secondary --m-0">{{ t.installDescription }}</p>
           </div>
           <fieldset class="instui-radio-input-group -variant-toggle agent-tools-page__asset-filter">
             <legend>{{ t.toolLabel }}</legend>
@@ -412,20 +417,23 @@ async function copy(value: string, key: string): Promise<void> {
               {{ option.label }}
             </label>
           </fieldset>
-          <div class="agent-tools-page__asset-list" :aria-label="t.writesLabel">
+          <div
+            class="agent-tools-page__asset-list --display-flex --gap-sm"
+            :aria-label="t.writesLabel"
+          >
             <details
               v-for="asset in installAssets"
               :key="asset.id"
               class="instui-toggle-group agent-tools-page__asset"
             >
               <summary class="agent-tools-page__asset-summary">
-                <span class="agent-tools-page__asset-heading">
+                <span class="agent-tools-page__asset-heading --display-flex --gap-2xs">
                   <span class="instui-text -weight-bold">{{ asset.title }}</span>
                   <span class="instui-text -size-small -color-secondary">{{
                     asset.description
                   }}</span>
                 </span>
-                <span class="agent-tools-page__asset-actions">
+                <span class="agent-tools-page__asset-actions --gap-2xs --ms-auto">
                   <a
                     v-if="asset.publicHref"
                     class="agent-tools-page__asset-download instui-button -size-sm -color-secondary -icon-download"
@@ -463,17 +471,17 @@ async function copy(value: string, key: string): Promise<void> {
           </div>
         </section>
 
-        <section v-else class="agent-tools-page__panel">
-          <div>
-            <h2 class="instui-heading -level-h2">{{ t.docsTitle }}</h2>
-            <p class="instui-text -color-secondary">{{ t.docsDescription }}</p>
+        <section v-else class="agent-tools-page__panel --display-flex --gap-md">
+          <div class="agent-tools-page__intro --display-flex --gap-sm --mt-md">
+            <h2 class="instui-heading -level-h2 --m-0">{{ t.docsTitle }}</h2>
+            <p class="instui-text -color-secondary --m-0">{{ t.docsDescription }}</p>
           </div>
-          <ul class="agent-tools-page__links">
+          <ul class="instui-list -unstyled -inline agent-tools-page__links --gap-md">
             <li v-for="link in docsLinks" :key="link.id">
-              <article class="instui-card agent-tools-page__link-card">
-                <h3 class="instui-heading -level-h3">{{ link.title }}</h3>
-                <p class="instui-text -size-small -color-secondary">{{ link.description }}</p>
-                <ul class="agent-tools-page__asset-links">
+              <article class="instui-card agent-tools-page__link-card --display-flex --gap-sm">
+                <h3 class="instui-heading -level-h3 --m-0">{{ link.title }}</h3>
+                <p class="instui-text -size-small -color-secondary --m-0">{{ link.description }}</p>
+                <ul class="instui-list -unstyled agent-tools-page__asset-links">
                   <li v-if="link.href">
                     <a
                       class="instui-link -size-small agent-tools-page__link"
@@ -497,7 +505,10 @@ async function copy(value: string, key: string): Promise<void> {
                     </li>
                   </template>
                   <li v-else>
-                    <code class="agent-tools-page__path">{{ link.value }}</code>
+                    <code
+                      class="instui-view -display-inline-block -background-secondary -border-radius-small agent-tools-page__path"
+                      >{{ link.value }}</code
+                    >
                   </li>
                 </ul>
               </article>
@@ -527,14 +538,11 @@ async function copy(value: string, key: string): Promise<void> {
 }
 
 .agent-tools-page__hero {
-  display: grid;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
+  flex-direction: column;
 }
 
-.agent-tools-page__hero-pill {
-  justify-self: start;
-  color: var(--instui-color-text-interactive-navigation-primary-base, var(--vp-c-brand-1));
+.agent-tools-page__intro {
+  flex-direction: column;
 }
 
 .agent-tools-page__subtitle {
@@ -542,68 +550,22 @@ async function copy(value: string, key: string): Promise<void> {
   line-height: 1.55;
 }
 
-.agent-tools-page__launcher {
-  border: 1px solid var(--instui-color-stroke-subtle, var(--vp-c-divider));
-  padding: 1rem;
-  background: var(--instui-color-background-secondary, var(--vp-c-bg-soft));
-}
-
 .agent-tools-page__link {
   color: var(--instui-color-text-interactive-navigation-primary-base, var(--vp-c-brand-1));
   overflow-wrap: anywhere;
 }
 
-.agent-tools-page__form-grid {
-  display: flex;
-  align-items: end;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.agent-tools-page__field {
-  display: grid;
-  flex: 1 1 12rem;
-  gap: 0.375rem;
-  min-width: 0;
-}
-
-.agent-tools-page__select,
-.agent-tools-page__input {
-  width: 100%;
-  min-height: 2.5rem;
-  border: 1px solid var(--instui-color-stroke-base, var(--vp-c-divider));
-  border-radius: 0.375rem;
-  padding: 0.375rem 0.625rem;
-  color: var(--instui-color-text-base, var(--vp-c-text-1));
-  background: var(--instui-color-background-page, var(--vp-c-bg));
-}
-
 .agent-tools-page__links,
 .agent-tools-page__link-card,
-.agent-tools-page__path-list,
-.agent-tools-page__writes,
 .agent-tools-page__asset-list,
 .agent-tools-page__asset {
   max-width: 100%;
   min-width: 0;
 }
 
-.agent-tools-page__command-bar {
-  align-items: center;
-  min-width: 0;
-}
-
-.agent-tools-page__command-text {
-  display: block;
-  min-width: 0;
-  flex: 1 1 16rem;
-  overflow: auto;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  word-break: break-word;
-  color: var(--instui-color-text-interactive-navigation-primary-base, var(--vp-c-brand-1));
-  background: transparent;
-  max-width: 100%;
+/* `-inline` centers items by default; cards should stretch to equal height instead. */
+.agent-tools-page__links.-inline {
+  align-items: stretch;
 }
 
 .agent-tools-page__prompt-container {
@@ -670,31 +632,12 @@ async function copy(value: string, key: string): Promise<void> {
   opacity: 1;
 }
 
-.agent-tools-page__open-icon {
-  font-size: 0.875rem;
-}
-
-.agent-tools-page__tabs {
-  margin-bottom: 2rem;
-}
-
 .agent-tools-page__panel {
-  display: grid;
-  gap: 1rem;
-}
-
-.agent-tools-page__writes,
-.agent-tools-page__path-list,
-.agent-tools-page__link-row {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  flex-direction: column;
 }
 
 .agent-tools-page__asset-list {
-  display: grid;
-  gap: 0.75rem;
+  flex-direction: column;
 }
 
 .agent-tools-page__asset {
@@ -706,61 +649,32 @@ async function copy(value: string, key: string): Promise<void> {
 }
 
 .agent-tools-page__asset-heading {
-  display: grid;
-  gap: 0.125rem;
+  flex-direction: column;
   min-width: 0;
 }
 
 .agent-tools-page__asset-actions {
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
   flex: 0 0 auto;
-  margin-inline-start: auto;
 }
 
 .agent-tools-page__asset-copy {
   flex: 0 0 auto;
 }
 
-.agent-tools-page__asset-content {
-  max-height: 28rem;
-  margin: 0;
-  padding: 1rem;
-  overflow: auto;
-  border-block-start: 1px solid var(--instui-color-stroke-subtle, var(--vp-c-divider));
-  font-size: 0.8125rem;
-  line-height: 1.55;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  background: var(--vp-code-block-bg);
-}
-
-.agent-tools-page__asset-content code {
-  white-space: inherit;
+/* No pantoken gap step matches this list's 0.375rem inter-item spacing exactly. */
+.agent-tools-page__asset-links > li + li {
+  margin-block-start: 0.375rem;
 }
 
 .agent-tools-page__path {
-  display: inline-block;
   min-width: 0;
   max-width: 100%;
-  border-radius: 0.25rem;
   padding: 0.125rem 0.375rem;
   font-size: 0.75rem;
   overflow-wrap: anywhere;
   word-break: break-word;
-  background: var(--instui-color-background-secondary, var(--vp-c-bg-soft));
-  color: var(--instui-color-text-base, var(--vp-c-text-1));
-}
-
-.agent-tools-page__links {
-  display: flex;
-  align-items: stretch;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
 }
 
 .agent-tools-page__links > li {
@@ -770,34 +684,19 @@ async function copy(value: string, key: string): Promise<void> {
 }
 
 .agent-tools-page__link-card {
-  display: grid;
   flex: 1;
-  gap: 0.75rem;
+  flex-direction: column;
   padding: 1rem;
   min-width: 0;
 }
 
 .agent-tools-page__asset-links {
-  display: grid;
-  gap: 0.375rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
   min-width: 0;
 }
 
 @media (max-width: 640px) {
   .agent-tools-page {
     padding: 1.5rem 1rem;
-  }
-
-  .agent-tools-page__command-bar {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .agent-tools-page__command-text {
-    width: 100%;
   }
 }
 </style>

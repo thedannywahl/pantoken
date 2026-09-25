@@ -65,6 +65,7 @@
     "./react-markdown": "./dist/react-markdown.mjs",
     "./reactNative": "./dist/reactNative.mjs",
     "./rehype": "./dist/rehype.mjs",
+    "./scope": "./dist/scope.mjs",
     "./scss": "./dist/scss.mjs",
     "./shadcn": "./dist/shadcn.mjs",
     "./simpleIcons": "./dist/simpleIcons.mjs",

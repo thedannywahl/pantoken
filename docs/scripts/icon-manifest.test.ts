@@ -8,10 +8,11 @@ const writeMock = vi.mocked(writeFileSync);
 const mkdirMock = vi.mocked(mkdirSync);
 const copyMock = vi.mocked(copyFileSync);
 
-/** Configure the three generated-manifest reads the script performs, in call order. */
+/** Configure the four generated-manifest reads the script performs, in call order. */
 const mockGeneratedManifests = (): void => {
   readMock
     .mockReturnValueOnce(JSON.stringify([{ name: "alert" }]))
+    .mockReturnValueOnce(JSON.stringify([{ name: "at-sign-circle" }]))
     .mockReturnValueOnce(JSON.stringify([{ slug: "github", title: "GitHub" }]))
     .mockReturnValueOnce(
       JSON.stringify({
@@ -35,16 +36,26 @@ test("buildIconManifest tags each source with its exact per-item CDN CSS URL", a
   mockGeneratedManifests();
   const { buildIconManifest } = await import("./icon-manifest.ts");
 
-  const manifest = buildIconManifest([{ name: "alert" }], [{ slug: "github", title: "GitHub" }], {
-    customIcons: [{ name: "highspot" }],
-    logos: [{ product: "canvas", items: [{ name: "canvas-horizontal-color" }] }],
-  });
+  const manifest = buildIconManifest(
+    [{ name: "alert" }],
+    [{ name: "at-sign-circle" }],
+    [{ slug: "github", title: "GitHub" }],
+    {
+      customIcons: [{ name: "highspot" }],
+      logos: [{ product: "canvas", items: [{ name: "canvas-horizontal-color" }] }],
+    },
+  );
 
   expect(manifest.icons).toStrictEqual([
     {
       css: "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/icons/alert.css",
       name: "alert",
       source: "instui",
+    },
+    {
+      css: "https://cdn.jsdelivr.net/npm/@pantoken/plugin-lucide-lab/dist/icons/at-sign-circle.css",
+      name: "at-sign-circle",
+      source: "lucide-lab",
     },
     {
       css: "https://cdn.jsdelivr.net/npm/@pantoken/plugin-simple-icons/dist/icons/github.css",

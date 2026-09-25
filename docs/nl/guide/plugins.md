@@ -1,12 +1,12 @@
 # Plugins
 
-Een pantoken-plugin breidt de token- of CSS-uitvoer uit zonder een pakket te fork-en. Je bouwt er een met
-`definePlugin` van `@pantoken/plugin-kit`, en geeft het vervolgens door aan `buildTokens` of `toCss`.
+Een pantoken-plugin breidt de token- of CSS-uitvoer uit zonder een pakket te forksen. Bouw er één met
+`definePlugin` van `@pantoken/plugin-kit`, en geef deze vervolgens door aan `buildTokens` of `toCss`.
 
-## Schrijf een plugin
+## Een plugin schrijven
 
 Geef `definePlugin` de hooks die je implementeert. Het retourneert een normale plugin, gebrandmerkt met de
-mogelijkheden die uit die hooks worden afgeleid. Een plugin kan de IR uitbreiden (`tokens`, `icons`), de CSS-
+capabilities die uit die hooks worden afgeleid. Een plugin kan de IR uitbreiden (`tokens`, `icons`), de CSS
 uitvoer (`css`), of beide.
 
 ```ts
@@ -20,13 +20,13 @@ export const brand = () =>
   });
 ```
 
-## Mogelijkheid-bewuste registratie
+## Capability-aware registratie
 
 `buildTokens` en `toCss` voeren `checkPlugins` uit over de plugins die je doorgeeft. Het waarschuwt — het gooit nooit —
-als een plugin geen overeenkomende hook heeft voor de fase waarin het is geregistreerd, dus een alleen-token-plugin die aan
-`toCss` wordt doorgegeven wordt overgeslagen met een opmerking in plaats van stilletjes niets te doen.
+wanneer een plugin geen bijpassende hook heeft voor de fase waarin het geregistreerd is, dus een alleen-token-plugin die
+aan `toCss` wordt doorgegeven wordt overgeslagen met een melding in plaats van stilletjes niets te doen.
 
-## Componeer plugins
+## Plugins samenstellen
 
 Bouw voort op een andere plugin met `extendPlugin`, of combineer peers met `mergePlugin`:
 
@@ -37,12 +37,12 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Hooks in dezelfde fase componeren: `tokens` voert eerst de basis uit en daarna de toevoeging, `css` voegt de twee
+Hooks in dezelfde fase composeren: `tokens` voert eerst de basis en daarna de toevoeging uit, `css` voegt de twee
 bijdragen samen, en `icons` voert beide uit.
 
 ## Valideer de uitvoer van je plugin
 
-Draai de gedeelde drift-checks van `@pantoken/utils` over de eigen uitvoer van je plugin in de test, zodat een
+Voer de gedeelde drift-controles van `@pantoken/utils` uit over de eigen uitvoer van je plugin in zijn test, zodat een
 typefout of een hernoemde token snel en lokaal faalt:
 
 ```ts
@@ -58,16 +58,100 @@ expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 
 ## De meegeleverde plugins
 
-- `@pantoken/plugin-simple-icons` — merk-icoontjes van simple-icons, geregistreerd als icoontoken.
+- `@pantoken/plugin-simple-icons` — brandicons van simple-icons, geregistreerd als icon tokens.
+- `@pantoken/plugin-lucide-lab` — Lucide Lab-icoontjes, geregistreerd als `--instui-icon-*` image-tokens.
 - `@pantoken/plugin-logos` — Instructure productlogo's als SVG's, data-URI's, en `--instui-logo-*`
-  afbeeldings-tokens.
-- `@pantoken/plugin-prune-custom-props` — een PostCSS-plugin (geen pantoken-plugin) die
-  ongebruikte custom properties uit een stylesheet verwijdert.
+  image-tokens.
+- `@pantoken/plugin-prune-custom-props` — een PostCSS-plugin (geen pantoken-plugin) die ongebruikte custom properties uit een stylesheet verwijdert.
+- `@pantoken/plugin-custom-theme-colors` — rebrandt een pagina door één attribuut
+  (`data-pantoken-color`) in te stellen op één van 13 paletten, of op `custom` voor een willekeurige brand-hex. Zie
+  [Themakleuren](#theme-colors).
 
-Een paar dingen die vroeger plugins waren worden nu meegeleverd in `@pantoken/components`, aangezien veel componenten
-ze standaard nodig hebben: elevatie-schaduwen (`--instui-elevation-*`, in `components.css`), de focus-outline
-ring (in `base.css` — ieder focusbaar element krijgt het wanneer pantoken de pagina beheert), en de Instructure merk-
-fonts (Atkinson Hyperlegible Next: `base.css` past `--instui-font-family-base` toe; de opt-in
+Het register van Lucide Lab kan lui geladen worden en vervolgens worden doorgegeven aan de synchrone token-hook:
+
+```ts
+import { buildTokens } from "@pantoken/core/build";
+import { defaultRegistry, lucideLab } from "@pantoken/plugin-lucide-lab";
+
+const registry = await defaultRegistry();
+buildTokens({
+  theme: "rebrand",
+  plugins: [lucideLab({ registry, names: ["burger", "at-sign-circle"] })],
+});
+```
+
+Een paar dingen die vroeger plugins waren, worden nu meegeleverd in `@pantoken/components`, omdat zoveel componenten
+ze standaard nodig hebben: elevation-shadows (`--instui-elevation-*`, in `components.css`), de focus-outline
+ring (in `base.css` — elke focusable krijgt deze wanneer pantoken de pagina beheert), en de Instructure merkfonts
+(Atkinson Hyperlegible Next: `base.css` past `--instui-font-family-base` toe; de opt-in
 `@pantoken/components/fonts.css` laadt de `@font-face` woff2-bestanden).
+
+## Themakleuren {#theme-colors}
+
+`@pantoken/plugin-custom-theme-colors` genereert één `[data-pantoken-color="…"]` blok per palet
+(`navy`, `blue`, `green`, `red`, `orange`, `grey`, `plum`, `violet`, `stone`, `sky`, `honey`, `sea`,
+`aurora`). Elk blok wijst de brand-primitieven (`--instui-primitive-color-navy-*` en `-blue-*`)
+naar het gekozen palet. Het leidt ook de brand-oppervlakken die upstream naar letterlijke hexwaarden waren afgevlakt opnieuw af,
+en behoudt hun ingebakken alpha via `color-mix()`. Semantische statuskleuren, expliciete blauwe accenten en
+elevationschaduwen blijven ongewijzigd. Probeer het in de
+[swatch-gebaseerde theming-demo](https://stackblitz.com/edit/vitejs-vite-sg9oy7ln?file=index.html).
+
+```html
+<html data-pantoken-color="sea"></html>
+```
+
+### Aangepaste merk kleur
+
+Stel `data-pantoken-color="custom"` in om te rebranden vanuit een willekeurige hex, zoals de primaire kleur die een Canvas-beheerder
+in de Theme Editor typt. pantoken deriveert daaruit een volledige 10–200 `--instui-primitive-color-custom-*`
+schaal:
+
+1. **Referentiecurve.** De doel-lightness van elke stap is het gemiddelde OKLCH-lightness van de 13
+   paletten op die stap, met 0 vastgezet op wit en 210 op zwart. Dus de afstandsindeling van de aangepaste schaal
+   komt overeen met die van de meegeleverde paletten.
+2. **Anker.** De invoer valt op de stap waarvan de doel-lightness het dichtst bij die van de invoer ligt, en klikt vervolgens vast op
+   die exacte lightness. `#cccccc` wordt `custom-40` op `#c9c9c9`: dichtbij de invoer, maar niet
+   altijd identiek. "Dichtst" betekent de dichtstbijzijnde stap op de curve, niet de dichtstbijzijnde bestaande paletkleur.
+3. **Vulling.** Iedere andere stap behoudt de hue van de invoer. De verzadiging volgt de gemiddelde
+   verzadigingscurve van de paletten ten opzichte van het anker, en wordt alleen verminderd waar een kleur buiten sRGB valt.
+
+Alleen `#rgb` en `#rrggbb` worden geaccepteerd; alles anders gooit een `TypeError`, dus een hex uit een formulier
+kan geen CSS-injectie uitvoeren.
+
+Tijdens buildtijd, emit het volledige regelwerk met de afgeleide primitieven al gedeclareerd:
+
+```ts
+import { customColorCss, customThemeColors } from "@pantoken/plugin-custom-theme-colors";
+
+customThemeColors({ custom: "#e62429" }); // as a plugin, alongside the 13 palettes
+customColorCss("#e62429"); // or the custom rule on its own
+```
+
+Om de kleur bij runtime te kiezen zonder de token-set te versturen, precomputeer de curve en de remap-regel tijdens buildtijd. Gebruik dan de dependency-vrije `/scale` entry in de browser, en stel enkel de 20
+afgeleide primitieven in:
+
+```ts
+// Build time
+import {
+  customColorReferenceCurve,
+  customColorRemapCss,
+} from "@pantoken/plugin-custom-theme-colors";
+
+const curve = customColorReferenceCurve(); // JSON-safe
+const remapCss = customColorRemapCss(); // ship alongside the palette stylesheet
+```
+
+```ts
+// Browser
+import { deriveScale } from "@pantoken/plugin-custom-theme-colors/scale";
+
+const { anchorStep, steps } = deriveScale(input.value, curve);
+style.textContent = `:root[data-pantoken-color="custom"] { ${[...steps]
+  .map(([step, hex]) => `--instui-primitive-color-custom-custom${step}: ${hex};`)
+  .join(" ")} }`;
+document.documentElement.dataset.pantokenColor = "custom";
+```
+
+De theme-picker op de docsite, de Canvas theme editor en de demo hierboven werken allemaal op deze manier.
 
 Zie de [API reference](/api/) voor de exports van elke plugin.

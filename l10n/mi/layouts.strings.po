@@ -1,0 +1,442 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-23 14:33+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.title
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.title"
+msgid "About me"
+msgstr "Mōku"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.heading
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.heading"
+msgid "About your instructor"
+msgstr "Mō tō kaiako"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.intro
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.intro"
+msgid "Share a brief introduction, your role, and what you hope students take away from this course."
+msgstr "Whakapaŋa kia poto, tō tūranga mahi, me ngā tūmanako kia whai akoranga ngā ākonga i tēnei akoranga."
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.reachHeading
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.reachHeading"
+msgid "How to reach me"
+msgstr "Me pēhea te whakapā ki a au"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.emailLabel
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.emailLabel"
+msgid "Email:"
+msgstr "Īmēra:"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.emailPlaceholder
+#, no-c-format, x-translate-never
+msgctxt "layouts.strings:aboutMe.emailPlaceholder"
+msgid "instructor@example.edu"
+msgstr "instructor@example.edu"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.officeLabel
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.officeLabel"
+msgid "Office:"
+msgstr "Tari:"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.officePlaceholder
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.officePlaceholder"
+msgid "Add your office location or virtual meeting link."
+msgstr "Tāpiri i tō wāhi tari, i te hononga hui mariko rānei."
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.responseLabel
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.responseLabel"
+msgid "Response time:"
+msgstr "Wā urupare:"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.responsePlaceholder
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.responsePlaceholder"
+msgid "Add when students can expect a reply."
+msgstr "Tāpiri āhea ngā ākonga ka tūmanakohia he urupare."
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.officeHoursHeading
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.officeHoursHeading"
+msgid "Office hours"
+msgstr "Ngā haora tari"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.officeHoursText
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.officeHoursText"
+msgid "Add your recurring office hours and explain how students can meet with you."
+msgstr "Tāpiri i ō haora tari e tāwhana ana, me te whakamārama me pēhea ngā ākonga e tūtaki atu ai ki a koe."
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.instructorPhotoAlt
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.instructorPhotoAlt"
+msgid "A photo of the instructor"
+msgstr "He pikitia o te kaiako"
+
+#: plugins/pantoken/layouts/src/layouts/callout/i18n.json#callout.title
+#, no-c-format
+msgctxt "layouts.strings:callout.title"
+msgid "Callout"
+msgstr "Whakarāpopoto whakatūpato"
+
+#: plugins/pantoken/layouts/src/layouts/callout/i18n.json#callout.noteLabel
+#, no-c-format
+msgctxt "layouts.strings:callout.noteLabel"
+msgid "Note:"
+msgstr "Tuhipoka:"
+
+#: plugins/pantoken/layouts/src/layouts/callout/i18n.json#callout.noteText
+#, no-c-format
+msgctxt "layouts.strings:callout.noteText"
+msgid "Replace this callout with an important reminder for students."
+msgstr "Whakakapia tēnei whakarāpopoto kia heke ake he whakamaumahara hira mō ngā ākonga."
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.title
+#, no-c-format
+msgctxt "layouts.strings:courseHome.title"
+msgid "Course home"
+msgstr "Kāinga akoranga"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.welcomeHeading
+#, no-c-format
+msgctxt "layouts.strings:courseHome.welcomeHeading"
+msgid "Welcome to the course"
+msgstr "Nau mai ki te akoranga"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.welcomeText
+#, no-c-format
+msgctxt "layouts.strings:courseHome.welcomeText"
+msgid "Give students a warm welcome and explain what they should do first."
+msgstr "Homai he mihi mahana ki ngā ākonga, me te whakamārama he aha tā rātou me tīmata mā reira."
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.startHeading
+#, no-c-format
+msgctxt "layouts.strings:courseHome.startHeading"
+msgid "Start here"
+msgstr "Tīmata i konei"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.reviewHeaderLink
+#, no-c-format
+msgctxt "layouts.strings:courseHome.reviewHeaderLink"
+msgid "Review the course header and navigation"
+msgstr "Arotakehia te taitara akoranga me te whakatūranga"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.readSyllabusLink
+#, no-c-format
+msgctxt "layouts.strings:courseHome.readSyllabusLink"
+msgid "Read the syllabus"
+msgstr "Pānuitia te marau akoranga"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.meetInstructorLink
+#, no-c-format
+msgctxt "layouts.strings:courseHome.meetInstructorLink"
+msgid "Meet your instructor"
+msgstr "Tūtaki ki tō kaiako"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.openModuleText
+#, no-c-format
+msgctxt "layouts.strings:courseHome.openModuleText"
+msgid "Open the first module or activity."
+msgstr "Whakatuwherahia te tauira tuatahi, te wāhanga rānei."
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.thisWeekHeading
+#, no-c-format
+msgctxt "layouts.strings:courseHome.thisWeekHeading"
+msgid "This week"
+msgstr "Tēnei wiki"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.thisWeekText
+#, no-c-format
+msgctxt "layouts.strings:courseHome.thisWeekText"
+msgid "Add the current focus, important dates, readings, or actions students should see first."
+msgstr "Tāpiri i te aronga o nāianei, ngā rā hira, ngā pānui, me ngā mahi ka kitea tuatahi e ngā ākonga."
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.needHelpHeading
+#, no-c-format
+msgctxt "layouts.strings:courseHome.needHelpHeading"
+msgid "Need help?"
+msgstr "Me āwhina?"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.needHelpPrefix
+#, no-c-format
+msgctxt "layouts.strings:courseHome.needHelpPrefix"
+msgid "Point students to the"
+msgstr "Tohua ngā ākonga ki te"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.needHelpLinkText
+#, no-c-format
+msgctxt "layouts.strings:courseHome.needHelpLinkText"
+msgid "course contact and support information"
+msgstr "whakapā akoranga me ngā pārongo tautoko"
+
+#: plugins/pantoken/layouts/src/layouts/footer/i18n.json#footer.title
+#, no-c-format
+msgctxt "layouts.strings:footer.title"
+msgid "Footer"
+msgstr "Rārangi taipitopito (Footer)"
+
+#: plugins/pantoken/layouts/src/layouts/footer/i18n.json#footer.questionsHeading
+#, no-c-format
+msgctxt "layouts.strings:footer.questionsHeading"
+msgid "Questions or need help?"
+msgstr "Pātai, he hiahia āwhina rānei?"
+
+#: plugins/pantoken/layouts/src/layouts/footer/i18n.json#footer.questionsText
+#, no-c-format
+msgctxt "layouts.strings:footer.questionsText"
+msgid "Add office hours, contact details, support links, or accessibility information here."
+msgstr "Tāpiri i ngā haora tari, ngā taipitopito whakapā, ngā hononga tautoko, me ngā mōhiohio mō te urunga ki konei."
+
+#: plugins/pantoken/layouts/src/layouts/footer/i18n.json#footer.emailPlaceholder
+#, no-c-format, x-translate-never
+msgctxt "layouts.strings:footer.emailPlaceholder"
+msgid "instructor@example.edu"
+msgstr "instructor@example.edu"
+
+#: plugins/pantoken/layouts/src/layouts/footer/i18n.json#footer.courseInfoText
+#, no-c-format
+msgctxt "layouts.strings:footer.courseInfoText"
+msgid "Course code · Term · Department"
+msgstr "Waehere akoranga · Wāhanga · Tari"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.title
+#, no-c-format
+msgctxt "layouts.strings:header.title"
+msgid "Header"
+msgstr "Upoko"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.courseCodeTerm
+#, no-c-format
+msgctxt "layouts.strings:header.courseCodeTerm"
+msgid "COURSE CODE · TERM"
+msgstr "WAEHERE AKORANGA · WĀHANGA"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.courseTitle
+#, no-c-format
+msgctxt "layouts.strings:header.courseTitle"
+msgid "Course title"
+msgstr "Taitara akoranga"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.description
+#, no-c-format
+msgctxt "layouts.strings:header.description"
+msgid "A short description of the course or page goes here."
+msgstr "Kei konei he whakamārama poto mō te akoranga, te whēnā mō wai, me ngā mea ka akohia e ngā ākonga."
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.navHome
+#, no-c-format
+msgctxt "layouts.strings:header.navHome"
+msgid "Home"
+msgstr "Kāinga"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.navSyllabus
+#, no-c-format
+msgctxt "layouts.strings:header.navSyllabus"
+msgid "Syllabus"
+msgstr "Marau akoranga"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.navAboutInstructor
+#, no-c-format
+msgctxt "layouts.strings:header.navAboutInstructor"
+msgid "About the instructor"
+msgstr "Mō te kaiako"
+
+#: plugins/pantoken/layouts/src/layouts/hero/i18n.json#hero.title
+#, no-c-format
+msgctxt "layouts.strings:hero.title"
+msgid "Hero"
+msgstr "Tūmatanga (Hero)"
+
+#: plugins/pantoken/layouts/src/layouts/hero/i18n.json#hero.heading
+#, no-c-format
+msgctxt "layouts.strings:hero.heading"
+msgid "Welcome to the course"
+msgstr "Nau mai ki te akoranga"
+
+#: plugins/pantoken/layouts/src/layouts/hero/i18n.json#hero.intro
+#, no-c-format
+msgctxt "layouts.strings:hero.intro"
+msgid "A short introduction goes here. Replace this text and the heading above."
+msgstr "Kei konei he whakamōhiotanga poto. Whakarāpopotohia tēnei kuputuhi me te taitara kei runga."
+
+#: plugins/pantoken/layouts/src/layouts/hero/i18n.json#hero.cta
+#, no-c-format
+msgctxt "layouts.strings:hero.cta"
+msgid "Get started"
+msgstr "Tīmata"
+
+#: plugins/pantoken/layouts/src/layouts/rubric-note/i18n.json#rubricNote.title
+#, no-c-format
+msgctxt "layouts.strings:rubricNote.title"
+msgid "Rubric note"
+msgstr "Tuhipoka mō te whakarōpūtanga"
+
+#: plugins/pantoken/layouts/src/layouts/rubric-note/i18n.json#rubricNote.heading
+#, no-c-format
+msgctxt "layouts.strings:rubricNote.heading"
+msgid "Grading note"
+msgstr "Tuhipoka tohu tohu"
+
+#: plugins/pantoken/layouts/src/layouts/rubric-note/i18n.json#rubricNote.text
+#, no-c-format
+msgctxt "layouts.strings:rubricNote.text"
+msgid "Explain how this assignment is graded, referencing the rubric below."
+msgstr "Whakamārama me pēhea e tohu ai tēnei mahi, me te tohu ki te whakarōpūtanga i raro nei."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.title
+#, no-c-format
+msgctxt "layouts.strings:syllabus.title"
+msgid "Syllabus"
+msgstr "Marau akoranga"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.heading
+#, no-c-format
+msgctxt "layouts.strings:syllabus.heading"
+msgid "Course syllabus"
+msgstr "Marau akoranga"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.intro
+#, no-c-format
+msgctxt "layouts.strings:syllabus.intro"
+msgid "Add a concise overview of the course, who it is for, and what students will learn."
+msgstr "Tāpiri he whakaaturanga poto mō te akoranga, mō wai, me ngā mea ka akohia e ngā ākonga."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.outcomesHeading
+#, no-c-format
+msgctxt "layouts.strings:syllabus.outcomesHeading"
+msgid "Learning outcomes"
+msgstr "Ngā hua ako"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.outcome1
+#, no-c-format
+msgctxt "layouts.strings:syllabus.outcome1"
+msgid "Describe the first outcome."
+msgstr "Whakamārama i te hua tuatahi."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.outcome2
+#, no-c-format
+msgctxt "layouts.strings:syllabus.outcome2"
+msgid "Apply the second outcome."
+msgstr "Whakamahia te hua tuarua."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.outcome3
+#, no-c-format
+msgctxt "layouts.strings:syllabus.outcome3"
+msgid "Create or demonstrate the third outcome."
+msgstr "Hangaia, whakaaturia rānei te hua tuatoru."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.infoHeading
+#, no-c-format
+msgctxt "layouts.strings:syllabus.infoHeading"
+msgid "Course information"
+msgstr "Ngā mōhiohio akoranga"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.scheduleLabel
+#, no-c-format
+msgctxt "layouts.strings:syllabus.scheduleLabel"
+msgid "Schedule:"
+msgstr "Rāwhiti:"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.schedulePlaceholder
+#, no-c-format
+msgctxt "layouts.strings:syllabus.schedulePlaceholder"
+msgid "Add meeting times or the course rhythm."
+msgstr "Tāpiri i ngā wā hui, i te rātaka rānei o te akoranga."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.gradingLabel
+#, no-c-format
+msgctxt "layouts.strings:syllabus.gradingLabel"
+msgid "Grading:"
+msgstr "Tohu:"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.gradingPlaceholder
+#, no-c-format
+msgctxt "layouts.strings:syllabus.gradingPlaceholder"
+msgid "Add grading categories and weights."
+msgstr "Tāpiri i ngā kāwai tohu me ō rātou taumaha."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.materialsLabel
+#, no-c-format
+msgctxt "layouts.strings:syllabus.materialsLabel"
+msgid "Materials:"
+msgstr "Ngā rawa:"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.materialsPlaceholder
+#, no-c-format
+msgctxt "layouts.strings:syllabus.materialsPlaceholder"
+msgid "Add required books, tools, or access notes."
+msgstr "Tāpiri i ngā pukapuka 必required, ngā taputapu, me ngā mōhiohio uru."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.policiesHeading
+#, no-c-format
+msgctxt "layouts.strings:syllabus.policiesHeading"
+msgid "Policies and support"
+msgstr "Ngā kaupapa here me te tautoko"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.policiesText
+#, no-c-format
+msgctxt "layouts.strings:syllabus.policiesText"
+msgid "Add attendance, late work, accessibility, academic integrity, and support information here."
+msgstr "Tāpiri i ngā mōhiohio mō te haerenga, ngā mahi mō muri, te urunga, te matatika ākonga, me te tautoko."
+
+#: plugins/pantoken/layouts/src/layouts/testimonial/i18n.json#testimonial.title
+#, no-c-format
+msgctxt "layouts.strings:testimonial.title"
+msgid "Testimonial"
+msgstr "Whakapuaki kōrero taunaki"
+
+#: plugins/pantoken/layouts/src/layouts/testimonial/i18n.json#testimonial.quote
+#, no-c-format
+msgctxt "layouts.strings:testimonial.quote"
+msgid "\"Replace this with a quote from a student or alum.\""
+msgstr "\"Whakakapia tēnei ki tētahi kupu whakapuaki mai i tētahi ākonga, tētahi o ngā kairangi rānei.\""
+
+#: plugins/pantoken/layouts/src/layouts/testimonial/i18n.json#testimonial.attribution
+#, no-c-format
+msgctxt "layouts.strings:testimonial.attribution"
+msgid "— Name, Program"
+msgstr "— Ingoa, Hōtaka"
+
+#: plugins/pantoken/layouts/src/layouts/two-column/i18n.json#twoColumn.title
+#, no-c-format
+msgctxt "layouts.strings:twoColumn.title"
+msgid "Two column"
+msgstr "Rua kolon"
+
+#: plugins/pantoken/layouts/src/layouts/two-column/i18n.json#twoColumn.leftHeading
+#, no-c-format
+msgctxt "layouts.strings:twoColumn.leftHeading"
+msgid "Left column"
+msgstr "Kolomā mauī"
+
+#: plugins/pantoken/layouts/src/layouts/two-column/i18n.json#twoColumn.leftText
+#, no-c-format
+msgctxt "layouts.strings:twoColumn.leftText"
+msgid "Describe the first topic here."
+msgstr "Whakamārama i te kaupapa tuatahi i konei."
+
+#: plugins/pantoken/layouts/src/layouts/two-column/i18n.json#twoColumn.rightHeading
+#, no-c-format
+msgctxt "layouts.strings:twoColumn.rightHeading"
+msgid "Right column"
+msgstr "Kolomā katau"
+
+#: plugins/pantoken/layouts/src/layouts/two-column/i18n.json#twoColumn.rightText
+#, no-c-format
+msgctxt "layouts.strings:twoColumn.rightText"
+msgid "Describe the second topic here."
+msgstr "Whakamārama i te kaupapa tuarua i konei."

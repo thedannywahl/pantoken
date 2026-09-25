@@ -1,0 +1,442 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-23 14:27+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.title
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.title"
+msgid "About me"
+msgstr "Tietoja minusta"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.heading
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.heading"
+msgid "About your instructor"
+msgstr "Tietoja opettajastasi"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.intro
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.intro"
+msgid "Share a brief introduction, your role, and what you hope students take away from this course."
+msgstr "Jaa lyhyt esittely, roolisi ja mitä toivot opiskelijoiden oppivan tältä kurssilta."
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.reachHeading
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.reachHeading"
+msgid "How to reach me"
+msgstr "Miten tavoitat minut"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.emailLabel
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.emailLabel"
+msgid "Email:"
+msgstr "Sähköposti:"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.emailPlaceholder
+#, no-c-format, x-translate-never
+msgctxt "layouts.strings:aboutMe.emailPlaceholder"
+msgid "instructor@example.edu"
+msgstr "instructor@example.edu"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.officeLabel
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.officeLabel"
+msgid "Office:"
+msgstr "Vastaanotto:"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.officePlaceholder
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.officePlaceholder"
+msgid "Add your office location or virtual meeting link."
+msgstr "Lisää toimistosi sijainti tai virtuaalisen tapaamisen linkki."
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.responseLabel
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.responseLabel"
+msgid "Response time:"
+msgstr "Vastausaika:"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.responsePlaceholder
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.responsePlaceholder"
+msgid "Add when students can expect a reply."
+msgstr "Lisää milloin opiskelijat voivat odottaa vastausta."
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.officeHoursHeading
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.officeHoursHeading"
+msgid "Office hours"
+msgstr "Vastaanottoajat"
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.officeHoursText
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.officeHoursText"
+msgid "Add your recurring office hours and explain how students can meet with you."
+msgstr "Lisää toistuvat vastaanottoaikasi ja selitä, miten opiskelijat voivat tavata sinut."
+
+#: plugins/pantoken/layouts/src/layouts/about-me/i18n.json#aboutMe.instructorPhotoAlt
+#, no-c-format
+msgctxt "layouts.strings:aboutMe.instructorPhotoAlt"
+msgid "A photo of the instructor"
+msgstr "Opettajan valokuva"
+
+#: plugins/pantoken/layouts/src/layouts/callout/i18n.json#callout.title
+#, no-c-format
+msgctxt "layouts.strings:callout.title"
+msgid "Callout"
+msgstr "Huomautus"
+
+#: plugins/pantoken/layouts/src/layouts/callout/i18n.json#callout.noteLabel
+#, no-c-format
+msgctxt "layouts.strings:callout.noteLabel"
+msgid "Note:"
+msgstr "Huomio:"
+
+#: plugins/pantoken/layouts/src/layouts/callout/i18n.json#callout.noteText
+#, no-c-format
+msgctxt "layouts.strings:callout.noteText"
+msgid "Replace this callout with an important reminder for students."
+msgstr "Korvaa tämä huomautus tärkeällä muistutuksella opiskelijoille."
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.title
+#, no-c-format
+msgctxt "layouts.strings:courseHome.title"
+msgid "Course home"
+msgstr "Kurssin kotisivu"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.welcomeHeading
+#, no-c-format
+msgctxt "layouts.strings:courseHome.welcomeHeading"
+msgid "Welcome to the course"
+msgstr "Tervetuloa kurssille"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.welcomeText
+#, no-c-format
+msgctxt "layouts.strings:courseHome.welcomeText"
+msgid "Give students a warm welcome and explain what they should do first."
+msgstr "Toivota opiskelijat lämpimästi tervetulleiksi ja selitä, mitä heidän tulisi tehdä aluksi."
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.startHeading
+#, no-c-format
+msgctxt "layouts.strings:courseHome.startHeading"
+msgid "Start here"
+msgstr "Aloita tästä"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.reviewHeaderLink
+#, no-c-format
+msgctxt "layouts.strings:courseHome.reviewHeaderLink"
+msgid "Review the course header and navigation"
+msgstr "Tarkista kurssin ylätunniste ja navigaatio"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.readSyllabusLink
+#, no-c-format
+msgctxt "layouts.strings:courseHome.readSyllabusLink"
+msgid "Read the syllabus"
+msgstr "Lue kurssiohjeet"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.meetInstructorLink
+#, no-c-format
+msgctxt "layouts.strings:courseHome.meetInstructorLink"
+msgid "Meet your instructor"
+msgstr "Tutustu opettajaasi"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.openModuleText
+#, no-c-format
+msgctxt "layouts.strings:courseHome.openModuleText"
+msgid "Open the first module or activity."
+msgstr "Avaa ensimmäinen moduuli tai tehtävä."
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.thisWeekHeading
+#, no-c-format
+msgctxt "layouts.strings:courseHome.thisWeekHeading"
+msgid "This week"
+msgstr "Tällä viikolla"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.thisWeekText
+#, no-c-format
+msgctxt "layouts.strings:courseHome.thisWeekText"
+msgid "Add the current focus, important dates, readings, or actions students should see first."
+msgstr "Lisää tämänhetkinen painopiste, tärkeät päivämäärät, luettavat materiaalit tai toimet, jotka opiskelijoiden tulisi nähdä ensin."
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.needHelpHeading
+#, no-c-format
+msgctxt "layouts.strings:courseHome.needHelpHeading"
+msgid "Need help?"
+msgstr "Tarvitsetko apua?"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.needHelpPrefix
+#, no-c-format
+msgctxt "layouts.strings:courseHome.needHelpPrefix"
+msgid "Point students to the"
+msgstr "Ohjaa opiskelijat kohti"
+
+#: plugins/pantoken/layouts/src/layouts/course-home/i18n.json#courseHome.needHelpLinkText
+#, no-c-format
+msgctxt "layouts.strings:courseHome.needHelpLinkText"
+msgid "course contact and support information"
+msgstr "kurssin yhteystietoja ja tukitietoja"
+
+#: plugins/pantoken/layouts/src/layouts/footer/i18n.json#footer.title
+#, no-c-format
+msgctxt "layouts.strings:footer.title"
+msgid "Footer"
+msgstr "Alatunniste"
+
+#: plugins/pantoken/layouts/src/layouts/footer/i18n.json#footer.questionsHeading
+#, no-c-format
+msgctxt "layouts.strings:footer.questionsHeading"
+msgid "Questions or need help?"
+msgstr "Kysymyksiä tai tarvitsetko apua?"
+
+#: plugins/pantoken/layouts/src/layouts/footer/i18n.json#footer.questionsText
+#, no-c-format
+msgctxt "layouts.strings:footer.questionsText"
+msgid "Add office hours, contact details, support links, or accessibility information here."
+msgstr "Lisää tänne vastaanottoajat, yhteystiedot, tukilinkit tai saavutettavuustiedot."
+
+#: plugins/pantoken/layouts/src/layouts/footer/i18n.json#footer.emailPlaceholder
+#, no-c-format, x-translate-never
+msgctxt "layouts.strings:footer.emailPlaceholder"
+msgid "instructor@example.edu"
+msgstr "instructor@example.edu"
+
+#: plugins/pantoken/layouts/src/layouts/footer/i18n.json#footer.courseInfoText
+#, no-c-format
+msgctxt "layouts.strings:footer.courseInfoText"
+msgid "Course code · Term · Department"
+msgstr "Kurssikoodi · Periodi · Osasto"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.title
+#, no-c-format
+msgctxt "layouts.strings:header.title"
+msgid "Header"
+msgstr "Ylätunniste"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.courseCodeTerm
+#, no-c-format
+msgctxt "layouts.strings:header.courseCodeTerm"
+msgid "COURSE CODE · TERM"
+msgstr "KURSSIKOODI · PERIODI"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.courseTitle
+#, no-c-format
+msgctxt "layouts.strings:header.courseTitle"
+msgid "Course title"
+msgstr "Kurssin nimi"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.description
+#, no-c-format
+msgctxt "layouts.strings:header.description"
+msgid "A short description of the course or page goes here."
+msgstr "Lyhyt kuvaus kurssista tai sivusta lisätään tähän."
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.navHome
+#, no-c-format
+msgctxt "layouts.strings:header.navHome"
+msgid "Home"
+msgstr "Koti"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.navSyllabus
+#, no-c-format
+msgctxt "layouts.strings:header.navSyllabus"
+msgid "Syllabus"
+msgstr "Kurssiohjeet"
+
+#: plugins/pantoken/layouts/src/layouts/header/i18n.json#header.navAboutInstructor
+#, no-c-format
+msgctxt "layouts.strings:header.navAboutInstructor"
+msgid "About the instructor"
+msgstr "Tietoja opettajasta"
+
+#: plugins/pantoken/layouts/src/layouts/hero/i18n.json#hero.title
+#, no-c-format
+msgctxt "layouts.strings:hero.title"
+msgid "Hero"
+msgstr "Pääosa"
+
+#: plugins/pantoken/layouts/src/layouts/hero/i18n.json#hero.heading
+#, no-c-format
+msgctxt "layouts.strings:hero.heading"
+msgid "Welcome to the course"
+msgstr "Tervetuloa kurssille"
+
+#: plugins/pantoken/layouts/src/layouts/hero/i18n.json#hero.intro
+#, no-c-format
+msgctxt "layouts.strings:hero.intro"
+msgid "A short introduction goes here. Replace this text and the heading above."
+msgstr "Lyhyt esittely lisätään tähän. Korvaa tämä teksti ja yllä oleva otsikko."
+
+#: plugins/pantoken/layouts/src/layouts/hero/i18n.json#hero.cta
+#, no-c-format
+msgctxt "layouts.strings:hero.cta"
+msgid "Get started"
+msgstr "Aloita"
+
+#: plugins/pantoken/layouts/src/layouts/rubric-note/i18n.json#rubricNote.title
+#, no-c-format
+msgctxt "layouts.strings:rubricNote.title"
+msgid "Rubric note"
+msgstr "Arviointiohje"
+
+#: plugins/pantoken/layouts/src/layouts/rubric-note/i18n.json#rubricNote.heading
+#, no-c-format
+msgctxt "layouts.strings:rubricNote.heading"
+msgid "Grading note"
+msgstr "Arviointimuistiinpano"
+
+#: plugins/pantoken/layouts/src/layouts/rubric-note/i18n.json#rubricNote.text
+#, no-c-format
+msgctxt "layouts.strings:rubricNote.text"
+msgid "Explain how this assignment is graded, referencing the rubric below."
+msgstr "Selitä, miten tämä tehtävä arvioidaan, viitaten alla olevaan arviointiohjeeseen."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.title
+#, no-c-format
+msgctxt "layouts.strings:syllabus.title"
+msgid "Syllabus"
+msgstr "Kurssiohjeet"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.heading
+#, no-c-format
+msgctxt "layouts.strings:syllabus.heading"
+msgid "Course syllabus"
+msgstr "Kurssiohjeet"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.intro
+#, no-c-format
+msgctxt "layouts.strings:syllabus.intro"
+msgid "Add a concise overview of the course, who it is for, and what students will learn."
+msgstr "Lisää tiivis yleiskatsaus kurssista, kenelle se on tarkoitettu ja mitä opiskelijat oppivat."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.outcomesHeading
+#, no-c-format
+msgctxt "layouts.strings:syllabus.outcomesHeading"
+msgid "Learning outcomes"
+msgstr "Oppimistulokset"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.outcome1
+#, no-c-format
+msgctxt "layouts.strings:syllabus.outcome1"
+msgid "Describe the first outcome."
+msgstr "Kuvaile ensimmäinen tulos."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.outcome2
+#, no-c-format
+msgctxt "layouts.strings:syllabus.outcome2"
+msgid "Apply the second outcome."
+msgstr "Sovella toista tulosta."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.outcome3
+#, no-c-format
+msgctxt "layouts.strings:syllabus.outcome3"
+msgid "Create or demonstrate the third outcome."
+msgstr "Luo tai demonstroi kolmas tulos."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.infoHeading
+#, no-c-format
+msgctxt "layouts.strings:syllabus.infoHeading"
+msgid "Course information"
+msgstr "Kurssitiedot"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.scheduleLabel
+#, no-c-format
+msgctxt "layouts.strings:syllabus.scheduleLabel"
+msgid "Schedule:"
+msgstr "Aikataulu:"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.schedulePlaceholder
+#, no-c-format
+msgctxt "layouts.strings:syllabus.schedulePlaceholder"
+msgid "Add meeting times or the course rhythm."
+msgstr "Lisää tapaamisajat tai kurssin rytmi."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.gradingLabel
+#, no-c-format
+msgctxt "layouts.strings:syllabus.gradingLabel"
+msgid "Grading:"
+msgstr "Arviointi:"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.gradingPlaceholder
+#, no-c-format
+msgctxt "layouts.strings:syllabus.gradingPlaceholder"
+msgid "Add grading categories and weights."
+msgstr "Lisää arviointiluokat ja painot."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.materialsLabel
+#, no-c-format
+msgctxt "layouts.strings:syllabus.materialsLabel"
+msgid "Materials:"
+msgstr "Materiaalit:"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.materialsPlaceholder
+#, no-c-format
+msgctxt "layouts.strings:syllabus.materialsPlaceholder"
+msgid "Add required books, tools, or access notes."
+msgstr "Lisää vaaditut kirjat, työkalut tai käyttöoikeustiedot."
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.policiesHeading
+#, no-c-format
+msgctxt "layouts.strings:syllabus.policiesHeading"
+msgid "Policies and support"
+msgstr "Säännöt ja tuki"
+
+#: plugins/pantoken/layouts/src/layouts/syllabus/i18n.json#syllabus.policiesText
+#, no-c-format
+msgctxt "layouts.strings:syllabus.policiesText"
+msgid "Add attendance, late work, accessibility, academic integrity, and support information here."
+msgstr "Lisää tänne läsnäoloon, myöhästyneisiin töihin, saavutettavuuteen, akateemiseen rehellisyyteen ja tukeen liittyvät tiedot."
+
+#: plugins/pantoken/layouts/src/layouts/testimonial/i18n.json#testimonial.title
+#, no-c-format
+msgctxt "layouts.strings:testimonial.title"
+msgid "Testimonial"
+msgstr "Suositus"
+
+#: plugins/pantoken/layouts/src/layouts/testimonial/i18n.json#testimonial.quote
+#, no-c-format
+msgctxt "layouts.strings:testimonial.quote"
+msgid "\"Replace this with a quote from a student or alum.\""
+msgstr "\"Korvaa tämä opiskelijan tai alumnin lainauksella.\""
+
+#: plugins/pantoken/layouts/src/layouts/testimonial/i18n.json#testimonial.attribution
+#, no-c-format
+msgctxt "layouts.strings:testimonial.attribution"
+msgid "— Name, Program"
+msgstr "— Nimi, Ohjelma"
+
+#: plugins/pantoken/layouts/src/layouts/two-column/i18n.json#twoColumn.title
+#, no-c-format
+msgctxt "layouts.strings:twoColumn.title"
+msgid "Two column"
+msgstr "Kaksipalstainen"
+
+#: plugins/pantoken/layouts/src/layouts/two-column/i18n.json#twoColumn.leftHeading
+#, no-c-format
+msgctxt "layouts.strings:twoColumn.leftHeading"
+msgid "Left column"
+msgstr "Vasen sarake"
+
+#: plugins/pantoken/layouts/src/layouts/two-column/i18n.json#twoColumn.leftText
+#, no-c-format
+msgctxt "layouts.strings:twoColumn.leftText"
+msgid "Describe the first topic here."
+msgstr "Kuvaile ensimmäinen aihe täällä."
+
+#: plugins/pantoken/layouts/src/layouts/two-column/i18n.json#twoColumn.rightHeading
+#, no-c-format
+msgctxt "layouts.strings:twoColumn.rightHeading"
+msgid "Right column"
+msgstr "Oikea sarake"
+
+#: plugins/pantoken/layouts/src/layouts/two-column/i18n.json#twoColumn.rightText
+#, no-c-format
+msgctxt "layouts.strings:twoColumn.rightText"
+msgid "Describe the second topic here."
+msgstr "Kuvaile toinen aihe täällä."

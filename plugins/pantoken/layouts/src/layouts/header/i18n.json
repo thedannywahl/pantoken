@@ -1,0 +1,13 @@
+{
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
+  "header.title": { "message": "Header", "translate": "always" },
+  "header.courseCodeTerm": { "message": "COURSE CODE · TERM", "translate": "always" },
+  "header.courseTitle": { "message": "Course title", "translate": "always" },
+  "header.description": {
+    "message": "A short description of the course or page goes here.",
+    "translate": "always"
+  },
+  "header.navHome": { "message": "Home", "translate": "always" },
+  "header.navSyllabus": { "message": "Syllabus", "translate": "always" },
+  "header.navAboutInstructor": { "message": "About the instructor", "translate": "always" }
+}
