@@ -46,6 +46,11 @@ pantoken is a design-token transformation and distribution system. It converts I
   or project suitability. Inspect an item with `shadcn view`, review the resulting diff, and pin
   package versions for durable applications. npm provenance covers installed packages but does not
   sign the mutable JSON served from `pantoken.app`.
+- Agent coding sessions are checkpointed by Entire and pushed to this repository as git objects
+  under `refs/entire/checkpoints/*`. Transcripts are redacted at capture time for known credential
+  formats and for email and phone PII, but they are still a record of contributor terminal and
+  editor activity. Do not paste live credentials into an agent session; use environment variables
+  and short-lived tokens instead. Redaction configuration lives in `.entire/settings.json`.
 
 ## Reporting a vulnerability
 

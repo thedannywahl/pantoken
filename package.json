@@ -16,7 +16,7 @@
     "check:attw": "vp run gate:attw",
     "security:snyk": "vp run snyk:scan",
     "security:code": "vp run snyk:code",
-    "prepare": "vp config"
+    "prepare": "vp config && sh scripts/quality/restore-entire-hooks.sh"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "catalog:",

@@ -100,6 +100,26 @@ pointed at the wrong depth; a plain reinstall reported "up to date" and didn't r
 
 **Fix / rule** — `rm -rf <moved>/*/node_modules && pnpm install` to force a relink.
 
+### `isolate: false` causes intermittent cross-file mock pollution — don't enable it
+
+**Symptom** — CI's Vitest summary suggests `isolate: false` would save ~15s (2756 modules
+re-evaluated 15958 times). Tempting, but trialing it locally caused a different test file to fail
+about 1 in every 4 full-suite runs (`sandbox-error-paths.test.ts`, `file-server.test.ts`,
+`shim.test.ts` each failed on separate runs), each time in code that mocks a Node built-in
+(`node:worker_threads`, `node:fs`, `node:child_process`).
+
+**Root cause** — 28+ test files across the repo call `vi.mock("node:fs"/"node:child_process"/etc,
+...)`. With `isolate: false`, the module registry is shared across test files within a worker, so
+whichever file's mock (or the real built-in) got cached first for that worker can leak into a
+later file that expected its own mock factory to apply — a `vi.resetModules()` before a dynamic
+re-import doesn't fully protect against this because the collision happens at the built-in module
+level, not just the module under test.
+
+**Fix / rule** — Leave `isolate` at its Vitest default (`true`) given how many files here mock Node
+built-ins. Revisit only if the repo moves those mocks to a shared, single-instance strategy (e.g.
+injecting fs/child_process as parameters instead of module-level mocks) across all 28+ files. See
+https://vitest.dev/guide/improving-performance#test-isolation.
+
 ## Browser / bundling
 
 ### A postcss-based value import kills the browser client
