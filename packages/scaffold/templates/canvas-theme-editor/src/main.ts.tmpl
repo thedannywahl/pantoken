@@ -298,7 +298,7 @@ function setupStandaloneAppShell(): void {
   const localeMenu = document.createElement("details");
   localeMenu.className = "canvas-rce-shell__menu";
   const localeSummary = document.createElement("summary");
-  localeSummary.className = "canvas-rce-shell__summary";
+  localeSummary.className = "canvas-rce-shell__summary instui-button -color-tertiary";
   localeSummary.append(createShellIcon(Languages));
   const localeLabel = document.createElement("span");
   localeLabel.className = "canvas-rce-shell__label";
@@ -317,6 +317,8 @@ function setupStandaloneAppShell(): void {
 
   const localePanel = document.createElement("div");
   localePanel.className = "canvas-rce-shell__panel";
+  const localePanelScroll = document.createElement("div");
+  localePanelScroll.className = "canvas-rce-shell__panel-scroll";
   const availableLocales = ["en", ...Object.keys(LOCALE_STRINGS).sort()];
   const localeDisplayNames = new Intl.DisplayNames(availableLocales, { type: "language" });
   for (const locale of availableLocales) {
@@ -352,14 +354,15 @@ function setupStandaloneAppShell(): void {
       // re-initialize TinyMCE, the popup, etc.) in place.
       window.location.reload();
     });
-    localePanel.append(option);
+    localePanelScroll.append(option);
   }
+  localePanel.append(localePanelScroll);
   localeMenu.append(localeSummary, localePanel);
 
   const themeMenu = document.createElement("details");
   themeMenu.className = "canvas-rce-shell__menu";
   const themeSummary = document.createElement("summary");
-  themeSummary.className = "canvas-rce-shell__summary";
+  themeSummary.className = "canvas-rce-shell__summary instui-button -color-tertiary";
   themeSummary.append(createShellIcon(Palette));
   const themeLabel = document.createElement("span");
   themeLabel.className = "canvas-rce-shell__label";
@@ -368,6 +371,8 @@ function setupStandaloneAppShell(): void {
 
   const themePanel = document.createElement("div");
   themePanel.className = "canvas-rce-shell__panel";
+  const themePanelScroll = document.createElement("div");
+  themePanelScroll.className = "canvas-rce-shell__panel-scroll";
 
   const appearanceGroup = document.createElement("div");
   appearanceGroup.className = "canvas-rce-shell__group";
@@ -451,7 +456,8 @@ function setupStandaloneAppShell(): void {
     colorGroup.append(option);
   }
 
-  themePanel.append(appearanceGroup, colorGroup);
+  themePanelScroll.append(appearanceGroup, colorGroup);
+  themePanel.append(themePanelScroll);
   themeMenu.append(themeSummary, themePanel);
   actions.append(localeMenu, themeMenu);
   shell.append(brand, actions);

@@ -103,19 +103,6 @@ body.canvas-rce-shell-enabled #app-mode {
   display: none;
 }
 
-.canvas-rce-shell__summary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid var(--instui-color-stroke-base, rgba(0, 0, 0, 0.12));
-  border-radius: 999px;
-  background: var(--instui-color-background-secondary, rgba(0, 0, 0, 0.02));
-  color: inherit;
-  cursor: pointer;
-  user-select: none;
-}
-
 .canvas-rce-shell__summary .canvas-rce-shell__icon {
   width: 1rem;
   height: 1rem;
@@ -129,17 +116,24 @@ body.canvas-rce-shell-enabled #app-mode {
   position: absolute;
   inset-block-start: calc(100% + 0.5rem);
   inset-inline-end: 0;
+  width: max-content;
   min-width: 12rem;
-  max-height: min(70vh, 24rem);
-  display: grid;
-  gap: 0.5rem;
-  padding: 0.75rem;
-  overflow-y: auto;
+  max-width: calc(100vw - 2rem);
+  overflow: hidden;
   border: 1px solid var(--instui-color-stroke-base, rgba(0, 0, 0, 0.12));
   border-radius: 0.75rem;
   background: var(--instui-color-background-primary, Canvas);
   box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.15);
   z-index: 20;
+}
+
+.canvas-rce-shell__panel-scroll {
+  max-height: min(70vh, 24rem);
+  display: grid;
+  gap: 0.5rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0.75rem;
 }
 
 .canvas-rce-shell__group {
@@ -161,6 +155,7 @@ body.canvas-rce-shell-enabled #app-mode {
   justify-content: space-between;
   gap: 0.5rem;
   width: 100%;
+  white-space: nowrap;
   padding: 0.5rem 0.625rem;
   border: 1px solid transparent;
   border-radius: 0.5rem;
