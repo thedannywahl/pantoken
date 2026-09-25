@@ -1,0 +1,133 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M3D3Q45V83AVGC900GEWK3EN",
+  "session_id": "04f86f50-d5ec-4ca6-9624-36fbf0cd15dd",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-25T20:22:12.906281Z",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 6,
+  "save_step_count": 5,
+  "files_touched": [
+    ".changeset/custom-brand-color-scale.md",
+    "ASSURANCE.md",
+    "SECURITY.md",
+    "docs/.vitepress/i18n.ts",
+    "docs/.vitepress/theme/components/ThemeColorPicker.vue",
+    "docs/.vitepress/theme/custom-color.ts",
+    "docs/.vitepress/theme/index.ts",
+    "docs/.vitepress/theme/theme.ts",
+    "docs/guide/plugins.md",
+    "docs/scripts/site-themes.test.ts",
+    "docs/scripts/site-themes.ts",
+    "l10n/cli.scaffold.pot",
+    "l10n/scaffold.readme.pot",
+    "packages/scaffold/src/i18n.json",
+    "packages/scaffold/templates/canvas-theme-editor/README.md",
+    "packages/scaffold/templates/canvas-theme-editor/src/app.css",
+    "packages/scaffold/templates/canvas-theme-editor/src/app.html",
+    "packages/scaffold/templates/canvas-theme-editor/src/i18n.json",
+    "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
+    "packages/scaffold/tests/index.test.ts",
+    "plugins/pantoken/custom-theme-colors/README.md",
+    "plugins/pantoken/custom-theme-colors/package.json",
+    "plugins/pantoken/custom-theme-colors/src/custom-scale.ts",
+    "plugins/pantoken/custom-theme-colors/src/index.ts",
+    "plugins/pantoken/custom-theme-colors/tests/custom-scale.test.ts",
+    "plugins/pantoken/custom-theme-colors/vite.config.ts",
+    "tools/demo/runner/main.ts",
+    "tools/demo/src/srcdoc.ts",
+    "tools/demo/tests/srcdoc.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "8e0029a18de8",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 6
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-25T20:22:12.884724Z",
+    "agent_lines": 1160,
+    "agent_removed": 75,
+    "human_added": 19,
+    "human_modified": 32,
+    "human_removed": 0,
+    "total_committed": 1209,
+    "total_lines_changed": 1286,
+    "agent_percentage": 96.03421461897355,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 677,
+      "agent_lines_removed": 71
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 21,
+      "user_lines_removed": 26,
+      "agent_lines_added": 1198,
+      "agent_lines_removed": 103,
+      "user_added_per_file": {
+        ".changeset/custom-brand-color-scale.md": 6,
+        "packages/scaffold/templates/canvas-theme-editor/src/app.css": 15
+      },
+      "user_removed_per_file": {
+        "packages/scaffold/templates/canvas-theme-editor/src/app.css": 26
+      }
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 6,
+      "user_lines_removed": 0,
+      "agent_lines_added": 1286,
+      "agent_lines_removed": 129,
+      "user_added_per_file": {
+        ".changeset/custom-brand-color-scale.md": 6
+      }
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 8,
+      "user_lines_removed": 2,
+      "agent_lines_added": 1233,
+      "agent_lines_removed": 105,
+      "user_added_per_file": {
+        ".changeset/custom-brand-color-scale.md": 8
+      },
+      "user_removed_per_file": {
+        ".changeset/custom-brand-color-scale.md": 2
+      }
+    },
+    {
+      "checkpoint_number": 6,
+      "user_lines_added": 8,
+      "user_lines_removed": 2,
+      "agent_lines_added": 1233,
+      "agent_lines_removed": 105,
+      "user_added_per_file": {
+        ".changeset/custom-brand-color-scale.md": 8
+      },
+      "user_removed_per_file": {
+        ".changeset/custom-brand-color-scale.md": 2
+      }
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M3D3Q45V83AVGC900GEWK3EN",
+  "strategy": "manual-commit",
+  "branch": "tinymce-utility",
+  "checkpoints_count": 6,
+  "files_touched": [
+    ".changeset/custom-brand-color-scale.md",
+    "ASSURANCE.md",
+    "SECURITY.md",
+    "docs/.vitepress/i18n.ts",
+    "docs/.vitepress/theme/components/ThemeColorPicker.vue",
+    "docs/.vitepress/theme/custom-color.ts",
+    "docs/.vitepress/theme/index.ts",
+    "docs/.vitepress/theme/theme.ts",
+    "docs/guide/plugins.md",
+    "docs/scripts/site-themes.test.ts",
+    "docs/scripts/site-themes.ts",
+    "l10n/cli.scaffold.pot",
+    "l10n/scaffold.readme.pot",
+    "packages/scaffold/src/i18n.json",
+    "packages/scaffold/templates/canvas-theme-editor/README.md",
+    "packages/scaffold/templates/canvas-theme-editor/src/app.css",
+    "packages/scaffold/templates/canvas-theme-editor/src/app.html",
+    "packages/scaffold/templates/canvas-theme-editor/src/i18n.json",
+    "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
+    "packages/scaffold/tests/index.test.ts",
+    "plugins/pantoken/custom-theme-colors/README.md",
+    "plugins/pantoken/custom-theme-colors/package.json",
+    "plugins/pantoken/custom-theme-colors/src/custom-scale.ts",
+    "plugins/pantoken/custom-theme-colors/src/index.ts",
+    "plugins/pantoken/custom-theme-colors/tests/custom-scale.test.ts",
+    "plugins/pantoken/custom-theme-colors/vite.config.ts",
+    "tools/demo/runner/main.ts",
+    "tools/demo/src/srcdoc.ts",
+    "tools/demo/tests/srcdoc.test.ts"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}

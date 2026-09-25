@@ -1,0 +1,56 @@
+plugins/pantoken/custom-theme-colors uses the instui primitives that scale from 0 (#fff) to 210 (#000) and enumerate values between 10 and 200.  The current Canvas theme editor allows admins to input an arbitrary hex color as their "primary" brand color.  We want to add "Custom" to the list of primitives in this set and when a hex value is provided we need to map the nearest neighbor on the 0 - 21 scale using the same math for the gaps and then auto-derive the rest of the values for this custom scale.  So it might not be the exact custom hex value they input, but it should be close so for example if they input "#CCCCCC" using the derived scale from FFF to 000 CCC might end up mapping to CDCDCD and that might be color-custom-40.  then we fill in the rest of the custom-color scale.
+
+---
+
+Thorough research, read-only. In /Users/dwahl/Scripts/pantoken, explore plugins/pantoken/custom-theme-colors (find its actual path via file search, e.g. **/custom-theme-colors/**). Report: 1) full file list and purpose of each; 2) how it defines/uses InstUI color primitives (scale 0 = #fff to 210 = #000, steps 10..200) — which hue families exist (e.g. grey, blue, green...), where the primitive hex values come from (IR tokens from @pantoken/tokens? hardcoded?), exact token naming (e.g. color-grey-40, --instui-...); 3) the public API (options, plugin hooks via definePlugin, exported functions) with signatures and key code excerpts; 4) any existing color math utilities (hex parsing, OKLCH/Lab conversion, interpolation, nearest-neighbor, contrast) in this plugin or elsewhere in the repo (packages/utils, platforms/canvas-theme-editor, docs tools/canvas-rce); 5) how the Canvas theme editor (platforms/canvas-theme-editor) accepts an admin primary brand hex and whether it relates to this plugin; 6) tests for the plugin (paths, style, framework), docs pages/guides mentioning it, and any demo; 7) how the lightness/ gap spacing between primitive steps is structured in the upstream values — e.g. sample the actual hex values of the grey scale and one chromatic scale (0,10,20,...,210) so we can see whether steps are evenly spaced in some color space. Include file paths with line numbers.
+
+---
+
+plugins/pantoken/custom-theme-colors uses the instui primitives that scale from 0 (#fff) to 210 (#000) and enumerate values between 10 and 200.  The current Canvas theme editor allows admins to input an arbitrary hex color as their "primary" brand color.  We want to add "Custom" to the list of primitives in this set and when a hex value is provided we need to map the nearest neighbor on the 0 - 21 scale using the same math for the gaps and then auto-derive the rest of the values for this custom scale.  So it might not be the exact custom hex value they input, but it should be close so for example if they input "#CCCCCC" using the derived scale from FFF to 000 CCC might end up mapping to CDCDCD and that might be color-custom-40.  then we fill in the rest of the custom-color scale.  "Nearest neighbor" does NOT mean to map it to the closest existing primitive value.
+
+---
+
+Medium thoroughness, read-only research in /Users/dwahl/Scripts/pantoken. Report back findings with file paths and line numbers:
+1. All consumers of `@pantoken/plugin-custom-theme-colors`, `COLOR_KEYS`, `customThemeColorsCss`, `data-pantoken-color`, and `custom-theme-colors.css` across the repo (docs site pages, platforms/canvas-theme-editor, tools, renderers, scaffold, ai/pantoken-ai, docs/.vitepress theme components). For each, summarize how the color list is used (e.g. a picker UI enumerating COLOR_KEYS, a select dropdown, i18n labels for color names).
+2. platforms/canvas-theme-editor: what it is, how it takes an admin's "primary brand color" hex input, and how that interacts (or not) with custom-theme-colors. Summarize its source structure and key functions.
+3. Any existing color math utilities in the repo (hex↔rgb, OKLCH/OKLab, lightness, contrast, color-mix helpers) — e.g. in packages/utils, platforms, tools, docs scripts. Give function names and paths. Also check whether any color library (culori, colorjs.io, chroma-js, etc.) is a dependency anywhere (package.json / pnpm-workspace.yaml catalog).
+4. Tests for plugins/pantoken/custom-theme-colors (tests/index.test.ts) — summarize what they assert, and whether generated CSS snapshots exist.
+5. Where the i18n labels for color names (navy, blue, sea, aurora etc.) live if any.
+6. How the tools/canvas-rce docs page (http://localhost:5173/tools/canvas-rce/) is implemented, and whether it has a color picker for theme colors.
+
+---
+
+Start implementation
+
+---
+
+we need it implemented in the app header theme color picker and in the docs theme color picker as well
+
+---
+
+Thorough, read-only research in /Users/dwahl/Scripts/pantoken. IGNORE docs/.vitepress/cache/** and docs/.vitepress/dist/** and any locale copies (docs/<locale>/**) — only look at source: docs/.vitepress/theme/**, docs/.vitepress/*.ts, docs/scripts/**, tools/demo/**, and anything else source-level.
+
+I need to add a "custom" color option (arbitrary hex brand color) to the docs site's theme color picker. Report with exact file paths + line numbers and short code excerpts:
+1. The Vue component(s) that render the docs site's theme color picker (the swatch list of navy, blue, green, … aurora). How the list is built (hard-coded, from COLOR_KEYS, from a config), how swatches are styled (CSS vars like --instui-primitive-color-X-X70?), how selection is stored (localStorage key names), how it's applied to the docs document (data-pantoken-color on <html>?), and i18n labels for color names (docs/.vitepress/i18n.ts keys).
+2. How the color choice is broadcast to iframes: every place that posts `pantoken-demo-color` or includes `color` in `pantoken-demo-theme` messages (sender code), and every receiver: the demo iframe inline script (the one with `if(e.data.color){document.documentElement.dataset.pantokenColor=e.data.color;}` — find its source generator, probably tools/demo or docs/scripts), CanvasRcePage.vue, and any others. Show the receiver code and whether they validate the color value.
+3. How the docs site gets the custom-theme-colors CSS: docs/scripts/site-themes.ts uses customThemeColors — what it generates, where the output CSS goes, and whether demo iframes load that CSS too (which file do demos load for color rules?).
+4. Any head/inline script that restores the color before hydration (to avoid flash) — e.g. in docs/.vitepress/config.ts head entries.
+5. Whether @pantoken/plugin-custom-theme-colors is importable from the docs theme client code (is it a docs package.json dependency? any existing client-side import of it or of @pantoken/tokens?). Note the constraint that the client bundle must be Node-free.
+6. Any tests covering the picker or the messaging (docs/**/*.test.ts).
+Return a concise but complete report.
+
+---
+
+now we had made this demo https://stackblitz.com/edit/vitejs-vite-sg9oy7ln?file=index.html
+
+and we need to both update the header to include custom and to update the documentation to explain how custom color mapping works.
+
+---
+
+the custom picker (all instances):
+* needs a better default / unpicked swatch indicator - it shouldn't look like another theme color in the list.
+* does not need to display what scale value it's been mapped to or what hex it's been mapped to.  only in the stackblitz documentation where we explain the mapping should we display those live evaluations.
+
+---
+
+how can I serve the new stackblitz demo to make sure it looks right before updating the site?
