@@ -8,10 +8,9 @@
  * - `generated/logos.css` — a `--instui-logo-<product>-<layout>-<mode>` custom property per logo,
  *   each set to a `url(data:image/svg+xml;base64,…)` image token, plus a typed `@property` registration
  *   per token (a `<url>` syntax and the data URI as `initial-value`) that the docs CSS-API table reads
- *   into its Type and Default columns.
- * - `generated/<name>.png` — a rasterized PNG per logo, for hosts (e.g. Canvas LMS's RCE) that strip
- *   inline `<svg>`/CSS background-images but accept a real `<img src>`. Width is fixed by layout
- *   group (see {@link targetWidth}) and height is derived from the SVG's own `viewBox` aspect ratio.
+ *   into its Type and Default columns, plus a `.-logo-<name>` glyph class (the `@pantoken/plugin-custom-components`
+ *   `logo` utility's painter) carrying that logo's own `--pantoken-logo-aspect` from its `viewBox`, so
+ *   it renders undistorted instead of squashed into the `icon` utility's 1:1 box.
  *
  * SVGs are small, so they're inlined as data URIs — the stylesheet is self-contained and the tokens
  * work anywhere `var()` does (`background-image`, `mask`, `content`).
@@ -20,7 +19,6 @@
  */
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
-import { Resvg } from "@resvg/resvg-js";
 
 const root = resolve(import.meta.dirname, "..");
 const logosDir = join(root, "assets/logos");
@@ -85,46 +83,11 @@ interface LogoMeta {
   height: number;
 }
 
-// Icon-mark layouts (square-ish glyphs) render at half the width of wordmark/lockup layouts, both
-// derived from the canvas-theme-editor preview's content max-width (956px) — see
-// `CANVAS_CONTENT_MAX_WIDTH` in `packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl`.
-const ICON_LAYOUTS = new Set(["icon", "icon-single-dot", "icon-three-dot"]);
-const FULL_WIDTH_TARGET = 478; // 956 / 2
-const ICON_WIDTH_TARGET = 239; // 478 / 2
-// Rasterize at 2x the display size for retina sharpness; `<img width height>` downscales to display size.
-const RASTER_SCALE = 2;
-
-/** The display (non-retina) target width for a logo's layout, per the fixed layout-group rule above. */
-function targetWidth(layout: string): number {
-  return ICON_LAYOUTS.has(layout) ? ICON_WIDTH_TARGET : FULL_WIDTH_TARGET;
-}
-
 /** Parse an SVG's `viewBox` into its natural `[width, height]`, or `undefined` if absent/malformed. */
 function parseViewBox(svg: string): [number, number] | undefined {
   const match = /viewBox="[\d.-]+\s+[\d.-]+\s+([\d.]+)\s+([\d.]+)"/u.exec(svg);
   if (!match) return undefined;
   return [Number.parseFloat(match[1]), Number.parseFloat(match[2])];
-}
-
-/**
- * Rasterize a logo SVG to PNG at the given display width (scaled by {@link RASTER_SCALE}), deriving
- * height from the SVG's own `viewBox` aspect ratio.
- *
- * @param svg - The source SVG markup.
- * @param displayWidth - The target `<img width>` (CSS pixels, not raster pixels).
- * @returns The PNG bytes and the display `{ width, height }` to store in the logo's metadata.
- */
-function rasterize(
-  svg: string,
-  displayWidth: number,
-): { png: Buffer; width: number; height: number } {
-  const viewBox = parseViewBox(svg);
-  const aspect = viewBox ? viewBox[1] / viewBox[0] : 1;
-  const height = Math.round(displayWidth * aspect);
-  const png = new Resvg(svg, { fitTo: { mode: "width", value: displayWidth * RASTER_SCALE } })
-    .render()
-    .asPng();
-  return { png, width: displayWidth, height };
 }
 
 /**
@@ -154,7 +117,6 @@ export function parseStem(
 
 const logos: LogoMeta[] = [];
 const svgs: Record<string, string> = {};
-const pngs = new Map<string, Buffer>();
 for (const product of PRODUCTS) {
   let files: string[];
   try {
@@ -168,7 +130,7 @@ for (const product of PRODUCTS) {
     if (!parsed) continue;
     const name = `${product}-${parsed.layout}-${parsed.colorMode}${parsed.lang ? `-${parsed.lang}` : ""}`;
     const svg = readFileSync(join(logosDir, product, file), "utf8");
-    const { png, width, height } = rasterize(svg, targetWidth(parsed.layout));
+    const [width, height] = parseViewBox(svg) ?? [1, 1];
     logos.push({
       product,
       layout: parsed.layout,
@@ -180,16 +142,11 @@ for (const product of PRODUCTS) {
       height,
     });
     svgs[name] = svg;
-    pngs.set(name, png);
   }
 }
 logos.sort((a, b) => a.name.localeCompare(b.name));
 
 mkdirSync(outDir, { recursive: true });
-for (const logo of logos) {
-  const png = pngs.get(logo.name);
-  if (png) writeFileSync(join(outDir, `${logo.name}.png`), png);
-}
 
 /**
  * Encode a raw SVG string as a `data:image/svg+xml;base64,…` data URI.
@@ -205,11 +162,12 @@ export const dataUri = (svg: string): string =>
 const uriByName = new Map(logos.map((l) => [l.name, `url("${dataUri(svgs[l.name])}")`]));
 
 // Every logo asset is a solid-fill SVG (a single flat color, or `currentColor`), so each one is
-// maskable — pair it with the shared `-icon-<name>` painter (formats/components' `icon` utility,
-// same convention as the InstUI icon set, Simple Icons, and custom-icons) so e.g.
-// `-icon-canvas-icon-reversed` masks `--instui-logo-canvas-icon-reversed` in `currentColor`.
+// maskable — pair it with the `@pantoken/plugin-custom-components` `logo` utility's painter (same
+// mask technique as the `icon` utility in `@pantoken/components`, but the `-logo-<name>` painter reads
+// `--pantoken-logo-aspect` instead of assuming a 1:1 box), so e.g. `-logo-canvas-icon-reversed` masks
+// `--instui-logo-canvas-icon-reversed` in `currentColor`, sized by that logo's own `viewBox` aspect ratio.
 const glyphRule = (l: LogoMeta): string =>
-  `.-icon-${l.name} { --pantoken-glyph: var(--instui-logo-${l.name}); }`;
+  `.-logo-${l.name} { --pantoken-glyph: var(--instui-logo-${l.name}); --pantoken-logo-aspect: ${l.width} / ${l.height}; }`;
 
 const logosCss = [
   "/* Instructure product logos as image tokens (pantoken logos plugin) — generated, do not edit. */",
@@ -299,5 +257,5 @@ writeFileSync(join(outDir, "embedded.ts"), embedded);
 
 console.log(
   `✓ logos: ${logos.length} logos across ${new Set(logos.map((l) => l.product)).size} products ` +
-    `(+ ${logos.length} per-logo and ${productSheetCount} per-product sheets, ${pngs.size} PNGs)`,
+    `(+ ${logos.length} per-logo and ${productSheetCount} per-product sheets)`,
 );

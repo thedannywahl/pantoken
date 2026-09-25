@@ -5,7 +5,8 @@
  * Instructure, LearnPlatform, and Ignite AI, in the standard layouts (horizontal, stacked, icon)
  * and color modes (full-color, color, dark, reversed, and so on). Each logo is available three ways:
  * the raw SVG ({@link getLogoSvg}), a data URI ({@link getLogoDataUri}), and a
- * `--instui-logo-<product>-<layout>-<mode>` image token in `@pantoken/plugin-logos/logos.css`.
+ * `--instui-logo-<product>-<layout>-<mode>` image token plus a `.-logo-<product>-<layout>-<mode>`
+ * mask-glyph class (sized by that logo's own aspect ratio) in `@pantoken/plugin-logos/logos.css`.
  *
  * As a pantoken plugin, the `css` hook contributes those image tokens.
  *
@@ -69,9 +70,9 @@ export interface LogoMeta {
   name: string;
   /** The path within `assets/logos`, e.g. `"canvas/horizontal-full-color.svg"`. */
   path: string;
-  /** The rasterized PNG's display width in CSS pixels (fixed per layout group, not the SVG's own size). */
+  /** The SVG's natural `viewBox` width, used with {@link height} to derive `--pantoken-logo-aspect`. */
   width: number;
-  /** The rasterized PNG's display height in CSS pixels, derived from the SVG's `viewBox` aspect ratio. */
+  /** The SVG's natural `viewBox` height, used with {@link width} to derive `--pantoken-logo-aspect`. */
   height: number;
 }
 
@@ -176,8 +177,9 @@ export function getLogoDataUri(
 }
 
 /**
- * Get a logo's metadata, including the rasterized PNG's `width`/`height` — for consumers that need
- * to build a `dist/<name>.png` path (e.g. via `@pantoken/cdn`) or size an `<img>` without parsing SVG.
+ * Get a logo's metadata, including its natural `viewBox` `width`/`height` — for consumers that need
+ * the logo's real aspect ratio (e.g. to set `aspect-ratio` or `width`/`height` on an `<img>`) without
+ * parsing SVG themselves.
  *
  * @param product - The product.
  * @param layout - The layout (default `"horizontal"`).
@@ -185,12 +187,12 @@ export function getLogoDataUri(
  * @param lang - The localized wordmark's language, if a translated variant is wanted.
  * @returns The {@link LogoMeta}, or `undefined` if that combination doesn't exist.
  *
- * @example Build a PNG CDN path for a logo
+ * @example Read a logo's aspect ratio
  * ```ts
  * import { getLogoMeta } from "@pantoken/plugin-logos";
  *
  * const meta = getLogoMeta("canvas", "horizontal", "color");
- * meta && `dist/${meta.name}.png`; // "dist/canvas-horizontal-color.png"
+ * meta && meta.width / meta.height; // the logo's real aspect ratio
  * ```
  */
 export function getLogoMeta(

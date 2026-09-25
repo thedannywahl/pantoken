@@ -88,7 +88,7 @@ export {
   SOURCE_LABELS,
 } from "./icons.js";
 export type { LogoMeta, Product } from "./logos.js";
-export { logos, products } from "./logos.js";
+export { buildLogoMarkup, getLogoCdnFile, getUsedLogoCdnFiles, logos, products } from "./logos.js";
 
 // Phase 3A/B/C: picker plugins.
 export { createComponentsPlugin } from "./plugins/components.js";

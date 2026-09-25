@@ -4,7 +4,8 @@
 import { expect, test, vi } from "vite-plus/test";
 import type { Editor } from "tinymce";
 import type { LogoMeta, Product } from "../src/logos.js";
-import { createLogosPlugin, generateLogoHtml, insertLogo } from "../src/plugins/logos.js";
+import { buildLogoMarkup, getLogoCdnFile } from "../src/logos.js";
+import { createLogosPlugin, insertLogo } from "../src/plugins/logos.js";
 
 vi.mock("@pantoken/cdn", async (importOriginal) => ({
   ...(await importOriginal<typeof import("@pantoken/cdn")>()),
@@ -207,7 +208,7 @@ test("Insert button starts disabled when no product is available", () => {
   expect(insertButton.enabled).toBe(false);
 });
 
-test("generateLogoHtml renders a hosted <img> sized from the logo's metadata", () => {
+test("buildLogoMarkup renders a mask-painted, non-decorative glyph", () => {
   const meta: LogoMeta = {
     product: "canvas",
     layout: "horizontal",
@@ -217,46 +218,61 @@ test("generateLogoHtml renders a hosted <img> sized from the logo's metadata", (
     width: 478,
     height: 121,
   };
-  const html = generateLogoHtml(meta, "https://cdn.example/canvas-horizontal-color.png");
-  expect(html).toContain('class="instui-img"');
-  expect(html).toContain('src="https://cdn.example/canvas-horizontal-color.png"');
-  expect(html).toContain('width="478"');
-  expect(html).toContain('height="121"');
-  expect(html).toContain("alt=");
+  const html = buildLogoMarkup(meta);
+  expect(html).toBe(
+    '<span class="instui-logo -logo-canvas-horizontal-color" contenteditable="false" role="img" aria-label="canvas logo">\u200B</span>',
+  );
   expect(html).not.toContain("<svg");
   expect(html).not.toContain("about:blank");
+  expect(html).not.toContain("aria-hidden");
 });
 
-test("insertLogo inserts a real hosted <img>, not a CSS-class placeholder", () => {
-  const editor = createMockEditor();
+test("getLogoCdnFile resolves the logo's mask-painter stylesheet", () => {
+  const meta: LogoMeta = {
+    product: "canvas",
+    layout: "horizontal",
+    colorMode: "color",
+    name: "canvas-horizontal-color",
+    path: "canvas/horizontal-color.svg",
+    width: 478,
+    height: 121,
+  };
+  expect(getLogoCdnFile(meta)).toEqual({
+    package: "@pantoken/plugin-logos",
+    path: "dist/canvas-horizontal-color.css",
+  });
+});
 
-  insertLogo(editor, "canvas", "horizontal", "color");
+test("insertLogo inserts a mask-painted glyph and tracks/injects its stylesheet", () => {
+  const editor = createMockEditor();
+  const currentAssets: { package: string; path: string }[] = [];
+
+  insertLogo(editor, "canvas", "horizontal", "color", { currentAssets });
 
   const insertContent = (editor as unknown as { insertContent: (html: string) => void })
     .insertContent;
   expect(insertContent).toHaveBeenCalledWith(
-    expect.stringContaining(
-      'src="https://cdn.example/@pantoken/plugin-logos/dist/canvas-horizontal-color.png"',
-    ),
+    expect.stringContaining('class="instui-logo -logo-canvas-horizontal-color"'),
   );
-  expect(insertContent).toHaveBeenCalledWith(expect.stringContaining('width="478"'));
-  expect(insertContent).toHaveBeenCalledWith(expect.stringContaining('height="121"'));
+  expect(currentAssets).toEqual([
+    { package: "@pantoken/plugin-logos", path: "dist/canvas-horizontal-color.css" },
+  ]);
 });
 
 test("insertLogo delegates the logo package export to the caller's asset URL builder", () => {
   const editor = createMockEditor();
-  const buildAssetUrl = vi.fn(() => "/local/canvas-horizontal-color.png");
+  const buildAssetUrl = vi.fn(() => "/local/canvas-horizontal-color.css");
 
-  insertLogo(editor, "canvas", "horizontal", "color", buildAssetUrl);
+  insertLogo(editor, "canvas", "horizontal", "color", { currentAssets: [], buildAssetUrl });
 
   expect(buildAssetUrl).toHaveBeenCalledWith({
     package: "@pantoken/plugin-logos",
-    path: "dist/canvas-horizontal-color.png",
+    path: "dist/canvas-horizontal-color.css",
   });
   const insertContent = (editor as unknown as { insertContent: (html: string) => void })
     .insertContent;
   expect(insertContent).toHaveBeenCalledWith(
-    expect.stringContaining('src="/local/canvas-horizontal-color.png"'),
+    expect.stringContaining('class="instui-logo -logo-canvas-horizontal-color"'),
   );
 });
 
@@ -267,9 +283,11 @@ test("insertLogo writes into the CodeMirror doc while the source view is active"
     pantoken_source_toggle: { isSourceMode: () => true, insertAtCursor },
   };
 
-  insertLogo(editor, "canvas", "horizontal", "color");
+  insertLogo(editor, "canvas", "horizontal", "color", { currentAssets: [] });
 
-  expect(insertAtCursor).toHaveBeenCalledWith(expect.stringContaining('width="478"'));
+  expect(insertAtCursor).toHaveBeenCalledWith(
+    expect.stringContaining('class="instui-logo -logo-canvas-horizontal-color"'),
+  );
   const insertContent = (editor as unknown as Record<string, unknown>).insertContent;
   expect(insertContent).not.toHaveBeenCalled();
 });
@@ -277,7 +295,7 @@ test("insertLogo writes into the CodeMirror doc while the source view is active"
 test("insertLogo no-ops when the product/layout/colorMode combination has no matching logo", () => {
   const editor = createMockEditor();
 
-  insertLogo(editor, "canvas", "stacked", "light");
+  insertLogo(editor, "canvas", "stacked", "light", { currentAssets: [] });
 
   const insertContent = (editor as unknown as { insertContent: (html: string) => void })
     .insertContent;
@@ -341,9 +359,7 @@ test("submitting the dialog inserts the selected logo variant", () => {
   const insertContent = (editor as unknown as { insertContent: (html: string) => void })
     .insertContent;
   expect(insertContent).toHaveBeenCalledWith(
-    expect.stringContaining(
-      'src="https://cdn.example/@pantoken/plugin-logos/dist/canvas-horizontal-color.png"',
-    ),
+    expect.stringContaining('class="instui-logo -logo-canvas-horizontal-color"'),
   );
   expect(api.close).toHaveBeenCalled();
 });

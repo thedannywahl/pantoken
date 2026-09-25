@@ -6,12 +6,12 @@
  * \@module
  */
 import type { Editor } from "tinymce";
-import { buildFileUrl } from "@pantoken/cdn";
 import type { CdnFile } from "@pantoken/cdn";
-import { getLogoMeta } from "../logos.js";
+import { buildLogoMarkup, getLogoCdnFile, getLogoMeta } from "../logos.js";
 import type { LogoMeta, Product } from "../logos.js";
 import type { MissingAssetHandler } from "../types.js";
 import { insertHtml } from "../lib/insertion-target.js";
+import { trackAndInjectAsset } from "../content-css.js";
 import { TINYMCE_STRINGS } from "../strings.js";
 
 /**
@@ -134,13 +134,7 @@ function openLogosDialog(editor: Editor, options: LogosPickerOptions): void {
       const selectedColorMode = data.colorMode;
 
       if (selectedProduct && selectedLayout && selectedColorMode) {
-        insertLogo(
-          editor,
-          selectedProduct,
-          selectedLayout,
-          selectedColorMode,
-          options.buildAssetUrl,
-        );
+        insertLogo(editor, selectedProduct, selectedLayout, selectedColorMode, options);
       }
       api.close();
     },
@@ -148,9 +142,9 @@ function openLogosDialog(editor: Editor, options: LogosPickerOptions): void {
 }
 
 /**
- * Insert the selected logo into the editor as a real, hosted `<img>` — Canvas's RCE strips
- * inline `<svg>` and the CSS `background-image` this used to rely on, so the logo must be a
- * genuine raster image with its own `src`, `width`, and `height`.
+ * Insert the selected logo into the editor as a mask-painted `.-logo-<name>` glyph (same technique
+ * as `icons.ts`'s `insertIcon`) — the logo's stylesheet is tracked and injected via
+ * `trackAndInjectAsset` so the glyph paints without a separate manual `<link>`.
  *
  * Silently no-ops if the product/layout/colorMode combination has no matching logo asset (e.g. not
  * every product ships every layout).
@@ -160,7 +154,11 @@ export function insertLogo(
   productId: string,
   layout: string,
   colorMode: string,
-  buildAssetUrl: (file: CdnFile) => string = buildFileUrl,
+  options: {
+    currentAssets: CdnFile[];
+    onMissingAsset?: MissingAssetHandler;
+    buildAssetUrl?: (file: CdnFile) => string;
+  } = { currentAssets: [] },
 ): void {
   const meta = getLogoMeta(
     productId as Product,
@@ -169,17 +167,6 @@ export function insertLogo(
   );
   if (!meta) return;
 
-  const url = buildAssetUrl({
-    package: "@pantoken/plugin-logos",
-    path: `dist/${meta.name}.png`,
-  });
-  insertHtml(editor, generateLogoHtml(meta, url));
-}
-
-/**
- * Generate the `<img>` HTML for a resolved logo asset, sized from its rasterized PNG's `width`/
- * `height` metadata (see `@pantoken/plugin-logos`' `getLogoMeta`).
- */
-export function generateLogoHtml(meta: LogoMeta, url: string): string {
-  return `<img class="instui-img" src="${url}" width="${meta.width}" height="${meta.height}" alt="${meta.product} ${TINYMCE_STRINGS.logoAltSuffix}" />`;
+  insertHtml(editor, buildLogoMarkup(meta));
+  trackAndInjectAsset(editor, getLogoCdnFile(meta), options);
 }

@@ -59,10 +59,13 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain("createContentClassesPlugin");
   expect(main).toContain("CONTENT_CLASSES_PLUGIN_NAME");
   expect(main).toContain("getUsedIconCdnFiles");
+  expect(main).toContain("getUsedLogoCdnFiles");
   expect(main).toContain("syncIconAssetsFromEditor();");
   expect(main).toContain("...currentAssets]");
   expect(main).toContain("const onMissingAsset = () => void refreshAll();");
-  expect(main).toContain('"/node_modules/@pantoken/plugin-logos/dist/*.png"');
+  expect(main).toContain(
+    '"/node_modules/@pantoken/plugin-{logos,simple-icons,lucide-lab,custom-icons}/dist/**/*.css"',
+  );
   expect(main).toContain("buildFileUrl(file, providerSelect.value)");
   expect(main).toContain("buildAssetUrl: buildSelectedAssetUrl");
   expect(main).toContain("createA11yPlugin");
@@ -175,11 +178,12 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain(
     'brandMark.className = "instui-button -color-primary -shape-square canvas-rce-shell__brand-mark"',
   );
-  // "System" appearance must actually compute and apply the OS scheme once eagerly on load — a
-  // dark OS previously loaded light until the user clicked another option and back to "system".
+  // The standalone shell's appearance picker only offers Light/Dark (no "System") and defaults to
+  // light — auto-following the OS scheme caused more confusion than it was worth.
   expect(main).toContain("const applyAppearance = (appearance:");
-  expect(main).toContain('applyAppearance("system");');
-  expect(main).toContain('if (appearance === "system") option.classList.add("is-selected");');
+  expect(main).toContain('applyAppearance("light");');
+  expect(main).toContain('if (appearance === "light") option.classList.add("is-selected");');
+  expect(main).not.toContain('"system"');
   // The color menu renders every pantoken color (not a hardcoded 7-item subset) with the same
   // swatch disc the theme-tray picker already uses, and marks the app's actual default selected.
   expect(main).toContain("for (const color of COLOR_KEYS) {");
