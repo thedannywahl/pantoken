@@ -1,0 +1,42 @@
+at the end of the test run in CI there's this notice, investigate implementation:
+```
+Import  2756 modules were evaluated 15958 times · 77.05s total, 46% of tracked time
+
+    
+
+  
+
+    
+      
+      
+                   ~14.87s faster with isolate: false — shared modules are evaluated once per worker instead of once per file
+
+    
+
+  
+
+    
+      
+      
+                   learn more: [https://vitest.dev/guide/improving-performance#test-isolation](https://vitest.dev/guide/improving-performance#test-isolation)
+```
+
+---
+
+In the pantoken repo (/Users/dwahl/Scripts/pantoken), investigate the Vitest test configuration to understand a CI performance notice about test isolation. The notice says:
+
+"Import 2756 modules were evaluated 15958 times · 77.05s total, 46% of tracked time" and "~14.87s faster with isolate: false — shared modules are evaluated once per worker instead of once per file. learn more: https://vitest.dev/guide/improving-performance#test-isolation"
+
+Please:
+1. Find all vitest config files (vite.config.ts, vite.config.base.ts, vite.bench.config.ts, and any per-package vite.config.ts/vitest.config.ts files) and report their `test` config blocks, especially any `isolate`, `pool`, `poolOptions`, `environment`, `sequence`, `fileParallelism` settings.
+2. Check package.json for the `test` script and how `vp test` invokes vitest (look for vite-plus config or scripts related to test/coverage).
+3. Check if there's a root-level test config that's inherited/extended by workspace packages (mergeConfig pattern), and how many packages/projects are included in the vitest workspace (look for vitest.workspace.ts or projects glob).
+4. Check docs/engineering-log.md and any repo memory files under .entire or docs/conventions for prior mentions of test isolation, test performance, or vitest tuning decisions.
+5. Report whether tests currently rely on module-level mutable state, global mocks (vi.mock, vi.stubGlobal), or DOM globals (happy-dom/jsdom) that could break if `isolate: false` is enabled (since disabling isolation shares module registry state across test files within a worker, which can cause cross-test pollution if tests mutate shared singletons or module-scoped variables).
+6. Also check whether it's already set anywhere in the repo (e.g., `isolate: false` might already be present in one config but not others) — search for "isolate" across the whole repo.
+
+Report back: full content of relevant config `test` blocks (with file paths/line numbers), the test script/tooling invocation, an assessment of risk in enabling `isolate: false` globally (any packages using global mocks/module-scoped mutable singletons that would break), and any existing repo conventions found for this topic. Be thorough (thoroughness: thorough).
+
+---
+
+Start implementation
