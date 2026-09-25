@@ -210,8 +210,8 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   );
   // The fullscreen overlay's background must adapt to dark mode like every other background in
   // this file — a hardcoded `#fff` fallback showed white chrome behind a dark-mode preview.
-  expect(readFileSync(join(target, "src/app.css"), "utf8")).toContain(
-    "background: light-dark(var(--instui-color-background-container), var(--instui-color-background-page));",
+  expect(readFileSync(join(target, "src/app.css"), "utf8")).toMatch(
+    /background:\s*light-dark\(\s*var\(--instui-color-background-container\),\s*var\(--instui-color-background-page\)\s*\);/,
   );
   expect(readFileSync(join(target, "src/app.css"), "utf8")).not.toContain(
     "background: var(--instui-color-background-primary, #fff);",
