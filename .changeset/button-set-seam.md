@@ -2,4 +2,4 @@
 "@pantoken/plugin-custom-components": minor
 ---
 
-Draw a visible 1px seam between `button-set` buttons by default, even where a button's border matches its fill, and add a `-without-seam` modifier that removes it.
+Show a 1px seam in the buttons' own border color between `button-set` buttons, and add a `-without-seam` modifier that hides it so the set reads as one continuous control.

@@ -88,22 +88,25 @@ test("buttonSetRules emits prefixed and unprefixed selectors", () => {
   expect(buttonSetRules("")).toContain(".button-set {");
 });
 
-test("button-set is flush with a drawn 1px seam that -without-seam removes", () => {
+test("button-set joins show one shared 1px border that -without-seam hides", () => {
   const css = buttonSetRules("instui-");
   expect(css).toContain(".instui-button-set {");
   expect(css).toContain("gap: 0");
   expect(css).toContain("flex-wrap: nowrap");
   expect(css).not.toContain("flex-wrap: wrap");
+  expect(css).not.toContain("box-shadow");
   expect(css).toContain(".instui-button-set > .instui-button {");
   expect(css).toContain("border-radius: 0");
   expect(css).toContain(
-    ".instui-button-set > .instui-button:not(:first-child) {\n  border-inline-start: 0;",
+    ".instui-button-set:is(:not(.-color-ai-secondary), .-without-seam) > .instui-button:not(:first-child) {\n  border-inline-start: 0;",
   );
   expect(css).toContain(
-    ".instui-button-set:not(.-without-seam) > .instui-button:not(:first-child) {\n  box-shadow: inset var(--instui-border-width-sm) 0 0",
+    ".instui-button-set.-color-ai-secondary:not(.-without-seam) {\n  gap: var(--instui-border-width-sm);",
   );
-  expect(css).toContain(
-    ".instui-button-set:not(.-without-seam) > .instui-button:not(:first-child):dir(rtl)",
+  expect(css).toContain("margin-inline-start: calc(-1 * var(--instui-border-width-sm))");
+  // Must stay the last rule so it outranks the group's color/hover/active border colors.
+  expect(css.trimEnd()).toMatch(
+    /\.instui-button-set\.-without-seam > \.instui-button\.instui-button:not\(:last-child\) \{\n {2}border-inline-end-color: transparent;\n\}$/u,
   );
   expect(css).toContain(".instui-button-set > .instui-button:first-child");
   expect(css).toContain(
