@@ -1,0 +1,47 @@
+Research-only task in /Users/dwahl/Scripts/pantoken (a pnpm monorepo for design tokens). Do NOT edit files.
+
+CONTEXT / HYPOTHESIS TO VERIFY:
+The plugin `plugins/pantoken/custom-theme-colors/src/index.ts` re-themes brand colors by building an index of EXACT opaque hex values of the 20 primitive steps of the `navy` and `blue` families (function `buildPrimitiveHexIndex`), then rewriting any literal hex found in other token values (function `relinkLiteralColors`) into `var(--instui-primitive-color-<scale>-<scale><step>)`. If a literal hex is NOT an exact primitive step value, the token is silently left alone and keeps its original navy/blue color.
+
+Observed evidence (from a built demo at /Users/dwahl/Desktop/pantoken-theme-color-demo):
+- `--instui-component-base-button-secondary-hover-background: light-dark(#4d7eb333, #92b1d94d)` — NOT relinked (absent from the generated `[data-pantoken-color]` block in theme-colors.css)
+- `--instui-component-base-button-secondary-active-background: light-dark(#3d658f33, #6c95cc4d)` — NOT relinked
+- `--instui-component-base-button-secondary-hover-border-color: light-dark(#44709f00, #86a8d500)` — WAS relinked (so #44709f = navy110, #86a8d5 = navy60)
+
+WHAT I NEED:
+
+(A) The full list of hex values for all 20 steps of BOTH the `navy` and `blue` primitive families in the token set. Find them in the repo source — e.g. `formats/tokens` (the vendored IR JSON / static files), or `@pantoken/tokens` package data, or the raw upstream JSON. Report family+step -> hex as a table. Then explicitly state whether #4d7eb3, #92b1d9, #3d658f, #6c95cc appear anywhere in those two families. If they do not, say so clearly and tell me what the NEAREST steps are.
+
+(B) Search the whole token set for every token whose value still contains a literal hex/rgba that looks navy/blue-ish (roughly hue 200-230) but is NOT an exact navy/blue primitive step value. I want the full list of token names that the plugin's exact-hex relinking would therefore MISS. Group them by component prefix. This is the important deliverable.
+
+(C) Find the "toggle button" component the user is complaining about. In `formats/components/src/components/` there is toggle-details and toggle-group, but the user said "toggle button backgrounds in all states and pseudo states". Look for: a checkbox/`-variant-toggle` component, a `toggle` utility, anything in `plugins/pantoken/custom-components/src/components/`, and the web-components renderer. Report the file path and quote the CSS, listing every custom property used for background in every state/pseudo-state (:hover, :active, :focus-visible, :checked, ::before, ::after, [aria-pressed], etc.). Then look up each of those tokens' raw values in the token set and report which contain literal hexes that are NOT exact primitive steps (i.e. would be missed by the plugin).
+
+(D) Check whether there is any existing test or fixture in `plugins/pantoken/custom-theme-colors/tests/` that asserts coverage/completeness (e.g. "no navy hex remains after theming"). Report whether such a drift check exists.
+
+Report exact file paths with line numbers and quote real values. Be precise — do not guess hex values, read them from files.
+
+---
+
+Research-only in /Users/dwahl/Scripts/pantoken. Do NOT edit files. You MAY run read-only shell commands (node/grep/jq) to compute answers — that is preferred over eyeballing minified CSS.
+
+BACKGROUND: `plugins/pantoken/custom-theme-colors/src/index.ts` re-themes brand color by (a) overriding the 20 `navy` and 20 `blue` primitive steps, and (b) rewriting literal hex/rgba found in other token values, but ONLY when the opaque hex is an EXACT match for one of those 40 primitive step values (`buildPrimitiveHexIndex` + `relinkLiteralColors`). Any literal brand-ish hex that isn't an exact primitive step is silently left un-themed.
+
+TASKS — be precise, use real computed data:
+
+1. Load the resolved token set the plugin uses by default: `byTheme("rebrand")` from `@pantoken/tokens` (see `formats/tokens`). Write a throwaway node script under /tmp (NOT in the repo) if helpful. Build the map of tokenName -> value.
+
+2. Build the exact-hex index of navy10..navy200 and blue10..blue200.
+
+3. Scan EVERY other token value for literal colors (`#rgb`, `#rgba`, `#rrggbb`, `#rrggbbaa`, `rgb()`, `rgba()`), ignoring values containing `url(`. For each literal whose opaque hex is NOT in the index, decide whether it's "brand-ish": convert to HSL/OKLCH and flag hue between roughly 195 and 240 with saturation > 0.12 (i.e. a navy/blue, not a grey/white/black).
+
+4. OUTPUT A: the complete deduplicated list of such MISSED token names with their raw values, sorted, grouped by token-name prefix. Include at minimum whether these appear: `--instui-component-base-button-secondary-hover-background`, `--instui-component-base-button-secondary-active-background`, `--instui-component-checkbox-background-checked-color` (resolve aliases), `--instui-component-radio-input-toggle-background-success` / `-off` / `-danger` / `-warning`, `--instui-component-text-input-arrows-*`.
+
+5. OUTPUT B: for each distinct missed hex, report the NEAREST navy step and the nearest blue step (by OKLab distance) and the delta, so I can judge whether a nearest-primitive fallback would be visually safe.
+
+6. OUTPUT C: separately resolve the full var() alias chain for these tokens and report the FINAL literal value:
+   - `--instui-component-radio-input-toggle-background-success`, `-off`, `-danger`, `-warning`, and any `--instui-component-radio-input-toggle-handle-*`
+   - `--instui-component-checkbox-background-color`, `-background-hover-color`, `-background-checked-color`, `-border-checked-color`, `-border-hover-color`
+   - `--instui-color-background-interactive-input-base` / `-hover` / `-checked` (whatever exists)
+   State for each: is the final literal an exact primitive (themed OK), a var() to a primitive (themed OK), a non-brand color like green (intentionally not themed), or a missed non-primitive brand hex?
+
+Report file paths/line numbers where relevant and paste your script's actual output. Precision matters more than brevity.
