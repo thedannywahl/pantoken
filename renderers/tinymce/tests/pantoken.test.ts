@@ -78,3 +78,37 @@ test("composes all content plugins behind one pantoken menu button", () => {
   expect(editor.execCommand).toHaveBeenCalledWith("pantokenOpenIcons");
   expect(editor.windowManager.open).toHaveBeenCalledTimes(4);
 });
+
+test("pantoken menu uses per-editor translations with English fallback", () => {
+  const registry = {
+    addIcon: vi.fn(),
+    addMenuButton: vi.fn(),
+    addButton: vi.fn(),
+    addAutocompleter: vi.fn(),
+    addContextToolbar: vi.fn(),
+  };
+  const editor = {
+    editorManager: { Resource: { add: vi.fn() } },
+    on: vi.fn(),
+    dom: { select: () => [] },
+    addCommand: vi.fn(),
+    ui: { registry },
+    getContainer: () => document.createElement("div"),
+  };
+  createPantokenPlugin({
+    strings: { componentsToolbarText: "Komponensek" },
+    components: { model: [], currentAssets: [] },
+    icons: { icons: [], currentAssets: [] },
+    logos: { logos: [], products: [], currentAssets: [] },
+  })(editor as never);
+  const success = vi.fn();
+  registry.addMenuButton.mock.calls
+    .find(([name]) => name === PANTOKEN_TOOLBAR_NAME)?.[1]
+    .fetch(success);
+  expect(success.mock.calls[0]?.[0].map(({ text }: { text: string }) => text)).toEqual([
+    "Komponensek",
+    "Icons",
+    "Logos",
+    "Layouts",
+  ]);
+});

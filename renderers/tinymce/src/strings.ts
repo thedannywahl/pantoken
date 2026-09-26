@@ -1,3 +1,4 @@
+import type { Editor } from "tinymce";
 import englishBase from "./i18n.json" with { type: "json" };
 
 /** All user-visible strings emitted by the TinyMCE integration. */
@@ -69,6 +70,18 @@ export const TINYMCE_STRINGS: TinymceStrings = Object.fromEntries(
     .filter(([key]) => key !== "$schema")
     .map(([key, value]) => [key, typeof value === "string" ? value : value.message]),
 ) as unknown as TinymceStrings;
+
+const editorStrings = new WeakMap<Editor, TinymceStrings>();
+
+/** Resolve the strings registered for this editor, falling back to the English catalog. */
+export function getEditorStrings(editor: Editor): TinymceStrings {
+  return editorStrings.get(editor) ?? TINYMCE_STRINGS;
+}
+
+/** Register per-editor translations without affecting another TinyMCE instance. */
+export function setEditorStrings(editor: Editor, overrides: Partial<TinymceStrings>): void {
+  editorStrings.set(editor, { ...TINYMCE_STRINGS, ...overrides });
+}
 
 /** Fill a catalog string's `{{name}}` placeholders with runtime values. */
 export function formatTinymceString(

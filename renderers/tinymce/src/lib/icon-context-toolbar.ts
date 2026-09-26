@@ -6,20 +6,12 @@
  * \@module
  */
 import type { Editor } from "tinymce";
-import { TINYMCE_STRINGS } from "../strings.js";
+import { getEditorStrings } from "../strings.js";
 
 const ICON_CONTEXT_TOOLBAR_NAME = "pantokenIconContext";
 const ICON_COLOR_BUTTON_NAME = "pantokenIconColor";
 const ICON_SIZE_MENU_NAME = "pantokenIconSize";
 const ICON_DELETE_BUTTON_NAME = "pantokenIconDelete";
-
-/** `undefined` removes the inline override, restoring the glyph's default (inherited) 1em size. */
-const ICON_SIZES: readonly { label: string; fontSize: string | undefined }[] = [
-  { label: TINYMCE_STRINGS.iconContextSizeSmall, fontSize: "0.75em" },
-  { label: TINYMCE_STRINGS.iconContextSizeMedium, fontSize: undefined },
-  { label: TINYMCE_STRINGS.iconContextSizeLarge, fontSize: "1.5em" },
-  { label: TINYMCE_STRINGS.iconContextSizeExtraLarge, fontSize: "2em" },
-];
 
 /** Whether `node` is an inserted icon glyph span (see `buildIconMarkup`). */
 export function isIconElement(node: Element): boolean {
@@ -36,9 +28,16 @@ function toHexColor(cssColor: string): string | undefined {
 
 /** Registers the color/size/delete context toolbar shown when an inserted icon glyph is selected. */
 export function registerIconContextToolbar(editor: Editor): void {
+  const strings = getEditorStrings(editor);
+  const iconSizes = [
+    { label: strings.iconContextSizeSmall, fontSize: "0.75em" },
+    { label: strings.iconContextSizeMedium, fontSize: undefined },
+    { label: strings.iconContextSizeLarge, fontSize: "1.5em" },
+    { label: strings.iconContextSizeExtraLarge, fontSize: "2em" },
+  ];
   editor.ui.registry.addButton(ICON_COLOR_BUTTON_NAME, {
     icon: "color-picker",
-    tooltip: TINYMCE_STRINGS.iconContextColorTooltip,
+    tooltip: strings.iconContextColorTooltip,
     onAction: () => {
       const node = editor.selection.getNode();
       if (!isIconElement(node)) return;
@@ -62,10 +61,10 @@ export function registerIconContextToolbar(editor: Editor): void {
 
   editor.ui.registry.addMenuButton(ICON_SIZE_MENU_NAME, {
     icon: "resize",
-    tooltip: TINYMCE_STRINGS.iconContextSizeTooltip,
+    tooltip: strings.iconContextSizeTooltip,
     fetch: (success) => {
       success(
-        ICON_SIZES.map(({ label, fontSize }) => ({
+        iconSizes.map(({ label, fontSize }) => ({
           type: "menuitem",
           text: label,
           onAction: () => {
@@ -83,7 +82,7 @@ export function registerIconContextToolbar(editor: Editor): void {
 
   editor.ui.registry.addButton(ICON_DELETE_BUTTON_NAME, {
     icon: "remove",
-    tooltip: TINYMCE_STRINGS.iconContextDeleteTooltip,
+    tooltip: strings.iconContextDeleteTooltip,
     onAction: () => {
       const node = editor.selection.getNode();
       if (!isIconElement(node)) return;

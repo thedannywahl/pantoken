@@ -59,6 +59,21 @@ test("registers a toggle button and starts out of source mode", () => {
   expect(api.getContent()).toBe("");
 });
 
+test("uses source-view string overrides without changing English defaults", () => {
+  const { editor } = fakeEditor("<p>hi</p>");
+  createSourceTogglePlugin({ height: 300, strings: { sourceToggleTooltip: "Forráskód" } })(
+    editor as never,
+  );
+  expect(editor.ui.registry.addToggleButton).toHaveBeenCalledWith(
+    SOURCE_TOGGLE_TOOLBAR_NAME,
+    expect.objectContaining({ tooltip: "Forráskód" }),
+  );
+  expect(editor.ui.registry.addButton).toHaveBeenCalledWith(
+    SOURCE_FORMAT_TOOLBAR_NAME,
+    expect.objectContaining({ tooltip: "Format code" }),
+  );
+});
+
 test("toggling on mirrors the WYSIWYG content into the source view and notifies callbacks", () => {
   const { editor } = fakeEditor("<p>hello</p>");
   const onChange = vi.fn();
