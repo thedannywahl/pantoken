@@ -45,15 +45,15 @@ rules by default; set `preserveFallbacks: false` to remove the retained `<style>
 
 ## CLI
 
-The `pantoken-inline` command reads HTML from stdin and writes the result to stdout:
+Use the hoisted `pantoken` CLI to inline an HTML file:
 
 ```sh
-cat page.html | pantoken-inline --theme canvas --mode dark > page.inlined.html
+pantoken generate inline -i page.html -o page.inlined.html
 ```
 
-Use `--input` and `--output` for files. Other options are `--css <file>`, `--theme
-<rebrand|canvas|canvasHighContrast>`, `--mode <light|dark>`, `--prefix <name>`, and
-`--custom-color <hex>`.
+The target accepts `-i, --input <file>` and `-o, --output <file>`, and supports the shared
+`--theme <rebrand|canvas|canvasHighContrast>` option. The package also exposes the lower-level
+`pantoken-inline` binary for direct use.
 
 ## API
 

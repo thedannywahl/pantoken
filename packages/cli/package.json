@@ -38,6 +38,7 @@
     "@pantoken/drupal": "workspace:*",
     "@pantoken/flutter": "workspace:*",
     "@pantoken/hugo": "workspace:*",
+    "@pantoken/inline-styles": "workspace:*",
     "@pantoken/jekyll": "workspace:*",
     "@pantoken/mintlify": "workspace:*",
     "@pantoken/model": "workspace:*",

@@ -45,6 +45,17 @@ test("run generates Android resource XML", async () => {
   expect(existsSync(join(out, "res", "values", "dimens.xml"))).toBe(true);
 });
 
+test("run inlines HTML through the hoisted inline target", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-cli-inline-"));
+  const input = join(dir, "input.html");
+  const output = join(dir, "output.html");
+  writeFileSync(input, '<button class="instui-button">Save</button>');
+
+  await run(["generate", "inline", "-i", input, "-o", output]);
+
+  expect(readFileSync(output, "utf8")).toContain('style="');
+});
+
 test("unknown targets report a clear error", async () => {
   await expect(run(["generate", "cobol", "--out", "/tmp/x"])).rejects.toThrow(/Unknown target/);
 });
