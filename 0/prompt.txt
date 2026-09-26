@@ -1,0 +1,18 @@
+Start implementation
+
+---
+
+validation shouldn't be part of the pantoken interaction, that can live in the instance, what I mean by the interaction is the click-in to activate edit mode and the click-out to update the DOM.
+
+---
+
+but we can extend to include a param/hint that tells the editor what type of input it should be.
+
+---
+
+while we're at it, add all the editable types that we may want to provide hints to:
+* number
+* text
+* email
+etc...
+we won't do the ones that there are other pantoken components for like date, range, etc.
