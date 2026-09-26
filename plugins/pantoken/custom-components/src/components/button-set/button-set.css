@@ -80,9 +80,13 @@
   gap: var(--instui-border-width-sm);
 }
 
-/* Overlaps the neighbor's end border so no seam (or subpixel antialiasing line) shows. */
+/* Overlaps neighbors so no seam (or subpixel antialiasing line) shows. */
 .pfx-button-set.-without-seam > .pfx-button:not(:first-child) {
   margin-inline-start: calc(-1 * var(--instui-border-width-sm));
+}
+
+.pfx-button-set.-without-seam > .pfx-button:not(:last-child) {
+  border-inline-end-width: 0;
 }
 
 .pfx-button-set > .pfx-button:first-child {
@@ -480,9 +484,4 @@
 .pfx-button-set.-display-block > .pfx-button:not(.-display-block) {
   display: flex;
   width: 100%;
-}
-
-/* Last, with a doubled class, so it outranks every group color/hover/active border-color rule. */
-.pfx-button-set.-without-seam > .pfx-button.pfx-button:not(:last-child) {
-  border-inline-end-color: transparent;
 }

@@ -104,9 +104,8 @@ test("button-set joins show one shared 1px border that -without-seam hides", () 
     ".instui-button-set.-color-ai-secondary:not(.-without-seam) {\n  gap: var(--instui-border-width-sm);",
   );
   expect(css).toContain("margin-inline-start: calc(-1 * var(--instui-border-width-sm))");
-  // Must stay the last rule so it outranks the group's color/hover/active border colors.
-  expect(css.trimEnd()).toMatch(
-    /\.instui-button-set\.-without-seam > \.instui-button\.instui-button:not\(:last-child\) \{\n {2}border-inline-end-color: transparent;\n\}$/u,
+  expect(css).toContain(
+    ".instui-button-set.-without-seam > .instui-button:not(:last-child) {\n  border-inline-end-width: 0;",
   );
   expect(css).toContain(".instui-button-set > .instui-button:first-child");
   expect(css).toContain(
