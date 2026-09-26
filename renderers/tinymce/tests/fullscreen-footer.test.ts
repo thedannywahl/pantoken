@@ -53,3 +53,15 @@ test("attaches a footer button that toggles fullscreen and reflects its state", 
   for (const handler of editor.listeners.get("remove") ?? []) handler();
   expect(button?.isConnected).toBe(false);
 });
+
+test("uses the editor's translated fullscreen label", () => {
+  const editor = { ...fakeEditor(), translate: () => "Teljes képernyő" };
+  createFullscreenFooterPlugin()(editor as never);
+  for (const handler of editor.listeners.get("PostRender") ?? []) handler();
+  expect(
+    editor
+      .getContainer()
+      .querySelector(`#${FULLSCREEN_FOOTER_STATUSBAR_NAME}`)
+      ?.getAttribute("title"),
+  ).toBe("Teljes képernyő");
+});

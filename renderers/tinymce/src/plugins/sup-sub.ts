@@ -15,21 +15,23 @@ const SUP_SUB_ICON =
 /** Build a single toolbar menu button toggling superscript or subscript. */
 export function createSupSubPlugin() {
   return function pantokenSupSubPlugin(editor: Editor) {
+    const superscript = editor.translate?.("Superscript") || "Superscript";
+    const subscript = editor.translate?.("Subscript") || "Subscript";
     editor.ui.registry.addIcon(SUP_SUB_TOOLBAR_NAME, SUP_SUB_ICON);
     editor.ui.registry.addMenuButton(SUP_SUB_TOOLBAR_NAME, {
       icon: SUP_SUB_TOOLBAR_NAME,
-      tooltip: "Superscript / subscript",
+      tooltip: `${superscript} / ${subscript}`,
       fetch: (success): void => {
         const items: Ui.Menu.NestedMenuItemContents[] = [
           {
             type: "togglemenuitem",
-            text: "Superscript",
+            text: superscript,
             active: editor.queryCommandState("Superscript"),
             onAction: () => editor.execCommand("Superscript"),
           },
           {
             type: "togglemenuitem",
-            text: "Subscript",
+            text: subscript,
             active: editor.queryCommandState("Subscript"),
             onAction: () => editor.execCommand("Subscript"),
           },

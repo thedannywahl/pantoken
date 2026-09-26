@@ -101,6 +101,7 @@
     "remark-parse": "catalog:",
     "shiki": "catalog:",
     "tinymce": "catalog:",
+    "tinymce-i18n": "catalog:",
     "typedoc": "catalog:",
     "typedoc-plugin-markdown": "catalog:",
     "typedoc-vitepress-theme": "catalog:",

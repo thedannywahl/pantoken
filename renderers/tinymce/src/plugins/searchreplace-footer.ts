@@ -28,7 +28,7 @@ export function createSearchReplaceFooterPlugin() {
       button.id = SEARCHREPLACE_FOOTER_STATUSBAR_NAME;
       button.type = "button";
       button.className = "tox-statusbar__wordcount";
-      button.title = "Find and replace";
+      button.title = editor.translate?.("Find and Replace") || "Find and replace";
       button.innerHTML = SEARCHREPLACE_ICON_SVG;
       button.addEventListener("click", () => editor.execCommand("SearchReplace"));
       footer.append(button);

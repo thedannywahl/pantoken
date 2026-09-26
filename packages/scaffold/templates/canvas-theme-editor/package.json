@@ -32,6 +32,7 @@
     "@codemirror/lang-javascript": "catalog:",
     "codemirror": "catalog:",
     "tinymce": "catalog:",
+    "tinymce-i18n": "26.9.21",
     "typescript": "^7.0.2",
     "vite": "^8.2.2"
   },

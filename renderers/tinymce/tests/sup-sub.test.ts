@@ -44,3 +44,20 @@ test("registers a menu button offering superscript and subscript toggles", () =>
   items[1].onAction();
   expect(editor.execCommand).toHaveBeenCalledWith("Subscript");
 });
+
+test("uses TinyMCE's own translations for both toggles", () => {
+  const translated: Record<string, string> = {
+    Superscript: "Felső index",
+    Subscript: "Alsó index",
+  };
+  const editor = { ...fakeEditor(), translate: (key: string) => translated[key] ?? key };
+  createSupSubPlugin()(editor as never);
+  const config = editor.ui.registry.addMenuButton.mock.calls[0]![1];
+  expect(config.tooltip).toBe("Felső index / Alsó index");
+  const success = vi.fn();
+  config.fetch(success);
+  expect(success.mock.calls[0]![0].map((item: { text: string }) => item.text)).toEqual([
+    "Felső index",
+    "Alsó index",
+  ]);
+});
