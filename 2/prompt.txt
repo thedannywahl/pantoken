@@ -1,0 +1,59 @@
+check the actual upstream values in node_modules from instructure-design-tokens. we're overriding some in known-syntax-issues based on figma design specs, and maybe we should remove those.
+
+---
+
+first we will remove all the button overrides in known-syntax-issues (I already did that), then we will do A,B,and C. This addresses your questions (1 and 2).
+
+---
+
+Research-only, no edits. Target: /Users/dwahl/Scripts/pantoken/packages/core/node_modules/@instructure/instructure-design-tokens/tokensStudio/
+
+IMPORTANT: this path is inside node_modules. If you use a grep tool, you MUST enable searching ignored files (e.g. `includeIgnoredFiles: true`), otherwise you will get zero results. Reading files directly always works.
+
+TASK: Enumerate EVERY distinct Token Studio `$extensions["studio.tokens"].modify` object used anywhere in that tree (all themes: rebrand/, canvas/, primitives/, and the semantic + component subfolders).
+
+For each distinct `{type, value, space}` triple report:
+- the triple verbatim
+- how many token definitions use it
+- 3-5 example token paths (file + JSON key path)
+
+Then report:
+1. The complete set of distinct `type` values (expect: alpha, darken, lighten — confirm).
+2. The complete set of distinct `space` values (expect: hsl, lch — confirm, and report the count for each).
+3. The complete set of distinct `value` numbers.
+4. Whether any `modify` object has fields other than type/value/space.
+5. Whether any token with a `modify` chains onto ANOTHER token that itself has a `modify` (i.e. nested/compounded modifies). List examples if so — this matters a lot.
+6. Specifically: which tokens use `space: "lch"` (list them all if under ~30).
+
+Prefer writing a small throwaway node script in /tmp that walks the JSON tree and aggregates, then paste its real output. Do NOT write anything into the repo. If you cannot execute shell commands, say so explicitly and fall back to exhaustive grep + file reads, and state that the counts are approximate.
+
+---
+
+Research-only, no edits, in /Users/dwahl/Scripts/pantoken (a design-token monorepo).
+
+CONTEXT: We are considering changing `@pantoken/core` (`packages/core/src/build.ts` `resolveColor`, `packages/core/src/color.ts` `applyModify`) so that Token Studio `modify` extensions (alpha / lighten / darken) are NO LONGER flattened into literal hex values. Instead, when the modified color's base is a `var(--instui-primitive-color-...)` reference, we'd emit a reference-preserving CSS expression, e.g.:
+- alpha 0.2  -> `color-mix(in srgb, var(--X) 20%, transparent)`
+- lighten 0.1 hsl -> `hsl(from var(--X) h s calc(l + (100% - l) * 0.1))`
+- darken 0.1 hsl  -> `hsl(from var(--X) h s calc(l * 0.9))`
+
+This would change roughly 70 tokens' values in the canonical IR from a hex literal to a CSS expression.
+
+I NEED A BLAST-RADIUS REPORT. Investigate and report precisely:
+
+1. **Non-CSS emitters that need real numeric color values.** Walk `platforms/` (Swift, Kotlin, Android, WordPress, etc.), `design/figma`, `design/swatches`, and `formats/` (scss, less, stylus, js/ts, json, tailwind, panda). For each package that consumes token color VALUES, report: does it parse/convert hex (e.g. to UIColor, Color(red:green:blue:), 0xAARRGGBB, rgba arrays)? Give file paths + the parsing function. Which ones would BREAK if a value became `color-mix(...)` or `hsl(from ...)`? Be exhaustive — this is the key risk.
+
+2. **Existing handling of non-hex color values.** Does any emitter already cope with `light-dark(...)`, `var(...)`, or `color-mix(...)` in a color token value? How (skip? resolve? error?)? Show the code. Note: `custom-theme-colors` already emits `color-mix(in srgb, var(--X) N%, transparent)` into CSS, so CSS-side precedent exists.
+
+3. **Token syntax validation.** In `packages/utils/src/token-syntax.ts`, would `hsl(from var(--X) h s calc(...))` pass `isSyntaxValid` / the css-tree lexer `matchProperty` check for a `<color>`? css-tree's mdn-data may not know relative color syntax. Check `isContextualValue` — does it already skip `color-mix(` and `hsl(from`? Quote the function.
+
+4. **lightningcss / build pipeline.** Find where lightningcss is configured (browserslist / targets) in the repo — check `formats/css`, `bundlers/`, `plugins/postcss`, `vite.config.base.ts`, `package.json` browserslist, and `compatibility.json`. Would lightningcss DOWNLEVEL `hsl(from var(--X) ...)` or `color-mix()`? Critically: relative color syntax with a `var()` origin CANNOT be statically downleveled — does lightningcss pass it through or mangle/drop it? Report the configured targets.
+
+5. **Tests/snapshots that would need updating.** Find tests asserting specific hex values for any of the ~70 modify-derived tokens (e.g. `#4d7eb3`, `#3d658f`, `#1d354f33`, `#44709f33`, `secondaryHoverBackground`, `primaryGhostBorderColor`). List file paths and rough counts.
+
+6. **Drift/gate harnesses.** `packages/utils` drift harness (`unknownReferences`, `danglingReferences`), `tools/upstream-diff`, and `formats/tokens/coverage/` — would any of them choke on expression values?
+
+Report exact file paths with line numbers and quote real code. Depth and precision matter more than brevity.
+
+---
+
+Start implementation
