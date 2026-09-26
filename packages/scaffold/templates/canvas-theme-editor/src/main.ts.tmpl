@@ -36,6 +36,15 @@ import componentIconsCss from "@pantoken/components/component-icons.css?inline";
 import componentsCss from "@pantoken/components/components.css?inline";
 import utilitiesCss from "@pantoken/components/utilities.css?inline";
 import fontsCss from "@pantoken/components/fonts.css?inline";
+const fontAssetUrls = import.meta.glob<string>(
+  "/node_modules/@pantoken/components/assets/fonts/**/*.woff2",
+  { eager: true, query: "?url", import: "default" },
+);
+const localFontsCss = fontsCss.replace(/\.\.\/assets\/fonts\/([^"\s)]+\.woff2)/gu, (_, path: string) => {
+  const url = fontAssetUrls[`/node_modules/@pantoken/components/assets/fonts/${path}`];
+  if (!url) throw new Error(`Missing local font asset: ${path}`);
+  return url;
+});
 import localInteractionsJs from "@pantoken/interactions/interactions.iife.js?raw";
 // A resolved asset URL for a real <script> tag — a dynamic import() of a pure side-effect module
 // from a "sideEffects": false package can get tree-shaken out of a production bundle.
@@ -211,7 +220,7 @@ const LOCAL_COMPONENT_CSS = [
   componentsCss,
   utilitiesCss,
   CUSTOM_THEME_COLORS_CSS,
-  fontsCss,
+  localFontsCss,
 ].join("\n");
 // pantoken's token sheets express dark mode as `light-dark()`, which lightningcss (this bundle's
 // minifier) downlevels to two OS-preference-gated control variables — fine for theme.css (a real
@@ -305,6 +314,7 @@ function setupStandaloneAppShell(): void {
   brandMark.innerHTML = PANTOKEN_ICON;
 
   const brandText = document.createElement("div");
+  brandText.className = "canvas-rce-shell__brand-text";
   const eyebrow = document.createElement("span");
   eyebrow.className = "canvas-rce-shell__eyebrow";
   eyebrow.textContent = "Pantoken";
@@ -1350,7 +1360,7 @@ colorButtons.forEach((button) => {
 // "large" is unconstrained (the current default), matching the desktop RCE width.
 const PREVIEW_WIDTHS: Record<string, string> = {
   medium: "var(--instui-breakpoints-md)",
-  small: "var(--instui-breakpoints-sm)",
+  small: "var(--instui-breakpoints-xs)",
 };
 
 let selectedPreviewWidth = "large";

@@ -6,6 +6,7 @@ import {
   agentShellRules,
   aiGradientRules,
   bannerRules,
+  breakpointDeclarations,
   buttonSetRules,
   cardRules,
   customComponents,
@@ -19,6 +20,12 @@ const cssOf = (plugin: ReturnType<typeof customComponents>): string => {
 
 test("is a css-only plugin", () => {
   expect(capabilitiesOf(customComponents())).toEqual(["css"]);
+});
+
+test("extra-small breakpoint is declared in the plugin CSS", () => {
+  const declaration = breakpointDeclarations();
+  expect(declaration).toContain("--instui-breakpoints-xs: 20em;");
+  expect(cssOf(customComponents())).toContain(declaration);
 });
 
 test("appends by default, prepends when asked", () => {

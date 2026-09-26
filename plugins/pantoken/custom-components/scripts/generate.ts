@@ -7,6 +7,7 @@
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
+import { breakpointDeclarations } from "../src/declarations/index.ts";
 import {
   agentShellRules,
   aiGradientRules,
@@ -18,6 +19,7 @@ import {
 
 const outDir = resolve(import.meta.dirname, "../generated");
 const allInstui = [
+  breakpointDeclarations(),
   cardRules("instui-"),
   agentShellRules("instui-"),
   aiGradientRules("instui-"),
@@ -26,6 +28,7 @@ const allInstui = [
   logoRules("instui-"),
 ].join("\n");
 const allPfx = [
+  breakpointDeclarations(),
   cardRules("pfx-"),
   agentShellRules("pfx-"),
   aiGradientRules("pfx-"),
