@@ -1,0 +1,25 @@
+{
+  "cli_version": "0.11.2",
+  "checkpoint_id": "01M3F2MARCK22YD6PTNTKEZYNC",
+  "session_id": "065bebb3-41c9-4a6b-886a-9fbbd26d2a0a",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-26T14:41:40.858229Z",
+  "branch": "iconfix",
+  "checkpoints_count": 2,
+  "save_step_count": 1,
+  "files_touched": [],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "8429f4076a73",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 2
+  }
+}
