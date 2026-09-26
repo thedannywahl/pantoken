@@ -1,5 +1,36 @@
 # @pantoken/canvas-theme-editor
 
+## 0.3.0
+
+### Minor Changes
+
+- f475012: Support several pantoken themes and color schemes in one document.
+
+  Theme blocks are now keyed to `data-pantoken-theme` on any element rather than `:root`, so theming is
+  a property of a subtree instead of the page. New `@pantoken/css/properties.css` and
+  `@pantoken/css/scope.css` split the document-global `@property` registrations from the per-theme
+  declarations, and `[data-pantoken-scheme]` forcing blocks let a light subtree sit beside a dark one.
+
+  The new `@pantoken/scope` package resolves the theme, scheme, and color in effect for any element by
+  walking its ancestors, and lets an embedded app declare its own scope — with its own persisted state,
+  its own frame messages, and an optional hard boundary — so two pantoken instances on a page no longer
+  overwrite each other.
+
+### Patch Changes
+
+- f475012: Add an element-scoped custom theme color stylesheet and make Canvas Theme Editor pages keep their selected `data-pantoken-color` on an editable outer content wrapper.
+- f475012: Load pantoken's prose stylesheet in the Canvas theme and simplify starter layouts to use semantic
+  headings, paragraphs, and lists where the prose styles provide their presentation.
+- f475012: Rename the available `rebrand` theme label to `Next gen` in the theme selectors and scaffolded Canvas Theme Editor.
+- f475012: Split the `canvas-theme-editor` scaffold's Config tab into a **Theme** section (theme buttons, a 13-swatch
+  color picker, and a dark-mode toggle shown only for the rebrand theme) and a **CDN** section (provider
+  select), patterned after the docs site's theme selector. All three theme controls refresh the live
+  preview immediately.
+
+  `buildThemeCss()`/`defaultThemeCssAssets()` now always import `@pantoken/plugin-custom-theme-colors`'s
+  `custom-theme-colors.css`, so the generated `theme.css` supports the same `data-pantoken-color` attribute
+  remap the color picker toggles — a no-op unless that attribute is set.
+
 ## 0.2.1
 
 ### Patch Changes

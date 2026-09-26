@@ -1,5 +1,31 @@
 # CHANGELOG
 
+## 1.3.0
+
+### Minor Changes
+
+- f475012: `dist/icons.css` is now self-contained: it declares the `--instui-icon-*` values alongside the
+  `.-icon-<name>` glyph classes. It previously shipped only the mapping, so loading it without the full
+  token sheet left every glyph unpainted — a filled square where the mask should be. This matches what
+  `dist/icons/<name>.css` and the icon plugin bundles already did. `iconGlyphsCss` takes a new `values`
+  option to opt into the same behavior.
+- f475012: Upgrade the vendored Instructure UI sources to 11.7.7. Add the canonical `ai-spinner` icon and AI Spinner variants, including `variant="ai"` and `variant="ai-on-color"` on the web component. Mark Spinner as requiring icon CSS in the CDN capability manifest.
+
+### Patch Changes
+
+- f475012: Fix icon-only `instui-button` geometry when a tooltip bubble is composed directly on the button. The tooltip `.tip` child no longer contributes to the trigger's intrinsic inline size, and icon-only button selectors now treat a screen-reader label plus tooltip bubble as label-less for square sizing and glyph centering.
+- f475012: Set text decoration on base button, allowing anchors to use button styles.
+- f475012: Fix tooltip placement in RTL: the top/bottom bubble flips its centering translate under `:dir(rtl)` so it stays under its trigger instead of drifting to the side, and the start/end gap now follows the inline direction.
+- f475012: Keep icon-only buttons square when their inline size includes padding.
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+  - @pantoken/scaffold-base@0.3.3
+  - @pantoken/tokens@0.6.0
+  - @pantoken/utils@1.1.0
+
 ## 1.2.3
 
 ### Patch Changes

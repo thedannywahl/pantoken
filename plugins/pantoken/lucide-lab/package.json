@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/plugin-lucide-lab",
-  "version": "0.3.11",
+  "version": "0.4.0",
   "description": "pantoken plugin: add Lucide Lab glyphs as --instui-icon-<name> image tokens.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

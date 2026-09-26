@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/tinymce-placehold",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "TinyMCE plugin for inserting PNG placeholder images from placehold.co.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

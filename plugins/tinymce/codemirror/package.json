@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/tinymce-codemirror",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A CodeMirror 6 source-view toggle for TinyMCE: syntax-highlighted HTML editing with dark-mode theming, pretty-print, and fullscreen support, replacing TinyMCE's stock `code` modal.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

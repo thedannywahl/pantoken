@@ -1,5 +1,12 @@
 # @pantoken/i18n-engine
 
+## 0.4.0
+
+### Minor Changes
+
+- f475012: Add merged message-source support to the localization pipeline and add a TinyMCE Placehold PNG
+  image plugin to the Canvas theme editor scaffold.
+
 ## 0.3.1
 
 ### Patch Changes

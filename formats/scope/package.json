@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/scope",
-  "version": "0.3.11",
+  "version": "0.4.0",
   "description": "Run several pantoken themes and color schemes in one document: per-subtree scopes, ancestor resolution, and hard boundaries.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

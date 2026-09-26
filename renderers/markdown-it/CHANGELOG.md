@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.1.15
+
+### Patch Changes
+
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+  - @pantoken/icons@0.3.0
+
 ## 0.1.14
 
 ### Patch Changes

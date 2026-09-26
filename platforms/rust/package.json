@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/rust",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "description": "Emit Instructure design tokens as Rust constants for egui (Color32) or iced (Color).",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

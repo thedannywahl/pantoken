@@ -1,5 +1,125 @@
 # CHANGELOG
 
+## 0.2.22
+
+### Patch Changes
+
+- f475012: Restore CodSpeed benchmark collection under Vitest 5 by routing the benchmark harness through
+  Tinybench until CodSpeed's Vitest 5 support is released.
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+- Updated dependencies [f475012]
+  - @pantoken/interactions@0.4.0
+  - @pantoken/web-components@0.7.0
+  - @pantoken/tinymce@0.3.0
+  - @pantoken/plugin-custom-components@0.5.0
+  - @pantoken/plugin-custom-theme-colors@0.3.0
+  - @pantoken/canvas-theme-editor@0.3.0
+  - @pantoken/plugin-layouts@0.5.0
+  - @pantoken/tokens@0.6.0
+  - @pantoken/icons@0.3.0
+  - @pantoken/components@1.3.0
+  - @pantoken/css@0.4.0
+  - @pantoken/plugin-simple-icons@0.3.10
+  - @pantoken/plugin-logos@0.5.0
+  - @pantoken/scope@0.4.0
+  - @pantoken/angular@0.1.38
+  - @pantoken/react@0.1.39
+  - @pantoken/svelte@0.1.39
+  - @pantoken/vue@0.1.39
+  - @pantoken/cli@0.1.42
+  - @pantoken/astro@0.1.22
+  - @pantoken/android@0.1.22
+  - @pantoken/compose@0.1.22
+  - @pantoken/flutter@0.1.22
+  - @pantoken/swift@0.1.22
+  - @pantoken/panda@0.1.18
+  - @pantoken/tailwind@0.1.12
+  - @pantoken/vite@0.1.22
+  - @pantoken/swatches@0.1.18
+  - @pantoken/dtcg@0.1.16
+  - @pantoken/less@0.1.18
+  - @pantoken/scss@0.1.18
+  - @pantoken/stylus@0.1.18
+  - @pantoken/email@0.1.18
+  - @pantoken/vanilla@0.1.15
+  - @pantoken/wordpress@0.1.15
+  - @pantoken/plugin-primitives@1.0.4
+  - @pantoken/plugin-stacking@1.0.8
+  - @pantoken/plugin-theme-custom-media@0.2.7
+  - @pantoken/bootstrap@0.1.3
+  - @pantoken/css-in-js@0.1.18
+  - @pantoken/docusaurus@0.1.3
+  - @pantoken/foundation@0.1.4
+  - @pantoken/mintlify@0.1.18
+  - @pantoken/mui@0.1.18
+  - @pantoken/pendo@0.4.9
+  - @pantoken/react-native@0.1.18
+  - @pantoken/shadcn@0.2.0
+  - @pantoken/storybook@0.1.18
+  - @pantoken/vitepress@0.2.3
+  - @pantoken/markdown-it@0.1.15
+  - @pantoken/react-markdown@0.1.17
+  - @pantoken/rehype@0.1.15
+  - @pantoken/drupal@0.1.34
+  - @pantoken/hugo@0.1.35
+  - @pantoken/jekyll@0.1.35
+  - @pantoken/postcss@0.1.22
+  - @pantoken/webpack@0.1.22
+  - @pantoken/figma@0.1.15
+  - @pantoken/plugin-custom-icons@0.3.12
+  - @pantoken/plugin-transition@1.0.7
+  - @pantoken/plugin-visual-debug@0.1.18
+
 ## 0.2.21
 
 ### Patch Changes
