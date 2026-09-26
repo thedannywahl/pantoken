@@ -48,12 +48,14 @@
  */
 .pfx-button-set {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0;
 }
 
 .pfx-button-set > .pfx-button {
+  flex-shrink: 0;
   border-radius: 0;
 }
 

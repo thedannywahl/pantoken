@@ -92,6 +92,8 @@ test("button-set is seamed: no gap, squared interior corners, one border per sea
   const css = buttonSetRules("instui-");
   expect(css).toContain(".instui-button-set {");
   expect(css).toContain("gap: 0");
+  expect(css).toContain("flex-wrap: nowrap");
+  expect(css).not.toContain("flex-wrap: wrap");
   expect(css).toContain(".instui-button-set > .instui-button {");
   expect(css).toContain("border-radius: 0");
   expect(css).toContain(".instui-button-set > .instui-button:not(:first-child)");
