@@ -1,0 +1,1 @@
+the cli should be using our `pantoken-cli` as the hoisted interface for dcoumentation. `pantoken generate inline -i <file> -o <file>`
