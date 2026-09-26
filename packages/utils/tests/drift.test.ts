@@ -12,6 +12,13 @@ test("unknownReferences flags token names not defined by the IR (drift)", () => 
   expect(unknownReferences("--x: var(--instui-leaf);", IR)).toEqual([]);
 });
 
+test("unknownReferences allows custom properties declared locally", () => {
+  const css =
+    ":root { --instui-breakpoints-xs: 20em; } " +
+    ".preview { width: var(--instui-breakpoints-xs); color: var(--instui-gone); }";
+  expect(unknownReferences(css, IR)).toEqual(["--instui-gone"]);
+});
+
 test("danglingReferences flags var() refs a stylesheet never defines", () => {
   const selfContained = "@property --instui-a {} .b { color: var(--instui-a); }";
   expect(danglingReferences(selfContained)).toEqual([]);

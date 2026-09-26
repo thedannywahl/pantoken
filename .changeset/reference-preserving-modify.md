@@ -20,3 +20,7 @@ alike. They now resolve through the primitive the scope already overrides.
 Emitters that need a real colour rather than a CSS expression are unaffected: the shared resolver in
 `@pantoken/utils` (`makeResolver` / `resolveTokens`) prefers `flatValue`, so the native lineage,
 Figma, swatches, and the preprocessor formats keep emitting exactly the same literals as before.
+
+The `unknownReferences` drift check now accepts `--instui-*` properties declared in the stylesheet
+itself, so plugin-owned custom properties can be referenced without being mistaken for missing IR
+tokens.

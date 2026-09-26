@@ -40,10 +40,18 @@ export function tokenNames(ir: readonly Token[]): Set<string> {
   return new Set(ir.map((t) => t.name));
 }
 
+function declaredInstuiProperties(text: string): Set<string> {
+  const declared = new Set([...text.matchAll(/@property\s+(--instui-[\w-]+)/g)].map((m) => m[1]));
+  for (const match of text.matchAll(/(--instui-[\w]+(?:-[\w]+)*)\s*:/g)) {
+    declared.add(match[1]);
+  }
+  return declared;
+}
+
 /**
- * Drift check: `--instui-*` names in `text` that the IR doesn't define (sorted; empty means no
- * drift). Use for outputs that *reference* tokens defined elsewhere — e.g. the docusaurus/vitepress
- * bridges, whose `var(--instui-*)` targets must all be real tokens.
+ * Drift check: `--instui-*` names in `text` that neither the IR nor the stylesheet itself defines
+ * (sorted; empty means no drift). Use for outputs that reference tokens defined elsewhere — e.g.
+ * the docusaurus/vitepress bridges, whose `var(--instui-*)` targets must all be real tokens.
  *
  * @param text - The generated output.
  * @param ir - The source token IR.
@@ -65,7 +73,10 @@ export function tokenNames(ir: readonly Token[]): Set<string> {
  */
 export function unknownReferences(text: string, ir: readonly Token[]): string[] {
   const names = tokenNames(ir);
-  return [...extractInstuiRefs(text)].filter((name) => !names.has(name)).sort();
+  const declared = declaredInstuiProperties(text);
+  return [...extractInstuiRefs(text)]
+    .filter((name) => !names.has(name) && !declared.has(name))
+    .sort();
 }
 
 /**
@@ -91,8 +102,6 @@ export function unknownReferences(text: string, ir: readonly Token[]): string[] 
  */
 export function danglingReferences(css: string): string[] {
   const referenced = new Set([...css.matchAll(/var\(\s*?(--instui-[\w-]+)/g)].map((m) => m[1]));
-  const defined = new Set<string>();
-  for (const m of css.matchAll(/@property\s+(--instui-[\w-]+)/g)) defined.add(m[1]);
-  for (const m of css.matchAll(/(--instui-[\w]+(?:-[\w]+)*)\s*:/g)) defined.add(m[1]);
+  const defined = declaredInstuiProperties(css);
   return [...referenced].filter((name) => !defined.has(name)).sort();
 }
