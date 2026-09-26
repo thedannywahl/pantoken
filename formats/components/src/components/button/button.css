@@ -75,6 +75,43 @@
     background: var(--instui-color-background-interactive-action-primary-active);
   }
 
+  /* A bare button is primary, so it takes -color-primary's stroke too. */
+  &:not(
+    [class*="-color-"],
+    .-ghost,
+    .-on-color,
+    .-condensed,
+    .-without-background,
+    :disabled,
+    [aria-disabled="true"]
+  ) {
+    border-color: var(--instui-color-stroke-interactive-action-primary-base);
+  }
+
+  &:not(
+      [class*="-color-"],
+      .-ghost,
+      .-on-color,
+      .-condensed,
+      .-without-background,
+      :disabled,
+      [aria-disabled="true"]
+    ):hover {
+    border-color: var(--instui-color-stroke-interactive-action-primary-hover);
+  }
+
+  &:not(
+      [class*="-color-"],
+      .-ghost,
+      .-on-color,
+      .-condensed,
+      .-without-background,
+      :disabled,
+      [aria-disabled="true"]
+    ):active {
+    border-color: var(--instui-color-stroke-interactive-action-primary-active);
+  }
+
   &:disabled,
   &[aria-disabled="true"] {
     background: var(--instui-component-base-button-primary-disabled-background-color);

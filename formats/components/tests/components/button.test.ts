@@ -16,6 +16,13 @@ test("button has primary default plus secondary and danger variants", () => {
   expect(css).toContain("&.-color-secondary");
   expect(css).toContain("&.-color-danger");
   expect(css).toContain("border: var(--instui-border-width-sm) solid transparent");
+  // A bare button takes -color-primary's stroke, so default and primary look the same.
+  expect(css).toMatch(
+    /&:not\(\s*\[class\*="-color-"\][^{]*\) \{\n\s*border-color: var\(--instui-color-stroke-interactive-action-primary-base\);/u,
+  );
+  expect(css).toMatch(
+    /&:not\(\s*\[class\*="-color-"\][^{]*\):hover \{\n\s*border-color: var\(--instui-color-stroke-interactive-action-primary-hover\);/u,
+  );
   expect(css).toContain("var(--instui-color-background-interactive-action-primary-base)");
   expect(css).toContain("var(--instui-component-base-button-primary-disabled-background-color)");
   expect(css).toContain("var(--instui-component-base-button-primary-disabled-border-color)");
