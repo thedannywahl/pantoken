@@ -3,7 +3,7 @@
   "checkpoint_id": "01M3F7NT67NQ1RM0GS5J1ACG81",
   "strategy": "manual-commit",
   "branch": "iconfix",
-  "checkpoints_count": 5,
+  "checkpoints_count": 6,
   "files_touched": [
     ".changeset/reference-preserving-modify.md",
     "formats/tokens/known-syntax-issues.json",
@@ -52,6 +52,13 @@
       "compact_transcript": "/3/transcript.jsonl",
       "content_hash": "/3/content_hash.txt",
       "prompt": "/3/prompt.txt"
+    },
+    {
+      "metadata": "/4/metadata.json",
+      "transcript": "/4/full.jsonl",
+      "compact_transcript": "/4/transcript.jsonl",
+      "content_hash": "/4/content_hash.txt",
+      "prompt": "/4/prompt.txt"
     }
   ],
   "token_usage": {

@@ -1,0 +1,9 @@
+canvas-theme-editor tool/webapp mode the header icon background should use the 90 on the color scale for the color in dark mode, and 100 in light mode. right now it's a link with instui-button and -color-primary so we need to override it.
+
+---
+
+Start implementation
+
+---
+
+stage your changes and add a conventional commit, ignoring other unstaged changes
