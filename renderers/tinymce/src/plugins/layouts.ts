@@ -13,7 +13,7 @@ import {
   type PageLayoutImagePlaceholder,
 } from "../layouts.js";
 import { insertHtml, replaceContent } from "../lib/insertion-target.js";
-import { formatTinymceString, TINYMCE_STRINGS } from "../strings.js";
+import { formatTinymceString, getEditorStrings } from "../strings.js";
 
 /** Options for {@link createLayoutsPlugin}. */
 export interface LayoutsPluginOptions {
@@ -86,25 +86,26 @@ export function createLayoutsPlugin(options: LayoutsPluginOptions = {}) {
   const { layouts = pageLayoutTemplates, onInsert, resolveImage, locale = "en" } = options;
   const resolvedLayouts = layouts.map((layout) => renderPageLayout(layout, locale));
   return function pantokenLayoutsPlugin(editor: Editor) {
+    const strings = getEditorStrings(editor);
     const openDialog = (): void => {
       editor.windowManager.open({
-        title: TINYMCE_STRINGS.layoutsDialogTitle,
+        title: strings.layoutsDialogTitle,
         body: {
           type: "panel",
           items: [
             {
               type: "selectbox",
               name: "layout",
-              label: TINYMCE_STRINGS.layoutsSelectLabel,
+              label: strings.layoutsSelectLabel,
               items: resolvedLayouts.map((l) => ({ value: l.name, text: l.title })),
             },
           ],
         },
         initialData: { layout: resolvedLayouts[0]?.name ?? "" },
         buttons: [
-          { type: "cancel", text: TINYMCE_STRINGS.cancelButton },
-          { type: "custom", name: "replace", text: TINYMCE_STRINGS.replaceButton },
-          { type: "submit", text: TINYMCE_STRINGS.insertButton, primary: true },
+          { type: "cancel", text: strings.cancelButton },
+          { type: "custom", name: "replace", text: strings.replaceButton },
+          { type: "submit", text: strings.insertButton, primary: true },
         ],
         onSubmit: (api): void => {
           const { layout } = api.getData() as { layout: string };
@@ -121,7 +122,7 @@ export function createLayoutsPlugin(options: LayoutsPluginOptions = {}) {
           api.close();
           if (!chosen) return;
           editor.windowManager.confirm(
-            formatTinymceString(TINYMCE_STRINGS.layoutsConfirmReplace, { title: chosen.title }),
+            formatTinymceString(strings.layoutsConfirmReplace, { title: chosen.title }),
             (confirmed: boolean): void => {
               if (!confirmed) return;
               replaceContent(editor, materializeLayout(chosen, resolveImage));
@@ -138,12 +139,12 @@ export function createLayoutsPlugin(options: LayoutsPluginOptions = {}) {
     }
 
     editor.ui.registry.addButton(LAYOUTS_TOOLBAR_NAME, {
-      text: TINYMCE_STRINGS.layoutsToolbarText,
-      tooltip: TINYMCE_STRINGS.layoutsToolbarTooltip,
+      text: strings.layoutsToolbarText,
+      tooltip: strings.layoutsToolbarTooltip,
       onAction: openDialog,
     });
     editor.ui.registry.addMenuItem(LAYOUTS_TOOLBAR_NAME, {
-      text: TINYMCE_STRINGS.layoutsMenuText,
+      text: strings.layoutsMenuText,
       onAction: openDialog,
     });
 

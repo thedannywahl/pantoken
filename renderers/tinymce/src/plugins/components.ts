@@ -11,7 +11,7 @@ import type { MissingAssetHandler } from "../types.js";
 import { trackAndInjectAsset } from "../content-css.js";
 import { insertHtml } from "../lib/insertion-target.js";
 import { registerComponentModifierToolbar } from "../lib/component-modifier-toolbar.js";
-import { TINYMCE_STRINGS } from "../strings.js";
+import { getEditorStrings } from "../strings.js";
 
 /**
  * Configuration options for the components picker plugin.
@@ -78,6 +78,7 @@ export function createComponentsPlugin(options: ComponentsPickerOptions): (edito
   // TinyMCE always instantiates plugins with `new Plugin(editor, ...)` — must be a constructible
   // function expression, not an arrow function (arrows throw "is not a constructor").
   return function pantokenComponentsPlugin(editor: Editor) {
+    const strings = getEditorStrings(editor);
     // Build a list of available components.
     const componentList = buildComponentList(options.model);
     const openDialog = (): void => openComponentsDialog(editor, componentList, options);
@@ -90,14 +91,14 @@ export function createComponentsPlugin(options: ComponentsPickerOptions): (edito
 
     // Register the toolbar button.
     editor.ui.registry.addButton("pantokenComponents", {
-      text: TINYMCE_STRINGS.componentsToolbarText,
-      tooltip: TINYMCE_STRINGS.componentsToolbarTooltip,
+      text: strings.componentsToolbarText,
+      tooltip: strings.componentsToolbarTooltip,
       onAction: openDialog,
     });
 
     // Register a menu item.
     editor.ui.registry.addMenuItem("pantokenComponents", {
-      text: TINYMCE_STRINGS.componentsMenuText,
+      text: strings.componentsMenuText,
       onAction: openDialog,
     });
   };
@@ -134,16 +135,17 @@ function openComponentsDialog(
   components: ComponentRecord[],
   options: ComponentsPickerOptions,
 ): void {
+  const strings = getEditorStrings(editor);
   // Dialog body: title and results list.
   const _body = editor.windowManager.open({
-    title: TINYMCE_STRINGS.componentsDialogTitle,
+    title: strings.componentsDialogTitle,
     body: {
       type: "panel",
       items: [
         {
           type: "listbox",
           name: "component",
-          label: TINYMCE_STRINGS.componentsListLabel,
+          label: strings.componentsListLabel,
           items: components.map((c) => ({
             text: c.name,
             value: c.name,
@@ -154,12 +156,12 @@ function openComponentsDialog(
     },
     buttons: [
       {
-        text: TINYMCE_STRINGS.insertButton,
+        text: strings.insertButton,
         type: "submit",
         primary: true,
       },
       {
-        text: TINYMCE_STRINGS.cancelButton,
+        text: strings.cancelButton,
         type: "cancel",
       },
     ],

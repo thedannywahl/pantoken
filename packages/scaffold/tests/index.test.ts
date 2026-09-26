@@ -95,7 +95,14 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain(
     '"pantoken pantoken_content_classes placehold pantoken_a11y pantoken_save pantoken_sup_sub pantoken_source_toggle pantoken_fullscreen_footer pantoken_searchreplace_footer pantoken_visualblocks_footer image link lists',
   );
-  expect(main).toContain('createA11yPlugin({ display: "footer", config: a11yRuntimeConfig })');
+  expect(main).toContain(
+    'createA11yPlugin({ strings: tinymceStrings, display: "footer", config: a11yRuntimeConfig })',
+  );
+  expect(main).toContain("locale: activeLocale,");
+  expect(main).toContain("strings: tinymceStrings,");
+  const tinymceLocales = readFileSync(join(target, "src/tinymce-locale-strings.ts"), "utf8");
+  expect(tinymceLocales).toContain('"hu"');
+  expect(tinymceLocales).toContain('"componentsToolbarText"');
   expect(main).toContain("createSavePlugin<CanvasThemePreset>");
   expect(main).toContain("SAVE_PLUGIN_NAME");
   expect(main).toContain(

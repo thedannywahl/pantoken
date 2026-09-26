@@ -10,7 +10,7 @@ import type { Editor } from "tinymce";
 import { pageLayouts } from "../layouts.js";
 import type { StarterTemplate } from "../types.js";
 import { replaceContent } from "../lib/insertion-target.js";
-import { formatTinymceString, TINYMCE_STRINGS } from "../strings.js";
+import { formatTinymceString, getEditorStrings } from "../strings.js";
 
 /** Options for {@link createTemplatesPlugin}. */
 export interface TemplatesPluginOptions {
@@ -39,24 +39,25 @@ export const pageTemplates: readonly StarterTemplate[] = pageLayouts.map(({ titl
 export function createTemplatesPlugin(options: TemplatesPluginOptions = {}) {
   const { templates = pageTemplates, onInsert } = options;
   return function pantokenTemplatesPlugin(editor: Editor) {
+    const strings = getEditorStrings(editor);
     const openDialog = (): void => {
       editor.windowManager.open({
-        title: TINYMCE_STRINGS.templatesDialogTitle,
+        title: strings.templatesDialogTitle,
         body: {
           type: "panel",
           items: [
             {
               type: "selectbox",
               name: "template",
-              label: TINYMCE_STRINGS.templatesSelectLabel,
+              label: strings.templatesSelectLabel,
               items: templates.map((t) => ({ value: t.title, text: t.title })),
             },
           ],
         },
         initialData: { template: templates[0]?.title ?? "" },
         buttons: [
-          { type: "cancel", text: TINYMCE_STRINGS.cancelButton },
-          { type: "submit", text: TINYMCE_STRINGS.insertButton, primary: true },
+          { type: "cancel", text: strings.cancelButton },
+          { type: "submit", text: strings.insertButton, primary: true },
         ],
         onSubmit: (api): void => {
           const { template } = api.getData() as { template: string };
@@ -64,7 +65,7 @@ export function createTemplatesPlugin(options: TemplatesPluginOptions = {}) {
           api.close();
           if (!chosen) return;
           editor.windowManager.confirm(
-            formatTinymceString(TINYMCE_STRINGS.templatesConfirmReplace, {
+            formatTinymceString(strings.templatesConfirmReplace, {
               title: chosen.title,
             }),
             (confirmed: boolean): void => {
@@ -83,11 +84,11 @@ export function createTemplatesPlugin(options: TemplatesPluginOptions = {}) {
     }
 
     editor.ui.registry.addButton(TEMPLATES_TOOLBAR_NAME, {
-      text: TINYMCE_STRINGS.templatesToolbarText,
+      text: strings.templatesToolbarText,
       onAction: openDialog,
     });
     editor.ui.registry.addMenuItem(TEMPLATES_TOOLBAR_NAME, {
-      text: TINYMCE_STRINGS.templatesMenuText,
+      text: strings.templatesMenuText,
       onAction: openDialog,
     });
 

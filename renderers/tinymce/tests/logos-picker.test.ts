@@ -61,6 +61,11 @@ const mockProducts: readonly Product[] = ["canvas", "instructure", "learnplatfor
 
 const mockLogos: readonly LogoMeta[] = [];
 
+test("escapes localized logo alt text before inserting it into an HTML attribute", () => {
+  const markup = buildLogoMarkup({ product: "canvas", name: "canvas" } as LogoMeta, '<"&>');
+  expect(markup).toContain('aria-label="canvas &lt;&quot;&amp;&gt;"');
+});
+
 test("createLogosPlugin registers toolbar button and menu item", () => {
   const editor = createMockEditor();
   const plugin = createLogosPlugin({
