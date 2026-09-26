@@ -32,3 +32,7 @@ no, what I want is:
 ---
 
 in your demo, add -color-tertiary -without-seam example
+
+---
+
+default and -color-primary should be the same.
