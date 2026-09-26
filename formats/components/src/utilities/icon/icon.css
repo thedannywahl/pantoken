@@ -14,7 +14,7 @@
   }
 }
 
-[class*="-icon-"]::before {
+:is([class^="-icon-"], [class*=" -icon-"])::before {
   content: "";
   display: inline-block;
   inline-size: 1em;

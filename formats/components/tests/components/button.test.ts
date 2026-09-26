@@ -1,3 +1,5 @@
+import { Window } from "happy-dom";
+import postcss from "postcss";
 import { expect, test } from "vite-plus/test";
 import { buttonCss } from "../../src/index.ts";
 import { button } from "../../src/components/button/index.ts";
@@ -14,6 +16,13 @@ test("button has primary default plus secondary and danger variants", () => {
   expect(css).toContain("&.-color-secondary");
   expect(css).toContain("&.-color-danger");
   expect(css).toContain("border: var(--instui-border-width-sm) solid transparent");
+  // A bare button takes -color-primary's stroke, so default and primary look the same.
+  expect(css).toMatch(
+    /&:not\(\s*\[class\*="-color-"\][^{]*\) \{\n\s*border-color: var\(--instui-color-stroke-interactive-action-primary-base\);/u,
+  );
+  expect(css).toMatch(
+    /&:not\(\s*\[class\*="-color-"\][^{]*\):hover \{\n\s*border-color: var\(--instui-color-stroke-interactive-action-primary-hover\);/u,
+  );
   expect(css).toContain("var(--instui-color-background-interactive-action-primary-base)");
   expect(css).toContain("var(--instui-component-base-button-primary-disabled-background-color)");
   expect(css).toContain("var(--instui-component-base-button-primary-disabled-border-color)");
@@ -65,7 +74,7 @@ test("button gains icon, condensed, and toggle modifiers", () => {
 
 test("button icon modifiers center the glyph and add the expected gap", () => {
   const css = buttonCss({ prefix: "instui" });
-  expect(css).toContain('&[class*="-icon-"]::before');
+  expect(css).toMatch(/&:is\(\s*\[class\^="-icon-"\],\s*\[class\*=" -icon-"\]/u);
   expect(css).toContain("margin-inline-end: var(--instui-spacing-space-xs);");
   expect(css).toContain("display: inline-block");
   expect(css).toContain("inline-size: 1em");
@@ -75,10 +84,11 @@ test("button icon modifiers center the glyph and add the expected gap", () => {
 test("icon-only buttons automatically use square icon-button geometry", () => {
   const css = buttonCss({ prefix: "instui" });
   const selectors = css.replace(/\s+/g, "");
-  expect(css).toContain('&[class*="-icon-"]:not(:has(> *))');
-  expect(css).toContain('&[class*="-icon-"]:has(> .instui-screen-reader-content:only-child)');
+  const glyph = ':is([class^="-icon-"],[class*="-icon-"])';
+  expect(selectors).toContain(`&${glyph}:not(:has(>*))`);
+  expect(selectors).toContain(`&${glyph}:has(>.instui-screen-reader-content:only-child)`);
   expect(selectors).toContain(
-    '&[class*="-icon-"]:has(>.instui-screen-reader-content):has(>.tip):not(:has(>:not(.instui-screen-reader-content):not(.tip)))',
+    `&${glyph}:has(>.instui-screen-reader-content):has(>.tip):not(:has(>:not(.instui-screen-reader-content):not(.tip)))`,
   );
   expect(css).toContain("box-sizing: border-box");
   expect(css).toContain("aspect-ratio: 1");
@@ -148,13 +158,37 @@ test("ai buttons carry gradient borders, a ring, and an auto ai glyph", () => {
 
 test("ai buttons with explicit icons replace the AI mask while keeping the AI palette", () => {
   const css = buttonCss({ prefix: "instui" });
-  expect(css).toContain('.instui-button.-color-ai[class*="-icon-"]::before');
-  expect(css).toContain('.instui-button.-color-ai-secondary[class*="-icon-"]::before');
+  expect(css).toMatch(/\.instui-button\.-color-ai:is\(\s*\[class\^="-icon-"\]/u);
+  expect(css).toMatch(/\.instui-button\.-color-ai-secondary:is\(\s*\[class\^="-icon-"\]/u);
   expect(css).toContain("var(--pantoken-glyph)");
   expect(css).toContain("var(--instui-color-text-interactive-action-ai-base)");
   expect(css).toContain("var(--instui-color-stroke-interactive-action-ai-top-gradient-base)");
-  expect(css).toContain('&.-color-ai-secondary[class*="-icon-"]::before');
+  expect(css).toMatch(/&\.-color-ai-secondary:is\(\s*\[class\^="-icon-"\]/u);
   expect(css).toContain("background: linear-gradient(");
+});
+
+test("AI glyph overrides require a real icon modifier on the button", () => {
+  let overrideSelector = "";
+  postcss.parse(buttonCss({ prefix: "instui" })).walkRules((rule) => {
+    const match = rule.selector.match(/\.instui-button\.-color-ai:is\(([^)]*)\)::before/u);
+    if (match) overrideSelector = match[0].slice(0, -8).replace(/\n\s*/gu, "");
+  });
+  expect(overrideSelector).not.toBe("");
+
+  const button = new Window().document.createElement("button");
+  for (const className of ["instui-button -color-ai -icon-search"]) {
+    button.className = className;
+    expect(button.matches(overrideSelector), className).toBe(true);
+  }
+  for (const className of [
+    "instui-button -color-ai Button--icon-action",
+    "instui-button -color-ai menu-item-icon-container",
+    "instui-button -color-ai -render-custom-icon-search",
+    "instui-button -color-ai -render-icon-search",
+  ]) {
+    button.className = className;
+    expect(button.matches(overrideSelector), className).toBe(false);
+  }
 });
 
 test("ai-secondary without-border removes the frame ring while keeping the gradient glyph", () => {

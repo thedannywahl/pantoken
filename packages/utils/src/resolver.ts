@@ -32,7 +32,8 @@ export interface ResolveOptions {
 /**
  * Build a resolver that expands `var(--x)` references to concrete leaf values against `base` (plus
  * any `overrides`). With `mode` it collapses `light-dark()` to that branch; without, it leaves
- * `light-dark()` in place.
+ * `light-dark()` in place. A token carrying a {@link Token.flatValue} resolves through that rather
+ * than its CSS-expression `value`, so callers always land on a real colour.
  *
  * @param base - The token set to resolve references against.
  * @param options - {@link ResolveOptions}.
@@ -86,8 +87,8 @@ export function makeResolver(
   base: readonly Token[],
   options: ResolveOptions = {},
 ): (value: string) => string {
-  const map = new Map(base.map((t) => [t.name, t.value]));
-  for (const t of options.overrides ?? []) map.set(t.name, t.value);
+  const map = new Map(base.map((t) => [t.name, t.flatValue ?? t.value]));
+  for (const t of options.overrides ?? []) map.set(t.name, t.flatValue ?? t.value);
 
   const pickMode = (value: string): string => {
     if (!options.mode) return value;
@@ -133,5 +134,5 @@ export function resolveTokens(
   options: ResolveOptions = {},
 ): Map<string, string> {
   const resolve = makeResolver(base, options);
-  return new Map(base.map((t) => [t.name, resolve(t.value)]));
+  return new Map(base.map((t) => [t.name, resolve(t.flatValue ?? t.value)]));
 }

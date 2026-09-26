@@ -7,6 +7,7 @@ import {
   materializeLayout,
 } from "../src/plugins/layouts.js";
 import type { PageLayout } from "../src/layouts.js";
+import { setEditorStrings } from "../src/strings.js";
 
 const layouts: PageLayout[] = [
   { name: "hero", title: "Hero", html: "<div>hero</div>" },
@@ -63,6 +64,18 @@ test("defaults to the bundled pantoken page layouts", () => {
   expect(names).toEqual(
     expect.arrayContaining(["hero", "callout", "rubric-note", "testimonial", "two-column"]),
   );
+});
+
+test("localizes bundled layout titles and dialog controls for an editor", () => {
+  const editor = fakeEditor();
+  setEditorStrings(editor as never, { layoutsDialogTitle: "Elrendezés beszúrása" });
+  createLayoutsPlugin({ locale: "hu" })(editor as never);
+
+  const openAction = editor.ui.registry.addButton.mock.calls[0]?.[1].onAction as () => void;
+  openAction();
+  const dialogSpec = editor.windowManager.open.mock.calls[0]?.[0];
+  expect(dialogSpec.title).toBe("Elrendezés beszúrása");
+  expect(dialogSpec.body.items[0].items).toContainEqual({ value: "hero", text: "Kiemelt rész" });
 });
 
 test("inserting a layout adds it at the cursor without confirmation", () => {

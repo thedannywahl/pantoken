@@ -25,7 +25,6 @@
  * @part button-group — The row container for two action buttons.
  * @slot content — The alert's message content; may include a dismiss button.
  * @modifier -icon-* — Swap the status glyph for a custom icon (e.g. `-icon-megaphone`).
- * @modifier -render-custom-icon-* — @deprecated The former `renderCustomIcon` prop; still works as an alias, but use `-icon-<name>` (or override `--pantoken-alert-glyph`) instead.
  * @pseudo ::after — The status glyph, masked and padded independently from the content.
  * @cssproperty --pantoken-alert-glyph <url> — The low-level status-glyph source; `-icon-<name>` sets it for you. Override for a custom icon (a url-encoded SVG).
  * @cssproperty --pantoken-alert-icon-bg <color> — The coloured status-bar fill behind the glyph; each `-color-*` variant sets its own.
@@ -206,11 +205,11 @@
   }
 
   /* A custom `-icon-<name>` swaps the status glyph. Suppress the generic painter's ::before glyph. */
-  &[class*="-icon-"] {
+  &:is([class^="-icon-"], [class*=" -icon-"]) {
     --pantoken-alert-glyph: var(--pantoken-glyph);
   }
 
-  &[class*="-icon-"]::before {
+  &:is([class^="-icon-"], [class*=" -icon-"])::before {
     content: none;
   }
 

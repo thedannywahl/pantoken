@@ -59,7 +59,7 @@
       cursor: pointer;
     }
 
-    > .arrow [class*="-icon-"] {
+    > .arrow :is([class^="-icon-"], [class*=" -icon-"]) {
       line-height: 1;
     }
 

@@ -134,7 +134,7 @@
   font-size: var(--instui-component-icon-illu-md);
 }
 
-.pfx-billboard > .hero[class*="-icon-"] {
+.pfx-billboard > .hero:is([class^="-icon-"], [class*=" -icon-"]) {
   line-height: 1;
 }
 
@@ -165,7 +165,7 @@
     }
 
     /* The documented `-icon-*` modifier lives directly on .hero. */
-    > .hero[class*="-icon-"] {
+    > .hero:is([class^="-icon-"], [class*=" -icon-"]) {
       line-height: 1;
     }
 
@@ -186,24 +186,24 @@
       font-size: var(--instui-component-icon-illu-lg);
     }
 
-    &.-size-sm > .hero[class*="-icon-"] {
+    &.-size-sm > .hero:is([class^="-icon-"], [class*=" -icon-"]) {
       font-size: var(--instui-component-icon-illu-sm);
     }
 
-    &.-size-small > .hero[class*="-icon-"] {
+    &.-size-small > .hero:is([class^="-icon-"], [class*=" -icon-"]) {
       font-size: var(--instui-component-icon-illu-sm);
     }
 
-    &.-size-md > .hero[class*="-icon-"],
-    &.-size-medium > .hero[class*="-icon-"] {
+    &.-size-md > .hero:is([class^="-icon-"], [class*=" -icon-"]),
+    &.-size-medium > .hero:is([class^="-icon-"], [class*=" -icon-"]) {
       font-size: var(--instui-component-icon-illu-md);
     }
 
-    &.-size-lg > .hero[class*="-icon-"] {
+    &.-size-lg > .hero:is([class^="-icon-"], [class*=" -icon-"]) {
       font-size: var(--instui-component-icon-illu-lg);
     }
 
-    &.-size-large > .hero[class*="-icon-"] {
+    &.-size-large > .hero:is([class^="-icon-"], [class*=" -icon-"]) {
       font-size: var(--instui-component-icon-illu-lg);
     }
 

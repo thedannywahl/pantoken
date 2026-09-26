@@ -12,7 +12,7 @@ import type { LogoMeta, Product } from "../logos.js";
 import type { MissingAssetHandler } from "../types.js";
 import { insertHtml } from "../lib/insertion-target.js";
 import { trackAndInjectAsset } from "../content-css.js";
-import { TINYMCE_STRINGS } from "../strings.js";
+import { getEditorStrings } from "../strings.js";
 
 /**
  * Configuration options for the logos picker plugin.
@@ -39,6 +39,7 @@ export function createLogosPlugin(options: LogosPickerOptions): (editor: Editor)
   // TinyMCE always instantiates plugins with `new Plugin(editor, ...)` — must be a constructible
   // function expression, not an arrow function (arrows throw "is not a constructor").
   return function pantokenLogosPlugin(editor: Editor) {
+    const strings = getEditorStrings(editor);
     const openDialog = (): void => openLogosDialog(editor, options);
 
     if (options.registerUi === false) {
@@ -48,14 +49,14 @@ export function createLogosPlugin(options: LogosPickerOptions): (editor: Editor)
 
     // Register the toolbar button.
     editor.ui.registry.addButton("pantokenLogos", {
-      text: TINYMCE_STRINGS.logosToolbarText,
-      tooltip: TINYMCE_STRINGS.logosToolbarTooltip,
+      text: strings.logosToolbarText,
+      tooltip: strings.logosToolbarTooltip,
       onAction: openDialog,
     });
 
     // Register a menu item.
     editor.ui.registry.addMenuItem("pantokenLogos", {
-      text: TINYMCE_STRINGS.logosMenuText,
+      text: strings.logosMenuText,
       onAction: openDialog,
     });
   };
@@ -65,6 +66,7 @@ export function createLogosPlugin(options: LogosPickerOptions): (editor: Editor)
  * Open the logos picker dialog.
  */
 function openLogosDialog(editor: Editor, options: LogosPickerOptions): void {
+  const strings = getEditorStrings(editor);
   const defaultProduct = options.products[0];
   const defaultLayout = "horizontal";
   const defaultColorMode = "color";
@@ -76,32 +78,32 @@ function openLogosDialog(editor: Editor, options: LogosPickerOptions): void {
   }));
 
   const _dialog = editor.windowManager.open({
-    title: TINYMCE_STRINGS.logosDialogTitle,
+    title: strings.logosDialogTitle,
     body: {
       type: "panel",
       items: [
         {
           type: "selectbox",
           name: "product",
-          label: TINYMCE_STRINGS.logosProductLabel,
+          label: strings.logosProductLabel,
           items: productItems,
         } as any,
         {
           type: "selectbox",
           name: "layout",
-          label: TINYMCE_STRINGS.logosLayoutLabel,
+          label: strings.logosLayoutLabel,
           items: [
-            { text: TINYMCE_STRINGS.logosLayoutHorizontal, value: "horizontal" },
-            { text: TINYMCE_STRINGS.logosLayoutStacked, value: "stacked" },
+            { text: strings.logosLayoutHorizontal, value: "horizontal" },
+            { text: strings.logosLayoutStacked, value: "stacked" },
           ],
         } as any,
         {
           type: "selectbox",
           name: "colorMode",
-          label: TINYMCE_STRINGS.logosColorModeLabel,
+          label: strings.logosColorModeLabel,
           items: [
-            { text: TINYMCE_STRINGS.logosColorModeColor, value: "color" },
-            { text: TINYMCE_STRINGS.logosColorModeLight, value: "light" },
+            { text: strings.logosColorModeColor, value: "color" },
+            { text: strings.logosColorModeLight, value: "light" },
           ],
         } as any,
       ],
@@ -113,13 +115,13 @@ function openLogosDialog(editor: Editor, options: LogosPickerOptions): void {
     },
     buttons: [
       {
-        text: TINYMCE_STRINGS.insertButton,
+        text: strings.insertButton,
         type: "submit",
         primary: true,
         enabled: Boolean(defaultProduct),
       },
       {
-        text: TINYMCE_STRINGS.cancelButton,
+        text: strings.cancelButton,
         type: "cancel",
       },
     ],
@@ -167,6 +169,6 @@ export function insertLogo(
   );
   if (!meta) return;
 
-  insertHtml(editor, buildLogoMarkup(meta));
+  insertHtml(editor, buildLogoMarkup(meta, getEditorStrings(editor).logoAltSuffix));
   trackAndInjectAsset(editor, getLogoCdnFile(meta), options);
 }

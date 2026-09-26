@@ -60,7 +60,7 @@
   }
 
   /* iconPosition="end" (named -chevron-end, NOT -icon-position-end — a "-icon-" class would collide with the
-     generic [class*="-icon-"] glyph painter): push the disclosure chevron to the inline-end. */
+    shared glyph painter): push the disclosure chevron to the inline-end. */
   &.-chevron-end > summary::before {
     order: 1;
     margin-inline-start: auto;

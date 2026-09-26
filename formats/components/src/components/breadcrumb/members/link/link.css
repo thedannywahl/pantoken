@@ -43,7 +43,7 @@
       text-decoration: none;
     }
 
-    a[class*="-icon-"]::before {
+    a:is([class^="-icon-"], [class*=" -icon-"])::before {
       margin-inline-end: var(--instui-spacing-space2xs);
     }
 

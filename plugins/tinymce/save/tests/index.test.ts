@@ -6,8 +6,10 @@ import {
   DELETE_COMMAND,
   EXPORT_COMMAND,
   IMPORT_COMMAND,
+  INSERT_COMMAND,
   NEW_COMMAND,
   OPEN_COMMAND,
+  REPLACE_COMMAND,
   SAVE_AS_COMMAND,
   SAVE_COMMAND,
   SAVE_STORAGE_KEY,
@@ -128,6 +130,8 @@ describe("createSavePlugin", () => {
       SAVE_COMMAND,
       SAVE_AS_COMMAND,
       OPEN_COMMAND,
+      INSERT_COMMAND,
+      REPLACE_COMMAND,
       DELETE_COMMAND,
       NEW_COMMAND,
       EXPORT_COMMAND,
@@ -155,10 +159,11 @@ describe("createSavePlugin", () => {
     const initial = vi.fn();
     menu.fetch(initial);
     const initialItems = initial.mock.calls[0]![0];
-    expect(initialItems).toHaveLength(7);
-    expect(initialItems.slice(0, 4).map((item: { enabled?: boolean }) => item.enabled)).toEqual([
+    expect(initialItems).toHaveLength(9);
+    expect(initialItems.slice(0, 5).map((item: { enabled?: boolean }) => item.enabled)).toEqual([
       false,
       undefined,
+      false,
       false,
       false,
     ]);
@@ -168,6 +173,8 @@ describe("createSavePlugin", () => {
       SAVE_COMMAND,
       SAVE_AS_COMMAND,
       OPEN_COMMAND,
+      INSERT_COMMAND,
+      REPLACE_COMMAND,
       DELETE_COMMAND,
       NEW_COMMAND,
       EXPORT_COMMAND,
@@ -181,6 +188,52 @@ describe("createSavePlugin", () => {
     expect(
       populated.mock.calls[0]![0].slice(0, 4).map((item: { enabled?: boolean }) => item.enabled),
     ).toEqual([true, undefined, true, true]);
+  });
+
+  test("supports insert and replace actions for saved presets", async () => {
+    const target = editor();
+    const targetStorage = storage();
+    const insert = vi.fn();
+    const replace = vi.fn();
+    const restore = vi.fn();
+    const api = createSavePlugin({
+      capture: () => ({ html: "current" }),
+      insert,
+      replace,
+      restore,
+      reset: vi.fn(),
+      isValid: (state): state is { html: string } =>
+        typeof state === "object" &&
+        state !== null &&
+        typeof (state as { html?: unknown }).html === "string",
+      storage: targetStorage,
+    })(target as never);
+
+    command(target, SAVE_AS_COMMAND)();
+    submitDialog(target, { name: "Course home" });
+    const presetId = api.list()[0]!.id;
+
+    command(target, INSERT_COMMAND)();
+    submitDialog(target, { presetId });
+    const insertConfig = target.windowManager.open.mock.calls.at(-1)?.[0] as {
+      onSubmit: (api: { close: () => void }) => void;
+    };
+    insertConfig.onSubmit({ close: vi.fn() });
+    await vi.waitFor(() => expect(insert).toHaveBeenCalledWith({ html: "current" }));
+
+    command(target, REPLACE_COMMAND)();
+    submitDialog(target, { presetId });
+    const replaceConfig = target.windowManager.open.mock.calls.at(-1)?.[0] as {
+      onSubmit: (api: { close: () => void }) => void;
+    };
+    replaceConfig.onSubmit({ close: vi.fn() });
+    await vi.waitFor(() => expect(replace).toHaveBeenCalledWith({ html: "current" }));
+
+    command(target, OPEN_COMMAND)();
+    submitDialog(target, { presetId });
+    const discard = target.windowManager.confirm.mock.calls.at(-1)?.[1] as (value: boolean) => void;
+    discard(true);
+    await vi.waitFor(() => expect(restore).toHaveBeenCalledWith({ html: "current" }));
   });
 
   test("saves, opens, and deletes aggregate state without clearing it", async () => {

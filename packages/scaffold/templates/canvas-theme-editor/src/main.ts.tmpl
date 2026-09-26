@@ -48,6 +48,8 @@ import appHtml from "./app.html?raw";
 import { STRINGS } from "./strings.ts";
 import { LOCALE_STRINGS } from "./locale-strings.ts";
 import { LOCALE_DIRS } from "./locale-dirs.ts";
+import { TINYMCE_LOCALE_STRINGS } from "./tinymce-locale-strings.ts";
+import { selectEditorLocale } from "./locale.ts";
 import tinymce from "tinymce";
 import "tinymce/models/dom/model";
 import "tinymce/themes/silver/theme";
@@ -160,12 +162,13 @@ const HOST_INSTANCE = "docs";
 const CANVAS_CONTENT_MAX_WIDTH = "59.25rem";
 // All 13 `[data-pantoken-color="…"]` color-remap rules, computed once — editable Canvas content,
 // the shell, and the preview can each own an independent color scope. `resetSelector`
-// pins the theme tray's own subtree (buttons, swatches) and the standalone shell's header (its
-// color menu swatches) back to true colors, immune to whatever color the chrome currently has
-// active — see plugins/pantoken/custom-theme-colors.
+// pins the theme tray's own subtree (buttons, swatches) and the standalone shell's menus (its
+// color swatches) back to true colors, immune to whatever color the chrome currently has active —
+// the shell's brand mark stays outside it so it follows the chrome color. See
+// plugins/pantoken/custom-theme-colors.
 const CUSTOM_THEME_COLORS_CSS = customThemeColorsCss(undefined, {
   selector: "",
-  resetSelector: "#theme-tray, #canvas-rce-shell",
+  resetSelector: "#theme-tray, #canvas-rce-shell .canvas-rce-shell__actions",
 });
 // The scaffold's own chrome (toolbar, buttons outside the tray) mirrors the embedding docs page's
 // active theme and color — entirely independent of the preview and the tray, which drive their own
@@ -544,17 +547,64 @@ function setupStandaloneAppShell(): void {
 
 /** Persists the shell's own locale choice — never the authored content's own `lang`/`dir`. */
 const LOCALE_STORAGE_KEY = "pantoken-canvas-theme-editor-locale";
+const SESSION_DRAFT_KEY = "pantoken-canvas-theme-editor-session-draft";
 
-/** Reads the persisted locale choice, tolerating missing/corrupt/blocked storage. */
+/** Reads the docs locale when embedded, otherwise the standalone shell's saved choice. */
 function loadLocale(): string {
+  const embedded = window.self !== window.top;
+  const queryLocale = embedded ? new URLSearchParams(window.location.search).get("locale") : null;
+  let storedLocale: string | null = null;
   try {
-    return localStorage.getItem(LOCALE_STORAGE_KEY) || "en";
+    if (!embedded) storedLocale = localStorage.getItem(LOCALE_STORAGE_KEY);
   } catch {
-    return "en";
+    // Storage can be disabled; the scaffold's initial HTML locale is still available.
   }
+  return selectEditorLocale(
+    embedded,
+    queryLocale,
+    storedLocale,
+    document.documentElement.lang,
+    LOCALE_DIRS,
+  );
 }
 
 const activeLocale = loadLocale();
+const tinymceStrings = TINYMCE_LOCALE_STRINGS[activeLocale] ?? {};
+const tinymceLanguages: Record<string, [string, () => Promise<unknown>]> = {
+  ar: ["ar", () => import("tinymce-i18n/langs8/ar.js")],
+  hy: ["hy", () => import("tinymce-i18n/langs8/hy.js")],
+  ca: ["ca", () => import("tinymce-i18n/langs8/ca.js")],
+  da: ["da", () => import("tinymce-i18n/langs8/da.js")],
+  nl: ["nl", () => import("tinymce-i18n/langs8/nl.js")],
+  fi: ["fi", () => import("tinymce-i18n/langs8/fi.js")],
+  fr: ["fr-FR", () => import("tinymce-i18n/langs8/fr-FR.js")],
+  "fr-CA": ["fr-FR", () => import("tinymce-i18n/langs8/fr-FR.js")],
+  de: ["de", () => import("tinymce-i18n/langs8/de.js")],
+  el: ["el", () => import("tinymce-i18n/langs8/el.js")],
+  he: ["he-IL", () => import("tinymce-i18n/langs8/he-IL.js")],
+  hu: ["hu-HU", () => import("tinymce-i18n/langs8/hu-HU.js")],
+  is: ["is-IS", () => import("tinymce-i18n/langs8/is-IS.js")],
+  id: ["id", () => import("tinymce-i18n/langs8/id.js")],
+  it: ["it", () => import("tinymce-i18n/langs8/it.js")],
+  ja: ["ja", () => import("tinymce-i18n/langs8/ja.js")],
+  ko: ["ko-KR", () => import("tinymce-i18n/langs8/ko-KR.js")],
+  nb: ["nb-NO", () => import("tinymce-i18n/langs8/nb-NO.js")],
+  fa: ["fa", () => import("tinymce-i18n/langs8/fa.js")],
+  pl: ["pl", () => import("tinymce-i18n/langs8/pl.js")],
+  pt: ["pt-PT", () => import("tinymce-i18n/langs8/pt-PT.js")],
+  "pt-BR": ["pt-BR", () => import("tinymce-i18n/langs8/pt-BR.js")],
+  ru: ["ru", () => import("tinymce-i18n/langs8/ru.js")],
+  "zh-Hans": ["zh-CN", () => import("tinymce-i18n/langs8/zh-CN.js")],
+  sl: ["sl-SI", () => import("tinymce-i18n/langs8/sl-SI.js")],
+  es: ["es", () => import("tinymce-i18n/langs8/es.js")],
+  sv: ["sv-SE", () => import("tinymce-i18n/langs8/sv-SE.js")],
+  th: ["th-TH", () => import("tinymce-i18n/langs8/th-TH.js")],
+  "zh-Hant": ["zh-TW", () => import("tinymce-i18n/langs8/zh-TW.js")],
+  tr: ["tr", () => import("tinymce-i18n/langs8/tr.js")],
+  uk: ["uk", () => import("tinymce-i18n/langs8/uk.js")],
+  vi: ["vi", () => import("tinymce-i18n/langs8/vi.js")],
+  cy: ["cy", () => import("tinymce-i18n/langs8/cy.js")],
+};
 // A missing key/locale in `LOCALE_STRINGS` falls back to English — see generate.ts's own comment.
 const activeStrings: Record<string, string> = { ...STRINGS, ...LOCALE_STRINGS[activeLocale] };
 document.documentElement.lang = activeLocale;
@@ -792,6 +842,7 @@ const registerPantokenPlugin = (async () => {
   tinymce.PluginManager.add(
     "pantoken",
     createPantokenPlugin({
+      strings: tinymceStrings,
       components: {
         model: componentModel as any,
         currentAssets,
@@ -811,6 +862,7 @@ const registerPantokenPlugin = (async () => {
         buildAssetUrl: buildSelectedAssetUrl,
       },
       layouts: {
+        locale: activeLocale,
         resolveImage: (placeholder) => {
           const image = buildPlaceholdImage({
             width: placeholder.width,
@@ -837,12 +889,12 @@ const registerPantokenPlugin = (async () => {
 
 tinymce.PluginManager.add(
   PLACEHOLD_PLUGIN_NAME,
-  createPlaceholdPlugin({ onInsert: () => void refreshAll() }),
+  createPlaceholdPlugin({ strings: tinymceStrings, onInsert: () => void refreshAll() }),
 );
 tinymce.PluginManager.add(CONTENT_CLASSES_PLUGIN_NAME, createContentClassesPlugin());
 tinymce.PluginManager.add(
   A11Y_PLUGIN_NAME,
-  createA11yPlugin({ display: "footer", config: a11yRuntimeConfig }),
+  createA11yPlugin({ strings: tinymceStrings, display: "footer", config: a11yRuntimeConfig }),
 );
 tinymce.PluginManager.add(SUP_SUB_PLUGIN_NAME, createSupSubPlugin());
 
@@ -852,10 +904,11 @@ tinymce.PluginManager.add(SUP_SUB_PLUGIN_NAME, createSupSubPlugin());
 tinymce.PluginManager.add(
   SOURCE_TOGGLE_PLUGIN_NAME,
   createSourceTogglePlugin({
+    strings: tinymceStrings,
     height: EDITOR_HEIGHT_PX,
     display: "footer",
     extensions: [
-      pantokenHtmlLinter({ model: [...listComponents(), ...listUtilities()] as any }),
+      pantokenHtmlLinter({ model: [...listComponents(), ...listUtilities()] as any, strings: tinymceStrings }),
       pantokenHtmlCompletion({ model: [...listComponents(), ...listUtilities()] as any }),
     ],
     onChange: () => {
@@ -875,6 +928,7 @@ tinymce.PluginManager.add(VISUALBLOCKS_FOOTER_PLUGIN_NAME, createVisualBlocksFoo
 tinymce.PluginManager.add(
   SAVE_PLUGIN_NAME,
   createSavePlugin<CanvasThemePreset>({
+    strings: tinymceStrings,
     capture: captureCanvasThemePreset,
     restore: restoreCanvasThemePreset,
     reset: resetCanvasThemePreset,
@@ -1785,10 +1839,40 @@ copyButton.addEventListener("click", () => {
 
 registerPantokenIconPack(tinymce.IconManager);
 
-void registerPantokenPlugin.then(() =>
-  tinymce
+window.addEventListener("pagehide", () => {
+  if (!activeEditor) return;
+  try {
+    sessionStorage.setItem(SESSION_DRAFT_KEY, JSON.stringify(captureCanvasThemePreset()));
+  } catch {
+    // Disabled storage cannot preserve this session's unsaved changes.
+  }
+});
+
+void registerPantokenPlugin.then(async () => {
+  const languagePack = tinymceLanguages[activeLocale];
+  let language = "en";
+  if (languagePack) {
+    try {
+      await languagePack[1]();
+      language = languagePack[0];
+      const messages = tinymce.i18n.getData()[language];
+      if (messages) {
+        tinymce.addI18n(
+          language,
+          Object.fromEntries(
+            Object.entries(messages).map(([source, translation]) => [source, translation || source]),
+          ),
+        );
+      }
+    } catch (error) {
+      console.warn("Unable to load the TinyMCE language pack; using English", error);
+    }
+  }
+  return tinymce
     .init({
       selector: "#editor",
+      language,
+      language_load: false,
       plugins:
         "pantoken pantoken_content_classes placehold pantoken_a11y pantoken_save pantoken_sup_sub pantoken_source_toggle pantoken_fullscreen_footer pantoken_searchreplace_footer pantoken_visualblocks_footer image link lists table media autosave fullscreen quickbars searchreplace wordcount visualblocks",
       toolbar: `${SAVE_TOOLBAR_NAME} undo redo | pantoken | fontsize blocks | bold italic underline forecolor backcolor ${SUP_SUB_TOOLBAR_NAME} | link image placehold | align | bullist numlist | removeformat table media`,
@@ -1832,6 +1916,16 @@ void registerPantokenPlugin.then(() =>
     })
     .then((editors: Editor[]) => {
       activeEditor = editors[0];
+      try {
+        const saved = sessionStorage.getItem(SESSION_DRAFT_KEY);
+        if (saved) {
+          sessionStorage.removeItem(SESSION_DRAFT_KEY);
+          const draft: unknown = JSON.parse(saved);
+          if (isCanvasThemePreset(draft)) restoreCanvasThemePreset(draft);
+        }
+      } catch {
+        // Disabled or corrupt storage leaves the editor's initial content unchanged.
+      }
       syncThemeColorFromEditor();
       syncIconAssetsFromEditor();
       document.documentElement.dataset.pantokenScheme = includeDarkModeCheckbox.checked
@@ -1839,5 +1933,5 @@ void registerPantokenPlugin.then(() =>
         : "light";
       applyEditorTheme(activeEditor);
       void refreshAll();
-    }),
-);
+    });
+  });

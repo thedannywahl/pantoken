@@ -1,5 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { capabilitiesOf } from "@pantoken/plugin-kit";
+import { byTheme } from "@pantoken/tokens";
 import { customThemeColors, customThemeColorsCss, COLOR_KEYS } from "../src/index.ts";
 
 test("is a css-only plugin", () => {
@@ -173,12 +174,66 @@ test("does not relink elevation shadow colors", () => {
   expect(css).not.toContain("--instui-color-drop-shadow-shadow-color1:");
 });
 
-test("no navy brand literal survives in a non-navy block of the real token set", () => {
+// Tokens that are *meant* to stay blue when the brand scale moves: the explicitly-named blue
+// accents, the blue chart ramp, and the status intents.
+const KEEPS_ITS_BLUE = /(?:-accent-blue|-blue-color\d+|-(?:info|success|warning|error))$/u;
+
+/** The hue/saturation envelope of the navy + blue steps, read from the token set itself. */
+function brandEnvelope(): { minHue: number; maxHue: number; minSaturation: number } {
+  const hues: number[] = [];
+  const saturations: number[] = [];
+  for (const token of byTheme("rebrand")) {
+    if (!/^--instui-primitive-color-(?:navy-navy|blue-blue)\d+$/u.test(token.name)) continue;
+    const hsl = toHsl(token.value);
+    if (!hsl) continue;
+    hues.push(hsl.hue);
+    saturations.push(hsl.saturation);
+  }
+  return {
+    minHue: Math.min(...hues),
+    maxHue: Math.max(...hues),
+    minSaturation: Math.min(...saturations),
+  };
+}
+
+function toHsl(literal: string): { hue: number; saturation: number } | undefined {
+  const body = /^#([0-9a-f]{6})(?:[0-9a-f]{2})?$/iu.exec(literal.trim())?.[1];
+  if (!body) return undefined;
+  const [r, g, b] = [0, 2, 4].map((i) => Number.parseInt(body.slice(i, i + 2), 16) / 255);
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  const lightness = (max + min) / 2;
+  if (max === min) return { hue: 0, saturation: 0 };
+  const delta = max - min;
+  const saturation = lightness > 0.5 ? delta / (2 - max - min) : delta / (max + min);
+  let hue = 0;
+  if (max === r) hue = (g - b) / delta + (g < b ? 6 : 0);
+  else if (max === g) hue = (b - r) / delta + 2;
+  else hue = (r - g) / delta + 4;
+  return { hue: (hue / 6) * 360, saturation };
+}
+
+test("no brand-hue literal survives unthemed in a non-navy block of the real token set", () => {
+  const { minHue, maxHue, minSaturation } = brandEnvelope();
   const css = customThemeColorsCss();
+  const offenders: string[] = [];
+
   for (const key of COLOR_KEYS) {
     if (key === "navy") continue;
-    expect(blockFor(css, key)).not.toContain("#44709f");
+    for (const line of blockFor(css, key).split("\n")) {
+      const [name, ...rest] = line.split(":");
+      const value = rest.join(":");
+      if (!value || KEEPS_ITS_BLUE.test(name.trim())) continue;
+      for (const literal of value.match(/#[0-9a-f]{3,8}/giu) ?? []) {
+        const hsl = toHsl(literal);
+        if (!hsl || hsl.saturation < minSaturation / 2) continue;
+        if (hsl.hue >= minHue - 2 && hsl.hue <= maxHue + 2)
+          offenders.push(`${key}: ${line.trim()}`);
+      }
+    }
   }
+
+  expect(offenders).toEqual([]);
 });
 
 test("scopes conditional rules under a custom selector instead of :root", () => {

@@ -6,7 +6,7 @@
  * @module
  */
 import { themeTokens } from "@instructure/instructure-design-tokens";
-import { applyModify } from "./color.ts";
+import { applyModify, modifyExpression } from "./color.ts";
 import { collectIcons } from "./icons.ts";
 import { defineToken, runIconPlugins, runTokenPlugins } from "./plugin.ts";
 import { collectLeaves, referencedVarName, resolveValue, varName } from "./resolve.ts";
@@ -64,8 +64,22 @@ interface Candidate {
   dark?: Leaf;
 }
 
-function toToken(name: string, value: string): Token {
-  return defineToken({ name, value });
+/** A modified colour in both the forms the IR needs. */
+interface ResolvedColor {
+  /** The fully-flattened literal. */
+  flat: string;
+  /** The same colour with its `var()` origin preserved; equals `flat` when there was none. */
+  expr: string;
+}
+
+function toToken(name: string, value: string, flatValue?: string): Token {
+  // An expression whose origin is a themed var() collapses to one branch, so `themed` has to come
+  // from the flattened pair instead of the value's own shape.
+  return defineToken({
+    name,
+    value,
+    ...(flatValue === undefined ? {} : { flatValue, themed: flatValue.startsWith("light-dark(") }),
+  });
 }
 
 function candidates(prefix: string, root: unknown): Candidate[] {
@@ -100,7 +114,7 @@ function materializeCandidates(
 ): Token[] {
   const byName = new Map(all.map((candidate) => [candidate.name, candidate]));
   const issues = new Map<string, TokenModifierIssue>();
-  const memo = new Map<string, string>();
+  const memo = new Map<string, ResolvedColor>();
 
   const report = (candidate: Candidate, leaf: Leaf, reason: string): string => {
     const issue: TokenModifierIssue = {
@@ -118,41 +132,47 @@ function materializeCandidates(
     candidate: Candidate,
     mode: "light" | "dark",
     active: ReadonlySet<string>,
-  ): string => {
+  ): ResolvedColor => {
     const memoKey = `${mode}:${candidate.name}`;
     const cached = memo.get(memoKey);
     if (cached !== undefined) return cached;
     const leaf = mode === "dark" ? (candidate.dark ?? candidate.light) : candidate.light;
-    if (leaf.modifyIssue) return report(candidate, leaf, leaf.modifyIssue.reason);
+    const fail = (reason: string): ResolvedColor => {
+      const fallback = report(candidate, leaf, reason);
+      return { flat: fallback, expr: fallback };
+    };
+    if (leaf.modifyIssue) return fail(leaf.modifyIssue.reason);
     if (leaf.type !== "color")
-      return report(
-        candidate,
-        leaf,
-        `modified colour chain includes type ${JSON.stringify(leaf.type)}`,
-      );
-    if (active.has(memoKey)) return report(candidate, leaf, "modified colour reference cycle");
+      return fail(`modified colour chain includes type ${JSON.stringify(leaf.type)}`);
+    if (active.has(memoKey)) return fail("modified colour reference cycle");
 
     const reference = referencedVarName(leaf.value);
-    let base: string;
+    let flatBase: string;
+    let exprBase: string | undefined;
     if (reference) {
       const target = byName.get(reference);
-      if (!target)
-        return report(candidate, leaf, `modified colour references missing token ${reference}`);
-      base = resolveColor(target, mode, new Set([...active, memoKey]));
+      if (!target) return fail(`modified colour references missing token ${reference}`);
+      flatBase = resolveColor(target, mode, new Set([...active, memoKey])).flat;
+      // Stop at the reference rather than inlining the target's colour: the target carries its own
+      // expression, so the whole chain re-composes in the browser off live custom properties.
+      exprBase = `var(${reference})`;
     } else {
-      base = leaf.value.trim();
+      flatBase = leaf.value.trim();
     }
 
-    if (!base.startsWith("#"))
-      return report(
-        candidate,
-        leaf,
-        `modified colour resolves to unsupported value ${JSON.stringify(base)}`,
-      );
-    const value = leaf.modify ? applyModify(base, leaf.modify) : base;
-    if (!value) return report(candidate, leaf, "modified colour could not be computed");
-    memo.set(memoKey, value);
-    return value;
+    if (!flatBase.startsWith("#"))
+      return fail(`modified colour resolves to unsupported value ${JSON.stringify(flatBase)}`);
+    const flat = leaf.modify ? applyModify(flatBase, leaf.modify) : flatBase;
+    if (!flat) return fail("modified colour could not be computed");
+    const expr =
+      exprBase === undefined
+        ? flat
+        : leaf.modify
+          ? modifyExpression(exprBase, leaf.modify)
+          : exprBase;
+    const resolved: ResolvedColor = { flat, expr };
+    memo.set(memoKey, resolved);
+    return resolved;
   };
 
   const tokens = all.map((candidate) => {
@@ -164,7 +184,11 @@ function materializeCandidates(
     if (modified) {
       const light = resolveColor(candidate, "light", new Set());
       const dark = resolveColor(candidate, "dark", new Set());
-      return toToken(candidate.name, light === dark ? light : `light-dark(${light}, ${dark})`);
+      const flat =
+        light.flat === dark.flat ? light.flat : `light-dark(${light.flat}, ${dark.flat})`;
+      const value =
+        light.expr === dark.expr ? light.expr : `light-dark(${light.expr}, ${dark.expr})`;
+      return toToken(candidate.name, value, flat);
     }
     const light = resolveValue(candidate.light.value);
     const dark = resolveValue((candidate.dark ?? candidate.light).value);
