@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.1.21
+
+### Patch Changes
+
+- Updated dependencies [626ffc1]
+  - @pantoken/core@0.6.0
+  - @pantoken/model@0.5.0
+  - @pantoken/utils@1.2.0
+  - @pantoken/tokens@0.7.0
+
 ## 0.1.20
 
 ### Patch Changes

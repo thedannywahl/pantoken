@@ -1,5 +1,13 @@
 # @pantoken/plugin-layouts
 
+## 0.5.1
+
+### Patch Changes
+
+- Updated dependencies [626ffc1]
+  - @pantoken/model@0.5.0
+  - @pantoken/plugin-kit@0.3.3
+
 ## 0.5.0
 
 ### Minor Changes

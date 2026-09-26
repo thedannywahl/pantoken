@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.1.18
+
+### Patch Changes
+
+- Updated dependencies [626ffc1]
+  - @pantoken/model@0.5.0
+  - @pantoken/icons@0.3.1
+  - @pantoken/rehype@0.1.16
+
 ## 0.1.17
 
 ### Patch Changes

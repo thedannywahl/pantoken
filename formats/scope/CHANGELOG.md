@@ -1,5 +1,12 @@
 # @pantoken/scope
 
+## 0.4.1
+
+### Patch Changes
+
+- Updated dependencies [626ffc1]
+  - @pantoken/utils@1.2.0
+
 ## 0.4.0
 
 ### Minor Changes
