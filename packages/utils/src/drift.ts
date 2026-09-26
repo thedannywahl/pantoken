@@ -49,9 +49,9 @@ function declaredInstuiProperties(text: string): Set<string> {
 }
 
 /**
- * Drift check: `--instui-*` names in `text` that neither the IR nor the stylesheet itself defines
- * (sorted; empty means no drift). Use for outputs that reference tokens defined elsewhere — e.g.
- * the docusaurus/vitepress bridges, whose `var(--instui-*)` targets must all be real tokens.
+ * Drift check: `--instui-*` names in `text` that the IR doesn't define (sorted; empty means no
+ * drift). Use for outputs that *reference* tokens defined elsewhere — e.g. the docusaurus/vitepress
+ * bridges, whose `var(--instui-*)` targets must all be real tokens.
  *
  * @param text - The generated output.
  * @param ir - The source token IR.
