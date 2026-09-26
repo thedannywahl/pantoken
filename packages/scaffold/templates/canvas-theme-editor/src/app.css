@@ -470,7 +470,7 @@ body.canvas-rce-shell-enabled #app-mode {
    flex:0 1 auto so it stays content-sized in stacked layout — flex:1 1 0 here would give it a
    flex-basis of 0 with no free space to grow into (the column has no fixed height), capping how
    tall TinyMCE's own resize handle can make it. Row layout restores equal-width sharing below. */
-.editor-pane {
+:is(root[data-pantoken-scheme="dark"], :root[data-pantoken-scheme="light"]) .editor-pane {
   flex: 0 1 auto;
   min-height: 25rem;
   min-width: 0;
@@ -490,10 +490,20 @@ body.canvas-rce-shell-enabled #app-mode {
       .tox-toolbar__overflow
     ) {
       background-color: var(--instui-color-background-container);
+      box-shadow: none;
+      border-bottom: var(--instui-border-width-sm) solid
+        var(--instui-component-view-border-color-secondary);
+
+      .tox-edit-area::before {
+        border: 2px solid var(--instui-focus-outline-color);
+        border-radius: 0;
+      }
     }
 
     .tox-statusbar {
       height: 33px;
+      border-top: var(--instui-border-width-sm) solid
+        var(--instui-component-view-border-color-secondary);
     }
   }
 }
