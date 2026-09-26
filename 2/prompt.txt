@@ -1,0 +1,1 @@
+downloadable font: rejected by sanitizer (font-family: "Atkinson Hyperlegible Next" style:normal weight:400 width:100 src index:0) source: [http://localhost:5173/tools/assets/fonts/AtkinsonHyperlegibleNext/AtkinsonHyperlegibleNext-Regular.woff2](http://localhost:5173/tools/assets/fonts/AtkinsonHyperlegibleNext/AtkinsonHyperlegibleNext-Regular.woff2)
