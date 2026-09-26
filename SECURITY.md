@@ -94,6 +94,9 @@ know what's in place:
   set of Noto script fonts the documentation social cards render in. Those come from URLs pinned to a
   single `google/fonts` commit and are checked against recorded SHA-256 digests before use; a
   mismatched or unreachable download is discarded rather than cached.
+- **Editor language assets.** TinyMCE community packs are installed through the lockfile-backed
+  `tinymce-i18n` dependency and bundled with the scaffold's editor. Locale changes don't load
+  executable translations from a third-party CDN; the packs follow TinyMCE's licensing terms.
 - **Automated scanning.** CodeQL and OpenSSF Scorecard run in CI, and GitHub security advisories are
   enabled. Snyk scans both dependencies (`snyk test`) and source code for vulnerabilities
   (`snyk code`, SAST); because Snyk has no GitHub App here, the SAST scan gates locally at push time

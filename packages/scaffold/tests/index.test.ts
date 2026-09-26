@@ -31,6 +31,10 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(existsSync(join(target, "theme.js"))).toBe(true);
   expect(existsSync(join(target, "index.html"))).toBe(true);
   expect(existsSync(join(target, "src/main.ts"))).toBe(true);
+  const manifest = JSON.parse(readFileSync(join(target, "package.json"), "utf8")) as {
+    devDependencies: Record<string, string>;
+  };
+  expect(manifest.devDependencies["tinymce-i18n"]).toBe("26.9.21");
   const main = readFileSync(join(target, "src/main.ts"), "utf8");
   const appHtml = readFileSync(join(target, "src/app.html"), "utf8");
   expect(appHtml.match(/class="instui-button -size-sm -color-secondary -toggle"/g)).toHaveLength(3);
@@ -99,6 +103,8 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
     'createA11yPlugin({ strings: tinymceStrings, display: "footer", config: a11yRuntimeConfig })',
   );
   expect(main).toContain("locale: activeLocale,");
+  expect(main).toContain("language_load: false,");
+  expect(main).toContain('hu: ["hu-HU", () => import("tinymce-i18n/langs8/hu-HU.js")]');
   expect(main).toContain("strings: tinymceStrings,");
   const tinymceLocales = readFileSync(join(target, "src/tinymce-locale-strings.ts"), "utf8");
   expect(tinymceLocales).toContain('"hu"');

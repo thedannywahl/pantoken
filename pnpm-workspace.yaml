@@ -138,6 +138,7 @@ catalog:
   # instructure/canvas-lms's own (older) production RCE version. v8's stricter DOMPurify
   # sanitization is stricter than canvas-lms's tinymce 5, which is an acceptable direction.
   tinymce: ^8.9.2
+  tinymce-i18n: 26.9.21
   less: ^4.9.1
   codemirror: ^6.0.2
   "@codemirror/lang-html": ^6.4.12

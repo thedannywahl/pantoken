@@ -28,7 +28,7 @@ export function createFullscreenFooterPlugin() {
       button.id = FULLSCREEN_FOOTER_STATUSBAR_NAME;
       button.type = "button";
       button.className = "tox-statusbar__wordcount";
-      button.title = "Fullscreen";
+      button.title = editor.translate?.("Fullscreen") || "Fullscreen";
       button.setAttribute("aria-pressed", "false");
       button.innerHTML = FULLSCREEN_ICON_SVG;
       button.addEventListener("click", () => editor.execCommand("mceFullScreen"));
