@@ -1,0 +1,1 @@
+canvas-rce-shell__eyebrow wrapper div is anonymous but should have its own class for styling.
