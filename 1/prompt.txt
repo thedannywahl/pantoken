@@ -1,0 +1,41 @@
+[INFO 4:28:47 PM] [v1.52.1] Vitest extension is activated because Vitest is installed or there is a Vite/Vitest config file in the workspace.
+[INFO 4:28:47 PM] [API] Using user root config: /vite.config.ts
+[Error 4:28:47 PM] Error: Workspace folder not found for file:///vite.config.ts. Does the file exist?
+    at Xe (/Users/dwahl/.vscode/extensions/vitest.explorer-1.52.1/dist/extension.js:1:31063)
+    at /Users/dwahl/.vscode/extensions/vitest.explorer-1.52.1/dist/extension.js:1:35161
+    at Array.forEach (<anonymous>)
+    at nt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.52.1/dist/extension.js:1:35143)
+    at Qe (/Users/dwahl/.vscode/extensions/vitest.explorer-1.52.1/dist/extension.js:1:32858)
+    at cr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.52.1/dist/extension.js:24:5024)
+    at cr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.52.1/dist/extension.js:24:4690)
+    at cr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.52.1/dist/extension.js:24:13644)
+    at or (/Users/dwahl/.vscode/extensions/vitest.explorer-1.52.1/dist/extension.js:24:3405)
+    at gc._callActivateOptional (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:168:18738)
+    at gc._callActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:168:18448)
+    at file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:168:16422
+    at async zb._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:164:16021)
+    at async zb._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:164:15963)
+    at async zb._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:164:15330)
+
+---
+
+still get this:
+[INFO 4:47:57 PM] [v1.52.1] Vitest extension is activated because Vitest is installed or there is a Vite/Vitest config file in the workspace.
+[INFO 4:47:57 PM] [API] Using user root config: /vite.config.ts
+[Error 4:47:57 PM] Error: Workspace folder not found for file:///vite.config.ts. Does the file exist?
+    at Xe (/Users/dwahl/.vscode/extensions/vitest.explorer-1.52.1/dist/extension.js:1:31063)
+    at /Users/dwahl/.vscode/extensions/vitest.explorer-1.52.1/dist/extension.js:1:35161
+    at Array.forEach (<anonymous>)
+    at nt (/Users/dwahl/.vscode/extensions/vitest.explorer-1.52.1/dist/extension.js:1:35143)
+    at Qe (/Users/dwahl/.vscode/extensions/vitest.explorer-1.52.1/dist/extension.js:1:32858)
+    at cr._defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.52.1/dist/extension.js:24:5024)
+    at cr.defineTestProfiles (/Users/dwahl/.vscode/extensions/vitest.explorer-1.52.1/dist/extension.js:24:4690)
+    at cr.activate (/Users/dwahl/.vscode/extensions/vitest.explorer-1.52.1/dist/extension.js:24:13644)
+    at or (/Users/dwahl/.vscode/extensions/vitest.explorer-1.52.1/dist/extension.js:24:3405)
+    at gc._callActivateOptional (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:168:18738)
+    at gc._callActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:168:18448)
+    at file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:168:16422
+    at async zb._activate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:164:16021)
+    at async zb._waitForDepsThenActivate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:164:15963)
+    at async zb._initialize (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:164:15330)
+[INFO 4:48:07 PM] [DECOR] Decorations for /Users/dwahl/Scripts/pantoken/.vscode/settings.json are already cached. Displaying them.
