@@ -48,6 +48,7 @@ import appHtml from "./app.html?raw";
 import { STRINGS } from "./strings.ts";
 import { LOCALE_STRINGS } from "./locale-strings.ts";
 import { LOCALE_DIRS } from "./locale-dirs.ts";
+import { TINYMCE_LOCALE_STRINGS } from "./tinymce-locale-strings.ts";
 import { selectEditorLocale } from "./locale.ts";
 import tinymce from "tinymce";
 import "tinymce/models/dom/model";
@@ -566,6 +567,7 @@ function loadLocale(): string {
 }
 
 const activeLocale = loadLocale();
+const tinymceStrings = TINYMCE_LOCALE_STRINGS[activeLocale] ?? {};
 // A missing key/locale in `LOCALE_STRINGS` falls back to English — see generate.ts's own comment.
 const activeStrings: Record<string, string> = { ...STRINGS, ...LOCALE_STRINGS[activeLocale] };
 document.documentElement.lang = activeLocale;
@@ -803,6 +805,7 @@ const registerPantokenPlugin = (async () => {
   tinymce.PluginManager.add(
     "pantoken",
     createPantokenPlugin({
+      strings: tinymceStrings,
       components: {
         model: componentModel as any,
         currentAssets,
@@ -822,6 +825,7 @@ const registerPantokenPlugin = (async () => {
         buildAssetUrl: buildSelectedAssetUrl,
       },
       layouts: {
+        locale: activeLocale,
         resolveImage: (placeholder) => {
           const image = buildPlaceholdImage({
             width: placeholder.width,
@@ -848,12 +852,12 @@ const registerPantokenPlugin = (async () => {
 
 tinymce.PluginManager.add(
   PLACEHOLD_PLUGIN_NAME,
-  createPlaceholdPlugin({ onInsert: () => void refreshAll() }),
+  createPlaceholdPlugin({ strings: tinymceStrings, onInsert: () => void refreshAll() }),
 );
 tinymce.PluginManager.add(CONTENT_CLASSES_PLUGIN_NAME, createContentClassesPlugin());
 tinymce.PluginManager.add(
   A11Y_PLUGIN_NAME,
-  createA11yPlugin({ display: "footer", config: a11yRuntimeConfig }),
+  createA11yPlugin({ strings: tinymceStrings, display: "footer", config: a11yRuntimeConfig }),
 );
 tinymce.PluginManager.add(SUP_SUB_PLUGIN_NAME, createSupSubPlugin());
 
@@ -863,10 +867,11 @@ tinymce.PluginManager.add(SUP_SUB_PLUGIN_NAME, createSupSubPlugin());
 tinymce.PluginManager.add(
   SOURCE_TOGGLE_PLUGIN_NAME,
   createSourceTogglePlugin({
+    strings: tinymceStrings,
     height: EDITOR_HEIGHT_PX,
     display: "footer",
     extensions: [
-      pantokenHtmlLinter({ model: [...listComponents(), ...listUtilities()] as any }),
+      pantokenHtmlLinter({ model: [...listComponents(), ...listUtilities()] as any, strings: tinymceStrings }),
       pantokenHtmlCompletion({ model: [...listComponents(), ...listUtilities()] as any }),
     ],
     onChange: () => {
@@ -886,6 +891,7 @@ tinymce.PluginManager.add(VISUALBLOCKS_FOOTER_PLUGIN_NAME, createVisualBlocksFoo
 tinymce.PluginManager.add(
   SAVE_PLUGIN_NAME,
   createSavePlugin<CanvasThemePreset>({
+    strings: tinymceStrings,
     capture: captureCanvasThemePreset,
     restore: restoreCanvasThemePreset,
     reset: resetCanvasThemePreset,

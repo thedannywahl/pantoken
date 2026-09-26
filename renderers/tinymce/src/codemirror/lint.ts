@@ -9,12 +9,15 @@ import { linter, Diagnostic } from "@codemirror/lint";
 import type { EditorView } from "@codemirror/view";
 import type { CssDocEntry } from "../cssdoc/model.js";
 import { validateClassToken } from "../cssdoc/model.js";
+import { TINYMCE_STRINGS, type TinymceStrings } from "../strings.js";
 
 /**
  * Configuration options for the pantoken HTML linter.
  */
 export interface PantokenLinterOptions {
   model: CssDocEntry[];
+  /** Localized diagnostics, with English defaults for missing keys. */
+  strings?: Partial<TinymceStrings>;
 }
 
 /**
@@ -30,7 +33,8 @@ export interface PantokenLinterOptions {
  *     ],
  *   \});
  */
-export function pantokenHtmlLinter(_options: PantokenLinterOptions) {
+export function pantokenHtmlLinter(options: PantokenLinterOptions) {
+  const strings = { ...TINYMCE_STRINGS, ...options.strings };
   return linter((view: EditorView) => {
     const diagnostics: Diagnostic[] = [];
     const doc = view.state.doc;
@@ -52,7 +56,7 @@ export function pantokenHtmlLinter(_options: PantokenLinterOptions) {
         }
 
         // Validate the token.
-        const errors = validateClassToken(className);
+        const errors = validateClassToken(className, strings);
 
         // Convert validation errors to CodeMirror diagnostics.
         for (const error of errors) {

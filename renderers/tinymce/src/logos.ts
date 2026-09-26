@@ -23,8 +23,13 @@ export function getLogoCdnFile(meta: LogoMeta): CdnFile {
  * `buildIconMarkup`. Unlike a decorative icon, a logo names a real product, so it carries
  * `role="img"` + `aria-label` instead of `aria-hidden`.
  */
-export function buildLogoMarkup(meta: LogoMeta): string {
-  return `<span class="instui-logo -logo-${meta.name}" contenteditable="false" role="img" aria-label="${meta.product} ${TINYMCE_STRINGS.logoAltSuffix}">\u200B</span>`;
+export function buildLogoMarkup(meta: LogoMeta, altSuffix = TINYMCE_STRINGS.logoAltSuffix): string {
+  const label = `${meta.product} ${altSuffix}`
+    .replaceAll("&", "&amp;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
+  return `<span class="instui-logo -logo-${meta.name}" contenteditable="false" role="img" aria-label="${label}">\u200B</span>`;
 }
 
 /** Resolve the logo stylesheets used by `-logo-*` classes below `root`. */
