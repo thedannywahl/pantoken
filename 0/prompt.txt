@@ -1,0 +1,169 @@
+the button set seamed buttons need the following changes:
+* there should be a visible seam between buttons, with an opt-out modifier
+* the button set should not wrap- right now there's an example of:
+```
+<button-set><button><button><button></button-set> <button> <button> <button> <button>
+```
+all on a row and on a narrow view port the button set "breaks" and stacks vertically.
+
+---
+
+do incremental conventional commits and changesets for affected packages, ignoring other unstaged changes in the repo as there are other agents working.
+
+---
+
+Start implementation
+
+---
+
+start a dev server and look at /tools/canvas-rce or build a small untracked demo to validate
+
+---
+
+-color-ai-secondary looks good, all the others are 1px too far apart so there's a gap and then -without-seam has the right display (a 1px seam)
+
+---
+
+no, what I want is:
+* -ai-color-secondary to look exactly like it does- don't change it.
+* default, primary, -ai, secondary, tertiary to look like the current -without-seam: a barely visible 1px seam that matches the outer border/box-shadow.
+* -without-seam to look like the buttons did before we introduced the change: no visible distinction between the buttons.
+
+---
+
+in your demo, add -color-tertiary -without-seam example
+
+---
+
+default and -color-primary should be the same.
+
+---
+
+we should update the button component so that a default button is a primary.
+
+---
+
+[Terminal 052d336a-615d-4c2c-954a-eba54c3c0964 notification: terminal exited. The terminal process ended before the command could complete normally; further commands cannot be sent to this terminal ID.]
+Terminal output:
+pantoken on iconfix ↑7  ~3 via  26.10.0 
+➜  python3 -m http.server 5871 --bind 127.0.0.1 --directory /tmp/button-set-demo 
+Serving HTTP on 127.0.0.1 port 5871 (http://127.0.0.1:5871/) ...
+127.0.0.1 - - [26/Sep/2026 08:46:29] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:46:29] "GET /tokens.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:46:29] "GET /components.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:46:29] "GET /component-icons.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:46:29] "GET /icon-tokens.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:46:29] "GET /base.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:46:29] "GET /icons.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:46:29] "GET /button-set.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:50:06] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:50:06] "GET /icon-tokens.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:50:06] "GET /tokens.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:50:06] "GET /base.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:50:06] "GET /components.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:50:06] "GET /component-icons.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:50:06] "GET /icons.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:50:06] "GET /button-set.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:50:06] "GET /button-set.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:50:52] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:50:52] "GET /tokens.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:50:52] "GET /icons.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:50:52] "GET /icon-tokens.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:50:52] "GET /components.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:50:52] "GET /base.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:50:52] "GET /component-icons.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:50:52] "GET /button-set.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:52:44] "GET /index.html HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:52:44] "GET /tokens.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:52:44] "GET /base.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:52:44] "GET /icon-tokens.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:52:44] "GET /components.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:52:44] "GET /icons.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:52:44] "GET /component-icons.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:52:44] "GET /button-set.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:53:34] "GET /real.html HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:53:35] "GET /real/tokens.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:53:35] "GET /real/component-icons.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:53:35] "GET /real/components.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:53:35] "GET /real/icons.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:53:35] "GET /real/base.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:53:35] "GET /button-set.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:54:16] "GET /real.html HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:54:16] "GET /real/components.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:54:16] "GET /real/tokens.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:54:16] "GET /real/component-icons.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:54:16] "GET /real/base.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:54:16] "GET /real/icons.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:54:16] "GET /button-set.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:54:16] "GET /button-set.css HTTP/1.1" 304 -
+127.0.0.1 - - [26/Sep/2026 08:54:34] "GET /button-set.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:55:05] "GET /real.html HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:55:05] "GET /real/tokens.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:55:05] "GET /real/base.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:55:05] "GET /real/components.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:55:05] "GET /button-set.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:55:05] "GET /real/icons.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:55:05] "GET /real/component-icons.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:55:25] "GET /real.html HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:55:25] "GET /real/tokens.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:55:25] "GET /real/icons.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:55:25] "GET /real/base.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:55:25] "GET /real/components.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:55:25] "GET /button-set.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:55:25] "GET /real/component-icons.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:56:23] "GET /real.html HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:56:23] "GET /real/tokens.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:56:23] "GET /real/base.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:56:23] "GET /real/icons.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:56:23] "GET /real/components.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:56:23] "GET /button-set.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:56:23] "GET /real/component-icons.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:57:56] "GET /real.html HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:57:56] "GET /real/base.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:57:56] "GET /real/tokens.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:57:56] "GET /real/components.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:57:56] "GET /real/icons.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:57:56] "GET /real/component-icons.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:57:56] "GET /button-set.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:58:43] "GET /real.html HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:58:43] "GET /real/tokens.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:58:43] "GET /real/base.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:58:43] "GET /real/components.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:58:43] "GET /button-set.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:58:43] "GET /real/icons.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 08:58:43] "GET /real/component-icons.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:00:15] "GET /real.html HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:00:15] "GET /real/base.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:00:15] "GET /real/tokens.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:00:15] "GET /real/components.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:00:15] "GET /real/icons.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:00:15] "GET /real/component-icons.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:00:15] "GET /button-set.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:00:16] "GET /real.html HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:00:16] "GET /real/tokens.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:00:16] "GET /real/base.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:00:16] "GET /real/components.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:00:16] "GET /real/component-icons.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:00:16] "GET /real/icons.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:00:16] "GET /button-set.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:01:18] "GET /real.html HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:01:18] "GET /real/tokens.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:01:18] "GET /real/base.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:01:18] "GET /button-set.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:01:18] "GET /real/components.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:01:18] "GET /real/component-icons.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:01:18] "GET /real/icons.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:01:51] "GET /real.html HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:01:51] "GET /real/base.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:01:51] "GET /real/tokens.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:01:51] "GET /real/components.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:01:51] "GET /real/icons.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:01:51] "GET /real/component-icons.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:01:51] "GET /button-set.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:05:52] "GET /real.html HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:05:52] "GET /real/tokens.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:05:52] "GET /real/base.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:05:52] "GET /real/components.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:05:52] "GET /real/icons.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:05:52] "GET /button-set.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Sep/2026 09:05:52] "GET /real/component-icons.css HTTP/1.1" 200 -
