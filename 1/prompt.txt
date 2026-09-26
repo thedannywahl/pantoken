@@ -1,0 +1,21 @@
+the canvas-theme-editor scaffold implements a tinymce instance. all of our mce plugins and layouts have been internationalized, but the tinymce instance is only in english. how can we make it so that when a user switches locales of the app (either the docs header or the scaffold header) tinymce is fully localized too?
+
+---
+
+Read-only planning research, no edits. Thoroughness medium. In /Users/dwahl/Scripts/pantoken, obey .entire/graph-agent.md: FIRST code-finding action must be one `entire graph search --repo . --profile full --query "docs header locale switch canvas theme editor TinyMCE scaffold iframe locale"`; then focused source inspection. Check `entire status` and checkpoint intent for key files per using-entire skill if available. Trace docs header locale switching and embedding/linking canvas-theme-editor scaffold; identify exact files/functions and constraints for passing locale to editor, including tests/build conventions. Return concise concrete findings with paths/lines, ambiguities, verification. Do not implement.
+
+---
+
+Read-only research for plan, no code edits. Thoroughness quick/medium. We need exact gap count between pantoken 44 supported BCP47 tags in renderers/web-components/src/lib/locales.ts and TinyMCE 8 COMMUNITY packs from https://www.tiny.cloud/get-tiny/language-packages/ (do not count premium-only). Extract all codes including regional variants, build explicit mapping exact/parent, list missing with counts and partial translation completeness (ga etc). Check legally permitted hosting/versioning of community packs and whether tinymce npm includes any. Do not use GitHub snippet search. Inspect focused files; graph already used by other agent. Explain which locales can be supported immediately and the caveat about 100% strings. Return exact evidence + URLs.
+
+---
+
+Read-only plan research, no edits. Thoroughness quick. Determine existing generateMessageBundles signature and generated output usage in renderer tinymce, whether adding build step to renderer and bundler config exists; count pantoken tinymce and custom plugins catalogs; inspect tinymce translation API `tinymce.addI18n` and `editor.translate` with official docs to choose least-invasive locale wiring avoiding mutable global singleton and collisions with core keys. See docs static assets build pipeline for viable languagepack distribution in generated scaffold and docs. Return exact files/functions plus pitfalls and test commands. The graph search was completed by other agent.
+
+---
+
+Read-only research; no edits to repo or plan. Thoroughness medium. User asks: how many TinyMCE 8 core UI strings are there per locale, and how much is translating six missing languages plus incomplete packs compared with existing pantoken translation base? Derive defensible counts directly from official v8 community languagepack downloaded JS/zip or installed tinymce sources (fetch read-only, temporary outside repo only if necessary), and existing repo i18n.json sources PO catalogs (tinymce.strings, layouts.strings, tinymce plugin packages, scaffold strings). Quantify per-locale size and aggregate with arithmetic, completeness percentages caveats (Crowdin % based on keys or words?), source/version licensing/ maintenance costs. DO NOT guess. Return calculations, provenance, exact commands for later verification, paths. The graph search was completed by other agent; no need rerun.
+
+---
+
+READ-ONLY research for planning. Previous research guessed 400-500 TinyMCE core keys without measuring; do NOT repeat that. Obtain official TinyMCE v8 community hu.js (official v8 langs.zip https://download.tiny.cloud/tinymce/community/languagepacks/8/langs.zip or direct download link); if terminal available use read-only curl pipeline (download can use temporary outside repo only if needed), inspect JS pack via JS VM or regex/key-count; ideally count keys hu 100% and ga-IE 52% exact translated keys and difference, report raw commands and output. Verify package version via pnpm-workspace.yaml; do not claim TinyMCE npm includes packs unless verified (another agent found no langs/). If network unavailable, state so and provide honest bound without guessed exact. Do not create or edit workspace files, memory, or plan.
