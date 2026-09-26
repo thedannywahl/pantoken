@@ -6,11 +6,11 @@ afterEach(() => {
   document.body.innerHTML = "";
 });
 
-function setup(readonly = false) {
+function setup(readonly = false, options?: Parameters<typeof initInPlaceEdit>[2]) {
   document.body.innerHTML = `<span id="host" contenteditable="${readonly ? "false" : "true"}">Initial</span>`;
   const field = document.getElementById("host") as HTMLElement;
   const host = field;
-  if (!readonly) initInPlaceEdit(field, host);
+  if (!readonly) initInPlaceEdit(field, host, options);
   return { field, host };
 }
 
@@ -57,4 +57,26 @@ test("change event bubbles with detail.value", () => {
   field.textContent = "Hello";
   field.dispatchEvent(new Event("blur", { bubbles: true }));
   expect((detail as { value: string }).value).toBe("Hello");
+});
+
+test.each([
+  ["text", "text"],
+  ["number", "decimal"],
+  ["email", "email"],
+  ["url", "url"],
+  ["tel", "tel"],
+  ["search", "search"],
+] as const)("%s input type applies the %s editing hint", (inputType, inputMode) => {
+  const { field } = setup(false, { inputType });
+
+  expect(field.inputMode).toBe(inputMode);
+});
+
+test("input type hints do not validate committed values", () => {
+  const { field } = setup(false, { inputType: "number" });
+
+  field.focus();
+  field.textContent = "not a number";
+  field.dispatchEvent(new Event("blur", { bubbles: true }));
+  expect(field.getAttribute("value")).toBe("not a number");
 });

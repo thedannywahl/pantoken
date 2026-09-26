@@ -31,6 +31,10 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(existsSync(join(target, "theme.js"))).toBe(true);
   expect(existsSync(join(target, "index.html"))).toBe(true);
   expect(existsSync(join(target, "src/main.ts"))).toBe(true);
+  const manifest = JSON.parse(readFileSync(join(target, "package.json"), "utf8")) as {
+    devDependencies: Record<string, string>;
+  };
+  expect(manifest.devDependencies["tinymce-i18n"]).toBe("26.9.21");
   const main = readFileSync(join(target, "src/main.ts"), "utf8");
   const appHtml = readFileSync(join(target, "src/app.html"), "utf8");
   expect(appHtml.match(/class="instui-button -size-sm -color-secondary -toggle"/g)).toHaveLength(3);
@@ -95,7 +99,16 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain(
     '"pantoken pantoken_content_classes placehold pantoken_a11y pantoken_save pantoken_sup_sub pantoken_source_toggle pantoken_fullscreen_footer pantoken_searchreplace_footer pantoken_visualblocks_footer image link lists',
   );
-  expect(main).toContain('createA11yPlugin({ display: "footer", config: a11yRuntimeConfig })');
+  expect(main).toContain(
+    'createA11yPlugin({ strings: tinymceStrings, display: "footer", config: a11yRuntimeConfig })',
+  );
+  expect(main).toContain("locale: activeLocale,");
+  expect(main).toContain("language_load: false,");
+  expect(main).toContain('hu: ["hu-HU", () => import("tinymce-i18n/langs8/hu-HU.js")]');
+  expect(main).toContain("strings: tinymceStrings,");
+  const tinymceLocales = readFileSync(join(target, "src/tinymce-locale-strings.ts"), "utf8");
+  expect(tinymceLocales).toContain('"hu"');
+  expect(tinymceLocales).toContain('"componentsToolbarText"');
   expect(main).toContain("createSavePlugin<CanvasThemePreset>");
   expect(main).toContain("SAVE_PLUGIN_NAME");
   expect(main).toContain(
@@ -171,7 +184,7 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain('`${slugifyExportName(activePresetName() ?? "canvas-theme")}.zip`');
   expect(main).toContain('type: "application/zip"');
   // The standalone shell's brand mark is a link to pantoken.app, styled as a primary icon button
-  // (not a plain div) so its glyph gets the button's own light/dark contrast handling.
+  // (not a plain div), with its fill overridden in app.css to follow the chrome color.
   expect(main).toContain('brandMark.href = "https://pantoken.app/";');
   expect(main).toContain('brandMark.target = "_blank";');
   expect(main).toContain('rel = "noopener noreferrer"');
@@ -196,10 +209,15 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   // "Large" only got a 50/50 flex share in row layout, so it could render narrower than the fixed
   // "medium"/"small" widths on a narrow window — this floor guarantees it never does.
   expect(main).toContain('previewPane.style.minWidth = "var(--instui-breakpoints-lg)";');
-  // The standalone shell's header swatches must be immune to the chrome's active color remap,
-  // same as the theme tray — otherwise the navy/blue swatches get remapped to whatever color the
-  // chrome currently has active.
-  expect(main).toContain('resetSelector: "#theme-tray, #canvas-rce-shell"');
+  // The standalone shell's menu swatches must be immune to the chrome's active color remap, same
+  // as the theme tray — but the brand mark stays outside the reset so it follows the chrome color.
+  expect(main).toContain(
+    'resetSelector: "#theme-tray, #canvas-rce-shell .canvas-rce-shell__actions"',
+  );
+  // Brand mark fill: the active color's 100 step in light mode, 90 in dark.
+  expect(readFileSync(join(target, "src/app.css"), "utf8")).toContain(
+    ".canvas-rce-shell__brand-mark.instui-button.-color-primary {\n  background: light-dark(\n    var(--instui-primitive-color-navy-navy100),\n    var(--instui-primitive-color-navy-navy90)\n  );",
+  );
   expect(readFileSync(join(target, "src/app.css"), "utf8")).toContain(
     '.panes[data-layout="row"] .preview-pane',
   );

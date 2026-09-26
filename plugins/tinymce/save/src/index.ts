@@ -11,6 +11,10 @@ export const SAVE_COMMAND = "pantokenSavePreset";
 export const SAVE_AS_COMMAND = "pantokenSavePresetAs";
 /** Opens a named preset. */
 export const OPEN_COMMAND = "pantokenOpenPreset";
+/** Inserts a saved preset at the current cursor without clearing the current document. */
+export const INSERT_COMMAND = "pantokenInsertPreset";
+/** Replaces the current document with a saved preset after confirmation. */
+export const REPLACE_COMMAND = "pantokenReplacePreset";
 /** Deletes a named preset without clearing the current document. */
 export const DELETE_COMMAND = "pantokenDeletePreset";
 /** Clears the current editor state back to the caller's defaults. */
@@ -148,6 +152,8 @@ export function createSaveRepository<State>(
 export interface SavePluginOptions<State> {
   readonly capture: () => State;
   readonly restore: (state: State) => void | Promise<void>;
+  readonly insert?: (state: State) => void | Promise<void>;
+  readonly replace?: (state: State) => void | Promise<void>;
   readonly reset: () => void | Promise<void>;
   readonly isValid: (state: unknown) => state is State;
   readonly strings?: Partial<SaveStrings>;
@@ -202,7 +208,7 @@ export function createSavePlugin<State>(
     const repository = createSaveRepository<State>(options.storage, options.storageKey);
     const equals = options.equals ?? defaultEquals;
     let activePresetId: string | undefined;
-    let baseline = options.capture();
+    let baseline: State | undefined = options.capture();
 
     const notify = (text: string): void => {
       editor.notificationManager.open({ text, type: "error" });
@@ -317,7 +323,7 @@ export function createSavePlugin<State>(
           })
           .catch(() => notify(strings.invalidPreset));
       };
-      if (equals(options.capture(), baseline)) {
+      if (baseline !== undefined && equals(options.capture(), baseline)) {
         restore();
         return;
       }
@@ -329,14 +335,30 @@ export function createSavePlugin<State>(
       );
     };
 
-    const openSelectionDialog = (mode: "open" | "delete"): void => {
+    const openSelectionDialog = (mode: "open" | "insert" | "replace" | "delete"): void => {
       const presets = readPresets();
       if (presets.length === 0) {
         editor.windowManager.alert(strings.emptyPresets);
         return;
       }
+      const title =
+        mode === "open"
+          ? strings.openDialogTitle
+          : mode === "insert"
+            ? "Insert preset"
+            : mode === "replace"
+              ? "Replace preset"
+              : strings.deleteDialogTitle;
+      const submitText =
+        mode === "open"
+          ? strings.presetOpenButton
+          : mode === "insert"
+            ? "Insert"
+            : mode === "replace"
+              ? "Replace"
+              : strings.presetDeleteButton;
       editor.windowManager.open({
-        title: mode === "open" ? strings.openDialogTitle : strings.deleteDialogTitle,
+        title,
         body: {
           type: "panel",
           items: [
@@ -351,42 +373,58 @@ export function createSavePlugin<State>(
         initialData: { presetId: activePresetId ?? presets[0].id },
         buttons: [
           { type: "cancel", text: strings.presetCancelButton },
-          {
-            type: "submit",
-            text: mode === "open" ? strings.presetOpenButton : strings.presetDeleteButton,
-            primary: true,
-          },
+          { type: "submit", text: submitText, primary: true },
         ],
         onSubmit: (api): void => {
-          const { presetId } = api.getData() as { presetId: string };
+          const payload =
+            typeof api.getData === "function" ? (api.getData() as { presetId?: string }) : {};
+          const presetId = payload.presetId ?? activePresetId ?? presets[0]?.id;
+          if (!presetId) {
+            notify(strings.invalidPreset);
+            return;
+          }
           const preset = presets.find((candidate) => candidate.id === presetId);
           if (!preset) {
             notify(strings.invalidPreset);
             return;
           }
           api.close();
+          if (mode === "delete") {
+            editor.windowManager.confirm(
+              formatSaveString(strings.confirmDelete, { name: preset.name }),
+              (confirmed) => {
+                if (!confirmed) return;
+                const result = repository.remove(preset.id);
+                if (!result.ok) {
+                  notify(strings.storageDeleteError);
+                  return;
+                }
+                if (activePresetId === preset.id) activePresetId = undefined;
+              },
+            );
+            return;
+          }
           if (mode === "open") {
             restorePreset(preset);
             return;
           }
-          editor.windowManager.confirm(
-            formatSaveString(strings.confirmDelete, { name: preset.name }),
-            (confirmed) => {
-              if (!confirmed) return;
-              const result = repository.remove(preset.id);
-              if (!result.ok) {
-                notify(strings.storageDeleteError);
-                return;
-              }
-              if (activePresetId === preset.id) activePresetId = undefined;
-            },
+          const applyAction =
+            mode === "insert"
+              ? (options.insert ?? options.restore)
+              : (options.replace ?? options.restore);
+          baseline = undefined;
+          if (mode === "replace") {
+            activePresetId = preset.id;
+          }
+          void Promise.resolve(applyAction(preset.state)).catch(() =>
+            notify(strings.invalidPreset),
           );
         },
       });
     };
 
     const performNew = (): void => {
-      if (!equals(options.capture(), baseline)) {
+      if (baseline === undefined || !equals(options.capture(), baseline)) {
         editor.windowManager.open({
           title: strings.newDialogTitle,
           body: {
@@ -514,6 +552,8 @@ export function createSavePlugin<State>(
     editor.addCommand(SAVE_COMMAND, save);
     editor.addCommand(SAVE_AS_COMMAND, () => openSaveAsDialog());
     editor.addCommand(OPEN_COMMAND, () => openSelectionDialog("open"));
+    editor.addCommand(INSERT_COMMAND, () => openSelectionDialog("insert"));
+    editor.addCommand(REPLACE_COMMAND, () => openSelectionDialog("replace"));
     editor.addCommand(DELETE_COMMAND, () => openSelectionDialog("delete"));
     editor.addCommand(NEW_COMMAND, performNew);
     editor.addCommand(EXPORT_COMMAND, performExport);
@@ -542,6 +582,18 @@ export function createSavePlugin<State>(
             text: strings.openAction,
             enabled: hasPresets,
             onAction: () => editor.execCommand(OPEN_COMMAND),
+          },
+          {
+            type: "menuitem",
+            text: "Insert...",
+            enabled: hasPresets,
+            onAction: () => editor.execCommand(INSERT_COMMAND),
+          },
+          {
+            type: "menuitem",
+            text: "Replace...",
+            enabled: hasPresets,
+            onAction: () => editor.execCommand(REPLACE_COMMAND),
           },
           {
             type: "menuitem",

@@ -2,7 +2,7 @@
 import type { Editor, Ui } from "tinymce";
 import type { ApplicableModifier, CssDocEntry } from "../cssdoc/model.js";
 import { findEntryByClassToken, getApplicableModifiers } from "../cssdoc/model.js";
-import { TINYMCE_STRINGS } from "../strings.js";
+import { getEditorStrings } from "../strings.js";
 
 /** Context-toolbar registry name used by the components plugin. */
 export const COMPONENT_MODIFIER_CONTEXT_TOOLBAR_NAME = "pantokenComponentModifiersContext";
@@ -88,7 +88,7 @@ function propertyItems(
   return [
     {
       type: "togglemenuitem",
-      text: TINYMCE_STRINGS.componentModifiersDefault,
+      text: getEditorStrings(editor).componentModifiersDefault,
       active: !modifiers.some(({ modifier }) => active?.contains(modifier.name)),
       onAction: () => {
         mutateClasses(
@@ -144,7 +144,7 @@ function groupedItems(
   if (booleans.length > 0) {
     items.push({
       type: "nestedmenuitem",
-      text: TINYMCE_STRINGS.componentModifiersOptions,
+      text: getEditorStrings(editor).componentModifiersOptions,
       getSubmenuItems: () =>
         booleans.map(({ modifier }) => ({
           type: "togglemenuitem",
@@ -180,7 +180,7 @@ function menuItems(
   if (utilities.size > 0) {
     componentItems.push({
       type: "nestedmenuitem",
-      text: TINYMCE_STRINGS.componentModifiersUtilities,
+      text: getEditorStrings(editor).componentModifiersUtilities,
       getSubmenuItems: () =>
         [...utilities.entries()].map(([name, modifiers]) => {
           const items = groupedItems(editor, model, modifiers);
@@ -203,7 +203,7 @@ export function registerComponentModifierToolbar(
 ): void {
   editor.ui.registry.addMenuButton(COMPONENT_MODIFIER_MENU_NAME, {
     icon: "preferences",
-    tooltip: TINYMCE_STRINGS.componentModifiersTooltip,
+    tooltip: getEditorStrings(editor).componentModifiersTooltip,
     fetch: (success) => success(menuItems(editor, model)),
   });
   editor.ui.registry.addContextToolbar(COMPONENT_MODIFIER_CONTEXT_TOOLBAR_NAME, {

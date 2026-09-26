@@ -50,6 +50,11 @@ for (const [name, packageDir] of Object.entries(localIconPackages)) {
   cpSync(join(packageDir, "dist"), dest, { recursive: true });
   copyFileSync(join(packageDir, "package.json"), join(packageRoot, "package.json"));
 }
+cpSync(
+  join(repoRoot, "formats", "components", "assets", "fonts"),
+  join(renderDir, "node_modules", "@pantoken", "components", "assets", "fonts"),
+  { recursive: true },
+);
 
 // Docs-only iframe auto-sizing: added here, after rendering, so the published starter template has
 // no embedding-specific code. Copied into the render project's `public/` so Vite ships it verbatim

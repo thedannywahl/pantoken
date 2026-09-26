@@ -19,7 +19,7 @@ import { insertHtml } from "../lib/insertion-target.js";
 import { AUTOCOMPLETE_GLYPH_CLASS, injectPickerStyles } from "../lib/icon-picker-styles.js";
 import { mountIconPicker, renderPickerShell } from "../lib/icon-picker-dom.js";
 import { registerIconContextToolbar } from "../lib/icon-context-toolbar.js";
-import { TINYMCE_STRINGS } from "../strings.js";
+import { getEditorStrings } from "../strings.js";
 
 /** Command that opens the icons picker. */
 export const ICONS_COMMAND = "pantokenOpenIcons";
@@ -57,10 +57,11 @@ function insertIcon(editor: Editor, icon: TaggedIcon, options: IconsPickerOption
 }
 
 function openIconsDialog(editor: Editor, options: IconsPickerOptions): void {
+  const strings = getEditorStrings(editor);
   let picker: { destroy: () => void; getSelected: () => TaggedIcon | undefined } | undefined;
 
   const dialog = editor.windowManager.open({
-    title: TINYMCE_STRINGS.iconsDialogTitle,
+    title: strings.iconsDialogTitle,
     size: "large",
     body: {
       type: "panel",
@@ -69,11 +70,11 @@ function openIconsDialog(editor: Editor, options: IconsPickerOptions): void {
       ],
     },
     buttons: [
-      { type: "cancel", text: TINYMCE_STRINGS.cancelButton },
+      { type: "cancel", text: strings.cancelButton },
       {
         type: "submit",
         name: "insert",
-        text: TINYMCE_STRINGS.insertButton,
+        text: strings.insertButton,
         primary: true,
         enabled: false,
       },
@@ -93,11 +94,11 @@ function openIconsDialog(editor: Editor, options: IconsPickerOptions): void {
   injectPickerStyles(doc, options.icons, options.provider, options.buildAssetUrl);
   picker = mountIconPicker(root, options.icons, {
     strings: {
-      searchPlaceholder: TINYMCE_STRINGS.iconsSearchPlaceholder,
-      searchLabel: TINYMCE_STRINGS.iconsSearchLabel,
-      allSourcesLabel: TINYMCE_STRINGS.iconsAllSources,
-      resultCount: TINYMCE_STRINGS.iconsResultCount,
-      emptyMessage: TINYMCE_STRINGS.iconsNoResults,
+      searchPlaceholder: strings.iconsSearchPlaceholder,
+      searchLabel: strings.iconsSearchLabel,
+      allSourcesLabel: strings.iconsAllSources,
+      resultCount: strings.iconsResultCount,
+      emptyMessage: strings.iconsNoResults,
     },
     onSelect: (icon) => dialog.setEnabled("insert", icon !== undefined),
     onPick: (icon) => {
@@ -173,6 +174,7 @@ export function createIconsPlugin(options: IconsPickerOptions): (editor: Editor)
   // TinyMCE always instantiates plugins with `new Plugin(editor, ...)` — must be a constructible
   // function expression, not an arrow function (arrows throw "is not a constructor").
   return function pantokenIconsPlugin(editor: Editor) {
+    const strings = getEditorStrings(editor);
     const openDialog = (): void => openIconsDialog(editor, options);
     editor.addCommand(ICONS_COMMAND, openDialog);
     registerAutocompleter(editor, options);
@@ -181,13 +183,13 @@ export function createIconsPlugin(options: IconsPickerOptions): (editor: Editor)
     if (options.registerUi === false) return;
 
     editor.ui.registry.addButton("pantokenIcons", {
-      text: TINYMCE_STRINGS.iconsToolbarText,
-      tooltip: TINYMCE_STRINGS.iconsToolbarTooltip,
+      text: strings.iconsToolbarText,
+      tooltip: strings.iconsToolbarTooltip,
       onAction: openDialog,
     });
 
     editor.ui.registry.addMenuItem("pantokenIcons", {
-      text: TINYMCE_STRINGS.iconsMenuText,
+      text: strings.iconsMenuText,
       onAction: openDialog,
     });
   };

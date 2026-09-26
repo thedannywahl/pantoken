@@ -17,7 +17,7 @@ import {
   TEMPLATES_COMMAND,
   type TemplatesPluginOptions,
 } from "./templates.js";
-import { TINYMCE_STRINGS } from "../strings.js";
+import { getEditorStrings, setEditorStrings, type TinymceStrings } from "../strings.js";
 
 /** Plugin name to pass in TinyMCE's `plugins` init option. */
 export const PANTOKEN_PLUGIN_NAME = "pantoken";
@@ -30,6 +30,8 @@ export const PANTOKEN_ICON =
 
 /** Configuration for the content plugins composed by {@link createPantokenPlugin}. */
 export interface PantokenPluginOptions {
+  /** Translated UI strings for this editor; unspecified strings remain English. */
+  strings?: Partial<TinymceStrings>;
   components: ComponentsPickerOptions;
   icons: IconsPickerOptions;
   logos: LogosPickerOptions;
@@ -40,6 +42,7 @@ export interface PantokenPluginOptions {
 /** Build a single pantoken toolbar menu that opens each composed plugin. */
 export function createPantokenPlugin(options: PantokenPluginOptions) {
   return function pantokenPlugin(editor: Editor) {
+    setEditorStrings(editor, options.strings ?? {});
     createComponentsPlugin({ ...options.components, registerUi: false })(editor);
     createIconsPlugin({ ...options.icons, registerUi: false })(editor);
     createLogosPlugin({ ...options.logos, registerUi: false })(editor);
@@ -56,29 +59,29 @@ export function createPantokenPlugin(options: PantokenPluginOptions) {
         const items: Ui.Menu.MenuItemSpec[] = [
           {
             type: "menuitem",
-            text: TINYMCE_STRINGS.componentsToolbarText,
+            text: getEditorStrings(editor).componentsToolbarText,
             onAction: () => editor.execCommand(COMPONENTS_COMMAND),
           },
           {
             type: "menuitem",
-            text: TINYMCE_STRINGS.iconsToolbarText,
+            text: getEditorStrings(editor).iconsToolbarText,
             onAction: () => editor.execCommand(ICONS_COMMAND),
           },
           {
             type: "menuitem",
-            text: TINYMCE_STRINGS.logosToolbarText,
+            text: getEditorStrings(editor).logosToolbarText,
             onAction: () => editor.execCommand(LOGOS_COMMAND),
           },
           {
             type: "menuitem",
-            text: TINYMCE_STRINGS.layoutsToolbarText,
+            text: getEditorStrings(editor).layoutsToolbarText,
             onAction: () => editor.execCommand(LAYOUTS_COMMAND),
           },
         ];
         if (options.templates) {
           items.push({
             type: "menuitem",
-            text: TINYMCE_STRINGS.templatesToolbarText,
+            text: getEditorStrings(editor).templatesToolbarText,
             onAction: () => editor.execCommand(TEMPLATES_COMMAND),
           });
         }

@@ -72,7 +72,11 @@ export function createVisualBlocksFooterPlugin() {
     const setButtonState = (state: boolean): void => {
       button?.setAttribute("aria-pressed", String(state));
       button?.classList.toggle(VISUALBLOCKS_FOOTER_ACTIVE_CLASS, state);
-      if (button) button.title = state ? "Hide blocks" : "Show blocks";
+      if (button) {
+        button.title = state
+          ? editor.translate?.("Hide blocks") || "Hide blocks"
+          : editor.translate?.("Show blocks") || "Show blocks";
+      }
     };
 
     const attachFooter = (): void => {
@@ -86,7 +90,7 @@ export function createVisualBlocksFooterPlugin() {
       button.id = VISUALBLOCKS_FOOTER_STATUSBAR_NAME;
       button.type = "button";
       button.className = "tox-statusbar__wordcount";
-      button.title = "Show blocks";
+      button.title = editor.translate?.("Show blocks") || "Show blocks";
       button.setAttribute("aria-pressed", "false");
       button.innerHTML = VISUALBLOCKS_ICON_SVG;
       injectFooterStyle();

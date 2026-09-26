@@ -13,6 +13,7 @@
     "@pantoken/cdn": "latest",
     "@pantoken/components": "latest",
     "@pantoken/css": "latest",
+    "@pantoken/interactions": "latest",
     "@pantoken/plugin-custom-icons": "latest",
     "@pantoken/plugin-layouts": "latest",
     "@pantoken/plugin-logos": "latest",
@@ -32,6 +33,7 @@
     "@codemirror/lang-javascript": "catalog:",
     "codemirror": "catalog:",
     "tinymce": "catalog:",
+    "tinymce-i18n": "26.9.21",
     "typescript": "^7.0.2",
     "vite": "^8.2.2"
   },

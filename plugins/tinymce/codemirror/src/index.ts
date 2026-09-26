@@ -16,7 +16,7 @@ import { tags } from "@lezer/highlight";
 import * as prettier from "prettier/standalone";
 import * as prettierHtml from "prettier/plugins/html";
 import type { Editor } from "tinymce";
-import { CODEMIRROR_STRINGS } from "./strings.js";
+import { CODEMIRROR_STRINGS, type CodemirrorStrings } from "./strings.js";
 
 /** The attribute pantoken's TinyMCE skins already use to scope dark-mode CSS. */
 const SCHEME_ATTRIBUTE = "data-pantoken-scheme";
@@ -101,6 +101,8 @@ function currentScheme(): "light" | "dark" {
 
 /** Options for {@link createSourceTogglePlugin}. */
 export interface SourceTogglePluginOptions {
+  /** Localized source-view controls, with English defaults for missing keys. */
+  strings?: Partial<CodemirrorStrings>;
   /** Pixel height of the source view outside fullscreen, matching the WYSIWYG editor's height. */
   height: number;
   /** Extra CodeMirror extensions (lint, autocomplete, etc.) layered onto the base HTML setup. */
@@ -142,6 +144,7 @@ export function createSourceTogglePlugin(
 ): (editor: Editor) => SourceTogglePluginApi {
   const { height, extensions = [], onChange, onToggle } = options;
   return function pantokenSourceTogglePlugin(editor: Editor): SourceTogglePluginApi {
+    const strings = { ...CODEMIRROR_STRINGS, ...options.strings };
     let sourceView: EditorView | undefined;
     let sourceContainer: HTMLDivElement | undefined;
     let sourceMode = false;
@@ -227,7 +230,7 @@ export function createSourceTogglePlugin(
         replaceDoc(formatted);
       } catch (error) {
         editor.notificationManager.open({
-          text: CODEMIRROR_STRINGS.sourceFormatErrorMessage,
+          text: strings.sourceFormatErrorMessage,
           type: "error",
         });
         console.error("pantoken source-toggle: prettier format failed", error);
@@ -263,13 +266,13 @@ export function createSourceTogglePlugin(
     if (hasToolbar) {
       editor.ui.registry.addToggleButton(SOURCE_TOGGLE_TOOLBAR_NAME, {
         icon: "sourcecode",
-        tooltip: CODEMIRROR_STRINGS.sourceToggleTooltip,
+        tooltip: strings.sourceToggleTooltip,
         onAction: (api) => toggle(api.setActive),
       });
 
       editor.ui.registry.addButton(SOURCE_FORMAT_TOOLBAR_NAME, {
         icon: FORMAT_ICON_NAME,
-        tooltip: CODEMIRROR_STRINGS.sourceFormatTooltip,
+        tooltip: strings.sourceFormatTooltip,
         onAction: () => void format(),
         onSetup: (api): (() => void) => {
           api.setEnabled(sourceMode);
@@ -294,7 +297,7 @@ export function createSourceTogglePlugin(
         footerButton.id = SOURCE_TOGGLE_STATUSBAR_NAME;
         footerButton.type = "button";
         footerButton.className = "tox-statusbar__wordcount";
-        footerButton.title = CODEMIRROR_STRINGS.sourceToggleTooltip;
+        footerButton.title = strings.sourceToggleTooltip;
         footerButton.setAttribute("aria-pressed", String(sourceMode));
         footerButton.textContent = "</>";
         footerButton.addEventListener("click", () =>
@@ -306,7 +309,7 @@ export function createSourceTogglePlugin(
         formatButton.id = SOURCE_FORMAT_TOOLBAR_NAME;
         formatButton.type = "button";
         formatButton.className = "tox-statusbar__wordcount";
-        formatButton.title = CODEMIRROR_STRINGS.sourceFormatTooltip;
+        formatButton.title = strings.sourceFormatTooltip;
         formatButton.textContent = "{ }";
         formatButton.disabled = !sourceMode;
         formatButton.addEventListener("click", () => void format());

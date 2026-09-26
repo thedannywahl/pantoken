@@ -3,9 +3,9 @@
  * @memberOf drawer-layout
  * @selector .content
  * @summary The primary content pane that fills remaining space beside the tray.
- * @remarks `min-inline-size` follows `--pantoken-bp-md` (fallback `30em`) so narrow layouts can switch tray to overlay mode.
+ * @remarks `min-inline-size` follows `--pantoken-bp-md` (fallback `48em`) so narrow layouts can switch tray to overlay mode.
  * @remarks `overflow: auto` keeps the tray and content independently scrollable.
- * @remarks Once the parent's inline-size drops below `46em` (`16em` tray width + `30em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override.
+ * @remarks Once the parent's inline-size drops below `64em` (`16em` tray width + `48em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override.
  * @related drawer-layout.tray — The adjacent panel in the same flex row.
  * @accessibility Carry `role="region"` (InstUI's DrawerLayout convention) and name it with `aria-label`/`aria-labelledby` when context alone doesn't identify it.
  * @structure
@@ -29,7 +29,7 @@
     > .content {
       flex: 1 1 auto;
       overflow: auto;
-      min-inline-size: var(--drawer-layout-content-min-inline-size, var(--pantoken-bp-md, 30em));
+      min-inline-size: var(--drawer-layout-content-min-inline-size, var(--pantoken-bp-md, 48em));
     }
 
     &[should-overlay-tray] > .content,
@@ -39,8 +39,8 @@
   }
 }
 
-/* Automatic overlay: no JS required. 46em = 16em tray width + 30em content breakpoint. */
-@container pantoken-drawer-layout (max-width: 46em) {
+/* Automatic overlay: no JS required. 64em = 16em tray width + 48em content breakpoint. */
+@container pantoken-drawer-layout (max-width: 64em) {
   .pfx-drawer-layout > .content {
     min-inline-size: 0;
   }

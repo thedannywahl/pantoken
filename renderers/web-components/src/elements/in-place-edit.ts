@@ -1,13 +1,24 @@
 import { inPlaceEditCss } from "@pantoken/components";
 import { initInPlaceEdit } from "@pantoken/interactions";
+import type { InPlaceEditInputType } from "@pantoken/interactions";
 import type { ElementDefinition } from "../lib/context.ts";
 import { esc } from "../lib/helpers.ts";
+
+const INPUT_TYPES = new Set<InPlaceEditInputType>([
+  "text",
+  "number",
+  "email",
+  "url",
+  "tel",
+  "search",
+]);
 
 /**
  * `<instui-in-place-edit>` — a click-to-edit field. `value` shows as text; on click/focus it becomes
  * editable, Enter or blur commits (and fires a bubbling `change` event with `detail.value`), and
  * Escape reverts to the pre-edit value. `readonly` disables editing. An external `value` change
- * reflects into the field while it isn't being edited.
+ * reflects into the field while it isn't being edited. `input-type` accepts `text`, `number`,
+ * `email`, `url`, `tel`, or `search` as a non-validating editing hint.
  *
  * @example
  * ```html
@@ -39,7 +50,10 @@ export const inPlaceEdit: ElementDefinition = {
           const field = root.querySelector<HTMLElement>(".instui-in-place-edit");
           this.#field = field;
           if (!field || readonly) return;
-          initInPlaceEdit(field, this);
+          const inputType = this.getAttribute("input-type") as InPlaceEditInputType | null;
+          initInPlaceEdit(field, this, {
+            inputType: inputType && INPUT_TYPES.has(inputType) ? inputType : undefined,
+          });
         }
         attributeChangedCallback(name: string): void {
           // Reflect an external value change into the field when it isn't being edited.

@@ -19,7 +19,6 @@
  * @modifier -color-sea — Sea accent status.
  * @modifier -color-stone — Stone accent status.
  * @modifier -icon-* — A leading glyph from the icon set (e.g. `-icon-check`), painted before the label.
- * @modifier -render-icon-<name> — @deprecated The former `renderIcon` prop; still works as an alias, but use `-icon-<name>` instead.
  * @pseudo ::before — The leading icon glyph, sized and spaced to the pill.
  * @example
  * ```html
@@ -55,7 +54,7 @@
     line-height: var(--instui-component-pill-line-height);
   }
 
-  &[class*="-icon-"]::before {
+  &:is([class^="-icon-"], [class*=" -icon-"])::before {
     inline-size: var(--instui-font-size-text-xs);
     block-size: var(--instui-font-size-text-xs);
     margin-inline-end: var(--instui-component-pill-gap-icon-label);
@@ -79,11 +78,11 @@
     gap: var(--instui-component-pill-gap-content);
   }
 
-  &.-size-medium[class*="-icon-"]::before {
+  &.-size-medium:is([class^="-icon-"], [class*=" -icon-"])::before {
     margin-inline-end: var(--instui-component-pill-gap-icon-label-medium);
   }
 
-  &.-size-large[class*="-icon-"]::before {
+  &.-size-large:is([class^="-icon-"], [class*=" -icon-"])::before {
     margin-inline-end: var(--instui-component-pill-gap-icon-label-large);
   }
 

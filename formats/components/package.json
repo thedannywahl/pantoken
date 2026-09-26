@@ -70,6 +70,7 @@
     "@pantoken/plugin-theme-custom-media": "workspace:*",
     "@types/node": "catalog:",
     "bingo-stratum": "catalog:",
+    "happy-dom": "catalog:",
     "postcss": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",

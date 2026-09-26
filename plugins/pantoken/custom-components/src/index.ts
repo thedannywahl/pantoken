@@ -16,6 +16,7 @@
  */
 import { definePlugin } from "@pantoken/plugin-kit";
 import type { PantokenPlugin } from "@pantoken/model";
+import { breakpointDeclarations } from "./declarations/index.ts";
 import {
   agentShellRules,
   aiGradientRules,
@@ -24,6 +25,7 @@ import {
   cardRules,
   logoRules,
 } from "./components/index.ts";
+export { breakpointDeclarations } from "./declarations/index.ts";
 export {
   agentShellRules,
   aiGradientRules,
@@ -48,6 +50,7 @@ export interface CustomComponentsOptions {
 export function customComponents(options: CustomComponentsOptions = {}): PantokenPlugin {
   const position = options.position ?? "append";
   const rules = [
+    breakpointDeclarations(),
     cardRules(),
     agentShellRules(),
     aiGradientRules(),

@@ -7,7 +7,7 @@
 import type { CssDocEntry, CssModifier } from "@cssdoc/core";
 import componentsModel from "@pantoken/components/model.json" with { type: "json" };
 import customComponentsModel from "@pantoken/plugin-custom-components/model.json" with { type: "json" };
-import { formatTinymceString, TINYMCE_STRINGS } from "../strings.js";
+import { formatTinymceString, TINYMCE_STRINGS, type TinymceStrings } from "../strings.js";
 
 export type { CssDocEntry } from "@cssdoc/core";
 
@@ -141,19 +141,22 @@ export function getModifierSuggestions(
  * Validate a pantoken class token (e.g., "instui-button", "instui-button.-color-primary").
  * Returns an array of validation errors (empty if valid).
  */
-export function validateClassToken(token: string): string[] {
+export function validateClassToken(
+  token: string,
+  strings: TinymceStrings = TINYMCE_STRINGS,
+): string[] {
   const errors: string[] = [];
 
   // Must start with "instui-" (or be just "instui-" which is incomplete).
   if (!token.startsWith("instui-")) {
-    return [formatTinymceString(TINYMCE_STRINGS.classValidationTokenPrefix, { prefix: "instui-" })];
+    return [formatTinymceString(strings.classValidationTokenPrefix, { prefix: "instui-" })];
   }
 
   // Find the longest known component name before any modifier suffix.
   const rest = token.slice("instui-".length); // e.g., "button.-color-primary"
   if (!rest) {
     return [
-      formatTinymceString(TINYMCE_STRINGS.classValidationIncompleteComponent, {
+      formatTinymceString(strings.classValidationIncompleteComponent, {
         prefix: "instui-",
       }),
     ];
@@ -169,9 +172,7 @@ export function validateClassToken(token: string): string[] {
   }
 
   if (!entry) {
-    errors.push(
-      formatTinymceString(TINYMCE_STRINGS.classValidationUnknownComponent, { componentName }),
-    );
+    errors.push(formatTinymceString(strings.classValidationUnknownComponent, { componentName }));
   }
 
   // If we found the entry, validate modifiers.

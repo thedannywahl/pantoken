@@ -7,7 +7,7 @@
   <div class="description">{{pageDescription}}</div>
 
   <div class="controls --my-lg">
-    <div class="control-group instui-button-set">
+    <div class="control-group instui-button-set -color-primary">
       <button
         type="button"
         id="download-package"
@@ -141,6 +141,16 @@
               >{{previewWidthSmallLabel}}</span
             >
           </button>
+          <span
+            id="preview-width-value"
+            class="instui-in-place-edit preview-width-value"
+            contenteditable="true"
+            role="textbox"
+            aria-label="{{previewWidthValueLabel}}"
+            data-input-type="number"
+            >1</span
+          >
+          <span class="preview-width-unit" aria-hidden="true">px</span>
         </div>
         <button
           type="button"

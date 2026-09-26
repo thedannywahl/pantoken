@@ -28,7 +28,7 @@ test("alert supports token-backed floating and inline status treatments", () => 
   expect(css).toContain("--instui-component-alert-icon-padding-vertical");
   expect(css).toContain("border-color: var(--instui-component-alert-info-border-color-inline)");
   expect(css).not.toContain("color-mix(");
-  expect(css).toContain('&[class*="-icon-"]::before');
+  expect(css).toMatch(/&:is\(\s*\[class\^="-icon-"\],\s*\[class\*=" -icon-"\]/u);
   expect(css).toContain("content: none");
   // No icon/content wrapper classes anymore.
   expect(css).not.toContain(".instui-alert__icon");

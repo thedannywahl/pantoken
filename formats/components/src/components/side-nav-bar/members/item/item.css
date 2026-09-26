@@ -34,7 +34,7 @@
       cursor: pointer;
     }
 
-    > .item [class*="-icon-"] {
+    > .item :is([class^="-icon-"], [class*=" -icon-"]) {
       line-height: 1;
     }
 
