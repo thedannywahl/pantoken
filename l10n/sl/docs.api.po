@@ -14828,16 +14828,16 @@ msgid "**Use a logo as an \\<img\\> src**"
 msgstr "**Uporabite logotip kot \\<img\\> src**"
 
 #: plugins/pantoken/logos/src/functions/getLogoMeta.md
-#, fuzzy, no-c-format
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "Get a logo's metadata, including its natural `viewBox` `width`/`height` — for consumers that need\nthe logo's real aspect ratio (e.g. to set `aspect-ratio` or `width`/`height` on an `<img>`) without\nparsing SVG themselves."
-msgstr "Pridobite metapodatke logotipa, vključno z rasterizirano PNG ``width`/`height` — za potrošnike, ki morajo\nzgraditi pot ``dist/<name>.png`` (npr. preko `@pantoken/cdn`)) ali določiti velikost `<img>` `<img>` brez razčlenjevanja SVG."
+msgstr "Pridobite metapodatke logotipa, vključno z naravnima `viewBox` `width`/`height` — za potrošnike, ki potrebujejo\ndejansko razmerje stranic logotipa (npr. za nastavitev `aspect-ratio` ali `width`/`height` na `<img>`), ne da bi\nsami razčlenjevali SVG."
 
 #: plugins/pantoken/logos/src/functions/getLogoMeta.md
-#, fuzzy, no-c-format
+#, no-c-format
 msgctxt "docs.api:prose"
 msgid "The [LogoMeta](../interfaces/LogoMeta.md), or `undefined` if that combination doesn't exist."
-msgstr "Niz SVG ali `undefined`, če ta kombinacija ne obstaja."
+msgstr "[LogoMeta](../interfaces/LogoMeta.md) ali `undefined`, če ta kombinacija ne obstaja."
 
 #: plugins/pantoken/logos/src/functions/getLogoMeta.md
 #, no-c-format
