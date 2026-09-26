@@ -53,6 +53,8 @@ body.canvas-rce-shell-enabled #app {
   body.canvas-rce-shell-enabled #app {
     padding: 1rem 1.5rem 1.5rem;
   }
+
+  padding: 1rem 3rem 3rem;
 }
 
 /* Redundant with the shell's own brand mark once it's showing. */
