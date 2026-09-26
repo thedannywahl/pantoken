@@ -1,14 +1,17 @@
 {
-  "name": "@pantoken/email",
-  "version": "0.1.19",
-  "description": "Instructure design tokens for HTML email: concrete, inline-friendly token values (no CSS vars).",
+  "name": "@pantoken/inline-styles",
+  "version": "0.1.0",
+  "description": "Inline CSS into HTML with pantoken styles.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thedannywahl/pantoken.git",
-    "directory": "platforms/email"
+    "directory": "formats/inline-styles"
+  },
+  "bin": {
+    "pantoken-inline": "./dist/cli.mjs"
   },
   "files": [
     "dist"
@@ -17,7 +20,9 @@
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
-    "./inline": "./dist/inline.mjs",
+    "./cli": "./dist/cli.mjs",
+    "./html": "./dist/html.mjs",
+    "./pantoken-html": "./dist/pantoken-html.mjs",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -25,15 +30,18 @@
     "provenance": true
   },
   "scripts": {
-    "dev": "vp pack --watch",
     "test": "vp test",
     "check": "vp check"
   },
   "dependencies": {
-    "@pantoken/inline-styles": "workspace:*",
+    "@pantoken/components": "workspace:*",
     "@pantoken/model": "workspace:*",
+    "@pantoken/plugin-custom-theme-colors": "workspace:*",
     "@pantoken/tokens": "workspace:*",
-    "@pantoken/utils": "workspace:*"
+    "@pantoken/utils": "workspace:*",
+    "cheerio": "catalog:",
+    "juice": "catalog:",
+    "postcss": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:",
@@ -45,7 +53,7 @@
     "node": ">=22.18.0"
   },
   "pantoken": {
-    "key": "email",
-    "kind": "subpath"
+    "key": "inlineStyles",
+    "kind": "namespace"
   }
 }

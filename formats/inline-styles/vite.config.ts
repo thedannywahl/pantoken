@@ -5,8 +5,10 @@ export default extendBase({
   pack: {
     entry: {
       index: "src/index.ts",
-      inline: "src/inline.ts",
+      html: "src/inline-html.ts",
+      "pantoken-html": "src/pantoken-html.ts",
+      cli: "src/cli.ts",
     },
-    exports: true,
+    exports: false,
   },
 });
