@@ -1,0 +1,54 @@
+I'm not sure where a new package interface should live possibly in the existing @pantoken/email - or a base package that it then consumes, but I want a way to export inline styles like `<button style="...">` for renderers that can't use style block, or an external stylesheet reliably (like email)
+
+---
+
+In the /Users/dwahl/Scripts/pantoken workspace, do a THOROUGH exploration of `@pantoken/components` (formats/components) and report back in detail.
+
+I need to know:
+1. The shape of the authoring records: `defineComponent`, `defineUtility`, `defineRule`, `defineDeclaration` — their TypeScript types, what fields a record has (name, css template literal, metadata, modifiers, aliases), and where those definitions live (src/lib/).
+2. How the CSS is emitted — the build pipeline from records to `dist/components.css`, `base.css`, `fonts.css`. What scripts/files do this.
+3. Whether component CSS is available in any structured/AST form (parsed declarations) or only as raw CSS strings in template literals. Is there anything using postcss/lightningcss to parse it?
+4. How modifiers work in the CSS (e.g. `.instui-button.-color-secondary`) and whether a given component+modifier combination's declarations could be resolved programmatically.
+5. The list of other `formats/` packages (names + one-line purpose each) and `renderers/` packages, so I understand where a new package would fit.
+6. How @pantoken/tokens IR and @pantoken/model types are consumed by format packages — the canonical dependency rule (per CLAUDE.md, formats must not depend on core).
+7. What tooling exists for scaffolding a new package (tools/, scripts/, any generator).
+
+Return exact file paths, key type definitions, and the build pipeline steps. Research only, do NOT write code.
+
+---
+
+In the /Users/dwahl/Scripts/pantoken workspace, do a THOROUGH exploration of the `@pantoken/email` package and report back in detail.
+
+I need to know:
+1. Where it lives (full path), its package.json (name, deps, exports, scripts, build config), and its full source file tree.
+2. What it actually does today — does it inline CSS into HTML? Does it produce a stylesheet? Does it juice/inline styles? What libraries does it use (e.g. juice, postcss)? Show key function signatures and exported API.
+3. How it consumes component CSS — does it import from @pantoken/components, @pantoken/css, @pantoken/tokens? Trace the dependency chain.
+4. Any existing notion of "inline style" / style attribute generation anywhere in the repo (grep for `style="`, `inlineStyles`, `juice`, `cssText`, `declarations` used as inline).
+5. Its tests and docs (docs/ pages referencing email).
+
+Return: exact file paths, package.json contents summarized, the main exported API surface with signatures, and your assessment of whether inline-style export could be added here or needs a separate base package. Research only, do NOT write code.
+
+---
+
+1. as broad as possible
+2. all 6, plus it should work with plugin-custom-colors.
+
+---
+
+In /Users/dwahl/Scripts/pantoken, explore `formats/components` to assess how INLINABLE its CSS actually is. I'm planning a package that flattens component CSS into HTML `style="..."` attributes at build time.
+
+Report in detail:
+1. The full list of component names in `formats/components/src/components/index.ts` (and utilities, rules, declarations registries) — count them.
+2. Read 3-4 representative component CSS sources (e.g. button, alert/table, and a complex one) and report what CSS features they actually use: custom properties, `light-dark()`, `@scope`, child combinators, `:hover`/`:focus-visible`, `::before`/`::after`, `@media`, `@container`, `@layer`, nesting, `:has()`, logical properties, `calc()`, relative color syntax (`oklch(from ...)`).
+3. Quantify roughly how much of a typical component's CSS lives in rules that CANNOT be expressed in a style attribute (pseudo-classes, pseudo-elements, at-rules, descendant/child selectors for sub-parts).
+4. The sub-part convention: do components have child element classes (e.g. `.instui-table > .row`)? How are they selected? This matters because an inliner must produce styles per sub-part, not just the root.
+5. Whether `dist/model.json` exists and its exact TypeScript shape (the CssDocEntry type from tools/cssdoc-model or @cssdoc/core) — specifically whether it enumerates modifiers, parts, and selectors per component.
+6. Does `formats/components` dist contain per-component CSS files, and what are the exact export subpaths in its package.json?
+7. Whether postcss or lightningcss is already a dependency anywhere in the build scripts, and which version/catalog entry.
+8. How themes are handled in the CSS: is there one components.css per theme, or one file using tokens that vary by theme? Look at the `theme` option in ComponentOptions and what it changes.
+
+Return exact paths, the component count, concrete CSS examples showing the hard cases, and the model.json type. Research only, do NOT write code.
+
+---
+
+so we should have the cli as part of this.
