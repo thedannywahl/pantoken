@@ -1,0 +1,14 @@
+when using custom-theme-colors with formats/components secondary button hover backgrounds in light mode still seem to be bound to a default navy/blue color.
+-toggle button backgrounds in all states and pseudo states still seem to be bound to a default navy/blue color.
+
+---
+
+In /Users/dwahl/Scripts/pantoken, explore formats/components/src (the @pantoken/components package). I need a THOROUGH report on:
+
+1. The `button` component record (likely formats/components/src/components/button.ts). Show me exactly which CSS custom properties / token variables are used for:
+   - the `-color-secondary` modifier's background in default, hover, active, focus states
+   - light mode vs dark mode handling (light-dark(), @media, [data-scheme], etc.)
+2. The `toggle-*` / `toggle` related component record(s) (toggle button, toggle-details, toggle-group — whatever exists). Same: list the exact token variables used for backgrounds in all states and pseudo-states (::before, ::after, :hover, :active, :focus-visible, [aria-expanded], etc.)
+3. For every token variable you find, tell me whether it is a "theme color" style variable (one that the custom-theme-colors plugin would override, e.g. --ic-brand-*, --pt-color-primary-*, etc.) or a hard-coded/static token like a literal hex, or a fixed palette token (e.g. --pt-color-navy-*, --ic-color-blue-*) that would NOT be recomputed by a custom theme.
+
+Report exact file paths with line numbers, and quote the relevant CSS snippets. Do not write any code or edit files — research only.
