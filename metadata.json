@@ -3,7 +3,7 @@
   "checkpoint_id": "01M3FA654JDJWSTWRYK64P48WK",
   "strategy": "manual-commit",
   "branch": "iconfix",
-  "checkpoints_count": 2,
+  "checkpoints_count": 4,
   "files_touched": [
     ".changeset/scaffold-controls-wrap.md",
     "formats/components/src/components/drawer-layout/drawer-layout.css",
@@ -12,6 +12,7 @@
     "formats/components/src/utilities/responsive/index.ts",
     "formats/components/tests/components/drawer-layout.test.ts",
     "formats/components/tests/utilities/responsive.test.ts",
+    "l10n/docs.api.pot",
     "packages/scaffold/templates/canvas-theme-editor/src/app.css",
     "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
     "packages/scaffold/tests/canvas-theme-editor-responsive.test.ts"
@@ -30,6 +31,13 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": "/1/prompt.txt"
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
+      "prompt": "/2/prompt.txt"
     }
   ],
   "token_usage": {

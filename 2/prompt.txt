@@ -1,0 +1,20 @@
+we're going to use the formats/components responsive utility to make some updates to the scaffold layout:
+* .canvas-rce-shell__brand-text should be hidden below --instui-breakpoints-sm
+* the canvas-rce-shell language and theme picker button text should be hidden (icon only) below --instui-breakpoints-md
+* #app padding should be `1rem 1.5rem 1.5rem` below --instui-breakpoints-lg
+
+---
+
+Planning only, read-only. In /Users/dwahl/Scripts/pantoken, investigate the formats/components responsive utility and how scaffold templates consume it. First follow .entire/graph-agent.md, including the mandatory `entire graph search --repo . --profile full --query ...` before grep/find. Determine: (1) exact responsive utility class syntax for hiding content below sm and md and applying padding below lg, (2) whether app.html/app.css/main.ts.tmpl need changes and whether utility CSS is already imported/inlined, (3) analogous existing usages/tests/docs, (4) generated copies or scaffold snapshot tests that must be updated, (5) focused validation commands under the repo's vp conventions, and (6) whether this user-visible scaffold change needs a changeset or ai asset updates. Return concise findings with full paths, symbols/selectors, and line numbers where useful. Do not edit files.
+
+---
+
+Planning only, read-only, medium thoroughness. In /Users/dwahl/Scripts/pantoken, analyze the agreed change: responsive utility scale tiers must use actual `--instui-breakpoints-{sm,md,lg,xl}` semantics instead of `--instui-component-tray-width-*`; scaffold canvas-theme-editor will add hidden-max-sm to `.canvas-rce-shell__brand-text`, hidden-max-md to the language/theme `.canvas-rce-shell__label` spans, and a local max-width 64em rule changing `body.canvas-rce-shell-enabled #app` padding to `1rem 1.5rem 1.5rem`. Follow .entire/graph-agent.md and Entire history guidance. Determine exact source token names/values including what should happen to xs, all files/tests/docs generated outputs affected by the responsive utility correction, whether utility docs are generated or hand-authored, current git status relevant to these files and any existing changesets that should be amended rather than duplicated, and exact focused validation commands. Inspect git history/checkpoint intent for responsive utility if available and label recorded intent vs inference. Do not edit.
+
+---
+
+Start implementation
+
+---
+
+I want this font-size to be 0.8rem until the md breakpoint.
