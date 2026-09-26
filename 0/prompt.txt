@@ -1,0 +1,11 @@
+the button set seamed buttons need the following changes:
+* there should be a visible seam between buttons, with an opt-out modifier
+* the button set should not wrap- right now there's an example of:
+```
+<button-set><button><button><button></button-set> <button> <button> <button> <button>
+```
+all on a row and on a narrow view port the button set "breaks" and stacks vertically.
+
+---
+
+do incremental conventional commits and changesets for affected packages, ignoring other unstaged changes in the repo as there are other agents working.
