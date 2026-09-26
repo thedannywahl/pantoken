@@ -8,7 +8,8 @@
  *   never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)
  *   aren't supported as group-level modifiers — use their canonical replacements
  *   (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'
- *   own border color. `-without-seam` is group-only: it hides that seam so the buttons read as
+ *   own border color (solid fills, whose border matches the fill, tint it with the label color).
+ *   `-without-seam` is group-only: it hides that seam so the buttons read as
  *   one continuous control.
  * @modifier -without-seam — Hide the 1px seam between buttons.
  * @modifier -color-primary — Default every unmodified child to the primary color.
@@ -484,4 +485,48 @@
 .pfx-button-set.-display-block > .pfx-button:not(.-display-block) {
   display: flex;
   width: 100%;
+}
+
+/* Solid fills (bare, primary, danger, success) paint their border in the fill color, so tint the
+   seam with the label color instead. Doubled classes outrank the group hover/active rules. */
+.pfx-button-set.pfx-button-set:not(
+    .-without-seam,
+    .-color-secondary,
+    .-color-tertiary,
+    .-color-ai,
+    .-color-ai-secondary,
+    .-on-color,
+    .-condensed,
+    .-without-background,
+    .-without-border
+  )
+  > .pfx-button:not(
+    [class*="-color-"],
+    .-on-color,
+    .-condensed,
+    .-without-background,
+    .-without-border,
+    [aria-pressed="true"],
+    :disabled,
+    [aria-disabled="true"],
+    :last-child
+  ),
+.pfx-button-set.pfx-button-set:not(
+    .-without-seam,
+    .-on-color,
+    .-condensed,
+    .-without-background,
+    .-without-border
+  )
+  > .pfx-button:is(.-color-primary, .-color-danger, .-color-success):not(
+    .-on-color,
+    .-condensed,
+    .-without-background,
+    .-without-border,
+    [aria-pressed="true"],
+    :disabled,
+    [aria-disabled="true"],
+    :last-child
+  ) {
+  border-inline-end-color: color-mix(in srgb, currentColor 35%, transparent);
 }
