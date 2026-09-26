@@ -16,9 +16,6 @@
   "oxc.fmt.configPath": "./vite.config.ts",
   "editor.formatOnSave": true,
   "editor.formatOnSaveMode": "file",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.oxc": "explicit"
-  },
   "snyk.advanced.autoSelectOrganization": true,
   "css.lint.unknownAtRules": "ignore",
   "css.lint.emptyRules": "ignore",
