@@ -174,11 +174,11 @@
     }
 
     /* Preserve the icon swatch when the shared `-icon-*` painter targets ::before. */
-    &[class*="-icon-"] {
+    &:is([class^="-icon-"], [class*=" -icon-"]) {
       --pantoken-banner-glyph: var(--pantoken-glyph);
     }
 
-    &[class*="-icon-"]::before {
+    &:is([class^="-icon-"], [class*=" -icon-"])::before {
       background: var(--pantoken-banner-icon-background);
       -webkit-mask: none;
       mask: none;

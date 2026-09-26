@@ -130,6 +130,8 @@ test("button-set cascades -color-secondary to unmodified children only", () => {
 test("button-set never cascades -icon-* from the group", () => {
   const css = buttonSetRules("instui-");
   expect(css).not.toMatch(/\.instui-button-set\.-icon-/u);
+  expect(css).toContain(':is([class^="-icon-"], [class*=" -icon-"])');
+  expect(css).not.toContain('[class*="-icon-"]');
 });
 
 test("button-set references only real tokens per theme", () => {
@@ -243,6 +245,8 @@ test("banner color backgrounds resolve through the upstream pastel tokens", () =
 test("banner renders a megaphone icon by default and supports custom icon modifiers", () => {
   const css = bannerRules("instui-");
   expect(css).toContain("--pantoken-banner-glyph: var(--instui-icon-megaphone)");
+  expect(css).toContain('&:is([class^="-icon-"], [class*=" -icon-"])');
+  expect(css).not.toContain('[class*="-icon-"]');
   expect(css).toContain("--pantoken-banner-glyph: var(--pantoken-glyph)");
   expect(css).toContain("-webkit-mask: var(--pantoken-banner-glyph) center / 1.125rem no-repeat");
 });
