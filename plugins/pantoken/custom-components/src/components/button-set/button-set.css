@@ -1,13 +1,15 @@
 /**
  * @component button-set
- * @summary A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded.
+ * @summary A non-wrapping row of buttons split by hairline seams, with only its outer two corners rounded.
  * @remarks Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,
  *   `-without-background`, `-without-border`, `-display-block`) set a default for every child
  *   `.pfx-button` that doesn't carry its own modifier in that same category — a button's own
  *   modifier class always wins over the group's default. `-icon-*` is always per-button; it's
  *   never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)
  *   aren't supported as group-level modifiers — use their canonical replacements
- *   (`-color-tertiary`, `-on-color`) instead.
+ *   (`-color-tertiary`, `-on-color`) instead. `-without-seam` is group-only: it drops the hairline
+ *   gaps so the buttons sit flush with a single shared border at each join.
+ * @modifier -without-seam — Remove the hairline seams so the buttons sit flush.
  * @modifier -color-primary — Default every unmodified child to the primary color.
  * @modifier -color-secondary — Default every unmodified child to the secondary color.
  * @modifier -color-tertiary — Default every unmodified child to the tertiary (text-style) color.
@@ -44,6 +46,14 @@
  *   <button class="pfx-button -color-primary -icon-checkmark">Confirm</button>
  * </div>
  * ```
+ * ### Flush (no seams)
+ * ```html
+ * <div class="pfx-button-set -without-seam">
+ *   <button class="pfx-button">Day</button>
+ *   <button class="pfx-button">Week</button>
+ *   <button class="pfx-button">Month</button>
+ * </div>
+ * ```
  * @related button — The child control this wraps.
  */
 .pfx-button-set {
@@ -51,7 +61,7 @@
   flex-shrink: 0;
   align-items: center;
   flex-wrap: nowrap;
-  gap: 0;
+  gap: var(--instui-border-width-sm);
 }
 
 .pfx-button-set > .pfx-button {
@@ -59,8 +69,12 @@
   border-radius: 0;
 }
 
-/* Collapses the doubled border at each seam to a single line. */
-.pfx-button-set > .pfx-button:not(:first-child) {
+.pfx-button-set.-without-seam {
+  gap: 0;
+}
+
+/* Collapses the doubled border at each flush join to a single line. */
+.pfx-button-set.-without-seam > .pfx-button:not(:first-child) {
   border-inline-start: 0;
 }
 
