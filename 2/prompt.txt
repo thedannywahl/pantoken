@@ -53,3 +53,7 @@ I NEED A BLAST-RADIUS REPORT. Investigate and report precisely:
 6. **Drift/gate harnesses.** `packages/utils` drift harness (`unknownReferences`, `danglingReferences`), `tools/upstream-diff`, and `formats/tokens/coverage/` — would any of them choke on expression values?
 
 Report exact file paths with line numbers and quote real code. Depth and precision matter more than brevity.
+
+---
+
+Start implementation
