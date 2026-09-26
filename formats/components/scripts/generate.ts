@@ -4,7 +4,7 @@
  * - `generated/base.css` — the opt-in global base/reset (document defaults).
  * - `generated/components.css` — the class-based components (button, alert, badge), `.instui-*`.
  * - `generated/prose.css` — the prose/content styling, scoped to `.pantoken-prose`.
- * - `generated/icons.css` — one `.instui-icon-<name>` glyph class per icon (large; kept separate).
+ * - `generated/icons.css` — one `.-icon-<name>` glyph class per icon (large; kept separate).
  * - `generated/utilities.css` — cross-cutting spacing/colour/layout utilities, including the global
  *   dual copies of `view`'s/`text`'s own modifiers (bare, or chained onto any component).
  *
@@ -258,7 +258,6 @@ writeFileSync(
     icons.map((icon) => icon.name),
     {
       ...opts,
-      deprecatedAliases: true,
       values: Object.fromEntries(icons.map((icon) => [icon.name, icon.dataUri])),
     },
   ),

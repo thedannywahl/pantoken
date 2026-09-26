@@ -50,15 +50,7 @@
     border-color: var(--instui-component-file-drop-rejected-color);
   }
 
-  &
-    > :is(
-      [class^="-icon-"],
-      [class*=" -icon-"],
-      [class^="-render-icon-"],
-      [class*=" -render-icon-"],
-      [class^="-render-custom-icon-"],
-      [class*=" -render-custom-icon-"]
-    ) {
+  & > :is([class^="-icon-"], [class*=" -icon-"]) {
     line-height: 1;
   }
 }

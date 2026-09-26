@@ -134,15 +134,7 @@
   font-size: var(--instui-component-icon-illu-md);
 }
 
-.pfx-billboard
-  > .hero:is(
-    [class^="-icon-"],
-    [class*=" -icon-"],
-    [class^="-render-icon-"],
-    [class*=" -render-icon-"],
-    [class^="-render-custom-icon-"],
-    [class*=" -render-custom-icon-"]
-  ) {
+.pfx-billboard > .hero:is([class^="-icon-"], [class*=" -icon-"]) {
   line-height: 1;
 }
 
@@ -173,14 +165,7 @@
     }
 
     /* The documented `-icon-*` modifier lives directly on .hero. */
-    > .hero:is(
-        [class^="-icon-"],
-        [class*=" -icon-"],
-        [class^="-render-icon-"],
-        [class*=" -render-icon-"],
-        [class^="-render-custom-icon-"],
-        [class*=" -render-custom-icon-"]
-      ) {
+    > .hero:is([class^="-icon-"], [class*=" -icon-"]) {
       line-height: 1;
     }
 
@@ -201,72 +186,24 @@
       font-size: var(--instui-component-icon-illu-lg);
     }
 
-    &.-size-sm
-      > .hero:is(
-        [class^="-icon-"],
-        [class*=" -icon-"],
-        [class^="-render-icon-"],
-        [class*=" -render-icon-"],
-        [class^="-render-custom-icon-"],
-        [class*=" -render-custom-icon-"]
-      ) {
+    &.-size-sm > .hero:is([class^="-icon-"], [class*=" -icon-"]) {
       font-size: var(--instui-component-icon-illu-sm);
     }
 
-    &.-size-small
-      > .hero:is(
-        [class^="-icon-"],
-        [class*=" -icon-"],
-        [class^="-render-icon-"],
-        [class*=" -render-icon-"],
-        [class^="-render-custom-icon-"],
-        [class*=" -render-custom-icon-"]
-      ) {
+    &.-size-small > .hero:is([class^="-icon-"], [class*=" -icon-"]) {
       font-size: var(--instui-component-icon-illu-sm);
     }
 
-    &.-size-md
-      > .hero:is(
-        [class^="-icon-"],
-        [class*=" -icon-"],
-        [class^="-render-icon-"],
-        [class*=" -render-icon-"],
-        [class^="-render-custom-icon-"],
-        [class*=" -render-custom-icon-"]
-      ),
-    &.-size-medium
-      > .hero:is(
-        [class^="-icon-"],
-        [class*=" -icon-"],
-        [class^="-render-icon-"],
-        [class*=" -render-icon-"],
-        [class^="-render-custom-icon-"],
-        [class*=" -render-custom-icon-"]
-      ) {
+    &.-size-md > .hero:is([class^="-icon-"], [class*=" -icon-"]),
+    &.-size-medium > .hero:is([class^="-icon-"], [class*=" -icon-"]) {
       font-size: var(--instui-component-icon-illu-md);
     }
 
-    &.-size-lg
-      > .hero:is(
-        [class^="-icon-"],
-        [class*=" -icon-"],
-        [class^="-render-icon-"],
-        [class*=" -render-icon-"],
-        [class^="-render-custom-icon-"],
-        [class*=" -render-custom-icon-"]
-      ) {
+    &.-size-lg > .hero:is([class^="-icon-"], [class*=" -icon-"]) {
       font-size: var(--instui-component-icon-illu-lg);
     }
 
-    &.-size-large
-      > .hero:is(
-        [class^="-icon-"],
-        [class*=" -icon-"],
-        [class^="-render-icon-"],
-        [class*=" -render-icon-"],
-        [class^="-render-custom-icon-"],
-        [class*=" -render-custom-icon-"]
-      ) {
+    &.-size-large > .hero:is([class^="-icon-"], [class*=" -icon-"]) {
       font-size: var(--instui-component-icon-illu-lg);
     }
 

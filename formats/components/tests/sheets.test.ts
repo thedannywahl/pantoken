@@ -405,7 +405,7 @@ test("componentsCss bundles every component; proseCss scopes to a content root",
   expect(components).toHaveLength(51);
   // The glyph painter also accepts icon modifiers directly on other hosts, such as buttons.
   expect(all).toContain('[class^="-icon-"]');
-  expect(all).toContain('[class*=" -render-icon-"]');
+  expect(all).not.toContain('[class*=" -render-icon-"]');
   expect(all).not.toContain('[class*="-icon-"]::before');
   expect(proseCss({ scope: ".vp-doc" })).toContain(".vp-doc table");
 });

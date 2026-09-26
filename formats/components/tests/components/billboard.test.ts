@@ -39,9 +39,7 @@ test("billboard size variants map to InstUI icon and text scales", () => {
   expect(selectors).not.toContain("&.-size-small>.heading {");
   expect(selectors).not.toContain("&.-size-large>.heading {");
 
-  const glyph = norm(
-    ':is([class^="-icon-"], [class*=" -icon-"], [class^="-render-icon-"], [class*=" -render-icon-"], [class^="-render-custom-icon-"], [class*=" -render-custom-icon-"])',
-  );
+  const glyph = norm(':is([class^="-icon-"], [class*=" -icon-"])');
   expect(selectors).toContain(`>.hero${glyph} {`);
   expect(selectors).toContain(`&.-size-sm>.hero${glyph} {`);
   expect(selectors).toContain(`&.-size-lg>.hero${glyph} {`);
