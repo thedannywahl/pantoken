@@ -1,0 +1,33 @@
+the formats/components icon modifiers selector is overly broad.
+```
+[class*="-icon-"]::before
+```
+
+Ive inserted pantoken into Canvas and come across these live instances that we're matching and breaking that app's icons on:
+
+```
+.Button--icon-action
+.publish-icon-published
+.menu-item-icon-container
+.ic-Search-icon-container
+```
+
+---
+
+Read-only discovery, quick/medium. In /Users/dwahl/Scripts/pantoken, obey .entire/graph-agent.md (FIRST code search must be `entire graph search --repo . --profile full --query "..."` before grep/find/whole-file reads; user supplied selector and known area, use focused reads as appropriate). Follow using-entire skill for history if relevant (entire status, checkpoint only if useful). Locate exact source implementing generic `[class*="-icon-"]::before` painter, identify all icon class naming conventions and any sibling selectors/consumers that must change, direct neighboring tests and best narrowly scoped validation commands. Check existing user changes read-only via git status. Consult authoring Icons section and any relevant adjacent docs/tests. Return exact paths and line numbers, candidate minimal selector strategy that excludes Canvas examples (.Button--icon-action, .publish-icon-published, .menu-item-icon-container, .ic-Search-icon-container) while retaining intended pantoken glyph classes, risks (prefix/custom prefix), and focused checks. Do not edit files.
+
+---
+
+Read-only, medium. Scope: /Users/dwahl/Scripts/pantoken. Graph instructions were already followed in prior exploration; if needed follow them. User chose to narrow BOTH global painter and component-specific CSS icon-layout selectors that currently use broad class substring matching, preserving -icon-*, -render-icon-*, -render-custom-icon-* token classes. Find exact source files in formats/components (and plugin custom components only if same behavior is coupled) using focused search, distinguish direct icon selectors from unrelated matches (e.g. own -icon- literal modifiers). Determine least-complex maintainable selector rewrite, avoiding breakages to standalone icon classes and deprecated aliases; check if generated component styles regeneration needed, targeted test files and test command syntax from vite.config.ts. Identify minimal test strategy that proves all four Canvas negatives and positive first/middle/last class tokens including aliases; suggest browser-level selector test if existing happy-dom or postcss available. Do not edit or write memories. Return concise actionable list of paths and recommendations.
+
+---
+
+do incremental conventional commits and changesets for your changes ignoring other unstaged changes as there are other agents working in the repo.
+
+---
+
+Start implementation
+
+---
+
+now that I see the implementation that -render-icon and -render-custom-icon were already deprecated, let's remove them and mark a breaking change.
