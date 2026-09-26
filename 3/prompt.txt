@@ -3,3 +3,7 @@ canvas-theme-editor tool/webapp mode the header icon background should use the 9
 ---
 
 Start implementation
+
+---
+
+stage your changes and add a conventional commit, ignoring other unstaged changes
