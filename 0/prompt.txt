@@ -28,3 +28,7 @@ no, what I want is:
 * -ai-color-secondary to look exactly like it does- don't change it.
 * default, primary, -ai, secondary, tertiary to look like the current -without-seam: a barely visible 1px seam that matches the outer border/box-shadow.
 * -without-seam to look like the buttons did before we introduced the change: no visible distinction between the buttons.
+
+---
+
+in your demo, add -color-tertiary -without-seam example
