@@ -220,6 +220,18 @@ test("escapes stray prose tags without changing Markdown code or balanced HTML",
   );
 });
 
+test("matches code spans by backtick-run length, like CommonMark", async () => {
+  const { escapeBareHtmlTags } = await import("./build-api-locales.ts");
+
+  // A stray double backtick opens a span that closes at the next double backtick, leaving the
+  // `<name>` after it as bare prose Vue would parse as an unclosed element.
+  expect(escapeBareHtmlTags("a ``width`/`height` b ``dist/<name>.png`` c `<img>` d")).toBe(
+    "a ``width`/`height` b ``dist/&lt;name&gt;.png`` c `<img>` d",
+  );
+  expect(escapeBareHtmlTags("Use ``a `<li>` b`` here.")).toBe("Use ``a `<li>` b`` here.");
+  expect(escapeBareHtmlTags("```\n<dialog>\n```")).toBe("```\n<dialog>\n```");
+});
+
 test("build surfaces a generation failure as a non-zero exit code", async () => {
   spawnSync.mockReturnValue({ status: 1 }); // TypeDoc/run() fails
   await import("./build-api-locales.ts");

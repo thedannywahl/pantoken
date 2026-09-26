@@ -214,7 +214,8 @@ const collectSidebarText = (items: SidebarItem[], out: string[]): void => {
 /** Escape bare HTML tags in prose while preserving code and attributed tags. */
 export const escapeBareHtmlTags = (text: string): string => {
   const preserved: string[] = [];
-  const withoutCode = text.replace(/```[\s\S]*?```|`[^`\n]+`/g, (match) => {
+  // CommonMark code spans: a backtick run only closes at the next run of the same length.
+  const withoutCode = text.replace(/(?<!`)(`+)(?!`)[\s\S]*?[^`]\1(?!`)/g, (match) => {
     const marker = `__PTK_HTML_SAFE_${preserved.length}__`;
     preserved.push(match);
     return marker;
