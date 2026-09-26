@@ -1,0 +1,9 @@
+Read-only: Based on the current repository state, decide whether @pantoken/email should document its existing @pantoken/email/inline subpath or re-export inlineEmailHtml from the root. Return one recommendation with rationale, no edits.
+
+---
+
+I don't think we need the token-inliner any more if we have juice, so what it shoucould actually be is maybe the email-compatible implementation of inline-styles: omitting invalid components & states and fallbacks, and generating the email-compatible html (with switches for the required clients? i.e. ms-office code, gmail, etc.)
+
+---
+
+In /Users/dwahl/Scripts/pantoken, perform read-only discovery for the user's revised request: make @pantoken/email the email-compatible implementation built on @pantoken/inline-styles, with filtering of invalid components/states/fallbacks and client-specific HTML such as MS Office/Gmail switches. Inspect formats/inline-styles (including current README), formats/email, nearby tests, package manifests, and any existing email client/fallback logic. Report: (1) current public APIs and behavior, (2) reusable implementation surfaces, (3) exact files likely to change, (4) ambiguities requiring user decisions, and (5) recommended phased plan. Do not edit files or run destructive commands.
