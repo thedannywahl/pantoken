@@ -3,10 +3,26 @@
   "checkpoint_id": "01M3F7NT67NQ1RM0GS5J1ACG81",
   "strategy": "manual-commit",
   "branch": "iconfix",
-  "checkpoints_count": 2,
+  "checkpoints_count": 3,
   "files_touched": [
+    ".changeset/reference-preserving-modify.md",
+    "formats/tokens/known-syntax-issues.json",
     "l10n/docs.api.pot",
-    "pnpm-lock.yaml"
+    "packages/core/src/build.ts",
+    "packages/core/src/color.ts",
+    "packages/core/src/index.ts",
+    "packages/core/src/plugin.ts",
+    "packages/core/tests/build.test.ts",
+    "packages/model/src/index.ts",
+    "packages/scaffold/templates/canvas-theme-editor/src/app.css",
+    "packages/scaffold/templates/canvas-theme-editor/src/app.html",
+    "packages/utils/src/resolver.ts",
+    "plugins/pantoken/custom-components/tests/index.test.ts",
+    "plugins/pantoken/custom-theme-colors/tests/index.test.ts",
+    "plugins/tinymce/save/src/index.ts",
+    "plugins/tinymce/save/tests/index.test.ts",
+    "pnpm-lock.yaml",
+    "renderers/pendo/tests/build.test.ts"
   ],
   "sessions": [
     {
@@ -15,6 +31,13 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {

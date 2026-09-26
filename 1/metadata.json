@@ -1,0 +1,73 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3F7NT67NQ1RM0GS5J1ACG81",
+  "session_id": "2311fa5b-9fd8-48e7-b147-416c0b9ac046",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-26T16:09:53.205998Z",
+  "branch": "iconfix",
+  "checkpoints_count": 1,
+  "save_step_count": 2,
+  "files_touched": [
+    ".changeset/reference-preserving-modify.md",
+    "formats/tokens/known-syntax-issues.json",
+    "l10n/docs.api.pot",
+    "packages/core/src/build.ts",
+    "packages/core/src/color.ts",
+    "packages/core/src/index.ts",
+    "packages/core/src/plugin.ts",
+    "packages/core/tests/build.test.ts",
+    "packages/model/src/index.ts",
+    "packages/scaffold/templates/canvas-theme-editor/src/app.css",
+    "packages/scaffold/templates/canvas-theme-editor/src/app.html",
+    "packages/utils/src/resolver.ts",
+    "plugins/pantoken/custom-components/tests/index.test.ts",
+    "plugins/pantoken/custom-theme-colors/tests/index.test.ts",
+    "plugins/tinymce/save/src/index.ts",
+    "plugins/tinymce/save/tests/index.test.ts",
+    "pnpm-lock.yaml",
+    "renderers/pendo/tests/build.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "d3f87a385f37",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 4
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-26T16:09:53.110927Z",
+    "agent_lines": 397,
+    "agent_removed": 302,
+    "human_added": 12,
+    "human_modified": 7,
+    "human_removed": 0,
+    "total_committed": 416,
+    "total_lines_changed": 718,
+    "agent_percentage": 97.35376044568244,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 18,
+      "user_lines_removed": 6,
+      "agent_lines_added": 605,
+      "agent_lines_removed": 623,
+      "user_added_per_file": {
+        "packages/scaffold/templates/canvas-theme-editor/src/app.css": 17,
+        "packages/scaffold/templates/canvas-theme-editor/src/app.html": 1
+      },
+      "user_removed_per_file": {
+        "packages/scaffold/templates/canvas-theme-editor/src/app.css": 5,
+        "packages/scaffold/templates/canvas-theme-editor/src/app.html": 1
+      }
+    }
+  ]
+}
