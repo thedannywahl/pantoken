@@ -1,0 +1,103 @@
+we need to fix this commit message:
+```
+feat(components)!: remove deprecated render icon aliases
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      BREAKING CHANGE: Replace -render-icon-* and -render-custom-icon-* glyph classes with -icon-*. iconGlyphsCss no longer accepts deprecatedAliases.
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      Entire-Checkpoint: 01M3EYM7T0MT8ZDVPB66099W5X
+
+    
+
+  
+
+    
+      
+      
+      ✖   footer's lines must not be longer than 100 characters [footer-max-line-length]
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      ✖   found 1 problems, 0 warnings
+
+    
+
+  
+
+    
+      
+      
+      ⓘ   Get help: [https://github.com/conventional-changelog/commitlint/#what-is-commitlint](https://github.com/conventional-changelog/commitlint/#what-is-commitlint)
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      ⧗   --- input ---
+
+    
+
+  
+
+    
+      
+      
+      fix(components): limit glyph selectors to icon classes
+```
