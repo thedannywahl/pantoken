@@ -21,12 +21,12 @@ test("drawer-layout members emit tray and content rules", () => {
     "inline-size: var(--drawer-layout-tray-width, var(--instui-component-tray-width-xs, 16em))",
   );
   expect(drawerLayoutContentCss({ prefix: "instui" })).toContain(
-    "min-inline-size: var(--drawer-layout-content-min-inline-size, var(--pantoken-bp-md, 30em))",
+    "min-inline-size: var(--drawer-layout-content-min-inline-size, var(--pantoken-bp-md, 48em))",
   );
 });
 
 test("drawer-layout auto-switches to overlay mode via a container query, without JS", () => {
-  const threshold = "46em";
+  const threshold = "64em";
   expect(drawerLayoutCss({ prefix: "instui" })).toContain(
     "container: pantoken-drawer-layout / inline-size",
   );

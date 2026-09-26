@@ -1,5 +1,6 @@
 ---
+"@pantoken/components": patch
 "@pantoken/scaffold": patch
 ---
 
-Let the canvas-theme-editor toolbar wrap on narrow viewports, so the utility buttons drop below the button set instead of crowding it.
+Align responsive utilities with the canonical breakpoint scale, and let the canvas-theme-editor shell progressively hide labels and reduce page padding on narrow viewports.

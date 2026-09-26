@@ -24,7 +24,7 @@ const emValue = (tokenName: string): string => {
   return `${match[1]}em`;
 };
 
-/** Short name, long-form spelling, and device name for each `--instui-component-tray-width-*` tier. */
+/** Short name, long-form spelling, and device name for each responsive breakpoint tier. */
 const SCALE_TIERS: readonly [short: string, long: string, device: string][] = [
   ["xs", "x-small", "mobile"],
   ["sm", "small", "phablet"],
@@ -33,11 +33,14 @@ const SCALE_TIERS: readonly [short: string, long: string, device: string][] = [
   ["xl", "x-large", "desktop"],
 ];
 
+/** Pantoken's extra-small extension, below InstUI's canonical `sm` breakpoint. */
+const XS_BREAKPOINT_EM = "20em";
+
 /** `[names sharing one breakpoint value, width]` for the scale tiers — theme-invariant. */
 const scaleBreakpoints = (): [string[], string][] =>
   SCALE_TIERS.map(([short, long, device]) => [
     [short, long, device],
-    emValue(`--instui-component-tray-width-${short}`),
+    short === "xs" ? XS_BREAKPOINT_EM : emValue(`--instui-breakpoints-${short}`),
   ]);
 
 /** The main content area's max-width, in em, per theme — hand-authored (not in the token IR). */
@@ -156,18 +159,22 @@ export const responsive: Definition = defineUtility({
           `@property --pantoken-bp-${names[0]} { syntax: "<length>"; inherits: true; initial-value: ${w}; }`,
       )
       .join("\n");
-    const scaleSourceVars = SCALE_TIERS.map(
-      ([short]) => `  --pantoken-bp-${short}: var(--instui-component-tray-width-${short});`,
+    const scaleSourceVars = SCALE_TIERS.map(([short]) =>
+      short === "xs"
+        ? `  --pantoken-bp-xs: ${XS_BREAKPOINT_EM};`
+        : `  --pantoken-bp-${short}: var(--instui-breakpoints-${short});`,
     ).join("\n");
-    const scaleShortNames = new Set(SCALE_TIERS.map(([short]) => short));
+    const canonicalScaleNames = new Set(SCALE_TIERS.slice(1).map(([short]) => short));
     // Each `@property` gets real prose: scale tiers name the IR token they mirror; the two
     // unscaled, themed tiers say so instead, since they aren't backed by a token.
     const propertyDocs = bp
       .map(([names, w]) => {
         const short = names[0];
-        const source = scaleShortNames.has(short)
-          ? `mirrors \`--instui-component-tray-width-${short}\``
-          : "hand-authored, themed (not in the token IR)";
+        const source = canonicalScaleNames.has(short)
+          ? `mirrors \`--instui-breakpoints-${short}\``
+          : short === "xs"
+            ? "hand-authored Pantoken extension (not in the token IR)"
+            : "hand-authored, themed (not in the token IR)";
         return ` * @cssproperty --pantoken-bp-${short} <length> — The \`${short}\` breakpoint's value (\`${w}\`, ${source}). Overriding it does not move the compiled \`@media\`/\`@container\` thresholds above.`;
       })
       .join("\n");
@@ -178,7 +185,7 @@ export const responsive: Definition = defineUtility({
  * @selector [class*="-hidden-"],[class*="-show-"]
  * @global
  * @summary Viewport- or container-width show/hide classes across a themed breakpoint scale.
- * @remarks \`.instui-hidden-max-<bp>\`/\`-hidden-min-<bp>\` hide by viewport width; \`.instui-show-max-<bp>\`/\`-show-min-<bp>\` are the inverse (hidden by default, shown only inside the range via \`display: revert\`); the \`-cq-\` variants react to a \`.instui-container\` ancestor's width instead, not the viewport's. Scale tiers \`xs\`/\`sm\`/\`md\`/\`lg\`/\`xl\` (sourced from the IR's tray-width component tokens) are each aliased to a long-form spelling (\`x-small\`\u2013\`x-large\`) and a device name (\`mobile\`/\`phablet\`/\`tablet\`/\`laptop\`/\`desktop\`) \u2014 both deprecated in favor of the short name \u2014 plus the unscaled, themed \`content\`/\`content-full-width\` tiers (the main content area's max-width).
+ * @remarks \`.instui-hidden-max-<bp>\`/\`-hidden-min-<bp>\` hide by viewport width; \`.instui-show-max-<bp>\`/\`-show-min-<bp>\` are the inverse (hidden by default, shown only inside the range via \`display: revert\`); the \`-cq-\` variants react to a \`.instui-container\` ancestor's width instead, not the viewport's. Scale tiers \`sm\`/\`md\`/\`lg\`/\`xl\` mirror the IR's canonical breakpoint tokens, with a Pantoken-defined \`xs\` extension at \`20em\`; each is aliased to a long-form spelling (\`x-small\`\u2013\`x-large\`) and a device name (\`mobile\`/\`phablet\`/\`tablet\`/\`laptop\`/\`desktop\`) \u2014 both deprecated in favor of the short name \u2014 plus the unscaled, themed \`content\`/\`content-full-width\` tiers (the main content area's max-width).
  * @example
  * <div class="instui-hidden-max-sm">Hidden at or below the small breakpoint.</div>
  * <div class="instui-show-min-sm">Shown only at or above the small breakpoint.</div>

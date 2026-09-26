@@ -314,7 +314,7 @@ function setupStandaloneAppShell(): void {
   brandMark.innerHTML = PANTOKEN_ICON;
 
   const brandText = document.createElement("div");
-  brandText.className = "canvas-rce-shell__brand-text";
+  brandText.className = "canvas-rce-shell__brand-text instui-hidden-max-sm";
   const eyebrow = document.createElement("span");
   eyebrow.className = "canvas-rce-shell__eyebrow";
   eyebrow.textContent = "Pantoken";
@@ -332,7 +332,7 @@ function setupStandaloneAppShell(): void {
   localeSummary.className = "canvas-rce-shell__summary instui-button -color-tertiary";
   localeSummary.append(createShellIcon(Languages));
   const localeLabel = document.createElement("span");
-  localeLabel.className = "canvas-rce-shell__label";
+  localeLabel.className = "canvas-rce-shell__label instui-hidden-max-md";
   const localeLocale = (
     document.documentElement.lang || navigator.languages?.[0] || navigator.language || "en-US"
   ).trim();
@@ -344,6 +344,7 @@ function setupStandaloneAppShell(): void {
     localeText = localeLocale.split("-")[0].toUpperCase();
   }
   localeLabel.textContent = localeText;
+  localeSummary.setAttribute("aria-label", localeText);
   localeSummary.append(localeLabel, createShellIcon(ChevronDown));
 
   const localePanel = document.createElement("div");
@@ -396,8 +397,9 @@ function setupStandaloneAppShell(): void {
   themeSummary.className = "canvas-rce-shell__summary instui-button -color-tertiary";
   themeSummary.append(createShellIcon(Palette));
   const themeLabel = document.createElement("span");
-  themeLabel.className = "canvas-rce-shell__label";
+  themeLabel.className = "canvas-rce-shell__label instui-hidden-max-md";
   themeLabel.textContent = activeStrings.themeLabel;
+  themeSummary.setAttribute("aria-label", activeStrings.themeLabel);
   themeSummary.append(themeLabel, createShellIcon(ChevronDown));
 
   const themePanel = document.createElement("div");

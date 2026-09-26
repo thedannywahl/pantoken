@@ -7,7 +7,7 @@
  * @modifier -without-border — Remove the panel edge border.
  * @modifier -without-shadow — Remove elevation when overlay mode is active.
  * @remarks Inline mode keeps the tray in flex flow; overlay mode (set on `drawer-layout`) absolutely positions it above content.
- * @remarks Overlay mode also applies automatically — via a `@container` query on the parent's `pantoken-drawer-layout` container — once the parent's inline-size drops below `46em` (`16em` tray width + `30em` breakpoint).
+ * @remarks Overlay mode also applies automatically — via a `@container` query on the parent's `pantoken-drawer-layout` container — once the parent's inline-size drops below `64em` (`16em` tray width + `48em` breakpoint).
  * @remarks Positioning uses `inset-inline-start`/`inset-inline` (never `left`/`right`), so `-placement-end` docks to the true trailing edge in both LTR and RTL.
  * @accessibility If used as navigation, wrap links in a semantic `<nav>` and provide an accessible name.
  * @related drawer-layout.content — The primary pane that flexes alongside this member.
@@ -68,8 +68,8 @@
   }
 }
 
-/* Automatic overlay: no JS required. 46em = 16em tray width + 30em content breakpoint. */
-@container pantoken-drawer-layout (max-width: 46em) {
+/* Automatic overlay: no JS required. 64em = 16em tray width + 48em content breakpoint. */
+@container pantoken-drawer-layout (max-width: 64em) {
   .pfx-drawer-layout > .tray {
     position: absolute;
     inset-block: 0;

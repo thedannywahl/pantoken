@@ -7,13 +7,30 @@ test("responsive: emits exactly one well-formed cssdoc record with no token drif
   validate(responsive);
 });
 
-test("responsive utilities emit viewport hidden-max/min classes at the tray-width breakpoint scale", () => {
+test("responsive utilities emit viewport hidden-max/min classes at the canonical breakpoint scale", () => {
   const css = responsiveUtilitiesCss({ prefix: "instui" });
   expect(css).toContain(
-    "@media (max-width: 48em) { .instui-hidden-max-lg, .-hidden-max-lg, .instui-hidden-max-large, .-hidden-max-large, .instui-hidden-max-laptop, .-hidden-max-laptop { display: none !important; } }",
+    '@property --pantoken-bp-xs { syntax: "<length>"; inherits: true; initial-value: 20em; }',
   );
   expect(css).toContain(
-    "@media (min-width: 48em) { .instui-hidden-min-lg, .-hidden-min-lg, .instui-hidden-min-large, .-hidden-min-large, .instui-hidden-min-laptop, .-hidden-min-laptop { display: none !important; } }",
+    '@property --pantoken-bp-sm { syntax: "<length>"; inherits: true; initial-value: 30em; }',
+  );
+  expect(css).toContain(
+    '@property --pantoken-bp-md { syntax: "<length>"; inherits: true; initial-value: 48em; }',
+  );
+  expect(css).toContain(
+    '@property --pantoken-bp-lg { syntax: "<length>"; inherits: true; initial-value: 64em; }',
+  );
+  expect(css).toContain(
+    '@property --pantoken-bp-xl { syntax: "<length>"; inherits: true; initial-value: 80em; }',
+  );
+  expect(css).toContain("--pantoken-bp-xs: 20em;");
+  expect(css).toContain("--pantoken-bp-sm: var(--instui-breakpoints-sm);");
+  expect(css).toContain(
+    "@media (max-width: 64em) { .instui-hidden-max-lg, .-hidden-max-lg, .instui-hidden-max-large, .-hidden-max-large, .instui-hidden-max-laptop, .-hidden-max-laptop { display: none !important; } }",
+  );
+  expect(css).toContain(
+    "@media (min-width: 64em) { .instui-hidden-min-lg, .-hidden-min-lg, .instui-hidden-min-large, .-hidden-min-large, .instui-hidden-min-laptop, .-hidden-min-laptop { display: none !important; } }",
   );
   expect(css).toContain(".instui-hidden-max-sm");
   expect(css).toContain(".instui-hidden-max-small");
@@ -24,7 +41,7 @@ test("responsive utilities emit viewport hidden-max/min classes at the tray-widt
   // Container-query variants react to a marked container's width, not the viewport.
   expect(css).toContain(".instui-container { container-type: inline-size; }");
   expect(css).toContain(
-    "@container (max-width: 48em) { .instui-cq-hidden-max-lg, .-cq-hidden-max-lg, .instui-cq-hidden-max-large, .-cq-hidden-max-large, .instui-cq-hidden-max-laptop, .-cq-hidden-max-laptop { display: none !important; } }",
+    "@container (max-width: 64em) { .instui-cq-hidden-max-lg, .-cq-hidden-max-lg, .instui-cq-hidden-max-large, .-cq-hidden-max-large, .instui-cq-hidden-max-laptop, .-cq-hidden-max-laptop { display: none !important; } }",
   );
   expect(css).toContain(".instui-cq-hidden-min-lg");
 });
@@ -36,13 +53,13 @@ test("responsive utilities emit show-max/min classes as the inverse of hidden-ma
   expect(css).toContain(".instui-cq-show-min-lg");
   // ...then revert()ed back to its natural display only inside the matching range.
   expect(css).toContain(
-    "@media (max-width: 20em) { .instui-show-max-sm, .-show-max-sm, .instui-show-max-small, .-show-max-small, .instui-show-max-phablet, .-show-max-phablet { display: revert !important; } }",
+    "@media (max-width: 30em) { .instui-show-max-sm, .-show-max-sm, .instui-show-max-small, .-show-max-small, .instui-show-max-phablet, .-show-max-phablet { display: revert !important; } }",
   );
   expect(css).toContain(
-    "@media (min-width: 20em) { .instui-show-min-sm, .-show-min-sm, .instui-show-min-small, .-show-min-small, .instui-show-min-phablet, .-show-min-phablet { display: revert !important; } }",
+    "@media (min-width: 30em) { .instui-show-min-sm, .-show-min-sm, .instui-show-min-small, .-show-min-small, .instui-show-min-phablet, .-show-min-phablet { display: revert !important; } }",
   );
   expect(css).toContain(
-    "@container (max-width: 48em) { .instui-cq-show-max-lg, .-cq-show-max-lg, .instui-cq-show-max-large, .-cq-show-max-large, .instui-cq-show-max-laptop, .-cq-show-max-laptop { display: revert !important; } }",
+    "@container (max-width: 64em) { .instui-cq-show-max-lg, .-cq-show-max-lg, .instui-cq-show-max-large, .-cq-show-max-large, .instui-cq-show-max-laptop, .-cq-show-max-laptop { display: revert !important; } }",
   );
 });
 
@@ -93,7 +110,7 @@ test("responsive utilities document every hide class, the breakpoint thresholds,
 
   // The @media/@container conditions describe the breakpoint threshold, not visibility behavior.
   const condition = entry.conditions.find(
-    (c) => c.type === "media" && c.query === "(min-width: 20em)",
+    (c) => c.type === "media" && c.query === "(min-width: 30em)",
   );
   expect(condition?.description).not.toMatch(/hide|hidden/i);
   expect(entry.conditions.every((c) => Boolean(c.description))).toBe(true);
@@ -113,15 +130,17 @@ test("responsive utilities document every hide class, the breakpoint thresholds,
   expect(entry.cssPropertiesDeclared.every((p) => Boolean(p.description))).toBe(true);
   expect(
     entry.cssPropertiesDeclared.find((p) => p.name === "--pantoken-bp-sm")?.description,
-  ).toMatch(/--instui-component-tray-width-sm/);
-  // ...and the scale tiers' real values consume the tray-width tokens (content tiers aren't IR-backed).
+  ).toMatch(/--instui-breakpoints-sm/);
+  // ...and canonical scale tiers consume the breakpoint tokens (xs/content tiers aren't IR-backed).
   expect(entry.cssPropertiesConsumed.map((t) => t.name)).toEqual(
     expect.arrayContaining([
-      "--instui-component-tray-width-xs",
-      "--instui-component-tray-width-sm",
-      "--instui-component-tray-width-md",
-      "--instui-component-tray-width-lg",
-      "--instui-component-tray-width-xl",
+      "--instui-breakpoints-sm",
+      "--instui-breakpoints-md",
+      "--instui-breakpoints-lg",
+      "--instui-breakpoints-xl",
     ]),
+  );
+  expect(entry.cssPropertiesConsumed.map((t) => t.name)).not.toContain(
+    "--instui-component-tray-width-sm",
   );
 });

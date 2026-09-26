@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-26 14:44+0000\n"
+"PO-Revision-Date: 2026-09-26 16:51+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -3738,6 +3738,36 @@ msgctxt "docs.api:prose"
 msgid "True when a value cannot be a typed `@property` initial-value (`var()` / `light-dark()`)."
 msgstr ""
 
+#: packages/core/src/functions/modifyExpression.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The CSS-expression form of [applyModify](applyModify.md): same maths, but applied to `base` at paint time\nrather than to a hex at build time, so a `var(--instui-…)` origin survives into the stylesheet\nand keeps tracking whatever that token resolves to (including a `light-dark()` pair, and any\nruntime re-pointing of the primitive it derives from)."
+msgstr ""
+
+#: packages/core/src/functions/modifyExpression.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Relative colour syntax resolves `l` on the 0–100 scale in both `hsl()` and `lch()`, and an\nomitted alpha channel inherits the origin's — matching `applyModify`'s alpha passthrough."
+msgstr ""
+
+#: packages/core/src/functions/modifyExpression.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The origin colour: a `var(--token)`, a literal, or a nested expression."
+msgstr ""
+
+#: packages/core/src/functions/modifyExpression.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The Tokens Studio modifier to express."
+msgstr ""
+
+#: packages/core/src/functions/modifyExpression.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A CSS colour expression."
+msgstr ""
+
 #: packages/core/src/functions/referenceToVarName.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -4139,6 +4169,13 @@ msgstr ""
 #: packages/model/src/interfaces/Token.md
 #, no-c-format
 msgctxt "docs.api:prose"
+msgid "The fully-flattened literal, present only when `value` is a reference-preserving CSS\nexpression (a Tokens Studio `modify` rendered as `color-mix()` / `hsl(from …)`). Emitters that\nneed a real colour rather than a CSS expression — the native lineage, Figma, swatches — read\nthis instead; the shared resolver in `@pantoken/utils` prefers it automatically."
+msgstr ""
+
+#: packages/core/src/interfaces/Token.md
+#: packages/model/src/interfaces/Token.md
+#, no-c-format
+msgctxt "docs.api:prose"
 msgid "True when the light and dark resolutions differ (value is a `light-dark()`)."
 msgstr ""
 
@@ -4494,7 +4531,7 @@ msgstr ""
 #: packages/utils/src/functions/makeResolver.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Build a resolver that expands `var(--x)` references to concrete leaf values against `base` (plus\nany `overrides`). With `mode` it collapses `light-dark()` to that branch; without, it leaves\n`light-dark()` in place."
+msgid "Build a resolver that expands `var(--x)` references to concrete leaf values against `base` (plus\nany `overrides`). With `mode` it collapses `light-dark()` to that branch; without, it leaves\n`light-dark()` in place. A token carrying a [Token.flatValue](../../../core/src/interfaces/Token.md#flatvalue) resolves through that rather\nthan its CSS-expression `value`, so callers always land on a real colour."
 msgstr ""
 
 #: packages/plugin-kit/src/functions/makeResolver.md
@@ -5870,6 +5907,12 @@ msgctxt "docs.api:prose"
 msgid "Build the banner layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.\nDefaults to `\"instui-\"` for the shipped stylesheet; pass `\"\"` for an unprefixed build."
 msgstr ""
 
+#: plugins/pantoken/custom-components/src/functions/breakpointDeclarations.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The extra-small viewport breakpoint, below InstUI's 30em `sm` breakpoint."
+msgstr ""
+
 #: plugins/pantoken/custom-components/src/functions/buttonSetRules.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -6109,7 +6152,7 @@ msgstr ""
 #: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Output of buildReferenceCurve."
+msgid "Output of [buildReferenceCurve](#)."
 msgstr ""
 
 #: plugins/pantoken/custom-theme-colors/src/functions/isHexColor.md

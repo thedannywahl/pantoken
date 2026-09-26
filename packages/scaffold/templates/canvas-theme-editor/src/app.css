@@ -49,6 +49,12 @@ body.canvas-rce-shell-enabled #app {
   padding: 1rem 3rem 3rem;
 }
 
+@media (max-width: 64em) {
+  body.canvas-rce-shell-enabled #app {
+    padding: 1rem 1.5rem 1.5rem;
+  }
+}
+
 /* Redundant with the shell's own brand mark once it's showing. */
 body.canvas-rce-shell-enabled .title,
 body.canvas-rce-shell-enabled .description,
@@ -131,6 +137,12 @@ body.canvas-rce-shell-enabled #app-mode {
   display: block;
   font-size: 1rem;
   line-height: 1.2;
+}
+
+@media (max-width: 48em) {
+  .canvas-rce-shell__brand strong {
+    font-size: 0.8rem;
+  }
 }
 
 .canvas-rce-shell__actions {
