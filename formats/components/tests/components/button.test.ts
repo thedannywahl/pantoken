@@ -77,11 +77,7 @@ test("button icon modifiers center the glyph and add the expected gap", () => {
 test("icon-only buttons automatically use square icon-button geometry", () => {
   const css = buttonCss({ prefix: "instui" });
   const selectors = css.replace(/\s+/g, "");
-  const glyph =
-    ':is([class^="-icon-"],[class*=" -icon-"],[class^="-render-icon-"],[class*=" -render-icon-"],[class^="-render-custom-icon-"],[class*=" -render-custom-icon-"])'.replace(
-      /\s+/g,
-      "",
-    );
+  const glyph = ':is([class^="-icon-"],[class*="-icon-"])';
   expect(selectors).toContain(`&${glyph}:not(:has(>*))`);
   expect(selectors).toContain(`&${glyph}:has(>.instui-screen-reader-content:only-child)`);
   expect(selectors).toContain(
@@ -173,16 +169,15 @@ test("AI glyph overrides require a real icon modifier on the button", () => {
   expect(overrideSelector).not.toBe("");
 
   const button = new Window().document.createElement("button");
-  for (const className of [
-    "instui-button -color-ai -icon-search",
-    "instui-button -color-ai -render-custom-icon-search",
-  ]) {
+  for (const className of ["instui-button -color-ai -icon-search"]) {
     button.className = className;
     expect(button.matches(overrideSelector), className).toBe(true);
   }
   for (const className of [
     "instui-button -color-ai Button--icon-action",
     "instui-button -color-ai menu-item-icon-container",
+    "instui-button -color-ai -render-custom-icon-search",
+    "instui-button -color-ai -render-icon-search",
   ]) {
     button.className = className;
     expect(button.matches(overrideSelector), className).toBe(false);

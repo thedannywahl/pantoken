@@ -43,14 +43,7 @@
       text-decoration: none;
     }
 
-    a:is(
-        [class^="-icon-"],
-        [class*=" -icon-"],
-        [class^="-render-icon-"],
-        [class*=" -render-icon-"],
-        [class^="-render-custom-icon-"],
-        [class*=" -render-custom-icon-"]
-      )::before {
+    a:is([class^="-icon-"], [class*=" -icon-"])::before {
       margin-inline-end: var(--instui-spacing-space2xs);
     }
 

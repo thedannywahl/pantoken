@@ -15,8 +15,8 @@ test("icon: three-selector pattern with glyph painter", () => {
   expect(css).toMatch(/@scope\s*\(\.instui-icon\)\s*\{[\s\S]*&\s*\{[\s\S]*display:\s*inline-flex/u);
   expect(css).toContain('[class^="-icon-"]');
   expect(css).toContain('[class*=" -icon-"]');
-  expect(css).toContain('[class^="-render-icon-"]');
-  expect(css).toContain('[class*=" -render-custom-icon-"]');
+  expect(css).not.toContain('[class^="-render-icon-"]');
+  expect(css).not.toContain('[class*=" -render-custom-icon-"]');
   expect(css).not.toContain('[class*="-icon-"]::before');
   expect(css).toContain("inline-size: 1em");
   expect(css).toContain("var(--pantoken-glyph)");
@@ -36,8 +36,6 @@ test("icon: painter matches glyph tokens but not Canvas icon classes", () => {
     "-icon-search",
     "instui-button -icon-search",
     "other -icon-search trailing",
-    "instui-icon -render-icon-search",
-    "instui-button -render-custom-icon-search",
   ]) {
     icon.className = className;
     expect(icon.matches(painterSelector), className).toBe(true);
@@ -49,6 +47,8 @@ test("icon: painter matches glyph tokens but not Canvas icon classes", () => {
     "ic-Search-icon-container",
     "instui-button Button--icon-action",
     "other-icon-search",
+    "instui-icon -render-icon-search",
+    "instui-button -render-custom-icon-search",
   ]) {
     icon.className = className;
     expect(icon.matches(painterSelector), className).toBe(false);
