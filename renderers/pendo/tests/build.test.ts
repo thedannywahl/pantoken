@@ -81,13 +81,16 @@ test("close and standard button interactions use the canonical component tokens"
 test("ghost state tokens are computed before entering the Pendo token layer", () => {
   const css = buildPendoCss({ prune: false, important: false });
   for (const state of ["hover", "active"]) {
+    // The upstream alpha modifier is materialised into the sheet — as a color-mix() over the brand
+    // token (which the same sheet declares), not as a dangling upstream reference.
     expect(css).toMatch(
       new RegExp(
-        `--instui-component-base-button-primary-ghost-${state}-background:[^;]*#[0-9a-f]{8}`,
+        `--instui-component-base-button-primary-ghost-${state}-background:\\s*color-mix\\(in srgb, var\\(--instui-color-institutional-brand-button-primary-bgd\\) [\\d.]+%, transparent\\)`,
         "iu",
       ),
     );
   }
+  expect(css).toContain("--instui-color-institutional-brand-button-primary-bgd:");
 });
 
 test("scope + important are on by default and toggle off", () => {

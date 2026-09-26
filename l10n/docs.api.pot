@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-26 13:34+0000\n"
+"PO-Revision-Date: 2026-09-26 14:44+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -9678,6 +9678,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Configuration for the content plugins composed by [createPantokenPlugin](../functions/createPantokenPlugin.md)."
+msgstr ""
+
+#: renderers/tinymce/src/interfaces/PantokenPluginOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Translated UI strings for this editor; unspecified strings remain English."
 msgstr ""
 
 #: renderers/tinymce/src/interfaces/TaggedIcon.md
