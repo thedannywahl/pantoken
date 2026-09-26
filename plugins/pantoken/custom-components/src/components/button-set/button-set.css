@@ -70,6 +70,53 @@
   border-radius: 0;
 }
 
+/* The bare button's border is transparent; match -color-primary so its seam shows too. :where
+   keeps this below the group's own modifier rules. */
+.pfx-button-set
+  > .pfx-button:where(
+    :not(
+      [class*="-color-"],
+      .-on-color,
+      .-condensed,
+      .-toggle,
+      .-without-background,
+      :disabled,
+      [aria-disabled="true"]
+    )
+  ) {
+  border-color: var(--instui-color-stroke-interactive-action-primary-base);
+}
+
+.pfx-button-set
+  > .pfx-button:where(
+    :not(
+      [class*="-color-"],
+      .-on-color,
+      .-condensed,
+      .-toggle,
+      .-without-background,
+      :disabled,
+      [aria-disabled="true"]
+    ):hover
+  ) {
+  border-color: var(--instui-color-stroke-interactive-action-primary-hover);
+}
+
+.pfx-button-set
+  > .pfx-button:where(
+    :not(
+      [class*="-color-"],
+      .-on-color,
+      .-condensed,
+      .-toggle,
+      .-without-background,
+      :disabled,
+      [aria-disabled="true"]
+    ):active
+  ) {
+  border-color: var(--instui-color-stroke-interactive-action-primary-active);
+}
+
 /* Collapses the doubled border at each join to a single 1px seam in the button's border color. */
 .pfx-button-set:is(:not(.-color-ai-secondary), .-without-seam) > .pfx-button:not(:first-child) {
   border-inline-start: 0;
