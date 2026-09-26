@@ -1,0 +1,76 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3FZZX3EXFEB2P62T2CS3PTB",
+  "session_id": "8f6b1fbb-2f17-414a-b2d4-8c1fd88487cd",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-26T23:14:49.575563Z",
+  "branch": "inline",
+  "checkpoints_count": 2,
+  "save_step_count": 1,
+  "files_touched": [
+    "platforms/email/package.json",
+    "platforms/email/tests/index.test.ts",
+    "platforms/email/vite.config.ts",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "769abd699925",
+  "checkpoint_transcript_start": 64,
+  "transcript_lines_at_start": 64,
+  "compact_transcript_start": 14,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 4
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-26T23:14:49.569455Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 1,
+    "human_modified": 8,
+    "human_removed": 0,
+    "total_committed": 1,
+    "total_lines_changed": 9,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 940,
+      "user_lines_removed": 8,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "formats/inline-styles/package.json": 59,
+        "formats/inline-styles/src/cli.ts": 77,
+        "formats/inline-styles/src/flatten-scopes.ts": 97,
+        "formats/inline-styles/src/index.ts": 4,
+        "formats/inline-styles/src/inline-html.ts": 22,
+        "formats/inline-styles/src/pantoken-html.ts": 119,
+        "formats/inline-styles/tests/cli.test.ts": 28,
+        "formats/inline-styles/tests/inline-html.test.ts": 60,
+        "formats/inline-styles/tsconfig.json": 4,
+        "formats/inline-styles/vite.config.ts": 14,
+        "platforms/email/package.json": 2,
+        "platforms/email/src/inline.ts": 4,
+        "platforms/email/tests/index.test.ts": 7,
+        "platforms/email/vite.config.ts": 7,
+        "pnpm-lock.yaml": 434,
+        "pnpm-workspace.yaml": 2
+      },
+      "user_removed_per_file": {
+        "platforms/email/vite.config.ts": 1,
+        "pnpm-lock.yaml": 7
+      }
+    }
+  ]
+}
