@@ -1,0 +1,1149 @@
+use `gh` cli to watch PR 182 remediating any CI failures and pushing until it's green.
+
+---
+
+[Terminal cd323643-be8d-4e90-ad68-0fb027972ff2 notification: command may be waiting for input — assess the output below.]
+This note is not a signal to end the turn — pick one of the actions below and continue.
+  1. If the output clearly ends with a non-secret input prompt (Continue? (y/n), Enter selection, etc. — a normal shell prompt like `$` or `#` does NOT count), determine the answer and immediately call send_to_terminal with id="cd323643-be8d-4e90-ad68-0fb027972ff2" (which returns the next few lines of output). Repeat one prompt at a time. Never guess passwords, passphrases, tokens, or other secrets — if the prompt requires a secret you do not have, inform the user and stop.
+  2. If the command may still be producing output or the shell prompt has not returned, call get_terminal_output with id="cd323643-be8d-4e90-ad68-0fb027972ff2" to continue polling.
+Terminal output:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  "baseRefName": "main",
+  "headRefName": "iconfix",
+  "headRefOid": "b33a5e7032fc99206a30e016ae9d6acb5c85fa48",
+  "number": 182,
+  "state": "OPEN",
+  "title": "Iconfix",
+  "url": "https://github.com/thedannywahl/pantoken/pull/182"
+}
+(END)
+
+---
+
+[Terminal cd323643-be8d-4e90-ad68-0fb027972ff2 notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on iconfix ≡ via  26.10.0 
+➜  pwd && git status --short --branch && gh pr view 182 --json number,title,state,headRefName,headRefOid,baseRefName,url
+/Users/dwahl/Scripts/pantoken
+## iconfix...origin/iconfix
+Working...
+
+---
+
+[Terminal 7e1acb51-8ea1-402b-9677-14263d2d0621 notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on iconfix ≡ via  26.10.0 
+➜  entire graph search --repo . --profile full --query "The docs CI build fails in build-canvas-rce.ts because Lightning CSS reports an unexpected end of input near the canvas theme editor CSS; locate the authored stylesheet or generated source that is malformed."
+{"query":"The docs CI build fails in build-canvas-rce.ts because Lightning CSS reports an unexpected end of input near the canvas theme editor CSS; locate the authored stylesheet or generated source that is malformed.","repo_root":"/Users/dwahl/Scripts/pantoken","commit":"2a183cc784da75f6c7428971ea03c314071902c2","tree":"5f185d34823309909b841cbed4f7968d51a2254d","profile":"full","results":[{"rank":1,"score":42.3109,"file_path":"docs/scripts/canvas-rce-iframe-height.js","start_line":1,"end_line":15,"focus_line":2,"snippet_start_line":1,"snippet_end_line":6,"language":"JavaScript","signals":["path","body","constraint:entity","constraint:phrase","constraint:relationship","exact-code-token"],"snippet":"/**\n * Injected into the rendered `canvas-theme-editor` starter by `build-canvas-rce.ts` — docs-only, so\n * the published scaffold template stays free of embedding concerns. Reports the document's content\n * height to the embedding page (`.vitepress/theme/components/CanvasRcePage.vue`), which grows the\n * `<iframe>` to match so the iframe never scrolls independently of the docs page.\n *"},{"rank":2,"score":34.8632,"file_path":"platforms/canvas-theme-editor/src/build-theme.ts","start_line":158,"end_line":190,"focus_line":160,"snippet_start_line":160,"snippet_end_line":190,"symbol_start_line":160,"symbol_end_line":190,"language":"TypeScript","kind":"function","symbol_id":"gh/thedannywahl/pantoken:TypeScript:platforms/canvas-theme-editor/src/build-theme.ts:function:buildThemeCss","symbol_name":"buildThemeCss","qualified_name":"buildThemeCss","signature":"function buildThemeCss(options: BuildThemeOptions = {}): string","signals":["path","body","symbol-name","constraint:entity","graph:callers","complete-symbol"],"snippet":"export function buildThemeCss(options: BuildThemeOptions = {}): string {\n  const { provider, version } = options;\n  const buildOptions: CdnBuildOptions = { version };\n  const css = options.css ?? defaultThemeCssAssets(options.theme, options.mode, options.scoped);\n  const fonts = options.fonts ?? DEFAULT_THEME_FONT_ASSETS;\n  const s: ThemeStrings = { ...ENGLISH_THEME_STRINGS, ...options.strings };\n  return `/**\n * ${s.cssHeaderTitle}\n * ${s.cssHeaderUpload}\n * ${s.cssHeaderRequirement}\n * ${s.cssDocsNote}\n */\n\n/* ${s.sectionComponentStyles} */\n${importLines(css, provider, buildOptions)}\n/* ${s.sectionFonts} */\n${importLines(fonts, provider, buildOptions)}\n\n/* ${s.sectionAdditional} */\n\n/** ${s.additionalHintIntro}\n * ${s.additionalHintExample}\n * @import url(\"https://cdn.jsdelivr.net/combine/npm/@pantoken/components/dist/icons/backpack.css\");\n */\n\n/* ---------------------------------------------------------------------------------------------\n * ${s.overridesCssNote1}\n * ${s.overridesCssNote2}\n * ------------------------------------------------------------------------------------------- */\n`;\n}"},{"rank":3,"score":34.1349,"file_path":"packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl","start_line":612,"end_line":691,"focus_line":639,"snippet_start_line":636,"snippet_end_line":641,"signals":["path","body","constraint:entity","constraint:phrase","constraint:relationship","exact-code-token"],"snippet":"// Covers `plugin-logos` (a real dependency for any scaffolded project) and the icon packages\n// `build-canvas-rce.ts` vendors into `node_modules` purely so this docs-hosted preview's \"None\n// (inline)\" provider doesn't have to hit a CDN for `::name` autocomplete/picker glyphs.\nconst localAssetUrls = import.meta.glob<string>(\n  \"/node_modules/@pantoken/plugin-{logos,simple-icons,lucide-lab,custom-icons}/dist/**/*.css\",\n  { eager: true, import: \"default\", query: \"?url\" },","comment_focus_line":637},{"rank":4,"score":33.9036,"file_path":"docs/scripts/build-css-api.ts","start_line":379,"end_line":393,"focus_line":385,"snippet_start_line":385,"snippet_end_line":393,"symbol_start_line":385,"symbol_end_line":393,"language":"TypeScript","kind":"function","symbol_id":"gh/thedannywahl/pantoken:TypeScript:docs/scripts/build-css-api.ts:function:makeSourceResolver","symbol_name":"makeSourceResolver","qualified_name":"makeSourceResolver","signature":"function makeSourceResolver( componentsRoot: string, pluginRecordDefs: PluginRecord[], ): (entry: CssDocEntry) => { href: string; label?: string } | undefined","signals":["path","body","signature","symbol-name","constraint:entity","graph:callers","complete-symbol"],"snippet":"export function makeSourceResolver(\n  componentsRoot: string,\n  pluginRecordDefs: PluginRecord[],\n): (entry: CssDocEntry) => { href: string; label?: string } | undefined {\n  const pluginSources = pluginRecordDefs.map((r) =>\n    join(repoRoot, r.pkg, \"scripts\", \"generate.ts\"),\n  );\n  return makeResolveSource(sourceMap([...componentSources(componentsRoot), ...pluginSources]));\n}"},{"rank":5,"score":33.4113,"file_path":"docs/.vitepress/theme/canvas-rce.ts","start_line":24,"end_line":32,"focus_line":29,"snippet_start_line":26,"snippet_end_line":31,"symbol_start_line":26,"symbol_end_line":32,"language":"TypeScript","kind":"variable","symbol_id":"gh/thedannywahl/pantoken:TypeScript:docs/.vitepress/theme/canvas-rce.ts:variable:CANVAS_RCE_DEFAULTS","symbol_name":"CANVAS_RCE_DEFAULTS","qualified_name":"CANVAS_RCE_DEFAULTS","signature":"CANVAS_RCE_DEFAULTS: CanvasRceStrings = { title: \"Canvas RCE\", description: \"A live preview of pantoken's Canvas LMS Rich Content Editor template: a TinyMCE-based editor with starter layouts, a live preview pane, and hand-editable theme.css/theme.js output.\", openInNewTab: \"Open in a new tab\", runLocally: \"Run locally: npx create-pantoken-app canvas-theme-editor\", }","signals":["path","body","signature","symbol-name","constraint:entity"],"snippet":"export const CANVAS_RCE_DEFAULTS: CanvasRceStrings = {\n  title: \"Canvas RCE\",\n  description:\n    \"A live preview of pantoken's Canvas LMS Rich Content Editor template: a TinyMCE-based editor with starter layouts, a live preview pane, and hand-editable theme.css/theme.js output.\",\n  openInNewTab: \"Open in a new tab\",\n  runLocally: \"Run locally: npx create-pantoken-app canvas-theme-editor\","},{"rank":6,"score":33.3223,"file_path":"renderers/pendo/src/build.ts","start_line":95,"end_line":138,"focus_line":103,"snippet_start_line":102,"snippet_end_line":103,"symbol_start_line":103,"symbol_end_line":138,"language":"TypeScript","kind":"function","symbol_id":"gh/thedannywahl/pantoken:TypeScript:renderers/pendo/src/build.ts:function:buildPendoCss","symbol_name":"buildPendoCss","qualified_name":"buildPendoCss","signature":"function buildPendoCss(options: BuildPendoCssOptions = {}): string","signals":["path","body","symbol-name","constraint:entity"],"snippet":" */\nexport function buildPendoCss(options: BuildPendoCssOptions = {}): string {"},{"rank":7,"score":31.8769,"file_path":"packages/scaffold/CHANGELOG.md","start_line":262,"end_line":266,"focus_line":264,"snippet_start_line":263,"snippet_end_line":264,"language":"Markdown","signals":["body","symbol-usage","+1 similar"],"snippet":"\n  `buildThemeCss()`/`defaultThemeCssAssets()` now always import `@pantoken/plugin-custom-theme-colors`'s"},{"rank":8,"score":28.9621,"file_path":"packages/scaffold/templates/canvas-theme-editor/src/app.css","start_line":67,"end_line":67,"focus_line":67,"snippet_start_line":67,"snippet_end_line":67,"symbol_start_line":67,"symbol_end_line":67,"language":"CSS","kind":"selector","symbol_id":"gh/thedannywahl/pantoken:CSS:packages/scaffold/templates/canvas-theme-editor/src/app.css:selector:canvas-rce-shell","symbol_name":"canvas-rce-shell","qualified_name":"canvas-rce-shell","signature":"css selector .canvas-rce-shell","signals":["path","body","signature","symbol-name","constraint:entity"],"snippet":".canvas-rce-shell {"},{"rank":9,"score":0,"file_path":"platforms/canvas-theme-editor/src/build-theme.ts","start_line":193,"end_line":214,"focus_line":193,"snippet_start_line":193,"snippet_end_line":193,"kind":"function","qualified_name":"buildThemeJs","signals":["related:sibling"],"section":"related","snippet":"export function buildThemeJs(options: BuildThemeOptions = {}): string {"},{"rank":10,"score":0,"file_path":"platforms/canvas-theme-editor/src/build-theme.ts","start_line":217,"end_line":219,"focus_line":217,"snippet_start_line":217,"snippet_end_line":217,"kind":"function","qualified_name":"buildTheme","signals":["related:caller"],"section":"related","snippet":"export function buildTheme(options: BuildThemeOptions = {}): { css: string; js: string } {"},{"rank":11,"score":0,"file_path":"platforms/canvas-theme-editor/src/build-theme.ts","start_line":133,"end_line":141,"focus_line":133,"snippet_start_line":133,"snippet_end_line":133,"kind":"function","qualified_name":"importLines","signals":["related:sibling"],"section":"related","snippet":"function importLines("},{"rank":12,"score":0,"file_path":"docs/scripts/build-css-api.ts","start_line":646,"end_line":712,"focus_line":646,"snippet_start_line":646,"snippet_end_line":646,"kind":"function","qualified_name":"build","signals":["related:caller"],"section":"related","snippet":"export const build = (): void => {"}],"verify_command":{"command":"npm test","targets":"whole test suite (no covering test identified)","derived_from":"package.json devDependencies (whole suite)","tier":"suite"},"stats":{"query_constraints_truncated":true,"files_scanned":7363,"preselection_backend":"go-content","preselection_passes":3,"preselection_files_examined":7363,"preselection_confidence":0.004186247996158299,"preselection_coverage":1,"preselection_diversity":1,"preselection_widened":true,"preselection_bounded":true,"files_content_read_during_preselection":7363,"files_content_read_during_query":415,"bytes_content_read_during_query":63475148,"files_content_read_for_identifier_usage":140,"bytes_content_read_for_identifier_usage":1165069,"files_content_read_for_context_blocks":4,"bytes_content_read_for_context_blocks":20887,"files_indexed":384,"symbols_considered":2766,"lexical_candidates":20164,"graph_candidates":14,"caller_boosted_candidates":139,"identifier_usage_candidates":32,"same_container_neighbor_candidates":7,"same_file_bridge_candidates":3,"sparse_candidates":0,"sparse_files_content_read":0,"candidates_selected":12,"result_bytes":8820,"context_budget_bytes":24576,"snippets_truncated_by_budget":6,"complete_symbol_snippets":2,"locator_snippets":5,"doc_reanchored_hits":1,"related_sites":4,"verify_command_bytes":339,"verify_tier":"suite","context_block_bytes":339,"index_cache_hit":false,"index_latency_ms":1743,"query_latency_ms":7267,"total_latency_ms":15844,"search_latency_ms":15844,"preselect_latency_ms":6833},"warnings":[{"code":"W_WORKTREE_SNAPSHOT","severity":"warning","effect_on_semantic_completeness":"snapshot records are read from the working tree because --worktree was requested"}],"partial_failures":[],"completeness":{"languages":{"CSS":{"files":109,"symbols":379},"JSON":{"files":1,"symbols":30},"JavaScript":{"files":1,"symbols":4},"Markdown":{"files":63,"symbols":1853},"TypeScript":{"files":24,"symbols":464},"YAML":{"files":3,"symbols":36}},"relations":{"ACCESSES":2,"ASYNC_CALLS":8,"CALLS":458,"CONFIGURES":61,"CONSTRUCTS":3,"CONTAINS":182,"DATA_FLOWS":120,"DEFINES":2766,"EXTENDS":1,"FILE_CHANGES_WITH":55,"IMPORTS":148,"INHERITS":1,"LISTENS_ON":9,"PARAM_TYPE":80,"READS_FIELD":72,"RETURNS_TYPE":26,"USES_TYPE":101,"WRITES_FIELD":12}}}
+
+---
+
+[Terminal 461e3e0c-107f-4a71-9362-6c4c1ec92582 notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on iconfix ≡  ~1 via  26.10.0 
+➜  entire graph search --repo . --profile full --query "Locate scaffoldProject and the generator that materializes packages/scaffold/templates/canvas-theme-editor/src/app.css into the template used by docs/scripts/build-canvas-rce.ts."
+{"query":"Locate scaffoldProject and the generator that materializes packages/scaffold/templates/canvas-theme-editor/src/app.css into the template used by docs/scripts/build-canvas-rce.ts.","repo_root":"/Users/dwahl/Scripts/pantoken","commit":"2a183cc784da75f6c7428971ea03c314071902c2","tree":"5f185d34823309909b841cbed4f7968d51a2254d","profile":"full","results":[{"rank":1,"score":84.1417,"file_path":"packages/scaffold/src/index.ts","start_line":297,"end_line":330,"focus_line":305,"snippet_start_line":305,"snippet_end_line":330,"symbol_start_line":305,"symbol_end_line":330,"language":"TypeScript","kind":"function","symbol_id":"gh/thedannywahl/pantoken:TypeScript:packages/scaffold/src/index.ts:function:scaffoldProject","symbol_name":"scaffoldProject","qualified_name":"scaffoldProject","signature":"async function scaffoldProject( platform: string, dir = \".\", options?: ScaffoldProjectOptions, ): Promise<string[]>","signals":["body","exact-symbol","symbol-name","constraint:entity","exact-code-token","graph:callers","complete-symbol"],"snippet":"export async function scaffoldProject(\n  platform: string,\n  dir = \".\",\n  options?: ScaffoldProjectOptions,\n): Promise<string[]> {\n  const resolvedPlatform = resolveScaffoldPlatform(platform);\n  const projectName = dir === \".\" ? \"pantoken-app\" : (dir.split(\"/\").pop() ?? \"pantoken-app\");\n  const locale = options?.locale ?? \"en\";\n  const substitutions = {\n    projectName,\n    pantokenCssImport: themeStylesheetImport(options?.theme, options?.mode),\n    locale,\n    dir: localeDirection(locale),\n  };\n\n  const written = writeLegacyTemplateFiles(\n    resolvedPlatform,\n    dir,\n    locale,\n    substitutions,\n    options?.packageManager,\n  );\n  written.push(...writeCanvasThemeEditorAssets(resolvedPlatform, dir, options));\n\n  return written;\n}"},{"rank":2,"score":76.5124,"file_path":"packages/scaffold/src/cli.ts","start_line":273,"end_line":296,"focus_line":273,"snippet_start_line":273,"snippet_end_line":296,"symbol_start_line":273,"symbol_end_line":296,"language":"TypeScript","kind":"function","symbol_id":"gh/thedannywahl/pantoken:TypeScript:packages/scaffold/src/cli.ts:function:scaffoldWithSpinner","symbol_name":"scaffoldWithSpinner","qualified_name":"scaffoldWithSpinner","signature":"async function scaffoldWithSpinner( platform: string, dir: string, t: LocaleLookup[\"t\"], options?: { theme?: ThemeVariant; mode?: ThemeMode; cdn?: string; locale?: string; packageManager?: ScaffoldPackageManager; }, ): Promise<string[]>","signals":["graph:calls","graph:incoming","graph:callers","complete-symbol","contiguous-span"],"snippet":"export async function scaffoldWithSpinner(\n  platform: string,\n  dir: string,\n  t: LocaleLookup[\"t\"],\n  options?: {\n    theme?: ThemeVariant;\n    mode?: ThemeMode;\n    cdn?: string;\n    locale?: string;\n    packageManager?: ScaffoldPackageManager;\n  },\n): Promise<string[]> {\n  const s = spinner();\n  s.start(t(\"spinnerStart\"));\n\n  try {\n    const written = await scaffoldProject(platform, dir, options);\n    s.stop(t(\"spinnerStop\"));\n    return written;\n  } catch (err) {\n    s.stop(`Error: ${err instanceof Error ? err.message : String(err)}`);\n    throw err;\n  }\n}","merged_ranks":[2,5]},{"rank":3,"score":76.5124,"file_path":"packages/scaffold/src/theme.ts","start_line":21,"end_line":34,"focus_line":21,"snippet_start_line":21,"snippet_end_line":34,"symbol_start_line":21,"symbol_end_line":34,"language":"TypeScript","kind":"function","symbol_id":"gh/thedannywahl/pantoken:TypeScript:packages/scaffold/src/theme.ts:function:themeStylesheetImport","symbol_name":"themeStylesheetImport","qualified_name":"themeStylesheetImport","signature":"function themeStylesheetImport( theme: ThemeVariant = \"rebrand\", mode: ThemeMode = \"light\", ): string","signals":["graph:calls","graph:outgoing","graph:callers","complete-symbol"],"snippet":"export function themeStylesheetImport(\n  theme: ThemeVariant = \"rebrand\",\n  mode: ThemeMode = \"light\",\n): string {\n  const file =\n    theme === \"canvas\"\n      ? \"style.canvas.lean.css\"\n      : theme === \"canvasHighContrast\"\n        ? \"style.canvas-high-contrast.lean.css\"\n        : mode === \"light\"\n          ? \"style.rebrand.light.lean.css\"\n          : \"style.lean.css\";\n  return `import \"@pantoken/css/${file}\";`;\n}"},{"rank":4,"score":79.2444,"file_path":"packages/scaffold/src/index.ts","start_line":105,"end_line":111,"focus_line":105,"snippet_start_line":105,"snippet_end_line":111,"symbol_start_line":105,"symbol_end_line":111,"language":"TypeScript","kind":"function","symbol_id":"gh/thedannywahl/pantoken:TypeScript:packages/scaffold/src/index.ts:function:resolveScaffoldPlatform","symbol_name":"resolveScaffoldPlatform","qualified_name":"resolveScaffoldPlatform","signature":"function resolveScaffoldPlatform(platform: string): ScaffoldPlatform","signals":["graph:calls","graph:outgoing","graph:callers","complete-symbol"],"snippet":"export function resolveScaffoldPlatform(platform: string): ScaffoldPlatform {\n  const resolved = PLATFORM_ALIASES[platform] ?? platform;\n  if (SCAFFOLD_PLATFORM_SET.has(resolved)) return resolved as ScaffoldPlatform;\n  throw new Error(\n    `Unknown platform \"${platform}\". Expected one of: ${SCAFFOLD_PLATFORMS.join(\", \")}.`,\n  );\n}"},{"rank":5,"score":76.6444,"file_path":"packages/scaffold/src/index.ts","start_line":144,"end_line":166,"focus_line":144,"snippet_start_line":144,"snippet_end_line":145,"symbol_start_line":144,"symbol_end_line":166,"language":"TypeScript","kind":"function","symbol_id":"gh/thedannywahl/pantoken:TypeScript:packages/scaffold/src/index.ts:function:writeLegacyTemplateFiles","symbol_name":"writeLegacyTemplateFiles","qualified_name":"writeLegacyTemplateFiles","signature":"function writeLegacyTemplateFiles( resolvedPlatform: string, dir: string, locale: string, substitutions: Readonly<Record<string, string>>, packageManager: ScaffoldPackageManager | undefined, ): string[]","signals":["graph:calls","graph:outgoing","graph:callers"],"snippet":"function writeLegacyTemplateFiles(\n  resolvedPlatform: string,"},{"rank":6,"score":69.3612,"file_path":"packages/create-pantoken-app/CHANGELOG.md","start_line":226,"end_line":230,"focus_line":228,"snippet_start_line":227,"snippet_end_line":228,"language":"Markdown","signals":["body","symbol-usage"],"snippet":"    `detectPackageManager`, `validateScaffoldPlatform`, `printNextSteps`,\n    `resolveScaffoldTarget` (including clack prompt/cancel paths), `scaffoldWithSpinner`,"},{"rank":7,"score":69.3612,"file_path":"packages/scaffold/CHANGELOG.md","start_line":555,"end_line":559,"focus_line":557,"snippet_start_line":556,"snippet_end_line":557,"language":"Markdown","signals":["body","symbol-usage"],"snippet":"  - resolveScaffoldTarget(): prompts for platform/directory interactively on TTY, errors non-interactively when missing\n  - scaffoldWithSpinner(): wraps scaffoldProject() in clack spinner with localized text"},{"rank":8,"score":0,"file_path":"packages/scaffold/src/theme.ts","start_line":53,"end_line":58,"focus_line":53,"snippet_start_line":53,"snippet_end_line":53,"kind":"function","qualified_name":"validateThemeMode","signals":["related:sibling"],"section":"related","snippet":"export function validateThemeMode(value: string): ThemeMode {"},{"rank":9,"score":0,"file_path":"packages/scaffold/src/cli.ts","start_line":540,"end_line":652,"focus_line":540,"snippet_start_line":540,"snippet_end_line":540,"kind":"function","qualified_name":"createScaffoldCommand","signals":["related:caller"],"section":"related","snippet":"export function createScaffoldCommand(options?: ScaffoldCommandOptions): Command {"},{"rank":10,"score":0,"file_path":"packages/scaffold/scripts/scaffold-dev.ts","start_line":162,"end_line":173,"focus_line":162,"snippet_start_line":162,"snippet_end_line":162,"kind":"function","qualified_name":"resolvePlatformArg","signals":["related:caller"],"section":"related","snippet":"function resolvePlatformArg(): string {"}],"verify_command":{"command":"npx vitest run packages/scaffold/tests/index.test.ts","targets":"packages/scaffold/tests/index.test.ts","derived_from":"package.json devDependencies + mirror test file path","tier":"narrow"},"stats":{"query_constraints_truncated":true,"files_scanned":7363,"preselection_backend":"go-content","preselection_passes":3,"preselection_files_examined":7363,"preselection_confidence":0.026656918020950604,"preselection_coverage":1,"preselection_diversity":1,"preselection_widened":true,"preselection_bounded":true,"files_content_read_during_preselection":7363,"files_content_read_during_query":395,"bytes_content_read_during_query":63382233,"files_content_read_for_identifier_usage":62,"bytes_content_read_for_identifier_usage":443615,"files_content_read_for_context_blocks":3,"bytes_content_read_for_context_blocks":8080,"files_indexed":384,"symbols_considered":2324,"lexical_candidates":19068,"graph_candidates":20,"caller_boosted_candidates":108,"identifier_usage_candidates":32,"same_container_neighbor_candidates":15,"same_file_bridge_candidates":1,"sparse_candidates":0,"sparse_files_content_read":0,"candidates_selected":10,"result_bytes":7724,"context_budget_bytes":24576,"snippets_truncated_by_budget":6,"complete_symbol_snippets":4,"locator_snippets":5,"doc_reanchored_hits":3,"merged_spans":1,"related_sites":3,"verify_command_bytes":385,"verify_tier":"narrow","context_block_bytes":385,"index_cache_hit":false,"index_latency_ms":1507,"query_latency_ms":6510,"total_latency_ms":13678,"search_latency_ms":13678,"preselect_latency_ms":5660},"warnings":[{"code":"W_WORKTREE_SNAPSHOT","severity":"warning","effect_on_semantic_completeness":"snapshot records are read from the working tree because --worktree was requested"}],"partial_failures":[],"completeness":{"languages":{"CSS":{"files":2,"symbols":39},"Git Ignore":{"files":8,"symbols":8},"HTML":{"files":8,"symbols":60},"JSON":{"files":38,"symbols":660},"JavaScript":{"files":1,"symbols":4},"Less":{"files":1,"symbols":1},"Markdown":{"files":39,"symbols":1092},"TypeScript":{"files":29,"symbols":412},"YAML":{"files":10,"symbols":48}},"relations":{"ACCESSES":2,"ASYNC_CALLS":11,"CALLS":319,"CONFIGURES":684,"CONSTRUCTS":3,"CONTAINS":219,"DATA_FLOWS":83,"DEFINES":2324,"EXTENDS":3,"FILE_CHANGES_WITH":61,"IMPORTS":127,"INHERITS":3,"LISTENS_ON":15,"PARAM_TYPE":80,"READS_FIELD":28,"RETURNS_TYPE":33,"SIMILAR_TO":2,"USES_TYPE":108}}}
+
+---
+
+[Terminal e288d6b7-0b67-4e99-9355-bb6dbc4a9616 notification: command completed with exit code 1. The terminal has been cleaned up.]
+Terminal output:
+pantoken on iconfix ≡ via  26.10.0 
+➜  GH_PAGER=cat PAGER=cat gh pr checks 182 --watch --interval 10
+Working...
+no checks reported on the 'iconfix' branch
+
+---
+
+[Terminal 543ec87c-cddf-4861-94cb-e459c97c007b notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on iconfix ≡ via  26.10.0 
+➜  entire graph search --repo . --profile full --query "The CI upstream-drift job fails on PR 182. Locate the check command and its logic that reports upstream reference or token drift."
+{"query":"The CI upstream-drift job fails on PR 182. Locate the check command and its logic that reports upstream reference or token drift.","repo_root":"/Users/dwahl/Scripts/pantoken","commit":"bf08440fc0aadc2aa0d14aaff37c861e74b4c3e7","tree":"82c600032a26ae5844e242183705fa3f5e8017a0","profile":"full","results":[{"rank":1,"score":33.4849,"file_path":"tools/translation-adapters/src/drift-policy.ts","start_line":407,"end_line":433,"focus_line":413,"snippet_start_line":413,"snippet_end_line":433,"symbol_start_line":413,"symbol_end_line":433,"language":"TypeScript","kind":"method","symbol_id":"gh/thedannywahl/pantoken:TypeScript:tools/translation-adapters/src/drift-policy.ts:method:DriftReporter.emitAnnotations","symbol_name":"emitAnnotations","qualified_name":"DriftReporter.emitAnnotations","signature":"private emitAnnotations(groups: readonly Grouped[]): void","signals":["path","body","signature","symbol-name","graph:callers","complete-symbol"],"snippet":"  private emitAnnotations(groups: readonly Grouped[]): void {\n    if (!process.env.GITHUB_ACTIONS) return;\n    let emitted = 0;\n    for (const row of groups) {\n      if (emitted >= ANNOTATION_LIMIT) break;\n      const level = row.severity === \"block\" ? \"error\" : \"warning\";\n      const locales = [...row.locales].sort();\n      const message =\n        `${row.surface}: ${row.count} untranslated/drifted unit(s) across ${locales.length} ` +\n        `locale(s) (${locales.slice(0, 8).join(\", \")}${locales.length > 8 ? \", …\" : \"\"}). ` +\n        `Fix with \\`${this.options.fixCommand}\\`.`;\n      const line = row.file.includes(\"#\") ? \"\" : \",line=1\";\n      console.log(`::${level} file=${row.file}${line},title=Translation drift::${message}`);\n      emitted += 1;\n    }\n    if (groups.length > emitted) {\n      console.log(\n        `::notice title=Translation drift::${groups.length - emitted} more drifted file(s) — see the job summary.`,\n      );\n    }\n  }"},{"rank":2,"score":32.2938,"file_path":".github/workflows/ci.yml","start_line":532,"end_line":571,"focus_line":536,"snippet_start_line":533,"snippet_end_line":538,"symbol_start_line":536,"symbol_end_line":571,"language":"YAML","kind":"job","symbol_id":"gh/thedannywahl/pantoken:YAML:.github/workflows/ci.yml:job:jobs.upstream-drift","symbol_name":"upstream-drift","qualified_name":"jobs.upstream-drift","signature":"job jobs.upstream-drift","signals":["path","body","exact-symbol","symbol-name","constraint:entity","constraint:phrase","constraint:relationship","data-prior"],"section":"docs-and-fixtures","snippet":"  # The upstream-drift gate: fails when the committed baseline doesn't match the freshly built token IR,\n  # forcing a bump to be blessed (`vp run upgrade:bless`) in the same PR. The classified report is printed\n  # to the job log and uploaded as an artifact so every token/icon delta is visible on the PR.\n  upstream-drift:\n    needs: [build, upstream-changes]\n    if: needs.upstream-changes.outputs.upstream == 'true'"},{"rank":3,"score":30.7914,"file_path":"tools/i18n-engine/src/pipeline.ts","start_line":352,"end_line":382,"focus_line":352,"snippet_start_line":352,"snippet_end_line":382,"symbol_start_line":352,"symbol_end_line":382,"language":"TypeScript","kind":"function","symbol_id":"gh/thedannywahl/pantoken:TypeScript:tools/i18n-engine/src/pipeline.ts:function:runCheckContent","symbol_name":"runCheckContent","qualified_name":"runCheckContent","signature":"function runCheckContent( config: I18nConfig, configDir: string, spaceId: string, ): CheckResult","signals":["graph:calls","graph:incoming","complete-symbol"],"snippet":"export function runCheckContent(\n  config: I18nConfig,\n  configDir: string,\n  spaceId: string,\n): CheckResult {\n  const units = contentSpaceUnits(config, configDir, spaceId);\n  const reporter = new DriftReporter({\n    label: spaceId,\n    fixCommand: `i18n extract ${spaceId} && i18n translate ${spaceId} && i18n render ${spaceId}`,\n    policy: buildDriftPolicy(config),\n  });\n  reportPotStaleness(reporter, config, configDir, spaceId, units);\n  for (const locale of contentLocales(config, configDir, spaceId)) {\n    if (locale === config.source) continue;\n    const entries = loadPoEntriesForSpace(config, configDir, spaceId, locale);\n    const translated = new Set(entries.filter((e) => e.msgstr !== \"\").map((e) => e.msgid));\n    for (const unit of units) {\n      if (translated.has(unit.msgid)) continue;\n      const [file, line] = unit.reference.split(\":\");\n      reporter.add({\n        surface: spaceId,\n        locale,\n        file,\n        line: line ? Number(line) : undefined,\n        detail: `Untranslated: ${unit.msgid.slice(0, 60)}`,\n        unit: { msgid: unit.msgid },\n      });\n    }\n  }\n  return { reporter, exitCode: reporter.report() };\n}"},{"rank":4,"score":33.4749,"file_path":"tools/translation-adapters/src/drift-policy.ts","start_line":344,"end_line":406,"focus_line":344,"snippet_start_line":344,"snippet_end_line":406,"symbol_start_line":344,"symbol_end_line":406,"language":"TypeScript","kind":"method","symbol_id":"gh/thedannywahl/pantoken:TypeScript:tools/translation-adapters/src/drift-policy.ts:method:DriftReporter.report","symbol_name":"report","qualified_name":"DriftReporter.report","signature":"report(): number","signals":["graph:calls","graph:incoming","graph:callers","complete-symbol"],"snippet":"  report(): number {\n    const groups = this.group();\n    const blocked = groups.filter((g) => g.severity === \"block\");\n    const warned = groups.filter((g) => g.severity === \"warn\");\n\n    if (groups.length === 0) {\n      const note = this.suppressed > 0 ? ` (${this.suppressed} finding(s) policy-disabled)` : \"\";\n      console.log(`✓ ${this.options.label}: no translation drift${note}`);\n      return 0;\n    }\n\n    // Lead with the per-surface rollup: the file list below is capped, so this is the only place a\n    // small surface is guaranteed to appear.\n    const totals = this.surfaceTotals();\n    const rollup = totals.some((row) => row.severity === \"block\") ? console.error : console.warn;\n    rollup(`\\n${this.options.label} — translation drift by surface:`);\n    for (const row of totals) {\n      const mark = row.severity === \"block\" ? \"blocks\" : \"advisory\";\n      rollup(\n        `  ${row.surface}: ${row.count} unit(s) in ${row.files} file(s), ` +\n          `${row.locales} locale(s) — ${mark}`,\n      );\n    }\n\n    for (const [heading, rows, stream] of [\n      [\"blocking\", blocked, console.error],\n      [\"advisory\", warned, console.warn],\n    ] as const) {\n      if (rows.length === 0) continue;\n      const total = rows.reduce((sum, row) => sum + row.count, 0);\n      const mark = heading === \"blocking\" ? \"✗\" : \"!\";\n      stream(\n        `\\n${mark} ${this.options.label}: ${total} ${heading} drift finding(s) ` +\n          `across ${rows.length} file(s):`,\n      );\n      for (const row of rows.slice(0, CONSOLE_GROUP_LIMIT)) {\n        const locales = [...row.locales].sort();\n        const shown = locales.slice(0, 6).join(\", \");\n        const more = locales.length > 6 ? `, +${locales.length - 6} more` : \"\";\n        stream(`  [${row.surface}] ${row.file} — ${row.count} in ${locales.length} locale(s)`);\n        stream(`    locales: ${shown}${more}`);\n        for (const sample of row.samples) stream(`    - ${sample}`);\n      }\n      if (rows.length > CONSOLE_GROUP_LIMIT) {\n        stream(`  …and ${rows.length - CONSOLE_GROUP_LIMIT} more file(s).`);\n      }\n    }\n\n    this.emitAnnotations(groups);\n    this.writeSummary(blocked, warned);\n\n    if (blocked.length > 0) {\n      console.error(\n        `\\nBlocking translation drift. Run \\`${this.options.fixCommand}\\` locally, then commit the ` +\n          `updated translation cache. Loosen or tighten what blocks in \\`i18n.config.json\\`.`,\n      );\n      return 1;\n    }\n    console.warn(\n      `\\nAdvisory only — not blocking this merge. Run \\`${this.options.fixCommand}\\` when convenient.`,\n    );\n    return 0;\n  }"},{"rank":5,"score":28.1622,"file_path":"tools/translation-adapters/src/index.ts","start_line":22,"end_line":26,"focus_line":24,"snippet_start_line":22,"snippet_end_line":26,"language":"TypeScript","signals":["body","symbol-usage"],"snippet":"  repoRelative,\n  resetDriftPolicyCache,\n  resolveDriftSeverity,\n  resolveTier,\n  type DriftFinding,"},{"rank":6,"score":24.6333,"file_path":"packages/scaffold/templates/canvas-theme-editor/src/preferences.ts","start_line":12,"end_line":25,"focus_line":14,"snippet_start_line":13,"snippet_end_line":14,"symbol_start_line":14,"symbol_end_line":25,"language":"TypeScript","kind":"function","symbol_id":"gh/thedannywahl/pantoken:TypeScript:packages/scaffold/templates/canvas-theme-editor/src/preferences.ts:function:loadPreferences","symbol_name":"loadPreferences","qualified_name":"loadPreferences","signature":"function loadPreferences(): Partial<StoredPreferences>","signals":["path","symbol-name","graph:callers"],"snippet":"/** Reads stored preferences, tolerating missing/corrupt/blocked storage. */\nexport function loadPreferences(): Partial<StoredPreferences> {"},{"rank":7,"score":24.5048,"file_path":"formats/interactions/src/behaviors/progress-circle.ts","start_line":14,"end_line":53,"focus_line":22,"snippet_start_line":21,"snippet_end_line":22,"symbol_start_line":22,"symbol_end_line":53,"language":"TypeScript","kind":"function","symbol_id":"gh/thedannywahl/pantoken:TypeScript:formats/interactions/src/behaviors/progress-circle.ts:function:initProgressCircle","symbol_name":"initProgressCircle","qualified_name":"initProgressCircle","signature":"function initProgressCircle( target: HTMLElement, options: ProgressCircleOptions = {}, ): ProgressCircleHandle","signals":["path","body","symbol-name","graph:callers"],"snippet":" */\nexport function initProgressCircle("},{"rank":8,"score":0,"file_path":"tools/translation-adapters/src/drift-policy.ts","start_line":480,"end_line":522,"focus_line":480,"snippet_start_line":480,"snippet_end_line":480,"kind":"method","qualified_name":"DriftReporter.writeSummary","signals":["related:sibling"],"section":"related","snippet":"  private writeSummary(blocked: readonly Grouped[], warned: readonly Grouped[]): void {"},{"rank":9,"score":0,"file_path":"tools/translation-adapters/src/drift-policy.ts","start_line":441,"end_line":477,"focus_line":441,"snippet_start_line":441,"snippet_end_line":441,"kind":"method","qualified_name":"DriftReporter.surfaceTotals","signals":["related:sibling"],"section":"related","snippet":"  private surfaceTotals(): Array<{"},{"rank":10,"score":0,"file_path":"tools/translation-adapters/src/drift-policy.ts","start_line":286,"end_line":294,"focus_line":286,"snippet_start_line":286,"snippet_end_line":286,"kind":"method","qualified_name":"DriftReporter.add","signals":["related:sibling"],"section":"related","snippet":"  add(finding: DriftFinding): void {"},{"rank":11,"score":0,"file_path":"tools/translation-adapters/src/drift-policy.ts","start_line":297,"end_line":299,"focus_line":297,"snippet_start_line":297,"snippet_end_line":297,"kind":"method","qualified_name":"DriftReporter.addAll","signals":["related:sibling"],"section":"related","snippet":"  addAll(findings: readonly DriftFinding[]): void {"}],"literal_cluster":{"literal":"fixCommand","hits":[{"file_path":"docs/scripts/check-locale-drift.ts","line":280,"role":"DOC"},{"file_path":"docs/scripts/check-locale-parity.ts","line":60,"role":"DOC"},{"file_path":"tools/i18n-engine/src/pipeline.ts","line":517,"symbol":"runCheckMessages","role":"CONSUMER"},{"file_path":"tools/translation-adapters/src/drift-policy.ts","line":251,"symbol":"DriftReporterOptions.fixCommand","role":"EDIT"}],"hits_total":10,"files_total":5,"unclassified":1},"verify_command":{"command":"npx vitest run tools/translation-adapters/tests/drift-policy.test.ts","targets":"tools/translation-adapters/tests/drift-policy.test.ts","derived_from":"package.json devDependencies + mirror test file path","tier":"narrow"},"stats":{"query_constraints_truncated":true,"files_scanned":7363,"preselection_backend":"go-content","preselection_passes":3,"preselection_files_examined":7363,"preselection_confidence":0.0013709677419354582,"preselection_coverage":1,"preselection_diversity":1,"preselection_widened":true,"preselection_bounded":true,"files_content_read_during_preselection":7363,"files_content_read_during_query":395,"bytes_content_read_during_query":63634905,"files_content_read_for_identifier_usage":56,"bytes_content_read_for_identifier_usage":2640973,"files_content_read_for_context_blocks":7,"bytes_content_read_for_context_blocks":59614,"files_indexed":384,"symbols_considered":3027,"lexical_candidates":13074,"graph_candidates":13,"caller_boosted_candidates":149,"identifier_usage_candidates":23,"same_container_neighbor_candidates":8,"same_file_bridge_candidates":8,"sparse_candidates":0,"sparse_files_content_read":0,"candidates_selected":11,"result_bytes":11138,"context_budget_bytes":24576,"snippets_truncated_by_budget":6,"complete_symbol_snippets":3,"locator_snippets":5,"related_sites":4,"literal_cluster_bytes":470,"literal_cluster_hits":4,"verify_command_bytes":417,"verify_tier":"narrow","context_block_bytes":887,"index_cache_hit":false,"index_latency_ms":1959,"query_latency_ms":4701,"total_latency_ms":11362,"search_latency_ms":11362,"preselect_latency_ms":4701},"warnings":[{"code":"W_WORKTREE_SNAPSHOT","severity":"warning","effect_on_semantic_completeness":"snapshot records are read from the working tree because --worktree was requested"}],"partial_failures":[],"completeness":{"languages":{"Bash":{"files":1,"symbols":0},"CSS":{"files":47,"symbols":124},"HTML":{"files":43,"symbols":43},"JSON":{"files":2,"symbols":31},"Less":{"files":2,"symbols":2},"Markdown":{"files":71,"symbols":1900},"TypeScript":{"files":75,"symbols":867},"Vue":{"files":1,"symbols":2},"YAML":{"files":7,"symbols":58}},"relations":{"ASYNC_CALLS":13,"CALLS":609,"CONFIGURES":84,"CONSTRUCTS":10,"CONTAINS":444,"DATA_FLOWS":169,"DEFINES":3027,"EXTENDS":3,"FILE_CHANGES_WITH":21,"IMPLEMENTS":2,"IMPORTS":195,"INHERITS":3,"LISTENS_ON":9,"OVERRIDES":5,"PARAM_TYPE":101,"READS_FIELD":104,"RETURNS_TYPE":70,"SIMILAR_TO":4,"USES_TYPE":170,"WRITES_FIELD":11}}}
+
+---
+
+[Terminal 7f8745da-1860-4b21-a519-2c950d1a9e1c notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+      ]
+    },
+    {
+      "path": "renderers/tinymce/src/codemirror/lint.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "interface",
+          "name": "PantokenLinterOptions",
+          "before_start_line": 16,
+          "after_start_line": 17,
+          "dependents_count": 1
+        },
+        {
+          "type": "added",
+          "kind": "field",
+          "name": "PantokenLinterOptions.strings",
+          "new_signature": "strings : Partial\u003cTinymceStrings\u003e",
+          "after_start_line": 20,
+          "dependents_count": 173
+        },
+        {
+          "type": "signature_changed",
+          "kind": "function",
+          "name": "pantokenHtmlLinter",
+          "old_signature": "function pantokenHtmlLinter(_options: PantokenLinterOptions)",
+          "new_signature": "function pantokenHtmlLinter(options: PantokenLinterOptions)",
+          "before_start_line": 33,
+          "after_start_line": 36,
+          "dependents_count": 1
+        }
+      ]
+    },
+    {
+      "path": "renderers/tinymce/src/cssdoc/model.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "signature_changed",
+          "kind": "function",
+          "name": "validateClassToken",
+          "old_signature": "function validateClassToken(token: string): string[]",
+          "new_signature": "function validateClassToken( token: string, strings: TinymceStrings = TINYMCE_STRINGS, ): string[]",
+          "before_start_line": 144,
+          "after_start_line": 144,
+          "dependents_count": 1
+        }
+      ]
+    },
+    {
+      "path": "renderers/tinymce/src/lib/component-modifier-toolbar.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "propertyItems",
+          "before_start_line": 82,
+          "after_start_line": 82,
+          "dependents_count": 1
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "groupedItems",
+          "before_start_line": 121,
+          "after_start_line": 121,
+          "dependents_count": 1
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "menuItems",
+          "before_start_line": 162,
+          "after_start_line": 162,
+          "dependents_count": 3
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "registerComponentModifierToolbar",
+          "before_start_line": 200,
+          "after_start_line": 200,
+          "dependents_count": 3
+        }
+      ]
+    },
+    {
+      "path": "renderers/tinymce/src/lib/icon-context-toolbar.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "registerIconContextToolbar",
+          "before_start_line": 38,
+          "after_start_line": 30,
+          "dependents_count": 2
+        }
+      ]
+    },
+    {
+      "path": "renderers/tinymce/src/logos.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "signature_changed",
+          "kind": "function",
+          "name": "buildLogoMarkup",
+          "old_signature": "function buildLogoMarkup(meta: LogoMeta): string",
+          "new_signature": "function buildLogoMarkup(meta: LogoMeta, altSuffix = TINYMCE_STRINGS.logoAltSuffix): string",
+          "before_start_line": 26,
+          "after_start_line": 26,
+          "dependents_count": 1
+        }
+      ]
+    },
+    {
+      "path": "renderers/tinymce/src/plugins/components.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "createComponentsPlugin",
+          "before_start_line": 77,
+          "after_start_line": 77,
+          "dependents_count": 2
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "pantokenComponentsPlugin",
+          "before_start_line": 80,
+          "after_start_line": 80,
+          "dependents_count": 1
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "openComponentsDialog",
+          "before_start_line": 132,
+          "after_start_line": 133,
+          "dependents_count": 3
+        }
+      ]
+    },
+    {
+      "path": "renderers/tinymce/src/plugins/fullscreen-footer.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "createFullscreenFooterPlugin",
+          "before_start_line": 16,
+          "after_start_line": 16,
+          "dependents_count": 0
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "pantokenFullscreenFooterPlugin",
+          "before_start_line": 17,
+          "after_start_line": 17,
+          "dependents_count": 1
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "attachFooter",
+          "before_start_line": 20,
+          "after_start_line": 20,
+          "dependents_count": 15
+        }
+      ]
+    },
+    {
+      "path": "renderers/tinymce/src/plugins/icons.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "openIconsDialog",
+          "before_start_line": 59,
+          "after_start_line": 59,
+          "dependents_count": 3
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "createIconsPlugin",
+          "before_start_line": 172,
+          "after_start_line": 173,
+          "dependents_count": 3
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "pantokenIconsPlugin",
+          "before_start_line": 175,
+          "after_start_line": 176,
+          "dependents_count": 1
+        }
+      ]
+    },
+    {
+      "path": "renderers/tinymce/src/plugins/layouts.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "createLayoutsPlugin",
+          "before_start_line": 85,
+          "after_start_line": 85,
+          "dependents_count": 2
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "pantokenLayoutsPlugin",
+          "before_start_line": 88,
+          "after_start_line": 88,
+          "dependents_count": 1
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "openDialog",
+          "before_start_line": 89,
+          "after_start_line": 90,
+          "dependents_count": 16
+        }
+      ]
+    },
+    {
+      "path": "renderers/tinymce/src/plugins/logos.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "createLogosPlugin",
+          "before_start_line": 38,
+          "after_start_line": 38,
+          "dependents_count": 2
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "pantokenLogosPlugin",
+          "before_start_line": 41,
+          "after_start_line": 41,
+          "dependents_count": 1
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "openLogosDialog",
+          "before_start_line": 67,
+          "after_start_line": 68,
+          "dependents_count": 3
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "insertLogo",
+          "before_start_line": 152,
+          "after_start_line": 154,
+          "dependents_count": 1
+        }
+      ]
+    },
+    {
+      "path": "renderers/tinymce/src/plugins/pantoken.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "interface",
+          "name": "PantokenPluginOptions",
+          "before_start_line": 32,
+          "after_start_line": 32,
+          "dependents_count": 1
+        },
+        {
+          "type": "added",
+          "kind": "field",
+          "name": "PantokenPluginOptions.strings",
+          "new_signature": "strings : Partial\u003cTinymceStrings\u003e",
+          "after_start_line": 34,
+          "dependents_count": 173
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "createPantokenPlugin",
+          "before_start_line": 41,
+          "after_start_line": 43,
+          "dependents_count": 0
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "pantokenPlugin",
+          "before_start_line": 42,
+          "after_start_line": 44,
+          "dependents_count": 1
+        }
+      ]
+    },
+    {
+      "path": "renderers/tinymce/src/plugins/searchreplace-footer.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "createSearchReplaceFooterPlugin",
+          "before_start_line": 16,
+          "after_start_line": 16,
+          "dependents_count": 0
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "pantokenSearchReplaceFooterPlugin",
+          "before_start_line": 17,
+          "after_start_line": 17,
+          "dependents_count": 1
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "attachFooter",
+          "before_start_line": 20,
+          "after_start_line": 20,
+          "dependents_count": 15
+        }
+      ]
+    },
+    {
+      "path": "renderers/tinymce/src/plugins/sup-sub.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "createSupSubPlugin",
+          "before_start_line": 16,
+          "after_start_line": 16,
+          "dependents_count": 0
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "pantokenSupSubPlugin",
+          "before_start_line": 17,
+          "after_start_line": 17,
+          "dependents_count": 1
+        }
+      ]
+    },
+    {
+      "path": "renderers/tinymce/src/plugins/templates.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "createTemplatesPlugin",
+          "before_start_line": 39,
+          "after_start_line": 39,
+          "dependents_count": 2
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "pantokenTemplatesPlugin",
+          "before_start_line": 41,
+          "after_start_line": 41,
+          "dependents_count": 1
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "openDialog",
+          "before_start_line": 42,
+          "after_start_line": 43,
+          "dependents_count": 16
+        }
+      ]
+    },
+    {
+      "path": "renderers/tinymce/src/plugins/visualblocks-footer.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "createVisualBlocksFooterPlugin",
+          "before_start_line": 50,
+          "after_start_line": 50,
+          "dependents_count": 0
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "pantokenVisualBlocksFooterPlugin",
+          "before_start_line": 51,
+          "after_start_line": 51,
+          "dependents_count": 1
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "setButtonState",
+          "before_start_line": 72,
+          "after_start_line": 72,
+          "dependents_count": 2
+        },
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "attachFooter",
+          "before_start_line": 78,
+          "after_start_line": 82,
+          "dependents_count": 15
+        }
+      ]
+    },
+    {
+      "path": "renderers/tinymce/src/strings.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "added",
+          "kind": "function",
+          "name": "getEditorStrings",
+          "new_signature": "function getEditorStrings(editor: Editor): TinymceStrings",
+          "after_start_line": 77,
+          "dependents_count": 21
+        },
+        {
+          "type": "added",
+          "kind": "function",
+          "name": "setEditorStrings",
+          "new_signature": "function setEditorStrings(editor: Editor, overrides: Partial\u003cTinymceStrings\u003e): void",
+          "after_start_line": 82,
+          "dependents_count": 2
+        }
+      ]
+    },
+    {
+      "path": "renderers/tinymce/tests/fullscreen-footer.test.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "module",
+          "name": "renderers/tinymce/tests/fullscreen-footer.test.ts",
+          "before_start_line": 1,
+          "after_start_line": 1,
+          "dependents_count": 0
+        }
+      ]
+    },
+    {
+      "path": "renderers/tinymce/tests/layouts.test.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "module",
+          "name": "renderers/tinymce/tests/layouts.test.ts",
+          "before_start_line": 1,
+          "after_start_line": 1,
+          "dependents_count": 0
+        }
+      ]
+    },
+    {
+      "path": "renderers/tinymce/tests/logos-picker.test.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "module",
+          "name": "renderers/tinymce/tests/logos-picker.test.ts",
+          "before_start_line": 1,
+          "after_start_line": 1,
+          "dependents_count": 0
+        }
+      ]
+    },
+    {
+      "path": "renderers/tinymce/tests/pantoken.test.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "module",
+          "name": "renderers/tinymce/tests/pantoken.test.ts",
+          "before_start_line": 1,
+          "after_start_line": 1,
+          "dependents_count": 0
+        }
+      ]
+    },
+    {
+      "path": "renderers/tinymce/tests/sup-sub.test.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "module",
+          "name": "renderers/tinymce/tests/sup-sub.test.ts",
+          "before_start_line": 1,
+          "after_start_line": 1,
+          "dependents_count": 0
+        }
+      ]
+    },
+    {
+      "path": "renderers/web-components/src/elements/in-place-edit.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "signature_changed",
+          "kind": "variable",
+          "name": "inPlaceEdit",
+          "old_signature": "inPlaceEdit: ElementDefinition = { name: \"in-place-edit\", define: (ctx) =\u003e { if (ctx.registry.get(\"instui-in-place-edit\")) return; ctx.registry.define( \"instui-in-place-edit\", class extends HTMLElement { static observedAttributes = [\"value\", \"readonly\"]; #field: HTMLElement | null = null; constructor() { super(); this.attachShadow({ mode: \"open\" }); } connectedCallback(): void { const root = this.shadowRoot; if (!root) return; const readonly = this.hasAttribute(\"readonly\"); const value = esc(this.getAttribute(\"value\") ?? this.textContent ?? \"\"); root.innerHTML = `\u003cstyle\u003e:host{display:inline-block}${inPlaceEditCss(ctx.I)}\u003c/style\u003e` + `\u003cspan class=\"instui-in-place-edit${readonly ? \" -readonly\" : \"\"}\" part=\"field\" role=\"textbox\"` + ` contenteditable=\"${readonly ? \"false\" : \"true\"}\"\u003e${value}\u003c/span\u003e`; const field = root.querySelector\u003cHTMLElement\u003e(\".instui-in-place-edit\"); this.#field = field; if (!field || readonly) return; initInPlaceEdit(field, this); } attributeChangedCallback(name: string): void { // Reflect an external value change into the field when it isn't being edited. if (name === \"value\" \u0026\u0026 this.#field \u0026\u0026 this.shadowRoot?.activeElement !== this.#field) { this.#field.textContent = this.getAttribute(\"value\") ?? \"\"; } } }, ); }, }",
+          "new_signature": "inPlaceEdit: ElementDefinition = { name: \"in-place-edit\", define: (ctx) =\u003e { if (ctx.registry.get(\"instui-in-place-edit\")) return; ctx.registry.define( \"instui-in-place-edit\", class extends HTMLElement { static observedAttributes = [\"value\", \"readonly\"]; #field: HTMLElement | null = null; constructor() { super(); this.attachShadow({ mode: \"open\" }); } connectedCallback(): void { const root = this.shadowRoot; if (!root) return; const readonly = this.hasAttribute(\"readonly\"); const value = esc(this.getAttribute(\"value\") ?? this.textContent ?? \"\"); root.innerHTML = `\u003cstyle\u003e:host{display:inline-block}${inPlaceEditCss(ctx.I)}\u003c/style\u003e` + `\u003cspan class=\"instui-in-place-edit${readonly ? \" -readonly\" : \"\"}\" part=\"field\" role=\"textbox\"` + ` contenteditable=\"${readonly ? \"false\" : \"true\"}\"\u003e${value}\u003c/span\u003e`; const field = root.querySelector\u003cHTMLElement\u003e(\".instui-in-place-edit\"); this.#field = field; if (!field || readonly) return; const inputType = this.getAttribute(\"input-type\") as InPlaceEditInputType | null; initInPlaceEdit(field, this, { inputType: inputType \u0026\u0026 INPUT_TYPES.has(inputType) ? inputType : undefined, }); } attributeChangedCallback(name: string): void { // Reflect an external value change into the field when it isn't being edited. if (name === \"value\" \u0026\u0026 this.#field \u0026\u0026 this.shadowRoot?.activeElement !== this.#field) { this.#field.textContent = this.getAttribute(\"value\") ?? \"\"; } } }, ); }, }",
+          "before_start_line": 17,
+          "after_start_line": 28,
+          "dependents_count": 3
+        },
+        {
+          "type": "body_changed",
+          "kind": "class",
+          "name": "HTMLElement",
+          "before_start_line": 23,
+          "after_start_line": 34,
+          "dependents_count": 164
+        },
+        {
+          "type": "body_changed",
+          "kind": "method",
+          "name": "HTMLElement.connectedCallback",
+          "before_start_line": 30,
+          "after_start_line": 41,
+          "dependents_count": 41
+        }
+      ]
+    },
+    {
+      "path": "renderers/web-components/tests/in-place-edit.test.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "module",
+          "name": "renderers/web-components/tests/in-place-edit.test.ts",
+          "before_start_line": 1,
+          "after_start_line": 1,
+          "dependents_count": 0
+        }
+      ]
+    }
+  ],
+  "warnings": [
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/ar/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/ca/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/cy/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/da/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/de/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/docs.api.pot",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/el/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/en-AU/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/en-CA/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/en-GB/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/es/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/fa/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/fi/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/fr-CA/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/fr/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/ga/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/he/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/hi/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/ht/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/hu/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/hy/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/id/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/is/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/it/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/ja/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/ko/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/mi/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/ms/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/nb/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/nl/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/nn/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/pl/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/pt-BR/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/pt/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/ru/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/se/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/sl/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/sv/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/th/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/tr/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/uk/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/vi/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/zh-Hans/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "l10n/zh-Hant/docs.api.po",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "packages/scaffold/assets/llms.txt",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_UNSUPPORTED_FILE",
+      "severity": "info",
+      "file_path": "packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl",
+      "effect_on_semantic_completeness": "file skipped; no parser for this file type, so its changes are not analyzed",
+      "detail": "base and head versions have no supported parser"
+    },
+    {
+      "code": "W_MOVE_AMBIGUOUS",
+      "severity": "warning",
+      "file_path": ".vscode/settings.json",
+      "effect_on_semantic_completeness": "symbol move could not be reconciled unambiguously; reported as remove/add",
+      "detail": "section editor.codeActionsOnSave has multiple equally similar destinations"
+    },
+    {
+      "code": "W_MOVE_AMBIGUOUS",
+      "severity": "warning",
+      "file_path": ".vscode/settings.json",
+      "effect_on_semantic_completeness": "symbol move could not be reconciled unambiguously; reported as remove/add",
+      "detail": "section source.fixAll.oxc has multiple equally similar destinations"
+    }
+  ]
+}
+
+---
+
+[Terminal 7b7c9c45-8c88-4fa6-be92-39e1a1cf2657 notification: command completed with exit code 1. The terminal has been cleaned up.]
+Terminal output:
+pantoken on iconfix ≡ via  26.10.0 
+➜  GH_PAGER=cat PAGER=cat gh pr checks 182 --watch --interval 10
+Working...
+Some checks were not successful
+0 cancelled, 3 failing, 65 successful, 2 skipped, and 0 pending checks
+
+   NAME                    DESCRIPTION            ELAPSED  URL                  
+X  CI/ci-gate (pull_re...                         3s       https://github.com...
+X  CI/lint (pull_request)                         3m32s    https://github.com...
+X  CI/upstream-drift (...                         2m28s    https://github.com...
+✓  CodeQL/Analyze (jav...                         1m18s    https://github.com...
+✓  CodeQL                                         4s       https://github.com...
+✓  CI/attw (pull_request)                         6m41s    https://github.com...
+✓  CI/benchmarks (pull...                         2m21s    https://github.com...
+✓  CI/build (pull_requ...                         1m11s    https://github.com...
+✓  Changeset check/cha...                         4s       https://github.com...
+✓  codecov/bundles         Bundle change: -86...           https://app.codeco...
+✓  codecov/patch                                           https://app.codeco...
+✓  codecov/patch/ai                               1s       https://app.codeco...
+✓  codecov/patch/bundlers                                  https://app.codeco...
+✓  codecov/patch/cli                                       https://app.codeco...
+✓  codecov/patch/core                             1s       https://app.codeco...
+✓  codecov/patch/design                                    https://app.codeco...
+✓  codecov/patch/docs                                      https://app.codeco...
+✓  codecov/patch/forma...                                  https://app.codeco...
+✓  codecov/patch/forma...                                  https://app.codeco...
+✓  codecov/patch/forma...                                  https://app.codeco...
+✓  codecov/patch/forma...                                  https://app.codeco...
+✓  codecov/patch/formats                                   https://app.codeco...
+✓  codecov/patch/packages                                  https://app.codeco...
+✓  codecov/patch/platf...                                  https://app.codeco...
+✓  codecov/patch/plugi...                         1s       https://app.codeco...
+✓  codecov/patch/plugins                          1s       https://app.codeco...
+✓  codecov/patch/rende...                         1s       https://app.codeco...
+✓  codecov/patch/scripts                                   https://app.codeco...
+✓  codecov/patch/tools                            1s       https://app.codeco...
+✓  codecov/patch/utils                                     https://app.codeco...
+✓  codecov/patch/web-c...                                  https://app.codeco...
+✓  codecov/project                                         https://app.codeco...
+✓  codecov/project/ai                             1s       https://app.codeco...
+✓  codecov/project/bun...                                  https://app.codeco...
+✓  codecov/project/cli                            1s       https://app.codeco...
+✓  codecov/project/core                                    https://app.codeco...
+✓  codecov/project/design                                  https://app.codeco...
+✓  codecov/project/docs                                    https://app.codeco...
+✓  codecov/project/for...                                  https://app.codeco...
+✓  codecov/project/for...                         1s       https://app.codeco...
+✓  codecov/project/for...                                  https://app.codeco...
+✓  codecov/project/for...                         1s       https://app.codeco...
+✓  codecov/project/for...                                  https://app.codeco...
+✓  codecov/project/pac...                                  https://app.codeco...
+✓  codecov/project/pla...                                  https://app.codeco...
+✓  codecov/project/plu...                                  https://app.codeco...
+✓  codecov/project/plu...                                  https://app.codeco...
+✓  codecov/project/ren...                         1s       https://app.codeco...
+✓  codecov/project/scr...                                  https://app.codeco...
+✓  codecov/project/tools                          1s       https://app.codeco...
+✓  codecov/project/utils                          1s       https://app.codeco...
+✓  codecov/project/web...                                  https://app.codeco...
+✓  CI/commitlint (pull...                         48s      https://github.com...
+✓  CI/coverage (pull_r...                         4m5s     https://github.com...
+✓  Changeset check/det...                         17s      https://github.com...
+✓  CI/docs (pull_request)                         2m39s    https://github.com...
+✓  CI/docs-changes (pu...                         19s      https://github.com...
+✓  CI/entire-checkpoin...                         15s      https://github.com...
+✓  CI/fallow (pull_req...                         2m52s    https://github.com...
+✓  Guard release autom...                         2s       https://github.com...
+✓  CI/i18n-changes (pu...                         18s      https://github.com...
+✓  CI/i18n-drift (pull...                         3m50s    https://github.com...
+✓  CI/publint (pull_re...                         3m45s    https://github.com...
+✓  CI/repository (pull...                         41s      https://github.com...
+✓  CI/typecheck (pull_...                         2m8s     https://github.com...
+-  CodSpeed Performanc...                                  https://app.codspe...
+✓  Changeset check/req...                         47s      https://github.com...
+✓  CI/test (pull_request)                         3m10s    https://github.com...
+✓  CI/upstream-changes...                         19s      https://github.com...
+-  Changeset check/doc...                                  https://github.com...
+
+---
+
+[Terminal f91dc80e-2d55-4ed7-9466-03a90e14285e notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on iconfix ≡  ~1 via  26.10.0 
+➜  entire graph search --repo . --profile full --query "CI validate-generated fails because generated custom-components.css references unknown token --instui-breakpoints-xs; locate the authored breakpoint reference and the canonical breakpoint token names."
+{"query":"CI validate-generated fails because generated custom-components.css references unknown token --instui-breakpoints-xs; locate the authored breakpoint reference and the canonical breakpoint token names.","repo_root":"/Users/dwahl/Scripts/pantoken","commit":"bf08440fc0aadc2aa0d14aaff37c861e74b4c3e7","tree":"82c600032a26ae5844e242183705fa3f5e8017a0","profile":"full","results":[{"rank":1,"score":69.4865,"file_path":"plugins/pantoken/custom-components/src/declarations/breakpoints/index.ts","start_line":1,"end_line":12,"focus_line":9,"snippet_start_line":2,"snippet_end_line":12,"symbol_start_line":2,"symbol_end_line":12,"language":"TypeScript","kind":"function","symbol_id":"gh/thedannywahl/pantoken:TypeScript:plugins/pantoken/custom-components/src/declarations/breakpoints/index.ts:function:breakpointDeclarations","symbol_name":"breakpointDeclarations","qualified_name":"breakpointDeclarations","signature":"function breakpointDeclarations(): string","signals":["path","body","symbol-name","constraint:phrase","exact-code-token","graph:callers","complete-symbol"],"snippet":"export function breakpointDeclarations(): string {\n  return `/**\n * @declaration breakpoints\n * @summary Extra-small viewport width for phone-sized previews.\n * @cssproperty --instui-breakpoints-xs — Extra-small viewport width (20em / 320px).\n * @usage @import \"@pantoken/plugin-custom-components/custom-components.css\";\n */\n:root {\n  --instui-breakpoints-xs: 20em;\n}`;\n}","comment_focus_line":6},{"rank":2,"score":62.5378,"file_path":"plugins/pantoken/custom-components/scripts/generate.ts","start_line":20,"end_line":24,"focus_line":22,"snippet_start_line":20,"snippet_end_line":24,"language":"TypeScript","signals":["path","body","symbol-usage"],"snippet":"const outDir = resolve(import.meta.dirname, \"../generated\");\nconst allInstui = [\n  breakpointDeclarations(),\n  cardRules(\"instui-\"),\n  agentShellRules(\"instui-\"),"},{"rank":3,"score":63.0378,"file_path":"plugins/pantoken/custom-components/src/index.ts","start_line":50,"end_line":66,"focus_line":53,"snippet_start_line":50,"snippet_end_line":66,"symbol_start_line":50,"symbol_end_line":66,"language":"TypeScript","kind":"function","symbol_id":"gh/thedannywahl/pantoken:TypeScript:plugins/pantoken/custom-components/src/index.ts:function:customComponents","symbol_name":"customComponents","qualified_name":"customComponents","signature":"function customComponents(options: CustomComponentsOptions = {}): PantokenPlugin","signals":["path","body","exact-symbol","symbol-name","signature","symbol-usage","complete-symbol"],"snippet":"export function customComponents(options: CustomComponentsOptions = {}): PantokenPlugin {\n  const position = options.position ?? \"append\";\n  const rules = [\n    breakpointDeclarations(),\n    cardRules(),\n    agentShellRules(),\n    aiGradientRules(),\n    bannerRules(),\n    buttonSetRules(),\n    logoRules(),\n  ].join(\"\\n\");\n\n  return definePlugin({\n    name: \"@pantoken/plugin-custom-components\",\n    css: () => ({ marker: \"pantoken:custom-components\", [position]: rules }),\n  });\n}"},{"rank":4,"score":62.5378,"file_path":"plugins/pantoken/custom-components/scripts/generate.ts","start_line":29,"end_line":33,"focus_line":31,"snippet_start_line":29,"snippet_end_line":33,"language":"TypeScript","signals":["path","body","symbol-usage"],"snippet":"].join(\"\\n\");\nconst allPfx = [\n  breakpointDeclarations(),\n  cardRules(\"pfx-\"),\n  agentShellRules(\"pfx-\"),"},{"rank":5,"score":55.81,"file_path":"plugins/pantoken/custom-components/src/index.ts","start_line":17,"end_line":21,"focus_line":17,"snippet_start_line":17,"snippet_end_line":21,"language":"TypeScript","signals":["path","body","symbol-usage"],"snippet":"import { definePlugin } from \"@pantoken/plugin-kit\";\nimport type { PantokenPlugin } from \"@pantoken/model\";\nimport { breakpointDeclarations } from \"./declarations/index.ts\";\nimport {\n  agentShellRules,","comment_focus_line":8},{"rank":6,"score":43.0429,"file_path":"plugins/pantoken/custom-components/scripts/generate-model.ts","start_line":10,"end_line":14,"focus_line":13,"snippet_start_line":12,"snippet_end_line":13,"symbol_start_line":12,"symbol_end_line":14,"language":"TypeScript","kind":"function","symbol_id":"gh/thedannywahl/pantoken:TypeScript:plugins/pantoken/custom-components/scripts/generate-model.ts:function:buildCssDocModel","symbol_name":"buildCssDocModel","qualified_name":"buildCssDocModel","signature":"function buildCssDocModel(): ReturnType<typeof buildModel>","signals":["path","body","symbol-name","constraint:entity","constraint:phrase","constraint:relationship","exact-code-token"],"snippet":"export function buildCssDocModel(): ReturnType<typeof buildModel> {\n  return buildModel([join(import.meta.dirname, \"..\", \"generated\", \"custom-components.css\")]);"},{"rank":7,"score":39.2386,"file_path":"packages/pantoken/scripts/generate-custom-data.ts","start_line":170,"end_line":174,"focus_line":172,"snippet_start_line":171,"snippet_end_line":172,"symbol_start_line":161,"symbol_end_line":196,"language":"TypeScript","kind":"function","symbol_id":"gh/thedannywahl/pantoken:TypeScript:packages/pantoken/scripts/generate-custom-data.ts:function:emitCustomData","symbol_name":"emitCustomData","qualified_name":"emitCustomData","signature":"function emitCustomData(distDir: string = join(import.meta.dirname, \"..\", \"dist\")): { htmlPath: string; cssPath: string; cssdocPath: string; modelPath: string; classCount: number; propertyCount: number; entryCount: number; }","signals":["path","body","symbol-name","signature","symbol-usage"],"snippet":"  const cssData = buildCssCustomData();\n  const model = buildCssDocModel();"},{"rank":8,"score":38.4613,"file_path":"packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl","start_line":1354,"end_line":1395,"focus_line":1368,"snippet_start_line":1367,"snippet_end_line":1368,"signals":["body","constraint:phrase","exact-code-token"],"snippet":"  medium: \"var(--instui-breakpoints-md)\",\n  small: \"var(--instui-breakpoints-xs)\","},{"rank":9,"score":0,"file_path":"packages/pantoken/scripts/generate-custom-data.ts","start_line":106,"end_line":121,"focus_line":106,"snippet_start_line":106,"snippet_end_line":106,"kind":"function","qualified_name":"buildHtmlCustomData","signals":["related:sibling"],"section":"related","snippet":"export function buildHtmlCustomData("},{"rank":10,"score":0,"file_path":"packages/pantoken/scripts/generate-custom-data.ts","start_line":144,"end_line":158,"focus_line":144,"snippet_start_line":144,"snippet_end_line":144,"kind":"function","qualified_name":"buildCssDocModel","signals":["related:sibling"],"section":"related","snippet":"export function buildCssDocModel(): ReturnType<typeof buildModel> {"},{"rank":11,"score":0,"file_path":"plugins/pantoken/custom-components/tests/index.test.ts","start_line":16,"end_line":19,"focus_line":16,"snippet_start_line":16,"snippet_end_line":17,"kind":"function","qualified_name":"cssOf","signals":["related:covering-test"],"section":"covering-test","snippet":"const cssOf = (plugin: ReturnType<typeof customComponents>): string => {\n  const out = plugin.css?.({ tokens: [], css: \"\" });"}],"verify_command":{"command":"npx vitest run plugins/pantoken/custom-components/tests/index.test.ts","targets":"plugins/pantoken/custom-components/tests/index.test.ts","derived_from":"package.json devDependencies + covering test path","tier":"narrow"},"stats":{"query_constraints_truncated":true,"files_scanned":7363,"preselection_backend":"go-content","preselection_passes":3,"preselection_files_examined":7363,"preselection_confidence":0.004545454545454519,"preselection_coverage":1,"preselection_diversity":1,"preselection_widened":true,"preselection_bounded":true,"files_content_read_during_preselection":7363,"files_content_read_during_query":399,"bytes_content_read_during_query":60748537,"files_content_read_for_identifier_usage":173,"bytes_content_read_for_identifier_usage":1024183,"files_content_read_for_context_blocks":3,"bytes_content_read_for_context_blocks":4284,"files_indexed":384,"symbols_considered":2503,"lexical_candidates":19434,"graph_candidates":17,"caller_boosted_candidates":100,"identifier_usage_candidates":32,"same_container_neighbor_candidates":8,"same_file_bridge_candidates":4,"sparse_candidates":0,"sparse_files_content_read":0,"candidates_selected":11,"result_bytes":6881,"context_budget_bytes":24576,"snippets_truncated_by_budget":5,"complete_symbol_snippets":2,"locator_snippets":5,"doc_reanchored_hits":3,"related_sites":2,"covering_tests":1,"verify_command_bytes":416,"verify_tier":"narrow","context_block_bytes":416,"index_cache_hit":false,"index_latency_ms":1709,"query_latency_ms":7378,"total_latency_ms":16006,"search_latency_ms":16006,"preselect_latency_ms":6917},"warnings":[{"code":"W_WORKTREE_SNAPSHOT","severity":"warning","effect_on_semantic_completeness":"snapshot records are read from the working tree because --worktree was requested"}],"partial_failures":[],"completeness":{"languages":{"CSS":{"files":47,"symbols":127},"HTML":{"files":86,"symbols":86},"JSON":{"files":3,"symbols":75},"JavaScript":{"files":1,"symbols":0},"Less":{"files":1,"symbols":1},"Markdown":{"files":84,"symbols":1817},"TypeScript":{"files":45,"symbols":365},"Vue":{"files":1,"symbols":4},"YAML":{"files":2,"symbols":28}},"relations":{"ACCESSES":1,"ASYNC_CALLS":1,"CALLS":314,"CONFIGURES":103,"CONSTRUCTS":1,"CONTAINS":138,"DATA_FLOWS":65,"DEFINES":2503,"EXTENDS":2,"FILE_CHANGES_WITH":36,"IMPORTS":188,"INHERITS":2,"LISTENS_ON":2,"PARAM_TYPE":44,"READS_FIELD":35,"RETURNS_TYPE":33,"SIMILAR_TO":4,"USES_TYPE":73}}}
+
+---
+
+[Terminal bd163052-c73d-4902-954c-90d00c5a2fad notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on iconfix ≡  ~3 via  26.10.0 
+➜  vp test --coverage
+VITE+ - The Unified Toolchain for the Web
+
+
+ RUN  v5.0.1 /Users/dwahl/Scripts/pantoken
+      Coverage enabled with v8
+
+│
+◇  Done scaffolding.
+error: command-argument value 'not-a-real-platform' is invalid for argument 'platform'. Platform "not-a-real-platform" is not valid. Expected one of: angular, canvas-theme-editor, components, next, react, svelte, vue, web-components.
+Missing required argument "platform". Expected one of: angular, canvas-theme-editor, components, next, react, svelte, vue, web-components
+create-pantoken-app is scaffold-only. Use @pantoken/cli for native output: npx @pantoken/cli generate <target>
+error: unknown command 'bogus-command'
+
+ Test Files  357 passed (357)
+      Tests  2686 passed (2686)
+   Start at  13:25:37
+   Duration  40.57s (import 47%, tests 31%, transform 12%, environment 5%, setup 2%, worker 2%)
+
+     Import  2762 modules were evaluated 15984 times · 144.67s total, 47% of tracked time
+             ~6.17s faster with isolate: false — shared modules are evaluated once per worker instead of once per file
+             learn more: https://vitest.dev/guide/improving-performance#test-isolation
+
+ % Coverage report from v8
+
+=============================== Coverage summary ===============================
+Statements   : 94.12% ( 11375/12085 )
+Branches     : 84.46% ( 5656/6696 )
+Functions    : 95.97% ( 2672/2784 )
+Lines        : 95.67% ( 10200/10661 )
+================================================================================
