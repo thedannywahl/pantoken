@@ -1,0 +1,34 @@
+the button set seamed buttons need the following changes:
+* there should be a visible seam between buttons, with an opt-out modifier
+* the button set should not wrap- right now there's an example of:
+```
+<button-set><button><button><button></button-set> <button> <button> <button> <button>
+```
+all on a row and on a narrow view port the button set "breaks" and stacks vertically.
+
+---
+
+do incremental conventional commits and changesets for affected packages, ignoring other unstaged changes in the repo as there are other agents working.
+
+---
+
+Start implementation
+
+---
+
+start a dev server and look at /tools/canvas-rce or build a small untracked demo to validate
+
+---
+
+-color-ai-secondary looks good, all the others are 1px too far apart so there's a gap and then -without-seam has the right display (a 1px seam)
+
+---
+
+no, what I want is:
+* -ai-color-secondary to look exactly like it does- don't change it.
+* default, primary, -ai, secondary, tertiary to look like the current -without-seam: a barely visible 1px seam that matches the outer border/box-shadow.
+* -without-seam to look like the buttons did before we introduced the change: no visible distinction between the buttons.
+
+---
+
+in your demo, add -color-tertiary -without-seam example
