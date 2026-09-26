@@ -48,6 +48,7 @@ import appHtml from "./app.html?raw";
 import { STRINGS } from "./strings.ts";
 import { LOCALE_STRINGS } from "./locale-strings.ts";
 import { LOCALE_DIRS } from "./locale-dirs.ts";
+import { selectEditorLocale } from "./locale.ts";
 import tinymce from "tinymce";
 import "tinymce/models/dom/model";
 import "tinymce/themes/silver/theme";
@@ -545,13 +546,23 @@ function setupStandaloneAppShell(): void {
 /** Persists the shell's own locale choice — never the authored content's own `lang`/`dir`. */
 const LOCALE_STORAGE_KEY = "pantoken-canvas-theme-editor-locale";
 
-/** Reads the persisted locale choice, tolerating missing/corrupt/blocked storage. */
+/** Reads the docs locale when embedded, otherwise the standalone shell's saved choice. */
 function loadLocale(): string {
+  const embedded = window.self !== window.top;
+  const queryLocale = embedded ? new URLSearchParams(window.location.search).get("locale") : null;
+  let storedLocale: string | null = null;
   try {
-    return localStorage.getItem(LOCALE_STORAGE_KEY) || "en";
+    if (!embedded) storedLocale = localStorage.getItem(LOCALE_STORAGE_KEY);
   } catch {
-    return "en";
+    // Storage can be disabled; the scaffold's initial HTML locale is still available.
   }
+  return selectEditorLocale(
+    embedded,
+    queryLocale,
+    storedLocale,
+    document.documentElement.lang,
+    LOCALE_DIRS,
+  );
 }
 
 const activeLocale = loadLocale();
