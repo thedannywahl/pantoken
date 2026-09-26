@@ -235,7 +235,8 @@
   background: var(--instui-color-text-interactive-action-ai-base);
 }
 
-.pfx-button-set.-color-ai > .pfx-button:not([class*="-color-"])[class*="-icon-"]::before {
+.pfx-button-set.-color-ai
+  > .pfx-button:not([class*="-color-"]):is([class^="-icon-"], [class*=" -icon-"])::before {
   background: currentColor;
 }
 
@@ -320,7 +321,8 @@
   );
 }
 
-.pfx-button-set.-color-ai-secondary > .pfx-button:not([class*="-color-"])[class*="-icon-"]::before {
+.pfx-button-set.-color-ai-secondary
+  > .pfx-button:not([class*="-color-"]):is([class^="-icon-"], [class*=" -icon-"])::before {
   background: linear-gradient(
     to bottom,
     var(--instui-color-stroke-interactive-action-ai-top-gradient-base) 0%,
@@ -369,8 +371,8 @@
 .pfx-button-set.-size-sm
   > .pfx-button:not([class*="-size-"]):is(
     .-shape-square,
-    [class*="-icon-"]:not(:has(> *)),
-    [class*="-icon-"]:has(> .pfx-screen-reader-content:only-child)
+    :is([class^="-icon-"], [class*=" -icon-"]):not(:has(> *)),
+    :is([class^="-icon-"], [class*=" -icon-"]):has(> .pfx-screen-reader-content:only-child)
   ) {
   inline-size: var(--instui-component-base-button-small-height);
 }
@@ -384,8 +386,8 @@
 .pfx-button-set.-size-md
   > .pfx-button:not([class*="-size-"]):is(
     .-shape-square,
-    [class*="-icon-"]:not(:has(> *)),
-    [class*="-icon-"]:has(> .pfx-screen-reader-content:only-child)
+    :is([class^="-icon-"], [class*=" -icon-"]):not(:has(> *)),
+    :is([class^="-icon-"], [class*=" -icon-"]):has(> .pfx-screen-reader-content:only-child)
   ) {
   inline-size: var(--instui-component-base-button-medium-height);
 }
@@ -399,8 +401,8 @@
 .pfx-button-set.-size-lg
   > .pfx-button:not([class*="-size-"]):is(
     .-shape-square,
-    [class*="-icon-"]:not(:has(> *)),
-    [class*="-icon-"]:has(> .pfx-screen-reader-content:only-child)
+    :is([class^="-icon-"], [class*=" -icon-"]):not(:has(> *)),
+    :is([class^="-icon-"], [class*=" -icon-"]):has(> .pfx-screen-reader-content:only-child)
   ) {
   inline-size: var(--instui-component-base-button-large-height);
 }
