@@ -1,5 +1,34 @@
 # @pantoken/tinymce
 
+## 0.4.0
+
+### Minor Changes
+
+- 626ffc1: Use translated TinyMCE plugin controls, layout content, diagnostics, and source-view labels in the Canvas theme editor. Allow per-editor string overrides without changing English defaults for other consumers.
+
+### Patch Changes
+
+- 626ffc1: Bundle TinyMCE community language packs for the Canvas theme editor, use English for unavailable or incomplete core translations, localize custom editor controls, and preserve unsaved work across locale changes.
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+  - @pantoken/components@2.0.0
+  - @pantoken/plugin-custom-components@0.6.0
+  - @pantoken/tinymce-codemirror@0.3.0
+  - @pantoken/tokens@0.7.0
+  - @pantoken/plugin-custom-icons@0.3.13
+  - @pantoken/plugin-layouts@0.5.1
+  - @pantoken/plugin-logos@0.5.1
+  - @pantoken/plugin-lucide-lab@0.4.1
+  - @pantoken/plugin-simple-icons@0.3.11
+
 ## 0.3.0
 
 ### Minor Changes

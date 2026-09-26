@@ -1,5 +1,17 @@
 # @pantoken/scaffold
 
+## 1.5.1
+
+### Patch Changes
+
+- 626ffc1: Use the docs language for the embedded Canvas theme editor while keeping the standalone editor's saved locale independent.
+- 626ffc1: Use translated TinyMCE plugin controls, layout content, diagnostics, and source-view labels in the Canvas theme editor. Allow per-editor string overrides without changing English defaults for other consumers.
+- 626ffc1: Bundle TinyMCE community language packs for the Canvas theme editor, use English for unavailable or incomplete core translations, localize custom editor controls, and preserve unsaved work across locale changes.
+- 626ffc1: Tint the canvas-theme-editor standalone header's brand mark with the active chrome color — step 100 in light mode and 90 in dark — with a page-background glyph that reads as a cutout.
+- 626ffc1: Align responsive utilities with the canonical breakpoint scale, and let the canvas-theme-editor shell progressively hide labels and reduce page padding on narrow viewports.
+- 626ffc1: Resolve the Canvas theme editor's inlined local font URLs to bundled WOFF2 assets so its preview can load fonts without sanitizer errors.
+- 626ffc1: Add an extra-small breakpoint to the custom-components stylesheet, use it for the canvas-theme-editor phone preview, and show the active preview width in an in-place editor that accepts custom pixel values. Add an optional input-type hint to the in-place-edit interaction while leaving value validation to consumers.
+
 ## 1.5.0
 
 ### Minor Changes

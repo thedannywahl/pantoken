@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.5.13
+
+### Patch Changes
+
+- 626ffc1: Use the docs language for the embedded Canvas theme editor while keeping the standalone editor's saved locale independent.
+- 626ffc1: Bundle TinyMCE community language packs for the Canvas theme editor, use English for unavailable or incomplete core translations, localize custom editor controls, and preserve unsaved work across locale changes.
+
 ## 0.5.12
 
 ### Patch Changes

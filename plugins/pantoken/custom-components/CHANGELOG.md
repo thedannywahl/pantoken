@@ -1,5 +1,20 @@
 # @pantoken/plugin-custom-components
 
+## 0.6.0
+
+### Minor Changes
+
+- 626ffc1: Show a 1px seam in the buttons' own border color between `button-set` buttons (tinted with the label color on solid fills like primary, whose border matches the fill), and add a `-without-seam` modifier that hides it so the set reads as one continuous control.
+
+### Patch Changes
+
+- 626ffc1: Keep `button-set` on a single row: it no longer wraps its buttons onto separate lines, and neither the set nor its buttons shrink inside a flex parent.
+- 626ffc1: Limit banner and button-set icon-specific styles to canonical `-icon-*` glyph classes so unrelated Canvas icon classes do not trigger glyph styling or icon-only button sizing.
+- 626ffc1: Add an extra-small breakpoint to the custom-components stylesheet, use it for the canvas-theme-editor phone preview, and show the active preview width in an in-place editor that accepts custom pixel values. Add an optional input-type hint to the in-place-edit interaction while leaving value validation to consumers.
+- Updated dependencies [626ffc1]
+  - @pantoken/model@0.5.0
+  - @pantoken/plugin-kit@0.3.3
+
 ## 0.5.0
 
 ### Minor Changes

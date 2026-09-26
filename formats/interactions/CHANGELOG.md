@@ -1,5 +1,13 @@
 # @pantoken/interactions
 
+## 0.4.1
+
+### Patch Changes
+
+- 626ffc1: Add an extra-small breakpoint to the custom-components stylesheet, use it for the canvas-theme-editor phone preview, and show the active preview width in an in-place editor that accepts custom pixel values. Add an optional input-type hint to the in-place-edit interaction while leaving value validation to consumers.
+- Updated dependencies [626ffc1]
+  - @pantoken/utils@1.2.0
+
 ## 0.4.0
 
 ### Minor Changes

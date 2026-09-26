@@ -1,5 +1,81 @@
 # CHANGELOG
 
+## 0.2.23
+
+### Patch Changes
+
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+  - @pantoken/components@2.0.0
+  - @pantoken/plugin-custom-components@0.6.0
+  - @pantoken/tinymce@0.4.0
+  - @pantoken/tokens@0.7.0
+  - @pantoken/interactions@0.4.1
+  - @pantoken/web-components@0.7.1
+  - @pantoken/drupal@0.1.35
+  - @pantoken/hugo@0.1.36
+  - @pantoken/jekyll@0.1.36
+  - @pantoken/angular@0.1.39
+  - @pantoken/astro@0.1.23
+  - @pantoken/bootstrap@0.1.3
+  - @pantoken/css-in-js@0.1.19
+  - @pantoken/docusaurus@0.1.3
+  - @pantoken/foundation@0.1.4
+  - @pantoken/mui@0.1.19
+  - @pantoken/pendo@0.4.10
+  - @pantoken/react@0.1.40
+  - @pantoken/shadcn@0.2.0
+  - @pantoken/storybook@0.1.19
+  - @pantoken/svelte@0.1.40
+  - @pantoken/vitepress@0.2.3
+  - @pantoken/vue@0.1.40
+  - @pantoken/cli@0.1.43
+  - @pantoken/android@0.1.23
+  - @pantoken/compose@0.1.23
+  - @pantoken/flutter@0.1.23
+  - @pantoken/swift@0.1.23
+  - @pantoken/panda@0.1.19
+  - @pantoken/tailwind@0.1.13
+  - @pantoken/figma@0.1.16
+  - @pantoken/swatches@0.1.19
+  - @pantoken/css@0.4.1
+  - @pantoken/dtcg@0.1.17
+  - @pantoken/icons@0.3.1
+  - @pantoken/less@0.1.19
+  - @pantoken/scss@0.1.19
+  - @pantoken/stylus@0.1.19
+  - @pantoken/email@0.1.19
+  - @pantoken/vanilla@0.1.16
+  - @pantoken/wordpress@0.1.16
+  - @pantoken/plugin-custom-icons@0.3.13
+  - @pantoken/plugin-custom-theme-colors@0.3.1
+  - @pantoken/plugin-layouts@0.5.1
+  - @pantoken/plugin-logos@0.5.1
+  - @pantoken/plugin-simple-icons@0.3.11
+  - @pantoken/plugin-stacking@1.0.9
+  - @pantoken/plugin-transition@1.0.8
+  - @pantoken/plugin-visual-debug@0.1.19
+  - @pantoken/markdown-it@0.1.16
+  - @pantoken/mintlify@0.1.19
+  - @pantoken/react-markdown@0.1.18
+  - @pantoken/react-native@0.1.19
+  - @pantoken/rehype@0.1.16
+  - @pantoken/scope@0.4.1
+  - @pantoken/plugin-primitives@1.0.5
+  - @pantoken/vite@0.1.23
+  - @pantoken/plugin-theme-custom-media@0.2.8
+  - @pantoken/postcss@0.1.23
+  - @pantoken/webpack@0.1.23
+
 ## 0.2.22
 
 ### Patch Changes

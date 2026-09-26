@@ -1,5 +1,11 @@
 # @pantoken/tinymce-codemirror
 
+## 0.3.0
+
+### Minor Changes
+
+- 626ffc1: Use translated TinyMCE plugin controls, layout content, diagnostics, and source-view labels in the Canvas theme editor. Allow per-editor string overrides without changing English defaults for other consumers.
+
 ## 0.2.0
 
 ### Minor Changes

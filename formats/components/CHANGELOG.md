@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 2.0.0
+
+### Major Changes
+
+- 626ffc1: Remove the deprecated `-render-icon-*` and `-render-custom-icon-*` glyph classes and the `deprecatedAliases` option from `iconGlyphsCss`. Replace those classes with `-icon-*`; the shipped `icons.css` now emits only canonical glyph classes.
+
+### Patch Changes
+
+- 626ffc1: Give a bare `.instui-button` the same border as `-color-primary` (including hover and active), so a default button is fully primary instead of primary with a transparent border.
+- 626ffc1: Match glyph class tokens instead of arbitrary `-icon-` substrings in the shared painter and icon-aware component styles, preserving deprecated icon aliases without disturbing Canvas icons.
+- 626ffc1: Align responsive utilities with the canonical breakpoint scale, and let the canvas-theme-editor shell progressively hide labels and reduce page padding on narrow viewports.
+- Updated dependencies [626ffc1]
+  - @pantoken/utils@1.2.0
+  - @pantoken/tokens@0.7.0
+  - @pantoken/scaffold-base@0.3.4
+
 ## 1.3.0
 
 ### Minor Changes

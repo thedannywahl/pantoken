@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 1.3.2
+
+### Patch Changes
+
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+- Updated dependencies [626ffc1]
+  - @pantoken/scaffold@1.5.1
+
 ## 1.3.1
 
 ### Patch Changes
