@@ -88,19 +88,23 @@ test("buttonSetRules emits prefixed and unprefixed selectors", () => {
   expect(buttonSetRules("")).toContain(".button-set {");
 });
 
-test("button-set has hairline seams by default and -without-seam collapses them", () => {
+test("button-set is flush with a drawn 1px seam that -without-seam removes", () => {
   const css = buttonSetRules("instui-");
   expect(css).toContain(".instui-button-set {");
-  expect(css).toContain("gap: var(--instui-border-width-sm)");
+  expect(css).toContain("gap: 0");
   expect(css).toContain("flex-wrap: nowrap");
   expect(css).not.toContain("flex-wrap: wrap");
   expect(css).toContain(".instui-button-set > .instui-button {");
   expect(css).toContain("border-radius: 0");
-  expect(css).toContain(".instui-button-set.-without-seam {\n  gap: 0;");
   expect(css).toContain(
-    ".instui-button-set.-without-seam > .instui-button:not(:first-child) {\n  border-inline-start: 0;",
+    ".instui-button-set > .instui-button:not(:first-child) {\n  border-inline-start: 0;",
   );
-  expect(css).not.toContain(".instui-button-set > .instui-button:not(:first-child)");
+  expect(css).toContain(
+    ".instui-button-set:not(.-without-seam) > .instui-button:not(:first-child) {\n  box-shadow: inset var(--instui-border-width-sm) 0 0",
+  );
+  expect(css).toContain(
+    ".instui-button-set:not(.-without-seam) > .instui-button:not(:first-child):dir(rtl)",
+  );
   expect(css).toContain(".instui-button-set > .instui-button:first-child");
   expect(css).toContain(
     "border-start-start-radius: var(--instui-component-base-button-border-radius)",
