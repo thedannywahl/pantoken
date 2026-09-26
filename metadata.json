@@ -1,0 +1,41 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3FZZX3EXFEB2P62T2CS3PTB",
+  "strategy": "manual-commit",
+  "branch": "inline",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "formats/inline-styles/package.json",
+    "formats/inline-styles/src/cli.ts",
+    "formats/inline-styles/src/flatten-scopes.ts",
+    "formats/inline-styles/src/index.ts",
+    "formats/inline-styles/src/inline-html.ts",
+    "formats/inline-styles/src/pantoken-html.ts",
+    "formats/inline-styles/tests/cli.test.ts",
+    "formats/inline-styles/tests/inline-html.test.ts",
+    "formats/inline-styles/tsconfig.json",
+    "formats/inline-styles/vite.config.ts",
+    "platforms/email/package.json",
+    "platforms/email/src/inline.ts",
+    "platforms/email/tests/index.test.ts",
+    "platforms/email/vite.config.ts",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": ""
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
