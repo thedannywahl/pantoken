@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-26 16:51+0000\n"
+"PO-Revision-Date: 2026-09-26 17:09+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2362,7 +2362,7 @@ msgstr ""
 #: formats/interactions/src/functions/initInPlaceEdit.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Wire a contenteditable field for click-to-edit commit/revert behaviour.\nEnter commits, Escape reverts; blur also commits if the value changed.\nFires a bubbling `change` CustomEvent with `detail.value` on commit."
+msgid "Wire a contenteditable field for click-to-edit commit/revert behaviour.\nEnter commits, Escape reverts; blur also commits if the value changed.\nFires a bubbling `change` CustomEvent with `detail.value` on commit.\nThe optional input type configures the editing hint only; consumers validate committed values."
 msgstr ""
 
 #: formats/interactions/src/functions/initInPlaceEdit.md
@@ -2612,6 +2612,18 @@ msgctxt "docs.api:prose"
 msgid "The **`stopPropagation()`** method of the Event interface prevents further propagation of the current event in the capturing and bubbling phases. It does not, however, prevent any default behaviors from occurring; for instance, clicks on links are still processed. If you want to stop those behaviors, see the preventDefault() method. It also does not prevent propagation to other event-handlers of the current element. If you want to stop those, see stopImmediatePropagation()."
 msgstr ""
 
+#: formats/interactions/src/interfaces/InPlaceEditOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Optional editing hints for an in-place edit field."
+msgstr ""
+
+#: formats/interactions/src/interfaces/InPlaceEditOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Selects a text-like editing hint for the input surface; it does not validate."
+msgstr ""
+
 #: formats/interactions/src/interfaces/ProgressCircleHandle.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -2748,6 +2760,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Callback invoked when a `command` event (or fallback click) resolves to a target."
+msgstr ""
+
+#: formats/interactions/src/type-aliases/InPlaceEditInputType.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Text-like input types that can be meaningfully hinted on a contenteditable field."
 msgstr ""
 
 #: formats/interactions/src/type-aliases/OnCommand.md
@@ -10646,7 +10664,7 @@ msgstr ""
 #: renderers/web-components/src/variables/inPlaceEdit.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "`<instui-in-place-edit>` — a click-to-edit field. `value` shows as text; on click/focus it becomes\neditable, Enter or blur commits (and fires a bubbling `change` event with `detail.value`), and\nEscape reverts to the pre-edit value. `readonly` disables editing. An external `value` change\nreflects into the field while it isn't being edited."
+msgid "`<instui-in-place-edit>` — a click-to-edit field. `value` shows as text; on click/focus it becomes\neditable, Enter or blur commits (and fires a bubbling `change` event with `detail.value`), and\nEscape reverts to the pre-edit value. `readonly` disables editing. An external `value` change\nreflects into the field while it isn't being edited. `input-type` accepts `text`, `number`,\n`email`, `url`, `tel`, or `search` as a non-validating editing hint."
 msgstr ""
 
 #: renderers/web-components/src/variables/is.md

@@ -24,6 +24,16 @@ test("renders an editable textbox seeded from the value attribute", () => {
   expect(field.textContent).toBe("Course title");
 });
 
+test("passes a supported input-type hint to the editing surface", () => {
+  const { field } = ipe(`value="42" input-type="number"`);
+  expect(field.inputMode).toBe("decimal");
+});
+
+test("ignores an unsupported input-type hint", () => {
+  const { field } = ipe(`value="secret" input-type="password"`);
+  expect(field.hasAttribute("inputmode")).toBe(false);
+});
+
 test("falls back to text content when no value attribute is set", () => {
   const { field } = ipe("", "From slot");
   expect(field.textContent).toBe("From slot");

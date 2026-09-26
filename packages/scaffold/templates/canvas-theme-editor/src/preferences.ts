@@ -4,7 +4,7 @@ const STORAGE_KEY = "pantoken-canvas-theme-editor-preferences";
 /** Shape of the persisted UI preferences blob. */
 export interface StoredPreferences {
   layout: "row" | "column";
-  previewWidth: "large" | "medium" | "small";
+  previewWidth: "large" | "medium" | "small" | number;
   previewFullscreen: boolean;
   cdnProvider: string;
   tinymceConfig?: Record<string, unknown>;

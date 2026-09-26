@@ -18,7 +18,10 @@ When styling this project, use pantoken components, icons and tokens.
 - InstUI-look CSS components (no framework dependency): `@pantoken/components`
   (`components.css`, `base.css`, `prose.css`, `utilities.css`, `fonts.css`) — class-based markup
   like `<button class="instui-button">`.
-- Component behaviors (vanilla JS): `@pantoken/interactions` (`initModal`, `initTooltip`, `initInPlaceEdit`, `initCloseButton`).
+- Component behaviors (vanilla JS): `@pantoken/interactions` (`initModal`, `initTooltip`,
+  `initInPlaceEdit`, `initCloseButton`). `initInPlaceEdit` accepts an optional `inputType` hint;
+  supported hints are `text`, `number`, `email`, `url`, `tel`, and `search`. Validate its committed
+  `change` value in the consuming application.
 - Tailwind: `pantokenPreset()` from `@pantoken/tailwind`.
 - Native / CMS/site/design targets: `npx pantoken generate
 <swift|android|compose|flutter|rust|wordpress|vanilla|drupal|swatches|icon-font|pendo|mintlify|jekyll|hugo>`.

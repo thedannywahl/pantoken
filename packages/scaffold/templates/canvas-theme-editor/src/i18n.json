@@ -19,6 +19,7 @@
   "previewWidthLargeLabel": { "message": "Large", "translate": "always" },
   "previewWidthMediumLabel": { "message": "Medium", "translate": "always" },
   "previewWidthSmallLabel": { "message": "Small", "translate": "always" },
+  "previewWidthValueLabel": { "message": "Preview width in pixels", "translate": "always" },
   "previewSchemeToggleLabel": { "message": "Preview dark mode", "translate": "always" },
   "previewPopupLabel": { "message": "Open preview in a popup", "translate": "always" },
   "previewPopupTitle": { "message": "Canvas content preview", "translate": "always" },

@@ -287,15 +287,17 @@ finite amount from zero through one. The transformer verifies that modified refe
 through colour-typed tokens to a concrete colour, detects missing references and cycles, and blocks
 generated artifact replacement until every malformed modifier has an explicit reviewed ledger
 rewrite.
-Browser interaction helpers validate numeric configuration before scheduling work; missing,
-non-finite, and non-positive alert timeouts leave the element mounted.
+Browser interaction helpers that consume numeric configuration validate it before scheduling work;
+missing, non-finite, and non-positive alert timeouts leave the element mounted. In-place edit's
+numeric input type is only an editing hint, so consumers remain responsible for validation.
 ProgressCircle animation delays are normalized to a finite, non-negative millisecond value.
 Progress web-component values are normalized to a finite range between a minimum and larger maximum.
 TinyMCE named presets use a versioned localStorage envelope and require the host application to
 validate caller-owned state before restoring it. Blocked, malformed, or full browser storage fails
 without replacing the working document.
 The Canvas theme editor's one-time session draft uses the same preset-state validation before
-restoration and does not replace named presets.
+restoration and does not replace named presets. Its custom preview width accepts and persists only
+positive safe integers before using the value as a pixel constraint.
 HTML attributes are escaped at the output boundary.
 Custom brand colors accept only `#rgb` or `#rrggbb`; anything else throws before derivation, and the
 CSS written out contains only the derived `#rrggbb` values, never the raw input. Demo frames and the
@@ -316,7 +318,7 @@ since the runner writes the scale into a generated `srcdoc` attribute.
 | Persisted browser content             | Versioned preset envelopes, host-supplied state validation before restore, origin-local storage documentation, instance-namespaced keys so co-hosted instances cannot overwrite one another, and non-destructive storage failures.    |
 | Regular-expression denial of service  | Non-ambiguous expressions, bounded property-test inputs, high-iteration scheduled property tests, CodeQL, and Snyk Code.                                                                                                              |
 | Unsafe object mutation                | Frozen public mapping tables where mutation would alter global behavior, null-prototype generated maps, and immutable inputs where practical.                                                                                         |
-| Malformed browser numeric input       | Alert timeouts and ProgressCircle delays accept only finite values; Progress web-component values clamp between zero and a positive maximum.                                                                                          |
+| Malformed browser numeric input       | Alert timeouts and ProgressCircle delays accept only finite values; Progress web-component values clamp between zero and a positive maximum; the Canvas preview width accepts only positive safe integers.                            |
 | Malformed or missing generated output | Build-before-test ordering, generated-output validation, reference-integrity checks, package export checks, and failure aggregation.                                                                                                  |
 | Dependency vulnerabilities            | Renovate and Dependabot monitoring, a dependency release-age delay, Snyk dependency scanning, CodeQL, and OpenSSF Scorecard.                                                                                                          |
 | Release tampering                     | npm registry signatures, Sigstore provenance, npm OIDC trusted publishing, GitHub immutable releases, and public verification instructions.                                                                                           |

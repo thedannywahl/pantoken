@@ -525,8 +525,21 @@ body.canvas-rce-shell-enabled #app-mode {
 
 .preview-width-picker {
   display: flex;
+  align-items: center;
   align-self: flex-start;
   gap: 0.125rem;
+}
+
+.preview-width-value {
+  min-inline-size: 3ch;
+  padding-inline: var(--instui-spacing-space2xs);
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.preview-width-unit {
+  color: var(--instui-color-text-secondary);
+  font-size: var(--instui-font-size-small);
 }
 
 /* Overlays the current window/iframe viewport — not the OS-level Fullscreen API — matching

@@ -983,6 +983,7 @@ const customColorSwatch = document.querySelector<HTMLElement>(
 const previewWidthButtons = document.querySelectorAll<HTMLButtonElement>(
   ".preview-width-picker [data-preview-width]",
 );
+const previewWidthValue = document.querySelector<HTMLElement>("#preview-width-value")!;
 const includeDarkModeRow = document.getElementById("include-dark-mode-row")!;
 const includeDarkModeCheckbox = document.querySelector<HTMLInputElement>("#include-dark-mode")!;
 const previewSchemeToggle = document.querySelector<HTMLButtonElement>("#preview-scheme-toggle")!;
@@ -1360,12 +1361,50 @@ colorButtons.forEach((button) => {
 
 // Canvas's own responsive breakpoints for course content, reused as-is from pantoken's tokens —
 // "large" is unconstrained (the current default), matching the desktop RCE width.
-const PREVIEW_WIDTHS: Record<string, string> = {
+type PreviewWidthPreset = "large" | "medium" | "small";
+
+const PREVIEW_WIDTHS: Record<Exclude<PreviewWidthPreset, "large">, string> = {
   medium: "var(--instui-breakpoints-md)",
   small: "var(--instui-breakpoints-xs)",
 };
 
-let selectedPreviewWidth = "large";
+function isPreviewWidthPreset(value: unknown): value is PreviewWidthPreset {
+  return value === "large" || value === "medium" || value === "small";
+}
+
+function isCustomPreviewWidth(value: unknown): value is number {
+  return typeof value === "number" && Number.isSafeInteger(value) && value > 0;
+}
+
+function parseCustomPreviewWidth(value: string): number | undefined {
+  if (!/^[1-9]\d*$/u.test(value)) return undefined;
+  const width = Number(value);
+  return isCustomPreviewWidth(width) ? width : undefined;
+}
+
+let selectedPreviewWidth: PreviewWidthPreset | number =
+  isPreviewWidthPreset(preferences.previewWidth) || isCustomPreviewWidth(preferences.previewWidth)
+    ? preferences.previewWidth
+    : "large";
+
+function clearPreviewWidthButtons(): void {
+  for (const button of previewWidthButtons) button.setAttribute("aria-pressed", "false");
+}
+
+function updatePreviewWidthValue(force = false): void {
+  if (!force && document.activeElement === previewWidthValue) return;
+  const width =
+    typeof selectedPreviewWidth === "number"
+      ? selectedPreviewWidth
+      : Math.round(previewFrame.getBoundingClientRect().width);
+  if (width <= 0) return;
+  const value = String(width);
+  previewWidthValue.textContent = value;
+  previewWidthValue.setAttribute("value", value);
+}
+
+const previewWidthObserver = new ResizeObserver(() => updatePreviewWidthValue());
+previewWidthObserver.observe(previewFrame);
 
 /**
  * In row layout, the *pane's* width is constrained so the editor pane's flex:1 can claim
@@ -1388,37 +1427,56 @@ function applyPreviewWidth(): void {
     if (!fullscreen && document.querySelector(".content")?.getAttribute("data-layout") === "row") {
       previewPane.style.minWidth = "var(--instui-breakpoints-lg)";
     }
+    updatePreviewWidthValue();
     return;
   }
+  const width =
+    typeof selectedPreviewWidth === "number"
+      ? `${selectedPreviewWidth}px`
+      : PREVIEW_WIDTHS[selectedPreviewWidth];
   if (fullscreen) {
-    previewFrame.style.maxWidth = PREVIEW_WIDTHS[selectedPreviewWidth];
+    previewFrame.style.maxWidth = width;
   } else {
     previewPane.style.flex = "0 0 auto";
-    previewPane.style.width = PREVIEW_WIDTHS[selectedPreviewWidth];
+    previewPane.style.width = width;
   }
+  updatePreviewWidthValue();
 }
 
 previewWidthButtons.forEach((button) => {
   button.addEventListener("click", () => {
     selectToggleButton(previewWidthButtons, button);
-    selectedPreviewWidth = button.dataset.previewWidth!;
+    selectedPreviewWidth = button.dataset.previewWidth as PreviewWidthPreset;
     applyPreviewWidth();
     persistPreferences();
   });
 });
-if (
-  preferences.previewWidth &&
-  ["large", "medium", "small"].includes(preferences.previewWidth) &&
-  preferences.previewWidth !== "large"
-) {
+previewWidthValue.addEventListener("change", (event) => {
+  const width = parseCustomPreviewWidth(
+    (event as CustomEvent<{ value: string }>).detail.value,
+  );
+  if (width === undefined) {
+    updatePreviewWidthValue(true);
+    return;
+  }
+  selectedPreviewWidth = width;
+  clearPreviewWidthButtons();
+  applyPreviewWidth();
+  persistPreferences();
+});
+if (typeof selectedPreviewWidth === "number") {
+  clearPreviewWidthButtons();
+  applyPreviewWidth();
+} else if (selectedPreviewWidth !== "large") {
   const savedWidthButton = [...previewWidthButtons].find(
-    (button) => button.dataset.previewWidth === preferences.previewWidth,
+    (button) => button.dataset.previewWidth === selectedPreviewWidth,
   );
   if (savedWidthButton) {
     selectToggleButton(previewWidthButtons, savedWidthButton);
-    selectedPreviewWidth = preferences.previewWidth;
     applyPreviewWidth();
   }
+} else {
+  applyPreviewWidth();
 }
 
 let previewDarkOverride = false;
@@ -1618,7 +1676,7 @@ function persistPreferences(): void {
   savePreferences({
     ...preferences,
     layout: contentEl.dataset.layout === "row" ? "row" : "column",
-    previewWidth: selectedPreviewWidth as "large" | "medium" | "small",
+    previewWidth: selectedPreviewWidth,
     previewFullscreen: previewPane.classList.contains("-fullscreen"),
     cdnProvider: providerSelect.value,
     tinymceConfig: mergedTinymceConfig,
