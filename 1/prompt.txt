@@ -1,0 +1,17 @@
+you're going to do incremental conventional commits and changesets for affected public and private packages, ignoring other unstaged changes in the repository as there are other agents working too.
+
+---
+
+don't do any translation work, I'll handle that separately.
+
+---
+
+Start implementation
+
+---
+
+did you do all the tasks?
+
+---
+
+do all the tasks.
