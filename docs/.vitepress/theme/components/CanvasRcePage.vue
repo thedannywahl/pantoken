@@ -3,7 +3,7 @@ import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 import { useData, withBase } from "vitepress";
 import { CANVAS_RCE_DEFAULTS, CANVAS_RCE_HEIGHT_MESSAGE } from "../canvas-rce";
 
-const { theme } = useData();
+const { theme, localeIndex } = useData();
 const t = computed(() => ({
   ...CANVAS_RCE_DEFAULTS,
   ...((theme.value as Record<string, unknown>).canvasRce as object),
@@ -20,9 +20,13 @@ const t = computed(() => ({
 // for the browser's heuristic HTTP cache, so a same-second reload can silently reuse the previous
 // build. A per-load timestamp query param gives every reload a fresh cache key; production builds
 // don't rebuild on the fly, so they skip it and keep the plain URL.
-const iframeSrc = computed(() =>
-  withBase(`/tools/canvas-rce/index.html${import.meta.env.DEV ? `?t=${Date.now()}` : ""}`),
-);
+const iframeSrc = computed(() => {
+  const params = new URLSearchParams({
+    locale: localeIndex.value === "root" ? "en" : localeIndex.value,
+  });
+  if (import.meta.env.DEV) params.set("t", String(Date.now()));
+  return withBase(`/tools/canvas-rce/index.html?${params}`);
+});
 
 const frame = ref<HTMLIFrameElement>();
 const height = ref<number>();

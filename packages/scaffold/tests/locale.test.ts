@@ -7,6 +7,21 @@ import {
   resolveSupportedLocale,
   validateLocaleTag,
 } from "../src/locale.ts";
+import { selectEditorLocale } from "../templates/canvas-theme-editor/src/locale.ts";
+
+test("embedded editor uses only the supported docs locale", () => {
+  const supported = { en: "ltr", hu: "ltr", ar: "rtl" } as const;
+  expect(selectEditorLocale(true, "ar", "hu", "en", supported)).toBe("ar");
+  expect(selectEditorLocale(true, "unknown", "hu", "en", supported)).toBe("en");
+  expect(selectEditorLocale(true, null, "hu", "en", supported)).toBe("en");
+});
+
+test("standalone editor prefers its saved locale then the scaffold's initial locale", () => {
+  const supported = { en: "ltr", hu: "ltr", ar: "rtl" } as const;
+  expect(selectEditorLocale(false, "ar", "hu", "en", supported)).toBe("hu");
+  expect(selectEditorLocale(false, "ar", null, "hu", supported)).toBe("hu");
+  expect(selectEditorLocale(false, "ar", "unknown", "unknown", supported)).toBe("en");
+});
 
 // ---------------------------------------------------------------------------
 // detectLocale
