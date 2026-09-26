@@ -1,0 +1,10 @@
+this button set doesn't have the seam displayed that we just updated in a recent session.
+
+---
+
+it displays correctly in the documentation: http://localhost:5173/api/css/button-set
+it's just this implementation that wasn't displaying correctly.
+
+---
+
+I'm guessing it also has to do with being both a instui-button and an instui-tooltip that's causing the failure?

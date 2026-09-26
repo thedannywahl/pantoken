@@ -3,8 +3,9 @@
   "checkpoint_id": "01M3F85Z3G8DB0FXEMHA98E4W7",
   "strategy": "manual-commit",
   "branch": "iconfix",
-  "checkpoints_count": 5,
+  "checkpoints_count": 8,
   "files_touched": [
+    ".changeset/button-set-seam.md",
     "plugins/pantoken/custom-components/src/components/button-set/button-set.css"
   ],
   "sessions": [
@@ -35,6 +36,13 @@
       "compact_transcript": "/3/transcript.jsonl",
       "content_hash": "/3/content_hash.txt",
       "prompt": "/3/prompt.txt"
+    },
+    {
+      "metadata": "/4/metadata.json",
+      "transcript": "/4/full.jsonl",
+      "compact_transcript": "/4/transcript.jsonl",
+      "content_hash": "/4/content_hash.txt",
+      "prompt": "/4/prompt.txt"
     }
   ],
   "token_usage": {
