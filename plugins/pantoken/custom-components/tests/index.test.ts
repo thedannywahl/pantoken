@@ -104,6 +104,10 @@ test("button-set joins show one shared 1px border that -without-seam hides", () 
     ".instui-button-set.-color-ai-secondary:not(.-without-seam) {\n  gap: var(--instui-border-width-sm);",
   );
   expect(css).toContain("margin-inline-start: calc(-1 * var(--instui-border-width-sm))");
+  // Bare children borrow -color-primary's stroke so default and primary sets look the same.
+  expect(css).toMatch(
+    /> \.instui-button:where\(\s*:not\(\s*\[class\*="-color-"\][^)]*\)\s*\) \{\n {2}border-color: var\(--instui-color-stroke-interactive-action-primary-base\);/u,
+  );
   expect(css).toContain(
     ".instui-button-set.-without-seam > .instui-button:not(:last-child) {\n  border-inline-end-width: 0;",
   );
