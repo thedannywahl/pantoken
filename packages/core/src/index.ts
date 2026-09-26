@@ -26,7 +26,7 @@ export type { Leaf } from "./resolve.ts";
 export { collectIcons } from "./icons.ts";
 export type { CollectIconsOptions, IconLayer, IconToken } from "./icons.ts";
 export { cssSyntaxForValue, isContextual, toKebab, ICON_COLOR_SPECIAL_VALUES } from "./utils.ts";
-export { applyModify } from "./color.ts";
+export { applyModify, modifyExpression } from "./color.ts";
 export { resolveReferences, toStyleDictionary } from "./style-dictionary.ts";
 export type { Mode, SdLeaf } from "./style-dictionary.ts";
 export {

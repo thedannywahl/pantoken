@@ -28,10 +28,16 @@ body:not(.canvas-rce-shell-enabled) {
 
 /* Overrides the scaffold-base wrapper layout's app-shell ROW class (side nav + content) — this
    shell is a top header, not a side nav, so the body needs to stack it above #app instead. */
+
+html:has(body.canvas-rce-shell-enabled) {
+  background-color: var(--instui-color-background-page);
+}
+
 body.canvas-rce-shell-enabled {
   display: flex;
   flex-direction: column;
   padding: 0;
+  background-color: var(--instui-color-background-page);
 }
 
 #app {
@@ -40,7 +46,7 @@ body.canvas-rce-shell-enabled {
 }
 
 body.canvas-rce-shell-enabled #app {
-  padding: 1rem 3rem;
+  padding: 1rem 3rem 3rem;
 }
 
 /* Redundant with the shell's own brand mark once it's showing. */
@@ -57,11 +63,7 @@ body.canvas-rce-shell-enabled #app-mode {
   gap: 1rem;
   padding: 0.75rem 1.5rem;
   border-block-end: 1px solid var(--instui-color-stroke-base, rgba(0, 0, 0, 0.12));
-  background: color-mix(
-    in srgb,
-    light-dark(var(--instui-color-background-container), var(--instui-color-background-page)) 92%,
-    transparent
-  );
+  background: color-mix(in srgb, var(--instui-color-background-container) 92%, transparent);
   backdrop-filter: blur(12px);
   position: relative;
   inset-block-start: 0;
@@ -444,7 +446,7 @@ body.canvas-rce-shell-enabled #app-mode {
 .panes {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--instui-spacing-gap-cards-lg);
 }
 
 .pane {
@@ -460,6 +462,28 @@ body.canvas-rce-shell-enabled #app-mode {
   flex: 0 1 auto;
   min-height: 25rem;
   min-width: 0;
+
+  .tox {
+    border-width: var(--instui-border-width-sm);
+    box-shadow: var(--instui-elevation-resting);
+    border-color: var(--instui-component-view-border-color-secondary);
+    border-radius: var(--instui-border-radius-container-md);
+    background-color: var(--instui-color-background-container);
+
+    &:is(
+      :not(.tox-tinymce-inline) .tox-editor-header,
+      .tox-toolbar-overlord,
+      .tox-toolbar,
+      .tox-toolbar__primary,
+      .tox-toolbar__overflow
+    ) {
+      background-color: var(--instui-color-background-container);
+    }
+
+    .tox-statusbar {
+      height: 33px;
+    }
+  }
 }
 
 /* The iframe reports its rendered content height to the host, so this pane stays content-sized in
@@ -470,8 +494,12 @@ body.canvas-rce-shell-enabled #app-mode {
   gap: 0;
   min-width: 0;
   min-height: 0;
-  border: 2px solid var(--instui-color-stroke-base);
-  border-radius: 10px;
+  border-width: var(--instui-border-width-sm);
+  box-shadow: var(--instui-elevation-resting);
+  border-color: var(--instui-component-view-border-color-secondary);
+  border-radius: var(--instui-border-radius-container-md);
+  background-color: var(--instui-color-background-container);
+  border-style: solid;
 }
 
 .panes[data-layout="row"] .editor-pane {
@@ -545,7 +573,8 @@ html:has(.preview-pane.-fullscreen) body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #ccc;
+  border-bottom: var(--instui-border-width-sm) solid
+    var(--instui-component-view-border-color-secondary);
   width: 100%;
   padding: 0.5rem 1rem;
 }
@@ -554,9 +583,10 @@ html:has(.preview-pane.-fullscreen) body {
   display: flex;
   justify-content: flex-end;
   gap: 0.125rem;
-  border-top: 1px solid #ccc;
+  border-top: var(--instui-border-width-sm) solid
+    var(--instui-component-view-border-color-secondary);
   width: 100%;
-  padding: 0.5rem 1rem;
+  padding: 0 0.25rem;
 }
 
 body.preview-popup {
