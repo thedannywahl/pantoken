@@ -94,6 +94,13 @@ export interface Token {
   syntax: string;
   inherits: boolean;
   value: string;
+  /**
+   * The fully-flattened literal, present only when `value` is a reference-preserving CSS
+   * expression (a Tokens Studio `modify` rendered as `color-mix()` / `hsl(from …)`). Emitters that
+   * need a real colour rather than a CSS expression — the native lineage, Figma, swatches — read
+   * this instead; the shared resolver in `@pantoken/utils` prefers it automatically.
+   */
+  flatValue?: string;
   /** True when the light and dark resolutions differ (value is a `light-dark()`). */
   themed?: boolean;
   /** The token this one references, when `value` is a single `var(...)`. */
@@ -108,6 +115,7 @@ export interface TokenInput {
   value: string;
   syntax?: string;
   inherits?: boolean;
+  flatValue?: string;
   themed?: boolean;
   refersTo?: string;
   meta?: TokenMeta;
@@ -221,6 +229,9 @@ export function defineToken(input: TokenInput): Token {
     syntax: input.syntax ?? "*",
     inherits: input.inherits ?? true,
     value: input.value,
+    ...(input.flatValue !== undefined && input.flatValue !== input.value
+      ? { flatValue: input.flatValue }
+      : {}),
     ...(input.themed || input.value.startsWith("light-dark(") ? { themed: true } : {}),
     ...((input.refersTo ?? refMatch) ? { refersTo: input.refersTo ?? refMatch } : {}),
     ...(input.meta ? { meta: input.meta } : {}),

@@ -32,10 +32,29 @@ test("materializes upstream modifiers after resolving references and theme branc
 
   for (const token of [mobileNav, secondary, hover, alertBorder]) {
     expect(token).toBeDefined();
-    expect(token?.value).not.toContain("var(");
+    expect(token?.flatValue ?? token?.value).not.toContain("var(");
     expect(token?.meta).toBeUndefined();
   }
-  expect(alertBorder?.value).toMatch(/^light-dark\(#[0-9a-f]{8}, #[0-9a-f]{8}\)$|^#[0-9a-f]{8}$/i);
+  expect(alertBorder?.flatValue ?? alertBorder?.value).toMatch(
+    /^light-dark\(#[0-9a-f]{8}, #[0-9a-f]{8}\)$|^#[0-9a-f]{8}$/i,
+  );
+});
+
+test("a modified colour keeps its var() origin in value and its literal in flatValue", () => {
+  const secondary = byName.get("--instui-color-institutional-brand-button-secondary-bgd");
+  expect(secondary?.value).toBe(
+    "light-dark(color-mix(in srgb, var(--instui-primitive-color-navy-navy110) 20%, transparent), color-mix(in srgb, var(--instui-primitive-color-navy-navy60) 30%, transparent))",
+  );
+  expect(secondary?.flatValue).toBe("light-dark(#44709f33, #86a8d54d)");
+
+  // A modifier over an already-themed reference collapses to one expression: the origin var()
+  // carries the light/dark split, so `themed` has to come from the flattened pair.
+  const hoverBackground = byName.get("--instui-component-base-button-secondary-hover-background");
+  expect(hoverBackground?.value).toBe(
+    "hsl(from var(--instui-color-institutional-brand-button-secondary-bgd) h s calc(l + (100 - l) * 0.1))",
+  );
+  expect(hoverBackground?.flatValue).toBe("light-dark(#4d7eb333, #92b1d94d)");
+  expect(hoverBackground?.themed).toBe(true);
 });
 
 test("materializes the upstream canvas TextInput LCH modifier", () => {
@@ -43,7 +62,10 @@ test("materializes the upstream canvas TextInput LCH modifier", () => {
   const disabledArrowBorder = canvas.find(
     ({ name }) => name === "--instui-component-text-input-arrows-border-disabled-color",
   );
-  expect(disabledArrowBorder?.value).toBe("#d7d9da");
+  expect(disabledArrowBorder?.flatValue).toBe("#d7d9da");
+  expect(disabledArrowBorder?.value).toBe(
+    "lch(from var(--instui-color-institutional-brand-button-secondary-bgd) calc(l * 0.9) c h)",
+  );
 });
 
 const modifier = (type: "alpha" | "darken" | "lighten", value = "0.5") => ({
@@ -80,7 +102,11 @@ test("resolves chained modifiers from the terminal colour outward", () => {
     },
   });
   const built = buildTokensFromRoot(root, { includeIcons: false });
-  expect(built.find((token) => token.name.endsWith("color-wash"))?.value).toBe("#40404040");
+  const wash = built.find((token) => token.name.endsWith("color-wash"));
+  expect(wash?.flatValue).toBe("#40404040");
+  expect(wash?.value).toBe(
+    "color-mix(in srgb, var(--instui-primitive-color-dark) 25%, transparent)",
+  );
 });
 
 test("aggregates malformed, non-colour, missing, and cyclic modifier failures", () => {

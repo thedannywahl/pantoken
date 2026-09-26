@@ -187,3 +187,45 @@ export function applyModify(value: string, modify: TokenModify): string | undefi
   }
   return formatHex({ ...out, a: rgb.a });
 }
+
+function trim(n: number): string {
+  return String(Number(n.toFixed(6)));
+}
+
+/**
+ * The CSS-expression form of {@link applyModify}: same maths, but applied to `base` at paint time
+ * rather than to a hex at build time, so a `var(--instui-…)` origin survives into the stylesheet
+ * and keeps tracking whatever that token resolves to (including a `light-dark()` pair, and any
+ * runtime re-pointing of the primitive it derives from).
+ *
+ * Relative colour syntax resolves `l` on the 0–100 scale in both `hsl()` and `lch()`, and an
+ * omitted alpha channel inherits the origin's — matching `applyModify`'s alpha passthrough.
+ *
+ * @param base - The origin colour: a `var(--token)`, a literal, or a nested expression.
+ * @param modify - The Tokens Studio modifier to express.
+ * @returns A CSS colour expression.
+ *
+ * @example
+ * ```ts
+ * import { modifyExpression } from "@pantoken/core";
+ *
+ * modifyExpression("var(--x)", { type: "alpha", value: 0.2, space: "hsl" });
+ * // → "color-mix(in srgb, var(--x) 20%, transparent)"
+ * modifyExpression("var(--x)", { type: "darken", value: 0.1, space: "hsl" });
+ * // → "hsl(from var(--x) h s calc(l * 0.9))"
+ * modifyExpression("var(--x)", { type: "lighten", value: 0.1, space: "hsl" });
+ * // → "hsl(from var(--x) h s calc(l + (100 - l) * 0.1))"
+ * ```
+ */
+export function modifyExpression(base: string, modify: TokenModify): string {
+  if (modify.type === "alpha") {
+    return `color-mix(in srgb, ${base} ${trim(modify.value * 100)}%, transparent)`;
+  }
+  const lightness =
+    modify.type === "darken"
+      ? `calc(l * ${trim(1 - modify.value)})`
+      : `calc(l + (100 - l) * ${trim(modify.value)})`;
+  return modify.space === "lch"
+    ? `lch(from ${base} ${lightness} c h)`
+    : `hsl(from ${base} h s ${lightness})`;
+}

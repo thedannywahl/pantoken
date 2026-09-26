@@ -52,6 +52,9 @@ export function defineToken(input: TokenInput): Token {
     syntax: input.syntax ?? (contextual ? "*" : cssSyntaxForValue(input.value)),
     inherits: input.inherits ?? true,
     value: input.value,
+    ...(input.flatValue !== undefined && input.flatValue !== input.value
+      ? { flatValue: input.flatValue }
+      : {}),
     ...(input.themed || input.value.startsWith("light-dark(") ? { themed: true } : {}),
     ...((input.refersTo ?? refMatch) ? { refersTo: input.refersTo ?? refMatch?.[1] } : {}),
     ...(input.meta ? { meta: input.meta } : {}),
