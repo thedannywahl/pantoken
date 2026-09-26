@@ -1,15 +1,16 @@
 /**
  * @component button-set
- * @summary A non-wrapping, flush row of buttons split by 1px seams, with only its outer two corners rounded.
+ * @summary A non-wrapping, flush row of buttons joined by 1px seams, with only its outer two corners rounded.
  * @remarks Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,
  *   `-without-background`, `-without-border`, `-display-block`) set a default for every child
  *   `.pfx-button` that doesn't carry its own modifier in that same category — a button's own
  *   modifier class always wins over the group's default. `-icon-*` is always per-button; it's
  *   never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)
  *   aren't supported as group-level modifiers — use their canonical replacements
- *   (`-color-tertiary`, `-on-color`) instead. `-without-seam` is group-only: it drops the drawn
- *   1px divider, so only a button's own border (if it differs from the fill) marks each join.
- * @modifier -without-seam — Remove the 1px seam between buttons.
+ *   (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'
+ *   own border color. `-without-seam` is group-only: it hides that seam so the buttons read as
+ *   one continuous control.
+ * @modifier -without-seam — Hide the 1px seam between buttons.
  * @modifier -color-primary — Default every unmodified child to the primary color.
  * @modifier -color-secondary — Default every unmodified child to the secondary color.
  * @modifier -color-tertiary — Default every unmodified child to the tertiary (text-style) color.
@@ -69,20 +70,19 @@
   border-radius: 0;
 }
 
-/* Collapses the doubled border at each join to a single line. */
-.pfx-button-set > .pfx-button:not(:first-child) {
+/* Collapses the doubled border at each join to a single 1px seam in the button's border color. */
+.pfx-button-set:is(:not(.-color-ai-secondary), .-without-seam) > .pfx-button:not(:first-child) {
   border-inline-start: 0;
 }
 
-/* Drawn from currentColor so the seam shows even where a button's border matches its fill. */
-.pfx-button-set:not(.-without-seam) > .pfx-button:not(:first-child) {
-  box-shadow: inset var(--instui-border-width-sm) 0 0
-    color-mix(in srgb, currentColor 25%, transparent);
+/* AI-secondary's gradient frame sits outside the border box, so its seam comes from a 1px gap. */
+.pfx-button-set.-color-ai-secondary:not(.-without-seam) {
+  gap: var(--instui-border-width-sm);
 }
 
-.pfx-button-set:not(.-without-seam) > .pfx-button:not(:first-child):dir(rtl) {
-  box-shadow: inset calc(-1 * var(--instui-border-width-sm)) 0 0
-    color-mix(in srgb, currentColor 25%, transparent);
+/* Overlaps the neighbor's end border so no seam (or subpixel antialiasing line) shows. */
+.pfx-button-set.-without-seam > .pfx-button:not(:first-child) {
+  margin-inline-start: calc(-1 * var(--instui-border-width-sm));
 }
 
 .pfx-button-set > .pfx-button:first-child {
@@ -480,4 +480,9 @@
 .pfx-button-set.-display-block > .pfx-button:not(.-display-block) {
   display: flex;
   width: 100%;
+}
+
+/* Last, with a doubled class, so it outranks every group color/hover/active border-color rule. */
+.pfx-button-set.-without-seam > .pfx-button.pfx-button:not(:last-child) {
+  border-inline-end-color: transparent;
 }
