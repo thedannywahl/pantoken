@@ -1,9 +1,12 @@
 {
   "cli_version": "0.11.3",
   "checkpoint_id": "01M3F7NT67NQ1RM0GS5J1ACG81",
+  "session_id": "8299a954-b734-4874-ae6d-8df92aeb008a",
   "strategy": "manual-commit",
+  "created_at": "2026-09-26T16:09:53.604076Z",
   "branch": "iconfix",
-  "checkpoints_count": 5,
+  "checkpoints_count": 1,
+  "save_step_count": 1,
   "files_touched": [
     ".changeset/reference-preserving-modify.md",
     "formats/tokens/known-syntax-issues.json",
@@ -15,7 +18,6 @@
     "packages/core/tests/build.test.ts",
     "packages/model/src/index.ts",
     "packages/scaffold/templates/canvas-theme-editor/src/app.css",
-    "packages/scaffold/templates/canvas-theme-editor/src/app.html",
     "packages/utils/src/resolver.ts",
     "plugins/pantoken/custom-components/tests/index.test.ts",
     "plugins/pantoken/custom-theme-colors/tests/index.test.ts",
@@ -24,41 +26,41 @@
     "pnpm-lock.yaml",
     "renderers/pendo/tests/build.test.ts"
   ],
-  "sessions": [
-    {
-      "metadata": "/0/metadata.json",
-      "transcript": "/0/full.jsonl",
-      "compact_transcript": "/0/transcript.jsonl",
-      "content_hash": "/0/content_hash.txt",
-      "prompt": "/0/prompt.txt"
-    },
-    {
-      "metadata": "/1/metadata.json",
-      "transcript": "/1/full.jsonl",
-      "compact_transcript": "/1/transcript.jsonl",
-      "content_hash": "/1/content_hash.txt",
-      "prompt": "/1/prompt.txt"
-    },
-    {
-      "metadata": "/2/metadata.json",
-      "transcript": "/2/full.jsonl",
-      "compact_transcript": "/2/transcript.jsonl",
-      "content_hash": "/2/content_hash.txt",
-      "prompt": "/2/prompt.txt"
-    },
-    {
-      "metadata": "/3/metadata.json",
-      "transcript": "/3/full.jsonl",
-      "compact_transcript": "/3/transcript.jsonl",
-      "content_hash": "/3/content_hash.txt",
-      "prompt": "/3/prompt.txt"
-    }
-  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "464ea2a5ff9f",
+  "checkpoint_transcript_start": 1490,
+  "transcript_lines_at_start": 1490,
+  "compact_transcript_start": 233,
   "token_usage": {
     "input_tokens": 0,
     "cache_creation_tokens": 0,
     "cache_read_tokens": 0,
     "output_tokens": 0,
     "api_call_count": 0
-  }
+  },
+  "session_metrics": {
+    "turn_count": 4
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-26T16:09:53.541927Z",
+    "agent_lines": 420,
+    "agent_removed": 307,
+    "human_added": 1,
+    "human_modified": 1,
+    "human_removed": 0,
+    "total_committed": 422,
+    "total_lines_changed": 730,
+    "agent_percentage": 99.58904109589041,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
 }
