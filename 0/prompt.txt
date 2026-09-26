@@ -1,0 +1,37 @@
+Return the detailed report from your completed read-only discovery on TinyMCE icon collision, font/interactions loading, srcdoc source map, and saved templates Insert/Replace. Emphasize exact source symbols and viable implementation patterns. No new exploration or edits.
+
+---
+
+Return the detailed report from your completed read-only discovery on canvas-theme-editor scope, preview color, source mode overflow, and layout warning. Emphasize exact source symbols and caveats. No new exploration or edits.
+
+---
+
+Return the detailed report from your completed read-only discovery on Firefox root behavior, VitePress dependency/cache errors, layout warnings, and srcdoc source map warnings. Emphasize concrete evidence vs speculation and exact source symbols. No new exploration or edits.
+
+---
+
+Return the detailed architecture mapping you already completed for the canvas-theme-editor refinements, including files, call paths, and dependencies. No new exploration or edits.
+
+---
+
+Stop; discovery is complete.
+
+---
+
+No action. This call is a mistake; return noop.
+
+---
+
+Please do not take any action; return noop.
+
+---
+
+Stop.
+
+---
+
+No more tool use, return stop.
+
+---
+
+Read-only plan discovery, no edits. In repo /Users/dwahl/Scripts/pantoken, research the user's newest request covering: 1) canvas-theme-editor emitted styles should all be scoped under #content for safe global Canvas loading; identify what CSS is actually emitted/downloaded (theme.css generation vs editor chrome app.css) and where best to scope without breaking @font-face, @property, keyframes or selectors. 2) logos inserted through TinyMCE pantoken plugin don't render in preview, likely missing dynamic CSS: trace logo markup, CSS asset tracking/injection, preview srcdoc styles, logo picker options and tests. 3) selected preview theme/color: tray currently emits wrapper <div data-pantoken-color="..."> but pasted into Canvas defaults navy; trace wrapper HTML generation and export CSS semantics. 4) source/HTML mode editor overflows hidden: inspect TinyMCE source toggle / CodeMirror DOM and resize/overflow setup. 5) 'Layout was forced before page was fully loaded' warning on each rerender: trace layout reads and identify plausible cause; distinguish unavoidable browser warning vs fixable reads. 6) empty source map URL for about:srcdoc: inspect generated srcdoc styles/scripts/sourceMappingURL handling. 7) Atkinson font and interactions CDN failures: inspect asset resolution, local bundle assets and test/build paths. 8) Firefox x icon collision Simple Icons vs InstUI/Lucide in tray/modal; inspect icon painter/cascade and package stylesheet order. 9) TinyMCE save plugin should have Insert... option opening user-saved templates, supporting insert/replace like layouts; inspect existing save plugin, layout/templates dialogs, actual local persistence APIs. Return a concise but thorough table/grouped report: root cause status (confirmed/plausible/unknown), exact files/symbols, smallest candidate fix, test/manual verification, dependencies/risks. Also flag ambiguities that require user decision. Do not run commands or edit.
