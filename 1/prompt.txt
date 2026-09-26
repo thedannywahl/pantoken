@@ -1,0 +1,9 @@
+I want this to do the next smallest viewport size instead of the one it currently does.
+
+---
+
+instead of hard-coding that, in our plugins/pantoken in the right package we should add a custom breakpoint 'xs'
+
+---
+
+yes, it can go in custom-components under src/[declarations|utilities|rules] mirroring the official formats/components.
