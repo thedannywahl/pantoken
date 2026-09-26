@@ -51,7 +51,14 @@
     line-height: var(--instui-component-link-line-height-lg);
   }
 
-  &[class*="-icon-"]::before {
+  &:is(
+      [class^="-icon-"],
+      [class*=" -icon-"],
+      [class^="-render-icon-"],
+      [class*=" -render-icon-"],
+      [class^="-render-custom-icon-"],
+      [class*=" -render-custom-icon-"]
+    )::before {
     display: inline-block;
     inline-size: 1em;
     block-size: 1em;
@@ -63,7 +70,14 @@
     mask: var(--pantoken-glyph) center / contain no-repeat;
   }
 
-  &[class*="-icon-"]:only-child::before {
+  &:is(
+      [class^="-icon-"],
+      [class*=" -icon-"],
+      [class^="-render-icon-"],
+      [class*=" -render-icon-"],
+      [class^="-render-custom-icon-"],
+      [class*=" -render-custom-icon-"]
+    ):only-child::before {
     margin-inline-end: 0;
   }
 }

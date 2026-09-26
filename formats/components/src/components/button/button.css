@@ -430,11 +430,25 @@
     );
   }
 
-  &.-color-ai[class*="-icon-"]::before {
+  &.-color-ai:is(
+      [class^="-icon-"],
+      [class*=" -icon-"],
+      [class^="-render-icon-"],
+      [class*=" -render-icon-"],
+      [class^="-render-custom-icon-"],
+      [class*=" -render-custom-icon-"]
+    )::before {
     background: currentColor;
   }
 
-  &.-color-ai-secondary[class*="-icon-"]::before {
+  &.-color-ai-secondary:is(
+      [class^="-icon-"],
+      [class*=" -icon-"],
+      [class^="-render-icon-"],
+      [class*=" -render-icon-"],
+      [class^="-render-custom-icon-"],
+      [class*=" -render-custom-icon-"]
+    )::before {
     background: linear-gradient(
       to bottom,
       var(--instui-color-stroke-interactive-action-ai-top-gradient-base) 0%,
@@ -473,9 +487,30 @@
 
   &.-size-sm:is(
       .-shape-square,
-      [class*="-icon-"]:not(:has(> *)),
-      [class*="-icon-"]:has(> .pfx-screen-reader-content:only-child),
-      [class*="-icon-"]:has(> .pfx-screen-reader-content):has(> .tip):not(
+      :is(
+        [class^="-icon-"],
+        [class*=" -icon-"],
+        [class^="-render-icon-"],
+        [class*=" -render-icon-"],
+        [class^="-render-custom-icon-"],
+        [class*=" -render-custom-icon-"]
+      ):not(:has(> *)),
+      :is(
+        [class^="-icon-"],
+        [class*=" -icon-"],
+        [class^="-render-icon-"],
+        [class*=" -render-icon-"],
+        [class^="-render-custom-icon-"],
+        [class*=" -render-custom-icon-"]
+      ):has(> .pfx-screen-reader-content:only-child),
+      :is(
+          [class^="-icon-"],
+          [class*=" -icon-"],
+          [class^="-render-icon-"],
+          [class*=" -render-icon-"],
+          [class^="-render-custom-icon-"],
+          [class*=" -render-custom-icon-"]
+        ):has(> .pfx-screen-reader-content):has(> .tip):not(
           :has(> :not(.pfx-screen-reader-content):not(.tip))
         )
     ) {
@@ -490,9 +525,30 @@
 
   &.-size-md:is(
       .-shape-square,
-      [class*="-icon-"]:not(:has(> *)),
-      [class*="-icon-"]:has(> .pfx-screen-reader-content:only-child),
-      [class*="-icon-"]:has(> .pfx-screen-reader-content):has(> .tip):not(
+      :is(
+        [class^="-icon-"],
+        [class*=" -icon-"],
+        [class^="-render-icon-"],
+        [class*=" -render-icon-"],
+        [class^="-render-custom-icon-"],
+        [class*=" -render-custom-icon-"]
+      ):not(:has(> *)),
+      :is(
+        [class^="-icon-"],
+        [class*=" -icon-"],
+        [class^="-render-icon-"],
+        [class*=" -render-icon-"],
+        [class^="-render-custom-icon-"],
+        [class*=" -render-custom-icon-"]
+      ):has(> .pfx-screen-reader-content:only-child),
+      :is(
+          [class^="-icon-"],
+          [class*=" -icon-"],
+          [class^="-render-icon-"],
+          [class*=" -render-icon-"],
+          [class^="-render-custom-icon-"],
+          [class*=" -render-custom-icon-"]
+        ):has(> .pfx-screen-reader-content):has(> .tip):not(
           :has(> :not(.pfx-screen-reader-content):not(.tip))
         )
     ) {
@@ -507,9 +563,30 @@
 
   &.-size-lg:is(
       .-shape-square,
-      [class*="-icon-"]:not(:has(> *)),
-      [class*="-icon-"]:has(> .pfx-screen-reader-content:only-child),
-      [class*="-icon-"]:has(> .pfx-screen-reader-content):has(> .tip):not(
+      :is(
+        [class^="-icon-"],
+        [class*=" -icon-"],
+        [class^="-render-icon-"],
+        [class*=" -render-icon-"],
+        [class^="-render-custom-icon-"],
+        [class*=" -render-custom-icon-"]
+      ):not(:has(> *)),
+      :is(
+        [class^="-icon-"],
+        [class*=" -icon-"],
+        [class^="-render-icon-"],
+        [class*=" -render-icon-"],
+        [class^="-render-custom-icon-"],
+        [class*=" -render-custom-icon-"]
+      ):has(> .pfx-screen-reader-content:only-child),
+      :is(
+          [class^="-icon-"],
+          [class*=" -icon-"],
+          [class^="-render-icon-"],
+          [class*=" -render-icon-"],
+          [class^="-render-custom-icon-"],
+          [class*=" -render-custom-icon-"]
+        ):has(> .pfx-screen-reader-content):has(> .tip):not(
           :has(> :not(.pfx-screen-reader-content):not(.tip))
         )
     ) {
@@ -517,9 +594,30 @@
   }
 
   &.-shape-square,
-  &[class*="-icon-"]:not(:has(> *)),
-  &[class*="-icon-"]:has(> .pfx-screen-reader-content:only-child),
-  &[class*="-icon-"]:has(> .pfx-screen-reader-content):has(> .tip):not(
+  &:is(
+      [class^="-icon-"],
+      [class*=" -icon-"],
+      [class^="-render-icon-"],
+      [class*=" -render-icon-"],
+      [class^="-render-custom-icon-"],
+      [class*=" -render-custom-icon-"]
+    ):not(:has(> *)),
+  &:is(
+      [class^="-icon-"],
+      [class*=" -icon-"],
+      [class^="-render-icon-"],
+      [class*=" -render-icon-"],
+      [class^="-render-custom-icon-"],
+      [class*=" -render-custom-icon-"]
+    ):has(> .pfx-screen-reader-content:only-child),
+  &:is(
+      [class^="-icon-"],
+      [class*=" -icon-"],
+      [class^="-render-icon-"],
+      [class*=" -render-icon-"],
+      [class^="-render-custom-icon-"],
+      [class*=" -render-custom-icon-"]
+    ):has(> .pfx-screen-reader-content):has(> .tip):not(
       :has(> :not(.pfx-screen-reader-content):not(.tip))
     ) {
     padding: var(--instui-spacing-space-xs);
@@ -538,7 +636,14 @@
    * shape buttons carry no label, so grow the glyph to fill the square control rather than tracking a
    * (missing) label's cap height.
    */
-  &[class*="-icon-"]::before {
+  &:is(
+      [class^="-icon-"],
+      [class*=" -icon-"],
+      [class^="-render-icon-"],
+      [class*=" -render-icon-"],
+      [class^="-render-custom-icon-"],
+      [class*=" -render-custom-icon-"]
+    )::before {
     display: inline-block;
     inline-size: 1em;
     block-size: 1em;
@@ -550,11 +655,46 @@
     mask: var(--pantoken-glyph) center / contain no-repeat;
   }
 
-  &.-shape-square[class*="-icon-"]::before,
-  &.-shape-circle[class*="-icon-"]::before,
-  &[class*="-icon-"]:not(:has(> *))::before,
-  &[class*="-icon-"]:has(> .pfx-screen-reader-content:only-child)::before,
-  &[class*="-icon-"]:has(> .pfx-screen-reader-content):has(> .tip):not(
+  &.-shape-square:is(
+      [class^="-icon-"],
+      [class*=" -icon-"],
+      [class^="-render-icon-"],
+      [class*=" -render-icon-"],
+      [class^="-render-custom-icon-"],
+      [class*=" -render-custom-icon-"]
+    )::before,
+  &.-shape-circle:is(
+      [class^="-icon-"],
+      [class*=" -icon-"],
+      [class^="-render-icon-"],
+      [class*=" -render-icon-"],
+      [class^="-render-custom-icon-"],
+      [class*=" -render-custom-icon-"]
+    )::before,
+  &:is(
+      [class^="-icon-"],
+      [class*=" -icon-"],
+      [class^="-render-icon-"],
+      [class*=" -render-icon-"],
+      [class^="-render-custom-icon-"],
+      [class*=" -render-custom-icon-"]
+    ):not(:has(> *))::before,
+  &:is(
+      [class^="-icon-"],
+      [class*=" -icon-"],
+      [class^="-render-icon-"],
+      [class*=" -render-icon-"],
+      [class^="-render-custom-icon-"],
+      [class*=" -render-custom-icon-"]
+    ):has(> .pfx-screen-reader-content:only-child)::before,
+  &:is(
+      [class^="-icon-"],
+      [class*=" -icon-"],
+      [class^="-render-icon-"],
+      [class*=" -render-icon-"],
+      [class^="-render-custom-icon-"],
+      [class*=" -render-custom-icon-"]
+    ):has(> .pfx-screen-reader-content):has(> .tip):not(
       :has(> :not(.pfx-screen-reader-content):not(.tip))
     )::before {
     inline-size: 1.25em;

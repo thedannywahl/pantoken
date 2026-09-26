@@ -55,7 +55,14 @@
     line-height: var(--instui-component-pill-line-height);
   }
 
-  &[class*="-icon-"]::before {
+  &:is(
+      [class^="-icon-"],
+      [class*=" -icon-"],
+      [class^="-render-icon-"],
+      [class*=" -render-icon-"],
+      [class^="-render-custom-icon-"],
+      [class*=" -render-custom-icon-"]
+    )::before {
     inline-size: var(--instui-font-size-text-xs);
     block-size: var(--instui-font-size-text-xs);
     margin-inline-end: var(--instui-component-pill-gap-icon-label);
@@ -79,11 +86,25 @@
     gap: var(--instui-component-pill-gap-content);
   }
 
-  &.-size-medium[class*="-icon-"]::before {
+  &.-size-medium:is(
+      [class^="-icon-"],
+      [class*=" -icon-"],
+      [class^="-render-icon-"],
+      [class*=" -render-icon-"],
+      [class^="-render-custom-icon-"],
+      [class*=" -render-custom-icon-"]
+    )::before {
     margin-inline-end: var(--instui-component-pill-gap-icon-label-medium);
   }
 
-  &.-size-large[class*="-icon-"]::before {
+  &.-size-large:is(
+      [class^="-icon-"],
+      [class*=" -icon-"],
+      [class^="-render-icon-"],
+      [class*=" -render-icon-"],
+      [class^="-render-custom-icon-"],
+      [class*=" -render-custom-icon-"]
+    )::before {
     margin-inline-end: var(--instui-component-pill-gap-icon-label-large);
   }
 

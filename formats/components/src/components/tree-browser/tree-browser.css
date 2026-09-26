@@ -76,8 +76,27 @@
     list-style: none;
   }
 
-  & details > summary [class*="-icon-"],
-  & .item [class*="-icon-"] {
+  &
+    details
+    > summary
+    :is(
+      [class^="-icon-"],
+      [class*=" -icon-"],
+      [class^="-render-icon-"],
+      [class*=" -render-icon-"],
+      [class^="-render-custom-icon-"],
+      [class*=" -render-custom-icon-"]
+    ),
+  &
+    .item
+    :is(
+      [class^="-icon-"],
+      [class*=" -icon-"],
+      [class^="-render-icon-"],
+      [class*=" -render-icon-"],
+      [class^="-render-custom-icon-"],
+      [class*=" -render-custom-icon-"]
+    ) {
     line-height: 1;
   }
 

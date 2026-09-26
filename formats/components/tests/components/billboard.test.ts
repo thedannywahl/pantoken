@@ -39,11 +39,14 @@ test("billboard size variants map to InstUI icon and text scales", () => {
   expect(selectors).not.toContain("&.-size-small>.heading {");
   expect(selectors).not.toContain("&.-size-large>.heading {");
 
-  expect(selectors).toContain('>.hero[class*="-icon-"] {');
-  expect(selectors).toContain('&.-size-sm>.hero[class*="-icon-"] {');
-  expect(selectors).toContain('&.-size-lg>.hero[class*="-icon-"] {');
-  expect(selectors).toContain('&.-size-small>.hero[class*="-icon-"] {');
-  expect(selectors).toContain('&.-size-large>.hero[class*="-icon-"] {');
+  const glyph = norm(
+    ':is([class^="-icon-"], [class*=" -icon-"], [class^="-render-icon-"], [class*=" -render-icon-"], [class^="-render-custom-icon-"], [class*=" -render-custom-icon-"])',
+  );
+  expect(selectors).toContain(`>.hero${glyph} {`);
+  expect(selectors).toContain(`&.-size-sm>.hero${glyph} {`);
+  expect(selectors).toContain(`&.-size-lg>.hero${glyph} {`);
+  expect(selectors).toContain(`&.-size-small>.hero${glyph} {`);
+  expect(selectors).toContain(`&.-size-large>.hero${glyph} {`);
   expect(selectors).toContain("font-size: var(--instui-component-icon-illu-md);");
   expect(selectors).toContain("font-size: var(--instui-component-icon-illu-sm);");
   expect(selectors).toContain("font-size: var(--instui-component-icon-illu-lg);");

@@ -67,7 +67,14 @@
 
 @scope (.pfx-byline) {
   :scope {
-    > [class*="-icon-"] {
+    > :is(
+      [class^="-icon-"],
+      [class*=" -icon-"],
+      [class^="-render-icon-"],
+      [class*=" -render-icon-"],
+      [class^="-render-custom-icon-"],
+      [class*=" -render-custom-icon-"]
+    ) {
       line-height: 1;
     }
 

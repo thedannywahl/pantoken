@@ -14,7 +14,14 @@
   }
 }
 
-[class*="-icon-"]::before {
+:is(
+  [class^="-icon-"],
+  [class*=" -icon-"],
+  [class^="-render-icon-"],
+  [class*=" -render-icon-"],
+  [class^="-render-custom-icon-"],
+  [class*=" -render-custom-icon-"]
+)::before {
   content: "";
   display: inline-block;
   inline-size: 1em;

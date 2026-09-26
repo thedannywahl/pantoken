@@ -149,7 +149,7 @@ test("pill has status variants + status weight; tag has sizes and a dismissible 
   }
   expect(pill).toContain("var(--instui-component-pill-status-label-font-weight)");
   // A leading icon: a glyph class on the pill renders a masked ::before at the pill's size.
-  expect(pill).toMatch(/&\[class\*="-icon-"\]::before/u);
+  expect(pill).toMatch(/&:is\(\s*\[class\^="-icon-"\],\s*\[class\*=" -icon-"\]/u);
   const tag = tagCss({ prefix: "instui" });
   expect(tag).toMatch(/&:hover/u);
   expect(tag).toMatch(/&\.-size-sm/u);
@@ -403,8 +403,10 @@ test("componentsCss bundles every component; proseCss scopes to a content root",
   ];
   for (const c of components) expect(all).toContain(`.instui-${c}`);
   expect(components).toHaveLength(51);
-  // The icon "component" is the glyph ::before painter, not a `.instui-icon` class.
-  expect(all).toContain('[class*="-icon-"]::before');
+  // The glyph painter also accepts icon modifiers directly on other hosts, such as buttons.
+  expect(all).toContain('[class^="-icon-"]');
+  expect(all).toContain('[class*=" -render-icon-"]');
+  expect(all).not.toContain('[class*="-icon-"]::before');
   expect(proseCss({ scope: ".vp-doc" })).toContain(".vp-doc table");
 });
 

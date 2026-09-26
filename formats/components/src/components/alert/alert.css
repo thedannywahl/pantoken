@@ -206,11 +206,25 @@
   }
 
   /* A custom `-icon-<name>` swaps the status glyph. Suppress the generic painter's ::before glyph. */
-  &[class*="-icon-"] {
+  &:is(
+    [class^="-icon-"],
+    [class*=" -icon-"],
+    [class^="-render-icon-"],
+    [class*=" -render-icon-"],
+    [class^="-render-custom-icon-"],
+    [class*=" -render-custom-icon-"]
+  ) {
     --pantoken-alert-glyph: var(--pantoken-glyph);
   }
 
-  &[class*="-icon-"]::before {
+  &:is(
+      [class^="-icon-"],
+      [class*=" -icon-"],
+      [class^="-render-icon-"],
+      [class*=" -render-icon-"],
+      [class^="-render-custom-icon-"],
+      [class*=" -render-custom-icon-"]
+    )::before {
     content: none;
   }
 

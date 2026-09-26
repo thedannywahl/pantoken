@@ -24,8 +24,8 @@ const interpolatedRules = (p: string) =>
 }
 
 /* An explicit glyph class takes precedence over the default AI glyph while keeping the AI palette. */
-.${p}button.-color-ai[class*="-icon-"]::before,
-.${p}button.-color-ai-secondary[class*="-icon-"]::before {
+.${p}button.-color-ai:is([class^="-icon-"], [class*=" -icon-"], [class^="-render-icon-"], [class*=" -render-icon-"], [class^="-render-custom-icon-"], [class*=" -render-custom-icon-"])::before,
+.${p}button.-color-ai-secondary:is([class^="-icon-"], [class*=" -icon-"], [class^="-render-icon-"], [class*=" -render-icon-"], [class^="-render-custom-icon-"], [class*=" -render-custom-icon-"])::before {
   -webkit-mask: var(--pantoken-glyph) center / contain no-repeat;
   mask: var(--pantoken-glyph) center / contain no-repeat;
 }

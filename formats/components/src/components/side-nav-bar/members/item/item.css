@@ -34,7 +34,15 @@
       cursor: pointer;
     }
 
-    > .item [class*="-icon-"] {
+    > .item
+      :is(
+        [class^="-icon-"],
+        [class*=" -icon-"],
+        [class^="-render-icon-"],
+        [class*=" -render-icon-"],
+        [class^="-render-custom-icon-"],
+        [class*=" -render-custom-icon-"]
+      ) {
       line-height: 1;
     }
 
