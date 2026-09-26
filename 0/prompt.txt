@@ -1,0 +1,50 @@
+* the z-index of the control buttons is still higher than the theme and color pickers, or something else is happending that blends their display.
+* in rtl the tooltip positioning is incorrect.
+
+---
+
+* the canvas-theme-editor styles are loaded globally in Canvas and this means that they can affect more than we intended from the editor, so the build should wrap everything in a scope for the `#content` element.
+* the tinymce pantoken plugin for inserting logos doesn't actually render the logo in the preview, likely the CSS is not dynamically added.
+* the preview theme (from the tray) inserts the wrapper div
+```
+<div data-pantoken-color="sea">...</div>
+```
+but when loaded in the canvas RCE it always loads as the default/navy.
+* swapping to the html editor in tinymce - if the editor content is larger than the current editor size, it should grow to fit the content OR at least display scrollbars. right now the y overflow is hidden.
+* every time the layout re-renders this is in the console.warning:
+```
+Layout was forced before the page was fully loaded. If stylesheets are not yet loaded this may cause a flash of unstyled content.
+```
+* this is a frequent console.warning:
+```
+Source map error: Error: URL constructor:  is not a valid URL.
+Stack in the worker:resolveSourceMapURL@resource://devtools/client/shared/source-map-loader/utils/fetchSourceMap.js:56:22
+getOriginalURLs@resource://devtools/client/shared/source-map-loader/source-map.js:75:24
+workerHandler/</<@resource://devtools/client/shared/worker-utils.js:115:52
+workerHandler/<@resource://devtools/client/shared/worker-utils.js:113:13
+
+Resource URL: about:srcdoc
+Source Map URL:  
+```
+* this is a frequent console.error:
+```
+downloadable font: download failed (font-family: "Atkinson Hyperlegible Next" style:normal weight:600 width:100 src index:0): status=2152398850 source: [https://cdn.jsdelivr.net/npm/@pantoken/components/assets/fonts/AtkinsonHyperlegibleNext/AtkinsonHyperlegibleNext-SemiBold.woff2](https://cdn.jsdelivr.net/npm/@pantoken/components/assets/fonts/AtkinsonHyperlegibleNext/AtkinsonHyperlegibleNext-SemiBold.woff2)
+```
+this is a frequent console.warn:
+```
+Loading failed for the <script> with source “[https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/interactions.iife.js](https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/interactions.iife.js)”.
+```
+* in firefox the `x` logo from simple-icons loads on close buttons instead of the `x` logo from lucide/instructure-ui. in chrome the lucide icon is loaded - this is the app container (tray, modal)
+* tinymce pantoken plugin for save should have an 'insert...' option that opens the list of user saved templates and functions like the pantoken layouts with insert/replace.
+
+---
+
+Read-only, thorough. Repo: /Users/dwahl/Scripts/pantoken. Context: `packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl` is a TinyMCE-based Canvas theme editor that uses `buildTheme` from `@pantoken/canvas-theme-editor` (find its source, likely `platforms/canvas-theme-editor/src`). Answer precisely with file paths + line numbers + short code excerpts:
+
+1. How is the exported `theme.css` built (buildTheme)? What does it contain — @import of CDN sheets (components.css, tokens, fonts.css, icons), inline CSS? Is there any existing scoping support (search for `@scope`, `#content`, `formats/scope` package, `scopeCss`, `scopeSelector`)? What does `formats/scope` export and how is it used? I need to wrap all emitted theme CSS so it only applies within Canvas `#content`.
+2. Does theme.css (and the "None (inline)" local provider path in main.ts.tmpl, e.g. `inlineAssetCss`, `LOCAL_COMPONENT_CSS`) include the `customThemeColorsCss` color-remap rules (`[data-pantoken-color="sea"]`) ? In main.ts.tmpl the preview wraps content in `<div data-pantoken-color="...">`; in real Canvas it renders navy. Find why (is the remap CSS only in the preview srcdoc?). Show where preview srcdoc is built (`previewFrame.srcdoc`, around the `updatePreview`/`refreshAll` functions) and where theme.css/theme.js download blobs are built.
+3. Where does theme.js / preview load `@pantoken/interactions/dist/interactions.iife.js` from the CDN (build the URL)? Check `formats/interactions/package.json` name/version/files/exports and whether `dist/interactions.iife.js` is a published file name (vite config output names). Also where fonts are referenced: `@pantoken/components/assets/fonts/AtkinsonHyperlegibleNext/...` — which CSS emits that URL (fonts.css generation in formats/components/scripts/generate.ts), and is `assets/fonts` included in the package `files`? Report the exact URL construction for fonts on the CDN.
+4. In the preview srcdoc, is there any `sourceMappingURL` comment that could end up empty (e.g. inlined CSS/JS strings like `localInteractionsJs` with `//# sourceMappingURL=` )? grep dist files `formats/interactions/dist/interactions.iife.js` and the inlined css for `sourceMappingURL`.
+5. What in main.ts.tmpl measures layout (getBoundingClientRect, offsetHeight, scrollHeight, resizePreviewFrame, ResizeObserver) that could run before the srcdoc stylesheets load (Firefox warning "Layout was forced before the page was fully loaded")? Show resizePreviewFrame and when it's called relative to the iframe load event.
+
+Return a concise but complete report.
