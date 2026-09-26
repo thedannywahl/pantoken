@@ -1,0 +1,43 @@
+do incremental conventional commits and changesets for affected packages - including private packages. ignore other unstaged files as there are multple agents working in the repo
+
+---
+
+Start implementation
+
+---
+
+[Terminal 1fbe69c7-7c27-43d9-9e0b-58c89e810dc7 notification: command completed with exit code 134. The terminal has been cleaned up.]
+Terminal output:
+pantoken on iconfix ↑2  ~6 via  26.10.0 
+➜  cd /Users/dwahl/Scripts/pantoken/docs/.vitepress/cache/canvas-rce-src && vp dev --host 127.0.0.1 --port 5187 --strictPort
+VITE+ - The Unified Toolchain for the Web
+
+note: You are running `vp dev` as a Vite+ built-in command. If you meant to run the dev npm script, use `vpr dev` instead.
+
+  VITE+ v1.0.0-rc.0  
+
+  ➜  Local:   http://127.0.0.1:5187/
+  ➜  press h + enter to show help
+7:52:54 AM [vite+] (client) [Unhandled error] Error: ResizeObserver loop completed with undelivered notifications.
+ > ../../../../../../../../@vite/client:305:50
+
+7:54:06 AM [vite+] (client) page reload index.html
+7:54:07 AM [vite+] changed tsconfig file detected: /Users/dwahl/Scripts/pantoken/docs/.vitepress/cache/canvas-rce-src/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.
+7:54:07 AM [vite+] (client) page reload index.html
+7:54:07 AM [vite+] vite.config.ts changed, restarting server...
+7:54:07 AM [vite+] (client) hmr update /src/app.css
+7:54:07 AM [vite+] (client) page reload src/app.html
+7:54:07 AM [vite+] (client) page reload src/locale.ts
+7:54:07 AM [vite+] (client) page reload src/main.ts
+7:54:07 AM [vite+] (client) page reload src/preferences.ts
+7:54:07 AM [vite+] (client) page reload src/strings.ts
+7:54:07 AM [vite+] (client) page reload src/locale-strings.ts
+7:54:07 AM [vite+] (client) page reload src/locale-dirs.ts
+7:54:07 AM [vite+] (client) page reload src/tinymce-locale-strings.ts
+Vite+ panicked. This is a bug in Vite+, not your code.
+
+thread '<unnamed>' (3580855) panicked at rolldown/crates/rolldown_binding/src/transform.rs:54:48:
+Failed to get current dir: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+Please report this issue at: https://github.com/voidzero-dev/vite-plus/issues/new?template=bug_report.yml
