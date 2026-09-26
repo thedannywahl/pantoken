@@ -21,3 +21,10 @@ start a dev server and look at /tools/canvas-rce or build a small untracked demo
 ---
 
 -color-ai-secondary looks good, all the others are 1px too far apart so there's a gap and then -without-seam has the right display (a 1px seam)
+
+---
+
+no, what I want is:
+* -ai-color-secondary to look exactly like it does- don't change it.
+* default, primary, -ai, secondary, tertiary to look like the current -without-seam: a barely visible 1px seam that matches the outer border/box-shadow.
+* -without-seam to look like the buttons did before we introduced the change: no visible distinction between the buttons.
