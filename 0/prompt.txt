@@ -1,0 +1,23 @@
+Read-only, focused follow-up for an implementation plan in /Users/dwahl/Scripts/pantoken. Resolve only two boundaries, with precise current files/functions/types and tests:
+
+A) Theme CSS emission: identify where `@pantoken/canvas-theme-editor` `buildTheme()`/CSS output is implemented; how component/token/custom color CSS is assembled; best insertion point to scope ordinary CSS selectors under `#content` while preserving @font-face/@keyframes/@property and any custom CSS; how color remap data-pantoken-color is currently emitted/applied to preview and exported theme CSS. Is wrapping CSS in `#content { ... }` valid or should PostCSS scope rule selectors? What should the public build API and scaffold consume?
+
+B) Save plugin: inspect `renderers/tinymce/src/plugins/tinymce-save.ts` and `src/plugins/templates.ts`/layouts.ts; identify exact localStorage/schema API of user-saved snapshots, how to list/get selected saved document HTML, and what existing insert-vs-replace primitives are exported. Is the requested `Insert...` feature best added to save plugin menu or a separate templates dialog? Relevant tests to extend.
+
+No edits, no broad research. Return concise evidence-backed summary and risks.
+
+---
+
+Read-only, focused follow-up for planning in /Users/dwahl/Scripts/pantoken. Inspect `packages/scaffold/src/index.ts` buildTheme(), defaultThemeCssAssets(), themeCssAssets(), emitted @imports, and canvas-theme-editor buildCurrentTheme()/download/srcdoc use. Determine whether scoping under #content can be achieved by wrapping returned CSS, given it contains @import statements; identify the smallest architecturally valid solution and exact files. Consider CSS import scoping support, compiling/inlining package assets, or a dedicated scoped CSS generation path. State risks for @font-face/@keyframes/@property and Canvas browser compatibility. No edits.
+
+---
+
+Read-only, precise verification: in current repo, identify actual source package for imported `@pantoken/canvas-theme-editor` in scaffold template (resolve package path), and compare its buildTheme implementation to scaffold `buildTheme()` in packages/scaffold/src/index.ts. State which one emits theme.css used by `buildCurrentTheme()` and which one emits downloaded starter theme.css. Do not edit.
+
+---
+
+Please perform the repo's required resolution-first lookup if `entire graph` is available: from /Users/dwahl/Scripts/pantoken run `entire graph search --repo . --profile full --query "Canvas theme editor CSS scope buildTheme, preview srcdoc color, TinyMCE source overflow, Firefox root hang, warnings, logo assets, saved templates"` as your first command. Also run `entire status` first only if the using-entire skill requires it; report if graph/search unavailable. Read-only only. Return exact top hits/symbols and distinguish graph evidence from code inference. Do not edit.
+
+---
+
+Read-only, tightly scoped. In /Users/dwahl/Scripts/pantoken, inspect the `formats/scope` package, CSS build tooling/dependencies (PostCSS, Lightning CSS, Vite CSS bundling) and any code that scopes CSS selectors to an element. Need a recommended existing API/pattern to turn `@import`-based theme assets into CSS whose ordinary selectors are prefixed/scoped under `#content`, while handling @font-face/@keyframes/@property correctly. Return exact paths/symbols/package commands and any compatibility constraints. No edits.
