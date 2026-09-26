@@ -162,12 +162,13 @@ const HOST_INSTANCE = "docs";
 const CANVAS_CONTENT_MAX_WIDTH = "59.25rem";
 // All 13 `[data-pantoken-color="…"]` color-remap rules, computed once — editable Canvas content,
 // the shell, and the preview can each own an independent color scope. `resetSelector`
-// pins the theme tray's own subtree (buttons, swatches) and the standalone shell's header (its
-// color menu swatches) back to true colors, immune to whatever color the chrome currently has
-// active — see plugins/pantoken/custom-theme-colors.
+// pins the theme tray's own subtree (buttons, swatches) and the standalone shell's menus (its
+// color swatches) back to true colors, immune to whatever color the chrome currently has active —
+// the shell's brand mark stays outside it so it follows the chrome color. See
+// plugins/pantoken/custom-theme-colors.
 const CUSTOM_THEME_COLORS_CSS = customThemeColorsCss(undefined, {
   selector: "",
-  resetSelector: "#theme-tray, #canvas-rce-shell",
+  resetSelector: "#theme-tray, #canvas-rce-shell .canvas-rce-shell__actions",
 });
 // The scaffold's own chrome (toolbar, buttons outside the tray) mirrors the embedding docs page's
 // active theme and color — entirely independent of the preview and the tray, which drive their own

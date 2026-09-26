@@ -77,10 +77,43 @@ body.canvas-rce-shell-enabled #app-mode {
   min-width: 0;
 }
 
-/* instui-button -color-primary owns the fill/glyph contrast (including its dark-mode swap) —
-   this only pins the icon-only link's size so it doesn't stretch inside the brand row. */
 .canvas-rce-shell__brand-mark {
   flex-shrink: 0;
+}
+
+/* Navy primitives here are remapped to the chrome's active color; the glyph reads as a cutout. */
+.canvas-rce-shell__brand-mark.instui-button.-color-primary {
+  background: light-dark(
+    var(--instui-primitive-color-navy-navy100),
+    var(--instui-primitive-color-navy-navy90)
+  );
+  border-color: light-dark(
+    var(--instui-primitive-color-navy-navy100),
+    var(--instui-primitive-color-navy-navy90)
+  );
+  color: light-dark(var(--instui-color-background-container), var(--instui-color-background-page));
+}
+
+.canvas-rce-shell__brand-mark.instui-button.-color-primary:hover {
+  background: light-dark(
+    var(--instui-primitive-color-navy-navy110),
+    var(--instui-primitive-color-navy-navy80)
+  );
+  border-color: light-dark(
+    var(--instui-primitive-color-navy-navy110),
+    var(--instui-primitive-color-navy-navy80)
+  );
+}
+
+.canvas-rce-shell__brand-mark.instui-button.-color-primary:active {
+  background: light-dark(
+    var(--instui-primitive-color-navy-navy120),
+    var(--instui-primitive-color-navy-navy70)
+  );
+  border-color: light-dark(
+    var(--instui-primitive-color-navy-navy120),
+    var(--instui-primitive-color-navy-navy70)
+  );
 }
 
 .canvas-rce-shell__eyebrow {
