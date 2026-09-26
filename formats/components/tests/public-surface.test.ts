@@ -119,6 +119,10 @@ test("the type-only options interfaces are exported", () => {
   // Type-level assertion: these compile only if the interfaces are exported and shaped as expected.
   const c: ComponentOptions = { prefix: "instui" };
   const p: ProseOptions = { scope: ".pantoken-prose" };
-  const g: IconGlyphsOptions = { deprecatedAliases: true };
-  expect([c.prefix, p.scope, g.deprecatedAliases]).toEqual(["instui", ".pantoken-prose", true]);
+  const g: IconGlyphsOptions = { values: { check: "url(icon.svg)" } };
+  expect([c.prefix, p.scope, g.values?.check]).toEqual([
+    "instui",
+    ".pantoken-prose",
+    "url(icon.svg)",
+  ]);
 });

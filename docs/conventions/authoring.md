@@ -218,8 +218,8 @@ properties and register them with `@property` near the top of the file:
 ## Icons
 
 Glyphs render via a shared `::before` mask painter (currentColor, 1em box) that matches class tokens
-starting with `-icon-`, `-render-icon-`, or `-render-custom-icon-`, not arbitrary class names containing
-`-icon-`. A glyph class rides a host directly because `--pantoken-glyph` is a plain (non-`@property`)
+starting with `-icon-`, not arbitrary class names containing `-icon-`. A glyph class rides a host
+directly because `--pantoken-glyph` is a plain (non-`@property`)
 custom prop that inherits into `::before`. So `<button class="instui-button -shape-square
 -icon-arrow-right">` needs no nested icon span. Built-in component glyphs source from the shared
 `--instui-icon-<name>` tokens via an `iconMask(name)` helper.
