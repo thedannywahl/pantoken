@@ -1,0 +1,1 @@
+formatters compete over warning that that should be new line and then putting it back to a single line.
