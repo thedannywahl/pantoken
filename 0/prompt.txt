@@ -36,3 +36,7 @@ in your demo, add -color-tertiary -without-seam example
 ---
 
 default and -color-primary should be the same.
+
+---
+
+we should update the button component so that a default button is a primary.
