@@ -1,0 +1,1 @@
+check the actual upstream values in node_modules from instructure-design-tokens. we're overriding some in known-syntax-issues based on figma design specs, and maybe we should remove those.
