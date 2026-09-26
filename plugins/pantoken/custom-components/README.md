@@ -4,6 +4,7 @@ Custom, cssdoc-documented component rules for downstream consumers.
 
 This package currently ships:
 
+- An extra-small `--instui-breakpoints-xs: 20em` declaration in the aggregate stylesheet
 - `card` rules (the plugin output)
 - `banner` rules (the plugin output)
 - `agent-shell` rules (the plugin output)
@@ -44,6 +45,7 @@ import "@pantoken/plugin-custom-components/card.css";
 ## API
 
 - `customComponents(options?)` — returns a CSS plugin with `position: "append" | "prepend"`.
+- `breakpointDeclarations()` — returns the extra-small viewport token declaration.
 - `cardRules(prefix?)` — returns the card rules as CSS text.
 - `bannerRules(prefix?)` — returns the banner rules as CSS text.
 - `agentShellRules(prefix?)` — returns the agent-shell rules as CSS text.
