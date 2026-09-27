@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-26 17:39+0000\n"
+"PO-Revision-Date: 2026-09-27 01:00+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2323,6 +2323,30 @@ msgctxt "docs.api:prose"
 msgid "An [IconResolver](../../../../packages/core/src/type-aliases/IconResolver.md) backed by the pantoken icon set (for the plugin/rehype stages)."
 msgstr "Ein [IconResolver](../../../../packages/core/src/type-aliases/IconResolver.md) støtta av pantoken-ikonsettet (for plugin-/rehype-steg)."
 
+#: formats/inline-styles/src/functions/inlineHtml.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inline CSS rules into matching HTML elements without fetching external resources."
+msgstr "Set CSS-reglar inline i samsvarande HTML-element utan å hente eksterne ressursar."
+
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for inlining a stylesheet into an HTML document."
+msgstr "Val for å setje inn eit stilark i eit HTML-dokument."
+
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Keep media-query and pseudo-class rules in a style element."
+msgstr "Behald media-query- og pseudoklasse-reglar i eit style-element."
+
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve custom-property references against declarations in the document."
+msgstr "Løys referansar til egnedefinerte CSS-eigenskapar med utgangspunkt i deklarasjonar i dokumentet."
+
 #: formats/interactions/src/functions/applySpacing.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -3542,9 +3566,9 @@ msgid "Run the `pantoken create <platform>` command, delegating to `@pantoken/sc
 msgstr "Køyr kommandoen `pantoken create <platform>`, og deleger til `@pantoken/scaffold/cli`."
 
 #: packages/cli/src/index.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Emits native and other non-npm design-token source into a consumer repo — the targets that don't\nfit the npm-package model. Supported now: `swift` (with an SPM `Package.swift` manifest stub, so\nregistry publishing is later a config flip), `android`, `compose`, `flutter`, `wordpress`,\n`vanilla`, `drupal`, `swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, and `mintlify`."
+msgid "Emits native and other non-npm design-token source into a consumer repo — the targets that don't\nfit the npm-package model. Supported now: `swift` (with an SPM `Package.swift` manifest stub, so\nregistry publishing is later a config flip), `android`, `compose`, `flutter`, `wordpress`,\n`vanilla`, `drupal`, `swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, `mintlify`, and\n`inline`, and `email`."
 msgstr "Skriv ut native og andre ikkje‑npm design‑token‑kjelder inn i eit forbrukar‑repo — måla som ikkje passar med npm‑pakkemodellen. Støtta no: `swift` (med ein SPM `Package.swift` manifeststub, slik at publisering til registeret seinare berre blir ei konfigurasjonssvitsj), `android`, `compose`, `flutter`, `wordpress`, `vanilla`, `drupal`, `swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, og `mintlify`."
 
 #: packages/cli/src/interfaces/CliArgs.md
@@ -5354,6 +5378,12 @@ msgctxt "docs.api:prose"
 msgid "**Inline a token into an email cell (light mode)**"
 msgstr "**Legg ein token inline i ein e-postcelle (lys modus)**"
 
+#: platforms/email/src/functions/inlineEmailHtml.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inline resolved pantoken tokens and component CSS into HTML email markup."
+msgstr "Set inn løyste pantoken-tokens og komponent-CSS i HTML-e-postmerking."
+
 #: platforms/email/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -5365,6 +5395,97 @@ msgstr "`@pantoken/email` — Instructure designtoken for HTML-e-post."
 msgctxt "docs.api:prose"
 msgid "Email clients don't support CSS custom properties and often strip `<style>`, so tokens are fully\nresolved to concrete values for inline styling. Colours are hex; dimensions keep their `px` units.\nIcons are excluded. `light`/`dark` maps are keyed by camelCased token name."
 msgstr "Email clients don't support CSS custom properties and often strip `&lt;style&gt;`, so tokens are fully\nresolved to concrete values for inline styling. Colours are hex; dimensions keep their `px` units.\nIcons are excluded. `light`/`dark` maps are keyed by camelCased token name."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for filtering component CSS for email output."
+msgstr "Val for å filtrere komponent-CSS for e-postutdata."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Client capability profile. Defaults to `generic`."
+msgstr "Profil for klientfunksjonar. Standard: `generic`."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component names to allow in addition to the default email-safe set."
+msgstr "Komponentnamn som skal tillatast i tillegg til standardsettet som er trygt for e-post."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component names to remove even when they are in the default or custom allowlist."
+msgstr "Komponentnamn som skal fjernast sjølv om dei finst i standard- eller tilpassa tillatingsliste."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for generating email-compatible HTML with pantoken styles."
+msgstr "Val for å generere e-postkompatibel HTML med pantoken-stilane."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Token theme to use. Defaults to `rebrand`."
+msgstr "Temaet som skal emitterast (standard: `\"rebrand\"`)."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Color scheme to resolve. Defaults to `light`."
+msgstr "Kva fargemodus som skal løysast (standard `\"light\"`)."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component class prefix. Defaults to `instui`."
+msgstr "Prefiks for komponentklasse. Standard: `instui`."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Add generated rules for this custom brand color."
+msgstr "Eit attributt som vel ein tilpassa merke-farge."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Apply one of the plugin's shipped or custom color scales."
+msgstr "Bruk ei av pluginen sine medfølgjande eller tilpassa fargeskalar."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Retain pseudo-class and media-query rules in a style element. Defaults to `false`."
+msgstr "Behald pseudoklasse- og media-query-reglar i eit style-element. Standard: `false`."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Email client capability profile. Defaults to `generic`."
+msgstr "Profil for e-postklientfunksjonar. Standard: `generic`."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component names to remove from the email output."
+msgstr "Komponentnamn som skal fjernast frå e-postutdata."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Additional caller-supplied CSS."
+msgstr "Ytterlegare CSS levert av anroparen."
+
+#: platforms/email/src/type-aliases/EmailClient.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Supported email client capability profiles."
+msgstr "Støtta profilar for e-postklientfunksjonalitet."
 
 #: platforms/email/src/variables/dark.md
 #, no-c-format

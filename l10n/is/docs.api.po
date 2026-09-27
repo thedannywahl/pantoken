@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-26 17:34+0000\n"
+"PO-Revision-Date: 2026-09-27 00:58+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2323,6 +2323,30 @@ msgctxt "docs.api:prose"
 msgid "An [IconResolver](../../../../packages/core/src/type-aliases/IconResolver.md) backed by the pantoken icon set (for the plugin/rehype stages)."
 msgstr "[IconResolver](../../../../packages/core/src/type-aliases/IconResolver.md) sem byggist á pantoken táknasafninu (fyrir plugin/rehype-stigin)."
 
+#: formats/inline-styles/src/functions/inlineHtml.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inline CSS rules into matching HTML elements without fetching external resources."
+msgstr "Innlimaðu CSS-reglur í samsvarandi HTML-þætti án þess að sækja utanaðkomandi auðlindir."
+
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for inlining a stylesheet into an HTML document."
+msgstr "Valkostir til að innlína stílsíðu í HTML-skjali."
+
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Keep media-query and pseudo-class rules in a style element."
+msgstr "Halda media-query og pseudo-class reglum í style-elementi."
+
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve custom-property references against declarations in the document."
+msgstr "Leysa uppvísanir sérsniðinna eiginleika gagnvart yfirlýsingum í skjalinu."
+
 #: formats/interactions/src/functions/applySpacing.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -3542,9 +3566,9 @@ msgid "Run the `pantoken create <platform>` command, delegating to `@pantoken/sc
 msgstr "Keyrðu `pantoken create <platform>` skipunina, með því að vísa til `@pantoken/scaffold/cli`."
 
 #: packages/cli/src/index.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Emits native and other non-npm design-token source into a consumer repo — the targets that don't\nfit the npm-package model. Supported now: `swift` (with an SPM `Package.swift` manifest stub, so\nregistry publishing is later a config flip), `android`, `compose`, `flutter`, `wordpress`,\n`vanilla`, `drupal`, `swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, and `mintlify`."
+msgid "Emits native and other non-npm design-token source into a consumer repo — the targets that don't\nfit the npm-package model. Supported now: `swift` (with an SPM `Package.swift` manifest stub, so\nregistry publishing is later a config flip), `android`, `compose`, `flutter`, `wordpress`,\n`vanilla`, `drupal`, `swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, `mintlify`, and\n`inline`, and `email`."
 msgstr "Útflýtur innfæddan og annan non-npm hönnunartákna-uppsprettu í neytendageymslu — markmiðin sem passa ekki við npm-pakka líkanið. Stuðningsmál nú: `swift` (með SPM `Package.swift` yfirlýsingarstubb, svo skráningarútgáfa er síðar stillingabreyting), `android`, `compose`, `flutter`, `wordpress`, `vanilla`, `drupal`, `swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, og `mintlify`."
 
 #: packages/cli/src/interfaces/CliArgs.md
@@ -5354,6 +5378,12 @@ msgctxt "docs.api:prose"
 msgid "**Inline a token into an email cell (light mode)**"
 msgstr "**Innlimaðu token í netfangsreiti (ljós hamur)**"
 
+#: platforms/email/src/functions/inlineEmailHtml.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inline resolved pantoken tokens and component CSS into HTML email markup."
+msgstr "Innlimi uppleyst pantoken-tákn og komponenta-CSS í HTML-tákningu tölvupósts."
+
 #: platforms/email/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -5365,6 +5395,97 @@ msgstr "`@pantoken/email` — Instructure hönnunartákn fyrir HTML-tölvupóst.
 msgctxt "docs.api:prose"
 msgid "Email clients don't support CSS custom properties and often strip `<style>`, so tokens are fully\nresolved to concrete values for inline styling. Colours are hex; dimensions keep their `px` units.\nIcons are excluded. `light`/`dark` maps are keyed by camelCased token name."
 msgstr "Email clients don't support CSS custom properties and often strip `&lt;style&gt;`, so tokens are fully\nresolved to concrete values for inline styling. Colours are hex; dimensions keep their `px` units.\nIcons are excluded. `light`/`dark` maps are keyed by camelCased token name."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for filtering component CSS for email output."
+msgstr "Valkostir til að sía komponenta-CSS fyrir tölvupóstútgang."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Client capability profile. Defaults to `generic`."
+msgstr "Viðskiptavinahæfniprófíll. Sjálfgefið er `generic`."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component names to allow in addition to the default email-safe set."
+msgstr "Nöfn íhluta sem skal leyfa auk sjálfgefins tölvupóst-öruggs safns."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component names to remove even when they are in the default or custom allowlist."
+msgstr "Nöfn íhluta sem á að fjarlægja jafnvel þó þau séu í sjálfgefnu eða sérsniðnu leyfismengi."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for generating email-compatible HTML with pantoken styles."
+msgstr "Valkostir til að búa til tölvupóst-viðeigandi HTML með pantoken-stílum."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Token theme to use. Defaults to `rebrand`."
+msgstr "Þemað sem á að senda út (sjálfgefið: `\"rebrand\"`)."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Color scheme to resolve. Defaults to `light`."
+msgstr "Hvaða litastilling á að leysa (sjálfgefið `\"light\"`)."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component class prefix. Defaults to `instui`."
+msgstr "Forskeyti flokks íhluta. Sjálfgefið er `instui`."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Add generated rules for this custom brand color."
+msgstr "Eigind sem velur sérsniðið vörumerkislit."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Apply one of the plugin's shipped or custom color scales."
+msgstr "Beita einni af litaskölunum sem viðbótin fylgir eða sérsniðnum litaskölum."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Retain pseudo-class and media-query rules in a style element. Defaults to `false`."
+msgstr "Halda pseudo-class- og media-query-reglum í style-elementi. Sjálfgefið er `false`."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Email client capability profile. Defaults to `generic`."
+msgstr "Prófíll hæfni tölvupóstforrita. Sjálfgefið er `generic`."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component names to remove from the email output."
+msgstr "Nöfn íhluta sem á að fjarlægja úr tölvupóstútgangi."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Additional caller-supplied CSS."
+msgstr "Aukalega CSS sem kallari afhendir."
+
+#: platforms/email/src/type-aliases/EmailClient.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Supported email client capability profiles."
+msgstr "Stuðningsprófílar fyrir hæfni tölvupóstforrita."
 
 #: platforms/email/src/variables/dark.md
 #, no-c-format
@@ -12125,12 +12246,22 @@ msgstr "Hnappur sem birtist þegar músin fer yfir hann: „Skoða á fullri skj
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "`.instui-button-set` — A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
-#~ msgstr "`.instui-button-set` — Röð hnappa með saum (beint, án bils)), þar sem aðeins ytri tvær hornin eru aflöguð."
+#~ msgid "`.breakpoints` — Extra-small viewport width for phone-sized previews."
+#~ msgstr "`.breakpoints` — Ör-smá breidd sýniglugga fyrir símaforskoðanir."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead."
+#~ msgid "Extra-small viewport width (20em / 320px)."
+#~ msgstr "Ör-smá breidd sýniglugga (20em / 320px)."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "`.instui-button-set` — A non-wrapping, flush row of buttons joined by 1px seams, with only its outer two corners rounded."
+#~ msgstr "`.instui-button-set` — Röð hnappa með saum (beint, án bils)), þar sem aðeins ytri tvær hornin eru aflöguð."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'\n  own border color (solid fills, whose border matches the fill, tint it with the label color).\n  `-without-seam` is group-only: it hides that seam so the buttons read as\n  one continuous control."
 #~ msgstr "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) stilla sjálfgefið fyrir hvern barnahnapp\n  `.instui-button` sem ber ekki sinn eigin breytir í þeirri sömu flokkaskiptingu — hnappsérstakur breytirflokkur sigrar alltaf hópseðli. `-icon-*` er alltaf per-hnapp; hann er\n  aldrei lesinn úr hópnum. Úreltir hnappaalíasar (`-ghost`, `-color-primary-inverse`)\n) eru ekki studdir sem hópstigs-breytarar — notaðu í staðinn hina kanónísku staðgengla þeirra\n  (`-color-tertiary`, `-on-color`))."
 
 #, no-c-format
@@ -12147,6 +12278,21 @@ msgstr "Hnappur sem birtist þegar músin fer yfir hann: „Skoða á fullri skj
 #~ msgctxt "docs.api:prose"
 #~ msgid "Confirm"
 #~ msgstr "Staðfesta"
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Day"
+#~ msgstr "day"
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Week"
+#~ msgstr " Vika 1"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Month"
+#~ msgstr "Mánuður"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -12237,6 +12383,11 @@ msgstr "Hnappur sem birtist þegar músin fer yfir hann: „Skoða á fullri skj
 #~ msgctxt "docs.api:prose"
 #~ msgid "Default every unmodified child to no border."
 #~ msgstr "Stilltu sjálfgefið hvert óbreytt barn án ramma."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide the 1px seam between buttons."
+#~ msgstr "Fela 1px sauminn milli hnappa."
 
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -12948,9 +13099,9 @@ msgstr "Hnappur sem birtist þegar músin fer yfir hann: „Skoða á fullri skj
 #~ msgid "`.content` — The primary content pane that fills remaining space beside the tray."
 #~ msgstr "`.content` — Aðal innihaldsflipinn sem fyllir eftirkoma rýmið við hlið skúffunnar."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Once the parent's inline-size drops below `46em` (`16em` tray width + `30em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override."
+#~ msgid "Once the parent's inline-size drops below `64em` (`16em` tray width + `48em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override."
 #~ msgstr "Þegar innlína-stærð foreldrisins fellur undir `46em` (`16em` skúffubreidd + `30em` brotpunktur), setur `@container` fyrirspurn á `pantoken-drawer-layout` íláti foreldrisins sjálfkrafa `min-inline-size` þessa meðlims í `0`, sem samsvarar handvirku `[should-overlay-tray]` yfirrituninni."
 
 #, no-c-format
@@ -13018,9 +13169,9 @@ msgstr "Hnappur sem birtist þegar músin fer yfir hann: „Skoða á fullri skj
 #~ msgid "The side panel."
 #~ msgstr "Hliðarpanelinn."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Width threshold for overlay mode (`30em`, themed via responsive utilities)."
+#~ msgid "Width threshold for overlay mode (`48em`, sourced from the responsive utility's canonical `md` breakpoint)."
 #~ msgstr "Breiddarþröskuldur fyrir yfirlagsham (`30em`, þemað með móttæknihjálpartólum)."
 
 #, no-c-format
@@ -13783,9 +13934,9 @@ msgstr "Hnappur sem birtist þegar músin fer yfir hann: „Skoða á fullri skj
 #~ msgid "An accessible action control, styled from the token palette; primary by default."
 #~ msgstr "Aðgengilegur aðgerðarstjórnliður, stíllaður eftir táknplötu; aðalstilling sjálfgefið."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
+#~ msgid "A non-wrapping, flush row of buttons joined by 1px seams, with only its outer two corners rounded."
 #~ msgstr "Röð hnappa með saum (beint, án bils)), þar sem aðeins ytri tvær hornin eru aflöguð."
 
 #, no-c-format
@@ -14212,6 +14363,11 @@ msgstr "Hnappur sem birtist þegar músin fer yfir hann: „Skoða á fullri skj
 #~ msgctxt "docs.api:prose"
 #~ msgid "Typographic defaults for raw HTML — headings, paragraphs, lists, links, and code — applied automatically wherever it's imported (default `:where(body)`); pass `options.scope` to target a different content root instead (e.g. `.vp-doc`)."
 #~ msgstr "Letur- og gerðarvenjur fyrir hrátt HTML — fyrirsagnir, málsgreinar, listar, tenglar og kóði — beitt sjálfkrafa hvar sem það er flutt inn (sjálfgefið `:where(body)`); gefðu `options.scope` til að miða á annan efnisrót (t.d. `.vp-doc`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Extra-small viewport width for phone-sized previews."
+#~ msgstr "Ör-smá breidd sýniglugga fyrir símaforskoðanir."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16018,9 +16174,9 @@ msgstr "Hnappur sem birtist þegar músin fer yfir hann: „Skoða á fullri skj
 #~ msgid "`[class*=\"-hidden-\"],[class*=\"-show-\"]` — Viewport- or container-width show/hide classes across a themed breakpoint scale."
 #~ msgstr "`[class*=\"-hidden-\"],[class*=\"-show-\"]` — Sýna/fela klasa byggða á sjónsviðs- eða ílátsbreidd yfir þemabundna brotpunktastiginu."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "`.instui-hidden-max-<bp>`/`-hidden-min-<bp>` hide by viewport width; `.instui-show-max-<bp>`/`-show-min-<bp>` are the inverse (hidden by default, shown only inside the range via `display: revert`); the `-cq-` variants react to a `.instui-container` ancestor's width instead, not the viewport's. Scale tiers `xs`/`sm`/`md`/`lg`/`xl` (sourced from the IR's tray-width component tokens) are each aliased to a long-form spelling (`x-small`–`x-large`) and a device name (`mobile`/`phablet`/`tablet`/`laptop`/`desktop`) — both deprecated in favor of the short name — plus the unscaled, themed `content`/`content-full-width` tiers (the main content area's max-width)."
+#~ msgid "`.instui-hidden-max-<bp>`/`-hidden-min-<bp>` hide by viewport width; `.instui-show-max-<bp>`/`-show-min-<bp>` are the inverse (hidden by default, shown only inside the range via `display: revert`); the `-cq-` variants react to a `.instui-container` ancestor's width instead, not the viewport's. Scale tiers `sm`/`md`/`lg`/`xl` mirror the IR's canonical breakpoint tokens, with a Pantoken-defined `xs` extension at `20em`; each is aliased to a long-form spelling (`x-small`–`x-large`) and a device name (`mobile`/`phablet`/`tablet`/`laptop`/`desktop`) — both deprecated in favor of the short name — plus the unscaled, themed `content`/`content-full-width` tiers (the main content area's max-width)."
 #~ msgstr "`.instui-hidden-max-<bp>`/`-hidden-min-<bp>` fela eftir sjónsviðsbreidd; `.instui-show-max-<bp>`/`-show-min-<bp>` eru öfugir (falnir sjálfgefið, birtir aðeins innan sviðs með `display: revert`); `-cq-`-afbrigðin bregðast í staðinn við breidd arfafa `.instui-container`, ekki sjónsviðsins. Stig kvarðans `xs`/`sm`/`md`/`lg`/`xl` (sótt úr IR tray-width component tokens) hafa hvert um sig langformlega aliasa (`x-small`–`x-large`) og tækinafn (`mobile`/`phablet`/`tablet`/`laptop`/`desktop`) — bæði úrelt zug short name — auk óskölunar, þemabundnu `content`/`content-full-width` stiganna (hámarksbreidd megin efnis)."
 
 #, no-c-format
@@ -16048,30 +16204,30 @@ msgstr "Hnappur sem birtist þegar músin fer yfir hann: „Skoða á fullri skj
 #~ msgid "Hide when the marked container is at or below the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "Fela þegar tilgreint ílát er á eða undir brotpunktinum `content-full-width` (`98.75em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the marked container is at or below the `lg` breakpoint (`64em`)."
 #~ msgstr "Fela þegar tilgreint ílát er á eða undir brotpunktinum `lg` (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `md` breakpoint (`30em`)."
-#~ msgstr "Fela þegar tilgreint ílát er á eða undir brotpunktinum `md` (`30em`)."
+#~ msgid "Hide when the marked container is at or below the `md` breakpoint (`48em`)."
+#~ msgstr "Fela þegar tilgreint ílát er á eða undir brotpunktinum `lg` (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `sm` breakpoint (`20em`)."
+#~ msgid "Hide when the marked container is at or below the `sm` breakpoint (`30em`)."
 #~ msgstr "Fela þegar tilgreint ílát er á eða undir brotpunktinum `sm` (`20em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the marked container is at or below the `xl` breakpoint (`80em`)."
 #~ msgstr "Fela þegar tilgreint ílát er á eða undir brotpunktinum `xl` (`62em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `xs` breakpoint (`16em`)."
-#~ msgstr "Fela þegar tilgreint ílát er á eða undir brotpunktinum `xs` (`16em`)."
+#~ msgid "Hide when the marked container is at or below the `xs` breakpoint (`20em`)."
+#~ msgstr "Fela þegar tilgreint ílát er á eða undir brotpunktinum `sm` (`20em`)."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16083,30 +16239,30 @@ msgstr "Hnappur sem birtist þegar músin fer yfir hann: „Skoða á fullri skj
 #~ msgid "Hide when the marked container is at or above the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "Fela þegar tilgreint ílát er á eða yfir brotpunktinum `content-full-width` (`98.75em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the marked container is at or above the `lg` breakpoint (`64em`)."
 #~ msgstr "Fela þegar tilgreint ílát er á eða yfir brotpunktinum `lg` (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `md` breakpoint (`30em`)."
-#~ msgstr "Fela þegar tilgreint ílát er á eða yfir brotpunktinum `md` (`30em`)."
+#~ msgid "Hide when the marked container is at or above the `md` breakpoint (`48em`)."
+#~ msgstr "Fela þegar tilgreint ílát er á eða yfir brotpunktinum `lg` (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `sm` breakpoint (`20em`)."
+#~ msgid "Hide when the marked container is at or above the `sm` breakpoint (`30em`)."
 #~ msgstr "Fela þegar tilgreint ílát er á eða yfir brotpunktinum `sm` (`20em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the marked container is at or above the `xl` breakpoint (`80em`)."
 #~ msgstr "Fela þegar tilgreint ílát er á eða yfir brotpunktinum `xl` (`62em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `xs` breakpoint (`16em`)."
-#~ msgstr "Fela þegar tilgreint ílát er á eða yfir brotpunktinum `xs` (`16em`)."
+#~ msgid "Hide when the marked container is at or above the `xs` breakpoint (`20em`)."
+#~ msgstr "Fela þegar tilgreint ílát er á eða yfir brotpunktinum `sm` (`20em`)."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16118,30 +16274,30 @@ msgstr "Hnappur sem birtist þegar músin fer yfir hann: „Skoða á fullri skj
 #~ msgid "Show when the marked container is at or below the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "Sýna þegar tilgreint ílát er á eða undir `content-full-width` brotpunktinum (`98.75em`); annars falin."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or below the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "Sýna þegar tilgreint ílát er á eða undir `lg` brotpunktinum (`48em`); annars falin."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `md` breakpoint (`30em`); hidden otherwise."
-#~ msgstr "Sýna þegar tilgreint ílát er á eða undir `md` brotpunktinum (`30em`); annars falin."
+#~ msgid "Show when the marked container is at or below the `md` breakpoint (`48em`); hidden otherwise."
+#~ msgstr "Sýna þegar tilgreint ílát er á eða undir `lg` brotpunktinum (`48em`); annars falin."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or below the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "Sýna þegar tilgreint ílát er á eða undir `sm` brotpunktinum (`20em`); annars falin."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or below the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "Sýna þegar tilgreint ílát er á eða undir `xl` brotpunktinum (`62em`); annars falin."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `xs` breakpoint (`16em`); hidden otherwise."
-#~ msgstr "Sýna þegar tilgreint ílát er á eða undir `xs` brotpunktinum (`16em`); annars falin."
+#~ msgid "Show when the marked container is at or below the `xs` breakpoint (`20em`); hidden otherwise."
+#~ msgstr "Sýna þegar tilgreint ílát er á eða undir `sm` brotpunktinum (`20em`); annars falin."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16153,30 +16309,30 @@ msgstr "Hnappur sem birtist þegar músin fer yfir hann: „Skoða á fullri skj
 #~ msgid "Show when the marked container is at or above the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "Sýna þegar tilgreint ílát er á eða yfir `content-full-width` brotpunktinum (`98.75em`); annars falin."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or above the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "Sýna þegar tilgreint ílát er á eða yfir `lg` brotpunktinum (`48em`); annars falin."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `md` breakpoint (`30em`); hidden otherwise."
-#~ msgstr "Sýna þegar tilgreint ílát er á eða yfir `md` brotpunktinum (`30em`); annars falin."
+#~ msgid "Show when the marked container is at or above the `md` breakpoint (`48em`); hidden otherwise."
+#~ msgstr "Sýna þegar tilgreint ílát er á eða yfir `lg` brotpunktinum (`48em`); annars falin."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or above the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "Sýna þegar tilgreint ílát er á eða yfir `sm` brotpunktinum (`20em`); annars falin."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or above the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "Sýna þegar tilgreint ílát er á eða yfir `xl` brotpunktinum (`62em`); annars falin."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `xs` breakpoint (`16em`); hidden otherwise."
-#~ msgstr "Sýna þegar tilgreint ílát er á eða yfir `xs` brotpunktinum (`16em`); annars falin."
+#~ msgid "Show when the marked container is at or above the `xs` breakpoint (`20em`); hidden otherwise."
+#~ msgstr "Sýna þegar tilgreint ílát er á eða yfir `sm` brotpunktinum (`20em`); annars falin."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16188,24 +16344,29 @@ msgstr "Hnappur sem birtist þegar músin fer yfir hann: „Skoða á fullri skj
 #~ msgid "Hide when the viewport is at or below the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "Fela þegar sjónsviðið er á eða undir `content-full-width` brotpunktinum (`98.75em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the viewport is at or below the `lg` breakpoint (`64em`)."
 #~ msgstr "Fela þegar sjónsviðið er á eða undir `lg` brotpunktinum (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `md` breakpoint (`30em`)."
+#~ msgid "Hide when the viewport is at or below the `md` breakpoint (`48em`)."
+#~ msgstr "Fela þegar sjónsviðið er á eða undir `lg` brotpunktinum (`48em`)."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the viewport is at or below the `sm` breakpoint (`30em`)."
 #~ msgstr "Fela þegar sjónsviðið er á eða undir `md` brotpunktinum (`30em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the viewport is at or below the `xl` breakpoint (`80em`)."
 #~ msgstr "Fela þegar sjónsviðið er á eða undir `xl` brotpunktinum (`62em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `xs` breakpoint (`16em`)."
+#~ msgid "Hide when the viewport is at or below the `xs` breakpoint (`20em`)."
 #~ msgstr "Fela þegar sjónsviðið er á eða undir `xs` brotpunktinum (`16em`)."
 
 #, no-c-format
@@ -16218,30 +16379,30 @@ msgstr "Hnappur sem birtist þegar músin fer yfir hann: „Skoða á fullri skj
 #~ msgid "Hide when the viewport is at or above the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "Fela þegar sjónsviðið er á eða yfir `content-full-width` brotpunktinum (`98.75em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the viewport is at or above the `lg` breakpoint (`64em`)."
 #~ msgstr "Fela þegar sjónsviðið er á eða yfir `lg` brotpunktinum (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `md` breakpoint (`30em`)."
-#~ msgstr "Fela þegar gluggastærðin er á eða fyrir ofan `md` brotpunktinn (`30em`)."
+#~ msgid "Hide when the viewport is at or above the `md` breakpoint (`48em`)."
+#~ msgstr "Fela þegar sjónsviðið er á eða yfir `lg` brotpunktinum (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `sm` breakpoint (`20em`)."
+#~ msgid "Hide when the viewport is at or above the `sm` breakpoint (`30em`)."
 #~ msgstr "Fela þegar gluggastærðin er á eða fyrir ofan `sm` brotpunktinn (`20em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the viewport is at or above the `xl` breakpoint (`80em`)."
 #~ msgstr "Fela þegar gluggastærðin er á eða fyrir ofan `xl` brotpunktinn (`62em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `xs` breakpoint (`16em`)."
-#~ msgstr "Fela þegar gluggastærðin er á eða fyrir ofan `xs` brotpunktinn (`16em`)."
+#~ msgid "Hide when the viewport is at or above the `xs` breakpoint (`20em`)."
+#~ msgstr "Fela þegar gluggastærðin er á eða fyrir ofan `sm` brotpunktinn (`20em`)."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16253,29 +16414,29 @@ msgstr "Hnappur sem birtist þegar músin fer yfir hann: „Skoða á fullri skj
 #~ msgid "Show (inverse of `-hidden-min-content-full-width`) when the viewport is at or below the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "Sýna (andhverfa af `-hidden-min-content-full-width`) þegar gluggastærðin er á eða fyrir neðan `content-full-width` brotpunktinn (`98.75em`); falin annars."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-lg`) when the viewport is at or below the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-lg`) when the viewport is at or below the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "Sýna (andhverfa af `-hidden-min-lg`) þegar gluggastærðin er á eða fyrir neðan `lg` brotpunktinn (`48em`); falin annars."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-md`) when the viewport is at or below the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-md`) when the viewport is at or below the `md` breakpoint (`48em`); hidden otherwise."
 #~ msgstr "Sýna (andhverfa af `-hidden-min-md`) þegar gluggastærðin er á eða fyrir neðan `md` brotpunktinn (`30em`); falin annars."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-sm`) when the viewport is at or below the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-sm`) when the viewport is at or below the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "Sýna (andhverfa af `-hidden-min-sm`) þegar gluggastærðin er á eða fyrir neðan `sm` brotpunktinn (`20em`); falin annars."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-xl`) when the viewport is at or below the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-xl`) when the viewport is at or below the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "Sýna (andhverfa af `-hidden-min-xl`) þegar gluggastærðin er á eða fyrir neðan `xl` brotpunktinn (`62em`); falin annars."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-xs`) when the viewport is at or below the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-xs`) when the viewport is at or below the `xs` breakpoint (`20em`); hidden otherwise."
 #~ msgstr "Sýna (andhverfa af `-hidden-min-xs`) þegar gluggastærðin er á eða fyrir neðan `xs` brotpunktinn (`16em`); falin annars."
 
 #, no-c-format
@@ -16288,29 +16449,29 @@ msgstr "Hnappur sem birtist þegar músin fer yfir hann: „Skoða á fullri skj
 #~ msgid "Show (inverse of `-hidden-max-content-full-width`) when the viewport is at or above the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "Sýna (andhverfa af `-hidden-max-content-full-width`) þegar gluggastærðin er á eða fyrir ofan `content-full-width` brotpunktinn (`98.75em`); falin annars."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-lg`) when the viewport is at or above the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-lg`) when the viewport is at or above the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "Sýna (andhverfa af `-hidden-max-lg`) þegar gluggastærðin er á eða fyrir ofan `lg` brotpunktinn (`48em`); falin annars."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-md`) when the viewport is at or above the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-md`) when the viewport is at or above the `md` breakpoint (`48em`); hidden otherwise."
 #~ msgstr "Sýna (andhverfa af `-hidden-max-md`) þegar gluggastærðin er á eða fyrir ofan `md` brotpunktinn (`30em`); falin annars."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-sm`) when the viewport is at or above the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-sm`) when the viewport is at or above the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "Sýna (andhverfa af `-hidden-max-sm`) þegar gluggastærðin er á eða fyrir ofan `sm` brotpunktinn (`20em`); falin annars."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-xl`) when the viewport is at or above the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-xl`) when the viewport is at or above the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "Sýna (andhverfa af `-hidden-max-xl`) þegar gluggastærðin er á eða fyrir ofan `xl` brotpunktinn (`62em`); falin annars."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-xs`) when the viewport is at or above the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-xs`) when the viewport is at or above the `xs` breakpoint (`20em`); hidden otherwise."
 #~ msgstr "Sýna (andhverfa af `-hidden-max-xs`) þegar gluggastærðin er á eða fyrir ofan `xs` brotpunktinn (`16em`); falin annars."
 
 #, no-c-format
@@ -16323,30 +16484,30 @@ msgstr "Hnappur sem birtist þegar músin fer yfir hann: „Skoða á fullri skj
 #~ msgid "The `content-full-width` breakpoint's value (`98.75em`, hand-authored, themed (not in the token IR)). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "Gildi `content-full-width` brotpunktarins (`98.75em`, handskrifað, með þema (ekki í token IR)). Að yfirskrifa það flytur ekki samsettu `@media`/`@container` þröskuldana upp."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `lg` breakpoint's value (`48em`, mirrors `--instui-component-tray-width-lg`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `lg` breakpoint's value (`64em`, mirrors `--instui-breakpoints-lg`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "Gildi `lg` brotpunktarins (`48em`, endurspeglar `--instui-component-tray-width-lg`). Að yfirskrifa það flytur ekki samsettu `@media`/`@container` þröskuldana upp."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `md` breakpoint's value (`30em`, mirrors `--instui-component-tray-width-md`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `md` breakpoint's value (`48em`, mirrors `--instui-breakpoints-md`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "Gildi `md` brotpunktarins (`30em`, endurspeglar `--instui-component-tray-width-md`). Að yfirskrifa það flytur ekki samsettu `@media`/`@container` þröskuldana upp."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `sm` breakpoint's value (`20em`, mirrors `--instui-component-tray-width-sm`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `sm` breakpoint's value (`30em`, mirrors `--instui-breakpoints-sm`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "Gildi `sm` brotpunktarins (`20em`, endurspeglar `--instui-component-tray-width-sm`). Að yfirskrifa það flytur ekki samsettu `@media`/`@container` þröskuldana upp."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `xl` breakpoint's value (`62em`, mirrors `--instui-component-tray-width-xl`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `xl` breakpoint's value (`80em`, mirrors `--instui-breakpoints-xl`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "Gildi `xl` brotpunktarins (`62em`, endurspeglar `--instui-component-tray-width-xl`). Að yfirskrifa það flytur ekki samsettu `@media`/`@container` þröskuldana upp."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `xs` breakpoint's value (`16em`, mirrors `--instui-component-tray-width-xs`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
-#~ msgstr "Gildi `xs` brotpunktarins (`16em`, endurspeglar `--instui-component-tray-width-xs`). Að yfirskrifa það flytur ekki samsettu `@media`/`@container` þröskuldana upp."
+#~ msgid "The `xs` breakpoint's value (`20em`, hand-authored Pantoken extension (not in the token IR)). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgstr "Gildi `content` brotpunktarins (`68.75em`, handskrifað, með þema (ekki í token IR)). Að yfirskrifa það flytur ekki samsettu `@media`/`@container` þröskuldana upp."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -18067,6 +18228,61 @@ msgstr "Hnappur sem birtist þegar músin fer yfir hann: „Skoða á fullri skj
 #~ msgctxt "docs.api:prose"
 #~ msgid "Utility actions at the end of the top row."
 #~ msgstr "Utility aðgerðir í lok efstu röðar."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or below the `md` breakpoint (`30em`)."
+#~ msgstr "Fela þegar tilgreint ílát er á eða undir brotpunktinum `md` (`30em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or below the `xs` breakpoint (`16em`)."
+#~ msgstr "Fela þegar tilgreint ílát er á eða undir brotpunktinum `xs` (`16em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or above the `md` breakpoint (`30em`)."
+#~ msgstr "Fela þegar tilgreint ílát er á eða yfir brotpunktinum `md` (`30em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or above the `xs` breakpoint (`16em`)."
+#~ msgstr "Fela þegar tilgreint ílát er á eða yfir brotpunktinum `xs` (`16em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or below the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgstr "Sýna þegar tilgreint ílát er á eða undir `md` brotpunktinum (`30em`); annars falin."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or below the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgstr "Sýna þegar tilgreint ílát er á eða undir `xs` brotpunktinum (`16em`); annars falin."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or above the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgstr "Sýna þegar tilgreint ílát er á eða yfir `md` brotpunktinum (`30em`); annars falin."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or above the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgstr "Sýna þegar tilgreint ílát er á eða yfir `xs` brotpunktinum (`16em`); annars falin."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the viewport is at or above the `md` breakpoint (`30em`)."
+#~ msgstr "Fela þegar gluggastærðin er á eða fyrir ofan `md` brotpunktinn (`30em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the viewport is at or above the `xs` breakpoint (`16em`)."
+#~ msgstr "Fela þegar gluggastærðin er á eða fyrir ofan `xs` brotpunktinn (`16em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The `xs` breakpoint's value (`16em`, mirrors `--instui-component-tray-width-xs`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgstr "Gildi `xs` brotpunktarins (`16em`, endurspeglar `--instui-component-tray-width-xs`). Að yfirskrifa það flytur ekki samsettu `@media`/`@container` þröskuldana upp."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -27763,10 +27979,6 @@ msgstr "Hnappur sem birtist þegar músin fer yfir hann: „Skoða á fullri skj
 #~ msgctxt "docs.api:text"
 #~ msgid "byline"
 #~ msgstr "byline"
-
-#~ msgctxt "docs.api:text"
-#~ msgid "day"
-#~ msgstr "day"
 
 #~ msgctxt "docs.api:text"
 #~ msgid "card"

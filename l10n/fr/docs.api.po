@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-26 17:28+0000\n"
+"PO-Revision-Date: 2026-09-27 00:56+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2323,6 +2323,30 @@ msgctxt "docs.api:prose"
 msgid "An [IconResolver](../../../../packages/core/src/type-aliases/IconResolver.md) backed by the pantoken icon set (for the plugin/rehype stages)."
 msgstr "Un [IconResolver](../../../../packages/core/src/type-aliases/IconResolver.md) pris en charge par l'ensemble d'icônes pantoken (pour les étapes plugin/rehype)."
 
+#: formats/inline-styles/src/functions/inlineHtml.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inline CSS rules into matching HTML elements without fetching external resources."
+msgstr "Intégrer des règles CSS dans les éléments HTML correspondants sans récupérer de ressources externes."
+
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for inlining a stylesheet into an HTML document."
+msgstr "Options pour intégrer une feuille de style dans un document HTML."
+
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Keep media-query and pseudo-class rules in a style element."
+msgstr "Conserver les règles de media-query et de pseudo-classe dans un élément style."
+
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve custom-property references against declarations in the document."
+msgstr "Résoudre les références de custom-property par rapport aux déclarations dans le document."
+
 #: formats/interactions/src/functions/applySpacing.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -3542,9 +3566,9 @@ msgid "Run the `pantoken create <platform>` command, delegating to `@pantoken/sc
 msgstr "Exécutez la commande `pantoken create <platform>`, en la déléguant à `@pantoken/scaffold/cli`."
 
 #: packages/cli/src/index.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Emits native and other non-npm design-token source into a consumer repo — the targets that don't\nfit the npm-package model. Supported now: `swift` (with an SPM `Package.swift` manifest stub, so\nregistry publishing is later a config flip), `android`, `compose`, `flutter`, `wordpress`,\n`vanilla`, `drupal`, `swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, and `mintlify`."
+msgid "Emits native and other non-npm design-token source into a consumer repo — the targets that don't\nfit the npm-package model. Supported now: `swift` (with an SPM `Package.swift` manifest stub, so\nregistry publishing is later a config flip), `android`, `compose`, `flutter`, `wordpress`,\n`vanilla`, `drupal`, `swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, `mintlify`, and\n`inline`, and `email`."
 msgstr "Émet des sources de design tokens natives et autres sources non‑npm dans un dépôt consommateur — les cibles qui ne correspondent pas au modèle de paquet npm. Pris en charge maintenant : `swift` (avec un stub de manifeste SPM `Package.swift`, de sorte que la publication dans le registre soit ensuite un simple changement de configuration), `android`, `compose`, `flutter`, `wordpress`, `vanilla`, `drupal`, `swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, et `mintlify`."
 
 #: packages/cli/src/interfaces/CliArgs.md
@@ -5354,6 +5378,12 @@ msgctxt "docs.api:prose"
 msgid "**Inline a token into an email cell (light mode)**"
 msgstr "**Insérer un token dans une cellule d’e-mail (mode clair)**"
 
+#: platforms/email/src/functions/inlineEmailHtml.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inline resolved pantoken tokens and component CSS into HTML email markup."
+msgstr "Insérer en ligne les tokens pantoken résolus et le CSS des composants dans le balisage HTML des e-mails."
+
 #: platforms/email/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -5365,6 +5395,97 @@ msgstr "`@pantoken/email` — tokens de design Instructure pour les e-mails HTML
 msgctxt "docs.api:prose"
 msgid "Email clients don't support CSS custom properties and often strip `<style>`, so tokens are fully\nresolved to concrete values for inline styling. Colours are hex; dimensions keep their `px` units.\nIcons are excluded. `light`/`dark` maps are keyed by camelCased token name."
 msgstr "Email clients don't support CSS custom properties and often strip `&lt;style&gt;`, so tokens are fully\nresolved to concrete values for inline styling. Colours are hex; dimensions keep their `px` units.\nIcons are excluded. `light`/`dark` maps are keyed by camelCased token name."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for filtering component CSS for email output."
+msgstr "Options pour filtrer le CSS des composants pour la sortie des e-mails."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Client capability profile. Defaults to `generic`."
+msgstr "Profil de capacités du client. Valeur par défaut : `generic`."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component names to allow in addition to the default email-safe set."
+msgstr "Noms de composants à autoriser en plus de l'ensemble par défaut compatible e-mail."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component names to remove even when they are in the default or custom allowlist."
+msgstr "Noms de composants à supprimer même s'ils figurent dans la liste d'autorisation par défaut ou personnalisée."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for generating email-compatible HTML with pantoken styles."
+msgstr "Options pour générer du HTML compatible e-mail avec les styles pantoken."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Token theme to use. Defaults to `rebrand`."
+msgstr "Le thème à émettre (par défaut : `\"rebrand\"`)."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Color scheme to resolve. Defaults to `light`."
+msgstr "Quel mode de couleur résoudre (par défaut `\"light\"`)."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component class prefix. Defaults to `instui`."
+msgstr "Préfixe de classe de composant. Valeur par défaut : `instui`."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Add generated rules for this custom brand color."
+msgstr "Attribut qui sélectionne une couleur de marque personnalisée."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Apply one of the plugin's shipped or custom color scales."
+msgstr "Appliquer l'une des échelles de couleurs fournies par le plugin ou personnalisées."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Retain pseudo-class and media-query rules in a style element. Defaults to `false`."
+msgstr "Conserver les règles de pseudo-classe et de media-query dans un élément style. Valeur par défaut : `false`."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Email client capability profile. Defaults to `generic`."
+msgstr "Profil de capacités du client de messagerie. Valeur par défaut : `generic`."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component names to remove from the email output."
+msgstr "Noms de composants à supprimer de la sortie e-mail."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Additional caller-supplied CSS."
+msgstr "CSS supplémentaire fourni par l'appelant."
+
+#: platforms/email/src/type-aliases/EmailClient.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Supported email client capability profiles."
+msgstr "Profils de capacités des clients de messagerie pris en charge."
 
 #: platforms/email/src/variables/dark.md
 #, no-c-format
@@ -12125,12 +12246,22 @@ msgstr "Un bouton « voir en plein écran » visible au survol, superposé sur u
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "`.instui-button-set` — A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
-#~ msgstr "`.instui-button-set` — Une rangée de boutons jointifs (affleurants, sans espace), avec seulement ses deux coins extérieurs arrondis."
+#~ msgid "`.breakpoints` — Extra-small viewport width for phone-sized previews."
+#~ msgstr "`.breakpoints` — Largeur de fenêtre extra-petite pour les aperçus sur téléphone."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead."
+#~ msgid "Extra-small viewport width (20em / 320px)."
+#~ msgstr "Largeur de fenêtre extra-petite (20em / 320px)."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "`.instui-button-set` — A non-wrapping, flush row of buttons joined by 1px seams, with only its outer two corners rounded."
+#~ msgstr "`.instui-button-set` — Une rangée de boutons jointifs (affleurants, sans espace), avec seulement ses deux coins extérieurs arrondis."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'\n  own border color (solid fills, whose border matches the fill, tint it with the label color).\n  `-without-seam` is group-only: it hides that seam so the buttons read as\n  one continuous control."
 #~ msgstr "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) définissent une valeur par défaut pour chaque enfant\n  `.instui-button` qui n'a pas son propre modificateur dans cette même catégorie — la classe de modificateur propre au bouton prévaut toujours sur la valeur par défaut du groupe. `-icon-*` est toujours par bouton ; elle n'est\n  jamais lue depuis le groupe. Les alias de bouton obsolètes (`-ghost`, `-color-primary-inverse`)\n) ne sont pas pris en charge en tant que modificateurs au niveau du groupe — utilisez plutôt leurs remplacements canoniques\n  (`-color-tertiary`, `-on-color`) à la place)."
 
 #, no-c-format
@@ -12147,6 +12278,21 @@ msgstr "Un bouton « voir en plein écran » visible au survol, superposé sur u
 #~ msgctxt "docs.api:prose"
 #~ msgid "Confirm"
 #~ msgstr "Confirmer"
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Day"
+#~ msgstr "day"
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Week"
+#~ msgstr " Semaine 1"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Month"
+#~ msgstr "Mois"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -12237,6 +12383,11 @@ msgstr "Un bouton « voir en plein écran » visible au survol, superposé sur u
 #~ msgctxt "docs.api:prose"
 #~ msgid "Default every unmodified child to no border."
 #~ msgstr "Appliquer par défaut à chaque enfant non modifié sans bordure."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide the 1px seam between buttons."
+#~ msgstr "Masquer la couture d'1px entre les boutons."
 
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -12948,9 +13099,9 @@ msgstr "Un bouton « voir en plein écran » visible au survol, superposé sur u
 #~ msgid "`.content` — The primary content pane that fills remaining space beside the tray."
 #~ msgstr "`.content` — Le volet de contenu principal qui occupe l'espace restant à côté du tiroir."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Once the parent's inline-size drops below `46em` (`16em` tray width + `30em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override."
+#~ msgid "Once the parent's inline-size drops below `64em` (`16em` tray width + `48em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override."
 #~ msgstr "Lorsque la taille en ligne du parent passe en dessous de `46em` (largeur du tiroir `16em` + point de rupture `30em`), une requête `@container` sur le conteneur `pantoken-drawer-layout` du parent réduit automatiquement le `min-inline-size` de ce membre à `0`, correspondant à la surcharge manuelle `[should-overlay-tray]`."
 
 #, no-c-format
@@ -13018,9 +13169,9 @@ msgstr "Un bouton « voir en plein écran » visible au survol, superposé sur u
 #~ msgid "The side panel."
 #~ msgstr "Le panneau latéral."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Width threshold for overlay mode (`30em`, themed via responsive utilities)."
+#~ msgid "Width threshold for overlay mode (`48em`, sourced from the responsive utility's canonical `md` breakpoint)."
 #~ msgstr "Seuil de largeur pour le mode superposition (`30em`, thématisé via les utilitaires responsifs)."
 
 #, no-c-format
@@ -13783,9 +13934,9 @@ msgstr "Un bouton « voir en plein écran » visible au survol, superposé sur u
 #~ msgid "An accessible action control, styled from the token palette; primary by default."
 #~ msgstr "Un contrôle d'action accessible, stylé à partir de la palette de tokens ; primaire par défaut."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
+#~ msgid "A non-wrapping, flush row of buttons joined by 1px seams, with only its outer two corners rounded."
 #~ msgstr "Une rangée de boutons jointifs (affleurants, sans espace)), avec seulement ses deux coins externes arrondis."
 
 #, no-c-format
@@ -14212,6 +14363,11 @@ msgstr "Un bouton « voir en plein écran » visible au survol, superposé sur u
 #~ msgctxt "docs.api:prose"
 #~ msgid "Typographic defaults for raw HTML — headings, paragraphs, lists, links, and code — applied automatically wherever it's imported (default `:where(body)`); pass `options.scope` to target a different content root instead (e.g. `.vp-doc`)."
 #~ msgstr "Paramètres typographiques par défaut pour le HTML brut — titres, paragraphes, listes, liens et code — appliqués automatiquement partout où c'est importé (par défaut `:where(body)`) ; passer `options.scope` pour cibler une racine de contenu différente (par ex. `.vp-doc`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Extra-small viewport width for phone-sized previews."
+#~ msgstr "Largeur de fenêtre extra-petite pour les aperçus sur téléphone."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16018,9 +16174,9 @@ msgstr "Un bouton « voir en plein écran » visible au survol, superposé sur u
 #~ msgid "`[class*=\"-hidden-\"],[class*=\"-show-\"]` — Viewport- or container-width show/hide classes across a themed breakpoint scale."
 #~ msgstr "`[class*=\"-hidden-\"],[class*=\"-show-\"]` — Classes d'affichage/masquage selon la largeur du viewport ou du conteneur sur une échelle de points d'arrêt thématisée."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "`.instui-hidden-max-<bp>`/`-hidden-min-<bp>` hide by viewport width; `.instui-show-max-<bp>`/`-show-min-<bp>` are the inverse (hidden by default, shown only inside the range via `display: revert`); the `-cq-` variants react to a `.instui-container` ancestor's width instead, not the viewport's. Scale tiers `xs`/`sm`/`md`/`lg`/`xl` (sourced from the IR's tray-width component tokens) are each aliased to a long-form spelling (`x-small`–`x-large`) and a device name (`mobile`/`phablet`/`tablet`/`laptop`/`desktop`) — both deprecated in favor of the short name — plus the unscaled, themed `content`/`content-full-width` tiers (the main content area's max-width)."
+#~ msgid "`.instui-hidden-max-<bp>`/`-hidden-min-<bp>` hide by viewport width; `.instui-show-max-<bp>`/`-show-min-<bp>` are the inverse (hidden by default, shown only inside the range via `display: revert`); the `-cq-` variants react to a `.instui-container` ancestor's width instead, not the viewport's. Scale tiers `sm`/`md`/`lg`/`xl` mirror the IR's canonical breakpoint tokens, with a Pantoken-defined `xs` extension at `20em`; each is aliased to a long-form spelling (`x-small`–`x-large`) and a device name (`mobile`/`phablet`/`tablet`/`laptop`/`desktop`) — both deprecated in favor of the short name — plus the unscaled, themed `content`/`content-full-width` tiers (the main content area's max-width)."
 #~ msgstr "`.instui-hidden-max-&lt;bp&gt;`/`-hidden-min-&lt;bp&gt;` hide by viewport width; `.instui-show-max-&lt;bp&gt;`/`-show-min-&lt;bp&gt;` are the inverse (hidden by default, shown only inside the range via `display: revert`); the `-cq-` variants react to a `.instui-container` ancestor's width instead, not the viewport's. Scale tiers `xs`/`sm`/`md`/`lg`/`xl` (sourced from the IR's tray-width component tokens) are each aliased to a long-form spelling (`x-small`–`x-large`) and a device name (`mobile`/`phablet`/`tablet`/`laptop`/`desktop`) — both deprecated in favor of the short name — plus the unscaled, themed `content`/`content-full-width` tiers (the main content area's max-width)."
 
 #, no-c-format
@@ -16048,30 +16204,30 @@ msgstr "Un bouton « voir en plein écran » visible au survol, superposé sur u
 #~ msgid "Hide when the marked container is at or below the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "Masquer lorsque le conteneur marqué est au point d'arrêt `content-full-width` ou en dessous (`98.75em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the marked container is at or below the `lg` breakpoint (`64em`)."
 #~ msgstr "Masquer lorsque le conteneur marqué est au point d'arrêt `lg` ou en dessous (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `md` breakpoint (`30em`)."
-#~ msgstr "Masquer lorsque le conteneur marqué est au point d'arrêt `md` ou en dessous (`30em`)."
+#~ msgid "Hide when the marked container is at or below the `md` breakpoint (`48em`)."
+#~ msgstr "Masquer lorsque le conteneur marqué est au point d'arrêt `lg` ou en dessous (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `sm` breakpoint (`20em`)."
+#~ msgid "Hide when the marked container is at or below the `sm` breakpoint (`30em`)."
 #~ msgstr "Masquer lorsque le conteneur marqué est au point d'arrêt `sm` ou en dessous (`20em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the marked container is at or below the `xl` breakpoint (`80em`)."
 #~ msgstr "Masquer lorsque le conteneur marqué est au point d'arrêt `xl` ou en dessous (`62em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `xs` breakpoint (`16em`)."
-#~ msgstr "Masquer lorsque le conteneur marqué est au point d'arrêt `xs` ou en dessous (`16em`)."
+#~ msgid "Hide when the marked container is at or below the `xs` breakpoint (`20em`)."
+#~ msgstr "Masquer lorsque le conteneur marqué est au point d'arrêt `sm` ou en dessous (`20em`)."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16083,30 +16239,30 @@ msgstr "Un bouton « voir en plein écran » visible au survol, superposé sur u
 #~ msgid "Hide when the marked container is at or above the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "Masquer lorsque le conteneur marqué est au point d'arrêt `content-full-width` ou au-dessus (`98.75em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the marked container is at or above the `lg` breakpoint (`64em`)."
 #~ msgstr "Masquer lorsque le conteneur marqué est au point d'arrêt `lg` ou au-dessus (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `md` breakpoint (`30em`)."
-#~ msgstr "Masquer lorsque le conteneur marqué est au point d'arrêt `md` ou au-dessus (`30em`)."
+#~ msgid "Hide when the marked container is at or above the `md` breakpoint (`48em`)."
+#~ msgstr "Masquer lorsque le conteneur marqué est au point d'arrêt `lg` ou au-dessus (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `sm` breakpoint (`20em`)."
+#~ msgid "Hide when the marked container is at or above the `sm` breakpoint (`30em`)."
 #~ msgstr "Masquer lorsque le conteneur marqué est au point d'arrêt `sm` ou au-dessus (`20em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the marked container is at or above the `xl` breakpoint (`80em`)."
 #~ msgstr "Masquer lorsque le conteneur marqué est au point d'arrêt `xl` ou au-dessus (`62em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `xs` breakpoint (`16em`)."
-#~ msgstr "Masquer lorsque le conteneur marqué est au point d'arrêt `xs` ou au-dessus (`16em`)."
+#~ msgid "Hide when the marked container is at or above the `xs` breakpoint (`20em`)."
+#~ msgstr "Masquer lorsque le conteneur marqué est au point d'arrêt `sm` ou au-dessus (`20em`)."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16118,30 +16274,30 @@ msgstr "Un bouton « voir en plein écran » visible au survol, superposé sur u
 #~ msgid "Show when the marked container is at or below the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "Afficher lorsque le conteneur marqué est au point d'arrêt `content-full-width` ou en dessous (`98.75em`) ; caché sinon."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or below the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "Afficher lorsque le conteneur marqué est au point d'arrêt `lg` ou en dessous (`48em`) ; caché sinon."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `md` breakpoint (`30em`); hidden otherwise."
-#~ msgstr "Afficher lorsque le conteneur marqué est au point d'arrêt `md` ou en dessous (`30em`) ; caché sinon."
+#~ msgid "Show when the marked container is at or below the `md` breakpoint (`48em`); hidden otherwise."
+#~ msgstr "Afficher lorsque le conteneur marqué est au point d'arrêt `lg` ou en dessous (`48em`) ; caché sinon."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or below the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "Afficher lorsque le conteneur marqué est au point d'arrêt `sm` ou en dessous (`20em`) ; caché sinon."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or below the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "Afficher lorsque le conteneur marqué est au point d'arrêt `xl` ou en dessous (`62em`) ; caché sinon."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `xs` breakpoint (`16em`); hidden otherwise."
-#~ msgstr "Afficher lorsque le conteneur marqué est au point d'arrêt `xs` ou en dessous (`16em`) ; caché sinon."
+#~ msgid "Show when the marked container is at or below the `xs` breakpoint (`20em`); hidden otherwise."
+#~ msgstr "Afficher lorsque le conteneur marqué est au point d'arrêt `sm` ou en dessous (`20em`) ; caché sinon."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16153,30 +16309,30 @@ msgstr "Un bouton « voir en plein écran » visible au survol, superposé sur u
 #~ msgid "Show when the marked container is at or above the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "Afficher lorsque le conteneur marqué est au point d'arrêt `content-full-width` ou au-dessus (`98.75em`) ; caché sinon."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or above the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "Afficher lorsque le conteneur marqué est au point d'arrêt `lg` ou au-dessus (`48em`) ; caché sinon."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `md` breakpoint (`30em`); hidden otherwise."
-#~ msgstr "Afficher lorsque le conteneur marqué est au point d'arrêt `md` ou au-dessus (`30em`) ; caché sinon."
+#~ msgid "Show when the marked container is at or above the `md` breakpoint (`48em`); hidden otherwise."
+#~ msgstr "Afficher lorsque le conteneur marqué est au point d'arrêt `lg` ou au-dessus (`48em`) ; caché sinon."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or above the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "Afficher lorsque le conteneur marqué est au point d'arrêt `sm` ou au-dessus (`20em`) ; caché sinon."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or above the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "Afficher lorsque le conteneur marqué est au point d'arrêt `xl` ou au-dessus (`62em`) ; caché sinon."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `xs` breakpoint (`16em`); hidden otherwise."
-#~ msgstr "Afficher lorsque le conteneur marqué est au point d'arrêt `xs` ou au-dessus (`16em`) ; caché sinon."
+#~ msgid "Show when the marked container is at or above the `xs` breakpoint (`20em`); hidden otherwise."
+#~ msgstr "Afficher lorsque le conteneur marqué est au point d'arrêt `sm` ou au-dessus (`20em`) ; caché sinon."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16188,24 +16344,29 @@ msgstr "Un bouton « voir en plein écran » visible au survol, superposé sur u
 #~ msgid "Hide when the viewport is at or below the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "Masquer lorsque le viewport est au point d'arrêt `content-full-width` ou en dessous (`98.75em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the viewport is at or below the `lg` breakpoint (`64em`)."
 #~ msgstr "Masquer lorsque le viewport est au point d'arrêt `lg` ou en dessous (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `md` breakpoint (`30em`)."
+#~ msgid "Hide when the viewport is at or below the `md` breakpoint (`48em`)."
+#~ msgstr "Masquer lorsque le viewport est au point d'arrêt `lg` ou en dessous (`48em`)."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the viewport is at or below the `sm` breakpoint (`30em`)."
 #~ msgstr "Masquer lorsque le viewport est au point d'arrêt `md` ou en dessous (`30em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the viewport is at or below the `xl` breakpoint (`80em`)."
 #~ msgstr "Masquer lorsque le viewport est au point d'arrêt `xl` ou en dessous (`62em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `xs` breakpoint (`16em`)."
+#~ msgid "Hide when the viewport is at or below the `xs` breakpoint (`20em`)."
 #~ msgstr "Masquer lorsque le viewport est au point d'arrêt `xs` ou en dessous (`16em`)."
 
 #, no-c-format
@@ -16218,30 +16379,30 @@ msgstr "Un bouton « voir en plein écran » visible au survol, superposé sur u
 #~ msgid "Hide when the viewport is at or above the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "Masquer lorsque le viewport est au point d'arrêt `content-full-width` ou au-dessus (`98.75em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the viewport is at or above the `lg` breakpoint (`64em`)."
 #~ msgstr "Masquer lorsque le viewport est au point d'arrêt `lg` ou au-dessus (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `md` breakpoint (`30em`)."
-#~ msgstr "Masquer lorsque le viewport est au point d'arrêt `md` ou au-dessus (`30em`)."
+#~ msgid "Hide when the viewport is at or above the `md` breakpoint (`48em`)."
+#~ msgstr "Masquer lorsque le viewport est au point d'arrêt `lg` ou au-dessus (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `sm` breakpoint (`20em`)."
+#~ msgid "Hide when the viewport is at or above the `sm` breakpoint (`30em`)."
 #~ msgstr "Masquer lorsque le viewport est au point d'arrêt `sm` ou au-dessus (`20em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the viewport is at or above the `xl` breakpoint (`80em`)."
 #~ msgstr "Masquer lorsque le viewport est au point d'arrêt `xl` ou au-dessus (`62em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `xs` breakpoint (`16em`)."
-#~ msgstr "Masquer lorsque le viewport est au point d'arrêt `xs` ou au-dessus (`16em`)."
+#~ msgid "Hide when the viewport is at or above the `xs` breakpoint (`20em`)."
+#~ msgstr "Masquer lorsque le viewport est au point d'arrêt `sm` ou au-dessus (`20em`)."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16253,29 +16414,29 @@ msgstr "Un bouton « voir en plein écran » visible au survol, superposé sur u
 #~ msgid "Show (inverse of `-hidden-min-content-full-width`) when the viewport is at or below the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "Afficher (inverse de `-hidden-min-content-full-width`) lorsque le viewport est au point d'arrêt `content-full-width` ou en dessous (`98.75em`) ; caché sinon."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-lg`) when the viewport is at or below the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-lg`) when the viewport is at or below the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "Afficher (inverse de `-hidden-min-lg`) lorsque la fenêtre d'affichage est à ou en dessous du point d'arrêt `lg` (`48em`) ; masqué sinon."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-md`) when the viewport is at or below the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-md`) when the viewport is at or below the `md` breakpoint (`48em`); hidden otherwise."
 #~ msgstr "Afficher (inverse de `-hidden-min-md`) lorsque la fenêtre d'affichage est à ou en dessous du point d'arrêt `md` (`30em`) ; masqué sinon."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-sm`) when the viewport is at or below the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-sm`) when the viewport is at or below the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "Afficher (inverse de `-hidden-min-sm`) lorsque la fenêtre d'affichage est à ou en dessous du point d'arrêt `sm` (`20em`) ; masqué sinon."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-xl`) when the viewport is at or below the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-xl`) when the viewport is at or below the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "Afficher (inverse de `-hidden-min-xl`) lorsque la fenêtre d'affichage est à ou en dessous du point d'arrêt `xl` (`62em`) ; masqué sinon."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-xs`) when the viewport is at or below the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-xs`) when the viewport is at or below the `xs` breakpoint (`20em`); hidden otherwise."
 #~ msgstr "Afficher (inverse de `-hidden-min-xs`) lorsque la fenêtre d'affichage est à ou en dessous du point d'arrêt `xs` (`16em`) ; masqué sinon."
 
 #, no-c-format
@@ -16288,29 +16449,29 @@ msgstr "Un bouton « voir en plein écran » visible au survol, superposé sur u
 #~ msgid "Show (inverse of `-hidden-max-content-full-width`) when the viewport is at or above the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "Afficher (inverse de `-hidden-max-content-full-width`) lorsque la fenêtre d'affichage est à ou au-dessus du point d'arrêt `content-full-width` (`98.75em`) ; masqué sinon."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-lg`) when the viewport is at or above the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-lg`) when the viewport is at or above the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "Afficher (inverse de `-hidden-max-lg`) lorsque la fenêtre d'affichage est à ou au-dessus du point d'arrêt `lg` (`48em`) ; masqué sinon."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-md`) when the viewport is at or above the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-md`) when the viewport is at or above the `md` breakpoint (`48em`); hidden otherwise."
 #~ msgstr "Afficher (inverse de `-hidden-max-md`) lorsque la fenêtre d'affichage est à ou au-dessus du point d'arrêt `md` (`30em`) ; masqué sinon."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-sm`) when the viewport is at or above the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-sm`) when the viewport is at or above the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "Afficher (inverse de `-hidden-max-sm`) lorsque la fenêtre d'affichage est à ou au-dessus du point d'arrêt `sm` (`20em`) ; masqué sinon."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-xl`) when the viewport is at or above the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-xl`) when the viewport is at or above the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "Afficher (inverse de `-hidden-max-xl`) lorsque la fenêtre d'affichage est à ou au-dessus du point d'arrêt `xl` (`62em`) ; masqué sinon."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-xs`) when the viewport is at or above the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-xs`) when the viewport is at or above the `xs` breakpoint (`20em`); hidden otherwise."
 #~ msgstr "Afficher (inverse de `-hidden-max-xs`) lorsque la fenêtre d'affichage est à ou au-dessus du point d'arrêt `xs` (`16em`) ; masqué sinon."
 
 #, no-c-format
@@ -16323,30 +16484,30 @@ msgstr "Un bouton « voir en plein écran » visible au survol, superposé sur u
 #~ msgid "The `content-full-width` breakpoint's value (`98.75em`, hand-authored, themed (not in the token IR)). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "La valeur du point d'arrêt `content-full-width` (`98.75em`, saisie manuellement, thématisée (non incluse dans l'IR des tokens)). La remplacer ne déplace pas vers le haut les seuils compilés `@media`/`@container`."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `lg` breakpoint's value (`48em`, mirrors `--instui-component-tray-width-lg`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `lg` breakpoint's value (`64em`, mirrors `--instui-breakpoints-lg`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "La valeur du point d'arrêt `lg` (`48em`, reflète `--instui-component-tray-width-lg`). La remplacer ne déplace pas vers le haut les seuils compilés `@media`/`@container`."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `md` breakpoint's value (`30em`, mirrors `--instui-component-tray-width-md`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `md` breakpoint's value (`48em`, mirrors `--instui-breakpoints-md`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "La valeur du point d'arrêt `md` (`30em`, reflète `--instui-component-tray-width-md`). La remplacer ne déplace pas vers le haut les seuils compilés `@media`/`@container`."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `sm` breakpoint's value (`20em`, mirrors `--instui-component-tray-width-sm`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `sm` breakpoint's value (`30em`, mirrors `--instui-breakpoints-sm`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "La valeur du point d'arrêt `sm` (`20em`, reflète `--instui-component-tray-width-sm`). La remplacer ne déplace pas vers le haut les seuils compilés `@media`/`@container`."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `xl` breakpoint's value (`62em`, mirrors `--instui-component-tray-width-xl`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `xl` breakpoint's value (`80em`, mirrors `--instui-breakpoints-xl`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "La valeur du point d'arrêt `xl` (`62em`, reflète `--instui-component-tray-width-xl`). La remplacer ne déplace pas vers le haut les seuils compilés `@media`/`@container`."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `xs` breakpoint's value (`16em`, mirrors `--instui-component-tray-width-xs`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
-#~ msgstr "La valeur du point d'arrêt `xs` (`16em`, reflète `--instui-component-tray-width-xs`). La remplacer ne déplace pas vers le haut les seuils compilés `@media`/`@container`."
+#~ msgid "The `xs` breakpoint's value (`20em`, hand-authored Pantoken extension (not in the token IR)). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgstr "La valeur du point d'arrêt `content` (`68.75em`, saisie manuellement, thématisée (non incluse dans l'IR des tokens)). La remplacer ne déplace pas vers le haut les seuils compilés `@media`/`@container`."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -18067,6 +18228,61 @@ msgstr "Un bouton « voir en plein écran » visible au survol, superposé sur u
 #~ msgctxt "docs.api:prose"
 #~ msgid "Utility actions at the end of the top row."
 #~ msgstr "Actions utilitaires à la fin de la rangée supérieure."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or below the `md` breakpoint (`30em`)."
+#~ msgstr "Masquer lorsque le conteneur marqué est au point d'arrêt `md` ou en dessous (`30em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or below the `xs` breakpoint (`16em`)."
+#~ msgstr "Masquer lorsque le conteneur marqué est au point d'arrêt `xs` ou en dessous (`16em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or above the `md` breakpoint (`30em`)."
+#~ msgstr "Masquer lorsque le conteneur marqué est au point d'arrêt `md` ou au-dessus (`30em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or above the `xs` breakpoint (`16em`)."
+#~ msgstr "Masquer lorsque le conteneur marqué est au point d'arrêt `xs` ou au-dessus (`16em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or below the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgstr "Afficher lorsque le conteneur marqué est au point d'arrêt `md` ou en dessous (`30em`) ; caché sinon."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or below the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgstr "Afficher lorsque le conteneur marqué est au point d'arrêt `xs` ou en dessous (`16em`) ; caché sinon."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or above the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgstr "Afficher lorsque le conteneur marqué est au point d'arrêt `md` ou au-dessus (`30em`) ; caché sinon."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or above the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgstr "Afficher lorsque le conteneur marqué est au point d'arrêt `xs` ou au-dessus (`16em`) ; caché sinon."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the viewport is at or above the `md` breakpoint (`30em`)."
+#~ msgstr "Masquer lorsque le viewport est au point d'arrêt `md` ou au-dessus (`30em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the viewport is at or above the `xs` breakpoint (`16em`)."
+#~ msgstr "Masquer lorsque le viewport est au point d'arrêt `xs` ou au-dessus (`16em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The `xs` breakpoint's value (`16em`, mirrors `--instui-component-tray-width-xs`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgstr "La valeur du point d'arrêt `xs` (`16em`, reflète `--instui-component-tray-width-xs`). La remplacer ne déplace pas vers le haut les seuils compilés `@media`/`@container`."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -28593,10 +28809,6 @@ msgstr "Un bouton « voir en plein écran » visible au survol, superposé sur u
 #~ msgctxt "docs.api:text"
 #~ msgid "byline"
 #~ msgstr "byline"
-
-#~ msgctxt "docs.api:text"
-#~ msgid "day"
-#~ msgstr "day"
 
 #~ msgctxt "docs.api:text"
 #~ msgid "card"

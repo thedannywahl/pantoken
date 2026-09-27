@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-26 17:27+0000\n"
+"PO-Revision-Date: 2026-09-27 00:56+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2323,6 +2323,30 @@ msgctxt "docs.api:prose"
 msgid "An [IconResolver](../../../../packages/core/src/type-aliases/IconResolver.md) backed by the pantoken icon set (for the plugin/rehype stages)."
 msgstr "یک [IconResolver](../../../../packages/core/src/type-aliases/IconResolver.md) که توسط مجموعه آیکون pantoken پشتیبانی می‌شود (برای مراحل plugin/rehype)."
 
+#: formats/inline-styles/src/functions/inlineHtml.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inline CSS rules into matching HTML elements without fetching external resources."
+msgstr "قواعد CSS را به‌صورت درون‌خطی در عناصر HTML متناظر اعمال کنید بدون اینکه منابع خارجی را بارگیری کنید."
+
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for inlining a stylesheet into an HTML document."
+msgstr "گزینه‌هایی برای درون‌خطی کردن یک stylesheet در یک سند HTML."
+
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Keep media-query and pseudo-class rules in a style element."
+msgstr "قوانین media-query و pseudo-class را در یک عنصر style نگه دارید."
+
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve custom-property references against declarations in the document."
+msgstr "ارجاعات custom-property را نسبت به اعلان‌ها در سند حل کنید."
+
 #: formats/interactions/src/functions/applySpacing.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -3542,9 +3566,9 @@ msgid "Run the `pantoken create <platform>` command, delegating to `@pantoken/sc
 msgstr "فرمان `pantoken create <platform>` را اجرا کنید، و آن را به `@pantoken/scaffold/cli` واگذار می‌کند."
 
 #: packages/cli/src/index.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Emits native and other non-npm design-token source into a consumer repo — the targets that don't\nfit the npm-package model. Supported now: `swift` (with an SPM `Package.swift` manifest stub, so\nregistry publishing is later a config flip), `android`, `compose`, `flutter`, `wordpress`,\n`vanilla`, `drupal`, `swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, and `mintlify`."
+msgid "Emits native and other non-npm design-token source into a consumer repo — the targets that don't\nfit the npm-package model. Supported now: `swift` (with an SPM `Package.swift` manifest stub, so\nregistry publishing is later a config flip), `android`, `compose`, `flutter`, `wordpress`,\n`vanilla`, `drupal`, `swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, `mintlify`, and\n`inline`, and `email`."
 msgstr "فایل‌های منبع توکن طراحی بومی و دیگر منابع غیر-npm را به یک مخزن مصرف‌کننده صادر می‌کند — اهدافی که با مدل بستهٔ npm مطابقت ندارند. در حال حاضر پشتیبانی‌شده: `swift` (با یک شِبه‌پروندهٔ manifest برای SPM `Package.swift`، بنابراین انتشار در رجیستری بعدها از طریق تغییر پیکربندی انجام خواهد شد)، `android`, `compose`, `flutter`, `wordpress`, `vanilla`, `drupal`, `swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, و `mintlify`."
 
 #: packages/cli/src/interfaces/CliArgs.md
@@ -5354,6 +5378,12 @@ msgctxt "docs.api:prose"
 msgid "**Inline a token into an email cell (light mode)**"
 msgstr "**توکن را به‌صورت درون‌خطی در یک سلول ایمیل قرار دهید (حالت روشن)**"
 
+#: platforms/email/src/functions/inlineEmailHtml.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inline resolved pantoken tokens and component CSS into HTML email markup."
+msgstr "توکن‌های pantoken حل‌شده و CSS مؤلفه را به‌صورت درون‌خطی در نشانه‌گذاری ایمیل HTML وارد کنید."
+
 #: platforms/email/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -5365,6 +5395,97 @@ msgstr "`@pantoken/email` — توکن‌های طراحی Instructure برای 
 msgctxt "docs.api:prose"
 msgid "Email clients don't support CSS custom properties and often strip `<style>`, so tokens are fully\nresolved to concrete values for inline styling. Colours are hex; dimensions keep their `px` units.\nIcons are excluded. `light`/`dark` maps are keyed by camelCased token name."
 msgstr "Email clients don't support CSS custom properties and often strip `&lt;style&gt;`, so tokens are fully\nresolved to concrete values for inline styling. Colours are hex; dimensions keep their `px` units.\nIcons are excluded. `light`/`dark` maps are keyed by camelCased token name."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for filtering component CSS for email output."
+msgstr "گزینه‌هایی برای فیلتر کردن CSS مؤلفه برای خروجی ایمیل."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Client capability profile. Defaults to `generic`."
+msgstr "پروفایل قابلیتِ کلاینت. مقدار پیش‌فرض `generic`."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component names to allow in addition to the default email-safe set."
+msgstr "نام‌های مؤلفه‌ای که علاوه بر مجموعهٔ پیش‌فرض ایمن برای ایمیل باید مجاز شوند."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component names to remove even when they are in the default or custom allowlist."
+msgstr "نام‌های مؤلفه‌ای که حتی اگر در فهرست مجاز پیش‌فرض یا سفارشی باشند باید حذف شوند."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for generating email-compatible HTML with pantoken styles."
+msgstr "گزینه‌هایی برای تولید HTML سازگار با ایمیل با استایل‌های pantoken."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Token theme to use. Defaults to `rebrand`."
+msgstr "پوسته‌ای که باید تولید شود (پیش‌فرض: `\"rebrand\"`)."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Color scheme to resolve. Defaults to `light`."
+msgstr "کدام حالت رنگ برای حل انتخاب شود (پیش‌فرض `\"light\"`)."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component class prefix. Defaults to `instui`."
+msgstr "پیش‌وند کلاس مؤلفه. مقدار پیش‌فرض `instui`."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Add generated rules for this custom brand color."
+msgstr "صیفی که یک رنگ برند سفارشی را انتخاب می‌کند."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Apply one of the plugin's shipped or custom color scales."
+msgstr "یکی از مقیاس‌های رنگی ارسال‌شده یا سفارشی پلاگین را اعمال کنید."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Retain pseudo-class and media-query rules in a style element. Defaults to `false`."
+msgstr "قوانین pseudo-class و media-query را در یک عنصر style نگه دارید. مقدار پیش‌فرض `false`."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Email client capability profile. Defaults to `generic`."
+msgstr "پروفایل قابلیتِ کلاینت ایمیل. مقدار پیش‌فرض `generic`."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component names to remove from the email output."
+msgstr "نام‌های مؤلفه‌ای که باید از خروجی ایمیل حذف شوند."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Additional caller-supplied CSS."
+msgstr "CSS اضافی تأمین‌شده توسط فراخواننده."
+
+#: platforms/email/src/type-aliases/EmailClient.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Supported email client capability profiles."
+msgstr "پروفایل‌های قابلیتِ کلاینت ایمیل پشتیبانی‌شده."
 
 #: platforms/email/src/variables/dark.md
 #, no-c-format
@@ -12125,12 +12246,22 @@ msgstr "یک دکمه شناور «نمایش تمام صفحه»، که هما�
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "`.instui-button-set` — A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
-#~ msgstr "`.instui-button-set` — یک ردیف دکمه‌ با درز (فلاش، بدون فاصله)، که تنها دو گوشهٔ بیرونی آن گرد شده‌اند."
+#~ msgid "`.breakpoints` — Extra-small viewport width for phone-sized previews."
+#~ msgstr "`.breakpoints` — عرض نماگاه بسیار کوچک برای پیش‌نمایش‌های اندازهٔ تلفن."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead."
+#~ msgid "Extra-small viewport width (20em / 320px)."
+#~ msgstr "عرض نماگاه بسیار کوچک (20em / 320px)."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "`.instui-button-set` — A non-wrapping, flush row of buttons joined by 1px seams, with only its outer two corners rounded."
+#~ msgstr "`.instui-button-set` — یک ردیف دکمه‌ با درز (فلاش، بدون فاصله)، که تنها دو گوشهٔ بیرونی آن گرد شده‌اند."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'\n  own border color (solid fills, whose border matches the fill, tint it with the label color).\n  `-without-seam` is group-only: it hides that seam so the buttons read as\n  one continuous control."
 #~ msgstr "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) تنظیم پیش‌فرضی برای هر فرزند\n  `.instui-button` که در آن دسته خود دارای مودیفایر نیست — کلاس مودیفایر خودِ دکمه همواره بر پیش‌فرض گروه برتری دارد. `-icon-*` همیشه به‌صورت هر-دکمه‌ای است؛ از گروه خوانده نمی‌شود. نام‌های مستعمل دکمه (`-ghost`, `-color-primary-inverse`)\n) به‌عنوان مودیفایر سطح‌گروه پشتیبانی نمی‌شوند — از جایگزین‌های رسمی‌شان\n  (`-color-tertiary`, `-on-color`)) استفاده کنید."
 
 #, no-c-format
@@ -12147,6 +12278,21 @@ msgstr "یک دکمه شناور «نمایش تمام صفحه»، که هما�
 #~ msgctxt "docs.api:prose"
 #~ msgid "Confirm"
 #~ msgstr "تأیید"
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Day"
+#~ msgstr "day"
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Week"
+#~ msgstr " هفته ۱"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Month"
+#~ msgstr "ماه"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -12237,6 +12383,11 @@ msgstr "یک دکمه شناور «نمایش تمام صفحه»، که هما�
 #~ msgctxt "docs.api:prose"
 #~ msgid "Default every unmodified child to no border."
 #~ msgstr "پیش‌فرض هر فرزند بدون مودیفایر را به حالت بدون حاشیه اختصاص دهید."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide the 1px seam between buttons."
+#~ msgstr "درز 1px بین دکمه‌ها را پنهان کنید."
 
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -12948,9 +13099,9 @@ msgstr "یک دکمه شناور «نمایش تمام صفحه»، که هما�
 #~ msgid "`.content` — The primary content pane that fills remaining space beside the tray."
 #~ msgstr "`.content` — پانل محتوای اصلی که فضای باقی‌مانده کنار سینی را پر می‌کند."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Once the parent's inline-size drops below `46em` (`16em` tray width + `30em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override."
+#~ msgid "Once the parent's inline-size drops below `64em` (`16em` tray width + `48em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override."
 #~ msgstr "زمانی که inline-size والد به کمتر از `46em` (عرض سینی `16em` + نقطه‌وقف `30em`) کاهش یابد، یک پرس‌وجوی `@container` روی کانتینر `pantoken-drawer-layout` والد مقدار `min-inline-size` این عضو را به‌طور خودکار به `0` کاهش می‌دهد، که با بازنویسی دستی `[should-overlay-tray]` مطابق است."
 
 #, no-c-format
@@ -13018,9 +13169,9 @@ msgstr "یک دکمه شناور «نمایش تمام صفحه»، که هما�
 #~ msgid "The side panel."
 #~ msgstr "پانل جانبی."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Width threshold for overlay mode (`30em`, themed via responsive utilities)."
+#~ msgid "Width threshold for overlay mode (`48em`, sourced from the responsive utility's canonical `md` breakpoint)."
 #~ msgstr "آستانه عرض برای حالت پوششی (`30em`، با تم از طریق ابزارهای پاسخگو)."
 
 #, no-c-format
@@ -13783,9 +13934,9 @@ msgstr "یک دکمه شناور «نمایش تمام صفحه»، که هما�
 #~ msgid "An accessible action control, styled from the token palette; primary by default."
 #~ msgstr "کنترل اقدام قابل دسترسی که از پالت توکن‌ها سبک‌دهی شده است؛ به‌طور پیش‌فرض اولیه."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
+#~ msgid "A non-wrapping, flush row of buttons joined by 1px seams, with only its outer two corners rounded."
 #~ msgstr "A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
 
 #, no-c-format
@@ -14212,6 +14363,11 @@ msgstr "یک دکمه شناور «نمایش تمام صفحه»، که هما�
 #~ msgctxt "docs.api:prose"
 #~ msgid "Typographic defaults for raw HTML — headings, paragraphs, lists, links, and code — applied automatically wherever it's imported (default `:where(body)`); pass `options.scope` to target a different content root instead (e.g. `.vp-doc`)."
 #~ msgstr "پیش‌فرض‌های تایپوگرافی برای HTML خام — سرفصل‌ها، پاراگراف‌ها، فهرست‌ها، لینک‌ها و کد — که به‌صورت خودکار هر جا وارد شود اعمال می‌شوند (پیش‌فرض `:where(body)`); از `options.scope` برای هدف‌گیری ریشه محتوای متفاوت استفاده کنید (مثلاً `.vp-doc`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Extra-small viewport width for phone-sized previews."
+#~ msgstr "عرض نماگاه بسیار کوچک برای پیش‌نمایش‌های اندازهٔ تلفن."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16018,9 +16174,9 @@ msgstr "یک دکمه شناور «نمایش تمام صفحه»، که هما�
 #~ msgid "`[class*=\"-hidden-\"],[class*=\"-show-\"]` — Viewport- or container-width show/hide classes across a themed breakpoint scale."
 #~ msgstr "`[class*=\"-hidden-\"],[class*=\"-show-\"]` — کلاس‌های نمایش/پنهان‌شدن بر اساس عرض نما (viewport) یا عرض کانتینر در مقیاس نقاط گسست themed."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "`.instui-hidden-max-<bp>`/`-hidden-min-<bp>` hide by viewport width; `.instui-show-max-<bp>`/`-show-min-<bp>` are the inverse (hidden by default, shown only inside the range via `display: revert`); the `-cq-` variants react to a `.instui-container` ancestor's width instead, not the viewport's. Scale tiers `xs`/`sm`/`md`/`lg`/`xl` (sourced from the IR's tray-width component tokens) are each aliased to a long-form spelling (`x-small`–`x-large`) and a device name (`mobile`/`phablet`/`tablet`/`laptop`/`desktop`) — both deprecated in favor of the short name — plus the unscaled, themed `content`/`content-full-width` tiers (the main content area's max-width)."
+#~ msgid "`.instui-hidden-max-<bp>`/`-hidden-min-<bp>` hide by viewport width; `.instui-show-max-<bp>`/`-show-min-<bp>` are the inverse (hidden by default, shown only inside the range via `display: revert`); the `-cq-` variants react to a `.instui-container` ancestor's width instead, not the viewport's. Scale tiers `sm`/`md`/`lg`/`xl` mirror the IR's canonical breakpoint tokens, with a Pantoken-defined `xs` extension at `20em`; each is aliased to a long-form spelling (`x-small`–`x-large`) and a device name (`mobile`/`phablet`/`tablet`/`laptop`/`desktop`) — both deprecated in favor of the short name — plus the unscaled, themed `content`/`content-full-width` tiers (the main content area's max-width)."
 #~ msgstr "`.instui-hidden-max-<bp>`/`-hidden-min-<bp>` با عرض نما پنهان می‌کنند؛ `.instui-show-max-<bp>`/`-show-min-<bp>` معکوس هستند (به‌صورت پیش‌فرض پنهان، تنها در محدوده با `display: revert` نشان داده می‌شوند)؛ و واریانت‌های `-cq-` به‌جای عرض نما، به عرض جدّ `.instui-container` اجدادی واکنش نشان می‌دهند. لایه‌های مقیاس `xs`/`sm`/`md`/`lg`/`xl` (منبع از توکن‌های component tray-width در IR) به هر یک یک نام بلند‌نویسیده (`x-small`–`x-large`) و یک نام دستگاه (`mobile`/`phablet`/`tablet`/`laptop`/`desktop`) منتسب شده — که هر دو در برابر نام کوتاه منسوخ‌شده‌اند — به‌علاوه لایه‌های بدون مقیاس و themed `content`/`content-full-width` (حداکثر عرض ناحیه محتوای اصلی)."
 
 #, no-c-format
@@ -16048,30 +16204,30 @@ msgstr "یک دکمه شناور «نمایش تمام صفحه»، که هما�
 #~ msgid "Hide when the marked container is at or below the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "پنهان کن وقتی کانتینر علامت‌گذاری‌شده در یا پایین نقطه‌گسست `content-full-width` (`98.75em`) باشد."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the marked container is at or below the `lg` breakpoint (`64em`)."
 #~ msgstr "پنهان کن وقتی کانتینر علامت‌گذاری‌شده در یا پایین نقطه‌گسست `lg` (`48em`) باشد."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `md` breakpoint (`30em`)."
-#~ msgstr "پنهان کن وقتی کانتینر علامت‌گذاری‌شده در یا پایین نقطه‌گسست `md` (`30em`) باشد."
+#~ msgid "Hide when the marked container is at or below the `md` breakpoint (`48em`)."
+#~ msgstr "پنهان کن وقتی کانتینر علامت‌گذاری‌شده در یا پایین نقطه‌گسست `lg` (`48em`) باشد."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `sm` breakpoint (`20em`)."
+#~ msgid "Hide when the marked container is at or below the `sm` breakpoint (`30em`)."
 #~ msgstr "پنهان کن وقتی کانتینر علامت‌گذاری‌شده در یا پایین نقطه‌گسست `sm` (`20em`) باشد."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the marked container is at or below the `xl` breakpoint (`80em`)."
 #~ msgstr "پنهان کن وقتی کانتینر علامت‌گذاری‌شده در یا پایین نقطه‌گسست `xl` (`62em`) باشد."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `xs` breakpoint (`16em`)."
-#~ msgstr "پنهان کن وقتی کانتینر علامت‌گذاری‌شده در یا پایین نقطه‌گسست `xs` (`16em`) باشد."
+#~ msgid "Hide when the marked container is at or below the `xs` breakpoint (`20em`)."
+#~ msgstr "پنهان کن وقتی کانتینر علامت‌گذاری‌شده در یا پایین نقطه‌گسست `sm` (`20em`) باشد."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16083,30 +16239,30 @@ msgstr "یک دکمه شناور «نمایش تمام صفحه»، که هما�
 #~ msgid "Hide when the marked container is at or above the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "پنهان کن وقتی کانتینر علامت‌گذاری‌شده در یا بالاتر از نقطه‌گسست `content-full-width` (`98.75em`) باشد."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the marked container is at or above the `lg` breakpoint (`64em`)."
 #~ msgstr "پنهان کن وقتی کانتینر علامت‌گذاری‌شده در یا بالاتر از نقطه‌گسست `lg` (`48em`) باشد."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `md` breakpoint (`30em`)."
-#~ msgstr "پنهان کن وقتی کانتینر علامت‌گذاری‌شده در یا بالاتر از نقطه‌گسست `md` (`30em`) باشد."
+#~ msgid "Hide when the marked container is at or above the `md` breakpoint (`48em`)."
+#~ msgstr "پنهان کن وقتی کانتینر علامت‌گذاری‌شده در یا بالاتر از نقطه‌گسست `lg` (`48em`) باشد."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `sm` breakpoint (`20em`)."
+#~ msgid "Hide when the marked container is at or above the `sm` breakpoint (`30em`)."
 #~ msgstr "پنهان کن وقتی کانتینر علامت‌گذاری‌شده در یا بالاتر از نقطه‌گسست `sm` (`20em`) باشد."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the marked container is at or above the `xl` breakpoint (`80em`)."
 #~ msgstr "پنهان کن وقتی کانتینر علامت‌گذاری‌شده در یا بالاتر از نقطه‌گسست `xl` (`62em`) باشد."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `xs` breakpoint (`16em`)."
-#~ msgstr "پنهان کن وقتی کانتینر علامت‌گذاری‌شده در یا بالاتر از نقطه‌گسست `xs` (`16em`) باشد."
+#~ msgid "Hide when the marked container is at or above the `xs` breakpoint (`20em`)."
+#~ msgstr "پنهان کن وقتی کانتینر علامت‌گذاری‌شده در یا بالاتر از نقطه‌گسست `sm` (`20em`) باشد."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16118,30 +16274,30 @@ msgstr "یک دکمه شناور «نمایش تمام صفحه»، که هما�
 #~ msgid "Show when the marked container is at or below the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "نمایش بده وقتی کانتینر علامت‌گذاری‌شده در یا پایین نقطه‌گسست `content-full-width` (`98.75em`) باشد؛ در غیر این صورت پنهان است."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or below the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "نمایش بده وقتی کانتینر علامت‌گذاری‌شده در یا پایین نقطه‌گسست `lg` (`48em`) باشد؛ در غیر این صورت پنهان است."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `md` breakpoint (`30em`); hidden otherwise."
-#~ msgstr "نمایش بده وقتی کانتینر علامت‌گذاری‌شده در یا پایین نقطه‌گسست `md` (`30em`) باشد؛ در غیر این صورت پنهان است."
+#~ msgid "Show when the marked container is at or below the `md` breakpoint (`48em`); hidden otherwise."
+#~ msgstr "نمایش بده وقتی کانتینر علامت‌گذاری‌شده در یا پایین نقطه‌گسست `lg` (`48em`) باشد؛ در غیر این صورت پنهان است."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or below the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "نمایش بده وقتی کانتینر علامت‌گذاری‌شده در یا پایین نقطه‌گسست `sm` (`20em`) باشد؛ در غیر این صورت پنهان است."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or below the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "نمایش بده وقتی کانتینر علامت‌گذاری‌شده در یا پایین نقطه‌گسست `xl` (`62em`) باشد؛ در غیر این صورت پنهان است."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `xs` breakpoint (`16em`); hidden otherwise."
-#~ msgstr "نمایش بده وقتی کانتینر علامت‌گذاری‌شده در یا پایین نقطه‌گسست `xs` (`16em`) باشد؛ در غیر این صورت پنهان است."
+#~ msgid "Show when the marked container is at or below the `xs` breakpoint (`20em`); hidden otherwise."
+#~ msgstr "نمایش بده وقتی کانتینر علامت‌گذاری‌شده در یا پایین نقطه‌گسست `sm` (`20em`) باشد؛ در غیر این صورت پنهان است."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16153,30 +16309,30 @@ msgstr "یک دکمه شناور «نمایش تمام صفحه»، که هما�
 #~ msgid "Show when the marked container is at or above the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "نمایش بده وقتی کانتینر علامت‌گذاری‌شده در یا بالاتر از نقطه‌گسست `content-full-width` (`98.75em`) باشد؛ در غیر این صورت پنهان است."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or above the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "نمایش بده وقتی کانتینر علامت‌گذاری‌شده در یا بالاتر از نقطه‌گسست `lg` (`48em`) باشد؛ در غیر این صورت پنهان است."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `md` breakpoint (`30em`); hidden otherwise."
-#~ msgstr "نمایش بده وقتی کانتینر علامت‌گذاری‌شده در یا بالاتر از نقطه‌گسست `md` (`30em`) باشد؛ در غیر این صورت پنهان است."
+#~ msgid "Show when the marked container is at or above the `md` breakpoint (`48em`); hidden otherwise."
+#~ msgstr "نمایش بده وقتی کانتینر علامت‌گذاری‌شده در یا بالاتر از نقطه‌گسست `lg` (`48em`) باشد؛ در غیر این صورت پنهان است."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or above the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "نمایش بده وقتی کانتینر علامت‌گذاری‌شده در یا بالاتر از نقطه‌گسست `sm` (`20em`) باشد؛ در غیر این صورت پنهان است."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or above the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "نمایش بده وقتی کانتینر علامت‌گذاری‌شده در یا بالاتر از نقطه‌گسست `xl` (`62em`) باشد؛ در غیر این صورت پنهان است."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `xs` breakpoint (`16em`); hidden otherwise."
-#~ msgstr "نمایش بده وقتی کانتینر علامت‌گذاری‌شده در یا بالاتر از نقطه‌گسست `xs` (`16em`) باشد؛ در غیر این صورت پنهان است."
+#~ msgid "Show when the marked container is at or above the `xs` breakpoint (`20em`); hidden otherwise."
+#~ msgstr "نمایش بده وقتی کانتینر علامت‌گذاری‌شده در یا بالاتر از نقطه‌گسست `sm` (`20em`) باشد؛ در غیر این صورت پنهان است."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16188,24 +16344,29 @@ msgstr "یک دکمه شناور «نمایش تمام صفحه»، که هما�
 #~ msgid "Hide when the viewport is at or below the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "پنهان کن وقتی نما (viewport) در یا پایین نقطه‌گسست `content-full-width` (`98.75em`) باشد."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the viewport is at or below the `lg` breakpoint (`64em`)."
 #~ msgstr "پنهان کن وقتی نما (viewport) در یا پایین نقطه‌گسست `lg` (`48em`) باشد."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `md` breakpoint (`30em`)."
+#~ msgid "Hide when the viewport is at or below the `md` breakpoint (`48em`)."
+#~ msgstr "پنهان کن وقتی نما (viewport) در یا پایین نقطه‌گسست `lg` (`48em`) باشد."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the viewport is at or below the `sm` breakpoint (`30em`)."
 #~ msgstr "پنهان کن وقتی نما (viewport) در یا پایین نقطه‌گسست `md` (`30em`) باشد."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the viewport is at or below the `xl` breakpoint (`80em`)."
 #~ msgstr "پنهان کن وقتی نما (viewport) در یا پایین نقطه‌گسست `xl` (`62em`) باشد."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `xs` breakpoint (`16em`)."
+#~ msgid "Hide when the viewport is at or below the `xs` breakpoint (`20em`)."
 #~ msgstr "پنهان کن وقتی نما (viewport) در یا پایین نقطه‌گسست `xs` (`16em`) باشد."
 
 #, no-c-format
@@ -16218,30 +16379,30 @@ msgstr "یک دکمه شناور «نمایش تمام صفحه»، که هما�
 #~ msgid "Hide when the viewport is at or above the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "پنهان کن وقتی نما (viewport) در یا بالاتر از نقطه‌گسست `content-full-width` (`98.75em`) باشد."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the viewport is at or above the `lg` breakpoint (`64em`)."
 #~ msgstr "پنهان کن وقتی نما (viewport) در یا بالاتر از نقطه‌گسست `lg` (`48em`) باشد."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `md` breakpoint (`30em`)."
-#~ msgstr "مخفی شود وقتی نما (viewport) در نقطهٔ شکست `md` یا بالاتر است (`30em`)."
+#~ msgid "Hide when the viewport is at or above the `md` breakpoint (`48em`)."
+#~ msgstr "پنهان کن وقتی نما (viewport) در یا بالاتر از نقطه‌گسست `lg` (`48em`) باشد."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `sm` breakpoint (`20em`)."
+#~ msgid "Hide when the viewport is at or above the `sm` breakpoint (`30em`)."
 #~ msgstr "مخفی شود وقتی نما (viewport) در نقطهٔ شکست `sm` یا بالاتر است (`20em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the viewport is at or above the `xl` breakpoint (`80em`)."
 #~ msgstr "مخفی شود وقتی نما (viewport) در نقطهٔ شکست `xl` یا بالاتر است (`62em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `xs` breakpoint (`16em`)."
-#~ msgstr "مخفی شود وقتی نما (viewport) در نقطهٔ شکست `xs` یا بالاتر است (`16em`)."
+#~ msgid "Hide when the viewport is at or above the `xs` breakpoint (`20em`)."
+#~ msgstr "مخفی شود وقتی نما (viewport) در نقطهٔ شکست `sm` یا بالاتر است (`20em`)."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16253,29 +16414,29 @@ msgstr "یک دکمه شناور «نمایش تمام صفحه»، که هما�
 #~ msgid "Show (inverse of `-hidden-min-content-full-width`) when the viewport is at or below the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "نمایش داده شود (معکوس `-hidden-min-content-full-width`) وقتی نما در نقطهٔ شکست `content-full-width` یا پایین‌تر است (`98.75em`)؛ در غیر این صورت مخفی."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-lg`) when the viewport is at or below the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-lg`) when the viewport is at or below the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "نمایش داده شود (معکوس `-hidden-min-lg`) وقتی نما در نقطهٔ شکست `lg` یا پایین‌تر است (`48em`)؛ در غیر این صورت مخفی."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-md`) when the viewport is at or below the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-md`) when the viewport is at or below the `md` breakpoint (`48em`); hidden otherwise."
 #~ msgstr "نمایش داده شود (معکوس `-hidden-min-md`) وقتی نما در نقطهٔ شکست `md` یا پایین‌تر است (`30em`)؛ در غیر این صورت مخفی."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-sm`) when the viewport is at or below the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-sm`) when the viewport is at or below the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "نمایش داده شود (معکوس `-hidden-min-sm`) وقتی نما در نقطهٔ شکست `sm` یا پایین‌تر است (`20em`)؛ در غیر این صورت مخفی."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-xl`) when the viewport is at or below the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-xl`) when the viewport is at or below the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "نمایش داده شود (معکوس `-hidden-min-xl`) وقتی نما در نقطهٔ شکست `xl` یا پایین‌تر است (`62em`)؛ در غیر این صورت مخفی."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-xs`) when the viewport is at or below the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-xs`) when the viewport is at or below the `xs` breakpoint (`20em`); hidden otherwise."
 #~ msgstr "نمایش داده شود (معکوس `-hidden-min-xs`) وقتی نما در نقطهٔ شکست `xs` یا پایین‌تر است (`16em`)؛ در غیر این صورت مخفی."
 
 #, no-c-format
@@ -16288,29 +16449,29 @@ msgstr "یک دکمه شناور «نمایش تمام صفحه»، که هما�
 #~ msgid "Show (inverse of `-hidden-max-content-full-width`) when the viewport is at or above the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "نمایش داده شود (معکوس `-hidden-max-content-full-width`) وقتی نما در نقطهٔ شکست `content-full-width` یا بالاتر است (`98.75em`)؛ در غیر این صورت مخفی."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-lg`) when the viewport is at or above the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-lg`) when the viewport is at or above the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "نمایش داده شود (معکوس `-hidden-max-lg`) وقتی نما در نقطهٔ شکست `lg` یا بالاتر است (`48em`)؛ در غیر این صورت مخفی."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-md`) when the viewport is at or above the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-md`) when the viewport is at or above the `md` breakpoint (`48em`); hidden otherwise."
 #~ msgstr "نمایش داده شود (معکوس `-hidden-max-md`) وقتی نما در نقطهٔ شکست `md` یا بالاتر است (`30em`)؛ در غیر این صورت مخفی."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-sm`) when the viewport is at or above the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-sm`) when the viewport is at or above the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "نمایش داده شود (معکوس `-hidden-max-sm`) وقتی نما در نقطهٔ شکست `sm` یا بالاتر است (`20em`)؛ در غیر این صورت مخفی."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-xl`) when the viewport is at or above the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-xl`) when the viewport is at or above the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "نمایش داده شود (معکوس `-hidden-max-xl`) وقتی نما در نقطهٔ شکست `xl` یا بالاتر است (`62em`)؛ در غیر این صورت مخفی."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-xs`) when the viewport is at or above the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-xs`) when the viewport is at or above the `xs` breakpoint (`20em`); hidden otherwise."
 #~ msgstr "نمایش داده شود (معکوس `-hidden-max-xs`) وقتی نما در نقطهٔ شکست `xs` یا بالاتر است (`16em`)؛ در غیر این صورت مخفی."
 
 #, no-c-format
@@ -16323,30 +16484,30 @@ msgstr "یک دکمه شناور «نمایش تمام صفحه»، که هما�
 #~ msgid "The `content-full-width` breakpoint's value (`98.75em`, hand-authored, themed (not in the token IR)). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "مقدار نقطهٔ شکست `content-full-width` (`98.75em`، دستی نوشته‌شده، دارای تم (در IR توکن نیست)). بازنویسی آن آستانه‌های کامپایل‌شدهٔ `@media`/`@container` را بالاتر نمی‌برد."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `lg` breakpoint's value (`48em`, mirrors `--instui-component-tray-width-lg`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `lg` breakpoint's value (`64em`, mirrors `--instui-breakpoints-lg`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "مقدار نقطهٔ شکست `lg` (`48em`، مشابه `--instui-component-tray-width-lg`). بازنویسی آن آستانه‌های کامپایل‌شدهٔ `@media`/`@container` را بالاتر نمی‌برد."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `md` breakpoint's value (`30em`, mirrors `--instui-component-tray-width-md`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `md` breakpoint's value (`48em`, mirrors `--instui-breakpoints-md`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "مقدار نقطهٔ شکست `md` (`30em`، مشابه `--instui-component-tray-width-md`). بازنویسی آن آستانه‌های کامپایل‌شدهٔ `@media`/`@container` را بالاتر نمی‌برد."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `sm` breakpoint's value (`20em`, mirrors `--instui-component-tray-width-sm`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `sm` breakpoint's value (`30em`, mirrors `--instui-breakpoints-sm`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "مقدار نقطهٔ شکست `sm` (`20em`، مشابه `--instui-component-tray-width-sm`). بازنویسی آن آستانه‌های کامپایل‌شدهٔ `@media`/`@container` را بالاتر نمی‌برد."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `xl` breakpoint's value (`62em`, mirrors `--instui-component-tray-width-xl`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `xl` breakpoint's value (`80em`, mirrors `--instui-breakpoints-xl`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "مقدار نقطهٔ شکست `xl` (`62em`، مشابه `--instui-component-tray-width-xl`). بازنویسی آن آستانه‌های کامپایل‌شدهٔ `@media`/`@container` را بالاتر نمی‌برد."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `xs` breakpoint's value (`16em`, mirrors `--instui-component-tray-width-xs`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
-#~ msgstr "مقدار نقطهٔ شکست `xs` (`16em`، مشابه `--instui-component-tray-width-xs`). بازنویسی آن آستانه‌های کامپایل‌شدهٔ `@media`/`@container` را بالاتر نمی‌برد."
+#~ msgid "The `xs` breakpoint's value (`20em`, hand-authored Pantoken extension (not in the token IR)). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgstr "مقدار نقطهٔ شکست `content` (`68.75em`، دستی نوشته‌شده، دارای تم (در IR توکن نیست)). بازنویسی آن آستانه‌های کامپایل‌شدهٔ `@media`/`@container` را بالاتر نمی‌برد."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -18067,6 +18228,61 @@ msgstr "یک دکمه شناور «نمایش تمام صفحه»، که هما�
 #~ msgctxt "docs.api:prose"
 #~ msgid "Utility actions at the end of the top row."
 #~ msgstr "اقدامات ابزار در انتهای ردیف بالایی."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or below the `md` breakpoint (`30em`)."
+#~ msgstr "پنهان کن وقتی کانتینر علامت‌گذاری‌شده در یا پایین نقطه‌گسست `md` (`30em`) باشد."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or below the `xs` breakpoint (`16em`)."
+#~ msgstr "پنهان کن وقتی کانتینر علامت‌گذاری‌شده در یا پایین نقطه‌گسست `xs` (`16em`) باشد."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or above the `md` breakpoint (`30em`)."
+#~ msgstr "پنهان کن وقتی کانتینر علامت‌گذاری‌شده در یا بالاتر از نقطه‌گسست `md` (`30em`) باشد."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or above the `xs` breakpoint (`16em`)."
+#~ msgstr "پنهان کن وقتی کانتینر علامت‌گذاری‌شده در یا بالاتر از نقطه‌گسست `xs` (`16em`) باشد."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or below the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgstr "نمایش بده وقتی کانتینر علامت‌گذاری‌شده در یا پایین نقطه‌گسست `md` (`30em`) باشد؛ در غیر این صورت پنهان است."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or below the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgstr "نمایش بده وقتی کانتینر علامت‌گذاری‌شده در یا پایین نقطه‌گسست `xs` (`16em`) باشد؛ در غیر این صورت پنهان است."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or above the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgstr "نمایش بده وقتی کانتینر علامت‌گذاری‌شده در یا بالاتر از نقطه‌گسست `md` (`30em`) باشد؛ در غیر این صورت پنهان است."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or above the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgstr "نمایش بده وقتی کانتینر علامت‌گذاری‌شده در یا بالاتر از نقطه‌گسست `xs` (`16em`) باشد؛ در غیر این صورت پنهان است."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the viewport is at or above the `md` breakpoint (`30em`)."
+#~ msgstr "مخفی شود وقتی نما (viewport) در نقطهٔ شکست `md` یا بالاتر است (`30em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the viewport is at or above the `xs` breakpoint (`16em`)."
+#~ msgstr "مخفی شود وقتی نما (viewport) در نقطهٔ شکست `xs` یا بالاتر است (`16em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The `xs` breakpoint's value (`16em`, mirrors `--instui-component-tray-width-xs`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgstr "مقدار نقطهٔ شکست `xs` (`16em`، مشابه `--instui-component-tray-width-xs`). بازنویسی آن آستانه‌های کامپایل‌شدهٔ `@media`/`@container` را بالاتر نمی‌برد."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -27763,10 +27979,6 @@ msgstr "یک دکمه شناور «نمایش تمام صفحه»، که هما�
 #~ msgctxt "docs.api:text"
 #~ msgid "byline"
 #~ msgstr "byline"
-
-#~ msgctxt "docs.api:text"
-#~ msgid "day"
-#~ msgstr "day"
 
 #~ msgctxt "docs.api:text"
 #~ msgid "card"

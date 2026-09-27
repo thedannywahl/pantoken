@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-26 17:30+0000\n"
+"PO-Revision-Date: 2026-09-27 00:57+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2323,6 +2323,30 @@ msgctxt "docs.api:prose"
 msgid "An [IconResolver](../../../../packages/core/src/type-aliases/IconResolver.md) backed by the pantoken icon set (for the plugin/rehype stages)."
 msgstr "[IconResolver](../../../../packages/core/src/type-aliases/IconResolver.md) המגובה על ידי מערך האייקונים של pantoken (לשלבי plugin/rehype)."
 
+#: formats/inline-styles/src/functions/inlineHtml.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inline CSS rules into matching HTML elements without fetching external resources."
+msgstr "הטמיע כללי CSS בתוך האלמנטים התואמים ב‑HTML מבלי לשלוף משאבים חיצוניים."
+
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for inlining a stylesheet into an HTML document."
+msgstr "אפשרויות להטמעת גיליון סגנונות בתוך מסמך HTML."
+
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Keep media-query and pseudo-class rules in a style element."
+msgstr "שמור על כללי media-query ו-pseudo-class בתוך אלמנט style."
+
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve custom-property references against declarations in the document."
+msgstr "פתור הפניות למשתני CSS בהתבסס על ההצהרות במסמך."
+
 #: formats/interactions/src/functions/applySpacing.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -3542,9 +3566,9 @@ msgid "Run the `pantoken create <platform>` command, delegating to `@pantoken/sc
 msgstr "Run the `pantoken create <platform>` פקודה, המפנה ל־`@pantoken/scaffold/cli`."
 
 #: packages/cli/src/index.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Emits native and other non-npm design-token source into a consumer repo — the targets that don't\nfit the npm-package model. Supported now: `swift` (with an SPM `Package.swift` manifest stub, so\nregistry publishing is later a config flip), `android`, `compose`, `flutter`, `wordpress`,\n`vanilla`, `drupal`, `swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, and `mintlify`."
+msgid "Emits native and other non-npm design-token source into a consumer repo — the targets that don't\nfit the npm-package model. Supported now: `swift` (with an SPM `Package.swift` manifest stub, so\nregistry publishing is later a config flip), `android`, `compose`, `flutter`, `wordpress`,\n`vanilla`, `drupal`, `swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, `mintlify`, and\n`inline`, and `email`."
 msgstr "מייצא מקורות design-token מקוריים ושאר מקורות שאינם npm לריפוזיטורי צרכן — היעדים שאינם\nמתאימים למודל חבילת npm. נתמכים כעת: `swift` (עם טיוטת מאניפסט SPM `Package.swift`, כך שפרסום ברגי׳סטרי יהפוך מאוחר יותר להחלפת תצורה), `android`, `compose`, `flutter`, `wordpress`, `vanilla`, `drupal`, `swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, ו`mintlify`."
 
 #: packages/cli/src/interfaces/CliArgs.md
@@ -5354,6 +5378,12 @@ msgctxt "docs.api:prose"
 msgid "**Inline a token into an email cell (light mode)**"
 msgstr "**הטמע טוקן בתוך תא דוא\"ל (מצב בהיר)**"
 
+#: platforms/email/src/functions/inlineEmailHtml.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inline resolved pantoken tokens and component CSS into HTML email markup."
+msgstr "הטמע טוקנים של pantoken ו-CSS של רכיבים בתוך סימון HTML של אימייל."
+
 #: platforms/email/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -5365,6 +5395,97 @@ msgstr "`@pantoken/email` — טוקני עיצוב של Instructure עבור ד
 msgctxt "docs.api:prose"
 msgid "Email clients don't support CSS custom properties and often strip `<style>`, so tokens are fully\nresolved to concrete values for inline styling. Colours are hex; dimensions keep their `px` units.\nIcons are excluded. `light`/`dark` maps are keyed by camelCased token name."
 msgstr "Email clients don't support CSS custom properties and often strip `&lt;style&gt;`, so tokens are fully\nresolved to concrete values for inline styling. Colours are hex; dimensions keep their `px` units.\nIcons are excluded. `light`/`dark` maps are keyed by camelCased token name."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for filtering component CSS for email output."
+msgstr "אפשרויות לסינון CSS של רכיבים עבור יצוא לאימייל."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Client capability profile. Defaults to `generic`."
+msgstr "פרופיל יכולות הלקוח. ברירת מחדל: `generic`."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component names to allow in addition to the default email-safe set."
+msgstr "שמות רכיבים לאפשר בנוסף לקבוצת ברירת המחדל הבטוחה לאימייל."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component names to remove even when they are in the default or custom allowlist."
+msgstr "שמות רכיבים להסרה גם כשהם ברשימת ההרשאה (ברירת מחדל או מותאמת)."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for generating email-compatible HTML with pantoken styles."
+msgstr "אפשרויות לייצור HTML תואם אימייל עם סגנונות pantoken."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Token theme to use. Defaults to `rebrand`."
+msgstr "ערכת הנושא להפקה (ברירת מחדל: `\"rebrand\"`)."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Color scheme to resolve. Defaults to `light`."
+msgstr "איזה מצב צבע לפתור (ברירת מחדל `\"light\"`)."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component class prefix. Defaults to `instui`."
+msgstr "קידומת למחלקת רכיב. ברירת מחדל: `instui`."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Add generated rules for this custom brand color."
+msgstr "תכונה שמבחרת צבע מותג מותאם אישית."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Apply one of the plugin's shipped or custom color scales."
+msgstr "החל אחד מסולמות הצבע שסופקו עם התוסף או סולם צבע מותאם."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Retain pseudo-class and media-query rules in a style element. Defaults to `false`."
+msgstr "השאר כללי pseudo-class ו-media-query בתוך אלמנט style. ברירת מחדל: `false`."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Email client capability profile. Defaults to `generic`."
+msgstr "פרופיל יכולות לקוח אימייל. ברירת מחדל: `generic`."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component names to remove from the email output."
+msgstr "שמות רכיבים להסרה מפלט האימייל."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Additional caller-supplied CSS."
+msgstr "CSS נוסף שמסופק על ידי המבקש."
+
+#: platforms/email/src/type-aliases/EmailClient.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Supported email client capability profiles."
+msgstr "פרופילי יכולות של לקוחות אימייל נתמכים."
 
 #: platforms/email/src/variables/dark.md
 #, no-c-format
@@ -12125,12 +12246,22 @@ msgstr "כפתור שניתן להרחיף מעליו \"view fullscreen\", המ�
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "`.instui-button-set` — A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
-#~ msgstr "`.instui-button-set` — שורה מחוברת (שווה, ללא רווחים) של כפתורים, כאשר רק שתי הפינות החיצוניות מעוגלות."
+#~ msgid "`.breakpoints` — Extra-small viewport width for phone-sized previews."
+#~ msgstr "`.breakpoints` — רוחב חלון תצוגה קטן במיוחד לתצוגות מקדימות בגודל טלפון."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead."
+#~ msgid "Extra-small viewport width (20em / 320px)."
+#~ msgstr "רוחב חלון תצוגה קטן במיוחד (20em / 320px)."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "`.instui-button-set` — A non-wrapping, flush row of buttons joined by 1px seams, with only its outer two corners rounded."
+#~ msgstr "`.instui-button-set` — שורה מחוברת (שווה, ללא רווחים) של כפתורים, כאשר רק שתי הפינות החיצוניות מעוגלות."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'\n  own border color (solid fills, whose border matches the fill, tint it with the label color).\n  `-without-seam` is group-only: it hides that seam so the buttons read as\n  one continuous control."
 #~ msgstr "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) קובעים ברירת מחדל לכל ילד\n  `.instui-button` שאינו נושא את המודיפייר שלו באותה קטגוריה — המודיפייר של כפתור תמיד מנצח על ברירת המחדל של הקבוצה. `-icon-*` הוא תמיד פר-כפתור; הוא\n  אף פעם לא נקרא מתוך הקבוצה. כינויים מיושנים של כפתורים (`-ghost`, `-color-primary-inverse`)\n) אינם נתמכים כמודיפיירים ברמת הקבוצה — השתמשו במקומם בהחלפות הקאנוניות שלהם\n  (`-color-tertiary`, `-on-color`))."
 
 #, no-c-format
@@ -12147,6 +12278,21 @@ msgstr "כפתור שניתן להרחיף מעליו \"view fullscreen\", המ�
 #~ msgctxt "docs.api:prose"
 #~ msgid "Confirm"
 #~ msgstr "אישור"
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Day"
+#~ msgstr "day"
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Week"
+#~ msgstr " שבוע 1"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Month"
+#~ msgstr "חודש"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -12237,6 +12383,11 @@ msgstr "כפתור שניתן להרחיף מעליו \"view fullscreen\", המ�
 #~ msgctxt "docs.api:prose"
 #~ msgid "Default every unmodified child to no border."
 #~ msgstr "הגדר כברירת מחדל כל ילד שלא שונה ללא מסגרת."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide the 1px seam between buttons."
+#~ msgstr "הסתר את התפר של 1px בין הכפתורים."
 
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -12948,9 +13099,9 @@ msgstr "כפתור שניתן להרחיף מעליו \"view fullscreen\", המ�
 #~ msgid "`.content` — The primary content pane that fills remaining space beside the tray."
 #~ msgstr "`.content` — חלונית התוכן הראשית שממלאת את שאר המקום לצד המגש."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Once the parent's inline-size drops below `46em` (`16em` tray width + `30em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override."
+#~ msgid "Once the parent's inline-size drops below `64em` (`16em` tray width + `48em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override."
 #~ msgstr "כאשר ה-inline-size של ההורה יורד מתחת ל-`46em` (`16em` רוחב המגש + `30em` נקודת שבירה), שאילתת `@container` על מיכל ה-`pantoken-drawer-layout` של ההורה תוריד אוטומטית את `min-inline-size` של חבר זה ל-`0`, בהתאמה עם ההחלפה הידנית `[should-overlay-tray]`."
 
 #, no-c-format
@@ -13018,9 +13169,9 @@ msgstr "כפתור שניתן להרחיף מעליו \"view fullscreen\", המ�
 #~ msgid "The side panel."
 #~ msgstr "הלוח הצדדי."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Width threshold for overlay mode (`30em`, themed via responsive utilities)."
+#~ msgid "Width threshold for overlay mode (`48em`, sourced from the responsive utility's canonical `md` breakpoint)."
 #~ msgstr "סף רוחב למצב שכבה חופפת (`30em`, מעוצב דרך עזרי תגובתיות)."
 
 #, no-c-format
@@ -13783,9 +13934,9 @@ msgstr "כפתור שניתן להרחיף מעליו \"view fullscreen\", המ�
 #~ msgid "An accessible action control, styled from the token palette; primary by default."
 #~ msgstr "בקרת פעולה ניתנת לנגישות, מעוצבת מתוך פלטת הטוקנים; ראשי כברירת מחדל."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
+#~ msgid "A non-wrapping, flush row of buttons joined by 1px seams, with only its outer two corners rounded."
 #~ msgstr "שורה מחוברת (שווה, ללא רווחים) של כפתורים, כאשר רק שתי הפינות החיצוניות מעוגלות."
 
 #, no-c-format
@@ -14212,6 +14363,11 @@ msgstr "כפתור שניתן להרחיף מעליו \"view fullscreen\", המ�
 #~ msgctxt "docs.api:prose"
 #~ msgid "Typographic defaults for raw HTML — headings, paragraphs, lists, links, and code — applied automatically wherever it's imported (default `:where(body)`); pass `options.scope` to target a different content root instead (e.g. `.vp-doc`)."
 #~ msgstr "הגדרות טיפוגרפיה ברירת מחדל ל-HTML גולמי — כותרות, פסקאות, רשימות, קישורים וקוד — מוחלות אוטומטית בכל מקום שמייבא אותן (ברירת מחדל `:where(body)`); העבר `options.scope` כדי לכוון לשורש תוכן אחר (למשל `.vp-doc`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Extra-small viewport width for phone-sized previews."
+#~ msgstr "רוחב חלון תצוגה קטן במיוחד לתצוגות מקדימות בגודל טלפון."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16018,9 +16174,9 @@ msgstr "כפתור שניתן להרחיף מעליו \"view fullscreen\", המ�
 #~ msgid "`[class*=\"-hidden-\"],[class*=\"-show-\"]` — Viewport- or container-width show/hide classes across a themed breakpoint scale."
 #~ msgstr "`[class*=\"-hidden-\"],[class*=\"-show-\"]` — מחלקות הצגה/הסתרה לפי רוחב התצוגה או המיכל על פני סקאלת נקודות שבירה עם ערכת נושא."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "`.instui-hidden-max-<bp>`/`-hidden-min-<bp>` hide by viewport width; `.instui-show-max-<bp>`/`-show-min-<bp>` are the inverse (hidden by default, shown only inside the range via `display: revert`); the `-cq-` variants react to a `.instui-container` ancestor's width instead, not the viewport's. Scale tiers `xs`/`sm`/`md`/`lg`/`xl` (sourced from the IR's tray-width component tokens) are each aliased to a long-form spelling (`x-small`–`x-large`) and a device name (`mobile`/`phablet`/`tablet`/`laptop`/`desktop`) — both deprecated in favor of the short name — plus the unscaled, themed `content`/`content-full-width` tiers (the main content area's max-width)."
+#~ msgid "`.instui-hidden-max-<bp>`/`-hidden-min-<bp>` hide by viewport width; `.instui-show-max-<bp>`/`-show-min-<bp>` are the inverse (hidden by default, shown only inside the range via `display: revert`); the `-cq-` variants react to a `.instui-container` ancestor's width instead, not the viewport's. Scale tiers `sm`/`md`/`lg`/`xl` mirror the IR's canonical breakpoint tokens, with a Pantoken-defined `xs` extension at `20em`; each is aliased to a long-form spelling (`x-small`–`x-large`) and a device name (`mobile`/`phablet`/`tablet`/`laptop`/`desktop`) — both deprecated in favor of the short name — plus the unscaled, themed `content`/`content-full-width` tiers (the main content area's max-width)."
 #~ msgstr "`.instui-hidden-max-<bp>`/`-hidden-min-<bp>` מסתירים לפי רוחב חלון התצוגה; `.instui-show-max-<bp>`/`-show-min-<bp>` הם ההפך (מוסתרים כברירת מחדל, יוצגו רק בתוך הטווח באמצעות `display: revert`); המוטציות `-cq-` מגיבות במקום זאת לרוחב אֵב קדמון `.instui-container`, לא לרוחב החלון. רמות הסקאלה `xs`/`sm`/`md`/`lg`/`xl` (נקבעות מטוקני רכיב tray-width שב‑IR) מקושרות גם לשם ארוך (`x-small`–`x-large`) ולשם מכשיר (`mobile`/`phablet`/`tablet`/`laptop`/`desktop`) — שניהם מיושנים לטובת השם הקצר — וכן לרמות הלא‑מוגדלות הממושמעות (`content`/`content-full-width`) (ה‑max‑width של אזור התוכן הראשי)."
 
 #, no-c-format
@@ -16048,30 +16204,30 @@ msgstr "כפתור שניתן להרחיף מעליו \"view fullscreen\", המ�
 #~ msgid "Hide when the marked container is at or below the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "להסתיר כאשר המיכל המסומן נמצא ב‑או מתחת לנקודת השבירה `content-full-width` (`98.75em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the marked container is at or below the `lg` breakpoint (`64em`)."
 #~ msgstr "להסתיר כאשר המיכל המסומן נמצא ב‑או מתחת לנקודת השבירה `lg` (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `md` breakpoint (`30em`)."
-#~ msgstr "להסתיר כאשר המיכל המסומן נמצא ב‑או מתחת לנקודת השבירה `md` (`30em`)."
+#~ msgid "Hide when the marked container is at or below the `md` breakpoint (`48em`)."
+#~ msgstr "להסתיר כאשר המיכל המסומן נמצא ב‑או מתחת לנקודת השבירה `lg` (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `sm` breakpoint (`20em`)."
+#~ msgid "Hide when the marked container is at or below the `sm` breakpoint (`30em`)."
 #~ msgstr "להסתיר כאשר המיכל המסומן נמצא ב‑או מתחת לנקודת השבירה `sm` (`20em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the marked container is at or below the `xl` breakpoint (`80em`)."
 #~ msgstr "להסתיר כאשר המיכל המסומן נמצא ב‑או מתחת לנקודת השבירה `xl` (`62em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `xs` breakpoint (`16em`)."
-#~ msgstr "להסתיר כאשר המיכל המסומן נמצא ב‑או מתחת לנקודת השבירה `xs` (`16em`)."
+#~ msgid "Hide when the marked container is at or below the `xs` breakpoint (`20em`)."
+#~ msgstr "להסתיר כאשר המיכל המסומן נמצא ב‑או מתחת לנקודת השבירה `sm` (`20em`)."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16083,30 +16239,30 @@ msgstr "כפתור שניתן להרחיף מעליו \"view fullscreen\", המ�
 #~ msgid "Hide when the marked container is at or above the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "להסתיר כאשר המיכל המסומן נמצא ב‑או מעל לנקודת השבירה `content-full-width` (`98.75em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the marked container is at or above the `lg` breakpoint (`64em`)."
 #~ msgstr "להסתיר כאשר המיכל המסומן נמצא ב‑או מעל לנקודת השבירה `lg` (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `md` breakpoint (`30em`)."
-#~ msgstr "להסתיר כאשר המיכל המסומן נמצא ב‑או מעל לנקודת השבירה `md` (`30em`)."
+#~ msgid "Hide when the marked container is at or above the `md` breakpoint (`48em`)."
+#~ msgstr "להסתיר כאשר המיכל המסומן נמצא ב‑או מעל לנקודת השבירה `lg` (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `sm` breakpoint (`20em`)."
+#~ msgid "Hide when the marked container is at or above the `sm` breakpoint (`30em`)."
 #~ msgstr "להסתיר כאשר המיכל המסומן נמצא ב‑או מעל לנקודת השבירה `sm` (`20em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the marked container is at or above the `xl` breakpoint (`80em`)."
 #~ msgstr "להסתיר כאשר המיכל המסומן נמצא ב‑או מעל לנקודת השבירה `xl` (`62em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `xs` breakpoint (`16em`)."
-#~ msgstr "להסתיר כאשר המיכל המסומן נמצא ב‑או מעל לנקודת השבירה `xs` (`16em`)."
+#~ msgid "Hide when the marked container is at or above the `xs` breakpoint (`20em`)."
+#~ msgstr "להסתיר כאשר המיכל המסומן נמצא ב‑או מעל לנקודת השבירה `sm` (`20em`)."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16118,30 +16274,30 @@ msgstr "כפתור שניתן להרחיף מעליו \"view fullscreen\", המ�
 #~ msgid "Show when the marked container is at or below the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "להציג כאשר המיכל המסומן נמצא ב‑או מתחת לנקודת השבירה `content-full-width` (`98.75em`); מוסתר אחרת."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or below the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "להציג כאשר המיכל המסומן נמצא ב‑או מתחת לנקודת השבירה `lg` (`48em`); מוסתר אחרת."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `md` breakpoint (`30em`); hidden otherwise."
-#~ msgstr "להציג כאשר המיכל המסומן נמצא ב‑או מתחת לנקודת השבירה `md` (`30em`); מוסתר אחרת."
+#~ msgid "Show when the marked container is at or below the `md` breakpoint (`48em`); hidden otherwise."
+#~ msgstr "להציג כאשר המיכל המסומן נמצא ב‑או מתחת לנקודת השבירה `lg` (`48em`); מוסתר אחרת."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or below the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "להציג כאשר המיכל המסומן נמצא ב‑או מתחת לנקודת השבירה `sm` (`20em`); מוסתר אחרת."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or below the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "להציג כאשר המיכל המסומן נמצא ב‑או מתחת לנקודת השבירה `xl` (`62em`); מוסתר אחרת."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `xs` breakpoint (`16em`); hidden otherwise."
-#~ msgstr "להציג כאשר המיכל המסומן נמצא ב‑או מתחת לנקודת השבירה `xs` (`16em`); מוסתר אחרת."
+#~ msgid "Show when the marked container is at or below the `xs` breakpoint (`20em`); hidden otherwise."
+#~ msgstr "להציג כאשר המיכל המסומן נמצא ב‑או מתחת לנקודת השבירה `sm` (`20em`); מוסתר אחרת."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16153,30 +16309,30 @@ msgstr "כפתור שניתן להרחיף מעליו \"view fullscreen\", המ�
 #~ msgid "Show when the marked container is at or above the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "להציג כאשר המיכל המסומן נמצא ב‑או מעל לנקודת השבירה `content-full-width` (`98.75em`); מוסתר אחרת."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or above the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "להציג כאשר המיכל המסומן נמצא ב‑או מעל לנקודת השבירה `lg` (`48em`); מוסתר אחרת."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `md` breakpoint (`30em`); hidden otherwise."
-#~ msgstr "להציג כאשר המיכל המסומן נמצא ב‑או מעל לנקודת השבירה `md` (`30em`); מוסתר אחרת."
+#~ msgid "Show when the marked container is at or above the `md` breakpoint (`48em`); hidden otherwise."
+#~ msgstr "להציג כאשר המיכל המסומן נמצא ב‑או מעל לנקודת השבירה `lg` (`48em`); מוסתר אחרת."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or above the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "להציג כאשר המיכל המסומן נמצא ב‑או מעל לנקודת השבירה `sm` (`20em`); מוסתר אחרת."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or above the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "להציג כאשר המיכל המסומן נמצא ב‑או מעל לנקודת השבירה `xl` (`62em`); מוסתר אחרת."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `xs` breakpoint (`16em`); hidden otherwise."
-#~ msgstr "להציג כאשר המיכל המסומן נמצא ב‑או מעל לנקודת השבירה `xs` (`16em`); מוסתר אחרת."
+#~ msgid "Show when the marked container is at or above the `xs` breakpoint (`20em`); hidden otherwise."
+#~ msgstr "להציג כאשר המיכל המסומן נמצא ב‑או מעל לנקודת השבירה `sm` (`20em`); מוסתר אחרת."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16188,24 +16344,29 @@ msgstr "כפתור שניתן להרחיף מעליו \"view fullscreen\", המ�
 #~ msgid "Hide when the viewport is at or below the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "להסתיר כאשר חלון התצוגה נמצא ב‑או מתחת לנקודת השבירה `content-full-width` (`98.75em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the viewport is at or below the `lg` breakpoint (`64em`)."
 #~ msgstr "להסתיר כאשר חלון התצוגה נמצא ב‑או מתחת לנקודת השבירה `lg` (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `md` breakpoint (`30em`)."
+#~ msgid "Hide when the viewport is at or below the `md` breakpoint (`48em`)."
+#~ msgstr "להסתיר כאשר חלון התצוגה נמצא ב‑או מתחת לנקודת השבירה `lg` (`48em`)."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the viewport is at or below the `sm` breakpoint (`30em`)."
 #~ msgstr "להסתיר כאשר חלון התצוגה נמצא ב‑או מתחת לנקודת השבירה `md` (`30em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the viewport is at or below the `xl` breakpoint (`80em`)."
 #~ msgstr "להסתיר כאשר חלון התצוגה נמצא ב‑או מתחת לנקודת השבירה `xl` (`62em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `xs` breakpoint (`16em`)."
+#~ msgid "Hide when the viewport is at or below the `xs` breakpoint (`20em`)."
 #~ msgstr "להסתיר כאשר חלון התצוגה נמצא ב‑או מתחת לנקודת השבירה `xs` (`16em`)."
 
 #, no-c-format
@@ -16218,30 +16379,30 @@ msgstr "כפתור שניתן להרחיף מעליו \"view fullscreen\", המ�
 #~ msgid "Hide when the viewport is at or above the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "להסתיר כאשר חלון התצוגה נמצא ב‑או מעל לנקודת השבירה `content-full-width` (`98.75em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the viewport is at or above the `lg` breakpoint (`64em`)."
 #~ msgstr "להסתיר כאשר חלון התצוגה נמצא ב‑או מעל לנקודת השבירה `lg` (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `md` breakpoint (`30em`)."
-#~ msgstr "הסתר כאשר חלון התצוגה נמצא ב־או מעל נקודת השבירה `md` (`30em`)."
+#~ msgid "Hide when the viewport is at or above the `md` breakpoint (`48em`)."
+#~ msgstr "להסתיר כאשר חלון התצוגה נמצא ב‑או מעל לנקודת השבירה `lg` (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `sm` breakpoint (`20em`)."
+#~ msgid "Hide when the viewport is at or above the `sm` breakpoint (`30em`)."
 #~ msgstr "הסתר כאשר חלון התצוגה נמצא ב־או מעל נקודת השבירה `sm` (`20em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the viewport is at or above the `xl` breakpoint (`80em`)."
 #~ msgstr "הסתר כאשר חלון התצוגה נמצא ב־או מעל נקודת השבירה `xl` (`62em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `xs` breakpoint (`16em`)."
-#~ msgstr "הסתר כאשר חלון התצוגה נמצא ב־או מעל נקודת השבירה `xs` (`16em`)."
+#~ msgid "Hide when the viewport is at or above the `xs` breakpoint (`20em`)."
+#~ msgstr "הסתר כאשר חלון התצוגה נמצא ב־או מעל נקודת השבירה `sm` (`20em`)."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16253,29 +16414,29 @@ msgstr "כפתור שניתן להרחיף מעליו \"view fullscreen\", המ�
 #~ msgid "Show (inverse of `-hidden-min-content-full-width`) when the viewport is at or below the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "הצג (ההינך ההפוך של `-hidden-min-content-full-width`) כאשר חלון התצוגה נמצא ב־או מתחת לנקודת השבירה `content-full-width` (`98.75em`); מוסתר אחרת."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-lg`) when the viewport is at or below the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-lg`) when the viewport is at or below the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "הצג (ההינך ההפוך של `-hidden-min-lg`) כאשר חלון התצוגה נמצא ב־או מתחת לנקודת השבירה `lg` (`48em`); מוסתר אחרת."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-md`) when the viewport is at or below the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-md`) when the viewport is at or below the `md` breakpoint (`48em`); hidden otherwise."
 #~ msgstr "הצג (ההינך ההפוך של `-hidden-min-md`) כאשר חלון התצוגה נמצא ב־או מתחת לנקודת השבירה `md` (`30em`); מוסתר אחרת."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-sm`) when the viewport is at or below the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-sm`) when the viewport is at or below the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "הצג (ההינך ההפוך של `-hidden-min-sm`) כאשר חלון התצוגה נמצא ב־או מתחת לנקודת השבירה `sm` (`20em`); מוסתר אחרת."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-xl`) when the viewport is at or below the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-xl`) when the viewport is at or below the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "הצג (ההינך ההפוך של `-hidden-min-xl`) כאשר חלון התצוגה נמצא ב־או מתחת לנקודת השבירה `xl` (`62em`); מוסתר אחרת."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-xs`) when the viewport is at or below the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-xs`) when the viewport is at or below the `xs` breakpoint (`20em`); hidden otherwise."
 #~ msgstr "הצג (ההינך ההפוך של `-hidden-min-xs`) כאשר חלון התצוגה נמצא ב־או מתחת לנקודת השבירה `xs` (`16em`); מוסתר אחרת."
 
 #, no-c-format
@@ -16288,29 +16449,29 @@ msgstr "כפתור שניתן להרחיף מעליו \"view fullscreen\", המ�
 #~ msgid "Show (inverse of `-hidden-max-content-full-width`) when the viewport is at or above the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "הצג (ההפכי של `-hidden-max-content-full-width`) כאשר חלון התצוגה נמצא ב־או מעל נקודת השבירה `content-full-width` (`98.75em`); מוסתר אחרת."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-lg`) when the viewport is at or above the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-lg`) when the viewport is at or above the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "הצג (ההפכי של `-hidden-max-lg`) כאשר חלון התצוגה נמצא ב־או מעל נקודת השבירה `lg` (`48em`); מוסתר אחרת."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-md`) when the viewport is at or above the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-md`) when the viewport is at or above the `md` breakpoint (`48em`); hidden otherwise."
 #~ msgstr "הצג (ההפכי של `-hidden-max-md`) כאשר חלון התצוגה נמצא ב־או מעל נקודת השבירה `md` (`30em`); מוסתר אחרת."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-sm`) when the viewport is at or above the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-sm`) when the viewport is at or above the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "הצג (ההפכי של `-hidden-max-sm`) כאשר חלון התצוגה נמצא ב־או מעל נקודת השבירה `sm` (`20em`); מוסתר אחרת."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-xl`) when the viewport is at or above the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-xl`) when the viewport is at or above the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "הצג (ההפכי של `-hidden-max-xl`) כאשר חלון התצוגה נמצא ב־או מעל נקודת השבירה `xl` (`62em`); מוסתר אחרת."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-xs`) when the viewport is at or above the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-xs`) when the viewport is at or above the `xs` breakpoint (`20em`); hidden otherwise."
 #~ msgstr "הצג (ההפכי של `-hidden-max-xs`) כאשר חלון התצוגה נמצא ב־או מעל נקודת השבירה `xs` (`16em`); מוסתר אחרת."
 
 #, no-c-format
@@ -16323,30 +16484,30 @@ msgstr "כפתור שניתן להרחיף מעליו \"view fullscreen\", המ�
 #~ msgid "The `content-full-width` breakpoint's value (`98.75em`, hand-authored, themed (not in the token IR)). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "הערך של נקודת השבירה `content-full-width` (`98.75em`, נכתב ידנית, מעוצב בנושא (לא ב־token IR)). שינויו לא יזיז את הספים המוגדרים בקומפילציה `@media`/`@container` כלפי מעלה."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `lg` breakpoint's value (`48em`, mirrors `--instui-component-tray-width-lg`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `lg` breakpoint's value (`64em`, mirrors `--instui-breakpoints-lg`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "הערך של נקודת השבירה `lg` (`48em`, משקף את `--instui-component-tray-width-lg`). שינויו לא יזיז את הספים המוגדרים בקומפילציה `@media`/`@container` כלפי מעלה."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `md` breakpoint's value (`30em`, mirrors `--instui-component-tray-width-md`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `md` breakpoint's value (`48em`, mirrors `--instui-breakpoints-md`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "הערך של נקודת השבירה `md` (`30em`, משקף את `--instui-component-tray-width-md`). שינויו לא יזיז את הספים המוגדרים בקומפילציה `@media`/`@container` כלפי מעלה."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `sm` breakpoint's value (`20em`, mirrors `--instui-component-tray-width-sm`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `sm` breakpoint's value (`30em`, mirrors `--instui-breakpoints-sm`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "הערך של נקודת השבירה `sm` (`20em`, משקף את `--instui-component-tray-width-sm`). שינויו לא יזיז את הספים המוגדרים בקומפילציה `@media`/`@container` כלפי מעלה."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `xl` breakpoint's value (`62em`, mirrors `--instui-component-tray-width-xl`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `xl` breakpoint's value (`80em`, mirrors `--instui-breakpoints-xl`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "הערך של נקודת השבירה `xl` (`62em`, משקף את `--instui-component-tray-width-xl`). שינויו לא יזיז את הספים המוגדרים בקומפילציה `@media`/`@container` כלפי מעלה."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `xs` breakpoint's value (`16em`, mirrors `--instui-component-tray-width-xs`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
-#~ msgstr "הערך של נקודת השבירה `xs` (`16em`, משקף את `--instui-component-tray-width-xs`). שינויו לא יזיז את הספים המוגדרים בקומפילציה `@media`/`@container` כלפי מעלה."
+#~ msgid "The `xs` breakpoint's value (`20em`, hand-authored Pantoken extension (not in the token IR)). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgstr "הערך של נקודת השבירה `content` (`68.75em`, נכתב ידנית, מעוצב בנושא (לא ב־token IR)). שינויו לא יזיז את הספים המוגדרים בקומפילציה `@media`/`@container` כלפי מעלה."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -18067,6 +18228,61 @@ msgstr "כפתור שניתן להרחיף מעליו \"view fullscreen\", המ�
 #~ msgctxt "docs.api:prose"
 #~ msgid "Utility actions at the end of the top row."
 #~ msgstr "פעולות עזר בסוף השורה העליונה."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or below the `md` breakpoint (`30em`)."
+#~ msgstr "להסתיר כאשר המיכל המסומן נמצא ב‑או מתחת לנקודת השבירה `md` (`30em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or below the `xs` breakpoint (`16em`)."
+#~ msgstr "להסתיר כאשר המיכל המסומן נמצא ב‑או מתחת לנקודת השבירה `xs` (`16em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or above the `md` breakpoint (`30em`)."
+#~ msgstr "להסתיר כאשר המיכל המסומן נמצא ב‑או מעל לנקודת השבירה `md` (`30em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or above the `xs` breakpoint (`16em`)."
+#~ msgstr "להסתיר כאשר המיכל המסומן נמצא ב‑או מעל לנקודת השבירה `xs` (`16em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or below the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgstr "להציג כאשר המיכל המסומן נמצא ב‑או מתחת לנקודת השבירה `md` (`30em`); מוסתר אחרת."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or below the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgstr "להציג כאשר המיכל המסומן נמצא ב‑או מתחת לנקודת השבירה `xs` (`16em`); מוסתר אחרת."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or above the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgstr "להציג כאשר המיכל המסומן נמצא ב‑או מעל לנקודת השבירה `md` (`30em`); מוסתר אחרת."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or above the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgstr "להציג כאשר המיכל המסומן נמצא ב‑או מעל לנקודת השבירה `xs` (`16em`); מוסתר אחרת."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the viewport is at or above the `md` breakpoint (`30em`)."
+#~ msgstr "הסתר כאשר חלון התצוגה נמצא ב־או מעל נקודת השבירה `md` (`30em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the viewport is at or above the `xs` breakpoint (`16em`)."
+#~ msgstr "הסתר כאשר חלון התצוגה נמצא ב־או מעל נקודת השבירה `xs` (`16em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The `xs` breakpoint's value (`16em`, mirrors `--instui-component-tray-width-xs`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgstr "הערך של נקודת השבירה `xs` (`16em`, משקף את `--instui-component-tray-width-xs`). שינויו לא יזיז את הספים המוגדרים בקומפילציה `@media`/`@container` כלפי מעלה."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -27763,10 +27979,6 @@ msgstr "כפתור שניתן להרחיף מעליו \"view fullscreen\", המ�
 #~ msgctxt "docs.api:text"
 #~ msgid "byline"
 #~ msgstr "byline"
-
-#~ msgctxt "docs.api:text"
-#~ msgid "day"
-#~ msgstr "day"
 
 #~ msgctxt "docs.api:text"
 #~ msgid "card"
