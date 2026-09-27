@@ -12,7 +12,7 @@ import type { Theme, Token } from "@pantoken/model";
 import { inlineHtml } from "@pantoken/inline-styles/html";
 import { filterEmailCss, type EmailClient } from "./email-css.ts";
 
-export type { EmailClient, EmailCssOptions } from "./email-css.ts";
+export type { EmailClient } from "./email-css.ts";
 
 /** Options for generating email-compatible HTML with pantoken styles. */
 export interface InlineEmailHtmlOptions {
