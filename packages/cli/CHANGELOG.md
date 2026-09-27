@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 0.1.44
+
+### Patch Changes
+
+- b3cb818: Separate generic CSS inlining from email-safe pantoken HTML generation and add the email CLI target.
+- b3cb818: Add `pantoken generate inline` for inlining HTML files through the hoisted CLI interface.
+- Updated dependencies [b3cb818]
+- Updated dependencies [b3cb818]
+- Updated dependencies [b3cb818]
+  - @pantoken/inline-styles@0.1.1
+  - @pantoken/email@0.1.20
+  - @pantoken/scaffold@1.5.2
+
 ## 0.1.43
 
 ### Patch Changes

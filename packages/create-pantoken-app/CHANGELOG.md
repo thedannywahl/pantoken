@@ -1,5 +1,12 @@
 # create-pantoken-app
 
+## 1.1.6
+
+### Patch Changes
+
+- Updated dependencies [b3cb818]
+  - @pantoken/scaffold@1.5.2
+
 ## 1.1.5
 
 ### Patch Changes

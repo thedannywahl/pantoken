@@ -1,5 +1,11 @@
 # @pantoken/scope
 
+## 0.4.2
+
+### Patch Changes
+
+- b3cb818: Add package documentation for inline HTML styles and scoped theming.
+
 ## 0.4.1
 
 ### Patch Changes

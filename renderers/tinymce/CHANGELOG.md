@@ -1,5 +1,11 @@
 # @pantoken/tinymce
 
+## 0.4.1
+
+### Patch Changes
+
+- b3cb818: Refresh next-gen TinyMCE dark content colors to match pantoken.
+
 ## 0.4.0
 
 ### Minor Changes
