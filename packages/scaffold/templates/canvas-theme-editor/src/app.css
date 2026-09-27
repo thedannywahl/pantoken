@@ -511,17 +511,26 @@ body.canvas-rce-shell-enabled #app-mode {
 }
 
 :root[data-pantoken-scheme="dark"] {
-  .tox.tox {
-    border: var(--instui-border-width-sm) solid var(--instui-component-view-border-color-secondary);
+  .editor-pane {
+    .tox.tox {
+      border: var(--instui-border-width-sm) solid
+        var(--instui-component-view-border-color-secondary);
 
-    .tox-edit-area.tox-edit-area::before {
-      border: 2px solid var(--instui-focus-outline-color);
-      border-radius: 0;
-    }
+      .tox-edit-area.tox-edit-area::before {
+        border: 2px solid var(--instui-focus-outline-color);
+        border-radius: 0;
+      }
 
-    &:not(.tox-tinymce-inline) .tox-editor-header.tox-editor-header {
-      box-shadow: none;
-      border-bottom: 1px solid var(--instui-component-view-border-color-secondary);
+      &:not(.tox-tinymce-inline) .tox-editor-header.tox-editor-header {
+        box-shadow: none;
+        border-bottom: 1px solid var(--instui-component-view-border-color-secondary);
+      }
+
+      .tox-statusbar {
+        height: 33px;
+        border-top: var(--instui-border-width-sm) solid
+          var(--instui-component-view-border-color-secondary);
+      }
     }
   }
 }
