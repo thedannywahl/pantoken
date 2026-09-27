@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/inline-styles",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Inline CSS into HTML with Juice.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 1.3.3
+
+### Patch Changes
+
+- b3cb818: Update consumer agent guidance for generic HTML inlining and email-safe pantoken generation.
+- Updated dependencies [b3cb818]
+  - @pantoken/scaffold@1.5.2
+
 ## 1.3.2
 
 ### Patch Changes

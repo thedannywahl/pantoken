@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 0.2.24
+
+### Patch Changes
+
+- Updated dependencies [b3cb818]
+- Updated dependencies [b3cb818]
+- Updated dependencies [b3cb818]
+- Updated dependencies [b3cb818]
+  - @pantoken/email@0.1.20
+  - @pantoken/cli@0.1.44
+  - @pantoken/tinymce@0.4.1
+  - @pantoken/scope@0.4.2
+
 ## 0.2.23
 
 ### Patch Changes
