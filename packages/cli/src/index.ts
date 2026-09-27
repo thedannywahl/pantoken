@@ -5,7 +5,7 @@
  * fit the npm-package model. Supported now: `swift` (with an SPM `Package.swift` manifest stub, so
  * registry publishing is later a config flip), `android`, `compose`, `flutter`, `wordpress`,
  * `vanilla`, `drupal`, `swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, `mintlify`, and
- * `inline`.
+ * `inline`, and `email`.
  *
  * @module
  * @beta
@@ -27,7 +27,8 @@ import { generateSwift } from "@pantoken/swift";
 import { byTheme } from "@pantoken/tokens";
 import { toVanillaVariables } from "@pantoken/vanilla";
 import { toThemeJson } from "@pantoken/wordpress";
-import { inlinePantokenHtml } from "@pantoken/inline-styles/pantoken-html";
+import { inlineHtml } from "@pantoken/inline-styles/html";
+import { inlineEmailHtml, type EmailClient } from "@pantoken/email";
 import type { Theme } from "@pantoken/model";
 
 /** The parsed CLI invocation. */
@@ -37,6 +38,8 @@ export interface CliArgs {
   out: string;
   input?: string;
   output?: string;
+  css?: string;
+  client?: EmailClient;
   theme: Theme;
   className: string;
   /** Icon names to emit as native assets (from `--icons a,b,c`). */
@@ -67,6 +70,7 @@ const SUPPORTED = new Set([
   "hugo",
   "mintlify",
   "inline",
+  "email",
 ]);
 const PLANNED = new Set<string>();
 const VALID_THEMES = new Set(["rebrand", "canvas", "canvasHighContrast"]);
@@ -74,6 +78,8 @@ const KNOWN_FLAGS = new Set([
   "out",
   "input",
   "output",
+  "css",
+  "client",
   "theme",
   "class",
   "icons",
@@ -163,6 +169,8 @@ export function parseArgs(argv: readonly string[]): CliArgs {
     out: flags.out ?? "./pantoken-out",
     input: flags.input,
     output: flags.output,
+    css: flags.css,
+    client: flags.client as EmailClient | undefined,
     theme: theme as Theme,
     className,
     icons: flags.icons ? flags.icons.split(",").filter(Boolean) : undefined,
@@ -186,7 +194,7 @@ let package = Package(
 )
 `;
 
-/** Inline pantoken component styles into an HTML file. */
+/** Inline caller-supplied CSS into an HTML file. */
 function runInline(args: CliArgs): void {
   if (!args.input || !args.output) {
     throw new Error(
@@ -194,7 +202,24 @@ function runInline(args: CliArgs): void {
     );
   }
   const html = readFileSync(args.input, "utf8");
-  writeFileSync(args.output, inlinePantokenHtml(html, { theme: args.theme }));
+  const css = args.css ? readFileSync(args.css, "utf8") : "";
+  writeFileSync(args.output, inlineHtml(html, css));
+  console.log(`✓ pantoken: wrote ${args.output}`);
+}
+
+/** Inline email-safe pantoken styles into an HTML file. */
+function runEmail(args: CliArgs): void {
+  if (!args.input || !args.output) {
+    throw new Error(
+      'The "email" target requires -i/--input and -o/--output. Usage: pantoken generate email -i <file> -o <file>',
+    );
+  }
+  const html = readFileSync(args.input, "utf8");
+  const extraCss = args.css ? readFileSync(args.css, "utf8") : undefined;
+  writeFileSync(
+    args.output,
+    inlineEmailHtml(html, { theme: args.theme, client: args.client, extraCss }),
+  );
   console.log(`✓ pantoken: wrote ${args.output}`);
 }
 
@@ -578,6 +603,10 @@ Options:
   }
   if (args.target === "inline") {
     runInline(args);
+    return;
+  }
+  if (args.target === "email") {
+    runEmail(args);
     return;
   }
 }
