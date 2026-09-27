@@ -1,4 +1,5 @@
 /** Inline pantoken component styles for HTML email documents. @beta */
-export { inlinePantokenHtml as inlineEmailHtml } from "@pantoken/inline-styles/pantoken-html";
+export { inlineEmailHtml } from "./email-html.ts";
 /** Options for {@link inlineEmailHtml}. @beta */
-export type { PantokenHtmlOptions as InlineEmailHtmlOptions } from "@pantoken/inline-styles/pantoken-html";
+export type { InlineEmailHtmlOptions } from "./email-html.ts";
+export type { EmailClient, EmailCssOptions } from "./email-css.ts";

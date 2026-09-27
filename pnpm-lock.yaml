@@ -1163,21 +1163,6 @@ importers:
 
   formats/inline-styles:
     dependencies:
-      '@pantoken/components':
-        specifier: workspace:*
-        version: link:../components
-      '@pantoken/model':
-        specifier: workspace:*
-        version: link:../../packages/model
-      '@pantoken/plugin-custom-theme-colors':
-        specifier: workspace:*
-        version: link:../../plugins/pantoken/custom-theme-colors
-      '@pantoken/tokens':
-        specifier: workspace:*
-        version: link:../tokens
-      '@pantoken/utils':
-        specifier: workspace:*
-        version: link:../../packages/utils
       cheerio:
         specifier: 'catalog:'
         version: 1.2.0
@@ -1380,6 +1365,9 @@ importers:
       '@pantoken/drupal':
         specifier: workspace:*
         version: link:../../platforms/drupal
+      '@pantoken/email':
+        specifier: workspace:*
+        version: link:../../platforms/email
       '@pantoken/flutter':
         specifier: workspace:*
         version: link:../../platforms/flutter
@@ -1990,18 +1978,30 @@ importers:
 
   platforms/email:
     dependencies:
+      '@pantoken/components':
+        specifier: workspace:*
+        version: link:../../formats/components
       '@pantoken/inline-styles':
         specifier: workspace:*
         version: link:../../formats/inline-styles
       '@pantoken/model':
         specifier: workspace:*
         version: link:../../packages/model
+      '@pantoken/plugin-custom-theme-colors':
+        specifier: workspace:*
+        version: link:../../plugins/pantoken/custom-theme-colors
       '@pantoken/tokens':
         specifier: workspace:*
         version: link:../../formats/tokens
       '@pantoken/utils':
         specifier: workspace:*
         version: link:../../packages/utils
+      cheerio:
+        specifier: 'catalog:'
+        version: 1.2.0
+      postcss:
+        specifier: 'catalog:'
+        version: 8.5.28
     devDependencies:
       '@types/node':
         specifier: 'catalog:'

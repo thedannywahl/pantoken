@@ -11,6 +11,10 @@
 import { tokens } from "@pantoken/tokens";
 import { camelCase, resolveTokens } from "@pantoken/utils";
 
+export { inlineEmailHtml } from "./email-html.ts";
+export type { InlineEmailHtmlOptions } from "./email-html.ts";
+export type { EmailClient, EmailCssOptions } from "./email-css.ts";
+
 type Mode = "light" | "dark";
 
 function build(mode: Mode): Record<string, string> {
