@@ -25,7 +25,9 @@
 - shadcn registry: `shadcn search @pantoken`, `shadcn view @pantoken/<item>`, then `shadcn add
 	@pantoken/<item>`. Items install CSS/packages and usage metadata, not React components.
 - Standalone browser mockups: use the CDN guide, component capability manifest, demos, and optional
-	per-component interaction IIFEs. Sendable email uses concrete `@pantoken/email` values inline.
+	per-component interaction IIFEs. Sendable email uses `@pantoken/email` `inlineEmailHtml` or
+	`pantoken generate email`; generic HTML/CSS inlining uses `@pantoken/inline-styles` or
+	`pantoken generate inline`.
 
 ## Frameworks
 

@@ -22,8 +22,10 @@ Before selecting a package, classify the requested output:
 
 If “email mockup” is ambiguous, ask whether the file is a browser-opened visual prototype or HTML
 that will actually be sent through email clients. Browser mockups may use Pantoken CDN CSS and
-optional interaction scripts. Sendable email must use concrete inline `@pantoken/email` values and
-must not use component CSS, custom properties, scripts, or web components.
+optional interaction scripts. Sendable email should use `@pantoken/email`'s `inlineEmailHtml` or
+`pantoken generate email`, which resolve concrete values and apply an email-safe component policy.
+Do not use generic `@pantoken/components` CSS, custom properties, scripts, or web components in the
+final sendable markup.
 
 ## The token model
 
@@ -109,7 +111,8 @@ projects, keep using direct Pantoken packages, the CDN workflow, or platform gen
 **Native / other ecosystems (generated via CLI):** `pantoken generate <target>` where target is
 `swift`, `android`, `compose`, `flutter`, `rust`, `wordpress`, `vanilla`, `drupal`, `jekyll`, or
 `hugo`. Add `--icons a,b` to also emit icon assets, `--theme <name>`, `--out <dir>`, and for Rust
-`--format <egui|iced>`.
+`--format <egui|iced>`. For generic HTML/CSS inlining use `pantoken generate inline -i <file> -o
+<file>`; for email-safe output use `pantoken generate email -i <file> -o <file> --client <generic|outlook|gmail|webkit>`.
 
 **Design & interchange:** `@pantoken/dtcg` (W3C DTCG JSON), `@pantoken/scss` (SCSS vars),
 `@pantoken/figma` (Figma Variables payload), `@pantoken/email` (inline-friendly values).
@@ -128,6 +131,8 @@ projects, keep using direct Pantoken packages, the CDN workflow, or platform gen
 - **Tailwind:** add `pantokenPreset()` to `presets` and import `@pantoken/css`.
 - **Native app:** `npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark`.
 - **Rust app:** `npx pantoken generate rust --out ./src/tokens.rs --format egui`.
+- **Sendable email:** use `inlineEmailHtml(html, { client: "generic" })` from `@pantoken/email`, or
+  `pantoken generate email`; use `emailTokens()` only when interpolating individual token values.
 - **Push to Figma:** `toFigmaVariables(tokens)` → feed a Figma plugin / the Variables REST API.
 
 ## IDE integration
