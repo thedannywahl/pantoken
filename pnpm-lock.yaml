@@ -1163,9 +1163,6 @@ importers:
 
   formats/inline-styles:
     dependencies:
-      cheerio:
-        specifier: 'catalog:'
-        version: 1.2.0
       juice:
         specifier: 'catalog:'
         version: 12.2.0
