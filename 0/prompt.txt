@@ -926,3 +926,7 @@ pantoken on inline ≡  ~7 via  26.10.0
 pantoken on inline ≡  ~7 via  26.10.0 
 ➜  DOCS_API_REFRESH_CATALOG=1 vp run docs:api:en
 VITE+ - The Unified Toolchain for the Web
+
+---
+
+next we need to update the `@pantoken/ai` package.
