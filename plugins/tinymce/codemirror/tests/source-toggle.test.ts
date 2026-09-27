@@ -231,7 +231,7 @@ test("reacts to the data-pantoken-scheme attribute for dark mode theming", async
   document.documentElement.setAttribute("data-pantoken-scheme", "dark");
   await new Promise((resolve) => setTimeout(resolve, 0));
 
-  expect(container.style.backgroundColor).toBe("#1e1e1e");
+  expect(container.style.backgroundColor).toBe("#171b21");
   document.documentElement.removeAttribute("data-pantoken-scheme");
 });
 

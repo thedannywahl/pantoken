@@ -470,17 +470,27 @@ body.canvas-rce-shell-enabled #app-mode {
    flex:0 1 auto so it stays content-sized in stacked layout — flex:1 1 0 here would give it a
    flex-basis of 0 with no free space to grow into (the column has no fixed height), capping how
    tall TinyMCE's own resize handle can make it. Row layout restores equal-width sharing below. */
-:is(root[data-pantoken-scheme="dark"], :root[data-pantoken-scheme="light"]) .editor-pane {
+.editor-pane {
   flex: 0 1 auto;
   min-height: 25rem;
   min-width: 0;
 
-  .tox {
+  .tox.tox {
     border-width: var(--instui-border-width-sm);
     box-shadow: var(--instui-elevation-resting);
     border-color: var(--instui-component-view-border-color-secondary);
     border-radius: var(--instui-border-radius-container-md);
     background-color: var(--instui-color-background-container);
+
+    .tox-edit-area.tox-edit-area::before {
+      border: 2px solid var(--instui-focus-outline-color);
+      border-radius: 0;
+    }
+
+    &:not(.tox-tinymce-inline) .tox-editor-header.tox-editor-header {
+      box-shadow: none;
+      border-bottom: 1px solid var(--instui-component-view-border-color-secondary);
+    }
 
     &:is(
       :not(.tox-tinymce-inline) .tox-editor-header,
@@ -490,20 +500,28 @@ body.canvas-rce-shell-enabled #app-mode {
       .tox-toolbar__overflow
     ) {
       background-color: var(--instui-color-background-container);
-      box-shadow: none;
-      border-bottom: var(--instui-border-width-sm) solid
-        var(--instui-component-view-border-color-secondary);
-
-      .tox-edit-area::before {
-        border: 2px solid var(--instui-focus-outline-color);
-        border-radius: 0;
-      }
     }
 
     .tox-statusbar {
       height: 33px;
       border-top: var(--instui-border-width-sm) solid
         var(--instui-component-view-border-color-secondary);
+    }
+  }
+}
+
+:root[data-pantoken-scheme="dark"] {
+  .tox.tox {
+    border: var(--instui-border-width-sm) solid var(--instui-component-view-border-color-secondary);
+
+    .tox-edit-area.tox-edit-area::before {
+      border: 2px solid var(--instui-focus-outline-color);
+      border-radius: 0;
+    }
+
+    &:not(.tox-tinymce-inline) .tox-editor-header.tox-editor-header {
+      box-shadow: none;
+      border-bottom: 1px solid var(--instui-component-view-border-color-secondary);
     }
   }
 }

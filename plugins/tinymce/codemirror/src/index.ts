@@ -37,8 +37,8 @@ const MONOSPACE_FONT =
 
 const lightTheme = EditorView.theme({
   "&": {
-    backgroundColor: "#ffffff !important",
-    color: "#1e1e1e !important",
+    backgroundColor: "#F2F4F5 !important",
+    color: "#273540 !important",
     fontFamily: MONOSPACE_FONT,
   },
   ".cm-gutters": {
@@ -53,8 +53,8 @@ const lightTheme = EditorView.theme({
 const darkTheme = EditorView.theme(
   {
     "&": {
-      backgroundColor: "#1e1e1e !important",
-      color: "#d4d4d4 !important",
+      backgroundColor: "#171b21 !important",
+      color: "#F2F4F5 !important",
       fontFamily: MONOSPACE_FONT,
     },
     ".cm-gutters": {
@@ -92,7 +92,7 @@ const darkHighlighting = syntaxHighlighting(
   ]),
 );
 
-const CONTAINER_BACKGROUND = { light: "#ffffff", dark: "#1e1e1e" };
+const CONTAINER_BACKGROUND = { light: "#ffffff", dark: "#171b21" };
 const CONTAINER_BORDER = { light: "#cccccc", dark: "#444444" };
 
 function currentScheme(): "light" | "dark" {
