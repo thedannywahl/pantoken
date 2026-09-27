@@ -1,0 +1,47 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3G3Q2X04RWZ5BN0DVQPPKRP",
+  "session_id": "8d3cb066-d889-4125-a420-b1f8d85c23a2",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-27T00:19:54.453357Z",
+  "branch": "inline",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    ".changeset/email-inline-boundary.md",
+    "platforms/email/README.md",
+    "platforms/email/package.json",
+    "platforms/email/src/email-css.ts",
+    "platforms/email/src/email-html.ts",
+    "platforms/email/src/index.ts",
+    "platforms/email/src/inline.ts",
+    "platforms/email/tests/email-css.test.ts",
+    "pnpm-lock.yaml"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "3e701100e1c3",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 5
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-27T00:19:54.432732Z",
+    "agent_lines": 411,
+    "agent_removed": 25,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 411,
+    "total_lines_changed": 436,
+    "agent_percentage": 100,
+    "metric_version": 2
+  }
+}
