@@ -38,6 +38,7 @@ Turn the tokens into a file format.
 | [\`@pantoken/icons\`](/api/formats/icons/src/)           | An ergonomic view over the icon tokens.                                                                                                                                                                    |
 | [\`@pantoken/icon-font\`](/api/formats/icon-font/src/)   | An icon web font (TTF, WOFF2) plus its CSS.                                                                                                                                                                |
 | [\`@pantoken/components\`](/api/formats/components/src/) | An InstUI-look CSS component library (button, alert, table, and more) plus a base reset with focus ring, prose styling, cross-cutting utilities, and the brand fonts. See [Components](/guide/components). |
+| [\`@pantoken/inline-styles\`](/api/formats/inline-styles/src/) | Generic CSS-to-HTML inlining for platform integrations. |
 
 ## Renderers
 
