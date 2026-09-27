@@ -1,0 +1,928 @@
+make sure the inline-style package is fully ready for the i18n pipeline.
+
+---
+
+don't actually do any translation work, but make sure it's ready for me to do with a drift fix.
+
+---
+
+you're stuck in an interactive shell.
+
+---
+
+[Terminal 0b257258-586d-4e41-9da3-16e236eceb5d notification: command completed with exit code 130. The terminal has been cleaned up.]
+Terminal output:
+-outputs where the main declarations need to live on matching elements while pseudo-classes,
+-media queries, and similar fallbacks can remain in a `<style>` element.
++Inline CSS into HTML with Juice. This is the generic CSS-to-HTML engine used by platform packages;
++it does not resolve pantoken themes or generate component styles.
+ 
+ ## Install
+ 
+@@ -25,23 +24,18 @@ const html = inlineHtml(
+ );
+ ```
+ 
+-Inline a complete pantoken theme and component stylesheet:
++Inline caller-supplied CSS:
+ 
+ ```ts
+-import { inlinePantokenHtml } from "@pantoken/inline-styles/pantoken-html";
+-
+-const html = inlinePantokenHtml('<button class="instui-button">Save</button>', {
+-  theme: "canvas",
+-  mode: "dark",
+-  customColor: "#e62429",
+-  extraCss: ".notice { font-weight: 700; }",
+-});
++import { inlineHtml } from "@pantoken/inline-styles/html";
++
++const html = inlineHtml('<button class="action">Save</button>', ".action { color: red; }");
+ ```
+ 
+-Pantoken inlining resolves token references for the selected theme and color scheme, so the
+-resulting declarations do not depend on CSS custom properties. `inlineHtml` preserves fallback
+-rules by default; set `preserveFallbacks: false` to remove the retained `<style>` rules. Use
+-`resolveCSSVariables` when CSS variables should be resolved from document declarations.
++`inlineHtml` preserves fallback rules by default; set `preserveFallbacks: false` to remove retained
++`<style>` rules. Use `resolveCSSVariables` when CSS variables should be resolved from document
++declarations. HTML may also contain its own `<style>` blocks; pass additional CSS as the second
++argument when needed.
+ 
+ ## CLI
+ 
+@@ -51,25 +45,19 @@ Use the hoisted `pantoken` CLI to inline an HTML file:
+ pantoken generate inline -i page.html -o page.inlined.html
+ ```
+ 
+-The target accepts `-i, --input <file>` and `-o, --output <file>`, and supports the shared
+-`--theme <rebrand|canvas|canvasHighContrast>` option. The package also exposes the lower-level
+-`pantoken-inline` binary for direct use.
++The target accepts `-i, --input <file>`, `-o, --output <file>`, and optional `--css <file>`. For
++pantoken-aware, email-compatible output, use `pantoken generate email` from `@pantoken/cli` and
++`@pantoken/email`.
+ 
+ ## API
+ 
+ - **`inlineHtml(html, css, options?): string`** (from `@pantoken/inline-styles/html`) — inline
+   matching CSS declarations into an HTML string.
+ - **`InlineHtmlOptions`** — controls fallback preservation and CSS variable resolution.
+-- **`inlinePantokenHtml(html, options?): string`** (from
+-  `@pantoken/inline-styles/pantoken-html`) — inline resolved pantoken tokens, component styles,
+-  and optional custom CSS.
+-- **`PantokenHtmlOptions`** — selects the theme, mode, component prefix, color scale, custom color,
+-  fallback behavior, and additional CSS.
+ 
+ ## Related
+ 
+-- Pairs with `@pantoken/components` for the component stylesheet and `@pantoken/tokens` for the
+-  source token themes.
++- `@pantoken/email` owns pantoken theme resolution and email-safe component filtering.
+ - Use `@pantoken/css` when a stylesheet with custom properties is preferable to inline declarations.
+ 
+ ## License
+diff --git a/formats/inline-styles/package.json b/formats/inline-styles/package.json
+index 4a4138eb2..17e2b8468 100644
+--- a/formats/inline-styles/package.json
++++ b/formats/inline-styles/package.json
+@@ -1,7 +1,7 @@
+ {
+   "name": "@pantoken/inline-styles",
+   "version": "0.1.0",
+-  "description": "Inline CSS into HTML with pantoken styles.",
++  "description": "Inline CSS into HTML with Juice.",
+   "homepage": "https://pantoken.app",
+   "bugs": "https://github.com/thedannywahl/pantoken/issues",
+   "license": "MIT",
+@@ -22,7 +22,6 @@
+     ".": "./dist/index.mjs",
+     "./cli": "./dist/cli.mjs",
+     "./html": "./dist/html.mjs",
+-    "./pantoken-html": "./dist/pantoken-html.mjs",
+     "./package.json": "./package.json"
+   },
+   "publishConfig": {
+@@ -34,12 +33,6 @@
+     "check": "vp check"
+   },
+   "dependencies": {
+-    "@pantoken/components": "workspace:*",
+-    "@pantoken/model": "workspace:*",
+-    "@pantoken/plugin-custom-theme-colors": "workspace:*",
+-    "@pantoken/tokens": "workspace:*",
+-    "@pantoken/utils": "workspace:*",
+-    "cheerio": "catalog:",
+     "juice": "catalog:",
+     "postcss": "catalog:"
+   },
+diff --git a/formats/inline-styles/src/cli.ts b/formats/inline-styles/src/cli.ts
+index 6d85bbd4f..929761605 100644
+--- a/formats/inline-styles/src/cli.ts
++++ b/formats/inline-styles/src/cli.ts
+@@ -2,21 +2,7 @@
+ import { readFile, writeFile } from "node:fs/promises";
+ import { pathToFileURL } from "node:url";
+ import { parseArgs } from "node:util";
+-import type { Theme } from "@pantoken/model";
+-import { inlinePantokenHtml } from "./pantoken-html.ts";
+-
+-const THEMES: readonly Theme[] = ["rebrand", "canvas", "canvasHighContrast"];
+-
+-function parseTheme(value: string | undefined): Theme | undefined {
+-  if (value === undefined) return undefined;
+-  if (THEMES.includes(value as Theme)) return value as Theme;
+-  throw new Error(`Invalid theme "${value}". Choose rebrand, canvas, or canvasHighContrast.`);
+-}
+-
+-function parseMode(value: string | undefined): "light" | "dark" | undefined {
+-  if (value === undefined || value === "light" || value === "dark") return value;
+-  throw new Error(`Invalid mode "${value}". Choose light or dark.`);
+-}
++import { inlineHtml } from "./inline-html.ts";
+ 
+ /** Run the HTML inliner CLI. */
+ export async function runCli(args: string[] = process.argv.slice(2)): Promise<void> {
+@@ -26,35 +12,21 @@ export async function runCli(args: string[] = process.argv.slice(2)): Promise<vo
+       input: { type: "string", short: "i" },
+       output: { type: "string", short: "o" },
+       css: { type: "string", short: "c" },
+-      theme: { type: "string" },
+-      mode: { type: "string" },
+-      prefix: { type: "string" },
+-      "custom-color": { type: "string" },
+       help: { type: "boolean", short: "h" },
+     },
+     allowPositionals: false,
+   });
+-  const { input, output, css, help, theme, mode, prefix } = parsed.values;
+-  const customColor = parsed.values["custom-color"];
++  const { input, output, css, help } = parsed.values;
+ 
+   if (help) {
+     process.stdout.write(
+-      "Usage: pantoken-inline [--theme <name>] [--mode <light|dark>] [--prefix <name>] [--custom-color <hex>] [--css <file>] [--input <file>] [--output <file>]\n",
++      "Usage: pantoken-inline [--css <file>] [--input <file>] [--output <file>]\n",
+     );
+     return;
+   }
+-  const selectedTheme = parseTheme(theme);
+-  const selectedMode = parseMode(mode);
+-
+   const html = input ? await readFile(input, "utf8") : await readStdin();
+   const extraCss = css ? await readFile(css, "utf8") : undefined;
+-  const result = inlinePantokenHtml(html, {
+-    theme: selectedTheme,
+-    mode: selectedMode,
+-    prefix,
+-    customColor,
+-    extraCss,
+-  });
++  const result = inlineHtml(html, extraCss ?? "");
+ 
+   if (output) {
+     await writeFile(output, result);
+diff --git a/formats/inline-styles/src/index.ts b/formats/inline-styles/src/index.ts
+index 0fe8d3a39..603ee14a8 100644
+--- a/formats/inline-styles/src/index.ts
++++ b/formats/inline-styles/src/index.ts
+@@ -1,4 +1,2 @@
+ /** Options for HTML CSS inlining. @beta */
+ export type { InlineHtmlOptions } from "./inline-html.ts";
+-/** Options for inlining pantoken component styles. @beta */
+-export type { PantokenHtmlOptions } from "./pantoken-html.ts";
+diff --git a/formats/inline-styles/src/pantoken-html.ts b/formats/inline-styles/src/pantoken-html.ts
+deleted file mode 100644
+index 3a29d4558..000000000
+--- a/formats/inline-styles/src/pantoken-html.ts
++++ /dev/null
+@@ -1,123 +0,0 @@
+-import { componentsCss } from "@pantoken/components";
+-import { load } from "cheerio";
+-import {
+-  COLOR_KEYS,
+-  CUSTOM_COLOR_KEY,
+-  customThemeColorsCss,
+-  type PantokenColorNamespace,
+-} from "@pantoken/plugin-custom-theme-colors";
+-import { byTheme } from "@pantoken/tokens";
+-import { resolveTokens } from "@pantoken/utils";
+-import type { Theme, Token } from "@pantoken/model";
+-import { inlineHtml } from "./inline-html.ts";
+-
+-/** Options for inlining pantoken component styles. */
+-export interface PantokenHtmlOptions {
+-  /** Token theme to use. Defaults to `rebrand`. */
+-  theme?: Theme;
+-  /** Color scheme to resolve. Defaults to `light`. */
+-  mode?: "light" | "dark";
+-  /** Component class prefix. Defaults to `instui`. */
+-  prefix?: string | null;
+-  /** Add generated rules for this custom brand color. */
+-  customColor?: string;
+-  /** Apply one of the plugin's shipped or custom color scales. */
+-  color?: PantokenColorNamespace;
+-  /** Retain pseudo-class and media-query rules in a style element. */
+-  preserveFallbacks?: boolean;
+-  /** Additional caller-supplied CSS. */
+-  extraCss?: string;
+-}
+-
+-function modeValue(value: string, mode: "light" | "dark"): string {
+-  const prefix = "light-dark(";
+-  const start = value.indexOf(prefix);
+-  if (start < 0) return value;
+-
+-  let depth = 1;
+-  let comma = -1;
+-  let end = -1;
+-  for (let index = start + prefix.length; index < value.length; index += 1) {
+-    if (value[index] === "(") depth += 1;
+-    else if (value[index] === ")") {
+-      depth -= 1;
+-      if (depth === 0) {
+-        end = index;
+-        break;
+-      }
+-    } else if (value[index] === "," && depth === 1 && comma < 0) {
+-      comma = index;
+-    }
+-  }
+-  if (comma < 0 || end < 0) return value;
+-
+-  const selected =
+-    mode === "light" ? value.slice(start + prefix.length, comma) : value.slice(comma + 1, end);
+-  return `${value.slice(0, start)}${modeValue(selected.trim(), mode)}${value.slice(end + 1)}`;
+-}
+-
+-function resolvedThemeTokens(
+-  theme: Theme,
+-  mode: "light" | "dark",
+-): {
+-  tokens: Token[];
+-  resolved: Map<string, string>;
+-} {
+-  const tokens = byTheme(theme).map((token) => ({
+-    ...token,
+-    value: modeValue(token.value, mode),
+-    flatValue: token.flatValue ? modeValue(token.flatValue, mode) : undefined,
+-  }));
+-  return { tokens, resolved: resolveTokens(tokens) };
+-}
+-
+-function tokenStylesheet(tokens: readonly Token[], resolved: Map<string, string>): string {
+-  const declarations = tokens
+-    .map((token) => `  ${token.name}: ${resolved.get(token.name) ?? token.value};`)
+-    .join("\n");
+-  return `:root {\n${declarations}\n}`;
+-}
+-
+-function markColorScope(html: string, color: PantokenColorNamespace): string {
+-  const $ = load(html, {}, false);
+-  const documentRoot = $("html").first();
+-  const roots = documentRoot.length
+-    ? documentRoot
+-    : $.root()
+-        .children()
+-        .filter((_, node) => node.type === "tag");
+-  roots.attr("data-pantoken-color", color);
+-  return $.html();
+-}
+-
+-/** Inline pantoken tokens and component CSS into matching HTML elements. */
+-export function inlinePantokenHtml(html: string, options: PantokenHtmlOptions = {}): string {
+-  const {
+-    theme = "rebrand",
+-    mode = "light",
+-    prefix = "instui",
+-    customColor,
+-    color,
+-    preserveFallbacks = false,
+-    extraCss = "",
+-  } = options;
+-  const activeColor = color ?? (customColor ? CUSTOM_COLOR_KEY : undefined);
+-  if (activeColor && activeColor !== CUSTOM_COLOR_KEY && !COLOR_KEYS.includes(activeColor)) {
+-    throw new Error(`Unknown pantoken color scale: ${activeColor}`);
+-  }
+-  if (activeColor === CUSTOM_COLOR_KEY && !customColor) {
+-    throw new Error('The "custom" color scale requires a customColor hex value.');
+-  }
+-  const { tokens, resolved } = resolvedThemeTokens(theme, mode);
+-  const css = [
+-    tokenStylesheet(tokens, resolved),
+-    customThemeColorsCss(resolved, { custom: customColor, selector: "" }),
+-    componentsCss({ theme, prefix }),
+-    extraCss,
+-  ].join("\n");
+-
+-  return inlineHtml(activeColor ? markColorScope(html, activeColor) : html, css, {
+-    resolveCSSVariables: true,
+-    preserveFallbacks,
+-  });
+-}
+diff --git a/formats/inline-styles/tests/inline-html.test.ts b/formats/inline-styles/tests/inline-html.test.ts
+index 07b3eec2f..b6367f871 100644
+--- a/formats/inline-styles/tests/inline-html.test.ts
++++ b/formats/inline-styles/tests/inline-html.test.ts
+@@ -1,6 +1,5 @@
+ import { expect, test } from "vite-plus/test";
+ import { inlineHtml } from "../src/inline-html.ts";
+-import { inlinePantokenHtml } from "../src/pantoken-html.ts";
+ 
+ test("inlines matching rules and keeps pseudo-class fallbacks", () => {
+   const html = '<button class="action">Save</button>';
+@@ -31,31 +30,3 @@ test("flattens scoped component rules before inlining", () => {
+   expect(result).toContain('style="color: red;"');
+   expect(result).toContain(".action:hover");
+ });
+-
+-test("inlines resolved component declarations for all theme and mode combinations", () => {
+-  const themes = ["rebrand", "canvas", "canvasHighContrast"] as const;
+-  const modes = ["light", "dark"] as const;
+-
+-  for (const theme of themes) {
+-    for (const mode of modes) {
+-      const html = '<html><body><button class="instui-button">Save</button></body></html>';
+-      const result = inlinePantokenHtml(html, { theme, mode });
+-      const style = result.match(/<button[^>]*style="([^"]*)"/u)?.[1];
+-
+-      expect(style).toContain("display: inline-flex");
+-      expect(style).not.toContain("var(");
+-      expect(result).not.toContain("<style");
+-    }
+-  }
+-});
+-
+-test("applies custom theme color remaps when the document selects custom", () => {
+-  const html = '<html><body><button class="instui-button">Save</button></body></html>';
+-  const base = inlinePantokenHtml(html);
+-  const custom = inlinePantokenHtml(html, { customColor: "#e62429" });
+-  const background = (result: string): string | undefined =>
+-    result.match(/<button[^>]*style="([^"]*)"/u)?.[1]?.match(/background: ([^;]+);/u)?.[1];
+-
+-  expect(background(custom)).not.toBe(background(base));
+-  expect(background(custom)).not.toContain("var(");
+-});
+diff --git a/formats/inline-styles/vite.config.ts b/formats/inline-styles/vite.config.ts
+index 9dc65294c..270d6efcd 100644
+--- a/formats/inline-styles/vite.config.ts
++++ b/formats/inline-styles/vite.config.ts
+@@ -6,7 +6,6 @@ export default extendBase({
+     entry: {
+       index: "src/index.ts",
+       html: "src/inline-html.ts",
+-      "pantoken-html": "src/pantoken-html.ts",
+       cli: "src/cli.ts",
+     },
+     exports: false,
+diff --git a/packages/cli/README.md b/packages/cli/README.md
+index 27616983b..8c92421bc 100644
+--- a/packages/cli/README.md
++++ b/packages/cli/README.md
+@@ -17,6 +17,7 @@ pantoken create react --dir ./my-app
+ pantoken add button
+ pantoken generate swift --out ./ios/DesignTokens --theme rebrand --class PanTokens
+ pantoken generate inline -i ./page.html -o ./page.inlined.html
++pantoken generate email -i ./page.html -o ./page.email.html --client gmail
+ ```
+ 
+ `pantoken add` delegates to the shadcn CLI and resolves bare names through the indexed `@pantoken`
+@@ -46,8 +47,8 @@ await run(["generate", "swift", "--out", "./ios/DesignTokens"]);
+ ## Targets
+ 
+ Supported now: `swift`, `android`, `compose`, `flutter`, `wordpress`, `vanilla`, `drupal`,
+-`swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, and `inline`. Each writes to its selected
+-output and logs the files it wrote.
++`swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, `inline`, and `email`. Each writes to
++its selected output and logs the files it wrote.
+ 
+ ## Flags
+ 
+@@ -61,6 +62,8 @@ output and logs the files it wrote.
+   `!important`, or token pruning.
+ - `-i, --input <file>` and `-o, --output <file>` — `inline` target: read an HTML file and write the
+   inlined result.
++- `--css <file>` — `inline` or `email`: add caller-supplied CSS.
++- `--client <generic|outlook|gmail|webkit>` — `email` target: select the email capability profile.
+ 
+ ## API
+ 
+diff --git a/packages/cli/package.json b/packages/cli/package.json
+index 0d2a68440..6bdd45609 100644
+--- a/packages/cli/package.json
++++ b/packages/cli/package.json
+@@ -36,6 +36,7 @@
+     "@pantoken/android": "workspace:*",
+     "@pantoken/compose": "workspace:*",
+     "@pantoken/drupal": "workspace:*",
++    "@pantoken/email": "workspace:*",
+     "@pantoken/flutter": "workspace:*",
+     "@pantoken/hugo": "workspace:*",
+     "@pantoken/inline-styles": "workspace:*",
+diff --git a/packages/cli/src/index.ts b/packages/cli/src/index.ts
+index ff3ee4091..97e326089 100644
+--- a/packages/cli/src/index.ts
++++ b/packages/cli/src/index.ts
+@@ -5,7 +5,7 @@
+  * fit the npm-package model. Supported now: `swift` (with an SPM `Package.swift` manifest stub, so
+  * registry publishing is later a config flip), `android`, `compose`, `flutter`, `wordpress`,
+  * `vanilla`, `drupal`, `swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, `mintlify`, and
+- * `inline`.
++ * `inline`, and `email`.
+  *
+  * @module
+  * @beta
+@@ -27,7 +27,8 @@ import { generateSwift } from "@pantoken/swift";
+ import { byTheme } from "@pantoken/tokens";
+ import { toVanillaVariables } from "@pantoken/vanilla";
+ import { toThemeJson } from "@pantoken/wordpress";
+-import { inlinePantokenHtml } from "@pantoken/inline-styles/pantoken-html";
++import { inlineHtml } from "@pantoken/inline-styles/html";
++import { inlineEmailHtml, type EmailClient } from "@pantoken/email";
+ import type { Theme } from "@pantoken/model";
+ 
+ /** The parsed CLI invocation. */
+@@ -37,6 +38,8 @@ export interface CliArgs {
+   out: string;
+   input?: string;
+   output?: string;
++  css?: string;
++  client?: EmailClient;
+   theme: Theme;
+   className: string;
+   /** Icon names to emit as native assets (from `--icons a,b,c`). */
+@@ -67,6 +70,7 @@ const SUPPORTED = new Set([
+   "hugo",
+   "mintlify",
+   "inline",
++  "email",
+ ]);
+ const PLANNED = new Set<string>();
+ const VALID_THEMES = new Set(["rebrand", "canvas", "canvasHighContrast"]);
+@@ -74,6 +78,8 @@ const KNOWN_FLAGS = new Set([
+   "out",
+   "input",
+   "output",
++  "css",
++  "client",
+   "theme",
+   "class",
+   "icons",
+@@ -163,6 +169,8 @@ export function parseArgs(argv: readonly string[]): CliArgs {
+     out: flags.out ?? "./pantoken-out",
+     input: flags.input,
+     output: flags.output,
++    css: flags.css,
++    client: flags.client as EmailClient | undefined,
+     theme: theme as Theme,
+     className,
+     icons: flags.icons ? flags.icons.split(",").filter(Boolean) : undefined,
+@@ -186,7 +194,7 @@ let package = Package(
+ )
+ `;
+ 
+-/** Inline pantoken component styles into an HTML file. */
++/** Inline caller-supplied CSS into an HTML file. */
+ function runInline(args: CliArgs): void {
+   if (!args.input || !args.output) {
+     throw new Error(
+@@ -194,7 +202,24 @@ function runInline(args: CliArgs): void {
+     );
+   }
+   const html = readFileSync(args.input, "utf8");
+-  writeFileSync(args.output, inlinePantokenHtml(html, { theme: args.theme }));
++  const css = args.css ? readFileSync(args.css, "utf8") : "";
++  writeFileSync(args.output, inlineHtml(html, css));
++  console.log(`✓ pantoken: wrote ${args.output}`);
++}
++
++/** Inline email-safe pantoken styles into an HTML file. */
++function runEmail(args: CliArgs): void {
++  if (!args.input || !args.output) {
++    throw new Error(
++      'The "email" target requires -i/--input and -o/--output. Usage: pantoken generate email -i <file> -o <file>',
++    );
++  }
++  const html = readFileSync(args.input, "utf8");
++  const extraCss = args.css ? readFileSync(args.css, "utf8") : undefined;
++  writeFileSync(
++    args.output,
++    inlineEmailHtml(html, { theme: args.theme, client: args.client, extraCss }),
++  );
+   console.log(`✓ pantoken: wrote ${args.output}`);
+ }
+ 
+@@ -580,4 +605,8 @@ Options:
+     runInline(args);
+     return;
+   }
++  if (args.target === "email") {
++    runEmail(args);
++    return;
++  }
+ }
+diff --git a/packages/cli/tests/index.test.ts b/packages/cli/tests/index.test.ts
+index 95c65592c..2c9ac23ac 100644
+--- a/packages/cli/tests/index.test.ts
++++ b/packages/cli/tests/index.test.ts
+@@ -49,13 +49,29 @@ test("run inlines HTML through the hoisted inline target", async () => {
+   const dir = mkdtempSync(join(tmpdir(), "pantoken-cli-inline-"));
+   const input = join(dir, "input.html");
+   const output = join(dir, "output.html");
+-  writeFileSync(input, '<button class="instui-button">Save</button>');
++  writeFileSync(
++    input,
++    '<style>.action { color: red; }</style><button class="action">Save</button>',
++  );
+ 
+   await run(["generate", "inline", "-i", input, "-o", output]);
+ 
+   expect(readFileSync(output, "utf8")).toContain('style="');
+ });
+ 
++test("run generates email-safe HTML through the email target", async () => {
++  const dir = mkdtempSync(join(tmpdir(), "pantoken-cli-email-"));
++  const input = join(dir, "input.html");
++  const output = join(dir, "output.html");
++  writeFileSync(input, '<button class="instui-button">Save</button>');
++
++  await run(["generate", "email", "-i", input, "-o", output, "--client", "gmail"]);
++
++  const result = readFileSync(output, "utf8");
++  expect(result).toContain('style="');
++  expect(result).not.toContain("var(");
++});
++
+ test("unknown targets report a clear error", async () => {
+   await expect(run(["generate", "cobol", "--out", "/tmp/x"])).rejects.toThrow(/Unknown target/);
+ });
+diff --git a/platforms/email/README.md b/platforms/email/README.md
+index ed60e01fd..a15a91a42 100644
+--- a/platforms/email/README.md
++++ b/platforms/email/README.md
+@@ -1,8 +1,9 @@
+ # @pantoken/email
+ 
+-Instructure design tokens for HTML email. Email clients don't support CSS custom properties and
+-often strip `<style>`, so tokens are fully resolved to concrete values for inline styling — colours
+-as hex, dimensions with `px`. Icons are excluded.
++Instructure design tokens and email-safe HTML generation. Email clients don't support CSS custom
++properties and often strip `<style>`, so tokens are resolved to concrete inline values. Generated
++component CSS uses a conservative, configurable email policy that omits interactive states and
++unsupported components by default.
+ 
+ ## Install
+ 
+@@ -24,10 +25,42 @@ const t = emailTokens("light");
+ The maps are keyed by camelCased token name (the `--instui-` prefix dropped): `--instui-color-
+ background-brand` becomes `colorBackgroundBrand`.
+ 
+-## Output
++Generate email-compatible HTML:
+ 
+-Plain `Record<string, string>` maps of concrete token values, ready to interpolate into inline
+-`style` attributes. No files are written and there's no CLI target — you import the values.
++```ts
++import { inlineEmailHtml } from "@pantoken/email";
++
++const html = inlineEmailHtml('<button class="instui-button">Save</button>', {
++  theme: "canvas",
++  client: "gmail",
++});
++```
++
++The `client` profile can be `generic`, `outlook`, `gmail`, or `webkit`. Profiles control which
++fallback rules are retained; they do not reconstruct table or VML layouts. Add or remove component
++classes at the email boundary with `allowComponents` and `denyComponents`. Caller-supplied `extraCss`
++is passed through separately.
++
++The compatibility subpath remains available:
++
++```ts
++import { inlineEmailHtml } from "@pantoken/email/inline";
++```
++
++## CLI
++
++```sh
++pantoken generate email -i page.html -o page.email.html --client gmail
++```
++
++Use `--css <file>` to add caller-supplied CSS and `--theme <rebrand|canvas|canvasHighContrast>`
++to select the token theme. The output is one HTML document; client profiles are filtering
++capabilities, not a complete guarantee of rendering parity.
++
++## Token maps
++
++`emailTokens(mode?)`, `light`, and `dark` remain available when callers need to interpolate a
++single token directly into an inline `style` attribute.
+ 
+ ## API
+ 
+@@ -35,6 +68,11 @@ Plain `Record<string, string>` maps of concrete token values, ready to interpola
+   or `"dark"`).
+ - **`light`** — the concrete light-mode token map.
+ - **`dark`** — the concrete dark-mode token map.
++- **`inlineEmailHtml(html, options?): string`** — generate email-compatible HTML with resolved
++  pantoken values and filtered component CSS.
++- **`InlineEmailHtmlOptions`** — theme, mode, client profile, component policy, custom colors, and
++  caller CSS options.
++- **`EmailClient`** — `generic`, `outlook`, `gmail`, or `webkit`.
+ 
+ ## Related
+ 
+diff --git a/platforms/email/package.json b/platforms/email/package.json
+index 4e537811f..cc4925ab0 100644
+--- a/platforms/email/package.json
++++ b/platforms/email/package.json
+@@ -1,7 +1,7 @@
+ {
+   "name": "@pantoken/email",
+   "version": "0.1.19",
+-  "description": "Instructure design tokens for HTML email: concrete, inline-friendly token values (no CSS vars).",
++  "description": "Instructure design tokens and email-safe HTML generation with concrete inline values.",
+   "homepage": "https://pantoken.app",
+   "bugs": "https://github.com/thedannywahl/pantoken/issues",
+   "license": "MIT",
+@@ -30,10 +30,14 @@
+     "check": "vp check"
+   },
+   "dependencies": {
++    "@pantoken/components": "workspace:*",
+     "@pantoken/inline-styles": "workspace:*",
+     "@pantoken/model": "workspace:*",
++    "@pantoken/plugin-custom-theme-colors": "workspace:*",
+     "@pantoken/tokens": "workspace:*",
+-    "@pantoken/utils": "workspace:*"
++    "@pantoken/utils": "workspace:*",
++    "cheerio": "catalog:",
++    "postcss": "catalog:"
+   },
+   "devDependencies": {
+     "@types/node": "catalog:",
+diff --git a/platforms/email/src/index.ts b/platforms/email/src/index.ts
+index e57def6d8..60425e569 100644
+--- a/platforms/email/src/index.ts
++++ b/platforms/email/src/index.ts
+@@ -11,6 +11,10 @@
+ import { tokens } from "@pantoken/tokens";
+ import { camelCase, resolveTokens } from "@pantoken/utils";
+ 
++export { inlineEmailHtml } from "./email-html.ts";
++export type { InlineEmailHtmlOptions } from "./email-html.ts";
++export type { EmailClient, EmailCssOptions } from "./email-css.ts";
++
+ type Mode = "light" | "dark";
+ 
+ function build(mode: Mode): Record<string, string> {
+diff --git a/platforms/email/src/inline.ts b/platforms/email/src/inline.ts
+index ef5eee2ad..ca114f9c2 100644
+--- a/platforms/email/src/inline.ts
++++ b/platforms/email/src/inline.ts
+@@ -1,4 +1,5 @@
+ /** Inline pantoken component styles for HTML email documents. @beta */
+-export { inlinePantokenHtml as inlineEmailHtml } from "@pantoken/inline-styles/pantoken-html";
++export { inlineEmailHtml } from "./email-html.ts";
+ /** Options for {@link inlineEmailHtml}. @beta */
+-export type { PantokenHtmlOptions as InlineEmailHtmlOptions } from "@pantoken/inline-styles/pantoken-html";
++export type { InlineEmailHtmlOptions } from "./email-html.ts";
++export type { EmailClient, EmailCssOptions } from "./email-css.ts";
+diff --git a/pnpm-lock.yaml b/pnpm-lock.yaml
+index 0191a0112..730eea304 100644
+--- a/pnpm-lock.yaml
++++ b/pnpm-lock.yaml
+@@ -1163,21 +1163,6 @@ importers:
+ 
+   formats/inline-styles:
+     dependencies:
+-      '@pantoken/components':
+-        specifier: workspace:*
+-        version: link:../components
+-      '@pantoken/model':
+-        specifier: workspace:*
+-        version: link:../../packages/model
+-      '@pantoken/plugin-custom-theme-colors':
+-        specifier: workspace:*
+-        version: link:../../plugins/pantoken/custom-theme-colors
+-      '@pantoken/tokens':
+-        specifier: workspace:*
+-        version: link:../tokens
+-      '@pantoken/utils':
+-        specifier: workspace:*
+-        version: link:../../packages/utils
+       cheerio:
+         specifier: 'catalog:'
+         version: 1.2.0
+@@ -1380,6 +1365,9 @@ importers:
+       '@pantoken/drupal':
+         specifier: workspace:*
+         version: link:../../platforms/drupal
++      '@pantoken/email':
++        specifier: workspace:*
++        version: link:../../platforms/email
+       '@pantoken/flutter':
+         specifier: workspace:*
+         version: link:../../platforms/flutter
+@@ -1990,18 +1978,30 @@ importers:
+ 
+   platforms/email:
+     dependencies:
++      '@pantoken/components':
++        specifier: workspace:*
++        version: link:../../formats/components
+       '@pantoken/inline-styles':
+         specifier: workspace:*
+         version: link:../../formats/inline-styles
+       '@pantoken/model':
+         specifier: workspace:*
+         version: link:../../packages/model
++      '@pantoken/plugin-custom-theme-colors':
++        specifier: workspace:*
++        version: link:../../plugins/pantoken/custom-theme-colors
+       '@pantoken/tokens':
+         specifier: workspace:*
+         version: link:../../formats/tokens
+       '@pantoken/utils':
+         specifier: workspace:*
+         version: link:../../packages/utils
++      cheerio:
++        specifier: 'catalog:'
++        version: 1.2.0
++      postcss:
++        specifier: 'catalog:'
++        version: 8.5.28
+     devDependencies:
+       '@types/node':
+         specifier: 'catalog:'
+pantoken on inline ≡  ?4 ~16 -1 via  26.10.0 
+➜  git add -- formats/inline-styles/README.md formats/inline-styles/package.json formats/inline-styles/src/cli.ts formats/inline-styles/src/index.ts formats/inline-styles/src/pantoken-html.ts formats/inline-styles/tests/inline-html.test.ts formats/inline-styles/vite.config.ts && git status --short -- formats/inline-styles && git commit -m "refactor(inline-styles): make CSS inliner generic" -- formats/inline-styles
+M  formats/inline-styles/README.md
+M  formats/inline-styles/package.json
+M  formats/inline-styles/src/cli.ts
+M  formats/inline-styles/src/index.ts
+D  formats/inline-styles/src/pantoken-html.ts
+M  formats/inline-styles/tests/inline-html.test.ts
+M  formats/inline-styles/vite.config.ts
+⋯ Backing up original state…
+✔ Done backing up original state (a733b047a)!
+⋯ Running tasks for staged files…
+    * — 6 files
+      ⋯ vp check --fix
+
+✔ vp check --fix
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[inline 6d28e944e] refactor(inline-styles): make CSS inliner generic
+ 7 files changed, 19 insertions(+), 221 deletions(-)
+ delete mode 100644 formats/inline-styles/src/pantoken-html.ts
+pantoken on inline ↑1  ?4 ~12 via  26.10.0 
+➜  git add -- platforms/email/README.md platforms/email/package.json platforms/email/src/index.ts platforms/email/src/inline.ts platforms/email/src/email-css.ts platforms/email/src/email-html.ts platforms/email/tests/email-css.test.ts pnpm-lock.yaml .changeset/email-inline-boundary.md && git status --short -- platforms/email pnpm-lock.yaml .changeset/email-inline-boundary.md && git commit -m "feat(email): add email-safe HTML generation" -- platforms/email pnpm-lock.yaml .changeset/email-inline-boundary.md
+A  .changeset/email-inline-boundary.md
+M  platforms/email/README.md
+M  platforms/email/package.json
+A  platforms/email/src/email-css.ts
+A  platforms/email/src/email-html.ts
+M  platforms/email/src/index.ts
+M  platforms/email/src/inline.ts
+A  platforms/email/tests/email-css.test.ts
+M  pnpm-lock.yaml
+⋯ Backing up original state…
+✔ Done backing up original state (06c26f5a6)!
+⋯ Running tasks for staged files…
+    * — 9 files
+      ⋯ vp check --fix
+
+✔ vp check --fix
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[inline b198e3435] feat(email): add email-safe HTML generation
+ 9 files changed, 411 insertions(+), 25 deletions(-)
+ create mode 100644 .changeset/email-inline-boundary.md
+ create mode 100644 platforms/email/src/email-css.ts
+ create mode 100644 platforms/email/src/email-html.ts
+ create mode 100644 platforms/email/tests/email-css.test.ts
+pantoken on inline ↑2  ~7 via  26.10.0 
+➜  git add -- packages/cli/README.md packages/cli/package.json packages/cli/src/index.ts packages/cli/tests/index.test.ts && git status --short -- packages/cli && git commit -m "feat(cli): add email generation target" -- packages/cli
+M  packages/cli/README.md
+M  packages/cli/package.json
+M  packages/cli/src/index.ts
+M  packages/cli/tests/index.test.ts
+⋯ Backing up original state…
+✔ Done backing up original state (a52d052b1)!
+⋯ Running tasks for staged files…
+    * — 4 files
+      ⋯ vp check --fix
+
+✔ vp check --fix
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[inline 222859921] feat(cli): add email generation target
+ 4 files changed, 56 insertions(+), 7 deletions(-)
+pantoken on inline ↑3  ~4 via  26.10.0 
+➜  git status --short && git log -4 --format='%h %s'
+ M .entire/settings.json
+ M l10n/ar/docs.api.po
+ M l10n/ca/docs.api.po
+ M l10n/docs.api.pot
+222859921 feat(cli): add email generation target
+b198e3435 feat(email): add email-safe HTML generation
+6d28e944e refactor(inline-styles): make CSS inliner generic
+9f045c6dd style(app.css): simplify background and border property definitions for consistency
+pantoken on inline ↑3  ~4 via  26.10.0 
+➜  vp test formats/inline-styles/tests/inline-html.test.ts platforms/email/tests/index.test.ts platforms/email/tests/email-css.test.ts packages/cli/tests/index.test.ts
+VITE+ - The Unified Toolchain for the Web
+
+
+ RUN  v5.0.1 /Users/dwahl/Scripts/pantoken
+
+│
+◇  Done scaffolding.
+
+ Test Files  4 passed (4)
+      Tests  46 passed (46)
+   Start at  18:20:10
+   Duration  6.25s (tests 60%, transform 21%, import 18%)
+
+pantoken on inline ↑3  ~4 via  26.10.0 
+➜  vp run release:status
+VITE+ - The Unified Toolchain for the Web
+
+$ vpx changeset status --verbose ○ cache miss: 'email-inline-boundary.md' added in '.changeset', executing
+🦋 changeset v3.0.3
+
+Packages to be bumped:
+- patch
+  - @pantoken/cli -> 0.1.44
+    - .changeset/email-inline-boundary.md
+    - .changeset/hoist-inline-cli.md
+  - @pantoken/email -> 0.1.20
+    - .changeset/email-inline-boundary.md
+  - @pantoken/inline-styles -> 0.1.1
+    - .changeset/email-inline-boundary.md
+    - .changeset/tidy-format-readmes.md
+  - @pantoken/pantoken -> 0.2.24
+  - @pantoken/scope -> 0.4.2
+    - .changeset/tidy-format-readmes.md
+  - pantoken -> 0.1.9
+
+pantoken on inline ↑3  ~4 via  26.10.0 
+➜  git diff --check HEAD~3..HEAD
+pantoken on inline ↑3  ~4 via  26.10.0 
+➜  git push origin inline
+[entire] Pushing 3 checkpoint ref(s) to origin.... done
+Enumerating objects: 67, done.
+Counting objects: 100% (67/67), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (37/37), done.
+Writing objects: 100% (38/38), 10.14 KiB | 10.14 MiB/s, done.
+Total 38 (delta 20), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (20/20), completed with 18 local objects.
+To https://github.com/thedannywahl/pantoken.git
+   9f045c6dd..222859921  inline -> inline
+pantoken on inline ≡  ~5 via  26.10.0 
+➜  git rev-parse HEAD origin/inline && git status --short
+2228599219d3802be4a9780bc856bd3a03142b90
+2228599219d3802be4a9780bc856bd3a03142b90
+ M .entire/settings.json
+ M l10n/ar/docs.api.po
+ M l10n/ca/docs.api.po
+ M l10n/cy/docs.api.po
+ M l10n/docs.api.pot
+pantoken on inline ≡  ~5 via  26.10.0 
+➜  entire status
+● Enabled · branch inline
+  Agents · Claude Code, Copilot CLI
+  Checkpoints sync to: origin
+  3 checkpoints not yet on origin — they sync with your next 'git push origin'
+  Secret scanners · betterleaks, goredact
+
+── Active Sessions ─────────────────────────────────────────────────────────────
+
+Copilot CLI · 8d3cb066-d889-4125-a420-b1f8d85c23a2
+> "make sure the inline-style package is fully ready for the..."
+started 1h ago · active now
+
+────────────────────────────────────────────────────────────────────────────────
+1 session
+
+Agents: run `entire agent-help` for machine-readable usage.
+pantoken on inline ≡  ~7 via  26.10.0 
+➜  git log --format='%H %s' -5 -- formats/inline-styles formats/inline-styles/README.md
+6d28e944e16a36ece18db7da1123860a0d642d8f refactor(inline-styles): make CSS inliner generic
+516f62af6e0fc62a6f7bbb46bc141b66b86d8e2f feat(inline-styles): add cli registration
+399c33d1a13e06edf29ffc33a3b3c42c472693a2 docs: add format package READMEs
+60cd949d6a40de9fd0281bb5ce3279ed15b3045d feat: add @pantoken/inline-styles package
+pantoken on inline ≡  ~7 via  26.10.0 
+➜  DOCS_API_REFRESH_CATALOG=1 vp run docs:api:en
+VITE+ - The Unified Toolchain for the Web

@@ -1,0 +1,104 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3G47SSX802XN3HJRK69P63Q",
+  "session_id": "8d3cb066-d889-4125-a420-b1f8d85c23a2",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-27T00:29:02.273903Z",
+  "branch": "inline",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "l10n/docs.api.pot"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "c0904f01b369",
+  "checkpoint_transcript_start": 1491,
+  "transcript_lines_at_start": 1491,
+  "compact_transcript_start": 226,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 6
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-27T00:29:02.236498Z",
+    "agent_lines": 115,
+    "agent_removed": 2,
+    "human_added": 0,
+    "human_modified": 48,
+    "human_removed": 8379,
+    "total_committed": 163,
+    "total_lines_changed": 8545,
+    "agent_percentage": 1.3692217671152722,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 171824,
+      "user_lines_removed": 141828,
+      "agent_lines_added": 44356,
+      "agent_lines_removed": 22136,
+      "user_added_per_file": {
+        "docs/scripts/write-api-overview.ts": 1,
+        "formats/inline-styles/src/index.ts": 3,
+        "l10n/cy/docs.api.po": 3042,
+        "l10n/da/docs.api.po": 8332,
+        "l10n/de/docs.api.po": 8332,
+        "l10n/el/docs.api.po": 8332,
+        "l10n/en-AU/docs.api.po": 8332,
+        "l10n/en-CA/docs.api.po": 8332,
+        "l10n/en-GB/docs.api.po": 8332,
+        "l10n/es/docs.api.po": 8332,
+        "l10n/fa/docs.api.po": 8332,
+        "l10n/fi/docs.api.po": 8332,
+        "l10n/fr-CA/docs.api.po": 8332,
+        "l10n/fr/docs.api.po": 8332,
+        "l10n/ga/docs.api.po": 8332,
+        "l10n/he/docs.api.po": 8332,
+        "l10n/hi/docs.api.po": 8332,
+        "l10n/ht/docs.api.po": 8332,
+        "l10n/hu/docs.api.po": 8332,
+        "l10n/hy/docs.api.po": 8332,
+        "l10n/id/docs.api.po": 8332,
+        "l10n/is/docs.api.po": 18802
+      },
+      "user_removed_per_file": {
+        "formats/inline-styles/src/index.ts": 1,
+        "l10n/cy/docs.api.po": 11984,
+        "l10n/da/docs.api.po": 6739,
+        "l10n/de/docs.api.po": 6739,
+        "l10n/el/docs.api.po": 6739,
+        "l10n/en-AU/docs.api.po": 6739,
+        "l10n/en-CA/docs.api.po": 6739,
+        "l10n/en-GB/docs.api.po": 6739,
+        "l10n/es/docs.api.po": 6739,
+        "l10n/fa/docs.api.po": 6739,
+        "l10n/fi/docs.api.po": 6739,
+        "l10n/fr-CA/docs.api.po": 6739,
+        "l10n/fr/docs.api.po": 6739,
+        "l10n/ga/docs.api.po": 6739,
+        "l10n/he/docs.api.po": 6739,
+        "l10n/hi/docs.api.po": 6739,
+        "l10n/ht/docs.api.po": 6739,
+        "l10n/hu/docs.api.po": 6739,
+        "l10n/hy/docs.api.po": 6739,
+        "l10n/id/docs.api.po": 6739,
+        "l10n/is/docs.api.po": 8541
+      }
+    }
+  ]
+}
