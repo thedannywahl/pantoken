@@ -1,7 +1,7 @@
 {
   "name": "@pantoken/inline-styles",
   "version": "0.1.0",
-  "description": "Inline CSS into HTML with pantoken styles.",
+  "description": "Inline CSS into HTML with Juice.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
@@ -22,7 +22,6 @@
     ".": "./dist/index.mjs",
     "./cli": "./dist/cli.mjs",
     "./html": "./dist/html.mjs",
-    "./pantoken-html": "./dist/pantoken-html.mjs",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -34,12 +33,6 @@
     "check": "vp check"
   },
   "dependencies": {
-    "@pantoken/components": "workspace:*",
-    "@pantoken/model": "workspace:*",
-    "@pantoken/plugin-custom-theme-colors": "workspace:*",
-    "@pantoken/tokens": "workspace:*",
-    "@pantoken/utils": "workspace:*",
-    "cheerio": "catalog:",
     "juice": "catalog:",
     "postcss": "catalog:"
   },

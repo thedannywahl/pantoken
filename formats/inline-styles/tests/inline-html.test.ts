@@ -1,6 +1,5 @@
 import { expect, test } from "vite-plus/test";
 import { inlineHtml } from "../src/inline-html.ts";
-import { inlinePantokenHtml } from "../src/pantoken-html.ts";
 
 test("inlines matching rules and keeps pseudo-class fallbacks", () => {
   const html = '<button class="action">Save</button>';
@@ -30,32 +29,4 @@ test("flattens scoped component rules before inlining", () => {
 
   expect(result).toContain('style="color: red;"');
   expect(result).toContain(".action:hover");
-});
-
-test("inlines resolved component declarations for all theme and mode combinations", () => {
-  const themes = ["rebrand", "canvas", "canvasHighContrast"] as const;
-  const modes = ["light", "dark"] as const;
-
-  for (const theme of themes) {
-    for (const mode of modes) {
-      const html = '<html><body><button class="instui-button">Save</button></body></html>';
-      const result = inlinePantokenHtml(html, { theme, mode });
-      const style = result.match(/<button[^>]*style="([^"]*)"/u)?.[1];
-
-      expect(style).toContain("display: inline-flex");
-      expect(style).not.toContain("var(");
-      expect(result).not.toContain("<style");
-    }
-  }
-});
-
-test("applies custom theme color remaps when the document selects custom", () => {
-  const html = '<html><body><button class="instui-button">Save</button></body></html>';
-  const base = inlinePantokenHtml(html);
-  const custom = inlinePantokenHtml(html, { customColor: "#e62429" });
-  const background = (result: string): string | undefined =>
-    result.match(/<button[^>]*style="([^"]*)"/u)?.[1]?.match(/background: ([^;]+);/u)?.[1];
-
-  expect(background(custom)).not.toBe(background(base));
-  expect(background(custom)).not.toContain("var(");
 });

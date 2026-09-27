@@ -6,7 +6,6 @@ export default extendBase({
     entry: {
       index: "src/index.ts",
       html: "src/inline-html.ts",
-      "pantoken-html": "src/pantoken-html.ts",
       cli: "src/cli.ts",
     },
     exports: false,

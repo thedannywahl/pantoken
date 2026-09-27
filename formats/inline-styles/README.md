@@ -1,8 +1,7 @@
 # @pantoken/inline-styles
 
-Inline CSS into HTML with pantoken styles. This package is useful for email, static HTML, and other
-outputs where the main declarations need to live on matching elements while pseudo-classes,
-media queries, and similar fallbacks can remain in a `<style>` element.
+Inline CSS into HTML with Juice. This is the generic CSS-to-HTML engine used by platform packages;
+it does not resolve pantoken themes or generate component styles.
 
 ## Install
 
@@ -25,23 +24,18 @@ const html = inlineHtml(
 );
 ```
 
-Inline a complete pantoken theme and component stylesheet:
+Inline caller-supplied CSS:
 
 ```ts
-import { inlinePantokenHtml } from "@pantoken/inline-styles/pantoken-html";
+import { inlineHtml } from "@pantoken/inline-styles/html";
 
-const html = inlinePantokenHtml('<button class="instui-button">Save</button>', {
-  theme: "canvas",
-  mode: "dark",
-  customColor: "#e62429",
-  extraCss: ".notice { font-weight: 700; }",
-});
+const html = inlineHtml('<button class="action">Save</button>', ".action { color: red; }");
 ```
 
-Pantoken inlining resolves token references for the selected theme and color scheme, so the
-resulting declarations do not depend on CSS custom properties. `inlineHtml` preserves fallback
-rules by default; set `preserveFallbacks: false` to remove the retained `<style>` rules. Use
-`resolveCSSVariables` when CSS variables should be resolved from document declarations.
+`inlineHtml` preserves fallback rules by default; set `preserveFallbacks: false` to remove retained
+`<style>` rules. Use `resolveCSSVariables` when CSS variables should be resolved from document
+declarations. HTML may also contain its own `<style>` blocks; pass additional CSS as the second
+argument when needed.
 
 ## CLI
 
@@ -51,25 +45,19 @@ Use the hoisted `pantoken` CLI to inline an HTML file:
 pantoken generate inline -i page.html -o page.inlined.html
 ```
 
-The target accepts `-i, --input <file>` and `-o, --output <file>`, and supports the shared
-`--theme <rebrand|canvas|canvasHighContrast>` option. The package also exposes the lower-level
-`pantoken-inline` binary for direct use.
+The target accepts `-i, --input <file>`, `-o, --output <file>`, and optional `--css <file>`. For
+pantoken-aware, email-compatible output, use `pantoken generate email` from `@pantoken/cli` and
+`@pantoken/email`.
 
 ## API
 
 - **`inlineHtml(html, css, options?): string`** (from `@pantoken/inline-styles/html`) — inline
   matching CSS declarations into an HTML string.
 - **`InlineHtmlOptions`** — controls fallback preservation and CSS variable resolution.
-- **`inlinePantokenHtml(html, options?): string`** (from
-  `@pantoken/inline-styles/pantoken-html`) — inline resolved pantoken tokens, component styles,
-  and optional custom CSS.
-- **`PantokenHtmlOptions`** — selects the theme, mode, component prefix, color scale, custom color,
-  fallback behavior, and additional CSS.
 
 ## Related
 
-- Pairs with `@pantoken/components` for the component stylesheet and `@pantoken/tokens` for the
-  source token themes.
+- `@pantoken/email` owns pantoken theme resolution and email-safe component filtering.
 - Use `@pantoken/css` when a stylesheet with custom properties is preferable to inline declarations.
 
 ## License
