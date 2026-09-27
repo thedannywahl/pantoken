@@ -1,0 +1,51 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3G4CCRA4CWF1QQPX7FH8VTG",
+  "session_id": "8d3cb066-d889-4125-a420-b1f8d85c23a2",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-27T00:31:32.59596Z",
+  "branch": "inline",
+  "checkpoints_count": 1,
+  "save_step_count": 2,
+  "files_touched": [],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "0d6cea509a95",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 7
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 15723,
+      "user_lines_removed": 15343,
+      "agent_lines_added": 204350,
+      "agent_lines_removed": 158071,
+      "user_added_per_file": {
+        "l10n/ms/docs.api.po": 3082,
+        "l10n/nb/docs.api.po": 124,
+        "l10n/nl/docs.api.po": 12517
+      },
+      "user_removed_per_file": {
+        "l10n/ms/docs.api.po": 12242,
+        "l10n/nb/docs.api.po": 3,
+        "l10n/nl/docs.api.po": 3098
+      }
+    }
+  ]
+}
