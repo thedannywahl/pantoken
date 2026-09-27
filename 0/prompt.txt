@@ -1,0 +1,520 @@
+[Terminal 033ca630-596d-4ae7-89ea-3c8b9528d72c notification: terminal exited. The terminal process ended before the command could complete normally; further commands cannot be sent to this terminal ID.]
+Terminal output:
+pantoken on inline ≡ via  26.10.0 
+➜  CI=1 GH_PROMPT_DISABLED=1 GH_PAGER=cat PAGER=cat gh api repos/thedannywahl/pantoken/actions/runs/36285633340/jobs --jq '.jobs[] | [.name, .status, (.conclusion // "")] | @tsv'
+commitlint      completed       success
+i18n-changes    completed       success
+entire-checkpoint-linkage       completed       success
+docs-changes    completed       success
+build   completed       success
+upstream-changes        completed       success
+repository      completed       success
+docs    completed       success
+fallow  completed       success
+benchmarks      completed       success
+test    completed       failure
+upstream-drift  completed       success
+i18n-drift      completed       success
+lint    completed       success
+coverage        in_progress
+publint completed       success
+typecheck       completed       success
+attw    in_progress
+pantoken on inline ≡ via  26.10.0 
+➜  CI=1 GH_PROMPT_DISABLED=1 GH_PAGER=cat PAGER=cat gh api repos/thedannywahl/pantoken/actions/runs/36285633340/jobs --jq '.jobs[] | select(.name == "test") | {id, status, conclusion, steps}'
+{
+  "conclusion": "failure",
+  "id": 108525938305,
+  "status": "completed",
+  "steps": [
+    {
+      "completed_at": "2026-09-27T01:29:49Z",
+      "conclusion": "success",
+      "name": "Set up job",
+      "number": 1,
+      "started_at": "2026-09-27T01:29:48Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-27T01:29:54Z",
+      "conclusion": "success",
+      "name": "Checkout code",
+      "number": 2,
+      "started_at": "2026-09-27T01:29:49Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-27T01:30:18Z",
+      "conclusion": "success",
+      "name": "Set up Vite+",
+      "number": 3,
+      "started_at": "2026-09-27T01:29:54Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-27T01:30:20Z",
+      "conclusion": "success",
+      "name": "Restore vp task cache",
+      "number": 4,
+      "started_at": "2026-09-27T01:30:18Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-27T01:30:29Z",
+      "conclusion": "success",
+      "name": "Install gettext",
+      "number": 5,
+      "started_at": "2026-09-27T01:30:20Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-27T01:31:20Z",
+      "conclusion": "success",
+      "name": "Materialize generated output",
+      "number": 6,
+      "started_at": "2026-09-27T01:30:29Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-27T01:31:27Z",
+      "conclusion": "success",
+      "name": "Generate English API documentation",
+      "number": 7,
+      "started_at": "2026-09-27T01:31:20Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-27T01:33:07Z",
+      "conclusion": "failure",
+      "name": "Test all packages",
+      "number": 8,
+      "started_at": "2026-09-27T01:31:27Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-27T01:33:07Z",
+      "conclusion": "skipped",
+      "name": "Post Set up Vite+",
+      "number": 15,
+      "started_at": "2026-09-27T01:33:07Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-27T01:33:07Z",
+      "conclusion": "success",
+      "name": "Post Checkout code",
+      "number": 16,
+      "started_at": "2026-09-27T01:33:07Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-09-27T01:33:07Z",
+      "conclusion": "success",
+      "name": "Complete job",
+      "number": 17,
+      "started_at": "2026-09-27T01:33:07Z",
+      "status": "completed"
+    }
+  ]
+}
+pantoken on inline ≡ via  26.10.0 
+➜  CI=1 GH_PROMPT_DISABLED=1 GH_PAGER=cat PAGER=cat gh run view 36285633340 --job 108525938305 --log-failed | rg -n -C 4 'FAIL|failed|AssertionError|Error:|error|❯|Test Files|Tests|not ok|Expected|received|diff'
+run 36285633340 is still in progress; logs will be available when it is complete
+pantoken on inline ≡ via  26.10.0 x 
+➜  CI=1 GH_PROMPT_DISABLED=1 GH_PAGER=cat PAGER=cat gh api repos/thedannywahl/pantoken/actions/runs/36285633340/jobs --jq '.jobs[] | [.name, .status, (.conclusion // "")] | @tsv'
+commitlint      completed       success
+i18n-changes    completed       success
+entire-checkpoint-linkage       completed       success
+docs-changes    completed       success
+build   completed       success
+upstream-changes        completed       success
+repository      completed       success
+docs    completed       success
+fallow  completed       success
+benchmarks      completed       success
+test    completed       failure
+upstream-drift  completed       success
+i18n-drift      completed       success
+lint    completed       success
+coverage        completed       failure
+publint completed       success
+typecheck       completed       success
+attw    in_progress
+pantoken on inline ≡ via  26.10.0 
+➜  vp test
+VITE+ - The Unified Toolchain for the Web
+
+
+ RUN  v5.0.1 /Users/dwahl/Scripts/pantoken
+
+│
+◇  Done scaffolding.
+error: command-argument value 'not-a-real-platform' is invalid for argument 'platform'. Platform "not-a-real-platform" is not valid. Expected one of: angular, canvas-theme-editor, components, next, react, svelte, vue, web-components.
+Missing required argument "platform". Expected one of: angular, canvas-theme-editor, components, next, react, svelte, vue, web-components
+create-pantoken-app is scaffold-only. Use @pantoken/cli for native output: npx @pantoken/cli generate <target>
+error: unknown command 'bogus-command'
+ ❯ plugins/tinymce/codemirror/tests/source-toggle.test.ts (18 tests | 1 failed) 233ms
+   × highlight and theme colors are !important, so they survive TinyMCE's `.tox :not(svg):not(rect)` reset 4ms
+ ❯ formats/inline-styles/tests/cli.test.ts (2 tests | 1 failed) 23ms
+   × CLI rejects unsupported themes 3ms
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  formats/inline-styles/tests/cli.test.ts > CLI rejects unsupported themes
+AssertionError: expected [Function] to throw error including 'Invalid theme' but got 'Unknown option \'--theme\''
+
+Expected: "Invalid theme"
+Received: "Unknown option '--theme'"
+
+ ❯ formats/inline-styles/tests/cli.test.ts:27:47
+     25|
+     26| test("CLI rejects unsupported themes", async () => {
+     27|   await expect(runCli(["--theme", "unknown"])).rejects.toThrow("Invali…
+       |                                               ^
+     28| });
+     29|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  plugins/tinymce/codemirror/tests/source-toggle.test.ts > highlight and theme colors are !important, so they survive TinyMCE's `.tox :not(svg):not(rect)` reset
+AssertionError: expected '.ͼ1.cm-focused {outline: 1px dotted #…' to match /#ffffff\s*!important/
+
+- Expected:
+/#ffffff\s*!important/
+
++ Received:
+".ͼ1.cm-focused {outline: 1px dotted #212121;}
+.ͼ1 {position: relative !important; box-sizing: border-box; display: flex !important; flex-direction: column;}
+.ͼ1 .cm-scroller {display: flex !important; align-items: flex-start !important; font-family: monospace; line-height: 1.4; height: 100%; overflow-x: auto; position: relative; z-index: 0; overflow-anchor: none;}
+.ͼ1 .cm-content[contenteditable=true] {-webkit-user-modify: read-write-plaintext-only;}
+.ͼ1 .cm-content {margin: 0; flex-grow: 2; flex-shrink: 0; display: block; white-space: pre; word-wrap: normal; box-sizing: border-box; min-height: 100%; padding: 4px 0; outline: none;}
+.ͼ1 .cm-lineWrapping {white-space: pre-wrap; white-space: break-spaces; word-break: break-word; overflow-wrap: anywhere; flex-shrink: 1;}
+.ͼ2 .cm-content {caret-color: black;}
+.ͼ3 .cm-content {caret-color: white;}
+.ͼ1 .cm-line {display: block; padding: 0 2px 0 6px;}
+.ͼ1 .cm-layer > * {position: absolute;}
+.ͼ1 .cm-layer {user-select: none; position: absolute; left: 0; top: 0; contain: size style;}
+.ͼ2 .cm-selectionBackground {background: #d9d9d9;}
+.ͼ3 .cm-selectionBackground {background: #222;}
+.ͼ2.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground {background: #d7d4f0;}
+.ͼ3.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground {background: #233;}
+.ͼ1 .cm-cursorLayer {pointer-events: none;}
+.ͼ1.cm-focused > .cm-scroller > .cm-cursorLayer {animation: steps(1) cm-blink 1.2s infinite;}
+@keyframes cm-blink {50% {opacity: 0;}}
+@keyframes cm-blink2 {50% {opacity: 0;}}
+.ͼ1 .cm-cursor, .ͼ1 .cm-dropCursor {border-left: 1.2px solid black; margin-left: -0.6px; pointer-events: none;}
+.ͼ1 .cm-cursor {display: none;}
+.ͼ3 .cm-cursor {border-left-color: #ddd;}
+.ͼ1 .cm-selectionHandle {background-color: currentColor; width: 1.5px;}
+.ͼ1 .cm-selectionHandle-start::before, .ͼ1 .cm-selectionHandle-end::before {content: \"\"; background-color: inherit; border-radius: 50%; width: 8px; height: 8px; position: absolute; left: -3.25px;}
+.ͼ1 .cm-selectionHandle-start::before {top: -8px;}
+.ͼ1 .cm-selectionHandle-end::before {bottom: -8px;}
+.ͼ1 .cm-dropCursor {position: absolute;}
+.ͼ1.cm-focused > .cm-scroller > .cm-cursorLayer .cm-cursor {display: block;}
+.ͼ1 .cm-iso {unicode-bidi: isolate;}
+.ͼ1 .cm-announced {position: fixed; top: -10000px;}
+@media print {.ͼ1 .cm-announced {display: none;}}
+.ͼ2 .cm-activeLine {background-color: #cceeff44;}
+.ͼ3 .cm-activeLine {background-color: #99eeff33;}
+.ͼ2 .cm-specialChar {color: red;}
+.ͼ3 .cm-specialChar {color: #f78;}
+.ͼ1 .cm-gutters {flex-shrink: 0; display: flex; height: 100%; box-sizing: border-box; z-index: 200;}
+.ͼ1 .cm-gutters-before {inset-inline-start: 0;}
+.ͼ1 .cm-gutters-after {inset-inline-end: 0;}
+.ͼ2 .cm-gutters.cm-gutters-before {border-right-width: 1px;}
+.ͼ2 .cm-gutters.cm-gutters-after {border-left-width: 1px;}
+.ͼ2 .cm-gutters {background-color: #f5f5f5; color: #6c6c6c; border: 0px solid #ddd;}
+.ͼ3 .cm-gutters {background-color: #333338; color: #ccc;}
+.ͼ1 .cm-gutter {display: flex !important; flex-direction: column; flex-shrink: 0; box-sizing: border-box; min-height: 100%; overflow: hidden;}
+.ͼ1 .cm-gutterElement {box-sizing: border-box;}
+.ͼ1 .cm-lineNumbers .cm-gutterElement {padding: 0 3px 0 5px; min-width: 20px; text-align: right; white-space: nowrap;}
+.ͼ2 .cm-activeLineGutter {background-color: #e2f2ff;}
+.ͼ3 .cm-activeLineGutter {background-color: #222227;}
+.ͼ1 .cm-panels {box-sizing: border-box; position: sticky; left: 0; right: 0; z-index: 300;}
+.ͼ2 .cm-panels {background-color: #f5f5f5; color: black;}
+.ͼ1 .cm-panels-top {top: 0;}
+.ͼ1 .cm-panels-bottom {bottom: 0;}
+.ͼ2 .cm-panels-top {border-bottom: 1px solid #ddd;}
+.ͼ2 .cm-panels-bottom {border-top: 1px solid #ddd;}
+.ͼ3 .cm-panels {background-color: #333338; color: white;}
+.ͼ1 .cm-dialog label {font-size: 80%;}
+.ͼ1 .cm-dialog {padding: 2px 19px 4px 6px; position: relative;}
+.ͼ1 .cm-dialog-close {position: absolute; top: 3px; right: 4px; background-color: inherit; border: none; font: inherit; font-size: 14px; padding: 0;}
+.ͼ1 .cm-tab {display: inline-block; overflow: hidden; vertical-align: bottom;}
+.ͼ1 .cm-widgetBuffer {vertical-align: text-top; height: 1em; width: 0; display: inline;}
+.ͼ1 .cm-placeholder {color: #888; display: inline-block; vertical-align: top; user-select: none;}
+.ͼ1 .cm-highlightSpace {background: radial-gradient(circle at 50% 55%, #aaa 20%, transparent 0) no-repeat; background-size: .4em; background-position: calc(min(50%, 0px)) center;}
+.ͼ1 .cm-highlightTab {background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"200\" height=\"20\"><path stroke=\"%23888\" stroke-width=\"1\" fill=\"none\" d=\"M1 10H196L190 5M190 15L196 10M197 4L197 16\"/></svg>'); background-size: auto 100%; background-position: right 90%; background-repeat: no-repeat;}
+.ͼ1 .cm-trailingSpace {background-color: #ff332255;}
+.ͼ1 .cm-button {vertical-align: middle; color: inherit; font-size: 70%; padding: .2em 1em; border-radius: 1px;}
+.ͼ2 .cm-button:active {background-image: linear-gradient(#b4b4b4, #d0d3d6);}
+.ͼ2 .cm-button {background-image: linear-gradient(#eff1f5, #d9d9df); border: 1px solid #888;}
+.ͼ3 .cm-button:active {background-image: linear-gradient(#111, #333);}
+.ͼ3 .cm-button {background-image: linear-gradient(#393939, #111); border: 1px solid #888;}
+.ͼ1 .cm-textfield {vertical-align: middle; color: inherit; font-size: 70%; border: 1px solid silver; padding: .2em .5em;}
+.ͼ2 .cm-textfield {background-color: white;}
+.ͼ3 .cm-textfield {border: 1px solid #555; background-color: inherit;}
+.ͼ1 .cm-selectionMatch {background-color: #99ff7780;}
+.ͼ1 .cm-searchMatch .cm-selectionMatch {background-color: transparent;}
+.ͼ1 .cm-tooltip.cm-tooltip-autocomplete > ul > li, .ͼ1 .cm-tooltip.cm-tooltip-autocomplete > ul > completion-section {padding: 1px 3px; line-height: 1.2;}
+.ͼ1 .cm-tooltip.cm-tooltip-autocomplete > ul > li {overflow-x: hidden; text-overflow: ellipsis; cursor: pointer;}
+.ͼ1 .cm-tooltip.cm-tooltip-autocomplete > ul > completion-section {display: list-item; border-bottom: 1px solid silver; padding-left: 0.5em; opacity: 0.7;}
+.ͼ1 .cm-tooltip.cm-tooltip-autocomplete > ul {font-family: monospace; white-space: nowrap; overflow: hidden auto; max-width: 700px; max-width: min(700px, 95vw); min-width: 250px; max-height: 10em; height: 100%; list-style: none; margin: 0; padding: 0;}
+.ͼ2 .cm-tooltip-autocomplete ul li[aria-selected] {background: #17c; color: white;}
+.ͼ2 .cm-tooltip-autocomplete-disabled ul li[aria-selected] {background: #777;}
+.ͼ3 .cm-tooltip-autocomplete ul li[aria-selected] {background: #347; color: white;}
+.ͼ3 .cm-tooltip-autocomplete-disabled ul li[aria-selected] {background: #444;}
+.ͼ1 .cm-completionListIncompleteTop:before, .ͼ1 .cm-completionListIncompleteBottom:after {content: \"···\"; opacity: 0.5; display: block; text-align: center; cursor: pointer;}
+.ͼ1 .cm-tooltip.cm-completionInfo {position: absolute; padding: 3px 9px; width: max-content; max-width: 400px; box-sizing: border-box; white-space: pre-line;}
+.ͼ1 .cm-completionInfo.cm-completionInfo-left {right: 100%;}
+.ͼ1 .cm-completionInfo.cm-completionInfo-right {left: 100%;}
+.ͼ1 .cm-completionInfo.cm-completionInfo-left-narrow {right: 30px;}
+.ͼ1 .cm-completionInfo.cm-completionInfo-right-narrow {left: 30px;}
+.ͼ2 .cm-snippetField {background-color: #00000022;}
+.ͼ3 .cm-snippetField {background-color: #ffffff22;}
+.ͼ1 .cm-snippetFieldPosition {vertical-align: text-top; width: 0; height: 1.15em; display: inline-block; margin: 0 -0.7px -.7em; border-left: 1.4px dotted #888;}
+.ͼ1 .cm-completionMatchedText {text-decoration: underline;}
+.ͼ1 .cm-completionDetail {margin-left: 0.5em; font-style: italic;}
+.ͼ1 .cm-completionIcon {font-size: 90%; width: .8em; display: inline-block; text-align: center; padding-right: .6em; opacity: 0.6; box-sizing: content-box;}
+.ͼ1 .cm-completionIcon-function:after, .ͼ1 .cm-completionIcon-method:after {content: 'ƒ';}
+.ͼ1 .cm-completionIcon-class:after {content: '○';}
+.ͼ1 .cm-completionIcon-interface:after {content: '◌';}
+.ͼ1 .cm-completionIcon-variable:after {content: '𝑥';}
+.ͼ1 .cm-completionIcon-constant:after {content: '𝐶';}
+.ͼ1 .cm-completionIcon-type:after {content: '𝑡';}
+.ͼ1 .cm-completionIcon-enum:after {content: '∪';}
+.ͼ1 .cm-completionIcon-property:after {content: '□';}
+.ͼ1 .cm-completionIcon-keyword:after {content: '🔑︎';}
+.ͼ1 .cm-completionIcon-namespace:after {content: '▢';}
+.ͼ1 .cm-completionIcon-text:after {content: 'abc'; font-size: 50%; vertical-align: middle;}
+.ͼ1 .cm-tooltip {z-index: 500; box-sizing: border-box;}
+.ͼ2 .cm-tooltip {border: 1px solid #bbb; background-color: #f5f5f5;}
+.ͼ2 .cm-tooltip-section:not(:first-child) {border-top: 1px solid #bbb;}
+.ͼ3 .cm-tooltip {background-color: #333338; color: white;}
+.ͼ1 .cm-tooltip-arrow:before, .ͼ1 .cm-tooltip-arrow:after {content: ''; position: absolute; width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent;}
+.ͼ1 .cm-tooltip-above .cm-tooltip-arrow:before {border-top: 7px solid #bbb;}
+.ͼ1 .cm-tooltip-above .cm-tooltip-arrow:after {border-top: 7px solid #f5f5f5; bottom: 1px;}
+.ͼ1 .cm-tooltip-above .cm-tooltip-arrow {bottom: -7px;}
+.ͼ1 .cm-tooltip-below .cm-tooltip-arrow:before {border-bottom: 7px solid #bbb;}
+.ͼ1 .cm-tooltip-below .cm-tooltip-arrow:after {border-bottom: 7px solid #f5f5f5; top: 1px;}
+.ͼ1 .cm-tooltip-below .cm-tooltip-arrow {top: -7px;}
+.ͼ1 .cm-tooltip-arrow {height: 7px; width: 14px; position: absolute; z-index: -1; overflow: hidden;}
+.ͼ3 .cm-tooltip .cm-tooltip-arrow:before {border-top-color: #333338; border-bottom-color: #333338;}
+.ͼ3 .cm-tooltip .cm-tooltip-arrow:after {border-top-color: transparent; border-bottom-color: transparent;}
+.ͼ1.cm-focused .cm-matchingBracket {background-color: #328c8252;}
+.ͼ1.cm-focused .cm-nonmatchingBracket {background-color: #bb555544;}
+.ͼ1 .cm-foldPlaceholder {background-color: #eee; border: 1px solid #ddd; color: #888; border-radius: .2em; margin: 0 1px; padding: 0 1px; cursor: pointer;}
+.ͼ1 .cm-foldGutter span {padding: 0 1px; cursor: pointer;}
+.ͼw {color: #569cd6 !important;}
+.ͼx {color: #9cdcfe !important;}
+.ͼy {color: #ce9178 !important;}
+.ͼz {color: #ce9178 !important;}
+.ͼ10 {color: #6a9955 !important;}
+.ͼ11 {color: #d4d4d4 !important;}
+.ͼp {background-color: #171b21 !important; color: #F2F4F5 !important; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace !important;}
+.ͼp .cm-gutters {background-color: #252525 !important; color: #7a7a7a !important; border: none !important;}
+.ͼp .cm-activeLine {background-color: rgba(255, 255, 255, 0.06) !important;}
+.ͼp .cm-activeLineGutter {background-color: rgba(255, 255, 255, 0.08) !important;}
+.ͼp .cm-cursor {border-left-color: #d4d4d4 !important;}
+.ͼp .cm-selectionBackground {background-color: rgba(255, 255, 255, 0.15) !important;}
+.ͼq {color: #800000 !important;}
+.ͼr {color: #ff0000 !important;}
+.ͼs {color: #0000ff !important;}
+.ͼt {color: #0000ff !important;}
+.ͼu {color: #008000 !important;}
+.ͼv {color: #000080 !important;}
+.ͼo {background-color: #F2F4F5 !important; color: #273540 !important; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace !important;}
+.ͼo .cm-gutters {background-color: #f5f5f5 !important; color: #888888 !important; border: none !important;}
+.ͼo .cm-activeLine {background-color: rgba(0, 0, 0, 0.04) !important;}
+.ͼo .cm-activeLineGutter {background-color: rgba(0, 0, 0, 0.06) !important;}
+.ͼ5 {color: #404740;}
+.ͼ6 {text-decoration: underline;}
+.ͼ7 {text-decoration: underline; font-weight: bold;}
+.ͼ8 {font-style: italic;}
+.ͼ9 {font-weight: bold;}
+.ͼa {text-decoration: line-through;}
+.ͼb {color: #708;}
+.ͼc {color: #219;}
+.ͼd {color: #164;}
+.ͼe {color: #a11;}
+.ͼf {color: #e40;}
+.ͼg {color: #00f;}
+.ͼh {color: #30a;}
+.ͼi {color: #085;}
+.ͼj {color: #167;}
+.ͼk {color: #256;}
+.ͼl {color: #00c;}
+.ͼm {color: #940;}
+.ͼn {color: #f00;}
+.ͼ4 .cm-line ::selection, .ͼ4 .cm-line::selection {background-color: transparent !important;}
+.ͼ4 .cm-line {caret-color: transparent !important;}
+.ͼ4 .cm-content :focus::selection, .ͼ4 .cm-content :focus ::selection {background-color: Highlight !important;}
+.ͼ4 .cm-content :focus {caret-color: initial !important;}
+.ͼ4 .cm-content {caret-color: transparent !important;}
+"
+
+ ❯ plugins/tinymce/codemirror/tests/source-toggle.test.ts:263:18
+    261|
+    262|   expect(styles).toContain("#800000 !important");
+    263|   expect(styles).toMatch(/#ffffff\s*!important/);
+       |                  ^
+    264| });
+    265|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed | 358 passed (360)
+      Tests  2 failed | 2697 passed (2699)
+   Start at  19:34:25
+   Duration  25.08s (import 47%, tests 29%, transform 15%, environment 5%, setup 3%, worker 1%)
+
+     Import  2777 modules were evaluated 16026 times · 88.72s total, 47% of tracked time
+             ~3.78s faster with isolate: false — shared modules are evaluated once per worker instead of once per file
+             learn more: https://vitest.dev/guide/improving-performance#test-isolation
+
+pantoken on inline ≡ via  26.10.0 x 
+➜  entire graph search --repo . --profile full --query "Fix the two CI test failures: inline-styles CLI unsupported theme validation and TinyMCE CodeMirror theme color assertion after the new dark color change"
+{"query":"Fix the two CI test failures: inline-styles CLI unsupported theme validation and TinyMCE CodeMirror theme color assertion after the new dark color change","repo_root":"/Users/dwahl/Scripts/pantoken","commit":"16fd582929c6c6d483063841f7c196ee40fb3698","tree":"fc8099d444a7212ea7c83d96bc6eeebd4d198aa0","profile":"full","results":[{"rank":1,"score":72.4212,"file_path":"renderers/tinymce/oxide/src/less/theme/globals/tinymce.less","start_line":1,"end_line":65,"focus_line":11,"snippet_start_line":8,"snippet_end_line":13,"symbol_start_line":1,"symbol_end_line":65,"language":"Less","kind":"document","symbol_id":"gh/thedannywahl/pantoken:Less:renderers/tinymce/oxide/src/less/theme/globals/tinymce.less:document:tinymce","symbol_name":"tinymce","qualified_name":"tinymce","signature":"less document tinymce","signals":["path","body","exact-symbol","symbol-name","constraint:entity","exact-code-token"],"snippet":"@tinymce-border-width: 2px;\n@tinymce-box-shadow: none;\n\n@tinymce-separator-color: darken(@border-color, 4.5%); // created global Custom Property as this is used in multiple different components\n\n@editor-header-inline-background-color: @background-color;"},{"rank":2,"score":46.0727,"file_path":"plugins/tinymce/codemirror/src/strings.ts","start_line":9,"end_line":15,"focus_line":11,"snippet_start_line":9,"snippet_end_line":14,"symbol_start_line":11,"symbol_end_line":15,"language":"TypeScript","kind":"variable","symbol_id":"gh/thedannywahl/pantoken:TypeScript:plugins/tinymce/codemirror/src/strings.ts:variable:CODEMIRROR_STRINGS","symbol_name":"CODEMIRROR_STRINGS","qualified_name":"CODEMIRROR_STRINGS","signature":"CODEMIRROR_STRINGS: CodemirrorStrings = Object.fromEntries( Object.entries(englishBase) .filter(([key]) => key !== \"$schema\") .map(([key, value]) => [key, typeof value === \"string\" ? value : value.message]), ) as unknown as CodemirrorStrings","signals":["path","body","symbol-name","constraint:entity","exact-code-token"],"snippet":"\n/** English defaults for the source-view interface. */\nexport const CODEMIRROR_STRINGS: CodemirrorStrings = Object.fromEntries(\n  Object.entries(englishBase)\n    .filter(([key]) => key !== \"$schema\")\n    .map(([key, value]) => [key, typeof value === \"string\" ? value : value.message]),"},{"rank":3,"score":43.4462,"file_path":"renderers/tinymce/src/codemirror/lint.ts","start_line":28,"end_line":78,"focus_line":37,"snippet_start_line":36,"snippet_end_line":78,"symbol_start_line":36,"symbol_end_line":78,"language":"TypeScript","kind":"function","symbol_id":"gh/thedannywahl/pantoken:TypeScript:renderers/tinymce/src/codemirror/lint.ts:function:pantokenHtmlLinter","symbol_name":"pantokenHtmlLinter","qualified_name":"pantokenHtmlLinter","signature":"function pantokenHtmlLinter(options: PantokenLinterOptions)","signals":["path","body","constraint:entity","exact-code-token","complete-symbol"],"snippet":"export function pantokenHtmlLinter(options: PantokenLinterOptions) {\n  const strings = { ...TINYMCE_STRINGS, ...options.strings };\n  return linter((view: EditorView) => {\n    const diagnostics: Diagnostic[] = [];\n    const doc = view.state.doc;\n    const text = doc.toString();\n\n    // Regex to find class attributes: class=\"...\"  or class='...'\n    const classAttributeRegex = /class=[\"']([^\"']+)[\"']/g;\n    let match;\n\n    while ((match = classAttributeRegex.exec(text)) !== null) {\n      const classString = match[1];\n      const classes = classString.split(/\\s+/).filter((c) => c.length > 0);\n\n      // Check each class token.\n      for (const className of classes) {\n        if (!className.startsWith(\"instui-\")) {\n          // Not a pantoken token, skip it.\n          continue;\n        }\n\n        // Validate the token.\n        const errors = validateClassToken(className, strings);\n\n        // Convert validation errors to CodeMirror diagnostics.\n        for (const error of errors) {\n          const pos = text.indexOf(className, match.index);\n          if (pos !== -1) {\n            diagnostics.push({\n              from: pos,\n              to: pos + className.length,\n              severity: \"error\",\n              message: error,\n            });\n          }\n        }\n      }\n    }\n\n    return diagnostics;\n  });\n}"},{"rank":4,"score":43.1877,"file_path":"plugins/tinymce/codemirror/src/index.ts","start_line":140,"end_line":209,"focus_line":142,"snippet_start_line":140,"snippet_end_line":145,"symbol_start_line":142,"symbol_end_line":351,"language":"TypeScript","kind":"function","symbol_id":"gh/thedannywahl/pantoken:TypeScript:plugins/tinymce/codemirror/src/index.ts:function:createSourceTogglePlugin","symbol_name":"createSourceTogglePlugin","qualified_name":"createSourceTogglePlugin","signature":"function createSourceTogglePlugin( options: SourceTogglePluginOptions, ): (editor: Editor) => SourceTogglePluginApi","signals":["path","body","constraint:entity","exact-code-token"],"snippet":"\n/** Builds the `tinymce.PluginManager.add` callback for the source-view toggle plugin. */\nexport function createSourceTogglePlugin(\n  options: SourceTogglePluginOptions,\n): (editor: Editor) => SourceTogglePluginApi {\n  const { height, extensions = [], onChange, onToggle } = options;"},{"rank":5,"score":45.1537,"file_path":"plugins/tinymce/codemirror/src/strings.ts","start_line":2,"end_line":8,"focus_line":4,"snippet_start_line":2,"snippet_end_line":7,"symbol_start_line":4,"symbol_end_line":8,"language":"TypeScript","kind":"interface","symbol_id":"gh/thedannywahl/pantoken:TypeScript:plugins/tinymce/codemirror/src/strings.ts:interface:CodemirrorStrings","symbol_name":"CodemirrorStrings","qualified_name":"CodemirrorStrings","signature":"interface CodemirrorStrings","signals":["path","body","symbol-name","constraint:entity","exact-code-token"],"snippet":"\n/** User-visible strings emitted by the CodeMirror source-view plugin. */\nexport interface CodemirrorStrings {\n  sourceToggleTooltip: string;\n  sourceFormatTooltip: string;\n  sourceFormatErrorMessage: string;"},{"rank":6,"score":39.369,"file_path":"packages/scaffold/tests/index.test.ts","start_line":74,"end_line":78,"focus_line":76,"snippet_start_line":75,"snippet_end_line":76,"language":"TypeScript","signals":["path","symbol-usage"],"snippet":"  expect(main).toContain(\"createA11yPlugin\");\n  expect(main).toContain(\"createSourceTogglePlugin\");"},{"rank":7,"score":41.9073,"file_path":"plugins/tinymce/codemirror/src/index.ts","start_line":1,"end_line":80,"focus_line":10,"snippet_start_line":9,"snippet_end_line":10,"language":"TypeScript","signals":["path","body","constraint:entity","exact-code-token"],"snippet":" */\nimport { basicSetup, EditorView } from \"codemirror\";","comment_focus_line":2},{"rank":8,"score":39.1016,"file_path":"renderers/tinymce/tests/lint.test.ts","start_line":11,"end_line":15,"focus_line":13,"snippet_start_line":12,"snippet_end_line":13,"symbol_start_line":12,"symbol_end_line":15,"language":"TypeScript","kind":"function","symbol_id":"gh/thedannywahl/pantoken:TypeScript:renderers/tinymce/tests/lint.test.ts:function:lintView","symbol_name":"lintView","qualified_name":"lintView","signature":"function lintView(doc: string): EditorView","signals":["path","body","symbol-usage"],"snippet":"function lintView(doc: string): EditorView {\n  const state = EditorState.create({ doc, extensions: [pantokenHtmlLinter({ model: [] })] });"},{"rank":9,"score":38.869,"file_path":"plugins/tinymce/codemirror/tests/source-toggle.test.ts","start_line":5,"end_line":9,"focus_line":7,"snippet_start_line":6,"snippet_end_line":7,"language":"TypeScript","signals":["path","body","symbol-usage"],"snippet":"import {\n  createSourceTogglePlugin,"},{"rank":10,"score":38.587,"file_path":"renderers/tinymce/src/lib/icon-picker-styles.ts","start_line":19,"end_line":93,"focus_line":68,"snippet_start_line":67,"snippet_end_line":68,"language":"TypeScript","signals":["path","body","constraint:entity","exact-code-token"],"snippet":" */\nconst LAYOUT_CSS = `","comment_focus_line":66}],"verify_command":{"command":"npx vitest run packages/scaffold/tests/index.test.ts","targets":"packages/scaffold/tests/index.test.ts","derived_from":"package.json devDependencies + ranked test path","tier":"narrow"},"stats":{"query_constraints_truncated":true,"files_scanned":7369,"preselection_backend":"go-content","preselection_passes":3,"preselection_files_examined":7369,"preselection_confidence":0.0011014429288891403,"preselection_coverage":1,"preselection_diversity":1,"preselection_widened":true,"preselection_bounded":true,"files_content_read_during_preselection":7369,"files_content_read_during_query":392,"bytes_content_read_during_query":64070749,"files_content_read_for_identifier_usage":136,"bytes_content_read_for_identifier_usage":1158259,"files_content_read_for_context_blocks":3,"bytes_content_read_for_context_blocks":8149,"files_indexed":384,"symbols_considered":1308,"lexical_candidates":16149,"graph_candidates":0,"caller_boosted_candidates":82,"identifier_usage_candidates":32,"sparse_candidates":0,"sparse_files_content_read":0,"candidates_selected":10,"result_bytes":7746,"context_budget_bytes":24576,"snippets_truncated_by_budget":6,"complete_symbol_snippets":1,"locator_snippets":5,"doc_reanchored_hits":2,"verify_command_bytes":380,"verify_tier":"narrow","context_block_bytes":380,"index_cache_hit":false,"index_latency_ms":1707,"query_latency_ms":4330,"total_latency_ms":10848,"search_latency_ms":10848,"preselect_latency_ms":4810},"warnings":[{"code":"W_WORKTREE_SNAPSHOT","severity":"warning","effect_on_semantic_completeness":"snapshot records are read from the working tree because --worktree was requested"}],"partial_failures":[],"completeness":{"languages":{"JSON":{"files":7,"symbols":151},"Less":{"files":63,"symbols":63},"Markdown":{"files":25,"symbols":767},"TypeScript":{"files":64,"symbols":295},"YAML":{"files":2,"symbols":32}},"relations":{"ACCESSES":1,"ASYNC_CALLS":11,"CALLS":332,"CONFIGURES":175,"CONSTRUCTS":3,"CONTAINS":104,"DATA_FLOWS":43,"DEFINES":1308,"EXTENDS":3,"FILE_CHANGES_WITH":23,"IMPORTS":208,"INHERITS":3,"LISTENS_ON":30,"PARAM_TYPE":36,"READS_FIELD":23,"RETURNS_TYPE":19,"SIMILAR_TO":9,"USES_TYPE":53}}}
+pantoken on inline ≡ via  26.10.0 
+➜  git status --short && git add formats/inline-styles/tests/cli.test.ts plugins/tinymce/codemirror/tests/source-toggle.test.ts && git commit --only formats/inline-styles/tests/cli.test.ts plugins/tinymce/codemirror/tests/source-toggle.test.ts -m "test: align CLI and TinyMCE theme assertions"
+ M formats/inline-styles/tests/cli.test.ts
+ M plugins/tinymce/codemirror/tests/source-toggle.test.ts
+⋯ Backing up original state…
+✔ Done backing up original state (aff14583a)!
+⋯ Running tasks for staged files…
+    * — 2 files
+      ⋯ vp check --fix
+
+✔ vp check --fix
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[inline a558a05eb] test: align CLI and TinyMCE theme assertions
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+pantoken on inline ↑1 via  26.10.0 
+➜  CI=1 GH_PROMPT_DISABLED=1 GH_PAGER=cat PAGER=cat git push origin HEAD
+[entire] Pushing 1 checkpoint ref(s) to origin.... done
+Enumerating objects: 21, done.
+Counting objects: 100% (21/21), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (10/10), done.
+Writing objects: 100% (11/11), 1.01 KiB | 1.01 MiB/s, done.
+Total 11 (delta 7), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (7/7), completed with 7 local objects.
+To https://github.com/thedannywahl/pantoken.git
+   16fd58292..a558a05eb  HEAD -> inline
+pantoken on inline ≡ via  26.10.0 
+➜  CI=1 GH_PROMPT_DISABLED=1 GH_PAGER=cat PAGER=cat gh run list --branch inline --limit 6 --json databaseId,workflowName,status,conclusion,headSha --jq '.[] | [.databaseId, .workflowName, .status, (.conclusion // ""), .headSha] | @tsv'
+Working...
+36286044406     CodeQL  queued          a558a05ebd89353492ec92e6977f0037ac3d28e5
+36286044252     Guard release automation        queued          a558a05ebd89353492ec92e6977f0037ac3d28e5
+36286044282     CI      pending         a558a05ebd89353492ec92e6977f0037ac3d28e5
+36286044322     Changeset check queued          a558a05ebd89353492ec92e6977f0037ac3d28e5
+36285636641     GitHub Advanced Security        completed       success 16fd582929c6c6d483063841f7c196ee40fb3698
+36285633427     Guard release automation        completed       success 16fd582929c6c6d483063841f7c196ee40fb3698
+pantoken on inline ≡ via  26.10.0 
+➜  CI=1 GH_PROMPT_DISABLED=1 GH_PAGER=cat PAGER=cat TERM=dumb gh run watch 36286044282 --exit-status > /tmp/gh-pr-184-ci-final.log 2>&1; result=$?; tail -n 100 /tmp/gh-pr-184-ci-final.log; exit $result
+  ✓ Generate English API documentation
+  ✓ Resolve changed packages
+  ✓ Compute upload flags
+  ✓ Coverage (full on main, scoped to changed packages on PRs)
+  ✓ Upload coverage to Codecov
+  ✓ Upload test results to Codecov
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ test in 3m23s (ID 108527140105)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Install gettext
+  ✓ Materialize generated output
+  ✓ Generate English API documentation
+  ✓ Test all packages
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ fallow in 2m38s (ID 108527140121)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Materialize generated output
+  ✓ Fallow gate (dead-code error, grade-B health floor, dupes thresholded)
+  - Generate health badge
+  - Prepare health badge publication
+  - Publish health badge
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ i18n-drift in 3m59s (ID 108527140157)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Install gettext
+  ✓ Check all translation drift
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ publint in 4m21s (ID 108527140159)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Resolve changed packages
+  ✓ Build and publint (scoped to changed packages)
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ upstream-drift in 2m24s (ID 108527140168)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Materialize generated output
+  ✓ Check upstream drift
+  ✓ Upload drift report
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ attw in 6m53s (ID 108527140176)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Resolve changed packages
+  ✓ Build and attw (scoped to changed packages)
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ docs in 3m20s (ID 108527140177)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Materialize generated output
+  ✓ Build docs (English API + VitePress)
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ lint in 3m12s (ID 108527140184)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Lint CSS
+  ✓ Lint CSSDoc
+  ✓ Validate generated output
+  ✓ Lint Markdown
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ ci-gate in 38s (ID 108528178110)
+  ✓ Set up job
+  - Verify no CI job failed
+  ✓ Complete job
