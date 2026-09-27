@@ -23,6 +23,6 @@ test("CLI inlines pantoken and caller CSS from a file into a file", async () => 
   }
 });
 
-test("CLI rejects unsupported themes", async () => {
-  await expect(runCli(["--theme", "unknown"])).rejects.toThrow("Invalid theme");
+test("CLI rejects unsupported options", async () => {
+  await expect(runCli(["--theme", "unknown"])).rejects.toThrow("Unknown option '--theme'");
 });

@@ -260,7 +260,7 @@ test("highlight and theme colors are !important, so they survive TinyMCE's `.tox
     .join("\n");
 
   expect(styles).toContain("#800000 !important");
-  expect(styles).toMatch(/#ffffff\s*!important/);
+  expect(styles).toMatch(/background-color:\s*#f2f4f5\s*!important/i);
 });
 
 /** A fake editor supporting multiple listeners per event and a statusbar container, for
