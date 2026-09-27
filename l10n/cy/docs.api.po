@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-26 17:22+0000\n"
+"PO-Revision-Date: 2026-09-27 00:54+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2323,6 +2323,30 @@ msgctxt "docs.api:prose"
 msgid "An [IconResolver](../../../../packages/core/src/type-aliases/IconResolver.md) backed by the pantoken icon set (for the plugin/rehype stages)."
 msgstr "Resolver [IconResolver](../../../../packages/core/src/type-aliases/IconResolver.md) a gefnogir gan set eicon pantoken (ar gyfer y camau plugin/rehype)."
 
+#: formats/inline-styles/src/functions/inlineHtml.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inline CSS rules into matching HTML elements without fetching external resources."
+msgstr "Mewnosod rheolau CSS mewnlinol i elfennau HTML cyfatebol heb nôl adnoddau allanol."
+
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for inlining a stylesheet into an HTML document."
+msgstr "Opsiynau ar gyfer mewnlínio taflen arddull i ddogfen HTML."
+
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Keep media-query and pseudo-class rules in a style element."
+msgstr "Cadw rheolau ymholiad cyfryngau a rheolau pseudo-class mewn elfen arddull."
+
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve custom-property references against declarations in the document."
+msgstr "Datrys cyfeiriadau eiddo wedi'u teilwra yn erbyn datganiadau yn y ddogfen."
+
 #: formats/interactions/src/functions/applySpacing.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -3542,9 +3566,9 @@ msgid "Run the `pantoken create <platform>` command, delegating to `@pantoken/sc
 msgstr "Rhedwch y `pantoken create <platform>` gorchymyn, gan ei neilltuo i `@pantoken/scaffold/cli`."
 
 #: packages/cli/src/index.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Emits native and other non-npm design-token source into a consumer repo — the targets that don't\nfit the npm-package model. Supported now: `swift` (with an SPM `Package.swift` manifest stub, so\nregistry publishing is later a config flip), `android`, `compose`, `flutter`, `wordpress`,\n`vanilla`, `drupal`, `swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, and `mintlify`."
+msgid "Emits native and other non-npm design-token source into a consumer repo — the targets that don't\nfit the npm-package model. Supported now: `swift` (with an SPM `Package.swift` manifest stub, so\nregistry publishing is later a config flip), `android`, `compose`, `flutter`, `wordpress`,\n`vanilla`, `drupal`, `swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, `mintlify`, and\n`inline`, and `email`."
 msgstr "Yn allyrru ffynhonnell token-dylunio brodorol ac eraill nad ydynt yn npm i mewn i repo defnyddiwr — y targedau nad ydynt yn ffitio model pecyn npm. Cefnogir ar hyn o bryd: `swift` (gyda stwb maniffest SPM `Package.swift`, felly bydd cyhoeddi i'r gofrestrfa yn ddiweddarach yn newid ffurfweddu), `android`, `compose`, `flutter`, `wordpress`, `vanilla`, `drupal`, `swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, and `mintlify`."
 
 #: packages/cli/src/interfaces/CliArgs.md
@@ -5354,6 +5378,12 @@ msgctxt "docs.api:prose"
 msgid "**Inline a token into an email cell (light mode)**"
 msgstr "**Mewnosod tocyn yn linol i gell e-bost (modd golau)**"
 
+#: platforms/email/src/functions/inlineEmailHtml.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inline resolved pantoken tokens and component CSS into HTML email markup."
+msgstr "Mewnlinio tokenau pantoken wedi'u datrys a CSS cydran i farcio e-bost HTML."
+
 #: platforms/email/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -5365,6 +5395,97 @@ msgstr "`@pantoken/email` — Tocynnau dylunio Instructure ar gyfer e-bost HTML.
 msgctxt "docs.api:prose"
 msgid "Email clients don't support CSS custom properties and often strip `<style>`, so tokens are fully\nresolved to concrete values for inline styling. Colours are hex; dimensions keep their `px` units.\nIcons are excluded. `light`/`dark` maps are keyed by camelCased token name."
 msgstr "Email clients don't support CSS custom properties and often strip `&lt;style&gt;`, so tokens are fully\nresolved to concrete values for inline styling. Colours are hex; dimensions keep their `px` units.\nIcons are excluded. `light`/`dark` maps are keyed by camelCased token name."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for filtering component CSS for email output."
+msgstr "Opsiynau ar gyfer hidlo CSS cydran ar gyfer allbwn e-bost."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Client capability profile. Defaults to `generic`."
+msgstr "Proffil gallu cleient. Rhagosodiad: `generic`."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component names to allow in addition to the default email-safe set."
+msgstr "Enwau cydrannau i'w galluogi yn ychwanegol at y set ddiogel e-bost diofyn."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component names to remove even when they are in the default or custom allowlist."
+msgstr "Enwau cydrannau i'w tynnu hyd yn oed pan fyddant yn y rhestr ganiatâd diofyn neu arfer."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for generating email-compatible HTML with pantoken styles."
+msgstr "Opsiynau ar gyfer cynhyrchu HTML sy'n gydnaws ag e-bost gyda steiliau pantoken."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Token theme to use. Defaults to `rebrand`."
+msgstr "Y thema i'w hallyrru (diofyn: `\"rebrand\"`)."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Color scheme to resolve. Defaults to `light`."
+msgstr "Pa fodd lliw i'w ddatrys (diofyn `\"light\"`)."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component class prefix. Defaults to `instui`."
+msgstr "Rhagddodiad dosbarth cydran. Rhagosodiad: `instui`."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Add generated rules for this custom brand color."
+msgstr "Nodwedd sy'n dewis lliw brand wedi'i addasu."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Apply one of the plugin's shipped or custom color scales."
+msgstr "Cymhwyso un o raddfeydd lliw a ddarperir gan yr ategyn neu un arfer."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Retain pseudo-class and media-query rules in a style element. Defaults to `false`."
+msgstr "Cadw rheolau pseudo-class a rheolau ymholiad cyfryngau mewn elfen arddull. Rhagosodiad: `false`."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Email client capability profile. Defaults to `generic`."
+msgstr "Proffil gallu cleient e-bost. Rhagosodiad: `generic`."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component names to remove from the email output."
+msgstr "Enwau cydrannau i'w tynnu o'r allbwn e-bost."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Additional caller-supplied CSS."
+msgstr "CSS ychwanegol a gyflenwir gan alwwr."
+
+#: platforms/email/src/type-aliases/EmailClient.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Supported email client capability profiles."
+msgstr "Proffiliau gallu cleient e-bost a gefnogir."
 
 #: platforms/email/src/variables/dark.md
 #, no-c-format
@@ -12125,12 +12246,22 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "`.instui-button-set` — A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
-#~ msgstr "`.instui-button-set` — Rhes gysylltiedig (fflush, dim bylchau) o fotymau, gyda dim ond y ddau gornel allanol wedi'u crwnio."
+#~ msgid "`.breakpoints` — Extra-small viewport width for phone-sized previews."
+#~ msgstr "`.breakpoints` — Lled ffenestr hynod fach ar gyfer rhagolwg maint ffôn."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead."
+#~ msgid "Extra-small viewport width (20em / 320px)."
+#~ msgstr "Lled ffenestr hynod fach (20em / 320px)."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "`.instui-button-set` — A non-wrapping, flush row of buttons joined by 1px seams, with only its outer two corners rounded."
+#~ msgstr "`.instui-button-set` — Rhes gysylltiedig (fflush, dim bylchau) o fotymau, gyda dim ond y ddau gornel allanol wedi'u crwnio."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'\n  own border color (solid fills, whose border matches the fill, tint it with the label color).\n  `-without-seam` is group-only: it hides that seam so the buttons read as\n  one continuous control."
 #~ msgstr "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) gosod diofyn ar gyfer pob plentyn\n  `.instui-button` `.instui-button` nad yw'n cario ei fodyfiolwr ei hun yn yr un categori — mae dosbarth modyfiol botwm bob amser yn curo diofyn y grŵp. `-icon-*` yw bob amser fesul botwm; ni ddarperir hynny byth o'r grŵp. Mae aliasiau botymau wedi'u diddymu (`-ghost`, `-color-primary-inverse`)\n) yn anaddas fel modyfiolwyr ar lefel y grŵp — defnyddiwch eu disodliadau canonig\n  (`-color-tertiary`, `-on-color`))."
 
 #, no-c-format
@@ -12147,6 +12278,21 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 #~ msgctxt "docs.api:prose"
 #~ msgid "Confirm"
 #~ msgstr "Cadarnhau"
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Day"
+#~ msgstr "day"
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Week"
+#~ msgstr " Wythnos 1"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Month"
+#~ msgstr "Mis"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -12237,6 +12383,11 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 #~ msgctxt "docs.api:prose"
 #~ msgid "Default every unmodified child to no border."
 #~ msgstr "Gosod diofyn pob plentyn heb ei addasu i ddim ffin."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide the 1px seam between buttons."
+#~ msgstr "Cuddio'r gwialen 1px rhwng y botymau."
 
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -12948,9 +13099,9 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 #~ msgid "`.content` — The primary content pane that fills remaining space beside the tray."
 #~ msgstr "`.content` — Y prif panel cynnwys sy’n llenwi’r gofod sydd ar ôl wrth ymyl y tray."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Once the parent's inline-size drops below `46em` (`16em` tray width + `30em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override."
+#~ msgid "Once the parent's inline-size drops below `64em` (`16em` tray width + `48em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override."
 #~ msgstr "Unwaith y bydd maint-linellol y rhiant yn disgyn yn is na `46em` (lled y tray `16em` + pwynt torri `30em`), mae ymholiad `@container` ar gynhwysydd `pantoken-drawer-layout` y rhiant yn lleihau `min-inline-size` yr aelod hwn i `0` yn awtomatig, gan gyd-fynd â’r disodliad llaw `[should-overlay-tray]`."
 
 #, no-c-format
@@ -13018,9 +13169,9 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 #~ msgid "The side panel."
 #~ msgstr "Y panel ochr."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Width threshold for overlay mode (`30em`, themed via responsive utilities)."
+#~ msgid "Width threshold for overlay mode (`48em`, sourced from the responsive utility's canonical `md` breakpoint)."
 #~ msgstr "Trothwy lled ar gyfer modd gorchudd (`30em`, themadwyd trwy offer atebgar)."
 
 #, no-c-format
@@ -13783,9 +13934,9 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 #~ msgid "An accessible action control, styled from the token palette; primary by default."
 #~ msgstr "Rheoli gweithredu hygyrch, wedi’i arddullio o’r palet tokenau; prif un yn ddiofyn."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
+#~ msgid "A non-wrapping, flush row of buttons joined by 1px seams, with only its outer two corners rounded."
 #~ msgstr "Rhes gysylltiedig (fflush, dim bylchau) o fotymau, gyda dim ond y ddau gornel allanol wedi'u crwnio."
 
 #, no-c-format
@@ -14212,6 +14363,11 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 #~ msgctxt "docs.api:prose"
 #~ msgid "Typographic defaults for raw HTML — headings, paragraphs, lists, links, and code — applied automatically wherever it's imported (default `:where(body)`); pass `options.scope` to target a different content root instead (e.g. `.vp-doc`)."
 #~ msgstr "Rhagosodiadau teipograffeg ar gyfer HTML crai — pennawdau, paragraffau, rhestrau, dolenni, a chod — yn cael eu cymhwyso’n awtomatig lle bynnag y’i mewnforir (diofyn `:where(body)`); pasio `options.scope` i dargedu gwraidd cynnwys gwahanol yn lle hynny (e.e. `.vp-doc`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Extra-small viewport width for phone-sized previews."
+#~ msgstr "Lled ffenestr hynod fach ar gyfer rhagolwg maint ffôn."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16018,9 +16174,9 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 #~ msgid "`[class*=\"-hidden-\"],[class*=\"-show-\"]` — Viewport- or container-width show/hide classes across a themed breakpoint scale."
 #~ msgstr "`[class*=\"-hidden-\"],[class*=\"-show-\"]` — Dosbarthiadau dangos/cuddio yn ôl lled y ffenestr neu'r cynhwysydd ar raddfa torbwynt themaedig."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "`.instui-hidden-max-<bp>`/`-hidden-min-<bp>` hide by viewport width; `.instui-show-max-<bp>`/`-show-min-<bp>` are the inverse (hidden by default, shown only inside the range via `display: revert`); the `-cq-` variants react to a `.instui-container` ancestor's width instead, not the viewport's. Scale tiers `xs`/`sm`/`md`/`lg`/`xl` (sourced from the IR's tray-width component tokens) are each aliased to a long-form spelling (`x-small`–`x-large`) and a device name (`mobile`/`phablet`/`tablet`/`laptop`/`desktop`) — both deprecated in favor of the short name — plus the unscaled, themed `content`/`content-full-width` tiers (the main content area's max-width)."
+#~ msgid "`.instui-hidden-max-<bp>`/`-hidden-min-<bp>` hide by viewport width; `.instui-show-max-<bp>`/`-show-min-<bp>` are the inverse (hidden by default, shown only inside the range via `display: revert`); the `-cq-` variants react to a `.instui-container` ancestor's width instead, not the viewport's. Scale tiers `sm`/`md`/`lg`/`xl` mirror the IR's canonical breakpoint tokens, with a Pantoken-defined `xs` extension at `20em`; each is aliased to a long-form spelling (`x-small`–`x-large`) and a device name (`mobile`/`phablet`/`tablet`/`laptop`/`desktop`) — both deprecated in favor of the short name — plus the unscaled, themed `content`/`content-full-width` tiers (the main content area's max-width)."
 #~ msgstr "`.instui-hidden-max-<bp>`/`-hidden-min-<bp>` yn cuddio yn ôl lled y ffenestr; mae `.instui-show-max-<bp>`/`-show-min-<bp>` yn y gwrthwyneb (cuddiedig fel arfer, dim ond yn ymddangos o fewn y cyfnod drwy `display: revert`); mae'r amrywiadau `-cq-` yn ymateb i led rhieni `.instui-container` yn lle led y ffenestr. Mae'r haenau raddfa `xs`/`sm`/`md`/`lg`/`xl` (tarddiad o docennau cydran tray-width yr IR) wedi'u hail-enwi i ffurflen hir (`x-small`–`x-large`) a enw dyfais (`mobile`/`phablet`/`tablet`/`laptop`/`desktop`) — y ddau yn hen ffasiwn o blaid y enw byr — yn ogystal â'r haenau themaedig heb eu graddio `content`/`content-full-width` (uchaf-lled ardal y prif gynnwys)."
 
 #, no-c-format
@@ -16048,30 +16204,30 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 #~ msgid "Hide when the marked container is at or below the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "Cuddio pan fo'r cynhwysydd marciedig ar neu o dan y torbwynt `content-full-width` (`98.75em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the marked container is at or below the `lg` breakpoint (`64em`)."
 #~ msgstr "Cuddio pan fo'r cynhwysydd marciedig ar neu o dan y torbwynt `lg` (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `md` breakpoint (`30em`)."
-#~ msgstr "Cuddio pan fo'r cynhwysydd marciedig ar neu o dan y torbwynt `md` (`30em`)."
+#~ msgid "Hide when the marked container is at or below the `md` breakpoint (`48em`)."
+#~ msgstr "Cuddio pan fo'r cynhwysydd marciedig ar neu o dan y torbwynt `lg` (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `sm` breakpoint (`20em`)."
+#~ msgid "Hide when the marked container is at or below the `sm` breakpoint (`30em`)."
 #~ msgstr "Cuddio pan fo'r cynhwysydd marciedig ar neu o dan y torbwynt `sm` (`20em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the marked container is at or below the `xl` breakpoint (`80em`)."
 #~ msgstr "Cuddio pan fo'r cynhwysydd marciedig ar neu o dan y torbwynt `xl` (`62em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `xs` breakpoint (`16em`)."
-#~ msgstr "Cuddio pan fo'r cynhwysydd marciedig ar neu o dan y torbwynt `xs` (`16em`)."
+#~ msgid "Hide when the marked container is at or below the `xs` breakpoint (`20em`)."
+#~ msgstr "Cuddio pan fo'r cynhwysydd marciedig ar neu o dan y torbwynt `sm` (`20em`)."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16083,30 +16239,30 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 #~ msgid "Hide when the marked container is at or above the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "Cuddio pan fo'r cynhwysydd marciedig ar neu uwch na'r torbwynt `content-full-width` (`98.75em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the marked container is at or above the `lg` breakpoint (`64em`)."
 #~ msgstr "Cuddio pan fo'r cynhwysydd marciedig ar neu uwch na'r torbwynt `lg` (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `md` breakpoint (`30em`)."
-#~ msgstr "Cuddio pan fo'r cynhwysydd marciedig ar neu uwch na'r torbwynt `md` (`30em`)."
+#~ msgid "Hide when the marked container is at or above the `md` breakpoint (`48em`)."
+#~ msgstr "Cuddio pan fo'r cynhwysydd marciedig ar neu uwch na'r torbwynt `lg` (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `sm` breakpoint (`20em`)."
+#~ msgid "Hide when the marked container is at or above the `sm` breakpoint (`30em`)."
 #~ msgstr "Cuddio pan fo'r cynhwysydd marciedig ar neu uwch na'r torbwynt `sm` (`20em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the marked container is at or above the `xl` breakpoint (`80em`)."
 #~ msgstr "Cuddio pan fo'r cynhwysydd marciedig ar neu uwch na'r torbwynt `xl` (`62em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `xs` breakpoint (`16em`)."
-#~ msgstr "Cuddio pan fo'r cynhwysydd marciedig ar neu uwch na'r torbwynt `xs` (`16em`)."
+#~ msgid "Hide when the marked container is at or above the `xs` breakpoint (`20em`)."
+#~ msgstr "Cuddio pan fo'r cynhwysydd marciedig ar neu uwch na'r torbwynt `sm` (`20em`)."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16118,30 +16274,30 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 #~ msgid "Show when the marked container is at or below the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "Dangos pan fo'r cynhwysydd marciedig ar neu o dan y torbwynt `content-full-width` (`98.75em`); cuddiedig fel arall."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or below the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "Dangos pan fo'r cynhwysydd marciedig ar neu o dan y torbwynt `lg` (`48em`); cuddiedig fel arall."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `md` breakpoint (`30em`); hidden otherwise."
-#~ msgstr "Dangos pan fo'r cynhwysydd marciedig ar neu o dan y torbwynt `md` (`30em`); cuddiedig fel arall."
+#~ msgid "Show when the marked container is at or below the `md` breakpoint (`48em`); hidden otherwise."
+#~ msgstr "Dangos pan fo'r cynhwysydd marciedig ar neu o dan y torbwynt `lg` (`48em`); cuddiedig fel arall."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or below the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "Dangos pan fo'r cynhwysydd marciedig ar neu o dan y torbwynt `sm` (`20em`); cuddiedig fel arall."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or below the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "Dangos pan fo'r cynhwysydd marciedig ar neu o dan y torbwynt `xl` (`62em`); cuddiedig fel arall."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `xs` breakpoint (`16em`); hidden otherwise."
-#~ msgstr "Dangos pan fo'r cynhwysydd marciedig ar neu o dan y torbwynt `xs` (`16em`); cuddiedig fel arall."
+#~ msgid "Show when the marked container is at or below the `xs` breakpoint (`20em`); hidden otherwise."
+#~ msgstr "Dangos pan fo'r cynhwysydd marciedig ar neu o dan y torbwynt `sm` (`20em`); cuddiedig fel arall."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16153,30 +16309,30 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 #~ msgid "Show when the marked container is at or above the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "Dangos pan fo'r cynhwysydd marciedig ar neu uwch na'r torbwynt `content-full-width` (`98.75em`); cuddiedig fel arall."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or above the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "Dangos pan fo'r cynhwysydd marciedig ar neu uwch na'r torbwynt `lg` (`48em`); cuddiedig fel arall."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `md` breakpoint (`30em`); hidden otherwise."
-#~ msgstr "Dangos pan fo'r cynhwysydd marciedig ar neu uwch na'r torbwynt `md` (`30em`); cuddiedig fel arall."
+#~ msgid "Show when the marked container is at or above the `md` breakpoint (`48em`); hidden otherwise."
+#~ msgstr "Dangos pan fo'r cynhwysydd marciedig ar neu uwch na'r torbwynt `lg` (`48em`); cuddiedig fel arall."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or above the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "Dangos pan fo'r cynhwysydd marciedig ar neu uwch na'r torbwynt `sm` (`20em`); cuddiedig fel arall."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or above the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "Dangos pan fo'r cynhwysydd marciedig ar neu uwch na'r torbwynt `xl` (`62em`); cuddiedig fel arall."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `xs` breakpoint (`16em`); hidden otherwise."
-#~ msgstr "Dangos pan fo'r cynhwysydd marciedig ar neu uwch na'r torbwynt `xs` (`16em`); cuddiedig fel arall."
+#~ msgid "Show when the marked container is at or above the `xs` breakpoint (`20em`); hidden otherwise."
+#~ msgstr "Dangos pan fo'r cynhwysydd marciedig ar neu uwch na'r torbwynt `sm` (`20em`); cuddiedig fel arall."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16188,24 +16344,29 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 #~ msgid "Hide when the viewport is at or below the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "Cuddio pan fo'r ffenestr golwg ar neu o dan y torbwynt `content-full-width` (`98.75em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the viewport is at or below the `lg` breakpoint (`64em`)."
 #~ msgstr "Cuddio pan fo'r ffenestr golwg ar neu o dan y torbwynt `lg` (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `md` breakpoint (`30em`)."
+#~ msgid "Hide when the viewport is at or below the `md` breakpoint (`48em`)."
+#~ msgstr "Cuddio pan fo'r ffenestr golwg ar neu o dan y torbwynt `lg` (`48em`)."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the viewport is at or below the `sm` breakpoint (`30em`)."
 #~ msgstr "Cuddio pan fo'r ffenestr golwg ar neu o dan y torbwynt `md` (`30em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the viewport is at or below the `xl` breakpoint (`80em`)."
 #~ msgstr "Cuddio pan fo'r ffenestr golwg ar neu o dan y torbwynt `xl` (`62em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `xs` breakpoint (`16em`)."
+#~ msgid "Hide when the viewport is at or below the `xs` breakpoint (`20em`)."
 #~ msgstr "Cuddio pan fo'r ffenestr golwg ar neu o dan y torbwynt `xs` (`16em`)."
 
 #, no-c-format
@@ -16218,30 +16379,30 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 #~ msgid "Hide when the viewport is at or above the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "Cuddio pan fo'r ffenestr golwg ar neu uwch na'r torbwynt `content-full-width` (`98.75em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the viewport is at or above the `lg` breakpoint (`64em`)."
 #~ msgstr "Cuddio pan fo'r ffenestr golwg ar neu uwch na'r torbwynt `lg` (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `md` breakpoint (`30em`)."
-#~ msgstr "Cuddio pan fydd y ffenestr ar neu uwchlaw torri pwynt `md` (`30em`)."
+#~ msgid "Hide when the viewport is at or above the `md` breakpoint (`48em`)."
+#~ msgstr "Cuddio pan fo'r ffenestr golwg ar neu uwch na'r torbwynt `lg` (`48em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `sm` breakpoint (`20em`)."
+#~ msgid "Hide when the viewport is at or above the `sm` breakpoint (`30em`)."
 #~ msgstr "Cuddio pan fydd y ffenestr ar neu uwchlaw torri pwynt `sm` (`20em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the viewport is at or above the `xl` breakpoint (`80em`)."
 #~ msgstr "Cuddio pan fydd y ffenestr ar neu uwchlaw torri pwynt `xl` (`62em`)."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `xs` breakpoint (`16em`)."
-#~ msgstr "Cuddio pan fydd y ffenestr ar neu uwchlaw torri pwynt `xs` (`16em`)."
+#~ msgid "Hide when the viewport is at or above the `xs` breakpoint (`20em`)."
+#~ msgstr "Cuddio pan fydd y ffenestr ar neu uwchlaw torri pwynt `sm` (`20em`)."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16253,29 +16414,29 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 #~ msgid "Show (inverse of `-hidden-min-content-full-width`) when the viewport is at or below the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "Dangos (gwrthdro o `-hidden-min-content-full-width`) pan fydd y ffenestr ar neu o dan torri pwynt `content-full-width` (`98.75em`); wedi'i guddio fel arall."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-lg`) when the viewport is at or below the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-lg`) when the viewport is at or below the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "Dangos (gwrthdro o `-hidden-min-lg`) pan fydd y ffenestr ar neu o dan torri pwynt `lg` (`48em`); wedi'i guddio fel arall."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-md`) when the viewport is at or below the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-md`) when the viewport is at or below the `md` breakpoint (`48em`); hidden otherwise."
 #~ msgstr "Dangos (gwrthdro o `-hidden-min-md`) pan fydd y ffenestr ar neu o dan torri pwynt `md` (`30em`); wedi'i guddio fel arall."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-sm`) when the viewport is at or below the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-sm`) when the viewport is at or below the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "Dangos (gwrthdro o `-hidden-min-sm`) pan fydd y ffenestr ar neu o dan torri pwynt `sm` (`20em`); wedi'i guddio fel arall."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-xl`) when the viewport is at or below the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-xl`) when the viewport is at or below the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "Dangos (gwrthdro o `-hidden-min-xl`) pan fydd y ffenestr ar neu o dan torri pwynt `xl` (`62em`); wedi'i guddio fel arall."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-xs`) when the viewport is at or below the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-xs`) when the viewport is at or below the `xs` breakpoint (`20em`); hidden otherwise."
 #~ msgstr "Dangos (gwrthdro o `-hidden-min-xs`) pan fydd y ffenestr ar neu o dan torri pwynt `xs` (`16em`); wedi'i guddio fel arall."
 
 #, no-c-format
@@ -16288,29 +16449,29 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 #~ msgid "Show (inverse of `-hidden-max-content-full-width`) when the viewport is at or above the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "Dangos (gwrthdro o `-hidden-max-content-full-width`) pan fydd y ffenestr ar neu uwchlaw torri pwynt `content-full-width` (`98.75em`); wedi'i guddio fel arall."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-lg`) when the viewport is at or above the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-lg`) when the viewport is at or above the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "Dangos (gwrthdro o `-hidden-max-lg`) pan fydd y ffenestr ar neu uwchlaw torri pwynt `lg` (`48em`); wedi'i guddio fel arall."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-md`) when the viewport is at or above the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-md`) when the viewport is at or above the `md` breakpoint (`48em`); hidden otherwise."
 #~ msgstr "Dangos (gwrthdro o `-hidden-max-md`) pan fydd y ffenestr ar neu uwchlaw torri pwynt `md` (`30em`); wedi'i guddio fel arall."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-sm`) when the viewport is at or above the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-sm`) when the viewport is at or above the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "Dangos (gwrthdro o `-hidden-max-sm`) pan fydd y ffenestr ar neu uwchlaw torri pwynt `sm` (`20em`); wedi'i guddio fel arall."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-xl`) when the viewport is at or above the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-xl`) when the viewport is at or above the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "Dangos (gwrthdro o `-hidden-max-xl`) pan fydd y ffenestr ar neu uwchlaw torri pwynt `xl` (`62em`); wedi'i guddio fel arall."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-xs`) when the viewport is at or above the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-xs`) when the viewport is at or above the `xs` breakpoint (`20em`); hidden otherwise."
 #~ msgstr "Dangos (gwrthdro o `-hidden-max-xs`) pan fydd y ffenestr ar neu uwchlaw torri pwynt `xs` (`16em`); wedi'i guddio fel arall."
 
 #, no-c-format
@@ -16323,30 +16484,30 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 #~ msgid "The `content-full-width` breakpoint's value (`98.75em`, hand-authored, themed (not in the token IR)). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "Gwerth torri pwynt `content-full-width` (`98.75em`, wedi'i lunio â llaw, â thema (nid yn y token IR)). Nid yw ei oruchafu yn symud terfynau cyfansoddiad `@media`/`@container` i fyny."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `lg` breakpoint's value (`48em`, mirrors `--instui-component-tray-width-lg`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `lg` breakpoint's value (`64em`, mirrors `--instui-breakpoints-lg`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "Gwerth torri pwynt `lg` (`48em`, sy'n adlewyrchu `--instui-component-tray-width-lg`). Nid yw ei oruchafu yn symud terfynau cyfansoddiad `@media`/`@container` i fyny."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `md` breakpoint's value (`30em`, mirrors `--instui-component-tray-width-md`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `md` breakpoint's value (`48em`, mirrors `--instui-breakpoints-md`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "Gwerth torri pwynt `md` (`30em`, sy'n adlewyrchu `--instui-component-tray-width-md`). Nid yw ei oruchafu yn symud terfynau cyfansoddiad `@media`/`@container` i fyny."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `sm` breakpoint's value (`20em`, mirrors `--instui-component-tray-width-sm`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `sm` breakpoint's value (`30em`, mirrors `--instui-breakpoints-sm`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "Gwerth torri pwynt `sm` (`20em`, sy'n adlewyrchu `--instui-component-tray-width-sm`). Nid yw ei oruchafu yn symud terfynau cyfansoddiad `@media`/`@container` i fyny."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `xl` breakpoint's value (`62em`, mirrors `--instui-component-tray-width-xl`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `xl` breakpoint's value (`80em`, mirrors `--instui-breakpoints-xl`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "Gwerth torri pwynt `xl` (`62em`, sy'n adlewyrchu `--instui-component-tray-width-xl`). Nid yw ei oruchafu yn symud terfynau cyfansoddiad `@media`/`@container` i fyny."
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `xs` breakpoint's value (`16em`, mirrors `--instui-component-tray-width-xs`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
-#~ msgstr "Gwerth torri pwynt `xs` (`16em`, sy'n adlewyrchu `--instui-component-tray-width-xs`). Nid yw ei oruchafu yn symud terfynau cyfansoddiad `@media`/`@container` i fyny."
+#~ msgid "The `xs` breakpoint's value (`20em`, hand-authored Pantoken extension (not in the token IR)). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgstr "Gwerth torri pwynt `content` (`68.75em`, wedi'i lunio â llaw, â thema (nid yn y token IR)). Nid yw ei oruchafu yn symud terfynau cyfansoddiad `@media`/`@container` i fyny."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -18067,6 +18228,61 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 #~ msgctxt "docs.api:prose"
 #~ msgid "Utility actions at the end of the top row."
 #~ msgstr "Gweithrediadau defnyddiol ar ddiwedd y rhes uchaf."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or below the `md` breakpoint (`30em`)."
+#~ msgstr "Cuddio pan fo'r cynhwysydd marciedig ar neu o dan y torbwynt `md` (`30em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or below the `xs` breakpoint (`16em`)."
+#~ msgstr "Cuddio pan fo'r cynhwysydd marciedig ar neu o dan y torbwynt `xs` (`16em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or above the `md` breakpoint (`30em`)."
+#~ msgstr "Cuddio pan fo'r cynhwysydd marciedig ar neu uwch na'r torbwynt `md` (`30em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or above the `xs` breakpoint (`16em`)."
+#~ msgstr "Cuddio pan fo'r cynhwysydd marciedig ar neu uwch na'r torbwynt `xs` (`16em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or below the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgstr "Dangos pan fo'r cynhwysydd marciedig ar neu o dan y torbwynt `md` (`30em`); cuddiedig fel arall."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or below the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgstr "Dangos pan fo'r cynhwysydd marciedig ar neu o dan y torbwynt `xs` (`16em`); cuddiedig fel arall."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or above the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgstr "Dangos pan fo'r cynhwysydd marciedig ar neu uwch na'r torbwynt `md` (`30em`); cuddiedig fel arall."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or above the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgstr "Dangos pan fo'r cynhwysydd marciedig ar neu uwch na'r torbwynt `xs` (`16em`); cuddiedig fel arall."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the viewport is at or above the `md` breakpoint (`30em`)."
+#~ msgstr "Cuddio pan fydd y ffenestr ar neu uwchlaw torri pwynt `md` (`30em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the viewport is at or above the `xs` breakpoint (`16em`)."
+#~ msgstr "Cuddio pan fydd y ffenestr ar neu uwchlaw torri pwynt `xs` (`16em`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The `xs` breakpoint's value (`16em`, mirrors `--instui-component-tray-width-xs`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgstr "Gwerth torri pwynt `xs` (`16em`, sy'n adlewyrchu `--instui-component-tray-width-xs`). Nid yw ei oruchafu yn symud terfynau cyfansoddiad `@media`/`@container` i fyny."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -27763,10 +27979,6 @@ msgstr "Botwm “gweld sgrîn lawn” sy’n ymddangos wrth hofran, wedi’i orc
 #~ msgctxt "docs.api:text"
 #~ msgid "byline"
 #~ msgstr "byline"
-
-#~ msgctxt "docs.api:text"
-#~ msgid "day"
-#~ msgstr "day"
 
 #~ msgctxt "docs.api:text"
 #~ msgid "card"

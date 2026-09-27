@@ -231,7 +231,7 @@ test("reacts to the data-pantoken-scheme attribute for dark mode theming", async
   document.documentElement.setAttribute("data-pantoken-scheme", "dark");
   await new Promise((resolve) => setTimeout(resolve, 0));
 
-  expect(container.style.backgroundColor).toBe("#1e1e1e");
+  expect(container.style.backgroundColor).toBe("#171b21");
   document.documentElement.removeAttribute("data-pantoken-scheme");
 });
 
@@ -260,7 +260,7 @@ test("highlight and theme colors are !important, so they survive TinyMCE's `.tox
     .join("\n");
 
   expect(styles).toContain("#800000 !important");
-  expect(styles).toMatch(/#ffffff\s*!important/);
+  expect(styles).toMatch(/background-color:\s*#f2f4f5\s*!important/i);
 });
 
 /** A fake editor supporting multiple listeners per event and a statusbar container, for

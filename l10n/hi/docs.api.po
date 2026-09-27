@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-26 17:30+0000\n"
+"PO-Revision-Date: 2026-09-27 00:57+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -2323,6 +2323,30 @@ msgctxt "docs.api:prose"
 msgid "An [IconResolver](../../../../packages/core/src/type-aliases/IconResolver.md) backed by the pantoken icon set (for the plugin/rehype stages)."
 msgstr "एक [IconResolver](../../../../packages/core/src/type-aliases/IconResolver.md) जो pantoken आइकन सेट द्वारा समर्थित है (plugin/rehype चरणों के लिए)."
 
+#: formats/inline-styles/src/functions/inlineHtml.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inline CSS rules into matching HTML elements without fetching external resources."
+msgstr "बाहरी संसाधन प्राप्त किए बिना मिलते-जुलते HTML तत्वों में इनलाइन CSS नियम डालें।"
+
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for inlining a stylesheet into an HTML document."
+msgstr "HTML दस्तावेज़ में स्टाइलशीट इनलाइन करने के विकल्प।"
+
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Keep media-query and pseudo-class rules in a style element."
+msgstr "style एलिमेंट में मीडिया-क्वेरी और pseudo-class नियम रखें।"
+
+#: formats/inline-styles/src/interfaces/InlineHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Resolve custom-property references against declarations in the document."
+msgstr "दस्तावेज़ में घोषणाओं के खिलाफ custom-property संदर्भों को हल करें।"
+
 #: formats/interactions/src/functions/applySpacing.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -3542,9 +3566,9 @@ msgid "Run the `pantoken create <platform>` command, delegating to `@pantoken/sc
 msgstr "`pantoken create <platform>` कमांड चलाएँ, इसे `@pantoken/scaffold/cli` को सौंपते हुए."
 
 #: packages/cli/src/index.md
-#, no-c-format
+#, fuzzy, no-c-format
 msgctxt "docs.api:prose"
-msgid "Emits native and other non-npm design-token source into a consumer repo — the targets that don't\nfit the npm-package model. Supported now: `swift` (with an SPM `Package.swift` manifest stub, so\nregistry publishing is later a config flip), `android`, `compose`, `flutter`, `wordpress`,\n`vanilla`, `drupal`, `swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, and `mintlify`."
+msgid "Emits native and other non-npm design-token source into a consumer repo — the targets that don't\nfit the npm-package model. Supported now: `swift` (with an SPM `Package.swift` manifest stub, so\nregistry publishing is later a config flip), `android`, `compose`, `flutter`, `wordpress`,\n`vanilla`, `drupal`, `swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, `mintlify`, and\n`inline`, and `email`."
 msgstr "नैटिव और अन्य गैर-npm डिज़ाइन-टोकन स्रोत को एक उपभोक्ता रिपो में जारी करता है — वे लक्ष्य जो npm-package मॉडल में फिट नहीं होते। अब समर्थित: `swift` (एक SPM `Package.swift` मैनिफेस्ट स्टब के साथ, ताकि रजिस्ट्री पब्लिशिंग बाद में एक कॉन्फ़िग फ़्लिप बन सके), `android`, `compose`, `flutter`, `wordpress`, `vanilla`, `drupal`, `swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, और `mintlify`."
 
 #: packages/cli/src/interfaces/CliArgs.md
@@ -5354,6 +5378,12 @@ msgctxt "docs.api:prose"
 msgid "**Inline a token into an email cell (light mode)**"
 msgstr "**इमेल सेल में एक टोकन इनलाइन करें (लाइट मोड)**"
 
+#: platforms/email/src/functions/inlineEmailHtml.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Inline resolved pantoken tokens and component CSS into HTML email markup."
+msgstr "हल किए गए pantoken टोकन और component CSS को HTML ईमेल मार्कअप में इनलाइन करें।"
+
 #: platforms/email/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -5365,6 +5395,97 @@ msgstr "`@pantoken/email` — Instructure डिज़ाइन टोकन HTM
 msgctxt "docs.api:prose"
 msgid "Email clients don't support CSS custom properties and often strip `<style>`, so tokens are fully\nresolved to concrete values for inline styling. Colours are hex; dimensions keep their `px` units.\nIcons are excluded. `light`/`dark` maps are keyed by camelCased token name."
 msgstr "Email clients don't support CSS custom properties and often strip `&lt;style&gt;`, so tokens are fully\nresolved to concrete values for inline styling. Colours are hex; dimensions keep their `px` units.\nIcons are excluded. `light`/`dark` maps are keyed by camelCased token name."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for filtering component CSS for email output."
+msgstr "ईमेल आउटपुट के लिए component CSS को फ़िल्टर करने के विकल्प।"
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Client capability profile. Defaults to `generic`."
+msgstr "क्लाइंट क्षमता प्रोफ़ाइल। डिफ़ॉल्ट `generic`."
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component names to allow in addition to the default email-safe set."
+msgstr "डिफ़ॉल्ट ईमेल-सेफ सेट के अतिरिक्त अनुमति देने के लिए component नाम।"
+
+#: platforms/email/src/interfaces/EmailCssOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component names to remove even when they are in the default or custom allowlist."
+msgstr "डिफ़ॉल्ट या कस्टम allowlist में होने पर भी हटाने के लिए component नाम।"
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Options for generating email-compatible HTML with pantoken styles."
+msgstr "pantoken शैलियों के साथ ईमेल-अनुकूल HTML उत्पन्न करने के विकल्प।"
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Token theme to use. Defaults to `rebrand`."
+msgstr "जारी करने के लिए थीम (डिफ़ॉल्ट: `\"rebrand\"`)."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Color scheme to resolve. Defaults to `light`."
+msgstr "कौन सा रंग मोड हल करना है (डिफ़ॉल्ट `\"light\"`)."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component class prefix. Defaults to `instui`."
+msgstr "Component क्लास प्रिफिक्स। डिफ़ॉल्ट `instui`."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, fuzzy, no-c-format
+msgctxt "docs.api:prose"
+msgid "Add generated rules for this custom brand color."
+msgstr "ऐसा एट्रिब्यूट जो एक कस्टम ब्रांड रंग का चयन करता है।"
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Apply one of the plugin's shipped or custom color scales."
+msgstr "प्लगइन के वितरित या कस्टम color scale में से किसी एक को लागू करें।"
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Retain pseudo-class and media-query rules in a style element. Defaults to `false`."
+msgstr "style एलिमेंट में pseudo-class और मीडिया-क्वेरी नियम बनाए रखें। डिफ़ॉल्ट `false`."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Email client capability profile. Defaults to `generic`."
+msgstr "ईमेल क्लाइंट क्षमता प्रोफ़ाइल। डिफ़ॉल्ट `generic`."
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Component names to remove from the email output."
+msgstr "ईमेल आउटपुट से हटाने के लिए component नाम।"
+
+#: platforms/email/src/interfaces/InlineEmailHtmlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Additional caller-supplied CSS."
+msgstr "अतिरिक्त कॉलर-प्रदत्त CSS."
+
+#: platforms/email/src/type-aliases/EmailClient.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Supported email client capability profiles."
+msgstr "समर्थित ईमेल क्लाइंट क्षमता प्रोफाइल।"
 
 #: platforms/email/src/variables/dark.md
 #, no-c-format
@@ -12125,12 +12246,22 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "`.instui-button-set` — A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
-#~ msgstr "`.instui-button-set` — एक सिलवाया हुआ (सपाट, शून्य-श्लेष) बटन पंक्ति, जिसकी केवल बाहरी दो कोने गोल किए गए हैं."
+#~ msgid "`.breakpoints` — Extra-small viewport width for phone-sized previews."
+#~ msgstr "`.breakpoints` — फोन-आकार के पूर्वावलोकनों के लिए अतिरिक्त-छोटी viewport चौड़ाई."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead."
+#~ msgid "Extra-small viewport width (20em / 320px)."
+#~ msgstr "अतिरिक्त-छोटी viewport चौड़ाई (20em / 320px)."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "`.instui-button-set` — A non-wrapping, flush row of buttons joined by 1px seams, with only its outer two corners rounded."
+#~ msgstr "`.instui-button-set` — एक सिलवाया हुआ (सपाट, शून्य-श्लेष) बटन पंक्ति, जिसकी केवल बाहरी दो कोने गोल किए गए हैं."
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) set a default for every child\n  `.instui-button` that doesn't carry its own modifier in that same category — a button's own\n  modifier class always wins over the group's default. `-icon-*` is always per-button; it's\n  never read from the group. Deprecated button aliases (`-ghost`, `-color-primary-inverse`)\n  aren't supported as group-level modifiers — use their canonical replacements\n  (`-color-tertiary`, `-on-color`) instead. Each join shows a single 1px seam in the buttons'\n  own border color (solid fills, whose border matches the fill, tint it with the label color).\n  `-without-seam` is group-only: it hides that seam so the buttons read as\n  one continuous control."
 #~ msgstr "Its own chained modifiers (`-color-*`, `-size-*`, `-shape-*`, `-toggle`, `-condensed`,\n  `-without-background`, `-without-border`, `-display-block`) ग्रुप के लिए डिफ़ॉल्ट सेट करते हैं उन प्रत्येक बच्चे के लिए\n  `.instui-button` जिनके पास उसी श्रेणी में अपना मॉडिफायर नहीं है — किसी बटन का अपना\n  मॉडिफायर क्लास हमेशा समूह के डिफ़ॉल्ट पर भारी पड़ता है। `-icon-*` हमेशा प्रति-बटन होता है; इसे\n  कभी समूह से पढ़ा नहीं जाता। प्रतिबंधित बटन उपनाम (`-ghost`, `-color-primary-inverse`)\n) समूह-स्तरीय मॉडिफायर के रूप में समर्थित नहीं हैं — इनके canonical प्रतिस्थापनों का उपयोग करें\n  (`-color-tertiary`, `-on-color`) के बजाय)."
 
 #, no-c-format
@@ -12147,6 +12278,21 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #~ msgctxt "docs.api:prose"
 #~ msgid "Confirm"
 #~ msgstr "पुष्ट करें"
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Day"
+#~ msgstr "day"
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Week"
+#~ msgstr " सप्ताह 1"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Month"
+#~ msgstr "महीना"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -12237,6 +12383,11 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #~ msgctxt "docs.api:prose"
 #~ msgid "Default every unmodified child to no border."
 #~ msgstr "हर अपरिवर्तित बच्चे के लिए डिफ़ॉल्ट रूप से बिना बॉर्डर सेट करें."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide the 1px seam between buttons."
+#~ msgstr "बटनों के बीच 1px की सीम को छिपाएँ."
 
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -12948,9 +13099,9 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #~ msgid "`.content` — The primary content pane that fills remaining space beside the tray."
 #~ msgstr "`.content` — ट्रे के बगल में शेष स्थान भरने वाला प्राथमिक सामग्री पैनल।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Once the parent's inline-size drops below `46em` (`16em` tray width + `30em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override."
+#~ msgid "Once the parent's inline-size drops below `64em` (`16em` tray width + `48em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override."
 #~ msgstr "जब पैरेंट की inline-size `46em` (`16em` ट्रे चौड़ाई + `30em` ब्रेकपॉइंट) से नीचे गिरती है, तो पैरेंट के `pantoken-drawer-layout` कंटेनर पर किया गया एक `@container` क्वेरी अपने आप इस सदस्य की `min-inline-size` को `0` पर घटा देता है, जो मैनुअल `[should-overlay-tray]` ओवरराइड से मेल खाता है।"
 
 #, no-c-format
@@ -13018,9 +13169,9 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #~ msgid "The side panel."
 #~ msgstr "साइड पैनल।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Width threshold for overlay mode (`30em`, themed via responsive utilities)."
+#~ msgid "Width threshold for overlay mode (`48em`, sourced from the responsive utility's canonical `md` breakpoint)."
 #~ msgstr "ओवरले मोड के लिए चौड़ाई थ्रेशहोल्ड (`30em`, रेस्पॉन्सिव यूटिलिटीज़ के माध्यम से थीम्ड)।"
 
 #, no-c-format
@@ -13783,9 +13934,9 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #~ msgid "An accessible action control, styled from the token palette; primary by default."
 #~ msgstr "एक पहुँच-योग्य कार्रवाई नियंत्रण, टोकन पैलेट से स्टाइल किया गया; डिफ़ॉल्ट रूप से प्राथमिक।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "A seamed (flush, zero-gap) row of buttons, with only its outer two corners rounded."
+#~ msgid "A non-wrapping, flush row of buttons joined by 1px seams, with only its outer two corners rounded."
 #~ msgstr "एक सिलवाया हुआ (सपाट, शून्य-श्लेष) बटन पंक्ति, जिसकी केवल बाहरी दो कोने गोल किए गए हैं."
 
 #, no-c-format
@@ -14212,6 +14363,11 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #~ msgctxt "docs.api:prose"
 #~ msgid "Typographic defaults for raw HTML — headings, paragraphs, lists, links, and code — applied automatically wherever it's imported (default `:where(body)`); pass `options.scope` to target a different content root instead (e.g. `.vp-doc`)."
 #~ msgstr "कच्चे HTML के लिए टाइपोग्राफिक डिफ़ॉल्ट — हेडिंग्स, पैरा, सूचियाँ, लिंक और कोड — जहाँ भी आयात किया जाता है स्वचालित रूप से लागू (डिफ़ॉल्ट `:where(body)`); अलग कंटेंट रूट टार्गेट करने के लिए `options.scope` पास करें (उदा. `.vp-doc`)."
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Extra-small viewport width for phone-sized previews."
+#~ msgstr "फोन-आकार के पूर्वावलोकनों के लिए अतिरिक्त-छोटी viewport चौड़ाई."
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16018,9 +16174,9 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #~ msgid "`[class*=\"-hidden-\"],[class*=\"-show-\"]` — Viewport- or container-width show/hide classes across a themed breakpoint scale."
 #~ msgstr "`[class*=\"-hidden-\"],[class*=\"-show-\"]` — थीम-ब्रेकपॉइंट स्केल में viewport या container-चौड़ाई के आधार पर दिखाने/छिपाने की क्लासें।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "`.instui-hidden-max-<bp>`/`-hidden-min-<bp>` hide by viewport width; `.instui-show-max-<bp>`/`-show-min-<bp>` are the inverse (hidden by default, shown only inside the range via `display: revert`); the `-cq-` variants react to a `.instui-container` ancestor's width instead, not the viewport's. Scale tiers `xs`/`sm`/`md`/`lg`/`xl` (sourced from the IR's tray-width component tokens) are each aliased to a long-form spelling (`x-small`–`x-large`) and a device name (`mobile`/`phablet`/`tablet`/`laptop`/`desktop`) — both deprecated in favor of the short name — plus the unscaled, themed `content`/`content-full-width` tiers (the main content area's max-width)."
+#~ msgid "`.instui-hidden-max-<bp>`/`-hidden-min-<bp>` hide by viewport width; `.instui-show-max-<bp>`/`-show-min-<bp>` are the inverse (hidden by default, shown only inside the range via `display: revert`); the `-cq-` variants react to a `.instui-container` ancestor's width instead, not the viewport's. Scale tiers `sm`/`md`/`lg`/`xl` mirror the IR's canonical breakpoint tokens, with a Pantoken-defined `xs` extension at `20em`; each is aliased to a long-form spelling (`x-small`–`x-large`) and a device name (`mobile`/`phablet`/`tablet`/`laptop`/`desktop`) — both deprecated in favor of the short name — plus the unscaled, themed `content`/`content-full-width` tiers (the main content area's max-width)."
 #~ msgstr "`.instui-hidden-max-<bp>`/`-hidden-min-<bp>` viewport चौड़ाई द्वारा छुपाती हैं; `.instui-show-max-<bp>`/`-show-min-<bp>` उनका विपरीत हैं (डिफ़ॉल्ट रूप से छिपी हुई, केवल `display: revert` के ज़रिए रेंज के भीतर दिखाई देती हैं); `-cq-` वैरिएंट किसी `.instui-container` पूर्वज की चौड़ाई पर प्रतिक्रिया करते हैं, viewport पर नहीं। स्केल टियर्स `xs`/`sm`/`md`/`lg`/`xl` (IR के tray-width component टोकन्स से स्रोत) को प्रत्येक लंबी-फॉर्म स्पेलिंग (`x-small`–`x-large`) और डिवाइस नाम (`mobile`/`phablet`/`tablet`/`laptop`/`desktop`) से एलियस किया गया है — दोनों शॉर्ट नाम के पक्ष में अप्रचलित हैं — साथ ही अनस्केल्ड, थीम्ड `content`/`content-full-width` टियर्स (मुख्य कंटेंट एरिया की max-width)।"
 
 #, no-c-format
@@ -16048,30 +16204,30 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #~ msgid "Hide when the marked container is at or below the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "जब चिन्हित कंटेनर `content-full-width` ब्रेकपॉइंट (`98.75em`) पर या उससे नीचे हो तो छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the marked container is at or below the `lg` breakpoint (`64em`)."
 #~ msgstr "जब चिन्हित कंटेनर `lg` ब्रेकपॉइंट (`48em`) पर या उससे नीचे हो तो छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `md` breakpoint (`30em`)."
-#~ msgstr "जब चिन्हित कंटेनर `md` ब्रेकपॉइंट (`30em`) पर या उससे नीचे हो तो छिपाएँ।"
+#~ msgid "Hide when the marked container is at or below the `md` breakpoint (`48em`)."
+#~ msgstr "जब चिन्हित कंटेनर `lg` ब्रेकपॉइंट (`48em`) पर या उससे नीचे हो तो छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `sm` breakpoint (`20em`)."
+#~ msgid "Hide when the marked container is at or below the `sm` breakpoint (`30em`)."
 #~ msgstr "जब चिन्हित कंटेनर `sm` ब्रेकपॉइंट (`20em`) पर या उससे नीचे हो तो छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the marked container is at or below the `xl` breakpoint (`80em`)."
 #~ msgstr "जब चिन्हित कंटेनर `xl` ब्रेकपॉइंट (`62em`) पर या उससे नीचे हो तो छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or below the `xs` breakpoint (`16em`)."
-#~ msgstr "जब चिन्हित कंटेनर `xs` ब्रेकपॉइंट (`16em`) पर या उससे नीचे हो तो छिपाएँ।"
+#~ msgid "Hide when the marked container is at or below the `xs` breakpoint (`20em`)."
+#~ msgstr "जब चिन्हित कंटेनर `sm` ब्रेकपॉइंट (`20em`) पर या उससे नीचे हो तो छिपाएँ।"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16083,30 +16239,30 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #~ msgid "Hide when the marked container is at or above the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "जब चिन्हित कंटेनर `content-full-width` ब्रेकपॉइंट (`98.75em`) पर या उससे ऊपर हो तो छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the marked container is at or above the `lg` breakpoint (`64em`)."
 #~ msgstr "जब चिन्हित कंटेनर `lg` ब्रेकपॉइंट (`48em`) पर या उससे ऊपर हो तो छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `md` breakpoint (`30em`)."
-#~ msgstr "जब चिन्हित कंटेनर `md` ब्रेकपॉइंट (`30em`) पर या उससे ऊपर हो तो छिपाएँ।"
+#~ msgid "Hide when the marked container is at or above the `md` breakpoint (`48em`)."
+#~ msgstr "जब चिन्हित कंटेनर `lg` ब्रेकपॉइंट (`48em`) पर या उससे ऊपर हो तो छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `sm` breakpoint (`20em`)."
+#~ msgid "Hide when the marked container is at or above the `sm` breakpoint (`30em`)."
 #~ msgstr "जब चिन्हित कंटेनर `sm` ब्रेकपॉइंट (`20em`) पर या उससे ऊपर हो तो छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the marked container is at or above the `xl` breakpoint (`80em`)."
 #~ msgstr "जब चिन्हित कंटेनर `xl` ब्रेकपॉइंट (`62em`) पर या उससे ऊपर हो तो छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the marked container is at or above the `xs` breakpoint (`16em`)."
-#~ msgstr "जब चिन्हित कंटेनर `xs` ब्रेकपॉइंट (`16em`) पर या उससे ऊपर हो तो छिपाएँ।"
+#~ msgid "Hide when the marked container is at or above the `xs` breakpoint (`20em`)."
+#~ msgstr "जब चिन्हित कंटेनर `sm` ब्रेकपॉइंट (`20em`) पर या उससे ऊपर हो तो छिपाएँ।"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16118,30 +16274,30 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #~ msgid "Show when the marked container is at or below the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "जब चिन्हित कंटेनर `content-full-width` ब्रेकपॉइंट (`98.75em`) पर या उससे नीचे हो तो दिखाएँ; अन्यथा छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or below the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "जब चिन्हित कंटेनर `lg` ब्रेकपॉइंट (`48em`) पर या उससे नीचे हो तो दिखाएँ; अन्यथा छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `md` breakpoint (`30em`); hidden otherwise."
-#~ msgstr "जब चिन्हित कंटेनर `md` ब्रेकपॉइंट (`30em`) पर या उससे नीचे हो तो दिखाएँ; अन्यथा छिपाएँ।"
+#~ msgid "Show when the marked container is at or below the `md` breakpoint (`48em`); hidden otherwise."
+#~ msgstr "जब चिन्हित कंटेनर `lg` ब्रेकपॉइंट (`48em`) पर या उससे नीचे हो तो दिखाएँ; अन्यथा छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or below the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "जब चिन्हित कंटेनर `sm` ब्रेकपॉइंट (`20em`) पर या उससे नीचे हो तो दिखाएँ; अन्यथा छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or below the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "जब चिन्हित कंटेनर `xl` ब्रेकपॉइंट (`62em`) पर या उससे नीचे हो तो दिखाएँ; अन्यथा छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or below the `xs` breakpoint (`16em`); hidden otherwise."
-#~ msgstr "जब चिन्हित कंटेनर `xs` ब्रेकपॉइंट (`16em`) पर या उससे नीचे हो तो दिखाएँ; अन्यथा छिपाएँ।"
+#~ msgid "Show when the marked container is at or below the `xs` breakpoint (`20em`); hidden otherwise."
+#~ msgstr "जब चिन्हित कंटेनर `sm` ब्रेकपॉइंट (`20em`) पर या उससे नीचे हो तो दिखाएँ; अन्यथा छिपाएँ।"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16153,30 +16309,30 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #~ msgid "Show when the marked container is at or above the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "जब चिन्हित कंटेनर `content-full-width` ब्रेकपॉइंट (`98.75em`) पर या उससे ऊपर हो तो दिखाएँ; अन्यथा छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or above the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "जब चिन्हित कंटेनर `lg` ब्रेकपॉइंट (`48em`) पर या उससे ऊपर हो तो दिखाएँ; अन्यथा छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `md` breakpoint (`30em`); hidden otherwise."
-#~ msgstr "जब चिन्हित कंटेनर `md` ब्रेकपॉइंट (`30em`) पर या उससे ऊपर हो तो दिखाएँ; अन्यथा छिपाएँ।"
+#~ msgid "Show when the marked container is at or above the `md` breakpoint (`48em`); hidden otherwise."
+#~ msgstr "जब चिन्हित कंटेनर `lg` ब्रेकपॉइंट (`48em`) पर या उससे ऊपर हो तो दिखाएँ; अन्यथा छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or above the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "जब चिन्हित कंटेनर `sm` ब्रेकपॉइंट (`20em`) पर या उससे ऊपर हो तो दिखाएँ; अन्यथा छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show when the marked container is at or above the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "जब चिन्हित कंटेनर `xl` ब्रेकपॉइंट (`62em`) पर या उससे ऊपर हो तो दिखाएँ; अन्यथा छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show when the marked container is at or above the `xs` breakpoint (`16em`); hidden otherwise."
-#~ msgstr "जब चिन्हित कंटेनर `xs` ब्रेकपॉइंट (`16em`) पर या उससे ऊपर हो तो दिखाएँ; अन्यथा छिपाएँ।"
+#~ msgid "Show when the marked container is at or above the `xs` breakpoint (`20em`); hidden otherwise."
+#~ msgstr "जब चिन्हित कंटेनर `sm` ब्रेकपॉइंट (`20em`) पर या उससे ऊपर हो तो दिखाएँ; अन्यथा छिपाएँ।"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16188,24 +16344,29 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #~ msgid "Hide when the viewport is at or below the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "जब viewport `content-full-width` ब्रेकपॉइंट (`98.75em`) पर या उससे नीचे हो तो छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the viewport is at or below the `lg` breakpoint (`64em`)."
 #~ msgstr "जब viewport `lg` ब्रेकपॉइंट (`48em`) पर या उससे नीचे हो तो छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `md` breakpoint (`30em`)."
+#~ msgid "Hide when the viewport is at or below the `md` breakpoint (`48em`)."
+#~ msgstr "जब viewport `lg` ब्रेकपॉइंट (`48em`) पर या उससे नीचे हो तो छिपाएँ।"
+
+#, fuzzy, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the viewport is at or below the `sm` breakpoint (`30em`)."
 #~ msgstr "जब viewport `md` ब्रेकपॉइंट (`30em`) पर या उससे नीचे हो तो छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the viewport is at or below the `xl` breakpoint (`80em`)."
 #~ msgstr "जब viewport `xl` ब्रेकपॉइंट (`62em`) पर या उससे नीचे हो तो छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or below the `xs` breakpoint (`16em`)."
+#~ msgid "Hide when the viewport is at or below the `xs` breakpoint (`20em`)."
 #~ msgstr "जब viewport `xs` ब्रेकपॉइंट (`16em`) पर या उससे नीचे हो तो छिपाएँ।"
 
 #, no-c-format
@@ -16218,30 +16379,30 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #~ msgid "Hide when the viewport is at or above the `content-full-width` breakpoint (`98.75em`)."
 #~ msgstr "जब viewport `content-full-width` ब्रेकपॉइंट (`98.75em`) पर या उससे ऊपर हो तो छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `lg` breakpoint (`48em`)."
+#~ msgid "Hide when the viewport is at or above the `lg` breakpoint (`64em`)."
 #~ msgstr "जब viewport `lg` ब्रेकपॉइंट (`48em`) पर या उससे ऊपर हो तो छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `md` breakpoint (`30em`)."
-#~ msgstr "जब viewport `md` ब्रेकपॉइंट (`30em`) पर या उससे ऊपर हो तो छिपाएँ।"
+#~ msgid "Hide when the viewport is at or above the `md` breakpoint (`48em`)."
+#~ msgstr "जब viewport `lg` ब्रेकपॉइंट (`48em`) पर या उससे ऊपर हो तो छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `sm` breakpoint (`20em`)."
+#~ msgid "Hide when the viewport is at or above the `sm` breakpoint (`30em`)."
 #~ msgstr "जब viewport `sm` ब्रेकपॉइंट (`20em`) पर या उससे ऊपर हो तो छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `xl` breakpoint (`62em`)."
+#~ msgid "Hide when the viewport is at or above the `xl` breakpoint (`80em`)."
 #~ msgstr "जब viewport `xl` ब्रेकपॉइंट (`62em`) पर या उससे ऊपर हो तो छिपाएँ।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Hide when the viewport is at or above the `xs` breakpoint (`16em`)."
-#~ msgstr "जब viewport `xs` ब्रेकपॉइंट (`16em`) पर या उससे ऊपर हो तो छिपाएँ।"
+#~ msgid "Hide when the viewport is at or above the `xs` breakpoint (`20em`)."
+#~ msgstr "जब viewport `sm` ब्रेकपॉइंट (`20em`) पर या उससे ऊपर हो तो छिपाएँ।"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -16253,29 +16414,29 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #~ msgid "Show (inverse of `-hidden-min-content-full-width`) when the viewport is at or below the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "जब viewport `content-full-width` ब्रेकपॉइंट (`98.75em`) पर या उसके नीचे हो तो दिखाएँ (`-hidden-min-content-full-width` का विपरीत); अन्यथा छिपा रहेगा।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-lg`) when the viewport is at or below the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-lg`) when the viewport is at or below the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "जब viewport `lg` ब्रेकपॉइंट (`48em`) पर या उसके नीचे हो तो दिखाएँ (`-hidden-min-lg` का विपरीत); अन्यथा छिपा रहेगा।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-md`) when the viewport is at or below the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-md`) when the viewport is at or below the `md` breakpoint (`48em`); hidden otherwise."
 #~ msgstr "जब viewport `md` ब्रेकपॉइंट (`30em`) पर या उसके नीचे हो तो दिखाएँ (`-hidden-min-md` का विपरीत); अन्यथा छिपा रहेगा।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-sm`) when the viewport is at or below the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-sm`) when the viewport is at or below the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "जब viewport `sm` ब्रेकपॉइंट (`20em`) पर या उसके नीचे हो तो दिखाएँ (`-hidden-min-sm` का विपरीत); अन्यथा छिपा रहेगा।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-xl`) when the viewport is at or below the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-xl`) when the viewport is at or below the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "जब viewport `xl` ब्रेकपॉइंट (`62em`) पर या उसके नीचे हो तो दिखाएँ (`-hidden-min-xl` का विपरीत); अन्यथा छिपा रहेगा।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-min-xs`) when the viewport is at or below the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-min-xs`) when the viewport is at or below the `xs` breakpoint (`20em`); hidden otherwise."
 #~ msgstr "जब viewport `xs` ब्रेकपॉइंट (`16em`) पर या उसके नीचे हो तो दिखाएँ (`-hidden-min-xs` का विपरीत); अन्यथा छिपा रहेगा।"
 
 #, no-c-format
@@ -16288,29 +16449,29 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #~ msgid "Show (inverse of `-hidden-max-content-full-width`) when the viewport is at or above the `content-full-width` breakpoint (`98.75em`); hidden otherwise."
 #~ msgstr "जब viewport `content-full-width` ब्रेकपॉइंट (`98.75em`) पर या उससे ऊपर हो तो दिखाएँ (`-hidden-max-content-full-width` का विपरीत); अन्यथा छिपा रहेगा।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-lg`) when the viewport is at or above the `lg` breakpoint (`48em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-lg`) when the viewport is at or above the `lg` breakpoint (`64em`); hidden otherwise."
 #~ msgstr "जब viewport `lg` ब्रेकपॉइंट (`48em`) पर या उससे ऊपर हो तो दिखाएँ (`-hidden-max-lg` का विपरीत); अन्यथा छिपा रहेगा।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-md`) when the viewport is at or above the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-md`) when the viewport is at or above the `md` breakpoint (`48em`); hidden otherwise."
 #~ msgstr "जब viewport `md` ब्रेकपॉइंट (`30em`) पर या उससे ऊपर हो तो दिखाएँ (`-hidden-max-md` का विपरीत); अन्यथा छिपा रहेगा।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-sm`) when the viewport is at or above the `sm` breakpoint (`20em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-sm`) when the viewport is at or above the `sm` breakpoint (`30em`); hidden otherwise."
 #~ msgstr "जब viewport `sm` ब्रेकपॉइंट (`20em`) पर या उससे ऊपर हो तो दिखाएँ (`-hidden-max-sm` का विपरीत); अन्यथा छिपा रहेगा।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-xl`) when the viewport is at or above the `xl` breakpoint (`62em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-xl`) when the viewport is at or above the `xl` breakpoint (`80em`); hidden otherwise."
 #~ msgstr "जब viewport `xl` ब्रेकपॉइंट (`62em`) पर या उससे ऊपर हो तो दिखाएँ (`-hidden-max-xl` का विपरीत); अन्यथा छिपा रहेगा।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "Show (inverse of `-hidden-max-xs`) when the viewport is at or above the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgid "Show (inverse of `-hidden-max-xs`) when the viewport is at or above the `xs` breakpoint (`20em`); hidden otherwise."
 #~ msgstr "जब viewport `xs` ब्रेकपॉइंट (`16em`) पर या उससे ऊपर हो तो दिखाएँ (`-hidden-max-xs` का विपरीत); अन्यथा छिपा रहेगा।"
 
 #, no-c-format
@@ -16323,30 +16484,30 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #~ msgid "The `content-full-width` breakpoint's value (`98.75em`, hand-authored, themed (not in the token IR)). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "`content-full-width` ब्रेकपॉइंट का मान (`98.75em`, हस्तलिखित, थीम-आधारित (token IR में नहीं)). इसे ओवरराइड करने से संकलित `@media`/`@container` थ्रेशोल्ड ऊपर नहीं खिसकते।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `lg` breakpoint's value (`48em`, mirrors `--instui-component-tray-width-lg`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `lg` breakpoint's value (`64em`, mirrors `--instui-breakpoints-lg`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "`lg` ब्रेकपॉइंट का मान (`48em`, `--instui-component-tray-width-lg` का प्रतिबिंब). इसे ओवरराइड करने से संकलित `@media`/`@container` थ्रेशोल्ड ऊपर नहीं खिसकते।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `md` breakpoint's value (`30em`, mirrors `--instui-component-tray-width-md`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `md` breakpoint's value (`48em`, mirrors `--instui-breakpoints-md`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "`md` ब्रेकपॉइंट का मान (`30em`, `--instui-component-tray-width-md` का प्रतिबिंब). इसे ओवरराइड करने से संकलित `@media`/`@container` थ्रेशोल्ड ऊपर नहीं खिसकते।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `sm` breakpoint's value (`20em`, mirrors `--instui-component-tray-width-sm`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `sm` breakpoint's value (`30em`, mirrors `--instui-breakpoints-sm`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "`sm` ब्रेकपॉइंट का मान (`20em`, `--instui-component-tray-width-sm` का प्रतिबिंब). इसे ओवरराइड करने से संकलित `@media`/`@container` थ्रेशोल्ड ऊपर नहीं खिसकते।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `xl` breakpoint's value (`62em`, mirrors `--instui-component-tray-width-xl`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgid "The `xl` breakpoint's value (`80em`, mirrors `--instui-breakpoints-xl`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
 #~ msgstr "`xl` ब्रेकपॉइंट का मान (`62em`, `--instui-component-tray-width-xl` का प्रतिबिंब). इसे ओवरराइड करने से संकलित `@media`/`@container` थ्रेशोल्ड ऊपर नहीं खिसकते।"
 
-#, no-c-format
+#, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
-#~ msgid "The `xs` breakpoint's value (`16em`, mirrors `--instui-component-tray-width-xs`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
-#~ msgstr "`xs` ब्रेकपॉइंट का मान (`16em`, `--instui-component-tray-width-xs` का प्रतिबिंब). इसे ओवरराइड करने से संकलित `@media`/`@container` थ्रेशोल्ड ऊपर नहीं खिसकते।"
+#~ msgid "The `xs` breakpoint's value (`20em`, hand-authored Pantoken extension (not in the token IR)). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgstr "`content` ब्रेकपॉइंट का मान (`68.75em`, हस्तलिखित, थीम-आधारित (token IR में नहीं)). इसे ओवरराइड करने से संकलित `@media`/`@container` थ्रेशोल्ड ऊपर नहीं खिसकते।"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -18067,6 +18228,61 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #~ msgctxt "docs.api:prose"
 #~ msgid "Utility actions at the end of the top row."
 #~ msgstr "ऊपर की पंक्ति के अंत में यूटिलिटी क्रियाएँ।"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or below the `md` breakpoint (`30em`)."
+#~ msgstr "जब चिन्हित कंटेनर `md` ब्रेकपॉइंट (`30em`) पर या उससे नीचे हो तो छिपाएँ।"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or below the `xs` breakpoint (`16em`)."
+#~ msgstr "जब चिन्हित कंटेनर `xs` ब्रेकपॉइंट (`16em`) पर या उससे नीचे हो तो छिपाएँ।"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or above the `md` breakpoint (`30em`)."
+#~ msgstr "जब चिन्हित कंटेनर `md` ब्रेकपॉइंट (`30em`) पर या उससे ऊपर हो तो छिपाएँ।"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the marked container is at or above the `xs` breakpoint (`16em`)."
+#~ msgstr "जब चिन्हित कंटेनर `xs` ब्रेकपॉइंट (`16em`) पर या उससे ऊपर हो तो छिपाएँ।"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or below the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgstr "जब चिन्हित कंटेनर `md` ब्रेकपॉइंट (`30em`) पर या उससे नीचे हो तो दिखाएँ; अन्यथा छिपाएँ।"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or below the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgstr "जब चिन्हित कंटेनर `xs` ब्रेकपॉइंट (`16em`) पर या उससे नीचे हो तो दिखाएँ; अन्यथा छिपाएँ।"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or above the `md` breakpoint (`30em`); hidden otherwise."
+#~ msgstr "जब चिन्हित कंटेनर `md` ब्रेकपॉइंट (`30em`) पर या उससे ऊपर हो तो दिखाएँ; अन्यथा छिपाएँ।"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Show when the marked container is at or above the `xs` breakpoint (`16em`); hidden otherwise."
+#~ msgstr "जब चिन्हित कंटेनर `xs` ब्रेकपॉइंट (`16em`) पर या उससे ऊपर हो तो दिखाएँ; अन्यथा छिपाएँ।"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the viewport is at or above the `md` breakpoint (`30em`)."
+#~ msgstr "जब viewport `md` ब्रेकपॉइंट (`30em`) पर या उससे ऊपर हो तो छिपाएँ।"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "Hide when the viewport is at or above the `xs` breakpoint (`16em`)."
+#~ msgstr "जब viewport `xs` ब्रेकपॉइंट (`16em`) पर या उससे ऊपर हो तो छिपाएँ।"
+
+#, no-c-format
+#~ msgctxt "docs.api:prose"
+#~ msgid "The `xs` breakpoint's value (`16em`, mirrors `--instui-component-tray-width-xs`). Overriding it does not move the compiled `@media`/`@container` thresholds above."
+#~ msgstr "`xs` ब्रेकपॉइंट का मान (`16em`, `--instui-component-tray-width-xs` का प्रतिबिंब). इसे ओवरराइड करने से संकलित `@media`/`@container` थ्रेशोल्ड ऊपर नहीं खिसकते।"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -27763,10 +27979,6 @@ msgstr "एक hoverable \"view fullscreen\" बटन, जो एक डेम�
 #~ msgctxt "docs.api:text"
 #~ msgid "byline"
 #~ msgstr "byline"
-
-#~ msgctxt "docs.api:text"
-#~ msgid "day"
-#~ msgstr "day"
 
 #~ msgctxt "docs.api:text"
 #~ msgid "card"

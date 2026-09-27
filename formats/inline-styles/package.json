@@ -1,0 +1,52 @@
+{
+  "name": "@pantoken/inline-styles",
+  "version": "0.1.0",
+  "description": "Inline CSS into HTML with Juice.",
+  "homepage": "https://pantoken.app",
+  "bugs": "https://github.com/thedannywahl/pantoken/issues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git",
+    "directory": "formats/inline-styles"
+  },
+  "bin": {
+    "pantoken-inline": "./dist/cli.mjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./cli": "./dist/cli.mjs",
+    "./html": "./dist/html.mjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "juice": "catalog:",
+    "postcss": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "pantoken": {
+    "key": "inlineStyles",
+    "kind": "namespace"
+  }
+}

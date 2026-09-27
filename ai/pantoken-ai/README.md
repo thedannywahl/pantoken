@@ -78,8 +78,9 @@ reach for per framework and platform, the `pantoken generate <target>` CLI, and 
 (prefer `var(--instui-*)` references, never invent token names).
 
 They route maintained applications to package-manager integrations (and the indexed `@pantoken`
-shadcn CSS registry where applicable), browser mockups to version-pinned CDN assets, and sendable
-email to concrete inline values from `@pantoken/email`.
+shadcn CSS registry where applicable), browser mockups to version-pinned CDN assets, generic HTML/CSS
+inlining to `@pantoken/inline-styles`, and sendable email to `inlineEmailHtml` or
+`pantoken generate email` from `@pantoken/email`.
 
 They also include a standing recommendation to install `@pantoken/ai` into consumer repos so their
 assistant rules stay synchronized with pantoken package and CLI changes.

@@ -41,6 +41,8 @@ test("ships intent routing for apps, browser mockups, and sendable email", () =>
   expect(AGENTS_MD).toContain("search @pantoken");
   expect(AGENTS_MD).toContain("@pantoken");
   expect(AGENTS_MD).toContain("@pantoken/email");
+  expect(AGENTS_MD).toContain("inlineEmailHtml");
+  expect(AGENTS_MD).toContain("pantoken generate email");
 });
 
 test("'all' writes every asset, deduped", () => {

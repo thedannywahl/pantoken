@@ -2,5 +2,11 @@ import { extendBase } from "../../vite.config.base.ts";
 
 export default extendBase({
   run: { tasks: { build: { command: "vp pack" } } },
-  pack: { exports: true },
+  pack: {
+    entry: {
+      index: "src/index.ts",
+      inline: "src/inline.ts",
+    },
+    exports: true,
+  },
 });

@@ -1,7 +1,7 @@
 {
   "name": "@pantoken/email",
   "version": "0.1.19",
-  "description": "Instructure design tokens for HTML email: concrete, inline-friendly token values (no CSS vars).",
+  "description": "Instructure design tokens and email-safe HTML generation with concrete inline values.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
@@ -17,6 +17,7 @@
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
+    "./inline": "./dist/inline.mjs",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -29,9 +30,14 @@
     "check": "vp check"
   },
   "dependencies": {
+    "@pantoken/components": "workspace:*",
+    "@pantoken/inline-styles": "workspace:*",
     "@pantoken/model": "workspace:*",
+    "@pantoken/plugin-custom-theme-colors": "workspace:*",
     "@pantoken/tokens": "workspace:*",
-    "@pantoken/utils": "workspace:*"
+    "@pantoken/utils": "workspace:*",
+    "cheerio": "catalog:",
+    "postcss": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:",

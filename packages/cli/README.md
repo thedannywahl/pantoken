@@ -16,6 +16,8 @@ npm i @pantoken/cli
 pantoken create react --dir ./my-app
 pantoken add button
 pantoken generate swift --out ./ios/DesignTokens --theme rebrand --class PanTokens
+pantoken generate inline -i ./page.html -o ./page.inlined.html
+pantoken generate email -i ./page.html -o ./page.email.html --client gmail
 ```
 
 `pantoken add` delegates to the shadcn CLI and resolves bare names through the indexed `@pantoken`
@@ -45,8 +47,8 @@ await run(["generate", "swift", "--out", "./ios/DesignTokens"]);
 ## Targets
 
 Supported now: `swift`, `android`, `compose`, `flutter`, `wordpress`, `vanilla`, `drupal`,
-`swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, and `hugo`. Each writes to `--out` and logs the
-files it wrote.
+`swatches`, `rust`, `icon-font`, `pendo`, `jekyll`, `hugo`, `inline`, and `email`. Each writes to
+its selected output and logs the files it wrote.
 
 ## Flags
 
@@ -58,6 +60,10 @@ files it wrote.
   `rust`: `egui` / `iced`).
 - `--no-scope`, `--no-important`, `--no-prune` — Pendo target: skip `@scope` wrapping,
   `!important`, or token pruning.
+- `-i, --input <file>` and `-o, --output <file>` — `inline` target: read an HTML file and write the
+  inlined result.
+- `--css <file>` — `inline` or `email`: add caller-supplied CSS.
+- `--client <generic|outlook|gmail|webkit>` — `email` target: select the email capability profile.
 
 ## API
 

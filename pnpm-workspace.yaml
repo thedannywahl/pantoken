@@ -54,6 +54,8 @@ catalog:
   react-markdown: ^10.1.0
   remark-gfm: ^4.0.1
   postcss: ^8.5.28
+  cheerio: ^1.2.0
+  juice: ^12.2.0
   # Icon font chain
   points-on-path: ^0.2.1
   clipper-lib: ^6.4.2
