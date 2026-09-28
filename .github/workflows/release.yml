@@ -34,11 +34,19 @@ concurrency:
   group: release
   cancel-in-progress: false
 
+# Must match ci.yml's values — the release build restores the cache CI's `build` job saved.
+env:
+  VP_TASK_CACHE: node_modules/.vite/task-cache
+  VP_CACHE_KEY_PREFIX: vp-taskcache-
+
 jobs:
   # Wait for security-sensitive checks to pass before publishing anything.
   # Prevents a race where CodeQL or CI catches a flaw but loses to a concurrent publish.
   gate:
     runs-on: ubuntu-latest
+    # Must exceed the poll loop's own 1-hour deadline below, so the loop reports which workflow
+    # stalled instead of the job being killed with no diagnosis.
+    timeout-minutes: 70
     # workflow_dispatch re-triggers (e.g. failed publish retry) skip the gate — other checks
     # already ran on this SHA when it first landed on main.
     if: github.event_name == 'push'
@@ -81,6 +89,7 @@ jobs:
       id-token: write # npm provenance (OIDC) + SLSA attestation signing
       attestations: write # store SLSA provenance attestations on the repo
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -155,6 +164,19 @@ jobs:
             echo "will_publish=true" >> "$GITHUB_OUTPUT"
             echo "No changesets → publish path; building."
           fi
+
+      # CI built this same SHA and saved its task-cache tarballs; restoring here turns the build below
+      # into a cache replay for every package the Version PR didn't touch. Restore-only — the release
+      # must never overwrite the cache CI owns.
+      - name: Restore vp task cache
+        if: steps.mode.outputs.will_publish == 'true'
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
 
       # Build so the publish step ships real dist/. prepublishOnly was removed repo-wide (#23), so no
       # package re-invokes a nested `vp` at pack time.

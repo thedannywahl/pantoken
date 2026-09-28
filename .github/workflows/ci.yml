@@ -20,22 +20,34 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
+# Every job carries `timeout-minutes`. release.yml's gate waits on this workflow's conclusion with a
+# 1-hour deadline, so a job left on the 6-hour default can hang the release even when it's advisory.
+# Values are ~2.5x observed runtime — these catch hangs, not slow-but-working jobs.
+
 env:
   # vp's task cache stores task OUTPUTS as .tar.zst tarballs, so a cache hit re-materializes the
   # gitignored generated dirs. The `build` job warms it; downstream jobs restore and replay
   # `vp run -r build` as a fast cache-extract instead of a cold rebuild.
   #
-  # The primary key is scoped to run_id/run_attempt (not github.sha): GH Actions cache keys are
-  # immutable, so a sha-based key can never be resaved by a rerun — a `build` job whose auto-tracked
-  # output snapshot was incomplete for that attempt would keep every downstream job (and every rerun
-  # of the same commit) replaying that same broken tarball forever. A fresh key per attempt means a
-  # rerun always saves (and downstream jobs in this attempt always restore) this attempt's own build.
+  # Key shape: `<prefix><os>-<hash(pnpm-lock.yaml, vite.config.ts)>-<run_id>-<run_attempt>`.
+  #
+  # The hash segment has to be in the SAVE key, not just the restore-keys — a restore-key only ever
+  # matches a key some run actually wrote. Omitting it made `<prefix><os>-<hash>-` dead config that
+  # could never match, silently degrading every restore to the broad `<prefix><os>-` fallback (i.e.
+  # "the newest cache from any lockfile").
+  #
+  # The run_id/run_attempt tail keeps each attempt's key unique, because GH Actions cache keys are
+  # immutable: a sha-based key can never be resaved by a rerun, so a `build` job whose auto-tracked
+  # output snapshot was incomplete for that attempt would pin every downstream job (and every rerun of
+  # the same commit) to that broken tarball forever. A fresh key per attempt means a rerun always
+  # saves, and downstream jobs in this attempt exact-match this attempt's own build.
   VP_TASK_CACHE: node_modules/.vite/task-cache
   VP_CACHE_KEY_PREFIX: vp-taskcache-
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -50,7 +62,7 @@ jobs:
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
-          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
@@ -62,6 +74,7 @@ jobs:
   typecheck:
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -76,7 +89,7 @@ jobs:
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
-          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
@@ -87,44 +100,11 @@ jobs:
       - name: Typecheck
         run: vp check
 
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-        with:
-          persist-credentials: false
-      - name: Set up Vite+
-        uses: voidzero-dev/setup-vp@49c3e4e92c52e7f8392712a9267bbe71c5ab30e5 # v1.19.0
-        with:
-          cache: true
-          run-install: true
-      - name: Restore vp task cache
-        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
-        with:
-          path: ${{ env.VP_TASK_CACHE }}
-          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
-          restore-keys: |
-            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
-            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
-      - name: Install gettext
-        run: sudo apt-get update && sudo apt-get install --yes gettext
-      - name: Materialize generated output
-        run: vp run -r build
-      - name: Generate English API documentation
-        run: vp run @pantoken/docs#docs:api:en
-      - name: Test all packages
-        run: vp test
-
   # Continuous performance testing for the transform pipeline, run inside the CI gate so it reuses the
   # `build` job's cached task outputs instead of rebuilding from scratch. Advisory only — a CodSpeed
   # regression must never block merge, so failures here are swallowed with `continue-on-error`.
-  #
-  # `timeout-minutes` is load-bearing, not hygiene: the CodSpeed runner can wedge (FIFO/instrument-hook
-  # handshake failures in walltime mode) and hang until the 6-hour default. `continue-on-error` doesn't
-  # help there — the run stays in progress, so `release.yml`'s gate, which waits on ci.yml's conclusion,
-  # blows its own 1-hour deadline and fails the release. Bound the job so a wedged runner just fails fast.
+  # The extra step-level timeout is for the CodSpeed runner specifically: it can wedge on its
+  # instrument-hook handshake, and `continue-on-error` doesn't help a hang.
   benchmarks:
     needs: build
     runs-on: ubuntu-latest
@@ -147,7 +127,7 @@ jobs:
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
-          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
@@ -163,6 +143,7 @@ jobs:
   coverage:
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       contents: read
       id-token: write
@@ -180,7 +161,7 @@ jobs:
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
-          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
@@ -188,67 +169,25 @@ jobs:
         run: sudo apt-get update && sudo apt-get install --yes gettext
       - name: Materialize generated output
         run: vp run -r build
+      # The locale-drift tests skip themselves with a warning when `docs/api` isn't generated, so this
+      # step is what makes them actually assert.
       - name: Generate English API documentation
         run: vp run @pantoken/docs#docs:api:en
-      - name: Resolve changed packages
-        id: changed
-        if: github.event_name == 'pull_request'
-        env:
-          CHANGED_BASE: ${{ github.event.pull_request.base.sha }}
-        run: node scripts/release/changed-packages.ts
-      # Workspace-group flags let Codecov carry forward coverage for groups not tested on a scoped PR.
-      - name: Compute upload flags
-        id: flags
-        shell: bash
-        env:
-          EVENT: ${{ github.event_name }}
-          PATHS: ${{ steps.changed.outputs.paths }}
-        run: |
-          if [[ "${EVENT}" != "pull_request" ]]; then
-            echo "value=packages,formats,renderers,bundlers,platforms,plugins,tools,scripts,docs,ai,design" >> "$GITHUB_OUTPUT"
-          else
-            flags=$(printf '%s\n' "${PATHS//,/$'\n'}" | cut -d'/' -f1 | sort -u | paste -sd,)
-            echo "value=${flags}" >> "$GITHUB_OUTPUT"
-          fi
-      # Full coverage on push to main (keeps Codecov's project baseline accurate); on PRs, only the
-      # changed packages + dependents run, so we don't test the whole workspace every time. The 85%
-      # threshold floor (vite.config.ts) fails the run either way.
-      - name: Coverage (full on main, scoped to changed packages on PRs)
-        id: cov
-        shell: bash
-        env:
-          EVENT: ${{ github.event_name }}
-          SCOPE: ${{ steps.changed.outputs.scope }}
-          PATHS: ${{ steps.changed.outputs.paths }}
-        run: |
-          if [[ "${EVENT}" != "pull_request" ]]; then
-            echo "ran=true" >> "$GITHUB_OUTPUT"
-            vp test --coverage --reporter=verbose --reporter=junit --outputFile.junit=junit.xml
-            exit 0
-          fi
-          if [[ "${SCOPE}" == "none" ]]; then
-            echo "No publishable packages changed; skipping coverage."
-            echo "ran=false" >> "$GITHUB_OUTPUT"; exit 0
-          fi
-          echo "ran=true" >> "$GITHUB_OUTPUT"
-          if [[ "${SCOPE}" == "all" ]]; then
-            vp test --coverage --reporter=verbose --reporter=junit --outputFile.junit=junit.xml
-          else
-            IFS=',' read -ra dirs <<< "${PATHS}"
-            echo "scoped coverage: ${dirs[*]}"
-            vp test "${dirs[@]}" --coverage --reporter=verbose --reporter=junit --outputFile.junit=junit.xml
-          fi
+      # One full run with coverage, on PRs and main alike. v8 instruments in-flight, so this costs
+      # barely more than a bare `vp test` — and a second, uninstrumented full run in its own job cost a
+      # whole extra checkout, install, and build. The 85% threshold floor (vite.config.ts) fails the run.
+      - name: Test all packages with coverage
+        run: vp test --coverage --reporter=verbose --reporter=junit --outputFile.junit=junit.xml
       - name: Upload coverage to Codecov
-        if: steps.cov.outputs.ran == 'true'
         uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage/lcov.info
-          flags: ${{ steps.flags.outputs.value }}
+          flags: packages,formats,renderers,bundlers,platforms,plugins,tools,scripts,docs,ai,design
           override_pr: ${{ github.event.pull_request.number }}
           fail_ci_if_error: false
       - name: Upload test results to Codecov
-        if: ${{ !cancelled() && steps.cov.outputs.ran == 'true' }}
+        if: ${{ !cancelled() }}
         uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -260,6 +199,7 @@ jobs:
   fallow:
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     permissions:
       contents: write
     steps:
@@ -278,7 +218,7 @@ jobs:
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
-          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
@@ -313,6 +253,7 @@ jobs:
   lint:
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -327,7 +268,7 @@ jobs:
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
-          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
@@ -340,9 +281,13 @@ jobs:
       - name: Lint Markdown
         run: vp run lint:markdown
 
-  publint:
+  # publint and attw inspect the same scoped set of changed packages and need the same dependency-closure
+  # build to do it, so they share one job instead of each paying a checkout, install, and scoped build.
+  # attw still runs when publint fails, so a PR gets both verdicts from a single pass.
+  package-gates:
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 25
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -359,7 +304,7 @@ jobs:
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
-          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
@@ -368,136 +313,96 @@ jobs:
         env:
           CHANGED_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
         run: node scripts/release/changed-packages.ts
-      - name: Build and publint (scoped to changed packages)
+      # Both gates only inspect the scoped packages, so build just their dependency closure ("...").
+      - name: Build changed packages
+        id: scoped_build
+        if: steps.changed.outputs.scope != 'none'
         shell: bash
         env:
           SCOPE: ${{ steps.changed.outputs.scope }}
           PACKAGES: ${{ steps.changed.outputs.packages }}
         run: |
-          if [[ "${SCOPE}" == "none" ]]; then
-            echo "No publishable packages changed; skipping publint."
-            exit 0
-          fi
           if [[ "${SCOPE}" == "all" ]]; then
             vp run -r build
+            exit $?
+          fi
+          build_filters=()
+          IFS=',' read -ra pkgs <<< "${PACKAGES}"
+          for p in "${pkgs[@]}"; do
+            [[ -n "${p}" ]] || continue
+            build_filters+=("-F" "${p}...")
+          done
+          echo "package gates scoped to: ${pkgs[*]}"
+          vp run "${build_filters[@]}" build
+      - name: publint
+        if: steps.changed.outputs.scope != 'none'
+        shell: bash
+        env:
+          SCOPE: ${{ steps.changed.outputs.scope }}
+          PACKAGES: ${{ steps.changed.outputs.packages }}
+        run: |
+          if [[ "${SCOPE}" == "all" ]]; then
             vp run gate:publint
             exit $?
           fi
-          # publint only inspects the scoped packages, so build just their dependency closure ("...").
-          build_filters=(); check_filters=()
+          check_filters=()
           IFS=',' read -ra pkgs <<< "${PACKAGES}"
           for p in "${pkgs[@]}"; do
             [[ -n "${p}" ]] || continue
-            build_filters+=("-F" "${p}...")
             check_filters+=("-F" "${p}")
           done
-          echo "publint scoped to: ${pkgs[*]}"
-          vp run "${build_filters[@]}" build
           vp exec "${check_filters[@]}" publint
-
-  attw:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-        with:
-          persist-credentials: false
-          # Full history so the changed-packages diff can reach the PR base / previous push.
-          fetch-depth: 0
-      - name: Set up Vite+
-        uses: voidzero-dev/setup-vp@49c3e4e92c52e7f8392712a9267bbe71c5ab30e5 # v1.19.0
-        with:
-          cache: true
-          run-install: true
-      - name: Restore vp task cache
-        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
-        with:
-          path: ${{ env.VP_TASK_CACHE }}
-          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
-          restore-keys: |
-            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
-            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
-      - name: Resolve changed packages
-        id: changed
-        env:
-          CHANGED_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
-        run: node scripts/release/changed-packages.ts
-      - name: Build and attw (scoped to changed packages)
+      - name: attw
+        if: ${{ !cancelled() && steps.scoped_build.outcome == 'success' }}
         shell: bash
         env:
           SCOPE: ${{ steps.changed.outputs.scope }}
           PACKAGES: ${{ steps.changed.outputs.packages }}
         run: |
-          if [[ "${SCOPE}" == "none" ]]; then
-            echo "No publishable packages changed; skipping attw."
-            exit 0
-          fi
           if [[ "${SCOPE}" == "all" ]]; then
-            vp run -r build
             vp run gate:attw
             exit $?
           fi
-          # attw only packs the scoped packages, so build just their dependency closure ("...").
-          build_filters=(); check_filters=()
+          check_filters=()
           IFS=',' read -ra pkgs <<< "${PACKAGES}"
           for p in "${pkgs[@]}"; do
             [[ -n "${p}" ]] || continue
-            build_filters+=("-F" "${p}...")
             check_filters+=("-F" "${p}")
           done
-          echo "attw scoped to: ${pkgs[*]}"
-          vp run "${build_filters[@]}" build
           vp exec "${check_filters[@]}" attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm
 
-  repository:
-    # Pure manifest read — no build needed. Catches a missing repository.url (which breaks npm OIDC
-    # provenance) on the PR instead of at release.
+  # Three build-free checks in one job: each is seconds of work that would otherwise pay its own
+  # checkout, install, and runner startup.
+  meta:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
+          # Full history so the commit-range checks below can reach the PR base.
+          fetch-depth: 0
       - name: Set up Vite+
         uses: voidzero-dev/setup-vp@49c3e4e92c52e7f8392712a9267bbe71c5ab30e5 # v1.19.0
         with:
           cache: true
           run-install: true
+      # Pure manifest read. Catches a missing repository.url (which breaks npm OIDC provenance) on the
+      # PR instead of at release.
       - name: Check repository metadata
         run: vp run gate:repository
-
-  commitlint:
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-        with:
-          persist-credentials: false
-          fetch-depth: 0
-      - name: Set up Vite+
-        uses: voidzero-dev/setup-vp@49c3e4e92c52e7f8392712a9267bbe71c5ab30e5 # v1.19.0
-        with:
-          cache: true
-          run-install: true
       - name: Lint PR commit messages
+        if: github.event_name == 'pull_request'
         run: vp exec commitlint --from "${{ github.event.pull_request.base.sha }}" --to "${{ github.event.pull_request.head.sha }}" --verbose
-
-  # Advisory only: warns when a PR commit has no linked Entire checkpoint (missing `Entire-Checkpoint`
-  # trailer), but never blocks merge. Pure git — no Entire CLI, login, or agent credentials needed,
-  # since checkpoint linkage is recorded as a commit trailer at commit time.
-  entire-checkpoint-linkage:
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    continue-on-error: true
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-        with:
-          persist-credentials: false
-          fetch-depth: 0
+      # Advisory only: warns when a PR commit has no linked Entire checkpoint (missing
+      # `Entire-Checkpoint` trailer), but never blocks merge — hence the step-level `continue-on-error`,
+      # which must stay on the step so the blocking checks above still gate the job. Pure git: no Entire
+      # CLI, login, or agent credentials needed, since linkage is recorded as a commit trailer at commit
+      # time.
       - name: Check for Entire-Checkpoint trailers
+        if: github.event_name == 'pull_request'
+        continue-on-error: true
         shell: bash
         run: |
           missing=0
@@ -518,6 +423,7 @@ jobs:
   # bump (or the pipeline itself) changed. Runs on both events so `upstream-drift`'s `needs` resolves.
   upstream-changes:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     outputs:
       upstream: ${{ steps.filter.outputs.upstream }}
     steps:
@@ -544,6 +450,7 @@ jobs:
     needs: [build, upstream-changes]
     if: needs.upstream-changes.outputs.upstream == 'true'
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -558,7 +465,7 @@ jobs:
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
-          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
@@ -578,6 +485,7 @@ jobs:
   # both events (never skipped) so the `docs` job's `needs` is always satisfied.
   docs-changes:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     outputs:
       docs: ${{ steps.filter.outputs.docs }}
     steps:
@@ -610,6 +518,7 @@ jobs:
   # the gate that reads it.
   i18n-changes:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     outputs:
       i18n: ${{ steps.filter.outputs.i18n }}
     steps:
@@ -641,6 +550,7 @@ jobs:
     needs: [build, i18n-changes]
     if: needs.i18n-changes.outputs.i18n == 'true'
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -664,6 +574,7 @@ jobs:
     needs: [build, docs-changes]
     if: needs.docs-changes.outputs.docs == 'true'
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -678,7 +589,7 @@ jobs:
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
-          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
@@ -705,14 +616,11 @@ jobs:
       [
         build,
         typecheck,
-        test,
         coverage,
         fallow,
         lint,
-        publint,
-        attw,
-        repository,
-        commitlint,
+        package-gates,
+        meta,
         upstream-changes,
         upstream-drift,
         docs-changes,
@@ -722,6 +630,7 @@ jobs:
       ]
     if: always()
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Verify no CI job failed
         if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')

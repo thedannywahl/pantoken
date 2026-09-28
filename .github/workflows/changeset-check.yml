@@ -11,6 +11,7 @@ permissions:
 jobs:
   detect-release-impact:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     outputs:
       release_impact: ${{ steps.filter.outputs.release_impact }}
     steps:
@@ -43,6 +44,7 @@ jobs:
     needs: detect-release-impact
     if: needs.detect-release-impact.outputs.release_impact == 'true'
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -77,6 +79,7 @@ jobs:
     needs: detect-release-impact
     if: needs.detect-release-impact.outputs.release_impact != 'true'
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Skip changeset requirement
         run: |
@@ -93,6 +96,7 @@ jobs:
     needs: [detect-release-impact, require-changeset, docs-and-internal-only]
     if: always()
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Verify no changeset-check job failed
         if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
