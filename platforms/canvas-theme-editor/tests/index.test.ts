@@ -60,6 +60,13 @@ test("buildThemeCss always imports the custom-theme-colors color-remap sheet", (
   );
 });
 
+test("buildThemeCss always imports the logo painter", () => {
+  expect(THEME_CSS).toContain("npm/@pantoken/plugin-custom-components/dist/logo.css");
+  expect(buildThemeCss({ theme: "canvas" })).toContain(
+    "npm/@pantoken/plugin-custom-components/dist/logo.css",
+  );
+});
+
 test("buildTheme honors theme/mode for every @pantoken/css lean sheet variant", () => {
   expect(buildThemeCss({ theme: "rebrand", mode: "adaptive" })).toContain(
     "npm/@pantoken/css/dist/style.lean.css",

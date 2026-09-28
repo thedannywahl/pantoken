@@ -82,6 +82,8 @@ export function defaultThemeCssAssets(
     { package: "@pantoken/components", path: "dist/component-icons.css" },
     { package: "@pantoken/components", path: "dist/components.css" },
     { package: "@pantoken/components", path: "dist/utilities.css" },
+    // The `-logo-<name>` painter; each logo's own sheet only sets its glyph token and aspect.
+    { package: "@pantoken/plugin-custom-components", path: "dist/logo.css" },
     // Attribute-scoped overrides for all 13 color choices — Canvas authors place the attribute on
     // an editable content wrapper because the RCE cannot set attributes on the document root.
     {
