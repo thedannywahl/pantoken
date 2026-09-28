@@ -169,6 +169,32 @@ describe("parseStem", () => {
   });
 });
 
+// ─── withIntrinsicSize ───────────────────────────────────────────────────────
+
+describe("withIntrinsicSize", () => {
+  test("adds width/height from the viewBox when both are missing", () => {
+    expect(mod.withIntrinsicSize('<svg viewBox="0 0 310.23 78.94"><path/></svg>')).toBe(
+      '<svg viewBox="0 0 310.23 78.94" width="310.23" height="78.94"><path/></svg>',
+    );
+  });
+
+  test("handles a self-closing root", () => {
+    expect(mod.withIntrinsicSize('<svg viewBox="0 0 24 24"/>')).toBe(
+      '<svg viewBox="0 0 24 24" width="24" height="24"/>',
+    );
+  });
+
+  test("leaves an SVG that already declares a size unchanged", () => {
+    const svg = '<svg height="32" viewBox="0 0 24 24" width="32"><path/></svg>';
+    expect(mod.withIntrinsicSize(svg)).toBe(svg);
+  });
+
+  test("leaves an SVG without a viewBox unchanged", () => {
+    const svg = '<svg xmlns="http://www.w3.org/2000/svg"><path/></svg>';
+    expect(mod.withIntrinsicSize(svg)).toBe(svg);
+  });
+});
+
 // ─── dataUri ─────────────────────────────────────────────────────────────────
 
 describe("dataUri", () => {

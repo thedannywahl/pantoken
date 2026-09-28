@@ -91,6 +91,20 @@ function parseViewBox(svg: string): [number, number] | undefined {
 }
 
 /**
+ * Give a root `<svg>` that only has a `viewBox` matching `width`/`height` attributes, so inline and
+ * `<img>` renders get an intrinsic size instead of collapsing (or defaulting to 300×150).
+ */
+export function withIntrinsicSize(svg: string): string {
+  const open = /<svg\b[^>]*>/u.exec(svg)?.[0];
+  if (!open || /\s(?:width|height)=/u.test(open)) return svg;
+  const size = parseViewBox(open);
+  if (!size) return svg;
+  const close = open.endsWith("/>") ? "/>" : ">";
+  const attrs = open.slice(0, -close.length).trimEnd();
+  return svg.replace(open, `${attrs} width="${size[0]}" height="${size[1]}"${close}`);
+}
+
+/**
  * Parse a logo filename stem (`<layout>-<mode>` or `<layout>-<mode>-<lang>`, without the `.svg`
  * extension) into its layout, color-mode, and optional language components.
  *
@@ -129,7 +143,7 @@ for (const product of PRODUCTS) {
     const parsed = parseStem(file.replace(/\.svg$/u, ""));
     if (!parsed) continue;
     const name = `${product}-${parsed.layout}-${parsed.colorMode}${parsed.lang ? `-${parsed.lang}` : ""}`;
-    const svg = readFileSync(join(logosDir, product, file), "utf8");
+    const svg = withIntrinsicSize(readFileSync(join(logosDir, product, file), "utf8"));
     const [width, height] = parseViewBox(svg) ?? [1, 1];
     logos.push({
       product,
