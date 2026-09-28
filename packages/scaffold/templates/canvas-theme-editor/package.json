@@ -14,6 +14,7 @@
     "@pantoken/components": "latest",
     "@pantoken/css": "latest",
     "@pantoken/interactions": "latest",
+    "@pantoken/plugin-custom-components": "latest",
     "@pantoken/plugin-custom-icons": "latest",
     "@pantoken/plugin-layouts": "latest",
     "@pantoken/plugin-logos": "latest",

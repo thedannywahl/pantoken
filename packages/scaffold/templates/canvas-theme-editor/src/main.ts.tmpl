@@ -36,6 +36,7 @@ import componentIconsCss from "@pantoken/components/component-icons.css?inline";
 import componentsCss from "@pantoken/components/components.css?inline";
 import utilitiesCss from "@pantoken/components/utilities.css?inline";
 import fontsCss from "@pantoken/components/fonts.css?inline";
+import logoPainterCss from "@pantoken/plugin-custom-components/logo.css?inline";
 const fontAssetUrls = import.meta.glob<string>(
   "/node_modules/@pantoken/components/assets/fonts/**/*.woff2",
   { eager: true, query: "?url", import: "default" },
@@ -219,6 +220,7 @@ const LOCAL_COMPONENT_CSS = [
   componentIconsCss,
   componentsCss,
   utilitiesCss,
+  logoPainterCss,
   CUSTOM_THEME_COLORS_CSS,
   localFontsCss,
 ].join("\n");
@@ -1145,7 +1147,7 @@ async function inlineAssetCss(assets: readonly CdnFile[]): Promise<string[]> {
     assets.map(async (asset) => {
       const key = assetKey(asset);
       if (inlineAssetContents.has(key)) return;
-      const response = await fetch(buildFileUrl(asset));
+      const response = await fetch(buildSelectedAssetUrl(asset));
       if (!response.ok) {
         throw new Error(`Unable to inline ${asset.package}/${asset.path}: ${response.status}`);
       }

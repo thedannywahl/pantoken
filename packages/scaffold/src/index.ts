@@ -181,6 +181,7 @@ function themeCssAssets(theme: ThemeVariant = "rebrand", mode: ThemeMode = "ligh
     { package: "@pantoken/components", path: "dist/component-icons.css" },
     { package: "@pantoken/components", path: "dist/components.css" },
     { package: "@pantoken/components", path: "dist/utilities.css" },
+    { package: "@pantoken/plugin-custom-components", path: "dist/logo.css" },
     {
       package: "@pantoken/plugin-custom-theme-colors",
       path: "dist/custom-theme-colors.scoped.css",
