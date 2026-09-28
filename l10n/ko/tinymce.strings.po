@@ -4,10 +4,10 @@ msgstr ""
 "PO-Revision-Date: 2026-09-23 23:22+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
+"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: und\n"
 
 #: renderers/tinymce/src/i18n.json#autocompleteModifierDetail
 #, no-c-format
@@ -62,6 +62,30 @@ msgstr "컴포넌트"
 msgctxt "tinymce.strings:componentsToolbarTooltip"
 msgid "Insert a pantoken component"
 msgstr "pantoken 컴포넌트 삽입"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersDefault
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersDefault"
+msgid "Default"
+msgstr "기본값"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersOptions
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersOptions"
+msgid "Options"
+msgstr "옵션"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersTooltip
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersTooltip"
+msgid "Change component modifiers"
+msgstr "컴포넌트 수식자 변경"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersUtilities
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersUtilities"
+msgid "Utilities"
+msgstr "유틸리티"
 
 #: renderers/tinymce/src/i18n.json#iconLabelDialogTitle
 #, no-c-format
@@ -231,59 +255,35 @@ msgctxt "tinymce.strings:logosDialogTitle"
 msgid "Insert Logo"
 msgstr "로고 삽입"
 
-#: renderers/tinymce/src/i18n.json#logosProductLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosProductLabel"
-msgid "Product"
-msgstr "제품"
+#: renderers/tinymce/src/i18n.json#logosSearchPlaceholder
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosSearchPlaceholder"
+msgid "Search logos…"
+msgstr "아이콘 검색…"
 
-#: renderers/tinymce/src/i18n.json#logosLayoutLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutLabel"
-msgid "Layout"
-msgstr "레이아웃"
+#: renderers/tinymce/src/i18n.json#logosSearchLabel
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosSearchLabel"
+msgid "Search logos"
+msgstr "아이콘 검색"
 
-#: renderers/tinymce/src/i18n.json#logosLayoutHorizontal
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutHorizontal"
-msgid "Horizontal"
-msgstr "가로"
+#: renderers/tinymce/src/i18n.json#logosAllProducts
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosAllProducts"
+msgid "All"
+msgstr "모두"
 
-#: renderers/tinymce/src/i18n.json#logosLayoutVertical
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutVertical"
-msgid "Vertical"
-msgstr "세로"
+#: renderers/tinymce/src/i18n.json#logosResultCount
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosResultCount"
+msgid "{{count}} logos"
+msgstr "{{count}}개 아이콘"
 
-#: renderers/tinymce/src/i18n.json#logosLayoutStacked
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutStacked"
-msgid "Stacked"
-msgstr "쌓인"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeLabel"
-msgid "Color Mode"
-msgstr "색상 모드"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeColor
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeColor"
-msgid "Color"
-msgstr "색상"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeMonochrome
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeMonochrome"
-msgid "Monochrome"
-msgstr "단색"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeLight
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeLight"
-msgid "Light"
-msgstr "밝음"
+#: renderers/tinymce/src/i18n.json#logosNoResults
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosNoResults"
+msgid "No logos match your search."
+msgstr "검색과 일치하는 아이콘이 없습니다."
 
 #: renderers/tinymce/src/i18n.json#insertButton
 #, no-c-format
@@ -492,20 +492,30 @@ msgstr "이미지에는 대체 텍스트가 있어야 합니다."
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltWhy"
-msgid "Screen readers need an alt attribute to describe an image or identify it as decorative."
-msgstr "스크린 리더는 이미지를 설명하거나 장식용임을 식별하기 위해 alt 속성이 필요합니다."
+msgid ""
+"Screen readers need an alt attribute to describe an image or identify it as "
+"decorative."
+msgstr ""
+"스크린 리더는 이미지를 설명하거나 장식용임을 식별하기 위해 alt 속성이 필요합"
+"니다."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameMessage
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltFilenameMessage"
-msgid "Image alternative text should describe the image, not repeat its filename."
-msgstr "이미지 대체 텍스트는 이미지의 파일명을 반복하지 말고 이미지를 설명해야 합니다."
+msgid ""
+"Image alternative text should describe the image, not repeat its filename."
+msgstr ""
+"이미지 대체 텍스트는 이미지의 파일명을 반복하지 말고 이미지를 설명해야 합니"
+"다."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltFilenameWhy"
-msgid "A filename rarely gives screen reader users useful information about an image."
-msgstr "파일명은 스크린 리더 사용자에게 유용한 정보를 제공하는 경우가 거의 없습니다."
+msgid ""
+"A filename rarely gives screen reader users useful information about an "
+"image."
+msgstr ""
+"파일명은 스크린 리더 사용자에게 유용한 정보를 제공하는 경우가 거의 없습니다."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthMessage
 #, no-c-format
@@ -516,7 +526,9 @@ msgstr "이미지 대체 텍스트는 125자 이하여야 합니다."
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltLengthWhy"
-msgid "Short descriptions are easier to understand and navigate with assistive technology."
+msgid ""
+"Short descriptions are easier to understand and navigate with assistive "
+"technology."
 msgstr "짧은 설명이 보조 기술로 이해하고 탐색하기 더 쉽습니다."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceMessage
@@ -528,7 +540,9 @@ msgstr "헤딩 수준은 건너뛰어서는 안 됩니다."
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yHeadingSequenceWhy"
-msgid "A logical heading outline helps people navigate content with assistive technology."
+msgid ""
+"A logical heading outline helps people navigate content with assistive "
+"technology."
 msgstr "논리적인 헤딩 구조는 보조 기술로 콘텐츠를 탐색하는 데 도움이 됩니다."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderMessage
@@ -540,8 +554,10 @@ msgstr "표에는 헤더 셀이 포함되어야 합니다."
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableHeaderWhy"
-msgid "Header cells give screen readers the context needed to understand table data."
-msgstr "헤더 셀은 스크린 리더가 표 데이터를 이해하는 데 필요한 문맥을 제공합니다."
+msgid ""
+"Header cells give screen readers the context needed to understand table data."
+msgstr ""
+"헤더 셀은 스크린 리더가 표 데이터를 이해하는 데 필요한 문맥을 제공합니다."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionMessage
 #, no-c-format
@@ -552,7 +568,9 @@ msgstr "표에는 캡션이 포함되어야 합니다."
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableCaptionWhy"
-msgid "A caption identifies a table's purpose before a screen reader enters its cells."
+msgid ""
+"A caption identifies a table's purpose before a screen reader enters its "
+"cells."
 msgstr "캡션은 스크린 리더가 셀에 진입하기 전에 표의 목적을 식별합니다."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeMessage
@@ -564,7 +582,9 @@ msgstr "표의 헤더 셀은 scope를 선언해야 합니다."
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableHeaderScopeWhy"
-msgid "The scope attribute lets assistive technology associate headers with data cells."
+msgid ""
+"The scope attribute lets assistive technology associate headers with data "
+"cells."
 msgstr "scope 속성은 보조 기술이 헤더와 데이터 셀을 연결할 수 있게 합니다."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksMessage
@@ -576,8 +596,10 @@ msgstr "같은 대상의 인접한 링크는 합쳐야 합니다."
 #: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yAdjacentLinksWhy"
-msgid "Repeated links create unnecessary stops for keyboard and screen reader users."
-msgstr "반복된 링크는 키보드와 스크린 리더 사용자에게 불필요한 중단을 만듭니다."
+msgid ""
+"Repeated links create unnecessary stops for keyboard and screen reader users."
+msgstr ""
+"반복된 링크는 키보드와 스크린 리더 사용자에게 불필요한 중단을 만듭니다."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingStartMessage
 #, no-c-format
@@ -600,7 +622,9 @@ msgstr "목록 항목은 정렬된 또는 정렬되지 않은 목록에 포함�
 #: plugins/tinymce/a11y/src/i18n.json#a11yListStructureWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yListStructureWhy"
-msgid "Assistive technology relies on list structure to announce item counts and position."
+msgid ""
+"Assistive technology relies on list structure to announce item counts and "
+"position."
 msgstr "보조 기술은 항목 수와 위치를 알리기 위해 목록 구조에 의존합니다."
 
 #: plugins/tinymce/codemirror/src/i18n.json#sourceToggleTooltip
@@ -618,8 +642,12 @@ msgstr "소스 코드"
 #: plugins/tinymce/codemirror/src/i18n.json#sourceFormatErrorMessage
 #, no-c-format
 msgctxt "tinymce.strings:sourceFormatErrorMessage"
-msgid "Couldn't format the source code — check for unclosed tags or other syntax errors."
-msgstr "소스 코드를 서식화할 수 없습니다 — 닫히지 않은 태그나 다른 문법 오류를 확인하세요."
+msgid ""
+"Couldn't format the source code — check for unclosed tags or other syntax "
+"errors."
+msgstr ""
+"소스 코드를 서식화할 수 없습니다 — 닫히지 않은 태그나 다른 문법 오류를 확인하"
+"세요."
 
 #: plugins/tinymce/save/src/i18n.json#saveToolbarText
 #, no-c-format
@@ -708,8 +736,11 @@ msgstr "새 문서"
 #: plugins/tinymce/save/src/i18n.json#newDialogMessage
 #, no-c-format
 msgctxt "tinymce.strings:newDialogMessage"
-msgid "This clears the current editor content and config. Save the current work first?"
-msgstr "현재 편집기 내용과 설정이 지워집니다. 현재 작업을 먼저 저장하시겠습니까?"
+msgid ""
+"This clears the current editor content and config. Save the current work "
+"first?"
+msgstr ""
+"현재 편집기 내용과 설정이 지워집니다. 현재 작업을 먼저 저장하시겠습니까?"
 
 #: plugins/tinymce/save/src/i18n.json#newDialogSaveButton
 #, no-c-format
@@ -825,26 +856,47 @@ msgctxt "tinymce.strings:presetCancelButton"
 msgid "Cancel"
 msgstr "취소"
 
-#: renderers/tinymce/src/i18n.json#componentModifiersDefault
 #, no-c-format
-msgctxt "tinymce.strings:componentModifiersDefault"
-msgid "Default"
-msgstr "기본값"
+#~ msgctxt "tinymce.strings:logosProductLabel"
+#~ msgid "Product"
+#~ msgstr "제품"
 
-#: renderers/tinymce/src/i18n.json#componentModifiersOptions
 #, no-c-format
-msgctxt "tinymce.strings:componentModifiersOptions"
-msgid "Options"
-msgstr "옵션"
+#~ msgctxt "tinymce.strings:logosLayoutLabel"
+#~ msgid "Layout"
+#~ msgstr "레이아웃"
 
-#: renderers/tinymce/src/i18n.json#componentModifiersTooltip
 #, no-c-format
-msgctxt "tinymce.strings:componentModifiersTooltip"
-msgid "Change component modifiers"
-msgstr "컴포넌트 수식자 변경"
+#~ msgctxt "tinymce.strings:logosLayoutHorizontal"
+#~ msgid "Horizontal"
+#~ msgstr "가로"
 
-#: renderers/tinymce/src/i18n.json#componentModifiersUtilities
 #, no-c-format
-msgctxt "tinymce.strings:componentModifiersUtilities"
-msgid "Utilities"
-msgstr "유틸리티"
+#~ msgctxt "tinymce.strings:logosLayoutVertical"
+#~ msgid "Vertical"
+#~ msgstr "세로"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosLayoutStacked"
+#~ msgid "Stacked"
+#~ msgstr "쌓인"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeLabel"
+#~ msgid "Color Mode"
+#~ msgstr "색상 모드"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeColor"
+#~ msgid "Color"
+#~ msgstr "색상"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeMonochrome"
+#~ msgid "Monochrome"
+#~ msgstr "단색"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeLight"
+#~ msgid "Light"
+#~ msgstr "밝음"

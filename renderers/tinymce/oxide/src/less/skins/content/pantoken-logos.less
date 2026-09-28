@@ -1,0 +1,23 @@
+//
+// Paints `<span class="instui-logo -logo-<name>">` inside the editing surface, mirroring
+// `@pantoken/plugin-custom-components` `src/components/logo/logo.css` — keep the two in sync.
+// The `--pantoken-glyph`/`--pantoken-logo-aspect` values arrive per-logo from the injected sheet.
+//
+
+.instui-logo {
+  display: inline-flex;
+}
+
+// Qualified with `.instui-logo` so unrelated `*-logo-*` classes never get a blank mask.
+.instui-logo[class*="-logo-"]::before {
+  content: "";
+  display: inline-block;
+  inline-size: 8em;
+  aspect-ratio: var(--pantoken-logo-aspect, 1);
+  block-size: auto;
+  flex: none;
+  vertical-align: -0.125em;
+  background: currentColor;
+  -webkit-mask: var(--pantoken-glyph) center / contain no-repeat;
+  mask: var(--pantoken-glyph) center / contain no-repeat;
+}

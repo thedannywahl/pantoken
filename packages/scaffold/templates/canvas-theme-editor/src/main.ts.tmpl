@@ -36,6 +36,7 @@ import componentIconsCss from "@pantoken/components/component-icons.css?inline";
 import componentsCss from "@pantoken/components/components.css?inline";
 import utilitiesCss from "@pantoken/components/utilities.css?inline";
 import fontsCss from "@pantoken/components/fonts.css?inline";
+import logoPainterCss from "@pantoken/plugin-custom-components/logo.css?inline";
 const fontAssetUrls = import.meta.glob<string>(
   "/node_modules/@pantoken/components/assets/fonts/**/*.woff2",
   { eager: true, query: "?url", import: "default" },
@@ -127,6 +128,7 @@ import {
   PANTOKEN_ICON_PACK_NAME,
   products,
   registerPantokenIconPack,
+  retargetContentStylesheets,
   pantokenHtmlLinter,
   pantokenHtmlCompletion,
   SEARCHREPLACE_FOOTER_PLUGIN_NAME,
@@ -219,6 +221,7 @@ const LOCAL_COMPONENT_CSS = [
   componentIconsCss,
   componentsCss,
   utilitiesCss,
+  logoPainterCss,
   CUSTOM_THEME_COLORS_CSS,
   localFontsCss,
 ].join("\n");
@@ -633,11 +636,14 @@ const onMissingAsset = () => void refreshAll();
 let availableIcons: TaggedIcon[] = [];
 const inlineAssetContents = new Map<string, string>();
 let refreshGeneration = 0;
-// Covers `plugin-logos` (a real dependency for any scaffolded project) and the icon packages
-// `build-canvas-rce.ts` vendors into `node_modules` purely so this docs-hosted preview's "None
-// (inline)" provider doesn't have to hit a CDN for `::name` autocomplete/picker glyphs.
+// Covers `plugin-logos`, the core component icons (both real dependencies for any scaffolded
+// project), and the icon packages `build-canvas-rce.ts` vendors into `node_modules` purely so this
+// docs-hosted preview's "None (inline)" provider doesn't have to hit a CDN for any glyph.
 const localAssetUrls = import.meta.glob<string>(
-  "/node_modules/@pantoken/plugin-{logos,simple-icons,lucide-lab,custom-icons}/dist/**/*.css",
+  [
+    "/node_modules/@pantoken/components/dist/icons/*.css",
+    "/node_modules/@pantoken/plugin-{logos,simple-icons,lucide-lab,custom-icons}/dist/**/*.css",
+  ],
   { eager: true, import: "default", query: "?url" },
 );
 
@@ -867,8 +873,9 @@ const registerPantokenPlugin = (async () => {
         buildAssetUrl: buildSelectedAssetUrl,
       },
       logos: {
-        logos,
-        products,
+        // pantoken's own marks aren't Canvas content; pasted ones still render via glyph sync.
+        logos: logos.filter((logo) => logo.product !== "pantoken"),
+        products: products.filter((product) => product !== "pantoken"),
         currentAssets,
         onMissingAsset,
         buildAssetUrl: buildSelectedAssetUrl,
@@ -1145,7 +1152,7 @@ async function inlineAssetCss(assets: readonly CdnFile[]): Promise<string[]> {
     assets.map(async (asset) => {
       const key = assetKey(asset);
       if (inlineAssetContents.has(key)) return;
-      const response = await fetch(buildFileUrl(asset));
+      const response = await fetch(buildSelectedAssetUrl(asset));
       if (!response.ok) {
         throw new Error(`Unable to inline ${asset.package}/${asset.path}: ${response.status}`);
       }
@@ -1238,6 +1245,7 @@ function resetCanvasThemePreset(): void {
       | SourceTogglePluginApi
       | undefined;
     if (sourceToggle?.isSourceMode()) sourceToggle.replaceAll(nextHtml);
+    retargetContentStylesheets(activeEditor, buildSelectedAssetUrl);
   }
 
   syncThemeColorFromEditor();
@@ -1265,6 +1273,8 @@ function restoreCanvasThemePreset(preset: CanvasThemePreset): void {
     | SourceTogglePluginApi
     | undefined;
   if (sourceToggle?.isSourceMode()) sourceToggle.replaceAll(editorHtml);
+  // Setting `providerSelect.value` fires no change event, so re-point already-loaded sheets here.
+  retargetContentStylesheets(activeEditor, buildSelectedAssetUrl);
   syncThemeColorFromEditor();
 
   applyEditorTheme(activeEditor);
@@ -1869,6 +1879,7 @@ const jsEditorView = createEditor(
 );
 
 providerSelect.addEventListener("change", () => {
+  if (activeEditor) retargetContentStylesheets(activeEditor, buildSelectedAssetUrl);
   void refreshAll();
   persistPreferences();
 });

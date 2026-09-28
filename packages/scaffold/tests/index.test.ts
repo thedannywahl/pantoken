@@ -64,20 +64,31 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain("CONTENT_CLASSES_PLUGIN_NAME");
   expect(main).toContain("getUsedIconCdnFiles");
   expect(main).toContain("getUsedLogoCdnFiles");
+  expect(main).toContain('logos: logos.filter((logo) => logo.product !== "pantoken"),');
+  expect(main).toContain('products: products.filter((product) => product !== "pantoken"),');
   expect(main).toContain("syncIconAssetsFromEditor();");
   expect(main).toContain("...currentAssets]");
   expect(main).toContain("const onMissingAsset = () => void refreshAll();");
+  expect(main).toContain('"/node_modules/@pantoken/components/dist/icons/*.css",');
   expect(main).toContain(
-    '"/node_modules/@pantoken/plugin-{logos,simple-icons,lucide-lab,custom-icons}/dist/**/*.css"',
+    '"/node_modules/@pantoken/plugin-{logos,simple-icons,lucide-lab,custom-icons}/dist/**/*.css",',
   );
   expect(main).toContain("buildFileUrl(file, providerSelect.value)");
   expect(main).toContain("buildAssetUrl: buildSelectedAssetUrl");
+  expect(main).toContain(
+    "if (activeEditor) retargetContentStylesheets(activeEditor, buildSelectedAssetUrl);",
+  );
   expect(main).toContain("createA11yPlugin");
   expect(main).toContain("createSourceTogglePlugin");
   expect(main).toContain("if (isLocalPreview) {");
   expect(main).toContain("localProviderOption.value = LOCAL_PROVIDER_ID;");
   expect(main).toContain("async function inlineAssetCss");
   expect(main).toContain("const dynamicCss = await inlineAssetCss(currentAssets);");
+  expect(main).toContain("await fetch(buildSelectedAssetUrl(asset))");
+  expect(main).toContain(
+    'import logoPainterCss from "@pantoken/plugin-custom-components/logo.css?inline";',
+  );
+  expect(main).toMatch(/const LOCAL_COMPONENT_CSS = \[[^\]]*logoPainterCss,/);
   expect(main).toContain("if (selection.provider !== LOCAL_PROVIDER_ID) {");
   expect(main).toContain("let refreshGeneration = 0;");
   expect(main).toContain("providerSelect.value = LOCAL_PROVIDER_ID;");
@@ -250,8 +261,12 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(readFileSync(join(target, "theme.css"), "utf8")).toContain(
     "@pantoken/plugin-custom-theme-colors/dist/custom-theme-colors.scoped.css",
   );
+  expect(readFileSync(join(target, "theme.css"), "utf8")).toContain(
+    "@pantoken/plugin-custom-components/dist/logo.css",
+  );
   const pkg = readFileSync(join(target, "package.json"), "utf8");
   expect(pkg).toContain('"name": "my-app"');
+  expect(pkg).toContain('"@pantoken/plugin-custom-components": "latest"');
   expect(pkg).toContain('"@pantoken/tinymce-placehold": "latest"');
   expect(pkg).toContain('"@pantoken/plugin-logos": "latest"');
   expect(pkg).toContain('"@pantoken/tinymce-a11y": "latest"');

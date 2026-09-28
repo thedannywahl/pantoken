@@ -4,10 +4,10 @@ msgstr ""
 "PO-Revision-Date: 2026-09-23 23:22+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
+"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: und\n"
 
 #: renderers/tinymce/src/i18n.json#autocompleteModifierDetail
 #, no-c-format
@@ -62,6 +62,30 @@ msgstr "コンポーネント"
 msgctxt "tinymce.strings:componentsToolbarTooltip"
 msgid "Insert a pantoken component"
 msgstr "pantoken コンポーネントを挿入"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersDefault
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersDefault"
+msgid "Default"
+msgstr "デフォルト"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersOptions
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersOptions"
+msgid "Options"
+msgstr "オプション"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersTooltip
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersTooltip"
+msgid "Change component modifiers"
+msgstr "コンポーネントの修飾子を変更する"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersUtilities
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersUtilities"
+msgid "Utilities"
+msgstr "ユーティリティ"
 
 #: renderers/tinymce/src/i18n.json#iconLabelDialogTitle
 #, no-c-format
@@ -231,59 +255,35 @@ msgctxt "tinymce.strings:logosDialogTitle"
 msgid "Insert Logo"
 msgstr "ロゴを挿入"
 
-#: renderers/tinymce/src/i18n.json#logosProductLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosProductLabel"
-msgid "Product"
-msgstr "製品"
+#: renderers/tinymce/src/i18n.json#logosSearchPlaceholder
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosSearchPlaceholder"
+msgid "Search logos…"
+msgstr "アイコンを検索…"
 
-#: renderers/tinymce/src/i18n.json#logosLayoutLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutLabel"
-msgid "Layout"
-msgstr "レイアウト"
+#: renderers/tinymce/src/i18n.json#logosSearchLabel
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosSearchLabel"
+msgid "Search logos"
+msgstr "アイコンを検索"
 
-#: renderers/tinymce/src/i18n.json#logosLayoutHorizontal
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutHorizontal"
-msgid "Horizontal"
-msgstr "横方向"
+#: renderers/tinymce/src/i18n.json#logosAllProducts
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosAllProducts"
+msgid "All"
+msgstr "すべて"
 
-#: renderers/tinymce/src/i18n.json#logosLayoutVertical
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutVertical"
-msgid "Vertical"
-msgstr "縦方向"
+#: renderers/tinymce/src/i18n.json#logosResultCount
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosResultCount"
+msgid "{{count}} logos"
+msgstr "{{count}} 個のアイコン"
 
-#: renderers/tinymce/src/i18n.json#logosLayoutStacked
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutStacked"
-msgid "Stacked"
-msgstr "積み重ね"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeLabel"
-msgid "Color Mode"
-msgstr "カラーモード"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeColor
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeColor"
-msgid "Color"
-msgstr "色"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeMonochrome
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeMonochrome"
-msgid "Monochrome"
-msgstr "モノクロ"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeLight
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeLight"
-msgid "Light"
-msgstr "ライト"
+#: renderers/tinymce/src/i18n.json#logosNoResults
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosNoResults"
+msgid "No logos match your search."
+msgstr "検索に一致するアイコンはありません。"
 
 #: renderers/tinymce/src/i18n.json#insertButton
 #, no-c-format
@@ -492,20 +492,30 @@ msgstr "画像には代替テキストが必要です。"
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltWhy"
-msgid "Screen readers need an alt attribute to describe an image or identify it as decorative."
-msgstr "スクリーンリーダーは画像を説明するか装飾的であることを示す alt 属性を必要とします。"
+msgid ""
+"Screen readers need an alt attribute to describe an image or identify it as "
+"decorative."
+msgstr ""
+"スクリーンリーダーは画像を説明するか装飾的であることを示す alt 属性を必要とし"
+"ます。"
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameMessage
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltFilenameMessage"
-msgid "Image alternative text should describe the image, not repeat its filename."
-msgstr "画像の代替テキストはファイル名を繰り返すのではなく、画像を説明するべきです。"
+msgid ""
+"Image alternative text should describe the image, not repeat its filename."
+msgstr ""
+"画像の代替テキストはファイル名を繰り返すのではなく、画像を説明するべきです。"
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltFilenameWhy"
-msgid "A filename rarely gives screen reader users useful information about an image."
-msgstr "ファイル名はスクリーンリーダー利用者にとって役に立つ情報をほとんど提供しません。"
+msgid ""
+"A filename rarely gives screen reader users useful information about an "
+"image."
+msgstr ""
+"ファイル名はスクリーンリーダー利用者にとって役に立つ情報をほとんど提供しませ"
+"ん。"
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthMessage
 #, no-c-format
@@ -516,7 +526,9 @@ msgstr "画像の代替テキストは125文字以内にするべきです。"
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltLengthWhy"
-msgid "Short descriptions are easier to understand and navigate with assistive technology."
+msgid ""
+"Short descriptions are easier to understand and navigate with assistive "
+"technology."
 msgstr "短い説明の方が支援技術で理解・操作しやすくなります。"
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceMessage
@@ -528,8 +540,11 @@ msgstr "見出しレベルは飛ばしてはいけません。"
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yHeadingSequenceWhy"
-msgid "A logical heading outline helps people navigate content with assistive technology."
-msgstr "論理的な見出しの構成は支援技術によるコンテンツのナビゲーションを助けます。"
+msgid ""
+"A logical heading outline helps people navigate content with assistive "
+"technology."
+msgstr ""
+"論理的な見出しの構成は支援技術によるコンテンツのナビゲーションを助けます。"
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderMessage
 #, no-c-format
@@ -540,8 +555,10 @@ msgstr "表にはヘッダーセルを含める必要があります。"
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableHeaderWhy"
-msgid "Header cells give screen readers the context needed to understand table data."
-msgstr "ヘッダーセルは表データを理解するための文脈をスクリーンリーダーに提供します。"
+msgid ""
+"Header cells give screen readers the context needed to understand table data."
+msgstr ""
+"ヘッダーセルは表データを理解するための文脈をスクリーンリーダーに提供します。"
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionMessage
 #, no-c-format
@@ -552,7 +569,9 @@ msgstr "表にはキャプションを付けるべきです。"
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableCaptionWhy"
-msgid "A caption identifies a table's purpose before a screen reader enters its cells."
+msgid ""
+"A caption identifies a table's purpose before a screen reader enters its "
+"cells."
 msgstr "キャプションはスクリーンリーダーがセルに入る前に表の目的を特定します。"
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeMessage
@@ -564,7 +583,9 @@ msgstr "表のヘッダーセルは scope を宣言すべきです。"
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableHeaderScopeWhy"
-msgid "The scope attribute lets assistive technology associate headers with data cells."
+msgid ""
+"The scope attribute lets assistive technology associate headers with data "
+"cells."
 msgstr "scope 属性により支援技術がヘッダーとデータセルを関連付けられます。"
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksMessage
@@ -576,8 +597,11 @@ msgstr "隣接する同じ宛先のリンクは結合するべきです。"
 #: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yAdjacentLinksWhy"
-msgid "Repeated links create unnecessary stops for keyboard and screen reader users."
-msgstr "同じリンクの繰り返しはキーボードやスクリーンリーダー利用者に不要な停止を生みます。"
+msgid ""
+"Repeated links create unnecessary stops for keyboard and screen reader users."
+msgstr ""
+"同じリンクの繰り返しはキーボードやスクリーンリーダー利用者に不要な停止を生み"
+"ます。"
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingStartMessage
 #, no-c-format
@@ -589,18 +613,23 @@ msgstr "最初の見出しは h2 であるべきです。"
 #, no-c-format
 msgctxt "tinymce.strings:a11yHeadingStartWhy"
 msgid "The editor's document title is supplied outside the editable content."
-msgstr "エディタのドキュメントタイトルは編集可能なコンテンツの外部で提供されています。"
+msgstr ""
+"エディタのドキュメントタイトルは編集可能なコンテンツの外部で提供されていま"
+"す。"
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yListStructureMessage
 #, no-c-format
 msgctxt "tinymce.strings:a11yListStructureMessage"
 msgid "List items must be contained by an ordered or unordered list."
-msgstr "リストアイテムは順序付きまたは順序なしリストに含まれている必要があります。"
+msgstr ""
+"リストアイテムは順序付きまたは順序なしリストに含まれている必要があります。"
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yListStructureWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yListStructureWhy"
-msgid "Assistive technology relies on list structure to announce item counts and position."
+msgid ""
+"Assistive technology relies on list structure to announce item counts and "
+"position."
 msgstr "支援技術は項目数や位置をアナウンスするためにリスト構造に依存します。"
 
 #: plugins/tinymce/codemirror/src/i18n.json#sourceToggleTooltip
@@ -618,8 +647,12 @@ msgstr "ソースコード"
 #: plugins/tinymce/codemirror/src/i18n.json#sourceFormatErrorMessage
 #, no-c-format
 msgctxt "tinymce.strings:sourceFormatErrorMessage"
-msgid "Couldn't format the source code — check for unclosed tags or other syntax errors."
-msgstr "ソースコードをフォーマットできませんでした — 閉じられていないタグやその他の構文エラーを確認してください。"
+msgid ""
+"Couldn't format the source code — check for unclosed tags or other syntax "
+"errors."
+msgstr ""
+"ソースコードをフォーマットできませんでした — 閉じられていないタグやその他の構"
+"文エラーを確認してください。"
 
 #: plugins/tinymce/save/src/i18n.json#saveToolbarText
 #, no-c-format
@@ -708,8 +741,12 @@ msgstr "新規ドキュメント"
 #: plugins/tinymce/save/src/i18n.json#newDialogMessage
 #, no-c-format
 msgctxt "tinymce.strings:newDialogMessage"
-msgid "This clears the current editor content and config. Save the current work first?"
-msgstr "これにより現在のエディターの内容と設定が消去されます。現在の作業を先に保存しますか？"
+msgid ""
+"This clears the current editor content and config. Save the current work "
+"first?"
+msgstr ""
+"これにより現在のエディターの内容と設定が消去されます。現在の作業を先に保存し"
+"ますか？"
 
 #: plugins/tinymce/save/src/i18n.json#newDialogSaveButton
 #, no-c-format
@@ -825,26 +862,47 @@ msgctxt "tinymce.strings:presetCancelButton"
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: renderers/tinymce/src/i18n.json#componentModifiersDefault
 #, no-c-format
-msgctxt "tinymce.strings:componentModifiersDefault"
-msgid "Default"
-msgstr "デフォルト"
+#~ msgctxt "tinymce.strings:logosProductLabel"
+#~ msgid "Product"
+#~ msgstr "製品"
 
-#: renderers/tinymce/src/i18n.json#componentModifiersOptions
 #, no-c-format
-msgctxt "tinymce.strings:componentModifiersOptions"
-msgid "Options"
-msgstr "オプション"
+#~ msgctxt "tinymce.strings:logosLayoutLabel"
+#~ msgid "Layout"
+#~ msgstr "レイアウト"
 
-#: renderers/tinymce/src/i18n.json#componentModifiersTooltip
 #, no-c-format
-msgctxt "tinymce.strings:componentModifiersTooltip"
-msgid "Change component modifiers"
-msgstr "コンポーネントの修飾子を変更する"
+#~ msgctxt "tinymce.strings:logosLayoutHorizontal"
+#~ msgid "Horizontal"
+#~ msgstr "横方向"
 
-#: renderers/tinymce/src/i18n.json#componentModifiersUtilities
 #, no-c-format
-msgctxt "tinymce.strings:componentModifiersUtilities"
-msgid "Utilities"
-msgstr "ユーティリティ"
+#~ msgctxt "tinymce.strings:logosLayoutVertical"
+#~ msgid "Vertical"
+#~ msgstr "縦方向"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosLayoutStacked"
+#~ msgid "Stacked"
+#~ msgstr "積み重ね"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeLabel"
+#~ msgid "Color Mode"
+#~ msgstr "カラーモード"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeColor"
+#~ msgid "Color"
+#~ msgstr "色"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeMonochrome"
+#~ msgid "Monochrome"
+#~ msgstr "モノクロ"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeLight"
+#~ msgid "Light"
+#~ msgstr "ライト"

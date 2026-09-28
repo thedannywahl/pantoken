@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-23 23:16+0000\n"
+"PO-Revision-Date: 2026-09-28 16:10+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -61,6 +61,30 @@ msgstr ""
 #, no-c-format
 msgctxt "tinymce.strings:componentsToolbarTooltip"
 msgid "Insert a pantoken component"
+msgstr ""
+
+#: renderers/tinymce/src/i18n.json#componentModifiersDefault
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersDefault"
+msgid "Default"
+msgstr ""
+
+#: renderers/tinymce/src/i18n.json#componentModifiersOptions
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersOptions"
+msgid "Options"
+msgstr ""
+
+#: renderers/tinymce/src/i18n.json#componentModifiersTooltip
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersTooltip"
+msgid "Change component modifiers"
+msgstr ""
+
+#: renderers/tinymce/src/i18n.json#componentModifiersUtilities
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersUtilities"
+msgid "Utilities"
 msgstr ""
 
 #: renderers/tinymce/src/i18n.json#iconLabelDialogTitle
@@ -231,58 +255,34 @@ msgctxt "tinymce.strings:logosDialogTitle"
 msgid "Insert Logo"
 msgstr ""
 
-#: renderers/tinymce/src/i18n.json#logosProductLabel
+#: renderers/tinymce/src/i18n.json#logosSearchPlaceholder
 #, no-c-format
-msgctxt "tinymce.strings:logosProductLabel"
-msgid "Product"
+msgctxt "tinymce.strings:logosSearchPlaceholder"
+msgid "Search logos…"
 msgstr ""
 
-#: renderers/tinymce/src/i18n.json#logosLayoutLabel
+#: renderers/tinymce/src/i18n.json#logosSearchLabel
 #, no-c-format
-msgctxt "tinymce.strings:logosLayoutLabel"
-msgid "Layout"
+msgctxt "tinymce.strings:logosSearchLabel"
+msgid "Search logos"
 msgstr ""
 
-#: renderers/tinymce/src/i18n.json#logosLayoutHorizontal
+#: renderers/tinymce/src/i18n.json#logosAllProducts
 #, no-c-format
-msgctxt "tinymce.strings:logosLayoutHorizontal"
-msgid "Horizontal"
+msgctxt "tinymce.strings:logosAllProducts"
+msgid "All"
 msgstr ""
 
-#: renderers/tinymce/src/i18n.json#logosLayoutVertical
+#: renderers/tinymce/src/i18n.json#logosResultCount
 #, no-c-format
-msgctxt "tinymce.strings:logosLayoutVertical"
-msgid "Vertical"
+msgctxt "tinymce.strings:logosResultCount"
+msgid "{{count}} logos"
 msgstr ""
 
-#: renderers/tinymce/src/i18n.json#logosLayoutStacked
+#: renderers/tinymce/src/i18n.json#logosNoResults
 #, no-c-format
-msgctxt "tinymce.strings:logosLayoutStacked"
-msgid "Stacked"
-msgstr ""
-
-#: renderers/tinymce/src/i18n.json#logosColorModeLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeLabel"
-msgid "Color Mode"
-msgstr ""
-
-#: renderers/tinymce/src/i18n.json#logosColorModeColor
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeColor"
-msgid "Color"
-msgstr ""
-
-#: renderers/tinymce/src/i18n.json#logosColorModeMonochrome
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeMonochrome"
-msgid "Monochrome"
-msgstr ""
-
-#: renderers/tinymce/src/i18n.json#logosColorModeLight
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeLight"
-msgid "Light"
+msgctxt "tinymce.strings:logosNoResults"
+msgid "No logos match your search."
 msgstr ""
 
 #: renderers/tinymce/src/i18n.json#insertButton
@@ -823,28 +823,4 @@ msgstr ""
 #, no-c-format
 msgctxt "tinymce.strings:presetCancelButton"
 msgid "Cancel"
-msgstr ""
-
-#: renderers/tinymce/src/i18n.json#componentModifiersDefault
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersDefault"
-msgid "Default"
-msgstr ""
-
-#: renderers/tinymce/src/i18n.json#componentModifiersOptions
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersOptions"
-msgid "Options"
-msgstr ""
-
-#: renderers/tinymce/src/i18n.json#componentModifiersTooltip
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersTooltip"
-msgid "Change component modifiers"
-msgstr ""
-
-#: renderers/tinymce/src/i18n.json#componentModifiersUtilities
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersUtilities"
-msgid "Utilities"
 msgstr ""

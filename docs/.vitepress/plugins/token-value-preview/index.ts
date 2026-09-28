@@ -90,13 +90,40 @@ function sanitizeSvg(svg: string): string {
     .replace(/\s(?:xlink:href|href)\s*=\s*("javascript:[^"]*"|'javascript:[^']*')/gi, "");
 }
 
+/** Short, stable FNV-1a hash — deterministic across SSR and hydration, unlike a render counter. */
+function hash(value: string): string {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < value.length; i++) {
+    h ^= value.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return (h >>> 0).toString(36);
+}
+
+/** Prefix every `id` and its `url(#…)`/`href="#…"` references so inlined SVGs sharing ids don't collide. */
+export function scopeSvgIds(svg: string, prefix: string): string {
+  const ids = new Set([...svg.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
+  if (ids.size === 0) return svg;
+  const scoped = (id: string): string => (ids.has(id) ? `${prefix}-${id}` : id);
+  return svg
+    .replace(/(\sid=")([^"]+)"/g, (_, attr: string, id: string) => `${attr}${scoped(id)}"`)
+    .replace(
+      /url\(\s*(['"]?)#([^'")\s]+)\1\s*\)/g,
+      (_, q: string, id: string) => `url(${q}#${scoped(id)}${q})`,
+    )
+    .replace(
+      /(\s(?:xlink:)?href=")#([^"]+)"/g,
+      (_, attr: string, id: string) => `${attr}#${scoped(id)}"`,
+    );
+}
+
 /** The image-preview block for a code span, or null if its value carries no `data:image` URI. */
 function imagePreview(content: string): string | null {
   const uri = findDataImage(content);
   if (!uri) return null;
   const { svg, src } = decodeDataImage(uri);
   let inner: string;
-  if (svg) inner = sanitizeSvg(svg);
+  if (svg) inner = scopeSvgIds(sanitizeSvg(svg), `ptp${hash(uri)}`);
   else if (src) inner = `<img src="${escapeAttr(src)}" alt="" />`;
   else return null;
   return `<span class="pantoken-token-preview" role="img" aria-label="token preview">${inner}</span>`;

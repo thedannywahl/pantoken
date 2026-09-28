@@ -4,10 +4,10 @@ msgstr ""
 "PO-Revision-Date: 2026-09-23 23:16+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
+"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: und\n"
 
 #: renderers/tinymce/src/i18n.json#autocompleteModifierDetail
 #, no-c-format
@@ -62,6 +62,30 @@ msgstr "مكونات"
 msgctxt "tinymce.strings:componentsToolbarTooltip"
 msgid "Insert a pantoken component"
 msgstr "إدراج مكوّن pantoken"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersDefault
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersDefault"
+msgid "Default"
+msgstr "افتراضي"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersOptions
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersOptions"
+msgid "Options"
+msgstr "خيارات"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersTooltip
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersTooltip"
+msgid "Change component modifiers"
+msgstr "تغيير معدِّلات المكوّن"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersUtilities
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersUtilities"
+msgid "Utilities"
+msgstr "الأدوات"
 
 #: renderers/tinymce/src/i18n.json#iconLabelDialogTitle
 #, no-c-format
@@ -231,59 +255,35 @@ msgctxt "tinymce.strings:logosDialogTitle"
 msgid "Insert Logo"
 msgstr "إدراج شعار"
 
-#: renderers/tinymce/src/i18n.json#logosProductLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosProductLabel"
-msgid "Product"
-msgstr "المنتج"
+#: renderers/tinymce/src/i18n.json#logosSearchPlaceholder
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosSearchPlaceholder"
+msgid "Search logos…"
+msgstr "البحث عن الأيقونات…"
 
-#: renderers/tinymce/src/i18n.json#logosLayoutLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutLabel"
-msgid "Layout"
-msgstr "تخطيط"
+#: renderers/tinymce/src/i18n.json#logosSearchLabel
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosSearchLabel"
+msgid "Search logos"
+msgstr "ابحث عن الأيقونات"
 
-#: renderers/tinymce/src/i18n.json#logosLayoutHorizontal
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutHorizontal"
-msgid "Horizontal"
-msgstr "أفقي"
+#: renderers/tinymce/src/i18n.json#logosAllProducts
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosAllProducts"
+msgid "All"
+msgstr "الكل"
 
-#: renderers/tinymce/src/i18n.json#logosLayoutVertical
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutVertical"
-msgid "Vertical"
-msgstr "عمودي"
+#: renderers/tinymce/src/i18n.json#logosResultCount
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosResultCount"
+msgid "{{count}} logos"
+msgstr "{{count}} أيقونات"
 
-#: renderers/tinymce/src/i18n.json#logosLayoutStacked
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutStacked"
-msgid "Stacked"
-msgstr "مكدس"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeLabel"
-msgid "Color Mode"
-msgstr "وضع اللون"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeColor
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeColor"
-msgid "Color"
-msgstr "لون"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeMonochrome
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeMonochrome"
-msgid "Monochrome"
-msgstr "أحادي اللون"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeLight
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeLight"
-msgid "Light"
-msgstr "فاتح"
+#: renderers/tinymce/src/i18n.json#logosNoResults
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosNoResults"
+msgid "No logos match your search."
+msgstr "لا توجد أيقونات تطابق بحثك."
 
 #: renderers/tinymce/src/i18n.json#insertButton
 #, no-c-format
@@ -492,19 +492,25 @@ msgstr "يجب أن تحتوي الصور على نص بديل."
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltWhy"
-msgid "Screen readers need an alt attribute to describe an image or identify it as decorative."
-msgstr "تحتاج برامج قراءة الشاشة إلى سمة alt لوصف الصورة أو لتحديدها كعناصر زخرفية."
+msgid ""
+"Screen readers need an alt attribute to describe an image or identify it as "
+"decorative."
+msgstr ""
+"تحتاج برامج قراءة الشاشة إلى سمة alt لوصف الصورة أو لتحديدها كعناصر زخرفية."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameMessage
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltFilenameMessage"
-msgid "Image alternative text should describe the image, not repeat its filename."
+msgid ""
+"Image alternative text should describe the image, not repeat its filename."
 msgstr "يجب أن يصف النص البديل للصورة الصورة، ولا يكرر اسم الملف."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltFilenameWhy"
-msgid "A filename rarely gives screen reader users useful information about an image."
+msgid ""
+"A filename rarely gives screen reader users useful information about an "
+"image."
 msgstr "نادراً ما يقدم اسم الملف معلومات مفيدة لمستخدمي قارئ الشاشة حول الصورة."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthMessage
@@ -516,7 +522,9 @@ msgstr "يجب أن يكون النص البديل للصورة 125 حرفًا �
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltLengthWhy"
-msgid "Short descriptions are easier to understand and navigate with assistive technology."
+msgid ""
+"Short descriptions are easier to understand and navigate with assistive "
+"technology."
 msgstr "الأوصاف القصيرة أسهل في الفهم والملاحة باستخدام تقنيات المساعدة."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceMessage
@@ -528,8 +536,12 @@ msgstr "يجب ألا تتخطى مستويات العناوين مستويات 
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yHeadingSequenceWhy"
-msgid "A logical heading outline helps people navigate content with assistive technology."
-msgstr "يساعد مخطط العناوين المنطقي الأشخاص في التنقل عبر المحتوى باستخدام تقنيات المساعدة."
+msgid ""
+"A logical heading outline helps people navigate content with assistive "
+"technology."
+msgstr ""
+"يساعد مخطط العناوين المنطقي الأشخاص في التنقل عبر المحتوى باستخدام تقنيات "
+"المساعدة."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderMessage
 #, no-c-format
@@ -540,7 +552,8 @@ msgstr "يجب أن تتضمن الجداول خلايا رؤوس."
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableHeaderWhy"
-msgid "Header cells give screen readers the context needed to understand table data."
+msgid ""
+"Header cells give screen readers the context needed to understand table data."
 msgstr "توفر خلايا الرأس لسماعات الشاشة السياق اللازم لفهم بيانات الجدول."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionMessage
@@ -552,7 +565,9 @@ msgstr "يجب أن تتضمن الجداول تسمية توضيحية (caption
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableCaptionWhy"
-msgid "A caption identifies a table's purpose before a screen reader enters its cells."
+msgid ""
+"A caption identifies a table's purpose before a screen reader enters its "
+"cells."
 msgstr "تُعرّف التسمية توضيح غرض الجدول قبل أن تدخل قارئات الشاشة في خلاياه."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeMessage
@@ -564,7 +579,9 @@ msgstr "يجب أن تُعلن خلايا رأس الجدول عن نطاقها.
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableHeaderScopeWhy"
-msgid "The scope attribute lets assistive technology associate headers with data cells."
+msgid ""
+"The scope attribute lets assistive technology associate headers with data "
+"cells."
 msgstr "تسمح سمة النطاق لتقنيات المساعدة بربط الرؤوس بخلايا البيانات."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksMessage
@@ -576,8 +593,10 @@ msgstr "ينبغي دمج الروابط المتجاورة التي تؤدي إ
 #: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yAdjacentLinksWhy"
-msgid "Repeated links create unnecessary stops for keyboard and screen reader users."
-msgstr "تُنشئ الروابط المكررة توقفات غير ضرورية لمستخدمي لوحة المفاتيح وقارئات الشاشة."
+msgid ""
+"Repeated links create unnecessary stops for keyboard and screen reader users."
+msgstr ""
+"تُنشئ الروابط المكررة توقفات غير ضرورية لمستخدمي لوحة المفاتيح وقارئات الشاشة."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingStartMessage
 #, no-c-format
@@ -600,7 +619,9 @@ msgstr "يجب أن تكون عناصر القائمة محاطة بقائمة �
 #: plugins/tinymce/a11y/src/i18n.json#a11yListStructureWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yListStructureWhy"
-msgid "Assistive technology relies on list structure to announce item counts and position."
+msgid ""
+"Assistive technology relies on list structure to announce item counts and "
+"position."
 msgstr "تعتمد تقنيات المساعدة على بنية القائمة لإعلان عدد العناصر وموقعها."
 
 #: plugins/tinymce/codemirror/src/i18n.json#sourceToggleTooltip
@@ -618,8 +639,11 @@ msgstr "شفرة المصدر"
 #: plugins/tinymce/codemirror/src/i18n.json#sourceFormatErrorMessage
 #, no-c-format
 msgctxt "tinymce.strings:sourceFormatErrorMessage"
-msgid "Couldn't format the source code — check for unclosed tags or other syntax errors."
-msgstr "تعذر تنسيق شفرة المصدر — تحقق من وجود وسوم غير مغلقة أو أخطاء نحوية أخرى."
+msgid ""
+"Couldn't format the source code — check for unclosed tags or other syntax "
+"errors."
+msgstr ""
+"تعذر تنسيق شفرة المصدر — تحقق من وجود وسوم غير مغلقة أو أخطاء نحوية أخرى."
 
 #: plugins/tinymce/save/src/i18n.json#saveToolbarText
 #, no-c-format
@@ -708,7 +732,9 @@ msgstr "مستند جديد"
 #: plugins/tinymce/save/src/i18n.json#newDialogMessage
 #, no-c-format
 msgctxt "tinymce.strings:newDialogMessage"
-msgid "This clears the current editor content and config. Save the current work first?"
+msgid ""
+"This clears the current editor content and config. Save the current work "
+"first?"
 msgstr "هذا يمسح محتوى المحرر الحالي والتكوين. هل تريد حفظ العمل الحالي أولاً؟"
 
 #: plugins/tinymce/save/src/i18n.json#newDialogSaveButton
@@ -825,26 +851,47 @@ msgctxt "tinymce.strings:presetCancelButton"
 msgid "Cancel"
 msgstr "إلغاء"
 
-#: renderers/tinymce/src/i18n.json#componentModifiersDefault
 #, no-c-format
-msgctxt "tinymce.strings:componentModifiersDefault"
-msgid "Default"
-msgstr "افتراضي"
+#~ msgctxt "tinymce.strings:logosProductLabel"
+#~ msgid "Product"
+#~ msgstr "المنتج"
 
-#: renderers/tinymce/src/i18n.json#componentModifiersOptions
 #, no-c-format
-msgctxt "tinymce.strings:componentModifiersOptions"
-msgid "Options"
-msgstr "خيارات"
+#~ msgctxt "tinymce.strings:logosLayoutLabel"
+#~ msgid "Layout"
+#~ msgstr "تخطيط"
 
-#: renderers/tinymce/src/i18n.json#componentModifiersTooltip
 #, no-c-format
-msgctxt "tinymce.strings:componentModifiersTooltip"
-msgid "Change component modifiers"
-msgstr "تغيير معدِّلات المكوّن"
+#~ msgctxt "tinymce.strings:logosLayoutHorizontal"
+#~ msgid "Horizontal"
+#~ msgstr "أفقي"
 
-#: renderers/tinymce/src/i18n.json#componentModifiersUtilities
 #, no-c-format
-msgctxt "tinymce.strings:componentModifiersUtilities"
-msgid "Utilities"
-msgstr "الأدوات"
+#~ msgctxt "tinymce.strings:logosLayoutVertical"
+#~ msgid "Vertical"
+#~ msgstr "عمودي"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosLayoutStacked"
+#~ msgid "Stacked"
+#~ msgstr "مكدس"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeLabel"
+#~ msgid "Color Mode"
+#~ msgstr "وضع اللون"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeColor"
+#~ msgid "Color"
+#~ msgstr "لون"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeMonochrome"
+#~ msgid "Monochrome"
+#~ msgstr "أحادي اللون"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeLight"
+#~ msgid "Light"
+#~ msgstr "فاتح"

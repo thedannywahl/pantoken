@@ -46,3 +46,17 @@ test("repeated injection is a no-op", () => {
   injectPickerStyles(document, icons);
   expect(document.head.querySelectorAll("[data-pantoken-icon-picker]")).toHaveLength(5);
 });
+
+test("re-injecting with a different resolver re-points the sheet links in place", () => {
+  document.head.innerHTML = "";
+  injectPickerStyles(document, icons);
+  injectPickerStyles(
+    document,
+    icons,
+    undefined,
+    (file) => `data:text/css,/*unpkg ${file.package}*/`,
+  );
+  const links = [...document.head.querySelectorAll("link[data-pantoken-icon-picker]")];
+  expect(links).toHaveLength(2);
+  for (const link of links) expect(link.getAttribute("href")).toContain("unpkg");
+});

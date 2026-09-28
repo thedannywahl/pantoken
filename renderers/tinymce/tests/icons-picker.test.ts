@@ -44,6 +44,7 @@ function createMockEditor() {
     execCommand: vi.fn((name: string) => commands.get(name)?.()),
     getContainer: () => container,
     getDoc: () => contentDoc,
+    on: vi.fn(),
     insertContent: mocks.insertContent,
     selection: { setRng: mocks.setRng },
     windowManager: { open: mocks.open },

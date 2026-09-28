@@ -7,10 +7,52 @@
  * \@module
  */
 import type { CdnFile } from "@pantoken/cdn";
-import { type LogoMeta, logos } from "@pantoken/plugin-logos";
+import { type LogoMeta, type Product, logos } from "@pantoken/plugin-logos";
 import { TINYMCE_STRINGS } from "./strings.js";
 
 export { type LogoMeta, type Product, getLogoMeta, logos, products } from "@pantoken/plugin-logos";
+
+/** Brand names shown on the logos picker's tabs — proper nouns, so never translated. */
+export const PRODUCT_LABELS: Record<Product, string> = {
+  canvas: "Canvas",
+  igniteai: "IgniteAI",
+  instructure: "Instructure",
+  learnplatform: "LearnPlatform",
+  mastery: "Mastery",
+  pantoken: "pantoken",
+  parchment: "Parchment",
+};
+
+/** Every logo's tokens and `-logo-<name>` rules in one sheet, for the picker's previews. */
+export const LOGOS_BUNDLE_CDN_FILE: CdnFile = {
+  package: "@pantoken/plugin-logos",
+  path: "dist/logos.css",
+};
+
+/** A tile caption for a logo variant, e.g. `"horizontal · full color · ar"`. */
+export function logoVariantLabel(meta: LogoMeta): string {
+  return [meta.layout, meta.colorMode, meta.lang]
+    .filter(Boolean)
+    .map((part) => part!.replaceAll("-", " "))
+    .join(" · ");
+}
+
+/** Logos under `product` (all when omitted) whose name, product, or variant matches `query`. */
+export function filterLogos(
+  allLogos: readonly LogoMeta[],
+  query: string,
+  product?: Product,
+): LogoMeta[] {
+  const needle = query.trim().toLowerCase();
+  return allLogos.filter(
+    (logo) =>
+      (!product || logo.product === product) &&
+      (!needle ||
+        [logo.name, PRODUCT_LABELS[logo.product], logoVariantLabel(logo)].some((text) =>
+          text.toLowerCase().includes(needle),
+        )),
+  );
+}
 
 /** Resolve a logo's stylesheet: the `.-logo-<name>` mask painter plus its `--instui-logo-<name>` token. */
 export function getLogoCdnFile(meta: LogoMeta): CdnFile {
@@ -24,7 +66,7 @@ export function getLogoCdnFile(meta: LogoMeta): CdnFile {
  * `role="img"` + `aria-label` instead of `aria-hidden`.
  */
 export function buildLogoMarkup(meta: LogoMeta, altSuffix = TINYMCE_STRINGS.logoAltSuffix): string {
-  const label = `${meta.product} ${altSuffix}`
+  const label = `${PRODUCT_LABELS[meta.product] ?? meta.product} ${altSuffix}`
     .replaceAll("&", "&amp;")
     .replaceAll('"', "&quot;")
     .replaceAll("<", "&lt;")

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-27 00:58+0000\n"
+"PO-Revision-Date: 2026-09-28 16:14+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -6059,7 +6059,7 @@ msgstr "Մի [PantokenPlugin](../../../../../packages/core/src/interfaces/Pantok
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build the logo utility CSS as an aspect-ratio-aware mask painter for `@pantoken/plugin-logos`'\n`-logo-<name>` glyph classes, substituting `prefix` for the `pfx-` sentinel."
-msgstr "Build the logo utility CSS as an aspect-ratio-aware mask painter for `@pantoken/plugin-logos`'\n`-logo-<name>` glyph classes, substituting `prefix` for the `pfx-` sentinel."
+msgstr "Կառուցեք լոգոյի օժանդակ CSS-ը որպես հարաբերակցության (aspect-ratio) նկատմամբ զգայուն քողարկման ներկիչ (mask painter) `@pantoken/plugin-logos`'\n`-logo-<name>` գլիֆային դասերի համար՝ փոխարինելով `prefix`-ը `pfx-` պահապանով (sentinel):"
 
 #: plugins/pantoken/custom-components/src/index.md
 #, no-c-format
@@ -6219,7 +6219,7 @@ msgstr "Մի [ResolvedDemo](../interfaces/ResolvedDemo.md)."
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The `[data-pantoken-color=\"custom\"]` remap rule without the derived primitives, for pages that\nset `--instui-primitive-color-custom-custom*` themselves at runtime (e.g. from a color picker)."
-msgstr "The `[data-pantoken-color=\"custom\"]` remap rule without the derived primitives, for pages that\nset `--instui-primitive-color-custom-custom*` themselves at runtime (e.g. from a color picker)."
+msgstr "`[data-pantoken-color=\"custom\"]` վերաարտապատկերման (remap) կանոնն առանց ածանցյալ պրիմիտիվների այն էջերի համար, որոնք\nսահմանում են `--instui-primitive-color-custom-custom*` իրենք իրենց աշխատանքի ընթացքում (օր․՝ գույնի ընտրիչից)):"
 
 #: plugins/pantoken/custom-theme-colors/src/functions/customThemeColors.md
 #, fuzzy, no-c-format
@@ -6256,7 +6256,7 @@ msgstr "Արտածեք `custom` primitive աստիճանաչափը բրենդի 
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The [CustomColorScale](../interfaces/CustomColorScale.md)."
-msgstr "The [CustomColorScale](../interfaces/CustomColorScale.md)."
+msgstr "[CustomColorScale](../interfaces/CustomColorScale.md)-ը:"
 
 #: plugins/pantoken/custom-theme-colors/src/functions/deriveScale.md
 #, no-c-format
@@ -6846,7 +6846,7 @@ msgstr "SVG տողը, կամ `undefined` եթե այդ կոմբինացիան գ
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Read a logo's aspect ratio**"
-msgstr "**Read a logo's aspect ratio**"
+msgstr "**Կարդալ լոգոյի կողմերի հարաբերակցությունը**"
 
 #: plugins/pantoken/logos/src/functions/getLogoSvg.md
 #, no-c-format
@@ -6968,14 +6968,14 @@ msgstr "Ճանապարհը `assets/logos`-ի ներսում, օրինակ՝ `\"c
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The SVG's natural `viewBox` width, used with [height](#height) to derive `--pantoken-logo-aspect`."
-msgstr "The SVG's natural `viewBox` width, used with [height](#height) to derive `--pantoken-logo-aspect`."
+msgstr "SVG-ի բնական `viewBox` լայնությունը, որն օգտագործվում է [height](#height)-ի հետ `--pantoken-logo-aspect`-ը ստանալու համար:"
 
 #: plugins/pantoken/logos/src/interfaces/LogoMeta.md
 #: renderers/tinymce/src/interfaces/LogoMeta.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The SVG's natural `viewBox` height, used with [width](#width) to derive `--pantoken-logo-aspect`."
-msgstr "The SVG's natural `viewBox` height, used with [width](#width) to derive `--pantoken-logo-aspect`."
+msgstr "SVG-ի բնական `viewBox` բարձրությունը, որն օգտագործվում է [width](#width)-ի հետ `--pantoken-logo-aspect`-ը ստանալու համար:"
 
 #: plugins/pantoken/logos/src/interfaces/LogosOptions.md
 #, no-c-format
@@ -9300,7 +9300,7 @@ msgstr "The decorative icon markup retained in editor content after a picker sel
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The logo markup retained in editor content after a picker selection — same\nzero-width-space/`contenteditable=\"false\"` noneditable-object technique as `icons.ts`'s\n`buildIconMarkup`. Unlike a decorative icon, a logo names a real product, so it carries\n`role=\"img\"` + `aria-label` instead of `aria-hidden`."
-msgstr "The logo markup retained in editor content after a picker selection — same\nzero-width-space/`contenteditable=\"false\"` noneditable-object technique as `icons.ts`'s\n`buildIconMarkup`. Unlike a decorative icon, a logo names a real product, so it carries\n`role=\"img\"` + `aria-label` instead of `aria-hidden`."
+msgstr "Ընտրիչի ընտրությունից հետո խմբագրիչի բովանդակության մեջ պահպանված լոգոյի նշագրումը — նույն\nzero-width-space/`contenteditable=\"false\"` չխմբագրվող օբյեկտի տեխնիկան, ինչ `icons.ts`-ի\n`buildIconMarkup`-ը: Ի տարբերություն դեկորատիվ պատկերակի, լոգոն անվանում է իրական ապրանք, ուստի այն կրում է\n`role=\"img\"` + `aria-label`՝ `aria-hidden`-ի փոխարեն:"
 
 #: renderers/tinymce/src/functions/createComponentsPlugin.md
 #, no-c-format
@@ -9408,7 +9408,7 @@ msgstr "Մեկ `data:` URI, որը կիրառելի է որպես `<img src>` պ
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Resolve a logo's stylesheet: the `.-logo-<name>` mask painter plus its `--instui-logo-<name>` token."
-msgstr "Resolve a logo's stylesheet: the `.-logo-<name>` mask painter plus its `--instui-logo-<name>` token."
+msgstr "Լուծել լոգոյի ոճաթերթը (stylesheet). `.-logo-<name>` դիմակի նկարիչը (mask painter) գումարած նրա `--instui-logo-<name>` թոքենը:"
 
 #: renderers/tinymce/src/functions/getModifierSuggestions.md
 #, no-c-format
@@ -9432,7 +9432,7 @@ msgstr "միայն կարդալ [`CdnFile`](../../../../platforms/canvas-theme-e
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Resolve the logo stylesheets used by `-logo-*` classes below `root`."
-msgstr "Resolve the logo stylesheets used by `-logo-*` classes below `root`."
+msgstr "Վերլուծել լոգոյի ոճաթերթերը, որոնք օգտագործվում են `-logo-*` դասերի կողմից `root`-ից ցածր:"
 
 #: renderers/tinymce/src/functions/getUsedLogoCdnFiles.md
 #, fuzzy, no-c-format
@@ -12282,7 +12282,7 @@ msgstr "Շարժական «դիտել ամբողջ էկրանում» կոճակ
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Day"
-#~ msgstr "day"
+#~ msgstr "Օր"
 
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -12327,7 +12327,7 @@ msgstr "Շարժական «դիտել ամբողջ էկրանում» կոճակ
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Default every unmodified child to the tertiary (text-style) color."
-#~ msgstr "Default every unmodified child to the tertiary (text-style) color."
+#~ msgstr "Լռելյայն բոլոր չփոփոխված ենթատարրերի համար սահմանել երրորդային (տեքստի ոճ) գույնը:"
 
 #, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -14652,7 +14652,7 @@ msgstr "Շարժական «դիտել ամբողջ էկրանում» կոճակ
 #, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "A logo is meaningful, not decorative — give the host element `role=\"img\"` and an `aria-label` naming the product; never mark it `aria-hidden`."
-#~ msgstr "A logo is meaningful, not decorative — give the host element `role=\"img\"` and an `aria-label` naming the product; never mark it `aria-hidden`."
+#~ msgstr "Լոգոն իմաստալից է, ոչ թե դեկորատիվ — հոսթ էլեմենտին տվեք `role=\"img\"` և `aria-label`, որն անվանում է ապրանքը․ երբեք այն մի նշեք որպես `aria-hidden`:"
 
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -25804,3 +25804,204 @@ msgstr "Շարժական «դիտել ամբողջ էկրանում» կոճակ
 #~ msgctxt "docs.api:text"
 #~ msgid "ai-gradient"
 #~ msgstr "ai-gradient"
+
+msgctxt "docs.api:text"
+msgid "EmailCssOptions"
+msgstr "EmailCssOptions"
+
+msgctxt "docs.api:text"
+msgid "InlineEmailHtmlOptions"
+msgstr "InlineEmailHtmlOptions"
+
+msgctxt "docs.api:text"
+msgid "EmailClient"
+msgstr "EmailClient"
+
+msgctxt "docs.api:text"
+msgid "light"
+msgstr "light"
+
+msgctxt "docs.api:text"
+msgid "inlineEmailHtml"
+msgstr "inlineEmailHtml"
+
+msgctxt "docs.api:text"
+msgid "GlyphSyncTarget"
+msgstr "GlyphSyncTarget"
+
+msgctxt "docs.api:text"
+msgid "PRODUCT_LABELS"
+msgstr "PRODUCT_LABELS"
+
+msgctxt "docs.api:text"
+msgid "retargetContentStylesheets"
+msgstr "retargetContentStylesheets"
+
+msgctxt "docs.api:text"
+msgid "normalizeGlyphHtml"
+msgstr "normalizeGlyphHtml"
+
+msgctxt "docs.api:text"
+msgid "injectUsedGlyphAssets"
+msgstr "injectUsedGlyphAssets"
+
+msgctxt "docs.api:text"
+msgid "registerGlyphSync"
+msgstr "registerGlyphSync"
+
+msgctxt "docs.api:text"
+msgid "logoVariantLabel"
+msgstr "logoVariantLabel"
+
+msgctxt "docs.api:text"
+msgid "filterLogos"
+msgstr "filterLogos"
+
+msgctxt "docs.api:text"
+msgid "getLogoCdnFile"
+msgstr "getLogoCdnFile"
+
+msgctxt "docs.api:text"
+msgid "buildLogoMarkup"
+msgstr "buildLogoMarkup"
+
+msgctxt "docs.api:text"
+msgid "getUsedLogoCdnFiles"
+msgstr "getUsedLogoCdnFiles"
+
+msgctxt "docs.api:text"
+msgid "modifyExpression"
+msgstr "modifyExpression"
+
+msgctxt "docs.api:text"
+msgid "inline-styles"
+msgstr "inline-styles"
+
+msgctxt "docs.api:text"
+msgid "InlineHtmlOptions"
+msgstr "InlineHtmlOptions"
+
+msgctxt "docs.api:text"
+msgid "inlineHtml"
+msgstr "inlineHtml"
+
+msgctxt "docs.api:text"
+msgid "InPlaceEditOptions"
+msgstr "InPlaceEditOptions"
+
+msgctxt "docs.api:text"
+msgid "InPlaceEditInputType"
+msgstr "InPlaceEditInputType"
+
+msgctxt "docs.api:text"
+msgid "buttonSetRules"
+msgstr "buttonSetRules"
+
+msgctxt "docs.api:text"
+msgid "logoRules"
+msgstr "logoRules"
+
+msgctxt "docs.api:text"
+msgid "breakpointDeclarations"
+msgstr "breakpointDeclarations"
+
+msgctxt "docs.api:text"
+msgid "ReferenceCurve"
+msgstr "ReferenceCurve"
+
+msgctxt "docs.api:text"
+msgid "CustomColorScale"
+msgstr "CustomColorScale"
+
+msgctxt "docs.api:text"
+msgid "CustomColorCssOptions"
+msgstr "CustomColorCssOptions"
+
+msgctxt "docs.api:text"
+msgid "CUSTOM_COLOR_KEY"
+msgstr "CUSTOM_COLOR_KEY"
+
+msgctxt "docs.api:text"
+msgid "isHexColor"
+msgstr "isHexColor"
+
+msgctxt "docs.api:text"
+msgid "deriveScale"
+msgstr "deriveScale"
+
+msgctxt "docs.api:text"
+msgid "customColorReferenceCurve"
+msgstr "customColorReferenceCurve"
+
+msgctxt "docs.api:text"
+msgid "deriveCustomColorScale"
+msgstr "deriveCustomColorScale"
+
+msgctxt "docs.api:text"
+msgid "customColorCss"
+msgstr "customColorCss"
+
+msgctxt "docs.api:text"
+msgid "customColorRemapCss"
+msgstr "customColorRemapCss"
+
+msgctxt "docs.api:text"
+msgid "button-set"
+msgstr "button-set"
+
+msgctxt "docs.api:text"
+msgid "day"
+msgstr "day"
+
+msgctxt "docs.api:text"
+msgid "logo"
+msgstr "logo"
+
+msgctxt "docs.api:text"
+msgid "breakpoints"
+msgstr "breakpoints"
+
+msgctxt "docs.api:prose"
+msgid "Logos under `product` (all when omitted) whose name, product, or variant matches `query`."
+msgstr "Լոգոներ `product` ներքո (բոլորը, երբ բաց թողնվի), որոնց անվանումը, արտադրանքը կամ տարբերակը համապատասխանում է `query`-ին:"
+
+#, pantoken-verbatim
+msgctxt "docs.api:prose"
+msgid "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[]"
+msgstr "readonly [`LogoMeta`](../interfaces/LogoMeta.md)[]"
+
+msgctxt "docs.api:prose"
+msgid "Appends a `<link rel=\"stylesheet\">` to the editor's content document `<head>` at runtime.\nIdempotent per URL — calling this twice with the same `url` is a no-op the second time. Pass the\n`file` the URL resolves so [retargetContentStylesheets](retargetContentStylesheets.md) can re-point it later; a tagged\nlink is idempotent per file instead, and a new URL for the same file updates it in place."
+msgstr "Ավելացնում է `<link rel=\"stylesheet\">` խմբագրիչի բովանդակության փաստաթղթին `<head>` աշխատանքի ընթացքում։\nԻդեմպոտենտ է ըստ URL-ի — նույն `url`-ով կրկնակի կանչելը երկրորդ անգամ ոչ մի գործողություն չի կատարում։ Փոխանցեք \n`file`, որը URL-ը լուծում է, որպեսզի [retargetContentStylesheets](retargetContentStylesheets.md)-ը կարողանա ավելի ուշ այն վերահասցեագրել. նշված հղումը փոխարենը իդեմպոտենտ է ըստ ֆայլի, և նույն ֆայլի համար նոր URL-ը թարմացնում է այն տեղում։"
+
+msgctxt "docs.api:prose"
+msgid "Inject the stylesheet of every glyph `resolve` finds in the editor body."
+msgstr "Ներարկել յուրաքանչյուր նշանագրի ոճաթերթը, որը `resolve`-ը գտնում է խմբագրի մարմնում:"
+
+msgctxt "docs.api:prose"
+msgid "A tile caption for a logo variant, e.g. `\"horizontal · full color · ar\"`."
+msgstr "Սալիկի ստորագրություն լոգոյի տարբերակի համար, օրինակ՝ `\"horizontal · full color · ar\"`:"
+
+msgctxt "docs.api:prose"
+msgid "Give every empty glyph span in `html` the non-editable, ZWSP-filled shape the pickers insert."
+msgstr "Տվեք `html`-ում գտնվող յուրաքանչյուր դատարկ glyph span-ին չխմբագրվող, ZWSP-ով լցված ձևը, որն տեղադրում են ընտրիչները (pickers):"
+
+msgctxt "docs.api:prose"
+msgid "Normalize incoming glyph markup and inject stylesheets for glyphs however they arrive."
+msgstr "Նորմալացնել մուտքային գլիֆի նշագրումը և ներարկել ոճաթերթեր գլիֆների համար՝ անկախ դրանց ստացման եղանակից:"
+
+msgctxt "docs.api:prose"
+msgid "Re-resolve every tagged stylesheet in the content document, e.g. after a CDN provider switch."
+msgstr "Վերալուծել բովանդակության փաստաթղթի յուրաքանչյուր նշված ոճաթերթ, օրինակ՝ CDN մատակարարի փոփոխությունից հետո:"
+
+msgctxt "docs.api:prose"
+msgid "Where [registerGlyphSync](../functions/registerGlyphSync.md) tracks and resolves the stylesheets it injects."
+msgstr "Որտեղ [registerGlyphSync](../functions/registerGlyphSync.md) հետևում և լուծում է իր կողմից ներարկված ոճաթերթերը:"
+
+msgctxt "docs.api:prose"
+msgid "The logos picker no longer renders product/layout/color-mode selects."
+msgstr "Logos picker-ն այլևս չի ցուցադրում product/layout/color-mode ընտրիչները:"
+
+msgctxt "docs.api:prose"
+msgid "Brand names shown on the logos picker's tabs — proper nouns, so never translated."
+msgstr "Լոգոների ընտրության ներդիրներում ցուցադրվող ապրանքանիշերի անվանումները՝ հատուկ անուններ են, ուստի երբեք չեն թարգմանվում:"

@@ -21,17 +21,50 @@ export function pantokenContentCssUrls(
   return buildFileUrls([...assets], provider);
 }
 
+const ASSET_ATTR = "data-pantoken-asset";
+
+function assetKey(file: CdnFile): string {
+  return `${file.package}:${file.path ?? ""}`;
+}
+
 /**
  * Appends a `<link rel="stylesheet">` to the editor's content document `<head>` at runtime.
- * Idempotent per URL — calling this twice with the same `url` is a no-op the second time.
+ * Idempotent per URL — calling this twice with the same `url` is a no-op the second time. Pass the
+ * `file` the URL resolves so {@link retargetContentStylesheets} can re-point it later; a tagged
+ * link is idempotent per file instead, and a new URL for the same file updates it in place.
  */
-export function injectContentStylesheet(editor: Editor, url: string): void {
-  const head = editor.getDoc().head;
-  if (head.querySelector(`link[href="${url}"]`)) return;
-  const link = editor.getDoc().createElement("link");
+export function injectContentStylesheet(editor: Editor, url: string, file?: CdnFile): void {
+  const doc = editor.getDoc();
+  const key = file && assetKey(file);
+  const existing = key
+    ? [...doc.head.querySelectorAll<HTMLLinkElement>(`link[${ASSET_ATTR}]`)].find(
+        (link) => link.getAttribute(ASSET_ATTR) === key,
+      )
+    : doc.head.querySelector<HTMLLinkElement>(`link[href="${url}"]`);
+  if (existing) {
+    if (existing.getAttribute("href") !== url) existing.href = url;
+    return;
+  }
+  const link = doc.createElement("link");
   link.rel = "stylesheet";
   link.href = url;
-  head.append(link);
+  if (key) link.setAttribute(ASSET_ATTR, key);
+  doc.head.append(link);
+}
+
+/** Re-resolve every tagged stylesheet in the content document, e.g. after a CDN provider switch. */
+export function retargetContentStylesheets(
+  editor: Editor,
+  buildAssetUrl: (file: CdnFile) => string,
+): void {
+  const links = editor.getDoc().head.querySelectorAll<HTMLLinkElement>(`link[${ASSET_ATTR}]`);
+  for (const link of links) {
+    const key = link.getAttribute(ASSET_ATTR) ?? "";
+    const split = key.indexOf(":");
+    const path = key.slice(split + 1);
+    const url = buildAssetUrl({ package: key.slice(0, split), ...(path ? { path } : {}) });
+    if (link.getAttribute("href") !== url) link.href = url;
+  }
 }
 
 /**
@@ -54,5 +87,5 @@ export function trackAndInjectAsset(
     target.onMissingAsset?.(cssFile);
   }
   const cssUrl = (target.buildAssetUrl ?? buildFileUrl)(cssFile);
-  injectContentStylesheet(editor, cssUrl);
+  injectContentStylesheet(editor, cssUrl, cssFile);
 }

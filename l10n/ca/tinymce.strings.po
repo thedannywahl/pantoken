@@ -4,10 +4,10 @@ msgstr ""
 "PO-Revision-Date: 2026-09-23 23:16+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
+"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: und\n"
 
 #: renderers/tinymce/src/i18n.json#autocompleteModifierDetail
 #, no-c-format
@@ -62,6 +62,30 @@ msgstr "Components"
 msgctxt "tinymce.strings:componentsToolbarTooltip"
 msgid "Insert a pantoken component"
 msgstr "Insereix un component pantoken"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersDefault
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersDefault"
+msgid "Default"
+msgstr "Predeterminat"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersOptions
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersOptions"
+msgid "Options"
+msgstr "Opcions"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersTooltip
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersTooltip"
+msgid "Change component modifiers"
+msgstr "Canvia els modificadors del component"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersUtilities
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersUtilities"
+msgid "Utilities"
+msgstr "Utilitats"
 
 #: renderers/tinymce/src/i18n.json#iconLabelDialogTitle
 #, no-c-format
@@ -231,59 +255,35 @@ msgctxt "tinymce.strings:logosDialogTitle"
 msgid "Insert Logo"
 msgstr "Insereix logotip"
 
-#: renderers/tinymce/src/i18n.json#logosProductLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosProductLabel"
-msgid "Product"
-msgstr "Producte"
+#: renderers/tinymce/src/i18n.json#logosSearchPlaceholder
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosSearchPlaceholder"
+msgid "Search logos…"
+msgstr "Cercar icones…"
 
-#: renderers/tinymce/src/i18n.json#logosLayoutLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutLabel"
-msgid "Layout"
-msgstr "Disseny"
+#: renderers/tinymce/src/i18n.json#logosSearchLabel
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosSearchLabel"
+msgid "Search logos"
+msgstr "Cercar icones"
 
-#: renderers/tinymce/src/i18n.json#logosLayoutHorizontal
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutHorizontal"
-msgid "Horizontal"
-msgstr "Horitzontal"
+#: renderers/tinymce/src/i18n.json#logosAllProducts
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosAllProducts"
+msgid "All"
+msgstr "Tots"
 
-#: renderers/tinymce/src/i18n.json#logosLayoutVertical
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutVertical"
-msgid "Vertical"
-msgstr "Vertical"
+#: renderers/tinymce/src/i18n.json#logosResultCount
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosResultCount"
+msgid "{{count}} logos"
+msgstr "{{count}} icones"
 
-#: renderers/tinymce/src/i18n.json#logosLayoutStacked
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutStacked"
-msgid "Stacked"
-msgstr "Apilat"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeLabel"
-msgid "Color Mode"
-msgstr "Mode de color"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeColor
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeColor"
-msgid "Color"
-msgstr "Color"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeMonochrome
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeMonochrome"
-msgid "Monochrome"
-msgstr "Monocrom"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeLight
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeLight"
-msgid "Light"
-msgstr "Clar"
+#: renderers/tinymce/src/i18n.json#logosNoResults
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosNoResults"
+msgid "No logos match your search."
+msgstr "Cap icona coincideix amb la teva cerca."
 
 #: renderers/tinymce/src/i18n.json#insertButton
 #, no-c-format
@@ -492,20 +492,31 @@ msgstr "Les imatges han de tenir text alternatiu."
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltWhy"
-msgid "Screen readers need an alt attribute to describe an image or identify it as decorative."
-msgstr "Els lectors de pantalla necessiten un atribut alt per descriure una imatge o identificar-la com a decorativa."
+msgid ""
+"Screen readers need an alt attribute to describe an image or identify it as "
+"decorative."
+msgstr ""
+"Els lectors de pantalla necessiten un atribut alt per descriure una imatge o "
+"identificar-la com a decorativa."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameMessage
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltFilenameMessage"
-msgid "Image alternative text should describe the image, not repeat its filename."
-msgstr "El text alternatiu de la imatge ha de descriure la imatge, no repetir el nom del fitxer."
+msgid ""
+"Image alternative text should describe the image, not repeat its filename."
+msgstr ""
+"El text alternatiu de la imatge ha de descriure la imatge, no repetir el nom "
+"del fitxer."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltFilenameWhy"
-msgid "A filename rarely gives screen reader users useful information about an image."
-msgstr "Un nom de fitxer rarament aporta informació útil sobre una imatge als usuaris de lectors de pantalla."
+msgid ""
+"A filename rarely gives screen reader users useful information about an "
+"image."
+msgstr ""
+"Un nom de fitxer rarament aporta informació útil sobre una imatge als "
+"usuaris de lectors de pantalla."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthMessage
 #, no-c-format
@@ -516,8 +527,12 @@ msgstr "El text alternatiu de la imatge ha de tenir 125 caràcters o menys."
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltLengthWhy"
-msgid "Short descriptions are easier to understand and navigate with assistive technology."
-msgstr "Les descripcions curtes són més fàcils d'entendre i de navegar amb tecnologia d'assistència."
+msgid ""
+"Short descriptions are easier to understand and navigate with assistive "
+"technology."
+msgstr ""
+"Les descripcions curtes són més fàcils d'entendre i de navegar amb "
+"tecnologia d'assistència."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceMessage
 #, no-c-format
@@ -528,8 +543,12 @@ msgstr "Els nivells de títol no han de saltar-se nivells."
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yHeadingSequenceWhy"
-msgid "A logical heading outline helps people navigate content with assistive technology."
-msgstr "Una estructura lògica de títols ajuda les persones a navegar pel contingut amb tecnologia d'assistència."
+msgid ""
+"A logical heading outline helps people navigate content with assistive "
+"technology."
+msgstr ""
+"Una estructura lògica de títols ajuda les persones a navegar pel contingut "
+"amb tecnologia d'assistència."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderMessage
 #, no-c-format
@@ -540,8 +559,11 @@ msgstr "Les taules han d'incloure cel·les d'encapçalament."
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableHeaderWhy"
-msgid "Header cells give screen readers the context needed to understand table data."
-msgstr "Les cel·les d'encapçalament proporcionen als lectors de pantalla el context necessari per entendre les dades de la taula."
+msgid ""
+"Header cells give screen readers the context needed to understand table data."
+msgstr ""
+"Les cel·les d'encapçalament proporcionen als lectors de pantalla el context "
+"necessari per entendre les dades de la taula."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionMessage
 #, no-c-format
@@ -552,8 +574,12 @@ msgstr "Les taules haurien d'incloure una llegenda."
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableCaptionWhy"
-msgid "A caption identifies a table's purpose before a screen reader enters its cells."
-msgstr "Una llegenda identifica la finalitat d'una taula abans que un lector de pantalla accedeixi a les seves cel·les."
+msgid ""
+"A caption identifies a table's purpose before a screen reader enters its "
+"cells."
+msgstr ""
+"Una llegenda identifica la finalitat d'una taula abans que un lector de "
+"pantalla accedeixi a les seves cel·les."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeMessage
 #, no-c-format
@@ -564,8 +590,12 @@ msgstr "Les cel·les d'encapçalament de taula han de declarar el seu àmbit."
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableHeaderScopeWhy"
-msgid "The scope attribute lets assistive technology associate headers with data cells."
-msgstr "L'atribut scope permet a la tecnologia d'assistència associar els encapçalaments amb les cel·les de dades."
+msgid ""
+"The scope attribute lets assistive technology associate headers with data "
+"cells."
+msgstr ""
+"L'atribut scope permet a la tecnologia d'assistència associar els "
+"encapçalaments amb les cel·les de dades."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksMessage
 #, no-c-format
@@ -576,8 +606,11 @@ msgstr "Els enllaços adjacents amb la mateixa destinació s'han de combinar."
 #: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yAdjacentLinksWhy"
-msgid "Repeated links create unnecessary stops for keyboard and screen reader users."
-msgstr "Els enllaços repetits creen parades innecessàries per als usuaris de teclat i lectors de pantalla."
+msgid ""
+"Repeated links create unnecessary stops for keyboard and screen reader users."
+msgstr ""
+"Els enllaços repetits creen parades innecessàries per als usuaris de teclat "
+"i lectors de pantalla."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingStartMessage
 #, no-c-format
@@ -589,19 +622,27 @@ msgstr "El primer títol ha de ser un h2."
 #, no-c-format
 msgctxt "tinymce.strings:a11yHeadingStartWhy"
 msgid "The editor's document title is supplied outside the editable content."
-msgstr "El títol del document de l'editor s'ha proporcionat fora del contingut editable."
+msgstr ""
+"El títol del document de l'editor s'ha proporcionat fora del contingut "
+"editable."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yListStructureMessage
 #, no-c-format
 msgctxt "tinymce.strings:a11yListStructureMessage"
 msgid "List items must be contained by an ordered or unordered list."
-msgstr "Els elements de llista han d'estar continguts en una llista ordenada o desordenada."
+msgstr ""
+"Els elements de llista han d'estar continguts en una llista ordenada o "
+"desordenada."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yListStructureWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yListStructureWhy"
-msgid "Assistive technology relies on list structure to announce item counts and position."
-msgstr "La tecnologia d'assistència es basa en l'estructura de la llista per anunciar el nombre d'elements i la posició."
+msgid ""
+"Assistive technology relies on list structure to announce item counts and "
+"position."
+msgstr ""
+"La tecnologia d'assistència es basa en l'estructura de la llista per "
+"anunciar el nombre d'elements i la posició."
 
 #: plugins/tinymce/codemirror/src/i18n.json#sourceToggleTooltip
 #, no-c-format
@@ -618,8 +659,12 @@ msgstr "Codi font"
 #: plugins/tinymce/codemirror/src/i18n.json#sourceFormatErrorMessage
 #, no-c-format
 msgctxt "tinymce.strings:sourceFormatErrorMessage"
-msgid "Couldn't format the source code — check for unclosed tags or other syntax errors."
-msgstr "No s'ha pogut formatar el codi font — comprova si hi ha etiquetes sense tancar o altres errors de sintaxi."
+msgid ""
+"Couldn't format the source code — check for unclosed tags or other syntax "
+"errors."
+msgstr ""
+"No s'ha pogut formatar el codi font — comprova si hi ha etiquetes sense "
+"tancar o altres errors de sintaxi."
 
 #: plugins/tinymce/save/src/i18n.json#saveToolbarText
 #, no-c-format
@@ -708,8 +753,12 @@ msgstr "Nou document"
 #: plugins/tinymce/save/src/i18n.json#newDialogMessage
 #, no-c-format
 msgctxt "tinymce.strings:newDialogMessage"
-msgid "This clears the current editor content and config. Save the current work first?"
-msgstr "Això esborra el contingut i la configuració de l'editor actual. Vols desar la feina actual primer?"
+msgid ""
+"This clears the current editor content and config. Save the current work "
+"first?"
+msgstr ""
+"Això esborra el contingut i la configuració de l'editor actual. Vols desar "
+"la feina actual primer?"
 
 #: plugins/tinymce/save/src/i18n.json#newDialogSaveButton
 #, no-c-format
@@ -825,26 +874,47 @@ msgctxt "tinymce.strings:presetCancelButton"
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: renderers/tinymce/src/i18n.json#componentModifiersDefault
 #, no-c-format
-msgctxt "tinymce.strings:componentModifiersDefault"
-msgid "Default"
-msgstr "Predeterminat"
+#~ msgctxt "tinymce.strings:logosProductLabel"
+#~ msgid "Product"
+#~ msgstr "Producte"
 
-#: renderers/tinymce/src/i18n.json#componentModifiersOptions
 #, no-c-format
-msgctxt "tinymce.strings:componentModifiersOptions"
-msgid "Options"
-msgstr "Opcions"
+#~ msgctxt "tinymce.strings:logosLayoutLabel"
+#~ msgid "Layout"
+#~ msgstr "Disseny"
 
-#: renderers/tinymce/src/i18n.json#componentModifiersTooltip
 #, no-c-format
-msgctxt "tinymce.strings:componentModifiersTooltip"
-msgid "Change component modifiers"
-msgstr "Canvia els modificadors del component"
+#~ msgctxt "tinymce.strings:logosLayoutHorizontal"
+#~ msgid "Horizontal"
+#~ msgstr "Horitzontal"
 
-#: renderers/tinymce/src/i18n.json#componentModifiersUtilities
 #, no-c-format
-msgctxt "tinymce.strings:componentModifiersUtilities"
-msgid "Utilities"
-msgstr "Utilitats"
+#~ msgctxt "tinymce.strings:logosLayoutVertical"
+#~ msgid "Vertical"
+#~ msgstr "Vertical"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosLayoutStacked"
+#~ msgid "Stacked"
+#~ msgstr "Apilat"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeLabel"
+#~ msgid "Color Mode"
+#~ msgstr "Mode de color"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeColor"
+#~ msgid "Color"
+#~ msgstr "Color"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeMonochrome"
+#~ msgid "Monochrome"
+#~ msgstr "Monocrom"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeLight"
+#~ msgid "Light"
+#~ msgstr "Clar"

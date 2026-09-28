@@ -188,7 +188,8 @@ function appendOnce(doc: Document, key: string, build: () => Element): void {
   doc.head.append(element);
 }
 
-function appendStyle(doc: Document, key: string, css: string): void {
+/** Add a picker-owned `<style>` once per `key`. */
+export function appendPickerStyle(doc: Document, key: string, css: string): void {
   appendOnce(doc, key, () => {
     const style = doc.createElement("style");
     style.textContent = css;
@@ -196,10 +197,30 @@ function appendStyle(doc: Document, key: string, css: string): void {
   });
 }
 
+/** The shared search/tabs/grid chrome every tile picker renders with. */
+export function injectPickerChrome(doc: Document): void {
+  appendPickerStyle(doc, "chrome", `${PAINTER_CSS}\n${LAYOUT_CSS}`);
+}
+
+/** Add a picker-owned stylesheet link once per `key`, re-pointing it if `url` changed (CDN switch). */
+export function upsertPickerStylesheet(doc: Document, key: string, url: string): void {
+  const existing = doc.head.querySelector<HTMLLinkElement>(`link[${OWNED_ATTRIBUTE}="${key}"]`);
+  if (existing) {
+    if (existing.getAttribute("href") !== url) existing.href = url;
+    return;
+  }
+  appendOnce(doc, key, () => {
+    const link = doc.createElement("link");
+    link.rel = "stylesheet";
+    link.href = url;
+    return link;
+  });
+}
+
 /**
  * Install everything the picker needs to paint glyphs: the scoped painter, its layout, the glyph
  * tokens this package carries inline, and a stylesheet per source whose SVGs it does not.
- * Idempotent — safe to call on every dialog open.
+ * Idempotent — safe to call on every dialog open; sheet links follow the current provider.
  */
 export function injectPickerStyles(
   doc: Document,
@@ -207,15 +228,10 @@ export function injectPickerStyles(
   provider?: string,
   buildAssetUrl?: (file: CdnFile) => string,
 ): void {
-  appendStyle(doc, "chrome", `${PAINTER_CSS}\n${LAYOUT_CSS}`);
-  appendStyle(doc, "autocomplete", AUTOCOMPLETE_CSS);
-  appendStyle(doc, "tokens", buildIconTokenCss(icons));
-  for (const file of ICON_BUNDLE_CDN_FILES) {
-    appendOnce(doc, file.package, () => {
-      const link = doc.createElement("link");
-      link.rel = "stylesheet";
-      link.href = (buildAssetUrl ?? ((f: CdnFile) => buildFileUrl(f, provider)))(file);
-      return link;
-    });
-  }
+  injectPickerChrome(doc);
+  appendPickerStyle(doc, "autocomplete", AUTOCOMPLETE_CSS);
+  appendPickerStyle(doc, "tokens", buildIconTokenCss(icons));
+  const resolve = buildAssetUrl ?? ((f: CdnFile) => buildFileUrl(f, provider));
+  for (const file of ICON_BUNDLE_CDN_FILES)
+    upsertPickerStylesheet(doc, file.package, resolve(file));
 }

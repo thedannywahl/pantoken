@@ -7,7 +7,11 @@
  */
 
 // Phase 1: content-CSS wiring.
-export { injectContentStylesheet, pantokenContentCssUrls } from "./content-css.js";
+export {
+  injectContentStylesheet,
+  pantokenContentCssUrls,
+  retargetContentStylesheets,
+} from "./content-css.js";
 export { PANTOKEN_ICON_PACK_NAME, registerPantokenIconPack } from "./icon-pack.js";
 export { TINYMCE_STRINGS, type TinymceStrings } from "./strings.js";
 
@@ -88,7 +92,22 @@ export {
   SOURCE_LABELS,
 } from "./icons.js";
 export type { LogoMeta, Product } from "./logos.js";
-export { buildLogoMarkup, getLogoCdnFile, getUsedLogoCdnFiles, logos, products } from "./logos.js";
+export {
+  buildLogoMarkup,
+  filterLogos,
+  getLogoCdnFile,
+  getUsedLogoCdnFiles,
+  logos,
+  logoVariantLabel,
+  PRODUCT_LABELS,
+  products,
+} from "./logos.js";
+export {
+  injectUsedGlyphAssets,
+  normalizeGlyphHtml,
+  registerGlyphSync,
+  type GlyphSyncTarget,
+} from "./lib/glyph-assets.js";
 
 // Phase 3A/B/C: picker plugins.
 export { createComponentsPlugin } from "./plugins/components.js";
