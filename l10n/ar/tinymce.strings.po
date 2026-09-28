@@ -285,60 +285,6 @@ msgctxt "tinymce.strings:logosNoResults"
 msgid "No logos match your search."
 msgstr "لا توجد أيقونات تطابق بحثك."
 
-#: renderers/tinymce/src/i18n.json#logosProductLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosProductLabel"
-msgid "Product"
-msgstr "المنتج"
-
-#: renderers/tinymce/src/i18n.json#logosLayoutLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutLabel"
-msgid "Layout"
-msgstr "تخطيط"
-
-#: renderers/tinymce/src/i18n.json#logosLayoutHorizontal
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutHorizontal"
-msgid "Horizontal"
-msgstr "أفقي"
-
-#: renderers/tinymce/src/i18n.json#logosLayoutVertical
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutVertical"
-msgid "Vertical"
-msgstr "عمودي"
-
-#: renderers/tinymce/src/i18n.json#logosLayoutStacked
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutStacked"
-msgid "Stacked"
-msgstr "مكدس"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeLabel"
-msgid "Color Mode"
-msgstr "وضع اللون"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeColor
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeColor"
-msgid "Color"
-msgstr "لون"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeMonochrome
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeMonochrome"
-msgid "Monochrome"
-msgstr "أحادي اللون"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeLight
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeLight"
-msgid "Light"
-msgstr "فاتح"
-
 #: renderers/tinymce/src/i18n.json#insertButton
 #, no-c-format
 msgctxt "tinymce.strings:insertButton"
@@ -904,3 +850,48 @@ msgstr "حذف"
 msgctxt "tinymce.strings:presetCancelButton"
 msgid "Cancel"
 msgstr "إلغاء"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosProductLabel"
+#~ msgid "Product"
+#~ msgstr "المنتج"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosLayoutLabel"
+#~ msgid "Layout"
+#~ msgstr "تخطيط"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosLayoutHorizontal"
+#~ msgid "Horizontal"
+#~ msgstr "أفقي"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosLayoutVertical"
+#~ msgid "Vertical"
+#~ msgstr "عمودي"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosLayoutStacked"
+#~ msgid "Stacked"
+#~ msgstr "مكدس"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeLabel"
+#~ msgid "Color Mode"
+#~ msgstr "وضع اللون"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeColor"
+#~ msgid "Color"
+#~ msgstr "لون"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeMonochrome"
+#~ msgid "Monochrome"
+#~ msgstr "أحادي اللون"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeLight"
+#~ msgid "Light"
+#~ msgstr "فاتح"

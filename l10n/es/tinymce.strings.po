@@ -285,60 +285,6 @@ msgctxt "tinymce.strings:logosNoResults"
 msgid "No logos match your search."
 msgstr "Ningún icono coincide con tu búsqueda."
 
-#: renderers/tinymce/src/i18n.json#logosProductLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosProductLabel"
-msgid "Product"
-msgstr "Producto"
-
-#: renderers/tinymce/src/i18n.json#logosLayoutLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutLabel"
-msgid "Layout"
-msgstr "Diseño"
-
-#: renderers/tinymce/src/i18n.json#logosLayoutHorizontal
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutHorizontal"
-msgid "Horizontal"
-msgstr "Horizontal"
-
-#: renderers/tinymce/src/i18n.json#logosLayoutVertical
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutVertical"
-msgid "Vertical"
-msgstr "Vertical"
-
-#: renderers/tinymce/src/i18n.json#logosLayoutStacked
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutStacked"
-msgid "Stacked"
-msgstr "Apilado"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeLabel"
-msgid "Color Mode"
-msgstr "Modo de color"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeColor
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeColor"
-msgid "Color"
-msgstr "Color"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeMonochrome
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeMonochrome"
-msgid "Monochrome"
-msgstr "Monocromo"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeLight
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeLight"
-msgid "Light"
-msgstr "Claro"
-
 #: renderers/tinymce/src/i18n.json#insertButton
 #, no-c-format
 msgctxt "tinymce.strings:insertButton"
@@ -928,3 +874,48 @@ msgstr "Eliminar"
 msgctxt "tinymce.strings:presetCancelButton"
 msgid "Cancel"
 msgstr "Cancelar"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosProductLabel"
+#~ msgid "Product"
+#~ msgstr "Producto"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosLayoutLabel"
+#~ msgid "Layout"
+#~ msgstr "Diseño"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosLayoutHorizontal"
+#~ msgid "Horizontal"
+#~ msgstr "Horizontal"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosLayoutVertical"
+#~ msgid "Vertical"
+#~ msgstr "Vertical"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosLayoutStacked"
+#~ msgid "Stacked"
+#~ msgstr "Apilado"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeLabel"
+#~ msgid "Color Mode"
+#~ msgstr "Modo de color"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeColor"
+#~ msgid "Color"
+#~ msgstr "Color"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeMonochrome"
+#~ msgid "Monochrome"
+#~ msgstr "Monocromo"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeLight"
+#~ msgid "Light"
+#~ msgstr "Claro"

@@ -285,60 +285,6 @@ msgctxt "tinymce.strings:logosNoResults"
 msgid "No logos match your search."
 msgstr "Pa gen ikon ki matche ak rechèch ou a."
 
-#: renderers/tinymce/src/i18n.json#logosProductLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosProductLabel"
-msgid "Product"
-msgstr "Pwodwi"
-
-#: renderers/tinymce/src/i18n.json#logosLayoutLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutLabel"
-msgid "Layout"
-msgstr "Aranjman"
-
-#: renderers/tinymce/src/i18n.json#logosLayoutHorizontal
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutHorizontal"
-msgid "Horizontal"
-msgstr "Orizontal"
-
-#: renderers/tinymce/src/i18n.json#logosLayoutVertical
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutVertical"
-msgid "Vertical"
-msgstr "Vètikal"
-
-#: renderers/tinymce/src/i18n.json#logosLayoutStacked
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutStacked"
-msgid "Stacked"
-msgstr "Anpile"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeLabel"
-msgid "Color Mode"
-msgstr "Mòd Koulè"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeColor
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeColor"
-msgid "Color"
-msgstr "Koulè"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeMonochrome
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeMonochrome"
-msgid "Monochrome"
-msgstr "Monokrom"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeLight
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeLight"
-msgid "Light"
-msgstr "Limyè"
-
 #: renderers/tinymce/src/i18n.json#insertButton
 #, no-c-format
 msgctxt "tinymce.strings:insertButton"
@@ -911,3 +857,48 @@ msgstr "Efase"
 msgctxt "tinymce.strings:presetCancelButton"
 msgid "Cancel"
 msgstr "Anile"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosProductLabel"
+#~ msgid "Product"
+#~ msgstr "Pwodwi"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosLayoutLabel"
+#~ msgid "Layout"
+#~ msgstr "Aranjman"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosLayoutHorizontal"
+#~ msgid "Horizontal"
+#~ msgstr "Orizontal"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosLayoutVertical"
+#~ msgid "Vertical"
+#~ msgstr "Vètikal"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosLayoutStacked"
+#~ msgid "Stacked"
+#~ msgstr "Anpile"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeLabel"
+#~ msgid "Color Mode"
+#~ msgstr "Mòd Koulè"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeColor"
+#~ msgid "Color"
+#~ msgstr "Koulè"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeMonochrome"
+#~ msgid "Monochrome"
+#~ msgstr "Monokrom"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeLight"
+#~ msgid "Light"
+#~ msgstr "Limyè"

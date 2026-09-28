@@ -285,60 +285,6 @@ msgctxt "tinymce.strings:logosNoResults"
 msgid "No logos match your search."
 msgstr "هیچ آیکونی با جستجوی شما مطابقت ندارد."
 
-#: renderers/tinymce/src/i18n.json#logosProductLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosProductLabel"
-msgid "Product"
-msgstr "محصول"
-
-#: renderers/tinymce/src/i18n.json#logosLayoutLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutLabel"
-msgid "Layout"
-msgstr "طرح‌بندی"
-
-#: renderers/tinymce/src/i18n.json#logosLayoutHorizontal
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutHorizontal"
-msgid "Horizontal"
-msgstr "افقی"
-
-#: renderers/tinymce/src/i18n.json#logosLayoutVertical
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutVertical"
-msgid "Vertical"
-msgstr "عمودی"
-
-#: renderers/tinymce/src/i18n.json#logosLayoutStacked
-#, no-c-format
-msgctxt "tinymce.strings:logosLayoutStacked"
-msgid "Stacked"
-msgstr "چیده‌شده"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeLabel
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeLabel"
-msgid "Color Mode"
-msgstr "حالت رنگ"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeColor
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeColor"
-msgid "Color"
-msgstr "رنگ"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeMonochrome
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeMonochrome"
-msgid "Monochrome"
-msgstr "تک‌رنگ"
-
-#: renderers/tinymce/src/i18n.json#logosColorModeLight
-#, no-c-format
-msgctxt "tinymce.strings:logosColorModeLight"
-msgid "Light"
-msgstr "روشن"
-
 #: renderers/tinymce/src/i18n.json#insertButton
 #, no-c-format
 msgctxt "tinymce.strings:insertButton"
@@ -915,3 +861,48 @@ msgstr "حذف"
 msgctxt "tinymce.strings:presetCancelButton"
 msgid "Cancel"
 msgstr "لغو"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosProductLabel"
+#~ msgid "Product"
+#~ msgstr "محصول"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosLayoutLabel"
+#~ msgid "Layout"
+#~ msgstr "طرح‌بندی"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosLayoutHorizontal"
+#~ msgid "Horizontal"
+#~ msgstr "افقی"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosLayoutVertical"
+#~ msgid "Vertical"
+#~ msgstr "عمودی"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosLayoutStacked"
+#~ msgid "Stacked"
+#~ msgstr "چیده‌شده"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeLabel"
+#~ msgid "Color Mode"
+#~ msgstr "حالت رنگ"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeColor"
+#~ msgid "Color"
+#~ msgstr "رنگ"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeMonochrome"
+#~ msgid "Monochrome"
+#~ msgstr "تک‌رنگ"
+
+#, no-c-format
+#~ msgctxt "tinymce.strings:logosColorModeLight"
+#~ msgid "Light"
+#~ msgstr "روشن"

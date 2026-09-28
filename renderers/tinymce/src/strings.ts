@@ -49,16 +49,6 @@ export interface TinymceStrings {
   logosAllProducts: string;
   logosResultCount: string;
   logosNoResults: string;
-  /** @deprecated The logos picker no longer renders product/layout/color-mode selects. */
-  logosProductLabel: string;
-  logosLayoutLabel: string;
-  logosLayoutHorizontal: string;
-  logosLayoutVertical: string;
-  logosLayoutStacked: string;
-  logosColorModeLabel: string;
-  logosColorModeColor: string;
-  logosColorModeMonochrome: string;
-  logosColorModeLight: string;
   insertButton: string;
   replaceButton: string;
   cancelButton: string;
