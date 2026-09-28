@@ -141,7 +141,7 @@ type InsertTarget = {
  * Insert `meta` as a mask-painted `.-logo-<name>` glyph (same technique as `icons.ts`'s
  * `insertIcon`), tracking and injecting its stylesheet so it paints without a manual `<link>`.
  */
-export function insertLogoMeta(
+function insertLogoMeta(
   editor: Editor,
   meta: LogoMeta,
   options: InsertTarget = { currentAssets: [] },
