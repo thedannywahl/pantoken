@@ -873,8 +873,9 @@ const registerPantokenPlugin = (async () => {
         buildAssetUrl: buildSelectedAssetUrl,
       },
       logos: {
-        logos,
-        products,
+        // pantoken's own marks aren't Canvas content; pasted ones still render via glyph sync.
+        logos: logos.filter((logo) => logo.product !== "pantoken"),
+        products: products.filter((product) => product !== "pantoken"),
         currentAssets,
         onMissingAsset,
         buildAssetUrl: buildSelectedAssetUrl,

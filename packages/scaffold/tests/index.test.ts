@@ -64,6 +64,8 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain("CONTENT_CLASSES_PLUGIN_NAME");
   expect(main).toContain("getUsedIconCdnFiles");
   expect(main).toContain("getUsedLogoCdnFiles");
+  expect(main).toContain('logos: logos.filter((logo) => logo.product !== "pantoken"),');
+  expect(main).toContain('products: products.filter((product) => product !== "pantoken"),');
   expect(main).toContain("syncIconAssetsFromEditor();");
   expect(main).toContain("...currentAssets]");
   expect(main).toContain("const onMissingAsset = () => void refreshAll();");
