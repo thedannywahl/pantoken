@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.5.14
+
+### Patch Changes
+
+- b1ba7e8: The Canvas RCE's "None" provider now loads logo stylesheets from vendored local copies instead of jsDelivr.
+- b1ba7e8: CSS API token previews now render every logo: inlined SVGs get unique ids, so gradient logos no longer borrow another preview's gradient.
+
 ## 0.5.13
 
 ### Patch Changes

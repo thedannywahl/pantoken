@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 0.1.45
+
+### Patch Changes
+
+- Updated dependencies [b1ba7e8]
+- Updated dependencies [b1ba7e8]
+- Updated dependencies [b1ba7e8]
+- Updated dependencies [b1ba7e8]
+  - @pantoken/scaffold@1.6.0
+  - @pantoken/pendo@0.4.10
+
 ## 0.1.44
 
 ### Patch Changes
