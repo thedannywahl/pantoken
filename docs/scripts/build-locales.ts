@@ -141,6 +141,9 @@ async function main(): Promise<void> {
   const plural = (count: number): string => (count === 1 ? "locale" : "locales");
   console.log(`📋 Building ${locales.length} ${plural(locales.length)}`);
 
+  const timings: { locale: string; seconds: number }[] = [];
+  const buildsStarted = Date.now();
+
   for (const [index, locale] of locales.entries()) {
     const started = Date.now();
     const result = spawnSync(process.execPath, [vitepressBin, "build"], {
@@ -152,8 +155,9 @@ async function main(): Promise<void> {
       process.exit(result.status ?? 1);
     }
     assertScopedLocaleConfig(join(stagingDir, locale), locale);
-    const seconds = ((Date.now() - started) / 1000).toFixed(1);
-    console.log(`✓ ${locale}: built in ${seconds}s (${index + 1}/${locales.length})`);
+    const elapsed = (Date.now() - started) / 1000;
+    timings.push({ locale, seconds: Number(elapsed.toFixed(1)) });
+    console.log(`✓ ${locale}: built in ${elapsed.toFixed(1)}s (${index + 1}/${locales.length})`);
   }
 
   for (const locale of locales) {
@@ -185,6 +189,21 @@ async function main(): Promise<void> {
   rmSync(stagingDir, { recursive: true, force: true });
   console.log(`✨ Merged ${locales.length} ${plural(locales.length)} into ${distDir}`);
   console.log(`   ${Object.keys(hashmap).length} pages, ${urls.length} sitemap entries`);
+
+  // CI uploads this as an artifact so locale build times can be compared across deploys — the
+  // per-locale spread is what decides whether parallelising the loop is worth the complexity.
+  writeFileSync(
+    resolve(".vitepress/build-timings.json"),
+    `${JSON.stringify(
+      {
+        generatedAt: new Date().toISOString(),
+        totalSeconds: Number(((Date.now() - buildsStarted) / 1000).toFixed(1)),
+        locales: timings,
+      },
+      null,
+      2,
+    )}\n`,
+  );
 }
 
 runAsMain(import.meta.url, main);

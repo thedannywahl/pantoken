@@ -24,20 +24,14 @@ name: Deploy docs
 on:
   push:
     branches: [main]
+    # Docs-only paths. Source packages are deliberately absent: a change to one requires a changeset,
+    # so its release publishes and the `workflow_run` path below deploys the site then. Listing them
+    # here too would deploy the same commit twice — once on merge, once at release.
     paths:
       - docs/**
-      - l10n/docs.*.pot
-      - l10n/*/docs.*.po
+      - l10n/**
       - i18n.config.json
       - cssdoc.jsonc
-      - formats/components/**
-      - formats/css/**
-      - formats/tokens/**
-      - plugins/pantoken/**
-      - renderers/vitepress/**
-      - renderers/web-components/**
-      - tools/i18n-engine/**
-      - tools/translation-adapters/**
   workflow_run:
     workflows: ["Release"]
     types: [completed]
@@ -74,6 +68,7 @@ jobs:
   # artifact gate.
   released:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     outputs:
       should_deploy: ${{ steps.decide.outputs.should_deploy }}
       trigger: ${{ steps.decide.outputs.trigger }}
@@ -187,7 +182,7 @@ jobs:
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
-          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-deploy-${{ github.run_id }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-deploy-${{ github.run_id }}
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
@@ -293,6 +288,17 @@ jobs:
           fi
           vp run -F "@pantoken/docs..." build
           vp run @pantoken/docs#docs:build:deploy
+
+      # Per-locale build times, for comparing deploys and deciding whether the serial locale loop is
+      # worth parallelising. Uploaded even on failure so a timed-out build still reports what it got to.
+      - name: Upload docs build timings
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: docs-build-timings
+          path: docs/.vitepress/build-timings.json
+          if-no-files-found: ignore
+          retention-days: 30
 
       # Cloudflare Workers Static Assets supports up to 100,000 files per version and 25 MiB per file.
       # Prepare the deployment trees:
