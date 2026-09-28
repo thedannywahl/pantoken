@@ -16,6 +16,7 @@
     "@pantoken/interactions": "latest",
     "@pantoken/plugin-custom-components": "latest",
     "@pantoken/plugin-custom-icons": "latest",
+    "@pantoken/plugin-custom-theme-colors": "latest",
     "@pantoken/plugin-layouts": "latest",
     "@pantoken/plugin-logos": "latest",
     "@pantoken/plugin-lucide-lab": "latest",
