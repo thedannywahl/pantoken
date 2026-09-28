@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 0.2.25
+
+### Patch Changes
+
+- Updated dependencies [b1ba7e8]
+- Updated dependencies [b1ba7e8]
+- Updated dependencies [b1ba7e8]
+- Updated dependencies [b1ba7e8]
+- Updated dependencies [b1ba7e8]
+- Updated dependencies [b1ba7e8]
+- Updated dependencies [b1ba7e8]
+- Updated dependencies [b1ba7e8]
+  - @pantoken/canvas-theme-editor@0.3.1
+  - @pantoken/plugin-logos@0.5.2
+  - @pantoken/tinymce@0.5.0
+  - @pantoken/pendo@0.4.10
+  - @pantoken/cli@0.1.45
+
 ## 0.2.24
 
 ### Patch Changes

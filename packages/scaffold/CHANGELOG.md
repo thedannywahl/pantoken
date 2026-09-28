@@ -1,5 +1,17 @@
 # @pantoken/scaffold
 
+## 1.6.0
+
+### Minor Changes
+
+- b1ba7e8: The `canvas-theme-editor` starter's logos picker no longer offers pantoken's own logos. Pantoken logos that arrive by paste or a restored preset still render.
+
+### Patch Changes
+
+- b1ba7e8: The `canvas-theme-editor` starter now paints `.instui-logo -logo-<name>` logos in its preview and `theme.css`, declares `@pantoken/plugin-custom-components` as a dependency, and inlines picked assets from local packages instead of the CDN when the "None" provider is selected.
+- b1ba7e8: The `canvas-theme-editor` starter re-points the editor's icon and logo stylesheets when the CDN provider changes, including after a preset restore or reset, and its "None" provider now resolves core component icon sheets locally instead of from jsDelivr.
+- b1ba7e8: The `canvas-theme-editor` starter now declares `@pantoken/plugin-custom-theme-colors`, which it already imported, so strict package managers resolve it.
+
 ## 1.5.2
 
 ### Patch Changes

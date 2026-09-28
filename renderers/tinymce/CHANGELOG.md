@@ -1,5 +1,21 @@
 # @pantoken/tinymce
 
+## 0.5.0
+
+### Minor Changes
+
+- b1ba7e8: **Breaking:** removed the logos picker's unused select-box strings from `TinymceStrings` (`logosProductLabel`, `logosLayoutLabel`, `logosLayoutHorizontal`, `logosLayoutVertical`, `logosLayoutStacked`, `logosColorModeLabel`, `logosColorModeColor`, `logosColorModeMonochrome`, `logosColorModeLight`). Drop them from any `strings` override you pass.
+- b1ba7e8: The logos picker now matches the icons picker: a search box and product tabs (All, then each product) over a grid of previewed tiles, one per logo variant (layout, color mode, and language). Tiles paint in `currentColor` exactly as the inserted logo will. New exports: `filterLogos`, `logoVariantLabel`, and `PRODUCT_LABELS`. New strings: `logosSearchPlaceholder`, `logosSearchLabel`, `logosAllProducts`, `logosResultCount`, and `logosNoResults`.
+
+### Patch Changes
+
+- b1ba7e8: Icons and logos that arrive without a picker — pasted, set with `setContent`, restored from a saved draft, or typed in the HTML source view — now render in the editor. Empty `.instui-icon`/`.instui-logo` spans are normalized so TinyMCE keeps them, and each glyph's stylesheet is injected into the editing surface. `registerGlyphSync`, `injectUsedGlyphAssets`, and `normalizeGlyphHtml` are exported for hosts that wire their own plugins.
+- b1ba7e8: Inserted logos now name the product by its brand name in their `aria-label` (for example, "Canvas logo" instead of "canvas logo").
+- b1ba7e8: Stylesheets the pickers and glyph sync inject are now tagged with the file they load, so `injectContentStylesheet` dedupes per file and the new `retargetContentStylesheets(editor, buildAssetUrl)` re-points them after a CDN provider switch. The icon picker's own sheet links follow the current provider on every open instead of keeping the first one.
+- b1ba7e8: The content skins now paint `.instui-logo -logo-<name>` glyphs, so logos show inside the editing surface without adding `@pantoken/plugin-custom-components` to `content_css`.
+- Updated dependencies [b1ba7e8]
+  - @pantoken/plugin-logos@0.5.2
+
 ## 0.4.1
 
 ### Patch Changes
