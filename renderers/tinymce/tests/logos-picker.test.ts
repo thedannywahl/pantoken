@@ -115,7 +115,7 @@ const inserted = (editor: Editor) =>
 
 test("escapes localized logo alt text before inserting it into an HTML attribute", () => {
   const markup = buildLogoMarkup({ product: "canvas", name: "canvas" } as LogoMeta, '<"&>');
-  expect(markup).toContain('aria-label="canvas &lt;&quot;&amp;&gt;"');
+  expect(markup).toContain('aria-label="Canvas &lt;&quot;&amp;&gt;"');
 });
 
 test("createLogosPlugin registers toolbar button and menu item", () => {
@@ -245,7 +245,7 @@ test("buildLogoMarkup renders a mask-painted, non-decorative glyph", () => {
   };
   const html = buildLogoMarkup(meta);
   expect(html).toBe(
-    '<span class="instui-logo -logo-canvas-horizontal-color" contenteditable="false" role="img" aria-label="canvas logo">\u200B</span>',
+    '<span class="instui-logo -logo-canvas-horizontal-color" contenteditable="false" role="img" aria-label="Canvas logo">\u200B</span>',
   );
   expect(html).not.toContain("<svg");
   expect(html).not.toContain("about:blank");

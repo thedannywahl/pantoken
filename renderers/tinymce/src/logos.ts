@@ -66,7 +66,7 @@ export function getLogoCdnFile(meta: LogoMeta): CdnFile {
  * `role="img"` + `aria-label` instead of `aria-hidden`.
  */
 export function buildLogoMarkup(meta: LogoMeta, altSuffix = TINYMCE_STRINGS.logoAltSuffix): string {
-  const label = `${meta.product} ${altSuffix}`
+  const label = `${PRODUCT_LABELS[meta.product] ?? meta.product} ${altSuffix}`
     .replaceAll("&", "&amp;")
     .replaceAll('"', "&quot;")
     .replaceAll("<", "&lt;")
