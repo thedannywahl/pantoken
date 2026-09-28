@@ -44,6 +44,12 @@ export interface TinymceStrings {
   logosToolbarTooltip: string;
   logosMenuText: string;
   logosDialogTitle: string;
+  logosSearchPlaceholder: string;
+  logosSearchLabel: string;
+  logosAllProducts: string;
+  logosResultCount: string;
+  logosNoResults: string;
+  /** @deprecated The logos picker no longer renders product/layout/color-mode selects. */
   logosProductLabel: string;
   logosLayoutLabel: string;
   logosLayoutHorizontal: string;

@@ -4,10 +4,10 @@ msgstr ""
 "PO-Revision-Date: 2026-09-23 23:25+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
+"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: und\n"
 
 #: renderers/tinymce/src/i18n.json#autocompleteModifierDetail
 #, no-c-format
@@ -62,6 +62,30 @@ msgstr "คอมโพเนนต์"
 msgctxt "tinymce.strings:componentsToolbarTooltip"
 msgid "Insert a pantoken component"
 msgstr "แทรกคอมโพเนนต์ pantoken"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersDefault
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersDefault"
+msgid "Default"
+msgstr "ค่าเริ่มต้น"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersOptions
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersOptions"
+msgid "Options"
+msgstr "ตัวเลือก"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersTooltip
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersTooltip"
+msgid "Change component modifiers"
+msgstr "เปลี่ยนตัวปรับแต่งของคอมโพเนนต์"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersUtilities
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersUtilities"
+msgid "Utilities"
+msgstr "ยูทิลิตี้"
 
 #: renderers/tinymce/src/i18n.json#iconLabelDialogTitle
 #, no-c-format
@@ -230,6 +254,36 @@ msgstr "โลโก้"
 msgctxt "tinymce.strings:logosDialogTitle"
 msgid "Insert Logo"
 msgstr "แทรกโลโก้"
+
+#: renderers/tinymce/src/i18n.json#logosSearchPlaceholder
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosSearchPlaceholder"
+msgid "Search logos…"
+msgstr "ค้นหาไอคอน…"
+
+#: renderers/tinymce/src/i18n.json#logosSearchLabel
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosSearchLabel"
+msgid "Search logos"
+msgstr "ค้นหาไอคอน"
+
+#: renderers/tinymce/src/i18n.json#logosAllProducts
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosAllProducts"
+msgid "All"
+msgstr "ทั้งหมด"
+
+#: renderers/tinymce/src/i18n.json#logosResultCount
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosResultCount"
+msgid "{{count}} logos"
+msgstr "{{count}} ไอคอน"
+
+#: renderers/tinymce/src/i18n.json#logosNoResults
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosNoResults"
+msgid "No logos match your search."
+msgstr "ไม่มีไอคอนที่ตรงกับการค้นหาของคุณ"
 
 #: renderers/tinymce/src/i18n.json#logosProductLabel
 #, no-c-format
@@ -492,19 +546,24 @@ msgstr "รูปภาพต้องมีข้อความทางเล
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltWhy"
-msgid "Screen readers need an alt attribute to describe an image or identify it as decorative."
+msgid ""
+"Screen readers need an alt attribute to describe an image or identify it as "
+"decorative."
 msgstr "โปรแกรมอ่านหน้าจอต้องการแอตทริบิวต์ alt เพื่ออธิบายภาพหรือระบุว่าเป็นภาพประดับ"
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameMessage
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltFilenameMessage"
-msgid "Image alternative text should describe the image, not repeat its filename."
+msgid ""
+"Image alternative text should describe the image, not repeat its filename."
 msgstr "ข้อความทางเลือกของภาพควรอธิบายภาพ ไม่ควรซ้ำชื่อไฟล์"
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltFilenameWhy"
-msgid "A filename rarely gives screen reader users useful information about an image."
+msgid ""
+"A filename rarely gives screen reader users useful information about an "
+"image."
 msgstr "ชื่อไฟล์มักไม่ให้ข้อมูลที่เป็นประโยชน์แก่ผู้ใช้โปรแกรมอ่านหน้าจอ"
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthMessage
@@ -516,7 +575,9 @@ msgstr "ข้อความทางเลือกของภาพควร
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltLengthWhy"
-msgid "Short descriptions are easier to understand and navigate with assistive technology."
+msgid ""
+"Short descriptions are easier to understand and navigate with assistive "
+"technology."
 msgstr "คำอธิบายสั้น ๆ จะเข้าใจและนำทางได้ง่ายขึ้นด้วยเทคโนโลยีช่วยเหลือ"
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceMessage
@@ -528,7 +589,9 @@ msgstr "ระดับหัวเรื่องไม่ควรข้าม
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yHeadingSequenceWhy"
-msgid "A logical heading outline helps people navigate content with assistive technology."
+msgid ""
+"A logical heading outline helps people navigate content with assistive "
+"technology."
 msgstr "โครงร่างหัวเรื่องที่มีเหตุผลช่วยให้ผู้คนนำทางเนื้อหาด้วยเทคโนโลยีช่วยเหลือได้"
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderMessage
@@ -540,7 +603,8 @@ msgstr "ตารางต้องมีเซลล์หัวเรื่อ
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableHeaderWhy"
-msgid "Header cells give screen readers the context needed to understand table data."
+msgid ""
+"Header cells give screen readers the context needed to understand table data."
 msgstr "เซลล์หัวเรื่องให้บริบทที่โปรแกรมอ่านหน้าจอต้องการเพื่อเข้าใจข้อมูลในตาราง"
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionMessage
@@ -552,7 +616,9 @@ msgstr "ตารางควรมีคำบรรยาย (caption)"
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableCaptionWhy"
-msgid "A caption identifies a table's purpose before a screen reader enters its cells."
+msgid ""
+"A caption identifies a table's purpose before a screen reader enters its "
+"cells."
 msgstr "คำบรรยายระบุวัตถุประสงค์ของตารางก่อนที่โปรแกรมอ่านหน้าจอจะเข้าไปในเซลล์"
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeMessage
@@ -564,7 +630,9 @@ msgstr "เซลล์หัวเรื่องของตารางคว
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableHeaderScopeWhy"
-msgid "The scope attribute lets assistive technology associate headers with data cells."
+msgid ""
+"The scope attribute lets assistive technology associate headers with data "
+"cells."
 msgstr "แอตทริบิวต์ scope ช่วยให้เทคโนโลยีช่วยเหลือเชื่อมโยงหัวเรื่องกับเซลล์ข้อมูลได้"
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksMessage
@@ -576,7 +644,8 @@ msgstr "ลิงก์ที่อยู่ติดกันและมีป
 #: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yAdjacentLinksWhy"
-msgid "Repeated links create unnecessary stops for keyboard and screen reader users."
+msgid ""
+"Repeated links create unnecessary stops for keyboard and screen reader users."
 msgstr "ลิงก์ที่ซ้ำกันสร้างจุดหยุดที่ไม่จำเป็นสำหรับผู้ใช้คีย์บอร์ดและโปรแกรมอ่านหน้าจอ"
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingStartMessage
@@ -600,7 +669,9 @@ msgstr "รายการต้องอยู่ภายในรายกา
 #: plugins/tinymce/a11y/src/i18n.json#a11yListStructureWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yListStructureWhy"
-msgid "Assistive technology relies on list structure to announce item counts and position."
+msgid ""
+"Assistive technology relies on list structure to announce item counts and "
+"position."
 msgstr "เทคโนโลยีช่วยเหลือพึ่งพาโครงสร้างรายการเพื่อประกาศจำนวนรายการและตำแหน่ง"
 
 #: plugins/tinymce/codemirror/src/i18n.json#sourceToggleTooltip
@@ -618,8 +689,11 @@ msgstr "ซอร์สโค้ด"
 #: plugins/tinymce/codemirror/src/i18n.json#sourceFormatErrorMessage
 #, no-c-format
 msgctxt "tinymce.strings:sourceFormatErrorMessage"
-msgid "Couldn't format the source code — check for unclosed tags or other syntax errors."
-msgstr "ไม่สามารถจัดรูปแบบซอร์สโค้ดได้ — ตรวจสอบว่าไม่มีแท็กที่ยังไม่ได้ปิดหรือข้อผิดพลาดทางไวยากรณ์อื่น ๆ"
+msgid ""
+"Couldn't format the source code — check for unclosed tags or other syntax "
+"errors."
+msgstr ""
+"ไม่สามารถจัดรูปแบบซอร์สโค้ดได้ — ตรวจสอบว่าไม่มีแท็กที่ยังไม่ได้ปิดหรือข้อผิดพลาดทางไวยากรณ์อื่น ๆ"
 
 #: plugins/tinymce/save/src/i18n.json#saveToolbarText
 #, no-c-format
@@ -708,7 +782,9 @@ msgstr "เอกสารใหม่"
 #: plugins/tinymce/save/src/i18n.json#newDialogMessage
 #, no-c-format
 msgctxt "tinymce.strings:newDialogMessage"
-msgid "This clears the current editor content and config. Save the current work first?"
+msgid ""
+"This clears the current editor content and config. Save the current work "
+"first?"
 msgstr "การกระทำนี้จะล้างเนื้อหาและการตั้งค่าของตัวแก้ไขปัจจุบัน ให้บันทึกงานปัจจุบันก่อนหรือไม่?"
 
 #: plugins/tinymce/save/src/i18n.json#newDialogSaveButton
@@ -824,27 +900,3 @@ msgstr "ลบ"
 msgctxt "tinymce.strings:presetCancelButton"
 msgid "Cancel"
 msgstr "ยกเลิก"
-
-#: renderers/tinymce/src/i18n.json#componentModifiersDefault
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersDefault"
-msgid "Default"
-msgstr "ค่าเริ่มต้น"
-
-#: renderers/tinymce/src/i18n.json#componentModifiersOptions
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersOptions"
-msgid "Options"
-msgstr "ตัวเลือก"
-
-#: renderers/tinymce/src/i18n.json#componentModifiersTooltip
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersTooltip"
-msgid "Change component modifiers"
-msgstr "เปลี่ยนตัวปรับแต่งของคอมโพเนนต์"
-
-#: renderers/tinymce/src/i18n.json#componentModifiersUtilities
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersUtilities"
-msgid "Utilities"
-msgstr "ยูทิลิตี้"

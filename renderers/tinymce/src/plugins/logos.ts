@@ -1,7 +1,6 @@
 /**
- * TinyMCE logos picker plugin.
- * Provides a dialog for selecting and inserting logos grouped by product,
- * with layout and color-mode sub-selection.
+ * TinyMCE logos picker plugin: a dialog with product tabs over a searchable grid of previewed logo
+ * variants, same shape as the icons picker.
  *
  * \@module
  */
@@ -12,6 +11,9 @@ import type { LogoMeta, Product } from "../logos.js";
 import type { MissingAssetHandler } from "../types.js";
 import { insertHtml } from "../lib/insertion-target.js";
 import { registerGlyphSync } from "../lib/glyph-assets.js";
+import { mountLogoPicker, type MountedLogoPicker } from "../lib/logo-picker-dom.js";
+import { injectLogoPickerStyles, LOGO_PICKER_CLASS } from "../lib/logo-picker-styles.js";
+import { renderPickerShell } from "../lib/tile-picker-dom.js";
 import { trackAndInjectAsset } from "../content-css.js";
 import { getEditorStrings } from "../strings.js";
 
@@ -19,7 +21,9 @@ import { getEditorStrings } from "../strings.js";
  * Configuration options for the logos picker plugin.
  */
 export interface LogosPickerOptions {
+  /** The logos the picker offers; glyph sync still recognizes the full catalog. */
   logos: readonly LogoMeta[];
+  /** Product tab order. */
   products: readonly Product[];
   currentAssets: CdnFile[];
   onMissingAsset?: MissingAssetHandler;
@@ -31,6 +35,9 @@ export interface LogosPickerOptions {
 
 /** Command that opens the logos picker. */
 export const LOGOS_COMMAND = "pantokenOpenLogos";
+
+/** Element id the dialog shell carries, so the mount step can find it in the top-level document. */
+const PICKER_ROOT_ID = "pantoken-logo-picker";
 
 /**
  * Create the logos picker plugin factory.
@@ -70,108 +77,94 @@ export function createLogosPlugin(options: LogosPickerOptions): (editor: Editor)
  */
 function openLogosDialog(editor: Editor, options: LogosPickerOptions): void {
   const strings = getEditorStrings(editor);
-  const defaultProduct = options.products[0];
-  const defaultLayout = "horizontal";
-  const defaultColorMode = "color";
+  let picker: MountedLogoPicker | undefined;
 
-  // Build product list for the dialog.
-  const productItems = options.products.map((p) => ({
-    text: p,
-    value: p,
-  }));
-
-  const _dialog = editor.windowManager.open({
+  const dialog = editor.windowManager.open({
     title: strings.logosDialogTitle,
+    size: "large",
     body: {
       type: "panel",
       items: [
         {
-          type: "selectbox",
-          name: "product",
-          label: strings.logosProductLabel,
-          items: productItems,
-        } as any,
-        {
-          type: "selectbox",
-          name: "layout",
-          label: strings.logosLayoutLabel,
-          items: [
-            { text: strings.logosLayoutHorizontal, value: "horizontal" },
-            { text: strings.logosLayoutStacked, value: "stacked" },
-          ],
-        } as any,
-        {
-          type: "selectbox",
-          name: "colorMode",
-          label: strings.logosColorModeLabel,
-          items: [
-            { text: strings.logosColorModeColor, value: "color" },
-            { text: strings.logosColorModeLight, value: "light" },
-          ],
-        } as any,
+          type: "htmlpanel",
+          html: renderPickerShell(PICKER_ROOT_ID, LOGO_PICKER_CLASS),
+          presets: "presentation",
+        },
       ],
     },
-    initialData: {
-      product: defaultProduct ?? "",
-      layout: defaultLayout,
-      colorMode: defaultColorMode,
-    },
     buttons: [
+      { type: "cancel", text: strings.cancelButton },
       {
-        text: strings.insertButton,
         type: "submit",
+        name: "insert",
+        text: strings.insertButton,
         primary: true,
-        enabled: Boolean(defaultProduct),
-      },
-      {
-        text: strings.cancelButton,
-        type: "cancel",
+        enabled: false,
       },
     ],
-    onSubmit: (api: any) => {
-      const data = api.getData() as {
-        product?: string;
-        layout?: string;
-        colorMode?: string;
-      };
-      const selectedProduct = data.product;
-      const selectedLayout = data.layout;
-      const selectedColorMode = data.colorMode;
-
-      if (selectedProduct && selectedLayout && selectedColorMode) {
-        insertLogo(editor, selectedProduct, selectedLayout, selectedColorMode, options);
-      }
+    onSubmit: (api) => {
+      const logo = picker?.getSelected();
+      if (logo) insertLogoMeta(editor, logo, options);
       api.close();
+    },
+    onClose: () => picker?.destroy(),
+  });
+
+  const doc = editor.getContainer().ownerDocument;
+  const root = doc.getElementById(PICKER_ROOT_ID);
+  if (!root) return;
+
+  injectLogoPickerStyles(doc, options.buildAssetUrl);
+  picker = mountLogoPicker(root, options.logos, options.products, {
+    strings: {
+      searchPlaceholder: strings.logosSearchPlaceholder,
+      searchLabel: strings.logosSearchLabel,
+      allProductsLabel: strings.logosAllProducts,
+      resultCount: strings.logosResultCount,
+      emptyMessage: strings.logosNoResults,
+    },
+    onSelect: (logo) => dialog.setEnabled("insert", logo !== undefined),
+    onPick: (logo) => {
+      insertLogoMeta(editor, logo, options);
+      dialog.close();
     },
   });
 }
 
+type InsertTarget = {
+  currentAssets: CdnFile[];
+  onMissingAsset?: MissingAssetHandler;
+  buildAssetUrl?: (file: CdnFile) => string;
+};
+
 /**
- * Insert the selected logo into the editor as a mask-painted `.-logo-<name>` glyph (same technique
- * as `icons.ts`'s `insertIcon`) — the logo's stylesheet is tracked and injected via
- * `trackAndInjectAsset` so the glyph paints without a separate manual `<link>`.
- *
- * Silently no-ops if the product/layout/colorMode combination has no matching logo asset (e.g. not
- * every product ships every layout).
+ * Insert `meta` as a mask-painted `.-logo-<name>` glyph (same technique as `icons.ts`'s
+ * `insertIcon`), tracking and injecting its stylesheet so it paints without a manual `<link>`.
+ */
+export function insertLogoMeta(
+  editor: Editor,
+  meta: LogoMeta,
+  options: InsertTarget = { currentAssets: [] },
+): void {
+  insertHtml(editor, buildLogoMarkup(meta, getEditorStrings(editor).logoAltSuffix));
+  trackAndInjectAsset(editor, getLogoCdnFile(meta), options);
+}
+
+/**
+ * Insert the logo for a product/layout/colorMode combination; silently no-ops if that combination
+ * has no matching asset (not every product ships every layout).
  */
 export function insertLogo(
   editor: Editor,
   productId: string,
   layout: string,
   colorMode: string,
-  options: {
-    currentAssets: CdnFile[];
-    onMissingAsset?: MissingAssetHandler;
-    buildAssetUrl?: (file: CdnFile) => string;
-  } = { currentAssets: [] },
+  options: InsertTarget = { currentAssets: [] },
 ): void {
   const meta = getLogoMeta(
     productId as Product,
     layout as LogoMeta["layout"],
     colorMode as LogoMeta["colorMode"],
   );
-  if (!meta) return;
-
-  insertHtml(editor, buildLogoMarkup(meta, getEditorStrings(editor).logoAltSuffix));
-  trackAndInjectAsset(editor, getLogoCdnFile(meta), options);
+  if (meta) insertLogoMeta(editor, meta, options);
 }

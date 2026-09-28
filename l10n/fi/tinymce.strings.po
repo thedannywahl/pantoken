@@ -4,10 +4,10 @@ msgstr ""
 "PO-Revision-Date: 2026-09-23 23:19+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
+"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: und\n"
 
 #: renderers/tinymce/src/i18n.json#autocompleteModifierDetail
 #, no-c-format
@@ -62,6 +62,30 @@ msgstr "Komponentit"
 msgctxt "tinymce.strings:componentsToolbarTooltip"
 msgid "Insert a pantoken component"
 msgstr "Lisää pantoken-komponentti"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersDefault
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersDefault"
+msgid "Default"
+msgstr "Oletus"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersOptions
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersOptions"
+msgid "Options"
+msgstr "Asetukset"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersTooltip
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersTooltip"
+msgid "Change component modifiers"
+msgstr "Vaihda komponentin modifikaattoreita"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersUtilities
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersUtilities"
+msgid "Utilities"
+msgstr "Apuohjelmat"
 
 #: renderers/tinymce/src/i18n.json#iconLabelDialogTitle
 #, no-c-format
@@ -230,6 +254,36 @@ msgstr "Logo"
 msgctxt "tinymce.strings:logosDialogTitle"
 msgid "Insert Logo"
 msgstr "Lisää logo"
+
+#: renderers/tinymce/src/i18n.json#logosSearchPlaceholder
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosSearchPlaceholder"
+msgid "Search logos…"
+msgstr "Hae kuvakkeita…"
+
+#: renderers/tinymce/src/i18n.json#logosSearchLabel
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosSearchLabel"
+msgid "Search logos"
+msgstr "Hae kuvakkeita"
+
+#: renderers/tinymce/src/i18n.json#logosAllProducts
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosAllProducts"
+msgid "All"
+msgstr "Kaikki"
+
+#: renderers/tinymce/src/i18n.json#logosResultCount
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosResultCount"
+msgid "{{count}} logos"
+msgstr "{{count}} kuvaketta"
+
+#: renderers/tinymce/src/i18n.json#logosNoResults
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosNoResults"
+msgid "No logos match your search."
+msgstr "Haku ei löytänyt kuvakkeita."
 
 #: renderers/tinymce/src/i18n.json#logosProductLabel
 #, no-c-format
@@ -492,19 +546,27 @@ msgstr "Kuvilla on oltava vaihtoehtoinen teksti."
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltWhy"
-msgid "Screen readers need an alt attribute to describe an image or identify it as decorative."
-msgstr "Ruudunlukijat tarvitsevat alt-attribuutin kuvan kuvaamiseen tai sen tunnistamiseen koristeelliseksi."
+msgid ""
+"Screen readers need an alt attribute to describe an image or identify it as "
+"decorative."
+msgstr ""
+"Ruudunlukijat tarvitsevat alt-attribuutin kuvan kuvaamiseen tai sen "
+"tunnistamiseen koristeelliseksi."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameMessage
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltFilenameMessage"
-msgid "Image alternative text should describe the image, not repeat its filename."
-msgstr "Kuvan vaihtoehtoinen teksti kannattaa kuvata kuvaa, ei toistaa tiedostonimeä."
+msgid ""
+"Image alternative text should describe the image, not repeat its filename."
+msgstr ""
+"Kuvan vaihtoehtoinen teksti kannattaa kuvata kuvaa, ei toistaa tiedostonimeä."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltFilenameWhy"
-msgid "A filename rarely gives screen reader users useful information about an image."
+msgid ""
+"A filename rarely gives screen reader users useful information about an "
+"image."
 msgstr "Tiedostonimi harvoin antaa hyödyllistä tietoa ruudunlukijoille."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthMessage
@@ -516,8 +578,11 @@ msgstr "Kuvan vaihtoehtoisen tekstin tulisi olla enintään 125 merkkiä."
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltLengthWhy"
-msgid "Short descriptions are easier to understand and navigate with assistive technology."
-msgstr "Lyhyet kuvaukset ovat helpommin ymmärrettäviä ja navigoitavia apuvälineillä."
+msgid ""
+"Short descriptions are easier to understand and navigate with assistive "
+"technology."
+msgstr ""
+"Lyhyet kuvaukset ovat helpommin ymmärrettäviä ja navigoitavia apuvälineillä."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceMessage
 #, no-c-format
@@ -528,8 +593,12 @@ msgstr "Otsikkotasoja ei tule hypätä yli."
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yHeadingSequenceWhy"
-msgid "A logical heading outline helps people navigate content with assistive technology."
-msgstr "Looginen otsikkorakenne auttaa apuvälineiden käyttäjiä navigoimaan sisällössä."
+msgid ""
+"A logical heading outline helps people navigate content with assistive "
+"technology."
+msgstr ""
+"Looginen otsikkorakenne auttaa apuvälineiden käyttäjiä navigoimaan "
+"sisällössä."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderMessage
 #, no-c-format
@@ -540,8 +609,11 @@ msgstr "Taulukoissa on oltava otsikkosoluja."
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableHeaderWhy"
-msgid "Header cells give screen readers the context needed to understand table data."
-msgstr "Otsikkosolut antavat ruudunlukijoille tarvittavan kontekstin taulukkotiedon ymmärtämiseen."
+msgid ""
+"Header cells give screen readers the context needed to understand table data."
+msgstr ""
+"Otsikkosolut antavat ruudunlukijoille tarvittavan kontekstin taulukkotiedon "
+"ymmärtämiseen."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionMessage
 #, no-c-format
@@ -552,8 +624,12 @@ msgstr "Taulukoissa tulisi olla kuvateksti."
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableCaptionWhy"
-msgid "A caption identifies a table's purpose before a screen reader enters its cells."
-msgstr "Kuvateksti kertoo taulukon tarkoituksen ennen kuin ruudunlukija siirtyy sen soluihin."
+msgid ""
+"A caption identifies a table's purpose before a screen reader enters its "
+"cells."
+msgstr ""
+"Kuvateksti kertoo taulukon tarkoituksen ennen kuin ruudunlukija siirtyy sen "
+"soluihin."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeMessage
 #, no-c-format
@@ -564,7 +640,9 @@ msgstr "Taulukon otsikkosolujen tulisi määrittää scope-attribuutti."
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableHeaderScopeWhy"
-msgid "The scope attribute lets assistive technology associate headers with data cells."
+msgid ""
+"The scope attribute lets assistive technology associate headers with data "
+"cells."
 msgstr "Scope-attribuutti sallii apuvälineiden yhdistää otsikot datasoluihin."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksMessage
@@ -576,8 +654,11 @@ msgstr "Saman kohteen vierekkäiset linkit kannattaa yhdistää."
 #: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yAdjacentLinksWhy"
-msgid "Repeated links create unnecessary stops for keyboard and screen reader users."
-msgstr "Toistuvat linkit aiheuttavat turhia pysähdyksiä näppäimistö- ja ruudunlukijakäyttäjille."
+msgid ""
+"Repeated links create unnecessary stops for keyboard and screen reader users."
+msgstr ""
+"Toistuvat linkit aiheuttavat turhia pysähdyksiä näppäimistö- ja "
+"ruudunlukijakäyttäjille."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingStartMessage
 #, no-c-format
@@ -589,19 +670,25 @@ msgstr "Ensimmäisen otsikon tulisi olla h2."
 #, no-c-format
 msgctxt "tinymce.strings:a11yHeadingStartWhy"
 msgid "The editor's document title is supplied outside the editable content."
-msgstr "Muokkaimen asiakirjan otsikko annetaan muokattavan sisällön ulkopuolella."
+msgstr ""
+"Muokkaimen asiakirjan otsikko annetaan muokattavan sisällön ulkopuolella."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yListStructureMessage
 #, no-c-format
 msgctxt "tinymce.strings:a11yListStructureMessage"
 msgid "List items must be contained by an ordered or unordered list."
-msgstr "Listan kohteet on sijoitettava järjestettyyn tai järjestämättömään listaan."
+msgstr ""
+"Listan kohteet on sijoitettava järjestettyyn tai järjestämättömään listaan."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yListStructureWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yListStructureWhy"
-msgid "Assistive technology relies on list structure to announce item counts and position."
-msgstr "Apuvälineet luottavat listan rakenteeseen ilmoittaakseen kohteiden lukumäärän ja sijainnin."
+msgid ""
+"Assistive technology relies on list structure to announce item counts and "
+"position."
+msgstr ""
+"Apuvälineet luottavat listan rakenteeseen ilmoittaakseen kohteiden "
+"lukumäärän ja sijainnin."
 
 #: plugins/tinymce/codemirror/src/i18n.json#sourceToggleTooltip
 #, no-c-format
@@ -618,8 +705,12 @@ msgstr "Lähdekoodi"
 #: plugins/tinymce/codemirror/src/i18n.json#sourceFormatErrorMessage
 #, no-c-format
 msgctxt "tinymce.strings:sourceFormatErrorMessage"
-msgid "Couldn't format the source code — check for unclosed tags or other syntax errors."
-msgstr "Lähdekoodia ei voitu muotoilla — tarkista, ettei tageja ole jäänyt sulkematta tai esiinny muita syntaksivirheitä."
+msgid ""
+"Couldn't format the source code — check for unclosed tags or other syntax "
+"errors."
+msgstr ""
+"Lähdekoodia ei voitu muotoilla — tarkista, ettei tageja ole jäänyt "
+"sulkematta tai esiinny muita syntaksivirheitä."
 
 #: plugins/tinymce/save/src/i18n.json#saveToolbarText
 #, no-c-format
@@ -708,8 +799,12 @@ msgstr "Uusi asiakirja"
 #: plugins/tinymce/save/src/i18n.json#newDialogMessage
 #, no-c-format
 msgctxt "tinymce.strings:newDialogMessage"
-msgid "This clears the current editor content and config. Save the current work first?"
-msgstr "Tämä tyhjentää nykyisen editorin sisällön ja asetukset. Tallenna nykyinen työ ensin?"
+msgid ""
+"This clears the current editor content and config. Save the current work "
+"first?"
+msgstr ""
+"Tämä tyhjentää nykyisen editorin sisällön ja asetukset. Tallenna nykyinen "
+"työ ensin?"
 
 #: plugins/tinymce/save/src/i18n.json#newDialogSaveButton
 #, no-c-format
@@ -824,27 +919,3 @@ msgstr "Poista"
 msgctxt "tinymce.strings:presetCancelButton"
 msgid "Cancel"
 msgstr "Peruuta"
-
-#: renderers/tinymce/src/i18n.json#componentModifiersDefault
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersDefault"
-msgid "Default"
-msgstr "Oletus"
-
-#: renderers/tinymce/src/i18n.json#componentModifiersOptions
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersOptions"
-msgid "Options"
-msgstr "Asetukset"
-
-#: renderers/tinymce/src/i18n.json#componentModifiersTooltip
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersTooltip"
-msgid "Change component modifiers"
-msgstr "Vaihda komponentin modifikaattoreita"
-
-#: renderers/tinymce/src/i18n.json#componentModifiersUtilities
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersUtilities"
-msgid "Utilities"
-msgstr "Apuohjelmat"

@@ -188,12 +188,18 @@ function appendOnce(doc: Document, key: string, build: () => Element): void {
   doc.head.append(element);
 }
 
-function appendStyle(doc: Document, key: string, css: string): void {
+/** Add a picker-owned `<style>` once per `key`. */
+export function appendPickerStyle(doc: Document, key: string, css: string): void {
   appendOnce(doc, key, () => {
     const style = doc.createElement("style");
     style.textContent = css;
     return style;
   });
+}
+
+/** The shared search/tabs/grid chrome every tile picker renders with. */
+export function injectPickerChrome(doc: Document): void {
+  appendPickerStyle(doc, "chrome", `${PAINTER_CSS}\n${LAYOUT_CSS}`);
 }
 
 /** Add a picker-owned stylesheet link once per `key`, re-pointing it if `url` changed (CDN switch). */
@@ -222,9 +228,9 @@ export function injectPickerStyles(
   provider?: string,
   buildAssetUrl?: (file: CdnFile) => string,
 ): void {
-  appendStyle(doc, "chrome", `${PAINTER_CSS}\n${LAYOUT_CSS}`);
-  appendStyle(doc, "autocomplete", AUTOCOMPLETE_CSS);
-  appendStyle(doc, "tokens", buildIconTokenCss(icons));
+  injectPickerChrome(doc);
+  appendPickerStyle(doc, "autocomplete", AUTOCOMPLETE_CSS);
+  appendPickerStyle(doc, "tokens", buildIconTokenCss(icons));
   const resolve = buildAssetUrl ?? ((f: CdnFile) => buildFileUrl(f, provider));
   for (const file of ICON_BUNDLE_CDN_FILES)
     upsertPickerStylesheet(doc, file.package, resolve(file));

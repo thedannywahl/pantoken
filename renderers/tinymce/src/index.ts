@@ -92,7 +92,16 @@ export {
   SOURCE_LABELS,
 } from "./icons.js";
 export type { LogoMeta, Product } from "./logos.js";
-export { buildLogoMarkup, getLogoCdnFile, getUsedLogoCdnFiles, logos, products } from "./logos.js";
+export {
+  buildLogoMarkup,
+  filterLogos,
+  getLogoCdnFile,
+  getUsedLogoCdnFiles,
+  logos,
+  logoVariantLabel,
+  PRODUCT_LABELS,
+  products,
+} from "./logos.js";
 export {
   injectUsedGlyphAssets,
   normalizeGlyphHtml,

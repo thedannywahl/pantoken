@@ -4,10 +4,10 @@ msgstr ""
 "PO-Revision-Date: 2026-09-23 23:21+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
+"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: und\n"
 
 #: renderers/tinymce/src/i18n.json#autocompleteModifierDetail
 #, no-c-format
@@ -62,6 +62,30 @@ msgstr "Íhlutir"
 msgctxt "tinymce.strings:componentsToolbarTooltip"
 msgid "Insert a pantoken component"
 msgstr "Setja inn pantoken-íhluta"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersDefault
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersDefault"
+msgid "Default"
+msgstr "Sjálfgefið"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersOptions
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersOptions"
+msgid "Options"
+msgstr "Valkostir"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersTooltip
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersTooltip"
+msgid "Change component modifiers"
+msgstr "Breyta breytum íhluta"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersUtilities
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersUtilities"
+msgid "Utilities"
+msgstr "Hjálparforrit"
 
 #: renderers/tinymce/src/i18n.json#iconLabelDialogTitle
 #, no-c-format
@@ -230,6 +254,36 @@ msgstr "Lógó"
 msgctxt "tinymce.strings:logosDialogTitle"
 msgid "Insert Logo"
 msgstr "Setja inn lógó"
+
+#: renderers/tinymce/src/i18n.json#logosSearchPlaceholder
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosSearchPlaceholder"
+msgid "Search logos…"
+msgstr "Leita að táknum…"
+
+#: renderers/tinymce/src/i18n.json#logosSearchLabel
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosSearchLabel"
+msgid "Search logos"
+msgstr "Leita að táknum"
+
+#: renderers/tinymce/src/i18n.json#logosAllProducts
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosAllProducts"
+msgid "All"
+msgstr "Allt"
+
+#: renderers/tinymce/src/i18n.json#logosResultCount
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosResultCount"
+msgid "{{count}} logos"
+msgstr "{{count}} tákn"
+
+#: renderers/tinymce/src/i18n.json#logosNoResults
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosNoResults"
+msgid "No logos match your search."
+msgstr "Engin tákn passa leitina þína."
 
 #: renderers/tinymce/src/i18n.json#logosProductLabel
 #, no-c-format
@@ -492,20 +546,29 @@ msgstr "Myndir verða að hafa alt-texta."
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltWhy"
-msgid "Screen readers need an alt attribute to describe an image or identify it as decorative."
-msgstr "Lestrarforrit fyrir sjónskerta þurfa alt-eiginleika til að lýsa mynd eða merkja hana sem skraut."
+msgid ""
+"Screen readers need an alt attribute to describe an image or identify it as "
+"decorative."
+msgstr ""
+"Lestrarforrit fyrir sjónskerta þurfa alt-eiginleika til að lýsa mynd eða "
+"merkja hana sem skraut."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameMessage
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltFilenameMessage"
-msgid "Image alternative text should describe the image, not repeat its filename."
-msgstr "Alt-texti myndar ætti að lýsa myndinni, ekki endurtaka skráarnafn hennar."
+msgid ""
+"Image alternative text should describe the image, not repeat its filename."
+msgstr ""
+"Alt-texti myndar ætti að lýsa myndinni, ekki endurtaka skráarnafn hennar."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltFilenameWhy"
-msgid "A filename rarely gives screen reader users useful information about an image."
-msgstr "Skráarnafn gefur sjaldan notendum skjálesara gagnlegar upplýsingar um mynd."
+msgid ""
+"A filename rarely gives screen reader users useful information about an "
+"image."
+msgstr ""
+"Skráarnafn gefur sjaldan notendum skjálesara gagnlegar upplýsingar um mynd."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthMessage
 #, no-c-format
@@ -516,8 +579,11 @@ msgstr "Alt-texti myndar ætti að vera 125 stafir eða færri."
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltLengthWhy"
-msgid "Short descriptions are easier to understand and navigate with assistive technology."
-msgstr "Stuttar lýsingar eru auðveldari í skilningi og leiðsögn með hjálpartækjum."
+msgid ""
+"Short descriptions are easier to understand and navigate with assistive "
+"technology."
+msgstr ""
+"Stuttar lýsingar eru auðveldari í skilningi og leiðsögn með hjálpartækjum."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceMessage
 #, no-c-format
@@ -528,8 +594,12 @@ msgstr "Yfirskriftarstigin ættu ekki að sleppa stigum."
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yHeadingSequenceWhy"
-msgid "A logical heading outline helps people navigate content with assistive technology."
-msgstr "Rökrétt yfirlit yfir yfirskriftir hjálpar fólki að sigla efni með hjálpartækjum."
+msgid ""
+"A logical heading outline helps people navigate content with assistive "
+"technology."
+msgstr ""
+"Rökrétt yfirlit yfir yfirskriftir hjálpar fólki að sigla efni með "
+"hjálpartækjum."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderMessage
 #, no-c-format
@@ -540,7 +610,8 @@ msgstr "Töflur verða að innihalda hausfrumur."
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableHeaderWhy"
-msgid "Header cells give screen readers the context needed to understand table data."
+msgid ""
+"Header cells give screen readers the context needed to understand table data."
 msgstr "Hausfrumur gefa skjálesurum samhengi sem þarf til að skilja taflagögn."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionMessage
@@ -552,8 +623,11 @@ msgstr "Töflur ættu að hafa skýringu."
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableCaptionWhy"
-msgid "A caption identifies a table's purpose before a screen reader enters its cells."
-msgstr "Skýring auðkennir tilgang töflu áður en skjálesari fer inn í frumur hennar."
+msgid ""
+"A caption identifies a table's purpose before a screen reader enters its "
+"cells."
+msgstr ""
+"Skýring auðkennir tilgang töflu áður en skjálesari fer inn í frumur hennar."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeMessage
 #, no-c-format
@@ -564,8 +638,11 @@ msgstr "Hausfrumur töflu ættu að tilkynna umfang sitt."
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableHeaderScopeWhy"
-msgid "The scope attribute lets assistive technology associate headers with data cells."
-msgstr "Scope-eiginleikinn leyfir hjálpartækjum að tengja haus við gagnafrumur."
+msgid ""
+"The scope attribute lets assistive technology associate headers with data "
+"cells."
+msgstr ""
+"Scope-eiginleikinn leyfir hjálpartækjum að tengja haus við gagnafrumur."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksMessage
 #, no-c-format
@@ -576,8 +653,11 @@ msgstr "Nálægir tenglar með sama áfangastað ætti að sameina."
 #: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yAdjacentLinksWhy"
-msgid "Repeated links create unnecessary stops for keyboard and screen reader users."
-msgstr "Endurteknir tenglar skapa óþarfa stopp fyrir notendur lyklaborðs og skjálesara."
+msgid ""
+"Repeated links create unnecessary stops for keyboard and screen reader users."
+msgstr ""
+"Endurteknir tenglar skapa óþarfa stopp fyrir notendur lyklaborðs og "
+"skjálesara."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingStartMessage
 #, no-c-format
@@ -600,8 +680,11 @@ msgstr "Atriði í lista verða að vera í raðaðan eða óraðaðan lista."
 #: plugins/tinymce/a11y/src/i18n.json#a11yListStructureWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yListStructureWhy"
-msgid "Assistive technology relies on list structure to announce item counts and position."
-msgstr "Hjálpartæki treystir á listaskipan til að tilkynna fjölda atriða og stöðu."
+msgid ""
+"Assistive technology relies on list structure to announce item counts and "
+"position."
+msgstr ""
+"Hjálpartæki treystir á listaskipan til að tilkynna fjölda atriða og stöðu."
 
 #: plugins/tinymce/codemirror/src/i18n.json#sourceToggleTooltip
 #, no-c-format
@@ -618,8 +701,12 @@ msgstr "Upprunakóði"
 #: plugins/tinymce/codemirror/src/i18n.json#sourceFormatErrorMessage
 #, no-c-format
 msgctxt "tinymce.strings:sourceFormatErrorMessage"
-msgid "Couldn't format the source code — check for unclosed tags or other syntax errors."
-msgstr "Gat ekki sniðið upprunakóðann — athugaðu hvort einhver ólokin merki séu til eða aðrar sintaksvillur."
+msgid ""
+"Couldn't format the source code — check for unclosed tags or other syntax "
+"errors."
+msgstr ""
+"Gat ekki sniðið upprunakóðann — athugaðu hvort einhver ólokin merki séu til "
+"eða aðrar sintaksvillur."
 
 #: plugins/tinymce/save/src/i18n.json#saveToolbarText
 #, no-c-format
@@ -708,8 +795,12 @@ msgstr "Nýr skjal"
 #: plugins/tinymce/save/src/i18n.json#newDialogMessage
 #, no-c-format
 msgctxt "tinymce.strings:newDialogMessage"
-msgid "This clears the current editor content and config. Save the current work first?"
-msgstr "Þetta tæmir núverandi efni ritilsins og uppsetningu. Vista núverandi verk fyrst?"
+msgid ""
+"This clears the current editor content and config. Save the current work "
+"first?"
+msgstr ""
+"Þetta tæmir núverandi efni ritilsins og uppsetningu. Vista núverandi verk "
+"fyrst?"
 
 #: plugins/tinymce/save/src/i18n.json#newDialogSaveButton
 #, no-c-format
@@ -824,27 +915,3 @@ msgstr "Eyða"
 msgctxt "tinymce.strings:presetCancelButton"
 msgid "Cancel"
 msgstr "Hætta við"
-
-#: renderers/tinymce/src/i18n.json#componentModifiersDefault
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersDefault"
-msgid "Default"
-msgstr "Sjálfgefið"
-
-#: renderers/tinymce/src/i18n.json#componentModifiersOptions
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersOptions"
-msgid "Options"
-msgstr "Valkostir"
-
-#: renderers/tinymce/src/i18n.json#componentModifiersTooltip
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersTooltip"
-msgid "Change component modifiers"
-msgstr "Breyta breytum íhluta"
-
-#: renderers/tinymce/src/i18n.json#componentModifiersUtilities
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersUtilities"
-msgid "Utilities"
-msgstr "Hjálparforrit"

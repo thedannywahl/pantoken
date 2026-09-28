@@ -4,10 +4,10 @@ msgstr ""
 "PO-Revision-Date: 2026-09-23 23:18+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
+"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: und\n"
 
 #: renderers/tinymce/src/i18n.json#autocompleteModifierDetail
 #, no-c-format
@@ -62,6 +62,30 @@ msgstr "Components"
 msgctxt "tinymce.strings:componentsToolbarTooltip"
 msgid "Insert a pantoken component"
 msgstr "Insert a pantoken component"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersDefault
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersDefault"
+msgid "Default"
+msgstr "Default"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersOptions
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersOptions"
+msgid "Options"
+msgstr "Options"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersTooltip
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersTooltip"
+msgid "Change component modifiers"
+msgstr "Change component modifiers"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersUtilities
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersUtilities"
+msgid "Utilities"
+msgstr "Utilities"
 
 #: renderers/tinymce/src/i18n.json#iconLabelDialogTitle
 #, no-c-format
@@ -230,6 +254,36 @@ msgstr "Logo"
 msgctxt "tinymce.strings:logosDialogTitle"
 msgid "Insert Logo"
 msgstr "Insert Logo"
+
+#: renderers/tinymce/src/i18n.json#logosSearchPlaceholder
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosSearchPlaceholder"
+msgid "Search logos…"
+msgstr "Search icons…"
+
+#: renderers/tinymce/src/i18n.json#logosSearchLabel
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosSearchLabel"
+msgid "Search logos"
+msgstr "Search icons"
+
+#: renderers/tinymce/src/i18n.json#logosAllProducts
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosAllProducts"
+msgid "All"
+msgstr "All"
+
+#: renderers/tinymce/src/i18n.json#logosResultCount
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosResultCount"
+msgid "{{count}} logos"
+msgstr "{{count}} icons"
+
+#: renderers/tinymce/src/i18n.json#logosNoResults
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosNoResults"
+msgid "No logos match your search."
+msgstr "No icons match your search."
 
 #: renderers/tinymce/src/i18n.json#logosProductLabel
 #, no-c-format
@@ -492,20 +546,30 @@ msgstr "Images must have alternative text."
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltWhy"
-msgid "Screen readers need an alt attribute to describe an image or identify it as decorative."
-msgstr "Screen readers need an alt attribute to describe an image or identify it as decorative."
+msgid ""
+"Screen readers need an alt attribute to describe an image or identify it as "
+"decorative."
+msgstr ""
+"Screen readers need an alt attribute to describe an image or identify it as "
+"decorative."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameMessage
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltFilenameMessage"
-msgid "Image alternative text should describe the image, not repeat its filename."
-msgstr "Image alternative text should describe the image, not repeat its filename."
+msgid ""
+"Image alternative text should describe the image, not repeat its filename."
+msgstr ""
+"Image alternative text should describe the image, not repeat its filename."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltFilenameWhy"
-msgid "A filename rarely gives screen reader users useful information about an image."
-msgstr "A filename rarely gives screen reader users useful information about an image."
+msgid ""
+"A filename rarely gives screen reader users useful information about an "
+"image."
+msgstr ""
+"A filename rarely gives screen reader users useful information about an "
+"image."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthMessage
 #, no-c-format
@@ -516,8 +580,12 @@ msgstr "Image alternative text should be 125 characters or fewer."
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltLengthWhy"
-msgid "Short descriptions are easier to understand and navigate with assistive technology."
-msgstr "Short descriptions are easier to understand and navigate with assistive technology."
+msgid ""
+"Short descriptions are easier to understand and navigate with assistive "
+"technology."
+msgstr ""
+"Short descriptions are easier to understand and navigate with assistive "
+"technology."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceMessage
 #, no-c-format
@@ -528,8 +596,12 @@ msgstr "Heading levels should not skip levels."
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yHeadingSequenceWhy"
-msgid "A logical heading outline helps people navigate content with assistive technology."
-msgstr "A logical heading outline helps people navigate content with assistive technology."
+msgid ""
+"A logical heading outline helps people navigate content with assistive "
+"technology."
+msgstr ""
+"A logical heading outline helps people navigate content with assistive "
+"technology."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderMessage
 #, no-c-format
@@ -540,8 +612,10 @@ msgstr "Tables must include header cells."
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableHeaderWhy"
-msgid "Header cells give screen readers the context needed to understand table data."
-msgstr "Header cells give screen readers the context needed to understand table data."
+msgid ""
+"Header cells give screen readers the context needed to understand table data."
+msgstr ""
+"Header cells give screen readers the context needed to understand table data."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionMessage
 #, no-c-format
@@ -552,8 +626,12 @@ msgstr "Tables should include a caption."
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableCaptionWhy"
-msgid "A caption identifies a table's purpose before a screen reader enters its cells."
-msgstr "A caption identifies a table's purpose before a screen reader enters its cells."
+msgid ""
+"A caption identifies a table's purpose before a screen reader enters its "
+"cells."
+msgstr ""
+"A caption identifies a table's purpose before a screen reader enters its "
+"cells."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeMessage
 #, no-c-format
@@ -564,8 +642,12 @@ msgstr "Table header cells should declare their scope."
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableHeaderScopeWhy"
-msgid "The scope attribute lets assistive technology associate headers with data cells."
-msgstr "The scope attribute lets assistive technology associate headers with data cells."
+msgid ""
+"The scope attribute lets assistive technology associate headers with data "
+"cells."
+msgstr ""
+"The scope attribute lets assistive technology associate headers with data "
+"cells."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksMessage
 #, no-c-format
@@ -576,8 +658,10 @@ msgstr "Adjacent links with the same destination should be combined."
 #: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yAdjacentLinksWhy"
-msgid "Repeated links create unnecessary stops for keyboard and screen reader users."
-msgstr "Repeated links create unnecessary stops for keyboard and screen reader users."
+msgid ""
+"Repeated links create unnecessary stops for keyboard and screen reader users."
+msgstr ""
+"Repeated links create unnecessary stops for keyboard and screen reader users."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingStartMessage
 #, no-c-format
@@ -600,8 +684,12 @@ msgstr "List items must be contained by an ordered or unordered list."
 #: plugins/tinymce/a11y/src/i18n.json#a11yListStructureWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yListStructureWhy"
-msgid "Assistive technology relies on list structure to announce item counts and position."
-msgstr "Assistive technology relies on list structure to announce item counts and position."
+msgid ""
+"Assistive technology relies on list structure to announce item counts and "
+"position."
+msgstr ""
+"Assistive technology relies on list structure to announce item counts and "
+"position."
 
 #: plugins/tinymce/codemirror/src/i18n.json#sourceToggleTooltip
 #, no-c-format
@@ -618,8 +706,12 @@ msgstr "Source code"
 #: plugins/tinymce/codemirror/src/i18n.json#sourceFormatErrorMessage
 #, no-c-format
 msgctxt "tinymce.strings:sourceFormatErrorMessage"
-msgid "Couldn't format the source code — check for unclosed tags or other syntax errors."
-msgstr "Couldn't format the source code — check for unclosed tags or other syntax errors."
+msgid ""
+"Couldn't format the source code — check for unclosed tags or other syntax "
+"errors."
+msgstr ""
+"Couldn't format the source code — check for unclosed tags or other syntax "
+"errors."
 
 #: plugins/tinymce/save/src/i18n.json#saveToolbarText
 #, no-c-format
@@ -708,8 +800,12 @@ msgstr "New document"
 #: plugins/tinymce/save/src/i18n.json#newDialogMessage
 #, no-c-format
 msgctxt "tinymce.strings:newDialogMessage"
-msgid "This clears the current editor content and config. Save the current work first?"
-msgstr "This clears the current editor content and configuration. Save the current work first?"
+msgid ""
+"This clears the current editor content and config. Save the current work "
+"first?"
+msgstr ""
+"This clears the current editor content and configuration. Save the current "
+"work first?"
 
 #: plugins/tinymce/save/src/i18n.json#newDialogSaveButton
 #, no-c-format
@@ -824,27 +920,3 @@ msgstr "Delete"
 msgctxt "tinymce.strings:presetCancelButton"
 msgid "Cancel"
 msgstr "Cancel"
-
-#: renderers/tinymce/src/i18n.json#componentModifiersDefault
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersDefault"
-msgid "Default"
-msgstr "Default"
-
-#: renderers/tinymce/src/i18n.json#componentModifiersOptions
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersOptions"
-msgid "Options"
-msgstr "Options"
-
-#: renderers/tinymce/src/i18n.json#componentModifiersTooltip
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersTooltip"
-msgid "Change component modifiers"
-msgstr "Change component modifiers"
-
-#: renderers/tinymce/src/i18n.json#componentModifiersUtilities
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersUtilities"
-msgid "Utilities"
-msgstr "Utilities"

@@ -4,10 +4,10 @@ msgstr ""
 "PO-Revision-Date: 2026-09-23 23:22+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
+"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: und\n"
 
 #: renderers/tinymce/src/i18n.json#autocompleteModifierDetail
 #, no-c-format
@@ -62,6 +62,30 @@ msgstr "Ngā Wāhanga"
 msgctxt "tinymce.strings:componentsToolbarTooltip"
 msgid "Insert a pantoken component"
 msgstr "Whakauru i tētahi wāhanga pantoken"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersDefault
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersDefault"
+msgid "Default"
+msgstr "Taunoa"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersOptions
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersOptions"
+msgid "Options"
+msgstr "Kōwhiringa"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersTooltip
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersTooltip"
+msgid "Change component modifiers"
+msgstr "Huri i ngā whakarerekētanga o te wāhanga"
+
+#: renderers/tinymce/src/i18n.json#componentModifiersUtilities
+#, no-c-format
+msgctxt "tinymce.strings:componentModifiersUtilities"
+msgid "Utilities"
+msgstr "Ngā taputapu"
 
 #: renderers/tinymce/src/i18n.json#iconLabelDialogTitle
 #, no-c-format
@@ -230,6 +254,36 @@ msgstr "Logo"
 msgctxt "tinymce.strings:logosDialogTitle"
 msgid "Insert Logo"
 msgstr "Whakauru Logo"
+
+#: renderers/tinymce/src/i18n.json#logosSearchPlaceholder
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosSearchPlaceholder"
+msgid "Search logos…"
+msgstr "Rapua ngā tohu…"
+
+#: renderers/tinymce/src/i18n.json#logosSearchLabel
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosSearchLabel"
+msgid "Search logos"
+msgstr "Rapua ngā tohu"
+
+#: renderers/tinymce/src/i18n.json#logosAllProducts
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosAllProducts"
+msgid "All"
+msgstr "Katoa"
+
+#: renderers/tinymce/src/i18n.json#logosResultCount
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosResultCount"
+msgid "{{count}} logos"
+msgstr "{{count}} tohu"
+
+#: renderers/tinymce/src/i18n.json#logosNoResults
+#, fuzzy, no-c-format
+msgctxt "tinymce.strings:logosNoResults"
+msgid "No logos match your search."
+msgstr "Kāore he tohu e hāngai ana ki tāu rapu."
 
 #: renderers/tinymce/src/i18n.json#logosProductLabel
 #, no-c-format
@@ -421,7 +475,8 @@ msgstr "Me matua tau katoa te whanui me te teitei mai i te 10 ki te 4000."
 #, no-c-format
 msgctxt "tinymce.strings:placeholdInvalidColor"
 msgid "Colors must use three- or six-digit hexadecimal values."
-msgstr "Me whakamahi ngā tae i ngā uara heksadesimera e toru rānei e ono ngā tohu."
+msgstr ""
+"Me whakamahi ngā tae i ngā uara heksadesimera e toru rānei e ono ngā tohu."
 
 #: plugins/tinymce/placehold/src/i18n.json#placeholdAltFallback
 #, no-c-format
@@ -492,20 +547,31 @@ msgstr "Me whai kupu āwhina ngā whakaahua."
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltWhy"
-msgid "Screen readers need an alt attribute to describe an image or identify it as decorative."
-msgstr "E hiahiatia ana e ngā kaipānui mata te āhuatanga `alt` kia whakamāramatia te whakaahua, kia tautuhia rānei he mea whakapaipai."
+msgid ""
+"Screen readers need an alt attribute to describe an image or identify it as "
+"decorative."
+msgstr ""
+"E hiahiatia ana e ngā kaipānui mata te āhuatanga `alt` kia whakamāramatia te "
+"whakaahua, kia tautuhia rānei he mea whakapaipai."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameMessage
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltFilenameMessage"
-msgid "Image alternative text should describe the image, not repeat its filename."
-msgstr "Me whakamārama e te kupu āwhina te whakaahua, kaua e whakahuatia te ingoa kōnae."
+msgid ""
+"Image alternative text should describe the image, not repeat its filename."
+msgstr ""
+"Me whakamārama e te kupu āwhina te whakaahua, kaua e whakahuatia te ingoa "
+"kōnae."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltFilenameWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltFilenameWhy"
-msgid "A filename rarely gives screen reader users useful information about an image."
-msgstr "Kāore i te nuinga o te wā e hoatu e te ingoa kōnae ngā pārongo whaihua ki ngā kaiwhakamahi kaipānui mata."
+msgid ""
+"A filename rarely gives screen reader users useful information about an "
+"image."
+msgstr ""
+"Kāore i te nuinga o te wā e hoatu e te ingoa kōnae ngā pārongo whaihua ki "
+"ngā kaiwhakamahi kaipānui mata."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthMessage
 #, no-c-format
@@ -516,8 +582,12 @@ msgstr "Me kore ake i te 125 ngā pūāhua o te kupu āwhina whakaahua."
 #: plugins/tinymce/a11y/src/i18n.json#a11yImageAltLengthWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yImageAltLengthWhy"
-msgid "Short descriptions are easier to understand and navigate with assistive technology."
-msgstr "He māmā ake te mārama me te hāereere o ngā whakamārama poto mā ngā hangarau āwhina."
+msgid ""
+"Short descriptions are easier to understand and navigate with assistive "
+"technology."
+msgstr ""
+"He māmā ake te mārama me te hāereere o ngā whakamārama poto mā ngā hangarau "
+"āwhina."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceMessage
 #, no-c-format
@@ -528,8 +598,12 @@ msgstr "Kaua e peke ngā taumata upoko."
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingSequenceWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yHeadingSequenceWhy"
-msgid "A logical heading outline helps people navigate content with assistive technology."
-msgstr "He āhua upoko whai tikanga ka āwhina i te hunga ki te hāereere i ngā ihirangi mā ngā hangarau āwhina."
+msgid ""
+"A logical heading outline helps people navigate content with assistive "
+"technology."
+msgstr ""
+"He āhua upoko whai tikanga ka āwhina i te hunga ki te hāereere i ngā "
+"ihirangi mā ngā hangarau āwhina."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderMessage
 #, no-c-format
@@ -540,8 +614,11 @@ msgstr "Me whai pūtau taitara ngā ripanga."
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableHeaderWhy"
-msgid "Header cells give screen readers the context needed to understand table data."
-msgstr "Ka hoatu e ngā pūtau taitara ki ngā kaipānui mata te horopaki e hiahiatia ana kia mārama ai rātou ki ngā raraunga o te ripanga."
+msgid ""
+"Header cells give screen readers the context needed to understand table data."
+msgstr ""
+"Ka hoatu e ngā pūtau taitara ki ngā kaipānui mata te horopaki e hiahiatia "
+"ana kia mārama ai rātou ki ngā raraunga o te ripanga."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionMessage
 #, no-c-format
@@ -552,8 +629,12 @@ msgstr "Kia whai taitara whakamārama ngā ripanga."
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableCaptionWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableCaptionWhy"
-msgid "A caption identifies a table's purpose before a screen reader enters its cells."
-msgstr "Ka tautuhi te taitara whakamārama i te kaupapa o te ripanga i mua i te tomo a te kaipānui mata ki ōna pūtau."
+msgid ""
+"A caption identifies a table's purpose before a screen reader enters its "
+"cells."
+msgstr ""
+"Ka tautuhi te taitara whakamārama i te kaupapa o te ripanga i mua i te tomo "
+"a te kaipānui mata ki ōna pūtau."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeMessage
 #, no-c-format
@@ -564,8 +645,12 @@ msgstr "Me whakaatu te pūtau taitara o te ripanga i tōna rohe."
 #: plugins/tinymce/a11y/src/i18n.json#a11yTableHeaderScopeWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yTableHeaderScopeWhy"
-msgid "The scope attribute lets assistive technology associate headers with data cells."
-msgstr "Ka āhei te āhuatanga `scope` i ngā hangarau āwhina ki te hono i ngā taitara ki ngā pūtau raraunga."
+msgid ""
+"The scope attribute lets assistive technology associate headers with data "
+"cells."
+msgstr ""
+"Ka āhei te āhuatanga `scope` i ngā hangarau āwhina ki te hono i ngā taitara "
+"ki ngā pūtau raraunga."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksMessage
 #, no-c-format
@@ -576,8 +661,11 @@ msgstr "Me whakakotahi ngā hononga tata me te wāhi taunga kotahi."
 #: plugins/tinymce/a11y/src/i18n.json#a11yAdjacentLinksWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yAdjacentLinksWhy"
-msgid "Repeated links create unnecessary stops for keyboard and screen reader users."
-msgstr "Ka waihanga ngā hononga tārite i ngā tūnga koretake mō ngā kaiwhakamahi papapātuhi me ngā kaipānui mata."
+msgid ""
+"Repeated links create unnecessary stops for keyboard and screen reader users."
+msgstr ""
+"Ka waihanga ngā hononga tārite i ngā tūnga koretake mō ngā kaiwhakamahi "
+"papapātuhi me ngā kaipānui mata."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yHeadingStartMessage
 #, no-c-format
@@ -589,19 +677,27 @@ msgstr "Me h2 te upoko tuatahi."
 #, no-c-format
 msgctxt "tinymce.strings:a11yHeadingStartWhy"
 msgid "The editor's document title is supplied outside the editable content."
-msgstr "Ka whakarato te taitara o te tuhinga o te etita i waho o ngā ihirangi ka taea te whakarerekē."
+msgstr ""
+"Ka whakarato te taitara o te tuhinga o te etita i waho o ngā ihirangi ka "
+"taea te whakarerekē."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yListStructureMessage
 #, no-c-format
 msgctxt "tinymce.strings:a11yListStructureMessage"
 msgid "List items must be contained by an ordered or unordered list."
-msgstr "Me waiho ngā tūemi rārangi i roto i tētahi rārangi whakarārangitia, rārangi kāore i whakarārangitia rānei."
+msgstr ""
+"Me waiho ngā tūemi rārangi i roto i tētahi rārangi whakarārangitia, rārangi "
+"kāore i whakarārangitia rānei."
 
 #: plugins/tinymce/a11y/src/i18n.json#a11yListStructureWhy
 #, no-c-format
 msgctxt "tinymce.strings:a11yListStructureWhy"
-msgid "Assistive technology relies on list structure to announce item counts and position."
-msgstr "E whakawhirinaki ana ngā hangarau āwhina ki te hanganga rārangi kia pānuitia ngā tatau tūemi me ngā tūnga."
+msgid ""
+"Assistive technology relies on list structure to announce item counts and "
+"position."
+msgstr ""
+"E whakawhirinaki ana ngā hangarau āwhina ki te hanganga rārangi kia pānuitia "
+"ngā tatau tūemi me ngā tūnga."
 
 #: plugins/tinymce/codemirror/src/i18n.json#sourceToggleTooltip
 #, no-c-format
@@ -618,8 +714,12 @@ msgstr "Waehere pūtake"
 #: plugins/tinymce/codemirror/src/i18n.json#sourceFormatErrorMessage
 #, no-c-format
 msgctxt "tinymce.strings:sourceFormatErrorMessage"
-msgid "Couldn't format the source code — check for unclosed tags or other syntax errors."
-msgstr "Kāore i taea te whakatakoto i te waehere puna — tirohia mēnā he tapuwae kāore i kapi, he hapa wetereo rānei."
+msgid ""
+"Couldn't format the source code — check for unclosed tags or other syntax "
+"errors."
+msgstr ""
+"Kāore i taea te whakatakoto i te waehere puna — tirohia mēnā he tapuwae "
+"kāore i kapi, he hapa wetereo rānei."
 
 #: plugins/tinymce/save/src/i18n.json#saveToolbarText
 #, no-c-format
@@ -708,8 +808,12 @@ msgstr "Tuhinga hou"
 #: plugins/tinymce/save/src/i18n.json#newDialogMessage
 #, no-c-format
 msgctxt "tinymce.strings:newDialogMessage"
-msgid "This clears the current editor content and config. Save the current work first?"
-msgstr "Ka muku tēnei i te ihirangi me ngā whakarite o te etita ināianei. Tiakina te mahi o nāianei tuatahi?"
+msgid ""
+"This clears the current editor content and config. Save the current work "
+"first?"
+msgstr ""
+"Ka muku tēnei i te ihirangi me ngā whakarite o te etita ināianei. Tiakina te "
+"mahi o nāianei tuatahi?"
 
 #: plugins/tinymce/save/src/i18n.json#newDialogSaveButton
 #, no-c-format
@@ -733,13 +837,16 @@ msgstr "Tautuhinga"
 #, no-c-format
 msgctxt "tinymce.strings:confirmOverwrite"
 msgid "A preset named “{{name}}” already exists. Replace it?"
-msgstr "Kei reira kē tētahi tautuhinga e kīia ana ko “{{name}}”. Whakakapi rānei?"
+msgstr ""
+"Kei reira kē tētahi tautuhinga e kīia ana ko “{{name}}”. Whakakapi rānei?"
 
 #: plugins/tinymce/save/src/i18n.json#confirmDiscard
 #, no-c-format
 msgctxt "tinymce.strings:confirmDiscard"
 msgid "Open “{{name}}” and discard the current unsaved changes?"
-msgstr "Whakatuwherahia “{{name}}” ka whakakorea ngā huringa kāore i tiakina o nāianei?"
+msgstr ""
+"Whakatuwherahia “{{name}}” ka whakakorea ngā huringa kāore i tiakina o "
+"nāianei?"
 
 #: plugins/tinymce/save/src/i18n.json#confirmDelete
 #, no-c-format
@@ -751,7 +858,9 @@ msgstr "Mukua “{{name}}”? Kāore e taea te whakahoki."
 #, fuzzy, no-c-format
 msgctxt "tinymce.strings:confirmImportOverwrite"
 msgid "Import “{{name}}” and overwrite the current editor content and config?"
-msgstr "Whakatuwherahia “{{name}}” ka whakakorea ngā huringa kāore i tiakina o nāianei?"
+msgstr ""
+"Whakatuwherahia “{{name}}” ka whakakorea ngā huringa kāore i tiakina o "
+"nāianei?"
 
 #: plugins/tinymce/save/src/i18n.json#emptyPresets
 #, no-c-format
@@ -775,7 +884,8 @@ msgstr "He hē tēnei tautuhinga, kāore i taea te whakatuwhera."
 #, no-c-format
 msgctxt "tinymce.strings:importInvalidFile"
 msgid "The selected file is not a valid pantoken TinyMCE export."
-msgstr "Ehara i te kōnae tika mō te kaweake pantoken TinyMCE te kōnae kua tīpakohia."
+msgstr ""
+"Ehara i te kōnae tika mō te kaweake pantoken TinyMCE te kōnae kua tīpakohia."
 
 #: plugins/tinymce/save/src/i18n.json#storageReadError
 #, no-c-format
@@ -824,27 +934,3 @@ msgstr "Mukua"
 msgctxt "tinymce.strings:presetCancelButton"
 msgid "Cancel"
 msgstr "Whakakore"
-
-#: renderers/tinymce/src/i18n.json#componentModifiersDefault
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersDefault"
-msgid "Default"
-msgstr "Taunoa"
-
-#: renderers/tinymce/src/i18n.json#componentModifiersOptions
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersOptions"
-msgid "Options"
-msgstr "Kōwhiringa"
-
-#: renderers/tinymce/src/i18n.json#componentModifiersTooltip
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersTooltip"
-msgid "Change component modifiers"
-msgstr "Huri i ngā whakarerekētanga o te wāhanga"
-
-#: renderers/tinymce/src/i18n.json#componentModifiersUtilities
-#, no-c-format
-msgctxt "tinymce.strings:componentModifiersUtilities"
-msgid "Utilities"
-msgstr "Ngā taputapu"
