@@ -1,0 +1,112 @@
+node scripts/quality/fallow-health-gate.ts
+
+    
+
+  
+
+    
+      
+      
+      unused-export:renderers/tinymce/src/plugins/logos.ts:144:insertLogoMeta
+
+    
+
+  
+
+    
+      
+      
+      ✗ fallow dead-code gate failed
+
+    
+
+  
+
+    
+      
+      
+      ✓ fallow health: 82.9 (B)
+
+    
+
+  
+
+    
+      
+      
+      ✗ fallow regression gate: findings grew beyond fallow-baseline.json
+
+    
+
+  
+
+    
+      
+      
+      ── Unused Code ─────────────────────────────────────
+
+    
+
+  
+
+  
+
+    
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      ● Unused exports (1)
+
+    
+
+  
+
+    
+      
+      
+        renderers/tinymce/src/plugins/logos.ts
+
+    
+
+  
+
+    
+      
+      
+          :144 insertLogoMeta
+
+    
+
+  
+
+    
+      
+      
+        Exported symbols with no known consumers — [https://docs.fallow.tools/explanations/dead-code#unused-exports](https://docs.fallow.tools/explanations/dead-code#unused-exports)
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      ✓ fallow duplication: within the .fallowrc threshold
