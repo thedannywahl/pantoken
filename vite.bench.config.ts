@@ -29,6 +29,15 @@ export default defineConfig({
     execArgv: [...process.execArgv, ...codSpeedExecArgv],
     include: ["bench/*.bench.ts"],
     pool: "forks",
+    // One fork, one file at a time. CodSpeed's instrument-hooks talk to the runner over a single
+    // FIFO with no per-process framing, so parallel bench forks interleave commands on it — that
+    // desync ("Failed to deserialize FIFO command", "StopProfiler before StartProfiler") can leave
+    // the runner blocked on a response it never gets, hanging the job. Serial runs also keep
+    // walltime numbers from being noise off CPU contention between forks.
+    fileParallelism: false,
+    maxWorkers: 1,
     testTimeout: 120_000,
+    hookTimeout: 120_000,
+    teardownTimeout: 30_000,
   },
 });

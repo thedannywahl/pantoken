@@ -120,10 +120,16 @@ jobs:
   # Continuous performance testing for the transform pipeline, run inside the CI gate so it reuses the
   # `build` job's cached task outputs instead of rebuilding from scratch. Advisory only — a CodSpeed
   # regression must never block merge, so failures here are swallowed with `continue-on-error`.
+  #
+  # `timeout-minutes` is load-bearing, not hygiene: the CodSpeed runner can wedge (FIFO/instrument-hook
+  # handshake failures in walltime mode) and hang until the 6-hour default. `continue-on-error` doesn't
+  # help there — the run stays in progress, so `release.yml`'s gate, which waits on ci.yml's conclusion,
+  # blows its own 1-hour deadline and fails the release. Bound the job so a wedged runner just fails fast.
   benchmarks:
     needs: build
     runs-on: ubuntu-latest
     continue-on-error: true
+    timeout-minutes: 20
     permissions:
       contents: read
       id-token: write
@@ -149,6 +155,7 @@ jobs:
         run: vp run -r build
       - name: Run benchmarks
         uses: CodSpeedHQ/action@373d6868929f444bc08d901fd0eb0ad52a8875ea # v5.2.1
+        timeout-minutes: 12
         with:
           mode: walltime
           run: VP_NODE_VERSION=22.18.0 vp test --run --config vite.bench.config.ts
