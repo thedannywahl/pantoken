@@ -1,0 +1,68 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3N1JA2KD9WAXYB2QWV8YZKC",
+  "session_id": "3ccac868-4d84-4690-9d1d-7e7b38515d34",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-28T22:18:32.952083Z",
+  "branch": "codspeed-timeout",
+  "checkpoints_count": 2,
+  "save_step_count": 2,
+  "files_touched": [
+    ".github/workflows/changeset-check.yml",
+    ".github/workflows/ci.yml",
+    ".github/workflows/codeql.yml",
+    ".github/workflows/copilot-setup-steps.yml",
+    ".github/workflows/docs.yml",
+    ".github/workflows/guard-release-automation.yml",
+    ".github/workflows/property.yml",
+    ".github/workflows/publish-create-pantoken-app.yml",
+    ".github/workflows/release.yml",
+    ".github/workflows/scorecard.yml",
+    "bench/docs.bench.ts",
+    "docs/scripts/build-locales.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "db59aee7447d",
+  "checkpoint_transcript_start": 941,
+  "transcript_lines_at_start": 941,
+  "compact_transcript_start": 158,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 9
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-28T22:18:32.929641Z",
+    "agent_lines": 359,
+    "agent_removed": 202,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 359,
+    "total_lines_changed": 561,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 337,
+      "agent_lines_removed": 187
+    }
+  ]
+}

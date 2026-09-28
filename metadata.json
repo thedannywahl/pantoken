@@ -1,0 +1,37 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3N1JA2KD9WAXYB2QWV8YZKC",
+  "strategy": "manual-commit",
+  "branch": "codspeed-timeout",
+  "checkpoints_count": 2,
+  "files_touched": [
+    ".github/workflows/changeset-check.yml",
+    ".github/workflows/ci.yml",
+    ".github/workflows/codeql.yml",
+    ".github/workflows/copilot-setup-steps.yml",
+    ".github/workflows/docs.yml",
+    ".github/workflows/guard-release-automation.yml",
+    ".github/workflows/property.yml",
+    ".github/workflows/publish-create-pantoken-app.yml",
+    ".github/workflows/release.yml",
+    ".github/workflows/scorecard.yml",
+    "bench/docs.bench.ts",
+    "docs/scripts/build-locales.ts"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
