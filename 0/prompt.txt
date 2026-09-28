@@ -1,0 +1,258 @@
+codspeed hung in the CI pipeline and caused the release to fail on a timeout:
+```
+______            __ _____                         __
+
+    
+
+  
+
+    
+      
+      
+          / ____/____   ____/ // ___/ ____   ___   ___   ____/ /
+
+    
+
+  
+
+    
+      
+      
+         / /    / __ \ / __  / \__ \ / __ \ / _ \ / _ \ / __  /
+
+    
+
+  
+
+    
+      
+      
+        / /___ / /_/ // /_/ / ___/ // /_/ //  __//  __// /_/ /
+
+    
+
+  
+
+    
+      
+      
+        \____/ \____/ \__,_/ /____// .___/ \___/ \___/ \__,_/
+
+    
+
+  
+
+    
+      
+      
+          [https://codspeed.io](https://codspeed.io)     /_/          runner v5.2.1
+
+    
+
+  
+
+    
+      
+      
+      Running the benchmarks
+
+    
+
+  
+
+    
+      
+      
+          Note: this kernel can't attach the extra perf events to inherited samples; capturing them per-CPU system-wide and filtering to the launched process tree.
+
+    
+
+  
+
+  
+
+    
+    
+      
+      
+           RUN  v5.0.1 /home/runner/work/pantoken/pantoken
+
+    
+
+  
+
+    
+      
+      
+          Warning: Failed to parse FIFO command: Failed to deserialize FIFO command (data: b"\x0c\0\0\0\x08\0\0\0\x02\0\0\0")
+
+    
+
+  
+
+    
+      
+      
+          Warning: Failed to parse FIFO command: Failed to deserialize FIFO command (data: b"")
+
+    
+
+  
+
+    
+      
+      
+          Warning: Received StopProfiler command before StartProfiler, ignoring
+
+    
+
+  
+
+    
+      
+      
+          [DEBUG] waitForAck received unexpected response: IntegrationModeResponse shared.IntegrationMode.Walltime
+
+    
+
+  
+
+    
+      
+      
+          [ERROR] instrument-hooks: error UnexpectedResponse during version check
+
+    
+
+  
+
+    
+      
+      
+          stderr | bench/formats.bench.ts > toCss > rebrand (full sheet, with icons)
+
+    
+
+  
+
+    
+      
+      
+          [CodSpeed] missing required flags: --perf-prof, --log-code, --no-log-source-code, --no-logfile-per-isolate, --logfile=/tmp/.tmp58Z8FC/codspeed-v8-%p.log
+
+    
+
+  
+
+    
+      
+      
+          stdout | bench/formats.bench.ts > toCss > rebrand (full sheet, with icons)
+
+    
+
+  
+
+    
+      
+      
+          [CodSpeed] running with @codspeed/tinybench v5.7.1 (walltime mode)
+```
+
+---
+
+was that just a one-off error or do we need to harden the tasks too?
+
+---
+
+Evaluate the whole of the build/release/CI/test pipeline for efficiencies. all .github/workflows and supporting infrastructure.
+
+---
+
+Thoroughness: thorough. Read-only research, do NOT edit any files.
+
+Audit EVERY file in /Users/dwahl/Scripts/pantoken/.github/workflows/ (ci.yml, release.yml, docs.yml, codeql.yml, scorecard.yml, changeset-check.yml, publish-create-pantoken-app.yml, copilot-setup-steps.yml, guard-release-automation.yml, property.yml) plus any composite actions in .github/actions/ and any other .github config (dependabot.yml, renovate.json).
+
+For EACH workflow report:
+1. Trigger conditions (on:), concurrency groups, and permissions.
+2. The full job graph: job names, `needs:` edges, runs-on, continue-on-error, timeout-minutes, matrix strategies.
+3. Every step: what it runs, whether it's cached, and roughly what it costs in time.
+4. Duplicated work ACROSS jobs and ACROSS workflows — specifically: how many separate jobs run `vp run -r build` or an equivalent full build, how many separately run install, how many re-run the same checks. Count them precisely.
+5. Caching setup: cache keys, restore-keys, which jobs save vs only restore, and any key that can never be reused across runs.
+6. Any job that has no timeout-minutes (list them all).
+7. Path filtering: does any workflow use paths/paths-ignore to skip work on irrelevant changes? Which ones could?
+8. Anything that looks serialized that could be parallel, or parallel that must be serial.
+
+Report concrete file paths and line numbers for every finding. Be exhaustive and factual — quote the actual YAML rather than paraphrasing when it matters.
+
+---
+
+what about docs effeciencies?  building docs takes 30+ minutes and it's done on PR, on merge to main (+ deploy docs) and on release
+
+---
+
+Thoroughness: thorough. Read-only research, do NOT edit any files.
+
+Deeply analyze the docs build pipeline in /Users/dwahl/Scripts/pantoken. I need to understand exactly where the 30+ minutes goes.
+
+1. Read docs/package.json IN FULL. List every script verbatim. Map the composition tree of these in particular: `docs:build`, `docs:build:deploy`, `docs:assets`, `docs:api:en`, `docs:api:locales`, and anything they call. For each leaf script, say what it does and whether it's serial or concurrent.
+2. Read docs/scripts/build-locales.ts and docs/scripts/build-api-locales.ts and docs/scripts/changed-pages.ts in full. Explain: how many locales are built, whether locales build in parallel or serially, what concurrency env vars control it (DOCS_BUILD_CONCURRENCY, DOCS_TRANSLATION_CONCURRENCY etc), and whether each locale is a full separate VitePress build or a shared build with swapped strings.
+3. Read docs/.vitepress/config.ts (and any config it imports) — how many locales are configured, how many pages total, and is there one VitePress build per locale or one build for all?
+4. Read docs/scripts/build-css-api.ts and any TypeDoc config (docs/typedoc.json) — how expensive is API doc generation and how many times does it run per locale?
+5. Find any caching/incremental logic: docs/scripts/changed-pages.ts, translation-memory.ts, and any dist caching. Explain precisely how partial/incremental docs builds work today and what invalidates them.
+6. Count: how many markdown pages exist in docs/ per locale, how many locales (list the locale dirs), and total page count across all locales.
+7. Report any script that spawns AI model adapters for translation and whether that happens at build time or is pre-committed.
+
+Report concrete file paths and line numbers. Quote actual script commands verbatim. Be exhaustive and factual — I specifically need to know what dominates the wall clock.
+
+---
+
+D0 it's fine for us to keep a log, but we should make this a codspeed benchmark too.
+D1 if we've validated the docs work on the PR, then on push to main there's no reason to build at all.
+
+---
+
+Thoroughness: medium. Read-only research, do NOT edit any files.
+
+In /Users/dwahl/Scripts/pantoken, I want to add CodSpeed benchmarks for the docs build's hot code paths. Existing benchmarks live in bench/*.bench.ts and use a `runBench(name, fn)` helper from bench/run-bench.ts that wraps tinybench.
+
+1. Read bench/formats.bench.ts and bench/core.bench.ts to learn the exact authoring pattern (imports, describe/test structure, how fixtures are set up at module scope).
+2. Inventory PURE, EXPORTED, CPU-bound functions in docs/scripts/ that run many times during a docs build and would be meaningful to benchmark. For each candidate report: file path, exported function name, signature, whether it does I/O (fs/network/spawn) or is pure computation, and roughly how many times it is called during a full 45-locale build. Look especially at:
+   - docs/scripts/segment-markdown.ts
+   - docs/scripts/translation-memory.ts
+   - docs/scripts/changed-pages.ts (resolveChangedDocs)
+   - docs/scripts/build-locales.ts (mergeSitemapUrls, orderRootLast, localeOfPage, assertScopedLocaleConfig)
+   - docs/scripts/api-translation.ts
+   - docs/scripts/build-css-api.ts
+   - docs/scripts/style-api-badges.ts
+   Report which are pure vs which need fs fixtures.
+3. For the best 4-6 candidates, note what realistic input fixture would be needed (e.g. a representative TypeDoc markdown page, a PO catalog, a list of changed paths) and whether such a fixture already exists in the repo or in an existing *.test.ts file I could reuse.
+4. Check whether docs/ is importable from bench/ — look at docs/package.json name/exports, docs/tsconfig.json, and whether bench files can import ../docs/scripts/x.ts directly the way bench/formats.bench.ts imports ../formats/css/src/to-css.ts. Note any obstacle (e.g. scripts importing node-only modules at module scope, or heavy top-level side effects that would run on import).
+
+Report concrete file paths, line numbers, and exact exported signatures. Be factual about what is pure vs I/O bound.
+
+---
+
+l10n only updates when a package updates. right now we have changesets for private packages allowed, if we set it to required for docs (but kept private) then it would trigger the work on a doc-only change.
+
+---
+
+Thoroughness: thorough. Read-only research, do NOT edit any files.
+
+In /Users/dwahl/Scripts/pantoken I need to know exactly what happens end-to-end if a changeset is created for a PRIVATE package (specifically `@pantoken/docs`), with no public package changes.
+
+Answer these precisely, quoting code:
+
+1. Read `.changeset/config.json` in full. Quote it. What is the `privatePackages` setting (e.g. `{version: true, tag: false}`)? What is `ignore`? Is `@pantoken/docs` listed anywhere?
+2. Read `docs/package.json` — is it `"private": true`? What is its `name` and `version`? Does it have a version at all?
+3. Read `scripts/release/check-changeset-coverage.ts` in full (this backs `vp run release:coverage`, the changeset-check.yml gate). Precisely: which packages does it require changesets for? How does it decide a package is "release impacting"? Does it currently include or exclude private packages, and is `docs` excluded by an explicit list, by the `private` flag, or by path?
+4. Read `scripts/release/publish-npm.ts` in full. Determine: does it skip private packages? Where does it write the releases manifest (`$RUNNER_TEMP/pantoken-releases.json`) and does a private/unpublished package produce an entry or a `New tag:` line?
+5. In `.github/workflows/release.yml`, find the step that writes `docs-deploy-request.txt` and uploads the `docs-deploy-request` artifact. Quote it exactly. Determine whether that artifact is produced when the release published NOTHING (i.e. only a private package was versioned). This is the critical question: if only `@pantoken/docs` is versioned, is a `docs-deploy-request` artifact uploaded or not?
+6. Also confirm what `vp run release:version` does (root package.json / vite.config.ts task) — does it bump private packages and write their CHANGELOG?
+7. Check `l10n/` — is there anything that regenerates l10n catalogs on a schedule or only as part of package builds? Is there a workflow or task that updates l10n independently of a package change?
+
+Be exhaustive and quote the actual code/YAML. I need certainty on question 5 especially.
+
+---
+
+narrowed filter.
