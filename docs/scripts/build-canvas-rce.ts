@@ -32,7 +32,7 @@ await scaffoldProject("canvas-theme-editor", renderDir, {
   packageManager: "npm",
 });
 
-// This render dir is never `npm install`ed, so the icon pickers' "None"/local CDN mode (which reads
+// This render dir is never `npm install`ed, so the pickers' "None"/local CDN mode (which reads
 // `import.meta.glob("/node_modules/@pantoken/*/dist/...")`) would otherwise find nothing and always
 // fall back to a remote CDN fetch — 404ing for a package (like plugin-lucide-lab) not yet published.
 // Vendoring the real, already-built dist output here is enough for the local CDN glob. Copy
@@ -40,6 +40,7 @@ await scaffoldProject("canvas-theme-editor", renderDir, {
 const localIconPackages: Record<string, string> = {
   "@pantoken/components": join(repoRoot, "formats/components"),
   "@pantoken/plugin-custom-icons": join(repoRoot, "plugins/pantoken/custom-icons"),
+  "@pantoken/plugin-logos": join(repoRoot, "plugins/pantoken/logos"),
   "@pantoken/plugin-simple-icons": join(repoRoot, "plugins/pantoken/simple-icons"),
   "@pantoken/plugin-lucide-lab": join(repoRoot, "plugins/pantoken/lucide-lab"),
 };
