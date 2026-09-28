@@ -128,6 +128,7 @@ import {
   PANTOKEN_ICON_PACK_NAME,
   products,
   registerPantokenIconPack,
+  retargetContentStylesheets,
   pantokenHtmlLinter,
   pantokenHtmlCompletion,
   SEARCHREPLACE_FOOTER_PLUGIN_NAME,
@@ -635,11 +636,14 @@ const onMissingAsset = () => void refreshAll();
 let availableIcons: TaggedIcon[] = [];
 const inlineAssetContents = new Map<string, string>();
 let refreshGeneration = 0;
-// Covers `plugin-logos` (a real dependency for any scaffolded project) and the icon packages
-// `build-canvas-rce.ts` vendors into `node_modules` purely so this docs-hosted preview's "None
-// (inline)" provider doesn't have to hit a CDN for `::name` autocomplete/picker glyphs.
+// Covers `plugin-logos`, the core component icons (both real dependencies for any scaffolded
+// project), and the icon packages `build-canvas-rce.ts` vendors into `node_modules` purely so this
+// docs-hosted preview's "None (inline)" provider doesn't have to hit a CDN for any glyph.
 const localAssetUrls = import.meta.glob<string>(
-  "/node_modules/@pantoken/plugin-{logos,simple-icons,lucide-lab,custom-icons}/dist/**/*.css",
+  [
+    "/node_modules/@pantoken/components/dist/icons/*.css",
+    "/node_modules/@pantoken/plugin-{logos,simple-icons,lucide-lab,custom-icons}/dist/**/*.css",
+  ],
   { eager: true, import: "default", query: "?url" },
 );
 
@@ -1240,6 +1244,7 @@ function resetCanvasThemePreset(): void {
       | SourceTogglePluginApi
       | undefined;
     if (sourceToggle?.isSourceMode()) sourceToggle.replaceAll(nextHtml);
+    retargetContentStylesheets(activeEditor, buildSelectedAssetUrl);
   }
 
   syncThemeColorFromEditor();
@@ -1267,6 +1272,8 @@ function restoreCanvasThemePreset(preset: CanvasThemePreset): void {
     | SourceTogglePluginApi
     | undefined;
   if (sourceToggle?.isSourceMode()) sourceToggle.replaceAll(editorHtml);
+  // Setting `providerSelect.value` fires no change event, so re-point already-loaded sheets here.
+  retargetContentStylesheets(activeEditor, buildSelectedAssetUrl);
   syncThemeColorFromEditor();
 
   applyEditorTheme(activeEditor);
@@ -1871,6 +1878,7 @@ const jsEditorView = createEditor(
 );
 
 providerSelect.addEventListener("change", () => {
+  if (activeEditor) retargetContentStylesheets(activeEditor, buildSelectedAssetUrl);
   void refreshAll();
   persistPreferences();
 });

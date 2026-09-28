@@ -67,11 +67,15 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(main).toContain("syncIconAssetsFromEditor();");
   expect(main).toContain("...currentAssets]");
   expect(main).toContain("const onMissingAsset = () => void refreshAll();");
+  expect(main).toContain('"/node_modules/@pantoken/components/dist/icons/*.css",');
   expect(main).toContain(
-    '"/node_modules/@pantoken/plugin-{logos,simple-icons,lucide-lab,custom-icons}/dist/**/*.css"',
+    '"/node_modules/@pantoken/plugin-{logos,simple-icons,lucide-lab,custom-icons}/dist/**/*.css",',
   );
   expect(main).toContain("buildFileUrl(file, providerSelect.value)");
   expect(main).toContain("buildAssetUrl: buildSelectedAssetUrl");
+  expect(main).toContain(
+    "if (activeEditor) retargetContentStylesheets(activeEditor, buildSelectedAssetUrl);",
+  );
   expect(main).toContain("createA11yPlugin");
   expect(main).toContain("createSourceTogglePlugin");
   expect(main).toContain("if (isLocalPreview) {");
