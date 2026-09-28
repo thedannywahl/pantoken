@@ -14,6 +14,15 @@ test("generates every published theme skin and content stylesheet", () => {
   }
 });
 
+test("paints icon and logo glyphs in every content stylesheet", () => {
+  for (const file of SKIN_FILES.filter((file) => file.endsWith("content.css"))) {
+    const css = readFileSync(resolve(generatedRoot, file), "utf8");
+    expect(css, file).toContain('.instui-icon[class*="-icon-"]::before');
+    expect(css, file).toContain('.instui-logo[class*="-logo-"]::before');
+    expect(css, file).toContain("aspect-ratio: var(--pantoken-logo-aspect, 1)");
+  }
+});
+
 test("keeps dark mode in Next Gen only", () => {
   const nextGenUi = readFileSync(resolve(generatedRoot, "next-gen/skin.css"), "utf8");
   expect(nextGenUi).toContain(':root[data-pantoken-scheme="dark"]');
