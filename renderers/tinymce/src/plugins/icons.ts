@@ -11,10 +11,12 @@ import {
   filterIcons,
   getIconCdnFile,
   getIconImageSrc,
+  getUsedIconCdnFiles,
   type TaggedIcon,
 } from "../icons.js";
 import type { MissingAssetHandler } from "../types.js";
 import { trackAndInjectAsset } from "../content-css.js";
+import { registerGlyphSync } from "../lib/glyph-assets.js";
 import { insertHtml } from "../lib/insertion-target.js";
 import { AUTOCOMPLETE_GLYPH_CLASS, injectPickerStyles } from "../lib/icon-picker-styles.js";
 import { mountIconPicker, renderPickerShell } from "../lib/icon-picker-dom.js";
@@ -179,6 +181,11 @@ export function createIconsPlugin(options: IconsPickerOptions): (editor: Editor)
     editor.addCommand(ICONS_COMMAND, openDialog);
     registerAutocompleter(editor, options);
     registerIconContextToolbar(editor);
+    registerGlyphSync(
+      editor,
+      (root) => getUsedIconCdnFiles(root, options.icons, options.currentAssets),
+      options,
+    );
 
     if (options.registerUi === false) return;
 

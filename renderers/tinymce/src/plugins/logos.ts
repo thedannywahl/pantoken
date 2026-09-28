@@ -7,10 +7,11 @@
  */
 import type { Editor } from "tinymce";
 import type { CdnFile } from "@pantoken/cdn";
-import { buildLogoMarkup, getLogoCdnFile, getLogoMeta } from "../logos.js";
+import { buildLogoMarkup, getLogoCdnFile, getLogoMeta, getUsedLogoCdnFiles } from "../logos.js";
 import type { LogoMeta, Product } from "../logos.js";
 import type { MissingAssetHandler } from "../types.js";
 import { insertHtml } from "../lib/insertion-target.js";
+import { registerGlyphSync } from "../lib/glyph-assets.js";
 import { trackAndInjectAsset } from "../content-css.js";
 import { getEditorStrings } from "../strings.js";
 
@@ -41,6 +42,8 @@ export function createLogosPlugin(options: LogosPickerOptions): (editor: Editor)
   return function pantokenLogosPlugin(editor: Editor) {
     const strings = getEditorStrings(editor);
     const openDialog = (): void => openLogosDialog(editor, options);
+    // The full catalog, not `options.logos`: a logo hidden from the picker can still arrive by paste.
+    registerGlyphSync(editor, (root) => getUsedLogoCdnFiles(root), options);
 
     if (options.registerUi === false) {
       editor.addCommand(LOGOS_COMMAND, openDialog);

@@ -52,6 +52,7 @@ function createMockEditor(): Editor {
     windowManager: mockWindowManager,
     ui: { registry: mockUiRegistry },
     insertContent: vi.fn(),
+    on: vi.fn(),
     getDoc: vi.fn().mockReturnValue(mockDoc),
   } as unknown as Editor;
 }
