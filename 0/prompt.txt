@@ -1,0 +1,55 @@
+* on /api/css/logos the inline logo viewer in the custom properties list only displays the igniteai logos and the pantoken logos and 3 of the learnplatform logos.
+* on /api/css/logo the example `
+<span class="instui-logo -logo-canvas-horizontal-color" role="img" aria-label="Canvas logo"></span>` does display correctly.
+* in the canvas-theme-editor scaffold instance in /guide/canvas-rce or /tools/canvas-rce that same html inserted via the pantoken tinymce logos plugin does not display.
+
+---
+
+Thorough research, read-only, in /Users/dwahl/Scripts/pantoken. Problem: In the canvas-theme-editor scaffold instance shown at docs /guide/canvas-rce or /tools/canvas-rce, the pantoken TinyMCE "logos" plugin inserts HTML like `<span class="instui-logo -logo-canvas-horizontal-color" role="img" aria-label="Canvas logo"></span>` into the editor, but the logo does not display inside the editor (it does display on the /api/css/logo docs page). Find: (1) the TinyMCE logos plugin source (search tinymce, logos plugin, pantoken tinymce); (2) how the TinyMCE editor iframe gets its CSS (content_css, content_style, which stylesheets are injected: components.css, logos css, tokens css, base.css) — does it include the stylesheet that defines .instui-logo and -logo-* modifiers and the --logo-* custom properties?; (3) whether TinyMCE's valid_elements / extended_valid_elements / sanitization strips empty spans, the class attribute, or role/aria-label (empty span removal is a common TinyMCE behavior — check `extended_valid_elements`, `valid_children`, `pad_empty`, `span[*]`); (4) the canvas-theme-editor scaffold (ai/, packages/scaffold*, docs tools/canvas-rce page, docs/guide/canvas-rce) and how it mounts TinyMCE; (5) whether the logo CSS relies on @scope, @property, mask-image, content: var(...) or anything that might not apply within the iframe or when the theme scope class isn't on the iframe body. Report file paths, line numbers, function/config names, and your hypothesis for the root cause. Also check /memories? no - check repo file docs/engineering-log.md for related notes on tinymce/logos.
+
+---
+
+Thorough research, read-only, in /Users/dwahl/Scripts/pantoken. Problem: on the docs page /api/css/logos, the inline logo viewer (preview swatch) in the custom properties list only renders the igniteai logos, pantoken logos, and 3 of the learnplatform logos; other logos (e.g. canvas, mastery, studio, etc.) don't display. Find: (1) where logo custom properties (--logo-* or similar) are defined/generated (likely formats/css or formats/components, a logos.css), and how their values are encoded (data: URIs? url()? svg?); (2) how the docs CSS API page (docs/scripts/build-css-api.ts, resolveToken/resolveDemo hooks, cssdoc) renders an inline preview for image/logo custom properties — look for a viewer/swatch component in docs/.vitepress; (3) why some values would render and others not — e.g. value length truncation, unescaped characters (#, quotes, parentheses) in data URIs, size limits, encoding differences between logo sources, url-encoding vs base64, values referencing var(), etc. Compare the actual generated values of a working logo (igniteai, pantoken, the 3 working learnplatform ones) vs a failing one (canvas-horizontal-color, the other learnplatform ones). Report file paths, line numbers, relevant function names, and concrete differences in values. Also report where the `.instui-logo` class and `-logo-canvas-horizontal-color` modifier are defined and how they reference the custom properties.
+
+---
+
+* on /api/css/logos the inline logo viewer in the custom properties list only displays the igniteai logos and the pantoken logos and 3 of the learnplatform logos.
+* on /api/css/logo the example `
+<span class="instui-logo -logo-canvas-horizontal-color" role="img" aria-label="Canvas logo"></span>` does display correctly.
+* in the canvas-theme-editor scaffold instance in /guide/canvas-rce or /tools/canvas-rce that same html inserted via the pantoken tinymce logos plugin does not display in the editor or in the preview pane.
+
+---
+
+Thorough research in /Users/dwahl/Scripts/pantoken (read-only). Bug: on the docs page /api/css/logos, the inline logo viewer/preview shown in the custom properties list only renders igniteai logos, pantoken logos, and 3 of the learnplatform logos; other logos (e.g. canvas, mastery, studio, etc.) don't render. Meanwhile on /api/css/logo the example `<span class="instui-logo -logo-canvas-horizontal-color" role="img" aria-label="Canvas logo"></span>` renders correctly.
+
+Find: (1) how the /api/css/logos page is generated (docs/scripts/build-css-api.ts, resolveToken/resolveDemo hooks, cssdoc), where the logo custom properties come from (which package/css file defines --logo-* custom properties, e.g. formats/icons or a logos package), and how the inline preview/swatch is rendered for image/url tokens (look for Vue components in docs/.vitepress rendering token previews, e.g. for `<image>` or url() values). (2) Why only some logos would render: candidates include data-URI encoding issues (unescaped '#', quotes, special chars in SVG), size limits/truncation, missing entries, url() quoting, different value format (e.g. some logos are file URLs vs data URIs, or some use `image-set`), CSS parse failures. Compare the value of a working logo (igniteai, pantoken, a working learnplatform one) with a failing one (canvas, a failing learnplatform one) — inspect actual generated CSS files (dist or generated) if present. (3) How the .instui-logo class in @pantoken/components consumes these variables. Report exact file paths, function names, line numbers, and your best root-cause hypothesis with evidence.
+
+---
+
+we need to addres 1 and 2 in this fix.
+
+---
+
+logos and icons that arrive by paste or preset restore need to be addressed in both editor and html mode.  Also for canvas-rce-editor omit the pantoken logo set from the picker.
+Let's also update the picker from multiple dropdowns to emulate the icon picker with brand tabs at the top and then the icons previewed in a pane.  also this should be incremental conventional commits and changesets for affected public and private packages.
+
+---
+
+Thorough, read-only research in /Users/dwahl/Scripts/pantoken. Problem: in the canvas-theme-editor scaffold (packages/scaffold/templates/canvas-theme-editor/src/main.ts.tmpl) icons/logos inserted via the pickers get their per-asset stylesheet injected into the TinyMCE editor iframe via trackAndInjectAsset (renderers/tinymce/src/content-css.ts). But icons/logos that arrive by paste, preset restore (restoreCanvasThemePreset, session draft restore), resetContent, SetContent, or typed in the HTML/source mode never get their stylesheets injected into the editor iframe (syncIconAssetsFromEditor only updates currentAssets for the preview). Also need them to render in "HTML mode" — the source toggle plugin (@pantoken/tinymce-codemirror, createSourceTogglePlugin) which I believe has a live preview.
+
+Report:
+1. syncIconAssetsFromEditor, getUsedIconCdnFiles, getUsedLogoCdnFiles, getIconCdnFile, buildSelectedAssetUrl, applyEditorTheme, and every editor event hook in main.ts.tmpl (setup(editor) events, provider change handler) — line numbers and code.
+2. renderers/tinymce-codemirror (find its path): how source mode works, whether it renders a live preview (iframe? which CSS does it get? does it receive currentAssets / content CSS?), options accepted by createSourceTogglePlugin, how it writes content back to TinyMCE (does it fire SetContent/change?), SourceTogglePluginApi (isSourceMode, replaceAll). Quote relevant code with line numbers.
+3. renderers/tinymce/src/content-css.ts injectContentStylesheet — idempotency; whether there's any removal of stale links; and whether the editor iframe is recreated (fullscreen?) losing injected links.
+4. Whether the pantoken plugin in renderers/tinymce (createPantokenPlugin, plugins/icons.ts) already handles PastePostProcess / SetContent for asset sync anywhere.
+5. Where the pickers' `logos` list is passed in main.ts.tmpl (line ~869) and how `products` is used, so we can filter out the 'pantoken' product for this scaffold.
+6. Tests covering these: packages/scaffold/tests, renderers/tinymce/tests, renderers/tinymce-codemirror tests.
+Return precise paths, symbol names, line numbers.
+
+---
+
+the out of scope items should be in scope.
+
+---
+
+Start implementation
