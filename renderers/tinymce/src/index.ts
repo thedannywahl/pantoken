@@ -7,7 +7,11 @@
  */
 
 // Phase 1: content-CSS wiring.
-export { injectContentStylesheet, pantokenContentCssUrls } from "./content-css.js";
+export {
+  injectContentStylesheet,
+  pantokenContentCssUrls,
+  retargetContentStylesheets,
+} from "./content-css.js";
 export { PANTOKEN_ICON_PACK_NAME, registerPantokenIconPack } from "./icon-pack.js";
 export { TINYMCE_STRINGS, type TinymceStrings } from "./strings.js";
 
