@@ -1,0 +1,68 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3QHYC1Z2MHH8GJXEMB34HQS",
+  "session_id": "8a8b6156-eee2-40e9-a13e-5437d5f5f035",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-29T21:43:14.575638Z",
+  "branch": "release-compatibility",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "vite.config.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "2ce6a7e9b6d7",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-29T21:43:14.570053Z",
+    "agent_lines": 6,
+    "agent_removed": 1,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 6,
+    "total_lines_changed": 7,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 155,
+      "user_lines_removed": 52,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".changeset/swift-xcode-environment.md": 7,
+        "compatibility.json": 8,
+        "docs/compatibility.md": 41,
+        "docs/scripts/write-api-compatibility.test.ts": 17,
+        "docs/scripts/write-api-compatibility.ts": 5,
+        "l10n/docs.api.pot": 2,
+        "platforms/swift/README.md": 7,
+        "scripts/release/compatibility.test.ts": 36,
+        "scripts/release/compatibility.ts": 22,
+        "scripts/release/target-compatibility.json": 10
+      },
+      "user_removed_per_file": {
+        "compatibility.json": 2,
+        "docs/compatibility.md": 41,
+        "docs/scripts/write-api-compatibility.ts": 3,
+        "l10n/docs.api.pot": 2,
+        "scripts/release/compatibility.ts": 3,
+        "scripts/release/target-compatibility.json": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+there are still formatters fighting over .entire/settings.json constantly adding and removing newlines.
