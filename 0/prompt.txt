@@ -1,0 +1,55 @@
+you can watch the runner here:
+https://github.com/thedannywahl/pantoken/actions/runs/36492635205/job/109164627067
+
+---
+
+that finished.  There's also a big timing gap between the last visible log line of Build Docs (all locales)
+` vi/api/tools/demo/src/functions/demoMarkdownIt.md: 6 glossary, 2 prose (2 cached, 0 translated)`
+and the start of Upload docs build timing. probably not doing nothing, we're just not surfacing the logs.
+
+---
+
+update the plan for the next phase(s) and we'll push them on this new branch.
+
+---
+
+llms.txt should not be walking every locale, only the root locale.
+
+---
+
+you are the one that said,
+> **D2 verdict, now that I have data:** the locale loop is a textbook parallel candidate — 29m49s with an extremely tight spread (min 39.0s, median 41.0s, max 52.4s). Four cores would theoretically take it to ~7.5 min. **But I'd probe memory before committing to a concurrency level:** the job already runs `--max-old-space-size=12288` with a 24 GB swapfile for *one* build at a time on a 16 GB runner. That ceiling may be sized for the llms.txt pass that walks every locale rather than for an individual locale build — worth measuring actual per-build peak RSS rather than assuming.
+
+---
+
+we can do a a vite/vitepress config change for this optimization. docs:assets is absolutely in scope, even if it's smaller.
+
+---
+
+Thoroughness: thorough. Read-only research, do NOT edit any files.
+
+In /Users/dwahl/Scripts/pantoken I want to evaluate eliminating the per-locale staging directory in the docs build, so each `vitepress build` writes DIRECTLY into the final dist dir instead of into `.vitepress/.locales/<locale>` followed by a copy-merge. A vite/vitepress config change IS permitted.
+
+Answer precisely, quoting code with file:line:
+
+1. In `docs/.vitepress/config.ts`, find how `outDir` and `assetsDir` are configured. Quote the exact lines. How does the `DOCS_OUT_DIR` env var reach vitepress's `outDir`? What exactly is `assetsDir` set to (I believe `assets/${buildLocale}` when locale-scoped)? Is there a `vite: {}` section in the config where `build.emptyOutDir` could be set?
+
+2. Given `DOCS_OUT_DIR=.vitepress/.locales/<locale>` and `assetsDir=assets/<locale>`, what is the resulting on-disk layout for one locale build? Specifically: where do the JS chunks land, where do HTML pages land, and which files land at the output ROOT (e.g. hashmap.json, sitemap.xml, index.html, 404.html, llms.txt, robots.txt)?
+
+3. Read `assertScopedLocaleConfig` in `docs/scripts/build-locales.ts` in full. It is called as `assertScopedLocaleConfig(join(stagingDir, locale), locale)` and reads `join(localeDistDir, "assets")` then `readdirSync(assetsDir).filter(name => name.endsWith(".js") && !isPageChunk(name))`. Given the `assetsDir: assets/<locale>` nesting from Q2, does that readdirSync actually see `.js` files, or does it see a single subdirectory named after the locale (making the guard a silent no-op)? Check the corresponding test in `docs/scripts/build-locales.test.ts` to see what directory shape the test constructs — does the test match the real on-disk shape or a simplified one? This is important: I suspect the guard may be dead in production.
+
+4. If every locale built directly into one shared dist dir, which outputs would COLLIDE between locales (same path, different content)? Enumerate them precisely by inspecting what vitepress emits at the output root. Pay attention to hashmap.json, sitemap.xml, and any llms.txt/robots.txt/.well-known files.
+
+5. Does VitePress/Vite expose a way to disable emptying the out dir? Look in node_modules for the vitepress version in use and check whether its build passes `emptyOutDir` explicitly or inherits Vite's default. Report the vitepress version from docs/package.json or the lockfile.
+
+6. Report whether `docs/.vitepress/config.ts` already has a `vite` config block and what's in it.
+
+Be exhaustive and quote real code. I need to know whether direct-to-dist output is feasible and exactly what would break.
+
+---
+
+Start implementation
+
+---
+
+continue
