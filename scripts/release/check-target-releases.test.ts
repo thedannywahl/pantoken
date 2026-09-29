@@ -77,6 +77,28 @@ test("flags a future rehype release without claiming it as supported", async () 
   expect(await pendingRelease(rehype)).toMatchObject({ version: "13.0.3" });
 });
 
+test("flags a new Bootstrap patch without expanding the verified bridge scope", async () => {
+  const bootstrap: ConsumerEntry = {
+    package: "@pantoken/bootstrap",
+    path: "renderers/bootstrap",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "Bootstrap",
+      format: "CSS variables: body + primary button",
+      status: "verified",
+      minimum: "5.2.0",
+      testedThrough: "5.3.8",
+      testedVersions: ["5.2.0", "5.2.3", "5.3.8"],
+      testCommand: "vp run @pantoken/bootstrap#check:compatibility",
+    },
+  };
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({ ok: true, json: async () => ({ version: "5.3.9" }) }),
+  );
+  expect(await pendingRelease(bootstrap)).toMatchObject({ version: "5.3.9" });
+});
+
 const release = {
   package: "@pantoken/wordpress",
   path: "platforms/wordpress",

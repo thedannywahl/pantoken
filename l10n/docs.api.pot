@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-29 20:58+0000\n"
+"PO-Revision-Date: 2026-09-29 21:21+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -16729,19 +16729,19 @@ msgstr ""
 #: renderers/bootstrap/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Bootstrap. Host compatibility has not yet been verified."
+msgid "Target: Bootstrap. Current format: `CSS variables: body + primary button`. Minimum host version: `5.2.0`. Tested through `5.3.8`. Newer releases require review."
 msgstr ""
 
 #: renderers/bootstrap/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "`@pantoken/bootstrap` — theme Bootstrap 5 with Instructure tokens."
+msgid "`@pantoken/bootstrap` — theme Bootstrap 5.2+ body variables and primary buttons with Instructure tokens."
 msgstr ""
 
 #: renderers/bootstrap/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Points Bootstrap's `--bs-*` CSS variables at `var(--instui-*)`. Drop it in alongside\n`@pantoken/css` and Bootstrap components adopt the Instructure look while keeping theming through\nthe same custom properties."
+msgid "Points body and primary-button `--bs-*` CSS variables at `var(--instui-*)`. Load it after\nBootstrap and `@pantoken/css`; other component variants retain their Bootstrap defaults."
 msgstr ""
 
 #: renderers/bootstrap/src/index.md

@@ -1,9 +1,8 @@
 /**
- * `@pantoken/bootstrap` — theme Bootstrap 5 with Instructure tokens.
+ * `@pantoken/bootstrap` — theme Bootstrap 5.2+ body variables and primary buttons with Instructure tokens.
  *
- * Points Bootstrap's `--bs-*` CSS variables at `var(--instui-*)`. Drop it in alongside
- * `@pantoken/css` and Bootstrap components adopt the Instructure look while keeping theming through
- * the same custom properties.
+ * Points body and primary-button `--bs-*` CSS variables at `var(--instui-*)`. Load it after
+ * Bootstrap and `@pantoken/css`; other component variants retain their Bootstrap defaults.
  *
  * @module
  * @experimental
@@ -22,6 +21,22 @@ export const BOOTSTRAP_TO_INSTUI: Readonly<Record<string, string>> = Object.free
   "--bs-link-color": "--instui-color-text-info",
   "--bs-border-color": "--instui-color-stroke-base",
   "--bs-border-radius": "--instui-spacing-space-sm",
+});
+
+/** Button-level variables override Bootstrap's hard-coded variant defaults in Bootstrap 5.2+. */
+const PRIMARY_BUTTON_TO_INSTUI: Readonly<Record<string, string>> = Object.freeze({
+  "--bs-btn-color": "--instui-color-text-on-color",
+  "--bs-btn-bg": "--instui-color-background-interactive-action-primary-base",
+  "--bs-btn-border-color": "--instui-color-background-interactive-action-primary-base",
+  "--bs-btn-hover-color": "--instui-color-text-on-color",
+  "--bs-btn-hover-bg": "--instui-color-background-interactive-action-primary-hover",
+  "--bs-btn-hover-border-color": "--instui-color-background-interactive-action-primary-hover",
+  "--bs-btn-active-color": "--instui-color-text-on-color",
+  "--bs-btn-active-bg": "--instui-color-background-interactive-action-primary-active",
+  "--bs-btn-active-border-color": "--instui-color-background-interactive-action-primary-active",
+  "--bs-btn-disabled-color": "--instui-color-text-on-color",
+  "--bs-btn-disabled-bg": "--instui-color-background-interactive-action-primary-disabled",
+  "--bs-btn-disabled-border-color": "--instui-color-background-interactive-action-primary-disabled",
 });
 
 /** Options for {@link toBootstrapCss}. */
@@ -56,7 +71,10 @@ export function toBootstrapCss(options: ToBootstrapCssOptions = {}): string {
   const lines = Object.entries(BOOTSTRAP_TO_INSTUI).map(
     ([bs, instui]) => `  ${bs}: var(${instui});`,
   );
-  return `/* Bootstrap 5 themed with Instructure tokens (pantoken) */\n${selector} {\n${lines.join("\n")}\n}\n`;
+  const button = Object.entries(PRIMARY_BUTTON_TO_INSTUI).map(
+    ([bs, instui]) => `  ${bs}: var(${instui});`,
+  );
+  return `/* Bootstrap 5.2+ themed with Instructure tokens (pantoken) */\n${selector} {\n${lines.join("\n")}\n}\n${selector} .btn-primary {\n${button.join("\n")}\n}\n`;
 }
 
 /** The ready-made bridge stylesheet. */

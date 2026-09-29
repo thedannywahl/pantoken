@@ -48,7 +48,15 @@
   },
   "@pantoken/angular": { "target": "Angular", "status": "unverified" },
   "@pantoken/astro": { "target": "Astro", "status": "unverified" },
-  "@pantoken/bootstrap": { "target": "Bootstrap", "status": "unverified" },
+  "@pantoken/bootstrap": {
+    "target": "Bootstrap",
+    "format": "CSS variables: body + primary button",
+    "status": "verified",
+    "minimum": "5.2.0",
+    "testedThrough": "5.3.8",
+    "testedVersions": ["5.2.0", "5.2.3", "5.3.8"],
+    "testCommand": "vp run @pantoken/bootstrap#check:compatibility"
+  },
   "@pantoken/css-in-js": { "target": "CSS-in-JS", "status": "unverified" },
   "@pantoken/docusaurus": { "target": "Docusaurus", "status": "unverified" },
   "@pantoken/foundation": { "target": "Foundation", "status": "unverified" },
