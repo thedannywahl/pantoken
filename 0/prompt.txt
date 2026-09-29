@@ -1,0 +1,959 @@
+docs deploy failed: https://github.com/thedannywahl/pantoken/actions/runs/36514857391/job/109234789400
+
+---
+
+[Terminal 2f7d0473-5459-40b4-a085-81ac0b9e757d notification: command may be waiting for input — assess the output below.]
+This note is not a signal to end the turn — pick one of the actions below and continue.
+  1. If the output clearly ends with a non-secret input prompt (Continue? (y/n), Enter selection, etc. — a normal shell prompt like `$` or `#` does NOT count), determine the answer and immediately call send_to_terminal with id="2f7d0473-5459-40b4-a085-81ac0b9e757d" (which returns the next few lines of output). Repeat one prompt at a time. Never guess passwords, passphrases, tokens, or other secrets — if the prompt requires a secret you do not have, inform the user and stop.
+  2. If the command may still be producing output or the shell prompt has not returned, call get_terminal_output with id="2f7d0473-5459-40b4-a085-81ac0b9e757d" to continue polling.
+Terminal output:
+Updating Oh My Zsh
+master
+
+BREAKING CHANGES:
+
+ - 7d1b2a2 [systemadmin]     
+
+   The default output of `con80` and `req20` now includes port 443. `con80 80`
+   gives the old result
+
+ - c5852b1 [github]          
+
+   Deprecate legacy hub plugin (#14089)
+
+Features:
+
+ - 74965c9 [docker-compose]  Add dcv, dcsts and dci aliases (#14122)
+ - 1b2d741 [eza]             Add links, octal and inodes options (#14108)
+ - a3c88eb [git]             Add alias `gsnut` (#14124)
+ - 83a0ec7 [git]             Add aliases related to log, rebase and submodules (#9676)
+ - 4ccc633 [glab]            Add GitLab CLI completions (#14113)
+ - 86ef655 [hermes]          Add hermes plugin (#14111)
+ - b6830a5 [otp]             Honour OTP_HOME and XDG_DATA_HOME (#12953)
+ - 68795c2 [sops]            Introduce plugin (#14120)
+ - 7d1b2a2 [systemadmin]     Match ports 80 and 443 in con80, req20 and http20 (#14118)
+
+Bug fixes:
+
+ - 95ba6ae                   Hide temp completion files from $fpath (#14126)
+ - def0f25 [cli]             Re-resolve zsh at exec time to avoid a stale command hash (#14104)
+ - 0431f1c [emacs]           Create a frame for empty launcher invocations (#14091)
+ - fa82d8a [frontend-search] Use fallback search for dead dartlang docs URL (#14112)
+ - e0d3557 [gradle]          Remove echo when running gradlew (#12893)
+ - f809d46 [lib]             Protect omz_urlencode from global aliases (#14128)
+ - 8d421b6 [systemadmin]     Make the netstat fallback reachable (#14119)
+ - 157eb03 [tmux]            Sanitize `tds` session names (#14109)
+
+Performance:
+
+ - 7ce781e [appearance]      Cache the diff and ls capability probes (#14067)
+ - e785204 [init]            Cache the LocalHostName lookup (#14066)
+ - 40bddc3 [init]            Read the OMZ revision from .git instead of forking (#14063)
+
+Documentation:
+
+ - 32d7277 [gh]              Fix the completion cache path in the README (#14117)
+
+Other changes:
+
+ - c5852b1 [github]          Refactor: Deprecate legacy hub plugin (#14089)
+
+You can see the changelog with `omz changelog`
+         __                                     __   
+  ____  / /_     ____ ___  __  __   ____  _____/ /_  
+ / __ \/ __ \   / __ `__ \/ / / /  /_  / / ___/ __ \ 
+/ /_/ / / / /  / / / / / / /_/ /    / /_(__  ) / / / 
+\____/_/ /_/  /_/ /_/ /_/\__, /    /___/____/_/ /_/  
+                        /____/                       
+
+Hooray! Oh My Zsh has been updated!
+
+Follow along on X (@ohmyzsh) or Bluesky (@ohmyz.sh)
+Questions or ideas? Join the community on Discord
+Help support the project: sponsor us on Open Collective,
+or grab stickers, shirts, and swag from CommitGoods
+pantoken on speedy-docs-build ≢  ?2 ~7 via  26.10.0 
+➜  git status --short
+ M .github/workflows/ci.yml
+ M .github/workflows/docs.yml
+ M .gitignore
+ M docs/package.json
+ M docs/scripts/build-locales.main.test.ts
+ M docs/scripts/build-locales.test.ts
+ M docs/scripts/build-locales.ts
+?? docs/scripts/run-assets.test.ts
+?? docs/scripts/run-assets.ts
+pantoken on speedy-docs-build ≢  ?2 ~7 via  26.10.0 
+➜  GH_PAGER=cat gh pr view 189 --json number,title,headRefName,state --jq '"#\(.number) \(.title)\nbranch: \(.headRefName)  state: \(.state)"'; echo "=== checks ==="; GH_PAGER=cat gh pr checks 189 2>&1 | head -20
+Working...
+#189 feat: enhance build process and asset management
+branch: speedy-docs-build  state: OPEN
+=== checks ===
+ci-gate fail    5s      https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109227202854
+coverage        fail    4m2s    https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109226213775
+Analyze (javascript-typescript) pass    1m30s   https://github.com/thedannywahl/pantoken/actions/runs/36511981354/job/109225906968
+CodSpeed Performance Analysis   pass    0       https://app.codspeed.io/thedannywahl/pantoken/branches/speedy-docs-build?utm_source=github&utm_medium=check&utm_content=details
+CodeQL  pass    2s      https://github.com/thedannywahl/pantoken/runs/109226233720
+benchmarks      pass    3m5s    https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109226213885
+build   pass    1m14s   https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109225906564
+changeset-gate  pass    4s      https://github.com/thedannywahl/pantoken/actions/runs/36511981415/job/109226014330
+codecov/bundles pass    0       https://app.codecov.io/gh/thedannywahl/pantoken/pull/189?dropdown=bundle        Bundle change: 0.0% (Threshold: 5.0%)
+detect-release-impact   pass    19s     https://github.com/thedannywahl/pantoken/actions/runs/36511981415/job/109225906766
+docs    pass    3m44s   https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109226213867
+docs-and-internal-only  pass    3s      https://github.com/thedannywahl/pantoken/actions/runs/36511981415/job/109225994240
+docs-changes    pass    27s     https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109225906512
+fallow  pass    2m55s   https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109226213768
+guard   pass    3s      https://github.com/thedannywahl/pantoken/actions/runs/36511981329/job/109225906351
+i18n-changes    pass    17s     https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109225906499
+lint    pass    3m3s    https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109226213838
+meta    pass    44s     https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109225906429
+upstream-changes        pass    16s     https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109225906295
+i18n-drift      skipping        0       https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109226215429
+pantoken on speedy-docs-build ≡ via  26.10.0 x 
+➜  gh run view --log --job=109226213775 2>/dev/null > /tmp/cov.log; grep -nE "Uncaught Exception|unhandled|FAIL|✕|build-locales" /tmp/cov.log | head -20
+4362:coverage   Test all packages with coverage 2026-09-29T02:22:03.0985921Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22morderRootLast puts root after every non-root locale^[[32m 4^[[2mms^[[22m^[[39m
+4363:coverage   Test all packages with coverage 2026-09-29T02:22:03.1015363Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22morderRootLast omits root when it wasn't requested^[[32m 0^[[2mms^[[22m^[[39m
+4364:coverage   Test all packages with coverage 2026-09-29T02:22:03.1025638Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mlocaleOfPage maps a locale-prefixed page to its locale^[[32m 1^[[2mms^[[22m^[[39m
+4365:coverage   Test all packages with coverage 2026-09-29T02:22:03.1028103Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mlocaleOfPage treats unprefixed and unknown-prefix pages as root^[[32m 0^[[2mms^[[22m^[[39m
+4366:coverage   Test all packages with coverage 2026-09-29T02:22:03.1030461Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mmergeSitemapUrls unions entries across locales^[[32m 2^[[2mms^[[22m^[[39m
+4367:coverage   Test all packages with coverage 2026-09-29T02:22:03.1032752Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mmergeSitemapUrls lets a rebuilt entry replace the carried-forward one^[[32m 0^[[2mms^[[22m^[[39m
+4368:coverage   Test all packages with coverage 2026-09-29T02:22:03.1035232Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mmergeSitemapUrls ignores empty documents^[[32m 0^[[2mms^[[22m^[[39m
+4369:coverage   Test all packages with coverage 2026-09-29T02:22:03.1037251Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mrenderSitemap emits a well-formed urlset^[[32m 0^[[2mms^[[22m^[[39m
+4370:coverage   Test all packages with coverage 2026-09-29T02:22:03.1039310Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22massertScopedLocaleConfig is a no-op when there's no assets dir^[[32m 2^[[2mms^[[22m^[[39m
+4371:coverage   Test all packages with coverage 2026-09-29T02:22:03.1041582Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22massertScopedLocaleConfig passes a small, correctly scoped chunk^[[32m 1^[[2mms^[[22m^[[39m
+4372:coverage   Test all packages with coverage 2026-09-29T02:22:03.1044177Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22massertScopedLocaleConfig throws when another locale's nav leaks in^[[32m 4^[[2mms^[[22m^[[39m
+4373:coverage   Test all packages with coverage 2026-09-29T02:22:03.1046895Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22massertScopedLocaleConfig throws when the shared chunks exceed the byte cap^[[32m 11^[[2mms^[[22m^[[39m
+4374:coverage   Test all packages with coverage 2026-09-29T02:22:03.1049202Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22massertScopedLocaleConfig ignores per-page chunks^[[32m 1^[[2mms^[[22m^[[39m
+4375:coverage   Test all packages with coverage 2026-09-29T02:22:03.1051559Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22massertScopedLocaleConfig reads the locale-nested assets dir, not assets/ itself^[[32m 1^[[2mms^[[22m^[[39m
+4376:coverage   Test all packages with coverage 2026-09-29T02:22:03.1054194Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mmergeMove relocates a disjoint subtree and leaves nothing behind^[[32m 2^[[2mms^[[22m^[[39m
+4377:coverage   Test all packages with coverage 2026-09-29T02:22:03.1056485Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mmergeMove merges into an existing directory instead of replacing it^[[32m 1^[[2mms^[[22m^[[39m
+4378:coverage   Test all packages with coverage 2026-09-29T02:22:03.1058807Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mmergeMove overwrites a colliding file so the later locale wins^[[32m 1^[[2mms^[[22m^[[39m
+4379:coverage   Test all packages with coverage 2026-09-29T02:22:03.1061419Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mmergeMove replaces a file with a directory of the same name^[[32m 2^[[2mms^[[22m^[[39m
+4380:coverage   Test all packages with coverage 2026-09-29T02:22:03.1063755Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mmergeMove is a no-op when the source is missing^[[32m 1^[[2mms^[[22m^[[39m
+4381:coverage   Test all packages with coverage 2026-09-29T02:22:03.1065797Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mrunPool never exceeds the concurrency limit^[[32m 6^[[2mms^[[22m^[[39m
+pantoken on speedy-docs-build ≡ via  26.10.0 
+➜  grep -nE "Unhandled Error|Uncaught Exception|Test Files.*failed|Errors  " /tmp/cov.log | head -10; echo "=== context around the uncaught ==="; grep -n "Uncaught Exception" /tmp/cov.log | head -2 | cut -d: -f1 | while read n; do sed -n "$((n-6)),$((n+14))p" /tmp/cov.log | sed -E 's/^coverage[[:space:]]+Test all packages with coverage [0-9T:.Z-]+ //'; done
+6325:coverage   Test all packages with coverage 2026-09-29T02:23:46.2592994Z ^[[31m⎯⎯⎯⎯⎯⎯^[[39m^[[1m^[[41m Unhandled Errors ^[[49m^[[22m^[[31m⎯⎯⎯⎯⎯⎯^[[39m
+6330:coverage   Test all packages with coverage 2026-09-29T02:23:46.2609061Z ^[[31m⎯⎯⎯⎯⎯^[[39m^[[1m^[[41m Uncaught Exception ^[[49m^[[22m^[[31m⎯⎯⎯⎯⎯^[[39m
+=== context around the uncaught ===
+coverage        Test all packages with coverage 2026-09-29T02:23:44.8415591Z  ^[[32m✓^[[39m renderers/vue/tests/scaffold-preset.test.ts^[[2m > ^[[22mpresetVue uses the vue platform name^[[32m 2^[[2mms^[[22m^[[39m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2592994Z ^[[31m⎯⎯⎯⎯⎯⎯^[[39m^[[1m^[[41m Unhandled Errors ^[[49m^[[22m^[[31m⎯⎯⎯⎯⎯⎯^[[39m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2594084Z ^[[31m^[[1m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2594494Z Vitest caught 1 unhandled error during the test run.
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2595726Z This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.^[[22m^[[39m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2608322Z 
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2609061Z ^[[31m⎯⎯⎯⎯⎯^[[39m^[[1m^[[41m Uncaught Exception ^[[49m^[[22m^[[31m⎯⎯⎯⎯⎯^[[39m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2609539Z ^[[31m^[[1mError^[[22m: exit^[[39m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2612063Z ^[[36m ^[[2m❯^[[22m process.<anonymous> docs/scripts/build-locales.main.test.ts:^[[2m137:11^[[22m^[[39m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2677409Z     ^[[90m135|^[[39m   const errorSpy = vi.spyOn(console, "error").mockImplementation(() =>…
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2678627Z     ^[[90m136|^[[39m   const exitSpy = vi.spyOn(process, "exit").mockImplementation(() => {
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2679609Z     ^[[90m137|^[[39m     throw new Error("exit");
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2680194Z     ^[[90m   |^[[39m           ^[[31m^^[[39m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2680698Z     ^[[90m138|^[[39m   });
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2681254Z     ^[[90m139|^[[39m   process.argv = ["node", MODULE_PATH];
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2683438Z ^[[90m ^[[2m❯^[[22m process.Mock node_modules/.pnpm/vitest@5.0.1_@types+node@26.6.3_@vitest+browser-preview@5.0.1_@vitest+coverage-v8@5.0.1_69ead87d1018d8e04eaa257aad7ad6a1/node_modules/vitest/dist/chunks/spy.DQ0ZsPbi.js:^[[2m320:40^[[22m^[[39m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2685337Z ^[[90m ^[[2m❯^[[22m docs/scripts/build-locales.ts:^[[2m203:19^[[22m^[[39m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2686209Z ^[[90m ^[[2m❯^[[22m docs/scripts/build-locales.main.test.ts:^[[2m7:45^[[22m^[[39m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2687303Z ^[[90m ^[[2m❯^[[22m processTicksAndRejections node:internal/process/task_queues:^[[2m104:5^[[22m^[[39m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2688136Z 
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2688821Z ^[[31mThis error originated in "^[[1mdocs/scripts/build-locales.main.test.ts^[[22m" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.^[[39m
+pantoken on speedy-docs-build ≡ via  26.10.0 
+➜  sed -n '1,60p' scripts/release/cli.ts | grep -n -A20 "runAsMain"
+30:export function runAsMain(metaUrl: string, main: () => Promise<void>): void {
+31-  if (!isDirectExecution(metaUrl)) return;
+32-  main().catch((error) => {
+33-    console.error(error instanceof Error ? error.message : String(error));
+34-    process.exitCode = 1;
+35-  });
+36-}
+pantoken on speedy-docs-build ≡ via  26.10.0 
+➜  vp test docs/scripts 2>&1 | grep -iE "unhandled|uncaught|Test Files|Tests |Errors" | head
+ Test Files  31 passed (31)
+      Tests  321 passed (321)
+   Duration  4.99s (tests 48%, import 27%, transform 23%, setup 2%)
+pantoken on speedy-docs-build ≡  ~1 via  26.10.0 
+➜  vp test 2>&1 | grep -iE "unhandled|uncaught|Test Files|Tests |failed" | head
+ Test Files  362 passed (362)
+      Tests  2737 passed (2737)
+   Duration  35.10s (import 47%, tests 27%, transform 19%, environment 4%, setup 2%)
+pantoken on speedy-docs-build ≡  ~1 via  26.10.0 
+➜  vp check --fix docs/scripts/build-locales.ts 2>&1 | tail -4 && vp test --coverage 2>&1 | tail -8
+pass: Formatting completed for checked files (2.1s)
+pass: Found no warnings, lint errors, or type errors in 1 file (1.3s, 10 threads)
+ % Coverage report from v8
+
+=============================== Coverage summary ===============================
+Statements   : 94.2% ( 11695/12415 )
+Branches     : 84.66% ( 5881/6946 )
+Functions    : 96% ( 2736/2850 )
+Lines        : 95.73% ( 10480/10947 )
+================================================================================
+pantoken on speedy-docs-build ≡  ~1 via  26.10.0 
+➜  git status --short && git diff --stat
+ M docs/scripts/build-locales.ts
+ docs/scripts/build-locales.ts | 37 +++++++++++++++++++++++++++++--------
+ 1 file changed, 29 insertions(+), 8 deletions(-)
+pantoken on speedy-docs-build ≡  ~1 via  26.10.0 
+➜  cd /Users/dwahl/Scripts/pantoken && git commit docs/scripts/build-locales.ts -m "fix(docs): reject failed locale builds instead of exiting mid-callback
+
+The concurrent build calls process.exit from the child's close handler, which
+runs outside the awaited chain, so the exit escaped as an uncaught exception
+rather than a rejection. Throw a LocaleBuildError and exit once from main, on
+the awaited path." 2>&1 | tail -5
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[speedy-docs-build 130d0aef4] fix(docs): reject failed locale builds instead of exiting mid-callback
+ 1 file changed, 29 insertions(+), 8 deletions(-)
+pantoken on speedy-docs-build ↑1 via  26.10.0 
+➜  git push 2>&1 | tail -5
+[entire] Pushing 1 checkpoint ref(s) to origin...... done
+To https://github.com/thedannywahl/pantoken.git
+   60ee783e3..130d0aef4  speedy-docs-build -> speedy-docs-build
+pantoken on speedy-docs-build ≡ via  26.10.0 
+➜  sleep 45; GH_PAGER=cat gh pr checks 189 2>&1 | grep -vE "^\s*$" | head -22
+changeset-gate  pass    2s      https://github.com/thedannywahl/pantoken/actions/runs/36514463820/job/109233670617
+docs-and-internal-only  pass    2s      https://github.com/thedannywahl/pantoken/actions/runs/36514463820/job/109233652248
+require-changeset       skipping        0       https://github.com/thedannywahl/pantoken/actions/runs/36514463820/job/109233653074
+detect-release-impact   pass    18s     https://github.com/thedannywahl/pantoken/actions/runs/36514463820/job/109233561381
+Analyze (javascript-typescript) pending 0       https://github.com/thedannywahl/pantoken/actions/runs/36514463883/job/109233561902
+i18n-changes    pass    15s     https://github.com/thedannywahl/pantoken/actions/runs/36514463955/job/109233562401
+upstream-changes        pass    18s     https://github.com/thedannywahl/pantoken/actions/runs/36514463955/job/109233562479
+build   pending 0       https://github.com/thedannywahl/pantoken/actions/runs/36514463955/job/109233562427
+guard   pass    3s      https://github.com/thedannywahl/pantoken/actions/runs/36514463821/job/109233561308
+meta    pending 0       https://github.com/thedannywahl/pantoken/actions/runs/36514463955/job/109233562106
+docs-changes    pass    16s     https://github.com/thedannywahl/pantoken/actions/runs/36514463955/job/109233562362
+pantoken on speedy-docs-build ≡ via  26.10.0 x 
+➜  GH_PAGER=cat gh run watch 36514463955 --exit-status --interval 20 2>&1 | tail -25; echo "WATCH_EXIT=$?"
+  ✓ Post Checkout code
+  ✓ Complete job
+- i18n-drift in 0s (ID 109233858581)
+- upstream-drift in 0s (ID 109233859014)
+✓ ci-gate in 3s (ID 109234644105)
+  ✓ Set up job
+  - Verify no CI job failed
+  ✓ Complete job
+
+ANNOTATIONS
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+meta: .github#1
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+docs-changes: .github#1
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+i18n-changes: .github#1
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+build: .github#1
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+ci-gate: .github#1
+
+WATCH_EXIT=0
+pantoken on speedy-docs-build ≡ via  26.10.0 
+➜  GH_PAGER=cat gh pr checks 189 2>&1 | awk '{print $1"\t"$2}' | sort -k2 | head -25; echo "=== summary ==="; GH_PAGER=cat gh pr checks 189 2>&1 | awk '{print $2}' | sort | uniq -c
+Analyze (javascript-typescript)
+CodSpeed        Performance
+CodeQL  pass
+benchmarks      pass
+build   pass
+changeset-gate  pass
+ci-gate pass
+codecov/bundles pass
+codecov/patch   pass
+codecov/patch/bundlers  pass
+codecov/patch/formats   pass
+codecov/patch/packages  pass
+codecov/patch/platforms pass
+codecov/patch/plugins   pass
+codecov/patch/renderers pass
+codecov/patch/tools     pass
+codecov/project pass
+codecov/project/bundlers        pass
+codecov/project/formats pass
+codecov/project/packages        pass
+codecov/project/platforms       pass
+codecov/project/plugins pass
+codecov/project/renderers       pass
+codecov/project/scripts pass
+codecov/project/tools   pass
+=== summary ===
+   1 (javascript-typescript)
+   1 Performance
+  37 pass
+   1 pending
+   3 skipping
+pantoken on speedy-docs-build ≡ via  26.10.0 x 
+➜  GH_PAGER=cat gh pr checks 189 2>&1 | grep -viE "pass|skipping" | head -5; echo "=== coverage job specifically ==="; GH_PAGER=cat gh pr checks 189 2>&1 | grep -E "^coverage"
+=== coverage job specifically ===
+coverage        pass    3m21s   https://github.com/thedannywahl/pantoken/actions/runs/36514463955/job/109233856991
+pantoken on speedy-docs-build ≡ via  26.10.0 x 
+➜  GH_PAGER=cat gh api repos/thedannywahl/pantoken/actions/jobs/109234789400 --jq '"status=\(.status) conclusion=\(.conclusion)", (.steps[] | select(.conclusion=="failure") | "FAILED STEP: \(.name)")' 2>&1
+status=completed conclusion=failure
+FAILED STEP: Build docs (all locales)
+pantoken on main ≡ via  26.10.0 
+➜  gh run view --log --job=109234789400 2>/dev/null > /tmp/deploy-fail.log; wc -l /tmp/deploy-fail.log; echo "=== errors ==="; grep -niE "error|failed|✗|cannot|ENOENT|heap|killed" /tmp/deploy-fail.log | grep -v "Processed" | tail -25
+   54574 /tmp/deploy-fail.log
+=== errors ===
+6890:deploy     UNKNOWN STEP    2026-09-29T02:59:05.2637815Z [codecov] `get-pre-signed-url` fetch attempt 1 failed
+6892:deploy     UNKNOWN STEP    2026-09-29T02:59:05.3902362Z [codecov] `get-pre-signed-url` fetch attempt 1 failed
+6910:deploy     UNKNOWN STEP    2026-09-29T02:59:06.4432493Z [codecov] `get-pre-signed-url` fetch attempt 1 failed
+6912:deploy     UNKNOWN STEP    2026-09-29T02:59:06.5153198Z [codecov] `get-pre-signed-url` fetch attempt 2 failed
+6914:deploy     UNKNOWN STEP    2026-09-29T02:59:06.5676247Z [codecov] `get-pre-signed-url` fetch attempt 2 failed
+6916:deploy     UNKNOWN STEP    2026-09-29T02:59:06.7008957Z [codecov] `get-pre-signed-url` fetch attempt 2 failed
+6918:deploy     UNKNOWN STEP    2026-09-29T02:59:07.9120558Z [codecov] `get-pre-signed-url` fetch attempt 2 failed
+6920:deploy     UNKNOWN STEP    2026-09-29T02:59:08.8360596Z [codecov] `get-pre-signed-url` fetch attempt 3 failed
+6921:deploy     UNKNOWN STEP    2026-09-29T02:59:08.8361157Z [codecov] `get-pre-signed-url` failed after 3 attempts
+6922:deploy     UNKNOWN STEP    2026-09-29T02:59:08.8361850Z [codecov] Failed to get pre-signed URL, bad response: "400 - "
+6968:deploy     UNKNOWN STEP    2026-09-29T02:59:08.9958065Z [codecov] `get-pre-signed-url` fetch attempt 3 failed
+6969:deploy     UNKNOWN STEP    2026-09-29T02:59:08.9958503Z [codecov] `get-pre-signed-url` failed after 3 attempts
+6970:deploy     UNKNOWN STEP    2026-09-29T02:59:08.9959043Z [codecov] Failed to get pre-signed URL, bad response: "400 - "
+7004:deploy     UNKNOWN STEP    2026-09-29T02:59:09.2033719Z [codecov] `get-pre-signed-url` fetch attempt 3 failed
+7005:deploy     UNKNOWN STEP    2026-09-29T02:59:09.2034229Z [codecov] `get-pre-signed-url` failed after 3 attempts
+7006:deploy     UNKNOWN STEP    2026-09-29T02:59:09.2034706Z [codecov] Failed to get pre-signed URL, bad response: "400 - "
+7020:deploy     UNKNOWN STEP    2026-09-29T02:59:10.2057168Z [codecov] `get-pre-signed-url` fetch attempt 3 failed
+7021:deploy     UNKNOWN STEP    2026-09-29T02:59:10.2058151Z [codecov] `get-pre-signed-url` failed after 3 attempts
+7022:deploy     UNKNOWN STEP    2026-09-29T02:59:10.2058815Z [codecov] Failed to get pre-signed URL, bad response: "400 - "
+35408:deploy    UNKNOWN STEP    2026-09-29T03:00:50.9390988Z   ! [se] cached prose translation for "TypeError when `hex` isn't a valid hex c" looks untranslated; retranslating
+35420:deploy    UNKNOWN STEP    2026-09-29T03:00:50.9405855Z   ! [se] cached prose translation for "TypeError when `hex` isn't a valid hex c" looks untranslated; retranslating
+35431:deploy    UNKNOWN STEP    2026-09-29T03:00:50.9420451Z   ! [se] cached prose translation for "TypeError when `input` isn't a 3- or 6-d" looks untranslated; retranslating
+54525:deploy    UNKNOWN STEP    2026-09-29T03:01:45.2507326Z SyntaxError [ERR_UNSUPPORTED_TYPESCRIPT_SYNTAX]: TypeScript parameter property is not supported in strip-only mode
+54542:deploy    UNKNOWN STEP    2026-09-29T03:01:45.2546250Z vp run: 0/3 cache hit (0%), 1 failed. @pantoken/docs#docs:assets (and 1 more) not cached because they modified their inputs. (Run `vp run --last-details` for full details)
+54543:deploy    UNKNOWN STEP    2026-09-29T03:01:45.2672715Z ##[error]Process completed with exit code 1.
+pantoken on main ≡ via  26.10.0 
+➜  node -e "import('./docs/scripts/build-locales.ts').catch(e=>{console.log('REPRO:', e.constructor.name, e.message)})" 2>&1 | grep -iE "REPRO|parameter property|SyntaxError" | head -3
+REPRO: SyntaxError TypeScript parameter property is not supported in strip-only mode
+pantoken on main ≡ via  26.10.0 
+➜  node -e "import('./docs/scripts/build-locales.ts').then(m=>console.log('IMPORT OK — exports:', Object.keys(m).join(', '))).catch(e=>{console.log('STILL FAILING:', e.message); process.exit(1)})" 2>&1 | tail -3
+IMPORT OK — exports: assertScopedLocaleConfig, localeOfPage, mergeMove, mergeSitemapUrls, orderRootLast, renderSitemap, runPool
+pantoken on main ≡  ~1 via  26.10.0 
+➜  grep -rn -A4 "constructor(" --include="*.ts" scripts/ docs/scripts/ tools/ plugins/ 2>/dev/null | grep -E "^\S+[-:][0-9]+[-:]\s*(readonly|private|public|protected) " | head -20; echo "--- count ---"; grep -rn -A4 "constructor(" --include="*.ts" scripts/ docs/scripts/ tools/ plugins/ 2>/dev/null | grep -cE "^\S+[-:][0-9]+[-:]\s*(readonly|private|public|protected) "
+docs/scripts/translation-memory.ts:86:  private constructor(
+tools/translation-adapters/src/index.ts:184:  private constructor(path: string, entries: Map<string, string>, prune: boolean) {
+--- count ---
+2
+pantoken on main ≡  ~1 via  26.10.0 
+➜  ls -a | grep -iE "oxlint|\.oxlintrc" ; grep -n "lint\|oxlint" vite.config.ts | head -10; echo "=== base config lint block ==="; grep -n -A8 "lint" vite.config.base.ts | head -20
+75:    // Stylelint fixes CSS; cssdoc then gates its documentation comments.
+76:    "*.css": "vp exec stylelint --fix && vp exec cssdoc lint --max-warnings 0",
+85:    // `.markdownlint-cli2.yaml` already excludes this tree.
+91:  lint: {
+93:      { name: "vite-plus", specifier: "vite-plus/oxlint-plugin" },
+94:      // TSDoc has no oxlint-native equivalent; these two ESLint plugins run through oxlint's
+96:      { name: "tsdoc", specifier: "eslint-plugin-tsdoc" },
+97:      { name: "tsdoc-require-2", specifier: "eslint-plugin-tsdoc-require-2" },
+155:      "lint:markdown": {
+156:        command: 'vp exec markdownlint-cli2 "**/*.md"',
+=== base config lint block ===
+26: * whole workspace — the pack input, type-aware lint, formatting, and `pack.dts` — so each package's
+27- * config only supplies its build command and pack specifics via {@link extendBase}.
+28- *
+29- * It deliberately omits `run.tasks.build.command`: that varies per package (some prepend
+30- * `vp run generate`), and `mergeConfig` concatenates arrays, so a command in the base would be
+31- * prepended to an override's command array rather than replaced. Keeping it out means the override
+32- * always supplies the command cleanly. It's a plain object (not `defineConfig`) because the `build`
+33- * task intentionally has no `command`, which `defineConfig`'s task type rejects; {@link extendBase}
+34- * merges it structurally, so it only needs the right runtime shape.
+--
+52:  lint: {
+53-    jsPlugins: [
+54:      { name: "vite-plus", specifier: "vite-plus/oxlint-plugin" },
+55:      { name: "tsdoc", specifier: "eslint-plugin-tsdoc" },
+56:      { name: "tsdoc-require-2", specifier: "eslint-plugin-tsdoc-require-2" },
+57-    ],
+58-    rules: { "vite-plus/prefer-vite-plus-imports": "error" },
+59-    options: { typeAware: true, typeCheck: true },
+60-    overrides: [
+61-      {
+pantoken on main ≡  ~1 via  26.10.0 
+➜  cd /Users/dwahl/Scripts/pantoken && cat > /tmp/param-prop-probe.ts <<'EOF'
+/** Probe for the parameter-property lint rule. */
+export class Probe {
+  constructor(readonly thing: string) {}
+}
+EOF
+cp /tmp/param-prop-probe.ts docs/scripts/__param-probe.ts
+vp check docs/scripts/__param-probe.ts 2>&1 | tail -12
+rm -f docs/scripts/__param-probe.ts /tmp/param-prop-probe.ts
+pass: All 1 file are correctly formatted (70ms, 10 threads)
+error: Linting could not start
+Failed to parse oxlint configuration file.
+
+  x Rule 'no-parameter-properties' not found in plugin 'typescript'
+
+Linting failed before analysis started
+pantoken on fix-build-locales ≢  ~2 via  26.10.0 
+➜  cd /Users/dwahl/Scripts/pantoken && sed -i '' 's|"typescript/no-parameter-properties"|"typescript/parameter-properties"|' vite.config.ts && cat > docs/scripts/__param-probe.ts <<'EOF'
+/** Probe for the parameter-property lint rule. */
+export class Probe {
+  constructor(readonly thing: string) {}
+}
+EOF
+vp check docs/scripts/__param-probe.ts 2>&1 | tail -10; rm -f docs/scripts/__param-probe.ts
+x typescript(parameter-properties): Property thing should be declared as a class property.
+   ,-[docs/scripts/__param-probe.ts:3:15]
+ 2 | export class Probe {
+ 3 |   constructor(readonly thing: string) {}
+   :               ^^^^^^^^^^^^^^^^^^^^^^
+ 4 | }
+   `----
+  help: Remove the parameter modifier and declare this member on the class instead.
+
+Found 1 error and 0 warnings in 1 file (1.9s, 10 threads)
+pantoken on fix-build-locales ≢  ~2 via  26.10.0 
+➜  vp check 2>&1 | tail -8
+ 39 | 
+ 40 |   constructor(private readonly options: CircuitBreakerOptions) {}
+    :               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 41 | 
+    `----
+  help: Remove the parameter modifier and declare this member on the class instead.
+
+Found 7 errors and 0 warnings in 1789 files (2.8s, 10 threads)
+pantoken on fix-build-locales ≢  ~2 via  26.10.0 x 
+➜  vp check 2>&1 | grep -E "^\s+,-\[" | sed -E 's/.*\[([^]]+)\].*/\1/' | sort -u
+
+---
+
+[Terminal 2f7d0473-5459-40b4-a085-81ac0b9e757d notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+Updating Oh My Zsh
+master
+
+BREAKING CHANGES:
+
+ - 7d1b2a2 [systemadmin]     
+
+   The default output of `con80` and `req20` now includes port 443. `con80 80`
+   gives the old result
+
+ - c5852b1 [github]          
+
+   Deprecate legacy hub plugin (#14089)
+
+Features:
+
+ - 74965c9 [docker-compose]  Add dcv, dcsts and dci aliases (#14122)
+ - 1b2d741 [eza]             Add links, octal and inodes options (#14108)
+ - a3c88eb [git]             Add alias `gsnut` (#14124)
+ - 83a0ec7 [git]             Add aliases related to log, rebase and submodules (#9676)
+ - 4ccc633 [glab]            Add GitLab CLI completions (#14113)
+ - 86ef655 [hermes]          Add hermes plugin (#14111)
+ - b6830a5 [otp]             Honour OTP_HOME and XDG_DATA_HOME (#12953)
+ - 68795c2 [sops]            Introduce plugin (#14120)
+ - 7d1b2a2 [systemadmin]     Match ports 80 and 443 in con80, req20 and http20 (#14118)
+
+Bug fixes:
+
+ - 95ba6ae                   Hide temp completion files from $fpath (#14126)
+ - def0f25 [cli]             Re-resolve zsh at exec time to avoid a stale command hash (#14104)
+ - 0431f1c [emacs]           Create a frame for empty launcher invocations (#14091)
+ - fa82d8a [frontend-search] Use fallback search for dead dartlang docs URL (#14112)
+ - e0d3557 [gradle]          Remove echo when running gradlew (#12893)
+ - f809d46 [lib]             Protect omz_urlencode from global aliases (#14128)
+ - 8d421b6 [systemadmin]     Make the netstat fallback reachable (#14119)
+ - 157eb03 [tmux]            Sanitize `tds` session names (#14109)
+
+Performance:
+
+ - 7ce781e [appearance]      Cache the diff and ls capability probes (#14067)
+ - e785204 [init]            Cache the LocalHostName lookup (#14066)
+ - 40bddc3 [init]            Read the OMZ revision from .git instead of forking (#14063)
+
+Documentation:
+
+ - 32d7277 [gh]              Fix the completion cache path in the README (#14117)
+
+Other changes:
+
+ - c5852b1 [github]          Refactor: Deprecate legacy hub plugin (#14089)
+
+You can see the changelog with `omz changelog`
+         __                                     __   
+  ____  / /_     ____ ___  __  __   ____  _____/ /_  
+ / __ \/ __ \   / __ `__ \/ / / /  /_  / / ___/ __ \ 
+/ /_/ / / / /  / / / / / / /_/ /    / /_(__  ) / / / 
+\____/_/ /_/  /_/ /_/ /_/\__, /    /___/____/_/ /_/  
+                        /____/                       
+
+Hooray! Oh My Zsh has been updated!
+
+Follow along on X (@ohmyzsh) or Bluesky (@ohmyz.sh)
+Questions or ideas? Join the community on Discord
+Help support the project: sponsor us on Open Collective,
+or grab stickers, shirts, and swag from CommitGoods
+pantoken on speedy-docs-build ≢  ?2 ~7 via  26.10.0 
+➜  git status --short
+ M .github/workflows/ci.yml
+ M .github/workflows/docs.yml
+ M .gitignore
+ M docs/package.json
+ M docs/scripts/build-locales.main.test.ts
+ M docs/scripts/build-locales.test.ts
+ M docs/scripts/build-locales.ts
+?? docs/scripts/run-assets.test.ts
+?? docs/scripts/run-assets.ts
+pantoken on speedy-docs-build ≢  ?2 ~7 via  26.10.0 
+➜  GH_PAGER=cat gh pr view 189 --json number,title,headRefName,state --jq '"#\(.number) \(.title)\nbranch: \(.headRefName)  state: \(.state)"'; echo "=== checks ==="; GH_PAGER=cat gh pr checks 189 2>&1 | head -20
+Working...
+#189 feat: enhance build process and asset management
+branch: speedy-docs-build  state: OPEN
+=== checks ===
+ci-gate fail    5s      https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109227202854
+coverage        fail    4m2s    https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109226213775
+Analyze (javascript-typescript) pass    1m30s   https://github.com/thedannywahl/pantoken/actions/runs/36511981354/job/109225906968
+CodSpeed Performance Analysis   pass    0       https://app.codspeed.io/thedannywahl/pantoken/branches/speedy-docs-build?utm_source=github&utm_medium=check&utm_content=details
+CodeQL  pass    2s      https://github.com/thedannywahl/pantoken/runs/109226233720
+benchmarks      pass    3m5s    https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109226213885
+build   pass    1m14s   https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109225906564
+changeset-gate  pass    4s      https://github.com/thedannywahl/pantoken/actions/runs/36511981415/job/109226014330
+codecov/bundles pass    0       https://app.codecov.io/gh/thedannywahl/pantoken/pull/189?dropdown=bundle        Bundle change: 0.0% (Threshold: 5.0%)
+detect-release-impact   pass    19s     https://github.com/thedannywahl/pantoken/actions/runs/36511981415/job/109225906766
+docs    pass    3m44s   https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109226213867
+docs-and-internal-only  pass    3s      https://github.com/thedannywahl/pantoken/actions/runs/36511981415/job/109225994240
+docs-changes    pass    27s     https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109225906512
+fallow  pass    2m55s   https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109226213768
+guard   pass    3s      https://github.com/thedannywahl/pantoken/actions/runs/36511981329/job/109225906351
+i18n-changes    pass    17s     https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109225906499
+lint    pass    3m3s    https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109226213838
+meta    pass    44s     https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109225906429
+upstream-changes        pass    16s     https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109225906295
+i18n-drift      skipping        0       https://github.com/thedannywahl/pantoken/actions/runs/36511981336/job/109226215429
+pantoken on speedy-docs-build ≡ via  26.10.0 x 
+➜  gh run view --log --job=109226213775 2>/dev/null > /tmp/cov.log; grep -nE "Uncaught Exception|unhandled|FAIL|✕|build-locales" /tmp/cov.log | head -20
+4362:coverage   Test all packages with coverage 2026-09-29T02:22:03.0985921Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22morderRootLast puts root after every non-root locale^[[32m 4^[[2mms^[[22m^[[39m
+4363:coverage   Test all packages with coverage 2026-09-29T02:22:03.1015363Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22morderRootLast omits root when it wasn't requested^[[32m 0^[[2mms^[[22m^[[39m
+4364:coverage   Test all packages with coverage 2026-09-29T02:22:03.1025638Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mlocaleOfPage maps a locale-prefixed page to its locale^[[32m 1^[[2mms^[[22m^[[39m
+4365:coverage   Test all packages with coverage 2026-09-29T02:22:03.1028103Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mlocaleOfPage treats unprefixed and unknown-prefix pages as root^[[32m 0^[[2mms^[[22m^[[39m
+4366:coverage   Test all packages with coverage 2026-09-29T02:22:03.1030461Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mmergeSitemapUrls unions entries across locales^[[32m 2^[[2mms^[[22m^[[39m
+4367:coverage   Test all packages with coverage 2026-09-29T02:22:03.1032752Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mmergeSitemapUrls lets a rebuilt entry replace the carried-forward one^[[32m 0^[[2mms^[[22m^[[39m
+4368:coverage   Test all packages with coverage 2026-09-29T02:22:03.1035232Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mmergeSitemapUrls ignores empty documents^[[32m 0^[[2mms^[[22m^[[39m
+4369:coverage   Test all packages with coverage 2026-09-29T02:22:03.1037251Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mrenderSitemap emits a well-formed urlset^[[32m 0^[[2mms^[[22m^[[39m
+4370:coverage   Test all packages with coverage 2026-09-29T02:22:03.1039310Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22massertScopedLocaleConfig is a no-op when there's no assets dir^[[32m 2^[[2mms^[[22m^[[39m
+4371:coverage   Test all packages with coverage 2026-09-29T02:22:03.1041582Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22massertScopedLocaleConfig passes a small, correctly scoped chunk^[[32m 1^[[2mms^[[22m^[[39m
+4372:coverage   Test all packages with coverage 2026-09-29T02:22:03.1044177Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22massertScopedLocaleConfig throws when another locale's nav leaks in^[[32m 4^[[2mms^[[22m^[[39m
+4373:coverage   Test all packages with coverage 2026-09-29T02:22:03.1046895Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22massertScopedLocaleConfig throws when the shared chunks exceed the byte cap^[[32m 11^[[2mms^[[22m^[[39m
+4374:coverage   Test all packages with coverage 2026-09-29T02:22:03.1049202Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22massertScopedLocaleConfig ignores per-page chunks^[[32m 1^[[2mms^[[22m^[[39m
+4375:coverage   Test all packages with coverage 2026-09-29T02:22:03.1051559Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22massertScopedLocaleConfig reads the locale-nested assets dir, not assets/ itself^[[32m 1^[[2mms^[[22m^[[39m
+4376:coverage   Test all packages with coverage 2026-09-29T02:22:03.1054194Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mmergeMove relocates a disjoint subtree and leaves nothing behind^[[32m 2^[[2mms^[[22m^[[39m
+4377:coverage   Test all packages with coverage 2026-09-29T02:22:03.1056485Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mmergeMove merges into an existing directory instead of replacing it^[[32m 1^[[2mms^[[22m^[[39m
+4378:coverage   Test all packages with coverage 2026-09-29T02:22:03.1058807Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mmergeMove overwrites a colliding file so the later locale wins^[[32m 1^[[2mms^[[22m^[[39m
+4379:coverage   Test all packages with coverage 2026-09-29T02:22:03.1061419Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mmergeMove replaces a file with a directory of the same name^[[32m 2^[[2mms^[[22m^[[39m
+4380:coverage   Test all packages with coverage 2026-09-29T02:22:03.1063755Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mmergeMove is a no-op when the source is missing^[[32m 1^[[2mms^[[22m^[[39m
+4381:coverage   Test all packages with coverage 2026-09-29T02:22:03.1065797Z  ^[[32m✓^[[39m docs/scripts/build-locales.test.ts^[[2m > ^[[22mrunPool never exceeds the concurrency limit^[[32m 6^[[2mms^[[22m^[[39m
+pantoken on speedy-docs-build ≡ via  26.10.0 
+➜  grep -nE "Unhandled Error|Uncaught Exception|Test Files.*failed|Errors  " /tmp/cov.log | head -10; echo "=== context around the uncaught ==="; grep -n "Uncaught Exception" /tmp/cov.log | head -2 | cut -d: -f1 | while read n; do sed -n "$((n-6)),$((n+14))p" /tmp/cov.log | sed -E 's/^coverage[[:space:]]+Test all packages with coverage [0-9T:.Z-]+ //'; done
+6325:coverage   Test all packages with coverage 2026-09-29T02:23:46.2592994Z ^[[31m⎯⎯⎯⎯⎯⎯^[[39m^[[1m^[[41m Unhandled Errors ^[[49m^[[22m^[[31m⎯⎯⎯⎯⎯⎯^[[39m
+6330:coverage   Test all packages with coverage 2026-09-29T02:23:46.2609061Z ^[[31m⎯⎯⎯⎯⎯^[[39m^[[1m^[[41m Uncaught Exception ^[[49m^[[22m^[[31m⎯⎯⎯⎯⎯^[[39m
+=== context around the uncaught ===
+coverage        Test all packages with coverage 2026-09-29T02:23:44.8415591Z  ^[[32m✓^[[39m renderers/vue/tests/scaffold-preset.test.ts^[[2m > ^[[22mpresetVue uses the vue platform name^[[32m 2^[[2mms^[[22m^[[39m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2592994Z ^[[31m⎯⎯⎯⎯⎯⎯^[[39m^[[1m^[[41m Unhandled Errors ^[[49m^[[22m^[[31m⎯⎯⎯⎯⎯⎯^[[39m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2594084Z ^[[31m^[[1m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2594494Z Vitest caught 1 unhandled error during the test run.
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2595726Z This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.^[[22m^[[39m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2608322Z 
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2609061Z ^[[31m⎯⎯⎯⎯⎯^[[39m^[[1m^[[41m Uncaught Exception ^[[49m^[[22m^[[31m⎯⎯⎯⎯⎯^[[39m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2609539Z ^[[31m^[[1mError^[[22m: exit^[[39m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2612063Z ^[[36m ^[[2m❯^[[22m process.<anonymous> docs/scripts/build-locales.main.test.ts:^[[2m137:11^[[22m^[[39m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2677409Z     ^[[90m135|^[[39m   const errorSpy = vi.spyOn(console, "error").mockImplementation(() =>…
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2678627Z     ^[[90m136|^[[39m   const exitSpy = vi.spyOn(process, "exit").mockImplementation(() => {
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2679609Z     ^[[90m137|^[[39m     throw new Error("exit");
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2680194Z     ^[[90m   |^[[39m           ^[[31m^^[[39m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2680698Z     ^[[90m138|^[[39m   });
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2681254Z     ^[[90m139|^[[39m   process.argv = ["node", MODULE_PATH];
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2683438Z ^[[90m ^[[2m❯^[[22m process.Mock node_modules/.pnpm/vitest@5.0.1_@types+node@26.6.3_@vitest+browser-preview@5.0.1_@vitest+coverage-v8@5.0.1_69ead87d1018d8e04eaa257aad7ad6a1/node_modules/vitest/dist/chunks/spy.DQ0ZsPbi.js:^[[2m320:40^[[22m^[[39m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2685337Z ^[[90m ^[[2m❯^[[22m docs/scripts/build-locales.ts:^[[2m203:19^[[22m^[[39m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2686209Z ^[[90m ^[[2m❯^[[22m docs/scripts/build-locales.main.test.ts:^[[2m7:45^[[22m^[[39m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2687303Z ^[[90m ^[[2m❯^[[22m processTicksAndRejections node:internal/process/task_queues:^[[2m104:5^[[22m^[[39m
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2688136Z 
+coverage        Test all packages with coverage 2026-09-29T02:23:46.2688821Z ^[[31mThis error originated in "^[[1mdocs/scripts/build-locales.main.test.ts^[[22m" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.^[[39m
+pantoken on speedy-docs-build ≡ via  26.10.0 
+➜  sed -n '1,60p' scripts/release/cli.ts | grep -n -A20 "runAsMain"
+30:export function runAsMain(metaUrl: string, main: () => Promise<void>): void {
+31-  if (!isDirectExecution(metaUrl)) return;
+32-  main().catch((error) => {
+33-    console.error(error instanceof Error ? error.message : String(error));
+34-    process.exitCode = 1;
+35-  });
+36-}
+pantoken on speedy-docs-build ≡ via  26.10.0 
+➜  vp test docs/scripts 2>&1 | grep -iE "unhandled|uncaught|Test Files|Tests |Errors" | head
+ Test Files  31 passed (31)
+      Tests  321 passed (321)
+   Duration  4.99s (tests 48%, import 27%, transform 23%, setup 2%)
+pantoken on speedy-docs-build ≡  ~1 via  26.10.0 
+➜  vp test 2>&1 | grep -iE "unhandled|uncaught|Test Files|Tests |failed" | head
+ Test Files  362 passed (362)
+      Tests  2737 passed (2737)
+   Duration  35.10s (import 47%, tests 27%, transform 19%, environment 4%, setup 2%)
+pantoken on speedy-docs-build ≡  ~1 via  26.10.0 
+➜  vp check --fix docs/scripts/build-locales.ts 2>&1 | tail -4 && vp test --coverage 2>&1 | tail -8
+pass: Formatting completed for checked files (2.1s)
+pass: Found no warnings, lint errors, or type errors in 1 file (1.3s, 10 threads)
+ % Coverage report from v8
+
+=============================== Coverage summary ===============================
+Statements   : 94.2% ( 11695/12415 )
+Branches     : 84.66% ( 5881/6946 )
+Functions    : 96% ( 2736/2850 )
+Lines        : 95.73% ( 10480/10947 )
+================================================================================
+pantoken on speedy-docs-build ≡  ~1 via  26.10.0 
+➜  git status --short && git diff --stat
+ M docs/scripts/build-locales.ts
+ docs/scripts/build-locales.ts | 37 +++++++++++++++++++++++++++++--------
+ 1 file changed, 29 insertions(+), 8 deletions(-)
+pantoken on speedy-docs-build ≡  ~1 via  26.10.0 
+➜  cd /Users/dwahl/Scripts/pantoken && git commit docs/scripts/build-locales.ts -m "fix(docs): reject failed locale builds instead of exiting mid-callback
+
+The concurrent build calls process.exit from the child's close handler, which
+runs outside the awaited chain, so the exit escaped as an uncaught exception
+rather than a rejection. Throw a LocaleBuildError and exit once from main, on
+the awaited path." 2>&1 | tail -5
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[speedy-docs-build 130d0aef4] fix(docs): reject failed locale builds instead of exiting mid-callback
+ 1 file changed, 29 insertions(+), 8 deletions(-)
+pantoken on speedy-docs-build ↑1 via  26.10.0 
+➜  git push 2>&1 | tail -5
+[entire] Pushing 1 checkpoint ref(s) to origin...... done
+To https://github.com/thedannywahl/pantoken.git
+   60ee783e3..130d0aef4  speedy-docs-build -> speedy-docs-build
+pantoken on speedy-docs-build ≡ via  26.10.0 
+➜  sleep 45; GH_PAGER=cat gh pr checks 189 2>&1 | grep -vE "^\s*$" | head -22
+changeset-gate  pass    2s      https://github.com/thedannywahl/pantoken/actions/runs/36514463820/job/109233670617
+docs-and-internal-only  pass    2s      https://github.com/thedannywahl/pantoken/actions/runs/36514463820/job/109233652248
+require-changeset       skipping        0       https://github.com/thedannywahl/pantoken/actions/runs/36514463820/job/109233653074
+detect-release-impact   pass    18s     https://github.com/thedannywahl/pantoken/actions/runs/36514463820/job/109233561381
+Analyze (javascript-typescript) pending 0       https://github.com/thedannywahl/pantoken/actions/runs/36514463883/job/109233561902
+i18n-changes    pass    15s     https://github.com/thedannywahl/pantoken/actions/runs/36514463955/job/109233562401
+upstream-changes        pass    18s     https://github.com/thedannywahl/pantoken/actions/runs/36514463955/job/109233562479
+build   pending 0       https://github.com/thedannywahl/pantoken/actions/runs/36514463955/job/109233562427
+guard   pass    3s      https://github.com/thedannywahl/pantoken/actions/runs/36514463821/job/109233561308
+meta    pending 0       https://github.com/thedannywahl/pantoken/actions/runs/36514463955/job/109233562106
+docs-changes    pass    16s     https://github.com/thedannywahl/pantoken/actions/runs/36514463955/job/109233562362
+pantoken on speedy-docs-build ≡ via  26.10.0 x 
+➜  GH_PAGER=cat gh run watch 36514463955 --exit-status --interval 20 2>&1 | tail -25; echo "WATCH_EXIT=$?"
+  ✓ Post Checkout code
+  ✓ Complete job
+- i18n-drift in 0s (ID 109233858581)
+- upstream-drift in 0s (ID 109233859014)
+✓ ci-gate in 3s (ID 109234644105)
+  ✓ Set up job
+  - Verify no CI job failed
+  ✓ Complete job
+
+ANNOTATIONS
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+meta: .github#1
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+docs-changes: .github#1
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+i18n-changes: .github#1
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+build: .github#1
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+ci-gate: .github#1
+
+WATCH_EXIT=0
+pantoken on speedy-docs-build ≡ via  26.10.0 
+➜  GH_PAGER=cat gh pr checks 189 2>&1 | awk '{print $1"\t"$2}' | sort -k2 | head -25; echo "=== summary ==="; GH_PAGER=cat gh pr checks 189 2>&1 | awk '{print $2}' | sort | uniq -c
+Analyze (javascript-typescript)
+CodSpeed        Performance
+CodeQL  pass
+benchmarks      pass
+build   pass
+changeset-gate  pass
+ci-gate pass
+codecov/bundles pass
+codecov/patch   pass
+codecov/patch/bundlers  pass
+codecov/patch/formats   pass
+codecov/patch/packages  pass
+codecov/patch/platforms pass
+codecov/patch/plugins   pass
+codecov/patch/renderers pass
+codecov/patch/tools     pass
+codecov/project pass
+codecov/project/bundlers        pass
+codecov/project/formats pass
+codecov/project/packages        pass
+codecov/project/platforms       pass
+codecov/project/plugins pass
+codecov/project/renderers       pass
+codecov/project/scripts pass
+codecov/project/tools   pass
+=== summary ===
+   1 (javascript-typescript)
+   1 Performance
+  37 pass
+   1 pending
+   3 skipping
+pantoken on speedy-docs-build ≡ via  26.10.0 x 
+➜  GH_PAGER=cat gh pr checks 189 2>&1 | grep -viE "pass|skipping" | head -5; echo "=== coverage job specifically ==="; GH_PAGER=cat gh pr checks 189 2>&1 | grep -E "^coverage"
+=== coverage job specifically ===
+coverage        pass    3m21s   https://github.com/thedannywahl/pantoken/actions/runs/36514463955/job/109233856991
+pantoken on speedy-docs-build ≡ via  26.10.0 x 
+➜  GH_PAGER=cat gh api repos/thedannywahl/pantoken/actions/jobs/109234789400 --jq '"status=\(.status) conclusion=\(.conclusion)", (.steps[] | select(.conclusion=="failure") | "FAILED STEP: \(.name)")' 2>&1
+status=completed conclusion=failure
+FAILED STEP: Build docs (all locales)
+pantoken on main ≡ via  26.10.0 
+➜  gh run view --log --job=109234789400 2>/dev/null > /tmp/deploy-fail.log; wc -l /tmp/deploy-fail.log; echo "=== errors ==="; grep -niE "error|failed|✗|cannot|ENOENT|heap|killed" /tmp/deploy-fail.log | grep -v "Processed" | tail -25
+   54574 /tmp/deploy-fail.log
+=== errors ===
+6890:deploy     UNKNOWN STEP    2026-09-29T02:59:05.2637815Z [codecov] `get-pre-signed-url` fetch attempt 1 failed
+6892:deploy     UNKNOWN STEP    2026-09-29T02:59:05.3902362Z [codecov] `get-pre-signed-url` fetch attempt 1 failed
+6910:deploy     UNKNOWN STEP    2026-09-29T02:59:06.4432493Z [codecov] `get-pre-signed-url` fetch attempt 1 failed
+6912:deploy     UNKNOWN STEP    2026-09-29T02:59:06.5153198Z [codecov] `get-pre-signed-url` fetch attempt 2 failed
+6914:deploy     UNKNOWN STEP    2026-09-29T02:59:06.5676247Z [codecov] `get-pre-signed-url` fetch attempt 2 failed
+6916:deploy     UNKNOWN STEP    2026-09-29T02:59:06.7008957Z [codecov] `get-pre-signed-url` fetch attempt 2 failed
+6918:deploy     UNKNOWN STEP    2026-09-29T02:59:07.9120558Z [codecov] `get-pre-signed-url` fetch attempt 2 failed
+6920:deploy     UNKNOWN STEP    2026-09-29T02:59:08.8360596Z [codecov] `get-pre-signed-url` fetch attempt 3 failed
+6921:deploy     UNKNOWN STEP    2026-09-29T02:59:08.8361157Z [codecov] `get-pre-signed-url` failed after 3 attempts
+6922:deploy     UNKNOWN STEP    2026-09-29T02:59:08.8361850Z [codecov] Failed to get pre-signed URL, bad response: "400 - "
+6968:deploy     UNKNOWN STEP    2026-09-29T02:59:08.9958065Z [codecov] `get-pre-signed-url` fetch attempt 3 failed
+6969:deploy     UNKNOWN STEP    2026-09-29T02:59:08.9958503Z [codecov] `get-pre-signed-url` failed after 3 attempts
+6970:deploy     UNKNOWN STEP    2026-09-29T02:59:08.9959043Z [codecov] Failed to get pre-signed URL, bad response: "400 - "
+7004:deploy     UNKNOWN STEP    2026-09-29T02:59:09.2033719Z [codecov] `get-pre-signed-url` fetch attempt 3 failed
+7005:deploy     UNKNOWN STEP    2026-09-29T02:59:09.2034229Z [codecov] `get-pre-signed-url` failed after 3 attempts
+7006:deploy     UNKNOWN STEP    2026-09-29T02:59:09.2034706Z [codecov] Failed to get pre-signed URL, bad response: "400 - "
+7020:deploy     UNKNOWN STEP    2026-09-29T02:59:10.2057168Z [codecov] `get-pre-signed-url` fetch attempt 3 failed
+7021:deploy     UNKNOWN STEP    2026-09-29T02:59:10.2058151Z [codecov] `get-pre-signed-url` failed after 3 attempts
+7022:deploy     UNKNOWN STEP    2026-09-29T02:59:10.2058815Z [codecov] Failed to get pre-signed URL, bad response: "400 - "
+35408:deploy    UNKNOWN STEP    2026-09-29T03:00:50.9390988Z   ! [se] cached prose translation for "TypeError when `hex` isn't a valid hex c" looks untranslated; retranslating
+35420:deploy    UNKNOWN STEP    2026-09-29T03:00:50.9405855Z   ! [se] cached prose translation for "TypeError when `hex` isn't a valid hex c" looks untranslated; retranslating
+35431:deploy    UNKNOWN STEP    2026-09-29T03:00:50.9420451Z   ! [se] cached prose translation for "TypeError when `input` isn't a 3- or 6-d" looks untranslated; retranslating
+54525:deploy    UNKNOWN STEP    2026-09-29T03:01:45.2507326Z SyntaxError [ERR_UNSUPPORTED_TYPESCRIPT_SYNTAX]: TypeScript parameter property is not supported in strip-only mode
+54542:deploy    UNKNOWN STEP    2026-09-29T03:01:45.2546250Z vp run: 0/3 cache hit (0%), 1 failed. @pantoken/docs#docs:assets (and 1 more) not cached because they modified their inputs. (Run `vp run --last-details` for full details)
+54543:deploy    UNKNOWN STEP    2026-09-29T03:01:45.2672715Z ##[error]Process completed with exit code 1.
+pantoken on main ≡ via  26.10.0 
+➜  node -e "import('./docs/scripts/build-locales.ts').catch(e=>{console.log('REPRO:', e.constructor.name, e.message)})" 2>&1 | grep -iE "REPRO|parameter property|SyntaxError" | head -3
+REPRO: SyntaxError TypeScript parameter property is not supported in strip-only mode
+pantoken on main ≡ via  26.10.0 
+➜  node -e "import('./docs/scripts/build-locales.ts').then(m=>console.log('IMPORT OK — exports:', Object.keys(m).join(', '))).catch(e=>{console.log('STILL FAILING:', e.message); process.exit(1)})" 2>&1 | tail -3
+IMPORT OK — exports: assertScopedLocaleConfig, localeOfPage, mergeMove, mergeSitemapUrls, orderRootLast, renderSitemap, runPool
+pantoken on main ≡  ~1 via  26.10.0 
+➜  grep -rn -A4 "constructor(" --include="*.ts" scripts/ docs/scripts/ tools/ plugins/ 2>/dev/null | grep -E "^\S+[-:][0-9]+[-:]\s*(readonly|private|public|protected) " | head -20; echo "--- count ---"; grep -rn -A4 "constructor(" --include="*.ts" scripts/ docs/scripts/ tools/ plugins/ 2>/dev/null | grep -cE "^\S+[-:][0-9]+[-:]\s*(readonly|private|public|protected) "
+docs/scripts/translation-memory.ts:86:  private constructor(
+tools/translation-adapters/src/index.ts:184:  private constructor(path: string, entries: Map<string, string>, prune: boolean) {
+--- count ---
+2
+pantoken on main ≡  ~1 via  26.10.0 
+➜  ls -a | grep -iE "oxlint|\.oxlintrc" ; grep -n "lint\|oxlint" vite.config.ts | head -10; echo "=== base config lint block ==="; grep -n -A8 "lint" vite.config.base.ts | head -20
+75:    // Stylelint fixes CSS; cssdoc then gates its documentation comments.
+76:    "*.css": "vp exec stylelint --fix && vp exec cssdoc lint --max-warnings 0",
+85:    // `.markdownlint-cli2.yaml` already excludes this tree.
+91:  lint: {
+93:      { name: "vite-plus", specifier: "vite-plus/oxlint-plugin" },
+94:      // TSDoc has no oxlint-native equivalent; these two ESLint plugins run through oxlint's
+96:      { name: "tsdoc", specifier: "eslint-plugin-tsdoc" },
+97:      { name: "tsdoc-require-2", specifier: "eslint-plugin-tsdoc-require-2" },
+155:      "lint:markdown": {
+156:        command: 'vp exec markdownlint-cli2 "**/*.md"',
+=== base config lint block ===
+26: * whole workspace — the pack input, type-aware lint, formatting, and `pack.dts` — so each package's
+27- * config only supplies its build command and pack specifics via {@link extendBase}.
+28- *
+29- * It deliberately omits `run.tasks.build.command`: that varies per package (some prepend
+30- * `vp run generate`), and `mergeConfig` concatenates arrays, so a command in the base would be
+31- * prepended to an override's command array rather than replaced. Keeping it out means the override
+32- * always supplies the command cleanly. It's a plain object (not `defineConfig`) because the `build`
+33- * task intentionally has no `command`, which `defineConfig`'s task type rejects; {@link extendBase}
+34- * merges it structurally, so it only needs the right runtime shape.
+--
+52:  lint: {
+53-    jsPlugins: [
+54:      { name: "vite-plus", specifier: "vite-plus/oxlint-plugin" },
+55:      { name: "tsdoc", specifier: "eslint-plugin-tsdoc" },
+56:      { name: "tsdoc-require-2", specifier: "eslint-plugin-tsdoc-require-2" },
+57-    ],
+58-    rules: { "vite-plus/prefer-vite-plus-imports": "error" },
+59-    options: { typeAware: true, typeCheck: true },
+60-    overrides: [
+61-      {
+pantoken on main ≡  ~1 via  26.10.0 
+➜  cd /Users/dwahl/Scripts/pantoken && cat > /tmp/param-prop-probe.ts <<'EOF'
+/** Probe for the parameter-property lint rule. */
+export class Probe {
+  constructor(readonly thing: string) {}
+}
+EOF
+cp /tmp/param-prop-probe.ts docs/scripts/__param-probe.ts
+vp check docs/scripts/__param-probe.ts 2>&1 | tail -12
+rm -f docs/scripts/__param-probe.ts /tmp/param-prop-probe.ts
+pass: All 1 file are correctly formatted (70ms, 10 threads)
+error: Linting could not start
+Failed to parse oxlint configuration file.
+
+  x Rule 'no-parameter-properties' not found in plugin 'typescript'
+
+Linting failed before analysis started
+pantoken on fix-build-locales ≢  ~2 via  26.10.0 
+➜  cd /Users/dwahl/Scripts/pantoken && sed -i '' 's|"typescript/no-parameter-properties"|"typescript/parameter-properties"|' vite.config.ts && cat > docs/scripts/__param-probe.ts <<'EOF'
+/** Probe for the parameter-property lint rule. */
+export class Probe {
+  constructor(readonly thing: string) {}
+}
+EOF
+vp check docs/scripts/__param-probe.ts 2>&1 | tail -10; rm -f docs/scripts/__param-probe.ts
+x typescript(parameter-properties): Property thing should be declared as a class property.
+   ,-[docs/scripts/__param-probe.ts:3:15]
+ 2 | export class Probe {
+ 3 |   constructor(readonly thing: string) {}
+   :               ^^^^^^^^^^^^^^^^^^^^^^
+ 4 | }
+   `----
+  help: Remove the parameter modifier and declare this member on the class instead.
+
+Found 1 error and 0 warnings in 1 file (1.9s, 10 threads)
+pantoken on fix-build-locales ≢  ~2 via  26.10.0 
+➜  vp check 2>&1 | tail -8
+ 39 | 
+ 40 |   constructor(private readonly options: CircuitBreakerOptions) {}
+    :               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 41 | 
+    `----
+  help: Remove the parameter modifier and declare this member on the class instead.
+
+Found 7 errors and 0 warnings in 1789 files (2.8s, 10 threads)
+pantoken on fix-build-locales ≢  ~2 via  26.10.0 x 
+➜  vp check 2>&1 | grep -E "^\s+,-\[" | sed -E 's/.*\[([^]]+)\].*/\1/' | sort -u 
+bundlers/webpack/tests/index.test.ts:34:17
+bundlers/webpack/tests/index.test.ts:7:17
+packages/core/src/build.ts:27:15
+packages/scaffold/src/cli.ts:61:5
+tools/translation-adapters/src/shim.ts:40:15
+tools/upstream-diff/index.test.ts:81:15
+tools/validate-generated/index.test.ts:85:15
+
+---
+
+before we merge this one, when we do the two-step release: version packages or publish, is it possible for the version packages generated PR to be set to auto-merge?
+
+---
+
+[Terminal 08ee41c1-45cf-47c3-a77b-127dd3a276b8 notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on fix-build-locales ≢  ~2 via  26.10.0 
+➜  vp check 2>&1 | grep -oE "\[[^]]+\.ts:[0-9]+:[0-9]+\]" | tr -d '[]' | cut -d: -f1 | sort -u
+bundlers/webpack/tests/index.test.ts
+packages/core/src/build.ts
+packages/scaffold/src/cli.ts
+tools/translation-adapters/src/shim.ts
+tools/upstream-diff/index.test.ts
+tools/validate-generated/index.test.ts
+pantoken on fix-build-locales ≢  ~2 via  26.10.0 x 
+➜  cd /Users/dwahl/Scripts/pantoken && cat > docs/scripts/__param-probe.ts <<'EOF'
+/** Probe for the parameter-property lint rule. */
+export class Probe {
+  constructor(readonly thing: string) {}
+}
+EOF
+echo "=== probe in scripts/ (must FAIL) ==="; vp check docs/scripts/__param-probe.ts 2>&1 | grep -E "parameter-properties|Found" | head -3
+rm -f docs/scripts/__param-probe.ts
+echo "=== full repo (must PASS) ==="; vp check 2>&1 | tail -3
+=== probe in scripts/ (must FAIL) ===
+x typescript(parameter-properties): Property thing should be declared as a class property.
+Found 1 error and 0 warnings in 1 file (1.1s, 10 threads)
+=== full repo (must PASS) ===
+pass: All 6683 files are correctly formatted (3634ms, 10 threads)
+pass: Found no warnings, lint errors, or type errors in 1789 files (2.4s, 10 threads)
+pantoken on fix-build-locales ≢  ~2 via  26.10.0 
+➜  vp test 2>&1 | grep -iE "unhandled|uncaught|Test Files|Tests |failed" | head -5; echo "=== branch/state ==="; git branch --show-current; git status --short
+ Test Files  362 passed (362)
+      Tests  2737 passed (2737)
+   Duration  32.62s (import 44%, tests 28%, transform 21%, environment 4%, setup 2%, worker 1%)
+=== branch/state ===
+fix-build-locales
+ M docs/scripts/build-locales.ts
+ M vite.config.ts
+pantoken on fix-build-locales ≢  ~2 via  26.10.0 
+➜  git --no-pager diff docs/scripts/build-locales.ts | head -40
+diff --git a/docs/scripts/build-locales.ts b/docs/scripts/build-locales.ts
+index 426b20782..0785cb54a 100644
+--- a/docs/scripts/build-locales.ts
++++ b/docs/scripts/build-locales.ts
+@@ -116,13 +116,18 @@ export const mergeSitemapUrls = (documents: readonly string[]): string[] => {
+  * A failed locale build, carrying the child's exit code. Thrown rather than exiting inside the
+  * child's `close` handler: that runs outside the awaited chain, so exiting there escapes as an
+  * uncaught exception instead of a rejection the caller can act on.
++ *
++ * Fields are declared and assigned explicitly — these scripts run under `node script.ts`, whose
++ * strip-only type removal rejects TypeScript parameter properties.
+  */
+ class LocaleBuildError extends Error {
+-  constructor(
+-    readonly locale: string,
+-    readonly code: number,
+-  ) {
++  readonly locale: string;
++  readonly code: number;
++
++  constructor(locale: string, code: number) {
+     super(`${locale}: build failed`);
++    this.locale = locale;
++    this.code = code;
+     this.name = "LocaleBuildError";
+   }
+ }
+pantoken on fix-build-locales ≢  ~2 via  26.10.0 
+➜  cd /Users/dwahl/Scripts/pantoken && git commit docs/scripts/build-locales.ts vite.config.ts -m "fix(docs): drop parameter properties from the locale build script
+
+Node runs docs/scripts/*.ts with strip-only type removal, which can't rewrite a
+TS parameter property into a field assignment, so LocaleBuildError crashed the
+deploy with ERR_UNSUPPORTED_TYPESCRIPT_SYNTAX. Typecheck and the transpiling
+test runner both accept the syntax, so nothing caught it before CI.
+
+Declare the fields explicitly and lint against the pattern under scripts/ trees, 
+where Node parses the file directly. Package sources and tests are bundled or
+transpiled, so they keep the syntax." 2>&1 | tail -4
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[fix-build-locales 1a79a4db0] fix(docs): drop parameter properties from the locale build script
+ 2 files changed, 18 insertions(+), 4 deletions(-)
+pantoken on fix-build-locales ≢ via  26.10.0 
+➜  git push -u origin fix-build-locales 2>&1 | tail -6
+remote: Create a pull request for 'fix-build-locales' on GitHub by visiting:        
+remote:      https://github.com/thedannywahl/pantoken/pull/new/fix-build-locales        
+remote: 
+To https://github.com/thedannywahl/pantoken.git
+ * [new branch]          fix-build-locales -> fix-build-locales
+branch 'fix-build-locales' set up to track 'origin/fix-build-locales'.
+pantoken on fix-build-locales ≡ via  26.10.0 
+➜  cd /Users/dwahl/Scripts/pantoken && GH_PAGER=cat gh pr create --title "fix(docs): drop parameter properties from the locale build script" --body "The docs deploy on \`main\` is failing at **Build docs (all locales)**:
+
+\`\`\`
+SyntaxError [ERR_UNSUPPORTED_TYPESCRIPT_SYNTAX]: TypeScript parameter property is not supported in strip-only mode
+\`\`\`
+
+\`LocaleBuildError\` (added in #189) used TS parameter properties. Node runs \`docs/scripts/*.ts\` with strip-only type removal, which erases types but can't rewrite a parameter property into a field assignment.
+
+Nothing caught it before CI: \`vp check\` typechecks the syntax as valid, and vitest transpiles rather than strips, so all 2737 tests passed.
+
+## Changes
+- Declare \`LocaleBuildError\`'s fields explicitly and assign them in the constructor body.
+- Enable \`typescript/parameter-properties\` for \`**/scripts/**\` only — the trees Node parses directly. Package sources and tests are bundled or transpiled, where the syntax is valid, so they're deliberately untouched (7 existing usages there are fine).
+
+## Verification
+- Reproduced locally: \`node -e \"import('./docs/scripts/build-locales.ts')\"\` threw the same SyntaxError before the fix, imports cleanly after.
+- Probe file under \`docs/scripts/\` is now rejected by lint; full repo \`vp check\` passes.
+- 2737/2737 tests pass." 2>&1 | tail -3
+https://github.com/thedannywahl/pantoken/pull/190
+pantoken on fix-build-locales ≡ via  26.10.0 
+➜  RUN=$(GH_PAGER=cat gh run list --branch fix-build-locales --workflow ci.yml --limit 1 --json databaseId --jq '.[0].databaseId'); echo "watching CI run $RUN"; GH_PAGER=cat gh run watch "$RUN" --exit-status --interval 20 >/dev/null 2>&1; echo "CI_EXIT=$?"
+watching CI run 36582344767
+CI_EXIT=0
+
+---
+
+yes
+
+---
+
+merging the first PR to main is the human in the loop process, the rest is just release automation.  Really just changeset version bumps are the only thing that happens in the 2nd PR (which then publish to npm) so there's not really anything to review as the changesets are part of the first PR.
