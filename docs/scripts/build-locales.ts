@@ -112,6 +112,21 @@ export const mergeSitemapUrls = (documents: readonly string[]): string[] => {
   return [...byLoc.values()];
 };
 
+/**
+ * A failed locale build, carrying the child's exit code. Thrown rather than exiting inside the
+ * child's `close` handler: that runs outside the awaited chain, so exiting there escapes as an
+ * uncaught exception instead of a rejection the caller can act on.
+ */
+class LocaleBuildError extends Error {
+  constructor(
+    readonly locale: string,
+    readonly code: number,
+  ) {
+    super(`${locale}: build failed`);
+    this.name = "LocaleBuildError";
+  }
+}
+
 /** Run `work` over `items`, keeping at most `limit` in flight. */
 export async function runPool<T>(
   items: readonly T[],
@@ -199,8 +214,8 @@ async function main(): Promise<void> {
       child.on("error", fail);
       child.on("close", (code) => {
         if (code !== 0) {
-          console.error(`✗ ${locale}: build failed`);
-          process.exit(code ?? 1);
+          fail(new LocaleBuildError(locale, code ?? 1));
+          return;
         }
         assertScopedLocaleConfig(join(stagingDir, locale), locale);
         const elapsed = (Date.now() - started) / 1000;
@@ -215,12 +230,18 @@ async function main(): Promise<void> {
 
   // `orderRootLast` already puts root at the end; draining before it keeps the one build that loads
   // the llms plugin — and is reliably the slowest — off a shared runner with anything else.
-  await runPool(
-    locales.filter((locale) => locale !== "root"),
-    concurrency,
-    buildLocale,
-  );
-  if (locales.includes("root")) await buildLocale("root");
+  try {
+    await runPool(
+      locales.filter((locale) => locale !== "root"),
+      concurrency,
+      buildLocale,
+    );
+    if (locales.includes("root")) await buildLocale("root");
+  } catch (error) {
+    if (!(error instanceof LocaleBuildError)) throw error;
+    console.error(`✗ ${error.locale}: build failed`);
+    process.exit(error.code);
+  }
 
   const readText = (path: string): string => (existsSync(path) ? readFileSync(path, "utf8") : "");
   const readJson = (path: string): object => {
