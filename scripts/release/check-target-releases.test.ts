@@ -99,6 +99,28 @@ test("flags a new Bootstrap patch without expanding the verified bridge scope", 
   expect(await pendingRelease(bootstrap)).toMatchObject({ version: "5.3.9" });
 });
 
+test("flags a future Foundation release without widening Sass compatibility", async () => {
+  const foundation: ConsumerEntry = {
+    package: "@pantoken/foundation",
+    path: "renderers/foundation",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "Foundation for Sites",
+      format: "Concrete Sass settings + variable-backed CSS overlay",
+      status: "verified",
+      minimum: "6.1.2",
+      testedThrough: "6.9.0",
+      testedVersions: ["6.1.2", "6.9.0"],
+      testCommand: "vp run @pantoken/foundation#check:compatibility",
+    },
+  };
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({ ok: true, json: async () => ({ version: "6.9.1" }) }),
+  );
+  expect(await pendingRelease(foundation)).toMatchObject({ version: "6.9.1" });
+});
+
 const release = {
   package: "@pantoken/wordpress",
   path: "platforms/wordpress",

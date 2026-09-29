@@ -68,7 +68,25 @@
   },
   "@pantoken/css-in-js": { "target": "CSS-in-JS", "status": "unverified" },
   "@pantoken/docusaurus": { "target": "Docusaurus", "status": "unverified" },
-  "@pantoken/foundation": { "target": "Foundation", "status": "unverified" },
+  "@pantoken/foundation": {
+    "target": "Foundation for Sites",
+    "format": "Concrete Sass settings + variable-backed CSS overlay",
+    "status": "verified",
+    "minimum": "6.1.2",
+    "testedThrough": "6.9.0",
+    "testedVersions": [
+      "6.1.2",
+      "6.2.4",
+      "6.3.1",
+      "6.4.3",
+      "6.5.3",
+      "6.6.3",
+      "6.7.5",
+      "6.8.1",
+      "6.9.0"
+    ],
+    "testCommand": "vp run @pantoken/foundation#check:compatibility"
+  },
   "@pantoken/markdown-it": {
     "target": "markdown-it",
     "status": "verified",

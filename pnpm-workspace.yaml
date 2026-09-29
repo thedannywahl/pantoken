@@ -163,6 +163,8 @@ catalog:
   rehype: ^13.0.2
   rehype-raw: ^7.0.0
   bootstrap: ^5.3.8
+  foundation-sites: ^6.9.0
+  sass: ^1.105.0
 overrides:
   vite@*: "catalog:"
   # next 16.2.10 (auto-installed as @pantoken/next's optional peer) has 3 High CVEs; 16.2.11 patches
@@ -196,6 +198,7 @@ minimumReleaseAgeExclude:
   - vitest
   - "@vitest/*"
 allowBuilds:
+  "@parcel/watcher": false
   core-js: true
   esbuild: true
   sharp: true

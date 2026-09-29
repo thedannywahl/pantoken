@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-29 21:40+0000\n"
+"PO-Revision-Date: 2026-09-29 21:57+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -16926,7 +16926,7 @@ msgstr ""
 #: renderers/foundation/src/functions/toFoundationSettings.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Emit the Foundation Sass settings override. Load it before `@include foundation-everything`."
+msgid "Emit the Foundation Sass settings override. Import it before Foundation itself and\n`@include foundation-everything` so its palette is available to Sass."
 msgstr ""
 
 #: renderers/foundation/src/functions/toFoundationSettings.md
@@ -16944,19 +16944,19 @@ msgstr ""
 #: renderers/foundation/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Foundation. Host compatibility has not yet been verified."
+msgid "Target: Foundation for Sites. Current format: `Concrete Sass settings + variable-backed CSS overlay`. Minimum host version: `6.1.2`. Tested through `6.9.0`. Newer releases require review."
 msgstr ""
 
 #: renderers/foundation/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "`@pantoken/foundation` — theme Foundation for Sites with Instructure tokens."
+msgid "`@pantoken/foundation` — theme Foundation for Sites Sass output and common CSS classes."
 msgstr ""
 
 #: renderers/foundation/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial that points Foundation's setting variables at `var(--instui-*)`, so\na Sass build compiles the Instructure look while keeping runtime theming through the same custom\nproperties. [toFoundationCss](functions/toFoundationCss.md) emits a thin CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
+msgid "Foundation is Sass-first, so this package ships two layers. [toFoundationSettings](functions/toFoundationSettings.md) emits a\n`_settings`-style Sass partial with concrete light-mode rebrand values so Foundation's colour functions can\ncompile. [toFoundationCss](functions/toFoundationCss.md) emits a thin variable-backed CSS overlay that themes the common compiled\nclasses (`.button`, `.callout`, links) the same way — useful when you consume stock Foundation CSS\nand just want to layer Instructure colors on top without recompiling."
 msgstr ""
 
 #: renderers/foundation/src/index.md

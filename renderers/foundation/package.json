@@ -1,7 +1,7 @@
 {
   "name": "@pantoken/foundation",
   "version": "0.1.4",
-  "description": "Theme Foundation for Sites with Instructure tokens: a Sass settings override plus a thin CSS overlay pointing at var(--instui-*).",
+  "description": "Theme Foundation for Sites with concrete light-mode Sass settings and a CSS variable overlay.",
   "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
@@ -30,17 +30,23 @@
     "provenance": true
   },
   "scripts": {
+    "check:compatibility": "node scripts/check-compatibility.ts",
     "generate": "node scripts/generate.ts",
     "dev": "vp run generate && vp pack --watch",
     "test": "vp test",
     "check": "vp check"
   },
+  "dependencies": {
+    "@pantoken/tokens": "workspace:*",
+    "@pantoken/utils": "workspace:*"
+  },
   "devDependencies": {
     "@pantoken/components": "workspace:*",
     "@pantoken/plugin-props-minify": "workspace:*",
-    "@pantoken/tokens": "workspace:*",
-    "@pantoken/utils": "workspace:*",
     "@types/node": "catalog:",
+    "foundation-sites": "catalog:",
+    "postcss": "catalog:",
+    "sass": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"
