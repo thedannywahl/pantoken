@@ -85,12 +85,15 @@ export const walkMarkdown = (dir: string): string[] => {
 const preview = (text: string): string =>
   text.replace(/\s+/g, " ").trim().slice(0, 60) + (text.length > 60 ? "…" : "");
 
-/** Guide drift: each `docs/guide/*.md` is one whole-file `markdown` unit. */
+/** Guide drift: each guide and the compatibility page is one whole-file `markdown` unit. */
 const guideDrift = (locale: string): Missing[] => {
   const poPath = join(l10nDir, locale, "docs.guides.po");
+  const guideFiles = [...walkMarkdown(guideDir), join(docsRoot, "compatibility.md")].filter(
+    existsSync,
+  );
   if (existsSync(poPath)) {
     const translated = loadPoTranslatedSet(poPath);
-    return walkMarkdown(guideDir)
+    return guideFiles
       .map((file) => ({
         file: relative(docsRoot, file),
         source: readFileSync(file, "utf8"),
@@ -105,7 +108,7 @@ const guideDrift = (locale: string): Missing[] => {
   }
   const cached = loadCacheKeys(locale, "guides");
   const missing: Missing[] = [];
-  for (const file of walkMarkdown(guideDir)) {
+  for (const file of guideFiles) {
     const source = readFileSync(file, "utf8");
     if (!cached.has(keyFor("markdown", source))) {
       missing.push({

@@ -103,6 +103,7 @@ interface Fixtures {
   chromeLeaves: Array<{ path: string; text: string }>;
   glossaryTerms: Array<{ id: string; term: string }>;
   guideMd: string;
+  compatibilityMd: string | null;
   apiMd: string;
   homeMd: string;
   demoI18nJson: Record<string, unknown>;
@@ -131,6 +132,7 @@ const fixtures: Fixtures = {
   chromeLeaves: [],
   glossaryTerms: [],
   guideMd: GUIDE_MD,
+  compatibilityMd: null as string | null,
   apiMd: API_MD,
   homeMd: "",
   demoI18nJson: {},
@@ -151,6 +153,7 @@ const fixtures: Fixtures = {
 
 /** Resolve whether a mocked path should be treated as existing. */
 function fixtureExists(pathName: string): boolean {
+  if (pathName.endsWith("/compatibility.md")) return fixtures.compatibilityMd !== null;
   if (pathName.includes("docs.guides.po")) {
     return fixtures.guidesPo !== null;
   }
@@ -231,6 +234,7 @@ function cacheFixtureFor(pathName: string): Record<string, string> | null {
 
 /** Markdown payload fixture for API and guide paths. */
 function fixtureMarkdownContents(pathName: string): string {
+  if (pathName.endsWith("/compatibility.md")) return fixtures.compatibilityMd ?? "";
   return pathName.includes("/api/") ? fixtures.apiMd : fixtures.guideMd;
 }
 
@@ -258,6 +262,7 @@ beforeEach(() => {
     chromeLeaves: [],
     glossaryTerms: [],
     guideMd: GUIDE_MD,
+    compatibilityMd: null,
     apiMd: API_MD,
     homeMd: "",
     demoI18nJson: {},
@@ -362,6 +367,16 @@ describe("apiDrift", () => {
 });
 
 describe("top-level drift check", () => {
+  test("reports an untranslated compatibility page as guide drift", async () => {
+    fixtures.compatibilityMd = "# Compatibility\n\nTarget support matrix";
+
+    await import("./check-locale-drift.ts");
+
+    expect(errText()).toContain("docs/compatibility.md");
+    expect(errText()).toContain("[docs.guides]");
+    expect(process.exitCode).toBe(1);
+  });
+
   test("logs success and exits 0 when everything is cached", async () => {
     fixtures.guideFiles = ["intro.md"];
     fixtures.apiFiles = ["page.md"];

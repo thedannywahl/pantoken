@@ -19,6 +19,16 @@ test("guide markdown changes expand to every locale guide page", () => {
   });
 });
 
+test("compatibility page changes expand to its future localized pages", () => {
+  expect(
+    resolveChangedDocs([{ status: "M", path: "docs/compatibility.md" }], { locales: LOCALES }),
+  ).toEqual({
+    scope: "subset",
+    pages: ["compatibility.md", "fr/compatibility.md", "hu/compatibility.md"],
+    surfaces: ["docs.guides"],
+  });
+});
+
 test("home page changes expand to every locale home page", () => {
   expect(
     resolveChangedDocs([{ status: "M", path: "docs/index.md" }], { locales: LOCALES }),

@@ -86,6 +86,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   // Heading-anchored terms (`## Term`) — cssdoc doc-block sections and the API/CSS overview pages.
   { id: "accessibilityHeading", kind: "heading", term: "Accessibility" },
   { id: "usageHeading", kind: "heading", term: "Usage" },
+  { id: "compatibilityHeading", kind: "heading", term: "Compatibility" },
   { id: "demoHeading", kind: "heading", term: "Demo" },
   { id: "structureHeading", kind: "heading", term: "Structure" },
   { id: "slotsHeading", kind: "heading", term: "Slots" },

@@ -54,7 +54,7 @@
   "spaces": {
     "docs.guides": {
       "kind": "content",
-      "include": ["docs/guide/**/*.md"],
+      "include": ["docs/guide/**/*.md", "docs/compatibility.md"],
       "root": "docs",
       "render": "docs/{locale}/guide/{path}",
       "transientRender": false,

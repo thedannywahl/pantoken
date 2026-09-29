@@ -31,5 +31,6 @@ if (result.status !== 0) process.exit(result.status ?? 1);
 // at import (top-level side effects).
 await import("./style-api-badges.ts");
 await import("./write-api-overview.ts");
+await (await import("./write-api-compatibility.ts")).writeApiCompatibility();
 
 if (process.env.DOCS_API_REFRESH_CATALOG === "1") refreshApiPot({ force: true });
