@@ -1,0 +1,58 @@
+> 38 remain explicitly **unverified**, not given inferred version ranges
+we should be verifying as many of those as possible, we need a plan to enumerate the mall.
+
+---
+
+Read-only planning research, thorough but concise. Follow .entire/graph-agent.md graph-first as applicable and using-entire provenance if relevant. Inspect current workspace files, not past summaries. Inventory ALL unverified `platforms/*` adapters in scripts/release/target-compatibility.json: exact exported mapper/output format, target version contract, existing test coverage, reproducible real-host/schema/compiler verification command or feasible fixture, CI feasibility and blockers. Distinguish genuine not-applicable from unverified. Do not invent minimum versions. Return a compact table with 11 package names and actual paths/functions, and any special platform dependencies (Canvas, Vanilla, Drupal etc.). No edits.
+
+---
+
+Read-only planning research, medium. Inspect CURRENT repo: vite.config.ts/CI target test pattern (WordPress), package scripts and current catalog pins for Astro/Panda/Tailwind/MUI/TinyMCE; where to place integration fixtures and CI matrix using vp, expected costs and how to avoid made-up future peer support. Confirm current repo conventions on coverage last, changesets even private, i18n English extraction without translation. Find risks in existing registry validation (e.g. verified claim needs testCommand but not execution). Return exact paths, test/CI commands and caveats. No edits; do not assume versions from prior research.
+
+---
+
+should this checkHost be abstracted to a generic that can be used against all the ones we can actually build/test?
+
+---
+
+Read-only quick research. User asks whether platforms/wordpress/scripts/check-host.ts should be abstracted into a generic for all buildable/testable adapters. Inspect current WordPress host code and neighboring actual adapter integration tests/helpers in platforms/, bundlers/, renderers/, and CI. Identify repeated infrastructure vs fundamentally host-specific logic, existing shared process/fixture utilities, candidate first second consumer, and smallest justified abstraction boundary; return exact paths and actionable recommendation with tests. Do NOT edit. Follow graph-first if code location unknown; named file is known.
+
+---
+
+Start implementation
+
+---
+
+once we get outside of web platforms (or even for some maybe we can start implementing mise for some of the management for compatibility and scaffolds. we had not done so before because everything was web-based and the pnpm workspace was able to manage it.
+
+---
+
+I'm installing XCode now, so let's focus on the other 35.
+
+---
+
+you're in a interactive shell for xcode.
+
+---
+
+iOS, watch, and TV simulators are still installing.
+
+---
+
+in the future skip the snyk check until all of them are done.
+
+---
+
+continue
+
+---
+
+xcode simulator installs are complete.
+
+---
+
+why are we not doing all the other stuff for iOS?
+
+---
+
+make a note to come back to this, let's finish the other web-based targets first.
