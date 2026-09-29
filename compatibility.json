@@ -209,8 +209,14 @@
       "path": "platforms/swift",
       "governedBy": "token-ir",
       "targetSupport": {
-        "target": "Swift",
-        "status": "unverified"
+        "target": "Swift iOS",
+        "format": "UIKit SwiftPM module",
+        "status": "environment-verified",
+        "testedEnvironments": [
+          "Xcode 27.0 (27A266a), Swift 6.4, iOS Simulator SDK 27.0, arm64 iOS 15 deployment target"
+        ],
+        "limitations": "Compiler/typecheck only; simulator runtime and optional asset catalogs untested. No watchOS or tvOS claim.",
+        "testCommand": "mise run verify:swift:host"
       }
     },
     {

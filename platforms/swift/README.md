@@ -47,6 +47,13 @@ with Command Line Tools. `mise run verify:swift:host` checks it against the iOS 
 requires full Xcode; syntax alone does not establish iOS compatibility. To generate a package in a
 chosen location, set `SWIFT_PACKAGE_OUT` and run `mise run scaffold:swift`.
 
+## Compatibility
+
+The generated UIKit module typechecks with Xcode 27.0 (Swift 6.4) against iOS Simulator SDK 27.0
+for an arm64 iOS 15 deployment target. This is **compiler-only evidence**, not an iOS 15 runtime
+guarantee. Simulator execution, optional `Icons.xcassets`, watchOS, and tvOS aren't verified. See
+the [compatibility matrix](https://pantoken.app/compatibility) for the tested environment.
+
 ## API
 
 - **`generateSwift(options): Promise<string>`** — emit Swift for a named theme (from the vendored

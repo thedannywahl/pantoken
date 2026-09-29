@@ -62,6 +62,14 @@ export type TargetSupport =
   | {
       target: string;
       format?: string;
+      status: "environment-verified";
+      testedEnvironments: string[];
+      limitations: string;
+      testCommand: string;
+    }
+  | {
+      target: string;
+      format?: string;
       status: "verified";
       minimum: string;
       testedThrough: string;
@@ -92,6 +100,15 @@ export function validateTargetSupport(
         !record.testedVersions.includes(record.testedThrough)
       ) {
         throw new Error(`Unsubstantiated target support claim: ${name}`);
+      }
+    } else if (record.status === "environment-verified") {
+      if (
+        !record.testCommand?.trim() ||
+        !record.limitations?.trim() ||
+        !record.testedEnvironments?.length ||
+        record.testedEnvironments.some((environment) => !environment.trim())
+      ) {
+        throw new Error(`Unsubstantiated target environment claim: ${name}`);
       }
     } else if (record.status === "not-applicable") {
       if (!record.reason?.trim()) throw new Error(`Missing N/A reason: ${name}`);
@@ -261,9 +278,11 @@ export function renderMarkdown(compat: Compatibility): string {
       const version =
         support.status === "verified"
           ? `\`${support.minimum}\` through \`${support.testedThrough}\` (verified)`
-          : support.status === "not-applicable"
-            ? `N/A: ${support.reason}`
-            : "Not yet verified";
+          : support.status === "environment-verified"
+            ? `Tested environment: ${support.testedEnvironments.map((environment) => `\`${environment}\``).join(", ")}. ${support.limitations}`
+            : support.status === "not-applicable"
+              ? `N/A: ${support.reason}`
+              : "Not yet verified";
       return `| \`${consumer.package}\` | \`${consumer.path}\` | ${consumer.governedBy} | ${support.target} | ${support.format ?? "—"} | ${version} |`;
     })
     .join("\n");

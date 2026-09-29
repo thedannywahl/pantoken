@@ -71,6 +71,27 @@ test("renderMarkdown identifies the bounded, verified WordPress host range", () 
   );
 });
 
+test("renderMarkdown labels a compiler check as environment evidence, not a host floor", () => {
+  const swift: Compatibility["consumers"][number] = {
+    package: "@pantoken/swift",
+    path: "platforms/swift",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "Swift iOS",
+      status: "environment-verified",
+      testedEnvironments: ["Xcode 27.0 / Swift 6.4 / iOS Simulator SDK 27.0"],
+      limitations: "No simulator runtime tested.",
+      testCommand: "mise run verify:swift:host",
+    },
+  };
+  const markdown = renderMarkdown({ ...SAMPLE, consumers: [swift] });
+  expect(markdown).toContain(
+    "Tested environment: `Xcode 27.0 / Swift 6.4 / iOS Simulator SDK 27.0`",
+  );
+  expect(markdown).toContain("No simulator runtime tested.");
+  expect(markdown).not.toContain("Minimum host version");
+});
+
 test("renderMarkdown renders a forwarded replacement and a frozen value", () => {
   const md = renderMarkdown({
     ...SAMPLE,
@@ -122,6 +143,21 @@ test("not-applicable status requires a reason", () => {
       "@pantoken/email": { target: "HTML email", status: "not-applicable", reason: "" },
     }),
   ).toThrow("Missing N/A reason");
+});
+
+test("environment evidence needs named toolchains and an explicit limitation", () => {
+  const name = "@pantoken/swift";
+  expect(() =>
+    validateTargetSupport([name], {
+      [name]: {
+        target: "Swift iOS",
+        status: "environment-verified",
+        testedEnvironments: [],
+        limitations: "Runtime not tested",
+        testCommand: "mise run verify:swift:host",
+      },
+    }),
+  ).toThrow("Unsubstantiated target environment claim");
 });
 
 // Integration: reads the repo's built provenance. Guarded so it no-ops before a build.

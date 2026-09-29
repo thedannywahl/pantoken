@@ -35,7 +35,16 @@
   "@pantoken/hugo": { "target": "Hugo", "status": "unverified" },
   "@pantoken/jekyll": { "target": "Jekyll", "status": "unverified" },
   "@pantoken/rust": { "target": "Rust", "status": "unverified" },
-  "@pantoken/swift": { "target": "Swift", "status": "unverified" },
+  "@pantoken/swift": {
+    "target": "Swift iOS",
+    "format": "UIKit SwiftPM module",
+    "status": "environment-verified",
+    "testedEnvironments": [
+      "Xcode 27.0 (27A266a), Swift 6.4, iOS Simulator SDK 27.0, arm64 iOS 15 deployment target"
+    ],
+    "limitations": "Compiler/typecheck only; simulator runtime and optional asset catalogs untested. No watchOS or tvOS claim.",
+    "testCommand": "mise run verify:swift:host"
+  },
   "@pantoken/vanilla": { "target": "Vanilla Forums", "status": "unverified" },
   "@pantoken/wordpress": {
     "target": "WordPress block themes",

@@ -49,3 +49,20 @@ test("verified claims identify the minimum and latest tested host release", () =
     units.some((unit) => unit.kind === "prose" && unit.text.includes("Minimum host version")),
   ).toBe(true);
 });
+
+test("compiler-only evidence does not imply a Swift or iOS version floor", () => {
+  const page = withCompatibility("# swift\n", {
+    ...consumer,
+    package: "@pantoken/swift",
+    targetSupport: {
+      target: "Swift iOS",
+      status: "environment-verified",
+      testedEnvironments: ["Xcode 27.0 / Swift 6.4 / iOS Simulator SDK 27.0"],
+      limitations: "No simulator runtime tested.",
+      testCommand: "mise run verify:swift:host",
+    },
+  });
+  expect(page).toContain("Tested environment: `Xcode 27.0 / Swift 6.4 / iOS Simulator SDK 27.0`");
+  expect(page).toContain("No simulator runtime tested.");
+  expect(page).not.toContain("Minimum host version");
+});
