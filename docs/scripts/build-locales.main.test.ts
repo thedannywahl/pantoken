@@ -1,26 +1,30 @@
 import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test";
 
-interface SpawnResult {
-  status: number;
-}
-
-const cpSync = vi.fn();
+// The build now uses async `spawn`, so the stub replays close/error events on next tick.
+const spawnResult = { status: 0 };
+const spawn = vi.fn((..._args: unknown[]) => {
+  const handlers = new Map<string, (code: number) => void>();
+  queueMicrotask(() => handlers.get("close")?.(spawnResult.status));
+  return { on: (event: string, handler: (code: number) => void) => handlers.set(event, handler) };
+});
 const existsSync = vi.fn<(path: string) => boolean>();
 const mkdirSync = vi.fn();
 const readdirSync = vi.fn<(path: string) => string[]>();
 const readFileSync = vi.fn<(path: string) => string>();
+const renameSync = vi.fn();
 const rmSync = vi.fn();
-const spawnSync = vi.fn<(...args: unknown[]) => SpawnResult>();
+const statSync = vi.fn(() => ({ isDirectory: () => true }));
 const writeFileSync = vi.fn();
 
-vi.mock("node:child_process", () => ({ spawnSync }));
+vi.mock("node:child_process", () => ({ spawn }));
 vi.mock("node:fs", () => ({
-  cpSync,
   existsSync,
   mkdirSync,
   readdirSync,
   readFileSync,
+  renameSync,
   rmSync,
+  statSync,
   writeFileSync,
 }));
 vi.mock("../.vitepress/i18n.ts", () => ({
@@ -44,11 +48,13 @@ beforeEach(() => {
   delete process.env.DOCS_CHANGED_PAGES_FILE;
   delete process.env.DOCS_DIST_DIR;
   delete process.env.DOCS_LOCALES;
-  existsSync.mockReturnValue(true);
+  // Staging paths resolve; the destination doesn't, so each locale takes mergeMove's rename
+  // fast path rather than recursing.
+  existsSync.mockImplementation((path) => !String(path).includes(".vitepress/dist"));
   // No shared JS chunks in these fixtures — assertScopedLocaleConfig's own logic is covered
   // separately; these tests only care about the build/merge flow around it.
   readdirSync.mockReturnValue([]);
-  spawnSync.mockReturnValue({ status: 0 });
+  spawnResult.status = 0;
   logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
 });
 
@@ -72,8 +78,8 @@ test("CLI builds requested locales and merges their deploy metadata", async () =
   await import("./build-locales.ts");
   await vi.waitFor(() => expect(logSpy).toHaveBeenCalled());
 
-  expect(spawnSync).toHaveBeenCalledTimes(2);
-  expect(cpSync).toHaveBeenCalledTimes(2);
+  expect(spawn).toHaveBeenCalledTimes(2);
+  expect(renameSync).toHaveBeenCalledTimes(2);
   expect(writeFileSync).toHaveBeenCalledWith(
     expect.stringMatching(/hashmap\.json$/u),
     '{"hu_guide_cli.md":"hu.js","guide_cli.md":"root.js"}',
@@ -101,7 +107,7 @@ test("CLI overlays partial locale output onto a base deployment", async () => {
   await import("./build-locales.ts");
   await vi.waitFor(() => expect(logSpy).toHaveBeenCalled());
 
-  expect(spawnSync).toHaveBeenCalledTimes(1);
+  expect(spawn).toHaveBeenCalledTimes(1);
   expect(writeFileSync).toHaveBeenCalledWith(
     expect.stringMatching(/hashmap\.json$/u),
     '{"guide_cli.md":"old.js","hu_guide_cli.md":"new.js"}',
@@ -121,7 +127,7 @@ test("CLI skips work when a partial build has no changed pages", async () => {
   await import("./build-locales.ts");
   await vi.waitFor(() => expect(logSpy).toHaveBeenCalledWith("No locales to build."));
 
-  expect(spawnSync).not.toHaveBeenCalled();
+  expect(spawn).not.toHaveBeenCalled();
   expect(rmSync).not.toHaveBeenCalled();
 });
 
@@ -132,11 +138,11 @@ test("CLI stops when a locale build fails", async () => {
   });
   process.argv = ["node", MODULE_PATH];
   process.env.DOCS_LOCALES = "hu";
-  spawnSync.mockReturnValue({ status: 1 });
+  spawnResult.status = 1;
 
   await import("./build-locales.ts");
   await vi.waitFor(() => expect(errorSpy).toHaveBeenCalledWith("✗ hu: build failed"));
 
   expect(exitSpy).toHaveBeenCalledWith(1);
-  expect(cpSync).not.toHaveBeenCalled();
+  expect(renameSync).not.toHaveBeenCalled();
 });
