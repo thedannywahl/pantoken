@@ -297,6 +297,28 @@ test("flags a future Svelte release for action compilation review", async () => 
   expect(await pendingRelease(svelte)).toMatchObject({ version: "5.57.2" });
 });
 
+test("flags a future Angular release for custom-element schema review", async () => {
+  const angular: ConsumerEntry = {
+    package: "@pantoken/angular",
+    path: "renderers/angular",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "Angular",
+      format: "CUSTOM_ELEMENTS_SCHEMA template compilation",
+      status: "verified",
+      minimum: "16.2.12",
+      testedThrough: "22.2.0",
+      testedVersions: ["16.2.12", "22.2.0"],
+      testCommand: "vp run @pantoken/angular#check:compatibility",
+    },
+  };
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({ ok: true, json: async () => ({ version: "22.2.1" }) }),
+  );
+  expect(await pendingRelease(angular)).toMatchObject({ version: "22.2.1" });
+});
+
 test("flags a future webpack release without widening emitted asset support", async () => {
   const webpack: ConsumerEntry = {
     package: "@pantoken/webpack",

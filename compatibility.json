@@ -258,7 +258,12 @@
       "governedBy": "token-ir",
       "targetSupport": {
         "target": "Angular",
-        "status": "unverified"
+        "format": "CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 / TS 6.0.3)",
+        "status": "verified",
+        "minimum": "16.2.12",
+        "testedThrough": "22.2.0",
+        "testedVersions": ["16.2.12", "22.2.0"],
+        "testCommand": "vp run @pantoken/angular#check:compatibility"
       }
     },
     {

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-29 23:34+0000\n"
+"PO-Revision-Date: 2026-09-29 23:41+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -16613,7 +16613,7 @@ msgstr ""
 #: renderers/angular/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Angular. Host compatibility has not yet been verified."
+msgid "Target: Angular. Current format: `CUSTOM_ELEMENTS_SCHEMA template compilation (Angular 16.2.12 / TS 5.1.6; Angular 22.2.0 / TS 6.0.3)`. Minimum host version: `16.2.12`. Tested through `22.2.0`. Newer releases require review."
 msgstr ""
 
 #: renderers/angular/src/index.md
