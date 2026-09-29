@@ -63,7 +63,12 @@
       "governedBy": "token-ir",
       "targetSupport": {
         "target": "Next.js",
-        "status": "unverified"
+        "format": "Production build transpiling and rendering Instructure UI 11.7.7 with React 19.3.0",
+        "status": "verified",
+        "minimum": "16.0.0",
+        "testedThrough": "16.3.7",
+        "testedVersions": ["16.0.0", "16.3.7"],
+        "testCommand": "vp run @pantoken/next#check:compatibility"
       }
     },
     {

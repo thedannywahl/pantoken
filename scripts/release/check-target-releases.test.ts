@@ -187,6 +187,28 @@ test("flags a future Starlight release for Astro site-build review", async () =>
   expect(await pendingRelease(astro)).toMatchObject({ version: "0.43.0" });
 });
 
+test("flags a future Next release without widening Instructure transpilation support", async () => {
+  const next: ConsumerEntry = {
+    package: "@pantoken/next",
+    path: "bundlers/next",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "Next.js",
+      format: "Production build transpiling and rendering Instructure UI 11.7.7 with React 19.3.0",
+      status: "verified",
+      minimum: "16.0.0",
+      testedThrough: "16.3.7",
+      testedVersions: ["16.0.0", "16.3.7"],
+      testCommand: "vp run @pantoken/next#check:compatibility",
+    },
+  };
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({ ok: true, json: async () => ({ version: "16.3.8" }) }),
+  );
+  expect(await pendingRelease(next)).toMatchObject({ version: "16.3.8" });
+});
+
 test("flags a future webpack release without widening emitted asset support", async () => {
   const webpack: ConsumerEntry = {
     package: "@pantoken/webpack",

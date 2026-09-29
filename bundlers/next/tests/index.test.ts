@@ -1,4 +1,5 @@
 import { expect, test } from "vite-plus/test";
+import { checkCompatibility } from "../scripts/check-compatibility.ts";
 import { withPantoken } from "../src/index.ts";
 
 test("adds the InstUI packages to transpilePackages", () => {
@@ -16,4 +17,8 @@ test("preserves existing config and transpilePackages, and dedupes", () => {
   expect(config.transpilePackages).toContain("foo");
   expect(config.transpilePackages).toContain("bar");
   expect(config.transpilePackages?.filter((p) => p === "@instructure/ui-icons")).toHaveLength(1);
+});
+
+test("rejects releases outside the verified Next major", async () => {
+  await expect(checkCompatibility("15.0.0")).rejects.toThrow("Invalid Next 16 release");
 });
