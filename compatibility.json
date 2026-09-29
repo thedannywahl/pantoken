@@ -288,7 +288,11 @@
       "governedBy": "token-ir",
       "targetSupport": {
         "target": "markdown-it",
-        "status": "unverified"
+        "status": "verified",
+        "minimum": "14.0.0",
+        "testedThrough": "15.0.2",
+        "testedVersions": ["14.0.0", "14.1.1", "14.2.0", "14.3.2", "15.0.2"],
+        "testCommand": "vp run @pantoken/markdown-it#check:compatibility"
       }
     },
     {

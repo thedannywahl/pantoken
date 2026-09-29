@@ -2,6 +2,7 @@ import { expect, test } from "vite-plus/test";
 import MarkdownIt from "markdown-it";
 import { simpleIcons } from "@pantoken/plugin-simple-icons";
 import { PROSE_CLASS, pantokenMarkdownIt } from "../src/index.ts";
+import { checkCompatibility } from "../scripts/check-compatibility.ts";
 import type { MarkdownItOptions } from "../src/index.ts";
 
 const render = (src: string, options: MarkdownItOptions = {}): string =>
@@ -69,4 +70,8 @@ test("leaves code spans alone (no text-child rewriting inside code)", () => {
 
 test("exports the prose-scope class name", () => {
   expect(PROSE_CLASS).toBe("pantoken-prose");
+});
+
+test("rejects unsupported parser releases before installing a target", async () => {
+  await expect(checkCompatibility("16.0.0")).rejects.toThrow("Invalid markdown-it release");
 });

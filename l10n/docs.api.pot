@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-29 18:51+0000\n"
+"PO-Revision-Date: 2026-09-29 19:07+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -17024,7 +17024,7 @@ msgstr ""
 #: renderers/markdown-it/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: markdown-it. Host compatibility has not yet been verified."
+msgid "Target: markdown-it. Minimum host version: `14.0.0`. Tested through `15.0.2`. Newer releases require review."
 msgstr ""
 
 #: renderers/markdown-it/src/index.md

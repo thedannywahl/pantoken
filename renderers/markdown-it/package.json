@@ -24,6 +24,7 @@
     "provenance": true
   },
   "scripts": {
+    "check:compatibility": "node scripts/check-compatibility.ts",
     "dev": "vp pack --watch",
     "test": "vp test",
     "check": "vp check"
@@ -42,7 +43,7 @@
     "vite-plus": "catalog:"
   },
   "peerDependencies": {
-    "markdown-it": ">=14"
+    "markdown-it": ">=14.0.0 <=15.0.2"
   },
   "engines": {
     "node": ">=22.18.0"

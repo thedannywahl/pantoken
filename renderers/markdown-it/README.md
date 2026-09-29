@@ -5,6 +5,12 @@ swatches, using the pantoken icon set. It ports the `@pantoken/rehype` and `@pan
 pipelines onto markdown-it and resolves each icon code through a chain: plugin `rehype` resolvers
 first, then any explicit `resolve`, then the built-in set.
 
+## Compatibility
+
+Verified with markdown-it 14.0.0 through 15.0.2, including a release from each intervening minor
+train. New releases need review before the tested range expands. See the
+[compatibility matrix](https://pantoken.app/compatibility) for exact releases.
+
 ## Install
 
 ```sh

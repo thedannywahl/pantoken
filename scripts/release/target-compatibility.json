@@ -38,7 +38,14 @@
   "@pantoken/css-in-js": { "target": "CSS-in-JS", "status": "unverified" },
   "@pantoken/docusaurus": { "target": "Docusaurus", "status": "unverified" },
   "@pantoken/foundation": { "target": "Foundation", "status": "unverified" },
-  "@pantoken/markdown-it": { "target": "markdown-it", "status": "unverified" },
+  "@pantoken/markdown-it": {
+    "target": "markdown-it",
+    "status": "verified",
+    "minimum": "14.0.0",
+    "testedThrough": "15.0.2",
+    "testedVersions": ["14.0.0", "14.1.1", "14.2.0", "14.3.2", "15.0.2"],
+    "testCommand": "vp run @pantoken/markdown-it#check:compatibility"
+  },
   "@pantoken/mintlify": { "target": "Mintlify", "status": "unverified" },
   "@pantoken/mui": { "target": "Material UI", "status": "unverified" },
   "@pantoken/pendo": { "target": "Pendo", "status": "unverified" },
