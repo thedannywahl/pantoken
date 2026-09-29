@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-29 20:24+0000\n"
+"PO-Revision-Date: 2026-09-29 20:58+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -485,7 +485,7 @@ msgstr ""
 #: bundlers/tailwind/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Tailwind CSS. Host compatibility has not yet been verified."
+msgid "Target: Tailwind CSS. Minimum host version: `4.0.17`. Tested through `4.3.3`. Newer releases require review."
 msgstr ""
 
 #: bundlers/tailwind/src/index.md
@@ -497,7 +497,7 @@ msgstr ""
 #: bundlers/tailwind/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-color-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
+msgid "Every token is exposed as a `var(--instui-*)` reference (not a concrete value), so Tailwind\nutilities like `bg-background-base` theme through the same CSS custom properties that\n`@pantoken/css` emits — light/dark and high-contrast all keep working."
 msgstr ""
 
 #: bundlers/tailwind/src/index.md

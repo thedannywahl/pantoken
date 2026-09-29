@@ -94,7 +94,11 @@
       "governedBy": "token-ir",
       "targetSupport": {
         "target": "Tailwind CSS",
-        "status": "unverified"
+        "status": "verified",
+        "minimum": "4.0.17",
+        "testedThrough": "4.3.3",
+        "testedVersions": ["4.0.17", "4.1.18", "4.2.4", "4.3.3"],
+        "testCommand": "vp run @pantoken/tailwind#check:compatibility"
       }
     },
     {

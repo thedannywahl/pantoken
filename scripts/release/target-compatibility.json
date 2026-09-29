@@ -9,7 +9,14 @@
     "testedVersions": ["8.0.0", "8.0.9", "8.1.14", "8.2.15", "8.3.11", "8.4.49", "8.5.28"],
     "testCommand": "vp run @pantoken/postcss#check:compatibility"
   },
-  "@pantoken/tailwind": { "target": "Tailwind CSS", "status": "unverified" },
+  "@pantoken/tailwind": {
+    "target": "Tailwind CSS",
+    "status": "verified",
+    "minimum": "4.0.17",
+    "testedThrough": "4.3.3",
+    "testedVersions": ["4.0.17", "4.1.18", "4.2.4", "4.3.3"],
+    "testCommand": "vp run @pantoken/tailwind#check:compatibility"
+  },
   "@pantoken/vite": {
     "target": "Vite",
     "status": "verified",

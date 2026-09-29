@@ -1,5 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { pantokenPreset } from "../src/index.ts";
+import { checkCompatibility } from "../scripts/check-compatibility.ts";
 
 test("maps semantic colors to var(--instui-color-*) references", () => {
   const { colors } = pantokenPreset().theme.extend;
@@ -20,4 +21,8 @@ test("primitives are opt-in", () => {
   const withPrims = pantokenPreset({ includePrimitives: true }).theme.extend.colors;
   expect(Object.keys(withPrims).length).toBeGreaterThan(Object.keys(base).length);
   expect(Object.keys(withPrims).some((k) => k.startsWith("primitive-"))).toBe(true);
+});
+
+test("rejects Tailwind releases outside the checked major", async () => {
+  await expect(checkCompatibility("5.0.0")).rejects.toThrow("Invalid Tailwind 4 release");
 });

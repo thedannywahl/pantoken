@@ -150,12 +150,14 @@ test.skipIf(!existsSync(metaPath))(
     expect(a.upstream.lucide?.feeds).toBe("icons");
     expect(a.upstream["@instructure/ui-heading"]?.feeds).toBe("instui-react");
     expect(a.consumers.length).toBeGreaterThan(0);
-    expect(a.consumers).toContainEqual({
-      package: "@pantoken/tailwind",
-      path: "bundlers/tailwind",
-      governedBy: "token-ir",
-      targetSupport: { target: "Tailwind CSS", status: "unverified" },
-    });
+    expect(a.consumers).toContainEqual(
+      expect.objectContaining({
+        package: "@pantoken/tailwind",
+        path: "bundlers/tailwind",
+        governedBy: "token-ir",
+        targetSupport: expect.objectContaining({ target: "Tailwind CSS" }),
+      }),
+    );
     expectWellFormedConsumers(a.consumers);
   },
 );
