@@ -116,13 +116,18 @@ export const mergeSitemapUrls = (documents: readonly string[]): string[] => {
  * A failed locale build, carrying the child's exit code. Thrown rather than exiting inside the
  * child's `close` handler: that runs outside the awaited chain, so exiting there escapes as an
  * uncaught exception instead of a rejection the caller can act on.
+ *
+ * Fields are declared and assigned explicitly — these scripts run under `node script.ts`, whose
+ * strip-only type removal rejects TypeScript parameter properties.
  */
 class LocaleBuildError extends Error {
-  constructor(
-    readonly locale: string,
-    readonly code: number,
-  ) {
+  readonly locale: string;
+  readonly code: number;
+
+  constructor(locale: string, code: number) {
     super(`${locale}: build failed`);
+    this.locale = locale;
+    this.code = code;
     this.name = "LocaleBuildError";
   }
 }
