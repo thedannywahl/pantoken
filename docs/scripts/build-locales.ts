@@ -8,14 +8,17 @@
  * (`__ASSETS_DIR__`), so the only way to split it is to build each locale separately with its own
  * `assets/<locale>/` and merge the results. Each locale lands near 1,800 files.
  *
- * Builds run serially: VitePress derives its scratch directory from the project root
- * (`.vitepress/.temp`) with no way to override it, so concurrent builds in the same docs root would
- * clobber each other.
+ * Locales can build concurrently. VitePress 2.0.0-alpha.20 keeps no per-root scratch directory that
+ * two builds would fight over — verified by diffing two concurrent locale builds against the same
+ * pair built serially, byte for byte. Concurrency stays opt-in via the env var below because the
+ * ceiling is memory, not correctness: each build inherits the deploy job's heap ceiling.
  *
  * Env:
  *   DOCS_LOCALES    Restrict the non-root locales (tags, tiers, `-` subtraction). See
  *                   `parseRequestedLocales`. The root locale is always built — it owns the site
  *                   shell, `index.html`, `404.html`, and `llms.txt`.
+ *   DOCS_BUILD_LOCALE_CONCURRENCY
+ *                   How many locales to build at once. Defaults to 1 (serial).
  *   DOCS_DIST_DIR   Final merged output. Defaults to `.vitepress/dist`.
  *   DOCS_CHANGED_PAGES_FILE
  *                   A partial build: only the locales owning a changed page get built, and the
@@ -24,14 +27,15 @@
  *                   `hashmap.json` and `sitemap.xml` forward, so overlaying the partial output
  *                   doesn't replace a whole-site index with a two-page one.
  */
-import { spawnSync } from "node:child_process";
+import { spawn } from "node:child_process";
 import {
-  cpSync,
   existsSync,
   mkdirSync,
   readdirSync,
   readFileSync,
+  renameSync,
   rmSync,
+  statSync,
   writeFileSync,
 } from "node:fs";
 import { createRequire } from "node:module";
@@ -50,7 +54,10 @@ const isPageChunk = (name: string): boolean => /\.md\.[^./]+\.(lean\.)?js$/u.tes
 
 /** Throws if a locale's shared site-data chunks embed another locale's nav or exceed the size cap. */
 export function assertScopedLocaleConfig(localeDistDir: string, locale: string): void {
-  const assetsDir = join(localeDistDir, "assets");
+  // `assetsDir` is `assets/<locale>` (see config.ts), so the chunks sit one level below `assets/`.
+  // Reading `assets/` directly only ever returned the locale directory name, which made every
+  // filter below match nothing and the guard silently pass.
+  const assetsDir = join(localeDistDir, "assets", locale);
   if (!existsSync(assetsDir)) return;
   const sharedChunkNames = readdirSync(assetsDir).filter(
     (name) => name.endsWith(".js") && !isPageChunk(name),
@@ -105,6 +112,55 @@ export const mergeSitemapUrls = (documents: readonly string[]): string[] => {
   return [...byLoc.values()];
 };
 
+/**
+ * A failed locale build, carrying the child's exit code. Thrown rather than exiting inside the
+ * child's `close` handler: that runs outside the awaited chain, so exiting there escapes as an
+ * uncaught exception instead of a rejection the caller can act on.
+ */
+class LocaleBuildError extends Error {
+  constructor(
+    readonly locale: string,
+    readonly code: number,
+  ) {
+    super(`${locale}: build failed`);
+    this.name = "LocaleBuildError";
+  }
+}
+
+/** Run `work` over `items`, keeping at most `limit` in flight. */
+export async function runPool<T>(
+  items: readonly T[],
+  limit: number,
+  work: (item: T) => Promise<void>,
+): Promise<void> {
+  const queue = [...items];
+  const workers = Array.from({ length: Math.min(Math.max(limit, 1), queue.length) }, async () => {
+    for (let next = queue.shift(); next !== undefined; next = queue.shift()) await work(next);
+  });
+  await Promise.all(workers);
+}
+
+/**
+ * Merge `from` into `to` by moving, not copying. Staging and dist share a filesystem and staging is
+ * discarded straight after, so copying ~170k files writes every byte twice and then deletes it.
+ * Whole subtrees rename in one operation whenever the destination is free, which is the common case
+ * — locales own disjoint `<locale>/` and `assets/<locale>/` trees and only collide at the root.
+ */
+export function mergeMove(from: string, to: string): void {
+  if (!existsSync(from)) return;
+  if (!existsSync(to)) {
+    mkdirSync(dirname(to), { recursive: true });
+    renameSync(from, to);
+    return;
+  }
+  if (!statSync(to).isDirectory() || !statSync(from).isDirectory()) {
+    rmSync(to, { recursive: true, force: true });
+    renameSync(from, to);
+    return;
+  }
+  for (const entry of readdirSync(from)) mergeMove(join(from, entry), join(to, entry));
+}
+
 /** Wrap merged `<url>` entries in a sitemap document. */
 export const renderSitemap = (urls: readonly string[]): string =>
   `<?xml version="1.0" encoding="UTF-8"?>\n` +
@@ -139,29 +195,52 @@ async function main(): Promise<void> {
   mkdirSync(distDir, { recursive: true });
 
   const plural = (count: number): string => (count === 1 ? "locale" : "locales");
-  console.log(`📋 Building ${locales.length} ${plural(locales.length)}`);
+  const concurrency = Math.max(1, Number(process.env.DOCS_BUILD_LOCALE_CONCURRENCY) || 1);
+  console.log(
+    `📋 Building ${locales.length} ${plural(locales.length)} (concurrency ${concurrency})`,
+  );
 
   const timings: { locale: string; seconds: number }[] = [];
   const buildsStarted = Date.now();
+  let completed = 0;
 
-  for (const [index, locale] of locales.entries()) {
-    const started = Date.now();
-    const result = spawnSync(process.execPath, [vitepressBin, "build"], {
-      stdio: "inherit",
-      env: { ...process.env, DOCS_LOCALE: locale, DOCS_OUT_DIR: join(stagingDir, locale) },
+  const buildLocale = (locale: string): Promise<void> =>
+    new Promise((settle, fail) => {
+      const started = Date.now();
+      const child = spawn(process.execPath, [vitepressBin, "build"], {
+        stdio: "inherit",
+        env: { ...process.env, DOCS_LOCALE: locale, DOCS_OUT_DIR: join(stagingDir, locale) },
+      });
+      child.on("error", fail);
+      child.on("close", (code) => {
+        if (code !== 0) {
+          fail(new LocaleBuildError(locale, code ?? 1));
+          return;
+        }
+        assertScopedLocaleConfig(join(stagingDir, locale), locale);
+        const elapsed = (Date.now() - started) / 1000;
+        timings.push({ locale, seconds: Number(elapsed.toFixed(1)) });
+        completed += 1;
+        console.log(
+          `✓ ${locale}: built in ${elapsed.toFixed(1)}s (${completed}/${locales.length})`,
+        );
+        settle();
+      });
     });
-    if (result.status !== 0) {
-      console.error(`✗ ${locale}: build failed`);
-      process.exit(result.status ?? 1);
-    }
-    assertScopedLocaleConfig(join(stagingDir, locale), locale);
-    const elapsed = (Date.now() - started) / 1000;
-    timings.push({ locale, seconds: Number(elapsed.toFixed(1)) });
-    console.log(`✓ ${locale}: built in ${elapsed.toFixed(1)}s (${index + 1}/${locales.length})`);
-  }
 
-  for (const locale of locales) {
-    cpSync(join(stagingDir, locale), distDir, { recursive: true });
+  // `orderRootLast` already puts root at the end; draining before it keeps the one build that loads
+  // the llms plugin — and is reliably the slowest — off a shared runner with anything else.
+  try {
+    await runPool(
+      locales.filter((locale) => locale !== "root"),
+      concurrency,
+      buildLocale,
+    );
+    if (locales.includes("root")) await buildLocale("root");
+  } catch (error) {
+    if (!(error instanceof LocaleBuildError)) throw error;
+    console.error(`✗ ${error.locale}: build failed`);
+    process.exit(error.code);
   }
 
   const readText = (path: string): string => (existsSync(path) ? readFileSync(path, "utf8") : "");
@@ -170,6 +249,9 @@ async function main(): Promise<void> {
     return text ? (JSON.parse(text) as object) : {};
   };
 
+  // Read both root-level artifacts out of staging BEFORE merging — the merge moves those files, so
+  // reading after it would find nothing and silently emit an empty hashmap and a bare sitemap.
+  //
   // The client router refetches /hashmap.json when a page module fails to load, so the merged map
   // has to cover every locale. Page keys are locale-prefixed (`hu_guide_cli.md`), so the union is
   // collision-free.
@@ -178,16 +260,25 @@ async function main(): Promise<void> {
     baseDist ? readJson(join(baseDist, "hashmap.json")) : {},
     ...locales.map((locale) => readJson(join(stagingDir, locale, "hashmap.json"))),
   ) as Record<string, string>;
-  writeFileSync(join(distDir, "hashmap.json"), JSON.stringify(hashmap));
 
   const urls = mergeSitemapUrls([
     ...(baseDist ? [readText(join(baseDist, "sitemap.xml"))] : []),
     ...locales.map((locale) => readText(join(stagingDir, locale, "sitemap.xml"))),
   ]);
+
+  const mergeStarted = Date.now();
+  for (const locale of locales) {
+    mergeMove(join(stagingDir, locale), distDir);
+  }
+
+  writeFileSync(join(distDir, "hashmap.json"), JSON.stringify(hashmap));
   writeFileSync(join(distDir, "sitemap.xml"), renderSitemap(urls));
 
   rmSync(stagingDir, { recursive: true, force: true });
-  console.log(`✨ Merged ${locales.length} ${plural(locales.length)} into ${distDir}`);
+  const mergeSeconds = (Date.now() - mergeStarted) / 1000;
+  console.log(
+    `✨ Merged ${locales.length} ${plural(locales.length)} into ${distDir} in ${mergeSeconds.toFixed(1)}s`,
+  );
   console.log(`   ${Object.keys(hashmap).length} pages, ${urls.length} sitemap entries`);
 
   // CI uploads this as an artifact so locale build times can be compared across deploys — the
@@ -198,6 +289,7 @@ async function main(): Promise<void> {
       {
         generatedAt: new Date().toISOString(),
         totalSeconds: Number(((Date.now() - buildsStarted) / 1000).toFixed(1)),
+        mergeSeconds: Number(mergeSeconds.toFixed(1)),
         locales: timings,
       },
       null,

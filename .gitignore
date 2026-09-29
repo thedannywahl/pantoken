@@ -41,6 +41,7 @@ docs/docs/.vitepress/.temp/
 docs/.vitepress/cf-worker-dist/
 docs/.vitepress/cf-r2-assets/
 docs/.vitepress/cloudflare-deploy-manifest.json
+docs/.vitepress/build-timings.json
 docs/public/
 !docs/public/
 docs/public/*

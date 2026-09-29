@@ -263,6 +263,10 @@ jobs:
           # its rendered HTML and Vue SSR context alive; at ~39k pages that peak is what overshot the
           # runner's RAM. See the `buildConcurrency` note in docs/.vitepress/config.ts.
           DOCS_BUILD_CONCURRENCY: "12"
+          # Two locale builds at a time on a 4-core runner. Correctness is settled (concurrent and
+          # serial outputs were diffed byte-for-byte); the limit here is memory, since each build
+          # inherits the heap ceiling below. Start low and raise it against real timings.
+          DOCS_BUILD_LOCALE_CONCURRENCY: "2"
           # Sits below the 16 GB the runner actually has, so V8 collects under pressure instead of
           # letting the kernel kill the runner agent. Raised from 8192 once already; the memory that
           # made 8192 fail was mostly the local-search index, which no longer covers the translated
