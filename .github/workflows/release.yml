@@ -2,7 +2,9 @@ name: Release
 
 # Automated releases via the changesets action. On push to main:
 #  - with pending changesets, it opens/updates a "Version Packages" PR (runs `changeset version` →
-#    version bumps + per-package CHANGELOGs);
+#    version bumps + per-package CHANGELOGs) and sets that PR to auto-merge. Merging the feature PR
+#    is the human gate; the Version PR is derived entirely from changesets reviewed there, so the
+#    required checks gate it rather than a second review;
 #  - once that PR merges (no changesets left), it publishes the bumped packages to npm with provenance
 #    (via `release:publish` → scripts/release/publish-npm.ts, the npm CLI) and cuts a GitHub release per
 #    package from the script's `New tag:` stdout. That path also uploads a `docs-deploy-request`
@@ -12,14 +14,18 @@ name: Release
 # not an `NPM_TOKEN`. Requires (one-time):
 #  - repo Settings → Actions → General → Workflow permissions → "Allow GitHub Actions to create and
 #    approve pull requests" (so the action can open the Version PR);
+#  - repo Settings → General → "Allow auto-merge", plus at least one required status check on `main`
+#    (the ruleset requires `ci-gate`, `changeset-gate`, and `codecov/patch`) — auto-merge needs
+#    something to wait on, or the Version PR just sits there;
 #  - a trusted publisher for EACH published package on npmjs.com (package → Settings → Trusted Publisher:
 #    GitHub Actions, repo `thedannywahl/pantoken`, workflow `release.yml`). A package with no trusted
 #    publisher 404s on publish; the script logs it and continues, so the rest still ship;
 #  - a `RELEASE_PAT` secret: a fine-grained personal access token scoped to this repo with Contents:
 #    read/write + Pull requests: read/write. The Version PR is opened (and its branch pushed) with this
-#    token so CI runs on it automatically. PRs authored by the built-in GITHUB_TOKEN don't trigger
-#    workflows — their checks sit in `action_required` and need a manual click. The PAT is git/PR auth
-#    only; it has nothing to do with npm publishing, which stays OIDC/token-free.
+#    token so CI runs on it automatically, and auto-merged with it so the merge commit triggers this
+#    workflow's publish pass. PRs authored (or merges performed) by the built-in GITHUB_TOKEN don't
+#    trigger workflows — their checks sit in `action_required` and need a manual click. The PAT is
+#    git/PR auth only; it has nothing to do with npm publishing, which stays OIDC/token-free.
 
 on:
   push:
@@ -193,6 +199,7 @@ jobs:
         run: vp run gate:i18n
 
       - name: Create Version PR or publish
+        id: changesets
         uses: changesets/action@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
         with:
           version-script: vp run release:version
@@ -216,6 +223,24 @@ jobs:
           # npm auth is separate (OIDC), so this token doesn't touch publishing.
           GITHUB_TOKEN: ${{ secrets.RELEASE_PAT }}
           NPM_CONFIG_PROVENANCE: "true"
+
+      # The Version PR holds nothing to review: `changeset version` derives every line of it from the
+      # changesets that were already reviewed on the feature PR, and `fallow-baseline.json` is
+      # regenerated from a tree that already passed `health:fallow`. Merging the feature PR is the
+      # human gate; this second hop is bookkeeping, so let the required checks gate it instead of a
+      # person.
+      #
+      # RELEASE_PAT, not GITHUB_TOKEN: auto-merge commits as whoever enabled it, and a merge
+      # attributed to the built-in token would not trigger `on: push`. The Version PR would land,
+      # versions would bump, and this workflow would never re-run to publish — a silent stall.
+      - name: Auto-merge the Version PR
+        # `pr-number`, not `pullRequestNumber` — v2 renamed the outputs to kebab-case, and a wrong
+        # name here fails open: the `if` reads empty, the step skips, and nothing errors.
+        if: steps.changesets.outputs['pr-number']
+        env:
+          GH_TOKEN: ${{ secrets.RELEASE_PAT }}
+          PR: ${{ steps.changesets.outputs['pr-number'] }}
+        run: gh pr merge "$PR" --squash --auto --repo "$GITHUB_REPOSITORY"
 
       # Attach SLSA provenance to each new GitHub release so Scorecard's Signed-Releases check detects
       # signing. publish-npm.ts packs each published package into $RUNNER_TEMP/pantoken-packs/*.tgz and
