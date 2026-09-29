@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-29 23:22+0000\n"
+"PO-Revision-Date: 2026-09-29 23:28+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -17462,7 +17462,7 @@ msgstr ""
 #: renderers/react-markdown/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: react-markdown. Host compatibility has not yet been verified."
+msgid "Target: react-markdown. Current format: `SSR-rendered InstUI heading, icon, and color swatch with React 19.3.0`. Minimum host version: `10.1.0`. Tested through `10.1.0`. Newer releases require review."
 msgstr ""
 
 #: renderers/react-markdown/src/index.md

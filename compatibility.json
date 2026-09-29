@@ -410,7 +410,12 @@
       "governedBy": "instui-react",
       "targetSupport": {
         "target": "react-markdown",
-        "status": "unverified"
+        "format": "SSR-rendered InstUI heading, icon, and color swatch with React 19.3.0",
+        "status": "verified",
+        "minimum": "10.1.0",
+        "testedThrough": "10.1.0",
+        "testedVersions": ["10.1.0"],
+        "testCommand": "vp run @pantoken/react-markdown#check:compatibility"
       }
     },
     {

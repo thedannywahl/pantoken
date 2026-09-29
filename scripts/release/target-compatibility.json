@@ -147,7 +147,15 @@
     "testedVersions": ["19.3.0"],
     "testCommand": "vp run @pantoken/react#check:compatibility"
   },
-  "@pantoken/react-markdown": { "target": "react-markdown", "status": "unverified" },
+  "@pantoken/react-markdown": {
+    "target": "react-markdown",
+    "format": "SSR-rendered InstUI heading, icon, and color swatch with React 19.3.0",
+    "status": "verified",
+    "minimum": "10.1.0",
+    "testedThrough": "10.1.0",
+    "testedVersions": ["10.1.0"],
+    "testCommand": "vp run @pantoken/react-markdown#check:compatibility"
+  },
   "@pantoken/react-native": { "target": "React Native", "status": "unverified" },
   "@pantoken/rehype": {
     "target": "rehype",

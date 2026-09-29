@@ -253,6 +253,28 @@ test("flags a future Vue release for SSR compatibility review", async () => {
   expect(await pendingRelease(vue)).toMatchObject({ version: "3.5.44" });
 });
 
+test("flags a future react-markdown release for InstUI SSR review", async () => {
+  const reactMarkdown: ConsumerEntry = {
+    package: "@pantoken/react-markdown",
+    path: "renderers/react-markdown",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "react-markdown",
+      format: "SSR-rendered InstUI heading, icon, and color swatch with React 19.3.0",
+      status: "verified",
+      minimum: "10.1.0",
+      testedThrough: "10.1.0",
+      testedVersions: ["10.1.0"],
+      testCommand: "vp run @pantoken/react-markdown#check:compatibility",
+    },
+  };
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({ ok: true, json: async () => ({ version: "10.1.1" }) }),
+  );
+  expect(await pendingRelease(reactMarkdown)).toMatchObject({ version: "10.1.1" });
+});
+
 test("flags a future webpack release without widening emitted asset support", async () => {
   const webpack: ConsumerEntry = {
     package: "@pantoken/webpack",
