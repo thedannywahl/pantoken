@@ -90,6 +90,10 @@ know what's in place:
   for a few days.
 - **Pinned actions.** CI workflows pin third-party GitHub Actions to commit SHAs, and Renovate keeps
   those pins current (as digests).
+- **Target release review.** A scheduled workflow checks WordPress and declared npm peers for stable
+  releases and opens review issues with `issues: write` permission. Feed data is never executed or
+  accepted as a compatibility claim; the supported-version record changes only after integration
+  checks and a reviewed PR. Other targets require manual release monitoring.
 - **Pinned build-time downloads.** The only asset the build fetches outside the package manager is the
   set of Noto script fonts the documentation social cards render in. Those come from URLs pinned to a
   single `google/fonts` commit and are checked against recorded SHA-256 digests before use; a

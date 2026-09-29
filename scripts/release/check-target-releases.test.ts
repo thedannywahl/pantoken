@@ -1,0 +1,91 @@
+import { afterEach, expect, test, vi } from "vite-plus/test";
+import { isNewer, pendingRelease, publishIssues } from "./check-target-releases.ts";
+import type { ConsumerEntry } from "./compatibility.ts";
+
+afterEach(() => {
+  vi.unstubAllGlobals();
+  vi.unstubAllEnvs();
+});
+
+const wordpress: ConsumerEntry = {
+  package: "@pantoken/wordpress",
+  path: "platforms/wordpress",
+  governedBy: "token-ir",
+  targetSupport: {
+    target: "WordPress block themes",
+    format: "theme.json v3",
+    status: "verified",
+    minimum: "6.6",
+    testedThrough: "7.1.2",
+    testedVersions: ["6.6", "7.1.2"],
+    testCommand: "vp run @pantoken/wordpress#check:compatibility",
+  },
+};
+
+test("compares numeric release trains without treating prereleases as supported", () => {
+  expect(isNewer("7.2", "7.1.2")).toBe(true);
+  expect(isNewer("7.1.1", "7.1.2")).toBe(false);
+  expect(isNewer("7.1.2", "7.1.2")).toBe(false);
+  expect(isNewer("8.0.0-beta.1", "7.1.2")).toBe(false);
+});
+
+test("flags a new WordPress release but not an already-verified release", async () => {
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ offers: [{ response: "upgrade", version: "7.2" }] }),
+    }),
+  );
+  expect(await pendingRelease(wordpress)).toMatchObject({
+    package: "@pantoken/wordpress",
+    version: "7.2",
+  });
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ offers: [{ response: "upgrade", version: "7.1.2" }] }),
+    }),
+  );
+  expect(await pendingRelease(wordpress)).toBeNull();
+});
+
+test("reports a release-feed failure", async () => {
+  vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false, status: 503 }));
+  await expect(pendingRelease(wordpress)).rejects.toThrow("HTTP 503");
+});
+
+const release = {
+  package: "@pantoken/wordpress",
+  path: "platforms/wordpress",
+  target: "WordPress block themes",
+  version: "7.2",
+  url: "https://wordpress.org/download/releases/",
+};
+
+test("does not duplicate an open review issue", async () => {
+  vi.stubEnv("GITHUB_TOKEN", "test-token");
+  vi.stubEnv("GITHUB_REPOSITORY", "owner/repo");
+  const fetchMock = vi.fn().mockResolvedValue({
+    ok: true,
+    json: async () => [{ title: "Compatibility review: @pantoken/wordpress / 7.2" }],
+  });
+  vi.stubGlobal("fetch", fetchMock);
+  await publishIssues([release]);
+  expect(fetchMock).toHaveBeenCalledTimes(1);
+});
+
+test("opens a review issue with the owning adapter path", async () => {
+  vi.stubEnv("GITHUB_TOKEN", "test-token");
+  vi.stubEnv("GITHUB_REPOSITORY", "owner/repo");
+  const fetchMock = vi
+    .fn()
+    .mockResolvedValueOnce({ ok: true, json: async () => [] })
+    .mockResolvedValueOnce({ ok: true });
+  vi.stubGlobal("fetch", fetchMock);
+  await publishIssues([release]);
+  const request = fetchMock.mock.calls[1]?.[1] as RequestInit;
+  expect(request.method).toBe("POST");
+  expect(JSON.parse(request.body as string).body).toContain("platforms/wordpress/src");
+});
