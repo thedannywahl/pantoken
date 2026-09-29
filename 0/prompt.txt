@@ -1,0 +1,5 @@
+now looking at how we do a docs deploy on merge to main and release we can eliminate one of those.
+
+---
+
+yes
