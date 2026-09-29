@@ -13,6 +13,7 @@ const npmTargets: Record<string, string> = {
   "@pantoken/markdown-it": "markdown-it",
   "@pantoken/react": "react",
   "@pantoken/react-markdown": "react-markdown",
+  "@pantoken/rehype": "rehype",
   "@pantoken/storybook": "@storybook/theming",
   "@pantoken/svelte": "svelte",
   "@pantoken/tinymce": "tinymce",
@@ -147,9 +148,11 @@ export async function checkTargetReleases(): Promise<void> {
         readFileSync(join(root, consumer.path, "package.json"), "utf8"),
       ) as {
         peerDependencies?: Record<string, string>;
+        devDependencies?: Record<string, string>;
       };
-      if (!manifest.peerDependencies?.[npm])
-        throw new Error(`Missing monitored peer: ${consumer.package} / ${npm}`);
+      if (!manifest.peerDependencies?.[npm] && !manifest.devDependencies?.[npm]) {
+        throw new Error(`Missing monitored dependency: ${consumer.package} / ${npm}`);
+      }
     }
     const release = await pendingRelease(consumer);
     if (release) pending.push(release);

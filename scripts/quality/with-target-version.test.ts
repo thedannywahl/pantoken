@@ -47,3 +47,14 @@ test("rejects a failed install and still removes the temporary project", async (
   );
   expect(rmSync).toHaveBeenCalledOnce();
 });
+
+test("installs companion packages for a real parser pipeline", async () => {
+  spawnSync.mockReturnValue({ status: 0 });
+  readFileSync.mockReturnValueOnce('{"version":"13.0.0"}');
+  await withTargetVersion("rehype", "13.0.0", async () => {}, ["rehype-raw@7.0.0"]);
+  expect(spawnSync).toHaveBeenCalledWith(
+    "vp",
+    ["add", "--ignore-scripts", "rehype@13.0.0", "rehype-raw@7.0.0"],
+    expect.objectContaining({ cwd: "/tmp/pantoken-target-test" }),
+  );
+});

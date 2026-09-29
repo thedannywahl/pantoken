@@ -359,7 +359,12 @@
       "governedBy": "token-ir",
       "targetSupport": {
         "target": "rehype",
-        "status": "unverified"
+        "format": "HAST + raw SVG",
+        "status": "verified",
+        "minimum": "13.0.0",
+        "testedThrough": "13.0.2",
+        "testedVersions": ["13.0.0", "13.0.1", "13.0.2"],
+        "testCommand": "vp run @pantoken/rehype#check:compatibility"
       }
     },
     {

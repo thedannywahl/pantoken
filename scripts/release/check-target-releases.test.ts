@@ -56,6 +56,27 @@ test("reports a release-feed failure", async () => {
   await expect(pendingRelease(wordpress)).rejects.toThrow("HTTP 503");
 });
 
+test("flags a future rehype release without claiming it as supported", async () => {
+  const rehype: ConsumerEntry = {
+    package: "@pantoken/rehype",
+    path: "renderers/rehype",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "rehype",
+      status: "verified",
+      minimum: "13.0.0",
+      testedThrough: "13.0.2",
+      testedVersions: ["13.0.0", "13.0.1", "13.0.2"],
+      testCommand: "vp run @pantoken/rehype#check:compatibility",
+    },
+  };
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({ ok: true, json: async () => ({ version: "13.0.3" }) }),
+  );
+  expect(await pendingRelease(rehype)).toMatchObject({ version: "13.0.3" });
+});
+
 const release = {
   package: "@pantoken/wordpress",
   path: "platforms/wordpress",

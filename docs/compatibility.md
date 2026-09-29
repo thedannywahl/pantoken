@@ -62,7 +62,7 @@ package consumes. The `@instructure/ui-*` React packages are used only by
 | `@pantoken/react`               | `renderers/react`               | token-ir     | React                  | —              | Not yet verified                     |
 | `@pantoken/react-markdown`      | `renderers/react-markdown`      | instui-react | react-markdown         | —              | Not yet verified                     |
 | `@pantoken/react-native`        | `renderers/react-native`        | token-ir     | React Native           | —              | Not yet verified                     |
-| `@pantoken/rehype`              | `renderers/rehype`              | token-ir     | rehype                 | —              | Not yet verified                     |
+| `@pantoken/rehype`              | `renderers/rehype`              | token-ir     | rehype                 | HAST + raw SVG | `13.0.0` through `13.0.2` (verified) |
 | `@pantoken/shadcn`              | `renderers/shadcn`              | token-ir     | shadcn/ui              | —              | Not yet verified                     |
 | `@pantoken/storybook`           | `renderers/storybook`           | token-ir     | Storybook              | —              | Not yet verified                     |
 | `@pantoken/svelte`              | `renderers/svelte`              | token-ir     | Svelte                 | —              | Not yet verified                     |
