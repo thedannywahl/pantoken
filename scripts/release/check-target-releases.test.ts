@@ -165,6 +165,28 @@ test("flags a future MUI release without widening createTheme support", async ()
   expect(await pendingRelease(mui)).toMatchObject({ version: "9.4.1" });
 });
 
+test("flags a future Starlight release for Astro site-build review", async () => {
+  const astro: ConsumerEntry = {
+    package: "@pantoken/astro",
+    path: "renderers/astro",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "Astro / Starlight",
+      format: "Built Starlight page with injected token stylesheet (Astro 5 and 7)",
+      status: "verified",
+      minimum: "0.35.0",
+      testedThrough: "0.42.4",
+      testedVersions: ["0.35.0", "0.42.4"],
+      testCommand: "vp run @pantoken/astro#check:compatibility",
+    },
+  };
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({ ok: true, json: async () => ({ version: "0.43.0" }) }),
+  );
+  expect(await pendingRelease(astro)).toMatchObject({ version: "0.43.0" });
+});
+
 test("flags a future webpack release without widening emitted asset support", async () => {
   const webpack: ConsumerEntry = {
     package: "@pantoken/webpack",

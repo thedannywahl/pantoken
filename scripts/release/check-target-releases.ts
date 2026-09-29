@@ -10,6 +10,7 @@ const npmTargets: Record<string, string> = {
   "@pantoken/vite": "vite",
   "@pantoken/webpack": "webpack",
   "@pantoken/angular": "@angular/core",
+  "@pantoken/astro": "@astrojs/starlight",
   "@pantoken/bootstrap": "bootstrap",
   "@pantoken/docusaurus": "@docusaurus/theme-classic",
   "@pantoken/foundation": "foundation-sites",

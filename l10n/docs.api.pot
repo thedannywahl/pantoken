@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-29 22:26+0000\n"
+"PO-Revision-Date: 2026-09-29 23:02+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -16655,7 +16655,7 @@ msgstr ""
 #: renderers/astro/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Astro. Host compatibility has not yet been verified."
+msgid "Target: Astro / Starlight. Current format: `Built Starlight page with injected token stylesheet (Astro 5 and 7)`. Minimum host version: `0.35.0`. Tested through `0.42.4`. Newer releases require review."
 msgstr ""
 
 #: renderers/astro/src/index.md

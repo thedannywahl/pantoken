@@ -64,7 +64,15 @@
     "testCommand": "vp run @pantoken/wordpress#check:compatibility"
   },
   "@pantoken/angular": { "target": "Angular", "status": "unverified" },
-  "@pantoken/astro": { "target": "Astro", "status": "unverified" },
+  "@pantoken/astro": {
+    "target": "Astro / Starlight",
+    "format": "Built Starlight page with injected token stylesheet (Astro 5 and 7)",
+    "status": "verified",
+    "minimum": "0.35.0",
+    "testedThrough": "0.42.4",
+    "testedVersions": ["0.35.0", "0.42.4"],
+    "testCommand": "vp run @pantoken/astro#check:compatibility"
+  },
   "@pantoken/bootstrap": {
     "target": "Bootstrap",
     "format": "CSS variables: body + primary button",

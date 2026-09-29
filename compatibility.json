@@ -261,8 +261,13 @@
       "path": "renderers/astro",
       "governedBy": "token-ir",
       "targetSupport": {
-        "target": "Astro",
-        "status": "unverified"
+        "target": "Astro / Starlight",
+        "format": "Built Starlight page with injected token stylesheet (Astro 5 and 7)",
+        "status": "verified",
+        "minimum": "0.35.0",
+        "testedThrough": "0.42.4",
+        "testedVersions": ["0.35.0", "0.42.4"],
+        "testCommand": "vp run @pantoken/astro#check:compatibility"
       }
     },
     {
