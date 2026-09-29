@@ -17,7 +17,11 @@ export function withCompatibility(markdown: string, consumer: ConsumerEntry): st
   const section = `\n## Compatibility\n\nTarget: ${support.target}.${format} ${versions}\n\n[Full compatibility matrix](../../../../compatibility)\n`;
   const heading = /^# [^\n]+\n/mu;
   if (!heading.test(markdown)) throw new Error(`Missing API title: ${consumer.package}`);
-  return markdown.replace(heading, (title) => `${title}${section}`);
+  const withoutOldSections = markdown.replace(
+    /^## Compatibility\n\nTarget: [^\n]+\n\n\[Full compatibility matrix\]\([^\n]+\)\n\n/gmu,
+    "",
+  );
+  return withoutOldSections.replace(heading, (title) => `${title}${section}`);
 }
 
 /** Populate every adapter's generated API page from the compatibility registry. */

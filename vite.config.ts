@@ -549,10 +549,11 @@ export default defineConfig({
         command: "I18N_DRIFT_STRICT=1 vp run i18n:check:drift:all",
         cache: false,
       },
-      // Publishing must also validate generated API prose, which is not present in a clean checkout
-      // until the English API build runs.
+      // Publishing validates the complete English API tree; TypeDoc alone does not include CSS API
+      // pages, so CSS generation must finish before the drift check refreshes its source catalog.
       "gate:i18n": {
-        command: "vp run @pantoken/docs#docs:api:en:build && vp run i18n:check:drift:all",
+        command:
+          "vp run @pantoken/docs#docs:api:en:build && vp run @pantoken/docs#docs:api:css && vp run i18n:check:drift:all",
         dependsOn: ["build:all"],
       },
       "i18n:bundles:build": {

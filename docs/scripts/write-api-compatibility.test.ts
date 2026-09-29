@@ -23,6 +23,7 @@ test("shows the current format without asserting an unverified WordPress version
   expect(page).toContain("Current format: `theme.json v3`.");
   expect(page).toContain("Host compatibility has not yet been verified.");
   expect(page).toContain("[Full compatibility matrix](../../../../compatibility)");
+  expect(withCompatibility(page, consumer)).toBe(page);
 });
 
 test("verified claims identify the minimum and latest tested host release", () => {
