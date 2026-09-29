@@ -163,6 +163,14 @@
   "@pantoken/svelte": { "target": "Svelte", "status": "unverified" },
   "@pantoken/tinymce": { "target": "TinyMCE", "status": "unverified" },
   "@pantoken/vitepress": { "target": "VitePress", "status": "unverified" },
-  "@pantoken/vue": { "target": "Vue", "status": "unverified" },
+  "@pantoken/vue": {
+    "target": "Vue",
+    "format": "Plugin installation, custom-element configuration, and SSR output",
+    "status": "verified",
+    "minimum": "3.0.0",
+    "testedThrough": "3.5.43",
+    "testedVersions": ["3.0.0", "3.5.43"],
+    "testCommand": "vp run @pantoken/vue#check:compatibility"
+  },
   "@pantoken/web-components": { "target": "Web Components", "status": "unverified" }
 }

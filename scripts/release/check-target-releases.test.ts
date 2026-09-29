@@ -231,6 +231,28 @@ test("flags a future React release for SSR compatibility review", async () => {
   expect(await pendingRelease(react)).toMatchObject({ version: "19.3.1" });
 });
 
+test("flags a future Vue release for SSR compatibility review", async () => {
+  const vue: ConsumerEntry = {
+    package: "@pantoken/vue",
+    path: "renderers/vue",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "Vue",
+      format: "Plugin installation, custom-element configuration, and SSR output",
+      status: "verified",
+      minimum: "3.0.0",
+      testedThrough: "3.5.43",
+      testedVersions: ["3.0.0", "3.5.43"],
+      testCommand: "vp run @pantoken/vue#check:compatibility",
+    },
+  };
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({ ok: true, json: async () => ({ version: "3.5.44" }) }),
+  );
+  expect(await pendingRelease(vue)).toMatchObject({ version: "3.5.44" });
+});
+
 test("flags a future webpack release without widening emitted asset support", async () => {
   const webpack: ConsumerEntry = {
     package: "@pantoken/webpack",

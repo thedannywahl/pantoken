@@ -487,7 +487,12 @@
       "governedBy": "token-ir",
       "targetSupport": {
         "target": "Vue",
-        "status": "unverified"
+        "format": "Plugin installation, custom-element configuration, and SSR output",
+        "status": "verified",
+        "minimum": "3.0.0",
+        "testedThrough": "3.5.43",
+        "testedVersions": ["3.0.0", "3.5.43"],
+        "testCommand": "vp run @pantoken/vue#check:compatibility"
       }
     },
     {

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-29 23:17+0000\n"
+"PO-Revision-Date: 2026-09-29 23:22+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -18744,7 +18744,7 @@ msgstr ""
 #: renderers/vue/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Vue. Host compatibility has not yet been verified."
+msgid "Target: Vue. Current format: `Plugin installation, custom-element configuration, and SSR output`. Minimum host version: `3.0.0`. Tested through `3.5.43`. Newer releases require review."
 msgstr ""
 
 #: renderers/vue/src/index.md
