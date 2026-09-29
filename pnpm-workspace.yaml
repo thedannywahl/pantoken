@@ -159,6 +159,7 @@ catalog:
   # Swap back to @codspeed/vitest-plugin when CodSpeedHQ/codspeed-node#86 is released.
   "@codspeed/tinybench-plugin": ^5.7.1
   tinybench: ^6.2.0
+  ajv-draft-04: ^1.0.0
 overrides:
   vite@*: "catalog:"
   # next 16.2.10 (auto-installed as @pantoken/next's optional peer) has 3 High CVEs; 16.2.11 patches

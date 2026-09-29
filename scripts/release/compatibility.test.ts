@@ -50,6 +50,26 @@ test("renderMarkdown shows the empty-state when there are no deprecations", () =
   expect(renderMarkdown(SAMPLE)).toContain("_No active token deprecations._");
 });
 
+test("renderMarkdown identifies the bounded, verified WordPress host range", () => {
+  const wordpress: Compatibility["consumers"][number] = {
+    package: "@pantoken/wordpress",
+    path: "platforms/wordpress",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "WordPress block themes",
+      format: "theme.json v3",
+      status: "verified",
+      minimum: "6.6",
+      testedThrough: "7.1.2",
+      testedVersions: ["6.6", "7.1.2"],
+      testCommand: "vp run @pantoken/wordpress#check:compatibility",
+    },
+  };
+  expect(renderMarkdown({ ...SAMPLE, consumers: [wordpress] })).toContain(
+    "WordPress block themes | theme.json v3 | `6.6` through `7.1.2` (verified)",
+  );
+});
+
 test("renderMarkdown renders a forwarded replacement and a frozen value", () => {
   const md = renderMarkdown({
     ...SAMPLE,

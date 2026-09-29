@@ -217,7 +217,11 @@
       "targetSupport": {
         "target": "WordPress block themes",
         "format": "theme.json v3",
-        "status": "unverified"
+        "status": "verified",
+        "minimum": "6.6",
+        "testedThrough": "7.1.2",
+        "testedVersions": ["6.6", "6.7", "6.8", "6.9", "7.0", "7.1.2"],
+        "testCommand": "vp run @pantoken/wordpress#check:compatibility"
       }
     },
     {

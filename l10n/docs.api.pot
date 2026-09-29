@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-29 16:24+0000\n"
+"PO-Revision-Date: 2026-09-29 16:55+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -14374,7 +14374,7 @@ msgstr ""
 #: platforms/wordpress/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: WordPress block themes. Current format: `theme.json v3`. Host compatibility has not yet been verified."
+msgid "Target: WordPress block themes. Current format: `theme.json v3`. Minimum host version: `6.6`. Tested through `7.1.2`. Newer releases require review."
 msgstr ""
 
 #: platforms/wordpress/src/index.md
