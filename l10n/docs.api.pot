@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-29 23:28+0000\n"
+"PO-Revision-Date: 2026-09-29 23:34+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -17930,7 +17930,7 @@ msgstr ""
 #: renderers/svelte/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Svelte. Host compatibility has not yet been verified."
+msgid "Target: Svelte. Current format: `Icon action component compiles and SSR renders on Svelte 4 and 5`. Minimum host version: `4.2.20`. Tested through `5.57.1`. Newer releases require review."
 msgstr ""
 
 #: renderers/svelte/src/index.md

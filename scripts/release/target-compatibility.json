@@ -168,7 +168,15 @@
   },
   "@pantoken/shadcn": { "target": "shadcn/ui", "status": "unverified" },
   "@pantoken/storybook": { "target": "Storybook", "status": "unverified" },
-  "@pantoken/svelte": { "target": "Svelte", "status": "unverified" },
+  "@pantoken/svelte": {
+    "target": "Svelte",
+    "format": "Icon action component compiles and SSR renders on Svelte 4 and 5",
+    "status": "verified",
+    "minimum": "4.2.20",
+    "testedThrough": "5.57.1",
+    "testedVersions": ["4.2.20", "5.57.1"],
+    "testCommand": "vp run @pantoken/svelte#check:compatibility"
+  },
   "@pantoken/tinymce": { "target": "TinyMCE", "status": "unverified" },
   "@pantoken/vitepress": { "target": "VitePress", "status": "unverified" },
   "@pantoken/vue": {

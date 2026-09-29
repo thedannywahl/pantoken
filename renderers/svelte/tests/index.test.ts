@@ -1,4 +1,5 @@
 import { expect, test } from "vite-plus/test";
+import { checkCompatibility } from "../scripts/check-compatibility.ts";
 import { icon, readToken } from "../src/index.ts";
 
 test("the icon action renders inline SVG into the node", () => {
@@ -11,4 +12,8 @@ test("the icon action renders inline SVG into the node", () => {
 
 test("readToken returns the fallback on the server", () => {
   expect(readToken("--instui-color-background-brand", "#0374B5")).toBe("#0374B5");
+});
+
+test("rejects malformed Svelte releases before installing", async () => {
+  await expect(checkCompatibility("5.0.0-next.1")).rejects.toThrow("Invalid Svelte release");
 });

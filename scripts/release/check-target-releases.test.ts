@@ -275,6 +275,28 @@ test("flags a future react-markdown release for InstUI SSR review", async () => 
   expect(await pendingRelease(reactMarkdown)).toMatchObject({ version: "10.1.1" });
 });
 
+test("flags a future Svelte release for action compilation review", async () => {
+  const svelte: ConsumerEntry = {
+    package: "@pantoken/svelte",
+    path: "renderers/svelte",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "Svelte",
+      format: "Icon action component compiles and SSR renders on Svelte 4 and 5",
+      status: "verified",
+      minimum: "4.2.20",
+      testedThrough: "5.57.1",
+      testedVersions: ["4.2.20", "5.57.1"],
+      testCommand: "vp run @pantoken/svelte#check:compatibility",
+    },
+  };
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({ ok: true, json: async () => ({ version: "5.57.2" }) }),
+  );
+  expect(await pendingRelease(svelte)).toMatchObject({ version: "5.57.2" });
+});
+
 test("flags a future webpack release without widening emitted asset support", async () => {
   const webpack: ConsumerEntry = {
     package: "@pantoken/webpack",

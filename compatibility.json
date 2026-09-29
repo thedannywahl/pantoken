@@ -465,7 +465,12 @@
       "governedBy": "token-ir",
       "targetSupport": {
         "target": "Svelte",
-        "status": "unverified"
+        "format": "Icon action component compiles and SSR renders on Svelte 4 and 5",
+        "status": "verified",
+        "minimum": "4.2.20",
+        "testedThrough": "5.57.1",
+        "testedVersions": ["4.2.20", "5.57.1"],
+        "testCommand": "vp run @pantoken/svelte#check:compatibility"
       }
     },
     {

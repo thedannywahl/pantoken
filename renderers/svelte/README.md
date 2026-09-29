@@ -3,6 +3,13 @@
 Svelte helpers over `@pantoken/web-components`: an `icon` action that renders an Instructure glyph
 into a node, plus a token reader.
 
+## Compatibility
+
+Verified with Svelte 4.2.20 and 5.57.1 by compiling and server-rendering a component that uses the
+`icon` action. The host check covers compilation and SSR markup; the package tests separately cover
+the action's client-side update and destroy behavior. See the
+[compatibility matrix](https://pantoken.app/compatibility) for exact releases.
+
 ## Install
 
 ```sh
