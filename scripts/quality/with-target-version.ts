@@ -8,7 +8,7 @@ import { join } from "node:path";
 export async function withTargetVersion(
   packageName: string,
   version: string,
-  check: (require: ReturnType<typeof createRequire>) => Promise<void>,
+  check: (require: ReturnType<typeof createRequire>, directory: string) => Promise<void>,
 ): Promise<void> {
   const directory = mkdtempSync(join(tmpdir(), "pantoken-target-"));
   try {
@@ -30,7 +30,7 @@ export async function withTargetVersion(
     ) as { version: string };
     if (installed.version !== version)
       throw new Error(`Expected ${packageName} ${version}, got ${installed.version}`);
-    await check(createRequire(join(directory, "package.json")));
+    await check(createRequire(join(directory, "package.json")), directory);
   } finally {
     rmSync(directory, { recursive: true, force: true });
   }

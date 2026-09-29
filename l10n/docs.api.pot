@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-29 19:07+0000\n"
+"PO-Revision-Date: 2026-09-29 19:23+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -557,7 +557,7 @@ msgstr ""
 #: bundlers/vite/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Vite. Host compatibility has not yet been verified."
+msgid "Target: Vite. Minimum host version: `8.0.0`. Tested through `8.3.1`. Newer releases require review."
 msgstr ""
 
 #: bundlers/vite/src/index.md

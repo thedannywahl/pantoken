@@ -10,7 +10,14 @@
     "testCommand": "vp run @pantoken/postcss#check:compatibility"
   },
   "@pantoken/tailwind": { "target": "Tailwind CSS", "status": "unverified" },
-  "@pantoken/vite": { "target": "Vite", "status": "unverified" },
+  "@pantoken/vite": {
+    "target": "Vite",
+    "status": "verified",
+    "minimum": "8.0.0",
+    "testedThrough": "8.3.1",
+    "testedVersions": ["8.0.0", "8.0.16", "8.1.5", "8.2.2", "8.3.1"],
+    "testCommand": "vp run @pantoken/vite#check:compatibility"
+  },
   "@pantoken/webpack": { "target": "webpack", "status": "unverified" },
   "@pantoken/android": { "target": "Android", "status": "unverified" },
   "@pantoken/canvas-theme-editor": { "target": "Canvas Theme Editor", "status": "unverified" },

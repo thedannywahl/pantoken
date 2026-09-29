@@ -35,7 +35,7 @@ package consumes. The `@instructure/ui-*` React packages are used only by
 | `@pantoken/panda`               | `bundlers/panda`                | token-ir     | Panda CSS              | —              | Not yet verified                     |
 | `@pantoken/postcss`             | `bundlers/postcss`              | token-ir     | PostCSS                | —              | `8.0.0` through `8.5.28` (verified)  |
 | `@pantoken/tailwind`            | `bundlers/tailwind`             | token-ir     | Tailwind CSS           | —              | Not yet verified                     |
-| `@pantoken/vite`                | `bundlers/vite`                 | token-ir     | Vite                   | —              | Not yet verified                     |
+| `@pantoken/vite`                | `bundlers/vite`                 | token-ir     | Vite                   | —              | `8.0.0` through `8.3.1` (verified)   |
 | `@pantoken/webpack`             | `bundlers/webpack`              | token-ir     | webpack                | —              | Not yet verified                     |
 | `@pantoken/android`             | `platforms/android`             | token-ir     | Android                | —              | Not yet verified                     |
 | `@pantoken/canvas-theme-editor` | `platforms/canvas-theme-editor` | token-ir     | Canvas Theme Editor    | —              | Not yet verified                     |

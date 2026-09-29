@@ -3,6 +3,12 @@
 A Vite plugin for pantoken. It exposes virtual modules so apps consume the tokens and CSS without
 importing the large packages directly, and it can auto-inject the stylesheet into the HTML entry.
 
+## Compatibility
+
+Verified with Vite 8.0.0 through 8.3.1, including a real build from each intervening minor train.
+New releases need review before the tested range expands. See the
+[compatibility matrix](https://pantoken.app/compatibility) for exact releases.
+
 ## Install
 
 ```sh

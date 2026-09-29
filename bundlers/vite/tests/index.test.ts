@@ -1,5 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { pantoken } from "../src/index.ts";
+import { checkCompatibility } from "../scripts/check-compatibility.ts";
 
 // The plugin hooks are typed as Vite's rich hook objects; call them as plain functions in tests.
 type Hook = (...args: unknown[]) => unknown;
@@ -36,4 +37,8 @@ test("injectCss adds a style tag to the HTML entry", () => {
 
   const noInject = pantoken().transformIndexHtml as Hook;
   expect(noInject("<html></html>")).toBe("<html></html>");
+});
+
+test("rejects unsupported Vite releases before installing a target", async () => {
+  await expect(checkCompatibility("9.0.0")).rejects.toThrow("Invalid Vite 8 release");
 });
