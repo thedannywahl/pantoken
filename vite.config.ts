@@ -86,7 +86,12 @@ export default defineConfig({
     // `ai/create-pantoken-app-site` is a separate git submodule (github.com/thedannywahl/
     // create-pantoken-app): its `index.html` is plain-text skill content wearing an `.html`
     // extension only so GitHub Pages resolves it as the directory index, not real markup to format.
-    ignorePatterns: ["docs/api/**", "docs/*/api/**", "ai/create-pantoken-app-site/**"],
+    ignorePatterns: [
+      ".entire/settings.json",
+      "docs/api/**",
+      "docs/*/api/**",
+      "ai/create-pantoken-app-site/**",
+    ],
   },
   lint: {
     jsPlugins: [
