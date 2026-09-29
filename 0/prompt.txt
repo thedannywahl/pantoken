@@ -1,0 +1,5 @@
+PR 189 has a failing test with an odd message:
+```
+vitest unhandled errors > Uncaught Exception: exit
+```
+you can use `gh` cli to investigate and remediate, pushing and following to green.
