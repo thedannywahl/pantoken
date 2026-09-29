@@ -71,6 +71,20 @@ package consumes. The `@instructure/ui-*` React packages are used only by
 | `@pantoken/vue`                 | `renderers/vue`                 | token-ir     | Vue                    | —              | Not yet verified                 |
 | `@pantoken/web-components`      | `renderers/web-components`      | token-ir     | Web Components         | —              | Not yet verified                 |
 
+## Reviewing target releases
+
+The weekly target-release workflow opens a review issue for new stable WordPress releases and
+ecosystems with an explicit npm peer. For other targets, maintainers check the platform's official
+release notes weekly and open a review issue manually; an absent issue does not mean a new release
+is supported. To extend a claim:
+
+1. Inspect the release's output schema or integration changes and the adapter in this table.
+2. Run a real host, compiler, or build-tool check at the minimum and new release. Remap the current
+   output format if necessary; do not add parallel legacy format emitters.
+3. Update `scripts/release/target-compatibility.json` only after the checks pass, then run
+   `vp run sync:compatibility`, regenerate English API docs, and add a changeset. Newer releases
+   remain pending until that reviewed change lands. Localized documentation is handled separately.
+
 ## Deprecations
 
 Tokens upstream dropped that pantoken still ships as a compatibility shim. Each is kept working until

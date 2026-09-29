@@ -39,6 +39,7 @@ test("renderMarkdown emits the section headings and upstream/consumer rows", () 
   expect(md.startsWith("# Compatibility")).toBe(true);
   expect(md).toContain("## Upstream sources");
   expect(md).toContain("## Consumers");
+  expect(md).toContain("## Reviewing target releases");
   expect(md).toContain("## Deprecations");
   expect(md).toContain("| `@instructure/ui-heading` | instui-react | `^11.7.4` | `11.7.4` |");
   expect(md).toContain(
