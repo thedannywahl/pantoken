@@ -107,6 +107,12 @@ Run the complete project gate before submitting a pull request:
 vp run ready:all
 ```
 
+For native output, mise coordinates target toolchains while Vite+ continues to manage JavaScript.
+Run `mise run verify:native` for portable native syntax checks. The Swift iOS host check,
+`mise run verify:swift:host`, requires full Xcode and the iOS Simulator SDK; a syntax pass alone
+doesn't prove UIKit compatibility. To generate a SwiftPM package at a chosen path, set
+`SWIFT_PACKAGE_OUT` and run `mise run scaffold:swift`.
+
 Formatting can normally be applied automatically with:
 
 ```sh

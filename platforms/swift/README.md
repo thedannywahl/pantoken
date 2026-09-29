@@ -39,8 +39,13 @@ pantoken generate swift --out ./MyTokens
 
 The CLI wraps the same output in a Swift Package: it writes the source under
 `<out>/Sources/<className>/` and a `Package.swift` SwiftPM manifest stub at `<out>/`, so the
-directory is publishable to SwiftPM as-is. Swapping the platform (Flutter, Compose) reuses the same
-path through `@pantoken/sd-config`.
+directory is publishable to SwiftPM as-is. This emitter uses UIKit and targets iOS, not macOS.
+Swapping the platform (Flutter, Compose) reuses the same path through `@pantoken/sd-config`.
+
+For repository contributors, `mise run verify:swift:syntax` parses a disposable generated package
+with Command Line Tools. `mise run verify:swift:host` checks it against the iOS Simulator SDK and
+requires full Xcode; syntax alone does not establish iOS compatibility. To generate a package in a
+chosen location, set `SWIFT_PACKAGE_OUT` and run `mise run scaffold:swift`.
 
 ## API
 

@@ -17,6 +17,12 @@ const fixture: Token[] = [
     refersTo: "--instui-primitive-color-blue",
   },
   { name: "--instui-spacing-md", syntax: "<length>", inherits: true, value: "16px" },
+  {
+    name: "--instui-color-shadow",
+    syntax: "*",
+    inherits: true,
+    value: "light-dark(rgba(35,68,101,0.15), rgba(0,0,0,0.3))",
+  },
   // An icon token — must be filtered out of the Swift output.
   {
     name: "--instui-icon-x",
@@ -33,6 +39,7 @@ test("emits a Swift class from resolved, natively-typed tokens (icons filtered)"
   const swift = readFileSync(file, "utf8");
   expect(swift).toContain("class PanTokens");
   expect(swift.toLowerCase()).toContain("color");
+  expect(swift).toContain("UIColor(red: 0.137, green: 0.267, blue: 0.396, alpha: 0.15)");
   // The brand reference resolved to the concrete blue; the icon token was dropped.
   expect(swift).not.toContain("data:image");
 });

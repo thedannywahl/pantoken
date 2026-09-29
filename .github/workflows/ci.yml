@@ -531,6 +531,53 @@ jobs:
       - name: Verify WordPress releases
         run: vp run @pantoken/wordpress#check:compatibility
 
+  swift_native_changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      swift_native: ${{ steps.filter.outputs.swift_native }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect native Swift changes
+        id: filter
+        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        with:
+          filters: |
+            swift_native:
+              - 'platforms/swift/**'
+              - 'packages/cli/**'
+              - 'packages/core/**'
+              - 'packages/utils/**'
+              - 'tools/sd-config/**'
+              - 'formats/tokens/**'
+              - 'mise.toml'
+              - 'pnpm-lock.yaml'
+              - 'pnpm-workspace.yaml'
+
+  swift_native_compatibility:
+    needs: swift_native_changes
+    if: needs.swift_native_changes.outputs.swift_native == 'true'
+    runs-on: macos-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          cache: true
+          run-install: true
+      - name: Install mise
+        run: brew install mise
+      - name: Verify generated Swift against iOS Simulator SDK
+        run: mise run verify:swift:host
+
   postcss-changes:
     runs-on: ubuntu-latest
     timeout-minutes: 5

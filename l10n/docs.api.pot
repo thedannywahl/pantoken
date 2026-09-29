@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-29 19:23+0000\n"
+"PO-Revision-Date: 2026-09-29 19:51+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -14249,6 +14249,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "This is pantoken's native proof: it flattens the IR to concrete, single-mode values\n(`@pantoken/core`'s `toStyleDictionary`), keeps the natively-typed tokens (colours, dimensions,\nnumbers), and hands them to `@pantoken/sd-config`. Swapping `platform` to `flutter`/`compose`\nreuses the same path."
+msgstr ""
+
+#: platforms/swift/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The generated Swift uses UIKit and targets iOS. `mise run verify:swift:syntax` only parses its\nsource; `mise run verify:swift:host` needs full Xcode and the iOS Simulator SDK to type-check it."
 msgstr ""
 
 #: platforms/swift/src/index.md

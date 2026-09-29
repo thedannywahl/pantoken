@@ -188,7 +188,7 @@ import PackageDescription
 
 let package = Package(
     name: "${name}",
-    platforms: [.iOS(.v15), .macOS(.v12)],
+  platforms: [.iOS(.v15)],
     products: [.library(name: "${name}", targets: ["${name}"])],
     targets: [.target(name: "${name}", path: "Sources/${name}")]
 )

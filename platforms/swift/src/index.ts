@@ -6,6 +6,9 @@
  * numbers), and hands them to `@pantoken/sd-config`. Swapping `platform` to `flutter`/`compose`
  * reuses the same path.
  *
+ * The generated Swift uses UIKit and targets iOS. `mise run verify:swift:syntax` only parses its
+ * source; `mise run verify:swift:host` needs full Xcode and the iOS Simulator SDK to type-check it.
+ *
  * @module
  * @experimental
  */
