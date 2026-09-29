@@ -11,8 +11,8 @@
       "feeds": "icons"
     },
     "lucide": {
-      "range": "^1.47.0",
-      "resolved": "1.47.0",
+      "range": "^1.48.0",
+      "resolved": "1.48.0",
       "feeds": "icons"
     },
     "@instructure/ui-heading": {
@@ -58,169 +58,356 @@
   },
   "consumers": [
     {
+      "package": "@pantoken/next",
+      "path": "bundlers/next",
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Next.js",
+        "status": "unverified"
+      }
+    },
+    {
+      "package": "@pantoken/panda",
+      "path": "bundlers/panda",
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Panda CSS",
+        "status": "unverified"
+      }
+    },
+    {
+      "package": "@pantoken/postcss",
+      "path": "bundlers/postcss",
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "PostCSS",
+        "status": "unverified"
+      }
+    },
+    {
+      "package": "@pantoken/tailwind",
+      "path": "bundlers/tailwind",
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Tailwind CSS",
+        "status": "unverified"
+      }
+    },
+    {
+      "package": "@pantoken/vite",
+      "path": "bundlers/vite",
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Vite",
+        "status": "unverified"
+      }
+    },
+    {
+      "package": "@pantoken/webpack",
+      "path": "bundlers/webpack",
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "webpack",
+        "status": "unverified"
+      }
+    },
+    {
       "package": "@pantoken/android",
       "path": "platforms/android",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Android",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/canvas-theme-editor",
       "path": "platforms/canvas-theme-editor",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Canvas Theme Editor",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/compose",
       "path": "platforms/compose",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Jetpack Compose",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/drupal",
       "path": "platforms/drupal",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Drupal",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/email",
       "path": "platforms/email",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "HTML email",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/flutter",
       "path": "platforms/flutter",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Flutter",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/hugo",
       "path": "platforms/hugo",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Hugo",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/jekyll",
       "path": "platforms/jekyll",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Jekyll",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/rust",
       "path": "platforms/rust",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Rust",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/swift",
       "path": "platforms/swift",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Swift",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/vanilla",
       "path": "platforms/vanilla",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Vanilla Forums",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/wordpress",
       "path": "platforms/wordpress",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "WordPress block themes",
+        "format": "theme.json v3",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/angular",
       "path": "renderers/angular",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Angular",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/astro",
       "path": "renderers/astro",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Astro",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/bootstrap",
       "path": "renderers/bootstrap",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Bootstrap",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/css-in-js",
       "path": "renderers/css-in-js",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "CSS-in-JS",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/docusaurus",
       "path": "renderers/docusaurus",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Docusaurus",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/foundation",
       "path": "renderers/foundation",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Foundation",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/markdown-it",
       "path": "renderers/markdown-it",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "markdown-it",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/mintlify",
       "path": "renderers/mintlify",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Mintlify",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/mui",
       "path": "renderers/mui",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Material UI",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/pendo",
       "path": "renderers/pendo",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Pendo",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/react",
       "path": "renderers/react",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "React",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/react-markdown",
       "path": "renderers/react-markdown",
-      "governedBy": "instui-react"
+      "governedBy": "instui-react",
+      "targetSupport": {
+        "target": "react-markdown",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/react-native",
       "path": "renderers/react-native",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "React Native",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/rehype",
       "path": "renderers/rehype",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "rehype",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/shadcn",
       "path": "renderers/shadcn",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "shadcn/ui",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/storybook",
       "path": "renderers/storybook",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Storybook",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/svelte",
       "path": "renderers/svelte",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Svelte",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/tinymce",
       "path": "renderers/tinymce",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "TinyMCE",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/vitepress",
       "path": "renderers/vitepress",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "VitePress",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/vue",
       "path": "renderers/vue",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Vue",
+        "status": "unverified"
+      }
     },
     {
       "package": "@pantoken/web-components",
       "path": "renderers/web-components",
-      "governedBy": "token-ir"
+      "governedBy": "token-ir",
+      "targetSupport": {
+        "target": "Web Components",
+        "status": "unverified"
+      }
     }
   ],
   "deprecations": [

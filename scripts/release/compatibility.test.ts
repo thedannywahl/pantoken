@@ -1,7 +1,12 @@
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { expect, test } from "vite-plus/test";
-import { buildCompatibility, type Compatibility, renderMarkdown } from "./compatibility.ts";
+import {
+  buildCompatibility,
+  type Compatibility,
+  renderMarkdown,
+  validateTargetSupport,
+} from "./compatibility.ts";
 
 const SAMPLE: Compatibility = {
   upstream: {
@@ -13,11 +18,17 @@ const SAMPLE: Compatibility = {
     "@instructure/ui-heading": { range: "^11.7.4", resolved: "11.7.4", feeds: "instui-react" },
   },
   consumers: [
-    { package: "@pantoken/css", path: "formats/css", governedBy: "token-ir" },
+    {
+      package: "@pantoken/css",
+      path: "formats/css",
+      governedBy: "token-ir",
+      targetSupport: { target: "CSS", status: "unverified" },
+    },
     {
       package: "@pantoken/react-markdown",
       path: "renderers/react-markdown",
       governedBy: "instui-react",
+      targetSupport: { target: "react-markdown", status: "unverified" },
     },
   ],
   deprecations: [],
@@ -31,7 +42,7 @@ test("renderMarkdown emits the section headings and upstream/consumer rows", () 
   expect(md).toContain("## Deprecations");
   expect(md).toContain("| `@instructure/ui-heading` | instui-react | `^11.7.4` | `11.7.4` |");
   expect(md).toContain(
-    "| `@pantoken/react-markdown` | `renderers/react-markdown` | instui-react |",
+    "| `@pantoken/react-markdown` | `renderers/react-markdown` | instui-react | react-markdown | — | Not yet verified |",
   );
 });
 
@@ -54,6 +65,42 @@ test("renderMarkdown renders a forwarded replacement and a frozen value", () => 
   });
   expect(md).toContain("| `--old-forward` | `1.4.0` | `1.6.0` | `var(--new)` |");
   expect(md).toContain("| `--old-frozen` | `1.4.0` | `1.6.0` | _frozen value_ |");
+});
+
+test("target support requires a record for every adapter", () => {
+  expect(() => validateTargetSupport(["@pantoken/wordpress"], {})).toThrow(
+    "Missing target support",
+  );
+  expect(() =>
+    validateTargetSupport([], {
+      "@pantoken/wordpress": { target: "WordPress", status: "unverified" },
+    }),
+  ).toThrow("Unknown target support");
+});
+
+test("verified claims require a tested floor and latest release", () => {
+  const name = "@pantoken/wordpress";
+  const record = {
+    target: "WordPress block themes",
+    format: "theme.json v3",
+    status: "verified" as const,
+    minimum: "6.6",
+    testedThrough: "6.8",
+    testedVersions: ["6.6"],
+    testCommand: "vp test",
+  };
+  expect(() => validateTargetSupport([name], { [name]: record })).toThrow("Unsubstantiated");
+  expect(() =>
+    validateTargetSupport([name], { [name]: { ...record, testedVersions: ["6.6", "6.8"] } }),
+  ).not.toThrow();
+});
+
+test("not-applicable status requires a reason", () => {
+  expect(() =>
+    validateTargetSupport(["@pantoken/email"], {
+      "@pantoken/email": { target: "HTML email", status: "not-applicable", reason: "" },
+    }),
+  ).toThrow("Missing N/A reason");
 });
 
 // Integration: reads the repo's built provenance. Guarded so it no-ops before a build.
@@ -82,6 +129,12 @@ test.skipIf(!existsSync(metaPath))(
     expect(a.upstream.lucide?.feeds).toBe("icons");
     expect(a.upstream["@instructure/ui-heading"]?.feeds).toBe("instui-react");
     expect(a.consumers.length).toBeGreaterThan(0);
+    expect(a.consumers).toContainEqual({
+      package: "@pantoken/tailwind",
+      path: "bundlers/tailwind",
+      governedBy: "token-ir",
+      targetSupport: { target: "Tailwind CSS", status: "unverified" },
+    });
     expectWellFormedConsumers(a.consumers);
   },
 );
