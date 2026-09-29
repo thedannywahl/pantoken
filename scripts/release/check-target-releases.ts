@@ -11,6 +11,7 @@ const npmTargets: Record<string, string> = {
   "@pantoken/webpack": "webpack",
   "@pantoken/angular": "@angular/core",
   "@pantoken/bootstrap": "bootstrap",
+  "@pantoken/docusaurus": "@docusaurus/theme-classic",
   "@pantoken/foundation": "foundation-sites",
   "@pantoken/markdown-it": "markdown-it",
   "@pantoken/react": "react",

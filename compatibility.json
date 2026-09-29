@@ -293,8 +293,13 @@
       "path": "renderers/docusaurus",
       "governedBy": "token-ir",
       "targetSupport": {
-        "target": "Docusaurus",
-        "status": "unverified"
+        "target": "Docusaurus theme-classic",
+        "format": "Infima CSS-variable bridge: primary and background",
+        "status": "verified",
+        "minimum": "3.0.0",
+        "testedThrough": "3.10.2",
+        "testedVersions": ["3.0.0", "3.4.0", "3.8.1", "3.10.2"],
+        "testCommand": "vp run @pantoken/docusaurus#check:compatibility"
       }
     },
     {

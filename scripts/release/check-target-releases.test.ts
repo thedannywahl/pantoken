@@ -121,6 +121,28 @@ test("flags a future Foundation release without widening Sass compatibility", as
   expect(await pendingRelease(foundation)).toMatchObject({ version: "6.9.1" });
 });
 
+test("flags a future Docusaurus theme without widening the Infima bridge claim", async () => {
+  const docusaurus: ConsumerEntry = {
+    package: "@pantoken/docusaurus",
+    path: "renderers/docusaurus",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "Docusaurus theme-classic",
+      format: "Infima CSS-variable bridge: primary and background",
+      status: "verified",
+      minimum: "3.0.0",
+      testedThrough: "3.10.2",
+      testedVersions: ["3.0.0", "3.10.2"],
+      testCommand: "vp run @pantoken/docusaurus#check:compatibility",
+    },
+  };
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({ ok: true, json: async () => ({ version: "3.10.3" }) }),
+  );
+  expect(await pendingRelease(docusaurus)).toMatchObject({ version: "3.10.3" });
+});
+
 test("flags a future webpack release without widening emitted asset support", async () => {
   const webpack: ConsumerEntry = {
     package: "@pantoken/webpack",

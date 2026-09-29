@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-29 22:08+0000\n"
+"PO-Revision-Date: 2026-09-29 22:17+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -16872,7 +16872,7 @@ msgstr ""
 #: renderers/docusaurus/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Docusaurus. Host compatibility has not yet been verified."
+msgid "Target: Docusaurus theme-classic. Current format: `Infima CSS-variable bridge: primary and background`. Minimum host version: `3.0.0`. Tested through `3.10.2`. Newer releases require review."
 msgstr ""
 
 #: renderers/docusaurus/src/index.md

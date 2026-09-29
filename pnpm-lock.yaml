@@ -2942,6 +2942,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.3
+      postcss:
+        specifier: 'catalog:'
+        version: 8.5.28
       typescript:
         specifier: 'catalog:'
         version: 7.0.2

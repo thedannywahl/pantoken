@@ -1,6 +1,7 @@
 import { expect, test } from "vite-plus/test";
 import { tokens } from "@pantoken/tokens";
 import { unknownReferences } from "@pantoken/utils";
+import { checkCompatibility } from "../scripts/check-compatibility.ts";
 import { INFIMA_TO_INSTUI, docusaurusCss, toDocusaurusCss } from "../src/index.ts";
 
 test("every mapped Instructure token exists in the IR (no drift)", () => {
@@ -21,4 +22,8 @@ test("every mapping targets an --instui-* token", () => {
 
 test("selector is configurable", () => {
   expect(toDocusaurusCss({ selector: "[data-theme]" })).toContain("[data-theme] {");
+});
+
+test("rejects releases outside the checked Docusaurus major", async () => {
+  await expect(checkCompatibility("4.0.0")).rejects.toThrow("Invalid Docusaurus 3 release");
 });

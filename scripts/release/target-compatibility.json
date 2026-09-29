@@ -75,7 +75,15 @@
     "testCommand": "vp run @pantoken/bootstrap#check:compatibility"
   },
   "@pantoken/css-in-js": { "target": "CSS-in-JS", "status": "unverified" },
-  "@pantoken/docusaurus": { "target": "Docusaurus", "status": "unverified" },
+  "@pantoken/docusaurus": {
+    "target": "Docusaurus theme-classic",
+    "format": "Infima CSS-variable bridge: primary and background",
+    "status": "verified",
+    "minimum": "3.0.0",
+    "testedThrough": "3.10.2",
+    "testedVersions": ["3.0.0", "3.4.0", "3.8.1", "3.10.2"],
+    "testCommand": "vp run @pantoken/docusaurus#check:compatibility"
+  },
   "@pantoken/foundation": {
     "target": "Foundation for Sites",
     "format": "Concrete Sass settings + variable-backed CSS overlay",
