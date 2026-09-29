@@ -1,7 +1,14 @@
 {
   "@pantoken/next": { "target": "Next.js", "status": "unverified" },
   "@pantoken/panda": { "target": "Panda CSS", "status": "unverified" },
-  "@pantoken/postcss": { "target": "PostCSS", "status": "unverified" },
+  "@pantoken/postcss": {
+    "target": "PostCSS",
+    "status": "verified",
+    "minimum": "8.0.0",
+    "testedThrough": "8.5.28",
+    "testedVersions": ["8.0.0", "8.0.9", "8.1.14", "8.2.15", "8.3.11", "8.4.49", "8.5.28"],
+    "testCommand": "vp run @pantoken/postcss#check:compatibility"
+  },
   "@pantoken/tailwind": { "target": "Tailwind CSS", "status": "unverified" },
   "@pantoken/vite": { "target": "Vite", "status": "unverified" },
   "@pantoken/webpack": { "target": "webpack", "status": "unverified" },

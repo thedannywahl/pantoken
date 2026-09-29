@@ -4,6 +4,12 @@ A PostCSS plugin that expands an `@pantoken;` at-rule into the full Instructure 
 (`@property` registrations plus declarations). Write `@pantoken;` where you want the tokens defined,
 and the plugin replaces it at build time.
 
+## Compatibility
+
+Verified with PostCSS 8.0.0 through 8.5.28, including a release from every intervening minor train.
+New releases need review before the tested range expands. See the
+[compatibility matrix](https://pantoken.app/compatibility) for exact releases.
+
 ## Install
 
 ```sh

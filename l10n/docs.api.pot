@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-29 16:55+0000\n"
+"PO-Revision-Date: 2026-09-29 18:51+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -385,7 +385,7 @@ msgstr ""
 #: bundlers/postcss/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: PostCSS. Host compatibility has not yet been verified."
+msgid "Target: PostCSS. Minimum host version: `8.0.0`. Tested through `8.5.28`. Newer releases require review."
 msgstr ""
 
 #: bundlers/postcss/src/index.md
