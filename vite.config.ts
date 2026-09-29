@@ -121,6 +121,15 @@ export default defineConfig({
         ],
         rules: { "tsdoc/syntax": "error", "tsdoc-require-2/require": "error" },
       },
+      {
+        // `scripts/` trees are invoked as `node script.ts`, and Node's strip-only type removal
+        // can't rewrite a TS parameter property into a field assignment — it's a runtime
+        // SyntaxError that both typecheck and the (transpiling) test runner miss, so it only
+        // surfaces in CI. Package sources and tests are bundled or transpiled, where the syntax is
+        // fine, so the ban is scoped to the files Node parses directly.
+        files: ["**/scripts/**/*.ts", "**/scripts/**/*.mts"],
+        rules: { "typescript/parameter-properties": "error" },
+      },
     ],
   },
   run: {
