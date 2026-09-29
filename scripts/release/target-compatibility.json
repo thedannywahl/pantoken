@@ -112,7 +112,15 @@
     "testCommand": "vp run @pantoken/markdown-it#check:compatibility"
   },
   "@pantoken/mintlify": { "target": "Mintlify", "status": "unverified" },
-  "@pantoken/mui": { "target": "Material UI", "status": "unverified" },
+  "@pantoken/mui": {
+    "target": "Material UI",
+    "format": "Concrete createTheme palettes (MUI 5, 6, 7, 9)",
+    "status": "verified",
+    "minimum": "5.0.0",
+    "testedThrough": "9.4.0",
+    "testedVersions": ["5.0.0", "5.18.0", "6.0.0", "6.5.0", "7.0.0", "7.3.11", "9.0.0", "9.4.0"],
+    "testCommand": "vp run @pantoken/mui#check:compatibility"
+  },
   "@pantoken/pendo": { "target": "Pendo", "status": "unverified" },
   "@pantoken/react": { "target": "React", "status": "unverified" },
   "@pantoken/react-markdown": { "target": "react-markdown", "status": "unverified" },

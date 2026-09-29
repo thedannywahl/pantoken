@@ -143,6 +143,28 @@ test("flags a future Docusaurus theme without widening the Infima bridge claim",
   expect(await pendingRelease(docusaurus)).toMatchObject({ version: "3.10.3" });
 });
 
+test("flags a future MUI release without widening createTheme support", async () => {
+  const mui: ConsumerEntry = {
+    package: "@pantoken/mui",
+    path: "renderers/mui",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "Material UI",
+      format: "Concrete createTheme palettes (MUI 5, 6, 7, 9)",
+      status: "verified",
+      minimum: "5.0.0",
+      testedThrough: "9.4.0",
+      testedVersions: ["5.0.0", "9.4.0"],
+      testCommand: "vp run @pantoken/mui#check:compatibility",
+    },
+  };
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({ ok: true, json: async () => ({ version: "9.4.1" }) }),
+  );
+  expect(await pendingRelease(mui)).toMatchObject({ version: "9.4.1" });
+});
+
 test("flags a future webpack release without widening emitted asset support", async () => {
   const webpack: ConsumerEntry = {
     package: "@pantoken/webpack",

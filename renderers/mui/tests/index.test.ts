@@ -1,4 +1,5 @@
 import { expect, test } from "vite-plus/test";
+import { checkCompatibility } from "../scripts/check-compatibility.ts";
 import { toMuiTheme } from "../src/to-mui.ts";
 import defaultTheme, { darkTheme, lightTheme } from "../src/index.ts";
 import type { Token } from "@pantoken/model";
@@ -42,4 +43,8 @@ test("borderRadius falls back to 4 when the radius token is missing or unparsabl
     { name: "--instui-spacing-space-sm", syntax: "<length>", inherits: true, value: "auto" },
   ];
   expect(toMuiTheme(unparsable).shape.borderRadius).toBe(4);
+});
+
+test("rejects malformed MUI releases before installing", async () => {
+  await expect(checkCompatibility("9.0.0-beta.1")).rejects.toThrow("Invalid MUI release");
 });

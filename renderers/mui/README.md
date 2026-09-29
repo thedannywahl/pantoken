@@ -2,13 +2,20 @@
 
 Theme MUI (Material UI) with Instructure tokens. It maps the token IR onto MUI theme options you pass straight to `createTheme`, covering the palette, background, text, divider, and border radius.
 
+## Compatibility
+
+Verified with real `createTheme` calls for light and dark palettes on MUI 5.0.0 through 5.18.0,
+6.0.0 through 6.5.0, 7.0.0 through 7.3.11, and 9.0.0 through 9.4.0. MUI 8.0.0 is not published. This check covers
+palette creation and color augmentation, not component rendering. See the
+[compatibility matrix](https://pantoken.app/compatibility) for exact tested releases.
+
 ## Install
 
 ```sh
 npm i @pantoken/mui
 ```
 
-MUI itself is a peer, so bring your own `@mui/material`.
+Bring your own `@mui/material`; this package has no runtime MUI dependency.
 
 Also available as `pantoken/mui`.
 
