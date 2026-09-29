@@ -1,0 +1,33 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3PYZ418M22X853CFY6HMCZQ",
+  "strategy": "manual-commit",
+  "branch": "release-compatibility",
+  "checkpoints_count": 3,
+  "files_touched": [
+    ".changeset/target-compatibility-registry.md",
+    "compatibility.json",
+    "docs/compatibility.md",
+    "scripts/release/check-compatibility.test.ts",
+    "scripts/release/compatibility.test.ts",
+    "scripts/release/compatibility.ts",
+    "scripts/release/generate-compatibility.test.ts",
+    "scripts/release/target-compatibility.json"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}

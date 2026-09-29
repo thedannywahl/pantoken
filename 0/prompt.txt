@@ -1,0 +1,31 @@
+pantoken has a token IR, intermediate representations and then maps or transforms to other platforms (wordpress, tailwind, etc.) what's missing is information on supported version(s) of those platforms and a process to flag and re-map on those platforms' releases.
+
+If I'm a user of `@pantoken/wordpress` for example. I have no way of knowing if it will work with my version of wordpress.
+
+---
+
+Read-only discovery, medium thoroughness. Before locating code, follow .entire/graph-agent.md: run one `entire graph search --repo . --profile full --query "WordPress platform token IR mapping generation version compatibility tests"` if terminal available; then focused read. Follow using-entire skill: check `entire status` and checkpoint intent for key files if available. Investigate WordPress output package: owning mapping logic, generated artifacts, version-dependent schema, tests, package metadata/docs, current claimed support. Return exact absolute paths, symbols and line numbers, observations vs recorded intent, concrete tests, blockers; no edits.
+
+---
+
+Read-only discovery, medium thoroughness. Graph-first per .entire/graph-agent.md; using-entire provenance if useful. Focus on existing release discovery automation, Renovate constraints, workflow issue creation permissions, gate scripts tests for compatibility, docs generator architecture and CI, especially whether there is a script for dependency release tracking beyond Renovate. Recommend minimal process to flag releases for ecosystems not npm (WordPress etc) with open issue/PR, explicit version support claims based on tests (not latest), evidence process, CI enforcing manifest; sample exact files and workflow triggers, no code edits. Return evidence vs inference.
+
+---
+
+we should also surface the supported version(s) on the docs pages for each of these packages. Right now I'm not interested in supporting multiple branching versions (i.e. wordpress theme.json v1, v2, v3) we'll take the latest and mark the floor.
+
+---
+
+Read-only, quick-to-medium. This is refinement to a planned repo change, no edits. Follow graph-first lookup per .entire/graph-agent.md: one entire graph search on package docs page generation supported versions. Find how each published platforms/, bundlers/, renderers/ package gets its docs page: authored markdown, generated API pages, locale mirrors, nav, package metadata, and whether README content auto-syncs. Identify exact files/functions and a minimal authoritative way to surface tested minimum host version and current output/schema version on every package docs page. Include testing/doc generation gates and localization implications; do not assume README mirrors. Report compact evidence and file links.
+
+---
+
+make sure to do incremental conventional commits with changesets and test coverage, even for private packages, ensure that everything fits into the i18n pipeline but do not fire any translations, I"ll handle those separately.
+
+---
+
+Read-only quick research for plan refinement. Follow graph-first as applicable. Identify exact changesets config (privatePackages, ignored), examples of changesets for private docs/tooling packages, conventional commit hook and commitlint, coverage commands and thresholds, relevant i18n extraction/catalog gates and translation commands to avoid. Distinguish how to prepare new generated compatibility prose for locales without invoking translations; return paths/commands and pitfalls. No edits.
+
+---
+
+Start implementation
