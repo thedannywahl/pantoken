@@ -121,6 +121,28 @@ test("flags a future Foundation release without widening Sass compatibility", as
   expect(await pendingRelease(foundation)).toMatchObject({ version: "6.9.1" });
 });
 
+test("flags a future webpack release without widening emitted asset support", async () => {
+  const webpack: ConsumerEntry = {
+    package: "@pantoken/webpack",
+    path: "bundlers/webpack",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "webpack",
+      format: "Emitted token CSS build asset",
+      status: "verified",
+      minimum: "5.61.0",
+      testedThrough: "5.111.1",
+      testedVersions: ["5.61.0", "5.111.1"],
+      testCommand: "vp run @pantoken/webpack#check:compatibility",
+    },
+  };
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({ ok: true, json: async () => ({ version: "5.111.2" }) }),
+  );
+  expect(await pendingRelease(webpack)).toMatchObject({ version: "5.111.2" });
+});
+
 const release = {
   package: "@pantoken/wordpress",
   path: "platforms/wordpress",

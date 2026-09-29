@@ -25,7 +25,15 @@
     "testedVersions": ["8.0.0", "8.0.16", "8.1.5", "8.2.2", "8.3.1"],
     "testCommand": "vp run @pantoken/vite#check:compatibility"
   },
-  "@pantoken/webpack": { "target": "webpack", "status": "unverified" },
+  "@pantoken/webpack": {
+    "target": "webpack",
+    "format": "Emitted token CSS build asset",
+    "status": "verified",
+    "minimum": "5.61.0",
+    "testedThrough": "5.111.1",
+    "testedVersions": ["5.61.0", "5.76.0", "5.90.0", "5.111.1"],
+    "testCommand": "vp run @pantoken/webpack#check:compatibility"
+  },
   "@pantoken/android": { "target": "Android", "status": "unverified" },
   "@pantoken/canvas-theme-editor": { "target": "Canvas Theme Editor", "status": "unverified" },
   "@pantoken/compose": { "target": "Jetpack Compose", "status": "unverified" },

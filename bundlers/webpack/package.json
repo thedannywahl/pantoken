@@ -24,12 +24,14 @@
     "provenance": true
   },
   "scripts": {
+    "check:compatibility": "node scripts/check-compatibility.ts",
     "dev": "vp pack --watch",
     "test": "vp test",
     "check": "vp check"
   },
   "dependencies": {
-    "@pantoken/css": "workspace:*"
+    "@pantoken/css": "workspace:*",
+    "webpack-sources": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:",

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-29 21:57+0000\n"
+"PO-Revision-Date: 2026-09-29 22:08+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -617,7 +617,7 @@ msgstr ""
 #: bundlers/webpack/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: webpack. Host compatibility has not yet been verified."
+msgid "Target: webpack. Current format: `Emitted token CSS build asset`. Minimum host version: `5.61.0`. Tested through `5.111.1`. Newer releases require review."
 msgstr ""
 
 #: bundlers/webpack/src/index.md
