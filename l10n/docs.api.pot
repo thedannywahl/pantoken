@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-29 23:10+0000\n"
+"PO-Revision-Date: 2026-09-29 23:17+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -17672,7 +17672,7 @@ msgstr ""
 #: renderers/react/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: React. Host compatibility has not yet been verified."
+msgid "Target: React. Current format: `SSR-rendered Icon custom element and token fallback`. Minimum host version: `19.3.0`. Tested through `19.3.0`. Newer releases require review."
 msgstr ""
 
 #: renderers/react/src/index.md

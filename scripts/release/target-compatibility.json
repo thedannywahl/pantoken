@@ -138,7 +138,15 @@
     "testCommand": "vp run @pantoken/mui#check:compatibility"
   },
   "@pantoken/pendo": { "target": "Pendo", "status": "unverified" },
-  "@pantoken/react": { "target": "React", "status": "unverified" },
+  "@pantoken/react": {
+    "target": "React",
+    "format": "SSR-rendered Icon custom element and token fallback",
+    "status": "verified",
+    "minimum": "19.3.0",
+    "testedThrough": "19.3.0",
+    "testedVersions": ["19.3.0"],
+    "testCommand": "vp run @pantoken/react#check:compatibility"
+  },
   "@pantoken/react-markdown": { "target": "react-markdown", "status": "unverified" },
   "@pantoken/react-native": { "target": "React Native", "status": "unverified" },
   "@pantoken/rehype": {

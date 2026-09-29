@@ -3,6 +3,12 @@
 Thin React helpers over `@pantoken/web-components` and the token CSS: an `<Icon>` component, a
 `useToken` hook, and a `<TokenProvider>` that registers the custom elements client-side.
 
+## Compatibility
+
+Verified on React 19.3.0 by server-rendering `<Icon>` with its custom-element attributes and
+checking the SSR token fallback. This does not cover browser registration or hook lifecycle behavior.
+See the [compatibility matrix](https://pantoken.app/compatibility) for the tested version.
+
 ## Install
 
 ```sh

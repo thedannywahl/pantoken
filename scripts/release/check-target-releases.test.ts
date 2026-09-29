@@ -209,6 +209,28 @@ test("flags a future Next release without widening Instructure transpilation sup
   expect(await pendingRelease(next)).toMatchObject({ version: "16.3.8" });
 });
 
+test("flags a future React release for SSR compatibility review", async () => {
+  const react: ConsumerEntry = {
+    package: "@pantoken/react",
+    path: "renderers/react",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "React",
+      format: "SSR-rendered Icon custom element and token fallback",
+      status: "verified",
+      minimum: "19.3.0",
+      testedThrough: "19.3.0",
+      testedVersions: ["19.3.0"],
+      testCommand: "vp run @pantoken/react#check:compatibility",
+    },
+  };
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({ ok: true, json: async () => ({ version: "19.3.1" }) }),
+  );
+  expect(await pendingRelease(react)).toMatchObject({ version: "19.3.1" });
+});
+
 test("flags a future webpack release without widening emitted asset support", async () => {
   const webpack: ConsumerEntry = {
     package: "@pantoken/webpack",

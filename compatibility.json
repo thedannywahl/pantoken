@@ -396,7 +396,12 @@
       "governedBy": "token-ir",
       "targetSupport": {
         "target": "React",
-        "status": "unverified"
+        "format": "SSR-rendered Icon custom element and token fallback",
+        "status": "verified",
+        "minimum": "19.3.0",
+        "testedThrough": "19.3.0",
+        "testedVersions": ["19.3.0"],
+        "testCommand": "vp run @pantoken/react#check:compatibility"
       }
     },
     {
