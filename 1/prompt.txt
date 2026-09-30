@@ -1,0 +1,10 @@
+Start implementation
+
+---
+
+turn off wrangler telemetry while we're at it.
+
+---
+
+Unable to load schema from '/Users/dwahl/Scripts/pantoken/node_modules/wrangler/config-schema.json': Schema not found: file:///Users/dwahl/Scripts/pantoken/node_modules/wrangler/config-schema.json.
+config-schema.json(1, 1): Unable to load schema from '/Users/dwahl/Scripts/pantoken/node_modules/wrangler/config-schema.json': Schema not found: file:///Users/dwahl/Scripts/pantoken/node_modules/wrangler/config-schema.json.
