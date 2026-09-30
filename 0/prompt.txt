@@ -1,0 +1,47 @@
+hugo and jekyll both fail in CI:
+```
+
+Run vp run @pantoken/hugo#check:compatibility
+~/platforms/hugo$ node scripts/check-compatibility.ts
+✓ Hugo 0.165.0: Hugo Pipes built the Pantoken token stylesheet
+node:fs:1589
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: EACCES, Permission denied: '/tmp/pantoken-hugo-CBYI9e'
+    at rmSync (node:fs:1589:18)
+    at checkCompatibility (file:///home/runner/work/pantoken/pantoken/platforms/hugo/scripts/check-compatibility.ts:71:5)
+    at file:///home/runner/work/pantoken/pantoken/platforms/hugo/scripts/check-compatibility.ts:76:35
+    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)
+    at async node:internal/modules/esm/loader:650:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5) {
+  errno: 13,
+  code: 'EACCES',
+  path: '/tmp/pantoken-hugo-CBYI9e',
+  syscall: 'rm'
+}
+
+Node.js v26.10.0
+
+Run vp run @pantoken/jekyll#check:compatibility
+~/platforms/jekyll$ node scripts/check-compatibility.ts
+✓ Jekyll 4.4.1: generated Sass partial compiled into the site
+node:fs:1589
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: EACCES, Permission denied: '/tmp/pantoken-jekyll-EVU83z'
+    at rmSync (node:fs:1589:18)
+    at checkCompatibility (file:///home/runner/work/pantoken/pantoken/platforms/jekyll/scripts/check-compatibility.ts:67:5)
+    at file:///home/runner/work/pantoken/pantoken/platforms/jekyll/scripts/check-compatibility.ts:71:57
+    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)
+    at async node:internal/modules/esm/loader:650:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:105:5) {
+  errno: 13,
+  code: 'EACCES',
+  path: '/tmp/pantoken-jekyll-EVU83z',
+  syscall: 'rm'
+}
+
+Node.js v26.10.0
+```

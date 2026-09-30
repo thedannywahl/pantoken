@@ -1,0 +1,55 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3SHCF155ZSKP1XPS3DFVCP6",
+  "strategy": "manual-commit",
+  "branch": "release-compatibility",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".github/workflows/ci.yml",
+    "ai/pantoken-ai/README.md",
+    "ai/pantoken-ai/tests/index.test.ts",
+    "docs/.vitepress/config.ts",
+    "docs/.vitepress/i18n.json",
+    "docs/.vitepress/theme/agent-tools.ts",
+    "docs/.vitepress/theme/components/AgentToolsPage.vue",
+    "docs/cloudflare/src/index.ts",
+    "docs/cloudflare/tests/index.test.ts",
+    "docs/public/.well-known/api-catalog",
+    "docs/scripts/cdn-plugin-manifest.test.ts",
+    "docs/scripts/cdn-plugin-manifest.ts",
+    "docs/scripts/icon-manifest.test.ts",
+    "docs/scripts/icon-manifest.ts",
+    "docs/scripts/run-assets.test.ts",
+    "docs/scripts/run-assets.ts",
+    "formats/interactions/package.json",
+    "l10n/docs.api.pot",
+    "l10n/docs.chrome.pot",
+    "package.json",
+    "packages/pantoken/scripts/generate-custom-data.test.ts",
+    "packages/pantoken/scripts/generate-custom-data.ts",
+    "packages/scaffold/assets/AGENTS.md",
+    "packages/scaffold/assets/copilot-instructions.md",
+    "packages/scaffold/assets/llms.txt",
+    "packages/scaffold/assets/windsurf.md",
+    "pnpm-lock.yaml",
+    "scripts/release/compatibility.test.ts",
+    "scripts/release/compatibility.ts",
+    "scripts/release/target-compatibility.json"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
