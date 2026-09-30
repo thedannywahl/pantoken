@@ -32,3 +32,7 @@ ignoring the design spec that calls for a track, can we flatten this to:
 ---
 
 okay, let's do it, but also instead of .segment target `label` we don't need modifier classes when a specific element is required.
+
+---
+
+now breakout the label/inputs into a member definition (see format/components/list) for an example.
