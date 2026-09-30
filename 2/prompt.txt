@@ -1,0 +1,15 @@
+* /cdn-plugin-manifest.json
+* /icon-manifest.json
+* /html-custom-data.json
+* /css-custom-data.json
+all need published schemas that are referenced in these files if applicable
+* /component-capabilities.schema.json 404s
+* /.well-known/api-catalog should have a schema if that's part of the spec
+
+---
+
+Read-only discovery only; do not edit files. In /Users/dwahl/Scripts/pantoken, investigate the user's request about published schemas for /cdn-plugin-manifest.json, /icon-manifest.json, /html-custom-data.json, /css-custom-data.json, the 404 at /component-capabilities.schema.json, and whether /.well-known/api-catalog should have a schema per spec. Follow repo instructions, especially read .entire/graph-agent.md before code exploration. Identify routes/hosting config, actual files and schemas, generation or packaging logic, relevant tests, and exact verification commands. State likely changes, critical ambiguities, and file/symbol paths. Keep scope targeted and do not perform edits.
+
+---
+
+Start implementation
