@@ -1,0 +1,72 @@
+PR 192 is failing in CI, investigate and remediate preferring fixes instead of suppression.  Work in incremental conventional commits, updating or creating changesets where necessary and pushing, watching until green. also ignore other unstaged changes in the repo as there are other agents working. also github security flagged two issues:
+* [docs/scripts/stage-api-catalog.ts](https://github.com/thedannywahl/pantoken/pull/192/files/04d9bb8d824b113839ade71ca9ce05a6a6c145bf#diff-5c3bbb72142180ba2ea3a78082aa6728e5edb69fa61f198326ad7568a61147f3)
+```
+[](https://github.com/thedannywahl/pantoken/pull/192/files/04d9bb8d824b113839ade71ca9ce05a6a6c145bf#diff-5c3bbb72142180ba2ea3a78082aa6728e5edb69fa61f198326ad7568a61147f3)
+
+        
+      
+
+        
+          
+  
+    
+      
+    
+    
+          
+
+              
+
+              
+
+            
+                  .filter((pkg) => isPublishablePackage(pkg) && pkg.name.startsWith("@pantoken/"))
+
+            
+          
+          
+
+              
+
+              
+
+            
+                  .sort((left, right) => left.name.localeCompare(right.name))
+
+            
+          
+          
+
+              
+
+              
+
+            
+                  .map((pkg) => ({
+
+            
+          
+          
+
+              
+
+              
+
+            
+                    href: `${NPM_REGISTRY}/${pkg.name.replace("/", "%2F")}`,
+```
+### CodeQL / Incomplete string escaping or encoding
+
+This replaces only the first occurrence of "/".
+
+[scripts/release/downstream.ts](https://github.com/thedannywahl/pantoken/pull/192/files/9a334555360c40f96a2c1c6d2df5293daf359a28#diff-135b4b802fc238ebf108d76be0880a23f9e840aa70e45a7c145fc47730ddf5b2)
+
+```
+}
+  let source = readFileSync(registryPath, "utf8");
+  const packagePattern = new RegExp(
+    `("${packageName.replaceAll("/", "\\/")}"\\s*:\\s*\\{)([\\s\\S]*?)(\\n\\s*\\})`,
+```
+### CodeQL / Regular expression injection
+
+This regular expression is constructed from a [command-line argument](https://github.com/thedannywahl/pantoken/pull/1).
