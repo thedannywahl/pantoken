@@ -1,0 +1,15 @@
+* compatibility.md should be in /guides/ and in the guides sidenav after Plugins, before Utilities. it should be part of the i18n pipeline, which I think moving it to /guides/ will auto-resolve.
+* Consumers table doesn't need Path, Governed by, or Target columns. column order should be package | host versions | Current format
+* we can simplify the version support from a phrase of x.x.x through y.y.y to `x.x.x ... y.y.y` and replace "verified" with a verified icon.
+
+---
+
+Read-only discovery for a plan, no edits. In /Users/dwahl/Scripts/pantoken, follow the repo's .entire/graph-agent.md workflow: first run `entire graph search --repo . --profile full --query "Move compatibility page into guides and adjust its table and support labels"` before other searches. Then inspect the current docs/compatibility.md, guides sidebar/nav definition, i18n pipeline handling/docs conventions and nearby comparable guide page if useful. Determine exact files/symbols involved and whether moving docs/compatibility.md to docs/guide/compatibility.md automatically picks up localization or requires routing/i18n updates. Note icon conventions for verified status and current consumer table/version rendering. Identify focused verification commands (use vp as repo instructions require) and any decisions or migration risks, especially old locale paths/redirects. Return concise evidence-backed findings with workspace-relative paths. Do not modify files.
+
+---
+
+maybe it would be simpler for this to be an actual guide and then dynamically inject only the table contents from the target-compatibility.json and also figure out how to i18n the strings that are in the table.
+
+---
+
+Read-only discovery for a revised plan, no edits. In /Users/dwahl/Scripts/pantoken, investigate whether an actual VitePress guide can dynamically render only a support table sourced from scripts/release/target-compatibility.json, while table UI strings are localized. Follow .entire/graph-agent.md: first run `entire graph search --repo . --profile full --query "Render the compatibility support table dynamically from target-compatibility.json inside a localized guide"` before other searches. Inspect VitePress markdown components/plugin patterns (especially data-driven Vue components), docs i18n/chrome or guide translation pipeline, target JSON schema/content, and existing relevant tests/build generation patterns. Recommend the smallest maintainable approach with exact files/symbols and focused verification. Specifically identify which table strings are labels/statuses vs technical data that should not be translated, and whether a Markdown import of JSON is possible in this VitePress setup. Do not modify files. Return findings with workspace-relative paths, options/tradeoffs, and any unresolved user decisions.

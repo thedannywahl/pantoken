@@ -3,8 +3,9 @@
   "checkpoint_id": "01M3SHCF155ZSKP1XPS3DFVCP6",
   "strategy": "manual-commit",
   "branch": "release-compatibility",
-  "checkpoints_count": 1,
+  "checkpoints_count": 3,
   "files_touched": [
+    ".changeset/published-manifest-schemas.md",
     ".github/workflows/ci.yml",
     "ai/pantoken-ai/README.md",
     "ai/pantoken-ai/tests/index.test.ts",
@@ -15,12 +16,19 @@
     "docs/cloudflare/src/index.ts",
     "docs/cloudflare/tests/index.test.ts",
     "docs/public/.well-known/api-catalog",
+    "docs/schemas/cdn-plugin-manifest.schema.json",
+    "docs/schemas/icon-manifest.schema.json",
     "docs/scripts/cdn-plugin-manifest.test.ts",
     "docs/scripts/cdn-plugin-manifest.ts",
     "docs/scripts/icon-manifest.test.ts",
     "docs/scripts/icon-manifest.ts",
+    "docs/scripts/published-schemas.test.ts",
     "docs/scripts/run-assets.test.ts",
     "docs/scripts/run-assets.ts",
+    "docs/scripts/stage-api-catalog.test.ts",
+    "docs/scripts/stage-api-catalog.ts",
+    "docs/scripts/stage-published-schemas.ts",
+    "formats/interactions/component-capabilities.schema.json",
     "formats/interactions/package.json",
     "l10n/docs.api.pot",
     "l10n/docs.chrome.pot",
@@ -43,6 +51,13 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
