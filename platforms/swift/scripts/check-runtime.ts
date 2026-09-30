@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import { byTheme } from "@pantoken/tokens";
 import { resolveReferences } from "@pantoken/core";
 import { generateSwift } from "../dist/index.mjs";
+import { targetEnvironments } from "../../../scripts/release/target-versions.ts";
 
 const runtime = "com.apple.CoreSimulator.SimRuntime.iOS-27-0";
 const deviceType = "com.apple.CoreSimulator.SimDeviceType.iPhone-18-Pro";
@@ -28,10 +29,18 @@ function swiftNumber(value: number): string {
 
 /** Build and run a disposable UIKit app on an isolated iOS 27 simulator. */
 export async function checkRuntime(): Promise<void> {
+  const [environment] = targetEnvironments("@pantoken/swift");
   const xcode = run("xcodebuild", ["-version"]);
   const sdkVersion = run("xcrun", ["--sdk", "iphonesimulator", "--show-sdk-version"]);
-  if (!xcode.includes("Xcode 27.0") || sdkVersion !== "27.0") {
-    throw new Error(`Expected Xcode 27.0 / iOS Simulator SDK 27.0, got ${xcode} / ${sdkVersion}`);
+  const expectedXcode = environment.match(/Xcode (\d+\.\d+)/u)?.[1];
+  const expectedSdk = environment.match(/SDK\/runtime (\d+\.\d+)/u)?.[1];
+  if (
+    !expectedXcode ||
+    !expectedSdk ||
+    !xcode.includes(`Xcode ${expectedXcode}`) ||
+    sdkVersion !== expectedSdk
+  ) {
+    throw new Error(`Expected ${environment}, got ${xcode} / iOS Simulator SDK ${sdkVersion}`);
   }
 
   const expectedHex = resolveReferences(byTheme("rebrand"), "light").get(

@@ -1,7 +1,6 @@
 import { fileURLToPath } from "node:url";
 import { withTargetVersion } from "../../../scripts/quality/with-target-version.ts";
-
-const releases = ["13.0.0", "13.0.1", "13.0.2"];
+import { commandTargetVersions } from "../../../scripts/release/target-versions.ts";
 
 interface Processor {
   use(plugin: unknown): Processor;
@@ -34,5 +33,6 @@ export async function checkCompatibility(version: string): Promise<void> {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  for (const release of releases) await checkCompatibility(release);
+  for (const release of commandTargetVersions("@pantoken/rehype"))
+    await checkCompatibility(release);
 }

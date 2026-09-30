@@ -4,13 +4,22 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { generateAndroid } from "../dist/index.mjs";
+import { commandTargetVersions } from "../../../scripts/release/target-versions.ts";
 
-const image = "ghcr.io/cirruslabs/android-sdk:35";
-const aapt2 = "/opt/android-sdk-linux/build-tools/35.0.0/aapt2";
-const androidJar = "/opt/android-sdk-linux/platforms/android-35/android.jar";
+type AndroidEnvironment = { api: string; buildTools: string };
+
+function environment(label: string): AndroidEnvironment {
+  const match = /^API (\d+) \/ build-tools (\d+\.\d+\.\d+)$/u.exec(label);
+  if (!match) throw new Error(`Invalid Android compatibility environment: ${label}`);
+  return { api: match[1], buildTools: match[2] };
+}
 
 /** Compile and link generated values, dimensions, and a VectorDrawable with Android build-tools. */
-export async function checkCompatibility(): Promise<void> {
+export async function checkCompatibility(label: string): Promise<void> {
+  const { api, buildTools } = environment(label);
+  const image = `ghcr.io/cirruslabs/android-sdk:${api}`;
+  const aapt2 = `/opt/android-sdk-linux/build-tools/${buildTools}/aapt2`;
+  const androidJar = `/opt/android-sdk-linux/platforms/android-${api}/android.jar`;
   const directory = mkdtempSync(join(tmpdir(), "pantoken-android-"));
   try {
     const main = join(directory, "app", "src", "main");
@@ -54,11 +63,14 @@ export async function checkCompatibility(): Promise<void> {
       throw new Error(message);
     }
     console.log(
-      "✓ Android API 35/build-tools 35.0.0: values and arrow-left VectorDrawable compiled and linked",
+      `✓ Android API ${api}/build-tools ${buildTools}: values and arrow-left VectorDrawable compiled and linked`,
     );
   } finally {
     rmSync(directory, { recursive: true, force: true });
   }
 }
 
-if (process.argv[1] === fileURLToPath(import.meta.url)) await checkCompatibility();
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  for (const version of commandTargetVersions("@pantoken/android"))
+    await checkCompatibility(version);
+}

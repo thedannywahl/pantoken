@@ -3,8 +3,9 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { withTargetVersion } from "../../../scripts/quality/with-target-version.ts";
+import { commandTargetVersions } from "../../../scripts/release/target-versions.ts";
 
-const releases = [
+const companions = [
   { angular: "16.2.12", typescript: "5.1.6", zone: "0.13.3" },
   { angular: "22.2.0", typescript: "6.0.3", zone: "0.16.0" },
 ];
@@ -72,7 +73,22 @@ export class AppComponent {}
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  for (const release of releases) {
-    await checkCompatibility(release.angular, release.typescript, release.zone);
+  const args = process.argv.slice(2);
+  if (args.length > 0) {
+    if (
+      args.length !== 6 ||
+      args[0] !== "--version" ||
+      args[2] !== "--typescript" ||
+      args[4] !== "--zone"
+    ) {
+      throw new Error("Use --version <angular> --typescript <typescript> --zone <zone.js>");
+    }
+    await checkCompatibility(args[1], args[3], args[5]);
+  } else {
+    for (const angular of commandTargetVersions("@pantoken/angular")) {
+      const release = companions.find((candidate) => candidate.angular === angular);
+      if (!release) throw new Error(`Missing Angular companion versions for ${angular}`);
+      await checkCompatibility(release.angular, release.typescript, release.zone);
+    }
   }
 }

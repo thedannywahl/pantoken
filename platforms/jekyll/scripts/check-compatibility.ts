@@ -4,8 +4,7 @@ import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { toJekyllAssets } from "../dist/index.mjs";
-
-const release = "4.4.1";
+import { commandTargetVersions, targetVersions } from "../../../scripts/release/target-versions.ts";
 
 /** Root-owned build output in the bind mount would make the host-side cleanup fail with EACCES. */
 function hostUserArgs(): string[] {
@@ -17,8 +16,11 @@ function hostUserArgs(): string[] {
 }
 
 /** Build a real Jekyll site using the generated Sass partial and token CSS asset. */
-export function checkCompatibility(version = release): void {
-  if (version !== release) throw new Error(`Unsupported Jekyll release: ${version}`);
+export function checkCompatibility(version: string, candidate = false): void {
+  if (!/^\d+\.\d+\.\d+$/u.test(version)) throw new Error(`Invalid Jekyll release: ${version}`);
+  if (!candidate && !targetVersions("@pantoken/jekyll").includes(version)) {
+    throw new Error(`Unsupported Jekyll release: ${version}`);
+  }
   const site = mkdtempSync(join(tmpdir(), "pantoken-jekyll-"));
   try {
     for (const asset of toJekyllAssets()) {
@@ -51,7 +53,7 @@ export function checkCompatibility(version = release): void {
         `${site}:/srv/jekyll`,
         "--workdir",
         "/srv/jekyll",
-        "jekyll/jekyll:4.4.1",
+        `jekyll/jekyll:${version}`,
         "jekyll",
         "build",
         "--source",
@@ -78,4 +80,7 @@ export function checkCompatibility(version = release): void {
   }
 }
 
-if (process.argv[1] === fileURLToPath(import.meta.url)) checkCompatibility();
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  for (const release of commandTargetVersions("@pantoken/jekyll"))
+    checkCompatibility(release, true);
+}

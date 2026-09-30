@@ -1,7 +1,6 @@
 import { fileURLToPath } from "node:url";
 import { withTargetVersion } from "../../../scripts/quality/with-target-version.ts";
-
-const releases = ["3.0.0", "3.5.43"];
+import { commandTargetVersions } from "../../../scripts/release/target-versions.ts";
 
 /** Install the plugin in a real Vue SSR app and render an InstUI custom element. */
 export async function checkCompatibility(version: string): Promise<void> {
@@ -42,5 +41,5 @@ export async function checkCompatibility(version: string): Promise<void> {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  for (const release of releases) await checkCompatibility(release);
+  for (const release of commandTargetVersions("@pantoken/vue")) await checkCompatibility(release);
 }

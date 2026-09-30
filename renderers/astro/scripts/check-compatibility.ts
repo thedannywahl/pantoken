@@ -3,8 +3,9 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { withTargetVersion } from "../../../scripts/quality/with-target-version.ts";
+import { commandTargetVersions } from "../../../scripts/release/target-versions.ts";
 
-const releases = [
+const companions = [
   { starlight: "0.35.0", astro: "5.18.2" },
   { starlight: "0.42.4", astro: "7.3.5" },
 ];
@@ -76,5 +77,17 @@ export default defineConfig({ site: "https://example.com", integrations: [starli
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  for (const release of releases) await checkCompatibility(release.starlight, release.astro);
+  const args = process.argv.slice(2);
+  if (args.length > 0) {
+    if (args.length !== 4 || args[0] !== "--version" || args[2] !== "--astro") {
+      throw new Error("Use --version <starlight> --astro <astro>");
+    }
+    await checkCompatibility(args[1], args[3]);
+  } else {
+    for (const starlight of commandTargetVersions("@pantoken/astro")) {
+      const release = companions.find((candidate) => candidate.starlight === starlight);
+      if (!release) throw new Error(`Missing Astro companion version for Starlight ${starlight}`);
+      await checkCompatibility(release.starlight, release.astro);
+    }
+  }
 }

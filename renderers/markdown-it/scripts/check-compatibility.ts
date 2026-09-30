@@ -1,7 +1,6 @@
 import { fileURLToPath } from "node:url";
 import { withTargetVersion } from "../../../scripts/quality/with-target-version.ts";
-
-const releases = ["14.0.0", "14.1.1", "14.2.0", "14.3.2", "15.0.2"];
+import { commandTargetVersions } from "../../../scripts/release/target-versions.ts";
 
 /** Render icon and color syntax with a separately installed markdown-it release. */
 export async function checkCompatibility(version: string): Promise<void> {
@@ -23,5 +22,6 @@ export async function checkCompatibility(version: string): Promise<void> {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  for (const release of releases) await checkCompatibility(release);
+  for (const release of commandTargetVersions("@pantoken/markdown-it"))
+    await checkCompatibility(release);
 }

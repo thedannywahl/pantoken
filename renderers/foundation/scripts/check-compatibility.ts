@@ -1,9 +1,8 @@
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { withTargetVersion } from "../../../scripts/quality/with-target-version.ts";
+import { commandTargetVersions } from "../../../scripts/release/target-versions.ts";
 import type { Root } from "postcss";
-
-const releases = ["6.1.2", "6.2.4", "6.3.1", "6.4.3", "6.5.3", "6.6.3", "6.7.5", "6.8.1", "6.9.0"];
 
 /** Compile the current Sass settings override with an actual Foundation release. */
 export async function checkCompatibility(version: string): Promise<void> {
@@ -58,5 +57,6 @@ export async function checkCompatibility(version: string): Promise<void> {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  for (const release of releases) await checkCompatibility(release);
+  for (const release of commandTargetVersions("@pantoken/foundation"))
+    await checkCompatibility(release);
 }

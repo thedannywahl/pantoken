@@ -1,7 +1,6 @@
 import { fileURLToPath } from "node:url";
 import { withTargetVersion } from "../../../scripts/quality/with-target-version.ts";
-
-const releases = ["8.0.0", "8.0.9", "8.1.14", "8.2.15", "8.3.11", "8.4.49", "8.5.28"];
+import { commandTargetVersions } from "../../../scripts/release/target-versions.ts";
 
 /** Run the built plugin with an exact PostCSS release outside the workspace dependency graph. */
 export async function checkCompatibility(version: string): Promise<void> {
@@ -20,5 +19,6 @@ export async function checkCompatibility(version: string): Promise<void> {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  for (const release of releases) await checkCompatibility(release);
+  for (const release of commandTargetVersions("@pantoken/postcss"))
+    await checkCompatibility(release);
 }

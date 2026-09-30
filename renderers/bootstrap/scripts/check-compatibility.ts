@@ -2,8 +2,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { withTargetVersion } from "../../../scripts/quality/with-target-version.ts";
-
-const releases = ["5.2.0", "5.2.3", "5.3.8"];
+import { commandTargetVersions } from "../../../scripts/release/target-versions.ts";
 
 /** Parse the real Bootstrap stylesheet and confirm pantoken overrides its primary button. */
 export async function checkCompatibility(version: string): Promise<void> {
@@ -56,5 +55,6 @@ export async function checkCompatibility(version: string): Promise<void> {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  for (const release of releases) await checkCompatibility(release);
+  for (const release of commandTargetVersions("@pantoken/bootstrap"))
+    await checkCompatibility(release);
 }

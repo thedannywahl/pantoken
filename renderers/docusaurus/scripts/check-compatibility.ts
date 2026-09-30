@@ -3,8 +3,7 @@ import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { withTargetVersion } from "../../../scripts/quality/with-target-version.ts";
-
-const releases = ["3.0.0", "3.4.0", "3.8.1", "3.10.2"];
+import { commandTargetVersions } from "../../../scripts/release/target-versions.ts";
 
 /** Check the emitted bridge against the Infima CSS shipped with a real Docusaurus theme. */
 export async function checkCompatibility(version: string): Promise<void> {
@@ -41,5 +40,6 @@ export async function checkCompatibility(version: string): Promise<void> {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  for (const release of releases) await checkCompatibility(release);
+  for (const release of commandTargetVersions("@pantoken/docusaurus"))
+    await checkCompatibility(release);
 }

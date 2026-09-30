@@ -25,7 +25,7 @@
   },
   "scripts": {
     "generate": "node scripts/generate.ts",
-    "check:compatibility": "vp run generate && node scripts/check-compatibility.ts 6.6 6.7 6.8 6.9 7.0 7.1 && node scripts/check-host.ts",
+    "check:compatibility": "vp run generate && node scripts/check-compatibility.ts && node scripts/check-host.ts",
     "dev": "vp pack --watch",
     "test": "vp run generate && vp test",
     "check": "vp check"

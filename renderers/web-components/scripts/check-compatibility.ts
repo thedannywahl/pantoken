@@ -1,8 +1,12 @@
 import { Window } from "happy-dom";
 import { fileURLToPath } from "node:url";
+import { targetEnvironments } from "../../../scripts/release/target-versions.ts";
 
 /** Verify custom-element registration and shadow output in the declared DOM-emulation environment. */
 export async function checkCompatibility(): Promise<void> {
+  const [environment] = targetEnvironments("@pantoken/web-components");
+  if (!environment.includes("happy-dom"))
+    throw new Error(`Unsupported Web Components environment: ${environment}`);
   const dom = new Window({ url: "http://localhost/" });
   const globalNames = [
     "window",

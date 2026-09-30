@@ -1,7 +1,9 @@
 import { createRequire } from "node:module";
+import { fileURLToPath } from "node:url";
 import { Ajv } from "ajv/dist/ajv.js";
 import { byTheme } from "@pantoken/tokens";
 import { toThemeJson } from "../src/to-theme-json.ts";
+import { commandTargetVersions } from "../../../scripts/release/target-versions.ts";
 
 const require = createRequire(import.meta.url);
 const AjvDraft04 = require("ajv-draft-04") as typeof import("ajv-draft-04").default;
@@ -26,8 +28,9 @@ export async function checkCompatibility(version: string): Promise<void> {
   console.log(`✓ WordPress ${version}: theme.json v${theme.version} matches the release schema`);
 }
 
-if (process.argv[1] === import.meta.filename) {
-  const versions = process.argv.slice(2);
-  if (versions.length === 0) throw new Error("Provide WordPress major.minor releases");
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  const versions = commandTargetVersions("@pantoken/wordpress")
+    .map((version) => version.split(".").slice(0, 2).join("."))
+    .filter((version, index, all) => all.indexOf(version) === index);
   for (const version of versions) await checkCompatibility(version);
 }

@@ -4,16 +4,14 @@ import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { toDrupalTheme } from "../src/index.ts";
-
-const releases = [
-  { version: "10.6.18", image: "drupal:10.6.18-php8.3-apache" },
-  { version: "11.3.2", image: "drupal:11.3.2-php8.3-apache" },
-];
+import { commandTargetVersions, targetVersions } from "../../../scripts/release/target-versions.ts";
 
 /** Parse generated theme metadata with Drupal core and Symfony YAML from official images. */
-export async function checkCompatibility(version: string): Promise<void> {
-  const release = releases.find((candidate) => candidate.version === version);
-  if (!release) throw new Error(`Unsupported Drupal release: ${version}`);
+export async function checkCompatibility(version: string, candidate = false): Promise<void> {
+  if (!/^\d+\.\d+\.\d+$/u.test(version)) throw new Error(`Invalid Drupal release: ${version}`);
+  if (!candidate && !targetVersions("@pantoken/drupal").includes(version)) {
+    throw new Error(`Unsupported Drupal release: ${version}`);
+  }
   const directory = mkdtempSync(join(tmpdir(), "pantoken-drupal-"));
   try {
     const themeRoot = join(directory, "theme");
@@ -58,7 +56,7 @@ echo json_encode(["type" => $info["type"], "library" => "tokens", "discovered" =
         `${join(directory, "check.php")}:/tmp/pantoken-check.php:ro`,
         "--entrypoint",
         "php",
-        release.image,
+        `drupal:${version}-php8.3-apache`,
         "/tmp/pantoken-check.php",
       ],
       { encoding: "utf8" },
@@ -78,5 +76,6 @@ echo json_encode(["type" => $info["type"], "library" => "tokens", "discovered" =
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  for (const release of releases) await checkCompatibility(release.version);
+  for (const release of commandTargetVersions("@pantoken/drupal"))
+    await checkCompatibility(release, true);
 }

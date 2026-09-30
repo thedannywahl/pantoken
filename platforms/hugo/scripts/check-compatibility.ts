@@ -4,8 +4,7 @@ import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { toHugoAssets } from "../dist/index.mjs";
-
-const releases = ["0.165.0"];
+import { commandTargetVersions, targetVersions } from "../../../scripts/release/target-versions.ts";
 
 /** Root-owned build output in the bind mount would make the host-side cleanup fail with EACCES. */
 function hostUserArgs(): string[] {
@@ -23,8 +22,11 @@ function collectCss(directory: string): string[] {
 }
 
 /** Build a minimal Hugo site that processes Pantoken assets through Hugo Pipes. */
-export function checkCompatibility(version: string): void {
-  if (!releases.includes(version)) throw new Error(`Unsupported Hugo release: ${version}`);
+export function checkCompatibility(version: string, candidate = false): void {
+  if (!/^\d+\.\d+\.\d+$/u.test(version)) throw new Error(`Invalid Hugo release: ${version}`);
+  if (!candidate && !targetVersions("@pantoken/hugo").includes(version)) {
+    throw new Error(`Unsupported Hugo release: ${version}`);
+  }
   const site = mkdtempSync(join(tmpdir(), "pantoken-hugo-"));
   try {
     for (const asset of toHugoAssets()) {
@@ -81,5 +83,5 @@ export function checkCompatibility(version: string): void {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  for (const release of releases) checkCompatibility(release);
+  for (const release of commandTargetVersions("@pantoken/hugo")) checkCompatibility(release, true);
 }

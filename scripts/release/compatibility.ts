@@ -354,9 +354,12 @@ release notes weekly and open a review issue manually; an absent issue does not 
 is supported. To extend a claim:
 
 1. Inspect the release's output schema or integration changes and the adapter in this table.
-2. Run a real host, compiler, or build-tool check at the minimum and new release. Remap the current
+2. Run the adapter's compatibility command with the candidate release, for example
+  \`vp run @pantoken/postcss#check:compatibility -- 8.5.29\`. The default command reads every
+  \`testedVersions\` entry from this registry; paired environments accept their companion flags.
+3. Run a real host, compiler, or build-tool check at the minimum and new release. Remap the current
   output format if necessary; do not add parallel legacy format emitters.
-3. Update \`scripts/release/target-compatibility.json\` only after the checks pass, then run
+4. Update \`scripts/release/target-compatibility.json\` only after the checks pass, then run
   \`vp run sync:compatibility\`, regenerate English API docs, and add a changeset. Newer releases
   remain pending until that reviewed change lands. Localized documentation is handled separately.
 

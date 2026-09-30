@@ -4,6 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { generateRust } from "../dist/index.mjs";
+import { commandTargetVersions } from "../../../scripts/release/target-versions.ts";
 
 const projects = [
   { format: "egui", package: "egui", crate: "egui", version: "0.36.2" },
@@ -11,7 +12,8 @@ const projects = [
 ] as const;
 
 /** Compile generated modules against the current native GUI crate releases. */
-export function checkCompatibility(): void {
+export function checkCompatibility(version: string): void {
+  if (!/^\d+\.\d+\.\d+$/u.test(version)) throw new Error(`Invalid Rust release: ${version}`);
   const directory = mkdtempSync(join(tmpdir(), "pantoken-rust-"));
   try {
     writeFileSync(
@@ -39,7 +41,7 @@ export function checkCompatibility(): void {
         `${directory}:/workspace`,
         "--workdir",
         "/workspace",
-        "rust:1.95",
+        `rust:${version}`,
         "cargo",
         "check",
         "--workspace",
@@ -53,10 +55,12 @@ export function checkCompatibility(): void {
         `cargo check exited ${result.status}`;
       throw new Error(message);
     }
-    console.log("✓ Rust 1.95: generated egui 0.36.2 and iced 0.14.0 modules compile");
+    console.log(`✓ Rust ${version}: generated egui 0.36.2 and iced 0.14.0 modules compile`);
   } finally {
     rmSync(directory, { recursive: true, force: true });
   }
 }
 
-if (process.argv[1] === fileURLToPath(import.meta.url)) checkCompatibility();
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  for (const version of commandTargetVersions("@pantoken/rust")) checkCompatibility(version);
+}

@@ -4,8 +4,7 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { toVitePressCss } from "../dist/index.mjs";
 import { withTargetVersion } from "../../../scripts/quality/with-target-version.ts";
-
-const releases = ["1.6.4"];
+import { commandTargetVersions } from "../../../scripts/release/target-versions.ts";
 
 function collectCss(directory: string): string[] {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -57,5 +56,6 @@ export async function checkCompatibility(version: string): Promise<void> {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  for (const release of releases) await checkCompatibility(release);
+  for (const release of commandTargetVersions("@pantoken/vitepress"))
+    await checkCompatibility(release);
 }

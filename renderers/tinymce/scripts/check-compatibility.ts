@@ -1,7 +1,6 @@
 import { fileURLToPath } from "node:url";
 import { withTargetVersion } from "../../../scripts/quality/with-target-version.ts";
-
-const releases = ["8.9.2"];
+import { commandTargetVersions } from "../../../scripts/release/target-versions.ts";
 
 /** Register the Pantoken plugin in TinyMCE's real PluginManager and initialize its callback. */
 export async function checkCompatibility(version: string): Promise<void> {
@@ -68,5 +67,6 @@ export async function checkCompatibility(version: string): Promise<void> {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  for (const release of releases) await checkCompatibility(release);
+  for (const release of commandTargetVersions("@pantoken/tinymce"))
+    await checkCompatibility(release);
 }

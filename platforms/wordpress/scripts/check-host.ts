@@ -1,8 +1,8 @@
 import { spawnSync } from "node:child_process";
 import { randomUUID } from "node:crypto";
 import { fileURLToPath } from "node:url";
+import { commandTargetVersions } from "../../../scripts/release/target-versions.ts";
 
-const releases = ["6.6", "6.7.0", "6.8.0", "6.9.0", "7.0.0", "7.1.2"];
 const fixture = fileURLToPath(new URL("../tests/fixture/", import.meta.url));
 const theme = fileURLToPath(new URL("../generated/theme.json", import.meta.url));
 const evaluation =
@@ -38,7 +38,10 @@ export function assertPresets(output: string, release: string): void {
 }
 
 /** Install the generated theme on an ephemeral WordPress host for each supported release train. */
-export async function checkHost(): Promise<void> {
+export async function checkHost(
+  releases = commandTargetVersions("@pantoken/wordpress"),
+): Promise<void> {
+  if (releases.length === 0) throw new Error("No WordPress releases selected");
   const id = randomUUID().slice(0, 8);
   const network = `pantoken-wp-${id}`;
   const database = `${network}-db`;

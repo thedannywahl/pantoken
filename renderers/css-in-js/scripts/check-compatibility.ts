@@ -1,7 +1,6 @@
 import { fileURLToPath } from "node:url";
 import { withTargetVersion } from "../../../scripts/quality/with-target-version.ts";
-
-const releases = ["11.14.0"];
+import { commandTargetVersions } from "../../../scripts/release/target-versions.ts";
 
 /** Render a themed component with Emotion and assert the Pantoken CSS variable reaches SSR CSS. */
 export async function checkCompatibility(version: string): Promise<void> {
@@ -47,5 +46,6 @@ export async function checkCompatibility(version: string): Promise<void> {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  for (const release of releases) await checkCompatibility(release);
+  for (const release of commandTargetVersions("@pantoken/css-in-js"))
+    await checkCompatibility(release);
 }

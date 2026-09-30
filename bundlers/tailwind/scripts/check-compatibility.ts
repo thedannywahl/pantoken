@@ -3,8 +3,8 @@ import { readFileSync, realpathSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { withTargetVersion } from "../../../scripts/quality/with-target-version.ts";
+import { commandTargetVersions } from "../../../scripts/release/target-versions.ts";
 
-const releases = ["4.0.17", "4.1.18", "4.2.4", "4.3.3"];
 const presetUrl = pathToFileURL(fileURLToPath(new URL("../dist/index.mjs", import.meta.url))).href;
 
 /** Compile a real Tailwind v4 stylesheet using the current pantoken preset. */
@@ -52,5 +52,6 @@ export async function checkCompatibility(version: string): Promise<void> {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  for (const release of releases) await checkCompatibility(release);
+  for (const release of commandTargetVersions("@pantoken/tailwind"))
+    await checkCompatibility(release);
 }

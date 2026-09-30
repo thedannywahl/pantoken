@@ -206,6 +206,7 @@ export default defineConfig({
           "lint:cssdoc",
           "validate:generated:only",
           "gate:compatibility",
+          "gate:target-compatibility",
           "lint:markdown",
           "check:manypkg",
           "health:fallow",
@@ -234,6 +235,9 @@ export default defineConfig({
       "gate:compatibility": {
         command: "node scripts/release/check-compatibility.ts",
         dependsOn: ["build:all"],
+      },
+      "gate:target-compatibility": {
+        command: "node scripts/release/check-target-compatibility.ts",
       },
       // CSS/cssdoc linting needs `@pantoken/components`'s generated sheets (`src/generated/_records.css`,
       // the cssdoc sibling-record provider, and the `generated/*.css` sheets). They depend on `build:all`
