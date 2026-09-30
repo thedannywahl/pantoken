@@ -1,0 +1,85 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3SZQT13KVYVMMYPHHQVRVN1",
+  "session_id": "aa5ba2c5-c9ff-442d-b33b-ddcb26971c26",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-30T20:22:48.346163Z",
+  "branch": "release-compatibility",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "plugins/pantoken/custom-components/src/components/segmented-control/segmented-control.css",
+    "plugins/pantoken/custom-components/src/components/skeleton-loader/skeleton-loader.css",
+    "plugins/pantoken/custom-components/tests/index.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "7efb6620443f",
+  "checkpoint_transcript_start": 540,
+  "transcript_lines_at_start": 540,
+  "compact_transcript_start": 103,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-30T20:22:48.314812Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 215,
+    "human_removed": 628,
+    "total_committed": 0,
+    "total_lines_changed": 843,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 7795,
+      "user_lines_removed": 306,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".fallowrc.jsonc": 5,
+        "docs/ar/guide/plugins.md": 102,
+        "docs/package.json": 1,
+        "l10n/ar/docs.guides.po": 8,
+        "l10n/ca/docs.guides.po": 3760,
+        "l10n/docs.api.pot": 1,
+        "l10n/docs.guides.pot": 3,
+        "l10n/hy/docs.guides.po": 3693,
+        "package.json": 3,
+        "plugins/pantoken/custom-components/src/components/segmented-control/segmented-control.css": 124,
+        "plugins/pantoken/custom-components/src/components/skeleton-loader/skeleton-loader.css": 81,
+        "plugins/pantoken/custom-components/tests/index.test.ts": 1,
+        "pnpm-workspace.yaml": 4,
+        "renderers/css-in-js/package.json": 4,
+        "renderers/mui/package.json": 3,
+        "renderers/tinymce/package.json": 1,
+        "renderers/vue/package.json": 1
+      },
+      "user_removed_per_file": {
+        ".fallowrc.jsonc": 5,
+        "docs/ar/guide/plugins.md": 34,
+        "formats/interactions/src/components/segmented-control.ts": 1,
+        "formats/interactions/src/components/skeleton-loader.ts": 1,
+        "l10n/ar/docs.guides.po": 3,
+        "l10n/ca/docs.guides.po": 23,
+        "l10n/docs.api.pot": 1,
+        "l10n/docs.guides.pot": 3,
+        "l10n/hy/docs.guides.po": 23,
+        "package.json": 1,
+        "plugins/pantoken/custom-components/src/components/segmented-control/segmented-control.css": 130,
+        "plugins/pantoken/custom-components/src/components/skeleton-loader/skeleton-loader.css": 80,
+        "plugins/pantoken/custom-components/tests/index.test.ts": 1
+      }
+    }
+  ]
+}
