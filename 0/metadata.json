@@ -1,0 +1,71 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3T0FGDAR4CP17E0MD2ZYQ5J",
+  "session_id": "f79ff467-43ad-4202-979c-60fdc2b264f0",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-30T20:35:44.722099Z",
+  "branch": "release-compatibility",
+  "checkpoints_count": 2,
+  "save_step_count": 2,
+  "files_touched": [],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "6f43ab1b267f",
+  "checkpoint_transcript_start": 2368,
+  "transcript_lines_at_start": 2368,
+  "compact_transcript_start": 376,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 7
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 14,
+      "user_lines_removed": 8,
+      "agent_lines_added": 10,
+      "agent_lines_removed": 2,
+      "user_added_per_file": {
+        ".fallowrc.jsonc": 5,
+        "l10n/docs.api.pot": 1,
+        "package.json": 3,
+        "pnpm-workspace.yaml": 4,
+        "renderers/vue/package.json": 1
+      },
+      "user_removed_per_file": {
+        ".fallowrc.jsonc": 5,
+        "l10n/docs.api.pot": 1,
+        "package.json": 1,
+        "renderers/vue/package.json": 1
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 130,
+      "user_lines_removed": 136,
+      "agent_lines_added": 7719,
+      "agent_lines_removed": 227,
+      "user_added_per_file": {
+        "l10n/docs.api.pot": 3,
+        "plugins/pantoken/custom-components/src/components/segmented-control/segmented-control.css": 127
+      },
+      "user_removed_per_file": {
+        "l10n/docs.api.pot": 3,
+        "plugins/pantoken/custom-components/src/components/segmented-control/segmented-control.css": 133
+      }
+    }
+  ]
+}
