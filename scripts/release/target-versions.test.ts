@@ -1,5 +1,5 @@
 import { expect, test } from "vite-plus/test";
-import { targetVersions } from "./target-versions.ts";
+import { targetSupport, targetVersions } from "./target-versions.ts";
 
 test("reads the verified versions from the target registry", () => {
   expect(targetVersions("@pantoken/postcss")).toEqual([
@@ -23,4 +23,11 @@ test("rejects unverified targets", () => {
   expect(() => targetVersions("@pantoken/email")).toThrow(
     "does not have verified release versions",
   );
+});
+
+test("reads support records directly from the compatibility registry", () => {
+  expect(targetSupport("@pantoken/postcss")).toMatchObject({
+    status: "verified",
+    testedThrough: "8.5.28",
+  });
 });

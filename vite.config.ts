@@ -239,6 +239,16 @@ export default defineConfig({
       "gate:target-compatibility": {
         command: "node scripts/release/check-target-compatibility.ts",
       },
+      // Networked downstream release monitoring belongs in the scheduled workflow, not ready:all.
+      "downstream:check": {
+        command: "node scripts/release/check-target-releases.ts",
+      },
+      "downstream:test": {
+        command: "node scripts/release/downstream.ts test",
+      },
+      "downstream:bless": {
+        command: "node scripts/release/downstream.ts bless",
+      },
       // CSS/cssdoc linting needs `@pantoken/components`'s generated sheets (`src/generated/_records.css`,
       // the cssdoc sibling-record provider, and the `generated/*.css` sheets). They depend on `build:all`
       // rather than `@pantoken/components#generate` directly so generation happens exactly once, through

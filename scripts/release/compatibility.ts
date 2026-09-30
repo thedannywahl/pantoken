@@ -357,9 +357,12 @@ is supported. To extend a claim:
 2. Run the adapter's compatibility command with the candidate release, for example
   \`vp run @pantoken/postcss#check:compatibility -- 8.5.29\`. The default command reads every
   \`testedVersions\` entry from this registry; paired environments accept their companion flags.
-3. Run a real host, compiler, or build-tool check at the minimum and new release. Remap the current
+3. For feed-discovered candidates, use \`vp run downstream:test\`; failed attempts are retained in
+  \`scripts/release/downstream-compatibility.json\`. After a successful review, run
+  \`vp run downstream:bless --package @pantoken/name --version x.y.z\` to update the claim.
+4. Run a real host, compiler, or build-tool check at the minimum and new release. Remap the current
   output format if necessary; do not add parallel legacy format emitters.
-4. Update \`scripts/release/target-compatibility.json\` only after the checks pass, then run
+5. Update \`scripts/release/target-compatibility.json\` only after the checks pass, then run
   \`vp run sync:compatibility\`, regenerate English API docs, and add a changeset. Newer releases
   remain pending until that reviewed change lands. Localized documentation is handled separately.
 

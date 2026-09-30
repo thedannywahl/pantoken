@@ -24,6 +24,6 @@ jobs:
           cache: true
           run-install: true
       - name: Check target releases
-        run: node scripts/release/check-target-releases.ts
+        run: vp run downstream:check
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

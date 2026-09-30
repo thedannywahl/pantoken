@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { Compatibility, ConsumerEntry } from "./compatibility.ts";
+import { targetSupport } from "./target-versions.ts";
 
 const root = join(import.meta.dirname, "../..");
 const npmTargets: Record<string, string> = {
@@ -37,7 +38,7 @@ const githubTargets: Record<string, string> = {
   "@pantoken/jekyll": "jekyll/jekyll",
 };
 
-/** An upstream stable release not yet included in an adapter's verified support record. */
+/** A stable downstream release not yet included in an adapter's verified support record. */
 export interface PendingRelease {
   package: string;
   path: string;
@@ -169,29 +170,26 @@ export async function publishIssues(pending: readonly PendingRelease[]): Promise
   }
 }
 
-/** Check all adapters with a known feed and flag unsupported stable releases for review. */
-export async function checkTargetReleases(): Promise<void> {
+/** Find all adapters with a known feed and an uncovered stable release. */
+export async function pendingTargetReleases(): Promise<PendingRelease[]> {
   const { consumers } = JSON.parse(
     readFileSync(join(root, "compatibility.json"), "utf8"),
   ) as Compatibility;
   const pending: PendingRelease[] = [];
   for (const consumer of consumers) {
     if (!(consumer.package in npmTargets) && consumer.package !== "@pantoken/wordpress") continue;
-    const npm = npmTargets[consumer.package];
-    if (npm) {
-      const manifest = JSON.parse(
-        readFileSync(join(root, consumer.path, "package.json"), "utf8"),
-      ) as {
-        peerDependencies?: Record<string, string>;
-        devDependencies?: Record<string, string>;
-      };
-      if (!manifest.peerDependencies?.[npm] && !manifest.devDependencies?.[npm]) {
-        throw new Error(`Missing monitored dependency: ${consumer.package} / ${npm}`);
-      }
-    }
-    const release = await pendingRelease(consumer);
+    const release = await pendingRelease({
+      ...consumer,
+      targetSupport: targetSupport(consumer.package),
+    });
     if (release) pending.push(release);
   }
+  return pending;
+}
+
+/** Check all adapters with a known feed and flag unsupported stable releases for review. */
+export async function checkTargetReleases(): Promise<void> {
+  const pending = await pendingTargetReleases();
   await publishIssues(pending);
 }
 

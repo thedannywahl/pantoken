@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
+import type { TargetSupport } from "./compatibility.ts";
 
 type TargetRegistry = Record<string, unknown>;
 
@@ -49,4 +50,13 @@ export function targetEnvironments(packageName: string): string[] {
     throw new Error(`Target ${packageName} does not have verified environment evidence`);
   }
   return [...target.testedEnvironments];
+}
+
+/** Return one support record directly from the compatibility registry. */
+export function targetSupport(packageName: string): TargetSupport {
+  const target = readRegistry()[packageName];
+  if (!target || typeof target !== "object" || !("status" in target)) {
+    throw new Error(`Target ${packageName} is missing from target-compatibility.json`);
+  }
+  return target as TargetSupport;
 }

@@ -66,8 +66,8 @@
         "format": "Production build transpiling and rendering Instructure UI 11.7.7 with React 19.3.0",
         "status": "verified",
         "minimum": "16.0.0",
-        "testedThrough": "16.3.7",
-        "testedVersions": ["16.0.0", "16.3.7"],
+        "testedThrough": "16.3.8",
+        "testedVersions": ["16.0.0", "16.3.7", "16.3.8"],
         "testCommand": "vp run @pantoken/next#check:compatibility"
       }
     },
@@ -403,8 +403,8 @@
         "format": "Official CLI validates generated colors and background theme config",
         "status": "verified",
         "minimum": "4.0.1555",
-        "testedThrough": "4.0.1555",
-        "testedVersions": ["4.0.1555"],
+        "testedThrough": "4.0.1557",
+        "testedVersions": ["4.0.1555", "4.0.1557"],
         "testCommand": "vp run @pantoken/mintlify#check:compatibility"
       }
     },
