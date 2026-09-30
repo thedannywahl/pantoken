@@ -1,0 +1,9 @@
+even though the loading semantics say they should stay outside of the skeleton loader, these semantics do not exist anywhere else in instui or pantoken, so the skeleton loader should expose them as hooks for the parent app to invoke when using skeleton loading, and this should go in the standard interactions package with the same standard registration pattern.
+
+---
+
+Read-only quick focused investigation for planning. User now requires SkeletonLoader to expose parent-invoked loading semantic hooks via standard @pantoken/interactions registration pattern while skeleton visuals remain pure CSS SSR-safe; package CSS stays plugins/pantoken/custom-components. Follow .entire/graph-agent.md graph search first if CLI available, otherwise state unavailable. Inspect exact existing hand-authored behavior + side-effect registration + build-iife + vite pack + tests + capability manifest constraints for custom plugin-only components. Propose precise registration steps minimal consistent pattern, decide whether to modify capability manifest and generation ownership, how to ensure SSR-empty status/live region OUTSIDE aria-busy region, delayed announce, error, cleanup, and optional interaction vs no hydration requirement. Return verified file references and risk list; no edits.
+
+---
+
+Start implementation
