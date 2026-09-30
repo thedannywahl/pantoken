@@ -12,6 +12,7 @@ import {
   customComponents,
   logoRules,
   skeletonLoaderRules,
+  segmentedControlRules,
 } from "../src/index.ts";
 
 const cssOf = (plugin: ReturnType<typeof customComponents>): string => {
@@ -89,6 +90,34 @@ test("every custom component appears in the plugin css output", () => {
   expect(css).toContain(logoRules());
   expect(css).toContain(buttonSetRules());
   expect(css).toContain(skeletonLoaderRules());
+  expect(css).toContain(segmentedControlRules());
+});
+
+test("segmented control uses native radio states and the three upstream sizes", () => {
+  const css = segmentedControlRules();
+  expect(css).toContain(".instui-segmented-control");
+  expect(css).toContain(".segment:has(input:checked)");
+  expect(css).toContain(".segment:has(input:focus-visible)");
+  expect(css).toContain(".segment:has(input:disabled)");
+  expect(css).toContain("var(--instui-elevation-depth1)");
+  for (const size of ["sm", "md", "lg"]) {
+    expect(css).toContain(`--instui-component-segmented-control-height-${size}`);
+    expect(css).toContain(`--instui-component-segmented-control-font-size-${size}`);
+    expect(css).toContain(`--instui-component-segmented-control-item-padding-horizontal-${size}`);
+  }
+  expect(css).toContain(".overflow-start");
+  expect(css).toContain(".overflow-end");
+  expect(segmentedControlRules("my-")).toContain(".my-segmented-control");
+  expect(segmentedControlRules("")).toContain(".segmented-control {");
+});
+
+test("segmented control references only upstream or shared elevation/focus tokens", () => {
+  for (const theme of ["rebrand", "canvas", "canvasHighContrast"] as const) {
+    const drift = unknownReferences(segmentedControlRules(), byTheme(theme)).filter(
+      (name) => !name.startsWith("--instui-elevation-") && !name.startsWith("--instui-focus-"),
+    );
+    expect(drift).toEqual([]);
+  }
 });
 
 test("skeleton loader supports prefixing and all decorative variants", () => {

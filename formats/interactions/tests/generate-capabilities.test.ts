@@ -38,4 +38,10 @@ test("custom component behaviors map to plugin CSS and interaction bundles", () 
     css: "https://cdn.jsdelivr.net/npm/@pantoken/plugin-custom-components/dist/skeleton-loader.css",
     js: "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/skeleton-loader.iife.js",
   });
+  expect(manifest.components.find(({ name }) => name === "segmented-control")).toEqual({
+    name: "segmented-control",
+    type: "both",
+    css: "https://cdn.jsdelivr.net/npm/@pantoken/plugin-custom-components/dist/segmented-control.css",
+    js: "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/segmented-control.iife.js",
+  });
 });

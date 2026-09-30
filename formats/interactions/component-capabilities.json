@@ -225,6 +225,12 @@
       "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/rating.css"
     },
     {
+      "name": "segmented-control",
+      "type": "both",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/plugin-custom-components/dist/segmented-control.css",
+      "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/segmented-control.iife.js"
+    },
+    {
       "name": "side-nav-bar",
       "type": "css-only",
       "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/side-nav-bar.css"

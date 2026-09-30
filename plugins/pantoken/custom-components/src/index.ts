@@ -25,6 +25,7 @@ import {
   cardRules,
   logoRules,
   skeletonLoaderRules,
+  segmentedControlRules,
 } from "./components/index.ts";
 export { breakpointDeclarations } from "./declarations/index.ts";
 export {
@@ -35,6 +36,7 @@ export {
   cardRules,
   logoRules,
   skeletonLoaderRules,
+  segmentedControlRules,
 } from "./components/index.ts";
 
 /** Options for the {@link customComponents} plugin. */
@@ -60,6 +62,7 @@ export function customComponents(options: CustomComponentsOptions = {}): Pantoke
     buttonSetRules(),
     logoRules(),
     skeletonLoaderRules(),
+    segmentedControlRules(),
   ].join("\n");
 
   return definePlugin({
