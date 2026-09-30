@@ -118,29 +118,22 @@ function bless(packageName: string, version: string): void {
       `${packageName} ${version} is not newer than testedThrough ${support.testedThrough}`,
     );
   }
-  let source = readFileSync(registryPath, "utf8");
-  const packagePattern = new RegExp(
-    `("${packageName.replaceAll("/", "\\/")}"\\s*:\\s*\\{)([\\s\\S]*?)(\\n\\s*\\})`,
-  );
-  const match = packagePattern.exec(source);
-  if (!match) throw new Error(`Could not locate ${packageName} in target-compatibility.json`);
-  const body = match[2];
-  const testedThrough = body.replace(/("testedThrough"\s*:\s*")[^"]+(")/u, `$1${version}$2`);
-  const testedVersions = testedThrough.replace(
-    /("testedVersions"\s*:\s*\[)([\s\S]*?)(\])/u,
-    (_full, prefix: string, values: string, suffix: string) => {
-      const trimmed = values.trimEnd();
-      const separator = trimmed.trimStart().startsWith("\n") ? `,\n${" ".repeat(6)}` : ", ";
-      return `${prefix}${trimmed}${separator}"${version}"${suffix}`;
-    },
-  );
-  source =
-    source.slice(0, match.index) +
-    match[1] +
-    testedVersions +
-    match[3] +
-    source.slice(match.index + match[0].length);
-  writeFileSync(registryPath, source);
+  const registry = JSON.parse(readFileSync(registryPath, "utf8")) as Record<
+    string,
+    { testedThrough?: string; testedVersions?: string[] }
+  >;
+  const entry = registry[packageName];
+  if (!entry) {
+    throw new Error(`Could not locate ${packageName} in target-compatibility.json`);
+  }
+  if (!Array.isArray(entry.testedVersions)) {
+    throw new Error(`${packageName} does not define testedVersions in target-compatibility.json`);
+  }
+
+  entry.testedThrough = version;
+  entry.testedVersions.push(version);
+
+  writeFileSync(registryPath, `${JSON.stringify(registry, null, 2)}\n`);
   console.log(`✓ Blessed ${packageName} ${version} in target-compatibility.json`);
 }
 
