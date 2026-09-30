@@ -11,8 +11,8 @@
  * @part overflow-end — Scroll to the following hidden segment.
  * @structure
  * .pfx-segmented-control {
- *   @component segmented-control.segment:one-or-more {}
  *   .overflow-start:optional {}
+ *   @component segmented-control.segment:one-or-more {}
  *   .overflow-end:optional {}
  * }
  * @a11y Use a labelled fieldset and one shared radio name with a checked default. Native radios
@@ -21,10 +21,14 @@
  * @example
  * ```html
  * <fieldset class="pfx-segmented-control" aria-label="Course view">
- *   <button class="overflow-start" type="button" aria-label="Scroll to previous views" hidden></button>
- *   <label><input type="radio" name="view" checked>Grid</label>
- *   <label><input type="radio" name="view">List</label>
- *   <button class="overflow-end" type="button" aria-label="Scroll to next views" hidden></button>
+ *   <button class="overflow-start" aria-label="Scroll to previous views" hidden></button>
+ *   <label class="-icon-settings"><input type="radio" name="view" checked>Settings</label>
+ *   <label class="-icon-sliders-vertical"><input type="radio" name="view">Options</label>
+ *   <label class="-icon-wrench"><input type="radio" name="view">Config</label>
+ *   <label class="-icon-sliders-horizontal"><input type="radio" name="view">Utilities</label>
+ *   <label class="-icon-monitor-cog"><input type="radio" name="view">Preferences</label>
+ *   <label class="-icon-settings-2"><input type="radio" name="view">Feature flags</label>
+ *   <button class="overflow-end" aria-label="Scroll to next views" hidden></button>
  * </fieldset>
  * ```
  */

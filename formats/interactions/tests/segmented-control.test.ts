@@ -41,6 +41,13 @@ test("keeps native single selection and skips disabled segments with arrow keys"
   handle.cleanup();
 });
 
+test("clicking an inactive segment leaves exactly one segment checked", () => {
+  const { host, radios } = setup();
+  initSegmentedControl(host);
+  radios[2].click();
+  expect(radios.filter((radio) => radio.checked)).toEqual([radios[2]]);
+});
+
 test("supports Home, End, Space, and Enter without duplicate change events", () => {
   const { host, radios } = setup();
   initSegmentedControl(host, { size: "sm" });
@@ -81,6 +88,21 @@ test("enables overflow arrows only when requested and measured content clips", (
   expect(start.hidden).toBe(true);
   expect(end.hidden).toBe(true);
   handle.cleanup();
+});
+
+test("measures overflow automatically when both controls are present", () => {
+  const { host, strip, end } = setup();
+  Object.defineProperty(strip, "scrollWidth", { configurable: true, value: 300 });
+  Object.defineProperty(strip, "clientWidth", { configurable: true, value: 100 });
+  vi.spyOn(strip, "getBoundingClientRect").mockReturnValue({ left: 0, right: 100 } as DOMRect);
+  strip.querySelectorAll<HTMLElement>("label").forEach((label, index) => {
+    vi.spyOn(label, "getBoundingClientRect").mockReturnValue({
+      left: index * 80,
+      right: index * 80 + 70,
+    } as DOMRect);
+  });
+  initSegmentedControl(host);
+  expect(end.hidden).toBe(false);
 });
 
 test("reuses one handle and removes keyboard listeners on cleanup", () => {

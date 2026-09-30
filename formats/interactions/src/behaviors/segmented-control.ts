@@ -27,7 +27,7 @@ export function initSegmentedControl(
     ...host.querySelectorAll<HTMLInputElement>(":scope > label > input[type=radio]"),
   ];
   const segments = (): HTMLElement[] => [...strip.querySelectorAll<HTMLElement>(":scope > label")];
-  const isOverflown = options.isOverflown ?? host.hasAttribute("data-overflown");
+  const isOverflown = options.isOverflown ?? true;
   let arrowWidth = 0;
   if (options.size) {
     host.classList.remove("-size-sm", "-size-md", "-size-lg");
@@ -115,12 +115,19 @@ export function initSegmentedControl(
 
   const select = (radio: HTMLInputElement): void => {
     radio.focus();
-    if (!radio.checked) {
-      radio.checked = true;
+    const changed = !radio.checked;
+    for (const other of radios()) other.checked = other === radio;
+    if (changed) {
       radio.dispatchEvent(new Event("input", { bubbles: true }));
       radio.dispatchEvent(new Event("change", { bubbles: true }));
     }
     radio.closest("label")?.scrollIntoView?.({ block: "nearest", inline: "nearest" });
+  };
+
+  const onChange = (event: Event): void => {
+    const radio = event.target;
+    if (!(radio instanceof HTMLInputElement) || !radio.checked || !radios().includes(radio)) return;
+    for (const other of radios()) if (other !== radio) other.checked = false;
   };
 
   const onKeyDown = (event: KeyboardEvent): void => {
@@ -145,6 +152,7 @@ export function initSegmentedControl(
   const onStart = (): void => scrollOne(false);
   const onEnd = (): void => scrollOne(true);
   host.addEventListener("keydown", onKeyDown);
+  host.addEventListener("change", onChange);
   strip?.addEventListener("scroll", updateArrows, { passive: true });
   startButton?.addEventListener("click", onStart);
   endButton?.addEventListener("click", onEnd);
@@ -160,6 +168,7 @@ export function initSegmentedControl(
     refresh,
     cleanup(): void {
       host.removeEventListener("keydown", onKeyDown);
+      host.removeEventListener("change", onChange);
       strip?.removeEventListener("scroll", updateArrows);
       startButton?.removeEventListener("click", onStart);
       endButton?.removeEventListener("click", onEnd);
