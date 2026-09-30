@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-30 19:27+0000\n"
+"PO-Revision-Date: 2026-09-30 19:39+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -912,6 +912,7 @@ msgstr ""
 #: css/close-button.md
 #: css/in-place-edit.md
 #: css/modal.md
+#: css/segmented-control.md
 #: css/skeleton-loader.md
 #: css/tabs.md
 #: css/tooltip.md
@@ -4061,6 +4062,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A star rating with filled and empty glyphs and an optional numeric label."
+msgstr ""
+
+#: css/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A single-select row of compact view or filter options."
 msgstr ""
 
 #: css/index.md
@@ -7249,6 +7256,84 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Opens in a new window"
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`.instui-segmented-control` — A single-select row of compact view or filter options."
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The selected segment and overflow buttons use the shared resting elevation until\n  upstream provides dedicated shadow tokens. Override --pantoken-segmented-selected-shadow and\n  --pantoken-segmented-overflow-shadow if the application has exact design shadow values."
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Use a labelled fieldset and one shared radio name with a checked default. Native radios\n  announce their checked state; overflow buttons need labels describing their scroll direction."
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "@import \"@pantoken/plugin-custom-components/segmented-control.css\";"
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " Grid"
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid " List"
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Large segments."
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Medium segments (default)."
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Small segments."
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Scroll to the following hidden segment."
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Scroll to the preceding hidden segment."
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "One labelled radio option."
+msgstr ""
+
+#: css/segmented-control.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "The horizontal scroll track."
 msgstr ""
 
 #: css/side-nav-bar.item.md
@@ -10983,6 +11068,12 @@ msgctxt "docs.api:prose"
 msgid "Wire open/close commands plus width-based responsive overlay switching onto a host: any\ncollapsible side panel (e.g. a drawer's tray) can import this interaction rather than each\ncomponent reimplementing it."
 msgstr ""
 
+#: formats/interactions/src/functions/initSegmentedControl.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Enhance a labelled native radio group with keyboard navigation and optional overflow controls."
+msgstr ""
+
 #: formats/interactions/src/functions/initSkeletonLoading.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -11264,6 +11355,18 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Exit treatment. Defaults to `\"fade\"`, matching InstUI Alert."
+msgstr ""
+
+#: formats/interactions/src/interfaces/SegmentedControlHandle.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Detach the segmented-control listeners and observers."
+msgstr ""
+
+#: formats/interactions/src/interfaces/SegmentedControlOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Segmented control options; the medium size is the CSS default."
 msgstr ""
 
 #: formats/interactions/src/interfaces/SkeletonLoadingHandle.md
@@ -14725,6 +14828,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Build the logo utility CSS as an aspect-ratio-aware mask painter for `@pantoken/plugin-logos`'\n`-logo-<name>` glyph classes, substituting `prefix` for the `pfx-` sentinel."
+msgstr ""
+
+#: plugins/pantoken/custom-components/src/functions/segmentedControlRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build segmented-control CSS, replacing the component prefix sentinel."
 msgstr ""
 
 #: plugins/pantoken/custom-components/src/functions/skeletonLoaderRules.md

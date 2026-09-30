@@ -33,7 +33,7 @@ const styleItem = (options: {
 export function buildPluginRegistryItems(): RegistryItem[] {
   const items: RegistryItem[] = [];
 
-  for (const name of ["card", "banner", "agent-shell", "skeleton-loader"]) {
+  for (const name of ["card", "banner", "agent-shell", "skeleton-loader", "segmented-control"]) {
     items.push(
       styleItem({
         name,
@@ -43,13 +43,22 @@ export function buildPluginRegistryItems(): RegistryItem[] {
           .join(" "),
         description: `Pantoken ${name} component styles and documented HTML structure.`,
         pkg: "@pantoken/plugin-custom-components",
-        extraDependencies: name === "skeleton-loader" ? ["@pantoken/interactions"] : [],
+        extraDependencies:
+          name === "skeleton-loader" || name === "segmented-control"
+            ? ["@pantoken/interactions"]
+            : [],
         css: `@pantoken/plugin-custom-components/${name}.css`,
+        extraImports:
+          name === "segmented-control"
+            ? ["@pantoken/components/icon-button.css", "@pantoken/components/icon.css"]
+            : [],
         categories: ["components", "plugins"],
         docs:
           name === "skeleton-loader"
             ? "The shapes work without JavaScript. Use initSkeletonLoading from @pantoken/interactions on the parent loading region for announcements."
-            : `See https://pantoken.app/api/css/plugins/pantoken/custom-components/${name}.`,
+            : name === "segmented-control"
+              ? "Use a labelled radio group. Import @pantoken/interactions/segmented-control.iife.js or call initSegmentedControl for overflow controls."
+              : `See https://pantoken.app/api/css/plugins/pantoken/custom-components/${name}.`,
       }),
     );
   }

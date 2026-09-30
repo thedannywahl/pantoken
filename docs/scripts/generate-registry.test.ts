@@ -157,6 +157,19 @@ test("skeleton loader installs visual styles and its optional parent interaction
   expect(skeleton?.docs).toContain("initSkeletonLoading");
 });
 
+test("segmented control includes both scrolling behavior and icon-button styles", () => {
+  const segmented = buildRegistryCatalog().items.find(({ name }) => name === "segmented-control");
+  expect(segmented?.dependencies).toEqual([
+    "@pantoken/plugin-custom-components",
+    "@pantoken/interactions",
+  ]);
+  expect(segmented?.css).toHaveProperty(
+    '@import "@pantoken/plugin-custom-components/segmented-control.css"',
+  );
+  expect(segmented?.css).toHaveProperty('@import "@pantoken/components/icon-button.css"');
+  expect(segmented?.css).toHaveProperty('@import "@pantoken/components/icon.css"');
+});
+
 test("registry item names are unique", () => {
   const names = buildRegistryCatalog().items.map(({ name }) => name);
   expect(new Set(names).size).toBe(names.length);
