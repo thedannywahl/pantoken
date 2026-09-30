@@ -1,0 +1,52 @@
+runing compatibility checks in CI for every platform on pnpm-locl or pnpm-workspace changes will be very expensive as it changes on almost every PR.
+
+---
+
+runing compatibility checks in CI for every platform on pnpm-locl or pnpm-workspace changes will be very expensive as it changes on almost every PR.
+
+---
+
+we should change wordpress and postcss to match the naming convention.
+
+---
+
+this file should have a published schema, and this file should also be published on the docs site and added to the /guide/agent-tools#agent_tab=docs
+page as a link, and `@pantoken/ai` should be updated to reference it.
+
+---
+
+Read-only discovery for planning only; do not edit files. Thoroughness: medium. Investigate ai/pantoken-ai package's AGENTS.md, llms.txt, editor rules, bootstrap skill and assets; determine specific locations to link raw target compatibility registry and JSON schema, how package assets are generated/synced/tested, and whether agent-tools guide references this package. Include precise file names/lines, tests/build commands, note any history-backed intent if available. Respect graph-agent search-first guidance.
+
+---
+
+Read-only discovery for planning only; do not edit files. Thoroughness: medium. Find how docs site serves static JSON and links from /guide/agent-tools#agent_tab=docs, including exact guide file(s), docs/public patterns, VitePress base and locale/i18n handling, docs build validation, and release link conventions. Propose minimal docs publication plan for a raw target-compatibility registry and its schema, specify exact paths/URLs and verification. Respect graph-agent search-first guidance and provide file/line references.
+
+---
+
+Read-only, quick targeted triangulation for planning: Does repository have Ajv or another JSON Schema validator already installed/used? Is there a .vscode/settings.json or known schema association convention? Confirm tracked vs generated docs/public/schemas entries, docs asset staging test pattern, and whether schema validation can be added to existing gate:compatibility without new dependency. Also check whether docs Cloudflare prepare includes /target-compatibility.json and /schemas/* root files automatically. Return precise evidence, practical minimal recommendation. Do not edit.
+
+---
+
+Read only, quick. Trace AGENT_TOOLS_DEFAULTS typed fallback into docs/.vitepress/i18n.ts themeConfig and generated localized strings (identify source and extraction script, not just grep). Determine how adding two link titles/descriptions can avoid translating locales while preserving typecheck and docs rendering; exact files and command to extract English POT without calling AI. Also identify existing AgentToolsPage tests to extend. Report precise evidence and beware of stale generated docs.
+
+---
+
+Read-only quick verification for final plan: `git ls-files docs/public/schemas/*`, `.gitignore` treatment of docs/public and source schema; read docs/scripts/changed-pages.ts logic for global assets and docs/cloudflare routing for /schemas/*. Can a new docs asset script stage into public and survive partial deploy? Give narrow answer with exact file paths, no edits.
+
+---
+
+the schema doesn't need to be added to the Agent Tools docs tab it should be added as a "$schema" reference in target-compatibility.json"
+
+---
+
+Start implementation
+
+---
+
+[Terminal c922e031-cda4-4994-a754-0d0320880a8a notification: terminal exited. The terminal process ended before the command could complete normally; further commands cannot be sent to this terminal ID.]
+Terminal output:
+pantoken on release-compatibility ≡  ?3 ~21 via  26.10.0 
+➜  cd docs && vp exec vitepress preview --host 127.0.0.1 --port 5187 --strictPort
+VITE+ - The Unified Toolchain for the Web
+
+Built site served at http://localhost:5187/
