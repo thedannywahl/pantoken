@@ -252,5 +252,12 @@
     "testedVersions": ["3.0.0", "3.5.43"],
     "testCommand": "vp run @pantoken/vue#check:compatibility"
   },
-  "@pantoken/web-components": { "target": "Web Components", "status": "unverified" }
+  "@pantoken/web-components": {
+    "target": "Web Components",
+    "format": "Custom-element registration and button shadow output",
+    "status": "environment-verified",
+    "testedEnvironments": ["Node 26.10.0 with happy-dom 20.14.5"],
+    "limitations": "Real-browser rendering and interaction behavior are not verified.",
+    "testCommand": "vp run @pantoken/web-components#check:compatibility"
+  }
 }

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-30 01:10+0000\n"
+"PO-Revision-Date: 2026-09-30 01:17+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -18901,7 +18901,7 @@ msgstr ""
 #: renderers/web-components/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Web Components. Host compatibility has not yet been verified."
+msgid "Target: Web Components. Current format: `Custom-element registration and button shadow output`. Tested environment: `Node 26.10.0 with happy-dom 20.14.5`. Real-browser rendering and interaction behavior are not verified."
 msgstr ""
 
 #: renderers/web-components/src/index.md
@@ -18926,6 +18926,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The module is Node-safe: element classes are defined inside [register](functions/register.md), a no-op when there\nis no DOM, so importing during SSR or a build never touches `HTMLElement`."
+msgstr ""
+
+#: renderers/web-components/src/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Registration and shadow output are environment-verified with Happy DOM; real-browser behavior is\nnot covered by that check."
 msgstr ""
 
 #: renderers/web-components/src/interfaces/ElementDefinition.md

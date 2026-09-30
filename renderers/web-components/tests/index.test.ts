@@ -1,4 +1,5 @@
 import { expect, test } from "vite-plus/test";
+import { checkCompatibility } from "../scripts/check-compatibility.ts";
 import { resolveSpace, spacingValue } from "@pantoken/interactions";
 import { ELEMENTS, iconSvg, register } from "../src/index.ts";
 
@@ -32,6 +33,10 @@ test("iconSvg honors a custom resolver", () => {
 
 test("register is a no-op without a registry (SSR/build safe)", () => {
   expect(() => register(undefined)).not.toThrow();
+});
+
+test("environment probe registers and renders an InstUI button", async () => {
+  await checkCompatibility();
 });
 
 /** Run register() with a stubbed HTMLElement + a fake registry, returning the defined tag names. */

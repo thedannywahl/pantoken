@@ -551,7 +551,11 @@
       "governedBy": "token-ir",
       "targetSupport": {
         "target": "Web Components",
-        "status": "unverified"
+        "format": "Custom-element registration and button shadow output",
+        "status": "environment-verified",
+        "testedEnvironments": ["Node 26.10.0 with happy-dom 20.14.5"],
+        "limitations": "Real-browser rendering and interaction behavior are not verified.",
+        "testCommand": "vp run @pantoken/web-components#check:compatibility"
       }
     }
   ],
