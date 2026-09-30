@@ -2,6 +2,7 @@
  * @vitest-environment happy-dom
  */
 import { expect, test, vi } from "vite-plus/test";
+import { checkCompatibility } from "../scripts/check-compatibility.ts";
 import {
   createPantokenPlugin,
   PANTOKEN_PLUGIN_NAME,
@@ -111,4 +112,8 @@ test("pantoken menu uses per-editor translations with English fallback", () => {
     "Logos",
     "Layouts",
   ]);
+});
+
+test("rejects TinyMCE releases outside the verified major", async () => {
+  await expect(checkCompatibility("9.0.0")).rejects.toThrow("Invalid TinyMCE 8 release");
 });

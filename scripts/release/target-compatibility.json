@@ -225,7 +225,15 @@
     "testedVersions": ["4.2.20", "5.57.1"],
     "testCommand": "vp run @pantoken/svelte#check:compatibility"
   },
-  "@pantoken/tinymce": { "target": "TinyMCE", "status": "unverified" },
+  "@pantoken/tinymce": {
+    "target": "TinyMCE PluginManager",
+    "format": "Pantoken plugin registration and callback initialization",
+    "status": "verified",
+    "minimum": "8.9.2",
+    "testedThrough": "8.9.2",
+    "testedVersions": ["8.9.2"],
+    "testCommand": "vp run @pantoken/tinymce#check:compatibility"
+  },
   "@pantoken/vitepress": {
     "target": "VitePress",
     "format": "Built site CSS includes the Pantoken primary-brand bridge",

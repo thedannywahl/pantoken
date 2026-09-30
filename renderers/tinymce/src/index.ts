@@ -2,6 +2,8 @@
  * \@pantoken/tinymce - TinyMCE integration for pantoken design system.
  * Exports: content-CSS wiring, templates plugin, three browse+insert pickers (components/icons/logos),
  * cssdoc model for grammar validation + autocomplete, and CodeMirror extensions (lint + autocomplete).
+ * The host check verifies TinyMCE 8.9.2 PluginManager registration and callback initialization; it
+ * does not cover visual editor rendering in a browser.
  *
  * \@module
  */

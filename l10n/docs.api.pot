@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-30 00:59+0000\n"
+"PO-Revision-Date: 2026-09-30 01:10+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -18224,7 +18224,7 @@ msgstr ""
 #: renderers/tinymce/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: TinyMCE. Host compatibility has not yet been verified."
+msgid "Target: TinyMCE PluginManager. Current format: `Pantoken plugin registration and callback initialization`. Minimum host version: `8.9.2`. Tested through `8.9.2`. Newer releases require review."
 msgstr ""
 
 #: renderers/tinymce/src/interfaces/ContentClassesPluginOptions.md

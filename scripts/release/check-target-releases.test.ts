@@ -429,6 +429,28 @@ test("flags a future Mintlify CLI release for docs.json review", async () => {
   expect(await pendingRelease(mintlify)).toMatchObject({ version: "4.0.1556" });
 });
 
+test("flags a future TinyMCE release for PluginManager review", async () => {
+  const tinymce: ConsumerEntry = {
+    package: "@pantoken/tinymce",
+    path: "renderers/tinymce",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "TinyMCE PluginManager",
+      format: "Pantoken plugin registration and callback initialization",
+      status: "verified",
+      minimum: "8.9.2",
+      testedThrough: "8.9.2",
+      testedVersions: ["8.9.2"],
+      testCommand: "vp run @pantoken/tinymce#check:compatibility",
+    },
+  };
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({ ok: true, json: async () => ({ version: "8.9.3" }) }),
+  );
+  expect(await pendingRelease(tinymce)).toMatchObject({ version: "8.9.3" });
+});
+
 test("flags a future Tailwind release for shadcn theme alias review", async () => {
   const shadcn: ConsumerEntry = {
     package: "@pantoken/shadcn",

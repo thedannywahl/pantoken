@@ -508,8 +508,13 @@
       "path": "renderers/tinymce",
       "governedBy": "token-ir",
       "targetSupport": {
-        "target": "TinyMCE",
-        "status": "unverified"
+        "target": "TinyMCE PluginManager",
+        "format": "Pantoken plugin registration and callback initialization",
+        "status": "verified",
+        "minimum": "8.9.2",
+        "testedThrough": "8.9.2",
+        "testedVersions": ["8.9.2"],
+        "testCommand": "vp run @pantoken/tinymce#check:compatibility"
       }
     },
     {
