@@ -1,0 +1,21 @@
+now we have an "upstream drift" check / gate / bless for instui/instructure-design-tokens.  what about a "downstream drift" for when any of those packages release new versions for us to flag compatibility support?
+
+---
+
+Start implementation
+
+---
+
+actually run it so we can validate if it works or not.
+
+---
+
+I don't see any gh issues created, can we also automate compatibility testing and updating of target-compatibility as a separate task like `downstream:check:fix/bless` or something?
+
+---
+
+does `downstream:bless` work without flags as a shortcut for "all"
+
+---
+
+we have known-syntax-issues as a ledger for upstream drift problems and rewrites, when a downstream:bless or downstream:test fails we should keep a ledger as well.
