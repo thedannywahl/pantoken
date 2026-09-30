@@ -1,0 +1,83 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3T39P25ZPXW374N8DBQYC7Y",
+  "session_id": "f79ff467-43ad-4202-979c-60fdc2b264f0",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-30T21:24:59.402759Z",
+  "branch": "release-compatibility",
+  "checkpoints_count": 2,
+  "save_step_count": 3,
+  "files_touched": [
+    "docs/.vitepress/config.ts",
+    "docs/scripts/stage-plugin-assets.ts",
+    "tools/demo/src/srcdoc.ts",
+    "tools/demo/tests/srcdoc.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "3edf1a1126fc",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 14
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-30T21:24:59.365631Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 24,
+    "human_modified": 2,
+    "human_removed": 0,
+    "total_committed": 24,
+    "total_lines_changed": 28,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 22,
+      "user_lines_removed": 3,
+      "agent_lines_added": 7635,
+      "agent_lines_removed": 115,
+      "user_added_per_file": {
+        "docs/.vitepress/config.ts": 1,
+        "docs/scripts/stage-plugin-assets.ts": 5,
+        "l10n/docs.api.pot": 1,
+        "tools/demo/src/srcdoc.ts": 6,
+        "tools/demo/tests/srcdoc.test.ts": 9
+      },
+      "user_removed_per_file": {
+        "docs/scripts/stage-plugin-assets.ts": 1,
+        "l10n/docs.api.pot": 1,
+        "tools/demo/src/srcdoc.ts": 1
+      }
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 7,
+      "user_lines_removed": 1,
+      "agent_lines_added": 7656,
+      "agent_lines_removed": 117,
+      "user_added_per_file": {
+        "l10n/docs.api.pot": 7
+      },
+      "user_removed_per_file": {
+        "l10n/docs.api.pot": 1
+      }
+    }
+  ]
+}
