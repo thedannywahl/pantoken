@@ -36,3 +36,11 @@ okay, let's do it, but also instead of .segment target `label` we don't need mod
 ---
 
 now breakout the label/inputs into a member definition (see format/components/list) for an example.
+
+---
+
+http://localhost:5173/api/css/segmented-control
+the interactions should already be loaded on the docs page automatically, so here are some issues:
+* clicking an inactive segment marks it as active, but does not inactivate the other segment(s) there should only be 1 active segment at a time
+* the width of the segments is > the width of the fieldset and so the overflow-end button should automatically appear.  the overflow-start button should automatically appear when the user scrolls to the right and some content is overflowing the inline-start of the box.
+use the built-in browser to investigate. the docs render   the `@example` documented here.
