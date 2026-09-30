@@ -1,13 +1,14 @@
 name: Deploy docs
 
-# Publish the VitePress + TypeDoc site to Cloudflare (Workers Static Assets + R2).
+# Publish the VitePress + TypeDoc site as a static site tree plus an object-storage asset bucket,
+# fronted by an edge router.
 #
-# NOT GitHub Pages (capped at 1 GB / 10-minute timeout) or Netlify (credit-metered request & bandwidth billing).
-# The full-locale site is ~42k pages / ~138k files / ~3.8 GB. Cloudflare Workers Paid supports up to
-# 100,000 static assets per Worker version (with zero per-request charges). The deployment is split:
-# - Workers Static Assets (`cf-worker-dist`) holds HTML pages, root metadata, and shadcn registry files (~43k files).
-# - Cloudflare R2 bucket (`cf-r2-assets`) holds hashed client bundles (`/assets/*`) and demo assets (`/demos-assets/*`) (~95k files, 0 egress fees).
-# - Cloudflare Worker router (`docs/cloudflare/src/index.ts`) serves both from the same origin without CORS or subdomain changes.
+# The full-locale site is ~42k pages / ~138k files / ~3.8 GB, which is past the size, timeout, and
+# per-directory file caps of typical static hosts. The deployment is split so each half stays inside
+# its limits:
+# - Static site tree (`deploy-site`) holds HTML pages, root metadata, and shadcn registry files (~43k files).
+# - Asset bucket (`deploy-assets`) holds hashed client bundles (`/assets/*`) and demo assets (`/demos-assets/*`) (~95k files).
+# - Edge router (`docs/edge/src/index.ts`) serves both from the same origin without CORS or subdomain changes.
 #
 # Diff-scoped: docs-only changes on main can deploy without waiting for a package release. Package
 # releases still request a deploy through the Release workflow's `docs-deploy-request` artifact, and
@@ -19,7 +20,8 @@ name: Deploy docs
 # deploying then would double-deploy alongside the workflow_run path that fires once the same push
 # publishes packages and uploads docs-deploy-request.
 #
-# Required repository secrets / variables: CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID, CLOUDFLARE_R2_BUCKET.
+# Required repository secrets: CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID (read natively by the
+# deploy CLI). Optional variables: DOCS_ASSETS_BUCKET, DOCS_ASSETS_UPLOAD_CONCURRENCY.
 
 on:
   push:
@@ -132,9 +134,8 @@ jobs:
             echo "Release run $RUN_ID published nothing (Version PR path); skipping deploy."
           fi
 
-  # One job: building and deploying are a single unit now. The old split existed only because
-  # `actions/deploy-pages` had to run in the `github-pages` environment; Netlify's CLI has no such
-  # constraint, and handing a ~1.7 GB directory between jobs via an artifact was pure overhead.
+  # One job: building and deploying are a single unit, since handing a multi-GB directory between
+  # jobs via an artifact is pure overhead.
   deploy:
     needs: released
     if: needs.released.outputs.should_deploy == 'true'
@@ -188,8 +189,8 @@ jobs:
       # Partial builds render into `.vitepress/partial-dist` and overlay those files into the last
       # complete deploy directory. Only the locales owning a changed page get rebuilt, and the
       # partial run carries the previous `hashmap.json`/`sitemap.xml` forward (DOCS_BASE_DIST) so the
-      # overlay can't replace a whole-site index with a handful of pages. Netlify receives a complete
-      # `dist`, so unchanged live pages remain present while its content-addressed upload still sends
+      # overlay can't replace a whole-site index with a handful of pages. The deploy step receives a
+      # complete `dist`, so unchanged live pages remain present while the asset sync still uploads
       # only changed files.
       - name: Restore docs dist cache
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
@@ -302,46 +303,47 @@ jobs:
           if-no-files-found: ignore
           retention-days: 30
 
-      # Cloudflare Workers Static Assets supports up to 100,000 files per version and 25 MiB per file.
+      # The static site tree is capped at 100,000 files per version and 25 MiB per file.
       # Prepare the deployment trees:
-      # - `docs/.vitepress/cf-worker-dist` (HTML, root files, /r/* registry, icons ~43k files)
-      # - `docs/.vitepress/cf-r2-assets` (client chunks /assets/* and demo assets /demos-assets/* ~95k files)
-      - name: Prepare Cloudflare deploy trees
+      # - `docs/.vitepress/deploy-site` (HTML, root files, /r/* registry, icons ~43k files)
+      # - `docs/.vitepress/deploy-assets` (client chunks /assets/* and demo assets /demos-assets/* ~95k files)
+      - name: Prepare deploy trees
         if: steps.changed_docs.outputs.scope != 'none'
         run: |
           set -euo pipefail
-          node docs/scripts/prepare-cloudflare-deploy.ts
+          node docs/scripts/prepare-deploy.ts
 
-      # 1. Sync high-file-count hashed assets and demos assets to Cloudflare R2 bucket.
+      # 1. Sync high-file-count hashed assets and demos assets to the asset bucket.
       # The script lists existing objects up front and skips any whose size + MD5 already match, so a
       # retried run only re-uploads what actually changed. Progress logs on a heartbeat (so a long run
       # doesn't look hung) and a summary table lands in the job's "Summary" tab via $GITHUB_STEP_SUMMARY.
-      - name: Sync assets to Cloudflare R2
+      - name: Sync assets to object storage
         if: steps.changed_docs.outputs.scope != 'none'
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || vars.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_R2_BUCKET: ${{ secrets.CLOUDFLARE_R2_BUCKET || vars.CLOUDFLARE_R2_BUCKET || 'pantoken-docs-assets' }}
+          # Must match the bucket bound in docs/edge/wrangler.jsonc.
+          DOCS_ASSETS_BUCKET: ${{ vars.DOCS_ASSETS_BUCKET || 'pantoken-docs-assets' }}
           # A shared-token change can invalidate content hashes across nearly every asset at once
           # (e.g. an InstUI token bump); 6 concurrent PUTs is too slow to clear ~95k files inside the
           # job's 300-minute cap. The script's existing retry/backoff absorbs any 429s this causes.
-          CLOUDFLARE_R2_UPLOAD_CONCURRENCY: ${{ vars.CLOUDFLARE_R2_UPLOAD_CONCURRENCY || '24' }}
+          DOCS_ASSETS_UPLOAD_CONCURRENCY: ${{ vars.DOCS_ASSETS_UPLOAD_CONCURRENCY || '24' }}
         run: |
           set -euo pipefail
-          node docs/scripts/sync-cloudflare-r2.ts
+          node docs/scripts/sync-assets.ts
 
-      # 2. Deploy Worker with Static Assets binding to Cloudflare Workers.
-      - name: Deploy to Cloudflare Workers
-        id: cloudflare
+      # 2. Deploy the edge router with the static site tree bound as its assets.
+      - name: Deploy edge router
+        id: edge
         if: steps.changed_docs.outputs.scope != 'none'
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || vars.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
           set -euo pipefail
-          # Wrangler >= 4.34.0 is required to use the 100,000-file Static Assets limit on Workers
-          # Paid; older Wrangler enforces the legacy 20,000-file cap regardless of account plan.
-          vpx --package wrangler@4 wrangler deploy --config docs/cloudflare/wrangler.jsonc
+          # Wrangler >= 4.34.0 is required for the 100,000-file static asset limit; older versions
+          # enforce a 20,000-file cap regardless of account plan.
+          vpx --package wrangler@4 wrangler deploy --config docs/edge/wrangler.jsonc
 
       - name: Save docs dist cache
         if: steps.changed_docs.outputs.scope != 'none'

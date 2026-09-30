@@ -3,12 +3,12 @@ import worker, {
   getCacheControl,
   getMimeType,
   handleRequest,
+  type BucketObjectBodyLike,
+  type BucketObjectHeaderLike,
   type Env,
-  type R2ObjectBodyLike,
-  type R2ObjectHeaderLike,
 } from "../src/index.ts";
 
-describe("Cloudflare Worker Router", () => {
+describe("Edge router", () => {
   test("getMimeType maps standard web and font extensions correctly", () => {
     expect(getMimeType("app.js")).toBe("text/javascript; charset=utf-8");
     expect(getMimeType("module.mjs")).toBe("text/javascript; charset=utf-8");
@@ -49,7 +49,7 @@ describe("Cloudflare Worker Router", () => {
     expect(res.headers.get("Allow")).toBe("GET, HEAD");
   });
 
-  test("handleRequest delegates HTML and root paths to Workers Static Assets", async () => {
+  test("handleRequest delegates HTML and root paths to the static site assets", async () => {
     const assetsFetch = vi
       .fn()
       .mockResolvedValue(new Response("<html>Home</html>", { status: 200 }));
@@ -101,7 +101,7 @@ describe("Cloudflare Worker Router", () => {
     );
   });
 
-  test("handleRequest serves R2 assets with streaming body and correct headers", async () => {
+  test("handleRequest serves bucket assets with streaming body and correct headers", async () => {
     const stream = new ReadableStream({
       start(controller) {
         controller.enqueue(new TextEncoder().encode("console.log('chunk');"));
@@ -109,7 +109,7 @@ describe("Cloudflare Worker Router", () => {
       },
     });
 
-    const mockObject: R2ObjectBodyLike = {
+    const mockObject: BucketObjectBodyLike = {
       key: "assets/chunks/app.123.js",
       size: 21,
       etag: "hash123",
@@ -119,7 +119,7 @@ describe("Cloudflare Worker Router", () => {
 
     const env: Env = {
       ASSETS: { fetch: vi.fn() },
-      R2_DOCS: {
+      ASSET_BUCKET: {
         get: vi.fn().mockResolvedValue(mockObject),
         head: vi.fn(),
       },
@@ -135,8 +135,8 @@ describe("Cloudflare Worker Router", () => {
     expect(await res.text()).toBe("console.log('chunk');");
   });
 
-  test("handleRequest serves HEAD requests from R2 without body", async () => {
-    const mockHeader: R2ObjectHeaderLike = {
+  test("handleRequest serves HEAD requests from the bucket without body", async () => {
+    const mockHeader: BucketObjectHeaderLike = {
       key: "demos-assets/style.css",
       size: 15,
       etag: "css123",
@@ -145,7 +145,7 @@ describe("Cloudflare Worker Router", () => {
 
     const env: Env = {
       ASSETS: { fetch: vi.fn() },
-      R2_DOCS: {
+      ASSET_BUCKET: {
         get: vi.fn(),
         head: vi.fn().mockResolvedValue(mockHeader),
       },
@@ -163,7 +163,7 @@ describe("Cloudflare Worker Router", () => {
   });
 
   test("handleRequest returns 304 when If-None-Match matches ETag", async () => {
-    const mockObject: R2ObjectBodyLike = {
+    const mockObject: BucketObjectBodyLike = {
       key: "assets/chunks/app.123.js",
       size: 20,
       etag: "tag1",
@@ -173,7 +173,7 @@ describe("Cloudflare Worker Router", () => {
 
     const env: Env = {
       ASSETS: { fetch: vi.fn() },
-      R2_DOCS: {
+      ASSET_BUCKET: {
         get: vi.fn().mockResolvedValue(mockObject),
         head: vi.fn(),
       },
@@ -187,7 +187,7 @@ describe("Cloudflare Worker Router", () => {
     expect(res.headers.get("ETag")).toBe('"tag1"');
 
     // HEAD 304
-    const headObject: R2ObjectHeaderLike = {
+    const headObject: BucketObjectHeaderLike = {
       key: "demos-assets/style.css",
       size: 20,
       etag: "tag2",
@@ -195,7 +195,7 @@ describe("Cloudflare Worker Router", () => {
     };
     const headEnv: Env = {
       ASSETS: { fetch: vi.fn() },
-      R2_DOCS: {
+      ASSET_BUCKET: {
         get: vi.fn(),
         head: vi.fn().mockResolvedValue(headObject),
       },
@@ -208,10 +208,10 @@ describe("Cloudflare Worker Router", () => {
     expect(headRes.status).toBe(304);
   });
 
-  test("handleRequest returns 404 when object is not found in R2", async () => {
+  test("handleRequest returns 404 when object is not found in the bucket", async () => {
     const env: Env = {
       ASSETS: { fetch: vi.fn() },
-      R2_DOCS: {
+      ASSET_BUCKET: {
         get: vi.fn().mockResolvedValue(null),
         head: vi.fn().mockResolvedValue(null),
       },

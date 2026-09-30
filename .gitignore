@@ -38,9 +38,9 @@ docs/.vitepress/cache/
 docs/docs/.vitepress/cache/
 docs/.vitepress/.temp/
 docs/docs/.vitepress/.temp/
-docs/.vitepress/cf-worker-dist/
-docs/.vitepress/cf-r2-assets/
-docs/.vitepress/cloudflare-deploy-manifest.json
+docs/.vitepress/deploy-site/
+docs/.vitepress/deploy-assets/
+docs/.vitepress/deploy-manifest.json
 docs/.vitepress/build-timings.json
 docs/public/
 !docs/public/
@@ -60,7 +60,7 @@ docs/public/*
 !docs/public/workflow-dark.svg
 !docs/public/workflow-light.svg
 !docs/public/robots.txt
-# Netlify reads this from the deployed directory root; VitePress copies public/ there verbatim.
+# The static host reads this from the deployed directory root; VitePress copies public/ there verbatim.
 !docs/public/_headers
 !docs/public/.well-known/
 docs/public/.well-known/*

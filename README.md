@@ -7,7 +7,6 @@
 [![fallow health](https://raw.githubusercontent.com/thedannywahl/pantoken/badges/fallow-badge.svg)](https://docs.fallow.tools/integrations/badges)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/thedannywahl/pantoken/badge)](https://securityscorecards.dev/viewer/?uri=github.com/thedannywahl/pantoken)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/13875/badge)](https://www.bestpractices.dev/projects/13875)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b2c89000-e1e8-4d93-aba7-4a1a48699089/deploy-status)](https://app.netlify.com/projects/thunderous-gingersnap-82e33e/deploys)
 [![Entire](https://raw.githubusercontent.com/thedannywahl/pantoken/badges/entire-badge.svg)](https://entire.io/gh/thedannywahl/pantoken)
 
 ![Pantoken: Instructure design tokens and icons, reshaped for every platform.](https://pantoken.app/og.png)
@@ -86,7 +85,7 @@ upstream. Every other bucket consumes the IR.
 
 ## Documentation
 
-The site is built with VitePress and TypeDoc and deploys to Netlify:
+The site is built with VitePress and TypeDoc and deploys to
 [pantoken.app](https://pantoken.app).
 
 ```sh

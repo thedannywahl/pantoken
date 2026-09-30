@@ -2,11 +2,12 @@
  * Build the docs site one locale at a time, then merge the per-locale outputs into a single
  * deployable directory.
  *
- * Netlify refuses to deploy any directory holding more than 54,000 files. VitePress emits one client
- * chunk per page into a flat `assetsDir`, and the full-locale site is ~41.5k pages — roughly 78,000
- * files in `assets/`. `assetsDir` is baked into the client router as a single build-time constant
- * (`__ASSETS_DIR__`), so the only way to split it is to build each locale separately with its own
- * `assets/<locale>/` and merge the results. Each locale lands near 1,800 files.
+ * Some static hosts refuse to deploy any directory holding more than ~54,000 files. VitePress emits
+ * one client chunk per page into a flat `assetsDir`, and the full-locale site is ~41.5k pages —
+ * roughly 78,000 files in `assets/`. `assetsDir` is baked into the client router as a single
+ * build-time constant (`__ASSETS_DIR__`), so the only way to split it is to build each locale
+ * separately with its own `assets/<locale>/` and merge the results. Each locale lands near 1,800
+ * files.
  *
  * Locales can build concurrently. VitePress 2.0.0-alpha.20 keeps no per-root scratch directory that
  * two builds would fight over — verified by diffing two concurrent locale builds against the same

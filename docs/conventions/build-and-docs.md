@@ -83,15 +83,15 @@ a restored complete `docs/.vitepress/dist` cache before preparing the deploy. If
 is missing, a partial candidate falls back to the full docs build. The deploy workflow builds the site
 itself; CI no longer uploads a `docs-site` artifact.
 
-**The site is on Cloudflare (Workers Static Assets + R2), not GitHub Pages or Netlify.** The full-locale
-site is ~42k pages / ~138k files / ~3.8 GB. GitHub caps Pages at 1 GB with a 10-minute timeout, and
-Netlify applies credit-metered bandwidth and request pricing. Cloudflare Workers Paid provides up to
-100,000 static assets per version with zero per-request charges. The deploy workflow splits the output
-via `docs/scripts/prepare-cloudflare-deploy.ts`:
+**The site deploys as a static site tree plus an asset bucket behind an edge router.** The
+full-locale site is ~42k pages / ~138k files / ~3.8 GB, which is past the size, timeout, and
+per-directory file caps of typical static hosts. The deploy workflow splits the output via
+`docs/scripts/prepare-deploy.ts`, which also fails the deploy if the static tree exceeds 100,000
+files or any file exceeds 25 MiB:
 
-- **Worker Static Assets** (`docs/.vitepress/cf-worker-dist`): HTML pages (44 locales), root files (`sitemap.xml`, `hashmap.json`, `robots.txt`, `favicon.*`, `llms.txt`), and shadcn registry files (`/r/*`) (~43k files).
-- **R2 Bucket** (`docs/.vitepress/cf-r2-assets`): High-volume hashed client bundles (`/assets/*`) and demo assets (`/demos-assets/*`) (~95k files, 0 egress fees), synced via `docs/scripts/sync-cloudflare-r2.ts`.
-- **Worker Router** (`docs/cloudflare/src/index.ts`): Routes `/assets/*` and `/demos-assets/*` to R2 with immutable caching headers (`public, max-age=31536000, immutable`) and falls back to Worker Static Assets for HTML and root documents. Deploy needs `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, and `CLOUDFLARE_R2_BUCKET`.
+- **Static site tree** (`docs/.vitepress/deploy-site`): HTML pages (44 locales), root files (`sitemap.xml`, `hashmap.json`, `robots.txt`, `favicon.*`, `llms.txt`), and shadcn registry files (`/r/*`) (~43k files).
+- **Asset bucket** (`docs/.vitepress/deploy-assets`): High-volume hashed client bundles (`/assets/*`) and demo assets (`/demos-assets/*`) (~95k files), synced via `docs/scripts/sync-assets.ts`. Only changed objects upload.
+- **Edge router** (`docs/edge/src/index.ts`, configured by `docs/edge/wrangler.jsonc`): Routes `/assets/*` and `/demos-assets/*` to the bucket with immutable caching headers (`public, max-age=31536000, immutable`) and falls back to the static site tree for HTML and root documents. Deploy needs the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` secrets; `DOCS_ASSETS_BUCKET` and `DOCS_ASSETS_UPLOAD_CONCURRENCY` are optional repo variables.
 
 **The deploy build is memory-bound.** Three settings keep it inside a 16 GB runner, and all three
 have a reason:
@@ -251,7 +251,7 @@ places by tasks in `docs/.vitepress/config.ts`:
   docs site at `pantoken.app/create-pantoken-app.md`.
 - `stage-create-pantoken-app-domain.ts` → `ai/create-pantoken-app-site/` (a git submodule pointing at
   [`thedannywahl/create-pantoken-app`](https://github.com/thedannywahl/create-pantoken-app)), whose
-  GitHub Pages deployment serves the same content at the domain root `create.pantoken.app` — a
+  static-site deployment serves the same content at the domain root `create.pantoken.app` — a
   URL-hack shortcut so an agent CLI can fetch the skill without the `/create-pantoken-app.md` path.
 
 Both tasks only stage the local working tree. The submodule is a separate GitHub repo, so publishing

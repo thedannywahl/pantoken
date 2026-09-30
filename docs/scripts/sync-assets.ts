@@ -1,12 +1,12 @@
 /**
- * Synchronize high-volume client assets (`docs/.vitepress/cf-r2-assets`) to Cloudflare R2
- * storage using the Cloudflare REST API with concurrent streaming uploads.
+ * Synchronize high-volume client assets (`docs/.vitepress/deploy-assets`) to the docs asset
+ * bucket through the storage provider's REST API with concurrent streaming uploads.
  *
  * Before uploading, the existing bucket contents are listed once and compared against each local
  * file's MD5 by size + hash, so unchanged files (the common case on a rerun or a retried job) are
  * skipped instead of re-uploaded. This is what makes a retried run cheap and effectively resumable.
  *
- * Progress is logged on a heartbeat (`progressIntervalMs`, `CLOUDFLARE_R2_PROGRESS_INTERVAL_MS`) so
+ * Progress is logged on a heartbeat (`progressIntervalMs`, `DOCS_ASSETS_PROGRESS_INTERVAL_MS`) so
  * a long run stays visibly alive in CI, and a short markdown summary is appended to
  * `$GITHUB_STEP_SUMMARY` when present.
  *
@@ -16,39 +16,39 @@ import { createHash } from "node:crypto";
 import { appendFileSync, existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 import { runAsMain } from "../../scripts/release/cli.ts";
-import { getMimeType } from "../cloudflare/src/index.ts";
+import { getMimeType } from "../edge/src/index.ts";
 
-/** Default concurrent upload requests to Cloudflare R2. */
-export const DEFAULT_R2_UPLOAD_CONCURRENCY = 6;
+/** Default concurrent upload requests to the asset bucket. */
+export const DEFAULT_ASSET_UPLOAD_CONCURRENCY = 6;
 
-/** Number of objects requested per page when listing existing R2 objects. */
-export const R2_LIST_PAGE_SIZE = 1_000;
+/** Number of objects requested per page when listing existing bucket objects. */
+export const ASSET_LIST_PAGE_SIZE = 1_000;
 
 /** Default interval between upload progress heartbeat logs, so a long run stays visibly alive. */
-export const DEFAULT_R2_PROGRESS_INTERVAL_MS = 30_000;
+export const DEFAULT_ASSET_PROGRESS_INTERVAL_MS = 30_000;
 
-/** Default number of retry attempts for transient Cloudflare responses. */
-export const DEFAULT_R2_UPLOAD_MAX_RETRIES = 6;
+/** Default number of retry attempts for transient storage API responses. */
+export const DEFAULT_ASSET_UPLOAD_MAX_RETRIES = 6;
 
-/** Default initial retry delay for transient Cloudflare responses. */
-export const DEFAULT_R2_UPLOAD_RETRY_BASE_DELAY_MS = 1_000;
+/** Default initial retry delay for transient storage API responses. */
+export const DEFAULT_ASSET_UPLOAD_RETRY_BASE_DELAY_MS = 1_000;
 
-/** Default maximum retry delay for transient Cloudflare responses. */
-export const DEFAULT_R2_UPLOAD_RETRY_MAX_DELAY_MS = 30_000;
+/** Default maximum retry delay for transient storage API responses. */
+export const DEFAULT_ASSET_UPLOAD_RETRY_MAX_DELAY_MS = 30_000;
 
-/** Options for synchronizing assets to Cloudflare R2. */
-export interface R2SyncOptions {
-  /** Directory containing assets to upload (default: `docs/.vitepress/cf-r2-assets`). */
-  r2AssetsDir?: string;
-  /** Cloudflare Account ID (default: `process.env.CLOUDFLARE_ACCOUNT_ID`). */
+/** Options for synchronizing assets to the asset bucket. */
+export interface AssetSyncOptions {
+  /** Directory containing assets to upload (default: `docs/.vitepress/deploy-assets`). */
+  assetsDir?: string;
+  /** Hosting account ID (default: `process.env.CLOUDFLARE_ACCOUNT_ID`). */
   accountId?: string;
-  /** Cloudflare API Token with R2 edit permissions (default: `process.env.CLOUDFLARE_API_TOKEN`). */
+  /** API token with bucket write permissions (default: `process.env.CLOUDFLARE_API_TOKEN`). */
   apiToken?: string;
-  /** Target R2 bucket name (default: `process.env.CLOUDFLARE_R2_BUCKET` or `pantoken-docs-assets`). */
+  /** Target bucket name (default: `process.env.DOCS_ASSETS_BUCKET` or `pantoken-docs-assets`). */
   bucketName?: string;
   /** Maximum number of concurrent uploads. */
   concurrency?: number;
-  /** Maximum retry attempts for transient Cloudflare responses. */
+  /** Maximum retry attempts for transient storage API responses. */
   maxRetries?: number;
   /** Initial retry delay in milliseconds. */
   retryBaseDelayMs?: number;
@@ -64,8 +64,8 @@ export interface R2SyncOptions {
   sleepFn?: (ms: number) => Promise<void>;
 }
 
-/** Result summary of an R2 synchronization run. */
-export interface R2SyncResult {
+/** Result summary of an asset synchronization run. */
+export interface AssetSyncResult {
   /** Total files discovered in the asset tree. */
   totalFiles: number;
   /** Number of files successfully uploaded. */
@@ -80,8 +80,8 @@ export interface R2SyncResult {
   errors: Array<{ file: string; error: string }>;
 }
 
-/** Minimal shape of an object entry returned by the Cloudflare R2 List Objects API. */
-interface R2ListedObject {
+/** Minimal shape of an object entry returned by the storage List Objects API. */
+interface ListedObject {
   /** Raw hex MD5 digest, as returned by the List Objects API (unquoted). */
   etag: string;
   /** Size in bytes. */
@@ -96,21 +96,21 @@ interface R2ListedObject {
  * falls back to an empty map (uploading everything), which is always correct, just not optimal.
  *
  * @param fetchImpl - Fetch implementation to use.
- * @param baseUrl - Cloudflare R2 objects endpoint for the target bucket.
- * @param apiToken - Cloudflare API token.
+ * @param baseUrl - Storage API objects endpoint for the target bucket.
+ * @param apiToken - Storage API token.
  * @returns Map of object key to its remote size and MD5 etag.
  */
 async function listExistingObjects(
   fetchImpl: typeof fetch,
   baseUrl: string,
   apiToken: string,
-): Promise<Map<string, R2ListedObject>> {
-  const existing = new Map<string, R2ListedObject>();
+): Promise<Map<string, ListedObject>> {
+  const existing = new Map<string, ListedObject>();
   let cursor: string | undefined;
 
   do {
     const url = new URL(baseUrl);
-    url.searchParams.set("per_page", String(R2_LIST_PAGE_SIZE));
+    url.searchParams.set("per_page", String(ASSET_LIST_PAGE_SIZE));
     if (cursor) url.searchParams.set("cursor", cursor);
 
     const response = await fetchImpl(url.toString(), {
@@ -151,12 +151,12 @@ function formatDuration(ms: number): string {
 }
 
 /** Append a short markdown summary of the sync to `$GITHUB_STEP_SUMMARY`, if running in CI. */
-function writeStepSummary(result: R2SyncResult, bucketName: string, elapsedMs: number): void {
+function writeStepSummary(result: AssetSyncResult, bucketName: string, elapsedMs: number): void {
   const summaryPath = process.env.GITHUB_STEP_SUMMARY;
   if (!summaryPath) return;
 
   const lines = [
-    "### Cloudflare R2 sync",
+    "### Asset sync",
     "",
     "| Total | Uploaded | Unchanged | Errors | Uploaded size | Duration |",
     "| --- | --- | --- | --- | --- | --- |",
@@ -212,7 +212,7 @@ function walkFiles(dir: string): string[] {
 /**
  * Ensure a candidate upload path stays within the generated asset directory tree.
  *
- * This script intentionally uploads only the files produced by the docs build and the Cloudflare
+ * This script intentionally uploads only the files produced by the docs build and the deploy
  * asset-prep step; a path escape here would risk uploading unrelated files from the local checkout.
  */
 export function assertAssetPathUnderRoot(rootDir: string, filePath: string): void {
@@ -309,75 +309,75 @@ async function runWithConcurrency<T>(
 }
 
 /**
- * Synchronize local R2 assets to Cloudflare R2 bucket.
+ * Synchronize local deploy assets to the asset bucket.
  *
  * @param options - Sync options.
  * @returns Summary of synchronization operations.
  */
-export async function syncR2Assets(options: R2SyncOptions = {}): Promise<R2SyncResult> {
+export async function syncAssets(options: AssetSyncOptions = {}): Promise<AssetSyncResult> {
   const startedAt = Date.now();
   const docsRoot = resolve(import.meta.dirname, "..");
-  const r2AssetsDir = resolve(
-    options.r2AssetsDir ??
-      process.env.DOCS_CF_R2_ASSETS_DIR ??
-      join(docsRoot, ".vitepress", "cf-r2-assets"),
+  const assetsDir = resolve(
+    options.assetsDir ??
+      process.env.DOCS_DEPLOY_ASSETS_DIR ??
+      join(docsRoot, ".vitepress", "deploy-assets"),
   );
   const accountId = (options.accountId ?? process.env.CLOUDFLARE_ACCOUNT_ID ?? "").trim();
   const apiToken = (options.apiToken ?? process.env.CLOUDFLARE_API_TOKEN ?? "").trim();
   const bucketName = (
     options.bucketName ??
-    process.env.CLOUDFLARE_R2_BUCKET ??
+    process.env.DOCS_ASSETS_BUCKET ??
     "pantoken-docs-assets"
   ).trim();
   const concurrency = positiveInteger(
     options.concurrency,
-    positiveIntegerFromEnv("CLOUDFLARE_R2_UPLOAD_CONCURRENCY", DEFAULT_R2_UPLOAD_CONCURRENCY),
+    positiveIntegerFromEnv("DOCS_ASSETS_UPLOAD_CONCURRENCY", DEFAULT_ASSET_UPLOAD_CONCURRENCY),
   );
   const maxRetries = positiveInteger(
     options.maxRetries,
-    positiveIntegerFromEnv("CLOUDFLARE_R2_MAX_RETRIES", DEFAULT_R2_UPLOAD_MAX_RETRIES),
+    positiveIntegerFromEnv("DOCS_ASSETS_MAX_RETRIES", DEFAULT_ASSET_UPLOAD_MAX_RETRIES),
   );
   const retryBaseDelay = nonNegativeInteger(
     options.retryBaseDelayMs,
     nonNegativeIntegerFromEnv(
-      "CLOUDFLARE_R2_RETRY_BASE_DELAY_MS",
-      DEFAULT_R2_UPLOAD_RETRY_BASE_DELAY_MS,
+      "DOCS_ASSETS_RETRY_BASE_DELAY_MS",
+      DEFAULT_ASSET_UPLOAD_RETRY_BASE_DELAY_MS,
     ),
   );
   const retryMaxDelay = nonNegativeInteger(
     options.retryMaxDelayMs,
     nonNegativeIntegerFromEnv(
-      "CLOUDFLARE_R2_RETRY_MAX_DELAY_MS",
-      DEFAULT_R2_UPLOAD_RETRY_MAX_DELAY_MS,
+      "DOCS_ASSETS_RETRY_MAX_DELAY_MS",
+      DEFAULT_ASSET_UPLOAD_RETRY_MAX_DELAY_MS,
     ),
   );
   const dryRun =
-    options.dryRun ?? (process.env.CLOUDFLARE_R2_DRY_RUN === "true" || (!accountId && !apiToken));
+    options.dryRun ?? (process.env.DOCS_ASSETS_DRY_RUN === "true" || (!accountId && !apiToken));
   const progressIntervalMs = nonNegativeInteger(
     options.progressIntervalMs,
     nonNegativeIntegerFromEnv(
-      "CLOUDFLARE_R2_PROGRESS_INTERVAL_MS",
-      DEFAULT_R2_PROGRESS_INTERVAL_MS,
+      "DOCS_ASSETS_PROGRESS_INTERVAL_MS",
+      DEFAULT_ASSET_PROGRESS_INTERVAL_MS,
     ),
   );
   const fetchImpl = options.fetchFn ?? globalThis.fetch;
   const sleepImpl = options.sleepFn ?? sleep;
 
-  if (!existsSync(r2AssetsDir)) {
-    throw new Error(`R2 assets directory does not exist: ${r2AssetsDir}`);
+  if (!existsSync(assetsDir)) {
+    throw new Error(`Deploy assets directory does not exist: ${assetsDir}`);
   }
 
   if (!dryRun && (!accountId || !apiToken)) {
     throw new Error(
-      "Missing Cloudflare credentials. Set CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN, or enable dry-run.",
+      "Missing storage credentials. Set CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN, or enable dry-run.",
     );
   }
 
-  const allFiles = walkFiles(r2AssetsDir);
+  const allFiles = walkFiles(assetsDir);
   // Randomize order so a cancelled/timed-out run makes proportional progress across every
   // directory (e.g. `demos-assets/`) instead of only ever reaching whatever comes first.
   shuffleInPlace(allFiles);
-  const result: R2SyncResult = {
+  const result: AssetSyncResult = {
     totalFiles: allFiles.length,
     uploadedFiles: 0,
     skippedFiles: 0,
@@ -393,38 +393,38 @@ export async function syncR2Assets(options: R2SyncOptions = {}): Promise<R2SyncR
   if (dryRun) {
     result.skippedFiles = allFiles.length;
     console.log(
-      `ℹ Cloudflare R2 sync (dry run): found ${result.totalFiles} files (${(result.totalBytes / 1024 / 1024).toFixed(1)} MB) to upload to ${bucketName}.`,
+      `ℹ Asset sync (dry run): found ${result.totalFiles} files (${(result.totalBytes / 1024 / 1024).toFixed(1)} MB) to upload to ${bucketName}.`,
     );
     return result;
   }
 
   console.log(
-    `ℹ Cloudflare R2 sync: found ${result.totalFiles} files ` +
-      `(${(result.totalBytes / 1024 / 1024).toFixed(1)} MB) under ${r2AssetsDir}.`,
+    `ℹ Asset sync: found ${result.totalFiles} files ` +
+      `(${(result.totalBytes / 1024 / 1024).toFixed(1)} MB) under ${assetsDir}.`,
   );
 
   const baseUrl = `https://api.cloudflare.com/client/v4/accounts/${accountId}/r2/buckets/${bucketName}/objects`;
 
   // A fresh bucket, a bucket the API token can't list, or a transient list failure all just mean an
   // empty map here, which degrades to uploading every file below - never to under-uploading.
-  let existingObjects = new Map<string, R2ListedObject>();
+  let existingObjects = new Map<string, ListedObject>();
   const listStartedAt = Date.now();
   try {
     existingObjects = await listExistingObjects(fetchImpl, baseUrl, apiToken);
     console.log(
-      `ℹ Listed ${existingObjects.size} existing R2 object(s) in ${formatDuration(Date.now() - listStartedAt)}.`,
+      `ℹ Listed ${existingObjects.size} existing bucket object(s) in ${formatDuration(Date.now() - listStartedAt)}.`,
     );
   } catch (err) {
     console.error(
-      `⚠ Could not list existing R2 objects, uploading all files: ${err instanceof Error ? err.message : String(err)}`,
+      `⚠ Could not list existing bucket objects, uploading all files: ${err instanceof Error ? err.message : String(err)}`,
     );
   }
 
   const uploadFile = async (filePath: string): Promise<void> => {
-    assertAssetPathUnderRoot(r2AssetsDir, filePath);
+    assertAssetPathUnderRoot(assetsDir, filePath);
 
-    const relKey = relative(r2AssetsDir, filePath).replace(/\\/gu, "/");
-    // Uploads only bytes from files discovered under r2AssetsDir; assertAssetPathUnderRoot above
+    const relKey = relative(assetsDir, filePath).replace(/\\/gu, "/");
+    // Uploads only bytes from files discovered under assetsDir; assertAssetPathUnderRoot above
     // rejects any path escape. See .github/codeql/codeql-config.yml for why this file is excluded
     // from the js/file-data-in-request CodeQL query instead of relying on inline suppression.
     const fileBytes = readFileSync(filePath);
@@ -489,7 +489,7 @@ export async function syncR2Assets(options: R2SyncOptions = {}): Promise<R2SyncR
       ? setInterval(() => {
           const processed = result.uploadedFiles + result.skippedFiles + result.errors.length;
           console.log(
-            `… Cloudflare R2 sync progress: ${processed}/${result.totalFiles} files processed ` +
+            `… Asset sync progress: ${processed}/${result.totalFiles} files processed ` +
               `(${result.uploadedFiles} uploaded, ${result.skippedFiles} unchanged, ${result.errors.length} errors) ` +
               `- ${formatDuration(Date.now() - startedAt)} elapsed.`,
           );
@@ -508,11 +508,11 @@ export async function syncR2Assets(options: R2SyncOptions = {}): Promise<R2SyncR
 
   if (result.errors.length > 0) {
     console.error(
-      `✗ Cloudflare R2 sync encountered ${result.errors.length} error(s) out of ${result.totalFiles} files ` +
+      `✗ Asset sync encountered ${result.errors.length} error(s) out of ${result.totalFiles} files ` +
         `after ${formatDuration(elapsedMs)}.`,
     );
     throw new Error(
-      `R2 upload failed for ${result.errors.length} file(s):\n` +
+      `Asset upload failed for ${result.errors.length} file(s):\n` +
         result.errors
           .map((e) => `  - ${e.file}: ${e.error}`)
           .slice(0, 10)
@@ -521,7 +521,7 @@ export async function syncR2Assets(options: R2SyncOptions = {}): Promise<R2SyncR
   }
 
   console.log(
-    `✓ Cloudflare R2 sync complete: uploaded ${result.uploadedFiles}/${result.totalFiles} files ` +
+    `✓ Asset sync complete: uploaded ${result.uploadedFiles}/${result.totalFiles} files ` +
       `(${(result.uploadedBytes / 1024 / 1024).toFixed(1)} MB), ${result.skippedFiles} unchanged, ` +
       `in ${formatDuration(elapsedMs)} to bucket "${bucketName}".`,
   );
@@ -530,7 +530,7 @@ export async function syncR2Assets(options: R2SyncOptions = {}): Promise<R2SyncR
 }
 
 async function main(): Promise<void> {
-  await syncR2Assets();
+  await syncAssets();
 }
 
 runAsMain(import.meta.url, main);

@@ -3,7 +3,7 @@
  * (`ai/create-pantoken-app-site`): the raw content goes to `SKILL.md` (the canonical short path,
  * `create.pantoken.app/SKILL.md`). `index.html` is a redirect stub pointing "/" at
  * `SKILL.md` (proper 200 + `text/markdown` for clients that render HTML/meta-refresh or run JS),
- * and `404.html` is a raw copy of the skill (GitHub Pages serves it for any unmatched path,
+ * and `404.html` is a raw copy of the skill (the static host serves it for any unmatched path,
  * including "/" — no Jekyll/`permalink` frontmatter needed, this repo is `.nojekyll`) so a plain
  * non-rendering `GET /` still gets the content immediately instead of the redirect stub.
  * `404.html`'s downsides — an `.html`-typed body some agent fetch tools run through an
@@ -12,7 +12,7 @@
  * fallback. See `stage-create-pantoken-app-skill.ts` for the sibling copy served at `pantoken.app`.
  *
  * This only stages the working tree inside the submodule; committing and pushing the submodule
- * repo (which triggers the GitHub Pages redeploy) is a separate, manual step.
+ * repo (which triggers the site redeploy) is a separate, manual step.
  */
 import { copyFileSync, mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";

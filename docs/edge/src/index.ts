@@ -1,15 +1,15 @@
 /**
- * Cloudflare Worker for `pantoken.app` documentation hosting.
+ * Edge router for `pantoken.app` documentation hosting.
  *
- * Routes requests between Cloudflare R2 bucket storage (for high-volume hashed assets
- * under `/assets/*` and `/demos-assets/*`) and Cloudflare Workers Static Assets
+ * Routes requests between an object-storage bucket (for high-volume hashed assets
+ * under `/assets/*` and `/demos-assets/*`) and the static site assets
  * (for HTML pages, `/r/*` shadcn registry, and root files).
  *
  * @module
  */
 
-/** Minimal interface representing an R2 HTTP object representation. */
-export interface R2ObjectHeaderLike {
+/** Minimal interface representing a bucket object's HTTP metadata. */
+export interface BucketObjectHeaderLike {
   /** The key of the object. */
   key: string;
   /** Size of the object in bytes. */
@@ -32,24 +32,24 @@ export interface R2ObjectHeaderLike {
   };
 }
 
-/** Minimal interface representing an R2 object with readable stream body. */
-export interface R2ObjectBodyLike extends R2ObjectHeaderLike {
+/** Minimal interface representing a bucket object with readable stream body. */
+export interface BucketObjectBodyLike extends BucketObjectHeaderLike {
   /** ReadableStream containing the object body. */
   body: ReadableStream;
 }
 
-/** Minimal interface representing the Cloudflare R2 bucket binding. */
-export interface R2BucketLike {
-  /** Retrieve an object with body from R2. */
+/** Minimal interface representing the asset bucket binding. */
+export interface BucketLike {
+  /** Retrieve an object with body from the bucket. */
   get: (
     key: string,
     options?: { onlyIf?: Headers | Record<string, unknown> },
-  ) => Promise<R2ObjectBodyLike | null>;
-  /** Retrieve object metadata without body from R2. */
-  head: (key: string) => Promise<R2ObjectHeaderLike | null>;
+  ) => Promise<BucketObjectBodyLike | null>;
+  /** Retrieve object metadata without body from the bucket. */
+  head: (key: string) => Promise<BucketObjectHeaderLike | null>;
 }
 
-/** Minimal interface representing the Cloudflare Workers Static Assets binding. */
+/** Minimal interface representing the static site assets binding. */
 export interface FetcherLike {
   /** Fetch a resource from the static assets binding. */
   fetch: (request: Request | string) => Promise<Response>;
@@ -59,8 +59,8 @@ export interface FetcherLike {
 export interface Env {
   /** Static assets binding for HTML and root files. */
   ASSETS: FetcherLike;
-  /** R2 bucket binding for `/assets/*` and `/demos-assets/*`. */
-  R2_DOCS?: R2BucketLike;
+  /** Asset bucket binding for `/assets/*` and `/demos-assets/*`. */
+  ASSET_BUCKET?: BucketLike;
 }
 
 /**
@@ -124,7 +124,7 @@ export function getCacheControl(pathname: string): string {
 }
 
 /**
- * Handle incoming HTTP requests and route between R2 assets and Static Assets.
+ * Handle incoming HTTP requests and route between bucket assets and static site assets.
  *
  * @param request - The incoming HTTP request.
  * @param env - Worker environment bindings.
@@ -157,15 +157,14 @@ export async function handleRequest(request: Request, env: Env): Promise<Respons
     });
   }
 
-  // Check if request targets an R2-managed asset path prefix
-  const isR2Path = pathname.startsWith("/assets/") || pathname.startsWith("/demos-assets/");
+  const isBucketPath = pathname.startsWith("/assets/") || pathname.startsWith("/demos-assets/");
 
-  if (isR2Path && env.R2_DOCS) {
+  if (isBucketPath && env.ASSET_BUCKET) {
     const key = pathname.replace(/^\/+/u, "");
     const ifNoneMatch = request.headers.get("if-none-match");
 
     if (method === "HEAD") {
-      const object = await env.R2_DOCS.head(key);
+      const object = await env.ASSET_BUCKET.head(key);
       if (!object) {
         return new Response("Not Found", { status: 404 });
       }
@@ -183,7 +182,7 @@ export async function handleRequest(request: Request, env: Env): Promise<Respons
       return new Response(null, { status: 200, headers });
     }
 
-    const object = await env.R2_DOCS.get(key);
+    const object = await env.ASSET_BUCKET.get(key);
     if (!object) {
       return new Response("Not Found", { status: 404 });
     }
@@ -202,11 +201,11 @@ export async function handleRequest(request: Request, env: Env): Promise<Respons
     return new Response(object.body, { status: 200, headers });
   }
 
-  // All other requests (HTML, root sitemap, /r/* registry, icons) handled by Workers Static Assets
+  // All other requests (HTML, root sitemap, /r/* registry, icons) go to the static site assets
   return env.ASSETS.fetch(request);
 }
 
-/** Default Cloudflare Worker export. */
+/** Default edge worker export. */
 export default {
   fetch: handleRequest,
 };

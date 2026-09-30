@@ -85,7 +85,7 @@ export default defineConfig({
     // `.markdownlint-cli2.yaml` already excludes this tree.
     // `ai/create-pantoken-app-site` is a separate git submodule (github.com/thedannywahl/
     // create-pantoken-app): its `index.html` is plain-text skill content wearing an `.html`
-    // extension only so GitHub Pages resolves it as the directory index, not real markup to format.
+    // extension only so the static host resolves it as the directory index, not real markup to format.
     ignorePatterns: [
       ".entire/settings.json",
       "docs/api/**",

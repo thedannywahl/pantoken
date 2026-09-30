@@ -330,15 +330,16 @@ silently with no application-level error, suspect the VM, not the program.
 **Symptom** — Every fix aimed at making the docs deploy finish was aimed at the wrong failure. Even a
 successful build could not have shipped.
 
-**Root cause** — The full-locale site is ~42k pages / ~92k files / ~1.7 GB. GitHub Pages caps a
-published site at 1 GB and times deployments out after 10 minutes. Those limits are documented but
+**Root cause** — The full-locale site is ~42k pages / ~92k files / ~1.7 GB. The first host capped a
+published site at 1 GB and timed deployments out after 10 minutes. Those limits are documented but
 easy to never think about, because they're invisible until the site is large.
 
 **Fix / rule** — Before optimizing a build that produces a very large artifact, measure the artifact
-and check it against the host's limits. `du -sh dist` and a file count are two commands. Netlify has
-no file-count or size cap but does limit a _single directory_ to 54,000 files — and VitePress emits
-one chunk per page into `assets/`, so that ceiling is the one to watch. Assert host limits in CI
-(`Check site shape` in `docs.yml`) rather than discovering them as an opaque deploy failure.
+and check it against the host's limits. `du -sh dist` and a file count are two commands. Hosts cap
+different things: the next host had no total file-count or size cap but limited a _single directory_
+to 54,000 files — and VitePress emits one chunk per page into `assets/`, so that ceiling was the one
+to watch. Assert host limits in CI (`prepare-deploy.ts` enforces per-file size and per-version file
+count) rather than discovering them as an opaque deploy failure.
 
 ## Code quality gates
 
