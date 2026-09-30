@@ -1,0 +1,5 @@
+now let's do the native platforms:
+* finish iOS
+* rust
+* android
+* jetpack compose
