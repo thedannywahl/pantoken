@@ -51,9 +51,9 @@ test("a modified colour keeps its var() origin in value and its literal in flatV
   // carries the light/dark split, so `themed` has to come from the flattened pair.
   const hoverBackground = byName.get("--instui-component-base-button-secondary-hover-background");
   expect(hoverBackground?.value).toBe(
-    "hsl(from var(--instui-color-institutional-brand-button-secondary-bgd) h s calc(l + (100 - l) * 0.1))",
+    "hsl(from var(--instui-color-institutional-brand-button-secondary-bgd) h s calc(l + (100 - l) * 0.4))",
   );
-  expect(hoverBackground?.flatValue).toBe("light-dark(#4d7eb333, #92b1d94d)");
+  expect(hoverBackground?.flatValue).toBe("light-dark(#88a9cc33, #b6cbe64d)");
   expect(hoverBackground?.themed).toBe(true);
 });
 
