@@ -101,6 +101,9 @@ test("segmented control uses native radio states and the three upstream sizes", 
   expect(css).toContain("&:has(input:disabled)");
   expect(css).toContain("0 2px 4px 2px var(--instui-color-drop-shadow-shadow-color2)");
   expect(css).toContain("0 1px 2px 0 var(--instui-color-drop-shadow-shadow-color1)");
+  expect(css).toContain("--instui-drop-shadow-y-elevation3-dropshadow2");
+  expect(css).toContain("--instui-drop-shadow-blur-elevation3-dropshadow1");
+  expect(css).not.toContain("--instui-elevation-depth1");
   for (const size of ["sm", "md", "lg"]) {
     expect(css).toContain(`--instui-component-segmented-control-height-${size}`);
     expect(css).toContain(`--instui-component-segmented-control-font-size-${size}`);

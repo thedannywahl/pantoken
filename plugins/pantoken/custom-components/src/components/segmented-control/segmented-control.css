@@ -2,9 +2,8 @@
  * @component segmented-control
  * @summary A single-select row of compact view or filter options.
  * @selector .pfx-segmented-control
- * @remarks The selected segment and overflow buttons use the shared resting elevation until
- *   upstream provides dedicated shadow tokens. Override --pantoken-segmented-selected-shadow and
- *   --pantoken-segmented-overflow-shadow if the application has exact design shadow values.
+ * @remarks The selected segment uses a distinct active-item shadow; it does not match an existing
+ *   --instui-elevation-* composite. Overflow buttons use the upstream elevation3 component tokens.
  * @modifier -size-lg — Large segments.
  * @modifier -size-md — Medium segments (default).
  * @modifier -size-sm — Small segments.
@@ -48,7 +47,15 @@
     --pantoken-segmented-selected-shadow:
       0 2px 4px 2px var(--instui-color-drop-shadow-shadow-color2),
       0 1px 2px 0 var(--instui-color-drop-shadow-shadow-color1);
-    --pantoken-segmented-overflow-shadow: var(--instui-elevation-depth1);
+    --pantoken-segmented-overflow-shadow:
+      0 var(--instui-drop-shadow-y-elevation3-dropshadow2)
+        var(--instui-drop-shadow-blur-elevation3-dropshadow2)
+        var(--instui-drop-shadow-spread-elevation3-dropshadow2)
+        var(--instui-color-drop-shadow-shadow-color1),
+      0 var(--instui-drop-shadow-y-elevation3-dropshadow1)
+        var(--instui-drop-shadow-blur-elevation3-dropshadow1)
+        var(--instui-drop-shadow-spread-elevation3-dropshadow1)
+        var(--instui-color-drop-shadow-shadow-color2);
     position: relative;
     min-inline-size: 0;
     margin: 0;

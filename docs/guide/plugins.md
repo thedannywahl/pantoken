@@ -99,8 +99,9 @@ Import `@pantoken/interactions/segmented-control.iife.js` for DOM-ready registra
 `initSegmentedControl(fieldset, { size: "md", isOverflown: true })` from `@pantoken/interactions`
 and call `cleanup()` when removing it. The CSS and native radio choices work without JS; overflow
 arrows need the behavior. The selected item uses the two-layer design shadow from the semantic
-drop-shadow colors. Overflow buttons use the shared resting elevation through
-`--pantoken-segmented-overflow-shadow`.
+drop-shadow colors; it is a distinct active-item shadow rather than an existing
+`--instui-elevation-*` composite. Overflow buttons use the upstream elevation3 component tokens
+through `--pantoken-segmented-overflow-shadow`.
 
 ### Skeleton loading
 
