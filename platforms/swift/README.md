@@ -43,16 +43,18 @@ directory is publishable to SwiftPM as-is. This emitter uses UIKit and targets i
 Swapping the platform (Flutter, Compose) reuses the same path through `@pantoken/sd-config`.
 
 For repository contributors, `mise run verify:swift:syntax` parses a disposable generated package
-with Command Line Tools. `mise run verify:swift:host` checks it against the iOS Simulator SDK and
-requires full Xcode; syntax alone does not establish iOS compatibility. To generate a package in a
-chosen location, set `SWIFT_PACKAGE_OUT` and run `mise run scaffold:swift`.
+with Command Line Tools. `mise run verify:swift:host` typechecks it against the iOS Simulator SDK;
+`mise run verify:swift:runtime` builds and launches a disposable iOS app and compiles the optional
+asset catalog. To generate a package in a chosen location, set `SWIFT_PACKAGE_OUT` and run
+`mise run scaffold:swift`.
 
 ## Compatibility
 
-The generated UIKit module typechecks with Xcode 27.0 (Swift 6.4) against iOS Simulator SDK 27.0
-for an arm64 iOS 15 deployment target. This is **compiler-only evidence**, not an iOS 15 runtime
-guarantee. Simulator execution, optional `Icons.xcassets`, watchOS, and tvOS aren't verified. See
-the [compatibility matrix](https://pantoken.app/compatibility) for the tested environment.
+The generated UIKit app was built and run with Xcode 27.0 (Swift 6.4) on an iPhone 18 Pro iOS 27.0
+Simulator, using an arm64 iOS 15 deployment target. The runtime check verifies a generated brand
+color and compiles/loads the optional `Icons.xcassets` catalog. This does **not** establish an iOS 15
+runtime floor; only iOS 27.0 was run. watchOS and tvOS aren't verified. See the
+[compatibility matrix](https://pantoken.app/compatibility) for the tested environment.
 
 ## API
 

@@ -24,6 +24,7 @@
     "provenance": true
   },
   "scripts": {
+    "check:compatibility": "node scripts/check-runtime.ts",
     "dev": "vp pack --watch",
     "test": "vp test",
     "check": "vp check"

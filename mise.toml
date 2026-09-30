@@ -57,8 +57,33 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer xcrun --sdk iphonesimul
 	"$native_tmp/DesignTokens/Sources/PanTokens/Tokens.swift"
 '''
 
-# Add native adapter checks here as each target gains a real compiler or host fixture.
+[tasks."verify:swift:runtime"]
+description = "Build and run a disposable UIKit app on an iOS Simulator, including the optional icon asset catalog"
+depends = ["build"]
+run = "node platforms/swift/scripts/check-runtime.ts"
+
+[tasks."verify:rust"]
+description = "Compile generated egui and iced color modules with Rust 1.95"
+depends = ["build"]
+run = "node platforms/rust/scripts/check-compatibility.ts"
+
+[tasks."verify:android"]
+description = "Compile and link generated Android resources with API 35 build-tools"
+depends = ["build"]
+run = "node platforms/android/scripts/check-compatibility.ts"
+
+[tasks."verify:compose"]
+description = "Compile generated Compose Kotlin with Kotlin 2.1.10 and Android API 35"
+depends = ["build"]
+run = "node platforms/compose/scripts/check-compatibility.ts"
+
 [tasks."verify:native"]
-description = "Run portable native syntax checks; host checks require their target SDKs"
-depends = ["verify:swift:syntax"]
+description = "Run Swift, Rust, Android, and Compose compatibility checks"
+depends = [
+  "verify:swift:syntax",
+  "verify:swift:runtime",
+  "verify:rust",
+  "verify:android",
+  "verify:compose",
+]
 run = "true"

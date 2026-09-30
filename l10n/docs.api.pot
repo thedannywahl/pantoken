@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-30 02:57+0000\n"
+"PO-Revision-Date: 2026-09-30 14:32+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -13473,7 +13473,7 @@ msgstr ""
 #: platforms/android/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Android. Host compatibility has not yet been verified."
+msgid "Target: Android resources. Current format: `Generated colors, dimensions, and VectorDrawable compile and link with Android build-tools`. Minimum host version: `API 35 / build-tools 35.0.0`. Tested through `API 35 / build-tools 35.0.0`. Newer releases require review."
 msgstr ""
 
 #: platforms/android/src/index.md
@@ -13770,7 +13770,7 @@ msgstr ""
 #: platforms/compose/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Jetpack Compose. Host compatibility has not yet been verified."
+msgid "Target: Jetpack Compose. Current format: `Generated Color and Dp token object compiles in an Android library module`. Minimum host version: `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Tested through `Kotlin 2.1.10 / Compose UI 1.8.2 / Android API 35`. Newer releases require review."
 msgstr ""
 
 #: platforms/compose/src/index.md
@@ -13830,7 +13830,7 @@ msgstr ""
 #: platforms/drupal/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Drupal themes. Current format: `Drupal InfoParser and Symfony YAML validate generated theme metadata and libraries`. Minimum host version: `10.6.18`. Tested through `11.3.2`. Newer releases require review."
+msgid "Target: Drupal themes. Current format: `Drupal core discovers generated theme; InfoParser and Symfony YAML accept metadata`. Minimum host version: `10.6.18`. Tested through `11.3.2`. Newer releases require review."
 msgstr ""
 
 #: platforms/drupal/src/index.md
@@ -14169,7 +14169,7 @@ msgstr ""
 #: platforms/rust/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Rust. Host compatibility has not yet been verified."
+msgid "Target: Rust GUI frameworks. Current format: `Generated egui Color32 accessors and iced_core Color constants compile with the Rust toolchain`. Minimum host version: `1.95.0`. Tested through `1.95.0`. Newer releases require review."
 msgstr ""
 
 #: platforms/rust/src/index.md
@@ -14236,7 +14236,7 @@ msgstr ""
 #: platforms/swift/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Swift iOS. Current format: `UIKit SwiftPM module`. Tested environment: `Xcode 27.0 (27A266a), Swift 6.4, iOS Simulator SDK 27.0, arm64 iOS 15 deployment target`. Compiler/typecheck only; simulator runtime and optional asset catalogs untested. No watchOS or tvOS claim."
+msgid "Target: Swift iOS. Current format: `UIKit SwiftPM module, runtime token check, and compiled Icons.xcassets`. Tested environment: `Xcode 27.0 (27A266a), Swift 6.4, iOS Simulator SDK/runtime 27.0, iPhone 18 Pro, arm64 iOS 15 deployment target`. Runtime tested only on iOS Simulator 27.0; this does not establish an iOS 15 runtime floor. No watchOS or tvOS claim."
 msgstr ""
 
 #: platforms/swift/src/index.md

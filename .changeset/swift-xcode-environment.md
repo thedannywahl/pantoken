@@ -3,4 +3,4 @@
 "@pantoken/docs": patch
 ---
 
-Record successful Xcode 27 Swift/iOS Simulator SDK typechecking as environment-only evidence without claiming untested iOS runtimes.
+Record Xcode 27/iOS 27 simulator runtime evidence for generated token values and the optional icon asset catalog. Do not infer an iOS 15 runtime floor.
