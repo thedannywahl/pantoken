@@ -1,1 +1,10 @@
 these should be using the scope declaration like other components with properties and keyframes sitting outside the scope. and they should be using modern 2026 css like the other components.
+
+---
+
+* in the design spec "segments" is called "track"
+* semantically should the overflow-start button come first?
+* labels/inputs should be able to carry a `-icon-*` class like buttons do and use the glyph painter
+* the icon buttons are too permissive, they should just be `<button class="overflow-start" aria-label="Scroll to previous views"></button>` and the rest of the styles should be applied
+* selected items should have a shadow:
+segmentedControl/selectedItemShadow 0 2 4 2 semantic/color/dropShadow/shadowColor2 (#000000 15%), 0 1 2 0 semantic/color/dropShadow/shadowColor1 (#000000 30%)
