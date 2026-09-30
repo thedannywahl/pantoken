@@ -17,7 +17,7 @@ export function buildApiCatalog(packages: readonly WorkspacePackage[]) {
     .filter((pkg) => isPublishablePackage(pkg) && pkg.name.startsWith("@pantoken/"))
     .sort((left, right) => left.name.localeCompare(right.name))
     .map((pkg) => ({
-      href: `${NPM_REGISTRY}/${pkg.name.replace("/", "%2F")}`,
+      href: `${NPM_REGISTRY}/${pkg.name.replaceAll("/", "%2F")}`,
       title: pkg.name,
     }));
 
