@@ -1,0 +1,34 @@
+these should be using the scope declaration like other components with properties and keyframes sitting outside the scope. and they should be using modern 2026 css like the other components.
+
+---
+
+* in the design spec "segments" is called "track"
+* semantically should the overflow-start button come first?
+* labels/inputs should be able to carry a `-icon-*` class like buttons do and use the glyph painter
+* the icon buttons are too permissive, they should just be `<button class="overflow-start" aria-label="Scroll to previous views"></button>` and the rest of the styles should be applied
+* selected items should have a shadow:
+segmentedControl/selectedItemShadow 0 2 4 2 semantic/color/dropShadow/shadowColor2 (#000000 15%), 0 1 2 0 semantic/color/dropShadow/shadowColor1 (#000000 30%)
+
+---
+
+the overflow scroll buttons should have elevation as well:
+sharedTokens/boxShadow/elevation3 0 2 3 0 semantic/color/dropShadow/shadowColor1 (#23446526) 0 6 10 4 semantic/color/dropShadow/shadowColor2 (#2344651A)
+
+this shadow should already be available via the elevation settings.  Let's also check if the active segment box shadow matches an existing elevation definition.
+
+---
+
+ignoring the design spec that calls for a track, can we flatten this to:
+```
+<fieldset>
+<button class="overflow-start">
+<label><input/>foo</label
+...
+<button class="overflow-end">
+</fieldset>
+```
+?
+
+---
+
+okay, let's do it, but also instead of .segment target `label` we don't need modifier classes when a specific element is required.
