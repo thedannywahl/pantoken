@@ -1,0 +1,46 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3SW2QX4Z3FQP6ZFVYAQMN0N",
+  "strategy": "manual-commit",
+  "branch": "release-compatibility",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/skeleton-loader-component.md",
+    "ASSURANCE.md",
+    "SECURITY.md",
+    "formats/interactions/component-capabilities.json",
+    "formats/interactions/scripts/build-iife.ts",
+    "formats/interactions/scripts/generate-capabilities.ts",
+    "formats/interactions/scripts/generate-components.ts",
+    "formats/interactions/src/behaviors/skeleton-loader.ts",
+    "formats/interactions/src/components/skeleton-loader.ts",
+    "formats/interactions/src/index.ts",
+    "formats/interactions/tests/generate-capabilities.test.ts",
+    "formats/interactions/tests/skeleton-loader.test.ts",
+    "formats/interactions/vite.config.ts",
+    "plugins/pantoken/custom-components/scripts/build-entries.ts",
+    "plugins/pantoken/custom-components/scripts/generate.ts",
+    "plugins/pantoken/custom-components/src/components/index.ts",
+    "plugins/pantoken/custom-components/src/components/skeleton-loader/index.ts",
+    "plugins/pantoken/custom-components/src/components/skeleton-loader/skeleton-loader.css",
+    "plugins/pantoken/custom-components/src/index.ts",
+    "plugins/pantoken/custom-components/tests/index.test.ts",
+    "plugins/pantoken/custom-components/vite.config.ts"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": ""
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
