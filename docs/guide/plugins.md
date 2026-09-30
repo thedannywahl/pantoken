@@ -87,10 +87,8 @@ press. Use logical start/end controls and accessible button labels in both direc
 ```html
 <fieldset class="instui-segmented-control" aria-label="Course view" data-overflown>
   <button class="overflow-start" type="button" aria-label="Previous views" hidden></button>
-  <div class="track">
-    <label class="segment"><input type="radio" name="course-view" checked /> Grid</label>
-    <label class="segment"><input type="radio" name="course-view" /> List</label>
-  </div>
+  <label><input type="radio" name="course-view" checked /> Grid</label>
+  <label><input type="radio" name="course-view" /> List</label>
   <button class="overflow-end" type="button" aria-label="Next views" hidden></button>
 </fieldset>
 ```

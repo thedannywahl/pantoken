@@ -7,17 +7,11 @@
  * @modifier -size-lg — Large segments.
  * @modifier -size-md — Medium segments (default).
  * @modifier -size-sm — Small segments.
- * @part track — The horizontal scroll track.
- * @part segment — One labelled radio option.
  * @part overflow-start — Scroll to the preceding hidden segment.
  * @part overflow-end — Scroll to the following hidden segment.
  * @structure
  * .pfx-segmented-control {
- *   .track {
- *     .segment:one-or-more {
- *       input {}
- *     }
- *   }
+ *   label:one-or-more { input {} }
  *   .overflow-start:optional {}
  *   .overflow-end:optional {}
  * }
@@ -28,10 +22,8 @@
  * ```html
  * <fieldset class="pfx-segmented-control" aria-label="Course view">
  *   <button class="overflow-start" type="button" aria-label="Scroll to previous views" hidden></button>
- *   <div class="track">
- *     <label class="segment"><input type="radio" name="view" checked>Grid</label>
- *     <label class="segment"><input type="radio" name="view">List</label>
- *   </div>
+ *   <label><input type="radio" name="view" checked>Grid</label>
+ *   <label><input type="radio" name="view">List</label>
  *   <button class="overflow-end" type="button" aria-label="Scroll to next views" hidden></button>
  * </fieldset>
  * ```
@@ -56,10 +48,21 @@
         var(--instui-drop-shadow-blur-elevation3-dropshadow1)
         var(--instui-drop-shadow-spread-elevation3-dropshadow1)
         var(--instui-color-drop-shadow-shadow-color2);
+    display: flex;
+    align-items: center;
+    gap: var(--instui-component-segmented-control-track-gap);
     position: relative;
     min-inline-size: 0;
     margin: 0;
-    padding: var(--instui-component-segmented-control-track-padding);
+    padding-block: var(--instui-component-segmented-control-track-padding);
+    padding-inline-start: calc(
+      var(--instui-component-segmented-control-track-padding) +
+        var(--pantoken-segmented-start-reserve, 0px)
+    );
+    padding-inline-end: calc(
+      var(--instui-component-segmented-control-track-padding) +
+        var(--pantoken-segmented-end-reserve, 0px)
+    );
     border: 0;
     border-radius: var(--instui-component-segmented-control-track-border-radius);
     background: var(--instui-component-segmented-control-track-background-color);
@@ -67,6 +70,12 @@
     font-weight: var(--instui-component-segmented-control-font-weight);
     font-size: var(--pantoken-segmented-font-size);
     line-height: var(--instui-component-segmented-control-line-height);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 
   &.-size-lg {
@@ -101,22 +110,7 @@
     background: var(--instui-component-segmented-control-track-background-disabled-color);
   }
 
-  & > .track {
-    display: flex;
-    align-items: center;
-    gap: var(--instui-component-segmented-control-track-gap);
-    min-inline-size: 0;
-    overflow-x: auto;
-    scrollbar-width: none;
-    padding-inline-start: var(--pantoken-segmented-start-reserve, 0px);
-    padding-inline-end: var(--pantoken-segmented-end-reserve, 0px);
-  }
-
-  & > .track::-webkit-scrollbar {
-    display: none;
-  }
-
-  .segment {
+  & > label {
     position: relative;
     display: inline-flex;
     flex: none;
@@ -129,71 +123,97 @@
     color: var(--instui-component-segmented-control-unselected-item-text-color);
     cursor: pointer;
     white-space: nowrap;
+  }
 
-    &:is([class^="-icon-"], [class*=" -icon-"]) {
-      gap: var(--pantoken-segmented-gap);
-    }
+  & > label > input {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    opacity: 0;
+  }
 
-    > input {
-      position: absolute;
-      inline-size: 1px;
-      block-size: 1px;
-      opacity: 0;
-    }
+  & > label:has(input:checked) {
+    z-index: 1;
+    color: var(--instui-component-segmented-control-selected-item-text-color);
+    background: var(--instui-component-segmented-control-selected-item-background-color);
+    box-shadow: var(--pantoken-segmented-selected-shadow);
+  }
 
-    &:has(input:checked) {
-      z-index: 1;
-      color: var(--instui-component-segmented-control-selected-item-text-color);
-      background: var(--instui-component-segmented-control-selected-item-background-color);
-      box-shadow: var(--pantoken-segmented-selected-shadow);
-    }
+  & > label:has(input:focus-visible) {
+    outline: var(--instui-focus-outline-width) solid var(--instui-focus-outline-color);
+    outline-offset: var(--instui-focus-outline-offset);
+  }
 
-    &:has(input:focus-visible) {
-      outline: var(--instui-focus-outline-width) solid var(--instui-focus-outline-color);
-      outline-offset: var(--instui-focus-outline-offset);
-    }
+  & > label:not(:has(input:checked)):hover {
+    background: var(--instui-component-segmented-control-unselected-item-background-hover-color);
+  }
 
-    &:not(:has(input:checked)):hover {
-      background: var(--instui-component-segmented-control-unselected-item-background-hover-color);
-    }
+  & > label:not(:has(input:checked)):active {
+    background: var(--instui-component-segmented-control-unselected-item-background-active-color);
+  }
 
-    &:not(:has(input:checked)):active {
-      background: var(--instui-component-segmented-control-unselected-item-background-active-color);
-    }
+  & > label:has(input:checked):hover {
+    background: var(--instui-component-segmented-control-selected-item-background-hover-color);
+  }
 
-    &:has(input:checked):hover {
-      background: var(--instui-component-segmented-control-selected-item-background-hover-color);
-    }
+  & > label:has(input:checked):active {
+    background: var(--instui-component-segmented-control-selected-item-background-active-color);
+  }
 
-    &:has(input:checked):active {
-      background: var(--instui-component-segmented-control-selected-item-background-active-color);
-    }
+  & > label:has(input:disabled) {
+    color: var(--instui-component-segmented-control-unselected-item-text-disabled-color);
+    cursor: not-allowed;
+  }
 
-    &:has(input:disabled) {
-      color: var(--instui-component-segmented-control-unselected-item-text-disabled-color);
-      cursor: not-allowed;
-    }
-
-    &:has(input:checked:disabled) {
-      color: var(--instui-component-segmented-control-selected-item-text-disabled-color);
-      background: var(--instui-component-segmented-control-selected-item-background-disabled-color);
-      box-shadow: none;
-    }
+  & > label:has(input:checked:disabled) {
+    color: var(--instui-component-segmented-control-selected-item-text-disabled-color);
+    background: var(--instui-component-segmented-control-selected-item-background-disabled-color);
+    box-shadow: none;
   }
 
   & > :is(.overflow-start, .overflow-end) {
-    position: absolute;
+    position: sticky;
     z-index: 2;
-    inset-block-start: var(--instui-component-segmented-control-track-padding);
+    flex: none;
+    inline-size: var(--instui-component-base-button-medium-height);
+    block-size: var(--instui-component-base-button-medium-height);
+    border: var(--instui-border-width-sm) solid
+      var(--instui-color-stroke-interactive-action-primary-base);
+    border-radius: var(--instui-component-base-button-border-radius);
+    background: var(--instui-color-background-interactive-action-primary-base);
+    color: var(--instui-color-text-interactive-action-primary-base);
     box-shadow: var(--pantoken-segmented-overflow-shadow);
+    cursor: pointer;
   }
 
   & > .overflow-start {
-    inset-inline-start: var(--instui-component-segmented-control-track-padding);
+    inset-inline-start: 0;
   }
 
   & > .overflow-end {
-    inset-inline-end: var(--instui-component-segmented-control-track-padding);
+    inset-inline-end: 0;
+  }
+
+  & > .overflow-start::before,
+  & > .overflow-end::before {
+    content: "";
+    display: block;
+    inline-size: 1rem;
+    block-size: 1rem;
+    margin: auto;
+    background: currentColor;
+    -webkit-mask: center / contain no-repeat;
+    mask: center / contain no-repeat;
+  }
+
+  & > .overflow-start::before {
+    -webkit-mask-image: var(--instui-icon-chevron-left);
+    mask-image: var(--instui-icon-chevron-left);
+  }
+
+  & > .overflow-end::before {
+    -webkit-mask-image: var(--instui-icon-chevron-right);
+    mask-image: var(--instui-icon-chevron-right);
   }
 
   &:dir(rtl) > :is(.overflow-start, .overflow-end)::before {

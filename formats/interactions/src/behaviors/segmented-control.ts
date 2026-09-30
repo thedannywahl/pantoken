@@ -20,15 +20,13 @@ export function initSegmentedControl(
   const existing = initialized.get(host);
   if (existing) return existing;
 
-  const strip = host.querySelector<HTMLElement>(":scope > .track");
+  const strip = host;
   const startButton = host.querySelector<HTMLButtonElement>(":scope > .overflow-start");
   const endButton = host.querySelector<HTMLButtonElement>(":scope > .overflow-end");
   const radios = (): HTMLInputElement[] => [
-    ...host.querySelectorAll<HTMLInputElement>(".segment > input[type=radio]"),
+    ...host.querySelectorAll<HTMLInputElement>(":scope > label > input[type=radio]"),
   ];
-  const segments = (): HTMLElement[] => [
-    ...(strip?.querySelectorAll<HTMLElement>(":scope > .segment") ?? []),
-  ];
+  const segments = (): HTMLElement[] => [...strip.querySelectorAll<HTMLElement>(":scope > label")];
   const isOverflown = options.isOverflown ?? host.hasAttribute("data-overflown");
   let arrowWidth = 0;
   if (options.size) {
@@ -42,7 +40,7 @@ export function initSegmentedControl(
 
   for (const radio of radios()) {
     const iconClass = [...radio.classList].find((className) => className.startsWith("-icon-"));
-    if (iconClass) radio.closest<HTMLElement>(".segment")?.classList.add(iconClass);
+    if (iconClass) radio.closest<HTMLElement>("label")?.classList.add(iconClass);
   }
 
   const bounds = (): { left: number; right: number; rtl: boolean } => {
@@ -122,7 +120,7 @@ export function initSegmentedControl(
       radio.dispatchEvent(new Event("input", { bubbles: true }));
       radio.dispatchEvent(new Event("change", { bubbles: true }));
     }
-    radio.closest(".segment")?.scrollIntoView?.({ block: "nearest", inline: "nearest" });
+    radio.closest("label")?.scrollIntoView?.({ block: "nearest", inline: "nearest" });
   };
 
   const onKeyDown = (event: KeyboardEvent): void => {

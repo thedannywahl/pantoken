@@ -11,17 +11,15 @@ function setup() {
   document.body.innerHTML = `
     <fieldset class="instui-segmented-control" aria-label="Course view">
       <button class="overflow-start" type="button" aria-label="Previous" hidden></button>
-      <div class="track">
-        <label class="segment"><input type="radio" name="view" checked> Grid</label>
-        <label class="segment"><input type="radio" name="view" disabled> Map</label>
-        <label class="segment"><input type="radio" name="view"> List</label>
-      </div>
+      <label><input type="radio" name="view" checked> Grid</label>
+      <label><input type="radio" name="view" disabled> Map</label>
+      <label><input type="radio" name="view"> List</label>
       <button class="overflow-end" type="button" aria-label="Next" hidden></button>
     </fieldset>`;
   return {
     host: document.querySelector<HTMLElement>(".instui-segmented-control")!,
-    radios: [...document.querySelectorAll<HTMLInputElement>(".segment input")],
-    strip: document.querySelector<HTMLElement>(".track")!,
+    radios: [...document.querySelectorAll<HTMLInputElement>("fieldset input")],
+    strip: document.querySelector<HTMLElement>("fieldset")!,
     start: document.querySelector<HTMLButtonElement>(".overflow-start")!,
     end: document.querySelector<HTMLButtonElement>(".overflow-end")!,
   };
@@ -72,7 +70,7 @@ test("enables overflow arrows only when requested and measured content clips", (
   Object.defineProperty(strip, "clientWidth", { configurable: true, value: 100 });
   const rect = (left: number, right: number): DOMRect => ({ left, right }) as DOMRect;
   vi.spyOn(strip, "getBoundingClientRect").mockReturnValue(rect(0, 100));
-  strip.querySelectorAll<HTMLElement>(".segment").forEach((segment, index) => {
+  strip.querySelectorAll<HTMLElement>("label").forEach((segment, index) => {
     vi.spyOn(segment, "getBoundingClientRect").mockReturnValue(rect(index * 80, index * 80 + 70));
   });
   const handle = initSegmentedControl(host, { isOverflown: true });
@@ -102,7 +100,7 @@ test("overflow arrows reveal the next clipped segment in each writing direction"
   Object.defineProperty(end, "offsetWidth", { configurable: true, value: 20 });
   const rect = (left: number, right: number): DOMRect => ({ left, right }) as DOMRect;
   vi.spyOn(strip, "getBoundingClientRect").mockReturnValue(rect(0, 100));
-  const items = [...strip.querySelectorAll<HTMLElement>(".segment")];
+  const items = [...strip.querySelectorAll<HTMLElement>("label")];
   items.forEach((item, index) =>
     vi.spyOn(item, "getBoundingClientRect").mockReturnValue(rect(index * 80 + 20, index * 80 + 70)),
   );
@@ -140,5 +138,5 @@ test("copies an icon class from a native input to its label painter", () => {
   const radio = host.querySelector<HTMLInputElement>("input")!;
   radio.classList.add("-icon-grid-view");
   initSegmentedControl(host);
-  expect(radio.closest(".segment")?.classList.contains("-icon-grid-view")).toBe(true);
+  expect(radio.closest("label")?.classList.contains("-icon-grid-view")).toBe(true);
 });

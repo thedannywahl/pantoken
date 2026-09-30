@@ -96,9 +96,9 @@ test("every custom component appears in the plugin css output", () => {
 test("segmented control uses native radio states and the three upstream sizes", () => {
   const css = segmentedControlRules();
   expect(css).toContain(".instui-segmented-control");
-  expect(css).toContain("&:has(input:checked)");
-  expect(css).toContain("&:has(input:focus-visible)");
-  expect(css).toContain("&:has(input:disabled)");
+  expect(css).toContain("& > label:has(input:checked)");
+  expect(css).toContain("& > label:has(input:focus-visible)");
+  expect(css).toContain("& > label:has(input:disabled)");
   expect(css).toContain("0 2px 4px 2px var(--instui-color-drop-shadow-shadow-color2)");
   expect(css).toContain("0 1px 2px 0 var(--instui-color-drop-shadow-shadow-color1)");
   expect(css).toContain("--instui-drop-shadow-y-elevation3-dropshadow2");
