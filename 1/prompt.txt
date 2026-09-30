@@ -64,3 +64,18 @@ when it first renders the -start button is not visible which is good, but then a
 okay, the buttons are now appearing however there is an issue with the container width:
 when it first renders the -end button is offset by about 100% of its width, when scrolling the track/wrapper has padding for ~100% width of the scrollbutton.
 when it first renders the -start button is not visible which is good, but then after scrolling and it becomes visible it is ~100% of its width inset and the track becomes wider by ~100% width of a button, continue using the browser to investigate, and if we have to add back a wrapper class for simlicity, that's fine.  this also means that scrolling to the end doesn't hide the -end button and scroll back to the start doesn't re-hide the -start button.
+
+---
+
+There's still a major issue as exemplified by these sequential screenshots:
+screenshot 1:
+* instui-segmented-control should have the same padding on the x axis as the y axis so that buttons/labels don't bleed to the edge
+* there is still a gap at the start of the track for the -start control even though it's not visible
+screenshot 2:
+* because there's no padding on x the "Settings" button bleeds to the edge
+* the -end button scrolled with the content
+* the -start button did not appear
+screenshot 3:
+* the -end control scrolls again, but then disappears because we're at the end of the content (good)
+* there's still a gap for the -end control
+* because the -start control never appeared we cannot scroll back.
