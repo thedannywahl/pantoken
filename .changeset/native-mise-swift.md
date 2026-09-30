@@ -4,7 +4,6 @@
 "@pantoken/swift": patch
 "@pantoken/cli": patch
 "@pantoken/docs": patch
-"pantoken-root": patch
 ---
 
 Preserve nested color channels in native token resolution, advertise only iOS for UIKit Swift output, and add mise-managed SwiftPM scaffolding and native checks.

@@ -1,5 +1,4 @@
 ---
-"pantoken-root": minor
 "@pantoken/docs": minor
 ---
 

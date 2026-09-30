@@ -1,5 +1,4 @@
 ---
-"pantoken-root": patch
 "@pantoken/docs": patch
 ---
 
