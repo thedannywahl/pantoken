@@ -1,0 +1,23 @@
+we briefly used netlify but switched to cloudflare workers. I want to keep the structure of the docs build, but remove refernces to any particular hosting provider (gh pages, netlify, cloudflare r2)
+
+---
+
+Research only (no edits). Thoroughness: thorough. Workspace: /Users/dwahl/Scripts/pantoken.
+
+Goal: inventory every SOURCE reference to hosting providers (Netlify, Cloudflare incl. Workers/R2/wrangler, GitHub Pages / gh-pages / peaceiris actions-gh-pages) so they can be renamed to provider-neutral terms. EXCLUDE generated/build output and noise: docs/.vitepress/dist, docs/.vitepress/cf-worker-dist, docs/.vitepress/cf-r2-assets, docs/.vitepress/cache, docs/.vitepress/partial-dist, node_modules, coverage, any `docs/<locale>/demos/**` and `docs/demos/**` (they contain unrelated `r2` ids), icon manifests/simple-icons data (cloudflare/netlify icon slugs are legit), CHANGELOG.md files (leave history), l10n/*.po unless they contain deploy prose.
+
+Use regex like: netlify|cloudflare|github pages|gh-pages|actions-gh-pages|cf-r2|cf-worker|\bR2\b|wrangler|CLOUDFLARE_|NETLIFY_|workers\.dev|pages\.dev|_headers|_redirects
+
+For each hit report: file path, line number, the exact line text, and a classification: (a) identifier/filename/path/env var that code or config depends on, (b) prose comment/doc, (c) badge/URL.
+
+Also specifically report:
+1. Full contents summary of docs/cloudflare/ (list files, what src/index.ts exports incl. getMimeType, wrangler.jsonc contents in full, tests), and every importer of docs/cloudflare/* (e.g. sync-cloudflare-r2.ts imports getMimeType).
+2. docs/scripts/prepare-cloudflare-deploy.ts and sync-cloudflare-r2.ts: all exported symbols, constants, env var names, output dir names, manifest file name (e.g. cloudflare-deploy-manifest.json), and their tests' references.
+3. docs/package.json scripts referencing these; any vite.config.ts / pnpm-workspace.yaml / tsconfig / vitest project / fallow / knip / codecov / .github/codeql config / .gitignore entries referencing docs/cloudflare or these scripts or the output dirs.
+4. docs/public/_headers full contents (is it Netlify-format; note Cloudflare Workers Static Assets also honors _headers).
+5. Everything under ai/create-pantoken-app-site (README, any CNAME/.nojekyll/workflow) and docs/scripts/stage-create-pantoken-app-domain.ts and docs/.vitepress/config.ts ~line 200-225 referencing GitHub Pages.
+6. README.md badges (Netlify status badge line) and any other root docs (ASSURANCE.md line ~164 full row, SECURITY.md, CONTRIBUTING.md, ROADMAP.md, docs/architecture/overview.md, docs/engineering-log.md entries—give heading + line ranges of each hosting-related engineering-log entry).
+7. ai/pantoken-ai assets (AGENTS.md, llms.txt, skills) mentioning these providers.
+8. /memories/repo is not accessible to you; skip.
+
+Return a compact, organized list grouped by file.
