@@ -4,6 +4,12 @@ Theme a VitePress site with Instructure tokens. VitePress theming is driven by `
 variables; this points them at `var(--instui-*)`, so the docs pick up the Instructure look and stay
 in sync with the appearance toggle.
 
+## Compatibility
+
+Verified with a real VitePress 1.6.4 site build: the built theme CSS contains the Pantoken primary
+brand bridge. See the [compatibility matrix](https://pantoken.app/compatibility) for the exact
+tested release.
+
 ## Install
 
 ```sh

@@ -24,6 +24,7 @@ const npmTargets: Record<string, string> = {
   "@pantoken/svelte": "svelte",
   "@pantoken/tinymce": "tinymce",
   "@pantoken/vue": "vue",
+  "@pantoken/vitepress": "vitepress",
 };
 
 /** An upstream stable release not yet included in an adapter's verified support record. */

@@ -202,7 +202,15 @@
     "testCommand": "vp run @pantoken/svelte#check:compatibility"
   },
   "@pantoken/tinymce": { "target": "TinyMCE", "status": "unverified" },
-  "@pantoken/vitepress": { "target": "VitePress", "status": "unverified" },
+  "@pantoken/vitepress": {
+    "target": "VitePress",
+    "format": "Built site CSS includes the Pantoken primary-brand bridge",
+    "status": "verified",
+    "minimum": "1.6.4",
+    "testedThrough": "1.6.4",
+    "testedVersions": ["1.6.4"],
+    "testCommand": "vp run @pantoken/vitepress#check:compatibility"
+  },
   "@pantoken/vue": {
     "target": "Vue",
     "format": "Plugin installation, custom-element configuration, and SSR output",

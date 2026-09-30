@@ -363,6 +363,28 @@ test("flags a future Panda CSS release for preset extraction review", async () =
   expect(await pendingRelease(panda)).toMatchObject({ version: "2.0.1" });
 });
 
+test("flags a future VitePress release for built theme CSS review", async () => {
+  const vitepress: ConsumerEntry = {
+    package: "@pantoken/vitepress",
+    path: "renderers/vitepress",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "VitePress",
+      format: "Built site CSS includes the Pantoken primary-brand bridge",
+      status: "verified",
+      minimum: "1.6.4",
+      testedThrough: "1.6.4",
+      testedVersions: ["1.6.4"],
+      testCommand: "vp run @pantoken/vitepress#check:compatibility",
+    },
+  };
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({ ok: true, json: async () => ({ version: "1.6.5" }) }),
+  );
+  expect(await pendingRelease(vitepress)).toMatchObject({ version: "1.6.5" });
+});
+
 test("flags a future webpack release without widening emitted asset support", async () => {
   const webpack: ConsumerEntry = {
     package: "@pantoken/webpack",

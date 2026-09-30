@@ -503,7 +503,12 @@
       "governedBy": "token-ir",
       "targetSupport": {
         "target": "VitePress",
-        "status": "unverified"
+        "format": "Built site CSS includes the Pantoken primary-brand bridge",
+        "status": "verified",
+        "minimum": "1.6.4",
+        "testedThrough": "1.6.4",
+        "testedVersions": ["1.6.4"],
+        "testCommand": "vp run @pantoken/vitepress#check:compatibility"
       }
     },
     {

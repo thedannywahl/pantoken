@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-30 00:24+0000\n"
+"PO-Revision-Date: 2026-09-30 00:31+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -18693,7 +18693,7 @@ msgstr ""
 #: renderers/vitepress/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: VitePress. Host compatibility has not yet been verified."
+msgid "Target: VitePress. Current format: `Built site CSS includes the Pantoken primary-brand bridge`. Minimum host version: `1.6.4`. Tested through `1.6.4`. Newer releases require review."
 msgstr ""
 
 #: renderers/vitepress/src/index.md
