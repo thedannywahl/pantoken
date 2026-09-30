@@ -151,7 +151,15 @@
     "testedVersions": ["14.0.0", "14.1.1", "14.2.0", "14.3.2", "15.0.2"],
     "testCommand": "vp run @pantoken/markdown-it#check:compatibility"
   },
-  "@pantoken/mintlify": { "target": "Mintlify", "status": "unverified" },
+  "@pantoken/mintlify": {
+    "target": "Mintlify docs.json",
+    "format": "Official CLI validates generated colors and background theme config",
+    "status": "verified",
+    "minimum": "4.0.1555",
+    "testedThrough": "4.0.1555",
+    "testedVersions": ["4.0.1555"],
+    "testCommand": "vp run @pantoken/mintlify#check:compatibility"
+  },
   "@pantoken/mui": {
     "target": "Material UI",
     "format": "Concrete createTheme palettes (MUI 5, 6, 7, 9)",

@@ -4,6 +4,12 @@ Theme a [Mintlify](https://mintlify.com) docs site with Instructure tokens. Mint
 hex from its `docs.json` at build, so this renderer resolves the tokens to per-mode values (like the
 MUI renderer) rather than shipping a CSS-variable bridge.
 
+## Compatibility
+
+Verified with Mintlify CLI 4.0.1555 by validating a minimal docs site containing the generated
+Pantoken `colors` and `background` values. See the
+[compatibility matrix](https://pantoken.app/compatibility) for the exact tested CLI release.
+
 ## What it maps
 
 | Mintlify `docs.json` key | Instructure token                                                   | Notes                     |

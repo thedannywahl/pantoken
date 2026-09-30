@@ -407,6 +407,28 @@ test("flags a future Emotion release for CSS-in-JS SSR review", async () => {
   expect(await pendingRelease(cssInJs)).toMatchObject({ version: "11.14.1" });
 });
 
+test("flags a future Mintlify CLI release for docs.json review", async () => {
+  const mintlify: ConsumerEntry = {
+    package: "@pantoken/mintlify",
+    path: "renderers/mintlify",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "Mintlify docs.json",
+      format: "Official CLI validates generated colors and background theme config",
+      status: "verified",
+      minimum: "4.0.1555",
+      testedThrough: "4.0.1555",
+      testedVersions: ["4.0.1555"],
+      testCommand: "vp run @pantoken/mintlify#check:compatibility",
+    },
+  };
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({ ok: true, json: async () => ({ version: "4.0.1556" }) }),
+  );
+  expect(await pendingRelease(mintlify)).toMatchObject({ version: "4.0.1556" });
+});
+
 test("flags a future webpack release without widening emitted asset support", async () => {
   const webpack: ConsumerEntry = {
     package: "@pantoken/webpack",

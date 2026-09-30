@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-30 00:38+0000\n"
+"PO-Revision-Date: 2026-09-30 00:48+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -17120,7 +17120,7 @@ msgstr ""
 #: renderers/mintlify/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Mintlify. Host compatibility has not yet been verified."
+msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1555`. Newer releases require review."
 msgstr ""
 
 #: renderers/mintlify/src/index.md

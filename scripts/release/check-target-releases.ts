@@ -17,6 +17,7 @@ const npmTargets: Record<string, string> = {
   "@pantoken/docusaurus": "@docusaurus/theme-classic",
   "@pantoken/foundation": "foundation-sites",
   "@pantoken/markdown-it": "markdown-it",
+  "@pantoken/mintlify": "@mintlify/cli",
   "@pantoken/mui": "@mui/material",
   "@pantoken/react": "react",
   "@pantoken/react-markdown": "react-markdown",

@@ -1,4 +1,5 @@
 import { expect, test } from "vite-plus/test";
+import { checkCompatibility } from "../scripts/check-compatibility.ts";
 import { tokens } from "@pantoken/tokens";
 import { parseHexColor, resolveTokens } from "@pantoken/utils";
 import { docsJson, toMintlifyConfig } from "../src/index.ts";
@@ -30,4 +31,8 @@ test("every emitted colour resolves to a concrete hex (Mintlify parses hex, not 
 
 test("docsJson is the ready-made rebrand fragment", () => {
   expect(docsJson).toEqual(toMintlifyConfig(tokens));
+});
+
+test("rejects Mintlify CLI versions outside the checked major", async () => {
+  await expect(checkCompatibility("5.0.0")).rejects.toThrow("Invalid Mintlify CLI 4 release");
 });
