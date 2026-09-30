@@ -38,7 +38,7 @@
     "docs:changed-pages": "node scripts/changed-pages.ts",
     "docs:assets": "node scripts/run-assets.ts",
     "docs:og": "node scripts/gen-og.ts",
-    "docs:dev": "vp run @pantoken/components#generate && vp run @pantoken/plugin-visual-debug#generate && vp run @pantoken/plugin-logos#generate && vp run @pantoken/plugin-primitives#generate && vp run @pantoken/plugin-custom-icons#generate && vp run @pantoken/plugin-custom-components#generate && vp run docs:assets && vp run docs:api:en && vp run docs:api:css && DOCS_LOCALE=root vitepress dev",
+    "docs:dev": "vp run @pantoken/components#generate && vp run @pantoken/plugin-visual-debug#generate && vp run @pantoken/plugin-logos#generate && vp run @pantoken/plugin-primitives#generate && vp run @pantoken/plugin-custom-icons#generate && vp run @pantoken/plugin-custom-components#generate && vp run @pantoken/interactions#build && vp run docs:assets && vp run docs:api:en && vp run docs:api:css && DOCS_LOCALE=root vitepress dev",
     "docs:dev:all": "vp run docs:assets && vp run docs:api:locales && vp run docs:check:locales && vitepress dev",
     "docs:build": "vp run docs:assets && vp run docs:api:en:build && vp run docs:api:css && DOCS_ROOT_LOCALE_ONLY=1 vitepress build",
     "docs:build:deploy:partial": "vp run docs:assets && vp run docs:api:locales && DOCS_DIST_DIR=.vitepress/partial-dist node scripts/build-locales.ts",
