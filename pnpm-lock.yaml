@@ -266,7 +266,7 @@ catalogs:
       specifier: ^0.16.0
       version: 0.16.0
     '@instructure/instructure-design-tokens':
-      specifier: github:instructure/instructure-design-tokens#v2.0.0
+      specifier: github:instructure/instructure-design-tokens#v2.1.0
       version: 1.0.0
     '@instructure/ui-alerts':
       specifier: ^11.7.7
@@ -1334,7 +1334,7 @@ importers:
     devDependencies:
       '@instructure/instructure-design-tokens':
         specifier: 'catalog:'
-        version: https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/0a323b62c7486e65de57a06d70bdf0cdf209187f
+        version: https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/c7f0deea242d692ae38d4baed0923a6eb251a7e5
       '@instructure/ui-icons':
         specifier: 'catalog:'
         version: 11.7.7(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@10.2.2)
@@ -1455,7 +1455,7 @@ importers:
     dependencies:
       '@instructure/instructure-design-tokens':
         specifier: 'catalog:'
-        version: https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/0a323b62c7486e65de57a06d70bdf0cdf209187f
+        version: https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/c7f0deea242d692ae38d4baed0923a6eb251a7e5
       '@instructure/ui-icons':
         specifier: 'catalog:'
         version: 11.7.7(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@10.2.2)
@@ -4695,8 +4695,8 @@ packages:
     peerDependencies:
       react: '>=18 <=19'
 
-  '@instructure/instructure-design-tokens@https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/0a323b62c7486e65de57a06d70bdf0cdf209187f':
-    resolution: {gitHosted: true, integrity: sha512-W2DzL8DDHgRhUlE19zdKtoeuN+B8Ai6ONt+lA7ZD1fGZnZlUa3AnLpq0k6XqPWXVD7fSM7TLSlc0nfwIWe0qUg==, tarball: https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/0a323b62c7486e65de57a06d70bdf0cdf209187f}
+  '@instructure/instructure-design-tokens@https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/c7f0deea242d692ae38d4baed0923a6eb251a7e5':
+    resolution: {gitHosted: true, integrity: sha512-8O/5ei66jrdjxJrvutPtakHRNuOkz6zaTFh/Dg4PUTW+CFrN9gx6c2Co8Lc7IKJzQ6vzlQoPaWHXhyCeaxOeIw==, tarball: https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/c7f0deea242d692ae38d4baed0923a6eb251a7e5}
     version: 1.0.0
 
   '@instructure/shared-types@11.7.7':
@@ -11512,7 +11512,7 @@ snapshots:
       - react-dom
       - supports-color
 
-  '@instructure/instructure-design-tokens@https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/0a323b62c7486e65de57a06d70bdf0cdf209187f':
+  '@instructure/instructure-design-tokens@https://codeload.github.com/instructure/instructure-design-tokens/tar.gz/c7f0deea242d692ae38d4baed0923a6eb251a7e5':
     dependencies:
       glob: 13.0.6
 
@@ -13428,10 +13428,10 @@ snapshots:
       d3-selection: 3.0.0
       d3-transition: 3.0.1(d3-selection@3.0.0)
 
-  '@vitejs/plugin-vue@6.0.9(@voidzero-dev/vite-plus-core@1.0.0-rc.0(@arethetypeswrong/core@0.18.5)(@types/node@26.6.3)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(publint@0.3.24)(sass@1.105.0)(terser@5.51.2)(typescript@5.6.1-rc)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))':
+  '@vitejs/plugin-vue@6.0.9(@voidzero-dev/vite-plus-core@1.0.0-rc.0(@arethetypeswrong/core@0.18.5)(@types/node@26.6.3)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(publint@0.3.24)(sass@1.105.0)(terser@5.51.2)(typescript@6.0.3)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
-      vite: '@voidzero-dev/vite-plus-core@1.0.0-rc.0(@arethetypeswrong/core@0.18.5)(@types/node@26.6.3)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(publint@0.3.24)(sass@1.105.0)(terser@5.51.2)(typescript@5.6.1-rc)(yaml@2.9.1)'
+      vite: '@voidzero-dev/vite-plus-core@1.0.0-rc.0(@arethetypeswrong/core@0.18.5)(@types/node@26.6.3)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(publint@0.3.24)(sass@1.105.0)(terser@5.51.2)(typescript@6.0.3)(yaml@2.9.1)'
       vue: 3.5.43(typescript@6.0.3)
 
   '@vitejs/plugin-vue@6.0.9(@voidzero-dev/vite-plus-core@1.0.0-rc.0(@arethetypeswrong/core@0.18.5)(@types/node@26.6.3)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(publint@0.3.24)(sass@1.105.0)(terser@5.51.2)(typescript@7.0.2)(yaml@2.9.1))(vue@3.5.43(typescript@7.0.2))':
@@ -18322,7 +18322,7 @@ snapshots:
       '@iconify-json/simple-icons': 1.2.97
       '@shikijs/transformers': 4.4.3
       '@types/markdown-it': 14.2.0
-      '@vitejs/plugin-vue': 6.0.9(@voidzero-dev/vite-plus-core@1.0.0-rc.0(@arethetypeswrong/core@0.18.5)(@types/node@26.6.3)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(publint@0.3.24)(sass@1.105.0)(terser@5.51.2)(typescript@5.6.1-rc)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))
+      '@vitejs/plugin-vue': 6.0.9(@voidzero-dev/vite-plus-core@1.0.0-rc.0(@arethetypeswrong/core@0.18.5)(@types/node@26.6.3)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(publint@0.3.24)(sass@1.105.0)(terser@5.51.2)(typescript@6.0.3)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))
       '@vue/devtools-api': 8.2.1
       '@vue/shared': 3.5.43
       '@vueuse/core': 14.4.0(vue@3.5.43(typescript@6.0.3))
