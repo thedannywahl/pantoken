@@ -1,0 +1,130 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3SKQWNDZMQRZ6SHZJ49AVD9",
+  "session_id": "9ac61b7f-9b8c-4087-aaca-3cbecb83c249",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-30T16:53:07.806598Z",
+  "branch": "release-compatibility",
+  "checkpoints_count": 4,
+  "save_step_count": 4,
+  "files_touched": [
+    ".changeset/provider-neutral-docs-deploy.md",
+    ".github/codeql/codeql-config.yml",
+    ".github/workflows/docs.yml",
+    ".gitignore",
+    "ASSURANCE.md",
+    "README.md",
+    "docs/.vitepress/config.ts",
+    "docs/cloudflare/src/index.ts",
+    "docs/cloudflare/tests/index.test.ts",
+    "docs/cloudflare/wrangler.jsonc",
+    "docs/conventions/build-and-docs.md",
+    "docs/edge/src/index.ts",
+    "docs/edge/tests/index.test.ts",
+    "docs/edge/wrangler.jsonc",
+    "docs/engineering-log.md",
+    "docs/package.json",
+    "docs/public/_headers",
+    "docs/scripts/build-locales.ts",
+    "docs/scripts/prepare-cloudflare-deploy.test.ts",
+    "docs/scripts/prepare-cloudflare-deploy.ts",
+    "docs/scripts/prepare-deploy.test.ts",
+    "docs/scripts/prepare-deploy.ts",
+    "docs/scripts/stage-create-pantoken-app-domain.ts",
+    "docs/scripts/sync-assets.test.ts",
+    "docs/scripts/sync-assets.ts",
+    "docs/scripts/sync-cloudflare-r2.test.ts",
+    "docs/scripts/sync-cloudflare-r2.ts",
+    "packages/cdn/README.md",
+    "vite.config.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "bc424a5edb59",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 4
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-30T16:53:07.797655Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 145,
+    "human_removed": 2094,
+    "total_committed": 0,
+    "total_lines_changed": 2239,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 2087,
+      "user_lines_removed": 2088,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "docs/edge/src/index.ts": 211,
+        "docs/edge/tests/index.test.ts": 236,
+        "docs/edge/wrangler.jsonc": 19,
+        "docs/scripts/prepare-deploy.test.ts": 171,
+        "docs/scripts/prepare-deploy.ts": 219,
+        "docs/scripts/sync-assets.test.ts": 695,
+        "docs/scripts/sync-assets.ts": 536
+      },
+      "user_removed_per_file": {
+        "docs/cloudflare/src/index.ts": 212,
+        "docs/cloudflare/tests/index.test.ts": 236,
+        "docs/cloudflare/wrangler.jsonc": 19,
+        "docs/scripts/prepare-cloudflare-deploy.test.ts": 171,
+        "docs/scripts/prepare-cloudflare-deploy.ts": 219,
+        "docs/scripts/sync-cloudflare-r2.test.ts": 695,
+        "docs/scripts/sync-cloudflare-r2.ts": 536
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 145,
+      "user_lines_removed": 151,
+      "agent_lines_added": 2087,
+      "agent_lines_removed": 2088,
+      "user_added_per_file": {
+        "docs/scripts/prepare-deploy.test.ts": 71,
+        "docs/scripts/prepare-deploy.ts": 74
+      },
+      "user_removed_per_file": {
+        "docs/scripts/prepare-deploy.test.ts": 73,
+        "docs/scripts/prepare-deploy.ts": 78
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 2081,
+      "agent_lines_removed": 2088
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 2081,
+      "agent_lines_removed": 2088
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 2167,
+      "agent_lines_removed": 2162
+    }
+  ]
+}

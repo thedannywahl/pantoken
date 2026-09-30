@@ -1,0 +1,54 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3SKQWNDZMQRZ6SHZJ49AVD9",
+  "strategy": "manual-commit",
+  "branch": "release-compatibility",
+  "checkpoints_count": 4,
+  "files_touched": [
+    ".changeset/provider-neutral-docs-deploy.md",
+    ".github/codeql/codeql-config.yml",
+    ".github/workflows/docs.yml",
+    ".gitignore",
+    "ASSURANCE.md",
+    "README.md",
+    "docs/.vitepress/config.ts",
+    "docs/cloudflare/src/index.ts",
+    "docs/cloudflare/tests/index.test.ts",
+    "docs/cloudflare/wrangler.jsonc",
+    "docs/conventions/build-and-docs.md",
+    "docs/edge/src/index.ts",
+    "docs/edge/tests/index.test.ts",
+    "docs/edge/wrangler.jsonc",
+    "docs/engineering-log.md",
+    "docs/package.json",
+    "docs/public/_headers",
+    "docs/scripts/build-locales.ts",
+    "docs/scripts/prepare-cloudflare-deploy.test.ts",
+    "docs/scripts/prepare-cloudflare-deploy.ts",
+    "docs/scripts/prepare-deploy.test.ts",
+    "docs/scripts/prepare-deploy.ts",
+    "docs/scripts/stage-create-pantoken-app-domain.ts",
+    "docs/scripts/sync-assets.test.ts",
+    "docs/scripts/sync-assets.ts",
+    "docs/scripts/sync-cloudflare-r2.test.ts",
+    "docs/scripts/sync-cloudflare-r2.ts",
+    "packages/cdn/README.md",
+    "vite.config.ts"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}

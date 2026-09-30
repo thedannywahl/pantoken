@@ -1,0 +1,17 @@
+all the check-compatibility.ts scripts for all the platforms have a hard-coded release const. would it make more sense for them to import and use the 'testedThrough' value from target-compatibility.json?
+
+---
+
+then should there be an additional field in target-compatibility that is the exactly specific testVersion ?
+
+---
+
+I'm wanting to make testing new versions and managing downstream drift easier / automated.
+
+---
+
+write a plan for this change based on additional analysis
+
+---
+
+Read-only exploration, medium thoroughness. Inspect platform check-compatibility.ts scripts (android, compose, drupal, hugo, jekyll, rust, wordpress), package scripts and neighboring tests; identify exact versions/images/toolchains, how checks are invoked, which support candidate overrides, drift discrepancies, and feasible common interface. Follow repo .entire/graph-agent.md instructions (previously read in parent); return file paths and line anchors, concrete proposed boundaries, no edits. Also check applicable docs instructions.
