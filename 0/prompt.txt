@@ -1,0 +1,131 @@
+these should be using the scope declaration like other components with properties and keyframes sitting outside the scope. and they should be using modern 2026 css like the other components.
+
+---
+
+* in the design spec "segments" is called "track"
+* semantically should the overflow-start button come first?
+* labels/inputs should be able to carry a `-icon-*` class like buttons do and use the glyph painter
+* the icon buttons are too permissive, they should just be `<button class="overflow-start" aria-label="Scroll to previous views"></button>` and the rest of the styles should be applied
+* selected items should have a shadow:
+segmentedControl/selectedItemShadow 0 2 4 2 semantic/color/dropShadow/shadowColor2 (#000000 15%), 0 1 2 0 semantic/color/dropShadow/shadowColor1 (#000000 30%)
+
+---
+
+the overflow scroll buttons should have elevation as well:
+sharedTokens/boxShadow/elevation3 0 2 3 0 semantic/color/dropShadow/shadowColor1 (#23446526) 0 6 10 4 semantic/color/dropShadow/shadowColor2 (#2344651A)
+
+this shadow should already be available via the elevation settings.  Let's also check if the active segment box shadow matches an existing elevation definition.
+
+---
+
+ignoring the design spec that calls for a track, can we flatten this to:
+```
+<fieldset>
+<button class="overflow-start">
+<label><input/>foo</label
+...
+<button class="overflow-end">
+</fieldset>
+```
+?
+
+---
+
+okay, let's do it, but also instead of .segment target `label` we don't need modifier classes when a specific element is required.
+
+---
+
+now breakout the label/inputs into a member definition (see format/components/list) for an example.
+
+---
+
+http://localhost:5173/api/css/segmented-control
+the interactions should already be loaded on the docs page automatically, so here are some issues:
+* clicking an inactive segment marks it as active, but does not inactivate the other segment(s) there should only be 1 active segment at a time
+* the width of the segments is > the width of the fieldset and so the overflow-end button should automatically appear.  the overflow-start button should automatically appear when the user scrolls to the right and some content is overflowing the inline-start of the box.
+use the built-in browser to investigate. the docs render   the `@example` documented here.
+
+---
+
+I ran `vpr generate && vpr docs:dev` and I still don't see the overflow controllers - should the buttons in the example not be carrying the hidden attribute?
+
+---
+
+but why did the toggle start working after the last fix?
+
+---
+
+okay, the buttons are now appearing however there is an issue with the container width:
+when it first renders the -end button is offset by about 100% of its width, when scrolling the track/wrapper has padding for ~100% width of the scrollbutton.
+when it first renders the -start button is not visible which is good, but then after scrolling and it becomes visible it is ~100% of its width inset and the track becomes wider by ~100% width of a button, continue using the browser to investigate, and if we have to add back a wrapper class for simlicity, that's fine.
+
+---
+
+okay, the buttons are now appearing however there is an issue with the container width:
+when it first renders the -end button is offset by about 100% of its width, when scrolling the track/wrapper has padding for ~100% width of the scrollbutton.
+when it first renders the -start button is not visible which is good, but then after scrolling and it becomes visible it is ~100% of its width inset and the track becomes wider by ~100% width of a button, continue using the browser to investigate, and if we have to add back a wrapper class for simlicity, that's fine.  this also means that scrolling to the end doesn't hide the -end button and scroll back to the start doesn't re-hide the -start button.
+
+---
+
+There's still a major issue as exemplified by these sequential screenshots:
+screenshot 1:
+* instui-segmented-control should have the same padding on the x axis as the y axis so that buttons/labels don't bleed to the edge
+* there is still a gap at the start of the track for the -start control even though it's not visible
+screenshot 2:
+* because there's no padding on x the "Settings" button bleeds to the edge
+* the -end button scrolled with the content
+* the -start button did not appear
+screenshot 3:
+* the -end control scrolls again, but then disappears because we're at the end of the content (good)
+* there's still a gap for the -end control
+* because the -start control never appeared we cannot scroll back.
+
+---
+
+still having several similar issues, go back to plan mode and instead of trying to force this implementation let's rethink both the semantic structure and the interaction for simplicity and functionality.  this has never been published so we can start from scratch.
+
+---
+
+Read-only research for a planning reset. Follow .entire/graph-agent.md first search if available; no edits. Investigate this repo's established patterns for radio groups, tabs, toggle groups, pagination/overflow, icon painter semantics, scoped CSS members, and interaction registration. Focus on alternatives for an unpublished segmented-control redesign: (A) semantic fieldset + direct radios + separate scroll viewport/controls, (B) role=radiogroup + buttons with aria-checked, (C) native radio fieldset without JS scrolling, or another repo-consistent option. Identify exact accessibility and layout constraints, what existing behavior can be reused, and likely browser failure modes from current fieldset-as-scroll-container. Return a concise recommendation, relevant absolute paths/symbols, and verification plan. Do not modify files.
+
+---
+
+here's a screenshot of the design spec from figma too if that helps.
+
+---
+
+Start implementation
+
+---
+
+I ran `vpr generate && vpr docs:dev` but it looks like it's the same version as before.
+
+---
+
+[Terminal af1f89d4-7b29-4711-ae1f-2a3802f7fa6d notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on release-compatibility ≡  ~17 |  +1 via  26.10.0 
+➜  git add -p docs/package.json
+diff --git a/docs/package.json b/docs/package.json
+index 90efb58af..07d1c78b7 100644
+--- a/docs/package.json
++++ b/docs/package.json
+@@ -38,7 +38,7 @@
+     "docs:changed-pages": "node scripts/changed-pages.ts",
+     "docs:assets": "node scripts/run-assets.ts",
+     "docs:og": "node scripts/gen-og.ts",
+-    "docs:dev": "vp run @pantoken/components#generate && vp run @pantoken/plugin-visual-debug#generate && vp run @pantoken/plugin-logos#generate && vp run @pantoken/plugin-primitives#generate && vp run @pantoken/plugin-custom-icons#generate && vp run @pantoken/plugin-custom-components#generate && vp run docs:assets && vp run docs:api:en && vp run docs:api:css && DOCS_LOCALE=root vitepress dev",
++    "docs:dev": "vp run @pantoken/components#generate && vp run @pantoken/plugin-visual-debug#generate && vp run @pantoken/plugin-logos#generate && vp run @pantoken/plugin-primitives#generate && vp run @pantoken/plugin-custom-icons#generate && vp run @pantoken/plugin-custom-components#generate && vp run @pantoken/interactions#build && vp run docs:assets && vp run docs:api:en && vp run docs:api:css && DOCS_LOCALE=root vitepress dev",
+     "docs:dev:all": "vp run docs:assets && vp run docs:api:locales && vp run docs:check:locales && vitepress dev",
+     "docs:build": "vp run docs:assets && vp run docs:api:en:build && vp run docs:api:css && DOCS_ROOT_LOCALE_ONLY=1 vitepress build",
+     "docs:build:deploy:partial": "vp run docs:assets && vp run docs:api:locales && DOCS_DIST_DIR=.vitepress/partial-dist node scripts/build-locales.ts",
+(1/2) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+@@ -90,6 +90,7 @@
+     "@pantoken/web-components": "workspace:*",
+     "@resvg/resvg-js": "catalog:",
+     "@types/node": "catalog:",
++    "ajv": "catalog:",
+     "codemirror": "catalog:",
+     "fflate": "catalog:",
+     "lucide": "catalog:",
+(2/2) Stage this hunk [y,n,q,a,d,K,J,g,/,e,p,P,?]? n
