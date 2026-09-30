@@ -304,8 +304,13 @@
       "path": "renderers/css-in-js",
       "governedBy": "token-ir",
       "targetSupport": {
-        "target": "CSS-in-JS",
-        "status": "unverified"
+        "target": "Emotion CSS-in-JS",
+        "format": "ThemeProvider SSR emits the Pantoken token variable",
+        "status": "verified",
+        "minimum": "11.14.0",
+        "testedThrough": "11.14.0",
+        "testedVersions": ["11.14.0"],
+        "testCommand": "vp run @pantoken/css-in-js#check:compatibility"
       }
     },
     {

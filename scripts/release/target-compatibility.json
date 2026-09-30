@@ -106,7 +106,15 @@
     "testedVersions": ["5.2.0", "5.2.3", "5.3.8"],
     "testCommand": "vp run @pantoken/bootstrap#check:compatibility"
   },
-  "@pantoken/css-in-js": { "target": "CSS-in-JS", "status": "unverified" },
+  "@pantoken/css-in-js": {
+    "target": "Emotion CSS-in-JS",
+    "format": "ThemeProvider SSR emits the Pantoken token variable",
+    "status": "verified",
+    "minimum": "11.14.0",
+    "testedThrough": "11.14.0",
+    "testedVersions": ["11.14.0"],
+    "testCommand": "vp run @pantoken/css-in-js#check:compatibility"
+  },
   "@pantoken/docusaurus": {
     "target": "Docusaurus theme-classic",
     "format": "Infima CSS-variable bridge: primary and background",

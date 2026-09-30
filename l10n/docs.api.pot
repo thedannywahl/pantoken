@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-30 00:31+0000\n"
+"PO-Revision-Date: 2026-09-30 00:38+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -16812,7 +16812,7 @@ msgstr ""
 #: renderers/css-in-js/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: CSS-in-JS. Host compatibility has not yet been verified."
+msgid "Target: Emotion CSS-in-JS. Current format: `ThemeProvider SSR emits the Pantoken token variable`. Minimum host version: `11.14.0`. Tested through `11.14.0`. Newer releases require review."
 msgstr ""
 
 #: renderers/css-in-js/src/index.md

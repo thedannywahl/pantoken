@@ -13,6 +13,7 @@ const npmTargets: Record<string, string> = {
   "@pantoken/angular": "@angular/core",
   "@pantoken/astro": "@astrojs/starlight",
   "@pantoken/bootstrap": "bootstrap",
+  "@pantoken/css-in-js": "@emotion/react",
   "@pantoken/docusaurus": "@docusaurus/theme-classic",
   "@pantoken/foundation": "foundation-sites",
   "@pantoken/markdown-it": "markdown-it",

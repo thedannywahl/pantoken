@@ -385,6 +385,28 @@ test("flags a future VitePress release for built theme CSS review", async () => 
   expect(await pendingRelease(vitepress)).toMatchObject({ version: "1.6.5" });
 });
 
+test("flags a future Emotion release for CSS-in-JS SSR review", async () => {
+  const cssInJs: ConsumerEntry = {
+    package: "@pantoken/css-in-js",
+    path: "renderers/css-in-js",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "Emotion CSS-in-JS",
+      format: "ThemeProvider SSR emits the Pantoken token variable",
+      status: "verified",
+      minimum: "11.14.0",
+      testedThrough: "11.14.0",
+      testedVersions: ["11.14.0"],
+      testCommand: "vp run @pantoken/css-in-js#check:compatibility",
+    },
+  };
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({ ok: true, json: async () => ({ version: "11.14.1" }) }),
+  );
+  expect(await pendingRelease(cssInJs)).toMatchObject({ version: "11.14.1" });
+});
+
 test("flags a future webpack release without widening emitted asset support", async () => {
   const webpack: ConsumerEntry = {
     package: "@pantoken/webpack",
