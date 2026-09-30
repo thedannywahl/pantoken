@@ -7,6 +7,15 @@ import { toJekyllAssets } from "../dist/index.mjs";
 
 const release = "4.4.1";
 
+/** Root-owned build output in the bind mount would make the host-side cleanup fail with EACCES. */
+function hostUserArgs(): string[] {
+  const uid = process.getuid?.();
+  const gid = process.getgid?.();
+  return uid === undefined || gid === undefined
+    ? []
+    : ["--user", `${uid}:${gid}`, "--env", "HOME=/tmp"];
+}
+
 /** Build a real Jekyll site using the generated Sass partial and token CSS asset. */
 export function checkCompatibility(version = release): void {
   if (version !== release) throw new Error(`Unsupported Jekyll release: ${version}`);
@@ -37,6 +46,7 @@ export function checkCompatibility(version = release): void {
       [
         "run",
         "--rm",
+        ...hostUserArgs(),
         "--volume",
         `${site}:/srv/jekyll`,
         "--workdir",

@@ -7,6 +7,13 @@ import { toHugoAssets } from "../dist/index.mjs";
 
 const releases = ["0.165.0"];
 
+/** Root-owned build output in the bind mount would make the host-side cleanup fail with EACCES. */
+function hostUserArgs(): string[] {
+  const uid = process.getuid?.();
+  const gid = process.getgid?.();
+  return uid === undefined || gid === undefined ? [] : ["--user", `${uid}:${gid}`];
+}
+
 function collectCss(directory: string): string[] {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const path = join(directory, entry.name);
@@ -43,6 +50,7 @@ export function checkCompatibility(version: string): void {
       [
         "run",
         "--rm",
+        ...hostUserArgs(),
         "--volume",
         `${site}:/src`,
         "--workdir",
