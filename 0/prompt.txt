@@ -1,0 +1,124 @@
+i get 1 failed test:
+```
+[164](https://github.com/thedannywahl/pantoken/actions/runs/36764584282/job/110056363650?pr=192#step:8:3165)
+      
+      
+
+    
+
+  
+
+    
+      
+      
+       FAIL  packages/core/tests/build.test.ts > a modified colour keeps its var() origin in value and its literal in flatValue
+
+    
+
+  
+
+    
+      
+      
+      AssertionError: expected 'hsl(from var(--instui-color-instituti…' to be 'hsl(from var(--instui-color-instituti…' // Object.is equality
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+      Expected: "hsl(from var(--instui-color-institutional-brand-button-secondary-bgd) h s calc(l + (100 - l) * 0.1))"
+
+    
+
+  
+
+    
+      
+      
+      Received: "hsl(from var(--instui-color-institutional-brand-button-secondary-bgd) h s calc(l + (100 - l) * 0.4))"
+
+    
+
+  
+
+    
+      
+      
+      
+
+    
+
+  
+
+    
+      
+      
+       ❯ packages/core/tests/build.test.ts:53:34
+
+    
+
+  
+
+    
+      
+      
+           51|   // carries the light/dark split, so `themed` has to come from the fl…
+
+    
+
+  
+
+    
+      
+      
+           52|   const hoverBackground = byName.get("--instui-component-base-button-s…
+
+    
+
+  
+
+    
+      
+      
+           53|   expect(hoverBackground?.value).toBe(
+
+    
+
+  
+
+    
+      
+      
+             |                                  ^
+
+    
+
+  
+
+    
+      
+      
+           54|     "hsl(from var(--instui-color-institutional-brand-button-secondary-…
+
+    
+
+  
+
+    
+      
+      
+           55|   );
+```
+and fallow still fails.
