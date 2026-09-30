@@ -5,6 +5,7 @@ import type { Compatibility, ConsumerEntry } from "./compatibility.ts";
 const root = join(import.meta.dirname, "../..");
 const npmTargets: Record<string, string> = {
   "@pantoken/next": "next",
+  "@pantoken/panda": "@pandacss/dev",
   "@pantoken/postcss": "postcss",
   "@pantoken/tailwind": "tailwindcss",
   "@pantoken/vite": "vite",

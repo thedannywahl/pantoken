@@ -8,7 +8,15 @@
     "testedVersions": ["16.0.0", "16.3.7"],
     "testCommand": "vp run @pantoken/next#check:compatibility"
   },
-  "@pantoken/panda": { "target": "Panda CSS", "status": "unverified" },
+  "@pantoken/panda": {
+    "target": "Panda CSS",
+    "format": "Panda token utility extraction from the Pantoken preset",
+    "status": "verified",
+    "minimum": "1.12.1",
+    "testedThrough": "2.0.0",
+    "testedVersions": ["1.12.1", "2.0.0"],
+    "testCommand": "vp run @pantoken/panda#check:compatibility"
+  },
   "@pantoken/postcss": {
     "target": "PostCSS",
     "status": "verified",

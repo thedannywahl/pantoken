@@ -341,6 +341,28 @@ test("flags a future Storybook theming release for constructor review", async ()
   expect(await pendingRelease(storybook)).toMatchObject({ version: "8.6.15" });
 });
 
+test("flags a future Panda CSS release for preset extraction review", async () => {
+  const panda: ConsumerEntry = {
+    package: "@pantoken/panda",
+    path: "bundlers/panda",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "Panda CSS",
+      format: "Panda token utility extraction from the Pantoken preset",
+      status: "verified",
+      minimum: "1.12.1",
+      testedThrough: "2.0.0",
+      testedVersions: ["1.12.1", "2.0.0"],
+      testCommand: "vp run @pantoken/panda#check:compatibility",
+    },
+  };
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({ ok: true, json: async () => ({ version: "2.0.1" }) }),
+  );
+  expect(await pendingRelease(panda)).toMatchObject({ version: "2.0.1" });
+});
+
 test("flags a future webpack release without widening emitted asset support", async () => {
   const webpack: ConsumerEntry = {
     package: "@pantoken/webpack",

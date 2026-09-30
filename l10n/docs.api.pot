@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-29 23:47+0000\n"
+"PO-Revision-Date: 2026-09-30 00:24+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -319,7 +319,7 @@ msgstr ""
 #: bundlers/panda/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Panda CSS. Host compatibility has not yet been verified."
+msgid "Target: Panda CSS. Current format: `Panda token utility extraction from the Pantoken preset`. Minimum host version: `1.12.1`. Tested through `2.0.0`. Newer releases require review."
 msgstr ""
 
 #: bundlers/panda/src/index.md

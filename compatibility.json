@@ -77,7 +77,12 @@
       "governedBy": "token-ir",
       "targetSupport": {
         "target": "Panda CSS",
-        "status": "unverified"
+        "format": "Panda token utility extraction from the Pantoken preset",
+        "status": "verified",
+        "minimum": "1.12.1",
+        "testedThrough": "2.0.0",
+        "testedVersions": ["1.12.1", "2.0.0"],
+        "testCommand": "vp run @pantoken/panda#check:compatibility"
       }
     },
     {

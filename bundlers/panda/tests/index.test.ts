@@ -1,4 +1,5 @@
 import { expect, test } from "vite-plus/test";
+import { checkCompatibility } from "../scripts/check-compatibility.ts";
 import { toPandaPreset } from "../src/to-panda.ts";
 import defaultPreset, { pantokenPreset } from "../src/index.ts";
 import type { Token } from "@pantoken/model";
@@ -61,4 +62,8 @@ test("a themed color that resolves identically in both modes stays a raw token",
   ];
   const t = toPandaPreset(fixture).theme;
   expect(t.tokens.colors?.["primitive-blue"]).toEqual({ value: "#0374B5" });
+});
+
+test("rejects Panda majors outside the checked releases", async () => {
+  await expect(checkCompatibility("3.0.0")).rejects.toThrow("Invalid Panda CSS release");
 });
