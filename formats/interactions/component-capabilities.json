@@ -235,6 +235,12 @@
       "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/simple-select.css"
     },
     {
+      "name": "skeleton-loader",
+      "type": "both",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/plugin-custom-components/dist/skeleton-loader.css",
+      "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/skeleton-loader.iife.js"
+    },
+    {
       "name": "spinner",
       "type": "css-only",
       "needsIcons": true,

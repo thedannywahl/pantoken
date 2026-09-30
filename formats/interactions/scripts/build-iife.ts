@@ -46,6 +46,7 @@ const ALL_COMPONENTS = [
   "date-input",
   "date-time-input",
   "tabs",
+  "skeleton-loader",
 ];
 
 function toCamelCase(name: string): string {

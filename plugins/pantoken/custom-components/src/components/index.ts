@@ -9,3 +9,4 @@ export { aiGradientRules } from "./ai-gradient/index.ts";
 export { bannerRules } from "./banner/index.ts";
 export { buttonSetRules } from "./button-set/index.ts";
 export { logoRules } from "./logo/index.ts";
+export { skeletonLoaderRules } from "./skeleton-loader/index.ts";

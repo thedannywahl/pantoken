@@ -42,10 +42,15 @@ function hasBehavior(name: string): boolean {
 // Read CSS component names from the filesystem — avoids importing formats/components
 // source which depends on generated output that may not exist yet in CI.
 const cssComponentsDir = resolve(import.meta.dirname, "../../../formats/components/src/components");
+const pluginComponentsDir = resolve(
+  import.meta.dirname,
+  "../../../plugins/pantoken/custom-components/src/components",
+);
 
 // Each component is a per-record directory (<name>/index.ts, some with a co-located <name>.css);
 // only "index.ts" and "generate.ts" (color-utility-style scripts) sit alongside them as flat files.
 const cssNames = findCssNames(cssComponentsDir);
+const pluginNames = new Set([...findCssNames(pluginComponentsDir)].filter(hasBehavior));
 
 // Detect icon usage by reading source text — no import needed.
 const cssIconNames = findCssIconNames(cssComponentsDir, cssNames);
@@ -65,11 +70,14 @@ export interface ComponentCapability {
   dependencies: readonly string[];
 }
 
-const components: ComponentCapability[] = [...new Set([...cssNames, ...webNames])]
+const components: (ComponentCapability & { pluginCss: boolean })[] = [
+  ...new Set([...cssNames, ...webNames, ...pluginNames]),
+]
   .sort()
   .filter((name) => !SKIP_WEB_ELEMENTS.has(name))
   .map((name) => {
-    const hasCss = cssNames.has(name);
+    const pluginCss = pluginNames.has(name) && !cssNames.has(name);
+    const hasCss = cssNames.has(name) || pluginCss;
     const hasWeb = webNames.has(name);
     const dependencies = (NESTED_DEPS[name] ?? []) as string[];
     const needsIcons = cssIconNames.has(name) || iconElementNames.has(name);
@@ -84,7 +92,7 @@ const components: ComponentCapability[] = [...new Set([...cssNames, ...webNames]
       type = hasBehavior(name) ? "both" : "css-only";
     }
 
-    return { name, type, needsIcons, dependencies };
+    return { name, type, needsIcons, dependencies, pluginCss };
   });
 
 // ── Emit ─────────────────────────────────────────────────────────────────────
@@ -99,7 +107,12 @@ const output = {
     const entry: Record<string, unknown> = { name: c.name, type: c.type };
     if (c.needsIcons) entry.needsIcons = true;
     if (c.dependencies.length) entry.requires = c.dependencies;
-    if (c.type !== "js-only") entry.css = `${cdn}/npm/@pantoken/components/dist/${c.name}.css`;
+    if (c.type !== "js-only") {
+      const cssPackage = c.pluginCss
+        ? "@pantoken/plugin-custom-components"
+        : "@pantoken/components";
+      entry.css = `${cdn}/npm/${cssPackage}/dist/${c.name}.css`;
+    }
     if (c.type !== "css-only")
       entry.js = `${cdn}/npm/@pantoken/interactions/dist/${c.name}.iife.js`;
     return entry;

@@ -40,6 +40,7 @@ const ALL_COMPONENTS = [
   "date-input",
   "date-time-input",
   "tabs",
+  "skeleton-loader",
 ];
 
 // Components with hand-authored entry points — the generator skips these.
@@ -53,6 +54,7 @@ const BEHAVIORAL_COMPONENTS = new Set([
   "progress-circle",
   "truncate",
   "tabs",
+  "skeleton-loader",
 ]);
 
 // Components that require command event handling

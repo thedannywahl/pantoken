@@ -1,4 +1,4 @@
-import { readdirSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, test } from "vite-plus/test";
 import { findCssIconNames, findCssNames } from "../scripts/css-components.ts";
@@ -24,5 +24,18 @@ describe("findCssIconNames", () => {
     expect(cssIconNames.has("checkbox")).toBe(true);
     expect(cssIconNames.has("close-button")).toBe(true);
     expect(cssIconNames.has("badge")).toBe(false);
+  });
+});
+
+test("custom component behaviors map to plugin CSS and interaction bundles", () => {
+  const manifest = JSON.parse(
+    readFileSync(resolve(import.meta.dirname, "../component-capabilities.json"), "utf8"),
+  ) as { components: { name: string; type: string; css: string; js: string }[] };
+  const skeleton = manifest.components.find(({ name }) => name === "skeleton-loader");
+  expect(skeleton).toEqual({
+    name: "skeleton-loader",
+    type: "both",
+    css: "https://cdn.jsdelivr.net/npm/@pantoken/plugin-custom-components/dist/skeleton-loader.css",
+    js: "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/skeleton-loader.iife.js",
   });
 });

@@ -33,6 +33,7 @@ const ALL_COMPONENTS = [
   "date-input",
   "date-time-input",
   "tabs",
+  "skeleton-loader",
 ];
 
 // Components that require command event handling
