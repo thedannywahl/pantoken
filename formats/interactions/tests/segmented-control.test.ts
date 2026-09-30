@@ -105,6 +105,27 @@ test("measures overflow automatically when both controls are present", () => {
   expect(end.hidden).toBe(false);
 });
 
+test("reserves only the visible edge and swaps controls at scroll boundaries", () => {
+  const { host, strip, start, end } = setup();
+  Object.defineProperty(strip, "scrollWidth", { configurable: true, value: 300 });
+  Object.defineProperty(strip, "clientWidth", { configurable: true, value: 100 });
+  Object.defineProperty(strip, "scrollLeft", { configurable: true, writable: true, value: 0 });
+  Object.defineProperty(start, "offsetWidth", { configurable: true, value: 20 });
+  Object.defineProperty(end, "offsetWidth", { configurable: true, value: 20 });
+  initSegmentedControl(host);
+  expect(start.hidden).toBe(true);
+  expect(end.hidden).toBe(false);
+  expect(strip.style.getPropertyValue("--pantoken-segmented-start-reserve")).toBe("0px");
+  expect(strip.style.getPropertyValue("--pantoken-segmented-end-reserve")).not.toBe("0px");
+
+  Object.defineProperty(strip, "scrollLeft", { configurable: true, writable: true, value: 200 });
+  strip.dispatchEvent(new Event("scroll"));
+  expect(start.hidden).toBe(false);
+  expect(end.hidden).toBe(true);
+  expect(strip.style.getPropertyValue("--pantoken-segmented-start-reserve")).not.toBe("0px");
+  expect(strip.style.getPropertyValue("--pantoken-segmented-end-reserve")).toBe("0px");
+});
+
 test("reuses one handle and removes keyboard listeners on cleanup", () => {
   const { host, radios } = setup();
   const handle = initSegmentedControl(host);
@@ -140,7 +161,7 @@ test("overflow arrows reveal the next clipped segment in each writing direction"
   );
   handle.refresh();
   end.click();
-  expect(scrollBy).toHaveBeenLastCalledWith({ left: -70, behavior: "smooth" });
+  expect(scrollBy).toHaveBeenLastCalledWith({ left: -50, behavior: "smooth" });
   handle.cleanup();
 });
 

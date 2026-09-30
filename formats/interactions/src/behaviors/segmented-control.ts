@@ -47,21 +47,38 @@ export function initSegmentedControl(
     const rect = strip!.getBoundingClientRect();
     const rtl = getComputedStyle(strip!).direction === "rtl";
     return {
-      left: rect.left + arrowWidth,
-      right: rect.right - arrowWidth,
+      left: rect.left + (startButton?.hidden ? 0 : arrowWidth),
+      right: rect.right - (endButton?.hidden ? 0 : arrowWidth),
       rtl,
     };
+  };
+
+  const applyReserves = (): void => {
+    if (!startButton || !endButton) return;
+    strip.style.setProperty(
+      "--pantoken-segmented-start-reserve",
+      startButton.hidden ? "0px" : `${arrowWidth}px`,
+    );
+    strip.style.setProperty(
+      "--pantoken-segmented-end-reserve",
+      endButton.hidden ? "0px" : `${arrowWidth}px`,
+    );
   };
 
   const updateArrows = (): void => {
     if (!strip || !startButton || !endButton) return;
     const { left, right, rtl } = bounds();
-    const items = segments();
-    const firstRect = items[0]?.getBoundingClientRect();
-    const lastRect = items[items.length - 1]?.getBoundingClientRect();
-    startButton.hidden =
-      !firstRect || (rtl ? firstRect.right <= right + 1 : firstRect.left >= left - 1);
-    endButton.hidden = !lastRect || (rtl ? lastRect.left >= left - 1 : lastRect.right <= right + 1);
+    if (!rtl) {
+      startButton.hidden = strip.scrollLeft <= 1;
+      endButton.hidden = strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 1;
+    } else {
+      const items = segments();
+      const firstRect = items[0]?.getBoundingClientRect();
+      const lastRect = items[items.length - 1]?.getBoundingClientRect();
+      startButton.hidden = !lastRect || lastRect.right <= right + 1;
+      endButton.hidden = !firstRect || firstRect.left >= left - 1;
+    }
+    applyReserves();
   };
 
   const refresh = (): void => {
@@ -79,11 +96,9 @@ export function initSegmentedControl(
       endButton.hidden = true;
       return;
     }
-    startButton.hidden = false;
+    startButton.hidden = true;
     endButton.hidden = false;
     arrowWidth = Math.max(startButton.offsetWidth, endButton.offsetWidth);
-    strip.style.setProperty("--pantoken-segmented-start-reserve", `${arrowWidth}px`);
-    strip.style.setProperty("--pantoken-segmented-end-reserve", `${arrowWidth}px`);
     updateArrows();
   };
 
