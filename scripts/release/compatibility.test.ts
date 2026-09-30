@@ -1,12 +1,18 @@
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { expect, test } from "vite-plus/test";
 import {
   buildCompatibility,
   type Compatibility,
   renderMarkdown,
+  validateTargetRegistry,
   validateTargetSupport,
 } from "./compatibility.ts";
+
+const registrySchema = JSON.parse(
+  readFileSync(new URL("./target-compatibility.schema.json", import.meta.url), "utf8"),
+) as object;
+const schemaUrl = "https://pantoken.app/schemas/target-compatibility.schema.json";
 
 const SAMPLE: Compatibility = {
   upstream: {
@@ -118,6 +124,53 @@ test("target support requires a record for every adapter", () => {
       "@pantoken/wordpress": { target: "WordPress", status: "unverified" },
     }),
   ).toThrow("Unknown target support");
+});
+
+test("published schema accepts every support status and strips metadata", () => {
+  const records = {
+    $schema: schemaUrl,
+    "@pantoken/email": { target: "Email", status: "unverified" },
+    "@pantoken/flutter": { target: "Flutter", status: "not-applicable", reason: "N/A" },
+    "@pantoken/swift": {
+      target: "Swift",
+      status: "environment-verified",
+      testedEnvironments: ["Xcode 27"],
+      limitations: "Simulator only",
+      testCommand: "vp run verify:swift:runtime",
+    },
+    "@pantoken/wordpress": {
+      target: "WordPress",
+      status: "verified",
+      minimum: "6.6",
+      testedThrough: "7.1",
+      testedVersions: ["6.6", "7.1"],
+      testCommand: "vp run verify:wordpress",
+    },
+  };
+  const support = validateTargetRegistry(records, registrySchema);
+  expect(Object.keys(support)).toHaveLength(4);
+  expect(support).not.toHaveProperty("$schema");
+  expect(() => validateTargetSupport(Object.keys(support), support)).not.toThrow();
+});
+
+test("published schema rejects missing or mismatched metadata and malformed records", () => {
+  const good = { $schema: schemaUrl, "@pantoken/email": { target: "Email", status: "unverified" } };
+  expect(() =>
+    validateTargetRegistry({ "@pantoken/email": good["@pantoken/email"] }, registrySchema),
+  ).toThrow();
+  expect(() =>
+    validateTargetRegistry({ ...good, $schema: "https://example.com/schema" }, registrySchema),
+  ).toThrow();
+  for (const record of [
+    { target: "Email", status: "unknown" },
+    { target: "Email", status: "verified", minimum: "6.6" },
+    { target: "Email", status: "unverified", extra: true },
+    { target: "Email", status: "unverified", format: 42 },
+  ]) {
+    expect(() =>
+      validateTargetRegistry({ ...good, "@pantoken/email": record }, registrySchema),
+    ).toThrow();
+  }
 });
 
 test("verified claims require a tested floor and latest release", () => {

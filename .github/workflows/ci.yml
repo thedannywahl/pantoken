@@ -123,8 +123,6 @@ jobs:
               - 'formats/tokens/**'
               - 'formats/components/**'
               - 'packages/utils/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   foundation_compatibility:
     needs: [build, foundation_changes]
@@ -175,8 +173,6 @@ jobs:
               - 'scripts/quality/with-target-version.ts'
               - 'scripts/release/target-compatibility.json'
               - 'formats/tokens/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   docusaurus_compatibility:
     needs: [build, docusaurus_changes]
@@ -228,8 +224,6 @@ jobs:
               - 'scripts/release/target-compatibility.json'
               - 'formats/css/**'
               - 'formats/tokens/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   astro_compatibility:
     needs: [build, astro_changes]
@@ -282,8 +276,6 @@ jobs:
               - 'formats/css/**'
               - 'formats/scss/**'
               - 'formats/components/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   jekyll_compatibility:
     needs: [build, jekyll_changes]
@@ -336,8 +328,6 @@ jobs:
               - 'formats/css/**'
               - 'formats/scss/**'
               - 'formats/components/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   hugo_compatibility:
     needs: [build, hugo_changes]
@@ -389,8 +379,6 @@ jobs:
               - 'scripts/release/target-compatibility.json'
               - 'formats/css/**'
               - 'formats/components/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   drupal_compatibility:
     needs: [build, drupal_changes]
@@ -442,8 +430,6 @@ jobs:
               - 'formats/components/**'
               - 'formats/tokens/**'
               - 'packages/utils/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   web_components_compatibility:
     needs: [build, web_components_changes]
@@ -494,8 +480,6 @@ jobs:
               - 'scripts/quality/with-target-version.ts'
               - 'scripts/release/target-compatibility.json'
               - 'formats/components/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   tinymce_compatibility:
     needs: [build, tinymce_changes]
@@ -546,8 +530,6 @@ jobs:
               - 'scripts/quality/with-target-version.ts'
               - 'scripts/release/target-compatibility.json'
               - 'formats/tokens/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   shadcn_compatibility:
     needs: [build, shadcn_changes]
@@ -599,8 +581,6 @@ jobs:
               - 'scripts/release/target-compatibility.json'
               - 'formats/tokens/**'
               - 'packages/utils/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   mintlify_compatibility:
     needs: [build, mintlify_changes]
@@ -652,8 +632,6 @@ jobs:
               - 'scripts/release/target-compatibility.json'
               - 'formats/tokens/**'
               - 'packages/utils/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   css_in_js_compatibility:
     needs: [build, css_in_js_changes]
@@ -704,8 +682,6 @@ jobs:
               - 'scripts/quality/with-target-version.ts'
               - 'scripts/release/target-compatibility.json'
               - 'formats/tokens/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   vitepress_compatibility:
     needs: [build, vitepress_changes]
@@ -757,8 +733,6 @@ jobs:
               - 'scripts/release/target-compatibility.json'
               - 'formats/tokens/**'
               - 'packages/utils/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   panda_compatibility:
     needs: [build, panda_changes]
@@ -810,8 +784,6 @@ jobs:
               - 'scripts/release/target-compatibility.json'
               - 'formats/tokens/**'
               - 'packages/utils/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   storybook_compatibility:
     needs: [build, storybook_changes]
@@ -862,8 +834,6 @@ jobs:
               - 'scripts/quality/with-target-version.ts'
               - 'scripts/release/target-compatibility.json'
               - 'formats/tokens/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   angular_compatibility:
     needs: [build, angular_changes]
@@ -914,8 +884,6 @@ jobs:
               - 'scripts/quality/with-target-version.ts'
               - 'scripts/release/target-compatibility.json'
               - 'formats/tokens/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   svelte_compatibility:
     needs: [build, svelte_changes]
@@ -967,8 +935,6 @@ jobs:
               - 'scripts/release/target-compatibility.json'
               - 'formats/components/**'
               - 'formats/tokens/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   react_markdown_compatibility:
     needs: [build, react_markdown_changes]
@@ -1019,8 +985,6 @@ jobs:
               - 'scripts/quality/with-target-version.ts'
               - 'scripts/release/target-compatibility.json'
               - 'formats/tokens/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   vue_compatibility:
     needs: [build, vue_changes]
@@ -1072,8 +1036,6 @@ jobs:
               - 'scripts/quality/with-target-version.ts'
               - 'scripts/release/target-compatibility.json'
               - 'formats/tokens/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   react_compatibility:
     needs: [build, react_changes]
@@ -1125,8 +1087,6 @@ jobs:
               - 'scripts/release/target-compatibility.json'
               - 'formats/css/**'
               - 'formats/tokens/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   next_compatibility:
     needs: [build, next_changes]
@@ -1178,8 +1138,6 @@ jobs:
               - 'scripts/release/target-compatibility.json'
               - 'formats/tokens/**'
               - 'packages/utils/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   mui_compatibility:
     needs: [build, mui_changes]
@@ -1590,7 +1548,7 @@ jobs:
           path: tools/upstream-diff/generated
           retention-days: 7
 
-  wordpress-changes:
+  wordpress_changes:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
@@ -1610,11 +1568,10 @@ jobs:
               - 'platforms/wordpress/**'
               - 'scripts/release/target-compatibility.json'
               - 'formats/tokens/**'
-              - 'pnpm-lock.yaml'
 
-  wordpress-compatibility:
-    needs: [build, wordpress-changes]
-    if: needs.wordpress-changes.outputs.wordpress == 'true'
+  wordpress_compatibility:
+    needs: [build, wordpress_changes]
+    if: needs.wordpress_changes.outputs.wordpress == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -1664,8 +1621,6 @@ jobs:
               - 'tools/sd-config/**'
               - 'formats/tokens/**'
               - 'mise.toml'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   swift_native_compatibility:
     needs: swift_native_changes
@@ -1687,7 +1642,7 @@ jobs:
       - name: Verify generated Swift against iOS Simulator SDK
         run: mise run verify:swift:host
 
-  postcss-changes:
+  postcss_changes:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
@@ -1709,12 +1664,10 @@ jobs:
               - 'scripts/release/target-compatibility.json'
               - 'formats/css/**'
               - 'formats/tokens/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
-  postcss-compatibility:
-    needs: [build, postcss-changes]
-    if: needs.postcss-changes.outputs.postcss == 'true'
+  postcss_compatibility:
+    needs: [build, postcss_changes]
+    if: needs.postcss_changes.outputs.postcss == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -1762,8 +1715,6 @@ jobs:
               - 'scripts/release/target-compatibility.json'
               - 'formats/icons/**'
               - 'formats/tokens/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   markdown_it_compatibility:
     needs: [build, markdown_it_changes]
@@ -1815,8 +1766,6 @@ jobs:
               - 'scripts/release/target-compatibility.json'
               - 'formats/css/**'
               - 'formats/tokens/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   vite_compatibility:
     needs: [build, vite_changes]
@@ -1868,8 +1817,6 @@ jobs:
               - 'scripts/release/target-compatibility.json'
               - 'formats/css/**'
               - 'formats/tokens/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   webpack_compatibility:
     needs: [build, webpack_changes]
@@ -1920,8 +1867,6 @@ jobs:
               - 'scripts/quality/with-target-version.ts'
               - 'scripts/release/target-compatibility.json'
               - 'formats/tokens/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   tailwind_compatibility:
     needs: [build, tailwind_changes]
@@ -1973,8 +1918,6 @@ jobs:
               - 'scripts/release/target-compatibility.json'
               - 'formats/components/**'
               - 'formats/tokens/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   bootstrap_compatibility:
     needs: [build, bootstrap_changes]
@@ -2026,8 +1969,6 @@ jobs:
               - 'scripts/release/target-compatibility.json'
               - 'formats/icons/**'
               - 'formats/tokens/**'
-              - 'pnpm-lock.yaml'
-              - 'pnpm-workspace.yaml'
 
   rehype_compatibility:
     needs: [build, rehype_changes]

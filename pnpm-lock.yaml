@@ -567,6 +567,9 @@ importers:
       '@vitest/coverage-v8':
         specifier: 'catalog:'
         version: 5.0.1(@vitest/browser@5.0.1)(vitest@5.0.1)
+      ajv:
+        specifier: 'catalog:'
+        version: 8.20.0
       eslint-plugin-tsdoc:
         specifier: 'catalog:'
         version: 0.5.3(eslint@10.9.1(jiti@2.6.1)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@5.6.1-rc)
@@ -13425,10 +13428,10 @@ snapshots:
       d3-selection: 3.0.0
       d3-transition: 3.0.1(d3-selection@3.0.0)
 
-  '@vitejs/plugin-vue@6.0.9(@voidzero-dev/vite-plus-core@1.0.0-rc.0(@arethetypeswrong/core@0.18.5)(@types/node@26.6.3)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(publint@0.3.24)(sass@1.105.0)(terser@5.51.2)(typescript@6.0.3)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))':
+  '@vitejs/plugin-vue@6.0.9(@voidzero-dev/vite-plus-core@1.0.0-rc.0(@arethetypeswrong/core@0.18.5)(@types/node@26.6.3)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(publint@0.3.24)(sass@1.105.0)(terser@5.51.2)(typescript@5.6.1-rc)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
-      vite: '@voidzero-dev/vite-plus-core@1.0.0-rc.0(@arethetypeswrong/core@0.18.5)(@types/node@26.6.3)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(publint@0.3.24)(sass@1.105.0)(terser@5.51.2)(typescript@6.0.3)(yaml@2.9.1)'
+      vite: '@voidzero-dev/vite-plus-core@1.0.0-rc.0(@arethetypeswrong/core@0.18.5)(@types/node@26.6.3)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(publint@0.3.24)(sass@1.105.0)(terser@5.51.2)(typescript@5.6.1-rc)(yaml@2.9.1)'
       vue: 3.5.43(typescript@6.0.3)
 
   '@vitejs/plugin-vue@6.0.9(@voidzero-dev/vite-plus-core@1.0.0-rc.0(@arethetypeswrong/core@0.18.5)(@types/node@26.6.3)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(publint@0.3.24)(sass@1.105.0)(terser@5.51.2)(typescript@7.0.2)(yaml@2.9.1))(vue@3.5.43(typescript@7.0.2))':
@@ -18319,7 +18322,7 @@ snapshots:
       '@iconify-json/simple-icons': 1.2.97
       '@shikijs/transformers': 4.4.3
       '@types/markdown-it': 14.2.0
-      '@vitejs/plugin-vue': 6.0.9(@voidzero-dev/vite-plus-core@1.0.0-rc.0(@arethetypeswrong/core@0.18.5)(@types/node@26.6.3)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(publint@0.3.24)(sass@1.105.0)(terser@5.51.2)(typescript@6.0.3)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))
+      '@vitejs/plugin-vue': 6.0.9(@voidzero-dev/vite-plus-core@1.0.0-rc.0(@arethetypeswrong/core@0.18.5)(@types/node@26.6.3)(jiti@2.6.1)(less@4.9.1(supports-color@10.2.2))(publint@0.3.24)(sass@1.105.0)(terser@5.51.2)(typescript@5.6.1-rc)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))
       '@vue/devtools-api': 8.2.1
       '@vue/shared': 3.5.43
       '@vueuse/core': 14.4.0(vue@3.5.43(typescript@6.0.3))

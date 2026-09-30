@@ -16,6 +16,7 @@ import { logos, products } from "../../plugins/pantoken/logos/src/index.ts";
 
 const outDir = resolve(import.meta.dirname, "../.vitepress/theme/generated");
 const publicDir = resolve(import.meta.dirname, "../public");
+const schema = "https://pantoken.app/schemas/cdn-plugin-manifest.schema.json";
 mkdirSync(outDir, { recursive: true });
 mkdirSync(publicDir, { recursive: true });
 
@@ -94,7 +95,15 @@ const logosByProduct = products.map((product) => ({
 
 const out = resolve(outDir, "cdn-plugin-manifest.json");
 const manifest = `${JSON.stringify(
-  { customComponents, layouts, otherPlugins, customIcons, simpleIcons, logos: logosByProduct },
+  {
+    $schema: schema,
+    customComponents,
+    layouts,
+    otherPlugins,
+    customIcons,
+    simpleIcons,
+    logos: logosByProduct,
+  },
   null,
   2,
 )}\n`;

@@ -142,6 +142,21 @@ export async function handleRequest(request: Request, env: Env): Promise<Respons
   const url = new URL(request.url);
   const pathname = url.pathname;
 
+  if (pathname === "/.well-known/api-catalog") {
+    const response = await env.ASSETS.fetch(request);
+    const headers = new Headers(response.headers);
+    headers.set(
+      "Content-Type",
+      'application/linkset+json; profile="https://www.rfc-editor.org/info/rfc9727"',
+    );
+    headers.set("Link", `<${url.origin}${pathname}>; rel="api-catalog"`);
+    return new Response(method === "HEAD" ? null : response.body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers,
+    });
+  }
+
   // Check if request targets an R2-managed asset path prefix
   const isR2Path = pathname.startsWith("/assets/") || pathname.startsWith("/demos-assets/");
 

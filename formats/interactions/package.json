@@ -13,7 +13,8 @@
   "files": [
     "dist",
     "component-capabilities.d.ts",
-    "component-capabilities.json"
+    "component-capabilities.json",
+    "component-capabilities.schema.json"
   ],
   "type": "module",
   "sideEffects": false,
@@ -24,6 +25,7 @@
     },
     "./*.js": "./dist/*.js",
     "./component-capabilities.json": "./component-capabilities.json",
+    "./component-capabilities.schema.json": "./component-capabilities.schema.json",
     "./package.json": "./package.json"
   },
   "publishConfig": {

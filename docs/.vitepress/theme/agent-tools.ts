@@ -88,6 +88,10 @@ export interface AgentToolsStrings {
   registryManifestTitle: string;
   /** Registry manifest card description. */
   registryManifestDescription: string;
+  /** Target compatibility registry card title. */
+  targetCompatibilityTitle: string;
+  /** Target compatibility registry card description. */
+  targetCompatibilityDescription: string;
   /** Component capabilities manifest card title. */
   capabilitiesTitle: string;
   /** Component capabilities manifest card description. */
@@ -160,6 +164,9 @@ export const AGENT_TOOLS_DEFAULTS: AgentToolsStrings = {
   pageMdDescription: "Every docs HTML page advertises a raw Markdown alternate link.",
   registryManifestTitle: "Registry manifest",
   registryManifestDescription: "shadcn-compatible index of Pantoken CSS registry items.",
+  targetCompatibilityTitle: "Target compatibility",
+  targetCompatibilityDescription:
+    "Verified host versions and tested environments for Pantoken adapters. The registry links its JSON Schema.",
   capabilitiesTitle: "Component capabilities",
   capabilitiesDescription:
     "Machine-readable map of component CSS, JavaScript, icon, and dependency needs.",

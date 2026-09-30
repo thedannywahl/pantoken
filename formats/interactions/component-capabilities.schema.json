@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pantoken.app/component-capabilities.schema.json",
+  "title": "Pantoken component capabilities",
+  "type": "object",
+  "required": ["$schema", "description", "components"],
+  "properties": {
+    "$schema": { "const": "https://pantoken.app/component-capabilities.schema.json" },
+    "description": { "type": "string" },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "type"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "type": { "enum": ["css-only", "js-only", "both"] },
+          "needsIcons": { "type": "boolean" },
+          "requires": { "type": "array", "items": { "type": "string" } },
+          "css": { "type": "string", "format": "uri" },
+          "js": { "type": "string", "format": "uri" }
+        },
+        "allOf": [
+          {
+            "if": { "properties": { "type": { "const": "css-only" } } },
+            "then": { "required": ["css"], "not": { "required": ["js"] } }
+          },
+          {
+            "if": { "properties": { "type": { "const": "js-only" } } },
+            "then": { "required": ["js"], "not": { "required": ["css"] } }
+          },
+          {
+            "if": { "properties": { "type": { "const": "both" } } },
+            "then": { "required": ["css", "js"] }
+          }
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

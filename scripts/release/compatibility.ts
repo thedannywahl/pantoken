@@ -13,6 +13,7 @@
  * @module
  */
 import fs from "node:fs/promises";
+import { Ajv2020 } from "ajv/dist/2020.js";
 import path from "node:path";
 import { loadWorkspacePackages } from "./workspace-packages.ts";
 
@@ -76,6 +77,23 @@ export type TargetSupport =
       testedVersions: string[];
       testCommand: string;
     };
+
+/** Validate the published JSON Schema and return package records without metadata. */
+export function validateTargetRegistry(
+  registry: unknown,
+  schema: object,
+): Record<string, TargetSupport> {
+  const ajv = new Ajv2020();
+  const validate = ajv.compile(schema);
+  if (!validate(registry)) {
+    throw new Error(`Invalid target compatibility registry: ${ajv.errorsText(validate.errors)}`);
+  }
+  const { $schema, ...support } = registry as { $schema: string } & Record<string, TargetSupport>;
+  if ($schema !== (schema as { $id?: string }).$id) {
+    throw new Error("Invalid target compatibility schema URL");
+  }
+  return support;
+}
 
 /** Ensure each adapter has one explicit, internally consistent support record. */
 export function validateTargetSupport(
@@ -193,16 +211,20 @@ async function instuiDeps(pkgPath: string): Promise<string[]> {
  * @returns The {@link Compatibility} manifest — deterministic, no timestamps, so the gate can diff it.
  */
 export async function buildCompatibility(): Promise<Compatibility> {
-  const [workspaceYaml, lockfile, metaRaw, ledgerRaw, supportRaw] = await Promise.all([
+  const [workspaceYaml, lockfile, metaRaw, ledgerRaw, supportRaw, schemaRaw] = await Promise.all([
     fs.readFile(path.join(WORKSPACE_ROOT, "pnpm-workspace.yaml"), "utf8"),
     fs.readFile(path.join(WORKSPACE_ROOT, "pnpm-lock.yaml"), "utf8"),
     fs.readFile(path.join(WORKSPACE_ROOT, "formats/tokens/generated/meta.json"), "utf8"),
     fs.readFile(path.join(WORKSPACE_ROOT, "formats/tokens/deprecations.json"), "utf8"),
     fs.readFile(path.join(WORKSPACE_ROOT, "scripts/release/target-compatibility.json"), "utf8"),
+    fs.readFile(
+      path.join(WORKSPACE_ROOT, "scripts/release/target-compatibility.schema.json"),
+      "utf8",
+    ),
   ]);
   const meta = JSON.parse(metaRaw) as Meta;
   const ledger = JSON.parse(ledgerRaw) as Ledger;
-  const support = JSON.parse(supportRaw) as Record<string, TargetSupport>;
+  const support = validateTargetRegistry(JSON.parse(supportRaw), JSON.parse(schemaRaw) as object);
 
   const upstream: Record<string, UpstreamEntry> = {
     [TOKEN_SOURCE]: {

@@ -64,6 +64,43 @@ describe("Cloudflare Worker Router", () => {
     expect(assetsFetch).toHaveBeenCalledWith(req);
   });
 
+  test("handleRequest serves the API catalog as a profiled Linkset", async () => {
+    const body = JSON.stringify({
+      linkset: [{ item: [{ href: "https://registry.npmjs.org/@pantoken%2Fcomponents" }] }],
+    });
+    const assetsFetch = vi.fn().mockResolvedValue(new Response(body));
+    const env: Env = { ASSETS: { fetch: assetsFetch } };
+    const req = new Request("https://pantoken.app/.well-known/api-catalog");
+
+    const res = await handleRequest(req, env);
+
+    expect(res.status).toBe(200);
+    expect(res.headers.get("Content-Type")).toBe(
+      'application/linkset+json; profile="https://www.rfc-editor.org/info/rfc9727"',
+    );
+    expect(res.headers.get("Link")).toBe(
+      '<https://pantoken.app/.well-known/api-catalog>; rel="api-catalog"',
+    );
+    expect(await res.text()).toBe(body);
+  });
+
+  test("handleRequest sends the API catalog Link header on HEAD", async () => {
+    const assetsFetch = vi.fn().mockResolvedValue(new Response(null, { status: 200 }));
+    const env: Env = { ASSETS: { fetch: assetsFetch } };
+    const req = new Request("https://pantoken.app/.well-known/api-catalog", { method: "HEAD" });
+
+    const res = await handleRequest(req, env);
+
+    expect(res.status).toBe(200);
+    expect(res.body).toBeNull();
+    expect(res.headers.get("Content-Type")).toBe(
+      'application/linkset+json; profile="https://www.rfc-editor.org/info/rfc9727"',
+    );
+    expect(res.headers.get("Link")).toBe(
+      '<https://pantoken.app/.well-known/api-catalog>; rel="api-catalog"',
+    );
+  });
+
   test("handleRequest serves R2 assets with streaming body and correct headers", async () => {
     const stream = new ReadableStream({
       start(controller) {

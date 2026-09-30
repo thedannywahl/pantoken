@@ -1,5 +1,7 @@
+import { Ajv2020 } from "ajv/dist/2020.js";
 import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test";
+import schema from "../schemas/icon-manifest.schema.json" with { type: "json" };
 
 vi.mock("node:fs");
 
@@ -46,6 +48,9 @@ test("buildIconManifest tags each source with its exact per-item CDN CSS URL", a
     },
   );
 
+  expect(manifest.$schema).toBe("https://pantoken.app/schemas/icon-manifest.schema.json");
+  const validate = new Ajv2020({ strict: false, validateFormats: false }).compile(schema);
+  expect(validate(manifest), JSON.stringify(validate.errors)).toBe(true);
   expect(manifest.icons).toStrictEqual([
     {
       css: "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/icons/alert.css",

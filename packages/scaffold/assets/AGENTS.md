@@ -114,6 +114,12 @@ projects, keep using direct Pantoken packages, the CDN workflow, or platform gen
 `--format <egui|iced>`. For generic HTML/CSS inlining use `pantoken generate inline -i <file> -o
 <file>`; for email-safe output use `pantoken generate email -i <file> -o <file> --client <generic|outlook|gmail|webkit>`.
 
+Before recommending a platform or host version, consult the
+[target compatibility registry](https://pantoken.app/target-compatibility.json). Its `status`, `testedVersions`, and
+`testedEnvironments` describe bounded evidence, not support for untested future releases. The
+registry's `$schema` field links its published JSON Schema. This is separate from the shadcn CSS
+component registry.
+
 **Design & interchange:** `@pantoken/dtcg` (W3C DTCG JSON), `@pantoken/scss` (SCSS vars),
 `@pantoken/figma` (Figma Variables payload), `@pantoken/email` (inline-friendly values).
 

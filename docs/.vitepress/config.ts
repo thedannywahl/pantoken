@@ -495,6 +495,7 @@ const localesConfig = Object.fromEntries(
           getStartedTabs: locale.getStartedTabs,
           // Read by the shadcn/ui registry browser (RegistryBrowser.vue) via `useData().theme`.
           registryBrowser: locale.registryBrowser,
+          agentTools: locale.agentTools,
         },
       },
     ];
