@@ -1,0 +1,85 @@
+/**
+ * @component segmented-control.segment
+ * @memberOf segmented-control
+ * @selector .pfx-segmented-control > label
+ * @summary A selectable segmented-control label and its native radio input.
+ * @remarks A `-icon-*` class may live on the label or its native input; the interaction helper
+ *   promotes input classes to the label so the shared glyph painter can render it.
+ * @structure
+ * @component segmented-control {
+ *   label {
+ *     input {}
+ *   }
+ * }
+ * @a11y Keep the native radio in the label so checked, focus, disabled, and keyboard semantics remain available.
+ */
+@scope (.pfx-segmented-control) {
+  :scope {
+    > label {
+      position: relative;
+      display: inline-flex;
+      flex: none;
+      align-items: center;
+      justify-content: center;
+      gap: var(--pantoken-segmented-gap);
+      block-size: var(--pantoken-segmented-height);
+      padding-inline: var(--pantoken-segmented-padding);
+      border-radius: var(--instui-component-segmented-control-item-border-radius);
+      color: var(--instui-component-segmented-control-unselected-item-text-color);
+      cursor: pointer;
+      white-space: nowrap;
+
+      > input {
+        position: absolute;
+        inline-size: 1px;
+        block-size: 1px;
+        opacity: 0;
+      }
+
+      &:has(input:checked) {
+        z-index: 1;
+        color: var(--instui-component-segmented-control-selected-item-text-color);
+        background: var(--instui-component-segmented-control-selected-item-background-color);
+        box-shadow: var(--pantoken-segmented-selected-shadow);
+      }
+
+      &:has(input:focus-visible) {
+        outline: var(--instui-focus-outline-width) solid var(--instui-focus-outline-color);
+        outline-offset: var(--instui-focus-outline-offset);
+      }
+
+      &:not(:has(input:checked)):hover {
+        background: var(
+          --instui-component-segmented-control-unselected-item-background-hover-color
+        );
+      }
+
+      &:not(:has(input:checked)):active {
+        background: var(
+          --instui-component-segmented-control-unselected-item-background-active-color
+        );
+      }
+
+      &:has(input:checked):hover {
+        background: var(--instui-component-segmented-control-selected-item-background-hover-color);
+      }
+
+      &:has(input:checked):active {
+        background: var(--instui-component-segmented-control-selected-item-background-active-color);
+      }
+
+      &:has(input:disabled) {
+        color: var(--instui-component-segmented-control-unselected-item-text-disabled-color);
+        cursor: not-allowed;
+      }
+
+      &:has(input:checked:disabled) {
+        color: var(--instui-component-segmented-control-selected-item-text-disabled-color);
+        background: var(
+          --instui-component-segmented-control-selected-item-background-disabled-color
+        );
+        box-shadow: none;
+      }
+    }
+  }
+}

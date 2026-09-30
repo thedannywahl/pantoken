@@ -11,7 +11,7 @@
  * @part overflow-end — Scroll to the following hidden segment.
  * @structure
  * .pfx-segmented-control {
- *   label:one-or-more { input {} }
+ *   @component segmented-control.segment:one-or-more {}
  *   .overflow-start:optional {}
  *   .overflow-end:optional {}
  * }
@@ -108,67 +108,6 @@
   &:disabled,
   &[disabled] {
     background: var(--instui-component-segmented-control-track-background-disabled-color);
-  }
-
-  & > label {
-    position: relative;
-    display: inline-flex;
-    flex: none;
-    align-items: center;
-    justify-content: center;
-    gap: var(--pantoken-segmented-gap);
-    block-size: var(--pantoken-segmented-height);
-    padding-inline: var(--pantoken-segmented-padding);
-    border-radius: var(--instui-component-segmented-control-item-border-radius);
-    color: var(--instui-component-segmented-control-unselected-item-text-color);
-    cursor: pointer;
-    white-space: nowrap;
-  }
-
-  & > label > input {
-    position: absolute;
-    inline-size: 1px;
-    block-size: 1px;
-    opacity: 0;
-  }
-
-  & > label:has(input:checked) {
-    z-index: 1;
-    color: var(--instui-component-segmented-control-selected-item-text-color);
-    background: var(--instui-component-segmented-control-selected-item-background-color);
-    box-shadow: var(--pantoken-segmented-selected-shadow);
-  }
-
-  & > label:has(input:focus-visible) {
-    outline: var(--instui-focus-outline-width) solid var(--instui-focus-outline-color);
-    outline-offset: var(--instui-focus-outline-offset);
-  }
-
-  & > label:not(:has(input:checked)):hover {
-    background: var(--instui-component-segmented-control-unselected-item-background-hover-color);
-  }
-
-  & > label:not(:has(input:checked)):active {
-    background: var(--instui-component-segmented-control-unselected-item-background-active-color);
-  }
-
-  & > label:has(input:checked):hover {
-    background: var(--instui-component-segmented-control-selected-item-background-hover-color);
-  }
-
-  & > label:has(input:checked):active {
-    background: var(--instui-component-segmented-control-selected-item-background-active-color);
-  }
-
-  & > label:has(input:disabled) {
-    color: var(--instui-component-segmented-control-unselected-item-text-disabled-color);
-    cursor: not-allowed;
-  }
-
-  & > label:has(input:checked:disabled) {
-    color: var(--instui-component-segmented-control-selected-item-text-disabled-color);
-    background: var(--instui-component-segmented-control-selected-item-background-disabled-color);
-    box-shadow: none;
   }
 
   & > :is(.overflow-start, .overflow-end) {
