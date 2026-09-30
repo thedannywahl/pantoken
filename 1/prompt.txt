@@ -1,0 +1,45 @@
+instructure-design-tokens 2.1.0 was released, we need a plan to upgrade, mark compatibility, and bless.  It also includes token sets for two un-developed components, so we will develop them and put them into the plugins/pantoken/custom-components package: segmentedControl, skeletonLoader.
+this plan should include incremental conventional commits, test coverage, i18n compatibility (no translations, just the root locale), and changesets for public and private packages.
+
+---
+
+Read-only research, medium thoroughness. First action locating code MUST be `entire graph search --repo . --profile full --query "upgrade instructure-design-tokens dependency and generated token compatibility blessing workflow"` per .entire/graph-agent.md; read graph instructions if needed. Also follow using-entire skill for historical intent (entire status/checkpoint where helpful). Trace exact files/scripts/tests for upgrading instructure-design-tokens 2.1.0, generating IR, marking upstream compatibility and blessing, provenance, CI, changesets public/private, commands. Inspect current version and working tree; no edits, no installs. Return concise actionable references with absolute paths, actual command names, uncertainties and whether history vs code inference.
+
+---
+
+Read-only quick-to-medium discovery. User has selected JS behavior for standalone segmented-control and skeleton-loader components in plugins/pantoken/custom-components, plus registry entries. Follow .entire/graph-agent.md: first locating action graph search query about custom components JS behavior and interactions wiring (if CLI unavailable report). Inspect nearby interactions behaviors/components and web components boundary, semantic radio groups, package build entries exports and registry style-only model. Recommend smallest existing pattern for JS behavior and exact files/commands/tests; distinguish whether a custom-components registry styleItem can install JS or requires registry:component. No code edits; cite evidence paths. Flag concrete decisions to ask user.
+
+---
+
+here's some info on interactions from design docs:
+segmented control:
+* A horizontal bar of mutually exclusive segments that allows users to toggle between related views or filters. Supports three sizes (lg, md, sm) and an overflow state for when options exceed available width.
+* The segmentedControl exposes a size variant property (lg, md, sm) and a boolean isOverflown property that activates overflow handling when the number of segments exceeds the available width.
+* the selected item has a box-shadow (if the token isn't defined let me know and I'll give you the values to compare against the existing -elevation-* definitions)
+* the overflow controller is a box-end aligned primary icon button "chevron-right" in ltr with box-shadow that scrolls the overflow.  it's not in the design sheet, but I assume scrolling causes overflow at the start of the box and requires an icon button to appear there as well. again use the tokens as provided and I can fill in gaps.
+* The SegmentedControl is an interactive component with selection and size states.
+* The SegmentedControl is an interactive component with selection and size states.
+* • Only one segment can be selected at a time
+* • The selected segment is visually emphasised with a filled background
+* accessibility: • The selected segment is visually emphasised with a filled background
+* • Use a descriptive aria-label on the container to convey the group purpose
+• Each segment should have a clear, concise text label readable by screen readers
+• Announce selection changes so assistive technology users know the active option
+• Support arrow key navigation between segments within the group
+• Ensure a visible focus indicator is present on the active segment
+• Allow Space or Enter to select the focused segment
+✅ Use SegmentedControl when
+• Switching between 2–5 related views or filters within the same context
+* • Offering mutually exclusive options where only one can be active at a time
+* • Replacing tab-like navigation for compact, inline content switching
+🚫 Don't use SegmentedControl when
+* • There are more options than can fit comfortably in a single row — consider tabs or a dropdown instead
+* • Options are not mutually exclusive — use checkboxes or toggle switches
+* • Actions need to be triggered — use a button group instead
+Best practices
+• Always pre-select a default option so users understand the current state
+• Avoid mixing icon-only and text-only segments within the same control
+📐 Sizing and placement
+• Use lg (large) as highlighted contexts
+• Use md (medium) as the default size for most contexts
+• Use sm (small) in tighter layouts or secondary UI areas, compact toolbars or inline controls

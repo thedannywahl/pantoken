@@ -1,0 +1,95 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3STGYW283SMCMQ4N1GMDJHF",
+  "session_id": "f79ff467-43ad-4202-979c-60fdc2b264f0",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-30T18:51:40.989373Z",
+  "branch": "release-compatibility",
+  "checkpoints_count": 2,
+  "save_step_count": 2,
+  "files_touched": [
+    ".github/workflows/target-releases.yml",
+    "compatibility.json",
+    "docs/compatibility.md",
+    "scripts/release/check-target-releases.ts",
+    "scripts/release/compatibility.ts",
+    "scripts/release/target-compatibility.json",
+    "scripts/release/target-versions.test.ts",
+    "scripts/release/target-versions.ts",
+    "vite.config.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "84672b4bc1fe",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-30T18:51:40.975003Z",
+    "agent_lines": 0,
+    "agent_removed": 14,
+    "human_added": 80,
+    "human_modified": 22,
+    "human_removed": 0,
+    "total_committed": 100,
+    "total_lines_changed": 116,
+    "agent_percentage": 12.068965517241379,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 151,
+      "user_lines_removed": 18,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".github/workflows/target-releases.yml": 1,
+        "scripts/release/check-target-releases.ts": 14,
+        "scripts/release/downstream.ts": 108,
+        "scripts/release/target-versions.test.ts": 8,
+        "scripts/release/target-versions.ts": 10,
+        "vite.config.ts": 10
+      },
+      "user_removed_per_file": {
+        ".github/workflows/target-releases.yml": 1,
+        "scripts/release/check-target-releases.ts": 16,
+        "scripts/release/target-versions.test.ts": 1
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 51,
+      "user_lines_removed": 2,
+      "agent_lines_added": 191,
+      "agent_lines_removed": 32,
+      "user_added_per_file": {
+        "scripts/release/downstream.ts": 51
+      },
+      "user_removed_per_file": {
+        "scripts/release/downstream.ts": 2
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 51,
+      "user_lines_removed": 2,
+      "agent_lines_added": 191,
+      "agent_lines_removed": 32,
+      "user_added_per_file": {
+        "scripts/release/downstream.ts": 51
+      },
+      "user_removed_per_file": {
+        "scripts/release/downstream.ts": 2
+      }
+    }
+  ]
+}
