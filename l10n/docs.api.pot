@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-29 23:41+0000\n"
+"PO-Revision-Date: 2026-09-29 23:47+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -17849,7 +17849,7 @@ msgstr ""
 #: renderers/storybook/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Storybook. Host compatibility has not yet been verified."
+msgid "Target: Storybook theming. Current format: `Storybook ThemeVars constructor accepts light and dark Pantoken themes`. Minimum host version: `8.6.14`. Tested through `8.6.14`. Newer releases require review."
 msgstr ""
 
 #: renderers/storybook/src/index.md

@@ -4,6 +4,12 @@ A Storybook theme built from Instructure tokens. It maps the token IR onto a Sto
 object with colors resolved concretely, so your Storybook manager and preview pick up the
 Instructure look.
 
+## Compatibility
+
+Verified with `@storybook/theming` 8.6.14 by passing the generated light and dark theme objects
+through Storybook's `create` function. This does not claim compatibility with the Storybook 10 suite.
+See the [compatibility matrix](https://pantoken.app/compatibility) for the tested package version.
+
 ## Install
 
 ```sh

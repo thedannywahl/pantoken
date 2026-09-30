@@ -175,7 +175,15 @@
     "testCommand": "vp run @pantoken/rehype#check:compatibility"
   },
   "@pantoken/shadcn": { "target": "shadcn/ui", "status": "unverified" },
-  "@pantoken/storybook": { "target": "Storybook", "status": "unverified" },
+  "@pantoken/storybook": {
+    "target": "Storybook theming",
+    "format": "Storybook ThemeVars constructor accepts light and dark Pantoken themes",
+    "status": "verified",
+    "minimum": "8.6.14",
+    "testedThrough": "8.6.14",
+    "testedVersions": ["8.6.14"],
+    "testCommand": "vp run @pantoken/storybook#check:compatibility"
+  },
   "@pantoken/svelte": {
     "target": "Svelte",
     "format": "Icon action component compiles and SSR renders on Svelte 4 and 5",

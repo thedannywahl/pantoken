@@ -460,8 +460,13 @@
       "path": "renderers/storybook",
       "governedBy": "token-ir",
       "targetSupport": {
-        "target": "Storybook",
-        "status": "unverified"
+        "target": "Storybook theming",
+        "format": "Storybook ThemeVars constructor accepts light and dark Pantoken themes",
+        "status": "verified",
+        "minimum": "8.6.14",
+        "testedThrough": "8.6.14",
+        "testedVersions": ["8.6.14"],
+        "testCommand": "vp run @pantoken/storybook#check:compatibility"
       }
     },
     {

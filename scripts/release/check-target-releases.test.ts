@@ -319,6 +319,28 @@ test("flags a future Angular release for custom-element schema review", async ()
   expect(await pendingRelease(angular)).toMatchObject({ version: "22.2.1" });
 });
 
+test("flags a future Storybook theming release for constructor review", async () => {
+  const storybook: ConsumerEntry = {
+    package: "@pantoken/storybook",
+    path: "renderers/storybook",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "Storybook theming",
+      format: "Storybook ThemeVars constructor accepts light and dark Pantoken themes",
+      status: "verified",
+      minimum: "8.6.14",
+      testedThrough: "8.6.14",
+      testedVersions: ["8.6.14"],
+      testCommand: "vp run @pantoken/storybook#check:compatibility",
+    },
+  };
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({ ok: true, json: async () => ({ version: "8.6.15" }) }),
+  );
+  expect(await pendingRelease(storybook)).toMatchObject({ version: "8.6.15" });
+});
+
 test("flags a future webpack release without widening emitted asset support", async () => {
   const webpack: ConsumerEntry = {
     package: "@pantoken/webpack",
