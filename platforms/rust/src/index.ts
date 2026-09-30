@@ -83,7 +83,7 @@ function colorLiteral(format: RustFormat, rgb: Rgb): { ty: string; expr: string 
  * import { byTheme } from "@pantoken/tokens";
  *
  * const source = toRust(byTheme("rebrand"));
- * // "use egui::Color32;\npub const COLOR_BACKGROUND_BRAND: Color32 = Color32::from_rgb(…);"
+ * // "use egui::Color32;\npub fn color_background_brand() -> Color32 { Color32::from_rgb(…) }"
  * ```
  *
  * @example iced (Color), dark mode
@@ -112,7 +112,11 @@ export function toRust(tokens: readonly Token[], options: RustOptions = {}): str
       const rgb = hexToRgb(leaf.value);
       if (!rgb) continue;
       const { ty, expr } = colorLiteral(format, rgb);
-      lines.push(`pub const ${constant}: ${ty} = ${expr};`);
+      if (format === "egui") {
+        lines.push(`pub fn ${constant.toLowerCase()}() -> ${ty} { ${expr} }`);
+      } else {
+        lines.push(`pub const ${constant}: ${ty} = ${expr};`);
+      }
     } else if (leaf.type === "dimension" || leaf.type === "number") {
       const n = dimension(leaf.value);
       if (n === undefined) continue;
