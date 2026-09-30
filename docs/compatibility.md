@@ -15,7 +15,7 @@ package consumes. The `@instructure/ui-*` React packages are used only by
 
 | Package                                  | Feeds        | Range                                                 | Resolved              |
 | ---------------------------------------- | ------------ | ----------------------------------------------------- | --------------------- |
-| `@instructure/instructure-design-tokens` | token-ir     | `github:instructure/instructure-design-tokens#v2.0.0` | `v2.0.0@0a323b62c748` |
+| `@instructure/instructure-design-tokens` | token-ir     | `github:instructure/instructure-design-tokens#v2.1.0` | `v2.1.0@c7f0deea242d` |
 | `@instructure/ui-icons`                  | icons        | `^11.7.7`                                             | `11.7.7`              |
 | `lucide`                                 | icons        | `^1.48.0`                                             | `1.48.0`              |
 | `@instructure/ui-heading`                | instui-react | `^11.7.7`                                             | `11.7.7`              |
@@ -82,9 +82,12 @@ is supported. To extend a claim:
 2. Run the adapter's compatibility command with the candidate release, for example
    `vp run @pantoken/postcss#check:compatibility -- 8.5.29`. The default command reads every
    `testedVersions` entry from this registry; paired environments accept their companion flags.
-3. Run a real host, compiler, or build-tool check at the minimum and new release. Remap the current
+3. For feed-discovered candidates, use `vp run downstream:test`; failed attempts are retained in
+   `scripts/release/downstream-compatibility.json`. After a successful review, run
+   `vp run downstream:bless --package @pantoken/name --version x.y.z` to update the claim.
+4. Run a real host, compiler, or build-tool check at the minimum and new release. Remap the current
    output format if necessary; do not add parallel legacy format emitters.
-4. Update `scripts/release/target-compatibility.json` only after the checks pass, then run
+5. Update `scripts/release/target-compatibility.json` only after the checks pass, then run
    `vp run sync:compatibility`, regenerate English API docs, and add a changeset. Newer releases
    remain pending until that reviewed change lands. Localized documentation is handled separately.
 
