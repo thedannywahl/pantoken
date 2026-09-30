@@ -1,0 +1,76 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3SX0E12VN80TMHCRH3V4S6M",
+  "session_id": "aa5ba2c5-c9ff-442d-b33b-ddcb26971c26",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-30T19:35:04.874739Z",
+  "branch": "release-compatibility",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "formats/interactions/component-capabilities.json",
+    "formats/interactions/scripts/build-iife.ts",
+    "formats/interactions/scripts/generate-components.ts",
+    "formats/interactions/src/index.ts",
+    "formats/interactions/vite.config.ts",
+    "plugins/pantoken/custom-components/scripts/build-entries.ts",
+    "plugins/pantoken/custom-components/scripts/generate.ts",
+    "plugins/pantoken/custom-components/src/components/index.ts",
+    "plugins/pantoken/custom-components/src/index.ts",
+    "plugins/pantoken/custom-components/vite.config.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "bb49dd42b9ee",
+  "checkpoint_transcript_start": 235,
+  "transcript_lines_at_start": 235,
+  "compact_transcript_start": 47,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-30T19:35:04.845332Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 138,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 138,
+    "total_lines_changed": 138,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 446,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "formats/interactions/component-capabilities.json": 6,
+        "formats/interactions/scripts/build-iife.ts": 1,
+        "formats/interactions/scripts/generate-components.ts": 2,
+        "formats/interactions/src/behaviors/segmented-control.ts": 154,
+        "formats/interactions/src/components/segmented-control.ts": 15,
+        "formats/interactions/src/index.ts": 1,
+        "formats/interactions/tests/segmented-control.test.ts": 85,
+        "formats/interactions/vite.config.ts": 1,
+        "plugins/pantoken/custom-components/scripts/build-entries.ts": 2,
+        "plugins/pantoken/custom-components/scripts/generate.ts": 3,
+        "plugins/pantoken/custom-components/src/components/index.ts": 1,
+        "plugins/pantoken/custom-components/src/components/segmented-control/index.ts": 7,
+        "plugins/pantoken/custom-components/src/components/segmented-control/segmented-control.css": 164,
+        "plugins/pantoken/custom-components/src/index.ts": 3,
+        "plugins/pantoken/custom-components/vite.config.ts": 1
+      }
+    }
+  ]
+}
