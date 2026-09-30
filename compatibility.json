@@ -170,8 +170,13 @@
       "path": "platforms/drupal",
       "governedBy": "token-ir",
       "targetSupport": {
-        "target": "Drupal",
-        "status": "unverified"
+        "target": "Drupal themes",
+        "format": "Drupal core discovers generated theme; InfoParser and Symfony YAML accept metadata",
+        "status": "verified",
+        "minimum": "10.6.18",
+        "testedThrough": "11.3.2",
+        "testedVersions": ["10.6.18", "11.3.2"],
+        "testCommand": "vp run @pantoken/drupal#check:compatibility"
       }
     },
     {
@@ -198,7 +203,12 @@
       "governedBy": "token-ir",
       "targetSupport": {
         "target": "Hugo",
-        "status": "unverified"
+        "format": "Hugo Pipes builds the Pantoken token stylesheet",
+        "status": "verified",
+        "minimum": "0.165.0",
+        "testedThrough": "0.165.0",
+        "testedVersions": ["0.165.0"],
+        "testCommand": "vp run @pantoken/hugo#check:compatibility"
       }
     },
     {
@@ -207,7 +217,12 @@
       "governedBy": "token-ir",
       "targetSupport": {
         "target": "Jekyll",
-        "status": "unverified"
+        "format": "Jekyll builds the generated Sass partial into site CSS",
+        "status": "verified",
+        "minimum": "4.4.1",
+        "testedThrough": "4.4.1",
+        "testedVersions": ["4.4.1"],
+        "testCommand": "vp run @pantoken/jekyll#check:compatibility"
       }
     },
     {

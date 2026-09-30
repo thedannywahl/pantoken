@@ -4,6 +4,12 @@ Emit the Instructure token stylesheet for a Hugo site. Hugo has no standard them
 contract, so this delivers the tokens as drop-in assets under `assets/`, where Hugo Pipes (and Dart
 Sass) pick them up.
 
+## Compatibility
+
+Verified with Hugo 0.165.0 using a real Hugo Pipes site build that processes and emits the Pantoken
+token stylesheet. Hugo 0.167.0 is available upstream but its container image wasn’t available during
+this check. See the [compatibility matrix](https://pantoken.app/compatibility) for tested releases.
+
 ## Install
 
 ```sh

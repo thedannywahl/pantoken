@@ -29,6 +29,13 @@ const npmTargets: Record<string, string> = {
   "@pantoken/vue": "vue",
   "@pantoken/vitepress": "vitepress",
 };
+const composerTargets: Record<string, string> = {
+  "@pantoken/drupal": "drupal/core",
+};
+const githubTargets: Record<string, string> = {
+  "@pantoken/hugo": "gohugoio/hugo",
+  "@pantoken/jekyll": "jekyll/jekyll",
+};
 
 /** An upstream stable release not yet included in an adapter's verified support record. */
 export interface PendingRelease {
@@ -57,19 +64,33 @@ export function isNewer(version: string, testedThrough: string | undefined): boo
 /** Query a documented release source and produce a pending review only for stable versions. */
 export async function pendingRelease(consumer: ConsumerEntry): Promise<PendingRelease | null> {
   const npm = npmTargets[consumer.package];
-  if (!npm && consumer.package !== "@pantoken/wordpress") return null;
+  const composer = composerTargets[consumer.package];
+  const github = githubTargets[consumer.package];
+  if (!npm && !composer && !github && consumer.package !== "@pantoken/wordpress") return null;
   const url = npm
     ? `https://registry.npmjs.org/${encodeURIComponent(npm)}/latest`
-    : "https://api.wordpress.org/core/version-check/1.7/";
+    : composer
+      ? `https://repo.packagist.org/p2/${encodeURIComponent(composer)}.json`
+      : github
+        ? `https://api.github.com/repos/${github}/releases/latest`
+        : "https://api.wordpress.org/core/version-check/1.7/";
   const response = await fetch(url);
   if (!response.ok) throw new Error(`${consumer.package} release feed: HTTP ${response.status}`);
   const payload = (await response.json()) as {
     version?: string;
     offers?: Array<{ version: string; response?: string }>;
+    packages?: Record<string, Array<{ version: string }>>;
+    tag_name?: string;
   };
   const version = npm
     ? payload.version
-    : payload.offers?.find((offer) => offer.response === "upgrade")?.version;
+    : composer
+      ? payload.packages?.[composer]?.find((release) =>
+          /^\d+(?:\.\d+){1,2}$/u.test(release.version),
+        )?.version
+      : github
+        ? payload.tag_name?.replace(/^v/u, "")
+        : payload.offers?.find((offer) => offer.response === "upgrade")?.version;
   if (
     !version ||
     !isNewer(
@@ -88,7 +109,11 @@ export async function pendingRelease(consumer: ConsumerEntry): Promise<PendingRe
     version,
     url: npm
       ? `https://www.npmjs.com/package/${npm}/v/${version}`
-      : `https://wordpress.org/download/releases/`,
+      : composer
+        ? `https://packagist.org/packages/${composer}`
+        : github
+          ? `https://github.com/${github}/releases/tag/${payload.tag_name}`
+          : `https://wordpress.org/download/releases/`,
     ...(consumer.targetSupport.status === "verified"
       ? { testCommand: consumer.targetSupport.testCommand }
       : {}),

@@ -4,6 +4,12 @@ Emit the Instructure token stylesheet for a Jekyll site. Jekyll has no standard 
 contract, so this delivers the tokens as drop-in assets: a Sass partial for `_sass/` and a plain CSS
 file for `assets/css/`.
 
+## Compatibility
+
+Verified with Jekyll 4.4.1 by building a real site that imports the generated Sass partial and emits
+Pantoken token CSS. See the [compatibility matrix](https://pantoken.app/compatibility) for the exact
+tested release.
+
 ## Install
 
 ```sh

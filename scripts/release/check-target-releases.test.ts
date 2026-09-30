@@ -341,6 +341,83 @@ test("flags a future Storybook theming release for constructor review", async ()
   expect(await pendingRelease(storybook)).toMatchObject({ version: "8.6.15" });
 });
 
+test("flags a future Drupal core release from Packagist stable versions", async () => {
+  const drupal: ConsumerEntry = {
+    package: "@pantoken/drupal",
+    path: "platforms/drupal",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "Drupal themes",
+      format: "Drupal core discovers generated theme; InfoParser and Symfony YAML accept metadata",
+      status: "verified",
+      minimum: "10.6.18",
+      testedThrough: "11.3.2",
+      testedVersions: ["10.6.18", "11.3.2"],
+      testCommand: "vp run @pantoken/drupal#check:compatibility",
+    },
+  };
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({
+        packages: { "drupal/core": [{ version: "12.0.0-alpha1" }, { version: "11.4.8" }] },
+      }),
+    }),
+  );
+  expect(await pendingRelease(drupal)).toMatchObject({
+    version: "11.4.8",
+    url: "https://packagist.org/packages/drupal/core",
+  });
+});
+
+test("flags a future Hugo GitHub release after removing its v prefix", async () => {
+  const hugo: ConsumerEntry = {
+    package: "@pantoken/hugo",
+    path: "platforms/hugo",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "Hugo",
+      format: "Hugo Pipes builds the Pantoken token stylesheet",
+      status: "verified",
+      minimum: "0.165.0",
+      testedThrough: "0.165.0",
+      testedVersions: ["0.165.0"],
+      testCommand: "vp run @pantoken/hugo#check:compatibility",
+    },
+  };
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({ ok: true, json: async () => ({ tag_name: "v0.166.0" }) }),
+  );
+  expect(await pendingRelease(hugo)).toMatchObject({
+    version: "0.166.0",
+    url: "https://github.com/gohugoio/hugo/releases/tag/v0.166.0",
+  });
+});
+
+test("flags a future Jekyll GitHub release", async () => {
+  const jekyll: ConsumerEntry = {
+    package: "@pantoken/jekyll",
+    path: "platforms/jekyll",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "Jekyll",
+      format: "Jekyll builds the generated Sass partial into site CSS",
+      status: "verified",
+      minimum: "4.4.1",
+      testedThrough: "4.4.1",
+      testedVersions: ["4.4.1"],
+      testCommand: "vp run @pantoken/jekyll#check:compatibility",
+    },
+  };
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({ ok: true, json: async () => ({ tag_name: "v4.4.2" }) }),
+  );
+  expect(await pendingRelease(jekyll)).toMatchObject({ version: "4.4.2" });
+});
+
 test("flags a future Panda CSS release for preset extraction review", async () => {
   const panda: ConsumerEntry = {
     package: "@pantoken/panda",

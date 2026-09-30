@@ -3,6 +3,13 @@
 Emit an Instructure-themed Drupal 10/11 sub-theme: the token stylesheet plus the `*.info.yml` and
 `*.libraries.yml` a theme needs to load it. Drop the files into `themes/custom/<machine>/`.
 
+## Compatibility
+
+Verified with the official Drupal 10.6.18 and 11.3.2 images. Drupal core's `ExtensionDiscovery`
+discovers the generated theme, `InfoParser` accepts its `.info.yml`, and Symfony YAML validates the
+library definition and referenced CSS assets. This does not install a full Drupal site. See the
+[compatibility matrix](https://pantoken.app/compatibility) for exact core versions.
+
 ## Install
 
 ```sh

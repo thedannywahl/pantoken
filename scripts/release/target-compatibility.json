@@ -53,11 +53,35 @@
   "@pantoken/android": { "target": "Android", "status": "unverified" },
   "@pantoken/canvas-theme-editor": { "target": "Canvas Theme Editor", "status": "unverified" },
   "@pantoken/compose": { "target": "Jetpack Compose", "status": "unverified" },
-  "@pantoken/drupal": { "target": "Drupal", "status": "unverified" },
+  "@pantoken/drupal": {
+    "target": "Drupal themes",
+    "format": "Drupal core discovers generated theme; InfoParser and Symfony YAML accept metadata",
+    "status": "verified",
+    "minimum": "10.6.18",
+    "testedThrough": "11.3.2",
+    "testedVersions": ["10.6.18", "11.3.2"],
+    "testCommand": "vp run @pantoken/drupal#check:compatibility"
+  },
   "@pantoken/email": { "target": "HTML email", "status": "unverified" },
   "@pantoken/flutter": { "target": "Flutter", "status": "unverified" },
-  "@pantoken/hugo": { "target": "Hugo", "status": "unverified" },
-  "@pantoken/jekyll": { "target": "Jekyll", "status": "unverified" },
+  "@pantoken/hugo": {
+    "target": "Hugo",
+    "format": "Hugo Pipes builds the Pantoken token stylesheet",
+    "status": "verified",
+    "minimum": "0.165.0",
+    "testedThrough": "0.165.0",
+    "testedVersions": ["0.165.0"],
+    "testCommand": "vp run @pantoken/hugo#check:compatibility"
+  },
+  "@pantoken/jekyll": {
+    "target": "Jekyll",
+    "format": "Jekyll builds the generated Sass partial into site CSS",
+    "status": "verified",
+    "minimum": "4.4.1",
+    "testedThrough": "4.4.1",
+    "testedVersions": ["4.4.1"],
+    "testCommand": "vp run @pantoken/jekyll#check:compatibility"
+  },
   "@pantoken/rust": { "target": "Rust", "status": "unverified" },
   "@pantoken/swift": {
     "target": "Swift iOS",

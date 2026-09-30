@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-30 01:17+0000\n"
+"PO-Revision-Date: 2026-09-30 02:57+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -13830,7 +13830,7 @@ msgstr ""
 #: platforms/drupal/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Drupal. Host compatibility has not yet been verified."
+msgid "Target: Drupal themes. Current format: `Drupal InfoParser and Symfony YAML validate generated theme metadata and libraries`. Minimum host version: `10.6.18`. Tested through `11.3.2`. Newer releases require review."
 msgstr ""
 
 #: platforms/drupal/src/index.md
@@ -14084,7 +14084,7 @@ msgstr ""
 #: platforms/hugo/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Hugo. Host compatibility has not yet been verified."
+msgid "Target: Hugo. Current format: `Hugo Pipes builds the Pantoken token stylesheet`. Minimum host version: `0.165.0`. Tested through `0.165.0`. Newer releases require review."
 msgstr ""
 
 #: platforms/hugo/src/index.md
@@ -14121,7 +14121,7 @@ msgstr ""
 #: platforms/jekyll/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Jekyll. Host compatibility has not yet been verified."
+msgid "Target: Jekyll. Current format: `Jekyll builds the generated Sass partial into site CSS`. Minimum host version: `4.4.1`. Tested through `4.4.1`. Newer releases require review."
 msgstr ""
 
 #: platforms/jekyll/src/index.md
