@@ -9,6 +9,15 @@ test("buildExampleSrcdoc emits a link per cssUrls entry", () => {
   expect(doc).toContain('<link rel="stylesheet" href="/demos-assets/components.css">');
 });
 
+test("buildExampleSrcdoc emits interaction scripts after the example markup", () => {
+  const doc = buildExampleSrcdoc("<fieldset></fieldset>", {
+    cssUrls: [],
+    scriptUrls: ["/demos-assets/interactions.iife.js"],
+  });
+  expect(doc).toContain('<script src="/demos-assets/interactions.iife.js"></script>');
+  expect(doc.indexOf("<fieldset")).toBeLessThan(doc.indexOf("interactions.iife.js"));
+});
+
 test("buildExampleSrcdoc defaults to dir=ltr, and honors an rtl override", () => {
   const ltr = buildExampleSrcdoc("<p>Hi</p>", { cssUrls: [] });
   expect(ltr).toContain('<html dir="ltr">');

@@ -56,7 +56,9 @@
     align-items: center;
     gap: var(--instui-component-segmented-control-track-gap);
     position: relative;
+    box-sizing: border-box;
     min-inline-size: 0;
+    max-inline-size: 100%;
     margin: 0;
     padding-block: var(--instui-component-segmented-control-track-padding);
     padding-inline-start: calc(
@@ -115,9 +117,8 @@
   }
 
   & > :is(.overflow-start, .overflow-end) {
-    position: sticky;
+    position: absolute;
     z-index: 2;
-    flex: none;
     inline-size: var(--instui-component-base-button-medium-height);
     block-size: var(--instui-component-base-button-medium-height);
     border: var(--instui-border-width-sm) solid
@@ -127,6 +128,8 @@
     color: var(--instui-color-text-interactive-action-primary-base);
     box-shadow: var(--pantoken-segmented-overflow-shadow);
     cursor: pointer;
+    inset-block-start: 50%;
+    transform: translateY(-50%);
   }
 
   & > .overflow-start {

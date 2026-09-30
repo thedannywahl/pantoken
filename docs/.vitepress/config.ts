@@ -971,6 +971,7 @@ export default defineConfig({
               NON_ROOT_LOCALES.find((key) => relativePath.startsWith(`${key}/`)) ?? "root";
             const doc = buildExampleSrcdoc(html, {
               cssUrls,
+              scriptUrls: [`${base}demos-assets/interactions.iife.js`],
               card: !flags.has("-nocard"),
               dir: LOCALE_THEMES[locale].dir,
             });
