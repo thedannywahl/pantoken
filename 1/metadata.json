@@ -1,0 +1,47 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3T47RHZ3FM33QKRFFBB66EZ",
+  "session_id": "f79ff467-43ad-4202-979c-60fdc2b264f0",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-30T21:41:25.54665Z",
+  "branch": "release-compatibility",
+  "checkpoints_count": 1,
+  "save_step_count": 2,
+  "files_touched": [],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "3d1230e11709",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 15
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 1,
+      "user_lines_removed": 1,
+      "agent_lines_added": 7641,
+      "agent_lines_removed": 115,
+      "user_added_per_file": {
+        "l10n/docs.api.pot": 1
+      },
+      "user_removed_per_file": {
+        "l10n/docs.api.pot": 1
+      }
+    }
+  ]
+}
