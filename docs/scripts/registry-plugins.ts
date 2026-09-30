@@ -48,10 +48,6 @@ export function buildPluginRegistryItems(): RegistryItem[] {
             ? ["@pantoken/interactions"]
             : [],
         css: `@pantoken/plugin-custom-components/${name}.css`,
-        extraImports:
-          name === "segmented-control"
-            ? ["@pantoken/components/icon-button.css", "@pantoken/components/icon.css"]
-            : [],
         categories: ["components", "plugins"],
         docs:
           name === "skeleton-loader"

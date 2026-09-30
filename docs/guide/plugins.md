@@ -77,39 +77,30 @@ radio in one named group; mark one checked initially. Use tabs or a dropdown if 
 comfortably, and use button groups for actions rather than choices. The `-size-md` style is the
 default, with `-size-sm` and `-size-lg` for tighter and more prominent contexts.
 
-Import `@pantoken/plugin-custom-components/segmented-control.css` along with
-`@pantoken/components/icon-button.css` and `@pantoken/components/icon.css` if using overflow buttons.
+Import `@pantoken/plugin-custom-components/segmented-control.css` for the control and its overflow
+buttons. Use a `-icon-*` class on a segment label when the segment needs a glyph; the interaction
+helper also promotes a `-icon-*` class from its native input to the label painter.
 Give the fieldset a descriptive `aria-label` or a visible legend. The helper preserves the native
 radio announcement, adds keyboard navigation, and optionally reveals one clipped segment per arrow
 press. Use logical start/end controls and accessible button labels in both directions:
 
 ```html
 <fieldset class="instui-segmented-control" aria-label="Course view" data-overflown>
-  <div class="segments">
+  <button class="overflow-start" type="button" aria-label="Previous views" hidden></button>
+  <div class="track">
     <label class="segment"><input type="radio" name="course-view" checked /> Grid</label>
     <label class="segment"><input type="radio" name="course-view" /> List</label>
   </div>
-  <button
-    class="overflow-start instui-icon-button -color-primary -icon-chevron-left"
-    type="button"
-    aria-label="Previous views"
-    hidden
-  ></button>
-  <button
-    class="overflow-end instui-icon-button -color-primary -icon-chevron-right"
-    type="button"
-    aria-label="Next views"
-    hidden
-  ></button>
+  <button class="overflow-end" type="button" aria-label="Next views" hidden></button>
 </fieldset>
 ```
 
 Import `@pantoken/interactions/segmented-control.iife.js` for DOM-ready registration, or call
 `initSegmentedControl(fieldset, { size: "md", isOverflown: true })` from `@pantoken/interactions`
 and call `cleanup()` when removing it. The CSS and native radio choices work without JS; overflow
-arrows need the behavior. The 2.1.0 tokens include no shadows for the selected item or arrows.
-Both currently use the shared resting elevation via `--pantoken-segmented-selected-shadow` and
-`--pantoken-segmented-overflow-shadow`; replace those variables when exact design values are known.
+arrows need the behavior. The selected item uses the two-layer design shadow from the semantic
+drop-shadow colors. Overflow buttons use the shared resting elevation through
+`--pantoken-segmented-overflow-shadow`.
 
 ### Skeleton loading
 

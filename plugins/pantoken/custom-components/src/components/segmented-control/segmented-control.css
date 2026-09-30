@@ -8,13 +8,13 @@
  * @modifier -size-lg — Large segments.
  * @modifier -size-md — Medium segments (default).
  * @modifier -size-sm — Small segments.
- * @part segments — The horizontal scroll track.
+ * @part track — The horizontal scroll track.
  * @part segment — One labelled radio option.
  * @part overflow-start — Scroll to the preceding hidden segment.
  * @part overflow-end — Scroll to the following hidden segment.
  * @structure
  * .pfx-segmented-control {
- *   .segments {
+ *   .track {
  *     .segment:one-or-more {
  *       input {}
  *     }
@@ -28,12 +28,12 @@
  * @example
  * ```html
  * <fieldset class="pfx-segmented-control" aria-label="Course view">
- *   <div class="segments">
- *     <label class="segment"><input type="radio" name="view" checked> Grid</label>
- *     <label class="segment"><input type="radio" name="view"> List</label>
+ *   <button class="overflow-start" type="button" aria-label="Scroll to previous views" hidden></button>
+ *   <div class="track">
+ *     <label class="segment"><input type="radio" name="view" checked>Grid</label>
+ *     <label class="segment"><input type="radio" name="view">List</label>
  *   </div>
- *   <button class="overflow-start pfx-icon-button -color-primary -icon-chevron-left" type="button" aria-label="Scroll to previous views" hidden></button>
- *   <button class="overflow-end pfx-icon-button -color-primary -icon-chevron-right" type="button" aria-label="Scroll to next views" hidden></button>
+ *   <button class="overflow-end" type="button" aria-label="Scroll to next views" hidden></button>
  * </fieldset>
  * ```
  */
@@ -45,7 +45,9 @@
       --instui-component-segmented-control-item-padding-horizontal-md
     );
     --pantoken-segmented-gap: var(--instui-component-segmented-control-item-gap-md);
-    --pantoken-segmented-selected-shadow: var(--instui-elevation-depth1);
+    --pantoken-segmented-selected-shadow:
+      0 2px 4px 2px var(--instui-color-drop-shadow-shadow-color2),
+      0 1px 2px 0 var(--instui-color-drop-shadow-shadow-color1);
     --pantoken-segmented-overflow-shadow: var(--instui-elevation-depth1);
     position: relative;
     min-inline-size: 0;
@@ -92,7 +94,7 @@
     background: var(--instui-component-segmented-control-track-background-disabled-color);
   }
 
-  & > .segments {
+  & > .track {
     display: flex;
     align-items: center;
     gap: var(--instui-component-segmented-control-track-gap);
@@ -103,7 +105,7 @@
     padding-inline-end: var(--pantoken-segmented-end-reserve, 0px);
   }
 
-  & > .segments::-webkit-scrollbar {
+  & > .track::-webkit-scrollbar {
     display: none;
   }
 
@@ -120,6 +122,10 @@
     color: var(--instui-component-segmented-control-unselected-item-text-color);
     cursor: pointer;
     white-space: nowrap;
+
+    &:is([class^="-icon-"], [class*=" -icon-"]) {
+      gap: var(--pantoken-segmented-gap);
+    }
 
     > input {
       position: absolute;

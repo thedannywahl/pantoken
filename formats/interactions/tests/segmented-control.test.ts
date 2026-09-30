@@ -10,18 +10,18 @@ afterEach(() => {
 function setup() {
   document.body.innerHTML = `
     <fieldset class="instui-segmented-control" aria-label="Course view">
-      <div class="segments">
+      <button class="overflow-start" type="button" aria-label="Previous" hidden></button>
+      <div class="track">
         <label class="segment"><input type="radio" name="view" checked> Grid</label>
         <label class="segment"><input type="radio" name="view" disabled> Map</label>
         <label class="segment"><input type="radio" name="view"> List</label>
       </div>
-      <button class="overflow-start" type="button" hidden></button>
-      <button class="overflow-end" type="button" hidden></button>
+      <button class="overflow-end" type="button" aria-label="Next" hidden></button>
     </fieldset>`;
   return {
     host: document.querySelector<HTMLElement>(".instui-segmented-control")!,
     radios: [...document.querySelectorAll<HTMLInputElement>(".segment input")],
-    strip: document.querySelector<HTMLElement>(".segments")!,
+    strip: document.querySelector<HTMLElement>(".track")!,
     start: document.querySelector<HTMLButtonElement>(".overflow-start")!,
     end: document.querySelector<HTMLButtonElement>(".overflow-end")!,
   };
@@ -133,4 +133,12 @@ test("DOM-ready entry registers an existing fieldset once", async () => {
   );
   expect(radios[2].checked).toBe(true);
   expect(initSegmentedControl(host)).toBe(initSegmentedControl(host));
+});
+
+test("copies an icon class from a native input to its label painter", () => {
+  const { host } = setup();
+  const radio = host.querySelector<HTMLInputElement>("input")!;
+  radio.classList.add("-icon-grid-view");
+  initSegmentedControl(host);
+  expect(radio.closest(".segment")?.classList.contains("-icon-grid-view")).toBe(true);
 });

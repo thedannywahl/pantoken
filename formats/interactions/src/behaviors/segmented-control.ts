@@ -20,7 +20,7 @@ export function initSegmentedControl(
   const existing = initialized.get(host);
   if (existing) return existing;
 
-  const strip = host.querySelector<HTMLElement>(":scope > .segments");
+  const strip = host.querySelector<HTMLElement>(":scope > .track");
   const startButton = host.querySelector<HTMLButtonElement>(":scope > .overflow-start");
   const endButton = host.querySelector<HTMLButtonElement>(":scope > .overflow-end");
   const radios = (): HTMLInputElement[] => [
@@ -39,6 +39,11 @@ export function initSegmentedControl(
   const first =
     radios().find((radio) => radio.checked) ?? radios().find((radio) => !radio.disabled);
   if (first) first.checked = true;
+
+  for (const radio of radios()) {
+    const iconClass = [...radio.classList].find((className) => className.startsWith("-icon-"));
+    if (iconClass) radio.closest<HTMLElement>(".segment")?.classList.add(iconClass);
+  }
 
   const bounds = (): { left: number; right: number; rtl: boolean } => {
     const rect = strip!.getBoundingClientRect();
