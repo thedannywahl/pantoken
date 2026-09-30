@@ -198,7 +198,15 @@
     "testedVersions": ["13.0.0", "13.0.1", "13.0.2"],
     "testCommand": "vp run @pantoken/rehype#check:compatibility"
   },
-  "@pantoken/shadcn": { "target": "shadcn/ui", "status": "unverified" },
+  "@pantoken/shadcn": {
+    "target": "shadcn/ui CSS variables",
+    "format": "Tailwind 4.3.3 compiles the Pantoken primary theme alias",
+    "status": "verified",
+    "minimum": "4.3.3",
+    "testedThrough": "4.3.3",
+    "testedVersions": ["4.3.3"],
+    "testCommand": "vp run @pantoken/shadcn#check:compatibility"
+  },
   "@pantoken/storybook": {
     "target": "Storybook theming",
     "format": "Storybook ThemeVars constructor accepts light and dark Pantoken themes",

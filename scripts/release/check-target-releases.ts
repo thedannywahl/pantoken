@@ -21,6 +21,7 @@ const npmTargets: Record<string, string> = {
   "@pantoken/mui": "@mui/material",
   "@pantoken/react": "react",
   "@pantoken/react-markdown": "react-markdown",
+  "@pantoken/shadcn": "tailwindcss",
   "@pantoken/rehype": "rehype",
   "@pantoken/storybook": "@storybook/theming",
   "@pantoken/svelte": "svelte",

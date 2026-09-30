@@ -429,6 +429,28 @@ test("flags a future Mintlify CLI release for docs.json review", async () => {
   expect(await pendingRelease(mintlify)).toMatchObject({ version: "4.0.1556" });
 });
 
+test("flags a future Tailwind release for shadcn theme alias review", async () => {
+  const shadcn: ConsumerEntry = {
+    package: "@pantoken/shadcn",
+    path: "renderers/shadcn",
+    governedBy: "token-ir",
+    targetSupport: {
+      target: "shadcn/ui CSS variables",
+      format: "Tailwind 4.3.3 compiles the Pantoken primary theme alias",
+      status: "verified",
+      minimum: "4.3.3",
+      testedThrough: "4.3.3",
+      testedVersions: ["4.3.3"],
+      testCommand: "vp run @pantoken/shadcn#check:compatibility",
+    },
+  };
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockResolvedValue({ ok: true, json: async () => ({ version: "4.3.4" }) }),
+  );
+  expect(await pendingRelease(shadcn)).toMatchObject({ version: "4.3.4" });
+});
+
 test("flags a future webpack release without widening emitted asset support", async () => {
   const webpack: ConsumerEntry = {
     package: "@pantoken/webpack",

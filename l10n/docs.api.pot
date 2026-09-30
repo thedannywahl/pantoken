@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-30 00:48+0000\n"
+"PO-Revision-Date: 2026-09-30 00:59+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -17789,7 +17789,7 @@ msgstr ""
 #: renderers/shadcn/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: shadcn/ui. Host compatibility has not yet been verified."
+msgid "Target: shadcn/ui CSS variables. Current format: `Tailwind 4.3.3 compiles the Pantoken primary theme alias`. Minimum host version: `4.3.3`. Tested through `4.3.3`. Newer releases require review."
 msgstr ""
 
 #: renderers/shadcn/src/index.md

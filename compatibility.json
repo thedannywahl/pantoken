@@ -466,8 +466,13 @@
       "path": "renderers/shadcn",
       "governedBy": "token-ir",
       "targetSupport": {
-        "target": "shadcn/ui",
-        "status": "unverified"
+        "target": "shadcn/ui CSS variables",
+        "format": "Tailwind 4.3.3 compiles the Pantoken primary theme alias",
+        "status": "verified",
+        "minimum": "4.3.3",
+        "testedThrough": "4.3.3",
+        "testedVersions": ["4.3.3"],
+        "testCommand": "vp run @pantoken/shadcn#check:compatibility"
       }
     },
     {
