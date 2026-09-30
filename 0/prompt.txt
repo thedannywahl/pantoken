@@ -1,0 +1,5 @@
+Continue: "Continue to iterate?"
+
+---
+
+for the ones that were unvalidated because their host runtimes weren't available we should follow the the wordpress example for the open source options (drupal, hugo, jekyll, TinyMCE, etc.), you did the pantoken-root reference, so find where that came from and fix it.

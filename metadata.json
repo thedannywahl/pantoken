@@ -1,0 +1,58 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3R31JPSKB0HBAKHSZ98N69M",
+  "strategy": "manual-commit",
+  "branch": "release-compatibility",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/complete-api-catalog.md",
+    ".changeset/environment-verified-web-components.md",
+    ".changeset/native-mise-swift.md",
+    ".changeset/package-compatibility-pages.md",
+    ".changeset/swift-xcode-environment.md",
+    ".changeset/target-compatibility-registry.md",
+    ".changeset/target-release-reviews.md",
+    ".changeset/target-release-runbook.md",
+    ".changeset/verified-angular-support.md",
+    ".changeset/verified-astro-support.md",
+    ".changeset/verified-bootstrap-support.md",
+    ".changeset/verified-css-in-js-support.md",
+    ".changeset/verified-docusaurus-support.md",
+    ".changeset/verified-foundation-support.md",
+    ".changeset/verified-markdown-it-support.md",
+    ".changeset/verified-mintlify-support.md",
+    ".changeset/verified-mui-support.md",
+    ".changeset/verified-next-support.md",
+    ".changeset/verified-panda-support.md",
+    ".changeset/verified-postcss-support.md",
+    ".changeset/verified-react-markdown-support.md",
+    ".changeset/verified-react-support.md",
+    ".changeset/verified-rehype-support.md",
+    ".changeset/verified-shadcn-support.md",
+    ".changeset/verified-storybook-support.md",
+    ".changeset/verified-svelte-support.md",
+    ".changeset/verified-tailwind-support.md",
+    ".changeset/verified-tinymce-pluginmanager.md",
+    ".changeset/verified-vite-support.md",
+    ".changeset/verified-vitepress-support.md",
+    ".changeset/verified-vue-support.md",
+    ".changeset/verified-webpack-support.md",
+    ".changeset/verified-wordpress-support.md"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3R31JPSKB0HBAKHSZ98N69M",
+  "session_id": "e0b17973-1894-478e-a335-ba65f11cf01b",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-30T02:42:05.343437Z",
+  "branch": "release-compatibility",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/complete-api-catalog.md",
+    ".changeset/environment-verified-web-components.md",
+    ".changeset/native-mise-swift.md",
+    ".changeset/package-compatibility-pages.md",
+    ".changeset/swift-xcode-environment.md",
+    ".changeset/target-compatibility-registry.md",
+    ".changeset/target-release-reviews.md",
+    ".changeset/target-release-runbook.md",
+    ".changeset/verified-angular-support.md",
+    ".changeset/verified-astro-support.md",
+    ".changeset/verified-bootstrap-support.md",
+    ".changeset/verified-css-in-js-support.md",
+    ".changeset/verified-docusaurus-support.md",
+    ".changeset/verified-foundation-support.md",
+    ".changeset/verified-markdown-it-support.md",
+    ".changeset/verified-mintlify-support.md",
+    ".changeset/verified-mui-support.md",
+    ".changeset/verified-next-support.md",
+    ".changeset/verified-panda-support.md",
+    ".changeset/verified-postcss-support.md",
+    ".changeset/verified-react-markdown-support.md",
+    ".changeset/verified-react-support.md",
+    ".changeset/verified-rehype-support.md",
+    ".changeset/verified-shadcn-support.md",
+    ".changeset/verified-storybook-support.md",
+    ".changeset/verified-svelte-support.md",
+    ".changeset/verified-tailwind-support.md",
+    ".changeset/verified-tinymce-pluginmanager.md",
+    ".changeset/verified-vite-support.md",
+    ".changeset/verified-vitepress-support.md",
+    ".changeset/verified-vue-support.md",
+    ".changeset/verified-webpack-support.md",
+    ".changeset/verified-wordpress-support.md"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "4e0d8be8a130",
+  "checkpoint_transcript_start": 6732,
+  "transcript_lines_at_start": 6732,
+  "compact_transcript_start": 1129,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 12
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-30T02:42:05.234673Z",
+    "agent_lines": 0,
+    "agent_removed": 33,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 0,
+    "total_lines_changed": 33,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
+}
