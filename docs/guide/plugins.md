@@ -67,6 +67,63 @@ expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 - `@pantoken/plugin-custom-theme-colors` — rebrands a page by setting one attribute
   (`data-pantoken-color`) to one of 13 palettes, or to `custom` for any brand hex. See
   [Theme colors](#theme-colors).
+- `@pantoken/plugin-custom-components` — token-backed custom controls including SkeletonLoader.
+
+### Skeleton loading
+
+The `skeleton-loader.css` subpath styles one decorative Text, Avatar, or Image shape. Text accepts
+`-size-xxs` through `-size-xxl`; Avatar and Image are medium-sized. Each optional `.skeleton-row`
+adds one text line without changing the size. The CSS shimmer stops after three 1.5-second sweeps and
+stays static when the user prefers reduced motion. It works before JavaScript loads.
+
+Place shapes only where query-dependent content will appear, not over server-known navigation,
+filters, headings, or controls. A skeleton is not a progress meter or an action-busy state. Keep
+existing content visible during background refreshes; use a spinner or button busy state for actions.
+
+The parent application owns loading, loaded, empty, and error markup. Provide one empty status region
+per page and a separate empty alert in the server HTML, both **outside** the busy content region:
+
+```html
+<div class="instui-skeleton-loading">
+  <span class="instui-screen-reader-content" role="status" data-skeleton-status></span>
+  <span class="instui-screen-reader-content" role="alert" data-skeleton-error></span>
+  <section data-skeleton-region aria-busy="true">
+    <div class="instui-skeleton-loader -type-text -size-md" aria-hidden="true">
+      <div class="shape"><span class="animation"></span></div>
+      <div class="skeleton-row">
+        <div class="shape"><span class="animation"></span></div>
+      </div>
+    </div>
+  </section>
+</div>
+```
+
+Call the parent-level behavior when the request state changes. It updates `aria-busy` and the two
+pre-existing announcements, but it never replaces content or moves focus:
+
+```ts
+import { initSkeletonLoading } from "@pantoken/interactions";
+
+const wrapper = document.querySelector<HTMLElement>(".instui-skeleton-loading")!;
+const loading = initSkeletonLoading(wrapper.querySelector<HTMLElement>("[data-skeleton-region]")!, {
+  status: wrapper.querySelector<HTMLElement>("[data-skeleton-status]")!,
+  error: wrapper.querySelector<HTMLElement>("[data-skeleton-error]")!,
+});
+
+loading.setLoading("Loading courses"); // announces after 400ms, unless loading finishes first
+loading.setLoaded("24 courses"); // swap in the real content separately
+// For an empty result, use setEmpty("No courses found"); for failure, setError("Couldn't load courses. Retry").
+loading.cleanup(); // when the owning region is removed
+```
+
+If using the per-component interactions bundle instead of the direct import, dispatch a
+`pantoken:skeleton-state` event on the `[data-skeleton-region]` element with
+`detail: { state: "loading" | "loaded" | "empty" | "error", message: string }`. Delay _showing_
+placeholders by 200–500ms for fast requests; the behavior independently delays the loading
+announcement by 400ms. On passive page loads, leave focus where it is. Only move focus to a newly
+loaded result when the user's own action requested it. The status node announces results and empty
+states; the alert node announces failures. Do not combine `aria-busy`, `role="status"`, and
+`role="alert"` on one element.
 
 Lucide Lab's registry can be loaded lazily, then passed to the synchronous token hook:
 

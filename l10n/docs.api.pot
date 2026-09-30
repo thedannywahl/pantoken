@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-09-30 15:37+0000\n"
+"PO-Revision-Date: 2026-09-30 19:27+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -206,7 +206,7 @@ msgstr ""
 #: bundlers/next/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.7 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.7`. Newer releases require review."
+msgid "Target: Next.js. Current format: `Production build transpiling and rendering Instructure UI 11.7.7 with React 19.3.0`. Minimum host version: `16.0.0`. Tested through `16.3.8`. Newer releases require review."
 msgstr ""
 
 #: bundlers/next/src/index.md
@@ -912,6 +912,7 @@ msgstr ""
 #: css/close-button.md
 #: css/in-place-edit.md
 #: css/modal.md
+#: css/skeleton-loader.md
 #: css/tabs.md
 #: css/tooltip.md
 #, no-c-format
@@ -4078,6 +4079,12 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A styled native `<select>` with a caret, matching the text-input states and sizes."
+msgstr ""
+
+#: css/index.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Decorative placeholder for content that has not loaded yet."
 msgstr ""
 
 #: css/index.md
@@ -7377,6 +7384,84 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "- [text-input](/api/css/text-input.md) — Shares the same field chrome, states, and sizes.\n- [menu](/api/css/menu.md) — The dropdown surface a richer select reuses."
+msgstr ""
+
+#: css/skeleton-loader.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "`.instui-skeleton-loader` — Decorative placeholder for content that has not loaded yet."
+msgstr ""
+
+#: css/skeleton-loader.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Mark the decorative loader aria-hidden=\"true\". Put aria-busy on the parent content region,\n  with an initially empty status and alert outside that region. Use initSkeletonLoading from the\n  interactions package to announce the parent's loading state. Shapes must not receive focus."
+msgstr ""
+
+#: css/skeleton-loader.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "@import \"@pantoken/plugin-custom-components/skeleton-loader.css\";"
+msgstr ""
+
+#: css/skeleton-loader.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Large text row."
+msgstr ""
+
+#: css/skeleton-loader.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Medium text row (default)."
+msgstr ""
+
+#: css/skeleton-loader.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Small text row."
+msgstr ""
+
+#: css/skeleton-loader.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Extra-large text row."
+msgstr ""
+
+#: css/skeleton-loader.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Extra-small text row."
+msgstr ""
+
+#: css/skeleton-loader.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Largest text row."
+msgstr ""
+
+#: css/skeleton-loader.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Legend-sized text row."
+msgstr ""
+
+#: css/skeleton-loader.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A round avatar placeholder, medium size only."
+msgstr ""
+
+#: css/skeleton-loader.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "An image placeholder, medium size only."
+msgstr ""
+
+#: css/skeleton-loader.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "A text bar (default)."
 msgstr ""
 
 #: css/spacing.md
@@ -10898,6 +10983,12 @@ msgctxt "docs.api:prose"
 msgid "Wire open/close commands plus width-based responsive overlay switching onto a host: any\ncollapsible side panel (e.g. a drawer's tray) can import this interaction rather than each\ncomponent reimplementing it."
 msgstr ""
 
+#: formats/interactions/src/functions/initSkeletonLoading.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Bind the parent content region to SSR-provided status and error announcements."
+msgstr ""
+
 #: formats/interactions/src/functions/initTabs.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -11173,6 +11264,24 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Exit treatment. Defaults to `\"fade\"`, matching InstUI Alert."
+msgstr ""
+
+#: formats/interactions/src/interfaces/SkeletonLoadingHandle.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Control parent-level loading semantics without touching decorative skeleton shapes."
+msgstr ""
+
+#: formats/interactions/src/interfaces/SkeletonLoadingOptions.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Pre-rendered announcement elements must be outside the busy content region."
+msgstr ""
+
+#: formats/interactions/src/interfaces/SkeletonLoadingState.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "State update sent to an auto-registered skeleton loading region."
 msgstr ""
 
 #: formats/interactions/src/interfaces/TabsHandle.md
@@ -14618,6 +14727,12 @@ msgctxt "docs.api:prose"
 msgid "Build the logo utility CSS as an aspect-ratio-aware mask painter for `@pantoken/plugin-logos`'\n`-logo-<name>` glyph classes, substituting `prefix` for the `pfx-` sentinel."
 msgstr ""
 
+#: plugins/pantoken/custom-components/src/functions/skeletonLoaderRules.md
+#, no-c-format
+msgctxt "docs.api:prose"
+msgid "Build the skeleton loader CSS, replacing the component prefix sentinel."
+msgstr ""
+
 #: plugins/pantoken/custom-components/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
@@ -17120,7 +17235,7 @@ msgstr ""
 #: renderers/mintlify/src/index.md
 #, no-c-format
 msgctxt "docs.api:prose"
-msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1555`. Newer releases require review."
+msgid "Target: Mintlify docs.json. Current format: `Official CLI validates generated colors and background theme config`. Minimum host version: `4.0.1555`. Tested through `4.0.1557`. Newer releases require review."
 msgstr ""
 
 #: renderers/mintlify/src/index.md

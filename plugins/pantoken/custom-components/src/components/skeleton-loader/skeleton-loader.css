@@ -14,16 +14,20 @@
  * @modifier -size-xxl — Largest text row.
  * @structure
  * .pfx-skeleton-loader {
- *   .shape {}
- *   .skeleton-row:optional {
- *     .shape {}
+ *   .shape {
+ *     .animation {}
+ *   }
+ *   .skeleton-row:many {
+ *     .shape {
+ *       .animation {}
+ *     }
  *   }
  * }
  * @a11y Mark the decorative loader aria-hidden="true". Put aria-busy on the parent content region,
- *   with an initially empty status and alert outside that region; use initSkeletonLoading from
- *   @pantoken/interactions to announce the parent's loading state. Shapes must not receive focus.
+ *   with an initially empty status and alert outside that region. Use initSkeletonLoading from the
+ *   interactions package to announce the parent's loading state. Shapes must not receive focus.
  * @usage @import "@pantoken/plugin-custom-components/skeleton-loader.css";
- * @example -nocard
+ * @example
  * ```html
  * <div class="pfx-skeleton-loader -type-text -size-md" aria-hidden="true">
  *   <div class="shape"><span class="animation"></span></div>

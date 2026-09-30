@@ -14,13 +14,14 @@ const styleItem = (options: {
   categories: string[];
   docs?: string;
   extraImports?: string[];
+  extraDependencies?: string[];
 }): RegistryItem => ({
   name: options.name,
   type: "registry:style",
   title: options.title,
   description: options.description,
   author: AUTHOR,
-  dependencies: [options.pkg],
+  dependencies: [options.pkg, ...(options.extraDependencies ?? [])],
   registryDependencies: ["@pantoken/base"],
   css: cssImports([options.css, ...(options.extraImports ?? [])]),
   categories: options.categories,
@@ -32,7 +33,7 @@ const styleItem = (options: {
 export function buildPluginRegistryItems(): RegistryItem[] {
   const items: RegistryItem[] = [];
 
-  for (const name of ["card", "banner", "agent-shell"]) {
+  for (const name of ["card", "banner", "agent-shell", "skeleton-loader"]) {
     items.push(
       styleItem({
         name,
@@ -42,9 +43,13 @@ export function buildPluginRegistryItems(): RegistryItem[] {
           .join(" "),
         description: `Pantoken ${name} component styles and documented HTML structure.`,
         pkg: "@pantoken/plugin-custom-components",
+        extraDependencies: name === "skeleton-loader" ? ["@pantoken/interactions"] : [],
         css: `@pantoken/plugin-custom-components/${name}.css`,
         categories: ["components", "plugins"],
-        docs: `See https://pantoken.app/api/css/plugins/pantoken/custom-components/${name}.`,
+        docs:
+          name === "skeleton-loader"
+            ? "The shapes work without JavaScript. Use initSkeletonLoading from @pantoken/interactions on the parent loading region for announcements."
+            : `See https://pantoken.app/api/css/plugins/pantoken/custom-components/${name}.`,
       }),
     );
   }

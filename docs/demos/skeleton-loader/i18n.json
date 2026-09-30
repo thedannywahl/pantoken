@@ -1,0 +1,6 @@
+{
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
+  "text1": { "message": "Text", "translate": "optional" },
+  "text2": { "message": "Avatar", "translate": "optional" },
+  "text3": { "message": "Image", "translate": "optional" }
+}
