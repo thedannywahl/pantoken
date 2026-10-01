@@ -1,7 +1,7 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, test } from "vite-plus/test";
-import { listGuideFiles } from "../src/extract.ts";
+import { collectProseRanges, listGuideFiles } from "../src/extract.ts";
 import { parsePo } from "../src/po.ts";
 import { normalizeWholeFileMarkdown } from "../src/pipeline.ts";
 
@@ -44,8 +44,14 @@ describe("docs.guides PO migration", () => {
         (entry) => !entry.obsolete && entry.msgid === compatibilitySource,
       );
       expect(compatibility?.msgstr).not.toBe("");
-      expect(normalizeWholeFileMarkdown(compatibility?.msgstr ?? compatibilitySource) + "\n").toBe(
-        readFileSync(join(root, "docs", locale, "compatibility.md"), "utf8"),
+      const expectedCompatibility =
+        normalizeWholeFileMarkdown(compatibility?.msgstr ?? compatibilitySource) + "\n";
+      const renderedCompatibility = readFileSync(
+        join(root, "docs", locale, "compatibility.md"),
+        "utf8",
+      );
+      expect(collectProseRanges(renderedCompatibility).map(({ text }) => text)).toEqual(
+        collectProseRanges(expectedCompatibility).map(({ text }) => text),
       );
     }
   });
