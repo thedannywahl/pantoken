@@ -4,15 +4,17 @@ msgstr ""
 "PO-Revision-Date: 2026-10-01 01:54+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
+"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: und\n"
 
 #: docs/.vitepress/i18n.json#description
 #, no-c-format
 msgctxt "docs.chrome:description"
-msgid "Instructure design tokens and icons, reshaped for every platform and framework."
+msgid ""
+"Instructure design tokens and icons, reshaped for every platform and "
+"framework."
 msgstr "Instructure 的設計代幣與圖示，為所有平台與框架重新打造。"
 
 #: docs/.vitepress/i18n.json#nav.guide
@@ -348,8 +350,12 @@ msgstr "關於基礎重置"
 #: docs/.vitepress/i18n.json#cdnPicker.baseInfo
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfo"
-msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
-msgstr "可選的全域重置：box-sizing、頁面表面、基礎文字顏色與字型、color-scheme，以及連結預設樣式。"
+msgid ""
+"The opt-in global reset: box-sizing, the page surface, base text colour and "
+"font, color-scheme, and link defaults."
+msgstr ""
+"可選的全域重置：box-sizing、頁面表面、基礎文字顏色與字型、color-scheme，以及"
+"連結預設樣式。"
 
 #: docs/.vitepress/i18n.json#cdnPicker.includeUtilities
 #, no-c-format
@@ -366,7 +372,9 @@ msgstr "關於工具類別"
 #: docs/.vitepress/i18n.json#cdnPicker.utilitiesInfo
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
-msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
+msgid ""
+"An opt-in layer of cross-cutting classes: a View primitive, spacing on the "
+"token scale, and semantic color overrides."
 msgstr "一層可選的跨剪裁類別：View 原語、基於代幣尺度的間距，與語意顏色覆寫。"
 
 #: docs/.vitepress/i18n.json#cdnPicker.copy
@@ -390,13 +398,18 @@ msgstr "選擇一個或多個元件以建立 URL。"
 #: docs/.vitepress/i18n.json#cdnPicker.fontsNote
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.fontsNote"
-msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
-msgstr "字型需另行載入 — 需要時請新增一個 <link> 指向 @pantoken/components/fonts.css。"
+msgid ""
+"Fonts load separately — add a <link> to @pantoken/components/fonts.css when "
+"you need them."
+msgstr ""
+"字型需另行載入 — 需要時請新增一個 <link> 指向 @pantoken/components/"
+"fonts.css。"
 
 #: docs/.vitepress/i18n.json#cdnPicker.iconsNote
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.iconsNote"
-msgid "component-icons.css is included because a selected component uses icons."
+msgid ""
+"component-icons.css is included because a selected component uses icons."
 msgstr "因為所選元件使用圖示，所以包含 component-icons.css。"
 
 #: docs/.vitepress/i18n.json#getStartedTabs.copied
@@ -433,7 +446,9 @@ msgstr "恢復動畫"
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
 msgid "\"Set up pantoken in this project using create.pantoken.app/SKILL.md.\""
-msgstr "\"在此專案設定 pantoken (github.com/thedannywahl/pantoken)，使用 create.pantoken.app/SKILL.md。\""
+msgstr ""
+"\"在此專案設定 pantoken (github.com/thedannywahl/pantoken)，使用 "
+"create.pantoken.app/SKILL.md。\""
 
 #: docs/.vitepress/i18n.json#registryBrowser.title
 #, fuzzy, no-c-format
@@ -444,8 +459,13 @@ msgstr "註冊表"
 #: docs/.vitepress/i18n.json#registryBrowser.subtitle
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.subtitle"
-msgid "Compatible components, themes, and behavior hooks conforming to the shadcn/ui registry specification. Add items directly to your shadcn/ui project via CLI."
-msgstr "與 shadcn/ui registry 規範相容的元件、主題與行為掛勾。透過 CLI 直接將項目新增到你的 shadcn/ui 專案中。"
+msgid ""
+"Compatible components, themes, and behavior hooks conforming to the shadcn/"
+"ui registry specification. Add items directly to your shadcn/ui project via "
+"CLI."
+msgstr ""
+"與 shadcn/ui registry 規範相容的元件、主題與行為掛勾。透過 CLI 直接將項目新增"
+"到你的 shadcn/ui 專案中。"
 
 #: docs/.vitepress/i18n.json#registryBrowser.tabAll
 #, no-c-format
@@ -540,8 +560,13 @@ msgstr "Canvas"
 #: docs/.vitepress/i18n.json#canvasRce.description
 #, no-c-format
 msgctxt "docs.chrome:canvasRce.description"
-msgid "A live preview of pantoken's Canvas LMS Rich Content Editor template: a TinyMCE-based editor with starter layouts, a live preview pane, and hand-editable theme.css/theme.js output."
-msgstr "pantoken 的 Canvas LMS Rich Content Editor 範本的即時預覽：基於 TinyMCE 的編輯器，包含入門佈局、即時預覽窗格，以及可手動編輯的 theme.css/theme.js 輸出。"
+msgid ""
+"A live preview of pantoken's Canvas LMS Rich Content Editor template: a "
+"TinyMCE-based editor with starter layouts, a live preview pane, and hand-"
+"editable theme.css/theme.js output."
+msgstr ""
+"pantoken 的 Canvas LMS Rich Content Editor 範本的即時預覽：基於 TinyMCE 的編"
+"輯器，包含入門佈局、即時預覽窗格，以及可手動編輯的 theme.css/theme.js 輸出。"
 
 #: docs/.vitepress/i18n.json#canvasRce.openInNewTab
 #, fuzzy, no-c-format
@@ -564,8 +589,12 @@ msgstr "工具"
 #: docs/.vitepress/i18n.json#agentTools.subtitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.subtitle"
-msgid "Pick a Pantoken agent workflow, generate the command or launch URL, and give your assistant the files it needs to stop guessing."
-msgstr "選擇一個 Pantoken agent 工作流程，產生命令或啟動 URL，並提供助理所需的檔案以免再猜測。"
+msgid ""
+"Pick a Pantoken agent workflow, generate the command or launch URL, and give "
+"your assistant the files it needs to stop guessing."
+msgstr ""
+"選擇一個 Pantoken agent 工作流程，產生命令或啟動 URL，並提供助理所需的檔案以"
+"免再猜測。"
 
 #: docs/.vitepress/i18n.json#agentTools.providerLabel
 #, no-c-format
@@ -612,7 +641,8 @@ msgstr "在 {{agent}} 中開啟"
 #: docs/.vitepress/i18n.json#agentTools.openUnavailable
 #, no-c-format
 msgctxt "docs.chrome:agentTools.openUnavailable"
-msgid "This agent does not publish a stable launch URL. Use Copy for the CLI prompt."
+msgid ""
+"This agent does not publish a stable launch URL. Use Copy for the CLI prompt."
 msgstr "此 agent 未發佈穩定的啟動 URL。請使用「複製」以取得 CLI 提示。"
 
 #: docs/.vitepress/i18n.json#agentTools.tabBootstrap
@@ -648,8 +678,12 @@ msgstr "引導專案"
 #: docs/.vitepress/i18n.json#agentTools.bootstrapDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.bootstrapDescription"
-msgid "Scaffold a starter with Pantoken wired in and install the repo-local agent assets in the same pass."
-msgstr "搭建一個已整合 Pantoken 的起始範本，並於同一流程中安裝該儲存庫本地的 agent 資產。"
+msgid ""
+"Scaffold a starter with Pantoken wired in and install the repo-local agent "
+"assets in the same pass."
+msgstr ""
+"搭建一個已整合 Pantoken 的起始範本，並於同一流程中安裝該儲存庫本地的 agent 資"
+"產。"
 
 #: docs/.vitepress/i18n.json#agentTools.platformLabel
 #, fuzzy, no-c-format
@@ -672,8 +706,12 @@ msgstr "將 agent 指南加入儲存庫"
 #: docs/.vitepress/i18n.json#agentTools.installDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installDescription"
-msgid "Install AGENTS.md, llms.txt, editor rules, and Claude skills into an existing project that already uses or is about to use Pantoken."
-msgstr "將 AGENTS.md、llms.txt、編輯器規則與 Claude skills 安裝到已在使用或即將使用 Pantoken 的現有專案中。"
+msgid ""
+"Install AGENTS.md, llms.txt, editor rules, and Claude skills into an "
+"existing project that already uses or is about to use Pantoken."
+msgstr ""
+"將 AGENTS.md、llms.txt、編輯器規則與 Claude skills 安裝到已在使用或即將使用 "
+"Pantoken 的現有專案中。"
 
 #: docs/.vitepress/i18n.json#agentTools.toolLabel
 #, no-c-format
@@ -696,8 +734,12 @@ msgstr "註冊表"
 #: docs/.vitepress/i18n.json#agentTools.registryDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryDescription"
-msgid "Point an agent at Pantoken's indexed registry so it can search, inspect, and add CSS-backed registry items instead of inventing package names."
-msgstr "將 agent 指向 Pantoken 的索引註冊表，使其能搜尋、檢視並新增以 CSS 為基礎的註冊表項目，而不是憑空想出套件名稱。"
+msgid ""
+"Point an agent at Pantoken's indexed registry so it can search, inspect, and "
+"add CSS-backed registry items instead of inventing package names."
+msgstr ""
+"將 agent 指向 Pantoken 的索引註冊表，使其能搜尋、檢視並新增以 CSS 為基礎的註"
+"冊表項目，而不是憑空想出套件名稱。"
 
 #: docs/.vitepress/i18n.json#agentTools.registryActionLabel
 #, no-c-format
@@ -720,32 +762,56 @@ msgstr "可由 agent 讀取的文件"
 #: docs/.vitepress/i18n.json#agentTools.docsDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsDescription"
-msgid "Pantoken publishes fetchable documentation and manifests for assistants that can browse URLs or read raw Markdown."
-msgstr "Pantoken 發佈可抓取的文件與清單，供能瀏覽 URL 或閱讀原始 Markdown 的助理使用。"
+msgid ""
+"Pantoken publishes fetchable documentation and manifests for assistants that "
+"can browse URLs or read raw Markdown."
+msgstr ""
+"Pantoken 發佈可抓取的文件與清單，供能瀏覽 URL 或閱讀原始 Markdown 的助理使"
+"用。"
 
 #: docs/.vitepress/i18n.json#agentTools.installPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installPrompt"
-msgid "Install Pantoken agent guidance in this repository. Use {{command}}, then summarize the files written and when future agents should read them."
-msgstr "在此儲存庫安裝 Pantoken agent 指南。使用 {{command}}，然後摘要寫入的檔案以及未來 agent 應何時讀取它們。"
+msgid ""
+"Install Pantoken agent guidance in this repository. Use {{command}}, then "
+"summarize the files written and when future agents should read them."
+msgstr ""
+"在此儲存庫安裝 Pantoken agent 指南。使用 {{command}}，然後摘要寫入的檔案以及"
+"未來 agent 應何時讀取它們。"
 
 #: docs/.vitepress/i18n.json#agentTools.registryPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryPrompt"
-msgid "Use the Pantoken shadcn registry for this project. Fetch https://pantoken.app/r/registry.json, then run {{command}} if the project uses shadcn or has components.json. Registry items install CSS and metadata, not React components."
-msgstr "為此專案使用 Pantoken shadcn 註冊表。先抓取 https://pantoken.app/r/registry.json，若專案使用 shadcn 或有 components.json，再執行 {{command}}。註冊表項目會安裝 CSS 與 metadata，而非 React 元件。"
+msgid ""
+"Use the Pantoken shadcn registry for this project. Fetch https://"
+"pantoken.app/r/registry.json, then run {{command}} if the project uses "
+"shadcn or has components.json. Registry items install CSS and metadata, not "
+"React components."
+msgstr ""
+"為此專案使用 Pantoken shadcn 註冊表。先抓取 https://pantoken.app/r/"
+"registry.json，若專案使用 shadcn 或有 components.json，再執行 {{command}}。註"
+"冊表項目會安裝 CSS 與 metadata，而非 React 元件。"
 
 #: docs/.vitepress/i18n.json#agentTools.docsPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsPrompt"
-msgid "Fetch https://pantoken.app/llms.txt first. When a page is needed, prefer its raw Markdown URL by adding .md to the clean docs path, and use Pantoken manifests for component capabilities, CDN plugins, demos, and registry items."
-msgstr "先抓取 https://pantoken.app/llms.txt。若需要頁面，優先使用清潔文件路徑加上 .md 的原始 Markdown URL，並使用 Pantoken 清單來取得元件能力、CDN 外掛、範例與註冊表項目。"
+msgid ""
+"Fetch https://pantoken.app/llms.txt first. When a page is needed, prefer its "
+"raw Markdown URL by adding .md to the clean docs path, and use Pantoken "
+"manifests for component capabilities, CDN plugins, demos, and registry items."
+msgstr ""
+"先抓取 https://pantoken.app/llms.txt。若需要頁面，優先使用清潔文件路徑加"
+"上 .md 的原始 Markdown URL，並使用 Pantoken 清單來取得元件能力、CDN 外掛、範"
+"例與註冊表項目。"
 
 #: docs/.vitepress/i18n.json#agentTools.docsCommand
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsCommand"
-msgid "Fetch https://pantoken.app/llms.txt, then follow links to the pages and manifests relevant to this task."
-msgstr "抓取 https://pantoken.app/llms.txt，然後追蹤與此任務相關的頁面與清單連結。"
+msgid ""
+"Fetch https://pantoken.app/llms.txt, then follow links to the pages and "
+"manifests relevant to this task."
+msgstr ""
+"抓取 https://pantoken.app/llms.txt，然後追蹤與此任務相關的頁面與清單連結。"
 
 #: docs/.vitepress/i18n.json#agentTools.createDomainTitle
 #, no-c-format
@@ -756,8 +822,10 @@ msgstr "引導技能 URL"
 #: docs/.vitepress/i18n.json#agentTools.createDomainDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.createDomainDescription"
-msgid "The short public URL any URL-capable agent can fetch to set up Pantoken."
-msgstr "任何具備抓取 URL 能力的 agent 都能擷取的短版公開 URL，用來設定 Pantoken。"
+msgid ""
+"The short public URL any URL-capable agent can fetch to set up Pantoken."
+msgstr ""
+"任何具備抓取 URL 能力的 agent 都能擷取的短版公開 URL，用來設定 Pantoken。"
 
 #: docs/.vitepress/i18n.json#agentTools.llmsTitle
 #, no-c-format
@@ -780,7 +848,8 @@ msgstr "完整站點內容"
 #: docs/.vitepress/i18n.json#agentTools.llmsFullDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsFullDescription"
-msgid "Expanded LLM context for agents that need the complete documentation set."
+msgid ""
+"Expanded LLM context for agents that need the complete documentation set."
 msgstr "為需要完整文件集的 agent 提供擴展的 LLM 上下文。"
 
 #: docs/.vitepress/i18n.json#agentTools.pageMdTitle
@@ -828,7 +897,9 @@ msgstr "元件"
 #: docs/.vitepress/i18n.json#agentTools.capabilitiesDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.capabilitiesDescription"
-msgid "Machine-readable map of component CSS, JavaScript, icon, and dependency needs."
+msgid ""
+"Machine-readable map of component CSS, JavaScript, icon, and dependency "
+"needs."
 msgstr "機器可讀的元件地圖，描述元件的 CSS、JavaScript、圖示與相依需求。"
 
 #: docs/.vitepress/i18n.json#agentTools.pluginsTitle
@@ -954,7 +1025,9 @@ msgstr "找不到頁面"
 #: docs/.vitepress/i18n.json#chrome.notFound.quote
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.quote"
-msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
+msgid ""
+"But if you don't change your direction, and if you keep looking, you may end "
+"up where you are heading."
 msgstr "但如果你不改變方向，並且持續凝視，最終可能會到達你正朝向的地方。"
 
 #: docs/.vitepress/i18n.json#chrome.notFound.linkLabel

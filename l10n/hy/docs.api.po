@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantoken\n"
-"PO-Revision-Date: 2026-10-01 02:09+0000\n"
+"PO-Revision-Date: 2026-10-01 12:31+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
 "MIME-Version: 1.0\n"
@@ -12812,7 +12812,7 @@ msgstr "Շարժական «դիտել ամբողջ էկրանում» կոճակ
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
 #~ msgid "Checkbox\n"
-#~ msgstr "checkbox"
+#~ msgstr "Ստուգիչ տուփ\n"
 
 #, fuzzy, no-c-format
 #~ msgctxt "docs.api:prose"
@@ -26259,3 +26259,11 @@ msgstr "segment"
 msgctxt "docs.api:text"
 msgid "skeleton-loader"
 msgstr "skeleton-loader"
+
+msgctxt "docs.api:prose"
+msgid "Scrollable row containing the selectable segments."
+msgstr "Սքրոլվող տող, որը պարունակում է ընտրելի հատվածները."
+
+msgctxt "docs.api:prose"
+msgid "Clips the segment row and anchors the overflow controls."
+msgstr "Կտրում է հատվածների տողը և ամրացնում է overflow կառավարման տարրերը."

@@ -4,16 +4,20 @@ msgstr ""
 "PO-Revision-Date: 2026-10-01 01:53+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
+"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: und\n"
 
 #: docs/.vitepress/i18n.json#description
 #, no-c-format
 msgctxt "docs.chrome:description"
-msgid "Instructure design tokens and icons, reshaped for every platform and framework."
-msgstr "Instructure oblikovni žetoni in ikone, prilagojeni za vsako platformo in ogrodje."
+msgid ""
+"Instructure design tokens and icons, reshaped for every platform and "
+"framework."
+msgstr ""
+"Instructure oblikovni žetoni in ikone, prilagojeni za vsako platformo in "
+"ogrodje."
 
 #: docs/.vitepress/i18n.json#nav.guide
 #, no-c-format
@@ -348,8 +352,12 @@ msgstr "O osnovnem ponastavitvi"
 #: docs/.vitepress/i18n.json#cdnPicker.baseInfo
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.baseInfo"
-msgid "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults."
-msgstr "Izbirni globalni reset: box-sizing, površina strani, osnovna barva besedila in pisava, color-scheme in privzete povezave."
+msgid ""
+"The opt-in global reset: box-sizing, the page surface, base text colour and "
+"font, color-scheme, and link defaults."
+msgstr ""
+"Izbirni globalni reset: box-sizing, površina strani, osnovna barva besedila "
+"in pisava, color-scheme in privzete povezave."
 
 #: docs/.vitepress/i18n.json#cdnPicker.includeUtilities
 #, no-c-format
@@ -366,8 +374,12 @@ msgstr "O utilitah (utility razredih)"
 #: docs/.vitepress/i18n.json#cdnPicker.utilitiesInfo
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.utilitiesInfo"
-msgid "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides."
-msgstr "Izbirna plast prečnih razredov: primitiv View, razmiki po token lestvici in semantični barvni presežki."
+msgid ""
+"An opt-in layer of cross-cutting classes: a View primitive, spacing on the "
+"token scale, and semantic color overrides."
+msgstr ""
+"Izbirna plast prečnih razredov: primitiv View, razmiki po token lestvici in "
+"semantični barvni presežki."
 
 #: docs/.vitepress/i18n.json#cdnPicker.copy
 #, no-c-format
@@ -390,14 +402,20 @@ msgstr "Izberite eno ali več komponent za ustvarjanje URL-ja."
 #: docs/.vitepress/i18n.json#cdnPicker.fontsNote
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.fontsNote"
-msgid "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them."
-msgstr "Pisave se nalagajo ločeno — dodajte <link> do @pantoken/components/fonts.css, ko jih potrebujete."
+msgid ""
+"Fonts load separately — add a <link> to @pantoken/components/fonts.css when "
+"you need them."
+msgstr ""
+"Pisave se nalagajo ločeno — dodajte <link> do @pantoken/components/"
+"fonts.css, ko jih potrebujete."
 
 #: docs/.vitepress/i18n.json#cdnPicker.iconsNote
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.iconsNote"
-msgid "component-icons.css is included because a selected component uses icons."
-msgstr "component-icons.css je vključen, ker izbrana komponenta uporablja ikone."
+msgid ""
+"component-icons.css is included because a selected component uses icons."
+msgstr ""
+"component-icons.css je vključen, ker izbrana komponenta uporablja ikone."
 
 #: docs/.vitepress/i18n.json#getStartedTabs.copied
 #, no-c-format
@@ -433,7 +451,9 @@ msgstr "Nadaljuj animacijo"
 #, fuzzy, no-c-format
 msgctxt "docs.chrome:getStartedTabs.agentPrompt"
 msgid "\"Set up pantoken in this project using create.pantoken.app/SKILL.md.\""
-msgstr "\"Namestite pantoken (github.com/thedannywahl/pantoken) v ta projekt z uporabo create.pantoken.app/SKILL.md.\""
+msgstr ""
+"\"Namestite pantoken (github.com/thedannywahl/pantoken) v ta projekt z "
+"uporabo create.pantoken.app/SKILL.md.\""
 
 #: docs/.vitepress/i18n.json#registryBrowser.title
 #, fuzzy, no-c-format
@@ -444,8 +464,14 @@ msgstr "Register"
 #: docs/.vitepress/i18n.json#registryBrowser.subtitle
 #, no-c-format
 msgctxt "docs.chrome:registryBrowser.subtitle"
-msgid "Compatible components, themes, and behavior hooks conforming to the shadcn/ui registry specification. Add items directly to your shadcn/ui project via CLI."
-msgstr "Združljive komponente, teme in hooki vedenja, ki ustrezajo specifikaciji registra shadcn/ui. Elemente dodajte neposredno v vaš projekt shadcn/ui preko CLI."
+msgid ""
+"Compatible components, themes, and behavior hooks conforming to the shadcn/"
+"ui registry specification. Add items directly to your shadcn/ui project via "
+"CLI."
+msgstr ""
+"Združljive komponente, teme in hooki vedenja, ki ustrezajo specifikaciji "
+"registra shadcn/ui. Elemente dodajte neposredno v vaš projekt shadcn/ui "
+"preko CLI."
 
 #: docs/.vitepress/i18n.json#registryBrowser.tabAll
 #, no-c-format
@@ -540,8 +566,14 @@ msgstr "Canvas"
 #: docs/.vitepress/i18n.json#canvasRce.description
 #, no-c-format
 msgctxt "docs.chrome:canvasRce.description"
-msgid "A live preview of pantoken's Canvas LMS Rich Content Editor template: a TinyMCE-based editor with starter layouts, a live preview pane, and hand-editable theme.css/theme.js output."
-msgstr "Živi predogled pantokenove predloge Rich Content Editor za Canvas LMS: urejevalnik, ki temelji na TinyMCE, z začetnimi postavitvami, oknom za živi predogled in ročno ureljivim izhodom theme.css/theme.js."
+msgid ""
+"A live preview of pantoken's Canvas LMS Rich Content Editor template: a "
+"TinyMCE-based editor with starter layouts, a live preview pane, and hand-"
+"editable theme.css/theme.js output."
+msgstr ""
+"Živi predogled pantokenove predloge Rich Content Editor za Canvas LMS: "
+"urejevalnik, ki temelji na TinyMCE, z začetnimi postavitvami, oknom za živi "
+"predogled in ročno ureljivim izhodom theme.css/theme.js."
 
 #: docs/.vitepress/i18n.json#canvasRce.openInNewTab
 #, fuzzy, no-c-format
@@ -564,8 +596,12 @@ msgstr "Orodja"
 #: docs/.vitepress/i18n.json#agentTools.subtitle
 #, no-c-format
 msgctxt "docs.chrome:agentTools.subtitle"
-msgid "Pick a Pantoken agent workflow, generate the command or launch URL, and give your assistant the files it needs to stop guessing."
-msgstr "Izberite delovni potek Pantoken agenta, ustvarite ukaz ali URL za zagon in svojemu pomočniku zagotovite datoteke, ki jih potrebuje, da ne bo več ugibal."
+msgid ""
+"Pick a Pantoken agent workflow, generate the command or launch URL, and give "
+"your assistant the files it needs to stop guessing."
+msgstr ""
+"Izberite delovni potek Pantoken agenta, ustvarite ukaz ali URL za zagon in "
+"svojemu pomočniku zagotovite datoteke, ki jih potrebuje, da ne bo več ugibal."
 
 #: docs/.vitepress/i18n.json#agentTools.providerLabel
 #, no-c-format
@@ -612,8 +648,11 @@ msgstr "Odpri v {{agent}}"
 #: docs/.vitepress/i18n.json#agentTools.openUnavailable
 #, no-c-format
 msgctxt "docs.chrome:agentTools.openUnavailable"
-msgid "This agent does not publish a stable launch URL. Use Copy for the CLI prompt."
-msgstr "Ta agent ne objavlja stabilnega URL‑ja za zagon. Uporabite Kopiraj za CLI poziv."
+msgid ""
+"This agent does not publish a stable launch URL. Use Copy for the CLI prompt."
+msgstr ""
+"Ta agent ne objavlja stabilnega URL‑ja za zagon. Uporabite Kopiraj za CLI "
+"poziv."
 
 #: docs/.vitepress/i18n.json#agentTools.tabBootstrap
 #, no-c-format
@@ -648,8 +687,12 @@ msgstr "Inicializiraj projekt"
 #: docs/.vitepress/i18n.json#agentTools.bootstrapDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.bootstrapDescription"
-msgid "Scaffold a starter with Pantoken wired in and install the repo-local agent assets in the same pass."
-msgstr "Ustvari začetni okvir s Pantoken integracijo in v istem koraku namesti lokalne agentove vire v repozitorij."
+msgid ""
+"Scaffold a starter with Pantoken wired in and install the repo-local agent "
+"assets in the same pass."
+msgstr ""
+"Ustvari začetni okvir s Pantoken integracijo in v istem koraku namesti "
+"lokalne agentove vire v repozitorij."
 
 #: docs/.vitepress/i18n.json#agentTools.platformLabel
 #, fuzzy, no-c-format
@@ -672,8 +715,12 @@ msgstr "Dodaj smernice za agente v repozitorij"
 #: docs/.vitepress/i18n.json#agentTools.installDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installDescription"
-msgid "Install AGENTS.md, llms.txt, editor rules, and Claude skills into an existing project that already uses or is about to use Pantoken."
-msgstr "Namesti AGENTS.md, llms.txt, pravila urejevalnika in Claude spretnosti v obstoječi projekt, ki že uporablja ali se pripravlja uporabljati Pantoken."
+msgid ""
+"Install AGENTS.md, llms.txt, editor rules, and Claude skills into an "
+"existing project that already uses or is about to use Pantoken."
+msgstr ""
+"Namesti AGENTS.md, llms.txt, pravila urejevalnika in Claude spretnosti v "
+"obstoječi projekt, ki že uporablja ali se pripravlja uporabljati Pantoken."
 
 #: docs/.vitepress/i18n.json#agentTools.toolLabel
 #, no-c-format
@@ -696,8 +743,12 @@ msgstr "Register"
 #: docs/.vitepress/i18n.json#agentTools.registryDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryDescription"
-msgid "Point an agent at Pantoken's indexed registry so it can search, inspect, and add CSS-backed registry items instead of inventing package names."
-msgstr "Usmeri agenta na indeksirano registrom Pantoken, da lahko išče, pregleda in doda elemente registra z implementacijo CSS namesto domnevnih imen paketov."
+msgid ""
+"Point an agent at Pantoken's indexed registry so it can search, inspect, and "
+"add CSS-backed registry items instead of inventing package names."
+msgstr ""
+"Usmeri agenta na indeksirano registrom Pantoken, da lahko išče, pregleda in "
+"doda elemente registra z implementacijo CSS namesto domnevnih imen paketov."
 
 #: docs/.vitepress/i18n.json#agentTools.registryActionLabel
 #, no-c-format
@@ -720,32 +771,60 @@ msgstr "Dokumentacija berljiva za agente"
 #: docs/.vitepress/i18n.json#agentTools.docsDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsDescription"
-msgid "Pantoken publishes fetchable documentation and manifests for assistants that can browse URLs or read raw Markdown."
-msgstr "Pantoken objavlja pridobljivo dokumentacijo in manifeste za asistente, ki lahko spremljajo URL‑je ali berejo surovo Markdown vsebino."
+msgid ""
+"Pantoken publishes fetchable documentation and manifests for assistants that "
+"can browse URLs or read raw Markdown."
+msgstr ""
+"Pantoken objavlja pridobljivo dokumentacijo in manifeste za asistente, ki "
+"lahko spremljajo URL‑je ali berejo surovo Markdown vsebino."
 
 #: docs/.vitepress/i18n.json#agentTools.installPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.installPrompt"
-msgid "Install Pantoken agent guidance in this repository. Use {{command}}, then summarize the files written and when future agents should read them."
-msgstr "Namestite smernice Pantoken agenta v ta repozitorij. Uporabite {{command}}, nato strnite datoteke, ki so bile ustvarjene, in kdaj naj bodo bodoči agenti preberejo te datoteke."
+msgid ""
+"Install Pantoken agent guidance in this repository. Use {{command}}, then "
+"summarize the files written and when future agents should read them."
+msgstr ""
+"Namestite smernice Pantoken agenta v ta repozitorij. Uporabite {{command}}, "
+"nato strnite datoteke, ki so bile ustvarjene, in kdaj naj bodo bodoči agenti "
+"preberejo te datoteke."
 
 #: docs/.vitepress/i18n.json#agentTools.registryPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.registryPrompt"
-msgid "Use the Pantoken shadcn registry for this project. Fetch https://pantoken.app/r/registry.json, then run {{command}} if the project uses shadcn or has components.json. Registry items install CSS and metadata, not React components."
-msgstr "Uporabite Pantoken shadcn register za ta projekt. Pridobite https://pantoken.app/r/registry.json, nato zaženite {{command}}, če projekt uporablja shadcn ali ima components.json. Elementi registra namestijo CSS in metapodatke, ne React komponent."
+msgid ""
+"Use the Pantoken shadcn registry for this project. Fetch https://"
+"pantoken.app/r/registry.json, then run {{command}} if the project uses "
+"shadcn or has components.json. Registry items install CSS and metadata, not "
+"React components."
+msgstr ""
+"Uporabite Pantoken shadcn register za ta projekt. Pridobite https://"
+"pantoken.app/r/registry.json, nato zaženite {{command}}, če projekt "
+"uporablja shadcn ali ima components.json. Elementi registra namestijo CSS in "
+"metapodatke, ne React komponent."
 
 #: docs/.vitepress/i18n.json#agentTools.docsPrompt
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsPrompt"
-msgid "Fetch https://pantoken.app/llms.txt first. When a page is needed, prefer its raw Markdown URL by adding .md to the clean docs path, and use Pantoken manifests for component capabilities, CDN plugins, demos, and registry items."
-msgstr "Najprej pridobite https://pantoken.app/llms.txt. Ko je potrebna stran, raje uporabite njeno surovo Markdown različico tako, da k čisti poti dokumentacije dodate .md, in uporabite Pantoken manifeste za zmogljivosti komponent, CDN vtičnike, demoe in elemente registra."
+msgid ""
+"Fetch https://pantoken.app/llms.txt first. When a page is needed, prefer its "
+"raw Markdown URL by adding .md to the clean docs path, and use Pantoken "
+"manifests for component capabilities, CDN plugins, demos, and registry items."
+msgstr ""
+"Najprej pridobite https://pantoken.app/llms.txt. Ko je potrebna stran, raje "
+"uporabite njeno surovo Markdown različico tako, da k čisti poti "
+"dokumentacije dodate .md, in uporabite Pantoken manifeste za zmogljivosti "
+"komponent, CDN vtičnike, demoe in elemente registra."
 
 #: docs/.vitepress/i18n.json#agentTools.docsCommand
 #, no-c-format
 msgctxt "docs.chrome:agentTools.docsCommand"
-msgid "Fetch https://pantoken.app/llms.txt, then follow links to the pages and manifests relevant to this task."
-msgstr "Pridobite https://pantoken.app/llms.txt, nato sledite povezavam do strani in manifestov, relevantnih za to nalogo."
+msgid ""
+"Fetch https://pantoken.app/llms.txt, then follow links to the pages and "
+"manifests relevant to this task."
+msgstr ""
+"Pridobite https://pantoken.app/llms.txt, nato sledite povezavam do strani in "
+"manifestov, relevantnih za to nalogo."
 
 #: docs/.vitepress/i18n.json#agentTools.createDomainTitle
 #, no-c-format
@@ -756,8 +835,11 @@ msgstr "URL za bootstrap spretnosti"
 #: docs/.vitepress/i18n.json#agentTools.createDomainDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.createDomainDescription"
-msgid "The short public URL any URL-capable agent can fetch to set up Pantoken."
-msgstr "Kratki javni URL, ki ga lahko vsak agent, ki podpira URL‑je, pridobi za nastavitev Pantoken."
+msgid ""
+"The short public URL any URL-capable agent can fetch to set up Pantoken."
+msgstr ""
+"Kratki javni URL, ki ga lahko vsak agent, ki podpira URL‑je, pridobi za "
+"nastavitev Pantoken."
 
 #: docs/.vitepress/i18n.json#agentTools.llmsTitle
 #, no-c-format
@@ -769,7 +851,9 @@ msgstr "Indeks strani"
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsDescription"
 msgid "Canonical English documentation index for agents and LLM-aware clients."
-msgstr "Kanonični angleški indeks dokumentacije za agente in odjemalce, ki razumejo LLM."
+msgstr ""
+"Kanonični angleški indeks dokumentacije za agente in odjemalce, ki razumejo "
+"LLM."
 
 #: docs/.vitepress/i18n.json#agentTools.llmsFullTitle
 #, no-c-format
@@ -780,8 +864,10 @@ msgstr "Celoten kontekst strani"
 #: docs/.vitepress/i18n.json#agentTools.llmsFullDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.llmsFullDescription"
-msgid "Expanded LLM context for agents that need the complete documentation set."
-msgstr "Razširjen LLM kontekst za agente, ki potrebujejo celoten nabor dokumentacije."
+msgid ""
+"Expanded LLM context for agents that need the complete documentation set."
+msgstr ""
+"Razširjen LLM kontekst za agente, ki potrebujejo celoten nabor dokumentacije."
 
 #: docs/.vitepress/i18n.json#agentTools.pageMdTitle
 #, no-c-format
@@ -793,7 +879,9 @@ msgstr "Surove Markdown strani"
 #, no-c-format
 msgctxt "docs.chrome:agentTools.pageMdDescription"
 msgid "Every docs HTML page advertises a raw Markdown alternate link."
-msgstr "Vsaka dokumentacijska HTML stran oglašuje alternativo v surovem Markdown formatu."
+msgstr ""
+"Vsaka dokumentacijska HTML stran oglašuje alternativo v surovem Markdown "
+"formatu."
 
 #: docs/.vitepress/i18n.json#agentTools.registryManifestTitle
 #, fuzzy, no-c-format
@@ -817,7 +905,8 @@ msgstr "Združljivost cilja"
 #, no-c-format
 msgctxt "docs.chrome:agentTools.targetCompatibilityDescription"
 msgid "Verified host versions and tested environments for Pantoken adapters."
-msgstr "Preverjene različice gostiteljev in testirana okolja za adapterje Pantoken."
+msgstr ""
+"Preverjene različice gostiteljev in testirana okolja za adapterje Pantoken."
 
 #: docs/.vitepress/i18n.json#agentTools.capabilitiesTitle
 #, fuzzy, no-c-format
@@ -828,8 +917,12 @@ msgstr "Komponente"
 #: docs/.vitepress/i18n.json#agentTools.capabilitiesDescription
 #, no-c-format
 msgctxt "docs.chrome:agentTools.capabilitiesDescription"
-msgid "Machine-readable map of component CSS, JavaScript, icon, and dependency needs."
-msgstr "Strojno berljiva mapa potreb komponent po CSS, JavaScript, ikonah in odvisnostih."
+msgid ""
+"Machine-readable map of component CSS, JavaScript, icon, and dependency "
+"needs."
+msgstr ""
+"Strojno berljiva mapa potreb komponent po CSS, JavaScript, ikonah in "
+"odvisnostih."
 
 #: docs/.vitepress/i18n.json#agentTools.pluginsTitle
 #, no-c-format
@@ -853,7 +946,8 @@ msgstr "Katalog API‑jev"
 #, no-c-format
 msgctxt "docs.chrome:agentTools.apiCatalogDescription"
 msgid "Machine-readable linkset for Pantoken's agent-readable resources."
-msgstr "Strojno berljiva povezovalna zbirka za Pantokenove vire, berljive za agente."
+msgstr ""
+"Strojno berljiva povezovalna zbirka za Pantokenove vire, berljive za agente."
 
 #: docs/.vitepress/i18n.json#agentTools.vscodeCustomDataTitle
 #, no-c-format
@@ -954,8 +1048,12 @@ msgstr "STRAN NI NAJDENA"
 #: docs/.vitepress/i18n.json#chrome.notFound.quote
 #, no-c-format
 msgctxt "docs.chrome:chrome.notFound.quote"
-msgid "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
-msgstr "Če ne spremeniš smeri in boš vztrajal pri iskanju, lahko končaš tam, kamor si namenjen."
+msgid ""
+"But if you don't change your direction, and if you keep looking, you may end "
+"up where you are heading."
+msgstr ""
+"Če ne spremeniš smeri in boš vztrajal pri iskanju, lahko končaš tam, kamor "
+"si namenjen."
 
 #: docs/.vitepress/i18n.json#chrome.notFound.linkLabel
 #, no-c-format

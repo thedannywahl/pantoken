@@ -4,10 +4,10 @@ msgstr ""
 "PO-Revision-Date: 2026-10-01 01:55+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
+"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: und\n"
 
 #: docs/demos/alert/i18n.json#text1
 #, no-c-format
@@ -294,8 +294,12 @@ msgstr "Dette resultat gengives med"
 #: docs/demos/base/i18n.json#text3
 #, no-c-format
 msgctxt "docs.demos:base:text3"
-msgid "loaded first. The page surface, base text color\n    and font, and"
-msgstr "indlæst først. Sidens overflade, grundlæggende tekstfarve\n    og skrifttype, og"
+msgid ""
+"loaded first. The page surface, base text color\n"
+"    and font, and"
+msgstr ""
+"indlæst først. Sidens overflade, grundlæggende tekstfarve\n"
+"    og skrifttype, og"
 
 #: docs/demos/base/i18n.json#text4
 #, no-c-format
@@ -318,8 +322,12 @@ msgstr "basislink"
 #: docs/demos/base/i18n.json#text7
 #, no-c-format
 msgctxt "docs.demos:base:text7"
-msgid ", and everything sits on the token page surface. Switch the theme (or\n    light/dark) and the surface, text, and link all follow."
-msgstr ", og alting ligger på token-sidens overflade. Skift temaet (eller lys/mørk), og overfladen, teksten og linket følger med."
+msgid ""
+", and everything sits on the token page surface. Switch the theme (or\n"
+"    light/dark) and the surface, text, and link all follow."
+msgstr ""
+", og alting ligger på token-sidens overflade. Skift temaet (eller lys/mørk), "
+"og overfladen, teksten og linket følger med."
 
 #: docs/demos/base/i18n.json#text8
 #, no-c-format
@@ -625,7 +633,9 @@ msgstr "Hvad er nyt"
 #, no-c-format
 msgctxt "docs.demos:byline:text2"
 msgid "The figure can be any leading visual — an icon, an avatar, or an image."
-msgstr "Figuren kan være et hvilket som helst førende visuelt element — et ikon, en avatar eller et billede."
+msgstr ""
+"Figuren kan være et hvilket som helst førende visuelt element — et ikon, en "
+"avatar eller et billede."
 
 #: docs/demos/byline/i18n.json#text3
 #, no-c-format
@@ -642,8 +652,13 @@ msgstr "Med"
 #: docs/demos/byline/i18n.json#text5
 #, no-c-format
 msgctxt "docs.demos:byline:text5"
-msgid "the figure pins to the top instead of centering,\n          which reads better when the description runs to several lines like this one does."
-msgstr "figuren fastgøres til toppen i stedet for at blive centreret, hvilket læses bedre, når beskrivelsen går over flere linjer, som denne gør."
+msgid ""
+"the figure pins to the top instead of centering,\n"
+"          which reads better when the description runs to several lines like "
+"this one does."
+msgstr ""
+"figuren fastgøres til toppen i stedet for at blive centreret, hvilket læses "
+"bedre, når beskrivelsen går over flere linjer, som denne gør."
 
 #: docs/demos/byline/i18n.json#text6
 #, no-c-format
@@ -786,8 +801,12 @@ msgstr "en overflade, og"
 #: docs/demos/color-utilities/i18n.json#text4
 #, no-c-format
 msgctxt "docs.demos:color-utilities:text4"
-msgid "a border — each from a semantic color token, so overrides stay\n    on-palette and follow the theme."
-msgstr "en kant — hver fra et semantisk farvetoken, så overskrivninger forbliver på paletten og følger temaet."
+msgid ""
+"a border — each from a semantic color token, so overrides stay\n"
+"    on-palette and follow the theme."
+msgstr ""
+"en kant — hver fra et semantisk farvetoken, så overskrivninger forbliver på "
+"paletten og følger temaet."
 
 #: docs/demos/color-utilities/i18n.json#text5
 #, no-c-format
@@ -924,8 +943,13 @@ msgstr "Vis detaljer"
 #: docs/demos/context-view/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:context-view:text2"
-msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes\n    when you click away or press Esc."
-msgstr "En kontekstvisning indrammer en callout med en caret. Som en popover ligger den i toplaget og lukkes, når du klikker væk eller trykker Esc."
+msgid ""
+"A context view frames a callout with a caret. As a popover it rides the top "
+"layer and closes\n"
+"    when you click away or press Esc."
+msgstr ""
+"En kontekstvisning indrammer en callout med en caret. Som en popover ligger "
+"den i toplaget og lukkes, når du klikker væk eller trykker Esc."
 
 #: docs/demos/context-view/i18n.json#text3
 #, no-c-format
@@ -960,8 +984,13 @@ msgstr "Inverteret baggrund"
 #: docs/demos/context-view/i18n.json#text8
 #, no-c-format
 msgctxt "docs.demos:context-view:text8"
-msgid "Positioning next to a trigger uses CSS anchor positioning where supported; elsewhere the popover\n    centers in the top layer."
-msgstr "Positionering ved siden af en trigger bruger CSS-anchor-positionering, hvor det understøttes; andre steder centrerer popoveren i det øverste lag."
+msgid ""
+"Positioning next to a trigger uses CSS anchor positioning where supported; "
+"elsewhere the popover\n"
+"    centers in the top layer."
+msgstr ""
+"Positionering ved siden af en trigger bruger CSS-anchor-positionering, hvor "
+"det understøttes; andre steder centrerer popoveren i det øverste lag."
 
 #: docs/demos/date-time-inputs/i18n.json#text1
 #, no-c-format
@@ -973,7 +1002,12 @@ msgstr "Forfaldsdato"
 #, no-c-format
 msgctxt "docs.demos:date-time-inputs:text2"
 msgid "Starts at"
-msgstr "Starter ved\n\n<system_reminder>\n<sql_tables>Tilgængelige tabeller: todos, todo_deps</sql_tables>\n</system_reminder>"
+msgstr ""
+"Starter ved\n"
+"\n"
+"<system_reminder>\n"
+"<sql_tables>Tilgængelige tabeller: todos, todo_deps</sql_tables>\n"
+"</system_reminder>"
 
 #: docs/demos/date-time-inputs/i18n.json#text3
 #, no-c-format
@@ -1062,8 +1096,13 @@ msgstr "Hovedindhold"
 #: docs/demos/drawer-layout/i18n.json#text9
 #, no-c-format
 msgctxt "docs.demos:drawer-layout:text9"
-msgid "Use the buttons above to toggle open state. Narrow the viewport to see the tray switch to\n          overlay mode."
-msgstr "Brug knapperne ovenfor til at skifte åben tilstand. Indsnævr visningsvinduet for at se bakken skifte til overlay-tilstand."
+msgid ""
+"Use the buttons above to toggle open state. Narrow the viewport to see the "
+"tray switch to\n"
+"          overlay mode."
+msgstr ""
+"Brug knapperne ovenfor til at skifte åben tilstand. Indsnævr visningsvinduet "
+"for at se bakken skifte til overlay-tilstand."
 
 #: docs/demos/elevation/i18n.json#text1
 #, no-c-format
@@ -1158,14 +1197,23 @@ msgstr "report.pdf — filtypen er ikke tilladt."
 #: docs/demos/focus-outline/i18n.json#text1
 #, no-c-format
 msgctxt "docs.demos:focus-outline:text1"
-msgid "Tab through the controls (or click the field) to see the ring. It rides every focusable out of\n      the box from"
-msgstr "Tab gennem kontrollerne (eller klik på feltet) for at se ringen. Den følger hvert fokuserbart element som standard fra"
+msgid ""
+"Tab through the controls (or click the field) to see the ring. It rides "
+"every focusable out of\n"
+"      the box from"
+msgstr ""
+"Tab gennem kontrollerne (eller klik på feltet) for at se ringen. Den følger "
+"hvert fokuserbart element som standard fra"
 
 #: docs/demos/focus-outline/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:focus-outline:text2"
-msgid "; the modifiers recolour it, inset it, or turn off the\n      animation."
-msgstr "; modifikatorerne ændrer farve på det, gør det indrykket eller slår animationen fra."
+msgid ""
+"; the modifiers recolour it, inset it, or turn off the\n"
+"      animation."
+msgstr ""
+"; modifikatorerne ændrer farve på det, gør det indrykket eller slår "
+"animationen fra."
 
 #: docs/demos/focus-outline/i18n.json#text3
 #, no-c-format
@@ -1380,14 +1428,19 @@ msgstr "klasser på mellemrums-skalaen, kort ("
 #: docs/demos/gap/i18n.json#text4
 #, no-c-format
 msgctxt "docs.demos:gap:text4"
-msgid ") or long\n    ("
-msgstr ") eller lang\n    ("
+msgid ""
+") or long\n"
+"    ("
+msgstr ""
+") eller lang\n"
+"    ("
 
 #: docs/demos/gap/i18n.json#text5
 #, no-c-format
 msgctxt "docs.demos:gap:text5"
 msgid ") spelling — usable bare or chained onto any component."
-msgstr ") stavemåde — kan bruges alene eller kædes sammen med enhver komponent."
+msgstr ""
+") stavemåde — kan bruges alene eller kædes sammen med enhver komponent."
 
 #: docs/demos/gap/i18n.json#text6
 #, no-c-format
@@ -1548,7 +1601,9 @@ msgstr "Indlejret"
 #: docs/demos/icon/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:icon:text2"
-msgid "icons scale to the text and inherit\n      its color."
+msgid ""
+"icons scale to the text and inherit\n"
+"      its color."
 msgstr "ikoner skalerer i forhold til teksten og arver dens farve."
 
 #: docs/demos/icon/i18n.json#text3
@@ -1596,8 +1651,14 @@ msgstr "12. marts 2026"
 #: docs/demos/in-place-edit/i18n.json#text7
 #, no-c-format
 msgctxt "docs.demos:in-place-edit:text7"
-msgid "Click a value to edit it. The stateful view/edit toggle with confirm and cancel buttons is the\n    web-component tier; this is the pure-CSS editable skin."
-msgstr "Klik på en værdi for at redigere den. Den tilstandsbevarende vis/ret-omskifter med bekræft- og annuller-knapper er web-component-laget; dette er det rene CSS-redigerbare skin."
+msgid ""
+"Click a value to edit it. The stateful view/edit toggle with confirm and "
+"cancel buttons is the\n"
+"    web-component tier; this is the pure-CSS editable skin."
+msgstr ""
+"Klik på en værdi for at redigere den. Den tilstandsbevarende vis/ret-"
+"omskifter med bekræft- og annuller-knapper er web-component-laget; dette er "
+"det rene CSS-redigerbare skin."
 
 #: docs/demos/layout/i18n.json#text1
 #, no-c-format
@@ -1626,8 +1687,12 @@ msgstr "og"
 #: docs/demos/layout/i18n.json#text5
 #, no-c-format
 msgctxt "docs.demos:layout:text5"
-msgid "props as composable classes — reach for them on\n    any element instead of a per-component modifier."
-msgstr "props som komponerbare klasser — brug dem på\n    ethvert element i stedet for en per-komponent-modifikator."
+msgid ""
+"props as composable classes — reach for them on\n"
+"    any element instead of a per-component modifier."
+msgstr ""
+"props som komponerbare klasser — brug dem på\n"
+"    ethvert element i stedet for en per-komponent-modifikator."
 
 #: docs/demos/layout/i18n.json#text6
 #, no-c-format
@@ -2058,8 +2123,11 @@ msgstr "Gennemgang af funktioner"
 #: docs/demos/pendo/i18n.json#popoverBody
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverBody"
-msgid "This anchored guide keeps the next action close to the feature it describes."
-msgstr "Denne forankrede vejledning holder den næste handling tæt på den funktion, den beskriver."
+msgid ""
+"This anchored guide keeps the next action close to the feature it describes."
+msgstr ""
+"Denne forankrede vejledning holder den næste handling tæt på den funktion, "
+"den beskriver."
 
 #: docs/demos/pendo/i18n.json#alertLabel
 #, no-c-format
@@ -2082,8 +2150,12 @@ msgstr "Starter kl. 23:00"
 #: docs/demos/pendo/i18n.json#alertBody
 #, no-c-format
 msgctxt "docs.demos:pendo:alertBody"
-msgid "Course tools will be unavailable briefly tonight while maintenance is completed."
-msgstr "Kursusværktøjer vil være midlertidigt utilgængelige i aften, mens vedligeholdelsen afsluttes."
+msgid ""
+"Course tools will be unavailable briefly tonight while maintenance is "
+"completed."
+msgstr ""
+"Kursusværktøjer vil være midlertidigt utilgængelige i aften, mens "
+"vedligeholdelsen afsluttes."
 
 #: docs/demos/pendo/i18n.json#bannerLabel
 #, no-c-format
@@ -2106,8 +2178,11 @@ msgstr "Indblik i deltagelse"
 #: docs/demos/pendo/i18n.json#bannerBody
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerBody"
-msgid "Review participation trends and identify where learners may need support."
-msgstr "Gennemse deltagelsestrends og identificer, hvor kursister muligvis har brug for støtte."
+msgid ""
+"Review participation trends and identify where learners may need support."
+msgstr ""
+"Gennemse deltagelsestrends og identificer, hvor kursister muligvis har brug "
+"for støtte."
 
 #: docs/demos/pendo/i18n.json#closeLabel
 #, no-c-format
@@ -2161,7 +2236,9 @@ msgstr "Banner"
 #, no-c-format
 msgctxt "docs.demos:pendo:surveyQuestion"
 msgid "How would you feel if you could no longer use participation insights?"
-msgstr "Hvordan ville du have det, hvis du ikke længere kunne bruge indsigter om deltagelse?"
+msgstr ""
+"Hvordan ville du have det, hvis du ikke længere kunne bruge indsigter om "
+"deltagelse?"
 
 #: docs/demos/pendo/i18n.json#surveyChoiceVery
 #, no-c-format
@@ -2203,7 +2280,9 @@ msgstr "Banner NPS-undersøgelse"
 #, no-c-format
 msgctxt "docs.demos:pendo:npsQuestion"
 msgid "How likely are you to recommend Canvas to a friend or colleague?"
-msgstr "Hvor sandsynligt er det, at du ville anbefale Canvas til en ven eller kollega?"
+msgstr ""
+"Hvor sandsynligt er det, at du ville anbefale Canvas til en ven eller "
+"kollega?"
 
 #: docs/demos/pendo/i18n.json#npsLowerBound
 #, no-c-format
@@ -2268,8 +2347,12 @@ msgstr "Del denne side"
 #: docs/demos/popover/i18n.json#text3
 #, no-c-format
 msgctxt "docs.demos:popover:text3"
-msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native"
-msgstr "En popover er en let overflade forankret til en trigger. Denne bruger den native"
+msgid ""
+"A popover is a lightweight surface anchored to a trigger. This one uses the "
+"native"
+msgstr ""
+"En popover er en let overflade forankret til en trigger. Denne bruger den "
+"native"
 
 #: docs/demos/popover/i18n.json#text4
 #, no-c-format
@@ -2364,8 +2447,12 @@ msgstr ", og nogle"
 #: docs/demos/prose/i18n.json#text14
 #, no-c-format
 msgctxt "docs.demos:prose:text14"
-msgid ". The prose layer styles rendered\n      markdown to match the Heading and Text components."
-msgstr ". Proselaget styler gengivet\n      markdown til at matche Overskrift- og Tekst-komponenterne."
+msgid ""
+". The prose layer styles rendered\n"
+"      markdown to match the Heading and Text components."
+msgstr ""
+". Proselaget styler gengivet\n"
+"      markdown til at matche Overskrift- og Tekst-komponenterne."
 
 #: docs/demos/prose/i18n.json#text15
 #, no-c-format
@@ -2640,8 +2727,14 @@ msgstr "64rem,"
 #: docs/demos/responsive/i18n.json#text9
 #, no-c-format
 msgctxt "docs.demos:responsive:text9"
-msgid "80rem. For a component that adapts to its own width instead of the viewport,\n      wrap it in a"
-msgstr "80rem. For en komponent der tilpasser sig sin egen bredde i stedet for viewporten,\n      pak den ind i et"
+msgid ""
+"80rem. For a component that adapts to its own width instead of the "
+"viewport,\n"
+"      wrap it in a"
+msgstr ""
+"80rem. For en komponent der tilpasser sig sin egen bredde i stedet for "
+"viewporten,\n"
+"      pak den ind i et"
 
 #: docs/demos/responsive/i18n.json#text10
 #, no-c-format
@@ -2665,7 +2758,8 @@ msgstr "Denne sætning er synlig. Efter den sidder tekst kun for skærmlæsere."
 #, no-c-format
 msgctxt "docs.demos:screen-reader-content:text2"
 msgid "This text is announced to assistive technology but hidden on screen."
-msgstr "Denne tekst annonceres til assistiv teknologi men er skjult på skærmen."
+msgstr ""
+"Denne tekst annonceres til assistiv teknologi men er skjult på skærmen."
 
 #: docs/demos/screen-reader-content/i18n.json#text3
 #, no-c-format
@@ -2862,14 +2956,24 @@ msgstr "Per-side klasser på mellemrumsskalaen —"
 #: docs/demos/spacing/i18n.json#text3
 #, no-c-format
 msgctxt "docs.demos:spacing:text3"
-msgid "for margin/padding, an\n    optional logical side\n    ("
-msgstr "for margin/padding, en\n    valgfri logisk side\n    ("
+msgid ""
+"for margin/padding, an\n"
+"    optional logical side\n"
+"    ("
+msgstr ""
+"for margin/padding, en\n"
+"    valgfri logisk side\n"
+"    ("
 
 #: docs/demos/spacing/i18n.json#text4
 #, no-c-format
 msgctxt "docs.demos:spacing:text4"
-msgid "),\n    then a step ("
-msgstr "),\n    så et trin ("
+msgid ""
+"),\n"
+"    then a step ("
+msgstr ""
+"),\n"
+"    så et trin ("
 
 #: docs/demos/spacing/i18n.json#text5
 #, no-c-format
@@ -2880,14 +2984,22 @@ msgstr ", plus"
 #: docs/demos/spacing/i18n.json#text6
 #, no-c-format
 msgctxt "docs.demos:spacing:text6"
-msgid "for\n    margin). Every class also has a fully long, word-spelled twin —"
-msgstr "for\n    margin). Hver klasse har også en fuldt stavet, ord-skrevet tvilling —"
+msgid ""
+"for\n"
+"    margin). Every class also has a fully long, word-spelled twin —"
+msgstr ""
+"for\n"
+"    margin). Hver klasse har også en fuldt stavet, ord-skrevet tvilling —"
 
 #: docs/demos/spacing/i18n.json#text7
 #, no-c-format
 msgctxt "docs.demos:spacing:text7"
-msgid "is the same\n    rule as"
-msgstr "er den samme\n    regel som"
+msgid ""
+"is the same\n"
+"    rule as"
+msgstr ""
+"er den samme\n"
+"    regel som"
 
 #: docs/demos/spacing/i18n.json#text8
 #, no-c-format
@@ -3270,8 +3382,12 @@ msgstr "Hvad følger med i denne pakke?"
 #: docs/demos/toggle-details/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:toggle-details:text2"
-msgid "Class-based component styles, built from the Instructure tokens, plus a prose layer."
-msgstr "Klassesbaserede komponentstilarter, bygget fra Instructure-tokens, plus et proselag."
+msgid ""
+"Class-based component styles, built from the Instructure tokens, plus a "
+"prose layer."
+msgstr ""
+"Klassesbaserede komponentstilarter, bygget fra Instructure-tokens, plus et "
+"proselag."
 
 #: docs/demos/toggle-details/i18n.json#text3
 #, no-c-format
@@ -3318,8 +3434,14 @@ msgstr "Avancerede indstillinger"
 #: docs/demos/toggle-group/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:toggle-group:text2"
-msgid "These options are revealed when the group is expanded. The header row carries a chevron that\n        rotates on open, and the content sits below a divider."
-msgstr "Disse muligheder afsløres, når gruppen er udvidet. Hovedrækken har en chevron som\n        roterer ved åben, og indholdet ligger under en separator."
+msgid ""
+"These options are revealed when the group is expanded. The header row "
+"carries a chevron that\n"
+"        rotates on open, and the content sits below a divider."
+msgstr ""
+"Disse muligheder afsløres, når gruppen er udvidet. Hovedrækken har en "
+"chevron som\n"
+"        roterer ved åben, og indholdet ligger under en separator."
 
 #: docs/demos/toggle-group/i18n.json#text3
 #, no-c-format
@@ -3342,8 +3464,12 @@ msgstr "Token-utilities"
 #: docs/demos/token-utilities/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:token-utilities:text2"
-msgid "Every \"one token, one property\" family gets a class named after the token — here"
-msgstr "Hver \"et token, en property\" familie får en klasse navngivet efter tokenet — her"
+msgid ""
+"Every \"one token, one property\" family gets a class named after the token "
+"— here"
+msgstr ""
+"Hver \"et token, en property\" familie får en klasse navngivet efter tokenet "
+"— her"
 
 #: docs/demos/token-utilities/i18n.json#text3
 #, no-c-format
@@ -3504,8 +3630,12 @@ msgstr "Rubric.docx"
 #: docs/demos/truncate/i18n.json#text1
 #, no-c-format
 msgctxt "docs.demos:truncate:text1"
-msgid "This single line keeps going past the edge of its box, so it ends in an ellipsis."
-msgstr "Denne enkeltlinje fortsætter forbi kanten af sin boks, så den ender i en ellipse."
+msgid ""
+"This single line keeps going past the edge of its box, so it ends in an "
+"ellipsis."
+msgstr ""
+"Denne enkeltlinje fortsætter forbi kanten af sin boks, så den ender i en "
+"ellipse."
 
 #: docs/demos/truncate/i18n.json#text2
 #, no-c-format
@@ -3516,8 +3646,14 @@ msgstr "Sæt"
 #: docs/demos/truncate/i18n.json#text3
 #, no-c-format
 msgctxt "docs.demos:truncate:text3"
-msgid "custom property to clamp to a fixed number of lines instead. This\n      paragraph runs long on purpose so the clamp has something to cut off after the second line."
-msgstr "den brugerdefinerede property for i stedet at begrænse til et fast antal linjer. Dette\n      afsnit er bevidst langt så clamp kan afkorte efter den anden linje."
+msgid ""
+"custom property to clamp to a fixed number of lines instead. This\n"
+"      paragraph runs long on purpose so the clamp has something to cut off "
+"after the second line."
+msgstr ""
+"den brugerdefinerede property for i stedet at begrænse til et fast antal "
+"linjer. Dette\n"
+"      afsnit er bevidst langt så clamp kan afkorte efter den anden linje."
 
 #: docs/demos/view/i18n.json#text1
 #, no-c-format
@@ -3534,8 +3670,16 @@ msgstr "er InstUI's"
 #: docs/demos/view/i18n.json#text3
 #, no-c-format
 msgctxt "docs.demos:view:text3"
-msgid ". Beyond the neutral box it carries\n    key-value modifiers for its own visual props, so it has the same devex as the other components —\n    no need to reach for utilities for the basics."
-msgstr ". Udover den neutrale boks bærer den\n    nøgle‑værdi‑modifikatorer for sine egne visuelle egenskaber, så den har samme udvikleroplevelse som de andre komponenter —\n    ingen grund til at række efter hjælpeværktøjer til det basale."
+msgid ""
+". Beyond the neutral box it carries\n"
+"    key-value modifiers for its own visual props, so it has the same devex "
+"as the other components —\n"
+"    no need to reach for utilities for the basics."
+msgstr ""
+". Udover den neutrale boks bærer den\n"
+"    nøgle‑værdi‑modifikatorer for sine egne visuelle egenskaber, så den har "
+"samme udvikleroplevelse som de andre komponenter —\n"
+"    ingen grund til at række efter hjælpeværktøjer til det basale."
 
 #: docs/demos/view/i18n.json#text4
 #, no-c-format
@@ -3571,7 +3715,9 @@ msgstr "Sammensæt også hjælpefunktioner"
 #, no-c-format
 msgctxt "docs.demos:view:text9"
 msgid "Spacing, color, and token utilities still layer onto a View — e.g."
-msgstr "Afstands-, farve- og token‑hjælpefunktioner lægges stadig oven på en View — f.eks."
+msgstr ""
+"Afstands-, farve- og token‑hjælpefunktioner lægges stadig oven på en View — "
+"f.eks."
 
 #: docs/demos/view/i18n.json#text10
 #, no-c-format

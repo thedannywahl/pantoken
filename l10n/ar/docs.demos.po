@@ -4,10 +4,10 @@ msgstr ""
 "PO-Revision-Date: 2026-10-01 01:54+0000\n"
 "Last-Translator: pantoken localization engine\n"
 "Language-Team: pantoken\n"
+"Language: und\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: und\n"
 
 #: docs/demos/alert/i18n.json#text1
 #, no-c-format
@@ -294,8 +294,12 @@ msgstr "يتم عرض هذه النتيجة باستخدام"
 #: docs/demos/base/i18n.json#text3
 #, no-c-format
 msgctxt "docs.demos:base:text3"
-msgid "loaded first. The page surface, base text color\n    and font, and"
-msgstr "تم التحميل أولاً. سطح الصفحة، لون النص الأساسي\n    والخط، و"
+msgid ""
+"loaded first. The page surface, base text color\n"
+"    and font, and"
+msgstr ""
+"تم التحميل أولاً. سطح الصفحة، لون النص الأساسي\n"
+"    والخط، و"
 
 #: docs/demos/base/i18n.json#text4
 #, no-c-format
@@ -318,8 +322,12 @@ msgstr "رابط أساسي"
 #: docs/demos/base/i18n.json#text7
 #, no-c-format
 msgctxt "docs.demos:base:text7"
-msgid ", and everything sits on the token page surface. Switch the theme (or\n    light/dark) and the surface, text, and link all follow."
-msgstr "، وكل شيء يستند إلى سطح صفحة الرموز. غيّر النمط (أو الفاتح/الداكن) وسيتبع السطح والنص والروابط ذلك."
+msgid ""
+", and everything sits on the token page surface. Switch the theme (or\n"
+"    light/dark) and the surface, text, and link all follow."
+msgstr ""
+"، وكل شيء يستند إلى سطح صفحة الرموز. غيّر النمط (أو الفاتح/الداكن) وسيتبع "
+"السطح والنص والروابط ذلك."
 
 #: docs/demos/base/i18n.json#text8
 #, no-c-format
@@ -625,7 +633,8 @@ msgstr "ما الجديد"
 #, no-c-format
 msgctxt "docs.demos:byline:text2"
 msgid "The figure can be any leading visual — an icon, an avatar, or an image."
-msgstr "يمكن أن يكون الشكل أي عنصر بصري بارز — أيقونة أو صورة رمزية (أفاتار) أو صورة"
+msgstr ""
+"يمكن أن يكون الشكل أي عنصر بصري بارز — أيقونة أو صورة رمزية (أفاتار) أو صورة"
 
 #: docs/demos/byline/i18n.json#text3
 #, no-c-format
@@ -642,8 +651,13 @@ msgstr "مع"
 #: docs/demos/byline/i18n.json#text5
 #, no-c-format
 msgctxt "docs.demos:byline:text5"
-msgid "the figure pins to the top instead of centering,\n          which reads better when the description runs to several lines like this one does."
-msgstr "يُثبّت الشكل في الأعلى بدلًا من توسيطه، وهو يُسهّل القراءة عندما تمتد الوصف إلى عدة أسطر كما هو الحال هنا."
+msgid ""
+"the figure pins to the top instead of centering,\n"
+"          which reads better when the description runs to several lines like "
+"this one does."
+msgstr ""
+"يُثبّت الشكل في الأعلى بدلًا من توسيطه، وهو يُسهّل القراءة عندما تمتد الوصف إلى "
+"عدة أسطر كما هو الحال هنا."
 
 #: docs/demos/byline/i18n.json#text6
 #, no-c-format
@@ -786,8 +800,12 @@ msgstr "سطح، و"
 #: docs/demos/color-utilities/i18n.json#text4
 #, no-c-format
 msgctxt "docs.demos:color-utilities:text4"
-msgid "a border — each from a semantic color token, so overrides stay\n    on-palette and follow the theme."
-msgstr "حد — كل واحد مأخوذ من رمز لون دلالي، لذلك تظل التجاوزات ضمن لوحة الألوان وتتوافق مع السمة."
+msgid ""
+"a border — each from a semantic color token, so overrides stay\n"
+"    on-palette and follow the theme."
+msgstr ""
+"حد — كل واحد مأخوذ من رمز لون دلالي، لذلك تظل التجاوزات ضمن لوحة الألوان "
+"وتتوافق مع السمة."
 
 #: docs/demos/color-utilities/i18n.json#text5
 #, no-c-format
@@ -924,8 +942,13 @@ msgstr "عرض التفاصيل"
 #: docs/demos/context-view/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:context-view:text2"
-msgid "A context view frames a callout with a caret. As a popover it rides the top layer and closes\n    when you click away or press Esc."
-msgstr "تعرض طريقة عرض السياق ملاحظة مصحوبة بسهم. وبصفتها منبثقة، تتواجد في الطبقة العلوية وتغلق عندما تنقر في مكان آخر أو تضغط Esc."
+msgid ""
+"A context view frames a callout with a caret. As a popover it rides the top "
+"layer and closes\n"
+"    when you click away or press Esc."
+msgstr ""
+"تعرض طريقة عرض السياق ملاحظة مصحوبة بسهم. وبصفتها منبثقة، تتواجد في الطبقة "
+"العلوية وتغلق عندما تنقر في مكان آخر أو تضغط Esc."
 
 #: docs/demos/context-view/i18n.json#text3
 #, no-c-format
@@ -960,8 +983,13 @@ msgstr "خلفية معكوسة"
 #: docs/demos/context-view/i18n.json#text8
 #, no-c-format
 msgctxt "docs.demos:context-view:text8"
-msgid "Positioning next to a trigger uses CSS anchor positioning where supported; elsewhere the popover\n    centers in the top layer."
-msgstr "يستخدم وضع العنصر بجانب المُشغّل تموضع المِرْسَى (anchor) في CSS عندما يكون مدعومًا؛ أما في الحالات الأخرى فيُوَسَّط العنصر المنبثق في الطبقة العليا."
+msgid ""
+"Positioning next to a trigger uses CSS anchor positioning where supported; "
+"elsewhere the popover\n"
+"    centers in the top layer."
+msgstr ""
+"يستخدم وضع العنصر بجانب المُشغّل تموضع المِرْسَى (anchor) في CSS عندما يكون "
+"مدعومًا؛ أما في الحالات الأخرى فيُوَسَّط العنصر المنبثق في الطبقة العليا."
 
 #: docs/demos/date-time-inputs/i18n.json#text1
 #, no-c-format
@@ -973,7 +1001,10 @@ msgstr "تاريخ الاستحقاق"
 #, no-c-format
 msgctxt "docs.demos:date-time-inputs:text2"
 msgid "Starts at"
-msgstr "يبدأ في\n\nالجداول المتاحة: todos، todo_deps"
+msgstr ""
+"يبدأ في\n"
+"\n"
+"الجداول المتاحة: todos، todo_deps"
 
 #: docs/demos/date-time-inputs/i18n.json#text3
 #, no-c-format
@@ -1062,8 +1093,13 @@ msgstr "المحتوى الرئيسي"
 #: docs/demos/drawer-layout/i18n.json#text9
 #, no-c-format
 msgctxt "docs.demos:drawer-layout:text9"
-msgid "Use the buttons above to toggle open state. Narrow the viewport to see the tray switch to\n          overlay mode."
-msgstr "استخدم الأزرار أعلاه لتبديل حالة الفتح. قلّل عرض نافذة العرض لترى أن الدرج يتحول إلى وضع التراكب."
+msgid ""
+"Use the buttons above to toggle open state. Narrow the viewport to see the "
+"tray switch to\n"
+"          overlay mode."
+msgstr ""
+"استخدم الأزرار أعلاه لتبديل حالة الفتح. قلّل عرض نافذة العرض لترى أن الدرج "
+"يتحول إلى وضع التراكب."
 
 #: docs/demos/elevation/i18n.json#text1
 #, no-c-format
@@ -1158,14 +1194,22 @@ msgstr "report.pdf — نوع الملف غير مسموح به."
 #: docs/demos/focus-outline/i18n.json#text1
 #, no-c-format
 msgctxt "docs.demos:focus-outline:text1"
-msgid "Tab through the controls (or click the field) to see the ring. It rides every focusable out of\n      the box from"
-msgstr "انتقل عبر عناصر التحكم باستخدام مفتاح Tab (أو انقر الحقل) لرؤية الحلقة. تظهر تلقائيًا على كل عنصر قابل للتركيز خارج الصندوق بدءًا من"
+msgid ""
+"Tab through the controls (or click the field) to see the ring. It rides "
+"every focusable out of\n"
+"      the box from"
+msgstr ""
+"انتقل عبر عناصر التحكم باستخدام مفتاح Tab (أو انقر الحقل) لرؤية الحلقة. تظهر "
+"تلقائيًا على كل عنصر قابل للتركيز خارج الصندوق بدءًا من"
 
 #: docs/demos/focus-outline/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:focus-outline:text2"
-msgid "; the modifiers recolour it, inset it, or turn off the\n      animation."
-msgstr "; تقوم المُعدِّلات بإعادة تلوينه، أو جعله داخلياً، أو إيقاف الرسوم المتحركة."
+msgid ""
+"; the modifiers recolour it, inset it, or turn off the\n"
+"      animation."
+msgstr ""
+"; تقوم المُعدِّلات بإعادة تلوينه، أو جعله داخلياً، أو إيقاف الرسوم المتحركة."
 
 #: docs/demos/focus-outline/i18n.json#text3
 #, no-c-format
@@ -1380,8 +1424,12 @@ msgstr "الفئات في مقياس التباعد، قصيرة ("
 #: docs/demos/gap/i18n.json#text4
 #, no-c-format
 msgctxt "docs.demos:gap:text4"
-msgid ") or long\n    ("
-msgstr ") أو طويل\n    ("
+msgid ""
+") or long\n"
+"    ("
+msgstr ""
+") أو طويل\n"
+"    ("
 
 #: docs/demos/gap/i18n.json#text5
 #, no-c-format
@@ -1548,7 +1596,9 @@ msgstr "مضمّن"
 #: docs/demos/icon/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:icon:text2"
-msgid "icons scale to the text and inherit\n      its color."
+msgid ""
+"icons scale to the text and inherit\n"
+"      its color."
 msgstr "تتكيف الأيقونات مع حجم النص وتورث لونه."
 
 #: docs/demos/icon/i18n.json#text3
@@ -1596,8 +1646,14 @@ msgstr "12 مارس 2026"
 #: docs/demos/in-place-edit/i18n.json#text7
 #, no-c-format
 msgctxt "docs.demos:in-place-edit:text7"
-msgid "Click a value to edit it. The stateful view/edit toggle with confirm and cancel buttons is the\n    web-component tier; this is the pure-CSS editable skin."
-msgstr "انقر على قيمة لتحريرها. تبديل العرض/التحرير الحافظ للحالة مع أزرار التأكيد والإلغاء هو طبقة مكوّنات الويب؛ هذا هو المظهر القابل للتحرير المعتمد على CSS فقط."
+msgid ""
+"Click a value to edit it. The stateful view/edit toggle with confirm and "
+"cancel buttons is the\n"
+"    web-component tier; this is the pure-CSS editable skin."
+msgstr ""
+"انقر على قيمة لتحريرها. تبديل العرض/التحرير الحافظ للحالة مع أزرار التأكيد "
+"والإلغاء هو طبقة مكوّنات الويب؛ هذا هو المظهر القابل للتحرير المعتمد على CSS "
+"فقط."
 
 #: docs/demos/layout/i18n.json#text1
 #, no-c-format
@@ -1626,8 +1682,11 @@ msgstr "و"
 #: docs/demos/layout/i18n.json#text5
 #, no-c-format
 msgctxt "docs.demos:layout:text5"
-msgid "props as composable classes — reach for them on\n    any element instead of a per-component modifier."
-msgstr "الخصائص كفئات قابلة للتأليف — استخدمها على أي عنصر بدلًا من معدل لكل مكوّن."
+msgid ""
+"props as composable classes — reach for them on\n"
+"    any element instead of a per-component modifier."
+msgstr ""
+"الخصائص كفئات قابلة للتأليف — استخدمها على أي عنصر بدلًا من معدل لكل مكوّن."
 
 #: docs/demos/layout/i18n.json#text6
 #, no-c-format
@@ -2058,7 +2117,8 @@ msgstr "جولة الميزات"
 #: docs/demos/pendo/i18n.json#popoverBody
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverBody"
-msgid "This anchored guide keeps the next action close to the feature it describes."
+msgid ""
+"This anchored guide keeps the next action close to the feature it describes."
 msgstr "هذا الدليل المثبت يبقي الإجراء التالي قريبًا من الميزة التي يصفها."
 
 #: docs/demos/pendo/i18n.json#alertLabel
@@ -2082,8 +2142,11 @@ msgstr "تبدأ في الساعة 11:00 مساءً"
 #: docs/demos/pendo/i18n.json#alertBody
 #, no-c-format
 msgctxt "docs.demos:pendo:alertBody"
-msgid "Course tools will be unavailable briefly tonight while maintenance is completed."
-msgstr "ستكون أدوات المقرر غير متاحة لفترة وجيزة الليلة أثناء إكمال أعمال الصيانة."
+msgid ""
+"Course tools will be unavailable briefly tonight while maintenance is "
+"completed."
+msgstr ""
+"ستكون أدوات المقرر غير متاحة لفترة وجيزة الليلة أثناء إكمال أعمال الصيانة."
 
 #: docs/demos/pendo/i18n.json#bannerLabel
 #, no-c-format
@@ -2106,7 +2169,8 @@ msgstr "رؤى المشاركة"
 #: docs/demos/pendo/i18n.json#bannerBody
 #, no-c-format
 msgctxt "docs.demos:pendo:bannerBody"
-msgid "Review participation trends and identify where learners may need support."
+msgid ""
+"Review participation trends and identify where learners may need support."
 msgstr "راجع اتجاهات المشاركة وحدد أماكن حاجة المتعلمين إلى الدعم."
 
 #: docs/demos/pendo/i18n.json#closeLabel
@@ -2268,7 +2332,9 @@ msgstr "مشاركة هذه الصفحة"
 #: docs/demos/popover/i18n.json#text3
 #, no-c-format
 msgctxt "docs.demos:popover:text3"
-msgid "A popover is a lightweight surface anchored to a trigger. This one uses the native"
+msgid ""
+"A popover is a lightweight surface anchored to a trigger. This one uses the "
+"native"
 msgstr "العنصر المنبثق هو سطح خفيف مربوط بمحفز. هذا يستخدم الـ"
 
 #: docs/demos/popover/i18n.json#text4
@@ -2364,8 +2430,11 @@ msgstr "، وبعض"
 #: docs/demos/prose/i18n.json#text14
 #, no-c-format
 msgctxt "docs.demos:prose:text14"
-msgid ". The prose layer styles rendered\n      markdown to match the Heading and Text components."
-msgstr ". تدرج النثر ينسق الـ markdown المقدم ليتطابق مع مكوّنات العناوين والنص."
+msgid ""
+". The prose layer styles rendered\n"
+"      markdown to match the Heading and Text components."
+msgstr ""
+". تدرج النثر ينسق الـ markdown المقدم ليتطابق مع مكوّنات العناوين والنص."
 
 #: docs/demos/prose/i18n.json#text15
 #, no-c-format
@@ -2640,7 +2709,10 @@ msgstr "64rem،"
 #: docs/demos/responsive/i18n.json#text9
 #, no-c-format
 msgctxt "docs.demos:responsive:text9"
-msgid "80rem. For a component that adapts to its own width instead of the viewport,\n      wrap it in a"
+msgid ""
+"80rem. For a component that adapts to its own width instead of the "
+"viewport,\n"
+"      wrap it in a"
 msgstr "80rem. لمكوّن يتكيّف مع عرضه بدلًا من نافذة العرض، غلفه في"
 
 #: docs/demos/responsive/i18n.json#text10
@@ -2862,14 +2934,23 @@ msgstr "فئات لكل جانب على مقياس التباعد —"
 #: docs/demos/spacing/i18n.json#text3
 #, no-c-format
 msgctxt "docs.demos:spacing:text3"
-msgid "for margin/padding, an\n    optional logical side\n    ("
-msgstr "لهامش/حشوة، جانب منطقي اختياري\n    ("
+msgid ""
+"for margin/padding, an\n"
+"    optional logical side\n"
+"    ("
+msgstr ""
+"لهامش/حشوة، جانب منطقي اختياري\n"
+"    ("
 
 #: docs/demos/spacing/i18n.json#text4
 #, no-c-format
 msgctxt "docs.demos:spacing:text4"
-msgid "),\n    then a step ("
-msgstr "),\n    ثم خطوة ("
+msgid ""
+"),\n"
+"    then a step ("
+msgstr ""
+"),\n"
+"    ثم خطوة ("
 
 #: docs/demos/spacing/i18n.json#text5
 #, no-c-format
@@ -2880,14 +2961,20 @@ msgstr "، بالإضافة إلى"
 #: docs/demos/spacing/i18n.json#text6
 #, no-c-format
 msgctxt "docs.demos:spacing:text6"
-msgid "for\n    margin). Every class also has a fully long, word-spelled twin —"
+msgid ""
+"for\n"
+"    margin). Every class also has a fully long, word-spelled twin —"
 msgstr "لهامش). كل فئة لها أيضاً نظير طويل مكتوب بالكلمات —"
 
 #: docs/demos/spacing/i18n.json#text7
 #, no-c-format
 msgctxt "docs.demos:spacing:text7"
-msgid "is the same\n    rule as"
-msgstr "هو نفس القاعدة\n    كـ"
+msgid ""
+"is the same\n"
+"    rule as"
+msgstr ""
+"هو نفس القاعدة\n"
+"    كـ"
 
 #: docs/demos/spacing/i18n.json#text8
 #, no-c-format
@@ -3270,8 +3357,12 @@ msgstr "ما الذي يُشحن في هذه الحزمة؟"
 #: docs/demos/toggle-details/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:toggle-details:text2"
-msgid "Class-based component styles, built from the Instructure tokens, plus a prose layer."
-msgstr "أنماط مكوّنات معتمدة على الفئات، مبنية من رموز Instructure، بالإضافة إلى طبقة نثرية."
+msgid ""
+"Class-based component styles, built from the Instructure tokens, plus a "
+"prose layer."
+msgstr ""
+"أنماط مكوّنات معتمدة على الفئات، مبنية من رموز Instructure، بالإضافة إلى طبقة "
+"نثرية."
 
 #: docs/demos/toggle-details/i18n.json#text3
 #, no-c-format
@@ -3318,8 +3409,13 @@ msgstr "إعدادات متقدمة"
 #: docs/demos/toggle-group/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:toggle-group:text2"
-msgid "These options are revealed when the group is expanded. The header row carries a chevron that\n        rotates on open, and the content sits below a divider."
-msgstr "تُكشف هذه الخيارات عند توسيع المجموعة. صف الرأس يحمل سهمًا يدور عند الفتح، والمحتوى يجلس أسفل قاطع."
+msgid ""
+"These options are revealed when the group is expanded. The header row "
+"carries a chevron that\n"
+"        rotates on open, and the content sits below a divider."
+msgstr ""
+"تُكشف هذه الخيارات عند توسيع المجموعة. صف الرأس يحمل سهمًا يدور عند الفتح، "
+"والمحتوى يجلس أسفل قاطع."
 
 #: docs/demos/toggle-group/i18n.json#text3
 #, no-c-format
@@ -3342,8 +3438,11 @@ msgstr "أدوات الرموز"
 #: docs/demos/token-utilities/i18n.json#text2
 #, no-c-format
 msgctxt "docs.demos:token-utilities:text2"
-msgid "Every \"one token, one property\" family gets a class named after the token — here"
-msgstr "كل عائلة \"رمز واحد، خاصية واحدة\" تحصل على فئة مسماة تيمناً بالرمز — هنا"
+msgid ""
+"Every \"one token, one property\" family gets a class named after the token "
+"— here"
+msgstr ""
+"كل عائلة \"رمز واحد، خاصية واحدة\" تحصل على فئة مسماة تيمناً بالرمز — هنا"
 
 #: docs/demos/token-utilities/i18n.json#text3
 #, no-c-format
@@ -3504,7 +3603,9 @@ msgstr "Rubric.docx"
 #: docs/demos/truncate/i18n.json#text1
 #, no-c-format
 msgctxt "docs.demos:truncate:text1"
-msgid "This single line keeps going past the edge of its box, so it ends in an ellipsis."
+msgid ""
+"This single line keeps going past the edge of its box, so it ends in an "
+"ellipsis."
 msgstr "تستمر هذه السطر المفردة بعد حافة الصندوق، لذا ينتهي بنقطة الحذف."
 
 #: docs/demos/truncate/i18n.json#text2
@@ -3516,8 +3617,13 @@ msgstr "اضبط الـ"
 #: docs/demos/truncate/i18n.json#text3
 #, no-c-format
 msgctxt "docs.demos:truncate:text3"
-msgid "custom property to clamp to a fixed number of lines instead. This\n      paragraph runs long on purpose so the clamp has something to cut off after the second line."
-msgstr "الخاصية المخصصة لتقييد عدد الأسطر بدلاً من ذلك. هذه الفقرة طويلة عمدًا حتى يكون للـ clamp ما يقتطع بعد السطر الثاني."
+msgid ""
+"custom property to clamp to a fixed number of lines instead. This\n"
+"      paragraph runs long on purpose so the clamp has something to cut off "
+"after the second line."
+msgstr ""
+"الخاصية المخصصة لتقييد عدد الأسطر بدلاً من ذلك. هذه الفقرة طويلة عمدًا حتى "
+"يكون للـ clamp ما يقتطع بعد السطر الثاني."
 
 #: docs/demos/view/i18n.json#text1
 #, no-c-format
@@ -3534,8 +3640,16 @@ msgstr "هو InstUI's"
 #: docs/demos/view/i18n.json#text3
 #, no-c-format
 msgctxt "docs.demos:view:text3"
-msgid ". Beyond the neutral box it carries\n    key-value modifiers for its own visual props, so it has the same devex as the other components —\n    no need to reach for utilities for the basics."
-msgstr ". بالإضافة إلى الصندوق المحايد الذي يحمله\n    معدّلات قيمة-المفتاح لخصائصه البصرية الخاصة، لذا فهو يملك نفس تجربة المطور كمثيلاته —\n    لا حاجة للجوء إلى الأدوات للوظائف الأساسية."
+msgid ""
+". Beyond the neutral box it carries\n"
+"    key-value modifiers for its own visual props, so it has the same devex "
+"as the other components —\n"
+"    no need to reach for utilities for the basics."
+msgstr ""
+". بالإضافة إلى الصندوق المحايد الذي يحمله\n"
+"    معدّلات قيمة-المفتاح لخصائصه البصرية الخاصة، لذا فهو يملك نفس تجربة "
+"المطور كمثيلاته —\n"
+"    لا حاجة للجوء إلى الأدوات للوظائف الأساسية."
 
 #: docs/demos/view/i18n.json#text4
 #, no-c-format
@@ -3571,7 +3685,8 @@ msgstr "تركيب الأدوات أيضًا"
 #, no-c-format
 msgctxt "docs.demos:view:text9"
 msgid "Spacing, color, and token utilities still layer onto a View — e.g."
-msgstr "لا تزال أدوات التباعد، والألوان، والرموز تُطبَّق على View — على سبيل المثال"
+msgstr ""
+"لا تزال أدوات التباعد، والألوان، والرموز تُطبَّق على View — على سبيل المثال"
 
 #: docs/demos/view/i18n.json#text10
 #, no-c-format
