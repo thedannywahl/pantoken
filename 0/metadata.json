@@ -1,0 +1,37 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M3W8RA15TJNHXG2QZKNXT4SK",
+  "session_id": "99dc03f3-838a-4873-96ec-67e0e1a8e8f1",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-01T17:38:50.341877Z",
+  "branch": "release-compatibility",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "tools/i18n-engine/tests/pipeline-guides.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "7cdf1bedef84",
+  "checkpoint_transcript_start": 472,
+  "transcript_lines_at_start": 472,
+  "compact_transcript_start": 56,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-10-01T17:38:50.327892Z",
+    "agent_lines": 9,
+    "agent_removed": 3,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 9,
+    "total_lines_changed": 12,
+    "agent_percentage": 100,
+    "metric_version": 2
+  }
+}
