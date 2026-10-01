@@ -499,7 +499,8 @@ const build = async (): Promise<void> => {
   }
 
   generateBaseApiDocs();
-  refreshApiPot();
+  await (await import("./write-api-compatibility.ts")).writeApiCompatibility();
+  refreshApiPot({ force: true });
 
   for (const locale of locales) {
     await buildLocale(locale);

@@ -16,6 +16,8 @@ const statSync = vi.fn<(path: string) => Stat>();
 const writeFileSync = vi.fn<(path: string, data: string) => void>();
 const spawnSync = vi.fn<() => { status: number }>();
 const spawn = vi.fn();
+const refreshApiPot = vi.fn();
+const writeApiCompatibility = vi.fn();
 
 vi.mock("node:fs", () => ({
   cpSync,
@@ -29,6 +31,8 @@ vi.mock("node:fs", () => ({
   writeFileSync,
 }));
 vi.mock("node:child_process", () => ({ spawnSync, spawn }));
+vi.mock("./refresh-api-pot.ts", () => ({ refreshApiPot }));
+vi.mock("./write-api-compatibility.ts", () => ({ writeApiCompatibility }));
 // One target locale keeps the loop (and the fixtures below, which only model a HU tree) deterministic.
 vi.mock("../.vitepress/i18n.ts", () => ({
   NON_ROOT_LOCALES: ["hu"],
@@ -148,6 +152,11 @@ test("build localizes markdown headings, prose, and sidebars, then logs the summ
   // Generation ran (TypeDoc + the three node scripts) before the clone.
   expect(spawnSync).toHaveBeenCalled();
   expect(cpSync).toHaveBeenCalled();
+  expect(writeApiCompatibility).toHaveBeenCalledOnce();
+  expect(refreshApiPot).toHaveBeenCalledExactlyOnceWith({ force: true });
+  expect(writeApiCompatibility.mock.invocationCallOrder[0]).toBeLessThan(
+    refreshApiPot.mock.invocationCallOrder[0],
+  );
 
   // The markdown file was rewritten with the glossary-translated heading; prose is passed through.
   const md = writtenTo("index.md");

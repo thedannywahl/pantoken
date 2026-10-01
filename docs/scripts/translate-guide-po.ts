@@ -49,7 +49,10 @@ for (const locale of locales) {
     (item) => !item.obsolete && item.msgid === compatibilitySource,
   );
   if (compatibilityEntry?.msgstr) {
-    writeFileSync(join(docsRoot, locale, "compatibility.md"), compatibilityEntry.msgstr);
+    writeFileSync(
+      join(docsRoot, locale, "compatibility.md"),
+      `${normalizeRenderedGuide(compatibilityEntry.msgstr)}\n`,
+    );
   }
   const adapter = new AiTranslationAdapter(locale);
 
